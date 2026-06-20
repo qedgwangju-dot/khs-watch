@@ -155,6 +155,10 @@ PRESIDENTIAL_ACTION_STATIC_EXCLUDE = [
     "nominations & appointments", "remarks", "fact sheets", "briefings & statements",
     "privacy policy", "subscribe",
 ]
+PRESIDENTIAL_ACTION_EXACT_EXCLUDE = {
+    "all", "releases", "presidential actions", "executive orders", "nominations & appointments",
+    "presidential memoranda", "proclamations", "fact sheets", "remarks", "research",
+}
 
 @dataclass
 class Source:
@@ -326,7 +330,11 @@ def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
     for match in link_pattern.finditer(text):
         title = clean_text(match.group("label"))
         title_lower = title.lower()
-        if len(title) < 8 or any(term in title_lower for term in PRESIDENTIAL_ACTION_STATIC_EXCLUDE):
+        if (
+            len(title) < 8
+            or title_lower in PRESIDENTIAL_ACTION_EXACT_EXCLUDE
+            or any(term in title_lower for term in PRESIDENTIAL_ACTION_STATIC_EXCLUDE)
+        ):
             continue
         link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
         link_lower = link.lower()
