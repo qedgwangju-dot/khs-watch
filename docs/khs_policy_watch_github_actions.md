@@ -31,9 +31,55 @@ Recommended repo path:
 - Name: `SEC_USER_AGENT`
 - Value example: `KHS-policy-watch your-email@example.com`
 
-A repository variable named `SEC_USER_AGENT` also works, but a secret is better for public repositories because variables can appear in Actions logs.
+Use a secret, not a repository variable, because variables can appear in public Actions logs.
 
-### 3. Optional Korean Stock Watchlist
+### 3. Optional Telegram Alert
+
+Telegram is optional. When configured, the workflow sends a Telegram message only when a new high-impact alert exists. Manual runs can also send a test message with `telegram_test=true`.
+
+#### Create Telegram Bot
+
+1. Open Telegram and search for `@BotFather`.
+2. Send `/newbot`.
+3. Choose a bot display name.
+4. Choose a bot username ending in `bot`.
+5. Copy the bot token.
+
+Add the token as a GitHub secret:
+
+`Settings` -> `Secrets and variables` -> `Actions` -> `Secrets` -> `New repository secret`
+
+- Name: `TELEGRAM_BOT_TOKEN`
+- Value: the token from `@BotFather`
+
+#### Get Chat ID
+
+For a personal chat:
+
+1. Open the new bot chat in Telegram.
+2. Send any message to the bot, such as `test`.
+3. Open this URL in a browser, replacing `<TOKEN>` with the bot token:
+
+`https://api.telegram.org/bot<TOKEN>/getUpdates`
+
+4. Find `message.chat.id` in the JSON response.
+
+For a group chat, add the bot to the group, send a group message, then use the same `getUpdates` URL. Group chat IDs are often negative numbers.
+
+Add the chat ID as a GitHub secret:
+
+- Name: `TELEGRAM_CHAT_ID`
+- Value: the `message.chat.id` value
+
+#### Test Telegram
+
+1. Go to `Actions`.
+2. Choose `KHS policy watch`.
+3. Click `Run workflow`.
+4. Set `telegram_test` to `true`.
+5. Confirm a Telegram message arrives.
+
+### 4. Optional Korean Stock Watchlist
 
 GitHub repo path:
 

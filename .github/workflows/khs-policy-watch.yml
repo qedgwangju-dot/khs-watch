@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
+    inputs:
+      telegram_test:
+        description: "Send a Telegram test message even when there is no alert"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
 
 permissions:
   contents: write
@@ -26,6 +35,7 @@ jobs:
       DART_DAYS_BACK: "1"
       DART_INCLUDE_ALL_MAJOR: "false"
       DART_ALLOW_CORRECTIONS: "false"
+      TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -83,3 +93,55 @@ jobs:
           else
             echo "Existing alert issue #$existing already open."
           fi
+
+      - name: Send Telegram alert
+        if: hashFiles('out/khs_policy_watch_alert.md') != '' || env.TELEGRAM_TEST == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          python - <<'PY'
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"]
+          chat_id = os.environ["TELEGRAM_CHAT_ID"]
+          repo = os.environ.get("GITHUB_REPOSITORY", "qedgwangju-dot/khs-watch")
+          run_id = os.environ.get("GITHUB_RUN_ID", "")
+
+          alert = pathlib.Path("out/khs_policy_watch_alert.md")
+          title_file = pathlib.Path("out/khs_policy_watch_alert_title.txt")
+          report = pathlib.Path("out/khs_policy_watch.md")
+
+          if alert.exists():
+              title = title_file.read_text(encoding="utf-8").strip() if title_file.exists() else "KHS policy watch alert"
+              body = alert.read_text(encoding="utf-8")
+          else:
+              title = "KHS policy watch Telegram test"
+              body = report.read_text(encoding="utf-8") if report.exists() else "KHS policy watch test message."
+
+          run_url = f"https://github.com/{repo}/actions/runs/{run_id}" if run_id else f"https://github.com/{repo}/actions"
+          issue_url = f"https://github.com/{repo}/issues"
+          text = f"{title}\n\n{body[:3300]}\n\nActions: {run_url}\nIssues: {issue_url}"
+          data = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text[:4096],
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=data,
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=20) as resp:
+              resp.read()
+          PY
+
+          echo "Telegram: sent" >> "$GITHUB_STEP_SUMMARY"
