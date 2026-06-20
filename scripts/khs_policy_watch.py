@@ -115,6 +115,11 @@ STAGE_KEYWORDS = {
     ],
     "sanctions_tariffs_export": ["sanctions", "tariff", "section 301", "export controls", "entity list", "ofac", "bis", "관세", "제재", "수출통제"],
     "agency_order": ["order", "directive", "notice of proposed rulemaking", "nopr", "request for comments", "hearing", "comment deadline", "notice to lessees", "ntls", "명령", "의견수렴", "청문"],
+    "presidential_action": [
+        "executive order", "presidential memorandum", "presidential determination", "national security memorandum",
+        "national security presidential memorandum", "presidential permit", "proclamation", "administrative order",
+        "delegation of authority", "continuation of the national emergency", "행정명령", "대통령 각서", "대통령 결정",
+    ],
     "company_filing": [
         "8-k", "6-k", "10-q", "10-k", "20-f", "material definitive agreement", "supply agreement",
         "customer agreement", "contract", "joint venture", "guidance", "merger", "acquisition", "offering",
@@ -133,6 +138,10 @@ SECTOR_KEYWORDS = {
     "방산/지정학": ["sanctions", "missile", "defense", "iran", "russia", "china", "taiwan"],
     "바이오/FDA": ["fda", "clinical", "drug", "crl"],
     "관세/수출주": ["tariff", "section 301", "ustr", "customs"],
+    "행정명령/대통령문서": [
+        "executive order", "presidential memorandum", "presidential determination", "national security memorandum",
+        "presidential permit", "proclamation",
+    ],
 }
 
 BSEE_STATIC_EXCLUDE = ["approval process", "forms", "about", "faq", "data center", "statistics"]
@@ -141,7 +150,11 @@ BSEE_STRONG_TERMS = [
     "lease sale", "lease area", "final rule", "injunction", "appeal", "vacated", "withdraws", "resumes",
     "restarts", "freeze", "pause", "offshore wind",
 ]
-
+PRESIDENTIAL_ACTION_STATIC_EXCLUDE = [
+    "nominations sent to the senate", "nomination sent to the senate", "nomination and withdrawal",
+    "nominations & appointments", "remarks", "fact sheets", "briefings & statements",
+    "privacy policy", "subscribe",
+]
 
 @dataclass
 class Source:
@@ -154,6 +167,10 @@ SOURCES = [
     Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),
     Source("Federal Register chips export", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=semiconductor+export+controls+final+rule"),
     Source("Federal Register tariffs", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=tariff+section+301+final+rule"),
+    Source("Federal Register presidential documents", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Btype%5D%5B%5D=PRESDOCU&order=newest&per_page=20", "federal_register_json"),
+    Source("White House executive orders", "https://www.whitehouse.gov/presidential-actions/executive-orders/", "whitehouse_html"),
+    Source("White House presidential memoranda", "https://www.whitehouse.gov/presidential-actions/presidential-memoranda/", "whitehouse_html"),
+    Source("White House proclamations", "https://www.whitehouse.gov/presidential-actions/proclamations/", "whitehouse_html"),
     Source("FERC news", "https://www.ferc.gov/news-events/news/rss.xml"),
     Source("DOE news", "https://www.energy.gov/rss.xml"),
     Source("USTR press releases", "https://ustr.gov/about/policy-offices/press-office/press-releases.xml"),
@@ -222,7 +239,7 @@ def parse_date(value: str | None) -> dt.datetime | None:
             return parsed.astimezone(KST)
         except Exception:
             continue
-    for fmt in ("%a, %b %d %Y", "%a, %B %d %Y", "%b %d %Y", "%B %d %Y"):
+    for fmt in ("%a, %b %d %Y", "%a, %B %d %Y", "%b %d %Y", "%B %d %Y", "%b %d, %Y", "%B %d, %Y"):
         try:
             parsed = dt.datetime.strptime(value, fmt).replace(tzinfo=UTC)
             return parsed.astimezone(KST)
@@ -264,6 +281,74 @@ def parse_courtlistener(text: str, source: Source) -> list[dict]:
         published = parse_date(row.get("dateFiled") or row.get("dateArgued") or row.get("dateReargued"))
         items.append({"source": source.name, "title": clean_text(row.get("caseName") or row.get("caseNameFull") or "CourtListener item"), "link": urllib.parse.urljoin("https://www.courtlistener.com", absolute_url) if absolute_url else source.url, "summary": clean_text(row.get("snippet") or row.get("plain_text") or ""), "published_kst": published.isoformat() if published else ""})
     return items
+
+
+def parse_federal_register_json(text: str, source: Source) -> list[dict]:
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        return []
+    items = []
+    for row in (data.get("results") or [])[:20]:
+        title = clean_text(str(row.get("title") or row.get("citation") or "Federal Register presidential document"))
+        link = clean_text(str(row.get("html_url") or row.get("pdf_url") or source.url))
+        published = parse_date(str(row.get("publication_date") or row.get("signing_date") or ""))
+        doc_type = clean_text(str(row.get("type") or ""))
+        pres_type = clean_text(str(row.get("presidential_document_type") or ""))
+        doc_number = clean_text(str(row.get("document_number") or ""))
+        abstract = clean_text(str(row.get("abstract") or row.get("excerpt") or ""))
+        meta = "; ".join(part for part in (doc_type, pres_type, doc_number) if part)
+        summary = clean_text(f"{meta}. {abstract}") or "Federal Register presidential document"
+        items.append({"source": source.name, "title": title, "link": link, "summary": summary, "published_kst": published.isoformat() if published else ""})
+    return items
+
+
+def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
+    link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
+    policy_terms = {
+        kw.lower()
+        for group in list(STAGE_KEYWORDS.values()) + list(SECTOR_KEYWORDS.values())
+        for kw in group
+    } | {
+        "ai", "artificial intelligence", "customs", "critical", "infrastructure", "grid", "energy",
+        "supply chain", "federal lands", "commercial fishing", "financial system", "regulatory",
+        "national emergency", "defense production act", "national security", "sanctions", "tariff",
+    }
+    if "executive orders" in source.name:
+        doc_type = "Executive Order"
+    elif "memoranda" in source.name:
+        doc_type = "Presidential Memorandum"
+    elif "proclamations" in source.name:
+        doc_type = "Proclamation"
+    else:
+        doc_type = "Presidential Action"
+    deduped: dict[str, dict] = {}
+    for match in link_pattern.finditer(text):
+        title = clean_text(match.group("label"))
+        title_lower = title.lower()
+        if len(title) < 8 or any(term in title_lower for term in PRESIDENTIAL_ACTION_STATIC_EXCLUDE):
+            continue
+        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
+        link_lower = link.lower()
+        if "/presidential-actions/" not in link_lower or link.rstrip("/") == source.url.rstrip("/"):
+            continue
+        tail = clean_text(text[match.end(): match.end() + 700])
+        date_match = re.search(
+            r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December|"
+            r"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+20\d{2}\b",
+            tail,
+            re.I,
+        )
+        published = parse_date(date_match.group(0)) if date_match else None
+        if not published:
+            continue
+        published = published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0)
+        haystack = f"{title_lower} {link_lower}"
+        if doc_type == "Proclamation" and not any(term in haystack for term in policy_terms):
+            continue
+        summary = f"White House {doc_type} official page link: {title}"
+        deduped[link] = {"source": source.name, "title": title, "link": link, "summary": summary, "published_kst": published.isoformat()}
+    return list(deduped.values())[:20]
 
 
 def parse_link_html(text: str, source: Source) -> list[dict]:
@@ -404,7 +489,7 @@ def classify_item(item: dict) -> dict | None:
         return None
     stage_score = sum(len(v) for v in matched.values())
     has_major_filing = any(keyword.lower() in haystack for keyword in MAJOR_FILING_KEYWORDS)
-    if any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "fda_decision")):
+    if any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "fda_decision")):
         importance = "상"
     elif "company_filing" in matched and has_major_filing:
         importance = "중"
@@ -415,7 +500,7 @@ def classify_item(item: dict) -> dict | None:
     sectors = [sector for sector, keywords in SECTOR_KEYWORDS.items() if any(kw.lower() in haystack for kw in keywords)] or ["정책/규제 일반"]
     impacts: list[str] = []
     paths: list[str] = []
-    if any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order")):
+    if any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "presidential_action")):
         impacts.extend(["시간표", "할인율"])
         paths.extend(["정책 타임라인", "할인율"])
     if any(bucket in matched for bucket in ("sanctions_tariffs_export", "company_filing", "fda_decision")):
@@ -454,6 +539,10 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
             items = parse_courtlistener(text or "", source)
         elif source.kind == "kind_html":
             items = parse_kind_html(text or "", source, now)
+        elif source.kind == "federal_register_json":
+            items = parse_federal_register_json(text or "", source)
+        elif source.kind == "whitehouse_html":
+            items = parse_whitehouse_html(text or "", source)
         elif source.kind == "link_html":
             items = parse_link_html(text or "", source)
         else:
@@ -461,7 +550,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
         source_notes.append(f"- {source.name}: {len(items)}건 확인")
         for item in items:
             age = item_age_hours(item, now)
-            if source.kind in {"rss", "courtlistener", "kind_html"} and age is None:
+            if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html"} and age is None:
                 continue
             if age is not None and age > MAX_SOURCE_AGE_HOURS:
                 continue
