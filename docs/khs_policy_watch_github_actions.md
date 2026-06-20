@@ -6,7 +6,7 @@ This repository runs the KHS policy/regulatory watch.
 
 - Runs every 15 minutes with GitHub Actions.
 - Polls official/trusted public sources first.
-- Looks for stage-changing policy, legal, regulatory, agency, offshore wind permit, SEC EDGAR, and OpenDART filing events.
+- Looks for stage-changing policy, legal, regulatory, presidential action, agency, offshore wind permit, SEC EDGAR, and OpenDART filing events.
 - Creates a short Actions summary every run.
 - Opens a GitHub issue only when a new high-impact candidate is detected.
 - Stores seen fingerprints in `data/khs_policy_watch_seen.json` so repeated items are not alerted again.
@@ -93,6 +93,8 @@ GitHub repo path:
 ### Official Policy / Regulatory Sources
 
 - Federal Register search RSS: energy permits/final rules, semiconductor export controls, tariff/Section 301
+- Federal Register Presidential Documents API: executive orders, presidential memoranda, determinations, proclamations, and presidential permits
+- White House Presidential Actions pages: Executive Orders, Presidential Memoranda, and policy-relevant Proclamations
 - FERC RSS
 - DOE RSS
 - USTR RSS
