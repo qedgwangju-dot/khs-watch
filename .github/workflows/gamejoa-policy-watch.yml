@@ -32,6 +32,20 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Check configuration
+        run: |
+          if [ -z "$SEC_USER_AGENT" ] || [ "$SEC_USER_AGENT" = "GAMEJOA-policy-watch contact=please-set-repo-variable" ]; then
+            echo "SEC_USER_AGENT: 미설정 또는 기본값" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "SEC_USER_AGENT: 설정됨" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          if [ -z "$DART_API_KEY" ]; then
+            echo "DART_API_KEY: 미설정" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "DART_API_KEY: 설정됨" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Run policy watch
         run: python scripts/gamejoa_policy_watch.py
 
