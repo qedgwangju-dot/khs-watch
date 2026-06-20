@@ -1,0 +1,69 @@
+name: GAMEJOA policy watch
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: gamejoa-policy-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    env:
+      CREATE_GITHUB_ISSUE: "true"
+      GAMEJOA_WATCH_MAX_ALERTS: "5"
+      SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || 'GAMEJOA-policy-watch contact=please-set-repo-variable' }}
+      DART_API_KEY: ${{ secrets.DART_API_KEY }}
+      DART_WATCH_STOCK_CODES: ${{ vars.DART_WATCH_STOCK_CODES || '005930,000660,373220,051910,006400,112610,267260,010120,064350,010140,329180' }}
+      DART_DAYS_BACK: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run policy watch
+        run: python scripts/gamejoa_policy_watch.py
+
+      - name: Publish step summary
+        if: always()
+        run: |
+          if [ -f out/gamejoa_policy_watch.md ]; then
+            cat out/gamejoa_policy_watch.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "GAMEJOA policy watch did not produce a report." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Commit updated seen state
+        if: hashFiles('data/gamejoa_policy_watch_seen.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/gamejoa_policy_watch_seen.json
+          git diff --cached --quiet || git commit -m "Update GAMEJOA policy watch state"
+          git push || true
+
+      - name: Open alert issue
+        if: env.CREATE_GITHUB_ISSUE == 'true' && hashFiles('out/gamejoa_policy_watch_alert.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="$(head -n 1 out/gamejoa_policy_watch_alert_title.txt)"
+          body="$(cat out/gamejoa_policy_watch_alert.md)"
+          existing="$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number // empty')"
+          if [ -z "$existing" ]; then
+            gh issue create --title "$title" --body "$body" --label "gamejoa,policy-watch" || \
+            gh issue create --title "$title" --body "$body"
+          else
+            echo "Existing alert issue #$existing already open."
+          fi
