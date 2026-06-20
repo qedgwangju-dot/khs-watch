@@ -115,6 +115,14 @@ STAGE_KEYWORDS = {
     ],
     "sanctions_tariffs_export": ["sanctions", "tariff", "section 301", "export controls", "entity list", "ofac", "bis", "관세", "제재", "수출통제"],
     "agency_order": ["order", "directive", "notice of proposed rulemaking", "nopr", "request for comments", "hearing", "comment deadline", "notice to lessees", "ntls", "명령", "의견수렴", "청문"],
+    "fcc_decision_notice": [
+        "open meeting", "commission meeting", "tentative agenda",
+        "sunshine notice", "items on circulation", "circulation", "draft order", "report and order",
+        "order on reconsideration", "declaratory ruling", "notice of proposed rulemaking", "nprm",
+        "further notice of proposed rulemaking", "fnprm", "notice of inquiry", "noi", "proposed rule",
+        "rulemaking", "public notice", "spectrum auction", "spectrum", "broadband", "satellite",
+        "space bureau", "wireless telecommunications bureau", "wireline competition bureau",
+    ],
     "presidential_action": [
         "executive order", "presidential memorandum", "presidential determination", "national security memorandum",
         "national security presidential memorandum", "presidential permit", "proclamation", "administrative order",
@@ -138,6 +146,11 @@ SECTOR_KEYWORDS = {
     "방산/지정학": ["sanctions", "missile", "defense", "iran", "russia", "china", "taiwan"],
     "바이오/FDA": ["fda", "clinical", "drug", "crl"],
     "관세/수출주": ["tariff", "section 301", "ustr", "customs"],
+    "통신/FCC/위성": [
+        "fcc", "federal communications commission", "spectrum", "broadband", "wireless", "wireline",
+        "satellite", "space bureau", "net neutrality", "universal service", "equipment authorization",
+        "telecommunications", "auction",
+    ],
     "행정명령/대통령문서": [
         "executive order", "presidential memorandum", "presidential determination", "national security memorandum",
         "presidential permit", "proclamation",
@@ -159,6 +172,23 @@ PRESIDENTIAL_ACTION_EXACT_EXCLUDE = {
     "all", "releases", "presidential actions", "executive orders", "nominations & appointments",
     "presidential memoranda", "proclamations", "fact sheets", "remarks", "research",
 }
+FCC_STATIC_EXCLUDE = [
+    "about the fcc", "consumer", "licensing", "forms", "jobs", "contact", "privacy policy",
+    "foia", "no fear act", "inspector general", "rss", "subscribe", "archive",
+]
+FCC_EXACT_EXCLUDE = {
+    "home", "about", "proceedings & actions", "licensing & databases", "reports & research",
+    "news & events", "for consumers", "browse by category", "daily digest", "public notices",
+    "news releases", "speeches", "statements", "open commission meetings",
+}
+FCC_STRONG_TERMS = [
+    "open meeting", "commission meeting", "tentative agenda", "sunshine notice", "items on circulation",
+    "draft", "report and order", "order on reconsideration", "declaratory ruling", "notice of proposed rulemaking",
+    "nprm", "further notice of proposed rulemaking", "fnprm", "notice of inquiry", "noi", "public notice",
+    "proposed rule", "rulemaking", "spectrum", "auction", "broadband", "satellite", "space bureau",
+    "wireless", "wireline", "net neutrality", "universal service", "equipment authorization",
+    "covered list", "robocall", "cybersecurity", "emergency alert", "911",
+]
 
 @dataclass
 class Source:
@@ -171,10 +201,17 @@ SOURCES = [
     Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),
     Source("Federal Register chips export", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=semiconductor+export+controls+final+rule"),
     Source("Federal Register tariffs", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=tariff+section+301+final+rule"),
+    Source("Federal Register FCC", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=federal-communications-commission&order=newest&per_page=20", "federal_register_json"),
     Source("Federal Register presidential documents", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Btype%5D%5B%5D=PRESDOCU&order=newest&per_page=20", "federal_register_json"),
     Source("White House executive orders", "https://www.whitehouse.gov/presidential-actions/executive-orders/", "whitehouse_html"),
     Source("White House presidential memoranda", "https://www.whitehouse.gov/presidential-actions/presidential-memoranda/", "whitehouse_html"),
     Source("White House proclamations", "https://www.whitehouse.gov/presidential-actions/proclamations/", "whitehouse_html"),
+    Source("FCC open meeting", "https://www.fcc.gov/openmeeting", "fcc_html"),
+    Source("FCC open commission meetings", "https://www.fcc.gov/news-events/events/open-commission-meetings", "fcc_html"),
+    Source("FCC items on circulation", "https://www.fcc.gov/items-on-circulation", "fcc_html"),
+    Source("FCC public notices", "https://www.fcc.gov/news-events/public-notices", "fcc_html"),
+    Source("FCC daily digest", "https://www.fcc.gov/news-events/daily-digest", "fcc_html"),
+    Source("FCC news releases", "https://www.fcc.gov/news-events/news-releases", "fcc_html"),
     Source("FERC news", "https://www.ferc.gov/news-events/news/rss.xml"),
     Source("DOE news", "https://www.energy.gov/rss.xml"),
     Source("USTR press releases", "https://ustr.gov/about/policy-offices/press-office/press-releases.xml"),
@@ -243,7 +280,7 @@ def parse_date(value: str | None) -> dt.datetime | None:
             return parsed.astimezone(KST)
         except Exception:
             continue
-    for fmt in ("%a, %b %d %Y", "%a, %B %d %Y", "%b %d %Y", "%B %d %Y", "%b %d, %Y", "%B %d, %Y"):
+    for fmt in ("%a, %b %d %Y", "%a, %B %d %Y", "%b %d %Y", "%B %d %Y", "%b %d, %Y", "%B %d, %Y", "%m/%d/%Y", "%m-%d-%Y"):
         try:
             parsed = dt.datetime.strptime(value, fmt).replace(tzinfo=UTC)
             return parsed.astimezone(KST)
@@ -355,6 +392,45 @@ def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
         if doc_type == "Proclamation" and not any(term in haystack for term in policy_terms):
             continue
         summary = f"White House {doc_type} official page link: {title}"
+        deduped[link] = {"source": source.name, "title": title, "link": link, "summary": summary, "published_kst": published.isoformat()}
+    return list(deduped.values())[:20]
+
+
+def parse_fcc_html(text: str, source: Source) -> list[dict]:
+    link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
+    date_pattern = re.compile(
+        r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December|"
+        r"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+20\d{2}\b"
+        r"|\b\d{1,2}[/-]\d{1,2}[/-]20\d{2}\b",
+        re.I,
+    )
+    deduped: dict[str, dict] = {}
+    for match in link_pattern.finditer(text):
+        title = clean_text(match.group("label"))
+        title_lower = title.lower()
+        if (
+            len(title) < 8
+            or title_lower in FCC_EXACT_EXCLUDE
+            or any(term in title_lower for term in FCC_STATIC_EXCLUDE)
+        ):
+            continue
+        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
+        link_lower = link.lower()
+        if "fcc.gov" not in link_lower:
+            continue
+        if any(skip in link_lower for skip in ("/about/", "/consumer-governmental-affairs/", "/licensing-databases/")):
+            continue
+        tail = clean_text(text[match.end(): match.end() + 900])
+        date_match = date_pattern.search(f"{title} {tail}")
+        published = parse_date(date_match.group(0)) if date_match else None
+        if not published:
+            continue
+        published = published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0)
+        haystack = f"{title_lower} {link_lower} {tail.lower()} {source.name.lower()}"
+        if not any(term in haystack for term in FCC_STRONG_TERMS):
+            continue
+        summary_tail = tail[:260]
+        summary = clean_text(f"{source.name} official page link: {title}. {summary_tail}")
         deduped[link] = {"source": source.name, "title": title, "link": link, "summary": summary, "published_kst": published.isoformat()}
     return list(deduped.values())[:20]
 
@@ -493,11 +569,15 @@ def classify_item(item: dict) -> dict | None:
     if "fda_decision" in matched and matched["fda_decision"] and "FDA" not in item.get("source", "") and "fda" not in haystack:
         matched["fda_decision"] = []
     matched = {bucket: kws for bucket, kws in matched.items() if kws}
+    source_name = item.get("source", "")
+    is_fcc_source = source_name.startswith("FCC") or source_name == "Federal Register FCC"
+    if is_fcc_source and any(term in haystack for term in FCC_STRONG_TERMS):
+        matched.setdefault("fcc_decision_notice", ["fcc official decision/notice source"])
     if not matched:
         return None
     stage_score = sum(len(v) for v in matched.values())
     has_major_filing = any(keyword.lower() in haystack for keyword in MAJOR_FILING_KEYWORDS)
-    if any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "fda_decision")):
+    if any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
         importance = "상"
     elif "company_filing" in matched and has_major_filing:
         importance = "중"
@@ -508,7 +588,7 @@ def classify_item(item: dict) -> dict | None:
     sectors = [sector for sector, keywords in SECTOR_KEYWORDS.items() if any(kw.lower() in haystack for kw in keywords)] or ["정책/규제 일반"]
     impacts: list[str] = []
     paths: list[str] = []
-    if any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "presidential_action")):
+    if any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "presidential_action", "fcc_decision_notice")):
         impacts.extend(["시간표", "할인율"])
         paths.extend(["정책 타임라인", "할인율"])
     if any(bucket in matched for bucket in ("sanctions_tariffs_export", "company_filing", "fda_decision")):
@@ -551,6 +631,8 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
             items = parse_federal_register_json(text or "", source)
         elif source.kind == "whitehouse_html":
             items = parse_whitehouse_html(text or "", source)
+        elif source.kind == "fcc_html":
+            items = parse_fcc_html(text or "", source)
         elif source.kind == "link_html":
             items = parse_link_html(text or "", source)
         else:
@@ -558,7 +640,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
         source_notes.append(f"- {source.name}: {len(items)}건 확인")
         for item in items:
             age = item_age_hours(item, now)
-            if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html"} and age is None:
+            if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html"} and age is None:
                 continue
             if age is not None and age > MAX_SOURCE_AGE_HOURS:
                 continue
@@ -579,7 +661,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
 def render_report(alerts: list[dict], source_notes: list[str], now: dt.datetime) -> str:
     lines = [f"🚨 KHS 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
     if not alerts:
-        lines.extend(["고충격 정책·규제 변경 직접 확인 없음", "", "확인 범위:", *source_notes[:28], "", "💡 워치 판단: 이번 실행에서 돈 버는 능력, 할인율, 수급, 시간표를 새로 바꾼 확정 이벤트는 직접 확인되지 않았습니다.", "", "투자 조언이 아닌 참고용 정책·규제 알림입니다."])
+        lines.extend(["고충격 정책·규제 변경 직접 확인 없음", "", "확인 범위:", *source_notes[:40], "", "💡 워치 판단: 이번 실행에서 돈 버는 능력, 할인율, 수급, 시간표를 새로 바꾼 확정 이벤트는 직접 확인되지 않았습니다.", "", "투자 조언이 아닌 참고용 정책·규제 알림입니다."])
         return "\n".join(lines) + "\n"
     for idx, alert in enumerate(alerts, 1):
         matched_terms = sorted({term for terms in alert["matched"].values() for term in terms})
