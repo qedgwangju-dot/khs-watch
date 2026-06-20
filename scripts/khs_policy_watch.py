@@ -40,6 +40,9 @@ DART_WATCH_STOCK_CODES = {
 }
 DART_DAYS_BACK = int(os.getenv("DART_DAYS_BACK", "1"))
 MAX_ALERTS = int(os.getenv("KHS_WATCH_MAX_ALERTS", "5"))
+MAX_SOURCE_AGE_HOURS = int(os.getenv("KHS_SOURCE_MAX_AGE_HOURS", "72"))
+DART_INCLUDE_ALL_MAJOR = os.getenv("DART_INCLUDE_ALL_MAJOR", "false").lower() in {"1", "true", "yes", "y"}
+DART_ALLOW_CORRECTIONS = os.getenv("DART_ALLOW_CORRECTIONS", "false").lower() in {"1", "true", "yes", "y"}
 
 SEC_COMPANY_WATCHLIST = {
     "NVDA": "0001045810",
@@ -78,6 +81,11 @@ DART_REPORT_KEYWORDS = [
     "주요사항보고서",
     "불성실공시",
     "조회공시",
+]
+DART_CORRECTION_TERMS = [
+    "\uae30\uc7ac\uc815\uc815",
+    "\ucca8\ubd80\uc815\uc815",
+    "\uc815\uc815",
 ]
 MAJOR_FILING_KEYWORDS = [
     "material definitive agreement",
@@ -211,6 +219,12 @@ def parse_date(value: str | None) -> dt.datetime | None:
             parsed = dt.datetime.strptime(value[:25], fmt)
             if parsed.tzinfo is None:
                 parsed = parsed.replace(tzinfo=UTC)
+            return parsed.astimezone(KST)
+        except Exception:
+            continue
+    for fmt in ("%a, %b %d %Y", "%a, %B %d %Y", "%b %d %Y", "%B %d %Y"):
+        try:
+            parsed = dt.datetime.strptime(value, fmt).replace(tzinfo=UTC)
             return parsed.astimezone(KST)
         except Exception:
             continue
@@ -369,7 +383,10 @@ def collect_dart_filings(now: dt.datetime) -> tuple[list[dict], list[str]]:
             continue
         is_watch_stock = stock_code in DART_WATCH_STOCK_CODES if stock_code else False
         is_major_report = any(keyword.lower() in report.lower() for keyword in DART_REPORT_KEYWORDS)
-        if not is_watch_stock and not is_major_report:
+        is_correction = any(term in report for term in DART_CORRECTION_TERMS)
+        if is_correction and not DART_ALLOW_CORRECTIONS:
+            continue
+        if not is_watch_stock and (not DART_INCLUDE_ALL_MAJOR or not is_major_report):
             continue
         published = parse_date(clean_text(row.get("rcept_dt")))
         link = f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={receipt_no}" if receipt_no else "https://dart.fss.or.kr/"
@@ -444,7 +461,9 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
         source_notes.append(f"- {source.name}: {len(items)}건 확인")
         for item in items:
             age = item_age_hours(item, now)
-            if age is not None and age > 72:
+            if source.kind in {"rss", "courtlistener", "kind_html"} and age is None:
+                continue
+            if age is not None and age > MAX_SOURCE_AGE_HOURS:
                 continue
             classified = classify_item(item)
             if classified:
