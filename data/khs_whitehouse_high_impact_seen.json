@@ -28,6 +28,24 @@
       "source": "White House fact sheets",
       "title": "Fact Sheet: President Donald J. Trump Ushers in the Next Frontier of Quantum Innovation"
     },
+    "whitehouse-compact-v1-crypto_attacks": {
+      "first_seen_kst": "2026-06-23T08:30:18+09:00",
+      "format": "compact-v1",
+      "importance": "상",
+      "link": "https://www.whitehouse.gov/fact-sheets/2026/06/fact-sheet-president-donald-j-trump-secures-the-nation-against-advanced-cryptographic-attacks/",
+      "original_title": "Fact Sheet: President Donald J. Trump Secures the Nation Against Advanced Cryptographic Attacks",
+      "source": "White House Fact Sheet",
+      "title": "백악관, 첨단 암호 공격 대응 행정명령 발표"
+    },
+    "whitehouse-compact-v1-quantum_innovation": {
+      "first_seen_kst": "2026-06-23T08:30:18+09:00",
+      "format": "compact-v1",
+      "importance": "상",
+      "link": "https://www.whitehouse.gov/fact-sheets/2026/06/fact-sheet-president-donald-j-trump-ushers-in-the-next-frontier-of-quantum-innovation/",
+      "original_title": "Fact Sheet: President Donald J. Trump Ushers in the Next Frontier of Quantum Innovation",
+      "source": "White House Fact Sheet",
+      "title": "백악관, 양자혁신 행정명령 발표"
+    },
     "whitehouse-topic-crypto_attacks": {
       "first_seen_kst": "2026-06-23T07:56:56+09:00",
       "importance": "상",
@@ -45,5 +63,5 @@
       "title": "백악관, 양자혁신 행정명령 발표"
     }
   },
-  "updated_at_kst": "2026-06-23T07:56:56+09:00"
+  "updated_at_kst": "2026-06-23T08:30:18+09:00"
 }
