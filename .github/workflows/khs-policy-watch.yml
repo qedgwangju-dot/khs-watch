@@ -220,7 +220,30 @@ jobs:
 
       - name: Normalize Korea presidential personnel alert
         if: always()
-        run: python scripts/korea_presidential_postprocess.py
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import subprocess
+          import sys
+
+          alerts_path = pathlib.Path("out/khs_policy_watch_alerts.json")
+          should_normalize = False
+          if alerts_path.exists():
+              try:
+                  alerts = json.loads(alerts_path.read_text(encoding="utf-8"))
+                  should_normalize = any(
+                      "korea_presidential_personnel" in (item.get("matched") or {})
+                      for item in alerts
+                  )
+              except Exception as exc:
+                  print(f"Korea presidential postprocess skipped: alert JSON read failed ({exc})")
+
+          if should_normalize:
+              subprocess.check_call([sys.executable, "scripts/korea_presidential_postprocess.py"])
+          else:
+              print("Korea presidential postprocess skipped: no personnel alert.")
+          PY
 
       - name: Publish step summary
         if: always()
