@@ -229,9 +229,6 @@ jobs:
               raise SystemExit(0)
 
           text = report.read_text(encoding="utf-8")
-          if "대통령실/청와대 고위급 인사 브리핑:" in text:
-              raise SystemExit(0)
-
           if "korea_presidential_personnel" in text:
               line = "대통령실/청와대 고위급 인사 브리핑: 알림 후보 발생 (본문 확인)"
           else:
@@ -244,14 +241,23 @@ jobs:
                   checks.append(f"{label} {match.group(1).strip()}" if match else f"{label} 확인 불가")
               line = "대통령실/청와대 고위급 인사 브리핑: " + ", ".join(checks)
 
-          lines = text.splitlines()
-          if lines and lines[0].startswith("🚨"):
-              lines.insert(1, line)
-              if len(lines) == 2 or lines[2] != "":
-                  lines.insert(2, "")
-          else:
-              lines.insert(0, line)
-          report.write_text("\n".join(lines) + "\n", encoding="utf-8")
+          def add_coverage_line(path: Path) -> None:
+              if not path.exists():
+                  return
+              body = path.read_text(encoding="utf-8")
+              if "대통령실/청와대 고위급 인사 브리핑:" in body:
+                  return
+              lines = body.splitlines()
+              if lines and lines[0].startswith("🚨"):
+                  lines.insert(1, line)
+                  if len(lines) == 2 or lines[2] != "":
+                      lines.insert(2, "")
+              else:
+                  lines.insert(0, line)
+              path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+          add_coverage_line(report)
+          add_coverage_line(Path("out/khs_policy_watch_alert.md"))
           PY
 
       - name: Publish step summary
