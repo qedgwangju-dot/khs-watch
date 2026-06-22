@@ -1,0 +1,267 @@
+name: KHS White House high-impact watch
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: khs-whitehouse-high-impact-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scan White House high-impact policy
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import hashlib
+          import html
+          import json
+          import os
+          import re
+          import urllib.parse
+          import urllib.request
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          KST = ZoneInfo("Asia/Seoul")
+          OUT_DIR = Path("out")
+          DATA_DIR = Path("data")
+          ALERT_PATH = OUT_DIR / "khs_whitehouse_high_impact_alert.md"
+          TITLE_PATH = OUT_DIR / "khs_whitehouse_high_impact_title.txt"
+          SEEN_PATH = DATA_DIR / "khs_whitehouse_high_impact_seen.json"
+
+          SOURCES = [
+              ("White House fact sheets", "https://www.whitehouse.gov/fact-sheets/", "/fact-sheets/"),
+              ("White House executive orders", "https://www.whitehouse.gov/presidential-actions/executive-orders/", "/presidential-actions/"),
+              ("White House presidential memoranda", "https://www.whitehouse.gov/presidential-actions/presidential-memoranda/", "/presidential-actions/"),
+          ]
+          TERMS = [
+              "quantum", "quantum-enabled", "national quantum", "quantum computer", "quantum sensor",
+              "artificial intelligence", " ai ", "semiconductor", "chips", "critical and emerging",
+              "national security", "counterintelligence", "supply chain", "manufacturing capabilities",
+              "commerce", "department of commerce", "energy", "department of energy", "nasa", "defense", "department of war",
+              "export controls", "tariff", "sanctions", "executive order", "presidential memorandum",
+          ]
+          STATIC_EXCLUDE = {
+              "privacy policy", "subscribe", "contact", "internships", "download the white house app",
+              "fact sheets", "executive orders", "presidential actions", "remarks", "releases", "research",
+          }
+          DATE_PATTERN = re.compile(
+              r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December|"
+              r"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+20\d{2}\b",
+              re.I,
+          )
+          LINK_PATTERN = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
+
+          def clean(value):
+              value = re.sub(r"<script\b.*?</script>", " ", value or "", flags=re.I | re.S)
+              value = re.sub(r"<style\b.*?</style>", " ", value, flags=re.I | re.S)
+              value = re.sub(r"<[^>]+>", " ", value)
+              value = html.unescape(value)
+              return re.sub(r"\s+", " ", value).strip()
+
+          def fetch(url, timeout=20):
+              req = urllib.request.Request(url, headers={"User-Agent": "KHS-policy-watch contact=github-actions"})
+              with urllib.request.urlopen(req, timeout=timeout) as resp:
+                  return resp.read().decode(resp.headers.get_content_charset() or "utf-8", errors="replace")
+
+          def parse_date(text):
+              match = DATE_PATTERN.search(text or "")
+              if not match:
+                  return None
+              for fmt in ("%B %d, %Y", "%b %d, %Y"):
+                  try:
+                      return dt.datetime.strptime(match.group(0), fmt).replace(tzinfo=KST)
+                  except ValueError:
+                      pass
+              return None
+
+          def links_from(source_url, required_path):
+              try:
+                  page = fetch(source_url)
+              except Exception:
+                  return []
+              found = []
+              seen = set()
+              for match in LINK_PATTERN.finditer(page):
+                  title = clean(match.group("label"))
+                  low_title = title.lower()
+                  if len(title) < 8 or low_title in STATIC_EXCLUDE or any(x in low_title for x in STATIC_EXCLUDE):
+                      continue
+                  link = urllib.parse.urljoin(source_url, html.unescape(match.group("href")))
+                  low_link = link.lower()
+                  if "whitehouse.gov" not in low_link or required_path not in low_link:
+                      continue
+                  if link in seen:
+                      continue
+                  seen.add(link)
+                  found.append((title, link))
+                  if len(found) >= 20:
+                      break
+              return found
+
+          def read_article(title_hint, link):
+              try:
+                  raw = fetch(link)
+              except Exception:
+                  return title_hint, "", None
+              text = clean(raw)
+              title = title_hint
+              h1 = re.search(r"<h1[^>]*>(?P<title>.*?)</h1>", raw, re.I | re.S)
+              if h1:
+                  title = clean(h1.group("title")) or title
+              return title, text[:1800], parse_date(text)
+
+          def sectors(text):
+              h = text.lower()
+              out = []
+              if any(x in h for x in ("quantum", "quantum-enabled", "quantum computer", "quantum sensor")):
+                  out.append("양자/AI/첨단기술")
+              if any(x in h for x in ("artificial intelligence", " ai ", "semiconductor", "chips")):
+                  out.append("반도체/AI")
+              if "nasa" in h or "space" in h:
+                  out.append("우주/NASA")
+              if any(x in h for x in ("national security", "defense", "department of war", "counterintelligence", "intelligence community")):
+                  out.append("방산/국가안보")
+              if "department of energy" in h:
+                  out.append("에너지/DOE")
+              if any(x in h for x in ("supply chain", "manufacturing capabilities", "domestic supply")):
+                  out.append("공급망/제조")
+              if any(x in h for x in ("tariff", "export controls", "sanctions")):
+                  out.append("관세/수출통제/제재")
+              out.append("행정명령/대통령문서")
+              return list(dict.fromkeys(out))
+
+          def load_seen():
+              if not SEEN_PATH.exists():
+                  return {"seen": {}, "updated_at_kst": ""}
+              try:
+                  return json.loads(SEEN_PATH.read_text(encoding="utf-8"))
+              except Exception:
+                  return {"seen": {}, "updated_at_kst": ""}
+
+          now = dt.datetime.now(tz=KST)
+          seen_payload = load_seen()
+          seen = seen_payload.setdefault("seen", {})
+          alerts = []
+          for source_name, source_url, required_path in SOURCES:
+              for title_hint, link in links_from(source_url, required_path):
+                  title, body, published = read_article(title_hint, link)
+                  haystack = f"{title} {body}".lower()
+                  if not any(term in haystack for term in TERMS):
+                      continue
+                  if not published:
+                      continue
+                  published = published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0)
+                  age_hours = (now - published).total_seconds() / 3600
+                  if age_hours > 72:
+                      continue
+                  fingerprint = hashlib.sha256(f"{source_name}|{title}|{link}".encode("utf-8")).hexdigest()[:16]
+                  if fingerprint in seen:
+                      continue
+                  item = {
+                      "source": source_name,
+                      "title": title,
+                      "link": link,
+                      "published": published.isoformat(),
+                      "sectors": sectors(f"{title} {body}"),
+                      "fingerprint": fingerprint,
+                  }
+                  alerts.append(item)
+                  seen[fingerprint] = {
+                      "title": title,
+                      "source": source_name,
+                      "link": link,
+                      "first_seen_kst": now.isoformat(timespec="seconds"),
+                      "importance": "상",
+                  }
+                  if len(alerts) >= 5:
+                      break
+              if len(alerts) >= 5:
+                  break
+
+          OUT_DIR.mkdir(exist_ok=True)
+          if alerts:
+              DATA_DIR.mkdir(exist_ok=True)
+              seen_payload["updated_at_kst"] = now.isoformat(timespec="seconds")
+              SEEN_PATH.write_text(json.dumps(seen_payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+              lines = [f"🚨 KHS 백악관 고충격 정책 워치 · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
+              for idx, item in enumerate(alerts, 1):
+                  lines.extend([
+                      f"## {idx}. [상·확정] {item['title']}",
+                      "- 상태 변화: White House 공식 첨단기술/국가안보 정책 신호 확인",
+                      f"- 원문/출처: [{item['source']}]({item['link']}) · 원천시각 {item['published']} · 조회 {now:%H:%M KST}",
+                      "- 한국장 영향: 시간표, 할인율",
+                      "- 영향 경로: 정책 타임라인, 할인율, 공급망",
+                      f"- 영향 섹터: {', '.join(item['sectors'])}",
+                      "- 반영 가능성: 낮음~중간. 공식 발표 직후라도 개별 한국 밸류체인 반영은 후속 예산·조달·규제 일정 확인이 필요합니다.",
+                      "- 반대 근거: 행정명령/팩트시트 단계라 확정 매출이 아니며, 실제 조달·보조금·규제 시행까지 시차가 있습니다.",
+                      "- 즉시 체크: 원문 전문, 시행일/마감일, 관련 부처 후속 공고, 미국 양자·AI·방산·반도체 티커 반응",
+                      "",
+                  ])
+              lines.extend([
+                  "💡 워치 판단: 이번 실행은 백악관 정책 시간표와 할인율을 바꿀 수 있는 첨단기술/국가안보 정책 후보를 감지했습니다. 장전 레이더에서 한국 밸류체인 노출과 해외 티커 반응을 재확인해야 합니다.",
+                  "",
+                  "투자 조언이 아닌 참고용 정책·규제 알림입니다.",
+              ])
+              report = "\n".join(lines) + "\n"
+              ALERT_PATH.write_text(report, encoding="utf-8")
+              TITLE_PATH.write_text(f"KHS 백악관 정책 워치: [상] {alerts[0]['title'][:70]}\n", encoding="utf-8")
+          else:
+              print("whitehouse_alerts=0")
+
+          print(f"whitehouse_alerts={len(alerts)}")
+          PY
+
+      - name: Commit White House seen state
+        if: hashFiles('data/khs_whitehouse_high_impact_seen.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/khs_whitehouse_high_impact_seen.json
+          git diff --cached --quiet || git commit -m "Update White House high-impact watch state"
+          git push || true
+
+      - name: Send Telegram alert
+        if: hashFiles('out/khs_whitehouse_high_impact_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing"
+            exit 0
+          fi
+          python - <<'PY'
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          token = os.environ["TELEGRAM_BOT_TOKEN"]
+          chat_id = os.environ["TELEGRAM_CHAT_ID"]
+          repo = os.environ.get("GITHUB_REPOSITORY", "qedgwangju-dot/khs-watch")
+          run_id = os.environ.get("GITHUB_RUN_ID", "")
+          title = pathlib.Path("out/khs_whitehouse_high_impact_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/khs_whitehouse_high_impact_alert.md").read_text(encoding="utf-8")
+          run_url = f"https://github.com/{repo}/actions/runs/{run_id}" if run_id else f"https://github.com/{repo}/actions"
+          text = f"{title}\n\n{body[:3300]}\n\nActions: {run_url}"
+          data = urllib.parse.urlencode({"chat_id": chat_id, "text": text[:4096], "disable_web_page_preview": "true"}).encode("utf-8")
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
+          with urllib.request.urlopen(req, timeout=20) as resp:
+              resp.read()
+          PY
