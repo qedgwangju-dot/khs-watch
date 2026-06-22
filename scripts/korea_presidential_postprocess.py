@@ -22,6 +22,7 @@ ROLE_TAIL = (
     "비서실장|정책실장|안보실장|수석비서관|수석|대변인|차장|"
     "장관 후보자|장관|차관|위원장|검찰총장|국세청장|관세청장|금융감독원장|사무처장"
 )
+INVALID_NAME_CANDIDATES = {"국민", "정부", "이번", "오늘", "모두", "해당", "신임"}
 
 
 def clean_text(value: str | None) -> str:
@@ -91,7 +92,7 @@ def extract_appointees(text: str) -> list[tuple[str, str]]:
             for match in pattern.finditer(sentence):
                 role = clean_role(match.group("role"))
                 name = match.group("name")
-                if not role or not name:
+                if not role or not name or name in INVALID_NAME_CANDIDATES:
                     continue
                 pair = (role, name)
                 if pair not in seen:
