@@ -217,6 +217,43 @@ jobs:
       - name: Run policy watch
         run: python scripts/khs_policy_watch.py
 
+      - name: Annotate Korea presidential personnel coverage
+        if: always()
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          report = Path("out/khs_policy_watch.md")
+          if not report.exists():
+              raise SystemExit(0)
+
+          text = report.read_text(encoding="utf-8")
+          if "대통령실/청와대 고위급 인사 브리핑:" in text:
+              raise SystemExit(0)
+
+          if "korea_presidential_personnel" in text:
+              line = "대통령실/청와대 고위급 인사 브리핑: 알림 후보 발생 (본문 확인)"
+          else:
+              checks = []
+              for label, pattern in [
+                  ("대통령실", r"- Korea President briefings: ([^\n]+)"),
+                  ("정책브리핑", r"- Korea Policy Briefing presidential briefings: ([^\n]+)"),
+              ]:
+                  match = re.search(pattern, text)
+                  checks.append(f"{label} {match.group(1).strip()}" if match else f"{label} 확인 불가")
+              line = "대통령실/청와대 고위급 인사 브리핑: " + ", ".join(checks)
+
+          lines = text.splitlines()
+          if lines and lines[0].startswith("🚨"):
+              lines.insert(1, line)
+              if len(lines) == 2 or lines[2] != "":
+                  lines.insert(2, "")
+          else:
+              lines.insert(0, line)
+          report.write_text("\n".join(lines) + "\n", encoding="utf-8")
+          PY
+
       - name: Publish step summary
         if: always()
         run: |
