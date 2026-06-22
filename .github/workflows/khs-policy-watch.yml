@@ -68,46 +68,47 @@ jobs:
           text = p.read_text(encoding="utf-8")
 
           if "korea_presidential_personnel" not in text:
-              constants = '''
-KOREA_PRESIDENTIAL_PERSONNEL_KEYWORDS = [
-    "인사 발표",
-    "인사 관련",
-    "인사 브리핑",
-    "인사발표",
-    "임명",
-    "임명했습니다",
-    "임명하셨습니다",
-    "지명",
-    "지명했습니다",
-    "내정",
-    "후보자",
-    "대통령비서실",
-    "대통령실",
-    "청와대",
-    "국가안보실",
-]
-
-KOREA_PRESIDENTIAL_SENIOR_ROLE_KEYWORDS = [
-    "비서실장",
-    "정책실장",
-    "안보실장",
-    "수석비서관",
-    "수석",
-    "대변인",
-    "차장",
-    "장관 후보자",
-    "장관",
-    "차관",
-    "위원장",
-    "금융위원장",
-    "공정거래위원장",
-    "방송통신위원장",
-    "검찰총장",
-    "국세청장",
-    "관세청장",
-    "금융감독원장",
-]
-'''
+              constants = "\n".join([
+                  "",
+                  "KOREA_PRESIDENTIAL_PERSONNEL_KEYWORDS = [",
+                  "    \"인사 발표\",",
+                  "    \"인사 관련\",",
+                  "    \"인사 브리핑\",",
+                  "    \"인사발표\",",
+                  "    \"임명\",",
+                  "    \"임명했습니다\",",
+                  "    \"임명하셨습니다\",",
+                  "    \"지명\",",
+                  "    \"지명했습니다\",",
+                  "    \"내정\",",
+                  "    \"후보자\",",
+                  "    \"대통령비서실\",",
+                  "    \"대통령실\",",
+                  "    \"청와대\",",
+                  "    \"국가안보실\",",
+                  "]",
+                  "",
+                  "KOREA_PRESIDENTIAL_SENIOR_ROLE_KEYWORDS = [",
+                  "    \"비서실장\",",
+                  "    \"정책실장\",",
+                  "    \"안보실장\",",
+                  "    \"수석비서관\",",
+                  "    \"수석\",",
+                  "    \"대변인\",",
+                  "    \"차장\",",
+                  "    \"장관 후보자\",",
+                  "    \"장관\",",
+                  "    \"차관\",",
+                  "    \"위원장\",",
+                  "    \"금융위원장\",",
+                  "    \"공정거래위원장\",",
+                  "    \"방송통신위원장\",",
+                  "    \"검찰총장\",",
+                  "    \"국세청장\",",
+                  "    \"관세청장\",",
+                  "    \"금융감독원장\",",
+                  "]",
+              ])
               text = text.replace("\nSTAGE_KEYWORDS = {", constants + "\nSTAGE_KEYWORDS = {", 1)
               text = text.replace(
                   '    "company_filing": [\n',
@@ -139,47 +140,47 @@ KOREA_PRESIDENTIAL_SENIOR_ROLE_KEYWORDS = [
                   'for fmt in ("%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%d", "%Y.%m.%d"):',
                   1,
               )
-
-              parser = r'''
-def is_korea_presidential_personnel(text: str) -> bool:
-    has_personnel_action = any(keyword in text for keyword in KOREA_PRESIDENTIAL_PERSONNEL_KEYWORDS)
-    has_senior_role = any(keyword in text for keyword in KOREA_PRESIDENTIAL_SENIOR_ROLE_KEYWORDS)
-    return has_personnel_action and has_senior_role
-
-
-def parse_korea_president_html(text: str, source: Source) -> list[dict]:
-    link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
-    date_pattern = re.compile(r"\b20\d{2}[.-]\d{1,2}[.-]\d{1,2}\b")
-    deduped: dict[str, dict] = {}
-    for match in link_pattern.finditer(text):
-        title = clean_text(match.group("label"))
-        if len(title) < 4 or "인사" not in title:
-            continue
-        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
-        link_lower = link.lower()
-        if "president.go.kr" not in link_lower and "korea.kr" not in link_lower:
-            continue
-        context = clean_text(text[max(0, match.start() - 350): match.end() + 1000])
-        detail_text, detail_error = fetch_text(link)
-        detail_clean = clean_text(detail_text or "") if not detail_error else ""
-        haystack = f"{title} {context} {detail_clean[:6000]}"
-        if not is_korea_presidential_personnel(haystack):
-            continue
-        date_match = date_pattern.search(haystack)
-        published = parse_date(date_match.group(0)) if date_match else None
-        if not published:
-            continue
-        published = published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0)
-        summary = clean_text(detail_clean[:700] or context[:700])
-        deduped[link] = {
-            "source": source.name,
-            "title": title,
-            "link": link,
-            "summary": summary or f"{source.name} official personnel briefing: {title}",
-            "published_kst": published.isoformat(),
-        }
-    return list(deduped.values())[:20]
-'''
+              parser = "\n".join([
+                  "",
+                  "def is_korea_presidential_personnel(text: str) -> bool:",
+                  "    has_personnel_action = any(keyword in text for keyword in KOREA_PRESIDENTIAL_PERSONNEL_KEYWORDS)",
+                  "    has_senior_role = any(keyword in text for keyword in KOREA_PRESIDENTIAL_SENIOR_ROLE_KEYWORDS)",
+                  "    return has_personnel_action and has_senior_role",
+                  "",
+                  "",
+                  "def parse_korea_president_html(text: str, source: Source) -> list[dict]:",
+                  "    link_pattern = re.compile(r'<a\\b[^>]*href=[\\\"\\\'](?P<href>[^\\\"\\\']+)[\\\"\\\'][^>]*>(?P<label>.*?)</a>', re.I | re.S)",
+                  "    date_pattern = re.compile(r'\\b20\\d{2}[.-]\\d{1,2}[.-]\\d{1,2}\\b')",
+                  "    deduped: dict[str, dict] = {}",
+                  "    for match in link_pattern.finditer(text):",
+                  "        title = clean_text(match.group('label'))",
+                  "        if len(title) < 4 or '인사' not in title:",
+                  "            continue",
+                  "        link = urllib.parse.urljoin(source.url, html.unescape(match.group('href')))",
+                  "        link_lower = link.lower()",
+                  "        if 'president.go.kr' not in link_lower and 'korea.kr' not in link_lower:",
+                  "            continue",
+                  "        context = clean_text(text[max(0, match.start() - 350): match.end() + 1000])",
+                  "        detail_text, detail_error = fetch_text(link)",
+                  "        detail_clean = clean_text(detail_text or '') if not detail_error else ''",
+                  "        haystack = f'{title} {context} {detail_clean[:6000]}'",
+                  "        if not is_korea_presidential_personnel(haystack):",
+                  "            continue",
+                  "        date_match = date_pattern.search(haystack)",
+                  "        published = parse_date(date_match.group(0)) if date_match else None",
+                  "        if not published:",
+                  "            continue",
+                  "        published = published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0)",
+                  "        summary = clean_text(detail_clean[:700] or context[:700])",
+                  "        deduped[link] = {",
+                  "            'source': source.name,",
+                  "            'title': title,",
+                  "            'link': link,",
+                  "            'summary': summary or f'{source.name} official personnel briefing: {title}',",
+                  "            'published_kst': published.isoformat(),",
+                  "        }",
+                  "    return list(deduped.values())[:20]",
+              ])
               text = text.replace("\n\ndef parse_fcc_html", parser + "\n\ndef parse_fcc_html", 1)
               text = text.replace(
                   '("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "fda_decision")',
