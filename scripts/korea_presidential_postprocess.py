@@ -108,7 +108,10 @@ def fetch_article_body(item: dict) -> str:
     starts = [idx for marker in ("이재명 대통령은", "대통령은 오늘", "정부는 오늘") if (idx := plain.find(marker)) >= 0]
     if starts:
         plain = plain[min(starts):]
-    for marker in ("<자료출처", "자료출처=", "저작권정책", "이전다음기사 영역", "관련기사", "정책 NOW"):
+    date_footer = re.search(r"20\d{2}년\s+\d{1,2}월\s+\d{1,2}일\s+청와대", plain)
+    if date_footer and date_footer.start() > 0:
+        plain = plain[:date_footer.start()]
+    for marker in ("<자료출처", "자료출처=", "저작권정책", "공공누리", "'텍스트'에 한하여", "사진, 이미지", "이전다음기사 영역", "관련기사", "정책 NOW"):
         cut = plain.find(marker)
         if cut > 0:
             plain = plain[:cut]
@@ -195,22 +198,23 @@ def importance_for(text: str) -> str:
 def render_personnel(idx: int, item: dict, now: dt.datetime) -> list[str]:
     body = fetch_article_body(item)
     title = item.get("title", "")
-    text = f"{title} {body}"
     pairs = extract_appointees(body)
+    appointee_text = format_appointees(pairs)
+    basis_text = f"{title} {appointee_text} {body[:900]}"
     presenter = extract_presenter(title)
     source = item.get("source") or "공식 출처"
     link = item.get("link") or ""
     published = item.get("published_kst") or "확인 불가"
     return [
-        f"## {idx}. [{importance_for(text)}·확정] {title.strip()}",
+        f"## {idx}. [{importance_for(basis_text)}·확정] {title.strip()}",
         "- 상태 변화: 대통령실/청와대 공식 인사 임명 확인",
-        f"- 인선/임명 대상: {format_appointees(pairs)}",
+        f"- 인선/임명 대상: {appointee_text}",
         f"- 발표/라인: {presenter}",
-        f"- 정책 색깔/이력 힌트: {policy_color_for(text, presenter)}",
+        f"- 정책 색깔/이력 힌트: {policy_color_for(basis_text, presenter)}",
         f"- 원문/출처: [{source}]({link}) · 원천시각 {published} · 조회 {now:%H:%M KST}",
         "- 한국장 영향: 시간표",
         "- 영향 경로: 정책 인선, 정책 타임라인",
-        f"- 영향 섹터: {', '.join(sectors_for(text))}",
+        f"- 영향 섹터: {', '.join(sectors_for(basis_text))}",
         "- 반영 가능성: 중간. 공식 인사 발표라 정보 자체는 공개 반영됐을 수 있지만, 개별 섹터 영향은 후속 정책·업무지시 전까지 제한적입니다.",
         "- 반대 근거: 인선 자체는 확정이나 매출·마진·할인율을 직접 바꾸는 정책 발표는 아직 아닙니다.",
         "- 즉시 체크: 취임 직후 업무지시, 부처 정책 발표 일정, 예산·입법·규제 후속 조치",
