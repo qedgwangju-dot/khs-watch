@@ -31,7 +31,6 @@ jobs:
           import hashlib
           import html
           import json
-          import os
           import re
           import urllib.parse
           import urllib.request
@@ -68,6 +67,23 @@ jobs:
           )
           LINK_PATTERN = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
 
+          TITLE_TRANSLATIONS = {
+              "crypto_attacks": "백악관, 첨단 암호 공격 대응 행정명령 발표",
+              "quantum_innovation": "백악관, 양자혁신 행정명령 발표",
+              "advanced_ai_security": "백악관, 첨단 AI 혁신·안보 행정명령 발표",
+              "customs_enforcement": "백악관, 관세 집행 강화 행정명령 발표",
+              "financial_system": "백악관, 미국 금융시스템 규제 정비 행정명령 발표",
+              "fintech_regulatory_frameworks": "백악관, 핀테크 규제 프레임워크 통합 행정명령 발표",
+          }
+          TOPIC_HINTS = [
+              ("crypto_attacks", ["advanced cryptographic attacks", "cryptographic attacks"]),
+              ("quantum_innovation", ["next frontier of quantum innovation", "quantum innovation"]),
+              ("advanced_ai_security", ["advanced artificial intelligence innovation and security", "artificial intelligence innovation and security"]),
+              ("customs_enforcement", ["strengthening customs enforcement", "customs enforcement"]),
+              ("financial_system", ["america's financial system", "financial system"]),
+              ("fintech_regulatory_frameworks", ["financial technology innovation", "regulatory frameworks"]),
+          ]
+
           def clean(value):
               value = re.sub(r"<script\b.*?</script>", " ", value or "", flags=re.I | re.S)
               value = re.sub(r"<style\b.*?</style>", " ", value, flags=re.I | re.S)
@@ -91,13 +107,55 @@ jobs:
                       pass
               return None
 
+          def normalize_title(title):
+              title = clean(title)
+              title = re.sub(r"^Fact Sheet:\s*", "", title, flags=re.I)
+              title = re.sub(r"^President Donald J\. Trump\s+", "", title, flags=re.I)
+              return re.sub(r"\s+", " ", title).strip()
+
+          def topic_key(title, body, link):
+              haystack = f"{title} {body} {link}".lower()
+              for key, hints in TOPIC_HINTS:
+                  if any(hint in haystack for hint in hints):
+                      return key
+              core = normalize_title(title).lower()
+              core = re.sub(r"[^a-z0-9]+", "-", core).strip("-")[:80]
+              return core or hashlib.sha256(link.encode("utf-8")).hexdigest()[:16]
+
+          def korean_title(title, body, link):
+              key = topic_key(title, body, link)
+              if key in TITLE_TRANSLATIONS:
+                  return TITLE_TRANSLATIONS[key]
+              core = normalize_title(title)
+              lowered = core.lower()
+              replacements = [
+                  ("executive order", "행정명령"),
+                  ("presidential memorandum", "대통령 각서"),
+                  ("national security", "국가안보"),
+                  ("artificial intelligence", "인공지능"),
+                  ("semiconductor", "반도체"),
+                  ("supply chain", "공급망"),
+                  ("export controls", "수출통제"),
+                  ("sanctions", "제재"),
+                  ("tariff", "관세"),
+                  ("energy", "에너지"),
+                  ("commerce", "상무부"),
+                  ("nasa", "NASA"),
+              ]
+              translated = core
+              for eng, kor in replacements:
+                  translated = re.sub(eng, kor, translated, flags=re.I)
+              if translated != core and not re.search(r"[A-Za-z]{4,}", translated):
+                  return f"백악관, {translated} 발표"
+              return f"백악관, 고충격 정책 발표: {core}"
+
           def links_from(source_url, required_path):
               try:
                   page = fetch(source_url)
               except Exception:
                   return []
               found = []
-              seen = set()
+              seen_links = set()
               for match in LINK_PATTERN.finditer(page):
                   title = clean(match.group("label"))
                   low_title = title.lower()
@@ -107,9 +165,9 @@ jobs:
                   low_link = link.lower()
                   if "whitehouse.gov" not in low_link or required_path not in low_link:
                       continue
-                  if link in seen:
+                  if link in seen_links:
                       continue
-                  seen.add(link)
+                  seen_links.add(link)
                   found.append((title, link))
                   if len(found) >= 20:
                       break
@@ -159,6 +217,8 @@ jobs:
           seen_payload = load_seen()
           seen = seen_payload.setdefault("seen", {})
           alerts = []
+          run_topics = set()
+
           for source_name, source_url, required_path in SOURCES:
               for title_hint, link in links_from(source_url, required_path):
                   title, body, published = read_article(title_hint, link)
@@ -171,12 +231,19 @@ jobs:
                   age_hours = (now - published).total_seconds() / 3600
                   if age_hours > 72:
                       continue
-                  fingerprint = hashlib.sha256(f"{source_name}|{title}|{link}".encode("utf-8")).hexdigest()[:16]
+
+                  key = topic_key(title, body, link)
+                  if key in run_topics:
+                      continue
+                  run_topics.add(key)
+                  fingerprint = f"whitehouse-topic-{key}"
                   if fingerprint in seen:
                       continue
+
                   item = {
                       "source": source_name,
                       "title": title,
+                      "ko_title": korean_title(title, body, link),
                       "link": link,
                       "published": published.isoformat(),
                       "sectors": sectors(f"{title} {body}"),
@@ -184,7 +251,8 @@ jobs:
                   }
                   alerts.append(item)
                   seen[fingerprint] = {
-                      "title": title,
+                      "title": item["ko_title"],
+                      "original_title": title,
                       "source": source_name,
                       "link": link,
                       "first_seen_kst": now.isoformat(timespec="seconds"),
@@ -203,7 +271,8 @@ jobs:
               lines = [f"🚨 KHS 백악관 고충격 정책 워치 · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
               for idx, item in enumerate(alerts, 1):
                   lines.extend([
-                      f"## {idx}. [상·확정] {item['title']}",
+                      f"## {idx}. [상·확정] {item['ko_title']}",
+                      f"- 원제: {item['title']}",
                       "- 상태 변화: White House 공식 첨단기술/국가안보 정책 신호 확인",
                       f"- 원문/출처: [{item['source']}]({item['link']}) · 원천시각 {item['published']} · 조회 {now:%H:%M KST}",
                       "- 한국장 영향: 시간표, 할인율",
@@ -221,7 +290,7 @@ jobs:
               ])
               report = "\n".join(lines) + "\n"
               ALERT_PATH.write_text(report, encoding="utf-8")
-              TITLE_PATH.write_text(f"KHS 백악관 정책 워치: [상] {alerts[0]['title'][:70]}\n", encoding="utf-8")
+              TITLE_PATH.write_text(f"KHS 백악관 정책 워치: [상] {alerts[0]['ko_title'][:70]}\n", encoding="utf-8")
           else:
               print("whitehouse_alerts=0")
 
