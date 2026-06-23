@@ -267,20 +267,17 @@ def add_coverage_line(path: Path) -> None:
 def main() -> int:
     now = dt.datetime.now(tz=KST)
     if not ALERTS_JSON_PATH.exists():
-        add_coverage_line(REPORT_PATH)
-        add_coverage_line(ALERT_PATH)
+        print("Korea presidential postprocess skipped: no alert JSON.")
         return 0
     try:
         alerts = json.loads(ALERTS_JSON_PATH.read_text(encoding="utf-8"))
-    except Exception:
-        add_coverage_line(REPORT_PATH)
-        add_coverage_line(ALERT_PATH)
+    except Exception as exc:
+        print(f"Korea presidential postprocess skipped: alert JSON read failed ({exc})")
         return 0
 
     personnel_count = sum(1 for item in alerts if is_personnel(item))
     if personnel_count == 0:
-        add_coverage_line(REPORT_PATH)
-        add_coverage_line(ALERT_PATH)
+        print("Korea presidential postprocess skipped: no personnel alert.")
         return 0
 
     lines = [
