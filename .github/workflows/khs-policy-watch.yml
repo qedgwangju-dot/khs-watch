@@ -66,7 +66,9 @@ jobs:
         run: |
           python -m py_compile scripts/khs_policy_watch.py
           python -m py_compile scripts/korea_presidential_postprocess.py
+          python -m py_compile scripts/khs_korea_presidential_personnel_postprocess.py
           python -m py_compile scripts/khs_policy_alert_guardrails.py
+          python -m py_compile scripts/khs_policy_alert_router.py
           python -m py_compile scripts/khs_policy_runtime_patch.py
 
       - name: Run policy watch
@@ -76,29 +78,21 @@ jobs:
         if: always()
         run: python scripts/khs_policy_alert_guardrails.py
 
+      - name: Route policy alerts by lane
+        if: always()
+        run: python scripts/khs_policy_alert_router.py
+
       - name: Normalize Korea presidential personnel alert
         if: always()
         run: |
           python - <<'PY'
-          import json
           import pathlib
           import subprocess
           import sys
 
-          alerts_path = pathlib.Path("out/khs_policy_watch_alerts.json")
-          should_normalize = False
+          alerts_path = pathlib.Path("out/khs_korea_presidential_personnel_alerts.json")
           if alerts_path.exists():
-              try:
-                  alerts = json.loads(alerts_path.read_text(encoding="utf-8"))
-                  should_normalize = any(
-                      "korea_presidential_personnel" in (item.get("matched") or {})
-                      for item in alerts
-                  )
-              except Exception as exc:
-                  print(f"Korea presidential postprocess skipped: alert JSON read failed ({exc})")
-
-          if should_normalize:
-              subprocess.check_call([sys.executable, "scripts/korea_presidential_postprocess.py"])
+              subprocess.check_call([sys.executable, "scripts/khs_korea_presidential_personnel_postprocess.py"])
           else:
               print("Korea presidential postprocess skipped: no personnel alert.")
           PY
@@ -112,6 +106,11 @@ jobs:
             echo "KHS policy watch did not produce a report." >> "$GITHUB_STEP_SUMMARY"
           fi
 
+          if [ -f out/khs_korea_presidential_personnel.md ]; then
+            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/khs_korea_presidential_personnel.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Commit updated seen state
         if: hashFiles('data/khs_policy_watch_seen.json') != ''
         run: |
@@ -121,7 +120,7 @@ jobs:
           git diff --cached --quiet || git commit -m "Update KHS policy watch state"
           git push || true
 
-      - name: Open alert issue
+      - name: Open policy alert issue
         if: env.CREATE_GITHUB_ISSUE == 'true' && hashFiles('out/khs_policy_watch_alert.md') != ''
         env:
           GH_TOKEN: ${{ github.token }}
@@ -132,11 +131,25 @@ jobs:
           if [ -z "$existing" ]; then
             gh issue create --title "$title" --body "$body"
           else
-            echo "Existing alert issue #$existing already open."
+            echo "Existing policy alert issue #$existing already open."
+          fi
+
+      - name: Open Korea presidential personnel alert issue
+        if: env.CREATE_GITHUB_ISSUE == 'true' && hashFiles('out/khs_korea_presidential_personnel_alert.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="$(head -n 1 out/khs_korea_presidential_personnel_title.txt)"
+          body="$(cat out/khs_korea_presidential_personnel_alert.md)"
+          existing="$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number // empty')"
+          if [ -z "$existing" ]; then
+            gh issue create --title "$title" --body "$body"
+          else
+            echo "Existing Korea presidential alert issue #$existing already open."
           fi
 
       - name: Send Telegram alert
-        if: hashFiles('out/khs_policy_watch_alert.md') != '' || env.TELEGRAM_TEST == 'true'
+        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || env.TELEGRAM_TEST == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -156,33 +169,53 @@ jobs:
           chat_id = os.environ["TELEGRAM_CHAT_ID"]
           repo = os.environ.get("GITHUB_REPOSITORY", "qedgwangju-dot/khs-watch")
           run_id = os.environ.get("GITHUB_RUN_ID", "")
-
-          alert = pathlib.Path("out/khs_policy_watch_alert.md")
-          title_file = pathlib.Path("out/khs_policy_watch_alert_title.txt")
-          report = pathlib.Path("out/khs_policy_watch.md")
-
-          if alert.exists():
-              title = title_file.read_text(encoding="utf-8").strip() if title_file.exists() else "KHS policy watch alert"
-              body = alert.read_text(encoding="utf-8")
-          else:
-              title = "KHS policy watch Telegram test"
-              body = report.read_text(encoding="utf-8") if report.exists() else "KHS policy watch test message."
+          telegram_test = os.environ.get("TELEGRAM_TEST", "false").lower() == "true"
 
           run_url = f"https://github.com/{repo}/actions/runs/{run_id}" if run_id else f"https://github.com/{repo}/actions"
           issue_url = f"https://github.com/{repo}/issues"
-          text = f"{title}\n\n{body[:3300]}\n\nActions: {run_url}\nIssues: {issue_url}"
-          data = urllib.parse.urlencode({
-              "chat_id": chat_id,
-              "text": text[:4096],
-              "disable_web_page_preview": "true",
-          }).encode("utf-8")
-          req = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/sendMessage",
-              data=data,
-              method="POST",
-          )
-          with urllib.request.urlopen(req, timeout=20) as resp:
-              resp.read()
+
+          lanes = [
+              (
+                  pathlib.Path("out/khs_policy_watch_alert_title.txt"),
+                  pathlib.Path("out/khs_policy_watch_alert.md"),
+                  "KHS policy watch alert",
+              ),
+              (
+                  pathlib.Path("out/khs_korea_presidential_personnel_title.txt"),
+                  pathlib.Path("out/khs_korea_presidential_personnel_alert.md"),
+                  "KHS Korea presidential personnel alert",
+              ),
+          ]
+
+          messages = []
+          for title_file, body_file, fallback_title in lanes:
+              if not body_file.exists():
+                  continue
+              title = title_file.read_text(encoding="utf-8").strip() if title_file.exists() else fallback_title
+              body = body_file.read_text(encoding="utf-8")
+              messages.append((title, body))
+
+          if not messages and telegram_test:
+              report = pathlib.Path("out/khs_policy_watch.md")
+              title = "KHS policy watch Telegram test"
+              body = report.read_text(encoding="utf-8") if report.exists() else "KHS policy watch test message."
+              messages.append((title, body))
+
+          for title, body in messages:
+              text = f"{title}\n\n{body[:3300]}\n\nActions: {run_url}\nIssues: {issue_url}"
+              data = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": text[:4096],
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=data,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=20) as resp:
+                  resp.read()
+          print(f"telegram_messages={len(messages)}")
           PY
 
           echo "Telegram: sent" >> "$GITHUB_STEP_SUMMARY"
