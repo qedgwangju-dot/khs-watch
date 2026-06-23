@@ -21,6 +21,7 @@ ALERT_PATH = OUT_DIR / "khs_nuclear_policy_alert.md"
 TITLE_PATH = OUT_DIR / "khs_nuclear_policy_title.txt"
 ALERTS_JSON_PATH = OUT_DIR / "khs_nuclear_policy_alerts.json"
 MAX_SOURCE_AGE_HOURS = int(os.getenv("KHS_NUCLEAR_MAX_AGE_HOURS", "72"))
+FORMAT_VERSION = "ko-v2"
 
 SOURCES = [
     {
@@ -46,6 +47,46 @@ HIGH_IMPACT_TERMS = [
     "10 nuclear reactors", "at least $80 billion", "executive order", "president trump",
     "department of energy", "secretary of energy", "commerce", "u.s. government",
 ]
+
+SOURCE_LABELS = {
+    "Westinghouse strategic partnership": "Westinghouse 공식 전략 파트너십 발표",
+    "DOE Nuclear Energy": "미국 에너지부 원전정책 공식자료",
+}
+
+TERM_LABELS = {
+    "$80 billion": "최소 800억 달러 규모",
+    "80 billion": "800억 달러",
+    "$17.5 billion": "175억 달러",
+    "17.5 billion": "175억 달러",
+    "10 new reactors": "신규 원전 10기",
+    "10 nuclear reactors": "원전 10기",
+    "at least $80 billion": "최소 800억 달러",
+    "executive order": "행정명령",
+    "president trump": "트럼프 대통령",
+    "department of energy": "미국 에너지부",
+    "secretary of energy": "미국 에너지부 장관",
+    "commerce": "상무부",
+    "u.s. government": "미국 정부",
+    "westinghouse": "Westinghouse",
+    "ap1000": "AP1000",
+    "ap300": "AP300",
+    "nuclear reactor": "원자로",
+    "nuclear reactors": "원자로",
+    "new reactors": "신규 원전",
+    "nuclear power": "원전",
+    "nuclear energy": "원자력 에너지",
+    "uranium": "우라늄",
+    "nuclear fuel": "핵연료",
+    "loan guarantee": "대출보증",
+    "low-cost loans": "저리 대출",
+    "strategic partnership": "전략적 파트너십",
+    "nuclear regulatory commission": "미 원자력규제위원회",
+    "nrc": "미 원자력규제위원회",
+    "data center": "데이터센터",
+    "data centers": "데이터센터",
+    "artificial intelligence": "인공지능",
+    "ai race": "AI 경쟁",
+}
 
 
 def now_kst() -> dt.datetime:
@@ -112,7 +153,7 @@ def collect_items(now: dt.datetime) -> list[dict]:
             continue
         if not any(term in matched for term in HIGH_IMPACT_TERMS):
             continue
-        fingerprint = hashlib.sha256(f"{source['name']}|{title}|{source['url']}".encode("utf-8")).hexdigest()[:16]
+        fingerprint = hashlib.sha256(f"{FORMAT_VERSION}|{source['name']}|{title}|{source['url']}".encode("utf-8")).hexdigest()[:16]
         items.append({
             "fingerprint": fingerprint,
             "source": source["name"],
@@ -142,15 +183,16 @@ def save_seen(seen: dict, now: dt.datetime) -> None:
 def render(alerts: list[dict], now: dt.datetime) -> str:
     lines = [f"🚨 KHS 원전/AI 전력 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
     for idx, item in enumerate(alerts, 1):
-        title = item["title"]
         ko_title = "미국, Westinghouse AP1000 원전·AI 전력 정책 지원 신호"
         if "80" in " ".join(item["matched"]):
             ko_title = "미국, Westinghouse 원전 건설 대형 지원 신호"
+        source_label = SOURCE_LABELS.get(item["source"], item["source"])
+        evidence = ", ".join(dict.fromkeys(TERM_LABELS.get(term, term) for term in item["matched"]))
         lines.extend([
             f"## {idx}. [상·확정] {ko_title}",
-            f"- 원제: {title}",
-            f"- 원문/출처: [{item['source']}]({item['link']}) · 원천시각 {item['published_kst']} · 조회 {now:%H:%M KST}",
-            f"- 확인 키워드: {', '.join(item['matched'])}",
+            "- 핵심 내용: 미국 정부가 원전 인허가·핵연료·데이터센터 전력수요 대응을 핵심 정책 과제로 공식화했습니다.",
+            f"- 원문/출처: [{source_label}]({item['link']}) · 원천시각 {item['published_kst']} · 조회 {now:%H:%M KST}",
+            f"- 확인 근거: {evidence}",
             "- 한국장 영향: 시간표, 돈 버는 능력, 수급",
             "- 영향 경로: 원전 정책 타임라인, AI 데이터센터 전력수요, 원전 밸류체인, 우라늄/원전기기 수급",
             "- 영향 섹터: 원전/전력기기, 전력망/데이터센터, 우라늄, SMR/대형원전 기자재",
