@@ -30,6 +30,7 @@ jobs:
       KHS_WATCH_MAX_ALERTS: "5"
       KHS_SOURCE_MAX_AGE_HOURS: "72"
       KHS_NUCLEAR_MAX_AGE_HOURS: "72"
+      KHS_TRUSTED_NEWS_MAX_AGE_HOURS: "72"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       DART_WATCH_STOCK_CODES: ${{ vars.DART_WATCH_STOCK_CODES || '005930,000660,373220,051910,006400,112610,267260,010120,064350,010140,329180' }}
@@ -71,6 +72,7 @@ jobs:
           python -m py_compile scripts/khs_policy_alert_guardrails.py
           python -m py_compile scripts/khs_policy_alert_router.py
           python -m py_compile scripts/khs_nuclear_policy_watch.py
+          python -m py_compile scripts/khs_trusted_policy_news_watch.py
           python -m py_compile scripts/khs_policy_runtime_patch.py
 
       - name: Run policy watch
@@ -79,6 +81,10 @@ jobs:
       - name: Run nuclear AI power watch
         if: always()
         run: python scripts/khs_nuclear_policy_watch.py
+
+      - name: Run trusted policy news watch
+        if: always()
+        run: python scripts/khs_trusted_policy_news_watch.py
 
       - name: Apply policy alert guardrails
         if: always()
@@ -122,12 +128,17 @@ jobs:
             cat out/khs_nuclear_policy_alert.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
+          if [ -f out/khs_trusted_policy_news_alert.md ]; then
+            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/khs_trusted_policy_news_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Commit updated seen state
-        if: hashFiles('data/khs_policy_watch_seen.json') != '' || hashFiles('data/khs_nuclear_policy_seen.json') != ''
+        if: hashFiles('data/khs_policy_watch_seen.json') != '' || hashFiles('data/khs_nuclear_policy_seen.json') != '' || hashFiles('data/khs_trusted_policy_news_seen.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/khs_policy_watch_seen.json data/khs_nuclear_policy_seen.json 2>/dev/null || true
+          git add data/khs_policy_watch_seen.json data/khs_nuclear_policy_seen.json data/khs_trusted_policy_news_seen.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Update KHS watch state"
           git push || true
 
@@ -173,8 +184,22 @@ jobs:
             echo "Existing nuclear alert issue #$existing already open."
           fi
 
+      - name: Open trusted policy news alert issue
+        if: env.CREATE_GITHUB_ISSUE == 'true' && hashFiles('out/khs_trusted_policy_news_alert.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="$(head -n 1 out/khs_trusted_policy_news_title.txt)"
+          body="$(cat out/khs_trusted_policy_news_alert.md)"
+          existing="$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number // empty')"
+          if [ -z "$existing" ]; then
+            gh issue create --title "$title" --body "$body"
+          else
+            echo "Existing trusted policy news alert issue #$existing already open."
+          fi
+
       - name: Send Telegram alert
-        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || hashFiles('out/khs_nuclear_policy_alert.md') != '' || env.TELEGRAM_TEST == 'true'
+        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || hashFiles('out/khs_nuclear_policy_alert.md') != '' || hashFiles('out/khs_trusted_policy_news_alert.md') != '' || env.TELEGRAM_TEST == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -214,6 +239,11 @@ jobs:
                   pathlib.Path("out/khs_nuclear_policy_title.txt"),
                   pathlib.Path("out/khs_nuclear_policy_alert.md"),
                   "KHS nuclear AI power alert",
+              ),
+              (
+                  pathlib.Path("out/khs_trusted_policy_news_title.txt"),
+                  pathlib.Path("out/khs_trusted_policy_news_alert.md"),
+                  "KHS trusted policy news alert",
               ),
           ]
 
