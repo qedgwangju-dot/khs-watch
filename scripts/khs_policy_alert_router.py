@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -29,6 +30,39 @@ def is_whitehouse(item: dict) -> bool:
     return source.startswith("white house") or "whitehouse.gov" in link
 
 
+def mostly_ascii(value: str) -> bool:
+    letters = [ch for ch in value if ch.isalpha()]
+    if not letters:
+        return False
+    ascii_letters = [ch for ch in letters if ord(ch) < 128]
+    return len(ascii_letters) / max(len(letters), 1) >= 0.75
+
+
+def safe_title(alert: dict) -> str:
+    title = str(alert.get("title") or "").strip()
+    if not title:
+        return "미국 정책·규제 문서 공표"
+    if mostly_ascii(title):
+        source = str(alert.get("source") or "").lower()
+        text = " ".join([
+            title,
+            str(alert.get("summary") or ""),
+            " ".join(term for terms in (alert.get("matched") or {}).values() for term in terms),
+        ]).lower()
+        if "fcc" in source or "federal communications commission" in text:
+            return "FCC, 통신 규제 문서 공표"
+        if "tariff" in text or "section 301" in text or "customs" in text:
+            return "미국, 관세·통상 규정 공표"
+        if "export control" in text or "entity list" in text:
+            return "미국, 수출통제 규정 공표"
+        if "nuclear" in text or "reactor" in text:
+            return "미국, 원전 정책 문서 공표"
+        if "fda" in text:
+            return "FDA, 바이오·의약품 규제 결정 공표"
+        return "미국 정책·규제 문서 공표"
+    return title
+
+
 def no_general_report(now: dt.datetime) -> str:
     return "\n".join([
         f"🚨 KHS 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}",
@@ -49,15 +83,16 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
     for idx, alert in enumerate(alerts, 1):
         matched_terms = sorted({term for terms in (alert.get("matched") or {}).values() for term in terms})
         matched_keys = ", ".join((alert.get("matched") or {}).keys()) or "정책/규제"
+        title = safe_title(alert)
         lines.extend([
-            f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {str(alert.get('title') or '').strip()}",
+            f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
             f"- 상태 변화: {matched_keys} 신호 확인 ({', '.join(matched_terms[:8])})",
             f"- 원문/출처: [{alert.get('source', 'source')}]({alert.get('link', '')}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
             f"- 한국장 영향: {', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
             f"- 영향 경로: {', '.join(alert.get('paths') or ['정책 타임라인'])}",
             f"- 영향 섹터: {', '.join(alert.get('sectors') or ['정책/규제 일반'])}",
             "- 반영 가능성: 낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.",
-            "- 반대 근거: 제목·요약 기반 1차 감시라 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.",
+            "- 반대 근거: 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.",
             "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
             "",
         ])
@@ -85,7 +120,7 @@ def write_policy_outputs(alerts: list[dict], now: dt.datetime) -> None:
     POLICY_ALERTS_JSON_PATH.write_text(json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     top = alerts[0]
     POLICY_TITLE_PATH.write_text(
-        f"KHS 정책 워치: [{top.get('importance', '중')}] {str(top.get('title') or '')[:70]}\n",
+        f"KHS 정책 워치: [{top.get('importance', '중')}] {safe_title(top)[:70]}\n",
         encoding="utf-8",
     )
 
