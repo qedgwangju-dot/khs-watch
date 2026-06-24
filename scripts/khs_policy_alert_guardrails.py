@@ -3,7 +3,8 @@
 
 This script runs after the source watcher and before Telegram delivery. It keeps
 the detector broad, but makes the delivered alert stricter: sectors must have
-direct text evidence and low-impact false positives are removed.
+direct text evidence, low-impact false positives are removed, and delivered
+titles are Koreanized.
 """
 
 from __future__ import annotations
@@ -67,6 +68,15 @@ SECTOR_RULES: list[tuple[str, list[str]]] = [
     ]),
 ]
 
+LOW_IMPACT_TITLE_MARKERS = [
+    "digital opportunity data collection",
+    "modernizing the fcc form 477 data program",
+    "delete, delete, delete",
+    "television broadcasting services",
+]
+
+NATIONAL_EMERGENCY_CONTINUATION = "continuation of the national emergency"
+
 
 def term_in_text(text: str, term: str) -> bool:
     term = term.lower()
@@ -107,15 +117,12 @@ def direct_sectors(item: dict) -> list[str]:
     text = haystack_for(item)
     sectors = [label for label, terms in SECTOR_RULES if has_any(text, terms)]
 
-    # BOEM/BSEE alone is not a wind signal. Keep marine mineral language separate
-    # unless the item explicitly says wind.
     if "풍력/해상풍력" in sectors and not has_any(
         text,
         ["offshore wind", "wind energy", "wind lease", "wind leasing", "wind project", "wind area", "wind auction", "wind farm", "wind turbine"],
     ):
         sectors.remove("풍력/해상풍력")
 
-    # "mineral leasing" is not automatically a battery/critical-minerals signal.
     if "2차전지/핵심광물" in sectors and not has_any(
         text,
         ["battery", "batteries", "lithium", "critical mineral", "critical minerals", "rare earth", "cobalt", "nickel", "graphite", "manganese"],
@@ -131,6 +138,8 @@ def is_low_impact_false_positive(item: dict) -> bool:
 
     text = haystack_for(item)
     source = str(item.get("source") or "").lower()
+    title = str(item.get("title") or "").lower()
+
     is_boem_marine_mineral = (
         "boem" in source
         and has_any(text, ["mineral leasing", "mineral lease", "marine minerals", "offshore mineral"])
@@ -140,7 +149,69 @@ def is_low_impact_false_positive(item: dict) -> bool:
         item["guardrail_note"] = "BOEM 해양광물 임대 의견수렴은 원문상 풍력·핵심광물·관세 직접 근거가 없어 고충격 알림에서 제외"
         return True
 
+    if "federal register fcc" in source and any(marker in title for marker in LOW_IMPACT_TITLE_MARKERS):
+        item["guardrail_note"] = "FCC 행정 데이터 수집·지역 방송 규칙은 한국장 고충격 가격 변수로 보기 어려워 제외"
+        return True
+
+    if NATIONAL_EMERGENCY_CONTINUATION in title:
+        item["guardrail_note"] = "기존 국가비상사태 연례 연장은 신규 제재·관세·수출통제 조치가 아니므로 제외"
+        return True
+
     return False
+
+
+def mostly_ascii(value: str) -> bool:
+    letters = [ch for ch in value if ch.isalpha()]
+    if not letters:
+        return False
+    ascii_letters = [ch for ch in letters if ord(ch) < 128]
+    return len(ascii_letters) / max(len(letters), 1) >= 0.75
+
+
+def korean_title_for(item: dict) -> str:
+    original = str(item.get("title") or "").strip()
+    low = original.lower()
+    source = str(item.get("source") or "").lower()
+    text = haystack_for(item)
+
+    if "export control" in text or "entity list" in text:
+        return "미국, 반도체·첨단기술 수출통제 규정 공표"
+    if "section 301" in text or "tariff" in text or "customs enforcement" in text:
+        return "미국, 관세·통관 집행 관련 규정 공표"
+    if "nuclear" in text or "reactor" in text or "uranium" in text:
+        return "미국, 원전·핵연료 관련 정책 문서 공표"
+    if "ferc" in text or "transmission" in text or "interconnection" in text or "power grid" in text:
+        return "FERC, 전력망·전력시장 관련 규정 공표"
+    if "fcc" in source or "federal communications commission" in text:
+        if "spectrum" in text or "satellite" in text:
+            return "FCC, 주파수·위성통신 관련 규정 공표"
+        if "broadband" in text:
+            return "FCC, 브로드밴드 통신 규정 공표"
+        return "FCC, 통신 규제 문서 공표"
+    if "fda" in text or "complete response letter" in text or "drug" in text:
+        return "FDA, 바이오·의약품 규제 결정 공표"
+    if "critical mineral" in text or "lithium" in text or "rare earth" in text:
+        return "미국, 핵심광물 공급망 관련 정책 문서 공표"
+    if "presidential" in source or "federal register presidential" in source:
+        return "미국, 대통령 정책 문서 공표"
+    if mostly_ascii(original):
+        return "미국, 정책·규제 문서 공표"
+    return original
+
+
+def normalize_title(item: dict) -> None:
+    original = str(item.get("title") or "").strip()
+    ko_title = korean_title_for(item)
+    if original and ko_title != original:
+        item.setdefault("original_title", original)
+        item["title"] = ko_title
+
+
+def dedup_key(item: dict) -> str:
+    title = str(item.get("title") or "").lower()
+    link = str(item.get("link") or "").lower()
+    source = str(item.get("source") or "").lower()
+    return "|".join([source, re.sub(r"\s+", " ", title).strip(), link.rsplit("/", 1)[0]])
 
 
 def render_report(alerts: list[dict], now: dt.datetime) -> str:
@@ -166,7 +237,7 @@ def render_report(alerts: list[dict], now: dt.datetime) -> str:
             f"- 영향 경로: {', '.join(alert.get('paths') or ['정책 타임라인'])}",
             f"- 영향 섹터: {', '.join(alert.get('sectors') or ['정책/규제 일반'])}",
             "- 반영 가능성: 낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.",
-            "- 반대 근거: 제목·요약 기반 1차 감시라 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.",
+            "- 반대 근거: 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.",
             "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
             "",
         ])
@@ -197,10 +268,16 @@ def main() -> int:
         return 0
 
     normalized: list[dict] = []
+    seen: set[str] = set()
     for item in alerts:
         item["sectors"] = direct_sectors(item)
         if is_low_impact_false_positive(item):
             continue
+        normalize_title(item)
+        key = dedup_key(item)
+        if key in seen:
+            continue
+        seen.add(key)
         normalized.append(item)
 
     if not normalized:
