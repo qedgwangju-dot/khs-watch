@@ -73,6 +73,7 @@ jobs:
           python -m py_compile scripts/khs_policy_alert_router.py
           python -m py_compile scripts/khs_nuclear_policy_watch.py
           python -m py_compile scripts/khs_trusted_policy_news_watch.py
+          python -m py_compile scripts/khs_telegram_delivery_guard.py
           python -m py_compile scripts/khs_policy_runtime_patch.py
 
       - name: Run policy watch
@@ -108,6 +109,10 @@ jobs:
           else:
               print("Korea presidential postprocess skipped: no personnel alert.")
           PY
+
+      - name: Apply Telegram delivery quality guard
+        if: always()
+        run: python scripts/khs_telegram_delivery_guard.py
 
       - name: Publish step summary
         if: always()
