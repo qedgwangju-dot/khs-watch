@@ -38,7 +38,9 @@ class TipsYieldSnapshot:
     description: str = ""
     yield_pct: float | None = None
     reference_date: str | None = None
-    change_pp: float | None = None
+    day_change_pp: float | None = None
+    month_change_pp: float | None = None
+    year_change_pp: float | None = None
     error: str | None = None
 
 
@@ -67,6 +69,57 @@ def extract_description(page_html: str) -> str:
     return parser.description
 
 
+def signed_value(raw: str, direction: str) -> float:
+    value = float(raw)
+    direction = direction.lower()
+    negative_words = ("decrease", "decreased", "down", "fallen", "lower", "declined")
+    return -value if any(word in direction for word in negative_words) else value
+
+
+def parse_change(pattern: str, text: str) -> float | None:
+    match = re.search(pattern, text, flags=re.IGNORECASE)
+    if not match:
+        return None
+    return signed_value(match.group("value"), match.group("direction"))
+
+
+def format_reference_date(reference_date: str | None) -> str:
+    if not reference_date:
+        return "확인 불가"
+    try:
+        parsed = dt.datetime.strptime(reference_date, "%B %d, %Y").date()
+    except ValueError:
+        return reference_date
+    return f"{parsed:%Y-%m-%d} ({reference_date})"
+
+
+def format_change(value: float | None) -> str:
+    if value is None:
+        return "확인 불가"
+    return f"{value:+.2f}%p ({value * 100:+.0f}bp)"
+
+
+def render_korean_summary(snapshot: TipsYieldSnapshot) -> str:
+    if snapshot.yield_pct is None:
+        return "Trading Economics 원문에서 미국 10년 TIPS 수익률 값을 확인하지 못했습니다."
+
+    ref_date = format_reference_date(snapshot.reference_date)
+    parts = [
+        f"Trading Economics에 따르면 미국 10년 TIPS 수익률은 {ref_date} 기준 {snapshot.yield_pct:.2f}%입니다.",
+    ]
+    if snapshot.day_change_pp is not None:
+        parts.append(f"전일 대비 {format_change(snapshot.day_change_pp)} 변동했습니다.")
+    if snapshot.month_change_pp is not None:
+        parts.append(f"지난 한 달 동안 {format_change(snapshot.month_change_pp)} 움직였습니다.")
+    if snapshot.year_change_pp is not None:
+        parts.append(f"1년 전 대비 {format_change(snapshot.year_change_pp)} 수준입니다.")
+    parts.append(
+        "이 값은 해당 만기의 미국 물가연동국채에 대한 장외 은행 간 수익률 호가 기준이며, "
+        "Trading Economics 페이지의 기준일이 실제 조회시각보다 늦거나 빠를 수 있습니다."
+    )
+    return " ".join(parts)
+
+
 def parse_snapshot(description: str, now_kst: dt.datetime) -> TipsYieldSnapshot:
     text = " ".join(description.split())
     value_match = re.search(
@@ -83,15 +136,19 @@ def parse_snapshot(description: str, now_kst: dt.datetime) -> TipsYieldSnapshot:
             flags=re.IGNORECASE,
         )
 
-    change_pp = None
-    change_match = re.search(
-        r"marking a\s+(\d+(?:\.\d+)?)\s+percentage points\s+(increase|decrease)",
+    day_change_pp = parse_change(
+        r"marking a\s+(?P<value>\d+(?:\.\d+)?)\s+percentage points\s+(?P<direction>increase|decrease)",
         text,
-        flags=re.IGNORECASE,
     )
-    if change_match:
-        raw_change = float(change_match.group(1))
-        change_pp = raw_change if change_match.group(2).lower() == "increase" else -raw_change
+    month_change_pp = parse_change(
+        r"Over the past month,\s+the yield has\s+(?P<direction>.+?)\s+by\s+"
+        r"(?P<value>\d+(?:\.\d+)?)\s+points",
+        text,
+    )
+    year_change_pp = parse_change(
+        r"is\s+(?P<value>\d+(?:\.\d+)?)\s+points\s+(?P<direction>higher|lower)\s+than a year ago",
+        text,
+    )
 
     if not value_match:
         return TipsYieldSnapshot(
@@ -99,7 +156,9 @@ def parse_snapshot(description: str, now_kst: dt.datetime) -> TipsYieldSnapshot:
             source_url=SOURCE_URL,
             status="확인 불가",
             description=text,
-            change_pp=change_pp,
+            day_change_pp=day_change_pp,
+            month_change_pp=month_change_pp,
+            year_change_pp=year_change_pp,
             error="Trading Economics meta description에서 yield/reference date 패턴을 찾지 못함",
         )
 
@@ -110,7 +169,9 @@ def parse_snapshot(description: str, now_kst: dt.datetime) -> TipsYieldSnapshot:
         description=text,
         yield_pct=float(value_match.group(1)),
         reference_date=value_match.group(2),
-        change_pp=change_pp,
+        day_change_pp=day_change_pp,
+        month_change_pp=month_change_pp,
+        year_change_pp=year_change_pp,
     )
 
 
@@ -147,12 +208,12 @@ def render_message(snapshot: TipsYieldSnapshot) -> str:
     else:
         lines.append(f"값: {snapshot.yield_pct:.2f}%")
 
-    if snapshot.change_pp is not None:
-        lines.append(f"전일 대비: {snapshot.change_pp:+.2f}%p ({snapshot.change_pp * 100:+.0f}bp)")
-
     lines.extend(
         [
-            f"기준일: {snapshot.reference_date or '확인 불가'}",
+            f"전일 대비: {format_change(snapshot.day_change_pp)}",
+            f"전월 대비: {format_change(snapshot.month_change_pp)}",
+            f"전년 대비: {format_change(snapshot.year_change_pp)}",
+            f"기준일: {format_reference_date(snapshot.reference_date)}",
             f"조회시각: {query_time}",
             f"상태: {snapshot.status}",
             f"출처: {snapshot.source_url}",
@@ -163,7 +224,7 @@ def render_message(snapshot: TipsYieldSnapshot) -> str:
         lines.append(f"오류: {snapshot.error}")
 
     if snapshot.description:
-        lines.extend(["", f"원문 요약: {snapshot.description[:600]}"])
+        lines.extend(["", f"원문 요약(한국어): {render_korean_summary(snapshot)}"])
 
     lines.append("")
     lines.append("주의: Trading Economics 페이지 기준값이며, 기준일/시각이 조회시각과 다를 수 있습니다.")
