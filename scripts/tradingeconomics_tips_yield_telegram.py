@@ -99,6 +99,18 @@ def format_change(value: float | None) -> str:
     return f"{value:+.2f}%p ({value * 100:+.0f}bp)"
 
 
+def implied_previous_value(current: float | None, change_pp: float | None) -> float | None:
+    if current is None or change_pp is None:
+        return None
+    return current - change_pp
+
+
+def format_level(value: float | None) -> str:
+    if value is None:
+        return "확인 불가"
+    return f"{value:.2f}%"
+
+
 def render_korean_summary(snapshot: TipsYieldSnapshot) -> str:
     if snapshot.yield_pct is None:
         return "Trading Economics 원문에서 미국 10년 TIPS 수익률 값을 확인하지 못했습니다."
@@ -108,11 +120,20 @@ def render_korean_summary(snapshot: TipsYieldSnapshot) -> str:
         f"Trading Economics에 따르면 미국 10년 TIPS 수익률은 {ref_date} 기준 {snapshot.yield_pct:.2f}%입니다.",
     ]
     if snapshot.day_change_pp is not None:
-        parts.append(f"전일 대비 {format_change(snapshot.day_change_pp)} 변동했습니다.")
+        parts.append(
+            f"전일 대비 {format_change(snapshot.day_change_pp)} 변동했고, "
+            f"전일 비교 기준값은 {format_level(implied_previous_value(snapshot.yield_pct, snapshot.day_change_pp))}입니다."
+        )
     if snapshot.month_change_pp is not None:
-        parts.append(f"지난 한 달 동안 {format_change(snapshot.month_change_pp)} 움직였습니다.")
+        parts.append(
+            f"지난 한 달 동안 {format_change(snapshot.month_change_pp)} 움직였고, "
+            f"1개월 전 비교 기준값은 {format_level(implied_previous_value(snapshot.yield_pct, snapshot.month_change_pp))}입니다."
+        )
     if snapshot.year_change_pp is not None:
-        parts.append(f"1년 전 대비 {format_change(snapshot.year_change_pp)} 수준입니다.")
+        parts.append(
+            f"1년 전 대비 {format_change(snapshot.year_change_pp)} 수준이며, "
+            f"1년 전 비교 기준값은 {format_level(implied_previous_value(snapshot.yield_pct, snapshot.year_change_pp))}입니다."
+        )
     parts.append(
         "이 값은 해당 만기의 미국 물가연동국채에 대한 장외 은행 간 수익률 호가 기준이며, "
         "Trading Economics 페이지의 기준일이 실제 조회시각보다 늦거나 빠를 수 있습니다."
@@ -213,6 +234,12 @@ def render_message(snapshot: TipsYieldSnapshot) -> str:
             f"전일 대비: {format_change(snapshot.day_change_pp)}",
             f"전월 대비: {format_change(snapshot.month_change_pp)}",
             f"전년 대비: {format_change(snapshot.year_change_pp)}",
+            "",
+            "비교 기준값(현재값-변화폭):",
+            f"- 전일 기준값: {format_level(implied_previous_value(snapshot.yield_pct, snapshot.day_change_pp))}",
+            f"- 1개월 전 기준값: {format_level(implied_previous_value(snapshot.yield_pct, snapshot.month_change_pp))}",
+            f"- 1년 전 기준값: {format_level(implied_previous_value(snapshot.yield_pct, snapshot.year_change_pp))}",
+            "",
             f"기준일: {format_reference_date(snapshot.reference_date)}",
             f"조회시각: {query_time}",
             f"상태: {snapshot.status}",
