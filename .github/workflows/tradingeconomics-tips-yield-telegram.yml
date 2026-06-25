@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - ".github/workflows/tradingeconomics-tips-yield-telegram.yml"
+      - ".github/tips-yield-trigger.txt"
       - "scripts/tradingeconomics_tips_yield_telegram.py"
 
 permissions:
