@@ -127,6 +127,12 @@ def remove_urls(text: str) -> str:
     return re.sub(r"https?://\S+", "", text)
 
 
+def normalize_for_match(text: str) -> str:
+    text = text.lower()
+    text = re.sub(r"[_\-/%?=&.,:;()\[\]{}]+", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def mostly_ascii(value: str) -> bool:
     letters = [ch for ch in value if ch.isalpha()]
     if not letters:
@@ -164,8 +170,11 @@ def delete_lane(lane: Lane, reason: str) -> None:
 def has_blocker(text: str, blockers: list[str], include_urls: bool) -> str | None:
     haystack = text if include_urls else remove_urls(text)
     low = haystack.lower()
+    normalized = normalize_for_match(haystack)
     for marker in blockers:
-        if marker.lower() in low:
+        marker_low = marker.lower()
+        marker_normalized = normalize_for_match(marker)
+        if marker_low in low or marker_normalized in normalized:
             return marker
     return None
 
@@ -174,7 +183,6 @@ def has_raw_ascii_heading(body: str) -> bool:
     for line in body.splitlines():
         if not line.startswith("## "):
             continue
-        # Strip leading markdown/status tokens and inspect the visible title.
         visible = re.sub(r"^##\s+\d+\.\s+\[[^\]]+\]\s*", "", line).strip()
         if mostly_ascii(visible):
             return True
