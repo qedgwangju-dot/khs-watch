@@ -1,0 +1,40 @@
+name: Trading Economics 10Y TIPS Telegram
+
+on:
+  schedule:
+    - cron: "5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tradingeconomics-tips-yield-telegram
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Send TIPS yield to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scripts/tradingeconomics_tips_yield_telegram.py
+
+      - name: Publish step summary
+        if: always()
+        run: |
+          if [ -f out/tradingeconomics_tips_yield_telegram.md ]; then
+            cat out/tradingeconomics_tips_yield_telegram.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Trading Economics TIPS yield message was not produced." >> "$GITHUB_STEP_SUMMARY"
+          fi
