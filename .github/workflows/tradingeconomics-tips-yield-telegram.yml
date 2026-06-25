@@ -2,8 +2,14 @@ name: Trading Economics 10Y TIPS Telegram
 
 on:
   schedule:
-    - cron: "5 * * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/tradingeconomics-tips-yield-telegram.yml"
+      - "scripts/tradingeconomics_tips_yield_telegram.py"
 
 permissions:
   contents: read
