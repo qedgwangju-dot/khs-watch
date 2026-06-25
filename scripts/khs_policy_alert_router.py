@@ -19,6 +19,63 @@ POLICY_ALERTS_JSON_PATH = OUT_DIR / "khs_policy_watch_alerts.json"
 
 KOREA_PERSONNEL_ALERTS_JSON_PATH = OUT_DIR / "khs_korea_presidential_personnel_alerts.json"
 
+MATCHED_KEY_LABELS = {
+    "court_order": "법원 명령/판결",
+    "final_rule": "최종 규칙",
+    "permit_restart": "인허가·임대 재개",
+    "sanctions_tariffs_export": "제재·관세·수출통제",
+    "agency_order": "기관 명령/규칙",
+    "fcc_decision_notice": "FCC 결정·회의 공지",
+    "presidential_action": "대통령 정책문서",
+    "korea_presidential_personnel": "대통령실 고위급 인사",
+    "company_filing": "기업 공시",
+    "fda_decision": "FDA 결정",
+}
+
+TERM_LABELS = {
+    "commission meeting": "공개위원회 회의",
+    "open meeting": "공개회의",
+    "sunshine notice": "회의 공고",
+    "proposed rule": "규칙 제안",
+    "rulemaking": "규칙 제정 절차",
+    "notice of proposed rulemaking": "규칙 제안 공고",
+    "nprm": "규칙 제안 공고",
+    "fnprm": "추가 규칙 제안 공고",
+    "further notice of proposed rulemaking": "추가 규칙 제안 공고",
+    "order": "명령",
+    "broadband": "브로드밴드",
+    "satellite": "위성",
+    "spectrum": "주파수",
+    "permit": "인허가",
+    "tariff": "관세",
+    "tariffs": "관세",
+    "section 301": "무역법 301조",
+    "customs enforcement": "통관 집행",
+    "export controls": "수출통제",
+    "entity list": "수출통제 명단",
+    "executive order": "행정명령",
+    "presidential memorandum": "대통령각서",
+    "continuation of the national emergency": "국가비상사태 연장",
+}
+
+SOURCE_LABELS = {
+    "federal register fcc": "미 연방관보 FCC",
+    "federal register presidential documents": "미 연방관보 대통령문서",
+    "federal register tariffs": "미 연방관보 관세",
+    "federal register chips export": "미 연방관보 반도체·수출통제",
+    "federal register energy": "미 연방관보 에너지",
+    "commerce news": "미 상무부",
+    "bis news": "미 BIS",
+    "ustr press releases": "미 USTR",
+    "ofac recent actions": "미 OFAC",
+    "ferc news": "미 FERC",
+    "doe news": "미 에너지부",
+    "sec press releases": "미 SEC",
+    "ftc press releases": "미 FTC",
+    "fda press announcements": "미 FDA",
+    "boem news": "미 BOEM",
+}
+
 
 def is_personnel(item: dict) -> bool:
     return "korea_presidential_personnel" in (item.get("matched") or {})
@@ -63,6 +120,23 @@ def safe_title(alert: dict) -> str:
     return title
 
 
+def display_source(source: object) -> str:
+    raw = str(source or "source").strip()
+    return SOURCE_LABELS.get(raw.lower(), raw)
+
+
+def display_matched_keys(matched: dict) -> str:
+    if not matched:
+        return "정책·규제"
+    labels = [MATCHED_KEY_LABELS.get(str(key), str(key)) for key in matched.keys()]
+    return ", ".join(dict.fromkeys(labels))
+
+
+def display_terms(terms: list[str]) -> str:
+    labels = [TERM_LABELS.get(str(term).lower(), str(term)) for term in terms]
+    return ", ".join(dict.fromkeys(labels))
+
+
 def no_general_report(now: dt.datetime) -> str:
     return "\n".join([
         f"🚨 KHS 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}",
@@ -81,13 +155,16 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
 
     lines = [f"🚨 KHS 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
     for idx, alert in enumerate(alerts, 1):
-        matched_terms = sorted({term for terms in (alert.get("matched") or {}).values() for term in terms})
-        matched_keys = ", ".join((alert.get("matched") or {}).keys()) or "정책/규제"
+        matched = alert.get("matched") or {}
+        matched_terms = sorted({term for terms in matched.values() for term in terms})
+        matched_keys = display_matched_keys(matched)
+        matched_terms_text = display_terms(matched_terms[:8])
+        source_label = display_source(alert.get("source"))
         title = safe_title(alert)
         lines.extend([
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
-            f"- 상태 변화: {matched_keys} 신호 확인 ({', '.join(matched_terms[:8])})",
-            f"- 원문/출처: [{alert.get('source', 'source')}]({alert.get('link', '')}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
+            f"- 상태 변화: {matched_keys} 신호 확인 ({matched_terms_text})",
+            f"- 원문/출처: [{source_label}]({alert.get('link', '')}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
             f"- 한국장 영향: {', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
             f"- 영향 경로: {', '.join(alert.get('paths') or ['정책 타임라인'])}",
             f"- 영향 섹터: {', '.join(alert.get('sectors') or ['정책/규제 일반'])}",
