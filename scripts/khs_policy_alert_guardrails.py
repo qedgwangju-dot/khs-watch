@@ -73,6 +73,10 @@ LOW_IMPACT_TITLE_MARKERS = [
     "modernizing the fcc form 477 data program",
     "delete, delete, delete",
     "television broadcasting services",
+    "sunshine act meetings",
+    "open commission meeting",
+    "open commission meetings",
+    "sunshine notice",
 ]
 
 NATIONAL_EMERGENCY_CONTINUATION = "continuation of the national emergency"
@@ -150,7 +154,7 @@ def is_low_impact_false_positive(item: dict) -> bool:
         return True
 
     if "federal register fcc" in source and any(marker in title for marker in LOW_IMPACT_TITLE_MARKERS):
-        item["guardrail_note"] = "FCC 행정 데이터 수집·지역 방송 규칙은 한국장 고충격 가격 변수로 보기 어려워 제외"
+        item["guardrail_note"] = "FCC 행정 데이터 수집·지역 방송·회의 공지는 한국장 고충격 가격 변수로 보기 어려워 제외"
         return True
 
     if NATIONAL_EMERGENCY_CONTINUATION in title:
@@ -170,7 +174,6 @@ def mostly_ascii(value: str) -> bool:
 
 def korean_title_for(item: dict) -> str:
     original = str(item.get("title") or "").strip()
-    low = original.lower()
     source = str(item.get("source") or "").lower()
     text = haystack_for(item)
 
