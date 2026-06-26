@@ -15,20 +15,26 @@ WATCH_PATH = Path("scripts/khs_policy_watch.py")
 
 
 FEDERAL_REGISTER_CLEAN_TEXT = r'''
-FEDERAL_REGISTER_BOILERPLATE_MARKERS = [
-    "This document is also available in the following formats:",
-    "Normalized attributes and metadata",
-    "Original full text XML",
-    "Government Publishing Office metadata",
-    "More information and documentation can be found in our developer tools pages",
+FEDERAL_REGISTER_BOILERPLATE_PATTERNS = [
+    r"This document is also available in the following formats:",
+    r"\bJSON\s+\[?Normalized attributes and metadata",
+    r"\bXML\s+\[?Original full text XML",
+    r"\bMODS\s+\[?Government Publishing Office metadata",
+    r"\[?Normalized attributes and metadata",
+    r"\[?Original full text XML",
+    r"\[?Government Publishing Office metadata",
+    r"More information and documentation can be found in our developer tools pages",
 ]
 
 
 def strip_federal_register_boilerplate(value: str) -> str:
-    for marker in FEDERAL_REGISTER_BOILERPLATE_MARKERS:
-        index = value.lower().find(marker.lower())
-        if index >= 0:
-            value = value[:index]
+    first_index: int | None = None
+    for pattern in FEDERAL_REGISTER_BOILERPLATE_PATTERNS:
+        match = re.search(pattern, value, re.I)
+        if match and (first_index is None or match.start() < first_index):
+            first_index = match.start()
+    if first_index is not None:
+        value = value[:first_index]
     return value
 
 
@@ -133,7 +139,7 @@ def replace_once(text: str, old: str, new: str) -> str:
 
 
 def patch_federal_register_boilerplate(text: str) -> str:
-    if "FEDERAL_REGISTER_BOILERPLATE_MARKERS" in text:
+    if "FEDERAL_REGISTER_BOILERPLATE_PATTERNS" in text:
         return text
     return replace_once(
         text,
