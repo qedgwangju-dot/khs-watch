@@ -1,16 +1,9 @@
 name: Trading Economics 10Y TIPS Telegram
 
 on:
-  schedule:
-    - cron: "17 * * * *"
+  # Disabled for production delivery.
+  # Cloudflare Worker `tips-yield-telegram` is now the only scheduled sender.
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/tradingeconomics-tips-yield-telegram.yml"
-      - ".github/tips-yield-trigger.txt"
-      - "scripts/tradingeconomics_tips_yield_telegram.py"
 
 permissions:
   contents: read
