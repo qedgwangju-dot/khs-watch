@@ -66,6 +66,14 @@ LOW_IMPACT_BLOCKERS = [
     "sent to the senate",
 ]
 
+FEDERAL_REGISTER_BOILERPLATE_BLOCKERS = [
+    "this document is also available in the following formats",
+    "normalized attributes and metadata",
+    "original full text xml",
+    "government publishing office metadata",
+    "developer tools pages",
+]
+
 RAW_DETECTOR_BLOCKERS = [
     "fcc_decision_notice",
     "agency_order",
@@ -201,6 +209,11 @@ def guard_lane(lane: Lane) -> None:
     marker = has_blocker(combined, LOW_IMPACT_BLOCKERS, include_urls=True)
     if marker:
         delete_lane(lane, f"low_impact:{marker}")
+        return
+
+    marker = has_blocker(combined, FEDERAL_REGISTER_BOILERPLATE_BLOCKERS, include_urls=False)
+    if marker:
+        delete_lane(lane, f"federal_register_boilerplate:{marker}")
         return
 
     visible = remove_urls(combined)
