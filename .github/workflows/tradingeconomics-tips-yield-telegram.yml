@@ -13,28 +13,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  send:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Send TIPS yield to Telegram
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python scripts/tradingeconomics_tips_yield_telegram.py
-
-      - name: Publish step summary
-        if: always()
+      - name: Disabled
         run: |
-          if [ -f out/tradingeconomics_tips_yield_telegram.md ]; then
-            cat out/tradingeconomics_tips_yield_telegram.md >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "Trading Economics TIPS yield message was not produced." >> "$GITHUB_STEP_SUMMARY"
-          fi
+          echo "Legacy GitHub TIPS Telegram workflow is disabled." >> "$GITHUB_STEP_SUMMARY"
+          echo "Cloudflare Worker tips-yield-telegram is the only scheduled sender." >> "$GITHUB_STEP_SUMMARY"
