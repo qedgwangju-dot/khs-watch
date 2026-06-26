@@ -14,6 +14,34 @@ from pathlib import Path
 WATCH_PATH = Path("scripts/khs_policy_watch.py")
 
 
+FEDERAL_REGISTER_CLEAN_TEXT = r'''
+FEDERAL_REGISTER_BOILERPLATE_MARKERS = [
+    "This document is also available in the following formats:",
+    "Normalized attributes and metadata",
+    "Original full text XML",
+    "Government Publishing Office metadata",
+    "More information and documentation can be found in our developer tools pages",
+]
+
+
+def strip_federal_register_boilerplate(value: str) -> str:
+    for marker in FEDERAL_REGISTER_BOILERPLATE_MARKERS:
+        index = value.lower().find(marker.lower())
+        if index >= 0:
+            value = value[:index]
+    return value
+
+
+def clean_text(value: str | None) -> str:
+    if not value:
+        return ""
+    value = re.sub(r"<[^>]+>", " ", value)
+    value = html.unescape(value)
+    value = strip_federal_register_boilerplate(value)
+    return re.sub(r"\s+", " ", value).strip()
+'''
+
+
 KOREA_CONSTANTS = '''
 KOREA_PRESIDENTIAL_PERSONNEL_KEYWORDS = [
     "인사 발표",
@@ -104,7 +132,26 @@ def replace_once(text: str, old: str, new: str) -> str:
     return text.replace(old, new, 1)
 
 
+def patch_federal_register_boilerplate(text: str) -> str:
+    if "FEDERAL_REGISTER_BOILERPLATE_MARKERS" in text:
+        return text
+    return replace_once(
+        text,
+        '''
+
+def clean_text(value: str | None) -> str:
+    if not value:
+        return ""
+    value = re.sub(r"<[^>]+>", " ", value)
+    value = html.unescape(value)
+    return re.sub(r"\s+", " ", value).strip()
+''',
+        "\n\n" + FEDERAL_REGISTER_CLEAN_TEXT,
+    )
+
+
 def patch_watch_source(text: str) -> str:
+    text = patch_federal_register_boilerplate(text)
     if "korea_presidential_personnel" in text:
         return text
 
@@ -173,10 +220,10 @@ def main() -> int:
     text = WATCH_PATH.read_text(encoding="utf-8")
     patched = patch_watch_source(text)
     if patched == text:
-        print("Korea presidential personnel watch already present.")
+        print("KHS policy runtime patch already present.")
         return 0
     WATCH_PATH.write_text(patched, encoding="utf-8")
-    print("Korea presidential personnel watch patched into runtime source.")
+    print("KHS policy runtime patch applied.")
     return 0
 
 
