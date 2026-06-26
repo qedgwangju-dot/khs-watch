@@ -46,20 +46,11 @@ jobs:
           SEEN_PATH = DATA_DIR / "khs_whitehouse_high_impact_seen.json"
 
           SOURCES = [
-              ("백악관 팩트시트", "https://www.whitehouse.gov/fact-sheets/", "/fact-sheets/"),
               ("백악관 행정명령", "https://www.whitehouse.gov/presidential-actions/executive-orders/", "/presidential-actions/"),
+              ("백악관 팩트시트", "https://www.whitehouse.gov/fact-sheets/", "/fact-sheets/"),
               ("백악관 대통령각서", "https://www.whitehouse.gov/presidential-actions/presidential-memoranda/", "/presidential-actions/"),
           ]
-          TERMS = [
-              "quantum", "quantum-enabled", "national quantum", "quantum computer", "quantum sensor",
-              "artificial intelligence", " ai ", "semiconductor", "chips", "critical and emerging",
-              "national security", "counterintelligence", "supply chain", "manufacturing capabilities",
-              "commerce", "department of commerce", "energy", "department of energy", "nasa", "defense", "department of war",
-              "export controls", "tariff", "sanctions", "customs enforcement", "executive order", "presidential memorandum",
-              "nuclear", "nuclear energy", "nuclear reactor", "nuclear reactors", "nuclear regulatory commission", "nrc",
-              "nuclear fuel", "westinghouse", "ap1000", "loan guarantee", "data center", "data centers", "electricity demand",
-          ]
-          STATIC_EXCLUDE = {
+          STATIC_TITLE_EXCLUDE = {
               "privacy policy", "subscribe", "contact", "internships", "download the white house app",
               "fact sheets", "executive orders", "presidential actions", "presidential memoranda", "proclamations",
               "remarks", "releases", "research", "briefings & statements", "nominations & appointments",
@@ -86,21 +77,12 @@ jobs:
           )
           LINK_PATTERN = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
 
-          TOPIC_RULES = [
-              ("quantum_innovation", ["next frontier of quantum innovation", "quantum innovation"]),
-              ("crypto_attacks", ["advanced cryptographic attacks", "cryptographic attacks"]),
-              ("advanced_ai_security", ["advanced artificial intelligence innovation and security", "artificial intelligence innovation and security"]),
-              ("nuclear_energy", ["nuclear energy", "nuclear reactor", "nuclear reactors", "nuclear regulatory commission", "nrc"]),
-              ("customs_enforcement", ["strengthening customs enforcement", "customs enforcement"]),
-              ("financial_system", ["america's financial system", "financial system"]),
-              ("fintech_regulatory_frameworks", ["financial technology innovation", "regulatory frameworks"]),
-          ]
           TOPIC_META = {
               "quantum_innovation": {
                   "priority": 1,
                   "ko_title": "백악관, 양자혁신 행정명령 발표",
                   "headline": "양자혁신",
-                  "core": "상무부·국방부·에너지부·NASA에 5년 내 양자 센서·네트워크 구축 계획 수립 지시.",
+                  "core": "상무부·국방부·에너지부·NASA에 양자 센서·네트워크 구축 계획 수립을 지시한 정책 신호.",
                   "impact": "양자/AI/첨단기술, 반도체/AI, 방산/국가안보 | 시간표·할인율",
                   "point": "확정 매출은 아니지만 정책 시간표와 미 정부 조달 기대를 앞당기는 재료.",
                   "counter": "예산·조달·후속 공고 전까지는 테마 기대 중심.",
@@ -109,7 +91,7 @@ jobs:
                   "priority": 2,
                   "ko_title": "백악관, 첨단 암호 공격 대응 행정명령 발표",
                   "headline": "암호안보",
-                  "core": "양자 시대 암호위협 대응과 국가안보 사이버 방어 강화.",
+                  "core": "양자 시대 암호위협 대응과 국가안보 사이버 방어 강화를 공식화.",
                   "impact": "보안/암호, 반도체/AI, 방산/국가안보 | 시간표·할인율",
                   "point": "사이버보안·암호기술·국가안보 인프라 관심 확대 가능.",
                   "counter": "국내 상장사 실적 연결은 후속 조달·밸류체인 확인 전까지 제한적.",
@@ -159,6 +141,15 @@ jobs:
                   "point": "핀테크 규제 경로가 명확해지면 테마 수급과 밸류에이션 재평가가 가능.",
                   "counter": "감독기관 후속 규칙과 의회 입법 여부가 확인돼야 실적 연결 가능.",
               },
+              "regenerative_agriculture": {
+                  "priority": 8,
+                  "ko_title": "백악관, 재생농업·농장 회복력 강화 행정명령 발표",
+                  "headline": "농업식량안보",
+                  "core": "USDA·HHS·EPA 축으로 정밀농업, 재생농업, 농장 현대화, 식품공급망 안정, 작물보호 대체기술 평가를 정책 시간표로 공식화.",
+                  "impact": "농업/스마트팜, 농기계, 비료·농약/작물보호, 식품공급망 | 시간표·수급·마진",
+                  "point": "EPA 등록·라벨링 검토, USDA 재생농업 파일럿 확대, 공공·민간 파트너십이 농업 투입재와 정밀농업 테마 수급을 자극할 수 있음.",
+                  "counter": "확정 매출이나 즉시 조달 공고는 아니며, 예산 배정·세부 프로그램·품목별 규제 변화 확인 전까지 직접 실적 연결은 제한적.",
+              },
           }
 
           def clean(value):
@@ -169,7 +160,7 @@ jobs:
               return re.sub(r"\s+", " ", value).strip()
 
           def fetch(url, timeout=20):
-              req = urllib.request.Request(url, headers={"User-Agent": "KHS-policy-watch contact=github-actions"})
+              req = urllib.request.Request(url, headers={"User-Agent": "KHS-whitehouse-watch contact=github-actions"})
               with urllib.request.urlopen(req, timeout=timeout) as resp:
                   return resp.read().decode(resp.headers.get_content_charset() or "utf-8", errors="replace")
 
@@ -184,51 +175,50 @@ jobs:
                       pass
               return None
 
-          def normalize_title(title):
-              title = clean(title)
-              title = re.sub(r"^Fact Sheet:\s*", "", title, flags=re.I)
-              title = re.sub(r"^President Donald J\. Trump\s+", "", title, flags=re.I)
-              return re.sub(r"\s+", " ", title).strip()
-
           def is_static_title(title):
               low_title = clean(title).lower()
               if len(low_title) < 8:
                   return True
-              return low_title in STATIC_EXCLUDE or any(marker in low_title for marker in STATIC_EXCLUDE)
+              return low_title in STATIC_TITLE_EXCLUDE or any(marker in low_title for marker in STATIC_TITLE_EXCLUDE)
 
-          def has_article_path(link):
-              path = urllib.parse.urlparse(link).path.lower().rstrip("/")
-              return bool(ARTICLE_PATH_PATTERN.search(path))
-
-          def is_static_link(link, source_url):
+          def is_article_link(link, source_url, required_path):
               low_link = link.lower().rstrip("/")
               low_source = source_url.lower().rstrip("/")
               path = urllib.parse.urlparse(link).path.lower().rstrip("/")
               if low_link == low_source:
-                  return True
+                  return False
+              if "whitehouse.gov" not in low_link or required_path not in low_link:
+                  return False
               if path in STATIC_PATHS:
-                  return True
+                  return False
               if "nominations-appointments" in path:
-                  return True
+                  return False
               if "nomination" in path and "sent-to-the-senate" in path:
-                  return True
-              if not has_article_path(link):
-                  return True
-              return False
+                  return False
+              return bool(ARTICLE_PATH_PATTERN.search(path))
 
-          def topic_key(title, body, link):
-              haystack = f"{title} {body} {link}".lower()
-              for key, hints in TOPIC_RULES:
-                  if any(hint in haystack for hint in hints):
+          def classify(title, link):
+              surface = f"{title} {link}".lower()
+              rules = [
+                  ("quantum_innovation", ["next frontier of quantum innovation", "quantum innovation"]),
+                  ("crypto_attacks", ["advanced cryptographic attacks", "cryptographic attacks"]),
+                  ("advanced_ai_security", ["advanced artificial intelligence innovation and security", "artificial intelligence innovation and security"]),
+                  ("nuclear_energy", ["nuclear energy", "nuclear reactor", "nuclear reactors", "nuclear regulatory commission", "nrc"]),
+                  ("customs_enforcement", ["strengthening customs enforcement", "customs enforcement"]),
+                  ("financial_system", ["america's financial system", "financial system"]),
+                  ("fintech_regulatory_frameworks", ["financial technology innovation", "regulatory frameworks"]),
+                  ("regenerative_agriculture", ["advancing regenerative agriculture", "regenerative agriculture", "farm resilience", "strengthening american farm resilience"]),
+              ]
+              for key, hints in rules:
+                  if any(hint in surface for hint in hints):
                       return key
-              core = normalize_title(title).lower()
-              core = re.sub(r"[^a-z0-9]+", "-", core).strip("-")[:80]
-              return core or hashlib.sha256(link.encode("utf-8")).hexdigest()[:16]
+              return None
 
           def links_from(source_url, required_path):
               try:
                   page = fetch(source_url)
-              except Exception:
+              except Exception as exc:
+                  print(f"whitehouse_source_failed={source_url} {type(exc).__name__}: {exc}")
                   return []
               found = []
               seen_links = set()
@@ -237,16 +227,13 @@ jobs:
                   if is_static_title(title):
                       continue
                   link = urllib.parse.urljoin(source_url, html.unescape(match.group("href")))
-                  low_link = link.lower()
-                  if "whitehouse.gov" not in low_link or required_path not in low_link:
-                      continue
-                  if is_static_link(link, source_url):
+                  if not is_article_link(link, source_url, required_path):
                       continue
                   if link in seen_links:
                       continue
                   seen_links.add(link)
                   found.append((title, link))
-                  if len(found) >= 20:
+                  if len(found) >= 30:
                       break
               return found
 
@@ -260,7 +247,7 @@ jobs:
               h1 = re.search(r"<h1[^>]*>(?P<title>.*?)</h1>", raw, re.I | re.S)
               if h1:
                   title = clean(h1.group("title")) or title
-              return title, text[:1800], parse_date(text)
+              return title, text[:2200], parse_date(text)
 
           def load_seen():
               if not SEEN_PATH.exists():
@@ -278,21 +265,18 @@ jobs:
           for source_name, source_url, required_path in SOURCES:
               for title_hint, link in links_from(source_url, required_path):
                   title, body, published = read_article(title_hint, link)
-                  if is_static_title(title) or is_static_link(link, source_url):
+                  if is_static_title(title) or not is_article_link(link, source_url, required_path):
                       continue
-                  haystack = f"{title} {body}".lower()
-                  if not any(term in haystack for term in TERMS):
+                  key = classify(title, link)
+                  if not key:
                       continue
                   if not published:
                       continue
                   published = published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0)
                   if (now - published).total_seconds() / 3600 > 72:
                       continue
-                  key = topic_key(title, body, link)
                   meta = TOPIC_META.get(key)
-                  if not meta:
-                      continue
-                  if key in topic_items:
+                  if not meta or key in topic_items:
                       continue
                   fingerprint = f"whitehouse-{FORMAT_VERSION}-{key}"
                   if fingerprint in seen:
@@ -340,7 +324,7 @@ jobs:
                       "",
                   ])
               lines.extend([
-                  "💡 판단: 오늘 바뀐 것은 돈 버는 능력보다 정책 시간표·할인율·테마 수급입니다. 후속 예산, 조달 공고, 미국 양자·AI·방산·보안주 반응 확인 필요.",
+                  "💡 판단: 오늘 바뀐 것은 확정 매출보다 정책 시간표·테마 수급입니다. 후속 부처 공고, 예산·조달 조건, 관련 해외·국내 밸류체인 반응 확인 필요.",
                   "",
                   "투자 조언이 아닌 참고용 정책·규제 알림입니다.",
               ])
@@ -395,6 +379,9 @@ jobs:
               "백악관, 고충격 정책 발표:",
               "원제:",
               "official white house app",
+              "federal register",
+              "white house executive order",
+              "white house fact sheet",
           ]
           for marker in blocked_markers:
               if marker in guard_text:
