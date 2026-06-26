@@ -137,7 +137,7 @@ def patch_federal_register_boilerplate(text: str) -> str:
         return text
     return replace_once(
         text,
-        '''
+        r'''
 
 def clean_text(value: str | None) -> str:
     if not value:
