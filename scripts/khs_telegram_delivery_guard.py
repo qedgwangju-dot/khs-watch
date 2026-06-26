@@ -68,10 +68,19 @@ LOW_IMPACT_BLOCKERS = [
 
 FEDERAL_REGISTER_BOILERPLATE_BLOCKERS = [
     "this document is also available in the following formats",
+    "json normalized attributes and metadata",
+    "json [normalized attributes and metadata",
+    "xml original full text xml",
+    "xml [original full text xml",
+    "mods government publishing office metadata",
+    "mods [government publishing office metadata",
     "normalized attributes and metadata",
     "original full text xml",
     "government publishing office metadata",
     "developer tools pages",
+    "federalregister.gov/api/v1/documents",
+    "federalregister.gov/documents/full_text/xml",
+    "govinfo.gov/metadata/granule",
 ]
 
 RAW_DETECTOR_BLOCKERS = [
@@ -211,7 +220,7 @@ def guard_lane(lane: Lane) -> None:
         delete_lane(lane, f"low_impact:{marker}")
         return
 
-    marker = has_blocker(combined, FEDERAL_REGISTER_BOILERPLATE_BLOCKERS, include_urls=False)
+    marker = has_blocker(combined, FEDERAL_REGISTER_BOILERPLATE_BLOCKERS, include_urls=True)
     if marker:
         delete_lane(lane, f"federal_register_boilerplate:{marker}")
         return
