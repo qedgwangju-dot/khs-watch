@@ -37,6 +37,8 @@ TERM_LABELS = {
     "open meeting": "공개회의",
     "sunshine notice": "회의 공고",
     "proposed rule": "규칙 제안",
+    "request for information": "정보요청",
+    "rfi": "정보요청",
     "rulemaking": "규칙 제정 절차",
     "notice of proposed rulemaking": "규칙 제안 공고",
     "nprm": "규칙 제안 공고",
@@ -64,6 +66,7 @@ SOURCE_LABELS = {
     "federal register tariffs": "미 연방관보 관세",
     "federal register chips export": "미 연방관보 반도체·수출통제",
     "federal register energy": "미 연방관보 에너지",
+    "federal register transformers": "미 연방관보 변압기",
     "commerce news": "미 상무부",
     "bis news": "미 BIS",
     "ustr press releases": "미 USTR",
@@ -108,6 +111,8 @@ def safe_title(alert: dict) -> str:
         ]).lower()
         if "fcc" in source or "federal communications commission" in text:
             return "FCC, 통신 규제 문서 공표"
+        if "distribution transformer" in text or "electrical core steel" in text or "grain-oriented electrical steel" in text or "goes" in text or "amorphous" in text:
+            return "미국, 변압기 효율규제 재검토"
         if "tariff" in text or "section 301" in text or "customs" in text:
             return "미국, 관세·통상 규정 공표"
         if "export control" in text or "entity list" in text:
