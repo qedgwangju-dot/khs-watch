@@ -2,9 +2,9 @@
 """Runtime compatibility patch for KHS policy watch.
 
 The base watcher is intentionally broad. Until the Korean presidential
-personnel parser is folded into the source watcher, this script injects that
-parser in one visible, testable place instead of keeping a long inline patch in
-the GitHub Actions YAML.
+personnel parser is folded into the source watcher, this script injects focused
+watch logic in one visible, testable place instead of keeping long inline
+patches in the GitHub Actions YAML.
 """
 
 from __future__ import annotations
@@ -45,6 +45,15 @@ def clean_text(value: str | None) -> str:
     value = html.unescape(value)
     value = strip_federal_register_boilerplate(value)
     return re.sub(r"\s+", " ", value).strip()
+'''
+
+
+TRANSFORMER_CONSTANTS = '''
+TRANSFORMER_POLICY_TERMS = [
+    "distribution transformer", "distribution transformers", "transformer", "transformers",
+    "electrical core steel", "grain-oriented electrical steel", "grain oriented electrical steel",
+    "goes", "amorphous", "amorphous core", "amorphous-core", "transformer core",
+]
 '''
 
 
@@ -156,8 +165,64 @@ def clean_text(value: str | None) -> str:
     )
 
 
+def patch_transformer_policy_watch(text: str) -> str:
+    if "Federal Register transformers" in text:
+        return text
+
+    text = replace_once(
+        text,
+        '"notice of proposed rulemaking", "nopr", "request for comments",',
+        '"notice of proposed rulemaking", "nopr", "request for information", "rfi", "request for comments",',
+    )
+    text = replace_once(text, "\nSECTOR_KEYWORDS = {", TRANSFORMER_CONSTANTS + "\nSECTOR_KEYWORDS = {")
+    text = replace_once(
+        text,
+        '    "전력망/데이터센터": ["ferc", "grid", "transmission", "large load", "data center", "power"],\n'
+        '    "원전/전력기기": ["nuclear", "reactor", "uranium", "transformer"],\n',
+        '    "전력망/데이터센터": ["ferc", "grid", "transmission", "large load", "data center", "power"],\n'
+        '    "전력기기/변압기": TRANSFORMER_POLICY_TERMS,\n'
+        '    "원전/전력기기": ["nuclear", "reactor", "uranium"],\n',
+    )
+    text = replace_once(
+        text,
+        '    Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),\n',
+        '    Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),\n'
+        '    Source("Federal Register transformers", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=distribution+transformers+energy+conservation+standards&order=newest&per_page=20", "federal_register_json"),\n',
+    )
+    text = replace_once(
+        text,
+        '    stage_score = sum(len(v) for v in matched.values())\n'
+        '    has_major_filing = any(keyword.lower() in haystack for keyword in MAJOR_FILING_KEYWORDS)\n'
+        '    if any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "korea_presidential_personnel", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):\n',
+        '    stage_score = sum(len(v) for v in matched.values())\n'
+        '    has_major_filing = any(keyword.lower() in haystack for keyword in MAJOR_FILING_KEYWORDS)\n'
+        '    is_transformer_policy = any(term in haystack for term in TRANSFORMER_POLICY_TERMS)\n'
+        '    if (\n'
+        '        (is_transformer_policy and any(bucket in matched for bucket in ("agency_order", "final_rule")))\n'
+        '        or any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "korea_presidential_personnel", "fda_decision"))\n'
+        '        or ("fcc_decision_notice" in matched and is_fcc_source)\n'
+        '    ):\n',
+    )
+    text = replace_once(
+        text,
+        '    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "company_filing", "fda_decision")):\n'
+        '        impacts.extend(["돈 버는 능력", "수급"])\n'
+        '        paths.extend(["이익", "수급"])\n'
+        '    if "company_filing" in matched:\n',
+        '    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "company_filing", "fda_decision")):\n'
+        '        impacts.extend(["돈 버는 능력", "수급"])\n'
+        '        paths.extend(["이익", "수급"])\n'
+        '    if is_transformer_policy:\n'
+        '        impacts.extend(["돈 버는 능력", "수급"])\n'
+        '        paths.extend(["공급·수요", "밸류체인"])\n'
+        '    if "company_filing" in matched:\n',
+    )
+    return text
+
+
 def patch_watch_source(text: str) -> str:
     text = patch_federal_register_boilerplate(text)
+    text = patch_transformer_policy_watch(text)
     if "korea_presidential_personnel" in text:
         return text
 
