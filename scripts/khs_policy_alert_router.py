@@ -25,7 +25,7 @@ MATCHED_KEY_LABELS = {
     "permit_restart": "인허가·임대 재개",
     "sanctions_tariffs_export": "제재·관세·수출통제",
     "agency_order": "기관 명령/규칙",
-    "fcc_decision_notice": "FCC 결정·회의 공지",
+    "fcc_decision_notice": "규칙 제안·회의 공지",
     "presidential_action": "대통령 정책문서",
     "korea_presidential_personnel": "대통령실 고위급 인사",
     "company_filing": "기업 공시",
