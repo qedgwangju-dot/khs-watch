@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Runtime compatibility patch for KHS policy watch.
 
-The base watcher is intentionally broad. Until the Korean presidential
-personnel parser is folded into the source watcher, this script injects focused
-watch logic in one visible, testable place instead of keeping long inline
-patches in the GitHub Actions YAML.
+The base watcher is intentionally broad. Until focused parsers are folded into
+the source watcher, this script injects focused watch logic in one visible,
+testable place instead of keeping long inline patches in the GitHub Actions YAML.
 """
 
 from __future__ import annotations
@@ -54,6 +53,67 @@ TRANSFORMER_POLICY_TERMS = [
     "electrical core steel", "grain-oriented electrical steel", "grain oriented electrical steel",
     "goes", "amorphous", "amorphous core", "amorphous-core", "transformer core",
 ]
+'''
+
+
+TRANSFORMER_CLASSIFY_WRAPPER = r'''
+def _transformer_policy_keyword_hit(text: str, keyword: str) -> bool:
+    keyword = keyword.lower()
+    if len(keyword) <= 4 and re.fullmatch(r"[a-z0-9]+", keyword):
+        return re.search(rf"\b{re.escape(keyword)}\b", text) is not None
+    return keyword in text
+
+
+def _is_transformer_policy_text(text: str) -> bool:
+    haystack = text.lower()
+    return any(_transformer_policy_keyword_hit(haystack, term) for term in TRANSFORMER_POLICY_TERMS)
+
+
+def _unique_extend(values: list[str], additions: list[str]) -> list[str]:
+    merged = list(values or [])
+    for value in additions:
+        if value not in merged:
+            merged.append(value)
+    return merged
+
+
+_original_transformer_classify_item = classify_item
+
+
+def classify_item(item: dict) -> dict | None:
+    alert = _original_transformer_classify_item(item)
+    haystack = f"{item.get('title', '')} {item.get('summary', '')}".lower()
+    if not _is_transformer_policy_text(haystack):
+        return alert
+
+    if alert is None:
+        fingerprint = hashlib.sha256(f"{item.get('source')}|{item.get('title')}|{item.get('link')}".encode("utf-8")).hexdigest()[:16]
+        alert = {
+            **item,
+            "fingerprint": fingerprint,
+            "matched": {"agency_order": ["request for information"]},
+            "importance": "상",
+            "status": "확정",
+            "impacts": ["시간표", "돈 버는 능력", "수급"],
+            "paths": ["정책 타임라인", "공급·수요", "밸류체인"],
+            "sectors": ["전력기기/변압기", "전력망/데이터센터"],
+        }
+        return alert
+
+    alert["importance"] = "상"
+    matched = alert.setdefault("matched", {})
+    matched.setdefault("agency_order", ["request for information"])
+    alert["impacts"] = _unique_extend(alert.get("impacts") or [], ["시간표", "돈 버는 능력", "수급"])
+    alert["paths"] = _unique_extend(alert.get("paths") or [], ["정책 타임라인", "공급·수요", "밸류체인"])
+
+    sectors = list(alert.get("sectors") or [])
+    if not any(term in haystack for term in ("nuclear", "reactor", "uranium")):
+        sectors = [sector for sector in sectors if sector != "원전/전력기기"]
+    if not any(term in haystack for term in ("semiconductor", "chips", "nvidia", "hbm", "artificial intelligence")) and not re.search(r"\bai\b", haystack):
+        sectors = [sector for sector in sectors if sector != "반도체/AI"]
+    sectors = _unique_extend(sectors, ["전력기기/변압기", "전력망/데이터센터"])
+    alert["sectors"] = sectors
+    return alert
 '''
 
 
@@ -147,6 +207,10 @@ def replace_once(text: str, old: str, new: str) -> str:
     return text.replace(old, new, 1)
 
 
+def replace_optional(text: str, old: str, new: str) -> str:
+    return text.replace(old, new, 1) if old in text else text
+
+
 def patch_federal_register_boilerplate(text: str) -> str:
     if "FEDERAL_REGISTER_BOILERPLATE_PATTERNS" in text:
         return text
@@ -166,16 +230,14 @@ def clean_text(value: str | None) -> str:
 
 
 def patch_transformer_policy_watch(text: str) -> str:
-    if "Federal Register transformers" in text:
-        return text
-
-    text = replace_once(
+    if "TRANSFORMER_POLICY_TERMS" not in text:
+        text = replace_once(text, "\nSECTOR_KEYWORDS = {", TRANSFORMER_CONSTANTS + "\nSECTOR_KEYWORDS = {")
+    text = replace_optional(
         text,
         '"notice of proposed rulemaking", "nopr", "request for comments",',
         '"notice of proposed rulemaking", "nopr", "request for information", "rfi", "request for comments",',
     )
-    text = replace_once(text, "\nSECTOR_KEYWORDS = {", TRANSFORMER_CONSTANTS + "\nSECTOR_KEYWORDS = {")
-    text = replace_once(
+    text = replace_optional(
         text,
         '    "전력망/데이터센터": ["ferc", "grid", "transmission", "large load", "data center", "power"],\n'
         '    "원전/전력기기": ["nuclear", "reactor", "uranium", "transformer"],\n',
@@ -183,46 +245,19 @@ def patch_transformer_policy_watch(text: str) -> str:
         '    "전력기기/변압기": TRANSFORMER_POLICY_TERMS,\n'
         '    "원전/전력기기": ["nuclear", "reactor", "uranium"],\n',
     )
-    text = replace_once(
-        text,
-        '    Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),\n',
-        '    Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),\n'
-        '    Source("Federal Register transformers", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=distribution+transformers+energy+conservation+standards&order=newest&per_page=20", "federal_register_json"),\n',
-    )
-    text = replace_once(
-        text,
-        '    stage_score = sum(len(v) for v in matched.values())\n'
-        '    has_major_filing = any(keyword.lower() in haystack for keyword in MAJOR_FILING_KEYWORDS)\n'
-        '    if any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "korea_presidential_personnel", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):\n',
-        '    stage_score = sum(len(v) for v in matched.values())\n'
-        '    has_major_filing = any(keyword.lower() in haystack for keyword in MAJOR_FILING_KEYWORDS)\n'
-        '    is_transformer_policy = any(term in haystack for term in TRANSFORMER_POLICY_TERMS)\n'
-        '    if (\n'
-        '        (is_transformer_policy and any(bucket in matched for bucket in ("agency_order", "final_rule")))\n'
-        '        or any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "korea_presidential_personnel", "fda_decision"))\n'
-        '        or ("fcc_decision_notice" in matched and is_fcc_source)\n'
-        '    ):\n',
-    )
-    text = replace_once(
-        text,
-        '    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "company_filing", "fda_decision")):\n'
-        '        impacts.extend(["돈 버는 능력", "수급"])\n'
-        '        paths.extend(["이익", "수급"])\n'
-        '    if "company_filing" in matched:\n',
-        '    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "company_filing", "fda_decision")):\n'
-        '        impacts.extend(["돈 버는 능력", "수급"])\n'
-        '        paths.extend(["이익", "수급"])\n'
-        '    if is_transformer_policy:\n'
-        '        impacts.extend(["돈 버는 능력", "수급"])\n'
-        '        paths.extend(["공급·수요", "밸류체인"])\n'
-        '    if "company_filing" in matched:\n',
-    )
+    if "Federal Register transformers" not in text:
+        text = replace_once(
+            text,
+            '    Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),\n',
+            '    Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),\n'
+            '    Source("Federal Register transformers", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=distribution+transformers+energy+conservation+standards&order=newest&per_page=20", "federal_register_json"),\n',
+        )
+    if "_original_transformer_classify_item" not in text:
+        text = replace_once(text, "\n\ndef load_seen() -> dict:", TRANSFORMER_CLASSIFY_WRAPPER + "\n\ndef load_seen() -> dict:")
     return text
 
 
-def patch_watch_source(text: str) -> str:
-    text = patch_federal_register_boilerplate(text)
-    text = patch_transformer_policy_watch(text)
+def patch_korea_presidential_personnel(text: str) -> str:
     if "korea_presidential_personnel" in text:
         return text
 
@@ -284,6 +319,13 @@ def patch_watch_source(text: str) -> str:
         '{"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html"}',
         '{"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "korea_president_html", "fcc_html"}',
     )
+    return text
+
+
+def patch_watch_source(text: str) -> str:
+    text = patch_federal_register_boilerplate(text)
+    text = patch_transformer_policy_watch(text)
+    text = patch_korea_presidential_personnel(text)
     return text
 
 
