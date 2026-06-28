@@ -16,7 +16,7 @@ This workflow moves the 06:30 KST `GAMEJOA 장전 핵심 뉴스 레이더` from 
 
 ## Runner Script
 
-`scripts/gamejoa_preopen_news_radar.py`
+`scripts/gamejoa_preopen_news_radar_runner.py`
 
 ## Required GitHub Secrets
 
@@ -81,7 +81,7 @@ PowerShell:
 
 ```powershell
 $env:TELEGRAM_DRY_RUN='true'
-python scripts/gamejoa_preopen_news_radar.py
+python scripts/gamejoa_preopen_news_radar_runner.py
 ```
 
 If local `python` is not on PATH, use the Codex bundled Python runtime.
