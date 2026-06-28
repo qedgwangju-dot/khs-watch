@@ -60,6 +60,10 @@ RISK_TERMS = [
     "데이터센터", "IDC", "GPU 투자", "전기료", "전기요금", "전력요금",
     "금리 인하 지연", "배당", "배당주", "임대 단가", "과잉 공급",
 ]
+STRUCTURE_NOTE = (
+    "통신비 인하 압박은 오래된 리스크지만 AI 인프라·IDC·클라우드 매출 비중이 커질수록 "
+    "통신사 실적에서 통신요금 의존도는 낮아집니다. 핵심은 요금 규제보다 수익 구조 전환 속도입니다."
+)
 HIGH_IMPACT_TERMS = [
     "인하", "부담 완화", "확대", "개편", "시행", "의무", "할인율",
     "선택약정", "단통법", "공시지원금", "전환지원금", "도매대가",
@@ -168,7 +172,7 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
             "importance": "상" if high else "중",
             "status": "확정",
             "impacts": ["돈 버는 능력", "할인율", "시간표"],
-            "paths": ["이익", "할인율", "정책 타임라인"],
+            "paths": ["이익", "할인율", "정책 타임라인", "수익구조 전환"],
             "sectors": ["국내 통신정책/통신3사"],
             "telecom_policy_risk": True,
             "telecom_policy_check": (
@@ -182,6 +186,7 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
                 "데이터센터 과잉 공급: 임대 단가 하락 가능성 낮음~중간 / "
                 "전기료 인상: 데이터센터 운영비 증가 가능성 중간"
             ),
+            "telecom_structure_note": STRUCTURE_NOTE,
         }
     return list(deduped.values())
 
