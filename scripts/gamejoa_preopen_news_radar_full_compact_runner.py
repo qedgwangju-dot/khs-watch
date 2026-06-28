@@ -14,6 +14,47 @@ import gamejoa_preopen_news_radar_contract_runner as contract
 telegram = contract.telegram
 base = contract.base
 
+BIOTECH_SECTOR = "바이오/FDA"
+BIOTECH_QUERY = (
+    "바이오 주도주 복귀 체크",
+    "biotech FDA approval PDUFA complete response letter CRL drug launch commercial sales profit guidance royalty milestone upfront licensing technology transfer pharma pipeline priority big pharma Reuters Bloomberg CNBC MarketWatch",
+)
+BIOTECH_TERMS = [
+    "biotech", "biopharma", "pharma", "fda", "pdufa", "approval", "complete response letter",
+    "crl", "clinical trial", "phase 3", "priority review", "nda", "bla", "drug launch",
+    "commercial sales", "royalty", "milestone", "upfront", "license agreement", "licensing",
+    "technology transfer", "out-license", "collaboration", "pipeline priority", "big pharma",
+    "revenue", "profit", "earnings", "guidance", "rate cut", "real yield", "discount rate",
+    "treasury", "tips", "xbi", "ibb", "기술이전", "마일스톤", "선급금", "임상", "승인",
+    "매출", "영업이익", "빅파마", "파이프라인",
+]
+BIOTECH_DOMAIN_TERMS = [
+    "biotech", "biopharma", "pharma", "fda", "pdufa", "complete response letter", "crl",
+    "clinical trial", "phase 3", "priority review", "adcom", "nda", "bla", "drug launch",
+    "pipeline priority", "big pharma", "xbi", "ibb", "바이오", "제약", "신약", "임상",
+    "빅파마", "파이프라인",
+]
+BIOTECH_TRANSFER_TERMS = [
+    "technology transfer", "license agreement", "licensing", "out-license", "collaboration",
+    "milestone", "upfront", "기술이전", "마일스톤", "선급금",
+]
+BIOTECH_SALES_TERMS = [
+    "commercial sales", "drug launch", "revenue", "profit", "earnings", "guidance", "royalty",
+    "upfront", "milestone", "매출", "영업이익", "마일스톤", "선급금",
+]
+BIOTECH_FDA_TERMS = [
+    "fda", "pdufa", "approval", "complete response letter", "crl", "priority review",
+    "adcom", "nda", "bla", "phase 3", "임상", "승인",
+]
+BIOTECH_PHARMA_PRIORITY_TERMS = [
+    "pipeline priority", "big pharma", "pfizer", "merck", "roche", "novartis", "lilly",
+    "astrazeneca", "bristol myers", "bms", "johnson & johnson", "j&j", "sanofi", "gsk",
+    "abbvie", "takeda", "빅파마", "파이프라인",
+]
+BIOTECH_DISCOUNT_TERMS = [
+    "rate cut", "real yield", "discount rate", "treasury", "tips", "fed", "금리", "실질금리",
+]
+
 
 def append_unique(seq: list, values: list) -> None:
     for value in values:
@@ -27,6 +68,7 @@ def enforce_semiconductor_cycle_contract() -> None:
         ("반도체 정책 드라이브", "semiconductor R&D tax credit tax deduction chip subsidy investment credit materials equipment components Korea Samsung SK Hynix 소부장 세액공제 Reuters Bloomberg 한국 정부"),
         ("메가프로젝트 일정 - 미국 항만 파업", "US East Coast port strike ILA USMX contract expires October port labor negotiations freight rates shipping megaproject project schedule equipment delivery Reuters Bloomberg CNBC MarketWatch"),
         ("중국 부양 벌크선", "China stimulus iron ore coal dry bulk freight Baltic Dry Index bulk carrier rates Reuters Bloomberg CNBC MarketWatch"),
+        ("북미 송전망 정책 변수", "North America transmission grid investment approval regulatory permitting interconnection FERC DOE utility transmission line delay data center power grid Reuters Bloomberg CNBC MarketWatch"),
     ])
     append_unique(base.TERMS, [
         "customer inventory", "dram", "inventory", "memory price", "nand", "oversupply",
@@ -39,11 +81,20 @@ def enforce_semiconductor_cycle_contract() -> None:
         "port labor", "port strike", "shipping rate", "stimulus", "strike", "usmx",
         "capex schedule", "delivery schedule", "equipment delivery", "mega project",
         "megaproject", "project delay", "project schedule",
+        "grid approval", "grid delay", "grid investment", "interconnection", "north america grid",
+        "permitting", "public utility commission", "regulatory approval", "transmission grid",
+        "transmission investment", "transmission line", "utility capex", "utility commission",
     ])
     for idx, (label, keys) in enumerate(base.SECTORS):
         if label == "반도체/AI":
             merged = list(keys)
             append_unique(merged, ["dram", "nand", "memory", "inventory", "valuation", "tax credit", "tax deduction", "subsidy", "materials", "equipment", "component", "세액공제", "소부장"])
+            base.SECTORS[idx] = (label, merged)
+            break
+    for idx, (label, keys) in enumerate(base.SECTORS):
+        if label == "데이터센터/전력망/전력기기":
+            merged = list(keys)
+            append_unique(merged, ["transmission grid", "transmission line", "interconnection", "permitting", "regulatory approval", "utility commission", "grid investment", "grid delay"])
             base.SECTORS[idx] = (label, merged)
             break
     if not any(label == "해운/항만/물류" for label, _ in base.SECTORS):
@@ -72,15 +123,17 @@ def enforce_semiconductor_cycle_contract() -> None:
         alert = original_classify(row, now)
         port_terms = ["port strike", "port labor", "dockworker", "ila", "usmx", "east coast port", "gulf coast port", "contract expires", "freight rate", "shipping rate"]
         china_bulk_terms = ["china", "stimulus", "iron ore", "coal", "dry bulk", "bulk carrier", "baltic dry", "baltic dry index", "bdi"]
+        grid_policy_terms = ["transmission grid", "transmission line", "grid investment", "grid approval", "grid delay", "regulatory approval", "permitting", "interconnection", "public utility commission", "utility commission", "utility capex", "ferc", "doe"]
         is_port_strike = any(base.has(text, term) for term in port_terms) and any(base.has(text, term) for term in ["port", "ila", "usmx", "dockworker"])
         is_china_bulk = base.has(text, "china") and base.has(text, "stimulus") and any(base.has(text, term) for term in ["iron ore", "coal", "dry bulk", "bulk carrier", "baltic dry", "bdi"])
+        is_grid_policy = any(base.has(text, term) for term in grid_policy_terms) and any(base.has(text, term) for term in ["approval", "regulatory", "permitting", "delay", "interconnection", "commission", "ferc", "doe"])
 
-        if (is_port_strike or is_china_bulk) and not alert:
+        if (is_port_strike or is_china_bulk or is_grid_policy) and not alert:
             age = base.age_hours(row, now)
-            sectors = ["메가프로젝트 일정/물류", "해운/항만/물류"] if is_port_strike else ["중국 경기부양/벌크선"]
+            sectors = ["메가프로젝트 일정/물류", "해운/항만/물류"] if is_port_strike else ["중국 경기부양/벌크선"] if is_china_bulk else ["데이터센터/전력망/전력기기"]
             if is_china_bulk:
                 sectors.append("해운/항만/물류")
-            impacts = ["시간표", "돈 버는 능력"] if is_port_strike else ["돈 버는 능력"]
+            impacts = ["시간표", "돈 버는 능력"] if is_port_strike else ["돈 버는 능력"] if is_china_bulk else ["할인율", "시간표"]
             score = 92 + (10 if age is not None and age <= 12 else 0)
             status = "확정" if row.get("layer") == "official" else "공식 확인 전"
             alert = {
@@ -93,7 +146,7 @@ def enforce_semiconductor_cycle_contract() -> None:
                 "link": row.get("link") or "",
                 "published": row["published"].isoformat(timespec="minutes") if row.get("published") else "확인 불가",
                 "impacts": impacts,
-                "paths": ["이익" if x == "돈 버는 능력" else "메가프로젝트 일정" if is_port_strike else "정책 타임라인" for x in impacts],
+                "paths": ["이익" if x == "돈 버는 능력" else "정책 타임라인" for x in impacts],
                 "sectors": sectors,
                 "matched": [],
                 "local_dc_policy": False,
@@ -103,6 +156,25 @@ def enforce_semiconductor_cycle_contract() -> None:
                 "failed_signal": "",
                 "korea_basis": "예고된 이벤트의 공식화" if status == "확정" else "외신 확산",
             }
+
+        if alert and is_grid_policy:
+            for impact in ["할인율", "시간표"]:
+                if impact not in alert["impacts"]:
+                    alert["impacts"].append(impact)
+            if "의사결정 영향 제한적" in alert["impacts"] and len(alert["impacts"]) > 1:
+                alert["impacts"] = [x for x in alert["impacts"] if x != "의사결정 영향 제한적"]
+            alert["paths"] = [
+                "이익" if x == "돈 버는 능력" else "할인율" if x == "할인율" else "수급" if x == "수급" else "정책 타임라인"
+                for x in alert["impacts"]
+            ]
+            if "데이터센터/전력망/전력기기" not in alert["sectors"]:
+                alert["sectors"].append("데이터센터/전력망/전력기기")
+            alert["score"] = max(int(alert.get("score", 0)), 100)
+            alert["importance"] = "상" if alert["score"] >= 100 else "중"
+            alert["grid_policy_delay"] = True
+            alert["news"] = "북미 송전망 투자 정책 변수: 정부 승인·규제 지연 리스크"
+            alert["interpretation"] = "북미 송전망 투자는 전력 수요보다 정부 승인, 규제, 인허가, 계통접속 일정에 속도가 좌우됩니다. 지연 시 전력기기·전선·변압기 수주 기대의 인식 시점과 밸류에이션 프리미엄을 재점검해야 합니다."
+            alert["failed_signal"] = "FERC/DOE·주 공공서비스위원회 승인과 유틸리티 CAPEX 일정이 유지되고 계통접속·송전선 인허가 지연 신호가 없으면 재료 약화"
 
         if alert and is_port_strike:
             for impact in ["시간표", "돈 버는 능력"]:
@@ -179,6 +251,80 @@ def enforce_semiconductor_cycle_contract() -> None:
 enforce_semiconductor_cycle_contract()
 
 
+def enforce_biotech_leadership_filter() -> None:
+    append_unique(base.QUERIES, [BIOTECH_QUERY])
+    append_unique(base.TERMS, BIOTECH_TERMS)
+    for idx, (label, keys) in enumerate(base.SECTORS):
+        if label == BIOTECH_SECTOR:
+            merged = list(keys)
+            append_unique(merged, BIOTECH_DOMAIN_TERMS)
+            base.SECTORS[idx] = (label, merged)
+            break
+    else:
+        base.SECTORS.append((BIOTECH_SECTOR, BIOTECH_DOMAIN_TERMS))
+
+    original_classify = contract.strict.classify
+
+    def classify(row: dict, now):
+        text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+        alert = original_classify(row, now)
+        is_biotech = any(base.has(text, term) for term in BIOTECH_DOMAIN_TERMS) or (
+            alert is not None and BIOTECH_SECTOR in alert.get("sectors", [])
+        )
+        if not is_biotech:
+            return alert
+
+        has_transfer = any(base.has(text, term) for term in BIOTECH_TRANSFER_TERMS)
+        has_sales = any(base.has(text, term) for term in BIOTECH_SALES_TERMS)
+        has_fda = any(base.has(text, term) for term in BIOTECH_FDA_TERMS)
+        has_priority = any(base.has(text, term) for term in BIOTECH_PHARMA_PRIORITY_TERMS)
+        has_discount = any(base.has(text, term) for term in BIOTECH_DISCOUNT_TERMS)
+        has_leadership_signal = has_sales or has_fda or has_priority or has_discount
+
+        if has_transfer and not has_leadership_signal:
+            return None
+        if not alert:
+            return None
+
+        append_unique(alert.setdefault("sectors", []), [BIOTECH_SECTOR])
+        if has_sales:
+            append_unique(alert.setdefault("impacts", []), ["돈 버는 능력"])
+        if has_fda or has_priority:
+            append_unique(alert.setdefault("impacts", []), ["시간표"])
+        if has_discount:
+            append_unique(alert.setdefault("impacts", []), ["할인율"])
+        if len(alert["impacts"]) > 1:
+            alert["impacts"] = [x for x in alert["impacts"] if x != "의사결정 영향 제한적"]
+        alert["paths"] = [
+            "이익" if x == "돈 버는 능력" else "할인율" if x == "할인율" else "수급" if x == "수급" else "정책 타임라인"
+            for x in alert["impacts"]
+        ]
+        alert["score"] = max(int(alert.get("score", 0)), 108 if (has_sales and has_fda) else 100 if (has_fda or has_priority) else 92)
+        alert["importance"] = "상" if int(alert["score"]) >= 100 else "중"
+        alert["biotech_leadership_filter"] = True
+        alert["biotech_check"] = (
+            "실제 매출/이익, 빅파마 파이프라인 우선순위, FDA 일정, 금리/할인율 중 무엇이 바뀌는지 확인"
+        )
+        alert["counter"] = (
+            "기술이전 발표만으로는 주도주 복귀 신호가 약합니다. 선급금·마일스톤의 매출 인식, "
+            "빅파마 우선순위, FDA 일정, 금리 환경이 함께 확인되어야 합니다."
+        )
+        alert["interpretation"] = (
+            "바이오가 다시 주도주가 되려면 기대가 아니라 실제 매출과 이익 전환이 보여야 합니다. "
+            "FDA 일정과 빅파마 파이프라인 우선순위, 할인율이 같이 맞을 때만 장전 핵심 후보로 봅니다."
+        )
+        alert["failed_signal"] = (
+            "기술이전 금액·기간·상대방 우선순위·FDA 일정·매출 인식 조건이 확인되지 않거나 "
+            "금리 상승으로 바이오 밸류에이션이 눌리면 테마성 반응에 그칠 가능성"
+        )
+        return alert
+
+    contract.strict.classify = classify
+
+
+enforce_biotech_leadership_filter()
+
+
 def safe(value: object) -> str:
     return html.escape(str(value or "확인 불가"), quote=False)
 
@@ -214,6 +360,10 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
         extra += ["대형 CAPEX 일정", "기자재 납기", "EPC/전력기기 수주 인식", "SCFI", "Drewry WCI"]
     if "중국 경기부양/벌크선" in alert.get("sectors", []):
         extra += ["Iron Ore", "Coal", "BDI", "벌크선 운임", "중국 인프라/부동산 지표"]
+    if alert.get("grid_policy_delay"):
+        extra += ["FERC", "DOE", "주 공공서비스위원회", "유틸리티 CAPEX", "전력기기/전선/변압기"]
+    if alert.get("biotech_leadership_filter"):
+        extra += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
     try:
         base_text = base.related(alert, fred, te)
         base_parts = [] if base_text == "확인 가능한 직접 티커 없음" else [part.strip() for part in base_text.split(",") if part.strip()]
@@ -224,6 +374,8 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
             out += ["VRT", "ETN", "GEV", "CEG", "SMH"]
         if "반도체/AI" in alert.get("sectors", []):
             out += ["NVDA", "MU", "AVGO", "AMD", "TSM", "ASML"]
+        if alert.get("biotech_leadership_filter"):
+            out += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
         out += extra
         if "할인율" in alert.get("impacts", []):
             out += [
@@ -258,7 +410,21 @@ def china_bulk_check(alert: dict) -> str | None:
     return "중국 부양책 실물 강도·철광석/석탄 물동량·BDI/벌크선 운임 동행"
 
 
+def grid_policy_check(alert: dict) -> str | None:
+    if not alert.get("grid_policy_delay"):
+        return None
+    return "정부 승인·규제/인허가·계통접속 일정·유틸리티 CAPEX 집행 속도"
+
+
+def biotech_leadership_check(alert: dict) -> str | None:
+    if not alert.get("biotech_leadership_filter"):
+        return None
+    return alert.get("biotech_check") or "실제 매출/이익·빅파마 우선순위·FDA 일정·금리/할인율 동시 확인"
+
+
 def display_news(alert: dict) -> str:
+    if alert.get("grid_policy_delay"):
+        return "북미 송전망 투자 정책 변수: 정부 승인·규제 지연 리스크"
     if alert.get("port_strike_risk"):
         return "메가프로젝트 일정: 미국 동부·걸프 항만 계약 만료/파업 리스크"
     if alert.get("china_stimulus_bulk"):
@@ -298,6 +464,8 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     policy_check = semiconductor_policy_check(alert)
     port_check = port_strike_check(alert)
     bulk_check = china_bulk_check(alert)
+    grid_check = grid_policy_check(alert)
+    biotech_check = biotech_leadership_check(alert)
     if policy_check:
         lines.append(f"- 반도체 정책 체크: {safe(policy_check)}")
     elif semi_check:
@@ -306,6 +474,10 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
         lines.append(f"- 메가프로젝트 일정 체크: {safe(port_check)}")
     if bulk_check:
         lines.append(f"- 중국 부양·벌크선 체크: {safe(bulk_check)}")
+    if grid_check:
+        lines.append(f"- 송전망 정책 체크: {safe(grid_check)}")
+    if biotech_check:
+        lines.append(f"- 바이오 주도주 체크: {safe(biotech_check)}")
     lines += [
         f"- 실패 신호: {safe(failed_signal)}",
         f"- 출처: {source_text} · 조회 {now:%H:%M KST}",
