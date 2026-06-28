@@ -15,6 +15,7 @@ K_DEFENSE_SECTOR = "K-방산/항공우주"
 K_DEFENSE_CHECK = "계약금액·기간·상대국/상대방·공시 여부·양산/인도 일정·수출허가 확인"
 K_DEFENSE_COMMON_RISK = "트럼프 행정부 압박: 방위비 분담금 증액·주한미군 재조정은 전 종목 지정학/할인율 리스크"
 K_DEFENSE_POLAND_RISK = "단일 고객 의존도: 폴란드향 수출 50%+ 노출 여부와 정권 교체·예산 재검토는 현대로템·한화에어로 수주잔고 리스크"
+K_DEFENSE_CONTRACT_DELAY_RISK = "수주 계약 지연: 폴란드·사우디 대형 계약이 정치적 사유로 지연되면 현대로템·LIG넥스원 단기 주가 조정 리스크"
 K_DEFENSE_COMPANY_TERMS = [
     "hanwha aerospace", "한화에어로스페이스",
     "lig nex1", "lig넥스원", "lig 넥스원",
@@ -49,6 +50,19 @@ K_DEFENSE_POLAND_STRESS_TERMS = [
     "government change", "election", "defense budget", "budget review", "cancel",
     "delay", "renegotiate", "정권 교체", "예산", "재검토", "취소", "지연",
 ]
+K_DEFENSE_DELAY_MARKET_TERMS = [
+    "poland", "polish", "폴란드", "saudi", "saudi arabia", "사우디", "사우디아라비아",
+]
+K_DEFENSE_DELAY_STRESS_TERMS = [
+    "approval", "budget", "contract delay", "contract signing", "delay", "delayed",
+    "negotiation", "political", "politically", "postpone", "postponed", "review",
+    "승인", "예산", "계약 지연", "본계약", "협상", "정치", "정치적", "지연", "연기", "재검토",
+]
+K_DEFENSE_DELAY_EXPOSURE_TERMS = [
+    "hyundai rotem", "현대로템", "k2 tank", "k2 전차", "wheeled armored vehicle", "차륜형장갑차",
+    "lig nex1", "lig넥스원", "lig 넥스원", "cheongung", "cheongung ii", "km-sam",
+    "천궁", "천궁Ⅱ", "천궁2", "hyungung", "현궁", "guided missile", "유도무기",
+]
 K_DEFENSE_QUERIES = [
     (
         "K-방산 수출/수주",
@@ -66,6 +80,10 @@ K_DEFENSE_QUERIES = [
         "K-방산 폴란드 의존도",
         "Poland Korean defense imports K9 Chunmoo K2 Hanwha Aerospace Hyundai Rotem government change election defense budget review Reuters Bloomberg Yonhap",
     ),
+    (
+        "K-방산 대형계약 지연",
+        "Poland Saudi Arabia Korean defense contract delay political approval budget Hyundai Rotem K2 LIG Nex1 Cheongung II KM-SAM Reuters Bloomberg Yonhap",
+    ),
 ]
 
 
@@ -82,6 +100,8 @@ def has_any(text: str, terms: list[str]) -> bool:
 def k_defense_title(text: str) -> str:
     if has_any(text, K_DEFENSE_KOREA_RISK_TERMS):
         return "트럼프 행정부 방위비·주한미군 압박 리스크 체크"
+    if has_any(text, K_DEFENSE_DELAY_MARKET_TERMS) and has_any(text, K_DEFENSE_DELAY_STRESS_TERMS) and has_any(text, K_DEFENSE_DELAY_EXPOSURE_TERMS):
+        return "폴란드·사우디 K-방산 대형계약 지연 리스크 체크"
     if has_any(text, ["poland", "polish", "폴란드"]) and has_any(text, K_DEFENSE_POLAND_STRESS_TERMS) and has_any(text, ["hanwha aerospace", "한화에어로스페이스", "hyundai rotem", "현대로템", "k9", "chunmoo", "천무", "k2 tank", "k2 전차"]):
         return "폴란드 K-방산 의존도·정권 교체 리스크 체크"
     if has_any(text, ["hanwha aerospace", "한화에어로스페이스", "k9", "k9 thunder", "k9 자주포", "chunmoo", "천무", "redback", "레드백"]):
@@ -105,12 +125,25 @@ def k_defense_risk_check(text: str) -> str:
     )
     if has_poland_exposure:
         risks.append(K_DEFENSE_POLAND_RISK)
+    has_delay_exposure = has_any(text, K_DEFENSE_DELAY_MARKET_TERMS) and has_any(text, K_DEFENSE_DELAY_EXPOSURE_TERMS)
+    if has_delay_exposure:
+        risks.append(K_DEFENSE_CONTRACT_DELAY_RISK)
     return " / ".join(risks)
 
 
 def enforce_k_defense_watch() -> None:
     append_unique(base.QUERIES, K_DEFENSE_QUERIES)
-    append_unique(base.TERMS, K_DEFENSE_COMPANY_TERMS + K_DEFENSE_SYSTEM_TERMS + K_DEFENSE_EVENT_TERMS + K_DEFENSE_KOREA_RISK_TERMS + K_DEFENSE_POLAND_RISK_TERMS)
+    append_unique(
+        base.TERMS,
+        K_DEFENSE_COMPANY_TERMS
+        + K_DEFENSE_SYSTEM_TERMS
+        + K_DEFENSE_EVENT_TERMS
+        + K_DEFENSE_KOREA_RISK_TERMS
+        + K_DEFENSE_POLAND_RISK_TERMS
+        + K_DEFENSE_DELAY_MARKET_TERMS
+        + K_DEFENSE_DELAY_STRESS_TERMS
+        + K_DEFENSE_DELAY_EXPOSURE_TERMS,
+    )
     append_unique(base.TRUSTED, ["yonhap", "yna", "korea herald", "korea joongang daily", "opendart", "dart"])
     if hasattr(base, "DART_WATCH_STOCK_CODES"):
         base.DART_WATCH_STOCK_CODES.update(K_DEFENSE_DART_CODES)
@@ -125,8 +158,9 @@ def enforce_k_defense_watch() -> None:
         has_event = has_any(text, K_DEFENSE_EVENT_TERMS)
         has_korea_risk = has_any(text, K_DEFENSE_KOREA_RISK_TERMS)
         has_poland_risk = has_any(text, ["poland", "polish", "폴란드"]) and has_any(text, K_DEFENSE_POLAND_STRESS_TERMS) and has_any(text, ["hanwha aerospace", "한화에어로스페이스", "hyundai rotem", "현대로템", "k9", "chunmoo", "천무", "k2 tank", "k2 전차"])
+        has_contract_delay_risk = has_any(text, K_DEFENSE_DELAY_MARKET_TERMS) and has_any(text, K_DEFENSE_DELAY_STRESS_TERMS) and has_any(text, K_DEFENSE_DELAY_EXPOSURE_TERMS)
         alert = original_classify(row, now)
-        if not (has_k_defense or has_korea_risk or has_poland_risk) or (not has_event and not has_korea_risk and not has_poland_risk and not alert):
+        if not (has_k_defense or has_korea_risk or has_poland_risk or has_contract_delay_risk) or (not has_event and not has_korea_risk and not has_poland_risk and not has_contract_delay_risk and not alert):
             return alert
 
         is_soft_deal = has_any(text, ["mou", "loi", "양해각서"])
@@ -136,6 +170,9 @@ def enforce_k_defense_watch() -> None:
         if has_korea_risk:
             impacts = ["할인율", "수급", "시간표"]
             paths = ["지정학 리스크", "테마 수급", "정책 타임라인"]
+        elif has_contract_delay_risk:
+            impacts = ["돈 버는 능력", "수급", "시간표"]
+            paths = ["계약 가시성", "수급", "정책 타임라인"]
         elif has_poland_risk and not hard_contract:
             impacts = ["돈 버는 능력", "수급", "시간표"]
             paths = ["계약 가시성", "수급", "정책 타임라인"]
@@ -145,7 +182,7 @@ def enforce_k_defense_watch() -> None:
         title = k_defense_title(text)
 
         if not alert:
-            score = 106 if hard_contract else 104 if (has_korea_risk or has_poland_risk) else 88
+            score = 106 if hard_contract else 104 if (has_korea_risk or has_poland_risk or has_contract_delay_risk) else 88
             if age is not None and age <= 12:
                 score += 8
             alert = {
@@ -163,13 +200,13 @@ def enforce_k_defense_watch() -> None:
                 "sectors": [K_DEFENSE_SECTOR],
                 "matched": [],
                 "reflection": "낮음" if age is not None and age <= 6 else "중간",
-                "counter": "방위비·주한미군 이슈는 협상용 발언일 수 있고, 실제 분담금·배치 변경 확정 전까지 직접 실적 영향은 제한적입니다." if has_korea_risk else "MOU/LOI는 확정 매출이 아니며 본계약·금액·인도 일정·수출허가 확인 전 과대해석 가능" if is_soft_deal else "계약금액, 기간, 상대국 예산, 수출허가, 양산·인도 일정 확인 전까지 실제 매출 인식에는 시차가 있습니다.",
-                "interpretation": "방위비 분담금·주한미군 재조정 압박은 K-방산 전 종목의 한반도 지정학 프리미엄과 수급 심리를 흔들 수 있습니다." if has_korea_risk else "폴란드 의존도와 정권·예산 변화는 현대로템·한화에어로 수주잔고 가시성을 흔드는 리스크입니다." if has_poland_risk and not hard_contract else "K-방산 무기체계 수주·수출은 국내 방산주의 수주잔고와 밸류체인 수급을 바로 흔들 수 있는 재료입니다.",
-                "failed_signal": "공식 협정·국방부 발표·의회 예산·병력배치 후속 문서가 없으면 협상성 헤드라인으로 약화" if has_korea_risk else "폴란드 예산·정권 리스크가 실제 계약 취소·지연·재협상으로 연결되지 않으면 영향 제한" if has_poland_risk and not hard_contract else "공시·공식 발표·상대국 예산·수출허가·납기 확인이 뒤따르지 않으면 테마성 반응으로 약화",
+                "counter": "방위비·주한미군 이슈는 협상용 발언일 수 있고, 실제 분담금·배치 변경 확정 전까지 직접 실적 영향은 제한적입니다." if has_korea_risk else "계약 지연 뉴스는 협상 과정의 노이즈일 수 있어 공식 본계약 일정·상대국 예산·정치 이벤트 확인이 필요합니다." if has_contract_delay_risk else "MOU/LOI는 확정 매출이 아니며 본계약·금액·인도 일정·수출허가 확인 전 과대해석 가능" if is_soft_deal else "계약금액, 기간, 상대국 예산, 수출허가, 양산·인도 일정 확인 전까지 실제 매출 인식에는 시차가 있습니다.",
+                "interpretation": "방위비 분담금·주한미군 재조정 압박은 K-방산 전 종목의 한반도 지정학 프리미엄과 수급 심리를 흔들 수 있습니다." if has_korea_risk else "폴란드·사우디 대형계약 지연은 현대로템·LIG넥스원의 수주 가시성과 단기 수급을 흔드는 리스크입니다." if has_contract_delay_risk else "폴란드 의존도와 정권·예산 변화는 현대로템·한화에어로 수주잔고 가시성을 흔드는 리스크입니다." if has_poland_risk and not hard_contract else "K-방산 무기체계 수주·수출은 국내 방산주의 수주잔고와 밸류체인 수급을 바로 흔들 수 있는 재료입니다.",
+                "failed_signal": "공식 협정·국방부 발표·의회 예산·병력배치 후속 문서가 없으면 협상성 헤드라인으로 약화" if has_korea_risk else "본계약 체결 일정이 유지되거나 상대국 예산·승인이 확인되면 계약 지연 리스크는 약화" if has_contract_delay_risk else "폴란드 예산·정권 리스크가 실제 계약 취소·지연·재협상으로 연결되지 않으면 영향 제한" if has_poland_risk and not hard_contract else "공시·공식 발표·상대국 예산·수출허가·납기 확인이 뒤따르지 않으면 테마성 반응으로 약화",
                 "korea_basis": "예고된 이벤트의 공식화" if status == "확정" else "외신 확산",
             }
         else:
-            alert["score"] = max(int(alert.get("score", 0)), 106 if hard_contract else 104 if (has_korea_risk or has_poland_risk) else 88)
+            alert["score"] = max(int(alert.get("score", 0)), 106 if hard_contract else 104 if (has_korea_risk or has_poland_risk or has_contract_delay_risk) else 88)
             alert["importance"] = "상" if int(alert["score"]) >= 100 else "중"
             alert["status"] = alert.get("status") or status
             alert["news"] = title
@@ -181,9 +218,9 @@ def enforce_k_defense_watch() -> None:
                 alert["impacts"] = [impact for impact in alert["impacts"] if impact != "의사결정 영향 제한적"]
             if len(alert["paths"]) > 1:
                 alert["paths"] = [path for path in alert["paths"] if path != "의사결정 영향 제한적"]
-            alert["counter"] = "방위비·주한미군 이슈는 협상용 발언일 수 있고, 실제 분담금·배치 변경 확정 전까지 직접 실적 영향은 제한적입니다." if has_korea_risk else "MOU/LOI는 확정 매출이 아니며 본계약·금액·인도 일정·수출허가 확인 전 과대해석 가능" if is_soft_deal else "계약금액, 기간, 상대국 예산, 수출허가, 양산·인도 일정 확인 전까지 실제 매출 인식에는 시차가 있습니다."
-            alert["interpretation"] = "방위비 분담금·주한미군 재조정 압박은 K-방산 전 종목의 한반도 지정학 프리미엄과 수급 심리를 흔들 수 있습니다." if has_korea_risk else "폴란드 의존도와 정권·예산 변화는 현대로템·한화에어로 수주잔고 가시성을 흔드는 리스크입니다." if has_poland_risk and not hard_contract else "K-방산 무기체계 수주·수출은 국내 방산주의 수주잔고와 밸류체인 수급을 바로 흔들 수 있는 재료입니다."
-            alert["failed_signal"] = "공식 협정·국방부 발표·의회 예산·병력배치 후속 문서가 없으면 협상성 헤드라인으로 약화" if has_korea_risk else "폴란드 예산·정권 리스크가 실제 계약 취소·지연·재협상으로 연결되지 않으면 영향 제한" if has_poland_risk and not hard_contract else "공시·공식 발표·상대국 예산·수출허가·납기 확인이 뒤따르지 않으면 테마성 반응으로 약화"
+            alert["counter"] = "방위비·주한미군 이슈는 협상용 발언일 수 있고, 실제 분담금·배치 변경 확정 전까지 직접 실적 영향은 제한적입니다." if has_korea_risk else "계약 지연 뉴스는 협상 과정의 노이즈일 수 있어 공식 본계약 일정·상대국 예산·정치 이벤트 확인이 필요합니다." if has_contract_delay_risk else "MOU/LOI는 확정 매출이 아니며 본계약·금액·인도 일정·수출허가 확인 전 과대해석 가능" if is_soft_deal else "계약금액, 기간, 상대국 예산, 수출허가, 양산·인도 일정 확인 전까지 실제 매출 인식에는 시차가 있습니다."
+            alert["interpretation"] = "방위비 분담금·주한미군 재조정 압박은 K-방산 전 종목의 한반도 지정학 프리미엄과 수급 심리를 흔들 수 있습니다." if has_korea_risk else "폴란드·사우디 대형계약 지연은 현대로템·LIG넥스원의 수주 가시성과 단기 수급을 흔드는 리스크입니다." if has_contract_delay_risk else "폴란드 의존도와 정권·예산 변화는 현대로템·한화에어로 수주잔고 가시성을 흔드는 리스크입니다." if has_poland_risk and not hard_contract else "K-방산 무기체계 수주·수출은 국내 방산주의 수주잔고와 밸류체인 수급을 바로 흔들 수 있는 재료입니다."
+            alert["failed_signal"] = "공식 협정·국방부 발표·의회 예산·병력배치 후속 문서가 없으면 협상성 헤드라인으로 약화" if has_korea_risk else "본계약 체결 일정이 유지되거나 상대국 예산·승인이 확인되면 계약 지연 리스크는 약화" if has_contract_delay_risk else "폴란드 예산·정권 리스크가 실제 계약 취소·지연·재협상으로 연결되지 않으면 영향 제한" if has_poland_risk and not hard_contract else "공시·공식 발표·상대국 예산·수출허가·납기 확인이 뒤따르지 않으면 테마성 반응으로 약화"
 
         alert["k_defense_watch"] = True
         alert["k_defense_check"] = K_DEFENSE_CHECK
