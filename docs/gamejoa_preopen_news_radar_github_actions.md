@@ -16,6 +16,12 @@ This workflow moves the 06:30 KST `GAMEJOA 장전 핵심 뉴스 레이더` from 
 
 ## Runner Script
 
+Workflow entrypoint:
+
+`scripts/gamejoa_preopen_news_radar_strict_runner.py`
+
+Base runner:
+
 `scripts/gamejoa_preopen_news_radar_runner.py`
 
 ## Required GitHub Secrets
@@ -61,9 +67,22 @@ The workflow checks:
 
 ## Data Center Local Ban Coverage
 
-The radar includes a dedicated local data-center policy query:
+The radar treats local US data-center restriction stories as a mandatory policy/timeline screen, not as ordinary sentiment news.
+
+Dedicated local data-center policy queries include:
 
 `"data center" ban moratorium city council residents vote zoning power Reuters Bloomberg AP USA Today`
+
+`"data centers" residents vote block construction city council zoning moratorium county township local news`
+
+`"data center" "planning commission" "public hearing" permit ordinance moratorium power local news`
+
+If a fresh regional/local article contains `data center` or `data centers` plus local policy terms such as `ban`, `block`, `moratorium`, `city council`, `residents`, `vote`, `zoning`, `permit`, `ordinance`, `planning commission`, or `public hearing`, the runner:
+
+- accepts it as a trusted local-policy candidate even when it is not from a national outlet;
+- classifies it as `데이터센터/전력망/전력기기`;
+- maps the impact to `할인율` and `시간표`, not confirmed revenue unless a contract/order is separately confirmed;
+- adds a score boost and keeps up to two such items inside the seven-item report when fresh candidates exist.
 
 This is intended to catch city-council bans, zoning moratoria, and resident vote campaigns that can change AI infrastructure timelines or regulatory discount rates before national policy headlines pick them up.
 
@@ -82,6 +101,7 @@ PowerShell:
 ```powershell
 $env:TELEGRAM_DRY_RUN='true'
 python scripts/gamejoa_preopen_news_radar_runner.py
+python scripts/gamejoa_preopen_news_radar_strict_runner.py
 ```
 
 If local `python` is not on PATH, use the Codex bundled Python runtime.
