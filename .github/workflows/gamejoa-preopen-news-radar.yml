@@ -76,7 +76,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Build and send GAMEJOA preopen news radar
-        run: python scripts/gamejoa_preopen_news_radar.py
+        run: python scripts/gamejoa_preopen_news_radar_runner.py
 
       - name: Publish report summary
         if: always()
