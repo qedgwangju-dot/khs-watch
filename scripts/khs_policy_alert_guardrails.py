@@ -58,6 +58,12 @@ SECTOR_RULES: list[tuple[str, list[str]]] = [
         "fcc", "federal communications commission", "spectrum", "broadband",
         "wireless", "wireline", "satellite", "space bureau", "telecommunications",
     ]),
+    ("국내 통신정책/통신3사", [
+        "가계통신비", "통신비", "통신요금", "요금제", "5g 요금제", "중간요금제",
+        "선택약정", "할인율", "단말기유통법", "단통법", "공시지원금", "전환지원금",
+        "과학기술정보통신부", "과기정통부", "방송통신위원회", "방통위",
+        "sk텔레콤", "kt", "lg유플러스", "arpu", "가입자당 평균매출",
+    ]),
     ("행정명령/대통령문서", [
         "executive order", "presidential memorandum", "presidential determination",
         "national security memorandum", "presidential permit", "proclamation",
@@ -114,9 +120,15 @@ def is_personnel(item: dict) -> bool:
     return "korea_presidential_personnel" in (item.get("matched") or {})
 
 
+def is_domestic_telecom_policy(item: dict) -> bool:
+    return bool(item.get("telecom_policy_risk")) or "korea_telecom_policy" in (item.get("matched") or {})
+
+
 def direct_sectors(item: dict) -> list[str]:
     if is_personnel(item):
         return item.get("sectors") or ["한국 대통령실/고위급 인사"]
+    if is_domestic_telecom_policy(item):
+        return item.get("sectors") or ["국내 통신정책/통신3사"]
 
     text = haystack_for(item)
     sectors = [label for label, terms in SECTOR_RULES if has_any(text, terms)]
@@ -177,6 +189,8 @@ def korean_title_for(item: dict) -> str:
     source = str(item.get("source") or "").lower()
     text = haystack_for(item)
 
+    if is_domestic_telecom_policy(item):
+        return "정부, 통신비 인하·요금제 개편 정책 압박 확인"
     if "export control" in text or "entity list" in text:
         return "미국, 반도체·첨단기술 수출통제 규정 공표"
     if "section 301" in text or "tariff" in text or "customs enforcement" in text:
@@ -239,6 +253,8 @@ def render_report(alerts: list[dict], now: dt.datetime) -> str:
             f"- 한국장 영향: {', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
             f"- 영향 경로: {', '.join(alert.get('paths') or ['정책 타임라인'])}",
             f"- 영향 섹터: {', '.join(alert.get('sectors') or ['정책/규제 일반'])}",
+            *([f"- 국내 통신정책 체크: {alert.get('telecom_policy_check')}"] if alert.get("telecom_policy_check") else []),
+            *([f"- 체크할 리스크: {alert.get('telecom_risk_table')}"] if alert.get("telecom_risk_table") else []),
             "- 반영 가능성: 낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.",
             "- 반대 근거: 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.",
             "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
