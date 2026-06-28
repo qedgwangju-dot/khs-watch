@@ -1,0 +1,99 @@
+name: GAMEJOA preopen news radar
+
+on:
+  schedule:
+    # 21:30 UTC = 06:30 KST.
+    - cron: "30 21 * * *"
+  workflow_dispatch:
+    inputs:
+      telegram_dry_run:
+        description: "Build the report without sending Telegram"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gamejoa-preopen-news-radar
+  cancel-in-progress: false
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      RADAR_MAX_AGE_HOURS: "48"
+      DART_DAYS_BACK: "3"
+      SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || vars.SEC_USER_AGENT || 'GAMEJOA-preopen-radar contact=please-set-secret' }}
+      FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      DART_API_KEY: ${{ secrets.DART_API_KEY }}
+      DART_WATCH_STOCK_CODES: ${{ vars.DART_WATCH_STOCK_CODES || '005930,000660,373220,051910,006400,112610,267260,010120,064350,010140,329180' }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      SEND_TELEGRAM: "true"
+      TELEGRAM_DRY_RUN: ${{ github.event.inputs.telegram_dry_run || 'false' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check configuration
+        run: |
+          {
+            echo "### Configuration"
+            if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+              echo "- Telegram: missing token or chat id; report will build but cannot be delivered."
+            else
+              echo "- Telegram: configured"
+            fi
+
+            if [ -z "$DART_API_KEY" ]; then
+              echo "- OpenDART: DART_API_KEY missing; Korean disclosure layer will be marked access-limited."
+            else
+              echo "- OpenDART: configured"
+            fi
+
+            if [ -z "$FRED_API_KEY" ]; then
+              echo "- FRED: FRED_API_KEY missing; public CSV fallback will be used."
+            else
+              echo "- FRED: API key configured"
+            fi
+
+            if [ -z "$SEC_USER_AGENT" ] || [ "$SEC_USER_AGENT" = "GAMEJOA-preopen-radar contact=please-set-secret" ]; then
+              echo "- SEC_USER_AGENT: missing/default; SEC may rate-limit."
+            else
+              echo "- SEC_USER_AGENT: configured"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Build and send GAMEJOA preopen news radar
+        run: python scripts/gamejoa_preopen_news_radar.py
+
+      - name: Publish report summary
+        if: always()
+        run: |
+          if [ -f out/gamejoa_preopen_news_radar.md ]; then
+            cat out/gamejoa_preopen_news_radar.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "GAMEJOA preopen news radar did not produce a report." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gamejoa-preopen-news-radar
+          path: |
+            out/gamejoa_preopen_news_radar.md
+            out/gamejoa_preopen_news_radar.json
+            out/gamejoa_preopen_news_radar_title.txt
+          if-no-files-found: ignore
