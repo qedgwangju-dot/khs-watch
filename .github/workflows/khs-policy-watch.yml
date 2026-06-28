@@ -73,6 +73,8 @@ jobs:
           python -m py_compile scripts/khs_policy_alert_router.py
           python -m py_compile scripts/khs_domestic_telecom_policy_watch.py
           python -m py_compile scripts/khs_domestic_stablecoin_policy_watch.py
+          python -m py_compile scripts/khs_transformer_tariff_policy_watch.py
+          python -m py_compile scripts/khs_transformer_tariff_postprocess.py
           python -m py_compile scripts/khs_nuclear_policy_watch.py
           python -m py_compile scripts/khs_trusted_policy_news_watch.py
           python -m py_compile scripts/khs_telegram_delivery_guard.py
@@ -89,6 +91,10 @@ jobs:
         if: always()
         run: python scripts/khs_domestic_stablecoin_policy_watch.py
 
+      - name: Run transformer tariff policy watch
+        if: always()
+        run: python scripts/khs_transformer_tariff_policy_watch.py
+
       - name: Run nuclear AI power watch
         if: always()
         run: python scripts/khs_nuclear_policy_watch.py
@@ -100,6 +106,10 @@ jobs:
       - name: Apply policy alert guardrails
         if: always()
         run: python scripts/khs_policy_alert_guardrails.py
+
+      - name: Apply transformer tariff alert postprocess
+        if: always()
+        run: python scripts/khs_transformer_tariff_postprocess.py
 
       - name: Route policy alerts by lane
         if: always()
@@ -149,11 +159,11 @@ jobs:
           fi
 
       - name: Commit updated seen state
-        if: hashFiles('data/khs_policy_watch_seen.json') != '' || hashFiles('data/khs_domestic_telecom_policy_seen.json') != '' || hashFiles('data/khs_domestic_stablecoin_policy_seen.json') != '' || hashFiles('data/khs_nuclear_policy_seen.json') != '' || hashFiles('data/khs_trusted_policy_news_seen.json') != ''
+        if: hashFiles('data/khs_policy_watch_seen.json') != '' || hashFiles('data/khs_domestic_telecom_policy_seen.json') != '' || hashFiles('data/khs_domestic_stablecoin_policy_seen.json') != '' || hashFiles('data/khs_transformer_tariff_policy_seen.json') != '' || hashFiles('data/khs_nuclear_policy_seen.json') != '' || hashFiles('data/khs_trusted_policy_news_seen.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/khs_policy_watch_seen.json data/khs_domestic_telecom_policy_seen.json data/khs_domestic_stablecoin_policy_seen.json data/khs_nuclear_policy_seen.json data/khs_trusted_policy_news_seen.json 2>/dev/null || true
+          git add data/khs_policy_watch_seen.json data/khs_domestic_telecom_policy_seen.json data/khs_domestic_stablecoin_policy_seen.json data/khs_transformer_tariff_policy_seen.json data/khs_nuclear_policy_seen.json data/khs_trusted_policy_news_seen.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Update KHS watch state"
           git push || true
 
