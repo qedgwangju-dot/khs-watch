@@ -54,6 +54,35 @@ BIOTECH_PHARMA_PRIORITY_TERMS = [
 BIOTECH_DISCOUNT_TERMS = [
     "rate cut", "real yield", "discount rate", "treasury", "tips", "fed", "금리", "실질금리",
 ]
+ROBOTICS_SECTOR = "로봇/생산자동화"
+ROBOTICS_QUERY = (
+    "삼성 로봇 실행 단계 체크",
+    "Samsung Future Robotics reorganization Rainbow Robotics RB5-850 collaborative robot cobot Samsung production line factory automation deployment procurement order capex DART Reuters Bloomberg Yonhap",
+)
+ROBOTICS_TERMS = [
+    "samsung", "samsung electronics", "future robotics", "robotics task force", "robot organization",
+    "reorganization", "restructuring", "rainbow robotics", "rb5-850", "collaborative robot",
+    "cobot", "production line", "factory automation", "pilot", "test", "deployment", "adoption",
+    "procurement", "purchase order", "supply contract", "order", "capex", "삼성전자", "미래로봇추진단",
+    "조직개편", "조직 정비", "레인보우로보틱스", "협동로봇", "생산라인", "자동화", "테스트",
+    "양산", "도입", "발주", "공급계약", "수주",
+]
+ROBOTICS_DOMAIN_TERMS = [
+    "future robotics", "robotics task force", "rainbow robotics", "rb5-850", "collaborative robot",
+    "cobot", "robot organization", "factory automation", "미래로봇추진단", "레인보우로보틱스",
+    "협동로봇", "로봇", "생산라인 자동화",
+]
+ROBOTICS_SAMSUNG_TERMS = ["samsung", "samsung electronics", "삼성전자", "삼성"]
+ROBOTICS_EXECUTION_TERMS = [
+    "deployment", "adoption", "procurement", "purchase order", "supply contract", "order",
+    "capex", "production line", "factory automation", "commercial", "양산", "도입", "발주",
+    "공급계약", "수주", "생산라인", "자동화", "매출",
+]
+ROBOTICS_ORG_TERMS = [
+    "future robotics", "reorganization", "restructuring", "robot organization", "task force",
+    "미래로봇추진단", "조직개편", "조직 정비", "재정비",
+]
+ROBOTICS_TEST_TERMS = ["rb5-850", "pilot", "test", "testing", "trial", "테스트", "시범", "실증"]
 
 
 def append_unique(seq: list, values: list) -> None:
@@ -325,6 +354,100 @@ def enforce_biotech_leadership_filter() -> None:
 enforce_biotech_leadership_filter()
 
 
+def enforce_robotics_execution_filter() -> None:
+    append_unique(base.QUERIES, [ROBOTICS_QUERY])
+    append_unique(base.TERMS, ROBOTICS_TERMS)
+    if not any(label == ROBOTICS_SECTOR for label, _ in base.SECTORS):
+        base.SECTORS.append((ROBOTICS_SECTOR, ROBOTICS_DOMAIN_TERMS + ROBOTICS_EXECUTION_TERMS))
+
+    original_classify = contract.strict.classify
+
+    def classify(row: dict, now):
+        text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+        alert = original_classify(row, now)
+        has_samsung = any(base.has(text, term) for term in ROBOTICS_SAMSUNG_TERMS)
+        has_domain = any(base.has(text, term) for term in ROBOTICS_DOMAIN_TERMS)
+        has_rainbow = any(base.has(text, term) for term in ["rainbow robotics", "rb5-850", "레인보우로보틱스", "협동로봇"])
+        has_execution = any(base.has(text, term) for term in ROBOTICS_EXECUTION_TERMS)
+        has_org = any(base.has(text, term) for term in ROBOTICS_ORG_TERMS)
+        has_test = any(base.has(text, term) for term in ROBOTICS_TEST_TERMS)
+        is_robotics = (
+            has_samsung and has_domain and (has_execution or has_org or has_test)
+        ) or (
+            has_rainbow and (has_samsung or has_execution or has_test)
+        )
+        if not is_robotics:
+            return alert
+
+        age = base.age_hours(row, now)
+        status = "확정" if row.get("layer") == "official" else "공식 확인 전"
+        impacts = ["시간표"]
+        if has_execution:
+            impacts.insert(0, "돈 버는 능력")
+        if has_rainbow:
+            impacts.append("수급")
+        impacts = list(dict.fromkeys(impacts))
+        score = (106 if has_execution else 96 if (has_org or has_test) else 88) + (6 if age is not None and age <= 12 else 0)
+
+        if not alert:
+            alert = {
+                "score": score,
+                "importance": "상" if score >= 100 else "중",
+                "status": status,
+                "news": "삼성 로봇 실행 단계: 조직 재정비와 생산라인 자동화 전환 체크",
+                "publisher": row.get("publisher") or row.get("source"),
+                "source": row.get("source"),
+                "link": row.get("link") or "",
+                "published": row["published"].isoformat(timespec="minutes") if row.get("published") else "확인 불가",
+                "impacts": impacts,
+                "paths": ["이익" if x == "돈 버는 능력" else "수급" if x == "수급" else "실행 타임라인" for x in impacts],
+                "sectors": [ROBOTICS_SECTOR],
+                "matched": [],
+                "local_dc_policy": False,
+                "reflection": "중간",
+                "counter": "",
+                "interpretation": "",
+                "failed_signal": "",
+                "korea_basis": "예고된 이벤트의 공식화" if status == "확정" else "외신 확산",
+            }
+        else:
+            alert["score"] = max(int(alert.get("score", 0)), score)
+            alert["importance"] = "상" if int(alert["score"]) >= 100 else "중"
+            alert["status"] = alert.get("status") or status
+            append_unique(alert.setdefault("impacts", []), impacts)
+            if "의사결정 영향 제한적" in alert["impacts"] and len(alert["impacts"]) > 1:
+                alert["impacts"] = [x for x in alert["impacts"] if x != "의사결정 영향 제한적"]
+            alert["paths"] = [
+                "이익" if x == "돈 버는 능력" else "할인율" if x == "할인율" else "수급" if x == "수급" else "실행 타임라인"
+                for x in alert["impacts"]
+            ]
+            append_unique(alert.setdefault("sectors", []), [ROBOTICS_SECTOR])
+
+        alert["robotics_execution_filter"] = True
+        alert["robotics_check"] = (
+            "삼성 미래로봇추진단 재정비가 축소인지 실행 전환인지, RB5-850/협동로봇 테스트가 발주·CAPEX·매출 인식으로 연결되는지 확인"
+        )
+        alert["news"] = "삼성 로봇 실행 단계: 조직 재정비와 레인보우로보틱스 생산라인 자동화 체크"
+        alert["counter"] = (
+            "조직 재정비만으로는 호재도 악재도 확정하기 어렵습니다. 삼성의 로봇 사업 축소 발표가 없고 "
+            "생산라인 테스트·발주·공급계약·CAPEX가 확인될 때만 실적 재료로 볼 수 있습니다."
+        )
+        alert["interpretation"] = (
+            "삼성전자 생산라인 자동화 수요가 실제 도입 단계로 넘어가면 레인보우로보틱스의 매출 개선 속도가 빨라질 수 있습니다. "
+            "반대로 조직개편 불확실성은 협력 규모와 시간표를 흔드는 변수라 공식 후속 확인이 필요합니다."
+        )
+        alert["failed_signal"] = (
+            "미래로봇추진단 재정비가 사업 축소로 확인되거나 RB5-850 테스트가 발주·도입·공급계약으로 이어지지 않으면 "
+            "로봇 테마 수급만 남고 실적 재료는 약화"
+        )
+        return alert
+
+    contract.strict.classify = classify
+
+
+enforce_robotics_execution_filter()
+
+
 def safe(value: object) -> str:
     return html.escape(str(value or "확인 불가"), quote=False)
 
@@ -364,6 +487,8 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
         extra += ["FERC", "DOE", "주 공공서비스위원회", "유틸리티 CAPEX", "전력기기/전선/변압기"]
     if alert.get("biotech_leadership_filter"):
         extra += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
+    if alert.get("robotics_execution_filter"):
+        extra += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "협동로봇", "DART"]
     try:
         base_text = base.related(alert, fred, te)
         base_parts = [] if base_text == "확인 가능한 직접 티커 없음" else [part.strip() for part in base_text.split(",") if part.strip()]
@@ -376,6 +501,8 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
             out += ["NVDA", "MU", "AVGO", "AMD", "TSM", "ASML"]
         if alert.get("biotech_leadership_filter"):
             out += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
+        if alert.get("robotics_execution_filter"):
+            out += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "협동로봇", "DART"]
         out += extra
         if "할인율" in alert.get("impacts", []):
             out += [
@@ -422,9 +549,17 @@ def biotech_leadership_check(alert: dict) -> str | None:
     return alert.get("biotech_check") or "실제 매출/이익·빅파마 우선순위·FDA 일정·금리/할인율 동시 확인"
 
 
+def robotics_execution_check(alert: dict) -> str | None:
+    if not alert.get("robotics_execution_filter"):
+        return None
+    return alert.get("robotics_check") or "삼성 조직개편 방향·RB5-850 테스트·발주/CAPEX/매출 인식 연결 확인"
+
+
 def display_news(alert: dict) -> str:
     if alert.get("grid_policy_delay"):
         return "북미 송전망 투자 정책 변수: 정부 승인·규제 지연 리스크"
+    if alert.get("robotics_execution_filter"):
+        return "삼성 로봇 실행 단계: 조직 재정비와 레인보우로보틱스 생산라인 자동화 체크"
     if alert.get("port_strike_risk"):
         return "메가프로젝트 일정: 미국 동부·걸프 항만 계약 만료/파업 리스크"
     if alert.get("china_stimulus_bulk"):
@@ -466,6 +601,7 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     bulk_check = china_bulk_check(alert)
     grid_check = grid_policy_check(alert)
     biotech_check = biotech_leadership_check(alert)
+    robotics_check = robotics_execution_check(alert)
     if policy_check:
         lines.append(f"- 반도체 정책 체크: {safe(policy_check)}")
     elif semi_check:
@@ -478,6 +614,8 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
         lines.append(f"- 송전망 정책 체크: {safe(grid_check)}")
     if biotech_check:
         lines.append(f"- 바이오 주도주 체크: {safe(biotech_check)}")
+    if robotics_check:
+        lines.append(f"- 삼성 로봇 체크: {safe(robotics_check)}")
     lines += [
         f"- 실패 신호: {safe(failed_signal)}",
         f"- 출처: {source_text} · 조회 {now:%H:%M KST}",
