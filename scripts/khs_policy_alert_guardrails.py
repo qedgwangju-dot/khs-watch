@@ -21,6 +21,7 @@ REPORT_PATH = OUT_DIR / "khs_policy_watch.md"
 ALERT_PATH = OUT_DIR / "khs_policy_watch_alert.md"
 TITLE_PATH = OUT_DIR / "khs_policy_watch_alert_title.txt"
 ALERTS_JSON_PATH = OUT_DIR / "khs_policy_watch_alerts.json"
+KOREA_PERSONNEL_ALERTS_JSON_PATH = OUT_DIR / "khs_korea_presidential_personnel_alerts.json"
 
 
 SECTOR_RULES: list[tuple[str, list[str]]] = [
@@ -120,6 +121,12 @@ def is_personnel(item: dict) -> bool:
     return "korea_presidential_personnel" in (item.get("matched") or {})
 
 
+def is_whitehouse(item: dict) -> bool:
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "").lower()
+    return source.startswith("white house") or "whitehouse.gov" in link
+
+
 def is_domestic_telecom_policy(item: dict) -> bool:
     return bool(item.get("telecom_policy_risk")) or "korea_telecom_policy" in (item.get("matched") or {})
 
@@ -133,12 +140,15 @@ def direct_sectors(item: dict) -> list[str]:
     text = haystack_for(item)
     sectors = [label for label, terms in SECTOR_RULES if has_any(text, terms)]
 
+    # BOEM/BSEE alone is not a wind signal. Keep marine mineral language separate
+    # unless the item explicitly says wind.
     if "풍력/해상풍력" in sectors and not has_any(
         text,
         ["offshore wind", "wind energy", "wind lease", "wind leasing", "wind project", "wind area", "wind auction", "wind farm", "wind turbine"],
     ):
         sectors.remove("풍력/해상풍력")
 
+    # "mineral leasing" is not automatically a battery/critical-minerals signal.
     if "2차전지/핵심광물" in sectors and not has_any(
         text,
         ["battery", "batteries", "lithium", "critical mineral", "critical minerals", "rare earth", "cobalt", "nickel", "graphite", "manganese"],
@@ -155,7 +165,6 @@ def is_low_impact_false_positive(item: dict) -> bool:
     text = haystack_for(item)
     source = str(item.get("source") or "").lower()
     title = str(item.get("title") or "").lower()
-
     is_boem_marine_mineral = (
         "boem" in source
         and has_any(text, ["mineral leasing", "mineral lease", "marine minerals", "offshore mineral"])
@@ -255,8 +264,9 @@ def render_report(alerts: list[dict], now: dt.datetime) -> str:
             f"- 영향 섹터: {', '.join(alert.get('sectors') or ['정책/규제 일반'])}",
             *([f"- 국내 통신정책 체크: {alert.get('telecom_policy_check')}"] if alert.get("telecom_policy_check") else []),
             *([f"- 체크할 리스크: {alert.get('telecom_risk_table')}"] if alert.get("telecom_risk_table") else []),
+            *([f"- 구조 변화: {alert.get('telecom_structure_note')}"] if alert.get("telecom_structure_note") else []),
             "- 반영 가능성: 낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.",
-            "- 반대 근거: 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.",
+            "- 반대 근거: 제목·요약 기반 1차 감시라 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.",
             "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
             "",
         ])
@@ -276,6 +286,18 @@ def clear_alert_outputs(now: dt.datetime) -> None:
             path.unlink()
 
 
+def write_general_outputs(alerts: list[dict], now: dt.datetime) -> None:
+    if not alerts:
+        clear_alert_outputs(now)
+        return
+    report = render_report(alerts, now)
+    REPORT_PATH.write_text(report, encoding="utf-8")
+    ALERT_PATH.write_text(report, encoding="utf-8")
+    ALERTS_JSON_PATH.write_text(json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    top = alerts[0]
+    TITLE_PATH.write_text(f"KHS 정책 워치: [{top.get('importance', '중')}] {str(top.get('title') or '')[:70]}\n", encoding="utf-8")
+
+
 def main() -> int:
     if not ALERTS_JSON_PATH.exists():
         return 0
@@ -286,9 +308,14 @@ def main() -> int:
     except Exception:
         return 0
 
-    normalized: list[dict] = []
+    general_alerts: list[dict] = []
+    personnel_alerts: list[dict] = []
+    routed_whitehouse_count = 0
     seen: set[str] = set()
     for item in alerts:
+        if is_whitehouse(item):
+            routed_whitehouse_count += 1
+            continue
         item["sectors"] = direct_sectors(item)
         if is_low_impact_false_positive(item):
             continue
@@ -297,21 +324,30 @@ def main() -> int:
         if key in seen:
             continue
         seen.add(key)
-        normalized.append(item)
+        if is_personnel(item):
+            personnel_alerts.append(item)
+        else:
+            general_alerts.append(item)
 
-    if not normalized:
-        clear_alert_outputs(now)
-        print("policy_guardrails=cleared_all_alerts")
+    write_general_outputs(general_alerts, now)
+    if personnel_alerts:
+        KOREA_PERSONNEL_ALERTS_JSON_PATH.write_text(
+            json.dumps(personnel_alerts, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+    elif KOREA_PERSONNEL_ALERTS_JSON_PATH.exists():
+        KOREA_PERSONNEL_ALERTS_JSON_PATH.unlink()
+
+    total_alerts = len(general_alerts) + len(personnel_alerts)
+    if total_alerts == 0:
+        print(f"policy_guardrails=cleared_all_alerts routed_whitehouse={routed_whitehouse_count}")
         return 0
 
-    ALERTS_JSON_PATH.write_text(json.dumps(normalized, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    if not any(is_personnel(item) for item in normalized):
-        report = render_report(normalized, now)
-        REPORT_PATH.write_text(report, encoding="utf-8")
-        ALERT_PATH.write_text(report, encoding="utf-8")
-        top = normalized[0]
-        TITLE_PATH.write_text(f"KHS 정책 워치: [{top.get('importance', '중')}] {str(top.get('title') or '')[:70]}\n", encoding="utf-8")
-    print(f"policy_guardrails=normalized alerts={len(normalized)}")
+    print(
+        "policy_guardrails=split "
+        f"general={len(general_alerts)} personnel={len(personnel_alerts)} "
+        f"routed_whitehouse={routed_whitehouse_count}"
+    )
     return 0
 
 
