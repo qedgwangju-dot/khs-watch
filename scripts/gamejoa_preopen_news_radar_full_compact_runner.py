@@ -15,6 +15,48 @@ telegram = contract.telegram
 base = contract.base
 
 
+def append_unique(seq: list, values: list) -> None:
+    for value in values:
+        if value not in seq:
+            seq.append(value)
+
+
+def enforce_semiconductor_cycle_contract() -> None:
+    append_unique(base.QUERIES, [
+        ("반도체 가격 사이클", "semiconductor selloff memory price DRAM NAND customer inventory capex valuation guidance Micron Samsung SK Hynix Reuters Bloomberg MarketWatch CNBC"),
+    ])
+    append_unique(base.TERMS, [
+        "customer inventory", "dram", "inventory", "memory price", "nand", "oversupply",
+        "pricing", "selloff", "stock drop", "valuation",
+    ])
+    for idx, (label, keys) in enumerate(base.SECTORS):
+        if label == "반도체/AI":
+            merged = list(keys)
+            append_unique(merged, ["dram", "nand", "memory", "inventory", "valuation"])
+            base.SECTORS[idx] = (label, merged)
+            break
+
+    original_classify = contract.strict.classify
+
+    def classify(row: dict, now):
+        alert = original_classify(row, now)
+        if alert and "반도체/AI" in alert.get("sectors", []):
+            alert["interpretation"] = (
+                "반도체 급락은 가격 사이클 하나로만 보지 않고 메모리 가격, 고객사 재고, "
+                "설비투자, 밸류에이션 부담이 동시에 흔들리는지 확인합니다."
+            )
+            alert["failed_signal"] = (
+                "메모리 가격·고객사 재고·CAPEX·밸류에이션 중 복수 축의 악화가 확인되지 않거나 "
+                "SOX/MU/NVDA/삼성전자·SK하이닉스 반응이 제한되면 일회성 조정 가능"
+            )
+        return alert
+
+    contract.strict.classify = classify
+
+
+enforce_semiconductor_cycle_contract()
+
+
 def safe(value: object) -> str:
     return html.escape(str(value or "확인 불가"), quote=False)
 
@@ -60,6 +102,12 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
         return ", ".join(dict.fromkeys(out)) or "확인 가능한 직접 지표 없음"
 
 
+def semiconductor_cycle_check(alert: dict) -> str | None:
+    if "반도체/AI" not in alert.get("sectors", []):
+        return None
+    return "메모리 가격·고객사 재고·CAPEX·밸류에이션 부담 동시 악화 여부"
+
+
 def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     examples = alert.get("examples") or []
     count_suffix = f" ({alert['cluster_count']}건 묶음)" if alert.get("cluster_count") else ""
@@ -74,7 +122,7 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     interpretation = alert.get("interpretation") or "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는지 확인해야 합니다."
     failed_signal = alert.get("failed_signal") or "관련 가격·수급·공식 후속 확인이 동행하지 않으면 단발성 뉴스"
 
-    lines = [f"{idx}) [{safe(alert.get('importance'))} | {safe(status)}] {safe(alert.get('news'))}{safe(count_suffix)}"]
+    lines = [f"{idx}) [{safe(alert.get('importance'))} | {safe(status)}] {safe(alert.get('news'))}{html.escape(count_suffix, quote=False)}"]
     if examples:
         lines.append("- 확인: " + safe(" / ".join(item["title"] for item in examples[:4])))
         source_text = source_summary(examples[:4])
@@ -87,6 +135,11 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
         f"- 섹터/지표: {safe(', '.join(sectors))} | {safe(related_text(alert, fred, te))}",
         f"- 반영/반대: {safe(reflection)} | {safe(counter)}",
         f"- 해석: {safe(interpretation)}",
+    ]
+    semi_check = semiconductor_cycle_check(alert)
+    if semi_check:
+        lines.append(f"- 반도체 급락 체크: {safe(semi_check)}")
+    lines += [
         f"- 실패 신호: {safe(failed_signal)}",
         f"- 출처: {source_text} · 조회 {now:%H:%M KST}",
         "",
