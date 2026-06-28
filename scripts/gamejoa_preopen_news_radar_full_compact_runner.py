@@ -25,7 +25,7 @@ def enforce_semiconductor_cycle_contract() -> None:
     append_unique(base.QUERIES, [
         ("반도체 가격 사이클", "semiconductor selloff memory price DRAM NAND customer inventory capex valuation guidance Micron Samsung SK Hynix Reuters Bloomberg MarketWatch CNBC"),
         ("반도체 정책 드라이브", "semiconductor R&D tax credit tax deduction chip subsidy investment credit materials equipment components Korea Samsung SK Hynix 소부장 세액공제 Reuters Bloomberg 한국 정부"),
-        ("미국 항만 파업", "US East Coast port strike ILA USMX contract expires October port labor negotiations freight rates shipping Reuters Bloomberg CNBC MarketWatch"),
+        ("메가프로젝트 일정 - 미국 항만 파업", "US East Coast port strike ILA USMX contract expires October port labor negotiations freight rates shipping megaproject project schedule equipment delivery Reuters Bloomberg CNBC MarketWatch"),
         ("중국 부양 벌크선", "China stimulus iron ore coal dry bulk freight Baltic Dry Index bulk carrier rates Reuters Bloomberg CNBC MarketWatch"),
     ])
     append_unique(base.TERMS, [
@@ -37,6 +37,8 @@ def enforce_semiconductor_cycle_contract() -> None:
         "baltic dry", "baltic dry index", "bdi", "bulk carrier", "coal", "dockworker",
         "dry bulk", "east coast port", "freight rate", "gulf coast port", "ila", "iron ore",
         "port labor", "port strike", "shipping rate", "stimulus", "strike", "usmx",
+        "capex schedule", "delivery schedule", "equipment delivery", "mega project",
+        "megaproject", "project delay", "project schedule",
     ])
     for idx, (label, keys) in enumerate(base.SECTORS):
         if label == "반도체/AI":
@@ -48,6 +50,14 @@ def enforce_semiconductor_cycle_contract() -> None:
         base.SECTORS.append((
             "해운/항만/물류",
             ["port strike", "port labor", "dockworker", "ila", "usmx", "east coast port", "gulf coast port", "freight rate", "shipping rate"],
+        ))
+    if not any(label == "메가프로젝트 일정/물류" for label, _ in base.SECTORS):
+        base.SECTORS.append((
+            "메가프로젝트 일정/물류",
+            [
+                "capex schedule", "construction delay", "delivery schedule", "equipment delivery",
+                "mega project", "megaproject", "port strike", "project delay", "project schedule",
+            ],
         ))
     if not any(label == "중국 경기부양/벌크선" for label, _ in base.SECTORS):
         base.SECTORS.append((
@@ -67,10 +77,10 @@ def enforce_semiconductor_cycle_contract() -> None:
 
         if (is_port_strike or is_china_bulk) and not alert:
             age = base.age_hours(row, now)
-            sectors = ["해운/항만/물류"] if is_port_strike else ["중국 경기부양/벌크선"]
+            sectors = ["메가프로젝트 일정/물류", "해운/항만/물류"] if is_port_strike else ["중국 경기부양/벌크선"]
             if is_china_bulk:
                 sectors.append("해운/항만/물류")
-            impacts = ["돈 버는 능력", "시간표"] if is_port_strike else ["돈 버는 능력"]
+            impacts = ["시간표", "돈 버는 능력"] if is_port_strike else ["돈 버는 능력"]
             score = 92 + (10 if age is not None and age <= 12 else 0)
             status = "확정" if row.get("layer") == "official" else "공식 확인 전"
             alert = {
@@ -83,7 +93,7 @@ def enforce_semiconductor_cycle_contract() -> None:
                 "link": row.get("link") or "",
                 "published": row["published"].isoformat(timespec="minutes") if row.get("published") else "확인 불가",
                 "impacts": impacts,
-                "paths": ["이익" if x == "돈 버는 능력" else "정책 타임라인" for x in impacts],
+                "paths": ["이익" if x == "돈 버는 능력" else "메가프로젝트 일정" if is_port_strike else "정책 타임라인" for x in impacts],
                 "sectors": sectors,
                 "matched": [],
                 "local_dc_policy": False,
@@ -95,23 +105,26 @@ def enforce_semiconductor_cycle_contract() -> None:
             }
 
         if alert and is_port_strike:
-            for impact in ["돈 버는 능력", "시간표"]:
+            for impact in ["시간표", "돈 버는 능력"]:
                 if impact not in alert["impacts"]:
                     alert["impacts"].append(impact)
             if "의사결정 영향 제한적" in alert["impacts"] and len(alert["impacts"]) > 1:
                 alert["impacts"] = [x for x in alert["impacts"] if x != "의사결정 영향 제한적"]
+            impact_order = ["시간표", "돈 버는 능력", "할인율", "수급"]
+            alert["impacts"] = [x for x in impact_order if x in alert["impacts"]] + [x for x in alert["impacts"] if x not in impact_order]
             alert["paths"] = [
-                "이익" if x == "돈 버는 능력" else "할인율" if x == "할인율" else "수급" if x == "수급" else "정책 타임라인"
+                "이익" if x == "돈 버는 능력" else "할인율" if x == "할인율" else "수급" if x == "수급" else "메가프로젝트 일정"
                 for x in alert["impacts"]
             ]
-            if "해운/항만/물류" not in alert["sectors"]:
-                alert["sectors"].append("해운/항만/물류")
+            for sector in ["메가프로젝트 일정/물류", "해운/항만/물류"]:
+                if sector not in alert["sectors"]:
+                    alert["sectors"].append(sector)
             alert["score"] = max(int(alert.get("score", 0)), 102)
             alert["importance"] = "상" if alert["score"] >= 100 else "중"
             alert["port_strike_risk"] = True
-            alert["news"] = "미국 항만 파업 가능성: 10월 동부·걸프 항만 계약 만료 리스크"
-            alert["interpretation"] = "미국 동부·걸프 항만 노조 계약 만료와 파업 가능성은 컨테이너 운임, 물류비, 납기 리스크를 동시에 흔드는 시간표 재료입니다."
-            alert["failed_signal"] = "노사 협상 타결, 파업 유예, 항만 적체·컨테이너 운임 미반응, 우회 물류 차질 제한 시 재료 약화"
+            alert["news"] = "메가프로젝트 일정: 미국 동부·걸프 항만 계약 만료/파업 리스크"
+            alert["interpretation"] = "미국 동부·걸프 항만 파업 리스크는 AI 데이터센터, 전력기기, 플랜트/EPC 같은 대형 프로젝트의 기자재 반입, 납기, 설치 일정과 운임을 흔드는 시간표 재료입니다. 운임 급등만이 아니라 프로젝트 지연 비용과 매출 인식 시점까지 확인해야 합니다."
+            alert["failed_signal"] = "노사 협상 타결, 파업 유예, 항만 적체·컨테이너 운임 미반응, 핵심 기자재 납기·프로젝트 일정 차질 제한 시 재료 약화"
 
         if alert and is_china_bulk:
             if "돈 버는 능력" not in alert["impacts"]:
@@ -149,6 +162,7 @@ def enforce_semiconductor_cycle_contract() -> None:
                 alert["interpretation"] = "반도체 R&D 세액공제 확대는 직접 매출보다 연구개발·투자 현금흐름과 정책 타임라인을 바꾸는 재료입니다. 소부장으로 온기가 확산되는지는 세액공제 대상, 적용 시점, 국내 장비·소재 발주 연결성을 확인해야 합니다."
                 alert["failed_signal"] = "세액공제 확대가 법안·시행령·예산으로 확정되지 않거나 소부장 발주·수주·CAPEX 증가로 연결되지 않으면 정책 기대에 그칠 수 있음"
             elif any(base.has(text, term) for term in selloff_terms):
+                alert["semiconductor_selloff"] = True
                 alert["interpretation"] = (
                     "반도체 급락은 가격 사이클 하나로만 보지 않고 메모리 가격, 고객사 재고, "
                     "설비투자, 밸류에이션 부담이 동시에 흔들리는지 확인합니다."
@@ -196,6 +210,8 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
     extra = []
     if "해운/항만/물류" in alert.get("sectors", []):
         extra += ["SCFI", "Drewry WCI", "BDI", "컨테이너 운임", "벌크선 운임"]
+    if "메가프로젝트 일정/물류" in alert.get("sectors", []):
+        extra += ["대형 CAPEX 일정", "기자재 납기", "EPC/전력기기 수주 인식", "SCFI", "Drewry WCI"]
     if "중국 경기부양/벌크선" in alert.get("sectors", []):
         extra += ["Iron Ore", "Coal", "BDI", "벌크선 운임", "중국 인프라/부동산 지표"]
     try:
@@ -219,7 +235,7 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
 
 
 def semiconductor_cycle_check(alert: dict) -> str | None:
-    if "반도체/AI" not in alert.get("sectors", []):
+    if not alert.get("semiconductor_selloff"):
         return None
     return "메모리 가격·고객사 재고·CAPEX·밸류에이션 부담 동시 악화 여부"
 
@@ -233,7 +249,7 @@ def semiconductor_policy_check(alert: dict) -> str | None:
 def port_strike_check(alert: dict) -> str | None:
     if not alert.get("port_strike_risk"):
         return None
-    return "ILA/USMX 계약 만료·협상 결렬 여부·동부/걸프 항만 차질·컨테이너 운임"
+    return "ILA/USMX 계약 만료·협상 결렬 여부·동부/걸프 항만 차질·기자재 납기/대형 CAPEX 일정"
 
 
 def china_bulk_check(alert: dict) -> str | None:
@@ -244,7 +260,7 @@ def china_bulk_check(alert: dict) -> str | None:
 
 def display_news(alert: dict) -> str:
     if alert.get("port_strike_risk"):
-        return "미국 항만 파업 가능성: 10월 동부·걸프 항만 계약 만료 리스크"
+        return "메가프로젝트 일정: 미국 동부·걸프 항만 계약 만료/파업 리스크"
     if alert.get("china_stimulus_bulk"):
         return "중국 경기부양책: 철광석·석탄 물동량과 벌크선 운임 회복 기대"
     return alert.get("news") or "뉴스 제목 확인 불가"
@@ -287,7 +303,7 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     elif semi_check:
         lines.append(f"- 반도체 급락 체크: {safe(semi_check)}")
     if port_check:
-        lines.append(f"- 항만 파업 체크: {safe(port_check)}")
+        lines.append(f"- 메가프로젝트 일정 체크: {safe(port_check)}")
     if bulk_check:
         lines.append(f"- 중국 부양·벌크선 체크: {safe(bulk_check)}")
     lines += [
