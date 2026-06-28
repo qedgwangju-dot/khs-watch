@@ -24,15 +24,19 @@ def append_unique(seq: list, values: list) -> None:
 def enforce_semiconductor_cycle_contract() -> None:
     append_unique(base.QUERIES, [
         ("반도체 가격 사이클", "semiconductor selloff memory price DRAM NAND customer inventory capex valuation guidance Micron Samsung SK Hynix Reuters Bloomberg MarketWatch CNBC"),
+        ("반도체 정책 드라이브", "semiconductor R&D tax credit tax deduction chip subsidy investment credit materials equipment components Korea Samsung SK Hynix 소부장 세액공제 Reuters Bloomberg 한국 정부"),
     ])
     append_unique(base.TERMS, [
         "customer inventory", "dram", "inventory", "memory price", "nand", "oversupply",
         "pricing", "selloff", "stock drop", "valuation",
+        "chip subsidy", "component", "equipment", "investment credit", "materials", "r&d",
+        "rd tax credit", "semiconductor tax credit", "subsidy", "tax credit", "tax deduction",
+        "세액공제", "소부장",
     ])
     for idx, (label, keys) in enumerate(base.SECTORS):
         if label == "반도체/AI":
             merged = list(keys)
-            append_unique(merged, ["dram", "nand", "memory", "inventory", "valuation"])
+            append_unique(merged, ["dram", "nand", "memory", "inventory", "valuation", "tax credit", "tax deduction", "subsidy", "materials", "equipment", "component", "세액공제", "소부장"])
             base.SECTORS[idx] = (label, merged)
             break
 
@@ -41,14 +45,31 @@ def enforce_semiconductor_cycle_contract() -> None:
     def classify(row: dict, now):
         alert = original_classify(row, now)
         if alert and "반도체/AI" in alert.get("sectors", []):
-            alert["interpretation"] = (
-                "반도체 급락은 가격 사이클 하나로만 보지 않고 메모리 가격, 고객사 재고, "
-                "설비투자, 밸류에이션 부담이 동시에 흔들리는지 확인합니다."
-            )
-            alert["failed_signal"] = (
-                "메모리 가격·고객사 재고·CAPEX·밸류에이션 중 복수 축의 악화가 확인되지 않거나 "
-                "SOX/MU/NVDA/삼성전자·SK하이닉스 반응이 제한되면 일회성 조정 가능"
-            )
+            text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+            selloff_terms = ["selloff", "stock drop", "memory price", "customer inventory", "oversupply", "valuation"]
+            policy_terms = ["tax credit", "tax deduction", "investment credit", "chip subsidy", "subsidy", "r&d", "rd tax credit", "semiconductor tax credit", "세액공제", "소부장"]
+            if any(base.has(text, term) for term in policy_terms):
+                for impact in ["돈 버는 능력", "시간표"]:
+                    if impact not in alert["impacts"]:
+                        alert["impacts"].append(impact)
+                alert["paths"] = [
+                    "이익" if x == "돈 버는 능력" else "할인율" if x == "할인율" else "수급" if x == "수급" else "정책 타임라인"
+                    for x in alert["impacts"]
+                ]
+                alert["score"] = max(int(alert.get("score", 0)), 94)
+                alert["importance"] = "상" if alert["score"] >= 100 else "중"
+                alert["policy_drive"] = True
+                alert["interpretation"] = "반도체 R&D 세액공제 확대는 직접 매출보다 연구개발·투자 현금흐름과 정책 타임라인을 바꾸는 재료입니다. 소부장으로 온기가 확산되는지는 세액공제 대상, 적용 시점, 국내 장비·소재 발주 연결성을 확인해야 합니다."
+                alert["failed_signal"] = "세액공제 확대가 법안·시행령·예산으로 확정되지 않거나 소부장 발주·수주·CAPEX 증가로 연결되지 않으면 정책 기대에 그칠 수 있음"
+            elif any(base.has(text, term) for term in selloff_terms):
+                alert["interpretation"] = (
+                    "반도체 급락은 가격 사이클 하나로만 보지 않고 메모리 가격, 고객사 재고, "
+                    "설비투자, 밸류에이션 부담이 동시에 흔들리는지 확인합니다."
+                )
+                alert["failed_signal"] = (
+                    "메모리 가격·고객사 재고·CAPEX·밸류에이션 중 복수 축의 악화가 확인되지 않거나 "
+                    "SOX/MU/NVDA/삼성전자·SK하이닉스 반응이 제한되면 일회성 조정 가능"
+                )
         return alert
 
     contract.strict.classify = classify
@@ -108,6 +129,12 @@ def semiconductor_cycle_check(alert: dict) -> str | None:
     return "메모리 가격·고객사 재고·CAPEX·밸류에이션 부담 동시 악화 여부"
 
 
+def semiconductor_policy_check(alert: dict) -> str | None:
+    if not alert.get("policy_drive"):
+        return None
+    return "R&D 세액공제 대상·시행 시점·소부장 발주/수주 연결성"
+
+
 def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     examples = alert.get("examples") or []
     count_suffix = f" ({alert['cluster_count']}건 묶음)" if alert.get("cluster_count") else ""
@@ -137,7 +164,10 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
         f"- 해석: {safe(interpretation)}",
     ]
     semi_check = semiconductor_cycle_check(alert)
-    if semi_check:
+    policy_check = semiconductor_policy_check(alert)
+    if policy_check:
+        lines.append(f"- 반도체 정책 체크: {safe(policy_check)}")
+    elif semi_check:
         lines.append(f"- 반도체 급락 체크: {safe(semi_check)}")
     lines += [
         f"- 실패 신호: {safe(failed_signal)}",
