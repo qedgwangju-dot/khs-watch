@@ -1,4 +1,4 @@
-name: GAMEJOA preopen news radar test send
+name: Preopen news radar test send
 
 on:
   push:
@@ -37,8 +37,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Build and send compact GAMEJOA radar test
-        run: python scripts/gamejoa_preopen_news_radar_telegram_runner.py
+      - name: Build and send compact radar test
+        run: python scripts/gamejoa_preopen_news_radar_contract_runner.py
 
       - name: Publish report summary
         if: always()
@@ -46,5 +46,5 @@ jobs:
           if [ -f out/gamejoa_preopen_news_radar.md ]; then
             cat out/gamejoa_preopen_news_radar.md >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "GAMEJOA compact test did not produce a report." >> "$GITHUB_STEP_SUMMARY"
+            echo "Compact radar test did not produce a report." >> "$GITHUB_STEP_SUMMARY"
           fi
