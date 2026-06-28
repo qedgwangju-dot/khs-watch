@@ -23,7 +23,7 @@ jobs:
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || vars.SEC_USER_AGENT || 'GAMEJOA-preopen-radar contact=please-set-secret' }}
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      DART_WATCH_STOCK_CODES: ${{ vars.DART_WATCH_STOCK_CODES || '005930,000660,373220,051910,006400,112610,267260,012450,079550,047810,064350,272210,010120,010140,329180' }}
+      DART_WATCH_STOCK_CODES: ${{ vars.DART_WATCH_STOCK_CODES || '005930,000660,373220,051910,006400,112610,267260,012450,079550,047810,064350,272210,034020,010120,010140,329180' }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       SEND_TELEGRAM: "true"
@@ -38,7 +38,7 @@ jobs:
           python-version: "3.12"
 
       - name: Build and send compact radar test
-        run: python scripts/gamejoa_preopen_news_radar_grid_policy_runner.py
+        run: python scripts/gamejoa_preopen_news_radar_nuclear_turbine_runner.py
 
       - name: Publish report summary
         if: always()
