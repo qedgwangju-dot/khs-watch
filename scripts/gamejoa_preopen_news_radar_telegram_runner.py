@@ -7,7 +7,6 @@ decision-ready Korean core radar for Telegram.
 
 from __future__ import annotations
 
-import html
 import importlib.util
 import json
 import os
@@ -84,11 +83,12 @@ def normalize_alert(alert: dict) -> dict:
     return alert
 
 
-def html_link(label: str, url: str) -> str:
-    safe_label = html.escape(label or "출처")
-    if not url:
-        return safe_label
-    return f'<a href="{html.escape(url, quote=True)}">{safe_label}</a>'
+def source_summary(items: list[dict]) -> str:
+    counts: dict[str, int] = {}
+    for item in items:
+        publisher = item.get("publisher") or "출처 확인 불가"
+        counts[publisher] = counts.get(publisher, 0) + 1
+    return " / ".join(f"{name} {count}건" if count > 1 else name for name, count in counts.items())
 
 
 def compact_real_yield(fred: dict, te: dict) -> str:
@@ -104,11 +104,7 @@ def local_dc_cluster(alerts: list[dict]) -> dict | None:
     if len(local_items) < 2:
         return None
     examples = [
-        {
-            "title": item["news"],
-            "publisher": item.get("publisher") or item.get("source") or "출처 확인 불가",
-            "link": item.get("link") or "",
-        }
+        {"title": item["news"], "publisher": item.get("publisher") or item.get("source") or "출처 확인 불가", "link": item.get("link") or ""}
         for item in local_items[:4]
     ]
     return {
@@ -120,6 +116,7 @@ def local_dc_cluster(alerts: list[dict]) -> dict | None:
         "interpretation": "지역 조례·주민투표·인허가 보류가 AI 데이터센터 CAPEX의 승인 시간표와 전력망 접속 프리미엄을 건드리는 신호입니다.",
         "counter": "개별 지역 이슈일 수 있어 공식 의사록·조례·투표일 확인 전에는 전국 CAPEX 둔화로 과대해석하지 않습니다.",
         "examples": examples,
+        "cluster_count": len(local_items),
     }
 
 
@@ -133,13 +130,13 @@ def display_alerts(alerts: list[dict], limit: int) -> list[dict]:
 
 def compact_alert(alert: dict, idx: int, now) -> str:
     examples = alert.get("examples") or []
-    lines = [f"{idx}) [{alert['importance']}] {alert['news']}"]
+    count_suffix = f" ({alert['cluster_count']}건 묶음)" if alert.get("cluster_count") else ""
+    lines = [f"{idx}) [{alert['importance']}] {alert['news']}{count_suffix}"]
     if examples:
         lines.append("- 확인: " + " / ".join(item["title"] for item in examples[:4]))
-        source_text = " / ".join(html_link(item["publisher"], item.get("link", "")) for item in examples[:4])
+        source_text = source_summary(examples[:4])
     else:
-        source = alert.get("publisher") or alert.get("source") or "출처 확인 불가"
-        source_text = html_link(source, alert.get("link") or "")
+        source_text = alert.get("publisher") or alert.get("source") or "출처 확인 불가"
     lines += [
         f"- 영향: {'·'.join(alert['impacts'])} | 섹터: {', '.join(alert['sectors'])}",
         f"- 해석: {alert['interpretation']}",
@@ -153,8 +150,8 @@ def compact_alert(alert: dict, idx: int, now) -> str:
 def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
     visible = display_alerts(alerts, limit)
-    title = f"📰 GAMEJOA 장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
-    lines = [title, f"조회: {now:%Y-%m-%d %H:%M KST}", ""]
+    title = f"장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
+    lines = [title, f"조회: {now:%Y-%m-%d %H:%M KST}", f"선별: 핵심 {len(visible)}건", ""]
     if visible:
         for idx, alert in enumerate(visible, 1):
             lines.append(compact_alert(alert, idx, now))
@@ -179,12 +176,7 @@ def send_telegram(text: str) -> None:
     if not token or not chat_id:
         print("Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
         return
-    body = urllib.parse.urlencode({
-        "chat_id": chat_id,
-        "text": text[:base.TELEGRAM_LIMIT],
-        "disable_web_page_preview": "true",
-        "parse_mode": "HTML",
-    }).encode("utf-8")
+    body = urllib.parse.urlencode({"chat_id": chat_id, "text": text[:base.TELEGRAM_LIMIT], "disable_web_page_preview": "true"}).encode("utf-8")
     req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=body, method="POST")
     with urllib.request.urlopen(req, timeout=25) as resp:
         resp.read()
@@ -226,19 +218,7 @@ def main() -> int:
     (base.OUT / "gamejoa_preopen_news_radar.md").write_text(report, encoding="utf-8")
     (base.OUT / "gamejoa_preopen_news_radar_title.txt").write_text(report.splitlines()[0] + "\n", encoding="utf-8")
     (base.OUT / "gamejoa_preopen_news_radar.json").write_text(
-        json.dumps(
-            {
-                "query_time_kst": now.isoformat(timespec="seconds"),
-                "alerts": deduped,
-                "source_notes": notes,
-                "fred_dfii10": fred,
-                "tradingeconomics_tips": te,
-            },
-            ensure_ascii=False,
-            indent=2,
-            default=str,
-        )
-        + "\n",
+        json.dumps({"query_time_kst": now.isoformat(timespec="seconds"), "alerts": deduped, "source_notes": notes, "fred_dfii10": fred, "tradingeconomics_tips": te}, ensure_ascii=False, indent=2, default=str) + "\n",
         encoding="utf-8",
     )
     base.print_utf8(report)
