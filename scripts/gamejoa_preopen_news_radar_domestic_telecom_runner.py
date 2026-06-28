@@ -23,6 +23,10 @@ TELECOM_RISK_TABLE = (
     "데이터센터 과잉 공급: 임대 단가 하락 가능성 낮음~중간 / "
     "전기료 인상: 데이터센터 운영비 증가 가능성 중간"
 )
+TELECOM_STRUCTURE_NOTE = (
+    "통신비 인하 압박은 오래된 리스크지만 AI 인프라·IDC·클라우드 매출 비중이 커질수록 "
+    "통신사 실적에서 통신요금 의존도는 낮아집니다. 핵심은 요금 규제보다 수익 구조 전환 속도입니다."
+)
 TELECOM_ACTOR_TERMS = [
     "과학기술정보통신부", "과기정통부", "방송통신위원회", "방통위", "정부",
     "국회", "통신3사", "SK텔레콤", "KT", "LG유플러스", "msit", "kcc",
@@ -97,17 +101,17 @@ def telecom_interpretation(text: str) -> str:
     if is_domestic_telecom_policy(text):
         return (
             "정부의 통신비 인하 압박은 통신3사의 ARPU와 무선서비스 마진을 직접 건드리는 국내 정책 변수입니다. "
-            "배당 방어주 프리미엄은 유지될 수 있지만 요금제·선택약정 변화가 이익 추정에 반영되는지 확인해야 합니다."
+            "다만 AI 인프라·IDC·클라우드 매출 비중이 커질수록 통신요금 의존도는 낮아지므로, 더 중요한 포인트는 수익 구조 전환 속도입니다."
         )
     return (
         "통신사의 AI 데이터센터·IDC 성장 옵션은 전기료, 임대단가, GPU 투자 회수 속도에 민감합니다. "
-        "배당 매력과 성장 옵션을 분리해서 봐야 합니다."
+        "AI 인프라 매출 비중이 커질수록 통신비 인하 리스크를 일부 흡수할 수 있어 배당 매력과 성장 옵션을 분리해서 봐야 합니다."
     )
 
 
 def telecom_counter(text: str) -> str:
     if is_domestic_telecom_policy(text):
-        return "정책 발표가 권고·검토 단계에 그치거나 요금제 개편이 가입자 믹스 개선으로 상쇄되면 ARPU 하락 폭은 제한될 수 있습니다."
+        return "정책 발표가 권고·검토 단계에 그치거나 AI 인프라·IDC·클라우드 매출 비중 확대가 요금 규제 부담을 상쇄하면 ARPU 리스크는 과대해석일 수 있습니다."
     return "IDC 수요 둔화·전기료 상승이 실제 실적 가이던스나 CAPEX 조정으로 확인되지 않으면 단기 리스크 프리미엄에 그칠 수 있습니다."
 
 
@@ -134,7 +138,7 @@ def enforce_telecom_policy_watch() -> None:
         age = base.age_hours(row, now)
         status = "확정" if row.get("layer") == "official" or has_any(text, ["정책브리핑", "korea.kr", "kcc.go.kr"]) else "공식 확인 전"
         impacts = ["돈 버는 능력", "할인율", "시간표"] if telecom_policy else ["돈 버는 능력", "할인율"]
-        paths = ["이익", "할인율", "정책 타임라인"] if telecom_policy else ["이익", "할인율", "공급·수요"]
+        paths = ["이익", "할인율", "정책 타임라인", "수익구조 전환"] if telecom_policy else ["이익", "할인율", "공급·수요", "수익구조 전환"]
         score = 102 if telecom_policy else 84
         if age is not None and age <= 12:
             score += 6
@@ -157,7 +161,7 @@ def enforce_telecom_policy_watch() -> None:
                 "reflection": "중간",
                 "counter": telecom_counter(text),
                 "interpretation": telecom_interpretation(text),
-                "failed_signal": "요금 인하가 권고에 그치거나 ARPU·마진·배당정책·IDC 임대단가/전기료 지표가 악화되지 않으면 재료 약화",
+                "failed_signal": "요금 인하가 권고에 그치거나 AI 인프라·IDC 매출 비중 확대가 ARPU·마진 압박을 상쇄하면 규제 악재 약화",
                 "korea_basis": "새 뉴스" if status == "확정" else "외신/국내 언론 확산",
             }
         else:
@@ -168,14 +172,15 @@ def enforce_telecom_policy_watch() -> None:
             alert["original_news"] = alert.get("original_news") or row.get("title") or telecom_title(text)
             alert["impacts"] = impacts[:]
             alert["paths"] = paths[:]
-            append_unique(alert.setdefault("sectors", []), [TELECOM_SECTOR])
+            alert["sectors"] = [TELECOM_SECTOR]
             alert["counter"] = telecom_counter(text)
             alert["interpretation"] = telecom_interpretation(text)
-            alert["failed_signal"] = "요금 인하가 권고에 그치거나 ARPU·마진·배당정책·IDC 임대단가/전기료 지표가 악화되지 않으면 재료 약화"
+            alert["failed_signal"] = "요금 인하가 권고에 그치거나 AI 인프라·IDC 매출 비중 확대가 ARPU·마진 압박을 상쇄하면 규제 악재 약화"
 
         alert["domestic_telecom_policy_watch"] = True
         alert["telecom_policy_check"] = TELECOM_CHECK
         alert["telecom_risk_table"] = TELECOM_RISK_TABLE
+        alert["telecom_structure_note"] = TELECOM_STRUCTURE_NOTE
         return alert
 
     contract.strict.classify = classify
@@ -217,6 +222,9 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
         risk_table = alert.get("telecom_risk_table")
         if risk_table:
             check += f"\n- 체크할 리스크: {risk_table}"
+        structure_note = alert.get("telecom_structure_note")
+        if structure_note:
+            check += f"\n- 구조 변화: {structure_note}"
         return text.replace(marker, check + marker, 1)
     return text
 
