@@ -38,7 +38,7 @@ jobs:
           python-version: "3.12"
 
       - name: Build and send compact radar test
-        run: python scripts/gamejoa_preopen_news_radar_domestic_telecom_runner.py
+        run: python scripts/gamejoa_preopen_news_radar_memory_antitrust_runner.py
 
       - name: Publish report summary
         if: always()
