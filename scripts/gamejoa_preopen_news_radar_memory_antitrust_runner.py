@@ -38,6 +38,12 @@ MEMORY_ANTITRUST_CHECK = (
     "도켓/사건번호·피고·청구근거 확인, 담합 주장은 원고 측 주장으로 분리, "
     "DOJ/FTC 확산·DRAM 가격 정상화·기업 가이던스 영향 확인"
 )
+MEMORY_ANTITRUST_EXTRA_COMMENT = (
+    "D램 담합 소송은 단기 실적 훼손 요인이라기보다 과점 공급 조절에 대한 규제 리스크가 "
+    "재부각된 이벤트입니다. 과거 2018년 유사 소송은 기각됐기 때문에 현재 단계에서 과도한 "
+    "악재 반영은 경계하되, 규제기관 조사나 직접 구매자 소송으로 확대될 경우 메모리 업체들의 "
+    "밸류에이션 멀티플에는 부담이 될 수 있습니다."
+)
 
 
 def append_unique(seq: list, values: list) -> None:
@@ -165,6 +171,7 @@ def enforce_memory_antitrust_watch() -> None:
             "DRAM 현물/계약가격과 MU·삼성전자·SK하이닉스 주가 반응이 없으면 단기 재료 약화"
         )
         alert["memory_antitrust_check"] = MEMORY_ANTITRUST_CHECK
+        alert["memory_antitrust_extra_comment"] = MEMORY_ANTITRUST_EXTRA_COMMENT
         return alert
 
     contract.strict.collect_items = collect_items
@@ -200,7 +207,12 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     if alert.get("memory_antitrust_lawsuit") and "메모리 반독점 체크:" not in text:
         marker = "\n- 실패 신호:"
         check = f"\n- 메모리 반독점 체크: {alert.get('memory_antitrust_check') or MEMORY_ANTITRUST_CHECK}"
-        return text.replace(marker, check + marker, 1)
+        extra = f"\n- 추가 코멘트: {alert.get('memory_antitrust_extra_comment') or MEMORY_ANTITRUST_EXTRA_COMMENT}"
+        return text.replace(marker, check + extra + marker, 1)
+    if alert.get("memory_antitrust_lawsuit") and "추가 코멘트:" not in text:
+        marker = "\n- 실패 신호:"
+        extra = f"\n- 추가 코멘트: {alert.get('memory_antitrust_extra_comment') or MEMORY_ANTITRUST_EXTRA_COMMENT}"
+        return text.replace(marker, extra + marker, 1)
     return text
 
 
