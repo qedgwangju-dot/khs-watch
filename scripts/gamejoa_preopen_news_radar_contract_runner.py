@@ -39,12 +39,13 @@ append_unique(base.SOURCES, [
     ("FTC", "https://www.ftc.gov/news-events/news/press-releases/rss.xml", "official"),
     ("Federal Register USTR", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=trade-representative-office-of-united-states&order=newest&per_page=15", "fr"),
     ("Federal Register sanctions", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=OFAC%20sanctions%20export%20controls&order=newest&per_page=15", "fr"),
-    ("Federal Register FDA", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=food-and-drug-administration&order=newest&per_page=15", "fr"),
+    ("Federal Register FDA material", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=food-and-drug-administration&conditions%5Bterm%5D=BLA%20NDA%20PDUFA%20advisory%20committee%20complete%20response%20letter%20clinical%20hold&order=newest&per_page=15", "fr"),
     ("Federal Register FTC", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=federal-trade-commission&order=newest&per_page=15", "fr"),
 ])
 
 append_unique(base.QUERIES, [
     ("반도체/AI", "Nvidia Micron Broadcom AMD Intel TSMC ASML ARM Apple Microsoft Oracle AI chip HBM data center server network cooling guidance supply agreement Reuters Bloomberg MarketWatch"),
+    ("반도체 가격 사이클", "semiconductor selloff memory price DRAM NAND customer inventory capex valuation guidance Micron Samsung SK Hynix Reuters Bloomberg MarketWatch CNBC"),
     ("정책/규제", "USTR FTC SEC DOE FERC Commerce BIS OFAC CHIPS Act IRA tariff sanctions export controls Reuters Bloomberg AP"),
     ("기업 이벤트", "MOU LOI contract supply agreement joint venture capex buyback offering convertible bond guidance Reuters Bloomberg MarketWatch Korea"),
     ("원자재/매크로", "oil natural gas copper lithium uranium gold dollar won treasury yield Fed real yield TIPS Reuters Bloomberg CNBC MarketWatch"),
@@ -54,6 +55,7 @@ append_unique(base.TRUSTED, ["opendart", "open dart", "news herald", "dispatch",
 append_unique(base.TERMS, [
     "broadcom", "intel", "arm", "apple", "microsoft", "oracle", "server", "network", "cooling",
     "buyback", "convertible", "joint venture", "loi", "mou", "offering",
+    "customer inventory", "dram", "inventory", "memory price", "nand", "oversupply", "pricing", "selloff", "stock drop", "valuation",
     "copper", "dollar", "fed", "gold", "lithium", "natural gas", "oil", "real yield",
     "tips", "treasury", "uranium", "won", "yield",
     *DART_KEYWORDS,
@@ -62,7 +64,7 @@ append_unique(base.TERMS, [
 for idx, (label, keys) in enumerate(base.SECTORS):
     if label == "반도체/AI":
         merged = list(keys)
-        append_unique(merged, ["broadcom", "amd", "intel", "arm", "apple", "microsoft", "oracle"])
+        append_unique(merged, ["broadcom", "amd", "intel", "arm", "apple", "microsoft", "oracle", "dram", "nand", "memory", "inventory", "valuation"])
         base.SECTORS[idx] = (label, merged)
     if label == "데이터센터/전력망/전력기기":
         merged = list(keys)
@@ -174,11 +176,11 @@ def classify(row: dict, now):
         return None
 
     impacts = []
-    if any(t in matched for t in ["contract", "earnings", "guidance", "approval", "supply agreement", "fda", "capex", "oil", "natural gas", "copper", "lithium", "uranium", "단일판매", "공급계약", "수주", "투자판단"]):
+    if any(t in matched for t in ["contract", "earnings", "guidance", "approval", "supply agreement", "fda", "capex", "oil", "natural gas", "copper", "lithium", "uranium", "customer inventory", "dram", "inventory", "memory price", "nand", "oversupply", "pricing", "단일판매", "공급계약", "수주", "투자판단"]):
         impacts.append("돈 버는 능력")
-    if any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "city council", "dollar", "fed", "gold", "moratorium", "ordinance", "real yield", "regulation", "tariff", "tips", "treasury", "won", "yield", "zoning"]):
+    if any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "city council", "dollar", "fed", "gold", "moratorium", "ordinance", "real yield", "regulation", "tariff", "tips", "treasury", "valuation", "won", "yield", "zoning"]):
         impacts.append("할인율")
-    if any(t in matched for t in ["buyback", "convertible", "entity list", "export control", "offering", "sanction", "supply", "유상증자", "전환사채", "신주인수권", "자기주식", "최대주주"]):
+    if any(t in matched for t in ["buyback", "convertible", "entity list", "export control", "offering", "sanction", "selloff", "stock drop", "supply", "유상증자", "전환사채", "신주인수권", "자기주식", "최대주주"]):
         impacts.append("수급")
     if any(t in matched for t in ["city council", "court order", "final rule", "injunction", "joint venture", "loi", "merger", "mou", "permit", "planning commission", "public hearing", "residents", "township", "vote", "타법인주식", "회사합병", "회사분할", "주요사항보고서", "소송"]):
         impacts.append("시간표")
@@ -210,8 +212,8 @@ def classify(row: dict, now):
         interp = "원자재 가격·달러·실질금리는 한국장 이익 추정과 할인율을 동시에 흔드는 축입니다."
         fail = "유가·금리·달러·원화·원자재 가격이 동행하지 않거나 하루짜리 헤드라인에 그치면 재료 약화"
     elif "반도체/AI" in sectors:
-        interp = "AI·메모리 수요 또는 공급 제한을 건드릴 수 있어 한국 반도체 대형주와 소부장 수급에 연결됩니다."
-        fail = "SOX/MU/NVDA/메모리 가격이 반응하지 않거나 가이던스가 수요 둔화를 시사하면 실패"
+        interp = "반도체 급락은 가격 사이클 하나로만 보지 않고 메모리 가격, 고객사 재고, 설비투자, 밸류에이션 부담이 동시에 흔들리는지 확인합니다."
+        fail = "메모리 가격·고객사 재고·CAPEX·밸류에이션 중 복수 축의 악화가 확인되지 않거나 SOX/MU/NVDA/삼성전자·SK하이닉스 반응이 제한되면 일회성 조정 가능"
     else:
         interp = "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는 후보입니다."
         fail = "관련 해외 티커·원자재·금리·환율·한국 수급이 동행하지 않으면 단발성 뉴스"
