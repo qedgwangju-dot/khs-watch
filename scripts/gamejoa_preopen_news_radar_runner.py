@@ -24,6 +24,9 @@ KST = ZoneInfo("Asia/Seoul")
 MAX_AGE_HOURS = int(os.getenv("RADAR_MAX_AGE_HOURS", "48"))
 UA = os.getenv("SEC_USER_AGENT", "GAMEJOA-preopen-radar contact=please-set-secret")
 FRED_API_KEY = os.getenv("FRED_API_KEY", "").strip()
+DART_API_KEY = os.getenv("DART_API_KEY", "").strip()
+DART_DAYS_BACK = max(1, int(os.getenv("DART_DAYS_BACK", "3")))
+DART_WATCH_STOCK_CODES = {code.strip() for code in os.getenv("DART_WATCH_STOCK_CODES", "").split(",") if code.strip()}
 TELEGRAM_LIMIT = 4096
 
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFII10"
@@ -32,32 +35,47 @@ TE_URL = "https://tradingeconomics.com/united-states/10-year-tips-yield"
 SOURCES = [
     ("FERC", "https://www.ferc.gov/news-events/news/rss.xml", "official"),
     ("DOE", "https://www.energy.gov/rss.xml", "official"),
+    ("Commerce", "https://www.commerce.gov/news/rss.xml", "official"),
+    ("BIS", "https://www.bis.doc.gov/index.php/newsroom/news-releases?format=feed&type=rss", "official"),
     ("SEC", "https://www.sec.gov/news/pressreleases.rss", "official"),
+    ("FTC", "https://www.ftc.gov/news-events/news/press-releases/rss.xml", "official"),
     ("Federal Register data center", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=data%20center%20power%20grid&order=newest&per_page=15", "fr"),
     ("Federal Register export controls", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=semiconductor%20export%20controls&order=newest&per_page=15", "fr"),
     ("Federal Register tariffs", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=tariff%20section%20301&order=newest&per_page=15", "fr"),
+    ("Federal Register USTR", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=trade-representative-office-of-united-states&order=newest&per_page=15", "fr"),
+    ("Federal Register sanctions", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=OFAC%20sanctions%20export%20controls&order=newest&per_page=15", "fr"),
+    ("Federal Register FDA material", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=food-and-drug-administration&conditions%5Bterm%5D=BLA%20NDA%20PDUFA%20advisory%20committee%20complete%20response%20letter%20clinical%20hold&order=newest&per_page=15", "fr"),
+    ("Federal Register FTC", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=federal-trade-commission&order=newest&per_page=15", "fr"),
 ]
 
 QUERIES = [
     ("AI 전력망", "FERC DOE AI data center power grid nuclear energy policy Reuters Bloomberg CNBC"),
     ("데이터센터 지역 금지", '"data center" ban moratorium city council residents vote zoning power Reuters Bloomberg AP USA Today'),
-    ("반도체/AI", "Nvidia Micron Broadcom AMD TSMC ASML AI chip guidance supply agreement Reuters Bloomberg MarketWatch"),
+    ("데이터센터 지역 차단", '"data centers" residents vote block construction city council zoning moratorium county township local news'),
+    ("데이터센터 인허가 반대", '"data center" "planning commission" "public hearing" permit ordinance moratorium power local news'),
+    ("반도체/AI", "Nvidia Micron Broadcom AMD Intel TSMC ASML ARM Apple Microsoft Oracle AI chip HBM data center server network cooling guidance supply agreement Reuters Bloomberg MarketWatch"),
     ("수출통제/관세", "US Commerce BIS export controls tariffs China semiconductor Reuters Bloomberg AP"),
+    ("정책/규제", "USTR FTC SEC DOE FERC Commerce BIS OFAC CHIPS Act IRA tariff sanctions export controls Reuters Bloomberg AP"),
+    ("기업 이벤트", "MOU LOI contract supply agreement joint venture capex buyback offering convertible bond guidance Reuters Bloomberg MarketWatch Korea"),
     ("지정학/에너지", "Iran Israel Hormuz Red Sea oil shipping sanctions Reuters Bloomberg AP CNBC MarketWatch"),
+    ("원자재/매크로", "oil natural gas copper lithium uranium gold dollar won treasury yield Fed real yield TIPS Reuters Bloomberg CNBC MarketWatch"),
     ("한국 직접 영향", "Samsung SK Hynix LG Energy Solution Hyundai Korea export policy supply contract Reuters Bloomberg"),
     ("FDA/바이오", "FDA approval complete response letter clinical trial pharma acquisition Reuters Bloomberg CNBC"),
 ]
 
 TRUSTED = ["reuters", "bloomberg", "associated press", "ap news", "cnbc", "marketwatch", "usa today", "panama city news herald", "columbus dispatch"]
-TERMS = ["approval", "ban", "blocked", "capex", "city council", "contract", "court order", "crl", "data center", "earnings", "entity list", "export control", "fda", "final rule", "guidance", "injunction", "merger", "moratorium", "permit", "regulation", "sanction", "section 301", "semiconductor", "supply agreement", "tariff", "vote", "zoning"]
+LOCAL_DC_POLICY_TERMS = ["ban", "banned", "banning", "block", "blocked", "city council", "county", "moratorium", "ordinance", "permit", "planning commission", "public hearing", "residents", "township", "vote", "zoning"]
+DART_KEYWORDS = ["단일판매", "공급계약", "수주", "유상증자", "전환사채", "신주인수권", "자기주식", "타법인주식", "회사합병", "회사분할", "주요사항보고서", "투자판단", "최대주주", "소송"]
+TERMS = ["approval", "ban", "banned", "banning", "block", "blocked", "buyback", "capex", "city council", "contract", "convertible", "copper", "court order", "crl", "data center", "data centers", "dollar", "earnings", "entity list", "export control", "fda", "fed", "final rule", "gold", "guidance", "injunction", "joint venture", "lithium", "loi", "merger", "moratorium", "mou", "natural gas", "offering", "oil", "ordinance", "permit", "planning commission", "public hearing", "real yield", "regulation", "residents", "sanction", "section 301", "semiconductor", "supply agreement", "tariff", "tips", "township", "treasury", "uranium", "vote", "won", "yield", "zoning", *DART_KEYWORDS]
 
 SECTORS = [
-    ("반도체/AI", ["ai", "chip", "hbm", "micron", "nvidia", "semiconductor", "tsmc", "asml"]),
-    ("데이터센터/전력망/전력기기", ["data center", "city council", "moratorium", "zoning", "grid", "power", "ferc", "doe"]),
-    ("관세/수출통제", ["export control", "section 301", "tariff", "bis", "ustr"]),
+    ("반도체/AI", ["ai", "chip", "hbm", "micron", "nvidia", "semiconductor", "tsmc", "asml", "hynix", "samsung", "broadcom", "amd", "intel", "arm", "apple", "microsoft", "oracle"]),
+    ("데이터센터/전력망/전력기기", ["data center", "data centers", "city council", "moratorium", "ordinance", "permit", "planning commission", "public hearing", "residents", "township", "zoning", "grid", "power", "ferc", "doe", "server", "network", "cooling"]),
+    ("관세/수출통제", ["export control", "section 301", "tariff", "bis", "ustr", "commerce", "ofac", "sanction"]),
     ("방산/정유/해운/지정학", ["hormuz", "iran", "israel", "oil", "red sea", "shipping", "ukraine"]),
+    ("원자재/매크로", ["oil", "natural gas", "copper", "lithium", "uranium", "gold", "dollar", "won", "treasury", "yield", "fed", "real yield", "tips"]),
     ("바이오/FDA", ["fda", "clinical", "crl", "pharma"]),
-    ("한국 직접 영향", ["samsung", "sk hynix", "korea", "lg energy", "hyundai"]),
+    ("한국 직접 영향", ["samsung", "sk hynix", "korea", "lg energy", "hyundai", *DART_KEYWORDS]),
 ]
 
 
@@ -82,6 +100,15 @@ def fetch(url: str, timeout: int = 25) -> tuple[str | None, str | None]:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             charset = resp.headers.get_content_charset() or "utf-8"
             return resp.read().decode(charset, "replace"), None
+    except Exception as exc:
+        return None, f"{type(exc).__name__}: {exc}"
+
+
+def fetch_fred_csv(timeout: int = 60) -> tuple[str | None, str | None]:
+    req = urllib.request.Request(FRED_CSV, headers={"User-Agent": "Mozilla/5.0", "Accept": "text/csv,*/*"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return resp.read().decode("utf-8", "replace"), None
     except Exception as exc:
         return None, f"{type(exc).__name__}: {exc}"
 
@@ -173,6 +200,58 @@ def has(text: str, term: str) -> bool:
     return re.search(rf"(^|[^a-z0-9]){escaped}($|[^a-z0-9])", text) is not None
 
 
+def is_local_dc_policy(row: dict) -> bool:
+    text = norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+    has_dc = has(text, "data center") or has(text, "data centers")
+    has_local_policy = any(has(text, term) for term in LOCAL_DC_POLICY_TERMS)
+    return has_dc and has_local_policy
+
+
+def collect_dart(now: dt.datetime) -> tuple[list[dict], str]:
+    if not DART_API_KEY:
+        return [], "OpenDART: 접근 제한 (DART_API_KEY 미설정)"
+    start = (now.date() - dt.timedelta(days=DART_DAYS_BACK)).strftime("%Y%m%d")
+    end = now.date().strftime("%Y%m%d")
+    url = "https://opendart.fss.or.kr/api/list.json?" + urllib.parse.urlencode({
+        "crtfc_key": DART_API_KEY,
+        "bgn_de": start,
+        "end_de": end,
+        "last_reprt_at": "N",
+        "page_no": "1",
+        "page_count": "100",
+        "sort": "date",
+        "sort_mth": "desc",
+    })
+    text, err = fetch(url, 30)
+    if err:
+        return [], f"OpenDART: 확인 불가 ({err})"
+    try:
+        data = json.loads(text or "")
+    except json.JSONDecodeError:
+        return [], "OpenDART: 확인 불가 (JSON 파싱 실패)"
+    if str(data.get("status")) != "000":
+        return [], f"OpenDART: 확인 불가/status {data.get('status')} ({data.get('message')})"
+    rows = []
+    for item in data.get("list", []):
+        stock_code = clean(item.get("stock_code"))
+        if DART_WATCH_STOCK_CODES and stock_code not in DART_WATCH_STOCK_CODES:
+            continue
+        report = clean(item.get("report_nm"))
+        if not any(keyword in report for keyword in DART_KEYWORDS):
+            continue
+        receipt = clean(item.get("rcept_no"))
+        rows.append({
+            "source": "OpenDART",
+            "layer": "official",
+            "publisher": "OpenDART",
+            "title": f"{clean(item.get('corp_name'))} {report}",
+            "link": f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={receipt}" if receipt else "https://dart.fss.or.kr/",
+            "summary": f"stock_code={stock_code or 'N/A'} receipt={receipt or 'N/A'}",
+            "published": parse_date(clean(item.get("rcept_dt"))),
+        })
+    return rows, f"OpenDART: {len(data.get('list', []))}건 조회, {len(rows)}건 후보"
+
+
 def collect_items(now: dt.datetime) -> tuple[list[dict], list[str]]:
     rows, notes = [], []
     for name, url, kind in SOURCES:
@@ -184,12 +263,19 @@ def collect_items(now: dt.datetime) -> tuple[list[dict], list[str]]:
         parsed = [r for r in parsed if fresh(r, now)]
         notes.append(f"{name}: {len(parsed)}건")
         rows.extend(parsed)
+    dart_rows, dart_note = collect_dart(now)
+    notes.append(dart_note)
+    rows.extend(dart_rows)
     for name, query in QUERIES:
         text, err = fetch(google_url(f"{query} when:{max(1, MAX_AGE_HOURS // 24)}d"))
         if err:
             notes.append(f"Trusted news {name}: 확인 불가 ({err})")
             continue
-        parsed = [r for r in parse_rss(text or "", f"Trusted news {name}", "trusted") if fresh(r, now) and trusted(r.get("publisher") or r.get("source"))]
+        local_dc_query = "데이터센터" in name
+        parsed = [
+            r for r in parse_rss(text or "", f"Trusted news {name}", "trusted")
+            if fresh(r, now) and (trusted(r.get("publisher") or r.get("source")) or (local_dc_query and is_local_dc_policy(r)))
+        ]
         notes.append(f"Trusted news {name}: {len(parsed)}건")
         rows.extend(parsed)
     return rows, notes
@@ -200,36 +286,45 @@ def classify(row: dict, now: dt.datetime) -> dict | None:
     if len(title) < 8:
         return None
     text = norm(f"{title} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+    local_dc_policy = is_local_dc_policy(row)
     matched = [t for t in TERMS if has(text, t)]
     sectors = [label for label, keys in SECTORS if any(has(text, k) for k in keys)]
     if not matched or not sectors:
         return None
     impacts = []
-    if any(t in matched for t in ["contract", "earnings", "guidance", "approval", "supply agreement", "fda", "capex"]):
+    if any(t in matched for t in ["contract", "earnings", "guidance", "approval", "supply agreement", "fda", "capex", "oil", "natural gas", "copper", "lithium", "uranium", "단일판매", "공급계약", "수주", "투자판단"]):
         impacts.append("돈 버는 능력")
-    if any(t in matched for t in ["ban", "blocked", "city council", "moratorium", "regulation", "tariff", "zoning"]):
+    if any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "city council", "dollar", "fed", "gold", "moratorium", "ordinance", "real yield", "regulation", "tariff", "tips", "treasury", "won", "yield", "zoning"]):
         impacts.append("할인율")
-    if any(t in matched for t in ["entity list", "export control", "sanction", "supply"]):
+    if any(t in matched for t in ["buyback", "convertible", "entity list", "export control", "offering", "sanction", "supply", "유상증자", "전환사채", "신주인수권", "자기주식", "최대주주"]):
         impacts.append("수급")
-    if any(t in matched for t in ["city council", "court order", "final rule", "injunction", "permit", "vote"]):
+    if any(t in matched for t in ["city council", "court order", "final rule", "injunction", "joint venture", "loi", "merger", "mou", "permit", "planning commission", "public hearing", "residents", "township", "vote", "타법인주식", "회사합병", "회사분할", "주요사항보고서", "소송"]):
         impacts.append("시간표")
     impacts = list(dict.fromkeys(impacts)) or ["의사결정 영향 제한적"]
     age = age_hours(row, now)
     score = (28 if row.get("layer") == "official" else 0) + (20 if trusted(row.get("publisher") or row.get("source")) else 0) + min(36, len(matched) * 6) + len(impacts) * 10 + len(sectors) * 6
     if age is not None and age <= 12:
         score += 14
-    if "데이터센터/전력망/전력기기" in sectors and any(t in matched for t in ["ban", "moratorium", "city council", "vote", "zoning"]):
+    if "데이터센터/전력망/전력기기" in sectors and any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "moratorium", "city council", "residents", "vote", "zoning"]):
         score += 18
+    if local_dc_policy:
+        score += 36
     if score < 58:
         return None
     status = "확정" if row.get("layer") == "official" else "공식 확인 전"
     importance = "상" if score >= 100 else "중" if score >= 76 else "하"
-    if "데이터센터/전력망/전력기기" in sectors:
+    if local_dc_policy:
+        interp = "미국 지역 단위 데이터센터 금지·모라토리엄·주민투표는 AI CAPEX의 승인 시간표와 전력망 접속 프리미엄을 바꾸는 조기 신호입니다. 확정 매출은 아니지만 전력기기·전선·냉각·원전/가스·서버 밸류체인의 할인율과 수주 가시성을 점검해야 합니다."
+        fail = "시의회 안건·조례·투표 일정 등 공식 후속 확인이 없거나 빅테크 CAPEX/전력기기 수주 전망이 유지되면 지역성 뉴스로 약화"
+    elif "데이터센터/전력망/전력기기" in sectors:
         interp = "AI 인프라 병목이 GPU만이 아니라 전력·입지·주민수용성으로 번지는지 보는 재료입니다. 한국장에서는 전력기기와 데이터센터 밸류체인 프리미엄 지속성을 점검해야 합니다."
         fail = "전력기기·전선·원전·냉각·서버 밸류체인이 따라오지 않거나 공식 문서가 확인되지 않으면 재료 약화"
     elif "반도체/AI" in sectors:
         interp = "AI·메모리 수요 또는 공급 제한을 건드릴 수 있어 한국 반도체 대형주와 소부장 수급에 연결됩니다. 해외 티커 반응으로 이미 반영됐는지 재확인이 필요합니다."
         fail = "SOX/MU/NVDA/메모리 가격이 반응하지 않거나 가이던스가 수요 둔화를 시사하면 실패"
+    elif "원자재/매크로" in sectors:
+        interp = "원자재 가격·달러·실질금리는 한국장 이익 추정과 할인율을 동시에 흔드는 축입니다. 실제 가격 지표와 환율이 동행하는지 06:50 수치에서 재확인해야 합니다."
+        fail = "유가·금리·달러·원화·원자재 가격이 동행하지 않거나 하루짜리 헤드라인에 그치면 재료 약화"
     else:
         interp = "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는 후보입니다. 원문 조건과 가격 반응을 장전 수치에서 재확인해야 합니다."
         fail = "관련 해외 티커·원자재·금리·환율·한국 수급이 동행하지 않으면 단발성 뉴스"
@@ -246,6 +341,7 @@ def classify(row: dict, now: dt.datetime) -> dict | None:
         "paths": ["이익" if x == "돈 버는 능력" else "할인율" if x == "할인율" else "수급" if x == "수급" else "정책 타임라인" for x in impacts],
         "sectors": sectors,
         "matched": matched[:10],
+        "local_dc_policy": local_dc_policy,
         "reflection": "낮음" if age is not None and age <= 6 else "중간" if age is None or age <= 24 else "높음",
         "counter": "제목·요약 기반 1차 감지라 원문 세부조건과 공식 문서 확인 전 과대해석 가능" if status != "확정" else "시행일, 적용 대상, 금액, 기간, 독점성, 매출 인식 조건 확인 전 영향이 제한될 수 있음",
         "interpretation": interp,
@@ -262,7 +358,7 @@ def collect_dfii10() -> dict:
             for row in json.loads(text).get("observations", []):
                 if row.get("value") and row.get("value") != ".":
                     return {"source": "FRED API DFII10", "status": "확인됨", "reference": row.get("date"), "value": float(row.get("value")), "error": None}
-    text, err = fetch(FRED_CSV, 60)
+    text, err = fetch_fred_csv(60)
     if err or not text:
         return {"source": FRED_CSV, "status": "확인 불가", "reference": "확인 불가", "value": None, "error": err}
     for row in reversed(list(csv.DictReader(text.splitlines()))):
@@ -301,6 +397,8 @@ def related(alert: dict, fred: dict, te: dict) -> str:
         out += ["VRT", "ETN", "GEV", "CEG", "SMH"]
     if "방산/정유/해운/지정학" in alert["sectors"]:
         out += ["WTI", "Brent", "XLE", "운임"]
+    if "원자재/매크로" in alert["sectors"]:
+        out += ["미국 10년물", "DXY", "USD/KRW", "WTI", "Henry Hub", "Copper", "Lithium", "Uranium", "Gold"]
     if "할인율" in alert["impacts"]:
         out += [f"DFII10 {fred.get('value') if fred.get('value') is not None else '확인 불가'}", f"TE 10Y TIPS {te.get('value') if te.get('value') is not None else '확인 불가'}", "IWM/SPY 재확인"]
     return ", ".join(dict.fromkeys(out)) or "확인 가능한 직접 티커 없음"
@@ -391,6 +489,26 @@ def main() -> int:
         deduped.append(alert)
         if len(deduped) >= 7:
             break
+    local_dc_candidates = [a for a in alerts if a.get("local_dc_policy")]
+    for candidate in local_dc_candidates:
+        local_count = sum(1 for a in deduped if a.get("local_dc_policy"))
+        if local_count >= min(2, len(local_dc_candidates)):
+            break
+        ckey = (norm(candidate["news"]), norm(candidate["publisher"]), candidate["published"][:10])
+        if ckey in seen:
+            continue
+        if len(deduped) < 7:
+            deduped.append(candidate)
+            seen.add(ckey)
+            continue
+        for idx in range(len(deduped) - 1, -1, -1):
+            if not deduped[idx].get("local_dc_policy"):
+                old = deduped[idx]
+                seen.discard((norm(old["news"]), norm(old["publisher"]), old["published"][:10]))
+                deduped[idx] = candidate
+                seen.add(ckey)
+                break
+    deduped.sort(key=lambda a: (-a["score"], a["published"]))
     fred, te = collect_dfii10(), collect_te()
     report = render_report(deduped, notes, fred, te, now)
     OUT.mkdir(parents=True, exist_ok=True)
