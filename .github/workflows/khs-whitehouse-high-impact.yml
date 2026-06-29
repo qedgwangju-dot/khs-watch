@@ -349,20 +349,26 @@ jobs:
       - name: Send Telegram alert
         if: hashFiles('out/khs_whitehouse_high_impact_alert.md') != ''
         env:
+          KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing"
+          POLICY_TELEGRAM_BOT_TOKEN="${KHS_POLICY_TELEGRAM_BOT_TOKEN:-$TELEGRAM_BOT_TOKEN}"
+          POLICY_TELEGRAM_CHAT_ID="${KHS_POLICY_TELEGRAM_CHAT_ID:-$TELEGRAM_CHAT_ID}"
+
+          if [ -z "$POLICY_TELEGRAM_BOT_TOKEN" ] || [ -z "$POLICY_TELEGRAM_CHAT_ID" ]; then
+            echo "KHS policy Telegram: KHS_POLICY_TELEGRAM_BOT_TOKEN/KHS_POLICY_TELEGRAM_CHAT_ID or fallback TELEGRAM_* missing"
             exit 0
           fi
+          export POLICY_TELEGRAM_BOT_TOKEN POLICY_TELEGRAM_CHAT_ID
           python - <<'PY'
           import os
           import pathlib
           import urllib.parse
           import urllib.request
-          token = os.environ["TELEGRAM_BOT_TOKEN"]
-          chat_id = os.environ["TELEGRAM_CHAT_ID"]
+          token = os.environ["POLICY_TELEGRAM_BOT_TOKEN"]
+          chat_id = os.environ["POLICY_TELEGRAM_CHAT_ID"]
           repo = os.environ.get("GITHUB_REPOSITORY", "qedgwangju-dot/khs-watch")
           run_id = os.environ.get("GITHUB_RUN_ID", "")
           title = pathlib.Path("out/khs_whitehouse_high_impact_title.txt").read_text(encoding="utf-8").strip()
