@@ -1,4 +1,4 @@
-name: Preopen news radar
+name: GAMEJOA preopen news radar
 
 on:
   schedule:
@@ -75,8 +75,8 @@ jobs:
             fi
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Build and send preopen news radar
-        run: python scripts/gamejoa_preopen_news_radar_memory_antitrust_runner.py
+      - name: Build and send GAMEJOA preopen news radar
+        run: python scripts/gamejoa_preopen_news_radar_fda_quality_runner.py
 
       - name: Publish report summary
         if: always()
@@ -84,7 +84,7 @@ jobs:
           if [ -f out/gamejoa_preopen_news_radar.md ]; then
             cat out/gamejoa_preopen_news_radar.md >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "Preopen news radar did not produce a report." >> "$GITHUB_STEP_SUMMARY"
+            echo "GAMEJOA preopen news radar did not produce a report." >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Upload report artifact
