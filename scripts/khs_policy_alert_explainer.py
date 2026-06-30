@@ -132,11 +132,25 @@ def is_fcc_resilient(text: str) -> bool:
 
 
 def is_eu_korea_steel_policy(text: str, item: dict) -> bool:
+    focused_text = " ".join(
+        str(part or "")
+        for part in (
+            item.get("source"),
+            item.get("title"),
+            item.get("original_title"),
+            item.get("summary"),
+            item.get("core"),
+            item.get("point"),
+            item.get("impact"),
+            item.get("policy_plain_summary"),
+            matched_terms(item),
+        )
+    ).lower()
     return bool(item.get("eu_korea_steel_policy_watch")) or item.get("eu_policy_category") == "eu_korea_steel_safeguard_relief" or "eu_korea_steel_policy" in (item.get("matched") or {}) or (
-        has_any(text, ["eu", "european union", "european commission", "유럽연합", "eu집행위"])
-        and has_any(text, ["korea", "south korea", "korean", "한국", "한국산"])
-        and has_any(text, ["steel", "철강"])
-        and has_any(text, ["safeguard", "quota", "tariff", "regulation", "19.7", "46", "세이프가드", "쿼터", "관세", "규제", "완화"])
+        has_any(focused_text, ["eu", "european union", "european commission", "유럽연합", "eu집행위"])
+        and has_any(focused_text, ["korea", "south korea", "korean", "한국", "한국산"])
+        and has_any(focused_text, ["steel", "철강"])
+        and has_any(focused_text, ["safeguard", "quota", "tariff", "19.7", "46", "세이프가드", "쿼터", "관세", "완화"])
     )
 
 
