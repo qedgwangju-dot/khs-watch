@@ -159,6 +159,102 @@ STORY_RULES = (
         paths=("이익", "무역규제", "정책 타임라인", "수급"),
         follow_up="핵심은 규제 완화가 실제 EU 관보·집행위 문서와 품목별 쿼터로 확정되는지입니다. 포스코홀딩스·현대제철·세아제강 등 철강/강관 수출주와 EU향 노출 종목의 가격·수급 반응을 재확인해야 합니다.",
     ),
+    StoryRule(
+        key="eu_korea_trade_regulation_watch",
+        title="EU, 한국 영향 무역규제·관세·쿼터 정책 신호",
+        google_queries=(
+            "Reuters European Union South Korea tariff quota safeguard anti-dumping regulation",
+            "Bloomberg EU South Korea trade regulation tariff quota customs duty",
+            "European Commission South Korea trade regulation tariff quota safeguard",
+            "\"EU\" \"South Korea\" tariff quota safeguard anti-dumping",
+            "\"유럽연합\" \"한국\" 관세 쿼터 세이프가드 반덤핑 규제",
+        ),
+        required_groups=(
+            ("eu", "european union", "european commission", "유럽연합", "유럽", "eu집행위"),
+            ("korea", "south korea", "korean", "한국", "한국산"),
+            ("tariff", "quota", "safeguard", "anti-dumping", "duty", "customs", "regulation", "import", "export", "관세", "쿼터", "세이프가드", "반덤핑", "규제", "수입", "수출", "완화", "강화"),
+        ),
+        core="EU발 무역규제·관세·쿼터·반덤핑 정책이 한국 수출 품목의 가격경쟁력과 물량 조건을 바꿀 수 있는 신뢰 보도/공식 신호입니다.",
+        impact="EU향 수출주, 철강/화학/배터리/자동차/조선, 관세·쿼터 정책 | 돈 버는 능력·수급·시간표",
+        point="품목·세율·쿼터·시행일이 공식화되면 한국 수출기업의 마진, 주문 이전, 밸류체인 수급 기대가 동시에 바뀔 수 있습니다.",
+        counter="EU 공식 문서 전에는 품목 범위, 국가별 쿼터, 적용 기간, 예외 조항이 달라질 수 있어 확정 매출로 볼 수 없습니다.",
+        sectors="EU 무역규제/관세, 철강/화학/배터리/자동차/조선, 한국 수출주",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("이익", "무역규제", "정책 타임라인", "수급"),
+        follow_up="철강에 한정하지 말고 EU 관보·집행위·의회·이사회 문서에서 한국 품목의 세율, 쿼터, 시행일, 예외 조항을 확인해야 합니다.",
+    ),
+    StoryRule(
+        key="eu_korea_green_industry_watch",
+        title="EU, 한국 영향 탄소·배터리·친환경 산업 규제 신호",
+        google_queries=(
+            "Reuters EU South Korea CBAM battery regulation critical raw materials due diligence",
+            "Bloomberg European Union Korea carbon border battery regulation supply chain",
+            "European Commission Korea CBAM battery regulation critical raw materials due diligence",
+            "\"EU\" \"Korea\" CBAM battery regulation critical raw materials",
+            "\"유럽연합\" \"한국\" 탄소국경 배터리규정 핵심원자재 공급망실사",
+        ),
+        required_groups=(
+            ("eu", "european union", "european commission", "유럽연합", "유럽", "eu집행위"),
+            ("korea", "south korea", "korean", "한국", "한국산"),
+            ("cbam", "carbon border", "battery regulation", "critical raw materials", "due diligence", "reach", "recycling", "emissions", "탄소국경", "배터리규정", "핵심원자재", "공급망실사", "재활용", "배출", "환경규제"),
+        ),
+        core="EU의 탄소국경조정, 배터리규정, 핵심원자재·공급망 실사 정책이 한국 제조사의 원가·인증·수출 시간표를 바꿀 수 있는 신뢰 보도/공식 신호입니다.",
+        impact="배터리/2차전지, 철강/화학, 자동차/부품, 탄소국경·공급망 정책 | 돈 버는 능력·할인율·시간표",
+        point="인증·재활용·탄소비용·원산지 요건이 강화되면 한국 기업의 유럽 매출 마진과 CAPEX, 고객사 공급망 편입 조건이 바뀝니다.",
+        counter="시행 유예, 세부 위임규정, 국가별 적용 방식이 남아 있으면 단기 실적 영향은 제한될 수 있습니다.",
+        sectors="배터리/2차전지, 철강/화학, 자동차/부품, 탄소국경/공급망",
+        impacts=("돈 버는 능력", "할인율", "시간표"),
+        paths=("원가", "공급망", "정책 타임라인", "규제 리스크"),
+        follow_up="EU 환경·산업 규제는 품목별 인증, 탄소비용, 원산지·재활용 요건이 숫자로 나오는 순간 한국 기업의 마진 가정이 바뀝니다.",
+    ),
+    StoryRule(
+        key="eu_korea_digital_security_watch",
+        title="EU, 한국 영향 디지털·AI·플랫폼·사이버 규제 신호",
+        google_queries=(
+            "Reuters EU South Korea AI Act Digital Markets Act cybersecurity data privacy cloud",
+            "Bloomberg European Union Korea AI Act platform regulation cybersecurity data",
+            "European Commission Korea AI Act DSA DMA cybersecurity cloud regulation",
+            "\"EU\" \"Korea\" \"AI Act\" cybersecurity cloud data platform",
+            "\"유럽연합\" \"한국\" AI법 플랫폼 사이버보안 개인정보 클라우드",
+        ),
+        required_groups=(
+            ("eu", "european union", "european commission", "유럽연합", "유럽", "eu집행위"),
+            ("korea", "south korea", "korean", "한국", "한국산"),
+            ("ai act", "digital markets act", "digital services act", "cybersecurity", "data", "privacy", "cloud", "platform", "dma", "dsa", "인공지능법", "ai법", "플랫폼", "사이버보안", "개인정보", "클라우드", "데이터"),
+        ),
+        core="EU 디지털·AI·플랫폼·사이버 규제가 한국 플랫폼, 클라우드, 전자·보안 기업의 유럽 사업 조건과 준수비용을 바꿀 수 있는 신뢰 보도/공식 신호입니다.",
+        impact="플랫폼/인터넷, AI/클라우드, 사이버보안, 전자/반도체 | 시간표·할인율·돈 버는 능력",
+        point="규제 대상, 준수기한, 과징금·인증 의무가 구체화되면 유럽 매출 노출 기업의 비용, 제품 출시 일정, 밸류에이션 할인율이 바뀝니다.",
+        counter="EU 규정이더라도 한국 기업의 유럽 매출 비중과 직접 적용 여부가 낮으면 한국장 가격 변수는 약할 수 있습니다.",
+        sectors="플랫폼/인터넷, AI/클라우드, 사이버보안, 반도체/전자",
+        impacts=("시간표", "할인율", "돈 버는 능력"),
+        paths=("규제 준수", "정책 타임라인", "원가", "밸류체인"),
+        follow_up="디지털 규제는 실제 적용 대상 기업, 과징금·인증 의무, 시행기한이 확인될 때만 고충격 재료로 남겨야 합니다.",
+    ),
+    StoryRule(
+        key="eu_korea_sanctions_export_watch",
+        title="EU, 한국 영향 제재·수출통제·공급망 정책 신호",
+        google_queries=(
+            "Reuters EU South Korea sanctions export controls Russia China supply chain semiconductor",
+            "Bloomberg European Union Korea sanctions export control critical technology supply chain",
+            "European Commission Korea sanctions export control Russia China critical technology",
+            "\"EU\" \"Korea\" sanctions export controls semiconductor supply chain",
+            "\"유럽연합\" \"한국\" 제재 수출통제 공급망 반도체 러시아 중국",
+        ),
+        required_groups=(
+            ("eu", "european union", "european commission", "유럽연합", "유럽", "eu집행위"),
+            ("korea", "south korea", "korean", "한국", "한국산"),
+            ("sanction", "sanctions", "export control", "restricted", "dual-use", "russia", "china", "supply chain", "critical technology", "semiconductor", "제재", "수출통제", "이중용도", "러시아", "중국", "공급망", "첨단기술", "반도체"),
+        ),
+        core="EU 제재·수출통제·공급망 정책이 한국 기업의 판매 가능 국가, 우회수요, 소재·장비 조달 조건을 바꿀 수 있는 신뢰 보도/공식 신호입니다.",
+        impact="반도체/장비, 방산/조선, 에너지/원자재, 공급망 | 돈 버는 능력·수급·시간표",
+        point="대상 국가·품목·기업이 확정되면 한국 밸류체인의 매출처 제한, 대체수요, 재고·물류 비용, 수주 시간표가 바뀝니다.",
+        counter="제재 패키지 초안이나 정치 발언 단계에서는 최종 품목, 예외 라이선스, 동맹국 적용 방식이 달라질 수 있습니다.",
+        sectors="반도체/장비, 방산/조선, 에너지/원자재, 공급망",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("수출통제", "공급망", "정책 타임라인", "수급"),
+        follow_up="제재·수출통제는 최종 관보, 대상 품목·기업, 예외 라이선스, 한국 기업의 직접 노출을 확인해야 고충격으로 인정합니다.",
+    ),
 )
 
 
@@ -225,7 +321,7 @@ def is_trusted_source(name: str) -> bool:
 
 def has_required_terms(text: str, rule: StoryRule) -> bool:
     low = text.lower()
-    return all(any(term in low for term in group) for group in rule.required_groups)
+    return all(any(term.lower() in low for term in group) for group in rule.required_groups)
 
 
 def load_seen() -> dict:
@@ -308,8 +404,10 @@ def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
         "sectors": rule.sectors,
         "impacts": list(rule.impacts),
         "paths": list(rule.paths),
+        "eu_korea_policy_watch": rule.key.startswith("eu_korea_"),
+        "eu_policy_category": rule.key if rule.key.startswith("eu_korea_") else "",
         "eu_korea_steel_policy_watch": rule.key == "eu_korea_steel_safeguard_relief",
-        "matched": {"eu_korea_steel_policy": ["EU", "Korea", "steel"]} if rule.key == "eu_korea_steel_safeguard_relief" else {},
+        "matched": {rule.key: ["EU", "Korea", "policy"]} if rule.key.startswith("eu_korea_") else {},
     }
     ensure_explained(explain_item)
 

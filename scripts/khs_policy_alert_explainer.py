@@ -132,11 +132,121 @@ def is_fcc_resilient(text: str) -> bool:
 
 
 def is_eu_korea_steel_policy(text: str, item: dict) -> bool:
-    return bool(item.get("eu_korea_steel_policy_watch")) or "eu_korea_steel_policy" in (item.get("matched") or {}) or (
+    return bool(item.get("eu_korea_steel_policy_watch")) or item.get("eu_policy_category") == "eu_korea_steel_safeguard_relief" or "eu_korea_steel_policy" in (item.get("matched") or {}) or (
         has_any(text, ["eu", "european union", "european commission", "유럽연합", "eu집행위"])
         and has_any(text, ["korea", "south korea", "korean", "한국", "한국산"])
         and has_any(text, ["steel", "철강"])
         and has_any(text, ["safeguard", "quota", "tariff", "regulation", "19.7", "46", "세이프가드", "쿼터", "관세", "규제", "완화"])
+    )
+
+
+def is_eu_korea_policy(text: str, item: dict) -> bool:
+    matched = item.get("matched") or {}
+    matched_keys = matched.keys() if isinstance(matched, dict) else []
+    return bool(item.get("eu_korea_policy_watch")) or any(str(key).startswith("eu_korea_") for key in matched_keys) or (
+        has_any(text, ["eu", "european union", "european commission", "european council", "european parliament", "유럽연합", "eu집행위"])
+        and has_any(text, ["korea", "south korea", "korean", "한국", "한국산"])
+        and has_any(
+            text,
+            [
+                "tariff",
+                "quota",
+                "safeguard",
+                "anti-dumping",
+                "customs",
+                "regulation",
+                "cbam",
+                "battery regulation",
+                "critical raw materials",
+                "ai act",
+                "digital markets act",
+                "digital services act",
+                "sanctions",
+                "export control",
+                "관세",
+                "쿼터",
+                "세이프가드",
+                "반덤핑",
+                "규제",
+                "탄소국경",
+                "배터리규정",
+                "핵심원자재",
+                "ai법",
+                "제재",
+                "수출통제",
+            ],
+        )
+    )
+
+
+def is_eu_green_industry_policy(text: str, item: dict) -> bool:
+    return item.get("eu_policy_category") == "eu_korea_green_industry_watch" or has_any(
+        text,
+        [
+            "cbam",
+            "carbon border",
+            "battery regulation",
+            "critical raw materials",
+            "due diligence",
+            "reach",
+            "recycling",
+            "emissions",
+            "탄소국경",
+            "배터리규정",
+            "핵심원자재",
+            "공급망실사",
+            "재활용",
+            "배출",
+            "환경규제",
+        ],
+    )
+
+
+def is_eu_digital_security_policy(text: str, item: dict) -> bool:
+    return item.get("eu_policy_category") == "eu_korea_digital_security_watch" or has_any(
+        text,
+        [
+            "ai act",
+            "digital markets act",
+            "digital services act",
+            "cybersecurity",
+            "data privacy",
+            "cloud",
+            "platform",
+            "dma",
+            "dsa",
+            "인공지능법",
+            "ai법",
+            "플랫폼",
+            "사이버보안",
+            "개인정보",
+            "클라우드",
+            "데이터",
+        ],
+    )
+
+
+def is_eu_sanctions_export_policy(text: str, item: dict) -> bool:
+    return item.get("eu_policy_category") == "eu_korea_sanctions_export_watch" or has_any(
+        text,
+        [
+            "sanction",
+            "sanctions",
+            "export control",
+            "dual-use",
+            "restricted",
+            "russia",
+            "china",
+            "critical technology",
+            "semiconductor",
+            "제재",
+            "수출통제",
+            "이중용도",
+            "러시아",
+            "중국",
+            "첨단기술",
+            "반도체",
+        ],
     )
 
 
@@ -227,20 +337,77 @@ def ensure_explained(item: dict) -> dict:
             counter="최종규칙이라도 핵심은 보고 절차 정비입니다. 신규 예산·장비 발주·주파수 정책·보조금이 확인되지 않으면 실적 연결은 약합니다.",
             failure_signal="미국 통신사 CAPEX 가이던스, 장비 발주, 공공안전망 예산, 국내 장비사 수주 공시가 없으면 테마성 반응에서 끝납니다.",
         )
-    elif is_eu_korea_steel_policy(text, item):
-        put(
-            item,
-            importance="상",
-            impacts=["돈 버는 능력", "수급", "시간표"],
-            paths=["이익", "무역규제", "정책 타임라인", "수급"],
-            sectors=["철강/강관", "EU향 수출주", "자동차강판/조선후판", "관세·쿼터 정책"],
-            policy_plain_summary="EU가 한국산 철강에 적용되는 수입규제·세이프가드·쿼터 조건을 완화한다는 신뢰 보도/공식 신호가 확인된 사안입니다.",
-            investment_view="규제율·쿼터 부담이 낮아지면 EU향 철강 수출 물량, 가격경쟁력, 마진, 수급 기대가 동시에 바뀔 수 있습니다.",
-            korea_market_impact="한국장에서는 포스코홀딩스, 현대제철, 세아제강 등 철강·강관 수출주와 EU향 자동차강판·조선후판 노출 종목의 가격·수급 반응을 확인합니다.",
-            priced_in="낮음~중간. 철강 규제 완화는 보도 직후 테마 수급이 붙을 수 있지만 품목·쿼터·시행일이 공식화되어야 실적 추정 조정이 가능합니다.",
-            counter="품목 범위, 적용 기간, 국가별 쿼터, 실제 관세율·세이프가드 문구, EU 관보 확정 여부가 미확인일 수 있습니다.",
-            failure_signal="EU 집행위·관보 문서, 품목별 쿼터, 적용일, 국내 철강사 EU향 물량·마진 개선 근거가 확인되지 않으면 테마성 반응으로 끝납니다.",
-        )
+    elif is_eu_korea_policy(text, item):
+        if is_eu_korea_steel_policy(text, item):
+            put(
+                item,
+                importance="상",
+                impacts=["돈 버는 능력", "수급", "시간표"],
+                paths=["이익", "무역규제", "정책 타임라인", "수급"],
+                sectors=["철강/강관", "EU향 수출주", "자동차강판/조선후판", "관세·쿼터 정책"],
+                policy_plain_summary="EU가 한국산 철강에 적용되는 수입규제·세이프가드·쿼터 조건을 완화한다는 신뢰 보도/공식 신호가 확인된 사안입니다.",
+                investment_view="규제율·쿼터 부담이 낮아지면 EU향 철강 수출 물량, 가격경쟁력, 마진, 수급 기대가 동시에 바뀔 수 있습니다.",
+                korea_market_impact="한국장에서는 포스코홀딩스, 현대제철, 세아제강 등 철강·강관 수출주와 EU향 자동차강판·조선후판 노출 종목의 가격·수급 반응을 확인합니다.",
+                priced_in="낮음~중간. 철강 규제 완화는 보도 직후 테마 수급이 붙을 수 있지만 품목·쿼터·시행일이 공식화되어야 실적 추정 조정이 가능합니다.",
+                counter="품목 범위, 적용 기간, 국가별 쿼터, 실제 관세율·세이프가드 문구, EU 관보 확정 여부가 미확인일 수 있습니다.",
+                failure_signal="EU 집행위·관보 문서, 품목별 쿼터, 적용일, 국내 철강사 EU향 물량·마진 개선 근거가 확인되지 않으면 테마성 반응으로 끝납니다.",
+            )
+        elif is_eu_green_industry_policy(text, item):
+            put(
+                item,
+                importance="상",
+                impacts=["돈 버는 능력", "할인율", "시간표"],
+                paths=["원가", "공급망", "정책 타임라인", "규제 리스크"],
+                sectors=["배터리/2차전지", "철강/화학", "자동차/부품", "탄소국경/공급망"],
+                policy_plain_summary="EU의 탄소국경조정, 배터리규정, 핵심원자재·공급망 실사 정책이 한국 제조사의 원가·인증·수출 시간표를 바꿀 수 있는 사안입니다.",
+                investment_view="인증·재활용·탄소비용·원산지 요건이 강화되면 유럽 매출 마진, CAPEX, 고객사 공급망 편입 조건이 바뀝니다.",
+                korea_market_impact="한국장에서는 2차전지 소재·셀, 철강/화학, 자동차 부품, 유럽향 공급망 노출 기업의 비용 전가력과 인증 대응력을 확인합니다.",
+                priced_in="중간. EU 환경규제는 반복 재료지만 세부 수치, 시행일, 인증 의무가 새로 나오면 실적 추정에 반영될 수 있습니다.",
+                counter="시행 유예, 위임규정, 기업별 유럽 매출 비중, 고객사 전가 조건이 확인되지 않으면 단기 가격 변수는 약해질 수 있습니다.",
+                failure_signal="품목별 인증·탄소비용·재활용 의무·시행일이 확정되지 않거나 국내 기업의 유럽 노출이 낮으면 테마성 반응에 그칩니다.",
+            )
+        elif is_eu_digital_security_policy(text, item):
+            put(
+                item,
+                importance="중",
+                impacts=["시간표", "할인율", "돈 버는 능력"],
+                paths=["규제 준수", "정책 타임라인", "원가", "밸류체인"],
+                sectors=["플랫폼/인터넷", "AI/클라우드", "사이버보안", "반도체/전자"],
+                policy_plain_summary="EU 디지털·AI·플랫폼·사이버 규제가 한국 플랫폼, 클라우드, 전자·보안 기업의 유럽 사업 조건과 준수비용을 바꿀 수 있는 사안입니다.",
+                investment_view="적용 대상, 준수기한, 과징금·인증 의무가 구체화되면 유럽 매출 노출 기업의 비용, 제품 출시 일정, 밸류에이션 할인율이 바뀝니다.",
+                korea_market_impact="한국장에서는 네이버·카카오 등 플랫폼, AI/클라우드, 사이버보안, 전자·반도체 수출 기업 중 EU 매출 노출이 있는 종목만 선별 확인합니다.",
+                priced_in="낮음~중간. EU 디지털 규제는 한국장 직접 연결이 약한 경우가 많아 적용 대상 기업과 시행기한이 확인돼야 합니다.",
+                counter="한국 기업이 직접 규제 대상이 아니거나 유럽 매출 비중이 작으면 가격 영향은 제한적입니다.",
+                failure_signal="EU 적용 대상 명단, 과징금·인증 의무, 시행일, 한국 기업의 직접 노출이 없으면 제외해야 합니다.",
+            )
+        elif is_eu_sanctions_export_policy(text, item):
+            put(
+                item,
+                importance="상",
+                impacts=["돈 버는 능력", "수급", "시간표"],
+                paths=["수출통제", "공급망", "정책 타임라인", "수급"],
+                sectors=["반도체/장비", "방산/조선", "에너지/원자재", "공급망"],
+                policy_plain_summary="EU 제재·수출통제·공급망 정책이 한국 기업의 판매 가능 국가, 우회수요, 소재·장비 조달 조건을 바꿀 수 있는 사안입니다.",
+                investment_view="대상 국가·품목·기업이 확정되면 한국 밸류체인의 매출처 제한, 대체수요, 재고·물류 비용, 수주 시간표가 바뀝니다.",
+                korea_market_impact="한국장에서는 반도체 장비·소재, 방산/조선, 에너지·원자재, 러시아·중국·유럽 노출 기업의 매출 제한과 대체수요를 확인합니다.",
+                priced_in="중간. 제재·수출통제는 반복 재료지만 새 품목, 새 기업, 새 시행일이면 수급과 실적 추정이 바뀔 수 있습니다.",
+                counter="초안·정치 발언 단계에서는 최종 품목, 예외 라이선스, 동맹국 적용 방식이 달라질 수 있습니다.",
+                failure_signal="최종 관보, 대상 품목·기업, 예외 라이선스, 한국 기업의 직접 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
+            )
+        else:
+            put(
+                item,
+                importance="중",
+                impacts=["돈 버는 능력", "수급", "시간표"],
+                paths=["무역규제", "정책 타임라인", "수급"],
+                sectors=["EU 무역규제/관세", "한국 수출주", "자동차/화학/배터리/조선"],
+                policy_plain_summary="EU에서 나온 한국 관련 정책·규제 신호가 한국 수출기업의 조건, 비용, 일정에 영향을 줄 수 있는 사안입니다.",
+                investment_view="품목·세율·쿼터·시행일·예외 조항이 공식화되면 한국 기업의 마진, 주문 이전, 밸류체인 수급 기대가 바뀔 수 있습니다.",
+                korea_market_impact="한국장에서는 원문에 직접 언급된 품목과 유럽 매출 노출이 있는 수출주만 연결합니다. 원문 근거 없는 섹터 확장은 제외합니다.",
+                priced_in="낮음~중간. EU 정책은 공식 문서 전에는 테마 반응이 먼저 붙을 수 있어 후속 원문 확인이 필요합니다.",
+                counter="품목 범위, 시행일, 예외 조항, 한국 기업 직접 노출이 확인되지 않으면 고충격 뉴스로 보기 어렵습니다.",
+                failure_signal="EU 집행위·의회·이사회·관보 문서와 한국 기업의 직접 노출, 가격·수급 반응이 없으면 제외해야 합니다.",
+            )
     elif has_any(text, ["export control", "entity list", "bis", "semiconductor", "chips", "ai chip", "수출통제"]):
         put(
             item,
