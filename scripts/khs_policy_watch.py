@@ -122,6 +122,9 @@ STAGE_KEYWORDS = {
         "further notice of proposed rulemaking", "fnprm", "notice of inquiry", "noi", "proposed rule",
         "rulemaking", "public notice", "spectrum auction", "spectrum", "broadband", "satellite",
         "space bureau", "wireless telecommunications bureau", "wireline competition bureau",
+        "covered list", "equipment authorization", "national security", "foreign adversary",
+        "secure equipment", "communications supply chain", "connected device", "connected devices",
+        "internet of things", "iot", "cyber trust mark", "inverter", "energy inverter",
     ],
     "presidential_action": [
         "executive order", "presidential memorandum", "presidential determination", "national security memorandum",
@@ -139,17 +142,19 @@ STAGE_KEYWORDS = {
 
 SECTOR_KEYWORDS = {
     "풍력/해상풍력": ["wind", "offshore wind", "boem", "bsee", "renewable", "ocs", "lease", "cop"],
-    "전력망/데이터센터": ["ferc", "grid", "transmission", "large load", "data center", "power"],
-    "원전/전력기기": ["nuclear", "reactor", "uranium", "transformer"],
+    "전력망/데이터센터": ["ferc", "grid", "electric grid", "transmission", "large load", "data center", "power", "inverter", "energy inverter"],
+    "원전/전력기기": ["nuclear", "reactor", "uranium", "transformer", "ap1000", "smr", "small modular reactor"],
     "반도체/AI": ["semiconductor", "chips", "bis", "export controls", "nvidia", "hbm", "ai"],
     "2차전지/핵심광물": ["battery", "lithium", "critical minerals", "ira", "ev"],
     "방산/지정학": ["sanctions", "missile", "defense", "iran", "russia", "china", "taiwan"],
     "바이오/FDA": ["fda", "clinical", "drug", "crl"],
-    "관세/수출주": ["tariff", "section 301", "ustr", "customs"],
+    "관세/수출주": ["tariff", "section 301", "section 232", "ustr", "customs", "duty", "quota", "safeguard", "anti-dumping"],
     "통신/FCC/위성": [
         "fcc", "federal communications commission", "spectrum", "broadband", "wireless", "wireline",
         "satellite", "space bureau", "net neutrality", "universal service", "equipment authorization",
-        "telecommunications", "auction",
+        "telecommunications", "auction", "covered list", "national security", "foreign adversary",
+        "secure equipment", "communications supply chain", "connected device", "connected devices",
+        "internet of things", "iot", "cyber trust mark", "inverter",
     ],
     "행정명령/대통령문서": [
         "executive order", "presidential memorandum", "presidential determination", "national security memorandum",
@@ -187,7 +192,10 @@ FCC_STRONG_TERMS = [
     "nprm", "further notice of proposed rulemaking", "fnprm", "notice of inquiry", "noi", "public notice",
     "proposed rule", "rulemaking", "spectrum", "auction", "broadband", "satellite", "space bureau",
     "wireless", "wireline", "net neutrality", "universal service", "equipment authorization",
-    "covered list", "robocall", "cybersecurity", "emergency alert", "911",
+    "covered list", "national security", "foreign adversary", "secure equipment",
+    "communications supply chain", "inverter", "energy inverter", "solar inverter",
+    "connected device", "connected devices", "internet of things", "iot", "cyber trust mark",
+    "drone", "camera", "router", "robocall", "cybersecurity", "emergency alert", "911",
 ]
 
 FCC_ADMIN_REPORTING_TERMS = [
@@ -212,6 +220,8 @@ SOURCES = [
     Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),
     Source("Federal Register chips export", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=semiconductor+export+controls+final+rule"),
     Source("Federal Register tariffs", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=tariff+section+301+final+rule"),
+    Source("Federal Register Commerce national security", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=commerce+national+security+import+export+controls+tariff+semiconductor+robot+inverter"),
+    Source("Federal Register DOE FERC NRC power", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=doe+ferc+nrc+power+grid+nuclear+data+center+transformer+reactor+loan"),
     Source("Federal Register FCC", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=federal-communications-commission&order=newest&per_page=20", "federal_register_json"),
     Source("Federal Register presidential documents", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Btype%5D%5B%5D=PRESDOCU&order=newest&per_page=20", "federal_register_json"),
     Source("White House executive orders", "https://www.whitehouse.gov/presidential-actions/executive-orders/", "whitehouse_html"),
@@ -252,6 +262,13 @@ def clean_text(value: str | None) -> str:
     value = re.sub(r"<[^>]+>", " ", value)
     value = html.unescape(value)
     return re.sub(r"\s+", " ", value).strip()
+
+
+def keyword_in_text(text: str, keyword: str) -> bool:
+    keyword = keyword.lower()
+    if re.fullmatch(r"[a-z0-9]+", keyword):
+        return re.search(rf"\b{re.escape(keyword)}\b", text) is not None
+    return keyword in text
 
 
 def fetch_text(url: str, timeout: int = 20) -> tuple[str | None, str | None]:
@@ -576,19 +593,19 @@ def collect_dart_filings(now: dt.datetime) -> tuple[list[dict], list[str]]:
 
 def classify_item(item: dict) -> dict | None:
     haystack = f"{item.get('title', '')} {item.get('summary', '')}".lower()
-    matched = {bucket: [kw for kw in keywords if kw.lower() in haystack] for bucket, keywords in STAGE_KEYWORDS.items()}
+    matched = {bucket: [kw for kw in keywords if keyword_in_text(haystack, kw)] for bucket, keywords in STAGE_KEYWORDS.items()}
     if "fda_decision" in matched and matched["fda_decision"] and "FDA" not in item.get("source", "") and "fda" not in haystack:
         matched["fda_decision"] = []
     matched = {bucket: kws for bucket, kws in matched.items() if kws}
     source_name = item.get("source", "")
     is_fcc_source = source_name.startswith("FCC") or source_name == "Federal Register FCC"
-    if is_fcc_source and any(term in haystack for term in FCC_STRONG_TERMS):
+    if is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_STRONG_TERMS):
         matched.setdefault("fcc_decision_notice", ["fcc official decision/notice source"])
     if not matched:
         return None
     stage_score = sum(len(v) for v in matched.values())
-    has_major_filing = any(keyword.lower() in haystack for keyword in MAJOR_FILING_KEYWORDS)
-    is_fcc_admin_reporting = is_fcc_source and any(term in haystack for term in FCC_ADMIN_REPORTING_TERMS)
+    has_major_filing = any(keyword_in_text(haystack, keyword) for keyword in MAJOR_FILING_KEYWORDS)
+    is_fcc_admin_reporting = is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_ADMIN_REPORTING_TERMS)
     if is_fcc_admin_reporting:
         importance = "중"
     elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
@@ -599,7 +616,7 @@ def classify_item(item: dict) -> dict | None:
         importance = "중"
     else:
         importance = "하"
-    sectors = [sector for sector, keywords in SECTOR_KEYWORDS.items() if any(kw.lower() in haystack for kw in keywords)] or ["정책/규제 일반"]
+    sectors = [sector for sector, keywords in SECTOR_KEYWORDS.items() if any(keyword_in_text(haystack, kw) for kw in keywords)] or ["정책/규제 일반"]
     if is_fcc_admin_reporting:
         sectors = ["미국 통신망 복구/장애보고"]
     impacts: list[str] = []

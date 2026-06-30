@@ -633,12 +633,16 @@ def korean_title(alert: dict) -> str:
         return "FCC, 재난 시 통신망 장애보고 시스템(DIRS) 현대화 규칙 공표"
     if has_term(text, ["digital opportunity data collection", "form 477"]):
         return "FCC, 브로드밴드 데이터 수집·Form 477 현대화 문서 공표"
+    if has_term(text, ["fcc", "federal communications commission"]) and has_term(text, ["national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter"]):
+        return "FCC, 국가안보 명분 외국산 장비·인버터 규제 신호"
     if has_term(text, ["nominations", "appointments"]):
         return "백악관, 고위급 인사 지명·임명 공지"
     if has_term(text, ["transformer", "large power transformer", "변압기"]):
         return "미국, 대형 변압기 관세·규제 변화 공식근거 체크"
     if has_term(text, ["robot", "robotics", "chinese robots"]):
         return "미국, 중국산 로봇 수입 규제 검토 신호"
+    if has_term(text, ["european union", "european commission", "eu집행위", "유럽연합"]) and has_term(text, ["korea", "south korea", "korean", "한국", "한국산"]):
+        return "EU 등 해외 정책, 한국 수출주 직접 영향 체크"
     if has_term(text, ["nuclear", "reactor", "ap1000", "westinghouse", "smr"]):
         return "미국 원전·SMR·AI 전력 정책 시간표 체크"
     if has_term(text, ["data center", "data centers", "zoning", "moratorium", "residents"]):
@@ -660,6 +664,10 @@ def curated_sectors(alert: dict) -> list[str]:
         return ["개별종목 자금조달/희석", "수급/오버행", "한국 직접 공시"]
     if alert.get("local_dc_policy") or has_term(text, ["data center", "data centers", "zoning", "moratorium"]):
         return ["데이터센터/전력망/전력기기"]
+    if has_term(text, ["fcc", "federal communications commission"]) and has_term(text, ["national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter"]):
+        return ["전력망 보안/FCC 장비규제", "태양광 인버터/전력변환장치", "중국 대체 공급망"]
+    if has_term(text, ["european union", "european commission", "eu집행위", "유럽연합"]) and has_term(text, ["korea", "south korea", "korean", "한국", "한국산"]):
+        return ["EU/한국 정책 영향", "한국 수출주", "무역규제/관세"]
     if has_term(text, ["transformer", "large power transformer", "변압기"]):
         return ["전력기기/변압기", "관세/수출주", "전력망/데이터센터"]
     if has_term(text, ["nuclear", "reactor", "smr", "ap1000", "westinghouse", "doosan", "원전"]):
@@ -702,6 +710,24 @@ def explanation_for(alert: dict) -> dict[str, str]:
             "priced": "중간. 데이터센터 전력 테마는 선반영이 강하지만 실제 조례·투표·인허가 보류가 확인되면 시간표 재평가 여지가 있습니다.",
             "counter": "개별 지역 민원이나 지역 언론 보도일 수 있어 전국 CAPEX 둔화로 바로 확장하면 과대해석입니다.",
             "failure": "공식 의사록·조례·투표일·빅테크 CAPEX 조정·전력기기 수주 변화가 없으면 단발성 지역 뉴스입니다.",
+        }
+    if has_term(text, ["fcc", "federal communications commission"]) and has_term(text, ["national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter"]):
+        return {
+            "core": "FCC가 국가안보를 이유로 외국산 장비, 통신모듈, 에너지 인버터, 전력망 연결 장비의 수입·인증·판매 제한을 검토하거나 공표한 사안입니다.",
+            "view": "단순 통신 행정공지와 다르게 적용 장비가 특정되면 미국 시장에서 중국산 장비가 배제되고 대체 공급망의 주문 기대와 가격결정력이 바뀔 수 있습니다.",
+            "korea": "한국장에서는 전력변환장치, ESS/PCS, 전력기기, 통신장비, 위성·보안장비 중 미국향 공급망 노출과 중국 대체 수요가 있는 종목만 선별 확인합니다.",
+            "priced": "낮음~중간. 신뢰외신 보도나 규칙 제안 단계에서는 테마가 먼저 움직일 수 있지만 공식 적용 대상·시행일 전에는 직접 반영이 제한적입니다.",
+            "counter": "FCC 공식 규칙, 적용 장비, 기존 인증 장비 예외, 시행일, 한국 기업의 미국향 공급망 노출이 확인되지 않으면 과대해석입니다.",
+            "failure": "FCC 원문, Covered List·장비인증 제한 범위, 적용 장비, 국내 기업 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
+        }
+    if has_term(text, ["european union", "european commission", "eu집행위", "유럽연합"]) and has_term(text, ["korea", "south korea", "korean", "한국", "한국산"]):
+        return {
+            "core": "EU 등 해외 정책이 한국산 제품이나 한국 기업의 수출 조건을 직접 바꿀 수 있는 무역·규제 사안입니다.",
+            "view": "품목·세율·쿼터·인증·시행일이 공식화되면 한국 수출기업의 마진, 물량, 주문 이전, 밸류체인 수급 기대가 바뀔 수 있습니다.",
+            "korea": "한국장에서는 원문에 직접 언급된 품목과 유럽·해외 매출 노출이 있는 철강, 배터리, 반도체, 조선, 자동차, 화학, 전력기기 수출주만 연결합니다.",
+            "priced": "낮음~중간. 보도 직후 테마 수급은 빠르지만 관보·집행위·의회·이사회 문서로 품목과 시행일이 확인돼야 실적 추정에 반영됩니다.",
+            "counter": "해외 정책 보도만으로는 품목 범위, 국가별 쿼터, 예외 조항, 시행일, 한국 기업 직접 노출이 확정되지 않습니다.",
+            "failure": "공식 문서, 품목별 수치, 적용일, 한국 기업 직접 노출, 국내 가격·수급 반응이 없으면 제외해야 합니다.",
         }
     if has_term(text, ["transformer", "large power transformer", "변압기"]):
         return {
@@ -853,6 +879,10 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
         extra += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
     if alert.get("robotics_execution_filter"):
         extra += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "협동로봇", "DART"]
+    if "전력망 보안/FCC 장비규제" in alert.get("sectors", []):
+        extra += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV", "FCC Covered List"]
+    if "EU/한국 정책 영향" in alert.get("sectors", []):
+        extra += ["EU 집행위/관보", "철강·배터리·반도체·조선 수출주", "EUR/KRW"]
     try:
         base_text = base.related(alert, fred, te)
         base_parts = [] if base_text == "확인 가능한 직접 티커 없음" else [part.strip() for part in base_text.split(",") if part.strip()]
@@ -863,6 +893,10 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
             out += ["VRT", "ETN", "GEV", "CEG", "SMH"]
         if "반도체/AI" in alert.get("sectors", []):
             out += ["NVDA", "MU", "AVGO", "AMD", "TSM", "ASML"]
+        if "전력망 보안/FCC 장비규제" in alert.get("sectors", []):
+            out += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV", "FCC Covered List"]
+        if "EU/한국 정책 영향" in alert.get("sectors", []):
+            out += ["EU 집행위/관보", "철강·배터리·반도체·조선 수출주", "EUR/KRW"]
         if alert.get("biotech_leadership_filter"):
             out += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
         if alert.get("robotics_execution_filter"):

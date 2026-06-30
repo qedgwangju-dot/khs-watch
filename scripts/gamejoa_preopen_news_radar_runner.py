@@ -53,9 +53,12 @@ QUERIES = [
     ("데이터센터 지역 금지", '"data center" ban moratorium city council residents vote zoning power Reuters Bloomberg AP USA Today'),
     ("데이터센터 지역 차단", '"data centers" residents vote block construction city council zoning moratorium county township local news'),
     ("데이터센터 인허가 반대", '"data center" "planning commission" "public hearing" permit ordinance moratorium power local news'),
+    ("FCC 보안장비/인버터", "FCC national security import ban foreign equipment inverters solar grid Reuters Bloomberg"),
     ("반도체/AI", "Nvidia Micron Broadcom AMD Intel TSMC ASML ARM Apple Microsoft Oracle AI chip HBM data center server network cooling guidance supply agreement Reuters Bloomberg MarketWatch"),
     ("수출통제/관세", "US Commerce BIS export controls tariffs China semiconductor Reuters Bloomberg AP"),
-    ("정책/규제", "USTR FTC SEC DOE FERC Commerce BIS OFAC CHIPS Act IRA tariff sanctions export controls Reuters Bloomberg AP"),
+    ("미국 고충격 정책", "US policy ban tariff export control investigation subsidy loan nuclear data center power grid robotics semiconductor Reuters Bloomberg Politico"),
+    ("EU/한국 정책 영향", "EU South Korea tariff quota safeguard CBAM battery regulation steel export control Reuters Bloomberg Yonhap"),
+    ("정책/규제", "USTR FTC SEC DOE FERC FCC Commerce BIS OFAC CHIPS Act IRA tariff sanctions export controls Reuters Bloomberg AP"),
     ("기업 이벤트", "MOU LOI contract supply agreement joint venture capex buyback offering convertible bond guidance Reuters Bloomberg MarketWatch Korea"),
     ("지정학/에너지", "Iran Israel Hormuz Red Sea oil shipping sanctions Reuters Bloomberg AP CNBC MarketWatch"),
     ("원자재/매크로", "oil natural gas copper lithium uranium gold dollar won treasury yield Fed real yield TIPS Reuters Bloomberg CNBC MarketWatch"),
@@ -63,15 +66,22 @@ QUERIES = [
     ("FDA/바이오", "FDA approval complete response letter clinical trial pharma acquisition Reuters Bloomberg CNBC"),
 ]
 
-TRUSTED = ["reuters", "bloomberg", "associated press", "ap news", "cnbc", "marketwatch", "usa today", "panama city news herald", "columbus dispatch"]
+TRUSTED = [
+    "reuters", "bloomberg", "associated press", "ap news", "cnbc", "marketwatch",
+    "politico", "the wall street journal", "wall street journal", "financial times",
+    "yonhap", "yonhap news", "the korea economic daily", "korea economic daily",
+    "usa today", "panama city news herald", "columbus dispatch",
+]
 LOCAL_DC_POLICY_TERMS = ["ban", "banned", "banning", "block", "blocked", "city council", "county", "moratorium", "ordinance", "permit", "planning commission", "public hearing", "residents", "township", "vote", "zoning"]
 DART_KEYWORDS = ["단일판매", "공급계약", "수주", "유상증자", "전환사채", "신주인수권", "자기주식", "타법인주식", "회사합병", "회사분할", "주요사항보고서", "투자판단", "최대주주", "소송"]
-TERMS = ["approval", "ban", "banned", "banning", "block", "blocked", "buyback", "capex", "city council", "contract", "convertible", "copper", "court order", "crl", "data center", "data centers", "dollar", "earnings", "entity list", "export control", "fda", "fed", "final rule", "gold", "guidance", "injunction", "joint venture", "lithium", "loi", "merger", "moratorium", "mou", "natural gas", "offering", "oil", "ordinance", "permit", "planning commission", "public hearing", "real yield", "regulation", "residents", "sanction", "section 301", "semiconductor", "supply agreement", "tariff", "tips", "township", "treasury", "uranium", "vote", "won", "yield", "zoning", *DART_KEYWORDS]
+TERMS = ["approval", "ban", "banned", "banning", "block", "blocked", "buyback", "capex", "city council", "contract", "convertible", "copper", "court order", "crl", "data center", "data centers", "dollar", "earnings", "entity list", "export control", "fda", "fed", "final rule", "gold", "guidance", "injunction", "joint venture", "lithium", "loi", "merger", "moratorium", "mou", "natural gas", "offering", "oil", "ordinance", "permit", "planning commission", "public hearing", "real yield", "regulation", "residents", "sanction", "section 301", "section 232", "semiconductor", "supply agreement", "tariff", "tips", "township", "treasury", "uranium", "vote", "won", "yield", "zoning", "fcc", "national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter", "robot", "robotics", "drone", "subsidy", "loan", "low-cost loan", "quota", "safeguard", "anti-dumping", "cbam", "steel", "ap1000", "westinghouse", "nuclear reactor", "critical mineral", "critical minerals", *DART_KEYWORDS]
 
 SECTORS = [
     ("반도체/AI", ["ai", "chip", "hbm", "micron", "nvidia", "semiconductor", "tsmc", "asml", "hynix", "samsung", "broadcom", "amd", "intel", "arm", "apple", "microsoft", "oracle"]),
     ("데이터센터/전력망/전력기기", ["data center", "data centers", "city council", "moratorium", "ordinance", "permit", "planning commission", "public hearing", "residents", "township", "zoning", "grid", "power", "ferc", "doe", "server", "network", "cooling"]),
-    ("관세/수출통제", ["export control", "section 301", "tariff", "bis", "ustr", "commerce", "ofac", "sanction"]),
+    ("전력망 보안/FCC 장비규제", ["fcc", "national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter", "communications supply chain"]),
+    ("관세/수출통제", ["export control", "section 301", "section 232", "tariff", "quota", "safeguard", "anti-dumping", "bis", "ustr", "commerce", "ofac", "sanction"]),
+    ("EU/한국 정책 영향", ["eu", "european union", "european commission", "south korea", "korean", "korea", "cbam", "steel", "quota", "safeguard", "anti-dumping"]),
     ("방산/정유/해운/지정학", ["hormuz", "iran", "israel", "oil", "red sea", "shipping", "ukraine"]),
     ("원자재/매크로", ["oil", "natural gas", "copper", "lithium", "uranium", "gold", "dollar", "won", "treasury", "yield", "fed", "real yield", "tips"]),
     ("바이오/FDA", ["fda", "clinical", "crl", "pharma"]),
@@ -292,13 +302,13 @@ def classify(row: dict, now: dt.datetime) -> dict | None:
     if not matched or not sectors:
         return None
     impacts = []
-    if any(t in matched for t in ["contract", "earnings", "guidance", "approval", "supply agreement", "fda", "capex", "oil", "natural gas", "copper", "lithium", "uranium", "단일판매", "공급계약", "수주", "투자판단"]):
+    if any(t in matched for t in ["contract", "earnings", "guidance", "approval", "supply agreement", "fda", "capex", "oil", "natural gas", "copper", "lithium", "uranium", "inverter", "robot", "robotics", "subsidy", "loan", "low-cost loan", "quota", "safeguard", "anti-dumping", "cbam", "steel", "ap1000", "westinghouse", "nuclear reactor", "단일판매", "공급계약", "수주", "투자판단"]):
         impacts.append("돈 버는 능력")
-    if any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "city council", "dollar", "fed", "gold", "moratorium", "ordinance", "real yield", "regulation", "tariff", "tips", "treasury", "won", "yield", "zoning"]):
+    if any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "city council", "dollar", "fed", "gold", "moratorium", "ordinance", "real yield", "regulation", "tariff", "section 232", "quota", "safeguard", "anti-dumping", "national security", "covered list", "tips", "treasury", "won", "yield", "zoning"]):
         impacts.append("할인율")
-    if any(t in matched for t in ["buyback", "convertible", "entity list", "export control", "offering", "sanction", "supply", "유상증자", "전환사채", "신주인수권", "자기주식", "최대주주"]):
+    if any(t in matched for t in ["buyback", "convertible", "entity list", "export control", "offering", "sanction", "supply", "ban", "inverter", "robotics", "quota", "safeguard", "유상증자", "전환사채", "신주인수권", "자기주식", "최대주주"]):
         impacts.append("수급")
-    if any(t in matched for t in ["city council", "court order", "final rule", "injunction", "joint venture", "loi", "merger", "mou", "permit", "planning commission", "public hearing", "residents", "township", "vote", "타법인주식", "회사합병", "회사분할", "주요사항보고서", "소송"]):
+    if any(t in matched for t in ["city council", "court order", "final rule", "injunction", "joint venture", "loi", "merger", "mou", "permit", "planning commission", "public hearing", "residents", "township", "vote", "subsidy", "loan", "low-cost loan", "equipment authorization", "fcc", "타법인주식", "회사합병", "회사분할", "주요사항보고서", "소송"]):
         impacts.append("시간표")
     impacts = list(dict.fromkeys(impacts)) or ["의사결정 영향 제한적"]
     age = age_hours(row, now)
@@ -395,6 +405,10 @@ def related(alert: dict, fred: dict, te: dict) -> str:
         out += ["NVDA", "MU", "AVGO", "AMD", "TSM", "ASML", "SOX"]
     if "데이터센터/전력망/전력기기" in alert["sectors"]:
         out += ["VRT", "ETN", "GEV", "CEG", "SMH"]
+    if "전력망 보안/FCC 장비규제" in alert["sectors"]:
+        out += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV"]
+    if "EU/한국 정책 영향" in alert["sectors"]:
+        out += ["EU 정책문서", "철강/배터리/반도체/조선 수출주", "EUR/KRW"]
     if "방산/정유/해운/지정학" in alert["sectors"]:
         out += ["WTI", "Brent", "XLE", "운임"]
     if "원자재/매크로" in alert["sectors"]:
