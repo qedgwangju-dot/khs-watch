@@ -145,6 +145,30 @@ STORY_RULES = (
         follow_up="핵심은 FCC가 실제 규칙안을 내고 적용 대상을 중국산 인버터 전체, 신규 모델, 특정 통신 모듈 내장 장비 중 어디까지로 확정하느냐입니다. 한국장에서는 인버터 직접 종목보다 전력변환장치, ESS/전력기기, 태양광 부품, 전력망 보안 밸류체인으로 연결되는지 확인해야 합니다.",
     ),
     StoryRule(
+        key="us_fcc_security_import_restriction",
+        title="미국 FCC, 국가안보형 장비 수입제한·금지 정책 보도",
+        google_queries=(
+            "Reuters FCC national security import ban foreign equipment",
+            "Bloomberg FCC national security import restriction equipment",
+            "FCC foreign equipment ban national security Reuters Bloomberg",
+            "FCC covered list import ban national security Reuters",
+            "FCC energy inverter satellite telecom module equipment ban national security",
+        ),
+        required_groups=(
+            ("fcc", "federal communications commission"),
+            ("national security", "security", "covered list", "ban", "barred", "restrict", "restriction", "prohibit", "import", "imports"),
+            ("equipment", "device", "devices", "module", "modules", "inverter", "inverters", "satellite", "telecom", "communications", "grid", "energy", "drone", "router", "camera", "connected vehicle"),
+        ),
+        core="Reuters·Bloomberg 등 신뢰외신 기준, 미국 FCC가 국가안보를 이유로 외국산 장비의 수입·인증·판매를 제한할 수 있다는 예비 정책 신호입니다.",
+        impact="전력망/통신장비/위성/보안장비/전력변환장치, 중국 대체 공급망 | 돈 버는 능력·수급·시간표",
+        point="FCC 장비 제한은 단순 통신 규제가 아니라 특정 외국산 장비를 미국 시장에서 배제하는 수급 재편 재료가 될 수 있습니다. 적용 장비가 전력망·에너지·통신모듈·위성·보안장비로 넓어지면 국내 밸류체인도 재평가될 수 있습니다.",
+        counter="신뢰외신 보도 단계에서는 FCC 공식 규칙안, 적용 장비, 기존 인증 장비 예외, 시행일이 확정되지 않았습니다. 특정 기업 매출로 연결하려면 미국향 공급망 노출과 수주 근거가 필요합니다.",
+        sectors="전력망/통신장비/위성/보안장비/전력변환장치, 중국 대체 공급망",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("정책 타임라인", "공급망", "밸류체인", "수급"),
+        follow_up="FCC 보도는 회의 공지·보고양식이면 제외하고, 국가안보·수입금지·장비인증·Covered List·외국산 장비 배제 중 하나가 직접 붙을 때만 고충격 후보로 봐야 합니다. 공식 규칙안, 적용 장비, 한국 기업의 미국향 공급망 노출을 즉시 확인해야 합니다.",
+    ),
+    StoryRule(
         key="us_china_robotics_import_review",
         title="미 상무부, 중국산 로봇 수입 조사·추가 조치 가능성",
         google_queries=(

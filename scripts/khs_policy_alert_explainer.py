@@ -139,6 +139,14 @@ def is_fcc_energy_inverter_policy(text: str, item: dict) -> bool:
     )
 
 
+def is_fcc_security_import_policy(text: str, item: dict) -> bool:
+    return "us_fcc_security_import_restriction" in (item.get("matched") or {}) or (
+        has_any(text, ["fcc", "federal communications commission"])
+        and has_any(text, ["national security", "covered list", "ban", "barred", "restrict", "restriction", "prohibit", "import", "imports", "국가안보", "수입금지", "수입 제한", "장비인증"])
+        and has_any(text, ["equipment", "device", "module", "inverter", "satellite", "telecom", "communications", "grid", "energy", "drone", "router", "camera", "connected vehicle", "장비", "모듈", "인버터", "위성", "통신", "전력망", "에너지", "드론", "라우터", "카메라"])
+    )
+
+
 def is_eu_korea_steel_policy(text: str, item: dict) -> bool:
     focused_text = " ".join(
         str(part or "")
@@ -358,6 +366,20 @@ def ensure_explained(item: dict) -> dict:
             priced_in="낮음~중간. 보도 직후 미국 태양광주는 먼저 반응했지만, FCC 공식 규칙안·적용대상·시행일이 확인되기 전까지 한국장 직접 반영은 제한적입니다.",
             counter="아직 FCC 공식 규칙·수입금지 대상·적용일·기존 모델 예외가 확정되지 않은 보도 단계입니다. 미국 업체 주가 반응이 먼저 나온 만큼 단기 과열일 수 있습니다.",
             failure_signal="FCC 공식 문서, 적용 대상 장비, 중국산 통신모듈·인버터 제한 범위, 한국 기업의 미국향 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
+        )
+    elif is_fcc_security_import_policy(text, item):
+        put(
+            item,
+            importance="상",
+            impacts=["돈 버는 능력", "수급", "시간표"],
+            paths=["정책 타임라인", "공급망", "밸류체인", "수급"],
+            sectors=["전력망/통신장비/위성/보안장비/전력변환장치", "중국 대체 공급망"],
+            policy_plain_summary="미국 FCC가 국가안보를 이유로 외국산 장비의 수입·인증·판매를 제한할 수 있다는 신뢰외신 기반 예비 정책 신호입니다.",
+            investment_view="FCC 장비 제한은 단순 통신 규제가 아니라 특정 외국산 장비를 미국 시장에서 배제하는 수급 재편 재료가 될 수 있습니다. 적용 장비가 전력망·에너지·통신모듈·위성·보안장비로 넓어지면 국내 밸류체인도 재평가될 수 있습니다.",
+            korea_market_impact="한국장에서는 전력기기, 전력변환장치, 통신장비, 위성통신, 보안장비 중 미국향 공급망 노출이 있고 중국산 대체 수요를 받을 수 있는 종목만 선별 확인합니다.",
+            priced_in="낮음~중간. FCC 국가안보 규제는 테마 반응이 빠르지만 공식 규칙안·적용 장비·시행일 확인 전에는 한국장 직접 반영이 제한적입니다.",
+            counter="신뢰외신 보도 단계에서는 FCC 공식 규칙안, 적용 장비, 기존 인증 장비 예외, 시행일이 확정되지 않았습니다. 특정 기업 매출로 연결하려면 미국향 공급망 노출과 수주 근거가 필요합니다.",
+            failure_signal="FCC 공식 규칙안, Covered List·장비인증 제한 범위, 적용 장비, 한국 기업의 미국향 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
         )
     elif is_fcc_resilient(text):
         put(
