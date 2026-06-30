@@ -257,6 +257,18 @@ jobs:
               except Exception:
                   return {"seen": {}, "updated_at_kst": ""}
 
+          def sector_text(item):
+              return item["impact"].split("|", 1)[0].strip()
+
+          def decision_text(item):
+              return item["impact"].split("|", 1)[1].strip() if "|" in item["impact"] else "시간표·수급"
+
+          def korea_impact(item):
+              return f"한국장에서는 {sector_text(item)} 관련 종목군의 테마 수급과 후속 예산·조달·규제 연결 여부를 확인합니다."
+
+          def failure_signal(item):
+              return "후속 부처 공고, 예산·조달 조건, 시행일, 관련 기업 공시가 없으면 정책 방향성 뉴스로 끝납니다."
+
           now = dt.datetime.now(tz=KST)
           seen_payload = load_seen()
           seen = seen_payload.setdefault("seen", {})
@@ -316,10 +328,15 @@ jobs:
               for idx, item in enumerate(alerts, 1):
                   lines.extend([
                       f"## {idx}. [상·확정] {item['ko_title']}",
-                      f"- 핵심: {item['core']}",
-                      f"- 영향: {item['impact']}",
-                      f"- 투자 포인트: {item['point']}",
+                      f"- 핵심 내용: {item['core']}",
+                      f"- 투자 관점: {item['point']}",
+                      f"- 한국장 영향: {korea_impact(item)}",
+                      f"- 의사결정 영향: {decision_text(item)}",
+                      "- 영향 경로: 정책 타임라인, 예산·조달, 규제 강도, 밸류체인, 수급",
+                      f"- 영향 섹터: {sector_text(item)}",
+                      "- 반영 가능성: 낮음~중간. 백악관 발표 직후라도 개별 한국 밸류체인 반영은 후속 부처 공고와 예산·조달 조건 확인이 필요합니다.",
                       f"- 반대 근거: {item['counter']}",
+                      f"- 실패 신호: {failure_signal(item)}",
                       f"- 원문: [{item['source']}]({item['link']}) · {item['published']} · 조회 {now:%H:%M KST}",
                       "",
                   ])

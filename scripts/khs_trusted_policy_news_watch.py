@@ -22,6 +22,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from khs_policy_alert_explainer import ensure_explained, explanation_lines
+
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
 ROOT = Path(__file__).resolve().parents[1]
@@ -234,18 +236,27 @@ def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
         )
     sources = " / ".join(source_bits) if source_bits else "확인 불가"
     source_names = ", ".join(dict.fromkeys(str(item["source"]) for item in items[:3]))
+    explain_item = {
+        "title": rule.title,
+        "source": source_names,
+        "summary": f"{rule.core} {rule.point}",
+        "status": "공식 확인 전",
+        "policy_plain_summary": rule.core,
+        "investment_view": rule.point,
+        "counter": rule.counter,
+        "sectors": rule.sectors,
+        "impacts": ["시간표", "수급", "돈 버는 능력"],
+        "paths": ["정책 타임라인", "수급", "중국 대체 공급망"],
+    }
+    ensure_explained(explain_item)
 
     lines = [
         f"🚨 KHS 신뢰외신 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}",
         "공식 발표 전 정책 뉴스 1건 확인",
         "",
         f"## 1. [상·공식 확인 전] {rule.title}",
-        f"- 핵심: {rule.core}",
         f"- 확인 상태: 공식 상무부 발표 확인 전. 신뢰 외신 확인: {source_names or '확인 불가'}.",
-        f"- 영향: {rule.impact}",
-        f"- 영향 섹터: {rule.sectors}",
-        f"- 투자 포인트: {rule.point}",
-        f"- 반대 근거: {rule.counter}",
+        *explanation_lines(explain_item),
         f"- 출처: {sources} · 조회 {now:%H:%M KST}",
         "",
         "💡 판단: 오늘 바뀐 것은 확정 매출이 아니라 정책 시간표·테마 수급입니다. 공식 상무부 발표, 관세/수입제한 품목, OSC 대출 조건을 후속 확인해야 합니다.",

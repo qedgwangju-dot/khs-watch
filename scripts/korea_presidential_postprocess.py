@@ -11,6 +11,8 @@ import urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from khs_policy_alert_explainer import ensure_explained, explanation_lines
+
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
 REPORT_PATH = OUT_DIR / "khs_policy_watch.md"
@@ -202,6 +204,18 @@ def render_personnel(idx: int, item: dict, now: dt.datetime) -> list[str]:
     appointee_text = format_appointees(pairs)
     basis_text = f"{title} {appointee_text} {body[:900]}"
     presenter = extract_presenter(title)
+    sector_list = sectors_for(basis_text)
+    policy_color = policy_color_for(basis_text, presenter)
+    explain_item = {
+        **item,
+        "matched": {"korea_presidential_personnel": []},
+        "appointees": appointee_text,
+        "policy_color": policy_color,
+        "sectors": sector_list,
+        "impacts": ["시간표"],
+        "paths": ["정책 인선", "정책 타임라인"],
+    }
+    ensure_explained(explain_item)
     source = item.get("source") or "공식 출처"
     link = item.get("link") or ""
     published = item.get("published_kst") or "확인 불가"
@@ -210,13 +224,9 @@ def render_personnel(idx: int, item: dict, now: dt.datetime) -> list[str]:
         "- 상태 변화: 대통령실/청와대 공식 인사 임명 확인",
         f"- 인선/임명 대상: {appointee_text}",
         f"- 발표/라인: {presenter}",
-        f"- 정책 색깔/이력 힌트: {policy_color_for(basis_text, presenter)}",
+        f"- 정책 색깔/이력 힌트: {policy_color}",
         f"- 원문/출처: [{source}]({link}) · 원천시각 {published} · 조회 {now:%H:%M KST}",
-        "- 한국장 영향: 시간표",
-        "- 영향 경로: 정책 인선, 정책 타임라인",
-        f"- 영향 섹터: {', '.join(sectors_for(basis_text))}",
-        "- 반영 가능성: 중간. 공식 인사 발표라 정보 자체는 공개 반영됐을 수 있지만, 개별 섹터 영향은 후속 정책·업무지시 전까지 제한적입니다.",
-        "- 반대 근거: 인선 자체는 확정이나 매출·마진·할인율을 직접 바꾸는 정책 발표는 아직 아닙니다.",
+        *explanation_lines(explain_item),
         "- 즉시 체크: 취임 직후 업무지시, 부처 정책 발표 일정, 예산·입법·규제 후속 조치",
         f"- 핵심 근거: {body[:260]}",
         "",
@@ -226,15 +236,12 @@ def render_personnel(idx: int, item: dict, now: dt.datetime) -> list[str]:
 def render_general(idx: int, item: dict, now: dt.datetime) -> list[str]:
     matched_terms = sorted({term for terms in (item.get("matched") or {}).values() for term in terms})
     matched_keys = ", ".join((item.get("matched") or {}).keys()) or "정책/규제"
+    ensure_explained(item)
     return [
         f"## {idx}. [{item.get('importance', '중')}·{item.get('status', '확정')}] {item.get('title', '').strip()}",
         f"- 상태 변화: {matched_keys} 신호 확인 ({', '.join(matched_terms[:8])})",
         f"- 원문/출처: [{item.get('source', 'source')}]({item.get('link', '')}) · 원천시각 {item.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
-        f"- 한국장 영향: {', '.join(item.get('impacts') or ['의사결정 영향 제한적'])}",
-        f"- 영향 경로: {', '.join(item.get('paths') or ['정책 타임라인'])}",
-        f"- 영향 섹터: {', '.join(item.get('sectors') or ['정책/규제 일반'])}",
-        "- 반영 가능성: 낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.",
-        "- 반대 근거: 제목·요약 기반 1차 감시라 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.",
+        *explanation_lines(item),
         "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
         "",
     ]

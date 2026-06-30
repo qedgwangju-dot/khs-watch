@@ -9,6 +9,8 @@ import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from khs_policy_alert_explainer import ensure_explained, explanation_lines
+
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
 
@@ -196,7 +198,7 @@ def enrich_missing_context(alert: dict) -> dict:
     alert.setdefault("korea_market_impact", f"한국장 체크 대상은 {', '.join(sectors)}입니다. 원문에 직접 근거가 없는 업종 확장은 제외합니다.")
     alert.setdefault("priced_in", "낮음~중간. 공식 원문 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.")
     alert.setdefault("failure_signal", "시행일, 예산, 계약, 수급 반응, 관련 기업 공시가 뒤따르지 않으면 단발성 정책 뉴스로 끝납니다.")
-    return alert
+    return ensure_explained(alert)
 
 
 def display_matched_keys(matched: dict) -> str:
@@ -240,15 +242,7 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
             f"- 상태 변화: {matched_keys} 신호 확인 ({matched_terms_text})",
             f"- 원문/출처: [{source_label}]({alert.get('link', '')}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
-            f"- 핵심 내용: {alert.get('policy_plain_summary') or '정책 세부 내용 확인 필요'}",
-            f"- 투자 관점: {alert.get('investment_view') or '실적·할인율·수급·시간표 변화 여부 확인 필요'}",
-            f"- 한국장 영향: {alert.get('korea_market_impact') or ', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
-            f"- 의사결정 영향: {', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
-            f"- 영향 경로: {', '.join(alert.get('paths') or ['정책 타임라인'])}",
-            f"- 영향 섹터: {', '.join(alert.get('sectors') or ['정책/규제 일반'])}",
-            f"- 반영 가능성: {alert.get('priced_in') or '낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.'}",
-            f"- 반대 근거: {alert.get('counter') or '원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.'}",
-            f"- 실패 신호: {alert.get('failure_signal') or '후속 시행일·예산·계약·수급 반응이 없으면 단발성 정책 뉴스로 끝납니다.'}",
+            *explanation_lines(alert),
             "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
             "",
         ])

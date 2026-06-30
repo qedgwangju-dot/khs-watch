@@ -13,6 +13,8 @@ import urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from khs_policy_alert_explainer import ensure_explained, explanation_lines
+
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
 DATA_DIR = Path("data")
@@ -188,16 +190,20 @@ def render(alerts: list[dict], now: dt.datetime) -> str:
             ko_title = "미국, Westinghouse 원전 건설 대형 지원 신호"
         source_label = SOURCE_LABELS.get(item["source"], item["source"])
         evidence = ", ".join(dict.fromkeys(TERM_LABELS.get(term, term) for term in item["matched"]))
+        explain_item = {
+            **item,
+            "title": ko_title,
+            "summary": evidence,
+            "impacts": ["시간표", "돈 버는 능력", "수급"],
+            "paths": ["원전 정책 타임라인", "AI 데이터센터 전력수요", "원전 밸류체인", "우라늄/원전기기 수급"],
+            "sectors": ["원전/전력기기", "전력망/데이터센터", "우라늄", "SMR/대형원전 기자재"],
+        }
+        ensure_explained(explain_item)
         lines.extend([
             f"## {idx}. [상·확정] {ko_title}",
-            "- 핵심 내용: 미국 정부가 원전 인허가·핵연료·데이터센터 전력수요 대응을 핵심 정책 과제로 공식화했습니다.",
             f"- 원문/출처: [{source_label}]({item['link']}) · 원천시각 {item['published_kst']} · 조회 {now:%H:%M KST}",
             f"- 확인 근거: {evidence}",
-            "- 한국장 영향: 시간표, 돈 버는 능력, 수급",
-            "- 영향 경로: 원전 정책 타임라인, AI 데이터센터 전력수요, 원전 밸류체인, 우라늄/원전기기 수급",
-            "- 영향 섹터: 원전/전력기기, 전력망/데이터센터, 우라늄, SMR/대형원전 기자재",
-            "- 반영 가능성: 중간. 원전 테마는 정책 기대가 선반영되기 쉽지만, AP1000·미국 정부·AI 전력 수요가 함께 확인되면 밸류체인 재평가 재료입니다.",
-            "- 반대 근거: 부지, 최종 계약, 예산·대출 조건, NRC 인허가, 착공 일정이 확정되지 않으면 실제 매출 인식까지 시차가 큽니다.",
+            *explanation_lines(explain_item),
             "- 즉시 체크: Westinghouse/Cameco/Brookfield 후속 공시, DOE·NRC 일정, 국내 원전기기·전력기기 수급 반응",
             "",
         ])

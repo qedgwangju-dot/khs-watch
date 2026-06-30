@@ -8,6 +8,8 @@ import json
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from khs_policy_alert_explainer import ensure_explained, explanation_lines
+
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
 REPORT_PATH = OUT_DIR / "khs_policy_watch.md"
@@ -37,22 +39,17 @@ def render(alerts: list[dict], now: dt.datetime) -> str:
     for idx, alert in enumerate(alerts, 1):
         matched_terms = sorted({term for terms in (alert.get("matched") or {}).values() for term in terms})
         matched_keys = ", ".join((alert.get("matched") or {}).keys()) or "정책/규제"
-        counter = alert.get("counter") or "원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다."
         lines.extend([
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {str(alert.get('title') or '').strip()}",
             f"- 상태 변화: {matched_keys} 신호 확인 ({', '.join(matched_terms[:8])})",
             f"- 원문/출처: [{alert.get('source', 'source')}]({alert.get('link', '')}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
-            f"- 한국장 영향: {', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
-            f"- 영향 경로: {', '.join(alert.get('paths') or ['정책 타임라인'])}",
-            f"- 영향 섹터: {', '.join(alert.get('sectors') or ['정책/규제 일반'])}",
+            *explanation_lines(alert),
             *maybe_line("국내 원전 입지·인허가 체크", alert.get("domestic_nuclear_siting_check")),
             *maybe_line("체크할 리스크", alert.get("domestic_nuclear_siting_risk_table")),
             *maybe_line("구조 변화", alert.get("domestic_nuclear_siting_structure_note")),
             *maybe_line("변압기 관세 체크", alert.get("transformer_tariff_check")),
             *maybe_line("체크할 리스크", alert.get("transformer_tariff_risk_table")),
             *maybe_line("구조 변화", alert.get("transformer_tariff_structure_note")),
-            "- 반영 가능성: 낮음~중간. 공식 원문과 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.",
-            f"- 반대 근거: {counter}",
             "- 즉시 체크: 원문 전문, 시행일/마감일, 인허가·입지·계통·주민수용성, 한국 밸류체인 노출, 관련 종목 수급",
             "",
         ])
@@ -77,9 +74,11 @@ def main() -> int:
         if is_nuclear_siting(item):
             item["title"] = NUCLEAR_TITLE
             item["sectors"] = NUCLEAR_SECTORS[:]
+            ensure_explained(item)
         if is_transformer(item):
             item["title"] = TRANSFORMER_TITLE
             item["sectors"] = TRANSFORMER_SECTORS[:]
+            ensure_explained(item)
     now = dt.datetime.now(tz=KST)
     ALERTS_JSON_PATH.write_text(json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     report = render(alerts, now)

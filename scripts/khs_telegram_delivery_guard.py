@@ -117,6 +117,13 @@ VISIBLE_ENGLISH_BLOCKERS = [
     "presidential memorandum",
 ]
 
+REQUIRED_EXPLANATION_FIELDS = [
+    "- 핵심 내용:",
+    "- 투자 관점:",
+    "- 한국장 영향:",
+    "- 실패 신호:",
+]
+
 REPLACEMENTS = {
     "[Federal Register FCC]": "[미 연방관보 FCC]",
     "[Federal Register presidential documents]": "[미 연방관보 대통령문서]",
@@ -241,6 +248,11 @@ def guard_lane(lane: Lane) -> None:
     if lane.name == "policy" and has_raw_ascii_heading(body):
         delete_lane(lane, "raw_ascii_policy_heading")
         return
+
+    for marker in REQUIRED_EXPLANATION_FIELDS:
+        if marker not in body:
+            delete_lane(lane, f"missing_explanation_field:{marker}")
+            return
 
     write_pair(lane, title, body)
     print(f"telegram_delivery_guard=passed lane={lane.name}")

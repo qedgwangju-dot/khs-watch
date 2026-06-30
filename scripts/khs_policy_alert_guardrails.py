@@ -15,6 +15,8 @@ import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from khs_policy_alert_explainer import ensure_explained, explanation_lines
+
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
 REPORT_PATH = OUT_DIR / "khs_policy_watch.md"
@@ -280,60 +282,6 @@ def normalize_title(item: dict) -> None:
         item["title"] = ko_title
 
 
-def unique(values: list[str]) -> list[str]:
-    return list(dict.fromkeys(value for value in values if value))
-
-
-def enrich_policy_context(item: dict) -> None:
-    if is_fcc_resilient_networks_policy(item):
-        item["importance"] = "중"
-        item["impacts"] = ["시간표", "의사결정 영향 제한적"]
-        item["paths"] = ["정책 타임라인", "규제 준수"]
-        item["sectors"] = ["미국 통신망 복구/장애보고"]
-        item["policy_plain_summary"] = (
-            "FCC가 재난·정전·허리케인 등 통신장애 때 사업자가 DIRS에 보고하는 절차를 현대화한 최종규칙입니다. "
-            "통신망 투자 확대, 요금 규제, 주파수 경매가 아니라 재난 대응 보고·행정 부담 조정 성격입니다."
-        )
-        item["investment_view"] = (
-            "매출을 직접 늘리는 정책은 아닙니다. 미국 통신사·장비사의 단기 CAPEX, 한국 통신3사 실적, "
-            "국내 네트워크 장비 수주로 바로 연결되는 근거는 제한적입니다."
-        )
-        item["korea_market_impact"] = (
-            "한국장에서는 통신장비·위성·통신주 테마 반응이 붙어도 직접 가격 변수는 약합니다. "
-            "재난통신 장비 조달, 911·공공안전망 투자, 보안장비 의무화가 뒤따를 때만 재평가 후보입니다."
-        )
-        item["priced_in"] = (
-            "낮음. 선반영 여부보다 영향 자체가 제한적입니다. AI 전력망, 관세, 원전처럼 실적 추정치를 바로 바꾸는 재료가 아닙니다."
-        )
-        item["counter"] = (
-            "최종규칙이라도 핵심은 보고 절차 정비입니다. 신규 예산·장비 발주·주파수 정책·보조금이 확인되지 않으면 실적 연결은 약합니다."
-        )
-        item["failure_signal"] = (
-            "미국 통신사 CAPEX 가이던스, 장비 발주, 공공안전망 예산, 국내 장비사 수주 공시가 없으면 테마성 반응에서 끝납니다."
-        )
-        return
-
-    impacts = unique(item.get("impacts") or ["의사결정 영향 제한적"])
-    sectors = unique(item.get("sectors") or ["정책/규제 일반"])
-    item.setdefault(
-        "policy_plain_summary",
-        f"공식 정책·규제 문서에서 {', '.join(impacts)} 관련 상태 변화 후보가 확인됐습니다.",
-    )
-    item.setdefault(
-        "investment_view",
-        "실제 투자 재료가 되려면 매출·마진·할인율·수급·정책 시간표 중 무엇이 바뀌는지 후속 원문과 시장 반응으로 확인해야 합니다.",
-    )
-    item.setdefault(
-        "korea_market_impact",
-        f"한국장 체크 대상은 {', '.join(sectors)}입니다. 원문에 직접 근거가 없는 업종 확장은 제외합니다.",
-    )
-    item.setdefault("priced_in", "낮음~중간. 공식 원문 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.")
-    item.setdefault(
-        "failure_signal",
-        "시행일, 예산, 계약, 수급 반응, 관련 기업 공시가 뒤따르지 않으면 단발성 정책 뉴스로 끝납니다.",
-    )
-
-
 def dedup_key(item: dict) -> str:
     title = str(item.get("title") or "").lower()
     link = str(item.get("link") or "").lower()
@@ -356,26 +304,17 @@ def render_report(alerts: list[dict], now: dt.datetime) -> str:
     for idx, alert in enumerate(alerts, 1):
         matched_terms = sorted({term for terms in (alert.get("matched") or {}).values() for term in terms})
         matched_keys = ", ".join((alert.get("matched") or {}).keys()) or "정책/규제"
-        counter = alert.get("counter") or "제목·요약 기반 1차 감시라 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다."
         lines.extend([
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {str(alert.get('title') or '').strip()}",
             f"- 상태 변화: {matched_keys} 신호 확인 ({', '.join(matched_terms[:8])})",
             f"- 원문/출처: [{alert.get('source', 'source')}]({alert.get('link', '')}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
-            f"- 핵심 내용: {alert.get('policy_plain_summary') or '정책 세부 내용 확인 필요'}",
-            f"- 투자 관점: {alert.get('investment_view') or '실적·할인율·수급·시간표 변화 여부 확인 필요'}",
-            f"- 한국장 영향: {alert.get('korea_market_impact') or ', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
-            f"- 의사결정 영향: {', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
-            f"- 영향 경로: {', '.join(alert.get('paths') or ['정책 타임라인'])}",
-            f"- 영향 섹터: {', '.join(alert.get('sectors') or ['정책/규제 일반'])}",
+            *explanation_lines(alert),
             *([f"- 국내 통신정책 체크: {alert.get('telecom_policy_check')}"] if alert.get("telecom_policy_check") else []),
             *([f"- 체크할 리스크: {alert.get('telecom_risk_table')}"] if alert.get("telecom_risk_table") else []),
             *([f"- 구조 변화: {alert.get('telecom_structure_note')}"] if alert.get("telecom_structure_note") else []),
             *([f"- 국내 스테이블코인 정책 체크: {alert.get('stablecoin_policy_check')}"] if alert.get("stablecoin_policy_check") else []),
             *([f"- 체크할 리스크: {alert.get('stablecoin_risk_table')}"] if alert.get("stablecoin_risk_table") else []),
             *([f"- 구조 변화: {alert.get('stablecoin_structure_note')}"] if alert.get("stablecoin_structure_note") else []),
-            f"- 반영 가능성: {alert.get('priced_in') or '낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.'}",
-            f"- 반대 근거: {counter}",
-            f"- 실패 신호: {alert.get('failure_signal') or '후속 시행일·예산·계약·수급 반응이 없으면 단발성 정책 뉴스로 끝납니다.'}",
             "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
             "",
         ])
@@ -429,7 +368,7 @@ def main() -> int:
         if is_low_impact_false_positive(item):
             continue
         normalize_title(item)
-        enrich_policy_context(item)
+        ensure_explained(item)
         key = dedup_key(item)
         if key in seen:
             continue

@@ -20,6 +20,8 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from khs_policy_alert_explainer import ensure_explained, explanation_lines
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "out"
 DATA_DIR = ROOT / "data"
@@ -276,15 +278,13 @@ def render_report(alerts: list[dict], source_notes: list[str], now: dt.datetime)
     for idx, alert in enumerate(alerts, 1):
         matched_terms = sorted({term for terms in alert["matched"].values() for term in terms})
         display_title = korean_alert_title(alert)
+        alert["title"] = display_title
+        ensure_explained(alert)
         lines += [
             f"## {idx}. [{alert['importance']}·{alert['status']}] {display_title}",
             f"- 상태 변화: {', '.join(alert['matched'].keys())} 신호 확인 ({', '.join(matched_terms[:8])})",
             f"- 원문/출처: [{alert['source']}]({alert['link']}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
-            f"- 한국장 영향: {', '.join(alert['impacts'])}",
-            f"- 영향 경로: {', '.join(alert['paths'])}",
-            f"- 영향 섹터: {', '.join(alert['sectors'])}",
-            "- 반영 가능성: 낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 06:30 레이더에서 재확인해야 합니다.",
-            "- 반대 근거: 제목·요약 기반 1차 감시라 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.",
+            *explanation_lines(alert),
             "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응", "",
         ]
     lines += [
