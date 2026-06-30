@@ -337,6 +337,30 @@ STORY_RULES = (
         follow_up="이 넓은 안전망은 특정 테마 룰이 없는 새 정책축을 놓치지 않기 위한 것입니다. 송출 후에는 공식 원문, 품목·세율·시행일, 한국 기업 직접 노출을 확인해야 합니다.",
     ),
     StoryRule(
+        key="us_doe_energy_security_policy",
+        title="미 에너지부, 전력망·원전·에너지 장비 지원/제한 정책 보도",
+        google_queries=(
+            "Reuters Bloomberg DOE loan guarantee nuclear reactors data centers power grid energy security",
+            "Reuters Bloomberg Department of Energy conditional commitment loan guarantee nuclear grid transformer",
+            "Reuters Bloomberg DOE funding opportunity grid deployment transformer critical materials nuclear fuel",
+            "Reuters Bloomberg DOE ban restriction efficiency standard energy equipment transformer inverter",
+            "Bloomberg Reuters Department of Energy low cost loans AP1000 reactors data centers",
+        ),
+        required_groups=(
+            ("doe", "department of energy", "energy department"),
+            ("loan", "loans", "loan guarantee", "conditional commitment", "funding", "grant", "award", "selected", "ban", "restriction", "efficiency standard", "low-cost"),
+            ("grid", "power", "transmission", "data center", "nuclear", "reactor", "ap1000", "transformer", "uranium", "nuclear fuel", "critical materials", "inverter"),
+        ),
+        core="미 에너지부(DOE)의 대출보증, 조건부 지원 약정, 자금지원, 효율규제, 금지·제한 정책이 전력망·원전·에너지 장비 밸류체인에 영향을 줄 수 있다는 신뢰외신 보도입니다.",
+        impact="전력망/전력기기, 원전/SMR/핵연료, 데이터센터 전력, 핵심소재/에너지 공급망 | 돈 버는 능력·수급·시간표·할인율",
+        point="DOE의 자금지원·대출·규제는 프로젝트 착공과 장비 발주 시간표, 원전/전력기기 수주 가시성, 데이터센터 전력 병목 프리미엄을 동시에 바꿀 수 있습니다.",
+        counter="신뢰외신 보도 단계에서는 최종 DOE 원문, 선정 기업, 금액, 대출 조건, 인허가·착공 일정, 한국 기업 공급망 노출이 확정되지 않았습니다.",
+        sectors="전력망/전력기기, 원전/SMR/핵연료, 데이터센터 전력, 핵심소재/에너지 공급망",
+        impacts=("돈 버는 능력", "수급", "시간표", "할인율"),
+        paths=("정책 타임라인", "전력망 투자", "원전/핵연료", "대출·보조금", "공급망"),
+        follow_up="DOE 보도는 금액·대출조건·선정기업·시행일·조달일정이 원문에서 확인될 때 고충격으로 남깁니다. 국내 기업은 미국 프로젝트 노출이 없으면 테마 반응으로 제한합니다.",
+    ),
+    StoryRule(
         key="global_korea_policy_shock_broad",
         title="신뢰외신, 한국 직접 영향 해외 정책 후보 보도",
         google_queries=(

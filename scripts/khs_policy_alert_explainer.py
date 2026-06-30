@@ -155,6 +155,47 @@ def is_fcc_security_import_policy(text: str, item: dict) -> bool:
     )
 
 
+def is_doe_energy_security_policy(text: str, item: dict) -> bool:
+    return "energy_security_policy" in (item.get("matched") or {}) or (
+        has_any(text, ["doe", "department of energy", "energy.gov", "미 에너지부", "에너지부"])
+        and has_any(
+            text,
+            [
+                "loan",
+                "loans",
+                "loan guarantee",
+                "conditional commitment",
+                "low-cost loan",
+                "funding opportunity",
+                "notice of intent",
+                "grant",
+                "award",
+                "selected",
+                "ban",
+                "prohibit",
+                "restriction",
+                "efficiency standard",
+                "emergency order",
+                "grid deployment",
+                "transmission facilitation",
+                "critical materials",
+                "nuclear fuel",
+                "대출",
+                "대출보증",
+                "조건부 약정",
+                "보조금",
+                "자금지원",
+                "금지",
+                "제한",
+                "효율규제",
+                "전력망",
+                "핵연료",
+                "핵심소재",
+            ],
+        )
+    )
+
+
 def is_eu_korea_steel_policy(text: str, item: dict) -> bool:
     focused_text = " ".join(
         str(part or "")
@@ -388,6 +429,20 @@ def ensure_explained(item: dict) -> dict:
             priced_in="낮음~중간. FCC 국가안보 규제는 테마 반응이 빠르지만 공식 규칙안·적용 장비·시행일 확인 전에는 한국장 직접 반영이 제한적입니다.",
             counter="신뢰외신 보도 단계에서는 FCC 공식 규칙안, 적용 장비, 기존 인증 장비 예외, 시행일이 확정되지 않았습니다. 특정 기업 매출로 연결하려면 미국향 공급망 노출과 수주 근거가 필요합니다.",
             failure_signal="FCC 공식 규칙안, Covered List·장비인증 제한 범위, 적용 장비, 한국 기업의 미국향 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
+        )
+    elif is_doe_energy_security_policy(text, item):
+        put(
+            item,
+            importance="상",
+            impacts=["돈 버는 능력", "수급", "시간표", "할인율"],
+            paths=["정책 타임라인", "전력망 투자", "원전/핵연료", "대출·보조금", "공급망"],
+            sectors=["전력망/전력기기", "원전/SMR/핵연료", "데이터센터 전력", "핵심소재/에너지 공급망"],
+            policy_plain_summary="미 에너지부(DOE)의 대출보증, 조건부 지원 약정, 자금지원 공고, 효율규제, 금지·제한, 핵연료·전력망 정책은 에너지 인프라 투자와 공급망 시간표를 직접 바꿀 수 있는 사안입니다.",
+            investment_view="DOE 지원·제한 정책은 보조금성 자금, 저리 대출, 인허가·조달 일정, 장비 효율 기준을 통해 원전·전력기기·송전망·데이터센터 전력 밸류체인의 수주 가시성과 할인율을 동시에 건드립니다.",
+            korea_market_impact="한국장에서는 두산에너빌리티, 원전 기자재, 전력기기, 변압기·전선, ESS/전력변환장치, 핵연료·핵심소재 밸류체인 중 미국 프로젝트 노출이 있는 종목만 선별 확인합니다.",
+            priced_in="중간. 전력망·원전 테마는 선반영이 강하지만 DOE의 금액, 대출 조건, 선정 기업, 시행일이 공식화되면 실적 추정과 수급이 다시 움직일 수 있습니다.",
+            counter="DOE 발표라도 공고·의향서·조건부 약정 단계는 최종 계약이나 매출 확정이 아닙니다. 수혜 기업, 금액, 매칭 자금, 인허가, 착공 일정 확인이 필요합니다.",
+            failure_signal="DOE 원문에서 금액·대상 기업·대출 조건·시행일·조달 일정이 확인되지 않거나 국내 기업의 미국 프로젝트 노출이 없으면 테마성 반응으로 끝납니다.",
         )
     elif is_fcc_resilient(text):
         put(

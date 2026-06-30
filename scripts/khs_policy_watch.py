@@ -115,6 +115,12 @@ STAGE_KEYWORDS = {
     ],
     "sanctions_tariffs_export": ["sanctions", "tariff", "section 301", "export controls", "entity list", "ofac", "bis", "관세", "제재", "수출통제"],
     "agency_order": ["order", "directive", "notice of proposed rulemaking", "nopr", "request for comments", "hearing", "comment deadline", "notice to lessees", "ntls", "명령", "의견수렴", "청문"],
+    "energy_security_policy": [
+        "department of energy", "doe", "loan", "loans", "loan guarantee", "conditional commitment",
+        "low-cost loan", "funding opportunity", "notice of intent", "grant", "award", "selected",
+        "prohibit", "prohibition", "restriction", "ban", "efficiency standard", "emergency order",
+        "grid deployment", "transmission facilitation", "critical materials", "nuclear fuel",
+    ],
     "fcc_decision_notice": [
         "open meeting", "commission meeting", "tentative agenda",
         "sunshine notice", "items on circulation", "circulation", "draft order", "report and order",
@@ -142,8 +148,8 @@ STAGE_KEYWORDS = {
 
 SECTOR_KEYWORDS = {
     "풍력/해상풍력": ["wind", "offshore wind", "boem", "bsee", "renewable", "ocs", "lease", "cop"],
-    "전력망/데이터센터": ["ferc", "grid", "electric grid", "transmission", "large load", "data center", "power", "inverter", "energy inverter"],
-    "원전/전력기기": ["nuclear", "reactor", "uranium", "transformer", "ap1000", "smr", "small modular reactor"],
+    "전력망/데이터센터": ["ferc", "doe", "department of energy", "grid", "electric grid", "transmission", "large load", "data center", "power", "inverter", "energy inverter", "grid deployment", "transmission facilitation"],
+    "원전/전력기기": ["doe", "department of energy", "nuclear", "reactor", "uranium", "nuclear fuel", "transformer", "ap1000", "smr", "small modular reactor"],
     "반도체/AI": ["semiconductor", "chips", "bis", "export controls", "nvidia", "hbm", "ai"],
     "2차전지/핵심광물": ["battery", "lithium", "critical minerals", "ira", "ev"],
     "방산/지정학": ["sanctions", "missile", "defense", "iran", "russia", "china", "taiwan"],
@@ -222,6 +228,7 @@ SOURCES = [
     Source("Federal Register tariffs", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=tariff+section+301+final+rule"),
     Source("Federal Register Commerce national security", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=commerce+national+security+import+export+controls+tariff+semiconductor+robot+inverter"),
     Source("Federal Register DOE FERC NRC power", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=doe+ferc+nrc+power+grid+nuclear+data+center+transformer+reactor+loan"),
+    Source("Federal Register DOE restrictions loans", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=department+of+energy+loan+guarantee+funding+opportunity+restriction+ban+efficiency+standard+critical+materials"),
     Source("Federal Register FCC", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=federal-communications-commission&order=newest&per_page=20", "federal_register_json"),
     Source("Federal Register presidential documents", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Btype%5D%5B%5D=PRESDOCU&order=newest&per_page=20", "federal_register_json"),
     Source("White House executive orders", "https://www.whitehouse.gov/presidential-actions/executive-orders/", "whitehouse_html"),
@@ -608,7 +615,7 @@ def classify_item(item: dict) -> dict | None:
     is_fcc_admin_reporting = is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_ADMIN_REPORTING_TERMS)
     if is_fcc_admin_reporting:
         importance = "중"
-    elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
+    elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "energy_security_policy", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
         importance = "상"
     elif "company_filing" in matched and has_major_filing:
         importance = "중"
@@ -624,10 +631,10 @@ def classify_item(item: dict) -> dict | None:
     if is_fcc_admin_reporting:
         impacts.extend(["시간표", "의사결정 영향 제한적"])
         paths.extend(["정책 타임라인", "규제 준수"])
-    elif any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "presidential_action", "fcc_decision_notice")):
+    elif any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "energy_security_policy", "presidential_action", "fcc_decision_notice")):
         impacts.extend(["시간표", "할인율"])
         paths.extend(["정책 타임라인", "할인율"])
-    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "company_filing", "fda_decision")):
+    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "energy_security_policy", "company_filing", "fda_decision")):
         impacts.extend(["돈 버는 능력", "수급"])
         paths.extend(["이익", "수급"])
     if "company_filing" in matched:

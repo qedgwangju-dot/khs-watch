@@ -637,6 +637,8 @@ def korean_title(alert: dict) -> str:
         return "FCC, 국가안보 명분 외국산 장비·인버터 규제 신호"
     if has_term(text, ["nominations", "appointments"]):
         return "백악관, 고위급 인사 지명·임명 공지"
+    if has_term(text, ["doe", "department of energy", "energy.gov"]) and has_term(text, ["loan", "loans", "low-cost loan", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "ap1000"]):
+        return "미 에너지부, 전력망·원전·에너지 장비 지원/제한 정책 체크"
     if has_term(text, ["transformer", "large power transformer", "변압기"]):
         return "미국, 대형 변압기 관세·규제 변화 공식근거 체크"
     if has_term(text, ["robot", "robotics", "chinese robots"]):
@@ -645,7 +647,7 @@ def korean_title(alert: dict) -> str:
         return "EU 등 해외 정책, 한국 수출주 직접 영향 체크"
     if has_term(text, ["nuclear", "reactor", "ap1000", "westinghouse", "smr"]):
         return "미국 원전·SMR·AI 전력 정책 시간표 체크"
-    if has_term(text, ["data center", "data centers", "zoning", "moratorium", "residents"]):
+    if is_local_dc_like(alert):
         return "미국 지역 데이터센터 인허가·주민 반발 이슈 확산"
     if has_term(text, ["fcc", "broadband", "satellite", "spectrum"]):
         return "FCC, 통신·브로드밴드 규제 문서 공표"
@@ -662,12 +664,14 @@ def curated_sectors(alert: dict) -> list[str]:
     text = alert_text(alert)
     if has_term(text, ["전환사채", "신주인수권", "유상증자", "주요사항보고서", "타법인주식", "회사합병", "회사분할"]):
         return ["개별종목 자금조달/희석", "수급/오버행", "한국 직접 공시"]
-    if alert.get("local_dc_policy") or has_term(text, ["data center", "data centers", "zoning", "moratorium"]):
+    if is_local_dc_like(alert):
         return ["데이터센터/전력망/전력기기"]
     if has_term(text, ["fcc", "federal communications commission"]) and has_term(text, ["national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter"]):
         return ["전력망 보안/FCC 장비규제", "태양광 인버터/전력변환장치", "중국 대체 공급망"]
     if has_term(text, ["european union", "european commission", "eu집행위", "유럽연합"]) and has_term(text, ["korea", "south korea", "korean", "한국", "한국산"]):
         return ["EU/한국 정책 영향", "한국 수출주", "무역규제/관세"]
+    if has_term(text, ["doe", "department of energy", "energy.gov"]) and has_term(text, ["loan", "loans", "low-cost loan", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "ap1000"]):
+        return ["DOE 전력망/원전/에너지지원", "전력망/전력기기", "원전/SMR/핵연료", "데이터센터 전력"]
     if has_term(text, ["transformer", "large power transformer", "변압기"]):
         return ["전력기기/변압기", "관세/수출주", "전력망/데이터센터"]
     if has_term(text, ["nuclear", "reactor", "smr", "ap1000", "westinghouse", "doosan", "원전"]):
@@ -702,7 +706,7 @@ def explanation_for(alert: dict) -> dict[str, str]:
             "counter": "정정공시나 단순 일정 변경이면 신규 악재가 아닐 수 있고, 자금 사용처가 명확하면 부정적 영향이 제한될 수 있습니다.",
             "failure": "납입 지연, 조건 변경, 리픽싱 확대, 대규모 전환 가능 물량이 확인되지 않으면 시장 영향은 제한됩니다.",
         }
-    if alert.get("local_dc_policy") or has_term(text, ["data center", "data centers", "zoning", "moratorium", "residents"]):
+    if is_local_dc_like(alert):
         return {
             "core": "미국 지역 단위에서 데이터센터 인허가, 조례, 주민 반발, 공사 영향 이슈가 확인된 사안입니다.",
             "view": "AI 데이터센터 CAPEX 자체보다 승인 시간표와 전력망 접속 병목 프리미엄을 바꿀 수 있는지 보는 재료입니다.",
@@ -728,6 +732,15 @@ def explanation_for(alert: dict) -> dict[str, str]:
             "priced": "낮음~중간. 보도 직후 테마 수급은 빠르지만 관보·집행위·의회·이사회 문서로 품목과 시행일이 확인돼야 실적 추정에 반영됩니다.",
             "counter": "해외 정책 보도만으로는 품목 범위, 국가별 쿼터, 예외 조항, 시행일, 한국 기업 직접 노출이 확정되지 않습니다.",
             "failure": "공식 문서, 품목별 수치, 적용일, 한국 기업 직접 노출, 국내 가격·수급 반응이 없으면 제외해야 합니다.",
+        }
+    if has_term(text, ["doe", "department of energy", "energy.gov"]) and has_term(text, ["loan", "loans", "low-cost loan", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "ap1000"]):
+        return {
+            "core": "미 에너지부(DOE)의 대출보증, 조건부 지원 약정, 자금지원, 효율규제, 금지·제한, 핵연료·전력망 정책이 확인된 사안입니다.",
+            "view": "DOE 정책은 보조금성 자금, 저리 대출, 효율 기준, 조달·인허가 일정으로 원전·전력기기·송전망·데이터센터 전력 밸류체인의 수주 가시성과 할인율을 동시에 바꿀 수 있습니다.",
+            "korea": "한국장에서는 두산에너빌리티, 원전 기자재, 전력기기, 변압기·전선, ESS/전력변환장치, 핵연료·핵심소재 중 미국 프로젝트 노출이 있는 종목만 선별 확인합니다.",
+            "priced": "중간. 원전·전력망 테마는 선반영이 강하지만 DOE 금액, 대출조건, 선정기업, 시행일이 공식화되면 실적 추정과 수급이 다시 움직일 수 있습니다.",
+            "counter": "DOE 발표라도 공고·의향서·조건부 약정 단계는 최종 계약이나 매출 확정이 아닙니다. 수혜 기업, 금액, 매칭 자금, 인허가, 착공 일정 확인이 필요합니다.",
+            "failure": "DOE 원문에서 금액·대상기업·대출조건·시행일·조달일정이 확인되지 않거나 국내 기업의 미국 프로젝트 노출이 없으면 테마성 반응으로 끝납니다.",
         }
     if has_term(text, ["transformer", "large power transformer", "변압기"]):
         return {
@@ -883,6 +896,8 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
         extra += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV", "FCC Covered List"]
     if "EU/한국 정책 영향" in alert.get("sectors", []):
         extra += ["EU 집행위/관보", "철강·배터리·반도체·조선 수출주", "EUR/KRW"]
+    if "DOE 전력망/원전/에너지지원" in alert.get("sectors", []):
+        extra += ["DOE", "FERC", "NRC", "AP1000", "Westinghouse", "VRT", "ETN", "GEV", "Uranium"]
     try:
         base_text = base.related(alert, fred, te)
         base_parts = [] if base_text == "확인 가능한 직접 티커 없음" else [part.strip() for part in base_text.split(",") if part.strip()]
@@ -897,6 +912,8 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
             out += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV", "FCC Covered List"]
         if "EU/한국 정책 영향" in alert.get("sectors", []):
             out += ["EU 집행위/관보", "철강·배터리·반도체·조선 수출주", "EUR/KRW"]
+        if "DOE 전력망/원전/에너지지원" in alert.get("sectors", []):
+            out += ["DOE", "FERC", "NRC", "AP1000", "Westinghouse", "VRT", "ETN", "GEV", "Uranium"]
         if alert.get("biotech_leadership_filter"):
             out += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
         if alert.get("robotics_execution_filter"):
