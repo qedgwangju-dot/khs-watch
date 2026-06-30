@@ -93,6 +93,14 @@ SOURCE_PRIORITY = {
     "서울경제": 11,
 }
 
+TRUSTED_WIRE_RELAY_SOURCES = {
+    "aol.com",
+    "investing.com",
+    "kfgo",
+    "kfgo am",
+    "kfgo-am",
+}
+
 
 @dataclass(frozen=True)
 class StoryRule:
@@ -111,6 +119,31 @@ class StoryRule:
 
 
 STORY_RULES = (
+    StoryRule(
+        key="us_fcc_foreign_energy_inverter_ban",
+        title="미국 FCC, 외국산 에너지 인버터 수입금지 검토 보도",
+        google_queries=(
+            "Reuters FCC foreign energy inverters ban solar national security",
+            "Bloomberg FCC foreign inverters import ban solar stocks",
+            "Trump administration ban foreign energy inverters Reuters FCC",
+            "US working ban Chinese energy inverters FCC Reuters",
+            "\"foreign energy inverters\" \"FCC\" Reuters",
+        ),
+        required_groups=(
+            ("inverter", "inverters"),
+            ("ban", "barred", "imports", "import", "targeting", "foreign", "chinese", "national security"),
+            ("foreign", "chinese", "china"),
+            ("solar", "energy", "renewable", "grid"),
+        ),
+        core="Reuters·Bloomberg 계열 보도 기준, 미국 FCC가 국가안보 우려를 이유로 외국산 또는 중국산 에너지 인버터 신규 수입 제한·금지 조치를 검토 중이라는 예비 정책 신호입니다.",
+        impact="태양광 인버터·전력변환장치, 미국 태양광 밸류체인, 전력망 보안, 중국 대체 공급망 | 돈 버는 능력·수급·시간표",
+        point="인버터는 태양광 발전을 전력망에 연결하는 핵심 장비라 수입 금지가 공식화되면 미국 내 인버터/전력변환장치 업체의 가격결정력과 주문 기대, 중국산 부품 의존 리스크가 동시에 바뀔 수 있습니다.",
+        counter="아직 FCC 공식 규칙·수입금지 대상·적용일·기존 모델 예외가 확정되지 않은 보도 단계입니다. 미국 업체 주가 반응이 먼저 나온 만큼 단기 과열일 수 있습니다.",
+        sectors="태양광 인버터/전력변환장치, 전력기기/전력망 보안, 신재생에너지, 중국 대체 공급망",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("정책 타임라인", "공급망", "밸류체인", "수급"),
+        follow_up="핵심은 FCC가 실제 규칙안을 내고 적용 대상을 중국산 인버터 전체, 신규 모델, 특정 통신 모듈 내장 장비 중 어디까지로 확정하느냐입니다. 한국장에서는 인버터 직접 종목보다 전력변환장치, ESS/전력기기, 태양광 부품, 전력망 보안 밸류체인으로 연결되는지 확인해야 합니다.",
+    ),
     StoryRule(
         key="us_china_robotics_import_review",
         title="미 상무부, 중국산 로봇 수입 조사·추가 조치 가능성",
@@ -319,6 +352,20 @@ def is_trusted_source(name: str) -> bool:
     return key in TRUSTED_SOURCES
 
 
+def trusted_wire_source(text: str) -> str:
+    low = text.lower()
+    if "reuters" in low:
+        return "Reuters"
+    if "bloomberg" in low:
+        return "Bloomberg"
+    return ""
+
+
+def is_trusted_wire_relay(publisher: str, text: str) -> bool:
+    key = source_key(publisher)
+    return key in TRUSTED_WIRE_RELAY_SOURCES and bool(trusted_wire_source(text))
+
+
 def has_required_terms(text: str, rule: StoryRule) -> bool:
     low = text.lower()
     return all(any(term.lower() in low for term in group) for group in rule.required_groups)
@@ -354,24 +401,30 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             published = parse_pub_date(item.findtext("pubDate"))
             description = clean_text(item.findtext("description"))
             haystack = " ".join([title, publisher, description])
+            wire_source = trusted_wire_source(haystack)
             if not title or not link or not published:
                 continue
             if link in seen_links:
                 continue
-            if not is_trusted_source(publisher):
+            if not is_trusted_source(publisher) and not is_trusted_wire_relay(publisher, haystack):
                 continue
             if (now - published).total_seconds() / 3600 > MAX_AGE_HOURS:
                 continue
             if not has_required_terms(haystack, rule):
                 continue
             seen_links.add(link)
+            display_source = publisher
+            priority_key = source_key(publisher)
+            if wire_source and not is_trusted_source(publisher):
+                display_source = f"{publisher} ({wire_source} 보도 인용)"
+                priority_key = source_key(wire_source)
             items.append(
                 {
                     "title": title,
                     "link": link,
-                    "source": publisher,
+                    "source": display_source,
                     "published_kst": published.isoformat(timespec="seconds"),
-                    "priority": SOURCE_PRIORITY.get(source_key(publisher), 99),
+                    "priority": SOURCE_PRIORITY.get(priority_key, 99),
                 }
             )
     return sorted(items, key=lambda item: (item["priority"], item["published_kst"]))
@@ -407,7 +460,8 @@ def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
         "eu_korea_policy_watch": rule.key.startswith("eu_korea_"),
         "eu_policy_category": rule.key if rule.key.startswith("eu_korea_") else "",
         "eu_korea_steel_policy_watch": rule.key == "eu_korea_steel_safeguard_relief",
-        "matched": {rule.key: ["EU", "Korea", "policy"]} if rule.key.startswith("eu_korea_") else {},
+        "trusted_policy_rule_key": rule.key,
+        "matched": {rule.key: ["EU", "Korea", "policy"] if rule.key.startswith("eu_korea_") else ["trusted policy news"]},
     }
     ensure_explained(explain_item)
 

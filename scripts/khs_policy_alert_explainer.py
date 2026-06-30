@@ -131,6 +131,14 @@ def is_fcc_resilient(text: str) -> bool:
     )
 
 
+def is_fcc_energy_inverter_policy(text: str, item: dict) -> bool:
+    return item.get("eu_policy_category") == "us_fcc_foreign_energy_inverter_ban" or "us_fcc_foreign_energy_inverter_ban" in (item.get("matched") or {}) or (
+        has_any(text, ["fcc", "federal communications commission"])
+        and has_any(text, ["inverter", "inverters", "인버터", "전력변환"])
+        and has_any(text, ["ban", "barred", "import", "imports", "foreign", "chinese", "national security", "수입", "금지", "외국산", "중국산", "국가안보"])
+    )
+
+
 def is_eu_korea_steel_policy(text: str, item: dict) -> bool:
     focused_text = " ".join(
         str(part or "")
@@ -336,6 +344,20 @@ def ensure_explained(item: dict) -> dict:
             priced_in="중간. 법안 기대는 테마 수급에 빨리 반영되지만, 발행 주체와 감독 강도가 확정되지 않아 변동성이 큽니다.",
             counter="은행 중심인지 핀테크·거래소까지 허용할지, 한국은행·금융당국 규제 강도가 어느 수준일지 아직 확정되지 않았습니다.",
             failure_signal="발행 주체가 좁게 제한되거나 준비자산·상환·건전성 규제가 강해지면 테마 확산이 약해집니다.",
+        )
+    elif is_fcc_energy_inverter_policy(text, item):
+        put(
+            item,
+            importance="상",
+            impacts=["돈 버는 능력", "수급", "시간표"],
+            paths=["정책 타임라인", "공급망", "밸류체인", "수급"],
+            sectors=["태양광 인버터/전력변환장치", "전력기기/전력망 보안", "신재생에너지", "중국 대체 공급망"],
+            policy_plain_summary="미국 FCC가 국가안보 우려를 이유로 외국산 또는 중국산 에너지 인버터 신규 수입 제한·금지 조치를 검토 중이라는 신뢰외신 기반 예비 정책 신호입니다.",
+            investment_view="인버터는 태양광 발전을 전력망에 연결하는 핵심 장비라 수입 금지가 공식화되면 미국 내 인버터·전력변환장치 업체의 주문 기대, 가격결정력, 중국산 부품 의존 리스크가 동시에 바뀔 수 있습니다.",
+            korea_market_impact="한국장에서는 미국 태양광주를 직접 따라가기보다 전력변환장치, ESS/PCS, 전력기기, 전력망 보안, 태양광 부품 중 미국향 또는 중국 대체 공급망 노출이 있는 종목만 선별 확인합니다.",
+            priced_in="낮음~중간. 보도 직후 미국 태양광주는 먼저 반응했지만, FCC 공식 규칙안·적용대상·시행일이 확인되기 전까지 한국장 직접 반영은 제한적입니다.",
+            counter="아직 FCC 공식 규칙·수입금지 대상·적용일·기존 모델 예외가 확정되지 않은 보도 단계입니다. 미국 업체 주가 반응이 먼저 나온 만큼 단기 과열일 수 있습니다.",
+            failure_signal="FCC 공식 문서, 적용 대상 장비, 중국산 통신모듈·인버터 제한 범위, 한국 기업의 미국향 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
         )
     elif is_fcc_resilient(text):
         put(
