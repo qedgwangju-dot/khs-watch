@@ -25,8 +25,6 @@ jobs:
       DART_DAYS_BACK: "1"
       KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
       KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
-      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -50,8 +48,8 @@ jobs:
             echo "DART_API_KEY: 설정됨" >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          POLICY_TELEGRAM_BOT_TOKEN="${KHS_POLICY_TELEGRAM_BOT_TOKEN:-$TELEGRAM_BOT_TOKEN}"
-          POLICY_TELEGRAM_CHAT_ID="${KHS_POLICY_TELEGRAM_CHAT_ID:-$TELEGRAM_CHAT_ID}"
+          POLICY_TELEGRAM_BOT_TOKEN="$KHS_POLICY_TELEGRAM_BOT_TOKEN"
+          POLICY_TELEGRAM_CHAT_ID="$KHS_POLICY_TELEGRAM_CHAT_ID"
           if [ -z "$POLICY_TELEGRAM_BOT_TOKEN" ] || [ -z "$POLICY_TELEGRAM_CHAT_ID" ]; then
             echo "Policy Telegram: 미설정" >> "$GITHUB_STEP_SUMMARY"
           else
@@ -79,16 +77,10 @@ jobs:
           import urllib.request
           from pathlib import Path
 
-          token = (
-              os.getenv("KHS_POLICY_TELEGRAM_BOT_TOKEN", "").strip()
-              or os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
-          )
-          chat_id = (
-              os.getenv("KHS_POLICY_TELEGRAM_CHAT_ID", "").strip()
-              or os.getenv("TELEGRAM_CHAT_ID", "").strip()
-          )
+          token = os.getenv("KHS_POLICY_TELEGRAM_BOT_TOKEN", "").strip()
+          chat_id = os.getenv("KHS_POLICY_TELEGRAM_CHAT_ID", "").strip()
           if not token or not chat_id:
-              print("Policy Telegram: KHS_POLICY_TELEGRAM_* or fallback TELEGRAM_* is not configured.")
+              print("Policy Telegram: KHS_POLICY_TELEGRAM_* is not configured; skip wrong-room fallback.")
               raise SystemExit(0)
 
           title_path = Path("out/gamejoa_policy_watch_alert_title.txt")
