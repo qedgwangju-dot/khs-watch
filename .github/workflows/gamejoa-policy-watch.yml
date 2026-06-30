@@ -1,8 +1,7 @@
 name: GAMEJOA policy watch
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
+  # Legacy lane. Run manually only; khs-policy-watch is the scheduled sender.
   workflow_dispatch:
 
 permissions:
@@ -107,8 +106,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/gamejoa_policy_watch_seen.json
-          git diff --cached --quiet || git commit -m "Update GAMEJOA policy watch state"
-          git push || true
+          if git diff --cached --quiet; then
+            echo "GAMEJOA policy watch state: no changes"
+          else
+            git commit -m "Update GAMEJOA policy watch state"
+            git pull --rebase origin main
+            git push
+          fi
 
       - name: Open alert issue
         if: env.CREATE_GITHUB_ISSUE == 'true' && hashFiles('out/gamejoa_policy_watch_alert.md') != ''
