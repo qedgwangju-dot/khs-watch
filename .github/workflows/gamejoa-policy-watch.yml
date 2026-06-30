@@ -23,6 +23,8 @@ jobs:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       DART_WATCH_STOCK_CODES: ${{ vars.DART_WATCH_STOCK_CODES || '005930,000660,373220,051910,006400,112610,267260,010120,064350,010140,329180' }}
       DART_DAYS_BACK: "1"
+      KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+      KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     steps:
@@ -48,10 +50,12 @@ jobs:
             echo "DART_API_KEY: 설정됨" >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "Telegram: 미설정" >> "$GITHUB_STEP_SUMMARY"
+          POLICY_TELEGRAM_BOT_TOKEN="${KHS_POLICY_TELEGRAM_BOT_TOKEN:-$TELEGRAM_BOT_TOKEN}"
+          POLICY_TELEGRAM_CHAT_ID="${KHS_POLICY_TELEGRAM_CHAT_ID:-$TELEGRAM_CHAT_ID}"
+          if [ -z "$POLICY_TELEGRAM_BOT_TOKEN" ] || [ -z "$POLICY_TELEGRAM_CHAT_ID" ]; then
+            echo "Policy Telegram: 미설정" >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "Telegram: 설정됨" >> "$GITHUB_STEP_SUMMARY"
+            echo "Policy Telegram: 설정됨" >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Run policy watch
@@ -75,10 +79,16 @@ jobs:
           import urllib.request
           from pathlib import Path
 
-          token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
-          chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+          token = (
+              os.getenv("KHS_POLICY_TELEGRAM_BOT_TOKEN", "").strip()
+              or os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+          )
+          chat_id = (
+              os.getenv("KHS_POLICY_TELEGRAM_CHAT_ID", "").strip()
+              or os.getenv("TELEGRAM_CHAT_ID", "").strip()
+          )
           if not token or not chat_id:
-              print("Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not configured.")
+              print("Policy Telegram: KHS_POLICY_TELEGRAM_* or fallback TELEGRAM_* is not configured.")
               raise SystemExit(0)
 
           title_path = Path("out/gamejoa_policy_watch_alert_title.txt")
