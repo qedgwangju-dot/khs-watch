@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import html
 import os
+import re
 import urllib.parse
 import urllib.request
 
@@ -475,6 +476,369 @@ def source_summary(items: list[dict]) -> str:
     return " / ".join(parts) if parts else "출처 확인 불가"
 
 
+LOW_IMPACT_TITLE_TERMS = [
+    "request for comments and notice of public hearing",
+]
+
+HARD_LOW_IMPACT_TITLE_TERMS = [
+    "annual review of country eligibility",
+    "african growth and opportunity act",
+    "continuation of the national emergency",
+    "delete, delete, delete",
+    "digital opportunity data collection",
+    "establishing the digital opportunity data collection",
+    "federal oil, gas, and coal amendments",
+    "federal oil gas and coal amendments",
+    "nominations & appointments",
+    "nominations appointments",
+    "nominations sent to the senate",
+    "sunshine act meetings",
+    "technical guidelines for the production of regenerative agricultural biofuel feedstocks",
+    "television broadcasting services",
+]
+
+FEDERAL_REGISTER_MARKERS = ["federal register", "federalregister.gov", "연방관보"]
+
+
+def unique(values: list[str]) -> list[str]:
+    return list(dict.fromkeys(value for value in values if value))
+
+
+def alert_text(alert: dict) -> str:
+    parts = [
+        alert.get("news"),
+        alert.get("original_news"),
+        alert.get("publisher"),
+        alert.get("source"),
+        alert.get("link"),
+        " ".join(str(x) for x in alert.get("matched") or []),
+    ]
+    for item in alert.get("examples") or []:
+        parts.extend([
+            item.get("title"),
+            item.get("summary"),
+            item.get("publisher"),
+            item.get("source"),
+            item.get("link"),
+        ])
+    return base.norm(" ".join(str(part or "") for part in parts))
+
+
+def has_term(text: str, terms: list[str]) -> bool:
+    return any(term.lower() in text for term in terms)
+
+
+def mostly_ascii(value: str) -> bool:
+    letters = [ch for ch in value if ch.isalpha()]
+    if not letters:
+        return False
+    ascii_letters = [ch for ch in letters if ord(ch) < 128]
+    return len(ascii_letters) / max(len(letters), 1) >= 0.7
+
+
+def is_federal_register_alert(text: str) -> bool:
+    return has_term(text, FEDERAL_REGISTER_MARKERS)
+
+
+def has_direct_market_path(text: str, alert: dict) -> bool:
+    if any(
+        alert.get(flag)
+        for flag in [
+            "grid_policy_delay",
+            "local_dc_policy",
+            "policy_drive",
+            "semiconductor_selloff",
+            "robotics_execution_filter",
+            "biotech_leadership_filter",
+            "port_strike_risk",
+            "china_stimulus_bulk",
+            "memory_antitrust_lawsuit",
+            "transformer_tariff_policy_watch",
+            "k_defense_watch",
+            "korea_nuclear_siting_policy_watch",
+            "k_power_watch",
+        ]
+    ):
+        return True
+    return has_term(
+        text,
+        [
+            "ap1000",
+            "bis",
+            "chips act",
+            "data center",
+            "entity list",
+            "export control",
+            "ferc",
+            "nrc",
+            "section 232",
+            "section 301",
+            "semiconductor",
+            "tariff",
+            "transformer",
+            "westinghouse",
+            "관세",
+            "데이터센터",
+            "반도체",
+            "변압기",
+            "수출통제",
+            "원전",
+        ],
+    )
+
+
+def is_low_impact_admin_alert(alert: dict) -> bool:
+    text = alert_text(alert)
+    if not is_federal_register_alert(text):
+        return False
+    if has_term(text, HARD_LOW_IMPACT_TITLE_TERMS):
+        return True
+    if not has_term(text, LOW_IMPACT_TITLE_TERMS):
+        return False
+    return not has_direct_market_path(text, alert)
+
+
+def is_local_dc_like(alert: dict) -> bool:
+    text = alert_text(alert)
+    return bool(alert.get("local_dc_policy")) or (
+        has_term(text, ["data center", "data centers", "데이터센터"])
+        and has_term(text, ["zoning", "moratorium", "residents", "ordinance", "permit", "public hearing", "주민", "인허가"])
+    )
+
+
+def korean_title(alert: dict) -> str:
+    text = alert_text(alert)
+    raw = str(alert.get("news") or "").strip()
+    if alert.get("grid_policy_delay"):
+        return "북미 송전망 투자 정책 변수: 정부 승인·규제 지연 리스크"
+    if alert.get("memory_antitrust_lawsuit"):
+        return "메모리 반독점 소송: 삼성전자·SK하이닉스·Micron DRAM 가격담합 집단소송"
+    if alert.get("robotics_execution_filter"):
+        return "삼성 로봇 실행 단계: 조직 재정비와 레인보우로보틱스 생산라인 자동화 체크"
+    if alert.get("biotech_leadership_filter"):
+        return raw or "바이오 주도주 복귀 조건: 매출·FDA 일정·할인율 동시 체크"
+    if alert.get("port_strike_risk"):
+        return "메가프로젝트 일정: 미국 동부·걸프 항만 계약 만료/파업 리스크"
+    if alert.get("china_stimulus_bulk"):
+        return "중국 경기부양책: 철광석·석탄 물동량과 벌크선 운임 회복 기대"
+    if has_term(text, ["federal oil, gas, and coal amendments", "federal oil gas and coal amendments"]):
+        return "미국, 석유·가스·석탄 자원개발 규정 개정 공표"
+    if has_term(text, ["african growth and opportunity act", "annual review of country eligibility"]):
+        return "USTR, 2027년 AGOA 수혜국 자격 연례검토 의견수렴"
+    if has_term(text, ["technical guidelines for the production of regenerative agricultural biofuel feedstocks"]):
+        return "미국, 재생농업 바이오연료 원료 생산 기술지침 공표"
+    if has_term(text, ["advancing regenerative agriculture", "farm resilience"]):
+        return "백악관, 재생농업·미국 농가 회복력 강화 행정명령 발표"
+    if has_term(text, ["resilient networks", "disruptions to communications", "dirs"]):
+        return "FCC, 재난 시 통신망 장애보고 시스템(DIRS) 현대화 규칙 공표"
+    if has_term(text, ["digital opportunity data collection", "form 477"]):
+        return "FCC, 브로드밴드 데이터 수집·Form 477 현대화 문서 공표"
+    if has_term(text, ["nominations", "appointments"]):
+        return "백악관, 고위급 인사 지명·임명 공지"
+    if has_term(text, ["transformer", "large power transformer", "변압기"]):
+        return "미국, 대형 변압기 관세·규제 변화 공식근거 체크"
+    if has_term(text, ["robot", "robotics", "chinese robots"]):
+        return "미국, 중국산 로봇 수입 규제 검토 신호"
+    if has_term(text, ["nuclear", "reactor", "ap1000", "westinghouse", "smr"]):
+        return "미국 원전·SMR·AI 전력 정책 시간표 체크"
+    if has_term(text, ["data center", "data centers", "zoning", "moratorium", "residents"]):
+        return "미국 지역 데이터센터 인허가·주민 반발 이슈 확산"
+    if has_term(text, ["fcc", "broadband", "satellite", "spectrum"]):
+        return "FCC, 통신·브로드밴드 규제 문서 공표"
+    if has_term(text, ["export control", "entity list", "semiconductor", "chips"]):
+        return "미국, 반도체·첨단기술 수출통제 정책 신호"
+    if has_term(text, ["tariff", "customs", "duty", "section 301", "section 232"]):
+        return "미국, 관세·통관 정책 변화 체크"
+    if raw and not mostly_ascii(raw):
+        return raw
+    return "해외 정책·기업 이벤트 한국장 영향 점검"
+
+
+def curated_sectors(alert: dict) -> list[str]:
+    text = alert_text(alert)
+    if has_term(text, ["전환사채", "신주인수권", "유상증자", "주요사항보고서", "타법인주식", "회사합병", "회사분할"]):
+        return ["개별종목 자금조달/희석", "수급/오버행", "한국 직접 공시"]
+    if alert.get("local_dc_policy") or has_term(text, ["data center", "data centers", "zoning", "moratorium"]):
+        return ["데이터센터/전력망/전력기기"]
+    if has_term(text, ["transformer", "large power transformer", "변압기"]):
+        return ["전력기기/변압기", "관세/수출주", "전력망/데이터센터"]
+    if has_term(text, ["nuclear", "reactor", "smr", "ap1000", "westinghouse", "doosan", "원전"]):
+        return ["원전/SMR/가스터빈", "전력기기/전력망", "두산에너빌리티/KHNP"]
+    if has_term(text, ["hanwha aerospace", "lig nex1", "kai", "hyundai rotem", "k9", "k2", "fa-50", "kf-21", "redback", "천궁", "현궁"]):
+        return ["K-방산/항공우주", "수주/계약", "지정학/방위비"]
+    if has_term(text, ["robot", "robotics", "smart factory", "automation"]):
+        return ["로봇/스마트팩토리", "감속기/FA", "산업자동화"]
+    if has_term(text, ["fda", "pdufa", "clinical", "crl", "pharma"]):
+        return ["바이오/FDA", "제약", "헬스케어"]
+    if has_term(text, ["fcc", "broadband", "spectrum", "satellite", "communications"]):
+        return ["미국 통신규제", "통신장비/위성"]
+    if has_term(text, ["oil", "gas", "coal", "biofuel", "feedstocks"]):
+        return ["에너지/원자재", "정유·화학 원가", "미국 자원개발 정책"]
+    if has_term(text, ["tariff", "customs", "duty", "section 301", "section 232", "관세"]):
+        return ["관세/수출주", "공급망", "물류/통상"]
+    if has_term(text, ["semiconductor", "chip", "hbm", "ai", "nvidia", "micron"]):
+        return ["반도체/AI", "장비·소재"]
+    if has_term(text, ["stablecoin", "digital asset", "스테이블코인"]):
+        return ["금융/자본시장/스테이블코인", "은행/핀테크/결제"]
+    return unique([str(x) for x in alert.get("sectors") or []])[:4] or ["영향 섹터 확인 불가"]
+
+
+def explanation_for(alert: dict) -> dict[str, str]:
+    text = alert_text(alert)
+    if has_term(text, ["전환사채", "신주인수권", "유상증자", "주요사항보고서", "타법인주식", "회사합병", "회사분할"]):
+        return {
+            "core": "국내 기업의 CB/BW/유상증자/주요사항 공시는 개별 종목 수급, 희석, 오버행, 지배구조 이벤트를 바꿀 수 있는 공시입니다.",
+            "view": "신규 자금조달은 성장 투자 재원일 수 있지만 전환·행사 가능 물량과 발행조건이 불리하면 주당가치와 단기 수급에 부담입니다.",
+            "korea": "한국장에서는 해당 종목의 발행규모, 전환가·행사가, 리픽싱, 납입일, 최대주주·투자자 성격, 기존 주식수 대비 희석률을 확인합니다.",
+            "priced": "낮음~중간. 공시 직후 수급에 반영되지만 실제 납입·전환·행사 일정과 조건에 따라 재평가됩니다.",
+            "counter": "정정공시나 단순 일정 변경이면 신규 악재가 아닐 수 있고, 자금 사용처가 명확하면 부정적 영향이 제한될 수 있습니다.",
+            "failure": "납입 지연, 조건 변경, 리픽싱 확대, 대규모 전환 가능 물량이 확인되지 않으면 시장 영향은 제한됩니다.",
+        }
+    if alert.get("local_dc_policy") or has_term(text, ["data center", "data centers", "zoning", "moratorium", "residents"]):
+        return {
+            "core": "미국 지역 단위에서 데이터센터 인허가, 조례, 주민 반발, 공사 영향 이슈가 확인된 사안입니다.",
+            "view": "AI 데이터센터 CAPEX 자체보다 승인 시간표와 전력망 접속 병목 프리미엄을 바꿀 수 있는지 보는 재료입니다.",
+            "korea": "한국장에서는 전력기기, 변압기, 전선, 냉각·전력 인프라 밸류체인 수급을 보되 개별 지역 이슈인지 먼저 걸러야 합니다.",
+            "priced": "중간. 데이터센터 전력 테마는 선반영이 강하지만 실제 조례·투표·인허가 보류가 확인되면 시간표 재평가 여지가 있습니다.",
+            "counter": "개별 지역 민원이나 지역 언론 보도일 수 있어 전국 CAPEX 둔화로 바로 확장하면 과대해석입니다.",
+            "failure": "공식 의사록·조례·투표일·빅테크 CAPEX 조정·전력기기 수주 변화가 없으면 단발성 지역 뉴스입니다.",
+        }
+    if has_term(text, ["transformer", "large power transformer", "변압기"]):
+        return {
+            "core": "미국 변압기 관세·효율규제 변화가 한국 전력기기 수출 가격경쟁력과 수주 기대를 바꿀 수 있는지 확인하는 사안입니다.",
+            "view": "세율, 품목코드, 시행일이 공식화되면 마진과 신규 수주 기대가 동시에 바뀝니다.",
+            "korea": "효성중공업, HD현대일렉트릭, LS ELECTRIC 등 변압기·전력기기 밸류체인과 데이터센터 전력망 테마 수급을 확인합니다.",
+            "priced": "중간. 전력기기 테마가 이미 강해도 공식 세율·시행일이 확인되면 실적 추정 조정 여지가 남습니다.",
+            "counter": "공식 관보·상무부·USTR 근거 없이 보도만 있으면 예비 재료입니다.",
+            "failure": "품목코드·시행일·예외조항·개별 기업 수주/마진 변화가 확인되지 않으면 재료가 약해집니다.",
+        }
+    if has_term(text, ["nuclear", "reactor", "smr", "ap1000", "westinghouse", "doosan", "원전"]):
+        return {
+            "core": "원전, SMR, 가스터빈, AI 전력수요 관련 정책·계약 시간표가 밸류체인 기대를 다시 움직이는 사안입니다.",
+            "view": "당장 매출 확정보다 인허가, 대출·예산, 최종 계약, 기자재 발주 시간표가 돈 버는 능력으로 이어지는지 봐야 합니다.",
+            "korea": "두산에너빌리티, 원전 기자재, 전력기기, 송전망, KHNP·체코·중동 원전 노출 종목의 수급을 확인합니다.",
+            "priced": "중간~높음. 원전 테마는 선반영이 빨라 계약·인허가·발주가 없으면 되돌림 위험이 큽니다.",
+            "counter": "부지, NRC/국내 인허가, 주민수용성, 방폐장·송전망, 최종 계약금액이 확정되지 않으면 매출 인식까지 시차가 큽니다.",
+            "failure": "공식 계약·대출조건·인허가 일정·기자재 발주가 확인되지 않으면 정책 기대에 그칩니다.",
+        }
+    if has_term(text, ["fcc", "broadband", "spectrum", "satellite", "communications", "dirs"]):
+        return {
+            "core": "FCC 통신·브로드밴드·장애보고 규제 문서입니다. 주파수 경매, 장비 의무화, 보조금인지 단순 행정 절차인지 구분해야 합니다.",
+            "view": "통신사 CAPEX, 위성·장비 인증, 공공안전망 조달로 연결될 때만 실적 재료입니다.",
+            "korea": "한국장에서는 통신장비·위성통신·네트워크 장비 테마 반응 가능성은 있으나 행정 공지라면 직접 영향은 제한적입니다.",
+            "priced": "낮음~중간. 구체 인허가·경매·예산·장비 발주가 없으면 선반영보다 영향 자체가 작습니다.",
+            "counter": "회의 공고, 데이터 수집, 보고 양식 정비 수준이면 고충격 재료가 아닙니다.",
+            "failure": "통신사 CAPEX 가이던스, 장비 발주, 공공안전망 예산, 국내 장비사 수주 공시가 없으면 제외해야 합니다.",
+        }
+    if has_term(text, ["robot", "robotics", "automation"]):
+        return {
+            "core": "로봇·자동화 정책 또는 기업 실행 단계가 중국 대체 공급망과 생산자동화 수요를 자극할 수 있는 사안입니다.",
+            "view": "관세·수입제한·제조지원 또는 실제 발주·CAPEX로 이어질 때 매출 기대가 바뀝니다.",
+            "korea": "로봇, 감속기, FA, 스마트팩토리, 삼성·레인보우로보틱스 연계 수급을 확인합니다.",
+            "priced": "중간. 로봇 테마는 기대가 빠르게 붙지만 공식 조치나 발주 전에는 되돌림이 큽니다.",
+            "counter": "검토·조직개편·소식통 보도 단계면 품목, 세율, 시행일, 발주 규모가 미확정입니다.",
+            "failure": "상무부 공식 조사, 관세·대출 조건, 생산라인 발주·공급계약이 나오지 않으면 테마성 반응으로 끝납니다.",
+        }
+    if has_term(text, ["oil", "gas", "coal", "biofuel", "feedstocks", "agriculture"]):
+        return {
+            "core": "미국 에너지·자원개발·바이오연료 관련 규정/지침입니다. 가격, 공급량, 세액공제, 의무혼합으로 연결되는지 확인해야 합니다.",
+            "view": "유가·가스·석탄·바이오연료 가격 또는 정유·화학 원가에 반영될 때만 돈 버는 능력 변화입니다.",
+            "korea": "정유·화학, 에너지 비용 민감 업종, 바이오연료 밸류체인을 보되 한국 직접 영향은 공식 시행 조건 확인 전 제한적입니다.",
+            "priced": "중간. 원자재 정책은 반복 재료라 가격 반응이 동행해야 추가 반영됩니다.",
+            "counter": "기술지침·의견수렴·행정 개정은 실제 공급·가격 변화와 거리가 있을 수 있습니다.",
+            "failure": "WTI/Brent/천연가스/정제마진/관련 ETF가 반응하지 않으면 단발성 정책 문서입니다.",
+        }
+    return {
+        "core": "공식 문서 또는 신뢰 보도에서 한국장 가격 변수 후보가 확인됐습니다.",
+        "view": "돈 버는 능력, 할인율, 수급, 시간표 중 무엇이 실제로 바뀌는지 원문과 시장 반응으로 재확인해야 합니다.",
+        "korea": "한국장 직접 영향은 원문에 근거가 있는 업종과 종목군으로만 제한해 확인합니다.",
+        "priced": f"{alert.get('reflection') or '중간'}. 발표 직후라도 개별 밸류체인 반영은 후속 일정·가격·수급 확인이 필요합니다.",
+        "counter": alert.get("counter") or "세부 조건 확인 전까지 직접 실적 연결은 제한적입니다.",
+        "failure": alert.get("failed_signal") or "후속 시행일·예산·계약·수급 반응이 없으면 단발성 뉴스로 끝납니다.",
+    }
+
+
+def normalize_alert_for_output(alert: dict) -> dict:
+    out = dict(alert)
+    if not out.get("original_news"):
+        out["original_news"] = out.get("news")
+    out["news"] = korean_title(out)
+    out["sectors"] = curated_sectors(out)
+    impacts = unique([str(x) for x in out.get("impacts") or []]) or ["의사결정 영향 제한적"]
+    if len(impacts) > 1:
+        impacts = [x for x in impacts if x != "의사결정 영향 제한적"]
+    out["impacts"] = impacts
+    out["paths"] = unique([str(x) for x in out.get("paths") or []]) or [
+        "이익" if x == "돈 버는 능력" else "할인율" if x == "할인율" else "수급" if x == "수급" else "정책 타임라인"
+        for x in impacts
+    ]
+    explanation = explanation_for(out)
+    if not out.get("policy_plain_summary"):
+        out["policy_plain_summary"] = explanation["core"]
+    if not out.get("investment_view"):
+        out["investment_view"] = explanation["view"]
+    if not out.get("korea_market_impact"):
+        out["korea_market_impact"] = explanation["korea"]
+    if not out.get("priced_in"):
+        out["priced_in"] = explanation["priced"]
+    generic_counter_terms = [
+        "시행일, 적용 대상, 금액, 기간",
+        "제목·요약 기반 1차 감지",
+        "원문 세부조건과 공식 문서 확인 전",
+    ]
+    counter_text = str(out.get("counter") or "")
+    if not counter_text or any(term in counter_text for term in generic_counter_terms):
+        out["counter"] = explanation["counter"]
+    failed_text = str(out.get("failed_signal") or "")
+    stale_failure_terms = [
+        "메모리 가격·고객사 재고",
+        "SOX/MU/NVDA",
+        "관련 해외 티커·원자재·금리·환율",
+    ]
+    if not failed_text or any(term in failed_text for term in stale_failure_terms):
+        out["failed_signal"] = explanation["failure"]
+    stale_interpretation_terms = [
+        "반도체 급락은",
+        "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는 후보",
+    ]
+    if not out.get("interpretation") or (
+        any(term in str(out.get("interpretation")) for term in stale_interpretation_terms)
+        and "반도체/AI" not in out.get("sectors", [])
+    ):
+        out["interpretation"] = explanation["view"]
+    return out
+
+
+def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
+    initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
+    selected: list[dict] = []
+    seen: set[tuple[str, str, str]] = set()
+    for alert in initial + alerts:
+        if is_low_impact_admin_alert(alert):
+            continue
+        normalized = normalize_alert_for_output(alert)
+        key = (
+            base.norm(normalized.get("news")),
+            base.norm(normalized.get("publisher")),
+            str(normalized.get("published") or "")[:10],
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        if is_low_impact_admin_alert(normalized):
+            continue
+        if (
+            is_local_dc_like(normalized)
+            and not normalized.get("cluster_count")
+            and any(is_local_dc_like(item) and item.get("cluster_count") for item in selected)
+        ):
+            continue
+        selected.append(normalized)
+        if len(selected) >= limit:
+            break
+    return selected
+
+
 def related_text(alert: dict, fred: dict, te: dict) -> str:
     extra = []
     if "해운/항만/물류" in alert.get("sectors", []):
@@ -556,18 +920,11 @@ def robotics_execution_check(alert: dict) -> str | None:
 
 
 def display_news(alert: dict) -> str:
-    if alert.get("grid_policy_delay"):
-        return "북미 송전망 투자 정책 변수: 정부 승인·규제 지연 리스크"
-    if alert.get("robotics_execution_filter"):
-        return "삼성 로봇 실행 단계: 조직 재정비와 레인보우로보틱스 생산라인 자동화 체크"
-    if alert.get("port_strike_risk"):
-        return "메가프로젝트 일정: 미국 동부·걸프 항만 계약 만료/파업 리스크"
-    if alert.get("china_stimulus_bulk"):
-        return "중국 경기부양책: 철광석·석탄 물동량과 벌크선 운임 회복 기대"
-    return alert.get("news") or "뉴스 제목 확인 불가"
+    return korean_title(alert)
 
 
 def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
+    alert = normalize_alert_for_output(alert)
     examples = alert.get("examples") or []
     count_suffix = f" ({alert['cluster_count']}건 묶음)" if alert.get("cluster_count") else ""
     status = alert.get("status") or ("공식 확인 전" if examples else "확인 불가")
@@ -576,23 +933,30 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     paths = alert.get("paths") or ["정책 타임라인" if impact == "시간표" else impact for impact in impacts]
     sectors = alert.get("sectors") or ["영향 섹터 확인 불가"]
     published = alert.get("published") or ("여러 건" if examples else "확인 불가")
-    reflection = alert.get("reflection") or "중간"
+    priced_in = alert.get("priced_in") or f"{alert.get('reflection') or '중간'}. 후속 공식 조건과 시장 반응 확인 전까지 확정 반영으로 보기 어렵습니다."
     counter = alert.get("counter") or "원문 세부조건과 공식 문서 확인 전 과대해석 가능"
     interpretation = alert.get("interpretation") or "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는지 확인해야 합니다."
     failed_signal = alert.get("failed_signal") or "관련 가격·수급·공식 후속 확인이 동행하지 않으면 단발성 뉴스"
 
     lines = [f"{idx}) [{safe(alert.get('importance'))} | {safe(status)}] {safe(display_news(alert))}{html.escape(count_suffix, quote=False)}"]
     if examples:
-        lines.append("- 확인: " + safe(" / ".join(item["title"] for item in examples[:4])))
+        lines.append(f"- 확인: 원문·보도 {min(len(examples), 4)}건 묶음 확인")
         source_text = source_summary(examples[:4])
     else:
         source_text = html_link(alert.get("publisher") or alert.get("source") or "출처 확인 불가", alert.get("link") or "")
 
     lines += [
-        f"- 기준/타임라인: {safe(basis)} | 원천 {safe(published)} · 확산 {now:%H:%M KST}",
-        f"- 영향/경로: {safe('·'.join(impacts))} | {safe('·'.join(paths))}",
-        f"- 섹터/지표: {safe(', '.join(sectors))} | {safe(related_text(alert, fred, te))}",
-        f"- 반영/반대: {safe(reflection)} | {safe(counter)}",
+        f"- 한국장 기준: {safe(basis)}",
+        f"- 타임라인: 원천 {safe(published)} · 한국 투자자 확산 {now:%H:%M KST}",
+        f"- 핵심 내용: {safe(alert.get('policy_plain_summary'))}",
+        f"- 투자 관점: {safe(alert.get('investment_view'))}",
+        f"- 한국장 영향: {safe(alert.get('korea_market_impact'))}",
+        f"- 의사결정 영향: {safe(', '.join(impacts))}",
+        f"- 영향 경로: {safe(', '.join(paths))}",
+        f"- 영향 섹터: {safe(', '.join(sectors))}",
+        f"- 관련 해외 티커/지표: {safe(related_text(alert, fred, te))}",
+        f"- 반영 가능성: {safe(priced_in)}",
+        f"- 반대 근거: {safe(counter)}",
         f"- 해석: {safe(interpretation)}",
     ]
     semi_check = semiconductor_cycle_check(alert)
@@ -626,8 +990,8 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
 
 def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
-    visible = telegram.display_alerts(alerts, limit)
-    title = f"장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
+    visible = quality_display_alerts(alerts, limit)
+    title = f"📰 GAMEJOA 장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
     lines = [title, f"조회: {now:%Y-%m-%d %H:%M KST}", f"선별: 핵심 {len(visible)}건", ""]
     if visible:
         for idx, alert in enumerate(visible, 1):
@@ -644,10 +1008,53 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
         "",
         "투자 조언이 아닌 참고용 뉴스 브리핑입니다.",
     ]
-    return "\n".join(lines).strip() + "\n"
+    report = "\n".join(lines).strip() + "\n"
+    guard_preopen_report(report)
+    return report
+
+
+def guard_preopen_report(text: str) -> None:
+    errors: list[str] = []
+    if not text.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · "):
+        errors.append("title_contract")
+    item_count = sum(1 for line in text.splitlines() if re.match(r"^\d+\)\s+\[", line))
+    required = [
+        "- 핵심 내용:",
+        "- 투자 관점:",
+        "- 한국장 영향:",
+        "- 의사결정 영향:",
+        "- 영향 경로:",
+        "- 영향 섹터:",
+        "- 반영 가능성:",
+        "- 반대 근거:",
+        "- 실패 신호:",
+    ]
+    for marker in required:
+        if item_count and text.count(marker) < item_count:
+            errors.append(f"missing_{marker}")
+    for line in text.splitlines():
+        if not re.match(r"^\d+\)\s+\[", line):
+            continue
+        title = re.sub(r"^\d+\)\s+\[[^\]]+\]\s*", "", line).strip()
+        title = re.sub(r"\(\d+건 묶음\)$", "", title).strip()
+        if mostly_ascii(title):
+            errors.append(f"raw_english_heading={title[:80]}")
+    low = re.sub(r"https?://\S+", "", text).lower()
+    for marker in [
+        "this document is also available in the following formats",
+        "normalized attributes and metadata",
+        "original full text xml",
+        "government publishing office metadata",
+        "developer tools pages",
+    ]:
+        if marker in low:
+            errors.append(f"federal_register_boilerplate={marker}")
+    if errors:
+        raise RuntimeError("GAMEJOA preopen radar quality guard blocked Telegram output: " + "; ".join(errors))
 
 
 def send_telegram(text: str) -> None:
+    guard_preopen_report(text)
     token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
     chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
     if not token or not chat_id:
