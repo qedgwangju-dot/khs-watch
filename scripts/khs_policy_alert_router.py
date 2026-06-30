@@ -33,6 +33,10 @@ MATCHED_KEY_LABELS = {
 }
 
 TERM_LABELS = {
+    "final rule": "최종규칙",
+    "interim final rule": "임시최종규칙",
+    "effective date": "시행일",
+    "implementation": "시행",
     "commission meeting": "공개위원회 회의",
     "open meeting": "공개회의",
     "sunshine notice": "회의 공고",
@@ -59,6 +63,17 @@ TERM_LABELS = {
     "presidential memorandum": "대통령각서",
     "continuation of the national emergency": "국가비상사태 연장",
 }
+
+FCC_RESILIENT_NETWORKS_TERMS = [
+    "resilient networks",
+    "disruptions to communications",
+    "disaster information reporting system",
+    "dirs",
+    "outage reporting",
+    "network outage reporting",
+    "communications disruption",
+    "disaster reporting",
+]
 
 SOURCE_LABELS = {
     "federal register fcc": "미 연방관보 FCC",
@@ -98,17 +113,30 @@ def mostly_ascii(value: str) -> bool:
     return len(ascii_letters) / max(len(letters), 1) >= 0.75
 
 
+def alert_text(alert: dict) -> str:
+    return " ".join([
+        str(alert.get("source") or ""),
+        str(alert.get("title") or ""),
+        str(alert.get("summary") or ""),
+        " ".join(term for terms in (alert.get("matched") or {}).values() for term in terms),
+    ]).lower()
+
+
+def is_fcc_resilient_networks_policy(alert: dict) -> bool:
+    text = alert_text(alert)
+    source = str(alert.get("source") or "").lower()
+    return ("fcc" in source or "federal communications commission" in text) and any(term in text for term in FCC_RESILIENT_NETWORKS_TERMS)
+
+
 def safe_title(alert: dict) -> str:
     title = str(alert.get("title") or "").strip()
     if not title:
         return "미국 정책·규제 문서 공표"
+    if is_fcc_resilient_networks_policy(alert):
+        return "FCC, 재난 시 통신망 장애보고 시스템(DIRS) 현대화 최종규칙 공표"
     if mostly_ascii(title):
         source = str(alert.get("source") or "").lower()
-        text = " ".join([
-            title,
-            str(alert.get("summary") or ""),
-            " ".join(term for terms in (alert.get("matched") or {}).values() for term in terms),
-        ]).lower()
+        text = alert_text(alert)
         if "fcc" in source or "federal communications commission" in text:
             return "FCC, 통신 규제 문서 공표"
         if "distribution transformer" in text or "electrical core steel" in text or "grain-oriented electrical steel" in text or "goes" in text or "amorphous" in text:
@@ -128,6 +156,47 @@ def safe_title(alert: dict) -> str:
 def display_source(source: object) -> str:
     raw = str(source or "source").strip()
     return SOURCE_LABELS.get(raw.lower(), raw)
+
+
+def enrich_missing_context(alert: dict) -> dict:
+    if is_fcc_resilient_networks_policy(alert):
+        alert = dict(alert)
+        alert["importance"] = "중"
+        alert["impacts"] = alert.get("impacts") or ["시간표", "의사결정 영향 제한적"]
+        alert["paths"] = alert.get("paths") or ["정책 타임라인", "규제 준수"]
+        alert["sectors"] = ["미국 통신망 복구/장애보고"]
+        alert.setdefault(
+            "policy_plain_summary",
+            "FCC가 재난·정전·허리케인 등 통신장애 때 사업자가 DIRS에 보고하는 절차를 현대화한 최종규칙입니다. 통신망 투자 확대나 주파수 경매가 아니라 재난 대응 보고·행정 부담 조정 성격입니다.",
+        )
+        alert.setdefault(
+            "investment_view",
+            "매출을 직접 늘리는 정책은 아닙니다. 미국 통신사·장비사의 단기 CAPEX, 한국 통신3사 실적, 국내 네트워크 장비 수주로 바로 연결되는 근거는 제한적입니다.",
+        )
+        alert.setdefault(
+            "korea_market_impact",
+            "한국장에서는 통신장비·위성·통신주 테마 반응이 붙어도 직접 가격 변수는 약합니다. 재난통신 장비 조달, 911·공공안전망 투자, 보안장비 의무화가 뒤따를 때만 재평가 후보입니다.",
+        )
+        alert.setdefault("priced_in", "낮음. 선반영 여부보다 영향 자체가 제한적입니다.")
+        alert.setdefault(
+            "counter",
+            "최종규칙이라도 핵심은 보고 절차 정비입니다. 신규 예산·장비 발주·주파수 정책·보조금이 확인되지 않으면 실적 연결은 약합니다.",
+        )
+        alert.setdefault(
+            "failure_signal",
+            "미국 통신사 CAPEX 가이던스, 장비 발주, 공공안전망 예산, 국내 장비사 수주 공시가 없으면 테마성 반응에서 끝납니다.",
+        )
+        return alert
+
+    alert = dict(alert)
+    impacts = alert.get("impacts") or ["의사결정 영향 제한적"]
+    sectors = alert.get("sectors") or ["정책/규제 일반"]
+    alert.setdefault("policy_plain_summary", f"공식 정책·규제 문서에서 {', '.join(impacts)} 관련 상태 변화 후보가 확인됐습니다.")
+    alert.setdefault("investment_view", "실제 투자 재료가 되려면 매출·마진·할인율·수급·정책 시간표 중 무엇이 바뀌는지 후속 원문과 시장 반응으로 확인해야 합니다.")
+    alert.setdefault("korea_market_impact", f"한국장 체크 대상은 {', '.join(sectors)}입니다. 원문에 직접 근거가 없는 업종 확장은 제외합니다.")
+    alert.setdefault("priced_in", "낮음~중간. 공식 원문 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.")
+    alert.setdefault("failure_signal", "시행일, 예산, 계약, 수급 반응, 관련 기업 공시가 뒤따르지 않으면 단발성 정책 뉴스로 끝납니다.")
+    return alert
 
 
 def display_matched_keys(matched: dict) -> str:
@@ -160,6 +229,7 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
 
     lines = [f"🚨 KHS 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
     for idx, alert in enumerate(alerts, 1):
+        alert = enrich_missing_context(alert)
         matched = alert.get("matched") or {}
         matched_terms = sorted({term for terms in matched.values() for term in terms})
         matched_keys = display_matched_keys(matched)
@@ -170,11 +240,15 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
             f"- 상태 변화: {matched_keys} 신호 확인 ({matched_terms_text})",
             f"- 원문/출처: [{source_label}]({alert.get('link', '')}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
-            f"- 한국장 영향: {', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
+            f"- 핵심 내용: {alert.get('policy_plain_summary') or '정책 세부 내용 확인 필요'}",
+            f"- 투자 관점: {alert.get('investment_view') or '실적·할인율·수급·시간표 변화 여부 확인 필요'}",
+            f"- 한국장 영향: {alert.get('korea_market_impact') or ', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
+            f"- 의사결정 영향: {', '.join(alert.get('impacts') or ['의사결정 영향 제한적'])}",
             f"- 영향 경로: {', '.join(alert.get('paths') or ['정책 타임라인'])}",
             f"- 영향 섹터: {', '.join(alert.get('sectors') or ['정책/규제 일반'])}",
-            "- 반영 가능성: 낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.",
-            "- 반대 근거: 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.",
+            f"- 반영 가능성: {alert.get('priced_in') or '낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.'}",
+            f"- 반대 근거: {alert.get('counter') or '원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.'}",
+            f"- 실패 신호: {alert.get('failure_signal') or '후속 시행일·예산·계약·수급 반응이 없으면 단발성 정책 뉴스로 끝납니다.'}",
             "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
             "",
         ])

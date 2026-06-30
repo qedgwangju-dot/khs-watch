@@ -190,6 +190,17 @@ FCC_STRONG_TERMS = [
     "covered list", "robocall", "cybersecurity", "emergency alert", "911",
 ]
 
+FCC_ADMIN_REPORTING_TERMS = [
+    "resilient networks",
+    "disruptions to communications",
+    "disaster information reporting system",
+    "dirs",
+    "outage reporting",
+    "network outage reporting",
+    "communications disruption",
+    "disaster reporting",
+]
+
 @dataclass
 class Source:
     name: str
@@ -577,7 +588,10 @@ def classify_item(item: dict) -> dict | None:
         return None
     stage_score = sum(len(v) for v in matched.values())
     has_major_filing = any(keyword.lower() in haystack for keyword in MAJOR_FILING_KEYWORDS)
-    if any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
+    is_fcc_admin_reporting = is_fcc_source and any(term in haystack for term in FCC_ADMIN_REPORTING_TERMS)
+    if is_fcc_admin_reporting:
+        importance = "중"
+    elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
         importance = "상"
     elif "company_filing" in matched and has_major_filing:
         importance = "중"
@@ -586,9 +600,14 @@ def classify_item(item: dict) -> dict | None:
     else:
         importance = "하"
     sectors = [sector for sector, keywords in SECTOR_KEYWORDS.items() if any(kw.lower() in haystack for kw in keywords)] or ["정책/규제 일반"]
+    if is_fcc_admin_reporting:
+        sectors = ["미국 통신망 복구/장애보고"]
     impacts: list[str] = []
     paths: list[str] = []
-    if any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "presidential_action", "fcc_decision_notice")):
+    if is_fcc_admin_reporting:
+        impacts.extend(["시간표", "의사결정 영향 제한적"])
+        paths.extend(["정책 타임라인", "규제 준수"])
+    elif any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "presidential_action", "fcc_decision_notice")):
         impacts.extend(["시간표", "할인율"])
         paths.extend(["정책 타임라인", "할인율"])
     if any(bucket in matched for bucket in ("sanctions_tariffs_export", "company_filing", "fda_decision")):
