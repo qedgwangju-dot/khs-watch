@@ -131,6 +131,15 @@ def is_fcc_resilient(text: str) -> bool:
     )
 
 
+def is_eu_korea_steel_policy(text: str, item: dict) -> bool:
+    return bool(item.get("eu_korea_steel_policy_watch")) or "eu_korea_steel_policy" in (item.get("matched") or {}) or (
+        has_any(text, ["eu", "european union", "european commission", "유럽연합", "eu집행위"])
+        and has_any(text, ["korea", "south korea", "korean", "한국", "한국산"])
+        and has_any(text, ["steel", "철강"])
+        and has_any(text, ["safeguard", "quota", "tariff", "regulation", "19.7", "46", "세이프가드", "쿼터", "관세", "규제", "완화"])
+    )
+
+
 def ensure_explained(item: dict) -> dict:
     default_context(item)
     text = text_for(item)
@@ -217,6 +226,20 @@ def ensure_explained(item: dict) -> dict:
             priced_in="낮음. 선반영 여부보다 영향 자체가 제한적입니다.",
             counter="최종규칙이라도 핵심은 보고 절차 정비입니다. 신규 예산·장비 발주·주파수 정책·보조금이 확인되지 않으면 실적 연결은 약합니다.",
             failure_signal="미국 통신사 CAPEX 가이던스, 장비 발주, 공공안전망 예산, 국내 장비사 수주 공시가 없으면 테마성 반응에서 끝납니다.",
+        )
+    elif is_eu_korea_steel_policy(text, item):
+        put(
+            item,
+            importance="상",
+            impacts=["돈 버는 능력", "수급", "시간표"],
+            paths=["이익", "무역규제", "정책 타임라인", "수급"],
+            sectors=["철강/강관", "EU향 수출주", "자동차강판/조선후판", "관세·쿼터 정책"],
+            policy_plain_summary="EU가 한국산 철강에 적용되는 수입규제·세이프가드·쿼터 조건을 완화한다는 신뢰 보도/공식 신호가 확인된 사안입니다.",
+            investment_view="규제율·쿼터 부담이 낮아지면 EU향 철강 수출 물량, 가격경쟁력, 마진, 수급 기대가 동시에 바뀔 수 있습니다.",
+            korea_market_impact="한국장에서는 포스코홀딩스, 현대제철, 세아제강 등 철강·강관 수출주와 EU향 자동차강판·조선후판 노출 종목의 가격·수급 반응을 확인합니다.",
+            priced_in="낮음~중간. 철강 규제 완화는 보도 직후 테마 수급이 붙을 수 있지만 품목·쿼터·시행일이 공식화되어야 실적 추정 조정이 가능합니다.",
+            counter="품목 범위, 적용 기간, 국가별 쿼터, 실제 관세율·세이프가드 문구, EU 관보 확정 여부가 미확인일 수 있습니다.",
+            failure_signal="EU 집행위·관보 문서, 품목별 쿼터, 적용일, 국내 철강사 EU향 물량·마진 개선 근거가 확인되지 않으면 테마성 반응으로 끝납니다.",
         )
     elif has_any(text, ["export control", "entity list", "bis", "semiconductor", "chips", "ai chip", "수출통제"]):
         put(
