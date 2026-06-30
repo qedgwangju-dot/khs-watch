@@ -50,7 +50,15 @@ def text_for(item: dict) -> str:
 
 
 def has_any(text: str, terms: list[str]) -> bool:
-    return any(term.lower() in text for term in terms)
+    for term in terms:
+        term = term.lower()
+        if re.fullmatch(r"[a-z0-9]+", term):
+            if re.search(rf"\b{re.escape(term)}\b", text):
+                return True
+            continue
+        if term in text:
+            return True
+    return False
 
 
 def put(item: dict, **values: Any) -> None:

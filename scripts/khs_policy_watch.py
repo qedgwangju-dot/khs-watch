@@ -455,7 +455,7 @@ def parse_fcc_html(text: str, source: Source) -> list[dict]:
             continue
         published = published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0)
         haystack = f"{title_lower} {link_lower} {tail.lower()} {source.name.lower()}"
-        if not any(term in haystack for term in FCC_STRONG_TERMS):
+        if not any(keyword_in_text(haystack, term) for term in FCC_STRONG_TERMS):
             continue
         summary_tail = tail[:260]
         summary = clean_text(f"{source.name} official page link: {title}. {summary_tail}")
