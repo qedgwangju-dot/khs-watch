@@ -22,8 +22,6 @@ jobs:
       DART_API_KEY: ${{ secrets.DART_API_KEY }}
       DART_WATCH_STOCK_CODES: ${{ vars.DART_WATCH_STOCK_CODES || '005930,000660,373220,051910,006400,112610,267260,010120,064350,010140,329180' }}
       DART_DAYS_BACK: "1"
-      KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-      KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -47,14 +45,6 @@ jobs:
             echo "DART_API_KEY: 설정됨" >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          POLICY_TELEGRAM_BOT_TOKEN="$KHS_POLICY_TELEGRAM_BOT_TOKEN"
-          POLICY_TELEGRAM_CHAT_ID="$KHS_POLICY_TELEGRAM_CHAT_ID"
-          if [ -z "$POLICY_TELEGRAM_BOT_TOKEN" ] || [ -z "$POLICY_TELEGRAM_CHAT_ID" ]; then
-            echo "Policy Telegram: 미설정" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "Policy Telegram: 설정됨" >> "$GITHUB_STEP_SUMMARY"
-          fi
-
       - name: Run policy watch
         run: python scripts/gamejoa_policy_watch.py
 
@@ -66,39 +56,6 @@ jobs:
           else
             echo "GAMEJOA policy watch did not produce a report." >> "$GITHUB_STEP_SUMMARY"
           fi
-
-      - name: Send Telegram alert
-        if: hashFiles('out/gamejoa_policy_watch_alert.md') != ''
-        run: |
-          python - <<'PY'
-          import os
-          import urllib.parse
-          import urllib.request
-          from pathlib import Path
-
-          token = os.getenv("KHS_POLICY_TELEGRAM_BOT_TOKEN", "").strip()
-          chat_id = os.getenv("KHS_POLICY_TELEGRAM_CHAT_ID", "").strip()
-          if not token or not chat_id:
-              print("Policy Telegram: KHS_POLICY_TELEGRAM_* is not configured; skip wrong-room fallback.")
-              raise SystemExit(0)
-
-          title_path = Path("out/gamejoa_policy_watch_alert_title.txt")
-          body_path = Path("out/gamejoa_policy_watch_alert.md")
-          title = title_path.read_text(encoding="utf-8").strip() if title_path.exists() else "GAMEJOA 정책 워치"
-          body = body_path.read_text(encoding="utf-8").strip()
-          text = f"{title}\n\n{body}"
-          if len(text) > 3900:
-              text = text[:3850].rstrip() + "\n\n(본문 일부 생략)"
-
-          payload = urllib.parse.urlencode({
-              "chat_id": chat_id,
-              "text": text,
-              "disable_web_page_preview": "true",
-          }).encode("utf-8")
-          url = f"https://api.telegram.org/bot{token}/sendMessage"
-          with urllib.request.urlopen(urllib.request.Request(url, data=payload), timeout=25) as response:
-              print(f"Telegram: sent ({response.status})")
-          PY
 
       - name: Commit updated seen state
         if: hashFiles('data/gamejoa_policy_watch_seen.json') != ''
