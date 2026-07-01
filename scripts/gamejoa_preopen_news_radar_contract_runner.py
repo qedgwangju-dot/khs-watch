@@ -8,9 +8,7 @@ source and classification contract requested for the 06:30 radar.
 from __future__ import annotations
 
 import csv
-import datetime as dt
 import json
-import os
 import urllib.parse
 import urllib.request
 
@@ -19,13 +17,6 @@ import gamejoa_preopen_news_radar_telegram_runner as telegram
 
 base = telegram.base
 strict = telegram.strict
-
-DART_KEYWORDS = [
-    "단일판매", "공급계약", "수주", "유상증자", "전환사채", "신주인수권",
-    "자기주식", "타법인주식", "회사합병", "회사분할", "주요사항보고서",
-    "투자판단", "최대주주", "소송",
-]
-
 
 def append_unique(seq: list, values: list) -> None:
     for value in values:
@@ -51,14 +42,13 @@ append_unique(base.QUERIES, [
     ("원자재/매크로", "oil natural gas copper lithium uranium gold dollar won treasury yield Fed real yield TIPS Reuters Bloomberg CNBC MarketWatch"),
 ])
 
-append_unique(base.TRUSTED, ["opendart", "open dart", "news herald", "dispatch", "local news"])
+append_unique(base.TRUSTED, ["news herald", "dispatch", "local news"])
 append_unique(base.TERMS, [
     "broadcom", "intel", "arm", "apple", "microsoft", "oracle", "server", "network", "cooling",
     "buyback", "convertible", "joint venture", "loi", "mou", "offering",
     "customer inventory", "dram", "inventory", "memory price", "nand", "oversupply", "pricing", "selloff", "stock drop", "valuation",
     "copper", "dollar", "fed", "gold", "lithium", "natural gas", "oil", "real yield",
     "tips", "treasury", "uranium", "won", "yield",
-    *DART_KEYWORDS,
 ])
 
 for idx, (label, keys) in enumerate(base.SECTORS):
@@ -70,11 +60,6 @@ for idx, (label, keys) in enumerate(base.SECTORS):
         merged = list(keys)
         append_unique(merged, ["server", "network", "cooling"])
         base.SECTORS[idx] = (label, merged)
-    if label == "한국 직접 영향":
-        merged = list(keys)
-        append_unique(merged, DART_KEYWORDS)
-        base.SECTORS[idx] = (label, merged)
-
 if not any(label == "원자재/매크로" for label, _ in base.SECTORS):
     base.SECTORS.append((
         "원자재/매크로",
@@ -110,58 +95,11 @@ def collect_dfii10() -> dict:
     return {"source": base.FRED_CSV, "status": "확인 불가", "reference": "확인 불가", "value": None, "error": "latest non-empty row not found"}
 
 
-def collect_dart(now) -> tuple[list[dict], str]:
-    dart_api_key = os.getenv("DART_API_KEY", "").strip()
-    if not dart_api_key:
-        return [], "OpenDART: 접근 제한 (DART_API_KEY 미설정)"
-    days_back = max(1, int(os.getenv("DART_DAYS_BACK", "3")))
-    watch_codes = {code.strip() for code in os.getenv("DART_WATCH_STOCK_CODES", "").split(",") if code.strip()}
-    start = (now.date() - dt.timedelta(days=days_back)).strftime("%Y%m%d")
-    end = now.date().strftime("%Y%m%d")
-    url = "https://opendart.fss.or.kr/api/list.json?" + urllib.parse.urlencode({
-        "crtfc_key": dart_api_key, "bgn_de": start, "end_de": end, "last_reprt_at": "N",
-        "page_no": "1", "page_count": "100", "sort": "date", "sort_mth": "desc",
-    })
-    text, err = base.fetch(url, 30)
-    if err:
-        return [], f"OpenDART: 확인 불가 ({err})"
-    try:
-        data = json.loads(text or "")
-    except json.JSONDecodeError:
-        return [], "OpenDART: 확인 불가 (JSON 파싱 실패)"
-    if str(data.get("status")) != "000":
-        return [], f"OpenDART: 확인 불가/status {data.get('status')} ({data.get('message')})"
-
-    rows = []
-    for item in data.get("list", []):
-        stock_code = base.clean(item.get("stock_code"))
-        if watch_codes and stock_code not in watch_codes:
-            continue
-        report = base.clean(item.get("report_nm"))
-        if not any(keyword in report for keyword in DART_KEYWORDS):
-            continue
-        receipt = base.clean(item.get("rcept_no"))
-        rows.append({
-            "source": "OpenDART",
-            "layer": "official",
-            "publisher": "OpenDART",
-            "title": f"{base.clean(item.get('corp_name'))} {report}",
-            "link": f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={receipt}" if receipt else "https://dart.fss.or.kr/",
-            "summary": f"stock_code={stock_code or 'N/A'} receipt={receipt or 'N/A'}",
-            "published": base.parse_date(base.clean(item.get("rcept_dt"))),
-        })
-    return rows, f"OpenDART: {len(data.get('list', []))}건 조회, {len(rows)}건 후보"
-
-
 original_collect_items = strict.collect_items
 
 
 def collect_items(now):
-    rows, notes = original_collect_items(now)
-    dart_rows, dart_note = collect_dart(now)
-    notes.append(dart_note)
-    rows.extend(dart_rows)
-    return rows, notes
+    return original_collect_items(now)
 
 
 def classify(row: dict, now):
@@ -241,7 +179,6 @@ def classify(row: dict, now):
 
 
 base.collect_dfii10 = collect_dfii10
-base.collect_dart = collect_dart
 strict.collect_items = collect_items
 strict.classify = classify
 

@@ -11,7 +11,6 @@ base = grid.base
 contract = grid.contract
 telegram = grid.telegram
 
-K_POWER_DART_CODES = {"034020"}
 K_POWER_SECTOR = "원전/SMR/가스터빈/두산에너빌리티"
 K_POWER_CHECK = (
     "체코 원전 최종계약·계약규모, i-SMR 상용화 일정, 금리 인하, "
@@ -45,7 +44,7 @@ K_POWER_EVENT_TERMS = [
 K_POWER_QUERIES = [
     (
         "두산에너빌리티 SpaceX 가스터빈",
-        "SpaceX gas turbine order contract procurement Doosan Enerbility power generation turbine Reuters Bloomberg CNBC Yonhap DART",
+        "SpaceX gas turbine order contract procurement Doosan Enerbility power generation turbine Reuters Bloomberg CNBC Yonhap",
     ),
     (
         "체코 원전 최종계약",
@@ -137,9 +136,7 @@ def power_counter(flags: dict[str, bool]) -> str:
 def enforce_power_watch() -> None:
     append_unique(base.QUERIES, K_POWER_QUERIES)
     append_unique(base.TERMS, K_POWER_TERMS + K_POWER_EVENT_TERMS)
-    append_unique(base.TRUSTED, ["yonhap", "yna", "opendart", "dart"])
-    if hasattr(base, "DART_WATCH_STOCK_CODES"):
-        base.DART_WATCH_STOCK_CODES.update(K_POWER_DART_CODES)
+    append_unique(base.TRUSTED, ["yonhap", "yna"])
     if not any(label == K_POWER_SECTOR for label, _ in base.SECTORS):
         base.SECTORS.append((K_POWER_SECTOR, K_POWER_TERMS))
 

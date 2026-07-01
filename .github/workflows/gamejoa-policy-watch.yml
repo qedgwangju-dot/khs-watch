@@ -19,9 +19,6 @@ jobs:
       CREATE_GITHUB_ISSUE: "true"
       GAMEJOA_WATCH_MAX_ALERTS: "5"
       SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || 'GAMEJOA-policy-watch contact=please-set-repo-variable' }}
-      DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      DART_WATCH_STOCK_CODES: ${{ vars.DART_WATCH_STOCK_CODES || '005930,000660,373220,051910,006400,112610,267260,010120,064350,010140,329180' }}
-      DART_DAYS_BACK: "1"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,12 +34,6 @@ jobs:
             echo "SEC_USER_AGENT: 미설정 또는 기본값" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "SEC_USER_AGENT: 설정됨" >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-          if [ -z "$DART_API_KEY" ]; then
-            echo "DART_API_KEY: 미설정" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "DART_API_KEY: 설정됨" >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Run policy watch

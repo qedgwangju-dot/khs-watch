@@ -24,9 +24,6 @@ KST = ZoneInfo("Asia/Seoul")
 MAX_AGE_HOURS = int(os.getenv("RADAR_MAX_AGE_HOURS", "48"))
 UA = os.getenv("SEC_USER_AGENT", "GAMEJOA-preopen-radar contact=please-set-secret")
 FRED_API_KEY = os.getenv("FRED_API_KEY", "").strip()
-DART_API_KEY = os.getenv("DART_API_KEY", "").strip()
-DART_DAYS_BACK = max(1, int(os.getenv("DART_DAYS_BACK", "3")))
-DART_WATCH_STOCK_CODES = {code.strip() for code in os.getenv("DART_WATCH_STOCK_CODES", "").split(",") if code.strip()}
 TELEGRAM_LIMIT = 4096
 
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFII10"
@@ -74,8 +71,7 @@ TRUSTED = [
     "usa today", "panama city news herald", "columbus dispatch",
 ]
 LOCAL_DC_POLICY_TERMS = ["ban", "banned", "banning", "block", "blocked", "city council", "county", "moratorium", "ordinance", "permit", "planning commission", "public hearing", "residents", "township", "vote", "zoning"]
-DART_KEYWORDS = ["단일판매", "공급계약", "수주", "유상증자", "전환사채", "신주인수권", "자기주식", "타법인주식", "회사합병", "회사분할", "주요사항보고서", "투자판단", "최대주주", "소송"]
-TERMS = ["approval", "ban", "banned", "banning", "block", "blocked", "buyback", "capex", "city council", "contract", "convertible", "copper", "court order", "crl", "data center", "data centers", "dollar", "earnings", "entity list", "export control", "fda", "fed", "final rule", "gold", "guidance", "injunction", "joint venture", "lithium", "loi", "merger", "moratorium", "mou", "natural gas", "offering", "oil", "ordinance", "permit", "planning commission", "public hearing", "real yield", "regulation", "residents", "sanction", "section 301", "section 232", "semiconductor", "supply agreement", "tariff", "tips", "township", "treasury", "uranium", "vote", "won", "yield", "zoning", "fcc", "national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter", "doe", "department of energy", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "robot", "robotics", "drone", "subsidy", "loan", "low-cost loan", "quota", "safeguard", "anti-dumping", "cbam", "steel", "ap1000", "westinghouse", "nuclear reactor", "critical mineral", "critical minerals", *DART_KEYWORDS]
+TERMS = ["approval", "ban", "banned", "banning", "block", "blocked", "buyback", "capex", "city council", "contract", "convertible", "copper", "court order", "crl", "data center", "data centers", "dollar", "earnings", "entity list", "export control", "fda", "fed", "final rule", "gold", "guidance", "injunction", "joint venture", "lithium", "loi", "merger", "moratorium", "mou", "natural gas", "offering", "oil", "ordinance", "permit", "planning commission", "public hearing", "real yield", "regulation", "residents", "sanction", "section 301", "section 232", "semiconductor", "supply agreement", "tariff", "tips", "township", "treasury", "uranium", "vote", "won", "yield", "zoning", "fcc", "national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter", "doe", "department of energy", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "robot", "robotics", "drone", "subsidy", "loan", "low-cost loan", "quota", "safeguard", "anti-dumping", "cbam", "steel", "ap1000", "westinghouse", "nuclear reactor", "critical mineral", "critical minerals"]
 
 SECTORS = [
     ("반도체/AI", ["ai", "chip", "hbm", "micron", "nvidia", "semiconductor", "tsmc", "asml", "hynix", "samsung", "broadcom", "amd", "intel", "arm", "apple", "microsoft", "oracle"]),
@@ -87,7 +83,7 @@ SECTORS = [
     ("방산/정유/해운/지정학", ["hormuz", "iran", "israel", "oil", "red sea", "shipping", "ukraine"]),
     ("원자재/매크로", ["oil", "natural gas", "copper", "lithium", "uranium", "gold", "dollar", "won", "treasury", "yield", "fed", "real yield", "tips"]),
     ("바이오/FDA", ["fda", "clinical", "crl", "pharma"]),
-    ("한국 직접 영향", ["samsung", "sk hynix", "korea", "lg energy", "hyundai", *DART_KEYWORDS]),
+    ("한국 직접 영향", ["samsung", "sk hynix", "korea", "lg energy", "hyundai"]),
 ]
 
 
@@ -219,51 +215,6 @@ def is_local_dc_policy(row: dict) -> bool:
     return has_dc and has_local_policy
 
 
-def collect_dart(now: dt.datetime) -> tuple[list[dict], str]:
-    if not DART_API_KEY:
-        return [], "OpenDART: 접근 제한 (DART_API_KEY 미설정)"
-    start = (now.date() - dt.timedelta(days=DART_DAYS_BACK)).strftime("%Y%m%d")
-    end = now.date().strftime("%Y%m%d")
-    url = "https://opendart.fss.or.kr/api/list.json?" + urllib.parse.urlencode({
-        "crtfc_key": DART_API_KEY,
-        "bgn_de": start,
-        "end_de": end,
-        "last_reprt_at": "N",
-        "page_no": "1",
-        "page_count": "100",
-        "sort": "date",
-        "sort_mth": "desc",
-    })
-    text, err = fetch(url, 30)
-    if err:
-        return [], f"OpenDART: 확인 불가 ({err})"
-    try:
-        data = json.loads(text or "")
-    except json.JSONDecodeError:
-        return [], "OpenDART: 확인 불가 (JSON 파싱 실패)"
-    if str(data.get("status")) != "000":
-        return [], f"OpenDART: 확인 불가/status {data.get('status')} ({data.get('message')})"
-    rows = []
-    for item in data.get("list", []):
-        stock_code = clean(item.get("stock_code"))
-        if DART_WATCH_STOCK_CODES and stock_code not in DART_WATCH_STOCK_CODES:
-            continue
-        report = clean(item.get("report_nm"))
-        if not any(keyword in report for keyword in DART_KEYWORDS):
-            continue
-        receipt = clean(item.get("rcept_no"))
-        rows.append({
-            "source": "OpenDART",
-            "layer": "official",
-            "publisher": "OpenDART",
-            "title": f"{clean(item.get('corp_name'))} {report}",
-            "link": f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={receipt}" if receipt else "https://dart.fss.or.kr/",
-            "summary": f"stock_code={stock_code or 'N/A'} receipt={receipt or 'N/A'}",
-            "published": parse_date(clean(item.get("rcept_dt"))),
-        })
-    return rows, f"OpenDART: {len(data.get('list', []))}건 조회, {len(rows)}건 후보"
-
-
 def collect_items(now: dt.datetime) -> tuple[list[dict], list[str]]:
     rows, notes = [], []
     for name, url, kind in SOURCES:
@@ -275,9 +226,6 @@ def collect_items(now: dt.datetime) -> tuple[list[dict], list[str]]:
         parsed = [r for r in parsed if fresh(r, now)]
         notes.append(f"{name}: {len(parsed)}건")
         rows.extend(parsed)
-    dart_rows, dart_note = collect_dart(now)
-    notes.append(dart_note)
-    rows.extend(dart_rows)
     for name, query in QUERIES:
         text, err = fetch(google_url(f"{query} when:{max(1, MAX_AGE_HOURS // 24)}d"))
         if err:

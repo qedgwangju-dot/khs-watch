@@ -28,11 +28,8 @@ jobs:
     timeout-minutes: 15
     env:
       RADAR_MAX_AGE_HOURS: "48"
-      DART_DAYS_BACK: "3"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || vars.SEC_USER_AGENT || 'GAMEJOA-preopen-radar contact=please-set-secret' }}
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-      DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      DART_WATCH_STOCK_CODES: ${{ vars.DART_WATCH_STOCK_CODES || '005930,000660,373220,051910,006400,112610,267260,012450,079550,047810,064350,272210,034020,010120,010140,329180' }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       SEND_TELEGRAM: "true"
@@ -54,12 +51,6 @@ jobs:
               echo "- Policy Telegram: missing token or chat id; report will build but cannot be delivered."
             else
               echo "- Policy Telegram: configured"
-            fi
-
-            if [ -z "$DART_API_KEY" ]; then
-              echo "- OpenDART: DART_API_KEY missing; Korean disclosure layer will be marked access-limited."
-            else
-              echo "- OpenDART: configured"
             fi
 
             if [ -z "$FRED_API_KEY" ]; then

@@ -61,7 +61,7 @@ BIOTECH_DISCOUNT_TERMS = [
 ROBOTICS_SECTOR = "로봇/생산자동화"
 ROBOTICS_QUERY = (
     "삼성 로봇 실행 단계 체크",
-    "Samsung Future Robotics reorganization Rainbow Robotics RB5-850 collaborative robot cobot Samsung production line factory automation deployment procurement order capex DART Reuters Bloomberg Yonhap",
+    "Samsung Future Robotics reorganization Rainbow Robotics RB5-850 collaborative robot cobot Samsung production line factory automation deployment procurement order capex Reuters Bloomberg Yonhap",
 )
 ROBOTICS_TERMS = [
     "samsung", "samsung electronics", "future robotics", "robotics task force", "robot organization",
@@ -688,42 +688,6 @@ def is_actionable_local_dc_policy(alert: dict) -> bool:
     return has_hard_action and has_trusted_source and not weak_local_only
 
 
-LOW_IMPACT_DART_DISCLOSURE_TERMS = [
-    "자기주식취득신탁계약해지",
-    "자기주식취득 신탁계약 해지",
-    "자기주식취득신탁계약기간만료",
-    "자기주식취득 신탁계약 기간만료",
-    "자기주식취득결과보고서",
-]
-
-HIGH_IMPACT_DART_DISCLOSURE_TERMS = [
-    "단일판매",
-    "공급계약",
-    "수주",
-    "유상증자",
-    "전환사채",
-    "신주인수권",
-    "타법인주식",
-    "회사합병",
-    "회사분할",
-    "소송",
-    "최대주주",
-    "경영권",
-    "소각",
-    "처분결정",
-    "취득결정",
-]
-
-
-def is_low_impact_dart_disclosure(alert: dict) -> bool:
-    text = alert_text(alert)
-    if not has_term(text, ["opendart", "dart.fss.or.kr"]):
-        return False
-    if not has_term(text, LOW_IMPACT_DART_DISCLOSURE_TERMS):
-        return False
-    return not has_term(text, HIGH_IMPACT_DART_DISCLOSURE_TERMS)
-
-
 def korean_title(alert: dict) -> str:
     text = alert_text(alert)
     raw = str(alert.get("news") or "").strip()
@@ -986,8 +950,6 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         if is_local_dc_like(alert) and not is_actionable_local_dc_policy(alert):
             continue
-        if is_low_impact_dart_disclosure(alert):
-            continue
         normalized = normalize_alert_for_output(alert)
         key = (
             base.norm(normalized.get("news")),
@@ -998,8 +960,6 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         seen.add(key)
         if is_low_impact_admin_alert(normalized):
-            continue
-        if is_low_impact_dart_disclosure(normalized):
             continue
         if (
             is_local_dc_like(normalized)
@@ -1026,7 +986,7 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
     if alert.get("biotech_leadership_filter"):
         extra += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
     if alert.get("robotics_execution_filter"):
-        extra += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "협동로봇", "DART"]
+        extra += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "협동로봇"]
     if "전력망 보안/FCC 장비규제" in alert.get("sectors", []):
         extra += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV", "FCC Covered List"]
     if "EU/한국 정책 영향" in alert.get("sectors", []):
@@ -1052,7 +1012,7 @@ def related_text(alert: dict, fred: dict, te: dict) -> str:
         if alert.get("biotech_leadership_filter"):
             out += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
         if alert.get("robotics_execution_filter"):
-            out += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "협동로봇", "DART"]
+            out += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "협동로봇"]
         out += extra
         if "할인율" in alert.get("impacts", []):
             out += [

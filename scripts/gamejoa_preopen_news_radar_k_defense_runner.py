@@ -10,7 +10,6 @@ base = runner.base
 contract = runner.contract
 telegram = runner.telegram
 
-K_DEFENSE_DART_CODES = {"012450", "079550", "047810", "064350", "272210"}
 K_DEFENSE_SECTOR = "K-방산/항공우주"
 K_DEFENSE_CHECK = "계약금액·기간·상대국/상대방·공시 여부·양산/인도 일정·수출허가 확인"
 K_DEFENSE_COMMON_RISK = "트럼프 행정부 압박: 방위비 분담금 증액·주한미군 재조정은 전 종목 지정학/할인율 리스크"
@@ -108,7 +107,7 @@ K_DEFENSE_DRONE_CATALYST_TERMS = [
 K_DEFENSE_QUERIES = [
     (
         "K-방산 수출/수주",
-        "Hanwha Aerospace K9 Thunder Chunmoo Redback LIG Nex1 Cheongung II KM-SAM Hyungung KAI FA-50 KF-21 Surion Hyundai Rotem K2 tank Hanwha Systems radar satellite electronic warfare defense contract order export Reuters Bloomberg Yonhap DART",
+        "Hanwha Aerospace K9 Thunder Chunmoo Redback LIG Nex1 Cheongung II KM-SAM Hyungung KAI FA-50 KF-21 Surion Hyundai Rotem K2 tank Hanwha Systems radar satellite electronic warfare defense contract order export Reuters Bloomberg Yonhap",
     ),
     (
         "K-방산 무기체계",
@@ -216,9 +215,7 @@ def enforce_k_defense_watch() -> None:
         + K_DEFENSE_DRONE_SYSTEM_TERMS
         + K_DEFENSE_DRONE_CATALYST_TERMS,
     )
-    append_unique(base.TRUSTED, ["yonhap", "yna", "korea herald", "korea joongang daily", "opendart", "dart", "dapa", "mnd", "kats"])
-    if hasattr(base, "DART_WATCH_STOCK_CODES"):
-        base.DART_WATCH_STOCK_CODES.update(K_DEFENSE_DART_CODES)
+    append_unique(base.TRUSTED, ["yonhap", "yna", "korea herald", "korea joongang daily", "dapa", "mnd", "kats"])
     if not any(label == K_DEFENSE_SECTOR for label, _ in base.SECTORS):
         base.SECTORS.append((K_DEFENSE_SECTOR, K_DEFENSE_COMPANY_TERMS + K_DEFENSE_SYSTEM_TERMS))
     if not any(label == K_DEFENSE_DRONE_SECTOR for label, _ in base.SECTORS):
