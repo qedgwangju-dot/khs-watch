@@ -96,4 +96,5 @@ jobs:
             out/gamejoa_preopen_news_radar.md
             out/gamejoa_preopen_news_radar.json
             out/gamejoa_preopen_news_radar_title.txt
+            out/gamejoa_preopen_news_radar_delivery.json
           if-no-files-found: ignore

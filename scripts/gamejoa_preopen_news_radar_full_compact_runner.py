@@ -4,8 +4,11 @@
 from __future__ import annotations
 
 import html
+import json
 import os
 import re
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -1109,18 +1112,83 @@ def send_telegram(text: str) -> None:
     token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
     chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
     if not token or not chat_id:
-        print("Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
-        return
+        write_delivery_status("blocked", chat_id, len(text), "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
+        raise RuntimeError("Telegram delivery blocked: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
+    message = fit_telegram_html(text, base.TELEGRAM_LIMIT)
     body = urllib.parse.urlencode({
         "chat_id": chat_id,
-        "text": text[:base.TELEGRAM_LIMIT],
+        "text": message,
         "disable_web_page_preview": "true",
         "parse_mode": "HTML",
     }).encode("utf-8")
-    req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=body, method="POST")
-    with urllib.request.urlopen(req, timeout=25) as resp:
-        resp.read()
-    print("Telegram: sent")
+    last_error = ""
+    for attempt in range(1, 4):
+        req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=body, method="POST")
+        try:
+            with urllib.request.urlopen(req, timeout=25) as resp:
+                resp.read()
+            write_delivery_status("sent", chat_id, len(text), "", len(message), attempt)
+            print(f"Telegram: sent chars={len(message)} original_chars={len(text)} attempt={attempt}")
+            return
+        except urllib.error.HTTPError as exc:
+            error_text = exc.read().decode("utf-8", "replace")[:500]
+            last_error = f"Telegram HTTP {exc.code}: {error_text}"
+            if attempt < 3 and (exc.code == 429 or exc.code >= 500):
+                retry_after = exc.headers.get("retry-after")
+                delay = int(retry_after) if retry_after and retry_after.isdigit() else attempt
+                time.sleep(delay)
+                continue
+            break
+        except Exception as exc:
+            last_error = f"{type(exc).__name__}: {exc}"
+            if attempt < 3:
+                time.sleep(attempt)
+                continue
+            break
+    write_delivery_status("failed", chat_id, len(text), last_error, len(message), 3)
+    raise RuntimeError(f"Telegram delivery failed: {last_error}")
+
+
+def fit_telegram_html(text: str, limit: int) -> str:
+    if len(text) <= limit:
+        return text
+    suffix = "\n\n전체 보고서는 GitHub Actions artifact에서 확인 필요."
+    candidate = text[: max(0, limit - len(suffix))]
+    newline = candidate.rfind("\n")
+    if newline > 1800:
+        candidate = candidate[:newline]
+    if candidate.count("<a ") > candidate.count("</a>"):
+        candidate = candidate[: candidate.rfind("<a ")].rstrip()
+    return (candidate.rstrip() + suffix)[:limit]
+
+
+def write_delivery_status(
+    status: str,
+    chat_id: str,
+    original_chars: int,
+    error: str = "",
+    sent_chars: int | None = None,
+    attempts: int | None = None,
+) -> None:
+    payload = {
+        "status": status,
+        "chat_id_masked": mask_chat_id(chat_id),
+        "original_chars": original_chars,
+        "sent_chars": sent_chars,
+        "attempts": attempts,
+        "error": error,
+    }
+    base.OUT.mkdir(exist_ok=True)
+    (base.OUT / "gamejoa_preopen_news_radar_delivery.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+def mask_chat_id(value: str) -> str:
+    if not value:
+        return ""
+    return "*" * max(0, len(value) - 4) + value[-4:]
 
 
 telegram.compact_report = compact_report
