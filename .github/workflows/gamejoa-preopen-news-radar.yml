@@ -30,8 +30,8 @@ jobs:
       RADAR_MAX_AGE_HOURS: "48"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || vars.SEC_USER_AGENT || 'GAMEJOA-preopen-radar contact=please-set-secret' }}
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-      TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.GAMEJOA_TELEGRAM_BOT_TOKEN || secrets.TELEGRAM_BOT_TOKEN || secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.GAMEJOA_TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       SEND_TELEGRAM: "true"
       TELEGRAM_DRY_RUN: ${{ github.event.inputs.telegram_dry_run || 'false' }}
     steps:
@@ -48,9 +48,9 @@ jobs:
           {
             echo "### Configuration"
             if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-              echo "- Policy Telegram: missing token or chat id; report will build but cannot be delivered."
+              echo "- GAMEJOA Telegram: missing token or chat id; report will build but cannot be delivered."
             else
-              echo "- Policy Telegram: configured"
+              echo "- GAMEJOA Telegram: configured"
             fi
 
             if [ -z "$FRED_API_KEY" ]; then
