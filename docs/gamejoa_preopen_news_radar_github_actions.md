@@ -36,15 +36,10 @@ Go to:
 
 Add:
 
-- `GAMEJOA_TELEGRAM_BOT_TOKEN`
-- `GAMEJOA_TELEGRAM_CHAT_ID`
-
-Fallbacks, used only when the GAMEJOA-specific secrets are not set:
-
-- `TELEGRAM_BOT_TOKEN`
-- `TELEGRAM_CHAT_ID`
 - `KHS_POLICY_TELEGRAM_BOT_TOKEN`
 - `KHS_POLICY_TELEGRAM_CHAT_ID`
+
+These are the `@hs8879_bot` destination used for the 실시간 뉴스 정책 bot.
 
 ## Strongly Recommended Secrets
 
