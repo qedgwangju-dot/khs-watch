@@ -609,6 +609,121 @@ def is_local_dc_like(alert: dict) -> bool:
     )
 
 
+LOCAL_DC_TRUSTED_SOURCE_TERMS = [
+    "reuters",
+    "bloomberg",
+    "associated press",
+    "ap news",
+    "cnbc",
+    "marketwatch",
+    "wall street journal",
+    "financial times",
+    "wsj",
+    "ft.com",
+    "federal register",
+    "ferc",
+    "department of energy",
+    "doe",
+    "public utility commission",
+    "state corporation commission",
+    ".gov",
+    ".gov/",
+]
+
+LOCAL_DC_HARD_ACTION_TERMS = [
+    "moratorium",
+    "ordinance",
+    "ban",
+    "banned",
+    "block",
+    "blocked",
+    "vote",
+    "voted",
+    "approved",
+    "passed",
+    "public hearing",
+    "planning commission",
+    "city council",
+    "county board",
+    "zoning",
+    "permit denied",
+    "injunction",
+    "lawsuit",
+    "조례",
+    "표결",
+    "승인",
+    "부결",
+    "모라토리엄",
+    "금지",
+    "인허가",
+    "공청회",
+]
+
+LOCAL_DC_WEAK_LOCAL_ONLY_TERMS = [
+    "residents say",
+    "neighbors say",
+    "construction already impacting",
+    "rural radio",
+    "thecarrollnews",
+    "herald-mail",
+    "256 today",
+    "aol.com",
+    "local news",
+]
+
+
+def is_actionable_local_dc_policy(alert: dict) -> bool:
+    if not is_local_dc_like(alert):
+        return False
+    examples = alert.get("examples") or []
+    source_blob = " ".join(
+        str(item.get("publisher") or item.get("source") or item.get("link") or "")
+        for item in examples
+        if isinstance(item, dict)
+    )
+    text = " ".join([alert_text(alert), source_blob]).lower()
+    has_hard_action = has_term(text, LOCAL_DC_HARD_ACTION_TERMS)
+    has_trusted_source = has_term(text, LOCAL_DC_TRUSTED_SOURCE_TERMS)
+    weak_local_only = has_term(text, LOCAL_DC_WEAK_LOCAL_ONLY_TERMS) and not has_trusted_source
+    return has_hard_action and has_trusted_source and not weak_local_only
+
+
+LOW_IMPACT_DART_DISCLOSURE_TERMS = [
+    "자기주식취득신탁계약해지",
+    "자기주식취득 신탁계약 해지",
+    "자기주식취득신탁계약기간만료",
+    "자기주식취득 신탁계약 기간만료",
+    "자기주식취득결과보고서",
+]
+
+HIGH_IMPACT_DART_DISCLOSURE_TERMS = [
+    "단일판매",
+    "공급계약",
+    "수주",
+    "유상증자",
+    "전환사채",
+    "신주인수권",
+    "타법인주식",
+    "회사합병",
+    "회사분할",
+    "소송",
+    "최대주주",
+    "경영권",
+    "소각",
+    "처분결정",
+    "취득결정",
+]
+
+
+def is_low_impact_dart_disclosure(alert: dict) -> bool:
+    text = alert_text(alert)
+    if not has_term(text, ["opendart", "dart.fss.or.kr"]):
+        return False
+    if not has_term(text, LOW_IMPACT_DART_DISCLOSURE_TERMS):
+        return False
+    return not has_term(text, HIGH_IMPACT_DART_DISCLOSURE_TERMS)
+
+
 def korean_title(alert: dict) -> str:
     text = alert_text(alert)
     raw = str(alert.get("news") or "").strip()
@@ -665,6 +780,8 @@ def korean_title(alert: dict) -> str:
 
 def curated_sectors(alert: dict) -> list[str]:
     text = alert_text(alert)
+    if has_term(text, ["자기주식", "자사주", "buyback"]):
+        return ["자사주/주주환원", "수급/오버행", "한국 직접 공시"]
     if has_term(text, ["전환사채", "신주인수권", "유상증자", "주요사항보고서", "타법인주식", "회사합병", "회사분할"]):
         return ["개별종목 자금조달/희석", "수급/오버행", "한국 직접 공시"]
     if is_local_dc_like(alert):
@@ -700,6 +817,15 @@ def curated_sectors(alert: dict) -> list[str]:
 
 def explanation_for(alert: dict) -> dict[str, str]:
     text = alert_text(alert)
+    if has_term(text, ["자기주식", "자사주", "buyback"]):
+        return {
+            "core": "자사주 취득, 처분, 신탁, 소각 관련 공시는 주주환원, 유통주식 수, 오버행, 단기 수급을 바꿀 수 있는 공시입니다.",
+            "view": "실제 고충격 여부는 취득·소각 규모, 시가총액 대비 비중, 처분 상대방, 목적, 기간, 기존 기대 대비 신규성으로 판단해야 합니다.",
+            "korea": "한국장에서는 자사주 소각 또는 대규모 취득이면 주주환원과 수급 호재, 신탁 해지·처분이면 오버행 가능성을 구분해 봅니다.",
+            "priced": "중간. 자사주 공시는 즉시 반응하지만 규모와 목적이 작거나 반복 공시면 이미 반영됐을 가능성이 높습니다.",
+            "counter": "단순 신탁 만기·해지, 기존 취득 완료 보고, 소규모 반복 공시면 새 수급 변수로 보기 어렵습니다.",
+            "failure": "소각, 신규 대규모 취득, 처분 제한, 경영권 변화, 거래량 대비 의미 있는 규모가 확인되지 않으면 고충격 재료에서 제외합니다.",
+        }
     if has_term(text, ["전환사채", "신주인수권", "유상증자", "주요사항보고서", "타법인주식", "회사합병", "회사분할"]):
         return {
             "core": "국내 기업의 CB/BW/유상증자/주요사항 공시는 개별 종목 수급, 희석, 오버행, 지배구조 이벤트를 바꿀 수 있는 공시입니다.",
@@ -858,6 +984,10 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     for alert in initial + alerts:
         if is_low_impact_admin_alert(alert):
             continue
+        if is_local_dc_like(alert) and not is_actionable_local_dc_policy(alert):
+            continue
+        if is_low_impact_dart_disclosure(alert):
+            continue
         normalized = normalize_alert_for_output(alert)
         key = (
             base.norm(normalized.get("news")),
@@ -868,6 +998,8 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         seen.add(key)
         if is_low_impact_admin_alert(normalized):
+            continue
+        if is_low_impact_dart_disclosure(normalized):
             continue
         if (
             is_local_dc_like(normalized)
