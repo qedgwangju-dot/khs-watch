@@ -486,6 +486,8 @@ LOW_IMPACT_TITLE_TERMS = [
 HARD_LOW_IMPACT_TITLE_TERMS = [
     "annual review of country eligibility",
     "african growth and opportunity act",
+    "annual inquiry service list",
+    "antidumping or countervailing duty order finding or suspended investigation",
     "continuation of the national emergency",
     "delete, delete, delete",
     "digital opportunity data collection",
@@ -495,6 +497,8 @@ HARD_LOW_IMPACT_TITLE_TERMS = [
     "nominations & appointments",
     "nominations appointments",
     "nominations sent to the senate",
+    "note regarding format of review requests",
+    "opportunity to request administrative review",
     "sunshine act meetings",
     "technical guidelines for the production of regenerative agricultural biofuel feedstocks",
     "television broadcasting services",
@@ -599,6 +603,26 @@ def is_low_impact_admin_alert(alert: dict) -> bool:
     if not has_term(text, LOW_IMPACT_TITLE_TERMS):
         return False
     return not has_direct_market_path(text, alert)
+
+
+def is_low_impact_trade_admin_notice(alert: dict) -> bool:
+    text = alert_text(alert)
+    if not has_term(text, ["antidumping", "countervailing", "anti-dumping", "상계관세", "반덤핑"]):
+        return False
+    return has_term(
+        text,
+        [
+            "opportunity to request administrative review",
+            "join annual inquiry service list",
+            "annual inquiry service list",
+            "note regarding format of review requests",
+        ],
+    )
+
+
+def has_decision_impact(alert: dict) -> bool:
+    impacts = [str(x) for x in alert.get("impacts") or []]
+    return any(x in {"돈 버는 능력", "할인율", "수급", "시간표"} for x in impacts)
 
 
 def is_local_dc_like(alert: dict) -> bool:
@@ -735,6 +759,8 @@ def korean_title(alert: dict) -> str:
         return "FCC, 통신·브로드밴드 규제 문서 공표"
     if has_term(text, ["export control", "entity list", "semiconductor", "chips"]):
         return "미국, 반도체·첨단기술 수출통제 정책 신호"
+    if has_term(text, ["antidumping", "countervailing", "anti-dumping"]) and has_term(text, ["final results", "preliminary results", "cash deposit", "dumping margin", "subsidy rate", "rate", "korea", "south korea"]):
+        return "미 상무부, 반덤핑·상계관세 판정/재심 결과 공표"
     if has_term(text, ["tariff", "customs", "duty", "section 301", "section 232"]):
         return "미국, 관세·통관 정책 변화 체크"
     if raw and not mostly_ascii(raw):
@@ -880,6 +906,15 @@ def explanation_for(alert: dict) -> dict[str, str]:
             "counter": "기술지침·의견수렴·행정 개정은 실제 공급·가격 변화와 거리가 있을 수 있습니다.",
             "failure": "WTI/Brent/천연가스/정제마진/관련 ETF가 반응하지 않으면 단발성 정책 문서입니다.",
         }
+    if has_term(text, ["tariff", "customs", "duty", "section 301", "section 232", "antidumping", "countervailing", "anti-dumping", "safeguard", "quota"]):
+        return {
+            "core": "관세·통관 뉴스는 품목, 국가, 세율, 쿼터, 적용일이 실제로 바뀔 때만 한국 수출기업의 가격경쟁력과 마진을 바꾸는 재료입니다.",
+            "view": "반덤핑·상계관세 행정재심 신청 안내처럼 절차만 여는 공고는 가격 변수가 아니며, 최종판정·예비판정·현금예치율·관세율·시행일이 확인될 때 고충격으로 봅니다.",
+            "korea": "한국장에서는 원문에 한국산 품목, 세율 변화, 적용일, 예외 조항이 직접 확인될 때 철강, 배터리, 화학, 전력기기, 자동차부품 등 수출주로만 연결합니다.",
+            "priced": "낮음~중간. 보도나 행정 공고 단계에서는 테마 반응이 먼저 나올 수 있지만, 실제 세율과 시행일이 없으면 실적 추정 반영은 제한적입니다.",
+            "counter": "행정재심 신청 기회, 서비스리스트 갱신, 절차 안내는 새 관세 부과나 완화가 아니므로 고충격 정책 뉴스로 보기 어렵습니다.",
+            "failure": "품목·국가·세율·현금예치율·시행일·한국 기업 노출이 확인되지 않으면 레이더에서 제외합니다.",
+        }
     return {
         "core": "공식 문서 또는 신뢰 보도에서 한국장 가격 변수 후보가 확인됐습니다.",
         "view": "돈 버는 능력, 할인율, 수급, 시간표 중 무엇이 실제로 바뀌는지 원문과 시장 반응으로 재확인해야 합니다.",
@@ -948,6 +983,8 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     for alert in initial + alerts:
         if is_low_impact_admin_alert(alert):
             continue
+        if is_low_impact_trade_admin_notice(alert):
+            continue
         if is_local_dc_like(alert) and not is_actionable_local_dc_policy(alert):
             continue
         normalized = normalize_alert_for_output(alert)
@@ -960,6 +997,10 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         seen.add(key)
         if is_low_impact_admin_alert(normalized):
+            continue
+        if is_low_impact_trade_admin_notice(normalized):
+            continue
+        if not has_decision_impact(normalized):
             continue
         if (
             is_local_dc_like(normalized)
@@ -1178,6 +1219,16 @@ def guard_preopen_report(text: str) -> None:
     for marker in required:
         if item_count and text.count(marker) < item_count:
             errors.append(f"missing_{marker}")
+    if item_count and "- 의사결정 영향: 의사결정 영향 제한적" in text:
+        errors.append("limited_decision_impact_displayed")
+    generic_phrases = [
+        "공식 문서 또는 신뢰 보도에서 한국장 가격 변수 후보가 확인됐습니다.",
+        "돈 버는 능력, 할인율, 수급, 시간표 중 무엇이 실제로 바뀌는지 원문과 시장 반응으로 재확인해야 합니다.",
+        "한국장 직접 영향은 원문에 근거가 있는 업종과 종목군으로만 제한해 확인합니다.",
+    ]
+    for phrase in generic_phrases:
+        if item_count and phrase in text:
+            errors.append("generic_policy_explanation_displayed")
     for line in text.splitlines():
         if not re.match(r"^\d+\)\s+\[", line):
             continue
