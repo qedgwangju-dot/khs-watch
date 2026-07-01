@@ -2,7 +2,7 @@
 """KHS policy/regulatory high-impact watch.
 
 Runs in GitHub Actions. Source-first watcher for official policy, legal,
-regulatory, offshore wind permit, SEC EDGAR, and OpenDART signals.
+regulatory, offshore wind permit, SEC EDGAR, and trusted policy signals.
 """
 
 from __future__ import annotations
@@ -29,20 +29,8 @@ KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
 
 SEC_USER_AGENT = os.getenv("SEC_USER_AGENT", "KHS-policy-watch/0.2 contact=please-set-SEC_USER_AGENT")
-DART_API_KEY = os.getenv("DART_API_KEY", "").strip()
-DART_WATCH_STOCK_CODES = {
-    code.strip()
-    for code in os.getenv(
-        "DART_WATCH_STOCK_CODES",
-        "005930,000660,373220,051910,006400,112610,267260,010120,064350,010140,329180",
-    ).split(",")
-    if code.strip()
-}
-DART_DAYS_BACK = int(os.getenv("DART_DAYS_BACK", "1"))
 MAX_ALERTS = int(os.getenv("KHS_WATCH_MAX_ALERTS", "5"))
 MAX_SOURCE_AGE_HOURS = int(os.getenv("KHS_SOURCE_MAX_AGE_HOURS", "72"))
-DART_INCLUDE_ALL_MAJOR = os.getenv("DART_INCLUDE_ALL_MAJOR", "false").lower() in {"1", "true", "yes", "y"}
-DART_ALLOW_CORRECTIONS = os.getenv("DART_ALLOW_CORRECTIONS", "false").lower() in {"1", "true", "yes", "y"}
 
 SEC_COMPANY_WATCHLIST = {
     "NVDA": "0001045810",
@@ -59,34 +47,6 @@ SEC_COMPANY_WATCHLIST = {
 }
 SEC_WATCH_FORMS = {"8-K", "6-K", "10-Q", "10-K", "20-F", "40-F", "S-3", "424B5", "SC 13D", "SC 13G"}
 
-DART_REPORT_KEYWORDS = [
-    "단일판매",
-    "공급계약",
-    "수주",
-    "유상증자",
-    "무상증자",
-    "전환사채",
-    "신주인수권",
-    "교환사채",
-    "자기주식",
-    "타법인주식",
-    "영업양수",
-    "영업양도",
-    "영업정지",
-    "회사합병",
-    "회사분할",
-    "최대주주",
-    "소송",
-    "투자판단",
-    "주요사항보고서",
-    "불성실공시",
-    "조회공시",
-]
-DART_CORRECTION_TERMS = [
-    "\uae30\uc7ac\uc815\uc815",
-    "\ucca8\ubd80\uc815\uc815",
-    "\uc815\uc815",
-]
 MAJOR_FILING_KEYWORDS = [
     "material definitive agreement",
     "supply agreement",
@@ -99,7 +59,6 @@ MAJOR_FILING_KEYWORDS = [
     "offering",
     "convertible",
     "credit agreement",
-    *DART_REPORT_KEYWORDS,
 ]
 
 STAGE_KEYWORDS = {
@@ -252,7 +211,6 @@ SOURCES = [
     Source("BOEM news", "https://www.boem.gov/webteam/rss/boem-rss.xml"),
     Source("BSEE news page", "https://www.bsee.gov/newsroom/news-items", "link_html"),
     Source("BSEE notice to lessees page", "https://www.bsee.gov/protection/notices-and-announcements-to-lessees", "link_html"),
-    Source("KRX KIND today disclosure", "https://kind.krx.co.kr/disclosure/todaydisclosure.do?method=searchTodayDisclosureMain", "kind_html"),
     Source("CourtListener wind/order search", "https://www.courtlistener.com/api/rest/v4/search/?q=wind%20permit%20appeal%20injunction%20order&type=o&order_by=score%20desc", "courtlistener"),
     Source("CourtListener BOEM/BSEE wind search", "https://www.courtlistener.com/api/rest/v4/search/?q=BOEM%20BSEE%20offshore%20wind%20permit%20lease%20order&type=o&order_by=score%20desc", "courtlistener"),
     Source("CourtListener export controls search", "https://www.courtlistener.com/api/rest/v4/search/?q=export%20controls%20semiconductor%20injunction%20order&type=o&order_by=score%20desc", "courtlistener"),
@@ -561,43 +519,6 @@ def collect_sec_filings(now: dt.datetime) -> tuple[list[dict], list[str]]:
     return items, notes
 
 
-def collect_dart_filings(now: dt.datetime) -> tuple[list[dict], list[str]]:
-    if not DART_API_KEY:
-        return [], ["- OpenDART latest disclosures: 접근 제한 (DART_API_KEY 미설정)"]
-    start = (now.date() - dt.timedelta(days=DART_DAYS_BACK)).strftime("%Y%m%d")
-    end = now.date().strftime("%Y%m%d")
-    params = urllib.parse.urlencode({"crtfc_key": DART_API_KEY, "bgn_de": start, "end_de": end, "last_reprt_at": "N", "page_no": "1", "page_count": "100", "sort": "date", "sort_mth": "desc"})
-    text, error = fetch_text(f"https://opendart.fss.or.kr/api/list.json?{params}")
-    if error:
-        return [], [f"- OpenDART latest disclosures: 확인 불가 ({error})"]
-    try:
-        data = json.loads(text or "")
-    except json.JSONDecodeError:
-        return [], ["- OpenDART latest disclosures: 확인 불가 (JSON 파싱 실패)"]
-    if str(data.get("status", "")) != "000":
-        return [], [f"- OpenDART latest disclosures: 확인 불가/status {data.get('status')} ({data.get('message', 'unknown')})"]
-    rows = data.get("list") or []
-    items: list[dict] = []
-    for row in rows:
-        stock_code = clean_text(row.get("stock_code"))
-        report = clean_text(row.get("report_nm"))
-        corp_name = clean_text(row.get("corp_name"))
-        receipt_no = clean_text(row.get("rcept_no"))
-        if not report:
-            continue
-        is_watch_stock = stock_code in DART_WATCH_STOCK_CODES if stock_code else False
-        is_major_report = any(keyword.lower() in report.lower() for keyword in DART_REPORT_KEYWORDS)
-        is_correction = any(term in report for term in DART_CORRECTION_TERMS)
-        if is_correction and not DART_ALLOW_CORRECTIONS:
-            continue
-        if not is_watch_stock and (not DART_INCLUDE_ALL_MAJOR or not is_major_report):
-            continue
-        published = parse_date(clean_text(row.get("rcept_dt")))
-        link = f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={receipt_no}" if receipt_no else "https://dart.fss.or.kr/"
-        items.append({"source": "OpenDART latest disclosures", "title": f"{corp_name} {report}", "link": link, "summary": f"DART stock_code={stock_code or 'N/A'} receipt={receipt_no or 'N/A'} rm={clean_text(row.get('rm')) or 'N/A'}", "published_kst": published.isoformat() if published else ""})
-    return items, [f"- OpenDART latest disclosures: {len(rows)}건 조회, {len(items)}건 후보"]
-
-
 def classify_item(item: dict) -> dict | None:
     haystack = f"{item.get('title', '')} {item.get('summary', '')}".lower()
     matched = {bucket: [kw for kw in keywords if keyword_in_text(haystack, kw)] for bucket, keywords in STAGE_KEYWORDS.items()}
@@ -691,7 +612,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
             if classified:
                 classified["age_hours"] = age
                 candidates.append(classified)
-    for extra_items, extra_notes in (collect_sec_filings(now), collect_dart_filings(now)):
+    for extra_items, extra_notes in (collect_sec_filings(now),):
         source_notes.extend(extra_notes)
         for item in extra_items:
             classified = classify_item(item)

@@ -32,11 +32,6 @@ jobs:
       KHS_NUCLEAR_MAX_AGE_HOURS: "72"
       KHS_TRUSTED_NEWS_MAX_AGE_HOURS: "72"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
-      DART_API_KEY: ${{ secrets.DART_API_KEY }}
-      DART_WATCH_STOCK_CODES: ${{ vars.DART_WATCH_STOCK_CODES || '005930,000660,373220,051910,006400,112610,267260,010120,064350,010140,329180' }}
-      DART_DAYS_BACK: "1"
-      DART_INCLUDE_ALL_MAJOR: "false"
-      DART_ALLOW_CORRECTIONS: "false"
       TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
     steps:
       - name: Checkout
@@ -53,12 +48,6 @@ jobs:
             echo "SEC_USER_AGENT: missing or default" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "SEC_USER_AGENT: set" >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-          if [ -z "$DART_API_KEY" ]; then
-            echo "DART_API_KEY: missing" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "DART_API_KEY: set" >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Prepare policy watch runtime patches
