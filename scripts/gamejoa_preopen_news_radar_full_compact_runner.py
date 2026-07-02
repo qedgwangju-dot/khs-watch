@@ -547,6 +547,97 @@ def is_federal_register_alert(text: str) -> bool:
     return has_term(text, FEDERAL_REGISTER_MARKERS)
 
 
+DECISION_IMPACT_DISPLAY = {
+    "돈 버는 능력": "매출·마진·현금흐름",
+    "매출·마진·현금흐름": "매출·마진·현금흐름",
+    "할인율": "밸류에이션/할인율",
+    "밸류에이션/할인율": "밸류에이션/할인율",
+    "수급": "수급",
+    "시간표": "시간표",
+}
+ACTIONABLE_DECISION_LABELS = {
+    "매출·마진·현금흐름",
+    "밸류에이션/할인율",
+    "수급",
+    "시간표",
+}
+LIMITED_DECISION_IMPACT = "의사결정 영향 제한적"
+GENERIC_SECTOR_TERMS = [
+    "영향 섹터 확인 불가",
+    "정책/규제 일반",
+    "직접 영향 확인 불가",
+    "확인 불가",
+]
+TIMELINE_MATERIAL_TERMS = [
+    "effective date",
+    "implementation",
+    "deadline",
+    "approval",
+    "authorization",
+    "permit",
+    "license",
+    "contract",
+    "supply agreement",
+    "order",
+    "funding opportunity",
+    "loan",
+    "loan guarantee",
+    "nrc",
+    "fda approval",
+    "pdufa",
+    "clinical hold",
+    "phase 3",
+    "official",
+    "final rule",
+    "시행일",
+    "마감",
+    "승인",
+    "허가",
+    "계약",
+    "수주",
+    "공급계약",
+    "대출",
+    "보증",
+    "인허가",
+    "최종규칙",
+    "임상",
+    "실적 발표",
+    "정책 발표",
+]
+
+
+def display_impacts(impacts: list | tuple | None) -> list[str]:
+    labels: list[str] = []
+    for impact in impacts or []:
+        label = DECISION_IMPACT_DISPLAY.get(str(impact), str(impact))
+        if label == LIMITED_DECISION_IMPACT:
+            continue
+        if label not in labels:
+            labels.append(label)
+    return labels or [LIMITED_DECISION_IMPACT]
+
+
+def decision_matrix(impacts: list | tuple | None) -> str:
+    labels = set(display_impacts(impacts))
+    return " | ".join(
+        f"{label}: {'해당' if label in labels else '해당 없음'}"
+        for label in [
+            "매출·마진·현금흐름",
+            "밸류에이션/할인율",
+            "수급",
+            "시간표",
+        ]
+    )
+
+
+def has_korea_market_link(alert: dict) -> bool:
+    text = alert_text(alert)
+    sectors = [str(x).strip() for x in alert.get("sectors") or [] if str(x).strip()]
+    if sectors and not all(any(term in sector for term in GENERIC_SECTOR_TERMS) for sector in sectors):
+        return True
+    return has_direct_market_path(text, alert)
+
+
 def has_direct_market_path(text: str, alert: dict) -> bool:
     if any(
         alert.get(flag)
@@ -621,8 +712,20 @@ def is_low_impact_trade_admin_notice(alert: dict) -> bool:
 
 
 def has_decision_impact(alert: dict) -> bool:
-    impacts = [str(x) for x in alert.get("impacts") or []]
-    return any(x in {"돈 버는 능력", "할인율", "수급", "시간표"} for x in impacts)
+    labels = set(display_impacts(alert.get("impacts")))
+    if not labels or labels == {LIMITED_DECISION_IMPACT}:
+        alert["guardrail_note"] = "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표 중 바뀐 축이 없어 제외"
+        return False
+    if not labels.intersection(ACTIONABLE_DECISION_LABELS):
+        alert["guardrail_note"] = "시장 의사결정 축으로 분류되지 않아 제외"
+        return False
+    if not has_korea_market_link(alert):
+        alert["guardrail_note"] = "한국장 업종·밸류체인 연결 근거가 약해 제외"
+        return False
+    if labels == {"시간표"} and not has_term(alert_text(alert), TIMELINE_MATERIAL_TERMS):
+        alert["guardrail_note"] = "단순 시간표 후보일 뿐 실적·임상·정책 시행·계약 등 구체 일정 근거가 약해 제외"
+        return False
+    return True
 
 
 def is_local_dc_like(alert: dict) -> bool:
@@ -1117,6 +1220,7 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     status = alert.get("status") or ("공식 확인 전" if examples else "확인 불가")
     basis = alert.get("korea_basis") or ("외신/지역 뉴스 확산" if examples else "외신 확산")
     impacts = alert.get("impacts") or ["의사결정 영향 제한적"]
+    displayed_impacts = display_impacts(impacts)
     paths = alert.get("paths") or ["정책 타임라인" if impact == "시간표" else impact for impact in impacts]
     sectors = alert.get("sectors") or ["영향 섹터 확인 불가"]
     published = alert.get("published") or ("여러 건" if examples else "확인 불가")
@@ -1138,7 +1242,8 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
         f"- 핵심 내용: {safe(alert.get('policy_plain_summary'))}",
         f"- 투자 관점: {safe(alert.get('investment_view'))}",
         f"- 한국장 영향: {safe(alert.get('korea_market_impact'))}",
-        f"- 의사결정 영향: {safe(', '.join(impacts))}",
+        f"- 의사결정 영향: {safe(', '.join(displayed_impacts))}",
+        f"- 분류 매트릭스: {safe(decision_matrix(impacts))}",
         f"- 영향 경로: {safe(', '.join(paths))}",
         f"- 영향 섹터: {safe(', '.join(sectors))}",
         f"- 관련 해외 티커/지표: {safe(related_text(alert, fred, te))}",
@@ -1183,7 +1288,7 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     if visible:
         for idx, alert in enumerate(visible, 1):
             lines.append(compact_alert(alert, idx, now, fred, te))
-        changed = "·".join(visible[0].get("impacts") or ["명확한 변화 없음"])
+        changed = "·".join(display_impacts(visible[0].get("impacts")))
     else:
         lines += ["장전 고충격 뉴스 직접 확인 없음", ""]
         changed = "명확한 변화 없음"
