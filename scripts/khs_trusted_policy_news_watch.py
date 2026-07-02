@@ -402,7 +402,7 @@ def clean_text(value: str | None) -> str:
     return re.sub(r"\s+", " ", value).strip()
 
 
-def fetch_text(url: str, timeout: int = 20) -> str:
+def fetch_text(url: str, timeout: int = 8) -> str:
     req = urllib.request.Request(
         url,
         headers={

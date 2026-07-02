@@ -248,7 +248,7 @@ def keyword_in_text(text: str, keyword: str) -> bool:
     return keyword in text
 
 
-def fetch_text(url: str, timeout: int = 20) -> tuple[str | None, str | None]:
+def fetch_text(url: str, timeout: int = 8) -> tuple[str | None, str | None]:
     req = urllib.request.Request(
         url,
         headers={

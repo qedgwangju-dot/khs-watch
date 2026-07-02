@@ -73,6 +73,7 @@ jobs:
           python -m py_compile scripts/khs_policy_runtime_patch.py
 
       - name: Run policy watch
+        timeout-minutes: 10
         run: python scripts/khs_policy_watch.py
 
       - name: Run domestic telecom policy watch
@@ -97,6 +98,7 @@ jobs:
 
       - name: Run trusted policy news watch
         if: always()
+        timeout-minutes: 8
         run: python scripts/khs_trusted_policy_news_watch.py
 
       - name: Apply policy alert guardrails
