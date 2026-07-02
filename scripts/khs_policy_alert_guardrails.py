@@ -126,9 +126,19 @@ TIMELINE_MATERIAL_TERMS = [
     "final rule", "interim final rule", "clinical", "fda approval", "crl",
     "earnings", "guidance", "contract", "supply agreement", "tariff",
     "export control", "loan guarantee", "funding opportunity", "conditional commitment",
+    "notice of proposed rulemaking", "nprm", "proposed rule", "rulemaking",
+    "request for comments", "public hearing", "comment period", "comment deadline",
+    "investigation", "probe", "review", "inquiry", "seeks public input",
+    "preparing", "considering", "proposed ban", "ban", "restriction",
+    "import ban", "tariff review", "section 232 investigation",
+    "section 301 review", "agency order", "directive", "roadmap",
+    "program launch", "solicitation", "application deadline",
     "시행일", "마감일", "허가", "승인", "인허가", "행정명령", "최종규칙",
     "임상", "허가", "실적", "가이던스", "계약", "공급계약", "관세", "수출통제",
     "대출보증", "자금지원", "조건부 지원",
+    "규칙안", "입법예고", "규정안", "의견수렴", "공청회", "의견 제출",
+    "조사 착수", "검토 착수", "수입금지", "금지 검토", "제한 검토",
+    "관세 검토", "프로그램 공고", "신청 마감", "공모", "로드맵", "부처 지시",
 ]
 
 
@@ -271,10 +281,10 @@ def has_actionable_decision_impact(item: dict) -> bool:
         item["guardrail_note"] = "한국장 연결 업종·밸류체인 근거가 약해 송출 제외"
         return False
 
-    # A pure timeline item must have a concrete event, effective date, approval,
-    # contract, clinical, policy implementation, or similar timing anchor.
+    # A pure timeline item can pass when it starts an official/high-trust process
+    # that investors can track, even before final approval or contract signing.
     if labels == {"시간표"} and not has_any(haystack_for(item), TIMELINE_MATERIAL_TERMS):
-        item["guardrail_note"] = "단순 시간표 후보일 뿐 실적·임상·정책 시행·계약 등 구체 일정 근거가 약해 송출 제외"
+        item["guardrail_note"] = "단순 시간표 후보일 뿐 공식 절차 착수·의견수렴·조사·정책 시행·계약 등 추적 가능한 근거가 약해 송출 제외"
         return False
     return True
 

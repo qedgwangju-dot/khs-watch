@@ -499,6 +499,9 @@ HARD_LOW_IMPACT_TITLE_TERMS = [
     "nominations sent to the senate",
     "note regarding format of review requests",
     "opportunity to request administrative review",
+    "resilient networks",
+    "disruptions to communications",
+    "disaster information reporting system",
     "sunshine act meetings",
     "technical guidelines for the production of regenerative agricultural biofuel feedstocks",
     "television broadcasting services",
@@ -518,6 +521,11 @@ def alert_text(alert: dict) -> str:
         alert.get("publisher"),
         alert.get("source"),
         alert.get("link"),
+        alert.get("policy_plain_summary"),
+        alert.get("investment_view"),
+        alert.get("korea_market_impact"),
+        alert.get("counter"),
+        alert.get("failed_signal"),
         " ".join(str(x) for x in alert.get("matched") or []),
     ]
     for item in alert.get("examples") or []:
@@ -589,6 +597,34 @@ TIMELINE_MATERIAL_TERMS = [
     "phase 3",
     "official",
     "final rule",
+    "notice of proposed rulemaking",
+    "nprm",
+    "proposed rule",
+    "rulemaking",
+    "request for comments",
+    "public hearing",
+    "comment period",
+    "comment deadline",
+    "investigation",
+    "probe",
+    "review",
+    "inquiry",
+    "seeks public input",
+    "preparing",
+    "considering",
+    "proposed ban",
+    "ban",
+    "restriction",
+    "import ban",
+    "tariff review",
+    "section 232 investigation",
+    "section 301 review",
+    "agency order",
+    "directive",
+    "roadmap",
+    "program launch",
+    "solicitation",
+    "application deadline",
     "시행일",
     "마감",
     "승인",
@@ -603,6 +639,23 @@ TIMELINE_MATERIAL_TERMS = [
     "임상",
     "실적 발표",
     "정책 발표",
+    "규칙안",
+    "입법예고",
+    "규정안",
+    "의견수렴",
+    "공청회",
+    "의견 제출",
+    "조사 착수",
+    "검토 착수",
+    "수입금지",
+    "금지 검토",
+    "제한 검토",
+    "관세 검토",
+    "프로그램 공고",
+    "신청 마감",
+    "공모",
+    "로드맵",
+    "부처 지시",
 ]
 
 
@@ -723,7 +776,7 @@ def has_decision_impact(alert: dict) -> bool:
         alert["guardrail_note"] = "한국장 업종·밸류체인 연결 근거가 약해 제외"
         return False
     if labels == {"시간표"} and not has_term(alert_text(alert), TIMELINE_MATERIAL_TERMS):
-        alert["guardrail_note"] = "단순 시간표 후보일 뿐 실적·임상·정책 시행·계약 등 구체 일정 근거가 약해 제외"
+        alert["guardrail_note"] = "단순 시간표 후보일 뿐 공식 절차 착수·의견수렴·조사·정책 시행·계약 등 추적 가능한 근거가 약해 제외"
         return False
     return True
 
