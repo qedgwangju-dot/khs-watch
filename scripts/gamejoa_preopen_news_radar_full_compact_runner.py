@@ -1410,8 +1410,12 @@ def guard_preopen_report(text: str) -> None:
 
 def send_telegram(text: str) -> None:
     guard_preopen_report(text)
-    token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
     chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+    if is_empty_radar_report(text) and not should_send_empty_radar():
+        write_delivery_status("skipped_empty", chat_id, len(text), "No high-impact radar item selected")
+        print(f"Telegram: skipped empty radar original_chars={len(text)}")
+        return
+    token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
     if not token or not chat_id:
         write_delivery_status("blocked", chat_id, len(text), "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
         raise RuntimeError("Telegram delivery blocked: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
@@ -1448,6 +1452,14 @@ def send_telegram(text: str) -> None:
             break
     write_delivery_status("failed", chat_id, len(text), last_error, len(message), 3)
     raise RuntimeError(f"Telegram delivery failed: {last_error}")
+
+
+def is_empty_radar_report(text: str) -> bool:
+    return "선별: 핵심 0건" in text and "장전 고충격 뉴스 직접 확인 없음" in text
+
+
+def should_send_empty_radar() -> bool:
+    return os.getenv("SEND_EMPTY_RADAR", "").lower() in {"1", "true", "yes", "y"}
 
 
 def fit_telegram_html(text: str, limit: int) -> str:

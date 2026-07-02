@@ -45,6 +45,7 @@ REQUIRED_RUNNER_SNIPPETS = [
     "raise RuntimeError(f\"Telegram delivery failed:",
     "limited_decision_impact_displayed",
     "generic_policy_explanation_displayed",
+    "write_delivery_status(\"skipped_empty\"",
     "write_delivery_status(\"sent\"",
 ]
 
