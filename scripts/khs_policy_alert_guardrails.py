@@ -16,9 +16,9 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 try:
-    from khs_policy_alert_explainer import ensure_explained, explanation_lines
+    from khs_policy_alert_explainer import LIMITED_IMPACT, display_decision_impacts, ensure_explained, explanation_lines
 except ImportError:  # pragma: no cover - supports module-style local tests.
-    from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines
+    from scripts.khs_policy_alert_explainer import LIMITED_IMPACT, display_decision_impacts, ensure_explained, explanation_lines
 
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
@@ -116,6 +116,20 @@ FCC_RESILIENT_NETWORKS_TERMS = [
 ]
 
 NATIONAL_EMERGENCY_CONTINUATION = "continuation of the national emergency"
+
+DIRECT_DECISION_LABELS = {"매출·마진·현금흐름", "밸류에이션/할인율", "수급", "시간표"}
+GENERIC_SECTORS = {"정책/규제 일반", "행정명령/대통령문서"}
+GENERIC_VALUE_CHAINS = {"직접 연결 업종 확인 필요"}
+TIMELINE_MATERIAL_TERMS = [
+    "effective date", "implementation", "deadline", "approval", "authorization",
+    "permit", "license", "executive order", "presidential memorandum",
+    "final rule", "interim final rule", "clinical", "fda approval", "crl",
+    "earnings", "guidance", "contract", "supply agreement", "tariff",
+    "export control", "loan guarantee", "funding opportunity", "conditional commitment",
+    "시행일", "마감일", "허가", "승인", "인허가", "행정명령", "최종규칙",
+    "임상", "허가", "실적", "가이던스", "계약", "공급계약", "관세", "수출통제",
+    "대출보증", "자금지원", "조건부 지원",
+]
 
 
 def term_in_text(text: str, term: str) -> bool:
@@ -231,6 +245,38 @@ def is_low_impact_false_positive(item: dict) -> bool:
         return True
 
     return False
+
+
+def has_actionable_decision_impact(item: dict) -> bool:
+    """Allow delivery only when the alert changes a market decision axis."""
+    if is_personnel(item):
+        return True
+    if is_fcc_resilient_networks_policy(item):
+        item["guardrail_note"] = "FCC 재난통신 장애보고 절차 정비는 시간표만 있고 매출·밸류에이션·수급 연결이 약해 송출 제외"
+        return False
+
+    labels = set(display_decision_impacts(item.get("impacts")))
+    if not labels or labels == {LIMITED_IMPACT}:
+        item["guardrail_note"] = "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표 중 바뀐 축이 없어 송출 제외"
+        return False
+    if not labels.intersection(DIRECT_DECISION_LABELS):
+        item["guardrail_note"] = "시장 의사결정 축으로 분류되지 않아 송출 제외"
+        return False
+
+    sectors = set(str(sector) for sector in item.get("sectors") or [])
+    value_chains = set(str(chain) for chain in item.get("korea_value_chain") or [])
+    has_direct_sector = bool(sectors - GENERIC_SECTORS)
+    has_direct_value_chain = bool(value_chains - GENERIC_VALUE_CHAINS)
+    if not has_direct_sector and not has_direct_value_chain:
+        item["guardrail_note"] = "한국장 연결 업종·밸류체인 근거가 약해 송출 제외"
+        return False
+
+    # A pure timeline item must have a concrete event, effective date, approval,
+    # contract, clinical, policy implementation, or similar timing anchor.
+    if labels == {"시간표"} and not has_any(haystack_for(item), TIMELINE_MATERIAL_TERMS):
+        item["guardrail_note"] = "단순 시간표 후보일 뿐 실적·임상·정책 시행·계약 등 구체 일정 근거가 약해 송출 제외"
+        return False
+    return True
 
 
 def mostly_ascii(value: str) -> bool:
@@ -374,6 +420,8 @@ def main() -> int:
         if is_low_impact_false_positive(item):
             continue
         ensure_explained(item)
+        if not has_actionable_decision_impact(item):
+            continue
         normalize_title(item)
         key = dedup_key(item)
         if key in seen:
