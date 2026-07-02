@@ -67,9 +67,16 @@ def put(item: dict, **values: Any) -> None:
             item[key] = value
 
 
-DECISION_QUESTION = "이 정보가 기업의 돈 버는 능력, 할인율, 수급, 시간표 중 무엇을 바꾸는가?"
+DECISION_QUESTION = "이 뉴스가 매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표 중 무엇을 바꾸는가?"
 DECISION_IMPACTS = ("돈 버는 능력", "할인율", "수급", "시간표")
 LIMITED_IMPACT = "의사결정 영향 제한적"
+DECISION_DISPLAY_LABELS = {
+    "돈 버는 능력": "매출·마진·현금흐름",
+    "할인율": "밸류에이션/할인율",
+    "수급": "수급",
+    "시간표": "시간표",
+    LIMITED_IMPACT: LIMITED_IMPACT,
+}
 
 
 def normalize_decision_impacts(item: dict, text: str = "") -> list[str]:
@@ -136,8 +143,33 @@ def normalize_decision_impacts(item: dict, text: str = "") -> list[str]:
         mapped = [LIMITED_IMPACT]
     item["impacts"] = mapped
     item["decision_question"] = DECISION_QUESTION
-    item["decision_answer"] = ", ".join(mapped)
+    item["decision_answer"] = ", ".join(display_decision_impacts(mapped))
+    item["decision_classification"] = decision_classification_text(mapped)
     return mapped
+
+
+def display_decision_impacts(impacts: list[str] | tuple[str, ...] | str | None) -> list[str]:
+    return unique([DECISION_DISPLAY_LABELS.get(value, value) for value in as_list(impacts)])
+
+
+def decision_classification_text(impacts: list[str] | tuple[str, ...] | str | None) -> str:
+    labels = display_decision_impacts(impacts)
+    if not labels or labels == [LIMITED_IMPACT]:
+        return LIMITED_IMPACT
+    return ", ".join(labels)
+
+
+def decision_matrix_text(impacts: list[str] | tuple[str, ...] | str | None) -> str:
+    labels = set(display_decision_impacts(impacts))
+    if LIMITED_IMPACT in labels and len(labels) == 1:
+        return LIMITED_IMPACT
+    buckets = [
+        ("매출·마진·현금흐름", "해당" if "매출·마진·현금흐름" in labels else "해당 없음"),
+        ("밸류에이션/할인율", "해당" if "밸류에이션/할인율" in labels else "해당 없음"),
+        ("수급", "해당" if "수급" in labels else "해당 없음"),
+        ("시간표", "해당" if "시간표" in labels else "해당 없음"),
+    ]
+    return " | ".join(f"{name}: {status}" for name, status in buckets)
 
 
 def infer_korea_value_chain(item: dict, text: str = "") -> list[str]:
@@ -248,7 +280,7 @@ def default_context(item: dict) -> None:
     )
     item.setdefault(
         "investment_view",
-        f"핵심은 제목이 아니라 {DECISION_QUESTION}입니다. 확정 매출인지, 비용·마진·규제 프리미엄·수급·시행일 중 무엇이 바뀌는지 원문으로 재확인해야 합니다.",
+        f"핵심은 제목이 아니라 {DECISION_QUESTION}입니다. 매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표 중 어디가 실제로 바뀌는지 원문과 시장 반응으로 재확인해야 합니다.",
     )
     item.setdefault(
         "korea_market_impact",
@@ -822,17 +854,19 @@ def ensure_explained(item: dict) -> dict:
 
 def explanation_lines(item: dict) -> list[str]:
     ensure_explained(item)
+    impact_labels = display_decision_impacts(item.get("impacts"))
     return [
         f"- 판단 질문: {item.get('decision_question') or DECISION_QUESTION}",
-        f"- 판단 답: {item.get('decision_answer') or ', '.join(as_list(item.get('impacts')) or [LIMITED_IMPACT])}",
+        f"- 영향 분류: {item.get('decision_classification') or decision_classification_text(item.get('impacts'))}",
+        f"- 분류 매트릭스: {decision_matrix_text(item.get('impacts'))}",
         f"- 핵심 내용: {item.get('policy_plain_summary') or '정책 세부 내용 확인 필요'}",
         f"- 투자 관점: {item.get('investment_view') or '실적·할인율·수급·시간표 변화 여부 확인 필요'}",
         f"- 한국장 영향: {item.get('korea_market_impact') or '한국장 직접 영향 확인 필요'}",
         f"- 한국 밸류체인: {', '.join(as_list(item.get('korea_value_chain')) or ['직접 연결 업종 확인 필요'])}",
-        f"- 의사결정 영향: {', '.join(as_list(item.get('impacts')) or ['의사결정 영향 제한적'])}",
+        f"- 의사결정 영향: {', '.join(impact_labels or [LIMITED_IMPACT])}",
         f"- 영향 경로: {', '.join(as_list(item.get('paths')) or ['정책 타임라인'])}",
         f"- 영향 섹터: {', '.join(as_list(item.get('sectors')) or ['정책/규제 일반'])}",
-        f"- 반영 가능성: {item.get('priced_in') or '낮음~중간'}",
+        f"- 이미 주가에 반영됐을 가능성: {item.get('priced_in') or '낮음~중간'}",
         f"- 반대 근거: {item.get('counter') or '세부 조건 확인 전까지 직접 실적 연결은 제한적입니다.'}",
         f"- 실패 신호: {item.get('failure_signal') or '후속 시행일·예산·계약·수급 반응이 없으면 단발성 정책 뉴스로 끝납니다.'}",
     ]

@@ -229,7 +229,7 @@ def enrich_missing_context(alert: dict) -> dict:
     impacts = alert.get("impacts") or ["의사결정 영향 제한적"]
     sectors = alert.get("sectors") or ["정책/규제 일반"]
     alert.setdefault("policy_plain_summary", f"공식 정책·규제 문서에서 {', '.join(impacts)} 관련 상태 변화 후보가 확인됐습니다.")
-    alert.setdefault("investment_view", "실제 투자 재료가 되려면 매출·마진·할인율·수급·정책 시간표 중 무엇이 바뀌는지 후속 원문과 시장 반응으로 확인해야 합니다.")
+    alert.setdefault("investment_view", "실제 투자 재료가 되려면 매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표 중 무엇이 바뀌는지 후속 원문과 시장 반응으로 확인해야 합니다.")
     alert.setdefault("korea_market_impact", f"한국장 체크 대상은 {', '.join(sectors)}입니다. 원문에 직접 근거가 없는 업종 확장은 제외합니다.")
     alert.setdefault("priced_in", "낮음~중간. 공식 원문 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.")
     alert.setdefault("failure_signal", "시행일, 예산, 계약, 수급 반응, 관련 기업 공시가 뒤따르지 않으면 단발성 정책 뉴스로 끝납니다.")

@@ -641,7 +641,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
 def render_report(alerts: list[dict], source_notes: list[str], now: dt.datetime) -> str:
     lines = [f"🚨 KHS 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
     if not alerts:
-        lines.extend(["고충격 정책·규제 변경 직접 확인 없음", "", "확인 범위:", *source_notes[:40], "", "💡 워치 판단: 이번 실행에서 돈 버는 능력, 할인율, 수급, 시간표를 새로 바꾼 확정 이벤트는 직접 확인되지 않았습니다.", "", "투자 조언이 아닌 참고용 정책·규제 알림입니다."])
+        lines.extend(["고충격 정책·규제 변경 직접 확인 없음", "", "확인 범위:", *source_notes[:40], "", "💡 워치 판단: 이번 실행에서 매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표를 새로 바꾼 확정 이벤트는 직접 확인되지 않았습니다.", "", "투자 조언이 아닌 참고용 정책·규제 알림입니다."])
         return "\n".join(lines) + "\n"
     for idx, alert in enumerate(alerts, 1):
         ensure_explained(alert)
@@ -658,7 +658,7 @@ def render_report(alerts: list[dict], source_notes: list[str], now: dt.datetime)
                 "",
             ]
         )
-    lines.extend(["💡 워치 판단: 이번 실행은 돈 버는 능력·할인율·수급·시간표 중 실제로 바뀐 축과 한국 밸류체인 연결을 기준으로 정책/규제 후보를 선별했습니다.", "", "투자 조언이 아닌 참고용 정책·규제 알림입니다."])
+    lines.extend(["💡 워치 판단: 이번 실행은 매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표 중 실제로 바뀐 축과 한국 밸류체인 연결을 기준으로 정책/규제 후보를 선별했습니다.", "", "투자 조언이 아닌 참고용 정책·규제 알림입니다."])
     return "\n".join(lines) + "\n"
 
 
