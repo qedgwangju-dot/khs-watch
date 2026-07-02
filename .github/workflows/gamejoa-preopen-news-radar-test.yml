@@ -34,6 +34,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Verify GAMEJOA delivery contract
+        run: python scripts/verify_gamejoa_delivery_contract.py
+
       - name: Build and send strict GAMEJOA radar test
         run: python scripts/gamejoa_preopen_news_radar_fda_quality_runner.py
 

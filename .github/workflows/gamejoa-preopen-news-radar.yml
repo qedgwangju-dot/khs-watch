@@ -43,6 +43,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Verify GAMEJOA delivery contract
+        run: python scripts/verify_gamejoa_delivery_contract.py
+
       - name: Check configuration
         run: |
           {
