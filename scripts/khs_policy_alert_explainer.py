@@ -67,24 +67,192 @@ def put(item: dict, **values: Any) -> None:
             item[key] = value
 
 
+DECISION_QUESTION = "이 정보가 기업의 돈 버는 능력, 할인율, 수급, 시간표 중 무엇을 바꾸는가?"
+DECISION_IMPACTS = ("돈 버는 능력", "할인율", "수급", "시간표")
+LIMITED_IMPACT = "의사결정 영향 제한적"
+
+
+def normalize_decision_impacts(item: dict, text: str = "") -> list[str]:
+    raw_impacts = unique(as_list(item.get("impacts")))
+    decision_text = " ".join(
+        [
+            text,
+            " ".join(raw_impacts),
+            " ".join(as_list(item.get("paths"))),
+            " ".join(as_list(item.get("sectors"))),
+            str(item.get("investment_view") or ""),
+            str(item.get("korea_market_impact") or ""),
+        ]
+    ).lower()
+    mapped: list[str] = []
+
+    def add(label: str) -> None:
+        if label not in mapped:
+            mapped.append(label)
+
+    for impact in raw_impacts:
+        low = impact.lower()
+        if impact in DECISION_IMPACTS:
+            add(impact)
+        elif impact == LIMITED_IMPACT:
+            continue
+        elif has_any(low, ["매출", "마진", "이익", "원가", "capex", "수주", "계약", "돈 버는"]):
+            add("돈 버는 능력")
+        elif has_any(low, ["할인율", "금리", "환율", "규제 강도", "밸류", "valuation", "risk premium"]):
+            add("할인율")
+        elif has_any(low, ["수급", "etf", "기관", "외국인", "테마"]):
+            add("수급")
+        elif has_any(low, ["시간표", "시행일", "deadline", "approval", "permit", "인허가", "허가"]):
+            add("시간표")
+
+    if not mapped:
+        if has_any(decision_text, ["매출", "마진", "이익", "원가", "capex", "수주", "계약", "price competitiveness", "margin", "earnings"]):
+            add("돈 버는 능력")
+        if has_any(decision_text, ["할인율", "금리", "환율", "규제 강도", "밸류", "valuation", "risk premium", "대출", "loan"]):
+            add("할인율")
+        if has_any(decision_text, ["수급", "etf", "기관", "외국인", "테마", "대체 공급망", "order flow", "supply chain"]):
+            add("수급")
+        if has_any(
+            decision_text,
+            [
+                "시간표",
+                "시행일",
+                "deadline",
+                "effective date",
+                "approval",
+                "permit",
+                "인허가",
+                "허가",
+                "rulemaking",
+                "request for comments",
+                "comment deadline",
+                "pdufa",
+                "정책 타임라인",
+            ],
+        ):
+            add("시간표")
+
+    if not mapped:
+        mapped = [LIMITED_IMPACT]
+    item["impacts"] = mapped
+    item["decision_question"] = DECISION_QUESTION
+    item["decision_answer"] = ", ".join(mapped)
+    return mapped
+
+
+def infer_korea_value_chain(item: dict, text: str = "") -> list[str]:
+    existing = unique(as_list(item.get("korea_value_chain")))
+    if existing:
+        item["korea_value_chain"] = existing
+        return existing
+
+    combined = " ".join([text, " ".join(as_list(item.get("sectors"))), " ".join(as_list(item.get("paths")))]).lower()
+    chains: list[str] = []
+
+    def add(values: list[str]) -> None:
+        for value in values:
+            if value not in chains:
+                chains.append(value)
+
+    if has_any(combined, ["transformer", "변압기", "power grid", "전력망", "transmission", "data center", "데이터센터"]):
+        add(["전력기기/변압기", "전선/송전망", "데이터센터 전력 인프라"])
+    if has_any(combined, ["inverter", "solar", "태양광", "전력변환", "ess", "pcs"]):
+        add(["태양광 인버터/전력변환장치", "ESS/PCS", "전력망 보안"])
+    if has_any(combined, ["robot", "robotics", "로봇", "스마트팩토리", "감속기", "automation", "fa"]):
+        add(["로봇/스마트팩토리", "감속기/FA", "산업자동화"])
+    if has_any(combined, ["fertilizer", "phosphate", "agriculture", "farm", "biofuel", "비료", "인산", "농업", "바이오연료", "식량"]):
+        add(["비료/농화학", "곡물·농업 원가", "음식료 원가 민감주"])
+    if has_any(combined, ["steel", "철강", "quota", "safeguard", "강관"]):
+        add(["철강/강관", "EU·미국향 수출주", "자동차강판/조선후판"])
+    if has_any(combined, ["semiconductor", "chips", "hbm", "반도체", "ai chip"]):
+        add(["반도체/HBM", "장비·소재", "AI 서버 밸류체인"])
+    if has_any(combined, ["nuclear", "reactor", "smr", "uranium", "원전", "우라늄", "ap1000"]):
+        add(["원전/SMR", "원전 기자재", "우라늄/핵연료", "전력기기"])
+    if has_any(combined, ["telecom", "fcc", "broadband", "satellite", "spectrum", "통신", "위성", "주파수"]):
+        add(["통신장비", "위성통신", "네트워크 장비"])
+    if has_any(combined, ["stablecoin", "스테이블코인", "결제", "핀테크", "은행"]):
+        add(["은행/핀테크", "결제 인프라", "가상자산거래소"])
+    if has_any(combined, ["defense", "missile", "방산", "유도무기", "장갑차", "레이더", "k9", "천무", "k2"]):
+        add(["K-방산", "유도무기/탄약", "항공·장갑차", "레이더/전자전"])
+    if has_any(combined, ["tariff", "customs", "duty", "관세", "통관", "수출주"]) and not has_any(combined, ["fertilizer", "phosphate", "비료", "인산"]):
+        add(["관세 민감 수출주", "소비재·산업재", "물류/공급망"])
+
+    if not chains:
+        chains = ["직접 연결 업종 확인 필요"]
+    item["korea_value_chain"] = chains
+    return chains
+
+
+def has_korean(value: str) -> bool:
+    return bool(re.search(r"[가-힣]", value or ""))
+
+
+def infer_korean_title(item: dict, text: str = "") -> str:
+    existing = str(item.get("title_ko") or "").strip()
+    if existing:
+        return existing
+    title = str(item.get("title") or "").strip()
+    low = " ".join([text, title]).lower()
+
+    if has_korean(title):
+        korean = title
+    elif has_any(low, ["resilient networks", "dirs", "disruptions to communications"]):
+        korean = "FCC, 재난 시 통신망 장애보고 시스템(DIRS) 현대화 규칙 공표"
+    elif has_any(low, ["foreign energy inverter", "energy inverter", "solar inverter"]):
+        korean = "미국 FCC, 외국산 에너지 인버터 수입제한 정책 신호"
+    elif has_any(low, ["phosphate fertilizer", "duty-free importation"]):
+        korean = "미국, 모로코산 인산비료 임시 무관세 수입 허용"
+    elif has_any(low, ["regenerative agriculture", "farm resilience"]):
+        korean = "백악관, 재생농업·농업 회복력 강화 정책 발표"
+    elif has_any(low, ["biofuel feedstocks", "biofuel"]):
+        korean = "미국, 재생농업 바이오연료 원료 생산 지침 공표"
+    elif has_any(low, ["federal oil, gas, and coal"]):
+        korean = "미국, 석유·가스·석탄 관련 연방 규정 개정"
+    elif has_any(low, ["annual review of country eligibility", "african growth and opportunity act"]):
+        korean = "미국, AGOA 수혜국 자격 연례심사 의견수렴 공고"
+    elif has_any(low, ["fcc", "broadband", "spectrum", "satellite", "wireless"]):
+        korean = "FCC, 통신·주파수·위성 규제 문서 공표"
+    elif has_any(low, ["export control", "entity list", "bis", "semiconductor"]):
+        korean = "미국, 반도체·첨단기술 수출통제 정책 변화 공표"
+    elif has_any(low, ["tariff", "customs", "duty", "section 301"]):
+        korean = "미국, 관세·통관 정책 변화 공표"
+    elif has_any(low, ["nuclear", "reactor", "uranium", "ap1000", "smr"]):
+        korean = "미국, 원전·핵연료·전력 정책 변화 공표"
+    elif has_any(low, ["power grid", "transmission", "ferc", "interconnection"]):
+        korean = "미국, 전력망·송전·계통연계 정책 변화 공표"
+    elif has_any(low, ["fda", "clinical", "drug", "approval", "crl"]):
+        korean = "FDA, 의약품 허가·임상 정책 이벤트 공표"
+    elif has_any(low, ["robot", "robotics"]):
+        korean = "미국, 로봇·자동화 수입규제 정책 신호"
+    else:
+        korean = title or "정책·규제 변화 후보"
+
+    item["title_ko"] = korean
+    return korean
+
+
 def default_context(item: dict) -> None:
-    impacts = unique(as_list(item.get("impacts")) or ["의사결정 영향 제한적"])
+    impacts = unique(as_list(item.get("impacts")) or [LIMITED_IMPACT])
     sectors = unique(as_list(item.get("sectors")) or ["정책/규제 일반"])
     paths = unique(as_list(item.get("paths")) or ["정책 타임라인"])
     item["impacts"] = impacts
     item["sectors"] = sectors
     item["paths"] = paths
+    text = text_for(item)
+    korea_value_chain = infer_korea_value_chain(item, text)
+    impacts = normalize_decision_impacts(item, text)
+    infer_korean_title(item, text)
     item.setdefault(
         "policy_plain_summary",
-        f"공식 정책·규제 문서에서 {', '.join(impacts)} 관련 상태 변화 후보가 확인됐습니다.",
+        f"공식 정책·규제 문서에서 {', '.join(impacts)} 축을 바꿀 수 있는 상태 변화 후보가 확인됐습니다.",
     )
     item.setdefault(
         "investment_view",
-        "매출·마진·할인율·수급·정책 시간표 중 무엇이 실제로 바뀌는지 후속 원문과 시장 반응으로 확인해야 합니다.",
+        f"핵심은 제목이 아니라 {DECISION_QUESTION}입니다. 확정 매출인지, 비용·마진·규제 프리미엄·수급·시행일 중 무엇이 바뀌는지 원문으로 재확인해야 합니다.",
     )
     item.setdefault(
         "korea_market_impact",
-        f"한국장 체크 대상은 {', '.join(sectors)}입니다. 원문에 직접 근거가 없는 업종 확장은 제외합니다.",
+        f"한국장 체크 대상은 {', '.join(sectors)}이며, 한국 밸류체인은 {', '.join(korea_value_chain)}입니다. 원문에 직접 근거가 없는 업종 확장은 제외합니다.",
     )
     item.setdefault("priced_in", "낮음~중간. 공식 원문 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.")
     item.setdefault("counter", "세부 시행일, 예산, 예외 조항, 대상 기업, 실제 계약 조건 확인 전까지 직접 실적 연결은 제한적입니다.")
@@ -193,6 +361,13 @@ def is_doe_energy_security_policy(text: str, item: dict) -> bool:
                 "핵심소재",
             ],
         )
+    )
+
+
+def is_agriculture_supply_policy(text: str, item: dict) -> bool:
+    return "agriculture_supply_policy" in (item.get("matched") or {}) or (
+        has_any(text, ["fertilizer", "phosphate", "agriculture", "farm", "biofuel", "feedstock", "food supply", "비료", "인산", "농업", "바이오연료", "식량"])
+        and has_any(text, ["duty-free", "tariff", "importation", "emergency", "executive order", "presidential", "resilience", "guidelines", "관세", "무관세", "수입", "비상", "행정명령", "회복력", "지침"])
     )
 
 
@@ -542,6 +717,20 @@ def ensure_explained(item: dict) -> dict:
             counter="초안·검토·보도 단계이면 실제 적용 범위가 축소될 수 있고, 예외 라이선스가 열리면 충격은 줄어듭니다.",
             failure_signal="최종 규정, 시행일, 대상 기업·품목, 라이선스 제한이 확인되지 않으면 테마성 반응으로 끝납니다.",
         )
+    elif is_agriculture_supply_policy(text, item):
+        put(
+            item,
+            importance="중",
+            impacts=["돈 버는 능력", "수급", "시간표"],
+            paths=["원가", "공급망", "정책 타임라인", "식량·농업 투입비"],
+            sectors=["비료/농화학", "곡물/농업 원가", "음식료 원가", "바이오연료"],
+            policy_plain_summary="농업·비료·바이오연료 관련 정책은 농업 투입비, 비료·곡물 공급, 음식료 원가, 친환경 연료 원료 수요를 바꿀 수 있는 산업비용 변수입니다.",
+            investment_view="이 뉴스가 중요한지는 정책 제목보다 비료·곡물·바이오연료 원가와 공급량, 그리고 한국 음식료·농화학 밸류체인의 마진 가정을 바꾸는지에 달려 있습니다.",
+            korea_market_impact="한국장에서는 비료/농화학, 곡물 원가, 음식료 원가 민감주, 바이오연료 원료 밸류체인을 관찰합니다. 미국 내 수입·농업 정책이면 국내 직접 수혜는 가격·공급망 연결이 확인될 때만 인정합니다.",
+            priced_in="낮음~중간. 농업 정책은 테마 반응이 약할 수 있지만, 비료 가격·곡물 가격·식품 원가와 연결되면 마진 추정에 반영될 수 있습니다.",
+            counter="미국 수입·농업 지원 정책이 한국 기업 매출로 바로 연결되는 것은 아닙니다. 품목, 수입량, 적용 기간, 글로벌 가격 전이 여부가 확인돼야 합니다.",
+            failure_signal="비료·곡물 가격, 국내 음식료/농화학 수급, 한국 기업의 원가·공급망 노출이 동행하지 않으면 관찰 재료로만 처리합니다.",
+        )
     elif has_any(text, ["tariff", "section 301", "customs", "duty", "관세", "통관"]):
         put(
             item,
@@ -621,7 +810,11 @@ def ensure_explained(item: dict) -> dict:
             failure_signal="주파수 경매, 장비 의무화, 인허가, 통신사 CAPEX 변화가 없으면 제외해야 합니다.",
         )
 
-    item["impacts"] = unique(as_list(item.get("impacts")) or ["의사결정 영향 제한적"])
+    text = text_for(item)
+    infer_korea_value_chain(item, text)
+    normalize_decision_impacts(item, text)
+    infer_korean_title(item, text)
+    item["impacts"] = unique(as_list(item.get("impacts")) or [LIMITED_IMPACT])
     item["paths"] = unique(as_list(item.get("paths")) or ["정책 타임라인"])
     item["sectors"] = unique(as_list(item.get("sectors")) or ["정책/규제 일반"])
     return item
@@ -630,9 +823,12 @@ def ensure_explained(item: dict) -> dict:
 def explanation_lines(item: dict) -> list[str]:
     ensure_explained(item)
     return [
+        f"- 판단 질문: {item.get('decision_question') or DECISION_QUESTION}",
+        f"- 판단 답: {item.get('decision_answer') or ', '.join(as_list(item.get('impacts')) or [LIMITED_IMPACT])}",
         f"- 핵심 내용: {item.get('policy_plain_summary') or '정책 세부 내용 확인 필요'}",
         f"- 투자 관점: {item.get('investment_view') or '실적·할인율·수급·시간표 변화 여부 확인 필요'}",
         f"- 한국장 영향: {item.get('korea_market_impact') or '한국장 직접 영향 확인 필요'}",
+        f"- 한국 밸류체인: {', '.join(as_list(item.get('korea_value_chain')) or ['직접 연결 업종 확인 필요'])}",
         f"- 의사결정 영향: {', '.join(as_list(item.get('impacts')) or ['의사결정 영향 제한적'])}",
         f"- 영향 경로: {', '.join(as_list(item.get('paths')) or ['정책 타임라인'])}",
         f"- 영향 섹터: {', '.join(as_list(item.get('sectors')) or ['정책/규제 일반'])}",

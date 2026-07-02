@@ -21,6 +21,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+try:
+    from khs_policy_alert_explainer import ensure_explained, explanation_lines
+except ImportError:  # pragma: no cover - supports module-style local tests.
+    from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "out"
 DATA_DIR = ROOT / "data"
@@ -80,6 +85,11 @@ STAGE_KEYWORDS = {
         "prohibit", "prohibition", "restriction", "ban", "efficiency standard", "emergency order",
         "grid deployment", "transmission facilitation", "critical materials", "nuclear fuel",
     ],
+    "agriculture_supply_policy": [
+        "fertilizer", "phosphate", "phosphate fertilizer", "agriculture", "farm resilience",
+        "regenerative agriculture", "biofuel", "biofuel feedstock", "feedstocks", "food supply",
+        "duty-free importation", "temporary duty-free", "비료", "인산", "농업", "바이오연료", "식량",
+    ],
     "fcc_decision_notice": [
         "open meeting", "commission meeting", "tentative agenda",
         "sunshine notice", "items on circulation", "circulation", "draft order", "report and order",
@@ -114,6 +124,7 @@ SECTOR_KEYWORDS = {
     "방산/지정학": ["sanctions", "missile", "defense", "iran", "russia", "china", "taiwan"],
     "바이오/FDA": ["fda", "clinical", "drug", "crl"],
     "관세/수출주": ["tariff", "section 301", "section 232", "ustr", "customs", "duty", "quota", "safeguard", "anti-dumping"],
+    "비료/농화학/음식료 원가": ["fertilizer", "phosphate", "agriculture", "farm", "regenerative agriculture", "biofuel", "feedstock", "food supply", "비료", "인산", "농업", "바이오연료", "식량"],
     "통신/FCC/위성": [
         "fcc", "federal communications commission", "spectrum", "broadband", "wireless", "wireline",
         "satellite", "space bureau", "net neutrality", "universal service", "equipment authorization",
@@ -188,6 +199,7 @@ SOURCES = [
     Source("Federal Register Commerce national security", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=commerce+national+security+import+export+controls+tariff+semiconductor+robot+inverter"),
     Source("Federal Register DOE FERC NRC power", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=doe+ferc+nrc+power+grid+nuclear+data+center+transformer+reactor+loan"),
     Source("Federal Register DOE restrictions loans", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=department+of+energy+loan+guarantee+funding+opportunity+restriction+ban+efficiency+standard+critical+materials"),
+    Source("Federal Register agriculture supply", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=fertilizer+phosphate+agriculture+biofuel+feedstock+food+supply+tariff+emergency"),
     Source("Federal Register FCC", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=federal-communications-commission&order=newest&per_page=20", "federal_register_json"),
     Source("Federal Register presidential documents", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Btype%5D%5B%5D=PRESDOCU&order=newest&per_page=20", "federal_register_json"),
     Source("White House executive orders", "https://www.whitehouse.gov/presidential-actions/executive-orders/", "whitehouse_html"),
@@ -538,6 +550,8 @@ def classify_item(item: dict) -> dict | None:
         importance = "중"
     elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "energy_security_policy", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
         importance = "상"
+    elif "agriculture_supply_policy" in matched:
+        importance = "중"
     elif "company_filing" in matched and has_major_filing:
         importance = "중"
     elif stage_score >= 3:
@@ -555,7 +569,7 @@ def classify_item(item: dict) -> dict | None:
     elif any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "energy_security_policy", "presidential_action", "fcc_decision_notice")):
         impacts.extend(["시간표", "할인율"])
         paths.extend(["정책 타임라인", "할인율"])
-    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "energy_security_policy", "company_filing", "fda_decision")):
+    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "energy_security_policy", "agriculture_supply_policy", "company_filing", "fda_decision")):
         impacts.extend(["돈 버는 능력", "수급"])
         paths.extend(["이익", "수급"])
     if "company_filing" in matched:
@@ -610,6 +624,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
                 continue
             classified = classify_item(item)
             if classified:
+                ensure_explained(classified)
                 classified["age_hours"] = age
                 candidates.append(classified)
     for extra_items, extra_notes in (collect_sec_filings(now),):
@@ -617,6 +632,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
         for item in extra_items:
             classified = classify_item(item)
             if classified:
+                ensure_explained(classified)
                 classified["age_hours"] = item_age_hours(item, now)
                 candidates.append(classified)
     return candidates, source_notes
@@ -628,9 +644,21 @@ def render_report(alerts: list[dict], source_notes: list[str], now: dt.datetime)
         lines.extend(["고충격 정책·규제 변경 직접 확인 없음", "", "확인 범위:", *source_notes[:40], "", "💡 워치 판단: 이번 실행에서 돈 버는 능력, 할인율, 수급, 시간표를 새로 바꾼 확정 이벤트는 직접 확인되지 않았습니다.", "", "투자 조언이 아닌 참고용 정책·규제 알림입니다."])
         return "\n".join(lines) + "\n"
     for idx, alert in enumerate(alerts, 1):
+        ensure_explained(alert)
         matched_terms = sorted({term for terms in alert["matched"].values() for term in terms})
-        lines.extend([f"## {idx}. [{alert['importance']}·{alert['status']}] {alert['title']}", f"- 상태 변화: {', '.join(alert['matched'].keys())} 신호 확인 ({', '.join(matched_terms[:8])})", f"- 원문/출처: [{alert['source']}]({alert['link']}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}", f"- 한국장 영향: {', '.join(alert['impacts'])}", f"- 영향 경로: {', '.join(alert['paths'])}", f"- 영향 섹터: {', '.join(alert['sectors'])}", "- 반영 가능성: 낮음~중간. 공식 원문/신뢰 소스 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.", "- 반대 근거: 제목·요약 기반 1차 감시라 원문 세부 조건, 시행일, 예외 조항, 개별 프로젝트 적용 여부 확인이 필요합니다.", "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응", ""])
-    lines.extend(["💡 워치 판단: 이번 실행은 시간표·할인율을 바꿀 수 있는 정책/규제 상태 변화 후보를 우선 감지했습니다. 장전 레이더에서 원문 전문과 시장 반응을 재확인해야 합니다.", "", "투자 조언이 아닌 참고용 정책·규제 알림입니다."])
+        display_title = alert.get("title_ko") or alert["title"]
+        lines.extend(
+            [
+                f"## {idx}. [{alert['importance']}·{alert['status']}] {display_title}",
+                f"- 원제: {alert['title']}",
+                f"- 상태 변화: {', '.join(alert['matched'].keys())} 신호 확인 ({', '.join(matched_terms[:8])})",
+                f"- 원문/출처: [{alert['source']}]({alert['link']}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
+                *explanation_lines(alert),
+                "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
+                "",
+            ]
+        )
+    lines.extend(["💡 워치 판단: 이번 실행은 돈 버는 능력·할인율·수급·시간표 중 실제로 바뀐 축과 한국 밸류체인 연결을 기준으로 정책/규제 후보를 선별했습니다.", "", "투자 조언이 아닌 참고용 정책·규제 알림입니다."])
     return "\n".join(lines) + "\n"
 
 
@@ -640,7 +668,8 @@ def write_outputs(alerts: list[dict], source_notes: list[str], now: dt.datetime)
     (OUT_DIR / "khs_policy_watch.md").write_text(report, encoding="utf-8")
     if alerts:
         top = alerts[0]
-        (OUT_DIR / "khs_policy_watch_alert_title.txt").write_text(f"KHS 정책 워치: [{top['importance']}] {top['title'][:70]}\n", encoding="utf-8")
+        ensure_explained(top)
+        (OUT_DIR / "khs_policy_watch_alert_title.txt").write_text(f"KHS 정책 워치: [{top['importance']}] {(top.get('title_ko') or top['title'])[:70]}\n", encoding="utf-8")
         (OUT_DIR / "khs_policy_watch_alert.md").write_text(report, encoding="utf-8")
         (OUT_DIR / "khs_policy_watch_alerts.json").write_text(json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

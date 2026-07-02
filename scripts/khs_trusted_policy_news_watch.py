@@ -22,7 +22,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from khs_policy_alert_explainer import ensure_explained, explanation_lines
+try:
+    from khs_policy_alert_explainer import ensure_explained, explanation_lines
+except ImportError:  # pragma: no cover - supports module-style local tests.
+    from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines
 
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
@@ -316,22 +319,22 @@ STORY_RULES = (
         key="us_trusted_policy_shock_broad",
         title="신뢰외신, 미국 고충격 정책 후보 보도",
         google_queries=(
-            "Reuters Bloomberg US policy ban tariff export control investigation subsidy loan nuclear data center power grid robotics semiconductor",
+            "Reuters Bloomberg US policy ban tariff export control investigation subsidy loan nuclear data center power grid robotics semiconductor fertilizer agriculture",
             "Reuters Bloomberg Trump administration national security import restriction equipment energy inverter robot drone satellite",
-            "Reuters Bloomberg Commerce BIS USTR FCC DOE FERC NRC policy ban investigation subsidy loan supply chain",
+            "Reuters Bloomberg Commerce BIS USTR FCC DOE FERC NRC USDA policy ban investigation subsidy loan supply chain",
             "Politico Reuters Commerce Chinese imports robots drones equipment national security tariffs",
-            "Bloomberg Reuters DOE FERC NRC nuclear reactors data centers power grid low cost loans",
+            "Bloomberg Reuters DOE FERC NRC USDA nuclear reactors data centers power grid low cost loans fertilizer agriculture",
         ),
         required_groups=(
             ("commerce", "bis", "ustr", "fcc", "federal communications commission", "doe", "ferc", "nrc", "white house", "treasury", "ofac", "trump administration"),
             ("ban", "barred", "restrict", "restriction", "tariff", "tariffs", "export control", "sanction", "investigation", "review", "subsidy", "loan", "loans", "low-cost", "rule", "national security"),
-            ("semiconductor", "ai chip", "robot", "robotics", "drone", "inverter", "solar", "grid", "power", "data center", "nuclear", "reactor", "transformer", "battery", "critical minerals", "steel", "shipbuilding", "satellite", "defense", "uranium"),
+            ("semiconductor", "ai chip", "robot", "robotics", "drone", "inverter", "solar", "grid", "power", "data center", "nuclear", "reactor", "transformer", "battery", "critical minerals", "steel", "shipbuilding", "satellite", "defense", "uranium", "fertilizer", "phosphate", "agriculture", "biofuel", "food supply"),
         ),
-        core="Reuters·Bloomberg 등 신뢰외신에서 미국 정부·규제기관의 수입제한, 관세, 수출통제, 보조금, 대출, 인허가 정책 후보가 보도된 사안입니다.",
-        impact="반도체/AI, 전력망/데이터센터, 원전/전력기기, 로봇/자동화, 방산/공급망 | 돈 버는 능력·수급·시간표",
+        core="Reuters·Bloomberg 등 신뢰외신에서 미국 정부·규제기관의 수입제한, 관세, 수출통제, 보조금, 대출, 인허가, 산업비용 정책 후보가 보도된 사안입니다.",
+        impact="반도체/AI, 전력망/데이터센터, 원전/전력기기, 로봇/자동화, 비료/농업 원가, 방산/공급망 | 돈 버는 능력·수급·시간표",
         point="정책 대상 품목과 시행일이 공식화되면 한국 밸류체인의 매출처, 원가, 수주 시간표, 중국 대체 수요가 바뀔 수 있습니다.",
         counter="신뢰외신 보도 단계에서는 공식 문서, 품목코드, 시행일, 예외 조항, 실제 예산·대출 조건이 확정되지 않았습니다.",
-        sectors="반도체/AI, 전력망/데이터센터, 원전/전력기기, 로봇/자동화, 방산/공급망",
+        sectors="반도체/AI, 전력망/데이터센터, 원전/전력기기, 로봇/자동화, 비료/농업 원가, 방산/공급망",
         impacts=("돈 버는 능력", "수급", "시간표"),
         paths=("정책 타임라인", "공급망", "밸류체인", "수급"),
         follow_up="이 넓은 안전망은 특정 테마 룰이 없는 새 정책축을 놓치지 않기 위한 것입니다. 송출 후에는 공식 원문, 품목·세율·시행일, 한국 기업 직접 노출을 확인해야 합니다.",
@@ -364,22 +367,22 @@ STORY_RULES = (
         key="global_korea_policy_shock_broad",
         title="신뢰외신, 한국 직접 영향 해외 정책 후보 보도",
         google_queries=(
-            "Reuters Bloomberg South Korea tariff quota safeguard export control regulation steel battery semiconductor shipbuilding",
-            "Reuters Bloomberg Korea policy impact EU China Japan Taiwan Middle East sanctions tariff export controls supply chain",
+            "Reuters Bloomberg South Korea tariff quota safeguard export control regulation steel battery semiconductor shipbuilding fertilizer agriculture",
+            "Reuters Bloomberg Korea policy impact EU China Japan Taiwan Middle East sanctions tariff export controls supply chain fertilizer food",
             "\"South Korea\" \"tariff\" \"quota\" \"export control\" Reuters Bloomberg",
-            "\"Korean\" steel battery semiconductor shipbuilding regulation tariff quota Reuters Bloomberg",
-            "\"한국산\" 관세 쿼터 규제 완화 강화 EU 미국 중국 일본 수출통제",
+            "\"Korean\" steel battery semiconductor shipbuilding fertilizer regulation tariff quota Reuters Bloomberg",
+            "\"한국산\" 관세 쿼터 규제 완화 강화 EU 미국 중국 일본 수출통제 비료 농업",
         ),
         required_groups=(
             ("korea", "south korea", "korean", "한국", "한국산"),
             ("tariff", "quota", "safeguard", "anti-dumping", "export control", "sanction", "regulation", "ban", "restriction", "customs", "duty", "관세", "쿼터", "세이프가드", "반덤핑", "수출통제", "제재", "규제"),
-            ("steel", "battery", "semiconductor", "shipbuilding", "auto", "chemical", "solar", "transformer", "defense", "critical minerals", "철강", "배터리", "반도체", "조선", "자동차", "화학", "변압기", "방산"),
+            ("steel", "battery", "semiconductor", "shipbuilding", "auto", "chemical", "solar", "transformer", "defense", "critical minerals", "fertilizer", "agriculture", "food", "철강", "배터리", "반도체", "조선", "자동차", "화학", "변압기", "방산", "비료", "농업", "식량"),
         ),
         core="미국·EU·중국·일본 등 해외 정책이 한국산 제품이나 한국 기업의 수출 조건을 직접 바꿀 수 있다는 신뢰 보도/공식 신호입니다.",
-        impact="한국 수출주, 철강/배터리/반도체/조선/자동차/화학/전력기기 | 돈 버는 능력·수급·시간표",
+        impact="한국 수출주, 철강/배터리/반도체/조선/자동차/화학/전력기기/비료·음식료 원가 | 돈 버는 능력·수급·시간표",
         point="한국산 품목의 관세, 쿼터, 수출통제, 제재, 인증·규제 조건이 바뀌면 마진, 물량, 주문 이전, 테마 수급이 함께 움직일 수 있습니다.",
         counter="해외 정책 보도만으로는 품목 범위, 국가별 쿼터, 예외 조항, 시행일, 한국 기업 직접 노출이 확정되지 않습니다.",
-        sectors="한국 수출주, 철강/배터리/반도체/조선/자동차/화학/전력기기",
+        sectors="한국 수출주, 철강/배터리/반도체/조선/자동차/화학/전력기기/비료·음식료 원가",
         impacts=("돈 버는 능력", "수급", "시간표"),
         paths=("무역규제", "정책 타임라인", "공급망", "수급"),
         follow_up="한국산 또는 한국 기업 직접 노출이 원문에 있어야 고충격으로 남깁니다. 단순 해외 일반 규제는 공식 문서와 국내 밸류체인 연결이 없으면 제외합니다.",
