@@ -1,8 +1,9 @@
 name: KHS policy watch
 
 on:
-  # Cloudflare Worker is the scheduler for real-time policy alerts.
-  # Keep GitHub Actions manual/dispatch-only to avoid duplicate sends.
+  schedule:
+    # Run every 15 minutes for real-time policy alerts.
+    - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
       telegram_test:
