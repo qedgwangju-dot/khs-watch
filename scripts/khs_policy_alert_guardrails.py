@@ -15,7 +15,10 @@ import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from khs_policy_alert_explainer import ensure_explained, explanation_lines
+try:
+    from khs_policy_alert_explainer import ensure_explained, explanation_lines
+except ImportError:  # pragma: no cover - supports module-style local tests.
+    from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines
 
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
@@ -239,6 +242,9 @@ def mostly_ascii(value: str) -> bool:
 
 
 def korean_title_for(item: dict) -> str:
+    existing = str(item.get("title_ko") or "").strip()
+    if existing:
+        return existing
     original = str(item.get("title") or "").strip()
     source = str(item.get("source") or "").lower()
     text = haystack_for(item)
@@ -367,8 +373,8 @@ def main() -> int:
         item["sectors"] = direct_sectors(item)
         if is_low_impact_false_positive(item):
             continue
-        normalize_title(item)
         ensure_explained(item)
+        normalize_title(item)
         key = dedup_key(item)
         if key in seen:
             continue

@@ -9,7 +9,10 @@ import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from khs_policy_alert_explainer import ensure_explained, explanation_lines
+try:
+    from khs_policy_alert_explainer import ensure_explained, explanation_lines
+except ImportError:  # pragma: no cover - supports module-style local tests.
+    from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines
 
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
@@ -30,6 +33,7 @@ MATCHED_KEY_LABELS = {
     "fcc_decision_notice": "규칙 제안·회의 공지",
     "energy_security_policy": "에너지부 전력·원전·대출/제한 정책",
     "presidential_action": "대통령 정책문서",
+    "agriculture_supply_policy": "농업·비료·식량 공급정책",
     "korea_presidential_personnel": "대통령실 고위급 인사",
     "company_filing": "기업 공시",
     "fda_decision": "FDA 결정",
@@ -76,6 +80,14 @@ TERM_LABELS = {
     "efficiency standard": "효율규제",
     "critical materials": "핵심소재",
     "nuclear fuel": "핵연료",
+    "fertilizer": "비료",
+    "phosphate": "인산비료",
+    "phosphate fertilizer": "인산비료",
+    "duty-free importation": "무관세 수입",
+    "temporary duty-free": "임시 무관세",
+    "agriculture": "농업",
+    "farm resilience": "농업 회복력",
+    "regenerative agriculture": "재생농업",
     "executive order": "행정명령",
     "presidential memorandum": "대통령각서",
     "continuation of the national emergency": "국가비상사태 연장",
@@ -101,6 +113,7 @@ SOURCE_LABELS = {
     "federal register commerce national security": "미 연방관보 상무부·국가안보",
     "federal register doe ferc nrc power": "미 연방관보 에너지·전력·원전",
     "federal register doe restrictions loans": "미 연방관보 DOE 대출·제한·효율규제",
+    "federal register agriculture supply": "미 연방관보 농업·비료",
     "federal register transformers": "미 연방관보 변압기",
     "commerce news": "미 상무부",
     "bis news": "미 BIS",
@@ -149,6 +162,10 @@ def is_fcc_resilient_networks_policy(alert: dict) -> bool:
 
 
 def safe_title(alert: dict) -> str:
+    ensure_explained(alert)
+    title_ko = str(alert.get("title_ko") or "").strip()
+    if title_ko:
+        return title_ko
     title = str(alert.get("title") or "").strip()
     if not title:
         return "미국 정책·규제 문서 공표"
@@ -256,8 +273,10 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
         matched_terms_text = display_terms(matched_terms[:8])
         source_label = display_source(alert.get("source"))
         title = safe_title(alert)
+        original_title = str(alert.get("original_title") or alert.get("title") or "").strip()
         lines.extend([
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
+            *([f"- 원제: {original_title}"] if original_title and original_title != title else []),
             f"- 상태 변화: {matched_keys} 신호 확인 ({matched_terms_text})",
             f"- 원문/출처: [{source_label}]({alert.get('link', '')}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
             *explanation_lines(alert),
