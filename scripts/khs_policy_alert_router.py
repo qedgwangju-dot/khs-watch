@@ -150,6 +150,7 @@ def alert_text(alert: dict) -> str:
     return " ".join([
         str(alert.get("source") or ""),
         str(alert.get("title") or ""),
+        str(alert.get("original_title") or ""),
         str(alert.get("summary") or ""),
         " ".join(term for terms in (alert.get("matched") or {}).values() for term in terms),
     ]).lower()
@@ -174,6 +175,10 @@ def safe_title(alert: dict) -> str:
     if mostly_ascii(title):
         source = str(alert.get("source") or "").lower()
         text = alert_text(alert)
+        if "petition for reconsideration" in text:
+            return "FCC, 규칙 재심 청원 접수 공지"
+        if "covered communications equipment" in text or ("covered list" in text and ("prohibit" in text or "importation" in text or "marketing" in text)):
+            return "FCC, 보안 위험 통신장비 수입·판매 제한 절차 공표"
         if "fcc" in source or "federal communications commission" in text:
             return "FCC, 통신 규제 문서 공표"
         if "distribution transformer" in text or "electrical core steel" in text or "grain-oriented electrical steel" in text or "goes" in text or "amorphous" in text:
@@ -296,6 +301,61 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
         "투자 조언이 아닌 참고용 정책·규제 알림입니다.",
     ])
     return "\n".join(lines) + "\n"
+
+
+def line_value(lines: list[str], prefix: str, fallback: object = "") -> str:
+    for line in lines:
+        if line.startswith(prefix):
+            return line.split(":", 1)[1].strip() if ":" in line else line.replace(prefix, "", 1).strip()
+    return str(fallback or "").strip()
+
+
+def compact_explanation_lines(alert: dict) -> list[str]:
+    apply_router_overrides(alert)
+    rendered = explanation_lines(alert)
+    return [
+        f"- 핵심: {clip_text(line_value(rendered, '- 핵심 내용', alert.get('policy_plain_summary')), 150)}",
+        f"- 의사결정 영향: {clip_text(line_value(rendered, '- 의사결정 영향', alert.get('decision_classification')), 90)}",
+        f"- 투자 영향: {clip_text(line_value(rendered, '- 투자 관점', alert.get('investment_view')), 150)}",
+        f"- 한국장: {clip_text(line_value(rendered, '- 한국장 영향', alert.get('korea_market_impact')), 150)}",
+        f"- 반영 가능성: {clip_text(line_value(rendered, '- 반영 가능성', alert.get('priced_in')), 120)}",
+        f"- 반대 근거: {clip_text(line_value(rendered, '- 반대 근거', alert.get('counter')), 130)}",
+        f"- 실패 신호: {clip_text(line_value(rendered, '- 실패 신호', alert.get('failure_signal')), 130)}",
+    ]
+
+
+def apply_router_overrides(alert: dict) -> None:
+    text = alert_text(alert)
+    if "covered communications equipment" in text or ("covered list" in text and ("prohibit" in text or "importation" in text or "marketing" in text)):
+        alert["title_ko"] = "FCC, 보안 위험 통신장비 수입·판매 제한 절차 공표"
+        alert["policy_plain_summary"] = "FCC가 Covered List에 오른 보안 위험 통신장비의 미국 내 수입·판매 제한 절차를 공표한 사안입니다."
+        alert["investment_view"] = "적용 장비와 공급사가 확정되면 중국산 통신장비 배제, 대체 공급망, 미국향 장비 수주 기대가 움직일 수 있습니다."
+        alert["korea_market_impact"] = "한국장에서는 통신장비, 네트워크 장비, 보안장비 중 미국향 매출·대체 공급망 노출이 확인되는 종목만 선별 확인합니다."
+        alert["sectors"] = ["통신장비", "네트워크 장비", "보안장비", "중국 대체 공급망"]
+        alert["korea_value_chain"] = ["통신장비", "네트워크 장비", "보안장비", "미국향 장비 공급망"]
+        alert["priced_in"] = "낮음~중간. 보안장비 규제 테마는 빠르게 반응하지만 적용 대상·시행일 확인 전 직접 실적 연결은 제한적입니다."
+        alert["counter"] = "기존 승인 장비의 처리 절차일 수 있고, 한국 기업의 대체 수주나 공급망 노출이 없으면 과대해석입니다."
+        alert["failure_signal"] = "적용 장비, 금지 범위, 시행일, 한국 기업의 미국향 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다."
+
+
+def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
+    if not alerts:
+        return no_general_report(now)
+
+    lines = [f"🚨 KHS 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
+    for idx, alert in enumerate(alerts, 1):
+        alert = enrich_missing_context(alert)
+        apply_router_overrides(alert)
+        source_label = display_source(alert.get("source"))
+        title = safe_title(alert)
+        lines.extend([
+            f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
+            *compact_explanation_lines(alert),
+            f"- 출처: [{source_label}]({alert.get('link', '')}) · 조회 {now:%H:%M KST}",
+            "",
+        ])
+    lines.append("투자 조언이 아닌 참고용 정책·규제 알림입니다.")
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def remove_outputs(paths: list[Path]) -> None:

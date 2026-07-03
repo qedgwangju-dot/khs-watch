@@ -94,6 +94,8 @@ SECTOR_RULES: list[tuple[str, list[str]]] = [
 ]
 
 LOW_IMPACT_TITLE_MARKERS = [
+    "petition for reconsideration",
+    "petition for reconsideration of action in rulemaking proceeding",
     "digital opportunity data collection",
     "modernizing the fcc form 477 data program",
     "delete, delete, delete",

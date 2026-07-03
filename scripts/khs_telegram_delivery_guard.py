@@ -53,6 +53,8 @@ LANES = [
 ]
 
 LOW_IMPACT_BLOCKERS = [
+    "petition for reconsideration",
+    "petition for reconsideration of action in rulemaking proceeding",
     "sunshine act meetings",
     "open commission meeting",
     "open commission meetings",
@@ -128,6 +130,15 @@ REQUIRED_EXPLANATION_FIELDS = [
     "- 한국장 영향:",
     "- 실패 신호:",
 ]
+
+REQUIRED_EXPLANATION_FIELDS = [
+    "- 핵심:",
+    "- 의사결정 영향:",
+    "- 투자 영향:",
+    "- 한국장:",
+    "- 실패 신호:",
+]
+
 
 REPLACEMENTS = {
     "[Federal Register FCC]": "[미 연방관보 FCC]",
