@@ -219,7 +219,7 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
             continue
 
         detail_fetches += 1
-        detail_text, detail_error = fetch_text(link)
+        detail_text, detail_error = fetch_text(link, timeout=10, attempts=1)
         detail_clean = clean_text(detail_text or "") if not detail_error else ""
         haystack = f"{title} {context} {detail_clean[:9000]}"
         if not is_policy_candidate(haystack, source_name):

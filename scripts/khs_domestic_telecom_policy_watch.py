@@ -29,6 +29,7 @@ SEEN_PATH = DATA_DIR / "khs_domestic_telecom_policy_seen.json"
 KST = ZoneInfo("Asia/Seoul")
 MAX_AGE_HOURS = int(os.getenv("KHS_SOURCE_MAX_AGE_HOURS", "72"))
 MAX_ALERTS = int(os.getenv("KHS_DOMESTIC_TELECOM_MAX_ALERTS", "3"))
+MAX_DETAIL_LINKS_PER_SOURCE = int(os.getenv("KHS_DOMESTIC_TELECOM_MAX_DETAIL_LINKS_PER_SOURCE", "6"))
 UA = os.getenv("SEC_USER_AGENT", "KHS-domestic-telecom-policy-watch contact=github-actions")
 
 SOURCES = [
@@ -138,7 +139,10 @@ def is_policy_candidate(text: str, source_name: str) -> bool:
 def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) -> list[dict]:
     link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
     deduped: dict[str, dict] = {}
+    detail_fetches = 0
     for match in link_pattern.finditer(text):
+        if detail_fetches >= MAX_DETAIL_LINKS_PER_SOURCE:
+            break
         title = clean_text(match.group("label"))
         if len(title) < 6:
             continue
@@ -151,7 +155,8 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
         if not is_policy_candidate(f"{title} {context}", source_name):
             continue
 
-        detail_text, detail_error = fetch_text(link)
+        detail_fetches += 1
+        detail_text, detail_error = fetch_text(link, timeout=10, attempts=1)
         detail_clean = clean_text(detail_text or "") if not detail_error else ""
         haystack = f"{title} {context} {detail_clean[:7000]}"
         if not is_policy_candidate(haystack, source_name):
