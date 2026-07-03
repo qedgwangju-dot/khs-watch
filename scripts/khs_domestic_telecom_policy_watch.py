@@ -14,6 +14,7 @@ import html
 import json
 import os
 import re
+import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -82,17 +83,23 @@ def clean_text(value: object) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def fetch_text(url: str, timeout: int = 20) -> tuple[str | None, str | None]:
+def fetch_text(url: str, timeout: int = 20, attempts: int = 2) -> tuple[str | None, str | None]:
     req = urllib.request.Request(
         url,
         headers={"User-Agent": UA, "Accept": "text/html,application/xhtml+xml,*/*"},
     )
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            charset = resp.headers.get_content_charset() or "utf-8"
-            return resp.read().decode(charset, errors="replace"), None
-    except Exception as exc:
-        return None, f"{type(exc).__name__}: {exc}"
+    errors: list[str] = []
+    for attempt in range(1, attempts + 1):
+        current_timeout = timeout if attempt == 1 else min(max(timeout * 2, timeout + 10), 45)
+        try:
+            with urllib.request.urlopen(req, timeout=current_timeout) as resp:
+                charset = resp.headers.get_content_charset() or "utf-8"
+                return resp.read().decode(charset, errors="replace"), None
+        except Exception as exc:
+            errors.append(f"attempt={attempt}/{attempts} timeout={current_timeout}s {type(exc).__name__}: {exc}")
+            if attempt < attempts:
+                time.sleep(1.5 * attempt)
+    return None, " | ".join(errors)
 
 
 def parse_date(text: str) -> dt.datetime | None:
