@@ -14,11 +14,12 @@ import html
 import json
 import os
 import re
-import time
 import urllib.parse
-import urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+from khs_source_fetch import fetch_text as fetch_text_shared
+from khs_source_fetch import record_source_failure
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -85,22 +86,7 @@ def clean_text(value: object) -> str:
 
 
 def fetch_text(url: str, timeout: int = 20, attempts: int = 2) -> tuple[str | None, str | None]:
-    req = urllib.request.Request(
-        url,
-        headers={"User-Agent": UA, "Accept": "text/html,application/xhtml+xml,*/*"},
-    )
-    errors: list[str] = []
-    for attempt in range(1, attempts + 1):
-        current_timeout = timeout if attempt == 1 else min(max(timeout * 2, timeout + 10), 45)
-        try:
-            with urllib.request.urlopen(req, timeout=current_timeout) as resp:
-                charset = resp.headers.get_content_charset() or "utf-8"
-                return resp.read().decode(charset, errors="replace"), None
-        except Exception as exc:
-            errors.append(f"attempt={attempt}/{attempts} timeout={current_timeout}s {type(exc).__name__}: {exc}")
-            if attempt < attempts:
-                time.sleep(1.5 * attempt)
-    return None, " | ".join(errors)
+    return fetch_text_shared(url, UA, timeout=timeout, attempts=attempts)
 
 
 def parse_date(text: str) -> dt.datetime | None:
@@ -239,6 +225,13 @@ def main() -> int:
     for source_name, source_url in SOURCES:
         text, error = fetch_text(source_url)
         if error:
+            record_source_failure(
+                lane="domestic_telecom",
+                source_name=source_name,
+                source_url=source_url,
+                error=error,
+                checked_at=now,
+            )
             print(f"domestic_telecom_source_failed source={source_name} error={error}")
             continue
         candidates.extend(parse_links(text or "", source_name, source_url, now))

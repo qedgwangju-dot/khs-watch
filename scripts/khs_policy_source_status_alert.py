@@ -1,0 +1,129 @@
+#!/usr/bin/env python3
+"""Render a throttled Telegram notice when KHS official sources are unreachable."""
+
+from __future__ import annotations
+
+import datetime as dt
+import hashlib
+import json
+from pathlib import Path
+from zoneinfo import ZoneInfo
+
+
+KST = ZoneInfo("Asia/Seoul")
+OUT_DIR = Path("out")
+DATA_DIR = Path("data")
+FAILURES_PATH = OUT_DIR / "khs_source_failures.json"
+SEEN_PATH = DATA_DIR / "khs_source_failure_seen.json"
+TITLE_PATH = OUT_DIR / "khs_policy_source_status_title.txt"
+BODY_PATH = OUT_DIR / "khs_policy_source_status_alert.md"
+
+
+def now_kst() -> dt.datetime:
+    return dt.datetime.now(tz=KST)
+
+
+def load_json(path: Path, default):
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return default
+
+
+def save_seen(seen: dict) -> None:
+    DATA_DIR.mkdir(exist_ok=True)
+    SEEN_PATH.write_text(json.dumps(seen, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def fingerprint(failures: list[dict], day: str) -> str:
+    material = "\n".join(
+        sorted(f"{item.get('lane')}|{item.get('source')}|{item.get('url')}" for item in failures)
+    )
+    return hashlib.sha256(f"{day}\n{material}".encode("utf-8")).hexdigest()[:16]
+
+
+def render(failures: list[dict], now: dt.datetime) -> tuple[str, str]:
+    day = now.strftime("%Y-%m-%d")
+    time_label = now.strftime("%Y년 %m월 %d일 %H:%M KST")
+    title = "KHS 정책 워치: 국내 공식 소스 확인 불가"
+    lines = [
+        f"⚠️ KHS 정책 워치 소스 점검 알림 · {time_label}",
+        "",
+        "국내 정책 공식 소스 일부가 GitHub Actions 실행환경에서 확인되지 않았습니다.",
+        "이번 실행의 `0건`은 순수한 뉴스 부재가 아니라 `확인 불가`가 섞인 상태입니다.",
+        "",
+        "- 상태: 확인 불가",
+        "- 영향: 국내 통신비, 스테이블코인/디지털자산 등 국내 정책 라인 감시 공백 가능",
+        "- 처리: 직접 조회 실패 후 Cloudflare 공식소스 프록시 fallback까지 시도",
+        "- 송출 기준: 같은 실패 묶음은 하루 1회만 알림",
+        "",
+        "실패 소스:",
+    ]
+    for idx, item in enumerate(failures[:8], start=1):
+        source = item.get("source") or "unknown source"
+        lane = item.get("lane") or "unknown lane"
+        url = item.get("url") or ""
+        error = item.get("error") or "unknown error"
+        checked = item.get("checked_at_kst") or day
+        lines.extend(
+            [
+                f"{idx}. {source}",
+                f"- 라인: {lane}",
+                f"- 상태: 확인 불가",
+                f"- 조회시각: {checked}",
+                f"- 오류: {error[:260]}",
+                f"- 원문: {url}",
+            ]
+        )
+    if len(failures) > 8:
+        lines.append(f"- 추가 실패 소스: {len(failures) - 8}건")
+
+    lines.extend(
+        [
+            "",
+            "판단: 이 알림은 투자 뉴스가 아니라 감시 품질 알림입니다. 국내 정책 뉴스가 없다고 단정하지 말고 다음 정상 조회 때 재확인해야 합니다.",
+        ]
+    )
+    return title, "\n".join(lines)
+
+
+def main() -> int:
+    failures = load_json(FAILURES_PATH, [])
+    if not failures:
+        return 0
+    failures = [item for item in failures if isinstance(item, dict)]
+    if not failures:
+        return 0
+
+    now = now_kst()
+    day = now.strftime("%Y-%m-%d")
+    fp = fingerprint(failures, day)
+    seen = load_json(SEEN_PATH, {"seen": {}})
+    seen_map = seen.setdefault("seen", {})
+    if fp in seen_map:
+        print(f"source_status_alert=skipped_duplicate failures={len(failures)}")
+        return 0
+
+    title, body = render(failures, now)
+    OUT_DIR.mkdir(exist_ok=True)
+    TITLE_PATH.write_text(title + "\n", encoding="utf-8")
+    BODY_PATH.write_text(body + "\n", encoding="utf-8")
+
+    seen_map[fp] = {
+        "first_seen_kst": now.isoformat(timespec="seconds"),
+        "failure_count": len(failures),
+        "sources": [item.get("source") for item in failures],
+    }
+    # Keep the state small while preserving recent dedupe history.
+    if len(seen_map) > 60:
+        for key in list(seen_map.keys())[:-60]:
+            seen_map.pop(key, None)
+    save_seen(seen)
+    print(f"source_status_alert=created failures={len(failures)}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

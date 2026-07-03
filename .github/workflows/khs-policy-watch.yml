@@ -32,6 +32,7 @@ jobs:
       KHS_SOURCE_MAX_AGE_HOURS: "72"
       KHS_NUCLEAR_MAX_AGE_HOURS: "72"
       KHS_TRUSTED_NEWS_MAX_AGE_HOURS: "72"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
       TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
     steps:
@@ -69,6 +70,8 @@ jobs:
           python -m py_compile scripts/khs_transformer_tariff_postprocess.py
           python -m py_compile scripts/khs_nuclear_policy_watch.py
           python -m py_compile scripts/khs_trusted_policy_news_watch.py
+          python -m py_compile scripts/khs_source_fetch.py
+          python -m py_compile scripts/khs_policy_source_status_alert.py
           python -m py_compile scripts/khs_telegram_delivery_guard.py
           python -m py_compile scripts/khs_policy_runtime_patch.py
 
@@ -147,6 +150,10 @@ jobs:
         if: always()
         run: python scripts/khs_telegram_delivery_guard.py
 
+      - name: Build source status alert
+        if: always()
+        run: python scripts/khs_policy_source_status_alert.py
+
       - name: Publish step summary
         if: always()
         run: |
@@ -171,8 +178,13 @@ jobs:
             cat out/khs_trusted_policy_news_alert.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
+          if [ -f out/khs_policy_source_status_alert.md ]; then
+            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/khs_policy_source_status_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Commit updated seen state
-        if: hashFiles('data/khs_policy_watch_seen.json') != '' || hashFiles('data/khs_domestic_telecom_policy_seen.json') != '' || hashFiles('data/khs_domestic_stablecoin_policy_seen.json') != '' || hashFiles('data/khs_korea_nuclear_siting_policy_seen.json') != '' || hashFiles('data/khs_transformer_tariff_policy_seen.json') != '' || hashFiles('data/khs_nuclear_policy_seen.json') != '' || hashFiles('data/khs_trusted_policy_news_seen.json') != ''
+        if: hashFiles('data/khs_policy_watch_seen.json') != '' || hashFiles('data/khs_domestic_telecom_policy_seen.json') != '' || hashFiles('data/khs_domestic_stablecoin_policy_seen.json') != '' || hashFiles('data/khs_korea_nuclear_siting_policy_seen.json') != '' || hashFiles('data/khs_transformer_tariff_policy_seen.json') != '' || hashFiles('data/khs_nuclear_policy_seen.json') != '' || hashFiles('data/khs_trusted_policy_news_seen.json') != '' || hashFiles('data/khs_source_failure_seen.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -184,7 +196,8 @@ jobs:
             data/khs_korea_nuclear_siting_policy_seen.json \
             data/khs_transformer_tariff_policy_seen.json \
             data/khs_nuclear_policy_seen.json \
-            data/khs_trusted_policy_news_seen.json
+            data/khs_trusted_policy_news_seen.json \
+            data/khs_source_failure_seen.json
           do
             if [ -f "$path" ]; then
               git add "$path"
@@ -255,7 +268,7 @@ jobs:
           fi
 
       - name: Send Telegram alert
-        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || hashFiles('out/khs_nuclear_policy_alert.md') != '' || hashFiles('out/khs_trusted_policy_news_alert.md') != '' || env.TELEGRAM_TEST == 'true'
+        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || hashFiles('out/khs_nuclear_policy_alert.md') != '' || hashFiles('out/khs_trusted_policy_news_alert.md') != '' || hashFiles('out/khs_policy_source_status_alert.md') != '' || env.TELEGRAM_TEST == 'true'
         env:
           KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
           KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
@@ -289,6 +302,7 @@ jobs:
               (pathlib.Path("out/khs_korea_presidential_personnel_title.txt"), pathlib.Path("out/khs_korea_presidential_personnel_alert.md"), "KHS Korea presidential personnel alert"),
               (pathlib.Path("out/khs_nuclear_policy_title.txt"), pathlib.Path("out/khs_nuclear_policy_alert.md"), "KHS nuclear AI power alert"),
               (pathlib.Path("out/khs_trusted_policy_news_title.txt"), pathlib.Path("out/khs_trusted_policy_news_alert.md"), "KHS trusted policy news alert"),
+              (pathlib.Path("out/khs_policy_source_status_title.txt"), pathlib.Path("out/khs_policy_source_status_alert.md"), "KHS policy source status alert"),
           ]
 
           messages = []
