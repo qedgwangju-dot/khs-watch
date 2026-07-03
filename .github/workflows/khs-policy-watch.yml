@@ -78,27 +78,38 @@ jobs:
 
       - name: Run domestic telecom policy watch
         if: always()
+        timeout-minutes: 5
+        continue-on-error: true
         run: python scripts/khs_domestic_telecom_policy_watch.py
 
       - name: Run domestic stablecoin policy watch
         if: always()
+        timeout-minutes: 6
+        continue-on-error: true
         run: python scripts/khs_domestic_stablecoin_policy_watch.py
 
       - name: Run domestic nuclear siting policy watch
         if: always()
+        timeout-minutes: 4
+        continue-on-error: true
         run: python scripts/khs_korea_nuclear_siting_policy_watch.py
 
       - name: Run transformer tariff policy watch
         if: always()
+        timeout-minutes: 4
+        continue-on-error: true
         run: python scripts/khs_transformer_tariff_policy_watch.py
 
       - name: Run nuclear AI power watch
         if: always()
+        timeout-minutes: 4
+        continue-on-error: true
         run: python scripts/khs_nuclear_policy_watch.py
 
       - name: Run trusted policy news watch
         if: always()
         timeout-minutes: 8
+        continue-on-error: true
         run: python scripts/khs_trusted_policy_news_watch.py
 
       - name: Apply policy alert guardrails
