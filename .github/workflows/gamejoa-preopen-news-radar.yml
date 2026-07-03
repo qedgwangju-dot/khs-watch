@@ -27,7 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      RADAR_MAX_AGE_HOURS: "48"
+      RADAR_MAX_AGE_HOURS: "96"
+      RADAR_FETCH_TIMEOUT_SECONDS: "10"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || vars.SEC_USER_AGENT || 'GAMEJOA-preopen-radar contact=please-set-secret' }}
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
@@ -44,7 +45,9 @@ jobs:
           python-version: "3.12"
 
       - name: Verify GAMEJOA delivery contract
-        run: python scripts/verify_gamejoa_delivery_contract.py
+        run: |
+          python scripts/verify_gamejoa_delivery_contract.py
+          python scripts/verify_gamejoa_semisupply_contract.py
 
       - name: Check configuration
         run: |

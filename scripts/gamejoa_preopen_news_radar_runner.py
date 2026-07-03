@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import csv
+import concurrent.futures
 import datetime as dt
 import email.utils
 import html
@@ -21,10 +22,12 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "out"
 KST = ZoneInfo("Asia/Seoul")
-MAX_AGE_HOURS = int(os.getenv("RADAR_MAX_AGE_HOURS", "48"))
+MAX_AGE_HOURS = int(os.getenv("RADAR_MAX_AGE_HOURS", "96"))
 UA = os.getenv("SEC_USER_AGENT", "GAMEJOA-preopen-radar contact=please-set-secret")
 FRED_API_KEY = os.getenv("FRED_API_KEY", "").strip()
 TELEGRAM_LIMIT = 4096
+FETCH_TIMEOUT_SECONDS = max(3, int(os.getenv("RADAR_FETCH_TIMEOUT_SECONDS", "10")))
+FETCH_WORKERS = max(2, int(os.getenv("RADAR_FETCH_WORKERS", "10")))
 
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFII10"
 TE_URL = "https://tradingeconomics.com/united-states/10-year-tips-yield"
@@ -102,7 +105,8 @@ def norm(value: object) -> str:
     return clean(value).lower()
 
 
-def fetch(url: str, timeout: int = 25) -> tuple[str | None, str | None]:
+def fetch(url: str, timeout: int | None = None) -> tuple[str | None, str | None]:
+    timeout = FETCH_TIMEOUT_SECONDS if timeout is None else timeout
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/rss+xml, application/json, text/html, */*"})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -217,17 +221,32 @@ def is_local_dc_policy(row: dict) -> bool:
 
 def collect_items(now: dt.datetime) -> tuple[list[dict], list[str]]:
     rows, notes = [], []
-    for name, url, kind in SOURCES:
+    source_jobs = [(name, url, kind) for name, url, kind in SOURCES]
+    query_jobs = [
+        (name, google_url(f"{query} when:{max(1, MAX_AGE_HOURS // 24)}d"), "trusted")
+        for name, query in QUERIES
+    ]
+
+    def fetch_job(job: tuple[str, str, str]) -> tuple[str, str, str, str | None, str | None]:
+        name, url, kind = job
         text, err = fetch(url)
+        return name, url, kind, text, err
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=FETCH_WORKERS) as executor:
+        source_results = list(executor.map(fetch_job, source_jobs))
+        query_results = list(executor.map(fetch_job, query_jobs))
+
+    for name, _url, kind, text, err in source_results:
         if err:
             notes.append(f"{name}: 확인 불가 ({err})")
             continue
-        parsed = parse_fr(text or "", name) if kind == "fr" else parse_rss(text or "", name, "official")
+        layer = "official" if kind == "official" else "trusted"
+        parsed = parse_fr(text or "", name) if kind == "fr" else parse_rss(text or "", name, layer)
         parsed = [r for r in parsed if fresh(r, now)]
         notes.append(f"{name}: {len(parsed)}건")
         rows.extend(parsed)
-    for name, query in QUERIES:
-        text, err = fetch(google_url(f"{query} when:{max(1, MAX_AGE_HOURS // 24)}d"))
+
+    for name, _url, _kind, text, err in query_results:
         if err:
             notes.append(f"Trusted news {name}: 확인 불가 ({err})")
             continue

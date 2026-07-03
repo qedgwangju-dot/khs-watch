@@ -8,7 +8,7 @@ promoted as high-impact biotech news.
 
 from __future__ import annotations
 
-import gamejoa_preopen_news_radar_memory_antitrust_runner as current
+import gamejoa_preopen_news_radar_semisupply_runner as current
 
 
 runner = current.runner
