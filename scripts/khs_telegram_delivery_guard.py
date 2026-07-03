@@ -15,6 +15,7 @@ from pathlib import Path
 OUT_DIR = Path("out")
 MAX_TITLE_CHARS = 120
 MAX_BODY_LINE_CHARS = 420
+MAX_ENGLISH_WORD_RUN = 8
 
 
 @dataclass(frozen=True)
@@ -103,6 +104,13 @@ RAW_DETECTOR_BLOCKERS = [
 ]
 
 VISIBLE_ENGLISH_BLOCKERS = [
+    "Petition for Reconsideration",
+    "Petition for Reconsideration of Action in Rulemaking Proceeding",
+    "Prohibiting Importation and Marketing",
+    "Previously Authorized Covered Communications Equipment",
+    "Request for Comments and Notice of Public Hearing",
+    "Technical Guidelines for the Production",
+    "Bureau of Ocean Energy Management Seeks",
     "Federal Register FCC",
     "Federal Register presidential documents",
     "Federal Register tariffs",
@@ -122,6 +130,15 @@ VISIBLE_ENGLISH_BLOCKERS = [
     "customs enforcement",
     "executive order",
     "presidential memorandum",
+]
+
+RAW_LINE_PREFIX_BLOCKERS = [
+    "- 원제:",
+    "- 원문 제목:",
+    "- Original title:",
+    "- Original Title:",
+    "- 상태 변화:",
+    "- 즉시 체크:",
 ]
 
 REQUIRED_EXPLANATION_FIELDS = [
@@ -252,6 +269,26 @@ def has_raw_ascii_heading(body: str) -> bool:
     return False
 
 
+def has_raw_line_prefix(body: str) -> str | None:
+    for line in body.splitlines():
+        stripped = line.strip()
+        for marker in RAW_LINE_PREFIX_BLOCKERS:
+            if stripped.startswith(marker):
+                return marker
+    return None
+
+
+def has_long_english_run(text: str) -> str | None:
+    visible = remove_urls(text)
+    for line in visible.splitlines():
+        if not line.strip():
+            continue
+        words = re.findall(r"\b[A-Za-z][A-Za-z'-]{2,}\b", line)
+        if len(words) >= MAX_ENGLISH_WORD_RUN:
+            return " ".join(words[:MAX_ENGLISH_WORD_RUN])
+    return None
+
+
 def guard_lane(lane: Lane) -> None:
     if not lane.body.exists():
         return
@@ -272,6 +309,12 @@ def guard_lane(lane: Lane) -> None:
         return
 
     visible = remove_urls(combined)
+
+    marker = has_raw_line_prefix(body)
+    if marker:
+        delete_lane(lane, f"raw_line_prefix:{marker}")
+        return
+
     marker = has_blocker(visible, RAW_DETECTOR_BLOCKERS, include_urls=False)
     if marker:
         delete_lane(lane, f"raw_detector:{marker}")
@@ -285,6 +328,12 @@ def guard_lane(lane: Lane) -> None:
     if lane.name == "policy" and has_raw_ascii_heading(body):
         delete_lane(lane, "raw_ascii_policy_heading")
         return
+
+    if lane.name == "policy":
+        marker = has_long_english_run(body)
+        if marker:
+            delete_lane(lane, f"long_english_run:{marker}")
+            return
 
     for marker in REQUIRED_EXPLANATION_FIELDS:
         if marker not in body:
