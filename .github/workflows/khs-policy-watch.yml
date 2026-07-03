@@ -80,10 +80,13 @@ jobs:
           python -m py_compile scripts/khs_policy_source_status_alert.py
           python -m py_compile scripts/khs_telegram_delivery_guard.py
           python -m py_compile scripts/verify_khs_policy_delivery_contract.py
+          python -m py_compile scripts/verify_khs_source_status_contract.py
           python -m py_compile scripts/khs_policy_runtime_patch.py
 
       - name: Verify policy Telegram delivery contract
-        run: python scripts/verify_khs_policy_delivery_contract.py
+        run: |
+          python scripts/verify_khs_policy_delivery_contract.py
+          python scripts/verify_khs_source_status_contract.py
 
       - name: Run policy watch
         timeout-minutes: 10
