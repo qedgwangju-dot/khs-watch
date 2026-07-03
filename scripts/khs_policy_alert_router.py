@@ -248,6 +248,13 @@ def display_terms(terms: list[str]) -> str:
     return ", ".join(dict.fromkeys(labels))
 
 
+def clip_text(value: object, limit: int) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 1)].rstrip() + "…"
+
+
 def no_general_report(now: dt.datetime) -> str:
     return "\n".join([
         f"🚨 KHS 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}",
@@ -273,7 +280,7 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
         matched_terms_text = display_terms(matched_terms[:8])
         source_label = display_source(alert.get("source"))
         title = safe_title(alert)
-        original_title = str(alert.get("original_title") or alert.get("title") or "").strip()
+        original_title = clip_text(alert.get("original_title") or alert.get("title") or "", 120)
         lines.extend([
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
             *([f"- 원제: {original_title}"] if original_title and original_title != title else []),

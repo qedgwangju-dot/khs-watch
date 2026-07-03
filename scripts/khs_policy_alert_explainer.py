@@ -852,7 +852,41 @@ def ensure_explained(item: dict) -> dict:
     return item
 
 
+def clip_text(value: object, limit: int) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 1)].rstrip() + "…"
+
+
+def join_limited(values: object, *, max_items: int = 5, char_limit: int = 140, fallback: str = "확인 필요") -> str:
+    items = [clip_text(value, 40) for value in as_list(values) if str(value or "").strip()]
+    if not items:
+        items = [fallback]
+    shown = items[:max_items]
+    if len(items) > max_items:
+        shown.append(f"외 {len(items) - max_items}개")
+    return clip_text(", ".join(shown), char_limit)
+
+
 def explanation_lines(item: dict) -> list[str]:
+    ensure_explained(item)
+    impact_labels = display_decision_impacts(item.get("impacts"))
+    return [
+        f"- 핵심 내용: {clip_text(item.get('policy_plain_summary') or '정책 세부 내용 확인 필요', 180)}",
+        f"- 투자 관점: {clip_text(item.get('investment_view') or '실적·할인율·수급·시간표 변화 여부 확인 필요', 180)}",
+        f"- 한국장 영향: {clip_text(item.get('korea_market_impact') or '한국장 직접 영향 확인 필요', 180)}",
+        f"- 의사결정 영향: {join_limited(impact_labels or [LIMITED_IMPACT], max_items=4, char_limit=90, fallback=LIMITED_IMPACT)}",
+        f"- 영향 경로: {join_limited(item.get('paths') or ['정책 타임라인'], max_items=5, char_limit=120, fallback='정책 타임라인')}",
+        f"- 영향 섹터: {join_limited(item.get('sectors') or ['정책/규제 일반'], max_items=4, char_limit=120, fallback='정책/규제 일반')}",
+        f"- 한국 밸류체인: {join_limited(item.get('korea_value_chain'), max_items=5, char_limit=150, fallback='직접 연결 업종 확인 필요')}",
+        f"- 반영 가능성: {clip_text(item.get('priced_in') or '낮음~중간', 140)}",
+        f"- 반대 근거: {clip_text(item.get('counter') or '세부 조건 확인 전까지 직접 실적 연결은 제한적입니다.', 160)}",
+        f"- 실패 신호: {clip_text(item.get('failure_signal') or '후속 시행일·예산·계약·수급 반응이 없으면 단발성 정책 이슈로 끝납니다.', 160)}",
+    ]
+
+
+def _raw_explanation_lines(item: dict) -> list[str]:
     ensure_explained(item)
     impact_labels = display_decision_impacts(item.get("impacts"))
     return [

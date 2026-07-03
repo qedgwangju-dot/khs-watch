@@ -85,6 +85,13 @@ def clean_text(value: object) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def clip_text(value: object, limit: int) -> str:
+    text = clean_text(value)
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 1)].rstrip() + "…"
+
+
 def fetch_text(url: str, timeout: int = 6, attempts: int = 1) -> tuple[str | None, str | None]:
     return fetch_text_shared(url, UA, timeout=timeout, attempts=attempts)
 
@@ -157,11 +164,11 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
         all_hits = list(dict.fromkeys(policy_hits + risk_hits))
         high = has_any(haystack, HIGH_IMPACT_TERMS)
         fingerprint = hashlib.sha256(f"{source_name}|{title}|{link}".encode("utf-8")).hexdigest()[:16]
-        summary = clean_text(detail_clean[:500] or context[:500])
+        summary = clip_text(detail_clean or context, 360)
         deduped[link] = {
             "source": source_name,
             "title": "정부, 통신비 인하·요금제 개편 정책 압박 확인",
-            "original_title": title,
+            "original_title": clip_text(title, 120),
             "link": link,
             "summary": summary,
             "published_kst": published.isoformat() if published else "",

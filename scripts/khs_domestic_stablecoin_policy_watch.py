@@ -131,6 +131,13 @@ def clean_text(value: object) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def clip_text(value: object, limit: int) -> str:
+    text = clean_text(value)
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 1)].rstrip() + "…"
+
+
 def fetch_text(url: str, timeout: int = 6, attempts: int = 1) -> tuple[str | None, str | None]:
     return fetch_text_shared(url, UA, timeout=timeout, attempts=attempts)
 
@@ -218,11 +225,11 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
         policy_hits = matched_terms(haystack, POLICY_TERMS + EVENT_TERMS + ACTOR_TERMS)
         high = has_any(haystack, HIGH_IMPACT_TERMS)
         fingerprint = hashlib.sha256(f"{source_name}|{title}|{link}".encode("utf-8")).hexdigest()[:16]
-        summary = clean_text(detail_clean[:650] or context[:650])
+        summary = clip_text(detail_clean or context, 360)
         deduped[link] = {
             "source": source_name,
             "title": stablecoin_title(haystack),
-            "original_title": title,
+            "original_title": clip_text(title, 120),
             "link": link,
             "summary": summary,
             "published_kst": published.isoformat() if published else "",

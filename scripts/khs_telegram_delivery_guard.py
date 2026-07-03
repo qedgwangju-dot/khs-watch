@@ -13,6 +13,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 OUT_DIR = Path("out")
+MAX_TITLE_CHARS = 120
+MAX_BODY_LINE_CHARS = 420
 
 
 @dataclass(frozen=True)
@@ -180,6 +182,23 @@ def sanitize(text: str) -> str:
     return text
 
 
+def clip_text(value: str, limit: int) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 1)].rstrip() + "…"
+
+
+def compact_body(body: str) -> str:
+    compacted: list[str] = []
+    for line in body.splitlines():
+        if len(line) > MAX_BODY_LINE_CHARS:
+            compacted.append(clip_text(line, MAX_BODY_LINE_CHARS))
+        else:
+            compacted.append(line)
+    return "\n".join(compacted).rstrip() + ("\n" if body.endswith("\n") else "")
+
+
 def read_pair(lane: Lane) -> tuple[str, str]:
     title = lane.title.read_text(encoding="utf-8") if lane.title.exists() else ""
     body = lane.body.read_text(encoding="utf-8") if lane.body.exists() else ""
@@ -227,8 +246,8 @@ def guard_lane(lane: Lane) -> None:
         return
 
     title, body = read_pair(lane)
-    title = sanitize(title)
-    body = sanitize(body)
+    title = clip_text(sanitize(title), MAX_TITLE_CHARS)
+    body = compact_body(sanitize(body))
     combined = f"{title}\n{body}"
 
     marker = has_blocker(combined, LOW_IMPACT_BLOCKERS, include_urls=True)
