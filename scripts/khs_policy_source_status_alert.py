@@ -6,6 +6,7 @@ from __future__ import annotations
 import datetime as dt
 import hashlib
 import json
+import os
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -17,6 +18,9 @@ FAILURES_PATH = OUT_DIR / "khs_source_failures.json"
 SEEN_PATH = DATA_DIR / "khs_source_failure_seen.json"
 TITLE_PATH = OUT_DIR / "khs_policy_source_status_title.txt"
 BODY_PATH = OUT_DIR / "khs_policy_source_status_alert.md"
+SINGLE_SOURCE_MIN_STREAK = int(os.getenv("KHS_SOURCE_STATUS_SINGLE_SOURCE_MIN_STREAK", "2"))
+MULTI_SOURCE_MIN_FAILURES = int(os.getenv("KHS_SOURCE_STATUS_MULTI_SOURCE_MIN_FAILURES", "2"))
+STREAK_WINDOW_HOURS = int(os.getenv("KHS_SOURCE_STATUS_STREAK_WINDOW_HOURS", "8"))
 
 
 def now_kst() -> dt.datetime:
@@ -42,6 +46,69 @@ def fingerprint(failures: list[dict], day: str) -> str:
         sorted(f"{item.get('lane')}|{item.get('source')}|{item.get('url')}" for item in failures)
     )
     return hashlib.sha256(f"{day}\n{material}".encode("utf-8")).hexdigest()[:16]
+
+
+def failure_key(item: dict) -> str:
+    return f"{item.get('lane')}|{item.get('source')}|{item.get('url')}"
+
+
+def parse_kst(value: str | None) -> dt.datetime | None:
+    if not value:
+        return None
+    try:
+        parsed = dt.datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=KST)
+    return parsed.astimezone(KST)
+
+
+def update_streaks(seen: dict, failures: list[dict], now: dt.datetime) -> int:
+    streaks = seen.setdefault("failure_streaks", {})
+    max_streak = 0
+    window = dt.timedelta(hours=max(1, STREAK_WINDOW_HOURS))
+
+    for item in failures:
+        key = item.get("key") or failure_key(item)
+        previous = streaks.get(key, {}) if isinstance(streaks.get(key), dict) else {}
+        previous_seen = parse_kst(previous.get("last_seen_kst"))
+        previous_streak = int(previous.get("streak", 0) or 0)
+        if previous_seen and previous_seen.date() == now.date() and now - previous_seen <= window:
+            streak = previous_streak + 1
+        else:
+            streak = 1
+        streaks[key] = {
+            "streak": streak,
+            "last_seen_kst": now.isoformat(timespec="seconds"),
+            "source": item.get("source"),
+            "lane": item.get("lane"),
+        }
+        max_streak = max(max_streak, streak)
+
+    # Keep stale streak state from making a future one-off timeout look consecutive.
+    for key, value in list(streaks.items()):
+        last_seen = parse_kst(value.get("last_seen_kst") if isinstance(value, dict) else None)
+        if not last_seen or now - last_seen > window:
+            streaks.pop(key, None)
+
+    return max_streak
+
+
+def should_alert(failures: list[dict], max_streak: int) -> tuple[bool, str]:
+    if len(failures) >= max(1, MULTI_SOURCE_MIN_FAILURES):
+        return True, "multiple_sources"
+    if max_streak >= max(1, SINGLE_SOURCE_MIN_STREAK):
+        return True, "repeated_single_source"
+    return False, "single_transient_source"
+
+
+def clear_streaks_if_needed() -> None:
+    seen = load_json(SEEN_PATH, {"seen": {}})
+    if seen.get("failure_streaks"):
+        seen["failure_streaks"] = {}
+        save_seen(seen)
+        print("source_status_alert=cleared_failure_streaks")
 
 
 def render(failures: list[dict], now: dt.datetime) -> tuple[str, str]:
@@ -92,17 +159,30 @@ def render(failures: list[dict], now: dt.datetime) -> tuple[str, str]:
 def main() -> int:
     failures = load_json(FAILURES_PATH, [])
     if not failures:
+        clear_streaks_if_needed()
         return 0
     failures = [item for item in failures if isinstance(item, dict)]
     if not failures:
+        clear_streaks_if_needed()
         return 0
 
     now = now_kst()
     day = now.strftime("%Y-%m-%d")
-    fp = fingerprint(failures, day)
     seen = load_json(SEEN_PATH, {"seen": {}})
+    max_streak = update_streaks(seen, failures, now)
+    alert_ok, alert_reason = should_alert(failures, max_streak)
+    if not alert_ok:
+        save_seen(seen)
+        print(
+            f"source_status_alert=skipped_{alert_reason} "
+            f"failures={len(failures)} max_streak={max_streak}"
+        )
+        return 0
+
+    fp = fingerprint(failures, day)
     seen_map = seen.setdefault("seen", {})
     if fp in seen_map:
+        save_seen(seen)
         print(f"source_status_alert=skipped_duplicate failures={len(failures)}")
         return 0
 
