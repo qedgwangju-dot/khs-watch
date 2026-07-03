@@ -131,7 +131,7 @@ def clean_text(value: object) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def fetch_text(url: str, timeout: int = 12, attempts: int = 2) -> tuple[str | None, str | None]:
+def fetch_text(url: str, timeout: int = 6, attempts: int = 1) -> tuple[str | None, str | None]:
     return fetch_text_shared(url, UA, timeout=timeout, attempts=attempts)
 
 
@@ -205,7 +205,7 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
             continue
 
         detail_fetches += 1
-        detail_text, detail_error = fetch_text(link, timeout=10, attempts=1)
+        detail_text, detail_error = fetch_text(link, timeout=6, attempts=1)
         detail_clean = clean_text(detail_text or "") if not detail_error else ""
         haystack = f"{title} {context} {detail_clean[:9000]}"
         if not is_policy_candidate(haystack, source_name):
@@ -277,7 +277,7 @@ def main() -> int:
     now = now_kst()
     candidates: list[dict] = []
     for source_name, source_url in SOURCES:
-        text, error = fetch_text(source_url)
+        text, error = fetch_text(source_url, timeout=6, attempts=1)
         if error:
             record_source_failure(
                 lane="domestic_stablecoin",

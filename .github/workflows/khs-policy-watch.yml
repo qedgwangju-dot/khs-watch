@@ -33,6 +33,9 @@ jobs:
       KHS_NUCLEAR_MAX_AGE_HOURS: "72"
       KHS_TRUSTED_NEWS_MAX_AGE_HOURS: "72"
       KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "12"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "6"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
       TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
     steps:

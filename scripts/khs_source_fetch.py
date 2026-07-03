@@ -16,6 +16,7 @@ from pathlib import Path
 OUT_DIR = Path("out")
 FAILURES_PATH = OUT_DIR / "khs_source_failures.json"
 DEFAULT_ACCEPT = "text/html,application/xhtml+xml,*/*"
+TRUE_VALUES = {"1", "true", "yes", "y", "on"}
 
 
 def fetch_text(
@@ -27,8 +28,21 @@ def fetch_text(
     accept: str = DEFAULT_ACCEPT,
 ) -> tuple[str | None, str | None]:
     errors: list[str] = []
+    proxy_base = os.getenv("KHS_SOURCE_PROXY_URL", "").strip()
+    proxy_first = os.getenv("KHS_SOURCE_PROXY_FIRST", "").strip().lower() in TRUE_VALUES
+    proxy_timeout = _env_int("KHS_SOURCE_PROXY_TIMEOUT_SECONDS", 12)
+    direct_fallback_cap = _env_int("KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS", 8)
+
+    if proxy_base and proxy_first:
+        proxy_text, proxy_error = _fetch_proxy(proxy_base, url, user_agent, accept, proxy_timeout)
+        if proxy_error is None:
+            return proxy_text, None
+        errors.append(f"proxy first timeout={proxy_timeout}s {proxy_error}")
+
     for attempt in range(1, attempts + 1):
         current_timeout = timeout if attempt == 1 else min(max(timeout * 2, timeout + 10), 45)
+        if proxy_first and proxy_base:
+            current_timeout = min(current_timeout, direct_fallback_cap)
         text, error = _fetch_direct(url, user_agent, accept, current_timeout)
         if error is None:
             return text, None
@@ -36,15 +50,14 @@ def fetch_text(
         if attempt < attempts:
             time.sleep(1.5 * attempt)
 
-    proxy_base = os.getenv("KHS_SOURCE_PROXY_URL", "").strip()
-    if proxy_base:
-        proxy_url = _build_proxy_url(proxy_base, url)
-        proxy_text, proxy_error = _fetch_direct(proxy_url, user_agent, accept, min(max(timeout, 25), 45))
+    if proxy_base and not proxy_first:
+        proxy_text, proxy_error = _fetch_proxy(proxy_base, url, user_agent, accept, proxy_timeout)
         if proxy_error is None:
             return proxy_text, None
-        errors.append(f"proxy {proxy_error}")
+        errors.append(f"proxy timeout={proxy_timeout}s {proxy_error}")
     else:
-        errors.append("proxy not configured")
+        if not proxy_base:
+            errors.append("proxy not configured")
 
     return None, " | ".join(errors)
 
@@ -88,9 +101,28 @@ def _fetch_direct(url: str, user_agent: str, accept: str, timeout: int) -> tuple
         return None, f"{type(exc).__name__}: {exc}"
 
 
+def _fetch_proxy(
+    proxy_base: str,
+    target_url: str,
+    user_agent: str,
+    accept: str,
+    timeout: int,
+) -> tuple[str | None, str | None]:
+    proxy_url = _build_proxy_url(proxy_base, target_url)
+    return _fetch_direct(proxy_url, user_agent, accept, timeout)
+
+
 def _build_proxy_url(proxy_base: str, target_url: str) -> str:
     sep = "&" if "?" in proxy_base else "?"
     return f"{proxy_base}{sep}url={urllib.parse.quote(target_url, safe='')}"
+
+
+def _env_int(name: str, default: int) -> int:
+    try:
+        value = int(os.getenv(name, str(default)))
+    except ValueError:
+        return default
+    return max(1, value)
 
 
 def _load_failures() -> list[dict]:
