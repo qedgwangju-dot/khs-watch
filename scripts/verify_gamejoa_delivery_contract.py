@@ -21,6 +21,7 @@ WORKFLOW_FILES = [
 ]
 
 RUNNER_FILE = ROOT / "scripts" / "gamejoa_preopen_news_radar_full_compact_runner.py"
+GENERATED_REPORT_GUARD_FILE = ROOT / "scripts" / "verify_gamejoa_generated_report.py"
 PRODUCTION_RUNNER = "gamejoa_preopen_news_radar_fda_quality_runner"
 LOCKED_TELEGRAM_MODULE = "gamejoa_preopen_news_radar_full_compact_runner"
 
@@ -28,6 +29,8 @@ REQUIRED_WORKFLOW_SNIPPETS = [
     "TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}",
     "TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}",
     'SEND_TELEGRAM: "true"',
+    "Preflight",
+    "python scripts/verify_gamejoa_generated_report.py",
 ]
 
 FORBIDDEN_WORKFLOW_SNIPPETS = [
@@ -49,6 +52,14 @@ REQUIRED_RUNNER_SNIPPETS = [
     "write_delivery_status(\"sent\"",
 ]
 
+REQUIRED_GENERATED_GUARD_SNIPPETS = [
+    "prod.runner.guard_preopen_report(text)",
+    "REQUIRED_ITEM_MARKERS",
+    "MATRIX_TERMS",
+    "FORBIDDEN_TEXT",
+    "GAMEJOA generated report quality OK",
+]
+
 
 def main() -> int:
     errors: list[str] = []
@@ -65,6 +76,14 @@ def main() -> int:
     for snippet in REQUIRED_RUNNER_SNIPPETS:
         if snippet not in runner:
             errors.append(f"{RUNNER_FILE.relative_to(ROOT)} missing required guard snippet: {snippet}")
+
+    if not GENERATED_REPORT_GUARD_FILE.exists():
+        errors.append(f"{GENERATED_REPORT_GUARD_FILE.relative_to(ROOT)} is missing")
+    else:
+        generated_guard = GENERATED_REPORT_GUARD_FILE.read_text(encoding="utf-8")
+        for snippet in REQUIRED_GENERATED_GUARD_SNIPPETS:
+            if snippet not in generated_guard:
+                errors.append(f"{GENERATED_REPORT_GUARD_FILE.relative_to(ROOT)} missing required guard snippet: {snippet}")
 
     sys.path.insert(0, str(ROOT / "scripts"))
     production = importlib.import_module(PRODUCTION_RUNNER)

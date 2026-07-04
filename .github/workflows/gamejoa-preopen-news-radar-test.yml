@@ -40,7 +40,18 @@ jobs:
           python scripts/verify_gamejoa_delivery_contract.py
           python scripts/verify_gamejoa_semisupply_contract.py
 
+      - name: Preflight strict GAMEJOA radar quality
+        env:
+          SEND_TELEGRAM: "false"
+          TELEGRAM_DRY_RUN: "true"
+        run: |
+          python scripts/gamejoa_preopen_news_radar_fda_quality_runner.py
+          python scripts/verify_gamejoa_generated_report.py
+
       - name: Build and send strict GAMEJOA radar test
+        env:
+          SEND_TELEGRAM: "true"
+          TELEGRAM_DRY_RUN: "false"
         run: python scripts/gamejoa_preopen_news_radar_fda_quality_runner.py
 
       - name: Publish report summary

@@ -72,7 +72,19 @@ jobs:
             fi
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Preflight GAMEJOA preopen news radar quality
+        env:
+          SEND_TELEGRAM: "false"
+          TELEGRAM_DRY_RUN: "true"
+        run: |
+          python scripts/gamejoa_preopen_news_radar_fda_quality_runner.py
+          python scripts/verify_gamejoa_generated_report.py
+
       - name: Build and send GAMEJOA preopen news radar
+        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.telegram_dry_run != 'true' }}
+        env:
+          SEND_TELEGRAM: "true"
+          TELEGRAM_DRY_RUN: "false"
         run: python scripts/gamejoa_preopen_news_radar_fda_quality_runner.py
 
       - name: Publish report summary
