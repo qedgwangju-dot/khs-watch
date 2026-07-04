@@ -539,6 +539,14 @@ def alert_text(alert: dict) -> str:
     return base.norm(" ".join(str(part or "") for part in parts))
 
 
+def alert_dedup_key(alert: dict) -> tuple[str, str]:
+    raw_title = str(alert.get("original_news") or alert.get("news") or "")
+    raw_title = re.split(r"\s+-\s+", raw_title, maxsplit=1)[0].strip()
+    theme = str(alert.get("supply_chain_theme") or "")
+    canonical = base.norm(theme or raw_title or alert.get("news") or alert.get("link"))
+    return (canonical, str(alert.get("published") or "")[:10])
+
+
 def has_term(text: str, terms: list[str]) -> bool:
     return any(term.lower() in text for term in terms)
 
@@ -1135,7 +1143,7 @@ def normalize_alert_for_output(alert: dict) -> dict:
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
     selected: list[dict] = []
-    seen: set[tuple[str, str, str]] = set()
+    seen: set[tuple[str, str]] = set()
     for alert in initial + alerts:
         if is_low_impact_admin_alert(alert):
             continue
@@ -1144,11 +1152,7 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         if is_local_dc_like(alert) and not is_actionable_local_dc_policy(alert):
             continue
         normalized = normalize_alert_for_output(alert)
-        key = (
-            base.norm(normalized.get("news")),
-            base.norm(normalized.get("publisher")),
-            str(normalized.get("published") or "")[:10],
-        )
+        key = alert_dedup_key(normalized)
         if key in seen:
             continue
         seen.add(key)

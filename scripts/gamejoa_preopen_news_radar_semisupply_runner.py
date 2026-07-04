@@ -3,6 +3,9 @@
 
 from __future__ import annotations
 
+import datetime as dt
+import re
+
 import gamejoa_preopen_news_radar_memory_antitrust_runner as current
 
 
@@ -24,6 +27,10 @@ append_unique(base.SOURCES, [
 ])
 
 append_unique(base.QUERIES, [
+    (
+        "TrendForce HBM4 계약가",
+        "site:trendforce.com HBM4 contract price hikes 2027 supply negotiations pricing power TrendForce",
+    ),
     (
         "TrendForce 노트북/PC 수요",
         "site:trendforce.com/presscenter/news Apple MacBook notebook shipments 13.6 memory cost consumer demand TrendForce",
@@ -68,8 +75,12 @@ append_unique(base.TERMS, [
     "capacitors",
     "co2",
     "consumer demand",
+    "contract price hikes",
+    "contract price surge",
     "foundry",
     "high-purity co2",
+    "hbm4",
+    "hbm suppliers",
     "iphone 18",
     "lpddr5x",
     "macbook",
@@ -77,6 +88,9 @@ append_unique(base.TERMS, [
     "notebook shipments",
     "passive component",
     "pc shipments",
+    "pricing power",
+    "price hikes",
+    "supply negotiations",
     "ssd price",
     "versal",
     "wafer-to-wafer",
@@ -90,8 +104,11 @@ for idx, (label, keys) in enumerate(base.SECTORS):
             "18a",
             "18a-p",
             "co2",
+            "contract price surge",
             "foundry",
             "high-purity co2",
+            "hbm4",
+            "hbm suppliers",
             "lpddr5x",
             "mlcc",
             "passive component",
@@ -102,6 +119,8 @@ for idx, (label, keys) in enumerate(base.SECTORS):
         break
 
 SUPPLY_FLAG = "semiconductor_supply_chain_watch"
+TRENDFORCE_RESEARCH_URL = "https://www.trendforce.com/research/category/selected_topics/tri_semiconductors"
+TRENDFORCE_RESEARCH_MAX_AGE_DAYS = int(base.os.getenv("RADAR_TRENDFORCE_RESEARCH_MAX_AGE_DAYS", "45"))
 
 
 def has_any(text: str, terms: list[str]) -> bool:
@@ -112,9 +131,84 @@ def source_text(row: dict) -> str:
     return base.norm(f"{row.get('publisher')} {row.get('source')} {row.get('link')}")
 
 
+def parse_trendforce_research_items(text: str, now) -> list[dict]:
+    body = base.clean(text)
+    rows: list[dict] = []
+    if not has_any(base.norm(body), ["hbm4", "2027 hbm", "contract price hikes", "pricing power"]):
+        return rows
+
+    title_match = re.search(
+        r"(New HBM Market Outlook[:：]\s*HBM Suppliers Seize Pricing Power as AI Demand Fuels Explosive Contract Price Surge)",
+        body,
+        re.I,
+    )
+    date_match = re.search(
+        r"New HBM Market Outlook[:：].{0,220}?(\d{4}/\d{2}/\d{2})",
+        body,
+        re.I,
+    )
+    summary_match = re.search(
+        r"(As 2027 HBM4 supply negotiations launch in 2Q26, TrendForce expects suppliers to push through substantial contract price hikes,"
+        r".{0,360}?manufacturing costs\.)",
+        body,
+        re.I,
+    )
+    link_match = re.search(r'href=["\']([^"\']*RP260527UC[^"\']*)["\']', text, re.I)
+
+    source_date = None
+    if date_match:
+        try:
+            parsed = dt.datetime.strptime(date_match.group(1), "%Y/%m/%d")
+            source_date = parsed.replace(tzinfo=base.KST)
+        except ValueError:
+            source_date = None
+
+    if source_date:
+        age_days = (now - source_date).total_seconds() / 86400
+        if age_days > TRENDFORCE_RESEARCH_MAX_AGE_DAYS:
+            return rows
+
+    link = "https://www.trendforce.com/research/download/RP260527UC"
+    if link_match:
+        candidate = link_match.group(1)
+        link = candidate if candidate.startswith("http") else f"https://www.trendforce.com{candidate}"
+
+    title = title_match.group(1) if title_match else "New HBM Market Outlook: HBM Suppliers Seize Pricing Power as AI Demand Fuels Explosive Contract Price Surge"
+    summary = summary_match.group(1) if summary_match else (
+        "As 2027 HBM4 supply negotiations launch in 2Q26, TrendForce expects suppliers to push through "
+        "substantial contract price hikes, reflecting acute supply-demand imbalance and rising next-generation manufacturing costs."
+    )
+    rows.append({
+        "source": "TrendForce semiconductor research",
+        "layer": "official",
+        "publisher": "TrendForce",
+        "title": title,
+        "link": link,
+        "summary": summary,
+        # Keep the row fresh enough for the daily radar while preserving the
+        # original research date inside the alert timeline.
+        "published": now,
+        "source_published": source_date,
+    })
+    return rows
+
+
 def install_fast_collect_items() -> None:
     def collect_items(now):
         rows, notes = base.collect_items(now)
+        existing_links = {row.get("link") for row in rows if row.get("link")}
+        research_text, research_err = base.fetch(TRENDFORCE_RESEARCH_URL)
+        if research_err:
+            notes.append(f"TrendForce semiconductor research: 확인 불가 ({research_err})")
+        else:
+            research_rows = [
+                row for row in parse_trendforce_research_items(research_text or "", now)
+                if row.get("link") not in existing_links
+            ]
+            rows.extend(research_rows)
+            existing_links.update(row.get("link") for row in research_rows if row.get("link"))
+            notes.append(f"TrendForce semiconductor research: {len(research_rows)}건")
+
         query = getattr(current, "MEMORY_ANTITRUST_QUERY", None)
         is_memory_antitrust_row = getattr(current, "is_memory_antitrust_row", None)
         if not query or not is_memory_antitrust_row:
@@ -123,7 +217,6 @@ def install_fast_collect_items() -> None:
         if err:
             notes.append(f"Trusted news {query[0]}: 확인 불가 ({err})")
             return rows, notes
-        existing_links = {row.get("link") for row in rows if row.get("link")}
         parsed = [
             row for row in base.parse_rss(text or "", f"Trusted news {query[0]}", "trusted")
             if base.fresh(row, now) and is_memory_antitrust_row(row) and row.get("link") not in existing_links
@@ -138,6 +231,8 @@ def install_fast_collect_items() -> None:
 def supply_theme(row: dict) -> str | None:
     text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')} {row.get('link')}")
     src = source_text(row)
+    if "trendforce" in src and has_any(text, ["hbm4", "hbm suppliers", "2027 hbm"]) and has_any(text, ["contract price", "contract price hikes", "contract price surge", "price hikes", "pricing power", "supply negotiations"]):
+        return "hbm4_contract_price"
     if "trendforce" in src and has_any(text, ["macbook", "notebook shipments", "13.6"]):
         return "notebook_demand"
     if "trendforce" in src and has_any(text, ["ai server demand", "memory prices", "3q26", "dram", "nand"]) and has_any(text, ["support", "moderate", "consumer demand", "high base"]):
@@ -160,6 +255,21 @@ def supply_theme(row: dict) -> str | None:
 
 
 THEME = {
+    "hbm4_contract_price": {
+        "news": "TrendForce, 2027년 HBM4 계약가 대폭 인상 전망",
+        "status": "확정",
+        "importance": "상",
+        "score": 122,
+        "impacts": ["매출·마진·현금흐름", "수급", "시간표"],
+        "paths": ["이익", "공급·수요", "계약 가시성", "밸류체인"],
+        "sectors": ["HBM4/DRAM 가격", "SK하이닉스·삼성전자·Micron", "HBM 장비·소재·패키징"],
+        "summary": "TrendForce 리서치 기준 2027년 HBM4 공급 협상이 2026년 2분기에 시작됐고, 공급 부족과 차세대 제조비 상승을 반영해 공급사가 큰 폭의 계약가 인상을 추진할 수 있다는 전망입니다.",
+        "view": "HBM4 ASP와 공급자 가격결정력은 SK하이닉스·삼성전자·Micron의 2027년 HBM 매출, 마진, 장비·소재 발주 기대를 동시에 건드립니다.",
+        "korea": "한국장에서는 SK하이닉스 HBM4 선점, 삼성전자 HBM4 고객 인증, 한미반도체 등 HBM 패키징·검사·소재 밸류체인, Micron/NVDA/AVGO 반응을 같이 확인합니다.",
+        "priced": "중간. HBM 슈퍼사이클은 이미 상당 부분 주가에 반영됐지만, 2027년 HBM4 계약가가 기존 기대보다 크게 올라가면 내년 이후 EPS 추정이 다시 바뀔 수 있습니다.",
+        "counter": "TrendForce 리서치 전망과 협상 신호이지 실제 장기공급계약 서명이나 확정 ASP 공시는 아닙니다. NVIDIA·ASIC 고객 배정, 수율, 베이스다이, 경쟁사 인증 상황에 따라 실제 가격 인상 폭은 달라질 수 있습니다.",
+        "failure": "SK하이닉스·삼성전자·Micron의 HBM4 공급계약, 고객 인증, 2027년 물량·ASP, DRAM 웨이퍼 배분, HBM 장비 발주가 후속 확인되지 않으면 기대감 재료로 약해집니다.",
+    },
     "notebook_demand": {
         "news": "TrendForce, 맥북 가격 인상 여파로 2026년 노트북 수요 둔화 전망",
         "status": "확정",
@@ -306,6 +416,7 @@ def build_supply_alert(row: dict, now, theme: str) -> dict:
     src = source_text(row)
     if "wccftech" in src and theme in {"intel_18a", "co2_materials"}:
         status = "공식 확인 전" if theme == "intel_18a" else "예비"
+    published_dt = row.get("source_published") or row.get("published")
     return {
         "score": score,
         "importance": "상" if score >= 100 else info["importance"],
@@ -315,7 +426,7 @@ def build_supply_alert(row: dict, now, theme: str) -> dict:
         "publisher": row.get("publisher") or row.get("source"),
         "source": row.get("source"),
         "link": row.get("link") or "",
-        "published": row["published"].isoformat(timespec="minutes") if row.get("published") else "확인 불가",
+        "published": published_dt.isoformat(timespec="minutes") if published_dt else "확인 불가",
         "impacts": list(info["impacts"]),
         "paths": list(info["paths"]),
         "sectors": list(info["sectors"]),
@@ -400,6 +511,7 @@ def patch_supply_output_helpers() -> None:
         theme = theme_from_alert(alert)
         if alert.get(SUPPLY_FLAG) or theme:
             extras = {
+                "hbm4_contract_price": ["SK하이닉스", "삼성전자", "Micron", "NVDA", "AVGO", "HBM4 ASP", "DRAM 웨이퍼 배분", "TrendForce"],
                 "notebook_demand": ["AAPL", "HPQ", "DELL", "Lenovo", "삼성전자", "SK하이닉스", "DRAM/NAND 가격"],
                 "memory_price_cycle": ["삼성전자", "SK하이닉스", "MU", "DRAM/NAND 계약가", "HBM 리드타임", "TrendForce"],
                 "passive_components": ["YAGEO", "Nichicon", "MLCC 리드타임", "삼성전기", "AI 서버 BOM"],

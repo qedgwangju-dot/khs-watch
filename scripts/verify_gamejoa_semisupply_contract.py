@@ -17,6 +17,14 @@ sys.path.insert(0, str(ROOT / "scripts"))
 SAMPLES = [
     {
         "publisher": "TrendForce",
+        "source": "TrendForce semiconductor research",
+        "title": "New HBM Market Outlook: HBM Suppliers Seize Pricing Power as AI Demand Fuels Explosive Contract Price Surge",
+        "summary": "As 2027 HBM4 supply negotiations launch in 2Q26, TrendForce expects suppliers to push through substantial contract price hikes, reflecting acute supply-demand imbalance and rising next-generation manufacturing costs.",
+        "link": "https://www.trendforce.com/research/download/RP260527UC",
+        "expected": "TrendForce, 2027년 HBM4 계약가 대폭 인상 전망",
+    },
+    {
+        "publisher": "TrendForce",
         "source": "Trusted news TrendForce notebook",
         "title": "Apple's Across-the-Board Price Increases Add Uncertainty to Consumer Demand; Global Notebook Shipments Forecast to Decline 13.6% in 2026, Says TrendForce",
         "summary": "MacBook price increases consumer demand notebook shipments memory costs AI server demand",
@@ -62,6 +70,29 @@ def main() -> int:
     prod = importlib.import_module("gamejoa_preopen_news_radar_fda_quality_runner")
     now = dt.datetime(2026, 7, 4, 6, 30, tzinfo=ZoneInfo("Asia/Seoul"))
     errors: list[str] = []
+
+    research_html = """
+    <a href="/research/download/RP260527UC">New HBM Market Outlook：HBM Suppliers Seize Pricing Power as AI Demand Fuels Explosive Contract Price Surge</a>
+    2026/05/27
+    As 2027 HBM4 supply negotiations launch in 2Q26, TrendForce expects suppliers to push through substantial contract price hikes,
+    reflecting acute supply-demand imbalance and rising next-generation manufacturing costs.
+    """
+    research_rows = prod.current.parse_trendforce_research_items(research_html, now)
+    if not research_rows:
+        errors.append("TrendForce research parser missed HBM4 contract price item")
+    elif research_rows[0].get("source_published") is None:
+        errors.append("TrendForce research parser missed source date")
+
+    duplicate_a = {
+        "news": "TrendForce, AI 서버가 메모리 가격 지지하나 소비 수요 둔화 체크",
+        "original_news": "AI Server Demand Continues to Support Memory Prices in 3Q26, but Gains Moderate as Consumer Demand Weakens and High Base Effects Take Hold, Says TrendForce",
+        "publisher": "TrendForce semiconductor RSS",
+        "published": "2026-07-03T14:49+09:00",
+    }
+    duplicate_b = dict(duplicate_a, publisher="TrendForce", original_news=f"{duplicate_a['original_news']} - TrendForce")
+    if prod.runner.alert_dedup_key(duplicate_a) != prod.runner.alert_dedup_key(duplicate_b):
+        errors.append("TrendForce duplicate dedupe key mismatch")
+
     for sample in SAMPLES:
         row = dict(sample)
         expected = row.pop("expected")
