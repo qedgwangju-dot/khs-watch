@@ -39,7 +39,7 @@ jobs:
       KHS_SOURCE_STATUS_SINGLE_SOURCE_MIN_STREAK: "2"
       KHS_SOURCE_STATUS_MULTI_SOURCE_MIN_FAILURES: "2"
       KHS_SOURCE_STATUS_STREAK_WINDOW_HOURS: "8"
-      KHS_TELEGRAM_DEDUPE_HOURS: "18"
+      KHS_TELEGRAM_DEDUPE_HOURS: "48"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
       TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
     steps:
@@ -314,7 +314,7 @@ jobs:
 
           run_url = f"https://github.com/{repo}/actions/runs/{run_id}" if run_id else f"https://github.com/{repo}/actions"
           issue_url = f"https://github.com/{repo}/issues"
-          dedupe_hours = int(os.environ.get("KHS_TELEGRAM_DEDUPE_HOURS", "18"))
+          dedupe_hours = int(os.environ.get("KHS_TELEGRAM_DEDUPE_HOURS", "48"))
           state_path = pathlib.Path("data/khs_telegram_delivery_seen.json")
 
           lanes = [
