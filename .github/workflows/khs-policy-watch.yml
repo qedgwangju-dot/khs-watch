@@ -39,6 +39,7 @@ jobs:
       KHS_SOURCE_STATUS_SINGLE_SOURCE_MIN_STREAK: "2"
       KHS_SOURCE_STATUS_MULTI_SOURCE_MIN_FAILURES: "2"
       KHS_SOURCE_STATUS_STREAK_WINDOW_HOURS: "8"
+      KHS_TELEGRAM_DEDUPE_HOURS: "18"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
       TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
     steps:
@@ -298,6 +299,10 @@ jobs:
           python - <<'PY'
           import os
           import pathlib
+          import datetime as dt
+          import hashlib
+          import json
+          import re
           import urllib.parse
           import urllib.request
 
@@ -309,6 +314,8 @@ jobs:
 
           run_url = f"https://github.com/{repo}/actions/runs/{run_id}" if run_id else f"https://github.com/{repo}/actions"
           issue_url = f"https://github.com/{repo}/issues"
+          dedupe_hours = int(os.environ.get("KHS_TELEGRAM_DEDUPE_HOURS", "18"))
+          state_path = pathlib.Path("data/khs_telegram_delivery_seen.json")
 
           lanes = [
               (pathlib.Path("out/khs_policy_watch_alert_title.txt"), pathlib.Path("out/khs_policy_watch_alert.md"), "KHS policy watch alert"),
@@ -332,13 +339,81 @@ jobs:
               body = report.read_text(encoding="utf-8") if report.exists() else "KHS policy watch test message."
               messages.append((title, body))
 
+          def parse_utc(value):
+              try:
+                  return dt.datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(dt.timezone.utc)
+              except Exception:
+                  return None
+
+          def canonical_message(title, body):
+              text = f"{title}\n\n{body}"
+              text = re.sub(r"\d{4}년\s+\d{2}월\s+\d{2}일\s+\d{1,2}:\d{2}\s+KST", "<KST_TIME>", text)
+              text = re.sub(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?(?:[+-]\d{2}:\d{2}|Z)?", "<ISO_TIME>", text)
+              text = re.sub(r"조회\s+\d{1,2}:\d{2}\s+KST", "조회 <KST_TIME>", text)
+              text = re.sub(r"조회시각:\s*\d{4}-\d{2}-\d{2}[^\n]*", "조회시각: <TIME>", text)
+              text = re.sub(r"Actions:\s*https://github.com/\S+", "Actions: <URL>", text)
+              text = re.sub(r"Issues:\s*https://github.com/\S+", "Issues: <URL>", text)
+              return re.sub(r"\s+", " ", text).strip()
+
+          now_utc = dt.datetime.now(dt.timezone.utc)
+          if state_path.exists():
+              try:
+                  state = json.loads(state_path.read_text(encoding="utf-8"))
+              except json.JSONDecodeError:
+                  state = {"sent": {}}
+          else:
+              state = {"sent": {}}
+          sent_state = state.setdefault("sent", {})
+          cutoff = now_utc - dt.timedelta(hours=max(dedupe_hours * 4, 72))
+          sent_state = {
+              key: value for key, value in sent_state.items()
+              if (parse_utc(str(value.get("sent_at_utc") or "")) or now_utc) >= cutoff
+          }
+          state["sent"] = sent_state
+
+          sendable = []
+          skipped = []
           for title, body in messages:
+              digest = hashlib.sha256(canonical_message(title, body).encode("utf-8")).hexdigest()[:20]
+              sent_at = parse_utc(str(sent_state.get(digest, {}).get("sent_at_utc") or ""))
+              if sent_at and now_utc - sent_at < dt.timedelta(hours=dedupe_hours) and not title.endswith("Telegram test"):
+                  skipped.append((title, digest, sent_at.isoformat()))
+                  continue
+              sendable.append((title, body, digest))
+
+          for title, body, digest in sendable:
               text = f"{title}\n\n{body[:3300]}\n\nActions: {run_url}\nIssues: {issue_url}"
               data = urllib.parse.urlencode({"chat_id": chat_id, "text": text[:4096], "disable_web_page_preview": "true"}).encode("utf-8")
               req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
               with urllib.request.urlopen(req, timeout=20) as resp:
                   resp.read()
-          print(f"telegram_messages={len(messages)}")
+              sent_state[digest] = {
+                  "sent_at_utc": now_utc.isoformat().replace("+00:00", "Z"),
+                  "title": title,
+                  "preview": re.sub(r"\s+", " ", body)[:220],
+              }
+
+          if sendable:
+              state_path.parent.mkdir(parents=True, exist_ok=True)
+              state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+          for title, digest, sent_at in skipped:
+              print(f"telegram_duplicate_skipped digest={digest} first_sent={sent_at} title={title}")
+          print(f"telegram_messages={len(sendable)} skipped_duplicates={len(skipped)}")
           PY
 
-          echo "KHS policy Telegram: sent" >> "$GITHUB_STEP_SUMMARY"
+          echo "KHS policy Telegram: duplicate-protected send step completed" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit Telegram delivery dedupe state
+        if: always() && hashFiles('data/khs_telegram_delivery_seen.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/khs_telegram_delivery_seen.json
+          if git diff --cached --quiet; then
+            echo "KHS Telegram delivery state: no changes"
+          else
+            git commit -m "Update KHS Telegram delivery state"
+            git pull --rebase origin main
+            git push
+          fi

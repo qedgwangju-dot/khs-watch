@@ -23,10 +23,13 @@ POLICY_FILES = [
     OUT_DIR / "khs_policy_watch_alert_title.txt",
     OUT_DIR / "khs_policy_watch.md",
 ]
+ROOT = Path(__file__).resolve().parents[1]
+POLICY_WORKFLOW = ROOT / ".github" / "workflows" / "khs-policy-watch.yml"
 
 
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
+    assert_workflow_delivery_dedupe()
     cleanup()
     try:
         write_fcc_regression_fixture()
@@ -38,6 +41,20 @@ def main() -> int:
         cleanup()
     print("khs_policy_delivery_contract=passed")
     return 0
+
+
+def assert_workflow_delivery_dedupe() -> None:
+    workflow = POLICY_WORKFLOW.read_text(encoding="utf-8")
+    required = [
+        "KHS_TELEGRAM_DEDUPE_HOURS",
+        "data/khs_telegram_delivery_seen.json",
+        "hashlib.sha256(canonical_message(title, body).encode(\"utf-8\"))",
+        "telegram_duplicate_skipped",
+        "Commit Telegram delivery dedupe state",
+    ]
+    for marker in required:
+        if marker not in workflow:
+            raise AssertionError(f"KHS policy workflow missing Telegram delivery dedupe marker: {marker}")
 
 
 def cleanup() -> None:
