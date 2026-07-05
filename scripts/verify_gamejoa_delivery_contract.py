@@ -32,6 +32,8 @@ REQUIRED_WORKFLOW_SNIPPETS = [
     'SEND_TELEGRAM: "true"',
     'RADAR_TRENDFORCE_RESEARCH_MAX_AGE_DAYS: "3"',
     'PREOPEN_SEND_WINDOW_START_KST: "05:30"',
+    "radar_run_mode:",
+    "RADAR_RUN_MODE:",
     "Preflight",
     "python scripts/verify_gamejoa_generated_report.py",
 ]
@@ -59,6 +61,7 @@ REQUIRED_RUNNER_SNIPPETS = [
     "generic_policy_explanation_displayed",
     "write_delivery_status(\"skipped_empty\"",
     "write_delivery_status(\"sent\"",
+    "RADAR_RUN_MODE",
 ]
 
 REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
@@ -66,6 +69,7 @@ REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
     "filter_previously_seen_alerts(alerts, now)",
     "record_seen_alerts(deduped, now)",
     "preopen_send_window_open(now)",
+    "RADAR_RUN_MODE",
 ]
 
 REQUIRED_GENERATED_GUARD_SNIPPETS = [

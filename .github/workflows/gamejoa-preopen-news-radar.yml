@@ -14,6 +14,14 @@ on:
         options:
           - "false"
           - "true"
+      radar_run_mode:
+        description: "preopen keeps the 06:30 window; live sends new unseen high-impact updates"
+        required: false
+        default: "preopen"
+        type: choice
+        options:
+          - "preopen"
+          - "live"
 
 permissions:
   contents: write
@@ -32,6 +40,7 @@ jobs:
       GAMEJOA_RADAR_SEEN_TTL_DAYS: "14"
       PREOPEN_SEND_WINDOW_START_KST: "05:30"
       PREOPEN_SEND_WINDOW_END_KST: "07:30"
+      RADAR_RUN_MODE: ${{ github.event.inputs.radar_run_mode || 'preopen' }}
       RADAR_FETCH_TIMEOUT_SECONDS: "10"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || vars.SEC_USER_AGENT || 'GAMEJOA-preopen-radar contact=please-set-secret' }}
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}

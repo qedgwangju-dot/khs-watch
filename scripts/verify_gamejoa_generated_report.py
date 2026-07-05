@@ -82,7 +82,7 @@ def item_blocks(lines: list[str]) -> list[tuple[str, list[str]]]:
             current_title = line
             current = []
         elif current_title:
-            if line.startswith("💡 06:30"):
+            if line.startswith("💡 "):
                 break
             current.append(line)
     if current_title:
@@ -133,7 +133,11 @@ def main() -> int:
 
     text = REPORT.read_text(encoding="utf-8")
     title_text = TITLE.read_text(encoding="utf-8").strip()
-    if not text.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · "):
+    valid_title = (
+        text.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · ")
+        or text.startswith("📰 GAMEJOA 실시간 핵심 뉴스 레이더 · ")
+    )
+    if not valid_title:
         errors.append("report title contract broken")
     if title_text != text.splitlines()[0].strip():
         errors.append("title file does not match report first line")
@@ -155,7 +159,7 @@ def main() -> int:
 
     lines = text.splitlines()
     blocks = item_blocks(lines)
-    if "장전 고충격 뉴스 직접 확인 없음" in text:
+    if "장전 고충격 뉴스 직접 확인 없음" in text or "실시간 고충격 뉴스 직접 확인 없음" in text:
         if blocks:
             errors.append("empty-radar text appears together with item blocks")
     else:

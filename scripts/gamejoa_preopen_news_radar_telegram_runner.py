@@ -131,6 +131,8 @@ def parse_hhmm(value: str, fallback: tuple[int, int]) -> int:
 
 
 def preopen_send_window_open(now) -> bool:
+    if os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live":
+        return True
     if os.getenv("ALLOW_OFF_WINDOW_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
         return True
     current = now.hour * 60 + now.minute
@@ -267,20 +269,30 @@ def compact_alert(alert: dict, idx: int, now) -> str:
 def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
     visible = display_alerts(alerts, limit)
-    title = f"장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
+    live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
+    if live_mode:
+        title = f"실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
+        comment_title = "💡 실시간 뉴스 코멘트"
+        followup_line = "다음 투자기상도에서 수치·수급·테마와 재확인 필요."
+        empty_line = "실시간 고충격 뉴스 직접 확인 없음"
+    else:
+        title = f"장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
+        comment_title = "💡 06:30 장전 뉴스 코멘트"
+        followup_line = "06:50 투자기상도에서 수치·수급·테마와 재확인 필요."
+        empty_line = "장전 고충격 뉴스 직접 확인 없음"
     lines = [title, f"조회: {now:%Y-%m-%d %H:%M KST}", f"선별: 핵심 {len(visible)}건", ""]
     if visible:
         for idx, alert in enumerate(visible, 1):
             lines.append(compact_alert(alert, idx, now))
         changed = "·".join(visible[0]["impacts"])
     else:
-        lines += ["장전 고충격 뉴스 직접 확인 없음", ""]
+        lines += [empty_line, ""]
         changed = "명확한 변화 없음"
     lines += [
-        "💡 06:30 장전 뉴스 코멘트",
+        comment_title,
         f"오늘 핵심 변화는 `{changed}`입니다. 한국장에서는 관련 해외 티커 반응과 국내 수급 확산 여부를 먼저 확인합니다.",
         f"할인율: {compact_real_yield(fred, te)}",
-        "06:50 투자기상도에서 수치·수급·테마와 재확인 필요.",
+        followup_line,
         "",
         "투자 조언이 아닌 참고용 뉴스 브리핑입니다.",
     ]
