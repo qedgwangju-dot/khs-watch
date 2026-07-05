@@ -1419,6 +1419,10 @@ def send_telegram(text: str) -> None:
         write_delivery_status("skipped_empty", chat_id, len(text), "No high-impact radar item selected")
         print(f"Telegram: skipped empty radar original_chars={len(text)}")
         return
+    if not preopen_send_window_open():
+        write_delivery_status("skipped_off_window", chat_id, len(text), "Outside GAMEJOA preopen Telegram send window")
+        print(f"Telegram: skipped outside preopen send window original_chars={len(text)}")
+        return
     token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
     if not token or not chat_id:
         write_delivery_status("blocked", chat_id, len(text), "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
@@ -1464,6 +1468,26 @@ def is_empty_radar_report(text: str) -> bool:
 
 def should_send_empty_radar() -> bool:
     return os.getenv("SEND_EMPTY_RADAR", "").lower() in {"1", "true", "yes", "y"}
+
+
+def parse_hhmm(value: str, fallback: tuple[int, int]) -> int:
+    match = re.match(r"^\s*(\d{1,2}):(\d{2})\s*$", value or "")
+    if not match:
+        return fallback[0] * 60 + fallback[1]
+    hour, minute = int(match.group(1)), int(match.group(2))
+    return max(0, min(23, hour)) * 60 + max(0, min(59, minute))
+
+
+def preopen_send_window_open() -> bool:
+    if os.getenv("ALLOW_OFF_WINDOW_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
+        return True
+    now = base.kst_now()
+    current = now.hour * 60 + now.minute
+    start = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_START_KST", "05:30"), (5, 30))
+    end = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_END_KST", "07:30"), (7, 30))
+    if start <= end:
+        return start <= current <= end
+    return current >= start or current <= end
 
 
 def fit_telegram_html(text: str, limit: int) -> str:

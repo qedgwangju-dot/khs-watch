@@ -77,11 +77,18 @@ def main() -> int:
     As 2027 HBM4 supply negotiations launch in 2Q26, TrendForce expects suppliers to push through substantial contract price hikes,
     reflecting acute supply-demand imbalance and rising next-generation manufacturing costs.
     """
-    research_rows = prod.current.parse_trendforce_research_items(research_html, now)
+    fresh_research_now = dt.datetime(2026, 5, 28, 6, 30, tzinfo=ZoneInfo("Asia/Seoul"))
+    research_rows = prod.current.parse_trendforce_research_items(research_html, fresh_research_now)
     if not research_rows:
         errors.append("TrendForce research parser missed HBM4 contract price item")
     elif research_rows[0].get("source_published") is None:
         errors.append("TrendForce research parser missed source date")
+    elif research_rows[0].get("published") != research_rows[0].get("source_published"):
+        errors.append("TrendForce research parser must keep source date as published date")
+
+    stale_research_rows = prod.current.parse_trendforce_research_items(research_html, now)
+    if stale_research_rows:
+        errors.append("stale TrendForce HBM4 research item was not excluded")
 
     duplicate_a = {
         "news": "TrendForce, AI 서버가 메모리 가격 지지하나 소비 수요 둔화 체크",

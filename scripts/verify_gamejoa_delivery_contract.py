@@ -21,6 +21,7 @@ WORKFLOW_FILES = [
 ]
 
 RUNNER_FILE = ROOT / "scripts" / "gamejoa_preopen_news_radar_full_compact_runner.py"
+TELEGRAM_RUNNER_FILE = ROOT / "scripts" / "gamejoa_preopen_news_radar_telegram_runner.py"
 GENERATED_REPORT_GUARD_FILE = ROOT / "scripts" / "verify_gamejoa_generated_report.py"
 PRODUCTION_RUNNER = "gamejoa_preopen_news_radar_fda_quality_runner"
 LOCKED_TELEGRAM_MODULE = "gamejoa_preopen_news_radar_full_compact_runner"
@@ -29,8 +30,15 @@ REQUIRED_WORKFLOW_SNIPPETS = [
     "TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}",
     "TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}",
     'SEND_TELEGRAM: "true"',
+    'RADAR_TRENDFORCE_RESEARCH_MAX_AGE_DAYS: "3"',
+    'PREOPEN_SEND_WINDOW_START_KST: "05:30"',
     "Preflight",
     "python scripts/verify_gamejoa_generated_report.py",
+]
+
+REQUIRED_PRODUCTION_WORKFLOW_SNIPPETS = [
+    "Commit GAMEJOA radar seen state",
+    "data/gamejoa_preopen_news_radar_seen.json",
 ]
 
 FORBIDDEN_WORKFLOW_SNIPPETS = [
@@ -44,12 +52,20 @@ FORBIDDEN_WORKFLOW_SNIPPETS = [
 
 REQUIRED_RUNNER_SNIPPETS = [
     "guard_preopen_report(text)",
+    "preopen_send_window_open",
     "raise RuntimeError(\"Telegram delivery blocked:",
     "raise RuntimeError(f\"Telegram delivery failed:",
     "limited_decision_impact_displayed",
     "generic_policy_explanation_displayed",
     "write_delivery_status(\"skipped_empty\"",
     "write_delivery_status(\"sent\"",
+]
+
+REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
+    "gamejoa_preopen_news_radar_seen.json",
+    "filter_previously_seen_alerts(alerts, now)",
+    "record_seen_alerts(deduped, now)",
+    "preopen_send_window_open(now)",
 ]
 
 REQUIRED_GENERATED_GUARD_SNIPPETS = [
@@ -68,6 +84,10 @@ def main() -> int:
         for snippet in REQUIRED_WORKFLOW_SNIPPETS:
             if snippet not in text:
                 errors.append(f"{path.relative_to(ROOT)} missing required snippet: {snippet}")
+        if path.name == "gamejoa-preopen-news-radar.yml":
+            for snippet in REQUIRED_PRODUCTION_WORKFLOW_SNIPPETS:
+                if snippet not in text:
+                    errors.append(f"{path.relative_to(ROOT)} missing required snippet: {snippet}")
         for snippet in FORBIDDEN_WORKFLOW_SNIPPETS:
             if snippet in text:
                 errors.append(f"{path.relative_to(ROOT)} contains forbidden reroute snippet: {snippet}")
@@ -76,6 +96,11 @@ def main() -> int:
     for snippet in REQUIRED_RUNNER_SNIPPETS:
         if snippet not in runner:
             errors.append(f"{RUNNER_FILE.relative_to(ROOT)} missing required guard snippet: {snippet}")
+
+    telegram_runner = TELEGRAM_RUNNER_FILE.read_text(encoding="utf-8")
+    for snippet in REQUIRED_TELEGRAM_RUNNER_SNIPPETS:
+        if snippet not in telegram_runner:
+            errors.append(f"{TELEGRAM_RUNNER_FILE.relative_to(ROOT)} missing required guard snippet: {snippet}")
 
     if not GENERATED_REPORT_GUARD_FILE.exists():
         errors.append(f"{GENERATED_REPORT_GUARD_FILE.relative_to(ROOT)} is missing")

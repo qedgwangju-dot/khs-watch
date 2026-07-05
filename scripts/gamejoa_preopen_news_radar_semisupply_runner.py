@@ -120,7 +120,7 @@ for idx, (label, keys) in enumerate(base.SECTORS):
 
 SUPPLY_FLAG = "semiconductor_supply_chain_watch"
 TRENDFORCE_RESEARCH_URL = "https://www.trendforce.com/research/category/selected_topics/tri_semiconductors"
-TRENDFORCE_RESEARCH_MAX_AGE_DAYS = int(base.os.getenv("RADAR_TRENDFORCE_RESEARCH_MAX_AGE_DAYS", "45"))
+TRENDFORCE_RESEARCH_MAX_AGE_DAYS = int(base.os.getenv("RADAR_TRENDFORCE_RESEARCH_MAX_AGE_DAYS", "3"))
 
 
 def has_any(text: str, terms: list[str]) -> bool:
@@ -163,10 +163,11 @@ def parse_trendforce_research_items(text: str, now) -> list[dict]:
         except ValueError:
             source_date = None
 
-    if source_date:
-        age_days = (now - source_date).total_seconds() / 86400
-        if age_days > TRENDFORCE_RESEARCH_MAX_AGE_DAYS:
-            return rows
+    if not source_date:
+        return rows
+    age_days = (now - source_date).total_seconds() / 86400
+    if age_days > TRENDFORCE_RESEARCH_MAX_AGE_DAYS:
+        return rows
 
     link = "https://www.trendforce.com/research/download/RP260527UC"
     if link_match:
@@ -185,9 +186,7 @@ def parse_trendforce_research_items(text: str, now) -> list[dict]:
         "title": title,
         "link": link,
         "summary": summary,
-        # Keep the row fresh enough for the daily radar while preserving the
-        # original research date inside the alert timeline.
-        "published": now,
+        "published": source_date,
         "source_published": source_date,
     })
     return rows

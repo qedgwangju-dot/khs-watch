@@ -16,7 +16,7 @@ on:
           - "true"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: gamejoa-preopen-news-radar
@@ -27,7 +27,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      RADAR_MAX_AGE_HOURS: "96"
+      RADAR_MAX_AGE_HOURS: "72"
+      RADAR_TRENDFORCE_RESEARCH_MAX_AGE_DAYS: "3"
+      GAMEJOA_RADAR_SEEN_TTL_DAYS: "14"
+      PREOPEN_SEND_WINDOW_START_KST: "05:30"
+      PREOPEN_SEND_WINDOW_END_KST: "07:30"
       RADAR_FETCH_TIMEOUT_SECONDS: "10"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || vars.SEC_USER_AGENT || 'GAMEJOA-preopen-radar contact=please-set-secret' }}
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
@@ -86,6 +90,20 @@ jobs:
           SEND_TELEGRAM: "true"
           TELEGRAM_DRY_RUN: "false"
         run: python scripts/gamejoa_preopen_news_radar_fda_quality_runner.py
+
+      - name: Commit GAMEJOA radar seen state
+        if: always() && hashFiles('data/gamejoa_preopen_news_radar_seen.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/gamejoa_preopen_news_radar_seen.json
+          if git diff --cached --quiet; then
+            echo "No GAMEJOA radar seen-state changes."
+          else
+            git commit -m "Update GAMEJOA preopen radar seen state"
+            git pull --rebase origin main
+            git push
+          fi
 
       - name: Publish report summary
         if: always()

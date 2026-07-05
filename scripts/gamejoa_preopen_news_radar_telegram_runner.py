@@ -8,6 +8,8 @@ decision-ready Korean core radar for Telegram.
 from __future__ import annotations
 
 import importlib.util
+import datetime as dt
+import hashlib
 import json
 import os
 import re
@@ -22,6 +24,121 @@ strict = importlib.util.module_from_spec(spec)
 assert spec and spec.loader
 spec.loader.exec_module(strict)
 base = strict.base
+SEEN_PATH = base.ROOT / "data" / "gamejoa_preopen_news_radar_seen.json"
+
+
+def load_seen_state() -> dict:
+    if not SEEN_PATH.exists():
+        return {"seen": {}, "updated_at_kst": ""}
+    try:
+        payload = json.loads(SEEN_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {"seen": {}, "updated_at_kst": ""}
+    if not isinstance(payload, dict):
+        return {"seen": {}, "updated_at_kst": ""}
+    payload.setdefault("seen", {})
+    return payload
+
+
+def save_seen_state(state: dict, now) -> None:
+    SEEN_PATH.parent.mkdir(parents=True, exist_ok=True)
+    state["updated_at_kst"] = now.isoformat(timespec="seconds")
+    SEEN_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def parse_seen_time(value: str | None):
+    if not value:
+        return None
+    try:
+        return dt.datetime.fromisoformat(value)
+    except Exception:
+        return None
+
+
+def digest_seen(value: str) -> str:
+    return hashlib.sha256(base.norm(value).encode("utf-8")).hexdigest()[:24]
+
+
+def alert_seen_keys(alert: dict) -> list[str]:
+    keys: list[str] = []
+
+    def add(prefix: str, value: str | None) -> None:
+        text = base.norm(value or "")
+        if not text:
+            return
+        keys.append(f"{prefix}:{digest_seen(text)}")
+
+    link = str(alert.get("link") or "")
+    if "news.google.com/rss/articles" not in link:
+        add("link", link)
+    add("title", str(alert.get("news") or ""))
+    add("original", str(alert.get("original_news") or ""))
+    return list(dict.fromkeys(keys))
+
+
+def prune_seen_state(state: dict, now) -> None:
+    ttl_days = max(1, int(os.getenv("GAMEJOA_RADAR_SEEN_TTL_DAYS", "14")))
+    cutoff = now - dt.timedelta(days=ttl_days)
+    seen = state.setdefault("seen", {})
+    for key, value in list(seen.items()):
+        first_seen = parse_seen_time(value.get("first_seen_kst") if isinstance(value, dict) else None)
+        if first_seen and first_seen < cutoff:
+            seen.pop(key, None)
+
+
+def filter_previously_seen_alerts(alerts: list[dict], now) -> tuple[list[dict], list[dict]]:
+    state = load_seen_state()
+    prune_seen_state(state, now)
+    seen = state.setdefault("seen", {})
+    fresh: list[dict] = []
+    skipped: list[dict] = []
+    for alert in alerts:
+        keys = alert_seen_keys(alert)
+        if keys and any(key in seen for key in keys):
+            skipped.append(alert)
+            continue
+        alert = dict(alert)
+        alert["_seen_keys"] = keys
+        fresh.append(alert)
+    if skipped:
+        print(f"GAMEJOA radar: skipped_seen_alerts={len(skipped)}")
+    return fresh, skipped
+
+
+def record_seen_alerts(alerts: list[dict], now) -> None:
+    if not alerts:
+        return
+    state = load_seen_state()
+    prune_seen_state(state, now)
+    seen = state.setdefault("seen", {})
+    for alert in alerts:
+        for key in alert.get("_seen_keys") or alert_seen_keys(alert):
+            seen[key] = {
+                "first_seen_kst": now.isoformat(timespec="seconds"),
+                "title": alert.get("news") or alert.get("original_news") or "",
+                "source": alert.get("publisher") or alert.get("source") or "",
+                "link": alert.get("link") or "",
+            }
+    save_seen_state(state, now)
+
+
+def parse_hhmm(value: str, fallback: tuple[int, int]) -> int:
+    match = re.match(r"^\s*(\d{1,2}):(\d{2})\s*$", value or "")
+    if not match:
+        return fallback[0] * 60 + fallback[1]
+    hour, minute = int(match.group(1)), int(match.group(2))
+    return max(0, min(23, hour)) * 60 + max(0, min(59, minute))
+
+
+def preopen_send_window_open(now) -> bool:
+    if os.getenv("ALLOW_OFF_WINDOW_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
+        return True
+    current = now.hour * 60 + now.minute
+    start = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_START_KST", "05:30"), (5, 30))
+    end = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_END_KST", "07:30"), (7, 30))
+    if start <= end:
+        return start <= current <= end
+    return current >= start or current <= end
 
 
 def strip_news_suffix(title: str) -> str:
@@ -187,6 +304,7 @@ def main() -> int:
     now = base.kst_now()
     rows, notes = strict.collect_items(now)
     alerts = [normalize_alert(a) for a in (strict.classify(r, now) for r in rows if base.fresh(r, now)) if a]
+    alerts, skipped_seen = filter_previously_seen_alerts(alerts, now)
     alerts.sort(key=lambda a: (-a["score"], a["published"]))
 
     deduped, seen = [], set()
@@ -218,7 +336,7 @@ def main() -> int:
     (base.OUT / "gamejoa_preopen_news_radar.md").write_text(report, encoding="utf-8")
     (base.OUT / "gamejoa_preopen_news_radar_title.txt").write_text(report.splitlines()[0] + "\n", encoding="utf-8")
     (base.OUT / "gamejoa_preopen_news_radar.json").write_text(
-        json.dumps({"query_time_kst": now.isoformat(timespec="seconds"), "alerts": deduped, "source_notes": notes, "fred_dfii10": fred, "tradingeconomics_tips": te}, ensure_ascii=False, indent=2, default=str) + "\n",
+        json.dumps({"query_time_kst": now.isoformat(timespec="seconds"), "alerts": deduped, "skipped_seen_alerts": len(skipped_seen), "source_notes": notes, "fred_dfii10": fred, "tradingeconomics_tips": te}, ensure_ascii=False, indent=2, default=str) + "\n",
         encoding="utf-8",
     )
     base.print_utf8(report)
@@ -227,6 +345,8 @@ def main() -> int:
         return 0
     if os.getenv("SEND_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
         send_telegram(report)
+        if deduped and preopen_send_window_open(now):
+            record_seen_alerts(deduped, now)
     return 0
 
 
