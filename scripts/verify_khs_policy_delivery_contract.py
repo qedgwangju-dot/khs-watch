@@ -13,6 +13,7 @@ from pathlib import Path
 
 import khs_policy_alert_guardrails
 import khs_policy_alert_router
+import khs_domestic_stablecoin_policy_watch
 import khs_telegram_delivery_guard
 
 
@@ -30,6 +31,7 @@ POLICY_WORKFLOW = ROOT / ".github" / "workflows" / "khs-policy-watch.yml"
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_workflow_delivery_dedupe()
+    assert_stablecoin_semantic_dedupe()
     cleanup()
     try:
         write_fcc_regression_fixture()
@@ -55,6 +57,39 @@ def assert_workflow_delivery_dedupe() -> None:
     for marker in required:
         if marker not in workflow:
             raise AssertionError(f"KHS policy workflow missing Telegram delivery dedupe marker: {marker}")
+
+
+def assert_stablecoin_semantic_dedupe() -> None:
+    base = {
+        "title": "국내 디지털자산 정책: 스테이블코인 예금 대체·준비자산 규제 체크",
+        "importance": "상",
+        "status": "확정",
+        "published_kst": "2026-07-06T00:00:00+09:00",
+        "matched": {"korea_stablecoin_policy": ["스테이블코인", "예금 대체"]},
+        "domestic_stablecoin_policy_watch": True,
+        "link": "https://www.bok.or.kr/portal/submain/submain/cbdc.do?menuNo=201136",
+        "fingerprint": "source-a",
+    }
+    duplicate = {
+        **base,
+        "source": "Bank of Korea payment research",
+        "link": "https://www.bok.or.kr/portal/bbs/B0000232/list.do?menuNo=200706",
+        "fingerprint": "source-b",
+    }
+    base["source"] = "Bank of Korea digital currency policy"
+    merged = khs_domestic_stablecoin_policy_watch.merge_policy_duplicates([base, duplicate])
+    if len(merged) != 1:
+        raise AssertionError(f"stablecoin policy semantic dedupe failed: expected 1, got {len(merged)}")
+    item = merged[0]
+    if "Bank of Korea digital currency policy" not in item.get("source", ""):
+        raise AssertionError("stablecoin dedupe dropped first source")
+    if "Bank of Korea payment research" not in item.get("source", ""):
+        raise AssertionError("stablecoin dedupe dropped second source")
+    if len(item.get("source_links") or []) != 2:
+        raise AssertionError("stablecoin dedupe did not keep both source links")
+    source_fps = set(item.get("source_fingerprints") or [])
+    if source_fps != {"source-a", "source-b"}:
+        raise AssertionError(f"stablecoin dedupe did not keep source fingerprints: {source_fps}")
 
 
 def cleanup() -> None:

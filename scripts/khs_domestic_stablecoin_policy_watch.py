@@ -265,6 +265,66 @@ def save_seen(seen: dict, now: dt.datetime) -> None:
     SEEN_PATH.write_text(json.dumps(seen, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+def semantic_key(item: dict) -> str:
+    if item.get("domestic_stablecoin_policy_watch"):
+        title = clean_text(item.get("title") or "")
+        return "stablecoin:" + re.sub(r"\s+", " ", title).strip().lower()
+    return str(item.get("fingerprint") or item.get("link") or item.get("title") or "")
+
+
+def semantic_fingerprint(item: dict) -> str:
+    return "semantic:" + hashlib.sha256(semantic_key(item).encode("utf-8")).hexdigest()[:16]
+
+
+def merge_terms(left: dict, right: dict) -> dict:
+    merged = {key: list(value) for key, value in (left or {}).items()}
+    for key, values in (right or {}).items():
+        bucket = merged.setdefault(key, [])
+        for value in values:
+            if value not in bucket:
+                bucket.append(value)
+    return merged
+
+
+def merge_policy_duplicates(items: list[dict]) -> list[dict]:
+    merged: dict[str, dict] = {}
+    for item in items:
+        key = semantic_key(item)
+        source_fp = str(item.get("fingerprint") or "")
+        source_link = {
+            "source": item.get("source") or "",
+            "link": item.get("link") or "",
+            "published_kst": item.get("published_kst") or "",
+            "original_title": item.get("original_title") or item.get("title") or "",
+        }
+        if key not in merged:
+            current = dict(item)
+            current["fingerprint"] = semantic_fingerprint(item)
+            current["source_fingerprints"] = [source_fp] if source_fp else []
+            current["source_links"] = [source_link]
+            merged[key] = current
+            continue
+
+        current = merged[key]
+        if source_fp and source_fp not in current.setdefault("source_fingerprints", []):
+            current["source_fingerprints"].append(source_fp)
+        if not any(link.get("link") == source_link["link"] for link in current.setdefault("source_links", [])):
+            current["source_links"].append(source_link)
+
+        sources = []
+        for link in current.get("source_links", []):
+            source = clean_text(link.get("source") or "")
+            if source and source not in sources:
+                sources.append(source)
+        current["source"] = " / ".join(sources[:3]) if sources else current.get("source")
+        current["matched"] = merge_terms(current.get("matched") or {}, item.get("matched") or {})
+        if item.get("importance") == "상":
+            current["importance"] = "상"
+        if not current.get("published_kst") and item.get("published_kst"):
+            current["published_kst"] = item.get("published_kst")
+    return list(merged.values())
+
+
 def load_existing_alerts() -> list[dict]:
     if not ALERTS_JSON_PATH.exists():
         return []
@@ -296,22 +356,27 @@ def main() -> int:
             print(f"domestic_stablecoin_source_failed source={source_name} error={error}")
             continue
         candidates.extend(parse_links(text or "", source_name, source_url, now))
+    candidates = merge_policy_duplicates(candidates)
 
     seen = load_seen()
     seen_map = seen.setdefault("seen", {})
     new_alerts: list[dict] = []
     for item in sorted(candidates, key=lambda x: x.get("importance") != "상"):
-        fp = item["fingerprint"]
-        if fp in seen_map:
+        fps = [str(item.get("fingerprint") or "")]
+        fps.extend(str(fp) for fp in item.get("source_fingerprints", []) if fp)
+        fps = [fp for fp in dict.fromkeys(fps) if fp]
+        if any(fp in seen_map for fp in fps):
             continue
         new_alerts.append(item)
-        seen_map[fp] = {
+        seen_entry = {
             "title": item.get("original_title") or item.get("title"),
             "source": item.get("source"),
             "link": item.get("link"),
             "first_seen_kst": now.isoformat(timespec="seconds"),
             "importance": item.get("importance"),
         }
+        for fp in fps:
+            seen_map[fp] = seen_entry
         if len(new_alerts) >= MAX_ALERTS:
             break
 
