@@ -353,6 +353,26 @@ jobs:
               text = re.sub(r"조회시각:\s*\d{4}-\d{2}-\d{2}[^\n]*", "조회시각: <TIME>", text)
               text = re.sub(r"Actions:\s*https://github.com/\S+", "Actions: <URL>", text)
               text = re.sub(r"Issues:\s*https://github.com/\S+", "Issues: <URL>", text)
+              headings = []
+              for line in text.splitlines():
+                  if not line.startswith("## "):
+                      continue
+                  heading = re.sub(r"^##\s+\d+\.\s+\[[^\]]+\]\s*", "", line).strip()
+                  heading = re.sub(r"\s+", " ", heading)
+                  if heading:
+                      headings.append(heading)
+              urls = []
+              for url in re.findall(r"https?://[^\s)]+", text):
+                  if "github.com/" in url:
+                      continue
+                  url = urllib.parse.urldefrag(url.rstrip(".,)]"))[0]
+                  if url and url not in urls:
+                      urls.append(url)
+              if headings or urls:
+                  semantic_parts = ["semantic"]
+                  semantic_parts.extend(headings[:10])
+                  semantic_parts.extend(sorted(urls)[:30])
+                  return re.sub(r"\s+", " ", " | ".join(semantic_parts)).strip()
               return re.sub(r"\s+", " ", text).strip()
 
           now_utc = dt.datetime.now(dt.timezone.utc)

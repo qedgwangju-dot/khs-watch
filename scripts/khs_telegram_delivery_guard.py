@@ -289,6 +289,49 @@ def has_long_english_run(text: str) -> str | None:
     return None
 
 
+def policy_heading_text(line: str) -> str:
+    text = re.sub(r"^##\s+\d+\.\s+\[[^\]]+\]\s*", "", line).strip()
+    return normalize_for_match(text)
+
+
+def duplicate_policy_heading(body: str) -> str | None:
+    seen: set[str] = set()
+    for line in body.splitlines():
+        if not line.startswith("## "):
+            continue
+        heading = policy_heading_text(line)
+        if not heading:
+            continue
+        if heading in seen:
+            return heading
+        seen.add(heading)
+    return None
+
+
+def duplicate_policy_body_signature(body: str) -> str | None:
+    blocks = re.split(r"(?m)^##\s+", body)
+    seen: set[str] = set()
+    for block in blocks:
+        if not block.strip():
+            continue
+        lines = []
+        for line in block.splitlines():
+            stripped = line.strip()
+            if not stripped.startswith("- "):
+                continue
+            normalized = normalize_for_match(stripped)
+            if not normalized or normalized.startswith(("출처", "원문 출처", "source")):
+                continue
+            lines.append(normalized)
+        if len(lines) < 3:
+            continue
+        signature = "|".join(lines[:6])
+        if signature in seen:
+            return signature[:120]
+        seen.add(signature)
+    return None
+
+
 def guard_lane(lane: Lane) -> None:
     if not lane.body.exists():
         return
@@ -330,6 +373,14 @@ def guard_lane(lane: Lane) -> None:
         return
 
     if lane.name == "policy":
+        marker = duplicate_policy_heading(body)
+        if marker:
+            delete_lane(lane, f"duplicate_policy_heading:{marker}")
+            return
+        marker = duplicate_policy_body_signature(body)
+        if marker:
+            delete_lane(lane, f"duplicate_policy_body:{marker}")
+            return
         marker = has_long_english_run(body)
         if marker:
             delete_lane(lane, f"long_english_run:{marker}")

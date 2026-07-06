@@ -338,6 +338,130 @@ def apply_router_overrides(alert: dict) -> None:
         alert["failure_signal"] = "적용 장비, 금지 범위, 시행일, 한국 기업의 미국향 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다."
 
 
+def normalize_semantic_text(value: object) -> str:
+    text = re.sub(r"https?://\S+", " ", str(value or "").lower())
+    text = re.sub(r"[\W_]+", " ", text, flags=re.UNICODE)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def importance_rank(value: object) -> int:
+    return {"상": 3, "중": 2, "하": 1}.get(str(value or ""), 0)
+
+
+def merge_unique_list(left: object, right: object) -> list:
+    merged: list = []
+    for value in list(left or []) + list(right or []):
+        if value and value not in merged:
+            merged.append(value)
+    return merged
+
+
+def source_entries(alert: dict) -> list[dict]:
+    entries = list(alert.get("source_links") or [])
+    if alert.get("source") or alert.get("link"):
+        entries.insert(0, {
+            "source": alert.get("source") or "",
+            "link": alert.get("link") or "",
+            "published_kst": alert.get("published_kst") or "",
+            "original_title": alert.get("original_title") or alert.get("title") or "",
+        })
+    deduped: list[dict] = []
+    seen: set[tuple[str, str]] = set()
+    for entry in entries:
+        source = str(entry.get("source") or "").strip()
+        link = str(entry.get("link") or "").strip()
+        key = (source, link)
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append({**entry, "source": source, "link": link})
+    return deduped
+
+
+def merge_matched(left: dict, right: dict) -> dict:
+    merged = {key: list(value or []) for key, value in (left or {}).items()}
+    for key, values in (right or {}).items():
+        bucket = merged.setdefault(key, [])
+        for value in values or []:
+            if value not in bucket:
+                bucket.append(value)
+    return merged
+
+
+def semantic_alert_key(alert: dict) -> str:
+    probe = enrich_missing_context(dict(alert))
+    apply_router_overrides(probe)
+    title = safe_title(probe)
+    sectors = "|".join(str(value) for value in probe.get("sectors") or [])
+    impacts = "|".join(str(value) for value in probe.get("impacts") or [])
+    matched_keys = "|".join(sorted((probe.get("matched") or {}).keys()))
+    if probe.get("domestic_stablecoin_policy_watch"):
+        return "stablecoin|" + normalize_semantic_text(title or probe.get("title"))
+    return "|".join([
+        normalize_semantic_text(title or probe.get("title")),
+        normalize_semantic_text(sectors),
+        normalize_semantic_text(impacts),
+        normalize_semantic_text(matched_keys),
+    ])
+
+
+def merge_duplicate_alert(current: dict, incoming: dict) -> dict:
+    current = dict(current)
+    existing_entries = source_entries(current)
+    existing_keys = {(entry.get("source"), entry.get("link")) for entry in existing_entries}
+    extra_entries = [
+        entry for entry in source_entries(incoming)
+        if (entry.get("source"), entry.get("link")) not in existing_keys
+    ]
+    current["source_links"] = existing_entries + extra_entries
+    sources = []
+    for entry in current["source_links"]:
+        source = str(entry.get("source") or "").strip()
+        if source and source not in sources:
+            sources.append(source)
+    if sources:
+        current["source"] = " / ".join(sources[:3])
+    if not current.get("link") and incoming.get("link"):
+        current["link"] = incoming.get("link")
+    current["matched"] = merge_matched(current.get("matched") or {}, incoming.get("matched") or {})
+    for key in ("impacts", "paths", "sectors", "korea_value_chain"):
+        current[key] = merge_unique_list(current.get(key), incoming.get(key))
+    if importance_rank(incoming.get("importance")) > importance_rank(current.get("importance")):
+        current["importance"] = incoming.get("importance")
+    for key in ("published_kst", "status", "policy_plain_summary", "investment_view", "korea_market_impact", "priced_in", "counter", "failure_signal"):
+        if not current.get(key) and incoming.get(key):
+            current[key] = incoming.get(key)
+    return current
+
+
+def dedupe_alerts(alerts: list[dict]) -> list[dict]:
+    merged: dict[str, dict] = {}
+    order: list[str] = []
+    for alert in alerts:
+        key = semantic_alert_key(alert)
+        if not key.strip("| "):
+            key = normalize_semantic_text(f"{alert.get('source')} {alert.get('title')} {alert.get('link')}")
+        if key not in merged:
+            merged[key] = dict(alert)
+            order.append(key)
+            continue
+        merged[key] = merge_duplicate_alert(merged[key], alert)
+    return [merged[key] for key in order]
+
+
+def source_markdown(alert: dict) -> str:
+    parts: list[str] = []
+    for entry in source_entries(alert)[:3]:
+        label = display_source(entry.get("source"))
+        link = str(entry.get("link") or "").strip()
+        parts.append(f"[{label}]({link})" if link else label)
+    if not parts:
+        label = display_source(alert.get("source"))
+        link = str(alert.get("link") or "").strip()
+        return f"[{label}]({link})" if link else label
+    return " / ".join(parts)
+
+
 def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
     if not alerts:
         return no_general_report(now)
@@ -346,12 +470,11 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
     for idx, alert in enumerate(alerts, 1):
         alert = enrich_missing_context(alert)
         apply_router_overrides(alert)
-        source_label = display_source(alert.get("source"))
         title = safe_title(alert)
         lines.extend([
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
             *compact_explanation_lines(alert),
-            f"- 출처: [{source_label}]({alert.get('link', '')}) · 조회 {now:%H:%M KST}",
+            f"- 출처: {source_markdown(alert)} · 조회 {now:%H:%M KST}",
             "",
         ])
     lines.append("투자 조언이 아닌 참고용 정책·규제 알림입니다.")
@@ -403,6 +526,8 @@ def main() -> int:
         else:
             policy_alerts.append(item)
 
+    raw_policy_count = len(policy_alerts)
+    policy_alerts = dedupe_alerts(policy_alerts)
     write_policy_outputs(policy_alerts, now)
     if personnel_alerts:
         KOREA_PERSONNEL_ALERTS_JSON_PATH.write_text(
@@ -414,7 +539,8 @@ def main() -> int:
 
     print(
         "policy_router=split "
-        f"policy={len(policy_alerts)} korea_personnel={len(personnel_alerts)} "
+        f"policy={len(policy_alerts)} raw_policy={raw_policy_count} "
+        f"korea_personnel={len(personnel_alerts)} "
         f"whitehouse_routed_out={whitehouse_count}"
     )
     return 0

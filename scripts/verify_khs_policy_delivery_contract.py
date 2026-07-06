@@ -32,6 +32,8 @@ def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_workflow_delivery_dedupe()
     assert_stablecoin_semantic_dedupe()
+    assert_router_final_semantic_dedupe()
+    assert_delivery_guard_blocks_duplicate_policy_alerts()
     cleanup()
     try:
         write_fcc_regression_fixture()
@@ -51,6 +53,8 @@ def assert_workflow_delivery_dedupe() -> None:
         "KHS_TELEGRAM_DEDUPE_HOURS",
         "data/khs_telegram_delivery_seen.json",
         "hashlib.sha256(canonical_message(title, body).encode(\"utf-8\"))",
+        "semantic_parts = [\"semantic\"]",
+        "urllib.parse.urldefrag",
         "telegram_duplicate_skipped",
         "Commit Telegram delivery dedupe state",
     ]
@@ -90,6 +94,72 @@ def assert_stablecoin_semantic_dedupe() -> None:
     source_fps = set(item.get("source_fingerprints") or [])
     if source_fps != {"source-a", "source-b"}:
         raise AssertionError(f"stablecoin dedupe did not keep source fingerprints: {source_fps}")
+
+
+def assert_router_final_semantic_dedupe() -> None:
+    base = {
+        "title": "국내 디지털자산 정책: 스테이블코인 예금 대체·준비자산 규제 체크",
+        "importance": "상",
+        "status": "확정",
+        "published_kst": "2026-07-06T00:00:00+09:00",
+        "matched": {"korea_stablecoin_policy": ["스테이블코인", "예금 대체"]},
+        "domestic_stablecoin_policy_watch": True,
+        "impacts": ["시간표", "수급", "밸류에이션/할인율"],
+        "sectors": ["금융/자본시장/스테이블코인"],
+        "link": "https://www.bok.or.kr/portal/submain/submain/cbdc.do?menuNo=201136",
+        "source": "Bank of Korea digital currency policy",
+    }
+    duplicate = {
+        **base,
+        "source": "Bank of Korea payment research",
+        "link": "https://www.bok.or.kr/portal/bbs/B0000232/list.do?menuNo=200706",
+    }
+    merged = khs_policy_alert_router.dedupe_alerts([base, duplicate])
+    if len(merged) != 1:
+        raise AssertionError(f"router final semantic dedupe failed: expected 1, got {len(merged)}")
+    item = merged[0]
+    if len(item.get("source_links") or []) != 2:
+        raise AssertionError("router final dedupe did not keep both source links")
+    rendered_sources = khs_policy_alert_router.source_markdown(item)
+    if "Bank of Korea digital currency policy" not in rendered_sources:
+        raise AssertionError("router source rendering dropped first source")
+    if "Bank of Korea payment research" not in rendered_sources:
+        raise AssertionError("router source rendering dropped second source")
+
+
+def assert_delivery_guard_blocks_duplicate_policy_alerts() -> None:
+    cleanup()
+    title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    title_path.write_text("KHS 정책 워치: [상] 국내 디지털자산 정책 중복 테스트\n", encoding="utf-8")
+    body_path.write_text(
+        "\n".join([
+            "🚨 KHS 정책·규제 고충격 워치 · 2026년 07월 06일 22:05 KST",
+            "",
+            "## 1. [상·확정] 국내 디지털자산 정책: 스테이블코인 예금 대체·준비자산 규제 체크",
+            "- 핵심: 원화 스테이블코인·디지털자산 입법은 금융 인프라 재편 이슈입니다.",
+            "- 의사결정 영향: 시간표, 수급, 밸류에이션/할인율",
+            "- 투자 영향: 지금 붙는 자금은 실적보다 미래 결제 표준 베팅입니다.",
+            "- 한국장: 은행, 핀테크, 결제, 가상자산거래소를 봅니다.",
+            "- 반영 가능성: 중간.",
+            "- 실패 신호: 발행 주체가 좁게 제한되면 테마 확산이 약해집니다.",
+            "- 출처: [Bank of Korea digital currency policy](https://www.bok.or.kr/a) · 조회 22:05 KST",
+            "",
+            "## 2. [상·확정] 국내 디지털자산 정책: 스테이블코인 예금 대체·준비자산 규제 체크",
+            "- 핵심: 원화 스테이블코인·디지털자산 입법은 금융 인프라 재편 이슈입니다.",
+            "- 의사결정 영향: 시간표, 수급, 밸류에이션/할인율",
+            "- 투자 영향: 지금 붙는 자금은 실적보다 미래 결제 표준 베팅입니다.",
+            "- 한국장: 은행, 핀테크, 결제, 가상자산거래소를 봅니다.",
+            "- 반영 가능성: 중간.",
+            "- 실패 신호: 발행 주체가 좁게 제한되면 테마 확산이 약해집니다.",
+            "- 출처: [Bank of Korea payment research](https://www.bok.or.kr/b) · 조회 22:05 KST",
+            "",
+        ]),
+        encoding="utf-8",
+    )
+    khs_telegram_delivery_guard.main()
+    if body_path.exists():
+        raise AssertionError("delivery guard did not block duplicate policy alerts")
 
 
 def cleanup() -> None:
