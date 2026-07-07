@@ -44,19 +44,19 @@ K_POWER_EVENT_TERMS = [
 K_POWER_QUERIES = [
     (
         "두산에너빌리티 SpaceX 가스터빈",
-        "SpaceX gas turbine order contract procurement Doosan Enerbility power generation turbine Reuters Bloomberg CNBC Yonhap",
+        "SpaceX gas turbine order contract procurement Doosan Enerbility power generation turbine Reuters Bloomberg CNBC DART company IR",
     ),
     (
         "체코 원전 최종계약",
-        "Czech nuclear final contract Dukovany KHNP Korea Hydro Nuclear Power Doosan Enerbility contract value Reuters Bloomberg Yonhap",
+        "Czech nuclear final contract Dukovany KHNP Korea Hydro Nuclear Power Doosan Enerbility contract value Reuters Bloomberg KHNP DART company IR",
     ),
     (
         "SMR i-SMR 상용화",
-        "SMR commercialization i-SMR Korea small modular reactor design approval licensing 2030 Doosan Enerbility Reuters Bloomberg Yonhap",
+        "SMR commercialization i-SMR Korea small modular reactor design approval licensing 2030 Doosan Enerbility Reuters Bloomberg KHNP NRC DART",
     ),
     (
         "중동 원전 추가수주",
-        "Saudi Arabia Middle East nuclear power plant tender reactor procurement KHNP Doosan Enerbility UAE Reuters Bloomberg Yonhap",
+        "Saudi Arabia Middle East nuclear power plant tender reactor procurement KHNP Doosan Enerbility UAE Reuters Bloomberg KHNP DART company IR",
     ),
     (
         "원전 인프라 금리인하",
@@ -136,7 +136,7 @@ def power_counter(flags: dict[str, bool]) -> str:
 def enforce_power_watch() -> None:
     append_unique(base.QUERIES, K_POWER_QUERIES)
     append_unique(base.TERMS, K_POWER_TERMS + K_POWER_EVENT_TERMS)
-    append_unique(base.TRUSTED, ["yonhap", "yna"])
+    append_unique(base.TRUSTED, ["khnp"])
     if not any(label == K_POWER_SECTOR for label, _ in base.SECTORS):
         base.SECTORS.append((K_POWER_SECTOR, K_POWER_TERMS))
 

@@ -58,7 +58,7 @@ QUERIES = [
     ("반도체/AI", "Nvidia Micron Broadcom AMD Intel TSMC ASML ARM Apple Microsoft Oracle AI chip HBM data center server network cooling guidance supply agreement Reuters Bloomberg MarketWatch"),
     ("수출통제/관세", "US Commerce BIS export controls tariffs China semiconductor Reuters Bloomberg AP"),
     ("미국 고충격 정책", "US policy ban tariff export control investigation subsidy loan nuclear data center power grid robotics semiconductor Reuters Bloomberg Politico"),
-    ("EU/한국 정책 영향", "EU South Korea tariff quota safeguard CBAM battery regulation steel export control Reuters Bloomberg Yonhap"),
+    ("EU/한국 정책 영향", "EU South Korea tariff quota safeguard CBAM battery regulation steel export control Reuters Bloomberg European Commission Official Journal"),
     ("정책/규제", "USTR FTC SEC DOE FERC FCC Commerce BIS OFAC CHIPS Act IRA tariff sanctions export controls Reuters Bloomberg AP"),
     ("기업 이벤트", "MOU LOI contract supply agreement joint venture capex buyback offering convertible bond guidance Reuters Bloomberg MarketWatch Korea"),
     ("지정학/에너지", "Iran Israel Hormuz Red Sea oil shipping sanctions Reuters Bloomberg AP CNBC MarketWatch"),
@@ -70,7 +70,6 @@ QUERIES = [
 TRUSTED = [
     "reuters", "bloomberg", "associated press", "ap news", "cnbc", "marketwatch",
     "politico", "the wall street journal", "wall street journal", "financial times",
-    "yonhap", "yonhap news", "the korea economic daily", "korea economic daily",
     "usa today", "panama city news herald", "columbus dispatch",
 ]
 LOCAL_DC_POLICY_TERMS = ["ban", "banned", "banning", "block", "blocked", "city council", "county", "moratorium", "ordinance", "permit", "planning commission", "public hearing", "residents", "township", "vote", "zoning"]

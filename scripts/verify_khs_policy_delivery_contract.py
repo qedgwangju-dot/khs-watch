@@ -31,6 +31,7 @@ POLICY_WORKFLOW = ROOT / ".github" / "workflows" / "khs-policy-watch.yml"
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_workflow_delivery_dedupe()
+    assert_foreign_first_policy_sources()
     assert_stablecoin_semantic_dedupe()
     assert_router_final_semantic_dedupe()
     assert_delivery_guard_blocks_duplicate_policy_alerts()
@@ -45,6 +46,25 @@ def main() -> int:
         cleanup()
     print("khs_policy_delivery_contract=passed")
     return 0
+
+
+def assert_foreign_first_policy_sources() -> None:
+    targets = [
+        ROOT / "scripts" / "khs_trusted_policy_news_watch.py",
+        ROOT / "scripts" / "khs_transformer_tariff_policy_watch.py",
+    ]
+    forbidden = [
+        "Yonhap", "yonhap", "YNA", "yna", "연합뉴스",
+        "Korea Economic", "korea economic", "한국경제", "한국경제신문",
+        "매일경제", "서울경제", "서울경제신문", "서울신문",
+        "Korea Herald", "korea herald", "Korea Joongang", "korea joongang",
+        "Daum", "daum", "더구루", "the guru",
+    ]
+    for path in targets:
+        text = path.read_text(encoding="utf-8")
+        for token in forbidden:
+            if token in text:
+                raise AssertionError(f"foreign-first policy source contract violation: {path.name} contains {token}")
 
 
 def assert_workflow_delivery_dedupe() -> None:

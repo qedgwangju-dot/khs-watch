@@ -55,17 +55,6 @@ TRUSTED_SOURCES = {
     "marketwatch",
     "ap news",
     "associated press",
-    "yonhap news agency",
-    "yonhap news",
-    "연합뉴스",
-    "the korea economic daily",
-    "korea economic daily",
-    "한국경제",
-    "한국경제신문",
-    "매일경제",
-    "서울신문",
-    "서울경제신문",
-    "서울경제",
 }
 
 SOURCE_PRIORITY = {
@@ -83,17 +72,6 @@ SOURCE_PRIORITY = {
     "ap news": 7,
     "associated press": 7,
     "politico": 8,
-    "yonhap news agency": 9,
-    "yonhap news": 9,
-    "연합뉴스": 9,
-    "the korea economic daily": 10,
-    "korea economic daily": 10,
-    "한국경제": 10,
-    "한국경제신문": 10,
-    "매일경제": 11,
-    "서울신문": 11,
-    "서울경제신문": 11,
-    "서울경제": 11,
 }
 
 TRUSTED_WIRE_RELAY_SOURCES = {

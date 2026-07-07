@@ -107,7 +107,7 @@ K_DEFENSE_DRONE_CATALYST_TERMS = [
 K_DEFENSE_QUERIES = [
     (
         "K-방산 수출/수주",
-        "Hanwha Aerospace K9 Thunder Chunmoo Redback LIG Nex1 Cheongung II KM-SAM Hyungung KAI FA-50 KF-21 Surion Hyundai Rotem K2 tank Hanwha Systems radar satellite electronic warfare defense contract order export Reuters Bloomberg Yonhap",
+        "Hanwha Aerospace K9 Thunder Chunmoo Redback LIG Nex1 Cheongung II KM-SAM Hyungung KAI FA-50 KF-21 Surion Hyundai Rotem K2 tank Hanwha Systems radar satellite electronic warfare defense contract order export Reuters Bloomberg DAPA DART IR",
     ),
     (
         "K-방산 무기체계",
@@ -115,23 +115,23 @@ K_DEFENSE_QUERIES = [
     ),
     (
         "K-방산 한반도 리스크",
-        "Trump South Korea defense cost sharing burden sharing USFK troop realignment special measures agreement Reuters Bloomberg Yonhap",
+        "Trump South Korea defense cost sharing burden sharing USFK troop realignment special measures agreement Reuters Bloomberg White House Pentagon MND",
     ),
     (
         "K-방산 폴란드 의존도",
-        "Poland Korean defense imports K9 Chunmoo K2 Hanwha Aerospace Hyundai Rotem government change election defense budget review Reuters Bloomberg Yonhap",
+        "Poland Korean defense imports K9 Chunmoo K2 Hanwha Aerospace Hyundai Rotem government change election defense budget review Reuters Bloomberg Polish government DAPA",
     ),
     (
         "K-방산 대형계약 지연",
-        "Poland Saudi Arabia Korean defense contract delay political approval budget Hyundai Rotem K2 LIG Nex1 Cheongung II KM-SAM Reuters Bloomberg Yonhap",
+        "Poland Saudi Arabia Korean defense contract delay political approval budget Hyundai Rotem K2 LIG Nex1 Cheongung II KM-SAM Reuters Bloomberg DAPA company IR",
     ),
     (
         "K-방산 분수령 계약서명",
-        "Saudi Arabia Cheongung II KM-SAM final contract signed LIG Nex1 Poland second contract K2 tank Hyundai Rotem actual signing Reuters Bloomberg Yonhap",
+        "Saudi Arabia Cheongung II KM-SAM final contract signed LIG Nex1 Poland second contract K2 tank Hyundai Rotem actual signing Reuters Bloomberg DAPA DART company IR",
     ),
     (
         "K-방산 대드론/무인기 체계",
-        "KADIZ counter drone counter-UAS anti-drone low altitude small target radar command control UAV unmanned aerial vehicle AI swarm laser high-power microwave HPM Korean Standard KS procurement Reuters Yonhap DAPA KATS",
+        "KADIZ counter drone counter-UAS anti-drone low altitude small target radar command control UAV unmanned aerial vehicle AI swarm laser high-power microwave HPM Korean Standard KS procurement Reuters DAPA KATS MND",
     ),
 ]
 
@@ -215,7 +215,7 @@ def enforce_k_defense_watch() -> None:
         + K_DEFENSE_DRONE_SYSTEM_TERMS
         + K_DEFENSE_DRONE_CATALYST_TERMS,
     )
-    append_unique(base.TRUSTED, ["yonhap", "yna", "korea herald", "korea joongang daily", "dapa", "mnd", "kats"])
+    append_unique(base.TRUSTED, ["dapa", "mnd", "kats"])
     if not any(label == K_DEFENSE_SECTOR for label, _ in base.SECTORS):
         base.SECTORS.append((K_DEFENSE_SECTOR, K_DEFENSE_COMPANY_TERMS + K_DEFENSE_SYSTEM_TERMS))
     if not any(label == K_DEFENSE_DRONE_SECTOR for label, _ in base.SECTORS):

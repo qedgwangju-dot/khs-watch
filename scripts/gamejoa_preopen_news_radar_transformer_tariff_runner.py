@@ -85,7 +85,7 @@ def counter(_: str) -> str:
 def enforce_transformer_tariff_watch() -> None:
     append_unique(base.QUERIES, QUERIES)
     append_unique(base.TERMS, EQUIPMENT_TERMS + POLICY_TERMS + VALUE_TERMS)
-    append_unique(base.TRUSTED, ["whitehouse.gov", "federalregister.gov", "Federal Register", "백악관", "더구루", "the guru"])
+    append_unique(base.TRUSTED, ["whitehouse.gov", "federalregister.gov", "Federal Register", "백악관"])
     for sector in SECTORS:
         if not any(label == sector for label, _ in base.SECTORS):
             base.SECTORS.append((sector, EQUIPMENT_TERMS + POLICY_TERMS + VALUE_TERMS))

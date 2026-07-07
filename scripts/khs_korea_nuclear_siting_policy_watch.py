@@ -27,11 +27,11 @@ MAX_ALERTS = int(os.getenv("KHS_KOREA_NUCLEAR_SITING_MAX_ALERTS", "3"))
 UA = os.getenv("SEC_USER_AGENT", "KHS-korea-nuclear-siting-policy-watch contact=github-actions")
 
 SOURCES = [
-    ("Korea nuclear siting policy news", "https://news.google.com/rss/search?q=" + urllib.parse.quote('"신규 원전" 입지 SMR 표준설계인가 2028 2029 2037 2038 연합뉴스') + "&hl=ko&gl=KR&ceid=KR:ko"),
+    ("Korea nuclear siting policy news", "https://news.google.com/rss/search?q=" + urllib.parse.quote('"신규 원전" 입지 SMR 표준설계인가 2028 2029 2037 2038 정책브리핑 산업통상자원부 원자력안전위원회 KHNP') + "&hl=ko&gl=KR&ceid=KR:ko"),
     ("Korea SMR licensing policy news", "https://news.google.com/rss/search?q=" + urllib.parse.quote('SMR 표준설계인가 2028 방폐장 송전망 안전성 검증 주민 수용성') + "&hl=ko&gl=KR&ceid=KR:ko"),
     ("Korea large nuclear licensing news", "https://news.google.com/rss/search?q=" + urllib.parse.quote('"대형 원전" 인허가 2029 완공 2037 2038 방폐장 송전망') + "&hl=ko&gl=KR&ceid=KR:ko"),
 ]
-TRUSTED_PUBLISHERS = ["연합뉴스", "yna", "정책브리핑", "korea.kr", "산업통상자원부", "motie", "motir", "원자력안전위원회", "nssc", "한국수력원자력", "khnp", "한국경제", "매일경제", "서울경제"]
+TRUSTED_PUBLISHERS = ["정책브리핑", "korea.kr", "산업통상자원부", "motie", "motir", "원자력안전위원회", "nssc", "한국수력원자력", "khnp"]
 NUCLEAR_TERMS = ["원전", "원자력", "신규 원전", "대형 원전", "smr", "SMR", "소형모듈원전", "혁신형 smr", "혁신형 SMR", "i-smr", "i-SMR"]
 TIMELINE_TERMS = ["입지", "후보지", "부지", "표준설계인가", "표준설계", "설계인가", "2028", "인허가", "건설허가", "운영허가", "2029", "2037", "2038", "완공", "상업운전"]
 RISK_TERMS = ["방폐장", "방사성폐기물", "고준위", "사용후핵연료", "송전망", "계통", "안전성 검증", "안전성", "주민 수용성", "주민수용성", "주민", "환경영향평가"]

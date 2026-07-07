@@ -61,7 +61,7 @@ BIOTECH_DISCOUNT_TERMS = [
 ROBOTICS_SECTOR = "로봇/생산자동화"
 ROBOTICS_QUERY = (
     "삼성 로봇 실행 단계 체크",
-    "Samsung Future Robotics reorganization Rainbow Robotics RB5-850 collaborative robot cobot Samsung production line factory automation deployment procurement order capex Reuters Bloomberg Yonhap",
+    "Samsung Future Robotics reorganization Rainbow Robotics RB5-850 collaborative robot cobot Samsung production line factory automation deployment procurement order capex Reuters Bloomberg Samsung Electronics IR DART",
 )
 ROBOTICS_TERMS = [
     "samsung", "samsung electronics", "future robotics", "robotics task force", "robot organization",

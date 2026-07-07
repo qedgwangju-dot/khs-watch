@@ -58,25 +58,6 @@ SOURCES = [
         + "&order=newest&per_page=20",
         "federal_register_json",
     ),
-    (
-        "Korean transformer tariff news",
-        "https://news.google.com/rss/search?q="
-        + urllib.parse.quote('"대형 변압기" 관세 25% 15% 미국 효성 포스코')
-        + "&hl=ko&gl=KR&ceid=KR:ko",
-        "rss",
-    ),
-    (
-        "Korean power-equipment tariff news",
-        "https://news.google.com/rss/search?q="
-        + urllib.parse.quote("변압기 전력기기 관세 인하 미국 15% 25%")
-        + "&hl=ko&gl=KR&ceid=KR:ko",
-        "rss",
-    ),
-    (
-        "Daum/The Guru transformer tariff follow-up",
-        "https://v.daum.net/v/20260628072105404",
-        "html",
-    ),
 ]
 
 TRANSFORMER_TERMS = [
@@ -98,9 +79,7 @@ KOREA_VALUE_TERMS = [
     "한국", "korea", "효성", "hyosung", "포스코", "posco", "hd현대일렉트릭",
     "hyundai electric", "ls electric", "일진전기", "대한전선",
 ]
-MARKET_NEWS_PUBLISHERS = [
-    "연합뉴스", "yna", "한국경제", "매일경제", "서울경제", "전자신문", "더구루", "the guru", "daum",
-]
+MARKET_NEWS_PUBLISHERS: list[str] = []
 
 SECTORS = ["전력기기/변압기", "관세/수출주", "전력망/데이터센터"]
 POLICY_CHECK = (
@@ -199,8 +178,6 @@ def looks_like_transformer_tariff(text: str) -> bool:
 
 
 def market_source_allowed(publisher: str, text: str) -> bool:
-    if has_any(publisher, MARKET_NEWS_PUBLISHERS):
-        return True
     return has_any(text, ["코트라", "kotra", "무역협회", "kita", "산업통상자원부", "motir"])
 
 

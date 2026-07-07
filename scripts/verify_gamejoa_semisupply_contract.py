@@ -70,6 +70,7 @@ def main() -> int:
     prod = importlib.import_module("gamejoa_preopen_news_radar_fda_quality_runner")
     now = dt.datetime(2026, 7, 4, 6, 30, tzinfo=ZoneInfo("Asia/Seoul"))
     errors: list[str] = []
+    errors.extend(foreign_first_source_contract_errors())
 
     research_html = """
     <a href="/research/download/RP260527UC">New HBM Market Outlook：HBM Suppliers Seize Pricing Power as AI Demand Fuels Explosive Contract Price Surge</a>
@@ -124,6 +125,32 @@ def main() -> int:
         return 1
     print("GAMEJOA semisupply contract OK")
     return 0
+
+
+def foreign_first_source_contract_errors() -> list[str]:
+    targets = [
+        ROOT / "scripts" / "gamejoa_preopen_news_radar_runner.py",
+        ROOT / "scripts" / "gamejoa_preopen_news_radar_full_compact_runner.py",
+        ROOT / "scripts" / "gamejoa_preopen_news_radar_k_defense_runner.py",
+        ROOT / "scripts" / "gamejoa_preopen_news_radar_nuclear_turbine_runner.py",
+        ROOT / "scripts" / "gamejoa_preopen_news_radar_domestic_telecom_runner.py",
+        ROOT / "scripts" / "gamejoa_preopen_news_radar_korea_nuclear_siting_runner.py",
+        ROOT / "scripts" / "gamejoa_preopen_news_radar_transformer_tariff_runner.py",
+    ]
+    forbidden = [
+        "Yonhap", "yonhap", "YNA", "yna", "연합뉴스",
+        "Korea Economic", "korea economic", "한국경제", "한국경제신문",
+        "매일경제", "서울경제", "서울경제신문", "서울신문",
+        "Korea Herald", "korea herald", "Korea Joongang", "korea joongang",
+        "Daum", "daum", "더구루", "the guru",
+    ]
+    errors: list[str] = []
+    for path in targets:
+        text = path.read_text(encoding="utf-8")
+        for token in forbidden:
+            if token in text:
+                errors.append(f"foreign-first source contract violation: {path.name} contains {token}")
+    return errors
 
 
 if __name__ == "__main__":

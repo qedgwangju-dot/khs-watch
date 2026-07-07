@@ -49,11 +49,11 @@ TELECOM_EVENT_TERMS = [
 TELECOM_QUERIES = [
     (
         "국내 통신비 인하 정책",
-        "과기정통부 방송통신위원회 통신비 인하 선택약정 할인율 5G 요금제 SK텔레콤 KT LG유플러스 정책브리핑 연합뉴스",
+        "과기정통부 방송통신위원회 통신비 인하 선택약정 할인율 5G 요금제 SK텔레콤 KT LG유플러스 정책브리핑 korea.kr",
     ),
     (
         "통신3사 ARPU 요금제 리스크",
-        "SK텔레콤 KT LG유플러스 ARPU 요금제 통신비 인하 선택약정 할인율 실적 마진 연합뉴스 블룸버그",
+        "SK텔레콤 KT LG유플러스 ARPU 요금제 통신비 인하 선택약정 할인율 실적 마진 Bloomberg company IR DART",
     ),
     (
         "통신 IDC 데이터센터 전기료 리스크",
@@ -199,7 +199,7 @@ def enforce_telecom_policy_watch() -> None:
     )
     append_unique(base.TRUSTED, [
         "정책브리핑", "korea.kr", "과학기술정보통신부", "방송통신위원회",
-        "금융위원회", "금융감독원", "한국은행", "국회", "연합뉴스", "yna", "yonhap", "korea herald",
+        "금융위원회", "금융감독원", "한국은행", "국회",
     ])
     if not any(label == TELECOM_SECTOR for label, _ in base.SECTORS):
         base.SECTORS.append((TELECOM_SECTOR, TELECOM_ACTOR_TERMS + TELECOM_POLICY_TERMS + TELECOM_RISK_TERMS))

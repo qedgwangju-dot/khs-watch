@@ -16,9 +16,9 @@ STRUCTURE_NOTE = "이번 이슈는 확정 수주보다 입지 선정으로 원�
 NUCLEAR_TERMS = ["원전", "원자력", "신규 원전", "대형 원전", "smr", "small modular reactor", "소형모듈원전", "혁신형 smr", "i-smr", "i-SMR"]
 TIMELINE_TERMS = ["입지", "후보지", "부지", "표준설계인가", "표준설계", "설계인가", "2028", "인허가", "건설허가", "운영허가", "2029", "2037", "2038", "완공", "상업운전"]
 RISK_TERMS = ["방폐장", "방사성폐기물", "고준위", "사용후핵연료", "송전망", "계통", "안전성 검증", "안전성", "주민 수용성", "주민수용성", "주민", "환경영향평가"]
-TRUSTED = ["연합뉴스", "yna", "정책브리핑", "korea.kr", "산업통상자원부", "motie", "motir", "원자력안전위원회", "nssc", "한국수력원자력", "khnp"]
+TRUSTED = ["정책브리핑", "korea.kr", "산업통상자원부", "motie", "motir", "원자력안전위원회", "nssc", "한국수력원자력", "khnp"]
 QUERIES = [
-    ("국내 원전 입지 선정", "신규 원전 입지 SMR 표준설계인가 2028 2029 2037 2038 방폐장 송전망 연합뉴스"),
+    ("국내 원전 입지 선정", "신규 원전 입지 SMR 표준설계인가 2028 2029 2037 2038 방폐장 송전망 정책브리핑 산업통상자원부 원자력안전위원회 KHNP"),
     ("국내 SMR 인허가 일정", "SMR 표준설계인가 2028 대형 원전 인허가 2029 완공 2037 2038 주민 수용성"),
 ]
 
@@ -34,7 +34,7 @@ def has_any(text: str, terms: list[str]) -> bool:
 
 
 def is_domestic_nuclear_siting(text: str) -> bool:
-    trusted = has_any(text, TRUSTED) or has_any(text, ["yonhap", "korea.kr", "motie", "motir", "nssc"])
+    trusted = has_any(text, TRUSTED) or has_any(text, ["korea.kr", "motie", "motir", "nssc"])
     return trusted and has_any(text, NUCLEAR_TERMS) and has_any(text, TIMELINE_TERMS) and has_any(text, RISK_TERMS)
 
 
@@ -53,7 +53,7 @@ def counter(_: str) -> str:
 def enforce_domestic_nuclear_siting_watch() -> None:
     append_unique(base.QUERIES, QUERIES)
     append_unique(base.TERMS, NUCLEAR_TERMS + TIMELINE_TERMS + RISK_TERMS)
-    append_unique(base.TRUSTED, TRUSTED + ["yonhap"])
+    append_unique(base.TRUSTED, TRUSTED)
     if not any(label == SECTOR for label, _ in base.SECTORS):
         base.SECTORS.append((SECTOR, NUCLEAR_TERMS + TIMELINE_TERMS + RISK_TERMS))
     original_classify = contract.strict.classify
