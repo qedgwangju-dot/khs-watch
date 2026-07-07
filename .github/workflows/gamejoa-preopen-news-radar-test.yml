@@ -53,6 +53,7 @@ jobs:
         run: |
           python scripts/verify_gamejoa_delivery_contract.py
           python scripts/verify_gamejoa_semisupply_contract.py
+          python scripts/verify_high_impact_news_self_audit.py
 
       - name: Preflight strict GAMEJOA radar quality
         env:

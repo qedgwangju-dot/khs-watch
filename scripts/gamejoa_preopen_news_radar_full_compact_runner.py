@@ -578,6 +578,11 @@ ACTIONABLE_DECISION_LABELS = {
     "시간표",
 }
 LIMITED_DECISION_IMPACT = "의사결정 영향 제한적"
+GENERIC_EXPLANATION_PHRASES = [
+    "공식 문서 또는 신뢰 보도에서 한국장 가격 변수 후보가 확인됐습니다.",
+    "돈 버는 능력, 할인율, 수급, 시간표 중 무엇이 실제로 바뀌는지 원문과 시장 반응으로 재확인해야 합니다.",
+    "한국장 직접 영향은 원문에 근거가 있는 업종과 종목군으로만 제한해 확인합니다.",
+]
 GENERIC_SECTOR_TERMS = [
     "영향 섹터 확인 불가",
     "정책/규제 일반",
@@ -772,6 +777,19 @@ def is_low_impact_trade_admin_notice(alert: dict) -> bool:
     )
 
 
+def has_generic_explanation(alert: dict) -> bool:
+    text = "\n".join(
+        str(alert.get(key) or "")
+        for key in [
+            "policy_plain_summary",
+            "investment_view",
+            "korea_market_impact",
+            "interpretation",
+        ]
+    )
+    return any(phrase in text for phrase in GENERIC_EXPLANATION_PHRASES)
+
+
 def has_decision_impact(alert: dict) -> bool:
     labels = set(display_impacts(alert.get("impacts")))
     if not labels or labels == {LIMITED_DECISION_IMPACT}:
@@ -785,6 +803,9 @@ def has_decision_impact(alert: dict) -> bool:
         return False
     if labels == {"시간표"} and not has_term(alert_text(alert), TIMELINE_MATERIAL_TERMS):
         alert["guardrail_note"] = "단순 시간표 후보일 뿐 공식 절차 착수·의견수렴·조사·정책 시행·계약 등 추적 가능한 근거가 약해 제외"
+        return False
+    if has_generic_explanation(alert):
+        alert["guardrail_note"] = "정책·기업 이벤트의 내용과 한국장 영향이 구체적으로 설명되지 않아 제외"
         return False
     return True
 
@@ -1397,12 +1418,7 @@ def guard_preopen_report(text: str) -> None:
             errors.append(f"missing_{marker}")
     if item_count and "- 의사결정 영향: 의사결정 영향 제한적" in text:
         errors.append("limited_decision_impact_displayed")
-    generic_phrases = [
-        "공식 문서 또는 신뢰 보도에서 한국장 가격 변수 후보가 확인됐습니다.",
-        "돈 버는 능력, 할인율, 수급, 시간표 중 무엇이 실제로 바뀌는지 원문과 시장 반응으로 재확인해야 합니다.",
-        "한국장 직접 영향은 원문에 근거가 있는 업종과 종목군으로만 제한해 확인합니다.",
-    ]
-    for phrase in generic_phrases:
+    for phrase in GENERIC_EXPLANATION_PHRASES:
         if item_count and phrase in text:
             errors.append("generic_policy_explanation_displayed")
     for line in text.splitlines():
