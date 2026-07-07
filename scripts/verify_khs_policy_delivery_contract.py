@@ -34,7 +34,10 @@ def main() -> int:
     assert_foreign_first_policy_sources()
     assert_stablecoin_semantic_dedupe()
     assert_router_final_semantic_dedupe()
+    assert_router_keeps_source_families_separate()
+    assert_boem_space_launch_is_excluded()
     assert_delivery_guard_blocks_duplicate_policy_alerts()
+    assert_delivery_guard_blocks_source_body_mismatch()
     cleanup()
     try:
         write_fcc_regression_fixture()
@@ -147,6 +150,43 @@ def assert_router_final_semantic_dedupe() -> None:
         raise AssertionError("router source rendering dropped second source")
 
 
+def assert_router_keeps_source_families_separate() -> None:
+    boem = {
+        "source": "BOEM news",
+        "title": "Generic policy document",
+        "title_ko": "미국 정책 문서 공표",
+        "link": "https://www.boem.gov/newsroom/press-releases/boem-initiates-first-step-explore-potential-outer-continental-shelf-space",
+        "importance": "상",
+        "status": "확정",
+        "published_kst": "2026-07-07T23:00:00+09:00",
+        "matched": {"agency_order": ["order"]},
+        "impacts": ["시간표"],
+        "paths": ["정책 타임라인"],
+        "sectors": ["정책/규제 일반"],
+    }
+    fcc = {
+        **boem,
+        "source": "Federal Register FCC",
+        "link": "https://www.federalregister.gov/documents/2026/07/06/2026-13518/prohibiting-importation-and-marketing-of-previously-authorized-covered-communications-equipment",
+        "matched": {"agency_order": ["order"]},
+    }
+    merged = khs_policy_alert_router.dedupe_alerts([boem, fcc])
+    if len(merged) != 2:
+        raise AssertionError(f"router merged different source families: expected 2, got {len(merged)}")
+
+
+def assert_boem_space_launch_is_excluded() -> None:
+    item = {
+        "source": "BOEM news",
+        "title": "BOEM Initiates First Step to Explore Potential for Outer Continental Shelf Space Launch & Recovery",
+        "summary": "BOEM initiates first step to explore potential Outer Continental Shelf space launch and recovery.",
+        "link": "https://www.boem.gov/newsroom/press-releases/boem-initiates-first-step-explore-potential-outer-continental-shelf-space",
+        "matched": {"agency_order": ["outer continental shelf", "space launch"]},
+    }
+    if not khs_policy_alert_guardrails.is_low_impact_false_positive(item):
+        raise AssertionError("BOEM OCS space launch/recovery item was not excluded")
+
+
 def assert_delivery_guard_blocks_duplicate_policy_alerts() -> None:
     cleanup()
     title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
@@ -180,6 +220,34 @@ def assert_delivery_guard_blocks_duplicate_policy_alerts() -> None:
     khs_telegram_delivery_guard.main()
     if body_path.exists():
         raise AssertionError("delivery guard did not block duplicate policy alerts")
+
+
+def assert_delivery_guard_blocks_source_body_mismatch() -> None:
+    cleanup()
+    title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    title = "KHS 정책 워치: [상] FCC, 통신·주파수·위성 규제 문서 공표\n"
+    required_lines = [
+        f"{marker} FCC inverter policy regression check"
+        for marker in khs_telegram_delivery_guard.REQUIRED_EXPLANATION_FIELDS
+    ]
+    body = "\n".join([
+        "KHS policy watch source/body mismatch regression",
+        "",
+        "## 1. [상·확정] FCC, 통신·주파수·위성 규제 문서 공표",
+        "- 핵심: 미국 FCC가 외국산 에너지 인버터 제한을 검토한다는 본문입니다.",
+        *required_lines,
+        "- 출처: [미 BOEM](https://www.boem.gov/newsroom/press-releases/boem-initiates-first-step-explore-potential-outer-continental-shelf-space) · 조회 23:05 KST",
+        "",
+    ])
+    title_path.write_text(title, encoding="utf-8")
+    body_path.write_text(body, encoding="utf-8")
+    reason = khs_telegram_delivery_guard.has_source_body_mismatch(title, body)
+    if reason != "boem_source_with_fcc_body":
+        raise AssertionError(f"source/body mismatch was not detected: {reason}")
+    khs_telegram_delivery_guard.main()
+    if body_path.exists():
+        raise AssertionError("delivery guard did not block BOEM source with FCC body")
 
 
 def cleanup() -> None:

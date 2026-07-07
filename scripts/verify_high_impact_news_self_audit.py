@@ -121,6 +121,8 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
         [
             "FEDERAL_REGISTER_BOILERPLATE_BLOCKERS",
             "VISIBLE_ENGLISH_BLOCKERS",
+            "has_source_body_mismatch",
+            "source_body_mismatch",
             "duplicate_policy_heading",
             "has_long_english_run",
             "REQUIRED_EXPLANATION_FIELDS",
@@ -132,6 +134,8 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
         [
             "assert_foreign_first_policy_sources",
             "assert_router_final_semantic_dedupe",
+            "assert_router_keeps_source_families_separate",
+            "assert_delivery_guard_blocks_source_body_mismatch",
             "assert_delivery_guard_blocks_duplicate_policy_alerts",
             "raw English titles",
         ],

@@ -332,6 +332,39 @@ def duplicate_policy_body_signature(body: str) -> str | None:
     return None
 
 
+def has_source_body_mismatch(title: str, body: str) -> str | None:
+    combined = f"{title}\n{body}"
+    low_with_urls = combined.lower()
+    visible = remove_urls(combined).lower()
+    visible_normalized = normalize_for_match(remove_urls(combined))
+
+    has_boem_source = "boem.gov" in low_with_urls or re.search(r"\bboem\b", visible) is not None
+    has_fcc_body = (
+        re.search(r"\bfcc\b", visible) is not None
+        or "federal communications commission" in visible
+        or "covered communications equipment" in visible
+        or "covered list" in visible
+        or "inverter" in visible
+        or "energy inverter" in visible
+    )
+    if has_boem_source and has_fcc_body:
+        return "boem_source_with_fcc_body"
+
+    has_fcc_source = (
+        "federalregister.gov" in low_with_urls and "fcc" in visible
+    ) or "fcc.gov" in low_with_urls
+    has_boem_body = (
+        "outer continental shelf space" in visible
+        or "space launch" in visible
+        or "launch recovery" in visible_normalized
+        or "launch and recovery" in visible
+    )
+    if has_fcc_source and has_boem_body:
+        return "fcc_source_with_boem_body"
+
+    return None
+
+
 def guard_lane(lane: Lane) -> None:
     if not lane.body.exists():
         return
@@ -340,6 +373,11 @@ def guard_lane(lane: Lane) -> None:
     title = clip_text(sanitize(title), MAX_TITLE_CHARS)
     body = compact_body(sanitize(body))
     combined = f"{title}\n{body}"
+
+    marker = has_source_body_mismatch(title, body)
+    if marker:
+        delete_lane(lane, f"source_body_mismatch:{marker}")
+        return
 
     marker = has_blocker(combined, LOW_IMPACT_BLOCKERS, include_urls=True)
     if marker:

@@ -388,6 +388,50 @@ def merge_matched(left: dict, right: dict) -> dict:
     return merged
 
 
+def source_family_from_text(value: str) -> str:
+    raw = str(value or "").lower()
+    normalized = normalize_semantic_text(raw)
+    if "whitehouse gov" in normalized or "white house" in raw:
+        return "whitehouse"
+    if "boem gov" in normalized or re.search(r"\bboem\b", raw):
+        return "boem"
+    if "bsee gov" in normalized or re.search(r"\bbsee\b", raw):
+        return "bsee"
+    if "federal register fcc" in raw or "federal communications commission" in raw or re.search(r"\bfcc\b", raw):
+        return "fcc"
+    if "energy gov" in normalized or "department of energy" in raw or re.search(r"\bdoe\b", raw):
+        return "doe"
+    if "ferc gov" in normalized or re.search(r"\bferc\b", raw):
+        return "ferc"
+    if "commerce gov" in normalized or "bureau of industry and security" in raw or re.search(r"\bbis\b", raw):
+        return "commerce_bis"
+    if "ustr gov" in normalized or re.search(r"\bustr\b", raw):
+        return "ustr"
+    if "federalregister gov" in normalized or "federal register" in raw:
+        return "federal_register_other"
+    if "korea kr" in normalized or "bok or kr" in normalized or "fsc go kr" in normalized or "fss or kr" in normalized:
+        return "korea_official"
+    compact = normalize_semantic_text(raw)
+    return compact[:80] or "unknown_source"
+
+
+def alert_source_family(alert: dict) -> str:
+    values = [
+        alert.get("source"),
+        alert.get("link"),
+        alert.get("title"),
+        alert.get("original_title"),
+        alert.get("summary"),
+    ]
+    for entry in source_entries(alert):
+        values.extend([
+            entry.get("source"),
+            entry.get("link"),
+            entry.get("original_title"),
+        ])
+    return source_family_from_text(" ".join(str(value or "") for value in values))
+
+
 def semantic_alert_key(alert: dict) -> str:
     probe = enrich_missing_context(dict(alert))
     apply_router_overrides(probe)
@@ -395,9 +439,11 @@ def semantic_alert_key(alert: dict) -> str:
     sectors = "|".join(str(value) for value in probe.get("sectors") or [])
     impacts = "|".join(str(value) for value in probe.get("impacts") or [])
     matched_keys = "|".join(sorted((probe.get("matched") or {}).keys()))
+    source_family = alert_source_family(probe)
     if probe.get("domestic_stablecoin_policy_watch"):
         return "stablecoin|" + normalize_semantic_text(title or probe.get("title"))
     return "|".join([
+        normalize_semantic_text(source_family),
         normalize_semantic_text(title or probe.get("title")),
         normalize_semantic_text(sectors),
         normalize_semantic_text(impacts),

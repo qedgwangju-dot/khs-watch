@@ -248,6 +248,33 @@ def is_low_impact_false_positive(item: dict) -> bool:
         item["guardrail_note"] = "BOEM 해양광물 임대 의견수렴은 원문상 풍력·핵심광물·관세 직접 근거가 없어 고충격 알림에서 제외"
         return True
 
+    is_boem_space_launch = (
+        "boem" in source
+        and has_any(text, [
+            "outer continental shelf space",
+            "space launch",
+            "launch & recovery",
+            "launch and recovery",
+            "launch recovery",
+        ])
+        and not has_any(text, [
+            "offshore wind",
+            "wind energy",
+            "critical mineral",
+            "critical minerals",
+            "oil",
+            "gas",
+            "electric grid",
+            "power grid",
+            "data center",
+            "datacenter",
+            "tariff",
+        ])
+    )
+    if is_boem_space_launch:
+        item["guardrail_note"] = "BOEM OCS space launch/recovery item lacks direct Korean-market earnings, rate, flow, or timetable impact and is excluded"
+        return True
+
     if "federal register fcc" in source and any(marker in title for marker in LOW_IMPACT_TITLE_MARKERS):
         item["guardrail_note"] = "FCC 행정 데이터 수집·지역 방송·회의 공지는 한국장 고충격 가격 변수로 보기 어려워 제외"
         return True
