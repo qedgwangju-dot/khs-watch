@@ -151,6 +151,7 @@ def alert_text(alert: dict) -> str:
         str(alert.get("source") or ""),
         str(alert.get("title") or ""),
         str(alert.get("original_title") or ""),
+        str(alert.get("link") or ""),
         str(alert.get("summary") or ""),
         " ".join(term for terms in (alert.get("matched") or {}).values() for term in terms),
     ]).lower()
@@ -160,6 +161,27 @@ def is_fcc_resilient_networks_policy(alert: dict) -> bool:
     text = alert_text(alert)
     source = str(alert.get("source") or "").lower()
     return ("fcc" in source or "federal communications commission" in text) and any(term in text for term in FCC_RESILIENT_NETWORKS_TERMS)
+
+
+def is_fcc_submarine_cable_policy(alert: dict) -> bool:
+    text = alert_text(alert)
+    source = str(alert.get("source") or "").lower()
+    return (
+        ("fcc" in source or "federal communications commission" in text or "federalregister.gov" in text)
+        and any(
+            term in text
+            for term in (
+                "submarine cable",
+                "submarine-cable",
+                "cable landing",
+                "landing license",
+                "undersea cable",
+                "해저케이블",
+                "해저 통신케이블",
+                "랜딩 라이선스",
+            )
+        )
+    )
 
 
 def safe_title(alert: dict) -> str:
@@ -172,6 +194,8 @@ def safe_title(alert: dict) -> str:
         return "미국 정책·규제 문서 공표"
     if is_fcc_resilient_networks_policy(alert):
         return "FCC, 재난 시 통신망 장애보고 시스템(DIRS) 현대화 최종규칙 공표"
+    if is_fcc_submarine_cable_policy(alert):
+        return "FCC, 해저케이블 랜딩 라이선스 국가안보 심사 규칙 재검토"
     if mostly_ascii(title):
         source = str(alert.get("source") or "").lower()
         text = alert_text(alert)
@@ -228,6 +252,22 @@ def enrich_missing_context(alert: dict) -> dict:
             "failure_signal",
             "미국 통신사 CAPEX 가이던스, 장비 발주, 공공안전망 예산, 국내 장비사 수주 공시가 없으면 테마성 반응에서 끝납니다.",
         )
+        return alert
+
+    if is_fcc_submarine_cable_policy(alert):
+        alert = dict(alert)
+        alert["importance"] = "중"
+        alert["impacts"] = ["시간표", "할인율"]
+        alert["paths"] = ["정책 타임라인", "국가안보 심사", "규제 리스크"]
+        alert["sectors"] = ["해저케이블/국제통신망", "통신보안", "통신/FCC"]
+        alert["korea_value_chain"] = ["해저 통신케이블", "국제망 보안", "통신장비", "통신사 해외망"]
+        alert["title_ko"] = "FCC, 해저케이블 랜딩 라이선스 국가안보 심사 규칙 재검토"
+        alert["policy_plain_summary"] = "FCC가 해저 통신케이블 랜딩 라이선스 규칙과 절차를 국가안보 환경 변화에 맞춰 재검토하는 공식 규제 문서입니다."
+        alert["investment_view"] = "핵심은 태양광·전력장비 수입금지가 아니라 국제 통신망 인허가와 보안 심사 시간표입니다. 신규 케이블 허가, 외국 지분·운영자 심사, 데이터센터 연결망 규제가 구체화될 때만 투자 재료가 됩니다."
+        alert["korea_market_impact"] = "한국장에서는 해저 통신케이블, 국제망 보안, 통신장비, 통신사 해외망 노출만 제한적으로 확인합니다. 원문 근거 없이 태양광·전력변환 테마로 확장하지 않습니다."
+        alert["priced_in"] = "낮음~중간. FCC 국가안보 문서라 테마 반응은 가능하지만, 한국 기업의 직접 수주·인허가 노출이 확인되기 전에는 가격 변수로 약합니다."
+        alert["counter"] = "규칙·절차 재검토 단계일 수 있어 특정 케이블 프로젝트의 승인·거절, 예산, 조달, 한국 기업 수혜가 확정된 것은 아닙니다."
+        alert["failure_signal"] = "구체 라이선스 변경, 신규 심사 기준, 케이블 사업자 영향, 한국 기업 수주·공급망 노출이 확인되지 않으면 관찰 재료로만 처리합니다."
         return alert
 
     alert = dict(alert)
@@ -326,6 +366,20 @@ def compact_explanation_lines(alert: dict) -> list[str]:
 
 def apply_router_overrides(alert: dict) -> None:
     text = alert_text(alert)
+    if is_fcc_submarine_cable_policy(alert):
+        alert["importance"] = "중"
+        alert["title_ko"] = "FCC, 해저케이블 랜딩 라이선스 국가안보 심사 규칙 재검토"
+        alert["policy_plain_summary"] = "FCC가 해저 통신케이블 랜딩 라이선스 규칙과 절차를 국가안보 환경 변화에 맞춰 재검토하는 공식 규제 문서입니다."
+        alert["investment_view"] = "핵심은 태양광·전력장비 수입금지가 아니라 국제 통신망 인허가와 보안 심사 시간표입니다. 신규 케이블 허가, 외국 지분·운영자 심사, 데이터센터 연결망 규제가 구체화될 때만 투자 재료가 됩니다."
+        alert["korea_market_impact"] = "한국장에서는 해저 통신케이블, 국제망 보안, 통신장비, 통신사 해외망 노출만 제한적으로 확인합니다. 원문 근거 없이 태양광·전력변환 테마로 확장하지 않습니다."
+        alert["impacts"] = ["시간표", "할인율"]
+        alert["paths"] = ["정책 타임라인", "국가안보 심사", "규제 리스크"]
+        alert["sectors"] = ["해저케이블/국제통신망", "통신보안", "통신/FCC"]
+        alert["korea_value_chain"] = ["해저 통신케이블", "국제망 보안", "통신장비", "통신사 해외망"]
+        alert["priced_in"] = "낮음~중간. FCC 국가안보 문서라 테마 반응은 가능하지만, 한국 기업의 직접 수주·인허가 노출이 확인되기 전에는 가격 변수로 약합니다."
+        alert["counter"] = "규칙·절차 재검토 단계일 수 있어 특정 케이블 프로젝트의 승인·거절, 예산, 조달, 한국 기업 수혜가 확정된 것은 아닙니다."
+        alert["failure_signal"] = "구체 라이선스 변경, 신규 심사 기준, 케이블 사업자 영향, 한국 기업 수주·공급망 노출이 확인되지 않으면 관찰 재료로만 처리합니다."
+        return
     if "covered communications equipment" in text or ("covered list" in text and ("prohibit" in text or "importation" in text or "marketing" in text)):
         alert["title_ko"] = "FCC, 보안 위험 통신장비 수입·판매 제한 절차 공표"
         alert["policy_plain_summary"] = "FCC가 Covered List에 오른 보안 위험 통신장비의 미국 내 수입·판매 제한 절차를 공표한 사안입니다."

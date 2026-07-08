@@ -38,6 +38,8 @@ def main() -> int:
     assert_boem_space_launch_is_excluded()
     assert_delivery_guard_blocks_duplicate_policy_alerts()
     assert_delivery_guard_blocks_source_body_mismatch()
+    assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch()
+    assert_router_explains_fcc_submarine_cable_policy()
     cleanup()
     try:
         write_fcc_regression_fixture()
@@ -248,6 +250,64 @@ def assert_delivery_guard_blocks_source_body_mismatch() -> None:
     khs_telegram_delivery_guard.main()
     if body_path.exists():
         raise AssertionError("delivery guard did not block BOEM source with FCC body")
+
+
+def assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch() -> None:
+    cleanup()
+    title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    title = "KHS 정책 워치: [상] FCC, 통신·주파수·위성 규제 문서 공표\n"
+    required_lines = [
+        f"{marker} FCC submarine cable/inverter mismatch regression check"
+        for marker in khs_telegram_delivery_guard.REQUIRED_EXPLANATION_FIELDS
+    ]
+    body = "\n".join([
+        "🚨 KHS 정책·규제 고충격 워치 · 2026년 07월 08일 15:18 KST",
+        "",
+        "## 1. [상·확정] FCC, 통신·주파수·위성 규제 문서 공표",
+        "- 핵심: 미국 FCC가 국가안보 우려를 이유로 외국산 또는 중국산 에너지 인버터 신규 수입 제한·금지 조치를 검토 중이라는 내용입니다.",
+        *required_lines,
+        "- 출처: [미 연방관보 FCC](https://www.federalregister.gov/documents/2026/07/08/2026-13765/review-of-submarine-cable-landing-license-rules-and-procedures-to-assess-evolving-national-security) · 조회 15:18 KST",
+        "",
+    ])
+    title_path.write_text(title, encoding="utf-8")
+    body_path.write_text(body, encoding="utf-8")
+    reason = khs_telegram_delivery_guard.has_source_body_mismatch(title, body)
+    expected = "fcc_submarine_cable_source_with_inverter_or_equipment_ban_body"
+    if reason != expected:
+        raise AssertionError(f"FCC submarine/source body mismatch was not detected: {reason}")
+    khs_telegram_delivery_guard.main()
+    if body_path.exists():
+        raise AssertionError("delivery guard did not block FCC submarine cable source with inverter body")
+
+
+def assert_router_explains_fcc_submarine_cable_policy() -> None:
+    item = {
+        "source": "Federal Register FCC",
+        "title": "Review of Submarine Cable Landing License Rules and Procedures To Assess Evolving National Security",
+        "original_title": "Review of Submarine Cable Landing License Rules and Procedures To Assess Evolving National Security",
+        "link": "https://www.federalregister.gov/documents/2026/07/08/2026-13765/review-of-submarine-cable-landing-license-rules-and-procedures-to-assess-evolving-national-security",
+        "importance": "상",
+        "status": "확정",
+        "published_kst": "2026-07-08T09:00:00+09:00",
+        "matched": {"fcc_decision_notice": ["national security", "rulemaking"]},
+        "impacts": ["시간표", "할인율"],
+        "paths": ["정책 타임라인", "할인율"],
+        "sectors": ["통신/FCC/위성"],
+    }
+    enriched = khs_policy_alert_router.enrich_missing_context(item)
+    khs_policy_alert_router.apply_router_overrides(enriched)
+    title = khs_policy_alert_router.safe_title(enriched)
+    fields = " ".join(
+        str(enriched.get(key) or "")
+        for key in ("policy_plain_summary", "investment_view", "korea_market_impact", "sectors")
+    ).lower()
+    if "해저케이블" not in title and "해저 통신케이블" not in fields:
+        raise AssertionError("FCC submarine cable policy was not routed to submarine cable explanation")
+    forbidden = ["inverter", "energy inverter", "solar inverter", "인버터", "전력변환장치"]
+    for token in forbidden:
+        if token.lower() in fields:
+            raise AssertionError(f"FCC submarine cable explanation leaked inverter body: {token}")
 
 
 def cleanup() -> None:

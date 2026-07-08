@@ -362,6 +362,31 @@ def has_source_body_mismatch(title: str, body: str) -> str | None:
     if has_fcc_source and has_boem_body:
         return "fcc_source_with_boem_body"
 
+    has_fcc_submarine_source = (
+        "submarine-cable-landing-license" in low_with_urls
+        or "review-of-submarine-cable-landing-license" in low_with_urls
+        or "submarine cable landing license" in visible
+        or "submarine cable" in visible
+        or "cable landing" in visible
+        or "landing license" in visible
+        or "해저케이블" in visible
+        or "해저 통신케이블" in visible
+    )
+    has_inverter_or_equipment_ban_body = (
+        "energy inverter" in visible
+        or "solar inverter" in visible
+        or "inverter" in visible
+        or "인버터" in visible
+        or "전력변환장치" in visible
+        or "covered communications equipment" in visible
+        or (
+            "covered list" in visible
+            and ("importation" in visible or "marketing" in visible or "수입" in visible or "판매" in visible)
+        )
+    )
+    if has_fcc_submarine_source and has_inverter_or_equipment_ban_body:
+        return "fcc_submarine_cable_source_with_inverter_or_equipment_ban_body"
+
     return None
 
 

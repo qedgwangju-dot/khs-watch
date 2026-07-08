@@ -39,6 +39,7 @@ def text_for(item: dict) -> str:
             item.get("title"),
             item.get("original_title"),
             item.get("summary"),
+            item.get("link"),
             item.get("core"),
             item.get("point"),
             item.get("impact"),
@@ -339,7 +340,28 @@ def is_fcc_resilient(text: str) -> bool:
     )
 
 
+def is_fcc_submarine_cable_policy(text: str, item: dict) -> bool:
+    return (
+        has_any(text, ["fcc", "federal communications commission", "federalregister.gov"])
+        and has_any(
+            text,
+            [
+                "submarine cable",
+                "submarine-cable",
+                "cable landing",
+                "landing license",
+                "undersea cable",
+                "해저케이블",
+                "해저 통신케이블",
+                "랜딩 라이선스",
+            ],
+        )
+    )
+
+
 def is_fcc_energy_inverter_policy(text: str, item: dict) -> bool:
+    if is_fcc_submarine_cable_policy(text, item):
+        return False
     if not has_any(text, ["inverter", "inverters", "solar inverter", "energy inverter", "전력변환장치", "인버터"]):
         return False
     return item.get("eu_policy_category") == "us_fcc_foreign_energy_inverter_ban" or "us_fcc_foreign_energy_inverter_ban" in (item.get("matched") or {}) or (
@@ -350,10 +372,30 @@ def is_fcc_energy_inverter_policy(text: str, item: dict) -> bool:
 
 
 def is_fcc_security_import_policy(text: str, item: dict) -> bool:
+    if is_fcc_submarine_cable_policy(text, item):
+        return False
+    has_fcc = has_any(text, ["fcc", "federal communications commission"])
+    has_import_action = has_any(
+        text,
+        [
+            "covered communications equipment",
+            "covered list",
+            "equipment authorization",
+            "prohibiting importation",
+            "importation and marketing",
+            "import ban",
+            "ban imports",
+            "barred imports",
+            "수입금지",
+            "수입 제한",
+            "수입·판매 제한",
+            "장비인증",
+        ],
+    )
     return "us_fcc_security_import_restriction" in (item.get("matched") or {}) or (
-        has_any(text, ["fcc", "federal communications commission"])
-        and has_any(text, ["national security", "covered list", "ban", "barred", "restrict", "restriction", "prohibit", "import", "imports", "국가안보", "수입금지", "수입 제한", "장비인증"])
-        and has_any(text, ["equipment", "device", "module", "inverter", "satellite", "telecom", "communications", "grid", "energy", "drone", "router", "camera", "connected vehicle", "장비", "모듈", "인버터", "위성", "통신", "전력망", "에너지", "드론", "라우터", "카메라"])
+        has_fcc
+        and has_import_action
+        and has_any(text, ["equipment", "device", "module", "router", "camera", "connected vehicle", "장비", "모듈", "라우터", "카메라"])
     )
 
 
@@ -610,6 +652,20 @@ def ensure_explained(item: dict) -> dict:
             priced_in="중간. 법안 기대는 테마 수급에 빨리 반영되지만, 발행 주체와 감독 강도가 확정되지 않아 변동성이 큽니다.",
             counter="은행 중심인지 핀테크·거래소까지 허용할지, 한국은행·금융당국 규제 강도가 어느 수준일지 아직 확정되지 않았습니다.",
             failure_signal="발행 주체가 좁게 제한되거나 준비자산·상환·건전성 규제가 강해지면 테마 확산이 약해집니다.",
+        )
+    elif is_fcc_submarine_cable_policy(text, item):
+        put(
+            item,
+            importance="중",
+            impacts=["시간표", "할인율"],
+            paths=["정책 타임라인", "국가안보 심사", "규제 리스크"],
+            sectors=["해저케이블/국제통신망", "통신보안", "통신/FCC"],
+            policy_plain_summary="FCC가 해저 통신케이블 랜딩 라이선스 규칙과 절차를 국가안보 환경 변화에 맞춰 재검토하는 공식 규제 문서입니다.",
+            investment_view="핵심은 태양광·전력장비 수입금지가 아니라 국제 통신망 인허가와 보안 심사 시간표입니다. 신규 케이블 허가, 외국 지분·운영자 심사, 데이터센터 연결망 규제가 구체화될 때만 투자 재료가 됩니다.",
+            korea_market_impact="한국장에서는 해저 통신케이블, 국제망 보안, 통신장비, 통신사 해외망 노출만 제한적으로 확인합니다. 원문 근거 없이 태양광·전력변환 테마로 확장하지 않습니다.",
+            priced_in="낮음~중간. FCC 국가안보 문서라 테마 반응은 가능하지만, 한국 기업의 직접 수주·인허가 노출이 확인되기 전에는 가격 변수로 약합니다.",
+            counter="규칙·절차 재검토 단계일 수 있어 특정 케이블 프로젝트의 승인·거절, 예산, 조달, 한국 기업 수혜가 확정된 것은 아닙니다.",
+            failure_signal="구체 라이선스 변경, 신규 심사 기준, 케이블 사업자 영향, 한국 기업 수주·공급망 노출이 확인되지 않으면 관찰 재료로만 처리합니다.",
         )
     elif is_fcc_energy_inverter_policy(text, item):
         put(
