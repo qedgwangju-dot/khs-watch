@@ -340,6 +340,55 @@ def is_fcc_resilient(text: str) -> bool:
     )
 
 
+def is_trump_direct_policy_statement(text: str, item: dict) -> bool:
+    matched = item.get("matched") or {}
+    if "trump_direct_policy_remarks_watch" in matched:
+        return True
+    return (
+        has_any(text, ["president trump", "donald j. trump", "donald trump", "trump remarks", "trump says", "트럼프 대통령"])
+        and has_any(
+            text,
+            [
+                "tariff",
+                "export control",
+                "sanction",
+                "fed",
+                "rate",
+                "dollar",
+                "oil",
+                "china",
+                "taiwan",
+                "south korea",
+                "defense",
+                "semiconductor",
+                "chip",
+                "ai",
+                "data center",
+                "power grid",
+                "nuclear",
+                "reactor",
+                "middle east",
+                "russia",
+                "ukraine",
+                "관세",
+                "수출통제",
+                "제재",
+                "금리",
+                "달러",
+                "유가",
+                "중국",
+                "대만",
+                "한국",
+                "방산",
+                "반도체",
+                "데이터센터",
+                "전력망",
+                "원전",
+            ],
+        )
+    )
+
+
 def is_fcc_submarine_cable_policy(text: str, item: dict) -> bool:
     return (
         has_any(text, ["fcc", "federal communications commission", "federalregister.gov"])
@@ -652,6 +701,21 @@ def ensure_explained(item: dict) -> dict:
             priced_in="중간. 법안 기대는 테마 수급에 빨리 반영되지만, 발행 주체와 감독 강도가 확정되지 않아 변동성이 큽니다.",
             counter="은행 중심인지 핀테크·거래소까지 허용할지, 한국은행·금융당국 규제 강도가 어느 수준일지 아직 확정되지 않았습니다.",
             failure_signal="발행 주체가 좁게 제한되거나 준비자산·상환·건전성 규제가 강해지면 테마 확산이 약해집니다.",
+        )
+    elif is_trump_direct_policy_statement(text, item):
+        put(
+            item,
+            importance="상",
+            title_ko="트럼프 대통령 발언, 시장 영향 정책 신호",
+            impacts=["돈 버는 능력", "할인율", "수급", "시간표"],
+            paths=["정책 타임라인", "할인율", "공급망", "지정학 리스크", "수급"],
+            sectors=["관세/수출주", "반도체/AI", "전력망/원전", "방산/지정학", "환율·금리 민감주"],
+            policy_plain_summary="트럼프 대통령의 직접 발언이 관세, 수출통제, 금리·달러, 에너지, 지정학, 방위비, 반도체·AI 인프라 정책 기대를 움직일 수 있는 사안입니다.",
+            investment_view="공식 문서 전이라도 대통령 발언은 정책 확률과 할인율을 먼저 움직입니다. 품목·국가·시행일·예산·협상 상대가 구체적이면 한국장 수출주, 방산, 전력기기, 반도체 수급이 즉시 반응할 수 있습니다.",
+            korea_market_impact="한국장에서는 발언 주제에 직접 노출된 업종만 연결합니다. 관세는 수출주, 방위비·주한미군은 방산/지정학, 전력·원전은 전력기기/원전, 반도체·AI는 삼성전자·SK하이닉스와 장비·소재 체인을 확인합니다.",
+            priced_in="낮음~중간. 트럼프 발언은 시장이 빠르게 반영하지만 공식 문서 전에는 되돌림도 빠릅니다. 기존 공약 반복이면 반영 가능성이 높습니다.",
+            counter="발언은 행정명령·관보·부처 공고가 아니므로 실제 정책 범위가 축소되거나 일정이 밀릴 수 있습니다. 단순 정치 발언이면 하루짜리 수급으로 끝날 수 있습니다.",
+            failure_signal="백악관 원문, 부처 후속 문서, 품목·국가·시행일, 한국 기업 직접 노출, 환율·금리·관련 해외 티커 반응이 없으면 고충격 재료에서 제외합니다.",
         )
     elif is_fcc_submarine_cable_policy(text, item):
         put(

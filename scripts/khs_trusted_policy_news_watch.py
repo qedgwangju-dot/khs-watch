@@ -342,6 +342,35 @@ STORY_RULES = (
         follow_up="DOE 보도는 금액·대출조건·선정기업·시행일·조달일정이 원문에서 확인될 때 고충격으로 남깁니다. 국내 기업은 미국 프로젝트 노출이 없으면 테마 반응으로 제한합니다.",
     ),
     StoryRule(
+        key="trump_direct_policy_remarks_watch",
+        title="트럼프 대통령 직접 발언, 시장 영향 정책 신호",
+        google_queries=(
+            "Reuters Bloomberg Trump says tariff semiconductor China Taiwan Korea dollar Fed oil nuclear data center",
+            "Reuters Bloomberg President Trump remarks tariffs export controls sanctions defense burden sharing South Korea",
+            "Reuters Bloomberg Trump says national security import ban chips AI data centers power grid nuclear",
+            "Reuters Bloomberg Trump remarks China Taiwan Middle East oil tariffs sanctions export controls",
+            "CNBC MarketWatch Reuters Bloomberg Trump comments tariffs Fed dollar oil chips nuclear data centers",
+        ),
+        required_groups=(
+            ("trump", "president trump", "donald trump", "donald j. trump"),
+            ("says", "said", "remarks", "comments", "announces", "backs", "orders", "warns", "threatens"),
+            (
+                "tariff", "tariffs", "export control", "sanctions", "fed", "rate", "dollar", "oil",
+                "china", "taiwan", "korea", "south korea", "defense", "burden sharing", "usfk",
+                "semiconductor", "chip", "ai", "data center", "power grid", "nuclear", "reactor",
+                "iran", "middle east", "russia", "ukraine", "steel", "copper", "transformer",
+            ),
+        ),
+        core="Reuters·Bloomberg·CNBC 등 신뢰외신에서 트럼프 대통령의 직접 발언이 관세, 수출통제, 금리·달러, 에너지, 지정학, 방위비, 반도체·AI 인프라 정책 기대를 움직인 사안입니다.",
+        impact="관세/수출주, 반도체/AI, 전력망/원전, 방산/지정학, 환율·금리 민감주 | 돈 버는 능력·할인율·수급·시간표",
+        point="트럼프 직접 발언은 공식 문서 전이라도 정책 확률과 시장 할인율을 먼저 움직일 수 있습니다. 품목·국가·시행일·예산·협상 상대가 구체적이면 한국장 수출주, 방산, 전력기기, 반도체 수급이 즉시 반응할 수 있습니다.",
+        counter="발언은 행정명령·관보·부처 공고가 아니므로 실제 정책 범위가 축소되거나 일정이 밀릴 수 있습니다. 단순 정치 발언이면 하루짜리 수급으로 끝날 수 있습니다.",
+        sectors="관세/수출주, 반도체/AI, 전력망/원전, 방산/지정학, 환율·금리 민감주",
+        impacts=("돈 버는 능력", "할인율", "수급", "시간표"),
+        paths=("정책 타임라인", "할인율", "공급망", "지정학 리스크", "수급"),
+        follow_up="트럼프 발언은 모두 감시하되, 송출 후에는 백악관 원문, 부처 후속 문서, 품목·국가·시행일, 한국 기업 직접 노출을 재확인해야 합니다. 단순 선거성 발언은 실패 신호로 처리합니다.",
+    ),
+    StoryRule(
         key="global_korea_policy_shock_broad",
         title="신뢰외신, 한국 직접 영향 해외 정책 후보 보도",
         google_queries=(

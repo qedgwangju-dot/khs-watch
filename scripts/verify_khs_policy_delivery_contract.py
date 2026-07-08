@@ -8,12 +8,15 @@ explanations. The workflow runs this before sending Telegram alerts.
 
 from __future__ import annotations
 
+import datetime as dt
 import json
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import khs_policy_alert_guardrails
 import khs_policy_alert_router
 import khs_domestic_stablecoin_policy_watch
+import khs_policy_watch
 import khs_telegram_delivery_guard
 
 
@@ -35,6 +38,7 @@ def main() -> int:
     assert_stablecoin_semantic_dedupe()
     assert_router_final_semantic_dedupe()
     assert_router_keeps_source_families_separate()
+    assert_trump_statement_reaches_policy_lane()
     assert_boem_space_launch_is_excluded()
     assert_delivery_guard_blocks_duplicate_policy_alerts()
     assert_delivery_guard_blocks_source_body_mismatch()
@@ -175,6 +179,40 @@ def assert_router_keeps_source_families_separate() -> None:
     merged = khs_policy_alert_router.dedupe_alerts([boem, fcc])
     if len(merged) != 2:
         raise AssertionError(f"router merged different source families: expected 2, got {len(merged)}")
+
+
+def assert_trump_statement_reaches_policy_lane() -> None:
+    item = {
+        "source": "White House remarks",
+        "title": "Remarks by President Donald J. Trump on Semiconductor Tariffs and China",
+        "summary": "White House Trump Remarks official page link: Remarks by President Donald J. Trump on Semiconductor Tariffs and China",
+        "link": "https://www.whitehouse.gov/remarks/2026/07/remarks-by-president-donald-j-trump-on-semiconductor-tariffs-and-china/",
+        "published_kst": "2026-07-08T00:00:00+09:00",
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("Trump direct remarks were not classified as a policy alert")
+    if "presidential_action" not in (classified.get("matched") or {}):
+        raise AssertionError("Trump direct remarks did not carry presidential_action match")
+    classified["sectors"] = khs_policy_alert_guardrails.direct_sectors(classified)
+    khs_policy_alert_guardrails.ensure_explained(classified)
+    if not khs_policy_alert_guardrails.has_actionable_decision_impact(classified):
+        raise AssertionError("Trump direct remarks were dropped by policy decision-impact guardrail")
+    rendered = khs_policy_alert_router.render_policy_report(
+        [classified],
+        dt.datetime(2026, 7, 8, 15, 40, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "트럼프 대통령 발언, 시장 영향 정책 신호",
+        "- 핵심:",
+        "- 의사결정 영향:",
+        "백악관 트럼프 발언",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"Trump direct remarks policy render missing: {marker}")
+    if "Remarks by President Donald" in rendered:
+        raise AssertionError("raw English Trump remarks title leaked into Telegram render")
 
 
 def assert_boem_space_launch_is_excluded() -> None:

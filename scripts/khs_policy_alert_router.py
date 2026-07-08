@@ -125,6 +125,12 @@ SOURCE_LABELS = {
     "ftc press releases": "미 FTC",
     "fda press announcements": "미 FDA",
     "boem news": "미 BOEM",
+    "white house executive orders": "백악관 행정명령",
+    "white house presidential memoranda": "백악관 대통령각서",
+    "white house proclamations": "백악관 포고문",
+    "white house fact sheets": "백악관 팩트시트",
+    "white house remarks": "백악관 트럼프 발언",
+    "white house briefings statements": "백악관 브리핑·성명",
 }
 
 
@@ -215,6 +221,13 @@ def safe_title(alert: dict) -> str:
             return "미국, 원전 정책 문서 공표"
         if "fda" in text:
             return "FDA, 바이오·의약품 규제 결정 공표"
+        if "white house" in source or "whitehouse.gov" in text:
+            if "fact sheet" in text:
+                return "백악관, 정책 팩트시트 발표"
+            if "remarks" in text or "president trump" in text or "donald j. trump" in text:
+                return "트럼프 대통령 발언, 정책 영향 후보"
+            if "statement" in text or "briefing" in text:
+                return "백악관, 정책 성명·브리핑 발표"
         return "미국 정책·규제 문서 공표"
     return title
 
@@ -621,7 +634,7 @@ def main() -> int:
     for item in alerts:
         if is_whitehouse(item):
             whitehouse_count += 1
-        elif is_personnel(item):
+        if is_personnel(item):
             personnel_alerts.append(item)
         else:
             policy_alerts.append(item)
@@ -641,7 +654,7 @@ def main() -> int:
         "policy_router=split "
         f"policy={len(policy_alerts)} raw_policy={raw_policy_count} "
         f"korea_personnel={len(personnel_alerts)} "
-        f"whitehouse_routed_out={whitehouse_count}"
+        f"whitehouse_checked={whitehouse_count}"
     )
     return 0
 

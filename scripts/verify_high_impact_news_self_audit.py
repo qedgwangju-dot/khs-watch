@@ -117,6 +117,25 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
         errors,
     )
     require(
+        SCRIPTS / "khs_policy_watch.py",
+        [
+            'Source("White House fact sheets"',
+            'Source("White House remarks"',
+            'Source("White House briefings statements"',
+            "remarks by president trump",
+        ],
+        errors,
+    )
+    require(
+        SCRIPTS / "khs_trusted_policy_news_watch.py",
+        [
+            "trump_direct_policy_remarks_watch",
+            "트럼프 대통령 직접 발언, 시장 영향 정책 신호",
+            "Trump says tariff semiconductor China Taiwan Korea dollar Fed oil nuclear data center",
+        ],
+        errors,
+    )
+    require(
         SCRIPTS / "khs_telegram_delivery_guard.py",
         [
             "FEDERAL_REGISTER_BOILERPLATE_BLOCKERS",

@@ -449,12 +449,11 @@ def main() -> int:
 
     general_alerts: list[dict] = []
     personnel_alerts: list[dict] = []
-    routed_whitehouse_count = 0
+    whitehouse_count = 0
     seen: set[str] = set()
     for item in alerts:
         if is_whitehouse(item):
-            routed_whitehouse_count += 1
-            continue
+            whitehouse_count += 1
         item["sectors"] = direct_sectors(item)
         if is_low_impact_false_positive(item):
             continue
@@ -482,13 +481,13 @@ def main() -> int:
 
     total_alerts = len(general_alerts) + len(personnel_alerts)
     if total_alerts == 0:
-        print(f"policy_guardrails=cleared_all_alerts routed_whitehouse={routed_whitehouse_count}")
+        print(f"policy_guardrails=cleared_all_alerts whitehouse_checked={whitehouse_count}")
         return 0
 
     print(
         "policy_guardrails=split "
         f"general={len(general_alerts)} personnel={len(personnel_alerts)} "
-        f"routed_whitehouse={routed_whitehouse_count}"
+        f"whitehouse_checked={whitehouse_count}"
     )
     return 0
 

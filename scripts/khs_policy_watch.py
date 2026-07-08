@@ -104,7 +104,10 @@ STAGE_KEYWORDS = {
     "presidential_action": [
         "executive order", "presidential memorandum", "presidential determination", "national security memorandum",
         "national security presidential memorandum", "presidential permit", "proclamation", "administrative order",
-        "delegation of authority", "continuation of the national emergency", "행정명령", "대통령 각서", "대통령 결정",
+        "delegation of authority", "continuation of the national emergency",
+        "fact sheet", "remarks by president", "remarks by president trump", "statement from president",
+        "president donald j. trump", "president trump", "trump administration",
+        "행정명령", "대통령 각서", "대통령 결정", "트럼프 대통령", "백악관 발언",
     ],
     "company_filing": [
         "8-k", "6-k", "10-q", "10-k", "20-f", "material definitive agreement", "supply agreement",
@@ -146,7 +149,7 @@ BSEE_STRONG_TERMS = [
 ]
 PRESIDENTIAL_ACTION_STATIC_EXCLUDE = [
     "nominations sent to the senate", "nomination sent to the senate", "nomination and withdrawal",
-    "nominations & appointments", "remarks", "fact sheets", "briefings & statements",
+    "nominations & appointments",
     "privacy policy", "subscribe",
 ]
 PRESIDENTIAL_ACTION_EXACT_EXCLUDE = {
@@ -205,6 +208,9 @@ SOURCES = [
     Source("White House executive orders", "https://www.whitehouse.gov/presidential-actions/executive-orders/", "whitehouse_html"),
     Source("White House presidential memoranda", "https://www.whitehouse.gov/presidential-actions/presidential-memoranda/", "whitehouse_html"),
     Source("White House proclamations", "https://www.whitehouse.gov/presidential-actions/proclamations/", "whitehouse_html"),
+    Source("White House fact sheets", "https://www.whitehouse.gov/fact-sheets/", "whitehouse_html"),
+    Source("White House remarks", "https://www.whitehouse.gov/remarks/", "whitehouse_html"),
+    Source("White House briefings statements", "https://www.whitehouse.gov/briefings-statements/", "whitehouse_html"),
     Source("FCC open meeting", "https://www.fcc.gov/openmeeting", "fcc_html"),
     Source("FCC open commission meetings", "https://www.fcc.gov/news-events/events/open-commission-meetings", "fcc_html"),
     Source("FCC items on circulation", "https://www.fcc.gov/items-on-circulation", "fcc_html"),
@@ -366,8 +372,22 @@ def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
         doc_type = "Presidential Memorandum"
     elif "proclamations" in source.name:
         doc_type = "Proclamation"
+    elif "fact sheets" in source.name:
+        doc_type = "Fact Sheet"
+    elif "remarks" in source.name:
+        doc_type = "Trump Remarks"
+    elif "briefings" in source.name:
+        doc_type = "White House Statement"
     else:
         doc_type = "Presidential Action"
+    if "fact sheets" in source.name:
+        required_path = "/fact-sheets/"
+    elif "remarks" in source.name:
+        required_path = "/remarks/"
+    elif "briefings" in source.name:
+        required_path = "/briefings-statements/"
+    else:
+        required_path = "/presidential-actions/"
     deduped: dict[str, dict] = {}
     for match in link_pattern.finditer(text):
         title = clean_text(match.group("label"))
@@ -380,7 +400,7 @@ def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
             continue
         link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
         link_lower = link.lower()
-        if "/presidential-actions/" not in link_lower or link.rstrip("/") == source.url.rstrip("/"):
+        if required_path not in link_lower or link.rstrip("/") == source.url.rstrip("/"):
             continue
         tail = clean_text(text[match.end(): match.end() + 700])
         date_match = re.search(
