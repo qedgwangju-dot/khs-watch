@@ -18,6 +18,7 @@ import khs_policy_alert_router
 import khs_domestic_stablecoin_policy_watch
 import khs_policy_watch
 import khs_telegram_delivery_guard
+import khs_trusted_policy_news_watch
 
 
 OUT_DIR = Path("out")
@@ -41,6 +42,7 @@ def main() -> int:
     assert_trump_statement_reaches_policy_lane()
     assert_trump_iran_war_statement_reaches_geopolitical_lane()
     assert_state_smr_moc_reaches_policy_lane()
+    assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered()
     assert_boem_space_launch_is_excluded()
     assert_delivery_guard_blocks_duplicate_policy_alerts()
     assert_delivery_guard_blocks_source_body_mismatch()
@@ -293,6 +295,25 @@ def assert_state_smr_moc_reaches_policy_lane() -> None:
     for marker in forbidden:
         if marker in rendered:
             raise AssertionError(f"State Department SMR MOC raw text leaked: {marker}")
+
+
+def assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "us_japan_korea_smr_moc_state_watch"
+    )
+    publisher = "Aju Press"
+    query = '"United States" "Japan" "Republic of Korea" "Small Modular Reactor" "Memorandum of Cooperation" "Samsung C&T"'
+    haystack = " ".join([
+        "Seoul, Washington, Tokyo forge SMR export alliance - Aju Press",
+        publisher,
+        "Seoul, Washington, Tokyo forge SMR export alliance Aju Press",
+        query,
+    ])
+    if not khs_trusted_policy_news_watch.is_rule_trusted_source(publisher, rule):
+        raise AssertionError("State SMR MOC fallback source was not rule-trusted")
+    if not khs_trusted_policy_news_watch.has_required_terms(haystack, rule):
+        raise AssertionError("State SMR MOC fallback query terms were overfiltered")
 
 
 def assert_boem_space_launch_is_excluded() -> None:

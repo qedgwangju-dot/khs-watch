@@ -107,6 +107,7 @@ class StoryRule:
     impacts: tuple[str, ...]
     paths: tuple[str, ...]
     follow_up: str
+    trusted_sources: tuple[str, ...] = ()
 
 
 STORY_RULES = (
@@ -344,14 +345,25 @@ STORY_RULES = (
             ("japan", "japanese", "trilateral"),
             ("samsung c&t", "ge vernova", "hitachi", "first program", "regional training hub", "indo-pacific", "europe"),
         ),
-        core="미 국무부 또는 신뢰 소스 기준 미국·일본·한국이 제3국 SMR 배치를 가속하기 위한 3국 협력각서(MOC)를 체결했다는 신호입니다. 원문에는 FIRST 프로그램 1,000만 달러 이상 지원, GE Vernova·Hitachi·Samsung C&T·SGE의 BWRX-300 유럽 배치 이니셔티브가 함께 언급됩니다.",
+        core="미 국무부 또는 신뢰 소스 기준 미·일·한이 제3국 SMR 배치를 가속하기 위한 3국 협력각서(MOC)를 체결했다는 신호입니다. 원문에는 FIRST 프로그램 1,000만 달러 이상 지원, GE Vernova·Hitachi·Samsung C&T·SGE의 BWRX-300 유럽 배치 이니셔티브가 함께 언급됩니다.",
         impact="원전/SMR, 삼성물산/건설·EPC, 원전 기자재/전력기기, BWRX-300 밸류체인 | 시간표·수급·돈 버는 능력·할인율",
-        point="MOC는 확정 수주가 아니라 제3국 SMR 사업의 정책 시간표와 파이낸싱 신뢰도를 높이는 재료입니다. 삼성물산이 원문에 직접 언급되면 한국장에서는 원전 EPC와 기자재 밸류체인 기대가 먼저 움직일 수 있습니다.",
+        point="MOC는 확정 수주가 아니라 제3국 SMR 사업의 정책 시간표와 파이낸싱 신뢰도, 민간 밸류체인 기대를 높이는 재료입니다. 삼성물산이 원문에 직접 언급되면 한국장에서는 원전 EPC와 기자재 밸류체인 기대가 먼저 움직일 수 있습니다.",
         counter="확정 매출 확인 불가. 협력각서(MOC)는 EPC 계약, 공급계약, 확정 매출이 아닙니다. FIRST 자금도 기술지원·훈련허브 성격이라 실제 건설 CAPEX와 다르며, 국가·부지·라이선스·계약 범위가 확인돼야 실적 재료가 됩니다.",
         sectors="원전/SMR, 삼성물산/건설·EPC, 원전 기자재/전력기기, BWRX-300 밸류체인",
         impacts=("시간표", "수급", "돈 버는 능력", "할인율"),
         paths=("정책 타임라인", "계약 가시성", "원전 밸류체인", "프로젝트 파이낸싱", "수급"),
         follow_up="이 뉴스는 MOC 단계라 확정 수주로 계산하지 않습니다. 후속으로 삼성물산·GE Vernova·Hitachi·SGE 공시, BWRX-300 프로젝트 국가·부지·EPC 범위, 인허가·금융 일정, 한국 기자재 공급망 노출을 확인해야 합니다.",
+        trusted_sources=(
+            "Aju Press",
+            "American Nuclear Society -- ANS",
+            "American Nuclear Society",
+            "World Nuclear News",
+            "POWER Magazine",
+            "SMR Insider",
+            "The Express Tribune",
+            "U.S. Embassy & Consulates in China",
+            "U.S. Mission to the European Union",
+        ),
     ),
     StoryRule(
         key="us_doe_energy_security_policy",
@@ -504,6 +516,11 @@ def is_trusted_source(name: str) -> bool:
     return "department of state" in key or "state department" in key or "state.gov" in key
 
 
+def is_rule_trusted_source(name: str, rule: StoryRule) -> bool:
+    key = source_key(name)
+    return any(key == source_key(source) for source in rule.trusted_sources)
+
+
 def trusted_wire_source(text: str) -> str:
     low = text.lower()
     if "reuters" in low:
@@ -552,13 +569,17 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             publisher = source_name(item)
             published = parse_pub_date(item.findtext("pubDate"))
             description = clean_text(item.findtext("description"))
-            haystack = " ".join([title, publisher, description])
+            rule_source_ok = is_rule_trusted_source(publisher, rule)
+            haystack_parts = [title, publisher, description]
+            if rule_source_ok and rule.key == "us_japan_korea_smr_moc_state_watch":
+                haystack_parts.append(query)
+            haystack = " ".join(haystack_parts)
             wire_source = trusted_wire_source(haystack)
             if not title or not link or not published:
                 continue
             if link in seen_links:
                 continue
-            if not is_trusted_source(publisher) and not is_trusted_wire_relay(publisher, haystack):
+            if not is_trusted_source(publisher) and not rule_source_ok and not is_trusted_wire_relay(publisher, haystack):
                 continue
             if (now - published).total_seconds() / 3600 > MAX_AGE_HOURS:
                 continue
@@ -598,6 +619,9 @@ def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
         )
     sources = " / ".join(source_bits) if source_bits else "확인 불가"
     source_names = ", ".join(dict.fromkeys(str(item["source"]) for item in items[:3]))
+    matched = {rule.key: ["EU", "Korea", "policy"] if rule.key.startswith("eu_korea_") else ["trusted policy news"]}
+    if rule.key == "us_japan_korea_smr_moc_state_watch":
+        matched["state_smr_moc_policy"] = ["moc", "smr", "samsung c&t", "bwrx-300"]
     explain_item = {
         "title": rule.title,
         "source": source_names,
@@ -613,7 +637,7 @@ def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
         "eu_policy_category": rule.key if rule.key.startswith("eu_korea_") else "",
         "eu_korea_steel_policy_watch": rule.key == "eu_korea_steel_safeguard_relief",
         "trusted_policy_rule_key": rule.key,
-        "matched": {rule.key: ["EU", "Korea", "policy"] if rule.key.startswith("eu_korea_") else ["trusted policy news"]},
+        "matched": matched,
     }
     ensure_explained(explain_item)
 
@@ -642,6 +666,8 @@ def main() -> int:
 
     alerts: list[dict] = []
     for rule in STORY_RULES:
+        if rule.key.startswith("_disabled_"):
+            continue
         items = collect_rule_items(rule, now)
         if not items:
             continue
