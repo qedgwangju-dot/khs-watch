@@ -1,11 +1,32 @@
 {
-  "failure_streaks": {},
+  "failure_streaks": {
+    "domestic_stablecoin|Korea Policy Briefing digital asset search|https://www.korea.kr/news/policyNewsList.do?srchKeyword=%EB%94%94%EC%A7%80%ED%84%B8%EC%9E%90%EC%82%B0": {
+      "lane": "domestic_stablecoin",
+      "last_seen_kst": "2026-07-08T10:48:33+09:00",
+      "source": "Korea Policy Briefing digital asset search",
+      "streak": 1
+    },
+    "domestic_stablecoin|Korea Policy Briefing stablecoin search|https://www.korea.kr/news/policyNewsList.do?srchKeyword=%EC%8A%A4%ED%85%8C%EC%9D%B4%EB%B8%94%EC%BD%94%EC%9D%B8": {
+      "lane": "domestic_stablecoin",
+      "last_seen_kst": "2026-07-08T10:48:33+09:00",
+      "source": "Korea Policy Briefing stablecoin search",
+      "streak": 1
+    }
+  },
   "seen": {
     "17cf121d2c3edf74": {
       "failure_count": 1,
       "first_seen_kst": "2026-07-03T23:16:26+09:00",
       "sources": [
         "Korea FIU virtual asset notices"
+      ]
+    },
+    "637a5aecb7d42aa6": {
+      "failure_count": 2,
+      "first_seen_kst": "2026-07-08T10:48:33+09:00",
+      "sources": [
+        "Korea Policy Briefing stablecoin search",
+        "Korea Policy Briefing digital asset search"
       ]
     },
     "6c35769bf36bca3f": {
