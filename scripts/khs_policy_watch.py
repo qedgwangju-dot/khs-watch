@@ -85,6 +85,13 @@ STAGE_KEYWORDS = {
         "prohibit", "prohibition", "restriction", "ban", "efficiency standard", "emergency order",
         "grid deployment", "transmission facilitation", "critical materials", "nuclear fuel",
     ],
+    "state_smr_moc_policy": [
+        "state department", "department of state", "office of the spokesperson",
+        "memorandum of cooperation", "moc", "trilateral", "small modular reactor",
+        "small modular reactors", "smr", "bwrx-300", "first program",
+        "samsung c&t", "ge vernova", "hitachi", "sge", "indo-pacific",
+        "smr regional training hub",
+    ],
     "agriculture_supply_policy": [
         "fertilizer", "phosphate", "phosphate fertilizer", "agriculture", "farm resilience",
         "regenerative agriculture", "biofuel", "biofuel feedstock", "feedstocks", "food supply",
@@ -123,7 +130,12 @@ STAGE_KEYWORDS = {
 SECTOR_KEYWORDS = {
     "풍력/해상풍력": ["wind", "offshore wind", "boem", "bsee", "renewable", "ocs", "lease", "cop"],
     "전력망/데이터센터": ["ferc", "doe", "department of energy", "grid", "electric grid", "transmission", "large load", "data center", "power", "inverter", "energy inverter", "grid deployment", "transmission facilitation"],
-    "원전/전력기기": ["doe", "department of energy", "nuclear", "reactor", "uranium", "nuclear fuel", "transformer", "ap1000", "smr", "small modular reactor"],
+    "원전/전력기기": [
+        "doe", "department of energy", "department of state", "state department",
+        "nuclear", "reactor", "uranium", "nuclear fuel", "transformer", "ap1000",
+        "smr", "small modular reactor", "small modular reactors", "bwrx-300",
+        "first program", "ge vernova", "hitachi", "samsung c&t",
+    ],
     "반도체/AI": ["semiconductor", "chips", "bis", "export controls", "nvidia", "hbm", "ai"],
     "2차전지/핵심광물": ["battery", "lithium", "critical minerals", "ira", "ev"],
     "방산/지정학": [
@@ -221,6 +233,8 @@ SOURCES = [
     Source("White House fact sheets", "https://www.whitehouse.gov/fact-sheets/", "whitehouse_html"),
     Source("White House remarks", "https://www.whitehouse.gov/remarks/", "whitehouse_html"),
     Source("White House briefings statements", "https://www.whitehouse.gov/briefings-statements/", "whitehouse_html"),
+    Source("State Department office spokesperson", "https://www.state.gov/releases/office-of-the-spokesperson/", "state_html"),
+    Source("State Department press releases", "https://www.state.gov/press-releases/", "state_html"),
     Source("FCC open meeting", "https://www.fcc.gov/openmeeting", "fcc_html"),
     Source("FCC open commission meetings", "https://www.fcc.gov/news-events/events/open-commission-meetings", "fcc_html"),
     Source("FCC items on circulation", "https://www.fcc.gov/items-on-circulation", "fcc_html"),
@@ -431,6 +445,51 @@ def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
     return list(deduped.values())[:20]
 
 
+def parse_state_html(text: str, source: Source) -> list[dict]:
+    link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
+    date_pattern = re.compile(
+        r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December|"
+        r"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+20\d{2}\b",
+        re.I,
+    )
+    deduped: dict[str, dict] = {}
+    for match in link_pattern.finditer(text):
+        title = clean_text(match.group("label"))
+        title_lower = title.lower()
+        if len(title) < 12:
+            continue
+        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
+        link_lower = link.lower()
+        if "state.gov" not in link_lower:
+            continue
+        if not any(path in link_lower for path in ("/releases/", "/press-releases/")):
+            continue
+        tail = clean_text(text[match.end(): match.end() + 900])
+        haystack = f"{title_lower} {link_lower} {tail.lower()}"
+        if not any(keyword_in_text(haystack, term) for term in STAGE_KEYWORDS["state_smr_moc_policy"]):
+            continue
+        date_match = date_pattern.search(f"{title} {tail}")
+        published = parse_date(date_match.group(0)) if date_match else None
+        if not published:
+            month_match = re.search(r"/(20\d{2})/(\d{2})/", link_lower)
+            if month_match:
+                year, month = month_match.groups()
+                current = now_kst()
+                if int(year) == current.year and int(month) == current.month:
+                    published = current
+                else:
+                    published = dt.datetime(int(year), int(month), 1, tzinfo=KST)
+        summary = clean_text(f"{source.name} official page link: {title}. {tail[:260]}")
+        deduped[link] = {
+            "source": source.name,
+            "title": title,
+            "link": link,
+            "summary": summary,
+            "published_kst": published.isoformat() if published else "",
+        }
+    return list(deduped.values())[:20]
+
+
 def parse_fcc_html(text: str, source: Source) -> list[dict]:
     link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
     date_pattern = re.compile(
@@ -578,7 +637,7 @@ def classify_item(item: dict) -> dict | None:
     is_fcc_admin_reporting = is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_ADMIN_REPORTING_TERMS)
     if is_fcc_admin_reporting:
         importance = "중"
-    elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "energy_security_policy", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
+    elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
         importance = "상"
     elif "agriculture_supply_policy" in matched:
         importance = "중"
@@ -596,12 +655,14 @@ def classify_item(item: dict) -> dict | None:
     if is_fcc_admin_reporting:
         impacts.extend(["시간표", "의사결정 영향 제한적"])
         paths.extend(["정책 타임라인", "규제 준수"])
-    elif any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "energy_security_policy", "presidential_action", "fcc_decision_notice")):
+    elif any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fcc_decision_notice")):
         impacts.extend(["시간표", "할인율"])
         paths.extend(["정책 타임라인", "할인율"])
-    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "energy_security_policy", "agriculture_supply_policy", "company_filing", "fda_decision")):
+    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "energy_security_policy", "state_smr_moc_policy", "agriculture_supply_policy", "company_filing", "fda_decision")):
         impacts.extend(["돈 버는 능력", "수급"])
         paths.extend(["이익", "수급"])
+    if "state_smr_moc_policy" in matched:
+        paths.extend(["계약 가시성", "밸류체인", "프로젝트 파이낸싱"])
     if "company_filing" in matched:
         paths.append("계약 가시성")
     fingerprint = hashlib.sha256(f"{item.get('source')}|{item.get('title')}|{item.get('link')}".encode("utf-8")).hexdigest()[:16]
@@ -641,6 +702,8 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
             items = parse_whitehouse_html(text or "", source)
         elif source.kind == "fcc_html":
             items = parse_fcc_html(text or "", source)
+        elif source.kind == "state_html":
+            items = parse_state_html(text or "", source)
         elif source.kind == "link_html":
             items = parse_link_html(text or "", source)
         else:
@@ -648,7 +711,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
         source_notes.append(f"- {source.name}: {len(items)}건 확인")
         for item in items:
             age = item_age_hours(item, now)
-            if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html"} and age is None:
+            if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html", "state_html"} and age is None:
                 continue
             if age is not None and age > MAX_SOURCE_AGE_HOURS:
                 continue

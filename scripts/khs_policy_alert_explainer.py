@@ -300,6 +300,8 @@ def is_transformer(text: str, item: dict) -> bool:
 
 
 def is_domestic_nuclear_siting(text: str, item: dict) -> bool:
+    if "state_smr_moc_policy" in (item.get("matched") or {}) or has_any(text, ["state department", "department of state", "state.gov"]):
+        return False
     return bool(item.get("korea_nuclear_siting_policy_watch")) or "korea_nuclear_siting_policy" in (item.get("matched") or {}) or has_any(
         text,
         ["smr", "표준설계", "원전 입지", "입지 선정", "대형 원전", "방폐장", "송전망", "인허가", "2037", "2038"],
@@ -512,6 +514,16 @@ def is_doe_energy_security_policy(text: str, item: dict) -> bool:
                 "핵심소재",
             ],
         )
+    )
+
+
+def is_state_smr_moc_policy(text: str, item: dict) -> bool:
+    matched = item.get("matched") or {}
+    return "state_smr_moc_policy" in matched or (
+        has_any(text, ["state department", "department of state", "office of the spokesperson", "state.gov", "미 국무부"])
+        and has_any(text, ["memorandum of cooperation", "moc", "협력각서"])
+        and has_any(text, ["small modular reactor", "small modular reactors", "smr", "소형모듈원전"])
+        and has_any(text, ["republic of korea", "south korea", "korea", "japan", "trilateral", "samsung c&t", "ge vernova", "bwrx-300"])
     )
 
 
@@ -784,6 +796,22 @@ def ensure_explained(item: dict) -> dict:
             priced_in="낮음~중간. FCC 국가안보 규제는 테마 반응이 빠르지만 공식 규칙안·적용 장비·시행일 확인 전에는 한국장 직접 반영이 제한적입니다.",
             counter="기존 승인 장비의 처리 절차일 수 있고, 한국 기업의 대체 수주나 공급망 노출이 없으면 과대해석입니다.",
             failure_signal="FCC 공식 규칙안, Covered List·장비인증 제한 범위, 적용 장비, 한국 기업의 미국향 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
+        )
+    elif is_state_smr_moc_policy(text, item):
+        put(
+            item,
+            importance="상",
+            title_ko="미·일·한, 제3국 SMR 배치 협력 MOC 체결",
+            impacts=["시간표", "수급", "돈 버는 능력", "할인율"],
+            paths=["정책 타임라인", "계약 가시성", "원전 밸류체인", "프로젝트 파이낸싱", "수급"],
+            sectors=["원전/SMR", "삼성물산/건설·EPC", "원전 기자재/전력기기", "BWRX-300 밸류체인"],
+            korea_value_chain=["삼성물산", "원전/SMR EPC", "원전 기자재", "전력기기", "SMR 프로젝트 개발"],
+            policy_plain_summary="미 국무부 기준 미·일·한이 제3국 SMR 배치 MOC를 체결했습니다. 초기 초점은 인도·태평양이고, FIRST 1,000만 달러+ 지원 및 GE Vernova·Hitachi·Samsung C&T·SGE BWRX-300 유럽 배치가 함께 언급됐습니다.",
+            investment_view="이 뉴스는 확정 수주가 아니라 SMR 프로젝트 개발의 정책 시간표, 파이낸싱 신뢰도, 삼성물산 등 민간 파트너의 밸류체인 기대를 바꾸는 재료입니다. MOC 단계라 매출 인식은 아직 계산하지 말고 후속 국가·부지·EPC 범위·계약 서명을 봐야 합니다.",
+            korea_market_impact="한국장에서는 삼성물산이 원문에 직접 언급된 핵심 노출이고, 원전/SMR·두산에너빌리티·원전 기자재·전력기기 테마는 후속 계약·공시·공급 범위가 확인될 때만 실적 재료로 연결합니다.",
+            priced_in="낮음~중간. 원전·SMR 테마는 선반영이 강하지만, 미·일·한 정부 협력과 삼성물산/GE Vernova/BWRX-300 조합은 장전 수급을 다시 자극할 수 있습니다.",
+            counter="확정 매출 확인 불가. MOC는 EPC·공급계약이 아니고 FIRST 자금은 기술지원·훈련허브 성격입니다. 국가·부지·라이선스·금융조건·계약 서명이 확인돼야 실적 재료입니다.",
+            failure_signal="삼성물산·GE Vernova·Hitachi·SGE의 후속 공시, BWRX-300 프로젝트 국가·부지·계약 범위, 인허가·금융 일정, 한국 기자재 공급망 노출이 확인되지 않으면 정책 테마 기대에 그칩니다.",
         )
     elif is_doe_energy_security_policy(text, item):
         put(

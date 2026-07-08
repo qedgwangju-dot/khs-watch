@@ -32,6 +32,7 @@ MATCHED_KEY_LABELS = {
     "agency_order": "기관 명령/규칙",
     "fcc_decision_notice": "규칙 제안·회의 공지",
     "energy_security_policy": "에너지부 전력·원전·대출/제한 정책",
+    "state_smr_moc_policy": "국무부 SMR 국제협력 MOC",
     "presidential_action": "대통령 정책문서",
     "agriculture_supply_policy": "농업·비료·식량 공급정책",
     "korea_presidential_personnel": "대통령실 고위급 인사",
@@ -80,6 +81,23 @@ TERM_LABELS = {
     "efficiency standard": "효율규제",
     "critical materials": "핵심소재",
     "nuclear fuel": "핵연료",
+    "state department": "미 국무부",
+    "department of state": "미 국무부",
+    "office of the spokesperson": "국무부 대변인실",
+    "memorandum of cooperation": "협력각서",
+    "moc": "협력각서",
+    "trilateral": "3국 협력",
+    "small modular reactor": "소형모듈원전",
+    "small modular reactors": "소형모듈원전",
+    "smr": "SMR",
+    "bwrx-300": "BWRX-300",
+    "first program": "FIRST 프로그램",
+    "samsung c&t": "삼성물산",
+    "ge vernova": "GE Vernova",
+    "hitachi": "Hitachi",
+    "sge": "SGE",
+    "indo-pacific": "인도·태평양",
+    "smr regional training hub": "SMR 지역훈련허브",
     "fertilizer": "비료",
     "phosphate": "인산비료",
     "phosphate fertilizer": "인산비료",
@@ -131,6 +149,8 @@ SOURCE_LABELS = {
     "white house fact sheets": "백악관 팩트시트",
     "white house remarks": "백악관 트럼프 발언",
     "white house briefings statements": "백악관 브리핑·성명",
+    "state department office spokesperson": "미 국무부 대변인실",
+    "state department press releases": "미 국무부 보도자료",
 }
 
 
@@ -217,6 +237,8 @@ def safe_title(alert: dict) -> str:
             return "미국, 관세·통상 규정 공표"
         if "export control" in text or "entity list" in text:
             return "미국, 수출통제 규정 공표"
+        if "memorandum of cooperation" in text and ("small modular reactor" in text or "smr" in text):
+            return "미·일·한, 제3국 SMR 배치 협력 MOC 체결"
         if "nuclear" in text or "reactor" in text:
             return "미국, 원전 정책 문서 공표"
         if "fda" in text:
@@ -338,10 +360,8 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
         matched_terms_text = display_terms(matched_terms[:8])
         source_label = display_source(alert.get("source"))
         title = safe_title(alert)
-        original_title = clip_text(alert.get("original_title") or alert.get("title") or "", 120)
         lines.extend([
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
-            *([f"- 원제: {original_title}"] if original_title and original_title != title else []),
             f"- 상태 변화: {matched_keys} 신호 확인 ({matched_terms_text})",
             f"- 원문/출처: [{source_label}]({alert.get('link', '')}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
             *explanation_lines(alert),
@@ -460,6 +480,8 @@ def source_family_from_text(value: str) -> str:
     normalized = normalize_semantic_text(raw)
     if "whitehouse gov" in normalized or "white house" in raw:
         return "whitehouse"
+    if "state gov" in normalized or "department of state" in raw or "state department" in raw:
+        return "state_department"
     if "boem gov" in normalized or re.search(r"\bboem\b", raw):
         return "boem"
     if "bsee gov" in normalized or re.search(r"\bbsee\b", raw):

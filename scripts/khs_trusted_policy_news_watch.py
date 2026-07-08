@@ -45,6 +45,11 @@ TRUSTED_SOURCES = {
     "european council",
     "european parliament",
     "official journal of the european union",
+    "u.s. department of state",
+    "us department of state",
+    "united states department of state",
+    "state department",
+    "department of state",
     "politico",
     "reuters",
     "bloomberg",
@@ -60,6 +65,11 @@ TRUSTED_SOURCES = {
 SOURCE_PRIORITY = {
     "european commission": 0,
     "official journal of the european union": 0,
+    "u.s. department of state": 0,
+    "us department of state": 0,
+    "united states department of state": 0,
+    "state department": 0,
+    "department of state": 0,
     "european council": 1,
     "european parliament": 1,
     "reuters": 1,
@@ -318,6 +328,32 @@ STORY_RULES = (
         follow_up="이 넓은 안전망은 특정 테마 룰이 없는 새 정책축을 놓치지 않기 위한 것입니다. 송출 후에는 공식 원문, 품목·세율·시행일, 한국 기업 직접 노출을 확인해야 합니다.",
     ),
     StoryRule(
+        key="us_japan_korea_smr_moc_state_watch",
+        title="미·일·한, 제3국 SMR 배치 협력 MOC 체결",
+        google_queries=(
+            "site:state.gov \"Republic of Korea\" \"Small Modular Reactor\" \"Memorandum of Cooperation\" \"Samsung C&T\"",
+            "\"United States\" \"Japan\" \"Republic of Korea\" \"Small Modular Reactor\" \"Memorandum of Cooperation\" \"Samsung C&T\"",
+            "\"GE Vernova\" Hitachi \"Samsung C&T\" SGE BWRX-300 SMR Europe",
+            "\"FIRST Program\" \"SMR Regional Training Hub\" \"Republic of Korea\"",
+            "Reuters Bloomberg \"South Korea\" Japan US small modular reactor memorandum cooperation Samsung C&T",
+        ),
+        required_groups=(
+            ("small modular reactor", "small modular reactors", "smr", "bwrx-300"),
+            ("memorandum of cooperation", "moc", "signed", "cooperation"),
+            ("republic of korea", "south korea", "korea"),
+            ("japan", "japanese", "trilateral"),
+            ("samsung c&t", "ge vernova", "hitachi", "first program", "regional training hub", "indo-pacific", "europe"),
+        ),
+        core="미 국무부 또는 신뢰 소스 기준 미국·일본·한국이 제3국 SMR 배치를 가속하기 위한 3국 협력각서(MOC)를 체결했다는 신호입니다. 원문에는 FIRST 프로그램 1,000만 달러 이상 지원, GE Vernova·Hitachi·Samsung C&T·SGE의 BWRX-300 유럽 배치 이니셔티브가 함께 언급됩니다.",
+        impact="원전/SMR, 삼성물산/건설·EPC, 원전 기자재/전력기기, BWRX-300 밸류체인 | 시간표·수급·돈 버는 능력·할인율",
+        point="MOC는 확정 수주가 아니라 제3국 SMR 사업의 정책 시간표와 파이낸싱 신뢰도를 높이는 재료입니다. 삼성물산이 원문에 직접 언급되면 한국장에서는 원전 EPC와 기자재 밸류체인 기대가 먼저 움직일 수 있습니다.",
+        counter="확정 매출 확인 불가. 협력각서(MOC)는 EPC 계약, 공급계약, 확정 매출이 아닙니다. FIRST 자금도 기술지원·훈련허브 성격이라 실제 건설 CAPEX와 다르며, 국가·부지·라이선스·계약 범위가 확인돼야 실적 재료가 됩니다.",
+        sectors="원전/SMR, 삼성물산/건설·EPC, 원전 기자재/전력기기, BWRX-300 밸류체인",
+        impacts=("시간표", "수급", "돈 버는 능력", "할인율"),
+        paths=("정책 타임라인", "계약 가시성", "원전 밸류체인", "프로젝트 파이낸싱", "수급"),
+        follow_up="이 뉴스는 MOC 단계라 확정 수주로 계산하지 않습니다. 후속으로 삼성물산·GE Vernova·Hitachi·SGE 공시, BWRX-300 프로젝트 국가·부지·EPC 범위, 인허가·금융 일정, 한국 기자재 공급망 노출을 확인해야 합니다.",
+    ),
+    StoryRule(
         key="us_doe_energy_security_policy",
         title="미 에너지부, 전력망·원전·에너지 장비 지원/제한 정책 보도",
         google_queries=(
@@ -463,7 +499,9 @@ def source_key(name: str) -> str:
 
 def is_trusted_source(name: str) -> bool:
     key = source_key(name)
-    return key in TRUSTED_SOURCES
+    if key in TRUSTED_SOURCES:
+        return True
+    return "department of state" in key or "state department" in key or "state.gov" in key
 
 
 def trusted_wire_source(text: str) -> str:

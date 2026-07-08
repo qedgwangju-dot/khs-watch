@@ -40,6 +40,7 @@ def main() -> int:
     assert_router_keeps_source_families_separate()
     assert_trump_statement_reaches_policy_lane()
     assert_trump_iran_war_statement_reaches_geopolitical_lane()
+    assert_state_smr_moc_reaches_policy_lane()
     assert_boem_space_launch_is_excluded()
     assert_delivery_guard_blocks_duplicate_policy_alerts()
     assert_delivery_guard_blocks_source_body_mismatch()
@@ -242,6 +243,56 @@ def assert_trump_iran_war_statement_reaches_geopolitical_lane() -> None:
     for marker in ("이란·이스라엘·중동 전쟁위험", "정유/화학/해운", "유가·환율·운임·방산"):
         if marker not in rendered:
             raise AssertionError(f"Trump Iran/Hormuz render missing market-impact marker: {marker}")
+
+
+def assert_state_smr_moc_reaches_policy_lane() -> None:
+    item = {
+        "source": "State Department office spokesperson",
+        "title": "The United States, Japan, and the Republic of Korea Sign a Trilateral Memorandum of Cooperation on Small Modular Reactor Deployments in Other Countries",
+        "summary": (
+            "U.S. Department of State media note. Secretary of State Marco Rubio, Japanese Foreign Minister "
+            "Motegi Toshimitsu, and Republic of Korea Foreign Minister Cho Hyun signed a Memorandum of "
+            "Cooperation to accelerate small modular reactor deployments in other countries, initially focused "
+            "on the Indo-Pacific. The United States is committing over $10 million in new FIRST Program funding "
+            "and announced an industry initiative among GE Vernova, Hitachi, Samsung C&T, and SGE to advance "
+            "BWRX-300 SMR deployments across Europe."
+        ),
+        "link": "https://www.state.gov/releases/office-of-the-spokesperson/2026/07/the-united-states-japan-and-the-republic-of-korea-sign-a-trilateral-memorandum-of-cooperation-on-small-modular-reactor-deployments-in-other-countries",
+        "published_kst": "2026-07-07T00:00:00+09:00",
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("State Department SMR MOC was not classified as a policy alert")
+    if "state_smr_moc_policy" not in (classified.get("matched") or {}):
+        raise AssertionError(f"State Department SMR MOC missing state_smr_moc_policy match: {classified.get('matched')}")
+    classified["sectors"] = khs_policy_alert_guardrails.direct_sectors(classified)
+    khs_policy_alert_guardrails.ensure_explained(classified)
+    if not khs_policy_alert_guardrails.has_actionable_decision_impact(classified):
+        raise AssertionError("State Department SMR MOC was dropped by policy decision-impact guardrail")
+    rendered = khs_policy_alert_router.render_policy_report(
+        [classified],
+        dt.datetime(2026, 7, 8, 22, 20, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "미·일·한, 제3국 SMR 배치 협력 MOC 체결",
+        "삼성물산",
+        "BWRX-300",
+        "FIRST",
+        "확정 매출 확인 불가",
+        "원전/SMR",
+        "미 국무부 대변인실",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"State Department SMR MOC render missing: {marker}")
+    forbidden = [
+        "The United States, Japan, and the Republic of Korea Sign",
+        "- 원제:",
+        "State Department office spokesperson",
+    ]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"State Department SMR MOC raw text leaked: {marker}")
 
 
 def assert_boem_space_launch_is_excluded() -> None:

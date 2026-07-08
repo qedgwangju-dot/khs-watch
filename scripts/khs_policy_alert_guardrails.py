@@ -40,6 +40,7 @@ SECTOR_RULES: list[tuple[str, list[str]]] = [
     ]),
     ("원전/전력기기", [
         "nuclear", "reactor", "uranium", "transformer", "small modular reactor", "smr",
+        "bwrx-300", "first program", "samsung c&t", "ge vernova", "hitachi",
     ]),
     ("반도체/AI", [
         "semiconductor", "semiconductors", "chips", "chip export", "export control",
@@ -351,6 +352,8 @@ def korean_title_for(item: dict) -> str:
         return "미국, 반도체·첨단기술 수출통제 규정 공표"
     if "section 301" in text or "tariff" in text or "customs enforcement" in text:
         return "미국, 관세·통관 집행 관련 규정 공표"
+    if "memorandum of cooperation" in text and ("small modular reactor" in text or "smr" in text):
+        return "미·일·한, 제3국 SMR 배치 협력 MOC 체결"
     if "nuclear" in text or "reactor" in text or "uranium" in text:
         return "미국, 원전·핵연료 관련 정책 문서 공표"
     if "ferc" in text or "transmission" in text or "interconnection" in text or "power grid" in text:
