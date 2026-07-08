@@ -66,8 +66,12 @@ REQUIRED_RUNNER_SNIPPETS = [
 
 REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
     "gamejoa_preopen_news_radar_seen.json",
+    "gamejoa_preopen_news_radar_delivery.json",
     "filter_previously_seen_alerts(alerts, now)",
     "record_seen_alerts(deduped, now)",
+    "delivery_confirmed_sent()",
+    "reset_delivery_status()",
+    "seen_state_not_recorded",
     "preopen_send_window_open(now)",
     "RADAR_RUN_MODE",
 ]

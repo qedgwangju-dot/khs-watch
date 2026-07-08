@@ -25,6 +25,7 @@ assert spec and spec.loader
 spec.loader.exec_module(strict)
 base = strict.base
 SEEN_PATH = base.ROOT / "data" / "gamejoa_preopen_news_radar_seen.json"
+DELIVERY_PATH = base.OUT / "gamejoa_preopen_news_radar_delivery.json"
 
 
 def load_seen_state() -> dict:
@@ -120,6 +121,29 @@ def record_seen_alerts(alerts: list[dict], now) -> None:
                 "link": alert.get("link") or "",
             }
     save_seen_state(state, now)
+
+
+def reset_delivery_status() -> None:
+    try:
+        DELIVERY_PATH.unlink()
+    except FileNotFoundError:
+        pass
+
+
+def delivery_confirmed_sent() -> bool:
+    if not DELIVERY_PATH.exists():
+        print("GAMEJOA radar: seen_state_not_recorded delivery_status_missing")
+        return False
+    try:
+        payload = json.loads(DELIVERY_PATH.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"GAMEJOA radar: seen_state_not_recorded delivery_status_unreadable={type(exc).__name__}")
+        return False
+    status = str(payload.get("status") or "").strip().lower()
+    if status != "sent":
+        print(f"GAMEJOA radar: seen_state_not_recorded delivery_status={status or 'missing'}")
+        return False
+    return True
 
 
 def parse_hhmm(value: str, fallback: tuple[int, int]) -> int:
@@ -356,8 +380,9 @@ def main() -> int:
         print("Telegram: dry run")
         return 0
     if os.getenv("SEND_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
+        reset_delivery_status()
         send_telegram(report)
-        if deduped and preopen_send_window_open(now):
+        if deduped and preopen_send_window_open(now) and delivery_confirmed_sent():
             record_seen_alerts(deduped, now)
     return 0
 
