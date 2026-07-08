@@ -107,6 +107,8 @@ STAGE_KEYWORDS = {
         "delegation of authority", "continuation of the national emergency",
         "fact sheet", "remarks by president", "remarks by president trump", "statement from president",
         "president donald j. trump", "president trump", "trump administration",
+        "iran", "israel", "middle east", "hormuz", "strait of hormuz", "red sea", "houthi",
+        "missile", "strike", "ceasefire", "war powers", "oil", "brent", "wti", "tanker", "shipping",
         "행정명령", "대통령 각서", "대통령 결정", "트럼프 대통령", "백악관 발언",
     ],
     "company_filing": [
@@ -124,7 +126,15 @@ SECTOR_KEYWORDS = {
     "원전/전력기기": ["doe", "department of energy", "nuclear", "reactor", "uranium", "nuclear fuel", "transformer", "ap1000", "smr", "small modular reactor"],
     "반도체/AI": ["semiconductor", "chips", "bis", "export controls", "nvidia", "hbm", "ai"],
     "2차전지/핵심광물": ["battery", "lithium", "critical minerals", "ira", "ev"],
-    "방산/지정학": ["sanctions", "missile", "defense", "iran", "russia", "china", "taiwan"],
+    "방산/지정학": [
+        "sanctions", "missile", "defense", "iran", "israel", "middle east", "hormuz",
+        "strait of hormuz", "red sea", "houthi", "strike", "ceasefire", "war powers",
+        "russia", "ukraine", "nato", "china", "taiwan", "north korea", "usfk",
+    ],
+    "정유/화학/해운": [
+        "oil", "brent", "wti", "crude", "lng", "natural gas", "hormuz", "strait of hormuz",
+        "red sea", "houthi", "tanker", "shipping", "freight", "maritime",
+    ],
     "바이오/FDA": ["fda", "clinical", "drug", "crl"],
     "관세/수출주": ["tariff", "section 301", "section 232", "ustr", "customs", "duty", "quota", "safeguard", "anti-dumping"],
     "비료/농화학/음식료 원가": ["fertilizer", "phosphate", "agriculture", "farm", "regenerative agriculture", "biofuel", "feedstock", "food supply", "비료", "인산", "농업", "바이오연료", "식량"],

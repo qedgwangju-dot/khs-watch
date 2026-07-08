@@ -50,8 +50,15 @@ SECTOR_RULES: list[tuple[str, list[str]]] = [
         "rare earth", "cobalt", "nickel", "graphite", "manganese",
     ]),
     ("방산/지정학", [
-        "sanctions", "missile", "defense", "national security", "iran", "russia",
-        "china", "taiwan",
+        "sanctions", "missile", "defense", "national security", "iran", "israel",
+        "middle east", "hormuz", "strait of hormuz", "red sea", "houthi", "strike",
+        "ceasefire", "war powers", "russia", "ukraine", "nato", "china", "taiwan",
+        "north korea", "usfk",
+    ]),
+    ("정유/화학/해운", [
+        "oil", "brent", "wti", "crude", "lng", "natural gas", "hormuz",
+        "strait of hormuz", "red sea", "houthi", "tanker", "shipping", "freight",
+        "maritime",
     ]),
     ("바이오/FDA", [
         "fda", "clinical", "drug", "complete response letter", "crl",

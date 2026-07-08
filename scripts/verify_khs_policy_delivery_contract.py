@@ -39,6 +39,7 @@ def main() -> int:
     assert_router_final_semantic_dedupe()
     assert_router_keeps_source_families_separate()
     assert_trump_statement_reaches_policy_lane()
+    assert_trump_iran_war_statement_reaches_geopolitical_lane()
     assert_boem_space_launch_is_excluded()
     assert_delivery_guard_blocks_duplicate_policy_alerts()
     assert_delivery_guard_blocks_source_body_mismatch()
@@ -213,6 +214,34 @@ def assert_trump_statement_reaches_policy_lane() -> None:
             raise AssertionError(f"Trump direct remarks policy render missing: {marker}")
     if "Remarks by President Donald" in rendered:
         raise AssertionError("raw English Trump remarks title leaked into Telegram render")
+
+
+def assert_trump_iran_war_statement_reaches_geopolitical_lane() -> None:
+    item = {
+        "source": "White House remarks",
+        "title": "Remarks by President Donald J. Trump on Iran, Israel, and the Strait of Hormuz",
+        "summary": "White House Trump Remarks official page link: Remarks by President Donald J. Trump on Iran, Israel, and the Strait of Hormuz",
+        "link": "https://www.whitehouse.gov/remarks/2026/07/remarks-by-president-donald-j-trump-on-iran-israel-and-the-strait-of-hormuz/",
+        "published_kst": "2026-07-08T00:00:00+09:00",
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("Trump Iran/Hormuz remarks were not classified as a policy alert")
+    classified["sectors"] = khs_policy_alert_guardrails.direct_sectors(classified)
+    if "방산/지정학" not in classified.get("sectors", []):
+        raise AssertionError(f"Trump Iran/Hormuz remarks missing geopolitics sector: {classified.get('sectors')}")
+    if "정유/화학/해운" not in classified.get("sectors", []):
+        raise AssertionError(f"Trump Iran/Hormuz remarks missing oil/shipping sector: {classified.get('sectors')}")
+    khs_policy_alert_guardrails.ensure_explained(classified)
+    if not khs_policy_alert_guardrails.has_actionable_decision_impact(classified):
+        raise AssertionError("Trump Iran/Hormuz remarks were dropped by decision-impact guardrail")
+    rendered = khs_policy_alert_router.render_policy_report(
+        [classified],
+        dt.datetime(2026, 7, 8, 15, 45, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    for marker in ("이란·이스라엘·중동 전쟁위험", "정유/화학/해운", "유가·환율·운임·방산"):
+        if marker not in rendered:
+            raise AssertionError(f"Trump Iran/Hormuz render missing market-impact marker: {marker}")
 
 
 def assert_boem_space_launch_is_excluded() -> None:

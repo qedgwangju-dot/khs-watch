@@ -123,6 +123,18 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
             'Source("White House remarks"',
             'Source("White House briefings statements"',
             "remarks by president trump",
+            "strait of hormuz",
+            "정유/화학/해운",
+        ],
+        errors,
+    )
+    require(
+        SCRIPTS / "khs_policy_alert_guardrails.py",
+        [
+            "정유/화학/해운",
+            "strait of hormuz",
+            "red sea",
+            "houthi",
         ],
         errors,
     )
@@ -132,6 +144,8 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
             "trump_direct_policy_remarks_watch",
             "트럼프 대통령 직접 발언, 시장 영향 정책 신호",
             "Trump says tariff semiconductor China Taiwan Korea dollar Fed oil nuclear data center",
+            "Trump says Iran Israel war strike ceasefire oil Hormuz Middle East",
+            "Trump comments Red Sea Houthi Iran missile strike Brent WTI",
         ],
         errors,
     )
