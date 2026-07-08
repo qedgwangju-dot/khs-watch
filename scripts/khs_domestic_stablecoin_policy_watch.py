@@ -72,6 +72,15 @@ SOURCES = [
     ),
 ]
 
+SOURCE_ALTERNATES = {
+    "Korea Policy Briefing stablecoin search": [
+        f"https://www.korea.kr/briefing/pressReleaseList.do?srchKeyword={STABLECOIN_QUERY}",
+    ],
+    "Korea Policy Briefing digital asset search": [
+        f"https://www.korea.kr/briefing/pressReleaseList.do?srchKeyword={DIGITAL_ASSET_QUERY}",
+    ],
+}
+
 ACTOR_TERMS = [
     "금융위원회", "금융위", "금융감독원", "금감원", "한국은행", "한은",
     "국회", "정무위원회", "정부", "당정", "가상자산위원회", "금융당국",
@@ -138,8 +147,18 @@ def clip_text(value: object, limit: int) -> str:
     return text[: max(0, limit - 1)].rstrip() + "…"
 
 
-def fetch_text(url: str, timeout: int = 6, attempts: int = 1) -> tuple[str | None, str | None]:
+def fetch_text(url: str, timeout: int = 10, attempts: int = 1) -> tuple[str | None, str | None]:
     return fetch_text_shared(url, UA, timeout=timeout, attempts=attempts)
+
+
+def fetch_source_text(source_name: str, source_url: str) -> tuple[str | None, str | None, str]:
+    errors: list[str] = []
+    for idx, url in enumerate([source_url, *SOURCE_ALTERNATES.get(source_name, [])], start=1):
+        text, error = fetch_text(url, timeout=10, attempts=1)
+        if error is None:
+            return text, None, url
+        errors.append(f"source_url={idx} {url} :: {error}")
+    return None, " || ".join(errors), source_url
 
 
 def parse_date(text: str) -> dt.datetime | None:
@@ -344,7 +363,7 @@ def main() -> int:
     now = now_kst()
     candidates: list[dict] = []
     for source_name, source_url in SOURCES:
-        text, error = fetch_text(source_url, timeout=6, attempts=1)
+        text, error, effective_url = fetch_source_text(source_name, source_url)
         if error:
             record_source_failure(
                 lane="domestic_stablecoin",
@@ -355,7 +374,7 @@ def main() -> int:
             )
             print(f"domestic_stablecoin_source_failed source={source_name} error={error}")
             continue
-        candidates.extend(parse_links(text or "", source_name, source_url, now))
+        candidates.extend(parse_links(text or "", source_name, effective_url, now))
     candidates = merge_policy_duplicates(candidates)
 
     seen = load_seen()

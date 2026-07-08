@@ -36,8 +36,8 @@ def write_failures(cwd: pathlib.Path, failures: list[dict]) -> None:
     )
 
 
-def sample_failure(source: str, lane: str = "domestic_stablecoin") -> dict:
-    url = f"https://example.com/{source}"
+def sample_failure(source: str, lane: str = "domestic_stablecoin", url: str | None = None) -> dict:
+    url = url or f"https://example.com/{source}"
     return {
         "key": f"{lane}|{source}|{url}",
         "lane": lane,
@@ -96,9 +96,35 @@ def verify_multiple_sources_alert_immediately() -> None:
         assert_exists(cwd / "out" / "khs_policy_source_status_alert.md", True)
 
 
+def verify_same_source_family_is_single_logical_failure() -> None:
+    with tempfile.TemporaryDirectory() as temp_dir:
+        cwd = pathlib.Path(temp_dir)
+        write_failures(
+            cwd,
+            [
+                sample_failure(
+                    "Korea Policy Briefing stablecoin search",
+                    url="https://www.korea.kr/news/policyNewsList.do?srchKeyword=stablecoin",
+                ),
+                sample_failure(
+                    "Korea Policy Briefing digital asset search",
+                    url="https://www.korea.kr/news/policyNewsList.do?srchKeyword=digitalasset",
+                ),
+            ],
+        )
+
+        first = run_status_script(cwd)
+        if "skipped_single_transient_source" not in first:
+            raise AssertionError(first)
+        if "logical_failures=1" not in first:
+            raise AssertionError(first)
+        assert_exists(cwd / "out" / "khs_policy_source_status_alert.md", False)
+
+
 def main() -> int:
     verify_single_source_streak()
     verify_multiple_sources_alert_immediately()
+    verify_same_source_family_is_single_logical_failure()
     print("khs_source_status_contract=passed")
     return 0
 

@@ -7,6 +7,7 @@ import datetime as dt
 import hashlib
 import json
 import os
+import urllib.parse
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -43,13 +44,52 @@ def save_seen(seen: dict) -> None:
 
 def fingerprint(failures: list[dict], day: str) -> str:
     material = "\n".join(
-        sorted(f"{item.get('lane')}|{item.get('source')}|{item.get('url')}" for item in failures)
+        sorted(item.get("logical_key") or logical_failure_key(item) for item in failures)
     )
     return hashlib.sha256(f"{day}\n{material}".encode("utf-8")).hexdigest()[:16]
 
 
 def failure_key(item: dict) -> str:
     return f"{item.get('lane')}|{item.get('source')}|{item.get('url')}"
+
+
+def source_domain(url: object) -> str:
+    try:
+        parsed = urllib.parse.urlparse(str(url or ""))
+    except Exception:
+        return ""
+    host = parsed.netloc.lower()
+    return host[4:] if host.startswith("www.") else host
+
+
+def logical_failure_key(item: dict) -> str:
+    lane = str(item.get("lane") or "unknown_lane").strip().lower()
+    domain = source_domain(item.get("url"))
+    if domain:
+        return f"{lane}|{domain}"
+    source = " ".join(str(item.get("source") or "").lower().split())
+    return f"{lane}|{source or 'unknown_source'}"
+
+
+def collapse_logical_failures(failures: list[dict]) -> list[dict]:
+    collapsed: dict[str, dict] = {}
+    for item in failures:
+        key = logical_failure_key(item)
+        current = collapsed.get(key)
+        if current is None:
+            current = dict(item)
+            current["logical_key"] = key
+            current["related_sources"] = [item.get("source")]
+            current["related_urls"] = [item.get("url")]
+            collapsed[key] = current
+            continue
+        source = item.get("source")
+        url = item.get("url")
+        if source and source not in current.setdefault("related_sources", []):
+            current["related_sources"].append(source)
+        if url and url not in current.setdefault("related_urls", []):
+            current["related_urls"].append(url)
+    return list(collapsed.values())
 
 
 def parse_kst(value: str | None) -> dt.datetime | None:
@@ -70,7 +110,7 @@ def update_streaks(seen: dict, failures: list[dict], now: dt.datetime) -> int:
     window = dt.timedelta(hours=max(1, STREAK_WINDOW_HOURS))
 
     for item in failures:
-        key = item.get("key") or failure_key(item)
+        key = item.get("logical_key") or logical_failure_key(item)
         previous = streaks.get(key, {}) if isinstance(streaks.get(key), dict) else {}
         previous_seen = parse_kst(previous.get("last_seen_kst"))
         previous_streak = int(previous.get("streak", 0) or 0)
@@ -169,17 +209,18 @@ def main() -> int:
     now = now_kst()
     day = now.strftime("%Y-%m-%d")
     seen = load_json(SEEN_PATH, {"seen": {}})
-    max_streak = update_streaks(seen, failures, now)
-    alert_ok, alert_reason = should_alert(failures, max_streak)
+    decision_failures = collapse_logical_failures(failures)
+    max_streak = update_streaks(seen, decision_failures, now)
+    alert_ok, alert_reason = should_alert(decision_failures, max_streak)
     if not alert_ok:
         save_seen(seen)
         print(
             f"source_status_alert=skipped_{alert_reason} "
-            f"failures={len(failures)} max_streak={max_streak}"
+            f"failures={len(failures)} logical_failures={len(decision_failures)} max_streak={max_streak}"
         )
         return 0
 
-    fp = fingerprint(failures, day)
+    fp = fingerprint(decision_failures, day)
     seen_map = seen.setdefault("seen", {})
     if fp in seen_map:
         save_seen(seen)
@@ -194,6 +235,7 @@ def main() -> int:
     seen_map[fp] = {
         "first_seen_kst": now.isoformat(timespec="seconds"),
         "failure_count": len(failures),
+        "logical_failure_count": len(decision_failures),
         "sources": [item.get("source") for item in failures],
     }
     # Keep the state small while preserving recent dedupe history.
