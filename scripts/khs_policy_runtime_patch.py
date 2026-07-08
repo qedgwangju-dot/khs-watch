@@ -295,13 +295,13 @@ def patch_korea_presidential_personnel(text: str) -> str:
     text = replace_once(text, "\n\ndef parse_fcc_html", KOREA_PARSER + "\n\ndef parse_fcc_html")
     text = replace_once(
         text,
-        '("court_order", "final_rule", "sanctions_tariffs_export", "energy_security_policy", "presidential_action", "fda_decision")',
-        '("court_order", "final_rule", "sanctions_tariffs_export", "energy_security_policy", "presidential_action", "korea_presidential_personnel", "fda_decision")',
+        '("court_order", "final_rule", "sanctions_tariffs_export", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fda_decision")',
+        '("court_order", "final_rule", "sanctions_tariffs_export", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "korea_presidential_personnel", "fda_decision")',
     )
     text = replace_once(
         text,
-        '("court_order", "final_rule", "permit_restart", "agency_order", "energy_security_policy", "presidential_action", "fcc_decision_notice")',
-        '("court_order", "final_rule", "permit_restart", "agency_order", "energy_security_policy", "presidential_action", "korea_presidential_personnel", "fcc_decision_notice")',
+        '("court_order", "final_rule", "permit_restart", "agency_order", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fcc_decision_notice")',
+        '("court_order", "final_rule", "permit_restart", "agency_order", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "korea_presidential_personnel", "fcc_decision_notice")',
     )
     text = replace_once(
         text,
@@ -316,8 +316,8 @@ def patch_korea_presidential_personnel(text: str) -> str:
     )
     text = replace_once(
         text,
-        '{"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html"}',
-        '{"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "korea_president_html", "fcc_html"}',
+        '{"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html", "state_html"}',
+        '{"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "korea_president_html", "fcc_html", "state_html"}',
     )
     return text
 
