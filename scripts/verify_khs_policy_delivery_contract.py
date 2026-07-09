@@ -363,7 +363,7 @@ def assert_trusted_policy_news_story_fingerprint_allows_intraday_updates() -> No
         "link": "https://example.com/nato",
     }
     iran_item = {
-        "title": "Trump says Iran contacted him and wants negotiations - Reuters",
+        "title": "Trump says Iran reached out seeking a new agreement - Bloomberg",
         "source": "Reuters",
         "published_kst": "2026-07-09T14:05:00+09:00",
         "link": "https://example.com/iran-talks",
@@ -378,6 +378,8 @@ def assert_trusted_policy_news_story_fingerprint_allows_intraday_updates() -> No
     rendered = khs_trusted_policy_news_watch.korean_trump_story_title(iran_item["title"])
     if "이란 협상" not in rendered:
         raise AssertionError(f"Iran negotiation Trump title was not translated as negotiations: {rendered}")
+    if not khs_trusted_policy_news_watch.has_required_terms(iran_item["title"], rule):
+        raise AssertionError("Trump Iran reached-out/new-agreement headline did not satisfy trusted-news required terms")
 
 
 def assert_state_smr_moc_reaches_policy_lane() -> None:

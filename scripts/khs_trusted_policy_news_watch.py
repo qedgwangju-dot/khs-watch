@@ -397,6 +397,8 @@ STORY_RULES = (
             "site:reuters.com Trump says Iran Israel Hormuz oil",
             "site:reuters.com Trump Iran wants talks negotiations",
             "site:reuters.com Trump says Iran wants deal contacted",
+            "site:reuters.com Trump Iran reached out seeking new agreement",
+            "site:bloomberg.com Trump Iran reached out seeking new agreement",
             "site:reuters.com Trump says NATO defense spending Ukraine Russia",
             "site:reuters.com Trump says South Korea troops burden sharing defense",
             "site:reuters.com Trump says Fed rates dollar tariffs oil",
@@ -409,6 +411,9 @@ STORY_RULES = (
             "Trump says Iran wants negotiations Reuters",
             "Trump says Iran wants to negotiate Reuters",
             "Trump contacted by Iran wants negotiations Reuters",
+            "\"Trump says Iran reached out seeking a new agreement\"",
+            "\"Iran reached out seeking a new agreement\" Trump",
+            "\"TRUMP SAYS IRAN REACHED OUT SEEKING A NEW AGREEMENT\"",
             "Trump says tariff semiconductor China Taiwan Korea dollar Fed oil nuclear data center Reuters",
             "President Trump remarks tariffs export controls sanctions defense burden sharing South Korea Reuters",
             "Trump says Iran Israel war strike ceasefire oil Hormuz Middle East Reuters",
@@ -429,6 +434,7 @@ STORY_RULES = (
                 "shipping", "lng", "natural gas", "russia", "ukraine", "nato", "north korea",
                 "steel", "copper", "transformer", "pharma", "drug price", "autos", "ev",
                 "iran wants", "negotiate", "negotiations", "talks", "contacted by iran",
+                "reached out", "new agreement", "seeking a new agreement", "reached out seeking",
                 "이란", "협상", "연락", "유가", "호르무즈", "관세", "방위비", "나토", "우크라이나", "러시아", "달러", "금리", "반도체",
             ),
         ),
@@ -689,7 +695,7 @@ def korean_trump_story_title(title: str) -> str:
         return "트럼프 이란 발언: 임시 합의 종료·걸프 유가 리스크"
     if "iran" in low and "conflict" in low:
         return "트럼프 이란 발언: 충돌 재개 가능성·유가 리스크"
-    if ("iran" in low or "이란" in low) and ("negot" in low or "talk" in low or "deal" in low or "contact" in low or "협상" in low or "연락" in low):
+    if ("iran" in low or "이란" in low) and ("negot" in low or "talk" in low or "deal" in low or "contact" in low or "reached out" in low or "agreement" in low or "협상" in low or "연락" in low):
         return "트럼프 이란 협상 발언: 대화 재개 기대·유가 리스크"
     if "nato" in low and ("defense" in low or "spending" in low or "alliance" in low):
         return "트럼프 NATO 발언: 동맹·방위비·우크라이나 정책 신호"
