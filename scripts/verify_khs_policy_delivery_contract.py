@@ -50,6 +50,7 @@ def main() -> int:
     assert_delivery_guard_blocks_source_body_mismatch()
     assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch()
     assert_delivery_guard_blocks_bok_generic_stablecoin_mismatch()
+    assert_delivery_guard_blocks_url_topic_missing()
     assert_router_explains_fcc_submarine_cable_policy()
     cleanup()
     try:
@@ -516,6 +517,48 @@ def assert_delivery_guard_blocks_bok_generic_stablecoin_mismatch() -> None:
     khs_telegram_delivery_guard.main()
     if body_path.exists():
         raise AssertionError("delivery guard did not block BOK generic page with stablecoin policy body")
+
+
+def assert_delivery_guard_blocks_url_topic_missing() -> None:
+    cases = [
+        (
+            "KHS 정책 워치: [상] 트럼프 대통령 발언, 시장 영향 정책 신호\n",
+            "트럼프 대통령의 직접 발언이 관세, 반도체, 이란 전쟁위험을 움직일 수 있다는 일반 템플릿입니다.",
+            "https://www.whitehouse.gov/fact-sheets/2026/07/fact-sheet-president-donald-j-trump-secures-historic-defense-investment-from-nato-allies-powering-american-industry/",
+            "source_topic_missing:nato_defense_investment",
+        ),
+        (
+            "KHS 정책 워치: [상] FCC, 통신·주파수·위성 규제 문서 공표\n",
+            "FCC 통신·주파수·위성 규제 문서는 통신 인프라 정책 시간표를 바꿀 수 있다는 일반 템플릿입니다.",
+            "https://www.federalregister.gov/documents/2026/07/08/2026-13765/review-of-submarine-cable-landing-license-rules-and-procedures-to-assess-evolving-national-security",
+            "source_topic_missing:submarine_cable",
+        ),
+    ]
+    for title, core, link, expected in cases:
+        cleanup()
+        title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+        body_path = OUT_DIR / "khs_policy_watch_alert.md"
+        required_lines = [
+            f"{marker} URL topic missing regression check"
+            for marker in khs_telegram_delivery_guard.REQUIRED_EXPLANATION_FIELDS
+        ]
+        body = "\n".join([
+            "🚨 KHS 정책·규제 고충격 워치 · 2026년 07월 09일 12:30 KST",
+            "",
+            "## 1. [상·확정] 출처 주제 누락 회귀 테스트",
+            f"- 핵심: {core}",
+            *required_lines,
+            f"- 출처: [공식 출처]({link}) · 조회 12:30 KST",
+            "",
+        ])
+        title_path.write_text(title, encoding="utf-8")
+        body_path.write_text(body, encoding="utf-8")
+        reason = khs_telegram_delivery_guard.has_source_body_mismatch(title, body)
+        if reason != expected:
+            raise AssertionError(f"URL topic missing mismatch was not detected: {reason} != {expected}")
+        khs_telegram_delivery_guard.main()
+        if body_path.exists():
+            raise AssertionError(f"delivery guard did not block URL topic missing case: {expected}")
 
 
 def assert_router_explains_fcc_submarine_cable_policy() -> None:

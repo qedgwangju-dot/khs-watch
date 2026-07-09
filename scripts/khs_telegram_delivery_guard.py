@@ -190,6 +190,39 @@ REQUIRED_EXPLANATION_FIELDS = [
     "- 실패 신호:",
 ]
 
+URL_TOPIC_REQUIREMENTS = [
+    (
+        ("submarine-cable", "cable-landing-license", "submarine cable"),
+        ("해저케이블", "해저 통신케이블", "케이블 착륙", "submarine cable", "cable landing", "landing license"),
+        "source_topic_missing:submarine_cable",
+    ),
+    (
+        ("covered-communications-equipment", "covered communications equipment"),
+        ("통신장비", "보안장비", "수입", "판매", "covered communications equipment", "covered list", "importation", "marketing"),
+        "source_topic_missing:covered_communications_equipment",
+    ),
+    (
+        ("defense-investment-from-nato", "nato-allies-powering-american-industry"),
+        ("nato", "방위", "방산", "동맹", "defense", "american industry", "purl", "pac-3", "amraam"),
+        "source_topic_missing:nato_defense_investment",
+    ),
+    (
+        ("small-modular-reactor", "smr"),
+        ("smr", "소형모듈원전", "소형 모듈 원전", "원전", "reactor", "nuclear"),
+        "source_topic_missing:smr",
+    ),
+    (
+        ("quantum-innovation", "advanced-cryptographic-attacks"),
+        ("양자", "암호", "cryptographic", "quantum", "post-quantum"),
+        "source_topic_missing:quantum_crypto",
+    ),
+    (
+        ("regenerative-agriculture", "farm-resilience"),
+        ("농업", "농식품", "농장", "regenerative agriculture", "farm", "agriculture"),
+        "source_topic_missing:agriculture",
+    ),
+]
+
 
 REPLACEMENTS = {
     "[Federal Register FCC]": "[미 연방관보 FCC]",
@@ -463,6 +496,10 @@ def has_source_body_mismatch(title: str, body: str) -> str | None:
     )
     if has_bok_generic_source and has_stablecoin_policy_body:
         return "bok_generic_page_with_stablecoin_policy_body"
+
+    for url_markers, required_terms, reason in URL_TOPIC_REQUIREMENTS:
+        if any(marker in low_with_urls for marker in url_markers) and not any(term in visible for term in required_terms):
+            return reason
 
     return None
 
