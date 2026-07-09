@@ -23,9 +23,9 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 try:
-    from khs_policy_alert_explainer import ensure_explained, explanation_lines
+    from khs_policy_alert_explainer import ensure_explained
 except ImportError:  # pragma: no cover - supports module-style local tests.
-    from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines
+    from scripts.khs_policy_alert_explainer import ensure_explained
 
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
@@ -747,6 +747,106 @@ def source_bits(items: list[dict], limit: int = 1) -> str:
     return " / ".join(bits) if bits else "확인 불가"
 
 
+def short_text(value: object, limit: int = 120) -> str:
+    text = clean_text(str(value or ""))
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 1)].rstrip() + "…"
+
+
+def split_display_values(value: object) -> list[str]:
+    if isinstance(value, (list, tuple, set)):
+        return [clean_text(str(part)) for part in value if clean_text(str(part))]
+    text = clean_text(str(value or ""))
+    if not text:
+        return []
+    return [part.strip() for part in re.split(r"[,|]", text) if part.strip()]
+
+
+def join_short_values(value: object, max_items: int = 3, fallback: str = "확인 필요") -> str:
+    values = split_display_values(value)
+    if not values:
+        return fallback
+    return ", ".join(values[:max_items])
+
+
+def compact_core(rule: StoryRule, items: list[dict]) -> str:
+    title = clean_story_title(str(items[0].get("title", ""))) if items else rule.title
+    low = title.lower()
+    if rule.key == "trump_direct_policy_remarks_watch" and "iran" in low and (
+        "deal" in low or "agreement" in low or "negot" in low or "talk" in low or "contact" in low or "reached out" in low
+    ):
+        return "트럼프가 이란과 새 합의·협상 가능성을 언급한 보도입니다. 공식 발표 전이라 유가·중동 리스크 기대가 먼저 움직일 수 있습니다."
+    return short_text(rule.core, 125)
+
+
+def compact_investment_view(rule: StoryRule, items: list[dict]) -> str:
+    title = clean_story_title(str(items[0].get("title", ""))) if items else rule.title
+    low = title.lower()
+    if rule.key == "trump_direct_policy_remarks_watch" and "iran" in low:
+        return "유가, 원/달러, 해운 운임, 방산·정유·화학 수급 반응이 같이 움직이는지 확인합니다."
+    return short_text(rule.point, 125)
+
+
+def compact_korea_market_view(rule: StoryRule, items: list[dict]) -> str:
+    title = clean_story_title(str(items[0].get("title", ""))) if items else rule.title
+    low = title.lower()
+    if rule.key == "trump_direct_policy_remarks_watch" and "iran" in low:
+        return "정유/화학 원가, 해운, 방산, 환율 민감주 중심. 한국 기업 직접 노출 없으면 테마 반응으로 제한합니다."
+    return short_text(f"{join_short_values(rule.sectors, max_items=3)} 중심으로 공식 원문과 한국 기업 직접 노출만 확인합니다.", 125)
+
+
+def compact_priced_in(rule: StoryRule, items: list[dict]) -> str:
+    if rule.key == "trump_direct_policy_remarks_watch":
+        return "낮음~중간. 발언은 빠르게 반영되지만 공식 문서 전에는 되돌림도 빠릅니다."
+    return "낮음~중간. 공식 문서·시행일·적용 대상 확인 전까지는 예비 재료입니다."
+
+
+def compact_failure_signal(rule: StoryRule, items: list[dict]) -> str:
+    if rule.key == "trump_direct_policy_remarks_watch":
+        return "백악관/부처 후속, 유가·환율·운임·방산 티커 반응이 없으면 단발성 발언으로 제외합니다."
+    return "공식 원문, 시행일, 적용 대상, 한국 기업 직접 노출이 확인되지 않으면 제외합니다."
+
+
+def is_trump_iran_item(rule: StoryRule, items: list[dict]) -> bool:
+    if rule.key != "trump_direct_policy_remarks_watch" or not items:
+        return False
+    title = clean_story_title(str(items[0].get("title", ""))).lower()
+    return "iran" in title or "이란" in title
+
+
+def compact_impacts(rule: StoryRule, items: list[dict]) -> str:
+    if is_trump_iran_item(rule, items):
+        return "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표"
+    mapped = ["매출·마진·현금흐름" if value == "돈 버는 능력" else value for value in split_display_values(rule.impacts)]
+    return join_short_values(mapped, max_items=4, fallback="의사결정 영향 제한적")
+
+
+def compact_paths(rule: StoryRule, items: list[dict]) -> str:
+    if is_trump_iran_item(rule, items):
+        return "지정학 리스크, 유가·운임, 환율, 정책 타임라인"
+    return join_short_values(rule.paths, max_items=4, fallback="정책 타임라인")
+
+
+def compact_sectors(rule: StoryRule, items: list[dict]) -> str:
+    if is_trump_iran_item(rule, items):
+        return "정유/화학, 해운, 방산/지정학, 환율 민감주"
+    return join_short_values(rule.sectors, max_items=3, fallback="정책/규제 일반")
+
+
+def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: dict) -> list[str]:
+    ensure_explained(explain_item)
+    return [
+        f"- 핵심: {compact_core(rule, items)}",
+        f"- 투자 관점: {compact_investment_view(rule, items)}",
+        f"- 한국장 영향: {compact_korea_market_view(rule, items)}",
+        f"- 의사결정 영향: {compact_impacts(rule, items)} | 경로: {compact_paths(rule, items)}",
+        f"- 영향 섹터: {compact_sectors(rule, items)}",
+        f"- 반영/반대: {compact_priced_in(rule, items)} 반대 근거는 공식 문서·시행일·적용 범위가 아직 없다는 점입니다.",
+        f"- 실패 신호: {compact_failure_signal(rule, items)}",
+    ]
+
+
 def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, index: int, source_limit: int = 1) -> list[str]:
     display_title = story_display_title(rule, items)
     sources = source_bits(items, source_limit)
@@ -776,11 +876,8 @@ def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, i
     return [
         f"## {index}. [상·공식 확인 전] {display_title}",
         f"- 확인 상태: 공식 원문/후속 문서 확인 전. 신뢰 소스 확인: {source_names or '확인 불가'}.",
-        *story_summary_lines(rule, items, limit=2),
-        *explanation_lines(explain_item),
+        *compact_explanation_lines(rule, items, explain_item),
         f"- 출처: {sources} · 조회 {now:%H:%M KST}",
-        "",
-        f"💡 판단: {rule.follow_up}",
         "",
     ]
 

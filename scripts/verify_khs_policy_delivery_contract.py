@@ -45,6 +45,7 @@ def main() -> int:
     assert_nato_defense_fact_sheet_is_not_generic_trump_alert()
     assert_trump_iran_war_statement_reaches_geopolitical_lane()
     assert_trusted_policy_news_story_fingerprint_allows_intraday_updates()
+    assert_trusted_policy_news_render_is_compact()
     assert_state_smr_moc_reaches_policy_lane()
     assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered()
     assert_boem_space_launch_is_excluded()
@@ -380,6 +381,54 @@ def assert_trusted_policy_news_story_fingerprint_allows_intraday_updates() -> No
         raise AssertionError(f"Iran negotiation Trump title was not translated as negotiations: {rendered}")
     if not khs_trusted_policy_news_watch.has_required_terms(iran_item["title"], rule):
         raise AssertionError("Trump Iran reached-out/new-agreement headline did not satisfy trusted-news required terms")
+
+
+def assert_trusted_policy_news_render_is_compact() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "trump_direct_policy_remarks_watch"
+    )
+    item = {
+        "title": "Trump says Iran reached out seeking a new agreement - CNBC",
+        "source": "CNBC",
+        "published_kst": "2026-07-09T19:00:18+09:00",
+        "link": "https://news.google.com/example",
+        "priority": 3,
+    }
+    rendered = khs_trusted_policy_news_watch.render_alert_bundle(
+        [{"rule": rule, "items": [item], "fingerprint": "test"}],
+        dt.datetime(2026, 7, 9, 22, 29, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "트럼프 이란 협상 발언",
+        "- 핵심:",
+        "- 투자 관점:",
+        "- 한국장 영향:",
+        "- 의사결정 영향:",
+        "- 영향 섹터: 정유/화학, 해운, 방산/지정학, 환율 민감주",
+        "- 반영/반대:",
+        "- 실패 신호:",
+        "- 출처:",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"trusted policy compact render missing: {marker}")
+    forbidden = [
+        "- 한국 밸류체인:",
+        "외 12개",
+        "주요 보도 1",
+        "💡 판단:",
+        "트럼프 대통령의 직접 발언이 관세, 수출통제",
+        "관세/수출주, 반도체/AI",
+    ]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"trusted policy compact render leaked verbose text: {marker}")
+    if len(rendered) > 1200:
+        raise AssertionError(f"trusted policy Telegram render is too long: {len(rendered)} chars")
+    long_lines = [line for line in rendered.splitlines() if len(line) > khs_telegram_delivery_guard.MAX_BODY_LINE_CHARS]
+    if long_lines:
+        raise AssertionError(f"trusted policy Telegram render has overlong line: {long_lines[0][:120]}")
 
 
 def assert_state_smr_moc_reaches_policy_lane() -> None:
