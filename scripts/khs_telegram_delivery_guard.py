@@ -175,19 +175,12 @@ RAW_LINE_PREFIX_BLOCKERS = [
     "- 즉시 체크:",
 ]
 
-REQUIRED_EXPLANATION_FIELDS = [
-    "- 핵심 내용:",
-    "- 투자 관점:",
-    "- 한국장 영향:",
-    "- 실패 신호:",
-]
-
-REQUIRED_EXPLANATION_FIELDS = [
-    "- 핵심:",
-    "- 의사결정 영향:",
-    "- 투자 영향:",
-    "- 한국장:",
-    "- 실패 신호:",
+REQUIRED_EXPLANATION_FIELD_GROUPS = [
+    ("- 핵심 내용:", "- 핵심:"),
+    ("- 의사결정 영향:",),
+    ("- 투자 관점:", "- 투자 영향:"),
+    ("- 한국장 영향:", "- 한국장:"),
+    ("- 실패 신호:",),
 ]
 
 URL_TOPIC_REQUIREMENTS = [
@@ -563,9 +556,9 @@ def guard_lane(lane: Lane) -> None:
             delete_lane(lane, f"long_english_run:{marker}")
             return
 
-    for marker in REQUIRED_EXPLANATION_FIELDS:
-        if marker not in body:
-            delete_lane(lane, f"missing_explanation_field:{marker}")
+    for markers in REQUIRED_EXPLANATION_FIELD_GROUPS:
+        if not any(marker in body for marker in markers):
+            delete_lane(lane, f"missing_explanation_field:{markers[0]}")
             return
 
     write_pair(lane, title, body)

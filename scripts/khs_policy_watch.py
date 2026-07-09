@@ -178,6 +178,27 @@ PRESIDENTIAL_ACTION_EXACT_EXCLUDE = {
     "all", "releases", "presidential actions", "executive orders", "nominations & appointments",
     "presidential memoranda", "proclamations", "fact sheets", "remarks", "research",
 }
+TRUMP_MARKET_MOVING_TERMS = [
+    "tariff", "tariffs", "section 301", "section 232", "export control", "export controls",
+    "sanctions", "china", "taiwan", "korea", "south korea", "north korea", "usfk",
+    "defense", "burden sharing", "nato", "semiconductor", "semiconductors", "chip", "chips",
+    "ai", "artificial intelligence", "data center", "power grid", "electric grid", "nuclear",
+    "reactor", "uranium", "energy", "oil", "brent", "wti", "lng", "natural gas", "iran",
+    "israel", "middle east", "hormuz", "strait of hormuz", "red sea", "houthi", "missile",
+    "strike", "ceasefire", "war", "war powers", "tanker", "shipping", "russia", "ukraine",
+    "fed", "federal reserve", "rate", "rates", "dollar", "steel", "copper", "transformer",
+    "pharma", "drug price", "drug prices", "autos", "ev", "supply chain",
+]
+TRUMP_OFFICIAL_REMARK_STRONG_TERMS = [
+    "tariff", "tariffs", "section 301", "section 232", "export control", "export controls",
+    "sanctions", "defense spending", "burden sharing", "usfk", "semiconductor", "semiconductors",
+    "chip", "chips", "ai", "artificial intelligence", "data center", "power grid", "electric grid",
+    "nuclear", "reactor", "uranium", "energy", "oil", "brent", "wti", "lng", "natural gas",
+    "hormuz", "strait of hormuz", "red sea", "houthi", "missile", "strike", "ceasefire",
+    "war powers", "tanker", "shipping", "fed", "federal reserve", "rate", "rates", "dollar",
+    "steel", "copper", "transformer", "pharma", "drug price", "drug prices", "autos", "ev",
+    "supply chain",
+]
 FCC_STATIC_EXCLUDE = [
     "about the fcc", "consumer", "licensing", "forms", "jobs", "contact", "privacy policy",
     "foia", "no fear act", "inspector general", "rss", "subscribe", "archive",
@@ -232,6 +253,7 @@ SOURCES = [
     Source("White House proclamations", "https://www.whitehouse.gov/presidential-actions/proclamations/", "whitehouse_html"),
     Source("White House fact sheets", "https://www.whitehouse.gov/fact-sheets/", "whitehouse_html"),
     Source("White House remarks", "https://www.whitehouse.gov/remarks/", "whitehouse_html"),
+    Source("White House videos", "https://www.whitehouse.gov/videos/", "whitehouse_html"),
     Source("White House briefings statements", "https://www.whitehouse.gov/briefings-statements/", "whitehouse_html"),
     Source("State Department office spokesperson", "https://www.state.gov/releases/office-of-the-spokesperson/", "state_html"),
     Source("State Department press releases", "https://www.state.gov/press-releases/", "state_html"),
@@ -398,7 +420,7 @@ def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
         doc_type = "Proclamation"
     elif "fact sheets" in source.name:
         doc_type = "Fact Sheet"
-    elif "remarks" in source.name:
+    elif "remarks" in source.name or "videos" in source.name:
         doc_type = "Trump Remarks"
     elif "briefings" in source.name:
         doc_type = "White House Statement"
@@ -406,8 +428,8 @@ def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
         doc_type = "Presidential Action"
     if "fact sheets" in source.name:
         required_path = "/fact-sheets/"
-    elif "remarks" in source.name:
-        required_path = "/remarks/"
+    elif "remarks" in source.name or "videos" in source.name:
+        required_path = ("/remarks/", "/videos/")
     elif "briefings" in source.name:
         required_path = "/briefings-statements/"
     else:
@@ -424,7 +446,8 @@ def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
             continue
         link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
         link_lower = link.lower()
-        if required_path not in link_lower or link.rstrip("/") == source.url.rstrip("/"):
+        required_paths = required_path if isinstance(required_path, tuple) else (required_path,)
+        if not any(path in link_lower for path in required_paths) or link.rstrip("/") == source.url.rstrip("/"):
             continue
         tail = clean_text(text[match.end(): match.end() + 700])
         date_match = re.search(
@@ -622,11 +645,20 @@ def collect_sec_filings(now: dt.datetime) -> tuple[list[dict], list[str]]:
 
 def classify_item(item: dict) -> dict | None:
     haystack = f"{item.get('title', '')} {item.get('summary', '')}".lower()
+    source_name = item.get("source", "")
+    source_lower = source_name.lower()
+    link_lower = str(item.get("link") or "").lower()
+    is_whitehouse_remark_or_video = (
+        source_lower in {"white house remarks", "white house videos"}
+        or "whitehouse.gov/remarks/" in link_lower
+        or "whitehouse.gov/videos/" in link_lower
+    )
+    if is_whitehouse_remark_or_video and not any(keyword_in_text(haystack, term) for term in TRUMP_OFFICIAL_REMARK_STRONG_TERMS):
+        return None
     matched = {bucket: [kw for kw in keywords if keyword_in_text(haystack, kw)] for bucket, keywords in STAGE_KEYWORDS.items()}
     if "fda_decision" in matched and matched["fda_decision"] and "FDA" not in item.get("source", "") and "fda" not in haystack:
         matched["fda_decision"] = []
     matched = {bucket: kws for bucket, kws in matched.items() if kws}
-    source_name = item.get("source", "")
     is_fcc_source = source_name.startswith("FCC") or source_name == "Federal Register FCC"
     if is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_STRONG_TERMS):
         matched.setdefault("fcc_decision_notice", ["fcc official decision/notice source"])

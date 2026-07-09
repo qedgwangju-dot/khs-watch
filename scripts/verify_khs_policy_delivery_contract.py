@@ -40,6 +40,7 @@ def main() -> int:
     assert_stablecoin_semantic_dedupe()
     assert_router_final_semantic_dedupe()
     assert_router_keeps_source_families_separate()
+    assert_whitehouse_video_remarks_are_parsed_but_market_filtered()
     assert_trump_statement_reaches_policy_lane()
     assert_nato_defense_fact_sheet_is_not_generic_trump_alert()
     assert_trump_iran_war_statement_reaches_geopolitical_lane()
@@ -201,6 +202,38 @@ def assert_router_keeps_source_families_separate() -> None:
     merged = khs_policy_alert_router.dedupe_alerts([boem, fcc])
     if len(merged) != 2:
         raise AssertionError(f"router merged different source families: expected 2, got {len(merged)}")
+
+
+def assert_whitehouse_video_remarks_are_parsed_but_market_filtered() -> None:
+    html = """
+    <a href="/videos/president-trump-delivers-remarks-on-semiconductor-tariffs-and-china/">
+    President Trump Delivers Remarks on Semiconductor Tariffs and China
+    </a>
+    July 8, 2026
+    <a href="/videos/president-trump-speaks-at-the-faith-freedom-coalition-conference/">
+    President Trump Speaks at the Faith & Freedom Coalition Conference
+    </a>
+    July 8, 2026
+    <a href="/videos/president-trump-participates-in-a-nato-leaders-working-session/">
+    President Trump Participates in a NATO Leaders Working Session
+    </a>
+    July 8, 2026
+    """
+    source = khs_policy_watch.Source("White House remarks", "https://www.whitehouse.gov/remarks/", "whitehouse_html")
+    items = khs_policy_watch.parse_whitehouse_html(html, source)
+    if len(items) != 3:
+        raise AssertionError(f"White House remarks parser did not retain video links: {len(items)}")
+    market_item = next((item for item in items if "semiconductor" in item["title"].lower()), None)
+    generic_item = next((item for item in items if "faith" in item["title"].lower()), None)
+    generic_nato_item = next((item for item in items if "nato" in item["title"].lower()), None)
+    if not market_item or "/videos/" not in market_item["link"]:
+        raise AssertionError("White House market-moving video remark link was not parsed")
+    if not khs_policy_watch.classify_item(market_item):
+        raise AssertionError("White House market-moving video remark was not classified")
+    if khs_policy_watch.classify_item(generic_item):
+        raise AssertionError("White House generic political video remark was classified as high-impact")
+    if khs_policy_watch.classify_item(generic_nato_item):
+        raise AssertionError("White House generic NATO video without market detail was classified as high-impact")
 
 
 def assert_trump_statement_reaches_policy_lane() -> None:
@@ -438,10 +471,7 @@ def assert_delivery_guard_blocks_source_body_mismatch() -> None:
     title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
     body_path = OUT_DIR / "khs_policy_watch_alert.md"
     title = "KHS 정책 워치: [상] FCC, 통신·주파수·위성 규제 문서 공표\n"
-    required_lines = [
-        f"{marker} FCC inverter policy regression check"
-        for marker in khs_telegram_delivery_guard.REQUIRED_EXPLANATION_FIELDS
-    ]
+    required_lines = required_explanation_lines("FCC inverter policy regression check")
     body = "\n".join([
         "KHS policy watch source/body mismatch regression",
         "",
@@ -466,10 +496,7 @@ def assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch() -> None:
     title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
     body_path = OUT_DIR / "khs_policy_watch_alert.md"
     title = "KHS 정책 워치: [상] FCC, 통신·주파수·위성 규제 문서 공표\n"
-    required_lines = [
-        f"{marker} FCC submarine cable/inverter mismatch regression check"
-        for marker in khs_telegram_delivery_guard.REQUIRED_EXPLANATION_FIELDS
-    ]
+    required_lines = required_explanation_lines("FCC submarine cable/inverter mismatch regression check")
     body = "\n".join([
         "🚨 KHS 정책·규제 고충격 워치 · 2026년 07월 08일 15:18 KST",
         "",
@@ -495,10 +522,7 @@ def assert_delivery_guard_blocks_bok_generic_stablecoin_mismatch() -> None:
     title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
     body_path = OUT_DIR / "khs_policy_watch_alert.md"
     title = "KHS 정책 워치: [상] 국내 디지털자산 정책: 스테이블코인 예금 대체·준비자산 규제 체크\n"
-    required_lines = [
-        f"{marker} BOK generic page/stablecoin mismatch regression check"
-        for marker in khs_telegram_delivery_guard.REQUIRED_EXPLANATION_FIELDS
-    ]
+    required_lines = required_explanation_lines("BOK generic page/stablecoin mismatch regression check")
     body = "\n".join([
         "🚨 KHS 정책·규제 고충격 워치 · 2026년 07월 09일 12:13 KST",
         "",
@@ -538,10 +562,7 @@ def assert_delivery_guard_blocks_url_topic_missing() -> None:
         cleanup()
         title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
         body_path = OUT_DIR / "khs_policy_watch_alert.md"
-        required_lines = [
-            f"{marker} URL topic missing regression check"
-            for marker in khs_telegram_delivery_guard.REQUIRED_EXPLANATION_FIELDS
-        ]
+        required_lines = required_explanation_lines("URL topic missing regression check")
         body = "\n".join([
             "🚨 KHS 정책·규제 고충격 워치 · 2026년 07월 09일 12:30 KST",
             "",
@@ -594,6 +615,13 @@ def cleanup() -> None:
     for path in POLICY_FILES:
         if path.exists():
             path.unlink()
+
+
+def required_explanation_lines(note: str) -> list[str]:
+    return [
+        f"{markers[0]} {note}"
+        for markers in khs_telegram_delivery_guard.REQUIRED_EXPLANATION_FIELD_GROUPS
+    ]
 
 
 def write_fcc_regression_fixture() -> None:

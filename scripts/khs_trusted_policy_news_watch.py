@@ -393,16 +393,22 @@ STORY_RULES = (
         key="trump_direct_policy_remarks_watch",
         title="트럼프 대통령 직접 발언, 시장 영향 정책 신호",
         google_queries=(
-            "Reuters Bloomberg Trump says tariff semiconductor China Taiwan Korea dollar Fed oil nuclear data center",
-            "Reuters Bloomberg President Trump remarks tariffs export controls sanctions defense burden sharing South Korea",
-            "Reuters Bloomberg Trump says national security import ban chips AI data centers power grid nuclear",
-            "Reuters Bloomberg Trump remarks China Taiwan Middle East oil tariffs sanctions export controls",
-            "Reuters Bloomberg Trump says Iran Israel war strike ceasefire oil Hormuz Middle East",
-            "Reuters Bloomberg Trump warns Iran Israel Strait of Hormuz oil tanker shipping defense",
-            "Reuters Bloomberg Trump comments Red Sea Houthi Iran missile strike Brent WTI",
-            "Reuters Bloomberg Trump says Russia Ukraine NATO defense spending sanctions oil gas",
-            "Reuters Bloomberg Trump says North Korea South Korea US troops burden sharing defense",
-            "CNBC MarketWatch Reuters Bloomberg Trump comments tariffs Fed dollar oil chips nuclear data centers",
+            "site:reuters.com Trump says tariffs chips AI semiconductor China",
+            "site:reuters.com Trump says Iran Israel Hormuz oil",
+            "site:reuters.com Trump says NATO defense spending Ukraine Russia",
+            "site:reuters.com Trump says South Korea troops burden sharing defense",
+            "site:reuters.com Trump says Fed rates dollar tariffs oil",
+            "site:apnews.com Trump NATO Iran Ukraine defense spending tariffs",
+            "site:apnews.com Trump says China tariffs chips oil Fed",
+            "site:cnbc.com Trump tariffs Fed dollar oil chips nuclear data centers",
+            "site:marketwatch.com Trump tariffs Fed dollar oil Iran chips",
+            "Trump says tariff semiconductor China Taiwan Korea dollar Fed oil nuclear data center Reuters",
+            "President Trump remarks tariffs export controls sanctions defense burden sharing South Korea Reuters",
+            "Trump says Iran Israel war strike ceasefire oil Hormuz Middle East Reuters",
+            "Trump warns Iran Israel Strait of Hormuz oil tanker shipping Reuters",
+            "Trump comments Red Sea Houthi Iran missile strike Brent WTI Reuters",
+            "Trump says Russia Ukraine NATO defense spending sanctions oil gas Reuters",
+            "Trump says North Korea South Korea US troops burden sharing defense Reuters",
         ),
         required_groups=(
             ("trump", "president trump", "donald trump", "donald j. trump"),
@@ -600,7 +606,9 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                     "priority": SOURCE_PRIORITY.get(priority_key, 99),
                 }
             )
-    return sorted(items, key=lambda item: (item["priority"], item["published_kst"]))
+    items.sort(key=lambda item: item["published_kst"], reverse=True)
+    items.sort(key=lambda item: item["priority"])
+    return items
 
 
 def fingerprint(rule: StoryRule, items: list[dict]) -> str:
@@ -611,13 +619,77 @@ def fingerprint(rule: StoryRule, items: list[dict]) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
 
 
-def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
-    source_bits = []
-    for item in items[:3]:
-        source_bits.append(
-            f"[{item['source']}]({item['link']}) · 원천시각 {item['published_kst']}"
+def clean_story_title(title: str) -> str:
+    title = clean_text(title)
+    title = re.sub(
+        r"\s+-\s+(Reuters|Bloomberg|AP News|Associated Press|CNBC|MarketWatch|The Wall Street Journal|Financial Times)\s*$",
+        "",
+        title,
+        flags=re.I,
+    )
+    return title
+
+
+def korean_trump_story_title(title: str) -> str:
+    cleaned = clean_story_title(title)
+    low = cleaned.lower()
+    if "iran" in low and ("over" in low or "end war" in low or "standoff" in low):
+        return "트럼프 이란 발언: 임시 합의 종료·걸프 유가 리스크"
+    if "iran" in low and "conflict" in low:
+        return "트럼프 이란 발언: 충돌 재개 가능성·유가 리스크"
+    if "nato" in low and ("defense" in low or "spending" in low or "alliance" in low):
+        return "트럼프 NATO 발언: 동맹·방위비·우크라이나 정책 신호"
+    if "nato" in low or "allies" in low:
+        return "트럼프 NATO 정상회의 발언: 동맹 결속·방위비 압박 재료"
+    if "ukraine" in low or "russia" in low or "putin" in low or "zelenskiy" in low:
+        return "트럼프 우크라이나·러시아 발언: 전쟁 시간표·제재 리스크"
+    if "turkey" in low and ("sanction" in low or "f-35" in low):
+        return "트럼프 튀르키예 발언: 제재 해제·F-35 판매 판단"
+    if "tariff" in low or "tariffs" in low:
+        return "트럼프 관세 발언: 수출주·공급망 정책 리스크"
+    if "fed" in low or "rate" in low or "dollar" in low:
+        return "트럼프 금리·달러 발언: 할인율·환율 리스크"
+    if "oil" in low or "hormuz" in low or "brent" in low or "wti" in low:
+        return "트럼프 에너지 발언: 유가·운임·정유/화학 원가 리스크"
+    if "chip" in low or "semiconductor" in low or "ai" in low or "data center" in low:
+        return "트럼프 반도체·AI 발언: 수출통제·AI 인프라 정책 신호"
+    return f"트럼프 시장 영향 발언: {cleaned[:70]}"
+
+
+def story_display_title(rule: StoryRule, items: list[dict]) -> str:
+    if rule.key == "trump_direct_policy_remarks_watch" and items:
+        return korean_trump_story_title(str(items[0].get("title", "")))
+    return rule.title
+
+
+def story_summary_lines(rule: StoryRule, items: list[dict], limit: int = 3) -> list[str]:
+    if rule.key != "trump_direct_policy_remarks_watch":
+        return []
+    lines: list[str] = []
+    for idx, item in enumerate(items[:limit], start=1):
+        lines.append(
+            f"- 주요 보도 {idx}: {korean_trump_story_title(str(item.get('title', '')))} "
+            f"({item.get('source', '확인 불가')}, {item.get('published_kst', '시각 확인 불가')})"
         )
-    sources = " / ".join(source_bits) if source_bits else "확인 불가"
+    return lines
+
+
+def alert_latest_kst(alert: dict) -> str:
+    items = alert.get("items") or []
+    return max((str(item.get("published_kst", "")) for item in items), default="")
+
+
+def source_bits(items: list[dict], limit: int = 1) -> str:
+    bits = [
+        f"[{item['source']}]({item['link']}) · 원천시각 {item['published_kst']}"
+        for item in items[:limit]
+    ]
+    return " / ".join(bits) if bits else "확인 불가"
+
+
+def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, index: int, source_limit: int = 1) -> list[str]:
+    display_title = story_display_title(rule, items)
+    sources = source_bits(items, source_limit)
     source_names = ", ".join(dict.fromkeys(str(item["source"]) for item in items[:3]))
     matched = {rule.key: ["EU", "Korea", "policy"] if rule.key.startswith("eu_korea_") else ["trusted policy news"]}
     if rule.key == "us_japan_korea_smr_moc_state_watch":
@@ -641,19 +713,39 @@ def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
     }
     ensure_explained(explain_item)
 
-    lines = [
-        f"🚨 KHS 신뢰외신 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}",
-        "공식 발표 전 정책 뉴스 1건 확인",
-        "",
-        f"## 1. [상·공식 확인 전] {rule.title}",
+    return [
+        f"## {index}. [상·공식 확인 전] {display_title}",
         f"- 확인 상태: 공식 원문/후속 문서 확인 전. 신뢰 소스 확인: {source_names or '확인 불가'}.",
+        *story_summary_lines(rule, items, limit=2),
         *explanation_lines(explain_item),
         f"- 출처: {sources} · 조회 {now:%H:%M KST}",
         "",
         f"💡 판단: {rule.follow_up}",
         "",
+    ]
+
+
+def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
+    lines = [
+        f"🚨 KHS 신뢰외신 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}",
+        "공식 발표 전 정책 뉴스 1건 확인",
+        "",
+        *render_alert_section(rule, items, now, index=1, source_limit=3),
         "투자 조언이 아닌 참고용 정책·규제 알림입니다.",
     ]
+    return "\n".join(lines) + "\n"
+
+
+def render_alert_bundle(alerts: list[dict], now: dt.datetime, limit: int = 3) -> str:
+    selected = alerts[:limit]
+    lines = [
+        f"🚨 KHS 신뢰외신 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}",
+        f"공식 발표 전 정책 뉴스 {len(selected)}건 확인",
+        "",
+    ]
+    for idx, alert in enumerate(selected, start=1):
+        lines.extend(render_alert_section(alert["rule"], alert["items"], now, index=idx, source_limit=1))
+    lines.append("투자 조언이 아닌 참고용 정책·규제 알림입니다.")
     return "\n".join(lines) + "\n"
 
 
@@ -683,10 +775,17 @@ def main() -> int:
         print("trusted_policy_news_alerts=0")
         return 0
 
-    top = alerts[0]
-    report = render_alert(top["rule"], top["items"], now)
+    alerts.sort(key=alert_latest_kst, reverse=True)
+    selected_alerts = alerts[:3]
+    top = selected_alerts[0]
+    extra_count = max(0, len(selected_alerts) - 1)
+    title_suffix = f" 외 {extra_count}건" if extra_count else ""
+    report = render_alert_bundle(selected_alerts, now)
     ALERT_PATH.write_text(report, encoding="utf-8")
-    TITLE_PATH.write_text(f"KHS 신뢰외신 정책 워치: [상·공식 확인 전] {top['rule'].title}\n", encoding="utf-8")
+    TITLE_PATH.write_text(
+        f"KHS 신뢰외신 정책 워치: [상·공식 확인 전] {story_display_title(top['rule'], top['items'])}{title_suffix}\n",
+        encoding="utf-8",
+    )
     ALERTS_JSON_PATH.write_text(
         json.dumps(
             [
