@@ -103,6 +103,16 @@ HIGH_IMPACT_TERMS = [
     "준비자산", "상환청구권", "허용", "규제", "법안", "입법", "2단계법",
     "상용화", "표준", "결제 인프라", "확정된 바", "정해진 바",
 ]
+BOK_DIRECT_POLICY_TERMS = [
+    "스테이블코인", "원화 스테이블코인", "디지털자산기본법", "디지털자산 기본법",
+    "가상자산 2단계", "2단계 입법", "2단계법", "예금 대체",
+    "준비자산", "상환청구권", "발행주체", "발행 주체",
+]
+BOK_DIRECT_EVENT_TERMS = [
+    "발행주체", "발행 주체", "은행 중심", "핀테크", "거래소", "예금 대체",
+    "준비자산", "상환청구권", "허용", "규제", "법안", "입법",
+    "2단계법", "상용화", "확정된 바", "정해진 바",
+]
 SECTORS = [
     "금융/자본시장/스테이블코인",
     "은행/핀테크/결제",
@@ -198,13 +208,15 @@ def is_policy_candidate(text: str, source_name: str) -> bool:
     has_actor = has_any(text, ACTOR_TERMS) or source_name.startswith(
         ("Financial Services Commission", "Korea Policy", "Bank of Korea", "National Assembly")
     )
+    if source_name.startswith("Bank of Korea"):
+        return has_actor and has_any(text, BOK_DIRECT_POLICY_TERMS) and has_any(text, BOK_DIRECT_EVENT_TERMS)
     return has_policy and has_event and has_actor
 
 
 def stablecoin_title(text: str) -> str:
     if has_any(text, ["발행주체", "발행 주체", "은행 중심", "핀테크", "거래소"]):
         return "국내 디지털자산 정책: 원화 스테이블코인 발행 주체·업권 범위 체크"
-    if has_any(text, ["예금 대체", "한국은행", "한은", "준비자산", "상환청구권"]):
+    if has_any(text, ["예금 대체", "준비자산", "상환청구권"]):
         return "국내 디지털자산 정책: 스테이블코인 예금 대체·준비자산 규제 체크"
     if has_any(text, ["상용화", "기술 검증", "테스트", "결제"]):
         return "국내 디지털자산 정책: 스테이블코인 결제 인프라 상용화 체크"

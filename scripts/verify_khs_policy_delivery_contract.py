@@ -36,6 +36,7 @@ def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_workflow_delivery_dedupe()
     assert_foreign_first_policy_sources()
+    assert_stablecoin_watch_rejects_bok_generic_page()
     assert_stablecoin_semantic_dedupe()
     assert_router_final_semantic_dedupe()
     assert_router_keeps_source_families_separate()
@@ -48,6 +49,7 @@ def main() -> int:
     assert_delivery_guard_blocks_duplicate_policy_alerts()
     assert_delivery_guard_blocks_source_body_mismatch()
     assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch()
+    assert_delivery_guard_blocks_bok_generic_stablecoin_mismatch()
     assert_router_explains_fcc_submarine_cable_policy()
     cleanup()
     try:
@@ -95,6 +97,20 @@ def assert_workflow_delivery_dedupe() -> None:
     for marker in required:
         if marker not in workflow:
             raise AssertionError(f"KHS policy workflow missing Telegram delivery dedupe marker: {marker}")
+
+
+def assert_stablecoin_watch_rejects_bok_generic_page() -> None:
+    generic = "금융안정업무 소개 한국은행 지급결제 디지털화폐 금융안정 정책 업무 결제 표준"
+    if khs_domestic_stablecoin_policy_watch.is_policy_candidate(generic, "Bank of Korea digital currency policy"):
+        raise AssertionError("BOK generic financial-stability page passed stablecoin candidate filter")
+
+    direct = "한국은행 원화 스테이블코인 예금 대체 준비자산 상환청구권 발행 주체 규제 법안"
+    if not khs_domestic_stablecoin_policy_watch.is_policy_candidate(direct, "Bank of Korea digital currency policy"):
+        raise AssertionError("BOK direct stablecoin policy text was over-filtered")
+
+    title = khs_domestic_stablecoin_policy_watch.stablecoin_title("한국은행 한은 금융안정업무 소개 지급결제 디지털화폐")
+    if "예금 대체" in title or "준비자산" in title:
+        raise AssertionError("BOK actor-only text still selects deposit/reserve stablecoin title")
 
 
 def assert_stablecoin_semantic_dedupe() -> None:
@@ -471,6 +487,35 @@ def assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch() -> None:
     khs_telegram_delivery_guard.main()
     if body_path.exists():
         raise AssertionError("delivery guard did not block FCC submarine cable source with inverter body")
+
+
+def assert_delivery_guard_blocks_bok_generic_stablecoin_mismatch() -> None:
+    cleanup()
+    title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    title = "KHS 정책 워치: [상] 국내 디지털자산 정책: 스테이블코인 예금 대체·준비자산 규제 체크\n"
+    required_lines = [
+        f"{marker} BOK generic page/stablecoin mismatch regression check"
+        for marker in khs_telegram_delivery_guard.REQUIRED_EXPLANATION_FIELDS
+    ]
+    body = "\n".join([
+        "🚨 KHS 정책·규제 고충격 워치 · 2026년 07월 09일 12:13 KST",
+        "",
+        "## 1. [상·확정] 국내 디지털자산 정책: 스테이블코인 예금 대체·준비자산 규제 체크",
+        "- 핵심: 원화 스테이블코인·디지털자산 입법은 발행 주체, 준비자산, 지급결제 표준을 둘러싼 금융 인프라 재편 이슈입니다.",
+        *required_lines,
+        "- 출처: [Bank of Korea digital currency policy](https://www.bok.or.kr/portal/submain/submain/fnncSafety.do?menuNo=201652) · 조회 12:13 KST",
+        "",
+    ])
+    title_path.write_text(title, encoding="utf-8")
+    body_path.write_text(body, encoding="utf-8")
+    reason = khs_telegram_delivery_guard.has_source_body_mismatch(title, body)
+    expected = "bok_generic_page_with_stablecoin_policy_body"
+    if reason != expected:
+        raise AssertionError(f"BOK generic/source body mismatch was not detected: {reason}")
+    khs_telegram_delivery_guard.main()
+    if body_path.exists():
+        raise AssertionError("delivery guard did not block BOK generic page with stablecoin policy body")
 
 
 def assert_router_explains_fcc_submarine_cable_policy() -> None:

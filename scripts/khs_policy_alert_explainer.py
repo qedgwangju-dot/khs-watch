@@ -318,7 +318,7 @@ def is_domestic_telecom(text: str, item: dict) -> bool:
 def is_stablecoin(text: str, item: dict) -> bool:
     return bool(item.get("domestic_stablecoin_policy_watch")) or "korea_stablecoin_policy" in (item.get("matched") or {}) or has_any(
         text,
-        ["스테이블코인", "원화 스테이블코인", "디지털자산", "가상자산 2단계", "예금 대체", "한국은행", "발행 주체"],
+        ["스테이블코인", "원화 스테이블코인", "디지털자산기본법", "디지털자산", "가상자산 2단계", "예금 대체", "준비자산", "상환청구권", "발행 주체"],
     )
 
 

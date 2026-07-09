@@ -439,6 +439,31 @@ def has_source_body_mismatch(title: str, body: str) -> str | None:
     if has_fcc_submarine_source and has_inverter_or_equipment_ban_body:
         return "fcc_submarine_cable_source_with_inverter_or_equipment_ban_body"
 
+    has_bok_generic_source = any(
+        marker in low_with_urls
+        for marker in (
+            "bok.or.kr/portal/submain/submain/fnncsafety.do",
+            "bok.or.kr/portal/submain/submain/crncypolicy.do",
+            "bok.or.kr/portal/submain/submain/cbdc.do",
+            "bok.or.kr/portal/bbs/b0000232/list.do",
+        )
+    )
+    has_stablecoin_policy_body = any(
+        marker in combined
+        for marker in (
+            "스테이블코인",
+            "원화 스테이블코인",
+            "예금 대체",
+            "준비자산",
+            "상환청구권",
+            "발행 주체",
+            "가상자산 2단계",
+            "디지털자산기본법",
+        )
+    )
+    if has_bok_generic_source and has_stablecoin_policy_body:
+        return "bok_generic_page_with_stablecoin_policy_body"
+
     return None
 
 
