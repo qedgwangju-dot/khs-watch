@@ -44,6 +44,7 @@ def main() -> int:
     assert_trump_statement_reaches_policy_lane()
     assert_nato_defense_fact_sheet_is_not_generic_trump_alert()
     assert_trump_iran_war_statement_reaches_geopolitical_lane()
+    assert_trusted_policy_news_story_fingerprint_allows_intraday_updates()
     assert_state_smr_moc_reaches_policy_lane()
     assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered()
     assert_boem_space_launch_is_excluded()
@@ -348,6 +349,35 @@ def assert_trump_iran_war_statement_reaches_geopolitical_lane() -> None:
     for marker in ("이란·이스라엘·중동 전쟁위험", "정유/화학/해운", "유가·환율·운임·방산"):
         if marker not in rendered:
             raise AssertionError(f"Trump Iran/Hormuz render missing market-impact marker: {marker}")
+
+
+def assert_trusted_policy_news_story_fingerprint_allows_intraday_updates() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "trump_direct_policy_remarks_watch"
+    )
+    nato_item = {
+        "title": "Trump says 'a lot of unity' at NATO summit after lashing out at allies - Reuters",
+        "source": "Reuters",
+        "published_kst": "2026-07-09T08:58:10+09:00",
+        "link": "https://example.com/nato",
+    }
+    iran_item = {
+        "title": "Trump says Iran contacted him and wants negotiations - Reuters",
+        "source": "Reuters",
+        "published_kst": "2026-07-09T14:05:00+09:00",
+        "link": "https://example.com/iran-talks",
+    }
+    if khs_trusted_policy_news_watch.fingerprint(rule, [nato_item]) == khs_trusted_policy_news_watch.fingerprint(rule, [iran_item]):
+        raise AssertionError("trusted policy fingerprint still dedupes different Trump stories on the same day")
+    legacy_fp = khs_trusted_policy_news_watch.legacy_daily_fingerprint(rule, [nato_item])
+    seen = {legacy_fp: {"first_seen_kst": "2026-07-09T13:35:56+09:00"}}
+    fresh = khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [iran_item, nato_item], seen)
+    if fresh != [iran_item]:
+        raise AssertionError(f"legacy daily seen did not allow only fresh intraday Trump item: {fresh}")
+    rendered = khs_trusted_policy_news_watch.korean_trump_story_title(iran_item["title"])
+    if "이란 협상" not in rendered:
+        raise AssertionError(f"Iran negotiation Trump title was not translated as negotiations: {rendered}")
 
 
 def assert_state_smr_moc_reaches_policy_lane() -> None:

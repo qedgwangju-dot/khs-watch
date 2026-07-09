@@ -395,13 +395,20 @@ STORY_RULES = (
         google_queries=(
             "site:reuters.com Trump says tariffs chips AI semiconductor China",
             "site:reuters.com Trump says Iran Israel Hormuz oil",
+            "site:reuters.com Trump Iran wants talks negotiations",
+            "site:reuters.com Trump says Iran wants deal contacted",
             "site:reuters.com Trump says NATO defense spending Ukraine Russia",
             "site:reuters.com Trump says South Korea troops burden sharing defense",
             "site:reuters.com Trump says Fed rates dollar tariffs oil",
             "site:apnews.com Trump NATO Iran Ukraine defense spending tariffs",
+            "site:apnews.com Trump Iran wants negotiations talks deal",
             "site:apnews.com Trump says China tariffs chips oil Fed",
             "site:cnbc.com Trump tariffs Fed dollar oil chips nuclear data centers",
+            "site:cnbc.com Trump Iran wants negotiations talks deal",
             "site:marketwatch.com Trump tariffs Fed dollar oil Iran chips",
+            "Trump says Iran wants negotiations Reuters",
+            "Trump says Iran wants to negotiate Reuters",
+            "Trump contacted by Iran wants negotiations Reuters",
             "Trump says tariff semiconductor China Taiwan Korea dollar Fed oil nuclear data center Reuters",
             "President Trump remarks tariffs export controls sanctions defense burden sharing South Korea Reuters",
             "Trump says Iran Israel war strike ceasefire oil Hormuz Middle East Reuters",
@@ -411,8 +418,8 @@ STORY_RULES = (
             "Trump says North Korea South Korea US troops burden sharing defense Reuters",
         ),
         required_groups=(
-            ("trump", "president trump", "donald trump", "donald j. trump"),
-            ("says", "said", "remarks", "comments", "announces", "backs", "orders", "warns", "threatens", "signals", "vows"),
+            ("trump", "president trump", "donald trump", "donald j. trump", "트럼프"),
+            ("says", "said", "remarks", "comments", "announces", "backs", "orders", "warns", "threatens", "signals", "vows", "말했다", "밝혔다", "발언", "언급"),
             (
                 "tariff", "tariffs", "export control", "sanctions", "fed", "rate", "dollar", "oil",
                 "china", "taiwan", "korea", "south korea", "defense", "burden sharing", "usfk",
@@ -421,6 +428,8 @@ STORY_RULES = (
                 "missile", "strike", "ceasefire", "war", "war powers", "brent", "wti", "tanker",
                 "shipping", "lng", "natural gas", "russia", "ukraine", "nato", "north korea",
                 "steel", "copper", "transformer", "pharma", "drug price", "autos", "ev",
+                "iran wants", "negotiate", "negotiations", "talks", "contacted by iran",
+                "이란", "협상", "연락", "유가", "호르무즈", "관세", "방위비", "나토", "우크라이나", "러시아", "달러", "금리", "반도체",
             ),
         ),
         core="Reuters·Bloomberg·CNBC 등 신뢰외신에서 트럼프 대통령의 직접 발언이 관세, 수출통제, 금리·달러, 유가·에너지, 이란·이스라엘·중동 전쟁위험, 방위비, 반도체·AI 인프라 정책 기대를 움직인 사안입니다.",
@@ -611,7 +620,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     return items
 
 
-def fingerprint(rule: StoryRule, items: list[dict]) -> str:
+def legacy_daily_fingerprint(rule: StoryRule, items: list[dict]) -> str:
     first_day = ""
     if items:
         first_day = str(items[0].get("published_kst", ""))[:10]
@@ -630,6 +639,49 @@ def clean_story_title(title: str) -> str:
     return title
 
 
+def story_identity(item: dict) -> str:
+    title = re.sub(r"\s+", " ", clean_story_title(str(item.get("title") or "")).lower()).strip()
+    source = source_key(str(item.get("source") or ""))
+    published = str(item.get("published_kst") or "")[:16]
+    return f"{source}|{published}|{title}"
+
+
+def fingerprint(rule: StoryRule, items: list[dict]) -> str:
+    top_identity = story_identity(items[0]) if items else ""
+    raw = f"{FORMAT_VERSION}:story-v2:{rule.key}:{top_identity}"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
+
+
+def parse_kst_iso(value: str) -> dt.datetime | None:
+    try:
+        parsed = dt.datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except Exception:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=KST)
+    return parsed.astimezone(KST)
+
+
+def unseen_items_for_rule(rule: StoryRule, items: list[dict], seen: dict) -> list[dict]:
+    if not items:
+        return []
+    current_fp = fingerprint(rule, items)
+    if current_fp in seen:
+        return []
+    legacy_fp = legacy_daily_fingerprint(rule, items)
+    legacy_entry = seen.get(legacy_fp)
+    if not legacy_entry:
+        return items
+    first_seen = parse_kst_iso(str(legacy_entry.get("first_seen_kst") or ""))
+    if not first_seen:
+        return items
+    fresh_items = [
+        item for item in items
+        if (parse_kst_iso(str(item.get("published_kst") or "")) or dt.datetime.min.replace(tzinfo=KST)) > first_seen
+    ]
+    return fresh_items
+
+
 def korean_trump_story_title(title: str) -> str:
     cleaned = clean_story_title(title)
     low = cleaned.lower()
@@ -637,6 +689,8 @@ def korean_trump_story_title(title: str) -> str:
         return "트럼프 이란 발언: 임시 합의 종료·걸프 유가 리스크"
     if "iran" in low and "conflict" in low:
         return "트럼프 이란 발언: 충돌 재개 가능성·유가 리스크"
+    if ("iran" in low or "이란" in low) and ("negot" in low or "talk" in low or "deal" in low or "contact" in low or "협상" in low or "연락" in low):
+        return "트럼프 이란 협상 발언: 대화 재개 기대·유가 리스크"
     if "nato" in low and ("defense" in low or "spending" in low or "alliance" in low):
         return "트럼프 NATO 발언: 동맹·방위비·우크라이나 정책 신호"
     if "nato" in low or "allies" in low:
@@ -761,6 +815,9 @@ def main() -> int:
         if rule.key.startswith("_disabled_"):
             continue
         items = collect_rule_items(rule, now)
+        if not items:
+            continue
+        items = unseen_items_for_rule(rule, items, seen)
         if not items:
             continue
         fp = fingerprint(rule, items)
