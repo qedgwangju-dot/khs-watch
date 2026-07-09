@@ -16,6 +16,36 @@ OUT_DIR = Path("out")
 MAX_TITLE_CHARS = 120
 MAX_BODY_LINE_CHARS = 420
 MAX_ENGLISH_WORD_RUN = 8
+ALLOWED_DOMAIN_ENGLISH_TERMS = {
+    "AI",
+    "AMRAAM",
+    "ANDURIL",
+    "AP",
+    "ATACMS",
+    "BARRACUDA",
+    "BOEING",
+    "BWRX",
+    "GE",
+    "GRUMMAN",
+    "HITACHI",
+    "JV",
+    "JVS",
+    "LOCKHEED",
+    "MQ",
+    "NATO",
+    "NORTHROP",
+    "PAC",
+    "PURL",
+    "RAYTHEON",
+    "RHEINMETALL",
+    "RTX",
+    "SAMSUNG",
+    "SDB",
+    "SDBI",
+    "SMR",
+    "STINGER",
+    "TRITON",
+}
 
 
 @dataclass(frozen=True)
@@ -294,10 +324,21 @@ def has_long_english_run(text: str) -> str | None:
     for line in visible.splitlines():
         if not line.strip():
             continue
-        words = re.findall(r"\b[A-Za-z][A-Za-z'-]{2,}\b", line)
+        words = [
+            word
+            for word in re.findall(r"\b[A-Za-z][A-Za-z'-]{2,}\b", line)
+            if not is_allowed_domain_english_term(word)
+        ]
         if len(words) >= MAX_ENGLISH_WORD_RUN:
             return " ".join(words[:MAX_ENGLISH_WORD_RUN])
     return None
+
+
+def is_allowed_domain_english_term(word: str) -> bool:
+    normalized = re.sub(r"[^A-Za-z]", "", word.upper())
+    if normalized.endswith("S") and normalized[:-1] in ALLOWED_DOMAIN_ENGLISH_TERMS:
+        normalized = normalized[:-1]
+    return normalized in ALLOWED_DOMAIN_ENGLISH_TERMS
 
 
 def policy_heading_text(line: str) -> str:

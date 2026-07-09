@@ -258,6 +258,18 @@ def assert_nato_defense_fact_sheet_is_not_generic_trump_alert() -> None:
     for marker in forbidden:
         if marker in rendered:
             raise AssertionError(f"NATO defense fact sheet used generic Trump template: {marker}")
+    cleanup()
+    try:
+        (OUT_DIR / "khs_policy_watch_alert_title.txt").write_text(
+            "KHS 정책 워치: [상] 백악관, NATO 방위투자 확대·미국 방산 생산 강화 발표\n",
+            encoding="utf-8",
+        )
+        (OUT_DIR / "khs_policy_watch_alert.md").write_text(rendered, encoding="utf-8")
+        khs_telegram_delivery_guard.main()
+        if not (OUT_DIR / "khs_policy_watch_alert.md").exists():
+            raise AssertionError("NATO defense fact sheet was blocked by Telegram delivery guard")
+    finally:
+        cleanup()
 
 
 def assert_trump_iran_war_statement_reaches_geopolitical_lane() -> None:
