@@ -40,6 +40,7 @@ def main() -> int:
     assert_router_final_semantic_dedupe()
     assert_router_keeps_source_families_separate()
     assert_trump_statement_reaches_policy_lane()
+    assert_nato_defense_fact_sheet_is_not_generic_trump_alert()
     assert_trump_iran_war_statement_reaches_geopolitical_lane()
     assert_state_smr_moc_reaches_policy_lane()
     assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered()
@@ -217,6 +218,46 @@ def assert_trump_statement_reaches_policy_lane() -> None:
             raise AssertionError(f"Trump direct remarks policy render missing: {marker}")
     if "Remarks by President Donald" in rendered:
         raise AssertionError("raw English Trump remarks title leaked into Telegram render")
+
+
+def assert_nato_defense_fact_sheet_is_not_generic_trump_alert() -> None:
+    item = {
+        "source": "White House Fact Sheet",
+        "title": "Fact Sheet: President Donald J. Trump Secures Historic Defense Investment from NATO Allies, Powering American Industry",
+        "summary": (
+            "At NATO's 2026 Ankara Summit, President Donald J. Trump announced a surge in defense investment "
+            "from Allies, strengthening the U.S. defense industrial base. $3 billion in major deals and joint "
+            "ventures were announced, including PAC-3 sustainment, MQ-4C Tritons, ATACMS, AMRAAM, Stinger, "
+            "Small Diameter Bomb production, Anduril Barracuda-500 missiles, NATO 3.0, and PURL purchases."
+        ),
+        "link": "https://www.whitehouse.gov/fact-sheets/2026/07/fact-sheet-president-donald-j-trump-secures-historic-defense-investment-from-nato-allies-powering-american-industry/",
+        "published_kst": "2026-07-08T00:00:00+09:00",
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("NATO defense investment fact sheet was not classified")
+    khs_policy_alert_guardrails.ensure_explained(classified)
+    rendered = khs_policy_alert_router.render_policy_report(
+        [classified],
+        dt.datetime(2026, 7, 9, 9, 36, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "백악관, NATO 방위투자 확대·미국 방산 생산 강화 발표",
+        "PAC-3",
+        "AMRAAM",
+        "K-방산",
+        "확정 매출은 아닙니다",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"NATO defense fact sheet render missing: {marker}")
+    forbidden = [
+        "트럼프 대통령 발언, 시장 영향 정책 신호",
+        "이란·이스라엘·호르무즈",
+    ]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"NATO defense fact sheet used generic Trump template: {marker}")
 
 
 def assert_trump_iran_war_statement_reaches_geopolitical_lane() -> None:

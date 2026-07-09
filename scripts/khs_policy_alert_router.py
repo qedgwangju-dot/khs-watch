@@ -243,6 +243,12 @@ def safe_title(alert: dict) -> str:
             return "미국, 원전 정책 문서 공표"
         if "fda" in text:
             return "FDA, 바이오·의약품 규제 결정 공표"
+        if (
+            "historic defense investment" in text
+            or ("nato allies" in text and "defense industrial base" in text)
+            or "arsenal of freedom" in text
+        ):
+            return "백악관, NATO 방위투자 확대·미국 방산 생산 강화 발표"
         if "white house" in source or "whitehouse.gov" in text:
             if "fact sheet" in text:
                 return "백악관, 정책 팩트시트 발표"

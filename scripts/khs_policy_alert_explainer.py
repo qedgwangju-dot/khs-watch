@@ -417,6 +417,29 @@ def is_trump_direct_policy_statement(text: str, item: dict) -> bool:
     )
 
 
+def is_nato_defense_investment_fact_sheet(text: str, item: dict) -> bool:
+    return has_any(
+        text,
+        [
+            "historic defense investment",
+            "nato allies",
+            "nato's 2026 ankara summit",
+            "defense industrial base",
+            "arsenal of freedom",
+            "pac-3",
+            "patriot advanced capability-3",
+            "mq-4c triton",
+            "atacms",
+            "amraam",
+            "stinger",
+            "small diameter bomb",
+            "barracuda-500",
+            "prioritized ukraine requirements list",
+            "purl",
+        ],
+    )
+
+
 def is_fcc_submarine_cable_policy(text: str, item: dict) -> bool:
     return (
         has_any(text, ["fcc", "federal communications commission", "federalregister.gov"])
@@ -739,6 +762,22 @@ def ensure_explained(item: dict) -> dict:
             priced_in="중간. 법안 기대는 테마 수급에 빨리 반영되지만, 발행 주체와 감독 강도가 확정되지 않아 변동성이 큽니다.",
             counter="은행 중심인지 핀테크·거래소까지 허용할지, 한국은행·금융당국 규제 강도가 어느 수준일지 아직 확정되지 않았습니다.",
             failure_signal="발행 주체가 좁게 제한되거나 준비자산·상환·건전성 규제가 강해지면 테마 확산이 약해집니다.",
+        )
+    elif is_nato_defense_investment_fact_sheet(text, item):
+        put(
+            item,
+            importance="상",
+            title_ko="백악관, NATO 방위투자 확대·미국 방산 생산 강화 발표",
+            impacts=["돈 버는 능력", "수급", "시간표", "할인율"],
+            paths=["정책 타임라인", "방산 수요", "밸류체인", "수급", "계약 가시성"],
+            sectors=["방산/항공우주", "미사일·방공", "K-방산", "유럽 방산 CAPEX"],
+            korea_value_chain=["한화에어로스페이스", "LIG넥스원", "한국항공우주", "현대로템", "한화시스템", "방산 부품·전자전"],
+            policy_plain_summary="백악관 팩트시트 기준 NATO 동맹의 방위투자 확대와 미국 방산 생산능력 강화가 공식화됐습니다. 원문에는 PAC-3, MQ-4C Triton, ATACMS, AMRAAM, Stinger, SDB-I, Barracuda-500 등 구체 무기체계와 $3B 규모 딜/JV가 언급됩니다.",
+            investment_view="이 뉴스는 트럼프 일반 발언이 아니라 NATO 방위비 증가가 미국 방산 주문, 유럽 생산거점, 미사일·방공 수요 시간표로 연결되는 정책 재료입니다. 한국 기업의 확정 수주가 아니므로 실적 반영은 후속 입찰·공급계약·유럽 조달 결과가 필요합니다.",
+            korea_market_impact="한국장에서는 K-방산 전반의 수급에는 긍정 재료가 될 수 있지만, 직접 연결은 유럽 방산 CAPEX와 경쟁·보완 관계가 있는 한화에어로스페이스, LIG넥스원, 한국항공우주, 현대로템, 한화시스템 중심으로 제한해 봐야 합니다.",
+            priced_in="중간. NATO 방위비 증액과 K-방산 수출 기대는 선반영이 강하지만, 구체 무기체계와 유럽 생산 확대가 확인되면 방산 밸류체인 수급을 다시 자극할 수 있습니다.",
+            counter="미국 방산업체와 유럽 생산거점 중심의 팩트시트라 한국 기업의 확정 매출은 아닙니다. 유럽 자체 생산이 강화되면 일부 영역에서는 K-방산과 경쟁할 수 있고, 실제 조달 계약·국가별 예산 배정 전에는 테마성 반응일 수 있습니다.",
+            failure_signal="NATO 조달 예산, 유럽 국가별 발주, 한국 기업 입찰·수주 공시, 미국 방산주·K-방산 수급 반응이 동행하지 않으면 단기 정책 테마로 약해집니다.",
         )
     elif is_trump_direct_policy_statement(text, item):
         put(
