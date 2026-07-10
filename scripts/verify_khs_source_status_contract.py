@@ -79,7 +79,7 @@ def verify_single_source_streak() -> None:
             raise AssertionError(state)
 
 
-def verify_multiple_sources_alert_immediately() -> None:
+def verify_two_sources_require_repeat() -> None:
     with tempfile.TemporaryDirectory() as temp_dir:
         cwd = pathlib.Path(temp_dir)
         write_failures(
@@ -87,6 +87,29 @@ def verify_multiple_sources_alert_immediately() -> None:
             [
                 sample_failure("Korea FIU virtual asset notices"),
                 sample_failure("Korea telecom policy", lane="domestic_telecom"),
+            ],
+        )
+
+        first = run_status_script(cwd)
+        if "skipped_multiple_transient_sources" not in first:
+            raise AssertionError(first)
+        assert_exists(cwd / "out" / "khs_policy_source_status_alert.md", False)
+
+        second = run_status_script(cwd)
+        if "source_status_alert=created" not in second:
+            raise AssertionError(second)
+        assert_exists(cwd / "out" / "khs_policy_source_status_alert.md", True)
+
+
+def verify_broad_outage_alerts_immediately() -> None:
+    with tempfile.TemporaryDirectory() as temp_dir:
+        cwd = pathlib.Path(temp_dir)
+        write_failures(
+            cwd,
+            [
+                sample_failure("Korea telecom policy", lane="domestic_telecom", url="https://www.korea.kr/news"),
+                sample_failure("FSC stablecoin", url="https://www.fsc.go.kr/no010101"),
+                sample_failure("Korea FIU", url="https://www.kofiu.go.kr/kor/notification"),
             ],
         )
 
@@ -123,7 +146,8 @@ def verify_same_source_family_is_single_logical_failure() -> None:
 
 def main() -> int:
     verify_single_source_streak()
-    verify_multiple_sources_alert_immediately()
+    verify_two_sources_require_repeat()
+    verify_broad_outage_alerts_immediately()
     verify_same_source_family_is_single_logical_failure()
     print("khs_source_status_contract=passed")
     return 0

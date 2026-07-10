@@ -37,7 +37,8 @@ jobs:
       KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
       KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
       KHS_SOURCE_STATUS_SINGLE_SOURCE_MIN_STREAK: "2"
-      KHS_SOURCE_STATUS_MULTI_SOURCE_MIN_FAILURES: "2"
+      KHS_SOURCE_STATUS_MULTI_SOURCE_MIN_FAILURES: "3"
+      KHS_SOURCE_STATUS_MULTI_SOURCE_MIN_STREAK: "2"
       KHS_SOURCE_STATUS_STREAK_WINDOW_HOURS: "8"
       KHS_TELEGRAM_DEDUPE_HOURS: "48"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
@@ -78,6 +79,7 @@ jobs:
           python -m py_compile scripts/khs_nuclear_policy_watch.py
           python -m py_compile scripts/khs_trusted_policy_news_watch.py
           python -m py_compile scripts/khs_source_fetch.py
+          python -m py_compile scripts/verify_khs_source_fetch_contract.py
           python -m py_compile scripts/khs_policy_source_status_alert.py
           python -m py_compile scripts/khs_telegram_delivery_guard.py
           python -m py_compile scripts/verify_khs_policy_delivery_contract.py
@@ -88,6 +90,7 @@ jobs:
       - name: Verify policy Telegram delivery contract
         run: |
           python scripts/verify_khs_policy_delivery_contract.py
+          python scripts/verify_khs_source_fetch_contract.py
           python scripts/verify_khs_source_status_contract.py
           python scripts/verify_high_impact_news_self_audit.py
 

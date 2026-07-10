@@ -20,7 +20,8 @@ SEEN_PATH = DATA_DIR / "khs_source_failure_seen.json"
 TITLE_PATH = OUT_DIR / "khs_policy_source_status_title.txt"
 BODY_PATH = OUT_DIR / "khs_policy_source_status_alert.md"
 SINGLE_SOURCE_MIN_STREAK = int(os.getenv("KHS_SOURCE_STATUS_SINGLE_SOURCE_MIN_STREAK", "2"))
-MULTI_SOURCE_MIN_FAILURES = int(os.getenv("KHS_SOURCE_STATUS_MULTI_SOURCE_MIN_FAILURES", "2"))
+MULTI_SOURCE_MIN_FAILURES = int(os.getenv("KHS_SOURCE_STATUS_MULTI_SOURCE_MIN_FAILURES", "3"))
+MULTI_SOURCE_MIN_STREAK = int(os.getenv("KHS_SOURCE_STATUS_MULTI_SOURCE_MIN_STREAK", "2"))
 STREAK_WINDOW_HOURS = int(os.getenv("KHS_SOURCE_STATUS_STREAK_WINDOW_HOURS", "8"))
 
 
@@ -135,9 +136,25 @@ def update_streaks(seen: dict, failures: list[dict], now: dt.datetime) -> int:
     return max_streak
 
 
-def should_alert(failures: list[dict], max_streak: int) -> tuple[bool, str]:
+def current_min_streak(seen: dict, failures: list[dict]) -> int:
+    streaks = seen.get("failure_streaks", {})
+    values = []
+    for item in failures:
+        key = item.get("logical_key") or logical_failure_key(item)
+        value = streaks.get(key, {}) if isinstance(streaks.get(key), dict) else {}
+        values.append(int(value.get("streak", 0) or 0))
+    return min(values) if values else 0
+
+
+def should_alert(failures: list[dict], max_streak: int, min_streak: int) -> tuple[bool, str]:
     if len(failures) >= max(1, MULTI_SOURCE_MIN_FAILURES):
-        return True, "multiple_sources"
+        return True, "broad_source_outage"
+    if len(failures) >= 2:
+        if min_streak >= max(1, MULTI_SOURCE_MIN_STREAK):
+            return True, "repeated_multiple_sources"
+        if max_streak >= max(1, SINGLE_SOURCE_MIN_STREAK):
+            return True, "repeated_single_source"
+        return False, "multiple_transient_sources"
     if max_streak >= max(1, SINGLE_SOURCE_MIN_STREAK):
         return True, "repeated_single_source"
     return False, "single_transient_source"
@@ -211,12 +228,14 @@ def main() -> int:
     seen = load_json(SEEN_PATH, {"seen": {}})
     decision_failures = collapse_logical_failures(failures)
     max_streak = update_streaks(seen, decision_failures, now)
-    alert_ok, alert_reason = should_alert(decision_failures, max_streak)
+    min_streak = current_min_streak(seen, decision_failures)
+    alert_ok, alert_reason = should_alert(decision_failures, max_streak, min_streak)
     if not alert_ok:
         save_seen(seen)
         print(
             f"source_status_alert=skipped_{alert_reason} "
-            f"failures={len(failures)} logical_failures={len(decision_failures)} max_streak={max_streak}"
+            f"failures={len(failures)} logical_failures={len(decision_failures)} "
+            f"max_streak={max_streak} min_streak={min_streak}"
         )
         return 0
 

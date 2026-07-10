@@ -7,6 +7,8 @@ import datetime as dt
 import html
 import json
 import os
+import queue
+import threading
 import time
 import urllib.parse
 import urllib.request
@@ -34,10 +36,14 @@ def fetch_text(
     direct_fallback_cap = _env_int("KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS", 8)
 
     if proxy_base and proxy_first:
-        proxy_text, proxy_error = _fetch_proxy(proxy_base, url, user_agent, accept, proxy_timeout)
-        if proxy_error is None:
-            return proxy_text, None
-        errors.append(f"proxy first timeout={proxy_timeout}s {proxy_error}")
+        return _fetch_proxy_direct_race(
+            proxy_base,
+            url,
+            user_agent,
+            accept,
+            proxy_timeout=proxy_timeout,
+            direct_timeout=min(timeout, direct_fallback_cap),
+        )
 
     for attempt in range(1, attempts + 1):
         current_timeout = timeout if attempt == 1 else min(max(timeout * 2, timeout + 10), 45)
@@ -110,6 +116,45 @@ def _fetch_proxy(
 ) -> tuple[str | None, str | None]:
     proxy_url = _build_proxy_url(proxy_base, target_url)
     return _fetch_direct(proxy_url, user_agent, accept, timeout)
+
+
+def _fetch_proxy_direct_race(
+    proxy_base: str,
+    target_url: str,
+    user_agent: str,
+    accept: str,
+    *,
+    proxy_timeout: int,
+    direct_timeout: int,
+) -> tuple[str | None, str | None]:
+    """Return the first successful route without serially paying both timeouts."""
+
+    results: queue.Queue[tuple[str, int, str | None, str | None]] = queue.Queue()
+
+    def run_route(label: str, route_timeout: int) -> None:
+        if label == "proxy":
+            text, error = _fetch_proxy(proxy_base, target_url, user_agent, accept, route_timeout)
+        else:
+            text, error = _fetch_direct(target_url, user_agent, accept, route_timeout)
+        results.put((label, route_timeout, text, error))
+
+    for label, route_timeout in (("proxy", proxy_timeout), ("direct", direct_timeout)):
+        threading.Thread(target=run_route, args=(label, route_timeout), daemon=True).start()
+
+    deadline = time.monotonic() + max(proxy_timeout, direct_timeout) + 1
+    errors: list[str] = []
+    for _ in range(2):
+        remaining = max(0.01, deadline - time.monotonic())
+        try:
+            label, route_timeout, text, error = results.get(timeout=remaining)
+        except queue.Empty:
+            errors.append(f"route race exceeded {max(proxy_timeout, direct_timeout)}s")
+            break
+        if error is None:
+            return text, None
+        errors.append(f"{label} race timeout={route_timeout}s {error}")
+
+    return None, " | ".join(errors)
 
 
 def _build_proxy_url(proxy_base: str, target_url: str) -> str:
