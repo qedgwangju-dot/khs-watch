@@ -16,6 +16,7 @@ from zoneinfo import ZoneInfo
 import khs_policy_alert_guardrails
 import khs_policy_alert_router
 import khs_domestic_stablecoin_policy_watch
+import khs_policy_runtime_patch
 import khs_policy_watch
 import khs_telegram_delivery_guard
 import khs_trusted_policy_news_watch
@@ -35,6 +36,7 @@ POLICY_WORKFLOW = ROOT / ".github" / "workflows" / "khs-policy-watch.yml"
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_workflow_delivery_dedupe()
+    assert_runtime_patch_accepts_mofcom_watch_source()
     assert_foreign_first_policy_sources()
     assert_china_mofcom_export_control_reaches_policy_lane()
     assert_stablecoin_watch_rejects_bok_generic_page()
@@ -86,6 +88,20 @@ def assert_foreign_first_policy_sources() -> None:
         for token in forbidden:
             if token in text:
                 raise AssertionError(f"foreign-first policy source contract violation: {path.name} contains {token}")
+
+
+def assert_runtime_patch_accepts_mofcom_watch_source() -> None:
+    source = (ROOT / "scripts" / "khs_policy_watch.py").read_text(encoding="utf-8")
+    patched = khs_policy_runtime_patch.patch_watch_source(source)
+    required = [
+        "china_trade_controls",
+        "mofcom_html",
+        "korea_presidential_personnel",
+        "korea_president_html",
+    ]
+    missing = [token for token in required if token not in patched]
+    if missing:
+        raise AssertionError(f"runtime patch dropped policy coverage: {missing}")
 
 
 def assert_china_mofcom_export_control_reaches_policy_lane() -> None:

@@ -207,6 +207,7 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
     require(
         SCRIPTS / "verify_khs_policy_delivery_contract.py",
         [
+            "assert_runtime_patch_accepts_mofcom_watch_source",
             "assert_china_mofcom_export_control_reaches_policy_lane",
             "assert_foreign_first_policy_sources",
             "assert_router_final_semantic_dedupe",
@@ -214,6 +215,14 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
             "assert_delivery_guard_blocks_source_body_mismatch",
             "assert_delivery_guard_blocks_duplicate_policy_alerts",
             "raw English titles",
+        ],
+        errors,
+    )
+    require(
+        SCRIPTS / "khs_policy_runtime_patch.py",
+        [
+            '"sanctions_tariffs_export", "china_trade_controls"',
+            '"state_html", "mofcom_html"',
         ],
         errors,
     )
