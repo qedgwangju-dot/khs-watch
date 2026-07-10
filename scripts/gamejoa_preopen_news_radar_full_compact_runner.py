@@ -539,6 +539,26 @@ def alert_text(alert: dict) -> str:
     return base.norm(" ".join(str(part or "") for part in parts))
 
 
+def source_evidence_text(alert: dict) -> str:
+    """Return only source-derived text, excluding generated market commentary."""
+    parts = [
+        alert.get("original_news") or alert.get("news"),
+        alert.get("publisher"),
+        alert.get("source"),
+        alert.get("link"),
+        " ".join(str(x) for x in alert.get("matched") or []),
+    ]
+    for item in alert.get("examples") or []:
+        parts.extend([
+            item.get("title"),
+            item.get("summary"),
+            item.get("publisher"),
+            item.get("source"),
+            item.get("link"),
+        ])
+    return base.norm(" ".join(str(part or "") for part in parts))
+
+
 def alert_dedup_key(alert: dict) -> tuple[str, str]:
     raw_title = str(alert.get("original_news") or alert.get("news") or "")
     raw_title = re.split(r"\s+-\s+", raw_title, maxsplit=1)[0].strip()
@@ -697,14 +717,12 @@ def decision_matrix(impacts: list | tuple | None) -> str:
 
 
 def has_korea_market_link(alert: dict) -> bool:
-    text = alert_text(alert)
-    sectors = [str(x).strip() for x in alert.get("sectors") or [] if str(x).strip()]
-    if sectors and not all(any(term in sector for term in GENERIC_SECTOR_TERMS) for sector in sectors):
-        return True
+    text = source_evidence_text(alert)
     return has_direct_market_path(text, alert)
 
 
 def has_direct_market_path(text: str, alert: dict) -> bool:
+    text = source_evidence_text(alert) or text
     if any(
         alert.get(flag)
         for flag in [
@@ -724,6 +742,20 @@ def has_direct_market_path(text: str, alert: dict) -> bool:
         ]
     ):
         return True
+    if has_term(text, ["tariff", "duty", "duties", "antidumping", "anti-dumping", "countervailing"]):
+        korea_direct = has_term(text, ["korea", "south korea", "korean", "한국", "한국산"])
+        strategic_country = has_term(
+            text, ["china", "chinese", "taiwan", "taiwanese", "european union", "eu ", "중국", "대만", "유럽연합"]
+        )
+        strategic_product = has_term(
+            text,
+            [
+                "semiconductor", "chip", "steel", "transformer", "battery", "cathode", "anode",
+                "automotive", "auto parts", "shipbuilding", "solar inverter", "robot", "robotics",
+                "반도체", "철강", "변압기", "배터리", "자동차", "조선", "인버터", "로봇",
+            ],
+        )
+        return korea_direct or (strategic_country and strategic_product)
     return has_term(
         text,
         [
@@ -738,9 +770,22 @@ def has_direct_market_path(text: str, alert: dict) -> bool:
             "section 232",
             "section 301",
             "semiconductor",
-            "tariff",
             "transformer",
             "westinghouse",
+            "oil",
+            "brent",
+            "wti",
+            "natural gas",
+            "uranium",
+            "copper",
+            "lithium",
+            "gold",
+            "treasury",
+            "real yield",
+            "federal reserve",
+            "hormuz",
+            "red sea",
+            "iran",
             "관세",
             "데이터센터",
             "반도체",
@@ -1167,28 +1212,37 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     seen: set[tuple[str, str]] = set()
     for alert in initial + alerts:
         if is_low_impact_admin_alert(alert):
+            alert["_exclusion_reason"] = "low_impact_admin_document"
             continue
         if is_low_impact_trade_admin_notice(alert):
+            alert["_exclusion_reason"] = "low_impact_trade_admin_notice"
             continue
         if is_local_dc_like(alert) and not is_actionable_local_dc_policy(alert):
+            alert["_exclusion_reason"] = "local_data_center_without_trusted_hard_action"
             continue
         normalized = normalize_alert_for_output(alert)
         key = alert_dedup_key(normalized)
         if key in seen:
+            alert.setdefault("_exclusion_reason", "semantic_duplicate")
             continue
         seen.add(key)
         if is_low_impact_admin_alert(normalized):
+            alert["_exclusion_reason"] = "low_impact_admin_document"
             continue
         if is_low_impact_trade_admin_notice(normalized):
+            alert["_exclusion_reason"] = "low_impact_trade_admin_notice"
             continue
         if not has_decision_impact(normalized):
+            alert["_exclusion_reason"] = "decision_impact_guard"
             continue
         if (
             is_local_dc_like(normalized)
             and not normalized.get("cluster_count")
             and any(is_local_dc_like(item) and item.get("cluster_count") for item in selected)
         ):
+            alert["_exclusion_reason"] = "covered_by_data_center_cluster"
             continue
+        alert.pop("_exclusion_reason", None)
         selected.append(normalized)
         if len(selected) >= limit:
             break
@@ -1360,7 +1414,7 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
 
 def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
-    visible = quality_display_alerts(alerts, limit)
+    visible = alerts[:limit]
     live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
     if live_mode:
         title = f"📰 GAMEJOA 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
@@ -1493,10 +1547,7 @@ def send_telegram(text: str) -> None:
 
 
 def is_empty_radar_report(text: str) -> bool:
-    return "선별: 핵심 0건" in text and (
-        "장전 고충격 뉴스 직접 확인 없음" in text
-        or "실시간 고충격 뉴스 직접 확인 없음" in text
-    )
+    return "선별: 핵심 0건" in text
 
 
 def should_send_empty_radar() -> bool:
@@ -1569,6 +1620,7 @@ def mask_chat_id(value: str) -> str:
 
 telegram.compact_report = compact_report
 telegram.send_telegram = send_telegram
+telegram.final_alerts_for_output = quality_display_alerts
 
 
 if __name__ == "__main__":

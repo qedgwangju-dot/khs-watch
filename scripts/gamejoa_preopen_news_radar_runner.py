@@ -16,6 +16,8 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
+
+from khs_source_fetch import fetch_text
 from zoneinfo import ZoneInfo
 
 
@@ -28,14 +30,15 @@ FRED_API_KEY = os.getenv("FRED_API_KEY", "").strip()
 TELEGRAM_LIMIT = 4096
 FETCH_TIMEOUT_SECONDS = max(3, int(os.getenv("RADAR_FETCH_TIMEOUT_SECONDS", "10")))
 FETCH_WORKERS = max(2, int(os.getenv("RADAR_FETCH_WORKERS", "10")))
+QUERY_FETCH_WORKERS = max(1, int(os.getenv("RADAR_QUERY_FETCH_WORKERS", "4")))
 
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFII10"
 TE_URL = "https://tradingeconomics.com/united-states/10-year-tips-yield"
 
 SOURCES = [
-    ("FERC", "https://www.ferc.gov/news-events/news/rss.xml", "official"),
+    ("Federal Register FERC", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=federal-energy-regulatory-commission&order=newest&per_page=20", "fr"),
     ("DOE", "https://www.energy.gov/rss.xml", "official"),
-    ("Commerce", "https://www.commerce.gov/news/rss.xml", "official"),
+    ("Federal Register Commerce", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=commerce-department&order=newest&per_page=20", "fr"),
     ("BIS", "https://www.bis.doc.gov/index.php/newsroom/news-releases?format=feed&type=rss", "official"),
     ("SEC", "https://www.sec.gov/news/pressreleases.rss", "official"),
     ("FTC", "https://www.ftc.gov/news-events/news/press-releases/rss.xml", "official"),
@@ -66,6 +69,31 @@ QUERIES = [
     ("한국 직접 영향", "Samsung SK Hynix LG Energy Solution Hyundai Korea export policy supply contract Reuters Bloomberg"),
     ("FDA/바이오", "FDA approval complete response letter clinical trial pharma acquisition Reuters Bloomberg CNBC"),
 ]
+
+CORE_QUERY_BUNDLES = [
+    ("트럼프 직접발언/정책", "Trump (Iran OR Israel OR Hormuz OR tariff OR export control OR defense cost sharing) Reuters Bloomberg CNBC AP"),
+    ("미국 정책기관", "(FCC OR DOE OR FERC OR Commerce OR BIS OR USTR OR FTC OR SEC) (ban OR restriction OR rule OR loan OR grant OR export control OR tariff OR investigation) Reuters Bloomberg AP"),
+    ("반도체/AI/HBM", "(Nvidia OR Micron OR Broadcom OR AMD OR Intel OR TSMC OR ASML OR HBM4) (guidance OR contract OR price OR supply OR capex) Reuters Bloomberg CNBC TrendForce"),
+    ("AI 전력/원전/전력망", "(data center OR power grid OR transformer OR nuclear OR SMR OR AP1000) (loan OR contract OR restriction OR permit OR funding) Reuters Bloomberg DOE FERC"),
+    ("원자재/금리/환율", "(oil OR natural gas OR copper OR lithium OR uranium OR gold OR treasury OR dollar) (surge OR drop OR sanctions OR supply OR rate) Reuters Bloomberg CNBC"),
+    ("EU/한국 통상", "South Korea (tariff OR quota OR safeguard OR CBAM OR export control OR sanction OR steel OR battery) Reuters Bloomberg European Commission"),
+    ("한국 대기업 직접영향", "(Samsung OR SK Hynix OR Hyundai OR Hanwha OR LIG Nex1 OR Doosan Enerbility OR Hyosung OR POSCO) (contract OR order OR capex OR guidance OR policy) Reuters Bloomberg"),
+    ("K-방산", "(K9 OR Chunmoo OR Redback OR KM-SAM OR Cheongung OR FA-50 OR KF-21 OR K2 tank) (contract OR order OR export OR delay OR signing) Reuters Bloomberg DAPA"),
+    ("원전/SMR/가스터빈", "(KHNP OR Doosan Enerbility OR Westinghouse OR AP1000 OR i-SMR OR gas turbine) (contract OR tender OR loan OR licensing OR deployment) Reuters Bloomberg"),
+    ("바이오/FDA", "(FDA approval OR complete response letter OR PDUFA OR phase 3 OR biotech acquisition OR licensing deal) Reuters Bloomberg CNBC"),
+    ("지정학/해운", "(Iran OR Israel OR Hormuz OR Red Sea OR port strike OR shipping sanctions) (oil OR freight OR defense OR supply) Reuters Bloomberg AP CNBC"),
+    ("국내 정책", "한국 (통신비 OR 스테이블코인 OR 디지털자산 OR 원전 입지 OR 반도체 세액공제 OR 데이터센터) 정책 금융위원회 한국은행 산업부 과기정통부"),
+    ("지역 데이터센터 규제", "data center (moratorium OR ban OR zoning OR permit OR public hearing OR city council) Reuters AP local news"),
+    ("반도체 공급망 전문매체", "(HBM4 OR MLCC OR notebook shipments OR Intel 18A OR LPDDR5X OR high-purity CO2) TrendForce Tom's Hardware ServeTheHome"),
+]
+
+
+def trusted_query_plan() -> list[tuple[str, str]]:
+    plan = list(CORE_QUERY_BUNDLES)
+    for name, query in QUERIES:
+        if "site:trendforce.com" in query.lower() and (name, query) not in plan:
+            plan.append((name, query))
+    return plan
 
 TRUSTED = [
     "reuters", "bloomberg", "associated press", "ap news", "cnbc", "marketwatch",
@@ -106,13 +134,27 @@ def norm(value: object) -> str:
 
 def fetch(url: str, timeout: int | None = None) -> tuple[str | None, str | None]:
     timeout = FETCH_TIMEOUT_SECONDS if timeout is None else timeout
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/rss+xml, application/json, text/html, */*"})
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            charset = resp.headers.get_content_charset() or "utf-8"
-            return resp.read().decode(charset, "replace"), None
-    except Exception as exc:
-        return None, f"{type(exc).__name__}: {exc}"
+    if urllib.parse.urlparse(url).netloc.lower().endswith("bing.com"):
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
+                "Accept": "application/rss+xml, text/xml, */*",
+            },
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                charset = resp.headers.get_content_charset() or "utf-8"
+                return resp.read().decode(charset, "replace"), None
+        except Exception as exc:
+            return None, f"{type(exc).__name__}: {exc}"
+    return fetch_text(
+        url,
+        UA,
+        timeout=timeout,
+        attempts=1,
+        accept="application/rss+xml, application/json, text/html, */*",
+    )
 
 
 def fetch_fred_csv(timeout: int = 60) -> tuple[str | None, str | None]:
@@ -153,12 +195,19 @@ def parse_rss(text: str, source: str, layer: str) -> list[dict]:
         return []
     rows = []
     for node in root.findall(".//item")[:25]:
+        publisher = clean(node.findtext("source"))
+        if not publisher:
+            publisher = next(
+                (clean(child.text) for child in node if child.tag.rsplit("}", 1)[-1].lower() == "source"),
+                "",
+            )
+        link = unwrap_news_link(clean(node.findtext("link")))
         rows.append({
             "source": source,
             "layer": layer,
-            "publisher": clean(node.findtext("source")) or source,
+            "publisher": publisher or source,
             "title": clean(node.findtext("title")),
-            "link": clean(node.findtext("link")),
+            "link": link,
             "summary": clean(node.findtext("description")),
             "published": parse_date(node.findtext("pubDate") or node.findtext("date")),
         })
@@ -186,6 +235,26 @@ def parse_fr(text: str, source: str) -> list[dict]:
 
 def google_url(query: str) -> str:
     return "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"})
+
+
+def news_search_url(query: str) -> str:
+    return "https://www.bing.com/news/search?" + urllib.parse.urlencode({
+        "q": query,
+        "format": "rss",
+        "setlang": "en-US",
+        "cc": "US",
+    })
+
+
+def unwrap_news_link(link: str) -> str:
+    if not link:
+        return ""
+    parsed = urllib.parse.urlparse(link)
+    if parsed.netloc.lower().endswith("bing.com") and parsed.path.lower().endswith("/news/apiclick.aspx"):
+        target = urllib.parse.parse_qs(parsed.query).get("url", [""])[0]
+        if target.startswith(("http://", "https://")):
+            return target
+    return link
 
 
 def age_hours(row: dict, now: dt.datetime) -> float | None:
@@ -222,8 +291,8 @@ def collect_items(now: dt.datetime) -> tuple[list[dict], list[str]]:
     rows, notes = [], []
     source_jobs = [(name, url, kind) for name, url, kind in SOURCES]
     query_jobs = [
-        (name, google_url(f"{query} when:{max(1, MAX_AGE_HOURS // 24)}d"), "trusted")
-        for name, query in QUERIES
+        (name, news_search_url(query), "trusted")
+        for name, query in trusted_query_plan()
     ]
 
     def fetch_job(job: tuple[str, str, str]) -> tuple[str, str, str, str | None, str | None]:
@@ -233,6 +302,7 @@ def collect_items(now: dt.datetime) -> tuple[list[dict], list[str]]:
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=FETCH_WORKERS) as executor:
         source_results = list(executor.map(fetch_job, source_jobs))
+    with concurrent.futures.ThreadPoolExecutor(max_workers=QUERY_FETCH_WORKERS) as executor:
         query_results = list(executor.map(fetch_job, query_jobs))
 
     for name, _url, kind, text, err in source_results:

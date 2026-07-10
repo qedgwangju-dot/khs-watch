@@ -83,6 +83,9 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
             "has_decision_impact(normalized)",
             "is_low_impact_trade_admin_notice",
             "is_actionable_local_dc_policy",
+            "source_evidence_text",
+            "countervailing",
+            "south korea",
             "decision_matrix",
             "guard_preopen_report(report)",
         ],
@@ -91,8 +94,11 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
     require(
         SCRIPTS / "gamejoa_preopen_news_radar_telegram_runner.py",
         [
-            "filter_previously_seen_alerts(alerts, now)",
-            "record_seen_alerts(deduped, now)",
+            "filter_previously_seen_alerts(classified, now)",
+            "final_alerts_for_output(deduped, limit)",
+            "record_seen_alerts(final_alerts, now)",
+            "selection_diagnostics",
+            '"source_failures": source_failures',
             "alert_seen_keys",
             "GAMEJOA_RADAR_SEEN_TTL_DAYS",
         ],
@@ -226,12 +232,41 @@ def assert_generic_gamejoa_item_is_rejected(errors: list[str]) -> None:
         errors.append("generic GAMEJOA placeholder explanation was not rejected")
 
 
+def assert_foreign_trade_requires_korea_link(errors: list[str]) -> None:
+    sys.path.insert(0, str(SCRIPTS))
+    runner = importlib.import_module("gamejoa_preopen_news_radar_full_compact_runner")
+    morocco_notice = {
+        "news": "미국, 관세·통관 정책 변화 체크",
+        "original_news": "Countervailing Duty Order of Phosphate Fertilizers From Morocco",
+        "publisher": "Federal Register",
+        "source": "Federal Register Commerce",
+        "link": "https://www.federalregister.gov/example-morocco",
+        "matched": ["tariff", "duty", "countervailing"],
+        "sectors": ["관세/수출주", "공급망"],
+    }
+    if runner.has_korea_market_link(morocco_notice):
+        errors.append("unrelated foreign trade notice was treated as Korea-market material")
+
+    china_unrelated = dict(morocco_notice)
+    china_unrelated["original_news"] = "Countervailing Duty Order of Rubber Chemicals From China"
+    if runner.has_korea_market_link(china_unrelated):
+        errors.append("unrelated China trade notice passed without a strategic product link")
+
+    korea_notice = dict(morocco_notice)
+    korea_notice["original_news"] = "Section 232 Transformer Tariff Change for South Korea"
+    korea_notice["link"] = "https://www.federalregister.gov/example-korea-transformer"
+    korea_notice["matched"] = ["tariff", "transformer", "south korea"]
+    if not runner.has_korea_market_link(korea_notice):
+        errors.append("Korea-linked transformer tariff notice lost its direct market path")
+
+
 def main() -> int:
     errors: list[str] = []
     assert_workflows_run_self_audit(errors)
     assert_no_late_translation_sources(errors)
     assert_guardrail_hooks(errors)
     assert_generic_gamejoa_item_is_rejected(errors)
+    assert_foreign_trade_requires_korea_link(errors)
     if errors:
         for error in errors:
             print(f"high_impact_self_audit_error={error}")

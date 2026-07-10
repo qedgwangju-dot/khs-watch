@@ -42,6 +42,11 @@ jobs:
       PREOPEN_SEND_WINDOW_END_KST: "07:30"
       RADAR_RUN_MODE: ${{ github.event.inputs.radar_run_mode || 'preopen' }}
       RADAR_FETCH_TIMEOUT_SECONDS: "10"
+      RADAR_QUERY_FETCH_WORKERS: "4"
+      KHS_SOURCE_PROXY_URL: https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || vars.SEC_USER_AGENT || 'GAMEJOA-preopen-radar contact=please-set-secret' }}
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
@@ -100,6 +105,10 @@ jobs:
           SEND_TELEGRAM: "true"
           TELEGRAM_DRY_RUN: "false"
         run: python scripts/gamejoa_preopen_news_radar_fda_quality_runner.py
+
+      - name: Verify GAMEJOA runtime delivery result
+        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.telegram_dry_run != 'true' }}
+        run: python scripts/verify_gamejoa_delivery_result.py
 
       - name: Commit GAMEJOA radar seen state
         if: always() && hashFiles('data/gamejoa_preopen_news_radar_seen.json') != ''

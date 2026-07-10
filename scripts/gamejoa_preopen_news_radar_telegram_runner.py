@@ -246,6 +246,11 @@ def local_dc_cluster(alerts: list[dict]) -> dict | None:
     local_items = [a for a in alerts if a.get("local_dc_policy")]
     if len(local_items) < 2:
         return None
+    cluster_seen_keys = list(dict.fromkeys(
+        key
+        for item in local_items
+        for key in (item.get("_seen_keys") or alert_seen_keys(item))
+    ))
     examples = [
         {"title": item["news"], "publisher": item.get("publisher") or item.get("source") or "출처 확인 불가", "link": item.get("link") or ""}
         for item in local_items[:4]
@@ -260,6 +265,7 @@ def local_dc_cluster(alerts: list[dict]) -> dict | None:
         "counter": "개별 지역 이슈일 수 있어 공식 의사록·조례·투표일 확인 전에는 전국 CAPEX 둔화로 과대해석하지 않습니다.",
         "examples": examples,
         "cluster_count": len(local_items),
+        "_seen_keys": cluster_seen_keys,
     }
 
 
@@ -269,6 +275,52 @@ def display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         return alerts[:limit]
     non_local = [a for a in alerts if not a.get("local_dc_policy")]
     return ([cluster] + non_local[: max(0, limit - 1)])[:limit]
+
+
+def final_alerts_for_output(alerts: list[dict], limit: int) -> list[dict]:
+    """Return the single final list shared by report, JSON, send, and seen state."""
+    return display_alerts(alerts, limit)
+
+
+def alert_identity(alert: dict) -> tuple[str, str, str]:
+    return (
+        base.norm(str(alert.get("original_news") or alert.get("news") or "")),
+        base.norm(str(alert.get("publisher") or alert.get("source") or "")),
+        str(alert.get("published") or "")[:10],
+    )
+
+
+def selection_diagnostics(
+    rows: list[dict],
+    notes: list[str],
+    classified: list[dict],
+    skipped_seen: list[dict],
+    candidates: list[dict],
+    selected: list[dict],
+) -> dict:
+    source_failures = [
+        note for note in notes
+        if "확인 불가" in note or "HTTPError" in note or "TimeoutError" in note or "URLError" in note
+    ]
+    selected_keys = {alert_identity(alert) for alert in selected}
+    excluded = []
+    for alert in candidates:
+        if alert_identity(alert) in selected_keys:
+            continue
+        excluded.append({
+            "title": alert.get("original_news") or alert.get("news") or "",
+            "source": alert.get("publisher") or alert.get("source") or "",
+            "reason": alert.get("_exclusion_reason") or alert.get("guardrail_note") or "final_quality_filter",
+        })
+    return {
+        "collected_rows": len(rows),
+        "classified_alerts": len(classified),
+        "seen_filtered_alerts": len(skipped_seen),
+        "deduped_candidates": len(candidates),
+        "selected_alerts": len(selected),
+        "excluded_alerts": excluded,
+        "source_failures": source_failures,
+    }
 
 
 def compact_alert(alert: dict, idx: int, now) -> str:
@@ -339,8 +391,8 @@ def send_telegram(text: str) -> None:
 def main() -> int:
     now = base.kst_now()
     rows, notes = strict.collect_items(now)
-    alerts = [normalize_alert(a) for a in (strict.classify(r, now) for r in rows if base.fresh(r, now)) if a]
-    alerts, skipped_seen = filter_previously_seen_alerts(alerts, now)
+    classified = [normalize_alert(a) for a in (strict.classify(r, now) for r in rows if base.fresh(r, now)) if a]
+    alerts, skipped_seen = filter_previously_seen_alerts(classified, now)
     alerts.sort(key=lambda a: (-a["score"], a["published"]))
 
     deduped, seen = [], set()
@@ -365,14 +417,39 @@ def main() -> int:
             seen.add(key)
 
     deduped.sort(key=lambda a: (-a["score"], a["published"]))
+    limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
+    final_alerts = final_alerts_for_output(deduped, limit)
+    diagnostics = selection_diagnostics(rows, notes, classified, skipped_seen, deduped, final_alerts)
+    print(
+        "GAMEJOA radar selection: "
+        f"rows={diagnostics['collected_rows']} "
+        f"classified={diagnostics['classified_alerts']} "
+        f"seen_filtered={diagnostics['seen_filtered_alerts']} "
+        f"candidates={diagnostics['deduped_candidates']} "
+        f"selected={diagnostics['selected_alerts']} "
+        f"source_failures={len(diagnostics['source_failures'])}"
+    )
+    for excluded in diagnostics["excluded_alerts"][:10]:
+        print(
+            "GAMEJOA radar excluded: "
+            f"reason={excluded['reason']} source={excluded['source']} title={excluded['title']}"
+        )
     fred, te = base.collect_dfii10(), base.collect_te()
-    report = compact_report(deduped, fred, te, now)
+    report = compact_report(final_alerts, fred, te, now)
+    if not final_alerts and diagnostics["source_failures"]:
+        report = report.replace(
+            "실시간 고충격 뉴스 직접 확인 없음",
+            "실시간 고충격 뉴스 최종 선별 0건 · 일부 소스 확인 불가",
+        ).replace(
+            "장전 고충격 뉴스 직접 확인 없음",
+            "장전 고충격 뉴스 최종 선별 0건 · 일부 소스 확인 불가",
+        )
 
     base.OUT.mkdir(parents=True, exist_ok=True)
     (base.OUT / "gamejoa_preopen_news_radar.md").write_text(report, encoding="utf-8")
     (base.OUT / "gamejoa_preopen_news_radar_title.txt").write_text(report.splitlines()[0] + "\n", encoding="utf-8")
     (base.OUT / "gamejoa_preopen_news_radar.json").write_text(
-        json.dumps({"query_time_kst": now.isoformat(timespec="seconds"), "alerts": deduped, "skipped_seen_alerts": len(skipped_seen), "source_notes": notes, "fred_dfii10": fred, "tradingeconomics_tips": te}, ensure_ascii=False, indent=2, default=str) + "\n",
+        json.dumps({"query_time_kst": now.isoformat(timespec="seconds"), "alerts": final_alerts, "selection_diagnostics": diagnostics, "skipped_seen_alerts": len(skipped_seen), "source_notes": notes, "fred_dfii10": fred, "tradingeconomics_tips": te}, ensure_ascii=False, indent=2, default=str) + "\n",
         encoding="utf-8",
     )
     base.print_utf8(report)
@@ -382,8 +459,8 @@ def main() -> int:
     if os.getenv("SEND_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
         reset_delivery_status()
         send_telegram(report)
-        if deduped and preopen_send_window_open(now) and delivery_confirmed_sent():
-            record_seen_alerts(deduped, now)
+        if final_alerts and preopen_send_window_open(now) and delivery_confirmed_sent():
+            record_seen_alerts(final_alerts, now)
     return 0
 
 

@@ -98,7 +98,7 @@ def enforce_memory_antitrust_watch() -> None:
 
     def collect_items(now):
         rows, notes = original_collect_items(now)
-        text, err = base.fetch(base.google_url(f"{MEMORY_ANTITRUST_QUERY[1]} when:{max(1, base.MAX_AGE_HOURS // 24)}d"))
+        text, err = base.fetch(base.news_search_url(MEMORY_ANTITRUST_QUERY[1]))
         if err:
             notes.append(f"Trusted news {MEMORY_ANTITRUST_QUERY[0]}: 확인 불가 ({err})")
             return rows, notes

@@ -75,8 +75,8 @@ def collect_items(now):
         notes.append(f"{name}: {len(parsed)}건")
         rows.extend(parsed)
 
-    for name, query in base.QUERIES:
-        text, err = base.fetch(base.google_url(f"{query} when:{max(1, base.MAX_AGE_HOURS // 24)}d"))
+    for name, query in base.trusted_query_plan():
+        text, err = base.fetch(base.news_search_url(query))
         if err:
             notes.append(f"Trusted news {name}: 확인 불가 ({err})")
             continue

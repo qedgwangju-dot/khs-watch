@@ -212,7 +212,7 @@ def install_fast_collect_items() -> None:
         is_memory_antitrust_row = getattr(current, "is_memory_antitrust_row", None)
         if not query or not is_memory_antitrust_row:
             return rows, notes
-        text, err = base.fetch(base.google_url(f"{query[1]} when:{max(1, base.MAX_AGE_HOURS // 24)}d"))
+        text, err = base.fetch(base.news_search_url(query[1]))
         if err:
             notes.append(f"Trusted news {query[0]}: 확인 불가 ({err})")
             return rows, notes

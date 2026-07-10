@@ -159,7 +159,7 @@ def main() -> int:
 
     lines = text.splitlines()
     blocks = item_blocks(lines)
-    if "장전 고충격 뉴스 직접 확인 없음" in text or "실시간 고충격 뉴스 직접 확인 없음" in text:
+    if re.search(r"선별:\s*핵심\s*0건", text):
         if blocks:
             errors.append("empty-radar text appears together with item blocks")
     else:
@@ -180,10 +180,30 @@ def main() -> int:
     else:
         if "query_time_kst" not in data:
             errors.append("generated JSON missing query_time_kst")
-        if not isinstance(data.get("alerts"), list):
+        json_alerts = data.get("alerts")
+        if not isinstance(json_alerts, list):
             errors.append("generated JSON alerts is not a list")
-        if blocks and not data.get("alerts"):
+            json_alerts = []
+        if blocks and not json_alerts:
             errors.append("report has item blocks but generated JSON alerts is empty")
+        if len(blocks) != len(json_alerts):
+            errors.append(
+                f"report/JSON selected count mismatch: report={len(blocks)} json={len(json_alerts)}"
+            )
+        diagnostics = data.get("selection_diagnostics")
+        if not isinstance(diagnostics, dict):
+            errors.append("generated JSON missing selection_diagnostics")
+        else:
+            if diagnostics.get("selected_alerts") != len(json_alerts):
+                errors.append(
+                    "selection diagnostics count mismatch: "
+                    f"diagnostics={diagnostics.get('selected_alerts')} json={len(json_alerts)}"
+                )
+            candidate_count = diagnostics.get("deduped_candidates")
+            excluded = diagnostics.get("excluded_alerts")
+            if isinstance(candidate_count, int) and candidate_count > len(json_alerts):
+                if not isinstance(excluded, list) or len(excluded) < candidate_count - len(json_alerts):
+                    errors.append("selection diagnostics missing excluded candidate reasons")
 
     if errors:
         return fail(errors)

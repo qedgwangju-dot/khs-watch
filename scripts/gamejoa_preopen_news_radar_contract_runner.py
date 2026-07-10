@@ -25,7 +25,7 @@ def append_unique(seq: list, values: list) -> None:
 
 
 append_unique(base.SOURCES, [
-    ("Commerce", "https://www.commerce.gov/news/rss.xml", "official"),
+    ("Federal Register Commerce", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=commerce-department&order=newest&per_page=20", "fr"),
     ("BIS", "https://www.bis.doc.gov/index.php/newsroom/news-releases?format=feed&type=rss", "official"),
     ("FTC", "https://www.ftc.gov/news-events/news/press-releases/rss.xml", "official"),
     ("Federal Register USTR", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=trade-representative-office-of-united-states&order=newest&per_page=15", "fr"),
