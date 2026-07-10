@@ -26,6 +26,7 @@ TELEGRAM_RUNNER_FILE = ROOT / "scripts" / "gamejoa_preopen_news_radar_telegram_r
 BASE_RUNNER_FILE = ROOT / "scripts" / "gamejoa_preopen_news_radar_runner.py"
 GENERATED_REPORT_GUARD_FILE = ROOT / "scripts" / "verify_gamejoa_generated_report.py"
 RUNTIME_DELIVERY_GUARD_FILE = ROOT / "scripts" / "verify_gamejoa_delivery_result.py"
+MAINTENANCE_CONTRACT_FILE = ROOT / "docs" / "gamejoa_maintenance_contract.md"
 PRODUCTION_RUNNER = "gamejoa_preopen_news_radar_fda_quality_runner"
 LOCKED_TELEGRAM_MODULE = "gamejoa_preopen_news_radar_full_compact_runner"
 
@@ -103,6 +104,17 @@ REQUIRED_RUNTIME_GUARD_SNIPPETS = [
     "GAMEJOA runtime delivery verified",
 ]
 
+REQUIRED_MAINTENANCE_CONTRACT_SNIPPETS = [
+    "원인 규명",
+    "재발 방지 회귀 테스트",
+    "반영 완료",
+    "재검증 완료",
+    "실제 송출 상태",
+    "skipped_empty",
+    "Actions 성공만으로 완료 처리하지 않는다",
+    "실제 신규 알림 송출 미관찰",
+]
+
 REQUIRED_BASE_SOURCE_SNIPPETS = [
     "Federal Register FERC",
     "federal-energy-regulatory-commission",
@@ -163,6 +175,17 @@ def main() -> int:
         for snippet in REQUIRED_RUNTIME_GUARD_SNIPPETS:
             if snippet not in runtime_guard:
                 errors.append(f"{RUNTIME_DELIVERY_GUARD_FILE.relative_to(ROOT)} missing required guard snippet: {snippet}")
+
+    if not MAINTENANCE_CONTRACT_FILE.exists():
+        errors.append(f"{MAINTENANCE_CONTRACT_FILE.relative_to(ROOT)} is missing")
+    else:
+        maintenance_contract = MAINTENANCE_CONTRACT_FILE.read_text(encoding="utf-8")
+        for snippet in REQUIRED_MAINTENANCE_CONTRACT_SNIPPETS:
+            if snippet not in maintenance_contract:
+                errors.append(
+                    f"{MAINTENANCE_CONTRACT_FILE.relative_to(ROOT)} "
+                    f"missing required maintenance invariant: {snippet}"
+                )
 
     sys.path.insert(0, str(ROOT / "scripts"))
     production = importlib.import_module(PRODUCTION_RUNNER)
