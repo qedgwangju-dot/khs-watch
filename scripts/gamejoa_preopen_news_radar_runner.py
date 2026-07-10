@@ -85,6 +85,10 @@ CORE_QUERY_BUNDLES = [
     ("국내 정책", "한국 (통신비 OR 스테이블코인 OR 디지털자산 OR 원전 입지 OR 반도체 세액공제 OR 데이터센터) 정책 금융위원회 한국은행 산업부 과기정통부"),
     ("지역 데이터센터 규제", "data center (moratorium OR ban OR zoning OR permit OR public hearing OR city council) Reuters AP local news"),
     ("반도체 공급망 전문매체", "(HBM4 OR MLCC OR notebook shipments OR Intel 18A OR LPDDR5X OR high-purity CO2) TrendForce Tom's Hardware ServeTheHome"),
+    (
+        "중국 상무부 수출통제/관세",
+        "(China Ministry of Commerce OR MOFCOM) (export ban OR export suspension OR export control OR export licensing OR tariff OR anti-dumping OR countervailing) (helium OR rare earth OR gallium OR germanium OR graphite OR semiconductor OR battery OR steel) Reuters Bloomberg CNBC",
+    ),
 ]
 
 
@@ -102,8 +106,21 @@ TRUSTED = [
 ]
 LOCAL_DC_POLICY_TERMS = ["ban", "banned", "banning", "block", "blocked", "city council", "county", "moratorium", "ordinance", "permit", "planning commission", "public hearing", "residents", "township", "vote", "zoning"]
 TERMS = ["approval", "ban", "banned", "banning", "block", "blocked", "buyback", "capex", "city council", "contract", "convertible", "copper", "court order", "crl", "data center", "data centers", "dollar", "earnings", "entity list", "export control", "fda", "fed", "final rule", "gold", "guidance", "injunction", "joint venture", "lithium", "loi", "merger", "moratorium", "mou", "natural gas", "offering", "oil", "ordinance", "permit", "planning commission", "public hearing", "real yield", "regulation", "residents", "sanction", "section 301", "section 232", "semiconductor", "supply agreement", "tariff", "tips", "township", "treasury", "uranium", "vote", "won", "yield", "zoning", "fcc", "national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter", "doe", "department of energy", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "robot", "robotics", "drone", "subsidy", "loan", "low-cost loan", "quota", "safeguard", "anti-dumping", "cbam", "steel", "ap1000", "westinghouse", "nuclear reactor", "critical mineral", "critical minerals"]
+TERMS += [
+    "mofcom", "china ministry of commerce", "export ban", "export suspension", "export licensing",
+    "suspend", "suspends", "suspended", "exports",
+    "dual-use items", "helium", "rare earth", "gallium", "germanium", "graphite", "antimony",
+    "tungsten", "indium", "countervailing",
+]
 
 SECTORS = [
+    (
+        "중국 수출통제/핵심소재",
+        [
+            "mofcom", "china ministry of commerce", "export ban", "export suspension", "export licensing",
+            "helium", "rare earth", "gallium", "germanium", "graphite", "antimony", "tungsten", "indium",
+        ],
+    ),
     ("반도체/AI", ["ai", "chip", "hbm", "micron", "nvidia", "semiconductor", "tsmc", "asml", "hynix", "samsung", "broadcom", "amd", "intel", "arm", "apple", "microsoft", "oracle"]),
     ("데이터센터/전력망/전력기기", ["data center", "data centers", "city council", "moratorium", "ordinance", "permit", "planning commission", "public hearing", "residents", "township", "zoning", "grid", "power", "ferc", "doe", "server", "network", "cooling"]),
     ("DOE 전력망/원전/에너지지원", ["doe", "department of energy", "loan guarantee", "conditional commitment", "funding opportunity", "grid deployment", "nuclear fuel", "critical materials", "efficiency standard", "ap1000"]),
@@ -340,6 +357,25 @@ def classify(row: dict, now: dt.datetime) -> dict | None:
     if not matched or not sectors:
         return None
     impacts = []
+    china_trade_action = any(
+        term in matched
+        for term in [
+            "export ban", "export suspension", "export control", "export licensing",
+            "suspend", "suspends", "suspended",
+            "tariff", "anti-dumping", "countervailing", "ban", "banned", "banning",
+        ]
+    )
+    china_strategic_material = any(
+        term in matched
+        for term in [
+            "helium", "rare earth", "gallium", "germanium", "graphite",
+            "antimony", "tungsten", "indium", "semiconductor", "steel",
+        ]
+    )
+    if china_trade_action and china_strategic_material and any(
+        term in text for term in ["mofcom", "china ministry of commerce", "chinese ministry of commerce"]
+    ):
+        impacts.extend(["돈 버는 능력", "수급", "시간표"])
     if any(t in matched for t in ["contract", "earnings", "guidance", "approval", "supply agreement", "fda", "capex", "oil", "natural gas", "copper", "lithium", "uranium", "inverter", "doe", "department of energy", "loan guarantee", "conditional commitment", "funding opportunity", "grid deployment", "nuclear fuel", "critical materials", "efficiency standard", "robot", "robotics", "subsidy", "loan", "low-cost loan", "quota", "safeguard", "anti-dumping", "cbam", "steel", "ap1000", "westinghouse", "nuclear reactor", "단일판매", "공급계약", "수주", "투자판단"]):
         impacts.append("돈 버는 능력")
     if any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "city council", "dollar", "fed", "gold", "moratorium", "ordinance", "real yield", "regulation", "tariff", "section 232", "quota", "safeguard", "anti-dumping", "national security", "covered list", "tips", "treasury", "won", "yield", "zoning"]):

@@ -36,6 +36,7 @@ def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_workflow_delivery_dedupe()
     assert_foreign_first_policy_sources()
+    assert_china_mofcom_export_control_reaches_policy_lane()
     assert_stablecoin_watch_rejects_bok_generic_page()
     assert_stablecoin_semantic_dedupe()
     assert_router_final_semantic_dedupe()
@@ -85,6 +86,54 @@ def assert_foreign_first_policy_sources() -> None:
         for token in forbidden:
             if token in text:
                 raise AssertionError(f"foreign-first policy source contract violation: {path.name} contains {token}")
+
+
+def assert_china_mofcom_export_control_reaches_policy_lane() -> None:
+    source = khs_policy_watch.Source(
+        "China MOFCOM announcements",
+        "https://www.mofcom.gov.cn/zcfb/blgg/gg/2026/index.html",
+        "mofcom_html",
+    )
+    fixture = """
+    <html><body><ul><li>
+      <a href="/zcfb/blgg/gg/2026/art/2026/art_helium_test.html">
+        商务部公告2026年第99号 关于自今日起暂停氦出口的公告
+      </a><span>2026-07-10</span>
+    </li></ul></body></html>
+    """
+    items = khs_policy_watch.parse_mofcom_html(fixture, source)
+    if len(items) != 1:
+        raise AssertionError(f"MOFCOM official parser expected 1 item, got {len(items)}")
+    alert = khs_policy_watch.classify_item(items[0])
+    if not alert or "china_trade_controls" not in (alert.get("matched") or {}):
+        raise AssertionError("MOFCOM helium export suspension did not reach the policy classifier")
+    khs_policy_alert_router.apply_router_overrides(alert)
+    title = khs_policy_alert_router.safe_title(alert)
+    if "중국 상무부" not in title or "헬륨" not in title or "수출 일시 중단" not in title:
+        raise AssertionError(f"MOFCOM alert title was not specifically translated: {title}")
+    if "반도체/HBM 공정가스" not in (alert.get("sectors") or []):
+        raise AssertionError("MOFCOM helium alert lost its Korean semiconductor gas value chain")
+    if set(alert.get("impacts") or []) != {"매출·마진·현금흐름", "수급", "시간표"}:
+        raise AssertionError(f"MOFCOM decision-impact matrix mismatch: {alert.get('impacts')}")
+    rendered = khs_policy_alert_router.render_policy_report(
+        [alert],
+        dt.datetime(2026, 7, 10, 6, 30, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    if title not in rendered or "반도체·HBM 공정" not in rendered or "산업가스" not in rendered:
+        raise AssertionError("MOFCOM compact Korean report dropped its title or Korean value chain")
+    mismatch = khs_telegram_delivery_guard.has_source_body_mismatch(title, rendered)
+    if mismatch:
+        raise AssertionError(f"MOFCOM source/body guard rejected a matching alert: {mismatch}")
+    if khs_telegram_delivery_guard.has_long_english_run(rendered):
+        raise AssertionError("MOFCOM alert leaked a long untranslated English block")
+
+    irrelevant_fixture = """
+    <html><body><a href="/zcfb/blgg/gg/2026/art/2026/art_food_test.html">
+      商务部公告2026年第98号 对原产于加拿大的豌豆淀粉反倾销调查初步裁定
+    </a><span>2026-07-10</span></body></html>
+    """
+    if khs_policy_watch.parse_mofcom_html(irrelevant_fixture, source):
+        raise AssertionError("unrelated MOFCOM food anti-dumping notice passed the Korea/strategic-product guard")
 
 
 def assert_workflow_delivery_dedupe() -> None:

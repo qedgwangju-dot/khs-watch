@@ -125,6 +125,10 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
     require(
         SCRIPTS / "khs_policy_watch.py",
         [
+            '"China MOFCOM announcements"',
+            "parse_mofcom_html",
+            "china_trade_controls",
+            "暂停出口",
             'Source("White House fact sheets"',
             'Source("White House remarks"',
             'Source("White House videos"',
@@ -143,6 +147,8 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
     require(
         SCRIPTS / "khs_policy_alert_guardrails.py",
         [
+            "is_china_mofcom_trade_control",
+            "반도체/HBM 공정가스",
             "정유/화학/해운",
             "strait of hormuz",
             "red sea",
@@ -153,6 +159,8 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
     require(
         SCRIPTS / "khs_trusted_policy_news_watch.py",
         [
+            "china_mofcom_export_controls_tariffs",
+            "China Ministry of Commerce export ban suspension tariff helium",
             "trump_direct_policy_remarks_watch",
             "트럼프 대통령 직접 발언, 시장 영향 정책 신호",
             "site:reuters.com Trump says tariffs chips AI semiconductor China",
@@ -199,12 +207,42 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
     require(
         SCRIPTS / "verify_khs_policy_delivery_contract.py",
         [
+            "assert_china_mofcom_export_control_reaches_policy_lane",
             "assert_foreign_first_policy_sources",
             "assert_router_final_semantic_dedupe",
             "assert_router_keeps_source_families_separate",
             "assert_delivery_guard_blocks_source_body_mismatch",
             "assert_delivery_guard_blocks_duplicate_policy_alerts",
             "raw English titles",
+        ],
+        errors,
+    )
+    require(
+        SCRIPTS / "khs_policy_alert_explainer.py",
+        [
+            "is_china_mofcom_trade_control",
+            "china_mofcom_product",
+            "중국 상무부",
+            "반도체/HBM 공정가스",
+        ],
+        errors,
+    )
+    require(
+        SCRIPTS / "gamejoa_preopen_news_radar_runner.py",
+        [
+            "중국 상무부 수출통제/관세",
+            "China Ministry of Commerce OR MOFCOM",
+            '"helium", "rare earth", "gallium", "germanium", "graphite"',
+        ],
+        errors,
+    )
+    require(
+        SCRIPTS / "gamejoa_preopen_news_radar_full_compact_runner.py",
+        [
+            "is_china_mofcom_control",
+            "china_mofcom_product_label",
+            "중국 상무부",
+            "반도체/HBM 공정가스",
         ],
         errors,
     )

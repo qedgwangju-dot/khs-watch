@@ -112,6 +112,35 @@ class StoryRule:
 
 STORY_RULES = (
     StoryRule(
+        key="china_mofcom_export_controls_tariffs",
+        title="중국 상무부, 전략 품목 수출금지·관세 정책 변화",
+        google_queries=(
+            "Reuters China Ministry of Commerce export ban suspension tariff helium",
+            "Bloomberg China MOFCOM export controls tariff rare earth helium gallium",
+            "China commerce ministry temporarily bans exports helium Reuters",
+            "Reuters China export licensing dual-use items graphite germanium antimony tungsten",
+            "Bloomberg China anti-dumping countervailing tariff semiconductor battery materials",
+        ),
+        required_groups=(
+            ("china", "chinese", "mofcom", "ministry of commerce", "商务部"),
+            (
+                "export ban", "export bans", "suspend exports", "suspended exports",
+                "suspend", "suspends", "suspended", "ban", "bans", "banned",
+                "export control", "export controls", "export restriction", "export licensing",
+                "tariff", "tariffs", "anti-dumping", "antidumping", "countervailing",
+                "出口管制", "暂停出口", "停止出口", "禁止出口", "关税", "反倾销", "反补贴",
+            ),
+        ),
+        core="중국 상무부가 전략 품목의 수출 금지·일시 중단·허가제 또는 관세·반덤핑 조치를 발표하거나 준비한다는 신뢰외신 정책 신호입니다.",
+        impact="중국 수출통제/핵심소재, 반도체·디스플레이·산업가스, 2차전지·방산 공급망 | 매출·마진·현금흐름·수급·시간표",
+        point="적용 품목과 국가가 확정되면 중국산 원료 의존 업체의 조달가격·재고·생산계획과 비중국 대체 공급자의 주문 기대가 동시에 바뀔 수 있습니다.",
+        counter="보도 단계이거나 수출 허가 예외·기존 계약 유예·대상국 제한이 있으면 실제 공급 충격은 작을 수 있습니다.",
+        sectors="중국 수출통제/핵심소재, 반도체/HBM 공정가스, 디스플레이, 산업가스, 2차전지, 방산/전력전자",
+        impacts=("매출·마진·현금흐름", "수급", "시간표"),
+        paths=("공급·수요", "원자재 비용", "공급망", "정책 타임라인"),
+        follow_up="중국 상무부 공식 공고에서 품목·HS코드·대상국·시행일·예외 허가를 확인하고, 현물가격·리드타임·한국 기업의 중국산 조달 비중이 실제로 변하는지 재확인합니다.",
+    ),
+    StoryRule(
         key="us_fcc_foreign_energy_inverter_ban",
         title="미국 FCC, 외국산 에너지 인버터 수입금지 검토 보도",
         google_queries=(

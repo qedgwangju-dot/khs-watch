@@ -36,6 +36,7 @@ UTC = dt.timezone.utc
 SEC_USER_AGENT = os.getenv("SEC_USER_AGENT", "KHS-policy-watch/0.2 contact=please-set-SEC_USER_AGENT")
 MAX_ALERTS = int(os.getenv("KHS_WATCH_MAX_ALERTS", "5"))
 MAX_SOURCE_AGE_HOURS = int(os.getenv("KHS_SOURCE_MAX_AGE_HOURS", "72"))
+MOFCOM_YEAR = dt.datetime.now(tz=KST).year
 
 SEC_COMPANY_WATCHLIST = {
     "NVDA": "0001045810",
@@ -78,6 +79,14 @@ STAGE_KEYWORDS = {
         "environmental impact statement", "eis", "restarts", "resumes", "freeze", "pause", "허가", "승인", "동결 해제",
     ],
     "sanctions_tariffs_export": ["sanctions", "tariff", "section 301", "export controls", "entity list", "ofac", "bis", "관세", "제재", "수출통제"],
+    "china_trade_controls": [
+        "export ban", "export bans", "export suspension", "suspend exports", "suspended exports",
+        "export restriction", "export restrictions", "export licensing", "dual-use items",
+        "anti-dumping", "antidumping", "countervailing", "tariff", "tariffs",
+        "出口管制", "暂停出口", "停止出口", "禁止出口", "出口禁令", "出口许可",
+        "暂停", "停止", "禁止", "出口",
+        "两用物项", "关税", "反倾销", "反补贴", "不可靠实体清单", "管控名单",
+    ],
     "agency_order": ["order", "directive", "notice of proposed rulemaking", "nopr", "request for comments", "hearing", "comment deadline", "notice to lessees", "ntls", "명령", "의견수렴", "청문"],
     "energy_security_policy": [
         "department of energy", "doe", "loan", "loans", "loan guarantee", "conditional commitment",
@@ -149,6 +158,16 @@ SECTOR_KEYWORDS = {
     ],
     "바이오/FDA": ["fda", "clinical", "drug", "crl"],
     "관세/수출주": ["tariff", "section 301", "section 232", "ustr", "customs", "duty", "quota", "safeguard", "anti-dumping"],
+    "중국 수출통제/핵심소재": [
+        "mofcom", "china ministry of commerce", "chinese ministry of commerce", "商务部",
+        "出口管制", "暂停出口", "停止出口", "禁止出口", "出口禁令", "两用物项",
+        "helium", "氦", "rare earth", "稀土", "gallium", "镓", "germanium", "锗",
+        "graphite", "石墨", "antimony", "锑", "tungsten", "钨", "indium", "铟",
+    ],
+    "반도체/디스플레이/산업가스": [
+        "helium", "氦", "gallium", "镓", "germanium", "锗", "indium", "铟",
+        "semiconductor material", "semiconductor materials", "industrial gas", "industrial gases",
+    ],
     "비료/농화학/음식료 원가": ["fertilizer", "phosphate", "agriculture", "farm", "regenerative agriculture", "biofuel", "feedstock", "food supply", "비료", "인산", "농업", "바이오연료", "식량"],
     "통신/FCC/위성": [
         "fcc", "federal communications commission", "spectrum", "broadband", "wireless", "wireline",
@@ -239,6 +258,11 @@ class Source:
 
 
 SOURCES = [
+    Source(
+        "China MOFCOM announcements",
+        f"https://www.mofcom.gov.cn/zcfb/blgg/gg/{MOFCOM_YEAR}/index.html",
+        "mofcom_html",
+    ),
     Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),
     Source("Federal Register chips export", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=semiconductor+export+controls+final+rule"),
     Source("Federal Register tariffs", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=tariff+section+301+final+rule"),
@@ -574,6 +598,59 @@ def parse_link_html(text: str, source: Source) -> list[dict]:
     return list(deduped.values())[:20]
 
 
+MOFCOM_ACTION_TERMS = [
+    "出口管制", "暂停出口", "停止出口", "禁止出口", "出口禁令", "出口许可",
+    "两用物项", "关税", "反倾销", "反补贴", "不可靠实体清单", "管控名单",
+    "贸易壁垒调查", "保障措施", "制裁", "禁令",
+]
+MOFCOM_BROAD_CONTROL_TERMS = [
+    "出口管制", "暂停出口", "停止出口", "禁止出口", "出口禁令", "出口许可",
+    "两用物项", "不可靠实体清单", "管控名单", "制裁", "禁令",
+]
+MOFCOM_TRADE_REMEDY_TERMS = ["关税", "反倾销", "反补贴", "保障措施", "贸易壁垒调查"]
+MOFCOM_KOREA_OR_STRATEGIC_TERMS = [
+    "韩国", "韩国产", "氦", "稀土", "镓", "锗", "石墨", "锑", "钨", "铟", "钼",
+    "萤石", "碳化硅", "半导体", "芯片", "电池", "正极", "负极", "钢铁", "变压器",
+    "机器人", "无人机", "光伏", "太阳能", "天然气", "石油",
+]
+
+
+def parse_mofcom_html(text: str, source: Source) -> list[dict]:
+    """Parse material trade-control announcements from the official MOFCOM index."""
+    link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
+    deduped: dict[str, dict] = {}
+    for match in link_pattern.finditer(text):
+        title = clean_text(match.group("label"))
+        export_action_phrase = "出口" in title and any(term in title for term in ["管制", "暂停", "停止", "禁止", "许可", "禁令"])
+        if len(title) < 8 or not (any(term in title for term in MOFCOM_ACTION_TERMS) or export_action_phrase):
+            continue
+        broad_control = any(term in title for term in MOFCOM_BROAD_CONTROL_TERMS) or export_action_phrase
+        material_trade_remedy = (
+            any(term in title for term in MOFCOM_TRADE_REMEDY_TERMS)
+            and any(term in title for term in MOFCOM_KOREA_OR_STRATEGIC_TERMS)
+        )
+        if not broad_control and not material_trade_remedy:
+            continue
+        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
+        link_lower = link.lower()
+        if "mofcom.gov.cn" not in link_lower or "/art/" not in link_lower:
+            continue
+        tail = clean_text(text[match.end(): match.end() + 260])
+        date_match = re.search(r"\b20\d{2}-\d{2}-\d{2}\b", tail)
+        published = parse_date(date_match.group(0)) if date_match else None
+        if not published:
+            continue
+        summary = clean_text(f"中国商务部正式公告: {title}")
+        deduped[link] = {
+            "source": source.name,
+            "title": title,
+            "link": link,
+            "summary": summary,
+            "published_kst": published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0).isoformat(),
+        }
+    return list(deduped.values())[:30]
+
+
 def parse_kind_html(text: str, source: Source, now: dt.datetime) -> list[dict]:
     clean = clean_text(text)
     if "오늘의공시" not in clean and "Disclosure" not in clean:
@@ -669,7 +746,7 @@ def classify_item(item: dict) -> dict | None:
     is_fcc_admin_reporting = is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_ADMIN_REPORTING_TERMS)
     if is_fcc_admin_reporting:
         importance = "중"
-    elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
+    elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "china_trade_controls", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
         importance = "상"
     elif "agriculture_supply_policy" in matched:
         importance = "중"
@@ -690,9 +767,12 @@ def classify_item(item: dict) -> dict | None:
     elif any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fcc_decision_notice")):
         impacts.extend(["시간표", "할인율"])
         paths.extend(["정책 타임라인", "할인율"])
-    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "energy_security_policy", "state_smr_moc_policy", "agriculture_supply_policy", "company_filing", "fda_decision")):
+    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "china_trade_controls", "energy_security_policy", "state_smr_moc_policy", "agriculture_supply_policy", "company_filing", "fda_decision")):
         impacts.extend(["돈 버는 능력", "수급"])
         paths.extend(["이익", "수급"])
+    if "china_trade_controls" in matched:
+        impacts.extend(["시간표"])
+        paths.extend(["공급망", "정책 타임라인", "원자재 비용"])
     if "state_smr_moc_policy" in matched:
         paths.extend(["계약 가시성", "밸류체인", "프로젝트 파이낸싱"])
     if "company_filing" in matched:
@@ -736,6 +816,8 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
             items = parse_fcc_html(text or "", source)
         elif source.kind == "state_html":
             items = parse_state_html(text or "", source)
+        elif source.kind == "mofcom_html":
+            items = parse_mofcom_html(text or "", source)
         elif source.kind == "link_html":
             items = parse_link_html(text or "", source)
         else:
@@ -743,7 +825,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
         source_notes.append(f"- {source.name}: {len(items)}건 확인")
         for item in items:
             age = item_age_hours(item, now)
-            if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html", "state_html"} and age is None:
+            if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html", "state_html", "mofcom_html"} and age is None:
                 continue
             if age is not None and age > MAX_SOURCE_AGE_HOURS:
                 continue

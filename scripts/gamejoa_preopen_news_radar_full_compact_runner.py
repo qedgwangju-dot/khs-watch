@@ -742,6 +742,8 @@ def has_direct_market_path(text: str, alert: dict) -> bool:
         ]
     ):
         return True
+    if is_china_mofcom_control(alert):
+        return True
     if has_term(text, ["tariff", "duty", "duties", "antidumping", "anti-dumping", "countervailing"]):
         korea_direct = has_term(text, ["korea", "south korea", "korean", "한국", "한국산"])
         strategic_country = has_term(
@@ -942,9 +944,78 @@ def is_actionable_local_dc_policy(alert: dict) -> bool:
     return has_hard_action and has_trusted_source and not weak_local_only
 
 
+def is_china_mofcom_control(alert: dict) -> bool:
+    text = alert_text(alert)
+    has_authority = has_term(
+        text,
+        ["mofcom", "china ministry of commerce", "chinese ministry of commerce", "中国商务部", "商务部"],
+    )
+    has_action = has_term(
+        text,
+        [
+            "export ban", "export suspension", "suspend exports", "suspended exports",
+            "export control", "export licensing", "tariff", "anti-dumping", "antidumping",
+            "countervailing", "出口管制", "暂停出口", "停止出口", "禁止出口", "关税", "反倾销", "反补贴",
+        ],
+    ) or ("出口" in text and any(term in text for term in ["管制", "暂停", "停止", "禁止", "许可", "禁令"])) or (
+        any(term in text for term in ["export", "exports"])
+        and any(term in text for term in ["suspend", "suspends", "suspended", "ban", "bans", "banned"])
+    )
+    return has_authority and has_action
+
+
+def china_mofcom_product_label(alert: dict) -> str:
+    text = alert_text(alert)
+    products = [
+        (["helium", "氦"], "헬륨"),
+        (["rare earth", "rare-earth", "稀土"], "희토류"),
+        (["gallium", "镓"], "갈륨"),
+        (["germanium", "锗"], "게르마늄"),
+        (["graphite", "石墨"], "흑연"),
+        (["antimony", "锑"], "안티몬"),
+        (["tungsten", "钨"], "텅스텐"),
+        (["indium", "铟"], "인듐"),
+        (["battery", "cathode", "anode", "lfp", "电池"], "배터리 소재·기술"),
+        (["semiconductor", "chip", "半导体"], "반도체 품목"),
+        (["steel", "钢铁"], "철강"),
+        (["dual-use", "两用物项"], "이중용도 품목"),
+    ]
+    for terms, label in products:
+        if has_term(text, terms):
+            return label
+    return "전략 품목"
+
+
+def china_mofcom_action_label(alert: dict) -> str:
+    text = alert_text(alert)
+    if has_term(text, ["export suspension", "suspend exports", "suspended exports", "暂停出口", "停止出口"]) or (
+        "出口" in text and any(term in text for term in ["暂停", "停止"])
+    ) or (
+        any(term in text for term in ["export", "exports"])
+        and any(term in text for term in ["suspend", "suspends", "suspended"])
+    ):
+        return "수출 일시 중단"
+    if has_term(text, ["export ban", "banned exports", "禁止出口", "出口禁令"]) or (
+        any(term in text for term in ["export", "exports"])
+        and any(term in text for term in ["ban", "bans", "banned"])
+    ):
+        return "수출 금지"
+    if has_term(text, ["anti-dumping", "antidumping", "反倾销"]):
+        return "반덤핑 조치"
+    if has_term(text, ["countervailing", "反补贴"]):
+        return "상계관세 조치"
+    if has_term(text, ["tariff", "tariffs", "关税"]):
+        return "관세 조치"
+    if has_term(text, ["export licensing", "出口许可"]):
+        return "수출 허가제"
+    return "수출통제"
+
+
 def korean_title(alert: dict) -> str:
     text = alert_text(alert)
     raw = str(alert.get("news") or "").strip()
+    if is_china_mofcom_control(alert):
+        return f"중국 상무부, {china_mofcom_product_label(alert)} {china_mofcom_action_label(alert)} 발표"
     if alert.get("grid_policy_delay"):
         return "북미 송전망 투자 정책 변수: 정부 승인·규제 지연 리스크"
     if alert.get("memory_antitrust_lawsuit"):
@@ -1000,6 +1071,13 @@ def korean_title(alert: dict) -> str:
 
 def curated_sectors(alert: dict) -> list[str]:
     text = alert_text(alert)
+    if is_china_mofcom_control(alert):
+        product = china_mofcom_product_label(alert)
+        if product == "헬륨":
+            return ["반도체/HBM 공정가스", "디스플레이/광섬유", "산업가스", "의료기기/MRI"]
+        if product in {"희토류", "갈륨", "게르마늄", "흑연", "안티몬", "텅스텐", "인듐"}:
+            return ["핵심광물/소재", "반도체", "2차전지", "방산/전력전자"]
+        return ["중국 수출통제/핵심소재", "공급망", "관세/수출주"]
     if has_term(text, ["자기주식", "자사주", "buyback"]):
         return ["자사주/주주환원", "수급/오버행", "한국 직접 공시"]
     if has_term(text, ["전환사채", "신주인수권", "유상증자", "주요사항보고서", "타법인주식", "회사합병", "회사분할"]):
@@ -1037,6 +1115,22 @@ def curated_sectors(alert: dict) -> list[str]:
 
 def explanation_for(alert: dict) -> dict[str, str]:
     text = alert_text(alert)
+    if is_china_mofcom_control(alert):
+        product = china_mofcom_product_label(alert)
+        action = china_mofcom_action_label(alert)
+        korea = (
+            "한국장에서는 반도체·HBM 공정, 디스플레이, 광섬유, MRI, 산업가스 밸류체인의 재고와 조달가격을 확인합니다. 중국산 의존도와 대체 조달 계약이 확인된 기업만 연결합니다."
+            if product == "헬륨"
+            else "한국장에서는 해당 품목의 중국산 의존도, 재고일수, 대체 공급선, 한국 기업의 수출입 노출이 확인된 업종만 연결합니다."
+        )
+        return {
+            "core": f"중국 상무부가 {product} 관련 {action}을 발표하거나 준비한다는 정책 신호입니다. 품목·대상국·시행일·예외 허가가 실제 공급 감소 폭을 결정합니다.",
+            "view": f"{product}의 중국발 공급이 줄면 현물가격, 조달기간, 재고비용이 올라 수입업체 마진과 생산계획이 바뀔 수 있습니다.",
+            "korea": korea,
+            "priced": "낮음~중간. 속보 직후 관련 원자재와 테마주는 먼저 움직일 수 있지만 실제 이익 영향은 공식 적용범위 확인 뒤 결정됩니다.",
+            "counter": "수출 허가 예외, 특정 국가·기업 한정, 기존 계약 유예, 중국 외 공급 확대가 있으면 공급 충격이 예상보다 작을 수 있습니다.",
+            "failure": "공식 원문에서 품목·대상국·시행일이 확인되지 않거나 현물가격·리드타임·국내 조달비용이 움직이지 않으면 테마성 반응으로 끝납니다.",
+        }
     if has_term(text, ["자기주식", "자사주", "buyback"]):
         return {
             "core": "자사주 취득, 처분, 신탁, 소각 관련 공시는 주주환원, 유통주식 수, 오버행, 단기 수급을 바꿀 수 있는 공시입니다.",
@@ -1157,6 +1251,10 @@ def explanation_for(alert: dict) -> dict[str, str]:
 
 def normalize_alert_for_output(alert: dict) -> dict:
     out = dict(alert)
+    if is_china_mofcom_control(out):
+        out["china_mofcom_trade_control"] = True
+        out["impacts"] = ["돈 버는 능력", "수급", "시간표"]
+        out["paths"] = ["공급·수요", "원자재 비용", "공급망", "정책 타임라인"]
     if not out.get("original_news"):
         out["original_news"] = out.get("news")
     out["news"] = korean_title(out)

@@ -62,6 +62,67 @@ def has_any(text: str, terms: list[str]) -> bool:
     return False
 
 
+def is_china_mofcom_trade_control(text: str, item: dict) -> bool:
+    source = str(item.get("source") or "").lower()
+    has_authority = (
+        "china mofcom" in source
+        or has_any(text, ["mofcom", "china ministry of commerce", "chinese ministry of commerce", "中国商务部", "商务部"])
+    )
+    has_action = has_any(
+        text,
+        [
+            "export ban", "export suspension", "export control", "export licensing",
+            "tariff", "anti-dumping", "antidumping", "countervailing",
+            "出口管制", "暂停出口", "停止出口", "禁止出口", "关税", "反倾销", "反补贴",
+        ],
+    ) or ("出口" in text and has_any(text, ["管制", "暂停", "停止", "禁止", "许可", "禁令"])) or (
+        has_any(text, ["export", "exports"])
+        and has_any(text, ["suspend", "suspends", "suspended", "ban", "bans", "banned"])
+    )
+    return has_authority and has_action
+
+
+def china_mofcom_product(text: str) -> str:
+    products = [
+        (["helium", "氦"], "헬륨"),
+        (["rare earth", "rare-earth", "稀土"], "희토류"),
+        (["gallium", "镓"], "갈륨"),
+        (["germanium", "锗"], "게르마늄"),
+        (["graphite", "石墨"], "흑연"),
+        (["antimony", "锑"], "안티몬"),
+        (["tungsten", "钨"], "텅스텐"),
+        (["indium", "铟"], "인듐"),
+        (["battery", "cathode", "anode", "lfp", "电池"], "배터리 소재·기술"),
+        (["semiconductor", "chip", "半导体"], "반도체 품목"),
+        (["steel", "钢铁"], "철강"),
+        (["dual-use", "两用物项"], "이중용도 품목"),
+    ]
+    for terms, label in products:
+        if has_any(text, terms):
+            return label
+    return "전략 품목"
+
+
+def china_mofcom_action(text: str) -> str:
+    if has_any(text, ["export suspension", "suspend exports", "suspended exports", "暂停出口", "停止出口"]) or (
+        "出口" in text and has_any(text, ["暂停", "停止"])
+    ) or (has_any(text, ["export", "exports"]) and has_any(text, ["suspend", "suspends", "suspended"])):
+        return "수출 일시 중단"
+    if has_any(text, ["export ban", "banned exports", "禁止出口", "出口禁令"]) or (
+        has_any(text, ["export", "exports"]) and has_any(text, ["ban", "bans", "banned"])
+    ):
+        return "수출 금지"
+    if has_any(text, ["anti-dumping", "antidumping", "反倾销"]):
+        return "반덤핑 조치"
+    if has_any(text, ["countervailing", "反补贴"]):
+        return "상계관세 조치"
+    if has_any(text, ["tariff", "tariffs", "关税"]):
+        return "관세 조치"
+    if has_any(text, ["export licensing", "出口许可"]):
+        return "수출 허가제"
+    return "수출통제"
+
+
 def put(item: dict, **values: Any) -> None:
     for key, value in values.items():
         if value is not None:
@@ -693,6 +754,35 @@ def is_eu_sanctions_export_policy(text: str, item: dict) -> bool:
 def ensure_explained(item: dict) -> dict:
     default_context(item)
     text = text_for(item)
+
+    if is_china_mofcom_trade_control(text, item):
+        product = china_mofcom_product(text)
+        action = china_mofcom_action(text)
+        if product == "헬륨":
+            sectors = ["반도체/HBM 공정가스", "디스플레이/광섬유", "산업가스", "의료기기/MRI"]
+            korea_market = "한국장에서는 반도체·HBM 공정, 디스플레이, 광섬유, MRI, 산업가스 밸류체인의 재고와 조달가격을 확인합니다. 중국산 의존도와 대체 조달 계약이 확인된 기업만 연결합니다."
+        elif product in {"희토류", "갈륨", "게르마늄", "흑연", "안티몬", "텅스텐", "인듐"}:
+            sectors = ["핵심광물/소재", "반도체", "2차전지", "방산/전력전자"]
+            korea_market = "한국장에서는 해당 중국산 원료 의존도와 비중국 대체 공급망이 확인된 반도체·2차전지·자석·방산·전력전자 기업만 선별합니다."
+        else:
+            sectors = ["중국 수출통제/핵심소재", "공급망", "관세/수출주"]
+            korea_market = "한국장에서는 원문에 직접 적시된 품목의 중국산 의존도, 재고일수, 대체 공급선, 한국 기업의 수출입 노출이 확인된 업종만 연결합니다."
+        put(
+            item,
+            importance="상",
+            title_ko=f"중국 상무부, {product} {action} 발표",
+            impacts=["매출·마진·현금흐름", "수급", "시간표"],
+            paths=["공급·수요", "원자재 비용", "공급망", "정책 타임라인"],
+            sectors=sectors,
+            korea_value_chain=sectors,
+            policy_plain_summary=f"중국 상무부가 {product} 관련 {action}을 발표한 사안입니다. 적용 품목·국가·시행일과 예외 허가가 실제 공급 감소 폭을 결정합니다.",
+            investment_view=f"{product}의 중국발 공급이 줄면 현물가격, 조달기간, 재고비용이 올라 수입업체 마진과 생산계획이 바뀔 수 있습니다. 단순 허가제인지 전면 금지인지 구분해야 합니다.",
+            korea_market_impact=korea_market,
+            priced_in="낮음~중간. 속보 직후 관련 원자재와 테마주는 먼저 움직일 수 있지만 실제 이익 영향은 품목 범위와 시행기간 확인 뒤 결정됩니다.",
+            counter="수출 허가 예외, 특정 국가·기업 한정, 기존 계약 유예, 중국 외 공급 확대가 있으면 공급 충격이 예상보다 작을 수 있습니다.",
+            failure_signal="공식 원문에서 품목·대상국·시행일이 확인되지 않거나 현물가격·리드타임·국내 조달비용이 움직이지 않으면 테마성 반응으로 끝납니다.",
+        )
+        return item
 
     if is_personnel(text, item):
         appointees = item.get("appointees") or "고위급 인사"

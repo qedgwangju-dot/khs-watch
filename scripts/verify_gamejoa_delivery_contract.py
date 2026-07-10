@@ -189,6 +189,7 @@ def main() -> int:
 
     sys.path.insert(0, str(ROOT / "scripts"))
     production = importlib.import_module(PRODUCTION_RUNNER)
+    compact = importlib.import_module(LOCKED_TELEGRAM_MODULE)
     send_module = getattr(production.telegram.send_telegram, "__module__", "")
     compact_module = getattr(production.telegram.compact_report, "__module__", "")
     final_selection_module = getattr(production.telegram.final_alerts_for_output, "__module__", "")
@@ -197,6 +198,7 @@ def main() -> int:
         errors.append(f"trusted query plan is too large for stable polling: {len(query_plan)} > 18")
     required_query_labels = {"트럼프 직접발언/정책", "반도체/AI/HBM", "K-방산", "국내 정책", "바이오/FDA"}
     query_labels = {name for name, _query in query_plan}
+    required_query_labels.add("중국 상무부 수출통제/관세")
     missing_query_labels = sorted(required_query_labels - query_labels)
     if missing_query_labels:
         errors.append(f"trusted query plan missing coverage: {', '.join(missing_query_labels)}")
@@ -212,6 +214,28 @@ def main() -> int:
         errors.append("Bing RSS publisher source was not parsed")
     elif parsed_fixture[0].get("link") != target:
         errors.append("Bing RSS redirect was not unwrapped to the source URL")
+
+    now = production.base.kst_now()
+    china_mofcom_row = {
+        "source": "Trusted news 중국 상무부 수출통제/관세",
+        "layer": "trusted",
+        "publisher": "Reuters",
+        "title": "China Ministry of Commerce temporarily suspends helium exports starting today",
+        "link": "https://www.reuters.com/world/china/example-helium-export-suspension",
+        "summary": "MOFCOM said the temporary export suspension applies immediately, pending further notice.",
+        "published": now,
+    }
+    china_alert = production.contract.strict.classify(china_mofcom_row, now)
+    if not china_alert:
+        errors.append("China MOFCOM helium export suspension was not classified")
+    else:
+        normalized_china = compact.normalize_alert_for_output(china_alert)
+        if "중국 상무부" not in str(normalized_china.get("news") or "") or "헬륨" not in str(normalized_china.get("news") or ""):
+            errors.append("China MOFCOM helium alert did not render a specific Korean title")
+        if not compact.has_direct_market_path("", normalized_china):
+            errors.append("China MOFCOM strategic-material alert lost its Korea-market path")
+        if not compact.has_decision_impact(normalized_china):
+            errors.append("China MOFCOM strategic-material alert lost its decision-impact classification")
     if send_module != LOCKED_TELEGRAM_MODULE:
         errors.append(
             f"{PRODUCTION_RUNNER}.telegram.send_telegram is wired to {send_module}, "

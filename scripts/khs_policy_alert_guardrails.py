@@ -198,6 +198,27 @@ def is_domestic_stablecoin_policy(item: dict) -> bool:
     return bool(item.get("domestic_stablecoin_policy_watch")) or "korea_stablecoin_policy" in (item.get("matched") or {})
 
 
+def is_china_mofcom_trade_control(item: dict) -> bool:
+    text = haystack_for(item)
+    source = str(item.get("source") or "").lower()
+    has_authority = (
+        "china mofcom" in source
+        or has_any(text, ["mofcom", "china ministry of commerce", "chinese ministry of commerce", "中国商务部", "商务部"])
+    )
+    has_action = has_any(
+        text,
+        [
+            "export ban", "export suspension", "suspend exports", "export control", "export licensing",
+            "tariff", "anti-dumping", "antidumping", "countervailing",
+            "出口管制", "暂停出口", "停止出口", "禁止出口", "关税", "反倾销", "反补贴",
+        ],
+    ) or ("出口" in text and has_any(text, ["管制", "暂停", "停止", "禁止", "许可", "禁令"])) or (
+        has_any(text, ["export", "exports"])
+        and has_any(text, ["suspend", "suspends", "suspended", "ban", "bans", "banned"])
+    )
+    return has_authority and has_action
+
+
 def is_fcc_resilient_networks_policy(item: dict) -> bool:
     source = str(item.get("source") or "").lower()
     if "fcc" not in source and "federal communications commission" not in haystack_for(item):
@@ -216,6 +237,16 @@ def direct_sectors(item: dict) -> list[str]:
             "은행/핀테크/결제",
             "가상자산거래소/디지털자산",
         ]
+    if is_china_mofcom_trade_control(item):
+        text = haystack_for(item)
+        if has_any(text, ["helium", "氦"]):
+            return ["반도체/HBM 공정가스", "디스플레이/광섬유", "산업가스", "의료기기/MRI"]
+        if has_any(
+            text,
+            ["rare earth", "稀土", "gallium", "镓", "germanium", "锗", "graphite", "石墨", "antimony", "锑", "tungsten", "钨", "indium", "铟"],
+        ):
+            return ["핵심광물/소재", "반도체", "2차전지", "방산/전력전자"]
+        return ["중국 수출통제/핵심소재", "공급망", "관세/수출주"]
     if is_fcc_resilient_networks_policy(item):
         return ["미국 통신망 복구/장애보고"]
 
