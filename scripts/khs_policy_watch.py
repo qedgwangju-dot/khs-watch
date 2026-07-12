@@ -735,8 +735,12 @@ def classify_item(item: dict) -> dict | None:
     matched = {bucket: [kw for kw in keywords if keyword_in_text(haystack, kw)] for bucket, keywords in STAGE_KEYWORDS.items()}
     if "fda_decision" in matched and matched["fda_decision"] and "FDA" not in item.get("source", "") and "fda" not in haystack:
         matched["fda_decision"] = []
-    matched = {bucket: kws for bucket, kws in matched.items() if kws}
     is_fcc_source = source_name.startswith("FCC") or source_name == "Federal Register FCC"
+    # "national security" appears in White House memoranda frequently. It is
+    # not an FCC signal unless the primary source itself is the FCC.
+    if not is_fcc_source:
+        matched["fcc_decision_notice"] = []
+    matched = {bucket: kws for bucket, kws in matched.items() if kws}
     if is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_STRONG_TERMS):
         matched.setdefault("fcc_decision_notice", ["fcc official decision/notice source"])
     if not matched:

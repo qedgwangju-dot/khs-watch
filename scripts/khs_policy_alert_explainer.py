@@ -290,6 +290,30 @@ def infer_korean_title(item: dict, text: str = "") -> str:
 
     if has_korean(title):
         korean = title
+    elif has_any(low, ["quantum innovation", "next frontier of quantum"]):
+        korean = "백악관, 양자기술 혁신·국가안보 행정명령 발표"
+    elif has_any(low, ["advanced cryptographic attacks", "cryptographic attack"]):
+        korean = "백악관, 첨단 암호공격 대응 행정명령 발표"
+    elif has_any(low, ["advanced artificial intelligence innovation", "ai innovation and security"]):
+        korean = "백악관, 첨단 AI 혁신·보안 행정명령 발표"
+    elif has_any(low, ["commercial aircraft", "jet engines", "aircraft and engine parts"]):
+        korean = "미국, 상업용 항공기·엔진 수입 조정 포고문 발표"
+    elif has_any(low, ["freedom to fix", "right to repair"]):
+        korean = "백악관, 수리권 확대·생활비 절감 정책 발표"
+    elif has_any(low, ["grid infrastructure, equipment, and supply chain capacity"]):
+        korean = "백악관, 전력망·전력기기 공급망 국방물자생산법 조치 발표"
+    elif has_any(low, ["large-scale energy", "energy-related infrastructure"]):
+        korean = "백악관, 대규모 에너지 인프라 국방물자생산법 조치 발표"
+    elif has_any(low, ["national security presidential memorandum", "nspm-"]):
+        korean = "백악관, 국가안보 대통령각서 발표"
+    elif has_any(low, ["restoring integrity to america's financial system"]):
+        korean = "백악관, 미국 금융시스템 건전성 강화 정책 발표"
+    elif has_any(low, ["financial technology innovation", "fintech innovation"]):
+        korean = "백악관, 금융기술 혁신 규제체계 정책 발표"
+    elif has_any(low, ["commercial fishing in the pacific"]):
+        korean = "백악관, 태평양 상업어업 촉진 정책 발표"
+    elif has_any(low, ["federal lands"]):
+        korean = "백악관, 연방토지 접근 제한 완화 정책 발표"
     elif has_any(low, ["resilient networks", "dirs", "disruptions to communications"]):
         korean = "FCC, 재난 시 통신망 장애보고 시스템(DIRS) 현대화 규칙 공표"
     elif has_any(low, ["foreign energy inverter", "energy inverter", "solar inverter"]):

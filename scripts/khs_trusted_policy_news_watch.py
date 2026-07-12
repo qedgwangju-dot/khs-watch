@@ -658,6 +658,11 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 continue
             if not has_required_terms(haystack, rule):
                 continue
+            # A direct Trump quote is sendable only when its English headline maps
+            # to a concrete Korean policy event. Do not fall back to a broad
+            # "market-moving remark" template for an otherwise ambiguous story.
+            if rule.key == "trump_direct_policy_remarks_watch" and not trump_story_profile(title):
+                continue
             seen_links.add(link)
             display_source = publisher
             priority_key = source_key(publisher)
@@ -710,6 +715,19 @@ def fingerprint(rule: StoryRule, items: list[dict]) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
 
 
+def story_event_fingerprint(rule: StoryRule, items: list[dict]) -> str:
+    """Deduplicate the same wire headline when only its update timestamp moves."""
+    if not items:
+        identity = ""
+    else:
+        title = re.sub(r"\s+", " ", clean_story_title(str(items[0].get("title") or "")).lower()).strip()
+        identity = f"{rule.key}|{title}"
+    profile = trump_story_profile(str(items[0].get("title") or "")) if items else None
+    revision = str((profile or {}).get("revision") or "story-event-v1")
+    raw = f"{FORMAT_VERSION}:{revision}:{identity}"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
+
+
 def parse_kst_iso(value: str) -> dt.datetime | None:
     try:
         parsed = dt.datetime.fromisoformat(str(value).replace("Z", "+00:00"))
@@ -724,7 +742,14 @@ def unseen_items_for_rule(rule: StoryRule, items: list[dict], seen: dict) -> lis
     if not items:
         return []
     current_fp = fingerprint(rule, items)
-    if current_fp in seen:
+    event_fp = story_event_fingerprint(rule, items)
+    profile = trump_story_profile(str(items[0].get("title") or "")) if rule.key == "trump_direct_policy_remarks_watch" else None
+    is_corrective_render = bool((profile or {}).get("revision"))
+    if event_fp in seen:
+        return []
+    # Preserve previous time-stamped fingerprints during migration. The one
+    # exception is a corrected Korean rendering, which is allowed once.
+    if current_fp in seen and not is_corrective_render:
         return []
     legacy_fp = legacy_daily_fingerprint(rule, items)
     legacy_entry = seen.get(legacy_fp)
@@ -740,32 +765,136 @@ def unseen_items_for_rule(rule: StoryRule, items: list[dict], seen: dict) -> lis
     return fresh_items
 
 
-def korean_trump_story_title(title: str) -> str:
+def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
+    """Keep each Trump headline in its own alert and source chain."""
+    if rule.key == "trump_direct_policy_remarks_watch":
+        return [[item] for item in items]
+    return [items] if items else []
+
+
+def trump_story_profile(title: str) -> dict[str, object] | None:
+    """Return a source-faithful Korean profile for supported Trump headlines."""
     cleaned = clean_story_title(title)
     low = cleaned.lower()
-    if "iran" in low and ("over" in low or "end war" in low or "standoff" in low):
-        return "트럼프 이란 발언: 임시 합의 종료·걸프 유가 리스크"
-    if "iran" in low and "conflict" in low:
-        return "트럼프 이란 발언: 충돌 재개 가능성·유가 리스크"
-    if ("iran" in low or "이란" in low) and ("negot" in low or "talk" in low or "deal" in low or "contact" in low or "reached out" in low or "agreement" in low or "협상" in low or "연락" in low):
-        return "트럼프 이란 협상 발언: 대화 재개 기대·유가 리스크"
-    if "nato" in low and ("defense" in low or "spending" in low or "alliance" in low):
-        return "트럼프 NATO 발언: 동맹·방위비·우크라이나 정책 신호"
-    if "nato" in low or "allies" in low:
-        return "트럼프 NATO 정상회의 발언: 동맹 결속·방위비 압박 재료"
-    if "ukraine" in low or "russia" in low or "putin" in low or "zelenskiy" in low:
-        return "트럼프 우크라이나·러시아 발언: 전쟁 시간표·제재 리스크"
-    if "turkey" in low and ("sanction" in low or "f-35" in low):
-        return "트럼프 튀르키예 발언: 제재 해제·F-35 판매 판단"
+    common = {
+        "priced_in": "낮음~중간. 대통령 발언은 즉시 반영될 수 있지만, 공식 문서나 실제 지표가 없으면 되돌림도 빠릅니다.",
+        "counter": "대통령 발언만으로는 시행 주체, 적용 범위, 실제 이행 여부가 확정되지 않았습니다.",
+    }
+    if "hormuz" in low and "open" in low and any(term in low for term in ("commercial", "traffic", "shipping", "tanker")):
+        return {
+            **common,
+            "revision": "trump-hormuz-open-ko-v2",
+            "title": "트럼프, 호르무즈 해협 상업 통항 가능 발언: 유가·운임 리스크 완화 신호",
+            "core": "Reuters는 트럼프가 호르무즈 해협이 상업 통항에 열려 있다고 말했다고 보도했습니다. 핵심은 발언이 아니라 실제 선박 통항 재개입니다.",
+            "investment": "통항이 정상화되면 원유 공급 차질 우려, 해상 보험료, 우회 운항 비용이 낮아질 수 있습니다.",
+            "korea": "항공·운송·화학은 비용 완화 가능성, 해운은 운임 정상화 압력입니다. 정유는 재고평가와 정제마진이 엇갈려 방향을 단정하지 않습니다.",
+            "impacts": "매출·마진·현금흐름, 밸류에이션/할인율, 시간표",
+            "paths": "유가·운임, 원자재 비용, 지정학 리스크, 정책 타임라인",
+            "sectors": "항공/운송, 화학, 해운, 정유",
+            "failure": "실제 AIS 통항, 전쟁보험료, Brent·운임이 정상화되지 않으면 발언성 재료로 끝납니다.",
+        }
+    if ("iran" in low or "이란" in low) and any(term in low for term in ("negot", "talk", "deal", "contact", "reached out", "agreement", "협상", "연락")):
+        return {
+            **common,
+            "title": "트럼프, 이란 협상 재개 발언: 중동 위험프리미엄 완화 가능성",
+            "core": "트럼프가 이란과의 협상·접촉 가능성을 언급한 보도입니다. 협상 재개가 실제 합의나 통항 정상화로 이어지는지가 핵심입니다.",
+            "investment": "협상 진전은 유가·운임·원/달러 위험프리미엄을 낮출 수 있지만, 공식 합의 전에는 변동성이 큽니다.",
+            "korea": "정유·화학 원가, 해운, 항공·운송, 방산·환율 민감주만 선별 확인합니다.",
+            "impacts": "매출·마진·현금흐름, 밸류에이션/할인율, 시간표",
+            "paths": "지정학 리스크, 유가·운임, 환율, 정책 타임라인",
+            "sectors": "정유/화학, 해운, 항공/운송, 방산/지정학",
+            "failure": "공식 협상 일정, 통항 정상화, 유가·운임·환율 반응이 없으면 단발성 발언으로 약화됩니다.",
+        }
+    if "iran" in low and any(term in low for term in ("over", "end", "conflict", "strike", "attack", "war", "ceasefire")):
+        return {
+            **common,
+            "title": "트럼프, 이란 충돌·휴전 관련 발언: 유가·운임 재상승 리스크",
+            "core": "트럼프의 이란 충돌·휴전 관련 발언으로 중동 긴장과 호르무즈 통항 위험이 다시 가격 변수로 부각된 보도입니다.",
+            "investment": "긴장 고조는 유가, 전쟁보험료, 해운 운임과 방산 수요를 밀어 올리고 원/달러 위험프리미엄을 높일 수 있습니다.",
+            "korea": "정유·화학 원가, 해운, 방산, 환율 민감주를 보되 실제 선박 피격·통항 감소가 없으면 테마성 반응으로 제한합니다.",
+            "impacts": "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표",
+            "paths": "지정학 리스크, 유가·운임, 환율, 정책 타임라인",
+            "sectors": "정유/화학, 해운, 방산/지정학, 환율 민감주",
+            "failure": "국방부·CENTCOM 후속, 통항 감소, 유가·운임·환율 반응이 없으면 단발성 충돌로 약화됩니다.",
+        }
     if "tariff" in low or "tariffs" in low:
-        return "트럼프 관세 발언: 수출주·공급망 정책 리스크"
-    if "fed" in low or "rate" in low or "dollar" in low:
-        return "트럼프 금리·달러 발언: 할인율·환율 리스크"
-    if "oil" in low or "hormuz" in low or "brent" in low or "wti" in low:
-        return "트럼프 에너지 발언: 유가·운임·정유/화학 원가 리스크"
-    if "chip" in low or "semiconductor" in low or "ai" in low or "data center" in low:
-        return "트럼프 반도체·AI 발언: 수출통제·AI 인프라 정책 신호"
-    return f"트럼프 시장 영향 발언: {cleaned[:70]}"
+        return {
+            **common,
+            "title": "트럼프, 관세 관련 발언: 수출주·공급망 정책 리스크",
+            "core": "트럼프의 관세 관련 발언으로 대상 국가·품목·시행일에 대한 정책 불확실성이 커진 보도입니다.",
+            "investment": "관세가 실제화되면 가격경쟁력, 마진, 공급망 재편과 수출 주문이 바뀔 수 있습니다.",
+            "korea": "대미 수출 비중과 품목 노출이 확인되는 자동차·철강·가전·배터리·반도체만 선별 확인합니다.",
+            "impacts": "매출·마진·현금흐름, 수급, 시간표",
+            "paths": "무역규제, 공급망, 정책 타임라인",
+            "sectors": "관세 민감 수출주, 물류/공급망",
+            "failure": "대상국·품목·세율·시행일과 한국 기업 노출이 확인되지 않으면 발언성 재료로 끝납니다.",
+        }
+    if any(term in low for term in ("semiconductor", "chip", " ai", "artificial intelligence", "data center")):
+        return {
+            **common,
+            "title": "트럼프, 반도체·AI 관련 발언: 수출통제·AI 투자 정책 신호",
+            "core": "트럼프가 반도체·AI·데이터센터 관련 정책 방향을 언급한 보도입니다. 실제 수출통제·보조금·전력 인허가 문서가 뒤따르는지가 중요합니다.",
+            "investment": "고객사 CAPEX, AI 인프라 발주, 수출통제 범위가 바뀌면 반도체 매출과 밸류체인 주문 기대가 달라집니다.",
+            "korea": "삼성전자·SK하이닉스와 HBM·장비·소재, 데이터센터 전력 인프라 중 직접 노출이 확인되는 종목만 봅니다.",
+            "impacts": "매출·마진·현금흐름, 수급, 시간표",
+            "paths": "수출통제, 공급망, CAPEX, 정책 타임라인",
+            "sectors": "반도체/AI, 데이터센터 전력 인프라",
+            "failure": "부처 공고, 적용 품목, 고객 CAPEX·수주 반응이 없으면 기대감 재료로 약화됩니다.",
+        }
+    if any(term in low for term in ("fed", "rate", "dollar")):
+        return {
+            **common,
+            "title": "트럼프, 금리·달러 관련 발언: 할인율·환율 변수",
+            "core": "트럼프의 연준·금리·달러 관련 발언으로 정책 독립성과 환율 기대가 재평가될 수 있다는 보도입니다.",
+            "investment": "미국채 금리와 달러가 움직이면 성장주 할인율, 원/달러, 외국인 수급이 먼저 반응할 수 있습니다.",
+            "korea": "원/달러, 외국인 현물·선물 수급, 반도체·수출주와 고밸류 성장주를 함께 확인합니다.",
+            "impacts": "밸류에이션/할인율, 수급",
+            "paths": "금리, 환율, 외국인 수급",
+            "sectors": "금리·환율 민감주, 수출주, 성장주",
+            "failure": "미국채 금리·DXY·원/달러·외국인 수급이 동행하지 않으면 발언성 변동으로 끝납니다.",
+        }
+    if "south korea" in low or "usfk" in low or "burden sharing" in low:
+        return {
+            **common,
+            "title": "트럼프, 한국·주한미군·방위비 관련 발언: 지정학·방산 변수",
+            "core": "트럼프가 한국, 주한미군 또는 방위비와 관련한 정책 방향을 언급한 보도입니다.",
+            "investment": "실제 협상 요구나 주둔 조정은 지정학 위험프리미엄과 방산 수요 기대를 바꿀 수 있습니다.",
+            "korea": "K-방산과 지정학 민감주를 보되, 구체 협상안·예산·주둔 계획 전에는 실적 연결을 단정하지 않습니다.",
+            "impacts": "밸류에이션/할인율, 수급, 시간표",
+            "paths": "지정학 리스크, 방산 수요, 정책 타임라인",
+            "sectors": "방산/지정학",
+            "failure": "한미 공동발표, 방위비 협상안, 주둔·조달 계획이 없으면 정치 발언으로 약화됩니다.",
+        }
+    if "nato" in low or "allies" in low:
+        return {
+            **common,
+            "title": "트럼프, NATO·방위비 관련 발언: 방산 수요·동맹 리스크",
+            "core": "트럼프의 NATO·동맹국 방위비 관련 발언으로 방산 조달과 동맹 정책의 불확실성이 부각된 보도입니다.",
+            "investment": "방위비 확대가 예산·조달로 이어질 때만 방산 매출과 수주 가시성이 실제로 바뀝니다.",
+            "korea": "K-방산은 미국·유럽 조달, 폴란드 등 수출계약의 후속 예산·서명 여부를 중심으로 확인합니다.",
+            "impacts": "매출·마진·현금흐름, 수급, 시간표",
+            "paths": "방산 수요, 정책 타임라인, 계약 가시성",
+            "sectors": "방산/지정학",
+            "failure": "예산·조달 공고·계약 서명이 없으면 방산 테마 수급으로 끝납니다.",
+        }
+    if any(term in low for term in ("ukraine", "russia", "putin", "zelenskiy")):
+        return {
+            **common,
+            "title": "트럼프, 우크라이나·러시아 관련 발언: 제재·전쟁 시간표 변수",
+            "core": "트럼프의 우크라이나·러시아 관련 발언으로 제재, 휴전, 에너지·방산 리스크의 시간표가 흔들릴 수 있다는 보도입니다.",
+            "investment": "제재·휴전의 실제 진전 여부는 에너지·원자재 가격과 방산 수요 기대를 바꿀 수 있습니다.",
+            "korea": "방산·에너지·해운만 직접 확인하며, 공식 협상문·제재 변경 전에는 테마 확장을 제한합니다.",
+            "impacts": "밸류에이션/할인율, 수급, 시간표",
+            "paths": "지정학 리스크, 제재, 정책 타임라인",
+            "sectors": "방산/지정학, 에너지/해운",
+            "failure": "공식 협상·제재 문서와 원자재·방산 반응이 없으면 발언성 재료로 약화됩니다.",
+        }
+    return None
+
+
+def korean_trump_story_title(title: str) -> str:
+    profile = trump_story_profile(title)
+    return str((profile or {}).get("title") or "트럼프 직접 발언: 세부 내용 확인 필요")
 
 
 def story_display_title(rule: StoryRule, items: list[dict]) -> str:
@@ -823,32 +952,30 @@ def join_short_values(value: object, max_items: int = 3, fallback: str = "확인
 
 
 def compact_core(rule: StoryRule, items: list[dict]) -> str:
-    title = clean_story_title(str(items[0].get("title", ""))) if items else rule.title
-    low = title.lower()
-    if rule.key == "trump_direct_policy_remarks_watch" and "iran" in low and (
-        "deal" in low or "agreement" in low or "negot" in low or "talk" in low or "contact" in low or "reached out" in low
-    ):
-        return "트럼프가 이란과 새 합의·협상 가능성을 언급한 보도입니다. 공식 발표 전이라 유가·중동 리스크 기대가 먼저 움직일 수 있습니다."
+    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    if profile:
+        return str(profile["core"])
     return short_text(rule.core, 125)
 
 
 def compact_investment_view(rule: StoryRule, items: list[dict]) -> str:
-    title = clean_story_title(str(items[0].get("title", ""))) if items else rule.title
-    low = title.lower()
-    if rule.key == "trump_direct_policy_remarks_watch" and "iran" in low:
-        return "유가, 원/달러, 해운 운임, 방산·정유·화학 수급 반응이 같이 움직이는지 확인합니다."
+    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    if profile:
+        return str(profile["investment"])
     return short_text(rule.point, 125)
 
 
 def compact_korea_market_view(rule: StoryRule, items: list[dict]) -> str:
-    title = clean_story_title(str(items[0].get("title", ""))) if items else rule.title
-    low = title.lower()
-    if rule.key == "trump_direct_policy_remarks_watch" and "iran" in low:
-        return "정유/화학 원가, 해운, 방산, 환율 민감주 중심. 한국 기업 직접 노출 없으면 테마 반응으로 제한합니다."
+    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    if profile:
+        return str(profile["korea"])
     return short_text(f"{join_short_values(rule.sectors, max_items=3)} 중심으로 공식 원문과 한국 기업 직접 노출만 확인합니다.", 125)
 
 
 def compact_priced_in(rule: StoryRule, items: list[dict]) -> str:
+    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    if profile:
+        return str(profile["priced_in"])
     if rule.key == "iran_hormuz_military_escalation":
         return "낮음~중간. 신규 상선 피격과 재공격은 휴전 붕괴 확률을 다시 높이는 새 정보입니다."
     if rule.key == "trump_direct_policy_remarks_watch":
@@ -857,6 +984,9 @@ def compact_priced_in(rule: StoryRule, items: list[dict]) -> str:
 
 
 def compact_failure_signal(rule: StoryRule, items: list[dict]) -> str:
+    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    if profile:
+        return str(profile["failure"])
     if rule.key == "iran_hormuz_military_escalation":
         return "미 국방부·CENTCOM 후속, 통항 감소, 유가·운임·환율 반응이 없으면 단발성 충돌로 약화됩니다."
     if rule.key == "trump_direct_policy_remarks_watch":
@@ -864,7 +994,10 @@ def compact_failure_signal(rule: StoryRule, items: list[dict]) -> str:
     return "공식 원문, 시행일, 적용 대상, 한국 기업 직접 노출이 확인되지 않으면 제외합니다."
 
 
-def compact_counter(rule: StoryRule) -> str:
+def compact_counter(rule: StoryRule, items: list[dict]) -> str:
+    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    if profile:
+        return str(profile["counter"])
     if rule.key == "iran_hormuz_military_escalation":
         return "단발성 보복 뒤 추가 공격이 멈추고 상선 통항이 유지되면 유가·운임 충격은 빠르게 되돌릴 수 있습니다."
     return "공식 문서·시행일·적용 범위가 아직 없다는 점입니다."
@@ -878,21 +1011,24 @@ def is_trump_iran_item(rule: StoryRule, items: list[dict]) -> bool:
 
 
 def compact_impacts(rule: StoryRule, items: list[dict]) -> str:
-    if is_trump_iran_item(rule, items):
-        return "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표"
+    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    if profile:
+        return str(profile["impacts"])
     mapped = ["매출·마진·현금흐름" if value == "돈 버는 능력" else value for value in split_display_values(rule.impacts)]
     return join_short_values(mapped, max_items=4, fallback="의사결정 영향 제한적")
 
 
 def compact_paths(rule: StoryRule, items: list[dict]) -> str:
-    if is_trump_iran_item(rule, items):
-        return "지정학 리스크, 유가·운임, 환율, 정책 타임라인"
+    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    if profile:
+        return str(profile["paths"])
     return join_short_values(rule.paths, max_items=4, fallback="정책 타임라인")
 
 
 def compact_sectors(rule: StoryRule, items: list[dict]) -> str:
-    if is_trump_iran_item(rule, items):
-        return "정유/화학, 해운, 방산/지정학, 환율 민감주"
+    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    if profile:
+        return str(profile["sectors"])
     return join_short_values(rule.sectors, max_items=3, fallback="정책/규제 일반")
 
 
@@ -904,7 +1040,7 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
         f"- 한국장 영향: {compact_korea_market_view(rule, items)}",
         f"- 의사결정 영향: {compact_impacts(rule, items)} | 경로: {compact_paths(rule, items)}",
         f"- 영향 섹터: {compact_sectors(rule, items)}",
-        f"- 반영/반대: {compact_priced_in(rule, items)} 반대 근거는 {compact_counter(rule)}",
+        f"- 반영/반대: {compact_priced_in(rule, items)} 반대 근거는 {compact_counter(rule, items)}",
         f"- 실패 신호: {compact_failure_signal(rule, items)}",
     ]
 
@@ -980,15 +1116,21 @@ def main() -> int:
         if rule.key.startswith("_disabled_"):
             continue
         items = collect_rule_items(rule, now)
-        if not items:
-            continue
-        items = unseen_items_for_rule(rule, items, seen)
-        if not items:
-            continue
-        fp = fingerprint(rule, items)
-        if fp in seen:
-            continue
-        alerts.append({"rule": rule, "items": items, "fingerprint": fp})
+        for alert_items in alert_item_groups(rule, items):
+            alert_items = unseen_items_for_rule(rule, alert_items, seen)
+            if not alert_items:
+                continue
+            fp = story_event_fingerprint(rule, alert_items)
+            if fp in seen:
+                continue
+            alerts.append(
+                {
+                    "rule": rule,
+                    "items": alert_items,
+                    "fingerprint": fp,
+                    "legacy_fingerprint": fingerprint(rule, alert_items),
+                }
+            )
 
     if not alerts:
         for path in (ALERT_PATH, TITLE_PATH, ALERTS_JSON_PATH):
@@ -1028,13 +1170,15 @@ def main() -> int:
     )
 
     for alert in alerts:
-        seen[alert["fingerprint"]] = {
+        seen_entry = {
             "key": alert["rule"].key,
             "title": alert["rule"].title,
             "first_seen_kst": now.isoformat(timespec="seconds"),
             "status": "공식 확인 전",
             "sources": [item["source"] for item in alert["items"][:3]],
         }
+        seen[alert["fingerprint"]] = seen_entry
+        seen[alert["legacy_fingerprint"]] = seen_entry
     seen_payload["updated_at_kst"] = now.isoformat(timespec="seconds")
     SEEN_PATH.write_text(json.dumps(seen_payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 

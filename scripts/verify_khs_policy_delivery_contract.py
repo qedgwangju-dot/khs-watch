@@ -44,12 +44,14 @@ def main() -> int:
     assert_router_final_semantic_dedupe()
     assert_router_keeps_source_families_separate()
     assert_whitehouse_video_remarks_are_parsed_but_market_filtered()
+    assert_whitehouse_executive_order_is_korean_and_not_fcc()
     assert_trump_statement_reaches_policy_lane()
     assert_nato_defense_fact_sheet_is_not_generic_trump_alert()
     assert_trump_iran_war_statement_reaches_geopolitical_lane()
     assert_trusted_iran_hormuz_escalation_reaches_policy_lane()
     assert_trusted_policy_news_story_fingerprint_allows_intraday_updates()
     assert_trusted_policy_news_render_is_compact()
+    assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped()
     assert_state_smr_moc_reaches_policy_lane()
     assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered()
     assert_boem_space_launch_is_excluded()
@@ -304,6 +306,26 @@ def assert_whitehouse_video_remarks_are_parsed_but_market_filtered() -> None:
         raise AssertionError("White House generic NATO video without market detail was classified as high-impact")
 
 
+def assert_whitehouse_executive_order_is_korean_and_not_fcc() -> None:
+    item = {
+        "source": "White House executive orders",
+        "title": "Ushering in the Next Frontier of Quantum Innovation",
+        "summary": "White House Executive Order official page link: Ushering in the Next Frontier of Quantum Innovation",
+        "link": "https://www.whitehouse.gov/presidential-actions/2026/06/ushering-in-the-next-frontier-of-quantum-innovation/",
+        "published_kst": "2026-07-13T00:00:00+09:00",
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("White House quantum executive order was not classified")
+    if "fcc_decision_notice" in (classified.get("matched") or {}):
+        raise AssertionError("White House executive order was misclassified as an FCC notice")
+    title = khs_policy_alert_router.safe_title(classified)
+    if title != "백악관, 양자기술 혁신·국가안보 행정명령 발표":
+        raise AssertionError(f"White House executive order title was not Korean and specific: {title}")
+    if any(token in title for token in ("Quantum Innovation", "FCC", "통신·주파수")):
+        raise AssertionError(f"White House executive order title leaked wrong topic: {title}")
+
+
 def assert_trump_statement_reaches_policy_lane() -> None:
     item = {
         "source": "White House remarks",
@@ -496,12 +518,12 @@ def assert_trusted_policy_news_render_is_compact() -> None:
         dt.datetime(2026, 7, 9, 22, 29, tzinfo=ZoneInfo("Asia/Seoul")),
     )
     required = [
-        "트럼프 이란 협상 발언",
+        "트럼프, 이란 협상 재개 발언",
         "- 핵심:",
         "- 투자 관점:",
         "- 한국장 영향:",
         "- 의사결정 영향:",
-        "- 영향 섹터: 정유/화학, 해운, 방산/지정학, 환율 민감주",
+        "- 영향 섹터: 정유/화학, 해운, 항공/운송, 방산/지정학",
         "- 반영/반대:",
         "- 실패 신호:",
         "- 출처:",
@@ -525,6 +547,58 @@ def assert_trusted_policy_news_render_is_compact() -> None:
     long_lines = [line for line in rendered.splitlines() if len(line) > khs_telegram_delivery_guard.MAX_BODY_LINE_CHARS]
     if long_lines:
         raise AssertionError(f"trusted policy Telegram render has overlong line: {long_lines[0][:120]}")
+
+
+def assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "trump_direct_policy_remarks_watch"
+    )
+    item = {
+        "title": "Trump says Strait of Hormuz open to commercial traffic - Reuters",
+        "source": "Reuters",
+        "published_kst": "2026-07-12T22:30:09+09:00",
+        "link": "https://example.com/reuters-hormuz-open",
+        "priority": 1,
+    }
+    profile = khs_trusted_policy_news_watch.trump_story_profile(item["title"])
+    if not profile:
+        raise AssertionError("Reuters Hormuz-open story was not given a concrete Korean profile")
+    if profile.get("title") != "트럼프, 호르무즈 해협 상업 통항 가능 발언: 유가·운임 리스크 완화 신호":
+        raise AssertionError(f"Hormuz-open title translation is not source-faithful: {profile.get('title')}")
+    rendered = khs_trusted_policy_news_watch.render_alert_bundle(
+        [{"rule": rule, "items": [item], "fingerprint": "test"}],
+        dt.datetime(2026, 7, 13, 9, 0, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "호르무즈 해협 상업 통항 가능 발언",
+        "호르무즈 해협이 상업 통항에 열려 있다고",
+        "항공/운송, 화학, 해운, 정유",
+        "매출·마진·현금흐름, 밸류에이션/할인율, 시간표",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"Hormuz-open render missing: {marker}")
+    forbidden = ["트럼프 에너지 발언", "관세/수출주", "반도체/AI", "전력망/원전"]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"Hormuz-open render leaked generic template text: {marker}")
+    iran_talks = {
+        **item,
+        "title": "Trump says US agreed to Iran's request to continue talks, but ceasefire is over - Reuters",
+        "published_kst": "2026-07-11T07:25:15+09:00",
+        "link": "https://example.com/reuters-iran-talks",
+    }
+    groups = khs_trusted_policy_news_watch.alert_item_groups(rule, [item, iran_talks])
+    if groups != [[item], [iran_talks]]:
+        raise AssertionError("different Trump headlines were bundled into one Telegram source chain")
+    revised_seen = {khs_trusted_policy_news_watch.fingerprint(rule, [item]): {"first_seen_kst": "2026-07-12T23:01:16+09:00"}}
+    if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [item], revised_seen) != [item]:
+        raise AssertionError("corrected Hormuz-open Korean rendering was blocked before one corrective send")
+    event_seen = {khs_trusted_policy_news_watch.story_event_fingerprint(rule, [item]): {"first_seen_kst": "2026-07-13T09:00:00+09:00"}}
+    updated_item = {**item, "published_kst": "2026-07-13T09:10:00+09:00"}
+    if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [updated_item], event_seen):
+        raise AssertionError("same Reuters Hormuz headline re-alerted when only its timestamp changed")
 
 
 def assert_state_smr_moc_reaches_policy_lane() -> None:
