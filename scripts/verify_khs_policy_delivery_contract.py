@@ -47,6 +47,7 @@ def main() -> int:
     assert_trump_statement_reaches_policy_lane()
     assert_nato_defense_fact_sheet_is_not_generic_trump_alert()
     assert_trump_iran_war_statement_reaches_geopolitical_lane()
+    assert_trusted_iran_hormuz_escalation_reaches_policy_lane()
     assert_trusted_policy_news_story_fingerprint_allows_intraday_updates()
     assert_trusted_policy_news_render_is_compact()
     assert_state_smr_moc_reaches_policy_lane()
@@ -415,6 +416,36 @@ def assert_trump_iran_war_statement_reaches_geopolitical_lane() -> None:
     for marker in ("이란·이스라엘·중동 전쟁위험", "정유/화학/해운", "유가·환율·운임·방산"):
         if marker not in rendered:
             raise AssertionError(f"Trump Iran/Hormuz render missing market-impact marker: {marker}")
+
+
+def assert_trusted_iran_hormuz_escalation_reaches_policy_lane() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "iran_hormuz_military_escalation"
+    )
+    item = {
+        "title": "US attacks Iran over ship being hit in Strait of Hormuz; Tehran lashes out again at Gulf Arab states - AP News",
+        "source": "AP News",
+        "published_kst": "2026-07-12T09:45:00+09:00",
+        "link": "https://apnews.com/article/iran-hormuz-regression-fixture",
+        "priority": 7,
+    }
+    if not khs_trusted_policy_news_watch.has_required_terms(item["title"], rule):
+        raise AssertionError("trusted Iran/Hormuz escalation headline did not satisfy required terms")
+    rendered = khs_trusted_policy_news_watch.render_alert(
+        rule,
+        [item],
+        dt.datetime(2026, 7, 12, 12, 30, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    for marker in (
+        "미국, 이란 재공격·호르무즈 상선 피격",
+        "매출·마진·현금흐름, 할인율, 수급, 시간표",
+        "정유/화학",
+        "해운/운임",
+        "AP News",
+    ):
+        if marker not in rendered:
+            raise AssertionError(f"trusted Iran/Hormuz alert render missing: {marker}")
 
 
 def assert_trusted_policy_news_story_fingerprint_allows_intraday_updates() -> None:

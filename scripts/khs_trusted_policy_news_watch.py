@@ -419,6 +419,29 @@ STORY_RULES = (
         follow_up="DOE 보도는 금액·대출조건·선정기업·시행일·조달일정이 원문에서 확인될 때 고충격으로 남깁니다. 국내 기업은 미국 프로젝트 노출이 없으면 테마 반응으로 제한합니다.",
     ),
     StoryRule(
+        key="iran_hormuz_military_escalation",
+        title="미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크",
+        google_queries=(
+            "site:apnews.com Iran Hormuz attack ship strike ceasefire",
+            "Iran Hormuz attack ship airstrikes AP News",
+            "U.S. strikes Iran ship Strait of Hormuz ceasefire AP Reuters CNBC",
+            "Iran retaliates Gulf states Hormuz vessel attack AP News",
+        ),
+        required_groups=(
+            ("iran", "iranian", "tehran", "이란"),
+            ("hormuz", "strait of hormuz", "ship", "vessel", "tanker", "gulf"),
+            ("attack", "attacks", "attacked", "strike", "strikes", "airstrike", "airstrikes", "retaliation", "ceasefire", "missile", "drone", "closed"),
+        ),
+        core="AP·Reuters·CNBC 등 신뢰외신에서 호르무즈 상선 피격과 미국의 이란 재공격, 이란의 역내 대응으로 휴전과 해상운송 안전이 다시 흔들린 사안입니다.",
+        impact="정유/화학, 해운/운임, 방산/지정학, 환율 민감주 | 돈 버는 능력·할인율·수급·시간표",
+        point="호르무즈 통항 차질은 유가·운임·보험료와 원/달러를 통해 한국 수입 원가를 높이고, 해운·방산 수급을 자극할 수 있습니다.",
+        counter="단발성 보복 뒤 추가 공격이 멈추고 상선 통항이 유지되면 유가·운임 충격은 빠르게 되돌릴 수 있습니다.",
+        sectors="정유/화학, 해운/운임, 방산/지정학, 환율 민감주",
+        impacts=("돈 버는 능력", "할인율", "수급", "시간표"),
+        paths=("지정학 리스크", "유가·운임", "원자재 비용", "환율", "정책 타임라인"),
+        follow_up="미 국방부·CENTCOM·백악관 후속, 실제 선박 통항 감소, WTI/Brent·운임·USD/KRW·방산주 반응을 확인합니다.",
+    ),
+    StoryRule(
         key="trump_direct_policy_remarks_watch",
         title="트럼프 대통령 직접 발언, 시장 영향 정책 신호",
         google_queries=(
@@ -826,15 +849,25 @@ def compact_korea_market_view(rule: StoryRule, items: list[dict]) -> str:
 
 
 def compact_priced_in(rule: StoryRule, items: list[dict]) -> str:
+    if rule.key == "iran_hormuz_military_escalation":
+        return "낮음~중간. 신규 상선 피격과 재공격은 휴전 붕괴 확률을 다시 높이는 새 정보입니다."
     if rule.key == "trump_direct_policy_remarks_watch":
         return "낮음~중간. 발언은 빠르게 반영되지만 공식 문서 전에는 되돌림도 빠릅니다."
     return "낮음~중간. 공식 문서·시행일·적용 대상 확인 전까지는 예비 재료입니다."
 
 
 def compact_failure_signal(rule: StoryRule, items: list[dict]) -> str:
+    if rule.key == "iran_hormuz_military_escalation":
+        return "미 국방부·CENTCOM 후속, 통항 감소, 유가·운임·환율 반응이 없으면 단발성 충돌로 약화됩니다."
     if rule.key == "trump_direct_policy_remarks_watch":
         return "백악관/부처 후속, 유가·환율·운임·방산 티커 반응이 없으면 단발성 발언으로 제외합니다."
     return "공식 원문, 시행일, 적용 대상, 한국 기업 직접 노출이 확인되지 않으면 제외합니다."
+
+
+def compact_counter(rule: StoryRule) -> str:
+    if rule.key == "iran_hormuz_military_escalation":
+        return "단발성 보복 뒤 추가 공격이 멈추고 상선 통항이 유지되면 유가·운임 충격은 빠르게 되돌릴 수 있습니다."
+    return "공식 문서·시행일·적용 범위가 아직 없다는 점입니다."
 
 
 def is_trump_iran_item(rule: StoryRule, items: list[dict]) -> bool:
@@ -871,7 +904,7 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
         f"- 한국장 영향: {compact_korea_market_view(rule, items)}",
         f"- 의사결정 영향: {compact_impacts(rule, items)} | 경로: {compact_paths(rule, items)}",
         f"- 영향 섹터: {compact_sectors(rule, items)}",
-        f"- 반영/반대: {compact_priced_in(rule, items)} 반대 근거는 공식 문서·시행일·적용 범위가 아직 없다는 점입니다.",
+        f"- 반영/반대: {compact_priced_in(rule, items)} 반대 근거는 {compact_counter(rule)}",
         f"- 실패 신호: {compact_failure_signal(rule, items)}",
     ]
 

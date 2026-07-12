@@ -81,7 +81,7 @@ CORE_QUERY_BUNDLES = [
     ("K-방산", "(K9 OR Chunmoo OR Redback OR KM-SAM OR Cheongung OR FA-50 OR KF-21 OR K2 tank) (contract OR order OR export OR delay OR signing) Reuters Bloomberg DAPA"),
     ("원전/SMR/가스터빈", "(KHNP OR Doosan Enerbility OR Westinghouse OR AP1000 OR i-SMR OR gas turbine) (contract OR tender OR loan OR licensing OR deployment) Reuters Bloomberg"),
     ("바이오/FDA", "(FDA approval OR complete response letter OR PDUFA OR phase 3 OR biotech acquisition OR licensing deal) Reuters Bloomberg CNBC"),
-    ("지정학/해운", "(Iran OR Israel OR Hormuz OR Red Sea OR port strike OR shipping sanctions) (oil OR freight OR defense OR supply) Reuters Bloomberg AP CNBC"),
+    ("이란/호르무즈 긴급상황", "Iran Hormuz attack ship strike ceasefire AP News Reuters CNBC"),
     ("국내 정책", "한국 (통신비 OR 스테이블코인 OR 디지털자산 OR 원전 입지 OR 반도체 세액공제 OR 데이터센터) 정책 금융위원회 한국은행 산업부 과기정통부"),
     ("지역 데이터센터 규제", "data center (moratorium OR ban OR zoning OR permit OR public hearing OR city council) Reuters AP local news"),
     ("반도체 공급망 전문매체", "(HBM4 OR MLCC OR notebook shipments OR Intel 18A OR LPDDR5X OR high-purity CO2) TrendForce Tom's Hardware ServeTheHome"),
@@ -111,6 +111,11 @@ TERMS += [
     "suspend", "suspends", "suspended", "exports",
     "dual-use items", "helium", "rare earth", "gallium", "germanium", "graphite", "antimony",
     "tungsten", "indium", "countervailing",
+]
+TERMS += [
+    "attack", "attacks", "attacked", "airstrike", "airstrikes", "strike", "strikes",
+    "retaliation", "retaliatory", "ceasefire", "ship", "vessel", "tanker", "missile",
+    "drone", "closure", "closed", "reopen", "war",
 ]
 
 SECTORS = [
@@ -356,6 +361,18 @@ def classify(row: dict, now: dt.datetime) -> dict | None:
     sectors = [label for label, keys in SECTORS if any(has(text, k) for k in keys)]
     if not matched or not sectors:
         return None
+    iran_hormuz_escalation = (
+        "방산/정유/해운/지정학" in sectors
+        and any(has(text, term) for term in ("iran", "iranian", "tehran", "hormuz", "strait of hormuz"))
+        and any(
+            has(text, term)
+            for term in (
+                "attack", "attacks", "attacked", "airstrike", "airstrikes", "strike", "strikes",
+                "retaliation", "retaliatory", "ceasefire", "missile", "drone", "closure", "closed",
+            )
+        )
+        and any(has(text, term) for term in ("ship", "vessel", "tanker", "hormuz", "strait of hormuz", "gulf"))
+    )
     impacts = []
     china_trade_action = any(
         term in matched
@@ -384,6 +401,8 @@ def classify(row: dict, now: dt.datetime) -> dict | None:
         impacts.append("수급")
     if any(t in matched for t in ["city council", "court order", "final rule", "injunction", "joint venture", "loi", "merger", "mou", "permit", "planning commission", "public hearing", "residents", "township", "vote", "subsidy", "loan", "low-cost loan", "loan guarantee", "conditional commitment", "funding opportunity", "equipment authorization", "fcc", "doe", "department of energy", "타법인주식", "회사합병", "회사분할", "주요사항보고서", "소송"]):
         impacts.append("시간표")
+    if iran_hormuz_escalation:
+        impacts.extend(["돈 버는 능력", "할인율", "수급", "시간표"])
     impacts = list(dict.fromkeys(impacts)) or ["의사결정 영향 제한적"]
     age = age_hours(row, now)
     score = (28 if row.get("layer") == "official" else 0) + (20 if trusted(row.get("publisher") or row.get("source")) else 0) + min(36, len(matched) * 6) + len(impacts) * 10 + len(sectors) * 6
@@ -393,11 +412,16 @@ def classify(row: dict, now: dt.datetime) -> dict | None:
         score += 18
     if local_dc_policy:
         score += 36
+    if iran_hormuz_escalation:
+        score += 42
     if score < 58:
         return None
     status = "확정" if row.get("layer") == "official" else "공식 확인 전"
     importance = "상" if score >= 100 else "중" if score >= 76 else "하"
-    if local_dc_policy:
+    if iran_hormuz_escalation:
+        interp = "미국의 이란 재공격과 호르무즈 상선 피격은 유가·운임·원/달러와 정유·화학 원가, 해운·방산 수급을 동시에 움직일 수 있는 직접 지정학 충격입니다. 휴전 유지 여부와 항로 재개 시간표를 함께 확인해야 합니다."
+        fail = "미 국방부·CENTCOM·백악관 후속 확인이 없거나 WTI/Brent·운임·USD/KRW·방산주가 동행하지 않으면 단발성 충돌로 약화"
+    elif local_dc_policy:
         interp = "미국 지역 단위 데이터센터 금지·모라토리엄·주민투표는 AI CAPEX의 승인 시간표와 전력망 접속 프리미엄을 바꾸는 조기 신호입니다. 확정 매출은 아니지만 전력기기·전선·냉각·원전/가스·서버 밸류체인의 할인율과 수주 가시성을 점검해야 합니다."
         fail = "시의회 안건·조례·투표 일정 등 공식 후속 확인이 없거나 빅테크 CAPEX/전력기기 수주 전망이 유지되면 지역성 뉴스로 약화"
     elif "데이터센터/전력망/전력기기" in sectors:
@@ -426,6 +450,8 @@ def classify(row: dict, now: dt.datetime) -> dict | None:
         "sectors": sectors,
         "matched": matched[:10],
         "local_dc_policy": local_dc_policy,
+        "iran_hormuz_escalation": iran_hormuz_escalation,
+        "realtime_policy_lane": iran_hormuz_escalation,
         "reflection": "낮음" if age is not None and age <= 6 else "중간" if age is None or age <= 24 else "높음",
         "counter": "제목·요약 기반 1차 감지라 원문 세부조건과 공식 문서 확인 전 과대해석 가능" if status != "확정" else "시행일, 적용 대상, 금액, 기간, 독점성, 매출 인식 조건 확인 전 영향이 제한될 수 있음",
         "interpretation": interp,

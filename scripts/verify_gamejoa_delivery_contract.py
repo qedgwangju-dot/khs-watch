@@ -196,7 +196,7 @@ def main() -> int:
     query_plan = production.base.trusted_query_plan()
     if len(query_plan) > 18:
         errors.append(f"trusted query plan is too large for stable polling: {len(query_plan)} > 18")
-    required_query_labels = {"트럼프 직접발언/정책", "반도체/AI/HBM", "K-방산", "국내 정책", "바이오/FDA"}
+    required_query_labels = {"트럼프 직접발언/정책", "이란/호르무즈 긴급상황", "반도체/AI/HBM", "K-방산", "국내 정책", "바이오/FDA"}
     query_labels = {name for name, _query in query_plan}
     required_query_labels.add("중국 상무부 수출통제/관세")
     missing_query_labels = sorted(required_query_labels - query_labels)
@@ -236,6 +236,45 @@ def main() -> int:
             errors.append("China MOFCOM strategic-material alert lost its Korea-market path")
         if not compact.has_decision_impact(normalized_china):
             errors.append("China MOFCOM strategic-material alert lost its decision-impact classification")
+
+    iran_row = {
+        "source": "Trusted news 이란/호르무즈 긴급상황",
+        "layer": "trusted",
+        "publisher": "AP News",
+        "title": "US attacks Iran over ship being hit in Strait of Hormuz; Tehran lashes out again at Gulf Arab states",
+        "link": "https://apnews.com/article/iran-hormuz-regression-fixture",
+        "summary": "The U.S. military completed airstrikes targeting Iran after a civilian vessel was attacked in the Strait of Hormuz, threatening the ceasefire.",
+        "published": now,
+    }
+    iran_alert = production.contract.strict.classify(iran_row, now)
+    if not iran_alert:
+        errors.append("Iran/Hormuz ship attack and U.S. strike was not classified")
+    else:
+        normalized_iran = compact.normalize_alert_for_output(iran_alert)
+        if normalized_iran.get("news") != "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크":
+            errors.append(f"Iran/Hormuz alert did not render a specific Korean title: {normalized_iran.get('news')}")
+        expected_impacts = {"돈 버는 능력", "할인율", "수급", "시간표"}
+        if not expected_impacts.issubset(set(normalized_iran.get("impacts") or [])):
+            errors.append(f"Iran/Hormuz alert lost decision impacts: {normalized_iran.get('impacts')}")
+        if not normalized_iran.get("realtime_policy_lane"):
+            errors.append("Iran/Hormuz alert was not routed to the realtime policy lane")
+        reuters_duplicate = dict(normalized_iran)
+        reuters_duplicate.update({
+            "publisher": "Reuters on MSN",
+            "source": "Trusted news 이란/호르무즈 긴급상황",
+            "link": "https://www.reuters.com/world/iran-hormuz-regression-fixture",
+            "published": "2026-07-12T10:30+09:00",
+            "original_news": "US strikes Iran, Tehran says Strait of Hormuz closed, Gulf states hit",
+        })
+        one_story = compact.quality_display_alerts([reuters_duplicate, normalized_iran], 5)
+        if len(one_story) != 1 or "AP" not in str(one_story[0].get("publisher") or ""):
+            errors.append(f"Iran/Hormuz cross-source story was not deduped to AP: {one_story}")
+        live_remaining, live_routed = production.telegram.partition_realtime_policy_alerts([normalized_iran], True)
+        if live_remaining or live_routed != [normalized_iran]:
+            errors.append("Iran/Hormuz alert was not single-routed away from live radar duplication")
+        preopen_remaining, preopen_routed = production.telegram.partition_realtime_policy_alerts([normalized_iran], False)
+        if preopen_remaining != [normalized_iran] or preopen_routed:
+            errors.append("Iran/Hormuz alert was not retained for the 06:30 radar")
     if send_module != LOCKED_TELEGRAM_MODULE:
         errors.append(
             f"{PRODUCTION_RUNNER}.telegram.send_telegram is wired to {send_module}, "

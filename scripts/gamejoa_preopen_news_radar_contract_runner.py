@@ -112,6 +112,18 @@ def classify(row: dict, now):
     sectors = [label for label, keys in base.SECTORS if any(base.has(text, k) for k in keys)]
     if not matched or not sectors:
         return None
+    iran_hormuz_escalation = (
+        "방산/정유/해운/지정학" in sectors
+        and any(base.has(text, term) for term in ("iran", "iranian", "tehran", "hormuz", "strait of hormuz"))
+        and any(
+            base.has(text, term)
+            for term in (
+                "attack", "attacks", "attacked", "airstrike", "airstrikes", "strike", "strikes",
+                "retaliation", "retaliatory", "ceasefire", "missile", "drone", "closure", "closed",
+            )
+        )
+        and any(base.has(text, term) for term in ("ship", "vessel", "tanker", "hormuz", "strait of hormuz", "gulf"))
+    )
 
     impacts = []
     if any(t in matched for t in ["contract", "earnings", "guidance", "approval", "supply agreement", "fda", "capex", "oil", "natural gas", "copper", "lithium", "uranium", "customer inventory", "dram", "inventory", "memory price", "nand", "oversupply", "pricing", "단일판매", "공급계약", "수주", "투자판단"]):
@@ -122,6 +134,8 @@ def classify(row: dict, now):
         impacts.append("수급")
     if any(t in matched for t in ["city council", "court order", "final rule", "injunction", "joint venture", "loi", "merger", "mou", "permit", "planning commission", "public hearing", "residents", "township", "vote", "타법인주식", "회사합병", "회사분할", "주요사항보고서", "소송"]):
         impacts.append("시간표")
+    if iran_hormuz_escalation:
+        impacts.extend(["돈 버는 능력", "할인율", "수급", "시간표"])
     impacts = list(dict.fromkeys(impacts)) or ["의사결정 영향 제한적"]
 
     age = base.age_hours(row, now)
@@ -138,12 +152,17 @@ def classify(row: dict, now):
         score += 18
     if local_dc_policy:
         score += 36
+    if iran_hormuz_escalation:
+        score += 42
     if score < 58:
         return None
 
     status = "확정" if row.get("layer") == "official" else "공식 확인 전"
     importance = "상" if score >= 100 else "중" if score >= 76 else "하"
-    if local_dc_policy:
+    if iran_hormuz_escalation:
+        interp = "미국의 이란 재공격과 호르무즈 상선 피격은 유가·운임·원/달러와 정유·화학 원가, 해운·방산 수급을 동시에 움직일 수 있는 직접 지정학 충격입니다."
+        fail = "미 국방부·CENTCOM·백악관 후속 확인이 없거나 WTI/Brent·운임·USD/KRW·방산주가 동행하지 않으면 단발성 충돌로 약화"
+    elif local_dc_policy:
         interp = "미국 지역 단위 데이터센터 금지·모라토리엄·주민투표는 AI CAPEX의 승인 시간표와 전력망 접속 프리미엄을 바꾸는 조기 신호입니다."
         fail = "시의회 안건·조례·투표 일정 등 공식 후속 확인이 없거나 빅테크 CAPEX/전력기기 수주 전망이 유지되면 지역성 뉴스로 약화"
     elif "원자재/매크로" in sectors:
@@ -170,6 +189,8 @@ def classify(row: dict, now):
         "sectors": sectors,
         "matched": matched[:10],
         "local_dc_policy": local_dc_policy,
+        "iran_hormuz_escalation": iran_hormuz_escalation,
+        "realtime_policy_lane": iran_hormuz_escalation,
         "reflection": "낮음" if age is not None and age <= 6 else "중간" if age is None or age <= 24 else "높음",
         "counter": "제목·요약 기반 1차 감지라 원문 세부조건과 공식 문서 확인 전 과대해석 가능" if status != "확정" else "시행일, 적용 대상, 금액, 기간, 독점성, 매출 인식 조건 확인 전 영향이 제한될 수 있음",
         "interpretation": interp,

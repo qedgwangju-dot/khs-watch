@@ -560,6 +560,8 @@ def source_evidence_text(alert: dict) -> str:
 
 
 def alert_dedup_key(alert: dict) -> tuple[str, str]:
+    if alert.get("iran_hormuz_escalation"):
+        return ("iran_hormuz_military_escalation", str(alert.get("published") or "")[:10])
     raw_title = str(alert.get("original_news") or alert.get("news") or "")
     raw_title = re.split(r"\s+-\s+", raw_title, maxsplit=1)[0].strip()
     theme = str(alert.get("supply_chain_theme") or "")
@@ -1014,6 +1016,8 @@ def china_mofcom_action_label(alert: dict) -> str:
 def korean_title(alert: dict) -> str:
     text = alert_text(alert)
     raw = str(alert.get("news") or "").strip()
+    if alert.get("iran_hormuz_escalation"):
+        return "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크"
     if is_china_mofcom_control(alert):
         return f"중국 상무부, {china_mofcom_product_label(alert)} {china_mofcom_action_label(alert)} 발표"
     if alert.get("grid_policy_delay"):
@@ -1071,6 +1075,8 @@ def korean_title(alert: dict) -> str:
 
 def curated_sectors(alert: dict) -> list[str]:
     text = alert_text(alert)
+    if alert.get("iran_hormuz_escalation"):
+        return ["정유/화학", "해운/운임", "방산/지정학", "환율 민감주"]
     if is_china_mofcom_control(alert):
         product = china_mofcom_product_label(alert)
         if product == "헬륨":
@@ -1115,6 +1121,15 @@ def curated_sectors(alert: dict) -> list[str]:
 
 def explanation_for(alert: dict) -> dict[str, str]:
     text = alert_text(alert)
+    if alert.get("iran_hormuz_escalation"):
+        return {
+            "core": "미국이 호르무즈 해협 상선 피격에 대응해 이란을 다시 공격했고, 이란도 걸프 국가를 향해 대응하면서 취약한 휴전과 해상운송 안전이 다시 흔들린 사안입니다.",
+            "view": "호르무즈 통항 차질이 이어지면 유가·운임·보험료 상승이 정유·화학·항공의 원가와 해운·방산의 수익 기대를 동시에 바꿀 수 있습니다.",
+            "korea": "한국장에서는 WTI/Brent, 원/달러, 탱커·컨테이너 운임과 정유/화학·해운·방산 수급을 함께 확인합니다. 실제 항로 차질이 없으면 테마 반응으로 제한합니다.",
+            "priced": "낮음~중간. 최근 충돌 재개 우려가 일부 반영됐지만 신규 상선 피격과 재공격은 휴전 붕괴 확률을 다시 높이는 새 정보입니다.",
+            "counter": "단발성 보복 뒤 추가 공격이 멈추고 호르무즈 통항이 유지되면 유가·운임 충격은 빠르게 되돌릴 수 있습니다.",
+            "failure": "미 국방부·CENTCOM·백악관 후속, 실제 선박 통항 감소, WTI/Brent·운임·USD/KRW·방산주 반응이 없으면 고충격 재료에서 약화됩니다.",
+        }
     if is_china_mofcom_control(alert):
         product = china_mofcom_product_label(alert)
         action = china_mofcom_action_label(alert)
@@ -1306,9 +1321,28 @@ def normalize_alert_for_output(alert: dict) -> dict:
 
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
+    candidates = initial + alerts
+    iran_candidates = [alert for alert in candidates if alert.get("iran_hormuz_escalation")]
+    if iran_candidates:
+        def iran_source_rank(alert: dict) -> int:
+            source = alert_text(alert)
+            if has_term(source, ["ap news", "associated press"]):
+                return 0
+            if has_term(source, ["reuters"]):
+                return 1
+            if has_term(source, ["cnbc"]):
+                return 2
+            return 3
+
+        best_rank = min(iran_source_rank(alert) for alert in iran_candidates)
+        preferred_iran = max(
+            (alert for alert in iran_candidates if iran_source_rank(alert) == best_rank),
+            key=lambda alert: str(alert.get("published") or ""),
+        )
+        candidates = [preferred_iran] + [alert for alert in candidates if not alert.get("iran_hormuz_escalation")]
     selected: list[dict] = []
     seen: set[tuple[str, str]] = set()
-    for alert in initial + alerts:
+    for alert in candidates:
         if is_low_impact_admin_alert(alert):
             alert["_exclusion_reason"] = "low_impact_admin_document"
             continue
@@ -1349,6 +1383,8 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
 
 def related_text(alert: dict, fred: dict, te: dict) -> str:
     extra = []
+    if alert.get("iran_hormuz_escalation"):
+        extra += ["WTI", "Brent", "XLE", "탱커·컨테이너 운임", "USD/KRW", "DXY", "방산 ETF/티커"]
     if "해운/항만/물류" in alert.get("sectors", []):
         extra += ["SCFI", "Drewry WCI", "BDI", "컨테이너 운임", "벌크선 운임"]
     if "메가프로젝트 일정/물류" in alert.get("sectors", []):

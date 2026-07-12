@@ -282,6 +282,15 @@ def final_alerts_for_output(alerts: list[dict], limit: int) -> list[dict]:
     return display_alerts(alerts, limit)
 
 
+def partition_realtime_policy_alerts(alerts: list[dict], live_mode: bool) -> tuple[list[dict], list[dict]]:
+    """Route breaking policy/geopolitical alerts to KHS once, while retaining them for 06:30."""
+    if not live_mode:
+        return alerts, []
+    routed = [alert for alert in alerts if alert.get("realtime_policy_lane")]
+    remaining = [alert for alert in alerts if not alert.get("realtime_policy_lane")]
+    return remaining, routed
+
+
 def alert_identity(alert: dict) -> tuple[str, str, str]:
     return (
         base.norm(str(alert.get("original_news") or alert.get("news") or "")),
@@ -392,6 +401,10 @@ def main() -> int:
     now = base.kst_now()
     rows, notes = strict.collect_items(now)
     classified = [normalize_alert(a) for a in (strict.classify(r, now) for r in rows if base.fresh(r, now)) if a]
+    live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
+    classified, routed_policy = partition_realtime_policy_alerts(classified, live_mode)
+    if routed_policy:
+        print(f"GAMEJOA radar: routed_to_realtime_policy={len(routed_policy)}")
     alerts, skipped_seen = filter_previously_seen_alerts(classified, now)
     alerts.sort(key=lambda a: (-a["score"], a["published"]))
 
