@@ -613,6 +613,18 @@ def has_required_terms(text: str, rule: StoryRule) -> bool:
     return all(any(term.lower() in low for term in group) for group in rule.required_groups)
 
 
+def is_direct_trump_statement_title(title: str) -> bool:
+    """Reject third-party reporting that merely contains the words Trump and says."""
+    low = clean_story_title(title).lower()
+    return bool(
+        re.search(
+            r"\b(?:president\s+)?trump\s+(?:says|said|remarks|comments|announces|backs|orders|warns|threatens|signals|vows)\b",
+            low,
+        )
+        or re.search(r"\btrump\s+on\b", low)
+    )
+
+
 def load_seen() -> dict:
     if not SEEN_PATH.exists():
         return {"seen": {}, "updated_at_kst": ""}
@@ -661,8 +673,9 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             # A direct Trump quote is sendable only when its English headline maps
             # to a concrete Korean policy event. Do not fall back to a broad
             # "market-moving remark" template for an otherwise ambiguous story.
-            if rule.key == "trump_direct_policy_remarks_watch" and not trump_story_profile(title):
-                continue
+            if rule.key == "trump_direct_policy_remarks_watch":
+                if not is_direct_trump_statement_title(title) or not trump_story_profile(title):
+                    continue
             seen_links.add(link)
             display_source = publisher
             priority_key = source_key(publisher)
@@ -829,7 +842,13 @@ def trump_story_profile(title: str) -> dict[str, object] | None:
             "sectors": "관세 민감 수출주, 물류/공급망",
             "failure": "대상국·품목·세율·시행일과 한국 기업 노출이 확인되지 않으면 발언성 재료로 끝납니다.",
         }
-    if any(term in low for term in ("semiconductor", "chip", " ai", "artificial intelligence", "data center")):
+    if (
+        "semiconductor" in low
+        or re.search(r"\bchips?\b", low)
+        or re.search(r"\bai\b", low)
+        or "artificial intelligence" in low
+        or "data center" in low
+    ):
         return {
             **common,
             "title": "트럼프, 반도체·AI 관련 발언: 수출통제·AI 투자 정책 신호",

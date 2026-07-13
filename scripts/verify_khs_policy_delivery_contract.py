@@ -599,6 +599,13 @@ def assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped() -> None:
     updated_item = {**item, "published_kst": "2026-07-13T09:10:00+09:00"}
     if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [updated_item], event_seen):
         raise AssertionError("same Reuters Hormuz headline re-alerted when only its timestamp changed")
+    false_positive = "Trump administration subpoenas New York Times journalists over Air Force One story, newspaper says - Reuters"
+    if khs_trusted_policy_news_watch.is_direct_trump_statement_title(false_positive):
+        raise AssertionError("third-party newspaper wording was treated as a direct Trump statement")
+    if khs_trusted_policy_news_watch.trump_story_profile(false_positive):
+        raise AssertionError("Air Force One wording was incorrectly classified as an AI policy story")
+    if not khs_trusted_policy_news_watch.is_direct_trump_statement_title(item["title"]):
+        raise AssertionError("actual Reuters Trump quote was rejected by the direct-statement gate")
 
 
 def assert_state_smr_moc_reaches_policy_lane() -> None:
