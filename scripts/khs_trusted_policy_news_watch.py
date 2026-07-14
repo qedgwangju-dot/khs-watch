@@ -718,6 +718,9 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             if rule.key == "global_extreme_heat_mortality_watch":
                 if not is_heat_mortality_high_impact_title(title) or not heat_mortality_story_profile(title):
                     continue
+            if rule.key == "iran_hormuz_military_escalation":
+                if not iran_hormuz_story_profile(title):
+                    continue
             seen_links.add(link)
             display_source = publisher
             priority_key = source_key(publisher)
@@ -783,6 +786,35 @@ def story_event_fingerprint(rule: StoryRule, items: list[dict]) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
 
 
+IRAN_HORMUZ_REPEAT_COOLDOWN = dt.timedelta(hours=6)
+
+
+def is_recent_iran_hormuz_escalation(rule: StoryRule, items: list[dict], seen: dict) -> bool:
+    """Avoid repeats and old-wire backfills across AP/CNBC escalation coverage."""
+    if rule.key != "iran_hormuz_military_escalation" or not items:
+        return False
+    reference_times = [parse_kst_iso(str(item.get("published_kst") or "")) for item in items]
+    reference = max((value for value in reference_times if value), default=None)
+    if not reference:
+        return False
+    prior_alerts: list[dt.datetime] = []
+    for entry in seen.values():
+        if not isinstance(entry, dict) or entry.get("key") != rule.key:
+            continue
+        first_seen = parse_kst_iso(str(entry.get("first_seen_kst") or ""))
+        if first_seen:
+            prior_alerts.append(first_seen)
+    if not prior_alerts:
+        return False
+    latest_alert = max(prior_alerts)
+    # A wire article published before the latest delivered escalation alert was
+    # already represented by the previous broad grouping.  Never replay it just
+    # because the renderer gained a more precise title later.
+    if reference <= latest_alert:
+        return True
+    return reference - latest_alert < IRAN_HORMUZ_REPEAT_COOLDOWN
+
+
 def parse_kst_iso(value: str) -> dt.datetime | None:
     try:
         parsed = dt.datetime.fromisoformat(str(value).replace("Z", "+00:00"))
@@ -795,6 +827,8 @@ def parse_kst_iso(value: str) -> dt.datetime | None:
 
 def unseen_items_for_rule(rule: StoryRule, items: list[dict], seen: dict) -> list[dict]:
     if not items:
+        return []
+    if is_recent_iran_hormuz_escalation(rule, items, seen):
         return []
     current_fp = fingerprint(rule, items)
     event_fp = story_event_fingerprint(rule, items)
@@ -822,7 +856,11 @@ def unseen_items_for_rule(rule: StoryRule, items: list[dict], seen: dict) -> lis
 
 def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
     """Keep article-specific profiles in their own alert and source chain."""
-    if rule.key in {"trump_direct_policy_remarks_watch", "global_extreme_heat_mortality_watch"}:
+    if rule.key in {
+        "trump_direct_policy_remarks_watch",
+        "global_extreme_heat_mortality_watch",
+        "iran_hormuz_military_escalation",
+    }:
         return [[item] for item in items]
     return [items] if items else []
 
@@ -868,6 +906,41 @@ HEAT_SYSTEMIC_TERMS = (
     "crop", "agriculture", "food", "drought", "water", "insurance", "insured",
     "factory", "industrial", "transport", "rail", "airport", "port", "shipping",
 )
+
+
+def iran_hormuz_story_profile(title: str) -> dict[str, object] | None:
+    """Render one escalation headline without mixing it with another wire story."""
+    cleaned = clean_story_title(title)
+    low = cleaned.lower()
+    has_iran = "iran" in low or "iranian" in low or "tehran" in low
+    has_action = any(term in low for term in ("attack", "attacks", "strike", "strikes", "targets", "retaliates", "hits", "standoff", "vessel", "tanker"))
+    has_shipping_or_gulf = any(term in low for term in ("hormuz", "vessel", "tanker", "gulf", "uae", "bahrain"))
+    if not (has_iran and has_action and has_shipping_or_gulf):
+        return None
+    if "civilian vessel" in low:
+        title_ko = "호르무즈 민간선 피격 뒤 미군 이란 타격 보도: 유가·운임 리스크"
+        core = "신뢰외신은 호르무즈 민간 선박 피격 뒤 미군이 이란을 타격했다고 보도했습니다. 핵심은 실제 통항 감소와 추가 보복 여부입니다."
+    elif any(term in low for term in ("tanker", "uae", "bahrain")):
+        title_ko = "미국·이란 공방과 호르무즈 유조선 위협 보도: 유가·운임 리스크"
+        core = "신뢰외신은 미국의 이란 공격과 이란의 UAE 유조선·바레인 관련 대응을 보도했습니다. 호르무즈 통항과 유조선 안전이 직접 변수입니다."
+    elif "gulf states" in low or "military assets" in low:
+        title_ko = "미국의 이란 군사자산 타격·걸프국 긴장 보도: 유가·운임 리스크"
+        core = "신뢰외신은 미국의 이란 군사자산 타격과 테헤란의 걸프국 대응을 보도했습니다. 확전이 유조선·에너지 인프라로 번지는지 확인해야 합니다."
+    else:
+        title_ko = "미국, 이란 추가 타격·호르무즈 긴장 고조 보도: 유가·운임 리스크"
+        core = "신뢰외신은 미국의 이란 추가 타격과 호르무즈를 둘러싼 긴장 고조를 보도했습니다. 실제 상선 통항과 에너지 인프라 피해가 가격 변수입니다."
+    return {
+        "title": title_ko,
+        "core": core,
+        "investment": "통항 차질이나 유조선 피격이 이어지면 Brent·전쟁보험료·운임·원/달러가 먼저 반응하고, 정유·화학 원가와 해운·방산 수급이 뒤따를 수 있습니다.",
+        "korea": "한국장에서는 정유·화학의 원가, 해운·항공의 운임·연료비, 방산과 환율 민감주만 확인합니다. 실제 통항 감소 전에는 테마 확장을 제한합니다.",
+        "impacts": "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표",
+        "paths": "지정학 리스크, 유가·운임, 원자재 비용, 환율",
+        "sectors": "정유/화학, 해운, 항공/운송, 방산/지정학",
+        "priced_in": "중간. 기존 중동 긴장은 반영됐지만, 유조선 위협·통항 차질이 새로 확인되면 단기 재평가가 가능합니다.",
+        "counter": "공격·보복이 더 확산되지 않고 상선 통항이 유지되면 유가·운임 충격은 빠르게 되돌릴 수 있습니다.",
+        "failure": "CENTCOM·해운사·보험사 후속, AIS 통항 감소, Brent·운임·원/달러 반응이 없으면 단발성 속보로 약화됩니다.",
+    }
 
 
 def heat_death_count(title: str) -> int | None:
@@ -1087,6 +1160,8 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
         return trump_story_profile(title)
     if rule.key == "global_extreme_heat_mortality_watch":
         return heat_mortality_story_profile(title)
+    if rule.key == "iran_hormuz_military_escalation":
+        return iran_hormuz_story_profile(title)
     return None
 
 

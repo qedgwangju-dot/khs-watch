@@ -53,6 +53,7 @@ def main() -> int:
     assert_trusted_policy_news_render_is_compact()
     assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped()
     assert_trusted_heat_mortality_is_source_faithful_and_deduped()
+    assert_iran_hormuz_story_is_source_faithful_and_cooldown_deduped()
     assert_state_smr_moc_reaches_policy_lane()
     assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered()
     assert_boem_space_launch_is_excluded()
@@ -461,10 +462,10 @@ def assert_trusted_iran_hormuz_escalation_reaches_policy_lane() -> None:
         dt.datetime(2026, 7, 12, 12, 30, tzinfo=ZoneInfo("Asia/Seoul")),
     )
     for marker in (
-        "미국, 이란 재공격·호르무즈 상선 피격",
-        "매출·마진·현금흐름, 할인율, 수급, 시간표",
+        "미국, 이란 추가 타격·호르무즈 긴장 고조 보도",
+        "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표",
         "정유/화학",
-        "해운/운임",
+        "해운",
         "AP News",
     ):
         if marker not in rendered:
@@ -667,6 +668,67 @@ def assert_trusted_heat_mortality_is_source_faithful_and_deduped() -> None:
     updated_item = {**item, "published_kst": "2026-07-14T10:20:00+09:00"}
     if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [updated_item], seen):
         raise AssertionError("same heat mortality headline re-alerted when only its timestamp changed")
+
+
+def assert_iran_hormuz_story_is_source_faithful_and_cooldown_deduped() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "iran_hormuz_military_escalation"
+    )
+    item = {
+        "title": "US attacks Iran as Tehran retaliates against UAE tankers in Strait of Hormuz and Bahrain - AP News",
+        "source": "AP News",
+        "published_kst": "2026-07-14T11:38:00+09:00",
+        "link": "https://example.com/ap-iran-hormuz-tankers",
+        "priority": 7,
+    }
+    profile = khs_trusted_policy_news_watch.iran_hormuz_story_profile(item["title"])
+    if not profile:
+        raise AssertionError("Iran/Hormuz wire headline was not given a source-specific Korean profile")
+    if profile.get("title") != "미국·이란 공방과 호르무즈 유조선 위협 보도: 유가·운임 리스크":
+        raise AssertionError(f"Iran/Hormuz source title was rendered generically: {profile.get('title')}")
+    rendered = khs_trusted_policy_news_watch.render_alert_bundle(
+        [{"rule": rule, "items": [item], "fingerprint": "iran-hormuz-test"}],
+        dt.datetime(2026, 7, 14, 14, 30, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "미국·이란 공방과 호르무즈 유조선 위협 보도",
+        "UAE 유조선·바레인 관련 대응",
+        "정유/화학, 해운, 항공/운송, 방산/지정학",
+        "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"Iran/Hormuz source-specific rendering missing: {marker}")
+    forbidden = [
+        "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크",
+        "트럼프",
+        "반도체/AI",
+    ]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"Iran/Hormuz rendering leaked generic or unrelated text: {marker}")
+    groups = khs_trusted_policy_news_watch.alert_item_groups(rule, [item])
+    if groups != [[item]]:
+        raise AssertionError("Iran/Hormuz article was not isolated into its own source chain")
+    recent_seen = {
+        "prior-escalation": {
+            "key": rule.key,
+            "first_seen_kst": "2026-07-14T14:05:22+09:00",
+        }
+    }
+    if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [item], recent_seen):
+        raise AssertionError("same Iran/Hormuz escalation phase bypassed the six-hour cooldown")
+    later_item = {
+        **item,
+        "title": "US military says it is striking Iran in response to attack on civilian vessel in Strait of Hormuz - AP News",
+        "published_kst": "2026-07-14T21:00:00+09:00",
+        "link": "https://example.com/ap-iran-civilian-vessel",
+    }
+    if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [later_item], recent_seen) != [later_item]:
+        raise AssertionError("a materially later Iran/Hormuz escalation was incorrectly blocked after cooldown")
+    if khs_trusted_policy_news_watch.iran_hormuz_story_profile("Iran official meets Gulf diplomats - AP News"):
+        raise AssertionError("non-escalation Iran headline was incorrectly assigned a market profile")
 
 
 def assert_state_smr_moc_reaches_policy_lane() -> None:
