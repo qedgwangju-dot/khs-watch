@@ -251,6 +251,13 @@ def parse_fr(text: str, source: str) -> list[dict]:
             "link": clean(row.get("html_url") or row.get("pdf_url")),
             "summary": clean(" ".join(str(row.get(k, "")) for k in ("type", "document_number", "abstract", "excerpt"))),
             "published": parse_date(row.get("publication_date") or row.get("signing_date")),
+            # Keep the document identity through every renderer.  A Federal
+            # Register abstract can mention several industries, but the
+            # document title is the authoritative subject of the alert.
+            "source_title": clean(row.get("title") or row.get("citation")),
+            "source_abstract": clean(row.get("abstract") or row.get("excerpt")),
+            "source_document_number": clean(row.get("document_number")),
+            "source_metadata_url": clean(row.get("json_url")),
         })
     return rows
 
@@ -441,6 +448,10 @@ def classify(row: dict, now: dt.datetime) -> dict | None:
         "importance": importance,
         "status": status,
         "news": title,
+        "source_title": clean(row.get("source_title") or title),
+        "source_abstract": clean(row.get("source_abstract") or row.get("summary")),
+        "source_document_number": clean(row.get("source_document_number")),
+        "source_metadata_url": clean(row.get("source_metadata_url")),
         "publisher": row.get("publisher") or row.get("source"),
         "source": row.get("source"),
         "link": row.get("link") or "",

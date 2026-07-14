@@ -190,6 +190,12 @@ def main() -> int:
             errors.append(
                 f"report/JSON selected count mismatch: report={len(blocks)} json={len(json_alerts)}"
             )
+        for alert in json_alerts:
+            if not prod.runner.source_output_aligned(alert):
+                errors.append(
+                    "source/body alignment failed: "
+                    f"{alert.get('source_title') or alert.get('original_news') or alert.get('news')}"
+                )
         diagnostics = data.get("selection_diagnostics")
         if not isinstance(diagnostics, dict):
             errors.append("generated JSON missing selection_diagnostics")

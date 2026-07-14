@@ -452,6 +452,32 @@ def enforce_robotics_execution_filter() -> None:
 enforce_robotics_execution_filter()
 
 
+def enforce_source_identity_contract() -> None:
+    """Restore immutable source fields after every legacy classifier overlay.
+
+    Some older overlays create a replacement alert dictionary.  The decision
+    fields are useful, but source identity must always come from the row that
+    supplied the link, never from a previous Korean template.
+    """
+    original_classify = contract.strict.classify
+
+    def classify(row: dict, now):
+        alert = original_classify(row, now)
+        if not alert:
+            return alert
+        alert = dict(alert)
+        alert["source_title"] = base.clean(row.get("source_title") or row.get("title") or alert.get("source_title") or alert.get("news"))
+        alert["source_abstract"] = base.clean(row.get("source_abstract") or row.get("summary") or alert.get("source_abstract"))
+        alert["source_document_number"] = base.clean(row.get("source_document_number") or alert.get("source_document_number"))
+        alert["source_metadata_url"] = base.clean(row.get("source_metadata_url") or alert.get("source_metadata_url"))
+        return alert
+
+    contract.strict.classify = classify
+
+
+enforce_source_identity_contract()
+
+
 def safe(value: object) -> str:
     return html.escape(str(value or "확인 불가"), quote=False)
 
@@ -557,6 +583,100 @@ def source_evidence_text(alert: dict) -> str:
             item.get("link"),
         ])
     return base.norm(" ".join(str(part or "") for part in parts))
+
+
+def source_subject_text(alert: dict) -> str:
+    """Source title and official abstract only, never generated commentary.
+
+    The classifier deliberately keeps broad matching terms for recall.  Those
+    terms must not decide the Korean headline because a subordinate keyword in
+    an abstract can otherwise overwrite the actual document subject.
+    """
+    parts = [
+        alert.get("source_title") or alert.get("original_news") or alert.get("news"),
+        alert.get("source_abstract"),
+        alert.get("publisher"),
+        alert.get("source"),
+        alert.get("link"),
+        alert.get("source_document_number"),
+    ]
+    return base.norm(" ".join(str(part or "") for part in parts))
+
+
+def is_federal_register_source(alert: dict) -> bool:
+    link = str(alert.get("link") or "").lower()
+    return "federalregister.gov/documents/" in link or has_term(source_subject_text(alert), FEDERAL_REGISTER_MARKERS)
+
+
+def federal_register_profile(alert: dict) -> dict[str, object] | None:
+    """Return a source-faithful Korean profile for verified FR documents.
+
+    The profile is intentionally narrow: only a verified document signature
+    may receive an exact Korean policy template.
+    """
+    if not is_federal_register_source(alert):
+        return None
+    title = base.norm(str(alert.get("source_title") or alert.get("original_news") or ""))
+    abstract = base.norm(str(alert.get("source_abstract") or ""))
+    document_number = str(alert.get("source_document_number") or "")
+    is_uae_ear = (
+        "united arab emirates" in title
+        and "export administration regulations" in title
+        and (
+            document_number == "2026-14132"
+            or ("country groups d:3" in abstract and "country group a:5" in abstract)
+        )
+    )
+    if not is_uae_ear:
+        return None
+    return {
+        "id": "federal_register_uae_ear",
+        "title": "미 상무부 BIS, UAE 대상 수출관리규정(EAR) 우대 적용 확대",
+        "core": (
+            "미 상무부 산업안보국(BIS)이 UAE를 EAR 국가그룹 D:3·D:4에서 제외하고 "
+            "A:5에 추가한 최종규칙입니다. UAE 정부와 승인 상업기관에는 STA를 포함한 "
+            "추가 라이선스 예외가 열리며, 규칙은 7월 10일부터 효력이 발생했습니다."
+        ),
+        "view": (
+            "UAE향 첨단컴퓨팅·위성·이중용도 품목의 미국 수출·재수출 허가 부담과 "
+            "납기 불확실성은 낮아질 수 있습니다. 다만 한국 기업의 실적 영향은 UAE향 "
+            "매출과 미국 EAR 적용 비중이 확인될 때만 판단할 수 있습니다."
+        ),
+        "korea": (
+            "한국장 직접 수혜로 일반화하지 않습니다. 반도체·AI 서버, 위성·방산, "
+            "플랜트 장비 중 UAE향 수출 또는 미국산 기술·부품 통제를 받는 기업만 "
+            "개별 공시와 공급계약으로 확인합니다."
+        ),
+        "impacts": ["돈 버는 능력", "시간표"],
+        "paths": ["수출통제", "공급망", "정책 타임라인"],
+        "sectors": ["수출통제/통상", "UAE향 첨단기술·방산/위성", "반도체/AI"],
+        "priced": (
+            "중간. 7월 10일 발효된 최종규칙이지만, 한국 기업별 UAE향 매출·EAR 적용 "
+            "노출이 확인되기 전에는 일괄적인 실적 상향 재료로 보기 어렵습니다."
+        ),
+        "counter": (
+            "우대 적용은 UAE 정부와 승인 상업기관, 품목별 EAR 요건에 한정됩니다. "
+            "미국산 기술·부품 비중, 최종사용자, 개별 예외 조건에 따라 실제 허가 부담은 달라집니다."
+        ),
+        "failure": (
+            "BIS의 적용 대상·최종사용자 확인, UAE향 수출·재수출 계약, 기업별 매출·납기 변화가 "
+            "뒤따르지 않으면 한국장에는 직접 재료가 되지 않습니다."
+        ),
+    }
+
+
+def source_output_aligned(alert: dict) -> bool:
+    """Reject a rendered headline/body that conflicts with a verified source."""
+    profile = federal_register_profile(alert)
+    if not profile:
+        return True
+    rendered = " ".join(
+        str(alert.get(key) or "")
+        for key in ["news", "policy_plain_summary", "investment_view", "korea_market_impact"]
+    )
+    required = ["UAE", "수출관리규정", "BIS"]
+    forbidden_headline = ["원전·SMR·AI 전력 정책", "가스터빈", "두산에너빌리티", "KHNP"]
+    return all(term in rendered for term in required) and not any(term in rendered for term in forbidden_headline)
 
 
 def alert_dedup_key(alert: dict) -> tuple[str, str]:
@@ -725,6 +845,11 @@ def has_korea_market_link(alert: dict) -> bool:
 
 def has_direct_market_path(text: str, alert: dict) -> bool:
     text = source_evidence_text(alert) or text
+    if federal_register_profile(alert):
+        # The verified UAE EAR rule changes the licensing timetable for
+        # advanced-computing and dual-use exports; Korean exposure remains
+        # company-specific, which the rendered counterargument makes explicit.
+        return True
     if any(
         alert.get(flag)
         for flag in [
@@ -1014,8 +1139,13 @@ def china_mofcom_action_label(alert: dict) -> str:
 
 
 def korean_title(alert: dict) -> str:
-    text = alert_text(alert)
-    raw = str(alert.get("news") or "").strip()
+    profile = federal_register_profile(alert)
+    if profile:
+        return str(profile["title"])
+    # Render only from the original source identity.  Generated fields from an
+    # earlier overlay are not source evidence and cannot select a new theme.
+    text = source_subject_text(alert)
+    raw = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "").strip()
     if alert.get("iran_hormuz_escalation"):
         return "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크"
     if is_china_mofcom_control(alert):
@@ -1074,7 +1204,10 @@ def korean_title(alert: dict) -> str:
 
 
 def curated_sectors(alert: dict) -> list[str]:
-    text = alert_text(alert)
+    profile = federal_register_profile(alert)
+    if profile:
+        return list(profile["sectors"])
+    text = source_subject_text(alert)
     if alert.get("iran_hormuz_escalation"):
         return ["정유/화학", "해운/운임", "방산/지정학", "환율 민감주"]
     if is_china_mofcom_control(alert):
@@ -1120,7 +1253,17 @@ def curated_sectors(alert: dict) -> list[str]:
 
 
 def explanation_for(alert: dict) -> dict[str, str]:
-    text = alert_text(alert)
+    profile = federal_register_profile(alert)
+    if profile:
+        return {
+            "core": str(profile["core"]),
+            "view": str(profile["view"]),
+            "korea": str(profile["korea"]),
+            "priced": str(profile["priced"]),
+            "counter": str(profile["counter"]),
+            "failure": str(profile["failure"]),
+        }
+    text = source_subject_text(alert)
     if alert.get("iran_hormuz_escalation"):
         return {
             "core": "미국이 호르무즈 해협 상선 피격에 대응해 이란을 다시 공격했고, 이란도 걸프 국가를 향해 대응하면서 취약한 휴전과 해상운송 안전이 다시 흔들린 사안입니다.",
@@ -1270,26 +1413,34 @@ def normalize_alert_for_output(alert: dict) -> dict:
         out["china_mofcom_trade_control"] = True
         out["impacts"] = ["돈 버는 능력", "수급", "시간표"]
         out["paths"] = ["공급·수요", "원자재 비용", "공급망", "정책 타임라인"]
+    if not out.get("source_title"):
+        out["source_title"] = out.get("original_news") or out.get("news")
     if not out.get("original_news"):
-        out["original_news"] = out.get("news")
+        out["original_news"] = out.get("source_title") or out.get("news")
+    profile = federal_register_profile(out)
     out["news"] = korean_title(out)
     out["sectors"] = curated_sectors(out)
     impacts = unique([str(x) for x in out.get("impacts") or []]) or ["의사결정 영향 제한적"]
     if len(impacts) > 1:
         impacts = [x for x in impacts if x != "의사결정 영향 제한적"]
+    if profile:
+        impacts = list(profile["impacts"])
     out["impacts"] = impacts
-    out["paths"] = unique([str(x) for x in out.get("paths") or []]) or [
+    if profile:
+        out["paths"] = list(profile["paths"])
+    else:
+        out["paths"] = unique([str(x) for x in out.get("paths") or []]) or [
         "이익" if x == "돈 버는 능력" else "할인율" if x == "할인율" else "수급" if x == "수급" else "정책 타임라인"
         for x in impacts
-    ]
+        ]
     explanation = explanation_for(out)
-    if not out.get("policy_plain_summary"):
+    if profile or not out.get("policy_plain_summary"):
         out["policy_plain_summary"] = explanation["core"]
-    if not out.get("investment_view"):
+    if profile or not out.get("investment_view"):
         out["investment_view"] = explanation["view"]
-    if not out.get("korea_market_impact"):
+    if profile or not out.get("korea_market_impact"):
         out["korea_market_impact"] = explanation["korea"]
-    if not out.get("priced_in"):
+    if profile or not out.get("priced_in"):
         out["priced_in"] = explanation["priced"]
     generic_counter_terms = [
         "시행일, 적용 대상, 금액, 기간",
@@ -1297,7 +1448,7 @@ def normalize_alert_for_output(alert: dict) -> dict:
         "원문 세부조건과 공식 문서 확인 전",
     ]
     counter_text = str(out.get("counter") or "")
-    if not counter_text or any(term in counter_text for term in generic_counter_terms):
+    if profile or not counter_text or any(term in counter_text for term in generic_counter_terms):
         out["counter"] = explanation["counter"]
     failed_text = str(out.get("failed_signal") or "")
     stale_failure_terms = [
@@ -1305,13 +1456,13 @@ def normalize_alert_for_output(alert: dict) -> dict:
         "SOX/MU/NVDA",
         "관련 해외 티커·원자재·금리·환율",
     ]
-    if not failed_text or any(term in failed_text for term in stale_failure_terms):
+    if profile or not failed_text or any(term in failed_text for term in stale_failure_terms):
         out["failed_signal"] = explanation["failure"]
     stale_interpretation_terms = [
         "반도체 급락은",
         "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는 후보",
     ]
-    if not out.get("interpretation") or (
+    if profile or not out.get("interpretation") or (
         any(term in str(out.get("interpretation")) for term in stale_interpretation_terms)
         and "반도체/AI" not in out.get("sectors", [])
     ):
@@ -1353,6 +1504,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             alert["_exclusion_reason"] = "local_data_center_without_trusted_hard_action"
             continue
         normalized = normalize_alert_for_output(alert)
+        if not source_output_aligned(normalized):
+            alert["_exclusion_reason"] = "source_body_mismatch"
+            continue
         key = alert_dedup_key(normalized)
         if key in seen:
             alert.setdefault("_exclusion_reason", "semantic_duplicate")

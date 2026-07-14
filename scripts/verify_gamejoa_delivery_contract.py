@@ -71,6 +71,8 @@ REQUIRED_RUNNER_SNIPPETS = [
     "write_delivery_status(\"sent\"",
     "RADAR_RUN_MODE",
     "telegram.final_alerts_for_output = quality_display_alerts",
+    "source_output_aligned(normalized)",
+    "federal_register_uae_ear",
 ]
 
 REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
@@ -236,6 +238,49 @@ def main() -> int:
             errors.append("China MOFCOM strategic-material alert lost its Korea-market path")
         if not compact.has_decision_impact(normalized_china):
             errors.append("China MOFCOM strategic-material alert lost its decision-impact classification")
+
+    # Regression fixture for the July 14 UAE EAR rule.  Its official abstract
+    # mentions civil nuclear generation among several dual-use items, but the
+    # source subject is an EAR treatment rule and must never render as nuclear.
+    uae_ear_row = {
+        "source": "Federal Register Commerce",
+        "layer": "official",
+        "publisher": "Federal Register",
+        "title": "Enhanced Favorable Treatment for the United Arab Emirates Under the Export Administration Regulations",
+        "source_title": "Enhanced Favorable Treatment for the United Arab Emirates Under the Export Administration Regulations",
+        "source_document_number": "2026-14132",
+        "source_metadata_url": "https://www.federalregister.gov/api/v1/documents/2026-14132",
+        "link": "https://www.federalregister.gov/documents/2026/07/14/2026-14132/enhanced-favorable-treatment-for-the-united-arab-emirates-under-the-export-administration",
+        "summary": (
+            "Final rule 2026-14132. BIS removes the UAE from Country Groups D:3 and D:4 "
+            "and adds it to Country Group A:5. Strategic Trade Authorization becomes available "
+            "for approved entities, including dual-use items for civil nuclear power generation."
+        ),
+        "source_abstract": (
+            "BIS removes the UAE from Country Groups D:3 and D:4 and adds it to Country Group A:5. "
+            "Strategic Trade Authorization becomes available for approved entities, including dual-use "
+            "items for civil nuclear power generation."
+        ),
+        "published": now,
+    }
+    uae_ear_alert = production.contract.strict.classify(uae_ear_row, now)
+    if not uae_ear_alert:
+        errors.append("Federal Register UAE EAR final rule was not classified")
+    else:
+        normalized_uae_ear = compact.normalize_alert_for_output(uae_ear_alert)
+        rendered_uae_ear = " ".join(
+            str(normalized_uae_ear.get(key) or "")
+            for key in ["news", "policy_plain_summary", "investment_view", "korea_market_impact"]
+        )
+        if "UAE" not in rendered_uae_ear or "수출관리규정" not in rendered_uae_ear or "BIS" not in rendered_uae_ear:
+            errors.append(f"Federal Register UAE EAR rule lost its source subject: {rendered_uae_ear}")
+        if any(term in str(normalized_uae_ear.get("news") or "") for term in ["원전", "SMR", "가스터빈", "두산"]):
+            errors.append(f"Federal Register UAE EAR rule rendered as an unrelated nuclear alert: {normalized_uae_ear.get('news')}")
+        if not compact.source_output_aligned(normalized_uae_ear):
+            errors.append("Federal Register UAE EAR source/body alignment guard did not pass")
+        selected_uae_ear = compact.quality_display_alerts([uae_ear_alert], 5)
+        if len(selected_uae_ear) != 1 or not compact.source_output_aligned(selected_uae_ear[0]):
+            errors.append("Federal Register UAE EAR alert failed final selection source/body alignment")
 
     iran_row = {
         "source": "Trusted news 이란/호르무즈 긴급상황",
