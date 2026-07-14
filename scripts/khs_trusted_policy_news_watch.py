@@ -60,6 +60,12 @@ TRUSTED_SOURCES = {
     "marketwatch",
     "ap news",
     "associated press",
+    "world health organization",
+    "world health organization (who)",
+    "who",
+    "world meteorological organization",
+    "world meteorological organization (wmo)",
+    "wmo",
 }
 
 SOURCE_PRIORITY = {
@@ -81,6 +87,12 @@ SOURCE_PRIORITY = {
     "marketwatch": 6,
     "ap news": 7,
     "associated press": 7,
+    "world health organization": 0,
+    "world health organization (who)": 0,
+    "who": 0,
+    "world meteorological organization": 0,
+    "world meteorological organization (wmo)": 0,
+    "wmo": 0,
     "politico": 8,
 }
 
@@ -332,6 +344,29 @@ STORY_RULES = (
         impacts=("돈 버는 능력", "수급", "시간표"),
         paths=("수출통제", "공급망", "정책 타임라인", "수급"),
         follow_up="제재·수출통제는 최종 관보, 대상 품목·기업, 예외 라이선스, 한국 기업의 직접 노출을 확인해야 고충격으로 인정합니다.",
+    ),
+    StoryRule(
+        key="global_extreme_heat_mortality_watch",
+        title="신뢰외신, 폭염 사망·기후 재난의 전력·식량 영향 보도",
+        google_queries=(
+            "Reuters heatwave deaths power demand grid food crops insurance",
+            "AP News extreme heat deaths electricity demand agriculture food prices",
+            "Reuters record heat deaths emergency power grid drought crops",
+            "World Health Organization heatwave deaths emergency electricity food",
+            "World Meteorological Organization extreme heat deaths power demand drought",
+        ),
+        required_groups=(
+            ("heatwave", "heat wave", "extreme heat", "record heat", "high temperatures", "hot weather", "폭염", "극한 고온"),
+            ("death", "deaths", "dead", "died", "killed", "fatalities", "death toll", "사망", "사망자", "사망자 수"),
+        ),
+        core="신뢰외신 또는 WHO·WMO가 폭염 사망과 광역 기후 재난을 보도한 사안입니다. 전력수요, 식량·물가, 보험손해, 산업가동 중 어느 경로가 실제로 동행하는지 확인해야 합니다.",
+        impact="전력수요·LNG, 농산물·음식료 원가, 손해보험, 물류·산업가동 | 매출·마진·현금흐름·할인율·시간표",
+        point="사망 규모가 큰 폭염은 단순 날씨 뉴스가 아니라 냉방 전력피크, 가뭄·농산물 수급, 보험손해, 노동·물류 차질로 전이될 수 있습니다.",
+        counter="사망자 집계는 지연·추정치일 수 있고, 지역 재난이 전력·식량·보험 지표로 전이되지 않으면 한국장 직접 영향은 제한적입니다.",
+        sectors="전력·LNG, 전력기기, 음식료·농산물 원가, 손해보험, 물류·산업재",
+        impacts=("매출·마진·현금흐름", "밸류에이션/할인율", "시간표"),
+        paths=("기후 재난", "전력수요", "원자재 비용", "보험손해", "공급·수요"),
+        follow_up="사망자 공식 집계, 기상 경보 범위, 전력피크·LNG·농산물·보험손해·항만/물류 지표가 같은 방향으로 확인될 때만 가격 재료로 유지합니다.",
     ),
     StoryRule(
         key="us_trusted_policy_shock_broad",
@@ -676,6 +711,13 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             if rule.key == "trump_direct_policy_remarks_watch":
                 if not is_direct_trump_statement_title(title) or not trump_story_profile(title):
                     continue
+            # Weather-disaster alerts must be source-specific.  A death count
+            # in a generic climate commentary is not enough to justify a
+            # market alert; the wire headline itself needs a large-scale or
+            # price-transmission signal that the Korean rendering can carry.
+            if rule.key == "global_extreme_heat_mortality_watch":
+                if not is_heat_mortality_high_impact_title(title) or not heat_mortality_story_profile(title):
+                    continue
             seen_links.add(link)
             display_source = publisher
             priority_key = source_key(publisher)
@@ -779,10 +821,131 @@ def unseen_items_for_rule(rule: StoryRule, items: list[dict], seen: dict) -> lis
 
 
 def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
-    """Keep each Trump headline in its own alert and source chain."""
-    if rule.key == "trump_direct_policy_remarks_watch":
+    """Keep article-specific profiles in their own alert and source chain."""
+    if rule.key in {"trump_direct_policy_remarks_watch", "global_extreme_heat_mortality_watch"}:
         return [[item] for item in items]
     return [items] if items else []
+
+
+HEAT_LOCATION_LABELS = (
+    ("south korea", "한국"),
+    ("korea", "한국"),
+    ("japan", "일본"),
+    ("china", "중국"),
+    ("india", "인도"),
+    ("pakistan", "파키스탄"),
+    ("bangladesh", "방글라데시"),
+    ("vietnam", "베트남"),
+    ("thailand", "태국"),
+    ("philippines", "필리핀"),
+    ("indonesia", "인도네시아"),
+    ("australia", "호주"),
+    ("united states", "미국"),
+    ("u.s.", "미국"),
+    ("usa", "미국"),
+    ("mexico", "멕시코"),
+    ("canada", "캐나다"),
+    ("brazil", "브라질"),
+    ("argentina", "아르헨티나"),
+    ("spain", "스페인"),
+    ("portugal", "포르투갈"),
+    ("france", "프랑스"),
+    ("italy", "이탈리아"),
+    ("germany", "독일"),
+    ("greece", "그리스"),
+    ("turkey", "튀르키예"),
+    ("uk", "영국"),
+    ("britain", "영국"),
+    ("europe", "유럽"),
+    ("middle east", "중동"),
+    ("global", "세계"),
+    ("world", "세계"),
+)
+
+HEAT_SYSTEMIC_TERMS = (
+    "record", "emergency", "state of emergency", "nationwide", "widespread", "across",
+    "power", "electricity", "grid", "energy", "blackout", "outage", "demand",
+    "crop", "agriculture", "food", "drought", "water", "insurance", "insured",
+    "factory", "industrial", "transport", "rail", "airport", "port", "shipping",
+)
+
+
+def heat_death_count(title: str) -> int | None:
+    """Extract a count only when it is grammatically tied to deaths."""
+    low = clean_story_title(title).lower()
+    patterns = (
+        r"(?:death toll|toll|deaths?|fatalities)\s+(?:rises?|reach(?:es)?|hits?|stands? at|of|to)?\s*(?:over|more than|at least|nearly|about)?\s*(\d[\d,]*)",
+        r"(?:kills?|killed|claims?)\s+(?:over|more than|at least|nearly|about)?\s*(\d[\d,]*)",
+        r"(?:over|more than|at least|nearly|about)?\s*(\d[\d,]*)\s+(?:people\s+)?(?:dead|deaths?|died|killed|fatalities)",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, low)
+        if match:
+            try:
+                return int(match.group(1).replace(",", ""))
+            except ValueError:
+                return None
+    return None
+
+
+def is_heat_mortality_high_impact_title(title: str) -> bool:
+    """Reject local or unspecific weather stories before rendering an alert."""
+    low = clean_story_title(title).lower()
+    is_heat = any(term in low for term in ("heatwave", "heat wave", "extreme heat", "record heat", "high temperatures", "hot weather"))
+    is_mortality = any(term in low for term in ("death", "dead", "died", "kills", "killed", "claims", "fatalities", "death toll"))
+    if not (is_heat and is_mortality):
+        return False
+    count = heat_death_count(title)
+    return bool(any(term in low for term in HEAT_SYSTEMIC_TERMS) or (count is not None and count >= 25) or "dozens" in low or "hundreds" in low)
+
+
+def heat_location_label(text: str) -> str:
+    low = text.lower()
+    for marker, label in HEAT_LOCATION_LABELS:
+        if re.search(rf"(?<![a-z]){re.escape(marker)}(?![a-z])", low):
+            return label
+    return "해외"
+
+
+def heat_mortality_story_profile(title: str) -> dict[str, object] | None:
+    """Build a Korean summary solely from facts visible in one wire headline."""
+    if not is_heat_mortality_high_impact_title(title):
+        return None
+    cleaned = clean_story_title(title)
+    low = cleaned.lower()
+    location = heat_location_label(low)
+    count = heat_death_count(cleaned)
+    count_text = f" {count:,}명" if count is not None else ""
+    channels: list[str] = []
+    if any(term in low for term in ("power", "electricity", "grid", "blackout", "outage", "demand", "energy")):
+        channels.append("전력수요·전력망")
+    if any(term in low for term in ("crop", "agriculture", "food", "drought", "water")):
+        channels.append("식량·농산물")
+    if any(term in low for term in ("insurance", "insured")):
+        channels.append("보험손해")
+    if any(term in low for term in ("factory", "industrial", "transport", "rail", "airport", "port", "shipping")):
+        channels.append("물류·산업가동")
+    channel_text = "·".join(channels[:2]) if channels else "기후 재난 확산"
+    has_earnings_path = bool(channels)
+    impacts = "매출·마진·현금흐름, 밸류에이션/할인율, 시간표" if has_earnings_path else "밸류에이션/할인율, 시간표"
+    paths = ", ".join(channels[:3]) if channels else "기후 재난, 정책·보건 대응 시간표"
+    sectors = "전력·LNG, 전력기기, 음식료·농산물 원가, 손해보험" if has_earnings_path else "전력·LNG, 음식료·농산물 원가, 손해보험"
+    return {
+        "title": f"{location}, 폭염 사망{count_text} 보도: {channel_text} 리스크 확인",
+        "core": f"신뢰외신·국제기구가 {location} 폭염과 사망{count_text} 발생을 보도했습니다. 이 기사에서 직접 확인된 전이 경로는 {channel_text}입니다.",
+        "investment": (
+            f"{channel_text} 경로가 실제 수치로 확인되면 전력피크·에너지 비용·농산물 원가·보험손해 추정이 바뀔 수 있습니다."
+            if has_earnings_path else
+            "사망 보도만으로 즉시 실적을 단정하지 않습니다. 전력피크, 농산물 가격, 보험손해가 동행할 때만 이익 추정으로 연결합니다."
+        ),
+        "korea": "한국장 직접 영향은 제한적입니다. 냉방 전력수요, LNG·석탄, 농산물·음식료 원가, 손해보험 지표가 동행하는 종목군만 선별 확인합니다.",
+        "impacts": impacts,
+        "paths": paths,
+        "sectors": sectors,
+        "priced_in": "낮음~중간. 지역 재난 뉴스는 빠르게 반영되지만, 에너지·식량·보험 지표 전이 전에는 지속성이 낮습니다.",
+        "counter": "사망자 수는 당국의 잠정 집계일 수 있고, 지역적 사건이면 글로벌 원가·수요 변수로 확대 해석하기 어렵습니다.",
+        "failure": "공식 사망 집계·기상경보와 전력피크·LNG·농산물·보험손해 중 하나도 동행하지 않으면 지역 재난 뉴스로 분리합니다.",
+    }
 
 
 def trump_story_profile(title: str) -> dict[str, object] | None:
@@ -916,9 +1079,21 @@ def korean_trump_story_title(title: str) -> str:
     return str((profile or {}).get("title") or "트럼프 직접 발언: 세부 내용 확인 필요")
 
 
+def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] | None:
+    if not items:
+        return None
+    title = str(items[0].get("title", ""))
+    if rule.key == "trump_direct_policy_remarks_watch":
+        return trump_story_profile(title)
+    if rule.key == "global_extreme_heat_mortality_watch":
+        return heat_mortality_story_profile(title)
+    return None
+
+
 def story_display_title(rule: StoryRule, items: list[dict]) -> str:
-    if rule.key == "trump_direct_policy_remarks_watch" and items:
-        return korean_trump_story_title(str(items[0].get("title", "")))
+    profile = item_story_profile(rule, items)
+    if profile:
+        return str(profile["title"])
     return rule.title
 
 
@@ -971,28 +1146,28 @@ def join_short_values(value: object, max_items: int = 3, fallback: str = "확인
 
 
 def compact_core(rule: StoryRule, items: list[dict]) -> str:
-    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    profile = item_story_profile(rule, items)
     if profile:
         return str(profile["core"])
     return short_text(rule.core, 125)
 
 
 def compact_investment_view(rule: StoryRule, items: list[dict]) -> str:
-    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    profile = item_story_profile(rule, items)
     if profile:
         return str(profile["investment"])
     return short_text(rule.point, 125)
 
 
 def compact_korea_market_view(rule: StoryRule, items: list[dict]) -> str:
-    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    profile = item_story_profile(rule, items)
     if profile:
         return str(profile["korea"])
     return short_text(f"{join_short_values(rule.sectors, max_items=3)} 중심으로 공식 원문과 한국 기업 직접 노출만 확인합니다.", 125)
 
 
 def compact_priced_in(rule: StoryRule, items: list[dict]) -> str:
-    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    profile = item_story_profile(rule, items)
     if profile:
         return str(profile["priced_in"])
     if rule.key == "iran_hormuz_military_escalation":
@@ -1003,7 +1178,7 @@ def compact_priced_in(rule: StoryRule, items: list[dict]) -> str:
 
 
 def compact_failure_signal(rule: StoryRule, items: list[dict]) -> str:
-    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    profile = item_story_profile(rule, items)
     if profile:
         return str(profile["failure"])
     if rule.key == "iran_hormuz_military_escalation":
@@ -1014,7 +1189,7 @@ def compact_failure_signal(rule: StoryRule, items: list[dict]) -> str:
 
 
 def compact_counter(rule: StoryRule, items: list[dict]) -> str:
-    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    profile = item_story_profile(rule, items)
     if profile:
         return str(profile["counter"])
     if rule.key == "iran_hormuz_military_escalation":
@@ -1030,7 +1205,7 @@ def is_trump_iran_item(rule: StoryRule, items: list[dict]) -> bool:
 
 
 def compact_impacts(rule: StoryRule, items: list[dict]) -> str:
-    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    profile = item_story_profile(rule, items)
     if profile:
         return str(profile["impacts"])
     mapped = ["매출·마진·현금흐름" if value == "돈 버는 능력" else value for value in split_display_values(rule.impacts)]
@@ -1038,14 +1213,14 @@ def compact_impacts(rule: StoryRule, items: list[dict]) -> str:
 
 
 def compact_paths(rule: StoryRule, items: list[dict]) -> str:
-    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    profile = item_story_profile(rule, items)
     if profile:
         return str(profile["paths"])
     return join_short_values(rule.paths, max_items=4, fallback="정책 타임라인")
 
 
 def compact_sectors(rule: StoryRule, items: list[dict]) -> str:
-    profile = trump_story_profile(str(items[0].get("title", ""))) if rule.key == "trump_direct_policy_remarks_watch" and items else None
+    profile = item_story_profile(rule, items)
     if profile:
         return str(profile["sectors"])
     return join_short_values(rule.sectors, max_items=3, fallback="정책/규제 일반")

@@ -52,6 +52,7 @@ def main() -> int:
     assert_trusted_policy_news_story_fingerprint_allows_intraday_updates()
     assert_trusted_policy_news_render_is_compact()
     assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped()
+    assert_trusted_heat_mortality_is_source_faithful_and_deduped()
     assert_state_smr_moc_reaches_policy_lane()
     assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered()
     assert_boem_space_launch_is_excluded()
@@ -606,6 +607,66 @@ def assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped() -> None:
         raise AssertionError("Air Force One wording was incorrectly classified as an AI policy story")
     if not khs_trusted_policy_news_watch.is_direct_trump_statement_title(item["title"]):
         raise AssertionError("actual Reuters Trump quote was rejected by the direct-statement gate")
+
+
+def assert_trusted_heat_mortality_is_source_faithful_and_deduped() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "global_extreme_heat_mortality_watch"
+    )
+    item = {
+        "title": "India heatwave kills at least 120 as power demand hits record - Reuters",
+        "source": "Reuters",
+        "published_kst": "2026-07-14T09:15:00+09:00",
+        "link": "https://example.com/reuters-india-heatwave",
+        "priority": 1,
+    }
+    profile = khs_trusted_policy_news_watch.heat_mortality_story_profile(item["title"])
+    if not profile:
+        raise AssertionError("high-impact heat mortality headline was not given a source-specific Korean profile")
+    if profile.get("title") != "인도, 폭염 사망 120명 보도: 전력수요·전력망 리스크 확인":
+        raise AssertionError(f"heat mortality title is not source-faithful: {profile.get('title')}")
+    rendered = khs_trusted_policy_news_watch.render_alert_bundle(
+        [{"rule": rule, "items": [item], "fingerprint": "heat-test"}],
+        dt.datetime(2026, 7, 14, 10, 0, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "인도, 폭염 사망 120명 보도",
+        "인도 폭염과 사망 120명 발생",
+        "전력수요·전력망",
+        "매출·마진·현금흐름, 밸류에이션/할인율, 시간표",
+        "한국장 직접 영향은 제한적입니다.",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"heat mortality render missing source-specific marker: {marker}")
+    forbidden = ["트럼프", "반도체/AI", "관세/수출주", "전력망/원전"]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"heat mortality render leaked unrelated template text: {marker}")
+    if khs_telegram_delivery_guard.has_source_body_mismatch(
+        "KHS 신뢰외신 정책 워치: [상·공식 확인 전] " + str(profile["title"]),
+        rendered,
+    ):
+        raise AssertionError("heat mortality rendering failed the final source/body guard")
+    if khs_telegram_delivery_guard.has_long_english_run(rendered):
+        raise AssertionError("heat mortality rendering leaked a long raw-English run")
+    low_impact = "Local heatwave blamed for one death at a village festival - Reuters"
+    if khs_trusted_policy_news_watch.is_heat_mortality_high_impact_title(low_impact):
+        raise AssertionError("single local heat death was incorrectly made a high-impact market alert")
+    if khs_trusted_policy_news_watch.heat_mortality_story_profile(low_impact):
+        raise AssertionError("single local heat death received a high-impact Korean profile")
+    if not khs_trusted_policy_news_watch.is_trusted_source("World Health Organization (WHO)"):
+        raise AssertionError("WHO was not registered as an official heat-mortality source")
+    if not khs_trusted_policy_news_watch.is_trusted_source("World Meteorological Organization (WMO)"):
+        raise AssertionError("WMO was not registered as an official heat-mortality source")
+    groups = khs_trusted_policy_news_watch.alert_item_groups(rule, [item])
+    if groups != [[item]]:
+        raise AssertionError("heat mortality headline was not isolated into one source chain")
+    seen = {khs_trusted_policy_news_watch.story_event_fingerprint(rule, [item]): {"first_seen_kst": "2026-07-14T09:20:00+09:00"}}
+    updated_item = {**item, "published_kst": "2026-07-14T10:20:00+09:00"}
+    if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [updated_item], seen):
+        raise AssertionError("same heat mortality headline re-alerted when only its timestamp changed")
 
 
 def assert_state_smr_moc_reaches_policy_lane() -> None:
