@@ -38,5 +38,10 @@ Every defect or requested change must follow this sequence:
   work is closed.
 - Source access failures, delayed data, mismatches, and empty selections must be
   reported explicitly; they must not be rewritten as successful news delivery.
+- The 06:30 preopen digest must not be emptied by the real-time seen-state.
+  It may reuse a qualifying overnight item once in the daily digest, then the
+  successful digest send must refresh seen-state so later live polls stay quiet.
+- Cloudflare owns the 06:30 KST daily dispatch and must use a date-scoped KV
+  lock. GitHub's delayed schedule is not an acceptable primary timer.
 - Implementation and re-verification results must be reported together with
   exact pass or fail evidence.

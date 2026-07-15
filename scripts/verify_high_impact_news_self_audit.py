@@ -95,6 +95,8 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
         SCRIPTS / "gamejoa_preopen_news_radar_telegram_runner.py",
         [
             "filter_previously_seen_alerts(classified, now)",
+            "filter_alerts_for_run_mode(classified, now, live_mode)",
+            "preopen_digest_seen_bypass",
             "final_alerts_for_output(deduped, limit)",
             "record_seen_alerts(final_alerts, now)",
             "selection_diagnostics",

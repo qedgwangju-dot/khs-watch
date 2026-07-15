@@ -1,9 +1,9 @@
 name: GAMEJOA preopen news radar
 
 on:
-  schedule:
-    # 21:30 UTC = 06:30 KST.
-    - cron: "30 21 * * *"
+  # Cloudflare dispatches the preopen lane at 06:30 KST with a daily KV lock.
+  # GitHub schedule is intentionally omitted because delayed cron runs caused
+  # late or duplicate preopen deliveries.
   workflow_dispatch:
     inputs:
       telegram_dry_run:
@@ -22,6 +22,14 @@ on:
         options:
           - "preopen"
           - "live"
+      allow_off_window_telegram:
+        description: "Manual verification only: allow a preopen send outside 05:30-07:30 KST"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
 
 permissions:
   contents: write
@@ -40,6 +48,7 @@ jobs:
       GAMEJOA_RADAR_SEEN_TTL_DAYS: "14"
       PREOPEN_SEND_WINDOW_START_KST: "05:30"
       PREOPEN_SEND_WINDOW_END_KST: "07:30"
+      ALLOW_OFF_WINDOW_TELEGRAM: ${{ github.event.inputs.allow_off_window_telegram || 'false' }}
       RADAR_RUN_MODE: ${{ github.event.inputs.radar_run_mode || 'preopen' }}
       RADAR_FETCH_TIMEOUT_SECONDS: "10"
       RADAR_QUERY_FETCH_WORKERS: "4"
@@ -52,6 +61,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       SEND_TELEGRAM: "true"
+      SEND_EMPTY_RADAR: "false"
       TELEGRAM_DRY_RUN: ${{ github.event.inputs.telegram_dry_run || 'false' }}
     steps:
       - name: Checkout

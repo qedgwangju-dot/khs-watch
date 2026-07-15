@@ -106,6 +106,25 @@ def filter_previously_seen_alerts(alerts: list[dict], now) -> tuple[list[dict], 
     return fresh, skipped
 
 
+def filter_alerts_for_run_mode(classified: list[dict], now, live_mode: bool) -> tuple[list[dict], list[dict]]:
+    """Use seen-state suppression only for real-time alerts.
+
+    The 06:30 radar is an overnight digest. It must retain qualifying items
+    even when an earlier real-time run already announced them. A successful
+    preopen send is still recorded below, preventing the next live poll from
+    repeating the same stories.
+    """
+    if live_mode:
+        return filter_previously_seen_alerts(classified, now)
+    digest_alerts = []
+    for alert in classified:
+        item = dict(alert)
+        item["_seen_keys"] = alert_seen_keys(item)
+        digest_alerts.append(item)
+    print(f"GAMEJOA radar: preopen_digest_seen_bypass={len(digest_alerts)}")
+    return digest_alerts, []
+
+
 def record_seen_alerts(alerts: list[dict], now) -> None:
     if not alerts:
         return
@@ -306,6 +325,7 @@ def selection_diagnostics(
     skipped_seen: list[dict],
     candidates: list[dict],
     selected: list[dict],
+    live_mode: bool,
 ) -> dict:
     source_failures = [
         note for note in notes
@@ -324,6 +344,8 @@ def selection_diagnostics(
     return {
         "collected_rows": len(rows),
         "classified_alerts": len(classified),
+        "seen_filter_applied": live_mode,
+        "preopen_digest_seen_bypass": 0 if live_mode else len(classified),
         "seen_filtered_alerts": len(skipped_seen),
         "deduped_candidates": len(candidates),
         "selected_alerts": len(selected),
@@ -405,7 +427,7 @@ def main() -> int:
     classified, routed_policy = partition_realtime_policy_alerts(classified, live_mode)
     if routed_policy:
         print(f"GAMEJOA radar: routed_to_realtime_policy={len(routed_policy)}")
-    alerts, skipped_seen = filter_previously_seen_alerts(classified, now)
+    alerts, skipped_seen = filter_alerts_for_run_mode(classified, now, live_mode)
     alerts.sort(key=lambda a: (-a["score"], a["published"]))
 
     deduped, seen = [], set()
@@ -432,7 +454,7 @@ def main() -> int:
     deduped.sort(key=lambda a: (-a["score"], a["published"]))
     limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
     final_alerts = final_alerts_for_output(deduped, limit)
-    diagnostics = selection_diagnostics(rows, notes, classified, skipped_seen, deduped, final_alerts)
+    diagnostics = selection_diagnostics(rows, notes, classified, skipped_seen, deduped, final_alerts, live_mode)
     print(
         "GAMEJOA radar selection: "
         f"rows={diagnostics['collected_rows']} "
@@ -462,7 +484,7 @@ def main() -> int:
     (base.OUT / "gamejoa_preopen_news_radar.md").write_text(report, encoding="utf-8")
     (base.OUT / "gamejoa_preopen_news_radar_title.txt").write_text(report.splitlines()[0] + "\n", encoding="utf-8")
     (base.OUT / "gamejoa_preopen_news_radar.json").write_text(
-        json.dumps({"query_time_kst": now.isoformat(timespec="seconds"), "alerts": final_alerts, "selection_diagnostics": diagnostics, "skipped_seen_alerts": len(skipped_seen), "source_notes": notes, "fred_dfii10": fred, "tradingeconomics_tips": te}, ensure_ascii=False, indent=2, default=str) + "\n",
+        json.dumps({"query_time_kst": now.isoformat(timespec="seconds"), "run_mode": "live" if live_mode else "preopen", "alerts": final_alerts, "selection_diagnostics": diagnostics, "skipped_seen_alerts": len(skipped_seen), "source_notes": notes, "fred_dfii10": fred, "tradingeconomics_tips": te}, ensure_ascii=False, indent=2, default=str) + "\n",
         encoding="utf-8",
     )
     base.print_utf8(report)

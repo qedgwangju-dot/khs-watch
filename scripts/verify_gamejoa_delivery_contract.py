@@ -36,6 +36,9 @@ REQUIRED_WORKFLOW_SNIPPETS = [
     'SEND_TELEGRAM: "true"',
     'RADAR_TRENDFORCE_RESEARCH_MAX_AGE_DAYS: "3"',
     'PREOPEN_SEND_WINDOW_START_KST: "05:30"',
+    "allow_off_window_telegram:",
+    "ALLOW_OFF_WINDOW_TELEGRAM:",
+    'SEND_EMPTY_RADAR: "false"',
     "radar_run_mode:",
     "RADAR_RUN_MODE:",
     "Preflight",
@@ -79,6 +82,8 @@ REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
     "gamejoa_preopen_news_radar_seen.json",
     "gamejoa_preopen_news_radar_delivery.json",
     "filter_previously_seen_alerts(classified, now)",
+    "filter_alerts_for_run_mode(classified, now, live_mode)",
+    "preopen_digest_seen_bypass",
     "record_seen_alerts(final_alerts, now)",
     "delivery_confirmed_sent()",
     "reset_delivery_status()",
@@ -320,6 +325,29 @@ def main() -> int:
         preopen_remaining, preopen_routed = production.telegram.partition_realtime_policy_alerts([normalized_iran], False)
         if preopen_remaining != [normalized_iran] or preopen_routed:
             errors.append("Iran/Hormuz alert was not retained for the 06:30 radar")
+
+    # A story already announced by the real-time lane must still be available
+    # to the once-daily 06:30 digest. This guards the failure where overnight
+    # live polls consumed every preopen candidate before the morning run.
+    seen_probe = [{
+        "news": "장전 seen-state 회귀 검사",
+        "original_news": "Preopen seen-state regression fixture",
+        "publisher": "Reuters",
+        "link": "https://www.reuters.com/world/preopen-seen-regression-fixture",
+    }]
+    original_seen_filter = production.telegram.filter_previously_seen_alerts
+    production.telegram.filter_previously_seen_alerts = lambda alerts, _now: ([], list(alerts))
+    try:
+        live_fresh, live_skipped = production.telegram.filter_alerts_for_run_mode(seen_probe, now, True)
+        preopen_fresh, preopen_skipped = production.telegram.filter_alerts_for_run_mode(seen_probe, now, False)
+    finally:
+        production.telegram.filter_previously_seen_alerts = original_seen_filter
+    if live_fresh or live_skipped != seen_probe:
+        errors.append("live radar no longer applies seen-state suppression")
+    if len(preopen_fresh) != 1 or preopen_skipped:
+        errors.append("06:30 preopen digest was incorrectly suppressed by live seen-state")
+    elif not preopen_fresh[0].get("_seen_keys"):
+        errors.append("06:30 preopen digest lost post-send seen-state keys")
     if send_module != LOCKED_TELEGRAM_MODULE:
         errors.append(
             f"{PRODUCTION_RUNNER}.telegram.send_telegram is wired to {send_module}, "
