@@ -75,6 +75,7 @@ REQUIRED_RUNNER_SNIPPETS = [
     "write_delivery_status(\"sent\"",
     "RADAR_RUN_MODE",
     "telegram.final_alerts_for_output = quality_display_alerts",
+    "telegram.canonical_alert_for_seen = normalize_alert_for_output",
     "source_output_aligned(normalized)",
     "federal_register_uae_ear",
     "ALLOW_OFF_WINDOW_TELEGRAM",
@@ -83,9 +84,11 @@ REQUIRED_RUNNER_SNIPPETS = [
 REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
     "gamejoa_preopen_news_radar_seen.json",
     "gamejoa_preopen_news_radar_delivery.json",
-    "filter_previously_seen_alerts(classified, now)",
+    "filter_previously_seen_alerts(classified, now, \"live\")",
     "filter_alerts_for_run_mode(classified, now, live_mode)",
     "preopen_digest_seen_bypass",
+    "seen_filter_scope",
+    "_preopen_live_seen_bypass",
     "record_seen_alerts(final_alerts, now)",
     "delivery_confirmed_sent()",
     "reset_delivery_status()",
@@ -93,6 +96,8 @@ REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
     "preopen_send_window_open(now)",
     "RADAR_RUN_MODE",
     "final_alerts_for_output(deduped, limit)",
+    "canonical_alert_for_seen",
+    "migrate_seen_title_aliases",
     '"selection_diagnostics": diagnostics',
     '"source_failures": source_failures',
 ]
@@ -123,6 +128,7 @@ REQUIRED_MAINTENANCE_CONTRACT_SNIPPETS = [
     "skipped_empty",
     "Actions 성공만으로 완료 처리하지 않는다",
     "실제 신규 알림 송출 미관찰",
+    "전날 장전판 항목 재송출 금지",
 ]
 
 REQUIRED_BASE_SOURCE_SNIPPETS = [
@@ -204,6 +210,7 @@ def main() -> int:
     send_module = getattr(production.telegram.send_telegram, "__module__", "")
     compact_module = getattr(production.telegram.compact_report, "__module__", "")
     final_selection_module = getattr(production.telegram.final_alerts_for_output, "__module__", "")
+    canonical_seen_module = getattr(production.telegram.canonical_alert_for_seen, "__module__", "")
     query_plan = production.base.trusted_query_plan()
     if len(query_plan) > 18:
         errors.append(f"trusted query plan is too large for stable polling: {len(query_plan)} > 18")
@@ -323,6 +330,17 @@ def main() -> int:
         one_story = compact.quality_display_alerts([reuters_duplicate, normalized_iran], 5)
         if len(one_story) != 1 or "AP" not in str(one_story[0].get("publisher") or ""):
             errors.append(f"Iran/Hormuz cross-source story was not deduped to AP: {one_story}")
+        raw_reuters_variant = dict(normalized_iran)
+        raw_reuters_variant.update({
+            "news": "트럼프 에너지 발언: 유가·운임 리스크",
+            "original_news": "U.S. renews strikes on Iran as tanker is attacked in Strait of Hormuz",
+            "publisher": "Reuters",
+            "link": "https://www.reuters.com/world/iran-cross-source-seen-fixture",
+        })
+        ap_title_keys = {key for key in production.telegram.alert_seen_keys(normalized_iran) if key.startswith("title:")}
+        reuters_title_keys = {key for key in production.telegram.alert_seen_keys(raw_reuters_variant) if key.startswith("title:")}
+        if not ap_title_keys.intersection(reuters_title_keys):
+            errors.append("Iran/Hormuz cross-source variants did not share a canonical seen key")
         live_remaining, live_routed = production.telegram.partition_realtime_policy_alerts([normalized_iran], True)
         if live_remaining or live_routed != [normalized_iran]:
             errors.append("Iran/Hormuz alert was not single-routed away from live radar duplication")
@@ -333,25 +351,89 @@ def main() -> int:
     # A story already announced by the real-time lane must still be available
     # to the once-daily 06:30 digest. This guards the failure where overnight
     # live polls consumed every preopen candidate before the morning run.
-    seen_probe = [{
+    live_only_probe = {
         "news": "장전 seen-state 회귀 검사",
         "original_news": "Preopen seen-state regression fixture",
         "publisher": "Reuters",
         "link": "https://www.reuters.com/world/preopen-seen-regression-fixture",
-    }]
-    original_seen_filter = production.telegram.filter_previously_seen_alerts
-    production.telegram.filter_previously_seen_alerts = lambda alerts, _now: ([], list(alerts))
+    }
+    preopen_probe = {
+        "news": "전날 장전판 중복 회귀 검사",
+        "original_news": "Prior preopen duplicate regression fixture",
+        "publisher": "Reuters",
+        "link": "https://www.reuters.com/world/prior-preopen-duplicate-regression-fixture",
+    }
+    live_key = production.telegram.alert_seen_keys(live_only_probe)[0]
+    preopen_key = production.telegram.alert_seen_keys(preopen_probe)[0]
+    original_load_seen_state = production.telegram.load_seen_state
+    production.telegram.load_seen_state = lambda: {
+        "seen": {
+            live_key: {"first_seen_kst": now.isoformat(), "lanes": {"live": now.isoformat()}},
+            preopen_key: {"first_seen_kst": now.isoformat(), "lanes": {"preopen": now.isoformat()}},
+        },
+        "updated_at_kst": now.isoformat(),
+    }
     try:
-        live_fresh, live_skipped = production.telegram.filter_alerts_for_run_mode(seen_probe, now, True)
-        preopen_fresh, preopen_skipped = production.telegram.filter_alerts_for_run_mode(seen_probe, now, False)
+        probes = [live_only_probe, preopen_probe]
+        live_fresh, live_skipped = production.telegram.filter_alerts_for_run_mode(probes, now, True)
+        preopen_fresh, preopen_skipped = production.telegram.filter_alerts_for_run_mode(probes, now, False)
     finally:
-        production.telegram.filter_previously_seen_alerts = original_seen_filter
-    if live_fresh or live_skipped != seen_probe:
+        production.telegram.load_seen_state = original_load_seen_state
+    if live_fresh or live_skipped != probes:
         errors.append("live radar no longer applies seen-state suppression")
-    if len(preopen_fresh) != 1 or preopen_skipped:
-        errors.append("06:30 preopen digest was incorrectly suppressed by live seen-state")
-    elif not preopen_fresh[0].get("_seen_keys"):
-        errors.append("06:30 preopen digest lost post-send seen-state keys")
+    if len(preopen_fresh) != 1 or preopen_fresh[0].get("link") != live_only_probe["link"]:
+        errors.append("06:30 preopen digest did not retain the live-only story")
+    elif not preopen_fresh[0].get("_preopen_live_seen_bypass"):
+        errors.append("06:30 preopen digest lost its live-seen bypass marker")
+    if len(preopen_skipped) != 1 or preopen_skipped[0].get("link") != preopen_probe["link"]:
+        errors.append("06:30 preopen digest repeated a prior preopen story")
+    if not production.telegram.seen_entry_has_lane({"first_seen_kst": now.isoformat()}, "preopen"):
+        errors.append("legacy seen-state was not suppressed from repeat preopen delivery")
+
+    legacy_state = {
+        "seen": {
+            "title:old-raw-source-key": {
+                "first_seen_kst": now.isoformat(),
+                "title": "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크",
+            }
+        }
+    }
+    production.telegram.migrate_seen_title_aliases(legacy_state)
+    expected_legacy_alias = "title:" + production.telegram.digest_seen(
+        "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크"
+    )
+    if expected_legacy_alias not in legacy_state["seen"]:
+        errors.append("legacy seen-state did not gain a canonical Korean-title alias")
+
+    lane_state = {
+        "seen": {
+            live_key: {
+                "first_seen_kst": now.isoformat(),
+                "lanes": {"live": now.isoformat()},
+            }
+        },
+        "updated_at_kst": now.isoformat(),
+    }
+    original_load_seen_state = production.telegram.load_seen_state
+    original_save_seen_state = production.telegram.save_seen_state
+    original_run_mode = os.environ.get("RADAR_RUN_MODE")
+    production.telegram.load_seen_state = lambda: lane_state
+    production.telegram.save_seen_state = lambda state, _now: lane_state.update(state)
+    try:
+        os.environ["RADAR_RUN_MODE"] = "preopen"
+        recorded_probe = dict(live_only_probe)
+        recorded_probe["_seen_keys"] = [live_key]
+        production.telegram.record_seen_alerts([recorded_probe], now)
+    finally:
+        production.telegram.load_seen_state = original_load_seen_state
+        production.telegram.save_seen_state = original_save_seen_state
+        if original_run_mode is None:
+            os.environ.pop("RADAR_RUN_MODE", None)
+        else:
+            os.environ["RADAR_RUN_MODE"] = original_run_mode
+    recorded_lanes = lane_state["seen"][live_key].get("lanes") or {}
+    if not {"live", "preopen"}.issubset(set(recorded_lanes)):
+        errors.append(f"seen-state did not preserve live and preopen lanes: {recorded_lanes}")
 
     # The sender and post-send verifier must interpret the manual off-window
     # switch identically. Otherwise Telegram can be sent while Actions reports
@@ -395,6 +477,11 @@ def main() -> int:
     if final_selection_module != LOCKED_TELEGRAM_MODULE:
         errors.append(
             f"{PRODUCTION_RUNNER}.telegram.final_alerts_for_output is wired to {final_selection_module}, "
+            f"expected {LOCKED_TELEGRAM_MODULE}"
+        )
+    if canonical_seen_module != LOCKED_TELEGRAM_MODULE:
+        errors.append(
+            f"{PRODUCTION_RUNNER}.telegram.canonical_alert_for_seen is wired to {canonical_seen_module}, "
             f"expected {LOCKED_TELEGRAM_MODULE}"
         )
 

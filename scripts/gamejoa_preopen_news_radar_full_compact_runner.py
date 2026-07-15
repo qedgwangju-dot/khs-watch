@@ -1909,6 +1909,7 @@ def mask_chat_id(value: str) -> str:
 telegram.compact_report = compact_report
 telegram.send_telegram = send_telegram
 telegram.final_alerts_for_output = quality_display_alerts
+telegram.canonical_alert_for_seen = normalize_alert_for_output
 
 
 if __name__ == "__main__":

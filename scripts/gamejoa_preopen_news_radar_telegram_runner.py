@@ -38,6 +38,7 @@ def load_seen_state() -> dict:
     if not isinstance(payload, dict):
         return {"seen": {}, "updated_at_kst": ""}
     payload.setdefault("seen", {})
+    migrate_seen_title_aliases(payload)
     return payload
 
 
@@ -60,7 +61,16 @@ def digest_seen(value: str) -> str:
     return hashlib.sha256(base.norm(value).encode("utf-8")).hexdigest()[:24]
 
 
+def canonical_alert_for_seen(alert: dict) -> dict:
+    """Overridden by the final renderer so cross-source stories share a key."""
+    return alert
+
+
 def alert_seen_keys(alert: dict) -> list[str]:
+    try:
+        canonical = canonical_alert_for_seen(alert)
+    except Exception:
+        canonical = alert
     keys: list[str] = []
 
     def add(prefix: str, value: str | None) -> None:
@@ -69,12 +79,25 @@ def alert_seen_keys(alert: dict) -> list[str]:
             return
         keys.append(f"{prefix}:{digest_seen(text)}")
 
-    link = str(alert.get("link") or "")
+    link = str(canonical.get("link") or alert.get("link") or "")
     if "news.google.com/rss/articles" not in link:
         add("link", link)
-    add("title", str(alert.get("news") or ""))
-    add("original", str(alert.get("original_news") or ""))
+    add("title", str(canonical.get("news") or alert.get("news") or ""))
+    add("original", str(canonical.get("original_news") or alert.get("original_news") or ""))
     return list(dict.fromkeys(keys))
+
+
+def migrate_seen_title_aliases(state: dict) -> None:
+    """Add canonical title aliases for state written before canonical keys existed."""
+    seen = state.setdefault("seen", {})
+    for entry in list(seen.values()):
+        if not isinstance(entry, dict):
+            continue
+        title = str(entry.get("title") or "")
+        if not base.norm(title):
+            continue
+        alias = f"title:{digest_seen(title)}"
+        seen.setdefault(alias, dict(entry))
 
 
 def prune_seen_state(state: dict, now) -> None:
@@ -87,7 +110,23 @@ def prune_seen_state(state: dict, now) -> None:
             seen.pop(key, None)
 
 
-def filter_previously_seen_alerts(alerts: list[dict], now) -> tuple[list[dict], list[dict]]:
+def seen_entry_has_lane(entry: object, lane: str) -> bool:
+    """Treat pre-lane state as seen everywhere to prevent legacy repeats."""
+    if not isinstance(entry, dict):
+        return True
+    lanes = entry.get("lanes")
+    if isinstance(lanes, dict):
+        return lane in lanes or "legacy" in lanes
+    if isinstance(lanes, list):
+        return lane in lanes or "legacy" in lanes
+    return True
+
+
+def filter_previously_seen_alerts(
+    alerts: list[dict],
+    now,
+    lane: str = "live",
+) -> tuple[list[dict], list[dict]]:
     state = load_seen_state()
     prune_seen_state(state, now)
     seen = state.setdefault("seen", {})
@@ -95,34 +134,37 @@ def filter_previously_seen_alerts(alerts: list[dict], now) -> tuple[list[dict], 
     skipped: list[dict] = []
     for alert in alerts:
         keys = alert_seen_keys(alert)
-        if keys and any(key in seen for key in keys):
+        matching_entries = [seen[key] for key in keys if key in seen]
+        already_seen = bool(matching_entries) if lane == "live" else any(
+            seen_entry_has_lane(entry, lane) for entry in matching_entries
+        )
+        if already_seen:
             skipped.append(alert)
             continue
         alert = dict(alert)
         alert["_seen_keys"] = keys
+        if lane == "preopen" and matching_entries:
+            alert["_preopen_live_seen_bypass"] = True
         fresh.append(alert)
     if skipped:
-        print(f"GAMEJOA radar: skipped_seen_alerts={len(skipped)}")
+        print(f"GAMEJOA radar: skipped_seen_alerts={len(skipped)} lane={lane}")
     return fresh, skipped
 
 
 def filter_alerts_for_run_mode(classified: list[dict], now, live_mode: bool) -> tuple[list[dict], list[dict]]:
-    """Use seen-state suppression only for real-time alerts.
+    """Apply lane-aware seen-state suppression.
 
     The 06:30 radar is an overnight digest. It must retain qualifying items
-    even when an earlier real-time run already announced them. A successful
-    preopen send is still recorded below, preventing the next live poll from
-    repeating the same stories.
+    when an earlier real-time run announced them, but it must not repeat an
+    item already sent in an earlier preopen digest. A successful preopen send
+    also prevents the next live poll from repeating the same stories.
     """
     if live_mode:
-        return filter_previously_seen_alerts(classified, now)
-    digest_alerts = []
-    for alert in classified:
-        item = dict(alert)
-        item["_seen_keys"] = alert_seen_keys(item)
-        digest_alerts.append(item)
-    print(f"GAMEJOA radar: preopen_digest_seen_bypass={len(digest_alerts)}")
-    return digest_alerts, []
+        return filter_previously_seen_alerts(classified, now, "live")
+    digest_alerts, skipped = filter_previously_seen_alerts(classified, now, "preopen")
+    bypassed = sum(bool(alert.get("_preopen_live_seen_bypass")) for alert in digest_alerts)
+    print(f"GAMEJOA radar: preopen_digest_seen_bypass={bypassed}")
+    return digest_alerts, skipped
 
 
 def record_seen_alerts(alerts: list[dict], now) -> None:
@@ -131,10 +173,25 @@ def record_seen_alerts(alerts: list[dict], now) -> None:
     state = load_seen_state()
     prune_seen_state(state, now)
     seen = state.setdefault("seen", {})
+    lane = "live" if os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live" else "preopen"
+    seen_at = now.isoformat(timespec="seconds")
     for alert in alerts:
-        for key in alert.get("_seen_keys") or alert_seen_keys(alert):
+        keys = list(dict.fromkeys([*(alert.get("_seen_keys") or []), *alert_seen_keys(alert)]))
+        for key in keys:
+            existing = seen.get(key) if isinstance(seen.get(key), dict) else {}
+            raw_lanes = existing.get("lanes")
+            if isinstance(raw_lanes, dict):
+                lanes = dict(raw_lanes)
+            elif isinstance(raw_lanes, list):
+                lanes = {name: existing.get("first_seen_kst") or seen_at for name in raw_lanes}
+            else:
+                lanes = {"legacy": existing.get("first_seen_kst") or seen_at} if existing else {}
+            lanes[lane] = seen_at
             seen[key] = {
-                "first_seen_kst": now.isoformat(timespec="seconds"),
+                **existing,
+                "first_seen_kst": existing.get("first_seen_kst") or seen_at,
+                "last_seen_kst": seen_at,
+                "lanes": lanes,
                 "title": alert.get("news") or alert.get("original_news") or "",
                 "source": alert.get("publisher") or alert.get("source") or "",
                 "link": alert.get("link") or "",
@@ -344,8 +401,11 @@ def selection_diagnostics(
     return {
         "collected_rows": len(rows),
         "classified_alerts": len(classified),
-        "seen_filter_applied": live_mode,
-        "preopen_digest_seen_bypass": 0 if live_mode else len(classified),
+        "seen_filter_applied": True,
+        "seen_filter_scope": "all_lanes" if live_mode else "preopen_lane",
+        "preopen_digest_seen_bypass": 0 if live_mode else sum(
+            bool(alert.get("_preopen_live_seen_bypass")) for alert in candidates
+        ),
         "seen_filtered_alerts": len(skipped_seen),
         "deduped_candidates": len(candidates),
         "selected_alerts": len(selected),

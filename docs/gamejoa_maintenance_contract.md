@@ -41,6 +41,8 @@ Every defect or requested change must follow this sequence:
 - The 06:30 preopen digest must not be emptied by the real-time seen-state.
   It may reuse a qualifying overnight item once in the daily digest, then the
   successful digest send must refresh seen-state so later live polls stay quiet.
+- Seen-state is lane-aware: a live-only item may appear once in the next 06:30
+  digest, while 전날 장전판 항목 재송출 금지 remains a hard invariant.
 - Cloudflare owns the 06:30 KST daily dispatch and must use a date-scoped KV
   lock. GitHub's delayed schedule is not an acceptable primary timer.
 - Implementation and re-verification results must be reported together with
