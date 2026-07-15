@@ -9,6 +9,7 @@ to another bot or make Telegram failures look successful.
 from __future__ import annotations
 
 import importlib
+import os
 import sys
 import urllib.parse
 from pathlib import Path
@@ -76,6 +77,7 @@ REQUIRED_RUNNER_SNIPPETS = [
     "telegram.final_alerts_for_output = quality_display_alerts",
     "source_output_aligned(normalized)",
     "federal_register_uae_ear",
+    "ALLOW_OFF_WINDOW_TELEGRAM",
 ]
 
 REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
@@ -109,6 +111,7 @@ REQUIRED_RUNTIME_GUARD_SNIPPETS = [
     "runtime report/JSON count mismatch",
     "runtime Telegram status mismatch",
     "GAMEJOA runtime delivery verified",
+    "ALLOW_OFF_WINDOW_TELEGRAM",
 ]
 
 REQUIRED_MAINTENANCE_CONTRACT_SNIPPETS = [
@@ -197,6 +200,7 @@ def main() -> int:
     sys.path.insert(0, str(ROOT / "scripts"))
     production = importlib.import_module(PRODUCTION_RUNNER)
     compact = importlib.import_module(LOCKED_TELEGRAM_MODULE)
+    runtime_delivery = importlib.import_module("verify_gamejoa_delivery_result")
     send_module = getattr(production.telegram.send_telegram, "__module__", "")
     compact_module = getattr(production.telegram.compact_report, "__module__", "")
     final_selection_module = getattr(production.telegram.final_alerts_for_output, "__module__", "")
@@ -348,6 +352,36 @@ def main() -> int:
         errors.append("06:30 preopen digest was incorrectly suppressed by live seen-state")
     elif not preopen_fresh[0].get("_seen_keys"):
         errors.append("06:30 preopen digest lost post-send seen-state keys")
+
+    # The sender and post-send verifier must interpret the manual off-window
+    # switch identically. Otherwise Telegram can be sent while Actions reports
+    # a false failure, which hides the real delivery result.
+    tested_env = {
+        "RADAR_RUN_MODE": os.environ.get("RADAR_RUN_MODE"),
+        "ALLOW_OFF_WINDOW_TELEGRAM": os.environ.get("ALLOW_OFF_WINDOW_TELEGRAM"),
+        "PREOPEN_SEND_WINDOW_START_KST": os.environ.get("PREOPEN_SEND_WINDOW_START_KST"),
+        "PREOPEN_SEND_WINDOW_END_KST": os.environ.get("PREOPEN_SEND_WINDOW_END_KST"),
+    }
+    try:
+        os.environ["RADAR_RUN_MODE"] = "preopen"
+        os.environ["PREOPEN_SEND_WINDOW_START_KST"] = "05:30"
+        os.environ["PREOPEN_SEND_WINDOW_END_KST"] = "07:30"
+        os.environ["ALLOW_OFF_WINDOW_TELEGRAM"] = "true"
+        off_window_time = now.replace(hour=16, minute=0, second=0, microsecond=0)
+        if not compact.preopen_send_window_open():
+            errors.append("Telegram sender ignored ALLOW_OFF_WINDOW_TELEGRAM=true")
+        if not runtime_delivery.send_window_open(off_window_time):
+            errors.append("runtime delivery verifier ignored ALLOW_OFF_WINDOW_TELEGRAM=true")
+        os.environ["ALLOW_OFF_WINDOW_TELEGRAM"] = "false"
+        if runtime_delivery.send_window_open(off_window_time):
+            errors.append("runtime delivery verifier opened the normal preopen window at 16:00 KST")
+    finally:
+        for name, value in tested_env.items():
+            if value is None:
+                os.environ.pop(name, None)
+            else:
+                os.environ[name] = value
+
     if send_module != LOCKED_TELEGRAM_MODULE:
         errors.append(
             f"{PRODUCTION_RUNNER}.telegram.send_telegram is wired to {send_module}, "

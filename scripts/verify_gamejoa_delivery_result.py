@@ -25,8 +25,14 @@ def parse_hhmm(value: str, fallback: tuple[int, int]) -> int:
     return max(0, min(23, hour)) * 60 + max(0, min(59, minute))
 
 
+def env_truthy(name: str) -> bool:
+    return os.getenv(name, "").strip().lower() in {"1", "true", "yes", "y"}
+
+
 def send_window_open(query_time: dt.datetime) -> bool:
     if os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live":
+        return True
+    if env_truthy("ALLOW_OFF_WINDOW_TELEGRAM"):
         return True
     current = query_time.hour * 60 + query_time.minute
     start = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_START_KST", "05:30"), (5, 30))
