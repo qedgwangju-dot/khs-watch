@@ -1,12 +1,5 @@
 {
-  "failure_streaks": {
-    "domestic_telecom|kcc.go.kr": {
-      "lane": "domestic_telecom",
-      "last_seen_kst": "2026-07-18T12:01:09+09:00",
-      "source": "Korea Communications Commission notices",
-      "streak": 1
-    }
-  },
+  "failure_streaks": {},
   "seen": {
     "17cf121d2c3edf74": {
       "failure_count": 1,
