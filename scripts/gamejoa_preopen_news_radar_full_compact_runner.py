@@ -228,11 +228,1748 @@ def enforce_semiconductor_cycle_contract() -> None:
             alert["importance"] = "ìƒ" if alert["score"] >= 100 else "ì¤‘"
             alert["port_strike_risk"] = True
             alert["news"] = "ë©”ê°€í”„ë¡œì íŠ¸ ì¼ì •: ë¯¸êµ­ ë™ë¶€Â·ê±¸í”„ í•­ë§Œ ê³„ì•½ ë§Œë£Œ/íŒŒì—… ë¦¬ìŠ¤í¬"
-            alert["interpretation"] = "ë¯¸êµ­ ë™ë¶€Â·ê±¸í”„ í•­ë§Œ íŒŒì—… ë¦¬ìŠ¤í¬ëŠ”ÛıÚÚ$z{-®éÜj×ºÎ»Hr%Ğ¢÷WB³ÒW‡G&¢–b.ÙZÉÛÉÊ‚"–âÆW'BævWB‚&–×7G2"ÂµÒ“ ¢÷WB³Ò°¢b$Dd”“¶g&VBævWB‚wfÇVRr’–bg&VBævWB‚wfÇVRr’—2æ÷BæöæRVÇ6R~Ù™^ÉÛ‚»h«wÒ"À¢b%DRD•2·FRævWB‚wfÇVRr’–bFRævWB‚wfÇVRr’—2æ÷BæöæRVÇ6R~Ù™^ÉÛ‚»h«wÒ"À¢$•tÒõ5’"À¢Ğ¢&WGW&â"Â"æ¦ö–â†F–7Bæg&öÖ¶W—2†÷WB’’÷".Ù™^ÉÛ‚«¸ª^ÙYÂÊxÊ	ÊxÙÂÉxnÉØÂ   ¦FVb6VÖ–6öæGV7F÷%ö7–6ÆUö6†V6²†ÆW'C¢F–7B’Óâ7G"ÂæöæS ¢–bæ÷BÆW'BævWB‚'6VÖ–6öæGV7F÷%÷6VÆÆöfb"“ ¢&WGW&âæöæP¢&WGW&â.º™NºªºjÂ««*œ+~«:«	ŞÈ*ÂÉêÎ«:+t4UŒ+~»ºYÉyÉÛNÈY‚»h¸»B¸ùÈ¹ÂÉX^Ù™BÉzÎ»h   ¦FVb6VÖ–6öæGV7F÷%÷öÆ–7•ö6†V6²†ÆW'C¢F–7B’Óâ7G"ÂæöæS ¢–bæ÷BÆW'BævWB‚'öÆ–7•öG&—fR"“ ¢&WGW&âæöæP¢&WGW&â%"dBÈKÉZ«;^Ê	Â¸ÈÈ8+~È¹ÎÙh’È¹ÎÊ	+~ÈhÎ»hÉêR»	ÎÊ;ÂşÈ‰Ê;ÂÉ{«+ÈK   ¦FVb÷'E÷7G&–¶Uö6†V6²†ÆW'C¢F–7B’Óâ7G"ÂæöæS ¢–bæ÷BÆW'BævWB‚'÷'E÷7G&–¶U÷&—6²"“ ¢&WGW&âæöæP¢&WGW&â$”ÄõU4Õ‚«8NÉ[ÒºxÎº8Ì+~Ù‰È8«+º
-ÂÉzÎ»h+~¸ù»hş«ÙHBÙZŞºxÂË
-ÊxŒ+~«‹ÉéÉêÂ¸*«‹ş¸ÈÙ‰R4U‚ÉÛÎÊ	R   ¦FVb6†–æö'VÆµö6†V6²†ÆW'C¢F–7B’Óâ7G"ÂæöæS ¢–bæ÷BÆW'BævWB‚&6†–æ÷7F–×VÇW5ö'VÆ²"“ ¢&WGW&âæöæP¢&WGW&â.ÊI«ZÒ»hÉiËRÈºNºËÂ«	^¸øL+~Ë*«IÈIÒşÈIŞØ8BºËÎ¸ù¹øœ+t$D’ş»(ÎØÎÈJÉ«NÉèB¸ùÙh’   ¦FVbw&–E÷öÆ–7•ö6†V6²†ÆW'C¢F–7B’Óâ7G"ÂæöæS ¢–bæ÷BÆW'BævWB‚&w&–E÷öÆ–7•öFVÆ’"“ ¢&WGW&âæöæP¢&WGW&â.Ê	^»hÈ«ÉÛŒ+~«yÎÊ	ÂşÉÛÙx«+~«8NØk^Ê	ÈhÒÉÛÎÊ	\+~ÉÊØ»ºjÎØ»4U‚ÊyÙh’ÈhŞ¸øB   ¦FVb&–÷FV6…öÆVFW'6†—ö6†V6²†ÆW'C¢F–7B’Óâ7G"ÂæöæS ¢–bæ÷BÆW'BævWB‚&&–÷FV6…öÆVFW'6†—öf–ÇFW""“ ¢&WGW&âæöæP¢&WGW&âÆW'BævWB‚&&–÷FV6…ö6†V6²"’÷".ÈºNÊ	ÂºzNËiÂşÉÛNÉÛ\+~»˜^ØÈÎºx‚É«ÈJÈ‰ÎÉÈL+tdDÉÛÎÊ	\+~«ˆºjÂşÙZÉÛÉÊ‚¸ùÈ¹ÂÙ™^ÉÛ‚   ¦FVb&ö&÷F–75öW†V7WF–öåö6†V6²†ÆW'C¢F–7B’Óâ7G"ÂæöæS ¢–bæ÷BÆW'BævWB‚'&ö&÷F–75öW†V7WF–öåöf–ÇFW""“ ¢&WGW&âæöæP¢&WGW&âÆW'BævWB‚'&ö&÷F–75ö6†V6²"’÷".È+ÎÈKÊÊx«	ÎØë‚»
-Ùj\+u$#RÓƒSØXÎÈªNØ«Œ+~»	ÎÊ;Âô4U‚şºzNËiÂÉÛÈ¹ÒÉ{«+Ù™^ÉÛ‚   ¦FVbF—7Æ•öæWw2†ÆW'C¢F–7B’Óâ7G# ¢&WGW&â¶÷&Vå÷F—FÆR†ÆW'B  ¦FVb6ö×7EöÆW'B†ÆW'C¢F–7BÂ–Gƒ¢–çBÂæ÷rÂg&VC¢F–7BÂFS¢F–7B’Óâ7G# ¢ÆW'BÒæ÷&ÖÆ—¦UöÆW'Eöf÷%ö÷WGWB†ÆW'B¢W†×ÆW2ÒÆW'BævWB‚&W†×ÆW2"’÷"µĞ¢6÷VçE÷7Vff—‚Òb"‡¶ÆW'E²v6ÇW7FW%ö6÷VçBu×Ş«BºËnÉØÂ’"–bÆW'BævWB‚&6ÇW7FW%ö6÷VçB"’VÇ6R" ¢7FGW2ÒÆW'BævWB‚'7FGW2"’÷"‚.«;^È¹ÒÙ™^ÉÛ‚ÊB"–bW†×ÆW2VÇ6R.Ù™^ÉÛ‚»h«"¢&6—2ÒÆW'BævWB‚&¶÷&Vö&6—2"’÷"‚.É›ÈºşÊxÉzÒ¸›NÈªBÙ™^È+"–bW†×ÆW2VÇ6R.É›ÈºÙ™^È+"¢–×7G2ÒÆW'BævWB‚&–×7G2"’÷"².ÉÙÈ*Î«+Ê	RÉˆÙjRÊ	ÎÙYÎÊ%Ğ¢F—7Æ–VEö–×7G2ÒF—7Æ•ö–×7G2†–×7G2¢F‡2ÒÆW'BævWB‚'F‡2"’÷"².Ê	^ËRØ8ÉèN¹ÛÎÉÛ‚"–b–×7BÓÒ.È¹Î«NÙÂ"VÇ6R–×7Bf÷"–×7B–â–×7G5Ğ¢6V7F÷'2ÒÆW'BævWB‚'6V7F÷'2"’÷"².ÉˆÙjRÈKØKÙ™^ÉÛ‚»h«%Ğ¢V&Æ—6†VBÒÆW'BævWB‚'V&Æ—6†VB"’÷"‚.ÉzÎ¹úÂ«B"–bW†×ÆW2VÇ6R.Ù™^ÉÛ‚»h«"¢&–6VEö–âÒÆW'BævWB‚'&–6VEö–â"’÷"b'¶ÆW'BævWB‚w&VfÆV7F–öâr’÷"~ÊI«BwÒâÙ¸NÈhÒ«;^È¹ÒÊ«N«;ÂÈ¹ÎÉêR»	ÉÙÙ™^ÉÛ‚ÊN«˜ÎÊxÙ™^Ê	R»	ÉˆÉËÎºÂ»;N«‹ÉkNº^È«^¸¸¸ºBâ ¢6÷VçFW"ÒÆW'BævWB‚&6÷VçFW""’÷".É¹ºË‚ÈK»hÊ«N«;Â«;^È¹ÒºËÈIÂÙ™^ÉÛ‚ÊB«;Î¸ÈÙ[NÈIÒ«¸ªR ¢–çFW'&WFF–öâÒÆW'BævWB‚&–çFW'&WFF–öâ"’÷".¸ø‚»(N¸©B¸ª^º
-RÂÙZÉÛÉÊ‚ÂÈ‰«ˆ’ÂÈ¹Î«NÙÂÊIÙY¸)º[Â»	N«øÈ‰‚Éè¸©NÊxÙ™^ÉÛÙ[NÉ[ÂÙZ¸¸¸ºBâ ¢f–ÆVE÷6–væÂÒÆW'BævWB‚&f–ÆVE÷6–væÂ"’÷".«Hº
-‚««*œ+~È‰«ˆœ+~«;^È¹ÒÙ¸NÈhÒÙ™^ÉÛÉÛB¸ùÙhÙYÊxÉX®ÉËÎº›B¸º»	ÎÈK¸›NÈªB  ¢Æ–æW2Ò¶b'¶–G‡Ò’··6fR†ÆW'BævWB‚v–×÷'Fæ6Rr’—ÒÂ·6fR‡7FGW2—ÕÒ·6fR†F—7Æ•öæWw2†ÆW'B’—×¶‡FÖÂæW66R†6÷VçE÷7Vff—‚ÂV÷FSÔfÇ6R—Ò%Ğ¢–bW†×ÆW3 ¢Æ–æW2æVæB†b"ÒÙ™^ÉÛƒ¢É¹ºËŒ+~»;N¸øB¶Ö–â†ÆVâ†W†×ÆW2’ÂB—Ş«BºËnÉØÂÙ™^ÉÛ‚"¢6÷W&6U÷FW‡BÒ6÷W&6U÷7VÖÖ'’†W†×ÆW5³£EÒ¢VÇ6S ¢6÷W&6U÷FW‡BÒ‡FÖÅöÆ–æ²†ÆW'BævWB‚'V&Æ—6†W""’÷"ÆW'BævWB‚'6÷W&6R"’÷".ËiÎË)‚Ù™^ÉÛ‚»h«"ÂÆW'BævWB‚&Æ–æ²"’÷""" ¢Æ–æW2³Ò°¢b"ÒÙYÎ«ZŞÉêR«‹ÊH¢·6fR†&6—2—Ò"À¢b"ÒØ8ÉèN¹ÛÎÉÛƒ¢É¹Ë)Â·6fR‡V&Æ—6†VB—Ò+rÙYÎ«ZÒØŠÎÉéÉéÙ™^È+¶æ÷s¢Tƒ¢TÒµ5GÒ"À¢b"ÒÙ[^ÈºÂ¸+NÉª“¢·6fR†ÆW'BævWB‚wöÆ–7•÷Æ–å÷7VÖÖ'’r’—Ò"À¢b"ÒØŠÎÉé«HÊ	¢·6fR†ÆW'BævWB‚v–çfW7FÖVçE÷f–Wrr’—Ò"À¢b"ÒÙYÎ«ZŞÉêRÉˆÙjS¢·6fR†ÆW'BævWB‚v¶÷&VöÖ&¶WEö–×7Br’—Ò"À¢b"ÒÉÙÈ*Î«+Ê	RÉˆÙjS¢·6fR‚rÂræ¦ö–â†F—7Æ–VEö–×7G2’—Ò"À¢b"Ò»hNºY‚ºzNØ«ºjŞÈªC¢·6fR†FV6—6–öåöÖG&—‚†–×7G2’—Ò"À¢b"ÒÉˆÙjR«+ŞºÃ¢·6fR‚rÂræ¦ö–â‡F‡2’—Ò"À¢b"ÒÉˆÙjRÈKØK¢·6fR‚rÂræ¦ö–â‡6V7F÷'2’—Ò"À¢b"Ò«Hº
-‚Ù[NÉ›‚Ø»ËºBşÊxÙÃ¢·6fR‡&VÆFVE÷FW‡B†ÆW'BÂg&VBÂFR’—Ò"À¢b"Ò»	Éˆ«¸ª^ÈK¢·6fR‡&–6VEö–â—Ò"À¢b"Ò»	¸È«{Î«¢·6fR†6÷VçFW"—Ò"À¢b"ÒÙ[NÈIÓ¢·6fR†–çFW'&WFF–öâ—Ò"À¢Ğ¢6VÖ•ö6†V6²Ò6VÖ–6öæGV7F÷%ö7–6ÆUö6†V6²†ÆW'B¢öÆ–7•ö6†V6²Ò6VÖ–6öæGV7F÷%÷öÆ–7•ö6†V6²†ÆW'B¢÷'Eö6†V6²Ò÷'E÷7G&–¶Uö6†V6²†ÆW'B¢'VÆµö6†V6²Ò6†–æö'VÆµö6†V6²†ÆW'B¢w&–Eö6†V6²Òw&–E÷öÆ–7•ö6†V6²†ÆW'B¢&–÷FV6…ö6†V6²Ò&–÷FV6…öÆVFW'6†—ö6†V6²†ÆW'B¢&ö&÷F–75ö6†V6²Ò&ö&÷F–75öW†V7WF–öåö6†V6²†ÆW'B¢–böÆ–7•ö6†V6³ ¢Æ–æW2æVæB†b"Ò»	¸øNË+BÊ	^ËRË+NØÃ¢·6fR‡öÆ–7•ö6†V6²—Ò"¢VÆ–b6VÖ•ö6†V6³ ¢Æ–æW2æVæB†b"Ò»	¸øNË+B«ˆ¹ÛÒË+NØÃ¢·6fR‡6VÖ•ö6†V6²—Ò"¢–b÷'Eö6†V6³ ¢Æ–æW2æVæB†b"Òº™N«ÙHNºÎÊ	ŞØ«‚ÉÛÎÊ	RË+NØÃ¢·6fR‡÷'Eö6†V6²—Ò"¢–b'VÆµö6†V6³ ¢Æ–æW2æVæB†b"ÒÊI«ZÒ»hÉi+~»(ÎØÎÈJË+NØÃ¢·6fR†'VÆµö6†V6²—Ò"¢–bw&–Eö6†V6³ ¢Æ–æW2æVæB†b"ÒÈjÊNºyÒÊ	^ËRË+NØÃ¢·6fR†w&–Eö6†V6²—Ò"¢–b&–÷FV6…ö6†V6³ ¢Æ–æW2æVæB†b"Ò»	NÉÛNÉŠBÊ;Î¸øNÊ;ÂË+NØÃ¢·6fR†&–÷FV6…ö6†V6²—Ò"¢–b&ö&÷F–75ö6†V6³ ¢Æ–æW2æVæB†b"ÒÈ+ÎÈKºÎ»HrË+NØÃ¢·6fR‡&ö&÷F–75ö6†V6²—Ò"¢Æ–æW2³Ò°¢b"ÒÈºNØÊ‚ÈºÙ‹ƒ¢·6fR†f–ÆVE÷6–væÂ—Ò"À¢b"ÒËiÎË)ƒ¢·6÷W&6U÷FW‡GÒ+rÊÙ¨Â¶æ÷s¢Tƒ¢TÒµ5GÒ"À¢""À¢Ğ¢&WGW&â%Æâ"æ¦ö–â†Æ–æW2  ¦FVb6ö×7E÷&W÷'B†ÆW'G3¢Æ—7E¶F–7EÒÂg&VC¢F–7BÂFS¢F–7BÂæ÷r’Óâ7G# ¢Æ–Ö—BÒÖ‚ƒÂÖ–âƒrÂ–çB†÷2ævWFVçb‚%$D%ôD•5Ä•ôÄ”Ô•B"Â#R"’’’¢f—6–&ÆRÒÆW'G5³¦Æ–Ö—EĞ¢Æ—fUöÖöFRÒ÷2ævWFVçb‚%$D%õ%TåôÔôDR"Â""’ç7G&—‚’æÆ÷vW"‚’ÓÒ&Æ—fR ¢–bÆ—fUöÖöFS ¢F—FÆRÒb/	ù;tÔT¤ôÈºNÈ¹Î«BÙ[^ÈºÂ¸›NÈªBºÉÛN¸ÙB+r¶æ÷s¢U¸XBVŞÉ¹BVNÉÛÇÒ+r¶æ÷s¢Tƒ¢T×Ò ¢6öÖÖVçE÷F—FÆRÒ/	ù*ÈºNÈ¹Î«B¸›NÈªBËÙNº™Ø«‚ ¢föÆÆ÷wWöÆ–æRÒ.¸ºNÉØÂØŠÎÉé«‹È8¸øNÉyÈIÂÈ‰Ë™Œ+~È‰«ˆœ+~ØXÎºxÉ˜ÉêÎÙ™^ÉÛ‚ÙXNÉ©Bâ ¢V×G•öÆ–æRÒ.ÈºNÈ¹Î«B«:Ëj«*’¸›NÈªBÊxÊ	Ù™^ÉÛ‚ÉxnÉØÂ ¢VÇ6S ¢F—FÆRÒb/	ù;tÔT¤ôÉê^ÊBÙ[^ÈºÂ¸›NÈªBºÉÛN¸ÙB+r¶æ÷s¢U¸XBVŞÉ¹BVNÉÛÇÒ+rc£3 ¢6öÖÖVçE÷F—FÆRÒ/	ù*c£3Éê^ÊB¸›NÈªBËÙNº™Ø«‚ ¢föÆÆ÷wWöÆ–æRÒ#c£SØŠÎÉé«‹È8¸øNÉyÈIÂÈ‰Ë™Œ+~È‰«ˆœ+~ØXÎºxÉ˜ÉêÎÙ™^ÉÛ‚ÙXNÉ©Bâ ¢V×G•öÆ–æRÒ.Éê^ÊB«:Ëj«*’¸›NÈªBÊxÊ	Ù™^ÉÛ‚ÉxnÉØÂ ¢Æ–æW2Ò·F—FÆRÂb.ÊÙ¨Ã¢¶æ÷s¢U’ÒVÒÒVBTƒ¢TÒµ5GÒ"Âb.ÈJ»8C¢Ù[^ÈºÂ¶ÆVâ‡f—6–&ÆR—Ş«B"Â"%Ğ¢–bf—6–&ÆS ¢f÷"–G‚ÂÆW'B–âVçVÖW&FR‡f—6–&ÆRÂ“ ¢Æ–æW2æVæB†6ö×7EöÆW'B†ÆW'BÂ–G‚Âæ÷rÂg&VBÂFR’¢6†ævVBÒ,+r"æ¦ö–â†F—7Æ•ö–×7G2‡f—6–&ÆU³ÒævWB‚&–×7G2"’’¢VÇ6S ¢Æ–æW2³Ò¶V×G•öÆ–æRÂ"%Ğ¢6†ævVBÒ.º¨^Ù™^ÙYÂ»8Ù™BÉxnÉØÂ ¢Æ–æW2³Ò°¢6öÖÖVçE÷F—FÆRÀ¢b.ÉŠN¸©‚Ù[^ÈºÂ»8Ù™N¸©B·6fR†6†ævVB—ÖÉè^¸¸¸ºBâÙYÎ«ZŞÉê^ÉyÈIÎ¸©B«Hº
-‚Ù[NÉ›‚Ø»ËºB»	ÉÙ«;Â«ZŞ¸+BÈ‰«ˆ’Ù™^È+ÉzÎ»hº[Âº‹ÎÊÙ™^ÉÛÙZ¸¸¸ºBâ"À¢b.ÙZÉÛÉÊƒ¢·6fR‡FVÆVw&Òæ6ö×7E÷&VÅ÷––VÆB†g&VBÂFR’—Ò"À¢föÆÆ÷wWöÆ–æRÀ¢""À¢.ØŠÎÉéÊÉkÉÛBÉXN¸¸ÂË«:Éª’¸›NÈªB»ˆÎºjÎÙYÉè^¸¸¸ºBâ"À¢Ğ¢&W÷'BÒ%Æâ"æ¦ö–â†Æ–æW2’ç7G&—‚’²%Æâ ¢wV&E÷&V÷Vå÷&W÷'B‡&W÷'B¢&WGW&â&W÷'@  ¦FVbwV&E÷&V÷Vå÷&W÷'B‡FW‡C¢7G"’ÓâæöæS ¢W'&÷'3¢Æ—7E·7G%ÒÒµĞ¢fÆ–E÷F—FÆRÒ€¢FW‡Bç7F'G7v—F‚‚/	ù;tÔT¤ôÉê^ÊBÙ[^ÈºÂ¸›NÈªBºÉÛN¸ÙB+r"¢÷"FW‡Bç7F'G7v—F‚‚/	ù;tÔT¤ôÈºNÈ¹Î«BÙ[^ÈºÂ¸›NÈªBºÉÛN¸ÙB+r"¢¢–bæ÷BfÆ–E÷F—FÆS ¢W'&÷'2æVæB‚'F—FÆUö6öçG&7B"¢—FVÕö6÷VçBÒ7VÒƒf÷"Æ–æR–âFW‡Bç7Æ—FÆ–æW2‚’–b&RæÖF6‚‡"%åÆBµÂ•Ç2µÅ²"ÂÆ–æR’¢&WV—&VBÒ°¢"ÒÙ[^ÈºÂ¸+NÉª“¢"À¢"ÒØŠÎÉé«HÊ	¢"À¢"ÒÙYÎ«ZŞÉêRÉˆÙjS¢"À¢"ÒÉÙÈ*Î«+Ê	RÉˆÙjS¢"À¢"ÒÉˆÙjR«+ŞºÃ¢"À¢"ÒÉˆÙjRÈKØK¢"À¢"Ò»	Éˆ«¸ª^ÈK¢"À¢"Ò»	¸È«{Î«¢"À¢"ÒÈºNØÊ‚ÈºÙ‹ƒ¢"À¢Ğ¢f÷"Ö&¶W"–â&WV—&VC ¢–b—FVÕö6÷VçBæBFW‡Bæ6÷VçB†Ö&¶W"’Â—FVÕö6÷VçC ¢W'&÷'2æVæB†b&Ö—76–æu÷¶Ö&¶W'Ò"¢–b—FVÕö6÷VçBæB"ÒÉÙÈ*Î«+Ê	RÉˆÙjS¢ÉÙÈ*Î«+Ê	RÉˆÙjRÊ	ÎÙYÎÊ"–âFW‡C ¢W'&÷'2æVæB‚&Æ–Ö—FVEöFV6—6–öåö–×7EöF—7Æ–VB"¢f÷"‡&6R–âtTäU$”5ôU…ÄäD”ôåõ…$4U3 ¢–b—FVÕö6÷VçBæB‡&6R–âFW‡C ¢W'&÷'2æVæB‚&vVæW&–5÷öÆ–7•öW‡ÆæF–öåöF—7Æ–VB"¢f÷"Æ–æR–âFW‡Bç7Æ—FÆ–æW2‚“ ¢–bæ÷B&RæÖF6‚‡"%åÆBµÂ•Ç2µÅ²"ÂÆ–æR“ ¢6öçF–çVP¢F—FÆRÒ&Rç7V"‡"%åÆBµÂ•Ç2µÅµµåÅÕÒµÅÕÇ2¢"Â""ÂÆ–æR’ç7G&—‚¢F—FÆRÒ&Rç7V"‡"%Â…ÆB¾«BºËnÉØÅÂ’B"Â""ÂF—FÆR’ç7G&—‚¢–bÖ÷7FÇ•ö66–’‡F—FÆR“ ¢W'&÷'2æVæB†b'&uöVævÆ—6…ö†VF–æs×·F—FÆU³£ƒ×Ò"¢Æ÷rÒ&Rç7V"‡"&‡GG3ó¢òõÅ2²"Â""ÂFW‡B’æÆ÷vW"‚¢f÷"Ö&¶W"–â°¢'F†—2Fö7VÖVçB—2Ç6òf–Æ&ÆR–âF†RföÆÆ÷v–ærf÷&ÖG2"À¢&æ÷&ÖÆ—¦VBGG&–'WFW2æBÖWFFF"À¢&÷&–v–æÂgVÆÂFW‡B†ÖÂ"À¢&v÷fW&æÖVçBV&Æ—6†–æröff–6RÖWFFF"À¢&FWfVÆ÷W"FööÇ2vW2"À¢Ó ¢–bÖ&¶W"–âÆ÷s ¢W'&÷'2æVæB†b&fVFW&Å÷&Vv—7FW%ö&ö–ÆW'ÆFS×¶Ö&¶W'Ò"¢–bW'&÷'3 ¢&—6R'VçF–ÖTW'&÷"‚$tÔT¤ô&V÷Vâ&F"VÆ—G’wV&B&Æö6¶VBFVÆVw&Ò÷WGWC¢"²#²"æ¦ö–â†W'&÷'2’  ¦FVb6VæE÷FVÆVw&Ò‡FW‡C¢7G"’ÓâæöæS ¢wV&E÷&V÷Vå÷&W÷'B‡FW‡B¢6†Eö–BÒ÷2ævWFVçb‚%DTÄTu$Õô4„Eô”B"Â""’ç7G&—‚¢–b—5öV×G•÷&F%÷&W÷'B‡FW‡B’æBæ÷B6†÷VÆE÷6VæEöV×G•÷&F"‚“ ¢w&—FUöFVÆ—fW'•÷7FGW2‚'6¶—VEöV×G’"Â6†Eö–BÂÆVâ‡FW‡B’Â$æò†–v‚Ö–×7B&F"—FVÒ6VÆV7FVB"¢&–çB†b%FVÆVw&Ó¢6¶—VBV×G’&F"÷&–v–æÅö6†'3×¶ÆVâ‡FW‡B—Ò"¢&WGW&à¢–bæ÷B&V÷Vå÷6VæE÷v–æF÷uö÷Vâ‚“ ¢w&—FUöFVÆ—fW'•÷7FGW2‚'6¶—VEööfe÷v–æF÷r"Â6†Eö–BÂÆVâ‡FW‡B’Â$÷WG6–FRtÔT¤ô&V÷VâFVÆVw&Ò6VæBv–æF÷r"¢&–çB†b%FVÆVw&Ó¢6¶—VB÷WG6–FR&V÷Vâ6VæBv–æF÷r÷&–v–æÅö6†'3×¶ÆVâ‡FW‡B—Ò"¢&WGW&à¢Fö¶VâÒ÷2ævWFVçb‚%DTÄTu$Õô$õEõDô´Tâ"Â""’ç7G&—‚¢–bæ÷BFö¶Vâ÷"æ÷B6†Eö–C ¢w&—FUöFVÆ—fW'•÷7FGW2‚&&Æö6¶VB"Â6†Eö–BÂÆVâ‡FW‡B’Â%DTÄTu$Õô$õEõDô´Tâ÷"DTÄTu$Õô4„Eô”BÖ—76–ær"¢&—6R'VçF–ÖTW'&÷"‚%FVÆVw&ÒFVÆ—fW'’&Æö6¶VC¢DTÄTu$Õô$õEõDô´Tâ÷"DTÄTu$Õô4„Eô”BÖ—76–ær"¢ÖW76vRÒf—E÷FVÆVw&Õö‡FÖÂ‡FW‡BÂ&6RåDTÄTu$ÕôÄ”Ô•B¢&öG’ÒW&ÆÆ–"ç'6RçW&ÆVæ6öFR‡°¢&6†Eö–B#¢6†Eö–BÀ¢'FW‡B#¢ÖW76vRÀ¢&F—6&ÆU÷vV%÷vU÷&Wf–Wr#¢'G'VR"À¢''6UöÖöFR#¢$…DÔÂ"À¢Ò’æVæ6öFR‚'WFbÓ‚"¢Æ7EöW'&÷"Ò" ¢f÷"GFV×B–â&ævRƒÂB“ ¢&WÒW&ÆÆ–"ç&WVW7Bå&WVW7B†b&‡GG3¢òö’çFVÆVw&Òæ÷&rö&÷G·Fö¶VçÒ÷6VæDÖW76vR"ÂFFÖ&öG’ÂÖWF†öCÒ%õ5B"¢G'“ ¢v—F‚W&ÆÆ–"ç&WVW7BçW&Æ÷Vâ‡&WÂF–ÖV÷WCÓ#R’2&W7 ¢&W7ç&VB‚¢w&—FUöFVÆ—fW'•÷7FGW2‚'6VçB"Â6†Eö–BÂÆVâ‡FW‡B’Â""ÂÆVâ†ÖW76vR’ÂGFV×B¢&–çB†b%FVÆVw&Ó¢6VçB6†'3×¶ÆVâ†ÖW76vR—Ò÷&–v–æÅö6†'3×¶ÆVâ‡FW‡B—ÒGFV×C×¶GFV×GÒ"¢&WGW&à¢W†6WBW&ÆÆ–"æW'&÷"ä…EEW'&÷"2W†3 ¢W'&÷%÷FW‡BÒW†2ç&VB‚’æFV6öFR‚'WFbÓ‚"Â'&WÆ6R"•³£SĞ¢Æ7EöW'&÷"Òb%FVÆVw&Ò…EE¶W†2æ6öFWÓ¢¶W'&÷%÷FW‡GÒ ¢–bGFV×BÂ2æB†W†2æ6öFRÓÒC#’÷"W†2æ6öFRãÒS“ ¢&WG'•ögFW"ÒW†2æ†VFW'2ævWB‚'&WG'’ÖgFW""¢FVÆ’Ò–çB‡&WG'•ögFW"’–b&WG'•ögFW"æB&WG'•ögFW"æ—6F–v—B‚’VÇ6RGFV×@¢F–ÖRç6ÆVW†FVÆ’¢6öçF–çVP¢'&V°¢W†6WBW†6WF–öâ2W†3 ¢Æ7EöW'&÷"Òb'·G—R†W†2’åõöæÖUõ÷Ó¢¶W†7Ò ¢–bGFV×BÂ3 ¢F–ÖRç6ÆVW†GFV×B¢6öçF–çVP¢'&V°¢w&—FUöFVÆ—fW'•÷7FGW2‚&f–ÆVB"Â6†Eö–BÂÆVâ‡FW‡B’ÂÆ7EöW'&÷"ÂÆVâ†ÖW76vR’Â2¢&—6R'VçF–ÖTW'&÷"†b%FVÆVw&ÒFVÆ—fW'’f–ÆVC¢¶Æ7EöW'&÷'Ò"  ¦FVb—5öV×G•÷&F%÷&W÷'B‡FW‡C¢7G"’Óâ&ööÃ ¢&WGW&â.ÈJ»8C¢Ù[^ÈºÂ«B"–âFW‡@  ¦FVb6†÷VÆE÷6VæEöV×G•÷&F"‚’Óâ&ööÃ ¢&WGW&â÷2ævWFVçb‚%4TäEôTÕE•õ$D""Â""’æÆ÷vW"‚’–â²#"Â'G'VR"Â'–W2"Â'’'Ğ  ¦FVb'6Uö††ÖÒ‡fÇVS¢7G"ÂfÆÆ&6³¢GWÆU¶–çBÂ–çEÒ’Óâ–çC ¢ÖF6‚Ò&RæÖF6‚‡"%åÇ2¢…ÆG³Ã'Ò“¢…ÆG³'Ò•Ç2¢B"ÂfÇVR÷"""¢–bæ÷BÖF6ƒ ¢&WGW&âfÆÆ&6µ³Ò¢c²fÆÆ&6µ³Ğ¢†÷W"ÂÖ–çWFRÒ–çB†ÖF6‚æw&÷Wƒ’’Â–çB†ÖF6‚æw&÷Wƒ"’¢&WGW&âÖ‚ƒÂÖ–âƒ#2Â†÷W"’’¢c²Ö‚ƒÂÖ–âƒS’ÂÖ–çWFR’  ¦FVb&V÷Vå÷6VæE÷v–æF÷uö÷Vâ‚’Óâ&ööÃ ¢–b÷2ævWFVçb‚%$D%õ%TåôÔôDR"Â""’ç7G&—‚’æÆ÷vW"‚’ÓÒ&Æ—fR# ¢&WGW&âG'VP¢–b÷2ævWFVçb‚$ÄÄõuôôdeõt”äDõuõDTÄTu$Ò"Â""’æÆ÷vW"‚’–â²#"Â'G'VR"Â'–W2"Â'’'Ó ¢&WGW&âG'VP¢æ÷rÒ&6Ræ·7Eöæ÷r‚¢7W'&VçBÒæ÷ræ†÷W"¢c²æ÷ræÖ–çWFP¢7F'BÒ'6Uö††ÖÒ†÷2ævWFVçb‚%$TõTåõ4TäEõt”äDõuõ5D%Eôµ5B"Â#S£3"’ÂƒRÂ3’¢VæBÒ'6Uö††ÖÒ†÷2ævWFVçb‚%$TõTåõ4TäEõt”äDõuôTäEôµ5B"Â#s£3"’ÂƒrÂ3’¢–b7F'BÃÒVæC ¢&WGW&â7F'BÃÒ7W'&VçBÃÒVæ@¢&WGW&â7W'&VçBãÒ7F'B÷"7W'&VçBÃÒVæ@  ¦FVbf—E÷FVÆVw&Õö‡FÖÂ‡FW‡C¢7G"ÂÆ–Ö—C¢–çB’Óâ7G# ¢–bÆVâ‡FW‡B’ÃÒÆ–Ö—C ¢&WGW&âFW‡@¢7Vff—‚Ò%ÆåÆîÊNË+B»;N«:ÈIÎ¸©Bv—D‡V"7F–öç2'F–f7NÉyÈIÂÙ™^ÉÛ‚ÙXNÉ©Bâ ¢6æF–FFRÒFW‡E³¢Ö‚ƒÂÆ–Ö—BÒÆVâ‡7Vff—‚’•Ğ¢æWvÆ–æRÒ6æF–FFRç&f–æB‚%Æâ"¢–bæWvÆ–æRâƒ ¢6æF–FFRÒ6æF–FFU³¦æWvÆ–æUĞ¢–b6æF–FFRæ6÷VçB‚#Æ"’â6æF–FFRæ6÷VçB‚#Âöâ"“ ¢6æF–FFRÒ6æF–FFU³¢6æF–FFRç&f–æB‚#Æ"•Òç'7G&—‚¢&WGW&â†6æF–FFRç'7G&—‚’²7Vff—‚•³¦Æ–Ö—EĞ  ¦FVbw&—FUöFVÆ—fW'•÷7FGW2€¢7FGW3¢7G"À¢6†Eö–C¢7G"À¢÷&–v–æÅö6†'3¢–çBÀ¢W'&÷#¢7G"Ò""À¢6VçEö6†'3¢–çBÂæöæRÒæöæRÀ¢GFV×G3¢–çBÂæöæRÒæöæRÀ¢’ÓâæöæS ¢–ÆöBÒ°¢'7FGW2#¢7FGW2À¢&6†Eö–EöÖ6¶VB#¢Ö6µö6†Eö–B†6†Eö–B’À¢&÷&–v–æÅö6†'2#¢÷&–v–æÅö6†'2À¢'6VçEö6†'2#¢6VçEö6†'2À¢&GFV×G2#¢GFV×G2À¢&W'&÷"#¢W'&÷"À¢Ğ¢&6RäõUBæÖ¶F—"†W†—7Eöö³ÕG'VR¢†&6RäõUBò&vÖV¦ö÷&V÷VåöæWw5÷&F%öFVÆ—fW'’æ§6öâ"’çw&—FU÷FW‡B€¢§6öâæGV×2‡–ÆöBÂVç7W&Uö66–“ÔfÇ6RÂ–æFVçCÓ"’²%Æâ"À¢Væ6öF–æsÒ'WFbÓ‚"À¢  ¦FVbÖ6µö6†Eö–B‡fÇVS¢7G"’Óâ7G# ¢–bæ÷BfÇVS ¢&WGW&â" ¢&WGW&â"¢"¢Ö‚ƒÂÆVâ‡fÇVR’ÒB’²fÇVU²ÓC¥Ğ  §FVÆVw&Òæ6ö×7E÷&W÷'BÒ6ö×7E÷&W÷'@§FVÆVw&Òç6VæE÷FVÆVw&ÒÒ6VæE÷FVÆVw&Ğ§FVÆVw&Òæf–æÅöÆW'G5öf÷%ö÷WGWBÒVÆ—G•öF—7Æ•öÆW'G0§FVÆVw&Òæ6æöæ–6ÅöÆW'Eöf÷%÷6VVâÒæ÷&ÖÆ—¦UöÆW'Eöf÷%ö÷WGW@  ¦–bõöæÖUõòÓÒ%õöÖ–åõò# ¢&—6R7—7FVÔW†—B‡FVÆVw&ÒæÖ–â‚’
+            alert["interpretation"] = "ë¯¸êµ­ ë™ë¶€Â·ê±¸í”„ í•­ë§Œ íŒŒì—… ë¦¬ìŠ¤í¬ëŠ” AI ë°ì´í„°ì„¼í„°, ì „ë ¥ê¸°ê¸°, í”ŒëœíŠ¸/EPC ê°™ì€ ëŒ€í˜• í”„ë¡œì íŠ¸ì˜ ê¸°ìì¬ ë°˜ì…, ë‚©ê¸°, ì„¤ì¹˜ ì¼ì •ê³¼ ìš´ì„ì„ í”ë“œëŠ” ì‹œê°„í‘œ ì¬ë£Œì…ë‹ˆë‹¤. ìš´ì„ ê¸‰ë“±ë§Œì´ ì•„ë‹ˆë¼ í”„ë¡œì íŠ¸ ì§€ì—° ë¹„ìš©ê³¼ ë§¤ì¶œ ì¸ì‹ ì‹œì ê¹Œì§€ í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤."
+            alert["failed_signal"] = "ë…¸ì‚¬ í˜‘ìƒ íƒ€ê²°, íŒŒì—… ìœ ì˜ˆ, í•­ë§Œ ì ì²´Â·ì»¨í…Œì´ë„ˆ ìš´ì„ ë¯¸ë°˜ì‘, í•µì‹¬ ê¸°ìì¬ ë‚©ê¸°Â·í”„ë¡œì íŠ¸ ì¼ì • ì°¨ì§ˆ ì œí•œ ì‹œ ì¬ë£Œ ì•½í™”"
+
+        if alert and is_china_bulk:
+            if "ëˆ ë²„ëŠ” ëŠ¥ë ¥" not in alert["impacts"]:
+                alert["impacts"].append("ëˆ ë²„ëŠ” ëŠ¥ë ¥")
+            if "ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì " in alert["impacts"] and len(alert["impacts"]) > 1:
+                alert["impacts"] = [x for x in alert["impacts"] if x != "ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì "]
+            alert["paths"] = [
+                "ì´ìµ" if x == "ëˆ ë²„ëŠ” ëŠ¥ë ¥" else "í• ì¸ìœ¨" if x == "í• ì¸ìœ¨" else "ìˆ˜ê¸‰" if x == "ìˆ˜ê¸‰" else "ì •ì±… íƒ€ì„ë¼ì¸"
+                for x in alert["impacts"]
+            ]
+            for sector in ["ì¤‘êµ­ ê²½ê¸°ë¶€ì–‘/ë²Œí¬ì„ ", "í•´ìš´/í•­ë§Œ/ë¬¼ë¥˜"]:
+                if sector not in alert["sectors"]:
+                    alert["sectors"].append(sector)
+            alert["score"] = max(int(alert.get("score", 0)), 100)
+            alert["importance"] = "ìƒ" if alert["score"] >= 100 else "ì¤‘"
+            alert["china_stimulus_bulk"] = True
+            alert["news"] = "ì¤‘êµ­ ê²½ê¸°ë¶€ì–‘ì±…: ì² ê´‘ì„Â·ì„íƒ„ ë¬¼ë™ëŸ‰ê³¼ ë²Œí¬ì„  ìš´ì„ íšŒë³µ ê¸°ëŒ€"
+            alert["interpretation"] = "ì¤‘êµ­ ì¶”ê°€ ë¶€ì–‘ì±…ì€ ì² ê´‘ì„Â·ì„íƒ„ ë¬¼ë™ëŸ‰ íšŒë³µ ê¸°ëŒ€ë¥¼ í†µí•´ ë²Œí¬ì„  ìš´ì„ê³¼ í•´ìš´ì£¼ ì´ìµ ì¶”ì •ì— ì—°ê²°ë  ìˆ˜ ìˆìŠµë‹ˆë‹¤."
+            alert["failed_signal"] = "ë¶€ì–‘ì±…ì´ ë¶€ë™ì‚°Â·ì¸í”„ë¼ ì‹¤ë¬¼ ìˆ˜ìš”ë¡œ ì—°ê²°ë˜ì§€ ì•Šê±°ë‚˜ ì² ê´‘ì„Â·ì„íƒ„ ê°€ê²©, BDI, ë²Œí¬ì„  ìš´ì„ì´ ë™í–‰í•˜ì§€ ì•Šìœ¼ë©´ ê¸°ëŒ€ ì•½í™”"
+
+        if alert and "ë°˜ë„ì²´/AI" in alert.get("sectors", []):
+            selloff_terms = ["selloff", "stock drop", "memory price", "customer inventory", "oversupply", "valuation"]
+            policy_terms = ["tax credit", "tax deduction", "investment credit", "chip subsidy", "subsidy", "r&d", "rd tax credit", "semiconductor tax credit", "ì„¸ì•¡ê³µì œ", "ì†Œë¶€ì¥"]
+            if any(base.has(text, term) for term in policy_terms):
+                for impact in ["ëˆ ë²„ëŠ” ëŠ¥ë ¥", "ì‹œê°„í‘œ"]:
+                    if impact not in alert["impacts"]:
+                        alert["impacts"].append(impact)
+                alert["paths"] = [
+                    "ì´ìµ" if x == "ëˆ ë²„ëŠ” ëŠ¥ë ¥" else "í• ì¸ìœ¨" if x == "í• ì¸ìœ¨" else "ìˆ˜ê¸‰" if x == "ìˆ˜ê¸‰" else "ì •ì±… íƒ€ì„ë¼ì¸"
+                    for x in alert["impacts"]
+                ]
+                alert["score"] = max(int(alert.get("score", 0)), 94)
+                alert["importance"] = "ìƒ" if alert["score"] >= 100 else "ì¤‘"
+                alert["policy_drive"] = True
+                alert["interpretation"] = "ë°˜ë„ì²´ R&D ì„¸ì•¡ê³µì œ í™•ëŒ€ëŠ” ì§ì ‘ ë§¤ì¶œë³´ë‹¤ ì—°êµ¬ê°œë°œÂ·íˆ¬ì í˜„ê¸ˆíë¦„ê³¼ ì •ì±… íƒ€ì„ë¼ì¸ì„ ë°”ê¾¸ëŠ” ì¬ë£Œì…ë‹ˆë‹¤. ì†Œë¶€ì¥ìœ¼ë¡œ ì˜¨ê¸°ê°€ í™•ì‚°ë˜ëŠ”ì§€ëŠ” ì„¸ì•¡ê³µì œ ëŒ€ìƒ, ì ìš© ì‹œì , êµ­ë‚´ ì¥ë¹„Â·ì†Œì¬ ë°œì£¼ ì—°ê²°ì„±ì„ í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤."
+                alert["failed_signal"] = "ì„¸ì•¡ê³µì œ í™•ëŒ€ê°€ ë²•ì•ˆÂ·ì‹œí–‰ë ¹Â·ì˜ˆì‚°ìœ¼ë¡œ í™•ì •ë˜ì§€ ì•Šê±°ë‚˜ ì†Œë¶€ì¥ ë°œì£¼Â·ìˆ˜ì£¼Â·CAPEX ì¦ê°€ë¡œ ì—°ê²°ë˜ì§€ ì•Šìœ¼ë©´ ì •ì±… ê¸°ëŒ€ì— ê·¸ì¹  ìˆ˜ ìˆìŒ"
+            elif any(base.has(text, term) for term in selloff_terms):
+                alert["semiconductor_selloff"] = True
+                alert["interpretation"] = (
+                    "ë°˜ë„ì²´ ê¸‰ë½ì€ ê°€ê²© ì‚¬ì´í´ í•˜ë‚˜ë¡œë§Œ ë³´ì§€ ì•Šê³  ë©”ëª¨ë¦¬ ê°€ê²©, ê³ ê°ì‚¬ ì¬ê³ , "
+                    "ì„¤ë¹„íˆ¬ì, ë°¸ë¥˜ì—ì´ì…˜ ë¶€ë‹´ì´ ë™ì‹œì— í”ë“¤ë¦¬ëŠ”ì§€ í™•ì¸í•©ë‹ˆë‹¤."
+                )
+                alert["failed_signal"] = (
+                    "ë©”ëª¨ë¦¬ ê°€ê²©Â·ê³ ê°ì‚¬ ì¬ê³ Â·CAPEXÂ·ë°¸ë¥˜ì—ì´ì…˜ ì¤‘ ë³µìˆ˜ ì¶•ì˜ ì•…í™”ê°€ í™•ì¸ë˜ì§€ ì•Šê±°ë‚˜ "
+                    "SOX/MU/NVDA/ì‚¼ì„±ì „ìÂ·SKí•˜ì´ë‹‰ìŠ¤ ë°˜ì‘ì´ ì œí•œë˜ë©´ ì¼íšŒì„± ì¡°ì • ê°€ëŠ¥"
+                )
+        return alert
+
+    contract.strict.classify = classify
+
+
+enforce_semiconductor_cycle_contract()
+
+
+def enforce_biotech_leadership_filter() -> None:
+    append_unique(base.QUERIES, [BIOTECH_QUERY])
+    append_unique(base.TERMS, BIOTECH_TERMS)
+    for idx, (label, keys) in enumerate(base.SECTORS):
+        if label == BIOTECH_SECTOR:
+            merged = list(keys)
+            append_unique(merged, BIOTECH_DOMAIN_TERMS)
+            base.SECTORS[idx] = (label, merged)
+            break
+    else:
+        base.SECTORS.append((BIOTECH_SECTOR, BIOTECH_DOMAIN_TERMS))
+
+    original_classify = contract.strict.classify
+
+    def classify(row: dict, now):
+        text = base.source_content_text(row)
+        alert = original_classify(row, now)
+        is_biotech = any(base.has(text, term) for term in BIOTECH_DOMAIN_TERMS) or (
+            alert is not None and BIOTECH_SECTOR in alert.get("sectors", [])
+        )
+        if not is_biotech:
+            return alert
+
+        has_transfer = any(base.has(text, term) for term in BIOTECH_TRANSFER_TERMS)
+        has_sales = any(base.has(text, term) for term in BIOTECH_SALES_TERMS)
+        has_fda = any(base.has(text, term) for term in BIOTECH_FDA_TERMS)
+        has_priority = any(base.has(text, term) for term in BIOTECH_PHARMA_PRIORITY_TERMS)
+        has_discount = any(base.has(text, term) for term in BIOTECH_DISCOUNT_TERMS)
+        has_leadership_signal = has_sales or has_fda or has_priority or has_discount
+
+        if has_transfer and not has_leadership_signal:
+            return None
+        if not alert:
+            return None
+
+        append_unique(alert.setdefault("sectors", []), [BIOTECH_SECTOR])
+        if has_sales:
+            append_unique(alert.setdefault("impacts", []), ["ëˆ ë²„ëŠ” ëŠ¥ë ¥"])
+        if has_fda or has_priority:
+            append_unique(alert.setdefault("impacts", []), ["ì‹œê°„í‘œ"])
+        if has_discount:
+            append_unique(alert.setdefault("impacts", []), ["í• ì¸ìœ¨"])
+        if len(alert["impacts"]) > 1:
+            alert["impacts"] = [x for x in alert["impacts"] if x != "ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì "]
+        alert["paths"] = [
+            "ì´ìµ" if x == "ëˆ ë²„ëŠ” ëŠ¥ë ¥" else "í• ì¸ìœ¨" if x == "í• ì¸ìœ¨" else "ìˆ˜ê¸‰" if x == "ìˆ˜ê¸‰" else "ì •ì±… íƒ€ì„ë¼ì¸"
+            for x in alert["impacts"]
+        ]
+        alert["score"] = max(int(alert.get("score", 0)), 108 if (has_sales and has_fda) else 100 if (has_fda or has_priority) else 92)
+        alert["importance"] = "ìƒ" if int(alert["score"]) >= 100 else "ì¤‘"
+        alert["biotech_leadership_filter"] = True
+        alert["biotech_check"] = (
+            "ì‹¤ì œ ë§¤ì¶œ/ì´ìµ, ë¹…íŒŒë§ˆ íŒŒì´í”„ë¼ì¸ ìš°ì„ ìˆœìœ„, FDA ì¼ì •, ê¸ˆë¦¬/í• ì¸ìœ¨ ì¤‘ ë¬´ì—‡ì´ ë°”ë€ŒëŠ”ì§€ í™•ì¸"
+        )
+        alert["counter"] = (
+            "ê¸°ìˆ ì´ì „ ë°œí‘œë§Œìœ¼ë¡œëŠ” ì£¼ë„ì£¼ ë³µê·€ ì‹ í˜¸ê°€ ì•½í•©ë‹ˆë‹¤. ì„ ê¸‰ê¸ˆÂ·ë§ˆì¼ìŠ¤í†¤ì˜ ë§¤ì¶œ ì¸ì‹, "
+            "ë¹…íŒŒë§ˆ ìš°ì„ ìˆœìœ„, FDA ì¼ì •, ê¸ˆë¦¬ í™˜ê²½ì´ í•¨ê»˜ í™•ì¸ë˜ì–´ì•¼ í•©ë‹ˆë‹¤."
+        )
+        alert["interpretation"] = (
+            "ë°”ì´ì˜¤ê°€ ë‹¤ì‹œ ì£¼ë„ì£¼ê°€ ë˜ë ¤ë©´ ê¸°ëŒ€ê°€ ì•„ë‹ˆë¼ ì‹¤ì œ ë§¤ì¶œê³¼ ì´ìµ ì „í™˜ì´ ë³´ì—¬ì•¼ í•©ë‹ˆë‹¤. "
+            "FDA ì¼ì •ê³¼ ë¹…íŒŒë§ˆ íŒŒì´í”„ë¼ì¸ ìš°ì„ ìˆœìœ„, í• ì¸ìœ¨ì´ ê°™ì´ ë§ì„ ë•Œë§Œ ì¥ì „ í•µì‹¬ í›„ë³´ë¡œ ë´…ë‹ˆë‹¤."
+        )
+        alert["failed_signal"] = (
+            "ê¸°ìˆ ì´ì „ ê¸ˆì•¡Â·ê¸°ê°„Â·ìƒëŒ€ë°© ìš°ì„ ìˆœìœ„Â·FDA ì¼ì •Â·ë§¤ì¶œ ì¸ì‹ ì¡°ê±´ì´ í™•ì¸ë˜ì§€ ì•Šê±°ë‚˜ "
+            "ê¸ˆë¦¬ ìƒìŠ¹ìœ¼ë¡œ ë°”ì´ì˜¤ ë°¸ë¥˜ì—ì´ì…˜ì´ ëˆŒë¦¬ë©´ í…Œë§ˆì„± ë°˜ì‘ì— ê·¸ì¹  ê°€ëŠ¥ì„±"
+        )
+        return alert
+
+    contract.strict.classify = classify
+
+
+enforce_biotech_leadership_filter()
+
+
+def enforce_robotics_execution_filter() -> None:
+    append_unique(base.QUERIES, [ROBOTICS_QUERY])
+    append_unique(base.TERMS, ROBOTICS_TERMS)
+    if not any(label == ROBOTICS_SECTOR for label, _ in base.SECTORS):
+        base.SECTORS.append((ROBOTICS_SECTOR, ROBOTICS_DOMAIN_TERMS + ROBOTICS_EXECUTION_TERMS))
+
+    original_classify = contract.strict.classify
+
+    def classify(row: dict, now):
+        text = base.source_content_text(row)
+        alert = original_classify(row, now)
+        has_samsung = any(base.has(text, term) for term in ROBOTICS_SAMSUNG_TERMS)
+        has_domain = any(base.has(text, term) for term in ROBOTICS_DOMAIN_TERMS)
+        has_rainbow = any(base.has(text, term) for term in ["rainbow robotics", "rb5-850", "ë ˆì¸ë³´ìš°ë¡œë³´í‹±ìŠ¤", "í˜‘ë™ë¡œë´‡"])
+        has_execution = any(base.has(text, term) for term in ROBOTICS_EXECUTION_TERMS)
+        has_org = any(base.has(text, term) for term in ROBOTICS_ORG_TERMS)
+        has_test = any(base.has(text, term) for term in ROBOTICS_TEST_TERMS)
+        is_robotics = (
+            has_samsung and has_domain and (has_execution or has_org or has_test)
+        ) or (
+            has_rainbow and (has_samsung or has_execution or has_test)
+        )
+        if not is_robotics:
+            return alert
+
+        age = base.age_hours(row, now)
+        status = "í™•ì •" if row.get("layer") == "official" else "ê³µì‹ í™•ì¸ ì „"
+        impacts = ["ì‹œê°„í‘œ"]
+        if has_execution:
+            impacts.insert(0, "ëˆ ë²„ëŠ” ëŠ¥ë ¥")
+        if has_rainbow:
+            impacts.append("ìˆ˜ê¸‰")
+        impacts = list(dict.fromkeys(impacts))
+        score = (106 if has_execution else 96 if (has_org or has_test) else 88) + (6 if age is not None and age <= 12 else 0)
+
+        if not alert:
+            alert = {
+                "score": score,
+                "importance": "ìƒ" if score >= 100 else "ì¤‘",
+                "status": status,
+                "news": "ì‚¼ì„± ë¡œë´‡ ì‹¤í–‰ ë‹¨ê³„: ì¡°ì§ ì¬ì •ë¹„ì™€ ìƒì‚°ë¼ì¸ ìë™í™” ì „í™˜ ì²´í¬",
+                "publisher": row.get("publisher") or row.get("source"),
+                "source": row.get("source"),
+                "link": row.get("link") or "",
+                "published": row["published"].isoformat(timespec="minutes") if row.get("published") else "í™•ì¸ ë¶ˆê°€",
+                "impacts": impacts,
+                "paths": ["ì´ìµ" if x == "ëˆ ë²„ëŠ” ëŠ¥ë ¥" else "ìˆ˜ê¸‰" if x == "ìˆ˜ê¸‰" else "ì‹¤í–‰ íƒ€ì„ë¼ì¸" for x in impacts],
+                "sectors": [ROBOTICS_SECTOR],
+                "matched": [],
+                "local_dc_policy": False,
+                "reflection": "ì¤‘ê°„",
+                "counter": "",
+                "interpretation": "",
+                "failed_signal": "",
+                "korea_basis": "ì˜ˆê³ ëœ ì´ë²¤íŠ¸ì˜ ê³µì‹í™”" if status == "í™•ì •" else "ì™¸ì‹  í™•ì‚°",
+            }
+        else:
+            alert["score"] = max(int(alert.get("score", 0)), score)
+            alert["importance"] = "ìƒ" if int(alert["score"]) >= 100 else "ì¤‘"
+            alert["status"] = alert.get("status") or status
+            append_unique(alert.setdefault("impacts", []), impacts)
+            if "ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì " in alert["impacts"] and len(alert["impacts"]) > 1:
+                alert["impacts"] = [x for x in alert["impacts"] if x != "ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì "]
+            alert["paths"] = [
+                "ì´ìµ" if x == "ëˆ ë²„ëŠ” ëŠ¥ë ¥" else "í• ì¸ìœ¨" if x == "í• ì¸ìœ¨" else "ìˆ˜ê¸‰" if x == "ìˆ˜ê¸‰" else "ì‹¤í–‰ íƒ€ì„ë¼ì¸"
+                for x in alert["impacts"]
+            ]
+            append_unique(alert.setdefault("sectors", []), [ROBOTICS_SECTOR])
+
+        alert["robotics_execution_filter"] = True
+        alert["robotics_check"] = (
+            "ì‚¼ì„± ë¯¸ë˜ë¡œë´‡ì¶”ì§„ë‹¨ ì¬ì •ë¹„ê°€ ì¶•ì†Œì¸ì§€ ì‹¤í–‰ ì „í™˜ì¸ì§€, RB5-850/í˜‘ë™ë¡œë´‡ í…ŒìŠ¤íŠ¸ê°€ ë°œì£¼Â·CAPEXÂ·ë§¤ì¶œ ì¸ì‹ìœ¼ë¡œ ì—°ê²°ë˜ëŠ”ì§€ í™•ì¸"
+        )
+        alert["news"] = "ì‚¼ì„± ë¡œë´‡ ì‹¤í–‰ ë‹¨ê³„: ì¡°ì§ ì¬ì •ë¹„ì™€ ë ˆì¸ë³´ìš°ë¡œë³´í‹±ìŠ¤ ìƒì‚°ë¼ì¸ ìë™í™” ì²´í¬"
+        alert["counter"] = (
+            "ì¡°ì§ ì¬ì •ë¹„ë§Œìœ¼ë¡œëŠ” í˜¸ì¬ë„ ì•…ì¬ë„ í™•ì •í•˜ê¸° ì–´ë µìŠµë‹ˆë‹¤. ì‚¼ì„±ì˜ ë¡œë´‡ ì‚¬ì—… ì¶•ì†Œ ë°œí‘œê°€ ì—†ê³  "
+            "ìƒì‚°ë¼ì¸ í…ŒìŠ¤íŠ¸Â·ë°œì£¼Â·ê³µê¸‰ê³„ì•½Â·CAPEXê°€ í™•ì¸ë  ë•Œë§Œ ì‹¤ì  ì¬ë£Œë¡œ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤."
+        )
+        alert["interpretation"] = (
+            "ì‚¼ì„±ì „ì ìƒì‚°ë¼ì¸ ìë™í™” ìˆ˜ìš”ê°€ ì‹¤ì œ ë„ì… ë‹¨ê³„ë¡œ ë„˜ì–´ê°€ë©´ ë ˆì¸ë³´ìš°ë¡œë³´í‹±ìŠ¤ì˜ ë§¤ì¶œ ê°œì„  ì†ë„ê°€ ë¹¨ë¼ì§ˆ ìˆ˜ ìˆìŠµë‹ˆë‹¤. "
+            "ë°˜ëŒ€ë¡œ ì¡°ì§ê°œí¸ ë¶ˆí™•ì‹¤ì„±ì€ í˜‘ë ¥ ê·œëª¨ì™€ ì‹œê°„í‘œë¥¼ í”ë“œëŠ” ë³€ìˆ˜ë¼ ê³µì‹ í›„ì† í™•ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤."
+        )
+        alert["failed_signal"] = (
+            "ë¯¸ë˜ë¡œë´‡ì¶”ì§„ë‹¨ ì¬ì •ë¹„ê°€ ì‚¬ì—… ì¶•ì†Œë¡œ í™•ì¸ë˜ê±°ë‚˜ RB5-850 í…ŒìŠ¤íŠ¸ê°€ ë°œì£¼Â·ë„ì…Â·ê³µê¸‰ê³„ì•½ìœ¼ë¡œ ì´ì–´ì§€ì§€ ì•Šìœ¼ë©´ "
+            "ë¡œë´‡ í…Œë§ˆ ìˆ˜ê¸‰ë§Œ ë‚¨ê³  ì‹¤ì  ì¬ë£ŒëŠ” ì•½í™”"
+        )
+        return alert
+
+    contract.strict.classify = classify
+
+
+enforce_robotics_execution_filter()
+
+
+def enforce_source_identity_contract() -> None:
+    """Restore immutable source fields after every legacy classifier overlay.
+
+    Some older overlays create a replacement alert dictionary.  The decision
+    fields are useful, but source identity must always come from the row that
+    supplied the link, never from a previous Korean template.
+    """
+    original_classify = contract.strict.classify
+
+    def classify(row: dict, now):
+        alert = original_classify(row, now)
+        if not alert:
+            return alert
+        alert = dict(alert)
+        alert["source_title"] = base.clean(row.get("source_title") or row.get("title") or alert.get("source_title") or alert.get("news"))
+        alert["source_abstract"] = base.clean(row.get("source_abstract") or row.get("summary") or alert.get("source_abstract"))
+        alert["source_document_number"] = base.clean(row.get("source_document_number") or alert.get("source_document_number"))
+        alert["source_metadata_url"] = base.clean(row.get("source_metadata_url") or alert.get("source_metadata_url"))
+        return alert
+
+    contract.strict.classify = classify
+
+
+enforce_source_identity_contract()
+
+
+def safe(value: object) -> str:
+    return html.escape(str(value or "í™•ì¸ ë¶ˆê°€"), quote=False)
+
+
+def html_link(label: str, url: str) -> str:
+    text = html.escape(label or "ì¶œì²˜", quote=False)
+    if not url:
+        return text
+    return f'<a href="{html.escape(url, quote=True)}">{text}</a>'
+
+
+def source_summary(items: list[dict]) -> str:
+    grouped: dict[str, dict[str, object]] = {}
+    for item in items:
+        publisher = item.get("publisher") or "ì¶œì²˜ í™•ì¸ ë¶ˆê°€"
+        if publisher not in grouped:
+            grouped[publisher] = {"count": 0, "link": item.get("link") or ""}
+        grouped[publisher]["count"] = int(grouped[publisher]["count"]) + 1
+        if not grouped[publisher]["link"] and item.get("link"):
+            grouped[publisher]["link"] = item.get("link")
+    parts = []
+    for publisher, meta in grouped.items():
+        label = f"{publisher} {meta['count']}ê±´" if int(meta["count"]) > 1 else publisher
+        parts.append(html_link(label, str(meta.get("link") or "")))
+    return " / ".join(parts) if parts else "ì¶œì²˜ í™•ì¸ ë¶ˆê°€"
+
+
+LOW_IMPACT_TITLE_TERMS = [
+    "request for comments and notice of public hearing",
+]
+
+HARD_LOW_IMPACT_TITLE_TERMS = [
+    "annual review of country eligibility",
+    "african growth and opportunity act",
+    "annual inquiry service list",
+    "antidumping or countervailing duty order finding or suspended investigation",
+    "continuation of the national emergency",
+    "delete, delete, delete",
+    "digital opportunity data collection",
+    "establishing the digital opportunity data collection",
+    "federal oil, gas, and coal amendments",
+    "federal oil gas and coal amendments",
+    "nominations & appointments",
+    "nominations appointments",
+    "nominations sent to the senate",
+    "note regarding format of review requests",
+    "opportunity to request administrative review",
+    "resilient networks",
+    "disruptions to communications",
+    "disaster information reporting system",
+    "sunshine act meetings",
+    "technical guidelines for the production of regenerative agricultural biofuel feedstocks",
+    "television broadcasting services",
+]
+
+FEDERAL_REGISTER_MARKERS = ["federal register", "federalregister.gov", "ì—°ë°©ê´€ë³´"]
+
+
+def unique(values: list[str]) -> list[str]:
+    return list(dict.fromkeys(value for value in values if value))
+
+
+def alert_text(alert: dict) -> str:
+    parts = [
+        alert.get("news"),
+        alert.get("original_news"),
+        alert.get("publisher"),
+        alert.get("source"),
+        alert.get("link"),
+        alert.get("policy_plain_summary"),
+        alert.get("investment_view"),
+        alert.get("korea_market_impact"),
+        alert.get("counter"),
+        alert.get("failed_signal"),
+        " ".join(str(x) for x in alert.get("matched") or []),
+    ]
+    for item in alert.get("examples") or []:
+        parts.extend([
+            item.get("title"),
+            item.get("summary"),
+            item.get("publisher"),
+            item.get("source"),
+            item.get("link"),
+        ])
+    return base.norm(" ".join(str(part or "") for part in parts))
+
+
+def source_evidence_text(alert: dict) -> str:
+    """Return source-authored evidence, excluding query labels and commentary."""
+    parts = [
+        alert.get("source_title") or alert.get("original_news"),
+        alert.get("source_abstract"),
+        alert.get("publisher"),
+        alert.get("link"),
+    ]
+    for item in alert.get("examples") or []:
+        parts.extend([
+            item.get("title"),
+            item.get("summary"),
+            item.get("publisher"),
+            item.get("link"),
+        ])
+    return base.norm(" ".join(str(part or "") for part in parts))
+
+
+def source_subject_text(alert: dict) -> str:
+    """Source title and official abstract only, never generated commentary.
+
+    The classifier deliberately keeps broad matching terms for recall.  Those
+    terms must not decide the Korean headline because a subordinate keyword in
+    an abstract can otherwise overwrite the actual document subject.
+    """
+    parts = [
+        alert.get("source_title") or alert.get("original_news") or alert.get("news"),
+        alert.get("source_abstract"),
+        alert.get("publisher"),
+        alert.get("link"),
+        alert.get("source_document_number"),
+    ]
+    return base.norm(" ".join(str(part or "") for part in parts))
+
+
+def is_federal_register_source(alert: dict) -> bool:
+    link = str(alert.get("link") or "").lower()
+    return "federalregister.gov/documents/" in link or has_term(source_subject_text(alert), FEDERAL_REGISTER_MARKERS)
+
+
+def federal_register_profile(alert: dict) -> dict[str, object] | None:
+    """Return a source-faithful Korean profile for verified FR documents.
+
+    The profile is intentionally narrow: only a verified document signature
+    may receive an exact Korean policy template.
+    """
+    if not is_federal_register_source(alert):
+        return None
+    title = base.norm(str(alert.get("source_title") or alert.get("original_news") or ""))
+    abstract = base.norm(str(alert.get("source_abstract") or ""))
+    document_number = str(alert.get("source_document_number") or "")
+    is_uae_ear = (
+        "united arab emirates" in title
+        and "export administration regulations" in title
+        and (
+            document_number == "2026-14132"
+            or ("country groups d:3" in abstract and "country group a:5" in abstract)
+        )
+    )
+    if not is_uae_ear:
+        return None
+    return {
+        "id": "federal_register_uae_ear",
+        "title": "ë¯¸ ìƒë¬´ë¶€ BIS, UAE ëŒ€ìƒ ìˆ˜ì¶œê´€ë¦¬ê·œì •(EAR) ìš°ëŒ€ ì ìš© í™•ëŒ€",
+        "core": (
+            "ë¯¸ ìƒë¬´ë¶€ ì‚°ì—…ì•ˆë³´êµ­(BIS)ì´ UAEë¥¼ EAR êµ­ê°€ê·¸ë£¹ D:3Â·D:4ì—ì„œ ì œì™¸í•˜ê³  "
+            "A:5ì— ì¶”ê°€í•œ ìµœì¢…ê·œì¹™ì…ë‹ˆë‹¤. UAE ì •ë¶€ì™€ ìŠ¹ì¸ ìƒì—…ê¸°ê´€ì—ëŠ” STAë¥¼ í¬í•¨í•œ "
+            "ì¶”ê°€ ë¼ì´ì„ ìŠ¤ ì˜ˆì™¸ê°€ ì—´ë¦¬ë©°, ê·œì¹™ì€ 7ì›” 10ì¼ë¶€í„° íš¨ë ¥ì´ ë°œìƒí–ˆìŠµë‹ˆë‹¤."
+        ),
+        "view": (
+            "UAEí–¥ ì²¨ë‹¨ì»´í“¨íŒ…Â·ìœ„ì„±Â·ì´ì¤‘ìš©ë„ í’ˆëª©ì˜ ë¯¸êµ­ ìˆ˜ì¶œÂ·ì¬ìˆ˜ì¶œ í—ˆê°€ ë¶€ë‹´ê³¼ "
+            "ë‚©ê¸° ë¶ˆí™•ì‹¤ì„±ì€ ë‚®ì•„ì§ˆ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ë‹¤ë§Œ í•œêµ­ ê¸°ì—…ì˜ ì‹¤ì  ì˜í–¥ì€ UAEí–¥ "
+            "ë§¤ì¶œê³¼ ë¯¸êµ­ EAR ì ìš© ë¹„ì¤‘ì´ í™•ì¸ë  ë•Œë§Œ íŒë‹¨í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤."
+        ),
+        "korea": (
+            "í•œêµ­ì¥ ì§ì ‘ ìˆ˜í˜œë¡œ ì¼ë°˜í™”í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë°˜ë„ì²´Â·AI ì„œë²„, ìœ„ì„±Â·ë°©ì‚°, "
+            "í”ŒëœíŠ¸ ì¥ë¹„ ì¤‘ UAEí–¥ ìˆ˜ì¶œ ë˜ëŠ” ë¯¸êµ­ì‚° ê¸°ìˆ Â·ë¶€í’ˆ í†µì œë¥¼ ë°›ëŠ” ê¸°ì—…ë§Œ "
+            "ê°œë³„ ê³µì‹œì™€ ê³µê¸‰ê³„ì•½ìœ¼ë¡œ í™•ì¸í•©ë‹ˆë‹¤."
+        ),
+        "impacts": ["ëˆ ë²„ëŠ” ëŠ¥ë ¥", "ì‹œê°„í‘œ"],
+        "paths": ["ìˆ˜ì¶œí†µì œ", "ê³µê¸‰ë§", "ì •ì±… íƒ€ì„ë¼ì¸"],
+        "sectors": ["ìˆ˜ì¶œí†µì œ/í†µìƒ", "UAEí–¥ ì²¨ë‹¨ê¸°ìˆ Â·ë°©ì‚°/ìœ„ì„±", "ë°˜ë„ì²´/AI"],
+        "priced": (
+            "ì¤‘ê°„. 7ì›” 10ì¼ ë°œíš¨ëœ ìµœì¢…ê·œì¹™ì´ì§€ë§Œ, í•œêµ­ ê¸°ì—…ë³„ UAEí–¥ ë§¤ì¶œÂ·EAR ì ìš© "
+            "ë…¸ì¶œì´ í™•ì¸ë˜ê¸° ì „ì—ëŠ” ì¼ê´„ì ì¸ ì‹¤ì  ìƒí–¥ ì¬ë£Œë¡œ ë³´ê¸° ì–´ë µìŠµë‹ˆë‹¤."
+        ),
+        "counter": (
+            "ìš°ëŒ€ ì ìš©ì€ UAE ì •ë¶€ì™€ ìŠ¹ì¸ ìƒì—…ê¸°ê´€, í’ˆëª©ë³„ EAR ìš”ê±´ì— í•œì •ë©ë‹ˆë‹¤. "
+            "ë¯¸êµ­ì‚° ê¸°ìˆ Â·ë¶€í’ˆ ë¹„ì¤‘, ìµœì¢…ì‚¬ìš©ì, ê°œë³„ ì˜ˆì™¸ ì¡°ê±´ì— ë”°ë¼ ì‹¤ì œ í—ˆê°€ ë¶€ë‹´ì€ ë‹¬ë¼ì§‘ë‹ˆë‹¤."
+        ),
+        "failure": (
+            "BISì˜ ì ìš© ëŒ€ìƒÂ·ìµœì¢…ì‚¬ìš©ì í™•ì¸, UAEí–¥ ìˆ˜ì¶œÂ·ì¬ìˆ˜ì¶œ ê³„ì•½, ê¸°ì—…ë³„ ë§¤ì¶œÂ·ë‚©ê¸° ë³€í™”ê°€ "
+            "ë’¤ë”°ë¥´ì§€ ì•Šìœ¼ë©´ í•œêµ­ì¥ì—ëŠ” ì§ì ‘ ì¬ë£Œê°€ ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤."
+        ),
+    }
+
+
+SOURCE_OUTPUT_ALIGNMENT_THEMES = [
+    (
+        "nuclear",
+        ["nuclear", "reactor", "smr", "small modular reactor", "ap1000", "westinghouse", "ì›ì „", "ì›ìë ¥", "ì†Œí˜•ëª¨ë“ˆì›ì „"],
+        ["ì›ì „", "ì›ìë ¥", "smr", "ap1000", "westinghouse", "ë‘ì‚°ì—ë„ˆë¹Œë¦¬í‹°", "khnp"],
+    ),
+    (
+        "communications",
+        ["fcc", "federal communications commission", "broadband", "spectrum", "satellite", "submarine cable", "cable landing", "covered communications equipment", "í†µì‹ ", "ì£¼íŒŒìˆ˜", "ìœ„ì„±", "í•´ì €ì¼€ì´ë¸”"],
+        ["fcc", "í†µì‹ Â·ë¸Œë¡œë“œë°´ë“œ", "í†µì‹ ê·œì œ", "í†µì‹ ì¥ë¹„", "ìœ„ì„±í†µì‹ ", "ì£¼íŒŒìˆ˜", "í•´ì €ì¼€ì´ë¸”"],
+    ),
+    (
+        "semiconductor",
+        ["semiconductor", "chip", "hbm", "dram", "nand", "micron", "nvidia", "tsmc", "asml", "ë°˜ë„ì²´", "ë©”ëª¨ë¦¬"],
+        ["ë°˜ë„ì²´", "hbm", "dram", "nand", "ë©”ëª¨ë¦¬", "ì‚¼ì„±ì „ì", "skí•˜ì´ë‹‰ìŠ¤"],
+    ),
+    (
+        "data_center",
+        ["data center", "data-center", "data centre", "hyperscale", "ë°ì´í„°ì„¼í„°"],
+        ["ë°ì´í„°ì„¼í„°", "ai ì „ë ¥ìˆ˜ìš”"],
+    ),
+    (
+        "trade_control",
+        ["tariff", "customs", "duty", "antidumping", "anti-dumping", "countervailing", "section 232", "section 301", "export control", "entity list", "bis", "ustr", "ê´€ì„¸", "ë°˜ë¤í•‘", "ìƒê³„ê´€ì„¸", "ìˆ˜ì¶œí†µì œ", "í†µê´€"],
+        ["ê´€ì„¸", "ë°˜ë¤í•‘", "ìƒê³„ê´€ì„¸", "ìˆ˜ì¶œí†µì œ", "í†µê´€", "bis", "ustr"],
+    ),
+    (
+        "iran_hormuz",
+        ["iran", "iranian", "tehran", "hormuz", "red sea", "ì´ë€", "í˜¸ë¥´ë¬´ì¦ˆ", "í™í•´"],
+        ["ì´ë€", "í˜¸ë¥´ë¬´ì¦ˆ", "í™í•´"],
+    ),
+    (
+        "biotech",
+        ["fda", "pdufa", "clinical trial", "phase 3", "biotech", "biopharma", "pharma", "drug", "ì„ìƒ", "ë°”ì´ì˜¤", "ì œì•½"],
+        ["fda", "pdufa", "ì„ìƒ", "ë°”ì´ì˜¤", "ì œì•½", "ì‹ ì•½"],
+    ),
+    (
+        "defense",
+        ["defense", "military", "attack", "strike", "war", "missile", "fighter", "tank", "artillery", "k9", "k2", "fa-50", "kf-21", "redback", "ë°©ì‚°", "êµ°ì‚¬", "ê³µê²©", "íƒ€ê²©", "ì „ìŸ", "ë¯¸ì‚¬ì¼", "ì „ì°¨", "ìì£¼í¬"],
+        ["k-ë°©ì‚°", "ë°©ì‚°", "ì²œê¶", "í˜„ê¶", "k9", "k2", "fa-50", "kf-21", "ë ˆë“œë°±"],
+    ),
+    (
+        "robotics",
+        ["robot", "robotics", "cobot", "factory automation", "ë¡œë´‡", "í˜‘ë™ë¡œë´‡", "ìƒì‚°ìë™í™”"],
+        ["ë¡œë´‡", "í˜‘ë™ë¡œë´‡", "ìƒì‚°ìë™í™”", "ë ˆì¸ë³´ìš°ë¡œë³´í‹±ìŠ¤"],
+    ),
+]
+
+
+def source_output_aligned(alert: dict) -> bool:
+    """Reject rendered themes that are not supported by source-authored text."""
+    profile = federal_register_profile(alert)
+    rendered = base.norm(" ".join(
+        str(alert.get(key) or "")
+        for key in ["news", "policy_plain_summary", "investment_view", "korea_market_impact", "sectors", "paths"]
+    ))
+    if profile:
+        required = ["uae", "ìˆ˜ì¶œê´€ë¦¬ê·œì •", "bis"]
+        forbidden_headline = ["ì›ì „Â·smrÂ·ai ì „ë ¥ ì •ì±…", "ê°€ìŠ¤í„°ë¹ˆ", "ë‘ì‚°ì—ë„ˆë¹Œë¦¬í‹°", "khnp"]
+        return all(term in rendered for term in required) and not any(term in rendered for term in forbidden_headline)
+
+    source = source_subject_text(alert)
+    for _name, source_terms, rendered_terms in SOURCE_OUTPUT_ALIGNMENT_THEMES:
+        if has_term(rendered, rendered_terms) and not has_term(source, source_terms):
+            return False
+    return True
+
+
+def alert_dedup_key(alert: dict) -> tuple[str, str]:
+    if alert.get("iran_hormuz_escalation"):
+        return ("iran_hormuz_military_escalation", str(alert.get("published") or "")[:10])
+    raw_title = str(alert.get("original_news") or alert.get("news") or "")
+    raw_title = re.split(r"\s+-\s+", raw_title, maxsplit=1)[0].strip()
+    theme = str(alert.get("supply_chain_theme") or "")
+    canonical = base.norm(theme or raw_title or alert.get("news") or alert.get("link"))
+    return (canonical, str(alert.get("published") or "")[:10])
+
+
+def has_term(text: str, terms: list[str]) -> bool:
+    return any(term.lower() in text for term in terms)
+
+
+def mostly_ascii(value: str) -> bool:
+    letters = [ch for ch in value if ch.isalpha()]
+    if not letters:
+        return False
+    ascii_letters = [ch for ch in letters if ord(ch) < 128]
+    return len(ascii_letters) / max(len(letters), 1) >= 0.7
+
+
+def is_federal_register_alert(text: str) -> bool:
+    return has_term(text, FEDERAL_REGISTER_MARKERS)
+
+
+DECISION_IMPACT_DISPLAY = {
+    "ëˆ ë²„ëŠ” ëŠ¥ë ¥": "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„",
+    "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„": "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„",
+    "í• ì¸ìœ¨": "ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨",
+    "ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨": "ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨",
+    "ìˆ˜ê¸‰": "ìˆ˜ê¸‰",
+    "ì‹œê°„í‘œ": "ì‹œê°„í‘œ",
+}
+ACTIONABLE_DECISION_LABELS = {
+    "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„",
+    "ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨",
+    "ìˆ˜ê¸‰",
+    "ì‹œê°„í‘œ",
+}
+LIMITED_DECISION_IMPACT = "ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì "
+GENERIC_EXPLANATION_PHRASES = [
+    "ê³µì‹ ë¬¸ì„œ ë˜ëŠ” ì‹ ë¢° ë³´ë„ì—ì„œ í•œêµ­ì¥ ê°€ê²© ë³€ìˆ˜ í›„ë³´ê°€ í™•ì¸ëìŠµë‹ˆë‹¤.",
+    "ëˆ ë²„ëŠ” ëŠ¥ë ¥, í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ ì¤‘ ë¬´ì—‡ì´ ì‹¤ì œë¡œ ë°”ë€ŒëŠ”ì§€ ì›ë¬¸ê³¼ ì‹œì¥ ë°˜ì‘ìœ¼ë¡œ ì¬í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤.",
+    "í•œêµ­ì¥ ì§ì ‘ ì˜í–¥ì€ ì›ë¬¸ì— ê·¼ê±°ê°€ ìˆëŠ” ì—…ì¢…ê³¼ ì¢…ëª©êµ°ìœ¼ë¡œë§Œ ì œí•œí•´ í™•ì¸í•©ë‹ˆë‹¤.",
+]
+GENERIC_SECTOR_TERMS = [
+    "ì˜í–¥ ì„¹í„° í™•ì¸ ë¶ˆê°€",
+    "ì •ì±…/ê·œì œ ì¼ë°˜",
+    "ì§ì ‘ ì˜í–¥ í™•ì¸ ë¶ˆê°€",
+    "í™•ì¸ ë¶ˆê°€",
+]
+TIMELINE_MATERIAL_TERMS = [
+    "effective date",
+    "implementation",
+    "deadline",
+    "approval",
+    "authorization",
+    "permit",
+    "license",
+    "contract",
+    "supply agreement",
+    "order",
+    "funding opportunity",
+    "loan",
+    "loan guarantee",
+    "nrc",
+    "fda approval",
+    "pdufa",
+    "clinical hold",
+    "phase 3",
+    "official",
+    "final rule",
+    "notice of proposed rulemaking",
+    "nprm",
+    "proposed rule",
+    "rulemaking",
+    "request for comments",
+    "public hearing",
+    "comment period",
+    "comment deadline",
+    "investigation",
+    "probe",
+    "review",
+    "inquiry",
+    "seeks public input",
+    "preparing",
+    "considering",
+    "proposed ban",
+    "ban",
+    "restriction",
+    "import ban",
+    "tariff review",
+    "section 232 investigation",
+    "section 301 review",
+    "agency order",
+    "directive",
+    "roadmap",
+    "program launch",
+    "solicitation",
+    "application deadline",
+    "ì‹œí–‰ì¼",
+    "ë§ˆê°",
+    "ìŠ¹ì¸",
+    "í—ˆê°€",
+    "ê³„ì•½",
+    "ìˆ˜ì£¼",
+    "ê³µê¸‰ê³„ì•½",
+    "ëŒ€ì¶œ",
+    "ë³´ì¦",
+    "ì¸í—ˆê°€",
+    "ìµœì¢…ê·œì¹™",
+    "ì„ìƒ",
+    "ì‹¤ì  ë°œí‘œ",
+    "ì •ì±… ë°œí‘œ",
+    "ê·œì¹™ì•ˆ",
+    "ì…ë²•ì˜ˆê³ ",
+    "ê·œì •ì•ˆ",
+    "ì˜ê²¬ìˆ˜ë ´",
+    "ê³µì²­íšŒ",
+    "ì˜ê²¬ ì œì¶œ",
+    "ì¡°ì‚¬ ì°©ìˆ˜",
+    "ê²€í†  ì°©ìˆ˜",
+    "ìˆ˜ì…ê¸ˆì§€",
+    "ê¸ˆì§€ ê²€í† ",
+    "ì œí•œ ê²€í† ",
+    "ê´€ì„¸ ê²€í† ",
+    "í”„ë¡œê·¸ë¨ ê³µê³ ",
+    "ì‹ ì²­ ë§ˆê°",
+    "ê³µëª¨",
+    "ë¡œë“œë§µ",
+    "ë¶€ì²˜ ì§€ì‹œ",
+]
+
+
+def display_impacts(impacts: list | tuple | None) -> list[str]:
+    labels: list[str] = []
+    for impact in impacts or []:
+        label = DECISION_IMPACT_DISPLAY.get(str(impact), str(impact))
+        if label == LIMITED_DECISION_IMPACT:
+            continue
+        if label not in labels:
+            labels.append(label)
+    return labels or [LIMITED_DECISION_IMPACT]
+
+
+def decision_matrix(impacts: list | tuple | None) -> str:
+    labels = set(display_impacts(impacts))
+    return " | ".join(
+        f"{label}: {'í•´ë‹¹' if label in labels else 'í•´ë‹¹ ì—†ìŒ'}"
+        for label in [
+            "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„",
+            "ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨",
+            "ìˆ˜ê¸‰",
+            "ì‹œê°„í‘œ",
+        ]
+    )
+
+
+def has_korea_market_link(alert: dict) -> bool:
+    text = source_evidence_text(alert)
+    return has_direct_market_path(text, alert)
+
+
+def has_direct_market_path(text: str, alert: dict) -> bool:
+    text = source_evidence_text(alert) or text
+    if federal_register_profile(alert):
+        # The verified UAE EAR rule changes the licensing timetable for
+        # advanced-computing and dual-use exports; Korean exposure remains
+        # company-specific, which the rendered counterargument makes explicit.
+        return True
+    if any(
+        alert.get(flag)
+        for flag in [
+            "grid_policy_delay",
+            "local_dc_policy",
+            "policy_drive",
+            "semiconductor_selloff",
+            "robotics_execution_filter",
+            "biotech_leadership_filter",
+            "port_strike_risk",
+            "china_stimulus_bulk",
+            "memory_antitrust_lawsuit",
+            "transformer_tariff_policy_watch",
+            "k_defense_watch",
+            "korea_nuclear_siting_policy_watch",
+            "k_power_watch",
+        ]
+    ):
+        return True
+    if is_china_mofcom_control(alert):
+        return True
+    if has_term(text, ["tariff", "duty", "duties", "antidumping", "anti-dumping", "countervailing"]):
+        korea_direct = has_term(text, ["korea", "south korea", "korean", "í•œêµ­", "í•œêµ­ì‚°"])
+        strategic_country = has_term(
+            text, ["china", "chinese", "taiwan", "taiwanese", "european union", "eu ", "ì¤‘êµ­", "ëŒ€ë§Œ", "ìœ ëŸ½ì—°í•©"]
+        )
+        strategic_product = has_term(
+            text,
+            [
+                "semiconductor", "chip", "steel", "transformer", "battery", "cathode", "anode",
+                "automotive", "auto parts", "shipbuilding", "solar inverter", "robot", "robotics",
+                "ë°˜ë„ì²´", "ì² ê°•", "ë³€ì••ê¸°", "ë°°í„°ë¦¬", "ìë™ì°¨", "ì¡°ì„ ", "ì¸ë²„í„°", "ë¡œë´‡",
+            ],
+        )
+        return korea_direct or (strategic_country and strategic_product)
+    return has_term(
+        text,
+        [
+            "ap1000",
+            "bis",
+            "chips act",
+            "data center",
+            "entity list",
+            "export control",
+            "ferc",
+            "nrc",
+            "section 232",
+            "section 301",
+            "semiconductor",
+            "transformer",
+            "westinghouse",
+            "oil",
+            "brent",
+            "wti",
+            "natural gas",
+            "uranium",
+            "copper",
+            "lithium",
+            "gold",
+            "treasury yield",
+            "treasury yields",
+            "treasury bond",
+            "treasury bonds",
+            "10-year treasury",
+            "10 year treasury",
+            "real yield",
+            "federal reserve",
+            "hormuz",
+            "red sea",
+            "iran",
+            "ê´€ì„¸",
+            "ë°ì´í„°ì„¼í„°",
+            "ë°˜ë„ì²´",
+            "ë³€ì••ê¸°",
+            "ìˆ˜ì¶œí†µì œ",
+            "ì›ì „",
+        ],
+    )
+
+
+def is_low_impact_admin_alert(alert: dict) -> bool:
+    text = alert_text(alert)
+    if not is_federal_register_alert(text):
+        return False
+    if has_term(text, HARD_LOW_IMPACT_TITLE_TERMS):
+        return True
+    if not has_term(text, LOW_IMPACT_TITLE_TERMS):
+        return False
+    return not has_direct_market_path(text, alert)
+
+
+def is_low_impact_trade_admin_notice(alert: dict) -> bool:
+    text = alert_text(alert)
+    if not has_term(text, ["antidumping", "countervailing", "anti-dumping", "ìƒê³„ê´€ì„¸", "ë°˜ë¤í•‘"]):
+        return False
+    return has_term(
+        text,
+        [
+            "opportunity to request administrative review",
+            "join annual inquiry service list",
+            "annual inquiry service list",
+            "note regarding format of review requests",
+        ],
+    )
+
+
+def has_generic_explanation(alert: dict) -> bool:
+    text = "\n".join(
+        str(alert.get(key) or "")
+        for key in [
+            "policy_plain_summary",
+            "investment_view",
+            "korea_market_impact",
+            "interpretation",
+        ]
+    )
+    return any(phrase in text for phrase in GENERIC_EXPLANATION_PHRASES)
+
+
+def has_decision_impact(alert: dict) -> bool:
+    labels = set(display_impacts(alert.get("impacts")))
+    if not labels or labels == {LIMITED_DECISION_IMPACT}:
+        alert["guardrail_note"] = "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„, ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ ì¤‘ ë°”ë€ ì¶•ì´ ì—†ì–´ ì œì™¸"
+        return False
+    if not labels.intersection(ACTIONABLE_DECISION_LABELS):
+        alert["guardrail_note"] = "ì‹œì¥ ì˜ì‚¬ê²°ì • ì¶•ìœ¼ë¡œ ë¶„ë¥˜ë˜ì§€ ì•Šì•„ ì œì™¸"
+        return False
+    if not has_korea_market_link(alert):
+        alert["guardrail_note"] = "í•œêµ­ì¥ ì—…ì¢…Â·ë°¸ë¥˜ì²´ì¸ ì—°ê²° ê·¼ê±°ê°€ ì•½í•´ ì œì™¸"
+        return False
+    if labels == {"ì‹œê°„í‘œ"} and not has_term(alert_text(alert), TIMELINE_MATERIAL_TERMS):
+        alert["guardrail_note"] = "ë‹¨ìˆœ ì‹œê°„í‘œ í›„ë³´ì¼ ë¿ ê³µì‹ ì ˆì°¨ ì°©ìˆ˜Â·ì˜ê²¬ìˆ˜ë ´Â·ì¡°ì‚¬Â·ì •ì±… ì‹œí–‰Â·ê³„ì•½ ë“± ì¶”ì  ê°€ëŠ¥í•œ ê·¼ê±°ê°€ ì•½í•´ ì œì™¸"
+        return False
+    if has_generic_explanation(alert):
+        alert["guardrail_note"] = "ì •ì±…Â·ê¸°ì—… ì´ë²¤íŠ¸ì˜ ë‚´ìš©ê³¼ í•œêµ­ì¥ ì˜í–¥ì´ êµ¬ì²´ì ìœ¼ë¡œ ì„¤ëª…ë˜ì§€ ì•Šì•„ ì œì™¸"
+        return False
+    return True
+
+
+def is_local_dc_like(alert: dict) -> bool:
+    text = alert_text(alert)
+    return bool(alert.get("local_dc_policy")) or (
+        has_term(text, ["data center", "data centers", "ë°ì´í„°ì„¼í„°"])
+        and has_term(text, ["zoning", "moratorium", "residents", "ordinance", "permit", "public hearing", "ì£¼ë¯¼", "ì¸í—ˆê°€"])
+    )
+
+
+LOCAL_DC_TRUSTED_SOURCE_TERMS = [
+    "reuters",
+    "bloomberg",
+    "associated press",
+    "ap news",
+    "cnbc",
+    "marketwatch",
+    "wall street journal",
+    "financial times",
+    "wsj",
+    "ft.com",
+    "federal register",
+    "ferc",
+    "department of energy",
+    "doe",
+    "public utility commission",
+    "state corporation commission",
+    ".gov",
+    ".gov/",
+]
+
+LOCAL_DC_HARD_ACTION_TERMS = [
+    "moratorium",
+    "ordinance",
+    "ban",
+    "banned",
+    "block",
+    "blocked",
+    "vote",
+    "voted",
+    "approved",
+    "passed",
+    "public hearing",
+    "planning commission",
+    "city council",
+    "county board",
+    "zoning",
+    "permit denied",
+    "injunction",
+    "lawsuit",
+    "ì¡°ë¡€",
+    "í‘œê²°",
+    "ìŠ¹ì¸",
+    "ë¶€ê²°",
+    "ëª¨ë¼í† ë¦¬ì—„",
+    "ê¸ˆì§€",
+    "ì¸í—ˆê°€",
+    "ê³µì²­íšŒ",
+]
+
+LOCAL_DC_WEAK_LOCAL_ONLY_TERMS = [
+    "residents say",
+    "neighbors say",
+    "construction already impacting",
+    "rural radio",
+    "thecarrollnews",
+    "herald-mail",
+    "256 today",
+    "aol.com",
+    "local news",
+]
+
+
+def is_actionable_local_dc_policy(alert: dict) -> bool:
+    if not is_local_dc_like(alert):
+        return False
+    examples = alert.get("examples") or []
+    source_blob = " ".join(
+        str(item.get("publisher") or item.get("source") or item.get("link") or "")
+        for item in examples
+        if isinstance(item, dict)
+    )
+    text = " ".join([alert_text(alert), source_blob]).lower()
+    has_hard_action = has_term(text, LOCAL_DC_HARD_ACTION_TERMS)
+    has_trusted_source = has_term(text, LOCAL_DC_TRUSTED_SOURCE_TERMS)
+    weak_local_only = has_term(text, LOCAL_DC_WEAK_LOCAL_ONLY_TERMS) and not has_trusted_source
+    return has_hard_action and has_trusted_source and not weak_local_only
+
+
+def is_china_mofcom_control(alert: dict) -> bool:
+    text = alert_text(alert)
+    has_authority = has_term(
+        text,
+        ["mofcom", "china ministry of commerce", "chinese ministry of commerce", "ä¸­å›½å•†åŠ¡éƒ¨", "å•†åŠ¡éƒ¨"],
+    )
+    has_action = has_term(
+        text,
+        [
+            "export ban", "export suspension", "suspend exports", "suspended exports",
+            "export control", "export licensing", "tariff", "anti-dumping", "antidumping",
+            "countervailing", "å‡ºå£ç®¡åˆ¶", "æš‚åœå‡ºå£", "åœæ­¢å‡ºå£", "ç¦æ­¢å‡ºå£", "å…³ç¨", "åå€¾é”€", "åè¡¥è´´",
+        ],
+    ) or ("å‡ºå£" in text and any(term in text for term in ["ç®¡åˆ¶", "æš‚åœ", "åœæ­¢", "ç¦æ­¢", "è®¸å¯", "ç¦ä»¤"])) or (
+        any(term in text for term in ["export", "exports"])
+        and any(term in text for term in ["suspend", "suspends", "suspended", "ban", "bans", "banned"])
+    )
+    return has_authority and has_action
+
+
+def china_mofcom_product_label(alert: dict) -> str:
+    text = alert_text(alert)
+    products = [
+        (["helium", "æ°¦"], "í—¬ë¥¨"),
+        (["rare earth", "rare-earth", "ç¨€åœŸ"], "í¬í† ë¥˜"),
+        (["gallium", "é•“"], "ê°ˆë¥¨"),
+        (["germanium", "é”—"], "ê²Œë¥´ë§ˆëŠ„"),
+        (["graphite", "çŸ³å¢¨"], "í‘ì—°"),
+        (["antimony", "é”‘"], "ì•ˆí‹°ëª¬"),
+        (["tungsten", "é’¨"], "í……ìŠ¤í…"),
+        (["indium", "é“Ÿ"], "ì¸ë“"),
+        (["battery", "cathode", "anode", "lfp", "ç”µæ± "], "ë°°í„°ë¦¬ ì†Œì¬Â·ê¸°ìˆ "),
+        (["semiconductor", "chip", "åŠå¯¼ä½“"], "ë°˜ë„ì²´ í’ˆëª©"),
+        (["steel", "é’¢é“"], "ì² ê°•"),
+        (["dual-use", "ä¸¤ç”¨ç‰©é¡¹"], "ì´ì¤‘ìš©ë„ í’ˆëª©"),
+    ]
+    for terms, label in products:
+        if has_term(text, terms):
+            return label
+    return "ì „ëµ í’ˆëª©"
+
+
+def china_mofcom_action_label(alert: dict) -> str:
+    text = alert_text(alert)
+    if has_term(text, ["export suspension", "suspend exports", "suspended exports", "æš‚åœå‡ºå£", "åœæ­¢å‡ºå£"]) or (
+        "å‡ºå£" in text and any(term in text for term in ["æš‚åœ", "åœæ­¢"])
+    ) or (
+        any(term in text for term in ["export", "exports"])
+        and any(term in text for term in ["suspend", "suspends", "suspended"])
+    ):
+        return "ìˆ˜ì¶œ ì¼ì‹œ ì¤‘ë‹¨"
+    if has_term(text, ["export ban", "banned exports", "ç¦æ­¢å‡ºå£", "å‡ºå£ç¦ä»¤"]) or (
+        any(term in text for term in ["export", "exports"])
+        and any(term in text for term in ["ban", "bans", "banned"])
+    ):
+        return "ìˆ˜ì¶œ ê¸ˆì§€"
+    if has_term(text, ["anti-dumping", "antidumping", "åå€¾é”€"]):
+        return "ë°˜ë¤í•‘ ì¡°ì¹˜"
+    if has_term(text, ["countervailing", "åè¡¥è´´"]):
+        return "ìƒê³„ê´€ì„¸ ì¡°ì¹˜"
+    if has_term(text, ["tariff", "tariffs", "å…³ç¨"]):
+        return "ê´€ì„¸ ì¡°ì¹˜"
+    if has_term(text, ["export licensing", "å‡ºå£è®¸å¯"]):
+        return "ìˆ˜ì¶œ í—ˆê°€ì œ"
+    return "ìˆ˜ì¶œí†µì œ"
+
+
+def korean_title(alert: dict) -> str:
+    profile = federal_register_profile(alert)
+    if profile:
+        return str(profile["title"])
+    # Render only from the original source identity.  Generated fields from an
+    # earlier overlay are not source evidence and cannot select a new theme.
+    text = source_subject_text(alert)
+    raw = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "").strip()
+    if alert.get("iran_hormuz_escalation"):
+        return "ë¯¸êµ­, ì´ë€ ì¬ê³µê²©Â·í˜¸ë¥´ë¬´ì¦ˆ ìƒì„  í”¼ê²©: íœ´ì „Â·ìœ ê°€ ë¦¬ìŠ¤í¬"
+    if is_china_mofcom_control(alert):
+        return f"ì¤‘êµ­ ìƒë¬´ë¶€, {china_mofcom_product_label(alert)} {china_mofcom_action_label(alert)} ë°œí‘œ"
+    if alert.get("grid_policy_delay"):
+        return "ë¶ë¯¸ ì†¡ì „ë§ íˆ¬ì ì •ì±… ë³€ìˆ˜: ì •ë¶€ ìŠ¹ì¸Â·ê·œì œ ì§€ì—° ë¦¬ìŠ¤í¬"
+    if alert.get("memory_antitrust_lawsuit"):
+        return "ë©”ëª¨ë¦¬ ë°˜ë…ì  ì†Œì†¡: ì‚¼ì„±ì „ìÂ·SKí•˜ì´ë‹‰ìŠ¤Â·Micron DRAM ê°€ê²©ë‹´í•© ì§‘ë‹¨ì†Œì†¡"
+    if alert.get("robotics_execution_filter"):
+        return "ì‚¼ì„± ë¡œë´‡ ì‹¤í–‰ ë‹¨ê³„: ì¡°ì§ ì¬ì •ë¹„ì™€ ë ˆì¸ë³´ìš°ë¡œë³´í‹±ìŠ¤ ìƒì‚°ë¼ì¸ ìë™í™” ì²´í¬"
+    if alert.get("biotech_leadership_filter"):
+        return raw or "ë°”ì´ì˜¤ ì£¼ë„ì£¼ ë³µê·€ ì¡°ê±´: ë§¤ì¶œÂ·FDA ì¼ì •Â·í• ì¸ìœ¨ ë™ì‹œ ì²´í¬"
+    if alert.get("port_strike_risk"):
+        return "ë©”ê°€í”„ë¡œì íŠ¸ ì¼ì •: ë¯¸êµ­ ë™ë¶€Â·ê±¸í”„ í•­ë§Œ ê³„ì•½ ë§Œë£Œ/íŒŒì—… ë¦¬ìŠ¤í¬"
+    if alert.get("china_stimulus_bulk"):
+        return "ì¤‘êµ­ ê²½ê¸°ë¶€ì–‘ì±…: ì² ê´‘ì„Â·ì„íƒ„ ë¬¼ë™ëŸ‰ê³¼ ë²Œí¬ì„  ìš´ì„ íšŒë³µ ê¸°ëŒ€"
+    if has_term(text, ["federal oil, gas, and coal amendments", "federal oil gas and coal amendments"]):
+        return "ë¯¸êµ­, ì„ìœ Â·ê°€ìŠ¤Â·ì„íƒ„ ìì›ê°œë°œ ê·œì • ê°œì • ê³µí‘œ"
+    if has_term(text, ["african growth and opportunity act", "annual review of country eligibility"]):
+        return "USTR, 2027ë…„ AGOA ìˆ˜í˜œêµ­ ìê²© ì—°ë¡€ê²€í†  ì˜ê²¬ìˆ˜ë ´"
+    if has_term(text, ["technical guidelines for the production of regenerative agricultural biofuel feedstocks"]):
+        return "ë¯¸êµ­, ì¬ìƒë†ì—… ë°”ì´ì˜¤ì—°ë£Œ ì›ë£Œ ìƒì‚° ê¸°ìˆ ì§€ì¹¨ ê³µí‘œ"
+    if has_term(text, ["advancing regenerative agriculture", "farm resilience"]):
+        return "ë°±ì•…ê´€, ì¬ìƒë†ì—…Â·ë¯¸êµ­ ë†ê°€ íšŒë³µë ¥ ê°•í™” í–‰ì •ëª…ë ¹ ë°œí‘œ"
+    if has_term(text, ["resilient networks", "disruptions to communications", "dirs"]):
+        return "FCC, ì¬ë‚œ ì‹œ í†µì‹ ë§ ì¥ì• ë³´ê³  ì‹œìŠ¤í…œ(DIRS) í˜„ëŒ€í™” ê·œì¹™ ê³µí‘œ"
+    if has_term(text, ["digital opportunity data collection", "form 477"]):
+        return "FCC, ë¸Œë¡œë“œë°´ë“œ ë°ì´í„° ìˆ˜ì§‘Â·Form 477 í˜„ëŒ€í™” ë¬¸ì„œ ê³µí‘œ"
+    if has_term(text, ["fcc", "federal communications commission"]) and has_term(text, ["national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter"]):
+        return "FCC, êµ­ê°€ì•ˆë³´ ëª…ë¶„ ì™¸êµ­ì‚° ì¥ë¹„Â·ì¸ë²„í„° ê·œì œ ì‹ í˜¸"
+    if has_term(text, ["nominations", "appointments"]):
+        return "ë°±ì•…ê´€, ê³ ìœ„ê¸‰ ì¸ì‚¬ ì§€ëª…Â·ì„ëª… ê³µì§€"
+    if has_term(text, ["doe", "department of energy", "energy.gov"]) and has_term(text, ["loan", "loans", "low-cost loan", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "ap1000"]):
+        return "ë¯¸ ì—ë„ˆì§€ë¶€, ì „ë ¥ë§Â·ì›ì „Â·ì—ë„ˆì§€ ì¥ë¹„ ì§€ì›/ì œí•œ ì •ì±… ì²´í¬"
+    if has_term(text, ["transformer", "large power transformer", "ë³€ì••ê¸°"]):
+        return "ë¯¸êµ­, ëŒ€í˜• ë³€ì••ê¸° ê´€ì„¸Â·ê·œì œ ë³€í™” ê³µì‹ê·¼ê±° ì²´í¬"
+    if has_term(text, ["robot", "robotics", "chinese robots"]):
+        return "ë¯¸êµ­, ì¤‘êµ­ì‚° ë¡œë´‡ ìˆ˜ì… ê·œì œ ê²€í†  ì‹ í˜¸"
+    if has_term(text, ["european union", "european commission", "euì§‘í–‰ìœ„", "ìœ ëŸ½ì—°í•©"]) and has_term(text, ["korea", "south korea", "korean", "í•œêµ­", "í•œêµ­ì‚°"]):
+        return "EU ë“± í•´ì™¸ ì •ì±…, í•œêµ­ ìˆ˜ì¶œì£¼ ì§ì ‘ ì˜í–¥ ì²´í¬"
+    if has_term(text, ["nuclear", "reactor", "ap1000", "westinghouse", "smr"]):
+        return "ë¯¸êµ­ ì›ì „Â·SMRÂ·AI ì „ë ¥ ì •ì±… ì‹œê°„í‘œ ì²´í¬"
+    if is_local_dc_like(alert):
+        return "ë¯¸êµ­ ì§€ì—­ ë°ì´í„°ì„¼í„° ì¸í—ˆê°€Â·ì£¼ë¯¼ ë°˜ë°œ ì´ìŠˆ í™•ì‚°"
+    if has_term(text, ["fcc", "broadband", "satellite", "spectrum"]):
+        return "FCC, í†µì‹ Â·ë¸Œë¡œë“œë°´ë“œ ê·œì œ ë¬¸ì„œ ê³µí‘œ"
+    if has_term(text, ["export control", "entity list", "semiconductor", "chips"]):
+        return "ë¯¸êµ­, ë°˜ë„ì²´Â·ì²¨ë‹¨ê¸°ìˆ  ìˆ˜ì¶œí†µì œ ì •ì±… ì‹ í˜¸"
+    if has_term(text, ["antidumping", "countervailing", "anti-dumping"]) and has_term(text, ["final results", "preliminary results", "cash deposit", "dumping margin", "subsidy rate", "rate", "korea", "south korea"]):
+        return "ë¯¸ ìƒë¬´ë¶€, ë°˜ë¤í•‘Â·ìƒê³„ê´€ì„¸ íŒì •/ì¬ì‹¬ ê²°ê³¼ ê³µí‘œ"
+    if has_term(text, ["tariff", "customs", "duty", "section 301", "section 232"]):
+        return "ë¯¸êµ­, ê´€ì„¸Â·í†µê´€ ì •ì±… ë³€í™” ì²´í¬"
+    if raw and not mostly_ascii(raw):
+        return raw
+    return "í•´ì™¸ ì •ì±…Â·ê¸°ì—… ì´ë²¤íŠ¸ í•œêµ­ì¥ ì˜í–¥ ì ê²€"
+
+
+def curated_sectors(alert: dict) -> list[str]:
+    profile = federal_register_profile(alert)
+    if profile:
+        return list(profile["sectors"])
+    text = source_subject_text(alert)
+    if alert.get("iran_hormuz_escalation"):
+        return ["ì •ìœ /í™”í•™", "í•´ìš´/ìš´ì„", "ë°©ì‚°/ì§€ì •í•™", "í™˜ìœ¨ ë¯¼ê°ì£¼"]
+    if is_china_mofcom_control(alert):
+        product = china_mofcom_product_label(alert)
+        if product == "í—¬ë¥¨":
+            return ["ë°˜ë„ì²´/HBM ê³µì •ê°€ìŠ¤", "ë””ìŠ¤í”Œë ˆì´/ê´‘ì„¬ìœ ", "ì‚°ì—…ê°€ìŠ¤", "ì˜ë£Œê¸°ê¸°/MRI"]
+        if product in {"í¬í† ë¥˜", "ê°ˆë¥¨", "ê²Œë¥´ë§ˆëŠ„", "í‘ì—°", "ì•ˆí‹°ëª¬", "í……ìŠ¤í…", "ì¸ë“"}:
+            return ["í•µì‹¬ê´‘ë¬¼/ì†Œì¬", "ë°˜ë„ì²´", "2ì°¨ì „ì§€", "ë°©ì‚°/ì „ë ¥ì „ì"]
+        return ["ì¤‘êµ­ ìˆ˜ì¶œí†µì œ/í•µì‹¬ì†Œì¬", "ê³µê¸‰ë§", "ê´€ì„¸/ìˆ˜ì¶œì£¼"]
+    if has_term(text, ["ìê¸°ì£¼ì‹", "ìì‚¬ì£¼", "buyback"]):
+        return ["ìì‚¬ì£¼/ì£¼ì£¼í™˜ì›", "ìˆ˜ê¸‰/ì˜¤ë²„í–‰", "í•œêµ­ ì§ì ‘ ê³µì‹œ"]
+    if has_term(text, ["ì „í™˜ì‚¬ì±„", "ì‹ ì£¼ì¸ìˆ˜ê¶Œ", "ìœ ìƒì¦ì", "ì£¼ìš”ì‚¬í•­ë³´ê³ ì„œ", "íƒ€ë²•ì¸ì£¼ì‹", "íšŒì‚¬í•©ë³‘", "íšŒì‚¬ë¶„í• "]):
+        return ["ê°œë³„ì¢…ëª© ìê¸ˆì¡°ë‹¬/í¬ì„", "ìˆ˜ê¸‰/ì˜¤ë²„í–‰", "í•œêµ­ ì§ì ‘ ê³µì‹œ"]
+    if is_local_dc_like(alert):
+        return ["ë°ì´í„°ì„¼í„°/ì „ë ¥ë§/ì „ë ¥ê¸°ê¸°"]
+    if has_term(text, ["fcc", "federal communications commission"]) and has_term(text, ["national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter"]):
+        return ["ì „ë ¥ë§ ë³´ì•ˆ/FCC ì¥ë¹„ê·œì œ", "íƒœì–‘ê´‘ ì¸ë²„í„°/ì „ë ¥ë³€í™˜ì¥ì¹˜", "ì¤‘êµ­ ëŒ€ì²´ ê³µê¸‰ë§"]
+    if has_term(text, ["european union", "european commission", "euì§‘í–‰ìœ„", "ìœ ëŸ½ì—°í•©"]) and has_term(text, ["korea", "south korea", "korean", "í•œêµ­", "í•œêµ­ì‚°"]):
+        return ["EU/í•œêµ­ ì •ì±… ì˜í–¥", "í•œêµ­ ìˆ˜ì¶œì£¼", "ë¬´ì—­ê·œì œ/ê´€ì„¸"]
+    if has_term(text, ["doe", "department of energy", "energy.gov"]) and has_term(text, ["loan", "loans", "low-cost loan", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "ap1000"]):
+        return ["DOE ì „ë ¥ë§/ì›ì „/ì—ë„ˆì§€ì§€ì›", "ì „ë ¥ë§/ì „ë ¥ê¸°ê¸°", "ì›ì „/SMR/í•µì—°ë£Œ", "ë°ì´í„°ì„¼í„° ì „ë ¥"]
+    if has_term(text, ["transformer", "large power transformer", "ë³€ì••ê¸°"]):
+        return ["ì „ë ¥ê¸°ê¸°/ë³€ì••ê¸°", "ê´€ì„¸/ìˆ˜ì¶œì£¼", "ì „ë ¥ë§/ë°ì´í„°ì„¼í„°"]
+    if has_term(text, ["nuclear", "reactor", "smr", "ap1000", "westinghouse", "doosan", "ì›ì „"]):
+        return ["ì›ì „/SMR/ê°€ìŠ¤í„°ë¹ˆ", "ì „ë ¥ê¸°ê¸°/ì „ë ¥ë§", "ë‘ì‚°ì—ë„ˆë¹Œë¦¬í‹°/KHNP"]
+    if has_term(text, ["hanwha aerospace", "lig nex1", "kai", "hyundai rotem", "k9", "k2", "fa-50", "kf-21", "redback", "ì²œê¶", "í˜„ê¶"]):
+        return ["K-ë°©ì‚°/í•­ê³µìš°ì£¼", "ìˆ˜ì£¼/ê³„ì•½", "ì§€ì •í•™/ë°©ìœ„ë¹„"]
+    if has_term(text, ["robot", "robotics", "smart factory", "automation"]):
+        return ["ë¡œë´‡/ìŠ¤ë§ˆíŠ¸íŒ©í† ë¦¬", "ê°ì†ê¸°/FA", "ì‚°ì—…ìë™í™”"]
+    if has_term(text, ["fda", "pdufa", "clinical", "crl", "pharma"]):
+        return ["ë°”ì´ì˜¤/FDA", "ì œì•½", "í—¬ìŠ¤ì¼€ì–´"]
+    if has_term(text, ["fcc", "broadband", "spectrum", "satellite", "communications"]):
+        return ["ë¯¸êµ­ í†µì‹ ê·œì œ", "í†µì‹ ì¥ë¹„/ìœ„ì„±"]
+    if has_term(text, ["oil", "gas", "coal", "biofuel", "feedstocks"]):
+        return ["ì—ë„ˆì§€/ì›ìì¬", "ì •ìœ Â·í™”í•™ ì›ê°€", "ë¯¸êµ­ ìì›ê°œë°œ ì •ì±…"]
+    if has_term(text, ["tariff", "customs", "duty", "section 301", "section 232", "ê´€ì„¸"]):
+        return ["ê´€ì„¸/ìˆ˜ì¶œì£¼", "ê³µê¸‰ë§", "ë¬¼ë¥˜/í†µìƒ"]
+    if has_term(text, ["semiconductor", "chip", "hbm", "ai", "nvidia", "micron"]):
+        return ["ë°˜ë„ì²´/AI", "ì¥ë¹„Â·ì†Œì¬"]
+    if has_term(text, ["stablecoin", "digital asset", "ìŠ¤í…Œì´ë¸”ì½”ì¸"]):
+        return ["ê¸ˆìœµ/ìë³¸ì‹œì¥/ìŠ¤í…Œì´ë¸”ì½”ì¸", "ì€í–‰/í•€í…Œí¬/ê²°ì œ"]
+    return unique([str(x) for x in alert.get("sectors") or []])[:4] or ["ì˜í–¥ ì„¹í„° í™•ì¸ ë¶ˆê°€"]
+
+
+def explanation_for(alert: dict) -> dict[str, str]:
+    profile = federal_register_profile(alert)
+    if profile:
+        return {
+            "core": str(profile["core"]),
+            "view": str(profile["view"]),
+            "korea": str(profile["korea"]),
+            "priced": str(profile["priced"]),
+            "counter": str(profile["counter"]),
+            "failure": str(profile["failure"]),
+        }
+    text = source_subject_text(alert)
+    if alert.get("iran_hormuz_escalation"):
+        return {
+            "core": "ë¯¸êµ­ì´ í˜¸ë¥´ë¬´ì¦ˆ í•´í˜‘ ìƒì„  í”¼ê²©ì— ëŒ€ì‘í•´ ì´ë€ì„ ë‹¤ì‹œ ê³µê²©í–ˆê³ , ì´ë€ë„ ê±¸í”„ êµ­ê°€ë¥¼ í–¥í•´ ëŒ€ì‘í•˜ë©´ì„œ ì·¨ì•½í•œ íœ´ì „ê³¼ í•´ìƒìš´ì†¡ ì•ˆì „ì´ ë‹¤ì‹œ í”ë“¤ë¦° ì‚¬ì•ˆì…ë‹ˆë‹¤.",
+            "view": "í˜¸ë¥´ë¬´ì¦ˆ í†µí•­ ì°¨ì§ˆì´ ì´ì–´ì§€ë©´ ìœ ê°€Â·ìš´ì„Â·ë³´í—˜ë£Œ ìƒìŠ¹ì´ ì •ìœ Â·í™”í•™Â·í•­ê³µì˜ ì›ê°€ì™€ í•´ìš´Â·ë°©ì‚°ì˜ ìˆ˜ìµ ê¸°ëŒ€ë¥¼ ë™ì‹œì— ë°”ê¿€ ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+            "korea": "í•œêµ­ì¥ì—ì„œëŠ” WTI/Brent, ì›/ë‹¬ëŸ¬, íƒ±ì»¤Â·ì»¨í…Œì´ë„ˆ ìš´ì„ê³¼ ì •ìœ /í™”í•™Â·í•´ìš´Â·ë°©ì‚° ìˆ˜ê¸‰ì„ í•¨ê»˜ í™•ì¸í•©ë‹ˆë‹¤. ì‹¤ì œ í•­ë¡œ ì°¨ì§ˆì´ ì—†ìœ¼ë©´ í…Œë§ˆ ë°˜ì‘ìœ¼ë¡œ ì œí•œí•©ë‹ˆë‹¤.",
+            "priced": "ë‚®ìŒ~ì¤‘ê°„. ìµœê·¼ ì¶©ëŒ ì¬ê°œ ìš°ë ¤ê°€ ì¼ë¶€ ë°˜ì˜ëì§€ë§Œ ì‹ ê·œ ìƒì„  í”¼ê²©ê³¼ ì¬ê³µê²©ì€ íœ´ì „ ë¶•ê´´ í™•ë¥ ì„ ë‹¤ì‹œ ë†’ì´ëŠ” ìƒˆ ì •ë³´ì…ë‹ˆë‹¤.",
+            "counter": "ë‹¨ë°œì„± ë³´ë³µ ë’¤ ì¶”ê°€ ê³µê²©ì´ ë©ˆì¶”ê³  í˜¸ë¥´ë¬´ì¦ˆ í†µí•­ì´ ìœ ì§€ë˜ë©´ ìœ ê°€Â·ìš´ì„ ì¶©ê²©ì€ ë¹ ë¥´ê²Œ ë˜ëŒë¦´ ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+            "failure": "ë¯¸ êµ­ë°©ë¶€Â·CENTCOMÂ·ë°±ì•…ê´€ í›„ì†, ì‹¤ì œ ì„ ë°• í†µí•­ ê°ì†Œ, WTI/BrentÂ·ìš´ì„Â·USD/KRWÂ·ë°©ì‚°ì£¼ ë°˜ì‘ì´ ì—†ìœ¼ë©´ ê³ ì¶©ê²© ì¬ë£Œì—ì„œ ì•½í™”ë©ë‹ˆë‹¤.",
+        }
+    if is_china_mofcom_control(alert):
+        product = china_mofcom_product_label(alert)
+        action = china_mofcom_action_label(alert)
+        korea = (
+            "í•œêµ­ì¥ì—ì„œëŠ” ë°˜ë„ì²´Â·HBM ê³µì •, ë””ìŠ¤í”Œë ˆì´, ê´‘ì„¬ìœ , MRI, ì‚°ì—…ê°€ìŠ¤ ë°¸ë¥˜ì²´ì¸ì˜ ì¬ê³ ì™€ ì¡°ë‹¬ê°€ê²©ì„ í™•ì¸í•©ë‹ˆë‹¤. ì¤‘êµ­ì‚° ì˜ì¡´ë„ì™€ ëŒ€ì²´ ì¡°ë‹¬ ê³„ì•½ì´ í™•ì¸ëœ ê¸°ì—…ë§Œ ì—°ê²°í•©ë‹ˆë‹¤."
+            if product == "í—¬ë¥¨"
+            else "í•œêµ­ì¥ì—ì„œëŠ” í•´ë‹¹ í’ˆëª©ì˜ ì¤‘êµ­ì‚° ì˜ì¡´ë„, ì¬ê³ ì¼ìˆ˜, ëŒ€ì²´ ê³µê¸‰ì„ , í•œêµ­ ê¸°ì—…ì˜ ìˆ˜ì¶œì… ë…¸ì¶œì´ í™•ì¸ëœ ì—…ì¢…ë§Œ ì—°ê²°í•©ë‹ˆë‹¤."
+        )
+        return {
+            "core": f"ì¤‘êµ­ ìƒë¬´ë¶€ê°€ {product} ê´€ë ¨ {action}ì„ ë°œí‘œí•˜ê±°ë‚˜ ì¤€ë¹„í•œë‹¤ëŠ” ì •ì±… ì‹ í˜¸ì…ë‹ˆë‹¤. í’ˆëª©Â·ëŒ€ìƒêµ­Â·ì‹œí–‰ì¼Â·ì˜ˆì™¸ í—ˆê°€ê°€ ì‹¤ì œ ê³µê¸‰ ê°ì†Œ í­ì„ ê²°ì •í•©ë‹ˆë‹¤.",
+            "view": f"{product}ì˜ ì¤‘êµ­ë°œ ê³µê¸‰ì´ ì¤„ë©´ í˜„ë¬¼ê°€ê²©, ì¡°ë‹¬ê¸°ê°„, ì¬ê³ ë¹„ìš©ì´ ì˜¬ë¼ ìˆ˜ì…ì—…ì²´ ë§ˆì§„ê³¼ ìƒì‚°ê³„íšì´ ë°”ë€” ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+            "korea": korea,
+            "priced": "ë‚®ìŒ~ì¤‘ê°„. ì†ë³´ ì§í›„ ê´€ë ¨ ì›ìì¬ì™€ í…Œë§ˆì£¼ëŠ” ë¨¼ì € ì›€ì§ì¼ ìˆ˜ ìˆì§€ë§Œ ì‹¤ì œ ì´ìµ ì˜í–¥ì€ ê³µì‹ ì ìš©ë²”ìœ„ í™•ì¸ ë’¤ ê²°ì •ë©ë‹ˆë‹¤.",
+            "counter": "ìˆ˜ì¶œ í—ˆê°€ ì˜ˆì™¸, íŠ¹ì • êµ­ê°€Â·ê¸°ì—… í•œì •, ê¸°ì¡´ ê³„ì•½ ìœ ì˜ˆ, ì¤‘êµ­ ì™¸ ê³µê¸‰ í™•ëŒ€ê°€ ìˆìœ¼ë©´ ê³µê¸‰ ì¶©ê²©ì´ ì˜ˆìƒë³´ë‹¤ ì‘ì„ ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+            "failure": "ê³µì‹ ì›ë¬¸ì—ì„œ í’ˆëª©Â·ëŒ€ìƒêµ­Â·ì‹œí–‰ì¼ì´ í™•ì¸ë˜ì§€ ì•Šê±°ë‚˜ í˜„ë¬¼ê°€ê²©Â·ë¦¬ë“œíƒ€ì„Â·êµ­ë‚´ ì¡°ë‹¬ë¹„ìš©ì´ ì›€ì§ì´ì§€ ì•Šìœ¼ë©´ í…Œë§ˆì„± ë°˜ì‘ìœ¼ë¡œ ëë‚©ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["ìê¸°ì£¼ì‹", "ìì‚¬ì£¼", "buyback"]):
+        return {
+            "core": "ìì‚¬ì£¼ ì·¨ë“, ì²˜ë¶„, ì‹ íƒ, ì†Œê° ê´€ë ¨ ê³µì‹œëŠ” ì£¼ì£¼í™˜ì›, ìœ í†µì£¼ì‹ ìˆ˜, ì˜¤ë²„í–‰, ë‹¨ê¸° ìˆ˜ê¸‰ì„ ë°”ê¿€ ìˆ˜ ìˆëŠ” ê³µì‹œì…ë‹ˆë‹¤.",
+            "view": "ì‹¤ì œ ê³ ì¶©ê²© ì—¬ë¶€ëŠ” ì·¨ë“Â·ì†Œê° ê·œëª¨, ì‹œê°€ì´ì•¡ ëŒ€ë¹„ ë¹„ì¤‘, ì²˜ë¶„ ìƒëŒ€ë°©, ëª©ì , ê¸°ê°„, ê¸°ì¡´ ê¸°ëŒ€ ëŒ€ë¹„ ì‹ ê·œì„±ìœ¼ë¡œ íŒë‹¨í•´ì•¼ í•©ë‹ˆë‹¤.",
+            "korea": "í•œêµ­ì¥ì—ì„œëŠ” ìì‚¬ì£¼ ì†Œê° ë˜ëŠ” ëŒ€ê·œëª¨ ì·¨ë“ì´ë©´ ì£¼ì£¼í™˜ì›ê³¼ ìˆ˜ê¸‰ í˜¸ì¬, ì‹ íƒ í•´ì§€Â·ì²˜ë¶„ì´ë©´ ì˜¤ë²„í–‰ ê°€ëŠ¥ì„±ì„ êµ¬ë¶„í•´ ë´…ë‹ˆë‹¤.",
+            "priced": "ì¤‘ê°„. ìì‚¬ì£¼ ê³µì‹œëŠ” ì¦‰ì‹œ ë°˜ì‘í•˜ì§€ë§Œ ê·œëª¨ì™€ ëª©ì ì´ ì‘ê±°ë‚˜ ë°˜ë³µ ê³µì‹œë©´ ì´ë¯¸ ë°˜ì˜ëì„ ê°€ëŠ¥ì„±ì´ ë†’ìŠµë‹ˆë‹¤.",
+            "counter": "ë‹¨ìˆœ ì‹ íƒ ë§Œê¸°Â·í•´ì§€, ê¸°ì¡´ ì·¨ë“ ì™„ë£Œ ë³´ê³ , ì†Œê·œëª¨ ë°˜ë³µ ê³µì‹œë©´ ìƒˆ ìˆ˜ê¸‰ ë³€ìˆ˜ë¡œ ë³´ê¸° ì–´ë µìŠµë‹ˆë‹¤.",
+            "failure": "ì†Œê°, ì‹ ê·œ ëŒ€ê·œëª¨ ì·¨ë“, ì²˜ë¶„ ì œí•œ, ê²½ì˜ê¶Œ ë³€í™”, ê±°ë˜ëŸ‰ ëŒ€ë¹„ ì˜ë¯¸ ìˆëŠ” ê·œëª¨ê°€ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ê³ ì¶©ê²© ì¬ë£Œì—ì„œ ì œì™¸í•©ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["ì „í™˜ì‚¬ì±„", "ì‹ ì£¼ì¸ìˆ˜ê¶Œ", "ìœ ìƒì¦ì", "ì£¼ìš”ì‚¬í•­ë³´ê³ ì„œ", "íƒ€ë²•ì¸ì£¼ì‹", "íšŒì‚¬í•©ë³‘", "íšŒì‚¬ë¶„í• "]):
+        return {
+            "core": "êµ­ë‚´ ê¸°ì—…ì˜ CB/BW/ìœ ìƒì¦ì/ì£¼ìš”ì‚¬í•­ ê³µì‹œëŠ” ê°œë³„ ì¢…ëª© ìˆ˜ê¸‰, í¬ì„, ì˜¤ë²„í–‰, ì§€ë°°êµ¬ì¡° ì´ë²¤íŠ¸ë¥¼ ë°”ê¿€ ìˆ˜ ìˆëŠ” ê³µì‹œì…ë‹ˆë‹¤.",
+            "view": "ì‹ ê·œ ìê¸ˆì¡°ë‹¬ì€ ì„±ì¥ íˆ¬ì ì¬ì›ì¼ ìˆ˜ ìˆì§€ë§Œ ì „í™˜Â·í–‰ì‚¬ ê°€ëŠ¥ ë¬¼ëŸ‰ê³¼ ë°œí–‰ì¡°ê±´ì´ ë¶ˆë¦¬í•˜ë©´ ì£¼ë‹¹ê°€ì¹˜ì™€ ë‹¨ê¸° ìˆ˜ê¸‰ì— ë¶€ë‹´ì…ë‹ˆë‹¤.",
+            "korea": "í•œêµ­ì¥ì—ì„œëŠ” í•´ë‹¹ ì¢…ëª©ì˜ ë°œí–‰ê·œëª¨, ì „í™˜ê°€Â·í–‰ì‚¬ê°€, ë¦¬í”½ì‹±, ë‚©ì…ì¼, ìµœëŒ€ì£¼ì£¼Â·íˆ¬ìì ì„±ê²©, ê¸°ì¡´ ì£¼ì‹ìˆ˜ ëŒ€ë¹„ í¬ì„ë¥ ì„ í™•ì¸í•©ë‹ˆë‹¤.",
+            "priced": "ë‚®ìŒ~ì¤‘ê°„. ê³µì‹œ ì§í›„ ìˆ˜ê¸‰ì— ë°˜ì˜ë˜ì§€ë§Œ ì‹¤ì œ ë‚©ì…Â·ì „í™˜Â·í–‰ì‚¬ ì¼ì •ê³¼ ì¡°ê±´ì— ë”°ë¼ ì¬í‰ê°€ë©ë‹ˆë‹¤.",
+            "counter": "ì •ì •ê³µì‹œë‚˜ ë‹¨ìˆœ ì¼ì • ë³€ê²½ì´ë©´ ì‹ ê·œ ì•…ì¬ê°€ ì•„ë‹ ìˆ˜ ìˆê³ , ìê¸ˆ ì‚¬ìš©ì²˜ê°€ ëª…í™•í•˜ë©´ ë¶€ì •ì  ì˜í–¥ì´ ì œí•œë  ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+            "failure": "ë‚©ì… ì§€ì—°, ì¡°ê±´ ë³€ê²½, ë¦¬í”½ì‹± í™•ëŒ€, ëŒ€ê·œëª¨ ì „í™˜ ê°€ëŠ¥ ë¬¼ëŸ‰ì´ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ì‹œì¥ ì˜í–¥ì€ ì œí•œë©ë‹ˆë‹¤.",
+        }
+    if is_local_dc_like(alert):
+        return {
+            "core": "ë¯¸êµ­ ì§€ì—­ ë‹¨ìœ„ì—ì„œ ë°ì´í„°ì„¼í„° ì¸í—ˆê°€, ì¡°ë¡€, ì£¼ë¯¼ ë°˜ë°œ, ê³µì‚¬ ì˜í–¥ ì´ìŠˆê°€ í™•ì¸ëœ ì‚¬ì•ˆì…ë‹ˆë‹¤.",
+            "view": "AI ë°ì´í„°ì„¼í„° CAPEX ìì²´ë³´ë‹¤ ìŠ¹ì¸ ì‹œê°„í‘œì™€ ì „ë ¥ë§ ì ‘ì† ë³‘ëª© í”„ë¦¬ë¯¸ì—„ì„ ë°”ê¿€ ìˆ˜ ìˆëŠ”ì§€ ë³´ëŠ” ì¬ë£Œì…ë‹ˆë‹¤.",
+            "korea": "í•œêµ­ì¥ì—ì„œëŠ” ì „ë ¥ê¸°ê¸°, ë³€ì••ê¸°, ì „ì„ , ëƒ‰ê°Â·ì „ë ¥ ì¸í”„ë¼ ë°¸ë¥˜ì²´ì¸ ìˆ˜ê¸‰ì„ ë³´ë˜ ê°œë³„ ì§€ì—­ ì´ìŠˆì¸ì§€ ë¨¼ì € ê±¸ëŸ¬ì•¼ í•©ë‹ˆë‹¤.",
+            "priced": "ì¤‘ê°„. ë°ì´í„°ì„¼í„° ì „ë ¥ í…Œë§ˆëŠ” ì„ ë°˜ì˜ì´ ê°•í•˜ì§€ë§Œ ì‹¤ì œ ì¡°ë¡€Â·íˆ¬í‘œÂ·ì¸í—ˆê°€ ë³´ë¥˜ê°€ í™•ì¸ë˜ë©´ ì‹œê°„í‘œ ì¬í‰ê°€ ì—¬ì§€ê°€ ìˆìŠµë‹ˆë‹¤.",
+            "counter": "ê°œë³„ ì§€ì—­ ë¯¼ì›ì´ë‚˜ ì§€ì—­ ì–¸ë¡  ë³´ë„ì¼ ìˆ˜ ìˆì–´ ì „êµ­ CAPEX ë‘”í™”ë¡œ ë°”ë¡œ í™•ì¥í•˜ë©´ ê³¼ëŒ€í•´ì„ì…ë‹ˆë‹¤.",
+            "failure": "ê³µì‹ ì˜ì‚¬ë¡Â·ì¡°ë¡€Â·íˆ¬í‘œì¼Â·ë¹…í…Œí¬ CAPEX ì¡°ì •Â·ì „ë ¥ê¸°ê¸° ìˆ˜ì£¼ ë³€í™”ê°€ ì—†ìœ¼ë©´ ë‹¨ë°œì„± ì§€ì—­ ë‰´ìŠ¤ì…ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["fcc", "federal communications commission"]) and has_term(text, ["national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter"]):
+        return {
+            "core": "FCCê°€ êµ­ê°€ì•ˆë³´ë¥¼ ì´ìœ ë¡œ ì™¸êµ­ì‚° ì¥ë¹„, í†µì‹ ëª¨ë“ˆ, ì—ë„ˆì§€ ì¸ë²„í„°, ì „ë ¥ë§ ì—°ê²° ì¥ë¹„ì˜ ìˆ˜ì…Â·ì¸ì¦Â·íŒë§¤ ì œí•œì„ ê²€í† í•˜ê±°ë‚˜ ê³µí‘œí•œ ì‚¬ì•ˆì…ë‹ˆë‹¤.",
+            "view": "ë‹¨ìˆœ í†µì‹  í–‰ì •ê³µì§€ì™€ ë‹¤ë¥´ê²Œ ì ìš© ì¥ë¹„ê°€ íŠ¹ì •ë˜ë©´ ë¯¸êµ­ ì‹œì¥ì—ì„œ ì¤‘êµ­ì‚° ì¥ë¹„ê°€ ë°°ì œë˜ê³  ëŒ€ì²´ ê³µê¸‰ë§ì˜ ì£¼ë¬¸ ê¸°ëŒ€ì™€ ê°€ê²©ê²°ì •ë ¥ì´ ë°”ë€” ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+            "korea": "í•œêµ­ì¥ì—ì„œëŠ” ì „ë ¥ë³€í™˜ì¥ì¹˜, ESS/PCS, ì „ë ¥ê¸°ê¸°, í†µì‹ ì¥ë¹„, ìœ„ì„±Â·ë³´ì•ˆì¥ë¹„ ì¤‘ ë¯¸êµ­í–¥ ê³µê¸‰ë§ ë…¸ì¶œê³¼ ì¤‘êµ­ ëŒ€ì²´ ìˆ˜ìš”ê°€ ìˆëŠ” ì¢…ëª©ë§Œ ì„ ë³„ í™•ì¸í•©ë‹ˆë‹¤.",
+            "priced": "ë‚®ìŒ~ì¤‘ê°„. ì‹ ë¢°ì™¸ì‹  ë³´ë„ë‚˜ ê·œì¹™ ì œì•ˆ ë‹¨ê³„ì—ì„œëŠ” í…Œë§ˆê°€ ë¨¼ì € ì›€ì§ì¼ ìˆ˜ ìˆì§€ë§Œ ê³µì‹ ì ìš© ëŒ€ìƒÂ·ì‹œí–‰ì¼ ì „ì—ëŠ” ì§ì ‘ ë°˜ì˜ì´ ì œí•œì ì…ë‹ˆë‹¤.",
+            "counter": "FCC ê³µì‹ ê·œì¹™, ì ìš© ì¥ë¹„, ê¸°ì¡´ ì¸ì¦ ì¥ë¹„ ì˜ˆì™¸, ì‹œí–‰ì¼, í•œêµ­ ê¸°ì—…ì˜ ë¯¸êµ­í–¥ ê³µê¸‰ë§ ë…¸ì¶œì´ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ê³¼ëŒ€í•´ì„ì…ë‹ˆë‹¤.",
+            "failure": "FCC ì›ë¬¸, Covered ListÂ·ì¥ë¹„ì¸ì¦ ì œí•œ ë²”ìœ„, ì ìš© ì¥ë¹„, êµ­ë‚´ ê¸°ì—… ìˆ˜ì£¼Â·ê³µê¸‰ë§ ë…¸ì¶œì´ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ í…Œë§ˆì„± ë°˜ì‘ìœ¼ë¡œ ëë‚©ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["european union", "european commission", "euì§‘í–‰ìœ„", "ìœ ëŸ½ì—°í•©"]) and has_term(text, ["korea", "south korea", "korean", "í•œêµ­", "í•œêµ­ì‚°"]):
+        return {
+            "core": "EU ë“± í•´ì™¸ ì •ì±…ì´ í•œêµ­ì‚° ì œí’ˆì´ë‚˜ í•œêµ­ ê¸°ì—…ì˜ ìˆ˜ì¶œ ì¡°ê±´ì„ ì§ì ‘ ë°”ê¿€ ìˆ˜ ìˆëŠ” ë¬´ì—­Â·ê·œì œ ì‚¬ì•ˆì…ë‹ˆë‹¤.",
+            "view": "í’ˆëª©Â·ì„¸ìœ¨Â·ì¿¼í„°Â·ì¸ì¦Â·ì‹œí–‰ì¼ì´ ê³µì‹í™”ë˜ë©´ í•œêµ­ ìˆ˜ì¶œê¸°ì—…ì˜ ë§ˆì§„, ë¬¼ëŸ‰, ì£¼ë¬¸ ì´ì „, ë°¸ë¥˜ì²´ì¸ ìˆ˜ê¸‰ ê¸°ëŒ€ê°€ ë°”ë€” ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+            "korea": "í•œêµ­ì¥ì—ì„œëŠ” ì›ë¬¸ì— ì§ì ‘ ì–¸ê¸‰ëœ í’ˆëª©ê³¼ ìœ ëŸ½Â·í•´ì™¸ ë§¤ì¶œ ë…¸ì¶œì´ ìˆëŠ” ì² ê°•, ë°°í„°ë¦¬, ë°˜ë„ì²´, ì¡°ì„ , ìë™ì°¨, í™”í•™, ì „ë ¥ê¸°ê¸° ìˆ˜ì¶œì£¼ë§Œ ì—°ê²°í•©ë‹ˆë‹¤.",
+            "priced": "ë‚®ìŒ~ì¤‘ê°„. ë³´ë„ ì§í›„ í…Œë§ˆ ìˆ˜ê¸‰ì€ ë¹ ë¥´ì§€ë§Œ ê´€ë³´Â·ì§‘í–‰ìœ„Â·ì˜íšŒÂ·ì´ì‚¬íšŒ ë¬¸ì„œë¡œ í’ˆëª©ê³¼ ì‹œí–‰ì¼ì´ í™•ì¸ë¼ì•¼ ì‹¤ì  ì¶”ì •ì— ë°˜ì˜ë©ë‹ˆë‹¤.",
+            "counter": "í•´ì™¸ ì •ì±… ë³´ë„ë§Œìœ¼ë¡œëŠ” í’ˆëª© ë²”ìœ„, êµ­ê°€ë³„ ì¿¼í„°, ì˜ˆì™¸ ì¡°í•­, ì‹œí–‰ì¼, í•œêµ­ ê¸°ì—… ì§ì ‘ ë…¸ì¶œì´ í™•ì •ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.",
+            "failure": "ê³µì‹ ë¬¸ì„œ, í’ˆëª©ë³„ ìˆ˜ì¹˜, ì ìš©ì¼, í•œêµ­ ê¸°ì—… ì§ì ‘ ë…¸ì¶œ, êµ­ë‚´ ê°€ê²©Â·ìˆ˜ê¸‰ ë°˜ì‘ì´ ì—†ìœ¼ë©´ ì œì™¸í•´ì•¼ í•©ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["doe", "department of energy", "energy.gov"]) and has_term(text, ["loan", "loans", "low-cost loan", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "ap1000"]):
+        return {
+            "core": "ë¯¸ ì—ë„ˆì§€ë¶€(DOE)ì˜ ëŒ€ì¶œë³´ì¦, ì¡°ê±´ë¶€ ì§€ì› ì•½ì •, ìê¸ˆì§€ì›, íš¨ìœ¨ê·œì œ, ê¸ˆì§€Â·ì œí•œ, í•µì—°ë£ŒÂ·ì „ë ¥ë§ ì •ì±…ì´ í™•ì¸ëœ ì‚¬ì•ˆì…ë‹ˆë‹¤.",
+            "view": "DOE ì •ì±…ì€ ë³´ì¡°ê¸ˆì„± ìê¸ˆ, ì €ë¦¬ ëŒ€ì¶œ, íš¨ìœ¨ ê¸°ì¤€, ì¡°ë‹¬Â·ì¸í—ˆê°€ ì¼ì •ìœ¼ë¡œ ì›ì „Â·ì „ë ¥ê¸°ê¸°Â·ì†¡ì „ë§Â·ë°ì´í„°ì„¼í„° ì „ë ¥ ë°¸ë¥˜ì²´ì¸ì˜ ìˆ˜ì£¼ ê°€ì‹œì„±ê³¼ í• ì¸ìœ¨ì„ ë™ì‹œì— ë°”ê¿€ ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+            "korea": "í•œêµ­ì¥ì—ì„œëŠ” ë‘ì‚°ì—ë„ˆë¹Œë¦¬í‹°, ì›ì „ ê¸°ìì¬, ì „ë ¥ê¸°ê¸°, ë³€ì••ê¸°Â·ì „ì„ , ESS/ì „ë ¥ë³€í™˜ì¥ì¹˜, í•µì—°ë£ŒÂ·í•µì‹¬ì†Œì¬ ì¤‘ ë¯¸êµ­ í”„ë¡œì íŠ¸ ë…¸ì¶œì´ ìˆëŠ” ì¢…ëª©ë§Œ ì„ ë³„ í™•ì¸í•©ë‹ˆë‹¤.",
+            "priced": "ì¤‘ê°„. ì›ì „Â·ì „ë ¥ë§ í…Œë§ˆëŠ” ì„ ë°˜ì˜ì´ ê°•í•˜ì§€ë§Œ DOE ê¸ˆì•¡, ëŒ€ì¶œì¡°ê±´, ì„ ì •ê¸°ì—…, ì‹œí–‰ì¼ì´ ê³µì‹í™”ë˜ë©´ ì‹¤ì  ì¶”ì •ê³¼ ìˆ˜ê¸‰ì´ ë‹¤ì‹œ ì›€ì§ì¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+            "counter": "DOE ë°œí‘œë¼ë„ ê³µê³ Â·ì˜í–¥ì„œÂ·ì¡°ê±´ë¶€ ì•½ì • ë‹¨ê³„ëŠ” ìµœì¢… ê³„ì•½ì´ë‚˜ ë§¤ì¶œ í™•ì •ì´ ì•„ë‹™ë‹ˆë‹¤. ìˆ˜í˜œ ê¸°ì—…, ê¸ˆì•¡, ë§¤ì¹­ ìê¸ˆ, ì¸í—ˆê°€, ì°©ê³µ ì¼ì • í™•ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤.",
+            "failure": "DOE ì›ë¬¸ì—ì„œ ê¸ˆì•¡Â·ëŒ€ìƒê¸°ì—…Â·ëŒ€ì¶œì¡°ê±´Â·ì‹œí–‰ì¼Â·ì¡°ë‹¬ì¼ì •ì´ í™•ì¸ë˜ì§€ ì•Šê±°ë‚˜ êµ­ë‚´ ê¸°ì—…ì˜ ë¯¸êµ­ í”„ë¡œì íŠ¸ ë…¸ì¶œì´ ì—†ìœ¼ë©´ í…Œë§ˆì„± ë°˜ì‘ìœ¼ë¡œ ëë‚©ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["transformer", "large power transformer", "ë³€ì••ê¸°"]):
+        return {
+            "core": "ë¯¸êµ­ ë³€ì••ê¸° ê´€ì„¸Â·íš¨ìœ¨ê·œì œ ë³€í™”ê°€ í•œêµ­ ì „ë ¥ê¸°ê¸° ìˆ˜ì¶œ ê°€ê²©ê²½ìŸë ¥ê³¼ ìˆ˜ì£¼ ê¸°ëŒ€ë¥¼ ë°”ê¿€ ìˆ˜ ìˆëŠ”ì§€ í™•ì¸í•˜ëŠ” ì‚¬ì•ˆì…ë‹ˆë‹¤.",
+            "view": "ì„¸ìœ¨, í’ˆëª©ì½”ë“œ, ì‹œí–‰ì¼ì´ ê³µì‹í™”ë˜ë©´ ë§ˆì§„ê³¼ ì‹ ê·œ ìˆ˜ì£¼ ê¸°ëŒ€ê°€ ë™ì‹œì— ë°”ë€ë‹ˆë‹¤.",
+            "korea": "íš¨ì„±ì¤‘ê³µì—…, HDí˜„ëŒ€ì¼ë ‰íŠ¸ë¦­, LS ELECTRIC ë“± ë³€ì••ê¸°Â·ì „ë ¥ê¸°ê¸° ë°¸ë¥˜ì²´ì¸ê³¼ ë°ì´í„°ì„¼í„° ì „ë ¥ë§ í…Œë§ˆ ìˆ˜ê¸‰ì„ í™•ì¸í•©ë‹ˆë‹¤.",
+            "priced": "ì¤‘ê°„. ì „ë ¥ê¸°ê¸° í…Œë§ˆê°€ ì´ë¯¸ ê°•í•´ë„ ê³µì‹ ì„¸ìœ¨Â·ì‹œí–‰ì¼ì´ í™•ì¸ë˜ë©´ ì‹¤ì  ì¶”ì • ì¡°ì • ì—¬ì§€ê°€ ë‚¨ìŠµë‹ˆë‹¤.",
+            "counter": "ê³µì‹ ê´€ë³´Â·ìƒë¬´ë¶€Â·USTR ê·¼ê±° ì—†ì´ ë³´ë„ë§Œ ìˆìœ¼ë©´ ì˜ˆë¹„ ì¬ë£Œì…ë‹ˆë‹¤.",
+            "failure": "í’ˆëª©ì½”ë“œÂ·ì‹œí–‰ì¼Â·ì˜ˆì™¸ì¡°í•­Â·ê°œë³„ ê¸°ì—… ìˆ˜ì£¼/ë§ˆì§„ ë³€í™”ê°€ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ì¬ë£Œê°€ ì•½í•´ì§‘ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["nuclear", "reactor", "smr", "ap1000", "westinghouse", "doosan", "ì›ì „"]):
+        return {
+            "core": "ì›ì „, SMR, ê°€ìŠ¤í„°ë¹ˆ, AI ì „ë ¥ìˆ˜ìš” ê´€ë ¨ ì •ì±…Â·ê³„ì•½ ì‹œê°„í‘œê°€ ë°¸ë¥˜ì²´ì¸ ê¸°ëŒ€ë¥¼ ë‹¤ì‹œ ì›€ì§ì´ëŠ” ì‚¬ì•ˆì…ë‹ˆë‹¤.",
+            "view": "ë‹¹ì¥ ë§¤ì¶œ í™•ì •ë³´ë‹¤ ì¸í—ˆê°€, ëŒ€ì¶œÂ·ì˜ˆì‚°, ìµœì¢… ê³„ì•½, ê¸°ìì¬ ë°œì£¼ ì‹œê°„í‘œê°€ ëˆ ë²„ëŠ” ëŠ¥ë ¥ìœ¼ë¡œ ì´ì–´ì§€ëŠ”ì§€ ë´ì•¼ í•©ë‹ˆë‹¤.",
+            "korea": "ë‘ì‚°ì—ë„ˆë¹Œë¦¬í‹°, ì›ì „ ê¸°ìì¬, ì „ë ¥ê¸°ê¸°, ì†¡ì „ë§, KHNPÂ·ì²´ì½”Â·ì¤‘ë™ ì›ì „ ë…¸ì¶œ ì¢…ëª©ì˜ ìˆ˜ê¸‰ì„ í™•ì¸í•©ë‹ˆë‹¤.",
+            "priced": "ì¤‘ê°„~ë†’ìŒ. ì›ì „ í…Œë§ˆëŠ” ì„ ë°˜ì˜ì´ ë¹¨ë¼ ê³„ì•½Â·ì¸í—ˆê°€Â·ë°œì£¼ê°€ ì—†ìœ¼ë©´ ë˜ëŒë¦¼ ìœ„í—˜ì´ í½ë‹ˆë‹¤.",
+            "counter": "ë¶€ì§€, NRC/êµ­ë‚´ ì¸í—ˆê°€, ì£¼ë¯¼ìˆ˜ìš©ì„±, ë°©íì¥Â·ì†¡ì „ë§, ìµœì¢… ê³„ì•½ê¸ˆì•¡ì´ í™•ì •ë˜ì§€ ì•Šìœ¼ë©´ ë§¤ì¶œ ì¸ì‹ê¹Œì§€ ì‹œì°¨ê°€ í½ë‹ˆë‹¤.",
+            "failure": "ê³µì‹ ê³„ì•½Â·ëŒ€ì¶œì¡°ê±´Â·ì¸í—ˆê°€ ì¼ì •Â·ê¸°ìì¬ ë°œì£¼ê°€ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ì •ì±… ê¸°ëŒ€ì— ê·¸ì¹©ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["fcc", "broadband", "spectrum", "satellite", "communications", "dirs"]):
+        return {
+            "core": "FCC í†µì‹ Â·ë¸Œë¡œë“œë°´ë“œÂ·ì¥ì• ë³´ê³  ê·œì œ ë¬¸ì„œì…ë‹ˆë‹¤. ì£¼íŒŒìˆ˜ ê²½ë§¤, ì¥ë¹„ ì˜ë¬´í™”, ë³´ì¡°ê¸ˆì¸ì§€ ë‹¨ìˆœ í–‰ì • ì ˆì°¨ì¸ì§€ êµ¬ë¶„í•´ì•¼ í•©ë‹ˆë‹¤.",
+            "view": "í†µì‹ ì‚¬ CAPEX, ìœ„ì„±Â·ì¥ë¹„ ì¸ì¦, ê³µê³µì•ˆì „ë§ ì¡°ë‹¬ë¡œ ì—°ê²°ë  ë•Œë§Œ ì‹¤ì  ì¬ë£Œì…ë‹ˆë‹¤.",
+            "korea": "í•œêµ­ì¥ì—ì„œëŠ” í†µì‹ ì¥ë¹„Â·ìœ„ì„±í†µì‹ Â·ë„¤íŠ¸ì›Œí¬ ì¥ë¹„ í…Œë§ˆ ë°˜ì‘ ê°€ëŠ¥ì„±ì€ ìˆìœ¼ë‚˜ í–‰ì • ê³µì§€ë¼ë©´ ì§ì ‘ ì˜í–¥ì€ ì œí•œì ì…ë‹ˆë‹¤.",
+            "priced": "ë‚®ìŒ~ì¤‘ê°„. êµ¬ì²´ ì¸í—ˆê°€Â·ê²½ë§¤Â·ì˜ˆì‚°Â·ì¥ë¹„ ë°œì£¼ê°€ ì—†ìœ¼ë©´ ì„ ë°˜ì˜ë³´ë‹¤ ì˜í–¥ ìì²´ê°€ ì‘ìŠµë‹ˆë‹¤.",
+            "counter": "íšŒì˜ ê³µê³ , ë°ì´í„° ìˆ˜ì§‘, ë³´ê³  ì–‘ì‹ ì •ë¹„ ìˆ˜ì¤€ì´ë©´ ê³ ì¶©ê²© ì¬ë£Œê°€ ì•„ë‹™ë‹ˆë‹¤.",
+            "failure": "í†µì‹ ì‚¬ CAPEX ê°€ì´ë˜ìŠ¤, ì¥ë¹„ ë°œì£¼, ê³µê³µì•ˆì „ë§ ì˜ˆì‚°, êµ­ë‚´ ì¥ë¹„ì‚¬ ìˆ˜ì£¼ ê³µì‹œê°€ ì—†ìœ¼ë©´ ì œì™¸í•´ì•¼ í•©ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["robot", "robotics", "automation"]):
+        return {
+            "core": "ë¡œë´‡Â·ìë™í™” ì •ì±… ë˜ëŠ” ê¸°ì—… ì‹¤í–‰ ë‹¨ê³„ê°€ ì¤‘êµ­ ëŒ€ì²´ ê³µê¸‰ë§ê³¼ ìƒì‚°ìë™í™” ìˆ˜ìš”ë¥¼ ìê·¹í•  ìˆ˜ ìˆëŠ” ì‚¬ì•ˆì…ë‹ˆë‹¤.",
+            "view": "ê´€ì„¸Â·ìˆ˜ì…ì œí•œÂ·ì œì¡°ì§€ì› ë˜ëŠ” ì‹¤ì œ ë°œì£¼Â·CAPEXë¡œ ì´ì–´ì§ˆ ë•Œ ë§¤ì¶œ ê¸°ëŒ€ê°€ ë°”ë€ë‹ˆë‹¤.",
+            "korea": "ë¡œë´‡, ê°ì†ê¸°, FA, ìŠ¤ë§ˆíŠ¸íŒ©í† ë¦¬, ì‚¼ì„±Â·ë ˆì¸ë³´ìš°ë¡œë³´í‹±ìŠ¤ ì—°ê³„ ìˆ˜ê¸‰ì„ í™•ì¸í•©ë‹ˆë‹¤.",
+            "priced": "ì¤‘ê°„. ë¡œë´‡ í…Œë§ˆëŠ” ê¸°ëŒ€ê°€ ë¹ ë¥´ê²Œ ë¶™ì§€ë§Œ ê³µì‹ ì¡°ì¹˜ë‚˜ ë°œì£¼ ì „ì—ëŠ” ë˜ëŒë¦¼ì´ í½ë‹ˆë‹¤.",
+            "counter": "ê²€í† Â·ì¡°ì§ê°œí¸Â·ì†Œì‹í†µ ë³´ë„ ë‹¨ê³„ë©´ í’ˆëª©, ì„¸ìœ¨, ì‹œí–‰ì¼, ë°œì£¼ ê·œëª¨ê°€ ë¯¸í™•ì •ì…ë‹ˆë‹¤.",
+            "failure": "ìƒë¬´ë¶€ ê³µì‹ ì¡°ì‚¬, ê´€ì„¸Â·ëŒ€ì¶œ ì¡°ê±´, ìƒì‚°ë¼ì¸ ë°œì£¼Â·ê³µê¸‰ê³„ì•½ì´ ë‚˜ì˜¤ì§€ ì•Šìœ¼ë©´ í…Œë§ˆì„± ë°˜ì‘ìœ¼ë¡œ ëë‚©ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["oil", "gas", "coal", "biofuel", "feedstocks", "agriculture"]):
+        return {
+            "core": "ë¯¸êµ­ ì—ë„ˆì§€Â·ìì›ê°œë°œÂ·ë°”ì´ì˜¤ì—°ë£Œ ê´€ë ¨ ê·œì •/ì§€ì¹¨ì…ë‹ˆë‹¤. ê°€ê²©, ê³µê¸‰ëŸ‰, ì„¸ì•¡ê³µì œ, ì˜ë¬´í˜¼í•©ìœ¼ë¡œ ì—°ê²°ë˜ëŠ”ì§€ í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤.",
+            "view": "ìœ ê°€Â·ê°€ìŠ¤Â·ì„íƒ„Â·ë°”ì´ì˜¤ì—°ë£Œ ê°€ê²© ë˜ëŠ” ì •ìœ Â·í™”í•™ ì›ê°€ì— ë°˜ì˜ë  ë•Œë§Œ ëˆ ë²„ëŠ” ëŠ¥ë ¥ ë³€í™”ì…ë‹ˆë‹¤.",
+            "korea": "ì •ìœ Â·í™”í•™, ì—ë„ˆì§€ ë¹„ìš© ë¯¼ê° ì—…ì¢…, ë°”ì´ì˜¤ì—°ë£Œ ë°¸ë¥˜ì²´ì¸ì„ ë³´ë˜ í•œêµ­ ì§ì ‘ ì˜í–¥ì€ ê³µì‹ ì‹œí–‰ ì¡°ê±´ í™•ì¸ ì „ ì œí•œì ì…ë‹ˆë‹¤.",
+            "priced": "ì¤‘ê°„. ì›ìì¬ ì •ì±…ì€ ë°˜ë³µ ì¬ë£Œë¼ ê°€ê²© ë°˜ì‘ì´ ë™í–‰í•´ì•¼ ì¶”ê°€ ë°˜ì˜ë©ë‹ˆë‹¤.",
+            "counter": "ê¸°ìˆ ì§€ì¹¨Â·ì˜ê²¬ìˆ˜ë ´Â·í–‰ì • ê°œì •ì€ ì‹¤ì œ ê³µê¸‰Â·ê°€ê²© ë³€í™”ì™€ ê±°ë¦¬ê°€ ìˆì„ ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+            "failure": "WTI/Brent/ì²œì—°ê°€ìŠ¤/ì •ì œë§ˆì§„/ê´€ë ¨ ETFê°€ ë°˜ì‘í•˜ì§€ ì•Šìœ¼ë©´ ë‹¨ë°œì„± ì •ì±… ë¬¸ì„œì…ë‹ˆë‹¤.",
+        }
+    if has_term(text, ["tariff", "customs", "duty", "section 301", "section 232", "antidumping", "countervailing", "anti-dumping", "safeguard", "quota"]):
+        return {
+            "core": "ê´€ì„¸Â·í†µê´€ ë‰´ìŠ¤ëŠ” í’ˆëª©, êµ­ê°€, ì„¸ìœ¨, ì¿¼í„°, ì ìš©ì¼ì´ ì‹¤ì œë¡œ ë°”ë€” ë•Œë§Œ í•œêµ­ ìˆ˜ì¶œê¸°ì—…ì˜ ê°€ê²©ê²½ìŸë ¥ê³¼ ë§ˆì§„ì„ ë°”ê¾¸ëŠ” ì¬ë£Œì…ë‹ˆë‹¤.",
+            "view": "ë°˜ë¤í•‘Â·ìƒê³„ê´€ì„¸ í–‰ì •ì¬ì‹¬ ì‹ ì²­ ì•ˆë‚´ì²˜ëŸ¼ ì ˆì°¨ë§Œ ì—¬ëŠ” ê³µê³ ëŠ” ê°€ê²© ë³€ìˆ˜ê°€ ì•„ë‹ˆë©°, ìµœì¢…íŒì •Â·ì˜ˆë¹„íŒì •Â·í˜„ê¸ˆì˜ˆì¹˜ìœ¨Â·ê´€ì„¸ìœ¨Â·ì‹œí–‰ì¼ì´ í™•ì¸ë  ë•Œ ê³ ì¶©ê²©ìœ¼ë¡œ ë´…ë‹ˆë‹¤.",
+            "korea": "í•œêµ­ì¥ì—ì„œëŠ” ì›ë¬¸ì— í•œêµ­ì‚° í’ˆëª©, ì„¸ìœ¨ ë³€í™”, ì ìš©ì¼, ì˜ˆì™¸ ì¡°í•­ì´ ì§ì ‘ í™•ì¸ë  ë•Œ ì² ê°•, ë°°í„°ë¦¬, í™”í•™, ì „ë ¥ê¸°ê¸°, ìë™ì°¨ë¶€í’ˆ ë“± ìˆ˜ì¶œì£¼ë¡œë§Œ ì—°ê²°í•©ë‹ˆë‹¤.",
+            "priced": "ë‚®ìŒ~ì¤‘ê°„. ë³´ë„ë‚˜ í–‰ì • ê³µê³  ë‹¨ê³„ì—ì„œëŠ” í…Œë§ˆ ë°˜ì‘ì´ ë¨¼ì € ë‚˜ì˜¬ ìˆ˜ ìˆì§€ë§Œ, ì‹¤ì œ ì„¸ìœ¨ê³¼ ì‹œí–‰ì¼ì´ ì—†ìœ¼ë©´ ì‹¤ì  ì¶”ì • ë°˜ì˜ì€ ì œí•œì ì…ë‹ˆë‹¤.",
+            "counter": "í–‰ì •ì¬ì‹¬ ì‹ ì²­ ê¸°íšŒ, ì„œë¹„ìŠ¤ë¦¬ìŠ¤íŠ¸ ê°±ì‹ , ì ˆì°¨ ì•ˆë‚´ëŠ” ìƒˆ ê´€ì„¸ ë¶€ê³¼ë‚˜ ì™„í™”ê°€ ì•„ë‹ˆë¯€ë¡œ ê³ ì¶©ê²© ì •ì±… ë‰´ìŠ¤ë¡œ ë³´ê¸° ì–´ë µìŠµë‹ˆë‹¤.",
+            "failure": "í’ˆëª©Â·êµ­ê°€Â·ì„¸ìœ¨Â·í˜„ê¸ˆì˜ˆì¹˜ìœ¨Â·ì‹œí–‰ì¼Â·í•œêµ­ ê¸°ì—… ë…¸ì¶œì´ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ë ˆì´ë”ì—ì„œ ì œì™¸í•©ë‹ˆë‹¤.",
+        }
+    return {
+        "core": "ê³µì‹ ë¬¸ì„œ ë˜ëŠ” ì‹ ë¢° ë³´ë„ì—ì„œ í•œêµ­ì¥ ê°€ê²© ë³€ìˆ˜ í›„ë³´ê°€ í™•ì¸ëìŠµë‹ˆë‹¤.",
+        "view": "ëˆ ë²„ëŠ” ëŠ¥ë ¥, í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ ì¤‘ ë¬´ì—‡ì´ ì‹¤ì œë¡œ ë°”ë€ŒëŠ”ì§€ ì›ë¬¸ê³¼ ì‹œì¥ ë°˜ì‘ìœ¼ë¡œ ì¬í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤.",
+        "korea": "í•œêµ­ì¥ ì§ì ‘ ì˜í–¥ì€ ì›ë¬¸ì— ê·¼ê±°ê°€ ìˆëŠ” ì—…ì¢…ê³¼ ì¢…ëª©êµ°ìœ¼ë¡œë§Œ ì œí•œí•´ í™•ì¸í•©ë‹ˆë‹¤.",
+        "priced": f"{alert.get('reflection') or 'ì¤‘ê°„'}. ë°œí‘œ ì§í›„ë¼ë„ ê°œë³„ ë°¸ë¥˜ì²´ì¸ ë°˜ì˜ì€ í›„ì† ì¼ì •Â·ê°€ê²©Â·ìˆ˜ê¸‰ í™•ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤.",
+        "counter": alert.get("counter") or "ì„¸ë¶€ ì¡°ê±´ í™•ì¸ ì „ê¹Œì§€ ì§ì ‘ ì‹¤ì  ì—°ê²°ì€ ì œí•œì ì…ë‹ˆë‹¤.",
+        "failure": alert.get("failed_signal") or "í›„ì† ì‹œí–‰ì¼Â·ì˜ˆì‚°Â·ê³„ì•½Â·ìˆ˜ê¸‰ ë°˜ì‘ì´ ì—†ìœ¼ë©´ ë‹¨ë°œì„± ë‰´ìŠ¤ë¡œ ëë‚©ë‹ˆë‹¤.",
+    }
+
+
+def normalize_alert_for_output(alert: dict) -> dict:
+    out = dict(alert)
+    if is_china_mofcom_control(out):
+        out["china_mofcom_trade_control"] = True
+        out["impacts"] = ["ëˆ ë²„ëŠ” ëŠ¥ë ¥", "ìˆ˜ê¸‰", "ì‹œê°„í‘œ"]
+        out["paths"] = ["ê³µê¸‰Â·ìˆ˜ìš”", "ì›ìì¬ ë¹„ìš©", "ê³µê¸‰ë§", "ì •ì±… íƒ€ì„ë¼ì¸"]
+    if not out.get("source_title"):
+        out["source_title"] = out.get("original_news") or out.get("news")
+    if not out.get("original_news"):
+        out["original_news"] = out.get("source_title") or out.get("news")
+    profile = federal_register_profile(out)
+    out["news"] = korean_title(out)
+    out["sectors"] = curated_sectors(out)
+    impacts = unique([str(x) for x in out.get("impacts") or []]) or ["ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì "]
+    if len(impacts) > 1:
+        impacts = [x for x in impacts if x != "ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì "]
+    if profile:
+        impacts = list(profile["impacts"])
+    out["impacts"] = impacts
+    if profile:
+        out["paths"] = list(profile["paths"])
+    else:
+        out["paths"] = unique([str(x) for x in out.get("paths") or []]) or [
+        "ì´ìµ" if x == "ëˆ ë²„ëŠ” ëŠ¥ë ¥" else "í• ì¸ìœ¨" if x == "í• ì¸ìœ¨" else "ìˆ˜ê¸‰" if x == "ìˆ˜ê¸‰" else "ì •ì±… íƒ€ì„ë¼ì¸"
+        for x in impacts
+        ]
+    explanation = explanation_for(out)
+    if profile or not out.get("policy_plain_summary"):
+        out["policy_plain_summary"] = explanation["core"]
+    if profile or not out.get("investment_view"):
+        out["investment_view"] = explanation["view"]
+    if profile or not out.get("korea_market_impact"):
+        out["korea_market_impact"] = explanation["korea"]
+    if profile or not out.get("priced_in"):
+        out["priced_in"] = explanation["priced"]
+    generic_counter_terms = [
+        "ì‹œí–‰ì¼, ì ìš© ëŒ€ìƒ, ê¸ˆì•¡, ê¸°ê°„",
+        "ì œëª©Â·ìš”ì•½ ê¸°ë°˜ 1ì°¨ ê°ì§€",
+        "ì›ë¬¸ ì„¸ë¶€ì¡°ê±´ê³¼ ê³µì‹ ë¬¸ì„œ í™•ì¸ ì „",
+    ]
+    counter_text = str(out.get("counter") or "")
+    if profile or not counter_text or any(term in counter_text for term in generic_counter_terms):
+        out["counter"] = explanation["counter"]
+    failed_text = str(out.get("failed_signal") or "")
+    stale_failure_terms = [
+        "ë©”ëª¨ë¦¬ ê°€ê²©Â·ê³ ê°ì‚¬ ì¬ê³ ",
+        "SOX/MU/NVDA",
+        "ê´€ë ¨ í•´ì™¸ í‹°ì»¤Â·ì›ìì¬Â·ê¸ˆë¦¬Â·í™˜ìœ¨",
+    ]
+    if profile or not failed_text or any(term in failed_text for term in stale_failure_terms):
+        out["failed_signal"] = explanation["failure"]
+    stale_interpretation_terms = [
+        "ë°˜ë„ì²´ ê¸‰ë½ì€",
+        "ëˆ ë²„ëŠ” ëŠ¥ë ¥, í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ ì¤‘ í•˜ë‚˜ë¥¼ ë°”ê¿€ ìˆ˜ ìˆëŠ” í›„ë³´",
+    ]
+    if profile or not out.get("interpretation") or (
+        any(term in str(out.get("interpretation")) for term in stale_interpretation_terms)
+        and "ë°˜ë„ì²´/AI" not in out.get("sectors", [])
+    ):
+        out["interpretation"] = explanation["view"]
+    return out
+
+
+def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
+    initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
+    candidates = initial + alerts
+    iran_candidates = [alert for alert in candidates if alert.get("iran_hormuz_escalation")]
+    if iran_candidates:
+        def iran_source_rank(alert: dict) -> int:
+            source = alert_text(alert)
+            if has_term(source, ["ap news", "associated press"]):
+                return 0
+            if has_term(source, ["reuters"]):
+                return 1
+            if has_term(source, ["cnbc"]):
+                return 2
+            return 3
+
+        best_rank = min(iran_source_rank(alert) for alert in iran_candidates)
+        preferred_iran = max(
+            (alert for alert in iran_candidates if iran_source_rank(alert) == best_rank),
+            key=lambda alert: str(alert.get("published") or ""),
+        )
+        candidates = [preferred_iran] + [alert for alert in candidates if not alert.get("iran_hormuz_escalation")]
+    selected: list[dict] = []
+    seen: set[tuple[str, str]] = set()
+    for alert in candidates:
+        if is_low_impact_admin_alert(alert):
+            alert["_exclusion_reason"] = "low_impact_admin_document"
+            continue
+        if is_low_impact_trade_admin_notice(alert):
+            alert["_exclusion_reason"] = "low_impact_trade_admin_notice"
+            continue
+        if is_local_dc_like(alert) and not is_actionable_local_dc_policy(alert):
+            alert["_exclusion_reason"] = "local_data_center_without_trusted_hard_action"
+            continue
+        normalized = normalize_alert_for_output(alert)
+        if not source_output_aligned(normalized):
+            alert["_exclusion_reason"] = "source_body_mismatch"
+            continue
+        if not has_korea_market_link(normalized):
+            alert["_exclusion_reason"] = "korea_market_link_guard"
+            continue
+        key = alert_dedup_key(normalized)
+        if key in seen:
+            alert.setdefault("_exclusion_reason", "semantic_duplicate")
+            continue
+        seen.add(key)
+        if is_low_impact_admin_alert(normalized):
+            alert["_exclusion_reason"] = "low_impact_admin_document"
+            continue
+        if is_low_impact_trade_admin_notice(normalized):
+            alert["_exclusion_reason"] = "low_impact_trade_admin_notice"
+            continue
+        if not has_decision_impact(normalized):
+            alert["_exclusion_reason"] = "decision_impact_guard"
+            continue
+        if (
+            is_local_dc_like(normalized)
+            and not normalized.get("cluster_count")
+            and any(is_local_dc_like(item) and item.get("cluster_count") for item in selected)
+        ):
+            alert["_exclusion_reason"] = "covered_by_data_center_cluster"
+            continue
+        alert.pop("_exclusion_reason", None)
+        selected.append(normalized)
+        if len(selected) >= limit:
+            break
+    return selected
+
+
+def related_text(alert: dict, fred: dict, te: dict) -> str:
+    extra = []
+    if alert.get("iran_hormuz_escalation"):
+        extra += ["WTI", "Brent", "XLE", "íƒ±ì»¤Â·ì»¨í…Œì´ë„ˆ ìš´ì„", "USD/KRW", "DXY", "ë°©ì‚° ETF/í‹°ì»¤"]
+    if "í•´ìš´/í•­ë§Œ/ë¬¼ë¥˜" in alert.get("sectors", []):
+        extra += ["SCFI", "Drewry WCI", "BDI", "ì»¨í…Œì´ë„ˆ ìš´ì„", "ë²Œí¬ì„  ìš´ì„"]
+    if "ë©”ê°€í”„ë¡œì íŠ¸ ì¼ì •/ë¬¼ë¥˜" in alert.get("sectors", []):
+        extra += ["ëŒ€í˜• CAPEX ì¼ì •", "ê¸°ìì¬ ë‚©ê¸°", "EPC/ì „ë ¥ê¸°ê¸° ìˆ˜ì£¼ ì¸ì‹", "SCFI", "Drewry WCI"]
+    if "ì¤‘êµ­ ê²½ê¸°ë¶€ì–‘/ë²Œí¬ì„ " in alert.get("sectors", []):
+        extra += ["Iron Ore", "Coal", "BDI", "ë²Œí¬ì„  ìš´ì„", "ì¤‘êµ­ ì¸í”„ë¼/ë¶€ë™ì‚° ì§€í‘œ"]
+    if alert.get("grid_policy_delay"):
+        extra += ["FERC", "DOE", "ì£¼ ê³µê³µì„œë¹„ìŠ¤ìœ„ì›íšŒ", "ìœ í‹¸ë¦¬í‹° CAPEX", "ì „ë ¥ê¸°ê¸°/ì „ì„ /ë³€ì••ê¸°"]
+    if alert.get("biotech_leadership_filter"):
+        extra += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
+    if alert.get("robotics_execution_filter"):
+        extra += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "í˜‘ë™ë¡œë´‡"]
+    if "ì „ë ¥ë§ ë³´ì•ˆ/FCC ì¥ë¹„ê·œì œ" in alert.get("sectors", []):
+        extra += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV", "FCC Covered List"]
+    if "EU/í•œêµ­ ì •ì±… ì˜í–¥" in alert.get("sectors", []):
+        extra += ["EU ì§‘í–‰ìœ„/ê´€ë³´", "ì² ê°•Â·ë°°í„°ë¦¬Â·ë°˜ë„ì²´Â·ì¡°ì„  ìˆ˜ì¶œì£¼", "EUR/KRW"]
+    if "DOE ì „ë ¥ë§/ì›ì „/ì—ë„ˆì§€ì§€ì›" in alert.get("sectors", []):
+        extra += ["DOE", "FERC", "NRC", "AP1000", "Westinghouse", "VRT", "ETN", "GEV", "Uranium"]
+    try:
+        base_text = base.related(alert, fred, te)
+        base_parts = [] if base_text == "í™•ì¸ ê°€ëŠ¥í•œ ì§ì ‘ í‹°ì»¤ ì—†ìŒ" else [part.strip() for part in base_text.split(",") if part.strip()]
+        return ", ".join(dict.fromkeys(base_parts + extra)) or "í™•ì¸ ê°€ëŠ¥í•œ ì§ì ‘ ì§€í‘œ ì—†ìŒ"
+    except Exception:
+        out = []
+        if "ë°ì´í„°ì„¼í„°/ì „ë ¥ë§/ì „ë ¥ê¸°ê¸°" in alert.get("sectors", []):
+            out += ["VRT", "ETN", "GEV", "CEG", "SMH"]
+        if "ë°˜ë„ì²´/AI" in alert.get("sectors", []):
+            out += ["NVDA", "MU", "AVGO", "AMD", "TSM", "ASML"]
+        if "ì „ë ¥ë§ ë³´ì•ˆ/FCC ì¥ë¹„ê·œì œ" in alert.get("sectors", []):
+            out += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV", "FCC Covered List"]
+        if "EU/í•œêµ­ ì •ì±… ì˜í–¥" in alert.get("sectors", []):
+            out += ["EU ì§‘í–‰ìœ„/ê´€ë³´", "ì² ê°•Â·ë°°í„°ë¦¬Â·ë°˜ë„ì²´Â·ì¡°ì„  ìˆ˜ì¶œì£¼", "EUR/KRW"]
+        if "DOE ì „ë ¥ë§/ì›ì „/ì—ë„ˆì§€ì§€ì›" in alert.get("sectors", []):
+            out += ["DOE", "FERC", "NRC", "AP1000", "Westinghouse", "VRT", "ETN", "GEV", "Uranium"]
+        if alert.get("biotech_leadership_filter"):
+            out += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
+        if alert.get("robotics_execution_filter"):
+            out += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "í˜‘ë™ë¡œë´‡"]
+        out += extra
+        if "í• ì¸ìœ¨" in alert.get("impacts", []):
+            out += [
+                f"DFII10 {fred.get('value') if fred.get('value') is not None else 'í™•ì¸ ë¶ˆê°€'}",
+                f"TE TIPS {te.get('value') if te.get('value') is not None else 'í™•ì¸ ë¶ˆê°€'}",
+                "IWM/SPY",
+            ]
+        return ", ".join(dict.fromkeys(out)) or "í™•ì¸ ê°€ëŠ¥í•œ ì§ì ‘ ì§€í‘œ ì—†ìŒ"
+
+
+def semiconductor_cycle_check(alert: dict) -> str | None:
+    if not alert.get("semiconductor_selloff"):
+        return None
+    return "ë©”ëª¨ë¦¬ ê°€ê²©Â·ê³ ê°ì‚¬ ì¬ê³ Â·CAPEXÂ·ë°¸ë¥˜ì—ì´ì…˜ ë¶€ë‹´ ë™ì‹œ ì•…í™” ì—¬ë¶€"
+
+
+def semiconductor_policy_check(alert: dict) -> str | None:
+    if not alert.get("policy_drive"):
+        return None
+    return "R&D ì„¸ì•¡ê³µì œ ëŒ€ìƒÂ·ì‹œí–‰ ì‹œì Â·ì†Œë¶€ì¥ ë°œì£¼/ìˆ˜ì£¼ ì—°ê²°ì„±"
+
+
+def port_strike_check(alert: dict) -> str | None:
+    if not alert.get("port_strike_risk"):
+        return None
+    return "ILA/USMX ê³„ì•½ ë§Œë£ŒÂ·í˜‘ìƒ ê²°ë ¬ ì—¬ë¶€Â·ë™ë¶€/ê±¸í”„ í•­ë§Œ ì°¨ì§ˆÂ·ê¸°ìì¬ ë‚©ê¸°/ëŒ€í˜• CAPEX ì¼ì •"
+
+
+def china_bulk_check(alert: dict) -> str | None:
+    if not alert.get("china_stimulus_bulk"):
+        return None
+    return "ì¤‘êµ­ ë¶€ì–‘ì±… ì‹¤ë¬¼ ê°•ë„Â·ì² ê´‘ì„/ì„íƒ„ ë¬¼ë™ëŸ‰Â·BDI/ë²Œí¬ì„  ìš´ì„ ë™í–‰"
+
+
+def grid_policy_check(alert: dict) -> str | None:
+    if not alert.get("grid_policy_delay"):
+        return None
+    return "ì •ë¶€ ìŠ¹ì¸Â·ê·œì œ/ì¸í—ˆê°€Â·ê³„í†µì ‘ì† ì¼ì •Â·ìœ í‹¸ë¦¬í‹° CAPEX ì§‘í–‰ ì†ë„"
+
+
+def biotech_leadership_check(alert: dict) -> str | None:
+    if not alert.get("biotech_leadership_filter"):
+        return None
+    return alert.get("biotech_check") or "ì‹¤ì œ ë§¤ì¶œ/ì´ìµÂ·ë¹…íŒŒë§ˆ ìš°ì„ ìˆœìœ„Â·FDA ì¼ì •Â·ê¸ˆë¦¬/í• ì¸ìœ¨ ë™ì‹œ í™•ì¸"
+
+
+def robotics_execution_check(alert: dict) -> str | None:
+    if not alert.get("robotics_execution_filter"):
+        return None
+    return alert.get("robotics_check") or "ì‚¼ì„± ì¡°ì§ê°œí¸ ë°©í–¥Â·RB5-850 í…ŒìŠ¤íŠ¸Â·ë°œì£¼/CAPEX/ë§¤ì¶œ ì¸ì‹ ì—°ê²° í™•ì¸"
+
+
+def display_news(alert: dict) -> str:
+    return korean_title(alert)
+
+
+def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
+    alert = normalize_alert_for_output(alert)
+    examples = alert.get("examples") or []
+    count_suffix = f" ({alert['cluster_count']}ê±´ ë¬¶ìŒ)" if alert.get("cluster_count") else ""
+    status = alert.get("status") or ("ê³µì‹ í™•ì¸ ì „" if examples else "í™•ì¸ ë¶ˆê°€")
+    basis = alert.get("korea_basis") or ("ì™¸ì‹ /ì§€ì—­ ë‰´ìŠ¤ í™•ì‚°" if examples else "ì™¸ì‹  í™•ì‚°")
+    impacts = alert.get("impacts") or ["ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì "]
+    displayed_impacts = display_impacts(impacts)
+    paths = alert.get("paths") or ["ì •ì±… íƒ€ì„ë¼ì¸" if impact == "ì‹œê°„í‘œ" else impact for impact in impacts]
+    sectors = alert.get("sectors") or ["ì˜í–¥ ì„¹í„° í™•ì¸ ë¶ˆê°€"]
+    published = alert.get("published") or ("ì—¬ëŸ¬ ê±´" if examples else "í™•ì¸ ë¶ˆê°€")
+    priced_in = alert.get("priced_in") or f"{alert.get('reflection') or 'ì¤‘ê°„'}. í›„ì† ê³µì‹ ì¡°ê±´ê³¼ ì‹œì¥ ë°˜ì‘ í™•ì¸ ì „ê¹Œì§€ í™•ì • ë°˜ì˜ìœ¼ë¡œ ë³´ê¸° ì–´ë µìŠµë‹ˆë‹¤."
+    counter = alert.get("counter") or "ì›ë¬¸ ì„¸ë¶€ì¡°ê±´ê³¼ ê³µì‹ ë¬¸ì„œ í™•ì¸ ì „ ê³¼ëŒ€í•´ì„ ê°€ëŠ¥"
+    interpretation = alert.get("interpretation") or "ëˆ ë²„ëŠ” ëŠ¥ë ¥, í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ ì¤‘ í•˜ë‚˜ë¥¼ ë°”ê¿€ ìˆ˜ ìˆëŠ”ì§€ í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤."
+    failed_signal = alert.get("failed_signal") or "ê´€ë ¨ ê°€ê²©Â·ìˆ˜ê¸‰Â·ê³µì‹ í›„ì† í™•ì¸ì´ ë™í–‰í•˜ì§€ ì•Šìœ¼ë©´ ë‹¨ë°œì„± ë‰´ìŠ¤"
+
+    lines = [f"{idx}) [{safe(alert.get('importance'))} | {safe(status)}] {safe(display_news(alert))}{html.escape(count_suffix, quote=False)}"]
+    if examples:
+        lines.append(f"- í™•ì¸: ì›ë¬¸Â·ë³´ë„ {min(len(examples), 4)}ê±´ ë¬¶ìŒ í™•ì¸")
+        source_text = source_summary(examples[:4])
+    else:
+        source_text = html_link(alert.get("publisher") or alert.get("source") or "ì¶œì²˜ í™•ì¸ ë¶ˆê°€", alert.get("link") or "")
+
+    lines += [
+        f"- í•œêµ­ì¥ ê¸°ì¤€: {safe(basis)}",
+        f"- íƒ€ì„ë¼ì¸: ì›ì²œ {safe(published)} Â· í•œêµ­ íˆ¬ìì í™•ì‚° {now:%H:%M KST}",
+        f"- í•µì‹¬ ë‚´ìš©: {safe(alert.get('policy_plain_summary'))}",
+        f"- íˆ¬ì ê´€ì : {safe(alert.get('investment_view'))}",
+        f"- í•œêµ­ì¥ ì˜í–¥: {safe(alert.get('korea_market_impact'))}",
+        f"- ì˜ì‚¬ê²°ì • ì˜í–¥: {safe(', '.join(displayed_impacts))}",
+        f"- ë¶„ë¥˜ ë§¤íŠ¸ë¦­ìŠ¤: {safe(decision_matrix(impacts))}",
+        f"- ì˜í–¥ ê²½ë¡œ: {safe(', '.join(paths))}",
+        f"- ì˜í–¥ ì„¹í„°: {safe(', '.join(sectors))}",
+        f"- ê´€ë ¨ í•´ì™¸ í‹°ì»¤/ì§€í‘œ: {safe(related_text(alert, fred, te))}",
+        f"- ë°˜ì˜ ê°€ëŠ¥ì„±: {safe(priced_in)}",
+        f"- ë°˜ëŒ€ ê·¼ê±°: {safe(counter)}",
+        f"- í•´ì„: {safe(interpretation)}",
+    ]
+    semi_check = semiconductor_cycle_check(alert)
+    policy_check = semiconductor_policy_check(alert)
+    port_check = port_strike_check(alert)
+    bulk_check = china_bulk_check(alert)
+    grid_check = grid_policy_check(alert)
+    biotech_check = biotech_leadership_check(alert)
+    robotics_check = robotics_execution_check(alert)
+    if policy_check:
+        lines.append(f"- ë°˜ë„ì²´ ì •ì±… ì²´í¬: {safe(policy_check)}")
+    elif semi_check:
+        lines.append(f"- ë°˜ë„ì²´ ê¸‰ë½ ì²´í¬: {safe(semi_check)}")
+    if port_check:
+        lines.append(f"- ë©”ê°€í”„ë¡œì íŠ¸ ì¼ì • ì²´í¬: {safe(port_check)}")
+    if bulk_check:
+        lines.append(f"- ì¤‘êµ­ ë¶€ì–‘Â·ë²Œí¬ì„  ì²´í¬: {safe(bulk_check)}")
+    if grid_check:
+        lines.append(f"- ì†¡ì „ë§ ì •ì±… ì²´í¬: {safe(grid_check)}")
+    if biotech_check:
+        lines.append(f"- ë°”ì´ì˜¤ ì£¼ë„ì£¼ ì²´í¬: {safe(biotech_check)}")
+    if robotics_check:
+        lines.append(f"- ì‚¼ì„± ë¡œë´‡ ì²´í¬: {safe(robotics_check)}")
+    lines += [
+        f"- ì‹¤íŒ¨ ì‹ í˜¸: {safe(failed_signal)}",
+        f"- ì¶œì²˜: {source_text} Â· ì¡°íšŒ {now:%H:%M KST}",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
+    limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
+    visible = alerts[:limit]
+    live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
+    if live_mode:
+        title = f"ğŸ“° GAMEJOA ì‹¤ì‹œê°„ í•µì‹¬ ë‰´ìŠ¤ ë ˆì´ë” Â· {now:%Yë…„ %mì›” %dì¼} Â· {now:%H:%M}"
+        comment_title = "ğŸ’¡ ì‹¤ì‹œê°„ ë‰´ìŠ¤ ì½”ë©˜íŠ¸"
+        followup_line = "ë‹¤ìŒ íˆ¬ìê¸°ìƒë„ì—ì„œ ìˆ˜ì¹˜Â·ìˆ˜ê¸‰Â·í…Œë§ˆì™€ ì¬í™•ì¸ í•„ìš”."
+        empty_line = "ì‹¤ì‹œê°„ ê³ ì¶©ê²© ë‰´ìŠ¤ ì§ì ‘ í™•ì¸ ì—†ìŒ"
+    else:
+        title = f"ğŸ“° GAMEJOA ì¥ì „ í•µì‹¬ ë‰´ìŠ¤ ë ˆì´ë” Â· {now:%Yë…„ %mì›” %dì¼} Â· 06:30"
+        comment_title = "ğŸ’¡ 06:30 ì¥ì „ ë‰´ìŠ¤ ì½”ë©˜íŠ¸"
+        followup_line = "06:50 íˆ¬ìê¸°ìƒë„ì—ì„œ ìˆ˜ì¹˜Â·ìˆ˜ê¸‰Â·í…Œë§ˆì™€ ì¬í™•ì¸ í•„ìš”."
+        empty_line = "ì¥ì „ ê³ ì¶©ê²© ë‰´ìŠ¤ ì§ì ‘ í™•ì¸ ì—†ìŒ"
+    lines = [title, f"ì¡°íšŒ: {now:%Y-%m-%d %H:%M KST}", f"ì„ ë³„: í•µì‹¬ {len(visible)}ê±´", ""]
+    if visible:
+        for idx, alert in enumerate(visible, 1):
+            lines.append(compact_alert(alert, idx, now, fred, te))
+        changed = "Â·".join(display_impacts(visible[0].get("impacts")))
+    else:
+        lines += [empty_line, ""]
+        changed = "ëª…í™•í•œ ë³€í™” ì—†ìŒ"
+    lines += [
+        comment_title,
+        f"ì˜¤ëŠ˜ í•µì‹¬ ë³€í™”ëŠ” `{safe(changed)}`ì…ë‹ˆë‹¤. í•œêµ­ì¥ì—ì„œëŠ” ê´€ë ¨ í•´ì™¸ í‹°ì»¤ ë°˜ì‘ê³¼ êµ­ë‚´ ìˆ˜ê¸‰ í™•ì‚° ì—¬ë¶€ë¥¼ ë¨¼ì € í™•ì¸í•©ë‹ˆë‹¤.",
+        f"í• ì¸ìœ¨: {safe(telegram.compact_real_yield(fred, te))}",
+        followup_line,
+        "",
+        "íˆ¬ì ì¡°ì–¸ì´ ì•„ë‹Œ ì°¸ê³ ìš© ë‰´ìŠ¤ ë¸Œë¦¬í•‘ì…ë‹ˆë‹¤.",
+    ]
+    report = "\n".join(lines).strip() + "\n"
+    guard_preopen_report(report)
+    return report
+
+
+def guard_preopen_report(text: str) -> None:
+    errors: list[str] = []
+    valid_title = (
+        text.startswith("ğŸ“° GAMEJOA ì¥ì „ í•µì‹¬ ë‰´ìŠ¤ ë ˆì´ë” Â· ")
+        or text.startswith("ğŸ“° GAMEJOA ì‹¤ì‹œê°„ í•µì‹¬ ë‰´ìŠ¤ ë ˆì´ë” Â· ")
+    )
+    if not valid_title:
+        errors.append("title_contract")
+    item_count = sum(1 for line in text.splitlines() if re.match(r"^\d+\)\s+\[", line))
+    required = [
+        "- í•µì‹¬ ë‚´ìš©:",
+        "- íˆ¬ì ê´€ì :",
+        "- í•œêµ­ì¥ ì˜í–¥:",
+        "- ì˜ì‚¬ê²°ì • ì˜í–¥:",
+        "- ì˜í–¥ ê²½ë¡œ:",
+        "- ì˜í–¥ ì„¹í„°:",
+        "- ë°˜ì˜ ê°€ëŠ¥ì„±:",
+        "- ë°˜ëŒ€ ê·¼ê±°:",
+        "- ì‹¤íŒ¨ ì‹ í˜¸:",
+    ]
+    for marker in required:
+        if item_count and text.count(marker) < item_count:
+            errors.append(f"missing_{marker}")
+    if item_count and "- ì˜ì‚¬ê²°ì • ì˜í–¥: ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì " in text:
+        errors.append("limited_decision_impact_displayed")
+    for phrase in GENERIC_EXPLANATION_PHRASES:
+        if item_count and phrase in text:
+            errors.append("generic_policy_explanation_displayed")
+    for line in text.splitlines():
+        if not re.match(r"^\d+\)\s+\[", line):
+            continue
+        title = re.sub(r"^\d+\)\s+\[[^\]]+\]\s*", "", line).strip()
+        title = re.sub(r"\(\d+ê±´ ë¬¶ìŒ\)$", "", title).strip()
+        if mostly_ascii(title):
+            errors.append(f"raw_english_heading={title[:80]}")
+    low = re.sub(r"https?://\S+", "", text).lower()
+    for marker in [
+        "this document is also available in the following formats",
+        "normalized attributes and metadata",
+        "original full text xml",
+        "government publishing office metadata",
+        "developer tools pages",
+    ]:
+        if marker in low:
+            errors.append(f"federal_register_boilerplate={marker}")
+    if errors:
+        raise RuntimeError("GAMEJOA preopen radar quality guard blocked Telegram output: " + "; ".join(errors))
+
+
+def send_telegram(text: str) -> None:
+    guard_preopen_report(text)
+    chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+    if is_empty_radar_report(text) and not should_send_empty_radar():
+        write_delivery_status("skipped_empty", chat_id, len(text), "No high-impact radar item selected")
+        print(f"Telegram: skipped empty radar original_chars={len(text)}")
+        return
+    if not preopen_send_window_open():
+        write_delivery_status("skipped_off_window", chat_id, len(text), "Outside GAMEJOA preopen Telegram send window")
+        print(f"Telegram: skipped outside preopen send window original_chars={len(text)}")
+        return
+    token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+    if not token or not chat_id:
+        write_delivery_status("blocked", chat_id, len(text), "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
+        raise RuntimeError("Telegram delivery blocked: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
+    message = fit_telegram_html(text, base.TELEGRAM_LIMIT)
+    body = urllib.parse.urlencode({
+        "chat_id": chat_id,
+        "text": message,
+        "disable_web_page_preview": "true",
+        "parse_mode": "HTML",
+    }).encode("utf-8")
+    last_error = ""
+    for attempt in range(1, 4):
+        req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=body, method="POST")
+        try:
+            with urllib.request.urlopen(req, timeout=25) as resp:
+                resp.read()
+            write_delivery_status("sent", chat_id, len(text), "", len(message), attempt)
+            print(f"Telegram: sent chars={len(message)} original_chars={len(text)} attempt={attempt}")
+            return
+        except urllib.error.HTTPError as exc:
+            error_text = exc.read().decode("utf-8", "replace")[:500]
+            last_error = f"Telegram HTTP {exc.code}: {error_text}"
+            if attempt < 3 and (exc.code == 429 or exc.code >= 500):
+                retry_after = exc.headers.get("retry-after")
+                delay = int(retry_after) if retry_after and retry_after.isdigit() else attempt
+                time.sleep(delay)
+                continue
+            break
+        except Exception as exc:
+            last_error = f"{type(exc).__name__}: {exc}"
+            if attempt < 3:
+                time.sleep(attempt)
+                continue
+            break
+    write_delivery_status("failed", chat_id, len(text), last_error, len(message), 3)
+    raise RuntimeError(f"Telegram delivery failed: {last_error}")
+
+
+def is_empty_radar_report(text: str) -> bool:
+    return "ì„ ë³„: í•µì‹¬ 0ê±´" in text
+
+
+def should_send_empty_radar() -> bool:
+    return os.getenv("SEND_EMPTY_RADAR", "").lower() in {"1", "true", "yes", "y"}
+
+
+def parse_hhmm(value: str, fallback: tuple[int, int]) -> int:
+    match = re.match(r"^\s*(\d{1,2}):(\d{2})\s*$", value or "")
+    if not match:
+        return fallback[0] * 60 + fallback[1]
+    hour, minute = int(match.group(1)), int(match.group(2))
+    return max(0, min(23, hour)) * 60 + max(0, min(59, minute))
+
+
+def preopen_send_window_open() -> bool:
+    if os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live":
+        return True
+    if os.getenv("ALLOW_OFF_WINDOW_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
+        return True
+    now = base.kst_now()
+    current = now.hour * 60 + now.minute
+    start = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_START_KST", "05:30"), (5, 30))
+    end = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_END_KST", "07:30"), (7, 30))
+    if start <= end:
+        return start <= current <= end
+    return current >= start or current <= end
+
+
+def fit_telegram_html(text: str, limit: int) -> str:
+    if len(text) <= limit:
+        return text
+    suffix = "\n\nì „ì²´ ë³´ê³ ì„œëŠ” GitHub Actions artifactì—ì„œ í™•ì¸ í•„ìš”."
+    candidate = text[: max(0, limit - len(suffix))]
+    newline = candidate.rfind("\n")
+    if newline > 1800:
+        candidate = candidate[:newline]
+    if candidate.count("<a ") > candidate.count("</a>"):
+        candidate = candidate[: candidate.rfind("<a ")].rstrip()
+    return (candidate.rstrip() + suffix)[:limit]
+
+
+def write_delivery_status(
+    status: str,
+    chat_id: str,
+    original_chars: int,
+    error: str = "",
+    sent_chars: int | None = None,
+    attempts: int | None = None,
+) -> None:
+    payload = {
+        "status": status,
+        "chat_id_masked": mask_chat_id(chat_id),
+        "original_chars": original_chars,
+        "sent_chars": sent_chars,
+        "attempts": attempts,
+        "error": error,
+    }
+    base.OUT.mkdir(exist_ok=True)
+    (base.OUT / "gamejoa_preopen_news_radar_delivery.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+def mask_chat_id(value: str) -> str:
+    if not value:
+        return ""
+    return "*" * max(0, len(value) - 4) + value[-4:]
+
+
+telegram.compact_report = compact_report
+telegram.send_telegram = send_telegram
+telegram.final_alerts_for_output = quality_display_alerts
+telegram.canonical_alert_for_seen = normalize_alert_for_output
+
+
+if __name__ == "__main__":
+    raise SystemExit(telegram.main())
