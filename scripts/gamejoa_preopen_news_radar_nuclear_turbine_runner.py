@@ -143,7 +143,7 @@ def enforce_power_watch() -> None:
     original_classify = contract.strict.classify
 
     def classify(row: dict, now):
-        text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+        text = base.source_content_text(row)
         flags = power_flags(text)
         has_power = any(flags.values()) or (
             has_any(text, K_POWER_TERMS)

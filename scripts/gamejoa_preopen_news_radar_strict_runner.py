@@ -57,7 +57,7 @@ for idx, (label, keys) in enumerate(base.SECTORS):
 
 
 def is_local_dc_policy(row: dict) -> bool:
-    text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+    text = base.source_content_text(row)
     has_dc = base.has(text, "data center") or base.has(text, "data centers")
     has_policy = any(base.has(text, term) for term in LOCAL_DC_TERMS)
     return has_dc and has_policy

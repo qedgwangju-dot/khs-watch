@@ -105,7 +105,7 @@ TRUSTED = [
     "usa today", "panama city news herald", "columbus dispatch",
 ]
 LOCAL_DC_POLICY_TERMS = ["ban", "banned", "banning", "block", "blocked", "city council", "county", "moratorium", "ordinance", "permit", "planning commission", "public hearing", "residents", "township", "vote", "zoning"]
-TERMS = ["approval", "ban", "banned", "banning", "block", "blocked", "buyback", "capex", "city council", "contract", "convertible", "copper", "court order", "crl", "data center", "data centers", "dollar", "earnings", "entity list", "export control", "fda", "fed", "final rule", "gold", "guidance", "injunction", "joint venture", "lithium", "loi", "merger", "moratorium", "mou", "natural gas", "offering", "oil", "ordinance", "permit", "planning commission", "public hearing", "real yield", "regulation", "residents", "sanction", "section 301", "section 232", "semiconductor", "supply agreement", "tariff", "tips", "township", "treasury", "uranium", "vote", "won", "yield", "zoning", "fcc", "national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter", "doe", "department of energy", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "robot", "robotics", "drone", "subsidy", "loan", "low-cost loan", "quota", "safeguard", "anti-dumping", "cbam", "steel", "ap1000", "westinghouse", "nuclear reactor", "critical mineral", "critical minerals"]
+TERMS = ["approval", "ban", "banned", "banning", "block", "blocked", "buyback", "capex", "city council", "contract", "convertible", "copper", "court order", "crl", "data center", "data centers", "dollar", "earnings", "entity list", "export control", "fda", "fed", "final rule", "gold", "guidance", "injunction", "joint venture", "lithium", "loi", "merger", "moratorium", "mou", "natural gas", "offering", "oil", "ordinance", "permit", "planning commission", "public hearing", "real yield", "regulation", "residents", "sanction", "section 301", "section 232", "semiconductor", "supply agreement", "tariff", "tips", "township", "uranium", "vote", "won", "yield", "zoning", "fcc", "national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter", "doe", "department of energy", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "robot", "robotics", "drone", "subsidy", "loan", "low-cost loan", "quota", "safeguard", "anti-dumping", "cbam", "steel", "ap1000", "westinghouse", "nuclear reactor", "critical mineral", "critical minerals"]
 TERMS += [
     "mofcom", "china ministry of commerce", "export ban", "export suspension", "export licensing",
     "suspend", "suspends", "suspended", "exports",
@@ -133,7 +133,7 @@ SECTORS = [
     ("ê´€ì„¸/ìˆ˜ì¶œí†µì œ", ["export control", "section 301", "section 232", "tariff", "quota", "safeguard", "anti-dumping", "bis", "ustr", "commerce", "ofac", "sanction"]),
     ("EU/í•œêµ­ ì •ì±… ì˜í–¥", ["eu", "european union", "european commission", "south korea", "korean", "korea", "cbam", "steel", "quota", "safeguard", "anti-dumping"]),
     ("ë°©ì‚°/ì •ìœ /í•´ìš´/ì§€ì •í•™", ["hormuz", "iran", "israel", "oil", "red sea", "shipping", "ukraine"]),
-    ("ì›ìžìž¬/ë§¤í¬ë¡œ", ["oil", "natural gas", "copper", "lithium", "uranium", "gold", "dollar", "won", "treasury", "yield", "fed", "real yield", "tips"]),
+    ("ì›ìžìž¬/ë§¤í¬ë¡œ", ["oil", "natural gas", "copper", "lithium", "uranium", "gold", "dollar", "won", "yield", "fed", "real yield", "tips"]),
     ("ë°”ì´ì˜¤/FDA", ["fda", "clinical", "crl", "pharma"]),
     ("í•œêµ­ ì§ì ‘ ì˜í–¥", ["samsung", "sk hynix", "korea", "lg energy", "hyundai"]),
 ]
@@ -152,6 +152,21 @@ def clean(value: object) -> str:
 
 def norm(value: object) -> str:
     return clean(value).lower()
+
+
+def source_content_text(row: dict) -> str:
+    """Return source-authored subject text without collector query labels."""
+    return norm(
+        " ".join(
+            str(value or "")
+            for value in [
+                row.get("source_title") or row.get("title"),
+                row.get("source_abstract") or row.get("summary"),
+                row.get("publisher"),
+                row.get("link"),
+            ]
+        )
+    )
 
 
 def fetch(url: str, timeout: int | None = None) -> tuple[str | None, str | None]:
@@ -188,468 +203,58 @@ def fetch_fred_csv(timeout: int = 60) -> tuple[str | None, str | None]:
         return None, f"{type(exc).__name__}: {exc}"
 
 
-def parse_date(value: object) -> dt.datetime | None:
-    text = clean(value)
-    if not text:
-        return None
-    try:
-        parsed = email.utils.parsedate_to_datetime(text)
-        if parsed.tzinfo is None:
-            parsed = parsed.replace(tzinfo=dt.timezone.utc)
-        return parsed.astimezone(KST)
-    except Exception:
-        pass
-    for fmt in ("%Y-%m-%d", "%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%dT%H:%M:%S%z"):
-        try:
-            parsed = dt.datetime.strptime(text[:25], fmt)
-            if parsed.tzinfo is None:
-                parsed = parsed.replace(tzinfo=dt.timezone.utc)
-            return parsed.astimezone(KST)
-        except Exception:
-            continue
-    return None
-
-
-def parse_rss(text: str, source: str, layer: str) -> list[dict]:
-    try:
-        root = ET.fromstring(text)
-    except ET.ParseError:
-        return []
-    rows = []
-    for node in root.findall(".//item")[:25]:
-        publisher = clean(node.findtext("source"))
-        if not publisher:
-            publisher = next(
-                (clean(child.text) for child in node if child.tag.rsplit("}", 1)[-1].lower() == "source"),
-                "",
-            )
-        link = unwrap_news_link(clean(node.findtext("link")))
-        rows.append({
-            "source": source,
-            "layer": layer,
-            "publisher": publisher or source,
-            "title": clean(node.findtext("title")),
-            "link": link,
-            "summary": clean(node.findtext("description")),
-            "published": parse_date(node.findtext("pubDate") or node.findtext("date")),
-        })
-    return rows
-
-
-def parse_fr(text: str, source: str) -> list[dict]:
-    try:
-        data = json.loads(text)
-    except json.JSONDecodeError:
-        return []
-    rows = []
-    for row in (data.get("results") or [])[:15]:
-        rows.append({
-            "source": source,
-            "layer": "official",
-            "publisher": "Federal Register",
-            "title": clean(row.get("title") or row.get("citation")),
-            "link": clean(row.get("html_url") or row.get("pdf_url")),
-            "summary": clean(" ".join(str(row.get(k, "")) for k in ("type", "document_number", "abstract", "excerpt"))),
-            "published": parse_date(row.get("publication_date") or row.get("signing_date")),
-            # Keep the document identity through every renderer.  A Federal
-            # Register abstract can mention several industries, but the
-            # document title is the authoritative subject of the alert.
-            "source_title": clean(row.get("title") or row.get("citation")),
-            "source_abstract": clean(row.get("abstract") or row.get("excerpt")),
-            "source_document_number": clean(row.get("document_number")),
-            "source_metadata_url": clean(row.get("json_url")),
-        })
-    return rows
-
-
-def google_url(query: str) -> str:
-    return "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"})
-
-
-def news_search_url(query: str) -> str:
-    return "https://www.bing.com/news/search?" + urllib.parse.urlencode({
-        "q": query,
-        "format": "rss",
-        "setlang": "en-US",
-        "cc": "US",
-    })
-
-
-def unwrap_news_link(link: str) -> str:
-    if not link:
-        return ""
-    parsed = urllib.parse.urlparse(link)
-    if parsed.netloc.lower().endswith("bing.com") and parsed.path.lower().endswith("/news/apiclick.aspx"):
-        target = urllib.parse.parse_qs(parsed.query).get("url", [""])[0]
-        if target.startswith(("http://", "https://")):
-            return target
-    return link
-
-
-def age_hours(row: dict, now: dt.datetime) -> float | None:
-    if not row.get("published"):
-        return None
-    return (now - row["published"]).total_seconds() / 3600
-
-
-def fresh(row: dict, now: dt.datetime) -> bool:
-    age = age_hours(row, now)
-    if age is None:
-        return row.get("layer") == "official"
-    return -1 <= age <= MAX_AGE_HOURS
-
-
-def trusted(source: str) -> bool:
-    s = norm(source)
-    return any(t in s for t in TRUSTED)
-
-
-def has(text: str, term: str) -> bool:
-    escaped = re.escape(term.lower()).replace(r"\ ", r"\s+")
-    return re.search(rf"(^|[^a-z0-9]){escaped}($|[^a-z0-9])", text) is not None
-
-
-def is_local_dc_policy(row: dict) -> bool:
-    text = norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
-    has_dc = has(text, "data center") or has(text, "data centers")
-    has_local_policy = any(has(text, term) for term in LOCAL_DC_POLICY_TERMS)
-    return has_dc and has_local_policy
-
-
-def collect_items(now: dt.datetime) -> tuple[list[dict], list[str]]:
-    rows, notes = [], []
-    source_jobs = [(name, url, kind) for name, url, kind in SOURCES]
-    query_jobs = [
-        (name, news_search_url(query), "trusted")
-        for name, query in trusted_query_plan()
-    ]
-
-    def fetch_job(job: tuple[str, str, str]) -> tuple[str, str, str, str | None, str | None]:
-        name, url, kind = job
-        text, err = fetch(url)
-        return name, url, kind, text, err
-
-    with concurrent.futures.ThreadPoolExecutor(max_workers=FETCH_WORKERS) as executor:
-        source_results = list(executor.map(fetch_job, source_jobs))
-    with concurrent.futures.ThreadPoolExecutor(max_workers=QUERY_FETCH_WORKERS) as executor:
-        query_results = list(executor.map(fetch_job, query_jobs))
-
-    for name, _url, kind, text, err in source_results:
-        if err:
-            notes.append(f"{name}: í™•ì¸ ë¶ˆê°€ ({err})")
-            continue
-        layer = "official" if kind == "official" else "trusted"
-        parsed = parse_fr(text or "", name) if kind == "fr" else parse_rss(text or "", name, layer)
-        parsed = [r for r in parsed if fresh(r, now)]
-        notes.append(f"{name}: {len(parsed)}ê±´")
-        rows.extend(parsed)
-
-    for name, _url, _kind, text, err in query_results:
-        if err:
-            notes.append(f"Trusted news {name}: í™•ì¸ ë¶ˆê°€ ({err})")
-            continue
-        local_dc_query = "ë°ì´í„°ì„¼í„°" in name
-        parsed = [
-            r for r in parse_rss(text or "", f"Trusted news {name}", "trusted")
-            if fresh(r, now) and (trusted(r.get("publisher") or r.get("source")) or (local_dc_query and is_local_dc_policy(r)))
-        ]
-        notes.append(f"Trusted news {name}: {len(parsed)}ê±´")
-        rows.extend(parsed)
-    return rows, notes
-
-
-def classify(row: dict, now: dt.datetime) -> dict | None:
-    title = clean(row.get("title"))
-    if len(title) < 8:
-        return None
-    text = norm(f"{title} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
-    local_dc_policy = is_local_dc_policy(row)
-    matched = [t for t in TERMS if has(text, t)]
-    sectors = [label for label, keys in SECTORS if any(has(text, k) for k in keys)]
-    if not matched or not sectors:
-        return None
-    iran_hormuz_escalation = (
-        "ë°©ì‚°/ì •ìœ /í•´ìš´/ì§€ì •í•™" in sectors
-        and any(has(text, term) for term in ("iran", "iranian", "tehran", "hormuz", "strait of hormuz"))
-        and any(
-            has(text, term)
-            for term in (
-                "attack", "attacks", "attacked", "airstrike", "airstrikes", "strike", "strikes",
-                "retaliation", "retaliatory", "ceasefire", "missile", "drone", "closure", "closed",
-            )
-        )
-        and any(has(text, term) for term in ("ship", "vessel", "tanker", "hormuz", "strait of hormuz", "gulf"))
-    )
-    impacts = []
-    china_trade_action = any(
-        term in matched
-        for term in [
-            "export ban", "export suspension", "export control", "export licensing",
-            "suspend", "suspends", "suspended",
-            "tariff", "anti-dumping", "countervailing", "ban", "banned", "banning",
-        ]
-    )
-    china_strategic_material = any(
-        term in matched
-        for term in [
-            "helium", "rare earth", "gallium", "germanium", "graphite",
-            "antimony", "tungsten", "indium", "semiconductor", "steel",
-        ]
-    )
-    if china_trade_action and china_strategic_material and any(
-        term in text for term in ["mofcom", "china ministry of commerce", "chinese ministry of commerce"]
-    ):
-        impacts.extend(["ëˆ ë²„ëŠ” ëŠ¥ë ¥", "ìˆ˜ê¸‰", "ì‹œê°„í‘œ"])
-    if any(t in matched for t in ["contract", "earnings", "guidance", "approval", "supply agreement", "fda", "capex", "oil", "natural gas", "copper", "lithium", "uranium", "inverter", "doe", "department of energy", "loan guarantee", "conditional commitment", "funding opportunity", "grid deployment", "nuclear fuel", "critical materials", "efficiency standard", "robot", "robotics", "subsidy", "loan", "low-cost loan", "quota", "safeguard", "anti-dumping", "cbam", "steel", "ap1000", "westinghouse", "nuclear reactor", "ë‹¨ì¼íŒë§¤", "ê³µê¸‰ê³„ì•½", "ìˆ˜ì£¼", "íˆ¬ìžíŒë‹¨"]):
-        impacts.append("ëˆ ë²„ëŠ” ëŠ¥ë ¥")
-    if any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "city council", "dollar", "fed", "gold", "moratorium", "ordinance", "real yield", "regulation", "tariff", "section 232", "quota", "safeguard", "anti-dumping", "national security", "covered list", "tips", "treasury", "won", "yield", "zoning"]):
-        impacts.append("í• ì¸ìœ¨")
-    if any(t in matched for t in ["buyback", "convertible", "entity list", "export control", "offering", "sanction", "supply", "ban", "inverter", "robotics", "quota", "safeguard", "ìœ ìƒì¦ìž", "ì „í™˜ì‚¬ì±„", "ì‹ ì£¼ì¸ìˆ˜ê¶Œ", "ìžê¸°ì£¼ì‹", "ìµœëŒ€ì£¼ì£¼"]):
-        impacts.append("ìˆ˜ê¸‰")
-    if any(t in matched for t in ["city council", "court order", "final rule", "injunction", "joint venture", "loi", "merger", "mou", "permit", "planning commission", "public hearing", "residents", "township", "vote", "subsidy", "loan", "low-cost loan", "loan guarantee", "conditional commitment", "funding opportunity", "equipment authorization", "fcc", "doe", "department of energy", "íƒ€ë²•ì¸ì£¼ì‹", "íšŒì‚¬í•©ë³‘", "íšŒì‚¬ë¶„í• ", "ì£¼ìš”ì‚¬í•­ë³´ê³ ì„œ", "ì†Œì†¡"]):
-        impacts.append("ì‹œê°„í‘œ")
-    if iran_hormuz_escalation:
-        impacts.extend(["ëˆ ë²„ëŠ” ëŠ¥ë ¥", "í• ì¸ìœ¨", "ìˆ˜ê¸‰", "ì‹œê°„í‘œ"])
-    impacts = list(dict.fromkeys(impacts)) or ["ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì "]
-    age = age_hours(row, now)
-    score = (28 if row.get("layer") == "official" else 0) + (20 if trusted(row.get("publisher") or row.get("source")) else 0) + min(36, len(matched) * 6) + len(impacts) * 10 + len(sectors) * 6
-    if age is not None and age <= 12:
-        score += 14
-    if "ë°ì´í„°ì„¼í„°/ì „ë ¥ë§/ì „ë ¥ê¸°ê¸°" in sectors and any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "moratorium", "city council", "residents", "vote", "zoning"]):
-        score += 18
-    if local_dc_policy:
-        score += 36
-    if iran_hormuz_escalation:
-        score += 42
-    if score < 58:
-        return None
-    status = "í™•ì •" if row.get("layer") == "official" else "ê³µì‹ í™•ì¸ ì „"
-    importance = "ìƒ" if score >= 100 else "ì¤‘" if score >= 76 else "í•˜"
-    if iran_hormuz_escalation:
-        interp = "ë¯¸êµ­ì˜ ì´ëž€ ìž¬ê³µê²©ê³¼ í˜¸ë¥´ë¬´ì¦ˆ ìƒì„  í”¼ê²©ì€ ìœ ê°€Â·ìš´ìž„Â·ì›/ë‹¬ëŸ¬ì™€ ì •ìœ Â·í™”í•™ ì›ê°€, í•´ìš´Â·ë°©ì‚° ìˆ˜ê¸‰ì„ ë™ì‹œì— ì›€ì§ì¼ ìˆ˜ ìžˆëŠ” ì§ì ‘ ì§€ì •í•™ ì¶©ê²©ìž…ë‹ˆë‹¤. íœ´ì „ ìœ ì§€ ì—¬ë¶€ì™€ í•­ë¡œ ìž¬ê°œ ì‹œê°„í‘œë¥¼ í•¨ê»˜ í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤."
-        fail = "ë¯¸ êµ­ë°©ë¶€Â·CENTCOMÂ·ë°±ì•…ê´€ í›„ì† í™•ì¸ì´ ì—†ê±°ë‚˜ WTI/BrentÂ·ìš´ìž„Â·USD/KRWÂ·ë°©ì‚°ì£¼ê°€ ë™í–‰í•˜ì§€ ì•Šìœ¼ë©´ ë‹¨ë°œì„± ì¶©ëŒë¡œ ì•½í™”"
-    elif local_dc_policy:
-        interp = "ë¯¸êµ­ ì§€ì—­ ë‹¨ìœ„ ë°ì´í„°ì„¼í„° ê¸ˆì§€Â·ëª¨ë¼í† ë¦¬ì—„Â·ì£¼ë¯¼íˆ¬í‘œëŠ” AI CAPEXì˜ ìŠ¹ì¸ ì‹œê°„í‘œì™€ ì „ë ¥ë§ ì ‘ì† í”„ë¦¬ë¯¸ì—„ì„ ë°”ê¾¸ëŠ” ì¡°ê¸° ì‹ í˜¸ìž…ë‹ˆë‹¤. í™•ì • ë§¤ì¶œì€ ì•„ë‹ˆì§€ë§Œ ì „ë ¥ê¸°ê¸°Â·ì „ì„ Â·ëƒ‰ê°Â·ì›ì „/ê°€ìŠ¤Â·ì„œë²„ ë°¸ë¥˜ì²´ì¸ì˜ í• ì¸ìœ¨ê³¼ ìˆ˜ì£¼ ê°€ì‹œì„±ì„ ì ê²€í•´ì•¼ í•©ë‹ˆë‹¤."
-        fail = "ì‹œì˜íšŒ ì•ˆê±´Â·ì¡°ë¡€Â·íˆ¬í‘œ ì¼ì • ë“± ê³µì‹ í›„ì† í™•ì¸ì´ ì—†ê±°ë‚˜ ë¹…í…Œí¬ CAPEX/ì „ë ¥ê¸°ê¸° ìˆ˜ì£¼ ì „ë§ì´ ìœ ì§€ë˜ë©´ ì§€ì—­ì„± ë‰´ìŠ¤ë¡œ ì•½í™”"
-    elif "ë°ì´í„°ì„¼í„°/ì „ë ¥ë§/ì „ë ¥ê¸°ê¸°" in sectors:
-        interp = "AI ì¸í”„ë¼ ë³‘ëª©ì´ GPUë§Œì´ ì•„ë‹ˆë¼ ì „ë ¥Â·ìž…ì§€Â·ì£¼ë¯¼ìˆ˜ìš©ì„±ìœ¼ë¡œ ë²ˆì§€ëŠ”ì§€ ë³´ëŠ” ìž¬ë£Œìž…ë‹ˆë‹¤. í•œêµ­ìž¥ì—ì„œëŠ” ì „ë ¥ê¸°ê¸°ì™€ ë°ì´í„°ì„¼í„° ë°¸ë¥˜ì²´ì¸ í”„ë¦¬ë¯¸ì—„ ì§€ì†ì„±ì„ ì ê²€í•´ì•¼ í•©ë‹ˆë‹¤."
-        fail = "ì „ë ¥ê¸°ê¸°Â·ì „ì„ Â·ì›ì „Â·ëƒ‰ê°Â·ì„œë²„ ë°¸ë¥˜ì²´ì¸ì´ ë”°ë¼ì˜¤ì§€ ì•Šê±°ë‚˜ ê³µì‹ ë¬¸ì„œê°€ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ìž¬ë£Œ ì•½í™”"
-    elif "ë°˜ë„ì²´/AI" in sectors:
-        interp = "AIÂ·ë©”ëª¨ë¦¬ ìˆ˜ìš” ë˜ëŠ” ê³µê¸‰ ì œí•œì„ ê±´ë“œë¦´ ìˆ˜ ìžˆì–´ í•œêµ­ ë°˜ë„ì²´ ëŒ€í˜•ì£¼ì™€ ì†Œë¶€ìž¥ ìˆ˜ê¸‰ì— ì—°ê²°ë©ë‹ˆë‹¤. í•´ì™¸ í‹°ì»¤ ë°˜ì‘ìœ¼ë¡œ ì´ë¯¸ ë°˜ì˜ëëŠ”ì§€ ìž¬í™•ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤."
-        fail = "SOX/MU/NVDA/ë©”ëª¨ë¦¬ ê°€ê²©ì´ ë°˜ì‘í•˜ì§€ ì•Šê±°ë‚˜ ê°€ì´ë˜ìŠ¤ê°€ ìˆ˜ìš” ë‘”í™”ë¥¼ ì‹œì‚¬í•˜ë©´ ì‹¤íŒ¨"
-    elif "ì›ìžìž¬/ë§¤í¬ë¡œ" in sectors:
-        interp = "ì›ìžìž¬ ê°€ê²©Â·ë‹¬ëŸ¬Â·ì‹¤ì§ˆê¸ˆë¦¬ëŠ” í•œêµ­ìž¥ ì´ìµ ì¶”ì •ê³¼ í• ì¸ìœ¨ì„ ë™ì‹œì— í”ë“œëŠ” ì¶•ìž…ë‹ˆë‹¤. ì‹¤ì œ ê°€ê²© ì§€í‘œì™€ í™˜ìœ¨ì´ ë™í–‰í•˜ëŠ”ì§€ 06:50 ìˆ˜ì¹˜ì—ì„œ ìž¬í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤."
-        fail = "ìœ ê°€Â·ê¸ˆë¦¬Â·ë‹¬ëŸ¬Â·ì›í™”Â·ì›ìžìž¬ ê°€ê²©ì´ ë™í–‰í•˜ì§€ ì•Šê±°ë‚˜ í•˜ë£¨ì§œë¦¬ í—¤ë“œë¼ì¸ì— ê·¸ì¹˜ë©´ ìž¬ë£Œ ì•½í™”"
-    else:
-        interp = "ëˆ ë²„ëŠ” ëŠ¥ë ¥, í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ ì¤‘ í•˜ë‚˜ë¥¼ ë°”ê¿€ ìˆ˜ ìžˆëŠ” í›„ë³´ìž…ë‹ˆë‹¤. ì›ë¬¸ ì¡°ê±´ê³¼ ê°€ê²© ë°˜ì‘ì„ ìž¥ì „ ìˆ˜ì¹˜ì—ì„œ ìž¬í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤."
-        fail = "ê´€ë ¨ í•´ì™¸ í‹°ì»¤Â·ì›ìžìž¬Â·ê¸ˆë¦¬Â·í™˜ìœ¨Â·í•œêµ­ ìˆ˜ê¸‰ì´ ë™í–‰í•˜ì§€ ì•Šìœ¼ë©´ ë‹¨ë°œì„± ë‰´ìŠ¤"
-    return {
-        "score": score,
-        "importance": importance,
-        "status": status,
-        "news": title,
-        "source_title": clean(row.get("source_title") or title),
-        "source_abstract": clean(row.get("source_abstract") or row.get("summary")),
-        "source_document_number": clean(row.get("source_document_number")),
-        "source_metadata_url": clean(row.get("source_metadata_url")),
-        "publisher": row.get("publisher") or row.get("source"),
-        "source": row.get("source"),
-        "link": row.get("link") or "",
-        "published": row["published"].isoformat(timespec="minutes") if row.get("published") else "í™•ì¸ ë¶ˆê°€",
-        "impacts": impacts,
-        "paths": ["ì´ìµ" if x == "ëˆ ë²„ëŠ” ëŠ¥ë ¥" else "í• ì¸ìœ¨" if x == "í• ì¸ìœ¨" else "ìˆ˜ê¸‰" if x == "ìˆ˜ê¸‰" else "ì •ì±… íƒ€ìž„ë¼ì¸" for x in impacts],
-        "sectors": sectors,
-        "matched": matched[:10],
-        "local_dc_policy": local_dc_policy,
-        "iran_hormuz_escalation": iran_hormuz_escalation,
-        "realtime_policy_lane": iran_hormuz_escalation,
-        "reflection": "ë‚®ìŒ" if age is not None and age <= 6 else "ì¤‘ê°„" if age is None or age <= 24 else "ë†’ìŒ",
-        "counter": "ì œëª©Â·ìš”ì•½ ê¸°ë°˜ 1ì°¨ ê°ì§€ë¼ ì›ë¬¸ ì„¸ë¶€ì¡°ê±´ê³¼ ê³µì‹ ë¬¸ì„œ í™•ì¸ ì „ ê³¼ëŒ€í•´ì„ ê°€ëŠ¥" if status != "í™•ì •" else "ì‹œí–‰ì¼, ì ìš© ëŒ€ìƒ, ê¸ˆì•¡, ê¸°ê°„, ë…ì ì„±, ë§¤ì¶œ ì¸ì‹ ì¡°ê±´ í™•ì¸ ì „ ì˜í–¥ì´ ì œí•œë  ìˆ˜ ìžˆìŒ",
-        "interpretation": interp,
-        "failed_signal": fail,
-        "korea_basis": "ì˜ˆê³ ëœ ì´ë²¤íŠ¸ì˜ ê³µì‹í™”" if status == "í™•ì •" else "ì™¸ì‹  í™•ì‚°",
-    }
-
-
-def collect_dfii10() -> dict:
-    if FRED_API_KEY:
-        url = "https://api.stlouisfed.org/fred/series/observations?" + urllib.parse.urlencode({"series_id": "DFII10", "file_type": "json", "sort_order": "desc", "limit": "10", "api_key": FRED_API_KEY})
-        text, err = fetch(url, 30)
-        if not err and text:
-            for row in json.loads(text).get("observations", []):
-                if row.get("value") and row.get("value") != ".":
-                    return {"source": "FRED API DFII10", "status": "í™•ì¸ë¨", "reference": row.get("date"), "value": float(row.get("value")), "error": None}
-    text, err = fetch_fred_csv(60)
-    if err or not text:
-        return {"source": FRED_CSV, "status": "í™•ì¸ ë¶ˆê°€", "reference": "í™•ì¸ ë¶ˆê°€", "value": None, "error": err}
-    for row in reversed(list(csv.DictReader(text.splitlines()))):
-        if row.get("DFII10") and row.get("DFII10") != ".":
-            return {"source": FRED_CSV, "status": "í™•ì¸ë¨", "reference": row.get("observation_date"), "value": float(row.get("DFII10")), "error": None}
-    return {"source": FRED_CSV, "status": "í™•ì¸ ë¶ˆê°€", "reference": "í™•ì¸ ë¶ˆê°€", "value": None, "error": "latest non-empty row not found"}
-
-
-def collect_te() -> dict:
-    text, err = fetch(TE_URL)
-    if err or not text:
-        return {"source": TE_URL, "status": "í™•ì¸ ë¶ˆê°€", "reference": "í™•ì¸ ë¶ˆê°€", "value": None, "error": err}
-    body = clean(text)
-    row = re.search(r"US\s+10Y\s+TIPS\s+(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)%\s+(-?\d+(?:\.\d+)?)%\s+(-?\d+(?:\.\d+)?)%\s+([A-Za-z]{3}/\d{1,2})", body, re.I)
-    meta = re.search(r"10 Year TIPS Yield.{0,150}?(-?\d+(?:\.\d+)?)\s*(?:%|percent)\s+on\s+([A-Za-z]+ \d{1,2}, \d{4})", body, re.I)
-    if row:
-        return {"source": TE_URL, "status": "í™•ì¸ë¨", "reference": row.group(5), "value": float(row.group(1)), "meta_value": float(meta.group(1)) if meta else None, "meta_reference": meta.group(2) if meta else None, "error": None}
-    if meta:
-        return {"source": TE_URL, "status": "í™•ì¸ë¨", "reference": meta.group(2), "value": float(meta.group(1)), "error": None}
-    return {"source": TE_URL, "status": "í™•ì¸ ë¶ˆê°€", "reference": "í™•ì¸ ë¶ˆê°€", "value": None, "error": "pattern not found"}
-
-
-def real_yield_note(fred: dict, te: dict) -> str:
-    if fred.get("value") is None or te.get("value") is None:
-        return "FRED DFII10 ë˜ëŠ” Trading Economics 10Y TIPS ì¤‘ í•˜ë‚˜ê°€ í™•ì¸ë˜ì§€ ì•Šì•„ í• ì¸ìœ¨ êµì°¨í™•ì¸ ë¶ˆì™„ì „"
-    mismatch = abs(float(fred["value"]) - float(te["value"])) >= 0.03 or str(fred.get("reference")) != str(te.get("reference"))
-    state = "ì§€ì—°/ë¶ˆì¼ì¹˜ ìžˆìŒ" if mismatch else "êµì°¨í™•ì¸ë¨"
-    return f"{state}: FRED DFII10 {fred['value']:.2f}%({fred.get('reference')}), Trading Economics 10Y TIPS {te['value']:.2f}%({te.get('reference')})"
-
-
-def related(alert: dict, fred: dict, te: dict) -> str:
-    out = []
-    if "ë°˜ë„ì²´/AI" in alert["sectors"]:
-        out += ["NVDA", "MU", "AVGO", "AMD", "TSM", "ASML", "SOX"]
-    if "ë°ì´í„°ì„¼í„°/ì „ë ¥ë§/ì „ë ¥ê¸°ê¸°" in alert["sectors"]:
-        out += ["VRT", "ETN", "GEV", "CEG", "SMH"]
-    if "DOE ì „ë ¥ë§/ì›ì „/ì—ë„ˆì§€ì§€ì›" in alert["sectors"]:
-        out += ["DOE", "FERC", "NRC", "AP1000", "Westinghouse", "VRT", "ETN", "GEV", "Uranium"]
-    if "ì „ë ¥ë§ ë³´ì•ˆ/FCC ìž¥ë¹„ê·œì œ" in alert["sectors"]:
-        out += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV"]
-    if "EU/í•œêµ­ ì •ì±… ì˜í–¥" in alert["sectors"]:
-        out += ["EU ì •ì±…ë¬¸ì„œ", "ì² ê°•/ë°°í„°ë¦¬/ë°˜ë„ì²´/ì¡°ì„  ìˆ˜ì¶œì£¼", "EUR/KRW"]
-    if "ë°©ì‚°/ì •ìœ /í•´ìš´/ì§€ì •í•™" in alert["sectors"]:
-        out += ["WTI", "Brent", "XLE", "ìš´ìž„"]
-    if "ì›ìžìž¬/ë§¤í¬ë¡œ" in alert["sectors"]:
-        out += ["ë¯¸êµ­ 10ë…„ë¬¼", "DXY", "USD/KRW", "WTI", "Henry Hub", "Copper", "Lithium", "Uranium", "Gold"]
-    if "í• ì¸ìœ¨" in alert["impacts"]:
-        out += [f"DFII10 {fred.get('value') if fred.get('value') is not None else 'í™•ì¸ ë¶ˆê°€'}", f"TE 10Y TIPS {te.get('value') if te.get('value') is not None else 'í™•ì¸ ë¶ˆê°€'}", "IWM/SPY ìž¬í™•ì¸"]
-    return ", ".join(dict.fromkeys(out)) or "í™•ì¸ ê°€ëŠ¥í•œ ì§ì ‘ í‹°ì»¤ ì—†ìŒ"
-
-
-def render_alert(alert: dict, idx: int, now: dt.datetime, fred: dict, te: dict) -> str:
-    return "\n".join([
-        f"## {idx}. [{alert['importance']} | {alert['status']}]",
-        f"- `ë‰´ìŠ¤`: {alert['news']}",
-        f"- `í•œêµ­ìž¥ ê¸°ì¤€`: {alert['korea_basis']}",
-        f"- `íƒ€ìž„ë¼ì¸`: ìµœì´ˆ ë¹Œë“œì—…: í™•ì¸ ë¶ˆê°€ / ê³µì‹Â·ì›ì²œ ì‹œê°: {alert['published']} / í•œêµ­ íˆ¬ìžìž í™•ì‚°: {now:%Y-%m-%d %H:%M KST} ì¡°íšŒ ê¸°ì¤€",
-        f"- `ì¶œì²˜`: [{alert['publisher']}]({alert['link']}) Â· ì¡°íšŒ {now:%Y-%m-%d %H:%M KST}",
-        f"- `ì˜ì‚¬ê²°ì • ì˜í–¥`: {', '.join(alert['impacts'])}",
-        f"- `ì˜í–¥ ê²½ë¡œ`: {', '.join(alert['paths'])}",
-        f"- `ì˜í–¥ ì„¹í„°`: {', '.join(alert['sectors'])}",
-        f"- `ê´€ë ¨ í•´ì™¸ í‹°ì»¤/ì§€í‘œ`: {related(alert, fred, te)}",
-        f"- `ë°˜ì˜ ê°€ëŠ¥ì„±`: {alert['reflection']}",
-        f"- `ë°˜ëŒ€ ê·¼ê±°`: {alert['counter']}",
-        f"- `í•´ì„`: {alert['interpretation']}",
-        f"- `ì‹¤íŒ¨ ì‹ í˜¸`: {alert['failed_signal']}",
-        "",
-    ])
-
-
-def render_report(alerts: list[dict], notes: list[str], fred: dict, te: dict, now: dt.datetime) -> str:
-    title = f"ðŸ“° GAMEJOA ìž¥ì „ í•µì‹¬ ë‰´ìŠ¤ ë ˆì´ë” Â· {now:%Yë…„ %mì›” %dì¼} Â· 06:30"
-    lines = [
-        title, "",
-        f"ì¡°íšŒ ê¸°ì¤€: {now:%Y-%m-%d %H:%M KST}. GitHub Actions ì™¸ë¶€ ëŸ¬ë„ˆ ê¸°ì¤€ì´ë©°, ë¡œì»¬ Codex/PC ì ˆì „ ìƒíƒœì™€ ë¬´ê´€í•˜ê²Œ ì‹¤í–‰ë©ë‹ˆë‹¤.", "",
-        "### ìžë£Œ ì²˜ë¦¬ í˜„í™©í‘œ",
-        "| í•­ëª© | ì¡°íšŒ ì‹œê° | ì§ì ‘ í™•ì¸ | ìƒíƒœ |", "|---|---:|---:|---|",
-        f"| ìž¥ì „ ë‰´ìŠ¤ ì›ì²œ | {now:%H:%M KST} | {sum('í™•ì¸ ë¶ˆê°€' not in n for n in notes)}ê°œ ì›ì²œ | {' / '.join(notes[:5])} |",
-        f"| FRED DFII10 | {now:%H:%M KST} | {'ì˜ˆ' if fred.get('value') is not None else 'ì•„ë‹ˆì˜¤'} | {fred.get('status')} Â· {fred.get('reference')} |",
-        f"| Trading Economics 10Y TIPS | {now:%H:%M KST} | {'ì˜ˆ' if te.get('value') is not None else 'ì•„ë‹ˆì˜¤'} | {te.get('status')} Â· {te.get('reference')} |",
-        "", f"í• ì¸ìœ¨ êµì°¨í™•ì¸: {real_yield_note(fred, te)}", "",
-    ]
-    if alerts:
-        for idx, alert in enumerate(alerts[:7], 1):
-            lines.append(render_alert(alert, idx, now, fred, te))
-    else:
-        lines += ["ìž¥ì „ ê³ ì¶©ê²© ë‰´ìŠ¤ ì§ì ‘ í™•ì¸ ì—†ìŒ", "", "ê°ì •ì„± ë‰´ìŠ¤ë¡œ ì œì™¸: ê³µì‹/ì‹ ë¢° ì†ŒìŠ¤ì—ì„œ ëˆ ë²„ëŠ” ëŠ¥ë ¥, í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œë¥¼ ëª…í™•ížˆ ë°”ê¾¸ëŠ” í›„ë³´ê°€ ì§ì ‘ í™•ì¸ë˜ì§€ ì•Šì€ í•­ëª©.", ""]
-    top = alerts[0]["news"] if alerts else "ìž¥ì „ ê³ ì¶©ê²© ë‰´ìŠ¤ ì§ì ‘ í™•ì¸ ì—†ìŒ"
-    changed = ", ".join(alerts[0]["impacts"]) if alerts else "ëª…í™•í•œ ë³€í™” ì—†ìŒ"
-    lines += [
-        "ðŸ’¡ 06:30 ìž¥ì „ ë‰´ìŠ¤ ì½”ë©˜íŠ¸",
-        f"ì˜¤ëŠ˜ 1ìˆœìœ„ ì²´í¬ëŠ” `{top}`ìž…ë‹ˆë‹¤. ì˜¤ëŠ˜ ê°€ìž¥ í¬ê²Œ ë°”ë€ ì¶•ì€ `{changed}`ì´ë©°, í•œêµ­ìž¥ì—ì„œëŠ” ê´€ë ¨ í•´ì™¸ í‹°ì»¤ ë°˜ì‘ê³¼ êµ­ë‚´ ìˆ˜ê¸‰ í™•ì‚° ì—¬ë¶€ë¥¼ ë¨¼ì € ë³´ê² ìŠµë‹ˆë‹¤.",
-        f"í• ì¸ìœ¨ì€ FRED DFII10ê³¼ Trading Economics 10 Year TIPS Yieldë¥¼ í•¨ê»˜ í™•ì¸í–ˆìŠµë‹ˆë‹¤: {real_yield_note(fred, te)}.",
-        "06:50 íˆ¬ìžê¸°ìƒë„ì—ì„œ ìˆ˜ì¹˜Â·ìˆ˜ê¸‰Â·í…Œë§ˆì™€ ìž¬í™•ì¸ í•„ìš”.", "",
-        "íˆ¬ìž ì¡°ì–¸ì´ ì•„ë‹Œ ì°¸ê³ ìš© ë‰´ìŠ¤ ë¸Œë¦¬í•‘ìž…ë‹ˆë‹¤.", "",
-        "ì£¼ìš” ì¶œì²˜:", *[f"- {n}" for n in notes[:18]], f"- FRED DFII10: {FRED_CSV}", f"- Trading Economics 10Y TIPS: {TE_URL}",
-    ]
-    return "\n".join(lines).strip() + "\n"
-
-
-def send_telegram(text: str) -> None:
-    token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
-    chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
-    if not token or not chat_id:
-        print("Telegram: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
-        return
-    repo, run_id = os.getenv("GITHUB_REPOSITORY", ""), os.getenv("GITHUB_RUN_ID", "")
-    suffix = f"\n\nì „ì²´ ë³´ê³ ì„œ: https://github.com/{repo}/actions/runs/{run_id}" if repo and run_id else ""
-    body = urllib.parse.urlencode({"chat_id": chat_id, "text": (text[: TELEGRAM_LIMIT - len(suffix) - 1] + suffix)[:TELEGRAM_LIMIT], "disable_web_page_preview": "true"}).encode("utf-8")
-    req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=body, method="POST")
-    with urllib.request.urlopen(req, timeout=25) as resp:
-        resp.read()
-    print("Telegram: sent")
-
-
-def print_utf8(text: str) -> None:
-    try:
-        sys.stdout.write(text)
-    except UnicodeEncodeError:
-        sys.stdout.buffer.write(text.encode("utf-8", "replace"))
-
-
-def main() -> int:
-    now = kst_now()
-    rows, notes = collect_items(now)
-    alerts = [a for a in (classify(r, now) for r in rows if fresh(r, now)) if a]
-    alerts.sort(key=lambda a: (-a["score"], a["published"]))
-    deduped, seen = [], set()
-    for alert in alerts:
-        key = (norm(alert["news"]), norm(alert["publisher"]), alert["published"][:10])
-        if key in seen:
-            continue
-        seen.add(key)
-        deduped.append(alert)
-        if len(deduped) >= 7:
-            break
-    local_dc_candidates = [a for a in alerts if a.get("local_dc_policy")]
-    for candidate in local_dc_candidates:
-        local_count = sum(1 for a in deduped if a.get("local_dc_policy"))
-        if local_count >= min(2, len(local_dc_candidates)):
-            break
-        ckey = (norm(candidate["news"]), norm(candidate["publisher"]), candidate["published"][:10])
-        if ckey in seen:
-            continue
-        if len(deduped) < 7:
-            deduped.append(candidate)
-            seen.add(ckey)
-            continue
-        for idx in range(len(deduped) - 1, -1, -1):
-            if not deduped[idx].get("local_dc_policy"):
-                old = deduped[idx]
-                seen.discard((norm(old["news"]), norm(old["publisher"]), old["published"][:10]))
-                deduped[idx] = candidate
-                seen.add(ckey)
-                break
-    deduped.sort(key=lambda a: (-a["score"], a["published"]))
-    fred, te = collect_dfii10(), collect_te()
-    report = render_report(deduped, notes, fred, te, now)
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "gamejoa_preopen_news_radar.md").write_text(report, encoding="utf-8")
-    (OUT / "gamejoa_preopen_news_radar_title.txt").write_text(report.splitlines()[0] + "\n", encoding="utf-8")
-    (OUT / "gamejoa_preopen_news_radar.json").write_text(json.dumps({"query_time_kst": now.isoformat(timespec="seconds"), "alerts": deduped, "source_notes": notes, "fred_dfii10": fred, "tradingeconomics_tips": te}, ensure_ascii=False, indent=2, default=str) + "\n", encoding="utf-8")
-    print_utf8(report)
-    if os.getenv("TELEGRAM_DRY_RUN", "").lower() in {"1", "true", "yes", "y"}:
-        print("Telegram: dry run")
-        return 0
-    if os.getenv("SEND_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
-        send_telegram(report)
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+def parse_dateß¾´¶‰žËkºwµç}7
+ß®ÂÇ²VªÒ ƒ¶n²4ƒ¶fW²vã²vÐƒ²^ªÆÃ®
+`]Q$½	É•¹Ó
+ß²jÓ²z
+ÝUM½-I_
+ß®Â§²
+Ã²ŽóªÂ ƒ®>g¶Z'¶Vc²ž ƒ²V+²ró®¦Ðƒ®.£®Âs²Äƒ²Ú§®>3®†pƒ²V÷¶fPˆ(€€€•±¥˜±½…±}‘}Á½±¥äè(€€€€€€€¥¹Ñ•ÉÀ€ô€‹®¾ãªÖ´ƒ²ž²^´ƒ®.£²rƒ®6Ã²vÓ¶Ã²ó¶Àƒªâ#²ž
+ß®ª£®vó¶ƒ®š³²^
+ß²Žó®¾ó¶"³¶Fs®*P$Ac²v`ƒ²*ç²vàƒ².sªÂ¶Fs²f ƒ²‚®‚—®žtƒ²‚G²4ƒ¶R®š³®¾ã²^²vƒ®ÂSªúã®*Pƒ²†ÃªâÀƒ².ƒ¶bã²z®.#®.¸ƒ¶fW²‚Tƒ®ž“²Ús²v ƒ²V®.#²ž®ž0ƒ²‚®‚—ªâÃªâÃ
+ß²‚²ƒ
+ß®'ªÂ
+ß²nC²‚¿ªÂ²*“
+ß²s®Êƒ®Âã®–c²ÊÓ²vã²v`ƒ¶Vƒ²vã²r£ªÎðƒ²"c²ŽðƒªÂ².s²Ç²vƒ²‚CªÊ¶VÓ²Vðƒ¶V§®.#®.¸ˆ(€€€€€€€™…¥°€ô€‹².s²vc¶j0ƒ²V#ªÆÓ
+ß²†Ã®†
+ß¶"³¶Fpƒ²vó²‚Tƒ®NÄƒªÎ×².tƒ¶n²4ƒ¶fW²vã²vÐƒ²^ªÆÃ®
+`ƒ®æ¶3¶°A`¿²‚®‚—ªâÃªâÀƒ²"c²Žðƒ²‚®žw²vÐƒ²rƒ²ž®Bc®¦Ðƒ²ž²^·²Äƒ®&Ó²*“®†pƒ²V÷¶fPˆ(€€€•±¥˜€‹®6Ã²vÓ¶Ã²ó¶À¿²‚®‚—®žt¿²‚®‚—ªâÃªâÀˆ¥¸Í•Ñ½ÉÌè(€€€€€€€¥¹Ñ•ÉÀ€ô€‰$ƒ²vã¶R®vðƒ®ÎG®ª§²vÐAW®ž3²vÐƒ²V®.#®vðƒ²‚®‚—
+ß²z²ž
+ß²Žó®¾ó²"c²j§²Ç²ró®†pƒ®Ê#²ž®*S²ž ƒ®ÎÓ®*Pƒ²z³®Ž3²z®.#®.¸ƒ¶VsªÖ·²z—²^C²s®*Pƒ²‚®‚—ªâÃªâÃ²f ƒ®6Ã²vÓ¶Ã²ó¶Àƒ®Âã®–c²ÊÓ²vàƒ¶R®š³®¾ã²^ƒ²ž²7²Ç²vƒ²‚CªÊ¶VÓ²Vðƒ¶V§®.#®.¸ˆ(€€€€€€€™…¥°€ô€‹²‚®‚—ªâÃªâÃ
+ß²‚²ƒ
+ß²nC²‚
+ß®'ªÂ
+ß²s®Êƒ®Âã®–c²ÊÓ²vã²vÐƒ®RÃ®vó²b“²ž ƒ²V+ªÆÃ®
+`ƒªÎ×².tƒ®²ã²sªÂ ƒ¶fW²vã®Bc²ž ƒ²V+²ró®¦Ðƒ²z³®Ž0ƒ²V÷¶fPˆ(€€€•±¥˜€‹®Âc®>²ÊÐ½$ˆ¥¸Í•Ñ½ÉÌè(€€€€€€€¥¹Ñ•ÉÀ€ô€‰'
+ß®¦S®ª£®š°ƒ²"c²jPƒ®bC®*PƒªÎ×ªâ$ƒ²‚s¶Vs²vƒªÆÓ®Ns®šÐƒ²"`ƒ²z#²ZÐƒ¶VsªÖ´ƒ®Âc®>²ÊÐƒ®2¶bW²Žó²f ƒ²3®Ú²z”ƒ²"cªâ'²^@ƒ²^ÃªÊÃ®B§®.#®.¸ƒ¶VÓ²fàƒ¶.Ã²îƒ®Âc²vG²ró®†pƒ²vÓ®¾àƒ®Âc²b®BC®*S²ž ƒ²z³¶fW²vã²vÐƒ¶V²jS¶V§®.#®.¸ˆ(€€€€€€€™…¥°€ô€‰M=`½5T½9Y¿®¦S®ª£®š°ƒªÂªÊ§²vÐƒ®Âc²vG¶Vc²ž ƒ²V+ªÆÃ®
+`ƒªÂ²vÓ®6c²*“ªÂ ƒ²"c²jPƒ®FS¶fS®–ðƒ².s²
+³¶Vc®¦Ðƒ².“¶2 ˆ(€€€•±¥˜€‹²nC²zC²z°¿®ž“¶³®†pˆ¥¸Í•Ñ½ÉÌè(€€€€€€€¥¹Ñ•ÉÀ€ô€‹²nC²zC²z°ƒªÂªÊ§
+ß®.³®~³
+ß².“²ž#ªâ#®š³®*Pƒ¶VsªÖ·²z”ƒ²vÓ²vÔƒ²ÚS²‚WªÎðƒ¶Vƒ²vã²r£²vƒ®>g².s²^@ƒ¶vS®Ns®*Pƒ²ÚW²z®.#®.¸ƒ².“²‚pƒªÂªÊ¤ƒ²ž¶Fs²f ƒ¶fc²r£²vÐƒ®>g¶Z'¶Vc®*S²ž €ÀØèÔÀƒ²"c²æc²^C²pƒ²z³¶fW²vã¶VÓ²Vðƒ¶V§®.#®.¸ˆ(€€€€€€€™…¥°€ô€‹²rƒªÂ
+ßªâ#®š³
+ß®.³®~³
+ß²nC¶fS
+ß²nC²zC²z°ƒªÂªÊ§²vÐƒ®>g¶Z'¶Vc²ž ƒ²V+ªÆÃ®
+`ƒ¶Vc®Ž£²žs®š°ƒ¶^“®Ns®vó²vã²^@ƒªÞã²æc®¦Ðƒ²z³®Ž0ƒ²V÷¶fPˆ(€€€•±Í”è(€€€€€€€¥¹Ñ•ÉÀ€ô€‹®> ƒ®Ê®*Pƒ®*—®‚”°ƒ¶Vƒ²vã²r °ƒ²"cªâ$°ƒ².sªÂ¶Fpƒ²’Dƒ¶Vc®
+c®–ðƒ®ÂSªþ ƒ²"`ƒ²z#®*Pƒ¶n®ÎÓ²z®.#®.¸ƒ²nC®²àƒ²†ÃªÆÓªÎðƒªÂªÊ¤ƒ®Âc²vG²vƒ²z—²‚ƒ²"c²æc²^C²pƒ²z³¶fW²vã¶VÓ²Vðƒ¶V§®.#®.¸ˆ(€€€€€€€™…¥°€ô€‹ªÒ®‚ ƒ¶VÓ²fàƒ¶.Ã²î“
+ß²nC²zC²z³
+ßªâ#®š³
+ß¶fc²r£
+ß¶VsªÖ´ƒ²"cªâ'²vÐƒ®>g¶Z'¶Vc²ž ƒ²V+²ró®¦Ðƒ®.£®Âs²Äƒ®&Ó²*ˆ(€€€É•ÑÕÉ¸ì(€€€€€€€€‰Í½É”ˆèÍ½É”°(€€€€€€€€‰¥µÁ½ÉÑ…¹”ˆè¥µÁ½ÉÑ…¹”°(€€€€€€€€‰ÍÑ…ÑÕÌˆèÍÑ…ÑÕÌ°(€€€€€€€€‰¹•ÝÌˆèÑ¥Ñ±”°(€€€€€€€€‰Í½ÕÉ•}Ñ¥Ñ±”ˆè±•…¸¡É½Ü¹•Ð ‰Í½ÕÉ•}Ñ¥Ñ±”ˆ¤½ÈÑ¥Ñ±”¤°(€€€€€€€€‰Í½ÕÉ•}…‰ÍÑÉ…Ðˆè±•…¸¡É½Ü¹•Ð ‰Í½ÕÉ•}…‰ÍÑÉ…Ðˆ¤½ÈÉ½Ü¹•Ð ‰ÍÕµµ…Éäˆ¤¤°(€€€€€€€€‰Í½ÕÉ•}‘½Õµ•¹Ñ}¹Õµ‰•Èˆè±•…¸¡É½Ü¹•Ð ‰Í½ÕÉ•}‘½Õµ•¹Ñ}¹Õµ‰•Èˆ¤¤°(€€€€€€€€‰Í½ÕÉ•}µ•Ñ…‘…Ñ…}ÕÉ°ˆè±•…¸¡É½Ü¹•Ð ‰Í½ÕÉ•}µ•Ñ…‘…Ñ…}ÕÉ°ˆ¤¤°(€€€€€€€€‰ÁÕ‰±¥Í¡•ÈˆèÉ½Ü¹•Ð ‰ÁÕ‰±¥Í¡•Èˆ¤½ÈÉ½Ü¹•Ð ‰Í½ÕÉ”ˆ¤°(€€€€€€€€‰Í½ÕÉ”ˆèÉ½Ü¹•Ð ‰Í½ÕÉ”ˆ¤°(€€€€€€€€‰±¥¹¬ˆèÉ½Ü¹•Ð ‰±¥¹¬ˆ¤½È€ˆˆ°(€€€€€€€€‰ÁÕ‰±¥Í¡•ˆèÉ½Ýl‰ÁÕ‰±¥Í¡•‰t¹¥Í½™½Éµ…Ð¡Ñ¥µ•ÍÁ•Œô‰µ¥¹ÕÑ•Ìˆ¤¥˜É½Ü¹•Ð ‰ÁÕ‰±¥Í¡•ˆ¤•±Í”€‹¶fW²vàƒ®Ú#ªÂ ˆ°(€€€€€€€€‰¥µÁ…ÑÌˆè¥µÁ…ÑÌ°(€€€€€€€€‰Á…Ñ¡Ìˆèl‹²vÓ²vÔˆ¥˜à€ôô€‹®> ƒ®Ê®*Pƒ®*—®‚”ˆ•±Í”€‹¶Vƒ²vã²r ˆ¥˜à€ôô€‹¶Vƒ²vã²r ˆ•±Í”€‹²"cªâ$ˆ¥˜à€ôô€‹²"cªâ$ˆ•±Í”€‹²‚W²Æƒ¶²z®vó²vàˆ™½Èà¥¸¥µÁ…ÑÍt°(€€€€€€€€‰Í•Ñ½ÉÌˆèÍ•Ñ½ÉÌ°(€€€€€€€€‰µ…Ñ¡•ˆèµ…Ñ¡•‘lèÄÁt°(€€€€€€€€‰±½…±}‘}Á½±¥äˆè±½…±}‘}Á½±¥ä°(€€€€€€€€‰¥É…¹}¡½ÉµÕé}•Í…±…Ñ¥½¸ˆè¥É…¹}¡½ÉµÕé}•Í…±…Ñ¥½¸°(€€€€€€€€‰É•…±Ñ¥µ•}Á½±¥å}±…¹”ˆè¥É…¹}¡½ÉµÕé}•Í…±…Ñ¥½¸°(€€€€€€€€‰É•™±•Ñ¥½¸ˆè€‹®
+»²v0ˆ¥˜…”¥Ì¹½Ð9½¹”…¹…”€ðô€Ø•±Í”€‹²’GªÂˆ¥˜…”¥Ì9½¹”½È…”€ðô€ÈÐ•±Í”€‹®K²v0ˆ°(€€€€€€€€‰½Õ¹Ñ•Èˆè€‹²‚s®ª§
+ß²jS²VôƒªâÃ®Â`€Ç²Â ƒªÂC²ž®vðƒ²nC®²àƒ²ã®Ú²†ÃªÆÓªÎðƒªÎ×².tƒ®²ã²pƒ¶fW²vàƒ²‚ƒªÎó®2¶VÓ²tƒªÂ®*”ˆ¥˜ÍÑ…ÑÕÌ€„ô€‹¶fW²‚Tˆ•±Í”€‹².s¶Z'²vð°ƒ²‚²j¤ƒ®2²°ƒªâ#²V„°ƒªâÃªÂ°ƒ®>²‚C²Ä°ƒ®ž“²Úpƒ²vã².tƒ²†ÃªÆÐƒ¶fW²vàƒ²‚ƒ²b¶Z—²vÐƒ²‚s¶Vs®B€ƒ²"`ƒ²z#²v0ˆ°(€€€€€€€€‰¥¹Ñ•ÉÁÉ•Ñ…Ñ¥½¸ˆè¥¹Ñ•ÉÀ°(€€€€€€€€‰™…¥±•‘}Í¥¹…°ˆè™…¥°°(€€€€€€€€‰­½É•…}‰…Í¥Ìˆè€‹²b#ªÎƒ®Bpƒ²vÓ®Ê“¶*ã²v`ƒªÎ×².w¶fPˆ¥˜ÍÑ…ÑÕÌ€ôô€‹¶fW²‚Tˆ•±Í”€‹²fã².€ƒ¶fW²
+Àˆ°(€€€ô(()‘•˜½±±•Ñ}‘™¥¤ÄÀ ¤€´ø‘¥Ðè(€€€¥˜I}A%}-dè(€€€€€€€ÕÉ°€ô€‰¡ÑÑÁÌè¼½…Á¤¹ÍÑ±½Õ¥Í™•¹½Éœ½™É•½Í•É¥•Ì½½‰Í•ÉÙ…Ñ¥½¹Ìüˆ€¬ÕÉ±±¥ˆ¹Á…ÉÍ”¹ÕÉ±•¹½‘”¡ì‰Í•É¥•Í}¥ˆè€‰%$ÄÀˆ°€‰™¥±•}ÑåÁ”ˆè€‰©Í½¸ˆ°€‰Í½ÉÑ}½É‘•Èˆè€‰‘•ÍŒˆ°€‰±¥µ¥Ðˆè€ˆÄÀˆ°€‰…Á¥}­•äˆèI}A%}-eô¤(€€€€€€€Ñ•áÐ°•ÉÈ€ô™•Ñ ¡ÕÉ°°€ÌÀ¤(€€€€€€€¥˜¹½Ð•ÉÈ…¹Ñ•áÐè(€€€€€€€€€€€™½ÈÉ½Ü¥¸©Í½¸¹±½…‘Ì¡Ñ•áÐ¤¹•Ð ‰½‰Í•ÉÙ…Ñ¥½¹Ìˆ°mt¤è(€€€€€€€€€€€€€€€¥˜É½Ü¹•Ð ‰Ù…±Õ”ˆ¤…¹É½Ü¹•Ð ‰Ù…±Õ”ˆ¤€„ô€ˆ¸ˆè(€€€€€€€€€€€€€€€€€€€É•ÑÕÉ¸ì‰Í½ÕÉ”ˆè€‰IA$%$ÄÀˆ°€‰ÍÑ…ÑÕÌˆè€‹¶fW²vã®B ˆ°€‰É•™•É•¹”ˆèÉ½Ü¹•Ð ‰‘…Ñ”ˆ¤°€‰Ù…±Õ”ˆè™±½…Ð¡É½Ü¹•Ð ‰Ù…±Õ”ˆ¤¤°€‰•ÉÉ½Èˆè9½¹•ô(€€€Ñ•áÐ°•ÉÈ€ô™•Ñ¡}™É•‘}ÍØ ØÀ¤(€€€¥˜•ÉÈ½È¹½ÐÑ•áÐè(€€€€€€€É•ÑÕÉ¸ì‰Í½ÕÉ”ˆèI}MX°€‰ÍÑ…ÑÕÌˆè€‹¶fW²vàƒ®Ú#ªÂ ˆ°€‰É•™•É•¹”ˆè€‹¶fW²vàƒ®Ú#ªÂ ˆ°€‰Ù…±Õ”ˆè9½¹”°€‰•ÉÉ½Èˆè•ÉÉô(€€€™½ÈÉ½Ü¥¸É•Ù•ÉÍ•¡±¥ÍÐ¡ÍØ¹¥ÑI•…‘•È¡Ñ•áÐ¹ÍÁ±¥Ñ±¥¹•Ì ¤¤¤¤è(€€€€€€€¥˜É½Ü¹•Ð ‰%$ÄÀˆ¤…¹É½Ü¹•Ð ‰%$ÄÀˆ¤€„ô€ˆ¸ˆè(€€€€€€€€€€€É•ÑÕÉ¸ì‰Í½ÕÉ”ˆèI}MX°€‰ÍÑ…ÑÕÌˆè€‹¶fW²vã®B ˆ°€‰É•™•É•¹”ˆèÉ½Ü¹•Ð ‰½‰Í•ÉÙ…Ñ¥½¹}‘…Ñ”ˆ¤°€‰Ù…±Õ”ˆè™±½…Ð¡É½Ü¹•Ð ‰%$ÄÀˆ¤¤°€‰•ÉÉ½Èˆè9½¹•ô(€€€É•ÑÕÉ¸ì‰Í½ÕÉ”ˆèI}MX°€‰ÍÑ…ÑÕÌˆè€‹¶fW²vàƒ®Ú#ªÂ ˆ°€‰É•™•É•¹”ˆè€‹¶fW²vàƒ®Ú#ªÂ ˆ°€‰Ù…±Õ”ˆè9½¹”°€‰•ÉÉ½Èˆè€‰±…Ñ•ÍÐ¹½¸µ•µÁÑäÉ½Ü¹½Ð™½Õ¹‰ô(()‘•˜½±±•Ñ}Ñ” ¤€´ø‘¥Ðè(€€€Ñ•áÐ°•ÉÈ€ô™•Ñ ¡Q}UI0¤(€€€¥˜•ÉÈ½È¹½ÐÑ•áÐè(€€€€€€€É•ÑÕÉ¸ì‰Í½ÕÉ”ˆèQ}UI0°€‰ÍÑ…ÑÕÌˆè€‹¶fW²vàƒ®Ú#ªÂ ˆ°€‰É•™•É•¹”ˆè€‹¶fW²vàƒ®Ú#ªÂ ˆ°€‰Ù…±Õ”ˆè9½¹”°€‰•ÉÉ½Èˆè•ÉÉô(€€€‰½‘ä€ô±•…¸¡Ñ•áÐ¤(€€€É½Ü€ôÉ”¹Í•…É ¡È‰UMqÌ¬ÄÁeqÌ­Q%AMqÌ¬ ´ýq¬ üép¹q¬¤ü¥qÌ¬ ´ýq¬ üép¹q¬¤ü¤•qÌ¬ ´ýq¬ üép¹q¬¤ü¤•qÌ¬ ´ýq¬ üép¹q¬¤ü¤•qÌ¬¡mµi„µéuìÍô½q‘ìÄ°Éô¤ˆ°‰½‘ä°É”¹$¤(€€€µ•Ñ„€ôÉ”¹Í•…É ¡ÈˆÄÀe•…ÈQ%ALe¥•±¹ìÀ°ÄÔÁôü ´ýq¬ üép¹q¬¤ü¥qÌ¨ üè•ñÁ•É•¹Ð¥qÌ­½¹qÌ¬¡mµi„µét¬q‘ìÄ°Éô°q‘ìÑô¤ˆ°‰½‘ä°É”¹$¤(€€€¥˜É½Üè(€€€€€€€É•ÑÕÉ¸ì‰Í½ÕÉ”ˆèQ}UI0°€‰ÍÑ…ÑÕÌˆè€‹¶fW²vã®B ˆ°€‰É•™•É•¹”ˆèÉ½Ü¹É½ÕÀ Ô¤°€‰Ù…±Õ”ˆè™±½…Ð¡É½Ü¹É½ÕÀ Ä¤¤°€‰µ•Ñ…}Ù…±Õ”ˆè™±½…Ð¡µ•Ñ„¹É½ÕÀ Ä¤¤¥˜µ•Ñ„•±Í”9½¹”°€‰µ•Ñ…}É•™•É•¹”ˆèµ•Ñ„¹É½ÕÀ È¤¥˜µ•Ñ„•±Í”9½¹”°€‰•ÉÉ½Èˆè9½¹•ô(€€€¥˜µ•Ñ„è(€€€€€€€É•ÑÕÉ¸ì‰Í½ÕÉ”ˆèQ}UI0°€‰ÍÑ…ÑÕÌˆè€‹¶fW²vã®B ˆ°€‰É•™•É•¹”ˆèµ•Ñ„¹É½ÕÀ È¤°€‰Ù…±Õ”ˆè™±½…Ð¡µ•Ñ„¹É½ÕÀ Ä¤¤°€‰•ÉÉ½Èˆè9½¹•ô(€€€É•ÑÕÉ¸ì‰Í½ÕÉ”ˆèQ}UI0°€‰ÍÑ…ÑÕÌˆè€‹¶fW²vàƒ®Ú#ªÂ ˆ°€‰É•™•É•¹”ˆè€‹¶fW²vàƒ®Ú#ªÂ ˆ°€‰Ù…±Õ”ˆè9½¹”°€‰•ÉÉ½Èˆè€‰Á…ÑÑ•É¸¹½Ð™½Õ¹‰ô(()‘•˜É•…±}å¥•±‘}¹½Ñ”¡™É•è‘¥Ð°Ñ”è‘¥Ð¤€´øÍÑÈè(€€€¥˜™É•¹•Ð ‰Ù…±Õ”ˆ¤¥Ì9½¹”½ÈÑ”¹•Ð ‰Ù…±Õ”ˆ¤¥Ì9½¹”è(€€€€€€€É•ÑÕÉ¸€‰I%$ÄÀƒ®bC®*PQÉ…‘¥¹œ½¹½µ¥Ì€ÄÁdQ%ALƒ²’Dƒ¶Vc®
+cªÂ ƒ¶fW²vã®Bc²ž ƒ²V+²Vƒ¶Vƒ²vã²r ƒªÖC²Â£¶fW²vàƒ®Ú#²f²‚ˆ(€€€µ¥Íµ…Ñ €ô…‰Ì¡™±½…Ð¡™É•‘l‰Ù…±Õ”‰t¤€´™±½…Ð¡Ñ•l‰Ù…±Õ”‰t¤¤€øô€À¸ÀÌ½ÈÍÑÈ¡™É•¹•Ð ‰É•™•É•¹”ˆ¤¤€„ôÍÑÈ¡Ñ”¹•Ð ‰É•™•É•¹”ˆ¤¤(€€€ÍÑ…Ñ”€ô€‹²ž²^À¿®Ú#²vó²æ`ƒ²z#²v0ˆ¥˜µ¥Íµ…Ñ •±Í”€‹ªÖC²Â£¶fW²vã®B ˆ(€€€É•ÑÕÉ¸˜‰íÍÑ…Ñ•ôèI%$ÄÀí™É•‘lÙ…±Õ”tè¸É™ô”¡í™É•¹•Ð É•™•É•¹”œ¥ô¤°QÉ…‘¥¹œ½¹½µ¥Ì€ÄÁdQ%ALíÑ•lÙ…±Õ”tè¸É™ô”¡íÑ”¹•Ð É•™•É•¹”œ¥ô¤ˆ(()‘•˜É•±…Ñ•¡…±•ÉÐè‘¥Ð°™É•è‘¥Ð°Ñ”è‘¥Ð¤€´øÍÑÈè(€€€½ÕÐ€ômt(€€€¥˜€‹®Âc®>²ÊÐ½$ˆ¥¸…±•ÉÑl‰Í•Ñ½ÉÌ‰tè(€€€€€€€½ÕÐ€¬ôl‰9Yˆ°€‰5Tˆ°€‰Y<ˆ°€‰5ˆ°€‰QM4ˆ°€‰M50ˆ°€‰M=`‰t(€€€¥˜€‹®6Ã²vÓ¶Ã²ó¶À¿²‚®‚—®žt¿²‚®‚—ªâÃªâÀˆ¥¸…±•ÉÑl‰Í•Ñ½ÉÌ‰tè(€€€€€€€½ÕÐ€¬ôl‰YIPˆ°€‰Q8ˆ°€‰Xˆ°€‰ˆ°€‰M5 ‰t(€€€¥˜€‰=ƒ²‚®‚—®žt¿²nC²‚¿²^C®#²ž²ž²n@ˆ¥¸…±•ÉÑl‰Í•Ñ½ÉÌ‰tè(€€€€€€€½ÕÐ€¬ôl‰=ˆ°€‰Iˆ°€‰9Iˆ°€‰@ÄÀÀÀˆ°€‰]•ÍÑ¥¹¡½ÕÍ”ˆ°€‰YIPˆ°€‰Q8ˆ°€‰Xˆ°€‰UÉ…¹¥Õ´‰t(€€€¥˜€‹²‚®‚—®žtƒ®ÎÓ²V ½ƒ²z—®æªÞs²‚pˆ¥¸…±•ÉÑl‰Í•Ñ½ÉÌ‰tè(€€€€€€€½ÕÐ€¬ôl‰M1Hˆ°€‰9A ˆ°€‰Mˆ°€‰YIPˆ°€‰Q8ˆ°€‰X‰t(€€€¥˜€‰T¿¶VsªÖ´ƒ²‚W²Æƒ²b¶Z”ˆ¥¸…±•ÉÑl‰Í•Ñ½ÉÌ‰tè(€€€€€€€½ÕÐ€¬ôl‰Tƒ²‚W²Æ®²ã²pˆ°€‹²ÊƒªÂT¿®ÂÃ¶Ã®š°¿®Âc®>²ÊÐ¿²†Ã²€ƒ²"c²Ús²Žðˆ°€‰UH½-I\‰t(€€€¥˜€‹®Â§²
+À¿²‚W²r€¿¶VÓ²jÐ¿²ž²‚W¶Vdˆ¥¸…±•ÉÑl‰Í•Ñ½ÉÌ‰tè(€€€€€€€½ÕÐ€¬ôl‰]Q$ˆ°€‰	É•¹Ðˆ°€‰a1ˆ°€‹²jÓ²z‰t(€€€¥˜€‹²nC²zC²z°¿®ž“¶³®†pˆ¥¸…±•ÉÑl‰Í•Ñ½ÉÌ‰tè(€€€€€€€½ÕÐ€¬ôl‹®¾ãªÖ´€ÄÃ®®²ðˆ°€‰adˆ°€‰UM½-I\ˆ°€‰]Q$ˆ°€‰!•¹Éä!Õˆˆ°€‰½ÁÁ•Èˆ°€‰1¥Ñ¡¥Õ´ˆ°€‰UÉ…¹¥Õ´ˆ°€‰½±‰t(€€€¥˜€‹¶Vƒ²vã²r ˆ¥¸…±•ÉÑl‰¥µÁ…ÑÌ‰tè(€€€€€€€½ÕÐ€¬ôm˜‰%$ÄÀí™É•¹•Ð Ù…±Õ”œ¤¥˜™É•¹•Ð Ù…±Õ”œ¤¥Ì¹½Ð9½¹”•±Í”€Ÿ¶fW²vàƒ®Ú#ªÂ ôˆ°˜‰Q€ÄÁdQ%ALíÑ”¹•Ð Ù…±Õ”œ¤¥˜Ñ”¹•Ð Ù…±Õ”œ¤¥Ì¹½Ð9½¹”•±Í”€Ÿ¶fW²vàƒ®Ú#ªÂ ôˆ°€‰%]4½MAdƒ²z³¶fW²và‰t(€€€É•ÑÕÉ¸€ˆ°€ˆ¹©½¥¸¡‘¥Ð¹™É½µ­•åÌ¡½ÕÐ¤¤½È€‹¶fW²vàƒªÂ®*—¶Vpƒ²ž²‚Dƒ¶.Ã²îƒ²^²v0ˆ(()‘•˜É•¹‘•É}…±•ÉÐ¡…±•ÉÐè‘¥Ð°¥‘àè¥¹Ð°¹½Üè‘Ð¹‘…Ñ•Ñ¥µ”°™É•è‘¥Ð°Ñ”è‘¥Ð¤€´øÍÑÈè(€€€É•ÑÕÉ¸€‰q¸ˆ¹©½¥¸¡l(€€€€€€€˜ˆŒŒí¥‘áô¸mí…±•ÉÑl¥µÁ½ÉÑ…¹”uôðí…±•ÉÑlÍÑ…ÑÕÌuõtˆ°(€€€€€€€˜ˆ´ƒ®&Ó²*‘€èí…±•ÉÑl¹•ÝÌuôˆ°(€€€€€€€˜ˆ´ƒ¶VsªÖ·²z”ƒªâÃ²’€èí…±•ÉÑl­½É•…}‰…Í¥Ìuôˆ°(€€€€€€€˜ˆ´ƒ¶²z®vó²vá€èƒ²Ös²Ò ƒ®æ3®Ns²^èƒ¶fW²vàƒ®Ú#ªÂ €¼ƒªÎ×².w
+ß²nC²Êpƒ².sªÂèí…±•ÉÑlÁÕ‰±¥Í¡•uô€¼ƒ¶VsªÖ´ƒ¶"³²zC²z@ƒ¶fW²
+Àèí¹½Üè•d´•´´•€• è•4-MQôƒ²†Ã¶j0ƒªâÃ²’ ˆ°(€€€€€€€˜ˆ´ƒ²Ús²Êa€èmí…±•ÉÑlÁÕ‰±¥Í¡•Èuõt¡í…±•ÉÑl±¥¹¬uô¤ƒ
+Üƒ²†Ã¶j0í¹½Üè•d´•´´•€• è•4-MQôˆ°(€€€€€€€˜ˆ´ƒ²vc²
+³ªÊÃ²‚Tƒ²b¶Z•€èìœ°€œ¹©½¥¸¡…±•ÉÑl¥µÁ…ÑÌt¥ôˆ°(€€€€€€€˜ˆ´ƒ²b¶Z”ƒªÊ÷®†q€èìœ°€œ¹©½¥¸¡…±•ÉÑlÁ…Ñ¡Ìt¥ôˆ°(€€€€€€€˜ˆ´ƒ²b¶Z”ƒ²ç¶Á€èìœ°€œ¹©½¥¸¡…±•ÉÑlÍ•Ñ½ÉÌt¥ôˆ°(€€€€€€€˜ˆ´ƒªÒ®‚ ƒ¶VÓ²fàƒ¶.Ã²î¿²ž¶Fq€èíÉ•±…Ñ•¡…±•ÉÐ°™É•°Ñ”¥ôˆ°(€€€€€€€˜ˆ´ƒ®Âc²bƒªÂ®*—²Å€èí…±•ÉÑlÉ•™±•Ñ¥½¸uôˆ°(€€€€€€€˜ˆ´ƒ®Âc®2 ƒªÞóªÆÁ€èí…±•ÉÑl½Õ¹Ñ•Èuôˆ°(€€€€€€€˜ˆ´ƒ¶VÓ²u€èí…±•ÉÑl¥¹Ñ•ÉÁÉ•Ñ…Ñ¥½¸uôˆ°(€€€€€€€˜ˆ´ƒ².“¶2 ƒ².ƒ¶bá€èí…±•ÉÑl™…¥±•‘}Í¥¹…°uôˆ°(€€€€€€€€ˆˆ°(€€€t¤(()‘•˜É•¹‘•É}É•Á½ÉÐ¡…±•ÉÑÌè±¥ÍÑm‘¥Ñt°¹½Ñ•Ìè±¥ÍÑmÍÑÉt°™É•è‘¥Ð°Ñ”è‘¥Ð°¹½Üè‘Ð¹‘…Ñ•Ñ¥µ”¤€´øÍÑÈè(€€€Ñ¥Ñ±”€ô˜‹Â~NÀ5)=ƒ²z—²‚ƒ¶V×².°ƒ®&Ó²*ƒ®‚#²vÓ®6Pƒ
+Üí¹½Üè•g®€•·²nP€•“²vñôƒ
+Ü€ÀØèÌÀˆ(€€€±¥¹•Ì€ôl(€€€€€€€Ñ¥Ñ±”°€ˆˆ°(€€€€€€€˜‹²†Ã¶j0ƒªâÃ²’ èí¹½Üè•d´•´´•€• è•4-MQô¸¥Ñ!ÕˆÑ¥½¹Ìƒ²fã®Ú ƒ®~³® ƒªâÃ²’²vÓ®¦À°ƒ®†s²î°½‘•à½Aƒ²‚#²‚ƒ²¶s²f ƒ®²ÓªÒ¶VcªÊ0ƒ².“¶Z'®B§®.#®.¸ˆ°€ˆˆ°(€€€€€€€€ˆŒŒŒƒ²zC®Ž0ƒ²Êc®š°ƒ¶b¶f§¶Fpˆ°(€€€€€€€€‰ðƒ¶V·®ª¤ðƒ²†Ã¶j0ƒ².sªÂðƒ²ž²‚Dƒ¶fW²vàðƒ²¶pðˆ°€‰ð´´µð´´´éð´´´éð´´µðˆ°(€€€€€€€˜‰ðƒ²z—²‚ƒ®&Ó²*ƒ²nC²Êpðí¹½Üè• è•4-MQôðíÍÕ´ Ÿ¶fW²vàƒ®Ú#ªÂ œ¹½Ð¥¸¸™½È¸¥¸¹½Ñ•Ì¥÷ªÂpƒ²nC²Êpðìœ€¼€œ¹©½¥¸¡¹½Ñ•ÍlèÕt¥ôðˆ°(€€€€€€€˜‰ðI%$ÄÀðí¹½Üè• è•4-MQôðìŸ²b œ¥˜™É•¹•Ð Ù…±Õ”œ¤¥Ì¹½Ð9½¹”•±Í”€Ÿ²V®.#²bôðí™É•¹•Ð ÍÑ…ÑÕÌœ¥ôƒ
+Üí™É•¹•Ð É•™•É•¹”œ¥ôðˆ°(€€€€€€€˜‰ðQÉ…‘¥¹œ½¹½µ¥Ì€ÄÁdQ%ALðí¹½Üè• è•4-MQôðìŸ²b œ¥˜Ñ”¹•Ð Ù…±Õ”œ¤¥Ì¹½Ð9½¹”•±Í”€Ÿ²V®.#²bôðíÑ”¹•Ð ÍÑ…ÑÕÌœ¥ôƒ
+ÜíÑ”¹•Ð É•™•É•¹”œ¥ôðˆ°(€€€€€€€€ˆˆ°˜‹¶Vƒ²vã²r ƒªÖC²Â£¶fW²vàèíÉ•…±}å¥•±‘}¹½Ñ”¡™É•°Ñ”¥ôˆ°€ˆˆ°(€€€t(€€€¥˜…±•ÉÑÌè(€€€€€€€™½È¥‘à°…±•ÉÐ¥¸•¹Õµ•É…Ñ”¡…±•ÉÑÍlèÝt°€Ä¤è(€€€€€€€€€€€±¥¹•Ì¹…ÁÁ•¹¡É•¹‘•É}…±•ÉÐ¡…±•ÉÐ°¥‘à°¹½Ü°™É•°Ñ”¤¤(€€€•±Í”è(€€€€€€€±¥¹•Ì€¬ôl‹²z—²‚ƒªÎƒ²Ú§ªÊ¤ƒ®&Ó²*ƒ²ž²‚Dƒ¶fW²vàƒ²^²v0ˆ°€ˆˆ°€‹ªÂC²‚W²Äƒ®&Ó²*“®†pƒ²‚s²fàèƒªÎ×².t¿².ƒ®ŠÀƒ²3²*“²^C²pƒ®> ƒ®Ê®*Pƒ®*—®‚”°ƒ¶Vƒ²vã²r °ƒ²"cªâ$°ƒ².sªÂ¶Fs®–ðƒ®ª¶fW¶z ƒ®ÂSªúã®*Pƒ¶n®ÎÓªÂ ƒ²ž²‚Dƒ¶fW²vã®Bc²ž ƒ²V+²v ƒ¶V·®ª¤¸ˆ°€ˆ‰t(€€€Ñ½À€ô…±•ÉÑÍlÁul‰¹•ÝÌ‰t¥˜…±•ÉÑÌ•±Í”€‹²z—²‚ƒªÎƒ²Ú§ªÊ¤ƒ®&Ó²*ƒ²ž²‚Dƒ¶fW²vàƒ²^²v0ˆ(€€€¡…¹•€ô€ˆ°€ˆ¹©½¥¸¡…±•ÉÑÍlÁul‰¥µÁ…ÑÌ‰t¤¥˜…±•ÉÑÌ•±Í”€‹®ª¶fW¶Vpƒ®Î¶fPƒ²^²v0ˆ(€€€±¥¹•Ì€¬ôl(€€€€€€€€‹Â~J„€ÀØèÌÀƒ²z—²‚ƒ®&Ó²*ƒ²öS®¦c¶*àˆ°(€€€€€€€˜‹²b“®*`€Ç²"s²rƒ²ÊÓ¶³®*PíÑ½Áõƒ²z®.#®.¸ƒ²b“®*`ƒªÂ²z”ƒ¶³ªÊ0ƒ®ÂS®@ƒ²ÚW²v í¡…¹•‘õƒ²vÓ®¦À°ƒ¶VsªÖ·²z—²^C²s®*PƒªÒ®‚ ƒ¶VÓ²fàƒ¶.Ã²îƒ®Âc²vGªÎðƒªÖ·®
+Ðƒ²"cªâ$ƒ¶fW²
+Àƒ²^³®Ú®–ðƒ®¢ó²‚ ƒ®ÎÓªÊƒ²*×®.#®.¸ˆ°(€€€€€€€˜‹¶Vƒ²vã²r£²v I%$ÄÃªÎðQÉ…‘¥¹œ½¹½µ¥Ì€ÄÀe•…ÈQ%ALe¥•±“®–ðƒ¶V£ªî`ƒ¶fW²vã¶Z#²*×®.#®.èíÉ•…±}å¥•±‘}¹½Ñ”¡™É•°Ñ”¥ô¸ˆ°(€€€€€€€€ˆÀØèÔÀƒ¶"³²zCªâÃ²®>²^C²pƒ²"c²æc
+ß²"cªâ'
+ß¶3®ž#²f ƒ²z³¶fW²vàƒ¶V²jP¸ˆ°€ˆˆ°(€€€€€€€€‹¶"³²z@ƒ²†Ã²Zã²vÐƒ²V®.0ƒ²ÂãªÎƒ²j¤ƒ®&Ó²*ƒ®â3®š³¶VG²z®.#®.¸ˆ°€ˆˆ°(€€€€€€€€‹²Žó²jPƒ²Ús²Ê`èˆ°€©m˜ˆ´í¹ôˆ™½È¸¥¸¹½Ñ•ÍlèÄáut°˜ˆ´I%$ÄÀèíI}MYôˆ°˜ˆ´QÉ…‘¥¹œ½¹½µ¥Ì€ÄÁdQ%ALèíQ}UI1ôˆ°(€€€t(€€€É•ÑÕÉ¸€‰q¸ˆ¹©½¥¸¡±¥¹•Ì¤¹ÍÑÉ¥À ¤€¬€‰q¸ˆ(()‘•˜Í•¹‘}Ñ•±•É…´¡Ñ•áÐèÍÑÈ¤€´ø9½¹”è(€€€Ñ½­•¸€ô½Ì¹•Ñ•¹Ø ‰Q1I5}	=Q}Q=-8ˆ°€ˆˆ¤¹ÍÑÉ¥À ¤(€€€¡…Ñ}¥€ô½Ì¹•Ñ•¹Ø ‰Q1I5}!Q}%ˆ°€ˆˆ¤¹ÍÑÉ¥À ¤(€€€¥˜¹½ÐÑ½­•¸½È¹½Ð¡…Ñ}¥è(€€€€€€€ÁÉ¥¹Ð ‰Q•±•É…´èQ1I5}	=Q}Q=-8½ÈQ1I5}!Q}%µ¥ÍÍ¥¹œˆ¤(€€€€€€€É•ÑÕÉ¸(€€€É•Á¼°ÉÕ¹}¥€ô½Ì¹•Ñ•¹Ø ‰%Q!U	}IA=M%Q=Idˆ°€ˆˆ¤°½Ì¹•Ñ•¹Ø ‰%Q!U	}IU9}%ˆ°€ˆˆ¤(€€€ÍÕ™™¥à€ô˜‰q¹q»²‚²ÊÐƒ®ÎÓªÎƒ²pè¡ÑÑÁÌè¼½¥Ñ¡Õˆ¹½´½íÉ•Á½ô½…Ñ¥½¹Ì½ÉÕ¹Ì½íÉÕ¹}¥‘ôˆ¥˜É•Á¼…¹ÉÕ¹}¥•±Í”€ˆˆ(€€€‰½‘ä€ôÕÉ±±¥ˆ¹Á…ÉÍ”¹ÕÉ±•¹½‘”¡ì‰¡…Ñ}¥ˆè¡…Ñ}¥°€‰Ñ•áÐˆè€¡Ñ•áÑlèQ1I5}1%5%P€´±•¸¡ÍÕ™™¥à¤€´€Åt€¬ÍÕ™™¥à¥léQ1I5}1%5%Qt°€‰‘¥Í…‰±•}Ý•‰}Á…•}ÁÉ•Ù¥•Üˆè€‰ÑÉÕ”‰ô¤¹•¹½‘” ‰ÕÑ˜´àˆ¤(€€€É•Ä€ôÕÉ±±¥ˆ¹É•ÅÕ•ÍÐ¹I•ÅÕ•ÍÐ¡˜‰¡ÑÑÁÌè¼½…Á¤¹Ñ•±•É…´¹½Éœ½‰½ÑíÑ½­•¹ô½Í•¹‘5•ÍÍ…”ˆ°‘…Ñ„õ‰½‘ä°µ•Ñ¡½ô‰A=MPˆ¤(€€€Ý¥Ñ ÕÉ±±¥ˆ¹É•ÅÕ•ÍÐ¹ÕÉ±½Á•¸¡É•Ä°Ñ¥µ•½ÕÐôÈÔ¤…ÌÉ•ÍÀè(€€€€€€€É•ÍÀ¹É•… ¤(€€€ÁÉ¥¹Ð ‰Q•±•É…´èÍ•¹Ðˆ¤(()‘•˜ÁÉ¥¹Ñ}ÕÑ˜à¡Ñ•áÐèÍÑÈ¤€´ø9½¹”è(€€€ÑÉäè(€€€€€€€ÍåÌ¹ÍÑ‘½ÕÐ¹ÝÉ¥Ñ”¡Ñ•áÐ¤(€€€•á•ÁÐU¹¥½‘•¹½‘•ÉÉ½Èè(€€€€€€€ÍåÌ¹ÍÑ‘½ÕÐ¹‰Õ™™•È¹ÝÉ¥Ñ”¡Ñ•áÐ¹•¹½‘” ‰ÕÑ˜´àˆ°€‰É•Á±…”ˆ¤¤(()‘•˜µ…¥¸ ¤€´ø¥¹Ðè(€€€¹½Ü€ô­ÍÑ}¹½Ü ¤(€€€É½ÝÌ°¹½Ñ•Ì€ô½±±•Ñ}¥Ñ•µÌ¡¹½Ü¤(€€€…±•ÉÑÌ€ôm„™½È„¥¸€¡±…ÍÍ¥™ä¡È°¹½Ü¤™½ÈÈ¥¸É½ÝÌ¥˜™É•Í ¡È°¹½Ü¤¤¥˜…t(€€€…±•ÉÑÌ¹Í½ÉÐ¡­•äõ±…µ‰‘„„è€ µ…l‰Í½É”‰t°…l‰ÁÕ‰±¥Í¡•‰t¤¤(€€€‘•‘ÕÁ•°Í••¸€ômt°Í•Ð ¤(€€€™½È…±•ÉÐ¥¸…±•ÉÑÌè(€€€€€€€­•ä€ô€¡¹½É´¡…±•ÉÑl‰¹•ÝÌ‰t¤°¹½É´¡…±•ÉÑl‰ÁÕ‰±¥Í¡•È‰t¤°…±•ÉÑl‰ÁÕ‰±¥Í¡•‰ulèÄÁt¤(€€€€€€€¥˜­•ä¥¸Í••¸è(€€€€€€€€€€€½¹Ñ¥¹Õ”(€€€€€€€Í••¸¹…‘¡­•ä¤(€€€€€€€‘•‘ÕÁ•¹…ÁÁ•¹¡…±•ÉÐ¤(€€€€€€€¥˜±•¸¡‘•‘ÕÁ•¤€øô€Üè(€€€€€€€€€€€‰É•…¬(€€€±½…±}‘}…¹‘¥‘…Ñ•Ì€ôm„™½È„¥¸…±•ÉÑÌ¥˜„¹•Ð ‰±½…±}‘}Á½±¥äˆ¥t(€€€™½È…¹‘¥‘…Ñ”¥¸±½…±}‘}…¹‘¥‘…Ñ•Ìè(€€€€€€€±½…±}½Õ¹Ð€ôÍÕ´ Ä™½È„¥¸‘•‘ÕÁ•¥˜„¹•Ð ‰±½…±}‘}Á½±¥äˆ¤¤(€€€€€€€¥˜±½…±}½Õ¹Ð€øôµ¥¸ È°±•¸¡±½…±}‘}…¹‘¥‘…Ñ•Ì¤¤è(€€€€€€€€€€€‰É•…¬(€€€€€€€­•ä€ô€¡¹½É´¡…¹‘¥‘…Ñ•l‰¹•ÝÌ‰t¤°¹½É´¡…¹‘¥‘…Ñ•l‰ÁÕ‰±¥Í¡•È‰t¤°…¹‘¥‘…Ñ•l‰ÁÕ‰±¥Í¡•‰ulèÄÁt¤(€€€€€€€¥˜­•ä¥¸Í••¸è(€€€€€€€€€€€½¹Ñ¥¹Õ”(€€€€€€€¥˜±•¸¡‘•‘ÕÁ•¤€ð€Üè(€€€€€€€€€€€‘•‘ÕÁ•¹…ÁÁ•¹¡…¹‘¥‘…Ñ”¤(€€€€€€€€€€€Í••¸¹…‘¡­•ä¤(€€€€€€€€€€€½¹Ñ¥¹Õ”(€€€€€€€™½È¥‘à¥¸É…¹”¡±•¸¡‘•‘ÕÁ•¤€´€Ä°€´Ä°€´Ä¤è(€€€€€€€€€€€¥˜¹½Ð‘•‘ÕÁ•‘m¥‘át¹•Ð ‰±½…±}‘}Á½±¥äˆ¤è(€€€€€€€€€€€€€€€½±€ô‘•‘ÕÁ•‘m¥‘át(€€€€€€€€€€€€€€€Í••¸¹‘¥Í…É ¡¹½É´¡½±‘l‰¹•ÝÌ‰t¤°¹½É´¡½±‘l‰ÁÕ‰±¥Í¡•È‰t¤°½±‘l‰ÁÕ‰±¥Í¡•‰ulèÄÁt¤¤(€€€€€€€€€€€€€€€‘•‘ÕÁ•‘m¥‘át€ô…¹‘¥‘…Ñ”(€€€€€€€€€€€€€€€Í••¸¹…‘¡­•ä¤(€€€€€€€€€€€€€€€‰É•…¬(€€€‘•‘ÕÁ•¹Í½ÉÐ¡­•äõ±…µ‰‘„„è€ µ…l‰Í½É”‰t°…l‰ÁÕ‰±¥Í¡•‰t¤¤(€€€™É•°Ñ”€ô½±±•Ñ}‘™¥¤ÄÀ ¤°½±±•Ñ}Ñ” ¤(€€€É•Á½ÉÐ€ôÉ•¹‘•É}É•Á½ÉÐ¡‘•‘ÕÁ•°¹½Ñ•Ì°™É•°Ñ”°¹½Ü¤(€€€=UP¹µ­‘¥È¡Á…É•¹ÑÌõQÉÕ”°•á¥ÍÑ}½¬õQÉÕ”¤(€€€€¡=UP€¼€‰…µ•©½…}ÁÉ•½Á•¹}¹•ÝÍ}É…‘…È¹µˆ¤¹ÝÉ¥Ñ•}Ñ•áÐ¡É•Á½ÉÐ°•¹½‘¥¹œô‰ÕÑ˜´àˆ¤(€€€€¡=UP€¼€‰…µ•©½…}ÁÉ•½Á•¹}¹•ÝÍ}É…‘…É}Ñ¥Ñ±”¹ÑáÐˆ¤¹ÝÉ¥Ñ•}Ñ•áÐ¡É•Á½ÉÐ¹ÍÁ±¥Ñ±¥¹•Ì ¥lÁt€¬€‰q¸ˆ°•¹½‘¥¹œô‰ÕÑ˜´àˆ¤(€€€€¡=UP€¼€‰…µ•©½…}ÁÉ•½Á•¹}¹•ÝÍ}É…‘…È¹©Í½¸ˆ¤¹ÝÉ¥Ñ•}Ñ•áÐ¡©Í½¸¹‘ÕµÁÌ¡ì‰ÅÕ•Éå}Ñ¥µ•}­ÍÐˆè¹½Ü¹¥Í½™½Éµ…Ð¡Ñ¥µ•ÍÁ•Œô‰Í•½¹‘Ìˆ¤°€‰…±•ÉÑÌˆè‘•‘ÕÁ•°€‰Í½ÕÉ•}¹½Ñ•Ìˆè¹½Ñ•Ì°€‰™É•‘}‘™¥¤ÄÀˆè™É•°€‰ÑÉ…‘¥¹•½¹½µ¥Í}Ñ¥ÁÌˆèÑ•ô°•¹ÍÕÉ•}…Í¥¤õ…±Í”°¥¹‘•¹ÐôÈ°‘•™…Õ±ÐõÍÑÈ¤€¬€‰q¸ˆ°•¹½‘¥¹œô‰ÕÑ˜´àˆ¤(€€€ÁÉ¥¹Ñ}ÕÑ˜à¡É•Á½ÉÐ¤(€€€¥˜½Ì¹•Ñ•¹Ø ‰Q1I5}Ie}IU8ˆ°€ˆˆ¤¹±½Ý•È ¤¥¸ìˆÄˆ°€‰ÑÉÕ”ˆ°€‰å•Ìˆ°€‰ä‰ôè(€€€€€€€ÁÉ¥¹Ð ‰Q•±•É…´è‘ÉäÉÕ¸ˆ¤(€€€€€€€É•ÑÕÉ¸€À(€€€¥˜½Ì¹•Ñ•¹Ø ‰M9}Q1I4ˆ°€ˆˆ¤¹±½Ý•È ¤¥¸ìˆÄˆ°€‰ÑÉÕ”ˆ°€‰å•Ìˆ°€‰ä‰ôè(€€€€€€€Í•¹‘}Ñ•±•É…´¡É•Á½ÉÐ¤(€€€É•ÑÕÉ¸€À(()¥˜}}¹…µ•}|€ôô€‰}}µ…¥¹}|ˆè(€€€É…¥Í”MåÍÑ•µá¥Ð¡µ…¥¸ ¤¤(

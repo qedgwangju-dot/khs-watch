@@ -93,7 +93,7 @@ def enforce_transformer_tariff_watch() -> None:
     original_classify = contract.strict.classify
 
     def classify(row: dict, now):
-        text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+        text = base.source_content_text(row)
         alert = original_classify(row, now)
         if not is_transformer_tariff(text):
             return alert

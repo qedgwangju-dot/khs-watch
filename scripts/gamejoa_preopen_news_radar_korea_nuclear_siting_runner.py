@@ -59,7 +59,7 @@ def enforce_domestic_nuclear_siting_watch() -> None:
     original_classify = contract.strict.classify
 
     def classify(row: dict, now):
-        text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+        text = base.source_content_text(row)
         alert = original_classify(row, now)
         if not is_domestic_nuclear_siting(text):
             return alert

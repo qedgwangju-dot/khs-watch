@@ -84,10 +84,22 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
             "is_low_impact_trade_admin_notice",
             "is_actionable_local_dc_policy",
             "source_evidence_text",
+            "SOURCE_OUTPUT_ALIGNMENT_THEMES",
+            "korea_market_link_guard",
             "countervailing",
             "south korea",
             "decision_matrix",
             "guard_preopen_report(report)",
+        ],
+        errors,
+    )
+    require(
+        SCRIPTS / "verify_gamejoa_delivery_contract.py",
+        [
+            "us-treasury-flags-wall-street-tax-strategies-potentially-abusive",
+            "collector query label leaked into Reuters Treasury source content",
+            "Reuters Treasury source/body mismatch reached final Telegram selection",
+            "source-authored AP1000 nuclear article failed source/body alignment",
         ],
         errors,
     )

@@ -210,7 +210,7 @@ def enforce_telecom_policy_watch() -> None:
     original_classify = contract.strict.classify
 
     def classify(row: dict, now):
-        text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+        text = base.source_content_text(row)
         telecom_policy = is_domestic_telecom_policy(text)
         idc_risk = has_telecom_idc_risk(text)
         stablecoin_policy = is_domestic_stablecoin_policy(text)

@@ -74,7 +74,7 @@ def has_memory_antitrust_docket(text: str) -> bool:
 
 
 def is_memory_antitrust_row(row: dict) -> bool:
-    text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')} {row.get('link')}")
+    text = base.source_content_text(row)
     return has_memory_antitrust_text(text)
 
 
@@ -115,7 +115,7 @@ def enforce_memory_antitrust_watch() -> None:
 
     def classify(row: dict, now):
         alert = original_classify(row, now)
-        text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')} {row.get('link')}")
+        text = base.source_content_text(row)
         if not has_memory_antitrust_text(text):
             return alert
 

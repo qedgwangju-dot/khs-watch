@@ -77,6 +77,8 @@ REQUIRED_RUNNER_SNIPPETS = [
     "telegram.final_alerts_for_output = quality_display_alerts",
     "telegram.canonical_alert_for_seen = normalize_alert_for_output",
     "source_output_aligned(normalized)",
+    "SOURCE_OUTPUT_ALIGNMENT_THEMES",
+    "korea_market_link_guard",
     "federal_register_uae_ear",
     "ALLOW_OFF_WINDOW_TELEGRAM",
 ]
@@ -143,6 +145,7 @@ REQUIRED_BASE_SOURCE_SNIPPETS = [
     "www.bing.com/news/search",
     "def unwrap_news_link",
     'netloc.lower().endswith("bing.com")',
+    "def source_content_text",
 ]
 
 
@@ -297,6 +300,77 @@ def main() -> int:
         selected_uae_ear = compact.quality_display_alerts([uae_ear_alert], 5)
         if len(selected_uae_ear) != 1 or not compact.source_output_aligned(selected_uae_ear[0]):
             errors.append("Federal Register UAE EAR alert failed final selection source/body alignment")
+
+    # Regression fixture for the July 21 Reuters Treasury-tax article.  The
+    # collector query label contains nuclear/rate terms, but labels are routing
+    # metadata and must never become article evidence or a Korean market theme.
+    treasury_tax_row = {
+        "source": "Trusted news 원전 인프라 금리인하",
+        "layer": "trusted",
+        "publisher": "Reuters",
+        "title": "US Treasury flags Wall Street tax strategies potentially abusive, Bloomberg News reports",
+        "summary": (
+            "The Treasury Department identified several Wall Street tax strategies as potentially "
+            "abusive, Bloomberg News reported."
+        ),
+        "link": (
+            "https://www.reuters.com/legal/government/"
+            "us-treasury-flags-wall-street-tax-strategies-potentially-abusive-bloomberg-news-2026-07-21/"
+        ),
+        "published": now,
+    }
+    treasury_source_text = production.base.source_content_text(treasury_tax_row)
+    if any(term in treasury_source_text for term in ["원전", "smr", "가스터빈", "금리인하"]):
+        errors.append("collector query label leaked into Reuters Treasury source content")
+    treasury_tax_alert = production.contract.strict.classify(treasury_tax_row, now)
+    if treasury_tax_alert is not None:
+        errors.append("unrelated Reuters Treasury tax-strategy article was classified as high-impact Korea-market news")
+
+    poisoned_treasury_alert = {
+        "score": 100,
+        "importance": "상",
+        "status": "공식 확인 전",
+        "source": treasury_tax_row["source"],
+        "publisher": treasury_tax_row["publisher"],
+        "source_title": treasury_tax_row["title"],
+        "source_abstract": treasury_tax_row["summary"],
+        "original_news": treasury_tax_row["title"],
+        "link": treasury_tax_row["link"],
+        "published": now.isoformat(timespec="minutes"),
+        "news": "미국 원전·SMR·AI 전력 정책 시간표 체크",
+        "policy_plain_summary": "원전, SMR, 가스터빈, AI 전력수요 관련 정책 시간표입니다.",
+        "investment_view": "원전 기자재 발주와 수주 기대를 확인합니다.",
+        "korea_market_impact": "두산에너빌리티와 KHNP 수급을 확인합니다.",
+        "impacts": ["할인율"],
+        "paths": ["할인율"],
+        "sectors": ["원전/SMR/가스터빈", "두산에너빌리티/KHNP"],
+    }
+    if "원전" in compact.source_evidence_text(poisoned_treasury_alert):
+        errors.append("collector query label leaked into final source evidence")
+    if compact.source_output_aligned(poisoned_treasury_alert):
+        errors.append("Reuters Treasury tax article passed with an unrelated nuclear headline/body")
+    if compact.quality_display_alerts([poisoned_treasury_alert], 5):
+        errors.append("Reuters Treasury source/body mismatch reached final Telegram selection")
+
+    legitimate_nuclear_row = {
+        "source": "Trusted news 원자재/금리/환율",
+        "layer": "trusted",
+        "publisher": "Reuters",
+        "title": "US backs Westinghouse AP1000 nuclear reactor construction with low-cost loans",
+        "summary": (
+            "The program supports construction of AP1000 nuclear reactors to meet rising data-center "
+            "power demand, subject to licensing and final financing."
+        ),
+        "link": "https://www.reuters.com/business/energy/example-ap1000-nuclear-loans",
+        "published": now,
+    }
+    legitimate_nuclear_alert = production.contract.strict.classify(legitimate_nuclear_row, now)
+    if legitimate_nuclear_alert is None:
+        errors.append("source-authored AP1000 nuclear article was lost after query-label isolation")
+    else:
+        normalized_nuclear = compact.normalize_alert_for_output(legitimate_nuclear_alert)
+        if not compact.source_output_aligned(normalized_nuclear):
+            errors.append("source-authored AP1000 nuclear article failed source/body alignment")
 
     iran_row = {
         "source": "Trusted news 이란/호르무즈 긴급상황",

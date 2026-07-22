@@ -224,7 +224,7 @@ def enforce_k_defense_watch() -> None:
     original_classify = contract.strict.classify
 
     def classify(row: dict, now):
-        text = base.norm(f"{row.get('title')} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+        text = base.source_content_text(row)
         has_k_defense = has_any(text, K_DEFENSE_COMPANY_TERMS + K_DEFENSE_SYSTEM_TERMS)
         has_event = has_any(text, K_DEFENSE_EVENT_TERMS)
         has_drone_watch = has_drone_air_defense_watch(text)

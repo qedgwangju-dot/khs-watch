@@ -48,7 +48,7 @@ append_unique(base.TERMS, [
     "buyback", "convertible", "joint venture", "loi", "mou", "offering",
     "customer inventory", "dram", "inventory", "memory price", "nand", "oversupply", "pricing", "selloff", "stock drop", "valuation",
     "copper", "dollar", "fed", "gold", "lithium", "natural gas", "oil", "real yield",
-    "tips", "treasury", "uranium", "won", "yield",
+    "tips", "uranium", "won", "yield",
 ])
 
 for idx, (label, keys) in enumerate(base.SECTORS):
@@ -63,7 +63,7 @@ for idx, (label, keys) in enumerate(base.SECTORS):
 if not any(label == "원자재/매크로" for label, _ in base.SECTORS):
     base.SECTORS.append((
         "원자재/매크로",
-        ["oil", "natural gas", "copper", "lithium", "uranium", "gold", "dollar", "won", "treasury", "yield", "fed", "real yield", "tips"],
+        ["oil", "natural gas", "copper", "lithium", "uranium", "gold", "dollar", "won", "yield", "fed", "real yield", "tips"],
     ))
 
 
@@ -106,7 +106,7 @@ def classify(row: dict, now):
     title = base.clean(row.get("title"))
     if len(title) < 8:
         return None
-    text = base.norm(f"{title} {row.get('summary')} {row.get('publisher')} {row.get('source')}")
+    text = base.source_content_text(row)
     local_dc_policy = strict.is_local_dc_policy(row)
     matched = [t for t in base.TERMS if base.has(text, t)]
     sectors = [label for label, keys in base.SECTORS if any(base.has(text, k) for k in keys)]
@@ -128,7 +128,7 @@ def classify(row: dict, now):
     impacts = []
     if any(t in matched for t in ["contract", "earnings", "guidance", "approval", "supply agreement", "fda", "capex", "oil", "natural gas", "copper", "lithium", "uranium", "customer inventory", "dram", "inventory", "memory price", "nand", "oversupply", "pricing", "단일판매", "공급계약", "수주", "투자판단"]):
         impacts.append("돈 버는 능력")
-    if any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "city council", "dollar", "fed", "gold", "moratorium", "ordinance", "real yield", "regulation", "tariff", "tips", "treasury", "valuation", "won", "yield", "zoning"]):
+    if any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "city council", "dollar", "fed", "gold", "moratorium", "ordinance", "real yield", "regulation", "tariff", "tips", "valuation", "won", "yield", "zoning"]):
         impacts.append("할인율")
     if any(t in matched for t in ["buyback", "convertible", "entity list", "export control", "offering", "sanction", "selloff", "stock drop", "supply", "유상증자", "전환사채", "신주인수권", "자기주식", "최대주주"]):
         impacts.append("수급")
