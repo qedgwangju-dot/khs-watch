@@ -325,51 +325,604 @@ def main() -> int:
             "and adds it to Country Group A:5. Strategic Trade Authorization becomes available "
             "for approved entities, including dual-use items for civil nuclear power generation."
         ),
-        "source_abstract": ç¯}¶‰Ëkºwµçbc²Ús¶×²‚pƒ¶fW®2 ƒªÊ¶€ˆ°(€€€€€€€€ˆ´ƒªâÃ²’ ¿².sªÂèƒ².ƒ®ŠÃ²fã².€ƒ¶fW²
-Àƒ
-Üƒ²nC²Êpƒ¶fW²vàƒ²’Dƒ
-Üƒ²†Ã¶j0€ÈÀèÀÀ-MPˆ°(€€€€€€€€ (€€€€€€€€€€€€ˆ´ƒ¶V×².°èƒ®¾ãªÖ·²vĞƒ²Ê£®. ƒ®Âc®>²ÊĞƒ²z—®æƒ²"c²Ús¶×²‚s®–ğƒ¶fW®2¶VĞƒ¶VsªÖ´ƒªâÃ²^²v`€ˆ(€€€€€€€€€€€€‹²’GªÖ´ƒªÎ×²z”ƒ²šw²“ªÎğƒ²z—®æƒ®Âc²zƒ²vó²‚W²vƒ®.“².pƒ²‚CªÊ¶VcªÊ0ƒ®BC²*×®.#®.¸ˆ(€€€€€€€€¤°(€€€€€€€€ (€€€€€€€€€€€€ˆ´ƒ¶"³²z@ƒ¶>³²vã¶*àèƒ²‚²j¤ƒ²z—®æ²f ƒ².s¶Z'²vó²vĞƒ¶fW²‚W®Bc®¦Ğƒ²’GªÖ´ƒ²w²
-Ã®ÊW²vã²v`€ˆ(€€€€€€€€€€€€‹²šw²“®æ²j§ªÎğƒ²z—®æƒ²†Ã®.°ƒ²vó²‚W²vĞƒ®ÂS®Pƒ²"`ƒ²z#²*×®.#®.¸ˆ(€€€€€€€€¤°(€€€€€€€€ˆ´ƒªÊ÷®†p¿²ç¶ÀèƒªÎ×ªâ'®t°ƒ²‚W²Æƒ¶²z®vó²vàğƒ®Âc®>²ÊĞ½$ˆ°(€€€€€€€€ˆ´ƒ²Ús²Ê`è€ñ„¡É•˜õp‰¡ÑÑÁÌè¼½İİÜ¹É•ÕÑ•ÉÌ¹½´½İ½É±½•á…µÁ±•pˆùI•ÕÑ•ÉÌğ½„øˆ°(€€€€€€€€ˆˆ°(€€€€€€€€‹Â~J„ƒ².“².sªÂƒ®&Ó²*ƒ²öS®¦c¶*àˆ°(€€€€€€€€‹²b“®*`ƒ¶V×².°ƒ®Î¶fS®*Pƒ®“²Ús
-ß®#²
-ß¶bªâ#¶vC®š
-ß².sªÂ¶Fqƒ²z®.#®.¸ˆ°(€€€€€€€€‹¶Vƒ²vã²r èƒ¶fW²vàƒ®Ú#ªÂ ˆ°(€€€€€€€€‹®.“²v0ƒ¶"³²zCªâÃ²®>²^C²pƒ²"c²æc
-ß²"cªâ'
-ß¶3®#²f ƒ²z³¶fW²vàƒ¶V²jP¸ˆ°(€€€€€€€€ˆˆ°(€€€€€€€€‹¶"³²z@ƒ²†Ã²Zã²vĞƒ²V®.0ƒ²ÂãªÎƒ²j¤ƒ®&Ó²*ƒ®â3®š³¶VG²z®.#®.¸ˆ°(€€€t¤€¬€‰q¸ˆ(€€€ÑÉäè(€€€€€€€½µÁ…Ñ•€ô½µÁ…Ğ¹Õ…É‘}ÁÉ•½Á•¹}É•Á½ÉĞ¡É•Á½ÉĞ¤(€€€•á•ÁĞIÕ¹Ñ¥µ•ÉÉ½È…Ì•áŒè(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜ˆÔÄµ¡…É…Ñ•ÈÍÕµµ…Éäİ…Ì‰±½­•¥¹ÍÑ•…½˜½µÁ…Ñ•èí•áôˆ¤(€€€€€€€É•ÑÕÉ¸(€€€™¥•±‘}•ÉÉ½ÉÌ€ô½µÁ…Ñ}ÁÉ½Í•}•ÉÉ½ÉÌ¡½µÁ…Ñ•¤(€€€¥˜™¥•±‘}•ÉÉ½ÉÌè(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ (€€€€€€€€€€€€ˆÔÄµ¡…É…Ñ•ÈÍÕµµ…ÉäÉ•µ…¥¹•½Ù•È€ÔÀ¡…ÉÌ…™Ñ•ÈÍ•¹ÁÉ•Á…É…Ñ¥½¸è€ˆ(€€€€€€€€€€€€¬€ˆ°€ˆ¹©½¥¸¡™¥•±‘}•ÉÉ½ÉÌ¤(€€€€€€€€¤(€€€¥˜€‹®¾ãªÖ·²vĞƒ²Ê£®. ƒ®Âc®>²ÊĞƒ²z—®æƒ²"c²Ús¶×²‚s®–ğˆ¹½Ğ¥¸½µÁ…Ñ•è(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰5)=€ÔÄµ¡…É…Ñ•ÈÍÕµµ…Éä±½ÍĞ¥ÑÌÍ½ÕÉ”µÍÁ•¥™¥ŒÍÕ‰©•Ğˆ¤(€€€™½Èµ…É­•È¥¸=I	%9}=5AQ}5I-ILè(€€€€€€€¥˜µ…É­•È¥¸½µÁ…Ñ•è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰É•µ½Ù•½µÁ…Ğ™¥•±É•ÑÕÉ¹•‘ÕÉ¥¹œ€ÔÄµ¡…É…Ñ•ÈÑ•ÍĞèíµ…É­•Éôˆ¤(()‘•˜…ÍÍ•ÉÑ}­½É•…¹}‰ÕÍ¥¹•ÍÍ}…ÉÑ¥±•}½¹ÑÉ…Ğ¡ÁÉ½‘ÕÑ¥½¸°½µÁ…Ğ°¹½Ü°•ÉÉ½ÉÌè±¥ÍÑmÍÑÉt¤€´ø9½¹”è(€€€¹½¥Íå}ÍÕµµ…Éä€ô½µÁ…Ğ¹…ÉÑ¥±•}Í•¹Ñ•¹•Ì (€€€€€€€€ (€€€€€€€€€€€€‹®²Ó®. ƒ²‚²z°ƒ²z³®ÂÃ¶>°ƒªâ#² °$ƒ¶Vg²*Ôƒ®Â<ƒ¶fs²j¤ƒªâ#² ø€ˆ(€€€€€€€€€€€€‹²nC
-ß®.³®~°ƒ¶fc²r£²vĞ€ÄĞÜÃ²nC²vƒ®ÂG®>3®¦Àƒ®F@ƒ®.°ƒ®3²v`ƒ²Ös²‚²æc®–ğƒªâÃ®†w¶Z#®.¸€ˆ(€€€€€€€€€€€€‹²fãªÖ·²vàƒ²r¶^c²ƒ¶bãªÂ ƒ¶fW®2®Bc®¦Àƒ²nC¶fSªÂ ƒªÂW²ã®–ğƒ®ÎÓ²b®.¸ˆ(€€€€€€€€¤°(€€€€€€€l‹²nC
-ß®.³®~°ˆ°€ˆÄĞÜÃ²n@‰t°(€€€€€€€€È°(€€€€¤(€€€¥˜€‹®²Ó®. ƒ²‚²z°ˆ¥¸¹½¥Íå}ÍÕµµ…Éä½È€‰$ƒ¶Vg²*Ôˆ¥¸¹½¥Íå}ÍÕµµ…Éäè(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰-½É•…¸…ÉÑ¥±”ÍÕµµ…ÉäÉ•Ñ…¥¹•ÁÕ‰±¥Í¡•È‰½¥±•ÉÁ±…Ñ”ˆ¤(€€€¥˜¹½Ğ¹½¥Íå}ÍÕµµ…Éä¹ÍÑ…ÉÑÍİ¥Ñ  ‹²nC
-ß®.³®~°ƒ¶fc²r ˆ¤è(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰-½É•…¸…ÉÑ¥±”ÍÕµµ…Éä‘¥¹½ĞÍÑ…ÉĞ™É½´…ÉÑ¥±”™…ÑÌèí¹½¥Íå}ÍÕµµ…Éåôˆ¤((€€€±½¹}ÍÕµµ…Éä€ô½µÁ…Ğ¹…ÉÑ¥±•}Í•¹Ñ•¹•Ì (€€€€€€€€ (€€€€€€€€€€€€‰-²šwªÚ3²v`ƒ²b³¶VĞ€Ë®ÚªâÀƒ²^ÃªÊÀƒªâÃ²’ ƒ²b²^²vÓ²v×²v €ØÀÀÛ²Z×²nC²ró®†pƒ²‚®ƒ®>gªâÃ®ÎÓ®.€ˆ(€€€€€€€€€€€€ˆÄÜÔ¸Ô”ƒ®*c²^#®.¸€ˆ(€€€€€€€€€€€€¬€‹²ó².w².s²z”ƒªÂW²ã²f ƒªÆÃ®zc®2ªâ ƒ²šwªÂªÂ ƒ²r¶®“®ƒ²"c²v×²vƒ®3²ZÓ²b³®‚ã®.¸€ˆ€¨€ÄÈ(€€€€€€€€¤°(€€€€€€€l‰-²šwªÚ0ˆ°€‹²b²^²vÓ²vÔˆ°€ˆØÀÀÛ²Z×²n@‰t°(€€€€€€€€Ì°(€€€€¤(€€€¥˜±•¸¡±½¹}ÍÕµµ…Éä¤€ø½µÁ…Ğ¹IQ%1}MU55Ie}5a}!ILè(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰-½É•…¸…ÉÑ¥±”ÍÕµµ…Éä•á••‘•½µÁ…Ğ¡…É…Ñ•È±¥µ¥Ğˆ¤(€€€¥˜¹½Ğ±½¹}ÍÕµµ…Éä¹•¹‘Íİ¥Ñ   ˆ¸ˆ°€ˆ„ˆ°€ˆüˆ°€‹®.ˆ°€‹Š˜ˆ¤¤è(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰-½É•…¸…ÉÑ¥±”ÍÕµµ…Éä•¹‘•µ¥µÍ•¹Ñ•¹”èí±½¹}ÍÕµµ…Éål´ĞÀéuôˆ¤((€€€•Ñ½‘…å}Ñ¥Ñ±”€ô€‹²fãªÖ·²và°ƒ²
-ó²‚
-İM/¶Vc®.$€Ğ¸×²†Àƒ²
-³®N“²^³Š›®Âc®>²ÊÓ®>ƒªÎ£®vğƒ®.Ó²Vc®.ˆ(€€€•Ñ½‘…å}‰½‘ä€ô€ (€€€€€€€€‹²fãªÖ·²vã²v €ÓªÆÃ®zc²vğƒ®>g²V ƒ²
-ó²Ç²‚²z@€Ë²†ÀäÌÈß²Z×²nCªÎğM/¶Vc²vÓ®.'²*€ˆ(€€€€€€€€ˆÇ²†ÀÔĞÄÛ²Z×²nC²vƒ²"s®“²"c¶Z#®.¸ƒ®F@ƒ²Š®ª¤ƒ¶V§ªÎ®*Pƒ²Vô€Ó²†ÀÔÀÀÃ²Z×²nC²vÓ®.¸€ˆ(€€€€€€€€‹®Âc®¦Ğƒ²vó®Ú ƒ®Âc®>²ÊĞƒ²3²z³
-ß®Ú¶J#
-ß²z—®æƒ²Š®ª§²v ƒ²"s®“®>¶VĞƒ²^²Šƒ®
-Ó®Ú ƒ²Â£®Î¶fSªÂ ƒ®
-c¶®
-³®.¸ˆ(€€€€¤(€€€•Ñ¹•İÍ}Ñ¥Ñ±”€ô€‹²^G².s²ö`°ƒ²Â£²ã®2 a0€Ì¸Äƒ¶3²*“¶Àƒ²²j§¶fPƒ²7®>ˆ(€€€•Ñ¹•İÍ}‰½‘ä€ô€ (€€€€€€€€‹²^G².s²öc²v ƒ²
-ó²Ç²‚²zC²f •¸Øƒ®Â<a0€Ì¸Äƒ¶3²*“¶Àƒ²ZG²
-Ã¶>'ªÂ®–ğƒ²¶Z'¶VcªÎ€ƒ²z#®.¸€ˆ(€€€€€€€€‹¶>'ªÂ®*Pƒ²vÓ®.°ƒ®@ƒ®#®²Ó®š³®B€ƒ²b#²‚W²vÓ®¦À°ƒ²ZG²
-Ã¶>'ªÂ ƒ¶×ªÎğƒ®Jƒ².“²‚pƒ²z—®æƒ®Âs²óªÂ ƒ®
-£²Vƒ²z#®.¸€ˆ(€€€€€€€€‹¶j3²
-³®*Pƒ²®
-s¶VĞƒ®“²Úp€ÄÀÄã²Z×²nC²vƒªâÃ®†w¶Z#®.¸ˆ(€€€€¤((€€€‘•˜™¥áÑÕÉ”¡Ñ¥Ñ±”èÍÑÈ°‰½‘äèÍÑÈ¤€´øÍÑÈè(€€€€€€€É•ÑÕÉ¸˜ˆˆˆ(€€€€€€€€ñ¡Ñµ°øñ¡•…ø(€€€€€€€€€€ñµ•Ñ„ÁÉ½Á•ÉÑäô‰½œéÑ¥Ñ±”ˆ½¹Ñ•¹Ğô‰íÑ¥Ñ±•ôˆø(€€€€€€€€€€ñµ•Ñ„ÁÉ½Á•ÉÑäô‰…ÉÑ¥±”éÁÕ‰±¥Í¡•‘}Ñ¥µ”ˆ½¹Ñ•¹ĞôˆÈÀÈØ´ÀÜ´ÈÍPÄÜèÀÀèÀÀ¬ÀäèÀÀˆø(€€€€€€€€ğ½¡•…øñ‰½‘äøñ‘¥Ø¥Ñ•µÁÉ½Àô‰…ÉÑ¥±•	½‘äˆø(€€€€€€€€€€ñ ÄùíÑ¥Ñ±•ôğ½ ÄøñÀùí‰½‘åôğ½Àø(€€€€€€€€€€ñÀûªâÃ²
-°ƒ²nC®²ã²v ƒªÒ®‚ ƒªâÃ²^²v`ƒ¶n²4ƒ²"cªâ$°ƒªÎƒªÂtƒ¶>'ªÂ °ƒ®Âs²ó²f ƒªÎ×².s®–ğƒ¶V£ªî`ƒ¶fW²vã¶VÓ²Vğƒ¶Vs®.“ªÎ€ƒ²“®ª¶Z#®.¸ğ½Àø(€€€€€€€€ğ½‘¥Øøğ½‰½‘äøğ½¡Ñµ°ø(€€€€€€€€ˆˆˆ((€€€™½ÈÁÕ‰±¥Í¡•È°Ñ¥Ñ±”°‰½‘ä°±¥¹¬°•áÁ•Ñ•‘}­¥¹°•áÁ•Ñ•‘}¥µÁ…ÑÌ¥¸l(€€€€€€€€ (€€€€€€€€€€€€‹²vÓ¶"³®6Ã²vĞˆ°(€€€€€€€€€€€•Ñ½‘…å}Ñ¥Ñ±”°(€€€€€€€€€€€•Ñ½‘…å}‰½‘ä°(€€€€€€€€€€€€‰¡ÑÑÁÌè¼½İİÜ¹•Ñ½‘…ä¹¼¹­È½¹•İÌ½Ù¥•Ü¼ÈØÀØÜàÈˆ°(€€€€€€€€€€€€‰™½É•¥¹}Í•µ¥½¹‘ÕÑ½É}™±½Üˆ°(€€€€€€€€€€€l‹²"cªâ$‰t°(€€€€€€€€¤°(€€€€€€€€ (€€€€€€€€€€€€‹²‚²zC².ƒ®²àˆ°(€€€€€€€€€€€•Ñ¹•İÍ}Ñ¥Ñ±”°(€€€€€€€€€€€•Ñ¹•İÍ}‰½‘ä°(€€€€€€€€€€€€‰¡ÑÑÁÌè¼½İİÜ¹•Ñ¹•İÌ¹½´¼ÈÀÈØÀÜÈÌÀÀÀÌĞÔˆ°(€€€€€€€€€€€€‰•á¥½¹}á±}Ñ•ÍÑ•Èˆ°(€€€€€€€€€€€l‹®> ƒ®Ê®*Pƒ®*—®‚”ˆ°€‹².sªÂ¶Fpˆ°€‹²"cªâ$‰t°(€€€€€€€€¤°(€€€tè(€€€€€€€‘•Ñ…¥°€ô½µÁ…Ğ¹•áÑÉ…Ñ}…ÉÑ¥±•}‘•Ñ…¥°¡™¥áÑÕÉ”¡Ñ¥Ñ±”°‰½‘ä¤°Ñ¥Ñ±”¤(€€€€€€€¥˜¹½Ğ‘•Ñ…¥°¹•Ğ ‰‰½‘å}Ù•É¥™¥•ˆ¤½È¹½Ğ‘•Ñ…¥°¹•Ğ ‰Ñ¥Ñ±•}…±¥¹•ˆ¤è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰íÁÕ‰±¥Í¡•Éô…ÉÑ¥±”Ñ¥Ñ±”½‰½‘äÙ•É¥™¥…Ñ¥½¸™…¥±•ˆ¤(€€€€€€€€€€€½¹Ñ¥¹Õ”(€€€€€€€É½Ü€ôì(€€€€€€€€€€€€‰Í½ÕÉ”ˆè˜‰íÁÕ‰±¥Í¡•Éôƒ®Âc®>²ÊĞƒ®&Ó²*ˆ°(€€€€€€€€€€€€‰±…å•Èˆè€‰ÑÉÕÍÑ•ˆ°(€€€€€€€€€€€€‰ÁÕ‰±¥Í¡•ÈˆèÁÕ‰±¥Í¡•È°(€€€€€€€€€€€€‰Ñ¥Ñ±”ˆèÑ¥Ñ±”°(€€€€€€€€€€€€‰Í½ÕÉ•}Ñ¥Ñ±”ˆè‘•Ñ…¥±l‰Ñ¥Ñ±”‰t°(€€€€€€€€€€€€‰Í½ÕÉ•}‰½‘äˆè‘•Ñ…¥±l‰‰½‘ä‰t°(€€€€€€€€€€€€‰Í½ÕÉ•}…‰ÍÑÉ…Ğˆè‘•Ñ…¥±l‰‰½‘ä‰t°(€€€€€€€€€€€€‰ÍÕµµ…Éäˆè‘•Ñ…¥±l‰‰½‘ä‰t°(€€€€€€€€€€€€‰±¥¹¬ˆè±¥¹¬°(€€€€€€€€€€€€‰ÁÕ‰±¥Í¡•ˆè¹½Ü°(€€€€€€€€€€€€‰‰½‘å}Ù•É¥™¥•ˆèQÉÕ”°(€€€€€€€ô(€€€€€€€…±•ÉĞ€ôÁÉ½‘ÕÑ¥½¸¹½¹ÑÉ…Ğ¹ÍÑÉ¥Ğ¹±…ÍÍ¥™ä¡É½Ü°¹½Ü¤(€€€€€€€¥˜¹½Ğ…±•ÉĞè(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰íÁÕ‰±¥Í¡•ÉôÙ•É¥™¥•…ÉÑ¥±”İ…Ì¹½Ğ±…ÍÍ¥™¥•ˆ¤(€€€€€€€€€€€½¹Ñ¥¹Õ”(€€€€€€€¹½Éµ…±¥é•€ô½µÁ…Ğ¹¹½Éµ…±¥é•}…±•ÉÑ}™½É}½ÕÑÁÕĞ¡…±•ÉĞ¤(€€€€€€€¥˜¹½Éµ…±¥é•¹•Ğ ‰¹•İÌˆ¤€„ôÑ¥Ñ±”è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ (€€€€€€€€€€€€€€€˜‰íÁÕ‰±¥Í¡•Éô•á…Ğ-½É•…¸Í½ÕÉ”Ñ¥Ñ±”İ…Ì½Ù•ÉİÉ¥ÑÑ•¸èí¹½Éµ…±¥é•¹•Ğ ¹•İÌœ¥ôˆ(€€€€€€€€€€€€¤(€€€€€€€¥˜¹½Éµ…±¥é•¹•Ğ ‰­½É•…¹}‰ÕÍ¥¹•ÍÍ}­¥¹ˆ¤€„ô•áÁ•Ñ•‘}­¥¹è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ (€€€€€€€€€€€€€€€˜‰íÁÕ‰±¥Í¡•Éô…ÉÑ¥±”‘¥¹½ĞÍ•±•Ğ¥ÑÌÍÁ•¥™¥ŒÁÉ½™¥±”è€ˆ(€€€€€€€€€€€€€€€˜‰í¹½Éµ…±¥é•¹•Ğ ­½É•…¹}‰ÕÍ¥¹•ÍÍ}­¥¹œ¥ôˆ(€€€€€€€€€€€€¤(€€€€€€€¥˜¹½Éµ…±¥é•¹•Ğ ‰¥µÁ…ÑÌˆ¤€„ô•áÁ•Ñ•‘}¥µÁ…ÑÌè(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ (€€€€€€€€€€€€€€€˜‰íÁÕ‰±¥Í¡•Éô…ÉÑ¥±”¥µÁ…ÑÌİ•É”½¹Ñ…µ¥¹…Ñ•‰ä…¹½Ñ¡•È½Ù•É±…äè€ˆ(€€€€€€€€€€€€€€€˜‰í¹½Éµ…±¥é•¹•Ğ ¥µÁ…ÑÌœ¥ôˆ(€€€€€€€€€€€€¤(€€€€€€€¥˜¹½Éµ…±¥é•¹•Ğ ‰Í•Ñ½ÉÌˆ¤€„ôl‹®Âc®>²ÊĞ½$‰tè(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ (€€€€€€€€€€€€€€€˜‰íÁÕ‰±¥Í¡•Éô…ÉÑ¥±”Í•Ñ½ÉÌİ•É”½¹Ñ…µ¥¹…Ñ•‰ä…¹½Ñ¡•È½Ù•É±…äè€ˆ(€€€€€€€€€€€€€€€˜‰í¹½Éµ…±¥é•¹•Ğ Í•Ñ½ÉÌœ¥ôˆ(€€€€€€€€€€€€¤(€€€€€€€¥˜¹½Éµ…±¥é•¹•Ğ ‰­}Á½İ•É}İ…Ñ ˆ¤è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰íÁÕ‰±¥Í¡•Éô…ÉÑ¥±”¥¹½ÉÉ•Ñ±ä¥¹¡•É¥Ñ•Ñ¡”¹Õ±•…È½Ù•É±…äˆ¤(€€€€€€€¥˜¹½Ğ½µÁ…Ğ¹Í½ÕÉ•}½ÕÑÁÕÑ}…±¥¹•¡¹½Éµ…±¥é•¤è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰íÁÕ‰±¥Í¡•ÉôÍ½ÕÉ”½½ÕÑÁÕĞ…±¥¹µ•¹Ğ™…¥±•ˆ¤(€€€€€€€É•¹‘•É•€ô½µÁ…Ğ¹½µÁ…Ñ}…±•ÉĞ¡¹½Éµ…±¥é•°€Ä°¹½Ü°íô°íô¤(€€€€€€€É•ÅÕ¥É•‘}µ…É­•ÉÌ€ôl(€€€€€€€€€€€€ˆ´ƒ¶V×².°èˆ°(€€€€€€€€€€€€ˆ´ƒ¶"³²z@ƒ¶>³²vã¶*àèˆ°(€€€€€€€€€€€€ˆ´ƒªÊ÷®†p¿²ç¶Àèˆ°(€€€€€€€€€€€€‹²nC®²àƒ®&Ó²*“®ÎÓªâÀˆ°(€€€€€€€t(€€€€€€€™½Èµ…É­•È¥¸É•ÅÕ¥É•‘}µ…É­•ÉÌè(€€€€€€€€€€€¥˜µ…É­•È¹½Ğ¥¸É•¹‘•É•è(€€€€€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰íÁÕ‰±¥Í¡•Éô½µÁ…ĞQ•±•É…´ÍÕµµ…Éäµ¥ÍÍ¥¹œíµ…É­•Éôˆ¤(€€€€€€€™¥•±‘}•ÉÉ½ÉÌ€ô½µÁ…Ñ}ÁÉ½Í•}•ÉÉ½ÉÌ¡É•¹‘•É•¤(€€€€€€€¥˜™¥•±‘}•ÉÉ½ÉÌè(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ (€€€€€€€€€€€€€€€˜‰íÁÕ‰±¥Í¡•Éô½µÁ…ĞQ•±•É…´ÁÉ½Í”•á••‘•€ÔÀ¡…ÉÌè€ˆ(€€€€€€€€€€€€€€€€¬€ˆ°€ˆ¹©½¥¸¡™¥•±‘}•ÉÉ½ÉÌ¤(€€€€€€€€€€€€¤(€€€€€€€¥˜€ˆ´ƒ®Ú®–`ƒ®“¶*ã®š·²*èˆ¥¸É•¹‘•É•½È€ˆ´ƒªÒ®‚ ƒ¶VÓ²fàƒ¶.Ã²î¿²¶Fpèˆ¥¸É•¹‘•É•è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰íÁÕ‰±¥Í¡•Éô½µÁ…ĞQ•±•É…´ÍÕµµ…ÉäÉ•É•ÍÍ•Ñ¼Ù•É‰½Í”™½Éµ…Ğˆ¤(€€€€€€€™½Èµ…É­•È¥¸=I	%9}=5AQ}5I-ILè(€€€€€€€€€€€¥˜µ…É­•È¥¸É•¹‘•É•è(€€€€€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰íÁÕ‰±¥Í¡•Éô½µÁ…ĞQ•±•É…´ÍÕµµ…ÉäÉ•Ñ…¥¹•íµ…É­•Éôˆ¤(€€€€€€€¥˜€‰,·²nC²‚¿ªÂ²*“¶Ã®æ ˆ¥¸É•¹‘•É•½È€‹²ÊÓ²öPƒ²nC²‚ˆ¥¸É•¹‘•É•è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰íÁÕ‰±¥Í¡•Éô½µÁ…ĞÍÕµµ…Éä½¹Ñ…¥¹Ì…¸Õ¹É•±…Ñ•¹Õ±•…Èİ…Ñ ˆ¤((€€€•¹•É¥}Ñ¥Ñ±”€ô€‹²šw²“²v ƒ®6S®Rc®6À$ƒ²"c²jS®*Pƒ¶>·²šwŠ›²
-ó²Ç²‚ªâÀ°51ƒ²z—ªâÃªÎ²Vôƒ²z®.³²Vˆ(€€€•¹•É¥}‰½‘ä€ô€ (€€€€€€€€‰$ƒ²s®Êƒ¶"³²z@ƒ¶fW®2®†pƒªÎƒ²j§®~$51ƒ²"c²jSªÂ ƒ®æƒ®–ÓªÊ0ƒ®*cªÎ€ƒ²z#®.¸€ˆ(€€€€€€€€‹²
-ó²Ç²‚ªâÃ®*Pƒªâ®†s®Ê0ƒªÎƒªÂw²
-³²f 51ƒ²z—ªâÃªÎ×ªâ$ƒªÎ²V÷²vƒ¶fW®2¶VcªÎ€ƒ²z#²ró®¦Àƒ²w²
-Ã®*—®‚”ƒ²šw²“®>ƒªÊ¶ƒ¶Vs®.¸€ˆ(€€€€€€€€‹®.“®0ƒªÖ³²ÊĞƒªÎ²V÷ªâ#²V‡ªÎğƒªÎƒªÂw²
-³®Îƒ®“²Úpƒ²vã².tƒ².s²‚C²v ƒªÎ×ªÂs®Bc² ƒ²V+²Vc®.¸ˆ(€€€€¤(€€€•¹•É¥}‘•Ñ…¥°€ô½µÁ…Ğ¹•áÑÉ…Ñ}…ÉÑ¥±•}‘•Ñ…¥° (€€€€€€€™¥áÑÕÉ”¡•¹•É¥}Ñ¥Ñ±”°•¹•É¥}‰½‘ä¤°(€€€€€€€•¹•É¥}Ñ¥Ñ±”°(€€€€¤(€€€•¹•É¥}É½Ü€ôì(€€€€€€€€‰Í½ÕÉ”ˆè€‹²vÓ¶"³®6Ã²vĞƒ²
-Ã²^ˆ°(€€€€€€€€‰±…å•Èˆè€‰ÑÉÕÍÑ•ˆ°(€€€€€€€€‰ÁÕ‰±¥Í¡•Èˆè€‹²vÓ¶"³®6Ã²vĞˆ°(€€€€€€€€‰Ñ¥Ñ±”ˆè•¹•É¥}Ñ¥Ñ±”°(€€€€€€€€‰Í½ÕÉ•}Ñ¥Ñ±”ˆè•¹•É¥}‘•Ñ…¥±l‰Ñ¥Ñ±”‰t°(€€€€€€€€‰Í½ÕÉ•}‰½‘äˆè•¹•É¥}‘•Ñ…¥±l‰‰½‘ä‰t°(€€€€€€€€‰Í½ÕÉ•}…‰ÍÑÉ…Ğˆè•¹•É¥}‘•Ñ…¥±l‰‰½‘ä‰t°(€€€€€€€€‰ÍÕµµ…Éäˆè•¹•É¥}‘•Ñ…¥±l‰‰½‘ä‰t°(€€€€€€€€‰±¥¹¬ˆè€‰¡ÑÑÁÌè¼½İİÜ¹•Ñ½‘…ä¹¼¹­È½¹•İÌ½Ù¥•Ü¼ÈØÀØàÀÀˆ°(€€€€€€€€‰ÁÕ‰±¥Í¡•ˆè¹½Ü°(€€€€€€€€‰‰½‘å}Ù•É¥™¥•ˆèQÉÕ”°(€€€ô(€€€•¹•É¥}…±•ÉĞ€ôÁÉ½‘ÕÑ¥½¸¹½¹ÑÉ…Ğ¹ÍÑÉ¥Ğ¹±…ÍÍ¥™ä¡•¹•É¥}É½Ü°¹½Ü¤(€€€¥˜¹½Ğ•¹•É¥}…±•ÉĞè(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰Ù•É¥™¥••¹•É¥Œ-½É•…¸‰ÕÍ¥¹•ÍÌ…ÉÑ¥±”İ…Ì¹½Ğ±…ÍÍ¥™¥•ˆ¤(€€€•±Í”è(€€€€€€€¹½Éµ…±¥é•€ô½µÁ…Ğ¹¹½Éµ…±¥é•}…±•ÉÑ}™½É}½ÕÑÁÕĞ¡•¹•É¥}…±•ÉĞ¤(€€€€€€€¥˜¹½Éµ…±¥é•¹•Ğ ‰­½É•…¹}‰ÕÍ¥¹•ÍÍ}­¥¹ˆ¤€„ô€‰Ù•É¥™¥•‘}Í½ÕÉ•}ÍÕµµ…Éäˆè(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰•¹•É¥Œ-½É•…¸…ÉÑ¥±”‘¥¹½ĞÕÍ”Ù•É¥™¥•Í½ÕÉ”ÍÕµµ…ÉäÁÉ½™¥±”ˆ¤(€€€€€€€¥˜¹½Éµ…±¥é•¹•Ğ ‰¹•İÌˆ¤€„ô•¹•É¥}Ñ¥Ñ±”è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰•¹•É¥Œ-½É•…¸…ÉÑ¥±”•á…ĞÑ¥Ñ±”İ…Ì½Ù•ÉİÉ¥ÑÑ•¸ˆ¤(€€€€€€€¥˜¹½Ğ½µÁ…Ğ¹Í½ÕÉ•}½ÕÑÁÕÑ}…±¥¹•¡¹½Éµ…±¥é•¤è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰•¹•É¥Œ-½É•…¸…ÉÑ¥±”Í½ÕÉ”½½ÕÑÁÕĞ…±¥¹µ•¹Ğ™…¥±•ˆ¤(€€€€€€€É•¹‘•É•€ô½µÁ…Ğ¹½µÁ…Ñ}…±•ÉĞ¡¹½Éµ…±¥é•°€Ä°¹½Ü°íô°íô¤(€€€€€€€¥˜•¹•É¥}Ñ¥Ñ±”¹½Ğ¥¸É•¹‘•É•½È€‹²nC®²àƒ®&Ó²*“®ÎÓªâÀˆ¹½Ğ¥¸É•¹‘•É•è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰•¹•É¥Œ-½É•…¸…ÉÑ¥±”½µÁ…ĞÉ•¹‘•É¥¹œ±½ÍĞÑ¥Ñ±”½ÈÍ½ÕÉ”±¥¹¬ˆ¤(€€€€€€€¥˜€‹ªÎ×².tƒ®²ã²pƒ®bC®*Pƒ².ƒ®ŠÀƒ®ÎÓ®>²^C²pˆ¥¸É•¹‘•É•è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰•¹•É¥Œ-½É•…¸…ÉÑ¥±”™•±°‰…¬Ñ¼ÍÑ…±”•¹•É¥ŒÁ½±¥ä½Áäˆ¤((€€€‰½‘å}½¹±å}µ…Ñ•É¥…±}É½Ü€ô‘¥Ğ¡•¹•É¥}É½Ü¤(€€€‰½‘å}½¹±å}µ…Ñ•É¥…±}É½Ü¹ÕÁ‘…Ñ” (€€€€€€€ì(€€€€€€€€€€€€‰Ñ¥Ñ±”ˆè€‹¶^“²²*°€ç²nS²^@ƒ¶f7²ö¤ƒªÂ®.ˆ°(€€€€€€€€€€€€‰Í½ÕÉ•}Ñ¥Ñ±”ˆè€‹¶^“²²*°€ç²nS²^@ƒ¶f7²ö¤ƒªÂ®.ˆ°(€€€€€€€€€€€€‰Í½ÕÉ•}‰½‘äˆè€ (€€€€€€€€€€€€€€€€‹®â3®zs®NsªÂ $ƒ²b“®6Pƒ².s²*“¶s²vƒ®>²z¶Z#®.¸ƒ®Îã®²ã²^C®*PƒªÎóªÆÀƒ²"c²ó²f ƒ®“²Úpƒ®ª§¶FsªÂ ƒ²Zãªâ'®BC²®0€ˆ(€€€€€€€€€€€€€€€€‹²‚s®ª§²^C®*Pƒ².“²‚
-ßªÎ²V÷
-ß²šw²ƒªÂg²v ƒ²#®†s²jĞƒªÂªÊ¤ƒ®Î²"cªÂ ƒ²^®.¸ˆ(€€€€€€€€€€€€¤°(€€€€€€€€€€€€‰Í½ÕÉ•}…‰ÍÑÉ…Ğˆè€ (€€€€€€€€€€€€€€€€‹®â3®zs®NsªÂ $ƒ²b“®6Pƒ².s²*“¶s²vƒ®>²z¶Z#®.¸ƒ®Îã®²ã²^C®*PƒªÎóªÆÀƒ²"c²ó²f ƒ®“²Úpƒ®ª§¶FsªÂ ƒ²Zãªâ'®BC®.¸ˆ(€€€€€€€€€€€€¤°(€€€€€€€€€€€€‰ÍÕµµ…Éäˆè€‹®â3®zs®NsªÂ $ƒ²b“®6Pƒ².s²*“¶s²vƒ®>²z¶Z#®.¸ˆ°(€€€€€€€€€€€€‰±¥¹¬ˆè€‰¡ÑÑÁÌè¼½İİÜ¹•Ñ½‘…ä¹¼¹­È½¹•İÌ½Ù¥•Ü¼ÈØÀØØÈäˆ°(€€€€€€€ô(€€€€¤(€€€¥˜ÁÉ½‘ÕÑ¥½¸¹½¹ÑÉ…Ğ¹ÍÑÉ¥Ğ¹±…ÍÍ¥™ä¡‰½‘å}½¹±å}µ…Ñ•É¥…±}É½Ü°¹½Ü¤è(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰-½É•…¸‰½‘äµ½¹±ä‰…­É½Õ¹Ñ•ÉµÌ‰åÁ…ÍÍ•Ñ¡”µ…Ñ•É¥…°¡•…‘±¥¹”…Ñ”ˆ¤((€€€É•…Á}É½Ü€ô‘¥Ğ¡•¹•É¥}É½Ü¤(€€€É•…Á}É½Ü¹ÕÁ‘…Ñ” (€€€€€€€ì(€€€€€€€€€€€€‰Ñ¥Ñ±”ˆè€‰oªâ'®NÇ®v÷²ğƒ²k²ZÓ®ÎÓªâÁtƒ².“²‚²ğƒ²¶VsªÂ
-ß²z²²ğƒ¶Vc¶VsªÂ ˆ°(€€€€€€€€€€€€‰Í½ÕÉ•}Ñ¥Ñ±”ˆè€‰oªâ'®NÇ®v÷²ğƒ²k²ZÓ®ÎÓªâÁtƒ².“²‚²ğƒ²¶VsªÂ
-ß²z²²ğƒ¶Vc¶VsªÂ ˆ°(€€€€€€€€€€€€‰±¥¹¬ˆè€‰¡ÑÑÁÌè¼½İİÜ¹•Ñ½‘…ä¹¼¹­È½¹•İÌ½Ù¥•Ü¼ÈØÀØÜäĞˆ°(€€€€€€€ô(€€€€¤(€€€¥˜ÁÉ½‘ÕÑ¥½¸¹½¹ÑÉ…Ğ¹ÍÑÉ¥Ğ¹±…ÍÍ¥™ä¡É•…Á}É½Ü°¹½Ü¤è(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰Í…µ”µ‘…äÁÉ¥”É•…Àİ…ÌÁÉ½µ½Ñ•…Ì„¹•Ü¡¥ µ¥µÁ…Ğ…ÉÑ¥±”ˆ¤((€€€©‰}Ñ¥Ñ±”€ô€‰)ªâ#²rÔ°€Ë®ÚªâÀƒ²"s²vÔ€ÈÄäÛ²ZÔ€Ÿ²
-³²ƒ²Ös®2 ŸŠ˜ÄÀÀÃ²Z×²n@ƒ²zC²
-³²ğƒ²3ªÂˆ(€€€©‰}‰½‘ä€ô€ (€€€€€€€€‰)ªâ#²r×²²óªÂ ƒ®æ²v¶Z$ƒªÎ²^Ó²
-³²v`ƒ²Ç²z—²^@ƒ¶zc²z²ZĞƒ®ÚªâÀƒªâÃ²’ ƒ²
-³²ƒ²Ös®2 ƒ².“²‚²v€ˆ(€€€€€€€€‹®.³²Ç¶VcªÎ€ƒ²‚ªŞç²‚²vàƒ²ó²ó¶fc²nC²^@ƒ®
-c²ƒ®.¸€ˆ(€€€€€€€€ˆÈÏ²vğ)ªâ#²r×²v ƒ²b°€Ë®ÚªâÀƒ²®ÂÃ²ó²ğƒ®.çªâÃ²"s²vÓ²v×²vĞƒ²‚®ƒ®>gªâÀƒ®2®æ€Ô¸Ü”€ˆ(€€€€€€€€‹²šwªÂ¶Vp€ÈÄäÛ²Z×²nC²vƒªâÃ®†w¶Z#®.“ªÎ€ƒ®Âw¶bS®.¸€ˆ(€€€€€€€€‹²®ÂcªâÀƒ®"²‚ƒ²"s²vÓ²vÔƒ²^·².p€ÌàÔß²Z×²nC²ró®†pƒ²^·®2 ƒ²ÖsªÎƒ²æc®.¸€ˆ(€€€€€€€€‹²vÓ®
-€)ªâ#²rÔƒ²vÓ²
-³¶j3®*Pƒ²ó²ó¶fc²n@ƒ²‚W²Æ²v`ƒ¶Vc®
-c®†pƒ®ÎÓ¶×²ğ€Ç²ó®.äƒ¶bªâ €ÌÄÓ²nC²v`€ˆ(€€€€€€€€‹®ÚªâÀƒ®ÂÃ®.çªÎğƒ¶V£ªî`€ÄÀÀÃ²Z×²n@ƒªŞs®ª£²v`ƒ²zCªâÃ²ó².tƒ²Ş£®Ntƒ®Â<ƒ²3ªÂ²vƒªÊÃ²‚W¶Z#®.¸ˆ(€€€€¤(€€€©‰}‘•Ñ…¥°€ô½µÁ…Ğ¹•áÑÉ…Ñ}…ÉÑ¥±•}‘•Ñ…¥°¡™¥áÑÕÉ”¡©‰}Ñ¥Ñ±”°©‰}‰½‘ä¤°©‰}Ñ¥Ñ±”¤(€€€©‰}É½Ü€ôì(€€€€€€€€‰Í½ÕÉ”ˆè€‹²‚²zC².ƒ®²àƒ²b“®*c²v`ƒ®&Ó²*ˆ°(€€€€€€€€‰±…å•Èˆè€‰ÑÉÕÍÑ•ˆ°(€€€€€€€€‰ÁÕ‰±¥Í¡•Èˆè€‹²‚²zC².ƒ®²àˆ°(€€€€€€€€‰Ñ¥Ñ±”ˆè©‰}Ñ¥Ñ±”°(€€€€€€€€‰Í½ÕÉ•}Ñ¥Ñ±”ˆè©‰}‘•Ñ…¥±l‰Ñ¥Ñ±”‰t°(€€€€€€€€‰Í½ÕÉ•}‰½‘äˆè©‰}‘•Ñ…¥±l‰‰½‘ä‰t°(€€€€€€€€‰Í½ÕÉ•}…‰ÍÑÉ…Ğˆè©‰}‘•Ñ…¥±l‰‰½‘ä‰t°(€€€€€€€€‰ÍÕµµ…Éäˆè©‰}‘•Ñ…¥±l‰‰½‘ä‰t°(€€€€€€€€‰±¥¹¬ˆè€‰¡ÑÑÁÌè¼½İİÜ¹•Ñ¹•İÌ¹½´¼ÈÀÈØÀÜÈÌÀÀÀĞÔàˆ°(€€€€€€€€‰ÁÕ‰±¥Í¡•ˆè¹½Ü°(€€€€€€€€‰‰½‘å}Ù•É¥™¥•ˆèQÉÕ”°(€€€ô(€€€©‰}…±•ÉĞ€ôÁÉ½‘ÕÑ¥½¸¹½¹ÑÉ…Ğ¹ÍÑÉ¥Ğ¹±…ÍÍ¥™ä¡©‰}É½Ü°¹½Ü¤(€€€¥˜¹½Ğ©‰}…±•ÉĞè(€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰)¥¹…¹¥…°Ù•É¥™¥••…É¹¥¹Ì…ÉÑ¥±”İ…Ì¹½Ğ±…ÍÍ¥™¥•ˆ¤(€€€•±Í”è(€€€€€€€É•¹‘•É•€ô½µÁ…Ğ¹½µÁ…Ñ}…±•ÉĞ¡©‰}…±•ÉĞ°€Ä°¹½Ü°íô°íô¤(€€€€€€€½É•}±¥¹”€ô¹•áĞ ¡±¥¹”™½È±¥¹”¥¸É•¹‘•É•¹ÍÁ±¥Ñ±¥¹•Ì ¤¥˜±¥¹”¹ÍÑ…ÉÑÍİ¥Ñ  ˆ´ƒ¶V×².°èˆ¤¤°€ˆˆ¤(€€€€€€€Ù¥•İ}±¥¹”€ô¹•áĞ (€€€€€€€€€€€€¡±¥¹”™½È±¥¹”¥¸É•¹‘•É•¹ÍÁ±¥Ñ±¥¹•Ì ¤¥˜±¥¹”¹ÍÑ…ÉÑÍİ¥Ñ  ˆ´ƒ¶"³²z@ƒ¶>³²vã¶*àèˆ¤¤°(€€€€€€€€€€€€ˆˆ°(€€€€€€€€¤(€€€€€€€¥˜¹½Ğ…±°¡Ñ•É´¥¸½É•}±¥¹”™½ÈÑ•É´¥¸€ ˆÈÄäÛ²Z×²n@ˆ°€ˆÔ¸Ü”ˆ°€‹²^·®2 ƒ²Ös®2 ˆ¤¤è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰)¥¹…¹¥…°½É”½µ¥ÑÑ•…ÉÑ¥±”™…ÑÌèí½É•}±¥¹•ôˆ¤(€€€€€€€¥˜¹½Ğ…±°¡Ñ•É´¥¸Ù¥•İ}±¥¹”™½ÈÑ•É´¥¸€ ˆÌÄÓ²n@ˆ°€ˆÄÀÀÃ²Z×²n@ˆ°€‹²zC²
-³²ğˆ¤¤è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰)¥¹…¹¥…°¥¹Ù•ÍÑµ•¹ĞÁ½¥¹Ğ½µ¥ÑÑ•Í¡…É•¡½±‘•ÈÉ•ÑÕÉ¸èíÙ¥•İ}±¥¹•ôˆ¤(€€€€€€€¥˜€‹ªâ#²rÔ¿²zC®Îã².s²z”ˆ¹½Ğ¥¸É•¹‘•É•è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰)¥¹…¹¥…°…ÉÑ¥±”±½ÍĞ¥ÑÌ™¥¹…¹”Í•Ñ½È±…ÍÍ¥™¥…Ñ¥½¸ˆ¤(€€€€€€€¥˜©‰}Ñ¥Ñ±”¥¸½É•}±¥¹”½È©‰}Ñ¥Ñ±”¥¸Ù¥•İ}±¥¹”è(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ ‰)¥¹…¹¥…°ÍÕµµ…ÉäÉ•Á•…Ñ•Ñ¡”¡•…‘±¥¹”¥¹ÍÑ•…½˜…ÉÑ¥±”™…ÑÌˆ¤(€€€€€€€™½Èµ…É­•È¥¸=I	%9}=5AQ}5I-ILè(€€€€€€€€€€€¥˜µ…É­•È¥¸É•¹‘•É•è(€€€€€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹¡˜‰)¥¹…¹¥…°½µÁ…ĞQ•±•É…´ÍÕµµ…ÉäÉ•Ñ…¥¹•íµ…É­•Éôˆ¤(€€€€€€€™¥•±‘}•ÉÉ½ÉÌ€ô½µÁ…Ñ}ÁÉ½Í•}•ÉÉ½ÉÌ¡É•¹‘•É•¤(€€€€€€€¥˜™¥•±‘}•ÉÉ½ÉÌè(€€€€€€€€€€€•ÉÉ½ÉÌ¹…ÁÁ•¹ (€€€€€€€€€€€€€€€€‰)¥¹…¹¥…°½µÁ…Ğ™…ÑÌ•á••‘•€ÔÀ¡…ÉÌè€ˆ€¬€ˆ°€ˆ¹©½¥¸¡™¥•±‘}•ÉÉ½ÉÌ¤(€€€€€€€€€€€€¤(4(4)¥˜}}¹…µ•}|€ôô€‰}}µ…¥¹}|ˆè4(€€€É…¥Í”MåÍÑ•µá¥Ğ¡µ…¥¸ ¤¤4
+        "source_abstract": (
+            "BIS removes the UAE from Country Groups D:3 and D:4 and adds it to Country Group A:5. "
+            "Strategic Trade Authorization becomes available for approved entities, including dual-use "
+            "items for civil nuclear power generation."
+        ),
+        "published": now,
+    }
+    uae_ear_alert = production.contract.strict.classify(uae_ear_row, now)
+    if not uae_ear_alert:
+        errors.append("Federal Register UAE EAR final rule was not classified")
+    else:
+        normalized_uae_ear = compact.normalize_alert_for_output(uae_ear_alert)
+        rendered_uae_ear = " ".join(
+            str(normalized_uae_ear.get(key) or "")
+            for key in ["news", "policy_plain_summary", "investment_view", "korea_market_impact"]
+        )
+        if "UAE" not in rendered_uae_ear or "ìˆ˜ì¶œê´€ë¦¬ê·œì •" not in rendered_uae_ear or "BIS" not in rendered_uae_ear:
+            errors.append(f"Federal Register UAE EAR rule lost its source subject: {rendered_uae_ear}")
+        if any(term in str(normalized_uae_ear.get("news") or "") for term in ["ì›ì „", "SMR", "ê°€ìŠ¤í„°ë¹ˆ", "ë‘ì‚°"]):
+            errors.append(f"Federal Register UAE EAR rule rendered as an unrelated nuclear alert: {normalized_uae_ear.get('news')}")
+        if not compact.source_output_aligned(normalized_uae_ear):
+            errors.append("Federal Register UAE EAR source/body alignment guard did not pass")
+        selected_uae_ear = compact.quality_display_alerts([uae_ear_alert], 5)
+        if len(selected_uae_ear) != 1 or not compact.source_output_aligned(selected_uae_ear[0]):
+            errors.append("Federal Register UAE EAR alert failed final selection source/body alignment")
+
+    # Regression fixture for the July 21 Reuters Treasury-tax article.  The
+    # collector query label contains nuclear/rate terms, but labels are routing
+    # metadata and must never become article evidence or a Korean market theme.
+    treasury_tax_row = {
+        "source": "Trusted news ì›ì „ ì¸í”„ë¼ ê¸ˆë¦¬ì¸í•˜",
+        "layer": "trusted",
+        "publisher": "Reuters",
+        "title": "US Treasury flags Wall Street tax strategies potentially abusive, Bloomberg News reports",
+        "summary": (
+            "The Treasury Department identified several Wall Street tax strategies as potentially "
+            "abusive, Bloomberg News reported."
+        ),
+        "link": (
+            "https://www.reuters.com/legal/government/"
+            "us-treasury-flags-wall-street-tax-strategies-potentially-abusive-bloomberg-news-2026-07-21/"
+        ),
+        "published": now,
+    }
+    treasury_source_text = production.base.source_content_text(treasury_tax_row)
+    if any(term in treasury_source_text for term in ["ì›ì „", "smr", "ê°€ìŠ¤í„°ë¹ˆ", "ê¸ˆë¦¬ì¸í•˜"]):
+        errors.append("collector query label leaked into Reuters Treasury source content")
+    treasury_tax_alert = production.contract.strict.classify(treasury_tax_row, now)
+    if treasury_tax_alert is not None:
+        errors.append("unrelated Reuters Treasury tax-strategy article was classified as high-impact Korea-market news")
+
+    poisoned_treasury_alert = {
+        "score": 100,
+        "importance": "ìƒ",
+        "status": "ê³µì‹ í™•ì¸ ì „",
+        "source": treasury_tax_row["source"],
+        "publisher": treasury_tax_row["publisher"],
+        "source_title": treasury_tax_row["title"],
+        "source_abstract": treasury_tax_row["summary"],
+        "original_news": treasury_tax_row["title"],
+        "link": treasury_tax_row["link"],
+        "published": now.isoformat(timespec="minutes"),
+        "news": "ë¯¸êµ­ ì›ì „Â·SMRÂ·AI ì „ë ¥ ì •ì±… ì‹œê°„í‘œ ì²´í¬",
+        "policy_plain_summary": "ì›ì „, SMR, ê°€ìŠ¤í„°ë¹ˆ, AI ì „ë ¥ìˆ˜ìš” ê´€ë ¨ ì •ì±… ì‹œê°„í‘œì…ë‹ˆë‹¤.",
+        "investment_view": "ì›ì „ ê¸°ìì¬ ë°œì£¼ì™€ ìˆ˜ì£¼ ê¸°ëŒ€ë¥¼ í™•ì¸í•©ë‹ˆë‹¤.",
+        "korea_market_impact": "ë‘ì‚°ì—ë„ˆë¹Œë¦¬í‹°ì™€ KHNP ìˆ˜ê¸‰ì„ í™•ì¸í•©ë‹ˆë‹¤.",
+        "impacts": ["í• ì¸ìœ¨"],
+        "paths": ["í• ì¸ìœ¨"],
+        "sectors": ["ì›ì „/SMR/ê°€ìŠ¤í„°ë¹ˆ", "ë‘ì‚°ì—ë„ˆë¹Œë¦¬í‹°/KHNP"],
+    }
+    if "ì›ì „" in compact.source_evidence_text(poisoned_treasury_alert):
+        errors.append("collector query label leaked into final source evidence")
+    if compact.source_output_aligned(poisoned_treasury_alert):
+        errors.append("Reuters Treasury tax article passed with an unrelated nuclear headline/body")
+    if compact.quality_display_alerts([poisoned_treasury_alert], 5):
+        errors.append("Reuters Treasury source/body mismatch reached final Telegram selection")
+
+    legitimate_nuclear_row = {
+        "source": "Trusted news ì›ìì¬/ê¸ˆë¦¬/í™˜ìœ¨",
+        "layer": "trusted",
+        "publisher": "Reuters",
+        "title": "US backs Westinghouse AP1000 nuclear reactor construction with low-cost loans",
+        "summary": (
+            "The program supports construction of AP1000 nuclear reactors to meet rising data-center "
+            "power demand, subject to licensing and final financing."
+        ),
+        "link": "https://www.reuters.com/business/energy/example-ap1000-nuclear-loans",
+        "published": now,
+    }
+    legitimate_nuclear_alert = production.contract.strict.classify(legitimate_nuclear_row, now)
+    if legitimate_nuclear_alert is None:
+        errors.append("source-authored AP1000 nuclear article was lost after query-label isolation")
+    else:
+        normalized_nuclear = compact.normalize_alert_for_output(legitimate_nuclear_alert)
+        if not compact.source_output_aligned(normalized_nuclear):
+            errors.append("source-authored AP1000 nuclear article failed source/body alignment")
+
+    iran_row = {
+        "source": "Trusted news ì´ë€/í˜¸ë¥´ë¬´ì¦ˆ ê¸´ê¸‰ìƒí™©",
+        "layer": "trusted",
+        "publisher": "AP News",
+        "title": "US attacks Iran over ship being hit in Strait of Hormuz; Tehran lashes out again at Gulf Arab states",
+        "link": "https://apnews.com/article/iran-hormuz-regression-fixture",
+        "summary": "The U.S. military completed airstrikes targeting Iran after a civilian vessel was attacked in the Strait of Hormuz, threatening the ceasefire.",
+        "published": now,
+    }
+    iran_alert = production.contract.strict.classify(iran_row, now)
+    if not iran_alert:
+        errors.append("Iran/Hormuz ship attack and U.S. strike was not classified")
+    else:
+        normalized_iran = compact.normalize_alert_for_output(iran_alert)
+        if normalized_iran.get("news") != "ë¯¸êµ­, ì´ë€ ì¬ê³µê²©Â·í˜¸ë¥´ë¬´ì¦ˆ ìƒì„  í”¼ê²©: íœ´ì „Â·ìœ ê°€ ë¦¬ìŠ¤í¬":
+            errors.append(f"Iran/Hormuz alert did not render a specific Korean title: {normalized_iran.get('news')}")
+        expected_impacts = {"ëˆ ë²„ëŠ” ëŠ¥ë ¥", "í• ì¸ìœ¨", "ìˆ˜ê¸‰", "ì‹œê°„í‘œ"}
+        if not expected_impacts.issubset(set(normalized_iran.get("impacts") or [])):
+            errors.append(f"Iran/Hormuz alert lost decision impacts: {normalized_iran.get('impacts')}")
+        if not normalized_iran.get("realtime_policy_lane"):
+            errors.append("Iran/Hormuz alert was not routed to the realtime policy lane")
+        reuters_duplicate = dict(normalized_iran)
+        reuters_duplicate.update({
+            "publisher": "Reuters on MSN",
+            "source": "Trusted news ì´ë€/í˜¸ë¥´ë¬´ì¦ˆ ê¸´ê¸‰ìƒí™©",
+            "link": "https://www.reuters.com/world/iran-hormuz-regression-fixture",
+            "published": "2026-07-12T10:30+09:00",
+            "original_news": "US strikes Iran, Tehran says Strait of Hormuz closed, Gulf states hit",
+        })
+        one_story = compact.quality_display_alerts([reuters_duplicate, normalized_iran], 5)
+        if len(one_story) != 1 or "AP" not in str(one_story[0].get("publisher") or ""):
+            errors.append(f"Iran/Hormuz cross-source story was not deduped to AP: {one_story}")
+        raw_reuters_variant = dict(normalized_iran)
+        raw_reuters_variant.update({
+            "news": "íŠ¸ëŸ¼í”„ ì—ë„ˆì§€ ë°œì–¸: ìœ ê°€Â·ìš´ì„ ë¦¬ìŠ¤í¬",
+            "original_news": "U.S. renews strikes on Iran as tanker is attacked in Strait of Hormuz",
+            "publisher": "Reuters",
+            "link": "https://www.reuters.com/world/iran-cross-source-seen-fixture",
+        })
+        ap_title_keys = {key for key in production.telegram.alert_seen_keys(normalized_iran) if key.startswith("title:")}
+        reuters_title_keys = {key for key in production.telegram.alert_seen_keys(raw_reuters_variant) if key.startswith("title:")}
+        if not ap_title_keys.intersection(reuters_title_keys):
+            errors.append("Iran/Hormuz cross-source variants did not share a canonical seen key")
+        live_remaining, live_routed = production.telegram.partition_realtime_policy_alerts([normalized_iran], True)
+        if live_remaining or live_routed != [normalized_iran]:
+            errors.append("Iran/Hormuz alert was not single-routed away from live radar duplication")
+        preopen_remaining, preopen_routed = production.telegram.partition_realtime_policy_alerts([normalized_iran], False)
+        if preopen_remaining != [normalized_iran] or preopen_routed:
+            errors.append("Iran/Hormuz alert was not retained for the 06:30 radar")
+
+    # A story already announced by the real-time lane must still be available
+    # to the once-daily 06:30 digest. This guards the failure where overnight
+    # live polls consumed every preopen candidate before the morning run.
+    live_only_probe = {
+        "news": "ì¥ì „ seen-state íšŒê·€ ê²€ì‚¬",
+        "original_news": "Preopen seen-state regression fixture",
+        "publisher": "Reuters",
+        "link": "https://www.reuters.com/world/preopen-seen-regression-fixture",
+    }
+    preopen_probe = {
+        "news": "ì „ë‚  ì¥ì „íŒ ì¤‘ë³µ íšŒê·€ ê²€ì‚¬",
+        "original_news": "Prior preopen duplicate regression fixture",
+        "publisher": "Reuters",
+        "link": "https://www.reuters.com/world/prior-preopen-duplicate-regression-fixture",
+    }
+    live_key = production.telegram.alert_seen_keys(live_only_probe)[0]
+    preopen_key = production.telegram.alert_seen_keys(preopen_probe)[0]
+    original_load_seen_state = production.telegram.load_seen_state
+    production.telegram.load_seen_state = lambda: {
+        "seen": {
+            live_key: {"first_seen_kst": now.isoformat(), "lanes": {"live": now.isoformat()}},
+            preopen_key: {"first_seen_kst": now.isoformat(), "lanes": {"preopen": now.isoformat()}},
+        },
+        "updated_at_kst": now.isoformat(),
+    }
+    try:
+        probes = [live_only_probe, preopen_probe]
+        live_fresh, live_skipped = production.telegram.filter_alerts_for_run_mode(probes, now, True)
+        preopen_fresh, preopen_skipped = production.telegram.filter_alerts_for_run_mode(probes, now, False)
+    finally:
+        production.telegram.load_seen_state = original_load_seen_state
+    if live_fresh or live_skipped != probes:
+        errors.append("live radar no longer applies seen-state suppression")
+    if len(preopen_fresh) != 1 or preopen_fresh[0].get("link") != live_only_probe["link"]:
+        errors.append("06:30 preopen digest did not retain the live-only story")
+    elif not preopen_fresh[0].get("_preopen_live_seen_bypass"):
+        errors.append("06:30 preopen digest lost its live-seen bypass marker")
+    if len(preopen_skipped) != 1 or preopen_skipped[0].get("link") != preopen_probe["link"]:
+        errors.append("06:30 preopen digest repeated a prior preopen story")
+    if not production.telegram.seen_entry_has_lane({"first_seen_kst": now.isoformat()}, "preopen"):
+        errors.append("legacy seen-state was not suppressed from repeat preopen delivery")
+
+    legacy_state = {
+        "seen": {
+            "title:old-raw-source-key": {
+                "first_seen_kst": now.isoformat(),
+                "title": "ë¯¸êµ­, ì´ë€ ì¬ê³µê²©Â·í˜¸ë¥´ë¬´ì¦ˆ ìƒì„  í”¼ê²©: íœ´ì „Â·ìœ ê°€ ë¦¬ìŠ¤í¬",
+            }
+        }
+    }
+    production.telegram.migrate_seen_title_aliases(legacy_state)
+    expected_legacy_alias = "title:" + production.telegram.digest_seen(
+        "ë¯¸êµ­, ì´ë€ ì¬ê³µê²©Â·í˜¸ë¥´ë¬´ì¦ˆ ìƒì„  í”¼ê²©: íœ´ì „Â·ìœ ê°€ ë¦¬ìŠ¤í¬"
+    )
+    if expected_legacy_alias not in legacy_state["seen"]:
+        errors.append("legacy seen-state did not gain a canonical Korean-title alias")
+
+    lane_state = {
+        "seen": {
+            live_key: {
+                "first_seen_kst": now.isoformat(),
+                "lanes": {"live": now.isoformat()},
+            }
+        },
+        "updated_at_kst": now.isoformat(),
+    }
+    original_load_seen_state = production.telegram.load_seen_state
+    original_save_seen_state = production.telegram.save_seen_state
+    original_run_mode = os.environ.get("RADAR_RUN_MODE")
+    production.telegram.load_seen_state = lambda: lane_state
+    production.telegram.save_seen_state = lambda state, _now: lane_state.update(state)
+    try:
+        os.environ["RADAR_RUN_MODE"] = "preopen"
+        recorded_probe = dict(live_only_probe)
+        recorded_probe["_seen_keys"] = [live_key]
+        production.telegram.record_seen_alerts([recorded_probe], now)
+    finally:
+        production.telegram.load_seen_state = original_load_seen_state
+        production.telegram.save_seen_state = original_save_seen_state
+        if original_run_mode is None:
+            os.environ.pop("RADAR_RUN_MODE", None)
+        else:
+            os.environ["RADAR_RUN_MODE"] = original_run_mode
+    recorded_lanes = lane_state["seen"][live_key].get("lanes") or {}
+    if not {"live", "preopen"}.issubset(set(recorded_lanes)):
+        errors.append(f"seen-state did not preserve live and preopen lanes: {recorded_lanes}")
+
+    # The sender and post-send verifier must interpret the manual off-window
+    # switch identically. Otherwise Telegram can be sent while Actions reports
+    # a false failure, which hides the real delivery result.
+    tested_env = {
+        "RADAR_RUN_MODE": os.environ.get("RADAR_RUN_MODE"),
+        "ALLOW_OFF_WINDOW_TELEGRAM": os.environ.get("ALLOW_OFF_WINDOW_TELEGRAM"),
+        "PREOPEN_SEND_WINDOW_START_KST": os.environ.get("PREOPEN_SEND_WINDOW_START_KST"),
+        "PREOPEN_SEND_WINDOW_END_KST": os.environ.get("PREOPEN_SEND_WINDOW_END_KST"),
+    }
+    try:
+        os.environ["RADAR_RUN_MODE"] = "preopen"
+        os.environ["PREOPEN_SEND_WINDOW_START_KST"] = "05:30"
+        os.environ["PREOPEN_SEND_WINDOW_END_KST"] = "07:30"
+        os.environ["ALLOW_OFF_WINDOW_TELEGRAM"] = "true"
+        off_window_time = now.replace(hour=16, minute=0, second=0, microsecond=0)
+        if not compact.preopen_send_window_open():
+            errors.append("Telegram sender ignored ALLOW_OFF_WINDOW_TELEGRAM=true")
+        if not runtime_delivery.send_window_open(off_window_time):
+            errors.append("runtime delivery verifier ignored ALLOW_OFF_WINDOW_TELEGRAM=true")
+        os.environ["ALLOW_OFF_WINDOW_TELEGRAM"] = "false"
+        if runtime_delivery.send_window_open(off_window_time):
+            errors.append("runtime delivery verifier opened the normal preopen window at 16:00 KST")
+    finally:
+        for name, value in tested_env.items():
+            if value is None:
+                os.environ.pop(name, None)
+            else:
+                os.environ[name] = value
+
+    if send_module != LOCKED_TELEGRAM_MODULE:
+        errors.append(
+            f"{PRODUCTION_RUNNER}.telegram.send_telegram is wired to {send_module}, "
+            f"expected {LOCKED_TELEGRAM_MODULE}"
+        )
+    if compact_module != LOCKED_TELEGRAM_MODULE:
+        errors.append(
+            f"{PRODUCTION_RUNNER}.telegram.compact_report is wired to {compact_module}, "
+            f"expected {LOCKED_TELEGRAM_MODULE}"
+        )
+    if final_selection_module != LOCKED_TELEGRAM_MODULE:
+        errors.append(
+            f"{PRODUCTION_RUNNER}.telegram.final_alerts_for_output is wired to {final_selection_module}, "
+            f"expected {LOCKED_TELEGRAM_MODULE}"
+        )
+    if canonical_seen_module != LOCKED_TELEGRAM_MODULE:
+        errors.append(
+            f"{PRODUCTION_RUNNER}.telegram.canonical_alert_for_seen is wired to {canonical_seen_module}, "
+            f"expected {LOCKED_TELEGRAM_MODULE}"
+        )
+
+    if errors:
+        for error in errors:
+            print(f"GAMEJOA delivery contract error: {error}")
+        return 1
+
+    print("GAMEJOA delivery contract OK: hs8879 Telegram lane is locked and send failures are fatal.")
+    return 0
+
+
+def assert_51_character_summary_is_compacted_before_send(compact, now, errors: list[str]) -> None:
+    report = "\n".join([
+        f"ğŸ“° GAMEJOA ì‹¤ì‹œê°„ í•µì‹¬ ë‰´ìŠ¤ ë ˆì´ë” Â· {now:%Yë…„ %mì›” %dì¼} Â· {now:%H:%M}",
+        f"ì¡°íšŒ: {now:%Y-%m-%d %H:%M KST}",
+        "ì„ ë³„: í•µì‹¬ 1ê±´",
+        "",
+        "1) [ìƒ | ê³µì‹ í™•ì¸ ì „] ë¯¸êµ­, ë°˜ë„ì²´ ìˆ˜ì¶œí†µì œ í™•ëŒ€ ê²€í† ",
+        "- ê¸°ì¤€/ì‹œê°: ì‹ ë¢°ì™¸ì‹  í™•ì‚° Â· ì›ì²œ í™•ì¸ ì¤‘ Â· ì¡°íšŒ 20:00 KST",
+        (
+            "- í•µì‹¬: ë¯¸êµ­ì´ ì²¨ë‹¨ ë°˜ë„ì²´ ì¥ë¹„ ìˆ˜ì¶œí†µì œë¥¼ í™•ëŒ€í•´ í•œêµ­ ê¸°ì—…ì˜ "
+            "ì¤‘êµ­ ê³µì¥ ì¦ì„¤ê³¼ ì¥ë¹„ ë°˜ì… ì¼ì •ì„ ë‹¤ì‹œ ì ê²€í•˜ê²Œ ëìŠµë‹ˆë‹¤."
+        ),
+        (
+            "- íˆ¬ì í¬ì¸íŠ¸: ì ìš© ì¥ë¹„ì™€ ì‹œí–‰ì¼ì´ í™•ì •ë˜ë©´ ì¤‘êµ­ ìƒì‚°ë²•ì¸ì˜ "
+            "ì¦ì„¤ë¹„ìš©ê³¼ ì¥ë¹„ ì¡°ë‹¬ ì¼ì •ì´ ë°”ë€” ìˆ˜ ìˆìŠµë‹ˆë‹¤."
+        ),
+        "- ê²½ë¡œ/ì„¹í„°: ê³µê¸‰ë§, ì •ì±… íƒ€ì„ë¼ì¸ | ë°˜ë„ì²´/AI",
+        "- ì¶œì²˜: <a href=\"https://www.reuters.com/world/example\">Reuters</a>",
+        "",
+        "ğŸ’¡ ì‹¤ì‹œê°„ ë‰´ìŠ¤ ì½”ë©˜íŠ¸",
+        "ì˜¤ëŠ˜ í•µì‹¬ ë³€í™”ëŠ” `ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„Â·ì‹œê°„í‘œ`ì…ë‹ˆë‹¤.",
+        "í• ì¸ìœ¨: í™•ì¸ ë¶ˆê°€",
+        "ë‹¤ìŒ íˆ¬ìê¸°ìƒë„ì—ì„œ ìˆ˜ì¹˜Â·ìˆ˜ê¸‰Â·í…Œë§ˆì™€ ì¬í™•ì¸ í•„ìš”.",
+        "",
+        "íˆ¬ì ì¡°ì–¸ì´ ì•„ë‹Œ ì°¸ê³ ìš© ë‰´ìŠ¤ ë¸Œë¦¬í•‘ì…ë‹ˆë‹¤.",
+    ]) + "\n"
+    try:
+        compacted = compact.guard_preopen_report(report)
+    except RuntimeError as exc:
+        errors.append(f"51-character summary was blocked instead of compacted: {exc}")
+        return
+    field_errors = compact_prose_errors(compacted)
+    if field_errors:
+        errors.append(
+            "51-character summary remained over 50 chars after send preparation: "
+            + ", ".join(field_errors)
+        )
+    if "ë¯¸êµ­ì´ ì²¨ë‹¨ ë°˜ë„ì²´ ì¥ë¹„ ìˆ˜ì¶œí†µì œë¥¼" not in compacted:
+        errors.append("GAMEJOA 51-character summary lost its source-specific subject")
+    for marker in FORBIDDEN_COMPACT_MARKERS:
+        if marker in compacted:
+            errors.append(f"removed compact field returned during 51-character test: {marker}")
+
+
+def assert_korean_business_article_contract(production, compact, now, errors: list[str]) -> None:
+    noisy_summary = compact.article_sentences(
+        (
+            "ë¬´ë‹¨ ì „ì¬ ì¬ë°°í¬ ê¸ˆì§€, AI í•™ìŠµ ë° í™œìš© ê¸ˆì§€> "
+            "ì›Â·ë‹¬ëŸ¬ í™˜ìœ¨ì´ 1470ì›ì„ ë°‘ëŒë©° ë‘ ë‹¬ ë§Œì˜ ìµœì €ì¹˜ë¥¼ ê¸°ë¡í–ˆë‹¤. "
+            "ì™¸êµ­ì¸ ìœ„í—˜ì„ í˜¸ê°€ í™•ëŒ€ë˜ë©° ì›í™”ê°€ ê°•ì„¸ë¥¼ ë³´ì˜€ë‹¤."
+        ),
+        ["ì›Â·ë‹¬ëŸ¬", "1470ì›"],
+        2,
+    )
+    if "ë¬´ë‹¨ ì „ì¬" in noisy_summary or "AI í•™ìŠµ" in noisy_summary:
+        errors.append("Korean article summary retained publisher boilerplate")
+    if not noisy_summary.startswith("ì›Â·ë‹¬ëŸ¬ í™˜ìœ¨"):
+        errors.append(f"Korean article summary did not start from article facts: {noisy_summary}")
+
+    long_summary = compact.article_sentences(
+        (
+            "KBì¦ê¶Œì˜ ì˜¬í•´ 2ë¶„ê¸° ì—°ê²° ê¸°ì¤€ ì˜ì—…ì´ìµì€ 6006ì–µì›ìœ¼ë¡œ ì „ë…„ ë™ê¸°ë³´ë‹¤ "
+            "175.5% ëŠ˜ì—ˆë‹¤. "
+            + "ì£¼ì‹ì‹œì¥ ê°•ì„¸ì™€ ê±°ë˜ëŒ€ê¸ˆ ì¦ê°€ê°€ ìœ„íƒë§¤ë§¤ ìˆ˜ìµì„ ëŒì–´ì˜¬ë ¸ë‹¤. " * 12
+        ),
+        ["KBì¦ê¶Œ", "ì˜ì—…ì´ìµ", "6006ì–µì›"],
+        3,
+    )
+    if len(long_summary) > compact.ARTICLE_SUMMARY_MAX_CHARS:
+        errors.append("Korean article summary exceeded compact character limit")
+    if not long_summary.endswith((".", "!", "?", "ë‹¤", "â€¦")):
+        errors.append(f"Korean article summary ended mid-sentence: {long_summary[-40:]}")
+
+    etoday_title = "ì™¸êµ­ì¸, ì‚¼ì „Â·SKí•˜ë‹‰ 4.5ì¡° ì‚¬ë“¤ì—¬â€¦ë°˜ë„ì²´ë„ ê³¨ë¼ ë‹´ì•˜ë‹¤"
+    etoday_body = (
+        "ì™¸êµ­ì¸ì€ 4ê±°ë˜ì¼ ë™ì•ˆ ì‚¼ì„±ì „ì 2ì¡°9327ì–µì›ê³¼ SKí•˜ì´ë‹‰ìŠ¤ "
+        "1ì¡°5416ì–µì›ì„ ìˆœë§¤ìˆ˜í–ˆë‹¤. ë‘ ì¢…ëª© í•©ê³„ëŠ” ì•½ 4ì¡°5000ì–µì›ì´ë‹¤. "
+        "ë°˜ë©´ ì¼ë¶€ ë°˜ë„ì²´ ì†Œì¬Â·ë¶€í’ˆÂ·ì¥ë¹„ ì¢…ëª©ì€ ìˆœë§¤ë„í•´ ì—…ì¢… ë‚´ë¶€ ì°¨ë³„í™”ê°€ ë‚˜íƒ€ë‚¬ë‹¤."
+    )
+    etnews_title = "ì—‘ì‹œì½˜, ì°¨ì„¸ëŒ€ CXL 3.1 í…ŒìŠ¤í„° ìƒìš©í™” ì†ë„"
+    etnews_body = (
+        "ì—‘ì‹œì½˜ì€ ì‚¼ì„±ì „ìì™€ Gen6 ë° CXL 3.1 í…ŒìŠ¤í„° ì–‘ì‚°í‰ê°€ë¥¼ ì§„í–‰í•˜ê³  ìˆë‹¤. "
+        "í‰ê°€ëŠ” ì´ë‹¬ ë§ ë§ˆë¬´ë¦¬ë  ì˜ˆì •ì´ë©°, ì–‘ì‚°í‰ê°€ í†µê³¼ ë’¤ ì‹¤ì œ ì¥ë¹„ ë°œì£¼ê°€ ë‚¨ì•„ ìˆë‹¤. "
+        "íšŒì‚¬ëŠ” ì§€ë‚œí•´ ë§¤ì¶œ 1018ì–µì›ì„ ê¸°ë¡í–ˆë‹¤."
+    )
+
+    def fixture(title: str, body: str) -> str:
+        return f"""
+        <html><head>
+          <meta property="og:title" content="{title}">
+          <meta property="article:published_time" content="2026-07-23T17:00:00+09:00">
+        </head><body><div itemprop="articleBody">
+          <h1>{title}</h1><p>{body}</p>
+          <p>ê¸°ì‚¬ ì›ë¬¸ì€ ê´€ë ¨ ê¸°ì—…ì˜ í›„ì† ìˆ˜ê¸‰, ê³ ê° í‰ê°€, ë°œì£¼ì™€ ê³µì‹œë¥¼ í•¨ê»˜ í™•ì¸í•´ì•¼ í•œë‹¤ê³  ì„¤ëª…í–ˆë‹¤.</p>
+        </div></body></html>
+        """
+
+    for publisher, title, body, link, expected_kind, expected_impacts in [
+        (
+            "ì´íˆ¬ë°ì´",
+            etoday_title,
+            etoday_body,
+            "https://www.etoday.co.kr/news/view/2606782",
+            "foreign_semiconductor_flow",
+            ["ìˆ˜ê¸‰"],
+        ),
+        (
+            "ì „ìì‹ ë¬¸",
+            etnews_title,
+            etnews_body,
+            "https://www.etnews.com/20260723000345",
+            "exicon_cxl_tester",
+            ["ëˆ ë²„ëŠ” ëŠ¥ë ¥", "ì‹œê°„í‘œ", "ìˆ˜ê¸‰"],
+        ),
+    ]:
+        detail = compact.extract_article_detail(fixture(title, body), title)
+        if not detail.get("body_verified") or not detail.get("title_aligned"):
+            errors.append(f"{publisher} article title/body verification failed")
+            continue
+        row = {
+            "source": f"{publisher} ë°˜ë„ì²´ ë‰´ìŠ¤",
+            "layer": "trusted",
+            "publisher": publisher,
+            "title": title,
+            "source_title": detail["title"],
+            "source_body": detail["body"],
+            "source_abstract": detail["body"],
+            "summary": detail["body"],
+            "link": link,
+            "published": now,
+            "body_verified": True,
+        }
+        alert = production.contract.strict.classify(row, now)
+        if not alert:
+            errors.append(f"{publisher} verified article was not classified")
+            continue
+        normalized = compact.normalize_alert_for_output(alert)
+        if normalized.get("news") != title:
+            errors.append(
+                f"{publisher} exact Korean source title was overwritten: {normalized.get('news')}"
+            )
+        if normalized.get("korean_business_kind") != expected_kind:
+            errors.append(
+                f"{publisher} article did not select its specific profile: "
+                f"{normalized.get('korean_business_kind')}"
+            )
+        if normalized.get("impacts") != expected_impacts:
+            errors.append(
+                f"{publisher} article impacts were contaminated by another overlay: "
+                f"{normalized.get('impacts')}"
+            )
+        if normalized.get("sectors") != ["ë°˜ë„ì²´/AI"]:
+            errors.append(
+                f"{publisher} article sectors were contaminated by another overlay: "
+                f"{normalized.get('sectors')}"
+            )
+        if normalized.get("k_power_watch"):
+            errors.append(f"{publisher} article incorrectly inherited the nuclear overlay")
+        if not compact.source_output_aligned(normalized):
+            errors.append(f"{publisher} source/output alignment failed")
+        rendered = compact.compact_alert(normalized, 1, now, {}, {})
+        required_markers = [
+            "- í•µì‹¬:",
+            "- íˆ¬ì í¬ì¸íŠ¸:",
+            "- ê²½ë¡œ/ì„¹í„°:",
+            "ì›ë¬¸ ë‰´ìŠ¤ë³´ê¸°",
+        ]
+        for marker in required_markers:
+            if marker not in rendered:
+                errors.append(f"{publisher} compact Telegram summary missing {marker}")
+        field_errors = compact_prose_errors(rendered)
+        if field_errors:
+            errors.append(
+                f"{publisher} compact Telegram prose exceeded 50 chars: "
+                + ", ".join(field_errors)
+            )
+        if "- ë¶„ë¥˜ ë§¤íŠ¸ë¦­ìŠ¤:" in rendered or "- ê´€ë ¨ í•´ì™¸ í‹°ì»¤/ì§€í‘œ:" in rendered:
+            errors.append(f"{publisher} compact Telegram summary regressed to verbose format")
+        for marker in FORBIDDEN_COMPACT_MARKERS:
+            if marker in rendered:
+                errors.append(f"{publisher} compact Telegram summary retained {marker}")
+        if "K-ì›ì „/ê°€ìŠ¤í„°ë¹ˆ" in rendered or "ì²´ì½” ì›ì „" in rendered:
+            errors.append(f"{publisher} compact summary contains an unrelated nuclear watch")
+
+    generic_title = "ì¦ì„¤ì€ ë”ë”˜ë° AI ìˆ˜ìš”ëŠ” í­ì¦â€¦ì‚¼ì„±ì „ê¸°, MLCC ì¥ê¸°ê³„ì•½ ì‡ë‹¬ì•„"
+    generic_body = (
+        "AI ì„œë²„ íˆ¬ì í™•ëŒ€ë¡œ ê³ ìš©ëŸ‰ MLCC ìˆ˜ìš”ê°€ ë¹ ë¥´ê²Œ ëŠ˜ê³  ìˆë‹¤. "
+        "ì‚¼ì„±ì „ê¸°ëŠ” ê¸€ë¡œë²Œ ê³ ê°ì‚¬ì™€ MLCC ì¥ê¸°ê³µê¸‰ ê³„ì•½ì„ í™•ëŒ€í•˜ê³  ìˆìœ¼ë©° ìƒì‚°ëŠ¥ë ¥ ì¦ì„¤ë„ ê²€í† í•œë‹¤. "
+        "ë‹¤ë§Œ êµ¬ì²´ ê³„ì•½ê¸ˆì•¡ê³¼ ê³ ê°ì‚¬ë³„ ë§¤ì¶œ ì¸ì‹ ì‹œì ì€ ê³µê°œë˜ì§€ ì•Šì•˜ë‹¤."
+    )
+    generic_detail = compact.extract_article_detail(
+        fixture(generic_title, generic_body),
+        generic_title,
+    )
+    generic_row = {
+        "source": "ì´íˆ¬ë°ì´ ì‚°ì—…",
+        "layer": "trusted",
+        "publisher": "ì´íˆ¬ë°ì´",
+        "title": generic_title,
+        "source_title": generic_detail["title"],
+        "source_body": generic_detail["body"],
+        "source_abstract": generic_detail["body"],
+        "summary": generic_detail["body"],
+        "link": "https://www.etoday.co.kr/news/view/2606800",
+        "published": now,
+        "body_verified": True,
+    }
+    generic_alert = production.contract.strict.classify(generic_row, now)
+    if not generic_alert:
+        errors.append("verified generic Korean business article was not classified")
+    else:
+        normalized = compact.normalize_alert_for_output(generic_alert)
+        if normalized.get("korean_business_kind") != "verified_source_summary":
+            errors.append("generic Korean article did not use verified source summary profile")
+        if normalized.get("news") != generic_title:
+            errors.append("generic Korean article exact title was overwritten")
+        if not compact.source_output_aligned(normalized):
+            errors.append("generic Korean article source/output alignment failed")
+        rendered = compact.compact_alert(normalized, 1, now, {}, {})
+        if generic_title not in rendered or "ì›ë¬¸ ë‰´ìŠ¤ë³´ê¸°" not in rendered:
+            errors.append("generic Korean article compact rendering lost title or source link")
+        if "ê³µì‹ ë¬¸ì„œ ë˜ëŠ” ì‹ ë¢° ë³´ë„ì—ì„œ" in rendered:
+            errors.append("generic Korean article fell back to stale generic policy copy")
+
+    body_only_material_row = dict(generic_row)
+    body_only_material_row.update(
+        {
+            "title": "í—¤ì§€ìŠ¤, 9ì›”ì— í™ì½© ê°„ë‹¤",
+            "source_title": "í—¤ì§€ìŠ¤, 9ì›”ì— í™ì½© ê°„ë‹¤",
+            "source_body": (
+                "ë¸Œëœë“œê°€ AI ì˜¤ë” ì‹œìŠ¤í…œì„ ë„ì…í–ˆë‹¤. ë³¸ë¬¸ì—ëŠ” ê³¼ê±° ìˆ˜ì£¼ì™€ ë§¤ì¶œ ëª©í‘œê°€ ì–¸ê¸‰ëì§€ë§Œ "
+                "ì œëª©ì—ëŠ” ì‹¤ì Â·ê³„ì•½Â·ì¦ì„¤ ê°™ì€ ìƒˆë¡œìš´ ê°€ê²© ë³€ìˆ˜ê°€ ì—†ë‹¤."
+            ),
+            "source_abstract": (
+                "ë¸Œëœë“œê°€ AI ì˜¤ë” ì‹œìŠ¤í…œì„ ë„ì…í–ˆë‹¤. ë³¸ë¬¸ì—ëŠ” ê³¼ê±° ìˆ˜ì£¼ì™€ ë§¤ì¶œ ëª©í‘œê°€ ì–¸ê¸‰ëë‹¤."
+            ),
+            "summary": "ë¸Œëœë“œê°€ AI ì˜¤ë” ì‹œìŠ¤í…œì„ ë„ì…í–ˆë‹¤.",
+            "link": "https://www.etoday.co.kr/news/view/2606629",
+        }
+    )
+    if production.contract.strict.classify(body_only_material_row, now):
+        errors.append("Korean body-only background terms bypassed the material headline gate")
+
+    recap_row = dict(generic_row)
+    recap_row.update(
+        {
+            "title": "[ê¸‰ë“±ë½ì£¼ ì§šì–´ë³´ê¸°] ì‹¤ì ì£¼ ìƒí•œê°€Â·ì„ìƒì£¼ í•˜í•œê°€",
+            "source_title": "[ê¸‰ë“±ë½ì£¼ ì§šì–´ë³´ê¸°] ì‹¤ì ì£¼ ìƒí•œê°€Â·ì„ìƒì£¼ í•˜í•œê°€",
+            "link": "https://www.etoday.co.kr/news/view/2606794",
+        }
+    )
+    if production.contract.strict.classify(recap_row, now):
+        errors.append("same-day price recap was promoted as a new high-impact article")
+
+    jb_title = "JBê¸ˆìœµ, 2ë¶„ê¸° ìˆœìµ 2196ì–µ 'ì‚¬ìƒ ìµœëŒ€'â€¦1000ì–µì› ìì‚¬ì£¼ ì†Œê°"
+    jb_body = (
+        "JBê¸ˆìœµì§€ì£¼ê°€ ë¹„ì€í–‰ ê³„ì—´ì‚¬ì˜ ì„±ì¥ì— í˜ì…ì–´ ë¶„ê¸° ê¸°ì¤€ ì‚¬ìƒ ìµœëŒ€ ì‹¤ì ì„ "
+        "ë‹¬ì„±í•˜ê³  ì ê·¹ì ì¸ ì£¼ì£¼í™˜ì›ì— ë‚˜ì„ ë‹¤. "
+        "23ì¼ JBê¸ˆìœµì€ ì˜¬ 2ë¶„ê¸° ì§€ë°°ì£¼ì£¼ ë‹¹ê¸°ìˆœì´ìµì´ ì „ë…„ ë™ê¸° ëŒ€ë¹„ 5.7% "
+        "ì¦ê°€í•œ 2196ì–µì›ì„ ê¸°ë¡í–ˆë‹¤ê³  ë°í˜”ë‹¤. "
+        "ìƒë°˜ê¸° ëˆ„ì  ìˆœì´ìµ ì—­ì‹œ 3857ì–µì›ìœ¼ë¡œ ì—­ëŒ€ ìµœê³ ì¹˜ë‹¤. "
+        "ì´ë‚  JBê¸ˆìœµ ì´ì‚¬íšŒëŠ” ì£¼ì£¼í™˜ì› ì •ì±…ì˜ í•˜ë‚˜ë¡œ ë³´í†µì£¼ 1ì£¼ë‹¹ í˜„ê¸ˆ 314ì›ì˜ "
+        "ë¶„ê¸° ë°°ë‹¹ê³¼ í•¨ê»˜ 1000ì–µì› ê·œëª¨ì˜ ìê¸°ì£¼ì‹ ì·¨ë“ ë° ì†Œê°ì„ ê²°ì •í–ˆë‹¤."
+    )
+    jb_detail = compact.extract_article_detail(fixture(jb_title, jb_body), jb_title)
+    jb_row = {
+        "source": "ì „ìì‹ ë¬¸ ì˜¤ëŠ˜ì˜ ë‰´ìŠ¤",
+        "layer": "trusted",
+        "publisher": "ì „ìì‹ ë¬¸",
+        "title": jb_title,
+        "source_title": jb_detail["title"],
+        "source_body": jb_detail["body"],
+        "source_abstract": jb_detail["body"],
+        "summary": jb_detail["body"],
+        "link": "https://www.etnews.com/20260723000458",
+        "published": now,
+        "body_verified": True,
+    }
+    jb_alert = production.contract.strict.classify(jb_row, now)
+    if not jb_alert:
+        errors.append("JB Financial verified earnings article was not classified")
+    else:
+        rendered = compact.compact_alert(jb_alert, 1, now, {}, {})
+        core_line = next((line for line in rendered.splitlines() if line.startswith("- í•µì‹¬:")), "")
+        view_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- íˆ¬ì í¬ì¸íŠ¸:")),
+            "",
+        )
+        if not all(term in core_line for term in ("2196ì–µì›", "5.7%", "ì—­ëŒ€ ìµœëŒ€")):
+            errors.append(f"JB Financial core omitted article facts: {core_line}")
+        if not all(term in view_line for term in ("314ì›", "1000ì–µì›", "ìì‚¬ì£¼")):
+            errors.append(f"JB Financial investment point omitted shareholder return: {view_line}")
+        if "ê¸ˆìœµ/ìë³¸ì‹œì¥" not in rendered:
+            errors.append("JB Financial article lost its finance sector classification")
+        if jb_title in core_line or jb_title in view_line:
+            errors.append("JB Financial summary repeated the headline instead of article facts")
+        for marker in FORBIDDEN_COMPACT_MARKERS:
+            if marker in rendered:
+                errors.append(f"JB Financial compact Telegram summary retained {marker}")
+        field_errors = compact_prose_errors(rendered)
+        if field_errors:
+            errors.append(
+                "JB Financial compact facts exceeded 50 chars: " + ", ".join(field_errors)
+            )
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
