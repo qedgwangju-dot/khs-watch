@@ -597,6 +597,34 @@ def main() -> int:
 
 
 def assert_korean_business_article_contract(production, compact, now, errors: list[str]) -> None:
+    noisy_summary = compact.article_sentences(
+        (
+            "무단 전재 재배포 금지, AI 학습 및 활용 금지> "
+            "원·달러 환율이 1470원을 밑돌며 두 달 만의 최저치를 기록했다. "
+            "외국인 위험선호가 확대되며 원화가 강세를 보였다."
+        ),
+        ["원·달러", "1470원"],
+        2,
+    )
+    if "무단 전재" in noisy_summary or "AI 학습" in noisy_summary:
+        errors.append("Korean article summary retained publisher boilerplate")
+    if not noisy_summary.startswith("원·달러 환율"):
+        errors.append(f"Korean article summary did not start from article facts: {noisy_summary}")
+
+    long_summary = compact.article_sentences(
+        (
+            "KB증권의 올해 2분기 연결 기준 영업이익은 6006억원으로 전년 동기보다 "
+            "175.5% 늘었다. "
+            + "주식시장 강세와 거래대금 증가가 위탁매매 수익을 끌어올렸다. " * 12
+        ),
+        ["KB증권", "영업이익", "6006억원"],
+        3,
+    )
+    if len(long_summary) > compact.ARTICLE_SUMMARY_MAX_CHARS:
+        errors.append("Korean article summary exceeded compact character limit")
+    if not long_summary.endswith((".", "!", "?", "다", "…")):
+        errors.append(f"Korean article summary ended mid-sentence: {long_summary[-40:]}")
+
     etoday_title = "외국인, 삼전·SK하닉 4.5조 사들여…반도체도 골라 담았다"
     etoday_body = (
         "외국인은 4거래일 동안 삼성전자 2조9327억원과 SK하이닉스 "
@@ -621,13 +649,14 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
         </div></body></html>
         """
 
-    for publisher, title, body, link, expected_kind in [
+    for publisher, title, body, link, expected_kind, expected_impacts in [
         (
             "이투데이",
             etoday_title,
             etoday_body,
             "https://www.etoday.co.kr/news/view/2606782",
             "foreign_semiconductor_flow",
+            ["수급"],
         ),
         (
             "전자신문",
@@ -635,6 +664,7 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
             etnews_body,
             "https://www.etnews.com/20260723000345",
             "exicon_cxl_tester",
+            ["돈 버는 능력", "시간표", "수급"],
         ),
     ]:
         detail = compact.extract_article_detail(fixture(title, body), title)
@@ -668,6 +698,18 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
                 f"{publisher} article did not select its specific profile: "
                 f"{normalized.get('korean_business_kind')}"
             )
+        if normalized.get("impacts") != expected_impacts:
+            errors.append(
+                f"{publisher} article impacts were contaminated by another overlay: "
+                f"{normalized.get('impacts')}"
+            )
+        if normalized.get("sectors") != ["반도체/AI"]:
+            errors.append(
+                f"{publisher} article sectors were contaminated by another overlay: "
+                f"{normalized.get('sectors')}"
+            )
+        if normalized.get("k_power_watch"):
+            errors.append(f"{publisher} article incorrectly inherited the nuclear overlay")
         if not compact.source_output_aligned(normalized):
             errors.append(f"{publisher} source/output alignment failed")
         rendered = compact.compact_alert(normalized, 1, now, {}, {})
@@ -685,6 +727,8 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
                 errors.append(f"{publisher} compact Telegram summary missing {marker}")
         if "- 분류 매트릭스:" in rendered or "- 관련 해외 티커/지표:" in rendered:
             errors.append(f"{publisher} compact Telegram summary regressed to verbose format")
+        if "K-원전/가스터빈" in rendered or "체코 원전" in rendered:
+            errors.append(f"{publisher} compact summary contains an unrelated nuclear watch")
 
     generic_title = "증설은 더딘데 AI 수요는 폭증…삼성전기, MLCC 장기계약 잇달아"
     generic_body = (

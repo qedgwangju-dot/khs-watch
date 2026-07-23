@@ -57,6 +57,10 @@ def enforce_fda_quality_gate() -> None:
     original_classify = contract.strict.classify
 
     def classify(row: dict, now):
+        if runner.is_korean_business_row(row):
+            if row.get("_article_verification_failed") or not row.get("body_verified"):
+                return None
+            return runner.build_verified_korean_business_alert(row, now)
         text = base.source_content_text(row)
         alert = original_classify(row, now)
         if not alert:

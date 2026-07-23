@@ -599,15 +599,59 @@ def korean_business_detail_priority(row: dict) -> tuple[int, float]:
     return score, timestamp
 
 
+ARTICLE_SUMMARY_NOISE_PATTERNS = [
+    r"무단\s*전재(?:\s*[-·]?\s*재배포)?\s*금지",
+    r"AI\s*학습\s*및\s*활용\s*금지",
+    r"저작권자\s*©?\s*이투데이",
+    r"Copyright\s*©?\s*Etoday",
+]
+ARTICLE_SUMMARY_MAX_CHARS = 420
+
+
+def clean_article_summary_text(text: str) -> str:
+    cleaned = html.unescape(str(text or "")).replace("\xa0", " ")
+    for pattern in ARTICLE_SUMMARY_NOISE_PATTERNS:
+        cleaned = re.sub(pattern, " ", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"^[\s,;:>|·•\-]+", "", cleaned)
+    return re.sub(r"\s+", " ", cleaned).strip()
+
+
+def bounded_complete_excerpt(text: str, max_chars: int) -> str:
+    cleaned = clean_article_summary_text(text)
+    if len(cleaned) <= max_chars:
+        return cleaned
+    head = cleaned[: max_chars + 1]
+    sentence_ends = [
+        match.end()
+        for match in re.finditer(
+            r"(?:[.!?。]|(?:했|됐|였|입니|됩니|됩|된|이|한|졌|보였|나타났|밝혔|전했|설명했|기록했|늘었|줄었|확대됐|축소됐)다)(?=\s|$)",
+            head,
+        )
+        if match.end() >= max_chars // 2
+    ]
+    if sentence_ends:
+        return head[: sentence_ends[-1]].rstrip()
+    clause_ends = [
+        match.start()
+        for match in re.finditer(r"[,;:·]\s+", head)
+        if match.start() >= max_chars // 2
+    ]
+    cut = clause_ends[-1] if clause_ends else head.rfind(" ", max_chars // 2, max_chars)
+    if cut < max_chars // 2:
+        cut = max_chars
+    return head[:cut].rstrip(" ,;:·") + "…"
+
+
 def article_sentences(text: str, required: list[str], limit: int = 3) -> str:
+    cleaned_text = clean_article_summary_text(text)
     sentences = [
         re.sub(
             r"^(?:▲[^)]{0,100}\)|\([^)]{0,100}(?:출처|사진)[^)]*\))\s*",
             "",
-            re.sub(r"\s+", " ", sentence).strip(),
+            clean_article_summary_text(sentence),
         )
-        for sentence in re.split(r"(?<=[.!?다])\s+", text or "")
-        if re.sub(r"\s+", " ", sentence).strip()
+        for sentence in re.split(r"(?<=[.!?다])\s+", cleaned_text)
+        if clean_article_summary_text(sentence)
     ]
     sentences = [sentence for sentence in sentences if len(sentence) >= 25]
     selected = [
@@ -616,7 +660,16 @@ def article_sentences(text: str, required: list[str], limit: int = 3) -> str:
     ]
     if not selected:
         selected = sentences
-    return " ".join(selected[:limit])[:520]
+    summary = ""
+    for sentence in selected[:limit]:
+        remaining = ARTICLE_SUMMARY_MAX_CHARS - len(summary) - (1 if summary else 0)
+        if remaining < 80:
+            break
+        excerpt = bounded_complete_excerpt(sentence, remaining)
+        summary = f"{summary} {excerpt}".strip()
+        if excerpt.endswith("…"):
+            break
+    return summary
 
 
 KOREAN_BUSINESS_SECTOR_TERMS = [
@@ -850,6 +903,88 @@ def base_korean_business_alert(row: dict, now, *, score: int, impacts: list[str]
     }
 
 
+def build_verified_korean_business_alert(row: dict, now) -> dict | None:
+    title = str(row.get("source_title") or row.get("title") or "")
+    body = str(row.get("source_body") or row.get("source_abstract") or "")
+    text = f"{title} {body}".lower()
+
+    if "외국인" in text and "순매수" in text and all(
+        term in text for term in ("삼성전자", "sk하이닉스")
+    ):
+        alert = base_korean_business_alert(row, now, score=112, impacts=["수급"])
+        alert.update(
+            {
+                "policy_plain_summary": article_sentences(
+                    body,
+                    ["4거래일", "삼성전자", "SK하이닉스", "순매수"],
+                    3,
+                ),
+                "investment_view": "외국인 매수 집중은 대형 반도체주의 단기 수급과 지수 기여도를 바꿉니다. 다만 HBM 수요 전망은 매수 이유이지 이번 기사만으로 새 실적이 확정된 것은 아닙니다.",
+                "korea_market_impact": "삼성전자·SK하이닉스의 외국인 순매수 지속 여부와 반도체 장비·부품주로 매수 폭이 넓어지는지 구분해 확인합니다.",
+                "priced_in": "중간. 기사 기준 누적 매수 기간에 두 종목 주가가 이미 반응했을 수 있어 다음 거래일 순매수 지속성이 중요합니다.",
+                "counter": "특정 4거래일 누적치이며 일부 반도체 장비주는 외국인이 순매도해 업종 전체 매수로 일반화하기 어렵습니다.",
+                "interpretation": "외국인이 삼성전자·SK하이닉스에 집중한 수급 신호입니다. 실적 변화보다 당일 지수와 대형주 수급에 직접적입니다.",
+                "failed_signal": "외국인이 순매도로 전환하거나 반도체 업종 확산 없이 두 대형주 거래만 끝나면 후속 수급 재료가 약해집니다.",
+                "korean_business_kind": "foreign_semiconductor_flow",
+            }
+        )
+        return alert
+
+    if "엑시콘" in text and "cxl 3.1" in text and "양산평가" in text:
+        alert = base_korean_business_alert(
+            row,
+            now,
+            score=104,
+            impacts=["돈 버는 능력", "시간표", "수급"],
+        )
+        alert.update(
+            {
+                "policy_plain_summary": article_sentences(
+                    body,
+                    ["CXL 3.1", "양산평가", "이달 말", "1018억원"],
+                    3,
+                ),
+                "investment_view": "삼성전자 양산평가 통과는 CXL·Gen6 테스터 공급의 선행 조건입니다. 평가 종료는 수주가 아니므로 장비 발주·공급계약·매출 인식 확인이 필요합니다.",
+                "korea_market_impact": "한국장에서는 엑시콘과 CXL·SSD 검사장비 밸류체인의 수급을 보되, 삼성전자 평가 통과와 신규 계약 공시가 확인된 종목만 연결합니다.",
+                "priced_in": "낮음~중간. 이달 말 평가 종료 기대는 단기 수급에 반영될 수 있지만 양산 공급 규모는 아직 확정되지 않았습니다.",
+                "counter": "양산평가 진행은 확정 매출이 아니며 경쟁사도 평가에 참여한 것으로 보도됐습니다. 최종 채택 물량과 공급 시점이 달라질 수 있습니다.",
+                "interpretation": "CXL 3.1 테스터가 개발 단계에서 고객 양산평가 단계로 이동한 시간표 뉴스입니다. 통과 후 발주가 확인돼야 돈 버는 능력이 실제로 바뀝니다.",
+                "failed_signal": "평가 완료가 지연되거나 삼성전자 발주·엑시콘 공급계약 공시가 나오지 않으면 상용화 기대만 남습니다.",
+                "korean_business_kind": "exicon_cxl_tester",
+            }
+        )
+        return alert
+
+    if any(term in title.lower() for term in KOREAN_BUSINESS_MARKET_RECAP_TERMS):
+        return None
+
+    title_text = title.lower()
+    title_material_terms = [
+        term for term in KOREAN_BUSINESS_MATERIAL_TERMS
+        if term in title_text
+    ]
+    if not title_material_terms:
+        return None
+    impacts = korean_business_impacts(text, [])
+    if not impacts:
+        return None
+    has_numeric_materiality = bool(
+        re.search(r"\d[\d,.]*\s*(?:%|억|조|만|t|톤|달러|원)", title_text)
+    )
+    source_score = (
+        90
+        + min(12, len(title_material_terms) * 3)
+        + (4 if has_numeric_materiality else 0)
+    )
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=source_score,
+        impacts=impacts,
+    )
+    return apply_generic_korean_business_profile(alert, row, now)
+
+
 def enforce_korean_business_news_contract() -> None:
     original_collect_items = contract.strict.collect_items
 
@@ -912,95 +1047,11 @@ def enforce_korean_business_news_contract() -> None:
     original_classify = contract.strict.classify
 
     def classify(row: dict, now):
-        if is_korean_business_row(row) and (
-            row.get("_article_verification_failed") or not row.get("body_verified")
-        ):
-            return None
-        alert = original_classify(row, now)
-        if not is_korean_business_row(row):
-            return alert
-
-        title = str(row.get("source_title") or row.get("title") or "")
-        body = str(row.get("source_body") or row.get("source_abstract") or "")
-        text = f"{title} {body}".lower()
-        if "외국인" in text and "순매수" in text and all(
-            term in text for term in ("삼성전자", "sk하이닉스")
-        ):
-            alert = base_korean_business_alert(row, now, score=112, impacts=["수급"])
-            alert.update(
-                {
-                    "policy_plain_summary": article_sentences(
-                        body,
-                        ["4거래일", "삼성전자", "SK하이닉스", "순매수"],
-                        3,
-                    ),
-                    "investment_view": "외국인 매수 집중은 대형 반도체주의 단기 수급과 지수 기여도를 바꿉니다. 다만 HBM 수요 전망은 매수 이유이지 이번 기사만으로 새 실적이 확정된 것은 아닙니다.",
-                    "korea_market_impact": "삼성전자·SK하이닉스의 외국인 순매수 지속 여부와 반도체 장비·부품주로 매수 폭이 넓어지는지 구분해 확인합니다.",
-                    "priced_in": "중간. 기사 기준 누적 매수 기간에 두 종목 주가가 이미 반응했을 수 있어 다음 거래일 순매수 지속성이 중요합니다.",
-                    "counter": "특정 4거래일 누적치이며 일부 반도체 장비주는 외국인이 순매도해 업종 전체 매수로 일반화하기 어렵습니다.",
-                    "interpretation": "외국인이 삼성전자·SK하이닉스에 집중한 수급 신호입니다. 실적 변화보다 당일 지수와 대형주 수급에 직접적입니다.",
-                    "failed_signal": "외국인이 순매도로 전환하거나 반도체 업종 확산 없이 두 대형주 거래만 끝나면 후속 수급 재료가 약해집니다.",
-                    "korean_business_kind": "foreign_semiconductor_flow",
-                }
-            )
-            return alert
-
-        if "엑시콘" in text and "cxl 3.1" in text and "양산평가" in text:
-            alert = base_korean_business_alert(
-                row,
-                now,
-                score=104,
-                impacts=["돈 버는 능력", "시간표", "수급"],
-            )
-            alert.update(
-                {
-                    "policy_plain_summary": article_sentences(
-                        body,
-                        ["CXL 3.1", "양산평가", "이달 말", "1018억원"],
-                        3,
-                    ),
-                    "investment_view": "삼성전자 양산평가 통과는 CXL·Gen6 테스터 공급의 선행 조건입니다. 평가 종료는 수주가 아니므로 장비 발주·공급계약·매출 인식 확인이 필요합니다.",
-                    "korea_market_impact": "한국장에서는 엑시콘과 CXL·SSD 검사장비 밸류체인의 수급을 보되, 삼성전자 평가 통과와 신규 계약 공시가 확인된 종목만 연결합니다.",
-                    "priced_in": "낮음~중간. 이달 말 평가 종료 기대는 단기 수급에 반영될 수 있지만 양산 공급 규모는 아직 확정되지 않았습니다.",
-                    "counter": "양산평가 진행은 확정 매출이 아니며 경쟁사도 평가에 참여한 것으로 보도됐습니다. 최종 채택 물량과 공급 시점이 달라질 수 있습니다.",
-                    "interpretation": "CXL 3.1 테스터가 개발 단계에서 고객 양산평가 단계로 이동한 시간표 뉴스입니다. 통과 후 발주가 확인돼야 돈 버는 능력이 실제로 바뀝니다.",
-                    "failed_signal": "평가 완료가 지연되거나 삼성전자 발주·엑시콘 공급계약 공시가 나오지 않으면 상용화 기대만 남습니다.",
-                    "korean_business_kind": "exicon_cxl_tester",
-                }
-            )
-            return alert
-
-        if any(term in title.lower() for term in KOREAN_BUSINESS_MARKET_RECAP_TERMS):
-            return None
-
-        title_text = title.lower()
-        title_material_terms = [
-            term for term in KOREAN_BUSINESS_MATERIAL_TERMS
-            if term in title_text
-        ]
-        if not title_material_terms:
-            return None
-        if not alert and title_material_terms:
-            impacts = korean_business_impacts(text, [])
-            if impacts:
-                has_numeric_materiality = bool(
-                    re.search(r"\d[\d,.]*\s*(?:%|억|조|만|t|톤|달러|원)", title_text)
-                )
-                source_score = (
-                    90
-                    + min(12, len(title_material_terms) * 3)
-                    + (4 if has_numeric_materiality else 0)
-                )
-                alert = base_korean_business_alert(
-                    row,
-                    now,
-                    score=source_score,
-                    impacts=impacts,
-                )
-
-        if alert:
-            alert = apply_generic_korean_business_profile(alert, row, now)
-        return alert
+        if is_korean_business_row(row):
+            if row.get("_article_verification_failed") or not row.get("body_verified"):
+                return None
+            return build_verified_korean_business_alert(row, now)
+        return original_classify(row, now)
 
     contract.strict.collect_items = collect_items
     contract.strict.classify = classify
@@ -2386,6 +2437,17 @@ def guard_preopen_report(text: str) -> None:
     ]:
         if marker in low:
             errors.append(f"federal_register_boilerplate={marker}")
+    for marker in ["무단 전재", "재배포 금지", "ai 학습 및 활용 금지"]:
+        if marker in low:
+            errors.append(f"article_boilerplate={marker}")
+    for line in text.splitlines():
+        if not line.startswith("- 핵심:"):
+            continue
+        summary = line.removeprefix("- 핵심:").strip()
+        if len(summary) > ARTICLE_SUMMARY_MAX_CHARS:
+            errors.append("article_summary_too_long")
+        if re.search(r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)$", summary):
+            errors.append(f"incomplete_article_summary={summary[-30:]}")
     if errors:
         raise RuntimeError("GAMEJOA preopen radar quality guard blocked Telegram output: " + "; ".join(errors))
 
