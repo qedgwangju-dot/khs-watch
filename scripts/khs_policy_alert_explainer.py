@@ -322,43 +322,1025 @@ def infer_korean_title(item: dict, text: str = "") -> str:
     elif has_any(low, ["foreign energy inverter", "energy inverter", "solar inverter"]):
         korean = "미국 FCC, 외국산 에너지 인버터 수입제한 정책 신호"
     elif has_any(low, ["phosphate fertilizer", "duty-free importation"]):
-        korean = "미��N���$z{-���jם�$����+N�ۂȉ������Bɫ�Jٙ^�ێ�Z������B�"�Т&�6VE����.�I�B�����I��Ȋ�y��	θ�B�	��;R��κ8��x�x��8��(����+~�8����x\+~�8�ȹ��h������N��BȺN��iN�	^�y�	�Ɉ�
-ȉ���ȫ^�����B�"�Т6�V�FW#�.�H��X�+~�(�j+~�;N��B����8N��N��BȺN�	��ɪ��)N��N��i^�hι
-ȉ��莫:�Ɉ�ɛ������N�JȪN��{N�jκ�B�j��*����HN�kN�:޸����B�"�Тf��W&U�6�v���.�Y��(R�y��	R�ȹ��h��������8���x\+~�(����������N�JȪB�	��Y���Bٙ^�ێ�	��x�X���κ�B�Xκx��K�	�����κ��޸*������B�"�Т�ТVƖb�5�w&�7V�GW&U�7WǕ��Ɩ7��FW�B��FVғ�ТWB�Т�FV��Т���'F�6S�.�I"�Т��7G3ղ.����(N��B��^�
-R"�.ȉ����"�.ȹΫN��%��ТF�3ղ.ɹ�"�.�;^����y�"�.�	^�R�8��N����ۂ"�.ȹ޹��+~�h��xR؊���^��B%��Т6V7F�'3ղ.��N�8���h�ٙN�Y�"�.�:�����h��xRɹ�"�.���ȹ޺8�ɹ�"�.�	N��NɊN�{�8�%��Т�Ɩ7������7V��'��.�h��x\+~��N�8�+~�	N��NɊN�{�8��H�
-��	^�^���h��xR؊���^��B���N�8�+~�:����;^�������ȹ޺8�ɹ��˙�ٙ��+��{�8�ɹ�8�ȉ�ɩN�[��	N��ȉ��莸�B�+�x^��Nɪ��8ȉ���^�����B�"�Т��fW7F�V�E�f�Ws�.��B��NȪN��IɩN�Y��x��B�	^�R�	κ���;N��B��N�8�+~�:���+~�	N��NɊN�{�8�ɹ�ɘ�;^��������{��jΫ:�YΫZ����ȹ޺8�+~�h�ٙN�Y����Y��+N�ێ�ق�x��xB��	^��B�	N�뎸�N�x�y��κ
-B��ȫ^�����B�"�Т��&V��&�WE���7C�.�YΫZ���^�y�Iθ�B��N�8���h�ٙN�Y���:���ɹ�����ȹ޺8�ɹ���Ϋ	�;���	N��NɊN�{�8�ɹ�8����Y��+N�ێ��B�H��Z������B�����Z��+Bȉ���\+~�h��xR�	^�^��N��B�Z޸+B�x�	ȉ�ىθ�B��*�+~�;^����y��{�+��Bٙ^�ێ�
-�Xκx��ێ�	^�Z������B�"�Т&�6VE����.�*������I�B��h��xR�	^�^���Xκx��	�����B�[��Zȉ����x�x����N�8���*�+~�:�����*�+~ȹ��(�ɹ�ɘ�{�+�	���B�x��xB�iN�	^�y�	�Ɉ�
-ȉ���ȫ^�����B�"�Т6�V�FW#�.����Z�ȉ���\+~�h��xR�xɹ�	^�^��B�YΫZ����xR�zN�iκ��	N���{�+�	���B�(>���XN��������B��(�����ȉ���^�����ɪ����B����λ(���*��N��B�zλh�ٙ^�ێ����[��Z������B�"�Тf��W&U�6�v���.��N�8�+~�:�����*���Z޸+B���ȹ޺8���h�ٙN�Y�ȉ������YΫZ����x^�قɹ�+~�;^����y��[��i���B����h��Y��x�X���κ�B�H���κ8κκx��)��j��Z������B�"�Т�ТVƖb�5�璇FW�B��'F&�fb"�'6V7F���3"�&7W7F��2"�&GWG�"�.�H�K�"�.�k^�H%ғ�ТWB�Т�FV��Т��7G3ղ.����(N��B��^�
-R"�.�Z�ێ�ʂ"�.ȉ����"�.ȹΫN��%��ТF�3ղ.��N��R"�.�;^����y�"�.�	^�R�8��N����ۂ"�.ȉ����%��Т6V7F�'3ղ.�H�K��ȉ��i��;�"�.�hλ�N���+~�+�x^���"�.��κY���;^����y�%��Т�Ɩ7������7V��'��.�H�K�+~�k^�H�y�h��8ٙN��Bȉ���Rɹ����*��N���;^����y���λ˙��ȉ��i��;��x��xN��B�	N��ȉ��莸�B�	^�R�8ȉ���^�����B�"�Т��fW7F�V�E�f�Ws�.�(����+~�Zޫ+~�K��ʌ+~ȹ��h������Bٙ^�ێ�	���B�[N������Y��+N�ێ�ق�zN�i��I���N��^�Z�;��;κ˂��N�B������	N���	N�	޸����B�"�Т��&V��&�WE���7C�.�YΫZ���^�y�Iθ�B����Z��jRȉ��i��;���I�Z����+B�;^����y���H�K���Ϋ	�hλ�N���+~�+�x^������κY���B��Ϋ	�x^�(^��B�J�8Bٙ^�ێ�Z������B�"�Т&�6VE����.�*������I�B����ȉ��	��k�������j��hκ���Y��x�x��H�;L+~�h��	^��^��+uU5E"�ˎ�Iκ�ٙ^�	^�	���B��������z��x���ȫ^�����B�"�Т6�V�FW#�.�(������N�9��Ɉ�ɛ���Z����Ɉ����N��Bٙ^�ێ�	��x�X���κ�B�	λ8B�(^���Ɉ�jR�iN�	^���;θ��[N�I����ȉ���ȫ^�����B�"�Тf��W&U�6�v���.�;^ȹ��K��ʌ+~�(����+~ȹ��h������B�)�ɊN�x�X���)����xR��*��N��ȉ��;��8ٙN�ٙ^�ێ�	��x�X���κ�BȺN�ʎ��^�����B�"�Т�ТVƖb�5�璇FW�B��&�V6�V""�'&V7F�""�'W&�V�"�&"�'vW7F��v��W6R"�&FF6V�FW""�&�&2"�.ɹ�B%ғ�ТWB�Т�FV��Т��7G3ղ.ȹΫN��"�.����(N��B��^�
-R"�.ȉ����%��ТF�3ղ.ɹ�B�	^�R�8��N����ۂ"�$�����N�K�K��K�N�
-^ȉ�ɩB"�.ɹ�B���Y��+N�ۂ"�.ȉ����%��Т6V7F�'3ղ.ɹ�B��N�
-^����"�.�N�
-^�y������N�K�K��K"�.ɫ��θ�B"�%4�"���ى^ɹ�B�������%��Т�Ɩ7������7V��'��.ɹ�B�ێ�x����[^�{�8��Ⱥ�y�ɹ�B������N�K�K��K�N�
-^ȉ�ɩN��	^�RȹΫN�κ��;^ȹ�ٙN�	���N�x�;N��B�*��X���^�����B�"�Т��fW7F�V�E�f�Ws�.ٙ^�	R�zN�i����XN����x�x���ىR4U�ɘ�ێ�x��ȹΫN��B�Y��*��x��Bɹ�N����+~�N�
-^����+~ɫ��θ�B�+N�ێ�قȉ��;������˺N�y�����B�"�Т��&V��&�WE���7C�.�YΫZ���^�y�Iθ�Bɹ�B���������N�
-^������j�N�y����+�y�H���κj�ػ+~�Y��N��Ȋ+~�Y��D�2�;���Y��+N�ۂȉ������Bٙ^�ێ�Z������B�"�Т&�6VE����.�I�B�ɹ�B�Xκx���B�J�	�Ɉ��B�	^�Y��x�x��	^�\+~���i�+t�$2����	^��B���ȹ��yٙ^�ێ�	���B�iN���������z��x���ȫ^�����B�"�Т6�V�FW#�.�h�x��Y��(R�8N�[��Ɉ��++~���i���B��$2�ێ�x����
-��;R����	^��Bٙ^�	^�	��x�X���κ�BȺN�	��zN�i��ێȹޫ���xȹ��
-���޸����B�"�Тf��W&U�6�v���.���i���B��h�x��$2����	R�ɹ�N�����	��;Ϋٙ^�ێ�	��x�X���κ�B�	^�R�����y�I��޸*������B�"�Т�ТVƖb�5�璇FW�B��&fW&2"�'�vW"w&�B"�'G&�6֗76���"�&��FW&6���V7F���"�&V�V7G&�2w&�B"�.�N�
-^�y�%ғ�ТWB�Т�FV��Т��7G3ղ.ȹΫN��"�.����(N��B��^�
-R"�.ȉ����%��ТF�3ղ.�N�
-^�y�؊���"�.�	^�R�8��N����ۂ"�.���Y��+N�ۂ"�.ȉ����%��Т6V7F�'3ղ.�N�
-^�y���N�
-^����"�.�N�J��8�Y^��"�.����N�K�K��K�N�
-R�ێ�HN���%��Т�Ɩ7������7V��'��.�N�
-^�y�+~�j�L+~�8N�k^�{�8B�	^�^������N�K�K��Kɘ�N�
-R�ێ�HN���4U�ȹΫN�κ[��	N��ȉ��莸�B�*��X���^�����B�"�Т��fW7F�V�E�f�Ws�.�8N�k^�{�8B�9���ɘNٙN�)�؊����ێ�K�ػ��Ϋٙ^�ێ�	���B�8�Y^��+~�N�J+~�N�
-^����ȉ��;������˺N�y�����B�"�Т��&V��&�WE���7C�.�YΫZ���^�y�Iθ�B�N�J��8�Y^����N�
-^���������N�K�K��K�N�
-R�ێ�HN����H�
-��(^����قȉ�����;�ȉ��;��;^ȹκ[�ٙ^�ێ�Z������B�"�Т&�6VE����.�I�B��N�
-^�y��Xκx����N����	^�Y���Bȹ��h����+~Ɉ��++~�	��;��xn��N��B�iN��	�����B�	��Yι
-������B�"�Т6�V�FW#�.�y�˙��	��X���N�)��َ�*�ȉ��B����8N��BȺN�	��	��;�ɘ��jΫ����Bȉ���ȫ^�����B�"�Тf��W&U�6�v���$dU$2�D�RٸN�h�����	R���ػ��j�ػ4U����^��B�	��;Ϋ�xn��κ�B�Xκx��K�	����y�{�˚������B�"�Т�ТVƖb�5�璇FW�B��&fF"�&6Ɩ�6�"�&G'Vr"�&6���WFR&W7��6R�WGFW""�&&�f�"�&7&�"�.��N�8"�.�x��%ғ�ТWB�Т�FV��Т��7G3ղ.����(N��B��^�
-R"�.ȹΫN��"�.ȉ����%��ТF�3ղ.��N�8��x��ȹΫN��"�.��N��R"�.ȉ����%��Т6V7F�'3ղ.�	N��NɊB�dD"�.�	��[�"�.�z�ȪN���kB%��Т�Ɩ7������7V��'��$dDȫ��ی+~���+~��N�8�H�
-��+�	^���	λ	�ȹΫN��ɘ�8�x^ٙB���^�K��B�x�	�	N�뎸�B�	N��NɊB��N�*Nث���^�����B�"�Т��fW7F�V�E�f�Ws�.ȫ��ی+t5$�+~��N�8�+�;θ�B�zN�i��	�ȹ�ȹ��	��iN���Nɪ����Ȋ��N�Bى�8�
-^��B�	N��ȉ���ȫ^�����B�"�Т��&V��&�WE���7C�.�YΫZ���^�y�Iθ�B�[N��������N�HN����ۂ�;N���*��4D����	N��NɊN�X��K��Kȉ������Bٙ^�ێ�Y��	�ɹ�˂����i�+~���8���xR�{Ϋ��XNɩN�Z������B�"�Т&�6VE����.�I�G�i.�����	N��NɊB��N�*Nث���B������J�	�Ɉ�	���Ț�ɸ��+�;�ɘȹ���R�����ق�
-���N��IɩN�Z������B�"�Т6�V�FW#�.�h�hBȫ��ۂ���λ*��	��Y���iN���N�8ɩN�Z���X��N�K��NȨ������κ�B�VFƖ�^�;N��BɈ�j^��B�[��Zȉ���ȫ^�����B�"�Тf��W&U�6�v���.��λ*�+~ȹ���^�yκ��+~�8�x^ٙB���ث��H�+~ٸN�h���Nɪ���Bٙ^�ێ�	��x�X���κ�B�;Ϋ��κ8Ϋ�[��[N�y�����B�"�Т�ТVƖb�5�璇FW�B��'&�&�B"�'&�&�F�72"�&6���W&6R"�&6���"�&6���W6R"�'&�&�F�72F&�fg2%ғ�ТWB�Т�FV��Т��7G3ղ.ȹΫN��"�.ȉ����"�.����(N��B��^�
-R%��ТF�3ղ.�	^�R�8��N����ۂ"�.�I�Z����+B�;^����y�"�.�H�K��ȉ���^�	��Y�"�.ȉ����%��Т6V7F�'3ղ.�λHr�ȪN�x�ث��ʞ�j�j�"�.�	�hޫ��d"�.�+�x^�����ٙB"�.�H�K��ȉ��i��;�%��Т�Ɩ7������7V��'��.����Z���B�I�Z��+�λHrȉ���\+~�;N����+~�Zޫ�X��;B�j�ȪN�κ[��(�j�Yθ�N��BȺً���B�λHr�+�x^��B����I��Ȋ�ʎ�h��ق��N����N�J��κ��;N��B��κ8���^�����B�"�Т��fW7F�V�E�f�Ws�.�H�K�+~ȉ���^�	��Y�+~����Z��+B�	���xɹ��κ���N�kN�x��B�I�Z����+B���Y��+N�ێ�;������ٙB��^��Bȉ�ɩB�����˺N�x�ȉ���ȫ^�����B�"�Т��&V��&�WE���7C�.�YΫZ���^�y�Iθ�B�λHr��	�hޫ��ȪN�x�ث��ʞ�j�j��d��^��B��I�Z����+B�;^����y��Xκx�ȉ������B�;N�	��;^ȹ��8��N�h�	����N��N��BɈ���N���I�[��Z������B�"�Т&�6VE����.�*������I�B��;N��B�xٸB�Xκx�ȉ���������[N�x�x��;^ȹ��˙��N�y��B�	���κk���N�y���B�޸����B�"�Т6�V�FW#�.��^��R�h�ȹ��kR�;N��B����8N����(������H�K��ʂ�ȹ��h��������i���B����8���x^�����ٙ^�	^��^�����B�"�Тf��W&U�6�v���.�8��N�h�;^ȹ���*�+~�H�K�+t�42���i���N��B�)�ɊN�x�X���κ�B������Xκx��K�	�����κ��޸*������B�"�Т�ТVƖb�5�璇FW�B��'7V7G'V�"�'6FV�ƗFR"�'76R'W&VR"�'v�&V�W72"�&'&�F&�B"�&f62%ғ�ТWB�Т�FV��Т��7G3ղ.ȹΫN��"�.ȉ����%��ТF�3ղ.�	^�R�8��N����ۂ"�.�;����ȉ���k^Ⱥ�y��	�"�.ȉ����%��Т6V7F�'3ղ.�k^Ⱥ�d42���N�K"�.�k^Ⱥ��^��B"�.��N�K�k^Ⱥ%��Т�Ɩ7������7V��'��$d42�k^Ⱥ+~�;����ȉ�+~��N�K�y��	��ˎ�Iθ�B�k^Ⱥ�ێ�HN����	^�RȹΫN�κ[��	N��ȉ����x�x���ˎ�I��K�*��y�K���ȹ���RɈ�jR�
-���N��޸����B�"�Т��fW7F�V�E�f�Ws�.�;����ȉ��+޺zB���N�K�ێ�x�����^��B�ێ�i���;N�X��َ��N�)����4U��)����κ���N�kN�x��Xκx�ȺN���κ8Ϋ�
-������B�"�Т��&V��&�WE���7C�.�YΫZ���^�y�Iθ�B�k^Ⱥ��^��L+~��N�K�k^Ⱥ+~�JNث�ɸ�����^��B�Xκx��[�ٙ^�ێ�Y��	���h��	R�;^�x+~٨��ق�;^�:ȉ��H��N��B�x�	Ɉ�j^���	��Y����^�����B�"�Т&�6VE����.�*������I�B��Z��+B�ێ�x��+~�+޺zL+~�;N�X��َ��N��xn��κ�B��*��	������[��Z������B�"�Т6�V�FW#�$d42�ˎ�Iι�θ�B٨��ق�;^�x�����N�Kȉ��y��;N�:�iȹ��	^��N��B�:�j��*���κ8Ϋ�XN��ȉ���ȫ^�����B�"�Тf��W&U�6�v���.�;����ȉ��+޺zB���^��B�َ��NٙB��ێ�x����k^Ⱥ�*�4U��8ٙN��xn��κ�B�	�ɛ��[N�[��Z������B�"�Т�РТFW�B�FW�E�f�"��FVҐТ��fW%���&V�f�VU�6��↗FV��FW�B�Т��&�Ɨ�U�FV6�6������7G2��FV��FW�B�Т��fW%���&V��F�F�R��FV��FW�B�Т�FVղ&��7G2%��V�VR�5�Ɨ7B��FV��vWB�&��7G2"���"�ĔԕDTE���5EҐТ�FVղ'F�2%��V�VR�5�Ɨ7B��FV��vWB�'F�2"���"�.�	^�R�8��N����ۂ%ҐТ�FVղ'6V7F�'2%��V�VR�5�Ɨ7B��FV��vWB�'6V7F�'2"���"�.�	^�R��y��	���λ	�%ҐТ&WGW&��FV�РРЦFVb6Ɨ�FW�B�f�VS��&�V7B�Ɩ֗C���B���7G#�ТFW�B�&R�7V"�"%�2�"�""�7G"�f�VR�"""���7G&���Т�b�V�FW�B���Ɩ֗C�Т&WGW&�FW�@Т&WGW&�FW�E������Ɩ֗B����'7G&����.(
-b РРЦFVb�����Ɩ֗FVB�f�VW3��&�V7B�������FV�3���B�R�6�%�Ɩ֗C���B�C�f��&6��7G"�.ٙ^�ۂ�XNɩB"���7G#�Т�FV�2��6Ɨ�FW�B�f�VR�C�f�"f�VR��5�Ɨ7B�f�VW2��b7G"�f�VR�"""��7G&����Т�b��B�FV�3�Т�FV�2��f��&6��Т6��v���FV�5������FV�5�Т�b�V↗FV�2������FV�3�Т6��v��V�B�b.ɛ���V↗FV�2������FV�7ޫ	�"�Т&WGW&�6Ɨ�FW�B�"�"����6��v��6�%�Ɩ֗B�РРЦFVbW���F����Ɩ�W2��FVӢF�7B���Ɨ7E�7G%ӠТV�7W&U�W����VB��FVҐТ��7E��&V�2�F�7���FV6�6������7G2��FV��vWB�&��7G2"��Т&WGW&��Тb"��[^Ⱥ��+Nɪ���6Ɨ�FW�B��FV��vWB�w�Ɩ7������7V��'�r��"~�	^�R�K��h�+Nɪ�ٙ^�ۂ�XNɩBr����"�Тb"�؊����H�	��6Ɨ�FW�B��FV��vWB�v��fW7F�V�E�f�Wrr��"~ȺN�+~�Z�ێ�ʌ+~ȉ����+~ȹΫN���8ٙB�zλhٙ^�ۂ�XNɩBr����"�Тb"��YΫZ���RɈ�jS��6Ɨ�FW�B��FV��vWB�v��&V��&�WE���7Br��"~�YΫZ���R�x�	Ɉ�jRٙ^�ۂ�XNɩBr����"�Тb"��َ�*Ϋ+�	RɈ�jS�������Ɩ֗FVB���7E��&V�2�"�ĔԕDTE���5E������FV�3�B�6�%�Ɩ֗Cӓ�f��&6��ĔԕDTE���5B��"�Тb"�Ɉ�jR�+޺â������Ɩ֗FVB��FV��vWB�wF�2r��"�~�	^�R�8��N����ۂu������FV�3�R�6�%�Ɩ֗C�#�f��&6��~�	^�R�8��N����ۂr��"�Тb"�Ɉ�jR�K��K�������Ɩ֗FVB��FV��vWB�w6V7F�'2r��"�~�	^�R��y��	���λ	�u������FV�3�B�6�%�Ɩ֗C�#�f��&6��~�	^�R��y��	���λ	�r��"�Тb"��YΫZ����Y��+N�ۃ�������Ɩ֗FVB��FV��vWB�v��&V�f�VU�6���r������FV�3�R�6�%�Ɩ֗C�S�f��&6��~�x�	�{�+�x^�(Rٙ^�ۂ�XNɩBr��"�Тb"��	�Ɉ���^�K��6Ɨ�FW�B��FV��vWB�w&�6VE���r��"~�*������I�Br�C��"�Тb"��	����{Ϋ��6Ɨ�FW�B��FV��vWB�v6�V�FW"r��"~�K��h��Bٙ^�ۂ�N����x�x�	ȺN��{�+���	��Y����^�����B�r�c��"�Тb"�ȺN�ʂȺً���6Ɨ�FW�B��FV��vWB�vf��W&U�6�v��r��"~ٸN�h�ȹ��h����+~Ɉ��++~�8N�[�+~ȉ�����	�����B�xn��κ�B����	��K�	^�R��NȨ����޸*������B�r�c��"�Т�РРЦFVb�&u�W���F����Ɩ�W2��FVӢF�7B���Ɨ7E�7G%ӠТV�7W&U�W����VB��FVҐТ��7E��&V�2�F�7���FV6�6������7G2��FV��vWB�&��7G2"��Т&WGW&��Тb"�������x��˃���FV��vWB�vFV6�6����VW7F���r��"DT4�4����TU5D����"�Тb"�Ɉ�jR�hN�Y����FV��vWB�vFV6�6����6�76�f�6F���r��"FV6�6����6�76�f�6F����FW�B��FV��vWB�v��7G2r���"�Тb"��hN�Y��zNث��j�ȪC��FV6�6�����G&���FW�B��FV��vWB�v��7G2r���"�Тb"��[^Ⱥ��+Nɪ����FV��vWB�w�Ɩ7������7V��'�r��"~�	^�R�K��h�+Nɪ�ٙ^�ۂ�XNɩBw�"�Тb"�؊����H�	���FV��vWB�v��fW7F�V�E�f�Wrr��"~ȺN�+~�Z�ێ�ʌ+~ȉ����+~ȹΫN���8ٙB�zλhٙ^�ۂ�XNɩBw�"�Тb"��YΫZ���RɈ�jS���FV��vWB�v��&V��&�WE���7Br��"~�YΫZ���R�x�	Ɉ�jRٙ^�ۂ�XNɩBw�"�Тb"��YΫZ����Y��+N�ۃ��r�r����5�Ɨ7B��FV��vWB�v��&V�f�VU�6���r���"�~�x�	�{�+�x^�(Rٙ^�ۂ�XNɩBuҗ�"�Тb"��َ�*Ϋ+�	RɈ�jS��r�r���↖�7E��&V�2�"�ĔԕDTE���5Eҗ�"�Тb"�Ɉ�jR�+޺â�r�r����5�Ɨ7B��FV��vWB�wF�2r���"�~�	^�R�8��N����ۂuҗ�"�Тb"�Ɉ�jR�K��K��r�r����5�Ɨ7B��FV��vWB�w6V7F�'2r���"�~�	^�R��y��	���λ	�uҗ�"�Тb"���N����;Ϋ�y�	�Ɉ�	��B���^�K���FV��vWB�w&�6VE���r��"~�*������I�Bw�"�Тb"��	����{Ϋ���FV��vWB�v6�V�FW"r��"~�K��h��Bٙ^�ۂ�N����x�x�	ȺN��{�+���	��Y����^�����B�w�"�Тb"�ȺN�ʂȺً����FV��vWB�vf��W&U�6�v��r��"~ٸN�h�ȹ��h����+~Ɉ��++~�8N�[�+~ȉ�����	�����B�xn��κ�B����	��K�	^�R��NȪN���޸*������B�w�"�Т�Р
+        korean = "미국, 모로코산 인산비료 임시 무관세 수입 허용"
+    elif has_any(low, ["regenerative agriculture", "farm resilience"]):
+        korean = "백악관, 재생농업·농업 회복력 강화 정책 발표"
+    elif has_any(low, ["biofuel feedstocks", "biofuel"]):
+        korean = "미국, 재생농업 바이오연료 원료 생산 지침 공표"
+    elif has_any(low, ["federal oil, gas, and coal"]):
+        korean = "미국, 석유·가스·석탄 관련 연방 규정 개정"
+    elif has_any(low, ["annual review of country eligibility", "african growth and opportunity act"]):
+        korean = "미국, AGOA 수혜국 자격 연례심사 의견수렴 공고"
+    elif has_any(low, ["fcc", "broadband", "spectrum", "satellite", "wireless"]):
+        korean = "FCC, 통신·주파수·위성 규제 문서 공표"
+    elif has_any(low, ["export control", "entity list", "bis", "semiconductor"]):
+        korean = "미국, 반도체·첨단기술 수출통제 정책 변화 공표"
+    elif has_any(low, ["tariff", "customs", "duty", "section 301"]):
+        korean = "미국, 관세·통관 정책 변화 공표"
+    elif has_any(low, ["nuclear", "reactor", "uranium", "ap1000", "smr"]):
+        korean = "미국, 원전·핵연료·전력 정책 변화 공표"
+    elif has_any(low, ["power grid", "transmission", "ferc", "interconnection"]):
+        korean = "미국, 전력망·송전·계통연계 정책 변화 공표"
+    elif has_any(low, ["fda", "clinical", "drug", "approval", "crl"]):
+        korean = "FDA, 의약품 허가·임상 정책 이벤트 공표"
+    elif has_any(low, ["robot", "robotics"]):
+        korean = "미국, 로봇·자동화 수입규제 정책 신호"
+    else:
+        korean = title or "정책·규제 변화 후보"
+
+    item["title_ko"] = korean
+    return korean
+
+
+def default_context(item: dict) -> None:
+    impacts = unique(as_list(item.get("impacts")) or [LIMITED_IMPACT])
+    sectors = unique(as_list(item.get("sectors")) or ["정책/규제 일반"])
+    paths = unique(as_list(item.get("paths")) or ["정책 타임라인"])
+    item["impacts"] = impacts
+    item["sectors"] = sectors
+    item["paths"] = paths
+    text = text_for(item)
+    korea_value_chain = infer_korea_value_chain(item, text)
+    impacts = normalize_decision_impacts(item, text)
+    infer_korean_title(item, text)
+    item.setdefault(
+        "policy_plain_summary",
+        f"공식 정책·규제 문서에서 {', '.join(impacts)} 축을 바꿀 수 있는 상태 변화 후보가 확인됐습니다.",
+    )
+    item.setdefault(
+        "investment_view",
+        f"핵심은 제목이 아니라 {DECISION_QUESTION}입니다. 매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표 중 어디가 실제로 바뀌는지 원문과 시장 반응으로 재확인해야 합니다.",
+    )
+    item.setdefault(
+        "korea_market_impact",
+        f"한국장 체크 대상은 {', '.join(sectors)}이며, 한국 밸류체인은 {', '.join(korea_value_chain)}입니다. 원문에 직접 근거가 없는 업종 확장은 제외합니다.",
+    )
+    item.setdefault("priced_in", "낮음~중간. 공식 원문 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.")
+    item.setdefault("counter", "세부 시행일, 예산, 예외 조항, 대상 기업, 실제 계약 조건 확인 전까지 직접 실적 연결은 제한적입니다.")
+    item.setdefault("failure_signal", "후속 시행일·예산·계약·수급 반응이 없으면 단발성 정책 뉴스로 끝납니다.")
+
+
+def is_transformer(text: str, item: dict) -> bool:
+    return bool(item.get("transformer_tariff_policy_watch")) or "transformer_tariff_policy" in (item.get("matched") or {}) or (
+        has_any(text, ["transformer", "distribution transformer", "grain-oriented electrical steel", "amorphous core"])
+        and has_any(text, ["tariff", "section 232", "232", "25%", "15%", "관세", "변압기"])
+    )
+
+
+def is_korean_policy_source(item: dict) -> bool:
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "").lower()
+    return any(
+        marker in f"{source} {link}"
+        for marker in (
+            "korea policy briefing",
+            "korea.kr/",
+            "fsc.go.kr/",
+            "bok.or.kr/",
+            "molit.go.kr/",
+            "motie.go.kr/",
+            "moef.go.kr/",
+            "msit.go.kr/",
+            "president.go.kr/",
+        )
+    )
+
+
+def is_domestic_nuclear_siting(text: str, item: dict) -> bool:
+    if "state_smr_moc_policy" in (item.get("matched") or {}) or has_any(text, ["state department", "department of state", "state.gov"]):
+        return False
+    if bool(item.get("korea_nuclear_siting_policy_watch")) or "korea_nuclear_siting_policy" in (item.get("matched") or {}):
+        return True
+    return is_korean_policy_source(item) and has_any(
+        text,
+        ["표준설계", "원전 입지", "입지 선정", "대형 원전", "방폐장", "i-smr"],
+    )
+
+
+def is_domestic_telecom(text: str, item: dict) -> bool:
+    if bool(item.get("telecom_policy_risk")) or "korea_telecom_policy" in (item.get("matched") or {}):
+        return True
+    return is_korean_policy_source(item) and has_any(
+        text,
+        ["가계통신비", "통신비", "선택약정", "5g 요금제", "중간요금제", "arpu", "sk텔레콤", "lg유플러스"],
+    )
+
+
+def is_stablecoin(text: str, item: dict) -> bool:
+    if bool(item.get("domestic_stablecoin_policy_watch")) or "korea_stablecoin_policy" in (item.get("matched") or {}):
+        return True
+    return is_korean_policy_source(item) and has_any(
+        text,
+        ["스테이블코인", "원화 스테이블코인", "디지털자산기본법", "디지털자산", "가상자산 2단계", "예금 대체", "준비자산", "상환청구권", "발행 주체"],
+    )
+
+
+def is_personnel(text: str, item: dict) -> bool:
+    return "korea_presidential_personnel" in (item.get("matched") or {}) or bool(item.get("appointees"))
+
+
+def is_fcc_resilient(text: str) -> bool:
+    return has_any(
+        text,
+        [
+            "resilient networks",
+            "disruptions to communications",
+            "disaster information reporting system",
+            "dirs",
+            "outage reporting",
+            "network outage reporting",
+            "communications disruption",
+            "disaster reporting",
+        ],
+    )
+
+
+def is_trump_direct_policy_statement(text: str, item: dict) -> bool:
+    matched = item.get("matched") or {}
+    if "trump_direct_policy_remarks_watch" in matched:
+        return True
+    return (
+        has_any(text, ["president trump", "donald j. trump", "donald trump", "trump remarks", "trump says", "트럼프 대통령"])
+        and has_any(
+            text,
+            [
+                "tariff",
+                "export control",
+                "sanction",
+                "fed",
+                "rate",
+                "dollar",
+                "oil",
+                "china",
+                "taiwan",
+                "south korea",
+                "defense",
+                "semiconductor",
+                "chip",
+                "ai",
+                "data center",
+                "power grid",
+                "nuclear",
+                "reactor",
+                "iran",
+                "israel",
+                "middle east",
+                "hormuz",
+                "strait of hormuz",
+                "red sea",
+                "houthi",
+                "missile",
+                "strike",
+                "ceasefire",
+                "war",
+                "war powers",
+                "brent",
+                "wti",
+                "tanker",
+                "shipping",
+                "lng",
+                "natural gas",
+                "russia",
+                "ukraine",
+                "nato",
+                "north korea",
+                "관세",
+                "수출통제",
+                "제재",
+                "금리",
+                "달러",
+                "유가",
+                "중국",
+                "대만",
+                "한국",
+                "방산",
+                "반도체",
+                "데이터센터",
+                "전력망",
+                "원전",
+                "이란",
+                "이스라엘",
+                "중동",
+                "호르무즈",
+                "홍해",
+                "유조선",
+                "해운",
+            ],
+        )
+    )
+
+
+def is_nato_defense_investment_fact_sheet(text: str, item: dict) -> bool:
+    source_identity = " ".join(
+        str(item.get(key) or "")
+        for key in ("source_title", "title", "link")
+    ).lower()
+    return has_any(
+        source_identity,
+        [
+            "historic defense investment",
+            "nato allies",
+            "nato's 2026 ankara summit",
+            "defense-investment-from-nato",
+            "nato-allies-powering-american-industry",
+        ],
+    )
+
+
+def verified_whitehouse_category(text: str, item: dict) -> str:
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "").lower()
+    if not item.get("body_verified") or not (
+        source.startswith("white house") or "whitehouse.gov/" in link
+    ):
+        return ""
+    if has_any(text, ["defense supply chains", "critical materials"]) and has_any(
+        text, ["waiver", "supply chain mapping", "domestic sources", "partner nation"]
+    ):
+        return "defense_critical_materials"
+    if (
+        "canada" in text
+        and "section 338" in text
+        and has_any(text, ["additional tariff", "additional duties"])
+    ):
+        return "canada_tariffs"
+    if "jordan" in text and has_any(text, ["trade deal with jordan", "reciprocal trade"]):
+        return "jordan_trade"
+    if has_any(text, ["imports of aluminum", "primary aluminum"]) and has_any(
+        text, ["section 232", "onshoring", "smelter"]
+    ):
+        return "aluminum_onshoring"
+    return ""
+
+
+def is_fcc_submarine_cable_policy(text: str, item: dict) -> bool:
+    return (
+        has_any(text, ["fcc", "federal communications commission", "federalregister.gov"])
+        and has_any(
+            text,
+            [
+                "submarine cable",
+                "submarine-cable",
+                "cable landing",
+                "landing license",
+                "undersea cable",
+                "해저케이블",
+                "해저 통신케이블",
+                "랜딩 라이선스",
+            ],
+        )
+    )
+
+
+def is_fcc_energy_inverter_policy(text: str, item: dict) -> bool:
+    if is_fcc_submarine_cable_policy(text, item):
+        return False
+    if not has_any(text, ["inverter", "inverters", "solar inverter", "energy inverter", "전력변환장치", "인버터"]):
+        return False
+    return item.get("eu_policy_category") == "us_fcc_foreign_energy_inverter_ban" or "us_fcc_foreign_energy_inverter_ban" in (item.get("matched") or {}) or (
+        has_any(text, ["fcc", "federal communications commission"])
+        and has_any(text, ["inverter", "inverters", "인버터", "전력변환"])
+        and has_any(text, ["ban", "barred", "import", "imports", "foreign", "chinese", "national security", "수입", "금지", "외국산", "중국산", "국가안보"])
+    )
+
+
+def is_fcc_security_import_policy(text: str, item: dict) -> bool:
+    if is_fcc_submarine_cable_policy(text, item):
+        return False
+    has_fcc = has_any(text, ["fcc", "federal communications commission"])
+    has_import_action = has_any(
+        text,
+        [
+            "covered communications equipment",
+            "covered list",
+            "equipment authorization",
+            "prohibiting importation",
+            "importation and marketing",
+            "import ban",
+            "ban imports",
+            "barred imports",
+            "수입금지",
+            "수입 제한",
+            "수입·판매 제한",
+            "장비인증",
+        ],
+    )
+    return "us_fcc_security_import_restriction" in (item.get("matched") or {}) or (
+        has_fcc
+        and has_import_action
+        and has_any(text, ["equipment", "device", "module", "router", "camera", "connected vehicle", "장비", "모듈", "라우터", "카메라"])
+    )
+
+
+def is_doe_energy_security_policy(text: str, item: dict) -> bool:
+    return "energy_security_policy" in (item.get("matched") or {}) or (
+        has_any(text, ["doe", "department of energy", "energy.gov", "미 에너지부", "에너지부"])
+        and has_any(
+            text,
+            [
+                "loan",
+                "loans",
+                "loan guarantee",
+                "conditional commitment",
+                "low-cost loan",
+                "funding opportunity",
+                "notice of intent",
+                "grant",
+                "award",
+                "selected",
+                "ban",
+                "prohibit",
+                "restriction",
+                "efficiency standard",
+                "emergency order",
+                "grid deployment",
+                "transmission facilitation",
+                "critical materials",
+                "nuclear fuel",
+                "대출",
+                "대출보증",
+                "조건부 약정",
+                "보조금",
+                "자금지원",
+                "금지",
+                "제한",
+                "효율규제",
+                "전력망",
+                "핵연료",
+                "핵심소재",
+            ],
+        )
+    )
+
+
+def is_state_smr_moc_policy(text: str, item: dict) -> bool:
+    matched = item.get("matched") or {}
+    return "state_smr_moc_policy" in matched or (
+        has_any(text, ["state department", "department of state", "office of the spokesperson", "state.gov", "미 국무부"])
+        and has_any(text, ["memorandum of cooperation", "moc", "협력각서"])
+        and has_any(text, ["small modular reactor", "small modular reactors", "smr", "소형모듈원전"])
+        and has_any(text, ["republic of korea", "south korea", "korea", "japan", "trilateral", "samsung c&t", "ge vernova", "bwrx-300"])
+    )
+
+
+def is_agriculture_supply_policy(text: str, item: dict) -> bool:
+    return "agriculture_supply_policy" in (item.get("matched") or {}) or (
+        has_any(text, ["fertilizer", "phosphate", "agriculture", "farm", "biofuel", "feedstock", "food supply", "비료", "인산", "농업", "바이오연료", "식량"])
+        and has_any(text, ["duty-free", "tariff", "importation", "emergency", "executive order", "presidential", "resilience", "guidelines", "관세", "무관세", "수입", "비상", "행정명령", "회복력", "지침"])
+    )
+
+
+def is_eu_korea_steel_policy(text: str, item: dict) -> bool:
+    focused_text = " ".join(
+        str(part or "")
+        for part in (
+            item.get("source"),
+            item.get("title"),
+            item.get("original_title"),
+            item.get("summary"),
+            item.get("core"),
+            item.get("point"),
+            item.get("impact"),
+            item.get("policy_plain_summary"),
+            matched_terms(item),
+        )
+    ).lower()
+    return bool(item.get("eu_korea_steel_policy_watch")) or item.get("eu_policy_category") == "eu_korea_steel_safeguard_relief" or "eu_korea_steel_policy" in (item.get("matched") or {}) or (
+        has_any(focused_text, ["eu", "european union", "european commission", "유럽연합", "eu집행위"])
+        and has_any(focused_text, ["korea", "south korea", "korean", "한국", "한국산"])
+        and has_any(focused_text, ["steel", "철강"])
+        and has_any(focused_text, ["safeguard", "quota", "tariff", "19.7", "46", "세이프가드", "쿼터", "관세", "완화"])
+    )
+
+
+def is_eu_korea_policy(text: str, item: dict) -> bool:
+    matched = item.get("matched") or {}
+    matched_keys = matched.keys() if isinstance(matched, dict) else []
+    return bool(item.get("eu_korea_policy_watch")) or any(str(key).startswith("eu_korea_") for key in matched_keys) or (
+        has_any(text, ["eu", "european union", "european commission", "european council", "european parliament", "유럽연합", "eu집행위"])
+        and has_any(text, ["korea", "south korea", "korean", "한국", "한국산"])
+        and has_any(
+            text,
+            [
+                "tariff",
+                "quota",
+                "safeguard",
+                "anti-dumping",
+                "customs",
+                "regulation",
+                "cbam",
+                "battery regulation",
+                "critical raw materials",
+                "ai act",
+                "digital markets act",
+                "digital services act",
+                "sanctions",
+                "export control",
+                "관세",
+                "쿼터",
+                "세이프가드",
+                "반덤핑",
+                "규제",
+                "탄소국경",
+                "배터리규정",
+                "핵심원자재",
+                "ai법",
+                "제재",
+                "수출통제",
+            ],
+        )
+    )
+
+
+def is_eu_green_industry_policy(text: str, item: dict) -> bool:
+    return item.get("eu_policy_category") == "eu_korea_green_industry_watch" or has_any(
+        text,
+        [
+            "cbam",
+            "carbon border",
+            "battery regulation",
+            "critical raw materials",
+            "due diligence",
+            "reach",
+            "recycling",
+            "emissions",
+            "탄소국경",
+            "배터리규정",
+            "핵심원자재",
+            "공급망실사",
+            "재활용",
+            "배출",
+            "환경규제",
+        ],
+    )
+
+
+def is_eu_digital_security_policy(text: str, item: dict) -> bool:
+    return item.get("eu_policy_category") == "eu_korea_digital_security_watch" or has_any(
+        text,
+        [
+            "ai act",
+            "digital markets act",
+            "digital services act",
+            "cybersecurity",
+            "data privacy",
+            "cloud",
+            "platform",
+            "dma",
+            "dsa",
+            "인공지능법",
+            "ai법",
+            "플랫폼",
+            "사이버보안",
+            "개인정보",
+            "클라우드",
+            "데이터",
+        ],
+    )
+
+
+def is_eu_sanctions_export_policy(text: str, item: dict) -> bool:
+    return item.get("eu_policy_category") == "eu_korea_sanctions_export_watch" or has_any(
+        text,
+        [
+            "sanction",
+            "sanctions",
+            "export control",
+            "dual-use",
+            "restricted",
+            "russia",
+            "china",
+            "critical technology",
+            "semiconductor",
+            "제재",
+            "수출통제",
+            "이중용도",
+            "러시아",
+            "중국",
+            "첨단기술",
+            "반도체",
+        ],
+    )
+
+
+def ensure_explained(item: dict) -> dict:
+    default_context(item)
+    text = text_for(item)
+
+    if is_china_mofcom_trade_control(text, item):
+        product = china_mofcom_product(text)
+        action = china_mofcom_action(text)
+        if product == "헬륨":
+            sectors = ["반도체/HBM 공정가스", "디스플레이/광섬유", "산업가스", "의료기기/MRI"]
+            korea_market = "한국장에서는 반도체·HBM 공정, 디스플레이, 광섬유, MRI, 산업가스 밸류체인의 재고와 조달가격을 확인합니다. 중국산 의존도와 대체 조달 계약이 확인된 기업만 연결합니다."
+        elif product in {"희토류", "갈륨", "게르마늄", "흑연", "안티몬", "텅스텐", "인듐"}:
+            sectors = ["핵심광물/소재", "반도체", "2차전지", "방산/전력전자"]
+            korea_market = "한국장에서는 해당 중국산 원료 의존도와 비중국 대체 공급망이 확인된 반도체·2차전지·자석·방산·전력전자 기업만 선별합니다."
+        else:
+            sectors = ["중국 수출통제/핵심소재", "공급망", "관세/수출주"]
+            korea_market = "한국장에서는 원문에 직접 적시된 품목의 중국산 의존도, 재고일수, 대체 공급선, 한국 기업의 수출입 노출이 확인된 업종만 연결합니다."
+        put(
+            item,
+            importance="상",
+            title_ko=f"중국 상무부, {product} {action} 발표",
+            impacts=["매출·마진·현금흐름", "수급", "시간표"],
+            paths=["공급·수요", "원자재 비용", "공급망", "정책 타임라인"],
+            sectors=sectors,
+            korea_value_chain=sectors,
+            policy_plain_summary=f"중국 상무부가 {product} 관련 {action}을 발표한 사안입니다. 적용 품목·국가·시행일과 예외 허가가 실제 공급 감소 폭을 결정합니다.",
+            investment_view=f"{product}의 중국발 공급이 줄면 현물가격, 조달기간, 재고비용이 올라 수입업체 마진과 생산계획이 바뀔 수 있습니다. 단순 허가제인지 전면 금지인지 구분해야 합니다.",
+            korea_market_impact=korea_market,
+            priced_in="낮음~중간. 속보 직후 관련 원자재와 테마주는 먼저 움직일 수 있지만 실제 이익 영향은 품목 범위와 시행기간 확인 뒤 결정됩니다.",
+            counter="수출 허가 예외, 특정 국가·기업 한정, 기존 계약 유예, 중국 외 공급 확대가 있으면 공급 충격이 예상보다 작을 수 있습니다.",
+            failure_signal="공식 원문에서 품목·대상국·시행일이 확인되지 않거나 현물가격·리드타임·국내 조달비용이 움직이지 않으면 테마성 반응으로 끝납니다.",
+        )
+        return item
+
+    if is_personnel(text, item):
+        appointees = item.get("appointees") or "고위급 인사"
+        color = item.get("policy_color") or "발표자 직함·기존 이력 기준 정책 색깔 확인 필요"
+        sectors = unique(as_list(item.get("sectors")) or ["한국 대통령실/고위급 인사"])
+        put(
+            item,
+            impacts=["시간표"],
+            paths=["정책 인선", "정책 타임라인"],
+            sectors=sectors,
+            policy_plain_summary=f"대통령실/청와대 공식 인사에서 {appointees}가 확인됐습니다. {color}.",
+            investment_view="인선 자체는 매출을 만들지 않지만, 어느 부처·정책 라인이 힘을 받는지와 후속 규제·예산 시간표를 앞당길 수 있습니다.",
+            korea_market_impact=f"한국장에서는 {', '.join(sectors)}에 한해 정책 기대가 붙을 수 있습니다. 원문에 없는 섹터 연결은 제외합니다.",
+            priced_in="중간. 공식 인사 발표는 바로 공개되지만, 개별 업종 영향은 후속 업무지시·부처 발표 전까지 제한적입니다.",
+            counter="인사 발표만으로 예산·법안·규제 시행이 확정된 것은 아닙니다.",
+            failure_signal="취임 후 업무지시, 부처별 정책 발표, 예산·입법·규제 일정이 나오지 않으면 인사 뉴스에서 끝납니다.",
+        )
+    elif is_transformer(text, item):
+        put(
+            item,
+            importance="상",
+            impacts=["돈 버는 능력", "할인율", "수급", "시간표"],
+            paths=["이익", "정책 타임라인", "밸류체인", "수급", "계약 가시성"],
+            sectors=["전력기기/변압기", "관세/수출주", "전력망/데이터센터"],
+            policy_plain_summary="미국 대형 변압기 관세·효율규제 변화가 한국 전력기기 수출 채산성과 미국 전력망 투자 수혜 기대를 바꿀 수 있는 사안입니다.",
+            investment_view="관세율 인하나 규제 재검토가 공식화되면 한국 변압기·전력기기 업체의 가격경쟁력, 마진, 신규 수주 기대가 동시에 바뀝니다.",
+            korea_market_impact="한국장에서는 효성중공업·HD현대일렉트릭·LS ELECTRIC 등 전력기기/변압기 밸류체인과 데이터센터 전력망 테마 수급을 우선 확인합니다.",
+            priced_in="중간. 전력기기 테마는 선반영이 강하지만, 관세율·시행일·품목코드가 공식 확인되면 실적 추정치 조정 여지가 남습니다.",
+            counter="공식 관보·상무부·USTR 문서에서 품목, 세율, 시행일, 예외 조항이 확인되기 전에는 보도 기반 예비 재료입니다.",
+            failure_signal="관세율·품목코드·시행일 공식 문서가 없거나 개별 기업 수주·마진 가이던스가 따라오지 않으면 재료가 약해집니다.",
+        )
+    elif is_domestic_nuclear_siting(text, item):
+        put(
+            item,
+            impacts=["시간표", "수급"],
+            paths=["정책 타임라인", "인허가", "밸류체인", "수급"],
+            sectors=["국내 원전/SMR", "원전 기자재/전력기기", "송전망/전선", "두산에너빌리티/KHNP"],
+            policy_plain_summary="국내 원전·SMR 입지, 표준설계, 인허가, 송전망·방폐장 과제가 정책 시간표로 다시 부각된 사안입니다.",
+            investment_view="당장 수주 확정보다 장기 CAPEX와 밸류체인 기대를 되살리는 재료입니다. 실제 돈 버는 능력은 인허가, 주민수용성, 계약 규모가 확정돼야 바뀝니다.",
+            korea_market_impact="한국장에서는 원전 기자재, 전력기기, 송전망, 두산에너빌리티/KHNP 연계 종목의 수급 반응을 보되 테마 과열을 경계해야 합니다.",
+            priced_in="중간~높음. 원전 테마는 정책 기대가 빠르게 선반영되므로 계약·인허가 일정이 확인되지 않으면 되돌림 위험이 큽니다.",
+            counter="SMR 표준설계, 대형원전 인허가, 방폐장·송전망·안전성 검증과 주민수용성이 남아 있어 당장 매출 확정으로 볼 수 없습니다.",
+            failure_signal="입지 확정 후 인허가·송전망·방폐장·주민수용성 일정이 지연되거나 실제 계약 규모가 나오지 않으면 모멘텀이 꺾입니다.",
+        )
+    elif is_domestic_telecom(text, item):
+        put(
+            item,
+            impacts=["돈 버는 능력", "시간표"],
+            paths=["이익", "정책 타임라인", "요금규제", "수익구조"],
+            sectors=["국내 통신정책/통신3사", "AI 데이터센터/IDC", "통신장비"],
+            policy_plain_summary="국내 통신비 인하 압박, 요금제 개편, 선택약정 할인 확대 가능성이 통신사 ARPU와 이익률을 흔들 수 있는 정책 리스크입니다.",
+            investment_view="통신요금 규제는 단기 이익에는 부담입니다. 다만 AI 인프라·IDC·B2B 매출 비중이 커질수록 통신요금 의존도 하락 여부가 더 중요해집니다.",
+            korea_market_impact="한국장에서는 SK텔레콤·KT·LG유플러스의 ARPU, 배당 매력, AI/IDC 매출 비중, 전기료 부담을 같이 확인합니다.",
+            priced_in="중간. 통신비 인하 압박은 오래된 리스크지만 구체 제도 변경이 나오면 이익 추정 조정이 가능합니다.",
+            counter="요금 인하가 실제 시행되지 않거나 AI 인프라 매출 증가가 ARPU 둔화를 상쇄하면 주가 영향은 제한됩니다.",
+            failure_signal="요금제·선택약정·단통법 후속 조치가 없거나 통신사 B2B/AI 인프라 매출이 방어하면 규제 악재가 약해집니다.",
+        )
+    elif is_stablecoin(text, item):
+        put(
+            item,
+            impacts=["시간표", "수급", "할인율"],
+            paths=["정책 타임라인", "금융 인프라", "규제 강도", "수급"],
+            sectors=["금융/자본시장/스테이블코인", "은행/핀테크/결제", "가상자산거래소/디지털자산"],
+            policy_plain_summary="원화 스테이블코인·디지털자산 입법은 발행 주체, 준비자산, 지급결제 표준을 둘러싼 금융 인프라 재편 이슈입니다.",
+            investment_view="지금 붙는 자금은 실적보다 누가 미래 결제·유통 표준을 잡을지에 대한 베팅 성격이 큽니다. 예금 대체 논란이 커지면 규제 강도도 세질 수 있습니다.",
+            korea_market_impact="한국장에서는 은행, 핀테크, 결제, 가상자산거래소, 보안·인증 인프라를 보되 코인 가격보다 금융 인프라 재편 관점으로 봐야 합니다.",
+            priced_in="중간. 법안 기대는 테마 수급에 빨리 반영되지만, 발행 주체와 감독 강도가 확정되지 않아 변동성이 큽니다.",
+            counter="은행 중심인지 핀테크·거래소까지 허용할지, 한국은행·금융당국 규제 강도가 어느 수준일지 아직 확정되지 않았습니다.",
+            failure_signal="발행 주체가 좁게 제한되거나 준비자산·상환·건전성 규제가 강해지면 테마 확산이 약해집니다.",
+        )
+    elif is_nato_defense_investment_fact_sheet(text, item):
+        put(
+            item,
+            importance="상",
+            title_ko="백악관, NATO 방위투자 확대·미국 방산 생산 강화 발표",
+            impacts=["돈 버는 능력", "수급", "시간표", "할인율"],
+            paths=["정책 타임라인", "방산 수요", "밸류체인", "수급", "계약 가시성"],
+            sectors=["방산/항공우주", "미사일·방공", "K-방산", "유럽 방산 CAPEX"],
+            korea_value_chain=["한화에어로스페이스", "LIG넥스원", "한국항공우주", "현대로템", "한화시스템", "방산 부품·전자전"],
+            policy_plain_summary="백악관 팩트시트 기준 NATO 동맹의 방위투자 확대와 미국 방산 생산능력 강화가 공식화됐습니다. 원문에는 PAC-3, MQ-4C Triton, ATACMS, AMRAAM, Stinger, SDB-I, Barracuda-500 등 구체 무기체계와 $3B 규모 딜/JV가 언급됩니다.",
+            investment_view="이 뉴스는 트럼프 일반 발언이 아니라 NATO 방위비 증가가 미국 방산 주문, 유럽 생산거점, 미사일·방공 수요 시간표로 연결되는 정책 재료입니다. 한국 기업의 확정 수주가 아니므로 실적 반영은 후속 입찰·공급계약·유럽 조달 결과가 필요합니다.",
+            korea_market_impact="한국장에서는 K-방산 전반의 수급에는 긍정 재료가 될 수 있지만, 직접 연결은 유럽 방산 CAPEX와 경쟁·보완 관계가 있는 한화에어로스페이스, LIG넥스원, 한국항공우주, 현대로템, 한화시스템 중심으로 제한해 봐야 합니다.",
+            priced_in="중간. NATO 방위비 증액과 K-방산 수출 기대는 선반영이 강하지만, 구체 무기체계와 유럽 생산 확대가 확인되면 방산 밸류체인 수급을 다시 자극할 수 있습니다.",
+            counter="미국 방산업체와 유럽 생산거점 중심의 팩트시트라 한국 기업의 확정 매출은 아닙니다. 유럽 자체 생산이 강화되면 일부 영역에서는 K-방산과 경쟁할 수 있고, 실제 조달 계약·국가별 예산 배정 전에는 테마성 반응일 수 있습니다.",
+            failure_signal="NATO 조달 예산, 유럽 국가별 발주, 한국 기업 입찰·수주 공시, 미국 방산주·K-방산 수급 반응이 동행하지 않으면 단기 정책 테마로 약해집니다.",
+        )
+    elif (whitehouse_category := verified_whitehouse_category(text, item)):
+        if whitehouse_category == "defense_critical_materials":
+            put(
+                item,
+                importance="상",
+                title_ko="백악관, 미 방산 핵심소재 공급망의 적성국 의존 축소 행정명령",
+                impacts=["시간표", "매출·마진·현금흐름", "수급"],
+                paths=["정책 타임라인", "공급망", "방산 조달", "밸류체인"],
+                sectors=["방산/항공우주", "핵심광물/특수소재", "전자전/유도무기", "공급망 보안"],
+                korea_value_chain=["한화에어로스페이스", "LIG넥스원", "한국항공우주", "한화시스템", "희토류·특수합금·전자부품"],
+                policy_plain_summary="백악관 원문은 미 국방조달 핵심소재의 적성국산 면제 허용을 제한하고, 공급망 전수지도 작성과 미국·동맹국 대체 공급원 인증을 추진하도록 지시합니다.",
+                investment_view="확정 수주가 아니라 조달 자격과 공급망 재편 시간표를 바꾸는 정책입니다. 미국 방산 공급망에 들어갈 수 있는 동맹국 소재·부품 기업에는 중장기 주문 기회가 될 수 있습니다.",
+                korea_market_impact="한국장에서는 K-방산 전체를 일괄 수혜로 보지 않고 미국 조달 인증, 핵심광물·특수합금·전자부품 공급계약이 확인되는 기업만 연결합니다.",
+                priced_in="낮음~중간. 방산 수요 확대는 일부 반영됐지만 공급망 자격 변경의 개별 기업 영향은 아직 후속 규정과 계약에 반영되지 않았습니다.",
+                counter="행정명령은 한국 기업의 직접 계약이 아닙니다. 미국 내 조달 우선과 인증 요건이 강화되면 오히려 진입비용이 늘 수 있습니다.",
+                failure_signal="미 국방부 후속 규정, 대상 소재 목록, 동맹국 인정 범위, 한국 기업의 인증·공급계약이 나오지 않으면 정책 기대에 그칩니다.",
+            )
+        elif whitehouse_category == "canada_tariffs":
+            put(
+                item,
+                importance="상",
+                title_ko="백악관, 캐나다 자동차·주류·유제품 등에 추가 50% 관세",
+                impacts=["매출·마진·현금흐름", "할인율", "시간표"],
+                paths=["관세", "원가", "공급망", "정책 타임라인"],
+                sectors=["북미 자동차/부품", "주류/식품", "시멘트/산업재", "관세 민감 수출주"],
+                policy_plain_summary="백악관은 무역법 338조에 따라 캐나다산 자동차·주류·유제품 등 일부 품목에 추가 50% 관세를 부과하며, 서명 30일 뒤 시행한다고 발표했습니다. 에너지·칼륨과 232조 적용 품목 등은 제외됩니다.",
+                investment_view="북미 공급망의 조달원가와 가격전가, 캐나다 생산기지의 경쟁력을 바꿀 수 있습니다. 한국 기업 영향은 미국향 생산·조달 구조와 품목별 예외를 확인해야 합니다.",
+                korea_market_impact="한국장에서는 현대차·기아와 부품사의 캐나다 생산·조달 노출, 북미 가격경쟁 구도만 확인합니다. 한국산 제품에 같은 50% 관세가 붙는 뉴스로 해석하면 안 됩니다.",
+                priced_in="낮음~중간. 발표 직후 북미 자동차·산업재에는 반영될 수 있지만 한국 기업의 순수혜 여부는 생산지와 품목코드에 따라 달라집니다.",
+                counter="USMCA 원산지 여부와 무관하게 적용되지만 에너지·칼륨·232조 품목 등 예외가 있습니다. 캐나다의 협상·보복 조치로 시행 범위가 달라질 수 있습니다.",
+                failure_signal="미 세관 품목코드, 30일 후 실제 부과, 캐나다 대응, 한국 기업의 북미 판매가격·조달 변화가 확인되지 않으면 한국장 직접 재료는 약합니다.",
+            )
+        elif whitehouse_category == "jordan_trade":
+            put(
+                item,
+                importance="중",
+                title_ko="백악관, 요르단과 상호무역협정 발표",
+                impacts=["매출·마진·현금흐름", "시간표"],
+                paths=["시장 접근", "공급망", "수출통제 협력", "계약 가시성"],
+                sectors=["항공기/부품", "제약", "농산물/원자재", "중동 공급망"],
+                policy_plain_summary="미·요르단 협정은 미국산 거의 전 품목의 무관세 접근을 유지하고 비관세장벽·통관을 개선합니다. 원문에는 Royal Jordanian의 Boeing 787-9 6대 14억달러 구매와 5억달러 리스, Hikma의 미국 투자 10억달러가 명시됐습니다.",
+                investment_view="구체 구매·투자 금액이 있어 미국 항공·제약 공급망에는 매출 가시성이 생기지만 한국 기업의 직접 계약은 아닙니다.",
+                korea_market_impact="한국장에서는 Boeing 항공부품 공급망과 중동 제약·원자재 노출만 제한적으로 확인합니다. 국내 업체 수주 공시가 없으면 테마 확장은 제외합니다.",
+                priced_in="낮음. 거래 금액은 공식 공개됐지만 한국 기업 직접 노출은 아직 확인되지 않았습니다.",
+                counter="협정의 주된 수혜는 미국 수출업체이며, 발표된 구매·투자가 한국 기업 매출로 이어진다는 근거는 없습니다.",
+                failure_signal="협정 발효 일정, Boeing 공급망 발주, 국내 부품·제약사의 직접 계약이 없으면 한국장 영향은 제한적입니다.",
+            )
+        elif whitehouse_category == "aluminum_onshoring":
+            put(
+                item,
+                importance="상",
+                title_ko="백악관, 미국 알루미늄 제련 투자기업에 232조 관세 절반 적용 추진",
+                impacts=["매출·마진·현금흐름", "시간표", "수급"],
+                paths=["관세", "미국 현지투자", "원가", "공급망"],
+                sectors=["알루미늄/비철금속", "미국 제련설비", "방산·항공 소재", "관세 민감 수출주"],
+                policy_plain_summary="백악관은 미국 알루미늄 제련소 신설·증설·개보수 계획이 승인된 기업에 투자 규모와 연동해 1차 알루미늄을 기존 232조 세율의 절반으로 수입할 수 있는 제도를 만들도록 상무부에 지시했습니다.",
+                investment_view="미국 현지 제련 CAPEX와 수입원가를 동시에 바꾸는 조치입니다. 승인된 투자계획을 가진 업체는 관세 부담을 낮출 수 있지만 약속 불이행 시 혜택이 소급 취소될 수 있습니다.",
+                korea_market_impact="한국장에서는 알루미늄 가공업체의 미국 현지 제련 투자·수입 구조와 방산·항공 소재 노출을 확인합니다. 단순 비철금속 테마로 확대하지 않습니다.",
+                priced_in="낮음~중간. 제도 방향은 공식화됐지만 신청·승인 기준과 대상 기업은 아직 후속 상무부 절차가 필요합니다.",
+                counter="혜택은 미국 제련 투자계획 승인을 받은 기업에 한정됩니다. 한국 수출업체가 자동으로 관세 인하를 받는 조치가 아닙니다.",
+                failure_signal="상무부 세부 프로그램, 승인 기준, 투자계획 제출, 한국 기업의 미국 제련 투자·혜택 대상 확인이 없으면 직접 수혜로 보기 어렵습니다.",
+            )
+        return item
+    elif is_trump_direct_policy_statement(text, item):
+        put(
+            item,
+            importance="상",
+            title_ko="트럼프 대통령 발언, 시장 영향 정책 신호",
+            impacts=["돈 버는 능력", "할인율", "수급", "시간표"],
+            paths=["정책 타임라인", "할인율", "공급망", "지정학 리스크", "수급"],
+            sectors=["관세/수출주", "반도체/AI", "전력망/원전", "방산/지정학", "정유/화학/해운", "환율·금리 민감주"],
+            policy_plain_summary="트럼프 대통령의 직접 발언이 관세, 수출통제, 금리·달러, 유가·에너지, 이란·이스라엘·중동 전쟁위험, 방위비, 반도체·AI 인프라 정책 기대를 움직일 수 있는 사안입니다.",
+            investment_view="공식 문서 전이라도 대통령 발언은 정책 확률과 할인율을 먼저 움직입니다. 이란·이스라엘·호르무즈·홍해 관련 전쟁 발언은 유가, 운임, 방산 수요, 정유·화학 원가, 환율 리스크를 즉시 건드립니다.",
+            korea_market_impact="한국장에서는 발언 주제에 직접 노출된 업종만 연결합니다. 전쟁·이란·호르무즈는 정유/화학/해운/방산, 관세는 수출주, 방위비·주한미군은 방산/지정학, 전력·원전은 전력기기/원전, 반도체·AI는 삼성전자·SK하이닉스와 장비·소재 체인을 확인합니다.",
+            priced_in="낮음~중간. 트럼프 발언은 시장이 빠르게 반영하지만 공식 문서 전에는 되돌림도 빠릅니다. 기존 공약 반복이면 반영 가능성이 높습니다.",
+            counter="발언은 행정명령·관보·부처 공고가 아니므로 실제 정책 범위가 축소되거나 일정이 밀릴 수 있습니다. 단순 정치 발언이면 하루짜리 수급으로 끝날 수 있습니다.",
+            failure_signal="백악관 원문, 부처 후속 문서, 품목·국가·시행일, 한국 기업 직접 노출, 유가·환율·운임·방산 티커 반응이 없으면 고충격 재료에서 제외합니다.",
+        )
+    elif is_fcc_submarine_cable_policy(text, item):
+        put(
+            item,
+            importance="중",
+            impacts=["시간표", "할인율"],
+            paths=["정책 타임라인", "국가안보 심사", "규제 리스크"],
+            sectors=["해저케이블/국제통신망", "통신보안", "통신/FCC"],
+            policy_plain_summary="FCC가 해저 통신케이블 랜딩 라이선스 규칙과 절차를 국가안보 환경 변화에 맞춰 재검토하는 공식 규제 문서입니다.",
+            investment_view="핵심은 태양광·전력장비 수입금지가 아니라 국제 통신망 인허가와 보안 심사 시간표입니다. 신규 케이블 허가, 외국 지분·운영자 심사, 데이터센터 연결망 규제가 구체화될 때만 투자 재료가 됩니다.",
+            korea_market_impact="한국장에서는 해저 통신케이블, 국제망 보안, 통신장비, 통신사 해외망 노출만 제한적으로 확인합니다. 원문 근거 없이 태양광·전력변환 테마로 확장하지 않습니다.",
+            priced_in="낮음~중간. FCC 국가안보 문서라 테마 반응은 가능하지만, 한국 기업의 직접 수주·인허가 노출이 확인되기 전에는 가격 변수로 약합니다.",
+            counter="규칙·절차 재검토 단계일 수 있어 특정 케이블 프로젝트의 승인·거절, 예산, 조달, 한국 기업 수혜가 확정된 것은 아닙니다.",
+            failure_signal="구체 라이선스 변경, 신규 심사 기준, 케이블 사업자 영향, 한국 기업 수주·공급망 노출이 확인되지 않으면 관찰 재료로만 처리합니다.",
+        )
+    elif is_fcc_energy_inverter_policy(text, item):
+        put(
+            item,
+            importance="상",
+            impacts=["돈 버는 능력", "수급", "시간표"],
+            paths=["정책 타임라인", "공급망", "밸류체인", "수급"],
+            sectors=["태양광 인버터/전력변환장치", "전력기기/전력망 보안", "신재생에너지", "중국 대체 공급망"],
+            policy_plain_summary="미국 FCC가 국가안보 우려를 이유로 외국산 또는 중국산 에너지 인버터 신규 수입 제한·금지 조치를 검토 중이라는 신뢰외신 기반 예비 정책 신호입니다.",
+            investment_view="인버터는 태양광 발전을 전력망에 연결하는 핵심 장비라 수입 금지가 공식화되면 미국 내 인버터·전력변환장치 업체의 주문 기대, 가격결정력, 중국산 부품 의존 리스크가 동시에 바뀔 수 있습니다.",
+            korea_market_impact="한국장에서는 미국 태양광주를 직접 따라가기보다 전력변환장치, ESS/PCS, 전력기기, 전력망 보안, 태양광 부품 중 미국향 또는 중국 대체 공급망 노출이 있는 종목만 선별 확인합니다.",
+            priced_in="낮음~중간. 보도 직후 미국 태양광주는 먼저 반응했지만, FCC 공식 규칙안·적용대상·시행일이 확인되기 전까지 한국장 직접 반영은 제한적입니다.",
+            counter="아직 FCC 공식 규칙·수입금지 대상·적용일·기존 모델 예외가 확정되지 않은 보도 단계입니다. 미국 업체 주가 반응이 먼저 나온 만큼 단기 과열일 수 있습니다.",
+            failure_signal="FCC 공식 문서, 적용 대상 장비, 중국산 통신모듈·인버터 제한 범위, 한국 기업의 미국향 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
+        )
+    elif is_fcc_security_import_policy(text, item):
+        put(
+            item,
+            importance="상",
+            impacts=["돈 버는 능력", "수급", "시간표"],
+            paths=["정책 타임라인", "공급망", "밸류체인", "수급"],
+            sectors=["전력망/통신장비/위성/보안장비/전력변환장치", "중국 대체 공급망"],
+            policy_plain_summary="미국 FCC가 Covered List에 오른 보안 위험 통신장비의 미국 내 수입·판매 제한 절차를 공표한 공식 정책 문서입니다.",
+            investment_view="적용 장비와 공급사가 확정되면 중국산 통신장비 배제, 대체 공급망, 미국향 장비 수주 기대가 움직일 수 있습니다.",
+            korea_market_impact="한국장에서는 통신장비, 네트워크 장비, 보안장비 중 미국향 매출·대체 공급망 노출이 확인되는 종목만 선별 확인합니다.",
+            priced_in="낮음~중간. FCC 국가안보 규제는 테마 반응이 빠르지만 공식 규칙안·적용 장비·시행일 확인 전에는 한국장 직접 반영이 제한적입니다.",
+            counter="기존 승인 장비의 처리 절차일 수 있고, 한국 기업의 대체 수주나 공급망 노출이 없으면 과대해석입니다.",
+            failure_signal="FCC 공식 규칙안, Covered List·장비인증 제한 범위, 적용 장비, 한국 기업의 미국향 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
+        )
+    elif is_state_smr_moc_policy(text, item):
+        put(
+            item,
+            importance="상",
+            title_ko="미·일·한, 제3국 SMR 배치 협력 MOC 체결",
+            impacts=["시간표", "수급", "돈 버는 능력", "할인율"],
+            paths=["정책 타임라인", "계약 가시성", "원전 밸류체인", "프로젝트 파이낸싱", "수급"],
+            sectors=["원전/SMR", "삼성물산/건설·EPC", "원전 기자재/전력기기", "BWRX-300 밸류체인"],
+            korea_value_chain=["삼성물산", "원전/SMR EPC", "원전 기자재", "전력기기", "SMR 프로젝트 개발"],
+            policy_plain_summary="미 국무부 기준 미·일·한이 제3국 SMR 배치 MOC를 체결했습니다. 초기 초점은 인도·태평양이고, FIRST 1,000만 달러+ 지원 및 GE Vernova·Hitachi·Samsung C&T·SGE BWRX-300 유럽 배치가 함께 언급됐습니다.",
+            investment_view="이 뉴스는 확정 수주가 아니라 SMR 프로젝트 개발의 정책 시간표, 파이낸싱 신뢰도, 삼성물산 등 민간 파트너의 밸류체인 기대를 바꾸는 재료입니다. MOC 단계라 매출 인식은 아직 계산하지 말고 후속 국가·부지·EPC 범위·계약 서명을 봐야 합니다.",
+            korea_market_impact="한국장에서는 삼성물산이 원문에 직접 언급된 핵심 노출이고, 원전/SMR·두산에너빌리티·원전 기자재·전력기기 테마는 후속 계약·공시·공급 범위가 확인될 때만 실적 재료로 연결합니다.",
+            priced_in="낮음~중간. 원전·SMR 테마는 선반영이 강하지만, 미·일·한 정부 협력과 삼성물산/GE Vernova/BWRX-300 조합은 장전 수급을 다시 자극할 수 있습니다.",
+            counter="확정 매출 확인 불가. MOC는 EPC·공급계약이 아니고 FIRST 자금은 기술지원·훈련허브 성격입니다. 국가·부지·라이선스·금융조건·계약 서명이 확인돼야 실적 재료입니다.",
+            failure_signal="삼성물산·GE Vernova·Hitachi·SGE의 후속 공시, BWRX-300 프로젝트 국가·부지·계약 범위, 인허가·금융 일정, 한국 기자재 공급망 노출이 확인되지 않으면 정책 테마 기대에 그칩니다.",
+        )
+    elif is_doe_energy_security_policy(text, item):
+        put(
+            item,
+            importance="상",
+            impacts=["돈 버는 능력", "수급", "시간표", "할인율"],
+            paths=["정책 타임라인", "전력망 투자", "원전/핵연료", "대출·보조금", "공급망"],
+            sectors=["전력망/전력기기", "원전/SMR/핵연료", "데이터센터 전력", "핵심소재/에너지 공급망"],
+            policy_plain_summary="미 에너지부(DOE)의 대출보증, 조건부 지원 약정, 자금지원 공고, 효율규제, 금지·제한, 핵연료·전력망 정책은 에너지 인프라 투자와 공급망 시간표를 직접 바꿀 수 있는 사안입니다.",
+            investment_view="DOE 지원·제한 정책은 보조금성 자금, 저리 대출, 인허가·조달 일정, 장비 효율 기준을 통해 원전·전력기기·송전망·데이터센터 전력 밸류체인의 수주 가시성과 할인율을 동시에 건드립니다.",
+            korea_market_impact="한국장에서는 두산에너빌리티, 원전 기자재, 전력기기, 변압기·전선, ESS/전력변환장치, 핵연료·핵심소재 밸류체인 중 미국 프로젝트 노출이 있는 종목만 선별 확인합니다.",
+            priced_in="중간. 전력망·원전 테마는 선반영이 강하지만 DOE의 금액, 대출 조건, 선정 기업, 시행일이 공식화되면 실적 추정과 수급이 다시 움직일 수 있습니다.",
+            counter="DOE 발표라도 공고·의향서·조건부 약정 단계는 최종 계약이나 매출 확정이 아닙니다. 수혜 기업, 금액, 매칭 자금, 인허가, 착공 일정 확인이 필요합니다.",
+            failure_signal="DOE 원문에서 금액·대상 기업·대출 조건·시행일·조달 일정이 확인되지 않거나 국내 기업의 미국 프로젝트 노출이 없으면 테마성 반응으로 끝납니다.",
+        )
+    elif is_fcc_resilient(text):
+        put(
+            item,
+            importance="중",
+            impacts=["시간표", "의사결정 영향 제한적"],
+            paths=["정책 타임라인", "규제 준수"],
+            sectors=["미국 통신망 복구/장애보고"],
+            policy_plain_summary="FCC가 재난·정전·허리케인 등 통신장애 때 사업자가 DIRS에 보고하는 절차를 현대화한 최종규칙입니다. 통신망 투자 확대나 주파수 경매가 아니라 재난 대응 보고·행정 부담 조정 성격입니다.",
+            investment_view="매출을 직접 늘리는 정책은 아닙니다. 미국 통신사·장비사의 단기 CAPEX, 한국 통신3사 실적, 국내 네트워크 장비 수주로 바로 연결되는 근거는 제한적입니다.",
+            korea_market_impact="한국장에서는 통신장비·위성·통신주 테마 반응이 붙어도 직접 가격 변수는 약합니다. 재난통신 장비 조달, 911·공공안전망 투자, 보안장비 의무화가 뒤따를 때만 재평가 후보입니다.",
+            priced_in="낮음. 선반영 여부보다 영향 자체가 제한적입니다.",
+            counter="최종규칙이라도 핵심은 보고 절차 정비입니다. 신규 예산·장비 발주·주파수 정책·보조금이 확인되지 않으면 실적 연결은 약합니다.",
+            failure_signal="미국 통신사 CAPEX 가이던스, 장비 발주, 공공안전망 예산, 국내 장비사 수주 공시가 없으면 테마성 반응에서 끝납니다.",
+        )
+    elif is_eu_korea_policy(text, item):
+        if is_eu_korea_steel_policy(text, item):
+            put(
+                item,
+                importance="상",
+                impacts=["돈 버는 능력", "수급", "시간표"],
+                paths=["이익", "무역규제", "정책 타임라인", "수급"],
+                sectors=["철강/강관", "EU향 수출주", "자동차강판/조선후판", "관세·쿼터 정책"],
+                policy_plain_summary="EU가 한국산 철강에 적용되는 수입규제·세이프가드·쿼터 조건을 완화한다는 신뢰 보도/공식 신호가 확인된 사안입니다.",
+                investment_view="규제율·쿼터 부담이 낮아지면 EU향 철강 수출 물량, 가격경쟁력, 마진, 수급 기대가 동시에 바뀔 수 있습니다.",
+                korea_market_impact="한국장에서는 포스코홀딩스, 현대제철, 세아제강 등 철강·강관 수출주와 EU향 자동차강판·조선후판 노출 종목의 가격·수급 반응을 확인합니다.",
+                priced_in="낮음~중간. 철강 규제 완화는 보도 직후 테마 수급이 붙을 수 있지만 품목·쿼터·시행일이 공식화되어야 실적 추정 조정이 가능합니다.",
+                counter="품목 범위, 적용 기간, 국가별 쿼터, 실제 관세율·세이프가드 문구, EU 관보 확정 여부가 미확인일 수 있습니다.",
+                failure_signal="EU 집행위·관보 문서, 품목별 쿼터, 적용일, 국내 철강사 EU향 물량·마진 개선 근거가 확인되지 않으면 테마성 반응으로 끝납니다.",
+            )
+        elif is_eu_green_industry_policy(text, item):
+            put(
+                item,
+                importance="상",
+                impacts=["돈 버는 능력", "할인율", "시간표"],
+                paths=["원가", "공급망", "정책 타임라인", "규제 리스크"],
+                sectors=["배터리/2차전지", "철강/화학", "자동차/부품", "탄소국경/공급망"],
+                policy_plain_summary="EU의 탄소국경조정, 배터리규정, 핵심원자재·공급망 실사 정책이 한국 제조사의 원가·인증·수출 시간표를 바꿀 수 있는 사안입니다.",
+                investment_view="인증·재활용·탄소비용·원산지 요건이 강화되면 유럽 매출 마진, CAPEX, 고객사 공급망 편입 조건이 바뀝니다.",
+                korea_market_impact="한국장에서는 2차전지 소재·셀, 철강/화학, 자동차 부품, 유럽향 공급망 노출 기업의 비용 전가력과 인증 대응력을 확인합니다.",
+                priced_in="중간. EU 환경규제는 반복 재료지만 세부 수치, 시행일, 인증 의무가 새로 나오면 실적 추정에 반영될 수 있습니다.",
+                counter="시행 유예, 위임규정, 기업별 유럽 매출 비중, 고객사 전가 조건이 확인되지 않으면 단기 가격 변수는 약해질 수 있습니다.",
+                failure_signal="품목별 인증·탄소비용·재활용 의무·시행일이 확정되지 않거나 국내 기업의 유럽 노출이 낮으면 테마성 반응에 그칩니다.",
+            )
+        elif is_eu_digital_security_policy(text, item):
+            put(
+                item,
+                importance="중",
+                impacts=["시간표", "할인율", "돈 버는 능력"],
+                paths=["규제 준수", "정책 타임라인", "원가", "밸류체인"],
+                sectors=["플랫폼/인터넷", "AI/클라우드", "사이버보안", "반도체/전자"],
+                policy_plain_summary="EU 디지털·AI·플랫폼·사이버 규제가 한국 플랫폼, 클라우드, 전자·보안 기업의 유럽 사업 조건과 준수비용을 바꿀 수 있는 사안입니다.",
+                investment_view="적용 대상, 준수기한, 과징금·인증 의무가 구체화되면 유럽 매출 노출 기업의 비용, 제품 출시 일정, 밸류에이션 할인율이 바뀝니다.",
+                korea_market_impact="한국장에서는 네이버·카카오 등 플랫폼, AI/클라우드, 사이버보안, 전자·반도체 수출 기업 중 EU 매출 노출이 있는 종목만 선별 확인합니다.",
+                priced_in="낮음~중간. EU 디지털 규제는 한국장 직접 연결이 약한 경우가 많아 적용 대상 기업과 시행기한이 확인돼야 합니다.",
+                counter="한국 기업이 직접 규제 대상이 아니거나 유럽 매출 비중이 작으면 가격 영향은 제한적입니다.",
+                failure_signal="EU 적용 대상 명단, 과징금·인증 의무, 시행일, 한국 기업의 직접 노출이 없으면 제외해야 합니다.",
+            )
+        elif is_eu_sanctions_export_policy(text, item):
+            put(
+                item,
+                importance="상",
+                impacts=["돈 버는 능력", "수급", "시간표"],
+                paths=["수출통제", "공급망", "정책 타임라인", "수급"],
+                sectors=["반도체/장비", "방산/조선", "에너지/원자재", "공급망"],
+                policy_plain_summary="EU 제재·수출통제·공급망 정책이 한국 기업의 판매 가능 국가, 우회수요, 소재·장비 조달 조건을 바꿀 수 있는 사안입니다.",
+                investment_view="대상 국가·품목·기업이 확정되면 한국 밸류체인의 매출처 제한, 대체수요, 재고·물류 비용, 수주 시간표가 바뀝니다.",
+                korea_market_impact="한국장에서는 반도체 장비·소재, 방산/조선, 에너지·원자재, 러시아·중국·유럽 노출 기업의 매출 제한과 대체수요를 확인합니다.",
+                priced_in="중간. 제재·수출통제는 반복 재료지만 새 품목, 새 기업, 새 시행일이면 수급과 실적 추정이 바뀔 수 있습니다.",
+                counter="초안·정치 발언 단계에서는 최종 품목, 예외 라이선스, 동맹국 적용 방식이 달라질 수 있습니다.",
+                failure_signal="최종 관보, 대상 품목·기업, 예외 라이선스, 한국 기업의 직접 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
+            )
+        else:
+            put(
+                item,
+                importance="중",
+                impacts=["돈 버는 능력", "수급", "시간표"],
+                paths=["무역규제", "정책 타임라인", "수급"],
+                sectors=["EU 무역규제/관세", "한국 수출주", "자동차/화학/배터리/조선"],
+                policy_plain_summary="EU에서 나온 한국 관련 정책·규제 신호가 한국 수출기업의 조건, 비용, 일정에 영향을 줄 수 있는 사안입니다.",
+                investment_view="품목·세율·쿼터·시행일·예외 조항이 공식화되면 한국 기업의 마진, 주문 이전, 밸류체인 수급 기대가 바뀔 수 있습니다.",
+                korea_market_impact="한국장에서는 원문에 직접 언급된 품목과 유럽 매출 노출이 있는 수출주만 연결합니다. 원문 근거 없는 섹터 확장은 제외합니다.",
+                priced_in="낮음~중간. EU 정책은 공식 문서 전에는 테마 반응이 먼저 붙을 수 있어 후속 원문 확인이 필요합니다.",
+                counter="품목 범위, 시행일, 예외 조항, 한국 기업 직접 노출이 확인되지 않으면 고충격 뉴스로 보기 어렵습니다.",
+                failure_signal="EU 집행위·의회·이사회·관보 문서와 한국 기업의 직접 노출, 가격·수급 반응이 없으면 제외해야 합니다.",
+            )
+    elif has_any(text, ["export control", "entity list", "bis", "semiconductor", "chips", "ai chip", "수출통제"]):
+        put(
+            item,
+            impacts=["돈 버는 능력", "할인율", "시간표"],
+            paths=["공급망", "정책 타임라인", "밸류체인", "규제 리스크"],
+            sectors=["반도체/AI", "장비·소재", "중국 노출 밸류체인"],
+            policy_plain_summary="미국 수출통제·엔티티리스트·첨단기술 규제는 AI 반도체와 장비·소재 공급망의 판매 가능 시장을 바꿀 수 있는 정책 변수입니다.",
+            investment_view="대상 품목과 국가가 확인되면 매출처 제한, 재고 조정, 우회 수요, 장비 발주 시간표가 바뀝니다.",
+            korea_market_impact="한국장에서는 삼성전자·SK하이닉스, 반도체 장비·소재, 중국 매출 노출 업체와 HBM/AI 체인 수급을 우선 확인합니다.",
+            priced_in="중간. 미중 기술규제는 반복 재료지만 새 품목·새 기업·새 시행일이면 실적 추정에 반영될 수 있습니다.",
+            counter="초안·검토·보도 단계이면 실제 적용 범위가 축소될 수 있고, 예외 라이선스가 열리면 충격은 줄어듭니다.",
+            failure_signal="최종 규정, 시행일, 대상 기업·품목, 라이선스 제한이 확인되지 않으면 테마성 반응으로 끝납니다.",
+        )
+    elif is_agriculture_supply_policy(text, item):
+        put(
+            item,
+            importance="중",
+            impacts=["돈 버는 능력", "수급", "시간표"],
+            paths=["원가", "공급망", "정책 타임라인", "식량·농업 투입비"],
+            sectors=["비료/농화학", "곡물/농업 원가", "음식료 원가", "바이오연료"],
+            policy_plain_summary="농업·비료·바이오연료 관련 정책은 농업 투입비, 비료·곡물 공급, 음식료 원가, 친환경 연료 원료 수요를 바꿀 수 있는 산업비용 변수입니다.",
+            investment_view="이 뉴스가 중요한지는 정책 제목보다 비료·곡물·바이오연료 원가와 공급량, 그리고 한국 음식료·농화학 밸류체인의 마진 가정을 바꾸는지에 달려 있습니다.",
+            korea_market_impact="한국장에서는 비료/농화학, 곡물 원가, 음식료 원가 민감주, 바이오연료 원료 밸류체인을 관찰합니다. 미국 내 수입·농업 정책이면 국내 직접 수혜는 가격·공급망 연결이 확인될 때만 인정합니다.",
+            priced_in="낮음~중간. 농업 정책은 테마 반응이 약할 수 있지만, 비료 가격·곡물 가격·식품 원가와 연결되면 마진 추정에 반영될 수 있습니다.",
+            counter="미국 수입·농업 지원 정책이 한국 기업 매출로 바로 연결되는 것은 아닙니다. 품목, 수입량, 적용 기간, 글로벌 가격 전이 여부가 확인돼야 합니다.",
+            failure_signal="비료·곡물 가격, 국내 음식료/농화학 수급, 한국 기업의 원가·공급망 노출이 동행하지 않으면 관찰 재료로만 처리합니다.",
+        )
+    elif has_any(text, ["tariff", "section 301", "customs", "duty", "관세", "통관"]):
+        put(
+            item,
+            impacts=["돈 버는 능력", "할인율", "수급", "시간표"],
+            paths=["이익", "공급망", "정책 타임라인", "수급"],
+            sectors=["관세/수출주", "소비재·산업재", "물류/공급망"],
+            policy_plain_summary="관세·통관 집행 변화는 수입 원가, 가격전가, 공급망 재배치, 수출주 마진을 바꿀 수 있는 정책 변수입니다.",
+            investment_view="품목·국가·세율·시행일이 확인되면 해당 밸류체인의 매출총이익률과 주문 이전 기대가 바로 바뀝니다.",
+            korea_market_impact="한국장에서는 미국향 수출주, 중국 대체 공급망, 관세 민감 소비재·산업재, 물류비 민감 업종을 선별 확인합니다.",
+            priced_in="낮음~중간. 단순 발언은 빨리 소멸하지만 관보·행정명령·USTR 문서로 확정되면 재평가 여지가 있습니다.",
+            counter="품목코드, 예외 조항, 유예 기간이 확인되지 않으면 개별 종목 영향 추정은 과대해석일 수 있습니다.",
+            failure_signal="공식 세율·품목·시행일이 나오지 않거나 기업 가격전가/수주 변화가 확인되지 않으면 실패입니다.",
+        )
+    elif has_any(text, ["nuclear", "reactor", "uranium", "ap1000", "westinghouse", "data center", "nrc", "원전"]):
+        put(
+            item,
+            impacts=["시간표", "돈 버는 능력", "수급"],
+            paths=["원전 정책 타임라인", "AI 데이터센터 전력수요", "원전 밸류체인", "수급"],
+            sectors=["원전/전력기기", "전력망/데이터센터", "우라늄", "SMR/대형원전 기자재"],
+            policy_plain_summary="원전 인허가, 핵연료, 신규 원전, AI 데이터센터 전력수요가 정책 시간표로 공식화되는지 보는 사안입니다.",
+            investment_view="확정 매출은 아니지만 대형 CAPEX와 인허가 시간이 앞당겨지면 원전기기·전력기기·우라늄 체인의 수주 기대가 커집니다.",
+            korea_market_impact="한국장에서는 원전 기자재, 전력기기, 송전망, 두산에너빌리티·한전기술·한전KPS 등 밸류체인 수급을 확인합니다.",
+            priced_in="중간. 원전 테마는 선반영이 강하지만 정책·대출·NRC 일정이 동시에 확인되면 추가 재평가 여지가 있습니다.",
+            counter="부지, 최종 계약, 예산·대출 조건, NRC 인허가, 착공 일정이 확정되지 않으면 실제 매출 인식까지 시차가 큽니다.",
+            failure_signal="대출 조건, 부지, NRC 일정, 원전기기 발주가 확인되지 않으면 정책 기대에서 끝납니다.",
+        )
+    elif has_any(text, ["ferc", "power grid", "transmission", "interconnection", "electric grid", "전력망"]):
+        put(
+            item,
+            impacts=["시간표", "돈 버는 능력", "수급"],
+            paths=["전력망 투자", "정책 타임라인", "밸류체인", "수급"],
+            sectors=["전력망/전력기기", "전선/변압기", "데이터센터 전력 인프라"],
+            policy_plain_summary="전력망·송전·계통연계 정책은 데이터센터와 전력 인프라 CAPEX 시간표를 바꿀 수 있는 사안입니다.",
+            investment_view="계통연계 병목 완화나 투자 인센티브가 확인되면 변압기·전선·전력기기 수주 기대가 커집니다.",
+            korea_market_impact="한국장에서는 전선, 변압기, 전력기기, 데이터센터 전력 인프라 관련 종목의 수급과 수주 공시를 확인합니다.",
+            priced_in="중간. 전력망 테마가 이미 강하면 시행일·예산·발주 없이는 추가 반응이 제한됩니다.",
+            counter="규칙 제안이나 의견수렴 단계는 실제 발주와 거리가 있을 수 있습니다.",
+            failure_signal="FERC/DOE 후속 일정, 유틸리티 CAPEX, 장비 발주가 없으면 테마성 반응에 그칩니다.",
+        )
+    elif has_any(text, ["fda", "clinical", "drug", "complete response letter", "approval", "crl", "임상", "허가"]):
+        put(
+            item,
+            impacts=["돈 버는 능력", "시간표", "수급"],
+            paths=["임상/허가 시간표", "이익", "수급"],
+            sectors=["바이오/FDA", "제약", "헬스케어"],
+            policy_plain_summary="FDA 승인·거절·임상 관련 결정은 개발 시간표와 상업화 가능성을 직접 바꾸는 바이오 이벤트입니다.",
+            investment_view="승인·CRL·임상 결과는 매출 개시 시점, 추가 비용, 기술이전 협상력을 바꿀 수 있습니다.",
+            korea_market_impact="한국장에서는 해당 파이프라인 보유사, CDMO, 바이오텍 섹터 수급을 확인하되 원문 적응증·대상 기업 근거가 필요합니다.",
+            priced_in="중간~높음. 바이오 이벤트는 기대가 선반영되기 쉬워 결과와 시장 기대의 차이가 중요합니다.",
+            counter="부분 승인, 라벨 제한, 추가 임상 요구, 안전성 이슈가 있으면 headline보다 영향이 약할 수 있습니다.",
+            failure_signal="라벨·시장규모·상업화 파트너·후속 비용이 확인되지 않으면 주가 재료가 약해집니다.",
+        )
+    elif has_any(text, ["robot", "robotics", "commerce", "china", "chinese", "robotics tariffs"]):
+        put(
+            item,
+            impacts=["시간표", "수급", "돈 버는 능력"],
+            paths=["정책 타임라인", "중국 대체 공급망", "관세/수입제한", "수급"],
+            sectors=["로봇/스마트팩토리", "감속기/FA", "산업자동화", "관세/수출주"],
+            policy_plain_summary="미국이 중국산 로봇 수입·보조금·국가안보 리스크를 검토한다는 신호는 로봇 산업을 미중 기술패권의 다음 전선으로 보는 재료입니다.",
+            investment_view="관세·수입제한·미국 내 제조지원으로 이어지면 중국 대체 밸류체인과 자동화 장비 수요 기대가 커질 수 있습니다.",
+            korea_market_impact="한국장에서는 로봇, 감속기, 스마트팩토리, FA 장비, 중국 대체 공급망 테마 수급을 보되 공식 상무부 발표 전이면 예비로 봐야 합니다.",
+            priced_in="낮음~중간. 보도 직후 테마 수급은 빠르지만 공식 조치 전에는 되돌림 위험이 큽니다.",
+            counter="익명 소식통 보도 단계라 품목, 관세율, 시행일, 대출 조건, 대상 기업은 미확정입니다.",
+            failure_signal="상무부 공식 조사·관세·OSC 대출 조건이 나오지 않으면 단기 테마성 반응으로 끝납니다.",
+        )
+    elif has_any(text, ["spectrum", "satellite", "space bureau", "wireless", "broadband", "fcc"]):
+        put(
+            item,
+            impacts=["시간표", "수급"],
+            paths=["정책 타임라인", "주파수/통신 규제", "수급"],
+            sectors=["통신/FCC/위성", "통신장비", "위성통신"],
+            policy_plain_summary="FCC 통신·주파수·위성 규제 문서는 통신 인프라 정책 시간표를 바꿀 수 있지만, 문서 성격에 따라 시장 영향 차이가 큽니다.",
+            investment_view="주파수 경매, 위성 인허가, 장비 인증, 보안 의무처럼 CAPEX나 조달로 이어질 때만 실적 재료가 됩니다.",
+            korea_market_impact="한국장에서는 통신장비·위성통신·네트워크 장비 테마를 확인하되, 행정 공지·회의 공고 수준이면 직접 영향은 제한적입니다.",
+            priced_in="낮음~중간. 구체 인허가·경매·보안 의무가 없으면 가격 반응은 약합니다.",
+            counter="FCC 문서라도 회의 공지, 데이터 수집, 보고 양식 정비는 고충격 재료가 아닐 수 있습니다.",
+            failure_signal="주파수 경매, 장비 의무화, 인허가, 통신사 CAPEX 변화가 없으면 제외해야 합니다.",
+        )
+
+    text = text_for(item)
+    infer_korea_value_chain(item, text)
+    normalize_decision_impacts(item, text)
+    infer_korean_title(item, text)
+    item["impacts"] = unique(as_list(item.get("impacts")) or [LIMITED_IMPACT])
+    item["paths"] = unique(as_list(item.get("paths")) or ["정책 타임라인"])
+    item["sectors"] = unique(as_list(item.get("sectors")) or ["정책/규제 일반"])
+    return item
+
+
+def clip_text(value: object, limit: int) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 1)].rstrip() + "…"
+
+
+def join_limited(values: object, *, max_items: int = 5, char_limit: int = 140, fallback: str = "확인 필요") -> str:
+    items = [clip_text(value, 40) for value in as_list(values) if str(value or "").strip()]
+    if not items:
+        items = [fallback]
+    shown = items[:max_items]
+    if len(items) > max_items:
+        shown.append(f"외 {len(items) - max_items}개")
+    return clip_text(", ".join(shown), char_limit)
+
+
+def explanation_lines(item: dict) -> list[str]:
+    ensure_explained(item)
+    impact_labels = display_decision_impacts(item.get("impacts"))
+    return [
+        f"- 핵심 내용: {clip_text(item.get('policy_plain_summary') or '정책 세부 내용 확인 필요', 180)}",
+        f"- 투자 관점: {clip_text(item.get('investment_view') or '실적·할인율·수급·시간표 변화 여부 확인 필요', 180)}",
+        f"- 한국장 영향: {clip_text(item.get('korea_market_impact') or '한국장 직접 영향 확인 필요', 180)}",
+        f"- 의사결정 영향: {join_limited(impact_labels or [LIMITED_IMPACT], max_items=4, char_limit=90, fallback=LIMITED_IMPACT)}",
+        f"- 영향 경로: {join_limited(item.get('paths') or ['정책 타임라인'], max_items=5, char_limit=120, fallback='정책 타임라인')}",
+        f"- 영향 섹터: {join_limited(item.get('sectors') or ['정책/규제 일반'], max_items=4, char_limit=120, fallback='정책/규제 일반')}",
+        f"- 한국 밸류체인: {join_limited(item.get('korea_value_chain'), max_items=5, char_limit=150, fallback='직접 연결 업종 확인 필요')}",
+        f"- 반영 가능성: {clip_text(item.get('priced_in') or '낮음~중간', 140)}",
+        f"- 반대 근거: {clip_text(item.get('counter') or '세부 조건 확인 전까지 직접 실적 연결은 제한적입니다.', 160)}",
+        f"- 실패 신호: {clip_text(item.get('failure_signal') or '후속 시행일·예산·계약·수급 반응이 없으면 단발성 정책 이슈로 끝납니다.', 160)}",
+    ]
+
+
+def _raw_explanation_lines(item: dict) -> list[str]:
+    ensure_explained(item)
+    impact_labels = display_decision_impacts(item.get("impacts"))
+    return [
+        f"- 판단 질문: {item.get('decision_question') or DECISION_QUESTION}",
+        f"- 영향 분류: {item.get('decision_classification') or decision_classification_text(item.get('impacts'))}",
+        f"- 분류 매트릭스: {decision_matrix_text(item.get('impacts'))}",
+        f"- 핵심 내용: {item.get('policy_plain_summary') or '정책 세부 내용 확인 필요'}",
+        f"- 투자 관점: {item.get('investment_view') or '실적·할인율·수급·시간표 변화 여부 확인 필요'}",
+        f"- 한국장 영향: {item.get('korea_market_impact') or '한국장 직접 영향 확인 필요'}",
+        f"- 한국 밸류체인: {', '.join(as_list(item.get('korea_value_chain')) or ['직접 연결 업종 확인 필요'])}",
+        f"- 의사결정 영향: {', '.join(impact_labels or [LIMITED_IMPACT])}",
+        f"- 영향 경로: {', '.join(as_list(item.get('paths')) or ['정책 타임라인'])}",
+        f"- 영향 섹터: {', '.join(as_list(item.get('sectors')) or ['정책/규제 일반'])}",
+        f"- 이미 주가에 반영됐을 가능성: {item.get('priced_in') or '낮음~중간'}",
+        f"- 반대 근거: {item.get('counter') or '세부 조건 확인 전까지 직접 실적 연결은 제한적입니다.'}",
+        f"- 실패 신호: {item.get('failure_signal') or '후속 시행일·예산·계약·수급 반응이 없으면 단발성 정책 뉴스로 끝납니다.'}",
+    ]

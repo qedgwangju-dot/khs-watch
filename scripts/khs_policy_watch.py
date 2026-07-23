@@ -259,6 +259,891 @@ FCC_ADMIN_REPORTING_TERMS = [
 ]
 
 @dataclass
-class◊MµÓ⁄$z{-ÆÈ‹j◊ùW&“íf˜"FW&“ñ‚E%T’ÙÙddî4î≈ı$T‘$µı5E$Ù‰uıDU$’2ì†–¢&WGW&‚ÊˆÊP–¢÷F6ÜVB“∂'V6∂WC¢∂∑rf˜"∑rñ‚∂Wóv˜&G2ñb∂Wóv˜&EˆñÂ˜FWáBÜÜó7F6≤¬∑rï“f˜"'V6∂WB¬∂Wóv˜&G2ñ‚5DtUÙ¥Uïtı$E2ÊóFV◊2Çó––¢ñb&fFˆFV6ó6ñˆ‚"ñ‚÷F6ÜVBÊB÷F6ÜVE≤&fFˆFV6ó6ñˆ‚%“ÊB$dD"Ê˜Bñ‚óFV“ÊvWBÇ'6˜W&6R"¬""íÊB&fF"Ê˜Bñ‚Üó7F6≥†–¢÷F6ÜVE≤&fFˆFV6ó6ñˆ‚%““µ––¢ó5ˆf65˜6˜W&6R“6˜W&6UˆÊ÷RÁ7F'G7vóFÇÇ$d42"í˜"6˜W&6UˆÊ÷R”“$fVFW&¬&Vvó7FW"d42 –¢2&ÊFñˆÊ¬6V7W&óGí"V'2ñ‚vÜóFRÜ˜W6R÷V÷˜&ÊFg&WVVÁF«í‚óBó0–¢2Ê˜B‚d426ñvÊ¬VÊ∆W72FÜR&ñ÷'í6˜W&6RóG6V∆bó2FÜRd42‡–¢ñbÊ˜Bó5ˆf65˜6˜W&6S†–¢÷F6ÜVE≤&f65ˆFV6ó6ñˆÂˆÊ˜Fñ6R%““µ––¢÷F6ÜVB“∂'V6∂WC¢∑w2f˜"'V6∂WB¬∑w2ñ‚÷F6ÜVBÊóFV◊2Çíñb∑w7––¢ñbó5ˆf65˜6˜W&6RÊBÁíÜ∂Wóv˜&EˆñÂ˜FWáBÜÜó7F6≤¬FW&“íf˜"FW&“ñ‚d45ı5E$Ù‰uıDU$’2ì†–¢÷F6ÜVBÁ6WFFVfV«BÇ&f65ˆFV6ó6ñˆÂˆÊ˜Fñ6R"¬≤&f62ˆffñ6ñ¬FV6ó6ñˆ‚ˆÊ˜Fñ6R6˜W&6R%“ê–¢ñbÊ˜B÷F6ÜVC†–¢&WGW&‚ÊˆÊP–¢7FvU˜66˜&R“7V“Ü∆V‚ábíf˜"bñ‚÷F6ÜVBÁf«VW2Çíê–¢Ü5ˆ÷¶˜%ˆfñ∆ñÊr“ÁíÜ∂Wóv˜&EˆñÂ˜FWáBÜÜó7F6≤¬∂Wóv˜&Bíf˜"∂Wóv˜&Bñ‚‘§ı%Ùdîƒî‰uÙ¥Uïtı$E2ê–¢ó5ˆf65ˆF÷ñÂ˜&W˜'FñÊr“ó5ˆf65˜6˜W&6RÊBÁíÜ∂Wóv˜&EˆñÂ˜FWáBÜÜó7F6≤¬FW&“íf˜"FW&“ñ‚d45ÙD‘îÂı$Uı%Dî‰uıDU$’2ê–¢ñbó5ˆf65ˆF÷ñÂ˜&W˜'FñÊs†–¢ñ◊˜'FÊ6R“. I –¢V∆ñbÁíÜ'V6∂WBñ‚÷F6ÜVBf˜"'V6∂WBñ‚Ç&6˜W'Eˆ˜&FW""¬&fñÊ≈˜'V∆R"¬'6Ê7FñˆÁ5˜F&ñfg5ˆWá˜'B"¬&6ÜñÊ˜G&FUˆ6ˆÁG&ˆ«2"¬&VÊW&wï˜6V7W&óGï˜ˆ∆ñ7í"¬'7FFU˜6◊%ˆ÷ˆ5˜ˆ∆ñ7í"¬'&W6ñFVÁFñ≈ˆ7Fñˆ‚"¬&fFˆFV6ó6ñˆ‚"íí˜"Ç&f65ˆFV6ó6ñˆÂˆÊ˜Fñ6R"ñ‚÷F6ÜVBÊBó5ˆf65˜6˜W&6Rì†–¢ñ◊˜'FÊ6R“.»8 –¢V∆ñb&w&ñ7V«GW&U˜7W«ï˜ˆ∆ñ7í"ñ‚÷F6ÜVC†–¢ñ◊˜'FÊ6R“. I –¢V∆ñb&6ˆ◊Áïˆfñ∆ñÊr"ñ‚÷F6ÜVBÊBÜ5ˆ÷¶˜%ˆfñ∆ñÊs†–¢ñ◊˜'FÊ6R“. I –¢V∆ñb7FvU˜66˜&R„“3†–¢ñ◊˜'FÊ6R“. I –¢V«6S†–¢ñ◊˜'FÊ6R“.ŸYÇ –¢6V7F˜'2“∑6V7F˜"f˜"6V7F˜"¬∂Wóv˜&G2ñ‚4T5Dı%Ù¥Uïtı$E2ÊóFV◊2ÇíñbÁíÜ∂Wóv˜&EˆñÂ˜FWáBÜÜó7F6≤¬∑ríf˜"∑rñ‚∂Wóv˜&G2ï“˜"≤. 	^ÀR˛´yŒ 	¬…€Œª	Ç%––¢ñbó5ˆf65ˆF÷ñÂ˜&W˜'FñÊs†–¢6V7F˜'2“≤.∫˚é´Z“ÿk^»∫∫y“ª;^´Z¬˛…Í^…Zª;N´:%––¢ñ◊7G3¢∆ó7E∑7G%““µ––¢Fá3¢∆ó7E∑7G%““µ––¢ñbó5ˆf65ˆF÷ñÂ˜&W˜'FñÊs†–¢ñ◊7G2ÊWáFVÊBÖ≤.»πŒ´NŸ¬"¬.…Ÿé»*Œ´+ 	R…àŸjR 	ŒŸYŒ %“ê–¢Fá2ÊWáFVÊBÖ≤. 	^ÀRÿ8…ËNπ€Œ…€Ç"¬.´yŒ 	¬ H»âÇ%“ê–¢V∆ñbÁíÜ'V6∂WBñ‚÷F6ÜVBf˜"'V6∂WBñ‚Ç&6˜W'Eˆ˜&FW""¬&fñÊ≈˜'V∆R"¬'W&÷óE˜&W7F'B"¬&vVÊ7ïˆ˜&FW""¬&VÊW&wï˜6V7W&óGï˜ˆ∆ñ7í"¬'7FFU˜6◊%ˆ÷ˆ5˜ˆ∆ñ7í"¬'&W6ñFVÁFñ≈ˆ7Fñˆ‚"¬&f65ˆFV6ó6ñˆÂˆÊ˜Fñ6R"íì†–¢ñ◊7G2ÊWáFVÊBÖ≤.»πŒ´NŸ¬"¬.ŸZ…€é… Ç%“ê–¢Fá2ÊWáFVÊBÖ≤. 	^ÀRÿ8…ËNπ€Œ…€Ç"¬.ŸZ…€é… Ç%“ê–¢ñbÁíÜ'V6∂WBñ‚÷F6ÜVBf˜"'V6∂WBñ‚Ç'6Ê7FñˆÁ5˜F&ñfg5ˆWá˜'B"¬&6ÜñÊ˜G&FUˆ6ˆÁG&ˆ«2"¬&VÊW&wï˜6V7W&óGï˜ˆ∆ñ7í"¬'7FFU˜6◊%ˆ÷ˆ5˜ˆ∆ñ7í"¬&w&ñ7V«GW&U˜7W«ï˜ˆ∆ñ7í"¬&6ˆ◊Áïˆfñ∆ñÊr"¬&fFˆFV6ó6ñˆ‚"íì†–¢ñ◊7G2ÊWáFVÊBÖ≤.∏¯Çª(N∏©B∏™^∫
-R"¬.»âé´àí%“ê–¢Fá2ÊWáFVÊBÖ≤.…€N…€R"¬.»âé´àí%“ê–¢ñb&6ÜñÊ˜G&FUˆ6ˆÁG&ˆ«2"ñ‚÷F6ÜVC†–¢ñ◊7G2ÊWáFVÊBÖ≤.»πŒ´NŸ¬%“ê–¢Fá2ÊWáFVÊBÖ≤.´;^´àû∫y“"¬. 	^ÀRÿ8…ËNπ€Œ…€Ç"¬.…π…È…Í¬ªòN…™í%“ê–¢ñb'7FFU˜6◊%ˆ÷ˆ5˜ˆ∆ñ7í"ñ‚÷F6ÜVC†–¢Fá2ÊWáFVÊBÖ≤.´8N…[“´»πŒ»K"¬.ªé∫YéÀ+N…€Ç"¬.ŸHN∫Œ 	ﬁÿ´Çÿ»Œ…€N∏+é»ª%“ê–¢ñb&6ˆ◊Áïˆfñ∆ñÊr"ñ‚÷F6ÜVC†–¢Fá2ÊVÊBÇ.´8N…[“´»πŒ»K"ê–¢ñbó5˜vÜóFVÜ˜W6U˜6˜W&6S†¢7F˜'ïˆ∂Wí“óFV“ÊvWBÇ'vÜóFVÜ˜W6U˜7F˜'ïˆ∂Wí"í˜"vÜóFVÜ˜W6U˜7F˜'ïˆ∂WíÜóFV“ê¢fñÊvW'&ñÁEˆñÁWB“b'vÜóFVÜ˜W6R÷FWFñ¬◊c'«∑7F˜'ïˆ∂Wó“ ¢V«6S†¢fñÊvW'&ñÁEˆñÁWB“b'∂óFV“ÊvWBÇw6˜W&6Rró◊«∂óFV“ÊvWBÇwFóF∆Rró◊«∂óFV“ÊvWBÇv∆ñÊ≤ró“ ¢fñÊvW'&ñÁB“Ü6Ü∆ñ"Á6Ü#SbÜfñÊvW'&ñÁEˆñÁWBÊVÊ6ˆFRÇ'WFb”Ç"ííÊÜWÜFñvW7BÇï≥£e–¢&WGW&‚≤¢¶óFV“¬&fñÊvW'&ñÁB#¢fñÊvW'&ñÁB¬&÷F6ÜVB#¢÷F6ÜVB¬&ñ◊˜'FÊ6R#¢ñ◊˜'FÊ6R¬'7FGW2#¢.…àéªòB"ñbóFV’≤'6˜W&6R%“Á7F'G7vóFÇÇÇ$6˜W'D∆ó7FVÊW""¬$µ%Ç¥î‰B"ííV«6R.Ÿô^ 	R"¬&ñ◊7G2#¢∆ó7BÜFñ7BÊg&ˆ÷∂Wó2Üñ◊7G2íí˜"≤.…Ÿé»*Œ´+ 	R…àŸjR 	ŒŸYŒ %“¬'Fá2#¢∆ó7BÜFñ7BÊg&ˆ÷∂Wó2áFá2íí˜"≤. 	^ÀRÿ8…ËNπ€Œ…€Ç%“¬'6V7F˜'2#¢6V7F˜'7–†–†–¶FVb∆ˆE˜6VV‚Çí”‚Fñ7C†–¢ñbÊ˜B4TTÂıDÇÊWÜó7G2Çì†–¢&WGW&‚≤'6VV‚#¢∑“¬'WFFVEˆEˆ∑7B#¢"'––¢G'ì†–¢&WGW&‚ß6ˆ‚Ê∆ˆG2Ö4TTÂıDÇÁ&VE˜FWáBÜVÊ6ˆFñÊs“'WFb”Ç"íê–¢WÜ6WBß6ˆ‚‰•4Ù‰FV6ˆFTW'&˜#†–¢&WGW&‚≤'6VV‚#¢∑“¬'WFFVEˆEˆ∑7B#¢"'––†–†–¶FVb6fU˜6VV‚á6VV„¢Fñ7Bí”‚ÊˆÊS†–¢DDÙDï"Ê÷∂Fó"ÜWÜó7Eˆˆ≥’G'VRê–¢6VVÂ≤'WFFVEˆEˆ∑7B%““Ê˜uˆ∑7BÇíÊó6ˆf˜&÷BáFñ÷W7V3“'6V6ˆÊG2"ê–¢4TTÂıDÇÁw&óFU˜FWáBÜß6ˆ‚ÊGV◊2á6VV‚¬VÁ7W&Uˆ66ñì‘f«6R¬ñÊFVÁC”"¬6˜'Eˆ∂Wó3’G'VRí≤%∆‚"¬VÊ6ˆFñÊs“'WFb”Ç"ê–†–†–¶FVb6ˆ∆∆V7Eˆ6ÊFñFFW2ÜÊ˜s¢GBÊFFWFñ÷Rí”‚GW∆U∂∆ó7E∂Fñ7E“¬∆ó7E∑7G%’”†¢6ÊFñFFW3¢∆ó7E∂Fñ7E““µ–¢6˜W&6UˆÊ˜FW3¢∆ó7E∑7G%““µ–¢vÜóFVÜ˜W6UˆFWFñ≈ˆ'VFvWB“≤'F˜F¬#¢¬&'ï˜6˜W&6R#¢∑◊–¢vÜóFVÜ˜W6U˜F˜F«2“≤&∆ó7FVB#¢¬&GFV◊FVB#¢¬'fW&ñfñVB#¢¬&fñ∆VB#¢¬&FVfW'&VB#¢¬&6∆76ñfñVB#¢–¢f˜"6˜W&6Rñ‚4ıU$4U3†¢FWáB¬W'&˜"“fWF6Ö˜FWáBá6˜W&6RÁW&¬ê¢ñbW'&˜#†–¢6˜W&6UˆÊ˜FW2ÊVÊBÜb"“∑6˜W&6RÊÊ÷W”¢Ÿô^…€Çªhé´á∂W'&˜'“í"ê–¢6ˆÁFñÁVP–¢ñb6˜W&6RÊ∂ñÊB”“&6˜W'F∆ó7FVÊW"#†–¢óFV◊2“'6Uˆ6˜W'F∆ó7FVÊW"áFWáB˜"""¬6˜W&6Rê–¢V∆ñb6˜W&6RÊ∂ñÊB”“&∂ñÊEˆáF÷¬#†–¢óFV◊2“'6Uˆ∂ñÊEˆáF÷¬áFWáB˜"""¬6˜W&6R¬Ê˜rê–¢V∆ñb6˜W&6RÊ∂ñÊB”“&fVFW&≈˜&Vvó7FW%ˆß6ˆ‚#†–¢óFV◊2“'6UˆfVFW&≈˜&Vvó7FW%ˆß6ˆ‚áFWáB˜"""¬6˜W&6Rê–¢V∆ñb6˜W&6RÊ∂ñÊB”“'vÜóFVÜ˜W6UˆáF÷¬#†–¢óFV◊2“'6U˜vÜóFVÜ˜W6UˆáF÷¬áFWáB˜"""¬6˜W&6Rê–¢V∆ñb6˜W&6RÊ∂ñÊB”“&f65ˆáF÷¬#†–¢óFV◊2“'6Uˆf65ˆáF÷¬áFWáB˜"""¬6˜W&6Rê–¢V∆ñb6˜W&6RÊ∂ñÊB”“'7FFUˆáF÷¬#†–¢óFV◊2“'6U˜7FFUˆáF÷¬áFWáB˜"""¬6˜W&6Rê–¢V∆ñb6˜W&6RÊ∂ñÊB”“&÷ˆf6ˆ’ˆáF÷¬#†–¢óFV◊2“'6Uˆ÷ˆf6ˆ’ˆáF÷¬áFWáB˜"""¬6˜W&6Rê–¢V∆ñb6˜W&6RÊ∂ñÊB”“&∆ñÊµˆáF÷¬#†–¢óFV◊2“'6Uˆ∆ñÊµˆáF÷¬áFWáB˜"""¬6˜W&6Rê–¢V«6S†¢óFV◊2“'6U˜'72áFWáB˜"""¬6˜W&6Rê¢ñb6˜W&6RÊ∂ñÊB”“'vÜóFVÜ˜W6UˆáF÷¬#†¢óFV◊2¬FWFñ≈˜7FG2“VÁ&ñ6Ö˜vÜóFVÜ˜W6UˆóFV◊2ÜóFV◊2¬Ê˜r¬vÜóFVÜ˜W6UˆFWFñ≈ˆ'VFvWBê¢f˜"∂Wí¬f«VRñ‚FWFñ≈˜7FG2ÊóFV◊2Çì†¢vÜóFVÜ˜W6U˜F˜F«5∂∂Wï“≥“f«VP¢&ñÁBÄ¢b'vÜóFVÜ˜W6U˜6˜W&6S◊∑6˜W&6RÊÊ÷R'“∆ó7FVC◊∂FWFñ≈˜7FG5≤v∆ó7FVBu◊“ ¢b&FWFñ≈ˆGFV◊FVC◊∂FWFñ≈˜7FG5≤vGFV◊FVBu◊“FWFñ≈˜fW&ñfñVC◊∂FWFñ≈˜7FG5≤wfW&ñfñVBu◊“ ¢b&FWFñ≈ˆfñ∆VC◊∂FWFñ≈˜7FG5≤vfñ∆VBu◊“FWFñ≈ˆFVfW'&VC◊∂FWFñ≈˜7FG5≤vFVfW'&VBu◊“ ¢ê¢6˜W&6UˆÊ˜FW2ÊVÊBÜb"“∑6˜W&6RÊÊ÷W”¢∂∆V‚ÜóFV◊2óﬁ´BŸô^…€Ç"ê¢f˜"óFV“ñ‚óFV◊3†¢vR“óFV’ˆvUˆÜ˜W'2ÜóFV“¬Ê˜rê¢ñb6˜W&6RÊ∂ñÊBñ‚≤''72"¬&6˜W'F∆ó7FVÊW""¬&∂ñÊEˆáF÷¬"¬&fVFW&≈˜&Vvó7FW%ˆß6ˆ‚"¬'vÜóFVÜ˜W6UˆáF÷¬"¬&f65ˆáF÷¬"¬'7FFUˆáF÷¬"¬&÷ˆf6ˆ’ˆáF÷¬'“ÊBvRó2ÊˆÊS†¢6ˆÁFñÁVP¢÷ÖˆvR“tÑïDTÑıU4UÙ‘ÖÙtUÙÑıU%2ñb6˜W&6RÊ∂ñÊB”“'vÜóFVÜ˜W6UˆáF÷¬"V«6R‘Öı4ıU$4UÙtUÙÑıU%0¢ñbvRó2Ê˜BÊˆÊRÊBvR‚÷ÖˆvS†¢6ˆÁFñÁVP¢6∆76ñfñVB“6∆76ñgïˆóFV“ÜóFV“ê¢ñb6∆76ñfñVC†¢VÁ7W&UˆWá∆ñÊVBÜ6∆76ñfñVBê¢6∆76ñfñVE≤&vUˆÜ˜W'2%““vP¢6ÊFñFFW2ÊVÊBÜ6∆76ñfñVBê¢ñb6˜W&6RÊ∂ñÊB”“'vÜóFVÜ˜W6UˆáF÷¬#†¢vÜóFVÜ˜W6U˜F˜F«5≤&6∆76ñfñVB%“≥“¢f˜"WáG&ˆóFV◊2¬WáG&ˆÊ˜FW2ñ‚Ü6ˆ∆∆V7E˜6V5ˆfñ∆ñÊw2ÜÊ˜rí¬ì†–¢6˜W&6UˆÊ˜FW2ÊWáFVÊBÜWáG&ˆÊ˜FW2ê–¢f˜"óFV“ñ‚WáG&ˆóFV◊3†–¢6∆76ñfñVB“6∆76ñgïˆóFV“ÜóFV“ê–¢ñb6∆76ñfñVC†–¢VÁ7W&UˆWá∆ñÊVBÜ6∆76ñfñVBê–¢6∆76ñfñVE≤&vUˆÜ˜W'2%““óFV’ˆvUˆÜ˜W'2ÜóFV“¬Ê˜rê–¢6ÊFñFFW2ÊVÊBÜ6∆76ñfñVBê–¢6˜W&6UˆÊ˜FW2ÊVÊBÄ¢"“vÜóFRÜ˜W6RFWFñ¬fW&ñfñ6Fñˆ„¢ ¢b&∆ó7FVC◊∑vÜóFVÜ˜W6U˜F˜F«5≤v∆ó7FVBu◊“GFV◊FVC◊∑vÜóFVÜ˜W6U˜F˜F«5≤vGFV◊FVBu◊“ ¢b'fW&ñfñVC◊∑vÜóFVÜ˜W6U˜F˜F«5≤wfW&ñfñVBu◊“fñ∆VC◊∑vÜóFVÜ˜W6U˜F˜F«5≤vfñ∆VBu◊“ ¢b&FVfW'&VC◊∑vÜóFVÜ˜W6U˜F˜F«5≤vFVfW'&VBu◊“6∆76ñfñVC◊∑vÜóFVÜ˜W6U˜F˜F«5≤v6∆76ñfñVBu◊“ ¢ê¢&ñÁBÄ¢'vÜóFVÜ˜W6U˜F˜F«2 ¢b&∆ó7FVC◊∑vÜóFVÜ˜W6U˜F˜F«5≤v∆ó7FVBu◊“GFV◊FVC◊∑vÜóFVÜ˜W6U˜F˜F«5≤vGFV◊FVBu◊“ ¢b'fW&ñfñVC◊∑vÜóFVÜ˜W6U˜F˜F«5≤wfW&ñfñVBu◊“fñ∆VC◊∑vÜóFVÜ˜W6U˜F˜F«5≤vfñ∆VBu◊“ ¢b&FVfW'&VC◊∑vÜóFVÜ˜W6U˜F˜F«5≤vFVfW'&VBu◊“6∆76ñfñVC◊∑vÜóFVÜ˜W6U˜F˜F«5≤v6∆76ñfñVBu◊“ ¢ê¢&WGW&‚6ÊFñFFW2¬6˜W&6UˆÊ˜FW0†–†–¶FVb&VÊFW%˜&W˜'BÜ∆W'G3¢∆ó7E∂Fñ7E“¬6˜W&6UˆÊ˜FW3¢∆ó7E∑7G%“¬Ê˜s¢GBÊFFWFñ÷Rí”‚7G#†–¢∆ñÊW2“∂b/	˘™Ç¥Ö2 	^À\+~´yŒ 	¬´:Àjû´*í…∏ŒÀôÇ+r∂Ê˜s¢Uû∏XBVﬁ…πBVN…€¬TÉ¢T“µ5G“"¬"%––¢ñbÊ˜B∆W'G3†–¢∆ñÊW2ÊWáFVÊBÖ≤.´:Àjû´*í 	^À\+~´yŒ 	¬ª8´+“ x 	Ÿô^…€Ç…xn…ÿ¬"¬""¬.Ÿô^…€Çª)N…»C¢"¬ß6˜W&6UˆÊ˜FW5≥£C“¬""¬/	˘*…∏ŒÀôÇÿ…∏∫É¢…€Nª(Ç»∫NŸhû…y»I¬∫zNÀiÃ+~∫xé xL+~ŸàN´àéŸŸ∫hB¬ªé∫Yé…y…€N»YÇ˛ŸZ…€é… Ç¬»âé´àí¬»πŒ´NŸŒ∫[¬»8é∫¬ª	N´Î¬Ÿô^ 	R…€Nª*Nÿ´é∏©B x 	Ÿô^…€éπ	é x…XÆ…Yé»´^∏∏é∏∫B‚"¬""¬.ÿäŒ…È …ké…€B…XN∏∏¬Àé´:…™í 	^À\+~´yŒ 	¬…XŒ∫kŒ…Ë^∏∏é∏∫B‚%“ê–¢&WGW&‚%∆‚"Ê¶ˆñ‚Ü∆ñÊW2í≤%∆‚ –¢f˜"ñGÇ¬∆W'Bñ‚VÁV÷W&FRÜ∆W'G2¬ì†–¢VÁ7W&UˆWá∆ñÊVBÜ∆W'Bê–¢÷F6ÜVE˜FW&◊2“6˜'FVBá∑FW&“f˜"FW&◊2ñ‚∆W'E≤&÷F6ÜVB%“Áf«VW2Çíf˜"FW&“ñ‚FW&◊7“ê–¢Fó7∆ï˜FóF∆R“∆W'BÊvWBÇ'FóF∆Uˆ∂Ú"í˜"∆W'E≤'FóF∆R%––¢∆ñÊW2ÊWáFVÊBÄ–¢∞–¢b"22∂ñGá“‚∑∂∆W'E≤vñ◊˜'FÊ6Ru◊‹+w∂∆W'E≤w7FGW2u◊’“∂Fó7∆ï˜FóF∆W“"¿–¢b"“…π 	√¢∂∆W'E≤wFóF∆Ru◊“"¿–¢b"“»8ÿ9¬ª8ŸôC¢≤r¬rÊ¶ˆñ‚Ü∆W'E≤v÷F6ÜVBu“Ê∂Wó2Çíó“»∫ŸãÇŸô^…€Çá≤r¬rÊ¶ˆñ‚Ü÷F6ÜVE˜FW&◊5≥£Ö“ó“í"¿–¢b"“…π∫ÀÇ˛ÀiŒÀ)É¢∑∂∆W'E≤w6˜W&6Ru◊’“á∂∆W'E≤v∆ñÊ≤u◊“í+r…πÀ)Œ»πŒ´∂∆W'BÊvWBÇwV&∆ó6ÜVEˆ∑7Brí˜"~Ÿô^…€Çªhé´w“+r Ÿ®¬∂Ê˜s¢TÉ¢T“µ5G“"¿–¢¶Wá∆ÊFñˆÂˆ∆ñÊW2Ü∆W'Bí¿–¢"“ hû»π¬À+Nÿ√¢…π∫ÀÇ N∫ÀÇ¬»πŒŸhû…€¬˛∫xé´	…€¬¬ŸYŒ´Z“ªé∫YéÀ+N…€Ç∏[éÀi¬¬´H∫
-ÇŸ[N…õÇÿªÀ∫L+tUDbª	é…Ÿ"¿–¢""¿–¢––¢ê–¢∆ñÊW2ÊWáFVÊBÖ≤/	˘*…∏ŒÀôÇÿ…∏∫É¢…€Nª(Ç»∫NŸhû…ÿ∫zNÀiÃ+~∫xé xL+~ŸàN´àéŸŸ∫hB¬ªé∫Yé…y…€N»YÇ˛ŸZ…€é… Ç¬»âé´àí¬»πŒ´NŸ¬ I»∫N 	Œ∫¬ª	N∏	Ài^´;¬ŸYŒ´Z“ªé∫YéÀ+N…€Ç…{´+…ÿB´ã H…ÀŒ∫¬ 	^ÀR˛´yŒ 	¬Ÿ∏Nª;N∫[¬»Jª8NŸhé»´^∏∏é∏∫B‚"¬""¬.ÿäŒ…È …ké…€B…XN∏∏¬Àé´:…™í 	^À\+~´yŒ 	¬…XŒ∫kŒ…Ë^∏∏é∏∫B‚%“ê–¢&WGW&‚%∆‚"Ê¶ˆñ‚Ü∆ñÊW2í≤%∆‚ –†–†–¶FVbw&óFUˆ˜WGWG2Ü∆W'G3¢∆ó7E∂Fñ7E“¬6˜W&6UˆÊ˜FW3¢∆ó7E∑7G%“¬Ê˜s¢GBÊFFWFñ÷Rí”‚ÊˆÊS†¢ıUEÙDï"Ê÷∂Fó"ÜWÜó7Eˆˆ≥’G'VRê¢&W˜'B“&VÊFW%˜&W˜'BÜ∆W'G2¬6˜W&6UˆÊ˜FW2¬Ê˜rê¢ÑıUEÙDï"Ú&∂á5˜ˆ∆ñ7ï˜vF6ÇÊ÷B"íÁw&óFU˜FWáBá&W˜'B¬VÊ6ˆFñÊs“'WFb”Ç"ê¢ñb∆W'G3†¢F˜“∆W'G5≥––¢VÁ7W&UˆWá∆ñÊVBáF˜ê–¢ÑıUEÙDï"Ú&∂á5˜ˆ∆ñ7ï˜vF6Öˆ∆W'E˜FóF∆RÁGáB"íÁw&óFU˜FWáBÜb$¥Ö2 	^ÀR…∏ŒÀôÉ¢∑∑F˜≤vñ◊˜'FÊ6Ru◊’“≤áF˜ÊvWBÇwFóF∆Uˆ∂Úrí˜"F˜≤wFóF∆Ru“ï≥£s◊’∆‚"¬VÊ6ˆFñÊs“'WFb”Ç"ê¢ÑıUEÙDï"Ú&∂á5˜ˆ∆ñ7ï˜vF6Öˆ∆W'BÊ÷B"íÁw&óFU˜FWáBá&W˜'B¬VÊ6ˆFñÊs“'WFb”Ç"ê¢ÑıUEÙDï"Ú&∂á5˜ˆ∆ñ7ï˜vF6Öˆ∆W'G2Êß6ˆ‚"íÁw&óFU˜FWáBÜß6ˆ‚ÊGV◊2Ü∆W'G2¬VÁ7W&Uˆ66ñì‘f«6R¬ñÊFVÁC”"í≤%∆‚"¬VÊ6ˆFñÊs“'WFb”Ç"ê¢V«6S†¢f˜"FÇñ‚Ä¢ıUEÙDï"Ú&∂á5˜ˆ∆ñ7ï˜vF6Öˆ∆W'E˜FóF∆RÁGáB"¿¢ıUEÙDï"Ú&∂á5˜ˆ∆ñ7ï˜vF6Öˆ∆W'BÊ÷B"¿¢ıUEÙDï"Ú&∂á5˜ˆ∆ñ7ï˜vF6Öˆ∆W'G2Êß6ˆ‚"¿¢T‰Dî‰uı4TTÂıDÇ¿¢ì†¢G'ì†¢FÇÁVÊ∆ñÊ≤Çê¢WÜ6WBfñ∆TÊ˜Df˜VÊDW'&˜#†¢70††¶FVbw&óFU˜VÊFñÊu˜6VV‚Ü∆W'G3¢∆ó7E∂Fñ7E“¬Ê˜s¢GBÊFFWFñ÷Rí”‚ÊˆÊS†¢ñbÊ˜B∆W'G3†¢&WGW&‡¢VÊFñÊr“∞¢&7&VFVEˆEˆ∑7B#¢Ê˜rÊó6ˆf˜&÷BáFñ÷W7V3“'6V6ˆÊG2"í¿¢'6VV‚#¢∞¢óFV’≤&fñÊvW'&ñÁB%”¢∞¢'FóF∆R#¢óFV’≤'FóF∆R%“¿¢'6˜W&6R#¢óFV’≤'6˜W&6R%“¿¢&∆ñÊ≤#¢óFV’≤&∆ñÊ≤%“¿¢&fó'7E˜6VVÂˆ∑7B#¢Ê˜rÊó6ˆf˜&÷BáFñ÷W7V3“'6V6ˆÊG2"í¿¢&ñ◊˜'FÊ6R#¢óFV’≤&ñ◊˜'FÊ6R%“¿¢–¢f˜"óFV“ñ‚∆W'G0¢“¿¢–¢T‰Dî‰uı4TTÂıDÇÁw&óFU˜FWáBÄ¢ß6ˆ‚ÊGV◊2áVÊFñÊr¬VÁ7W&Uˆ66ñì‘f«6R¬ñÊFVÁC”"¬6˜'Eˆ∂Wó3’G'VRí≤%∆‚"¿¢VÊ6ˆFñÊs“'WFb”Ç"¿¢ê††¶FVb6ÊFñFFU˜6˜W&6U˜&Ê≤ÜóFV”¢Fñ7Bí”‚ñÁC†¢6˜W&6R“7G"ÜóFV“ÊvWBÇ'6˜W&6R"í˜"""íÊ∆˜vW"Çê¢ñbóFV“ÊvWBÇ'vÜóFVÜ˜W6U˜7F˜'ïˆ∂Wí"ì†¢ñb6˜W&6R”“'vÜóFRÜ˜W6Rf7B6ÜVWG2#†¢&WGW&‚ ¢ñb6˜W&6Rñ‚∞¢'vÜóFRÜ˜W6RWÜV7WFófR˜&FW'2"¿¢'vÜóFRÜ˜W6R&W6ñFVÁFñ¬÷V÷˜&ÊF"¿¢'vÜóFRÜ˜W6R&ˆ6∆÷FñˆÁ2"¿¢'vÜóFRÜ˜W6R'&ñVfñÊw27FFV÷VÁG2"¿¢”†¢&WGW&‚¢&WGW&‚ ††¶FVbFVGWUˆ6ÊFñFFUˆfñÊvW'&ñÁG2Ü6ÊFñFFW3¢∆ó7E∂Fñ7E“í”‚∆ó7E∂Fñ7E”†¢6V∆V7FVC¢Fñ7E∑7G"¬Fñ7E““∑–¢˜&FW#¢∆ó7E∑7G%““µ–¢f˜"óFV“ñ‚6ÊFñFFW3†¢fñÊvW'&ñÁB“7G"ÜóFV“ÊvWBÇ&fñÊvW'&ñÁB"í˜"""íÁ7G&óÇê¢∂Wí“fñÊvW'&ñÁB˜"Ü6Ü∆ñ"Á6Ü#SbÄ¢b'∂óFV“ÊvWBÇw6˜W&6Rró◊«∂óFV“ÊvWBÇwFóF∆Rró◊«∂óFV“ÊvWBÇv∆ñÊ≤ró“"ÊVÊ6ˆFRÇ'WFb”Ç"ê¢íÊÜWÜFñvW7BÇï≥£e–¢ñb∂WíÊ˜Bñ‚6V∆V7FVC†¢6V∆V7FVE∂∂Wï““óFV–¢˜&FW"ÊVÊBÜ∂Wíê¢6ˆÁFñÁVP¢7W'&VÁB“6V∆V7FVE∂∂Wï–¢ñb6ÊFñFFU˜6˜W&6U˜&Ê≤ÜóFV“í¬6ÊFñFFU˜6˜W&6U˜&Ê≤Ü7W'&VÁBì†¢6V∆V7FVE∂∂Wï““óFV–¢&WGW&‚∑6V∆V7FVE∂∂Wï“f˜"∂Wíñ‚˜&FW%–††¶FVb÷ñ‚Çí”‚ñÁC†¢Ê˜r“Ê˜uˆ∑7BÇê¢6VV‚“∆ˆE˜6VV‚Çê¢6VVÂˆ÷“6VV‚Á6WFFVfV«BÇ'6VV‚"¬∑“ê¢6ÊFñFFW2¬6˜W&6UˆÊ˜FW2“6ˆ∆∆V7Eˆ6ÊFñFFW2ÜÊ˜rê¢6ÊFñFFW2“FVGWUˆ6ÊFñFFUˆfñÊvW'&ñÁG2Ü6ÊFñFFW2ê¢ÊWuˆ∆W'G2“µ–¢6V∆V7FVEˆfñÊvW'&ñÁG3¢6WE∑7G%““6WBÇê¢f˜"óFV“ñ‚6˜'FVBÜ6ÊFñFFW2¬∂Wì÷∆÷&FÉ¢áÖ≤&ñ◊˜'FÊ6R%““.»8"¬ÇÊvWBÇ&vUˆÜ˜W'2"í˜"ììííì†¢ñbÄ¢óFV’≤&ñ◊˜'FÊ6R%“”“.ŸYÇ ¢˜"óFV’≤&fñÊvW'&ñÁB%“ñ‚6VVÂˆ÷ ¢˜"óFV’≤&fñÊvW'&ñÁB%“ñ‚6V∆V7FVEˆfñÊvW'&ñÁG0¢ì†¢6ˆÁFñÁVP¢ÊWuˆ∆W'G2ÊVÊBÜóFV“ê¢6V∆V7FVEˆfñÊvW'&ñÁG2ÊFBÜóFV’≤&fñÊvW'&ñÁB%“ê¢ñb∆V‚ÜÊWuˆ∆W'G2í„“‘ÖÙƒU%E3†¢'&V∞¢w&óFUˆ˜WGWG2ÜÊWuˆ∆W'G2¬6˜W&6UˆÊ˜FW2¬Ê˜rê¢w&óFU˜VÊFñÊu˜6VV‚ÜÊWuˆ∆W'G2¬Ê˜rê¢vÜóFVÜ˜W6Uˆ6ÊFñFFW2“7V“Ä¢7G"ÜóFV“ÊvWBÇ'6˜W&6R"í˜"""íÊ∆˜vW"ÇíÁ7F'G7vóFÇÇ'vÜóFRÜ˜W6R"ê¢f˜"óFV“ñ‚6ÊFñFFW0¢ê¢vÜóFVÜ˜W6UˆÊWr“7V“Ä¢7G"ÜóFV“ÊvWBÇ'6˜W&6R"í˜"""íÊ∆˜vW"ÇíÁ7F'G7vóFÇÇ'vÜóFRÜ˜W6R"ê¢f˜"óFV“ñ‚ÊWuˆ∆W'G0¢ê¢vÜóFVÜ˜W6U˜6VVÂˆfñ«FW&VB“7V“Ä¢7G"ÜóFV“ÊvWBÇ'6˜W&6R"í˜"""íÊ∆˜vW"ÇíÁ7F'G7vóFÇÇ'vÜóFRÜ˜W6R"ê¢ÊBóFV“ÊvWBÇ&fñÊvW'&ñÁB"íñ‚6VVÂˆ÷ ¢f˜"óFV“ñ‚6ÊFñFFW0¢ê¢&ñÁBÄ¢b&6ÊFñFFW3◊∂∆V‚Ü6ÊFñFFW2ó“ÊWuˆ∆W'G3◊∂∆V‚ÜÊWuˆ∆W'G2ó“ ¢b'vÜóFVÜ˜W6Uˆ6ÊFñFFW3◊∑vÜóFVÜ˜W6Uˆ6ÊFñFFW7“vÜóFVÜ˜W6UˆÊWs◊∑vÜóFVÜ˜W6UˆÊWw“ ¢b'vÜóFVÜ˜W6U˜6VVÂˆfñ«FW&VC◊∑vÜóFVÜ˜W6U˜6VVÂˆfñ«FW&VG“6VVÂ˜7FFS◊VÊFñÊuˆFV∆ófW'í ¢ê¢&WGW&‚ †–†–¶ñbıˆÊ÷UıÚ”“%ıˆ÷ñÂıÚ#†–¢&ó6R7ó7FV‘WÜóBÜ÷ñ‚Çíê–
+class Source:
+    name: str
+    url: str
+    kind: str = "rss"
+
+
+SOURCES = [
+    Source(
+        "China MOFCOM announcements",
+        f"https://www.mofcom.gov.cn/zcfb/blgg/gg/{MOFCOM_YEAR}/index.html",
+        "mofcom_html",
+    ),
+    Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),
+    Source("Federal Register chips export", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=semiconductor+export+controls+final+rule"),
+    Source("Federal Register tariffs", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=tariff+section+301+final+rule"),
+    Source("Federal Register Commerce national security", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=commerce+national+security+import+export+controls+tariff+semiconductor+robot+inverter"),
+    Source("Federal Register DOE FERC NRC power", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=doe+ferc+nrc+power+grid+nuclear+data+center+transformer+reactor+loan"),
+    Source("Federal Register DOE restrictions loans", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=department+of+energy+loan+guarantee+funding+opportunity+restriction+ban+efficiency+standard+critical+materials"),
+    Source("Federal Register agriculture supply", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=fertilizer+phosphate+agriculture+biofuel+feedstock+food+supply+tariff+emergency"),
+    Source("Federal Register FCC", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bagencies%5D%5B%5D=federal-communications-commission&order=newest&per_page=20", "federal_register_json"),
+    Source("Federal Register presidential documents", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Btype%5D%5B%5D=PRESDOCU&order=newest&per_page=20", "federal_register_json"),
+    Source("White House executive orders", "https://www.whitehouse.gov/presidential-actions/executive-orders/", "whitehouse_html"),
+    Source("White House presidential memoranda", "https://www.whitehouse.gov/presidential-actions/presidential-memoranda/", "whitehouse_html"),
+    Source("White House proclamations", "https://www.whitehouse.gov/presidential-actions/proclamations/", "whitehouse_html"),
+    Source("White House fact sheets", "https://www.whitehouse.gov/fact-sheets/", "whitehouse_html"),
+    Source("White House remarks", "https://www.whitehouse.gov/remarks/", "whitehouse_html"),
+    Source("White House videos", "https://www.whitehouse.gov/videos/", "whitehouse_html"),
+    Source("White House briefings statements", "https://www.whitehouse.gov/briefings-statements/", "whitehouse_html"),
+    Source("State Department office spokesperson", "https://www.state.gov/releases/office-of-the-spokesperson/", "state_html"),
+    Source("State Department press releases", "https://www.state.gov/press-releases/", "state_html"),
+    Source("FCC open meeting", "https://www.fcc.gov/openmeeting", "fcc_html"),
+    Source("FCC open commission meetings", "https://www.fcc.gov/news-events/events/open-commission-meetings", "fcc_html"),
+    Source("FCC items on circulation", "https://www.fcc.gov/items-on-circulation", "fcc_html"),
+    Source("FCC public notices", "https://www.fcc.gov/news-events/public-notices", "fcc_html"),
+    Source("FCC daily digest", "https://www.fcc.gov/news-events/daily-digest", "fcc_html"),
+    Source("FCC news releases", "https://www.fcc.gov/news-events/news-releases", "fcc_html"),
+    Source("FERC news", "https://www.ferc.gov/news-events/news/rss.xml"),
+    Source("DOE news", "https://www.energy.gov/rss.xml"),
+    Source("USTR press releases", "https://ustr.gov/about/policy-offices/press-office/press-releases.xml"),
+    Source("Commerce news", "https://www.commerce.gov/news/rss.xml"),
+    Source("BIS news", "https://www.bis.doc.gov/index.php/newsroom/news-releases?format=feed&type=rss"),
+    Source("OFAC recent actions", "https://ofac.treasury.gov/recent-actions/rss.xml"),
+    Source("SEC press releases", "https://www.sec.gov/news/pressreleases.rss"),
+    Source("FTC press releases", "https://www.ftc.gov/news-events/news/press-releases/rss.xml"),
+    Source("FDA press announcements", "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-announcements/rss.xml"),
+    Source("BOEM news", "https://www.boem.gov/webteam/rss/boem-rss.xml"),
+    Source("BSEE news page", "https://www.bsee.gov/newsroom/news-items", "link_html"),
+    Source("BSEE notice to lessees page", "https://www.bsee.gov/protection/notices-and-announcements-to-lessees", "link_html"),
+    Source("CourtListener wind/order search", "https://www.courtlistener.com/api/rest/v4/search/?q=wind%20permit%20appeal%20injunction%20order&type=o&order_by=score%20desc", "courtlistener"),
+    Source("CourtListener BOEM/BSEE wind search", "https://www.courtlistener.com/api/rest/v4/search/?q=BOEM%20BSEE%20offshore%20wind%20permit%20lease%20order&type=o&order_by=score%20desc", "courtlistener"),
+    Source("CourtListener export controls search", "https://www.courtlistener.com/api/rest/v4/search/?q=export%20controls%20semiconductor%20injunction%20order&type=o&order_by=score%20desc", "courtlistener"),
+]
+
+
+def now_kst() -> dt.datetime:
+    return dt.datetime.now(tz=KST)
+
+
+def clean_text(value: str | None) -> str:
+    if not value:
+        return ""
+    value = re.sub(r"<[^>]+>", " ", value)
+    value = html.unescape(value)
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def keyword_in_text(text: str, keyword: str) -> bool:
+    keyword = keyword.lower()
+    if re.fullmatch(r"[a-z0-9]+", keyword):
+        return re.search(rf"\b{re.escape(keyword)}\b", text) is not None
+    return keyword in text
+
+
+def fetch_text(url: str, timeout: int = 8) -> tuple[str | None, str | None]:
+    return shared_fetch_text(
+        url,
+        SEC_USER_AGENT,
+        timeout=timeout,
+        attempts=1,
+        accept="application/rss+xml, application/json, text/xml, text/html;q=0.8, */*;q=0.5",
+    )
+
+
+def parse_date(value: str | None) -> dt.datetime | None:
+    if not value:
+        return None
+    value = value.strip()
+    if re.fullmatch(r"\d{8}", value):
+        return dt.datetime.strptime(value, "%Y%m%d").replace(tzinfo=KST)
+    try:
+        parsed = email.utils.parsedate_to_datetime(value)
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=UTC)
+        return parsed.astimezone(KST)
+    except Exception:
+        pass
+    for fmt in ("%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%d"):
+        try:
+            parsed = dt.datetime.strptime(value[:25], fmt)
+            if parsed.tzinfo is None:
+                parsed = parsed.replace(tzinfo=UTC)
+            return parsed.astimezone(KST)
+        except Exception:
+            continue
+    for fmt in ("%a, %b %d %Y", "%a, %B %d %Y", "%b %d %Y", "%B %d %Y", "%b %d, %Y", "%B %d, %Y", "%m/%d/%Y", "%m-%d-%Y"):
+        try:
+            parsed = dt.datetime.strptime(value, fmt).replace(tzinfo=UTC)
+            return parsed.astimezone(KST)
+        except Exception:
+            continue
+    return None
+
+
+def parse_rss(text: str, source: Source) -> list[dict]:
+    try:
+        root = ET.fromstring(text)
+    except ET.ParseError:
+        return []
+    items: list[dict] = []
+    for item in root.findall(".//item"):
+        published = parse_date(item.findtext("pubDate") or item.findtext("date"))
+        items.append({"source": source.name, "title": clean_text(item.findtext("title")), "link": clean_text(item.findtext("link")) or source.url, "summary": clean_text(item.findtext("description")), "published_kst": published.isoformat() if published else ""})
+    if items:
+        return items
+    ns = {"atom": "http://www.w3.org/2005/Atom"}
+    for entry in root.findall(".//atom:entry", ns):
+        link = source.url
+        link_node = entry.find("atom:link", ns)
+        if link_node is not None and link_node.attrib.get("href"):
+            link = link_node.attrib["href"]
+        published = parse_date(entry.findtext("atom:updated", namespaces=ns) or entry.findtext("atom:published", namespaces=ns))
+        items.append({"source": source.name, "title": clean_text(entry.findtext("atom:title", namespaces=ns)), "link": link, "summary": clean_text(entry.findtext("atom:summary", namespaces=ns) or entry.findtext("atom:content", namespaces=ns)), "published_kst": published.isoformat() if published else ""})
+    return items
+
+
+def parse_courtlistener(text: str, source: Source) -> list[dict]:
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        return []
+    items = []
+    for row in (data.get("results") or [])[:10]:
+        absolute_url = row.get("absolute_url") or ""
+        published = parse_date(row.get("dateFiled") or row.get("dateArgued") or row.get("dateReargued"))
+        items.append({"source": source.name, "title": clean_text(row.get("caseName") or row.get("caseNameFull") or "CourtListener item"), "link": urllib.parse.urljoin("https://www.courtlistener.com", absolute_url) if absolute_url else source.url, "summary": clean_text(row.get("snippet") or row.get("plain_text") or ""), "published_kst": published.isoformat() if published else ""})
+    return items
+
+
+def parse_federal_register_json(text: str, source: Source) -> list[dict]:
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        return []
+    items = []
+    for row in (data.get("results") or [])[:20]:
+        title = clean_text(str(row.get("title") or row.get("citation") or "Federal Register presidential document"))
+        link = clean_text(str(row.get("html_url") or row.get("pdf_url") or source.url))
+        published = parse_date(str(row.get("publication_date") or row.get("signing_date") or ""))
+        doc_type = clean_text(str(row.get("type") or ""))
+        pres_type = clean_text(str(row.get("presidential_document_type") or ""))
+        doc_number = clean_text(str(row.get("document_number") or ""))
+        abstract = clean_text(str(row.get("abstract") or row.get("excerpt") or ""))
+        meta = "; ".join(part for part in (doc_type, pres_type, doc_number) if part)
+        summary = clean_text(f"{meta}. {abstract}") or "Federal Register presidential document"
+        items.append({"source": source.name, "title": title, "link": link, "summary": summary, "published_kst": published.isoformat() if published else ""})
+    return items
+
+
+def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
+    link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
+    policy_terms = {
+        kw.lower()
+        for group in list(STAGE_KEYWORDS.values()) + list(SECTOR_KEYWORDS.values())
+        for kw in group
+    } | {
+        "ai", "artificial intelligence", "customs", "critical", "infrastructure", "grid", "energy",
+        "supply chain", "federal lands", "commercial fishing", "financial system", "regulatory",
+        "national emergency", "defense production act", "national security", "sanctions", "tariff",
+    }
+    if "executive orders" in source.name:
+        doc_type = "Executive Order"
+    elif "memoranda" in source.name:
+        doc_type = "Presidential Memorandum"
+    elif "proclamations" in source.name:
+        doc_type = "Proclamation"
+    elif "fact sheets" in source.name:
+        doc_type = "Fact Sheet"
+    elif "remarks" in source.name or "videos" in source.name:
+        doc_type = "Trump Remarks"
+    elif "briefings" in source.name:
+        doc_type = "White House Statement"
+    else:
+        doc_type = "Presidential Action"
+    if "fact sheets" in source.name:
+        required_path = "/fact-sheets/"
+    elif "remarks" in source.name or "videos" in source.name:
+        required_path = ("/remarks/", "/videos/")
+    elif "briefings" in source.name:
+        required_path = "/briefings-statements/"
+    else:
+        required_path = "/presidential-actions/"
+    deduped: dict[str, dict] = {}
+    for match in link_pattern.finditer(text):
+        title = clean_text(match.group("label"))
+        title_lower = title.lower()
+        if (
+            len(title) < 8
+            or title_lower in PRESIDENTIAL_ACTION_EXACT_EXCLUDE
+            or any(term in title_lower for term in PRESIDENTIAL_ACTION_STATIC_EXCLUDE)
+        ):
+            continue
+        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
+        link_lower = link.lower()
+        required_paths = required_path if isinstance(required_path, tuple) else (required_path,)
+        if not any(path in link_lower for path in required_paths) or link.rstrip("/") == source.url.rstrip("/"):
+            continue
+        tail = clean_text(text[match.end(): match.end() + 700])
+        date_match = re.search(
+            r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December|"
+            r"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+20\d{2}\b",
+            tail,
+            re.I,
+        )
+        published = parse_date(date_match.group(0)) if date_match else None
+        if not published:
+            continue
+        published = published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0)
+        haystack = f"{title_lower} {link_lower}"
+        if doc_type == "Proclamation" and not any(term in haystack for term in policy_terms):
+            continue
+        summary = f"White House {doc_type} listing: {title}"
+        deduped[link] = {
+            "source": source.name,
+            "title": title,
+            "link": link,
+            "summary": summary,
+            "published_kst": published.isoformat(),
+            "document_type": doc_type,
+            "body_verified": False,
+        }
+    return list(deduped.values())[:20]
+
+
+def parse_state_html(text: str, source: Source) -> list[dict]:
+    link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
+    date_pattern = re.compile(
+        r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December|"
+        r"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+20\d{2}\b",
+        re.I,
+    )
+    deduped: dict[str, dict] = {}
+    for match in link_pattern.finditer(text):
+        title = clean_text(match.group("label"))
+        title_lower = title.lower()
+        if len(title) < 12:
+            continue
+        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
+        link_lower = link.lower()
+        if "state.gov" not in link_lower:
+            continue
+        if not any(path in link_lower for path in ("/releases/", "/press-releases/")):
+            continue
+        tail = clean_text(text[match.end(): match.end() + 900])
+        haystack = f"{title_lower} {link_lower} {tail.lower()}"
+        if not any(keyword_in_text(haystack, term) for term in STAGE_KEYWORDS["state_smr_moc_policy"]):
+            continue
+        date_match = date_pattern.search(f"{title} {tail}")
+        published = parse_date(date_match.group(0)) if date_match else None
+        if not published:
+            month_match = re.search(r"/(20\d{2})/(\d{2})/", link_lower)
+            if month_match:
+                year, month = month_match.groups()
+                current = now_kst()
+                if int(year) == current.year and int(month) == current.month:
+                    published = current
+                else:
+                    published = dt.datetime(int(year), int(month), 1, tzinfo=KST)
+        summary = clean_text(f"{source.name} official page link: {title}. {tail[:260]}")
+        deduped[link] = {
+            "source": source.name,
+            "title": title,
+            "link": link,
+            "summary": summary,
+            "published_kst": published.isoformat() if published else "",
+        }
+    return list(deduped.values())[:20]
+
+
+def parse_fcc_html(text: str, source: Source) -> list[dict]:
+    link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
+    date_pattern = re.compile(
+        r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December|"
+        r"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},\s+20\d{2}\b"
+        r"|\b\d{1,2}[/-]\d{1,2}[/-]20\d{2}\b",
+        re.I,
+    )
+    deduped: dict[str, dict] = {}
+    for match in link_pattern.finditer(text):
+        title = clean_text(match.group("label"))
+        title_lower = title.lower()
+        if (
+            len(title) < 8
+            or title_lower in FCC_EXACT_EXCLUDE
+            or any(term in title_lower for term in FCC_STATIC_EXCLUDE)
+        ):
+            continue
+        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
+        link_lower = link.lower()
+        if "fcc.gov" not in link_lower:
+            continue
+        if any(skip in link_lower for skip in ("/about/", "/consumer-governmental-affairs/", "/licensing-databases/")):
+            continue
+        tail = clean_text(text[match.end(): match.end() + 900])
+        date_match = date_pattern.search(f"{title} {tail}")
+        published = parse_date(date_match.group(0)) if date_match else None
+        if not published:
+            continue
+        published = published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0)
+        haystack = f"{title_lower} {link_lower} {tail.lower()} {source.name.lower()}"
+        if not any(keyword_in_text(haystack, term) for term in FCC_STRONG_TERMS):
+            continue
+        summary_tail = tail[:260]
+        summary = clean_text(f"{source.name} official page link: {title}. {summary_tail}")
+        deduped[link] = {"source": source.name, "title": title, "link": link, "summary": summary, "published_kst": published.isoformat()}
+    return list(deduped.values())[:20]
+
+
+def parse_link_html(text: str, source: Source) -> list[dict]:
+    link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
+    deduped: dict[str, dict] = {}
+    for match in link_pattern.finditer(text):
+        title = clean_text(match.group("label"))
+        title_lower = title.lower()
+        if len(title) < 8:
+            continue
+        if source.name.startswith("BSEE"):
+            if any(term in title_lower for term in BSEE_STATIC_EXCLUDE):
+                continue
+            if not any(term in title_lower for term in BSEE_STRONG_TERMS):
+                continue
+        else:
+            keyword_pool = [kw.lower() for group in list(STAGE_KEYWORDS.values()) + list(SECTOR_KEYWORDS.values()) for kw in group]
+            if not any(keyword in title_lower for keyword in keyword_pool):
+                continue
+        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
+        deduped[link] = {"source": source.name, "title": title, "link": link, "summary": f"{source.name} official page link: {title}", "published_kst": ""}
+    return list(deduped.values())[:20]
+
+
+MOFCOM_ACTION_TERMS = [
+    "Âá∫Âè£ÁÆ°Âà∂", "ÊöÇÂÅúÂá∫Âè£", "ÂÅúÊ≠¢Âá∫Âè£", "Á¶ÅÊ≠¢Âá∫Âè£", "Âá∫Âè£Á¶Å‰ª§", "Âá∫Âè£ËÆ∏ÂèØ",
+    "‰∏§Áî®Áâ©È°π", "ÂÖ≥Á®é", "ÂèçÂÄæÈîÄ", "ÂèçË°•Ë¥¥", "‰∏çÂèØÈù†ÂÆû‰ΩìÊ∏ÖÂçï", "ÁÆ°ÊéßÂêçÂçï",
+    "Ë¥∏ÊòìÂ£ÅÂûíË∞ÉÊü•", "‰øùÈöúÊé™ÊñΩ", "Âà∂Ë£Å", "Á¶Å‰ª§",
+]
+MOFCOM_BROAD_CONTROL_TERMS = [
+    "Âá∫Âè£ÁÆ°Âà∂", "ÊöÇÂÅúÂá∫Âè£", "ÂÅúÊ≠¢Âá∫Âè£", "Á¶ÅÊ≠¢Âá∫Âè£", "Âá∫Âè£Á¶Å‰ª§", "Âá∫Âè£ËÆ∏ÂèØ",
+    "‰∏§Áî®Áâ©È°π", "‰∏çÂèØÈù†ÂÆû‰ΩìÊ∏ÖÂçï", "ÁÆ°ÊéßÂêçÂçï", "Âà∂Ë£Å", "Á¶Å‰ª§",
+]
+MOFCOM_TRADE_REMEDY_TERMS = ["ÂÖ≥Á®é", "ÂèçÂÄæÈîÄ", "ÂèçË°•Ë¥¥", "‰øùÈöúÊé™ÊñΩ", "Ë¥∏ÊòìÂ£ÅÂûíË∞ÉÊü•"]
+MOFCOM_KOREA_OR_STRATEGIC_TERMS = [
+    "Èü©ÂõΩ", "Èü©ÂõΩ‰∫ß", "Ê∞¶", "Á®ÄÂúü", "Èïì", "Èîó", "Áü≥Â¢®", "Èîë", "Èí®", "Èìü", "Èíº",
+    "Ëê§Áü≥", "Á¢≥ÂåñÁ°Ö", "ÂçäÂØº‰Ωì", "ËäØÁâá", "ÁîµÊ±†", "Ê≠£ÊûÅ", "Ë¥üÊûÅ", "Èí¢ÈìÅ", "ÂèòÂéãÂô®",
+    "Êú∫Âô®‰∫∫", "Êó†‰∫∫Êú∫", "ÂÖâ‰ºè", "Â§™Èò≥ËÉΩ", "Â§©ÁÑ∂Ê∞î", "Áü≥Ê≤π",
+]
+
+
+def parse_mofcom_html(text: str, source: Source) -> list[dict]:
+    """Parse material trade-control announcements from the official MOFCOM index."""
+    link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
+    deduped: dict[str, dict] = {}
+    for match in link_pattern.finditer(text):
+        title = clean_text(match.group("label"))
+        export_action_phrase = "Âá∫Âè£" in title and any(term in title for term in ["ÁÆ°Âà∂", "ÊöÇÂÅú", "ÂÅúÊ≠¢", "Á¶ÅÊ≠¢", "ËÆ∏ÂèØ", "Á¶Å‰ª§"])
+        if len(title) < 8 or not (any(term in title for term in MOFCOM_ACTION_TERMS) or export_action_phrase):
+            continue
+        broad_control = any(term in title for term in MOFCOM_BROAD_CONTROL_TERMS) or export_action_phrase
+        material_trade_remedy = (
+            any(term in title for term in MOFCOM_TRADE_REMEDY_TERMS)
+            and any(term in title for term in MOFCOM_KOREA_OR_STRATEGIC_TERMS)
+        )
+        if not broad_control and not material_trade_remedy:
+            continue
+        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
+        link_lower = link.lower()
+        if "mofcom.gov.cn" not in link_lower or "/art/" not in link_lower:
+            continue
+        tail = clean_text(text[match.end(): match.end() + 260])
+        date_match = re.search(r"\b20\d{2}-\d{2}-\d{2}\b", tail)
+        published = parse_date(date_match.group(0)) if date_match else None
+        if not published:
+            continue
+        summary = clean_text(f"‰∏≠ÂõΩÂïÜÂä°ÈÉ®Ê≠£ÂºèÂÖ¨Âëä: {title}")
+        deduped[link] = {
+            "source": source.name,
+            "title": title,
+            "link": link,
+            "summary": summary,
+            "published_kst": published.astimezone(KST).replace(hour=0, minute=0, second=0, microsecond=0).isoformat(),
+        }
+    return list(deduped.values())[:30]
+
+
+def parse_kind_html(text: str, source: Source, now: dt.datetime) -> list[dict]:
+    clean = clean_text(text)
+    if "Ïò§ÎäòÏùòÍ≥µÏãú" not in clean and "Disclosure" not in clean:
+        return []
+    row_pattern = re.compile(r"(?P<date>\d{2}\.\d{2})\s*\([^)]+\)\s*(?P<time>\d{2}:\d{2}).{0,120}?(?P<report>Îã®ÏùºÌåêÎß§|Í≥µÍ∏âÍ≥ÑÏïΩ|Ïú†ÏÉÅÏ¶ùÏûê|Ï†ÑÌôòÏÇ¨Ï±Ñ|ÏûêÍ∏∞Ï£ºÏãù|Ìï©Î≥ë|ÏµúÎåÄÏ£ºÏ£º|Ìà¨ÏûêÌåêÎã®|ÏÜåÏÜ°).{0,120}?", re.S)
+    items = []
+    for match in row_pattern.finditer(clean):
+        month, day = match.group("date").split(".")
+        hour, minute = match.group("time").split(":")
+        published = now.replace(month=int(month), day=int(day), hour=int(hour), minute=int(minute), second=0, microsecond=0)
+        title = clean_text(match.group(0))[:160]
+        items.append({"source": source.name, "title": title, "link": source.url, "summary": f"KRX KIND disclosure candidate: {title}", "published_kst": published.isoformat()})
+    return items[:20]
+
+
+def item_age_hours(item: dict, now: dt.datetime) -> float | None:
+    value = item.get("published_kst")
+    if not value:
+        return None
+    try:
+        published = dt.datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    return (now - published).total_seconds() / 3600
+
+
+def whitehouse_story_key(item: dict) -> str:
+    text = clean_text(
+        " ".join(
+            str(item.get(key) or "")
+            for key in ("title", "source_title", "source_abstract", "source_body")
+        )
+    ).lower()
+    if "defense supply chain" in text and "critical material" in text:
+        return "defense-critical-materials"
+    if (
+        "canada" in text
+        and "section 338" in text
+        and ("additional tariff" in text or "additional duties" in text)
+    ):
+        return "canada-section-338-tariffs"
+    if "jordan" in text and (
+        "trade deal with jordan" in text
+        or "reciprocal trade" in text
+    ):
+        return "jordan-reciprocal-trade"
+    if "imports of aluminum" in text or "primary aluminum" in text:
+        return "aluminum-section-232-onshoring"
+    if "commercial aircraft" in text and "jet engine" in text:
+        return "commercial-aircraft-imports"
+    slug = urllib.parse.urlparse(str(item.get("link") or "")).path.rstrip("/").rsplit("/", 1)[-1]
+    slug = re.sub(r"^(?:fact-sheet-)?president-donald-j-trump-", "", slug)
+    return slug or hashlib.sha256(text.encode("utf-8")).hexdigest()[:20]
+
+
+def should_fetch_whitehouse_detail(item: dict) -> bool:
+    doc_type = str(item.get("document_type") or "")
+    title = str(item.get("title") or "").lower()
+    if doc_type == "Trump Remarks":
+        return any(keyword_in_text(title, term) for term in TRUMP_MARKET_MOVING_TERMS)
+    return doc_type in {
+        "Executive Order",
+        "Presidential Memorandum",
+        "Proclamation",
+        "Fact Sheet",
+        "White House Statement",
+    }
+
+
+def enrich_whitehouse_items(
+    items: list[dict],
+    now: dt.datetime,
+    detail_budget: dict,
+) -> tuple[list[dict], dict[str, int]]:
+    stats = {"listed": len(items), "attempted": 0, "verified": 0, "failed": 0, "deferred": 0}
+    enriched: list[dict] = []
+    for raw in items:
+        item = dict(raw)
+        age = item_age_hours(item, now)
+        if age is None or age > WHITEHOUSE_MAX_AGE_HOURS or not should_fetch_whitehouse_detail(item):
+            stats["deferred"] += 1
+            enriched.append(item)
+            continue
+        source_name = str(item.get("source") or "White House")
+        per_source = detail_budget.setdefault("by_source", {})
+        if (
+            int(detail_budget.get("total", 0)) >= WHITEHOUSE_DETAIL_LIMIT
+            or int(per_source.get(source_name, 0)) >= WHITEHOUSE_DETAIL_PER_SOURCE
+        ):
+            stats["deferred"] += 1
+            enriched.append(item)
+            continue
+
+        detail_budget["total"] = int(detail_budget.get("total", 0)) + 1
+        per_source[source_name] = int(per_source.get(source_name, 0)) + 1
+        stats["attempted"] += 1
+        detail_html, detail_error = fetch_text(str(item.get("link") or ""), timeout=16)
+        if detail_error or not detail_html:
+            item["detail_error"] = detail_error or "empty detail response"
+            stats["failed"] += 1
+            enriched.append(item)
+            continue
+
+        detail = extract_article_detail(detail_html, str(item.get("title") or ""))
+        if not detail.get("body_verified"):
+            item["detail_error"] = (
+                "title/body verification failed "
+                f"title_aligned={detail.get('title_aligned')} body_chars={len(str(detail.get('body') or ''))}"
+            )
+            stats["failed"] += 1
+            enriched.append(item)
+            continue
+
+        item.update(
+            {
+                "source_title": detail.get("title") or item.get("title"),
+                "source_abstract": detail.get("abstract") or "",
+                "source_body": detail.get("body") or "",
+                "summary": clean_text(
+                    f"{detail.get('abstract') or ''} {str(detail.get('body') or '')[:24000]}"
+                ),
+                "published_kst": detail.get("published_kst") or item.get("published_kst"),
+                "body_verified": True,
+            }
+        )
+        item["whitehouse_story_key"] = whitehouse_story_key(item)
+        stats["verified"] += 1
+        enriched.append(item)
+    return enriched, stats
+
+
+def parse_sec_submissions(text: str, ticker: str, cik: str) -> list[dict]:
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        return []
+    company_name = clean_text(data.get("name") or ticker)
+    recent = data.get("filings", {}).get("recent", {})
+    forms = recent.get("form") or []
+    dates = recent.get("filingDate") or []
+    accessions = recent.get("accessionNumber") or []
+    docs = recent.get("primaryDocument") or []
+    descriptions = recent.get("primaryDocDescription") or []
+    items = []
+    for idx in range(min(len(forms), len(dates), len(accessions), len(docs))):
+        form = str(forms[idx]).strip()
+        if form not in SEC_WATCH_FORMS:
+            continue
+        accession = str(accessions[idx]).strip()
+        doc = str(docs[idx]).strip()
+        accession_path = accession.replace("-", "")
+        description = clean_text(descriptions[idx] if idx < len(descriptions) else "")
+        published = parse_date(str(dates[idx]))
+        items.append({"source": f"SEC EDGAR {ticker}", "title": f"{ticker} {company_name} filed {form}{': ' + description if description else ''}", "link": f"https://www.sec.gov/Archives/edgar/data/{int(cik)}/{accession_path}/{doc}", "summary": f"SEC EDGAR form {form}; accession {accession}; primary document {doc}", "published_kst": published.isoformat() if published else ""})
+    return items[:10]
+
+
+def collect_sec_filings(now: dt.datetime) -> tuple[list[dict], list[str]]:
+    items: list[dict] = []
+    notes: list[str] = []
+    for ticker, cik in SEC_COMPANY_WATCHLIST.items():
+        text, error = fetch_text(f"https://data.sec.gov/submissions/CIK{cik}.json")
+        if error:
+            notes.append(f"- SEC EDGAR {ticker}: ÌôïÏù∏ Î∂àÍ∞Ä ({error})")
+            continue
+        parsed = parse_sec_submissions(text or "", ticker, cik)
+        notes.append(f"- SEC EDGAR {ticker}: {len(parsed)}Í±¥ ÌôïÏù∏")
+        for item in parsed:
+            age = item_age_hours(item, now)
+            if age is not None and age <= 96:
+                items.append(item)
+    return items, notes
+
+
+def classify_item(item: dict) -> dict | None:
+    haystack = " ".join(
+        str(item.get(key) or "")
+        for key in ("title", "source_title", "source_abstract", "summary", "source_body")
+    ).lower()
+    source_name = item.get("source", "")
+    source_lower = source_name.lower()
+    link_lower = str(item.get("link") or "").lower()
+    is_whitehouse_source = source_lower.startswith("white house") or "whitehouse.gov/" in link_lower
+    if is_whitehouse_source and not item.get("body_verified"):
+        return None
+    is_whitehouse_remark_or_video = (
+        source_lower in {"white house remarks", "white house videos"}
+        or "whitehouse.gov/remarks/" in link_lower
+        or "whitehouse.gov/videos/" in link_lower
+    )
+    if is_whitehouse_remark_or_video and not any(keyword_in_text(haystack, term) for term in TRUMP_OFFICIAL_REMARK_STRONG_TERMS):
+        return None
+    matched = {bucket: [kw for kw in keywords if keyword_in_text(haystack, kw)] for bucket, keywords in STAGE_KEYWORDS.items()}
+    if "fda_decision" in matched and matched["fda_decision"] and "FDA" not in item.get("source", "") and "fda" not in haystack:
+        matched["fda_decision"] = []
+    is_fcc_source = source_name.startswith("FCC") or source_name == "Federal Register FCC"
+    # "national security" appears in White House memoranda frequently. It is
+    # not an FCC signal unless the primary source itself is the FCC.
+    if not is_fcc_source:
+        matched["fcc_decision_notice"] = []
+    matched = {bucket: kws for bucket, kws in matched.items() if kws}
+    if is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_STRONG_TERMS):
+        matched.setdefault("fcc_decision_notice", ["fcc official decision/notice source"])
+    if not matched:
+        return None
+    stage_score = sum(len(v) for v in matched.values())
+    has_major_filing = any(keyword_in_text(haystack, keyword) for keyword in MAJOR_FILING_KEYWORDS)
+    is_fcc_admin_reporting = is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_ADMIN_REPORTING_TERMS)
+    if is_fcc_admin_reporting:
+        importance = "Ï§ë"
+    elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "china_trade_controls", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
+        importance = "ÏÉÅ"
+    elif "agriculture_supply_policy" in matched:
+        importance = "Ï§ë"
+    elif "company_filing" in matched and has_major_filing:
+        importance = "Ï§ë"
+    elif stage_score >= 3:
+        importance = "Ï§ë"
+    else:
+        importance = "Ìïò"
+    sectors = [sector for sector, keywords in SECTOR_KEYWORDS.items() if any(keyword_in_text(haystack, kw) for kw in keywords)] or ["Ï†ïÏ±Ö/Í∑úÏ†ú ÏùºÎ∞ò"]
+    if is_fcc_admin_reporting:
+        sectors = ["ÎØ∏Íµ≠ ÌÜµÏã†Îßù Î≥µÍµ¨/Ïû•Ïï†Î≥¥Í≥†"]
+    impacts: list[str] = []
+    paths: list[str] = []
+    if is_fcc_admin_reporting:
+        impacts.extend(["ÏãúÍ∞ÑÌëú", "ÏùòÏÇ¨Í≤∞Ï†ï ÏòÅÌñ• Ï†úÌïúÏ†Å"])
+        paths.extend(["Ï†ïÏ±Ö ÌÉÄÏûÑÎùºÏù∏", "Í∑úÏ†ú Ï§ÄÏàò"])
+    elif any(bucket in matched for bucket in ("court_order", "final_rule", "permit_restart", "agency_order", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fcc_decision_notice")):
+        impacts.extend(["ÏãúÍ∞ÑÌëú", "Ìï†Ïù∏Ïú®"])
+        paths.extend(["Ï†ïÏ±Ö ÌÉÄÏûÑÎùºÏù∏", "Ìï†Ïù∏Ïú®"])
+    if any(bucket in matched for bucket in ("sanctions_tariffs_export", "china_trade_controls", "energy_security_policy", "state_smr_moc_policy", "agriculture_supply_policy", "company_filing", "fda_decision")):
+        impacts.extend(["Îèà Î≤ÑÎäî Îä•Î†•", "ÏàòÍ∏â"])
+        paths.extend(["Ïù¥Ïùµ", "ÏàòÍ∏â"])
+    if "china_trade_controls" in matched:
+        impacts.extend(["ÏãúÍ∞ÑÌëú"])
+        paths.extend(["Í≥µÍ∏âÎßù", "Ï†ïÏ±Ö ÌÉÄÏûÑÎùºÏù∏", "ÏõêÏûêÏû¨ ÎπÑÏö©"])
+    if "state_smr_moc_policy" in matched:
+        paths.extend(["Í≥ÑÏïΩ Í∞ÄÏãúÏÑ±", "Î∞∏Î•òÏ≤¥Ïù∏", "ÌîÑÎ°úÏ†ùÌä∏ ÌååÏù¥ÎÇ∏Ïã±"])
+    if "company_filing" in matched:
+        paths.append("Í≥ÑÏïΩ Í∞ÄÏãúÏÑ±")
+    if is_whitehouse_source:
+        story_key = item.get("whitehouse_story_key") or whitehouse_story_key(item)
+        fingerprint_input = f"whitehouse-detail-v2|{story_key}"
+    else:
+        fingerprint_input = f"{item.get('source')}|{item.get('title')}|{item.get('link')}"
+    fingerprint = hashlib.sha256(fingerprint_input.encode("utf-8")).hexdigest()[:16]
+    return {**item, "fingerprint": fingerprint, "matched": matched, "importance": importance, "status": "ÏòàÎπÑ" if item["source"].startswith(("CourtListener", "KRX KIND")) else "ÌôïÏ†ï", "impacts": list(dict.fromkeys(impacts)) or ["ÏùòÏÇ¨Í≤∞Ï†ï ÏòÅÌñ• Ï†úÌïúÏ†Å"], "paths": list(dict.fromkeys(paths)) or ["Ï†ïÏ±Ö ÌÉÄÏûÑÎùºÏù∏"], "sectors": sectors}
+
+
+def load_seen() -> dict:
+    if not SEEN_PATH.exists():
+        return {"seen": {}, "updated_at_kst": ""}
+    try:
+        return json.loads(SEEN_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {"seen": {}, "updated_at_kst": ""}
+
+
+def save_seen(seen: dict) -> None:
+    DATA_DIR.mkdir(exist_ok=True)
+    seen["updated_at_kst"] = now_kst().isoformat(timespec="seconds")
+    SEEN_PATH.write_text(json.dumps(seen, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
+    candidates: list[dict] = []
+    source_notes: list[str] = []
+    whitehouse_detail_budget = {"total": 0, "by_source": {}}
+    whitehouse_totals = {"listed": 0, "attempted": 0, "verified": 0, "failed": 0, "deferred": 0, "classified": 0}
+    for source in SOURCES:
+        text, error = fetch_text(source.url)
+        if error:
+            source_notes.append(f"- {source.name}: ÌôïÏù∏ Î∂àÍ∞Ä ({error})")
+            continue
+        if source.kind == "courtlistener":
+            items = parse_courtlistener(text or "", source)
+        elif source.kind == "kind_html":
+            items = parse_kind_html(text or "", source, now)
+        elif source.kind == "federal_register_json":
+            items = parse_federal_register_json(text or "", source)
+        elif source.kind == "whitehouse_html":
+            items = parse_whitehouse_html(text or "", source)
+        elif source.kind == "fcc_html":
+            items = parse_fcc_html(text or "", source)
+        elif source.kind == "state_html":
+            items = parse_state_html(text or "", source)
+        elif source.kind == "mofcom_html":
+            items = parse_mofcom_html(text or "", source)
+        elif source.kind == "link_html":
+            items = parse_link_html(text or "", source)
+        else:
+            items = parse_rss(text or "", source)
+        if source.kind == "whitehouse_html":
+            items, detail_stats = enrich_whitehouse_items(items, now, whitehouse_detail_budget)
+            for key, value in detail_stats.items():
+                whitehouse_totals[key] += value
+            print(
+                f"whitehouse_source={source.name!r} listed={detail_stats['listed']} "
+                f"detail_attempted={detail_stats['attempted']} detail_verified={detail_stats['verified']} "
+                f"detail_failed={detail_stats['failed']} detail_deferred={detail_stats['deferred']}"
+            )
+        source_notes.append(f"- {source.name}: {len(items)}Í±¥ ÌôïÏù∏")
+        for item in items:
+            age = item_age_hours(item, now)
+            if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html", "state_html", "mofcom_html"} and age is None:
+                continue
+            max_age = WHITEHOUSE_MAX_AGE_HOURS if source.kind == "whitehouse_html" else MAX_SOURCE_AGE_HOURS
+            if age is not None and age > max_age:
+                continue
+            classified = classify_item(item)
+            if classified:
+                ensure_explained(classified)
+                classified["age_hours"] = age
+                candidates.append(classified)
+                if source.kind == "whitehouse_html":
+                    whitehouse_totals["classified"] += 1
+    for extra_items, extra_notes in (collect_sec_filings(now),):
+        source_notes.extend(extra_notes)
+        for item in extra_items:
+            classified = classify_item(item)
+            if classified:
+                ensure_explained(classified)
+                classified["age_hours"] = item_age_hours(item, now)
+                candidates.append(classified)
+    source_notes.append(
+        "- White House detail verification: "
+        f"listed={whitehouse_totals['listed']} attempted={whitehouse_totals['attempted']} "
+        f"verified={whitehouse_totals['verified']} failed={whitehouse_totals['failed']} "
+        f"deferred={whitehouse_totals['deferred']} classified={whitehouse_totals['classified']}"
+    )
+    print(
+        "whitehouse_totals "
+        f"listed={whitehouse_totals['listed']} attempted={whitehouse_totals['attempted']} "
+        f"verified={whitehouse_totals['verified']} failed={whitehouse_totals['failed']} "
+        f"deferred={whitehouse_totals['deferred']} classified={whitehouse_totals['classified']}"
+    )
+    return candidates, source_notes
+
+
+def render_report(alerts: list[dict], source_notes: list[str], now: dt.datetime) -> str:
+    lines = [f"üö® KHS Ï†ïÏ±Ö¬∑Í∑úÏ†ú Í≥†Ï∂©Í≤© ÏõåÏπò ¬∑ {now:%YÎÖÑ %mÏõî %dÏùº %H:%M KST}", ""]
+    if not alerts:
+        lines.extend(["Í≥†Ï∂©Í≤© Ï†ïÏ±Ö¬∑Í∑úÏ†ú Î≥ÄÍ≤Ω ÏßÅÏ†ë ÌôïÏù∏ ÏóÜÏùå", "", "ÌôïÏù∏ Î≤îÏúÑ:", *source_notes[:40], "", "üí° ÏõåÏπò ÌåêÎã®: Ïù¥Î≤à Ïã§ÌñâÏóêÏÑú Îß§Ï∂ú¬∑ÎßàÏßÑ¬∑ÌòÑÍ∏àÌùêÎ¶Ñ, Î∞∏Î•òÏóêÏù¥ÏÖò/Ìï†Ïù∏Ïú®, ÏàòÍ∏â, ÏãúÍ∞ÑÌëúÎ•º ÏÉàÎ°ú Î∞îÍæº ÌôïÏ†ï Ïù¥Î≤§Ìä∏Îäî ÏßÅÏ†ë ÌôïÏù∏ÎêòÏßÄ ÏïäÏïòÏäµÎãàÎã§.", "", "Ìà¨Ïûê Ï°∞Ïñ∏Ïù¥ ÏïÑÎãå Ï∞∏Í≥†Ïö© Ï†ïÏ±Ö¬∑Í∑úÏ†ú ÏïåÎ¶ºÏûÖÎãàÎã§."])
+        return "\n".join(lines) + "\n"
+    for idx, alert in enumerate(alerts, 1):
+        ensure_explained(alert)
+        matched_terms = sorted({term for terms in alert["matched"].values() for term in terms})
+        display_title = alert.get("title_ko") or alert["title"]
+        lines.extend(
+            [
+                f"## {idx}. [{alert['importance']}¬∑{alert['status']}] {display_title}",
+                f"- ÏõêÏ†ú: {alert['title']}",
+                f"- ÏÉÅÌÉú Î≥ÄÌôî: {', '.join(alert['matched'].keys())} Ïã†Ìò∏ ÌôïÏù∏ ({', '.join(matched_terms[:8])})",
+                f"- ÏõêÎ¨∏/Ï∂úÏ≤ò: [{alert['source']}]({alert['link']}) ¬∑ ÏõêÏ≤úÏãúÍ∞Å {alert.get('published_kst') or 'ÌôïÏù∏ Î∂àÍ∞Ä'} ¬∑ Ï°∞Ìöå {now:%H:%M KST}",
+                *explanation_lines(alert),
+                "- Ï¶âÏãú Ï≤¥ÌÅ¨: ÏõêÎ¨∏ Ï†ÑÎ¨∏, ÏãúÌñâÏùº/ÎßàÍ∞êÏùº, ÌïúÍµ≠ Î∞∏Î•òÏ≤¥Ïù∏ ÎÖ∏Ï∂ú, Í¥ÄÎ†® Ìï¥Ïô∏ Ìã∞Ïª§¬∑ETF Î∞òÏùë",
+                "",
+            ]
+        )
+    lines.extend(["üí° ÏõåÏπò ÌåêÎã®: Ïù¥Î≤à Ïã§ÌñâÏùÄ Îß§Ï∂ú¬∑ÎßàÏßÑ¬∑ÌòÑÍ∏àÌùêÎ¶Ñ, Î∞∏Î•òÏóêÏù¥ÏÖò/Ìï†Ïù∏Ïú®, ÏàòÍ∏â, ÏãúÍ∞ÑÌëú Ï§ë Ïã§Ï†úÎ°ú Î∞îÎÄê Ï∂ïÍ≥º ÌïúÍµ≠ Î∞∏Î•òÏ≤¥Ïù∏ Ïó∞Í≤∞ÏùÑ Í∏∞Ï§ÄÏúºÎ°ú Ï†ïÏ±Ö/Í∑úÏ†ú ÌõÑÎ≥¥Î•º ÏÑ†Î≥ÑÌñàÏäµÎãàÎã§.", "", "Ìà¨Ïûê Ï°∞Ïñ∏Ïù¥ ÏïÑÎãå Ï∞∏Í≥†Ïö© Ï†ïÏ±Ö¬∑Í∑úÏ†ú ÏïåÎ¶ºÏûÖÎãàÎã§."])
+    return "\n".join(lines) + "\n"
+
+
+def write_outputs(alerts: list[dict], source_notes: list[str], now: dt.datetime) -> None:
+    OUT_DIR.mkdir(exist_ok=True)
+    report = render_report(alerts, source_notes, now)
+    (OUT_DIR / "khs_policy_watch.md").write_text(report, encoding="utf-8")
+    if alerts:
+        top = alerts[0]
+        ensure_explained(top)
+        (OUT_DIR / "khs_policy_watch_alert_title.txt").write_text(f"KHS Ï†ïÏ±Ö ÏõåÏπò: [{top['importance']}] {(top.get('title_ko') or top['title'])[:70]}\n", encoding="utf-8")
+        (OUT_DIR / "khs_policy_watch_alert.md").write_text(report, encoding="utf-8")
+        (OUT_DIR / "khs_policy_watch_alerts.json").write_text(json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    else:
+        for path in (
+            OUT_DIR / "khs_policy_watch_alert_title.txt",
+            OUT_DIR / "khs_policy_watch_alert.md",
+            OUT_DIR / "khs_policy_watch_alerts.json",
+            PENDING_SEEN_PATH,
+        ):
+            try:
+                path.unlink()
+            except FileNotFoundError:
+                pass
+
+
+def write_pending_seen(alerts: list[dict], now: dt.datetime) -> None:
+    if not alerts:
+        return
+    pending = {
+        "created_at_kst": now.isoformat(timespec="seconds"),
+        "seen": {
+            item["fingerprint"]: {
+                "title": item["title"],
+                "source": item["source"],
+                "link": item["link"],
+                "first_seen_kst": now.isoformat(timespec="seconds"),
+                "importance": item["importance"],
+            }
+            for item in alerts
+        },
+    }
+    PENDING_SEEN_PATH.write_text(
+        json.dumps(pending, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
+def candidate_source_rank(item: dict) -> int:
+    source = str(item.get("source") or "").lower()
+    if item.get("whitehouse_story_key"):
+        if source == "white house fact sheets":
+            return 0
+        if source in {
+            "white house executive orders",
+            "white house presidential memoranda",
+            "white house proclamations",
+            "white house briefings statements",
+        }:
+            return 1
+    return 2
+
+
+def dedupe_candidate_fingerprints(candidates: list[dict]) -> list[dict]:
+    selected: dict[str, dict] = {}
+    order: list[str] = []
+    for item in candidates:
+        fingerprint = str(item.get("fingerprint") or "").strip()
+        key = fingerprint or hashlib.sha256(
+            f"{item.get('source')}|{item.get('title')}|{item.get('link')}".encode("utf-8")
+        ).hexdigest()[:16]
+        if key not in selected:
+            selected[key] = item
+            order.append(key)
+            continue
+        current = selected[key]
+        if candidate_source_rank(item) < candidate_source_rank(current):
+            selected[key] = item
+    return [selected[key] for key in order]
+
+
+def main() -> int:
+    now = now_kst()
+    seen = load_seen()
+    seen_map = seen.setdefault("seen", {})
+    candidates, source_notes = collect_candidates(now)
+    candidates = dedupe_candidate_fingerprints(candidates)
+    new_alerts = []
+    selected_fingerprints: set[str] = set()
+    for item in sorted(candidates, key=lambda x: (x["importance"] != "ÏÉÅ", x.get("age_hours") or 999)):
+        if (
+            item["importance"] == "Ìïò"
+            or item["fingerprint"] in seen_map
+            or item["fingerprint"] in selected_fingerprints
+        ):
+            continue
+        new_alerts.append(item)
+        selected_fingerprints.add(item["fingerprint"])
+        if len(new_alerts) >= MAX_ALERTS:
+            break
+    write_outputs(new_alerts, source_notes, now)
+    write_pending_seen(new_alerts, now)
+    whitehouse_candidates = sum(
+        str(item.get("source") or "").lower().startswith("white house")
+        for item in candidates
+    )
+    whitehouse_new = sum(
+        str(item.get("source") or "").lower().startswith("white house")
+        for item in new_alerts
+    )
+    whitehouse_seen_filtered = sum(
+        str(item.get("source") or "").lower().startswith("white house")
+        and item.get("fingerprint") in seen_map
+        for item in candidates
+    )
+    print(
+        f"candidates={len(candidates)} new_alerts={len(new_alerts)} "
+        f"whitehouse_candidates={whitehouse_candidates} whitehouse_new={whitehouse_new} "
+        f"whitehouse_seen_filtered={whitehouse_seen_filtered} seen_state=pending_delivery"
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

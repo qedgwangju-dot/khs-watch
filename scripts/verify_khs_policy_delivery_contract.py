@@ -304,8 +304,1015 @@ def assert_whitehouse_fact_sheet_is_preferred_for_duplicate_story() -> None:
         "title": "Imposing Additional Duties With Respect to Motor Vehicles",
         "link": "https://www.whitehouse.gov/presidential-actions/canada-motor-vehicles/",
         "fingerprint": fingerprint,
-        "wh×}üæÚ$z{-®éÜj×F6…öÆW'BæÖB Ð¢F—FÆU÷F‚çw&—FU÷FW‡B‚$´…2Ê	^ËRÉ¸ÎË™ƒ¢¾È8Ò«ZÞ¸+B¹INÊxØKŽÉéÈ+Ê	^ËRÊI»;RØXÎÈªNØ«…Æâ"ÂVæ6öF–æsÒ'WFbÓ‚"Ð¢&öG•÷F‚çw&—FU÷FW‡B€Ð¢%Æâ"æ¦ö–â…°Ð¢/	ùª‚´…2Ê	^Ë\+~«yÎÊ	Â«:Ëjž«*’É¸ÎË™‚+r##n¸XB~É¹BnÉÛÂ##£Rµ5B"ÀÐ¢""ÀÐ¢"22â¾È8+~Ù™^Ê	UÒ«ZÞ¸+B¹INÊxØKŽÉéÈ+Ê	^ËS¢ÈªNØXÎÉÛN»‰NËÙNÉÛ‚ÉˆŽ«ˆ‚¸ÈË+L+~ÊH»˜NÉéÈ+«yÎÊ	ÂË+NØÂ"ÀÐ¢"ÒÙ[^ÈºÃ¢É¹Ù™BÈªNØXÎÉÛN»‰NËÙNÉÛŒ+~¹INÊxØKŽÉéÈ+Éè^»)^ÉØ«ˆŽÉËRÉÛŽÙHN¹ÛÂÉêÎØë‚ÉÛNÈ¨ŽÉè^¸¸Ž¸ºBâ"ÀÐ¢"ÒÉÙŽÈ*Î«+Ê	RÉˆÙjS¢È¹Î«NÙÂÂÈ‰Ž«ˆ’Â»ŽºYŽÉyÉÛNÈY‚þÙZÉÛŽÉÊ‚"ÀÐ¢"ÒØŠÎÉéÉˆÙjS¢Êx«ˆ‚»iž¸©BÉé«ˆŽÉØÈºNÊ»;N¸ºBºûŽ¹é‚«+Ê	ÂÙÎÊH»*ØÈ^Éè^¸¸Ž¸ºBâ"ÀÐ¢"ÒÙYÎ«ZÞÉêS¢ÉØÙh’ÂÙXØXÎØÂÂ«+Ê	ÂÂ«È8ÉéÈ+«¹éŽÈhÎº[Â»H^¸¸Ž¸ºBâ"ÀÐ¢"Ò»	ŽÉˆ«¸ª^ÈK¢ÊI«Bâ"ÀÐ¢"ÒÈºNØÊ‚ÈºÙ‹ƒ¢»	ÎÙh’Ê;ÎË+N«Ê(«(ÂÊ	ÎÙYÎ¹	Žº›BØXÎºx‚Ù™^È+ÉÛBÉ[ÞÙ[NÊy¸¸Ž¸ºBâ"ÀÐ¢"ÒËiÎË)ƒ¢´&æ²öb¶÷&VF–v—FÂ7W'&Væ7’öÆ–7•Ò†‡GG3¢ò÷wwræ&ö²æ÷"æ·"ö’+rÊÙ¨Â##£Rµ5B"ÀÐ¢""ÀÐ¢"22"â¾È8+~Ù™^Ê	UÒ«ZÞ¸+B¹INÊxØKŽÉéÈ+Ê	^ËS¢ÈªNØXÎÉÛN»‰NËÙNÉÛ‚ÉˆŽ«ˆ‚¸ÈË+L+~ÊH»˜NÉéÈ+«yÎÊ	ÂË+NØÂ"ÀÐ¢"ÒÙ[^ÈºÃ¢É¹Ù™BÈªNØXÎÉÛN»‰NËÙNÉÛŒ+~¹INÊxØKŽÉéÈ+Éè^»)^ÉØ«ˆŽÉËRÉÛŽÙHN¹ÛÂÉêÎØë‚ÉÛNÈ¨ŽÉè^¸¸Ž¸ºBâ"ÀÐ¢"ÒÉÙŽÈ*Î«+Ê	RÉˆÙjS¢È¹Î«NÙÂÂÈ‰Ž«ˆ’Â»ŽºYŽÉyÉÛNÈY‚þÙZÉÛŽÉÊ‚"ÀÐ¢"ÒØŠÎÉéÉˆÙjS¢Êx«ˆ‚»iž¸©BÉé«ˆŽÉØÈºNÊ»;N¸ºBºûŽ¹é‚«+Ê	ÂÙÎÊH»*ØÈ^Éè^¸¸Ž¸ºBâ"ÀÐ¢"ÒÙYÎ«ZÞÉêS¢ÉØÙh’ÂÙXØXÎØÂÂ«+Ê	ÂÂ«È8ÉéÈ+«¹éŽÈhÎº[Â»H^¸¸Ž¸ºBâ"ÀÐ¢"Ò»	ŽÉˆ«¸ª^ÈK¢ÊI«Bâ"ÀÐ¢"ÒÈºNØÊ‚ÈºÙ‹ƒ¢»	ÎÙh’Ê;ÎË+N«Ê(«(ÂÊ	ÎÙYÎ¹	Žº›BØXÎºx‚Ù™^È+ÉÛBÉ[ÞÙ[NÊy¸¸Ž¸ºBâ"ÀÐ¢"ÒËiÎË)ƒ¢´&æ²öb¶÷&V–ÖVçB&W6V&6…Ò†‡GG3¢ò÷wwræ&ö²æ÷"æ·"ö"’+rÊÙ¨Â##£Rµ5B"ÀÐ¢""ÀÐ¢Ò’ÀÐ¢Væ6öF–æsÒ'WFbÓ‚"ÀÐ¢Ð¢¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&BæÖ–â‚Ð¢–b&öG•÷F‚æW†—7G2‚“ Ð¢&—6R76W'F–öäW'&÷"‚&FVÆ—fW'’wV&BF–Bæ÷B&Æö6²GWÆ–6FRöÆ–7’ÆW'G2"Ð Ð Ð¦FVb76W'EöFVÆ—fW'•öwV&Eö&Æö6·5÷6÷W&6Uö&öG•öÖ—6ÖF6‚‚’ÓâæöæS Ð¢6ÆVçW‚Ð¢F—FÆU÷F‚ÒõUEôD•"ò&¶‡5÷öÆ–7•÷vF6…öÆW'E÷F—FÆRçG‡B Ð¢&öG•÷F‚ÒõUEôD•"ò&¶‡5÷öÆ–7•÷vF6…öÆW'BæÖB Ð¢F—FÆRÒ$´…2Ê	^ËRÉ¸ÎË™ƒ¢¾È8Òd42ÂØk^Èº+~Ê;ÎØÈÎÈ‰Œ+~ÉÈNÈK«yÎÊ	ÂºËŽÈIÂ«;^ÙÅÆâ Ð¢&WV—&VEöÆ–æW2Ò&WV—&VEöW‡ÆæF–öåöÆ–æW2‚$d42–çfW'FW"öÆ–7’&Vw&W76–öâ6†V6²"Ð¢&öG’Ò%Æâ"æ¦ö–â…°Ð¢$´…2öÆ–7’vF6‚6÷W&6Rö&öG’Ö—6ÖF6‚&Vw&W76–öâ"ÀÐ¢""ÀÐ¢"22â¾È8+~Ù™^Ê	UÒd42ÂØk^Èº+~Ê;ÎØÈÎÈ‰Œ+~ÉÈNÈK«yÎÊ	ÂºËŽÈIÂ«;^ÙÂ"ÀÐ¢"ÒÙ[^ÈºÃ¢ºûŽ«ZÒd4>«É›Ž«ZÞÈ+Éy¸HŽÊxÉÛŽ»(NØKÊ	ÎÙYÎÉØB«(ØjÙYÎ¸ºN¸©B»;ŽºËŽÉè^¸¸Ž¸ºBâ"ÀÐ¢§&WV—&VEöÆ–æW2ÀÐ¢"ÒËiÎË)ƒ¢¾ºû‚$ôTÕÒ†‡GG3¢ò÷wwræ&öVÒæv÷böæWw7&ööÒ÷&W72×&VÆV6W2ö&öVÒÖ–æ—F–FW2Öf—'7B×7FWÖW‡Æ÷&R×÷FVçF–ÂÖ÷WFW"Ö6öçF–æVçFÂ×6†VÆb×76R’+rÊÙ¨Â#3£Rµ5B"ÀÐ¢""ÀÐ¢ÒÐ¢F—FÆU÷F‚çw&—FU÷FW‡B‡F—FÆRÂVæ6öF–æsÒ'WFbÓ‚"Ð¢&öG•÷F‚çw&—FU÷FW‡B†&öG’ÂVæ6öF–æsÒ'WFbÓ‚"Ð¢&V6öâÒ¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&Bæ†5÷6÷W&6Uö&öG•öÖ—6ÖF6‚‡F—FÆRÂ&öG’Ð¢–b&V6öâÒ&&öVÕ÷6÷W&6U÷v—F…öf65ö&öG’# Ð¢&—6R76W'F–öäW'&÷"†b'6÷W&6Rö&öG’Ö—6ÖF6‚v2æ÷BFWFV7FVC¢·&V6öçÒ"Ð¢¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&BæÖ–â‚Ð¢–b&öG•÷F‚æW†—7G2‚“ Ð¢&—6R76W'F–öäW'&÷"‚&FVÆ—fW'’wV&BF–Bæ÷B&Æö6²$ôTÒ6÷W&6Rv—F‚d42&öG’"Ð Ð Ð¦FVb76W'EöFVÆ—fW'•öwV&Eö&Æö6·5öf65÷7V&Ö&–æUö–çfW'FW%öÖ—6ÖF6‚‚’ÓâæöæS Ð¢6ÆVçW‚Ð¢F—FÆU÷F‚ÒõUEôD•"ò&¶‡5÷öÆ–7•÷vF6…öÆW'E÷F—FÆRçG‡B Ð¢&öG•÷F‚ÒõUEôD•"ò&¶‡5÷öÆ–7•÷vF6…öÆW'BæÖB Ð¢F—FÆRÒ$´…2Ê	^ËRÉ¸ÎË™ƒ¢¾È8Òd42ÂØk^Èº+~Ê;ÎØÈÎÈ‰Œ+~ÉÈNÈK«yÎÊ	ÂºËŽÈIÂ«;^ÙÅÆâ Ð¢&WV—&VEöÆ–æW2Ò&WV—&VEöW‡ÆæF–öåöÆ–æW2‚$d427V&Ö&–æR6&ÆRö–çfW'FW"Ö—6ÖF6‚&Vw&W76–öâ6†V6²"Ð¢&öG’Ò%Æâ"æ¦ö–â…°Ð¢/	ùª‚´…2Ê	^Ë\+~«yÎÊ	Â«:Ëjž«*’É¸ÎË™‚+r##n¸XB~É¹BŽÉÛÂS£‚µ5B"ÀÐ¢""ÀÐ¢"22â¾È8+~Ù™^Ê	UÒd42ÂØk^Èº+~Ê;ÎØÈÎÈ‰Œ+~ÉÈNÈK«yÎÊ	ÂºËŽÈIÂ«;^ÙÂ"ÀÐ¢"ÒÙ[^ÈºÃ¢ºûŽ«ZÒd4>««ZÞ«ÉXŽ»;BÉ«º
-Nº[ÂÉÛNÉÊºÂÉ›Ž«ZÞÈ+¹‰¸©BÊI«ZÞÈ+Éy¸HŽÊxÉÛŽ»(NØKÈº«yÂÈ‰ŽÉèRÊ	ÎÙYÌ+~«ˆŽÊxÊË™Žº[Â«(ØjÊIÉÛN¹ÛÎ¸©B¸+NÉªžÉè^¸¸Ž¸ºBâ"ÀÐ¢§&WV—&VEöÆ–æW2ÀÐ¢"ÒËiÎË)ƒ¢¾ºû‚É{»
-ž«H»;Bd45Ò†‡GG3¢ò÷wwræfVFW&Ç&Vv—7FW"æv÷böFö7VÖVçG2ó##bóró‚ó##bÓ3scR÷&Wf–WrÖöb×7V&Ö&–æRÖ6&ÆRÖÆæF–ærÖÆ–6Vç6R×'VÆW2ÖæB×&ö6VGW&W2×FòÖ76W72ÖWföÇf–ærÖæF–öæÂ×6V7W&—G’’+rÊÙ¨ÂS£‚µ5B"ÀÐ¢""ÀÐ¢ÒÐ¢F—FÆU÷F‚çw&—FU÷FW‡B‡F—FÆRÂVæ6öF–æsÒ'WFbÓ‚"Ð¢&öG•÷F‚çw&—FU÷FW‡B†&öG’ÂVæ6öF–æsÒ'WFbÓ‚"Ð¢&V6öâÒ¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&Bæ†5÷6÷W&6Uö&öG•öÖ—6ÖF6‚‡F—FÆRÂ&öG’Ð¢W‡V7FVBÒ&f65÷7V&Ö&–æUö6&ÆU÷6÷W&6U÷v—F…ö–çfW'FW%ö÷%öWV—ÖVçEö&åö&öG’ Ð¢–b&V6öâÒW‡V7FVC Ð¢&—6R76W'F–öäW'&÷"†b$d427V&Ö&–æR÷6÷W&6R&öG’Ö—6ÖF6‚v2æ÷BFWFV7FVC¢·&V6öçÒ"Ð¢¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&BæÖ–â‚Ð¢–b&öG•÷F‚æW†—7G2‚“ Ð¢&—6R76W'F–öäW'&÷"‚&FVÆ—fW'’wV&BF–Bæ÷B&Æö6²d427V&Ö&–æR6&ÆR6÷W&6Rv—F‚–çfW'FW"&öG’"Ð Ð Ð¦FVb76W'EöFVÆ—fW'•öwV&Eö&Æö6·5ö&öµövVæW&–5÷7F&ÆV6ö–åöÖ—6ÖF6‚‚’ÓâæöæS Ð¢6ÆVçW‚Ð¢F—FÆU÷F‚ÒõUEôD•"ò&¶‡5÷öÆ–7•÷vF6…öÆW'E÷F—FÆRçG‡B Ð¢&öG•÷F‚ÒõUEôD•"ò&¶‡5÷öÆ–7•÷vF6…öÆW'BæÖB Ð¢F—FÆRÒ$´…2Ê	^ËRÉ¸ÎË™ƒ¢¾È8Ò«ZÞ¸+B¹INÊxØKŽÉéÈ+Ê	^ËS¢ÈªNØXÎÉÛN»‰NËÙNÉÛ‚ÉˆŽ«ˆ‚¸ÈË+L+~ÊH»˜NÉéÈ+«yÎÊ	ÂË+NØÅÆâ Ð¢&WV—&VEöÆ–æW2Ò&WV—&VEöW‡ÆæF–öåöÆ–æW2‚$$ô²vVæW&–2vR÷7F&ÆV6ö–âÖ—6ÖF6‚&Vw&W76–öâ6†V6²"Ð¢&öG’Ò%Æâ"æ¦ö–â…°Ð¢/	ùª‚´…2Ê	^Ë\+~«yÎÊ	Â«:Ëjž«*’É¸ÎË™‚+r##n¸XB~É¹BžÉÛÂ#£2µ5B"ÀÐ¢""ÀÐ¢"22â¾È8+~Ù™^Ê	UÒ«ZÞ¸+B¹INÊxØKŽÉéÈ+Ê	^ËS¢ÈªNØXÎÉÛN»‰NËÙNÉÛ‚ÉˆŽ«ˆ‚¸ÈË+L+~ÊH»˜NÉéÈ+«yÎÊ	ÂË+NØÂ"ÀÐ¢"ÒÙ[^ÈºÃ¢É¹Ù™BÈªNØXÎÉÛN»‰NËÙNÉÛŒ+~¹INÊxØKŽÉéÈ+Éè^»)^ÉØ»	ÎÙh’Ê;ÎË+BÂÊH»˜NÉéÈ+ÂÊx«ˆž«+Ê	ÂÙÎÊHÉØB¹Ž¹úÎÈ»Â«ˆŽÉËRÉÛŽÙHN¹ÛÂÉêÎØë‚ÉÛNÈ¨ŽÉè^¸¸Ž¸ºBâ"ÀÐ¢§&WV—&VEöÆ–æW2ÀÐ¢"ÒËiÎË)ƒ¢´&æ²öb¶÷&VF–v—FÂ7W'&Væ7’öÆ–7•Ò†‡GG3¢ò÷wwræ&ö²æ÷"æ·"÷÷'FÂ÷7V&Ö–â÷7V&Ö–âöfææ56fWG’æFóöÖVçTæóÓ#cS"’+rÊÙ¨Â#£2µ5B"ÀÐ¢""ÀÐ¢ÒÐ¢F—FÆU÷F‚çw&—FU÷FW‡B‡F—FÆRÂVæ6öF–æsÒ'WFbÓ‚"Ð¢&öG•÷F‚çw&—FU÷FW‡B†&öG’ÂVæ6öF–æsÒ'WFbÓ‚"Ð¢&V6öâÒ¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&Bæ†5÷6÷W&6Uö&öG•öÖ—6ÖF6‚‡F—FÆRÂ&öG’Ð¢W‡V7FVBÒ&&öµövVæW&–5÷vU÷v—F…÷7F&ÆV6ö–å÷öÆ–7•ö&öG’ Ð¢–b&V6öâÒW‡V7FVC Ð¢&—6R76W'F–öäW'&÷"†b$$ô²vVæW&–2÷6÷W&6R&öG’Ö—6ÖF6‚v2æ÷BFWFV7FVC¢·&V6öçÒ"Ð¢¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&BæÖ–â‚Ð¢–b&öG•÷F‚æW†—7G2‚“ Ð¢&—6R76W'F–öäW'&÷"‚&FVÆ—fW'’wV&BF–Bæ÷B&Æö6²$ô²vVæW&–2vRv—F‚7F&ÆV6ö–âöÆ–7’&öG’"Ð Ð Ð¦FVb76W'EöFVÆ—fW'•öwV&Eö&Æö6·5÷W&Å÷F÷–5öÖ—76–ær‚’ÓâæöæS Ð¢66W2Ò°Ð¢€Ð¢$´…2Ê	^ËRÉ¸ÎË™ƒ¢¾È8ÒØ«Ž¹ûÎÙHB¸ÈØk^º’»	ÎÉk‚ÂÈ¹ÎÉêRÉˆÙjRÊ	^ËRÈºÙ‹…Æâ"ÀÐ¢.Ø«Ž¹ûÎÙHB¸ÈØk^ºžÉÙ‚ÊxÊ	»	ÎÉkŽÉÛB«HÈK‚Â»	Ž¸øNË+BÂÉÛN¹èÊNÉøÉÈNÙyŽÉØBÉ¸ÊxÉÛÂÈ‰‚ÉèŽ¸ºN¸©BÉÛÎ»	‚ØYÎÙHÎºkþÉè^¸¸Ž¸ºBâ"ÀÐ¢&‡GG3¢ò÷wwrçv†—FV†÷W6Ræv÷böf7B×6†VWG2ó##bóröf7B×6†VWB×&W6–FVçBÖFöæÆBÖ¢×G'V××6V7W&W2Ö†—7F÷&–2ÖFVfVç6RÖ–çfW7FÖVçBÖg&öÒÖæFòÖÆÆ–W2×÷vW&–ærÖÖW&–6âÖ–æGW7G'’ò"ÀÐ¢'6÷W&6U÷F÷–5öÖ—76–æs¦æFõöFVfVç6Uö–çfW7FÖVçB"ÀÐ¢’ÀÐ¢€Ð¢$´…2Ê	^ËRÉ¸ÎË™ƒ¢¾È8Òd42ÂØk^Èº+~Ê;ÎØÈÎÈ‰Œ+~ÉÈNÈK«yÎÊ	ÂºËŽÈIÂ«;^ÙÅÆâ"ÀÐ¢$d42Øk^Èº+~Ê;ÎØÈÎÈ‰Œ+~ÉÈNÈK«yÎÊ	ÂºËŽÈIÎ¸©BØk^ÈºÉÛŽÙHN¹ÛÂÊ	^ËRÈ¹Î«NÙÎº[Â»	N«øÈ‰‚ÉèŽ¸ºN¸©BÉÛÎ»	‚ØYÎÙHÎºkþÉè^¸¸Ž¸ºBâ"ÀÐ¢&‡GG3¢ò÷wwræfVFW&Ç&Vv—7FW"æv÷böFö7VÖVçG2ó##bóró‚ó##bÓ3scR÷&Wf–WrÖöb×7V&Ö&–æRÖ6&ÆRÖÆæF–ærÖÆ–6Vç6R×'VÆW2ÖæB×&ö6VGW&W2×FòÖ76W72ÖWföÇf–ærÖæF–öæÂ×6V7W&—G’"ÀÐ¢'6÷W&6U÷F÷–5öÖ—76–æs§7V&Ö&–æUö6&ÆR"ÀÐ¢’ÀÐ¢ÐÐ¢f÷"F—FÆRÂ6÷&RÂÆ–æ²ÂW‡V7FVB–â66W3 Ð¢6ÆVçW‚Ð¢F—FÆU÷F‚ÒõUEôD•"ò&¶‡5÷öÆ–7•÷vF6…öÆW'E÷F—FÆRçG‡B Ð¢&öG•÷F‚ÒõUEôD•"ò&¶‡5÷öÆ–7•÷vF6…öÆW'BæÖB Ð¢&WV—&VEöÆ–æW2Ò&WV—&VEöW‡ÆæF–öåöÆ–æW2‚%U$ÂF÷–2Ö—76–ær&Vw&W76–öâ6†V6²"Ð¢&öG’Ò%Æâ"æ¦ö–â…°Ð¢/	ùª‚´…2Ê	^Ë\+~«yÎÊ	Â«:Ëjž«*’É¸ÎË™‚+r##n¸XB~É¹BžÉÛÂ#£3µ5B"ÀÐ¢""ÀÐ¢"22â¾È8+~Ù™^Ê	UÒËiÎË)‚Ê;ÎÊ	Â¸ˆN¹ÛÒÙ¨Î«xØXÎÈªNØ«‚"ÀÐ¢b"ÒÙ[^ÈºÃ¢¶6÷&WÒ"ÀÐ¢§&WV—&VEöÆ–æW2ÀÐ¢b"ÒËiÎË)ƒ¢¾«;^È¹ÒËiÎË)…Ò‡¶Æ–æ·Ò’+rÊÙ¨Â#£3µ5B"ÀÐ¢""ÀÐ¢ÒÐ¢F—FÆU÷F‚çw&—FU÷FW‡B‡F—FÆRÂVæ6öF–æsÒ'WFbÓ‚"Ð¢&öG•÷F‚çw&—FU÷FW‡B†&öG’ÂVæ6öF–æsÒ'WFbÓ‚"Ð¢&V6öâÒ¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&Bæ†5÷6÷W&6Uö&öG•öÖ—6ÖF6‚‡F—FÆRÂ&öG’Ð¢–b&V6öâÒW‡V7FVC Ð¢&—6R76W'F–öäW'&÷"†b%U$ÂF÷–2Ö—76–ærÖ—6ÖF6‚v2æ÷BFWFV7FVC¢·&V6öçÒÒ¶W‡V7FVGÒ"Ð¢¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&BæÖ–â‚Ð¢–b&öG•÷F‚æW†—7G2‚“ Ð¢&—6R76W'F–öäW'&÷"†b&FVÆ—fW'’wV&BF–Bæ÷B&Æö6²U$ÂF÷–2Ö—76–ær66S¢¶W‡V7FVGÒ"Ð Ð Ð¦FVb76W'E÷&÷WFW%öW‡Æ–ç5öf65÷7V&Ö&–æUö6&ÆU÷öÆ–7’‚’ÓâæöæS Ð¢—FVÒÒ°Ð¢'6÷W&6R#¢$fVFW&Â&Vv—7FW"d42"ÀÐ¢'F—FÆR#¢%&Wf–Wröb7V&Ö&–æR6&ÆRÆæF–ærÆ–6Vç6R'VÆW2æB&ö6VGW&W2Fò76W72WföÇf–æræF–öæÂ6V7W&—G’"ÀÐ¢&÷&–v–æÅ÷F—FÆR#¢%&Wf–Wröb7V&Ö&–æR6&ÆRÆæF–ærÆ–6Vç6R'VÆW2æB&ö6VGW&W2Fò76W72WföÇf–æræF–öæÂ6V7W&—G’"ÀÐ¢&Æ–æ²#¢&‡GG3¢ò÷wwræfVFW&Ç&Vv—7FW"æv÷böFö7VÖVçG2ó##bóró‚ó##bÓ3scR÷&Wf–WrÖöb×7V&Ö&–æRÖ6&ÆRÖÆæF–ærÖÆ–6Vç6R×'VÆW2ÖæB×&ö6VGW&W2×FòÖ76W72ÖWföÇf–ærÖæF–öæÂ×6V7W&—G’"ÀÐ¢&–×÷'Fæ6R#¢.È8"ÀÐ¢'7FGW2#¢.Ù™^Ê	R"ÀÐ¢'V&Æ—6†VEö·7B#¢###bÓrÓ…C“££³“£"ÀÐ¢&ÖF6†VB#¢²&f65öFV6—6–öåöæ÷F–6R#¢²&æF–öæÂ6V7W&—G’"Â''VÆVÖ¶–ær%×ÒÀÐ¢&–×7G2#¢².È¹Î«NÙÂ"Â.ÙZÉÛŽÉÊ‚%ÒÀÐ¢'F‡2#¢².Ê	^ËRØ8ÉèN¹ÛÎÉÛ‚"Â.ÙZÉÛŽÉÊ‚%ÒÀÐ¢'6V7F÷'2#¢².Øk^Èºôd42þÉÈNÈK%ÒÀÐ¢ÐÐ¢Vç&–6†VBÒ¶‡5÷öÆ–7•öÆW'E÷&÷WFW"æVç&–6…öÖ—76–æuö6öçFW‡B†—FVÒÐ¢¶‡5÷öÆ–7•öÆW'E÷&÷WFW"æÇ•÷&÷WFW%ö÷fW'&–FW2†Vç&–6†VBÐ¢F—FÆRÒ¶‡5÷öÆ–7•öÆW'E÷&÷WFW"ç6fU÷F—FÆR†Vç&–6†VBÐ¢f–VÆG2Ò""æ¦ö–â€Ð¢7G"†Vç&–6†VBævWB†¶W’’÷"""Ð¢f÷"¶W’–â‚'öÆ–7•÷Æ–å÷7VÖÖ'’"Â&–çfW7FÖVçE÷f–Wr"Â&¶÷&VöÖ&¶WEö–×7B"Â'6V7F÷'2"Ð¢’æÆ÷vW"‚Ð¢–b.Ù[NÊËÈÉÛN»‰B"æ÷B–âF—FÆRæB.Ù[NÊØk^ÈºËÈÉÛN»‰B"æ÷B–âf–VÆG3 Ð¢&—6R76W'F–öäW'&÷"‚$d427V&Ö&–æR6&ÆRöÆ–7’v2æ÷B&÷WFVBFò7V&Ö&–æR6&ÆRW‡ÆæF–öâ"Ð¢f÷&&–FFVâÒ²&–çfW'FW""Â&VæW&w’–çfW'FW""Â'6öÆ"–çfW'FW""Â.ÉÛŽ»(NØK"Â.ÊNº
-^»8Ù™ŽÉê^Ë™‚%ÐÐ¢f÷"Fö¶Vâ–âf÷&&–FFVã Ð¢–bFö¶VâæÆ÷vW"‚’–âf–VÆG3 Ð¢&—6R76W'F–öäW'&÷"†b$d427V&Ö&–æR6&ÆRW‡ÆæF–öâÆV¶VB–çfW'FW"&öG“¢·Fö¶VçÒ"Ð Ð Ð¦FVb6ÆVçW‚’ÓâæöæS Ð¢f÷"F‚–âôÄ”5•ôd”ÄU3 Ð¢–bF‚æW†—7G2‚“ Ð¢F‚çVæÆ–æ²‚Ð Ð Ð¦FVb&WV—&VEöW‡ÆæF–öåöÆ–æW2†æ÷FS¢7G"’ÓâÆ—7E·7G%Ó Ð¢&WGW&â°Ð¢b'¶Ö&¶W'5³×Ò¶æ÷FWÒ Ð¢f÷"Ö&¶W'2–â¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&Bå$UT•$TEôU…ÄäD”ôåôd”TÄEôu$õU0Ð¢ÐÐ Ð Ð¦FVbw&—FUöf65÷&Vw&W76–öåöf—‡GW&R‚’ÓâæöæS Ð¢ÆW'G2Ò°Ð¢°Ð¢'6÷W&6R#¢$fVFW&Â&Vv—7FW"d42"ÀÐ¢'F—FÆR#¢%WF—F–öâf÷"&V6öç6–FW&F–öâöb7F–öâ–â'VÆVÖ¶–ær&ö6VVF–ær"ÀÐ¢&÷&–v–æÅ÷F—FÆR#¢%WF—F–öâf÷"&V6öç6–FW&F–öâöb7F–öâ–â'VÆVÖ¶–ær&ö6VVF–ær"ÀÐ¢&Æ–æ²#¢&‡GG3¢ò÷wwræfVFW&Ç&Vv—7FW"æv÷böFö7VÖVçG2ó##bóróbó##bÓ3c÷WF—F–öâÖf÷"×&V6öç6–FW&F–öâÖöbÖ7F–öâÖ–â×'VÆVÖ¶–ær×&ö6VVF–ær"ÀÐ¢&–×÷'Fæ6R#¢.È8"ÀÐ¢'7FGW2#¢.Ù™^Ê	R"ÀÐ¢'V&Æ—6†VEö·7B#¢###bÓrÓeC“££³“£"ÀÐ¢&ÖF6†VB#¢²&f65öFV6—6–öåöæ÷F–6R#¢²'&÷÷6VB'VÆR"Â''VÆVÖ¶–ær%×ÒÀÐ¢&–×7G2#¢².È¹Î«NÙÂ"Â.È‰Ž«ˆ’%ÒÀÐ¢'F‡2#¢².Ê	^ËRØ8ÉèN¹ÛÎÉÛ‚"Â.Ê;ÎØÈÎÈ‰‚þØk^Èº«yÎÊ	Â"Â.È‰Ž«ˆ’%ÒÀÐ¢'6V7F÷'2#¢².Øk^Èºôd42þÉÈNÈK"Â.Øk^ÈºÉê^»˜B"Â.ÉÈNÈKØk^Èº%ÒÀÐ¢ÒÀÐ¢°Ð¢'6÷W&6R#¢$fVFW&Â&Vv—7FW"d42"ÀÐ¢'F—FÆR#¢%&ö†–&—F–ær–×÷'FF–öâæBÖ&¶WF–æröb&Wf–÷W6Ç’WF†÷&—¦VB6÷fW&VB6öÖ×Væ–6F–öç2WV—ÖVçBFFVBFòF†R6÷fW&VBÆ—7B"ÀÐ¢&÷&–v–æÅ÷F—FÆR#¢%&ö†–&—F–ær–×÷'FF–öâæBÖ&¶WF–æröb&Wf–÷W6Ç’WF†÷&—¦VB6÷fW&VB6öÖ×Væ–6F–öç2WV—ÖVçBFFVBFòF†R6÷fW&VBÆ—7B"ÀÐ¢&Æ–æ²#¢&‡GG3¢ò÷wwræfVFW&Ç&Vv—7FW"æv÷böFö7VÖVçG2ó##bóróbó##bÓ3S‚÷&ö†–&—F–ærÖ–×÷'FF–öâÖæBÖÖ&¶WF–ærÖöb×&Wf–÷W6Ç’ÖWF†÷&—¦VBÖ6÷fW&VBÖ6öÖ×Væ–6F–öç2ÖWV—ÖVçB"ÀÐ¢&–×÷'Fæ6R#¢.È8"ÀÐ¢'7FGW2#¢.Ù™^Ê	R"ÀÐ¢'V&Æ—6†VEö·7B#¢###bÓrÓeC“££³“£"ÀÐ¢&ÖF6†VB#¢²&f65öFV6—6–öåöæ÷F–6R#¢²&6÷fW&VBÆ—7B"Â&æF–öæÂ6V7W&—G’"Â'&ö†–&—B"Â'V&Æ–2æ÷F–6R%×ÒÀÐ¢&–×7G2#¢².ºzNËiÌ+~ºxŽÊxL+~ÙˆN«ˆŽÙÙºhB"Â.È‰Ž«ˆ’"Â.È¹Î«NÙÂ%ÒÀÐ¢'F‡2#¢².Ê	^ËRØ8ÉèN¹ÛÎÉÛ‚"Â.«;^«ˆžºyÒ"Â.»ŽºYŽË+NÉÛ‚"Â.È‰Ž«ˆ’%ÒÀÐ¢'6V7F÷'2#¢².Øk^ÈºÉê^»˜B"Â.ÉÈNÈKØk^Èº"Â.¸JNØ«ŽÉ¸ÎØÂÉê^»˜B%ÒÀÐ¢ÒÀÐ¢ÐÐ¢„õUEôD•"ò&¶‡5÷öÆ–7•÷vF6…öÆW'G2æ§6öâ"’çw&—FU÷FW‡B€Ð¢§6öâæGV×2†ÆW'G2ÂVç7W&Uö66–“ÔfÇ6RÂ–æFVçCÓ"’²%Æâ"ÀÐ¢Væ6öF–æsÒ'WFbÓ‚"ÀÐ¢Ð Ð Ð¦FVb76W'E÷öÆ–7•ö÷WGWB‚’ÓâæöæS Ð¢&öG•÷F‚ÒõUEôD•"ò&¶‡5÷öÆ–7•÷vF6…öÆW'BæÖB Ð¢–bæ÷B&öG•÷F‚æW†—7G2‚“ Ð¢&—6R76W'F–öäW'&÷"‚'öÆ–7’ÆW'B&öG’v2&VÖ÷fVBVæW‡V7FVFÇ’"Ð¢&öG’Ò&öG•÷F‚ç&VE÷FW‡B†Væ6öF–æsÒ'WFbÓ‚×6–r"Ð¢Æ–æW2Ò&öG’ç7Æ—FÆ–æW2‚Ð Ð¢×W7Eö6öçF–âÒ°Ð¢$d42Â»;NÉX‚ÉÈNÙy‚Øk^ÈºÉê^»˜BÈ‰ŽÉè\+~ØÉºzBÊ	ÎÙYÂÊŽË
-‚«;^ÙÂ"ÀÐ¢"ÒÙ[^ÈºÃ¢"ÀÐ¢"ÒÉÙŽÈ*Î«+Ê	RÉˆÙjS¢"À¢"ÒØŠÎÉéÉˆÙjS¢"À¢"ÒÙYÎ«ZÞÉêS¢"À¢"Ò»	ŽÉˆþ»	Ž¸È¢"À¢"ÒÈºNØÊ‚ÈºÙ‹ƒ¢"À¢"ÒËiÎË)ƒ¢"À¢ÐÐ¢f÷"Ö&¶W"–â×W7Eö6öçF–ã Ð¢–bÖ&¶W"æ÷B–â&öG“ Ð¢&—6R76W'F–öäW'&÷"†b&Ö—76–ær6ö×7BFVÆVw&ÒÖ&¶W#¢¶Ö&¶W'Ò"Ð Ð¢f÷&&–FFVâÒ°Ð¢"ÒÉ¹Ê	Ã¢"ÀÐ¢"ÒÈ8Ø9Â»8Ù™C¢"ÀÐ¢"ÒÊhžÈ¹ÂË+NØÃ¢"ÀÐ¢%WF—F–öâf÷"&V6öç6–FW&F–öâ"ÀÐ¢%&ö†–&—F–ær–×÷'FF–öâæBÖ&¶WF–ær"ÀÐ¢%&Wf–÷W6Ç’WF†÷&—¦VB6÷fW&VB6öÖ×Væ–6F–öç2WV—ÖVçB"ÀÐ¢.ÉÛŽ»(NØK"ÀÐ¢&–çfW'FW""ÀÐ¢.Èºº+É›ŽÈº"ÀÐ¢&f65öFV6—6–öåöæ÷F–6R"ÀÐ¢ÐÐ¢Æ÷rÒ&öG’æÆ÷vW"‚Ð¢f÷"Ö&¶W"–âf÷&&–FFVã Ð¢†—7F6²ÒÆ÷r–bÖ&¶W"æ—6Æ÷vW"‚’VÇ6R&öGÐ¢æVVFÆRÒÖ&¶W"–bÖ&¶W"æ—6Æ÷vW"‚’VÇ6RÖ&¶W Ð¢–bæVVFÆR–â†—7F6³ Ð¢&—6R76W'F–öäW'&÷"†b&f÷&&–FFVâFVÆVw&ÒFW‡BÆV¶VC¢¶Ö&¶W'Ò"Ð Ð¢ÆöæuöÆ–æW2Ò¶Æ–æRf÷"Æ–æR–âÆ–æW2–bÆVâ†Æ–æR’â¶‡5÷FVÆVw&ÕöFVÆ—fW'•öwV&BäÔ…ô$ôE•ôÄ”äUô4„%5ÐÐ¢–bÆöæuöÆ–æW3 Ð¢&—6R76W'F–öäW'&÷"†b&÷fW&ÆöærFVÆVw&ÒÆ–æRÆV¶VC¢¶ÆöæuöÆ–æW5³Õ³£#×Ò"Ð Ð¢ÆW'Eö6÷VçBÒ7VÒƒf÷"Æ–æR–âÆ–æW2–bÆ–æRç7F'G7v—F‚‚"22"’Ð¢–bÆW'Eö6÷VçBÒ Ð¢&—6R76W'F–öäW'&÷"†b&W‡V7FVBöæÇ’öæRFVÆ—fW&VBÆW'BÂv÷B¶ÆW'Eö6÷VçGÒ"Ð Ð Ð¦–bõöæÖUõòÓÒ%õöÖ–åõò# Ð¢&—6R7—7FVÔW†—B†Ö–â‚’Ð
+        "whitehouse_story_key": "canada-section-338-tariffs",
+    }
+    fact_sheet = {
+        "source": "White House fact sheets",
+        "title": "Fact Sheet: President Donald J. Trump Imposes Additional Tariffs on Canada",
+        "link": "https://www.whitehouse.gov/fact-sheets/additional-tariffs-on-canada/",
+        "fingerprint": fingerprint,
+        "whitehouse_story_key": "canada-section-338-tariffs",
+    }
+    selected = khs_policy_watch.dedupe_candidate_fingerprints([proclamation, fact_sheet])
+    if len(selected) != 1 or selected[0].get("source") != "White House fact sheets":
+        raise AssertionError(f"White House duplicate story did not prefer its fact sheet: {selected}")
+
+
+def assert_policy_seen_waits_for_confirmed_delivery() -> None:
+    original = (
+        khs_policy_seen_finalize.OUT,
+        khs_policy_seen_finalize.DATA,
+        khs_policy_seen_finalize.PENDING_PATH,
+        khs_policy_seen_finalize.DELIVERY_PATH,
+        khs_policy_seen_finalize.SEEN_PATH,
+        khs_policy_seen_finalize.SURVIVING_ALERT_PATHS,
+    )
+    with tempfile.TemporaryDirectory() as temp:
+        root = Path(temp)
+        out = root / "out"
+        data = root / "data"
+        out.mkdir()
+        data.mkdir()
+        khs_policy_seen_finalize.OUT = out
+        khs_policy_seen_finalize.DATA = data
+        khs_policy_seen_finalize.PENDING_PATH = out / "pending.json"
+        khs_policy_seen_finalize.DELIVERY_PATH = out / "confirmed.json"
+        khs_policy_seen_finalize.SEEN_PATH = data / "seen.json"
+        khs_policy_seen_finalize.SURVIVING_ALERT_PATHS = (out / "alerts.json",)
+        khs_policy_seen_finalize.PENDING_PATH.write_text(
+            json.dumps({"created_at_kst": "2026-07-23T18:00:00+09:00", "seen": {"fp1": {"title": "verified"}}}),
+            encoding="utf-8",
+        )
+        (out / "alerts.json").write_text(
+            json.dumps([{"fingerprint": "fp1"}]),
+            encoding="utf-8",
+        )
+        khs_policy_seen_finalize.main()
+        if khs_policy_seen_finalize.SEEN_PATH.exists():
+            raise AssertionError("policy seen state was committed without confirmed Telegram delivery")
+        khs_policy_seen_finalize.DELIVERY_PATH.write_text(
+            json.dumps({"status": "confirmed", "confirmed_at_kst": "2026-07-23T18:01:00+09:00"}),
+            encoding="utf-8",
+        )
+        khs_policy_seen_finalize.main()
+        state = json.loads(khs_policy_seen_finalize.SEEN_PATH.read_text(encoding="utf-8"))
+        if "fp1" not in state.get("seen", {}):
+            raise AssertionError("confirmed Telegram delivery did not finalize policy seen state")
+    (
+        khs_policy_seen_finalize.OUT,
+        khs_policy_seen_finalize.DATA,
+        khs_policy_seen_finalize.PENDING_PATH,
+        khs_policy_seen_finalize.DELIVERY_PATH,
+        khs_policy_seen_finalize.SEEN_PATH,
+        khs_policy_seen_finalize.SURVIVING_ALERT_PATHS,
+    ) = original
+
+
+def assert_stablecoin_watch_rejects_bok_generic_page() -> None:
+    generic = "ê¸ˆìœµì•ˆì •ì—…ë¬´ ì†Œê°œ í•œêµ­ì€í–‰ ì§€ê¸‰ê²°ì œ ë””ì§€í„¸í™”í ê¸ˆìœµì•ˆì • ì •ì±… ì—…ë¬´ ê²°ì œ í‘œì¤€"
+    if khs_domestic_stablecoin_policy_watch.is_policy_candidate(generic, "Bank of Korea digital currency policy"):
+        raise AssertionError("BOK generic financial-stability page passed stablecoin candidate filter")
+
+    direct = "í•œêµ­ì€í–‰ ì›í™” ìŠ¤í…Œì´ë¸”ì½”ì¸ ì˜ˆê¸ˆ ëŒ€ì²´ ì¤€ë¹„ìžì‚° ìƒí™˜ì²­êµ¬ê¶Œ ë°œí–‰ ì£¼ì²´ ê·œì œ ë²•ì•ˆ"
+    if not khs_domestic_stablecoin_policy_watch.is_policy_candidate(direct, "Bank of Korea digital currency policy"):
+        raise AssertionError("BOK direct stablecoin policy text was over-filtered")
+
+    title = khs_domestic_stablecoin_policy_watch.stablecoin_title("í•œêµ­ì€í–‰ í•œì€ ê¸ˆìœµì•ˆì •ì—…ë¬´ ì†Œê°œ ì§€ê¸‰ê²°ì œ ë””ì§€í„¸í™”í")
+    if "ì˜ˆê¸ˆ ëŒ€ì²´" in title or "ì¤€ë¹„ìžì‚°" in title:
+        raise AssertionError("BOK actor-only text still selects deposit/reserve stablecoin title")
+
+
+def assert_stablecoin_semantic_dedupe() -> None:
+    base = {
+        "title": "êµ­ë‚´ ë””ì§€í„¸ìžì‚° ì •ì±…: ìŠ¤í…Œì´ë¸”ì½”ì¸ ì˜ˆê¸ˆ ëŒ€ì²´Â·ì¤€ë¹„ìžì‚° ê·œì œ ì²´í¬",
+        "importance": "ìƒ",
+        "status": "í™•ì •",
+        "published_kst": "2026-07-06T00:00:00+09:00",
+        "matched": {"korea_stablecoin_policy": ["ìŠ¤í…Œì´ë¸”ì½”ì¸", "ì˜ˆê¸ˆ ëŒ€ì²´"]},
+        "domestic_stablecoin_policy_watch": True,
+        "link": "https://www.bok.or.kr/portal/submain/submain/cbdc.do?menuNo=201136",
+        "fingerprint": "source-a",
+    }
+    duplicate = {
+        **base,
+        "source": "Bank of Korea payment research",
+        "link": "https://www.bok.or.kr/portal/bbs/B0000232/list.do?menuNo=200706",
+        "fingerprint": "source-b",
+    }
+    base["source"] = "Bank of Korea digital currency policy"
+    merged = khs_domestic_stablecoin_policy_watch.merge_policy_duplicates([base, duplicate])
+    if len(merged) != 1:
+        raise AssertionError(f"stablecoin policy semantic dedupe failed: expected 1, got {len(merged)}")
+    item = merged[0]
+    if "Bank of Korea digital currency policy" not in item.get("source", ""):
+        raise AssertionError("stablecoin dedupe dropped first source")
+    if "Bank of Korea payment research" not in item.get("source", ""):
+        raise AssertionError("stablecoin dedupe dropped second source")
+    if len(item.get("source_links") or []) != 2:
+        raise AssertionError("stablecoin dedupe did not keep both source links")
+    source_fps = set(item.get("source_fingerprints") or [])
+    if source_fps != {"source-a", "source-b"}:
+        raise AssertionError(f"stablecoin dedupe did not keep source fingerprints: {source_fps}")
+
+
+def assert_router_final_semantic_dedupe() -> None:
+    base = {
+        "title": "êµ­ë‚´ ë””ì§€í„¸ìžì‚° ì •ì±…: ìŠ¤í…Œì´ë¸”ì½”ì¸ ì˜ˆê¸ˆ ëŒ€ì²´Â·ì¤€ë¹„ìžì‚° ê·œì œ ì²´í¬",
+        "importance": "ìƒ",
+        "status": "í™•ì •",
+        "published_kst": "2026-07-06T00:00:00+09:00",
+        "matched": {"korea_stablecoin_policy": ["ìŠ¤í…Œì´ë¸”ì½”ì¸", "ì˜ˆê¸ˆ ëŒ€ì²´"]},
+        "domestic_stablecoin_policy_watch": True,
+        "impacts": ["ì‹œê°„í‘œ", "ìˆ˜ê¸‰", "ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨"],
+        "sectors": ["ê¸ˆìœµ/ìžë³¸ì‹œìž¥/ìŠ¤í…Œì´ë¸”ì½”ì¸"],
+        "link": "https://www.bok.or.kr/portal/submain/submain/cbdc.do?menuNo=201136",
+        "source": "Bank of Korea digital currency policy",
+    }
+    duplicate = {
+        **base,
+        "source": "Bank of Korea payment research",
+        "link": "https://www.bok.or.kr/portal/bbs/B0000232/list.do?menuNo=200706",
+    }
+    merged = khs_policy_alert_router.dedupe_alerts([base, duplicate])
+    if len(merged) != 1:
+        raise AssertionError(f"router final semantic dedupe failed: expected 1, got {len(merged)}")
+    item = merged[0]
+    if len(item.get("source_links") or []) != 2:
+        raise AssertionError("router final dedupe did not keep both source links")
+    rendered_sources = khs_policy_alert_router.source_markdown(item)
+    if "Bank of Korea digital currency policy" not in rendered_sources:
+        raise AssertionError("router source rendering dropped first source")
+    if "Bank of Korea payment research" not in rendered_sources:
+        raise AssertionError("router source rendering dropped second source")
+
+
+def assert_router_keeps_source_families_separate() -> None:
+    boem = {
+        "source": "BOEM news",
+        "title": "Generic policy document",
+        "title_ko": "ë¯¸êµ­ ì •ì±… ë¬¸ì„œ ê³µí‘œ",
+        "link": "https://www.boem.gov/newsroom/press-releases/boem-initiates-first-step-explore-potential-outer-continental-shelf-space",
+        "importance": "ìƒ",
+        "status": "í™•ì •",
+        "published_kst": "2026-07-07T23:00:00+09:00",
+        "matched": {"agency_order": ["order"]},
+        "impacts": ["ì‹œê°„í‘œ"],
+        "paths": ["ì •ì±… íƒ€ìž„ë¼ì¸"],
+        "sectors": ["ì •ì±…/ê·œì œ ì¼ë°˜"],
+    }
+    fcc = {
+        **boem,
+        "source": "Federal Register FCC",
+        "link": "https://www.federalregister.gov/documents/2026/07/06/2026-13518/prohibiting-importation-and-marketing-of-previously-authorized-covered-communications-equipment",
+        "matched": {"agency_order": ["order"]},
+    }
+    merged = khs_policy_alert_router.dedupe_alerts([boem, fcc])
+    if len(merged) != 2:
+        raise AssertionError(f"router merged different source families: expected 2, got {len(merged)}")
+
+
+def assert_whitehouse_video_remarks_are_parsed_but_market_filtered() -> None:
+    html = """
+    <a href="/videos/president-trump-delivers-remarks-on-semiconductor-tariffs-and-china/">
+    President Trump Delivers Remarks on Semiconductor Tariffs and China
+    </a>
+    July 8, 2026
+    <a href="/videos/president-trump-speaks-at-the-faith-freedom-coalition-conference/">
+    President Trump Speaks at the Faith & Freedom Coalition Conference
+    </a>
+    July 8, 2026
+    <a href="/videos/president-trump-participates-in-a-nato-leaders-working-session/">
+    President Trump Participates in a NATO Leaders Working Session
+    </a>
+    July 8, 2026
+    """
+    source = khs_policy_watch.Source("White House remarks", "https://www.whitehouse.gov/remarks/", "whitehouse_html")
+    items = khs_policy_watch.parse_whitehouse_html(html, source)
+    if len(items) != 3:
+        raise AssertionError(f"White House remarks parser did not retain video links: {len(items)}")
+    market_item = next((item for item in items if "semiconductor" in item["title"].lower()), None)
+    generic_item = next((item for item in items if "faith" in item["title"].lower()), None)
+    generic_nato_item = next((item for item in items if "nato" in item["title"].lower()), None)
+    if not market_item or "/videos/" not in market_item["link"]:
+        raise AssertionError("White House market-moving video remark link was not parsed")
+    market_item.update(
+        {
+            "body_verified": True,
+            "source_body": "President Trump announced semiconductor tariffs and China export-control policy.",
+        }
+    )
+    generic_item.update(
+        {
+            "body_verified": True,
+            "source_body": "President Trump addressed a political conference.",
+        }
+    )
+    generic_nato_item.update(
+        {
+            "body_verified": True,
+            "source_body": "President Trump participated in a NATO leaders working session.",
+        }
+    )
+    if not khs_policy_watch.classify_item(market_item):
+        raise AssertionError("White House market-moving video remark was not classified")
+    if khs_policy_watch.classify_item(generic_item):
+        raise AssertionError("White House generic political video remark was classified as high-impact")
+    if khs_policy_watch.classify_item(generic_nato_item):
+        raise AssertionError("White House generic NATO video without market detail was classified as high-impact")
+
+
+def assert_whitehouse_executive_order_is_korean_and_not_fcc() -> None:
+    item = {
+        "source": "White House executive orders",
+        "title": "Ushering in the Next Frontier of Quantum Innovation",
+        "summary": "White House Executive Order official page link: Ushering in the Next Frontier of Quantum Innovation",
+        "source_body": "The Executive Order directs a national quantum innovation and national security program.",
+        "link": "https://www.whitehouse.gov/presidential-actions/2026/06/ushering-in-the-next-frontier-of-quantum-innovation/",
+        "published_kst": "2026-07-13T00:00:00+09:00",
+        "body_verified": True,
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("White House quantum executive order was not classified")
+    if "fcc_decision_notice" in (classified.get("matched") or {}):
+        raise AssertionError("White House executive order was misclassified as an FCC notice")
+    title = khs_policy_alert_router.safe_title(classified)
+    if title != "ë°±ì•…ê´€, ì–‘ìžê¸°ìˆ  í˜ì‹ Â·êµ­ê°€ì•ˆë³´ í–‰ì •ëª…ë ¹ ë°œí‘œ":
+        raise AssertionError(f"White House executive order title was not Korean and specific: {title}")
+    if any(token in title for token in ("Quantum Innovation", "FCC", "í†µì‹ Â·ì£¼íŒŒìˆ˜")):
+        raise AssertionError(f"White House executive order title leaked wrong topic: {title}")
+
+
+def assert_trump_statement_reaches_policy_lane() -> None:
+    item = {
+        "source": "White House remarks",
+        "title": "Remarks by President Donald J. Trump on Semiconductor Tariffs and China",
+        "summary": "White House Trump Remarks official page link: Remarks by President Donald J. Trump on Semiconductor Tariffs and China",
+        "source_body": "President Trump announced semiconductor tariffs and China export-control policy.",
+        "link": "https://www.whitehouse.gov/remarks/2026/07/remarks-by-president-donald-j-trump-on-semiconductor-tariffs-and-china/",
+        "published_kst": "2026-07-08T00:00:00+09:00",
+        "body_verified": True,
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("Trump direct remarks were not classified as a policy alert")
+    if "presidential_action" not in (classified.get("matched") or {}):
+        raise AssertionError("Trump direct remarks did not carry presidential_action match")
+    classified["sectors"] = khs_policy_alert_guardrails.direct_sectors(classified)
+    khs_policy_alert_guardrails.ensure_explained(classified)
+    if not khs_policy_alert_guardrails.has_actionable_decision_impact(classified):
+        raise AssertionError("Trump direct remarks were dropped by policy decision-impact guardrail")
+    rendered = khs_policy_alert_router.render_policy_report(
+        [classified],
+        dt.datetime(2026, 7, 8, 15, 40, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "íŠ¸ëŸ¼í”„ ëŒ€í†µë ¹ ë°œì–¸, ì‹œìž¥ ì˜í–¥ ì •ì±… ì‹ í˜¸",
+        "- í•µì‹¬:",
+        "- ì˜ì‚¬ê²°ì • ì˜í–¥:",
+        "ë°±ì•…ê´€ íŠ¸ëŸ¼í”„ ë°œì–¸",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"Trump direct remarks policy render missing: {marker}")
+    if "Remarks by President Donald" in rendered:
+        raise AssertionError("raw English Trump remarks title leaked into Telegram render")
+
+
+def assert_nato_defense_fact_sheet_is_not_generic_trump_alert() -> None:
+    item = {
+        "source": "White House Fact Sheet",
+        "title": "Fact Sheet: President Donald J. Trump Secures Historic Defense Investment from NATO Allies, Powering American Industry",
+        "summary": (
+            "At NATO's 2026 Ankara Summit, President Donald J. Trump announced a surge in defense investment "
+            "from Allies, strengthening the U.S. defense industrial base. $3 billion in major deals and joint "
+            "ventures were announced, including PAC-3 sustainment, MQ-4C Tritons, ATACMS, AMRAAM, Stinger, "
+            "Small Diameter Bomb production, Anduril Barracuda-500 missiles, NATO 3.0, and PURL purchases."
+        ),
+        "source_body": (
+            "At NATO's 2026 Ankara Summit, President Donald J. Trump announced a surge in defense investment "
+            "from Allies, strengthening the U.S. defense industrial base. $3 billion in major deals and joint "
+            "ventures were announced, including PAC-3, MQ-4C, ATACMS, AMRAAM, Stinger, SDB-I and Barracuda-500."
+        ),
+        "link": "https://www.whitehouse.gov/fact-sheets/2026/07/fact-sheet-president-donald-j-trump-secures-historic-defense-investment-from-nato-allies-powering-american-industry/",
+        "published_kst": "2026-07-08T00:00:00+09:00",
+        "body_verified": True,
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("NATO defense investment fact sheet was not classified")
+    khs_policy_alert_guardrails.ensure_explained(classified)
+    rendered = khs_policy_alert_router.render_policy_report(
+        [classified],
+        dt.datetime(2026, 7, 9, 9, 36, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "ë°±ì•…ê´€, NATO ë°©ìœ„íˆ¬ìž í™•ëŒ€Â·ë¯¸êµ­ ë°©ì‚° ìƒì‚° ê°•í™” ë°œí‘œ",
+        "PAC-3",
+        "AMRAAM",
+        "K-ë°©ì‚°",
+        "í™•ì • ë§¤ì¶œì€ ì•„ë‹™ë‹ˆë‹¤",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"NATO defense fact sheet render missing: {marker}")
+    forbidden = [
+        "íŠ¸ëŸ¼í”„ ëŒ€í†µë ¹ ë°œì–¸, ì‹œìž¥ ì˜í–¥ ì •ì±… ì‹ í˜¸",
+        "ì´ëž€Â·ì´ìŠ¤ë¼ì—˜Â·í˜¸ë¥´ë¬´ì¦ˆ",
+    ]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"NATO defense fact sheet used generic Trump template: {marker}")
+    cleanup()
+    try:
+        (OUT_DIR / "khs_policy_watch_alert_title.txt").write_text(
+            "KHS ì •ì±… ì›Œì¹˜: [ìƒ] ë°±ì•…ê´€, NATO ë°©ìœ„íˆ¬ìž í™•ëŒ€Â·ë¯¸êµ­ ë°©ì‚° ìƒì‚° ê°•í™” ë°œí‘œ\n",
+            encoding="utf-8",
+        )
+        (OUT_DIR / "khs_policy_watch_alert.md").write_text(rendered, encoding="utf-8")
+        khs_telegram_delivery_guard.main()
+        if not (OUT_DIR / "khs_policy_watch_alert.md").exists():
+            raise AssertionError("NATO defense fact sheet was blocked by Telegram delivery guard")
+    finally:
+        cleanup()
+
+
+def assert_trump_iran_war_statement_reaches_geopolitical_lane() -> None:
+    item = {
+        "source": "White House remarks",
+        "title": "Remarks by President Donald J. Trump on Iran, Israel, and the Strait of Hormuz",
+        "summary": "White House Trump Remarks official page link: Remarks by President Donald J. Trump on Iran, Israel, and the Strait of Hormuz",
+        "source_body": "President Trump discussed Iran, Israel, oil shipping, and the Strait of Hormuz.",
+        "link": "https://www.whitehouse.gov/remarks/2026/07/remarks-by-president-donald-j-trump-on-iran-israel-and-the-strait-of-hormuz/",
+        "published_kst": "2026-07-08T00:00:00+09:00",
+        "body_verified": True,
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("Trump Iran/Hormuz remarks were not classified as a policy alert")
+    classified["sectors"] = khs_policy_alert_guardrails.direct_sectors(classified)
+    if "ë°©ì‚°/ì§€ì •í•™" not in classified.get("sectors", []):
+        raise AssertionError(f"Trump Iran/Hormuz remarks missing geopolitics sector: {classified.get('sectors')}")
+    if "ì •ìœ /í™”í•™/í•´ìš´" not in classified.get("sectors", []):
+        raise AssertionError(f"Trump Iran/Hormuz remarks missing oil/shipping sector: {classified.get('sectors')}")
+    khs_policy_alert_guardrails.ensure_explained(classified)
+    if not khs_policy_alert_guardrails.has_actionable_decision_impact(classified):
+        raise AssertionError("Trump Iran/Hormuz remarks were dropped by decision-impact guardrail")
+    rendered = khs_policy_alert_router.render_policy_report(
+        [classified],
+        dt.datetime(2026, 7, 8, 15, 45, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    for marker in ("ì´ëž€Â·ì´ìŠ¤ë¼ì—˜Â·ì¤‘ë™ ì „ìŸìœ„í—˜", "ì •ìœ /í™”í•™/í•´ìš´", "ìœ ê°€Â·í™˜ìœ¨Â·ìš´ìž„Â·ë°©ì‚°"):
+        if marker not in rendered:
+            raise AssertionError(f"Trump Iran/Hormuz render missing market-impact marker: {marker}")
+
+
+def assert_trusted_iran_hormuz_escalation_reaches_policy_lane() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "iran_hormuz_military_escalation"
+    )
+    item = {
+        "title": "US attacks Iran over ship being hit in Strait of Hormuz; Tehran lashes out again at Gulf Arab states - AP News",
+        "source": "AP News",
+        "published_kst": "2026-07-12T09:45:00+09:00",
+        "link": "https://apnews.com/article/iran-hormuz-regression-fixture",
+        "priority": 7,
+    }
+    if not khs_trusted_policy_news_watch.has_required_terms(item["title"], rule):
+        raise AssertionError("trusted Iran/Hormuz escalation headline did not satisfy required terms")
+    rendered = khs_trusted_policy_news_watch.render_alert(
+        rule,
+        [item],
+        dt.datetime(2026, 7, 12, 12, 30, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    for marker in (
+        "ë¯¸êµ­, ì´ëž€ ì¶”ê°€ íƒ€ê²©Â·í˜¸ë¥´ë¬´ì¦ˆ ê¸´ìž¥ ê³ ì¡° ë³´ë„",
+        "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„, ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ",
+        "ì •ìœ /í™”í•™",
+        "í•´ìš´",
+        "AP News",
+    ):
+        if marker not in rendered:
+            raise AssertionError(f"trusted Iran/Hormuz alert render missing: {marker}")
+
+
+def assert_trusted_policy_news_story_fingerprint_allows_intraday_updates() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "trump_direct_policy_remarks_watch"
+    )
+    nato_item = {
+        "title": "Trump says 'a lot of unity' at NATO summit after lashing out at allies - Reuters",
+        "source": "Reuters",
+        "published_kst": "2026-07-09T08:58:10+09:00",
+        "link": "https://example.com/nato",
+    }
+    iran_item = {
+        "title": "Trump says Iran reached out seeking a new agreement - Bloomberg",
+        "source": "Reuters",
+        "published_kst": "2026-07-09T14:05:00+09:00",
+        "link": "https://example.com/iran-talks",
+    }
+    if khs_trusted_policy_news_watch.fingerprint(rule, [nato_item]) == khs_trusted_policy_news_watch.fingerprint(rule, [iran_item]):
+        raise AssertionError("trusted policy fingerprint still dedupes different Trump stories on the same day")
+    legacy_fp = khs_trusted_policy_news_watch.legacy_daily_fingerprint(rule, [nato_item])
+    seen = {legacy_fp: {"first_seen_kst": "2026-07-09T13:35:56+09:00"}}
+    fresh = khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [iran_item, nato_item], seen)
+    if fresh != [iran_item]:
+        raise AssertionError(f"legacy daily seen did not allow only fresh intraday Trump item: {fresh}")
+    rendered = khs_trusted_policy_news_watch.korean_trump_story_title(iran_item["title"])
+    if "ì´ëž€ í˜‘ìƒ" not in rendered:
+        raise AssertionError(f"Iran negotiation Trump title was not translated as negotiations: {rendered}")
+    if not khs_trusted_policy_news_watch.has_required_terms(iran_item["title"], rule):
+        raise AssertionError("Trump Iran reached-out/new-agreement headline did not satisfy trusted-news required terms")
+
+
+def assert_trusted_policy_news_render_is_compact() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "trump_direct_policy_remarks_watch"
+    )
+    item = {
+        "title": "Trump says Iran reached out seeking a new agreement - CNBC",
+        "source": "CNBC",
+        "published_kst": "2026-07-09T19:00:18+09:00",
+        "link": "https://news.google.com/example",
+        "priority": 3,
+    }
+    rendered = khs_trusted_policy_news_watch.render_alert_bundle(
+        [{"rule": rule, "items": [item], "fingerprint": "test"}],
+        dt.datetime(2026, 7, 9, 22, 29, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "íŠ¸ëŸ¼í”„, ì´ëž€ í˜‘ìƒ ìž¬ê°œ ë°œì–¸",
+        "- í•µì‹¬:",
+        "- íˆ¬ìž ê´€ì :",
+        "- í•œêµ­ìž¥ ì˜í–¥:",
+        "- ì˜ì‚¬ê²°ì • ì˜í–¥:",
+        "- ì˜í–¥ ì„¹í„°: ì •ìœ /í™”í•™, í•´ìš´, í•­ê³µ/ìš´ì†¡, ë°©ì‚°/ì§€ì •í•™",
+        "- ë°˜ì˜/ë°˜ëŒ€:",
+        "- ì‹¤íŒ¨ ì‹ í˜¸:",
+        "- ì¶œì²˜:",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"trusted policy compact render missing: {marker}")
+    forbidden = [
+        "- í•œêµ­ ë°¸ë¥˜ì²´ì¸:",
+        "ì™¸ 12ê°œ",
+        "ì£¼ìš” ë³´ë„ 1",
+        "ðŸ’¡ íŒë‹¨:",
+        "íŠ¸ëŸ¼í”„ ëŒ€í†µë ¹ì˜ ì§ì ‘ ë°œì–¸ì´ ê´€ì„¸, ìˆ˜ì¶œí†µì œ",
+        "ê´€ì„¸/ìˆ˜ì¶œì£¼, ë°˜ë„ì²´/AI",
+    ]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"trusted policy compact render leaked verbose text: {marker}")
+    if len(rendered) > 1200:
+        raise AssertionError(f"trusted policy Telegram render is too long: {len(rendered)} chars")
+    long_lines = [line for line in rendered.splitlines() if len(line) > khs_telegram_delivery_guard.MAX_BODY_LINE_CHARS]
+    if long_lines:
+        raise AssertionError(f"trusted policy Telegram render has overlong line: {long_lines[0][:120]}")
+
+
+def assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "trump_direct_policy_remarks_watch"
+    )
+    item = {
+        "title": "Trump says Strait of Hormuz open to commercial traffic - Reuters",
+        "source": "Reuters",
+        "published_kst": "2026-07-12T22:30:09+09:00",
+        "link": "https://example.com/reuters-hormuz-open",
+        "priority": 1,
+    }
+    profile = khs_trusted_policy_news_watch.trump_story_profile(item["title"])
+    if not profile:
+        raise AssertionError("Reuters Hormuz-open story was not given a concrete Korean profile")
+    if profile.get("title") != "íŠ¸ëŸ¼í”„, í˜¸ë¥´ë¬´ì¦ˆ í•´í˜‘ ìƒì—… í†µí•­ ê°€ëŠ¥ ë°œì–¸: ìœ ê°€Â·ìš´ìž„ ë¦¬ìŠ¤í¬ ì™„í™” ì‹ í˜¸":
+        raise AssertionError(f"Hormuz-open title translation is not source-faithful: {profile.get('title')}")
+    rendered = khs_trusted_policy_news_watch.render_alert_bundle(
+        [{"rule": rule, "items": [item], "fingerprint": "test"}],
+        dt.datetime(2026, 7, 13, 9, 0, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "í˜¸ë¥´ë¬´ì¦ˆ í•´í˜‘ ìƒì—… í†µí•­ ê°€ëŠ¥ ë°œì–¸",
+        "í˜¸ë¥´ë¬´ì¦ˆ í•´í˜‘ì´ ìƒì—… í†µí•­ì— ì—´ë ¤ ìžˆë‹¤ê³ ",
+        "í•­ê³µ/ìš´ì†¡, í™”í•™, í•´ìš´, ì •ìœ ",
+        "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„, ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨, ì‹œê°„í‘œ",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"Hormuz-open render missing: {marker}")
+    forbidden = ["íŠ¸ëŸ¼í”„ ì—ë„ˆì§€ ë°œì–¸", "ê´€ì„¸/ìˆ˜ì¶œì£¼", "ë°˜ë„ì²´/AI", "ì „ë ¥ë§/ì›ì „"]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"Hormuz-open render leaked generic template text: {marker}")
+    iran_talks = {
+        **item,
+        "title": "Trump says US agreed to Iran's request to continue talks, but ceasefire is over - Reuters",
+        "published_kst": "2026-07-11T07:25:15+09:00",
+        "link": "https://example.com/reuters-iran-talks",
+    }
+    groups = khs_trusted_policy_news_watch.alert_item_groups(rule, [item, iran_talks])
+    if groups != [[item], [iran_talks]]:
+        raise AssertionError("different Trump headlines were bundled into one Telegram source chain")
+    revised_seen = {khs_trusted_policy_news_watch.fingerprint(rule, [item]): {"first_seen_kst": "2026-07-12T23:01:16+09:00"}}
+    if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [item], revised_seen) != [item]:
+        raise AssertionError("corrected Hormuz-open Korean rendering was blocked before one corrective send")
+    event_seen = {khs_trusted_policy_news_watch.story_event_fingerprint(rule, [item]): {"first_seen_kst": "2026-07-13T09:00:00+09:00"}}
+    updated_item = {**item, "published_kst": "2026-07-13T09:10:00+09:00"}
+    if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [updated_item], event_seen):
+        raise AssertionError("same Reuters Hormuz headline re-alerted when only its timestamp changed")
+    false_positive = "Trump administration subpoenas New York Times journalists over Air Force One story, newspaper says - Reuters"
+    if khs_trusted_policy_news_watch.is_direct_trump_statement_title(false_positive):
+        raise AssertionError("third-party newspaper wording was treated as a direct Trump statement")
+    if khs_trusted_policy_news_watch.trump_story_profile(false_positive):
+        raise AssertionError("Air Force One wording was incorrectly classified as an AI policy story")
+    if not khs_trusted_policy_news_watch.is_direct_trump_statement_title(item["title"]):
+        raise AssertionError("actual Reuters Trump quote was rejected by the direct-statement gate")
+
+
+def assert_trusted_heat_mortality_is_source_faithful_and_deduped() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "global_extreme_heat_mortality_watch"
+    )
+    item = {
+        "title": "India heatwave kills at least 120 as power demand hits record - Reuters",
+        "source": "Reuters",
+        "published_kst": "2026-07-14T09:15:00+09:00",
+        "link": "https://example.com/reuters-india-heatwave",
+        "priority": 1,
+    }
+    profile = khs_trusted_policy_news_watch.heat_mortality_story_profile(item["title"])
+    if not profile:
+        raise AssertionError("high-impact heat mortality headline was not given a source-specific Korean profile")
+    if profile.get("title") != "ì¸ë„, í­ì—¼ ì‚¬ë§ 120ëª… ë³´ë„: ì „ë ¥ìˆ˜ìš”Â·ì „ë ¥ë§ ë¦¬ìŠ¤í¬ í™•ì¸":
+        raise AssertionError(f"heat mortality title is not source-faithful: {profile.get('title')}")
+    rendered = khs_trusted_policy_news_watch.render_alert_bundle(
+        [{"rule": rule, "items": [item], "fingerprint": "heat-test"}],
+        dt.datetime(2026, 7, 14, 10, 0, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "ì¸ë„, í­ì—¼ ì‚¬ë§ 120ëª… ë³´ë„",
+        "ì¸ë„ í­ì—¼ê³¼ ì‚¬ë§ 120ëª… ë°œìƒ",
+        "ì „ë ¥ìˆ˜ìš”Â·ì „ë ¥ë§",
+        "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„, ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨, ì‹œê°„í‘œ",
+        "í•œêµ­ìž¥ ì§ì ‘ ì˜í–¥ì€ ì œí•œì ìž…ë‹ˆë‹¤.",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"heat mortality render missing source-specific marker: {marker}")
+    forbidden = ["íŠ¸ëŸ¼í”„", "ë°˜ë„ì²´/AI", "ê´€ì„¸/ìˆ˜ì¶œì£¼", "ì „ë ¥ë§/ì›ì „"]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"heat mortality render leaked unrelated template text: {marker}")
+    if khs_telegram_delivery_guard.has_source_body_mismatch(
+        "KHS ì‹ ë¢°ì™¸ì‹  ì •ì±… ì›Œì¹˜: [ìƒÂ·ê³µì‹ í™•ì¸ ì „] " + str(profile["title"]),
+        rendered,
+    ):
+        raise AssertionError("heat mortality rendering failed the final source/body guard")
+    if khs_telegram_delivery_guard.has_long_english_run(rendered):
+        raise AssertionError("heat mortality rendering leaked a long raw-English run")
+    low_impact = "Local heatwave blamed for one death at a village festival - Reuters"
+    if khs_trusted_policy_news_watch.is_heat_mortality_high_impact_title(low_impact):
+        raise AssertionError("single local heat death was incorrectly made a high-impact market alert")
+    if khs_trusted_policy_news_watch.heat_mortality_story_profile(low_impact):
+        raise AssertionError("single local heat death received a high-impact Korean profile")
+    if not khs_trusted_policy_news_watch.is_trusted_source("World Health Organization (WHO)"):
+        raise AssertionError("WHO was not registered as an official heat-mortality source")
+    if not khs_trusted_policy_news_watch.is_trusted_source("World Meteorological Organization (WMO)"):
+        raise AssertionError("WMO was not registered as an official heat-mortality source")
+    groups = khs_trusted_policy_news_watch.alert_item_groups(rule, [item])
+    if groups != [[item]]:
+        raise AssertionError("heat mortality headline was not isolated into one source chain")
+    seen = {khs_trusted_policy_news_watch.story_event_fingerprint(rule, [item]): {"first_seen_kst": "2026-07-14T09:20:00+09:00"}}
+    updated_item = {**item, "published_kst": "2026-07-14T10:20:00+09:00"}
+    if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [updated_item], seen):
+        raise AssertionError("same heat mortality headline re-alerted when only its timestamp changed")
+
+
+def assert_iran_hormuz_story_is_source_faithful_and_cooldown_deduped() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "iran_hormuz_military_escalation"
+    )
+    item = {
+        "title": "US attacks Iran as Tehran retaliates against UAE tankers in Strait of Hormuz and Bahrain - AP News",
+        "source": "AP News",
+        "published_kst": "2026-07-14T11:38:00+09:00",
+        "link": "https://example.com/ap-iran-hormuz-tankers",
+        "priority": 7,
+    }
+    profile = khs_trusted_policy_news_watch.iran_hormuz_story_profile(item["title"])
+    if not profile:
+        raise AssertionError("Iran/Hormuz wire headline was not given a source-specific Korean profile")
+    if profile.get("title") != "ë¯¸êµ­Â·ì´ëž€ ê³µë°©ê³¼ í˜¸ë¥´ë¬´ì¦ˆ ìœ ì¡°ì„  ìœ„í˜‘ ë³´ë„: ìœ ê°€Â·ìš´ìž„ ë¦¬ìŠ¤í¬":
+        raise AssertionError(f"Iran/Hormuz source title was rendered generically: {profile.get('title')}")
+    rendered = khs_trusted_policy_news_watch.render_alert_bundle(
+        [{"rule": rule, "items": [item], "fingerprint": "iran-hormuz-test"}],
+        dt.datetime(2026, 7, 14, 14, 30, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "ë¯¸êµ­Â·ì´ëž€ ê³µë°©ê³¼ í˜¸ë¥´ë¬´ì¦ˆ ìœ ì¡°ì„  ìœ„í˜‘ ë³´ë„",
+        "UAE ìœ ì¡°ì„ Â·ë°”ë ˆì¸ ê´€ë ¨ ëŒ€ì‘",
+        "ì •ìœ /í™”í•™, í•´ìš´, í•­ê³µ/ìš´ì†¡, ë°©ì‚°/ì§€ì •í•™",
+        "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„, ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"Iran/Hormuz source-specific rendering missing: {marker}")
+    forbidden = [
+        "ë¯¸êµ­, ì´ëž€ ìž¬ê³µê²©Â·í˜¸ë¥´ë¬´ì¦ˆ ìƒì„  í”¼ê²©: íœ´ì „Â·ìœ ê°€ ë¦¬ìŠ¤í¬",
+        "íŠ¸ëŸ¼í”„",
+        "ë°˜ë„ì²´/AI",
+    ]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"Iran/Hormuz rendering leaked generic or unrelated text: {marker}")
+    groups = khs_trusted_policy_news_watch.alert_item_groups(rule, [item])
+    if groups != [[item]]:
+        raise AssertionError("Iran/Hormuz article was not isolated into its own source chain")
+    recent_seen = {
+        "prior-escalation": {
+            "key": rule.key,
+            "first_seen_kst": "2026-07-14T14:05:22+09:00",
+        }
+    }
+    if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [item], recent_seen):
+        raise AssertionError("same Iran/Hormuz escalation phase bypassed the six-hour cooldown")
+    later_item = {
+        **item,
+        "title": "US military says it is striking Iran in response to attack on civilian vessel in Strait of Hormuz - AP News",
+        "published_kst": "2026-07-14T21:00:00+09:00",
+        "link": "https://example.com/ap-iran-civilian-vessel",
+    }
+    if khs_trusted_policy_news_watch.unseen_items_for_rule(rule, [later_item], recent_seen) != [later_item]:
+        raise AssertionError("a materially later Iran/Hormuz escalation was incorrectly blocked after cooldown")
+    if khs_trusted_policy_news_watch.iran_hormuz_story_profile("Iran official meets Gulf diplomats - AP News"):
+        raise AssertionError("non-escalation Iran headline was incorrectly assigned a market profile")
+
+
+def assert_state_smr_moc_reaches_policy_lane() -> None:
+    item = {
+        "source": "State Department office spokesperson",
+        "title": "The United States, Japan, and the Republic of Korea Sign a Trilateral Memorandum of Cooperation on Small Modular Reactor Deployments in Other Countries",
+        "summary": (
+            "U.S. Department of State media note. Secretary of State Marco Rubio, Japanese Foreign Minister "
+            "Motegi Toshimitsu, and Republic of Korea Foreign Minister Cho Hyun signed a Memorandum of "
+            "Cooperation to accelerate small modular reactor deployments in other countries, initially focused "
+            "on the Indo-Pacific. The United States is committing over $10 million in new FIRST Program funding "
+            "and announced an industry initiative among GE Vernova, Hitachi, Samsung C&T, and SGE to advance "
+            "BWRX-300 SMR deployments across Europe."
+        ),
+        "link": "https://www.state.gov/releases/office-of-the-spokesperson/2026/07/the-united-states-japan-and-the-republic-of-korea-sign-a-trilateral-memorandum-of-cooperation-on-small-modular-reactor-deployments-in-other-countries",
+        "published_kst": "2026-07-07T00:00:00+09:00",
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("State Department SMR MOC was not classified as a policy alert")
+    if "state_smr_moc_policy" not in (classified.get("matched") or {}):
+        raise AssertionError(f"State Department SMR MOC missing state_smr_moc_policy match: {classified.get('matched')}")
+    classified["sectors"] = khs_policy_alert_guardrails.direct_sectors(classified)
+    khs_policy_alert_guardrails.ensure_explained(classified)
+    if not khs_policy_alert_guardrails.has_actionable_decision_impact(classified):
+        raise AssertionError("State Department SMR MOC was dropped by policy decision-impact guardrail")
+    rendered = khs_policy_alert_router.render_policy_report(
+        [classified],
+        dt.datetime(2026, 7, 8, 22, 20, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required = [
+        "ë¯¸Â·ì¼Â·í•œ, ì œ3êµ­ SMR ë°°ì¹˜ í˜‘ë ¥ MOC ì²´ê²°",
+        "ì‚¼ì„±ë¬¼ì‚°",
+        "BWRX-300",
+        "FIRST",
+        "í™•ì • ë§¤ì¶œ í™•ì¸ ë¶ˆê°€",
+        "ì›ì „/SMR",
+        "ë¯¸ êµ­ë¬´ë¶€ ëŒ€ë³€ì¸ì‹¤",
+    ]
+    for marker in required:
+        if marker not in rendered:
+            raise AssertionError(f"State Department SMR MOC render missing: {marker}")
+    forbidden = [
+        "The United States, Japan, and the Republic of Korea Sign",
+        "- ì›ì œ:",
+        "State Department office spokesperson",
+    ]
+    for marker in forbidden:
+        if marker in rendered:
+            raise AssertionError(f"State Department SMR MOC raw text leaked: {marker}")
+
+
+def assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "us_japan_korea_smr_moc_state_watch"
+    )
+    publisher = "Aju Press"
+    query = '"United States" "Japan" "Republic of Korea" "Small Modular Reactor" "Memorandum of Cooperation" "Samsung C&T"'
+    haystack = " ".join([
+        "Seoul, Washington, Tokyo forge SMR export alliance - Aju Press",
+        publisher,
+        "Seoul, Washington, Tokyo forge SMR export alliance Aju Press",
+        query,
+    ])
+    if not khs_trusted_policy_news_watch.is_rule_trusted_source(publisher, rule):
+        raise AssertionError("State SMR MOC fallback source was not rule-trusted")
+    if not khs_trusted_policy_news_watch.has_required_terms(haystack, rule):
+        raise AssertionError("State SMR MOC fallback query terms were overfiltered")
+
+
+def assert_boem_space_launch_is_excluded() -> None:
+    item = {
+        "source": "BOEM news",
+        "title": "BOEM Initiates First Step to Explore Potential for Outer Continental Shelf Space Launch & Recovery",
+        "summary": "BOEM initiates first step to explore potential Outer Continental Shelf space launch and recovery.",
+        "link": "https://www.boem.gov/newsroom/press-releases/boem-initiates-first-step-explore-potential-outer-continental-shelf-space",
+        "matched": {"agency_order": ["outer continental shelf", "space launch"]},
+    }
+    if not khs_policy_alert_guardrails.is_low_impact_false_positive(item):
+        raise AssertionError("BOEM OCS space launch/recovery item was not excluded")
+
+
+def assert_delivery_guard_blocks_duplicate_policy_alerts() -> None:
+    cleanup()
+    title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    title_path.write_text("KHS ì •ì±… ì›Œì¹˜: [ìƒ] êµ­ë‚´ ë””ì§€í„¸ìžì‚° ì •ì±… ì¤‘ë³µ í…ŒìŠ¤íŠ¸\n", encoding="utf-8")
+    body_path.write_text(
+        "\n".join([
+            "ðŸš¨ KHS ì •ì±…Â·ê·œì œ ê³ ì¶©ê²© ì›Œì¹˜ Â· 2026ë…„ 07ì›” 06ì¼ 22:05 KST",
+            "",
+            "## 1. [ìƒÂ·í™•ì •] êµ­ë‚´ ë””ì§€í„¸ìžì‚° ì •ì±…: ìŠ¤í…Œì´ë¸”ì½”ì¸ ì˜ˆê¸ˆ ëŒ€ì²´Â·ì¤€ë¹„ìžì‚° ê·œì œ ì²´í¬",
+            "- í•µì‹¬: ì›í™” ìŠ¤í…Œì´ë¸”ì½”ì¸Â·ë””ì§€í„¸ìžì‚° ìž…ë²•ì€ ê¸ˆìœµ ì¸í”„ë¼ ìž¬íŽ¸ ì´ìŠˆìž…ë‹ˆë‹¤.",
+            "- ì˜ì‚¬ê²°ì • ì˜í–¥: ì‹œê°„í‘œ, ìˆ˜ê¸‰, ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨",
+            "- íˆ¬ìž ì˜í–¥: ì§€ê¸ˆ ë¶™ëŠ” ìžê¸ˆì€ ì‹¤ì ë³´ë‹¤ ë¯¸ëž˜ ê²°ì œ í‘œì¤€ ë² íŒ…ìž…ë‹ˆë‹¤.",
+            "- í•œêµ­ìž¥: ì€í–‰, í•€í…Œí¬, ê²°ì œ, ê°€ìƒìžì‚°ê±°ëž˜ì†Œë¥¼ ë´…ë‹ˆë‹¤.",
+            "- ë°˜ì˜ ê°€ëŠ¥ì„±: ì¤‘ê°„.",
+            "- ì‹¤íŒ¨ ì‹ í˜¸: ë°œí–‰ ì£¼ì²´ê°€ ì¢ê²Œ ì œí•œë˜ë©´ í…Œë§ˆ í™•ì‚°ì´ ì•½í•´ì§‘ë‹ˆë‹¤.",
+            "- ì¶œì²˜: [Bank of Korea digital currency policy](https://www.bok.or.kr/a) Â· ì¡°íšŒ 22:05 KST",
+            "",
+            "## 2. [ìƒÂ·í™•ì •] êµ­ë‚´ ë””ì§€í„¸ìžì‚° ì •ì±…: ìŠ¤í…Œì´ë¸”ì½”ì¸ ì˜ˆê¸ˆ ëŒ€ì²´Â·ì¤€ë¹„ìžì‚° ê·œì œ ì²´í¬",
+            "- í•µì‹¬: ì›í™” ìŠ¤í…Œì´ë¸”ì½”ì¸Â·ë””ì§€í„¸ìžì‚° ìž…ë²•ì€ ê¸ˆìœµ ì¸í”„ë¼ ìž¬íŽ¸ ì´ìŠˆìž…ë‹ˆë‹¤.",
+            "- ì˜ì‚¬ê²°ì • ì˜í–¥: ì‹œê°„í‘œ, ìˆ˜ê¸‰, ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨",
+            "- íˆ¬ìž ì˜í–¥: ì§€ê¸ˆ ë¶™ëŠ” ìžê¸ˆì€ ì‹¤ì ë³´ë‹¤ ë¯¸ëž˜ ê²°ì œ í‘œì¤€ ë² íŒ…ìž…ë‹ˆë‹¤.",
+            "- í•œêµ­ìž¥: ì€í–‰, í•€í…Œí¬, ê²°ì œ, ê°€ìƒìžì‚°ê±°ëž˜ì†Œë¥¼ ë´…ë‹ˆë‹¤.",
+            "- ë°˜ì˜ ê°€ëŠ¥ì„±: ì¤‘ê°„.",
+            "- ì‹¤íŒ¨ ì‹ í˜¸: ë°œí–‰ ì£¼ì²´ê°€ ì¢ê²Œ ì œí•œë˜ë©´ í…Œë§ˆ í™•ì‚°ì´ ì•½í•´ì§‘ë‹ˆë‹¤.",
+            "- ì¶œì²˜: [Bank of Korea payment research](https://www.bok.or.kr/b) Â· ì¡°íšŒ 22:05 KST",
+            "",
+        ]),
+        encoding="utf-8",
+    )
+    khs_telegram_delivery_guard.main()
+    if body_path.exists():
+        raise AssertionError("delivery guard did not block duplicate policy alerts")
+
+
+def assert_delivery_guard_blocks_source_body_mismatch() -> None:
+    cleanup()
+    title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    title = "KHS ì •ì±… ì›Œì¹˜: [ìƒ] FCC, í†µì‹ Â·ì£¼íŒŒìˆ˜Â·ìœ„ì„± ê·œì œ ë¬¸ì„œ ê³µí‘œ\n"
+    required_lines = required_explanation_lines("FCC inverter policy regression check")
+    body = "\n".join([
+        "KHS policy watch source/body mismatch regression",
+        "",
+        "## 1. [ìƒÂ·í™•ì •] FCC, í†µì‹ Â·ì£¼íŒŒìˆ˜Â·ìœ„ì„± ê·œì œ ë¬¸ì„œ ê³µí‘œ",
+        "- í•µì‹¬: ë¯¸êµ­ FCCê°€ ì™¸êµ­ì‚° ì—ë„ˆì§€ ì¸ë²„í„° ì œí•œì„ ê²€í† í•œë‹¤ëŠ” ë³¸ë¬¸ìž…ë‹ˆë‹¤.",
+        *required_lines,
+        "- ì¶œì²˜: [ë¯¸ BOEM](https://www.boem.gov/newsroom/press-releases/boem-initiates-first-step-explore-potential-outer-continental-shelf-space) Â· ì¡°íšŒ 23:05 KST",
+        "",
+    ])
+    title_path.write_text(title, encoding="utf-8")
+    body_path.write_text(body, encoding="utf-8")
+    reason = khs_telegram_delivery_guard.has_source_body_mismatch(title, body)
+    if reason != "boem_source_with_fcc_body":
+        raise AssertionError(f"source/body mismatch was not detected: {reason}")
+    khs_telegram_delivery_guard.main()
+    if body_path.exists():
+        raise AssertionError("delivery guard did not block BOEM source with FCC body")
+
+
+def assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch() -> None:
+    cleanup()
+    title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    title = "KHS ì •ì±… ì›Œì¹˜: [ìƒ] FCC, í†µì‹ Â·ì£¼íŒŒìˆ˜Â·ìœ„ì„± ê·œì œ ë¬¸ì„œ ê³µí‘œ\n"
+    required_lines = required_explanation_lines("FCC submarine cable/inverter mismatch regression check")
+    body = "\n".join([
+        "ðŸš¨ KHS ì •ì±…Â·ê·œì œ ê³ ì¶©ê²© ì›Œì¹˜ Â· 2026ë…„ 07ì›” 08ì¼ 15:18 KST",
+        "",
+        "## 1. [ìƒÂ·í™•ì •] FCC, í†µì‹ Â·ì£¼íŒŒìˆ˜Â·ìœ„ì„± ê·œì œ ë¬¸ì„œ ê³µí‘œ",
+        "- í•µì‹¬: ë¯¸êµ­ FCCê°€ êµ­ê°€ì•ˆë³´ ìš°ë ¤ë¥¼ ì´ìœ ë¡œ ì™¸êµ­ì‚° ë˜ëŠ” ì¤‘êµ­ì‚° ì—ë„ˆì§€ ì¸ë²„í„° ì‹ ê·œ ìˆ˜ìž… ì œí•œÂ·ê¸ˆì§€ ì¡°ì¹˜ë¥¼ ê²€í†  ì¤‘ì´ë¼ëŠ” ë‚´ìš©ìž…ë‹ˆë‹¤.",
+        *required_lines,
+        "- ì¶œì²˜: [ë¯¸ ì—°ë°©ê´€ë³´ FCC](https://www.federalregister.gov/documents/2026/07/08/2026-13765/review-of-submarine-cable-landing-license-rules-and-procedures-to-assess-evolving-national-security) Â· ì¡°íšŒ 15:18 KST",
+        "",
+    ])
+    title_path.write_text(title, encoding="utf-8")
+    body_path.write_text(body, encoding="utf-8")
+    reason = khs_telegram_delivery_guard.has_source_body_mismatch(title, body)
+    expected = "fcc_submarine_cable_source_with_inverter_or_equipment_ban_body"
+    if reason != expected:
+        raise AssertionError(f"FCC submarine/source body mismatch was not detected: {reason}")
+    khs_telegram_delivery_guard.main()
+    if body_path.exists():
+        raise AssertionError("delivery guard did not block FCC submarine cable source with inverter body")
+
+
+def assert_delivery_guard_blocks_bok_generic_stablecoin_mismatch() -> None:
+    cleanup()
+    title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    title = "KHS ì •ì±… ì›Œì¹˜: [ìƒ] êµ­ë‚´ ë””ì§€í„¸ìžì‚° ì •ì±…: ìŠ¤í…Œì´ë¸”ì½”ì¸ ì˜ˆê¸ˆ ëŒ€ì²´Â·ì¤€ë¹„ìžì‚° ê·œì œ ì²´í¬\n"
+    required_lines = required_explanation_lines("BOK generic page/stablecoin mismatch regression check")
+    body = "\n".join([
+        "ðŸš¨ KHS ì •ì±…Â·ê·œì œ ê³ ì¶©ê²© ì›Œì¹˜ Â· 2026ë…„ 07ì›” 09ì¼ 12:13 KST",
+        "",
+        "## 1. [ìƒÂ·í™•ì •] êµ­ë‚´ ë””ì§€í„¸ìžì‚° ì •ì±…: ìŠ¤í…Œì´ë¸”ì½”ì¸ ì˜ˆê¸ˆ ëŒ€ì²´Â·ì¤€ë¹„ìžì‚° ê·œì œ ì²´í¬",
+        "- í•µì‹¬: ì›í™” ìŠ¤í…Œì´ë¸”ì½”ì¸Â·ë””ì§€í„¸ìžì‚° ìž…ë²•ì€ ë°œí–‰ ì£¼ì²´, ì¤€ë¹„ìžì‚°, ì§€ê¸‰ê²°ì œ í‘œì¤€ì„ ë‘˜ëŸ¬ì‹¼ ê¸ˆìœµ ì¸í”„ë¼ ìž¬íŽ¸ ì´ìŠˆìž…ë‹ˆë‹¤.",
+        *required_lines,
+        "- ì¶œì²˜: [Bank of Korea digital currency policy](https://www.bok.or.kr/portal/submain/submain/fnncSafety.do?menuNo=201652) Â· ì¡°íšŒ 12:13 KST",
+        "",
+    ])
+    title_path.write_text(title, encoding="utf-8")
+    body_path.write_text(body, encoding="utf-8")
+    reason = khs_telegram_delivery_guard.has_source_body_mismatch(title, body)
+    expected = "bok_generic_page_with_stablecoin_policy_body"
+    if reason != expected:
+        raise AssertionError(f"BOK generic/source body mismatch was not detected: {reason}")
+    khs_telegram_delivery_guard.main()
+    if body_path.exists():
+        raise AssertionError("delivery guard did not block BOK generic page with stablecoin policy body")
+
+
+def assert_delivery_guard_blocks_url_topic_missing() -> None:
+    cases = [
+        (
+            "KHS ì •ì±… ì›Œì¹˜: [ìƒ] íŠ¸ëŸ¼í”„ ëŒ€í†µë ¹ ë°œì–¸, ì‹œìž¥ ì˜í–¥ ì •ì±… ì‹ í˜¸\n",
+            "íŠ¸ëŸ¼í”„ ëŒ€í†µë ¹ì˜ ì§ì ‘ ë°œì–¸ì´ ê´€ì„¸, ë°˜ë„ì²´, ì´ëž€ ì „ìŸìœ„í—˜ì„ ì›€ì§ì¼ ìˆ˜ ìžˆë‹¤ëŠ” ì¼ë°˜ í…œí”Œë¦¿ìž…ë‹ˆë‹¤.",
+            "https://www.whitehouse.gov/fact-sheets/2026/07/fact-sheet-president-donald-j-trump-secures-historic-defense-investment-from-nato-allies-powering-american-industry/",
+            "source_topic_missing:nato_defense_investment",
+        ),
+        (
+            "KHS ì •ì±… ì›Œì¹˜: [ìƒ] FCC, í†µì‹ Â·ì£¼íŒŒìˆ˜Â·ìœ„ì„± ê·œì œ ë¬¸ì„œ ê³µí‘œ\n",
+            "FCC í†µì‹ Â·ì£¼íŒŒìˆ˜Â·ìœ„ì„± ê·œì œ ë¬¸ì„œëŠ” í†µì‹  ì¸í”„ë¼ ì •ì±… ì‹œê°„í‘œë¥¼ ë°”ê¿€ ìˆ˜ ìžˆë‹¤ëŠ” ì¼ë°˜ í…œí”Œë¦¿ìž…ë‹ˆë‹¤.",
+            "https://www.federalregister.gov/documents/2026/07/08/2026-13765/review-of-submarine-cable-landing-license-rules-and-procedures-to-assess-evolving-national-security",
+            "source_topic_missing:submarine_cable",
+        ),
+    ]
+    for title, core, link, expected in cases:
+        cleanup()
+        title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
+        body_path = OUT_DIR / "khs_policy_watch_alert.md"
+        required_lines = required_explanation_lines("URL topic missing regression check")
+        body = "\n".join([
+            "ðŸš¨ KHS ì •ì±…Â·ê·œì œ ê³ ì¶©ê²© ì›Œì¹˜ Â· 2026ë…„ 07ì›” 09ì¼ 12:30 KST",
+            "",
+            "## 1. [ìƒÂ·í™•ì •] ì¶œì²˜ ì£¼ì œ ëˆ„ë½ íšŒê·€ í…ŒìŠ¤íŠ¸",
+            f"- í•µì‹¬: {core}",
+            *required_lines,
+            f"- ì¶œì²˜: [ê³µì‹ ì¶œì²˜]({link}) Â· ì¡°íšŒ 12:30 KST",
+            "",
+        ])
+        title_path.write_text(title, encoding="utf-8")
+        body_path.write_text(body, encoding="utf-8")
+        reason = khs_telegram_delivery_guard.has_source_body_mismatch(title, body)
+        if reason != expected:
+            raise AssertionError(f"URL topic missing mismatch was not detected: {reason} != {expected}")
+        khs_telegram_delivery_guard.main()
+        if body_path.exists():
+            raise AssertionError(f"delivery guard did not block URL topic missing case: {expected}")
+
+
+def assert_router_explains_fcc_submarine_cable_policy() -> None:
+    item = {
+        "source": "Federal Register FCC",
+        "title": "Review of Submarine Cable Landing License Rules and Procedures To Assess Evolving National Security",
+        "original_title": "Review of Submarine Cable Landing License Rules and Procedures To Assess Evolving National Security",
+        "link": "https://www.federalregister.gov/documents/2026/07/08/2026-13765/review-of-submarine-cable-landing-license-rules-and-procedures-to-assess-evolving-national-security",
+        "importance": "ìƒ",
+        "status": "í™•ì •",
+        "published_kst": "2026-07-08T09:00:00+09:00",
+        "matched": {"fcc_decision_notice": ["national security", "rulemaking"]},
+        "impacts": ["ì‹œê°„í‘œ", "í• ì¸ìœ¨"],
+        "paths": ["ì •ì±… íƒ€ìž„ë¼ì¸", "í• ì¸ìœ¨"],
+        "sectors": ["í†µì‹ /FCC/ìœ„ì„±"],
+    }
+    enriched = khs_policy_alert_router.enrich_missing_context(item)
+    khs_policy_alert_router.apply_router_overrides(enriched)
+    title = khs_policy_alert_router.safe_title(enriched)
+    fields = " ".join(
+        str(enriched.get(key) or "")
+        for key in ("policy_plain_summary", "investment_view", "korea_market_impact", "sectors")
+    ).lower()
+    if "í•´ì €ì¼€ì´ë¸”" not in title and "í•´ì € í†µì‹ ì¼€ì´ë¸”" not in fields:
+        raise AssertionError("FCC submarine cable policy was not routed to submarine cable explanation")
+    forbidden = ["inverter", "energy inverter", "solar inverter", "ì¸ë²„í„°", "ì „ë ¥ë³€í™˜ìž¥ì¹˜"]
+    for token in forbidden:
+        if token.lower() in fields:
+            raise AssertionError(f"FCC submarine cable explanation leaked inverter body: {token}")
+
+
+def cleanup() -> None:
+    for path in POLICY_FILES:
+        if path.exists():
+            path.unlink()
+
+
+def required_explanation_lines(note: str) -> list[str]:
+    return [
+        f"{markers[0]} {note}"
+        for markers in khs_telegram_delivery_guard.REQUIRED_EXPLANATION_FIELD_GROUPS
+    ]
+
+
+def write_fcc_regression_fixture() -> None:
+    alerts = [
+        {
+            "source": "Federal Register FCC",
+            "title": "Petition for Reconsideration of Action in Rulemaking Proceeding",
+            "original_title": "Petition for Reconsideration of Action in Rulemaking Proceeding",
+            "link": "https://www.federalregister.gov/documents/2026/07/06/2026-13611/petition-for-reconsideration-of-action-in-rulemaking-proceeding",
+            "importance": "ìƒ",
+            "status": "í™•ì •",
+            "published_kst": "2026-07-06T09:00:00+09:00",
+            "matched": {"fcc_decision_notice": ["proposed rule", "rulemaking"]},
+            "impacts": ["ì‹œê°„í‘œ", "ìˆ˜ê¸‰"],
+            "paths": ["ì •ì±… íƒ€ìž„ë¼ì¸", "ì£¼íŒŒìˆ˜/í†µì‹  ê·œì œ", "ìˆ˜ê¸‰"],
+            "sectors": ["í†µì‹ /FCC/ìœ„ì„±", "í†µì‹ ìž¥ë¹„", "ìœ„ì„±í†µì‹ "],
+        },
+        {
+            "source": "Federal Register FCC",
+            "title": "Prohibiting Importation and Marketing of Previously Authorized Covered Communications Equipment Added to the Covered List",
+            "original_title": "Prohibiting Importation and Marketing of Previously Authorized Covered Communications Equipment Added to the Covered List",
+            "link": "https://www.federalregister.gov/documents/2026/07/06/2026-13518/prohibiting-importation-and-marketing-of-previously-authorized-covered-communications-equipment",
+            "importance": "ìƒ",
+            "status": "í™•ì •",
+            "published_kst": "2026-07-06T09:00:00+09:00",
+            "matched": {"fcc_decision_notice": ["covered list", "national security", "prohibit", "public notice"]},
+            "impacts": ["ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„", "ìˆ˜ê¸‰", "ì‹œê°„í‘œ"],
+            "paths": ["ì •ì±… íƒ€ìž„ë¼ì¸", "ê³µê¸‰ë§", "ë°¸ë¥˜ì²´ì¸", "ìˆ˜ê¸‰"],
+            "sectors": ["í†µì‹ ìž¥ë¹„", "ìœ„ì„±í†µì‹ ", "ë„¤íŠ¸ì›Œí¬ ìž¥ë¹„"],
+        },
+    ]
+    (OUT_DIR / "khs_policy_watch_alerts.json").write_text(
+        json.dumps(alerts, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+def assert_policy_output() -> None:
+    body_path = OUT_DIR / "khs_policy_watch_alert.md"
+    if not body_path.exists():
+        raise AssertionError("policy alert body was removed unexpectedly")
+    body = body_path.read_text(encoding="utf-8-sig")
+    lines = body.splitlines()
+
+    must_contain = [
+        "FCC, ë³´ì•ˆ ìœ„í—˜ í†µì‹ ìž¥ë¹„ ìˆ˜ìž…Â·íŒë§¤ ì œí•œ ì ˆì°¨ ê³µí‘œ",
+        "- í•µì‹¬:",
+        "- ì˜ì‚¬ê²°ì • ì˜í–¥:",
+        "- íˆ¬ìž ì˜í–¥:",
+        "- í•œêµ­ìž¥:",
+        "- ë°˜ì˜/ë°˜ëŒ€:",
+        "- ì‹¤íŒ¨ ì‹ í˜¸:",
+        "- ì¶œì²˜:",
+    ]
+    for marker in must_contain:
+        if marker not in body:
+            raise AssertionError(f"missing compact Telegram marker: {marker}")
+
+    forbidden = [
+        "- ì›ì œ:",
+        "- ìƒíƒœ ë³€í™”:",
+        "- ì¦‰ì‹œ ì²´í¬:",
+        "Petition for Reconsideration",
+        "Prohibiting Importation and Marketing",
+        "Previously Authorized Covered Communications Equipment",
+        "ì¸ë²„í„°",
+        "inverter",
+        "ì‹ ë¢°ì™¸ì‹ ",
+        "fcc_decision_notice",
+    ]
+    low = body.lower()
+    for marker in forbidden:
+        haystack = low if marker.islower() else body
+        needle = marker if marker.islower() else marker
+        if needle in haystack:
+            raise AssertionError(f"forbidden Telegram text leaked: {marker}")
+
+    long_lines = [line for line in lines if len(line) > khs_telegram_delivery_guard.MAX_BODY_LINE_CHARS]
+    if long_lines:
+        raise AssertionError(f"overlong Telegram line leaked: {long_lines[0][:120]}")
+
+    alert_count = sum(1 for line in lines if line.startswith("## "))
+    if alert_count != 1:
+        raise AssertionError(f"expected only one delivered alert, got {alert_count}")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
