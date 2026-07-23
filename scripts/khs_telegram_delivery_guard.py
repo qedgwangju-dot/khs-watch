@@ -185,6 +185,26 @@ REQUIRED_EXPLANATION_FIELD_GROUPS = [
 
 URL_TOPIC_REQUIREMENTS = [
     (
+        ("defense-supply-chains", "domestic-acquisition-of-critical-materials"),
+        ("방산", "국방", "핵심소재", "핵심 소재", "공급망", "critical materials"),
+        "source_topic_missing:defense_critical_materials",
+    ),
+    (
+        ("additional-tariffs-on-canada", "canadian-discrimination"),
+        ("캐나다", "관세", "추가 50%", "50% 관세", "section 338"),
+        "source_topic_missing:canada_tariffs",
+    ),
+    (
+        ("imports-of-aluminum", "primary-aluminum"),
+        ("알루미늄", "제련", "232조", "section 232"),
+        "source_topic_missing:aluminum_onshoring",
+    ),
+    (
+        ("trade-deal-with-jordan", "kingdom-of-jordan-on-reciprocal-trade"),
+        ("요르단", "상호무역", "무역협정", "reciprocal trade"),
+        "source_topic_missing:jordan_trade",
+    ),
+    (
         ("submarine-cable", "cable-landing-license", "submarine cable"),
         ("해저케이블", "해저 통신케이블", "케이블 착륙", "submarine cable", "cable landing", "landing license"),
         "source_topic_missing:submarine_cable",

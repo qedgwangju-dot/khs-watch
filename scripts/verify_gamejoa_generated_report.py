@@ -16,19 +16,13 @@ JSON_REPORT = OUT / "gamejoa_preopen_news_radar.json"
 TITLE = OUT / "gamejoa_preopen_news_radar_title.txt"
 
 REQUIRED_ITEM_MARKERS = [
-    "- 한국장 기준:",
-    "- 타임라인:",
-    "- 핵심 내용:",
-    "- 투자 관점:",
-    "- 한국장 영향:",
+    "- 기준/시각:",
+    "- 핵심:",
     "- 의사결정 영향:",
-    "- 분류 매트릭스:",
-    "- 영향 경로:",
-    "- 영향 섹터:",
-    "- 관련 해외 티커/지표:",
-    "- 반영 가능성:",
-    "- 반대 근거:",
-    "- 해석:",
+    "- 투자 포인트:",
+    "- 한국장:",
+    "- 경로/섹터:",
+    "- 반영/반대:",
     "- 실패 신호:",
     "- 출처:",
 ]
@@ -108,14 +102,11 @@ def assert_item_quality(title: str, block: list[str], errors: list[str]) -> None
         if marker not in {"- 출처:"} and not value_after(line, marker):
             errors.append(f"{title[:80]} has empty marker {marker}")
 
-    matrix = next((line for line in block if line.startswith("- 분류 매트릭스:")), "")
-    for term in MATRIX_TERMS:
-        if term not in matrix:
-            errors.append(f"{title[:80]} matrix missing {term}")
-    if "해당" not in matrix:
-        errors.append(f"{title[:80]} matrix has no applicable state")
+    impacts = next((line for line in block if line.startswith("- 의사결정 영향:")), "")
+    if not any(term in impacts for term in MATRIX_TERMS):
+        errors.append(f"{title[:80]} has no recognized decision impact")
 
-    sector = next((line for line in block if line.startswith("- 영향 섹터:")), "")
+    sector = next((line for line in block if line.startswith("- 경로/섹터:")), "")
     if "정책/규제 일반" in sector or "영향 섹터 확인 불가" in sector:
         errors.append(f"{title[:80]} has generic sector: {sector}")
 

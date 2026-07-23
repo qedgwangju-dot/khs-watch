@@ -145,9 +145,12 @@ SOURCE_LABELS = {
     "fda press announcements": "ë¯¸ FDA",
     "boem news": "ë¯¸ BOEM",
     "white house executive orders": "ë°±ì•…ê´€ í–‰ì •ëª…ë ¹",
+    "white house executive order": "ë°±ì•…ê´€ í–‰ì •ëª…ë ¹",
     "white house presidential memoranda": "ë°±ì•…ê´€ ëŒ€í†µë ¹ê°ì„œ",
+    "white house presidential memorandum": "ë°±ì•…ê´€ ëŒ€í†µë ¹ê°ì„œ",
     "white house proclamations": "ë°±ì•…ê´€ í¬ê³ ë¬¸",
     "white house fact sheets": "ë°±ì•…ê´€ íŒ©íŠ¸ì‹œíŠ¸",
+    "white house fact sheet": "ë°±ì•…ê´€ íŒ©íŠ¸ì‹œíŠ¸",
     "white house remarks": "ë°±ì•…ê´€ íŠ¸ëŸ¼í”„ ë°œì–¸",
     "white house briefings statements": "ë°±ì•…ê´€ ë¸Œë¦¬í•‘Â·ì„±ëª…",
     "state department office spokesperson": "ë¯¸ êµ­ë¬´ë¶€ ëŒ€ë³€ì¸ì‹¤",
@@ -336,463 +339,51 @@ def safe_title(alert: dict) -> str:
             if "fact sheet" in text:
                 return "ë°±ì•…ê´€, ì •ì±… íŒ©íŠ¸ì‹œíŠ¸ ë°œí‘œ"
             if "remarks" in text or "president trump" in text or "donald j. trump" in text:
-                return "íŠ¸ëŸ¼í”„ ëŒ€í†µë ¹ ë°œì–¸, ì •ì±… ì˜í–¥ í›„ë³´"
-            if "statement" in text or "briefing" in text:
-                return "ë°±ì•…ê´€, ì •ì±… ì„±ëª…Â·ë¸Œë¦¬í•‘ ë°œí‘œ"
-        return "ë¯¸êµ­ ì •ì±…Â·ê·œì œ ë¬¸ì„œ ê³µí‘œ"
-    return title
-
-
-def display_source(source: object) -> str:
-    raw = str(source or "source").strip()
-    return SOURCE_LABELS.get(raw.lower(), raw)
-
-
-def enrich_missing_context(alert: dict) -> dict:
-    if is_fcc_resilient_networks_policy(alert):
-        alert = dict(alert)
-        alert["importance"] = "ì¤‘"
-        alert["impacts"] = alert.get("impacts") or ["ì‹œê°„í‘œ", "ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì "]
-        alert["paths"] = alert.get("paths") or ["ì •ì±… íƒ€ìž„ë¼ì¸", "ê·œì œ ì¤€ìˆ˜"]
-        alert["sectors"] = ["ë¯¸êµ­ í†µì‹ ë§ ë³µêµ¬/ìž¥ì• ë³´ê³ "]
-        alert.setdefault(
-            "policy_plain_summary",
-            "FCCê°€ ìž¬ë‚œÂ·ì •ì „Â·í—ˆë¦¬ì¼€ì¸ ë“± í†µì‹ ìž¥ì•  ë•Œ ì‚¬ì—…ìžê°€ DIRSì— ë³´ê³ í•˜ëŠ” ì ˆì°¨ë¥¼ í˜„ëŒ€í™”í•œ ìµœì¢…ê·œì¹™ìž…ë‹ˆë‹¤. í†µì‹ ë§ íˆ¬ìž í™•ëŒ€ë‚˜ ì£¼íŒŒìˆ˜ ê²½ë§¤ê°€ ì•„ë‹ˆë¼ ìž¬ë‚œ ëŒ€ì‘ ë³´ê³ Â·í–‰ì • ë¶€ë‹´ ì¡°ì • ì„±ê²©ìž…ë‹ˆë‹¤.",
-        )
-        alert.setdefault(
-            "investment_view",
-            "ë§¤ì¶œì„ ì§ì ‘ ëŠ˜ë¦¬ëŠ” ì •ì±…ì€ ì•„ë‹™ë‹ˆë‹¤. ë¯¸êµ­ í†µì‹ ì‚¬Â·ìž¥ë¹„ì‚¬ì˜ ë‹¨ê¸° CAPEX, í•œêµ­ í†µì‹ 3ì‚¬ ì‹¤ì , êµ­ë‚´ ë„¤íŠ¸ì›Œí¬ ìž¥ë¹„ ìˆ˜ì£¼ë¡œ ë°”ë¡œ ì—°ê²°ë˜ëŠ” ê·¼ê±°ëŠ” ì œí•œì ìž…ë‹ˆë‹¤.",
-        )
-        alert.setdefault(
-            "korea_market_impact",
-            "í•œêµ­ìž¥ì—ì„œëŠ” í†µì‹ ìž¥ë¹„Â·ìœ„ì„±Â·í†µì‹ ì£¼ í…Œë§ˆ ë°˜ì‘ì´ ë¶™ì–´ë„ ì§ì ‘ ê°€ê²© ë³€ìˆ˜ëŠ” ì•½í•©ë‹ˆë‹¤. ìž¬ë‚œí†µì‹  ìž¥ë¹„ ì¡°ë‹¬, 911Â·ê³µê³µì•ˆì „ë§ íˆ¬ìž, ë³´ì•ˆìž¥ë¹„ ì˜ë¬´í™”ê°€ ë’¤ë”°ë¥¼ ë•Œë§Œ ìž¬í‰ê°€ í›„ë³´ìž…ë‹ˆë‹¤.",
-        )
-        alert.setdefault("priced_in", "ë‚®ìŒ. ì„ ë°˜ì˜ ì—¬ë¶€ë³´ë‹¤ ì˜í–¥ ìžì²´ê°€ ì œí•œì ìž…ë‹ˆë‹¤.")
-        alert.setdefault(
-            "counter",
-            "ìµœì¢…ê·œì¹™ì´ë¼ë„ í•µì‹¬ì€ ë³´ê³  ì ˆì°¨ ì •ë¹„ìž…ë‹ˆë‹¤. ì‹ ê·œ ì˜ˆì‚°Â·ìž¥ë¹„ ë°œì£¼Â·ì£¼íŒŒìˆ˜ ì •ì±…Â·ë³´ì¡°ê¸ˆì´ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ì‹¤ì  ì—°ê²°ì€ ì•½í•©ë‹ˆë‹¤.",
-        )
-        alert.setdefault(
-            "failure_signal",
-            "ë¯¸êµ­ í†µì‹ ì‚¬ CAPEX ê°€ì´ë˜ìŠ¤, ìž¥ë¹„ ë°œì£¼, ê³µê³µì•ˆì „ë§ ì˜ˆì‚°, êµ­ë‚´ ìž¥ë¹„ì‚¬ ìˆ˜ì£¼ ê³µì‹œê°€ ì—†ìœ¼ë©´ í…Œë§ˆì„± ë°˜ì‘ì—ì„œ ëë‚©ë‹ˆë‹¤.",
-        )
-        return alert
-
-    if is_fcc_submarine_cable_policy(alert):
-        alert = dict(alert)
-        alert["importance"] = "ì¤‘"
-        alert["impacts"] = ["ì‹œê°„í‘œ", "í• ì¸ìœ¨"]
-        alert["paths"] = ["ì •ì±… íƒ€ìž„ë¼ì¸", "êµ­ê°€ì•ˆë³´ ì‹¬ì‚¬", "ê·œì œ ë¦¬ìŠ¤í¬"]
-        alert["sectors"] = ["í•´ì €ì¼€ì´ë¸”/êµ­ì œí†µì‹ ë§", "í†µì‹ ë³´ì•ˆ", "í†µì‹ /FCC"]
-        alert["korea_value_chain"] = ["í•´ì € í†µì‹ ì¼€ì´ë¸”", "êµ­ì œë§ ë³´ì•ˆ", "í†µì‹ ìž¥ë¹„", "í†µì‹ ì‚¬ í•´ì™¸ë§"]
-        alert["title_ko"] = "FCC, í•´ì €ì¼€ì´ë¸” ëžœë”© ë¼ì´ì„ ìŠ¤ êµ­ê°€ì•ˆë³´ ì‹¬ì‚¬ ê·œì¹™ ìž¬ê²€í† "
-        alert["policy_plain_summary"] = "FCCê°€ í•´ì € í†µì‹ ì¼€ì´ë¸” ëžœë”© ë¼ì´ì„ ìŠ¤ ê·œì¹™ê³¼ ì ˆì°¨ë¥¼ êµ­ê°€ì•ˆë³´ í™˜ê²½ ë³€í™”ì— ë§žì¶° ìž¬ê²€í† í•˜ëŠ” ê³µì‹ ê·œì œ ë¬¸ì„œìž…ë‹ˆë‹¤."
-        alert["investment_view"] = "í•µì‹¬ì€ íƒœì–‘ê´‘Â·ì „ë ¥ìž¥ë¹„ ìˆ˜ìž…ê¸ˆì§€ê°€ ì•„ë‹ˆë¼ êµ­ì œ í†µì‹ ë§ ì¸í—ˆê°€ì™€ ë³´ì•ˆ ì‹¬ì‚¬ ì‹œê°„í‘œìž…ë‹ˆë‹¤. ì‹ ê·œ ì¼€ì´ë¸” í—ˆê°€, ì™¸êµ­ ì§€ë¶„Â·ìš´ì˜ìž ì‹¬ì‚¬, ë°ì´í„°ì„¼í„° ì—°ê²°ë§ ê·œì œê°€ êµ¬ì²´í™”ë  ë•Œë§Œ íˆ¬ìž ìž¬ë£Œê°€ ë©ë‹ˆë‹¤."
-        alert["korea_market_impact"] = "í•œêµ­ìž¥ì—ì„œëŠ” í•´ì € í†µì‹ ì¼€ì´ë¸”, êµ­ì œë§ ë³´ì•ˆ, í†µì‹ ìž¥ë¹„, í†µì‹ ì‚¬ í•´ì™¸ë§ ë…¸ì¶œë§Œ ì œí•œì ìœ¼ë¡œ í™•ì¸í•©ë‹ˆë‹¤. ì›ë¬¸ ê·¼ê±° ì—†ì´ íƒœì–‘ê´‘Â·ì „ë ¥ë³€í™˜ í…Œë§ˆë¡œ í™•ìž¥í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤."
-        alert["priced_in"] = "ë‚®ìŒ~ì¤‘ê°„. FCC êµ­ê°€ì•ˆë³´ ë¬¸ì„œë¼ í…Œë§ˆ ë°˜ì‘ì€ ê°€ëŠ¥í•˜ì§€ë§Œ, í•œêµ­ ê¸°ì—…ì˜ ì§ì ‘ ìˆ˜ì£¼Â·ì¸í—ˆê°€ ë…¸ì¶œì´ í™•ì¸ë˜ê¸° ì „ì—ëŠ” ê°€ê²© ë³€ìˆ˜ë¡œ ì•½í•©ë‹ˆë‹¤."
-        alert["counter"] = "ê·œì¹™Â·ì ˆì°¨ ìž¬ê²€í†  ë‹¨ê³„ì¼ ìˆ˜ ìžˆì–´ íŠ¹ì • ì¼€ì´ë¸” í”„ë¡œì íŠ¸ì˜ ìŠ¹ì¸Â·ê±°ì ˆ, ì˜ˆì‚°, ì¡°ë‹¬, í•œêµ­ ê¸°ì—… ìˆ˜í˜œê°€ í™•ì •ëœ ê²ƒì€ ì•„ë‹™ë‹ˆë‹¤."
-        alert["failure_signal"] = "êµ¬ì²´ ë¼ì´ì„ ìŠ¤ ë³€ê²½, ì‹ ê·œ ì‹¬ì‚¬ ê¸°ì¤€, ì¼€ì´ë¸” ì‚¬ì—…ìž ì˜í–¥, í•œêµ­ ê¸°ì—… ìˆ˜ì£¼Â·ê³µê¸‰ë§ ë…¸ì¶œì´ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ê´€ì°° ìž¬ë£Œë¡œë§Œ ì²˜ë¦¬í•©ë‹ˆë‹¤."
-        return alert
-
-    alert = dict(alert)
-    impacts = alert.get("impacts") or ["ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì "]
-    sectors = alert.get("sectors") or ["ì •ì±…/ê·œì œ ì¼ë°˜"]
-    alert.setdefault("policy_plain_summary", f"ê³µì‹ ì •ì±…Â·ê·œì œ ë¬¸ì„œì—ì„œ {', '.join(impacts)} ê´€ë ¨ ìƒíƒœ ë³€í™” í›„ë³´ê°€ í™•ì¸ëìŠµë‹ˆë‹¤.")
-    alert.setdefault("investment_view", "ì‹¤ì œ íˆ¬ìž ìž¬ë£Œê°€ ë˜ë ¤ë©´ ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„, ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ ì¤‘ ë¬´ì—‡ì´ ë°”ë€ŒëŠ”ì§€ í›„ì† ì›ë¬¸ê³¼ ì‹œìž¥ ë°˜ì‘ìœ¼ë¡œ í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤.")
-    alert.setdefault("korea_market_impact", f"í•œêµ­ìž¥ ì²´í¬ ëŒ€ìƒì€ {', '.join(sectors)}ìž…ë‹ˆë‹¤. ì›ë¬¸ì— ì§ì ‘ ê·¼ê±°ê°€ ì—†ëŠ” ì—…ì¢… í™•ìž¥ì€ ì œì™¸í•©ë‹ˆë‹¤.")
-    alert.setdefault("priced_in", "ë‚®ìŒ~ì¤‘ê°„. ê³µì‹ ì›ë¬¸ í™•ì¸ í›„ í•œêµ­ìž¥ í™•ì‚° ì—¬ë¶€ë¥¼ ìž¥ì „ ë ˆì´ë”ì—ì„œ ìž¬í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤.")
-    alert.setdefault("failure_signal", "ì‹œí–‰ì¼, ì˜ˆì‚°, ê³„ì•½, ìˆ˜ê¸‰ ë°˜ì‘, ê´€ë ¨ ê¸°ì—… ê³µì‹œê°€ ë’¤ë”°ë¥´ì§€ ì•Šìœ¼ë©´ ë‹¨ë°œì„± ì •ì±… ë‰´ìŠ¤ë¡œ ëë‚©ë‹ˆë‹¤.")
-    return ensure_explained(alert)
-
-
-def display_matched_keys(matched: dict) -> str:
-    if not matched:
-        return "ì •ì±…Â·ê·œì œ"
-    labels = [MATCHED_KEY_LABELS.get(str(key), str(key)) for key in matched.keys()]
-    return ", ".join(dict.fromkeys(labels))
-
-
-def display_terms(terms: list[str]) -> str:
-    labels = [TERM_LABELS.get(str(term).lower(), str(term)) for term in terms]
-    return ", ".join(dict.fromkeys(labels))
-
-
-def clip_text(value: object, limit: int) -> str:
-    text = re.sub(r"\s+", " ", str(value or "")).strip()
-    if len(text) <= limit:
-        return text
-    return text[: max(0, limit - 1)].rstrip() + "â€¦"
-
-
-def no_general_report(now: dt.datetime) -> str:
-    return "\n".join([
-        f"ðŸš¨ KHS ì •ì±…Â·ê·œì œ ê³ ì¶©ê²© ì›Œì¹˜ Â· {now:%Yë…„ %mì›” %dì¼ %H:%M KST}",
-        "",
-        "ê³ ì¶©ê²© ì¼ë°˜ ì •ì±…Â·ê·œì œ ë³€ê²½ ì§ì ‘ í™•ì¸ ì—†ìŒ",
-        "",
-        "ðŸ’¡ ì›Œì¹˜ íŒë‹¨: ì´ë²ˆ ì‹¤í–‰ì—ì„œ ì¼ë°˜ ì •ì±…Â·ê·œì œ ë¼ì¸ìœ¼ë¡œ ë”°ë¡œ ì†¡ì¶œí•  ê³ ì¶©ê²© ì´ë²¤íŠ¸ëŠ” ì§ì ‘ í™•ì¸ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.",
-        "",
-        "íˆ¬ìž ì¡°ì–¸ì´ ì•„ë‹Œ ì°¸ê³ ìš© ì •ì±…Â·ê·œì œ ì•Œë¦¼ìž…ë‹ˆë‹¤.",
-    ]) + "\n"
-
-
-def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
-    if not alerts:
-        return no_general_report(now)
-
-    lines = [f"ðŸš¨ KHS ì •ì±…Â·ê·œì œ ê³ ì¶©ê²© ì›Œì¹˜ Â· {now:%Yë…„ %mì›” %dì¼ %H:%M KST}", ""]
-    for idx, alert in enumerate(alerts, 1):
-        alert = enrich_missing_context(alert)
-        matched = alert.get("matched") or {}
-        matched_terms = sorted({term for terms in matched.values() for term in terms})
-        matched_keys = display_matched_keys(matched)
-        matched_terms_text = display_terms(matched_terms[:8])
-        source_label = display_source(alert.get("source"))
-        title = safe_title(alert)
-        lines.extend([
-            f"## {idx}. [{alert.get('importance', 'ì¤‘')}Â·{alert.get('status', 'í™•ì •')}] {title}",
-            f"- ìƒíƒœ ë³€í™”: {matched_keys} ì‹ í˜¸ í™•ì¸ ({matched_terms_text})",
-            f"- ì›ë¬¸/ì¶œì²˜: [{source_label}]({alert.get('link', '')}) Â· ì›ì²œì‹œê° {alert.get('published_kst') or 'í™•ì¸ ë¶ˆê°€'} Â· ì¡°íšŒ {now:%H:%M KST}",
-            *explanation_lines(alert),
-            "- ì¦‰ì‹œ ì²´í¬: ì›ë¬¸ ì „ë¬¸, ì‹œí–‰ì¼/ë§ˆê°ì¼, í•œêµ­ ë°¸ë¥˜ì²´ì¸ ë…¸ì¶œ, ê´€ë ¨ í•´ì™¸ í‹°ì»¤Â·ETF ë°˜ì‘",
-            "",
-        ])
-    lines.extend([
-        "ðŸ’¡ ì›Œì¹˜ íŒë‹¨: ì´ë²ˆ ì‹¤í–‰ì€ ì¼ë°˜ ì •ì±…Â·ê·œì œ ë¼ì¸ìœ¼ë¡œ ì†¡ì¶œí•  ì´ë²¤íŠ¸ë§Œ ë¶„ë¦¬í–ˆìŠµë‹ˆë‹¤. ì „ìš© ê°ì‹œ ëŒ€ìƒì€ ë³„ë„ ì›Œì¹˜ì—ì„œ ë”°ë¡œ ì†¡ì¶œë©ë‹ˆë‹¤.",
-        "",
-        "íˆ¬ìž ì¡°ì–¸ì´ ì•„ë‹Œ ì°¸ê³ ìš© ì •ì±…Â·ê·œì œ ì•Œë¦¼ìž…ë‹ˆë‹¤.",
-    ])
-    return "\n".join(lines) + "\n"
-
-
-def line_value(lines: list[str], prefix: str, fallback: object = "") -> str:
-    for line in lines:
-        if line.startswith(prefix):
-            return line.split(":", 1)[1].strip() if ":" in line else line.replace(prefix, "", 1).strip()
-    return str(fallback or "").strip()
-
-
-def compact_explanation_lines(alert: dict) -> list[str]:
-    apply_router_overrides(alert)
-    rendered = explanation_lines(alert)
-    return [
-        f"- í•µì‹¬: {clip_text(line_value(rendered, '- í•µì‹¬ ë‚´ìš©', alert.get('policy_plain_summary')), 150)}",
-        f"- ì˜ì‚¬ê²°ì • ì˜í–¥: {clip_text(line_value(rendered, '- ì˜ì‚¬ê²°ì • ì˜í–¥', alert.get('decision_classification')), 90)}",
-        f"- íˆ¬ìž ì˜í–¥: {clip_text(line_value(rendered, '- íˆ¬ìž ê´€ì ', alert.get('investment_view')), 150)}",
-        f"- í•œêµ­ìž¥: {clip_text(line_value(rendered, '- í•œêµ­ìž¥ ì˜í–¥', alert.get('korea_market_impact')), 150)}",
-        f"- ë°˜ì˜ ê°€ëŠ¥ì„±: {clip_text(line_value(rendered, '- ë°˜ì˜ ê°€ëŠ¥ì„±', alert.get('priced_in')), 120)}",
-        f"- ë°˜ëŒ€ ê·¼ê±°: {clip_text(line_value(rendered, '- ë°˜ëŒ€ ê·¼ê±°', alert.get('counter')), 130)}",
-        f"- ì‹¤íŒ¨ ì‹ í˜¸: {clip_text(line_value(rendered, '- ì‹¤íŒ¨ ì‹ í˜¸', alert.get('failure_signal')), 130)}",
-    ]
-
-
-def apply_router_overrides(alert: dict) -> None:
-    text = alert_text(alert)
-    if is_china_mofcom_trade_control(alert):
-        product = china_mofcom_product(text)
-        action = china_mofcom_action(text)
-        alert["importance"] = "ìƒ"
-        alert["title_ko"] = china_mofcom_title(alert)
-        alert["policy_plain_summary"] = f"ì¤‘êµ­ ìƒë¬´ë¶€ê°€ {product} ê´€ë ¨ {action}ì„ ë°œí‘œí•œ ì‚¬ì•ˆìž…ë‹ˆë‹¤. ì ìš© í’ˆëª©Â·êµ­ê°€Â·ì‹œí–‰ì¼ê³¼ ì˜ˆì™¸ í—ˆê°€ê°€ ì‹¤ì œ ê³µê¸‰ ê°ì†Œ í­ì„ ê²°ì •í•©ë‹ˆë‹¤."
-        alert["investment_view"] = f"{product}ì˜ ì¤‘êµ­ë°œ ê³µê¸‰ì´ ì¤„ë©´ í˜„ë¬¼ê°€ê²©, ì¡°ë‹¬ê¸°ê°„, ìž¬ê³ ë¹„ìš©ì´ ì˜¬ë¼ ìˆ˜ìž…ì—…ì²´ ë§ˆì§„ê³¼ ìƒì‚°ê³„íšì´ ë°”ë€” ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ë‹¨ìˆœ í—ˆê°€ì œì¸ì§€ ì „ë©´ ê¸ˆì§€ì¸ì§€ êµ¬ë¶„í•´ì•¼ í•©ë‹ˆë‹¤."
-        if product == "í—¬ë¥¨":
-            alert["korea_market_impact"] = "í•œêµ­ìž¥ì—ì„œëŠ” ë°˜ë„ì²´Â·HBM ê³µì •, ë””ìŠ¤í”Œë ˆì´, ê´‘ì„¬ìœ , MRI, ì‚°ì—…ê°€ìŠ¤ ë°¸ë¥˜ì²´ì¸ì˜ ìž¬ê³ ì™€ ì¡°ë‹¬ê°€ê²©ì„ í™•ì¸í•©ë‹ˆë‹¤. ì¤‘êµ­ì‚° ì˜ì¡´ë„ì™€ ëŒ€ì²´ ì¡°ë‹¬ ê³„ì•½ì´ í™•ì¸ëœ ê¸°ì—…ë§Œ ì—°ê²°í•©ë‹ˆë‹¤."
-            sectors = ["ë°˜ë„ì²´/HBM ê³µì •ê°€ìŠ¤", "ë””ìŠ¤í”Œë ˆì´/ê´‘ì„¬ìœ ", "ì‚°ì—…ê°€ìŠ¤", "ì˜ë£Œê¸°ê¸°/MRI"]
-        elif product in {"í¬í† ë¥˜", "ê°ˆë¥¨", "ê²Œë¥´ë§ˆëŠ„", "í‘ì—°", "ì•ˆí‹°ëª¬", "í……ìŠ¤í…", "ì¸ë“"}:
-            alert["korea_market_impact"] = "í•œêµ­ìž¥ì—ì„œëŠ” ë°˜ë„ì²´Â·2ì°¨ì „ì§€Â·ìžì„Â·ë°©ì‚°Â·ì „ë ¥ì „ìž ì†Œìž¬ ì¤‘ í•´ë‹¹ ì¤‘êµ­ì‚° ì›ë£Œ ì˜ì¡´ë„ì™€ ë¹„ì¤‘êµ­ ëŒ€ì²´ ê³µê¸‰ë§ì´ í™•ì¸ëœ ê¸°ì—…ë§Œ ì„ ë³„í•©ë‹ˆë‹¤."
-            sectors = ["í•µì‹¬ê´‘ë¬¼/ì†Œìž¬", "ë°˜ë„ì²´", "2ì°¨ì „ì§€", "ë°©ì‚°/ì „ë ¥ì „ìž"]
-        else:
-            alert["korea_market_impact"] = "í•œêµ­ìž¥ì—ì„œëŠ” ì›ë¬¸ì— ì§ì ‘ ì ì‹œëœ í’ˆëª©ì˜ ì¤‘êµ­ì‚° ì˜ì¡´ë„, ìž¬ê³ ì¼ìˆ˜, ëŒ€ì²´ ê³µê¸‰ì„ , í•œêµ­ ê¸°ì—…ì˜ ìˆ˜ì¶œìž… ë…¸ì¶œì´ í™•ì¸ëœ ì—…ì¢…ë§Œ ì—°ê²°í•©ë‹ˆë‹¤."
-            sectors = ["ì¤‘êµ­ ìˆ˜ì¶œí†µì œ/í•µì‹¬ì†Œìž¬", "ê³µê¸‰ë§", "ê´€ì„¸/ìˆ˜ì¶œì£¼"]
-        alert["impacts"] = ["ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„", "ìˆ˜ê¸‰", "ì‹œê°„í‘œ"]
-        alert["paths"] = ["ê³µê¸‰Â·ìˆ˜ìš”", "ì›ìžìž¬ ë¹„ìš©", "ê³µê¸‰ë§", "ì •ì±… íƒ€ìž„ë¼ì¸"]
-        alert["sectors"] = sectors
-        alert["korea_value_chain"] = sectors
-        alert["priced_in"] = "ë‚®ìŒ~ì¤‘ê°„. ì†ë³´ ì§í›„ ê´€ë ¨ ì›ìžìž¬ì™€ í…Œë§ˆì£¼ëŠ” ë¨¼ì € ì›€ì§ì¼ ìˆ˜ ìžˆì§€ë§Œ ì‹¤ì œ ì´ìµ ì˜í–¥ì€ í’ˆëª© ë²”ìœ„ì™€ ì‹œí–‰ê¸°ê°„ í™•ì¸ ë’¤ ê²°ì •ë©ë‹ˆë‹¤."
-        alert["counter"] = "ìˆ˜ì¶œ í—ˆê°€ ì˜ˆì™¸, íŠ¹ì • êµ­ê°€Â·ê¸°ì—… í•œì •, ê¸°ì¡´ ê³„ì•½ ìœ ì˜ˆ, ì¤‘êµ­ ì™¸ ê³µê¸‰ í™•ëŒ€ê°€ ìžˆìœ¼ë©´ ê³µê¸‰ ì¶©ê²©ì´ ì˜ˆìƒë³´ë‹¤ ìž‘ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤."
-        alert["failure_signal"] = "ê³µì‹ ì›ë¬¸ì—ì„œ í’ˆëª©Â·ëŒ€ìƒêµ­Â·ì‹œí–‰ì¼ì´ í™•ì¸ë˜ì§€ ì•Šê±°ë‚˜ í˜„ë¬¼ê°€ê²©Â·ë¦¬ë“œíƒ€ìž„Â·êµ­ë‚´ ì¡°ë‹¬ë¹„ìš©ì´ ì›€ì§ì´ì§€ ì•Šìœ¼ë©´ í…Œë§ˆì„± ë°˜ì‘ìœ¼ë¡œ ëë‚©ë‹ˆë‹¤."
-        return
-    if is_fcc_submarine_cable_policy(alert):
-        alert["importance"] = "ì¤‘"
-        alert["title_ko"] = "FCC, í•´ì €ì¼€ì´ë¸” ëžœë”© ë¼ì´ì„ ìŠ¤ êµ­ê°€ì•ˆë³´ ì‹¬ì‚¬ ê·œì¹™ ìž¬ê²€í† "
-        alert["policy_plain_summary"] = "FCCê°€ í•´ì € í†µì‹ ì¼€ì´ë¸” ëžœë”© ë¼ì´ì„ ìŠ¤ ê·œì¹™ê³¼ ì ˆì°¨ë¥¼ êµ­ê°€ì•ˆë³´ í™˜ê²½ ë³€í™”ì— ë§žì¶° ìž¬ê²€í† í•˜ëŠ” ê³µì‹ ê·œì œ ë¬¸ì„œìž…ë‹ˆë‹¤."
-        alert["investment_view"] = "í•µì‹¬ì€ íƒœì–‘ê´‘Â·ì „ë ¥ìž¥ë¹„ ìˆ˜ìž…ê¸ˆì§€ê°€ ì•„ë‹ˆë¼ êµ­ì œ í†µì‹ ë§ ì¸í—ˆê°€ì™€ ë³´ì•ˆ ì‹¬ì‚¬ ì‹œê°„í‘œìž…ë‹ˆë‹¤. ì‹ ê·œ ì¼€ì´ë¸” í—ˆê°€, ì™¸êµ­ ì§€ë¶„Â·ìš´ì˜ìž ì‹¬ì‚¬, ë°ì´í„°ì„¼í„° ì—°ê²°ë§ ê·œì œê°€ êµ¬ì²´í™”ë  ë•Œë§Œ íˆ¬ìž ìž¬ë£Œê°€ ë©ë‹ˆë‹¤."
-        alert["korea_market_impact"] = "í•œêµ­ìž¥ì—ì„œëŠ” í•´ì € í†µì‹ ì¼€ì´ë¸”, êµ­ì œë§ ë³´ì•ˆ, í†µì‹ ìž¥ë¹„, í†µì‹ ì‚¬ í•´ì™¸ë§ ë…¸ì¶œë§Œ ì œí•œì ìœ¼ë¡œ í™•ì¸í•©ë‹ˆë‹¤. ì›ë¬¸ ê·¼ê±° ì—†ì´ íƒœì–‘ê´‘Â·ì „ë ¥ë³€í™˜ í…Œë§ˆë¡œ í™•ìž¥í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤."
-        alert["impacts"] = ["ì‹œê°„í‘œ", "í• ì¸ìœ¨"]
-        alert["paths"] = ["ì •ì±… íƒ€ìž„ë¼ì¸", "êµ­ê°€ì•ˆë³´ ì‹¬ì‚¬", "ê·œì œ ë¦¬ìŠ¤í¬"]
-        alert["sectors"] = ["í•´ì €ì¼€ì´ë¸”/êµ­ì œí†µì‹ ë§", "í†µì‹ ë³´ì•ˆ", "í†µì‹ /FCC"]
-        alert["korea_value_chain"] = ["í•´ì € í†µì‹ ì¼€ì´ë¸”", "êµ­ì œë§ ë³´ì•ˆ", "í†µì‹ ìž¥ë¹„", "í†µì‹ ì‚¬ í•´ì™¸ë§"]
-        alert["priced_in"] = "ë‚®ìŒ~ì¤‘ê°„. FCC êµ­ê°€ì•ˆë³´ ë¬¸ì„œë¼ í…Œë§ˆ ë°˜ì‘ì€ ê°€ëŠ¥í•˜ì§€ë§Œ, í•œêµ­ ê¸°ì—…ì˜ ì§ì ‘ ìˆ˜ì£¼Â·ì¸í—ˆê°€ ë…¸ì¶œì´ í™•ì¸ë˜ê¸° ì „ì—ëŠ” ê°€ê²© ë³€ìˆ˜ë¡œ ì•½í•©ë‹ˆë‹¤."
-        alert["counter"] = "ê·œì¹™Â·ì ˆì°¨ ìž¬ê²€í†  ë‹¨ê³„ì¼ ìˆ˜ ìžˆì–´ íŠ¹ì • ì¼€ì´ë¸” í”„ë¡œì íŠ¸ì˜ ìŠ¹ì¸Â·ê±°ì ˆ, ì˜ˆì‚°, ì¡°ë‹¬, í•œêµ­ ê¸°ì—… ìˆ˜í˜œê°€ í™•ì •ëœ ê²ƒì€ ì•„ë‹™ë‹ˆë‹¤."
-        alert["failure_signal"] = "êµ¬ì²´ ë¼ì´ì„ ìŠ¤ ë³€ê²½, ì‹ ê·œ ì‹¬ì‚¬ ê¸°ì¤€, ì¼€ì´ë¸” ì‚¬ì—…ìž ì˜í–¥, í•œêµ­ ê¸°ì—… ìˆ˜ì£¼Â·ê³µê¸‰ë§ ë…¸ì¶œì´ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ê´€ì°° ìž¬ë£Œë¡œë§Œ ì²˜ë¦¬í•©ë‹ˆë‹¤."
-        return
-    if "covered communications equipment" in text or ("covered list" in text and ("prohibit" in text or "importation" in text or "marketing" in text)):
-        alert["title_ko"] = "FCC, ë³´ì•ˆ ìœ„í—˜ í†µì‹ ìž¥ë¹„ ìˆ˜ìž…Â·íŒë§¤ ì œí•œ ì ˆì°¨ ê³µí‘œ"
-        alert["policy_plain_summary"] = "FCCê°€ Covered Listì— ì˜¤ë¥¸ ë³´ì•ˆ ìœ„í—˜ í†µì‹ ìž¥ë¹„ì˜ ë¯¸êµ­ ë‚´ ìˆ˜ìž…Â·íŒë§¤ ì œí•œ ì ˆì°¨ë¥¼ ê³µí‘œí•œ ì‚¬ì•ˆìž…ë‹ˆë‹¤."
-        alert["investment_view"] = "ì ìš© ìž¥ë¹„ì™€ ê³µê¸‰ì‚¬ê°€ í™•ì •ë˜ë©´ ì¤‘êµ­ì‚° í†µì‹ ìž¥ë¹„ ë°°ì œ, ëŒ€ì²´ ê³µê¸‰ë§, ë¯¸êµ­í–¥ ìž¥ë¹„ ìˆ˜ì£¼ ê¸°ëŒ€ê°€ ì›€ì§ì¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤."
-        alert["korea_market_impact"] = "í•œêµ­ìž¥ì—ì„œëŠ” í†µì‹ ìž¥ë¹„, ë„¤íŠ¸ì›Œí¬ ìž¥ë¹„, ë³´ì•ˆìž¥ë¹„ ì¤‘ ë¯¸êµ­í–¥ ë§¤ì¶œÂ·ëŒ€ì²´ ê³µê¸‰ë§ ë…¸ì¶œì´ í™•ì¸ë˜ëŠ” ì¢…ëª©ë§Œ ì„ ë³„ í™•ì¸í•©ë‹ˆë‹¤."
-        alert["sectors"] = ["í†µì‹ ìž¥ë¹„", "ë„¤íŠ¸ì›Œí¬ ìž¥ë¹„", "ë³´ì•ˆìž¥ë¹„", "ì¤‘êµ­ ëŒ€ì²´ ê³µê¸‰ë§"]
-        alert["korea_value_chain"] = ["í†µì‹ ìž¥ë¹„", "ë„¤íŠ¸ì›Œí¬ ìž¥ë¹„", "ë³´ì•ˆìž¥ë¹„", "ë¯¸êµ­í–¥ ìž¥ë¹„ ê³µê¸‰ë§"]
-        alert["priced_in"] = "ë‚®ìŒ~ì¤‘ê°„. ë³´ì•ˆìž¥ë¹„ ê·œì œ í…Œë§ˆëŠ” ë¹ ë¥´ê²Œ ë°˜ì‘í•˜ì§€ë§Œ ì ìš© ëŒ€ìƒÂ·ì‹œí–‰ì¼ í™•ì¸ ì „ ì§ì ‘ ì‹¤ì  ì—°ê²°ì€ ì œí•œì ìž…ë‹ˆë‹¤."
-        alert["counter"] = "ê¸°ì¡´ ìŠ¹ì¸ ìž¥ë¹„ì˜ ì²˜ë¦¬ ì ˆì°¨ì¼ ìˆ˜ ìžˆê³ , í•œêµ­ ê¸°ì—…ì˜ ëŒ€ì²´ ìˆ˜ì£¼ë‚˜ ê³µê¸‰ë§ ë…¸ì¶œì´ ì—†ìœ¼ë©´ ê³¼ëŒ€í•´ì„ìž…ë‹ˆë‹¤."
-        alert["failure_signal"] = "ì ìš© ìž¥ë¹„, ê¸ˆì§€ ë²”ìœ„, ì‹œí–‰ì¼, í•œêµ­ ê¸°ì—…ì˜ ë¯¸êµ­í–¥ ìˆ˜ì£¼Â·ê³µê¸‰ë§ ë…¸ì¶œì´ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ í…Œë§ˆì„± ë°˜ì‘ìœ¼ë¡œ ëë‚©ë‹ˆë‹¤."
-
-
-def normalize_semantic_text(value: object) -> str:
-    text = re.sub(r"https?://\S+", " ", str(value or "").lower())
-    text = re.sub(r"[\W_]+", " ", text, flags=re.UNICODE)
-    return re.sub(r"\s+", " ", text).strip()
-
-
-def importance_rank(value: object) -> int:
-    return {"ìƒ": 3, "ì¤‘": 2, "í•˜": 1}.get(str(value or ""), 0)
-
-
-def merge_unique_list(left: object, right: object) -> list:
-    merged: list = []
-    for value in list(left or []) + list(right or []):
-        if value and value not in merged:
-            merged.append(value)
-    return merged
-
-
-def source_entries(alert: dict) -> list[dict]:
-    entries = list(alert.get("source_links") or [])
-    if alert.get("source") or alert.get("link"):
-        entries.insert(0, {
-            "source": alert.get("source") or "",
-            "link": alert.get("link") or "",
-            "published_kst": alert.get("published_kst") or "",
-            "original_title": alert.get("original_title") or alert.get("title") or "",
-        })
-    deduped: list[dict] = []
-    seen: set[tuple[str, str]] = set()
-    for entry in entries:
-        source = str(entry.get("source") or "").strip()
-        link = str(entry.get("link") or "").strip()
-        key = (source, link)
-        if key in seen:
-            continue
-        seen.add(key)
-        deduped.append({**entry, "source": source, "link": link})
-    return deduped
-
-
-def merge_matched(left: dict, right: dict) -> dict:
-    merged = {key: list(value or []) for key, value in (left or {}).items()}
-    for key, values in (right or {}).items():
-        bucket = merged.setdefault(key, [])
-        for value in values or []:
-            if value not in bucket:
-                bucket.append(value)
-    return merged
-
-
-def source_family_from_text(value: str) -> str:
-    raw = str(value or "").lower()
-    normalized = normalize_semantic_text(raw)
-    if "whitehouse gov" in normalized or "white house" in raw:
-        return "whitehouse"
-    if "state gov" in normalized or "department of state" in raw or "state department" in raw:
-        return "state_department"
-    if "boem gov" in normalized or re.search(r"\bboem\b", raw):
-        return "boem"
-    if "bsee gov" in normalized or re.search(r"\bbsee\b", raw):
-        return "bsee"
-    if "federal register fcc" in raw or "federal communications commission" in raw or re.search(r"\bfcc\b", raw):
-        return "fcc"
-    if "energy gov" in normalized or "department of energy" in raw or re.search(r"\bdoe\b", raw):
-        return "doe"
-    if "ferc gov" in normalized or re.search(r"\bferc\b", raw):
-        return "ferc"
-    if "commerce gov" in normalized or "bureau of industry and security" in raw or re.search(r"\bbis\b", raw):
-        return "commerce_bis"
-    if "ustr gov" in normalized or re.search(r"\bustr\b", raw):
-        return "ustr"
-    if "federalregister gov" in normalized or "federal register" in raw:
-        return "federal_register_other"
-    if "korea kr" in normalized or "bok or kr" in normalized or "fsc go kr" in normalized or "fss or kr" in normalized:
-        return "korea_official"
-    compact = normalize_semantic_text(raw)
-    return compact[:80] or "unknown_source"
-
-
-def alert_source_family(alert: dict) -> str:
-    values = [
-        alert.get("source"),
-        alert.get("link"),
-        alert.get("title"),
-        alert.get("original_title"),
-        alert.get("summary"),
-    ]
-    for entry in source_entries(alert):
-        values.extend([
-            entry.get("source"),
-            entry.get("link"),
-            entry.get("original_title"),
-        ])
-    return source_family_from_text(" ".join(str(value or "") for value in values))
-
-
-def semantic_alert_key(alert: dict) -> str:
-    probe = enrich_missing_context(dict(alert))
-    apply_router_overrides(probe)
-    title = safe_title(probe)
-    sectors = "|".join(str(value) for value in probe.get("sectors") or [])
-    impacts = "|".join(str(value) for value in probe.get("impacts") or [])
-    matched_keys = "|".join(sorted((probe.get("matched") or {}).keys()))
-    source_family = alert_source_family(probe)
-    if probe.get("domestic_stablecoin_policy_watch"):
-        return "stablecoin|" + normalize_semantic_text(title or probe.get("title"))
-    return "|".join([
-        normalize_semantic_text(source_family),
-        normalize_semantic_text(title or probe.get("title")),
-        normalize_semantic_text(sectors),
-        normalize_semantic_text(impacts),
-        normalize_semantic_text(matched_keys),
-    ])
-
-
-def merge_duplicate_alert(current: dict, incoming: dict) -> dict:
-    current = dict(current)
-    existing_entries = source_entries(current)
-    existing_keys = {(entry.get("source"), entry.get("link")) for entry in existing_entries}
-    extra_entries = [
-        entry for entry in source_entries(incoming)
-        if (entry.get("source"), entry.get("link")) not in existing_keys
-    ]
-    current["source_links"] = existing_entries + extra_entries
-    sources = []
-    for entry in current["source_links"]:
-        source = str(entry.get("source") or "").strip()
-        if source and source not in sources:
-            sources.append(source)
-    if sources:
-        current["source"] = " / ".join(sources[:3])
-    if not current.get("link") and incoming.get("link"):
-        current["link"] = incoming.get("link")
-    current["matched"] = merge_matched(current.get("matched") or {}, incoming.get("matched") or {})
-    for key in ("impacts", "paths", "sectors", "korea_value_chain"):
-        current[key] = merge_unique_list(current.get(key), incoming.get(key))
-    if importance_rank(incoming.get("importance")) > importance_rank(current.get("importance")):
-        current["importance"] = incoming.get("importance")
-    for key in ("published_kst", "status", "policy_plain_summary", "investment_view", "korea_market_impact", "priced_in", "counter", "failure_signal"):
-        if not current.get(key) and incoming.get(key):
-            current[key] = incoming.get(key)
-    return current
-
-
-def dedupe_alerts(alerts: list[dict]) -> list[dict]:
-    merged: dict[str, dict] = {}
-    order: list[str] = []
-    for alert in alerts:
-        key = semantic_alert_key(alert)
-        if not key.strip("| "):
-            key = normalize_semantic_text(f"{alert.get('source')} {alert.get('title')} {alert.get('link')}")
-        if key not in merged:
-            merged[key] = dict(alert)
-            order.append(key)
-            continue
-        merged[key] = merge_duplicate_alert(merged[key], alert)
-    return [merged[key] for key in order]
-
-
-def source_markdown(alert: dict) -> str:
-    parts: list[str] = []
-    for entry in source_entries(alert)[:3]:
-        label = display_source(entry.get("source"))
-        link = str(entry.get("link") or "").strip()
-        parts.append(f"[{label}]({link})" if link else label)
-    if not parts:
-        label = display_source(alert.get("source"))
-        link = str(alert.get("link") or "").strip()
-        return f"[{label}]({link})" if link else label
-    return " / ".join(parts)
-
-
-def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
-    if not alerts:
-        return no_general_report(now)
-
-    lines = [f"ðŸš¨ KHS ì •ì±…Â·ê·œì œ ê³ ì¶©ê²© ì›Œì¹˜ Â· {now:%Yë…„ %mì›” %dì¼ %H:%M KST}", ""]
-    for idx, alert in enumerate(alerts, 1):
-        alert = enrich_missing_context(alert)
-        apply_router_overrides(alert)
-        title = safe_title(alert)
-        lines.extend([
-            f"## {idx}. [{alert.get('importance', 'ì¤‘')}Â·{alert.get('status', 'í™•ì •')}] {title}",
-            *compact_explanation_lines(alert),
-            f"- ì¶œì²˜: {source_markdown(alert)} Â· ì¡°íšŒ {now:%H:%M KST}",
-            "",
-        ])
-    lines.append("íˆ¬ìž ì¡°ì–¸ì´ ì•„ë‹Œ ì°¸ê³ ìš© ì •ì±…Â·ê·œì œ ì•Œë¦¼ìž…ë‹ˆë‹¤.")
-    return "\n".join(lines).rstrip() + "\n"
-
-
-def remove_outputs(paths: list[Path]) -> None:
-    for path in paths:
-        if path.exists():
-            path.unlink()
-
-
-def write_policy_outputs(alerts: list[dict], now: dt.datetime) -> None:
-    POLICY_REPORT_PATH.write_text(render_policy_report(alerts, now), encoding="utf-8")
-    if not alerts:
-        remove_outputs([POLICY_ALERT_PATH, POLICY_TITLE_PATH, POLICY_ALERTS_JSON_PATH])
-        return
-
-    POLICY_ALERT_PATH.write_text(render_policy_report(alerts, now), encoding="utf-8")
-    POLICY_ALERTS_JSON_PATH.write_text(json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    top = alerts[0]
-    POLICY_TITLE_PATH.write_text(
-        f"KHS ì •ì±… ì›Œì¹˜: [{top.get('importance', 'ì¤‘')}] {safe_title(top)[:70]}\n",
-        encoding="utf-8",
-    )
-
-
-def main() -> int:
-    now = dt.datetime.now(tz=KST)
-    if not POLICY_ALERTS_JSON_PATH.exists():
-        if KOREA_PERSONNEL_ALERTS_JSON_PATH.exists():
-            KOREA_PERSONNEL_ALERTS_JSON_PATH.unlink()
-        return 0
-
-    try:
-        alerts = json.loads(POLICY_ALERTS_JSON_PATH.read_text(encoding="utf-8"))
-    except Exception as exc:
-        print(f"policy_router=skip json_error={exc}")
-        return 0
-
-    policy_alerts: list[dict] = []
-    personnel_alerts: list[dict] = []
-    whitehouse_count = 0
-    for item in alerts:
-        if is_whitehouse(item):
-            whitehouse_count += 1
-        if is_personnel(item):
-            personnel_alerts.append(item)
-        else:
-            policy_alerts.append(item)
-
-    raw_policy_count = len(policy_alerts)
-    policy_alerts = dedupe_alerts(policy_alerts)
-    write_policy_outputs(policy_alerts, now)
-    if personnel_alerts:
-        KOREA_PERSONNEL_ALERTS_JSON_PATH.write_text(
-            json.dumps(personnel_alerts, ensure_ascii=False, indent=2) + "\n",
-            encoding="utf-8",
-        )
-    else:
-        remove_outputs([KOREA_PERSONNEL_ALERTS_JSON_PATH])
-
-    print(
-        "policy_router=split "
-        f"policy={len(policy_alerts)} raw_policy={raw_policy_count} "
-        f"korea_personnel={len(personnel_alerts)} "
-        f"whitehouse_checked={whitehouse_count}"
-    )
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+                return "íŠ¸ëŸ¼ßÏ<¶‰žËkºwµçZs²Žð‰t4(€€€€€€€…±•ÉÑl‰¥µÁ…ÑÌ‰t€ôl‹®ž“²Ús
+ß®ž#²ž
+ß¶bªâ#¶vC®šˆ°€‹²"cªâ$ˆ°€‹².sªÂ¶Fp‰t4(€€€€€€€…±•ÉÑl‰Á…Ñ¡Ì‰t€ôl‹ªÎ×ªâ'
+ß²"c²jPˆ°€‹²nC²zC²z°ƒ®æ²j¤ˆ°€‹ªÎ×ªâ'®žtˆ°€‹²‚W²Æƒ¶²z®vó²và‰t4(€€€€€€€…±•ÉÑl‰Í•Ñ½ÉÌ‰t€ôÍ•Ñ½ÉÌ4(€€€€€€€…±•ÉÑl‰­½É•…}Ù…±Õ•}¡…¥¸‰t€ôÍ•Ñ½ÉÌ4(€€€€€€€…±•ÉÑl‰ÁÉ¥•‘}¥¸‰t€ô€‹®
+»²v1û²’GªÂ¸ƒ²7®ÎÐƒ²ž¶nƒªÒ®‚ ƒ²nC²zC²z³²f ƒ¶3®ž#²Žó®*Pƒ®¢ó²‚ ƒ²n²ž²vðƒ²"`ƒ²z#²ž®ž0ƒ².“²‚pƒ²vÓ²vÔƒ²b¶Z—²v ƒ¶J#®ª¤ƒ®ÊS²r²f ƒ².s¶Z'ªâÃªÂƒ¶fW²vàƒ®JƒªÊÃ²‚W®B§®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰½Õ¹Ñ•È‰t€ô€‹²"c²Úpƒ¶^#ªÂ ƒ²b#²fà°ƒ¶*ç²‚TƒªÖ·ªÂ
+ßªâÃ²^ƒ¶Vs²‚T°ƒªâÃ²†ÐƒªÎ²Vôƒ²rƒ²b °ƒ²’GªÖ´ƒ²fàƒªÎ×ªâ$ƒ¶fW®2ªÂ ƒ²z#²ró®¦ÐƒªÎ×ªâ$ƒ²Ú§ªÊ§²vÐƒ²b#²®ÎÓ®.ƒ²zG²vƒ²"`ƒ²z#²*×®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰™…¥±ÕÉ•}Í¥¹…°‰t€ô€‹ªÎ×².tƒ²nC®²ã²^C²pƒ¶J#®ª§
+ß®2²ªÖ·
+ß².s¶Z'²vó²vÐƒ¶fW²vã®Bc²ž ƒ²V+ªÆÃ®
+`ƒ¶b®²óªÂªÊ§
+ß®š³®Ns¶²z
+ßªÖ·®
+Ðƒ²†Ã®.³®æ²j§²vÐƒ²n²ž²vÓ²ž ƒ²V+²ró®¦Ðƒ¶3®ž#²Äƒ®Âc²vG²ró®†pƒ®w®
+§®.#®.¸ˆ4(€€€€€€€É•ÑÕÉ¸4(€€€¥˜¥Í}™}ÍÕ‰µ…É¥¹•}…‰±•}Á½±¥ä¡…±•ÉÐ¤è4(€€€€€€€…±•ÉÑl‰¥µÁ½ÉÑ…¹”‰t€ô€‹²’Dˆ4(€€€€€€€…±•ÉÑl‰Ñ¥Ñ±•}­¼‰t€ô€‰°ƒ¶VÓ²‚²ò²vÓ®âPƒ®zs®R¤ƒ®vó²vÓ²ƒ²*ƒªÖ·ªÂ²V#®ÎÐƒ².³²
+°ƒªÞs²ædƒ²z³ªÊ¶€ˆ4(€€€€€€€…±•ÉÑl‰Á½±¥å}Á±…¥¹}ÍÕµµ…Éä‰t€ô€‰ªÂ ƒ¶VÓ²‚ ƒ¶×².ƒ²ò²vÓ®âPƒ®zs®R¤ƒ®vó²vÓ²ƒ²*ƒªÞs²ægªÎðƒ²‚#²Â£®–ðƒªÖ·ªÂ²V#®ÎÐƒ¶fcªÊôƒ®Î¶fS²^@ƒ®ž{²ÚÀƒ²z³ªÊ¶ƒ¶Vc®*PƒªÎ×².tƒªÞs²‚pƒ®²ã²s²z®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰¥¹Ù•ÍÑµ•¹Ñ}Ù¥•Ü‰t€ô€‹¶V×².³²v ƒ¶s²ZGªÒG
+ß²‚®‚—²z—®æƒ²"c²zªâ#²žªÂ ƒ²V®.#®vðƒªÖ·²‚pƒ¶×².ƒ®žtƒ²vã¶^#ªÂ²f ƒ®ÎÓ²V ƒ².³²
+°ƒ².sªÂ¶Fs²z®.#®.¸ƒ².ƒªÞpƒ²ò²vÓ®âPƒ¶^#ªÂ °ƒ²fãªÖ´ƒ²ž®Ú
+ß²jÓ²b²z@ƒ².³²
+°°ƒ®6Ã²vÓ¶Ã²ó¶Àƒ²^ÃªÊÃ®žtƒªÞs²‚sªÂ ƒªÖ³²ÊÓ¶fS®B€ƒ®V3®ž0ƒ¶"³²z@ƒ²z³®Ž3ªÂ ƒ®B§®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰­½É•…}µ…É­•Ñ}¥µÁ…Ð‰t€ô€‹¶VsªÖ·²z—²^C²s®*Pƒ¶VÓ²‚ ƒ¶×².ƒ²ò²vÓ®âP°ƒªÖ·²‚s®žtƒ®ÎÓ²V °ƒ¶×².ƒ²z—®æ°ƒ¶×².ƒ²
+°ƒ¶VÓ²fã®žtƒ®ã²Ús®ž0ƒ²‚s¶Vs²‚²ró®†pƒ¶fW²vã¶V§®.#®.¸ƒ²nC®²àƒªÞóªÆÀƒ²^²vÐƒ¶s²ZGªÒG
+ß²‚®‚—®Î¶f`ƒ¶3®ž#®†pƒ¶fW²z—¶Vc²ž ƒ²V+²*×®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰¥µÁ…ÑÌ‰t€ôl‹².sªÂ¶Fpˆ°€‹¶Vƒ²vã²r ‰t4(€€€€€€€…±•ÉÑl‰Á…Ñ¡Ì‰t€ôl‹²‚W²Æƒ¶²z®vó²vàˆ°€‹ªÖ·ªÂ²V#®ÎÐƒ².³²
+°ˆ°€‹ªÞs²‚pƒ®š³²*“¶°‰t4(€€€€€€€…±•ÉÑl‰Í•Ñ½ÉÌ‰t€ôl‹¶VÓ²‚²ò²vÓ®âP¿ªÖ·²‚s¶×².ƒ®žtˆ°€‹¶×².ƒ®ÎÓ²V ˆ°€‹¶×².€½‰t4(€€€€€€€…±•ÉÑl‰­½É•…}Ù…±Õ•}¡…¥¸‰t€ôl‹¶VÓ²‚ ƒ¶×².ƒ²ò²vÓ®âPˆ°€‹ªÖ·²‚s®žtƒ®ÎÓ²V ˆ°€‹¶×².ƒ²z—®æˆ°€‹¶×².ƒ²
+°ƒ¶VÓ²fã®žt‰t4(€€€€€€€…±•ÉÑl‰ÁÉ¥•‘}¥¸‰t€ô€‹®
+»²v1û²’GªÂ¸ƒªÖ·ªÂ²V#®ÎÐƒ®²ã²s®vðƒ¶3®ž ƒ®Âc²vG²v ƒªÂ®*—¶Vc²ž®ž0°ƒ¶VsªÖ´ƒªâÃ²^²v`ƒ²ž²‚Dƒ²"c²Žó
+ß²vã¶^#ªÂ ƒ®ã²Ús²vÐƒ¶fW²vã®BcªâÀƒ²‚²^C®*PƒªÂªÊ¤ƒ®Î²"c®†pƒ²V÷¶V§®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰½Õ¹Ñ•È‰t€ô€‹ªÞs²æg
+ß²‚#²Â ƒ²z³ªÊ¶€ƒ®.£ªÎ²vðƒ²"`ƒ²z#²ZÐƒ¶*ç²‚Tƒ²ò²vÓ®âPƒ¶R®†s²‚w¶*ã²v`ƒ²*ç²vã
+ßªÆÃ²‚ °ƒ²b#²
+À°ƒ²†Ã®.°°ƒ¶VsªÖ´ƒªâÃ²^ƒ²"c¶bsªÂ ƒ¶fW²‚W®BpƒªÊ²v ƒ²V®.g®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰™…¥±ÕÉ•}Í¥¹…°‰t€ô€‹ªÖ³²ÊÐƒ®vó²vÓ²ƒ²*ƒ®ÎªÊô°ƒ².ƒªÞpƒ².³²
+°ƒªâÃ²’ °ƒ²ò²vÓ®âPƒ²
+³²^²z@ƒ²b¶Z”°ƒ¶VsªÖ´ƒªâÃ²^ƒ²"c²Žó
+ßªÎ×ªâ'®žtƒ®ã²Ús²vÐƒ¶fW²vã®Bc²ž ƒ²V+²ró®¦ÐƒªÒ²ÂÀƒ²z³®Ž3®†s®ž0ƒ²Êc®š³¶V§®.#®.¸ˆ4(€€€€€€€É•ÑÕÉ¸4(€€€¥˜€‰½Ù•É•½µµÕ¹¥…Ñ¥½¹Ì•ÅÕ¥Áµ•¹Ðˆ¥¸Ñ•áÐ½È€ ‰½Ù•É•±¥ÍÐˆ¥¸Ñ•áÐ…¹€ ‰ÁÉ½¡¥‰¥Ðˆ¥¸Ñ•áÐ½È€‰¥µÁ½ÉÑ…Ñ¥½¸ˆ¥¸Ñ•áÐ½È€‰µ…É­•Ñ¥¹œˆ¥¸Ñ•áÐ¤¤è4(€€€€€€€…±•ÉÑl‰Ñ¥Ñ±•}­¼‰t€ô€‰°ƒ®ÎÓ²V ƒ²r¶^`ƒ¶×².ƒ²z—®æƒ²"c²z
+ß¶2C®žƒ²‚s¶Vpƒ²‚#²Â ƒªÎ×¶Fpˆ4(€€€€€€€…±•ÉÑl‰Á½±¥å}Á±…¥¹}ÍÕµµ…Éä‰t€ô€‰ªÂ ½Ù•É•1¥ÍÓ²^@ƒ²b“®–àƒ®ÎÓ²V ƒ²r¶^`ƒ¶×².ƒ²z—®æ²v`ƒ®¾ãªÖ´ƒ®
+Ðƒ²"c²z
+ß¶2C®žƒ²‚s¶Vpƒ²‚#²Â£®–ðƒªÎ×¶Fs¶Vpƒ²
+³²V#²z®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰¥¹Ù•ÍÑµ•¹Ñ}Ù¥•Ü‰t€ô€‹²‚²j¤ƒ²z—®æ²f ƒªÎ×ªâ'²
+³ªÂ ƒ¶fW²‚W®Bc®¦Ðƒ²’GªÖ·²
+Àƒ¶×².ƒ²z—®æƒ®ÂÃ²‚p°ƒ®2²ÊÐƒªÎ×ªâ'®žt°ƒ®¾ãªÖ·¶Z”ƒ²z—®æƒ²"c²ŽðƒªâÃ®2ªÂ ƒ²n²ž²vðƒ²"`ƒ²z#²*×®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰­½É•…}µ…É­•Ñ}¥µÁ…Ð‰t€ô€‹¶VsªÖ·²z—²^C²s®*Pƒ¶×².ƒ²z—®æ°ƒ®“¶*ã²n3¶°ƒ²z—®æ°ƒ®ÎÓ²V#²z—®æƒ²’Dƒ®¾ãªÖ·¶Z”ƒ®ž“²Ús
+ß®2²ÊÐƒªÎ×ªâ'®žtƒ®ã²Ús²vÐƒ¶fW²vã®Bc®*Pƒ²Š®ª§®ž0ƒ²ƒ®Îƒ¶fW²vã¶V§®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰Í•Ñ½ÉÌ‰t€ôl‹¶×².ƒ²z—®æˆ°€‹®“¶*ã²n3¶°ƒ²z—®æˆ°€‹®ÎÓ²V#²z—®æˆ°€‹²’GªÖ´ƒ®2²ÊÐƒªÎ×ªâ'®žt‰t4(€€€€€€€…±•ÉÑl‰­½É•…}Ù…±Õ•}¡…¥¸‰t€ôl‹¶×².ƒ²z—®æˆ°€‹®“¶*ã²n3¶°ƒ²z—®æˆ°€‹®ÎÓ²V#²z—®æˆ°€‹®¾ãªÖ·¶Z”ƒ²z—®æƒªÎ×ªâ'®žt‰t4(€€€€€€€…±•ÉÑl‰ÁÉ¥•‘}¥¸‰t€ô€‹®
+»²v1û²’GªÂ¸ƒ®ÎÓ²V#²z—®æƒªÞs²‚pƒ¶3®ž#®*Pƒ®æƒ®–ÓªÊ0ƒ®Âc²vG¶Vc²ž®ž0ƒ²‚²j¤ƒ®2²
+ß².s¶Z'²vðƒ¶fW²vàƒ²‚ƒ²ž²‚Dƒ².“²‚ƒ²^ÃªÊÃ²v ƒ²‚s¶Vs²‚²z®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰½Õ¹Ñ•È‰t€ô€‹ªâÃ²†Ðƒ²*ç²vàƒ²z—®æ²v`ƒ²Êc®š°ƒ²‚#²Â£²vðƒ²"`ƒ²z#ªÎ€°ƒ¶VsªÖ´ƒªâÃ²^²v`ƒ®2²ÊÐƒ²"c²Žó®
+`ƒªÎ×ªâ'®žtƒ®ã²Ús²vÐƒ²^²ró®¦ÐƒªÎó®2¶VÓ²w²z®.#®.¸ˆ4(€€€€€€€…±•ÉÑl‰™…¥±ÕÉ•}Í¥¹…°‰t€ô€‹²‚²j¤ƒ²z—®æ°ƒªâ#²ž ƒ®ÊS²r°ƒ².s¶Z'²vð°ƒ¶VsªÖ´ƒªâÃ²^²v`ƒ®¾ãªÖ·¶Z”ƒ²"c²Žó
+ßªÎ×ªâ'®žtƒ®ã²Ús²vÐƒ¶fW²vã®Bc²ž ƒ²V+²ró®¦Ðƒ¶3®ž#²Äƒ®Âc²vG²ró®†pƒ®w®
+§®.#®.¸ˆ4(4(4)‘•˜¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡Ù…±Õ”è½‰©•Ð¤€´øÍÑÈè4(€€€Ñ•áÐ€ôÉ”¹ÍÕˆ¡È‰¡ÑÑÁÌüè¼½qL¬ˆ°€ˆ€ˆ°ÍÑÈ¡Ù…±Õ”½È€ˆˆ¤¹±½Ý•È ¤¤4(€€€Ñ•áÐ€ôÉ”¹ÍÕˆ¡È‰mq]}t¬ˆ°€ˆ€ˆ°Ñ•áÐ°™±…ÌõÉ”¹U9%=¤4(€€€É•ÑÕÉ¸É”¹ÍÕˆ¡È‰qÌ¬ˆ°€ˆ€ˆ°Ñ•áÐ¤¹ÍÑÉ¥À ¤4(4(4)‘•˜¥µÁ½ÉÑ…¹•}É…¹¬¡Ù…±Õ”è½‰©•Ð¤€´ø¥¹Ðè4(€€€É•ÑÕÉ¸ì‹²ˆè€Ì°€‹²’Dˆè€È°€‹¶V`ˆè€Åô¹•Ð¡ÍÑÈ¡Ù…±Õ”½È€ˆˆ¤°€À¤4(4(4)‘•˜µ•É•}Õ¹¥ÅÕ•}±¥ÍÐ¡±•™Ðè½‰©•Ð°É¥¡Ðè½‰©•Ð¤€´ø±¥ÍÐè4(€€€µ•É•è±¥ÍÐ€ômt4(€€€™½ÈÙ…±Õ”¥¸±¥ÍÐ¡±•™Ð½Èmt¤€¬±¥ÍÐ¡É¥¡Ð½Èmt¤è4(€€€€€€€¥˜Ù…±Õ”…¹Ù…±Õ”¹½Ð¥¸µ•É•è4(€€€€€€€€€€€µ•É•¹…ÁÁ•¹¡Ù…±Õ”¤4(€€€É•ÑÕÉ¸µ•É•4(4(4)‘•˜Í½ÕÉ•}•¹ÑÉ¥•Ì¡…±•ÉÐè‘¥Ð¤€´ø±¥ÍÑm‘¥Ñtè4(€€€•¹ÑÉ¥•Ì€ô±¥ÍÐ¡…±•ÉÐ¹•Ð ‰Í½ÕÉ•}±¥¹­Ìˆ¤½Èmt¤4(€€€¥˜…±•ÉÐ¹•Ð ‰Í½ÕÉ”ˆ¤½È…±•ÉÐ¹•Ð ‰±¥¹¬ˆ¤è4(€€€€€€€•¹ÑÉ¥•Ì¹¥¹Í•ÉÐ À°ì4(€€€€€€€€€€€€‰Í½ÕÉ”ˆè…±•ÉÐ¹•Ð ‰Í½ÕÉ”ˆ¤½È€ˆˆ°4(€€€€€€€€€€€€‰±¥¹¬ˆè…±•ÉÐ¹•Ð ‰±¥¹¬ˆ¤½È€ˆˆ°4(€€€€€€€€€€€€‰ÁÕ‰±¥Í¡•‘}­ÍÐˆè…±•ÉÐ¹•Ð ‰ÁÕ‰±¥Í¡•‘}­ÍÐˆ¤½È€ˆˆ°4(€€€€€€€€€€€€‰½É¥¥¹…±}Ñ¥Ñ±”ˆè…±•ÉÐ¹•Ð ‰½É¥¥¹…±}Ñ¥Ñ±”ˆ¤½È…±•ÉÐ¹•Ð ‰Ñ¥Ñ±”ˆ¤½È€ˆˆ°4(€€€€€€€ô¤4(€€€‘•‘ÕÁ•è±¥ÍÑm‘¥Ñt€ômt4(€€€Í••¸èÍ•ÑmÑÕÁ±•mÍÑÈ°ÍÑÉut€ôÍ•Ð ¤4(€€€™½È•¹ÑÉä¥¸•¹ÑÉ¥•Ìè4(€€€€€€€Í½ÕÉ”€ôÍÑÈ¡•¹ÑÉä¹•Ð ‰Í½ÕÉ”ˆ¤½È€ˆˆ¤¹ÍÑÉ¥À ¤4(€€€€€€€±¥¹¬€ôÍÑÈ¡•¹ÑÉä¹•Ð ‰±¥¹¬ˆ¤½È€ˆˆ¤¹ÍÑÉ¥À ¤4(€€€€€€€­•ä€ô€¡Í½ÕÉ”°±¥¹¬¤4(€€€€€€€¥˜­•ä¥¸Í••¸è4(€€€€€€€€€€€½¹Ñ¥¹Õ”4(€€€€€€€Í••¸¹…‘¡­•ä¤4(€€€€€€€‘•‘ÕÁ•¹…ÁÁ•¹¡ì¨©•¹ÑÉä°€‰Í½ÕÉ”ˆèÍ½ÕÉ”°€‰±¥¹¬ˆè±¥¹­ô¤4(€€€É•ÑÕÉ¸‘•‘ÕÁ•4(4(4)‘•˜µ•É•}µ…Ñ¡•¡±•™Ðè‘¥Ð°É¥¡Ðè‘¥Ð¤€´ø‘¥Ðè4(€€€µ•É•€ôí­•äè±¥ÍÐ¡Ù…±Õ”½Èmt¤™½È­•ä°Ù…±Õ”¥¸€¡±•™Ð½Èíô¤¹¥Ñ•µÌ ¥ô4(€€€™½È­•ä°Ù…±Õ•Ì¥¸€¡É¥¡Ð½Èíô¤¹¥Ñ•µÌ ¤è4(€€€€€€€‰Õ­•Ð€ôµ•É•¹Í•Ñ‘•™…Õ±Ð¡­•ä°mt¤4(€€€€€€€™½ÈÙ…±Õ”¥¸Ù…±Õ•Ì½Èmtè4(€€€€€€€€€€€¥˜Ù…±Õ”¹½Ð¥¸‰Õ­•Ðè4(€€€€€€€€€€€€€€€‰Õ­•Ð¹…ÁÁ•¹¡Ù…±Õ”¤4(€€€É•ÑÕÉ¸µ•É•4(4(4)‘•˜Í½ÕÉ•}™…µ¥±å}™É½µ}Ñ•áÐ¡Ù…±Õ”èÍÑÈ¤€´øÍÑÈè4(€€€É…Ü€ôÍÑÈ¡Ù…±Õ”½È€ˆˆ¤¹±½Ý•È ¤4(€€€¹½Éµ…±¥é•€ô¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡É…Ü¤4(€€€¥˜€‰Ý¡¥Ñ•¡½ÕÍ”½Øˆ¥¸¹½Éµ…±¥é•½È€‰Ý¡¥Ñ”¡½ÕÍ”ˆ¥¸É…Üè4(€€€€€€€É•ÑÕÉ¸€‰Ý¡¥Ñ•¡½ÕÍ”ˆ4(€€€¥˜€‰ÍÑ…Ñ”½Øˆ¥¸¹½Éµ…±¥é•½È€‰‘•Á…ÉÑµ•¹Ð½˜ÍÑ…Ñ”ˆ¥¸É…Ü½È€‰ÍÑ…Ñ”‘•Á…ÉÑµ•¹Ðˆ¥¸É…Üè4(€€€€€€€É•ÑÕÉ¸€‰ÍÑ…Ñ•}‘•Á…ÉÑµ•¹Ðˆ4(€€€¥˜€‰‰½•´½Øˆ¥¸¹½Éµ…±¥é•½ÈÉ”¹Í•…É ¡È‰q‰‰½•µqˆˆ°É…Ü¤è4(€€€€€€€É•ÑÕÉ¸€‰‰½•´ˆ4(€€€¥˜€‰‰Í•”½Øˆ¥¸¹½Éµ…±¥é•½ÈÉ”¹Í•…É ¡È‰q‰‰Í••qˆˆ°É…Ü¤è4(€€€€€€€É•ÑÕÉ¸€‰‰Í•”ˆ4(€€€¥˜€‰™•‘•É…°É•¥ÍÑ•È™Œˆ¥¸É…Ü½È€‰™•‘•É…°½µµÕ¹¥…Ñ¥½¹Ì½µµ¥ÍÍ¥½¸ˆ¥¸É…Ü½ÈÉ”¹Í•…É ¡È‰q‰™qˆˆ°É…Ü¤è4(€€€€€€€É•ÑÕÉ¸€‰™Œˆ4(€€€¥˜€‰•¹•Éä½Øˆ¥¸¹½Éµ…±¥é•½È€‰‘•Á…ÉÑµ•¹Ð½˜•¹•Éäˆ¥¸É…Ü½ÈÉ”¹Í•…É ¡È‰q‰‘½•qˆˆ°É…Ü¤è4(€€€€€€€É•ÑÕÉ¸€‰‘½”ˆ4(€€€¥˜€‰™•ÉŒ½Øˆ¥¸¹½Éµ…±¥é•½ÈÉ”¹Í•…É ¡È‰q‰™•Éqˆˆ°É…Ü¤è4(€€€€€€€É•ÑÕÉ¸€‰™•ÉŒˆ4(€€€¥˜€‰½µµ•É”½Øˆ¥¸¹½Éµ…±¥é•½È€‰‰ÕÉ•…Ô½˜¥¹‘ÕÍÑÉä…¹Í•ÕÉ¥Ñäˆ¥¸É…Ü½ÈÉ”¹Í•…É ¡È‰q‰‰¥Íqˆˆ°É…Ü¤è4(€€€€€€€É•ÑÕÉ¸€‰½µµ•É•}‰¥Ìˆ4(€€€¥˜€‰ÕÍÑÈ½Øˆ¥¸¹½Éµ…±¥é•½ÈÉ”¹Í•…É ¡È‰q‰ÕÍÑÉqˆˆ°É…Ü¤è4(€€€€€€€É•ÑÕÉ¸€‰ÕÍÑÈˆ4(€€€¥˜€‰™•‘•É…±É•¥ÍÑ•È½Øˆ¥¸¹½Éµ…±¥é•½È€‰™•‘•É…°É•¥ÍÑ•Èˆ¥¸É…Üè4(€€€€€€€É•ÑÕÉ¸€‰™•‘•É…±}É•¥ÍÑ•É}½Ñ¡•Èˆ4(€€€¥˜€‰­½É•„­Èˆ¥¸¹½Éµ…±¥é•½È€‰‰½¬½È­Èˆ¥¸¹½Éµ…±¥é•½È€‰™ÍŒ¼­Èˆ¥¸¹½Éµ…±¥é•½È€‰™ÍÌ½È­Èˆ¥¸¹½Éµ…±¥é•è4(€€€€€€€É•ÑÕÉ¸€‰­½É•…}½™™¥¥…°ˆ4(€€€½µÁ…Ð€ô¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡É…Ü¤4(€€€É•ÑÕÉ¸½µÁ…ÑlèàÁt½È€‰Õ¹­¹½Ý¹}Í½ÕÉ”ˆ4(4(4)‘•˜…±•ÉÑ}Í½ÕÉ•}™…µ¥±ä¡…±•ÉÐè‘¥Ð¤€´øÍÑÈè4(€€€Ù…±Õ•Ì€ôl4(€€€€€€€…±•ÉÐ¹•Ð ‰Í½ÕÉ”ˆ¤°4(€€€€€€€…±•ÉÐ¹•Ð ‰±¥¹¬ˆ¤°4(€€€€€€€…±•ÉÐ¹•Ð ‰Ñ¥Ñ±”ˆ¤°4(€€€€€€€…±•ÉÐ¹•Ð ‰½É¥¥¹…±}Ñ¥Ñ±”ˆ¤°4(€€€€€€€…±•ÉÐ¹•Ð ‰ÍÕµµ…Éäˆ¤°4(€€€t4(€€€™½È•¹ÑÉä¥¸Í½ÕÉ•}•¹ÑÉ¥•Ì¡…±•ÉÐ¤è4(€€€€€€€Ù…±Õ•Ì¹•áÑ•¹¡l4(€€€€€€€€€€€•¹ÑÉä¹•Ð ‰Í½ÕÉ”ˆ¤°4(€€€€€€€€€€€•¹ÑÉä¹•Ð ‰±¥¹¬ˆ¤°4(€€€€€€€€€€€•¹ÑÉä¹•Ð ‰½É¥¥¹…±}Ñ¥Ñ±”ˆ¤°4(€€€€€€€t¤4(€€€É•ÑÕÉ¸Í½ÕÉ•}™…µ¥±å}™É½µ}Ñ•áÐ ˆ€ˆ¹©½¥¸¡ÍÑÈ¡Ù…±Õ”½È€ˆˆ¤™½ÈÙ…±Õ”¥¸Ù…±Õ•Ì¤¤4(4(4)‘•˜Í•µ…¹Ñ¥}…±•ÉÑ}­•ä¡…±•ÉÐè‘¥Ð¤€´øÍÑÈè(€€€ÁÉ½‰”€ô•¹É¥¡}µ¥ÍÍ¥¹}½¹Ñ•áÐ¡‘¥Ð¡…±•ÉÐ¤¤(€€€…ÁÁ±å}É½ÕÑ•É}½Ù•ÉÉ¥‘•Ì¡ÁÉ½‰”¤(€€€Ý¡¥Ñ•¡½ÕÍ•}ÍÑ½Éå}­•ä€ôÍÑÈ¡ÁÉ½‰”¹•Ð ‰Ý¡¥Ñ•¡½ÕÍ•}ÍÑ½Éå}­•äˆ¤½È€ˆˆ¤¹ÍÑÉ¥À ¤(€€€¥˜Ý¡¥Ñ•¡½ÕÍ•}ÍÑ½Éå}­•äè(€€€€€€€É•ÑÕÉ¸€‰Ý¡¥Ñ•¡½ÕÍ•ðˆ€¬¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡Ý¡¥Ñ•¡½ÕÍ•}ÍÑ½Éå}­•ä¤(€€€Ñ¥Ñ±”€ôÍ…™•}Ñ¥Ñ±”¡ÁÉ½‰”¤(€€€Í•Ñ½ÉÌ€ô€‰ðˆ¹©½¥¸¡ÍÑÈ¡Ù…±Õ”¤™½ÈÙ…±Õ”¥¸ÁÉ½‰”¹•Ð ‰Í•Ñ½ÉÌˆ¤½Èmt¤4(€€€¥µÁ…ÑÌ€ô€‰ðˆ¹©½¥¸¡ÍÑÈ¡Ù…±Õ”¤™½ÈÙ…±Õ”¥¸ÁÉ½‰”¹•Ð ‰¥µÁ…ÑÌˆ¤½Èmt¤4(€€€µ…Ñ¡•‘}­•åÌ€ô€‰ðˆ¹©½¥¸¡Í½ÉÑ• ¡ÁÉ½‰”¹•Ð ‰µ…Ñ¡•ˆ¤½Èíô¤¹­•åÌ ¤¤¤4(€€€Í½ÕÉ•}™…µ¥±ä€ô…±•ÉÑ}Í½ÕÉ•}™…µ¥±ä¡ÁÉ½‰”¤4(€€€¥˜ÁÉ½‰”¹•Ð ‰‘½µ•ÍÑ¥}ÍÑ…‰±•½¥¹}Á½±¥å}Ý…Ñ ˆ¤è4(€€€€€€€É•ÑÕÉ¸€‰ÍÑ…‰±•½¥¹ðˆ€¬¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡Ñ¥Ñ±”½ÈÁÉ½‰”¹•Ð ‰Ñ¥Ñ±”ˆ¤¤4(€€€É•ÑÕÉ¸€‰ðˆ¹©½¥¸¡l4(€€€€€€€¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡Í½ÕÉ•}™…µ¥±ä¤°4(€€€€€€€¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡Ñ¥Ñ±”½ÈÁÉ½‰”¹•Ð ‰Ñ¥Ñ±”ˆ¤¤°4(€€€€€€€¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡Í•Ñ½ÉÌ¤°4(€€€€€€€¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡¥µÁ…ÑÌ¤°4(€€€€€€€¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡µ…Ñ¡•‘}­•åÌ¤°4(€€€t¤4(4(4)‘•˜µ•É•}‘ÕÁ±¥…Ñ•}…±•ÉÐ¡ÕÉÉ•¹Ðè‘¥Ð°¥¹½µ¥¹œè‘¥Ð¤€´ø‘¥Ðè4(€€€ÕÉÉ•¹Ð€ô‘¥Ð¡ÕÉÉ•¹Ð¤4(€€€•á¥ÍÑ¥¹}•¹ÑÉ¥•Ì€ôÍ½ÕÉ•}•¹ÑÉ¥•Ì¡ÕÉÉ•¹Ð¤4(€€€•á¥ÍÑ¥¹}­•åÌ€ôì¡•¹ÑÉä¹•Ð ‰Í½ÕÉ”ˆ¤°•¹ÑÉä¹•Ð ‰±¥¹¬ˆ¤¤™½È•¹ÑÉä¥¸•á¥ÍÑ¥¹}•¹ÑÉ¥•Íô4(€€€•áÑÉ…}•¹ÑÉ¥•Ì€ôl4(€€€€€€€•¹ÑÉä™½È•¹ÑÉä¥¸Í½ÕÉ•}•¹ÑÉ¥•Ì¡¥¹½µ¥¹œ¤4(€€€€€€€¥˜€¡•¹ÑÉä¹•Ð ‰Í½ÕÉ”ˆ¤°•¹ÑÉä¹•Ð ‰±¥¹¬ˆ¤¤¹½Ð¥¸•á¥ÍÑ¥¹}­•åÌ4(€€€t4(€€€ÕÉÉ•¹Ñl‰Í½ÕÉ•}±¥¹­Ì‰t€ô•á¥ÍÑ¥¹}•¹ÑÉ¥•Ì€¬•áÑÉ…}•¹ÑÉ¥•Ì4(€€€Í½ÕÉ•Ì€ômt4(€€€™½È•¹ÑÉä¥¸ÕÉÉ•¹Ñl‰Í½ÕÉ•}±¥¹­Ì‰tè4(€€€€€€€Í½ÕÉ”€ôÍÑÈ¡•¹ÑÉä¹•Ð ‰Í½ÕÉ”ˆ¤½È€ˆˆ¤¹ÍÑÉ¥À ¤4(€€€€€€€¥˜Í½ÕÉ”…¹Í½ÕÉ”¹½Ð¥¸Í½ÕÉ•Ìè4(€€€€€€€€€€€Í½ÕÉ•Ì¹…ÁÁ•¹¡Í½ÕÉ”¤4(€€€¥˜Í½ÕÉ•Ìè4(€€€€€€€ÕÉÉ•¹Ñl‰Í½ÕÉ”‰t€ô€ˆ€¼€ˆ¹©½¥¸¡Í½ÕÉ•ÍlèÍt¤4(€€€¥˜¹½ÐÕÉÉ•¹Ð¹•Ð ‰±¥¹¬ˆ¤…¹¥¹½µ¥¹œ¹•Ð ‰±¥¹¬ˆ¤è4(€€€€€€€ÕÉÉ•¹Ñl‰±¥¹¬‰t€ô¥¹½µ¥¹œ¹•Ð ‰±¥¹¬ˆ¤4(€€€ÕÉÉ•¹Ñl‰µ…Ñ¡•‰t€ôµ•É•}µ…Ñ¡•¡ÕÉÉ•¹Ð¹•Ð ‰µ…Ñ¡•ˆ¤½Èíô°¥¹½µ¥¹œ¹•Ð ‰µ…Ñ¡•ˆ¤½Èíô¤4(€€€™½È­•ä¥¸€ ‰¥µÁ…ÑÌˆ°€‰Á…Ñ¡Ìˆ°€‰Í•Ñ½ÉÌˆ°€‰­½É•…}Ù…±Õ•}¡…¥¸ˆ¤è4(€€€€€€€ÕÉÉ•¹Ñm­•åt€ôµ•É•}Õ¹¥ÅÕ•}±¥ÍÐ¡ÕÉÉ•¹Ð¹•Ð¡­•ä¤°¥¹½µ¥¹œ¹•Ð¡­•ä¤¤4(€€€¥˜¥µÁ½ÉÑ…¹•}É…¹¬¡¥¹½µ¥¹œ¹•Ð ‰¥µÁ½ÉÑ…¹”ˆ¤¤€ø¥µÁ½ÉÑ…¹•}É…¹¬¡ÕÉÉ•¹Ð¹•Ð ‰¥µÁ½ÉÑ…¹”ˆ¤¤è4(€€€€€€€ÕÉÉ•¹Ñl‰¥µÁ½ÉÑ…¹”‰t€ô¥¹½µ¥¹œ¹•Ð ‰¥µÁ½ÉÑ…¹”ˆ¤4(€€€™½È­•ä¥¸€ ‰ÁÕ‰±¥Í¡•‘}­ÍÐˆ°€‰ÍÑ…ÑÕÌˆ°€‰Á½±¥å}Á±…¥¹}ÍÕµµ…Éäˆ°€‰¥¹Ù•ÍÑµ•¹Ñ}Ù¥•Üˆ°€‰­½É•…}µ…É­•Ñ}¥µÁ…Ðˆ°€‰ÁÉ¥•‘}¥¸ˆ°€‰½Õ¹Ñ•Èˆ°€‰™…¥±ÕÉ•}Í¥¹…°ˆ¤è4(€€€€€€€¥˜¹½ÐÕÉÉ•¹Ð¹•Ð¡­•ä¤…¹¥¹½µ¥¹œ¹•Ð¡­•ä¤è4(€€€€€€€€€€€ÕÉÉ•¹Ñm­•åt€ô¥¹½µ¥¹œ¹•Ð¡­•ä¤4(€€€É•ÑÕÉ¸ÕÉÉ•¹Ð4(4(4)‘•˜‘•‘ÕÁ•}…±•ÉÑÌ¡…±•ÉÑÌè±¥ÍÑm‘¥Ñt¤€´ø±¥ÍÑm‘¥Ñtè4(€€€µ•É•è‘¥ÑmÍÑÈ°‘¥Ñt€ôíô4(€€€½É‘•Èè±¥ÍÑmÍÑÉt€ômt4(€€€™½È…±•ÉÐ¥¸…±•ÉÑÌè4(€€€€€€€­•ä€ôÍ•µ…¹Ñ¥}…±•ÉÑ}­•ä¡…±•ÉÐ¤4(€€€€€€€¥˜¹½Ð­•ä¹ÍÑÉ¥À ‰ð€ˆ¤è4(€€€€€€€€€€€­•ä€ô¹½Éµ…±¥é•}Í•µ…¹Ñ¥}Ñ•áÐ¡˜‰í…±•ÉÐ¹•Ð Í½ÕÉ”œ¥ôí…±•ÉÐ¹•Ð Ñ¥Ñ±”œ¥ôí…±•ÉÐ¹•Ð ±¥¹¬œ¥ôˆ¤4(€€€€€€€¥˜­•ä¹½Ð¥¸µ•É•è4(€€€€€€€€€€€µ•É•‘m­•åt€ô‘¥Ð¡…±•ÉÐ¤4(€€€€€€€€€€€½É‘•È¹…ÁÁ•¹¡­•ä¤4(€€€€€€€€€€€½¹Ñ¥¹Õ”4(€€€€€€€µ•É•‘m­•åt€ôµ•É•}‘ÕÁ±¥…Ñ•}…±•ÉÐ¡µ•É•‘m­•åt°…±•ÉÐ¤4(€€€É•ÑÕÉ¸mµ•É•‘m­•åt™½È­•ä¥¸½É‘•Ét4(4(4)‘•˜Í½ÕÉ•}µ…É­‘½Ý¸¡…±•ÉÐè‘¥Ð¤€´øÍÑÈè4(€€€Á…ÉÑÌè±¥ÍÑmÍÑÉt€ômt4(€€€™½È•¹ÑÉä¥¸Í½ÕÉ•}•¹ÑÉ¥•Ì¡…±•ÉÐ¥lèÍtè4(€€€€€€€±…‰•°€ô‘¥ÍÁ±…å}Í½ÕÉ”¡•¹ÑÉä¹•Ð ‰Í½ÕÉ”ˆ¤¤4(€€€€€€€±¥¹¬€ôÍÑÈ¡•¹ÑÉä¹•Ð ‰±¥¹¬ˆ¤½È€ˆˆ¤¹ÍÑÉ¥À ¤4(€€€€€€€Á…ÉÑÌ¹…ÁÁ•¹¡˜‰mí±…‰•±õt¡í±¥¹­ô¤ˆ¥˜±¥¹¬•±Í”±…‰•°¤4(€€€¥˜¹½ÐÁ…ÉÑÌè4(€€€€€€€±…‰•°€ô‘¥ÍÁ±…å}Í½ÕÉ”¡…±•ÉÐ¹•Ð ‰Í½ÕÉ”ˆ¤¤4(€€€€€€€±¥¹¬€ôÍÑÈ¡…±•ÉÐ¹•Ð ‰±¥¹¬ˆ¤½È€ˆˆ¤¹ÍÑÉ¥À ¤4(€€€€€€€É•ÑÕÉ¸˜‰mí±…‰•±õt¡í±¥¹­ô¤ˆ¥˜±¥¹¬•±Í”±…‰•°4(€€€É•ÑÕÉ¸€ˆ€¼€ˆ¹©½¥¸¡Á…ÉÑÌ¤4(4(4)‘•˜É•¹‘•É}Á½±¥å}É•Á½ÉÐ¡…±•ÉÑÌè±¥ÍÑm‘¥Ñt°¹½Üè‘Ð¹‘…Ñ•Ñ¥µ”¤€´øÍÑÈè4(€€€¥˜¹½Ð…±•ÉÑÌè4(€€€€€€€É•ÑÕÉ¸¹½}•¹•É…±}É•Á½ÉÐ¡¹½Ü¤4(4(€€€±¥¹•Ì€ôm˜‹Â~j -!Lƒ²‚W²Æ
+ßªÞs²‚pƒªÎƒ²Ú§ªÊ¤ƒ²n3²æ`ƒ
+Üí¹½Üè•g®€•·²nP€•“²vð€• è•4-MQôˆ°€ˆ‰t4(€€€™½È¥‘à°…±•ÉÐ¥¸•¹Õµ•É…Ñ”¡…±•ÉÑÌ°€Ä¤è4(€€€€€€€…±•ÉÐ€ô•¹É¥¡}µ¥ÍÍ¥¹}½¹Ñ•áÐ¡…±•ÉÐ¤4(€€€€€€€…ÁÁ±å}É½ÕÑ•É}½Ù•ÉÉ¥‘•Ì¡…±•ÉÐ¤4(€€€€€€€Ñ¥Ñ±”€ôÍ…™•}Ñ¥Ñ±”¡…±•ÉÐ¤4(€€€€€€€±¥¹•Ì¹•áÑ•¹¡l4(€€€€€€€€€€€˜ˆŒŒí¥‘áô¸mí…±•ÉÐ¹•Ð ¥µÁ½ÉÑ…¹”œ°€Ÿ²’Dœ¥÷
+Ýí…±•ÉÐ¹•Ð ÍÑ…ÑÕÌœ°€Ÿ¶fW²‚Tœ¥õtíÑ¥Ñ±•ôˆ°(€€€€€€€€€€€€©½µÁ…Ñ}•áÁ±…¹…Ñ¥½¹}±¥¹•Ì¡…±•ÉÐ¤°(€€€€€€€€€€€˜ˆ´ƒ²Ús²Ê`èo²nC®²àƒ®ÎÓªâÁt¡í…±•ÉÐ¹•Ð ±¥¹¬œ°€œœ¥ô¤ƒ
+Üí‘¥ÍÁ±…å}Í½ÕÉ”¡…±•ÉÐ¹•Ð Í½ÕÉ”œ¤¥ôƒ
+Üƒ²†Ã¶j0í¹½Üè• è•4-MQôˆ°(€€€€€€€€€€€€ˆˆ°(€€€€€€€t¤(€€€±¥¹•Ì¹…ÁÁ•¹ ‹¶"³²z@ƒ²†Ã²Zã²vÐƒ²V®.0ƒ²ÂãªÎƒ²j¤ƒ²‚W²Æ
+ßªÞs²‚pƒ²V3®šó²z®.#®.¸ˆ¤4(€€€É•ÑÕÉ¸€‰q¸ˆ¹©½¥¸¡±¥¹•Ì¤¹ÉÍÑÉ¥À ¤€¬€‰q¸ˆ4(4(4)‘•˜É•µ½Ù•}½ÕÑÁÕÑÌ¡Á…Ñ¡Ìè±¥ÍÑmA…Ñ¡t¤€´ø9½¹”è4(€€€™½ÈÁ…Ñ ¥¸Á…Ñ¡Ìè4(€€€€€€€¥˜Á…Ñ ¹•á¥ÍÑÌ ¤è4(€€€€€€€€€€€Á…Ñ ¹Õ¹±¥¹¬ ¤4(4(4)‘•˜ÝÉ¥Ñ•}Á½±¥å}½ÕÑÁÕÑÌ¡…±•ÉÑÌè±¥ÍÑm‘¥Ñt°¹½Üè‘Ð¹‘…Ñ•Ñ¥µ”¤€´ø9½¹”è4(€€€A=1%e}IA=IQ}AQ ¹ÝÉ¥Ñ•}Ñ•áÐ¡É•¹‘•É}Á½±¥å}É•Á½ÉÐ¡…±•ÉÑÌ°¹½Ü¤°•¹½‘¥¹œô‰ÕÑ˜´àˆ¤4(€€€¥˜¹½Ð…±•ÉÑÌè4(€€€€€€€É•µ½Ù•}½ÕÑÁÕÑÌ¡mA=1%e}1IQ}AQ °A=1%e}Q%Q1}AQ °A=1%e}1IQM})M=9}AQ!t¤4(€€€€€€€É•ÑÕÉ¸4(4(€€€A=1%e}1IQ}AQ ¹ÝÉ¥Ñ•}Ñ•áÐ¡É•¹‘•É}Á½±¥å}É•Á½ÉÐ¡…±•ÉÑÌ°¹½Ü¤°•¹½‘¥¹œô‰ÕÑ˜´àˆ¤4(€€€A=1%e}1IQM})M=9}AQ ¹ÝÉ¥Ñ•}Ñ•áÐ¡©Í½¸¹‘ÕµÁÌ¡…±•ÉÑÌ°•¹ÍÕÉ•}…Í¥¤õ…±Í”°¥¹‘•¹ÐôÈ¤€¬€‰q¸ˆ°•¹½‘¥¹œô‰ÕÑ˜´àˆ¤4(€€€Ñ½À€ô…±•ÉÑÍlÁt4(€€€A=1%e}Q%Q1}AQ ¹ÝÉ¥Ñ•}Ñ•áÐ 4(€€€€€€€˜‰-!Lƒ²‚W²Æƒ²n3²æ`èmíÑ½À¹•Ð ¥µÁ½ÉÑ…¹”œ°€Ÿ²’Dœ¥õtíÍ…™•}Ñ¥Ñ±”¡Ñ½À¥lèÜÁuõq¸ˆ°4(€€€€€€€•¹½‘¥¹œô‰ÕÑ˜´àˆ°4(€€€€¤4(4(4)‘•˜µ…¥¸ ¤€´ø¥¹Ðè4(€€€¹½Ü€ô‘Ð¹‘…Ñ•Ñ¥µ”¹¹½Ü¡Ñèõ-MP¤4(€€€¥˜¹½ÐA=1%e}1IQM})M=9}AQ ¹•á¥ÍÑÌ ¤è4(€€€€€€€¥˜-=I}AIM=991}1IQM})M=9}AQ ¹•á¥ÍÑÌ ¤è4(€€€€€€€€€€€-=I}AIM=991}1IQM})M=9}AQ ¹Õ¹±¥¹¬ ¤4(€€€€€€€É•ÑÕÉ¸€À4(4(€€€ÑÉäè4(€€€€€€€…±•ÉÑÌ€ô©Í½¸¹±½…‘Ì¡A=1%e}1IQM})M=9}AQ ¹É•…‘}Ñ•áÐ¡•¹½‘¥¹œô‰ÕÑ˜´àˆ¤¤4(€€€•á•ÁÐá•ÁÑ¥½¸…Ì•áŒè4(€€€€€€€ÁÉ¥¹Ð¡˜‰Á½±¥å}É½ÕÑ•ÈõÍ­¥À©Í½¹}•ÉÉ½Èõí•áôˆ¤4(€€€€€€€É•ÑÕÉ¸€À4(4(€€€Á½±¥å}…±•ÉÑÌè±¥ÍÑm‘¥Ñt€ômt4(€€€Á•ÉÍ½¹¹•±}…±•ÉÑÌè±¥ÍÑm‘¥Ñt€ômt4(€€€Ý¡¥Ñ•¡½ÕÍ•}½Õ¹Ð€ô€À4(€€€™½È¥Ñ•´¥¸…±•ÉÑÌè4(€€€€€€€¥˜¥Í}Ý¡¥Ñ•¡½ÕÍ”¡¥Ñ•´¤è4(€€€€€€€€€€€Ý¡¥Ñ•¡½ÕÍ•}½Õ¹Ð€¬ô€Ä4(€€€€€€€¥˜¥Í}Á•ÉÍ½¹¹•°¡¥Ñ•´¤è4(€€€€€€€€€€€Á•ÉÍ½¹¹•±}…±•ÉÑÌ¹…ÁÁ•¹¡¥Ñ•´¤4(€€€€€€€•±Í”è4(€€€€€€€€€€€Á½±¥å}…±•ÉÑÌ¹…ÁÁ•¹¡¥Ñ•´¤4(4(€€€É…Ý}Á½±¥å}½Õ¹Ð€ô±•¸¡Á½±¥å}…±•ÉÑÌ¤4(€€€Á½±¥å}…±•ÉÑÌ€ô‘•‘ÕÁ•}…±•ÉÑÌ¡Á½±¥å}…±•ÉÑÌ¤4(€€€ÝÉ¥Ñ•}Á½±¥å}½ÕÑÁÕÑÌ¡Á½±¥å}…±•ÉÑÌ°¹½Ü¤4(€€€¥˜Á•ÉÍ½¹¹•±}…±•ÉÑÌè4(€€€€€€€-=I}AIM=991}1IQM})M=9}AQ ¹ÝÉ¥Ñ•}Ñ•áÐ 4(€€€€€€€€€€€©Í½¸¹‘ÕµÁÌ¡Á•ÉÍ½¹¹•±}…±•ÉÑÌ°•¹ÍÕÉ•}…Í¥¤õ…±Í”°¥¹‘•¹ÐôÈ¤€¬€‰q¸ˆ°4(€€€€€€€€€€€•¹½‘¥¹œô‰ÕÑ˜´àˆ°4(€€€€€€€€¤4(€€€•±Í”è4(€€€€€€€É•µ½Ù•}½ÕÑÁÕÑÌ¡m-=I}AIM=991}1IQM})M=9}AQ!t¤4(4(€€€ÁÉ¥¹Ð 4(€€€€€€€€‰Á½±¥å}É½ÕÑ•ÈõÍÁ±¥Ð€ˆ4(€€€€€€€˜‰Á½±¥äõí±•¸¡Á½±¥å}…±•ÉÑÌ¥ôÉ…Ý}Á½±¥äõíÉ…Ý}Á½±¥å}½Õ¹Ñô€ˆ4(€€€€€€€˜‰­½É•…}Á•ÉÍ½¹¹•°õí±•¸¡Á•ÉÍ½¹¹•±}…±•ÉÑÌ¥ô€ˆ4(€€€€€€€˜‰Ý¡¥Ñ•¡½ÕÍ•}¡•­•õíÝ¡¥Ñ•¡½ÕÍ•}½Õ¹Ñôˆ4(€€€€¤4(€€€É•ÑÕÉ¸€À4(4(4)¥˜}}¹…µ•}|€ôô€‰}}µ…¥¹}|ˆè4(€€€É…¥Í”MåÍÑ•µá¥Ð¡µ…¥¸ ¤¤4(

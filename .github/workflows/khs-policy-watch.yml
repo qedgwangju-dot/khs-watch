@@ -14,6 +14,14 @@ on:
         options:
           - "false"
           - "true"
+      telegram_dry_run:
+        description: "Build and validate Telegram messages without sending or consuming seen state"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
 
 permissions:
   contents: write
@@ -30,6 +38,9 @@ jobs:
       CREATE_GITHUB_ISSUE: "true"
       KHS_WATCH_MAX_ALERTS: "5"
       KHS_SOURCE_MAX_AGE_HOURS: "72"
+      KHS_WHITEHOUSE_MAX_AGE_HOURS: "120"
+      KHS_WHITEHOUSE_DETAIL_LIMIT: "56"
+      KHS_WHITEHOUSE_DETAIL_PER_SOURCE: "8"
       KHS_NUCLEAR_MAX_AGE_HOURS: "72"
       KHS_TRUSTED_NEWS_MAX_AGE_HOURS: "72"
       KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
@@ -43,6 +54,7 @@ jobs:
       KHS_TELEGRAM_DEDUPE_HOURS: "48"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
       TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
+      TELEGRAM_DRY_RUN: ${{ github.event.inputs.telegram_dry_run || 'false' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -66,6 +78,8 @@ jobs:
       - name: Validate policy watch scripts
         run: |
           python -m py_compile scripts/khs_policy_watch.py
+          python -m py_compile scripts/khs_article_detail.py
+          python -m py_compile scripts/khs_policy_seen_finalize.py
           python -m py_compile scripts/korea_presidential_postprocess.py
           python -m py_compile scripts/khs_korea_presidential_personnel_postprocess.py
           python -m py_compile scripts/khs_policy_alert_guardrails.py
@@ -202,34 +216,6 @@ jobs:
             cat out/khs_policy_source_status_alert.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Commit updated seen state
-        if: hashFiles('data/khs_policy_watch_seen.json') != '' || hashFiles('data/khs_domestic_telecom_policy_seen.json') != '' || hashFiles('data/khs_domestic_stablecoin_policy_seen.json') != '' || hashFiles('data/khs_korea_nuclear_siting_policy_seen.json') != '' || hashFiles('data/khs_transformer_tariff_policy_seen.json') != '' || hashFiles('data/khs_nuclear_policy_seen.json') != '' || hashFiles('data/khs_trusted_policy_news_seen.json') != '' || hashFiles('data/khs_source_failure_seen.json') != ''
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git restore -- scripts/khs_policy_watch.py || true
-          for path in \
-            data/khs_policy_watch_seen.json \
-            data/khs_domestic_telecom_policy_seen.json \
-            data/khs_domestic_stablecoin_policy_seen.json \
-            data/khs_korea_nuclear_siting_policy_seen.json \
-            data/khs_transformer_tariff_policy_seen.json \
-            data/khs_nuclear_policy_seen.json \
-            data/khs_trusted_policy_news_seen.json \
-            data/khs_source_failure_seen.json
-          do
-            if [ -f "$path" ]; then
-              git add "$path"
-            fi
-          done
-          if git diff --cached --quiet; then
-            echo "KHS watch state: no changes"
-          else
-            git commit -m "Update KHS watch state"
-            git pull --rebase origin main
-            git push
-          fi
-
       - name: Open policy alert issue
         if: env.CREATE_GITHUB_ISSUE == 'true' && hashFiles('out/khs_policy_watch_alert.md') != ''
         env:
@@ -287,7 +273,7 @@ jobs:
           fi
 
       - name: Send Telegram alert
-        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || hashFiles('out/khs_nuclear_policy_alert.md') != '' || hashFiles('out/khs_trusted_policy_news_alert.md') != '' || hashFiles('out/khs_policy_source_status_alert.md') != '' || env.TELEGRAM_TEST == 'true'
+        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || hashFiles('out/khs_nuclear_policy_alert.md') != '' || hashFiles('out/khs_trusted_policy_news_alert.md') != '' || hashFiles('out/khs_policy_source_status_alert.md') != '' || env.TELEGRAM_TEST == 'true' || env.TELEGRAM_DRY_RUN == 'true'
         env:
           KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
           KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
@@ -295,7 +281,7 @@ jobs:
           POLICY_TELEGRAM_BOT_TOKEN="$KHS_POLICY_TELEGRAM_BOT_TOKEN"
           POLICY_TELEGRAM_CHAT_ID="$KHS_POLICY_TELEGRAM_CHAT_ID"
 
-          if [ -z "$POLICY_TELEGRAM_BOT_TOKEN" ] || [ -z "$POLICY_TELEGRAM_CHAT_ID" ]; then
+          if { [ -z "$POLICY_TELEGRAM_BOT_TOKEN" ] || [ -z "$POLICY_TELEGRAM_CHAT_ID" ]; } && [ "$TELEGRAM_DRY_RUN" != "true" ]; then
             echo "KHS policy Telegram: KHS_POLICY_TELEGRAM_BOT_TOKEN/KHS_POLICY_TELEGRAM_CHAT_ID missing; skip wrong-room fallback" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
@@ -316,6 +302,7 @@ jobs:
           repo = os.environ.get("GITHUB_REPOSITORY", "qedgwangju-dot/khs-watch")
           run_id = os.environ.get("GITHUB_RUN_ID", "")
           telegram_test = os.environ.get("TELEGRAM_TEST", "false").lower() == "true"
+          telegram_dry_run = os.environ.get("TELEGRAM_DRY_RUN", "false").lower() == "true"
 
           run_url = f"https://github.com/{repo}/actions/runs/{run_id}" if run_id else f"https://github.com/{repo}/actions"
           issue_url = f"https://github.com/{repo}/issues"
@@ -406,39 +393,104 @@ jobs:
                   continue
               sendable.append((title, body, digest))
 
-          for title, body, digest in sendable:
-              text = f"{title}\n\n{body[:3300]}\n\nActions: {run_url}\nIssues: {issue_url}"
-              data = urllib.parse.urlencode({"chat_id": chat_id, "text": text[:4096], "disable_web_page_preview": "true"}).encode("utf-8")
-              req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
-              with urllib.request.urlopen(req, timeout=20) as resp:
-                  resp.read()
-              sent_state[digest] = {
-                  "sent_at_utc": now_utc.isoformat().replace("+00:00", "Z"),
-                  "title": title,
-                  "preview": re.sub(r"\s+", " ", body)[:220],
-              }
+          if telegram_dry_run:
+              dry_run_path = pathlib.Path("out/khs_telegram_dry_run.md")
+              dry_run_path.write_text(
+                  "\n\n---\n\n".join(f"{title}\n\n{body}" for title, body in messages) + "\n",
+                  encoding="utf-8",
+              )
+              print(
+                  f"telegram_dry_run=true messages={len(messages)} "
+                  f"sendable={len(sendable)} skipped_duplicates={len(skipped)}"
+              )
+          else:
+              for title, body, digest in sendable:
+                  text = f"{title}\n\n{body[:3300]}\n\nActions: {run_url}\nIssues: {issue_url}"
+                  data = urllib.parse.urlencode({"chat_id": chat_id, "text": text[:4096], "disable_web_page_preview": "true"}).encode("utf-8")
+                  req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
+                  with urllib.request.urlopen(req, timeout=20) as resp:
+                      resp.read()
+                  sent_state[digest] = {
+                      "sent_at_utc": now_utc.isoformat().replace("+00:00", "Z"),
+                      "title": title,
+                      "preview": re.sub(r"\s+", " ", body)[:220],
+                  }
 
-          if sendable:
-              state_path.parent.mkdir(parents=True, exist_ok=True)
-              state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+              if sendable:
+                  state_path.parent.mkdir(parents=True, exist_ok=True)
+                  state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+              if messages:
+                  confirmed_at = now_utc.astimezone(dt.timezone(dt.timedelta(hours=9)))
+                  pathlib.Path("out/khs_telegram_delivery_confirmed.json").write_text(
+                      json.dumps(
+                          {
+                              "status": "confirmed",
+                              "messages": len(messages),
+                              "sent": len(sendable),
+                              "duplicate_skipped": len(skipped),
+                              "confirmed_at_kst": confirmed_at.isoformat(timespec="seconds"),
+                          },
+                          ensure_ascii=False,
+                          indent=2,
+                      )
+                      + "\n",
+                      encoding="utf-8",
+                  )
 
           for title, digest, sent_at in skipped:
               print(f"telegram_duplicate_skipped digest={digest} first_sent={sent_at} title={title}")
-          print(f"telegram_messages={len(sendable)} skipped_duplicates={len(skipped)}")
+          print(
+              f"telegram_messages={0 if telegram_dry_run else len(sendable)} "
+              f"skipped_duplicates={len(skipped)} dry_run={str(telegram_dry_run).lower()}"
+          )
           PY
 
           echo "KHS policy Telegram: duplicate-protected send step completed" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Commit Telegram delivery dedupe state
-        if: always() && hashFiles('data/khs_telegram_delivery_seen.json') != ''
+      - name: Upload policy watch verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: khs-policy-watch-${{ github.run_id }}
+          path: |
+            out/khs_policy_watch.md
+            out/khs_policy_watch_alert.md
+            out/khs_policy_watch_alerts.json
+            out/khs_policy_watch_pending_seen.json
+            out/khs_telegram_dry_run.md
+            out/khs_telegram_delivery_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Finalize policy seen state after confirmed Telegram outcome
+        if: always() && hashFiles('out/khs_telegram_delivery_confirmed.json') != ''
+        run: python scripts/khs_policy_seen_finalize.py
+
+      - name: Commit confirmed watch and Telegram state
+        if: always() && hashFiles('out/khs_telegram_delivery_confirmed.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/khs_telegram_delivery_seen.json
+          git restore -- scripts/khs_policy_watch.py || true
+          for path in \
+            data/khs_policy_watch_seen.json \
+            data/khs_domestic_telecom_policy_seen.json \
+            data/khs_domestic_stablecoin_policy_seen.json \
+            data/khs_korea_nuclear_siting_policy_seen.json \
+            data/khs_transformer_tariff_policy_seen.json \
+            data/khs_nuclear_policy_seen.json \
+            data/khs_trusted_policy_news_seen.json \
+            data/khs_source_failure_seen.json \
+            data/khs_telegram_delivery_seen.json
+          do
+            if [ -f "$path" ]; then
+              git add "$path"
+            fi
+          done
           if git diff --cached --quiet; then
-            echo "KHS Telegram delivery state: no changes"
+            echo "KHS confirmed watch state: no changes"
           else
-            git commit -m "Update KHS Telegram delivery state"
+            git commit -m "Update confirmed KHS watch state"
             git pull --rebase origin main
             git push
           fi
