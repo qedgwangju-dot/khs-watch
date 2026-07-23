@@ -14,6 +14,7 @@ import urllib.request
 
 import gamejoa_preopen_news_radar_contract_runner as contract
 from khs_article_detail import extract_article_detail
+from khs_compact_text import MAX_PROSE_CHARS, concise_text
 
 
 telegram = contract.telegram
@@ -914,10 +915,9 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
         alert = base_korean_business_alert(row, now, score=112, impacts=["수급"])
         alert.update(
             {
-                "policy_plain_summary": article_sentences(
-                    body,
-                    ["4거래일", "삼성전자", "SK하이닉스", "순매수"],
-                    3,
+                "policy_plain_summary": (
+                    "외국인이 4거래일간 삼성전자·SK하이닉스를 "
+                    "약 4.5조원 순매수했습니다."
                 ),
                 "investment_view": "외국인 매수 집중은 대형 반도체주의 단기 수급과 지수 기여도를 바꿉니다. 다만 HBM 수요 전망은 매수 이유이지 이번 기사만으로 새 실적이 확정된 것은 아닙니다.",
                 "korea_market_impact": "삼성전자·SK하이닉스의 외국인 순매수 지속 여부와 반도체 장비·부품주로 매수 폭이 넓어지는지 구분해 확인합니다.",
@@ -939,10 +939,9 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
         )
         alert.update(
             {
-                "policy_plain_summary": article_sentences(
-                    body,
-                    ["CXL 3.1", "양산평가", "이달 말", "1018억원"],
-                    3,
+                "policy_plain_summary": (
+                    "엑시콘이 삼성전자와 CXL 3.1 테스터 양산평가 중이며 "
+                    "이달 말 종료 예정입니다."
                 ),
                 "investment_view": "삼성전자 양산평가 통과는 CXL·Gen6 테스터 공급의 선행 조건입니다. 평가 종료는 수주가 아니므로 장비 발주·공급계약·매출 인식 확인이 필요합니다.",
                 "korea_market_impact": "한국장에서는 엑시콘과 CXL·SSD 검사장비 밸류체인의 수급을 보되, 삼성전자 평가 통과와 신규 계약 공시가 확인된 종목만 연결합니다.",
@@ -2330,8 +2329,32 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     counter = alert.get("counter") or "원문 세부조건과 공식 문서 확인 전 과대해석 가능"
     interpretation = alert.get("interpretation") or "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는지 확인해야 합니다."
     failed_signal = alert.get("failed_signal") or "관련 가격·수급·공식 후속 확인이 동행하지 않으면 단발성 뉴스"
+    title = display_news(alert)
+    first_impact = displayed_impacts[0] if displayed_impacts else "의사결정"
+    first_sector = sectors[0] if sectors else "관련 업종"
+    core = concise_text(alert.get("policy_plain_summary"), fallback=title)
+    investment = concise_text(
+        alert.get("investment_view") or interpretation,
+        fallback=f"{first_impact} 변화 여부를 확인합니다.",
+    )
+    korea = concise_text(
+        alert.get("korea_market_impact"),
+        fallback=f"한국장에서는 {first_sector} 직접 노출만 확인합니다.",
+    )
+    priced_in = concise_text(
+        priced_in,
+        fallback="중간. 후속 가격·수급 확인이 필요합니다.",
+    )
+    counter = concise_text(
+        counter,
+        fallback="원문 조건 확정 전 과대해석 가능성이 있습니다.",
+    )
+    failed_signal = concise_text(
+        failed_signal,
+        fallback="후속 공시·가격·수급이 없으면 재료가 약해집니다.",
+    )
 
-    lines = [f"{idx}) [{safe(alert.get('importance'))} | {safe(status)}] {safe(display_news(alert))}{html.escape(count_suffix, quote=False)}"]
+    lines = [f"{idx}) [{safe(alert.get('importance'))} | {safe(status)}] {safe(title)}{html.escape(count_suffix, quote=False)}"]
     if examples:
         source_text = source_summary(examples[:4])
     else:
@@ -2342,10 +2365,10 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
 
     lines += [
         f"- 기준/시각: {safe(basis)} · 원천 {safe(published)} · 조회 {now:%H:%M KST}",
-        f"- 핵심: {safe(alert.get('policy_plain_summary'))}",
+        f"- 핵심: {safe(core)}",
         f"- 의사결정 영향: {safe(', '.join(displayed_impacts))}",
-        f"- 투자 포인트: {safe(alert.get('investment_view'))}",
-        f"- 한국장: {safe(alert.get('korea_market_impact'))}",
+        f"- 투자 포인트: {safe(investment)}",
+        f"- 한국장: {safe(korea)}",
         f"- 경로/섹터: {safe(', '.join(paths))} | {safe(', '.join(sectors))}",
         f"- 반영/반대: {safe(priced_in)} / {safe(counter)}",
     ]
@@ -2440,12 +2463,22 @@ def guard_preopen_report(text: str) -> None:
     for marker in ["무단 전재", "재배포 금지", "ai 학습 및 활용 금지"]:
         if marker in low:
             errors.append(f"article_boilerplate={marker}")
+    compact_prefixes = ("- 핵심:", "- 투자 포인트:", "- 한국장:", "- 실패 신호:")
     for line in text.splitlines():
-        if not line.startswith("- 핵심:"):
+        visible_line = html.unescape(line)
+        for prefix in compact_prefixes:
+            if visible_line.startswith(prefix):
+                value = visible_line.removeprefix(prefix).strip()
+                if len(value) > MAX_PROSE_CHARS:
+                    errors.append(f"compact_prose_too_long={prefix}")
+        if visible_line.startswith("- 반영/반대:"):
+            value = visible_line.removeprefix("- 반영/반대:").strip()
+            for part in value.split(" / ", 1):
+                if len(part.strip()) > MAX_PROSE_CHARS:
+                    errors.append("compact_prose_too_long=- 반영/반대:")
+        if not visible_line.startswith("- 핵심:"):
             continue
-        summary = line.removeprefix("- 핵심:").strip()
-        if len(summary) > ARTICLE_SUMMARY_MAX_CHARS:
-            errors.append("article_summary_too_long")
+        summary = visible_line.removeprefix("- 핵심:").strip()
         if re.search(r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)$", summary):
             errors.append(f"incomplete_article_summary={summary[-30:]}")
     if errors:

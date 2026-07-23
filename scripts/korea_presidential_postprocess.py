@@ -11,7 +11,9 @@ import urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from khs_policy_alert_explainer import ensure_explained, explanation_lines
+from khs_compact_text import concise_text
+from khs_policy_alert_explainer import ensure_explained
+from khs_policy_alert_router import compact_explanation_lines
 
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
@@ -216,6 +218,11 @@ def render_personnel(idx: int, item: dict, now: dt.datetime) -> list[str]:
         "paths": ["정책 인선", "정책 타임라인"],
     }
     ensure_explained(explain_item)
+    compact_color = concise_text(
+        policy_color,
+        fallback="발표자 직함·이력 기준 정책 방향을 확인합니다.",
+    )
+    compact_basis = concise_text(body, fallback=title)
     source = item.get("source") or "공식 출처"
     link = item.get("link") or ""
     published = item.get("published_kst") or "확인 불가"
@@ -224,11 +231,11 @@ def render_personnel(idx: int, item: dict, now: dt.datetime) -> list[str]:
         "- 상태 변화: 대통령실/청와대 공식 인사 임명 확인",
         f"- 인선/임명 대상: {appointee_text}",
         f"- 발표/라인: {presenter}",
-        f"- 정책 색깔/이력 힌트: {policy_color}",
+        f"- 정책 색깔/이력 힌트: {compact_color}",
         f"- 원문/출처: [{source}]({link}) · 원천시각 {published} · 조회 {now:%H:%M KST}",
-        *explanation_lines(explain_item),
-        "- 즉시 체크: 취임 직후 업무지시, 부처 정책 발표 일정, 예산·입법·규제 후속 조치",
-        f"- 핵심 근거: {body[:260]}",
+        *compact_explanation_lines(explain_item),
+        "- 다음 확인: 업무지시·부처 발표·예산·입법 일정",
+        f"- 핵심 근거: {compact_basis}",
         "",
     ]
 
@@ -241,8 +248,8 @@ def render_general(idx: int, item: dict, now: dt.datetime) -> list[str]:
         f"## {idx}. [{item.get('importance', '중')}·{item.get('status', '확정')}] {item.get('title', '').strip()}",
         f"- 상태 변화: {matched_keys} 신호 확인 ({', '.join(matched_terms[:8])})",
         f"- 원문/출처: [{item.get('source', 'source')}]({item.get('link', '')}) · 원천시각 {item.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
-        *explanation_lines(item),
-        "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
+        *compact_explanation_lines(item),
+        "- 다음 확인: 원문·시행일·한국 밸류체인·시장 반응",
         "",
     ]
 

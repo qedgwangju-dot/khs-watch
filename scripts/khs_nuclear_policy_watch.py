@@ -13,7 +13,9 @@ import urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from khs_policy_alert_explainer import ensure_explained, explanation_lines
+from khs_compact_text import concise_text
+from khs_policy_alert_explainer import ensure_explained
+from khs_policy_alert_router import compact_explanation_lines
 
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
@@ -194,21 +196,26 @@ def render(alerts: list[dict], now: dt.datetime) -> str:
             **item,
             "title": ko_title,
             "summary": evidence,
+            "matched": {"energy_security_policy": list(item["matched"])},
             "impacts": ["시간표", "돈 버는 능력", "수급"],
             "paths": ["원전 정책 타임라인", "AI 데이터센터 전력수요", "원전 밸류체인", "우라늄/원전기기 수급"],
             "sectors": ["원전/전력기기", "전력망/데이터센터", "우라늄", "SMR/대형원전 기자재"],
         }
         ensure_explained(explain_item)
+        compact_evidence = concise_text(
+            evidence,
+            fallback="AP1000·AI 전력·원전 지원 근거를 확인했습니다.",
+        )
         lines.extend([
             f"## {idx}. [상·확정] {ko_title}",
             f"- 원문/출처: [{source_label}]({item['link']}) · 원천시각 {item['published_kst']} · 조회 {now:%H:%M KST}",
-            f"- 확인 근거: {evidence}",
-            *explanation_lines(explain_item),
-            "- 즉시 체크: Westinghouse/Cameco/Brookfield 후속 공시, DOE·NRC 일정, 국내 원전기기·전력기기 수급 반응",
+            f"- 확인 근거: {compact_evidence}",
+            *compact_explanation_lines(explain_item),
+            "- 다음 확인: 후속 공시·DOE/NRC 일정·국내 수급",
             "",
         ])
     lines.extend([
-        "💡 워치 판단: 원전 정책은 단순 테마가 아니라 AI 전력수요와 장기 CAPEX 시간표를 함께 바꾸는 재료라 별도 송출합니다.",
+        "💡 워치 판단: AI 전력수요와 원전 CAPEX 시간표를 확인합니다.",
         "",
         "투자 조언이 아닌 참고용 원전·AI 전력 정책 알림입니다.",
     ])

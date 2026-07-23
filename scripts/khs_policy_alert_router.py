@@ -13,6 +13,10 @@ try:
     from khs_policy_alert_explainer import ensure_explained, explanation_lines
 except ImportError:  # pragma: no cover - supports module-style local tests.
     from scripts.khs_policy_alert_explainer import ensure_explained, explanation_lines
+try:
+    from khs_compact_text import concise_text
+except ImportError:  # pragma: no cover - supports module-style local tests.
+    from scripts.khs_compact_text import concise_text
 
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
@@ -475,16 +479,76 @@ def line_value(lines: list[str], prefix: str, fallback: object = "") -> str:
     return str(fallback or "").strip()
 
 
+def compact_core_fallback(alert: dict, title: str) -> tuple[str, bool]:
+    text = alert_text(alert)
+    if "pac-3" in text and "amraam" in text and "nato" in text:
+        return "NATO 방위투자에 PAC-3·AMRAAM 생산이 포함됐습니다.", True
+    if "trump" in text and "iran" in text and "hormuz" in text:
+        return "트럼프 발언은 이란·이스라엘·중동 전쟁위험을 바꿉니다.", True
+    if "bwrx-300" in text and "first program" in text and "samsung c&t" in text:
+        return "FIRST 지원과 삼성물산·BWRX-300 유럽 배치가 포함됐습니다.", True
+    return title, False
+
+
+def compact_failure_fallback(alert: dict) -> str:
+    text = alert_text(alert)
+    if "trump" in text and "iran" in text and "hormuz" in text:
+        return "유가·환율·운임·방산 반응이 없으면 재료가 약해집니다."
+    return "후속 공시·가격·수급이 없으면 재료가 약해집니다."
+
+
 def compact_explanation_lines(alert: dict) -> list[str]:
     apply_router_overrides(alert)
     rendered = explanation_lines(alert)
-    core = clip_text(line_value(rendered, "- 핵심 내용", alert.get("policy_plain_summary")), 190)
-    investment = clip_text(line_value(rendered, "- 투자 관점", alert.get("investment_view")), 170)
-    korea = clip_text(line_value(rendered, "- 한국장 영향", alert.get("korea_market_impact")), 170)
+    title = safe_title(alert)
     impacts = clip_text(line_value(rendered, "- 의사결정 영향", alert.get("decision_classification")), 90)
-    priced = clip_text(line_value(rendered, "- 반영 가능성", alert.get("priced_in")), 105)
-    counter = clip_text(line_value(rendered, "- 반대 근거", alert.get("counter")), 115)
-    failure = clip_text(line_value(rendered, "- 실패 신호", alert.get("failure_signal")), 125)
+    first_impact = (impacts.split(",", 1)[0] or "의사결정").strip()
+    raw_sectors = alert.get("sectors") or alert.get("korea_value_chain") or ["관련 업종"]
+    if isinstance(raw_sectors, (list, tuple, set)):
+        sector_values = [str(value).strip() for value in raw_sectors if str(value).strip()]
+    else:
+        sector_values = [
+            value.strip()
+            for value in re.split(r"[,|]", str(raw_sectors))
+            if value.strip()
+        ]
+    sector_values = sector_values or ["관련 업종"]
+    source_text = alert_text(alert)
+    if "trump" in source_text and "iran" in source_text and "hormuz" in source_text:
+        sector_values = ["정유/화학/해운", "방산/지정학"]
+    short_sectors = [
+        value.replace("반도체/HBM", "반도체·HBM")
+        for value in sector_values[:3]
+    ]
+    korea_fallback = f"한국장에서는 {', '.join(short_sectors)}만 확인합니다."
+    core_fallback, prefer_core_fallback = compact_core_fallback(alert, title)
+    core = concise_text(
+        line_value(rendered, "- 핵심 내용", alert.get("policy_plain_summary")),
+        fallback=core_fallback,
+        prefer_fallback_when_long=prefer_core_fallback,
+    )
+    investment = concise_text(
+        line_value(rendered, "- 투자 관점", alert.get("investment_view")),
+        fallback=f"{first_impact} 변화 여부를 확인합니다.",
+    )
+    korea = concise_text(
+        line_value(rendered, "- 한국장 영향", alert.get("korea_market_impact")),
+        fallback=korea_fallback,
+        prefer_fallback_when_long=True,
+    )
+    priced = concise_text(
+        line_value(rendered, "- 반영 가능성", alert.get("priced_in")),
+        fallback="중간. 후속 가격·수급 확인이 필요합니다.",
+    )
+    counter = concise_text(
+        line_value(rendered, "- 반대 근거", alert.get("counter")),
+        fallback="원문 조건 확정 전 과대해석 가능성이 있습니다.",
+    )
+    failure = concise_text(
+        line_value(rendered, "- 실패 신호", alert.get("failure_signal")),
+        fallback=compact_failure_fallback(alert),
+        prefer_fallback_when_long=True,
+    )
     return [
         f"- 핵심: {core}",
         f"- 의사결정 영향: {impacts}",

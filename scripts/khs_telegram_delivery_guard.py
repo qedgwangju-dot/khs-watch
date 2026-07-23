@@ -12,6 +12,11 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
+try:
+    from khs_compact_text import MAX_PROSE_CHARS
+except ImportError:  # pragma: no cover - supports module-style local tests.
+    from scripts.khs_compact_text import MAX_PROSE_CHARS
+
 OUT_DIR = Path("out")
 MAX_TITLE_CHARS = 120
 MAX_BODY_LINE_CHARS = 420
@@ -314,6 +319,36 @@ def compact_body(body: str) -> str:
     return "\n".join(compacted).rstrip() + ("\n" if body.endswith("\n") else "")
 
 
+COMPACT_PROSE_PREFIXES = (
+    "- 핵심:",
+    "- 핵심 내용:",
+    "- 핵심 근거:",
+    "- 확인 근거:",
+    "- 투자 관점:",
+    "- 투자 영향:",
+    "- 투자 포인트:",
+    "- 한국장:",
+    "- 한국장 영향:",
+    "- 실패 신호:",
+)
+
+
+def oversized_compact_prose(body: str) -> str | None:
+    for line in body.splitlines():
+        stripped = line.strip()
+        for prefix in COMPACT_PROSE_PREFIXES:
+            if stripped.startswith(prefix):
+                value = stripped.removeprefix(prefix).strip()
+                if len(value) > MAX_PROSE_CHARS:
+                    return f"{prefix}{len(value)}"
+        if stripped.startswith("- 반영/반대:"):
+            value = stripped.removeprefix("- 반영/반대:").strip()
+            for part in value.split(" / ", 1):
+                if len(part.strip()) > MAX_PROSE_CHARS:
+                    return f"- 반영/반대:{len(part.strip())}"
+    return None
+
+
 def read_pair(lane: Lane) -> tuple[str, str]:
     title = lane.title.read_text(encoding="utf-8") if lane.title.exists() else ""
     body = lane.body.read_text(encoding="utf-8") if lane.body.exists() else ""
@@ -546,6 +581,11 @@ def guard_lane(lane: Lane) -> None:
     marker = has_raw_line_prefix(body)
     if marker:
         delete_lane(lane, f"raw_line_prefix:{marker}")
+        return
+
+    marker = oversized_compact_prose(body)
+    if marker:
+        delete_lane(lane, f"compact_prose_too_long:{marker}")
         return
 
     marker = has_blocker(visible, RAW_DETECTOR_BLOCKERS, include_urls=False)

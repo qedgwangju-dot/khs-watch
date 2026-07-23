@@ -26,6 +26,10 @@ try:
     from khs_policy_alert_explainer import ensure_explained
 except ImportError:  # pragma: no cover - supports module-style local tests.
     from scripts.khs_policy_alert_explainer import ensure_explained
+try:
+    from khs_compact_text import concise_text
+except ImportError:  # pragma: no cover - supports module-style local tests.
+    from scripts.khs_compact_text import concise_text
 
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
@@ -1303,14 +1307,40 @@ def compact_sectors(rule: StoryRule, items: list[dict]) -> str:
 
 def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: dict) -> list[str]:
     ensure_explained(explain_item)
+    title = story_display_title(rule, items)
+    impacts = compact_impacts(rule, items)
+    sectors = compact_sectors(rule, items)
+    first_impact = impacts.split(",", 1)[0].strip() or "의사결정"
+    first_sector = sectors.split(",", 1)[0].strip() or "관련 업종"
+    core = concise_text(compact_core(rule, items), fallback=title)
+    investment = concise_text(
+        compact_investment_view(rule, items),
+        fallback=f"{first_impact} 변화 여부를 확인합니다.",
+    )
+    korea = concise_text(
+        compact_korea_market_view(rule, items),
+        fallback=f"한국장에서는 {first_sector} 직접 노출만 확인합니다.",
+    )
+    priced = concise_text(
+        compact_priced_in(rule, items),
+        fallback="중간. 후속 가격·수급 확인이 필요합니다.",
+    )
+    counter = concise_text(
+        compact_counter(rule, items),
+        fallback="원문 조건 확정 전 과대해석 가능성이 있습니다.",
+    )
+    failure = concise_text(
+        compact_failure_signal(rule, items),
+        fallback="후속 공시·가격·수급이 없으면 재료가 약해집니다.",
+    )
     return [
-        f"- 핵심: {compact_core(rule, items)}",
-        f"- 투자 관점: {compact_investment_view(rule, items)}",
-        f"- 한국장 영향: {compact_korea_market_view(rule, items)}",
-        f"- 의사결정 영향: {compact_impacts(rule, items)} | 경로: {compact_paths(rule, items)}",
-        f"- 영향 섹터: {compact_sectors(rule, items)}",
-        f"- 반영/반대: {compact_priced_in(rule, items)} 반대 근거는 {compact_counter(rule, items)}",
-        f"- 실패 신호: {compact_failure_signal(rule, items)}",
+        f"- 핵심: {core}",
+        f"- 투자 관점: {investment}",
+        f"- 한국장 영향: {korea}",
+        f"- 의사결정 영향: {impacts} | 경로: {compact_paths(rule, items)}",
+        f"- 영향 섹터: {sectors}",
+        f"- 반영/반대: {priced} / {counter}",
+        f"- 실패 신호: {failure}",
     ]
 
 

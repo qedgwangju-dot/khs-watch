@@ -15,14 +15,17 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import khs_article_detail
+from khs_compact_text import concise_text
 import khs_policy_alert_guardrails
 import khs_policy_alert_router
 import khs_domestic_stablecoin_policy_watch
+import khs_nuclear_policy_watch
 import khs_policy_runtime_patch
 import khs_policy_seen_finalize
 import khs_policy_watch
 import khs_telegram_delivery_guard
 import khs_trusted_policy_news_watch
+import korea_presidential_postprocess
 
 
 OUT_DIR = Path("out")
@@ -34,6 +37,36 @@ POLICY_FILES = [
 ]
 ROOT = Path(__file__).resolve().parents[1]
 POLICY_WORKFLOW = ROOT / ".github" / "workflows" / "khs-policy-watch.yml"
+COMPACT_PROSE_PREFIXES = (
+    "- 핵심:",
+    "- 핵심 내용:",
+    "- 핵심 근거:",
+    "- 확인 근거:",
+    "- 투자 관점:",
+    "- 투자 영향:",
+    "- 투자 포인트:",
+    "- 한국장:",
+    "- 한국장 영향:",
+    "- 실패 신호:",
+)
+
+
+def assert_compact_prose_limit(body: str, context: str, limit: int = 50) -> None:
+    errors: list[str] = []
+    for line in body.splitlines():
+        stripped = line.strip()
+        for prefix in COMPACT_PROSE_PREFIXES:
+            if stripped.startswith(prefix):
+                value = stripped.removeprefix(prefix).strip()
+                if len(value) > limit:
+                    errors.append(f"{prefix} {len(value)}자")
+        if stripped.startswith("- 반영/반대:"):
+            value = stripped.removeprefix("- 반영/반대:").strip()
+            for part in value.split(" / ", 1):
+                if len(part.strip()) > limit:
+                    errors.append(f"- 반영/반대: {len(part.strip())}자")
+    if errors:
+        raise AssertionError(f"{context} compact prose exceeded 50 chars: {errors}")
 
 
 def main() -> int:
@@ -69,6 +102,8 @@ def main() -> int:
     assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch()
     assert_delivery_guard_blocks_bok_generic_stablecoin_mismatch()
     assert_delivery_guard_blocks_url_topic_missing()
+    assert_delivery_guard_enforces_50_character_prose()
+    assert_auxiliary_policy_lanes_are_compact()
     assert_router_explains_fcc_submarine_cable_policy()
     cleanup()
     try:
@@ -295,6 +330,7 @@ def assert_whitehouse_current_policy_profiles_are_specific() -> None:
             raise AssertionError(f"White House Korean title missing from compact render: {expected_title}")
     if "Fact Sheet: President" in rendered:
         raise AssertionError("White House raw English heading leaked into Telegram render")
+    assert_compact_prose_limit(rendered, "White House policy")
 
 
 def assert_whitehouse_fact_sheet_is_preferred_for_duplicate_story() -> None:
@@ -774,6 +810,7 @@ def assert_trusted_policy_news_render_is_compact() -> None:
     long_lines = [line for line in rendered.splitlines() if len(line) > khs_telegram_delivery_guard.MAX_BODY_LINE_CHARS]
     if long_lines:
         raise AssertionError(f"trusted policy Telegram render has overlong line: {long_lines[0][:120]}")
+    assert_compact_prose_limit(rendered, "trusted policy")
 
 
 def assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped() -> None:
@@ -1072,6 +1109,56 @@ def assert_delivery_guard_blocks_duplicate_policy_alerts() -> None:
         raise AssertionError("delivery guard did not block duplicate policy alerts")
 
 
+def assert_delivery_guard_enforces_50_character_prose() -> None:
+    valid = "- 핵심: " + ("가" * 50)
+    invalid = "- 핵심: " + ("가" * 51)
+    if khs_telegram_delivery_guard.oversized_compact_prose(valid):
+        raise AssertionError("delivery guard rejected an exact 50-character summary")
+    if not khs_telegram_delivery_guard.oversized_compact_prose(invalid):
+        raise AssertionError("delivery guard accepted a 51-character summary")
+    decimal_summary = concise_text(
+        "HBM4 계약가는 4.5% 인상될 수 있습니다. 후속 협상 확인이 필요합니다.",
+    )
+    if "4.5%" not in decimal_summary or len(decimal_summary) > 50:
+        raise AssertionError(f"compact summary damaged a decimal value: {decimal_summary}")
+
+
+def assert_auxiliary_policy_lanes_are_compact() -> None:
+    now = dt.datetime(2026, 7, 23, 20, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+    nuclear = khs_nuclear_policy_watch.render(
+        [{
+            "source": "DOE Nuclear Energy",
+            "title": "9 Key Takeaways from President Trump's Executive Orders on Nuclear Energy",
+            "link": "https://www.energy.gov/ne/example",
+            "published_kst": "2026-07-23T00:00:00+09:00",
+            "matched": [
+                "westinghouse",
+                "ap1000",
+                "nuclear reactor",
+                "data center",
+                "department of energy",
+            ],
+        }],
+        now,
+    )
+    assert_compact_prose_limit(nuclear, "nuclear policy")
+
+    personnel = "\n".join(
+        korea_presidential_postprocess.render_personnel(
+            1,
+            {
+                "source": "대한민국 정책브리핑",
+                "title": "금융위원장 인사 발표",
+                "summary": "김정책 금융위원장 임명을 공식 발표했습니다.",
+                "link": "",
+                "published_kst": "2026-07-23T00:00:00+09:00",
+            },
+            now,
+        )
+    )
+    assert_compact_prose_limit(personnel, "Korea presidential personnel")
+
+
 def assert_delivery_guard_blocks_source_body_mismatch() -> None:
     cleanup()
     title_path = OUT_DIR / "khs_policy_watch_alert_title.txt"
@@ -1312,6 +1399,7 @@ def assert_policy_output() -> None:
     alert_count = sum(1 for line in lines if line.startswith("## "))
     if alert_count != 1:
         raise AssertionError(f"expected only one delivered alert, got {alert_count}")
+    assert_compact_prose_limit(body, "general policy")
 
 
 if __name__ == "__main__":

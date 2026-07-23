@@ -31,6 +31,12 @@ RUNTIME_DELIVERY_GUARD_FILE = ROOT / "scripts" / "verify_gamejoa_delivery_result
 MAINTENANCE_CONTRACT_FILE = ROOT / "docs" / "gamejoa_maintenance_contract.md"
 PRODUCTION_RUNNER = "gamejoa_preopen_news_radar_fda_quality_runner"
 LOCKED_TELEGRAM_MODULE = "gamejoa_preopen_news_radar_full_compact_runner"
+COMPACT_PROSE_PREFIXES = (
+    "- 핵심:",
+    "- 투자 포인트:",
+    "- 한국장:",
+    "- 실패 신호:",
+)
 
 REQUIRED_WORKFLOW_SNIPPETS = [
     "TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}",
@@ -88,6 +94,22 @@ REQUIRED_RUNNER_SNIPPETS = [
     "https://rss.etnews.com/Section901.xml",
     "https://rss.etnews.com/Section902.xml",
 ]
+
+
+def compact_prose_errors(body: str, limit: int = 50) -> list[str]:
+    errors: list[str] = []
+    for line in body.splitlines():
+        for prefix in COMPACT_PROSE_PREFIXES:
+            if line.startswith(prefix):
+                value = line.removeprefix(prefix).strip()
+                if len(value) > limit:
+                    errors.append(f"{prefix} {len(value)}자")
+        if line.startswith("- 반영/반대:"):
+            value = line.removeprefix("- 반영/반대:").strip()
+            for part in value.split(" / ", 1):
+                if len(part.strip()) > limit:
+                    errors.append(f"- 반영/반대: {len(part.strip())}자")
+    return errors
 
 REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
     "gamejoa_preopen_news_radar_seen.json",
@@ -725,6 +747,12 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
         for marker in required_markers:
             if marker not in rendered:
                 errors.append(f"{publisher} compact Telegram summary missing {marker}")
+        field_errors = compact_prose_errors(rendered)
+        if field_errors:
+            errors.append(
+                f"{publisher} compact Telegram prose exceeded 50 chars: "
+                + ", ".join(field_errors)
+            )
         if "- 분류 매트릭스:" in rendered or "- 관련 해외 티커/지표:" in rendered:
             errors.append(f"{publisher} compact Telegram summary regressed to verbose format")
         if "K-원전/가스터빈" in rendered or "체코 원전" in rendered:
