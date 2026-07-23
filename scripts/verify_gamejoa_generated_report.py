@@ -18,26 +18,19 @@ TITLE = OUT / "gamejoa_preopen_news_radar_title.txt"
 REQUIRED_ITEM_MARKERS = [
     "- 기준/시각:",
     "- 핵심:",
-    "- 의사결정 영향:",
     "- 투자 포인트:",
-    "- 한국장:",
     "- 경로/섹터:",
-    "- 반영/반대:",
-    "- 실패 신호:",
     "- 출처:",
-]
-
-MATRIX_TERMS = [
-    "매출·마진·현금흐름",
-    "밸류에이션/할인율",
-    "수급",
-    "시간표",
 ]
 
 FORBIDDEN_TEXT = [
     "- 원제:",
     "- 상태 변화:",
     "- 즉시 체크:",
+    "- 의사결정 영향:",
+    "- 한국장:",
+    "- 반영/반대:",
+    "- 실패 신호:",
     "의사결정 영향 제한적",
     "공식 문서 또는 신뢰 보도에서 한국장 가격 변수 후보가 확인됐습니다.",
     "돈 버는 능력, 할인율, 수급, 시간표 중 무엇이 실제로 바뀌는지 원문과 시장 반응으로 재확인해야 합니다.",
@@ -101,10 +94,6 @@ def assert_item_quality(title: str, block: list[str], errors: list[str]) -> None
         line = next((line for line in block if line.startswith(marker)), "")
         if marker not in {"- 출처:"} and not value_after(line, marker):
             errors.append(f"{title[:80]} has empty marker {marker}")
-
-    impacts = next((line for line in block if line.startswith("- 의사결정 영향:")), "")
-    if not any(term in impacts for term in MATRIX_TERMS):
-        errors.append(f"{title[:80]} has no recognized decision impact")
 
     sector = next((line for line in block if line.startswith("- 경로/섹터:")), "")
     if "정책/규제 일반" in sector or "영향 섹터 확인 불가" in sector:
