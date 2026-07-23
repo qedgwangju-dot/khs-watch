@@ -2,8 +2,8 @@
 """Final delivery guard for KHS Telegram alert files.
 
 This runs after all lane-specific renderers and before GitHub issues/Telegram.
-It blocks low-impact notices and raw detector-language leaks at the delivery
-boundary so a single renderer regression cannot reach Telegram.
+It rewrites long prose fields to 50 characters or fewer, while still blocking
+source mismatches, low-impact notices, and raw detector-language leaks.
 """
 
 from __future__ import annotations
@@ -13,9 +13,9 @@ from dataclasses import dataclass
 from pathlib import Path
 
 try:
-    from khs_compact_text import MAX_PROSE_CHARS
+    from khs_compact_text import compact_prose_lines
 except ImportError:  # pragma: no cover - supports module-style local tests.
-    from scripts.khs_compact_text import MAX_PROSE_CHARS
+    from scripts.khs_compact_text import compact_prose_lines
 
 OUT_DIR = Path("out")
 MAX_TITLE_CHARS = 120
@@ -319,36 +319,6 @@ def compact_body(body: str) -> str:
     return "\n".join(compacted).rstrip() + ("\n" if body.endswith("\n") else "")
 
 
-COMPACT_PROSE_PREFIXES = (
-    "- 핵심:",
-    "- 핵심 내용:",
-    "- 핵심 근거:",
-    "- 확인 근거:",
-    "- 투자 관점:",
-    "- 투자 영향:",
-    "- 투자 포인트:",
-    "- 한국장:",
-    "- 한국장 영향:",
-    "- 실패 신호:",
-)
-
-
-def oversized_compact_prose(body: str) -> str | None:
-    for line in body.splitlines():
-        stripped = line.strip()
-        for prefix in COMPACT_PROSE_PREFIXES:
-            if stripped.startswith(prefix):
-                value = stripped.removeprefix(prefix).strip()
-                if len(value) > MAX_PROSE_CHARS:
-                    return f"{prefix}{len(value)}"
-        if stripped.startswith("- 반영/반대:"):
-            value = stripped.removeprefix("- 반영/반대:").strip()
-            for part in value.split(" / ", 1):
-                if len(part.strip()) > MAX_PROSE_CHARS:
-                    return f"- 반영/반대:{len(part.strip())}"
-    return None
-
-
 def read_pair(lane: Lane) -> tuple[str, str]:
     title = lane.title.read_text(encoding="utf-8") if lane.title.exists() else ""
     body = lane.body.read_text(encoding="utf-8") if lane.body.exists() else ""
@@ -583,11 +553,6 @@ def guard_lane(lane: Lane) -> None:
         delete_lane(lane, f"raw_line_prefix:{marker}")
         return
 
-    marker = oversized_compact_prose(body)
-    if marker:
-        delete_lane(lane, f"compact_prose_too_long:{marker}")
-        return
-
     marker = has_blocker(visible, RAW_DETECTOR_BLOCKERS, include_urls=False)
     if marker:
         delete_lane(lane, f"raw_detector:{marker}")
@@ -621,8 +586,12 @@ def guard_lane(lane: Lane) -> None:
             delete_lane(lane, f"missing_explanation_field:{markers[0]}")
             return
 
+    body, compacted_fields = compact_prose_lines(body)
     write_pair(lane, title, body)
-    print(f"telegram_delivery_guard=passed lane={lane.name}")
+    print(
+        f"telegram_delivery_guard=passed lane={lane.name} "
+        f"compacted_prose_fields={compacted_fields}"
+    )
 
 
 def main() -> int:

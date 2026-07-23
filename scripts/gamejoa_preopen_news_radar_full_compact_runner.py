@@ -14,7 +14,7 @@ import urllib.request
 
 import gamejoa_preopen_news_radar_contract_runner as contract
 from khs_article_detail import extract_article_detail
-from khs_compact_text import MAX_PROSE_CHARS, concise_text
+from khs_compact_text import compact_prose_lines, concise_text
 
 
 telegram = contract.telegram
@@ -2411,11 +2411,11 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
         "투자 조언이 아닌 참고용 뉴스 브리핑입니다.",
     ]
     report = "\n".join(lines).strip() + "\n"
-    guard_preopen_report(report)
-    return report
+    return guard_preopen_report(report)
 
 
-def guard_preopen_report(text: str) -> None:
+def guard_preopen_report(text: str) -> str:
+    text, compacted_fields = compact_prose_lines(text)
     errors: list[str] = []
     valid_title = (
         text.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · ")
@@ -2463,19 +2463,8 @@ def guard_preopen_report(text: str) -> None:
     for marker in ["무단 전재", "재배포 금지", "ai 학습 및 활용 금지"]:
         if marker in low:
             errors.append(f"article_boilerplate={marker}")
-    compact_prefixes = ("- 핵심:", "- 투자 포인트:", "- 한국장:", "- 실패 신호:")
     for line in text.splitlines():
         visible_line = html.unescape(line)
-        for prefix in compact_prefixes:
-            if visible_line.startswith(prefix):
-                value = visible_line.removeprefix(prefix).strip()
-                if len(value) > MAX_PROSE_CHARS:
-                    errors.append(f"compact_prose_too_long={prefix}")
-        if visible_line.startswith("- 반영/반대:"):
-            value = visible_line.removeprefix("- 반영/반대:").strip()
-            for part in value.split(" / ", 1):
-                if len(part.strip()) > MAX_PROSE_CHARS:
-                    errors.append("compact_prose_too_long=- 반영/반대:")
         if not visible_line.startswith("- 핵심:"):
             continue
         summary = visible_line.removeprefix("- 핵심:").strip()
@@ -2483,10 +2472,13 @@ def guard_preopen_report(text: str) -> None:
             errors.append(f"incomplete_article_summary={summary[-30:]}")
     if errors:
         raise RuntimeError("GAMEJOA preopen radar quality guard blocked Telegram output: " + "; ".join(errors))
+    if compacted_fields:
+        print(f"GAMEJOA compact prose rewritten={compacted_fields}")
+    return text
 
 
 def send_telegram(text: str) -> None:
-    guard_preopen_report(text)
+    text = guard_preopen_report(text)
     chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
     if is_empty_radar_report(text) and not should_send_empty_radar():
         write_delivery_status("skipped_empty", chat_id, len(text), "No high-impact radar item selected")

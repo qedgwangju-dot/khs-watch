@@ -286,6 +286,7 @@ def main() -> int:
         errors.append("Bing RSS redirect was not unwrapped to the source URL")
 
     now = production.base.kst_now()
+    assert_51_character_summary_is_compacted_before_send(compact, now, errors)
     assert_korean_business_article_contract(production, compact, now, errors)
     china_mofcom_row = {
         "source": "Trusted news 중국 상무부 수출통제/관세",
@@ -616,6 +617,61 @@ def main() -> int:
 
     print("GAMEJOA delivery contract OK: hs8879 Telegram lane is locked and send failures are fatal.")
     return 0
+
+
+def assert_51_character_summary_is_compacted_before_send(compact, now, errors: list[str]) -> None:
+    report = "\n".join([
+        f"📰 GAMEJOA 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}",
+        f"조회: {now:%Y-%m-%d %H:%M KST}",
+        "선별: 핵심 1건",
+        "",
+        "1) [상 | 공식 확인 전] 미국, 반도체 수출통제 확대 검토",
+        "- 기준/시각: 신뢰외신 확산 · 원천 확인 중 · 조회 20:00 KST",
+        (
+            "- 핵심: 미국이 첨단 반도체 장비 수출통제를 확대해 한국 기업의 "
+            "중국 공장 증설과 장비 반입 일정을 다시 점검하게 됐습니다."
+        ),
+        "- 의사결정 영향: 매출·마진·현금흐름, 시간표",
+        (
+            "- 투자 포인트: 적용 장비와 시행일이 확정되면 중국 생산법인의 "
+            "증설비용과 장비 조달 일정이 바뀔 수 있습니다."
+        ),
+        (
+            "- 한국장: 삼성전자·SK하이닉스와 중국 공장 노출 장비사의 "
+            "실제 허가 범위와 고객 발주 변화를 확인합니다."
+        ),
+        "- 경로/섹터: 공급망, 정책 타임라인 | 반도체/AI",
+        (
+            "- 반영/반대: 관련 수출통제 우려는 일부 반영됐으나 적용 품목은 "
+            "추가 확인이 필요합니다. / 공식 문서 전에는 범위가 축소되거나 "
+            "시행이 늦어질 수 있습니다."
+        ),
+        (
+            "- 실패 신호: 상무부 후속 문서와 적용 품목·시행일이 나오지 않으면 "
+            "단기 정책 기대에 그칠 수 있습니다."
+        ),
+        "- 출처: <a href=\"https://www.reuters.com/world/example\">Reuters</a>",
+        "",
+        "💡 실시간 뉴스 코멘트",
+        "오늘 핵심 변화는 `매출·마진·현금흐름·시간표`입니다.",
+        "할인율: 확인 불가",
+        "다음 투자기상도에서 수치·수급·테마와 재확인 필요.",
+        "",
+        "투자 조언이 아닌 참고용 뉴스 브리핑입니다.",
+    ]) + "\n"
+    try:
+        compacted = compact.guard_preopen_report(report)
+    except RuntimeError as exc:
+        errors.append(f"51-character summary was blocked instead of compacted: {exc}")
+        return
+    field_errors = compact_prose_errors(compacted)
+    if field_errors:
+        errors.append(
+            "51-character summary remained over 50 chars after send preparation: "
+            + ", ".join(field_errors)
+        )
+    if "미국이 첨단 반도체 장비 수출통제를" not in compacted:
+        errors.append("GAMEJOA 51-character summary lost its source-specific subject")
 
 
 def assert_korean_business_article_contract(production, compact, now, errors: list[str]) -> None:

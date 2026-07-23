@@ -15,7 +15,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import khs_article_detail
-from khs_compact_text import concise_text
+from khs_compact_text import compact_prose_lines, concise_text
 import khs_policy_alert_guardrails
 import khs_policy_alert_router
 import khs_domestic_stablecoin_policy_watch
@@ -102,7 +102,7 @@ def main() -> int:
     assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch()
     assert_delivery_guard_blocks_bok_generic_stablecoin_mismatch()
     assert_delivery_guard_blocks_url_topic_missing()
-    assert_delivery_guard_enforces_50_character_prose()
+    assert_delivery_guard_compacts_and_sends_51_character_prose()
     assert_auxiliary_policy_lanes_are_compact()
     assert_router_explains_fcc_submarine_cable_policy()
     cleanup()
@@ -1109,13 +1109,77 @@ def assert_delivery_guard_blocks_duplicate_policy_alerts() -> None:
         raise AssertionError("delivery guard did not block duplicate policy alerts")
 
 
-def assert_delivery_guard_enforces_50_character_prose() -> None:
-    valid = "- 핵심: " + ("가" * 50)
-    invalid = "- 핵심: " + ("가" * 51)
-    if khs_telegram_delivery_guard.oversized_compact_prose(valid):
-        raise AssertionError("delivery guard rejected an exact 50-character summary")
-    if not khs_telegram_delivery_guard.oversized_compact_prose(invalid):
-        raise AssertionError("delivery guard accepted a 51-character summary")
+def assert_delivery_guard_compacts_and_sends_51_character_prose() -> None:
+    exact_value = "가" * 50
+    exact_body, exact_changes = compact_prose_lines(f"- 핵심: {exact_value}")
+    if exact_body != f"- 핵심: {exact_value}" or exact_changes:
+        raise AssertionError("exact 50-character summary was changed")
+
+    over_value = "나" * 51
+    over_body, over_changes = compact_prose_lines(f"- 핵심: {over_value}")
+    over_summary = over_body.removeprefix("- 핵심: ").strip()
+    if over_changes != 1 or len(over_summary) > 50:
+        raise AssertionError("exact 51-character summary was not compacted")
+
+    cleanup()
+    lane = next(
+        item
+        for item in khs_telegram_delivery_guard.LANES
+        if item.name == "trusted_policy_news"
+    )
+    lane.title.write_text(
+        "KHS 신뢰외신 정책 워치: [상] 미국, 반도체 수출통제 확대 검토\n",
+        encoding="utf-8",
+    )
+    lane.body.write_text(
+        "\n".join([
+            "🚨 KHS 신뢰외신 정책·규제 고충격 워치 · 2026년 07월 23일 20:00 KST",
+            "",
+            "## 1. [상·예비] 미국, 반도체 수출통제 확대 검토",
+            (
+                "- 핵심: 미국이 첨단 반도체 장비 수출통제를 확대해 한국 기업의 "
+                "중국 공장 증설과 장비 반입 일정을 다시 점검하게 됐습니다."
+            ),
+            "- 의사결정 영향: 매출·마진·현금흐름, 시간표",
+            (
+                "- 투자 관점: 적용 장비와 시행일이 확정되면 중국 생산법인의 "
+                "증설비용과 장비 조달 일정이 바뀔 수 있습니다."
+            ),
+            (
+                "- 한국장: 삼성전자·SK하이닉스와 중국 공장 노출 장비사의 "
+                "실제 허가 범위와 고객 발주 변화를 확인합니다."
+            ),
+            (
+                "- 반영/반대: 관련 수출통제 우려는 일부 반영됐으나 적용 품목은 "
+                "추가 확인이 필요합니다. / 공식 문서 전에는 범위가 축소되거나 "
+                "시행이 늦어질 수 있습니다."
+            ),
+            (
+                "- 실패 신호: 상무부 후속 문서와 적용 품목·시행일이 나오지 않으면 "
+                "단기 정책 기대에 그칠 수 있습니다."
+            ),
+            (
+                "- 출처: [Reuters](https://www.reuters.com/world/us/"
+                "semiconductor-export-controls-example/) · 조회 20:00 KST"
+            ),
+            "",
+        ]),
+        encoding="utf-8",
+    )
+    try:
+        khs_telegram_delivery_guard.guard_lane(lane)
+        if not lane.body.exists():
+            raise AssertionError("51-character prose caused the alert to be deleted")
+        compacted = lane.body.read_text(encoding="utf-8")
+        assert_compact_prose_limit(compacted, "51-character delivery fixture")
+        if "미국이 첨단 반도체 장비 수출통제를" not in compacted:
+            raise AssertionError("51-character summary lost its source-specific subject")
+    finally:
+        for path in (lane.title, lane.body, lane.json):
+            if path and path.exists():
+                path.unlink()
+        cleanup()
+
     decimal_summary = concise_text(
         "HBM4 계약가는 4.5% 인상될 수 있습니다. 후속 협상 확인이 필요합니다.",
     )
