@@ -16,14 +16,18 @@ JSON_REPORT = OUT / "gamejoa_preopen_news_radar.json"
 TITLE = OUT / "gamejoa_preopen_news_radar_title.txt"
 
 REQUIRED_ITEM_MARKERS = [
-    "- 기준/시각:",
     "- 핵심:",
     "- 투자 포인트:",
-    "- 경로/섹터:",
     "- 출처:",
 ]
+FIELD_LIMITS = {
+    "- 핵심:": 280,
+    "- 투자 포인트:": 100,
+}
 
 FORBIDDEN_TEXT = [
+    "- 기준/시각:",
+    "- 경로/섹터:",
     "- 원제:",
     "- 상태 변화:",
     "- 즉시 체크:",
@@ -94,10 +98,13 @@ def assert_item_quality(title: str, block: list[str], errors: list[str]) -> None
         line = next((line for line in block if line.startswith(marker)), "")
         if marker not in {"- 출처:"} and not value_after(line, marker):
             errors.append(f"{title[:80]} has empty marker {marker}")
-
-    sector = next((line for line in block if line.startswith("- 경로/섹터:")), "")
-    if "정책/규제 일반" in sector or "영향 섹터 확인 불가" in sector:
-        errors.append(f"{title[:80]} has generic sector: {sector}")
+    for marker, limit in FIELD_LIMITS.items():
+        line = next((line for line in block if line.startswith(marker)), "")
+        value = value_after(line, marker)
+        if len(value) > limit:
+            errors.append(f"{title[:80]} {marker} exceeds {limit} chars")
+        if "…" in value or re.search(r"\.{3,}", value):
+            errors.append(f"{title[:80]} {marker} contains truncation")
 
 
 def main() -> int:
@@ -176,6 +183,27 @@ def main() -> int:
                     "source/body alignment failed: "
                     f"{alert.get('source_title') or alert.get('original_news') or alert.get('news')}"
                 )
+            source_text = " ".join(
+                str(alert.get(key) or "")
+                for key in (
+                    "source_abstract",
+                    "source_body",
+                    "policy_plain_summary",
+                    "telegram_core_fact",
+                    "source_title",
+                    "original_news",
+                    "news",
+                )
+            )
+            foreign_amounts = prod.runner.extract_foreign_amounts(source_text)
+            if foreign_amounts:
+                conversion = alert.get("fx_conversion")
+                converted = conversion.get("amounts") if isinstance(conversion, dict) else None
+                if not isinstance(converted, list) or len(converted) < len(foreign_amounts):
+                    errors.append(
+                        "foreign-currency article missing same-run KRW conversion evidence: "
+                        f"{alert.get('source_title') or alert.get('news')}"
+                    )
         diagnostics = data.get("selection_diagnostics")
         if not isinstance(diagnostics, dict):
             errors.append("generated JSON missing selection_diagnostics")

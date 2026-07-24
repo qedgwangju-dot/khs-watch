@@ -34,6 +34,16 @@ Every defect or requested change must follow this sequence:
 
 - Actions 성공만으로 완료 처리하지 않는다.
 - Headline, summary, source URL, and source body must describe the same event.
+- A visible GAMEJOA news item contains only the heading, `핵심`,
+  `투자 포인트`, and `출처`. Per-item `기준/시각` and `경로/섹터` must not
+  return; the report-level query time is the single news-query timestamp.
+- `핵심` must preserve the article body's material actors, actions, amounts,
+  rates, and next step in complete Korean sentences. It must not fall back to a
+  50-character clipping or visible ellipsis.
+- Every detected foreign-currency amount keeps the original amount and adds a
+  same-run KRW estimate with FX source, rate timestamp, and query timestamp.
+  When both the primary and fallback FX lookups fail, write
+  `원화 환산 확인 불가` instead of omitting or estimating the conversion.
 - A newly discovered defect must produce a durable regression check before the
   work is closed.
 - Source access failures, delayed data, mismatches, and empty selections must be

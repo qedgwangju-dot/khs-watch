@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import datetime as dt
 import html
 import json
 import os
@@ -14,7 +15,7 @@ import urllib.request
 
 import gamejoa_preopen_news_radar_contract_runner as contract
 from khs_article_detail import extract_article_detail
-from khs_compact_text import compact_prose_lines, concise_text
+from khs_compact_text import concise_text
 
 
 telegram = contract.telegram
@@ -616,6 +617,56 @@ ARTICLE_RESULT_TERMS = (
     "매출", "영업이익", "순이익", "당기순이익", "실적", "수주", "계약", "출하",
 )
 ARTICLE_SHAREHOLDER_TERMS = ("배당", "자사주", "자기주식", "소각", "취득")
+KOREAN_WON_AMOUNT_PATTERN = (
+    r"(?=\d)(?:\d[\d,.]*조)?(?:\d[\d,.]*억)?"
+    r"(?:\d[\d,.]*만)?(?:\d[\d,.]*)?원"
+)
+GAMEJOA_CORE_MAX_CHARS = 280
+GAMEJOA_INVESTMENT_MAX_CHARS = 100
+GAMEJOA_ARTICLE_FACT_LIMIT = 2
+FX_QUERY_TIMEOUT_SECONDS = max(3, int(os.getenv("RADAR_FX_TIMEOUT_SECONDS", "8")))
+YAHOO_FINANCE_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/"
+FOREIGN_CURRENCY_SPECS = {
+    "USD": {
+        "labels": ("미국 달러", "미달러", "달러", "USD", "US$"),
+        "symbol": "KRW=X",
+    },
+    "EUR": {"labels": ("유로", "EUR"), "symbol": "EURKRW=X"},
+    "JPY": {"labels": ("일본 엔", "엔화", "엔", "JPY"), "symbol": "JPYKRW=X"},
+    "CNY": {"labels": ("중국 위안", "위안화", "위안", "CNY", "RMB"), "symbol": "CNYKRW=X"},
+    "GBP": {"labels": ("영국 파운드", "파운드", "GBP"), "symbol": "GBPKRW=X"},
+    "CHF": {"labels": ("스위스 프랑", "스위스프랑", "CHF"), "symbol": "CHFKRW=X"},
+    "CAD": {"labels": ("캐나다 달러", "캐나다달러", "CAD"), "symbol": "CADKRW=X"},
+    "AUD": {"labels": ("호주 달러", "호주달러", "AUD"), "symbol": "AUDKRW=X"},
+    "HKD": {"labels": ("홍콩 달러", "홍콩달러", "HKD"), "symbol": "HKDKRW=X"},
+    "SGD": {"labels": ("싱가포르 달러", "싱가포르달러", "SGD"), "symbol": "SGDKRW=X"},
+    "TWD": {"labels": ("대만 달러", "대만달러", "TWD"), "symbol": "TWDKRW=X"},
+    "INR": {"labels": ("인도 루피", "루피", "INR"), "symbol": "INRKRW=X"},
+    "BRL": {"labels": ("브라질 헤알", "헤알", "BRL"), "symbol": "BRLKRW=X"},
+    "MXN": {"labels": ("멕시코 페소", "멕시코페소", "MXN"), "symbol": "MXNKRW=X"},
+    "NZD": {"labels": ("뉴질랜드 달러", "뉴질랜드달러", "NZD"), "symbol": "NZDKRW=X"},
+    "SEK": {"labels": ("스웨덴 크로나", "SEK"), "symbol": "SEKKRW=X"},
+    "NOK": {"labels": ("노르웨이 크로네", "NOK"), "symbol": "NOKKRW=X"},
+    "DKK": {"labels": ("덴마크 크로네", "DKK"), "symbol": "DKKKRW=X"},
+    "PLN": {"labels": ("폴란드 즈워티", "즈워티", "PLN"), "symbol": "PLNKRW=X"},
+    "TRY": {"labels": ("튀르키예 리라", "터키 리라", "리라", "TRY"), "symbol": "TRYKRW=X"},
+    "SAR": {"labels": ("사우디 리얄", "리얄", "SAR"), "symbol": "SARKRW=X"},
+    "AED": {"labels": ("UAE 디르함", "아랍에미리트 디르함", "디르함", "AED"), "symbol": "AEDKRW=X"},
+    "IDR": {"labels": ("인도네시아 루피아", "루피아", "IDR"), "symbol": "IDRKRW=X"},
+    "MYR": {"labels": ("말레이시아 링깃", "링깃", "MYR"), "symbol": "MYRKRW=X"},
+    "THB": {"labels": ("태국 바트", "바트", "THB"), "symbol": "THBKRW=X"},
+    "PHP": {"labels": ("필리핀 페소", "필리핀페소", "PHP"), "symbol": "PHPKRW=X"},
+    "ZAR": {"labels": ("남아공 랜드", "랜드", "ZAR"), "symbol": "ZARKRW=X"},
+}
+FOREIGN_NUMBER_PATTERN = r"\d[\d,.]*(?:\s*[천백십조억만]\s*\d[\d,.]*)*(?:\s*[천백십조억만])?"
+ENGLISH_SCALE_MULTIPLIERS = {
+    "trillion": 1_000_000_000_000,
+    "tn": 1_000_000_000_000,
+    "billion": 1_000_000_000,
+    "bn": 1_000_000_000,
+    "million": 1_000_000,
+    "mn": 1_000_000,
+}
 
 
 def clean_article_summary_text(text: str) -> str:
@@ -624,6 +675,333 @@ def clean_article_summary_text(text: str) -> str:
         cleaned = re.sub(pattern, " ", cleaned, flags=re.IGNORECASE)
     cleaned = re.sub(r"^[\s,;:>|·•\-]+", "", cleaned)
     return re.sub(r"\s+", " ", cleaned).strip()
+
+
+def parse_small_korean_number(value: str) -> float:
+    text = re.sub(r"[,\s]", "", value or "")
+    if not text:
+        return 0.0
+    total = 0.0
+    remaining = text
+    for unit, multiplier in (("천", 1_000), ("백", 100), ("십", 10)):
+        if unit not in remaining:
+            continue
+        left, remaining = remaining.split(unit, 1)
+        total += (float(left) if left else 1.0) * multiplier
+    if remaining:
+        total += float(remaining)
+    return total
+
+
+def parse_foreign_number(value: str, scale: str = "") -> float | None:
+    text = re.sub(r"[,\s]", "", value or "")
+    if not text:
+        return None
+    try:
+        total = 0.0
+        remaining = text
+        for unit, multiplier in (("조", 1_000_000_000_000), ("억", 100_000_000), ("만", 10_000)):
+            if unit not in remaining:
+                continue
+            left, remaining = remaining.split(unit, 1)
+            total += parse_small_korean_number(left or "1") * multiplier
+        total += parse_small_korean_number(remaining)
+        total *= ENGLISH_SCALE_MULTIPLIERS.get((scale or "").lower(), 1)
+        return total if total > 0 else None
+    except (TypeError, ValueError):
+        return None
+
+
+def currency_label_to_code(label: str) -> str:
+    normalized = re.sub(r"\s+", " ", str(label or "")).strip().lower()
+    symbol_codes = {"$": "USD", "us$": "USD", "€": "EUR", "£": "GBP"}
+    if normalized in symbol_codes:
+        return symbol_codes[normalized]
+    for code, spec in FOREIGN_CURRENCY_SPECS.items():
+        if any(normalized == candidate.lower() for candidate in spec["labels"]):
+            return code
+    return ""
+
+
+def extract_foreign_amounts(text: str) -> list[dict]:
+    cleaned = clean_article_summary_text(text)
+    labels = sorted(
+        {
+            label
+            for spec in FOREIGN_CURRENCY_SPECS.values()
+            for label in spec["labels"]
+        },
+        key=len,
+        reverse=True,
+    )
+    label_pattern = "|".join(re.escape(label) for label in labels)
+    prefix_labels = sorted(
+        {"US$", "$", "€", "£", *FOREIGN_CURRENCY_SPECS.keys()},
+        key=len,
+        reverse=True,
+    )
+    prefix_label_pattern = "|".join(re.escape(label) for label in prefix_labels)
+    suffix_pattern = re.compile(
+        rf"(?P<number>{FOREIGN_NUMBER_PATTERN})\s*"
+        rf"(?P<scale>trillion|billion|million|tn|bn|mn)?\s*"
+        rf"(?P<label>{label_pattern})",
+        re.IGNORECASE,
+    )
+    prefix_pattern = re.compile(
+        rf"(?<![A-Za-z])(?P<label>{prefix_label_pattern})\s*"
+        rf"(?P<number>{FOREIGN_NUMBER_PATTERN})\s*"
+        rf"(?P<scale>trillion|billion|million|tn|bn|mn)?",
+        re.IGNORECASE,
+    )
+    output: list[dict] = []
+    seen: set[tuple[str, int]] = set()
+    occupied: list[tuple[int, int]] = []
+    for pattern in (suffix_pattern, prefix_pattern):
+        for match in pattern.finditer(cleaned):
+            if any(match.start() < end and match.end() > start for start, end in occupied):
+                continue
+            code = currency_label_to_code(match.group("label"))
+            amount = parse_foreign_number(match.group("number"), match.group("scale") or "")
+            if not code or amount is None:
+                continue
+            key = (code, int(round(amount)))
+            if key in seen:
+                continue
+            seen.add(key)
+            occupied.append(match.span())
+            output.append(
+                {
+                    "code": code,
+                    "amount": amount,
+                    "raw": re.sub(r"\s+", " ", match.group(0)).strip(),
+                    "start": match.start(),
+                    "end": match.end(),
+                }
+            )
+    output.sort(key=lambda item: item["start"])
+    return output
+
+
+def yahoo_fx_url(code: str) -> str:
+    symbol = FOREIGN_CURRENCY_SPECS.get(code, {}).get("symbol") or f"{code}KRW=X"
+    return (
+        YAHOO_FINANCE_CHART_URL
+        + urllib.parse.quote(symbol, safe="")
+        + "?interval=1d&range=5d"
+    )
+
+
+def fetch_yahoo_krw_rate(code: str, now) -> dict:
+    url = yahoo_fx_url(code)
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0 (compatible; GAMEJOA-news-radar/1.0)",
+            "Accept": "application/json",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=FX_QUERY_TIMEOUT_SECONDS) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        result = ((payload.get("chart") or {}).get("result") or [None])[0] or {}
+        meta = result.get("meta") or {}
+        rate = float(meta.get("regularMarketPrice"))
+        timestamp = int(meta.get("regularMarketTime"))
+        market_time = dt.datetime.fromtimestamp(timestamp, tz=dt.timezone.utc).astimezone(base.KST)
+        age_hours = max(0.0, (now - market_time).total_seconds() / 3600)
+        return {
+            "code": code,
+            "value": rate,
+            "status": "최근거래" if age_hours <= 72 else "지연",
+            "reference_time_kst": market_time.isoformat(timespec="minutes"),
+            "query_time_kst": now.isoformat(timespec="seconds"),
+            "source": "Yahoo Finance",
+            "url": url,
+            "error": "",
+        }
+    except Exception as exc:
+        return {
+            "code": code,
+            "value": None,
+            "status": "확인 불가",
+            "reference_time_kst": None,
+            "query_time_kst": now.isoformat(timespec="seconds"),
+            "source": "Yahoo Finance",
+            "url": url,
+            "error": f"{type(exc).__name__}: {exc}",
+        }
+
+
+def fetch_frankfurter_krw_rates(codes: list[str], now) -> dict[str, dict]:
+    if not codes:
+        return {}
+    url = "https://api.frankfurter.app/latest"
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0 (compatible; GAMEJOA-news-radar/1.0)",
+            "Accept": "application/json",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=FX_QUERY_TIMEOUT_SECONDS) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        rates = payload.get("rates") or {}
+        krw_per_eur = float(rates["KRW"])
+        reference = dt.datetime.fromisoformat(str(payload.get("date"))).replace(tzinfo=base.KST)
+        age_hours = max(0.0, (now - reference).total_seconds() / 3600)
+        status = "보조" if age_hours <= 96 else "지연"
+        output: dict[str, dict] = {}
+        for code in codes:
+            if code == "EUR":
+                rate = krw_per_eur
+            elif code in rates:
+                rate = krw_per_eur / float(rates[code])
+            else:
+                continue
+            output[code] = {
+                "code": code,
+                "value": rate,
+                "status": status,
+                "reference_time_kst": reference.isoformat(timespec="minutes"),
+                "query_time_kst": now.isoformat(timespec="seconds"),
+                "source": "ECB/Frankfurter",
+                "url": url,
+                "error": "",
+            }
+        return output
+    except Exception:
+        return {}
+
+
+def collect_fx_snapshot(alerts: list[dict], now) -> dict:
+    codes: list[str] = []
+    for alert in alerts:
+        source_text = " ".join(
+            str(alert.get(key) or "")
+            for key in (
+                "source_abstract",
+                "source_body",
+                "policy_plain_summary",
+                "telegram_core_fact",
+                "source_title",
+                "original_news",
+                "news",
+            )
+        )
+        for amount in extract_foreign_amounts(source_text):
+            if amount["code"] not in codes:
+                codes.append(amount["code"])
+    rates = {code: fetch_yahoo_krw_rate(code, now) for code in codes}
+    missing = [code for code, item in rates.items() if item.get("value") is None]
+    for code, fallback in fetch_frankfurter_krw_rates(missing, now).items():
+        rates[code] = fallback
+    return {
+        "query_time_kst": now.isoformat(timespec="seconds"),
+        "rates": rates,
+    }
+
+
+def format_krw_amount(value: float) -> str:
+    if value >= 1_000_000_000_000:
+        number = f"{value / 1_000_000_000_000:,.1f}".rstrip("0").rstrip(".")
+        return f"{number}조원"
+    if value >= 100_000_000:
+        number = f"{value / 100_000_000:,.1f}".rstrip("0").rstrip(".")
+        return f"{number}억원"
+    if value >= 10_000:
+        number = f"{value / 10_000:,.1f}".rstrip("0").rstrip(".")
+        return f"{number}만원"
+    return f"{value:,.0f}원"
+
+
+def build_alert_fx_conversion(alert: dict, snapshot: dict, now) -> dict:
+    source_text = " ".join(
+        str(alert.get(key) or "")
+        for key in (
+            "source_abstract",
+            "source_body",
+            "policy_plain_summary",
+            "telegram_core_fact",
+            "source_title",
+            "original_news",
+            "news",
+        )
+    )
+    amounts = extract_foreign_amounts(source_text)
+    converted: list[dict] = []
+    rates = snapshot.get("rates") or {}
+    for amount in amounts:
+        rate = rates.get(amount["code"]) or {
+            "code": amount["code"],
+            "value": None,
+            "status": "확인 불가",
+            "reference_time_kst": None,
+            "query_time_kst": now.isoformat(timespec="seconds"),
+            "source": "확인 불가",
+            "url": yahoo_fx_url(amount["code"]),
+            "error": "same-run FX lookup unavailable",
+        }
+        krw_value = amount["amount"] * float(rate["value"]) if rate.get("value") is not None else None
+        converted.append(
+            {
+                "original": amount["raw"],
+                "currency": amount["code"],
+                "foreign_value": amount["amount"],
+                "krw_value": krw_value,
+                "krw_text": format_krw_amount(krw_value) if krw_value is not None else "원화 환산 확인 불가",
+                "rate": rate.get("value"),
+                "status": rate.get("status") or "확인 불가",
+                "reference_time_kst": rate.get("reference_time_kst"),
+                "query_time_kst": rate.get("query_time_kst") or now.isoformat(timespec="seconds"),
+                "source": rate.get("source") or "확인 불가",
+                "url": rate.get("url") or yahoo_fx_url(amount["code"]),
+            }
+        )
+    return {
+        "query_time_kst": now.isoformat(timespec="seconds"),
+        "amounts": converted,
+    }
+
+
+def apply_krw_conversions(core: str, conversion: dict) -> str:
+    text = clean_article_summary_text(core)
+    appended: list[str] = []
+    for item in conversion.get("amounts") or []:
+        original = str(item.get("original") or "").strip()
+        krw_text = str(item.get("krw_text") or "원화 환산 확인 불가")
+        replacement = f"{original}(약 {krw_text})" if item.get("krw_value") is not None else f"{original}({krw_text})"
+        if original and original in text:
+            text = text.replace(original, replacement, 1)
+        elif original:
+            appended.append(f"{original}≈약 {krw_text}" if item.get("krw_value") is not None else f"{original} {krw_text}")
+    if appended:
+        text = f"{text} 외화 환산: {', '.join(appended)}.".strip()
+    return text
+
+
+def fx_provenance_text(conversion: dict) -> str:
+    entries: list[str] = []
+    seen: set[tuple[str, str, str]] = set()
+    for item in conversion.get("amounts") or []:
+        code = str(item.get("currency") or "")
+        source = str(item.get("source") or "확인 불가")
+        reference = str(item.get("reference_time_kst") or "확인 불가")
+        key = (code, source, reference)
+        if key in seen:
+            continue
+        seen.add(key)
+        if item.get("rate") is None:
+            link = html_link(f"{source} {code}/KRW", item.get("url") or "")
+            entries.append(f"{link} 확인 불가 · 조회 {item.get('query_time_kst') or '확인 불가'}")
+            continue
+        rate = float(item["rate"])
+        rate_text = f"{rate:,.4f}".rstrip("0").rstrip(".")
+        link = html_link(f"{source} {code}/KRW", item.get("url") or "")
+        entries.append(
+            f"{link} {rate_text}원 · 기준 {reference} · 조회 {item.get('query_time_kst') or '확인 불가'}"
+        )
+    return " / ".join(entries)
 
 
 def bounded_complete_excerpt(text: str, max_chars: int) -> str:
@@ -678,7 +1056,10 @@ def ranked_article_sentences(
             "",
             clean_article_summary_text(sentence),
         )
-        for sentence in re.split(r"(?<=[.!?다])\s+", cleaned_text)
+        # Split only at actual punctuation. A bare Hangul "다" also appears
+        # inside clauses such as "지난해 같은 기간보다 20.8% 감소", so using
+        # it as a boundary drops the result that follows.
+        for sentence in re.split(r"(?<=[.!?。])\s+", cleaned_text)
         if clean_article_summary_text(sentence)
     ]
     if title:
@@ -733,7 +1114,7 @@ def article_sentences(
     return summary
 
 
-def compact_article_sentence(sentence: str) -> str:
+def normalized_article_sentence(sentence: str) -> str:
     text = clean_article_summary_text(sentence)
     replacements = (
         (r"^\d{1,2}일\s+([A-Za-z0-9가-힣·&()]+)(?:은|는)\s+", r"\1, "),
@@ -755,7 +1136,11 @@ def compact_article_sentence(sentence: str) -> str:
     )
     for pattern, replacement in replacements:
         text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
-    return concise_text(text, limit=50)
+    return clean_article_summary_text(text)
+
+
+def compact_article_sentence(sentence: str, limit: int = 50) -> str:
+    return concise_text(normalized_article_sentence(sentence), limit=limit)
 
 
 def financial_result_fact(title: str, sentences: list[str]) -> str:
@@ -766,9 +1151,15 @@ def financial_result_fact(title: str, sentences: list[str]) -> str:
         ("매출", "매출"),
     )
     for sentence in sentences:
-        metric = next((label for term, label in metric_patterns if term in sentence), "")
-        amounts = re.findall(r"\d[\d,.]*\s*(?:조|억|만)?원", sentence)
-        if not metric or not amounts:
+        metric_term, metric = next(
+            ((term, label) for term, label in metric_patterns if term in sentence),
+            ("", ""),
+        )
+        if not metric:
+            continue
+        metric_tail = sentence[sentence.find(metric_term) + len(metric_term):]
+        amount_match = re.search(KOREAN_WON_AMOUNT_PATTERN, metric_tail)
+        if not amount_match:
             continue
         period_match = re.search(r"([1-4])분기", sentence) or re.search(r"([1-4])분기", title)
         change_match = re.search(
@@ -777,39 +1168,249 @@ def financial_result_fact(title: str, sentences: list[str]) -> str:
             sentence,
         )
         prefix = f"{period_match.group(1)}분기 " if period_match else ""
-        result = f"{prefix}{metric} {amounts[-1].replace(' ', '')}"
+        result = f"{prefix}{metric} {amount_match.group(0).replace(' ', '')}"
         if change_match:
             direction = "증가" if change_match.group(2) in {"증가", "늘"} else "감소"
             result += f", 전년비 {change_match.group(1)}% {direction}"
         if any(term in title for term in ("사상 최대", "역대 최대")):
             result += "·역대 최대"
-        return concise_text(result.rstrip(".") + ".", limit=50)
+        return concise_text(result.rstrip(".") + ".", limit=100)
+    return ""
+
+
+def financial_context_fact(sentences: list[str]) -> str:
+    for sentence in sentences:
+        if "영업이익률" not in sentence and "가이던스" not in sentence:
+            continue
+        sales_match = re.search(
+            rf"매출(?:액)?(?:은|이|는)?\s*({KOREAN_WON_AMOUNT_PATTERN})",
+            sentence,
+        )
+        sales_change = None
+        if sales_match:
+            sales_change = re.search(
+                r"(?:으로|로)?\s*([+-]?\d+(?:\.\d+)?)%\s*(증가|감소|늘|줄)",
+                sentence[sales_match.end():],
+            )
+        margin_match = re.search(
+            r"영업이익률(?:은|이|는)?\s*([+-]?\d+(?:\.\d+)?)%",
+            sentence,
+        )
+        guidance_match = re.search(
+            r"가이던스\s*\(?\s*([+-]?\d+(?:\.\d+)?)\s*[~～-]\s*"
+            r"([+-]?\d+(?:\.\d+)?)%\s*\)?",
+            sentence,
+        )
+        parts: list[str] = []
+        if sales_match:
+            sales = f"매출 {sales_match.group(1).replace(' ', '')}"
+            if sales_change:
+                direction = "증가" if sales_change.group(2) in {"증가", "늘"} else "감소"
+                sales += f"(전년비 {sales_change.group(1)}% {direction})"
+            parts.append(sales)
+        if margin_match:
+            margin = f"영업이익률 {margin_match.group(1)}%"
+            if guidance_match:
+                margin += (
+                    f"로 가이던스 {guidance_match.group(1)}~"
+                    f"{guidance_match.group(2)}% 하회"
+                )
+            parts.append(margin)
+        if parts:
+            return concise_text(", ".join(parts).rstrip(".") + ".", limit=140)
     return ""
 
 
 def shareholder_return_fact(sentences: list[str]) -> str:
     best = ""
-    best_count = 0
+    best_score = 0
     for sentence in sentences:
         if not any(term in sentence for term in ARTICLE_SHAREHOLDER_TERMS):
             continue
         dividend_match = re.search(r"(?:1주당|주당)(?:\s*현금)?\s*(\d[\d,.]*)원", sentence)
         buyback_match = re.search(
-            r"(\d[\d,.]*\s*(?:조|억)원)\s*(?:규모의\s*)?(?:자기주식|자사주)",
+            rf"({KOREAN_WON_AMOUNT_PATTERN})\s*(?:규모의\s*)?(?:자기주식|자사주)",
             sentence,
         )
         parts: list[str] = []
         if dividend_match and "배당" in sentence:
             parts.append(f"주당 {dividend_match.group(1)}원 배당")
         if buyback_match:
-            action = "매입·소각" if "소각" in sentence else "매입"
+            if "소각" in sentence and any(term in sentence for term in ("취득", "매입")):
+                action = "매입·소각"
+            elif "소각" in sentence:
+                action = "소각"
+            else:
+                action = "매입"
             parts.append(f"자사주 {buyback_match.group(1).replace(' ', '')} {action}")
-        if len(parts) > best_count:
-            best = concise_text(", ".join(parts) + ".", limit=50)
-            best_count = len(parts)
-        if best_count == 2:
-            break
+        specificity = sum(char.isdigit() for char in " ".join(parts))
+        score = len(parts) * 100 + specificity + (10 if "공시" in sentence else 0)
+        if score > best_score:
+            best = concise_text(", ".join(parts) + ".", limit=120)
+            best_score = score
     return best
+
+
+def shareholder_schedule_fact(sentences: list[str]) -> str:
+    for sentence in sentences:
+        if "소각" not in sentence or not any(term in sentence for term in ("예정일", "소각 대상")):
+            continue
+        date_match = re.search(r"(?:오는\s*)?(\d{1,2})일", sentence)
+        shares_match = re.search(
+            r"(?:총\s*)?(\d[\d,.]*(?:천|백|십|억|만)?\d[\d,.]*(?:천|백|십|억|만)?\d*)주",
+            sentence,
+        )
+        parts: list[str] = []
+        if shares_match:
+            parts.append(f"소각 대상 {shares_match.group(1)}주")
+        if date_match:
+            parts.append(f"예정일 {date_match.group(1)}일")
+        if parts:
+            return concise_text(", ".join(parts) + ".", limit=100)
+    return ""
+
+
+def market_sidecar_fact(title: str, body: str) -> str:
+    text = clean_article_summary_text(f"{title} {body}")
+    if "매도 사이드카" not in text:
+        return ""
+    parts = ["코스피·코스닥에 매도 사이드카가 발동됐다."]
+    flow_match = re.search(
+        rf"외국인이?\s*({KOREAN_WON_AMOUNT_PATTERN}),?\s*"
+        rf"기관이?\s*({KOREAN_WON_AMOUNT_PATTERN})\s*순매도",
+        text,
+    )
+    if flow_match:
+        parts.append(
+            "외국인·기관은 각각 "
+            f"{flow_match.group(1)}·{flow_match.group(2)} 순매도했다."
+        )
+    stock_match = re.search(
+        r"삼성전자\((-?\d+(?:\.\d+)?)%\).*?"
+        r"SK하이닉스\((-?\d+(?:\.\d+)?)%\)",
+        text,
+    )
+    if stock_match:
+        parts.append(
+            "삼성전자·SK하이닉스는 각각 "
+            f"{abs(float(stock_match.group(1))):g}%·"
+            f"{abs(float(stock_match.group(2))):g}% 하락했다."
+        )
+    return " ".join(parts)
+
+
+def tariff_policy_fact(title: str, body: str) -> str:
+    text = clean_article_summary_text(f"{title} {body}")
+    if "관세" not in text:
+        return ""
+    imposed_match = re.search(
+        r"(?:한국에|한국산[^,.]{0,30})\s*([0-9]+(?:\.[0-9]+)?)%의?\s*관세를\s*부과",
+        text,
+    )
+    cap_match = re.search(
+        r"(?:마지노선|상한|관세율|합의상\s*관세율)[^.%]{0,35}?([0-9]+(?:\.[0-9]+)?)%",
+        text,
+    )
+    if not cap_match:
+        cap_match = re.search(
+            r"([0-9]+(?:\.[0-9]+)?)%를\s*(?:넘지|초과하지)",
+            text,
+        )
+    foreign_amount = next(
+        (item for item in extract_foreign_amounts(text) if item["code"] == "USD"),
+        None,
+    )
+    parts: list[str] = []
+    if imposed_match:
+        first = f"미국은 한국에 {imposed_match.group(1)}% 관세를 부과"
+        if "추가 관세" in text or "과잉생산" in text:
+            first += "하고 과잉생산 관련 추가 관세도 예고했다"
+        else:
+            first += "했다"
+        parts.append(first + ".")
+    if cap_match:
+        second = f"의원단은 총관세 {cap_match.group(1)}% 상한 준수"
+        if foreign_amount:
+            second += f"와 {foreign_amount['raw']} 대미 투자합의 이행"
+        second += "을 촉구했다."
+        parts.append(second)
+    return " ".join(parts)
+
+
+def detailed_article_core(title: str, body: str) -> str:
+    sentences = ranked_article_sentences(
+        body,
+        korean_business_title_terms(title),
+        title=title,
+    )
+    tariff_fact = tariff_policy_fact(title, body)
+    if tariff_fact:
+        return tariff_fact
+    sidecar_fact = market_sidecar_fact(title, body)
+    if sidecar_fact:
+        return sidecar_fact
+
+    preferred = [
+        financial_result_fact(title, sentences),
+        shareholder_return_fact(sentences),
+        financial_context_fact(sentences),
+        shareholder_schedule_fact(sentences),
+    ]
+    facts = [fact for fact in preferred if fact]
+    if not facts:
+        for sentence in sentences:
+            fact = normalized_article_sentence(sentence)
+            if not fact or article_title_restatement(fact, title):
+                continue
+            facts.append(fact)
+            if len(facts) >= GAMEJOA_ARTICLE_FACT_LIMIT:
+                break
+
+    output: list[str] = []
+    for fact in facts:
+        candidate = " ".join(output + [fact]).strip()
+        if len(candidate) <= GAMEJOA_CORE_MAX_CHARS:
+            output.append(fact)
+            if len(output) >= GAMEJOA_ARTICLE_FACT_LIMIT:
+                break
+            continue
+        elif not output:
+            excerpt = bounded_complete_excerpt(fact, GAMEJOA_CORE_MAX_CHARS)
+            output.append(excerpt.rstrip("…").rstrip() + ".")
+        break
+    return " ".join(output).strip()
+
+
+def article_investment_point(title: str, body: str, impacts: list[str]) -> str:
+    text = clean_article_summary_text(f"{title} {body}")
+    if "관세" in text:
+        cap_match = re.search(
+            r"(?:마지노선|상한|관세율|합의상\s*관세율)[^.%]{0,35}?([0-9]+(?:\.[0-9]+)?)%",
+            text,
+        ) or re.search(r"([0-9]+(?:\.[0-9]+)?)%를\s*(?:넘지|초과하지)", text)
+        cap = cap_match.group(1) if cap_match else ""
+        prefix = f"합산 관세가 {cap}%를 넘으면" if cap else "추가 관세가 확정되면"
+        return f"{prefix} 한국 수출주의 가격경쟁력과 마진 부담이 커집니다."
+    if any(term in text for term in ARTICLE_SHAREHOLDER_TERMS) and any(
+        term in text for term in ("순이익", "영업이익", "매출")
+    ):
+        return "실적 개선과 배당·자사주 소각이 이익 추정과 주주환원 수급을 함께 높입니다."
+    if "소각" in text:
+        return "소각 완료 시 발행주식 수가 줄어 주당가치와 주주환원 수급에 긍정적입니다."
+    if "영업이익률" in text and "가이던스" in text:
+        return "영업이익 감소와 마진 가이던스 하회는 이익 추정과 밸류에이션을 낮추는 요인입니다."
+    if any(term in text for term in ("순매수", "순매도")) or re.search(
+        r"(?:외국인|기관)[^.!?]{0,40}(?:매수|매도)",
+        text,
+    ):
+        return "기사에 나온 매수·매도 주체와 규모가 다음 거래일까지 이어지는지 확인합니다."
+    if "돈 버는 능력" in impacts:
+        return "기사의 수요·가격·계약 변화가 실제 매출과 마진으로 이어지는지 확인합니다."
+    if "수급" in impacts:
+        return "기사에 나온 거래 주체와 규모가 후속 수급으로 이어지는지 확인합니다."
+    if "시간표" in impacts:
+        return "승인·계약·출시 일정이 실제 공시와 매출 인식으로 이어지는지 확인합니다."
+    return "기사 본문의 새 수치와 후속 공식 발표가 실제 가격 변수로 이어지는지 확인합니다."
 
 
 def compact_article_facts(title: str, body: str) -> list[str]:
@@ -921,6 +1522,35 @@ KOREAN_BUSINESS_MATERIAL_TERMS = [
     "유상증자",
     "전환사채",
 ]
+
+
+def korean_business_title_has_material_term(title: str, term: str) -> bool:
+    title_text = str(title or "").lower()
+    if term != "수주":
+        return term in title_text
+
+    # "수주" is also used in Korean personal names such as "홍수주".
+    # Accept it only as a standalone word or with an investment-news context.
+    if re.search(r"(?<![가-힣])수주(?![가-힣])", title_text):
+        return True
+    if re.search(
+        r"(?:대형|신규|추가|첫|해외|역대|최대|단독|공동|누적|방산|원전|선박|플랜트|계약)수주",
+        title_text,
+    ):
+        return True
+    if re.search(
+        r"\d[\d,.]*(?:조|억|만)?(?:원|달러|유로)?(?:대)?\s*수주",
+        title_text,
+    ):
+        return True
+    return bool(
+        re.search(
+            r"수주(?:액|잔고|계약|공시|확정|성공|목표|실적|소식|기대|전망|가시화|했다|해|한|로|를|가|는|도)",
+            title_text,
+        )
+    )
+
+
 KOREAN_BUSINESS_IMPACT_TERMS = {
     "돈 버는 능력": [
         "매출", "영업이익", "순이익", "흑자", "적자", "실적", "가이던스",
@@ -992,7 +1622,6 @@ def apply_generic_korean_business_profile(alert: dict, row: dict, now) -> dict:
         2,
         title=title,
     )
-    compact_facts = compact_article_facts(title, body)
     source_focus = f"{title} {summary}"
     impacts = korean_business_impacts(source_focus, out.get("impacts") or [])
     if "ipo" in title.lower() and any(term in title for term in ("주관", "대표주관")):
@@ -1014,6 +1643,8 @@ def apply_generic_korean_business_profile(alert: dict, row: dict, now) -> dict:
     decision_focus = ", ".join(impact_notes) or "후속 공시와 시장 반응이 실제 가격 변수를 바꾸는지"
     exposure = "·".join(companies[:5]) if companies else "원문에 직접 언급된 기업"
     age = base.age_hours(row, now)
+    article_core = detailed_article_core(title, body)
+    article_investment = article_investment_point(title, body, impacts)
 
     out.update(
         {
@@ -1024,8 +1655,8 @@ def apply_generic_korean_business_profile(alert: dict, row: dict, now) -> dict:
             "source_title": title,
             "source_abstract": body[:16000],
             "policy_plain_summary": summary,
-            "telegram_core_fact": compact_facts[0] if compact_facts else "",
-            "telegram_investment_fact": compact_facts[1] if len(compact_facts) > 1 else "",
+            "telegram_core_fact": article_core,
+            "telegram_investment_fact": article_investment,
             "investment_view": f"{decision_focus} 확인합니다.",
             "interpretation": f"{decision_focus} 확인합니다.",
             "korea_market_impact": (
@@ -1060,7 +1691,8 @@ def base_korean_business_alert(row: dict, now, *, score: int, impacts: list[str]
     age = base.age_hours(row, now)
     title = str(row.get("source_title") or row.get("title") or "")
     body = str(row.get("source_body") or row.get("source_abstract") or row.get("summary") or "")
-    compact_facts = compact_article_facts(title, body)
+    article_core = detailed_article_core(title, body)
+    article_investment = article_investment_point(title, body, impacts)
     return {
         "score": score + (6 if age is not None and age <= 12 else 0),
         "importance": "상" if score >= 100 else "중",
@@ -1069,8 +1701,8 @@ def base_korean_business_alert(row: dict, now, *, score: int, impacts: list[str]
         "original_news": title,
         "source_title": title,
         "source_abstract": str(row.get("source_abstract") or row.get("summary") or ""),
-        "telegram_core_fact": compact_facts[0] if compact_facts else "",
-        "telegram_investment_fact": compact_facts[1] if len(compact_facts) > 1 else "",
+        "telegram_core_fact": article_core,
+        "telegram_investment_fact": article_investment,
         "publisher": row.get("publisher") or row.get("source"),
         "source": row.get("source"),
         "link": row.get("link") or "",
@@ -1148,7 +1780,7 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
     title_text = title.lower()
     title_material_terms = [
         term for term in KOREAN_BUSINESS_MATERIAL_TERMS
-        if term in title_text
+        if korean_business_title_has_material_term(title_text, term)
     ]
     if not title_material_terms:
         return None
@@ -2502,17 +3134,61 @@ def display_news(alert: dict) -> str:
     return korean_title(alert)
 
 
+def complete_prose_text(value: object, *, fallback: object = "", limit: int) -> str:
+    text = clean_article_summary_text(value) or clean_article_summary_text(fallback) or "확인 불가"
+    text = text.rstrip("…").rstrip()
+    if len(text) <= limit:
+        return text
+    head = text[: limit + 1]
+    sentence_ends = [
+        match.end()
+        for match in re.finditer(r"(?:[.!?]|다)(?=\s|$)", head)
+        if match.end() >= int(limit * 0.55)
+    ]
+    if sentence_ends:
+        return head[: sentence_ends[-1]].rstrip()
+    boundary = max(
+        head.rfind(",", int(limit * 0.55), limit),
+        head.rfind("·", int(limit * 0.55), limit),
+        head.rfind(";", int(limit * 0.55), limit),
+        head.rfind(" ", int(limit * 0.7), limit),
+    )
+    if boundary < int(limit * 0.55):
+        boundary = limit - 4
+    return head[:boundary].rstrip(" ,·;:") + "입니다."
+
+
+def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
+    limits = {
+        "- 핵심:": GAMEJOA_CORE_MAX_CHARS,
+        "- 투자 포인트:": GAMEJOA_INVESTMENT_MAX_CHARS,
+    }
+    output: list[str] = []
+    changed = 0
+    for raw_line in str(body or "").splitlines():
+        stripped = raw_line.strip()
+        indent = raw_line[: len(raw_line) - len(raw_line.lstrip())]
+        compacted_line = raw_line
+        for prefix, limit in limits.items():
+            if not stripped.startswith(prefix):
+                continue
+            value = stripped.removeprefix(prefix).strip()
+            compacted = complete_prose_text(value, limit=limit)
+            compacted_line = f"{indent}{prefix} {compacted}"
+            changed += compacted != value
+            break
+        output.append(compacted_line)
+    suffix = "\n" if str(body or "").endswith("\n") else ""
+    return "\n".join(output) + suffix, changed
+
+
 def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     alert = normalize_alert_for_output(alert)
     examples = alert.get("examples") or []
     count_suffix = f" ({alert['cluster_count']}건 묶음)" if alert.get("cluster_count") else ""
     status = alert.get("status") or ("공식 확인 전" if examples else "확인 불가")
-    basis = alert.get("korea_basis") or ("외신/지역 뉴스 확산" if examples else "외신 확산")
     impacts = alert.get("impacts") or ["의사결정 영향 제한적"]
     displayed_impacts = display_impacts(impacts)
-    paths = alert.get("paths") or ["정책 타임라인" if impact == "시간표" else impact for impact in impacts]
-    sectors = alert.get("sectors") or ["영향 섹터 확인 불가"]
-    published = alert.get("published") or ("여러 건" if examples else "확인 불가")
     interpretation = alert.get("interpretation") or "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는지 확인해야 합니다."
     title = display_news(alert)
     first_impact = displayed_impacts[0] if displayed_impacts else "의사결정"
@@ -2526,13 +3202,17 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
         if alert.get("korean_business_news")
         else ""
     )
-    core = concise_text(
+    core = complete_prose_text(
         article_core or alert.get("policy_plain_summary"),
         fallback=title,
+        limit=GAMEJOA_CORE_MAX_CHARS,
     )
-    investment = concise_text(
+    conversion = alert.get("fx_conversion") or {"amounts": []}
+    core = apply_krw_conversions(core, conversion)
+    investment = complete_prose_text(
         article_investment or alert.get("investment_view") or interpretation,
         fallback=f"{first_impact} 변화 여부를 확인합니다.",
+        limit=GAMEJOA_INVESTMENT_MAX_CHARS,
     )
 
     lines = [f"{idx}) [{safe(alert.get('importance'))} | {safe(status)}] {safe(title)}{html.escape(count_suffix, quote=False)}"]
@@ -2543,12 +3223,13 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
             "원문 뉴스보기",
             alert.get("link") or "",
         )
+    fx_source = fx_provenance_text(conversion)
+    if fx_source:
+        source_text = f"{source_text} · 환율: {fx_source}"
 
     lines += [
-        f"- 기준/시각: {safe(basis)} · 원천 {safe(published)} · 조회 {now:%H:%M KST}",
         f"- 핵심: {safe(core)}",
         f"- 투자 포인트: {safe(investment)}",
-        f"- 경로/섹터: {safe(', '.join(paths))} | {safe(', '.join(sectors))}",
         f"- 출처: {source_text}",
         "",
     ]
@@ -2558,6 +3239,9 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
 def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
     visible = alerts[:limit]
+    fx_snapshot = collect_fx_snapshot(visible, now)
+    for alert in visible:
+        alert["fx_conversion"] = build_alert_fx_conversion(alert, fx_snapshot, now)
     live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
     if live_mode:
         title = f"📰 GAMEJOA 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
@@ -2590,7 +3274,7 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
 
 
 def guard_preopen_report(text: str) -> str:
-    text, compacted_fields = compact_prose_lines(text)
+    text, compacted_fields = compact_gamejoa_prose_lines(text)
     errors: list[str] = []
     valid_title = (
         text.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · ")
@@ -2600,16 +3284,16 @@ def guard_preopen_report(text: str) -> str:
         errors.append("title_contract")
     item_count = sum(1 for line in text.splitlines() if re.match(r"^\d+\)\s+\[", line))
     required = [
-        "- 기준/시각:",
         "- 핵심:",
         "- 투자 포인트:",
-        "- 경로/섹터:",
         "- 출처:",
     ]
     for marker in required:
         if item_count and text.count(marker) < item_count:
             errors.append(f"missing_{marker}")
     forbidden_markers = (
+        "- 기준/시각:",
+        "- 경로/섹터:",
         "- 의사결정 영향:",
         "- 한국장:",
         "- 반영/반대:",
@@ -2643,11 +3327,23 @@ def guard_preopen_report(text: str) -> str:
             errors.append(f"article_boilerplate={marker}")
     for line in text.splitlines():
         visible_line = html.unescape(line)
-        if not visible_line.startswith("- 핵심:"):
+        if not visible_line.startswith(("- 핵심:", "- 투자 포인트:")):
             continue
-        summary = visible_line.removeprefix("- 핵심:").strip()
+        prefix = "- 핵심:" if visible_line.startswith("- 핵심:") else "- 투자 포인트:"
+        summary = visible_line.removeprefix(prefix).strip()
+        limit = GAMEJOA_CORE_MAX_CHARS if prefix == "- 핵심:" else GAMEJOA_INVESTMENT_MAX_CHARS
+        if len(summary) > limit:
+            errors.append(f"compact_field_too_long={prefix}{len(summary)}")
+        if "…" in summary or re.search(r"\.{3,}", summary):
+            errors.append(f"truncated_compact_field={prefix}")
         if re.search(r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)$", summary):
             errors.append(f"incomplete_article_summary={summary[-30:]}")
+        foreign_amounts = extract_foreign_amounts(summary)
+        if foreign_amounts and not (
+            re.search(r"\(약\s*[\d,.]+(?:조|억|만)?원\)", summary)
+            or "원화 환산 확인 불가" in summary
+        ):
+            errors.append("foreign_currency_not_converted")
     current_title = ""
     for line in text.splitlines():
         if re.match(r"^\d+\)\s+\[", line):

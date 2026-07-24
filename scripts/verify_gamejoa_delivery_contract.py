@@ -35,7 +35,13 @@ COMPACT_PROSE_PREFIXES = (
     "- 핵심:",
     "- 투자 포인트:",
 )
+COMPACT_PROSE_LIMITS = {
+    "- 핵심:": 280,
+    "- 투자 포인트:": 100,
+}
 FORBIDDEN_COMPACT_MARKERS = (
+    "- 기준/시각:",
+    "- 경로/섹터:",
     "- 의사결정 영향:",
     "- 한국장:",
     "- 반영/반대:",
@@ -98,17 +104,24 @@ REQUIRED_RUNNER_SNIPPETS = [
     "https://rss.etoday.co.kr/eto/market_news.xml",
     "https://rss.etnews.com/Section901.xml",
     "https://rss.etnews.com/Section902.xml",
+    "GAMEJOA_CORE_MAX_CHARS = 280",
+    "collect_fx_snapshot",
+    "build_alert_fx_conversion",
+    "foreign_currency_not_converted",
 ]
 
 
-def compact_prose_errors(body: str, limit: int = 50) -> list[str]:
+def compact_prose_errors(body: str) -> list[str]:
     errors: list[str] = []
     for line in body.splitlines():
         for prefix in COMPACT_PROSE_PREFIXES:
             if line.startswith(prefix):
                 value = line.removeprefix(prefix).strip()
+                limit = COMPACT_PROSE_LIMITS[prefix]
                 if len(value) > limit:
                     errors.append(f"{prefix} {len(value)}자")
+                if "…" in value or "..." in value:
+                    errors.append(f"{prefix} 말줄임")
     return errors
 
 REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
@@ -285,7 +298,7 @@ def main() -> int:
         errors.append("Bing RSS redirect was not unwrapped to the source URL")
 
     now = production.base.kst_now()
-    assert_51_character_summary_is_compacted_before_send(compact, now, errors)
+    assert_detailed_summary_is_preserved_before_send(compact, now, errors)
     assert_korean_business_article_contract(production, compact, now, errors)
     china_mofcom_row = {
         "source": "Trusted news 중국 상무부 수출통제/관세",
@@ -618,23 +631,21 @@ def main() -> int:
     return 0
 
 
-def assert_51_character_summary_is_compacted_before_send(compact, now, errors: list[str]) -> None:
+def assert_detailed_summary_is_preserved_before_send(compact, now, errors: list[str]) -> None:
     report = "\n".join([
         f"📰 GAMEJOA 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}",
         f"조회: {now:%Y-%m-%d %H:%M KST}",
         "선별: 핵심 1건",
         "",
         "1) [상 | 공식 확인 전] 미국, 반도체 수출통제 확대 검토",
-        "- 기준/시각: 신뢰외신 확산 · 원천 확인 중 · 조회 20:00 KST",
         (
             "- 핵심: 미국이 첨단 반도체 장비 수출통제를 확대해 한국 기업의 "
-            "중국 공장 증설과 장비 반입 일정을 다시 점검하게 됐습니다."
+            "중국 공장 증설과 장비 반입 일정, 현지 생산비용을 다시 점검하게 됐습니다."
         ),
         (
             "- 투자 포인트: 적용 장비와 시행일이 확정되면 중국 생산법인의 "
             "증설비용과 장비 조달 일정이 바뀔 수 있습니다."
         ),
-        "- 경로/섹터: 공급망, 정책 타임라인 | 반도체/AI",
         "- 출처: <a href=\"https://www.reuters.com/world/example\">Reuters</a>",
         "",
         "💡 실시간 뉴스 코멘트",
@@ -647,19 +658,28 @@ def assert_51_character_summary_is_compacted_before_send(compact, now, errors: l
     try:
         compacted = compact.guard_preopen_report(report)
     except RuntimeError as exc:
-        errors.append(f"51-character summary was blocked instead of compacted: {exc}")
+        errors.append(f"detailed summary was blocked instead of preserved: {exc}")
         return
     field_errors = compact_prose_errors(compacted)
     if field_errors:
         errors.append(
-            "51-character summary remained over 50 chars after send preparation: "
+            "detailed summary exceeded the field contract: "
             + ", ".join(field_errors)
         )
-    if "미국이 첨단 반도체 장비 수출통제를" not in compacted:
-        errors.append("GAMEJOA 51-character summary lost its source-specific subject")
+    if not all(
+        term in compacted
+        for term in ("미국이 첨단 반도체 장비 수출통제를", "중국 공장 증설", "현지 생산비용")
+    ):
+        errors.append("GAMEJOA detailed summary lost source-specific facts")
+    core_line = next(
+        (line for line in compacted.splitlines() if line.startswith("- 핵심:")),
+        "",
+    )
+    if len(core_line.removeprefix("- 핵심:").strip()) <= 50:
+        errors.append("GAMEJOA detailed core regressed to the former 50-character cap")
     for marker in FORBIDDEN_COMPACT_MARKERS:
         if marker in compacted:
-            errors.append(f"removed compact field returned during 51-character test: {marker}")
+            errors.append(f"removed compact field returned during detailed-summary test: {marker}")
 
 
 def assert_korean_business_article_contract(production, compact, now, errors: list[str]) -> None:
@@ -782,7 +802,6 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
         required_markers = [
             "- 핵심:",
             "- 투자 포인트:",
-            "- 경로/섹터:",
             "원문 뉴스보기",
         ]
         for marker in required_markers:
@@ -791,7 +810,7 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
         field_errors = compact_prose_errors(rendered)
         if field_errors:
             errors.append(
-                f"{publisher} compact Telegram prose exceeded 50 chars: "
+                f"{publisher} compact Telegram prose exceeded field limits: "
                 + ", ".join(field_errors)
             )
         if "- 분류 매트릭스:" in rendered or "- 관련 해외 티커/지표:" in rendered:
@@ -861,6 +880,35 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
     if production.contract.strict.classify(body_only_material_row, now):
         errors.append("Korean body-only background terms bypassed the material headline gate")
 
+    person_name_false_positive_row = dict(generic_row)
+    person_name_false_positive_row.update(
+        {
+            "title": "홍수주, '동궁' 비극적 서사 완성",
+            "source_title": "홍수주, '동궁' 비극적 서사 완성",
+            "source_body": (
+                "배우 홍수주가 드라마 동궁에서 비극적 서사를 연기했다. "
+                "기사에는 기업 계약, 매출, 실적 또는 투자 일정이 없다."
+            ),
+            "source_abstract": "배우 홍수주가 드라마 동궁에서 비극적 서사를 연기했다.",
+            "summary": "배우 홍수주가 드라마 동궁에서 비극적 서사를 연기했다.",
+            "link": "https://www.etnews.com/20260724000140",
+        }
+    )
+    if production.contract.strict.classify(person_name_false_positive_row, now):
+        errors.append("personal name containing 수주 bypassed the material headline gate")
+
+    for material_title in (
+        "현대로템, 폴란드 K2 전차 2차 수주",
+        "한화에어로, 대형수주 공시",
+        "조선사, 3조원대수주 성공",
+        "LIG넥스원, 수주잔고 역대 최대",
+    ):
+        if not production.runner.korean_business_title_has_material_term(
+            material_title,
+            "수주",
+        ):
+            errors.append(f"valid contract headline was blocked by 수주 context guard: {material_title}")
+
     recap_row = dict(generic_row)
     recap_row.update(
         {
@@ -900,17 +948,21 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
     if not jb_alert:
         errors.append("JB Financial verified earnings article was not classified")
     else:
-        rendered = compact.compact_alert(jb_alert, 1, now, {}, {})
+        normalized_jb = compact.normalize_alert_for_output(jb_alert)
+        rendered = compact.compact_alert(normalized_jb, 1, now, {}, {})
         core_line = next((line for line in rendered.splitlines() if line.startswith("- 핵심:")), "")
         view_line = next(
             (line for line in rendered.splitlines() if line.startswith("- 투자 포인트:")),
             "",
         )
-        if not all(term in core_line for term in ("2196억원", "5.7%", "역대 최대")):
+        if not all(
+            term in core_line
+            for term in ("2196억원", "5.7%", "역대 최대", "314원", "1000억원", "자사주")
+        ):
             errors.append(f"JB Financial core omitted article facts: {core_line}")
-        if not all(term in view_line for term in ("314원", "1000억원", "자사주")):
-            errors.append(f"JB Financial investment point omitted shareholder return: {view_line}")
-        if "금융/자본시장" not in rendered:
+        if not all(term in view_line for term in ("이익 추정", "주주환원")):
+            errors.append(f"JB Financial investment point omitted market meaning: {view_line}")
+        if "금융/자본시장" not in normalized_jb.get("sectors", []):
             errors.append("JB Financial article lost its finance sector classification")
         if jb_title in core_line or jb_title in view_line:
             errors.append("JB Financial summary repeated the headline instead of article facts")
@@ -920,8 +972,223 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
         field_errors = compact_prose_errors(rendered)
         if field_errors:
             errors.append(
-                "JB Financial compact facts exceeded 50 chars: " + ", ".join(field_errors)
+                "JB Financial compact facts exceeded field limits: " + ", ".join(field_errors)
             )
+
+    detailed_article_cases = [
+        (
+            "[ET특징주]유한양행, 4253억원 규모 자사주 소각에 상승세",
+            (
+                "유한양행이 4253억원 규모의 자사주 소각 결정에 상승세다. "
+                "금융감독원 전자공시시스템에 따르면 유한양행은 전날 이사회를 열고 "
+                "4253억3760만4000원 규모의 자사주를 소각하기로 결정했다고 공시했다. "
+                "소각 예정일은 오는 31일이며, 소각 대상은 보통주와 종류주를 포함한 "
+                "총 606만4420주다."
+            ),
+            ("4253억3760만4000원", "소각", "606만4420주", "31일"),
+            ("매입·소각",),
+            ("발행주식", "주당가치"),
+        ),
+        (
+            "[ET특징주]현대차, 2분기 실적 부진에 하락세",
+            (
+                "현대차는 전날 2분기 연결 기준 영업이익이 2조8509억원으로 지난해 "
+                "같은 기간보다 20.8% 감소했다고 밝혔다. 매출은 49조2153억원으로 "
+                "1.9% 증가했지만, 영업이익률은 5.8%로 연간 가이던스(6.3~7.3%)를 "
+                "밑돌았다. 도매판매는 99만2000대로 전년 동기 대비 6.9% 감소했다."
+            ),
+            ("2조8509억원", "20.8% 감소", "49조2153억원", "5.8%", "6.3~7.3%"),
+            ("영업이익 8509억원",),
+            ("이익 추정", "가이던스"),
+        ),
+    ]
+    for case_index, (
+        title,
+        body,
+        required_facts,
+        forbidden_facts,
+        required_view_facts,
+    ) in enumerate(
+        detailed_article_cases,
+        1,
+    ):
+        detail = compact.extract_article_detail(fixture(title, body), title)
+        row = {
+            "source": "전자신문 오늘의 뉴스",
+            "layer": "trusted",
+            "publisher": "전자신문",
+            "title": title,
+            "source_title": detail["title"],
+            "source_body": detail["body"],
+            "source_abstract": detail["body"],
+            "summary": detail["body"],
+            "link": f"https://www.etnews.com/2026072400016{case_index + 2}",
+            "published": now,
+            "body_verified": True,
+        }
+        alert = production.contract.strict.classify(row, now)
+        if not alert:
+            errors.append(f"detailed Korean article case was not classified: {title}")
+            continue
+        rendered = compact.compact_alert(
+            compact.normalize_alert_for_output(alert),
+            1,
+            now,
+            {},
+            {},
+        )
+        core_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- 핵심:")),
+            "",
+        )
+        view_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- 투자 포인트:")),
+            "",
+        )
+        if not all(fact in core_line for fact in required_facts):
+            errors.append(f"detailed Korean article core omitted facts: {core_line}")
+        if any(fact in core_line for fact in forbidden_facts):
+            errors.append(f"detailed Korean article core invented or clipped a fact: {core_line}")
+        if not all(fact in view_line for fact in required_view_facts):
+            errors.append(f"detailed Korean article investment point omitted meaning: {view_line}")
+
+    sidecar_core = compact.market_sidecar_fact(
+        "코스피ㆍ코스닥 동반 매도 사이드카 발동",
+        (
+            "외국인이 3조4285억원, 기관이 1조7019억원 순매도 중이다. "
+            "삼성전자(-7.59%), SK하이닉스(-7.76%) 등은 약세다."
+        ),
+    )
+    if not all(
+        fact in sidecar_core
+        for fact in ("코스피·코스닥", "3조4285억원", "1조7019억원", "7.59%", "7.76%")
+    ):
+        errors.append(f"sidecar article core omitted market facts: {sidecar_core}")
+
+    tariff_title = "방미 의원단, 美에 '15% 관세 마지노선' 지켜달라 촉구"
+    tariff_body = (
+        "한국 여야 의원들이 미국 트럼프 행정부와 의회 관계자들을 만나 미국의 무역법 "
+        "301조에 따른 추가 관세가 기존 한미 무역합의상 관세율인 15%를 넘지 않아야 "
+        "한다고 촉구했다. 배준영 의원은 한국이 3500억 달러를 투자하는 대신 기존 "
+        "25% 관세를 15%로 낮추기로 한 만큼 추가 관세 부담이 발생해서는 안 된다고 "
+        "밝혔다. 트럼프 행정부는 강제노동 조사 결과를 근거로 한국에 12.5%의 관세를 "
+        "부과했고 과잉생산을 이유로 한 추가 관세도 예고했다."
+    )
+    tariff_detail = compact.extract_article_detail(
+        fixture(tariff_title, tariff_body),
+        tariff_title,
+    )
+    tariff_row = {
+        "source": "전자신문 오늘의 뉴스",
+        "layer": "trusted",
+        "publisher": "전자신문",
+        "title": tariff_title,
+        "source_title": tariff_detail["title"],
+        "source_body": tariff_detail["body"],
+        "source_abstract": tariff_detail["body"],
+        "summary": tariff_detail["body"],
+        "link": "https://www.etnews.com/20260724000074",
+        "published": now,
+        "body_verified": True,
+    }
+    tariff_alert = production.contract.strict.classify(tariff_row, now)
+    if not tariff_alert:
+        errors.append("Korea tariff article was not classified")
+    else:
+        normalized_tariff = compact.normalize_alert_for_output(tariff_alert)
+        fx_snapshot = {
+            "query_time_kst": now.isoformat(timespec="seconds"),
+            "rates": {
+                "USD": {
+                    "code": "USD",
+                    "value": 1464.88,
+                    "status": "최근거래",
+                    "reference_time_kst": "2026-07-24T13:21+09:00",
+                    "query_time_kst": now.isoformat(timespec="seconds"),
+                    "source": "Yahoo Finance",
+                    "url": compact.yahoo_fx_url("USD"),
+                    "error": "",
+                }
+            },
+        }
+        normalized_tariff["fx_conversion"] = compact.build_alert_fx_conversion(
+            normalized_tariff,
+            fx_snapshot,
+            now,
+        )
+        rendered = compact.compact_alert(normalized_tariff, 1, now, {}, {})
+        core_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- 핵심:")),
+            "",
+        )
+        investment_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- 투자 포인트:")),
+            "",
+        )
+        source_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- 출처:")),
+            "",
+        )
+        required_facts = ("12.5%", "추가 관세", "15%", "3500억 달러", "약 512.7조원")
+        if not all(term in core_line for term in required_facts):
+            errors.append(f"Korea tariff detailed core omitted article facts: {core_line}")
+        if len(core_line.removeprefix("- 핵심:").strip()) <= 50:
+            errors.append("Korea tariff core regressed to the former 50-character cap")
+        if "가격경쟁력" not in investment_line or "마진" not in investment_line:
+            errors.append(f"Korea tariff investment point is not decision-useful: {investment_line}")
+        if "Yahoo Finance USD/KRW" not in source_line or "2026-07-24T13:21+09:00" not in source_line:
+            errors.append(f"Korea tariff FX provenance missing: {source_line}")
+        if "…" in rendered or "..." in rendered:
+            errors.append("Korea tariff compact output contains a truncated sentence")
+        for marker in FORBIDDEN_COMPACT_MARKERS:
+            if marker in rendered:
+                errors.append(f"Korea tariff compact output retained removed field {marker}")
+
+    eur_amounts = compact.extract_foreign_amounts("유럽 공장에 20억 유로를 투자한다.")
+    if not eur_amounts or eur_amounts[0].get("code") != "EUR":
+        errors.append("EUR amount parser did not detect a euro-denominated investment")
+    else:
+        eur_alert = {
+            "source_abstract": "유럽 공장에 20억 유로를 투자한다.",
+            "news": "유럽 공장 투자",
+        }
+        eur_snapshot = {
+            "query_time_kst": now.isoformat(timespec="seconds"),
+            "rates": {
+                "EUR": {
+                    "code": "EUR",
+                    "value": 1666.2,
+                    "status": "최근거래",
+                    "reference_time_kst": "2026-07-24T13:19+09:00",
+                    "query_time_kst": now.isoformat(timespec="seconds"),
+                    "source": "Yahoo Finance",
+                    "url": compact.yahoo_fx_url("EUR"),
+                    "error": "",
+                }
+            },
+        }
+        eur_conversion = compact.build_alert_fx_conversion(eur_alert, eur_snapshot, now)
+        converted = compact.apply_krw_conversions(
+            "유럽 공장에 20억 유로를 투자한다.",
+            eur_conversion,
+        )
+        if "20억 유로(약 3.3조원)" not in converted:
+            errors.append(f"EUR amount was not converted to KRW: {converted}")
+
+    required_currency_codes = {
+        "USD", "EUR", "JPY", "CNY", "GBP", "CHF", "CAD", "AUD", "HKD", "SGD", "TWD"
+    }
+    if not required_currency_codes.issubset(compact.FOREIGN_CURRENCY_SPECS):
+        errors.append("major world-currency KRW conversion coverage is incomplete")
+    usd_prefix_amounts = compact.extract_foreign_amounts(
+        "The agreement includes USD 350 billion of investment."
+    )
+    if (
+        not usd_prefix_amounts
+        or usd_prefix_amounts[0].get("code") != "USD"
+        or usd_prefix_amounts[0].get("amount") != 350_000_000_000
+    ):
+        errors.append("ISO-prefixed foreign amount parser did not detect USD 350 billion")
 
 
 if __name__ == "__main__":
