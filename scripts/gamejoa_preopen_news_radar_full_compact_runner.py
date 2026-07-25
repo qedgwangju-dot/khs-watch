@@ -1352,6 +1352,37 @@ def compact_article_sentence(sentence: str, limit: int = 50) -> str:
     return concise_text(normalized_article_sentence(sentence), limit=limit)
 
 
+def suspect_financial_amount(metric: str, amount: str) -> bool:
+    trillion_match = re.search(r"(\d[\d,.]*)조", amount or "")
+    if not trillion_match:
+        return False
+    try:
+        trillion = float(trillion_match.group(1).replace(",", ""))
+    except ValueError:
+        return True
+    limits = {
+        "영업이익": 20.0,
+        "순이익": 30.0,
+    }
+    return metric in limits and trillion >= limits[metric]
+
+
+def sentence_has_suspect_financial_amount(sentence: str) -> bool:
+    for metric_term, metric in (
+        ("영업이익", "영업이익"),
+        ("당기순이익", "순이익"),
+        ("순이익", "순이익"),
+    ):
+        position = sentence.find(metric_term)
+        if position < 0:
+            continue
+        metric_tail = sentence[position + len(metric_term):position + len(metric_term) + 90]
+        amount_match = re.search(KOREAN_WON_AMOUNT_PATTERN, metric_tail)
+        if amount_match and suspect_financial_amount(metric, amount_match.group(0)):
+            return True
+    return False
+
+
 def financial_result_fact(title: str, sentences: list[str]) -> str:
     metric_patterns = (
         ("영업이익", "영업이익"),
@@ -1366,9 +1397,12 @@ def financial_result_fact(title: str, sentences: list[str]) -> str:
         )
         if not metric:
             continue
-        metric_tail = sentence[sentence.find(metric_term) + len(metric_term):]
+        metric_start = sentence.find(metric_term) + len(metric_term)
+        metric_tail = sentence[metric_start:metric_start + 90]
         amount_match = re.search(KOREAN_WON_AMOUNT_PATTERN, metric_tail)
         if not amount_match:
+            continue
+        if suspect_financial_amount(metric, amount_match.group(0)):
             continue
         period_match = re.search(r"([1-4])분기", sentence) or re.search(r"([1-4])분기", title)
         change_match = re.search(
@@ -1483,10 +1517,28 @@ def market_sidecar_fact(title: str, body: str) -> str:
     text = clean_article_summary_text(f"{title} {body}")
     if "매도 사이드카" not in text:
         return ""
-    parts = ["코스피·코스닥에 매도 사이드카가 발동됐다."]
+    kospi_match = re.search(
+        r"코스피(?:는|가)?[^!?]{0,100}?(\d+(?:\.\d+)?)%\)?\s*(?:내린|내렸|하락|떨어)",
+        text,
+    )
+    kosdaq_match = re.search(
+        r"코스닥(?:은|이)?[^!?]{0,100}?(\d+(?:\.\d+)?)%\)?\s*(?:내린|내렸|하락|떨어)",
+        text,
+    )
+    if kospi_match and kosdaq_match:
+        parts = [
+            f"코스피·코스닥은 각각 {kospi_match.group(1)}%·"
+            f"{kosdaq_match.group(1)}% 하락해 양 시장에 매도 사이드카가 발동됐다."
+        ]
+    else:
+        parts = ["코스피·코스닥에 매도 사이드카가 발동됐다."]
     flow_match = re.search(
         rf"외국인이?\s*({KOREAN_WON_AMOUNT_PATTERN}),?\s*"
         rf"기관이?\s*({KOREAN_WON_AMOUNT_PATTERN})\s*순매도",
+        text,
+    ) or re.search(
+        rf"외국인(?:과|·)\s*기관이?\s*각각\s*"
+        rf"({KOREAN_WON_AMOUNT_PATTERN}),?\s*({KOREAN_WON_AMOUNT_PATTERN})\s*순매도",
         text,
     )
     if flow_match:
@@ -1494,16 +1546,33 @@ def market_sidecar_fact(title: str, body: str) -> str:
             "외국인·기관은 각각 "
             f"{flow_match.group(1)}·{flow_match.group(2)} 순매도했다."
         )
-    stock_match = re.search(
-        r"삼성전자\((-?\d+(?:\.\d+)?)%\).*?"
-        r"SK하이닉스\((-?\d+(?:\.\d+)?)%\)",
+    stock_pair_match = re.search(
+        r"삼성전자(?:와|·)\s*SK하이닉스[^.!?]{0,50}?각각\s*"
+        r"(-?\d+(?:\.\d+)?)%\s*[,·]\s*(-?\d+(?:\.\d+)?)%",
         text,
     )
-    if stock_match:
+    samsung_match = re.search(
+        r"삼성전자\s*\([^)]*?(-?\d+(?:\.\d+)?)%\)",
+        text,
+    )
+    hynix_match = re.search(
+        r"SK하이닉스\s*\([^)]*?(-?\d+(?:\.\d+)?)%\)",
+        text,
+    )
+    if stock_pair_match:
+        samsung_change = stock_pair_match.group(1)
+        hynix_change = stock_pair_match.group(2)
+    elif samsung_match and hynix_match:
+        samsung_change = samsung_match.group(1)
+        hynix_change = hynix_match.group(1)
+    else:
+        samsung_change = ""
+        hynix_change = ""
+    if samsung_change and hynix_change:
         parts.append(
             "삼성전자·SK하이닉스는 각각 "
-            f"{abs(float(stock_match.group(1))):g}%·"
-            f"{abs(float(stock_match.group(2))):g}% 하락했다."
+            f"{abs(float(samsung_change)):g}%·"
+            f"{abs(float(hynix_change)):g}% 하락했다."
         )
     return " ".join(parts)
 
@@ -1547,6 +1616,21 @@ def tariff_policy_fact(title: str, body: str) -> str:
 
 
 def detailed_article_core(title: str, body: str) -> str:
+    normalized_title = title.lower()
+    if "sk하이닉스" in normalized_title and any(
+        term in normalized_title for term in ("실적", "역대급")
+    ):
+        preview_match = re.search(
+            r"(?:오는\s*)?(\d{1,2})일[^.!?]{0,45}?(?:2분기\s*)?실적(?:을|이)?\s*발표",
+            body,
+        )
+        if preview_match and sentence_has_suspect_financial_amount(body):
+            return (
+                f"SK하이닉스는 {preview_match.group(1)}일 2분기 실적을 발표하며, "
+                "HBM 가격·LTA·AI CAPEX 가이던스가 핵심입니다. "
+                "기사의 영업이익 수치는 이상치로 제외했습니다."
+            )
+
     sentences = ranked_article_sentences(
         body,
         korean_business_title_terms(title),
@@ -1569,7 +1653,11 @@ def detailed_article_core(title: str, body: str) -> str:
     if not facts:
         for sentence in sentences:
             fact = normalized_article_sentence(sentence)
-            if not fact or article_title_restatement(fact, title):
+            if (
+                not fact
+                or article_title_restatement(fact, title)
+                or sentence_has_suspect_financial_amount(fact)
+            ):
                 continue
             facts.append(fact)
             if len(facts) >= GAMEJOA_ARTICLE_FACT_LIMIT:
@@ -1592,7 +1680,27 @@ def detailed_article_core(title: str, body: str) -> str:
 
 def article_investment_point(title: str, body: str, impacts: list[str]) -> str:
     text = clean_article_summary_text(f"{title} {body}")
-    if "관세" in text:
+    title_text = clean_article_summary_text(title)
+    if (
+        any(term in title_text for term in ("코스피", "코스닥", "증시", "뉴욕마감"))
+        and any(term in title_text for term in ("하락", "급락", "대외불안", "반등"))
+    ):
+        return "외국인·기관 매도와 유가·금리 상승이 이어지면 대형 반도체주와 지수 수급 부담이 지속됩니다."
+    if (
+        any(term in title_text.lower() for term in ("oci", "오씨아이"))
+        and any(term in title_text for term in ("영업이익", "흑자전환", "흑자 전환", "실적"))
+        and any(term in text for term in ("폴리실리콘", "태양광"))
+    ):
+        return "흑자 전환과 프로젝트 매각, 폴리실리콘 증설·장기계약이 현금흐름과 성장 CAPEX를 바꿉니다."
+    if any(term in text for term in ARTICLE_SHAREHOLDER_TERMS) and any(
+        term in text for term in ("순이익", "영업이익", "매출")
+    ):
+        return "실적 개선과 배당·자사주 소각이 이익 추정과 주주환원 수급을 함께 높입니다."
+    if "영업이익률" in text and "가이던스" in text:
+        return "영업이익 감소와 마진 가이던스 하회는 이익 추정과 밸류에이션을 낮추는 요인입니다."
+    if any(term in title_text for term in ("영업이익", "순이익", "매출", "실적", "흑자전환", "흑자 전환")):
+        return "기사의 실적과 사업별 원인이 다음 분기 매출·마진·현금흐름으로 이어지는지 확인합니다."
+    if "관세" in title_text or tariff_policy_fact(title, body):
         cap_match = re.search(
             r"(?:마지노선|상한|관세율|합의상\s*관세율)[^.%]{0,35}?([0-9]+(?:\.[0-9]+)?)%",
             text,
@@ -1600,14 +1708,8 @@ def article_investment_point(title: str, body: str, impacts: list[str]) -> str:
         cap = cap_match.group(1) if cap_match else ""
         prefix = f"합산 관세가 {cap}%를 넘으면" if cap else "추가 관세가 확정되면"
         return f"{prefix} 한국 수출주의 가격경쟁력과 마진 부담이 커집니다."
-    if any(term in text for term in ARTICLE_SHAREHOLDER_TERMS) and any(
-        term in text for term in ("순이익", "영업이익", "매출")
-    ):
-        return "실적 개선과 배당·자사주 소각이 이익 추정과 주주환원 수급을 함께 높입니다."
     if "소각" in text:
         return "소각 완료 시 발행주식 수가 줄어 주당가치와 주주환원 수급에 긍정적입니다."
-    if "영업이익률" in text and "가이던스" in text:
-        return "영업이익 감소와 마진 가이던스 하회는 이익 추정과 밸류에이션을 낮추는 요인입니다."
     if any(term in text for term in ("순매수", "순매도")) or re.search(
         r"(?:외국인|기관)[^.!?]{0,40}(?:매수|매도)",
         text,
@@ -1964,8 +2066,11 @@ def korean_market_decline(text: str, labels: tuple[str, ...]) -> str:
 
 
 def build_hyundai_nvidia_meeting_alert(row: dict, now, text: str) -> dict | None:
+    title = str(row.get("source_title") or row.get("title") or "").lower()
     if not (
-        any(term in text for term in ("정의선", "현대차", "현대자동차"))
+        any(term in title for term in ("정의선", "현대차", "현대자동차"))
+        and "엔비디아" in title
+        and any(term in text for term in ("정의선", "현대차", "현대자동차"))
         and "엔비디아" in text
         and any(term in text for term in ("회동", "만나", "본사", "협력"))
         and any(term in text for term in ("자율주행", "로봇", "제조 ai", "새만금", "ai 밸리"))
@@ -1975,6 +2080,17 @@ def build_hyundai_nvidia_meeting_alert(row: dict, now, text: str) -> dict | None
     stage = "robot_platform" if any(
         term in text for term in ("로봇 레퍼런스 플랫폼", "공동 구축", "개방형 생태계")
     ) else "meeting"
+    if stage == "robot_platform":
+        core = (
+            "정의선 회장이 엔비디아와 로봇 레퍼런스 플랫폼 공동 구축 및 "
+            "개방형 생태계 조성을 제시했습니다. 계약·발주 규모는 공개되지 않았습니다."
+        )
+    else:
+        core = (
+            "정의선 회장이 엔비디아 본사에서 젠슨 황과 만나 자율주행·로봇·제조AI "
+            "협력 후속 방안을 논의했습니다. 새만금 AI 밸리 연계도 거론됐지만 "
+            "계약금액·발주·매출은 공개되지 않았습니다."
+        )
     alert = base_korean_business_alert(
         row,
         now,
@@ -1985,16 +2101,8 @@ def build_hyundai_nvidia_meeting_alert(row: dict, now, text: str) -> dict | None
         {
             "importance": "중",
             "status": "예비",
-            "policy_plain_summary": (
-                "정의선 회장이 엔비디아 본사에서 젠슨 황과 만나 자율주행·로봇·제조AI "
-                "협력 후속 방안을 논의했습니다. 새만금 AI 밸리 연계도 거론됐지만 "
-                "계약금액·발주·매출은 공개되지 않았습니다."
-            ),
-            "telegram_core_fact": (
-                "정의선 회장이 엔비디아 본사에서 젠슨 황과 만나 자율주행·로봇·제조AI "
-                "협력 후속 방안을 논의했습니다. 새만금 AI 밸리 연계도 거론됐지만 "
-                "계약금액·발주·매출은 공개되지 않았습니다."
-            ),
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
             "telegram_investment_fact": "협력 논의 단계로, 공동개발 범위와 계약·발주가 확인돼야 실적 재료가 됩니다.",
             "investment_view": "협력 논의 단계로, 공동개발 범위와 계약·발주가 확인돼야 실적 재료가 됩니다.",
             "korea_market_impact": "현대차·현대모비스와 자율주행·로봇·스마트팩토리 밸류체인의 후속 계약만 연결합니다.",

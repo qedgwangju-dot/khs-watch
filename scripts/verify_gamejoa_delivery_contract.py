@@ -1108,6 +1108,162 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
     if production.contract.strict.classify(commentary_row, now):
         errors.append("commentary-only big-tech partnership headline bypassed the material-action gate")
 
+    broad_ai_title = "李, 글로벌 AI 수장들과 협력 확대…젠슨 황, SK와 5천억달러 협력"
+    broad_ai_body = (
+        "정의선 회장은 엔비디아와 자율주행·로봇 협력을 논의했다. "
+        "SK그룹은 엔비디아와 5000억달러 AI 인프라 협력을 추진하고 "
+        "마이크로소프트와 메모리 장기 공급도 추진한다."
+    )
+    broad_ai_row = dict(
+        bigtech_row,
+        title=broad_ai_title,
+        source_title=broad_ai_title,
+        source_body=broad_ai_body,
+        source_abstract=broad_ai_body,
+        summary=broad_ai_body,
+        link="https://www.hankyung.com/article/example-ai-summit",
+    )
+    broad_ai_alert = production.contract.strict.classify(broad_ai_row, now)
+    if broad_ai_alert and broad_ai_alert.get("korean_business_kind") == "hyundai_nvidia_ai_partnership":
+        errors.append("broad AI summit headline was misclassified as a Hyundai-Nvidia meeting")
+
+    robot_title = "정의선, 엔비디아와 로봇 레퍼런스 플랫폼 공동 구축"
+    robot_body = (
+        "정의선 현대차그룹 회장은 엔비디아 본사에서 젠슨 황과 만나 "
+        "로봇 레퍼런스 플랫폼 공동 구축과 개방형 생태계 조성을 제시했다. "
+        "계약금액과 장비 발주 규모는 공개하지 않았다."
+    )
+    robot_row = dict(
+        bigtech_row,
+        title=robot_title,
+        source_title=robot_title,
+        source_body=robot_body,
+        source_abstract=robot_body,
+        summary=robot_body,
+        link="https://www.mt.co.kr/industry/example-hyundai-robot",
+    )
+    robot_alert = production.contract.strict.classify(robot_row, now)
+    if not robot_alert or robot_alert.get("korean_business_kind") != "hyundai_nvidia_ai_partnership":
+        errors.append("direct Hyundai-Nvidia robot-platform headline was not classified")
+    else:
+        robot_core = str(robot_alert.get("telegram_core_fact") or "")
+        if "로봇 레퍼런스 플랫폼 공동 구축" not in robot_core or "본사에서 젠슨 황과 만나" in robot_core:
+            errors.append(f"robot-platform follow-up reused the generic meeting summary: {robot_core}")
+
+    hynix_title = "주가 30% 빠진 SK하이닉스…역대급 실적보다 ‘이것’에 쏠렸다"
+    hynix_body = (
+        "SK하이닉스는 오는 29일 2분기 실적을 발표한다. "
+        "기사에는 2분기 영업이익 컨센서스가 64조2327억원으로 적혔다. "
+        "시장은 HBM 가격과 장기공급계약(LTA), 빅테크 AI CAPEX 가이던스에 주목한다."
+    )
+    hynix_row = dict(
+        bigtech_row,
+        title=hynix_title,
+        source_title=hynix_title,
+        source_body=hynix_body,
+        source_abstract=hynix_body,
+        summary=hynix_body,
+        link="https://www.mk.co.kr/news/stock/12107221",
+    )
+    hynix_alert = production.contract.strict.classify(hynix_row, now)
+    if not hynix_alert:
+        errors.append("SK Hynix earnings-preview article was not classified")
+    else:
+        hynix_rendered = compact.compact_alert(
+            compact.normalize_alert_for_output(hynix_alert),
+            1,
+            now,
+            {},
+            {},
+        )
+        hynix_core = next(
+            (line for line in hynix_rendered.splitlines() if line.startswith("- 핵심:")),
+            "",
+        )
+        if "64조2327억원" in hynix_core:
+            errors.append(f"suspect SK Hynix operating-profit amount was transmitted: {hynix_core}")
+        if not all(term in hynix_core for term in ("29일", "HBM", "LTA", "이상치로 제외")):
+            errors.append(f"SK Hynix source anomaly fallback lost verified facts: {hynix_core}")
+
+    oci_title = "OCI홀딩스, 2Q 흑자전환…태양광 밸류체인 증설로 호실적 이어간다"
+    oci_body = (
+        "OCI홀딩스는 2분기 매출 1조231억원, 영업이익 1080억원으로 흑자 전환했다. "
+        "OCI에너지는 500MW 태양광 프로젝트 지분 50%를 매각했다. "
+        "폴리실리콘 생산능력을 2029년까지 3만5000톤에서 7만톤으로 확대하며 "
+        "신규 고객과 장기공급계약도 체결했다. 미국은 무역확장법 232조 조사를 진행 중이다."
+    )
+    oci_row = dict(
+        bigtech_row,
+        title=oci_title,
+        source_title=oci_title,
+        source_body=oci_body,
+        source_abstract=oci_body,
+        summary=oci_body,
+        link="https://www.mt.co.kr/industry/2026/07/23/2026072317030653918",
+    )
+    oci_alert = production.contract.strict.classify(oci_row, now)
+    if not oci_alert:
+        errors.append("OCI earnings and capacity article was not classified")
+    else:
+        oci_rendered = compact.compact_alert(
+            compact.normalize_alert_for_output(oci_alert),
+            1,
+            now,
+            {},
+            {},
+        )
+        oci_view = next(
+            (line for line in oci_rendered.splitlines() if line.startswith("- 투자 포인트:")),
+            "",
+        )
+        if "추가 관세가 확정되면" in oci_view:
+            errors.append(f"OCI earnings article reused a generic tariff investment point: {oci_view}")
+        if not all(term in oci_view for term in ("프로젝트 매각", "폴리실리콘 증설", "장기계약")):
+            errors.append(f"OCI investment point lost article-specific facts: {oci_view}")
+
+    kospi_title = "대외불안에 코스피 5%대 하락…메타 실적발표·FOMC, 반등 이끌까"
+    kospi_body = (
+        "코스피는 전 거래일 대비 406.27포인트(5.72%) 내렸고 "
+        "코스닥은 42.06포인트(5.32%) 하락해 "
+        "두 시장에 매도 사이드카가 발동됐다. 외국인과 기관이 각각 "
+        "3조2828억원, 1조9513억원 순매도했다. 삼성전자와 SK하이닉스는 "
+        "각각 7.59%, 8.34% 하락했다. 유가와 미국채 금리 상승이 위험선호를 낮췄다."
+    )
+    kospi_row = dict(
+        bigtech_row,
+        title=kospi_title,
+        source_title=kospi_title,
+        source_body=kospi_body,
+        source_abstract=kospi_body,
+        summary=kospi_body,
+        link="https://www.mt.co.kr/stock/2026/07/24/2026072416053045575",
+    )
+    kospi_alert = production.contract.strict.classify(kospi_row, now)
+    if not kospi_alert:
+        errors.append("KOSPI selloff article was not classified")
+    else:
+        kospi_rendered = compact.compact_alert(
+            compact.normalize_alert_for_output(kospi_alert),
+            1,
+            now,
+            {},
+            {},
+        )
+        kospi_core = next(
+            (line for line in kospi_rendered.splitlines() if line.startswith("- 핵심:")),
+            "",
+        )
+        kospi_view = next(
+            (line for line in kospi_rendered.splitlines() if line.startswith("- 투자 포인트:")),
+            "",
+        )
+        if not all(term in kospi_core for term in ("5.72%", "5.32%", "3조2828억원", "1조9513억원")):
+            errors.append(f"KOSPI selloff core lost index or flow facts: {kospi_core}")
+        if not all(term in kospi_view for term in ("외국인·기관", "유가·금리", "지수 수급")):
+            errors.append(f"KOSPI selloff investment point was not market-specific: {kospi_view}")
+        if "다음 분기 매출" in kospi_view:
+            errors.append(f"KOSPI selloff reused a company-earnings template: {kospi_view}")
+
     generic_title = "증설은 더딘데 AI 수요는 폭증…삼성전기, MLCC 장기계약 잇달아"
     generic_body = (
         "AI 서버 투자 확대로 고용량 MLCC 수요가 빠르게 늘고 있다. "
