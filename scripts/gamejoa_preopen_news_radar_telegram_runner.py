@@ -451,7 +451,7 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
         comment_title = "💡 06:30 장전 뉴스 코멘트"
         followup_line = "06:50 투자기상도에서 수치·수급·테마와 재확인 필요."
         empty_line = "장전 고충격 뉴스 직접 확인 없음"
-    lines = [title, f"조회: {now:%Y-%m-%d %H:%M KST}", f"선별: 핵심 {len(visible)}건", ""]
+    lines = [title, f"선별: 핵심 {len(visible)}건", ""]
     if visible:
         for idx, alert in enumerate(visible, 1):
             lines.append(compact_alert(alert, idx, now))

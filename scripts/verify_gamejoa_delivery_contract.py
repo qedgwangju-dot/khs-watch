@@ -11,6 +11,7 @@ from __future__ import annotations
 import datetime as dt
 import importlib
 import os
+import re
 import sys
 import urllib.parse
 from pathlib import Path
@@ -37,7 +38,7 @@ COMPACT_PROSE_PREFIXES = (
     "- 투자 포인트:",
 )
 COMPACT_PROSE_LIMITS = {
-    "- 핵심:": 280,
+    "- 핵심:": 220,
     "- 투자 포인트:": 100,
 }
 FORBIDDEN_COMPACT_MARKERS = (
@@ -119,7 +120,8 @@ REQUIRED_RUNNER_SNIPPETS = [
     "build_global_semiconductor_market_alert",
     "build_ai_infrastructure_steel_alert",
     'supply_chain_theme": f"us_semiconductor_selloff:',
-    "GAMEJOA_CORE_MAX_CHARS = 280",
+    "GAMEJOA_CORE_MAX_CHARS = 220",
+    "semantic_event_theme",
     "collect_fx_snapshot",
     "build_alert_fx_conversion",
     "foreign_currency_not_converted",
@@ -138,6 +140,8 @@ def compact_prose_errors(body: str) -> list[str]:
                     errors.append(f"{prefix} {len(value)}자")
                 if "…" in value or "..." in value:
                     errors.append(f"{prefix} 말줄임")
+                if re.search(r"\[[^\]]{0,60}\s*기자\]", value):
+                    errors.append(f"{prefix} 매체·기자 표기")
     return errors
 
 REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
@@ -684,7 +688,6 @@ def main() -> int:
 def assert_detailed_summary_is_preserved_before_send(compact, now, errors: list[str]) -> None:
     report = "\n".join([
         f"📰 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}",
-        f"조회: {now:%Y-%m-%d %H:%M KST}",
         "선별: 핵심 1건",
         "",
         "1) [상 | 공식 확인 전] 미국, 반도체 수출통제 확대 검토",
@@ -1033,6 +1036,77 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
         prior_day_coverage["published"] = (now - dt.timedelta(days=1)).isoformat()
         if compact.alert_dedup_key(leverage_alert) != compact.alert_dedup_key(prior_day_coverage):
             errors.append("same effective-date leverage rule repeated across publication dates")
+        legacy_leverage = {
+            "news": "레버리지 ETF 광풍 꺾였나…삼전·닉스 단일종목 자금유입 뚝",
+            "original_news": "레버리지 ETF 광풍 꺾였나…삼전·닉스 단일종목 자금유입 뚝",
+            "source_title": "레버리지 ETF 광풍 꺾였나…삼전·닉스 단일종목 자금유입 뚝",
+            "policy_plain_summary": (
+                "삼성전자·SK하이닉스 단일종목 레버리지 ETF의 기본예탁금이 "
+                "1000만원에서 3000만원으로 올라가며 7월 31일부터 시행됩니다."
+            ),
+            "published": now.isoformat(),
+        }
+        legacy_normalized = compact.normalize_alert_for_output(legacy_leverage)
+        if legacy_normalized.get("supply_chain_theme") != "korea_single_stock_leverage_rule:2026-07-31":
+            errors.append("generic leverage article did not gain the canonical event theme")
+        if compact.alert_dedup_key(leverage_alert) != compact.alert_dedup_key(legacy_normalized):
+            errors.append("profiled and generic leverage articles did not dedupe as one event")
+
+    bigtech_title = "SK, 글로벌 빅테크와 1095조 규모 메모리·AIDC 협력 체결"
+    bigtech_body = (
+        "엔비디아와 730조원 규모 AI 인프라 구축 협력, 마이크로소프트에 메모리 장기 공급. "
+        "[헤럴드경제=박지영 기자] SK그룹은 엔비디아와 총 5000억달러 규모 AI 인프라 "
+        "협력을 추진하고 마이크로소프트와 메모리 장기 공급도 추진한다."
+    )
+    bigtech_row = {
+        "source": "헤럴드경제 산업수요",
+        "layer": "trusted",
+        "publisher": "헤럴드경제",
+        "title": bigtech_title,
+        "source_title": bigtech_title,
+        "source_body": bigtech_body,
+        "source_abstract": bigtech_body,
+        "summary": bigtech_body,
+        "link": "https://biz.heraldcorp.com/article/example-bigtech",
+        "published": now,
+        "body_verified": True,
+    }
+    bigtech_alert = production.contract.strict.classify(bigtech_row, now)
+    if not bigtech_alert:
+        errors.append("concrete Korean big-tech cooperation article was not classified")
+    else:
+        bigtech_rendered = compact.compact_alert(
+            compact.normalize_alert_for_output(bigtech_alert),
+            1,
+            now,
+            {},
+            {},
+        )
+        bigtech_core = next(
+            (line.removeprefix("- 핵심:").strip() for line in bigtech_rendered.splitlines() if line.startswith("- 핵심:")),
+            "",
+        )
+        if "5000억달러" not in bigtech_core or "마이크로소프트" not in bigtech_core:
+            errors.append(f"big-tech core omitted contract facts: {bigtech_core}")
+        if "기자]" in bigtech_core or len(bigtech_core) > COMPACT_PROSE_LIMITS["- 핵심:"]:
+            errors.append(f"big-tech core retained boilerplate or excess prose: {bigtech_core}")
+
+    commentary_title = "젠슨 황 \"지금이 한국의 황금기\"…한국 파트너십 강조"
+    commentary_body = (
+        "젠슨 황은 한국의 HBM과 25년 파트너십을 높이 평가했다. "
+        "행사에서는 SK그룹과 엔비디아의 AI 인프라 협력 사례도 소개됐다."
+    )
+    commentary_row = dict(
+        bigtech_row,
+        title=commentary_title,
+        source_title=commentary_title,
+        source_body=commentary_body,
+        source_abstract=commentary_body,
+        summary=commentary_body,
+        link="https://www.edaily.co.kr/News/Read?newsId=commentary",
+    )
+    if production.contract.strict.classify(commentary_row, now):
+        errors.append("commentary-only big-tech partnership headline bypassed the material-action gate")
 
     generic_title = "증설은 더딘데 AI 수요는 폭증…삼성전기, MLCC 장기계약 잇달아"
     generic_body = (

@@ -21,7 +21,7 @@ REQUIRED_ITEM_MARKERS = [
     "- 출처:",
 ]
 FIELD_LIMITS = {
-    "- 핵심:": 280,
+    "- 핵심:": 220,
     "- 투자 포인트:": 100,
 }
 
@@ -105,6 +105,8 @@ def assert_item_quality(title: str, block: list[str], errors: list[str]) -> None
             errors.append(f"{title[:80]} {marker} exceeds {limit} chars")
         if "…" in value or re.search(r"\.{3,}", value):
             errors.append(f"{title[:80]} {marker} contains truncation")
+        if re.search(r"\[[^\]]{0,60}\s*기자\]", value):
+            errors.append(f"{title[:80]} {marker} contains publisher/reporter boilerplate")
 
 
 def main() -> int:
@@ -126,6 +128,8 @@ def main() -> int:
     )
     if not valid_title:
         errors.append("report title contract broken")
+    if re.search(r"^조회:\s*", text, re.MULTILINE):
+        errors.append("duplicate query-time line must not be displayed")
     if title_text != text.splitlines()[0].strip():
         errors.append("title file does not match report first line")
 

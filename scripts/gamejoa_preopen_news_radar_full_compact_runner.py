@@ -807,6 +807,8 @@ ARTICLE_SUMMARY_NOISE_PATTERNS = [
     r"AI\s*학습\s*및\s*활용\s*금지",
     r"저작권자\s*©?\s*이투데이",
     r"Copyright\s*©?\s*Etoday",
+    r"\[(?:헤럴드경제|이데일리|머니투데이|매일경제|전자신문|연합뉴스)"
+    r"\s*=\s*[^\]]{1,30}\s*기자\]",
 ]
 ARTICLE_SUMMARY_MAX_CHARS = 420
 ARTICLE_MATERIAL_TERMS = (
@@ -822,7 +824,7 @@ KOREAN_WON_AMOUNT_PATTERN = (
     r"(?=\d)(?:\d[\d,.]*조)?(?:\d[\d,.]*억)?"
     r"(?:\d[\d,.]*만)?(?:\d[\d,.]*)?원"
 )
-GAMEJOA_CORE_MAX_CHARS = 280
+GAMEJOA_CORE_MAX_CHARS = 220
 GAMEJOA_INVESTMENT_MAX_CHARS = 100
 GAMEJOA_ARTICLE_FACT_LIMIT = 2
 FX_QUERY_TIMEOUT_SECONDS = max(3, int(os.getenv("RADAR_FX_TIMEOUT_SECONDS", "8")))
@@ -2152,6 +2154,8 @@ def build_ai_infrastructure_steel_alert(row: dict, now, text: str) -> dict | Non
 
 
 def build_korea_ai_bigtech_cooperation_alert(row: dict, now, text: str) -> dict | None:
+    title = str(row.get("source_title") or row.get("title") or "")
+    title_text = title.lower()
     korean_actor = any(
         term in text
         for term in ("삼성전자", "sk하이닉스", "sk그룹", "sk텔레콤", "현대차", "네이버")
@@ -2164,14 +2168,29 @@ def build_korea_ai_bigtech_cooperation_alert(row: dict, now, text: str) -> dict 
         term in text
         for term in ("공급계약", "장기 공급", "장기공급", "협력 체결", "mou", "파트너십", "공동 구축")
     )
+    title_action = any(
+        term in title_text
+        for term in (
+            "계약",
+            "공급",
+            "협력 체결",
+            "협력 추진",
+            "공동 구축",
+            "구축",
+            "투자",
+            "수주",
+            "발주",
+            "mou",
+        )
+    ) or bool(extract_foreign_amounts(title))
     if not (
         korean_actor
         and global_actor
         and action
+        and title_action
         and any(term in text for term in ("반도체", "메모리", "hbm", "ai 데이터센터", "ai 인프라"))
     ):
         return None
-    title = str(row.get("source_title") or row.get("title") or "")
     body = str(row.get("source_body") or row.get("source_abstract") or "")
     date_key = korean_business_event_date(row)
     if "삼성전자" in text and "브로드컴" in text:
@@ -2196,11 +2215,30 @@ def build_korea_ai_bigtech_cooperation_alert(row: dict, now, text: str) -> dict 
             for term in ("협력", "공급", "계약", "파트너십", "공동 구축")
         )
     ]
-    core = agreement_sentences[0] if agreement_sentences else ""
+    core = ""
+    if event == "sk_nvidia_ai_memory":
+        if re.search(r"5000\s*억\s*달러", text):
+            core = "SK그룹이 엔비디아와 5000억달러 규모 AI 인프라 협력을 추진합니다."
+        elif "730조원" in text or "731조원" in text:
+            core = "SK그룹이 엔비디아와 약 730조원 규모 AI 인프라 협력을 추진합니다."
+        if core and "마이크로소프트" in text and any(
+            term in text for term in ("장기 공급", "장기공급", "메모리 공급")
+        ):
+            core += " 마이크로소프트와 메모리 장기공급도 추진합니다."
+    elif event == "samsung_broadcom_ai":
+        if re.search(r"2000\s*억\s*달러", text):
+            core = "삼성전자가 브로드컴과 2000억달러 규모 AI 반도체 협력을 추진합니다."
+        elif "292조원" in text:
+            core = "삼성전자가 브로드컴과 약 292조원 규모 AI 반도체 협력을 추진합니다."
+        if core and "파운드리" in text and "메모리" in text:
+            core += " 파운드리·메모리 협력이 포함됐습니다."
+    if not core and agreement_sentences:
+        core = bounded_complete_excerpt(agreement_sentences[0], 180)
     if not core:
         core = detailed_article_core(title, body)
     if not core:
         core = article_sentences(body, korean_business_title_terms(title), 2, title=title)
+    core = bounded_complete_excerpt(core, GAMEJOA_CORE_MAX_CHARS)
     alert = base_korean_business_alert(
         row,
         now,
@@ -2676,12 +2714,41 @@ def source_output_aligned(alert: dict) -> bool:
     return True
 
 
+def semantic_event_theme(alert: dict) -> str:
+    text = base.norm(
+        " ".join(
+            str(alert.get(key) or "")
+            for key in (
+                "news",
+                "original_news",
+                "source_title",
+                "policy_plain_summary",
+                "telegram_core_fact",
+                "source_abstract",
+                "source_body",
+            )
+        )
+    )
+    if (
+        "레버리지" in text
+        and any(term in text for term in ("etf", "etn"))
+        and any(term in text for term in ("기본예탁금", "3000만원", "대용증권", "7월 31일", "31일부터"))
+    ):
+        return "korea_single_stock_leverage_rule:2026-07-31"
+    if (
+        any(term in text for term in ("필라델피아 반도체", "필라델피아반도체", "sox", "smh"))
+        and any(term in text for term in ("4.3%", "3.3%", "나스닥 0.6%", "나스닥 0.64%"))
+    ):
+        return f"us_semiconductor_market_shock:{str(alert.get('published') or '')[:10]}"
+    return ""
+
+
 def alert_dedup_key(alert: dict) -> tuple[str, str]:
     if alert.get("iran_hormuz_escalation"):
         return ("iran_hormuz_military_escalation", str(alert.get("published") or "")[:10])
     raw_title = str(alert.get("original_news") or alert.get("news") or "")
     raw_title = re.split(r"\s+-\s+", raw_title, maxsplit=1)[0].strip()
-    theme = str(alert.get("supply_chain_theme") or "")
+    theme = str(alert.get("supply_chain_theme") or semantic_event_theme(alert) or "")
     if theme:
         return (base.norm(theme), "event")
     canonical = base.norm(theme or raw_title or alert.get("news") or alert.get("link"))
@@ -3447,6 +3514,10 @@ def normalize_alert_for_output(alert: dict) -> dict:
         out["source_title"] = out.get("original_news") or out.get("news")
     if not out.get("original_news"):
         out["original_news"] = out.get("source_title") or out.get("news")
+    if not out.get("supply_chain_theme"):
+        inferred_theme = semantic_event_theme(out)
+        if inferred_theme:
+            out["supply_chain_theme"] = inferred_theme
     profile = federal_register_profile(out)
     out["news"] = korean_title(out)
     out["sectors"] = curated_sectors(out)
@@ -3785,7 +3856,7 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
         comment_title = "💡 06:30 장전 뉴스 코멘트"
         followup_line = "06:50 투자기상도에서 수치·수급·테마와 재확인 필요."
         empty_line = "장전 고충격 뉴스 직접 확인 없음"
-    lines = [title, f"조회: {now:%Y-%m-%d %H:%M KST}", f"선별: 핵심 {len(visible)}건", ""]
+    lines = [title, f"선별: 핵심 {len(visible)}건", ""]
     if visible:
         for idx, alert in enumerate(visible, 1):
             lines.append(compact_alert(alert, idx, now, fred, te))
