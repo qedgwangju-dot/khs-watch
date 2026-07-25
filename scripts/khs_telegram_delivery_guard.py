@@ -16,6 +16,10 @@ try:
     from khs_compact_text import compact_prose_lines
 except ImportError:  # pragma: no cover - supports module-style local tests.
     from scripts.khs_compact_text import compact_prose_lines
+try:
+    from khs_policy_telegram_formatter import format_policy_message, validate_final_policy_message
+except ImportError:  # pragma: no cover - supports module-style local tests.
+    from scripts.khs_policy_telegram_formatter import format_policy_message, validate_final_policy_message
 
 OUT_DIR = Path("out")
 MAX_TITLE_CHARS = 120
@@ -587,6 +591,11 @@ def guard_lane(lane: Lane) -> None:
             return
 
     body, compacted_fields = compact_prose_lines(body)
+    title, body = format_policy_message(title, body)
+    final_errors = validate_final_policy_message(title, body)
+    if final_errors:
+        delete_lane(lane, f"final_format:{','.join(final_errors)}")
+        return
     write_pair(lane, title, body)
     print(
         f"telegram_delivery_guard=passed lane={lane.name} "

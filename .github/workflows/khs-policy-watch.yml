@@ -97,6 +97,7 @@ jobs:
           python -m py_compile scripts/verify_khs_source_fetch_contract.py
           python -m py_compile scripts/khs_policy_source_status_alert.py
           python -m py_compile scripts/khs_telegram_delivery_guard.py
+          python -m py_compile scripts/khs_policy_telegram_formatter.py
           python -m py_compile scripts/verify_khs_policy_delivery_contract.py
           python -m py_compile scripts/verify_khs_source_status_contract.py
           python -m py_compile scripts/verify_high_impact_news_self_audit.py
@@ -297,16 +298,16 @@ jobs:
           import re
           import urllib.parse
           import urllib.request
+          from scripts.khs_policy_telegram_formatter import (
+              format_policy_message,
+              validate_final_policy_message,
+          )
 
           token = os.environ["POLICY_TELEGRAM_BOT_TOKEN"]
           chat_id = os.environ["POLICY_TELEGRAM_CHAT_ID"]
-          repo = os.environ.get("GITHUB_REPOSITORY", "qedgwangju-dot/khs-watch")
-          run_id = os.environ.get("GITHUB_RUN_ID", "")
           telegram_test = os.environ.get("TELEGRAM_TEST", "false").lower() == "true"
           telegram_dry_run = os.environ.get("TELEGRAM_DRY_RUN", "false").lower() == "true"
 
-          run_url = f"https://github.com/{repo}/actions/runs/{run_id}" if run_id else f"https://github.com/{repo}/actions"
-          issue_url = f"https://github.com/{repo}/issues"
           dedupe_hours = int(os.environ.get("KHS_TELEGRAM_DEDUPE_HOURS", "48"))
           state_path = pathlib.Path("data/khs_telegram_delivery_seen.json")
 
@@ -324,12 +325,19 @@ jobs:
                   continue
               title = title_file.read_text(encoding="utf-8").strip() if title_file.exists() else fallback_title
               body = body_file.read_text(encoding="utf-8")
+              title, body = format_policy_message(title, body)
+              format_errors = validate_final_policy_message(title, body)
+              if format_errors:
+                  raise RuntimeError(
+                      f"Telegram final format failed lane={body_file}: {format_errors}"
+                  )
               messages.append((title, body))
 
           if not messages and telegram_test:
               report = pathlib.Path("out/khs_policy_watch.md")
               title = "KHS policy watch Telegram test"
               body = report.read_text(encoding="utf-8") if report.exists() else "KHS policy watch test message."
+              title, body = format_policy_message(title, body)
               messages.append((title, body))
 
           def parse_utc(value):
@@ -344,13 +352,11 @@ jobs:
               text = re.sub(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?(?:[+-]\d{2}:\d{2}|Z)?", "<ISO_TIME>", text)
               text = re.sub(r"조회\s+\d{1,2}:\d{2}\s+KST", "조회 <KST_TIME>", text)
               text = re.sub(r"조회시각:\s*\d{4}-\d{2}-\d{2}[^\n]*", "조회시각: <TIME>", text)
-              text = re.sub(r"Actions:\s*https://github.com/\S+", "Actions: <URL>", text)
-              text = re.sub(r"Issues:\s*https://github.com/\S+", "Issues: <URL>", text)
               headings = []
               for line in text.splitlines():
-                  if not line.startswith("## "):
+                  if not re.match(r"^(?:##\s+)?\d+\.\s+\[[^\]]+\]", line):
                       continue
-                  heading = re.sub(r"^##\s+\d+\.\s+\[[^\]]+\]\s*", "", line).strip()
+                  heading = re.sub(r"^(?:##\s+)?\d+\.\s+\[[^\]]+\]\s*", "", line).strip()
                   heading = re.sub(r"\s+", " ", heading)
                   if heading:
                       headings.append(heading)
@@ -406,7 +412,7 @@ jobs:
               )
           else:
               for title, body, digest in sendable:
-                  text = f"{title}\n\n{body[:3300]}\n\nActions: {run_url}\nIssues: {issue_url}"
+                  text = f"{title}\n\n{body}".strip()
                   data = urllib.parse.urlencode({"chat_id": chat_id, "text": text[:4096], "disable_web_page_preview": "true"}).encode("utf-8")
                   req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
                   with urllib.request.urlopen(req, timeout=20) as resp:

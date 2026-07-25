@@ -734,6 +734,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             items.append(
                 {
                     "title": title,
+                    "description": description,
                     "link": link,
                     "source": display_source,
                     "published_kst": published.isoformat(timespec="seconds"),
@@ -1045,6 +1046,23 @@ def trump_story_profile(title: str) -> dict[str, object] | None:
             "paths": "유가·운임, 원자재 비용, 지정학 리스크, 정책 타임라인",
             "sectors": "항공/운송, 화학, 해운, 정유",
             "failure": "실제 AIS 통항, 전쟁보험료, Brent·운임이 정상화되지 않으면 발언성 재료로 끝납니다.",
+        }
+    if (
+        ("iran" in low or "이란" in low)
+        and "reached out" in low
+        and any(term in low for term in ("new agreement", "new deal", "새 합의"))
+    ):
+        return {
+            **common,
+            "revision": "trump-iran-new-agreement-ko-v1",
+            "title": "트럼프, 이란의 새 합의 요청 연락 공개: 협상 재개 가능성",
+            "core": "트럼프는 이란이 새 합의를 원해 미국에 연락했다고 밝혔고, 협상 조건은 미정입니다.",
+            "investment": "협상 진전은 유가·운임·원/달러 위험프리미엄을 낮출 수 있습니다.",
+            "korea": "정유·화학 원가, 해운, 항공·운송, 방산·환율 민감주만 선별 확인합니다.",
+            "impacts": "매출·마진·현금흐름, 밸류에이션/할인율, 시간표",
+            "paths": "지정학 리스크, 유가·운임, 환율, 정책 타임라인",
+            "sectors": "정유/화학, 해운, 항공/운송, 방산/지정학",
+            "failure": "공식 협상 일정, 통항 정상화, 유가·운임·환율 반응이 없으면 단발성 발언으로 약화됩니다.",
         }
     if ("iran" in low or "이란" in low) and any(term in low for term in ("negot", "talk", "deal", "contact", "reached out", "agreement", "협상", "연락")):
         return {

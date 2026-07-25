@@ -22,6 +22,7 @@ import khs_domestic_stablecoin_policy_watch
 import khs_nuclear_policy_watch
 import khs_policy_runtime_patch
 import khs_policy_seen_finalize
+import khs_policy_telegram_formatter
 import khs_policy_watch
 import khs_telegram_delivery_guard
 import khs_trusted_policy_news_watch
@@ -72,6 +73,7 @@ def assert_compact_prose_limit(body: str, context: str, limit: int = 50) -> None
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_workflow_delivery_dedupe()
+    assert_final_policy_telegram_format_and_currency_conversion()
     assert_runtime_patch_accepts_mofcom_watch_source()
     assert_foreign_first_policy_sources()
     assert_china_mofcom_export_control_reaches_policy_lane()
@@ -215,6 +217,8 @@ def assert_workflow_delivery_dedupe() -> None:
         "Commit confirmed watch and Telegram state",
         "Upload policy watch verification artifacts",
         "out/khs_telegram_dry_run.md",
+        "format_policy_message(title, body)",
+        "validate_final_policy_message(title, body)",
     ]
     for marker in required:
         if marker not in workflow:
@@ -223,6 +227,82 @@ def assert_workflow_delivery_dedupe() -> None:
     finalize_index = workflow.index("- name: Finalize policy seen state after confirmed Telegram outcome")
     if finalize_index <= send_index:
         raise AssertionError("KHS policy seen state is finalized before Telegram delivery")
+    forbidden = [
+        r'Actions: {run_url}',
+        r'Issues: {issue_url}',
+        r'body[:3300]',
+    ]
+    for marker in forbidden:
+        if marker in workflow:
+            raise AssertionError(f"KHS policy workflow still appends removed Telegram metadata: {marker}")
+
+
+def assert_final_policy_telegram_format_and_currency_conversion() -> None:
+    now = dt.datetime(2026, 7, 25, 21, 47, tzinfo=ZoneInfo("Asia/Seoul"))
+    title = "KHS 신뢰외신 정책 워치: [상·공식 확인 전] 미국, $17.5 billion 원전 대출"
+    body = "\n".join(
+        [
+            "🚨 KHS 신뢰외신 정책·규제 고충격 워치 · 2026년 07월 25일 21:47 KST",
+            "",
+            "## 1. [상·공식 확인 전] 미국, 원전 대출과 5억유로 협력기금 발표",
+            "- 핵심: 미국이 원전 건설에 $17.5 billion 저리 대출을 제시했습니다.",
+            "- 투자 관점: 실제 대출 조건과 기자재 발주 일정을 확인합니다.",
+            "- 한국장 영향: 국내 원전 기자재의 미국 공급 노출을 확인합니다.",
+            "- 의사결정 영향: 매출·마진·현금흐름, 시간표",
+            "- 영향 섹터: 원전/전력기기",
+            "- 반영/반대: 기대 일부 반영 / 최종 대출계약은 미정",
+            "- 실패 신호: 최종 대출계약과 발주가 없으면 약화됩니다.",
+            "- 출처: [Reuters](https://www.reuters.com/example-policy-story) · 조회 21:47 KST",
+            "",
+            "Actions: https://github.com/qedgwangju-dot/khs-watch/actions/runs/1",
+            "Issues: https://github.com/qedgwangju-dot/khs-watch/issues",
+        ]
+    )
+    formatted_title, formatted_body = khs_policy_telegram_formatter.format_policy_message(
+        title,
+        body,
+        rates={"USD": 1400.0, "EUR": 1600.0},
+        now=now,
+    )
+    required = [
+        "24조5,000억원",
+        "8,000억원",
+        "- 핵심:",
+        "- 투자 관점:",
+        "- 한국장 영향:",
+        "- 영향 섹터:",
+        "https://www.reuters.com/example-policy-story",
+        "- 원화 환산 기준:",
+    ]
+    for marker in required:
+        if marker not in f"{formatted_title}\n{formatted_body}":
+            raise AssertionError(f"final policy Telegram format missing: {marker}")
+    forbidden = [
+        "KHS ",
+        "## 1.",
+        "- 의사결정 영향:",
+        "- 반영/반대:",
+        "- 실패 신호:",
+        "Actions:",
+        "Issues:",
+    ]
+    for marker in forbidden:
+        if marker in f"{formatted_title}\n{formatted_body}":
+            raise AssertionError(f"final policy Telegram format leaked removed text: {marker}")
+    errors = khs_policy_telegram_formatter.validate_final_policy_message(
+        formatted_title,
+        formatted_body,
+    )
+    if errors:
+        raise AssertionError(f"final policy Telegram validation failed: {errors}")
+    second_title, second_body = khs_policy_telegram_formatter.format_policy_message(
+        formatted_title,
+        formatted_body,
+        rates={"USD": 1400.0, "EUR": 1600.0},
+        now=now,
+    )
+    if (second_title, second_body) != (formatted_title, formatted_body):
+        raise AssertionError("policy Telegram formatter is not idempotent")
 
 
 def article_fixture(title: str, body: str, published: str = "2026-07-20T12:00:00-04:00") -> str:
@@ -758,8 +838,8 @@ def assert_trusted_policy_news_story_fingerprint_allows_intraday_updates() -> No
     if fresh != [iran_item]:
         raise AssertionError(f"legacy daily seen did not allow only fresh intraday Trump item: {fresh}")
     rendered = khs_trusted_policy_news_watch.korean_trump_story_title(iran_item["title"])
-    if "이란 협상" not in rendered:
-        raise AssertionError(f"Iran negotiation Trump title was not translated as negotiations: {rendered}")
+    if "이란의 새 합의 요청" not in rendered:
+        raise AssertionError(f"Iran new-agreement headline was not translated exactly: {rendered}")
     if not khs_trusted_policy_news_watch.has_required_terms(iran_item["title"], rule):
         raise AssertionError("Trump Iran reached-out/new-agreement headline did not satisfy trusted-news required terms")
 
@@ -781,7 +861,8 @@ def assert_trusted_policy_news_render_is_compact() -> None:
         dt.datetime(2026, 7, 9, 22, 29, tzinfo=ZoneInfo("Asia/Seoul")),
     )
     required = [
-        "트럼프, 이란 협상 재개 발언",
+        "트럼프, 이란의 새 합의 요청 연락 공개",
+        "이란이 새 합의를 원해 미국에 연락",
         "- 핵심:",
         "- 투자 관점:",
         "- 한국장 영향:",
@@ -1426,11 +1507,8 @@ def assert_policy_output() -> None:
     must_contain = [
         "FCC, 보안 위험 통신장비 수입·판매 제한 절차 공표",
         "- 핵심:",
-        "- 의사결정 영향:",
         "- 투자 영향:",
         "- 한국장:",
-        "- 반영/반대:",
-        "- 실패 신호:",
         "- 출처:",
     ]
     for marker in must_contain:
@@ -1448,6 +1526,13 @@ def assert_policy_output() -> None:
         "inverter",
         "신뢰외신",
         "fcc_decision_notice",
+        "KHS ",
+        "## 1.",
+        "- 의사결정 영향:",
+        "- 반영/반대:",
+        "- 실패 신호:",
+        "Actions:",
+        "Issues:",
     ]
     low = body.lower()
     for marker in forbidden:
@@ -1460,9 +1545,15 @@ def assert_policy_output() -> None:
     if long_lines:
         raise AssertionError(f"overlong Telegram line leaked: {long_lines[0][:120]}")
 
-    alert_count = sum(1 for line in lines if line.startswith("## "))
+    alert_count = sum(1 for line in lines if line.startswith("1. ["))
     if alert_count != 1:
         raise AssertionError(f"expected only one delivered alert, got {alert_count}")
+    title = (OUT_DIR / "khs_policy_watch_alert_title.txt").read_text(encoding="utf-8-sig")
+    if title.startswith("KHS "):
+        raise AssertionError("KHS branding remained in the final Telegram title")
+    format_errors = khs_policy_telegram_formatter.validate_final_policy_message(title, body)
+    if format_errors:
+        raise AssertionError(f"general policy final format failed: {format_errors}")
     assert_compact_prose_limit(body, "general policy")
 
 
