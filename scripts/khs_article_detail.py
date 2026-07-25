@@ -42,6 +42,23 @@ TITLE_STOPWORDS = {
     "in",
     "from",
 }
+PUBLISHER_TITLE_SUFFIXES = (
+    "이투데이",
+    "전자신문",
+    "이데일리",
+    "머니투데이",
+    "매일경제",
+    "헤럴드경제",
+    "연합뉴스",
+    "한국경제",
+    "서울경제",
+    "edaily.co.kr",
+    "mt.co.kr",
+    "mk.co.kr",
+    "biz.heraldcorp.com",
+    "yna.co.kr",
+    "hankyung.com",
+)
 
 
 def clean(value: str | None) -> str:
@@ -60,6 +77,7 @@ class ArticleHTMLParser(HTMLParser):
         self.block_depth = 0
         self.block_parts: list[str] = []
         self.blocks: list[str] = []
+        self.raw_parts: list[str] = []
         self.time_values: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
@@ -90,6 +108,8 @@ class ArticleHTMLParser(HTMLParser):
         elif is_target:
             self.capture_depth = 1
 
+        if self.capture_depth and tag == "br":
+            self.raw_parts.append("\n")
         if self.capture_depth and tag in BLOCK_TAGS:
             if self.block_depth == 0:
                 self.block_parts = []
@@ -117,12 +137,15 @@ class ArticleHTMLParser(HTMLParser):
                 if value and (not self.blocks or value != self.blocks[-1]):
                     self.blocks.append(value)
                 self.block_parts = []
+            self.raw_parts.append("\n")
         if self.capture_depth and tag not in VOID_TAGS:
             self.capture_depth = max(0, self.capture_depth - 1)
 
     def handle_data(self, data: str) -> None:
         if self.in_title:
             self.title_text.append(data)
+        if self.capture_depth and not self.skip_depth:
+            self.raw_parts.append(data)
         if self.capture_depth and self.block_depth and not self.skip_depth:
             self.block_parts.append(data)
 
@@ -148,9 +171,15 @@ def parse_published(value: str | None) -> dt.datetime | None:
 
 def normalized_title_tokens(value: str) -> list[str]:
     value = clean(value).lower().replace("’", "'")
-    value = re.sub(r"\s+-\s+(?:이투데이|전자신문|the white house)\s*$", "", value, flags=re.I)
+    suffixes = "|".join(re.escape(item) for item in PUBLISHER_TITLE_SUFFIXES)
+    value = re.sub(rf"\s+-\s+(?:{suffixes}|the white house)\s*$", "", value, flags=re.I)
     tokens = re.findall(r"[a-z0-9가-힣]+", value)
     return [token for token in tokens if token not in TITLE_STOPWORDS and len(token) > 1]
+
+
+def strip_publisher_title_suffix(value: str) -> str:
+    suffixes = "|".join(re.escape(item) for item in PUBLISHER_TITLE_SUFFIXES)
+    return clean(re.sub(rf"\s+-\s+(?:{suffixes}|the white house)\s*$", "", value, flags=re.I))
 
 
 def titles_align(listing_title: str, detail_title: str) -> bool:
@@ -179,7 +208,7 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
             "body_verified": False,
         }
 
-    title = clean(
+    title = strip_publisher_title_suffix(
         parser.meta.get("og:title")
         or parser.meta.get("twitter:title")
         or " ".join(parser.title_text)
@@ -187,6 +216,14 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
     abstract = clean(parser.meta.get("og:description") or parser.meta.get("description"))
     body = "\n".join(parser.blocks)
     body = re.sub(r"\n{3,}", "\n\n", body).strip()
+    raw_body = "\n".join(
+        clean(part)
+        for part in re.split(r"\n+", "".join(parser.raw_parts))
+        if clean(part)
+    )
+    raw_body = re.sub(r"\n{3,}", "\n\n", raw_body).strip()
+    if len(raw_body) > len(body) and len(body) < 180:
+        body = raw_body
     published = parse_published(
         parser.meta.get("article:published_time")
         or parser.meta.get("date")

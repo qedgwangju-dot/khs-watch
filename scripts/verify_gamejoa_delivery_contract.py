@@ -8,6 +8,7 @@ to another bot or make Telegram failures look successful.
 
 from __future__ import annotations
 
+import datetime as dt
 import importlib
 import os
 import sys
@@ -65,7 +66,9 @@ REQUIRED_WORKFLOW_SNIPPETS = [
     "KHS_SOURCE_PROXY_URL:",
     "KHS_SOURCE_PROXY_FIRST:",
     'RADAR_QUERY_FETCH_WORKERS: "4"',
-    'GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "36"',
+    'RADAR_DISPLAY_LIMIT: "7"',
+    'GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "48"',
+    'GAMEJOA_KOREAN_BUSINESS_DETAIL_WORKERS: "8"',
 ]
 
 REQUIRED_PRODUCTION_WORKFLOW_SNIPPETS = [
@@ -104,10 +107,23 @@ REQUIRED_RUNNER_SNIPPETS = [
     "https://rss.etoday.co.kr/eto/market_news.xml",
     "https://rss.etnews.com/Section901.xml",
     "https://rss.etnews.com/Section902.xml",
+    "KOREAN_BUSINESS_SEARCH_SOURCES",
+    "edaily.co.kr",
+    "mk.co.kr",
+    "mt.co.kr",
+    "biz.heraldcorp.com",
+    "yna.co.kr",
+    "hankyung.com",
+    "build_hyundai_nvidia_meeting_alert",
+    "build_single_stock_leverage_rule_alert",
+    "build_global_semiconductor_market_alert",
+    "build_ai_infrastructure_steel_alert",
+    'supply_chain_theme": f"us_semiconductor_selloff:',
     "GAMEJOA_CORE_MAX_CHARS = 280",
     "collect_fx_snapshot",
     "build_alert_fx_conversion",
     "foreign_currency_not_converted",
+    "📰 실시간 핵심 뉴스 레이더 ·",
 ]
 
 
@@ -140,6 +156,7 @@ REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
     "RADAR_RUN_MODE",
     "final_alerts_for_output(deduped, limit)",
     "canonical_alert_for_seen",
+    'canonical.get("supply_chain_theme")',
     "migrate_seen_title_aliases",
     '"selection_diagnostics": diagnostics',
     '"source_failures": source_failures',
@@ -161,6 +178,7 @@ REQUIRED_GENERATED_GUARD_SNIPPETS = [
     "GAMEJOA generated report quality OK",
     "report/JSON selected count mismatch",
     "selection_diagnostics",
+    "📰 실시간 핵심 뉴스 레이더 ·",
 ]
 
 REQUIRED_RUNTIME_GUARD_SNIPPETS = [
@@ -217,6 +235,8 @@ def main() -> int:
     for snippet in REQUIRED_RUNNER_SNIPPETS:
         if snippet not in runner:
             errors.append(f"{RUNNER_FILE.relative_to(ROOT)} missing required guard snippet: {snippet}")
+    if "📰 GAMEJOA 실시간 핵심 뉴스 레이더 ·" in runner:
+        errors.append("legacy GAMEJOA live radar title remains in the production renderer")
 
     semisupply_runner = SEMISUPPLY_RUNNER_FILE.read_text(encoding="utf-8")
     for snippet in REQUIRED_SEMISUPPLY_RUNNER_SNIPPETS:
@@ -247,6 +267,8 @@ def main() -> int:
         for snippet in REQUIRED_GENERATED_GUARD_SNIPPETS:
             if snippet not in generated_guard:
                 errors.append(f"{GENERATED_REPORT_GUARD_FILE.relative_to(ROOT)} missing required guard snippet: {snippet}")
+        if "📰 GAMEJOA 실시간 핵심 뉴스 레이더 ·" in generated_guard:
+            errors.append("generated-report guard still accepts the legacy GAMEJOA live title")
 
     if not RUNTIME_DELIVERY_GUARD_FILE.exists():
         errors.append(f"{RUNTIME_DELIVERY_GUARD_FILE.relative_to(ROOT)} is missing")
@@ -284,6 +306,34 @@ def main() -> int:
     missing_query_labels = sorted(required_query_labels - query_labels)
     if missing_query_labels:
         errors.append(f"trusted query plan missing coverage: {', '.join(missing_query_labels)}")
+    korean_source_labels = {name for name, _url, _kind in production.base.SOURCES}
+    required_korean_source_labels = {
+        "국내 신뢰매체 AI·반도체 협력",
+        "국내 신뢰매체 미국 증시·반도체",
+        "국내 신뢰매체 자본시장 정책",
+        "국내 신뢰매체 산업수요·CAPEX",
+        "이데일리 기업·AI",
+        "이데일리 미국 증시",
+        "매일경제 자본시장",
+        "머니투데이 글로벌시장",
+        "헤럴드경제 산업수요",
+        "현대차·엔비디아 AI 협력",
+        "AI 인프라 철강 수요",
+    }
+    missing_korean_sources = sorted(required_korean_source_labels - korean_source_labels)
+    if missing_korean_sources:
+        errors.append(
+            "Korean trusted-media source coverage missing: "
+            + ", ".join(missing_korean_sources)
+        )
+    for domain in ("edaily.co.kr", "mk.co.kr", "mt.co.kr", "biz.heraldcorp.com"):
+        probe = {
+            "source": "국내 신뢰매체 회귀점검",
+            "publisher": "",
+            "link": f"https://{domain}/regression-fixture",
+        }
+        if not production.runner.is_korean_business_row(probe):
+            errors.append(f"Korean trusted domain was not routed to article verification: {domain}")
 
     target = "https://www.reuters.com/world/example"
     bing_link = "https://www.bing.com/news/apiclick.aspx?" + urllib.parse.urlencode({"url": target})
@@ -633,7 +683,7 @@ def main() -> int:
 
 def assert_detailed_summary_is_preserved_before_send(compact, now, errors: list[str]) -> None:
     report = "\n".join([
-        f"📰 GAMEJOA 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}",
+        f"📰 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}",
         f"조회: {now:%Y-%m-%d %H:%M KST}",
         "선별: 핵심 1건",
         "",
@@ -820,6 +870,169 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
                 errors.append(f"{publisher} compact Telegram summary retained {marker}")
         if "K-원전/가스터빈" in rendered or "체코 원전" in rendered:
             errors.append(f"{publisher} compact summary contains an unrelated nuclear watch")
+
+    edaily_direct_fixture = """
+    <html><head>
+      <meta property="og:title" content="정의선, 美 엔비디아 본사 찾아 젠슨 황과 회동…AI 협력 후속 논의">
+      <meta property="article:published_time" content="2026-07-25T08:09:44+09:00">
+    </head><body>
+      <div class="news_body" itemprop="articleBody">
+        정의선 현대자동차그룹 회장이 엔비디아 본사를 방문해 젠슨 황 CEO와 만났다.<br><br>
+        양측은 자율주행, 로봇, 제조 AI와 새만금 AI 밸리 협력 후속 방안을 논의했다.<br><br>
+        현대차그룹은 새만금 부지에 단계적으로 9조원을 투자할 계획이지만,
+        이번 회동에서 별도 공급계약 금액이나 발주 규모는 공개하지 않았다.<br><br>
+        후속 협력이 실제 공동개발과 장비 공급으로 이어지는지는 별도 계약과 기업 공시로 확인해야 한다.
+      </div>
+    </body></html>
+    """
+    edaily_direct = compact.extract_article_detail(
+        edaily_direct_fixture,
+        "정의선, 美 엔비디아 본사 찾아 젠슨 황과 회동…AI 협력 후속 논의",
+    )
+    if not edaily_direct.get("body_verified") or "자율주행" not in edaily_direct.get("body", ""):
+        errors.append("Edaily direct-text article body was not extracted")
+
+    expanded_cases = [
+        {
+            "publisher": "이데일리",
+            "title": "정의선, 美 엔비디아 본사 찾아 젠슨 황과 회동…AI 협력 후속 논의",
+            "body": (
+                "정의선 현대자동차그룹 회장이 엔비디아 본사를 방문해 젠슨 황 CEO와 만났다. "
+                "양측은 자율주행, 로봇, 제조 AI와 새만금 AI 밸리 협력 후속 방안을 논의했다. "
+                "이번 회동에서 별도 공급계약 금액이나 발주 규모는 공개하지 않았다."
+            ),
+            "link": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01899126645518128",
+            "kind": "hyundai_nvidia_ai_partnership",
+            "core_terms": ("자율주행", "로봇", "제조AI", "계약금액", "공개되지"),
+            "view_terms": ("협력 논의", "계약", "발주"),
+        },
+        {
+            "publisher": "매일경제",
+            "title": "국민 64% “삼닉과 레버리지는 잘못된 만남”…31일부터 불개미 막는다",
+            "body": (
+                "삼성전자와 SK하이닉스 단일종목 레버리지 ETF·ETN을 사려면 31일부터 "
+                "계좌에 현금 3000만원 이상을 보유해야 한다. 금융위원회는 현재 1000만원인 "
+                "기본예탁금을 3000만원으로 상향하고 주식·채권 등 대용증권을 인정하지 않는다. "
+                "당초 8월 순차 적용 예정이던 두 조치는 7월 31일부터 동시에 시행된다."
+            ),
+            "link": "https://www.mk.co.kr/news/stock/12107172",
+            "kind": "single_stock_leverage_rule",
+            "core_terms": ("1000만원", "3000만원", "대용증권", "7월 31일"),
+            "view_terms": ("진입비용", "신규수요", "파생수급"),
+        },
+        {
+            "publisher": "머니투데이",
+            "title": '유가 하락에도 반도체 털어낸 시장…"금리·실적부터 보자"[뉴욕마감]',
+            "body": (
+                "뉴욕증시는 국제유가 하락에도 반도체주 급락으로 혼조 마감했다. "
+                "나스닥종합지수는 0.64% 하락했고 필라델피아 반도체지수는 4.3% 급락했다. "
+                "반에크 반도체 상장지수펀드(SMH)는 3.3% 하락했다. "
+                "투자자들은 다음 주 FOMC와 마이크로소프트·메타·애플 실적을 앞두고 차익실현에 나섰다."
+            ),
+            "link": "https://www.mt.co.kr/world/2026/07/25/2026072505495617727",
+            "kind": "global_semiconductor_market_shock",
+            "core_terms": ("나스닥 0.64%", "필라델피아 반도체지수 4.3%", "SMH 3.3%", "FOMC"),
+            "view_terms": ("삼성전자", "SK하이닉스", "외국인 수급"),
+        },
+        {
+            "publisher": "이데일리",
+            "title": "[속보]유가 하락에 S&P500 보합…반도체주 급락에 나스닥 0.6%↓",
+            "body": (
+                "미국 증시는 국제유가 하락에도 반도체주 급락으로 혼조 마감했다. "
+                "나스닥종합지수는 0.64% 하락했고 필라델피아 반도체지수는 4.3% 급락했다. "
+                "반에크 반도체 상장지수펀드(SMH)는 3.3% 하락했다. "
+                "다음 주 FOMC와 빅테크 실적 발표를 앞두고 차익실현이 집중됐다."
+            ),
+            "link": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01485846645518128",
+            "kind": "global_semiconductor_market_shock",
+            "core_terms": ("나스닥 0.64%", "필라델피아 반도체지수 4.3%", "SMH 3.3%", "FOMC"),
+            "view_terms": ("삼성전자", "SK하이닉스", "외국인 수급"),
+        },
+        {
+            "publisher": "헤럴드경제",
+            "title": "“데이터센터·반도체 공장 더 짓자”…AI 열풍에 철강 수요 ‘훈풍’",
+            "body": (
+                "한국철강협회에 따르면 1~5월 형강 내수 판매량은 103만톤으로 전년비 9.7% 늘었다. "
+                "동국제강 2분기 영업이익은 456억원으로 전년비 52.3% 증가했다. "
+                "AI 데이터센터 구축 과정의 철강재 수요는 2030년까지 약 86만톤으로 추정됐다. "
+                "반도체 공장 증설도 형강과 후판 수요를 늘릴 것으로 분석됐다."
+            ),
+            "link": "https://biz.heraldcorp.com/article/10819661?ref=naver",
+            "kind": "ai_infrastructure_steel_demand",
+            "core_terms": ("103만톤", "9.7%", "456억원", "52.3%", "86만톤"),
+            "view_terms": ("착공", "형강", "후판", "이익 추정"),
+        },
+    ]
+    expanded_alerts = []
+    for case in expanded_cases:
+        detail = compact.extract_article_detail(
+            fixture(case["title"], case["body"]),
+            case["title"],
+        )
+        row = {
+            "source": f"{case['publisher']} 고충격 검색",
+            "layer": "trusted",
+            "publisher": case["publisher"],
+            "title": case["title"],
+            "source_title": detail["title"],
+            "source_body": detail["body"],
+            "source_abstract": detail["body"],
+            "summary": detail["body"],
+            "link": case["link"],
+            "published": now,
+            "body_verified": True,
+        }
+        alert = production.contract.strict.classify(row, now)
+        if not alert:
+            errors.append(f"{case['publisher']} expanded high-impact article was not classified: {case['title']}")
+            continue
+        normalized = compact.normalize_alert_for_output(alert)
+        expanded_alerts.append(normalized)
+        if normalized.get("korean_business_kind") != case["kind"]:
+            errors.append(
+                f"{case['publisher']} article selected wrong profile: "
+                f"{normalized.get('korean_business_kind')} != {case['kind']}"
+            )
+        if not compact.source_output_aligned(normalized):
+            errors.append(f"{case['publisher']} expanded article source/output alignment failed")
+        rendered = compact.compact_alert(normalized, 1, now, {}, {})
+        core_line = next((line for line in rendered.splitlines() if line.startswith("- 핵심:")), "")
+        view_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- 투자 포인트:")),
+            "",
+        )
+        for term in case["core_terms"]:
+            if term not in core_line:
+                errors.append(f"{case['publisher']} core omitted {term}: {core_line}")
+        for term in case["view_terms"]:
+            if term not in view_line:
+                errors.append(f"{case['publisher']} investment point omitted {term}: {view_line}")
+
+    market_alerts = [
+        alert
+        for alert in expanded_alerts
+        if alert.get("korean_business_kind") == "global_semiconductor_market_shock"
+    ]
+    if len(market_alerts) == 2:
+        if compact.alert_dedup_key(market_alerts[0]) != compact.alert_dedup_key(market_alerts[1]):
+            errors.append("same US semiconductor market shock did not share an event dedupe key")
+        first_seen_keys = production.telegram.alert_seen_keys(market_alerts[0])
+        second_seen_keys = production.telegram.alert_seen_keys(market_alerts[1])
+        if not set(first_seen_keys).intersection(second_seen_keys):
+            errors.append("same market shock did not share a cross-run seen-state key")
+    leverage_alert = next(
+        (
+            alert
+            for alert in expanded_alerts
+            if alert.get("korean_business_kind") == "single_stock_leverage_rule"
+        ),
+        None,
+    )
+    if leverage_alert:
+        prior_day_coverage = dict(leverage_alert)
+        prior_day_coverage["published"] = (now - dt.timedelta(days=1)).isoformat()
+        if compact.alert_dedup_key(leverage_alert) != compact.alert_dedup_key(prior_day_coverage):
+            errors.append("same effective-date leverage rule repeated across publication dates")
 
     generic_title = "증설은 더딘데 AI 수요는 폭증…삼성전기, MLCC 장기계약 잇달아"
     generic_body = (
@@ -1149,7 +1362,7 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
         errors.append("EUR amount parser did not detect a euro-denominated investment")
     else:
         eur_alert = {
-            "source_abstract": "유럽 공장에 20억 유로를 투자한다.",
+            "telegram_core_fact": "유럽 공장에 20억 유로를 투자한다.",
             "news": "유럽 공장 투자",
         }
         eur_snapshot = {

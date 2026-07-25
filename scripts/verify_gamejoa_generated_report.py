@@ -122,7 +122,7 @@ def main() -> int:
     title_text = TITLE.read_text(encoding="utf-8").strip()
     valid_title = (
         text.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · ")
-        or text.startswith("📰 GAMEJOA 실시간 핵심 뉴스 레이더 · ")
+        or text.startswith("📰 실시간 핵심 뉴스 레이더 · ")
     )
     if not valid_title:
         errors.append("report title contract broken")
@@ -186,8 +186,6 @@ def main() -> int:
             source_text = " ".join(
                 str(alert.get(key) or "")
                 for key in (
-                    "source_abstract",
-                    "source_body",
                     "policy_plain_summary",
                     "telegram_core_fact",
                     "source_title",

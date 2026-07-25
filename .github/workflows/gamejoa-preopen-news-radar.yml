@@ -44,6 +44,7 @@ jobs:
     timeout-minutes: 15
     env:
       RADAR_MAX_AGE_HOURS: "72"
+      RADAR_DISPLAY_LIMIT: "7"
       RADAR_TRENDFORCE_RESEARCH_MAX_AGE_DAYS: "3"
       GAMEJOA_RADAR_SEEN_TTL_DAYS: "14"
       PREOPEN_SEND_WINDOW_START_KST: "05:30"
@@ -52,7 +53,8 @@ jobs:
       RADAR_RUN_MODE: ${{ github.event.inputs.radar_run_mode || 'preopen' }}
       RADAR_FETCH_TIMEOUT_SECONDS: "10"
       RADAR_QUERY_FETCH_WORKERS: "4"
-      GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "36"
+      GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "48"
+      GAMEJOA_KOREAN_BUSINESS_DETAIL_WORKERS: "8"
       KHS_SOURCE_PROXY_URL: https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch
       KHS_SOURCE_PROXY_FIRST: "true"
       KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"

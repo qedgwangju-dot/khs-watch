@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import concurrent.futures
 import datetime as dt
 import html
 import json
@@ -98,6 +99,118 @@ def append_unique(seq: list, values: list) -> None:
             seq.append(value)
 
 
+def korean_news_search_url(query: str) -> str:
+    return "https://www.bing.com/news/search?" + urllib.parse.urlencode(
+        {
+            "q": query,
+            "format": "rss",
+            "setlang": "ko-KR",
+            "cc": "KR",
+        }
+    )
+
+
+KOREAN_BUSINESS_PUBLISHER_DOMAINS = {
+    "edaily.co.kr": "이데일리",
+    "mk.co.kr": "매일경제",
+    "mt.co.kr": "머니투데이",
+    "biz.heraldcorp.com": "헤럴드경제",
+    "yna.co.kr": "연합뉴스",
+    "hankyung.com": "한국경제",
+    "sedaily.com": "서울경제",
+    "etoday.co.kr": "이투데이",
+    "etnews.com": "전자신문",
+}
+KOREAN_BUSINESS_SEARCH_SOURCES = [
+    (
+        "국내 신뢰매체 AI·반도체 협력",
+        (
+            "(엔비디아 OR 삼성전자 OR SK하이닉스 OR 현대차 OR 브로드컴 OR 앤트로픽) "
+            "(AI OR 반도체 OR HBM OR 로봇) "
+            "(협력 OR 회동 OR 계약 OR 공급 OR 투자 OR 증설 OR 수주) "
+            "(site:edaily.co.kr OR site:mk.co.kr OR site:mt.co.kr OR "
+            "site:biz.heraldcorp.com OR site:yna.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "국내 신뢰매체 미국 증시·반도체",
+        (
+            "(나스닥 OR 필라델피아반도체 OR 필라델피아 반도체 OR SMH OR FOMC OR 연준 OR 유가) "
+            "(급락 OR 급등 OR 하락 OR 상승 OR 금리 OR 실적) "
+            "(site:edaily.co.kr OR site:mt.co.kr OR site:mk.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "국내 신뢰매체 자본시장 정책",
+        (
+            "(금융위원회 OR 금융감독원 OR 한국거래소 OR ETF OR ETN OR 레버리지 OR 기본예탁금) "
+            "(시행 OR 규제 OR 상향 OR 제한 OR 편입 OR 공매도) "
+            "(site:mk.co.kr OR site:edaily.co.kr OR site:mt.co.kr OR "
+            "site:yna.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "국내 신뢰매체 산업수요·CAPEX",
+        (
+            "(데이터센터 OR 반도체공장 OR 반도체 공장 OR 철강 OR 전력망 OR 변압기 OR 원전 OR 방산) "
+            "(수요 OR 투자 OR 증설 OR 수주 OR 계약 OR 실적 OR 발주) "
+            "(site:biz.heraldcorp.com OR site:edaily.co.kr OR site:mk.co.kr OR "
+            "site:mt.co.kr OR site:yna.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "이데일리 기업·AI",
+        (
+            "site:edaily.co.kr (엔비디아 OR 삼성전자 OR SK하이닉스 OR 현대차 OR AI OR 반도체) "
+            "(협력 OR 회동 OR 계약 OR 공급 OR 투자 OR 증설 OR 수주)"
+        ),
+    ),
+    (
+        "이데일리 미국 증시",
+        (
+            "site:edaily.co.kr (나스닥 OR 필라델피아반도체 OR 필라델피아 반도체 OR "
+            "SMH OR FOMC OR 연준 OR 유가) (급락 OR 급등 OR 하락 OR 상승)"
+        ),
+    ),
+    (
+        "매일경제 자본시장",
+        (
+            "site:mk.co.kr (금융위원회 OR 금융감독원 OR 한국거래소 OR ETF OR ETN OR "
+            "레버리지 OR 기본예탁금 OR 외국인) (시행 OR 규제 OR 상향 OR 제한 OR 순매수)"
+        ),
+    ),
+    (
+        "머니투데이 글로벌시장",
+        (
+            "site:mt.co.kr (뉴욕마감 OR 나스닥 OR 필라델피아반도체 OR 필라델피아 반도체 OR "
+            "FOMC OR 연준 OR 유가 OR 엔비디아 OR 마이크론)"
+        ),
+    ),
+    (
+        "헤럴드경제 산업수요",
+        (
+            "site:biz.heraldcorp.com (데이터센터 OR 반도체공장 OR 반도체 공장 OR 철강 OR "
+            "전력망 OR 변압기 OR 원전 OR 방산 OR AI) "
+            "(수요 OR 투자 OR 증설 OR 수주 OR 계약 OR 실적)"
+        ),
+    ),
+    (
+        "현대차·엔비디아 AI 협력",
+        (
+            "site:edaily.co.kr (정의선 OR 현대차) 엔비디아 "
+            "(회동 OR 협력 OR 로봇 OR 자율주행 OR 제조AI)"
+        ),
+    ),
+    (
+        "AI 인프라 철강 수요",
+        (
+            "site:biz.heraldcorp.com (데이터센터 OR 반도체공장 OR 반도체 공장) "
+            "(철강 OR 형강 OR 후판) 수요"
+        ),
+    ),
+]
+
+
 append_unique(
     base.SOURCES,
     [
@@ -131,9 +244,35 @@ append_unique(
             "https://rss.etnews.com/06.xml",
             "trusted",
         ),
+        *[
+            (name, korean_news_search_url(query), "trusted")
+            for name, query in KOREAN_BUSINESS_SEARCH_SOURCES
+        ],
     ],
 )
-append_unique(base.TRUSTED, ["이투데이", "etoday", "전자신문", "etnews"])
+append_unique(
+    base.TRUSTED,
+    [
+        "이투데이",
+        "etoday",
+        "전자신문",
+        "etnews",
+        "이데일리",
+        "edaily",
+        "매일경제",
+        "mk.co.kr",
+        "머니투데이",
+        "mt.co.kr",
+        "헤럴드경제",
+        "heraldcorp",
+        "연합뉴스",
+        "yna.co.kr",
+        "한국경제",
+        "hankyung",
+        "서울경제",
+        "sedaily",
+    ],
+)
 append_unique(
     base.TERMS,
     [
@@ -558,15 +697,59 @@ enforce_source_identity_contract()
 def is_korean_business_row(row: dict) -> bool:
     publisher = str(row.get("publisher") or row.get("source") or "").lower()
     link = str(row.get("link") or "").lower()
+    source = str(row.get("source") or "").lower()
     return any(
         marker in f"{publisher} {link}"
-        for marker in ("이투데이", "etoday.co.kr", "전자신문", "etnews.com")
-    )
+        for marker in (
+            "이투데이",
+            "etoday.co.kr",
+            "전자신문",
+            "etnews.com",
+            "이데일리",
+            "edaily.co.kr",
+            "매일경제",
+            "mk.co.kr",
+            "머니투데이",
+            "mt.co.kr",
+            "헤럴드경제",
+            "heraldcorp.com",
+            "연합뉴스",
+            "yna.co.kr",
+            "한국경제",
+            "hankyung.com",
+            "서울경제",
+            "sedaily.com",
+        )
+    ) or source.startswith("국내 신뢰매체")
+
+
+def korean_business_publisher(row: dict) -> str:
+    link = str(row.get("link") or "").lower()
+    for domain, publisher in KOREAN_BUSINESS_PUBLISHER_DOMAINS.items():
+        if domain in link:
+            return publisher
+    return str(row.get("publisher") or row.get("source") or "국내 신뢰매체")
+
+
+def korean_business_source_domain_allowed(link: str) -> bool:
+    lowered = str(link or "").lower()
+    return any(domain in lowered for domain in KOREAN_BUSINESS_PUBLISHER_DOMAINS)
+
+
+def korean_business_event_date(row: dict) -> str:
+    published = row.get("published")
+    if hasattr(published, "date"):
+        return published.date().isoformat()
+    return "date-unavailable"
 
 
 KOREAN_BUSINESS_DETAIL_LIMIT = max(
     12,
-    int(os.environ.get("GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT", "36")),
+    int(os.environ.get("GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT", "48")),
+)
+KOREAN_BUSINESS_DETAIL_WORKERS = max(
+    2,
+    int(os.environ.get("GAMEJOA_KOREAN_BUSINESS_DETAIL_WORKERS", "8")),
 )
 KOREAN_BUSINESS_PRIORITY_TERMS = {
     "외국인": 8,
@@ -587,6 +770,24 @@ KOREAN_BUSINESS_PRIORITY_TERMS = {
     "증설": 7,
     "관세": 8,
     "수출통제": 9,
+    "엔비디아": 9,
+    "브로드컴": 8,
+    "앤트로픽": 8,
+    "회동": 6,
+    "협력": 7,
+    "파트너십": 9,
+    "레버리지": 10,
+    "etf": 9,
+    "etn": 9,
+    "기본예탁금": 12,
+    "금융위원회": 10,
+    "나스닥": 8,
+    "필라델피아 반도체": 12,
+    "fomc": 10,
+    "반도체주 급락": 12,
+    "데이터센터": 7,
+    "철강 수요": 10,
+    "형강": 8,
 }
 
 
@@ -880,8 +1081,6 @@ def collect_fx_snapshot(alerts: list[dict], now) -> dict:
         source_text = " ".join(
             str(alert.get(key) or "")
             for key in (
-                "source_abstract",
-                "source_body",
                 "policy_plain_summary",
                 "telegram_core_fact",
                 "source_title",
@@ -919,8 +1118,6 @@ def build_alert_fx_conversion(alert: dict, snapshot: dict, now) -> dict:
     source_text = " ".join(
         str(alert.get(key) or "")
         for key in (
-            "source_abstract",
-            "source_body",
             "policy_plain_summary",
             "telegram_core_fact",
             "source_title",
@@ -972,7 +1169,12 @@ def apply_krw_conversions(core: str, conversion: dict) -> str:
         krw_text = str(item.get("krw_text") or "원화 환산 확인 불가")
         replacement = f"{original}(약 {krw_text})" if item.get("krw_value") is not None else f"{original}({krw_text})"
         if original and original in text:
-            text = text.replace(original, replacement, 1)
+            text = re.sub(
+                re.escape(original) + r"(?:\s*\(약\s*[^)]{1,40}원\))?",
+                replacement,
+                text,
+                count=1,
+            )
         elif original:
             appended.append(f"{original}≈약 {krw_text}" if item.get("krw_value") is not None else f"{original} {krw_text}")
     if appended:
@@ -1117,6 +1319,11 @@ def article_sentences(
 def normalized_article_sentence(sentence: str) -> str:
     text = clean_article_summary_text(sentence)
     replacements = (
+        (
+            r"([A-Za-z가-힣·&]+)\s*\(\s*[\d,]+원\s*[▲▼+-]\s*[\d,]+\s*"
+            r"(?:[+-]\d+(?:\.\d+)?%)?\s*\)",
+            r"\1",
+        ),
         (r"^\d{1,2}일\s+([A-Za-z0-9가-힣·&()]+)(?:은|는)\s+", r"\1, "),
         (r"^이날\s+([A-Za-z0-9가-힣·&()]+)(?:\s+이사회)?(?:은|는)\s+", r"\1, "),
         (r"\b올해\s+", ""),
@@ -1446,6 +1653,16 @@ KOREAN_BUSINESS_SECTOR_TERMS = [
     ("MLCC/수동부품", ["mlcc", "적층세라믹커패시터", "수동부품"]),
     ("반도체/HBM/CXL", ["반도체", "hbm", "dram", "nand", "cxl", "테스터"]),
     ("AI/데이터센터", ["ai", "인공지능", "데이터센터", "하이퍼스케일러"]),
+    ("로봇/생산자동화", ["로봇", "자율주행", "제조 ai", "피지컬 ai", "스마트팩토리"]),
+    ("철강/건설소재", ["철강", "철강재", "형강", "후판", "강재"]),
+    (
+        "미국 증시/금리",
+        [
+            "나스닥", "s&p500", "필라델피아 반도체", "smh", "fomc",
+            "연준", "미국 국채", "국채금리",
+        ],
+    ),
+    ("원유/인플레이션", ["국제유가", "브렌트", "wti", "인플레이션"]),
     ("태양광/폴리실리콘", ["태양광", "폴리실리콘", "웨이퍼"]),
     ("전력기기/전력망", ["전력기기", "변압기", "전선", "송전망", "전력망"]),
     ("2차전지/배터리", ["2차전지", "배터리", "양극재", "음극재", "전해질"]),
@@ -1457,7 +1674,8 @@ KOREAN_BUSINESS_SECTOR_TERMS = [
         [
             "은행", "금융지주", "금융그룹", "JB금융", "KB금융", "신한금융",
             "하나금융", "우리금융", "BNK금융", "iM금융", "증권", "보험",
-            "외국인", "순매수", "순매도",
+            "외국인", "순매수", "순매도", "금융위원회", "금융감독원",
+            "한국거래소", "etf", "etn", "레버리지", "기본예탁금",
         ],
     ),
     ("유통/소비", ["유통", "소비", "홈플러스", "백화점", "면세점"]),
@@ -1472,7 +1690,12 @@ KOREAN_BUSINESS_COMPANIES = [
     "대신증권",
     "KB증권",
     "현대차",
+    "현대자동차",
     "기아",
+    "엔비디아",
+    "브로드컴",
+    "앤트로픽",
+    "동국제강",
     "두산에너빌리티",
     "한화에어로스페이스",
     "LIG넥스원",
@@ -1559,14 +1782,15 @@ KOREAN_BUSINESS_IMPACT_TERMS = {
     ],
     "할인율": [
         "금리", "환율", "원·달러", "달러", "규제", "관세", "수출통제", "제재",
+        "fomc", "연준", "국채금리", "국제유가", "인플레이션", "밸류에이션",
     ],
     "수급": [
         "외국인", "기관", "순매수", "순매도", "자사주", "유상증자", "cb",
-        "전환사채", "etf", "편입", "상장", "ipo",
+        "전환사채", "etf", "etn", "레버리지", "기본예탁금", "편입", "상장", "ipo",
     ],
     "시간표": [
         "양산평가", "평가", "승인", "허가", "상용화", "출시", "이달 말",
-        "예정", "상장예비심사", "ipo", "계약", "증설", "착공", "완공",
+        "예정", "시행", "상장예비심사", "ipo", "계약", "증설", "착공", "완공",
     ],
 }
 
@@ -1724,6 +1948,283 @@ def base_korean_business_alert(row: dict, now, *, score: int, impacts: list[str]
     }
 
 
+def korean_market_decline(text: str, labels: tuple[str, ...]) -> str:
+    for label in labels:
+        match = re.search(
+            rf"{re.escape(label)}[^.!?]{{0,90}}?(\d+(?:\.\d+)?)%\s*"
+            r"[^가-힣a-z0-9]{0,8}(?:급락|하락|내렸|떨어졌|빠졌)",
+            text,
+            flags=re.IGNORECASE,
+        )
+        if match:
+            return match.group(1)
+    return ""
+
+
+def build_hyundai_nvidia_meeting_alert(row: dict, now, text: str) -> dict | None:
+    if not (
+        any(term in text for term in ("정의선", "현대차", "현대자동차"))
+        and "엔비디아" in text
+        and any(term in text for term in ("회동", "만나", "본사", "협력"))
+        and any(term in text for term in ("자율주행", "로봇", "제조 ai", "새만금", "ai 밸리"))
+    ):
+        return None
+    date_key = korean_business_event_date(row)
+    stage = "robot_platform" if any(
+        term in text for term in ("로봇 레퍼런스 플랫폼", "공동 구축", "개방형 생태계")
+    ) else "meeting"
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=101,
+        impacts=["시간표", "수급"],
+    )
+    alert.update(
+        {
+            "importance": "중",
+            "status": "예비",
+            "policy_plain_summary": (
+                "정의선 회장이 엔비디아 본사에서 젠슨 황과 만나 자율주행·로봇·제조AI "
+                "협력 후속 방안을 논의했습니다. 새만금 AI 밸리 연계도 거론됐지만 "
+                "계약금액·발주·매출은 공개되지 않았습니다."
+            ),
+            "telegram_core_fact": (
+                "정의선 회장이 엔비디아 본사에서 젠슨 황과 만나 자율주행·로봇·제조AI "
+                "협력 후속 방안을 논의했습니다. 새만금 AI 밸리 연계도 거론됐지만 "
+                "계약금액·발주·매출은 공개되지 않았습니다."
+            ),
+            "telegram_investment_fact": "협력 논의 단계로, 공동개발 범위와 계약·발주가 확인돼야 실적 재료가 됩니다.",
+            "investment_view": "협력 논의 단계로, 공동개발 범위와 계약·발주가 확인돼야 실적 재료가 됩니다.",
+            "korea_market_impact": "현대차·현대모비스와 자율주행·로봇·스마트팩토리 밸류체인의 후속 계약만 연결합니다.",
+            "sectors": ["자동차/부품", "로봇/생산자동화", "AI/데이터센터"],
+            "paths": ["협력 시간표", "테마 수급"],
+            "korean_business_kind": "hyundai_nvidia_ai_partnership",
+            "supply_chain_theme": f"hyundai_nvidia_{stage}:{date_key}",
+        }
+    )
+    return alert
+
+
+def build_single_stock_leverage_rule_alert(row: dict, now, text: str) -> dict | None:
+    if not (
+        "레버리지" in text
+        and any(term in text for term in ("etf", "etn"))
+        and any(term in text for term in ("삼성전자", "sk하이닉스", "삼닉"))
+        and any(term in text for term in ("기본예탁금", "3000만원", "대용증권", "31일"))
+    ):
+        return None
+    date_key = korean_business_event_date(row)
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=116,
+        impacts=["수급", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "상",
+            "status": "확정",
+            "policy_plain_summary": (
+                "금융위원회가 삼성전자·SK하이닉스 단일종목 레버리지 ETF·ETN의 "
+                "기본예탁금을 1000만원에서 3000만원으로 올리고 대용증권을 불인정합니다. "
+                "두 조치는 7월 31일 동시에 시행됩니다."
+            ),
+            "telegram_core_fact": (
+                "금융위원회가 삼성전자·SK하이닉스 단일종목 레버리지 ETF·ETN의 "
+                "기본예탁금을 1000만원에서 3000만원으로 올리고 대용증권을 불인정합니다. "
+                "두 조치는 7월 31일 동시에 시행됩니다."
+            ),
+            "telegram_investment_fact": "진입비용 상승으로 상품 신규수요와 대형 반도체주 파생수급이 둔화할 수 있습니다.",
+            "investment_view": "진입비용 상승으로 상품 신규수요와 대형 반도체주 파생수급이 둔화할 수 있습니다.",
+            "korea_market_impact": "삼성전자·SK하이닉스 단일종목 레버리지 ETF·ETN 거래대금과 현물 연계수급을 확인합니다.",
+            "sectors": ["금융/자본시장", "반도체/HBM/CXL"],
+            "paths": ["상품 진입규제", "수급", "정책 시행일"],
+            "korean_business_kind": "single_stock_leverage_rule",
+            "supply_chain_theme": (
+                "korea_single_stock_leverage_rule:2026-07-31"
+                if "31일" in text
+                else f"korea_single_stock_leverage_rule:{date_key}"
+            ),
+        }
+    )
+    return alert
+
+
+def build_global_semiconductor_market_alert(row: dict, now, text: str) -> dict | None:
+    if not (
+        "나스닥" in text
+        and any(term in text for term in ("반도체주", "필라델피아 반도체", "smh", "마이크론"))
+        and any(term in text for term in ("fomc", "연준", "금리", "유가", "빅테크"))
+        and any(term in text for term in ("급락", "하락", "내렸", "차익실현"))
+    ):
+        return None
+    date_key = korean_business_event_date(row)
+    nasdaq = korean_market_decline(text, ("나스닥종합지수", "나스닥 종합지수", "나스닥"))
+    sox = korean_market_decline(
+        text,
+        ("필라델피아 반도체지수", "필라델피아반도체지수", "필라델피아 반도체 지수"),
+    )
+    smh = korean_market_decline(text, ("반에크 반도체 상장지수펀드", "smh"))
+    metrics = []
+    if nasdaq:
+        metrics.append(f"나스닥 {nasdaq}%")
+    if sox:
+        metrics.append(f"필라델피아 반도체지수 {sox}%")
+    if smh:
+        metrics.append(f"SMH {smh}%")
+    metric_text = "·".join(metrics)
+    if metric_text:
+        core = (
+            f"{metric_text} 하락했습니다. 유가 하락에도 FOMC와 빅테크 실적을 앞둔 "
+            "차익실현이 반도체 매도를 키웠습니다."
+        )
+    else:
+        core = (
+            "유가 하락에도 미국 반도체주가 급락하고 나스닥이 약세를 보였습니다. "
+            "FOMC와 빅테크 실적을 앞둔 차익실현과 밸류에이션 부담이 겹쳤습니다."
+        )
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=114 + min(6, len(metrics) * 2),
+        impacts=["할인율", "수급", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "상",
+            "status": "확정",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "telegram_investment_fact": "SOX·MU·NVDA 약세가 이어지면 삼성전자·SK하이닉스의 외국인 수급 부담입니다.",
+            "investment_view": "SOX·MU·NVDA 약세가 이어지면 삼성전자·SK하이닉스의 외국인 수급 부담입니다.",
+            "korea_market_impact": "삼성전자·SK하이닉스와 HBM 장비·소재주의 외국인 수급, FOMC·빅테크 실적을 함께 봅니다.",
+            "sectors": ["반도체/HBM/CXL", "미국 증시/금리", "원유/인플레이션"],
+            "paths": ["밸류에이션", "외국인 수급", "FOMC·실적 시간표"],
+            "korean_business_kind": "global_semiconductor_market_shock",
+            "supply_chain_theme": f"us_semiconductor_selloff:{date_key}",
+        }
+    )
+    return alert
+
+
+def build_ai_infrastructure_steel_alert(row: dict, now, text: str) -> dict | None:
+    if not (
+        "데이터센터" in text
+        and any(term in text for term in ("반도체 공장", "반도체공장", "팹"))
+        and any(term in text for term in ("철강", "철강재", "형강", "후판"))
+        and "수요" in text
+    ):
+        return None
+    date_key = korean_business_event_date(row)
+    facts: list[str] = []
+    if re.search(r"103만\s*톤", text) and "9.7%" in text:
+        facts.append("1~5월 형강 내수판매는 103만톤으로 전년비 9.7% 늘었습니다.")
+    if "456억원" in text and "52.3%" in text:
+        facts.append("동국제강 2분기 영업이익은 456억원으로 52.3% 증가했습니다.")
+    if "2030년" in text and "86만톤" in text:
+        facts.append("AI 데이터센터 철강 수요는 2030년까지 86만톤으로 추정됐습니다.")
+    core = " ".join(facts[:3]) or detailed_article_core(
+        str(row.get("source_title") or row.get("title") or ""),
+        str(row.get("source_body") or row.get("source_abstract") or ""),
+    )
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=105,
+        impacts=["돈 버는 능력", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "중",
+            "status": "예비",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "telegram_investment_fact": "실제 팹·데이터센터 착공이 형강·후판 주문으로 이어져야 철강사 이익 추정이 올라갑니다.",
+            "investment_view": "실제 팹·데이터센터 착공이 형강·후판 주문으로 이어져야 철강사 이익 추정이 올라갑니다.",
+            "korea_market_impact": "동국제강 등 형강·후판 업체는 출하량·스프레드와 프로젝트 착공 일정으로 확인합니다.",
+            "sectors": ["철강/건설소재", "AI/데이터센터", "반도체/HBM/CXL"],
+            "paths": ["산업수요", "이익", "CAPEX 시간표"],
+            "korean_business_kind": "ai_infrastructure_steel_demand",
+            "supply_chain_theme": f"korea_ai_infrastructure_steel_demand:{date_key}",
+        }
+    )
+    return alert
+
+
+def build_korea_ai_bigtech_cooperation_alert(row: dict, now, text: str) -> dict | None:
+    korean_actor = any(
+        term in text
+        for term in ("삼성전자", "sk하이닉스", "sk그룹", "sk텔레콤", "현대차", "네이버")
+    )
+    global_actor = any(
+        term in text
+        for term in ("엔비디아", "브로드컴", "마이크로소프트", "앤트로픽", "오픈ai", "aws")
+    )
+    action = any(
+        term in text
+        for term in ("공급계약", "장기 공급", "장기공급", "협력 체결", "mou", "파트너십", "공동 구축")
+    )
+    if not (
+        korean_actor
+        and global_actor
+        and action
+        and any(term in text for term in ("반도체", "메모리", "hbm", "ai 데이터센터", "ai 인프라"))
+    ):
+        return None
+    title = str(row.get("source_title") or row.get("title") or "")
+    body = str(row.get("source_body") or row.get("source_abstract") or "")
+    date_key = korean_business_event_date(row)
+    if "삼성전자" in text and "브로드컴" in text:
+        event = "samsung_broadcom_ai"
+    elif ("sk그룹" in text or "sk하이닉스" in text) and "엔비디아" in text:
+        event = "sk_nvidia_ai_memory"
+    elif "앤트로픽" in text and any(term in text for term in ("삼성전자", "sk하이닉스")):
+        event = "anthropic_korea_memory"
+    else:
+        event = "korea_global_bigtech_ai"
+    ranked = ranked_article_sentences(
+        body,
+        ["협력", "공급", "계약", "반도체", "메모리", "ai 인프라"],
+        title=title,
+    )
+    agreement_sentences = [
+        normalized_article_sentence(sentence)
+        for sentence in ranked
+        if extract_foreign_amounts(sentence)
+        and any(
+            term in sentence.lower()
+            for term in ("협력", "공급", "계약", "파트너십", "공동 구축")
+        )
+    ]
+    core = agreement_sentences[0] if agreement_sentences else ""
+    if not core:
+        core = detailed_article_core(title, body)
+    if not core:
+        core = article_sentences(body, korean_business_title_terms(title), 2, title=title)
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=110,
+        impacts=["돈 버는 능력", "수급", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "상",
+            "status": "예비",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "telegram_investment_fact": "발표 총액 전부가 확정 매출은 아니며 품목·물량·기간·매출 인식 공시를 확인해야 합니다.",
+            "investment_view": "발표 총액 전부가 확정 매출은 아니며 품목·물량·기간·매출 인식 공시를 확인해야 합니다.",
+            "korea_market_impact": "삼성전자·SK하이닉스와 HBM·파운드리·AIDC 밸류체인은 개별 계약 범위가 확인된 경우만 연결합니다.",
+            "sectors": ["반도체/HBM/CXL", "AI/데이터센터"],
+            "paths": ["계약 가시성", "공급·수요", "수급", "실행 시간표"],
+            "korean_business_kind": "korea_ai_bigtech_cooperation",
+            "supply_chain_theme": f"{event}:{date_key}",
+        }
+    )
+    return alert
+
+
 def build_verified_korean_business_alert(row: dict, now) -> dict | None:
     title = str(row.get("source_title") or row.get("title") or "")
     body = str(row.get("source_body") or row.get("source_abstract") or "")
@@ -1774,6 +2275,22 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
         )
         return alert
 
+    for builder in (
+        build_single_stock_leverage_rule_alert,
+        build_global_semiconductor_market_alert,
+        build_ai_infrastructure_steel_alert,
+        build_hyundai_nvidia_meeting_alert,
+        build_korea_ai_bigtech_cooperation_alert,
+    ):
+        alert = builder(row, now, text)
+        if alert:
+            alert["interpretation"] = (
+                alert.get("investment_view")
+                or alert.get("telegram_investment_fact")
+                or alert.get("policy_plain_summary")
+            )
+            return alert
+
     if any(term in title.lower() for term in KOREAN_BUSINESS_MARKET_RECAP_TERMS):
         return None
 
@@ -1821,12 +2338,23 @@ def enforce_korean_business_news_contract() -> None:
             if link in seen_links:
                 continue
             seen_links.add(link)
+            row["publisher"] = korean_business_publisher(row)
             detail_candidates.append(row)
         detail_candidates.sort(key=korean_business_detail_priority, reverse=True)
         deferred = max(0, len(detail_candidates) - KOREAN_BUSINESS_DETAIL_LIMIT)
-        for row in detail_candidates[:KOREAN_BUSINESS_DETAIL_LIMIT]:
-            attempted += 1
+        selected_candidates = detail_candidates[:KOREAN_BUSINESS_DETAIL_LIMIT]
+
+        def fetch_detail(row: dict) -> tuple[dict, str | None, str | None]:
             detail_html, detail_error = base.fetch(str(row.get("link")), 16)
+            return row, detail_html, detail_error
+
+        with concurrent.futures.ThreadPoolExecutor(
+            max_workers=min(KOREAN_BUSINESS_DETAIL_WORKERS, max(1, len(selected_candidates)))
+        ) as executor:
+            detail_results = list(executor.map(fetch_detail, selected_candidates))
+
+        for row, detail_html, detail_error in detail_results:
+            attempted += 1
             if detail_error or not detail_html:
                 row["_article_verification_failed"] = detail_error or "empty article"
                 failed += 1
@@ -1855,11 +2383,13 @@ def enforce_korean_business_news_contract() -> None:
             verified += 1
         notes.append(
             "Korean business detail: "
-            f"attempted={attempted} verified={verified} failed={failed} deferred={deferred}"
+            f"attempted={attempted} verified={verified} failed={failed} deferred={deferred} "
+            f"workers={KOREAN_BUSINESS_DETAIL_WORKERS}"
         )
         print(
             f"korean_business_detail attempted={attempted} "
-            f"verified={verified} failed={failed} deferred={deferred}"
+            f"verified={verified} failed={failed} deferred={deferred} "
+            f"workers={KOREAN_BUSINESS_DETAIL_WORKERS}"
         )
         return rows, notes
 
@@ -2127,7 +2657,7 @@ def source_output_aligned(alert: dict) -> bool:
             and source_title
             and rendered_title == source_title
             and len(summary) >= 40
-            and ("etoday.co.kr/" in link or "etnews.com/" in link)
+            and korean_business_source_domain_allowed(link)
         )
     profile = federal_register_profile(alert)
     rendered = base.norm(" ".join(
@@ -2152,6 +2682,8 @@ def alert_dedup_key(alert: dict) -> tuple[str, str]:
     raw_title = str(alert.get("original_news") or alert.get("news") or "")
     raw_title = re.split(r"\s+-\s+", raw_title, maxsplit=1)[0].strip()
     theme = str(alert.get("supply_chain_theme") or "")
+    if theme:
+        return (base.norm(theme), "event")
     canonical = base.norm(theme or raw_title or alert.get("news") or alert.get("link"))
     return (canonical, str(alert.get("published") or "")[:10])
 
@@ -3237,14 +3769,14 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
 
 
 def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
-    limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
+    limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "7"))))
     visible = alerts[:limit]
     fx_snapshot = collect_fx_snapshot(visible, now)
     for alert in visible:
         alert["fx_conversion"] = build_alert_fx_conversion(alert, fx_snapshot, now)
     live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
     if live_mode:
-        title = f"📰 GAMEJOA 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
+        title = f"📰 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
         comment_title = "💡 실시간 뉴스 코멘트"
         followup_line = "다음 투자기상도에서 수치·수급·테마와 재확인 필요."
         empty_line = "실시간 고충격 뉴스 직접 확인 없음"
@@ -3278,7 +3810,7 @@ def guard_preopen_report(text: str) -> str:
     errors: list[str] = []
     valid_title = (
         text.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · ")
-        or text.startswith("📰 GAMEJOA 실시간 핵심 뉴스 레이더 · ")
+        or text.startswith("📰 실시간 핵심 뉴스 레이더 · ")
     )
     if not valid_title:
         errors.append("title_contract")

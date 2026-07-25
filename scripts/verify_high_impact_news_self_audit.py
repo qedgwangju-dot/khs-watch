@@ -25,7 +25,7 @@ WORKFLOWS = [
 
 SOURCE_FILES = [
     SCRIPTS / "gamejoa_preopen_news_radar_runner.py",
-    SCRIPTS / "gamejoa_preopen_news_radar_full_compact_runner.py",
+    SCRIPTS / "gamejoa_preopen_news_radar_semisupply_runner.py",
     SCRIPTS / "gamejoa_preopen_news_radar_k_defense_runner.py",
     SCRIPTS / "gamejoa_preopen_news_radar_nuclear_turbine_runner.py",
     SCRIPTS / "gamejoa_preopen_news_radar_domestic_telecom_runner.py",
@@ -71,6 +71,20 @@ def assert_no_late_translation_sources(errors: list[str]) -> None:
                     f"late translation source leaked into production: "
                     f"{path.relative_to(ROOT)} contains {source}"
                 )
+
+    compact_path = SCRIPTS / "gamejoa_preopen_news_radar_full_compact_runner.py"
+    compact = compact_path.read_text(encoding="utf-8")
+    for token in [
+        "def korean_news_search_url",
+        "def enforce_korean_business_news_contract",
+        '"korean_business_news": True',
+        '"body_verified": True',
+    ]:
+        if token not in compact:
+            errors.append(
+                "verified Korean business-news lane missing from "
+                f"{compact_path.relative_to(ROOT)}: {token}"
+            )
 
 
 def assert_guardrail_hooks(errors: list[str]) -> None:

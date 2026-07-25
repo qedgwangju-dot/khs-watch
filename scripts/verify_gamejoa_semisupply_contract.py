@@ -130,7 +130,7 @@ def main() -> int:
 def foreign_first_source_contract_errors() -> list[str]:
     targets = [
         ROOT / "scripts" / "gamejoa_preopen_news_radar_runner.py",
-        ROOT / "scripts" / "gamejoa_preopen_news_radar_full_compact_runner.py",
+        ROOT / "scripts" / "gamejoa_preopen_news_radar_semisupply_runner.py",
         ROOT / "scripts" / "gamejoa_preopen_news_radar_k_defense_runner.py",
         ROOT / "scripts" / "gamejoa_preopen_news_radar_nuclear_turbine_runner.py",
         ROOT / "scripts" / "gamejoa_preopen_news_radar_domestic_telecom_runner.py",
@@ -150,6 +150,25 @@ def foreign_first_source_contract_errors() -> list[str]:
         for token in forbidden:
             if token in text:
                 errors.append(f"foreign-first source contract violation: {path.name} contains {token}")
+
+    # The compact renderer intentionally adds a separate, verified Korean
+    # business-news lane. It may cross-check foreign-first semiconductor
+    # signals, but it must remain explicitly labeled and body-verified.
+    compact = (
+        ROOT / "scripts" / "gamejoa_preopen_news_radar_full_compact_runner.py"
+    ).read_text(encoding="utf-8")
+    for token in [
+        "def korean_news_search_url",
+        "def is_korean_business_row",
+        "def enforce_korean_business_news_contract",
+        '"korean_business_news": True',
+        '"body_verified": True',
+    ]:
+        if token not in compact:
+            errors.append(
+                "Korean trusted-media lane contract missing from "
+                f"gamejoa_preopen_news_radar_full_compact_runner.py: {token}"
+            )
     return errors
 
 

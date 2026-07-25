@@ -82,6 +82,10 @@ def alert_seen_keys(alert: dict) -> list[str]:
     link = str(canonical.get("link") or alert.get("link") or "")
     if "news.google.com/rss/articles" not in link:
         add("link", link)
+    add(
+        "event",
+        str(canonical.get("supply_chain_theme") or alert.get("supply_chain_theme") or ""),
+    )
     add("title", str(canonical.get("news") or alert.get("news") or ""))
     add("original", str(canonical.get("original_news") or alert.get("original_news") or ""))
     return list(dict.fromkeys(keys))
@@ -434,11 +438,11 @@ def compact_alert(alert: dict, idx: int, now) -> str:
 
 
 def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
-    limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
+    limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "7"))))
     visible = display_alerts(alerts, limit)
     live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
     if live_mode:
-        title = f"실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
+        title = f"📰 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
         comment_title = "💡 실시간 뉴스 코멘트"
         followup_line = "다음 투자기상도에서 수치·수급·테마와 재확인 필요."
         empty_line = "실시간 고충격 뉴스 직접 확인 없음"
@@ -512,7 +516,7 @@ def main() -> int:
             seen.add(key)
 
     deduped.sort(key=lambda a: (-a["score"], a["published"]))
-    limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "5"))))
+    limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "7"))))
     final_alerts = final_alerts_for_output(deduped, limit)
     diagnostics = selection_diagnostics(rows, notes, classified, skipped_seen, deduped, final_alerts, live_mode)
     print(
