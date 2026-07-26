@@ -45,7 +45,7 @@ jobs:
       RADAR_RUN_MODE: ${{ github.event.inputs.radar_run_mode || 'live' }}
       RADAR_FETCH_TIMEOUT_SECONDS: "10"
       RADAR_QUERY_FETCH_WORKERS: "4"
-      GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "48"
+      GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "72"
       GAMEJOA_KOREAN_BUSINESS_DETAIL_WORKERS: "8"
       KHS_SOURCE_PROXY_URL: https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch
       KHS_SOURCE_PROXY_FIRST: "true"
