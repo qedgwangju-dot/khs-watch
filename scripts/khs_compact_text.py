@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 """Shared compact prose helpers for Telegram alerts."""
 
