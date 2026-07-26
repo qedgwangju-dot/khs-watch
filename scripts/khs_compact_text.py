@@ -36,10 +36,11 @@ def _complete_sentence(text: str, limit: int) -> str:
 def _bounded_excerpt(text: str, limit: int) -> str:
     if len(text) <= limit:
         return text
-    if limit <= 1:
-        return "…"[:limit]
+    suffix = "입니다."
+    if limit <= len(suffix):
+        return suffix[:limit]
 
-    room = limit - 1
+    room = limit - len(suffix)
     head = text[:room].rstrip()
     minimum_boundary = max(8, int(room * 0.55))
     boundary = max(
@@ -53,7 +54,7 @@ def _bounded_excerpt(text: str, limit: int) -> str:
     )
     if boundary >= minimum_boundary:
         head = head[:boundary].rstrip(" ,·/|;:")
-    return head.rstrip() + "…"
+    return head.rstrip(" ,·/|;:.") + suffix
 
 
 def concise_text(
