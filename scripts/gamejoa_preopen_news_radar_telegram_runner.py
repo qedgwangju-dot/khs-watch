@@ -443,8 +443,6 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
     if live_mode:
         title = f"📰 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
-        comment_title = "💡 실시간 뉴스 코멘트"
-        followup_line = "다음 투자기상도에서 수치·수급·테마와 재확인 필요."
         empty_line = "실시간 고충격 뉴스 직접 확인 없음"
     else:
         title = f"장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
@@ -459,14 +457,17 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     else:
         lines += [empty_line, ""]
         changed = "명확한 변화 없음"
-    lines += [
-        comment_title,
-        f"오늘 핵심 변화는 `{changed}`입니다. 한국장에서는 관련 해외 티커 반응과 국내 수급 확산 여부를 먼저 확인합니다.",
-        f"할인율: {compact_real_yield(fred, te)}",
-        followup_line,
-        "",
-        "투자 조언이 아닌 참고용 뉴스 브리핑입니다.",
-    ]
+    if live_mode:
+        lines += ["투자 조언이 아닌 참고용 뉴스 브리핑입니다."]
+    else:
+        lines += [
+            comment_title,
+            f"오늘 핵심 변화는 `{changed}`입니다. 한국장에서는 관련 해외 티커 반응과 국내 수급 확산 여부를 먼저 확인합니다.",
+            f"할인율: {compact_real_yield(fred, te)}",
+            followup_line,
+            "",
+            "투자 조언이 아닌 참고용 뉴스 브리핑입니다.",
+        ]
     return "\n".join(lines).strip() + "\n"
 
 
