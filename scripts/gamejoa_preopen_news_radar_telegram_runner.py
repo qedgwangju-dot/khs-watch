@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """Telegram-first GAMEJOA preopen radar runner.
 
