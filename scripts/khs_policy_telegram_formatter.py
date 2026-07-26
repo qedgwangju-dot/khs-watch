@@ -17,9 +17,17 @@ FX_TIMEOUT_SECONDS = max(3, int(os.getenv("KHS_POLICY_FX_TIMEOUT_SECONDS", "8"))
 YAHOO_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/"
 
 REMOVED_FIELD_PREFIXES = (
+    "- 투자 관점:",
+    "- 투자 영향:",
+    "- 투자 포인트:",
+    "- 한국장 영향:",
+    "- 한국장:",
     "- 의사결정 영향:",
+    "- 영향 섹터:",
+    "- 한국 밸류체인:",
     "- 반영/반대:",
     "- 실패 신호:",
+    "- 원화 환산 기준:",
 )
 
 CURRENCY_SPECS = {
@@ -286,16 +294,15 @@ def _normalized_rates(rates: dict | None, codes: list[str], now: dt.datetime) ->
 
 
 def format_krw_amount(value: float) -> str:
-    rounded = int(round(value / 100_000_000)) * 100_000_000 if value >= 100_000_000 else int(round(value))
-    if rounded >= 1_000_000_000_000:
-        trillion = rounded // 1_000_000_000_000
-        eok = (rounded % 1_000_000_000_000) // 100_000_000
-        return f"{trillion:,}조{eok:,}억원" if eok else f"{trillion:,}조원"
-    if rounded >= 100_000_000:
-        return f"{rounded // 100_000_000:,}억원"
-    if rounded >= 10_000:
-        return f"{rounded // 10_000:,}만원"
-    return f"{rounded:,}원"
+    if value >= 1_000_000_000_000:
+        return f"{int(value / 1_000_000_000_000 + 0.5):,}조원"
+    if value >= 100_000_000:
+        number = f"{value / 100_000_000:,.1f}".rstrip("0").rstrip(".")
+        return f"{number}억원"
+    if value >= 10_000:
+        number = f"{value / 10_000:,.1f}".rstrip("0").rstrip(".")
+        return f"{number}만원"
+    return f"{value:,.0f}원"
 
 
 def _convert_text(text: str, rates: dict[str, dict]) -> tuple[str, set[str]]:
@@ -329,6 +336,56 @@ def _format_fx_provenance(codes: set[str], rates: dict[str, dict]) -> str:
         else:
             parts.append(f"{code}/KRW {float(value):,.2f}원 · {source} · {reference_label} KST")
     return "- 원화 환산 기준: " + " / ".join(parts)
+
+
+def _compact_converted_core(core: str, limit: int = 50) -> str:
+    text = re.sub(r"\s+", " ", str(core or "")).strip()
+    if len(text) <= limit:
+        return text
+    chunks: list[str] = []
+    first_position: int | None = None
+    occupied: list[tuple[int, int]] = []
+    for pattern in AMOUNT_PATTERNS:
+        for match in pattern.finditer(text):
+            if any(match.start() < end and match.end() > start for start, end in occupied):
+                continue
+            krw_match = re.match(
+                r"\((?:약\s*)?[^)]{1,40}원\)",
+                text[match.end():],
+            )
+            if not krw_match:
+                continue
+            occupied.append(match.span())
+            chunk = text[match.start(): match.end() + krw_match.end()]
+            if chunk in chunks:
+                continue
+            if first_position is None:
+                first_position = match.start()
+            chunks.append(chunk)
+    if chunks:
+        prefix = text[: first_position or 0].strip(" ,·;:")
+        prefix_tokens = re.findall(r"[A-Za-z0-9가-힣·]+", prefix)
+        short_prefix = " ".join(prefix_tokens[-2:])
+        joined = ", ".join(chunks)
+        for candidate in (
+            f"{short_prefix} {joined}입니다.".strip(),
+            f"{joined}입니다.",
+        ):
+            if len(candidate) <= limit:
+                return candidate
+    return text
+
+
+def _compact_converted_core_lines(body: str) -> str:
+    output: list[str] = []
+    for raw_line in str(body or "").splitlines():
+        stripped = raw_line.strip()
+        if stripped.startswith("- 핵심:"):
+            core = stripped.removeprefix("- 핵심:").strip()
+            indent = raw_line[: len(raw_line) - len(raw_line.lstrip())]
+            raw_line = f"{indent}- 핵심: {_compact_converted_core(core)}"
+        output.append(raw_line)
+    return "\n".join(output)
 
 
 def normalize_policy_structure(title: str, body: str) -> tuple[str, str]:
@@ -366,11 +423,9 @@ def format_policy_message(
     amounts = extract_foreign_amounts(f"{title}\n{body}")
     codes = sorted({str(item["code"]) for item in amounts})
     rate_snapshot = _normalized_rates(rates, codes, now)
-    title, title_codes = _convert_text(title, rate_snapshot)
-    body, body_codes = _convert_text(body, rate_snapshot)
-    used_codes = title_codes | body_codes
-    if used_codes and "- 원화 환산 기준:" not in body:
-        body = f"{body}\n{_format_fx_provenance(used_codes, rate_snapshot)}"
+    title, _title_codes = _convert_text(title, rate_snapshot)
+    body, _body_codes = _convert_text(body, rate_snapshot)
+    body = _compact_converted_core_lines(body)
     return title.strip(), body.strip() + "\n"
 
 
@@ -386,6 +441,15 @@ def validate_final_policy_message(title: str, body: str) -> list[str]:
             errors.append(f"removed_field_present:{prefix}")
     if re.search(r"(?mi)^(?:Actions|Issues):\s*https?://", body):
         errors.append("github_meta_link_present")
+    for line in body.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("- 핵심:"):
+            continue
+        core = stripped.removeprefix("- 핵심:").strip()
+        if len(core) > 50:
+            errors.append(f"policy_core_too_long:{len(core)}")
+        if "…" in core or re.search(r"\.{3,}", core):
+            errors.append("policy_core_truncated")
     if extract_foreign_amounts(combined):
         errors.append("foreign_currency_not_converted")
     return errors
