@@ -17,17 +17,16 @@ TITLE = OUT / "gamejoa_preopen_news_radar_title.txt"
 
 REQUIRED_ITEM_MARKERS = [
     "- 핵심:",
-    "- 투자 포인트:",
     "- 출처:",
 ]
 FIELD_LIMITS = {
-    "- 핵심:": 220,
-    "- 투자 포인트:": 100,
+    "- 핵심:": 50,
 }
 
 FORBIDDEN_TEXT = [
     "- 기준/시각:",
     "- 경로/섹터:",
+    "- 투자 포인트:",
     "- 원제:",
     "- 상태 변화:",
     "- 즉시 체크:",
@@ -44,6 +43,9 @@ FORBIDDEN_TEXT = [
     "Original full text XML",
     "Government Publishing Office metadata",
     "developer tools pages",
+    "💡 실시간 뉴스 코멘트",
+    "외화 환산:",
+    "≈",
 ]
 
 
