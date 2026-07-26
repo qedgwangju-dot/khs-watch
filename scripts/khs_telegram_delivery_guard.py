@@ -192,6 +192,11 @@ REQUIRED_EXPLANATION_FIELD_GROUPS = [
     ("- 실패 신호:",),
 ]
 
+TRUSTED_POLICY_REQUIRED_FIELD_GROUPS = [
+    ("- 핵심:",),
+    ("- 출처:",),
+]
+
 URL_TOPIC_REQUIREMENTS = [
     (
         ("defense-supply-chains", "domestic-acquisition-of-critical-materials"),
@@ -585,7 +590,12 @@ def guard_lane(lane: Lane) -> None:
             delete_lane(lane, f"long_english_run:{marker}")
             return
 
-    for markers in REQUIRED_EXPLANATION_FIELD_GROUPS:
+    required_field_groups = (
+        TRUSTED_POLICY_REQUIRED_FIELD_GROUPS
+        if lane.name == "trusted_policy_news"
+        else REQUIRED_EXPLANATION_FIELD_GROUPS
+    )
+    for markers in required_field_groups:
         if not any(marker in body for marker in markers):
             delete_lane(lane, f"missing_explanation_field:{markers[0]}")
             return
