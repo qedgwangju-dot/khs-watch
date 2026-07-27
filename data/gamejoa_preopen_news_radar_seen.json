@@ -13,12 +13,13 @@
     "event:0f4ddd454abac3e00dac94a8": {
       "first_seen_kst": "2026-07-28T01:33:00+09:00",
       "lanes": {
-        "live": "2026-07-28T01:33:00+09:00"
+        "live": "2026-07-28T01:33:00+09:00",
+        "preopen": "2026-07-28T06:32:57+09:00"
       },
-      "last_seen_kst": "2026-07-28T01:33:00+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01272646645519112",
+      "last_seen_kst": "2026-07-28T06:32:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01984406645519112",
       "source": "이데일리",
-      "title": "중동 확전 우려 진정에도 반도체주 하락…S&P·나스닥 약세, 다우만 상승"
+      "title": "유가 급락에도 반도체 투매…다우 0.5%↑·나스닥 0.2%↓[월스트리트in]"
     },
     "event:37a1d3827e940cdcc6963dd2": {
       "first_seen_kst": "2026-07-27T07:34:22+09:00",
@@ -263,6 +264,16 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01889286645518456",
       "source": "이데일리",
       "title": "케빈 워시式 '깜깜이' FOMC…월가 '동결 vs 인상' 팽팽"
+    },
+    "event:fc297dfe7a2833ad7555166e": {
+      "first_seen_kst": "2026-07-28T06:32:57+09:00",
+      "lanes": {
+        "preopen": "2026-07-28T06:32:57+09:00"
+      },
+      "last_seen_kst": "2026-07-28T06:32:57+09:00",
+      "link": "https://www.mk.co.kr/news/business/12107697",
+      "source": "매일경제",
+      "title": "SK, MS에 메모리 장기 공급…앤트로픽과 데이터센터 추진"
     },
     "event:fd22649e28d3e919a5684aaa": {
       "first_seen_kst": "2026-07-25T21:07:25+09:00",
@@ -644,9 +655,10 @@
     "link:4a6e1ae6b0bb809e415f64cb": {
       "first_seen_kst": "2026-07-26T18:32:46+09:00",
       "lanes": {
-        "live": "2026-07-26T18:32:46+09:00"
+        "live": "2026-07-26T18:32:46+09:00",
+        "preopen": "2026-07-28T06:32:57+09:00"
       },
-      "last_seen_kst": "2026-07-26T18:32:46+09:00",
+      "last_seen_kst": "2026-07-28T06:32:57+09:00",
       "link": "https://www.mk.co.kr/news/business/12107697",
       "source": "매일경제",
       "title": "SK, MS에 메모리 장기 공급…앤트로픽과 데이터센터 추진"
@@ -1807,6 +1819,16 @@
       "source": "이투데이",
       "title": "“현대모비스, 인도 공장 화재 실적 부담…목표가↓”"
     },
+    "link:df7429f68761d0a4ce92d4a7": {
+      "first_seen_kst": "2026-07-28T06:32:57+09:00",
+      "lanes": {
+        "preopen": "2026-07-28T06:32:57+09:00"
+      },
+      "last_seen_kst": "2026-07-28T06:32:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01984406645519112",
+      "source": "이데일리",
+      "title": "유가 급락에도 반도체 투매…다우 0.5%↑·나스닥 0.2%↓[월스트리트in]"
+    },
     "link:dfe1e5106a0f254314ea10dd": {
       "first_seen_kst": "2026-07-27T06:52:47+09:00",
       "lanes": {
@@ -2191,9 +2213,10 @@
     "original:18ed9c104ab75031c4899302": {
       "first_seen_kst": "2026-07-26T18:32:46+09:00",
       "lanes": {
-        "live": "2026-07-26T18:32:46+09:00"
+        "live": "2026-07-26T18:32:46+09:00",
+        "preopen": "2026-07-28T06:32:57+09:00"
       },
-      "last_seen_kst": "2026-07-26T18:32:46+09:00",
+      "last_seen_kst": "2026-07-28T06:32:57+09:00",
       "link": "https://www.mk.co.kr/news/business/12107697",
       "source": "매일경제",
       "title": "SK, MS에 메모리 장기 공급…앤트로픽과 데이터센터 추진"
@@ -2630,6 +2653,16 @@
       "link": "https://www.reuters.com/legal/government/us-treasury-flags-wall-street-tax-strategies-potentially-abusive-bloomberg-news-2026-07-21/",
       "source": "Reuters",
       "title": "미국 원전·SMR·AI 전력 정책 시간표 체크"
+    },
+    "original:61d08e9d8c1dfe146cebb113": {
+      "first_seen_kst": "2026-07-28T06:32:57+09:00",
+      "lanes": {
+        "preopen": "2026-07-28T06:32:57+09:00"
+      },
+      "last_seen_kst": "2026-07-28T06:32:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01984406645519112",
+      "source": "이데일리",
+      "title": "유가 급락에도 반도체 투매…다우 0.5%↑·나스닥 0.2%↓[월스트리트in]"
     },
     "original:631a3b867da71e53d4686abc": {
       "first_seen_kst": "2026-07-24T22:22:50+09:00",
@@ -3938,9 +3971,10 @@
     "title:18ed9c104ab75031c4899302": {
       "first_seen_kst": "2026-07-26T18:32:46+09:00",
       "lanes": {
-        "live": "2026-07-26T18:32:46+09:00"
+        "live": "2026-07-26T18:32:46+09:00",
+        "preopen": "2026-07-28T06:32:57+09:00"
       },
-      "last_seen_kst": "2026-07-26T18:32:46+09:00",
+      "last_seen_kst": "2026-07-28T06:32:57+09:00",
       "link": "https://www.mk.co.kr/news/business/12107697",
       "source": "매일경제",
       "title": "SK, MS에 메모리 장기 공급…앤트로픽과 데이터센터 추진"
@@ -4399,6 +4433,16 @@
       "link": "https://www.mk.co.kr/news/stock/12108893",
       "source": "매일경제",
       "title": "테닛헬스케어, 2분기 EPS 52% 급등·연간 가이던스 상향으로 강세"
+    },
+    "title:61d08e9d8c1dfe146cebb113": {
+      "first_seen_kst": "2026-07-28T06:32:57+09:00",
+      "lanes": {
+        "preopen": "2026-07-28T06:32:57+09:00"
+      },
+      "last_seen_kst": "2026-07-28T06:32:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01984406645519112",
+      "source": "이데일리",
+      "title": "유가 급락에도 반도체 투매…다우 0.5%↑·나스닥 0.2%↓[월스트리트in]"
     },
     "title:631a3b867da71e53d4686abc": {
       "first_seen_kst": "2026-07-24T22:22:50+09:00",
@@ -5540,5 +5584,5 @@
       "title": "[BioS]에스티팜, 2분기 매출 1085억 \"전년比 58.9%↑\""
     }
   },
-  "updated_at_kst": "2026-07-28T06:07:47+09:00"
+  "updated_at_kst": "2026-07-28T06:32:57+09:00"
 }
