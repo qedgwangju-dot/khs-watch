@@ -91,12 +91,23 @@ def main() -> int:
         failures.append("missing_search=국내 경영진·최대주주 직접매수")
     if "단일종목 레버리지 규제·코스닥 수급" not in search_names:
         failures.append("missing_search=단일종목 레버리지 규제·코스닥 수급")
+    if "국내 대기업 전략기술 출자·스타트업 투자" not in search_names:
+        failures.append("missing_search=국내 대기업 전략기술 출자·스타트업 투자")
 
     if not any(
         row.get("url") == "https://www.yna.co.kr/view/AKR20260730034600008"
         for row in radar.coverage.DIRECT_ARTICLES
     ):
         failures.append("missing_direct_article=yuanta_single_stock_leverage_kosdaq")
+
+    if not any(
+        row.get("url") == (
+            "https://biz.chosun.com/it-science/ict/2026/07/30/"
+            "E5GYIUCGO5HNPGVB6P7ZT3IBWA/"
+        )
+        for row in radar.coverage.DIRECT_ARTICLES
+    ):
+        failures.append("missing_direct_article=samsung_strategic_technology_funds")
 
     duplicate_a = {
         "news": "삼성전기 2분기 영업이익 4404억원, 10개 고객과 MLCC 장기계약",
@@ -168,6 +179,46 @@ def main() -> int:
     for fact in ("31일부터", "대형 반도체", "코스닥 우량 성장주", "수급"):
         if fact not in leverage_core:
             failures.append(f"leverage_kosdaq_core_missing={fact}:{leverage_core}")
+
+    samsung_fund_row = {
+        "source": "국내 신뢰매체 직접감시",
+        "publisher": "조선비즈",
+        "title": "삼성전자, 반도체 스타트업 투자·기술 확보에 8000억 출자",
+        "source_title": "삼성전자, 반도체 스타트업 투자·기술 확보에 8000억 출자",
+        "source_body": (
+            "30일 삼성전자 공시에 따르면 DS 부문은 SVIC 82호에 4950억원을 출자한다. "
+            "DX 부문은 SVIC 83호에 2970억원을 출자한다. "
+            "두 펀드는 다음 달부터 각각 13년과 10년간 운용되며 "
+            "반도체·AI·로봇 스타트업 기술 확보에 활용된다."
+        ),
+        "source_abstract": (
+            "삼성전자 공시에 따르면 SVIC 82호 4950억원, "
+            "SVIC 83호 2970억원 출자가 확정됐다."
+        ),
+        "link": (
+            "https://biz.chosun.com/it-science/ict/2026/07/30/"
+            "E5GYIUCGO5HNPGVB6P7ZT3IBWA/"
+        ),
+        "published": now,
+        "body_verified": True,
+        "_pinned_direct_article": True,
+    }
+    samsung_fund_alert = radar.build_verified_korean_business_alert(samsung_fund_row, now)
+    if not samsung_fund_alert:
+        failures.append("samsung_strategic_fund_alert=missing")
+    else:
+        samsung_core = str(samsung_fund_alert.get("telegram_core_fact") or "")
+        for fact in ("4,950억원", "2,970억원", "7,920억원", "13년", "10년"):
+            if fact not in samsung_core:
+                failures.append(
+                    f"samsung_strategic_fund_core_missing={fact}:{samsung_core}"
+                )
+        if not samsung_fund_alert.get("_pinned_direct_article"):
+            failures.append("samsung_strategic_fund_direct_priority=missing")
+        if samsung_fund_alert.get("impacts") != ["돈 버는 능력", "시간표"]:
+            failures.append(
+                f"samsung_strategic_fund_impacts={samsung_fund_alert.get('impacts')}"
+            )
 
     if failures:
         print("GAMEJOA news coverage contract failed:")
