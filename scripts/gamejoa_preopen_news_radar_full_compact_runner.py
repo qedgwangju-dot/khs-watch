@@ -2427,6 +2427,25 @@ def build_single_stock_leverage_rule_alert(row: dict, now, text: str) -> dict | 
             ),
         }
     )
+    if row.get("_pinned_direct_article"):
+        article_id = str(row.get("link") or "").rstrip("/").rsplit("/", 1)[-1]
+        direct_core = (
+            "유안타증권은 31일 규제로 대형 반도체 집중 자금의 기회비용이 정상화돼 "
+            "코스닥 우량 성장주 수급이 개선될 수 있다고 분석했습니다."
+        )
+        alert.update(
+            {
+                "policy_plain_summary": direct_core,
+                "telegram_core_fact": direct_core,
+                "telegram_investment_fact": (
+                    "모든 이탈 자금이 코스닥으로 이동하는 것은 아니며 정책 보완책의 실제 수급 효과를 확인해야 합니다."
+                ),
+                "investment_view": (
+                    "모든 이탈 자금이 코스닥으로 이동하는 것은 아니며 정책 보완책의 실제 수급 효과를 확인해야 합니다."
+                ),
+                "supply_chain_theme": f"direct_trusted_article:{article_id}",
+            }
+        )
     return alert
 
 
