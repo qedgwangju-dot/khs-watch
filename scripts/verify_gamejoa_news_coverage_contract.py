@@ -27,6 +27,11 @@ CASES = (
     ("LG디스플레이, 1.5조 국민성장펀드 투자 유치", "국민성장펀드", "돈 버는 능력"),
     ("최태원 회장, SK하이닉스 주식 3620주 매수", "내부자 직접매수", "수급"),
     ("양현석 총괄 프로듀서, YG 주식 46만1940주 장내매수", "내부자 직접매수", "수급"),
+    (
+        "유안타증권, 단일종목 레버리지 ETF 규제 코스닥 반등 계기",
+        "단일종목 레버리지",
+        "수급",
+    ),
 )
 
 
@@ -84,6 +89,8 @@ def main() -> int:
     search_names = {source[0] for source in radar.KOREAN_BUSINESS_SEARCH_SOURCES}
     if "국내 경영진·최대주주 직접매수" not in search_names:
         failures.append("missing_search=국내 경영진·최대주주 직접매수")
+    if "단일종목 레버리지 규제·코스닥 수급" not in search_names:
+        failures.append("missing_search=단일종목 레버리지 규제·코스닥 수급")
 
     duplicate_a = {
         "news": "삼성전기 2분기 영업이익 4404억원, 10개 고객과 MLCC 장기계약",
@@ -142,6 +149,19 @@ def main() -> int:
     )
     if "개인 명의" in company_buyback_core:
         failures.append(f"company_buyback_misclassified={company_buyback_core}")
+
+    leverage_core = radar.detailed_article_core(
+        "유안타증권, 단일종목 레버리지 ETF 규제 코스닥 반등 계기",
+        (
+            "오는 31일부터 단일종목 레버리지 ETF 규제가 시행된다. "
+            "유안타증권 연구원은 대형 반도체 레버리지 상품의 자금 효율과 "
+            "접근성이 낮아지면 코스닥 우량 성장주의 상대적 기회비용이 "
+            "정상화될 수 있다고 분석했다."
+        ),
+    )
+    for fact in ("31일부터", "대형 반도체", "코스닥 우량 성장주", "수급"):
+        if fact not in leverage_core:
+            failures.append(f"leverage_kosdaq_core_missing={fact}:{leverage_core}")
 
     if failures:
         print("GAMEJOA news coverage contract failed:")
