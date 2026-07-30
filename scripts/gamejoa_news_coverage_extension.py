@@ -16,6 +16,16 @@ PUBLISHER_DOMAINS = {
     "isplus.com": "일간스포츠",
 }
 
+DIRECT_ARTICLES = [
+    {
+        "source": "국내 신뢰매체 직접감시",
+        "publisher": "연합뉴스",
+        "title": '유안타증권 "단일종목 레버리지 ETF 규제, 코스닥 반등 계기될 것"',
+        "url": "https://www.yna.co.kr/view/AKR20260730034600008",
+        "published_kst": "2026-07-30T08:41:00+0900",
+    },
+]
+
 SEARCH_SOURCES = [
     (
         "국내 경영진·최대주주 직접매수",
