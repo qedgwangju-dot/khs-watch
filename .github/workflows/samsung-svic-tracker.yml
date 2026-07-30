@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: samsung-svic-tracker-state
+  group: samsung-svic-tracker-state-v2
   cancel-in-progress: false
 
 jobs:
@@ -27,11 +27,11 @@ jobs:
       - name: Restore durable SQLite state
         shell: bash
         run: |
-          git clone --single-branch --branch svic-tracker-state \
+          git clone --single-branch --branch svic-tracker-state-v2 \
             "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" state-repo \
             || {
               git clone "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" state-repo
-              git -C state-repo checkout --orphan svic-tracker-state
+              git -C state-repo checkout --orphan svic-tracker-state-v2
               git -C state-repo rm -rf --ignore-unmatch .
             }
           mkdir -p app/samsung_svic_tracker/samsung_svic_tracker/state app/samsung_svic_tracker/samsung_svic_tracker/outputs
@@ -76,4 +76,4 @@ jobs:
           git -C state-repo config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git -C state-repo add samsung_svic_tracker/state samsung_svic_tracker/outputs
           git -C state-repo commit -m "state: SVIC tracker ${{ github.run_id }}" || exit 0
-          git -C state-repo push origin HEAD:svic-tracker-state
+          git -C state-repo push origin HEAD:svic-tracker-state-v2
