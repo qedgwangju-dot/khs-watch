@@ -13,15 +13,18 @@ PUBLISHER_DOMAINS = {
     "metroseoul.co.kr": "메트로신문",
     "seoul.co.kr": "서울신문",
     "scmp.com": "South China Morning Post",
+    "isplus.com": "일간스포츠",
 }
 
 SEARCH_SOURCES = [
     (
         "국내 기업 실적·장기계약·자본조달",
         "(실적 OR 영업이익 OR 순이익 OR 컨콜 OR LTA OR 장기공급계약 OR 유상증자 "
-        "OR 자사주 OR 소각) (반도체 OR HBM OR MLCC OR 데이터센터 OR AI OR 금융 OR 증권) "
+        "OR 자사주 OR 소각 OR 장내매수 OR 지분매수 OR 주식매수 OR 내부자매수) "
+        "(반도체 OR HBM OR MLCC OR 데이터센터 OR AI OR 금융 OR 증권 OR 엔터 OR 콘텐츠) "
         "(site:newsis.com OR site:etnews.com OR site:edaily.co.kr OR site:fnnews.com OR "
-        "site:inews24.com OR site:investchosun.com OR site:biz.heraldcorp.com)",
+        "site:inews24.com OR site:investchosun.com OR site:biz.heraldcorp.com OR "
+        "site:isplus.com)",
     ),
     (
         "국내 증시 중단·레버리지 위험",
@@ -108,7 +111,7 @@ TRUSTED_MARKERS = tuple(
 )
 
 PRIORITY_TERMS = {
-    "유상증자": 14, "자사주 소각": 14, "자기주식 소각": 14,
+    "유상증자": 14, "자사주 매입": 16, "자사주 소각": 14, "자기주식 소각": 14,
     "lta": 15, "장기공급계약": 15, "장기 공급계약": 15,
     "사이드카": 16, "서킷브레이커": 18, "신용융자": 12,
     "투자한도": 14, "괴리율": 11, "공장 중단": 16, "공장중단": 16,
@@ -124,6 +127,9 @@ PRIORITY_TERMS = {
     "국민성장펀드": 17, "정책금융": 15, "정책 금융": 15,
     "저리 대출": 15, "저리대출": 15, "광반도체": 15,
     "실리콘 포토닉스": 15, "실리콘포토닉스": 15, "생산시설 증설": 15,
+    "회장": 12, "대표이사": 12, "대표": 8, "사장": 10, "임원": 10,
+    "장내매수": 18, "장내 매수": 18, "지분매수": 17, "지분 매수": 17,
+    "내부자 직접매수": 18, "지분율": 12,
 }
 
 MATERIAL_TERMS = tuple(PRIORITY_TERMS)
@@ -145,6 +151,8 @@ IMPACT_TERMS = {
     "수급": (
         "사이드카", "서킷브레이커", "신용융자", "투자한도", "괴리율",
         "국민연금", "연기금", "국민성장펀드",
+        "장내매수", "장내 매수", "지분매수", "지분 매수",
+        "내부자 직접매수", "지분율",
     ),
     "시간표": (
         "공장 중단", "공장중단", "대피", "복구", "lta", "장기공급계약",
