@@ -1,0 +1,40 @@
+{
+  "timezone": "Asia/Seoul",
+  "request": {
+    "timeout_seconds": 25,
+    "retries": 3,
+    "backoff_seconds": 1,
+    "requests_per_second": 1
+  },
+  "sources": {
+    "dart": {
+      "enabled": true,
+      "kind": "dart",
+      "official": true,
+      "reliability": 1.0
+    },
+    "samsung_newsroom": {
+      "enabled": true,
+      "kind": "rss",
+      "url": "https://news.samsung.com/kr/feed",
+      "official": true,
+      "reliability": 0.95
+    },
+    "samsung_semiconductor": {
+      "enabled": true,
+      "kind": "sitemap",
+      "url": "https://semiconductor.samsung.com/sitemap.xml",
+      "official": true,
+      "reliability": 0.95
+    }
+  },
+  "keywords": [
+    "SVIC 82호", "SVIC 제82호", "SVIC No. 82",
+    "SVIC 83호", "SVIC 제83호", "SVIC No. 83",
+    "삼성벤처투자", "Samsung Ventures"
+  ],
+  "alert_events": [
+    "confirmed_investment", "investment_terms", "samsung_validation",
+    "mass_production", "failure", "follow_on_or_mna"
+  ]
+}
