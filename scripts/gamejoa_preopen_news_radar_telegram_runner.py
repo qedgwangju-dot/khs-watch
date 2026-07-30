@@ -493,7 +493,21 @@ def main() -> int:
     if routed_policy:
         print(f"GAMEJOA radar: routed_to_realtime_policy={len(routed_policy)}")
     alerts, skipped_seen = filter_alerts_for_run_mode(classified, now, live_mode)
-    alerts.sort(key=lambda a: (-a["score"], a["published"]))
+    # Preserve body-verified direct-watch articles before the score cutoff.
+    # These rows are explicitly curated because broad search ranking can bury
+    # market-moving follow-up analysis below generic high-score policy items.
+    alerts.sort(key=lambda a: (
+        0 if a.get("_pinned_direct_article") else 1,
+        -a["score"],
+        a["published"],
+    ))
+
+    pinned_count = sum(bool(a.get("_pinned_direct_article")) for a in classified)
+    pinned_fresh_count = sum(bool(a.get("_pinned_direct_article")) for a in alerts)
+    print(
+        "GAMEJOA radar direct-watch: "
+        f"classified={pinned_count} fresh_after_seen={pinned_fresh_count}"
+    )
 
     deduped, seen = [], set()
     for alert in alerts:
