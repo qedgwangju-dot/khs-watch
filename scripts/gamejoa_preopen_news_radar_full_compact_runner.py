@@ -4614,11 +4614,14 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
         if alert.get("korean_business_news")
         else ""
     )
-    core = complete_prose_text(
-        article_core or alert.get("policy_plain_summary"),
-        fallback=title,
-        limit=GAMEJOA_CORE_MAX_CHARS,
-    )
+    if alert.get("memory_antitrust_lawsuit"):
+        core = "\uc0bc\uc131\uc804\uc790\u00b7SK\ud558\uc774\ub2c9\uc2a4\u00b7Micron\uc5d0 DRAM \uac00\uaca9\ub2f4\ud569 \uc9d1\ub2e8\uc18c\uc1a1\uc774 \uc81c\uae30\ub410\uc2b5\ub2c8\ub2e4."
+    else:
+        core = complete_prose_text(
+            article_core or alert.get("policy_plain_summary"),
+            fallback=title,
+            limit=GAMEJOA_CORE_MAX_CHARS,
+        )
     conversion = alert.get("fx_conversion") or {"amounts": []}
     core = compact_converted_core(core, conversion, limit=GAMEJOA_CORE_MAX_CHARS)
 
