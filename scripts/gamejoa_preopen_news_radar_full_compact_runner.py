@@ -3341,6 +3341,7 @@ def enforce_korean_business_news_contract() -> None:
                         "publisher": seed.get("publisher") or "국내 신뢰매체",
                         "title": seed.get("title") or existing.get("title") or "",
                         "published": published or existing.get("published"),
+                        "_fetch_url": seed.get("fetch_url") or link,
                         "_pinned_direct_article": True,
                     }
                 )
@@ -3354,6 +3355,7 @@ def enforce_korean_business_news_contract() -> None:
                 "link": link,
                 "summary": "",
                 "published": published,
+                "_fetch_url": seed.get("fetch_url") or link,
                 "_pinned_direct_article": True,
             }
             if link and base.fresh(direct_row, now):
@@ -3393,7 +3395,8 @@ def enforce_korean_business_news_contract() -> None:
         selected_candidates = detail_candidates[:KOREAN_BUSINESS_DETAIL_LIMIT]
 
         def fetch_detail(row: dict) -> tuple[dict, str | None, str | None]:
-            detail_html, detail_error = base.fetch(str(row.get("link")), 16)
+            fetch_url = str(row.get("_fetch_url") or row.get("link") or "")
+            detail_html, detail_error = base.fetch(fetch_url, 16)
             return row, detail_html, detail_error
 
         with concurrent.futures.ThreadPoolExecutor(
