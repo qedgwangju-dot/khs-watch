@@ -29,6 +29,7 @@ DIRECT_ARTICLES = [
         "publisher": "조선비즈",
         "title": "삼성전자, 반도체 스타트업 투자·기술 확보에 8000억 출자",
         "url": "https://biz.chosun.com/it-science/ict/2026/07/30/E5GYIUCGO5HNPGVB6P7ZT3IBWA/",
+        "fetch_url": "https://biz.chosun.com/it-science/ict/2026/07/30/E5GYIUCGO5HNPGVB6P7ZT3IBWA/?outputType=amp",
         "published_kst": "2026-07-30T18:37:00+0900",
     },
 ]
