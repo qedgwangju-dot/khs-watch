@@ -92,6 +92,12 @@ def main() -> int:
     if "단일종목 레버리지 규제·코스닥 수급" not in search_names:
         failures.append("missing_search=단일종목 레버리지 규제·코스닥 수급")
 
+    if not any(
+        row.get("url") == "https://www.yna.co.kr/view/AKR20260730034600008"
+        for row in radar.coverage.DIRECT_ARTICLES
+    ):
+        failures.append("missing_direct_article=yuanta_single_stock_leverage_kosdaq")
+
     duplicate_a = {
         "news": "삼성전기 2분기 영업이익 4404억원, 10개 고객과 MLCC 장기계약",
         "published": now,
