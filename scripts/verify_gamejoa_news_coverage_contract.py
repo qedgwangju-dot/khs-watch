@@ -25,6 +25,8 @@ CASES = (
     ("국민연금, 국내주식 수익률 106% 기록", "국민연금", "수급"),
     ("국고채 금리, 미국 금리 여파에 동반 상승", "국고채", "할인율"),
     ("LG디스플레이, 1.5조 국민성장펀드 투자 유치", "국민성장펀드", "돈 버는 능력"),
+    ("최태원 회장, SK하이닉스 주식 3620주 매수", "내부자 직접매수", "수급"),
+    ("양현석 총괄 프로듀서, YG 주식 46만1940주 장내매수", "내부자 직접매수", "수급"),
 )
 
 
@@ -61,6 +63,7 @@ def main() -> int:
         "investchosun.com",
         "inews24.com",
         "scmp.com",
+        "isplus.com",
     }
     missing_domains = expected_domains - set(radar.KOREAN_BUSINESS_PUBLISHER_DOMAINS)
     if missing_domains:
@@ -96,6 +99,33 @@ def main() -> int:
     detail = extract_article_detail(structured_html, structured_title)
     if not detail.get("body_verified") or "2500억달러" not in detail.get("body", ""):
         failures.append("structured_article_body=not_verified")
+
+    insider_core = radar.detailed_article_core(
+        "최태원 회장, SK하이닉스 주식 3620주 매수",
+        "최태원 SK그룹 회장이 SK하이닉스 주식 3620주를 장내 매수했다.",
+    )
+    if "최태원" not in insider_core or "3620주" not in insider_core or "개인 명의" not in insider_core:
+        failures.append(f"insider_purchase_core={insider_core}")
+
+    entertainment_core = radar.detailed_article_core(
+        "YG 양현석 200억·JYP 박진영 50억 자사주 매입",
+        (
+            "양현석 YG 총괄 프로듀서가 200억원을 들여 자사 주식 "
+            "46만1940주를 장내 매수했다. "
+            "박진영 JYP CCO가 50억원을 들여 자사 주식 "
+            "6만200주를 장내 매수했다."
+        ),
+    )
+    for fact in ("양현석", "200억원", "46만1940주", "박진영", "50억원", "6만200주"):
+        if fact not in entertainment_core:
+            failures.append(f"entertainment_insider_core_missing={fact}:{entertainment_core}")
+
+    company_buyback_core = radar.detailed_article_core(
+        "현대차, 1조원 규모 자사주 취득·소각",
+        "현대차는 이사회에서 1조원 규모의 자사주를 취득해 전량 소각하기로 결정했다.",
+    )
+    if "개인 명의" in company_buyback_core:
+        failures.append(f"company_buyback_misclassified={company_buyback_core}")
 
     if failures:
         print("GAMEJOA news coverage contract failed:")
