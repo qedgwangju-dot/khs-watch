@@ -356,12 +356,1608 @@ def main() -> int:
     target = "https://www.reuters.com/world/example"
     bing_link = "https://www.bing.com/news/apiclick.aspx?" + urllib.parse.urlencode({"url": target})
     bing_fixture = f'''<rss xmlns:news="https://www.bing.com/news/search?q=x&amp;format=rss"><channel><item>
- ÛnvîÚ$z{-®éÜj×’&6¶w&÷VæBFW&×2'—76VBF†RÖFW&–Â†VFÆ–æRvFR" ¢W'6öåöæÖUöfÇ6U÷÷6—F—fU÷&÷rÒF–7B†vVæW&–5÷&÷r¢W'6öåöæÖUöfÇ6U÷÷6—F—fU÷&÷rçWFFR€¢°¢'F—FÆR#¢.Ù˜ŞÈ‰Ê;ÂÂ~¸ù«hr»˜N«{ÊÈIÎÈ*ÂÉ˜NÈK"À¢'6÷W&6U÷F—FÆR#¢.Ù˜ŞÈ‰Ê;ÂÂ~¸ù«hr»˜N«{ÊÈIÎÈ*ÂÉ˜NÈK"À¢'6÷W&6Uö&öG’#¢€¢.»É«Ù˜ŞÈ‰Ê;Î«¹9Î¹ÛÎºx‚¸ù«hÉyÈIÂ»˜N«{ÊÈIÎÈ*Îº[ÂÉ{«‹Ùh¸ºBâ ¢.«‹È*ÎÉy¸©B«‹ÉxR«8NÉ[ÒÂºzNËiÂÂÈºNÊ¹‰¸©BØŠÎÉéÉÛÎÊ	^ÉÛBÉxn¸ºBâ ¢’À¢'6÷W&6Uö'7G&7B#¢.»É«Ù˜ŞÈ‰Ê;Î«¹9Î¹ÛÎºx‚¸ù«hÉyÈIÂ»˜N«{ÊÈIÎÈ*Îº[ÂÉ{«‹Ùh¸ºBâ"À¢'7VÖÖ'’#¢.»É«Ù˜ŞÈ‰Ê;Î«¹9Î¹ÛÎºx‚¸ù«hÉyÈIÂ»˜N«{ÊÈIÎÈ*Îº[ÂÉ{«‹Ùh¸ºBâ"À¢&Æ–æ²#¢&‡GG3¢ò÷wwræWFæWw2æ6öÒó##cs#CC"À¢Ğ¢¢–b&öGV7F–öâæ6öçG&7Bç7G&–7Bæ6Æ76–g’‡W'6öåöæÖUöfÇ6U÷÷6—F—fU÷&÷rÂæ÷r“ ¢W'&÷'2æVæB‚'W'6öæÂæÖR6öçF–æ–ærÈ‰Ê;Â'—76VBF†RÖFW&–Â†VFÆ–æRvFR" ¢f÷"ÖFW&–Å÷F—FÆR–â€¢.ÙˆN¸ÈºÎØYÂÂØûN¹è¹9Â³"ÊNË
-‚.Ë
-‚È‰Ê;Â"À¢.ÙYÎÙ™NÉyÉkNºÂÂ¸ÈÙ‰^È‰Ê;Â«;^È¹Â"À¢.ÊÈJÈ*ÂÂ>ÊÉ¹¸ÈÈ‰Ê;ÂÈK«;R"À¢$Ä”~¸J^ÈªNÉ¹ÂÈ‰Ê;ÎÉéN«:ÉzŞ¸ÈËYÎ¸È"À¢“ ¢–bæ÷B&öGV7F–öâç'VææW"æ¶÷&Våö'W6–æW75÷F—FÆUö†5öÖFW&–Å÷FW&Ò€¢ÖFW&–Å÷F—FÆRÀ¢.È‰Ê;Â"À¢“ ¢W'&÷'2æVæB†b'fÆ–B6öçG&7B†VFÆ–æRv2&Æö6¶VB'’È‰Ê;Â6öçFW‡BwV&C¢¶ÖFW&–Å÷F—FÆWÒ" ¢&V6÷&÷rÒF–7B†vVæW&–5÷&÷r¢&V6÷&÷rçWFFR€¢°¢'F—FÆR#¢%¾«ˆ¹;¹ÛŞÊ;ÂÊy®ÉkN»;N«‹ÒÈºNÊÊ;ÂÈ8ÙYÎ«+~ÉèNÈ8Ê;ÂÙYÙYÎ«"À¢'6÷W&6U÷F—FÆR#¢%¾«ˆ¹;¹ÛŞÊ;ÂÊy®ÉkN»;N«‹ÒÈºNÊÊ;ÂÈ8ÙYÎ«+~ÉèNÈ8Ê;ÂÙYÙYÎ«"À¢&Æ–æ²#¢&‡GG3¢ò÷wwræWFöF’æ6òæ·"öæWw2÷f–Wró#ccs“B"À¢Ğ¢¢–b&öGV7F–öâæ6öçG&7Bç7G&–7Bæ6Æ76–g’‡&V6÷&÷rÂæ÷r“ ¢W'&÷'2æVæB‚'6ÖRÖF’&–6R&V6v2&öÖ÷FVB2æWr†–v‚Ö–×7B'F–6ÆR" ¢¦%÷F—FÆRÒ$¤.«ˆÉËRÂ.»hN«‹È‰ÎÉÛR#“nÉkR~È*ÎÈ8ËYÎ¸È~(
-cÉk^É¹ÉéÈ*ÎÊ;ÂÈhÎ« ¢¦%ö&öG’Ò€¢$¤.«ˆÉË^ÊxÊ;Î«»˜NÉØÙh’«8NÉ{NÈ*ÎÉÙ‚ÈKÉê^ÉyÙéÉè^ÉkB»hN«‹«‹ÊHÈ*ÎÈ8ËYÎ¸ÈÈºNÊÉØB ¢.¸ºÎÈKÙY«:Ê«{ÊÉÛ‚Ê;ÎÊ;ÎÙ™É¹Éy¸)ÈJ¸ºBâ ¢##>ÉÛÂ¤.«ˆÉË^ÉØÉŠÂ.»hN«‹Êx»Ê;ÎÊ;Â¸»«‹È‰ÎÉÛNÉÛ^ÉÛBÊN¸XB¸ù«‹¸È»˜BRãrR ¢.ÊiŞ«ÙYÂ#“nÉk^É¹ÉØB«‹ºŞÙh¸ºN«:»	ŞÙ‰N¸ºBâ ¢.È8»	«‹¸ˆNÊÈ‰ÎÉÛNÉÛRÉzŞÈ¹Â3ƒS~Ék^É¹ÉËÎºÂÉzŞ¸ÈËYÎ«:Ë™¸ºBâ ¢.ÉÛN¸*¤.«ˆÉËRÉÛNÈ*ÎÙ¨Î¸©BÊ;ÎÊ;ÎÙ™É¹Ê	^Ë^ÉÙ‚ÙY¸)ºÂ»;NØk^Ê;ÂÊ;Î¸»’ÙˆN«ˆ‚3NÉ¹ÉÙ‚ ¢.»hN«‹»¸»«;ÂÙZ«¹‚Ék^É¹«yÎºªÉÙ‚Éé«‹Ê;ÎÈ¹ÒËz¹9Ò»òÈhÎ«ÉØB«+Ê	^Ùh¸ºBâ ¢¢¦%öFWF–ÂÒ6ö×7BæW‡G&7Eö'F–6ÆUöFWF–Â†f—‡GW&R†¦%÷F—FÆRÂ¦%ö&öG’’Â¦%÷F—FÆR¢¦%÷&÷rÒ°¢'6÷W&6R#¢.ÊNÉéÈººË‚ÉŠN¸©ÉÙ‚¸›NÈªB"À¢&Æ–W"#¢'G'W7FVB"À¢'V&Æ—6†W"#¢.ÊNÉéÈººË‚"À¢'F—FÆR#¢¦%÷F—FÆRÀ¢'6÷W&6U÷F—FÆR#¢¦%öFWF–Å²'F—FÆR%ÒÀ¢'6÷W&6Uö&öG’#¢¦%öFWF–Å²&&öG’%ÒÀ¢'6÷W&6Uö'7G&7B#¢¦%öFWF–Å²&&öG’%ÒÀ¢'7VÖÖ'’#¢¦%öFWF–Å²&&öG’%ÒÀ¢&Æ–æ²#¢&‡GG3¢ò÷wwræWFæWw2æ6öÒó##cs#3CS‚"À¢'V&Æ—6†VB#¢æ÷rÀ¢&&öG•÷fW&–f–VB#¢G'VRÀ¢Ğ¢¦%öÆW'BÒ&öGV7F–öâæ6öçG&7Bç7G&–7Bæ6Æ76–g’†¦%÷&÷rÂæ÷r¢–bæ÷B¦%öÆW'C ¢W'&÷'2æVæB‚$¤"f–ææ6–ÂfW&–f–VBV&æ–æw2'F–6ÆRv2æ÷B6Æ76–f–VB"¢VÇ6S ¢æ÷&ÖÆ—¦VEö¦"Ò6ö×7Bææ÷&ÖÆ—¦UöÆW'Eöf÷%ö÷WGWB†¦%öÆW'B¢&VæFW&VBÒ6ö×7Bæ6ö×7EöÆW'B†æ÷&ÖÆ—¦VEö¦"ÂÂæ÷rÂ·ÒÂ·Ò¢6÷&UöÆ–æRÒæW‡B‚†Æ–æRf÷"Æ–æR–â&VæFW&VBç7Æ—FÆ–æW2‚’–bÆ–æRç7F'G7v—F‚‚"ÒÙ[^ÈºÃ¢"’’Â""¢f–WuöÆ–æRÒæW‡B€¢†Æ–æRf÷"Æ–æR–â&VæFW&VBç7Æ—FÆ–æW2‚’–bÆ–æRç7F'G7v—F‚‚"ÒØŠÎÉéØúÎÉÛØ«ƒ¢"’’À¢""À¢¢–bæ÷BÆÂ€¢FW&Ò–â6÷&UöÆ–æP¢f÷"FW&Ò–â‚##“nÉk^É¹"Â#RãrR"Â.ÉzŞ¸ÈËYÎ¸È"Â#3NÉ¹"Â#Ék^É¹"Â.ÉéÈ*ÎÊ;Â"¢“ ¢W'&÷'2æVæB†b$¤"f–ææ6–Â6÷&RöÖ—GFVB'F–6ÆRf7G3¢¶6÷&UöÆ–æWÒ"¢–bæ÷BÆÂ‡FW&Ò–âf–WuöÆ–æRf÷"FW&Ò–â‚.ÉÛNÉÛRËiNÊ	R"Â.Ê;ÎÊ;ÎÙ™É¹"’“ ¢W'&÷'2æVæB†b$¤"f–ææ6–Â–çfW7FÖVçBö–çBöÖ—GFVBÖ&¶WBÖVæ–æs¢·f–WuöÆ–æWÒ"¢–b.«ˆÉËRşÉé»;È¹ÎÉêR"æ÷B–âæ÷&ÖÆ—¦VEö¦"ævWB‚'6V7F÷'2"ÂµÒ“ ¢W'&÷'2æVæB‚$¤"f–ææ6–Â'F–6ÆRÆ÷7B—G2f–ææ6R6V7F÷"6Æ76–f–6F–öâ"¢–b¦%÷F—FÆR–â6÷&UöÆ–æR÷"¦%÷F—FÆR–âf–WuöÆ–æS ¢W'&÷'2æVæB‚$¤"f–ææ6–Â7VÖÖ'’&WVFVBF†R†VFÆ–æR–ç7FVBöb'F–6ÆRf7G2"¢f÷"Ö&¶W"–âdõ$$”DDTåô4ôÕ5EôÔ$´U%3 ¢–bÖ&¶W"–â&VæFW&VC ¢W'&÷'2æVæB†b$¤"f–ææ6–Â6ö×7BFVÆVw&Ò7VÖÖ'’&WF–æVB¶Ö&¶W'Ò"¢f–VÆEöW'&÷'2Ò6ö×7E÷&÷6UöW'&÷'2‡&VæFW&VB¢–bf–VÆEöW'&÷'3 ¢W'&÷'2æVæB€¢$¤"f–ææ6–Â6ö×7Bf7G2W†6VVFVBf–VÆBÆ–Ö—G3¢"²"Â"æ¦ö–â†f–VÆEöW'&÷'2¢ ¢FWF–ÆVEö'F–6ÆUö66W2Ò°¢€¢%´UNØ«Êy^Ê;ÅŞÉÊÙYÎÉiÙh’ÂC#S>Ék^É¹«yÎºª‚ÉéÈ*ÎÊ;ÂÈhÎ«ÉyÈ8È«ÈK‚"À¢€¢.ÉÊÙYÎÉiÙhÉÛBC#S>Ék^É¹«yÎºªÉÙ‚ÉéÈ*ÎÊ;ÂÈhÎ««+Ê	^ÉyÈ8È«ÈK¸ºBâ ¢.«ˆÉË^«	¸ø^É¹ÊNÉé«;^È¹ÎÈ¹ÎÈªNØYÎÉy¹Kº[Nº›BÉÊÙYÎÉiÙhÉØÊN¸*ÉÛNÈ*ÎÙ¨Îº[ÂÉ{N«: ¢#C#S>ÉkS3scºxÃCÉ¹«yÎºªÉÙ‚ÉéÈ*ÎÊ;Îº[ÂÈhÎ«ÙY«‹ºÂ«+Ê	^Ùh¸ºN«:«;^È¹ÎÙh¸ºBâ ¢.ÈhÎ«ÉˆÊ	^ÉÛÎÉØÉŠN¸©B3ÉÛÎÉÛNº›ÂÈhÎ«¸ÈÈ8ÉØ»;NØk^Ê;ÎÉ˜Ê(^ºYÊ;Îº[ÂØúÎÙZÙYÂ ¢.ËIÒcnºxÃCC#Ê;Î¸ºBâ ¢’À¢‚#C#S>ÉkS3scºxÃCÉ¹"Â.ÈhÎ«"Â#cnºxÃCC#Ê;Â"Â#3ÉÛÂ"’À¢‚.ºzNÉè\+~ÈhÎ«"Â’À¢‚.»	ÎÙhÊ;ÎÈ¹Ò"Â.Ê;Î¸»«Ë™‚"’À¢’À¢€¢%´UNØ«Êy^Ê;ÅŞÙˆN¸ÈË
-‚Â.»hN«‹ÈºNÊ»hÊxNÉyÙY¹ÛŞÈK‚"À¢€¢.ÙˆN¸ÈË
-¸©BÊN¸*.»hN«‹É{«+«‹ÊHÉˆÉx^ÉÛNÉÛ^ÉÛB.ÊƒSÉk^É¹ÉËÎºÂÊx¸)ÎÙ[B ¢.«	ÉØ«‹«N»;N¸ºB#ã‚R«	ÈhÎÙh¸ºN«:»	ŞÙ‰N¸ºBâºzNËiÎÉØCÊ#S>Ék^É¹ÉËÎºÂ ¢#ã’RÊiŞ«ÙhÊxºxÂÂÉˆÉx^ÉÛNÉÛ^ºZÉØRã‚^ºÂÉ{«B«ÉÛN¸ÙÈªBƒbã7ãrã2Rº[Â ¢.»	¸øÎÉY¸ºBâ¸øNºzNØÉºzN¸©B“ºxÃ#¸ÈºÂÊN¸XB¸ù«‹¸È»˜Bbã’R«	ÈhÎÙh¸ºBâ ¢’À¢‚#.ÊƒSÉk^É¹"Â##ã‚R«	ÈhÂ"Â#CÊ#S>Ék^É¹"Â#Rã‚R"Â#bã7ãrã2R"’À¢‚.ÉˆÉx^ÉÛNÉÛRƒSÉk^É¹"Â’À¢‚.ÉÛNÉÛRËiNÊ	R"Â.«ÉÛN¸ÙÈªB"’À¢’À¢Ğ¢f÷"66Uö–æFW‚Â€¢F—FÆRÀ¢&öG’À¢&WV—&VEöf7G2À¢f÷&&–FFVåöf7G2À¢&WV—&VE÷f–Wuöf7G2À¢’–âVçVÖW&FR€¢FWF–ÆVEö'F–6ÆUö66W2À¢À¢“ ¢FWF–ÂÒ6ö×7BæW‡G&7Eö'F–6ÆUöFWF–Â†f—‡GW&R‡F—FÆRÂ&öG’’ÂF—FÆR¢&÷rÒ°¢'6÷W&6R#¢.ÊNÉéÈººË‚ÉŠN¸©ÉÙ‚¸›NÈªB"À¢&Æ–W"#¢'G'W7FVB"À¢'V&Æ—6†W"#¢.ÊNÉéÈººË‚"À¢'F—FÆR#¢F—FÆRÀ¢'6÷W&6U÷F—FÆR#¢FWF–Å²'F—FÆR%ÒÀ¢'6÷W&6Uö&öG’#¢FWF–Å²&&öG’%ÒÀ¢'6÷W&6Uö'7G&7B#¢FWF–Å²&&öG’%ÒÀ¢'7VÖÖ'’#¢FWF–Å²&&öG’%ÒÀ¢&Æ–æ²#¢b&‡GG3¢ò÷wwræWFæWw2æ6öÒó##cs#Cg¶66Uö–æFW‚²'Ò"À¢'V&Æ—6†VB#¢æ÷rÀ¢&&öG•÷fW&–f–VB#¢G'VRÀ¢Ğ¢ÆW'BÒ&öGV7F–öâæ6öçG&7Bç7G&–7Bæ6Æ76–g’‡&÷rÂæ÷r¢–bæ÷BÆW'C ¢W'&÷'2æVæB†b&FWF–ÆVB¶÷&Vâ'F–6ÆR66Rv2æ÷B6Æ76–f–VC¢·F—FÆWÒ"¢6öçF–çVP¢&VæFW&VBÒ6ö×7Bæ6ö×7EöÆW'B€¢6ö×7Bææ÷&ÖÆ—¦UöÆW'Eöf÷%ö÷WGWB†ÆW'B’À¢À¢æ÷rÀ¢·ÒÀ¢·ÒÀ¢¢6÷&UöÆ–æRÒæW‡B€¢†Æ–æRf÷"Æ–æR–â&VæFW&VBç7Æ—FÆ–æW2‚’–bÆ–æRç7F'G7v—F‚‚"ÒÙ[^ÈºÃ¢"’’À¢""À¢¢f–WuöÆ–æRÒæW‡B€¢†Æ–æRf÷"Æ–æR–â&VæFW&VBç7Æ—FÆ–æW2‚’–bÆ–æRç7F'G7v—F‚‚"ÒØŠÎÉéØúÎÉÛØ«ƒ¢"’’À¢""À¢¢–bæ÷BÆÂ†f7B–â6÷&UöÆ–æRf÷"f7B–â&WV—&VEöf7G2“ ¢W'&÷'2æVæB†b&FWF–ÆVB¶÷&Vâ'F–6ÆR6÷&RöÖ—GFVBf7G3¢¶6÷&UöÆ–æWÒ"¢–bç’†f7B–â6÷&UöÆ–æRf÷"f7B–âf÷&&–FFVåöf7G2“ ¢W'&÷'2æVæB†b&FWF–ÆVB¶÷&Vâ'F–6ÆR6÷&R–çfVçFVB÷"6Æ—VBf7C¢¶6÷&UöÆ–æWÒ"¢–bæ÷BÆÂ†f7B–âf–WuöÆ–æRf÷"f7B–â&WV—&VE÷f–Wuöf7G2“ ¢W'&÷'2æVæB†b&FWF–ÆVB¶÷&Vâ'F–6ÆR–çfW7FÖVçBö–çBöÖ—GFVBÖVæ–æs¢·f–WuöÆ–æWÒ" ¢6–FV6%ö6÷&RÒ6ö×7BæÖ&¶WE÷6–FV6%öf7B€¢.ËÙNÈªNÙKÎ8hŞËÙNÈªN¸ºR¸ù»	‚ºzN¸øBÈ*ÎÉÛN¹9ÎË›B»	Î¸ù’"À¢€¢.É›«ZŞÉÛÉÛB>ÊC#ƒ^Ék^É¹Â«‹«HÉÛBÊsÉk^É¹È‰ÎºzN¸øBÊIÉÛN¸ºBâ ¢.È+ÎÈKÊNÉé‚ÓrãS’R’Â4¾ÙYÉÛN¸¸ÈªB‚ÓrãsbR’¹;ÉØÉ[ŞÈK¸ºBâ ¢’À¢¢–bæ÷BÆÂ€¢f7B–â6–FV6%ö6÷&P¢f÷"f7B–â‚.ËÙNÈªNÙKÌ+~ËÙNÈªN¸ºR"Â#>ÊC#ƒ^Ék^É¹"Â#ÊsÉk^É¹"Â#rãS’R"Â#rãsbR"¢“ ¢W'&÷'2æVæB†b'6–FV6"'F–6ÆR6÷&RöÖ—GFVBÖ&¶WBf7G3¢·6–FV6%ö6÷&WÒ" ¢F&–fe÷F—FÆRÒ.»
-ºû‚ÉÙÉ¹¸º‚Â{èîÉysRR«HÈK‚ºxÊx¸[ÈJrÊxËÉÎ¸ºÎ¹ÛÂËH«ZÂ ¢F&–feö&öG’Ò€¢.ÙYÎ«ZÒÉzÎÉ[ÂÉÙÉ¹¹:NÉÛBºû«ZÒØ«¹ûÎÙHBÙhÊ	^»hÉ˜ÉÙÙ¨Â«H«8NÉé¹:NÉØBºxÎ¸)‚ºû«ZŞÉÙ‚ºËNÉzŞ»)R ¢#3ÊÉy¹Kº[‚ËiN««HÈK««‹ÊBÙYÎºû‚ºËNÉzŞÙZÉÙÈ8«HÈKÉÊÉÛ‚R^º[Â¸IÊxÉX®ÉXNÉ[Â ¢.ÙYÎ¸ºN«:ËH«ZÎÙh¸ºBâ»ÊHÉˆÉÙÉ¹ÉØÙYÎ«ZŞÉÛB3SÉkR¸ºÎ¹úÎº[ÂØŠÎÉéÙY¸©B¸ÈÈº«‹ÊB ¢##RR«HÈKº[ÂR^ºÂ¸*îËiN«‹ºÂÙYÂºxÎØÂËiN««HÈK‚»h¸»NÉÛB»	ÎÈ9ŞÙ[NÈIÎ¸©BÉX‚¹	Î¸ºN«: ¢.»	ŞÙ‰N¸ºBâØ«¹ûÎÙHBÙhÊ	^»h¸©B«	^Ê	Î¸[¸ù’ÊÈ*Â«+«;Îº[Â«{Î«ºÂÙYÎ«ZŞÉy"ãR^ÉÙ‚«HÈKº[Â ¢.»h«;ÎÙh«:«;ÎÉèÈ9ŞÈ+ÉØBÉÛNÉÊºÂÙYÂËiN««HÈK¸øBÉˆ«:Ùh¸ºBâ ¢¢F&–feöFWF–ÂÒ6ö×7BæW‡G&7Eö'F–6ÆUöFWF–Â€¢f—‡GW&R‡F&–fe÷F—FÆRÂF&–feö&öG’’À¢F&–fe÷F—FÆRÀ¢¢F&–fe÷&÷rÒ°¢'6÷W&6R#¢.ÊNÉéÈººË‚ÉŠN¸©ÉÙ‚¸›NÈªB"À¢&Æ–W"#¢'G'W7FVB"À¢'V&Æ—6†W"#¢.ÊNÉéÈººË‚"À¢'F—FÆR#¢F&–fe÷F—FÆRÀ¢'6÷W&6U÷F—FÆR#¢F&–feöFWF–Å²'F—FÆR%ÒÀ¢'6÷W&6Uö&öG’#¢F&–feöFWF–Å²&&öG’%ÒÀ¢'6÷W&6Uö'7G&7B#¢F&–feöFWF–Å²&&öG’%ÒÀ¢'7VÖÖ'’#¢F&–feöFWF–Å²&&öG’%ÒÀ¢&Æ–æ²#¢&‡GG3¢ò÷wwræWFæWw2æ6öÒó##cs#CsB"À¢'V&Æ—6†VB#¢æ÷rÀ¢&&öG•÷fW&–f–VB#¢G'VRÀ¢Ğ¢F&–feöÆW'BÒ&öGV7F–öâæ6öçG&7Bç7G&–7Bæ6Æ76–g’‡F&–fe÷&÷rÂæ÷r¢–bæ÷BF&–feöÆW'C ¢W'&÷'2æVæB‚$¶÷&VF&–fb'F–6ÆRv2æ÷B6Æ76–f–VB"¢VÇ6S ¢æ÷&ÖÆ—¦VE÷F&–fbÒ6ö×7Bææ÷&ÖÆ—¦UöÆW'Eöf÷%ö÷WGWB‡F&–feöÆW'B¢g…÷6æ6†÷BÒ°¢'VW'•÷F–ÖUö·7B#¢æ÷ræ—6öf÷&ÖB‡F–ÖW7V3Ò'6V6öæG2"’À¢'&FW2#¢°¢%U4B#¢°¢&6öFR#¢%U4B"À¢'fÇVR#¢CcBãƒ‚À¢'7FGW2#¢.ËYÎ«{Î«¹é‚"À¢'&VfW&Væ6U÷F–ÖUö·7B#¢###bÓrÓ#EC3£#³“£"À¢'VW'•÷F–ÖUö·7B#¢æ÷ræ—6öf÷&ÖB‡F–ÖW7V3Ò'6V6öæG2"’À¢'6÷W&6R#¢%–†öòf–ææ6R"À¢'W&Â#¢6ö×7Bç–†öõög…÷W&Â‚%U4B"’À¢&W'&÷"#¢""À¢Ğ¢ÒÀ¢Ğ¢æ÷&ÖÆ—¦VE÷F&–fe²&g…ö6öçfW'6–öâ%ÒÒ6ö×7Bæ'V–ÆEöÆW'Eög…ö6öçfW'6–öâ€¢æ÷&ÖÆ—¦VE÷F&–fbÀ¢g…÷6æ6†÷BÀ¢æ÷rÀ¢¢&VæFW&VBÒ6ö×7Bæ6ö×7EöÆW'B†æ÷&ÖÆ—¦VE÷F&–fbÂÂæ÷rÂ·ÒÂ·Ò¢6÷&UöÆ–æRÒæW‡B€¢†Æ–æRf÷"Æ–æR–â&VæFW&VBç7Æ—FÆ–æW2‚’–bÆ–æRç7F'G7v—F‚‚"ÒÙ[^ÈºÃ¢"’’À¢""À¢¢–çfW7FÖVçEöÆ–æRÒæW‡B€¢†Æ–æRf÷"Æ–æR–â&VæFW&VBç7Æ—FÆ–æW2‚’–bÆ–æRç7F'G7v—F‚‚"ÒØŠÎÉéØúÎÉÛØ«ƒ¢"’’À¢""À¢¢6÷W&6UöÆ–æRÒæW‡B€¢†Æ–æRf÷"Æ–æR–â&VæFW&VBç7Æ—FÆ–æW2‚’–bÆ–æRç7F'G7v—F‚‚"ÒËiÎË)ƒ¢"’’À¢""À¢¢&WV—&VEöf7G2Ò‚#"ãRR"Â.ËiN««HÈK‚"Â#RR"Â#3SÉkR¸ºÎ¹úÂ"Â.É[ÒS"ã~ÊÉ¹"¢–bæ÷BÆÂ‡FW&Ò–â6÷&UöÆ–æRf÷"FW&Ò–â&WV—&VEöf7G2“ ¢W'&÷'2æVæB†b$¶÷&VF&–fbFWF–ÆVB6÷&RöÖ—GFVB'F–6ÆRf7G3¢¶6÷&UöÆ–æWÒ"¢–bÆVâ†6÷&UöÆ–æRç&VÖ÷fW&Vf—‚‚"ÒÙ[^ÈºÃ¢"’ç7G&—‚’’ÃÒS ¢W'&÷'2æVæB‚$¶÷&VF&–fb6÷&R&Vw&W76VBFòF†Rf÷&ÖW"SÖ6†&7FW"6"¢–b.««*«+ŞÉøº
-R"æ÷B–â–çfW7FÖVçEöÆ–æR÷".ºxÊxB"æ÷B–â–çfW7FÖVçEöÆ–æS ¢W'&÷'2æVæB†b$¶÷&VF&–fb–çfW7FÖVçBö–çB—2æ÷BFV6—6–öâ×W6VgVÃ¢¶–çfW7FÖVçEöÆ–æWÒ"¢–b%–†öòf–ææ6RU4Bôµ%r"æ÷B–â6÷W&6UöÆ–æR÷"###bÓrÓ#EC3£#³“£"æ÷B–â6÷W&6UöÆ–æS ¢W'&÷'2æVæB†b$¶÷&VF&–fbe‚&÷fVææ6RÖ—76–æs¢·6÷W&6UöÆ–æWÒ"¢–b.(
-b"–â&VæFW&VB÷""âââ"–â&VæFW&VC ¢W'&÷'2æVæB‚$¶÷&VF&–fb6ö×7B÷WGWB6öçF–ç2G'Væ6FVB6VçFVæ6R"¢f÷"Ö&¶W"–âdõ$$”DDTåô4ôÕ5EôÔ$´U%3 ¢–bÖ&¶W"–â&VæFW&VC ¢W'&÷'2æVæB†b$¶÷&VF&–fb6ö×7B÷WGWB&WF–æVB&VÖ÷fVBf–VÆB¶Ö&¶W'Ò" ¢WW%öÖ÷VçG2Ò6ö×7BæW‡G&7Eöf÷&V–våöÖ÷VçG2‚.ÉÊ¹ûÒ«;^Éê^Éy#ÉkRÉÊºÎº[ÂØŠÎÉéÙYÎ¸ºBâ"¢–bæ÷BWW%öÖ÷VçG2÷"WW%öÖ÷VçG5³ÒævWB‚&6öFR"’Ò$UU"# ¢W'&÷'2æVæB‚$UU"Ö÷VçB'6W"F–Bæ÷BFWFV7BWW&òÖFVæöÖ–æFVB–çfW7FÖVçB"¢VÇ6S ¢WW%öÆW'BÒ°¢'FVÆVw&Õö6÷&Uöf7B#¢.ÉÊ¹ûÒ«;^Éê^Éy#ÉkRÉÊºÎº[ÂØŠÎÉéÙYÎ¸ºBâ"À¢&æWw2#¢.ÉÊ¹ûÒ«;^ÉêRØŠÎÉé"À¢Ğ¢WW%÷6æ6†÷BÒ°¢'VW'•÷F–ÖUö·7B#¢æ÷ræ—6öf÷&ÖB‡F–ÖW7V3Ò'6V6öæG2"’À¢'&FW2#¢°¢$UU"#¢°¢&6öFR#¢$UU""À¢'fÇVR#¢ccbã"À¢'7FGW2#¢.ËYÎ«{Î«¹é‚"À¢'&VfW&Væ6U÷F–ÖUö·7B#¢###bÓrÓ#EC3£’³“£"À¢'VW'•÷F–ÖUö·7B#¢æ÷ræ—6öf÷&ÖB‡F–ÖW7V3Ò'6V6öæG2"’À¢'6÷W&6R#¢%–†öòf–ææ6R"À¢'W&Â#¢6ö×7Bç–†öõög…÷W&Â‚$UU""’À¢&W'&÷"#¢""À¢Ğ¢ÒÀ¢Ğ¢WW%ö6öçfW'6–öâÒ6ö×7Bæ'V–ÆEöÆW'Eög…ö6öçfW'6–öâ†WW%öÆW'BÂWW%÷6æ6†÷BÂæ÷r¢6öçfW'FVBÒ6ö×7BæÇ•ö·'uö6öçfW'6–öç2€¢.ÉÊ¹ûÒ«;^Éê^Éy#ÉkRÉÊºÎº[ÂØŠÎÉéÙYÎ¸ºBâ"À¢WW%ö6öçfW'6–öâÀ¢¢–b##ÉkRÉÊºÂÉ[Ò2ã>ÊÉ¹’"æ÷B–â6öçfW'FVC ¢W'&÷'2æVæB†b$UU"Ö÷VçBv2æ÷B6öçfW'FVBFòµ%s¢¶6öçfW'FVGÒ" ¢&WV—&VEö7W'&Væ7•ö6öFW2Ò°¢%U4B"Â$UU""Â$¥’"Â$4å’"Â$t%"Â$4„b"Â$4B"Â$TB"Â$„´B"Â%4tB"Â%EtB ¢Ğ¢–bæ÷B&WV—&VEö7W'&Væ7•ö6öFW2æ—77V'6WB†6ö×7Bädõ$T”tåô5U%$Tä5•õ5T52“ ¢W'&÷'2æVæB‚&Ö¦÷"v÷&ÆBÖ7W'&Væ7’µ%r6öçfW'6–öâ6÷fW&vR—2–æ6ö×ÆWFR"¢W6E÷&Vf—…öÖ÷VçG2Ò6ö×7BæW‡G&7Eöf÷&V–våöÖ÷VçG2€¢%F†Rw&VVÖVçB–æ6ÇVFW2U4B3S&–ÆÆ–öâöb–çfW7FÖVçBâ ¢¢–b€¢æ÷BW6E÷&Vf—…öÖ÷VçG0¢÷"W6E÷&Vf—…öÖ÷VçG5³ÒævWB‚&6öFR"’Ò%U4B ¢÷"W6E÷&Vf—…öÖ÷VçG5³ÒævWB‚&Ö÷VçB"’Ò3Sóóó ¢“ ¢W'&÷'2æVæB‚$•4ò×&Vf—†VBf÷&V–vâÖ÷VçB'6W"F–Bæ÷BFWFV7BU4B3S&–ÆÆ–öâ"  ¦–bõöæÖUõòÓÒ%õöÖ–åõò# ¢&—6R7—7FVÔW†—B†Ö–â‚’
+        <title>Reuters test headline</title><link>{bing_link.replace('&', '&amp;')}</link>
+        <description>test</description><pubDate>Thu, 09 Jul 2026 19:26:00 GMT</pubDate>
+        <news:Source>Reuters</news:Source></item></channel></rss>'''
+    parsed_fixture = production.base.parse_rss(bing_fixture, "Bing fixture", "trusted")
+    if not parsed_fixture or parsed_fixture[0].get("publisher") != "Reuters":
+        errors.append("Bing RSS publisher source was not parsed")
+    elif parsed_fixture[0].get("link") != target:
+        errors.append("Bing RSS redirect was not unwrapped to the source URL")
+
+    now = production.base.kst_now()
+    assert_compact_live_output_contract(compact, now, errors)
+    assert_current_high_impact_article_coverage(production, compact, now, errors)
+    china_mofcom_row = {
+        "source": "Trusted news ì¤‘êµ­ ìƒë¬´ë¶€ ìˆ˜ì¶œí†µì œ/ê´€ì„¸",
+        "layer": "trusted",
+        "publisher": "Reuters",
+        "title": "China Ministry of Commerce temporarily suspends helium exports starting today",
+        "link": "https://www.reuters.com/world/china/example-helium-export-suspension",
+        "summary": "MOFCOM said the temporary export suspension applies immediately, pending further notice.",
+        "published": now,
+    }
+    china_alert = production.contract.strict.classify(china_mofcom_row, now)
+    if not china_alert:
+        errors.append("China MOFCOM helium export suspension was not classified")
+    else:
+        normalized_china = compact.normalize_alert_for_output(china_alert)
+        if "ì¤‘êµ­ ìƒë¬´ë¶€" not in str(normalized_china.get("news") or "") or "í—¬ë¥¨" not in str(normalized_china.get("news") or ""):
+            errors.append("China MOFCOM helium alert did not render a specific Korean title")
+        if not compact.has_direct_market_path("", normalized_china):
+            errors.append("China MOFCOM strategic-material alert lost its Korea-market path")
+        if not compact.has_decision_impact(normalized_china):
+            errors.append("China MOFCOM strategic-material alert lost its decision-impact classification")
+
+    # Regression fixture for the July 14 UAE EAR rule.  Its official abstract
+    # mentions civil nuclear generation among several dual-use items, but the
+    # source subject is an EAR treatment rule and must never render as nuclear.
+    uae_ear_row = {
+        "source": "Federal Register Commerce",
+        "layer": "official",
+        "publisher": "Federal Register",
+        "title": "Enhanced Favorable Treatment for the United Arab Emirates Under the Export Administration Regulations",
+        "source_title": "Enhanced Favorable Treatment for the United Arab Emirates Under the Export Administration Regulations",
+        "source_document_number": "2026-14132",
+        "source_metadata_url": "https://www.federalregister.gov/api/v1/documents/2026-14132",
+        "link": "https://www.federalregister.gov/documents/2026/07/14/2026-14132/enhanced-favorable-treatment-for-the-united-arab-emirates-under-the-export-administration",
+        "summary": (
+            "Final rule 2026-14132. BIS removes the UAE from Country Groups D:3 and D:4 "
+            "and adds it to Country Group A:5. Strategic Trade Authorization becomes available "
+            "for approved entities, including dual-use items for civil nuclear power generation."
+        ),
+        "source_abstract": (
+            "BIS removes the UAE from Country Groups D:3 and D:4 and adds it to Country Group A:5. "
+            "Strategic Trade Authorization becomes available for approved entities, including dual-use "
+            "items for civil nuclear power generation."
+        ),
+        "published": now,
+    }
+    uae_ear_alert = production.contract.strict.classify(uae_ear_row, now)
+    if not uae_ear_alert:
+        errors.append("Federal Register UAE EAR final rule was not classified")
+    else:
+        normalized_uae_ear = compact.normalize_alert_for_output(uae_ear_alert)
+        rendered_uae_ear = " ".join(
+            str(normalized_uae_ear.get(key) or "")
+            for key in ["news", "policy_plain_summary", "investment_view", "korea_market_impact"]
+        )
+        if "UAE" not in rendered_uae_ear or "ìˆ˜ì¶œê´€ë¦¬ê·œì •" not in rendered_uae_ear or "BIS" not in rendered_uae_ear:
+            errors.append(f"Federal Register UAE EAR rule lost its source subject: {rendered_uae_ear}")
+        if any(term in str(normalized_uae_ear.get("news") or "") for term in ["ì›ì „", "SMR", "ê°€ìŠ¤í„°ë¹ˆ", "ë‘ì‚°"]):
+            errors.append(f"Federal Register UAE EAR rule rendered as an unrelated nuclear alert: {normalized_uae_ear.get('news')}")
+        if not compact.source_output_aligned(normalized_uae_ear):
+            errors.append("Federal Register UAE EAR source/body alignment guard did not pass")
+        selected_uae_ear = compact.quality_display_alerts([uae_ear_alert], 5)
+        if len(selected_uae_ear) != 1 or not compact.source_output_aligned(selected_uae_ear[0]):
+            errors.append("Federal Register UAE EAR alert failed final selection source/body alignment")
+
+    # Regression fixture for the July 21 Reuters Treasury-tax article.  The
+    # collector query label contains nuclear/rate terms, but labels are routing
+    # metadata and must never become article evidence or a Korean market theme.
+    treasury_tax_row = {
+        "source": "Trusted news ì›ì „ ì¸í”„ë¼ ê¸ˆë¦¬ì¸í•˜",
+        "layer": "trusted",
+        "publisher": "Reuters",
+        "title": "US Treasury flags Wall Street tax strategies potentially abusive, Bloomberg News reports",
+        "summary": (
+            "The Treasury Department identified several Wall Street tax strategies as potentially "
+            "abusive, Bloomberg News reported."
+        ),
+        "link": (
+            "https://www.reuters.com/legal/government/"
+            "us-treasury-flags-wall-street-tax-strategies-potentially-abusive-bloomberg-news-2026-07-21/"
+        ),
+        "published": now,
+    }
+    treasury_source_text = production.base.source_content_text(treasury_tax_row)
+    if any(term in treasury_source_text for term in ["ì›ì „", "smr", "ê°€ìŠ¤í„°ë¹ˆ", "ê¸ˆë¦¬ì¸í•˜"]):
+        errors.append("collector query label leaked into Reuters Treasury source content")
+    treasury_tax_alert = production.contract.strict.classify(treasury_tax_row, now)
+    if treasury_tax_alert is not None:
+        errors.append("unrelated Reuters Treasury tax-strategy article was classified as high-impact Korea-market news")
+
+    poisoned_treasury_alert = {
+        "score": 100,
+        "importance": "ìƒ",
+        "status": "ê³µì‹ í™•ì¸ ì „",
+        "source": treasury_tax_row["source"],
+        "publisher": treasury_tax_row["publisher"],
+        "source_title": treasury_tax_row["title"],
+        "source_abstract": treasury_tax_row["summary"],
+        "original_news": treasury_tax_row["title"],
+        "link": treasury_tax_row["link"],
+        "published": now.isoformat(timespec="minutes"),
+        "news": "ë¯¸êµ­ ì›ì „Â·SMRÂ·AI ì „ë ¥ ì •ì±… ì‹œê°„í‘œ ì²´í¬",
+        "policy_plain_summary": "ì›ì „, SMR, ê°€ìŠ¤í„°ë¹ˆ, AI ì „ë ¥ìˆ˜ìš” ê´€ë ¨ ì •ì±… ì‹œê°„í‘œì…ë‹ˆë‹¤.",
+        "investment_view": "ì›ì „ ê¸°ìì¬ ë°œì£¼ì™€ ìˆ˜ì£¼ ê¸°ëŒ€ë¥¼ í™•ì¸í•©ë‹ˆë‹¤.",
+        "korea_market_impact": "ë‘ì‚°ì—ë„ˆë¹Œë¦¬í‹°ì™€ KHNP ìˆ˜ê¸‰ì„ í™•ì¸í•©ë‹ˆë‹¤.",
+        "impacts": ["í• ì¸ìœ¨"],
+        "paths": ["í• ì¸ìœ¨"],
+        "sectors": ["ì›ì „/SMR/ê°€ìŠ¤í„°ë¹ˆ", "ë‘ì‚°ì—ë„ˆë¹Œë¦¬í‹°/KHNP"],
+    }
+    if "ì›ì „" in compact.source_evidence_text(poisoned_treasury_alert):
+        errors.append("collector query label leaked into final source evidence")
+    if compact.source_output_aligned(poisoned_treasury_alert):
+        errors.append("Reuters Treasury tax article passed with an unrelated nuclear headline/body")
+    if compact.quality_display_alerts([poisoned_treasury_alert], 5):
+        errors.append("Reuters Treasury source/body mismatch reached final Telegram selection")
+
+    legitimate_nuclear_row = {
+        "source": "Trusted news ì›ìì¬/ê¸ˆë¦¬/í™˜ìœ¨",
+        "layer": "trusted",
+        "publisher": "Reuters",
+        "title": "US backs Westinghouse AP1000 nuclear reactor construction with low-cost loans",
+        "summary": (
+            "The program supports construction of AP1000 nuclear reactors to meet rising data-center "
+            "power demand, subject to licensing and final financing."
+        ),
+        "link": "https://www.reuters.com/business/energy/example-ap1000-nuclear-loans",
+        "published": now,
+    }
+    legitimate_nuclear_alert = production.contract.strict.classify(legitimate_nuclear_row, now)
+    if legitimate_nuclear_alert is None:
+        errors.append("source-authored AP1000 nuclear article was lost after query-label isolation")
+    else:
+        normalized_nuclear = compact.normalize_alert_for_output(legitimate_nuclear_alert)
+        if not compact.source_output_aligned(normalized_nuclear):
+            errors.append("source-authored AP1000 nuclear article failed source/body alignment")
+
+    iran_row = {
+        "source": "Trusted news ì´ë€/í˜¸ë¥´ë¬´ì¦ˆ ê¸´ê¸‰ìƒí™©",
+        "layer": "trusted",
+        "publisher": "AP News",
+        "title": "US attacks Iran over ship being hit in Strait of Hormuz; Tehran lashes out again at Gulf Arab states",
+        "link": "https://apnews.com/article/iran-hormuz-regression-fixture",
+        "summary": "The U.S. military completed airstrikes targeting Iran after a civilian vessel was attacked in the Strait of Hormuz, threatening the ceasefire.",
+        "published": now,
+    }
+    iran_alert = production.contract.strict.classify(iran_row, now)
+    if not iran_alert:
+        errors.append("Iran/Hormuz ship attack and U.S. strike was not classified")
+    else:
+        normalized_iran = compact.normalize_alert_for_output(iran_alert)
+        if normalized_iran.get("news") != "ë¯¸êµ­, ì´ë€ ì¬ê³µê²©Â·í˜¸ë¥´ë¬´ì¦ˆ ìƒì„  í”¼ê²©: íœ´ì „Â·ìœ ê°€ ë¦¬ìŠ¤í¬":
+            errors.append(f"Iran/Hormuz alert did not render a specific Korean title: {normalized_iran.get('news')}")
+        expected_impacts = {"ëˆ ë²„ëŠ” ëŠ¥ë ¥", "í• ì¸ìœ¨", "ìˆ˜ê¸‰", "ì‹œê°„í‘œ"}
+        if not expected_impacts.issubset(set(normalized_iran.get("impacts") or [])):
+            errors.append(f"Iran/Hormuz alert lost decision impacts: {normalized_iran.get('impacts')}")
+        if not normalized_iran.get("realtime_policy_lane"):
+            errors.append("Iran/Hormuz alert was not routed to the realtime policy lane")
+        reuters_duplicate = dict(normalized_iran)
+        reuters_duplicate.update({
+            "publisher": "Reuters on MSN",
+            "source": "Trusted news ì´ë€/í˜¸ë¥´ë¬´ì¦ˆ ê¸´ê¸‰ìƒí™©",
+            "link": "https://www.reuters.com/world/iran-hormuz-regression-fixture",
+            "published": "2026-07-12T10:30+09:00",
+            "original_news": "US strikes Iran, Tehran says Strait of Hormuz closed, Gulf states hit",
+        })
+        one_story = compact.quality_display_alerts([reuters_duplicate, normalized_iran], 5)
+        if len(one_story) != 1 or "AP" not in str(one_story[0].get("publisher") or ""):
+            errors.append(f"Iran/Hormuz cross-source story was not deduped to AP: {one_story}")
+        raw_reuters_variant = dict(normalized_iran)
+        raw_reuters_variant.update({
+            "news": "íŠ¸ëŸ¼í”„ ì—ë„ˆì§€ ë°œì–¸: ìœ ê°€Â·ìš´ì„ ë¦¬ìŠ¤í¬",
+            "original_news": "U.S. renews strikes on Iran as tanker is attacked in Strait of Hormuz",
+            "publisher": "Reuters",
+            "link": "https://www.reuters.com/world/iran-cross-source-seen-fixture",
+        })
+        ap_title_keys = {key for key in production.telegram.alert_seen_keys(normalized_iran) if key.startswith("title:")}
+        reuters_title_keys = {key for key in production.telegram.alert_seen_keys(raw_reuters_variant) if key.startswith("title:")}
+        if not ap_title_keys.intersection(reuters_title_keys):
+            errors.append("Iran/Hormuz cross-source variants did not share a canonical seen key")
+        live_remaining, live_routed = production.telegram.partition_realtime_policy_alerts([normalized_iran], True)
+        if live_remaining or live_routed != [normalized_iran]:
+            errors.append("Iran/Hormuz alert was not single-routed away from live radar duplication")
+        preopen_remaining, preopen_routed = production.telegram.partition_realtime_policy_alerts([normalized_iran], False)
+        if preopen_remaining != [normalized_iran] or preopen_routed:
+            errors.append("Iran/Hormuz alert was not retained for the 06:30 radar")
+
+    # A story already announced by the real-time lane must still be available
+    # to the once-daily 06:30 digest. This guards the failure where overnight
+    # live polls consumed every preopen candidate before the morning run.
+    live_only_probe = {
+        "news": "ì¥ì „ seen-state íšŒê·€ ê²€ì‚¬",
+        "original_news": "Preopen seen-state regression fixture",
+        "publisher": "Reuters",
+        "link": "https://www.reuters.com/world/preopen-seen-regression-fixture",
+    }
+    preopen_probe = {
+        "news": "ì „ë‚  ì¥ì „íŒ ì¤‘ë³µ íšŒê·€ ê²€ì‚¬",
+        "original_news": "Prior preopen duplicate regression fixture",
+        "publisher": "Reuters",
+        "link": "https://www.reuters.com/world/prior-preopen-duplicate-regression-fixture",
+    }
+    live_key = production.telegram.alert_seen_keys(live_only_probe)[0]
+    preopen_key = production.telegram.alert_seen_keys(preopen_probe)[0]
+    original_load_seen_state = production.telegram.load_seen_state
+    production.telegram.load_seen_state = lambda: {
+        "seen": {
+            live_key: {"first_seen_kst": now.isoformat(), "lanes": {"live": now.isoformat()}},
+            preopen_key: {"first_seen_kst": now.isoformat(), "lanes": {"preopen": now.isoformat()}},
+        },
+        "updated_at_kst": now.isoformat(),
+    }
+    try:
+        probes = [live_only_probe, preopen_probe]
+        live_fresh, live_skipped = production.telegram.filter_alerts_for_run_mode(probes, now, True)
+        preopen_fresh, preopen_skipped = production.telegram.filter_alerts_for_run_mode(probes, now, False)
+    finally:
+        production.telegram.load_seen_state = original_load_seen_state
+    if live_fresh or live_skipped != probes:
+        errors.append("live radar no longer applies seen-state suppression")
+    if len(preopen_fresh) != 1 or preopen_fresh[0].get("link") != live_only_probe["link"]:
+        errors.append("06:30 preopen digest did not retain the live-only story")
+    elif not preopen_fresh[0].get("_preopen_live_seen_bypass"):
+        errors.append("06:30 preopen digest lost its live-seen bypass marker")
+    if len(preopen_skipped) != 1 or preopen_skipped[0].get("link") != preopen_probe["link"]:
+        errors.append("06:30 preopen digest repeated a prior preopen story")
+    if not production.telegram.seen_entry_has_lane({"first_seen_kst": now.isoformat()}, "preopen"):
+        errors.append("legacy seen-state was not suppressed from repeat preopen delivery")
+
+    legacy_state = {
+        "seen": {
+            "title:old-raw-source-key": {
+                "first_seen_kst": now.isoformat(),
+                "title": "ë¯¸êµ­, ì´ë€ ì¬ê³µê²©Â·í˜¸ë¥´ë¬´ì¦ˆ ìƒì„  í”¼ê²©: íœ´ì „Â·ìœ ê°€ ë¦¬ìŠ¤í¬",
+            }
+        }
+    }
+    production.telegram.migrate_seen_title_aliases(legacy_state)
+    expected_legacy_alias = "title:" + production.telegram.digest_seen(
+        "ë¯¸êµ­, ì´ë€ ì¬ê³µê²©Â·í˜¸ë¥´ë¬´ì¦ˆ ìƒì„  í”¼ê²©: íœ´ì „Â·ìœ ê°€ ë¦¬ìŠ¤í¬"
+    )
+    if expected_legacy_alias not in legacy_state["seen"]:
+        errors.append("legacy seen-state did not gain a canonical Korean-title alias")
+
+    lane_state = {
+        "seen": {
+            live_key: {
+                "first_seen_kst": now.isoformat(),
+                "lanes": {"live": now.isoformat()},
+            }
+        },
+        "updated_at_kst": now.isoformat(),
+    }
+    original_load_seen_state = production.telegram.load_seen_state
+    original_save_seen_state = production.telegram.save_seen_state
+    original_run_mode = os.environ.get("RADAR_RUN_MODE")
+    production.telegram.load_seen_state = lambda: lane_state
+    production.telegram.save_seen_state = lambda state, _now: lane_state.update(state)
+    try:
+        os.environ["RADAR_RUN_MODE"] = "preopen"
+        recorded_probe = dict(live_only_probe)
+        recorded_probe["_seen_keys"] = [live_key]
+        production.telegram.record_seen_alerts([recorded_probe], now)
+    finally:
+        production.telegram.load_seen_state = original_load_seen_state
+        production.telegram.save_seen_state = original_save_seen_state
+        if original_run_mode is None:
+            os.environ.pop("RADAR_RUN_MODE", None)
+        else:
+            os.environ["RADAR_RUN_MODE"] = original_run_mode
+    recorded_lanes = lane_state["seen"][live_key].get("lanes") or {}
+    if not {"live", "preopen"}.issubset(set(recorded_lanes)):
+        errors.append(f"seen-state did not preserve live and preopen lanes: {recorded_lanes}")
+
+    # The sender and post-send verifier must interpret the manual off-window
+    # switch identically. Otherwise Telegram can be sent while Actions reports
+    # a false failure, which hides the real delivery result.
+    tested_env = {
+        "RADAR_RUN_MODE": os.environ.get("RADAR_RUN_MODE"),
+        "ALLOW_OFF_WINDOW_TELEGRAM": os.environ.get("ALLOW_OFF_WINDOW_TELEGRAM"),
+        "PREOPEN_SEND_WINDOW_START_KST": os.environ.get("PREOPEN_SEND_WINDOW_START_KST"),
+        "PREOPEN_SEND_WINDOW_END_KST": os.environ.get("PREOPEN_SEND_WINDOW_END_KST"),
+    }
+    try:
+        os.environ["RADAR_RUN_MODE"] = "preopen"
+        os.environ["PREOPEN_SEND_WINDOW_START_KST"] = "05:30"
+        os.environ["PREOPEN_SEND_WINDOW_END_KST"] = "07:30"
+        os.environ["ALLOW_OFF_WINDOW_TELEGRAM"] = "true"
+        off_window_time = now.replace(hour=16, minute=0, second=0, microsecond=0)
+        if not compact.preopen_send_window_open():
+            errors.append("Telegram sender ignored ALLOW_OFF_WINDOW_TELEGRAM=true")
+        if not runtime_delivery.send_window_open(off_window_time):
+            errors.append("runtime delivery verifier ignored ALLOW_OFF_WINDOW_TELEGRAM=true")
+        os.environ["ALLOW_OFF_WINDOW_TELEGRAM"] = "false"
+        if runtime_delivery.send_window_open(off_window_time):
+            errors.append("runtime delivery verifier opened the normal preopen window at 16:00 KST")
+    finally:
+        for name, value in tested_env.items():
+            if value is None:
+                os.environ.pop(name, None)
+            else:
+                os.environ[name] = value
+
+    if send_module != LOCKED_TELEGRAM_MODULE:
+        errors.append(
+            f"{PRODUCTION_RUNNER}.telegram.send_telegram is wired to {send_module}, "
+            f"expected {LOCKED_TELEGRAM_MODULE}"
+        )
+    if compact_module != LOCKED_TELEGRAM_MODULE:
+        errors.append(
+            f"{PRODUCTION_RUNNER}.telegram.compact_report is wired to {compact_module}, "
+            f"expected {LOCKED_TELEGRAM_MODULE}"
+        )
+    if final_selection_module != LOCKED_TELEGRAM_MODULE:
+        errors.append(
+            f"{PRODUCTION_RUNNER}.telegram.final_alerts_for_output is wired to {final_selection_module}, "
+            f"expected {LOCKED_TELEGRAM_MODULE}"
+        )
+    if canonical_seen_module != LOCKED_TELEGRAM_MODULE:
+        errors.append(
+            f"{PRODUCTION_RUNNER}.telegram.canonical_alert_for_seen is wired to {canonical_seen_module}, "
+            f"expected {LOCKED_TELEGRAM_MODULE}"
+        )
+
+    if errors:
+        for error in errors:
+            print(f"GAMEJOA delivery contract error: {error}")
+        return 1
+
+    print("GAMEJOA delivery contract OK: hs8879 Telegram lane is locked and send failures are fatal.")
+    return 0
+
+
+def assert_compact_live_output_contract(compact, now, errors: list[str]) -> None:
+    alert = {
+        "score": 110,
+        "importance": "ìƒ",
+        "status": "ì˜ˆë¹„",
+        "news": "ë¯¸êµ­, ì²¨ë‹¨ ë°˜ë„ì²´ ì¥ë¹„ ìˆ˜ì¶œí†µì œ í™•ëŒ€ ê²€í† ",
+        "original_news": "ë¯¸êµ­, ì²¨ë‹¨ ë°˜ë„ì²´ ì¥ë¹„ ìˆ˜ì¶œí†µì œ í™•ëŒ€ ê²€í† ",
+        "source_title": "ë¯¸êµ­, ì²¨ë‹¨ ë°˜ë„ì²´ ì¥ë¹„ ìˆ˜ì¶œí†µì œ í™•ëŒ€ ê²€í† ",
+        "telegram_core_fact": "ë¯¸êµ­ì´ ì²¨ë‹¨ ì¥ë¹„ í†µì œë¥¼ í™•ëŒ€í•´ ì¤‘êµ­ ê³µì¥ ì¦ì„¤ ì¼ì •ì´ í”ë“¤ë¦½ë‹ˆë‹¤.",
+        "policy_plain_summary": "ë¯¸êµ­ì´ ì²¨ë‹¨ ì¥ë¹„ í†µì œë¥¼ í™•ëŒ€í•´ ì¤‘êµ­ ê³µì¥ ì¦ì„¤ ì¼ì •ì´ í”ë“¤ë¦½ë‹ˆë‹¤.",
+        "publisher": "Reuters",
+        "source": "Reuters",
+        "link": "https://www.reuters.com/world/example",
+        "published": now.isoformat(timespec="minutes"),
+        "impacts": ["ëˆ ë²„ëŠ” ëŠ¥ë ¥", "ì‹œê°„í‘œ"],
+        "paths": ["ìˆ˜ì¶œí†µì œ", "ì •ì±… ì‹œê°„í‘œ"],
+        "sectors": ["ë°˜ë„ì²´/HBM/CXL"],
+    }
+    prior_mode = os.environ.get("RADAR_RUN_MODE")
+    try:
+        os.environ["RADAR_RUN_MODE"] = "live"
+        report = compact.compact_report([alert], {}, {}, now)
+    except RuntimeError as exc:
+        errors.append(f"compact live report was blocked: {exc}")
+        return
+    finally:
+        if prior_mode is None:
+            os.environ.pop("RADAR_RUN_MODE", None)
+        else:
+            os.environ["RADAR_RUN_MODE"] = prior_mode
+    for marker in (
+        "- íˆ¬ì í¬ì¸íŠ¸:",
+        "ğŸ’¡ ì‹¤ì‹œê°„ ë‰´ìŠ¤ ì½”ë©˜íŠ¸",
+        "ì˜¤ëŠ˜ í•µì‹¬ ë³€í™”ëŠ”",
+        "í• ì¸ìœ¨:",
+        "ë‹¤ìŒ íˆ¬ìê¸°ìƒë„",
+        "ì¡°íšŒ:",
+    ):
+        if marker in report:
+            errors.append(f"removed live-radar text returned: {marker}")
+    if "- í•µì‹¬:" not in report or "- ì¶œì²˜:" not in report:
+        errors.append("compact live report lost its core or source line")
+    if "ì›ë¬¸ ë‰´ìŠ¤ë³´ê¸°" not in report:
+        errors.append("compact live report lost the source link")
+    field_errors = compact_prose_errors(report)
+    if field_errors:
+        errors.append("compact live prose contract failed: " + ", ".join(field_errors))
+
+    fx_alert = {
+        "telegram_core_fact": "íˆ¬ìì•¡ 9500ì–µë‹¬ëŸ¬ì™€ ì¶”ê°€ê³„íš 1ì¡°7000ì–µë‹¬ëŸ¬ê°€ ë°œí‘œëìŠµë‹ˆë‹¤.",
+        "news": "ê¸€ë¡œë²Œ íˆ¬ì ê³„íš",
+    }
+    fx_snapshot = {
+        "query_time_kst": now.isoformat(timespec="seconds"),
+        "rates": {
+            "USD": {
+                "code": "USD",
+                "value": 1462.1,
+                "status": "ê²€ì¦ ê³ ì •ê°’",
+                "reference_time_kst": now.isoformat(timespec="minutes"),
+                "query_time_kst": now.isoformat(timespec="minutes"),
+                "source": "ê²€ì¦ ê³ ì •ê°’",
+                "url": compact.yahoo_fx_url("USD"),
+                "error": "",
+            }
+        },
+    }
+    conversion = compact.build_alert_fx_conversion(fx_alert, fx_snapshot, now)
+    converted = compact.apply_krw_conversions(fx_alert["telegram_core_fact"], conversion)
+    compacted_converted = compact.compact_converted_core(
+        fx_alert["telegram_core_fact"],
+        conversion,
+        limit=50,
+    )
+    for marker in (
+        "9500ì–µë‹¬ëŸ¬(ì•½ 1,389ì¡°ì›)",
+        "1ì¡°7000ì–µë‹¬ëŸ¬(ì•½ 2,486ì¡°ì›)",
+    ):
+        if marker not in converted:
+            errors.append(f"inline KRW conversion missing: {marker} / {converted}")
+        if marker not in compacted_converted:
+            errors.append(
+                f"50-char inline KRW conversion missing: {marker} / {compacted_converted}"
+            )
+    if len(compacted_converted) > 50:
+        errors.append(f"inline KRW conversion exceeded 50 chars: {compacted_converted}")
+    if "ì™¸í™” í™˜ì‚°:" in converted or "â‰ˆ" in converted:
+        errors.append(f"legacy currency appendix syntax returned: {converted}")
+
+
+def assert_current_high_impact_article_coverage(production, compact, now, errors: list[str]) -> None:
+    publisher_domains = {
+        "íŒŒì´ë‚¸ì…œë‰´ìŠ¤": "fnnews.com",
+        "í•œêµ­ê²½ì œ": "hankyung.com",
+        "ì—°í•©ë‰´ìŠ¤": "yna.co.kr",
+        "ì´íˆ¬ë°ì´": "etoday.co.kr",
+        "ì•„ì‹œì•„ê²½ì œ": "asiae.co.kr",
+        "ë¨¸ë‹ˆíˆ¬ë°ì´": "mt.co.kr",
+        "ë§¤ì¼ê²½ì œ": "mk.co.kr",
+        "ë””ì§€í„¸íƒ€ì„ìŠ¤": "dt.co.kr",
+        "ì—°í•©ë‰´ìŠ¤TV": "yonhapnewstv.co.kr",
+        "ë‰´ìŠ¤1": "news1.kr",
+        "ì´ë°ì¼ë¦¬": "edaily.co.kr",
+    }
+    cases = [
+        (
+            "íŒŒì´ë‚¸ì…œë‰´ìŠ¤",
+            'ì  ìŠ¨ í™© "ì½”ìŠ¤í”¼ ë‹¤ì‹œ ì˜¤ë¥¼ ê²ƒ"â€¦í•œêµ­ ë°˜ë„ì²´ í˜¸í™© ì „ë§',
+            "ì  ìŠ¨ í™©ì€ í•œêµ­ ë°˜ë„ì²´ ì‚°ì—…ì´ í˜¸í™©ì´ë©° ì½”ìŠ¤í”¼ê°€ ë‹¤ì‹œ ì˜¤ë¥¼ ê²ƒì´ë¼ê³  ë§í–ˆë‹¤.",
+            "global_semiconductor_leader_signal",
+            ("ì  ìŠ¨ í™©", "ì½”ìŠ¤í”¼"),
+        ),
+        (
+            "í•œêµ­ê²½ì œ",
+            "ì‹¤ë¦¬ì½˜ë°¸ë¦¬ í‚¹ë©”ì´ì»¤ë“¤â€¦450ì¡° VC, KìŠ¤íƒ€íŠ¸ì—…ì— ë¬¸ ì—°ë‹¤",
+            "a16z ë“± ìš´ìš©ìì‚° 450ì¡°ì› ê·œëª¨ ë²¤ì²˜ìºí”¼í„¸ì´ KìŠ¤íƒ€íŠ¸ì—… íˆ¬ìì™€ í˜‘ë ¥ì„ ë…¼ì˜í–ˆë‹¤.",
+            "kstartup_global_vc_access",
+            ("450ì¡°ì›", "KìŠ¤íƒ€íŠ¸ì—…"),
+        ),
+        (
+            "í•œêµ­ê²½ì œ",
+            "êµ­ë¯¼ì—°ê¸ˆ, ì‹¤ë¦¬ì½˜ë°¸ë¦¬ ìµœìƒìœ„ VCì™€ íˆ¬ì í˜‘ë ¥ í™•ëŒ€",
+            "êµ­ë¯¼ì—°ê¸ˆì€ ì‹¤ë¦¬ì½˜ë°¸ë¦¬ ìµœìƒìœ„ VCì™€ íˆ¬ì ê¸°íšŒë¥¼ ë„“íŒë‹¤. ê´€ë ¨ ê¸°ì‚¬ì—ëŠ” ì‚¼ì„±ì „ìì™€ ë¸Œë¡œë“œì»´ í˜‘ë ¥ë„ ì†Œê°œëë‹¤.",
+            "kstartup_global_vc_access",
+            ("êµ­ë¯¼ì—°ê¸ˆ", "VC"),
+        ),
+        (
+            "ì—°í•©ë‰´ìŠ¤",
+            "ì´ì¬ìš©, ì˜¤í”ˆAI ë³¸ì‚¬ì„œ ìƒ˜ ì˜¬íŠ¸ë¨¼ ë§Œë‚¬ë‹¤",
+            "ì´ì¬ìš©ê³¼ ìƒ˜ ì˜¬íŠ¸ë¨¼ì´ íšŒë™í–ˆë‹¤. HBMÂ·Dë¨Â·ì²¨ë‹¨ íŒŒìš´ë“œë¦¬ í˜‘ë ¥ì´ ê´€ì¸¡ëœë‹¤.",
+            "samsung_openai_meeting",
+            ("ì´ì¬ìš©", "ì˜¬íŠ¸ë¨¼", "HBM"),
+        ),
+        (
+            "ì´íˆ¬ë°ì´",
+            "AIì— ëˆ ìŸëŠ” ç¾ë¹…í…Œí¬â€¦ì˜¬í•´ë§Œ 14ë§Œëª… ê°ì›",
+            "ë¯¸êµ­ ê¸°ìˆ ê¸°ì—…ì€ AI ë°ì´í„°ì„¼í„° íˆ¬ìë¥¼ í™•ëŒ€í•˜ë©´ì„œ ì˜¬í•´ ì•½ 14ë§Œ ê°œ ì¼ìë¦¬ë¥¼ ê°ì¶•í–ˆë‹¤.",
+            "bigtech_ai_capex_layoffs",
+            ("AI", "14ë§Œ"),
+        ),
+        (
+            "ë§¤ì¼ê²½ì œ",
+            "â€œì›”ìš”ì¼ í•˜ë‹‰ ë“¤ì–´ê°‘ë‹ˆë‹¤â€â€¦ì¦ê¶Œê°€ â€œ2ë¶„ê¸° ì˜ì—…ìµ 64ì¡°Â·ì´ìµë¥  75% ì´ìƒâ€",
+            "ì¦ê¶Œê°€ëŠ” SKí•˜ì´ë‹‰ìŠ¤ì˜ 2ë¶„ê¸° ì˜ì—…ì´ìµì„ 64ì¡°ì›, ì˜ì—…ì´ìµë¥ ì„ 75~77%ë¡œ ì „ë§í–ˆë‹¤. ì§€ë‚œí•´ 4ë¶„ê¸° ì˜ì—…ì´ìµë¥ ì€ 58%ì˜€ë‹¤.",
+            "skhynix_earnings_consensus",
+            ("64ì¡°", "75%"),
+        ),
+        (
+            "ì´íˆ¬ë°ì´",
+            "FOMC ì•ë‘ê³  ê¸ˆë¦¬ ë™ê²°Â·ì¸ìƒ ì „ë§ ì—‡ê°ˆë ¤",
+            "ì›”ê°€ì—ì„œëŠ” ê¸ˆë¦¬ ë™ê²°ê³¼ ì¸ìƒ ì „ë§ì´ ì—‡ê°ˆë¦°ë‹¤. ê´€ë ¨ ê¸°ì‚¬ì—ëŠ” êµ­ì œìœ ê°€ì™€ ë¬¼ê°€Â·í™˜ìœ¨ ë¶€ë‹´ë„ ì–¸ê¸‰ëë‹¤.",
+            "fomc_rate_outlook",
+            ("FOMC", "ê¸ˆë¦¬"),
+        ),
+        (
+            "ë‰´ìŠ¤1",
+            "Kê¸°ì—…ë“¤, ì—”ë¹„ë””ì•„ì™€ AI ë°˜ë„ì²´ ìƒíƒœê³„ í˜‘ë ¥ í™•ëŒ€",
+            "êµ­ë‚´ ê¸°ì—…ë“¤ì´ ì—”ë¹„ë””ì•„ì™€ AI ë°˜ë„ì²´Â·ì¸í”„ë¼ í˜‘ë ¥ì„ ë„“íŒë‹¤. ê´€ë ¨ ê¸°ì‚¬ì—ëŠ” ì´ì¬ìš©ê³¼ ì˜¤í”ˆAI íšŒë™ë„ ì†Œê°œëë‹¤.",
+            "korea_nvidia_ai_ecosystem",
+            ("Kê¸°ì—…", "ì—”ë¹„ë””ì•„"),
+        ),
+        (
+            "ë¨¸ë‹ˆíˆ¬ë°ì´",
+            "ìœ ê°€ 100ë‹¬ëŸ¬ ëŒíŒŒ, AI ìˆ˜ìµì„± ìš°ë ¤ê¹Œì§€â€¦ë‚˜ìŠ¤ë‹¥ 2.15% ëš",
+            "êµ­ì œìœ ê°€ ìƒìŠ¹ìœ¼ë¡œ ìœ ê°€ 100ë‹¬ëŸ¬ë¥¼ ëŒíŒŒí–ˆê³  ë‚˜ìŠ¤ë‹¥ì€ 2.15% í•˜ë½í–ˆë‹¤. ë°˜ë„ì²´ì£¼ ì°¨ìµì‹¤í˜„ë„ í™•ëŒ€ëë‹¤.",
+            "global_semiconductor_market_shock",
+            ("ìœ ê°€ 100ë‹¬ëŸ¬", "ë‚˜ìŠ¤ë‹¥ 2.15%"),
+        ),
+        (
+            "ì•„ì‹œì•„ê²½ì œ",
+            '"CXMT ìƒì¥, SMICì™€ëŠ” ë‹¤ë¥´ë‹¤"â€¦ETF ë­ë¡œ ë‹´ì„ê¹Œ',
+            "CXMTê°€ IPOë¥¼ ì¶”ì§„í•˜ë©´ì„œ ì¤‘êµ­ ë©”ëª¨ë¦¬ ë°˜ë„ì²´ ê³µê¸‰ê³¼ ê´€ë ¨ ETF ìˆ˜ê¸‰ì´ ì£¼ëª©ë°›ì•˜ë‹¤.",
+            "china_memory_ipo",
+            ("CXMT", "ETF"),
+        ),
+        (
+            "ë¨¸ë‹ˆíˆ¬ë°ì´",
+            "ë‹¨ì¼ì¢…ëª© ë ˆë²„ë¦¬ì§€ ê³ ì‚â€¦ê¸°ë³¸ì˜ˆíƒê¸ˆ 3000ë§Œì›",
+            "ì‚¼ì„±ì „ìÂ·SKí•˜ì´ë‹‰ìŠ¤ ë ˆë²„ë¦¬ì§€ ETFÂ·ETN ê¸°ë³¸ì˜ˆíƒê¸ˆì„ 1000ë§Œì›ì—ì„œ 3000ë§Œì›ìœ¼ë¡œ ì˜¬ë¦¬ê³  ëŒ€ìš©ì¦ê¶Œì„ ë¶ˆì¸ì •í•œë‹¤. 31ì¼ ì‹œí–‰í•œë‹¤.",
+            "single_stock_leverage_rule",
+            ("1000ë§Œ", "3000ë§Œì›", "31ì¼"),
+        ),
+        (
+            "ë§¤ì¼ê²½ì œ",
+            "SK, MSì— ë©”ëª¨ë¦¬ ì¥ê¸° ê³µê¸‰â€¦ì•¤íŠ¸ë¡œí”½ê³¼ ë°ì´í„°ì„¼í„° ì¶”ì§„",
+            "SKí•˜ì´ë‹‰ìŠ¤ê°€ ë§ˆì´í¬ë¡œì†Œí”„íŠ¸ì™€ HBM4 ê³µë™ê°œë°œ ë° ì¥ê¸° ê³µê¸‰ ê³„ì•½ì„ ì²´ê²°í–ˆë‹¤.",
+            "sk_ms_hbm4_supply",
+            ("SKí•˜ì´ë‹‰ìŠ¤", "MS", "HBM4"),
+        ),
+        (
+            "ë””ì§€í„¸íƒ€ì„ìŠ¤",
+            "SKTÂ·ë„¤ì´ë²„, ë² ë¼ ë£¨ë¹ˆ ê¸°ë°˜ AI íŒ©í† ë¦¬ ì‚¬ì—… ì†ë„",
+            "SKí…”ë ˆì½¤ê³¼ ë„¤ì´ë²„ê°€ ì—”ë¹„ë””ì•„ DSXì™€ ë² ë¼ ë£¨ë¹ˆì„ ë‚´ë…„ ë„ì…í•´ AI íŒ©í† ë¦¬ë¥¼ êµ¬ì¶•í•œë‹¤.",
+            "korea_ai_factory_deployment",
+            ("SKT", "ë„¤ì´ë²„", "ë² ë¼ë£¨ë¹ˆ"),
+        ),
+        (
+            "ì—°í•©ë‰´ìŠ¤TV",
+            "2ì£¼ ë§Œì— ë©ˆì¶˜ ëŒ€ì´ë€ ê³µìŠµâ€¦ì‚¬ìš°ë””Â·í›„í‹° ì¶©ëŒ",
+            "ë¯¸êµ­ê³¼ ì´ë€ì˜ ê³µìŠµì€ ì†Œê°•ì— ë“¤ì–´ê°”ì§€ë§Œ ì‚¬ìš°ë””ì™€ í›„í‹° ì¶©ëŒë¡œ í™í•´Â·ìœ ì¡°ì„  ìœ„í—˜ì´ ë‚¨ì•˜ë‹¤.",
+            "middle_east_geopolitical_risk",
+            ("ì‚¬ìš°ë””", "í›„í‹°", "ìœ ê°€"),
+        ),
+        (
+            "ë‰´ìŠ¤1",
+            "êµ­ì œìœ ê°€Â·í™˜ìœ¨ ìƒìŠ¹ì— ì™¸ì‹ ë¬¼ê°€ ì••ë ¥ í™•ëŒ€",
+            "êµ­ì œìœ ê°€ì™€ í™˜ìœ¨ ìƒìŠ¹ìœ¼ë¡œ ì‹í’ˆÂ·ì™¸ì‹ ë¬¼ê°€ê°€ ì˜¤ë¥´ê³  ê¸ˆë¦¬ ë¶€ë‹´ë„ ì»¤ì§€ê³  ìˆë‹¤.",
+            "korea_oil_fx_inflation",
+            ("ìœ ê°€", "ë¬¼ê°€", "í™˜ìœ¨"),
+        ),
+        (
+            "ì´íˆ¬ë°ì´",
+            "ì¦ì‹œ í”ë“¤ë ¤ë„ ETFëŠ” ìƒ€ë‹¤â€¦ê°œì¸ ìˆœë§¤ìˆ˜ 70ì¡° ìœ¡ë°•",
+            "ê°œì¸ ETF ìˆœë§¤ìˆ˜ëŠ” 70ì¡°ì›ì— ìœ¡ë°•í–ˆê³  ì»¤ë²„ë“œì½œ ìƒìœ„ 10ê°œ ì¢…ëª©ì— 1ì¡°7721ì–µì›ì´ ìœ ì…ëë‹¤.",
+            "korea_etf_net_buy",
+            ("70ì¡°ì›", "ì»¤ë²„ë“œì½œ"),
+        ),
+        (
+            "ì´ë°ì¼ë¦¬",
+            "ì •ì˜ì„ , ì—”ë¹„ë””ì•„ ë³¸ì‚¬ì„œ ì  ìŠ¨ í™©ê³¼ íšŒë™",
+            "ì •ì˜ì„ ê³¼ ì  ìŠ¨ í™©ì´ ììœ¨ì£¼í–‰, ë¡œë´‡, ì œì¡° AIì™€ ìƒˆë§Œê¸ˆ AI ë°¸ë¦¬ í˜‘ë ¥ì„ ë…¼ì˜í–ˆë‹¤.",
+            "hyundai_nvidia_ai_partnership",
+            ("ì •ì˜ì„ ", "ì  ìŠ¨ í™©", "ë¡œë´‡"),
+        ),
+        (
+            "ì´íˆ¬ë°ì´",
+            "ì™¸êµ­ì¸, ì‚¼ì„±ì „ìÂ·SKí•˜ì´ë‹‰ìŠ¤ 4.5ì¡° ìˆœë§¤ìˆ˜",
+            "ì™¸êµ­ì¸ì€ ì‚¼ì„±ì „ìì™€ SKí•˜ì´ë‹‰ìŠ¤ë¥¼ 4ê±°ë˜ì¼ê°„ ì•½ 4ì¡°5000ì–µì› ìˆœë§¤ìˆ˜í–ˆë‹¤.",
+            "foreign_semiconductor_flow",
+            ("ì™¸êµ­ì¸", "4.5ì¡°ì›"),
+        ),
+    ]
+    normalized_by_kind = {}
+    for index, (publisher, title, body, expected_kind, core_terms) in enumerate(cases, 1):
+        row = {
+            "source": f"{publisher} ê³ ì¶©ê²© ê²€ìƒ‰",
+            "layer": "trusted",
+            "publisher": publisher,
+            "title": title,
+            "source_title": title,
+            "source_body": body,
+            "source_abstract": body,
+            "summary": body,
+            "link": f"https://{publisher_domains[publisher]}/high-impact-{index}",
+            "published": now,
+            "body_verified": True,
+        }
+        alert = production.contract.strict.classify(row, now)
+        if not alert:
+            errors.append(f"high-impact article was not classified: {title}")
+            continue
+        normalized = compact.normalize_alert_for_output(alert)
+        normalized_by_kind[expected_kind] = normalized
+        if normalized.get("korean_business_kind") != expected_kind:
+            errors.append(
+                f"high-impact article selected wrong profile: {title} / "
+                f"{normalized.get('korean_business_kind')} != {expected_kind}"
+            )
+        if normalized.get("news") != title:
+            errors.append(f"source title was overwritten: {title} / {normalized.get('news')}")
+        if not compact.source_output_aligned(normalized):
+            errors.append(f"source/output alignment failed: {title}")
+        decision_probe = dict(normalized)
+        if not compact.has_decision_impact(decision_probe):
+            errors.append(
+                f"high-impact decision guard failed: {title} / "
+                f"{decision_probe.get('guardrail_note')}"
+            )
+        selected = compact.quality_display_alerts([alert], 1)
+        if len(selected) != 1:
+            errors.append(
+                f"high-impact article failed final selection: {title} / "
+                f"{alert.get('_exclusion_reason') or alert.get('guardrail_note')}"
+            )
+        rendered = compact.compact_alert(normalized, 1, now, {}, {})
+        core_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- í•µì‹¬:")),
+            "",
+        )
+        for term in core_terms:
+            if term not in core_line:
+                errors.append(f"high-impact core omitted {term}: {title} / {core_line}")
+        if "ìœ ê°€ 100ë‹¬ëŸ¬ ëŒíŒŒ" in title:
+            if "ìœ ê°€ í•˜ë½" in core_line:
+                errors.append(f"oil direction was inverted: {title} / {core_line}")
+            poisoned = dict(normalized)
+            poisoned["policy_plain_summary"] = "ìœ ê°€ í•˜ë½ì—ë„ ë°˜ë„ì²´ì£¼ê°€ ì•½ì„¸ë¥¼ ë³´ì˜€ìŠµë‹ˆë‹¤."
+            poisoned["telegram_core_fact"] = poisoned["policy_plain_summary"]
+            if compact.source_output_aligned(poisoned):
+                errors.append("source/output guard accepted an inverted oil direction")
+        if "- íˆ¬ì í¬ì¸íŠ¸:" in rendered:
+            errors.append(f"removed investment point returned: {title}")
+        if "- ì¶œì²˜:" not in rendered:
+            errors.append(f"source link missing: {title}")
+        for field_error in compact_prose_errors(rendered):
+            errors.append(f"{title}: {field_error}")
+
+    poisoned_cores = {
+        "kstartup_global_vc_access": "ì‚¼ì„±ì „ìê°€ ë¸Œë¡œë“œì»´ê³¼ AI ë°˜ë„ì²´ í˜‘ë ¥ì„ í™•ëŒ€í•©ë‹ˆë‹¤.",
+        "fomc_rate_outlook": "ì¤‘ë™ë°œ ìœ ê°€ ë¶ˆì•ˆì´ êµ­ë‚´ ë¬¼ê°€Â·í™˜ìœ¨ ë¶€ë‹´ìœ¼ë¡œ ë²ˆì§€ê³  ìˆìŠµë‹ˆë‹¤.",
+        "korea_nvidia_ai_ecosystem": "ì´ì¬ìš©Â·ì˜¬íŠ¸ë¨¼ì´ HBMÂ·íŒŒìš´ë“œë¦¬ í˜‘ë ¥ì„ ë…¼ì˜í–ˆìŠµë‹ˆë‹¤.",
+    }
+    for kind, poisoned_core in poisoned_cores.items():
+        source_alert = normalized_by_kind.get(kind)
+        if not source_alert:
+            continue
+        poisoned = dict(source_alert)
+        poisoned["policy_plain_summary"] = poisoned_core
+        poisoned["telegram_core_fact"] = poisoned_core
+        if compact.source_output_aligned(poisoned):
+            errors.append(f"title/core contamination guard failed: {kind}")
+
+
+def assert_detailed_summary_is_preserved_before_send(compact, now, errors: list[str]) -> None:
+    report = "\n".join([
+        f"ğŸ“° ì‹¤ì‹œê°„ í•µì‹¬ ë‰´ìŠ¤ ë ˆì´ë” Â· {now:%Yë…„ %mì›” %dì¼} Â· {now:%H:%M}",
+        "ì„ ë³„: í•µì‹¬ 1ê±´",
+        "",
+        "1) [ìƒ | ê³µì‹ í™•ì¸ ì „] ë¯¸êµ­, ë°˜ë„ì²´ ìˆ˜ì¶œí†µì œ í™•ëŒ€ ê²€í† ",
+        (
+            "- í•µì‹¬: ë¯¸êµ­ì´ ì²¨ë‹¨ ë°˜ë„ì²´ ì¥ë¹„ ìˆ˜ì¶œí†µì œë¥¼ í™•ëŒ€í•´ í•œêµ­ ê¸°ì—…ì˜ "
+            "ì¤‘êµ­ ê³µì¥ ì¦ì„¤ê³¼ ì¥ë¹„ ë°˜ì… ì¼ì •, í˜„ì§€ ìƒì‚°ë¹„ìš©ì„ ë‹¤ì‹œ ì ê²€í•˜ê²Œ ëìŠµë‹ˆë‹¤."
+        ),
+        (
+            "- íˆ¬ì í¬ì¸íŠ¸: ì ìš© ì¥ë¹„ì™€ ì‹œí–‰ì¼ì´ í™•ì •ë˜ë©´ ì¤‘êµ­ ìƒì‚°ë²•ì¸ì˜ "
+            "ì¦ì„¤ë¹„ìš©ê³¼ ì¥ë¹„ ì¡°ë‹¬ ì¼ì •ì´ ë°”ë€” ìˆ˜ ìˆìŠµë‹ˆë‹¤."
+        ),
+        "- ì¶œì²˜: <a href=\"https://www.reuters.com/world/example\">Reuters</a>",
+        "",
+        "ğŸ’¡ ì‹¤ì‹œê°„ ë‰´ìŠ¤ ì½”ë©˜íŠ¸",
+        "ì˜¤ëŠ˜ í•µì‹¬ ë³€í™”ëŠ” `ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„Â·ì‹œê°„í‘œ`ì…ë‹ˆë‹¤.",
+        "í• ì¸ìœ¨: í™•ì¸ ë¶ˆê°€",
+        "ë‹¤ìŒ íˆ¬ìê¸°ìƒë„ì—ì„œ ìˆ˜ì¹˜Â·ìˆ˜ê¸‰Â·í…Œë§ˆì™€ ì¬í™•ì¸ í•„ìš”.",
+    ]) + "\n"
+    try:
+        compacted = compact.guard_preopen_report(report)
+    except RuntimeError as exc:
+        errors.append(f"detailed summary was blocked instead of preserved: {exc}")
+        return
+    field_errors = compact_prose_errors(compacted)
+    if field_errors:
+        errors.append(
+            "detailed summary exceeded the field contract: "
+            + ", ".join(field_errors)
+        )
+    if not all(
+        term in compacted
+        for term in ("ë¯¸êµ­ì´ ì²¨ë‹¨ ë°˜ë„ì²´ ì¥ë¹„ ìˆ˜ì¶œí†µì œë¥¼", "ì¤‘êµ­ ê³µì¥ ì¦ì„¤", "í˜„ì§€ ìƒì‚°ë¹„ìš©")
+    ):
+        errors.append("GAMEJOA detailed summary lost source-specific facts")
+    core_line = next(
+        (line for line in compacted.splitlines() if line.startswith("- í•µì‹¬:")),
+        "",
+    )
+    if len(core_line.removeprefix("- í•µì‹¬:").strip()) <= 50:
+        errors.append("GAMEJOA detailed core regressed to the former 50-character cap")
+    for marker in FORBIDDEN_COMPACT_MARKERS:
+        if marker in compacted:
+            errors.append(f"removed compact field returned during detailed-summary test: {marker}")
+
+
+def assert_korean_business_article_contract(production, compact, now, errors: list[str]) -> None:
+    noisy_summary = compact.article_sentences(
+        (
+            "ë¬´ë‹¨ ì „ì¬ ì¬ë°°í¬ ê¸ˆì§€, AI í•™ìŠµ ë° í™œìš© ê¸ˆì§€> "
+            "ì›Â·ë‹¬ëŸ¬ í™˜ìœ¨ì´ 1470ì›ì„ ë°‘ëŒë©° ë‘ ë‹¬ ë§Œì˜ ìµœì €ì¹˜ë¥¼ ê¸°ë¡í–ˆë‹¤. "
+            "ì™¸êµ­ì¸ ìœ„í—˜ì„ í˜¸ê°€ í™•ëŒ€ë˜ë©° ì›í™”ê°€ ê°•ì„¸ë¥¼ ë³´ì˜€ë‹¤."
+        ),
+        ["ì›Â·ë‹¬ëŸ¬", "1470ì›"],
+        2,
+    )
+    if "ë¬´ë‹¨ ì „ì¬" in noisy_summary or "AI í•™ìŠµ" in noisy_summary:
+        errors.append("Korean article summary retained publisher boilerplate")
+    if not noisy_summary.startswith("ì›Â·ë‹¬ëŸ¬ í™˜ìœ¨"):
+        errors.append(f"Korean article summary did not start from article facts: {noisy_summary}")
+
+    long_summary = compact.article_sentences(
+        (
+            "KBì¦ê¶Œì˜ ì˜¬í•´ 2ë¶„ê¸° ì—°ê²° ê¸°ì¤€ ì˜ì—…ì´ìµì€ 6006ì–µì›ìœ¼ë¡œ ì „ë…„ ë™ê¸°ë³´ë‹¤ "
+            "175.5% ëŠ˜ì—ˆë‹¤. "
+            + "ì£¼ì‹ì‹œì¥ ê°•ì„¸ì™€ ê±°ë˜ëŒ€ê¸ˆ ì¦ê°€ê°€ ìœ„íƒë§¤ë§¤ ìˆ˜ìµì„ ëŒì–´ì˜¬ë ¸ë‹¤. " * 12
+        ),
+        ["KBì¦ê¶Œ", "ì˜ì—…ì´ìµ", "6006ì–µì›"],
+        3,
+    )
+    if len(long_summary) > compact.ARTICLE_SUMMARY_MAX_CHARS:
+        errors.append("Korean article summary exceeded compact character limit")
+    if not long_summary.endswith((".", "!", "?", "ë‹¤", "â€¦")):
+        errors.append(f"Korean article summary ended mid-sentence: {long_summary[-40:]}")
+
+    etoday_title = "ì™¸êµ­ì¸, ì‚¼ì „Â·SKí•˜ë‹‰ 4.5ì¡° ì‚¬ë“¤ì—¬â€¦ë°˜ë„ì²´ë„ ê³¨ë¼ ë‹´ì•˜ë‹¤"
+    etoday_body = (
+        "ì™¸êµ­ì¸ì€ 4ê±°ë˜ì¼ ë™ì•ˆ ì‚¼ì„±ì „ì 2ì¡°9327ì–µì›ê³¼ SKí•˜ì´ë‹‰ìŠ¤ "
+        "1ì¡°5416ì–µì›ì„ ìˆœë§¤ìˆ˜í–ˆë‹¤. ë‘ ì¢…ëª© í•©ê³„ëŠ” ì•½ 4ì¡°5000ì–µì›ì´ë‹¤. "
+        "ë°˜ë©´ ì¼ë¶€ ë°˜ë„ì²´ ì†Œì¬Â·ë¶€í’ˆÂ·ì¥ë¹„ ì¢…ëª©ì€ ìˆœë§¤ë„í•´ ì—…ì¢… ë‚´ë¶€ ì°¨ë³„í™”ê°€ ë‚˜íƒ€ë‚¬ë‹¤."
+    )
+    etnews_title = "ì—‘ì‹œì½˜, ì°¨ì„¸ëŒ€ CXL 3.1 í…ŒìŠ¤í„° ìƒìš©í™” ì†ë„"
+    etnews_body = (
+        "ì—‘ì‹œì½˜ì€ ì‚¼ì„±ì „ìì™€ Gen6 ë° CXL 3.1 í…ŒìŠ¤í„° ì–‘ì‚°í‰ê°€ë¥¼ ì§„í–‰í•˜ê³  ìˆë‹¤. "
+        "í‰ê°€ëŠ” ì´ë‹¬ ë§ ë§ˆë¬´ë¦¬ë  ì˜ˆì •ì´ë©°, ì–‘ì‚°í‰ê°€ í†µê³¼ ë’¤ ì‹¤ì œ ì¥ë¹„ ë°œì£¼ê°€ ë‚¨ì•„ ìˆë‹¤. "
+        "íšŒì‚¬ëŠ” ì§€ë‚œí•´ ë§¤ì¶œ 1018ì–µì›ì„ ê¸°ë¡í–ˆë‹¤."
+    )
+
+    def fixture(title: str, body: str) -> str:
+        return f"""
+        <html><head>
+          <meta property="og:title" content="{title}">
+          <meta property="article:published_time" content="2026-07-23T17:00:00+09:00">
+        </head><body><div itemprop="articleBody">
+          <h1>{title}</h1><p>{body}</p>
+          <p>ê¸°ì‚¬ ì›ë¬¸ì€ ê´€ë ¨ ê¸°ì—…ì˜ í›„ì† ìˆ˜ê¸‰, ê³ ê° í‰ê°€, ë°œì£¼ì™€ ê³µì‹œë¥¼ í•¨ê»˜ í™•ì¸í•´ì•¼ í•œë‹¤ê³  ì„¤ëª…í–ˆë‹¤.</p>
+        </div></body></html>
+        """
+
+    for publisher, title, body, link, expected_kind, expected_impacts in [
+        (
+            "ì´íˆ¬ë°ì´",
+            etoday_title,
+            etoday_body,
+            "https://www.etoday.co.kr/news/view/2606782",
+            "foreign_semiconductor_flow",
+            ["ìˆ˜ê¸‰"],
+        ),
+        (
+            "ì „ìì‹ ë¬¸",
+            etnews_title,
+            etnews_body,
+            "https://www.etnews.com/20260723000345",
+            "exicon_cxl_tester",
+            ["ëˆ ë²„ëŠ” ëŠ¥ë ¥", "ì‹œê°„í‘œ", "ìˆ˜ê¸‰"],
+        ),
+    ]:
+        detail = compact.extract_article_detail(fixture(title, body), title)
+        if not detail.get("body_verified") or not detail.get("title_aligned"):
+            errors.append(f"{publisher} article title/body verification failed")
+            continue
+        row = {
+            "source": f"{publisher} ë°˜ë„ì²´ ë‰´ìŠ¤",
+            "layer": "trusted",
+            "publisher": publisher,
+            "title": title,
+            "source_title": detail["title"],
+            "source_body": detail["body"],
+            "source_abstract": detail["body"],
+            "summary": detail["body"],
+            "link": link,
+            "published": now,
+            "body_verified": True,
+        }
+        alert = production.contract.strict.classify(row, now)
+        if not alert:
+            errors.append(f"{publisher} verified article was not classified")
+            continue
+        normalized = compact.normalize_alert_for_output(alert)
+        if normalized.get("news") != title:
+            errors.append(
+                f"{publisher} exact Korean source title was overwritten: {normalized.get('news')}"
+            )
+        if normalized.get("korean_business_kind") != expected_kind:
+            errors.append(
+                f"{publisher} article did not select its specific profile: "
+                f"{normalized.get('korean_business_kind')}"
+            )
+        if normalized.get("impacts") != expected_impacts:
+            errors.append(
+                f"{publisher} article impacts were contaminated by another overlay: "
+                f"{normalized.get('impacts')}"
+            )
+        if normalized.get("sectors") != ["ë°˜ë„ì²´/AI"]:
+            errors.append(
+                f"{publisher} article sectors were contaminated by another overlay: "
+                f"{normalized.get('sectors')}"
+            )
+        if normalized.get("k_power_watch"):
+            errors.append(f"{publisher} article incorrectly inherited the nuclear overlay")
+        if not compact.source_output_aligned(normalized):
+            errors.append(f"{publisher} source/output alignment failed")
+        rendered = compact.compact_alert(normalized, 1, now, {}, {})
+        required_markers = [
+            "- í•µì‹¬:",
+            "- íˆ¬ì í¬ì¸íŠ¸:",
+            "ì›ë¬¸ ë‰´ìŠ¤ë³´ê¸°",
+        ]
+        for marker in required_markers:
+            if marker not in rendered:
+                errors.append(f"{publisher} compact Telegram summary missing {marker}")
+        field_errors = compact_prose_errors(rendered)
+        if field_errors:
+            errors.append(
+                f"{publisher} compact Telegram prose exceeded field limits: "
+                + ", ".join(field_errors)
+            )
+        if "- ë¶„ë¥˜ ë§¤íŠ¸ë¦­ìŠ¤:" in rendered or "- ê´€ë ¨ í•´ì™¸ í‹°ì»¤/ì§€í‘œ:" in rendered:
+            errors.append(f"{publisher} compact Telegram summary regressed to verbose format")
+        for marker in FORBIDDEN_COMPACT_MARKERS:
+            if marker in rendered:
+                errors.append(f"{publisher} compact Telegram summary retained {marker}")
+        if "K-ì›ì „/ê°€ìŠ¤í„°ë¹ˆ" in rendered or "ì²´ì½” ì›ì „" in rendered:
+            errors.append(f"{publisher} compact summary contains an unrelated nuclear watch")
+
+    edaily_direct_fixture = """
+    <html><head>
+      <meta property="og:title" content="ì •ì˜ì„ , ç¾ ì—”ë¹„ë””ì•„ ë³¸ì‚¬ ì°¾ì•„ ì  ìŠ¨ í™©ê³¼ íšŒë™â€¦AI í˜‘ë ¥ í›„ì† ë…¼ì˜">
+      <meta property="article:published_time" content="2026-07-25T08:09:44+09:00">
+    </head><body>
+      <div class="news_body" itemprop="articleBody">
+        ì •ì˜ì„  í˜„ëŒ€ìë™ì°¨ê·¸ë£¹ íšŒì¥ì´ ì—”ë¹„ë””ì•„ ë³¸ì‚¬ë¥¼ ë°©ë¬¸í•´ ì  ìŠ¨ í™© CEOì™€ ë§Œë‚¬ë‹¤.<br><br>
+        ì–‘ì¸¡ì€ ììœ¨ì£¼í–‰, ë¡œë´‡, ì œì¡° AIì™€ ìƒˆë§Œê¸ˆ AI ë°¸ë¦¬ í˜‘ë ¥ í›„ì† ë°©ì•ˆì„ ë…¼ì˜í–ˆë‹¤.<br><br>
+        í˜„ëŒ€ì°¨ê·¸ë£¹ì€ ìƒˆë§Œê¸ˆ ë¶€ì§€ì— ë‹¨ê³„ì ìœ¼ë¡œ 9ì¡°ì›ì„ íˆ¬ìí•  ê³„íšì´ì§€ë§Œ,
+        ì´ë²ˆ íšŒë™ì—ì„œ ë³„ë„ ê³µê¸‰ê³„ì•½ ê¸ˆì•¡ì´ë‚˜ ë°œì£¼ ê·œëª¨ëŠ” ê³µê°œí•˜ì§€ ì•Šì•˜ë‹¤.<br><br>
+        í›„ì† í˜‘ë ¥ì´ ì‹¤ì œ ê³µë™ê°œë°œê³¼ ì¥ë¹„ ê³µê¸‰ìœ¼ë¡œ ì´ì–´ì§€ëŠ”ì§€ëŠ” ë³„ë„ ê³„ì•½ê³¼ ê¸°ì—… ê³µì‹œë¡œ í™•ì¸í•´ì•¼ í•œë‹¤.
+      </div>
+    </body></html>
+    """
+    edaily_direct = compact.extract_article_detail(
+        edaily_direct_fixture,
+        "ì •ì˜ì„ , ç¾ ì—”ë¹„ë””ì•„ ë³¸ì‚¬ ì°¾ì•„ ì  ìŠ¨ í™©ê³¼ íšŒë™â€¦AI í˜‘ë ¥ í›„ì† ë…¼ì˜",
+    )
+    if not edaily_direct.get("body_verified") or "ììœ¨ì£¼í–‰" not in edaily_direct.get("body", ""):
+        errors.append("Edaily direct-text article body was not extracted")
+
+    expanded_cases = [
+        {
+            "publisher": "ì´ë°ì¼ë¦¬",
+            "title": "ì •ì˜ì„ , ç¾ ì—”ë¹„ë””ì•„ ë³¸ì‚¬ ì°¾ì•„ ì  ìŠ¨ í™©ê³¼ íšŒë™â€¦AI í˜‘ë ¥ í›„ì† ë…¼ì˜",
+            "body": (
+                "ì •ì˜ì„  í˜„ëŒ€ìë™ì°¨ê·¸ë£¹ íšŒì¥ì´ ì—”ë¹„ë””ì•„ ë³¸ì‚¬ë¥¼ ë°©ë¬¸í•´ ì  ìŠ¨ í™© CEOì™€ ë§Œë‚¬ë‹¤. "
+                "ì–‘ì¸¡ì€ ììœ¨ì£¼í–‰, ë¡œë´‡, ì œì¡° AIì™€ ìƒˆë§Œê¸ˆ AI ë°¸ë¦¬ í˜‘ë ¥ í›„ì† ë°©ì•ˆì„ ë…¼ì˜í–ˆë‹¤. "
+                "ì´ë²ˆ íšŒë™ì—ì„œ ë³„ë„ ê³µê¸‰ê³„ì•½ ê¸ˆì•¡ì´ë‚˜ ë°œì£¼ ê·œëª¨ëŠ” ê³µê°œí•˜ì§€ ì•Šì•˜ë‹¤."
+            ),
+            "link": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01899126645518128",
+            "kind": "hyundai_nvidia_ai_partnership",
+            "core_terms": ("ììœ¨ì£¼í–‰", "ë¡œë´‡", "ì œì¡°AI", "ê³„ì•½ê¸ˆì•¡", "ê³µê°œë˜ì§€"),
+            "view_terms": ("í˜‘ë ¥ ë…¼ì˜", "ê³„ì•½", "ë°œì£¼"),
+        },
+        {
+            "publisher": "ë§¤ì¼ê²½ì œ",
+            "title": "êµ­ë¯¼ 64% â€œì‚¼ë‹‰ê³¼ ë ˆë²„ë¦¬ì§€ëŠ” ì˜ëª»ëœ ë§Œë‚¨â€â€¦31ì¼ë¶€í„° ë¶ˆê°œë¯¸ ë§‰ëŠ”ë‹¤",
+            "body": (
+                "ì‚¼ì„±ì „ìì™€ SKí•˜ì´ë‹‰ìŠ¤ ë‹¨ì¼ì¢…ëª© ë ˆë²„ë¦¬ì§€ ETFÂ·ETNì„ ì‚¬ë ¤ë©´ 31ì¼ë¶€í„° "
+                "ê³„ì¢Œì— í˜„ê¸ˆ 3000ë§Œì› ì´ìƒì„ ë³´ìœ í•´ì•¼ í•œë‹¤. ê¸ˆìœµìœ„ì›íšŒëŠ” í˜„ì¬ 1000ë§Œì›ì¸ "
+                "ê¸°ë³¸ì˜ˆíƒê¸ˆì„ 3000ë§Œì›ìœ¼ë¡œ ìƒí–¥í•˜ê³  ì£¼ì‹Â·ì±„ê¶Œ ë“± ëŒ€ìš©ì¦ê¶Œì„ ì¸ì •í•˜ì§€ ì•ŠëŠ”ë‹¤. "
+                "ë‹¹ì´ˆ 8ì›” ìˆœì°¨ ì ìš© ì˜ˆì •ì´ë˜ ë‘ ì¡°ì¹˜ëŠ” 7ì›” 31ì¼ë¶€í„° ë™ì‹œì— ì‹œí–‰ëœë‹¤."
+            ),
+            "link": "https://www.mk.co.kr/news/stock/12107172",
+            "kind": "single_stock_leverage_rule",
+            "core_terms": ("1000ë§Œì›", "3000ë§Œì›", "ëŒ€ìš©ì¦ê¶Œ", "7ì›” 31ì¼"),
+            "view_terms": ("ì§„ì…ë¹„ìš©", "ì‹ ê·œìˆ˜ìš”", "íŒŒìƒìˆ˜ê¸‰"),
+        },
+        {
+            "publisher": "ë¨¸ë‹ˆíˆ¬ë°ì´",
+            "title": 'ìœ ê°€ í•˜ë½ì—ë„ ë°˜ë„ì²´ í„¸ì–´ë‚¸ ì‹œì¥â€¦"ê¸ˆë¦¬Â·ì‹¤ì ë¶€í„° ë³´ì"[ë‰´ìš•ë§ˆê°]',
+            "body": (
+                "ë‰´ìš•ì¦ì‹œëŠ” êµ­ì œìœ ê°€ í•˜ë½ì—ë„ ë°˜ë„ì²´ì£¼ ê¸‰ë½ìœ¼ë¡œ í˜¼ì¡° ë§ˆê°í–ˆë‹¤. "
+                "ë‚˜ìŠ¤ë‹¥ì¢…í•©ì§€ìˆ˜ëŠ” 0.64% í•˜ë½í–ˆê³  í•„ë¼ë¸í”¼ì•„ ë°˜ë„ì²´ì§€ìˆ˜ëŠ” 4.3% ê¸‰ë½í–ˆë‹¤. "
+                "ë°˜ì—í¬ ë°˜ë„ì²´ ìƒì¥ì§€ìˆ˜í€ë“œ(SMH)ëŠ” 3.3% í•˜ë½í–ˆë‹¤. "
+                "íˆ¬ììë“¤ì€ ë‹¤ìŒ ì£¼ FOMCì™€ ë§ˆì´í¬ë¡œì†Œí”„íŠ¸Â·ë©”íƒ€Â·ì• í”Œ ì‹¤ì ì„ ì•ë‘ê³  ì°¨ìµì‹¤í˜„ì— ë‚˜ì„°ë‹¤."
+            ),
+            "link": "https://www.mt.co.kr/world/2026/07/25/2026072505495617727",
+            "kind": "global_semiconductor_market_shock",
+            "core_terms": ("ë‚˜ìŠ¤ë‹¥ 0.64%", "í•„ë¼ë¸í”¼ì•„ ë°˜ë„ì²´ì§€ìˆ˜ 4.3%", "SMH 3.3%", "FOMC"),
+            "view_terms": ("ì‚¼ì„±ì „ì", "SKí•˜ì´ë‹‰ìŠ¤", "ì™¸êµ­ì¸ ìˆ˜ê¸‰"),
+        },
+        {
+            "publisher": "ì´ë°ì¼ë¦¬",
+            "title": "[ì†ë³´]ìœ ê°€ í•˜ë½ì— S&P500 ë³´í•©â€¦ë°˜ë„ì²´ì£¼ ê¸‰ë½ì— ë‚˜ìŠ¤ë‹¥ 0.6%â†“",
+            "body": (
+                "ë¯¸êµ­ ì¦ì‹œëŠ” êµ­ì œìœ ê°€ í•˜ë½ì—ë„ ë°˜ë„ì²´ì£¼ ê¸‰ë½ìœ¼ë¡œ í˜¼ì¡° ë§ˆê°í–ˆë‹¤. "
+                "ë‚˜ìŠ¤ë‹¥ì¢…í•©ì§€ìˆ˜ëŠ” 0.64% í•˜ë½í–ˆê³  í•„ë¼ë¸í”¼ì•„ ë°˜ë„ì²´ì§€ìˆ˜ëŠ” 4.3% ê¸‰ë½í–ˆë‹¤. "
+                "ë°˜ì—í¬ ë°˜ë„ì²´ ìƒì¥ì§€ìˆ˜í€ë“œ(SMH)ëŠ” 3.3% í•˜ë½í–ˆë‹¤. "
+                "ë‹¤ìŒ ì£¼ FOMCì™€ ë¹…í…Œí¬ ì‹¤ì  ë°œí‘œë¥¼ ì•ë‘ê³  ì°¨ìµì‹¤í˜„ì´ ì§‘ì¤‘ëë‹¤."
+            ),
+            "link": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01485846645518128",
+            "kind": "global_semiconductor_market_shock",
+            "core_terms": ("ë‚˜ìŠ¤ë‹¥ 0.64%", "í•„ë¼ë¸í”¼ì•„ ë°˜ë„ì²´ì§€ìˆ˜ 4.3%", "SMH 3.3%", "FOMC"),
+            "view_terms": ("ì‚¼ì„±ì „ì", "SKí•˜ì´ë‹‰ìŠ¤", "ì™¸êµ­ì¸ ìˆ˜ê¸‰"),
+        },
+        {
+            "publisher": "í—¤ëŸ´ë“œê²½ì œ",
+            "title": "â€œë°ì´í„°ì„¼í„°Â·ë°˜ë„ì²´ ê³µì¥ ë” ì§“ìâ€â€¦AI ì—´í’ì— ì² ê°• ìˆ˜ìš” â€˜í›ˆí’â€™",
+            "body": (
+                "í•œêµ­ì² ê°•í˜‘íšŒì— ë”°ë¥´ë©´ 1~5ì›” í˜•ê°• ë‚´ìˆ˜ íŒë§¤ëŸ‰ì€ 103ë§Œí†¤ìœ¼ë¡œ ì „ë…„ë¹„ 9.7% ëŠ˜ì—ˆë‹¤. "
+                "ë™êµ­ì œê°• 2ë¶„ê¸° ì˜ì—…ì´ìµì€ 456ì–µì›ìœ¼ë¡œ ì „ë…„ë¹„ 52.3% ì¦ê°€í–ˆë‹¤. "
+                "AI ë°ì´í„°ì„¼í„° êµ¬ì¶• ê³¼ì •ì˜ ì² ê°•ì¬ ìˆ˜ìš”ëŠ” 2030ë…„ê¹Œì§€ ì•½ 86ë§Œí†¤ìœ¼ë¡œ ì¶”ì •ëë‹¤. "
+                "ë°˜ë„ì²´ ê³µì¥ ì¦ì„¤ë„ í˜•ê°•ê³¼ í›„íŒ ìˆ˜ìš”ë¥¼ ëŠ˜ë¦´ ê²ƒìœ¼ë¡œ ë¶„ì„ëë‹¤."
+            ),
+            "link": "https://biz.heraldcorp.com/article/10819661?ref=naver",
+            "kind": "ai_infrastructure_steel_demand",
+            "core_terms": ("103ë§Œí†¤", "9.7%", "456ì–µì›", "52.3%", "86ë§Œí†¤"),
+            "view_terms": ("ì°©ê³µ", "í˜•ê°•", "í›„íŒ", "ì´ìµ ì¶”ì •"),
+        },
+    ]
+    expanded_alerts = []
+    for case in expanded_cases:
+        detail = compact.extract_article_detail(
+            fixture(case["title"], case["body"]),
+            case["title"],
+        )
+        row = {
+            "source": f"{case['publisher']} ê³ ì¶©ê²© ê²€ìƒ‰",
+            "layer": "trusted",
+            "publisher": case["publisher"],
+            "title": case["title"],
+            "source_title": detail["title"],
+            "source_body": detail["body"],
+            "source_abstract": detail["body"],
+            "summary": detail["body"],
+            "link": case["link"],
+            "published": now,
+            "body_verified": True,
+        }
+        alert = production.contract.strict.classify(row, now)
+        if not alert:
+            errors.append(f"{case['publisher']} expanded high-impact article was not classified: {case['title']}")
+            continue
+        normalized = compact.normalize_alert_for_output(alert)
+        expanded_alerts.append(normalized)
+        if normalized.get("korean_business_kind") != case["kind"]:
+            errors.append(
+                f"{case['publisher']} article selected wrong profile: "
+                f"{normalized.get('korean_business_kind')} != {case['kind']}"
+            )
+        if not compact.source_output_aligned(normalized):
+            errors.append(f"{case['publisher']} expanded article source/output alignment failed")
+        rendered = compact.compact_alert(normalized, 1, now, {}, {})
+        core_line = next((line for line in rendered.splitlines() if line.startswith("- í•µì‹¬:")), "")
+        view_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- íˆ¬ì í¬ì¸íŠ¸:")),
+            "",
+        )
+        for term in case["core_terms"]:
+            if term not in core_line:
+                errors.append(f"{case['publisher']} core omitted {term}: {core_line}")
+        for term in case["view_terms"]:
+            if term not in view_line:
+                errors.append(f"{case['publisher']} investment point omitted {term}: {view_line}")
+
+    market_alerts = [
+        alert
+        for alert in expanded_alerts
+        if alert.get("korean_business_kind") == "global_semiconductor_market_shock"
+    ]
+    if len(market_alerts) == 2:
+        if compact.alert_dedup_key(market_alerts[0]) != compact.alert_dedup_key(market_alerts[1]):
+            errors.append("same US semiconductor market shock did not share an event dedupe key")
+        first_seen_keys = production.telegram.alert_seen_keys(market_alerts[0])
+        second_seen_keys = production.telegram.alert_seen_keys(market_alerts[1])
+        if not set(first_seen_keys).intersection(second_seen_keys):
+            errors.append("same market shock did not share a cross-run seen-state key")
+    leverage_alert = next(
+        (
+            alert
+            for alert in expanded_alerts
+            if alert.get("korean_business_kind") == "single_stock_leverage_rule"
+        ),
+        None,
+    )
+    if leverage_alert:
+        prior_day_coverage = dict(leverage_alert)
+        prior_day_coverage["published"] = (now - dt.timedelta(days=1)).isoformat()
+        if compact.alert_dedup_key(leverage_alert) != compact.alert_dedup_key(prior_day_coverage):
+            errors.append("same effective-date leverage rule repeated across publication dates")
+        legacy_leverage = {
+            "news": "ë ˆë²„ë¦¬ì§€ ETF ê´‘í’ êº¾ì˜€ë‚˜â€¦ì‚¼ì „Â·ë‹‰ìŠ¤ ë‹¨ì¼ì¢…ëª© ìê¸ˆìœ ì… ëš",
+            "original_news": "ë ˆë²„ë¦¬ì§€ ETF ê´‘í’ êº¾ì˜€ë‚˜â€¦ì‚¼ì „Â·ë‹‰ìŠ¤ ë‹¨ì¼ì¢…ëª© ìê¸ˆìœ ì… ëš",
+            "source_title": "ë ˆë²„ë¦¬ì§€ ETF ê´‘í’ êº¾ì˜€ë‚˜â€¦ì‚¼ì „Â·ë‹‰ìŠ¤ ë‹¨ì¼ì¢…ëª© ìê¸ˆìœ ì… ëš",
+            "policy_plain_summary": (
+                "ì‚¼ì„±ì „ìÂ·SKí•˜ì´ë‹‰ìŠ¤ ë‹¨ì¼ì¢…ëª© ë ˆë²„ë¦¬ì§€ ETFì˜ ê¸°ë³¸ì˜ˆíƒê¸ˆì´ "
+                "1000ë§Œì›ì—ì„œ 3000ë§Œì›ìœ¼ë¡œ ì˜¬ë¼ê°€ë©° 7ì›” 31ì¼ë¶€í„° ì‹œí–‰ë©ë‹ˆë‹¤."
+            ),
+            "published": now.isoformat(),
+        }
+        legacy_normalized = compact.normalize_alert_for_output(legacy_leverage)
+        if legacy_normalized.get("supply_chain_theme") != "korea_single_stock_leverage_rule:2026-07-31":
+            errors.append("generic leverage article did not gain the canonical event theme")
+        if compact.alert_dedup_key(leverage_alert) != compact.alert_dedup_key(legacy_normalized):
+            errors.append("profiled and generic leverage articles did not dedupe as one event")
+
+    bigtech_title = "SK, ê¸€ë¡œë²Œ ë¹…í…Œí¬ì™€ 1095ì¡° ê·œëª¨ ë©”ëª¨ë¦¬Â·AIDC í˜‘ë ¥ ì²´ê²°"
+    bigtech_body = (
+        "ì—”ë¹„ë””ì•„ì™€ 730ì¡°ì› ê·œëª¨ AI ì¸í”„ë¼ êµ¬ì¶• í˜‘ë ¥, ë§ˆì´í¬ë¡œì†Œí”„íŠ¸ì— ë©”ëª¨ë¦¬ ì¥ê¸° ê³µê¸‰. "
+        "[í—¤ëŸ´ë“œê²½ì œ=ë°•ì§€ì˜ ê¸°ì] SKê·¸ë£¹ì€ ì—”ë¹„ë””ì•„ì™€ ì´ 5000ì–µë‹¬ëŸ¬ ê·œëª¨ AI ì¸í”„ë¼ "
+        "í˜‘ë ¥ì„ ì¶”ì§„í•˜ê³  ë§ˆì´í¬ë¡œì†Œí”„íŠ¸ì™€ ë©”ëª¨ë¦¬ ì¥ê¸° ê³µê¸‰ë„ ì¶”ì§„í•œë‹¤."
+    )
+    bigtech_row = {
+        "source": "í—¤ëŸ´ë“œê²½ì œ ì‚°ì—…ìˆ˜ìš”",
+        "layer": "trusted",
+        "publisher": "í—¤ëŸ´ë“œê²½ì œ",
+        "title": bigtech_title,
+        "source_title": bigtech_title,
+        "source_body": bigtech_body,
+        "source_abstract": bigtech_body,
+        "summary": bigtech_body,
+        "link": "https://biz.heraldcorp.com/article/example-bigtech",
+        "published": now,
+        "body_verified": True,
+    }
+    bigtech_alert = production.contract.strict.classify(bigtech_row, now)
+    if not bigtech_alert:
+        errors.append("concrete Korean big-tech cooperation article was not classified")
+    else:
+        bigtech_rendered = compact.compact_alert(
+            compact.normalize_alert_for_output(bigtech_alert),
+            1,
+            now,
+            {},
+            {},
+        )
+        bigtech_core = next(
+            (line.removeprefix("- í•µì‹¬:").strip() for line in bigtech_rendered.splitlines() if line.startswith("- í•µì‹¬:")),
+            "",
+        )
+        if "5000ì–µë‹¬ëŸ¬" not in bigtech_core or "ë§ˆì´í¬ë¡œì†Œí”„íŠ¸" not in bigtech_core:
+            errors.append(f"big-tech core omitted contract facts: {bigtech_core}")
+        if "ê¸°ì]" in bigtech_core or len(bigtech_core) > COMPACT_PROSE_LIMITS["- í•µì‹¬:"]:
+            errors.append(f"big-tech core retained boilerplate or excess prose: {bigtech_core}")
+
+    commentary_title = "ì  ìŠ¨ í™© \"ì§€ê¸ˆì´ í•œêµ­ì˜ í™©ê¸ˆê¸°\"â€¦í•œêµ­ íŒŒíŠ¸ë„ˆì‹­ ê°•ì¡°"
+    commentary_body = (
+        "ì  ìŠ¨ í™©ì€ í•œêµ­ì˜ HBMê³¼ 25ë…„ íŒŒíŠ¸ë„ˆì‹­ì„ ë†’ì´ í‰ê°€í–ˆë‹¤. "
+        "í–‰ì‚¬ì—ì„œëŠ” SKê·¸ë£¹ê³¼ ì—”ë¹„ë””ì•„ì˜ AI ì¸í”„ë¼ í˜‘ë ¥ ì‚¬ë¡€ë„ ì†Œê°œëë‹¤."
+    )
+    commentary_row = dict(
+        bigtech_row,
+        title=commentary_title,
+        source_title=commentary_title,
+        source_body=commentary_body,
+        source_abstract=commentary_body,
+        summary=commentary_body,
+        link="https://www.edaily.co.kr/News/Read?newsId=commentary",
+    )
+    if production.contract.strict.classify(commentary_row, now):
+        errors.append("commentary-only big-tech partnership headline bypassed the material-action gate")
+
+    broad_ai_title = "æ, ê¸€ë¡œë²Œ AI ìˆ˜ì¥ë“¤ê³¼ í˜‘ë ¥ í™•ëŒ€â€¦ì  ìŠ¨ í™©, SKì™€ 5ì²œì–µë‹¬ëŸ¬ í˜‘ë ¥"
+    broad_ai_body = (
+        "ì •ì˜ì„  íšŒì¥ì€ ì—”ë¹„ë””ì•„ì™€ ììœ¨ì£¼í–‰Â·ë¡œë´‡ í˜‘ë ¥ì„ ë…¼ì˜í–ˆë‹¤. "
+        "SKê·¸ë£¹ì€ ì—”ë¹„ë””ì•„ì™€ 5000ì–µë‹¬ëŸ¬ AI ì¸í”„ë¼ í˜‘ë ¥ì„ ì¶”ì§„í•˜ê³  "
+        "ë§ˆì´í¬ë¡œì†Œí”„íŠ¸ì™€ ë©”ëª¨ë¦¬ ì¥ê¸° ê³µê¸‰ë„ ì¶”ì§„í•œë‹¤."
+    )
+    broad_ai_row = dict(
+        bigtech_row,
+        title=broad_ai_title,
+        source_title=broad_ai_title,
+        source_body=broad_ai_body,
+        source_abstract=broad_ai_body,
+        summary=broad_ai_body,
+        link="https://www.hankyung.com/article/example-ai-summit",
+    )
+    broad_ai_alert = production.contract.strict.classify(broad_ai_row, now)
+    if broad_ai_alert and broad_ai_alert.get("korean_business_kind") == "hyundai_nvidia_ai_partnership":
+        errors.append("broad AI summit headline was misclassified as a Hyundai-Nvidia meeting")
+
+    robot_title = "ì •ì˜ì„ , ì—”ë¹„ë””ì•„ì™€ ë¡œë´‡ ë ˆí¼ëŸ°ìŠ¤ í”Œë«í¼ ê³µë™ êµ¬ì¶•"
+    robot_body = (
+        "ì •ì˜ì„  í˜„ëŒ€ì°¨ê·¸ë£¹ íšŒì¥ì€ ì—”ë¹„ë””ì•„ ë³¸ì‚¬ì—ì„œ ì  ìŠ¨ í™©ê³¼ ë§Œë‚˜ "
+        "ë¡œë´‡ ë ˆí¼ëŸ°ìŠ¤ í”Œë«í¼ ê³µë™ êµ¬ì¶•ê³¼ ê°œë°©í˜• ìƒíƒœê³„ ì¡°ì„±ì„ ì œì‹œí–ˆë‹¤. "
+        "ê³„ì•½ê¸ˆì•¡ê³¼ ì¥ë¹„ ë°œì£¼ ê·œëª¨ëŠ” ê³µê°œí•˜ì§€ ì•Šì•˜ë‹¤."
+    )
+    robot_row = dict(
+        bigtech_row,
+        title=robot_title,
+        source_title=robot_title,
+        source_body=robot_body,
+        source_abstract=robot_body,
+        summary=robot_body,
+        link="https://www.mt.co.kr/industry/example-hyundai-robot",
+    )
+    robot_alert = production.contract.strict.classify(robot_row, now)
+    if not robot_alert or robot_alert.get("korean_business_kind") != "hyundai_nvidia_ai_partnership":
+        errors.append("direct Hyundai-Nvidia robot-platform headline was not classified")
+    else:
+        robot_core = str(robot_alert.get("telegram_core_fact") or "")
+        if "ë¡œë´‡ ë ˆí¼ëŸ°ìŠ¤ í”Œë«í¼ ê³µë™ êµ¬ì¶•" not in robot_core or "ë³¸ì‚¬ì—ì„œ ì  ìŠ¨ í™©ê³¼ ë§Œë‚˜" in robot_core:
+            errors.append(f"robot-platform follow-up reused the generic meeting summary: {robot_core}")
+
+    hynix_title = "ì£¼ê°€ 30% ë¹ ì§„ SKí•˜ì´ë‹‰ìŠ¤â€¦ì—­ëŒ€ê¸‰ ì‹¤ì ë³´ë‹¤ â€˜ì´ê²ƒâ€™ì— ì ë ¸ë‹¤"
+    hynix_body = (
+        "SKí•˜ì´ë‹‰ìŠ¤ëŠ” ì˜¤ëŠ” 29ì¼ 2ë¶„ê¸° ì‹¤ì ì„ ë°œí‘œí•œë‹¤. "
+        "ê¸°ì‚¬ì—ëŠ” 2ë¶„ê¸° ì˜ì—…ì´ìµ ì»¨ì„¼ì„œìŠ¤ê°€ 64ì¡°2327ì–µì›ìœ¼ë¡œ ì í˜”ë‹¤. "
+        "ì‹œì¥ì€ HBM ê°€ê²©ê³¼ ì¥ê¸°ê³µê¸‰ê³„ì•½(LTA), ë¹…í…Œí¬ AI CAPEX ê°€ì´ë˜ìŠ¤ì— ì£¼ëª©í•œë‹¤."
+    )
+    hynix_row = dict(
+        bigtech_row,
+        title=hynix_title,
+        source_title=hynix_title,
+        source_body=hynix_body,
+        source_abstract=hynix_body,
+        summary=hynix_body,
+        link="https://www.mk.co.kr/news/stock/12107221",
+    )
+    hynix_alert = production.contract.strict.classify(hynix_row, now)
+    if not hynix_alert:
+        errors.append("SK Hynix earnings-preview article was not classified")
+    else:
+        hynix_rendered = compact.compact_alert(
+            compact.normalize_alert_for_output(hynix_alert),
+            1,
+            now,
+            {},
+            {},
+        )
+        hynix_core = next(
+            (line for line in hynix_rendered.splitlines() if line.startswith("- í•µì‹¬:")),
+            "",
+        )
+        if "64ì¡°2327ì–µì›" in hynix_core:
+            errors.append(f"suspect SK Hynix operating-profit amount was transmitted: {hynix_core}")
+        if not all(term in hynix_core for term in ("29ì¼", "HBM", "LTA", "ì´ìƒì¹˜ë¡œ ì œì™¸")):
+            errors.append(f"SK Hynix source anomaly fallback lost verified facts: {hynix_core}")
+
+    oci_title = "OCIí™€ë”©ìŠ¤, 2Q í‘ìì „í™˜â€¦íƒœì–‘ê´‘ ë°¸ë¥˜ì²´ì¸ ì¦ì„¤ë¡œ í˜¸ì‹¤ì  ì´ì–´ê°„ë‹¤"
+    oci_body = (
+        "OCIí™€ë”©ìŠ¤ëŠ” 2ë¶„ê¸° ë§¤ì¶œ 1ì¡°231ì–µì›, ì˜ì—…ì´ìµ 1080ì–µì›ìœ¼ë¡œ í‘ì ì „í™˜í–ˆë‹¤. "
+        "OCIì—ë„ˆì§€ëŠ” 500MW íƒœì–‘ê´‘ í”„ë¡œì íŠ¸ ì§€ë¶„ 50%ë¥¼ ë§¤ê°í–ˆë‹¤. "
+        "í´ë¦¬ì‹¤ë¦¬ì½˜ ìƒì‚°ëŠ¥ë ¥ì„ 2029ë…„ê¹Œì§€ 3ë§Œ5000í†¤ì—ì„œ 7ë§Œí†¤ìœ¼ë¡œ í™•ëŒ€í•˜ë©° "
+        "ì‹ ê·œ ê³ ê°ê³¼ ì¥ê¸°ê³µê¸‰ê³„ì•½ë„ ì²´ê²°í–ˆë‹¤. ë¯¸êµ­ì€ ë¬´ì—­í™•ì¥ë²• 232ì¡° ì¡°ì‚¬ë¥¼ ì§„í–‰ ì¤‘ì´ë‹¤."
+    )
+    oci_row = dict(
+        bigtech_row,
+        title=oci_title,
+        source_title=oci_title,
+        source_body=oci_body,
+        source_abstract=oci_body,
+        summary=oci_body,
+        link="https://www.mt.co.kr/industry/2026/07/23/2026072317030653918",
+    )
+    oci_alert = production.contract.strict.classify(oci_row, now)
+    if not oci_alert:
+        errors.append("OCI earnings and capacity article was not classified")
+    else:
+        oci_rendered = compact.compact_alert(
+            compact.normalize_alert_for_output(oci_alert),
+            1,
+            now,
+            {},
+            {},
+        )
+        oci_view = next(
+            (line for line in oci_rendered.splitlines() if line.startswith("- íˆ¬ì í¬ì¸íŠ¸:")),
+            "",
+        )
+        if "ì¶”ê°€ ê´€ì„¸ê°€ í™•ì •ë˜ë©´" in oci_view:
+            errors.append(f"OCI earnings article reused a generic tariff investment point: {oci_view}")
+        if not all(term in oci_view for term in ("í”„ë¡œì íŠ¸ ë§¤ê°", "í´ë¦¬ì‹¤ë¦¬ì½˜ ì¦ì„¤", "ì¥ê¸°ê³„ì•½")):
+            errors.append(f"OCI investment point lost article-specific facts: {oci_view}")
+
+    kospi_title = "ëŒ€ì™¸ë¶ˆì•ˆì— ì½”ìŠ¤í”¼ 5%ëŒ€ í•˜ë½â€¦ë©”íƒ€ ì‹¤ì ë°œí‘œÂ·FOMC, ë°˜ë“± ì´ëŒê¹Œ"
+    kospi_body = (
+        "ì½”ìŠ¤í”¼ëŠ” ì „ ê±°ë˜ì¼ ëŒ€ë¹„ 406.27í¬ì¸íŠ¸(5.72%) ë‚´ë ¸ê³  "
+        "ì½”ìŠ¤ë‹¥ì€ 42.06í¬ì¸íŠ¸(5.32%) í•˜ë½í•´ "
+        "ë‘ ì‹œì¥ì— ë§¤ë„ ì‚¬ì´ë“œì¹´ê°€ ë°œë™ëë‹¤. ì™¸êµ­ì¸ê³¼ ê¸°ê´€ì´ ê°ê° "
+        "3ì¡°2828ì–µì›, 1ì¡°9513ì–µì› ìˆœë§¤ë„í–ˆë‹¤. ì‚¼ì„±ì „ìì™€ SKí•˜ì´ë‹‰ìŠ¤ëŠ” "
+        "ê°ê° 7.59%, 8.34% í•˜ë½í–ˆë‹¤. ìœ ê°€ì™€ ë¯¸êµ­ì±„ ê¸ˆë¦¬ ìƒìŠ¹ì´ ìœ„í—˜ì„ í˜¸ë¥¼ ë‚®ì·„ë‹¤."
+    )
+    kospi_row = dict(
+        bigtech_row,
+        title=kospi_title,
+        source_title=kospi_title,
+        source_body=kospi_body,
+        source_abstract=kospi_body,
+        summary=kospi_body,
+        link="https://www.mt.co.kr/stock/2026/07/24/2026072416053045575",
+    )
+    kospi_alert = production.contract.strict.classify(kospi_row, now)
+    if not kospi_alert:
+        errors.append("KOSPI selloff article was not classified")
+    else:
+        kospi_rendered = compact.compact_alert(
+            compact.normalize_alert_for_output(kospi_alert),
+            1,
+            now,
+            {},
+            {},
+        )
+        kospi_core = next(
+            (line for line in kospi_rendered.splitlines() if line.startswith("- í•µì‹¬:")),
+            "",
+        )
+        kospi_view = next(
+            (line for line in kospi_rendered.splitlines() if line.startswith("- íˆ¬ì í¬ì¸íŠ¸:")),
+            "",
+        )
+        if not all(term in kospi_core for term in ("5.72%", "5.32%", "3ì¡°2828ì–µì›", "1ì¡°9513ì–µì›")):
+            errors.append(f"KOSPI selloff core lost index or flow facts: {kospi_core}")
+        if not all(term in kospi_view for term in ("ì™¸êµ­ì¸Â·ê¸°ê´€", "ìœ ê°€Â·ê¸ˆë¦¬", "ì§€ìˆ˜ ìˆ˜ê¸‰")):
+            errors.append(f"KOSPI selloff investment point was not market-specific: {kospi_view}")
+        if "ë‹¤ìŒ ë¶„ê¸° ë§¤ì¶œ" in kospi_view:
+            errors.append(f"KOSPI selloff reused a company-earnings template: {kospi_view}")
+
+    generic_title = "ì¦ì„¤ì€ ë”ë”˜ë° AI ìˆ˜ìš”ëŠ” í­ì¦â€¦ì‚¼ì„±ì „ê¸°, MLCC ì¥ê¸°ê³„ì•½ ì‡ë‹¬ì•„"
+    generic_body = (
+        "AI ì„œë²„ íˆ¬ì í™•ëŒ€ë¡œ ê³ ìš©ëŸ‰ MLCC ìˆ˜ìš”ê°€ ë¹ ë¥´ê²Œ ëŠ˜ê³  ìˆë‹¤. "
+        "ì‚¼ì„±ì „ê¸°ëŠ” ê¸€ë¡œë²Œ ê³ ê°ì‚¬ì™€ MLCC ì¥ê¸°ê³µê¸‰ ê³„ì•½ì„ í™•ëŒ€í•˜ê³  ìˆìœ¼ë©° ìƒì‚°ëŠ¥ë ¥ ì¦ì„¤ë„ ê²€í† í•œë‹¤. "
+        "ë‹¤ë§Œ êµ¬ì²´ ê³„ì•½ê¸ˆì•¡ê³¼ ê³ ê°ì‚¬ë³„ ë§¤ì¶œ ì¸ì‹ ì‹œì ì€ ê³µê°œë˜ì§€ ì•Šì•˜ë‹¤."
+    )
+    generic_detail = compact.extract_article_detail(
+        fixture(generic_title, generic_body),
+        generic_title,
+    )
+    generic_row = {
+        "source": "ì´íˆ¬ë°ì´ ì‚°ì—…",
+        "layer": "trusted",
+        "publisher": "ì´íˆ¬ë°ì´",
+        "title": generic_title,
+        "source_title": generic_detail["title"],
+        "source_body": generic_detail["body"],
+        "source_abstract": generic_detail["body"],
+        "summary": generic_detail["body"],
+        "link": "https://www.etoday.co.kr/news/view/2606800",
+        "published": now,
+        "body_verified": True,
+    }
+    generic_alert = production.contract.strict.classify(generic_row, now)
+    if not generic_alert:
+        errors.append("verified generic Korean business article was not classified")
+    else:
+        normalized = compact.normalize_alert_for_output(generic_alert)
+        if normalized.get("korean_business_kind") != "verified_source_summary":
+            errors.append("generic Korean article did not use verified source summary profile")
+        if normalized.get("news") != generic_title:
+            errors.append("generic Korean article exact title was overwritten")
+        if not compact.source_output_aligned(normalized):
+            errors.append("generic Korean article source/output alignment failed")
+        rendered = compact.compact_alert(normalized, 1, now, {}, {})
+        if generic_title not in rendered or "ì›ë¬¸ ë‰´ìŠ¤ë³´ê¸°" not in rendered:
+            errors.append("generic Korean article compact rendering lost title or source link")
+        if "ê³µì‹ ë¬¸ì„œ ë˜ëŠ” ì‹ ë¢° ë³´ë„ì—ì„œ" in rendered:
+            errors.append("generic Korean article fell back to stale generic policy copy")
+
+    body_only_material_row = dict(generic_row)
+    body_only_material_row.update(
+        {
+            "title": "í—¤ì§€ìŠ¤, 9ì›”ì— í™ì½© ê°„ë‹¤",
+            "source_title": "í—¤ì§€ìŠ¤, 9ì›”ì— í™ì½© ê°„ë‹¤",
+            "source_body": (
+                "ë¸Œëœë“œê°€ AI ì˜¤ë” ì‹œìŠ¤í…œì„ ë„ì…í–ˆë‹¤. ë³¸ë¬¸ì—ëŠ” ê³¼ê±° ìˆ˜ì£¼ì™€ ë§¤ì¶œ ëª©í‘œê°€ ì–¸ê¸‰ëì§€ë§Œ "
+                "ì œëª©ì—ëŠ” ì‹¤ì Â·ê³„ì•½Â·ì¦ì„¤ ê°™ì€ ìƒˆë¡œìš´ ê°€ê²© ë³€ìˆ˜ê°€ ì—†ë‹¤."
+            ),
+            "source_abstract": (
+                "ë¸Œëœë“œê°€ AI ì˜¤ë” ì‹œìŠ¤í…œì„ ë„ì…í–ˆë‹¤. ë³¸ë¬¸ì—ëŠ” ê³¼ê±° ìˆ˜ì£¼ì™€ ë§¤ì¶œ ëª©í‘œê°€ ì–¸ê¸‰ëë‹¤."
+            ),
+            "summary": "ë¸Œëœë“œê°€ AI ì˜¤ë” ì‹œìŠ¤í…œì„ ë„ì…í–ˆë‹¤.",
+            "link": "https://www.etoday.co.kr/news/view/2606629",
+        }
+    )
+    if production.contract.strict.classify(body_only_material_row, now):
+        errors.append("Korean body-only background terms bypassed the material headline gate")
+
+    person_name_false_positive_row = dict(generic_row)
+    person_name_false_positive_row.update(
+        {
+            "title": "í™ìˆ˜ì£¼, 'ë™ê¶' ë¹„ê·¹ì  ì„œì‚¬ ì™„ì„±",
+            "source_title": "í™ìˆ˜ì£¼, 'ë™ê¶' ë¹„ê·¹ì  ì„œì‚¬ ì™„ì„±",
+            "source_body": (
+                "ë°°ìš° í™ìˆ˜ì£¼ê°€ ë“œë¼ë§ˆ ë™ê¶ì—ì„œ ë¹„ê·¹ì  ì„œì‚¬ë¥¼ ì—°ê¸°í–ˆë‹¤. "
+                "ê¸°ì‚¬ì—ëŠ” ê¸°ì—… ê³„ì•½, ë§¤ì¶œ, ì‹¤ì  ë˜ëŠ” íˆ¬ì ì¼ì •ì´ ì—†ë‹¤."
+            ),
+            "source_abstract": "ë°°ìš° í™ìˆ˜ì£¼ê°€ ë“œë¼ë§ˆ ë™ê¶ì—ì„œ ë¹„ê·¹ì  ì„œì‚¬ë¥¼ ì—°ê¸°í–ˆë‹¤.",
+            "summary": "ë°°ìš° í™ìˆ˜ì£¼ê°€ ë“œë¼ë§ˆ ë™ê¶ì—ì„œ ë¹„ê·¹ì  ì„œì‚¬ë¥¼ ì—°ê¸°í–ˆë‹¤.",
+            "link": "https://www.etnews.com/20260724000140",
+        }
+    )
+    if production.contract.strict.classify(person_name_false_positive_row, now):
+        errors.append("personal name containing ìˆ˜ì£¼ bypassed the material headline gate")
+
+    for material_title in (
+        "í˜„ëŒ€ë¡œí…œ, í´ë€ë“œ K2 ì „ì°¨ 2ì°¨ ìˆ˜ì£¼",
+        "í•œí™”ì—ì–´ë¡œ, ëŒ€í˜•ìˆ˜ì£¼ ê³µì‹œ",
+        "ì¡°ì„ ì‚¬, 3ì¡°ì›ëŒ€ìˆ˜ì£¼ ì„±ê³µ",
+        "LIGë„¥ìŠ¤ì›, ìˆ˜ì£¼ì”ê³  ì—­ëŒ€ ìµœëŒ€",
+    ):
+        if not production.runner.korean_business_title_has_material_term(
+            material_title,
+            "ìˆ˜ì£¼",
+        ):
+            errors.append(f"valid contract headline was blocked by ìˆ˜ì£¼ context guard: {material_title}")
+
+    recap_row = dict(generic_row)
+    recap_row.update(
+        {
+            "title": "[ê¸‰ë“±ë½ì£¼ ì§šì–´ë³´ê¸°] ì‹¤ì ì£¼ ìƒí•œê°€Â·ì„ìƒì£¼ í•˜í•œê°€",
+            "source_title": "[ê¸‰ë“±ë½ì£¼ ì§šì–´ë³´ê¸°] ì‹¤ì ì£¼ ìƒí•œê°€Â·ì„ìƒì£¼ í•˜í•œê°€",
+            "link": "https://www.etoday.co.kr/news/view/2606794",
+        }
+    )
+    if production.contract.strict.classify(recap_row, now):
+        errors.append("same-day price recap was promoted as a new high-impact article")
+
+    jb_title = "JBê¸ˆìœµ, 2ë¶„ê¸° ìˆœìµ 2196ì–µ 'ì‚¬ìƒ ìµœëŒ€'â€¦1000ì–µì› ìì‚¬ì£¼ ì†Œê°"
+    jb_body = (
+        "JBê¸ˆìœµì§€ì£¼ê°€ ë¹„ì€í–‰ ê³„ì—´ì‚¬ì˜ ì„±ì¥ì— í˜ì…ì–´ ë¶„ê¸° ê¸°ì¤€ ì‚¬ìƒ ìµœëŒ€ ì‹¤ì ì„ "
+        "ë‹¬ì„±í•˜ê³  ì ê·¹ì ì¸ ì£¼ì£¼í™˜ì›ì— ë‚˜ì„ ë‹¤. "
+        "23ì¼ JBê¸ˆìœµì€ ì˜¬ 2ë¶„ê¸° ì§€ë°°ì£¼ì£¼ ë‹¹ê¸°ìˆœì´ìµì´ ì „ë…„ ë™ê¸° ëŒ€ë¹„ 5.7% "
+        "ì¦ê°€í•œ 2196ì–µì›ì„ ê¸°ë¡í–ˆë‹¤ê³  ë°í˜”ë‹¤. "
+        "ìƒë°˜ê¸° ëˆ„ì  ìˆœì´ìµ ì—­ì‹œ 3857ì–µì›ìœ¼ë¡œ ì—­ëŒ€ ìµœê³ ì¹˜ë‹¤. "
+        "ì´ë‚  JBê¸ˆìœµ ì´ì‚¬íšŒëŠ” ì£¼ì£¼í™˜ì› ì •ì±…ì˜ í•˜ë‚˜ë¡œ ë³´í†µì£¼ 1ì£¼ë‹¹ í˜„ê¸ˆ 314ì›ì˜ "
+        "ë¶„ê¸° ë°°ë‹¹ê³¼ í•¨ê»˜ 1000ì–µì› ê·œëª¨ì˜ ìê¸°ì£¼ì‹ ì·¨ë“ ë° ì†Œê°ì„ ê²°ì •í–ˆë‹¤."
+    )
+    jb_detail = compact.extract_article_detail(fixture(jb_title, jb_body), jb_title)
+    jb_row = {
+        "source": "ì „ìì‹ ë¬¸ ì˜¤ëŠ˜ì˜ ë‰´ìŠ¤",
+        "layer": "trusted",
+        "publisher": "ì „ìì‹ ë¬¸",
+        "title": jb_title,
+        "source_title": jb_detail["title"],
+        "source_body": jb_detail["body"],
+        "source_abstract": jb_detail["body"],
+        "summary": jb_detail["body"],
+        "link": "https://www.etnews.com/20260723000458",
+        "published": now,
+        "body_verified": True,
+    }
+    jb_alert = production.contract.strict.classify(jb_row, now)
+    if not jb_alert:
+        errors.append("JB Financial verified earnings article was not classified")
+    else:
+        normalized_jb = compact.normalize_alert_for_output(jb_alert)
+        rendered = compact.compact_alert(normalized_jb, 1, now, {}, {})
+        core_line = next((line for line in rendered.splitlines() if line.startswith("- í•µì‹¬:")), "")
+        view_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- íˆ¬ì í¬ì¸íŠ¸:")),
+            "",
+        )
+        if not all(
+            term in core_line
+            for term in ("2196ì–µì›", "5.7%", "ì—­ëŒ€ ìµœëŒ€", "314ì›", "1000ì–µì›", "ìì‚¬ì£¼")
+        ):
+            errors.append(f"JB Financial core omitted article facts: {core_line}")
+        if not all(term in view_line for term in ("ì´ìµ ì¶”ì •", "ì£¼ì£¼í™˜ì›")):
+            errors.append(f"JB Financial investment point omitted market meaning: {view_line}")
+        if "ê¸ˆìœµ/ìë³¸ì‹œì¥" not in normalized_jb.get("sectors", []):
+            errors.append("JB Financial article lost its finance sector classification")
+        if jb_title in core_line or jb_title in view_line:
+            errors.append("JB Financial summary repeated the headline instead of article facts")
+        for marker in FORBIDDEN_COMPACT_MARKERS:
+            if marker in rendered:
+                errors.append(f"JB Financial compact Telegram summary retained {marker}")
+        field_errors = compact_prose_errors(rendered)
+        if field_errors:
+            errors.append(
+                "JB Financial compact facts exceeded field limits: " + ", ".join(field_errors)
+            )
+
+    detailed_article_cases = [
+        (
+            "[ETíŠ¹ì§•ì£¼]ìœ í•œì–‘í–‰, 4253ì–µì› ê·œëª¨ ìì‚¬ì£¼ ì†Œê°ì— ìƒìŠ¹ì„¸",
+            (
+                "ìœ í•œì–‘í–‰ì´ 4253ì–µì› ê·œëª¨ì˜ ìì‚¬ì£¼ ì†Œê° ê²°ì •ì— ìƒìŠ¹ì„¸ë‹¤. "
+                "ê¸ˆìœµê°ë…ì› ì „ìê³µì‹œì‹œìŠ¤í…œì— ë”°ë¥´ë©´ ìœ í•œì–‘í–‰ì€ ì „ë‚  ì´ì‚¬íšŒë¥¼ ì—´ê³  "
+                "4253ì–µ3760ë§Œ4000ì› ê·œëª¨ì˜ ìì‚¬ì£¼ë¥¼ ì†Œê°í•˜ê¸°ë¡œ ê²°ì •í–ˆë‹¤ê³  ê³µì‹œí–ˆë‹¤. "
+                "ì†Œê° ì˜ˆì •ì¼ì€ ì˜¤ëŠ” 31ì¼ì´ë©°, ì†Œê° ëŒ€ìƒì€ ë³´í†µì£¼ì™€ ì¢…ë¥˜ì£¼ë¥¼ í¬í•¨í•œ "
+                "ì´ 606ë§Œ4420ì£¼ë‹¤."
+            ),
+            ("4253ì–µ3760ë§Œ4000ì›", "ì†Œê°", "606ë§Œ4420ì£¼", "31ì¼"),
+            ("ë§¤ì…Â·ì†Œê°",),
+            ("ë°œí–‰ì£¼ì‹", "ì£¼ë‹¹ê°€ì¹˜"),
+        ),
+        (
+            "[ETíŠ¹ì§•ì£¼]í˜„ëŒ€ì°¨, 2ë¶„ê¸° ì‹¤ì  ë¶€ì§„ì— í•˜ë½ì„¸",
+            (
+                "í˜„ëŒ€ì°¨ëŠ” ì „ë‚  2ë¶„ê¸° ì—°ê²° ê¸°ì¤€ ì˜ì—…ì´ìµì´ 2ì¡°8509ì–µì›ìœ¼ë¡œ ì§€ë‚œí•´ "
+                "ê°™ì€ ê¸°ê°„ë³´ë‹¤ 20.8% ê°ì†Œí–ˆë‹¤ê³  ë°í˜”ë‹¤. ë§¤ì¶œì€ 49ì¡°2153ì–µì›ìœ¼ë¡œ "
+                "1.9% ì¦ê°€í–ˆì§€ë§Œ, ì˜ì—…ì´ìµë¥ ì€ 5.8%ë¡œ ì—°ê°„ ê°€ì´ë˜ìŠ¤(6.3~7.3%)ë¥¼ "
+                "ë°‘ëŒì•˜ë‹¤. ë„ë§¤íŒë§¤ëŠ” 99ë§Œ2000ëŒ€ë¡œ ì „ë…„ ë™ê¸° ëŒ€ë¹„ 6.9% ê°ì†Œí–ˆë‹¤."
+            ),
+            ("2ì¡°8509ì–µì›", "20.8% ê°ì†Œ", "49ì¡°2153ì–µì›", "5.8%", "6.3~7.3%"),
+            ("ì˜ì—…ì´ìµ 8509ì–µì›",),
+            ("ì´ìµ ì¶”ì •", "ê°€ì´ë˜ìŠ¤"),
+        ),
+    ]
+    for case_index, (
+        title,
+        body,
+        required_facts,
+        forbidden_facts,
+        required_view_facts,
+    ) in enumerate(
+        detailed_article_cases,
+        1,
+    ):
+        detail = compact.extract_article_detail(fixture(title, body), title)
+        row = {
+            "source": "ì „ìì‹ ë¬¸ ì˜¤ëŠ˜ì˜ ë‰´ìŠ¤",
+            "layer": "trusted",
+            "publisher": "ì „ìì‹ ë¬¸",
+            "title": title,
+            "source_title": detail["title"],
+            "source_body": detail["body"],
+            "source_abstract": detail["body"],
+            "summary": detail["body"],
+            "link": f"https://www.etnews.com/2026072400016{case_index + 2}",
+            "published": now,
+            "body_verified": True,
+        }
+        alert = production.contract.strict.classify(row, now)
+        if not alert:
+            errors.append(f"detailed Korean article case was not classified: {title}")
+            continue
+        rendered = compact.compact_alert(
+            compact.normalize_alert_for_output(alert),
+            1,
+            now,
+            {},
+            {},
+        )
+        core_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- í•µì‹¬:")),
+            "",
+        )
+        view_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- íˆ¬ì í¬ì¸íŠ¸:")),
+            "",
+        )
+        if not all(fact in core_line for fact in required_facts):
+            errors.append(f"detailed Korean article core omitted facts: {core_line}")
+        if any(fact in core_line for fact in forbidden_facts):
+            errors.append(f"detailed Korean article core invented or clipped a fact: {core_line}")
+        if not all(fact in view_line for fact in required_view_facts):
+            errors.append(f"detailed Korean article investment point omitted meaning: {view_line}")
+
+    sidecar_core = compact.market_sidecar_fact(
+        "ì½”ìŠ¤í”¼ã†ì½”ìŠ¤ë‹¥ ë™ë°˜ ë§¤ë„ ì‚¬ì´ë“œì¹´ ë°œë™",
+        (
+            "ì™¸êµ­ì¸ì´ 3ì¡°4285ì–µì›, ê¸°ê´€ì´ 1ì¡°7019ì–µì› ìˆœë§¤ë„ ì¤‘ì´ë‹¤. "
+            "ì‚¼ì„±ì „ì(-7.59%), SKí•˜ì´ë‹‰ìŠ¤(-7.76%) ë“±ì€ ì•½ì„¸ë‹¤."
+        ),
+    )
+    if not all(
+        fact in sidecar_core
+        for fact in ("ì½”ìŠ¤í”¼Â·ì½”ìŠ¤ë‹¥", "3ì¡°4285ì–µì›", "1ì¡°7019ì–µì›", "7.59%", "7.76%")
+    ):
+        errors.append(f"sidecar article core omitted market facts: {sidecar_core}")
+
+    tariff_title = "ë°©ë¯¸ ì˜ì›ë‹¨, ç¾ì— '15% ê´€ì„¸ ë§ˆì§€ë…¸ì„ ' ì§€ì¼œë‹¬ë¼ ì´‰êµ¬"
+    tariff_body = (
+        "í•œêµ­ ì—¬ì•¼ ì˜ì›ë“¤ì´ ë¯¸êµ­ íŠ¸ëŸ¼í”„ í–‰ì •ë¶€ì™€ ì˜íšŒ ê´€ê³„ìë“¤ì„ ë§Œë‚˜ ë¯¸êµ­ì˜ ë¬´ì—­ë²• "
+        "301ì¡°ì— ë”°ë¥¸ ì¶”ê°€ ê´€ì„¸ê°€ ê¸°ì¡´ í•œë¯¸ ë¬´ì—­í•©ì˜ìƒ ê´€ì„¸ìœ¨ì¸ 15%ë¥¼ ë„˜ì§€ ì•Šì•„ì•¼ "
+        "í•œë‹¤ê³  ì´‰êµ¬í–ˆë‹¤. ë°°ì¤€ì˜ ì˜ì›ì€ í•œêµ­ì´ 3500ì–µ ë‹¬ëŸ¬ë¥¼ íˆ¬ìí•˜ëŠ” ëŒ€ì‹  ê¸°ì¡´ "
+        "25% ê´€ì„¸ë¥¼ 15%ë¡œ ë‚®ì¶”ê¸°ë¡œ í•œ ë§Œí¼ ì¶”ê°€ ê´€ì„¸ ë¶€ë‹´ì´ ë°œìƒí•´ì„œëŠ” ì•ˆ ëœë‹¤ê³  "
+        "ë°í˜”ë‹¤. íŠ¸ëŸ¼í”„ í–‰ì •ë¶€ëŠ” ê°•ì œë…¸ë™ ì¡°ì‚¬ ê²°ê³¼ë¥¼ ê·¼ê±°ë¡œ í•œêµ­ì— 12.5%ì˜ ê´€ì„¸ë¥¼ "
+        "ë¶€ê³¼í–ˆê³  ê³¼ì‰ìƒì‚°ì„ ì´ìœ ë¡œ í•œ ì¶”ê°€ ê´€ì„¸ë„ ì˜ˆê³ í–ˆë‹¤."
+    )
+    tariff_detail = compact.extract_article_detail(
+        fixture(tariff_title, tariff_body),
+        tariff_title,
+    )
+    tariff_row = {
+        "source": "ì „ìì‹ ë¬¸ ì˜¤ëŠ˜ì˜ ë‰´ìŠ¤",
+        "layer": "trusted",
+        "publisher": "ì „ìì‹ ë¬¸",
+        "title": tariff_title,
+        "source_title": tariff_detail["title"],
+        "source_body": tariff_detail["body"],
+        "source_abstract": tariff_detail["body"],
+        "summary": tariff_detail["body"],
+        "link": "https://www.etnews.com/20260724000074",
+        "published": now,
+        "body_verified": True,
+    }
+    tariff_alert = production.contract.strict.classify(tariff_row, now)
+    if not tariff_alert:
+        errors.append("Korea tariff article was not classified")
+    else:
+        normalized_tariff = compact.normalize_alert_for_output(tariff_alert)
+        fx_snapshot = {
+            "query_time_kst": now.isoformat(timespec="seconds"),
+            "rates": {
+                "USD": {
+                    "code": "USD",
+                    "value": 1464.88,
+                    "status": "ìµœê·¼ê±°ë˜",
+                    "reference_time_kst": "2026-07-24T13:21+09:00",
+                    "query_time_kst": now.isoformat(timespec="seconds"),
+                    "source": "Yahoo Finance",
+                    "url": compact.yahoo_fx_url("USD"),
+                    "error": "",
+                }
+            },
+        }
+        normalized_tariff["fx_conversion"] = compact.build_alert_fx_conversion(
+            normalized_tariff,
+            fx_snapshot,
+            now,
+        )
+        rendered = compact.compact_alert(normalized_tariff, 1, now, {}, {})
+        core_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- í•µì‹¬:")),
+            "",
+        )
+        investment_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- íˆ¬ì í¬ì¸íŠ¸:")),
+            "",
+        )
+        source_line = next(
+            (line for line in rendered.splitlines() if line.startswith("- ì¶œì²˜:")),
+            "",
+        )
+        required_facts = ("12.5%", "ì¶”ê°€ ê´€ì„¸", "15%", "3500ì–µ ë‹¬ëŸ¬", "ì•½ 512.7ì¡°ì›")
+        if not all(term in core_line for term in required_facts):
+            errors.append(f"Korea tariff detailed core omitted article facts: {core_line}")
+        if len(core_line.removeprefix("- í•µì‹¬:").strip()) <= 50:
+            errors.append("Korea tariff core regressed to the former 50-character cap")
+        if "ê°€ê²©ê²½ìŸë ¥" not in investment_line or "ë§ˆì§„" not in investment_line:
+            errors.append(f"Korea tariff investment point is not decision-useful: {investment_line}")
+        if "Yahoo Finance USD/KRW" not in source_line or "2026-07-24T13:21+09:00" not in source_line:
+            errors.append(f"Korea tariff FX provenance missing: {source_line}")
+        if "â€¦" in rendered or "..." in rendered:
+            errors.append("Korea tariff compact output contains a truncated sentence")
+        for marker in FORBIDDEN_COMPACT_MARKERS:
+            if marker in rendered:
+                errors.append(f"Korea tariff compact output retained removed field {marker}")
+
+    eur_amounts = compact.extract_foreign_amounts("ìœ ëŸ½ ê³µì¥ì— 20ì–µ ìœ ë¡œë¥¼ íˆ¬ìí•œë‹¤.")
+    if not eur_amounts or eur_amounts[0].get("code") != "EUR":
+        errors.append("EUR amount parser did not detect a euro-denominated investment")
+    else:
+        eur_alert = {
+            "telegram_core_fact": "ìœ ëŸ½ ê³µì¥ì— 20ì–µ ìœ ë¡œë¥¼ íˆ¬ìí•œë‹¤.",
+            "news": "ìœ ëŸ½ ê³µì¥ íˆ¬ì",
+        }
+        eur_snapshot = {
+            "query_time_kst": now.isoformat(timespec="seconds"),
+            "rates": {
+                "EUR": {
+                    "code": "EUR",
+                    "value": 1666.2,
+                    "status": "ìµœê·¼ê±°ë˜",
+                    "reference_time_kst": "2026-07-24T13:19+09:00",
+                    "query_time_kst": now.isoformat(timespec="seconds"),
+                    "source": "Yahoo Finance",
+                    "url": compact.yahoo_fx_url("EUR"),
+                    "error": "",
+                }
+            },
+        }
+        eur_conversion = compact.build_alert_fx_conversion(eur_alert, eur_snapshot, now)
+        converted = compact.apply_krw_conversions(
+            "ìœ ëŸ½ ê³µì¥ì— 20ì–µ ìœ ë¡œë¥¼ íˆ¬ìí•œë‹¤.",
+            eur_conversion,
+        )
+        if "20ì–µ ìœ ë¡œ(ì•½ 3.3ì¡°ì›)" not in converted:
+            errors.append(f"EUR amount was not converted to KRW: {converted}")
+
+    required_currency_codes = {
+        "USD", "EUR", "JPY", "CNY", "GBP", "CHF", "CAD", "AUD", "HKD", "SGD", "TWD"
+    }
+    if not required_currency_codes.issubset(compact.FOREIGN_CURRENCY_SPECS):
+        errors.append("major world-currency KRW conversion coverage is incomplete")
+    usd_prefix_amounts = compact.extract_foreign_amounts(
+        "The agreement includes USD 350 billion of investment."
+    )
+    if (
+        not usd_prefix_amounts
+        or usd_prefix_amounts[0].get("code") != "USD"
+        or usd_prefix_amounts[0].get("amount") != 350_000_000_000
+    ):
+        errors.append("ISO-prefixed foreign amount parser did not detect USD 350 billion")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
