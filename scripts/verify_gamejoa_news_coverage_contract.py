@@ -69,6 +69,22 @@ def main() -> int:
     if missing_domains:
         failures.append(f"missing_domains={sorted(missing_domains)}")
 
+    expected_direct_sources = {
+        "https://www.newsis.com/RSS/sokbo.xml",
+        "https://www.newsis.com/RSS/economy.xml",
+        "https://www.newsis.com/RSS/bank.xml",
+        "https://www.newsis.com/RSS/industry.xml",
+        "https://www.newsis.com/RSS/entertain.xml",
+    }
+    configured_source_urls = {source[1] for source in radar.base.SOURCES}
+    missing_direct_sources = expected_direct_sources - configured_source_urls
+    if missing_direct_sources:
+        failures.append(f"missing_direct_sources={sorted(missing_direct_sources)}")
+
+    search_names = {source[0] for source in radar.KOREAN_BUSINESS_SEARCH_SOURCES}
+    if "국내 경영진·최대주주 직접매수" not in search_names:
+        failures.append("missing_search=국내 경영진·최대주주 직접매수")
+
     duplicate_a = {
         "news": "삼성전기 2분기 영업이익 4404억원, 10개 고객과 MLCC 장기계약",
         "published": now,
