@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import datetime as dt
 import html
+import json
 import re
 from html.parser import HTMLParser
 from zoneinfo import ZoneInfo
@@ -79,6 +80,8 @@ class ArticleHTMLParser(HTMLParser):
         self.blocks: list[str] = []
         self.raw_parts: list[str] = []
         self.time_values: list[str] = []
+        self.json_ld_depth = 0
+        self.json_ld_parts: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         tag = tag.lower()
@@ -93,6 +96,9 @@ class ArticleHTMLParser(HTMLParser):
             self.in_title = True
         if tag == "time" and attr.get("datetime"):
             self.time_values.append(clean(attr["datetime"]))
+        if tag == "script" and "ld+json" in attr.get("type", "").lower():
+            self.json_ld_depth = 1
+            return
 
         if tag in SKIP_TAGS:
             self.skip_depth += 1
@@ -101,7 +107,9 @@ class ArticleHTMLParser(HTMLParser):
             return
 
         identity = f"{attr.get('id', '')} {attr.get('class', '')} {attr.get('itemprop', '')}".lower().replace("_", "-")
-        is_target = any(marker.replace("_", "-") in identity for marker in TARGET_MARKERS)
+        is_target = tag == "article" or any(
+            marker.replace("_", "-") in identity for marker in TARGET_MARKERS
+        )
         if self.capture_depth:
             if tag not in VOID_TAGS:
                 self.capture_depth += 1
@@ -124,6 +132,9 @@ class ArticleHTMLParser(HTMLParser):
         tag = tag.lower()
         if tag == "title":
             self.in_title = False
+        if tag == "script" and self.json_ld_depth:
+            self.json_ld_depth = 0
+            return
         if tag in SKIP_TAGS:
             self.skip_depth = max(0, self.skip_depth - 1)
             return
@@ -142,6 +153,9 @@ class ArticleHTMLParser(HTMLParser):
             self.capture_depth = max(0, self.capture_depth - 1)
 
     def handle_data(self, data: str) -> None:
+        if self.json_ld_depth:
+            self.json_ld_parts.append(data)
+            return
         if self.in_title:
             self.title_text.append(data)
         if self.capture_depth and not self.skip_depth:
@@ -182,6 +196,35 @@ def strip_publisher_title_suffix(value: str) -> str:
     return clean(re.sub(rf"\s+-\s+(?:{suffixes}|the white house)\s*$", "", value, flags=re.I))
 
 
+def news_article_json_ld(parts: list[str]) -> dict:
+    def walk(value):
+        if isinstance(value, dict):
+            article_type = value.get("@type")
+            types = article_type if isinstance(article_type, list) else [article_type]
+            if any(str(item).lower() in {"article", "newsarticle", "reportagenewsarticle"} for item in types):
+                if value.get("headline") or value.get("articleBody"):
+                    return value
+            for child in value.values():
+                found = walk(child)
+                if found:
+                    return found
+        elif isinstance(value, list):
+            for child in value:
+                found = walk(child)
+                if found:
+                    return found
+        return {}
+
+    for part in parts:
+        try:
+            found = walk(json.loads(part))
+        except (json.JSONDecodeError, TypeError):
+            continue
+        if found:
+            return found
+    return {}
+
+
 def titles_align(listing_title: str, detail_title: str) -> bool:
     left = normalized_title_tokens(listing_title)
     right = normalized_title_tokens(detail_title)
@@ -208,12 +251,18 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
             "body_verified": False,
         }
 
+    structured = news_article_json_ld(parser.json_ld_parts)
     title = strip_publisher_title_suffix(
         parser.meta.get("og:title")
         or parser.meta.get("twitter:title")
+        or structured.get("headline")
         or " ".join(parser.title_text)
     )
-    abstract = clean(parser.meta.get("og:description") or parser.meta.get("description"))
+    abstract = clean(
+        parser.meta.get("og:description")
+        or parser.meta.get("description")
+        or structured.get("description")
+    )
     body = "\n".join(parser.blocks)
     body = re.sub(r"\n{3,}", "\n\n", body).strip()
     raw_body = "\n".join(
@@ -224,10 +273,14 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
     raw_body = re.sub(r"\n{3,}", "\n\n", raw_body).strip()
     if len(raw_body) > len(body) and len(body) < 180:
         body = raw_body
+    structured_body = clean(structured.get("articleBody"))
+    if len(structured_body) > len(body):
+        body = structured_body
     published = parse_published(
         parser.meta.get("article:published_time")
         or parser.meta.get("date")
         or parser.meta.get("dc.date.issued")
+        or structured.get("datePublished")
         or (parser.time_values[0] if parser.time_values else "")
     )
     aligned = titles_align(listing_title or title, title)
