@@ -2426,9 +2426,9 @@ def build_strategic_technology_investment_alert(row: dict, now, text: str) -> di
     )
     if samsung_funds:
         core = (
-            "삼성전자가 DS 4,950억원·DX 2,970억원 등 총 7,920억원을 출자해 "
+            "삼성전자가 DS 4,950억원·DX 2,970억원 등 7,920억원을 출자해 "
             "반도체·AI·로봇 스타트업 기술 확보에 나섭니다. "
-            "두 펀드는 8월부터 각각 13년·10년간 운용됩니다."
+            "두 펀드는 8월 출범해 13년·10년 운용됩니다."
         )
         sectors = ["반도체/HBM/CXL", "AI/데이터센터", "로봇/생산자동화"]
         company_key = "samsung_electronics"
