@@ -934,6 +934,11 @@ ARTICLE_RESULT_TERMS = (
     "매출", "영업이익", "순이익", "당기순이익", "실적", "수주", "계약", "출하",
 )
 ARTICLE_SHAREHOLDER_TERMS = ("배당", "자사주", "자기주식", "소각", "취득")
+INSIDER_ROLE_PATTERN = (
+    r"(?:회장|부회장|대표이사|대표|사장|총괄\s*프로듀서|CCO|CEO|CFO|"
+    r"임원|사내이사|이사회\s*의장)"
+)
+INSIDER_PURCHASE_PATTERN = r"(?:장내\s*매수|주식\s*매수|지분\s*매수|자사주\s*매입|취득)"
 KOREAN_WON_AMOUNT_PATTERN = (
     r"(?=\d)(?:\d[\d,.]*조)?(?:\d[\d,.]*억)?"
     r"(?:\d[\d,.]*만)?(?:\d[\d,.]*)?원"
@@ -1641,6 +1646,86 @@ def shareholder_return_fact(sentences: list[str]) -> str:
     return best
 
 
+def insider_purchase_signal(text: str) -> bool:
+    compact = clean_article_summary_text(text)
+    return bool(
+        re.search(INSIDER_ROLE_PATTERN, compact, flags=re.IGNORECASE)
+        and re.search(r"(?:매수|매입|취득)", compact)
+        and re.search(
+            r"(?:\d[\d,.]*(?:억|만|천)(?:원|주)?|\d[\d,.]*(?:원|주)|지분율)",
+            compact,
+        )
+    )
+
+
+def insider_purchase_fact(title: str, sentences: list[str]) -> str:
+    text = " ".join([title, *sentences])
+    if not insider_purchase_signal(text):
+        return ""
+
+    purchases: list[str] = []
+    seen_buyers: set[str] = set()
+    for sentence in sentences:
+        if not re.search(INSIDER_ROLE_PATTERN, sentence, flags=re.IGNORECASE):
+            continue
+        if not re.search(r"(?:매수|매입|취득)", sentence):
+            continue
+        buyer_match = re.search(
+            rf"([가-힣]{{2,4}}(?:\s+[A-Za-z가-힣0-9()·]+){{0,3}}\s*{INSIDER_ROLE_PATTERN})",
+            sentence,
+            flags=re.IGNORECASE,
+        )
+        if not buyer_match:
+            continue
+        buyer = re.sub(r"\s+", " ", buyer_match.group(1)).strip()
+        buyer_key = re.sub(r"\s+", "", buyer.lower())
+        if buyer_key in seen_buyers:
+            continue
+
+        shares_match = re.search(
+            r"(?:총\s*)?(\d[\d,.]*(?:억|만|천)?\d[\d,.]*)주",
+            sentence,
+        )
+        amount_match = re.search(
+            rf"({KOREAN_WON_AMOUNT_PATTERN})\s*(?:규모를?|어치를?|들여|투입해)?",
+            sentence,
+        )
+        stake_match = re.search(
+            r"지분율(?:은|이|도)?\s*(\d+(?:\.\d+)?)%에서\s*(\d+(?:\.\d+)?)%",
+            sentence,
+        )
+        details: list[str] = []
+        if amount_match:
+            details.append(amount_match.group(1).replace(" ", ""))
+        if shares_match:
+            details.append(f"{shares_match.group(1)}주")
+        if stake_match:
+            details.append(f"지분율 {stake_match.group(1)}→{stake_match.group(2)}%")
+        if not details:
+            continue
+        purchases.append(f"{buyer} {', '.join(details)}")
+        seen_buyers.add(buyer_key)
+        if len(purchases) >= 2:
+            break
+
+    if not purchases:
+        title_buyer = re.search(
+            rf"([가-힣]{{2,4}}(?:\s+[A-Za-z가-힣0-9()·]+){{0,2}}\s*{INSIDER_ROLE_PATTERN})",
+            title,
+            flags=re.IGNORECASE,
+        )
+        title_shares = re.search(r"(\d[\d,.]*(?:억|만|천)?\d[\d,.]*)주", title)
+        if title_buyer and title_shares:
+            purchases.append(f"{title_buyer.group(1).strip()} {title_shares.group(1)}주")
+
+    if not purchases:
+        return ""
+    return concise_text(
+        f"{'·'.join(purchases)}를 개인 명의로 매수했습니다.",
+        limit=GAMEJOA_CORE_MAX_CHARS,
+    )
+
+
 def shareholder_schedule_fact(sentences: list[str]) -> str:
     for sentence in sentences:
         if "소각" not in sentence or not any(term in sentence for term in ("예정일", "소각 대상")):
@@ -1791,6 +1876,7 @@ def detailed_article_core(title: str, body: str) -> str:
         return sidecar_fact
 
     preferred = [
+        insider_purchase_fact(title, sentences),
         financial_result_fact(title, sentences),
         shareholder_return_fact(sentences),
         financial_context_fact(sentences),
@@ -1878,6 +1964,7 @@ def compact_article_facts(title: str, body: str) -> list[str]:
         title=title,
     )
     facts = [
+        insider_purchase_fact(title, sentences),
         financial_result_fact(title, sentences),
         shareholder_return_fact(sentences),
     ]
@@ -1930,6 +2017,7 @@ KOREAN_BUSINESS_SECTOR_TERMS = [
         ],
     ),
     ("유통/소비", ["유통", "소비", "홈플러스", "백화점", "면세점"]),
+    ("엔터테인먼트/콘텐츠", ["엔터", "yg", "jyp", "하이브", "sm엔터", "음반", "콘텐츠"]),
 ]
 KOREAN_BUSINESS_COMPANIES = [
     "삼성전자",
@@ -1953,6 +2041,10 @@ KOREAN_BUSINESS_COMPANIES = [
     "한국항공우주",
     "현대로템",
     "한화시스템",
+    "YG엔터테인먼트",
+    "JYP엔터테인먼트",
+    "하이브",
+    "SM엔터테인먼트",
 ]
 KOREAN_BUSINESS_MARKET_RECAP_TERMS = [
     "급등락주 짚어보기",
@@ -2000,6 +2092,8 @@ KOREAN_BUSINESS_MATERIAL_TERMS = [
 
 def korean_business_title_has_material_term(title: str, term: str) -> bool:
     title_text = str(title or "").lower()
+    if term == "내부자 직접매수":
+        return insider_purchase_signal(title_text)
     if term != "수주":
         return term in title_text
 
@@ -2073,6 +2167,8 @@ def korean_business_impacts(text: str, existing: list[object]) -> list[str]:
         impact for impact, terms in KOREAN_BUSINESS_IMPACT_TERMS.items()
         if any(term.lower() in lowered for term in terms)
     ]
+    if insider_purchase_signal(lowered) and "수급" not in impacts:
+        impacts.append("수급")
     if not impacts:
         impacts = [
             str(value) for value in existing
