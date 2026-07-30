@@ -2,10 +2,13 @@ from datetime import datetime
 from pathlib import Path
 import sys
 
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
+
 import gamejoa_preopen_news_radar_full_compact_runner as radar
 from khs_article_detail import extract_article_detail
+
 
 CASES = (
     ("NAVER, 엔비디아 대상 1조4809억 규모 유상증자 결정", "유상증자", "수급"),
@@ -17,23 +20,63 @@ CASES = (
     ("삼성전기, 10개 고객과 MLCC 장기공급계약", "mlcc", "돈 버는 능력"),
     ("미국, 외국산 휴머노이드 수입 제한", "수입 제한", "할인율"),
     ("엔비디아, AI 순환금융 우려 재점화", "순환금융", "돈 버는 능력"),
+    ("미국, 글로벌파운드리스에 AI 광반도체 개발비 3억달러 지원", "개발비", "돈 버는 능력"),
+    ("중국 정치국, 성장 둔화 대응 정책 지원·재정 지출 약속", "정치국", "할인율"),
+    ("국민연금, 국내주식 수익률 106% 기록", "국민연금", "수급"),
+    ("국고채 금리, 미국 금리 여파에 동반 상승", "국고채", "할인율"),
+    ("LG디스플레이, 1.5조 국민성장펀드 투자 유치", "국민성장펀드", "돈 버는 능력"),
 )
 
 
-def main():
+def main() -> int:
     failures = []
     now = datetime.now().astimezone()
     for index, (title, required_term, required_impact) in enumerate(CASES):
-        row = {"title": title, "summary": title, "published": now}
-        score, _ = radar.korean_business_detail_priority(row)
-        material = [term for term in radar.KOREAN_BUSINESS_MATERIAL_TERMS if radar.korean_business_title_has_material_term(title.lower(), term)]
+        row = {
+            "title": title,
+            "summary": title,
+            "published": now,
+        }
+        score, _timestamp = radar.korean_business_detail_priority(row)
+        material = [
+            term
+            for term in radar.KOREAN_BUSINESS_MATERIAL_TERMS
+            if radar.korean_business_title_has_material_term(title.lower(), term)
+        ]
         impacts = radar.korean_business_impacts(title.lower(), [])
-        if score < 10: failures.append(f"case={index} priority={score}")
-        if required_term not in material: failures.append(f"case={index} material={required_term}")
-        if required_impact not in impacts: failures.append(f"case={index} impact={required_impact}")
-    a = {"news": "삼성전기 2분기 영업이익 4404억원, 10개 고객과 MLCC 장기계약", "published": now}
-    b = {"news": "삼성전기, 하이퍼스케일러 10여곳과 MLCC LTA 체결", "published": now}
-    if radar.alert_dedup_key(a) != radar.alert_dedup_key(b): failures.append("semantic_duplicate=mlcc_lta")
+        if score < 10:
+            failures.append(f"case={index} priority={score}")
+        if required_term not in material:
+            failures.append(f"case={index} missing_material={required_term}")
+        if required_impact not in impacts:
+            failures.append(f"case={index} missing_impact={required_impact}")
+
+    expected_domains = {
+        "newsis.com",
+        "chosun.com",
+        "wowtv.co.kr",
+        "kmib.co.kr",
+        "zdnet.co.kr",
+        "techm.kr",
+        "investchosun.com",
+        "inews24.com",
+        "scmp.com",
+    }
+    missing_domains = expected_domains - set(radar.KOREAN_BUSINESS_PUBLISHER_DOMAINS)
+    if missing_domains:
+        failures.append(f"missing_domains={sorted(missing_domains)}")
+
+    duplicate_a = {
+        "news": "삼성전기 2분기 영업이익 4404억원, 10개 고객과 MLCC 장기계약",
+        "published": now,
+    }
+    duplicate_b = {
+        "news": "삼성전기, 하이퍼스케일러 10여곳과 MLCC LTA 체결",
+        "published": now,
+    }
+    if radar.alert_dedup_key(duplicate_a) != radar.alert_dedup_key(duplicate_b):
+        failures.append("semantic_duplicate=mlcc_lta")
+
     structured_title = "엔비디아, 오픈AI 데이터센터에 2500억달러 보증 논의"
     structured_body = (
         "엔비디아가 오픈AI의 오하이오 데이터센터 자금조달에 "
@@ -43,7 +86,7 @@ def main():
         "개선될 수 있지만, 반도체 구매 비용은 이번 보증 대상에 포함되지 않는다. "
         "전체 사업비와 전력 배분, 임차 계약은 후속 협상에서 확정될 예정이다."
     )
-    structured_html = f"""\
+    structured_html = f"""
     <html><head><script type="application/ld+json">
     {{"@context":"https://schema.org","@type":"NewsArticle",
       "headline":"{structured_title}","articleBody":"{structured_body}",
@@ -55,10 +98,13 @@ def main():
         failures.append("structured_article_body=not_verified")
 
     if failures:
-        print("GAMEJOA news coverage contract failed: " + ", ".join(failures))
+        print("GAMEJOA news coverage contract failed:")
+        for failure in failures:
+            print(f"- {failure}")
         return 1
     print(f"GAMEJOA news coverage contract OK: cases={len(CASES)}")
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -20,7 +20,7 @@ REQUIRED_ITEM_MARKERS = [
     "- 출처:",
 ]
 FIELD_LIMITS = {
-    "- 핵심:": 50,
+    "- 핵심:": 100,
 }
 
 FORBIDDEN_TEXT = [
@@ -45,6 +45,7 @@ FORBIDDEN_TEXT = [
     "developer tools pages",
     "💡 실시간 뉴스 코멘트",
     "외화 환산:",
+    "투자 조언이 아닌 참고용 뉴스 브리핑입니다.",
     "≈",
 ]
 
