@@ -1,9 +1,10 @@
 name: GAMEJOA preopen news radar
 
 on:
-  # Cloudflare dispatches the preopen lane at 06:30 KST with a daily KV lock.
-  # GitHub schedule is intentionally omitted because delayed cron runs caused
-  # late or duplicate preopen deliveries.
+  # Native live fallback keeps the radar running if the Cloudflare GitHub
+  # dispatch token expires. Cloudflare still owns the 06:30 preopen lane.
+  schedule:
+    - cron: "7,27,47 * * * *"
   workflow_dispatch:
     inputs:
       telegram_dry_run:
@@ -50,7 +51,7 @@ jobs:
       PREOPEN_SEND_WINDOW_START_KST: "05:30"
       PREOPEN_SEND_WINDOW_END_KST: "07:30"
       ALLOW_OFF_WINDOW_TELEGRAM: ${{ github.event.inputs.allow_off_window_telegram || 'false' }}
-      RADAR_RUN_MODE: ${{ github.event.inputs.radar_run_mode || 'preopen' }}
+      RADAR_RUN_MODE: ${{ github.event_name == 'schedule' && 'live' || github.event.inputs.radar_run_mode || 'preopen' }}
       RADAR_FETCH_TIMEOUT_SECONDS: "10"
       RADAR_QUERY_FETCH_WORKERS: "4"
       GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "72"
@@ -78,6 +79,7 @@ jobs:
       - name: Verify GAMEJOA delivery contract
         run: |
           python scripts/verify_gamejoa_delivery_contract.py
+          python scripts/verify_gamejoa_native_schedule.py
           python scripts/verify_gamejoa_semisupply_contract.py
           python scripts/verify_high_impact_news_self_audit.py
 
