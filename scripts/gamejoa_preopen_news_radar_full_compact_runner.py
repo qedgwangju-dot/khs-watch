@@ -3213,6 +3213,26 @@ def enforce_korean_business_news_contract() -> None:
 
     def collect_items(now):
         rows, notes = original_collect_items(now)
+        existing_links = {str(row.get("link") or "") for row in rows}
+        direct_added = 0
+        for seed in coverage.DIRECT_ARTICLES:
+            link = str(seed.get("url") or "")
+            direct_row = {
+                "source": seed.get("source") or "국내 신뢰매체 직접감시",
+                "layer": "trusted",
+                "publisher": seed.get("publisher") or "국내 신뢰매체",
+                "title": seed.get("title") or "",
+                "link": link,
+                "summary": "",
+                "published": base.parse_date(seed.get("published_kst")),
+                "_pinned_direct_article": True,
+            }
+            if link and link not in existing_links and base.fresh(direct_row, now):
+                rows.append(direct_row)
+                existing_links.add(link)
+                direct_added += 1
+        notes.append(f"Direct trusted articles: {direct_added}건")
+
         verified = 0
         failed = 0
         attempted = 0
@@ -3227,7 +3247,13 @@ def enforce_korean_business_news_contract() -> None:
             seen_links.add(link)
             row["publisher"] = korean_business_publisher(row)
             detail_candidates.append(row)
-        detail_candidates.sort(key=korean_business_detail_priority, reverse=True)
+        detail_candidates.sort(
+            key=lambda row: (
+                1 if row.get("_pinned_direct_article") else 0,
+                *korean_business_detail_priority(row),
+            ),
+            reverse=True,
+        )
         deferred = max(0, len(detail_candidates) - KOREAN_BUSINESS_DETAIL_LIMIT)
         selected_candidates = detail_candidates[:KOREAN_BUSINESS_DETAIL_LIMIT]
 
