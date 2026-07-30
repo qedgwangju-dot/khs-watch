@@ -42,6 +42,14 @@ SEARCH_SOURCES = [
         "site:yonhapnewstv.co.kr OR site:kmib.co.kr)",
     ),
     (
+        "단일종목 레버리지 규제·코스닥 수급",
+        "(단일종목 레버리지 OR 단일종목 ETF OR 단일종목 ETN) "
+        "(규제 OR 기본예탁금 OR 시행 OR 자금효율 OR 접근성) "
+        "(코스닥 OR 중소형주 OR 성장주 OR 삼성전자 OR SK하이닉스) "
+        "(site:yna.co.kr OR site:newsis.com OR site:mk.co.kr OR site:mt.co.kr "
+        "OR site:edaily.co.kr OR site:hankyung.com)",
+    ),
+    (
         "반도체 공급망·공장 중단·차세대 메모리",
         "(TSMC OR JASM OR 구마모토 OR 지진 OR 강진 OR 공장중단 OR 공장 중단 "
         "OR 액체냉각 OR MLCC OR LPDDR6 OR HBM5 OR HBM 5 OR iHBM OR CXMT) "
@@ -146,6 +154,8 @@ PRIORITY_TERMS = {
     "회장": 12, "대표이사": 12, "대표": 8, "사장": 10, "임원": 10,
     "장내매수": 18, "장내 매수": 18, "지분매수": 17, "지분 매수": 17,
     "내부자 직접매수": 18, "지분율": 12,
+    "단일종목 레버리지": 18, "코스닥 반등": 15,
+    "연기금 벤치마크": 14, "코스닥 펀드": 14, "코스닥 프리미엄 지수": 14,
 }
 
 MATERIAL_TERMS = tuple(PRIORITY_TERMS)
@@ -169,6 +179,8 @@ IMPACT_TERMS = {
         "국민연금", "연기금", "국민성장펀드",
         "장내매수", "장내 매수", "지분매수", "지분 매수",
         "내부자 직접매수", "지분율",
+        "단일종목 레버리지", "코스닥 반등", "연기금 벤치마크",
+        "코스닥 펀드", "코스닥 프리미엄 지수",
     ),
     "시간표": (
         "공장 중단", "공장중단", "대피", "복구", "lta", "장기공급계약",
