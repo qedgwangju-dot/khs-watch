@@ -2444,6 +2444,7 @@ def build_single_stock_leverage_rule_alert(row: dict, now, text: str) -> dict | 
                     "모든 이탈 자금이 코스닥으로 이동하는 것은 아니며 정책 보완책의 실제 수급 효과를 확인해야 합니다."
                 ),
                 "supply_chain_theme": f"direct_trusted_article:{article_id}",
+                "_pinned_direct_article": True,
             }
         )
     return alert
@@ -3232,10 +3233,30 @@ def enforce_korean_business_news_contract() -> None:
 
     def collect_items(now):
         rows, notes = original_collect_items(now)
-        existing_links = {str(row.get("link") or "") for row in rows}
+        existing_by_link = {
+            str(row.get("link") or ""): row
+            for row in rows
+            if str(row.get("link") or "")
+        }
         direct_added = 0
+        direct_pinned = 0
         for seed in coverage.DIRECT_ARTICLES:
             link = str(seed.get("url") or "")
+            published = base.parse_date(seed.get("published_kst"))
+            if link in existing_by_link:
+                existing = existing_by_link[link]
+                existing.update(
+                    {
+                        "source": seed.get("source") or "국내 신뢰매체 직접감시",
+                        "layer": "trusted",
+                        "publisher": seed.get("publisher") or "국내 신뢰매체",
+                        "title": seed.get("title") or existing.get("title") or "",
+                        "published": published or existing.get("published"),
+                        "_pinned_direct_article": True,
+                    }
+                )
+                direct_pinned += 1
+                continue
             direct_row = {
                 "source": seed.get("source") or "국내 신뢰매체 직접감시",
                 "layer": "trusted",
@@ -3243,14 +3264,20 @@ def enforce_korean_business_news_contract() -> None:
                 "title": seed.get("title") or "",
                 "link": link,
                 "summary": "",
-                "published": base.parse_date(seed.get("published_kst")),
+                "published": published,
                 "_pinned_direct_article": True,
             }
-            if link and link not in existing_links and base.fresh(direct_row, now):
+            if link and base.fresh(direct_row, now):
                 rows.append(direct_row)
-                existing_links.add(link)
+                existing_by_link[link] = direct_row
                 direct_added += 1
-        notes.append(f"Direct trusted articles: {direct_added}건")
+        notes.append(
+            f"Direct trusted articles: added={direct_added} pinned_existing={direct_pinned}"
+        )
+        print(
+            "GAMEJOA direct-watch collection: "
+            f"added={direct_added} pinned_existing={direct_pinned}"
+        )
 
         verified = 0
         failed = 0
