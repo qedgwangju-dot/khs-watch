@@ -59,7 +59,14 @@ async def run(config_path: str, sample_path: str | None = None) -> int:
         for doc in new_docs:
             for finding in parse_document(doc):
                 finding_id = db.add_finding(finding)
-                if finding_id and finding.event_type in cfg["alert_events"] and db.reserve_alert(finding_id, finding.alert_hash):
+                # 후보 문서는 DB에 보존하되, 82호/83호가 공식 원문에
+                # 직접 명시된 확정 건만 외부 알림으로 승격한다.
+                if (
+                    finding_id
+                    and finding.fund_confirmation_status == "confirmed"
+                    and finding.event_type in cfg["alert_events"]
+                    and db.reserve_alert(finding_id, finding.alert_hash)
+                ):
                     new_ids.append(finding_id)
                     try:
                         notify({"type": "svic_finding", "company": finding.company_name_original, "event": finding.event_type, "summary": finding.summary, "sources": finding.source_urls})
