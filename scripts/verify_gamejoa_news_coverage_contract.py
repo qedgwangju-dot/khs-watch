@@ -105,9 +105,13 @@ def main() -> int:
             "https://biz.chosun.com/it-science/ict/2026/07/30/"
             "E5GYIUCGO5HNPGVB6P7ZT3IBWA/"
         )
+        and row.get("fetch_url") == (
+            "https://biz.chosun.com/it-science/ict/2026/07/30/"
+            "E5GYIUCGO5HNPGVB6P7ZT3IBWA/?outputType=amp"
+        )
         for row in radar.coverage.DIRECT_ARTICLES
     ):
-        failures.append("missing_direct_article=samsung_strategic_technology_funds")
+        failures.append("missing_direct_article=samsung_strategic_technology_funds_amp")
 
     duplicate_a = {
         "news": "삼성전기 2분기 영업이익 4404억원, 10개 고객과 MLCC 장기계약",
