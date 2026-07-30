@@ -1727,6 +1727,34 @@ def insider_purchase_fact(title: str, sentences: list[str]) -> str:
     )
 
 
+def single_stock_leverage_kosdaq_fact(title: str, body: str) -> str:
+    text = clean_article_summary_text(f"{title} {body}")
+    if not (
+        "단일종목" in text
+        and "레버리지" in text
+        and "코스닥" in text
+        and any(term in text for term in ("규제", "기본예탁금", "시행"))
+    ):
+        return ""
+
+    date_match = re.search(r"(?:오는\s*)?(\d{1,2})일부터", text)
+    analyst_signal = any(
+        term in text
+        for term in ("유안타증권", "연구원", "분석", "보고서", "전망")
+    )
+    prefix = (
+        f"{date_match.group(1)}일부터 단일종목 레버리지 ETF 규제가 시행돼"
+        if date_match
+        else "단일종목 레버리지 ETF 규제로"
+    )
+    interpretation = (
+        " 대형 반도체 쏠림 완화와 코스닥 우량 성장주 수급 회복 가능성이 제기됐습니다."
+        if analyst_signal
+        else " 대형주 쏠림 완화와 코스닥 수급 변화 가능성을 확인해야 합니다."
+    )
+    return concise_text(prefix + interpretation, limit=GAMEJOA_CORE_MAX_CHARS)
+
+
 def shareholder_schedule_fact(sentences: list[str]) -> str:
     for sentence in sentences:
         if "소각" not in sentence or not any(term in sentence for term in ("예정일", "소각 대상")):
@@ -1875,6 +1903,9 @@ def detailed_article_core(title: str, body: str) -> str:
     sidecar_fact = market_sidecar_fact(title, body)
     if sidecar_fact:
         return sidecar_fact
+    leverage_fact = single_stock_leverage_kosdaq_fact(title, body)
+    if leverage_fact:
+        return leverage_fact
 
     preferred = [
         insider_purchase_fact(title, sentences),
