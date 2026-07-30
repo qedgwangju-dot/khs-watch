@@ -18,6 +18,14 @@ PUBLISHER_DOMAINS = {
 
 SEARCH_SOURCES = [
     (
+        "국내 경영진·최대주주 직접매수",
+        "(회장 OR 대표이사 OR 대표 OR 사장 OR 임원 OR 최대주주 OR 창업자) "
+        "(장내매수 OR 장내 매수 OR 주식매수 OR 주식 매수 OR 지분매수 OR 지분 매수 "
+        "OR 자사주식 매입 OR 자사 주식 매입) "
+        "(site:newsis.com OR site:yna.co.kr OR site:etnews.com OR site:edaily.co.kr "
+        "OR site:fnnews.com OR site:mk.co.kr OR site:hankyung.com OR site:isplus.com)",
+    ),
+    (
         "국내 기업 실적·장기계약·자본조달",
         "(실적 OR 영업이익 OR 순이익 OR 컨콜 OR LTA OR 장기공급계약 OR 유상증자 "
         "OR 자사주 OR 소각 OR 장내매수 OR 지분매수 OR 주식매수 OR 내부자매수) "
@@ -102,6 +110,14 @@ SEARCH_SOURCES = [
         "(site:hankyung.com OR site:yna.co.kr OR site:newsis.com OR site:etnews.com "
         "OR site:edaily.co.kr)",
     ),
+]
+
+DIRECT_RSS_SOURCES = [
+    ("뉴시스 속보", "https://www.newsis.com/RSS/sokbo.xml", "trusted"),
+    ("뉴시스 경제", "https://www.newsis.com/RSS/economy.xml", "trusted"),
+    ("뉴시스 금융", "https://www.newsis.com/RSS/bank.xml", "trusted"),
+    ("뉴시스 산업", "https://www.newsis.com/RSS/industry.xml", "trusted"),
+    ("뉴시스 연예", "https://www.newsis.com/RSS/entertain.xml", "trusted"),
 ]
 
 TRUSTED_MARKERS = tuple(
