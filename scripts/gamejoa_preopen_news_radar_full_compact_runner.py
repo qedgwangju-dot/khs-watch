@@ -17,6 +17,7 @@ import urllib.request
 import gamejoa_preopen_news_radar_contract_runner as contract
 from khs_article_detail import extract_article_detail
 from khs_compact_text import concise_text
+import gamejoa_news_coverage_extension as coverage
 
 
 telegram = contract.telegram
@@ -271,6 +272,11 @@ KOREAN_BUSINESS_SEARCH_SOURCES = [
     ),
 ]
 
+coverage.apply_source_extensions(
+    KOREAN_BUSINESS_PUBLISHER_DOMAINS,
+    KOREAN_BUSINESS_SEARCH_SOURCES,
+    base.TRUSTED,
+)
 
 append_unique(
     base.SOURCES,
@@ -2039,6 +2045,12 @@ KOREAN_BUSINESS_IMPACT_TERMS = {
     ],
 }
 
+coverage.apply_term_extensions(
+    KOREAN_BUSINESS_PRIORITY_TERMS,
+    KOREAN_BUSINESS_MATERIAL_TERMS,
+    KOREAN_BUSINESS_IMPACT_TERMS,
+)
+
 
 def korean_business_source_sectors(title: str, summary: str) -> list[str]:
     title_lower = title.lower()
@@ -3555,6 +3567,9 @@ def semantic_event_theme(alert: dict) -> str:
         and any(term in text for term in ("4.3%", "3.3%", "나스닥 0.6%", "나스닥 0.64%"))
     ):
         return f"us_semiconductor_market_shock:{str(alert.get('published') or '')[:10]}"
+    coverage_theme = coverage.semantic_theme(alert, text)
+    if coverage_theme:
+        return coverage_theme
     return ""
 
 
