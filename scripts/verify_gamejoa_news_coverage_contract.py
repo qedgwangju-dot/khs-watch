@@ -5,6 +5,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import gamejoa_preopen_news_radar_full_compact_runner as radar
+from khs_article_detail import extract_article_detail
 
 CASES = (
     ("NAVER, 엔비디아 대상 1조4809억 규모 유상증자 결정", "유상증자", "수급"),
@@ -33,6 +34,26 @@ def main():
     a = {"news": "삼성전기 2분기 영업이익 4404억원, 10개 고객과 MLCC 장기계약", "published": now}
     b = {"news": "삼성전기, 하이퍼스케일러 10여곳과 MLCC LTA 체결", "published": now}
     if radar.alert_dedup_key(a) != radar.alert_dedup_key(b): failures.append("semantic_duplicate=mlcc_lta")
+    structured_title = "엔비디아, 오픈AI 데이터센터에 2500억달러 보증 논의"
+    structured_body = (
+        "엔비디아가 오픈AI의 오하이오 데이터센터 자금조달에 "
+        "2500억달러 규모의 보증을 제공하는 방안을 논의하고 있다. "
+        "프로젝트는 10기가와트 규모이며 구체 조건은 확정되지 않았다. "
+        "보증이 성사되면 투자등급 신용등급이 없는 오픈AI의 조달 조건이 "
+        "개선될 수 있지만, 반도체 구매 비용은 이번 보증 대상에 포함되지 않는다. "
+        "전체 사업비와 전력 배분, 임차 계약은 후속 협상에서 확정될 예정이다."
+    )
+    structured_html = f"""\
+    <html><head><script type="application/ld+json">
+    {{"@context":"https://schema.org","@type":"NewsArticle",
+      "headline":"{structured_title}","articleBody":"{structured_body}",
+      "datePublished":"2026-07-27T15:37:00+09:00"}}
+    </script></head><body><div>동적 기사 본문</div></body></html>
+    """
+    detail = extract_article_detail(structured_html, structured_title)
+    if not detail.get("body_verified") or "2500억달러" not in detail.get("body", ""):
+        failures.append("structured_article_body=not_verified")
+
     if failures:
         print("GAMEJOA news coverage contract failed: " + ", ".join(failures))
         return 1
