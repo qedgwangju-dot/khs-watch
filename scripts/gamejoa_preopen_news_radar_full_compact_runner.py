@@ -2393,6 +2393,94 @@ def build_hyundai_nvidia_meeting_alert(row: dict, now, text: str) -> dict | None
     return alert
 
 
+def build_strategic_technology_investment_alert(row: dict, now, text: str) -> dict | None:
+    title = str(row.get("source_title") or row.get("title") or "")
+    body = str(row.get("source_body") or row.get("source_abstract") or "")
+    lowered = f"{title} {body}".lower()
+    companies = (
+        "삼성전자", "sk하이닉스", "sk텔레콤", "현대차", "현대자동차",
+        "lg전자", "lg디스플레이", "한화", "naver", "네이버", "카카오",
+    )
+    investment_terms = (
+        "출자", "투자조합", "벤처펀드", "스타트업 투자", "스타트업투자",
+        "전략적 투자", "오픈 이노베이션",
+    )
+    technology_terms = (
+        "반도체", "ai", "인공지능", "로봇", "배터리", "바이오",
+        "데이터센터", "첨단기술", "신기술", "스타트업",
+    )
+    if not (
+        any(company in lowered for company in companies)
+        and any(term in lowered for term in investment_terms)
+        and any(term in lowered for term in technology_terms)
+        and re.search(r"\d[\d,.]*\s*(?:억|조)\s*원", lowered)
+    ):
+        return None
+
+    samsung_funds = (
+        "삼성전자" in lowered
+        and "svic 82호" in lowered
+        and "svic 83호" in lowered
+        and "4950억원" in lowered.replace(",", "")
+        and "2970억원" in lowered.replace(",", "")
+    )
+    if samsung_funds:
+        core = (
+            "삼성전자가 DS 4,950억원·DX 2,970억원 등 총 7,920억원을 출자해 "
+            "반도체·AI·로봇 스타트업 기술 확보에 나섭니다. "
+            "두 펀드는 8월부터 각각 13년·10년간 운용됩니다."
+        )
+        sectors = ["반도체/HBM/CXL", "AI/데이터센터", "로봇/생산자동화"]
+        company_key = "samsung_electronics"
+        score = 120
+    else:
+        core = detailed_article_core(title, body)
+        sectors = korean_business_source_sectors(title, body)
+        company_key = next(
+            (company.lower().replace(" ", "_") for company in companies if company in lowered),
+            "major_company",
+        )
+        score = 110
+
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=score,
+        impacts=["돈 버는 능력", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "상",
+            "status": "확정" if "공시" in lowered else "예비",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "telegram_investment_fact": (
+                "출자금은 단기 현금유출이지만, 투자 대상·지분율·기술 이전·사업 협력이 "
+                "확인되면 중장기 기술 경쟁력과 매출 시간표로 연결됩니다."
+            ),
+            "investment_view": (
+                "출자금은 단기 현금유출이지만, 투자 대상·지분율·기술 이전·사업 협력이 "
+                "확인되면 중장기 기술 경쟁력과 매출 시간표로 연결됩니다."
+            ),
+            "korea_market_impact": (
+                "출자 기업과 반도체·AI·로봇 스타트업 생태계의 후속 투자 대상, "
+                "지분 취득, 공동개발, 공급계약 공시만 직접 연결합니다."
+            ),
+            "sectors": sectors,
+            "paths": ["현금흐름", "전략기술 확보", "투자 집행 시간표"],
+            "korean_business_kind": "strategic_technology_fund_investment",
+            "supply_chain_theme": (
+                f"strategic_technology_fund:{company_key}:{korean_business_event_date(row)}"
+            ),
+        }
+    )
+    if row.get("_pinned_direct_article"):
+        article_id = re.sub(r"[^A-Za-z0-9]", "", str(row.get("link") or "").rstrip("/").rsplit("/", 1)[-1])
+        alert["_pinned_direct_article"] = True
+        alert["supply_chain_theme"] = f"direct_trusted_article:{article_id}"
+    return alert
+
+
 def build_single_stock_leverage_rule_alert(row: dict, now, text: str) -> dict | None:
     if not (
         "레버리지" in text
@@ -3170,6 +3258,7 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
         return alert
 
     for builder in (
+        build_strategic_technology_investment_alert,
         build_single_stock_leverage_rule_alert,
         build_global_semiconductor_market_alert,
         build_ai_infrastructure_steel_alert,
