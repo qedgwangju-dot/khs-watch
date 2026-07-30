@@ -24,6 +24,13 @@ DIRECT_ARTICLES = [
         "url": "https://www.yna.co.kr/view/AKR20260730034600008",
         "published_kst": "2026-07-30T08:41:00+0900",
     },
+    {
+        "source": "국내 신뢰매체 직접감시",
+        "publisher": "조선비즈",
+        "title": "삼성전자, 반도체 스타트업 투자·기술 확보에 8000억 출자",
+        "url": "https://biz.chosun.com/it-science/ict/2026/07/30/E5GYIUCGO5HNPGVB6P7ZT3IBWA/",
+        "published_kst": "2026-07-30T18:37:00+0900",
+    },
 ]
 
 SEARCH_SOURCES = [
@@ -43,6 +50,14 @@ SEARCH_SOURCES = [
         "(site:newsis.com OR site:etnews.com OR site:edaily.co.kr OR site:fnnews.com OR "
         "site:inews24.com OR site:investchosun.com OR site:biz.heraldcorp.com OR "
         "site:isplus.com)",
+    ),
+    (
+        "국내 대기업 전략기술 출자·스타트업 투자",
+        "(출자 OR 투자조합 OR 벤처펀드 OR 스타트업투자 OR 스타트업 투자 OR 전략적투자 OR 전략적 투자) "
+        "(반도체 OR AI OR 로봇 OR 배터리 OR 바이오 OR 데이터센터 OR 첨단기술 OR 신기술) "
+        "(삼성전자 OR SK OR SK하이닉스 OR LG OR 현대차 OR 한화 OR NAVER OR 카카오) "
+        "(site:biz.chosun.com OR site:yna.co.kr OR site:newsis.com OR site:etnews.com "
+        "OR site:edaily.co.kr OR site:mk.co.kr OR site:hankyung.com OR site:investchosun.com)",
     ),
     (
         "국내 증시 중단·레버리지 위험",
@@ -164,6 +179,9 @@ PRIORITY_TERMS = {
     "회장": 12, "대표이사": 12, "대표": 8, "사장": 10, "임원": 10,
     "장내매수": 18, "장내 매수": 18, "지분매수": 17, "지분 매수": 17,
     "내부자 직접매수": 18, "지분율": 12,
+    "출자": 16, "투자조합": 16, "벤처펀드": 15, "스타트업 투자": 16,
+    "스타트업투자": 16, "전략적 투자": 16, "전략적투자": 16,
+    "기술 확보": 15, "오픈 이노베이션": 14,
     "단일종목 레버리지": 18, "코스닥 반등": 15,
     "연기금 벤치마크": 14, "코스닥 펀드": 14, "코스닥 프리미엄 지수": 14,
 }
@@ -177,6 +195,8 @@ IMPACT_TERMS = {
         "lpddr6", "hbm5", "hbm 5", "ihbm",
         "정부 지원", "정부지원", "보조금", "개발비", "국민성장펀드",
         "정책금융", "정책 금융", "저리 대출", "저리대출", "광반도체",
+        "출자", "투자조합", "벤처펀드", "스타트업 투자", "스타트업투자",
+        "전략적 투자", "전략적투자", "기술 확보", "오픈 이노베이션",
         "실리콘 포토닉스", "실리콘포토닉스", "생산시설 증설",
     ),
     "할인율": (
@@ -196,6 +216,7 @@ IMPACT_TERMS = {
         "공장 중단", "공장중단", "대피", "복구", "lta", "장기공급계약",
         "정치국", "전체회의", "10월", "정책 지원", "정책지원",
         "국민성장펀드", "저리 대출", "저리대출", "생산시설 증설",
+        "출자", "투자조합", "벤처펀드", "스타트업 투자", "스타트업투자",
     ),
 }
 
