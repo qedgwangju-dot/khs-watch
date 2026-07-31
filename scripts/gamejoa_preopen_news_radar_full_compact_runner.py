@@ -834,6 +834,17 @@ def korean_business_source_domain_allowed(link: str) -> bool:
     return any(domain in lowered for domain in KOREAN_BUSINESS_PUBLISHER_DOMAINS)
 
 
+def korean_business_source_allowed(item: dict) -> bool:
+    if korean_business_source_domain_allowed(str(item.get("link") or "")):
+        return True
+    publisher = base.norm(str(item.get("publisher") or item.get("source") or ""))
+    trusted_publishers = {
+        base.norm(str(value))
+        for value in KOREAN_BUSINESS_PUBLISHER_DOMAINS.values()
+    }
+    return bool(publisher and publisher in trusted_publishers)
+
+
 def korean_business_event_date(row: dict) -> str:
     published = row.get("published")
     if hasattr(published, "date"):
@@ -3291,7 +3302,7 @@ def build_title_verified_korean_business_alert(row: dict, now) -> dict | None:
     is derived from the source headline, and the status remains preliminary.
     """
     title = str(row.get("source_title") or row.get("title") or "").strip()
-    if not title or not korean_business_source_domain_allowed(str(row.get("link") or "")):
+    if not title or not korean_business_source_allowed(row):
         return None
     title_text = title.lower()
     fallback_row = dict(row)
@@ -3928,7 +3939,7 @@ def source_output_aligned(alert: dict) -> bool:
             and source_title
             and rendered_title == source_title
             and len(summary) >= 12
-            and korean_business_source_domain_allowed(link)
+            and korean_business_source_allowed(alert)
             and korean_title_core_aligned(source_title, summary)
             and not direction_conflict
         )
@@ -4811,6 +4822,28 @@ def normalize_alert_for_output(alert: dict) -> dict:
     return out
 
 
+KOREAN_BUSINESS_LOW_VALUE_COMMENTARY_TERMS = [
+    "의심할 때 사서",
+    "확신할 때 팔아",
+    "그게 언제일까요",
+    "주식 투자법",
+    "투자 고수의 조언",
+]
+
+
+def is_low_value_market_commentary(alert: dict) -> bool:
+    if not alert.get("korean_business_news"):
+        return False
+    title = base.norm(str(alert.get("source_title") or alert.get("news") or ""))
+    if not has_term(title, KOREAN_BUSINESS_LOW_VALUE_COMMENTARY_TERMS):
+        return False
+    hard_facts = [
+        "영업이익", "순이익", "매출", "가이던스", "공급계약", "수주", "발주",
+        "증설", "유상증자", "자사주", "순매수", "순매도", "관세", "수출통제",
+    ]
+    return not has_term(title, hard_facts)
+
+
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
     candidates = initial + alerts
@@ -4835,6 +4868,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     selected: list[dict] = []
     seen: set[tuple[str, str]] = set()
     for alert in candidates:
+        if is_low_value_market_commentary(alert):
+            alert["_exclusion_reason"] = "low_value_market_commentary"
+            continue
         if is_low_impact_admin_alert(alert):
             alert["_exclusion_reason"] = "low_impact_admin_document"
             continue
