@@ -323,6 +323,14 @@ def main() -> int:
     if not radar.is_low_value_market_commentary(leverage_opinion_alert):
         failures.append("leverage_opinion_commentary=not_blocked")
 
+    retrospective_alert = {
+        "korean_business_news": True,
+        "source_title": "좋은 꿈을 꾸었습니다…한때 수익률 106% 국민연금, 지금은?",
+        "news": "좋은 꿈을 꾸었습니다…한때 수익률 106% 국민연금, 지금은?",
+    }
+    if not radar.is_low_value_market_commentary(retrospective_alert):
+        failures.append("retrospective_clickbait=not_blocked")
+
     if not radar.korean_business_source_allowed({
         "publisher": "뉴시스",
         "source": "뉴시스 경제",
