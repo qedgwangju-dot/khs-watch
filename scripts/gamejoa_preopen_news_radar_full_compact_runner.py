@@ -5136,8 +5136,6 @@ def compact_title_summary_aligned(title: str, summary: str) -> bool:
     event_rules = (
         (("지진", "강진", "쓰나미"), ("지진", "강진", "쓰나미", "대피", "방재", "폭발")),
         (("사이드카", "서킷브레이커"), ("사이드카", "서킷브레이커", "프로그램 매수", "프로그램 매도")),
-        (("관세", "수출통제"), ("관세", "수출통제", "수입 제한", "수출 제한")),
-        (("원전", "smr"), ("원전", "smr", "원자로", "nrc", "원자력")),
     )
     for title_terms, summary_terms in event_rules:
         if any(term in title_low for term in title_terms):
