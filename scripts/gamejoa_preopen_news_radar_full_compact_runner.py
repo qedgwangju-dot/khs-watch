@@ -1692,6 +1692,7 @@ def insider_purchase_fact(title: str, sentences: list[str]) -> str:
 
     purchases: list[str] = []
     seen_buyers: set[str] = set()
+    seen_details: set[str] = set()
     for sentence in sentences:
         if not re.search(INSIDER_ROLE_PATTERN, sentence, flags=re.IGNORECASE):
             continue
@@ -1738,8 +1739,12 @@ def insider_purchase_fact(title: str, sentences: list[str]) -> str:
             details.append(f"지분율 {stake_match.group(1)}→{stake_match.group(2)}%")
         if not details:
             continue
+        details_key = "|".join(details)
+        if details_key in seen_details:
+            continue
         purchases.append(f"{buyer} {', '.join(details)}")
         seen_buyers.add(buyer_key)
+        seen_details.add(details_key)
         if len(purchases) >= 2:
             break
 
@@ -5125,6 +5130,25 @@ def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
     return "\n".join(output) + suffix, changed
 
 
+def compact_title_summary_aligned(title: str, summary: str) -> bool:
+    title_low = clean_article_summary_text(title).lower()
+    summary_low = clean_article_summary_text(summary).lower()
+    event_rules = (
+        (("지진", "강진", "쓰나미"), ("지진", "강진", "쓰나미", "대피", "방재", "폭발")),
+        (("사이드카", "서킷브레이커"), ("사이드카", "서킷브레이커", "프로그램 매수", "프로그램 매도")),
+        (("관세", "수출통제"), ("관세", "수출통제", "수입 제한", "수출 제한")),
+        (("원전", "smr"), ("원전", "smr", "원자로", "nrc", "원자력")),
+    )
+    for title_terms, summary_terms in event_rules:
+        if any(term in title_low for term in title_terms):
+            return any(term in summary_low for term in summary_terms)
+    if "사이드카" in summary_low and not any(
+        term in title_low for term in ("사이드카", "코스피", "코스닥", "증시")
+    ):
+        return False
+    return True
+
+
 def compact_alert_block_errors(block: str) -> list[str]:
     errors: list[str] = []
     title = ""
@@ -5154,6 +5178,8 @@ def compact_alert_block_errors(block: str) -> list[str]:
         errors.append("incomplete_core")
     if title and (summary == title or article_title_restatement(summary, title)):
         errors.append("headline_repeated_as_summary")
+    if title and not compact_title_summary_aligned(title, summary):
+        errors.append("title_core_mismatch")
     if any(term.lower() in summary.lower() for term in ARTICLE_UI_BOILERPLATE_TERMS):
         errors.append("article_ui_boilerplate")
     foreign_amounts = extract_foreign_amounts(summary)
