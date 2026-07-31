@@ -32,6 +32,14 @@ CASES = (
         "단일종목 레버리지",
         "수급",
     ),
+    ("트럼프, 다이아몬드·석유·가스·구리 관세 면제 발표", "관세 면제", "할인율"),
+    ("삼성전자, HBM4 매출 3배 증가·HBM4E 샘플 출하", "hbm4", "돈 버는 능력"),
+    ("LG AI연구원, 7500억개 K-엑사원 2.0 공개", "공개", "시간표"),
+    ("LG CNS, 상반기 역대 최대 매출 2.8조원", "매출", "돈 버는 능력"),
+    ("8월 의무보유등록 45개사 1억8078만주 해제", "의무보유", "수급"),
+    ("온코닉 자큐보, 인도 CDSCO 품목허가 권고", "품목허가", "시간표"),
+    ("외국인 증권거래에 외환거래 하루 1200억달러", "외환거래", "수급"),
+    ("키옥시아 영업익 시장 예상 7% 하회·주식분할", "영업익", "돈 버는 능력"),
 )
 
 
@@ -100,6 +108,15 @@ def main() -> int:
         failures.append("missing_search=단일종목 레버리지 규제·코스닥 수급")
     if "국내 대기업 전략기술 출자·스타트업 투자" not in search_names:
         failures.append("missing_search=국내 대기업 전략기술 출자·스타트업 투자")
+    for required_search in (
+        "기업 실적·공급부족·시장점유율",
+        "AI 모델·데이터센터 구축",
+        "바이오 허가·상업화",
+        "수급·자본행사·외환",
+        "트럼프 관세·원자재·중동",
+    ):
+        if required_search not in search_names:
+            failures.append(f"missing_search={required_search}")
 
     if not any(
         row.get("url") == "https://www.yna.co.kr/view/AKR20260730034600008"
@@ -306,6 +323,47 @@ def main() -> int:
                 f"{hyperscaler_alert.get('guardrail_note')}:"
                 f"{hyperscaler_alert.get('_decision_debug')}"
             )
+
+    title_only_row = {
+        "source": "서울신문",
+        "publisher": "서울신문",
+        "title": "트럼프, 다이아몬드·석유·가스·구리 관세 면제 발표",
+        "source_title": "트럼프, 다이아몬드·석유·가스·구리 관세 면제 발표",
+        "source_body": "",
+        "source_abstract": "",
+        "link": "https://www.seoul.co.kr/news/international/example",
+        "published": now,
+        "body_verified": False,
+        "_article_verification_failed": True,
+    }
+    title_only_alert = radar.build_title_verified_korean_business_alert(title_only_row, now)
+    if not title_only_alert:
+        failures.append("trusted_title_material_event=missing")
+    else:
+        if title_only_alert.get("status") != "예비":
+            failures.append(f"trusted_title_status={title_only_alert.get('status')}")
+        if not title_only_alert.get("title_fact_verified") or title_only_alert.get("body_verified"):
+            failures.append("trusted_title_verification_flags=invalid")
+        if not str(title_only_alert.get("telegram_core_fact") or "").startswith(
+            "공개된 제목에 따르면"
+        ):
+            failures.append(
+                f"trusted_title_core={title_only_alert.get('telegram_core_fact')}"
+            )
+
+    vague_title_row = {
+        "source": "지디넷코리아",
+        "publisher": "지디넷코리아",
+        "title": "데이터센터가 국가 경쟁력이다",
+        "source_title": "데이터센터가 국가 경쟁력이다",
+        "source_body": "",
+        "link": "https://zdnet.co.kr/view/?no=example",
+        "published": now,
+        "body_verified": False,
+        "_article_verification_failed": True,
+    }
+    if radar.build_title_verified_korean_business_alert(vague_title_row, now):
+        failures.append("vague_title_fallback=not_blocked")
 
     opinion_alert = {
         "korean_business_news": True,
