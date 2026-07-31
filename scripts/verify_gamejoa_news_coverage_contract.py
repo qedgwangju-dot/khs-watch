@@ -40,6 +40,7 @@ CASES = (
     ("온코닉 자큐보, 인도 CDSCO 품목허가 권고", "품목허가", "시간표"),
     ("외국인 증권거래에 외환거래 하루 1200억달러", "외환거래", "수급"),
     ("키옥시아 영업익 시장 예상 7% 하회·주식분할", "영업익", "돈 버는 능력"),
+    ("AI 패권 경쟁, 빅테크 AI 투자 1조달러·전력 인프라 확대", "ai 투자", "돈 버는 능력"),
 )
 
 
@@ -114,9 +115,17 @@ def main() -> int:
         "바이오 허가·상업화",
         "수급·자본행사·외환",
         "트럼프 관세·원자재·중동",
+        "빅테크 AI 투자·반도체·전력 인프라 CAPEX",
     ):
         if required_search not in search_names:
             failures.append(f"missing_search={required_search}")
+
+    if not any(
+        row.get("url") == "https://www.mk.co.kr/article/12113486"
+        and row.get("publisher") == "매일경제"
+        for row in radar.coverage.DIRECT_ARTICLES
+    ):
+        failures.append("missing_direct_article=bigtech_ai_capex_one_trillion")
 
     if not any(
         row.get("url") == "https://www.yna.co.kr/view/AKR20260730034600008"
