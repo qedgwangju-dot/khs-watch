@@ -379,6 +379,24 @@ def main() -> int:
     if any(term in buy_sidecar_core for term in ("공유하기", "글자크기", "프린트", "구독")):
         failures.append(f"buy_sidecar_boilerplate_leaked={buy_sidecar_core}")
 
+    duplicate_insider_core = radar.detailed_article_core(
+        "최태원 회장, SK하이닉스 주식 3620주 매수",
+        (
+            "최태원 SK그룹 회장이 SK하이닉스 주식 3620주를 매수했다. "
+            "최 회장이 개인 명의로 3620주를 취득했다고 공시했다."
+        ),
+    )
+    if duplicate_insider_core.count("3620주") != 1:
+        failures.append(f"duplicate_insider_purchase_not_removed={duplicate_insider_core}")
+
+    mismatch_errors = radar.compact_alert_block_errors(
+        "1) [중 | 예비] 일본 강진 직후 기업 방재 허점\n"
+        "- 핵심: 코스피 급등으로 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.\n"
+        "- 출처: 원문 뉴스보기"
+    )
+    if "title_core_mismatch" not in mismatch_errors:
+        failures.append(f"title_core_mismatch_not_blocked={mismatch_errors}")
+
     repaired_core = radar.complete_prose_text(
         "미국이 AI 데이터센터용 광반도체 개발비 지원을 확대…",
         limit=radar.GAMEJOA_CORE_MAX_CHARS,
