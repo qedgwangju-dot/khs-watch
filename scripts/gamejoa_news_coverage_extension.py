@@ -295,7 +295,7 @@ def semantic_theme(alert: dict, normalized_text: str) -> str:
     if (
         "레버리지" in text
         and ("예탁금" in text or "규제" in text)
-        and any(term in text for term in ("거래대금", "거래량", "거래 급감", "거래급감", "개인 매도", "개인매도"))
+        and any(term in text for term in ("거래", "거래대금", "거래량", "거래 급감", "거래급감", "개인 매도", "개인매도"))
     ):
         return f"korean_market:single_stock_leverage_rule_effect:{event_date}"
     company_aliases = (
