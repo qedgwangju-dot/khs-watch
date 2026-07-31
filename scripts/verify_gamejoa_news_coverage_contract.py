@@ -41,6 +41,7 @@ CASES = (
     ("외국인 증권거래에 외환거래 하루 1200억달러", "외환거래", "수급"),
     ("키옥시아 영업익 시장 예상 7% 하회·주식분할", "영업익", "돈 버는 능력"),
     ("AI 패권 경쟁, 빅테크 AI 투자 1조달러·전력 인프라 확대", "ai 투자", "돈 버는 능력"),
+    ("단일종목 레버리지 규제 첫날 거래대금 12조원대서 3조원대로 급감", "거래대금", "수급"),
 )
 
 
@@ -116,9 +117,31 @@ def main() -> int:
         "수급·자본행사·외환",
         "트럼프 관세·원자재·중동",
         "빅테크 AI 투자·반도체·전력 인프라 CAPEX",
+        "단일종목 레버리지 규제 시행효과·거래급감",
     ):
         if required_search not in search_names:
             failures.append(f"missing_search={required_search}")
+
+    leverage_effect_urls = {
+        "https://www.kmib.co.kr/article/view.asp?arcid=9000000424&cp=nv",
+        "https://view.asiae.co.kr/article/2026073116442893935",
+    }
+    configured_direct_urls = {
+        row.get("url") for row in radar.coverage.DIRECT_ARTICLES
+    }
+    if not leverage_effect_urls.issubset(configured_direct_urls):
+        failures.append("missing_direct_articles=single_stock_leverage_rule_effect")
+
+    leverage_effect_a = {
+        "news": "레버리지 규제 첫날 거래 ‘뚝’…12조원대서 3조원대로 급감",
+        "published": now,
+    }
+    leverage_effect_b = {
+        "news": "단일레버리지 예탁금 상향 첫날…거래량 감소, 개미는 매도",
+        "published": now,
+    }
+    if radar.alert_dedup_key(leverage_effect_a) != radar.alert_dedup_key(leverage_effect_b):
+        failures.append("semantic_duplicate=single_stock_leverage_rule_effect")
 
     if not any(
         row.get("url") == "https://www.mk.co.kr/article/12113486"
