@@ -2711,21 +2711,42 @@ def build_single_stock_leverage_rule_alert(row: dict, now, text: str) -> dict | 
     )
     if row.get("_pinned_direct_article"):
         article_id = str(row.get("link") or "").rstrip("/").rsplit("/", 1)[-1]
-        direct_core = (
-            "유안타증권은 31일 규제로 대형 반도체 집중 자금의 기회비용이 정상화돼 "
-            "코스닥 우량 성장주 수급이 개선될 수 있다고 분석했습니다."
-        )
+        title = str(row.get("source_title") or row.get("title") or "")
+        body = str(row.get("source_body") or row.get("source_abstract") or "")
+        if "AKR20260730034600008" in str(row.get("link") or ""):
+            direct_core = (
+                "유안타증권은 31일 규제로 대형 반도체 집중 자금의 기회비용이 정상화돼 "
+                "코스닥 우량 성장주 수급이 개선될 수 있다고 분석했습니다."
+            )
+            direct_theme = f"direct_trusted_article:{article_id}"
+        elif any(term in f"{title} {body}" for term in ("거래대금", "거래량", "12조원대", "개인 매도", "개미는")):
+            if "12조원대" in f"{title} {body}" and "3조원대" in f"{title} {body}":
+                direct_core = (
+                    "기본예탁금이 1000만원에서 3000만원으로 오른 첫날 "
+                    "단일종목 레버리지 ETF 거래액이 12조원대에서 3조원대로 급감했습니다."
+                )
+            elif "1억1692만좌" in body and "1조1967억원" in body:
+                direct_core = (
+                    "예탁금 상향 첫날 개인 매도와 거래량 감소가 나타났고, "
+                    "SK하이닉스 레버리지 ETF 거래는 1억1692만좌·1조1967억원을 기록했습니다."
+                )
+            else:
+                direct_core = detailed_article_core(title, body)
+            direct_theme = f"korea_single_stock_leverage_rule_effect:{date_key}"
+        else:
+            direct_core = detailed_article_core(title, body)
+            direct_theme = f"direct_trusted_article:{article_id}"
         alert.update(
             {
                 "policy_plain_summary": direct_core,
                 "telegram_core_fact": direct_core,
                 "telegram_investment_fact": (
-                    "모든 이탈 자금이 코스닥으로 이동하는 것은 아니며 정책 보완책의 실제 수급 효과를 확인해야 합니다."
+                    "거래대금 감소와 개인 매도가 이어지는지 확인해야 합니다."
                 ),
                 "investment_view": (
-                    "모든 이탈 자금이 코스닥으로 이동하는 것은 아니며 정책 보완책의 실제 수급 효과를 확인해야 합니다."
+                    "거래대금 감소와 개인 매도가 이어지는지 확인해야 합니다."
                 ),
-                "supply_chain_theme": f"direct_trusted_article:{article_id}",
+                "supply_chain_theme": direct_theme,
                 "_pinned_direct_article": True,
             }
         )
