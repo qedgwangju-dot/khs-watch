@@ -207,6 +207,33 @@ def main() -> int:
     if "최태원" not in insider_core or "3620주" not in insider_core or "개인 명의" not in insider_core:
         failures.append(f"insider_purchase_core={insider_core}")
 
+    viral_title = '"일론 머스크인 줄 알았네"… SNS 달군 中 \'도플갱어\' 바비큐 사장'
+    contaminated_core = "삼성전자 사장 171만8000원, 10주를 개인 명의로 매수했습니다."
+    contaminated_sentences = [
+        "삼성전자 사장이 삼성전자 주식 10주를 171만8000원에 개인 명의로 매수했다."
+    ]
+    if radar.insider_purchase_fact(viral_title, contaminated_sentences):
+        failures.append("viral_related_article_insider_fact=not_blocked")
+    if radar.korean_title_core_aligned(viral_title, contaminated_core):
+        failures.append("viral_generic_role_alignment=not_blocked")
+
+    viral_alert = {
+        "source": "국내 신뢰매체 직접감시",
+        "publisher": "뉴시스",
+        "news": viral_title,
+        "source_title": viral_title,
+        "source_abstract": "",
+        "policy_plain_summary": contaminated_core,
+        "telegram_core_fact": contaminated_core,
+        "link": "https://www.newsis.com/view/NISX20260731_0003730920",
+        "korean_business_news": True,
+        "body_verified": True,
+    }
+    if radar.source_output_aligned(viral_alert):
+        failures.append("viral_source_output_alignment=not_blocked")
+    if not radar.is_low_value_market_commentary(viral_alert):
+        failures.append("viral_low_value_filter=not_blocked")
+
     entertainment_core = radar.detailed_article_core(
         "YG 양현석 200억·JYP 박진영 50억 자사주 매입",
         (
