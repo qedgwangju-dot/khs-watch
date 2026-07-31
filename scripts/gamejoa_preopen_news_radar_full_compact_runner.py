@@ -5024,13 +5024,22 @@ def display_news(alert: dict) -> str:
 
 def complete_prose_text(value: object, *, fallback: object = "", limit: int) -> str:
     text = clean_article_summary_text(value) or clean_article_summary_text(fallback) or "확인 불가"
-    text = text.rstrip("…").rstrip()
+    # Publisher snippets frequently use an ellipsis as a transport truncation
+    # marker. Normalize it before length handling so one damaged snippet cannot
+    # invalidate the complete Telegram payload.
+    text = re.sub(r"\s*(?:…+|\.{3,})\s*", ". ", text)
+    text = re.sub(r"\.\s*\.", ".", text)
+    text = re.sub(r"\s+", " ", text).strip()
     if len(text) <= limit:
-        return text
+        if re.search(r"[.!?。]$", text):
+            return text
+        suffix = "." if re.search(r"(?:다|요|함|됨|임|음)$", text) else "입니다."
+        if len(text) + len(suffix) <= limit:
+            return text + suffix
     head = text[: limit + 1]
     sentence_ends = [
         match.end()
-        for match in re.finditer(r"(?:[.!?]|다)(?=\s|$)", head)
+        for match in re.finditer(r"(?:[.!?。]|다)(?=\s|$)", head)
         if match.end() >= int(limit * 0.55)
     ]
     if sentence_ends:
@@ -5043,7 +5052,7 @@ def complete_prose_text(value: object, *, fallback: object = "", limit: int) -> 
     )
     if boundary < int(limit * 0.55):
         boundary = limit - 4
-    return head[:boundary].rstrip(" ,·;:") + "입니다."
+    return head[:boundary].rstrip(" ,·;:.") + "입니다."
 
 
 def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
@@ -5067,6 +5076,41 @@ def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
         output.append(compacted_line)
     suffix = "\n" if str(body or "").endswith("\n") else ""
     return "\n".join(output) + suffix, changed
+
+
+def compact_alert_block_errors(block: str) -> list[str]:
+    errors: list[str] = []
+    title = ""
+    summary = ""
+    for line in str(block or "").splitlines():
+        visible = html.unescape(line).strip()
+        if re.match(r"^\d+\)\s+\[", visible):
+            title = re.sub(r"^\d+\)\s+\[[^\]]+\]\s*", "", visible).strip()
+            title = re.sub(r"\(\d+건 묶음\)$", "", title).strip()
+        elif visible.startswith("- 핵심:"):
+            summary = visible.removeprefix("- 핵심:").strip()
+    if not title:
+        errors.append("missing_title")
+    elif mostly_ascii(title):
+        errors.append("raw_english_heading")
+    if not summary:
+        errors.append("missing_core")
+        return errors
+    if len(summary) > GAMEJOA_CORE_MAX_CHARS:
+        errors.append("core_too_long")
+    if "…" in summary or re.search(r"\.{3,}", summary):
+        errors.append("truncated_core")
+    if re.search(r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)$", summary):
+        errors.append("incomplete_core")
+    if title and (summary == title or article_title_restatement(summary, title)):
+        errors.append("headline_repeated_as_summary")
+    foreign_amounts = extract_foreign_amounts(summary)
+    if foreign_amounts and not (
+        re.search(r"\(약\s*[\d,.]+(?:조|억|만)?원\)", summary)
+        or "원화 환산 확인 불가" in summary
+    ):
+        errors.append("foreign_currency_not_converted")
+    return errors
 
 
 def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
@@ -5117,9 +5161,9 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
 
 def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "7"))))
-    visible = alerts[:limit]
-    fx_snapshot = collect_fx_snapshot(visible, now)
-    for alert in visible:
+    candidates = alerts[: max(limit * 2, limit)]
+    fx_snapshot = collect_fx_snapshot(candidates, now)
+    for alert in candidates:
         alert["fx_conversion"] = build_alert_fx_conversion(alert, fx_snapshot, now)
     live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
     if live_mode:
@@ -5130,10 +5174,26 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
         comment_title = "💡 06:30 장전 뉴스 코멘트"
         followup_line = "06:50 투자기상도에서 수치·수급·테마와 재확인 필요."
         empty_line = "장전 고충격 뉴스 직접 확인 없음"
-    lines = [title, f"선별: 핵심 {len(visible)}건", ""]
-    if visible:
-        for idx, alert in enumerate(visible, 1):
-            lines.append(compact_alert(alert, idx, now, fred, te))
+
+    visible: list[dict] = []
+    rendered: list[str] = []
+    for alert in candidates:
+        block = compact_alert(alert, len(rendered) + 1, now, fred, te)
+        block_errors = compact_alert_block_errors(block)
+        if block_errors:
+            print(
+                "GAMEJOA compact item dropped "
+                f"title={display_news(alert)!r} errors={','.join(block_errors)}"
+            )
+            continue
+        visible.append(alert)
+        rendered.append(block)
+        if len(rendered) >= limit:
+            break
+
+    lines = [title, f"선별: 핵심 {len(rendered)}건", ""]
+    if rendered:
+        lines.extend(rendered)
         changed = "·".join(display_impacts(visible[0].get("impacts")))
     else:
         lines += [empty_line, ""]
