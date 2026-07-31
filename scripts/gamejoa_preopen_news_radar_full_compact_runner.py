@@ -944,7 +944,7 @@ ARTICLE_SUMMARY_NOISE_PATTERNS = [
     r"\[(?:헤럴드경제|이데일리|머니투데이|매일경제|전자신문|연합뉴스)"
     r"\s*=\s*[^\]]{1,30}\s*기자\]",
     r"(?:fn\s+)?공유(?:\s+공유하기)?(?:\s+글자크기){1,2}\s+설정\s+"
-    r"프린트(?:\s+구독){1,2}(?:\s+증권){0,2}(?:\s+증권일반)?",
+    r"프린트(?:\s+구독){1,2}(?:\s+증권일반)?(?:\s+증권\b){0,2}",
     r"페이스북\s+X\(트위터\)\s+메일\s+URL\s+복사\s+작게\s+보통\s+크게",
 ]
 ARTICLE_UI_BOILERPLATE_TERMS = (
@@ -1705,13 +1705,14 @@ def insider_purchase_fact(title: str, sentences: list[str]) -> str:
         if not buyer_match:
             continue
         buyer = re.sub(r"\s+", " ", buyer_match.group(1)).strip()
-        short_buyer = re.search(
-            rf"([가-힣]{{2,4}}\s*{INSIDER_ROLE_PATTERN})$",
-            buyer,
+        person_buyer = re.search(
+            rf"([가-힣]{{2,4}}(?:\s+[A-Za-z][A-Za-z가-힣0-9()·]*)?\s*"
+            rf"{INSIDER_ROLE_PATTERN})",
+            sentence,
             flags=re.IGNORECASE,
         )
-        if short_buyer:
-            buyer = re.sub(r"\s+", " ", short_buyer.group(1)).strip()
+        if person_buyer:
+            buyer = re.sub(r"\s+", " ", person_buyer.group(1)).strip()
         buyer_key = re.sub(r"\s+", "", buyer.lower())
         if buyer_key in seen_buyers:
             continue
