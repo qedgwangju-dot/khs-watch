@@ -1793,8 +1793,35 @@ def shareholder_schedule_fact(sentences: list[str]) -> str:
     return ""
 
 
+def growth_fund_article_fact(title: str, body: str) -> str:
+    text = clean_article_summary_text(f"{title} {body}")
+    if "국민성장펀드" not in text:
+        return ""
+    if "LG디스플레이" in text and "테크윙" in text:
+        lg_amount = re.search(r"LG디스플레이[^.!?]{0,45}?(1(?:\.5)?조원)", text)
+        techwing_amount = re.search(r"테크윙[^.!?]{0,45}?(500억원)", text)
+        if lg_amount and techwing_amount:
+            return (
+                f"국민성장펀드는 LG디스플레이에 {lg_amount.group(1)}, "
+                f"테크윙에 {techwing_amount.group(1)}을 저리 대출해 OLED·HBM 투자를 지원한다."
+            )
+    return ""
+
+
 def market_sidecar_fact(title: str, body: str) -> str:
     text = clean_article_summary_text(f"{title} {body}")
+    if "매수 사이드카" in text:
+        kospi_rise = re.search(
+            r"코스피(?:는|가)?[^!?]{0,100}?(\d+(?:\.\d+)?)%\)?\s*"
+            r"(?:오른|올랐|상승|급등)",
+            text,
+        )
+        if kospi_rise:
+            return (
+                f"코스피가 {kospi_rise.group(1)}% 급등해 프로그램 매수호가를 "
+                "5분간 정지하는 매수 사이드카가 발동됐다."
+            )
+        return "코스피 급등으로 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다."
     if "매도 사이드카" not in text:
         return ""
     kospi_match = re.search(
@@ -1856,7 +1883,6 @@ def market_sidecar_fact(title: str, body: str) -> str:
         )
     return " ".join(parts)
 
-
 def tariff_policy_fact(title: str, body: str) -> str:
     text = clean_article_summary_text(f"{title} {body}")
     if "관세" not in text:
@@ -1916,6 +1942,9 @@ def detailed_article_core(title: str, body: str) -> str:
         korean_business_title_terms(title),
         title=title,
     )
+    growth_fund_fact = growth_fund_article_fact(title, body)
+    if growth_fund_fact:
+        return growth_fund_fact
     tariff_fact = tariff_policy_fact(title, body)
     if tariff_fact:
         return tariff_fact
@@ -5100,7 +5129,10 @@ def compact_alert_block_errors(block: str) -> list[str]:
         errors.append("core_too_long")
     if "…" in summary or re.search(r"\.{3,}", summary):
         errors.append("truncated_core")
-    if re.search(r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)$", summary):
+    if re.search(
+        r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)(?:[.!?。])?$",
+        summary,
+    ):
         errors.append("incomplete_core")
     if title and (summary == title or article_title_restatement(summary, title)):
         errors.append("headline_repeated_as_summary")
@@ -5277,7 +5309,10 @@ def guard_preopen_report(text: str) -> str:
             errors.append(f"compact_field_too_long={prefix}{len(summary)}")
         if "…" in summary or re.search(r"\.{3,}", summary):
             errors.append(f"truncated_compact_field={prefix}")
-        if re.search(r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)$", summary):
+        if re.search(
+            r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)(?:[.!?。])?$",
+            summary,
+        ):
             errors.append(f"incomplete_article_summary={summary[-30:]}")
         foreign_amounts = extract_foreign_amounts(summary)
         if foreign_amounts and not (
