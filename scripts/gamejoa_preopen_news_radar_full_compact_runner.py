@@ -3216,7 +3216,7 @@ def build_korea_sovereign_fund_alert(row: dict, now, text: str) -> dict | None:
     if not (
         "국부펀드" in text
         and any(term in text for term in ("전략적 투자", "국가전략산업", "산업 투자"))
-        and re.search(r"\\d[\\d,.]*\\s*조(?:원)?(?:\\+α|\\s*이상)?", text)
+        and re.search(r"\d[\d,.]*\s*조(?:원)?(?:\+α|\s*이상)?", text)
     ):
         return None
     core = detailed_article_core(title, str(row.get("source_body") or row.get("source_abstract") or ""))
@@ -3252,7 +3252,7 @@ def build_hyperscaler_ai_capex_alert(row: dict, now, text: str) -> dict | None:
         any(company in text for company in companies)
         and any(term in text for term in ("ai", "인공지능", "데이터센터", "클라우드", "aws"))
         and any(term in text for term in ("투자", "capex", "설비투자", "성장", "매출", "가이던스"))
-        and re.search(r"\\d[\\d,.]*\\s*(?:%|조원|억원|억달러|십억달러)", text)
+        and re.search(r"\d[\d,.]*\s*(?:%|조원|억원|억달러|십억달러)", text)
     ):
         return None
     core = detailed_article_core(title, str(row.get("source_body") or row.get("source_abstract") or ""))
