@@ -1813,6 +1813,23 @@ def shareholder_schedule_fact(sentences: list[str]) -> str:
     return ""
 
 
+def long_term_supply_article_fact(title: str, body: str) -> str:
+    text = clean_article_summary_text(f"{title} {body}")
+    if not (
+        "SK하이닉스" in text
+        and any(term in text for term in ("장기공급계약", "장기 공급계약", "장기 공급 계약"))
+    ):
+        return ""
+    customer_match = re.search(r"(\d+)개\s*고객사", text)
+    revenue_match = re.search(r"(\d+(?:\.\d+)?조원)", text)
+    if customer_match and revenue_match:
+        return (
+            f"SK하이닉스는 {customer_match.group(1)}개 고객사와 AI 메모리 장기공급계약을 "
+            f"체결했으며 관련 매출은 {revenue_match.group(1)}으로 보도됐다."
+        )
+    return ""
+
+
 def growth_fund_article_fact(title: str, body: str) -> str:
     text = clean_article_summary_text(f"{title} {body}")
     if "국민성장펀드" not in text:
@@ -1962,6 +1979,9 @@ def detailed_article_core(title: str, body: str) -> str:
         korean_business_title_terms(title),
         title=title,
     )
+    long_term_supply_fact = long_term_supply_article_fact(title, body)
+    if long_term_supply_fact:
+        return long_term_supply_fact
     growth_fund_fact = growth_fund_article_fact(title, body)
     if growth_fund_fact:
         return growth_fund_fact
