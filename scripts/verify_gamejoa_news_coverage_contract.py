@@ -224,6 +224,52 @@ def main() -> int:
                 f"samsung_strategic_fund_impacts={samsung_fund_alert.get('impacts')}"
             )
 
+    sovereign_row = {
+        "source": "뉴시스 경제",
+        "publisher": "뉴시스",
+        "title": "정부, 'K-국부펀드'로 전략적 투자 나선다…20조+α 규모",
+        "source_title": "정부, 'K-국부펀드'로 전략적 투자 나선다…20조+α 규모",
+        "source_body": (
+            "정부가 20조원+α 규모의 K-국부펀드를 조성해 국가전략산업에 "
+            "전략적으로 투자하고 민간 자금을 연계할 계획이다. "
+            "구체적인 출자 구조와 투자 대상, 집행 일정은 후속 발표한다."
+        ),
+        "link": "https://www.newsis.com/view/example-sovereign-fund",
+        "published": now,
+        "body_verified": True,
+    }
+    sovereign_alert = radar.build_verified_korean_business_alert(sovereign_row, now)
+    if not sovereign_alert:
+        failures.append("korea_sovereign_fund_alert=missing")
+    else:
+        if not {"돈 버는 능력", "수급", "시간표"}.issubset(set(sovereign_alert.get("impacts") or [])):
+            failures.append(f"korea_sovereign_fund_impacts={sovereign_alert.get('impacts')}")
+        if not radar.has_decision_impact(sovereign_alert):
+            failures.append("korea_sovereign_fund_decision_impact=blocked")
+
+    hyperscaler_row = {
+        "source": "뉴시스 경제",
+        "publisher": "뉴시스",
+        "title": "아마존, AWS 37% 성장에 자신감…AI 투자 314조원 확대",
+        "source_title": "아마존, AWS 37% 성장에 자신감…AI 투자 314조원 확대",
+        "source_body": (
+            "아마존은 AWS 매출이 37% 성장했다고 밝혔다. "
+            "AI 데이터센터와 클라우드 설비에 314조원을 투자해 "
+            "GPU와 서버, 전력 인프라를 확대할 계획이다."
+        ),
+        "link": "https://www.newsis.com/view/example-aws-capex",
+        "published": now,
+        "body_verified": True,
+    }
+    hyperscaler_alert = radar.build_verified_korean_business_alert(hyperscaler_row, now)
+    if not hyperscaler_alert:
+        failures.append("hyperscaler_ai_capex_alert=missing")
+    else:
+        if not {"돈 버는 능력", "수급", "시간표"}.issubset(set(hyperscaler_alert.get("impacts") or [])):
+            failures.append(f"hyperscaler_ai_capex_impacts={hyperscaler_alert.get('impacts')}")
+        if not radar.has_decision_impact(hyperscaler_alert):
+            failures.append("hyperscaler_ai_capex_decision_impact=blocked")
+
     if failures:
         print("GAMEJOA news coverage contract failed:")
         for failure in failures:
