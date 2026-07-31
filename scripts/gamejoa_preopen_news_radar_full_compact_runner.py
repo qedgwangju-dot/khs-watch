@@ -815,6 +815,8 @@ def is_korean_business_row(row: dict) -> bool:
             "news1.kr",
             "디지털타임스",
             "dt.co.kr",
+            "뉴시스",
+            "newsis.com",
         )
     ) or source.startswith("국내 신뢰매체")
 
@@ -3281,6 +3283,42 @@ def build_hyperscaler_ai_capex_alert(row: dict, now, text: str) -> dict | None:
     return alert
 
 
+def build_title_verified_korean_business_alert(row: dict, now) -> dict | None:
+    """Promote only quantitative, self-contained trusted headlines.
+
+    This is a narrow fallback for publisher pages whose body cannot be fetched
+    in GitHub Actions. It never invents article-body facts: the rendered core
+    is derived from the source headline, and the status remains preliminary.
+    """
+    title = str(row.get("source_title") or row.get("title") or "").strip()
+    if not title or not korean_business_source_domain_allowed(str(row.get("link") or "")):
+        return None
+    title_text = title.lower()
+    fallback_row = dict(row)
+    fallback_row["source_title"] = title
+    fallback_row["source_body"] = ""
+    fallback_row["source_abstract"] = title
+    fallback_row["summary"] = title
+    fallback_row["body_verified"] = False
+    for builder in (build_korea_sovereign_fund_alert, build_hyperscaler_ai_capex_alert):
+        alert = builder(fallback_row, now, title_text)
+        if not alert:
+            continue
+        alert["status"] = "예비"
+        alert["title_fact_verified"] = True
+        alert["body_verified"] = False
+        alert["source_abstract"] = title
+        alert["policy_plain_summary"] = title
+        alert["telegram_core_fact"] = title
+        alert["interpretation"] = (
+            alert.get("investment_view")
+            or alert.get("telegram_investment_fact")
+            or title
+        )
+        return alert
+    return None
+
+
 def build_verified_korean_business_alert(row: dict, now) -> dict | None:
     title = str(row.get("source_title") or row.get("title") or "")
     title_text = title.lower()
@@ -3527,7 +3565,7 @@ def enforce_korean_business_news_contract() -> None:
     def classify(row: dict, now):
         if is_korean_business_row(row):
             if row.get("_article_verification_failed") or not row.get("body_verified"):
-                return None
+                return build_title_verified_korean_business_alert(row, now)
             return build_verified_korean_business_alert(row, now)
         return original_classify(row, now)
 
@@ -3886,7 +3924,7 @@ def source_output_aligned(alert: dict) -> bool:
             or (oil_down and has_term(rendered_text, ["유가 상승", "유가 급등", "유가 폭등", "유가 돌파"]))
         )
         return bool(
-            alert.get("body_verified")
+            (alert.get("body_verified") or alert.get("title_fact_verified"))
             and source_title
             and rendered_title == source_title
             and len(summary) >= 12
@@ -4111,7 +4149,9 @@ def has_korea_market_link(alert: dict) -> bool:
 
 def has_direct_market_path(text: str, alert: dict) -> bool:
     text = source_evidence_text(alert) or text
-    if alert.get("korean_business_news") and alert.get("body_verified"):
+    if alert.get("korean_business_news") and (
+        alert.get("body_verified") or alert.get("title_fact_verified")
+    ):
         sectors = [
             str(value) for value in alert.get("sectors") or []
             if str(value) not in GENERIC_SECTOR_TERMS
