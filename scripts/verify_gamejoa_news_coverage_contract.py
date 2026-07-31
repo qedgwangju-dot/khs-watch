@@ -350,6 +350,25 @@ def main() -> int:
             failures.append(
                 f"trusted_title_core={title_only_alert.get('telegram_core_fact')}"
             )
+        mismatched_alert = dict(title_only_alert)
+        mismatched_alert.update(
+            {
+                "news": "구마모토 규모 7.1 강진, TSMC 공장 중단",
+                "original_news": "구마모토 규모 7.1 강진, TSMC 공장 중단",
+                "source_title": "구마모토 규모 7.1 강진, TSMC 공장 중단",
+                "telegram_core_fact": "외국인이 삼성전자 주식을 순매수했습니다.",
+                "policy_plain_summary": "외국인이 삼성전자 주식을 순매수했습니다.",
+            }
+        )
+        synced = radar.compact_quality_final_alerts(
+            [mismatched_alert, title_only_alert],
+            2,
+        )
+        if len(synced) != 1 or synced[0].get("source_title") != title_only_row["source_title"]:
+            failures.append(
+                "render_json_delivery_sync="
+                f"{[(row.get('source_title'), row.get('_exclusion_reason')) for row in synced]}"
+            )
 
     vague_title_row = {
         "source": "지디넷코리아",
