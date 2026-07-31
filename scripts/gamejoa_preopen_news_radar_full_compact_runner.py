@@ -5411,6 +5411,30 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     return "\n".join(lines)
 
 
+def compact_quality_final_alerts(alerts: list[dict], limit: int) -> list[dict]:
+    """Return only alerts that can be rendered, keeping report/JSON/send in sync."""
+    now = base.kst_now()
+    candidates = quality_display_alerts(alerts, max(limit * 2, limit))
+    needs_fx = any(extract_foreign_amounts(alert_text(alert)) for alert in candidates)
+    fx_snapshot = collect_fx_snapshot(candidates, now) if needs_fx else {"rates": {}}
+    selected: list[dict] = []
+    for alert in candidates:
+        alert["fx_conversion"] = build_alert_fx_conversion(alert, fx_snapshot, now)
+        block = compact_alert(alert, len(selected) + 1, now, {}, {})
+        block_errors = compact_alert_block_errors(block)
+        if block_errors:
+            alert["_exclusion_reason"] = "compact_quality:" + ",".join(block_errors)
+            print(
+                "GAMEJOA final alert dropped "
+                f"title={display_news(alert)!r} errors={','.join(block_errors)}"
+            )
+            continue
+        selected.append(alert)
+        if len(selected) >= limit:
+            break
+    return selected
+
+
 def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "7"))))
     candidates = alerts[: max(limit * 2, limit)]
@@ -5683,7 +5707,7 @@ def mask_chat_id(value: str) -> str:
 
 telegram.compact_report = compact_report
 telegram.send_telegram = send_telegram
-telegram.final_alerts_for_output = quality_display_alerts
+telegram.final_alerts_for_output = compact_quality_final_alerts
 telegram.canonical_alert_for_seen = normalize_alert_for_output
 
 
