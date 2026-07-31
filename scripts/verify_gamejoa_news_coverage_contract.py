@@ -315,12 +315,46 @@ def main() -> int:
     if not radar.is_low_value_market_commentary(opinion_alert):
         failures.append("low_value_market_commentary=not_blocked")
 
+    leverage_opinion_alert = {
+        "korean_business_news": True,
+        "source_title": "'ETF 아버지' 또 경고…단일종목 레버리지에 투자하지 않는 것이 최선",
+        "news": "'ETF 아버지' 또 경고…단일종목 레버리지에 투자하지 않는 것이 최선",
+    }
+    if not radar.is_low_value_market_commentary(leverage_opinion_alert):
+        failures.append("leverage_opinion_commentary=not_blocked")
+
     if not radar.korean_business_source_allowed({
         "publisher": "뉴시스",
         "source": "뉴시스 경제",
         "link": "https://news.google.com/rss/articles/example",
     }):
         failures.append("trusted_publisher_google_news_link=blocked")
+
+    for noisy, expected in (
+        (
+            "fn 공유 공유하기 글자크기 글자크기 설정 프린트 구독 구독 증권 증권일반 "
+            "코스피가 10.2% 급등했다.",
+            "코스피가 10.2% 급등했다.",
+        ),
+        (
+            "페이스북 X(트위터) 메일 URL 복사 작게 보통 크게 "
+            "금융당국이 단일종목 레버리지 규제를 시행한다.",
+            "금융당국이 단일종목 레버리지 규제를 시행한다.",
+        ),
+    ):
+        cleaned = radar.clean_article_summary_text(noisy)
+        if cleaned != expected:
+            failures.append(f"article_ui_noise_not_removed={cleaned}")
+
+    insider_core = radar.insider_purchase_fact(
+        "최태원 회장, SK하이닉스 주식 3620주 매수",
+        [
+            "SK하이닉스는 최대주주등소유주식변동신고서를 통해 "
+            "최태원 회장이 3620주를 개인 명의로 매수했다고 밝혔다."
+        ],
+    )
+    if not insider_core.startswith("최태원 회장 3620주"):
+        failures.append(f"insider_buyer_prefix_polluted={insider_core}")
 
     growth_core = radar.detailed_article_core(
         "국민성장펀드, OLED 초격차 LG디스플레이에 1.5조 저리대출",
