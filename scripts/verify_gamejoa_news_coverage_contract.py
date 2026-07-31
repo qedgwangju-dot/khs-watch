@@ -74,6 +74,13 @@ def main() -> int:
     if missing_domains:
         failures.append(f"missing_domains={sorted(missing_domains)}")
 
+    if not radar.is_korean_business_row({
+        "source": "뉴시스 경제",
+        "publisher": "뉴시스",
+        "link": "https://www.newsis.com/view/example",
+    }):
+        failures.append("korean_business_source=newsis_not_routed")
+
     expected_direct_sources = {
         "https://www.newsis.com/RSS/sokbo.xml",
         "https://www.newsis.com/RSS/economy.xml",
@@ -236,9 +243,10 @@ def main() -> int:
         ),
         "link": "https://www.newsis.com/view/example-sovereign-fund",
         "published": now,
-        "body_verified": True,
+        "body_verified": False,
+        "_article_verification_failed": True,
     }
-    sovereign_alert = radar.build_verified_korean_business_alert(sovereign_row, now)
+    sovereign_alert = radar.build_title_verified_korean_business_alert(sovereign_row, now)
     if not sovereign_alert:
         failures.append("korea_sovereign_fund_alert=missing")
     else:
@@ -273,9 +281,10 @@ def main() -> int:
         ),
         "link": "https://www.newsis.com/view/example-aws-capex",
         "published": now,
-        "body_verified": True,
+        "body_verified": False,
+        "_article_verification_failed": True,
     }
-    hyperscaler_alert = radar.build_verified_korean_business_alert(hyperscaler_row, now)
+    hyperscaler_alert = radar.build_title_verified_korean_business_alert(hyperscaler_row, now)
     if not hyperscaler_alert:
         failures.append("hyperscaler_ai_capex_alert=missing")
     else:
