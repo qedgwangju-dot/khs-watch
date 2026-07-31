@@ -4824,6 +4824,15 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         if not has_decision_impact(normalized):
             alert["_exclusion_reason"] = "decision_impact_guard"
+            alert["guardrail_note"] = normalized.get("guardrail_note") or "구체 사유 확인 불가"
+            alert["_decision_debug"] = {
+                "kind": normalized.get("korean_business_kind"),
+                "impacts": display_impacts(normalized.get("impacts")),
+                "sectors": normalized.get("sectors") or [],
+                "body_verified": bool(normalized.get("body_verified")),
+                "has_korea_market_link": has_korea_market_link(normalized),
+                "generic_explanation": has_generic_explanation(normalized),
+            }
             continue
         if (
             is_local_dc_like(normalized)
