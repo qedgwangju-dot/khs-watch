@@ -848,6 +848,12 @@ KOREAN_BUSINESS_DETAIL_WORKERS = max(
     int(os.environ.get("GAMEJOA_KOREAN_BUSINESS_DETAIL_WORKERS", "8")),
 )
 KOREAN_BUSINESS_PRIORITY_TERMS = {
+    "국부펀드": 12,
+    "국가전략산업": 10,
+    "aws": 11,
+    "클라우드": 9,
+    "capex": 11,
+    "설비투자": 10,
     "외국인": 8,
     "순매수": 10,
     "순매도": 7,
@@ -3205,6 +3211,76 @@ def build_sk_ms_memory_supply_alert(row: dict, now, text: str) -> dict | None:
     return alert
 
 
+def build_korea_sovereign_fund_alert(row: dict, now, text: str) -> dict | None:
+    title = str(row.get("source_title") or row.get("title") or "")
+    if not (
+        "국부펀드" in text
+        and any(term in text for term in ("전략적 투자", "국가전략산업", "산업 투자"))
+        and re.search(r"\\d[\\d,.]*\\s*조(?:원)?(?:\\+α|\\s*이상)?", text)
+    ):
+        return None
+    core = detailed_article_core(title, str(row.get("source_body") or row.get("source_abstract") or ""))
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=116,
+        impacts=["돈 버는 능력", "수급", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "상",
+            "status": "예비",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "telegram_investment_fact": "국가 전략자금의 투자 대상과 집행 일정은 해당 산업의 자금조달·CAPEX·정책 수급을 바꿉니다.",
+            "investment_view": "국가 전략자금의 투자 대상과 집행 일정은 해당 산업의 자금조달·CAPEX·정책 수급을 바꿉니다.",
+            "korea_market_impact": "국부펀드의 출자 구조, 투자 대상 산업, 실제 집행액이 확인되는 국내 기업과 밸류체인만 연결합니다.",
+            "sectors": ["금융/자본시장", "산업정책/첨단전략산업"],
+            "paths": ["정책자금 수급", "CAPEX", "투자 집행 시간표"],
+            "korean_business_kind": "korea_sovereign_strategic_fund",
+            "supply_chain_theme": f"korea_sovereign_fund:{korean_business_event_date(row)}",
+        }
+    )
+    return alert
+
+
+def build_hyperscaler_ai_capex_alert(row: dict, now, text: str) -> dict | None:
+    title = str(row.get("source_title") or row.get("title") or "")
+    title_text = title.lower()
+    companies = ("아마존", "amazon", "aws", "마이크로소프트", "microsoft", "구글", "alphabet", "메타", "oracle", "오라클")
+    if not (
+        any(company in text for company in companies)
+        and any(term in text for term in ("ai", "인공지능", "데이터센터", "클라우드", "aws"))
+        and any(term in text for term in ("투자", "capex", "설비투자", "성장", "매출", "가이던스"))
+        and re.search(r"\\d[\\d,.]*\\s*(?:%|조원|억원|억달러|십억달러)", text)
+    ):
+        return None
+    core = detailed_article_core(title, str(row.get("source_body") or row.get("source_abstract") or ""))
+    confirmed = any(term in title_text for term in ("실적", "매출", "성장", "영업이익"))
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=118,
+        impacts=["돈 버는 능력", "수급", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "상",
+            "status": "확정" if confirmed else "예비",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "telegram_investment_fact": "하이퍼스케일러의 클라우드 성장과 AI CAPEX는 GPU·HBM·서버·전력 인프라 발주 추정치를 바꿉니다.",
+            "investment_view": "하이퍼스케일러의 클라우드 성장과 AI CAPEX는 GPU·HBM·서버·전력 인프라 발주 추정치를 바꿉니다.",
+            "korea_market_impact": "삼성전자·SK하이닉스와 HBM 장비·소재, 서버·전력기기 중 고객 CAPEX에 직접 노출된 종목만 연결합니다.",
+            "sectors": ["AI/데이터센터", "반도체/HBM/CXL", "전력기기/전력망"],
+            "paths": ["클라우드 매출", "AI CAPEX", "밸류체인 발주"],
+            "korean_business_kind": "hyperscaler_ai_capex",
+            "supply_chain_theme": f"hyperscaler_ai_capex:{korean_business_event_date(row)}",
+        }
+    )
+    return alert
+
+
 def build_verified_korean_business_alert(row: dict, now) -> dict | None:
     title = str(row.get("source_title") or row.get("title") or "")
     title_text = title.lower()
@@ -3258,6 +3334,8 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
         return alert
 
     for builder in (
+        build_korea_sovereign_fund_alert,
+        build_hyperscaler_ai_capex_alert,
         build_strategic_technology_investment_alert,
         build_single_stock_leverage_rule_alert,
         build_global_semiconductor_market_alert,
