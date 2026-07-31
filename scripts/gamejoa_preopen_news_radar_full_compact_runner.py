@@ -943,7 +943,14 @@ ARTICLE_SUMMARY_NOISE_PATTERNS = [
     r"Copyright\s*©?\s*Etoday",
     r"\[(?:헤럴드경제|이데일리|머니투데이|매일경제|전자신문|연합뉴스)"
     r"\s*=\s*[^\]]{1,30}\s*기자\]",
+    r"(?:fn\s+)?공유(?:\s+공유하기)?(?:\s+글자크기){1,2}\s+설정\s+"
+    r"프린트(?:\s+구독){1,2}(?:\s+증권){0,2}(?:\s+증권일반)?",
+    r"페이스북\s+X\(트위터\)\s+메일\s+URL\s+복사\s+작게\s+보통\s+크게",
 ]
+ARTICLE_UI_BOILERPLATE_TERMS = (
+    "공유하기", "글자크기 설정", "프린트 구독", "페이스북 X(트위터)",
+    "메일 URL 복사", "작게 보통 크게",
+)
 ARTICLE_SUMMARY_MAX_CHARS = 420
 ARTICLE_MATERIAL_TERMS = (
     "매출", "영업이익", "순이익", "당기순이익", "실적", "수주", "계약", "발주",
@@ -1698,6 +1705,13 @@ def insider_purchase_fact(title: str, sentences: list[str]) -> str:
         if not buyer_match:
             continue
         buyer = re.sub(r"\s+", " ", buyer_match.group(1)).strip()
+        short_buyer = re.search(
+            rf"([가-힣]{{2,4}}\s*{INSIDER_ROLE_PATTERN})$",
+            buyer,
+            flags=re.IGNORECASE,
+        )
+        if short_buyer:
+            buyer = re.sub(r"\s+", " ", short_buyer.group(1)).strip()
         buyer_key = re.sub(r"\s+", "", buyer.lower())
         if buyer_key in seen_buyers:
             continue
@@ -4857,6 +4871,9 @@ KOREAN_BUSINESS_LOW_VALUE_COMMENTARY_TERMS = [
     "그게 언제일까요",
     "주식 투자법",
     "투자 고수의 조언",
+    "투자하지 않는 것이 최선",
+    "ETF 아버지",
+    "상폐 아닌 자연사",
 ]
 
 
@@ -5136,6 +5153,8 @@ def compact_alert_block_errors(block: str) -> list[str]:
         errors.append("incomplete_core")
     if title and (summary == title or article_title_restatement(summary, title)):
         errors.append("headline_repeated_as_summary")
+    if any(term.lower() in summary.lower() for term in ARTICLE_UI_BOILERPLATE_TERMS):
+        errors.append("article_ui_boilerplate")
     foreign_amounts = extract_foreign_amounts(summary)
     if foreign_amounts and not (
         re.search(r"\(약\s*[\d,.]+(?:조|억|만)?원\)", summary)
@@ -5309,6 +5328,8 @@ def guard_preopen_report(text: str) -> str:
             errors.append(f"compact_field_too_long={prefix}{len(summary)}")
         if "…" in summary or re.search(r"\.{3,}", summary):
             errors.append(f"truncated_compact_field={prefix}")
+        if any(term.lower() in summary.lower() for term in ARTICLE_UI_BOILERPLATE_TERMS):
+            errors.append("article_ui_boilerplate")
         if re.search(
             r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)(?:[.!?。])?$",
             summary,
