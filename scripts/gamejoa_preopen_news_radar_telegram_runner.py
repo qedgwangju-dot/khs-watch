@@ -401,6 +401,8 @@ def selection_diagnostics(
             "title": alert.get("original_news") or alert.get("news") or "",
             "source": alert.get("publisher") or alert.get("source") or "",
             "reason": alert.get("_exclusion_reason") or alert.get("guardrail_note") or "final_quality_filter",
+            "guardrail_note": alert.get("guardrail_note") or "",
+            "decision_debug": alert.get("_decision_debug") or {},
         })
     return {
         "collected_rows": len(rows),
@@ -546,7 +548,10 @@ def main() -> int:
     for excluded in diagnostics["excluded_alerts"][:10]:
         print(
             "GAMEJOA radar excluded: "
-            f"reason={excluded['reason']} source={excluded['source']} title={excluded['title']}"
+            f"reason={excluded['reason']} "
+            f"guardrail={excluded.get('guardrail_note') or '-'} "
+            f"debug={json.dumps(excluded.get('decision_debug') or {}, ensure_ascii=False, default=str)} "
+            f"source={excluded['source']} title={excluded['title']}"
         )
     fred, te = base.collect_dfii10(), base.collect_te()
     report = compact_report(final_alerts, fred, te, now)
