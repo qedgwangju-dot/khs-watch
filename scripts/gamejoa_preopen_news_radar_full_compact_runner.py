@@ -1758,6 +1758,9 @@ def insider_purchase_signal(text: str) -> bool:
 
 
 def insider_purchase_fact(title: str, sentences: list[str]) -> str:
+    title_text = clean_article_summary_text(title)
+    if not re.search(r"(?:매수|매입|취득)", title_text):
+        return ""
     text = " ".join([title, *sentences])
     if not insider_purchase_signal(text):
         return ""
@@ -4085,6 +4088,20 @@ TITLE_CORE_ALIGNMENT_STOPWORDS = {
     "오늘",
     "올해",
     "한국",
+    "회장",
+    "부회장",
+    "사장",
+    "대표",
+    "대표이사",
+    "임원",
+    "주식",
+    "개인",
+    "명의",
+    "매수",
+    "매입",
+    "취득",
+    "규모",
+    "기록",
 }
 KOREAN_ALIGNMENT_SUFFIXES = (
     "에서는",
@@ -5077,6 +5094,11 @@ KOREAN_BUSINESS_LOW_VALUE_COMMENTARY_TERMS = [
     "좋은 꿈을 꾸었습니다",
     "한때 수익률",
     "지금은?",
+    "SNS 달군",
+    "도플갱어",
+    "닮은꼴",
+    "바비큐 사장",
+    "화제의 인물",
 ]
 
 
