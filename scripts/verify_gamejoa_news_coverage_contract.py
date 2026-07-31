@@ -322,6 +322,29 @@ def main() -> int:
     }):
         failures.append("trusted_publisher_google_news_link=blocked")
 
+    growth_core = radar.detailed_article_core(
+        "국민성장펀드, OLED 초격차 LG디스플레이에 1.5조 저리대출",
+        (
+            "국민성장펀드가 LG디스플레이에 1.5조원 저리대출을 지원한다. "
+            "HBM 공급망 강화를 위해 테크윙에도 500억원을 저리 대출한다."
+        ),
+    )
+    for fact in ("LG디스플레이에 1.5조원", "테크윙에 500억원", "OLED·HBM"):
+        if fact not in growth_core:
+            failures.append(f"growth_fund_compact_core_missing={fact}:{growth_core}")
+
+    buy_sidecar_core = radar.detailed_article_core(
+        "[속보]코스피, 10% 넘는 급등세에 매수 사이드카 발동",
+        (
+            "코스피가 10.2% 급등했다. 코스피200선물 급등으로 프로그램 "
+            "매수호가 효력을 5분간 정지하는 매수 사이드카가 발동됐다."
+        ),
+    )
+    if "매수 사이드카" not in buy_sidecar_core or "5분간" not in buy_sidecar_core:
+        failures.append(f"buy_sidecar_compact_core_invalid={buy_sidecar_core}")
+    if any(term in buy_sidecar_core for term in ("공유하기", "글자크기", "프린트", "구독")):
+        failures.append(f"buy_sidecar_boilerplate_leaked={buy_sidecar_core}")
+
     repaired_core = radar.complete_prose_text(
         "미국이 AI 데이터센터용 광반도체 개발비 지원을 확대…",
         limit=radar.GAMEJOA_CORE_MAX_CHARS,
