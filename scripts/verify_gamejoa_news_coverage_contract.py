@@ -244,8 +244,22 @@ def main() -> int:
     else:
         if not {"돈 버는 능력", "수급", "시간표"}.issubset(set(sovereign_alert.get("impacts") or [])):
             failures.append(f"korea_sovereign_fund_impacts={sovereign_alert.get('impacts')}")
-        if not radar.has_decision_impact(sovereign_alert):
-            failures.append("korea_sovereign_fund_decision_impact=blocked")
+        sovereign_normalized = radar.normalize_alert_for_output(sovereign_alert)
+        if not radar.has_decision_impact(sovereign_normalized):
+            failures.append(
+                "korea_sovereign_fund_decision_impact=blocked:"
+                f"{sovereign_normalized.get('guardrail_note')}:"
+                f"kind={sovereign_normalized.get('korean_business_kind')}:"
+                f"sectors={sovereign_normalized.get('sectors')}"
+            )
+        sovereign_selected = radar.quality_display_alerts([sovereign_alert], 1)
+        if not sovereign_selected:
+            failures.append(
+                "korea_sovereign_fund_final_selection=blocked:"
+                f"{sovereign_alert.get('_exclusion_reason')}:"
+                f"{sovereign_alert.get('guardrail_note')}:"
+                f"{sovereign_alert.get('_decision_debug')}"
+            )
 
     hyperscaler_row = {
         "source": "뉴시스 경제",
@@ -267,8 +281,22 @@ def main() -> int:
     else:
         if not {"돈 버는 능력", "수급", "시간표"}.issubset(set(hyperscaler_alert.get("impacts") or [])):
             failures.append(f"hyperscaler_ai_capex_impacts={hyperscaler_alert.get('impacts')}")
-        if not radar.has_decision_impact(hyperscaler_alert):
-            failures.append("hyperscaler_ai_capex_decision_impact=blocked")
+        hyperscaler_normalized = radar.normalize_alert_for_output(hyperscaler_alert)
+        if not radar.has_decision_impact(hyperscaler_normalized):
+            failures.append(
+                "hyperscaler_ai_capex_decision_impact=blocked:"
+                f"{hyperscaler_normalized.get('guardrail_note')}:"
+                f"kind={hyperscaler_normalized.get('korean_business_kind')}:"
+                f"sectors={hyperscaler_normalized.get('sectors')}"
+            )
+        hyperscaler_selected = radar.quality_display_alerts([hyperscaler_alert], 1)
+        if not hyperscaler_selected:
+            failures.append(
+                "hyperscaler_ai_capex_final_selection=blocked:"
+                f"{hyperscaler_alert.get('_exclusion_reason')}:"
+                f"{hyperscaler_alert.get('guardrail_note')}:"
+                f"{hyperscaler_alert.get('_decision_debug')}"
+            )
 
     if failures:
         print("GAMEJOA news coverage contract failed:")
