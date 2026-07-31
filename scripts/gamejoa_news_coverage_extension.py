@@ -293,8 +293,7 @@ def semantic_theme(alert: dict, normalized_text: str) -> str:
     text = normalized_text
     event_date = str(alert.get("published") or "")[:10]
     if (
-        ("단일종목" in text or "단일레버리지" in text)
-        and "레버리지" in text
+        "레버리지" in text
         and ("예탁금" in text or "규제" in text)
         and any(term in text for term in ("거래대금", "거래량", "거래 급감", "거래급감", "개인 매도", "개인매도"))
     ):
