@@ -240,6 +240,43 @@ def main() -> int:
         if fact not in leverage_core:
             failures.append(f"leverage_kosdaq_core_missing={fact}:{leverage_core}")
 
+    leverage_effect_row = {
+        "source": "국내 신뢰매체 직접감시",
+        "publisher": "국민일보",
+        "title": "레버리지 규제 첫날 거래 ‘뚝’…12조원대서 3조원대로 급감",
+        "source_title": "레버리지 규제 첫날 거래 ‘뚝’…12조원대서 3조원대로 급감",
+        "source_body": (
+            "삼성전자와 SK하이닉스 단일종목 레버리지 ETF 기본예탁금이 "
+            "1000만원에서 3000만원으로 상향된 첫날 관련 ETF 거래액이 "
+            "12조원대에서 3조원대로 급감했다."
+        ),
+        "source_abstract": "",
+        "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000000424&cp=nv",
+        "published": now,
+        "body_verified": True,
+        "_pinned_direct_article": True,
+    }
+    leverage_effect_text = " ".join(
+        str(leverage_effect_row.get(key) or "")
+        for key in ("title", "source_body", "source_abstract")
+    ).lower()
+    leverage_effect_alert = radar.build_single_stock_leverage_rule_alert(
+        leverage_effect_row, now, leverage_effect_text
+    )
+    if not leverage_effect_alert:
+        failures.append("single_stock_leverage_rule_effect_alert=missing")
+    else:
+        effect_core = str(leverage_effect_alert.get("telegram_core_fact") or "")
+        for fact in ("1000만원", "3000만원", "12조원대", "3조원대", "급감"):
+            if fact not in effect_core:
+                failures.append(
+                    f"single_stock_leverage_rule_effect_core_missing={fact}:{effect_core}"
+                )
+        if "유안타증권" in effect_core or "코스닥 우량 성장주" in effect_core:
+            failures.append(
+                f"single_stock_leverage_rule_effect_stale_template={effect_core}"
+            )
+
     samsung_fund_row = {
         "source": "국내 신뢰매체 직접감시",
         "publisher": "조선비즈",
