@@ -126,6 +126,13 @@ KOREAN_BUSINESS_PUBLISHER_DOMAINS = {
     "asiae.co.kr": "아시아경제",
     "news1.kr": "뉴스1",
     "dt.co.kr": "디지털타임스",
+    "seoul.co.kr": "서울신문",
+    "zdnet.co.kr": "지디넷코리아",
+    "thebell.co.kr": "더벨",
+    "newsis.com": "뉴시스",
+    "bloter.net": "블로터",
+    "wowtv.co.kr": "한국경제TV",
+    "hankookilbo.com": "한국일보",
 }
 KOREAN_BUSINESS_SEARCH_SOURCES = [
     (
@@ -268,6 +275,51 @@ KOREAN_BUSINESS_SEARCH_SOURCES = [
             "(순매수 OR 순매도 OR 기본예탁금 OR 레버리지 OR 시행) "
             "(site:etoday.co.kr OR site:mk.co.kr OR site:mt.co.kr OR "
             "site:edaily.co.kr OR site:asiae.co.kr)"
+        ),
+    ),
+    (
+        "기업 실적·공급부족·시장점유율",
+        (
+            "(삼성전자 OR SK하이닉스 OR 애플 OR 아마존 OR 키옥시아 OR LG CNS) "
+            "(실적 OR 영업이익 OR 매출 OR 가이던스 OR 공급부족 OR 공급 부족 OR 점유율 OR HBM4 OR HBM4E) "
+            "(site:seoul.co.kr OR site:zdnet.co.kr OR site:thebell.co.kr OR site:newsis.com OR "
+            "site:bloter.net OR site:wowtv.co.kr OR site:hankookilbo.com OR site:yna.co.kr)"
+        ),
+    ),
+    (
+        "AI 모델·데이터센터 구축",
+        (
+            "(K-엑사원 OR 파운데이션모델 OR 파운데이션 모델 OR 딥시크 OR AI데이터센터 OR AI 데이터센터) "
+            "(공개 OR 출시 OR 건설 OR 투자 OR 수요 OR 상용화) "
+            "(site:zdnet.co.kr OR site:thebell.co.kr OR site:newsis.com OR site:bloter.net OR "
+            "site:wowtv.co.kr OR site:hankookilbo.com OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "바이오 허가·상업화",
+        (
+            "(품목허가 OR 허가권고 OR 허가 권고 OR 임상결과 OR 임상 결과 OR 상업화) "
+            "(신약 OR 의약품 OR 바이오 OR 치료제) "
+            "(site:newsis.com OR site:yna.co.kr OR site:edaily.co.kr OR site:mt.co.kr OR "
+            "site:hankyung.com OR site:thebell.co.kr)"
+        ),
+    ),
+    (
+        "수급·자본행사·외환",
+        (
+            "(의무보유 OR 보호예수 OR 유상증자 OR 인수 OR 합병 OR 외환거래 OR 지분 OR 주식분할) "
+            "(해제 OR 결정 OR 최대 OR 공시 OR 취득 OR 매수 OR 증가) "
+            "(site:newsis.com OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR "
+            "site:mt.co.kr OR site:thebell.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "트럼프 관세·원자재·중동",
+        (
+            "(트럼프 OR 미국 OR 이란 OR 하마스) "
+            "(관세면제 OR 관세 면제 OR 구리 OR 석유 OR 가스 OR 다이아몬드 OR 무장해제 OR 중동전쟁 OR 중동 전쟁) "
+            "(site:seoul.co.kr OR site:newsis.com OR site:yna.co.kr OR site:edaily.co.kr OR "
+            "site:mt.co.kr OR site:hankookilbo.com OR site:wowtv.co.kr)"
         ),
     ),
 ]
@@ -922,6 +974,24 @@ KOREAN_BUSINESS_PRIORITY_TERMS = {
     "호르무즈": 12,
     "후티": 11,
     "외식 물가": 8,
+    "관세 면제": 12,
+    "공급 부족": 11,
+    "hbm4": 12,
+    "hbm4e": 12,
+    "시장 1위": 11,
+    "점유율": 10,
+    "역대 최대 매출": 12,
+    "k-엑사원": 12,
+    "파운데이션 모델": 11,
+    "데이터센터 건설": 11,
+    "의무보유": 12,
+    "보호예수": 12,
+    "품목허가": 12,
+    "허가 권고": 12,
+    "외환거래": 10,
+    "주식분할": 9,
+    "무장해제": 11,
+    "중동 전쟁": 12,
 }
 
 
@@ -2165,6 +2235,17 @@ KOREAN_BUSINESS_COMPANIES = [
     "JYP엔터테인먼트",
     "하이브",
     "SM엔터테인먼트",
+    "LG CNS",
+    "LG AI연구원",
+    "키옥시아",
+    "애플",
+    "아마존",
+    "딥시크",
+    "화웨이",
+    "온코닉테라퓨틱스",
+    "KAI",
+    "SK이터닉스",
+    "모트렉스",
 ]
 KOREAN_BUSINESS_MARKET_RECAP_TERMS = [
     "급등락주 짚어보기",
@@ -2207,6 +2288,23 @@ KOREAN_BUSINESS_MATERIAL_TERMS = [
     "자사주",
     "유상증자",
     "전환사채",
+    "관세 면제",
+    "공급 부족",
+    "점유율",
+    "시장 1위",
+    "공개",
+    "출시",
+    "데이터센터 건설",
+    "의무보유",
+    "보호예수",
+    "품목허가",
+    "허가 권고",
+    "상업화",
+    "외환거래",
+    "지분",
+    "주식분할",
+    "무장해제",
+    "중동 전쟁",
 ]
 
 
@@ -2243,19 +2341,23 @@ KOREAN_BUSINESS_IMPACT_TERMS = {
     "돈 버는 능력": [
         "매출", "영업이익", "순이익", "흑자", "적자", "실적", "가이던스",
         "수요", "가격", "판가", "마진", "공급계약", "장기계약", "수주", "발주",
-        "증설", "생산능력", "출하", "고객사", "점유율",
+        "증설", "생산능력", "출하", "고객사", "점유율", "공급 부족",
+        "시장 1위", "가격 인상", "데이터센터 건설", "품목허가", "상업화",
     ],
     "할인율": [
         "금리", "환율", "원·달러", "달러", "규제", "관세", "수출통제", "제재",
         "fomc", "연준", "국채금리", "국제유가", "인플레이션", "밸류에이션",
+        "관세 면제", "상품 관세", "원유", "구리", "외환거래",
     ],
     "수급": [
         "외국인", "기관", "순매수", "순매도", "자사주", "유상증자", "cb",
         "전환사채", "etf", "etn", "레버리지", "기본예탁금", "편입", "상장", "ipo",
+        "의무보유", "보호예수", "외환거래", "지분",
     ],
     "시간표": [
         "양산평가", "평가", "승인", "허가", "상용화", "출시", "이달 말",
         "예정", "시행", "상장예비심사", "ipo", "계약", "증설", "착공", "완공",
+        "공개", "품목허가", "허가 권고", "주식분할", "의무보유 해제",
     ],
 }
 
@@ -3363,13 +3465,21 @@ def build_hyperscaler_ai_capex_alert(row: dict, now, text: str) -> dict | None:
     return alert
 
 
-def build_title_verified_korean_business_alert(row: dict, now) -> dict | None:
-    """Promote only quantitative, self-contained trusted headlines.
+TITLE_ONLY_HARD_EVENT_TERMS = (
+    "관세 면제", "공급 부족", "hbm4", "hbm4e", "시장 1위", "점유율",
+    "데이터센터 건설", "파운데이션 모델", "k-엑사원", "역대 최대 매출",
+    "의무보유", "보호예수", "품목허가", "허가 권고", "상업화",
+    "외환거래", "유상증자", "인수", "합병", "주식분할",
+    "무장해제", "중동 전쟁", "영업익", "영업이익", "순이익", "매출",
+)
+TITLE_ONLY_VAGUE_TERMS = (
+    "전망", "가능성", "기대", "주목", "관심", "왜", "칼럼", "사설",
+    "국가 경쟁력", "살펴보니", "분석", "진단",
+)
 
-    This is a narrow fallback for publisher pages whose body cannot be fetched
-    in GitHub Actions. It never invents article-body facts: the rendered core
-    is derived from the source headline, and the status remains preliminary.
-    """
+
+def build_title_verified_korean_business_alert(row: dict, now) -> dict | None:
+    """Promote self-contained hard-event headlines when article-body fetch fails."""
     title = str(row.get("source_title") or row.get("title") or "").strip()
     if not title or not korean_business_source_allowed(row):
         return None
@@ -3380,6 +3490,7 @@ def build_title_verified_korean_business_alert(row: dict, now) -> dict | None:
     fallback_row["source_abstract"] = title
     fallback_row["summary"] = title
     fallback_row["body_verified"] = False
+
     for builder in (build_korea_sovereign_fund_alert, build_hyperscaler_ai_capex_alert):
         alert = builder(fallback_row, now, title_text)
         if not alert:
@@ -3388,16 +3499,54 @@ def build_title_verified_korean_business_alert(row: dict, now) -> dict | None:
         alert["title_fact_verified"] = True
         alert["body_verified"] = False
         alert["source_abstract"] = title
-        alert["policy_plain_summary"] = title
-        alert["telegram_core_fact"] = title
-        alert["interpretation"] = (
-            alert.get("investment_view")
-            or alert.get("telegram_investment_fact")
-            or title
+        alert["policy_plain_summary"] = complete_prose_text(
+            f"공개된 제목에 따르면, {title}", limit=GAMEJOA_CORE_MAX_CHARS
         )
+        alert["telegram_core_fact"] = alert["policy_plain_summary"]
+        alert["interpretation"] = alert["policy_plain_summary"]
         return alert
-    return None
 
+    if is_low_value_market_commentary({"korean_business_news": True, "source_title": title}):
+        return None
+    if has_term(title_text, TITLE_ONLY_VAGUE_TERMS) and not re.search(
+        r"\d[\d,.]*(?:조|억|만|%|배|주|명|달러|유로|원)", title_text
+    ):
+        return None
+    if not has_term(title_text, TITLE_ONLY_HARD_EVENT_TERMS):
+        return None
+
+    impacts = korean_business_impacts(title, [])
+    if not impacts:
+        return None
+    score = 104 + min(
+        12,
+        sum(
+            weight
+            for term, weight in KOREAN_BUSINESS_PRIORITY_TERMS.items()
+            if term in title_text
+        ) // 8,
+    )
+    alert = base_korean_business_alert(fallback_row, now, score=score, impacts=impacts)
+    core = complete_prose_text(
+        f"공개된 제목에 따르면, {title}",
+        limit=GAMEJOA_CORE_MAX_CHARS,
+    )
+    alert.update(
+        {
+            "status": "예비",
+            "title_fact_verified": True,
+            "body_verified": False,
+            "source_abstract": title,
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "telegram_investment_fact": core,
+            "investment_view": core,
+            "interpretation": core,
+            "sectors": korean_business_source_sectors(title, title),
+            "korean_business_kind": "trusted_title_material_event",
+        }
+    )
+    return alert
 
 def build_verified_korean_business_alert(row: dict, now) -> dict | None:
     title = str(row.get("source_title") or row.get("title") or "")
