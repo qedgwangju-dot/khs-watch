@@ -241,7 +241,7 @@ def main() -> int:
             "전략적으로 투자하고 민간 자금을 연계할 계획이다. "
             "구체적인 출자 구조와 투자 대상, 집행 일정은 후속 발표한다."
         ),
-        "link": "https://www.newsis.com/view/example-sovereign-fund",
+        "link": "https://news.google.com/rss/articles/example-sovereign-fund",
         "published": now,
         "body_verified": False,
         "_article_verification_failed": True,
@@ -279,7 +279,7 @@ def main() -> int:
             "AI 데이터센터와 클라우드 설비에 314조원을 투자해 "
             "GPU와 서버, 전력 인프라를 확대할 계획이다."
         ),
-        "link": "https://www.newsis.com/view/example-aws-capex",
+        "link": "https://news.google.com/rss/articles/example-aws-capex",
         "published": now,
         "body_verified": False,
         "_article_verification_failed": True,
@@ -306,6 +306,21 @@ def main() -> int:
                 f"{hyperscaler_alert.get('guardrail_note')}:"
                 f"{hyperscaler_alert.get('_decision_debug')}"
             )
+
+    opinion_alert = {
+        "korean_business_news": True,
+        "source_title": "“반도체 투자, 의심할 때 사서 확신할 때 팔아야”…그게 언제일까요",
+        "news": "“반도체 투자, 의심할 때 사서 확신할 때 팔아야”…그게 언제일까요",
+    }
+    if not radar.is_low_value_market_commentary(opinion_alert):
+        failures.append("low_value_market_commentary=not_blocked")
+
+    if not radar.korean_business_source_allowed({
+        "publisher": "뉴시스",
+        "source": "뉴시스 경제",
+        "link": "https://news.google.com/rss/articles/example",
+    }):
+        failures.append("trusted_publisher_google_news_link=blocked")
 
     if failures:
         print("GAMEJOA news coverage contract failed:")
