@@ -364,6 +364,17 @@ def main() -> int:
     if not insider_core.startswith("최태원 회장 3620주"):
         failures.append(f"insider_buyer_prefix_polluted={insider_core}")
 
+    lta_core = radar.detailed_article_core(
+        "SK하이닉스, AI 메모리 수요 강세 속 10개 고객사와 장기공급계약 체결",
+        (
+            "SK하이닉스가 10개 고객사와 AI 메모리 장기공급계약을 체결했다. "
+            "관련 매출은 24조원으로 보도됐다."
+        ),
+    )
+    for fact in ("10개 고객사", "장기공급계약", "24조원"):
+        if fact not in lta_core:
+            failures.append(f"lta_compact_core_missing={fact}:{lta_core}")
+
     growth_core = radar.detailed_article_core(
         "국민성장펀드, OLED 초격차 LG디스플레이에 1.5조 저리대출",
         (
