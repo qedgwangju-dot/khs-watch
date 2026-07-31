@@ -4880,6 +4880,9 @@ KOREAN_BUSINESS_LOW_VALUE_COMMENTARY_TERMS = [
     "투자하지 않는 것이 최선",
     "ETF 아버지",
     "상폐 아닌 자연사",
+    "좋은 꿈을 꾸었습니다",
+    "한때 수익률",
+    "지금은?",
 ]
 
 
