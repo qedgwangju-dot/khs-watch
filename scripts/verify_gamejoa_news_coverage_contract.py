@@ -322,6 +322,27 @@ def main() -> int:
     }):
         failures.append("trusted_publisher_google_news_link=blocked")
 
+    repaired_core = radar.complete_prose_text(
+        "미국이 AI 데이터센터용 광반도체 개발비 지원을 확대…",
+        limit=radar.GAMEJOA_CORE_MAX_CHARS,
+    )
+    if "…" in repaired_core or "..." in repaired_core:
+        failures.append(f"compact_core_ellipsis_not_repaired={repaired_core}")
+    if radar.compact_alert_block_errors(
+        "1) [상 | 확정] 미국, AI 광반도체 개발 지원 확대\n"
+        f"- 핵심: {repaired_core}\n"
+        "- 출처: 원문 뉴스보기"
+    ):
+        failures.append(f"repaired_compact_core_rejected={repaired_core}")
+
+    malformed_errors = radar.compact_alert_block_errors(
+        "1) [상 | 확정] 미국, AI 광반도체 개발 지원 확대\n"
+        "- 핵심: 미국이 AI 데이터센터용 광반도체 개발비 지원을 확대…\n"
+        "- 출처: 원문 뉴스보기"
+    )
+    if "truncated_core" not in malformed_errors:
+        failures.append(f"malformed_compact_core_not_detected={malformed_errors}")
+
     if failures:
         print("GAMEJOA news coverage contract failed:")
         for failure in failures:
