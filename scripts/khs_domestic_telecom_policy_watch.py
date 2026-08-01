@@ -162,7 +162,13 @@ def telecom_event_fingerprint(title: str, evidence: str) -> str:
         "시행", "확정", "의결", "고시", "발표", "신설", "폐지", "확대", "축소",
         "상향", "하향", "인상", "인하", "개편", "도입", "중단", "재개",
     ]
-    if normalized_title and has_any(normalized_title, concrete_actions):
+    generic_followups = ["압박", "재확인", "검토", "논의", "가능성", "전망", "체크"]
+    is_concrete = (
+        normalized_title
+        and has_any(normalized_title, concrete_actions)
+        and not has_any(normalized_title, generic_followups)
+    )
+    if is_concrete:
         event_key = f"korea-telecom|{normalized_title}"
     else:
         event_key = "korea-telecom|general-price-plan-pressure"
