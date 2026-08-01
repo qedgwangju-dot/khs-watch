@@ -15,7 +15,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,3 +28,47 @@ jobs:
           python -m py_compile scripts/khs_policy_source_status_alert.py
       - name: Run threshold and state tests
         run: python -m unittest tests/test_yen_carry_alert.py -v
+      - name: Build one-time Telegram connection message
+        run: |
+          rm -rf out
+          python scripts/yen_carry_khs_bridge.py
+          test -s out/khs_policy_source_status_alert.md
+          test -s out/khs_policy_source_status_title.txt
+      - name: Send Telegram connection smoke test
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "Telegram secrets are missing." >&2
+            exit 1
+          fi
+          python - <<'PY'
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+
+          title = pathlib.Path("out/khs_policy_source_status_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/khs_policy_source_status_alert.md").read_text(encoding="utf-8").strip()
+          text = f"{title}\n\n{body}"[:4096]
+          payload = urllib.parse.urlencode(
+              {
+                  "chat_id": os.environ["TELEGRAM_CHAT_ID"].strip(),
+                  "text": text,
+                  "disable_web_page_preview": "true",
+              }
+          ).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{os.environ['TELEGRAM_BOT_TOKEN'].strip()}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+          message_id = result.get("result", {}).get("message_id")
+          print(f"telegram_delivery_confirmed=true message_id={message_id}")
+          PY
