@@ -1653,8 +1653,8 @@ def assert_router_explains_current_fcc_documents() -> None:
                 "paths": ["정책 타임라인", "공급망"],
                 "sectors": ["통신/FCC/위성"],
             },
-            "FCC, 외국산 보안위험 통신장비 수입·판매 금지안 의견수렴",
-            "국가안보 위험 외국산 통신장비",
+            "FCC, 외국산 군용급 무인기·핵심부품 수입·판매 금지안 의견수렴",
+            "외국산 군용 무인기(UAS)·핵심부품",
         ),
     ]
     routed = []
