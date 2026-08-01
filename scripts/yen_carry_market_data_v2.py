@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Accurate market-data reader for the yen-carry Telegram alert.
 
-Fixes the old Yahoo `chartPreviousClose` problem: with a 5-day chart that
-field can represent a multi-day baseline. Cash-index returns are now calculated
-from the latest two actual trading sessions, while USD/JPY uses a true rolling
-24-hour reference point.
+Cash indices use Yahoo's official regular-market close and immediately preceding
+regular-market close when available. Five-minute candles are used only as a
+fallback and for rolling USD/JPY calculations. This avoids mistaking an
+incomplete final candle or a five-day chart baseline for the official close.
 """
 
 from __future__ import annotations
@@ -20,7 +20,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 import yen_carry_alert as legacy
 from khs_source_fetch import fetch_text
 
-USER_AGENT = "Mozilla/5.0 yen-carry-alert/2.0"
+USER_AGENT = "Mozilla/5.0 yen-carry-alert/2.1"
 YAHOO_BASES = (
     "https://query1.finance.yahoo.com/v8/finance/chart",
     "https://query2.finance.yahoo.com/v8/finance/chart",
@@ -71,28 +71,55 @@ def rolling_reference(
     return ref_price, ((latest_price - ref_price) / ref_price) * 100
 
 
-def session_reference(points: list[tuple[float, float]], meta: dict) -> tuple[float, float]:
+def grouped_session_closes(points: list[tuple[float, float]], meta: dict) -> list[tuple[float, float]]:
     zone = exchange_zone(meta)
     sessions: OrderedDict[dt.date, tuple[float, float]] = OrderedDict()
     for timestamp, price in points:
         local_date = dt.datetime.fromtimestamp(timestamp, tz=dt.timezone.utc).astimezone(zone).date()
         sessions[local_date] = (timestamp, price)
+    return list(sessions.values())
+
+
+def fallback_previous_session(points: list[tuple[float, float]], meta: dict) -> float:
+    sessions = grouped_session_closes(points, meta)
     if len(sessions) < 2:
         raise RuntimeError("two completed/local trading dates unavailable")
-    last_two = list(sessions.values())[-2:]
-    previous_price = last_two[0][1]
-    latest_price = last_two[1][1]
+    previous_price = sessions[-2][1]
     if previous_price <= 0:
         raise RuntimeError("invalid previous session close")
-    return previous_price, ((latest_price - previous_price) / previous_price) * 100
+    return previous_price
 
 
-def futures_reference(points: list[tuple[float, float]], meta: dict) -> tuple[float, float]:
+def official_cash_reference(
+    points: list[tuple[float, float]],
+    meta: dict,
+) -> tuple[float, float, float, float]:
+    official_price = finite(meta.get("regularMarketPrice"))
+    official_time = finite(meta.get("regularMarketTime"))
     previous = finite(meta.get("regularMarketPreviousClose")) or finite(meta.get("previousClose"))
-    latest_price = points[-1][1]
-    if previous is not None and previous > 0:
-        return previous, ((latest_price - previous) / previous) * 100
-    return session_reference(points, meta)
+
+    latest_ts, latest_bar_price = points[-1]
+    price = official_price if official_price is not None and official_price > 0 else latest_bar_price
+    timestamp = official_time if official_time is not None and official_time > 0 else latest_ts
+    if previous is None or previous <= 0:
+        previous = fallback_previous_session(points, meta)
+    change_pct = ((price - previous) / previous) * 100
+    return price, timestamp, previous, change_pct
+
+
+def futures_reference(
+    points: list[tuple[float, float]],
+    meta: dict,
+) -> tuple[float, float, float, float]:
+    official_price = finite(meta.get("regularMarketPrice"))
+    official_time = finite(meta.get("regularMarketTime"))
+    previous = finite(meta.get("regularMarketPreviousClose")) or finite(meta.get("previousClose"))
+    latest_ts, latest_bar_price = points[-1]
+    price = official_price if official_price is not None and official_price > 0 else latest_bar_price
+    timestamp = official_time if official_time is not None and official_time > 0 else latest_ts
+    if previous is None or previous <= 0:
+        previous = fallback_previous_session(points, meta)
+    return price, timestamp, previous, ((price - previous) / previous) * 100
 
 
 def parse_payload(payload: dict, spec: legacy.SymbolSpec) -> legacy.Quote:
@@ -116,11 +143,10 @@ def parse_payload(payload: dict, spec: legacy.SymbolSpec) -> legacy.Quote:
             max_gap_seconds=28_800,
         )
     elif spec.kind == "현물":
-        previous_close, change_pct = session_reference(points, meta)
+        latest_price, latest_ts, previous_close, change_pct = official_cash_reference(points, meta)
     else:
-        previous_close, change_pct = futures_reference(points, meta)
+        latest_price, latest_ts, previous_close, change_pct = futures_reference(points, meta)
 
-    # Reject obvious source corruption instead of sending a confident bad number.
     if spec.kind in {"현물", "선물"} and abs(change_pct) > 30:
         raise RuntimeError(f"{spec.symbol} implausible session move: {change_pct:.2f}%")
     if spec.kind == "환율" and abs(change_pct) > 12:
@@ -169,7 +195,7 @@ def quotes_consistent(first: legacy.Quote, second: legacy.Quote) -> bool:
     price_gap_pct = abs(first.price - second.price) / max(first.price, second.price) * 100
     change_gap = abs(first.change_pct - second.change_pct)
     timestamp_gap = abs(first.timestamp_epoch - second.timestamp_epoch)
-    return price_gap_pct <= 0.08 and change_gap <= 0.20 and timestamp_gap <= 1_800
+    return price_gap_pct <= 0.05 and change_gap <= 0.10 and timestamp_gap <= 1_800
 
 
 def fetch_quote(spec: legacy.SymbolSpec) -> legacy.Quote:
