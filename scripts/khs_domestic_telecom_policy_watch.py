@@ -92,6 +92,14 @@ def clean_text(value: object) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def clean_link_title(value: object) -> str:
+    """Remove Korea.kr accessibility/navigation labels from article titles."""
+    title = clean_text(value)
+    title = re.sub(r"\s*단계(?:상승|하락)\s*\d*\s*$", "", title)
+    title = re.sub(r"\s+(?:NEW|새글)\s*$", "", title, flags=re.IGNORECASE)
+    return title.strip(" -|·")
+
+
 def clip_text(value: object, limit: int) -> str:
     text = clean_text(value)
     if len(text) <= limit:
@@ -163,8 +171,14 @@ def policy_evidence_summary(title: str, detail_text: str) -> str:
 
 def telecom_event_fingerprint(title: str, evidence: str) -> str:
     """Deduplicate the policy event, not each article URL."""
-    normalized_title = re.sub(r"[^0-9A-Za-z가-힣]+", " ", title.lower())
-    normalized_title = re.sub(r"\\s+", " ", normalized_title).strip()
+    normalized_title = re.sub(r"[^0-9A-Za-z가-힣]+", " ", clean_link_title(title).lower())
+    normalized_title = re.sub(r"\s+", " ", normalized_title).strip()
+    normalized_evidence = re.sub(r"[^0-9A-Za-z가-힣]+", " ", clean_text(evidence).lower())
+    normalized_evidence = re.sub(r"\s+", " ", normalized_evidence).strip()
+    event_text = f"{normalized_title} {normalized_evidence}"
+    if "알뜰폰" in event_text and "데이터 안심옵션" in event_text:
+        event_key = "korea-telecom|mvno-data-safety-option"
+        return hashlib.sha256(event_key.encode("utf-8")).hexdigest()[:16]
     concrete_actions = [
         "시행", "확정", "의결", "고시", "발표", "신설", "폐지", "확대", "축소",
         "상향", "하향", "인상", "인하", "개편", "도입", "중단", "재개",
@@ -189,7 +203,7 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
     for match in link_pattern.finditer(text):
         if detail_fetches >= MAX_DETAIL_LINKS_PER_SOURCE:
             break
-        title = clean_text(match.group("label"))
+        title = clean_link_title(match.group("label"))
         if len(title) < 6:
             continue
         # Listing-page navigation and related-story text must never classify an
@@ -344,3 +358,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
