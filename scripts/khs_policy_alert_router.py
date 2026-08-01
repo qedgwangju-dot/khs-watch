@@ -553,29 +553,29 @@ def compact_explanation_lines(alert: dict) -> list[str]:
     korea_fallback = f"한국장에서는 {', '.join(short_sectors)}만 확인합니다."
     core_fallback, prefer_core_fallback = compact_core_fallback(alert, title)
     core = concise_text(
-        line_value(rendered, "- 핵심 내용", alert.get("policy_plain_summary")),
+        alert.get("policy_plain_summary") or line_value(rendered, "- 핵심 내용"),
         fallback=core_fallback,
         prefer_fallback_when_long=prefer_core_fallback,
     )
     investment = concise_text(
-        line_value(rendered, "- 투자 관점", alert.get("investment_view")),
+        alert.get("investment_view") or line_value(rendered, "- 투자 관점"),
         fallback=f"{first_impact} 변화 여부를 확인합니다.",
     )
     korea = concise_text(
-        line_value(rendered, "- 한국장 영향", alert.get("korea_market_impact")),
+        alert.get("korea_market_impact") or line_value(rendered, "- 한국장 영향"),
         fallback=korea_fallback,
         prefer_fallback_when_long=True,
     )
     priced = concise_text(
-        line_value(rendered, "- 반영 가능성", alert.get("priced_in")),
+        alert.get("priced_in") or line_value(rendered, "- 반영 가능성"),
         fallback="중간. 후속 가격·수급 확인이 필요합니다.",
     )
     counter = concise_text(
-        line_value(rendered, "- 반대 근거", alert.get("counter")),
+        alert.get("counter") or line_value(rendered, "- 반대 근거"),
         fallback="원문 조건 확정 전 과대해석 가능성이 있습니다.",
     )
     failure = concise_text(
-        line_value(rendered, "- 실패 신호", alert.get("failure_signal")),
+        alert.get("failure_signal") or line_value(rendered, "- 실패 신호"),
         fallback=compact_failure_fallback(alert),
         prefer_fallback_when_long=True,
     )
