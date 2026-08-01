@@ -1668,15 +1668,22 @@ def assert_router_explains_current_fcc_documents() -> None:
             raise AssertionError(f"FCC core mismatch: {core}")
         routed.append(alert)
 
-    report = khs_policy_alert_router.render_policy_report(
-        routed,
-        dt.datetime(2026, 8, 1, 15, 59, tzinfo=ZoneInfo("Asia/Seoul")),
-    )
-    for _alert, expected_title, expected_core in cases:
+    semantic_keys = [
+        khs_policy_alert_router.semantic_alert_key(alert)
+        for alert in routed
+    ]
+    if len(set(semantic_keys)) != len(semantic_keys):
+        raise AssertionError(f"distinct FCC documents collapsed to one semantic key: {semantic_keys}")
+
+    for alert, expected_title, expected_core in cases:
+        report = khs_policy_alert_router.render_policy_report(
+            [alert],
+            dt.datetime(2026, 8, 1, 15, 59, tzinfo=ZoneInfo("Asia/Seoul")),
+        )
         if expected_title not in report or expected_core not in report:
             raise AssertionError(f"FCC rendered report lost source-specific content: {expected_title}")
-    if "투자 조언이 아닌 참고용 정책·규제 알림입니다." in report:
-        raise AssertionError("removed policy disclaimer leaked into router output")
+        if "투자 조언이 아닌 참고용 정책·규제 알림입니다." in report:
+            raise AssertionError("removed policy disclaimer leaked into router output")
 
 
 def cleanup() -> None:
