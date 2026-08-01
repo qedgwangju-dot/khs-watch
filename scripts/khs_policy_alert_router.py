@@ -330,7 +330,7 @@ def safe_title(alert: dict) -> str:
     if is_fcc_upper_c_band_auction(alert):
         return "FCC, 상단 C대역 차세대 무선통신 주파수 경매 일정 공표"
     if is_fcc_foreign_equipment_proposal(alert):
-        return "FCC, 외국산 보안위험 통신장비 수입·판매 금지안 의견수렴"
+        return "FCC, 외국산 군용급 무인기·핵심부품 수입·판매 금지안 의견수렴"
     if is_china_mofcom_trade_control(alert):
         return china_mofcom_title(alert)
     if mostly_ascii(title):
@@ -646,24 +646,24 @@ def apply_router_overrides(alert: dict) -> None:
     if is_fcc_foreign_equipment_proposal(alert):
         alert["importance"] = "상"
         alert["status"] = "예비"
-        alert["title_ko"] = "FCC, 외국산 보안위험 통신장비 수입·판매 금지안 의견수렴"
-        alert["policy_plain_summary"] = "FCC가 국가안보 위험 외국산 통신장비의 수입·판매 금지안에 대한 의견수렴을 시작했습니다."
-        alert["investment_view"] = "금지 대상과 시행일이 확정되면 중국산 장비 배제와 미국 내 대체 공급망 주문이 바뀔 수 있습니다."
-        alert["korea_market_impact"] = "한국장에서는 미국향 통신·네트워크·보안장비 매출과 중국 대체 공급망 노출이 확인되는 기업만 봅니다."
+        alert["title_ko"] = "FCC, 외국산 군용급 무인기·핵심부품 수입·판매 금지안 의견수렴"
+        alert["policy_plain_summary"] = "FCC가 외국산 군용 무인기(UAS)·핵심부품의 수입·판매 금지안에 대해 의견을 받습니다."
+        alert["investment_view"] = "금지 대상과 시행일이 확정되면 미국 내 무인기·통신모듈·핵심부품 대체 조달과 방산 공급망 주문이 바뀔 수 있습니다."
+        alert["korea_market_impact"] = "한국장에서는 무인기 플랫폼·통신모듈·탐지레이더·대드론 체계의 미국향 공급망 노출이 확인되는 기업만 봅니다."
         alert["impacts"] = ["매출·마진·현금흐름", "수급", "시간표"]
         alert["paths"] = ["수입 제한", "공급망 대체", "장비 조달", "정책 타임라인"]
-        alert["sectors"] = ["통신장비", "네트워크 장비", "보안장비", "중국 대체 공급망"]
+        alert["sectors"] = ["무인기/UAS", "대드론", "탐지레이더", "방산 전자장비", "중국 대체 공급망"]
         alert["korea_value_chain"] = alert["sectors"]
         alert["priced_in"] = "낮음~중간. 현재는 의견수렴 단계여서 최종 금지 범위와 시행일이 남았습니다."
-        alert["counter"] = "대상 장비가 제한적이거나 기존 승인 제품이 예외면 대체 수요가 작을 수 있습니다."
-        alert["failure_signal"] = "최종규칙, 대상 업체·제품, 시행일, 한국 기업 대체 수주가 없으면 테마성 반응에 그칩니다."
+        alert["counter"] = "군용급 범위가 좁거나 기존 승인 제품·동맹국 부품이 예외면 대체 수요가 작을 수 있습니다."
+        alert["failure_signal"] = "최종규칙, 군용급 UAS 범위, 대상 업체·부품, 시행일, 한국 기업 대체 수주가 없으면 테마성 반응에 그칩니다."
         return
     if "covered communications equipment" in text or ("covered list" in text and ("prohibit" in text or "importation" in text or "marketing" in text)):
         alert["title_ko"] = "FCC, 보안 위험 통신장비 수입·판매 제한 절차 공표"
         alert["policy_plain_summary"] = "FCC가 Covered List에 오른 보안 위험 통신장비의 미국 내 수입·판매 제한 절차를 공표한 사안입니다."
         alert["investment_view"] = "적용 장비와 공급사가 확정되면 중국산 통신장비 배제, 대체 공급망, 미국향 장비 수주 기대가 움직일 수 있습니다."
         alert["korea_market_impact"] = "한국장에서는 통신장비, 네트워크 장비, 보안장비 중 미국향 매출·대체 공급망 노출이 확인되는 종목만 선별 확인합니다."
-        alert["sectors"] = ["통신장비", "네트워크 장비", "보안장비", "중국 대체 공급망"]
+        alert["sectors"] = ["무인기/UAS", "대드론", "탐지레이더", "방산 전자장비", "중국 대체 공급망"]
         alert["korea_value_chain"] = ["통신장비", "네트워크 장비", "보안장비", "미국향 장비 공급망"]
         alert["priced_in"] = "낮음~중간. 보안장비 규제 테마는 빠르게 반응하지만 적용 대상·시행일 확인 전 직접 실적 연결은 제한적입니다."
         alert["counter"] = "기존 승인 장비의 처리 절차일 수 있고, 한국 기업의 대체 수주나 공급망 노출이 없으면 과대해석입니다."
