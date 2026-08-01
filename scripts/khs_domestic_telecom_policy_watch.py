@@ -58,6 +58,13 @@ POLICY_TERMS = [
     "할인율", "단말기유통법", "단통법", "공시지원금", "전환지원금",
     "추가지원금", "알뜰폰", "도매대가", "최적요금제", "번호이동",
 ]
+TITLE_TELECOM_TERMS = [
+    "가계통신비", "통신비", "통신요금", "요금제", "선택약정", "단말기유통법",
+    "단통법", "공시지원금", "전환지원금", "알뜰폰", "도매대가", "이동통신",
+    "통신서비스", "휴대전화", "휴대폰", "5G", "LTE", "MNO", "MVNO",
+    "데이터 안심옵션",
+]
+
 RISK_TERMS = [
     "ARPU", "가입자당 평균매출", "가입자당평균매출", "AI 데이터센터",
     "데이터센터", "IDC", "GPU 투자", "전기료", "전기요금", "전력요금",
@@ -184,6 +191,11 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
             break
         title = clean_text(match.group("label"))
         if len(title) < 6:
+            continue
+        # Listing-page navigation and related-story text must never classify an
+        # unrelated article as telecom policy. The linked title itself needs
+        # direct telecom-policy evidence before any surrounding context is read.
+        if not has_any(title, TITLE_TELECOM_TERMS):
             continue
         href = html.unescape(match.group("href"))
         link = urllib.parse.urljoin(source_url, href)
