@@ -127,7 +127,6 @@ def update_streaks(seen: dict, failures: list[dict], now: dt.datetime) -> int:
         }
         max_streak = max(max_streak, streak)
 
-    # Keep stale streak state from making a future one-off timeout look consecutive.
     for key, value in list(streaks.items()):
         last_seen = parse_kst(value.get("last_seen_kst") if isinstance(value, dict) else None)
         if not last_seen or now - last_seen > window:
@@ -257,7 +256,6 @@ def main() -> int:
         "logical_failure_count": len(decision_failures),
         "sources": [item.get("source") for item in failures],
     }
-    # Keep the state small while preserving recent dedupe history.
     if len(seen_map) > 60:
         for key in list(seen_map.keys())[:-60]:
             seen_map.pop(key, None)
@@ -266,5 +264,17 @@ def main() -> int:
     return 0
 
 
+def run_yen_carry_bridge() -> int:
+    try:
+        from yen_carry_khs_bridge import main as bridge_main
+
+        return bridge_main()
+    except Exception as exc:
+        print(f"yen_carry_bridge_error={type(exc).__name__}: {exc}")
+        return 0
+
+
 if __name__ == "__main__":
-    raise SystemExit(main())
+    source_status_result = main()
+    bridge_result = run_yen_carry_bridge()
+    raise SystemExit(source_status_result or bridge_result)
