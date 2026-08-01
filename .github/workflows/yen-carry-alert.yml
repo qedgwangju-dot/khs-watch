@@ -18,7 +18,9 @@ on:
     paths:
       - ".github/workflows/yen-carry-alert.yml"
       - "scripts/yen_carry_alert.py"
+      - "scripts/yen_carry_alert_enrich.py"
       - "tests/test_yen_carry_alert.py"
+      - "tests/test_yen_carry_alert_enrich.py"
       - "tests/yen_carry_workflow_trigger.txt"
 
 permissions:
@@ -51,10 +53,14 @@ jobs:
       - name: Validate monitor
         run: |
           python -m py_compile scripts/yen_carry_alert.py
-          python -m unittest tests/test_yen_carry_alert.py -v
+          python -m py_compile scripts/yen_carry_alert_enrich.py
+          python -m unittest tests/test_yen_carry_alert.py tests/test_yen_carry_alert_enrich.py -v
 
       - name: Check yen carry conditions
         run: python scripts/yen_carry_alert.py
+
+      - name: Add USDJPY 24-hour range
+        run: python scripts/yen_carry_alert_enrich.py
 
       - name: Publish status summary
         if: always()
