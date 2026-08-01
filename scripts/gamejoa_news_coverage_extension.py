@@ -181,6 +181,44 @@ SEARCH_SOURCES = [
         "(site:hankyung.com OR site:yna.co.kr OR site:newsis.com OR site:etnews.com "
         "OR site:edaily.co.kr)",
     ),
+    (
+        "한국 월간 수출·반도체 수출·무역수지",
+        "(월간수출 OR 월간 수출 OR 수출실적 OR 수출 실적 OR 무역수지) "
+        "(반도체수출 OR 반도체 수출 OR 역대최대 OR 역대 최대 OR 역대2위 OR 역대 2위) "
+        "(site:yna.co.kr OR site:hankyung.com OR site:wowtv.co.kr OR site:newsis.com "
+        "OR site:edaily.co.kr OR site:etoday.co.kr)",
+    ),
+    (
+        "연준 FOMC 회의체계·정책결정 일정",
+        "(연준 OR FOMC OR Federal Reserve) "
+        "(회의축소 OR 회의 축소 OR 회의횟수 OR 회의 횟수 OR 연8회 OR 연 8회 "
+        "OR 정례회의 OR 정례 회의 OR 정책결정 일정) "
+        "(site:reuters.com OR site:nytimes.com OR site:mt.co.kr OR site:yna.co.kr "
+        "OR site:newsis.com OR site:edaily.co.kr)",
+    ),
+    (
+        "미국·일본 환율개입·통화공조",
+        "(엔화 OR 달러엔 OR 달러·엔 OR 일본 재무부 OR 미국 재무부) "
+        "(환율개입 OR 환율 개입 OR 외환개입 OR 외환 개입 OR 시장개입 OR 시장 개입 "
+        "OR 미일공조 OR 미·일 공조) "
+        "(site:reuters.com OR site:yna.co.kr OR site:hankyung.com OR site:edaily.co.kr "
+        "OR site:etoday.co.kr OR site:biz.heraldcorp.com)",
+    ),
+    (
+        "중국 DRAM 생산능력·메모리 증설",
+        "(CXMT OR 창신메모리 OR 중국DRAM OR 중국 D램 OR 중국 메모리) "
+        "(생산능력 OR 생산 능력 OR 웨이퍼 OR 월생산 OR 월 생산 OR 증설 OR 캐파 OR 점유율) "
+        "(site:reuters.com OR site:asiae.co.kr OR site:hankyung.com OR site:mk.co.kr "
+        "OR site:mt.co.kr OR site:etnews.com)",
+    ),
+    (
+        "하이퍼스케일러 실적·클라우드 성장·AI CAPEX",
+        "(아마존 OR AWS OR 마이크로소프트 OR Azure OR 구글 OR Alphabet OR 메타) "
+        "(실적 OR 매출 OR 성장률 OR 가이던스 OR CAPEX OR 설비투자 OR AI투자) "
+        "(클라우드 OR 데이터센터 OR AI OR GPU OR HBM OR 전력인프라) "
+        "(site:reuters.com OR site:yna.co.kr OR site:hankyung.com OR site:wowtv.co.kr "
+        "OR site:etoday.co.kr OR site:edaily.co.kr OR site:mk.co.kr)",
+    ),
 ]
 
 DIRECT_RSS_SOURCES = [
@@ -227,6 +265,14 @@ PRIORITY_TERMS = {
     "기술 확보": 15, "오픈 이노베이션": 14,
     "단일종목 레버리지": 18, "코스닥 반등": 15,
     "연기금 벤치마크": 14, "코스닥 펀드": 14, "코스닥 프리미엄 지수": 14,
+    "월간 수출": 17, "월간수출": 17, "수출 실적": 16, "수출실적": 16,
+    "반도체 수출": 18, "반도체수출": 18, "무역수지": 16,
+    "회의 축소": 17, "회의축소": 17, "회의 횟수": 15, "회의횟수": 15,
+    "연 8회": 14, "연8회": 14, "정례 회의": 14, "정례회의": 14,
+    "환율 개입": 18, "환율개입": 18, "외환 개입": 18, "외환개입": 18,
+    "시장 개입": 15, "시장개입": 15, "미·일 공조": 16, "미일공조": 16,
+    "생산 능력": 16, "생산능력": 16, "웨이퍼": 13, "월 생산": 14,
+    "클라우드 성장": 16, "aws 매출": 17,
 }
 
 MATERIAL_TERMS = tuple(PRIORITY_TERMS)
@@ -243,11 +289,18 @@ IMPACT_TERMS = {
         "출자", "투자조합", "벤처펀드", "스타트업 투자", "스타트업투자",
         "전략적 투자", "전략적투자", "기술 확보", "오픈 이노베이션",
         "실리콘 포토닉스", "실리콘포토닉스", "생산시설 증설",
+        "월간 수출", "월간수출", "수출 실적", "수출실적", "반도체 수출",
+        "반도체수출", "무역수지", "생산 능력", "생산능력", "웨이퍼",
+        "클라우드 성장", "aws 매출",
     ),
     "할인율": (
         "미국채", "수입 금지", "수입금지", "수입 제한", "수입제한",
         "정책 지원", "정책지원", "경기 부양", "경기부양", "재정 지출",
         "재정지출", "국고채", "채권금리",
+        "회의 축소", "회의축소", "회의 횟수", "회의횟수", "연 8회",
+        "연8회", "정례 회의", "정례회의", "환율 개입", "환율개입",
+        "외환 개입", "외환개입", "시장 개입", "시장개입", "미·일 공조",
+        "미일공조",
     ),
     "수급": (
         "사이드카", "서킷브레이커", "신용융자", "투자한도", "괴리율",
@@ -265,6 +318,10 @@ IMPACT_TERMS = {
         "국민성장펀드", "저리 대출", "저리대출", "생산시설 증설",
         "ai 투자", "ai투자", "설비 투자", "설비투자", "투자 계획", "투자계획",
         "출자", "투자조합", "벤처펀드", "스타트업 투자", "스타트업투자",
+        "월간 수출", "월간수출", "수출 실적", "수출실적", "반도체 수출",
+        "반도체수출", "회의 축소", "회의축소", "정례 회의", "정례회의",
+        "환율 개입", "환율개입", "외환 개입", "외환개입", "생산 능력",
+        "생산능력", "월 생산", "클라우드 성장", "aws 매출",
     ),
 }
 

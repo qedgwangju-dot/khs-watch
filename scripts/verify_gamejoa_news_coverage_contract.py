@@ -42,12 +42,27 @@ CASES = (
     ("키옥시아 영업익 시장 예상 7% 하회·주식분할", "영업익", "돈 버는 능력"),
     ("AI 패권 경쟁, 빅테크 AI 투자 1조달러·전력 인프라 확대", "ai 투자", "돈 버는 능력"),
     ("단일종목 레버리지 규제 첫날 거래대금 12조원대서 3조원대로 급감", "거래대금", "수급"),
+    ("7월 수출 실적 989억달러·반도체 수출 역대 2위", "수출 실적", "돈 버는 능력"),
+    ("미 연준, 연 8회 금리결정 회의 축소 검토", "회의 축소", "할인율"),
+    ("미 재무부, 엔화 약세 대응 환율 개입 정황", "환율 개입", "할인율"),
+    ("CXMT, D램 생산 능력 웨이퍼 월 30만장으로 증설", "생산 능력", "돈 버는 능력"),
+    ("아마존 AWS 매출·클라우드 성장, AI 투자 확대", "aws 매출", "돈 버는 능력"),
 )
 
 
 def main() -> int:
     failures = []
     now = datetime.now().astimezone()
+    fda_runner_source = (ROOT / "scripts" / "gamejoa_preopen_news_radar_fda_quality_runner.py").read_text(
+        encoding="utf-8"
+    )
+    if "return original_classify(row, now)" not in fda_runner_source:
+        failures.append("production_fda_wrapper=title_fallback_not_preserved")
+    if (
+        'if row.get("_article_verification_failed") or not row.get("body_verified"):\n'
+        "                return None"
+    ) in fda_runner_source:
+        failures.append("production_fda_wrapper=body_fetch_failure_still_blocked")
     for index, (title, required_term, required_impact) in enumerate(CASES):
         row = {
             "title": title,
@@ -118,6 +133,11 @@ def main() -> int:
         "트럼프 관세·원자재·중동",
         "빅테크 AI 투자·반도체·전력 인프라 CAPEX",
         "단일종목 레버리지 규제 시행효과·거래급감",
+        "한국 월간 수출·반도체 수출·무역수지",
+        "연준 FOMC 회의체계·정책결정 일정",
+        "미국·일본 환율개입·통화공조",
+        "중국 DRAM 생산능력·메모리 증설",
+        "하이퍼스케일러 실적·클라우드 성장·AI CAPEX",
     ):
         if required_search not in search_names:
             failures.append(f"missing_search={required_search}")
@@ -510,6 +530,92 @@ def main() -> int:
         "link": "https://news.google.com/rss/articles/example",
     }):
         failures.append("trusted_publisher_google_news_link=blocked")
+
+    glyph_amounts = radar.extract_foreign_amounts("7월 수출 988.9억弗·반도체 400억弗 돌파")
+    if len(glyph_amounts) != 2 or any(item.get("code") != "USD" for item in glyph_amounts):
+        failures.append(f"dollar_glyph_not_normalized={glyph_amounts}")
+    glyph_core = radar.apply_krw_conversions(
+        "7월 수출 988.9억弗을 기록했습니다.",
+        {
+            "amounts": [
+                {
+                    "original": "988.9억달러",
+                    "krw_value": 137_000_000_000_000,
+                    "krw_text": "137조원",
+                }
+            ]
+        },
+    )
+    if "988.9억달러(약 137조원)" not in glyph_core or "弗" in glyph_core:
+        failures.append(f"dollar_glyph_conversion_core={glyph_core}")
+
+    export_row = {
+        "source": "한국경제",
+        "publisher": "한국경제",
+        "title": "7월 수출 989억달러로 62.8% 증가·반도체 410억달러 역대 2위",
+        "source_title": "7월 수출 989억달러로 62.8% 증가·반도체 410억달러 역대 2위",
+        "source_body": (
+            "7월 수출은 989억달러로 전년 대비 62.8% 증가했다. "
+            "반도체 수출은 410억달러로 179% 늘어 역대 월간 2위를 기록했다."
+        ),
+        "link": "https://www.hankyung.com/article/example-exports",
+        "published": now,
+        "body_verified": True,
+    }
+    export_alert = radar.build_verified_korean_business_alert(export_row, now)
+    if not export_alert or export_alert.get("korean_business_kind") != "korea_monthly_exports":
+        failures.append(f"korea_monthly_exports_alert={export_alert}")
+    else:
+        export_core = str(export_alert.get("telegram_core_fact") or "")
+        for fact in ("989억달러", "62.8%", "410억달러", "179%"):
+            if fact not in export_core:
+                failures.append(f"korea_monthly_exports_core_missing={fact}:{export_core}")
+
+    fed_title_row = {
+        "source": "머니투데이",
+        "publisher": "머니투데이",
+        "title": "워시 미 연준 의장, 연 8회 금리 결정 회의 축소 검토",
+        "source_title": "워시 미 연준 의장, 연 8회 금리 결정 회의 축소 검토",
+        "source_body": "",
+        "link": "https://www.mt.co.kr/world/example-fed-meetings",
+        "published": now,
+        "body_verified": False,
+        "_article_verification_failed": True,
+    }
+    fed_title_alert = radar.build_title_verified_korean_business_alert(fed_title_row, now)
+    if not fed_title_alert or fed_title_alert.get("korean_business_kind") != "fed_meeting_structure":
+        failures.append(f"fed_meeting_title_fallback={fed_title_alert}")
+    else:
+        if fed_title_alert.get("status") != "예비":
+            failures.append(f"fed_meeting_title_status={fed_title_alert.get('status')}")
+
+    fx_row = {
+        "source": "이투데이",
+        "publisher": "이투데이",
+        "title": "일본, 60조원 안팎 환율 개입 추정·미일 공조설 확산",
+        "source_title": "일본, 60조원 안팎 환율 개입 추정·미일 공조설 확산",
+        "source_body": "엔화 약세를 막기 위해 일본 재무부가 외환시장에 개입한 정황이 포착됐다.",
+        "link": "https://www.etoday.co.kr/news/view/example-fx",
+        "published": now,
+        "body_verified": True,
+    }
+    fx_alert = radar.build_verified_korean_business_alert(fx_row, now)
+    if not fx_alert or fx_alert.get("korean_business_kind") != "us_japan_fx_intervention":
+        failures.append(f"fx_intervention_alert={fx_alert}")
+
+    china_memory_row = {
+        "source": "아시아경제",
+        "publisher": "아시아경제",
+        "title": "CXMT, D램 생산 능력 웨이퍼 월 30만장으로 증설",
+        "source_title": "CXMT, D램 생산 능력 웨이퍼 월 30만장으로 증설",
+        "source_body": "CXMT가 2028년까지 D램 웨이퍼 월 생산 능력을 확대할 계획이다.",
+        "link": "https://view.asiae.co.kr/article/example-cxmt-capacity",
+        "published": now,
+        "body_verified": True,
+    }
+    china_memory_alert = radar.build_verified_korean_business_alert(china_memory_row, now)
+    if not china_memory_alert or china_memory_alert.get("korean_business_kind") != "china_memory_capacity":
+        failures.append(f"china_memory_capacity_alert={china_memory_alert}")
 
     for noisy, expected in (
         (

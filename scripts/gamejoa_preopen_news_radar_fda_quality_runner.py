@@ -58,9 +58,11 @@ def enforce_fda_quality_gate() -> None:
 
     def classify(row: dict, now):
         if runner.is_korean_business_row(row):
-            if row.get("_article_verification_failed") or not row.get("body_verified"):
-                return None
-            return runner.build_verified_korean_business_alert(row, now)
+            # The Korean-news layer already fails closed: verified bodies use
+            # source-faithful summaries and self-contained hard headlines are
+            # marked 예비. Do not erase that fallback when a publisher blocks
+            # article-body fetching in GitHub Actions.
+            return original_classify(row, now)
         text = base.source_content_text(row)
         alert = original_classify(row, now)
         if not alert:

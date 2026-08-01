@@ -1091,7 +1091,11 @@ ENGLISH_SCALE_MULTIPLIERS = {
 
 
 def clean_article_summary_text(text: str) -> str:
-    cleaned = html.unescape(str(text or "")).replace("\xa0", " ")
+    cleaned = (
+        html.unescape(str(text or ""))
+        .replace("\xa0", " ")
+        .replace("弗", "달러")
+    )
     for pattern in ARTICLE_SUMMARY_NOISE_PATTERNS:
         cleaned = re.sub(pattern, " ", cleaned, flags=re.IGNORECASE)
     cleaned = re.sub(r"^[\s,;:>|·•\-]+", "", cleaned)
@@ -3493,12 +3497,155 @@ def build_hyperscaler_ai_capex_alert(row: dict, now, text: str) -> dict | None:
     return alert
 
 
+def build_korea_monthly_export_alert(row: dict, now, text: str) -> dict | None:
+    if not (
+        "수출" in text
+        and any(term in text for term in ("반도체", "무역수지", "월간", "7월", "8월"))
+        and any(term in text for term in ("역대", "증가", "감소", "흑자", "적자"))
+        and re.search(r"\d[\d,.]*\s*(?:%|억달러|조원)", text)
+    ):
+        return None
+    title = str(row.get("source_title") or row.get("title") or "")
+    core = detailed_article_core(
+        title,
+        str(row.get("source_body") or row.get("source_abstract") or ""),
+    )
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=120,
+        impacts=["돈 버는 능력", "할인율", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "상",
+            "status": "확정" if row.get("body_verified") else "예비",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "investment_view": "월간 수출과 반도체 수출은 한국 기업의 매출·무역수지·원화 경로를 동시에 바꿉니다.",
+            "korea_market_impact": "삼성전자·SK하이닉스와 수출 대형주, 원/달러 및 외국인 수급에 직접 연결합니다.",
+            "sectors": ["한국 수출/무역수지", "반도체/HBM/CXL", "환율/수출입"],
+            "paths": ["수출 매출", "무역수지", "환율", "월간 통계 시간표"],
+            "korean_business_kind": "korea_monthly_exports",
+            "supply_chain_theme": f"korea_monthly_exports:{korean_business_event_date(row)}",
+        }
+    )
+    return alert
+
+
+def build_fed_meeting_structure_alert(row: dict, now, text: str) -> dict | None:
+    if not (
+        any(term in text for term in ("연준", "fomc", "federal reserve"))
+        and "회의" in text
+        and any(term in text for term in ("축소", "횟수", "연 8회", "연8회", "정례"))
+    ):
+        return None
+    title = str(row.get("source_title") or row.get("title") or "")
+    core = detailed_article_core(
+        title,
+        str(row.get("source_body") or row.get("source_abstract") or ""),
+    )
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=116,
+        impacts=["할인율", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "상",
+            "status": "확정" if row.get("body_verified") else "예비",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "investment_view": "FOMC 개최 횟수 변경은 금리 신호가 갱신되는 빈도와 정책 불확실성의 시간표를 바꿉니다.",
+            "korea_market_impact": "원/달러, 외국인 수급, 성장주·반도체의 할인율 민감도를 함께 확인합니다.",
+            "sectors": ["금리/연준", "환율/수출입", "금융/자본시장"],
+            "paths": ["할인율", "통화정책 일정", "환율"],
+            "korean_business_kind": "fed_meeting_structure",
+            "supply_chain_theme": f"fed_meeting_structure:{korean_business_event_date(row)}",
+        }
+    )
+    return alert
+
+
+def build_fx_intervention_alert(row: dict, now, text: str) -> dict | None:
+    if not (
+        any(term in text for term in ("엔화", "달러당 엔", "달러·엔", "달러-엔"))
+        and "개입" in text
+        and any(term in text for term in ("환율", "외환", "시장", "재무부", "공조"))
+    ):
+        return None
+    title = str(row.get("source_title") or row.get("title") or "")
+    core = detailed_article_core(
+        title,
+        str(row.get("source_body") or row.get("source_abstract") or ""),
+    )
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=119,
+        impacts=["할인율", "수급", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "상",
+            "status": "확정" if row.get("body_verified") else "예비",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "investment_view": "미·일 환율개입은 엔화·달러와 아시아 통화의 상대가치, 외국인 수급 기대를 즉시 바꿉니다.",
+            "korea_market_impact": "원/달러·원/엔과 자동차·부품·기계 등 일본 경쟁 수출주의 가격경쟁력을 확인합니다.",
+            "sectors": ["환율/수출입", "자동차/부품", "금융/자본시장"],
+            "paths": ["환율", "외국인 수급", "정책 개입 시간표"],
+            "korean_business_kind": "us_japan_fx_intervention",
+            "supply_chain_theme": f"us_japan_fx_intervention:{korean_business_event_date(row)}",
+        }
+    )
+    return alert
+
+
+def build_china_memory_capacity_alert(row: dict, now, text: str) -> dict | None:
+    if not (
+        any(term in text for term in ("cxmt", "창신메모리", "중국 d램", "중국 dram", "중국 메모리"))
+        and any(term in text for term in ("생산 능력", "생산능력", "웨이퍼", "증설", "캐파", "점유율"))
+    ):
+        return None
+    title = str(row.get("source_title") or row.get("title") or "")
+    core = detailed_article_core(
+        title,
+        str(row.get("source_body") or row.get("source_abstract") or ""),
+    )
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=117,
+        impacts=["돈 버는 능력", "수급", "시간표"],
+    )
+    alert.update(
+        {
+            "importance": "상",
+            "status": "확정" if row.get("body_verified") else "예비",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "investment_view": "CXMT의 DRAM 증설은 범용 메모리 공급과 가격, 한국 메모리 업체의 믹스·마진 전망을 바꿉니다.",
+            "korea_market_impact": "삼성전자·SK하이닉스의 범용 DRAM 가격과 HBM 전환 속도, 중국 노출 장비·소재를 확인합니다.",
+            "sectors": ["반도체/HBM/CXL", "중국 메모리 공급", "반도체 장비·소재"],
+            "paths": ["DRAM 공급", "메모리 가격", "증설 시간표"],
+            "korean_business_kind": "china_memory_capacity",
+            "supply_chain_theme": f"china_memory_capacity:{korean_business_event_date(row)}",
+        }
+    )
+    return alert
+
+
 TITLE_ONLY_HARD_EVENT_TERMS = (
     "관세 면제", "공급 부족", "hbm4", "hbm4e", "시장 1위", "점유율",
     "데이터센터 건설", "파운데이션 모델", "k-엑사원", "역대 최대 매출",
     "의무보유", "보호예수", "품목허가", "허가 권고", "상업화",
     "외환거래", "유상증자", "인수", "합병", "주식분할",
     "무장해제", "중동 전쟁", "영업익", "영업이익", "순이익", "매출",
+    "월간 수출", "수출 실적", "반도체 수출", "무역수지",
+    "회의 축소", "회의 횟수", "연 8회", "환율 개입", "외환 개입",
+    "생산 능력", "웨이퍼", "클라우드 성장", "aws 매출",
 )
 TITLE_ONLY_VAGUE_TERMS = (
     "전망", "가능성", "기대", "주목", "관심", "왜", "칼럼", "사설",
@@ -3519,7 +3666,14 @@ def build_title_verified_korean_business_alert(row: dict, now) -> dict | None:
     fallback_row["summary"] = title
     fallback_row["body_verified"] = False
 
-    for builder in (build_korea_sovereign_fund_alert, build_hyperscaler_ai_capex_alert):
+    for builder in (
+        build_korea_monthly_export_alert,
+        build_fed_meeting_structure_alert,
+        build_fx_intervention_alert,
+        build_china_memory_capacity_alert,
+        build_korea_sovereign_fund_alert,
+        build_hyperscaler_ai_capex_alert,
+    ):
         alert = builder(fallback_row, now, title_text)
         if not alert:
             continue
@@ -3629,6 +3783,10 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
         return alert
 
     for builder in (
+        build_korea_monthly_export_alert,
+        build_fed_meeting_structure_alert,
+        build_fx_intervention_alert,
+        build_china_memory_capacity_alert,
         build_korea_sovereign_fund_alert,
         build_hyperscaler_ai_capex_alert,
         build_strategic_technology_investment_alert,
