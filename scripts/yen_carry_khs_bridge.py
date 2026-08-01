@@ -66,7 +66,7 @@ def fetch_quotes() -> tuple[dict[str, market.Quote | None], dict[str, str]]:
             try:
                 _, quote = future.result()
                 quotes[key] = quote
-            except Exception as exc:  # provider failure must not stop policy watch
+            except Exception as exc:
                 quotes[key] = None
                 errors[key] = f"{type(exc).__name__}: {exc}"
     return quotes, errors
@@ -143,8 +143,8 @@ def bootstrap_message(
         quote_line(quotes.get("nikkei_cash"), "Nikkei 225"),
         "",
         "정상 경보 기준",
-        "- 1단계: USD/JPY 154.00 이하 + Nasdaq·Nikkei 각각 -2.00% 이하",
-        "- 2단계: USD/JPY 152.00 이하 + Nasdaq·Nikkei 각각 -3.00% 이하",
+        "- 1단계: 달러당 엔화 환율 154.00 이하 + Nasdaq·Nikkei 각각 -2.00% 이하",
+        "- 2단계: 달러당 엔화 환율 152.00 이하 + Nasdaq·Nikkei 각각 -3.00% 이하",
         "- 같은 단계 유지 중에는 중복 알림하지 않음",
         "- 조건 해제 뒤 재진입하거나 상위 단계로 악화되면 재알림",
     ]
@@ -170,7 +170,7 @@ def transition_message(
         title = "🚨 엔캐리 청산 2단계 위험"
         heading = "1. [엔캐리 2단계] 본격적인 위험자산 동반 청산 가능성이 높아졌습니다."
         judgment = (
-            "USD/JPY 152.00 이하와 Nasdaq·Nikkei 각각 -3.00% 이하가 동시에 충족됐습니다. "
+            "달러당 엔화 환율 152.00 이하와 Nasdaq·Nikkei 각각 -3.00% 이하가 동시에 충족됐습니다. "
             "엔 숏커버가 강제 위험축소로 번질 수 있는 구간입니다."
         )
         effects = [
@@ -183,14 +183,14 @@ def transition_message(
             title = "↘️ 엔캐리 청산 위험 1단계로 완화"
             heading = "1. [엔캐리 위험 완화] 2단계에서 1단계로 낮아졌습니다."
             judgment = (
-                "2단계 조건은 해제됐지만 USD/JPY 154.00 이하와 양 지수 -2.00% 이하가 "
+                "2단계 조건은 해제됐지만 달러당 엔화 환율 154.00 이하와 양 지수 -2.00% 이하가 "
                 "남아 있어 부분 청산 위험은 계속됩니다."
             )
         else:
             title = "⚠️ 엔캐리 청산 1단계 경계"
             heading = "1. [엔캐리 1단계] 부분 청산과 엔 숏커버 가능성이 커졌습니다."
             judgment = (
-                "USD/JPY 154.00 이하와 Nasdaq·Nikkei 각각 -2.00% 이하가 동시에 충족됐습니다. "
+                "달러당 엔화 환율 154.00 이하와 Nasdaq·Nikkei 각각 -2.00% 이하가 동시에 충족됐습니다. "
                 "엔 숏커버와 레버리지 축소가 확대되는지 확인해야 합니다."
             )
         effects = [
@@ -202,7 +202,7 @@ def transition_message(
         title = "✅ 엔캐리 청산 경보 해제"
         heading = "1. [엔캐리 경보 해제] 동시 충족 조건이 해제됐습니다."
         judgment = (
-            "USD/JPY와 Nasdaq·Nikkei의 동시 하락 조건이 더 이상 충족되지 않습니다. "
+            "달러당 엔화 환율과 Nasdaq·Nikkei의 동시 하락 조건이 더 이상 충족되지 않습니다. "
             "조건 해제 뒤 다시 진입하면 새 경보를 보냅니다."
         )
         effects = [
