@@ -1,0 +1,155 @@
+name: Yen carry unwind Telegram alert
+
+on:
+  schedule:
+    # GitHub cron is UTC. Run every 15 minutes, offset from crowded slots.
+    - cron: "8,23,38,53 * * * *"
+  workflow_dispatch:
+    inputs:
+      telegram_test:
+        description: "Send a one-time Telegram connection test"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+  pull_request:
+    paths:
+      - ".github/workflows/yen-carry-alert.yml"
+      - "scripts/yen_carry_alert.py"
+      - "tests/test_yen_carry_alert.py"
+      - "tests/yen_carry_workflow_trigger.txt"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yen-carry-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TELEGRAM_TEST: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false' }}
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      YEN_CARRY_MAX_DATA_AGE_MINUTES: "240"
+      YEN_CARRY_CASH_FRESH_MINUTES: "150"
+      YEN_CARRY_YAHOO_INTERVAL: "5m"
+      YEN_CARRY_YAHOO_RANGE: "5d"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate monitor
+        run: |
+          python -m py_compile scripts/yen_carry_alert.py
+          python -m unittest tests/test_yen_carry_alert.py -v
+
+      - name: Check yen carry conditions
+        run: python scripts/yen_carry_alert.py
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/yen_carry_watch.md ]; then
+            cat out/yen_carry_watch.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "엔캐리 경보 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Preview pull request alert without sending
+        if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/yen_carry_alert.md') != ''
+        run: |
+          printf '\n---\n\n텔레그램 미전송 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/yen_carry_alert.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Send Telegram alert
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "KHS_POLICY_TELEGRAM_BOT_TOKEN 또는 KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          title = pathlib.Path("out/yen_carry_alert_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/yen_carry_alert.md").read_text(encoding="utf-8").strip()
+          text = f"{title}\n\n{body}"[:4096]
+          payload = urllib.parse.urlencode(
+              {
+                  "chat_id": os.environ["TELEGRAM_CHAT_ID"].strip(),
+                  "text": text,
+                  "disable_web_page_preview": "true",
+              }
+          ).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{os.environ['TELEGRAM_BOT_TOKEN'].strip()}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/yen_carry_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true message_id={confirmed['message_id']}")
+          PY
+
+      - name: Finalize alert state
+        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: python scripts/yen_carry_alert.py --finalize
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yen-carry-alert-${{ github.run_id }}
+          path: |
+            out/yen_carry_watch.md
+            out/yen_carry_alert.md
+            out/yen_carry_alert.json
+            out/yen_carry_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Commit confirmed alert state
+        if: always() && github.event_name != 'pull_request' && hashFiles('data/yen_carry_alert_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/yen_carry_alert_state.json
+          if git diff --cached --quiet; then
+            echo "엔캐리 경보 상태 변경 없음"
+          else
+            git commit -m "Update yen carry alert state"
+            git pull --rebase origin main
+            git push
+          fi
