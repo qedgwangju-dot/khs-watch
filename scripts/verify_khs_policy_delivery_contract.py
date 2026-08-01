@@ -19,6 +19,7 @@ from khs_compact_text import compact_prose_lines, concise_text
 import khs_policy_alert_guardrails
 import khs_policy_alert_router
 import khs_domestic_stablecoin_policy_watch
+import khs_domestic_telecom_policy_watch
 import khs_nuclear_policy_watch
 import khs_policy_runtime_patch
 import khs_policy_seen_finalize
@@ -74,6 +75,8 @@ def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_workflow_delivery_dedupe()
     assert_final_policy_telegram_format_and_currency_conversion()
+    assert_domestic_telecom_title_gate_and_semantic_dedupe()
+    assert_router_explains_current_fcc_documents()
     assert_runtime_patch_accepts_mofcom_watch_source()
     assert_foreign_first_policy_sources()
     assert_china_mofcom_export_control_reaches_policy_lane()
@@ -258,6 +261,7 @@ def assert_final_policy_telegram_format_and_currency_conversion() -> None:
             "",
             "Actions: https://github.com/qedgwangju-dot/khs-watch/actions/runs/1",
             "Issues: https://github.com/qedgwangju-dot/khs-watch/issues",
+            "투자 조언이 아닌 참고용 정책·규제 알림입니다.",
         ]
     )
     formatted_title, formatted_body = khs_policy_telegram_formatter.format_policy_message(
@@ -287,6 +291,7 @@ def assert_final_policy_telegram_format_and_currency_conversion() -> None:
         "- 원화 환산 기준:",
         "Actions:",
         "Issues:",
+        "투자 조언이 아닌 참고용 정책·규제 알림입니다.",
     ]
     for marker in forbidden:
         if marker in f"{formatted_title}\n{formatted_body}":
@@ -1562,6 +1567,116 @@ def assert_router_explains_fcc_submarine_cable_policy() -> None:
     for token in forbidden:
         if token.lower() in fields:
             raise AssertionError(f"FCC submarine cable explanation leaked inverter body: {token}")
+
+
+
+def assert_domestic_telecom_title_gate_and_semantic_dedupe() -> None:
+    false_titles = [
+        "한-아르헨, 핵심광물 협력 MOU 체결…중남미 공급망 협력 본격화 NEW",
+        "보훈의료대상자, 인근 병·의원 등 치매 치료비 지원 받을 수 있어",
+        "국내 첫 한국형 이지스구축함 건조 본격화",
+    ]
+    for title in false_titles:
+        if khs_domestic_telecom_policy_watch.has_any(
+            title,
+            khs_domestic_telecom_policy_watch.TITLE_TELECOM_TERMS,
+        ):
+            raise AssertionError(f"unrelated title passed telecom title gate: {title}")
+
+    true_titles = [
+        "알뜰폰도 데이터 안심옵션 도입…다 써도 계속 쓴다",
+        "정부, 가계통신비 부담 완화 위한 요금제 개편 발표",
+    ]
+    for title in true_titles:
+        if not khs_domestic_telecom_policy_watch.has_any(
+            title,
+            khs_domestic_telecom_policy_watch.TITLE_TELECOM_TERMS,
+        ):
+            raise AssertionError(f"telecom title was blocked: {title}")
+
+    first = khs_domestic_telecom_policy_watch.telecom_event_fingerprint(
+        "정부, 통신비 인하 정책 압박 확인",
+        "가계통신비 부담 완화 방안을 논의했습니다.",
+    )
+    second = khs_domestic_telecom_policy_watch.telecom_event_fingerprint(
+        "가계통신비 부담 완화 논의",
+        "통신요금 개편 가능성을 검토했습니다.",
+    )
+    if first != second:
+        raise AssertionError("generic telecom pressure event did not keep one semantic key")
+
+    concrete = khs_domestic_telecom_policy_watch.telecom_event_fingerprint(
+        "알뜰폰 데이터 안심옵션 8월 시행",
+        "알뜰폰 데이터 안심옵션을 8월부터 시행합니다.",
+    )
+    if concrete == first:
+        raise AssertionError("concrete telecom implementation collapsed into generic pressure event")
+
+    evidence = khs_domestic_telecom_policy_watch.policy_evidence_summary(
+        "알뜰폰도 데이터 안심옵션 도입",
+        "관련기사 삼성전자 신제품 출시.\n정부는 알뜰폰 데이터 안심옵션을 8월부터 도입한다.",
+    )
+    if "8월부터 도입" not in evidence or "삼성전자 신제품" in evidence:
+        raise AssertionError(f"telecom evidence extraction mismatch: {evidence}")
+
+
+def assert_router_explains_current_fcc_documents() -> None:
+    cases = [
+        (
+            {
+                "source": "Federal Register FCC",
+                "title": "Auction of Flexible Use Licenses in the Upper C-Band for Next-Generation Wireless Services Scheduled",
+                "original_title": "Auction of Flexible Use Licenses in the Upper C-Band for Next-Generation Wireless Services Scheduled",
+                "link": "https://www.federalregister.gov/documents/2026/08/03/2026-15725/auction-of-flexible-use-licenses-in-the-upper-c-band-for-next-generation-wireless-services-scheduled",
+                "importance": "상",
+                "status": "확정",
+                "published_kst": "2026-08-03T09:00:00+09:00",
+                "matched": {"fcc_decision_notice": ["auction", "upper c-band"]},
+                "impacts": ["시간표"],
+                "paths": ["정책 타임라인"],
+                "sectors": ["통신/FCC/위성"],
+            },
+            "FCC, 상단 C대역 차세대 무선통신 주파수 경매 일정 공표",
+            "상단 C대역 100MHz 이상 면허",
+        ),
+        (
+            {
+                "source": "Federal Register FCC",
+                "title": "Seeking Comment on Prohibiting the Importation and Marketing of Certain Foreign-Produced Communications Equipment",
+                "original_title": "Seeking Comment on Prohibiting the Importation and Marketing of Certain Foreign-Produced Communications Equipment",
+                "link": "https://www.federalregister.gov/documents/2026/08/03/2026-15659/seeking-comment-on-prohibiting-the-importation-and-marketing-of-certain-foreign-produced",
+                "importance": "상",
+                "status": "확정",
+                "published_kst": "2026-08-03T09:00:00+09:00",
+                "matched": {"fcc_decision_notice": ["covered list", "national security", "prohibit"]},
+                "impacts": ["매출·마진·현금흐름", "수급", "시간표"],
+                "paths": ["정책 타임라인", "공급망"],
+                "sectors": ["통신/FCC/위성"],
+            },
+            "FCC, 외국산 보안위험 통신장비 수입·판매 금지안 의견수렴",
+            "국가안보 위험 외국산 통신장비",
+        ),
+    ]
+    routed = []
+    for alert, expected_title, expected_core in cases:
+        khs_policy_alert_router.apply_router_overrides(alert)
+        actual_title = khs_policy_alert_router.safe_title(alert)
+        core = str(alert.get("policy_plain_summary") or "")
+        if actual_title != expected_title:
+            raise AssertionError(f"FCC title mismatch: {actual_title} != {expected_title}")
+        if expected_core not in core:
+            raise AssertionError(f"FCC core mismatch: {core}")
+        routed.append(alert)
+
+    report = khs_policy_alert_router.render_policy_report(
+        routed,
+        dt.datetime(2026, 8, 1, 15, 59, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    for _alert, expected_title, expected_core in cases:
+        if expected_title not in report or expected_core not in report:
+            raise AssertionError(f"FCC rendered report lost source-specific content: {expected_title}")
+    if "투자 조언이 아닌 참고용 정책·규제 알림입니다." in report:
+        raise AssertionError("removed policy disclaimer leaked into router output")
 
 
 def cleanup() -> None:
