@@ -140,7 +140,7 @@ def policy_evidence_summary(title: str, detail_text: str) -> str:
     """Keep only article-authored sentences that directly describe telecom policy."""
     sentences = [
         clean_text(sentence)
-        for sentence in re.split(r"(?<=[.!?다요])\\s+|[\\r\\n]+", detail_text or "")
+        for sentence in re.split(r"(?<=[.!?다요])\s+|[\r\n]+", detail_text or "")
     ]
     evidence: list[str] = []
     normalized_title = clean_text(title)
