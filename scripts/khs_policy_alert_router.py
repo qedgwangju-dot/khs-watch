@@ -530,6 +530,9 @@ def compact_failure_fallback(alert: dict) -> str:
 def compact_explanation_lines(alert: dict) -> list[str]:
     apply_router_overrides(alert)
     rendered = explanation_lines(alert)
+    # The shared explainer may replace specific FCC/White House fields with a
+    # generic profile. Reapply the source-specific override before compacting.
+    apply_router_overrides(alert)
     title = safe_title(alert)
     impacts = clip_text(line_value(rendered, "- 의사결정 영향", alert.get("decision_classification")), 90)
     first_impact = (impacts.split(",", 1)[0] or "의사결정").strip()
