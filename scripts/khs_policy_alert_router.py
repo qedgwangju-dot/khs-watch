@@ -426,7 +426,187 @@ def enrich_missing_context(alert: dict) -> dict:
         alert["title_ko"] = "FCC, 해저케이블 랜딩 라이선스 국가안보 심사 규칙 재검토"
         alert["policy_plain_summary"] = "FCC가 해저 통신케이블 랜딩 라이선스 규칙과 절차를 국가안보 환경 변화에 맞춰 재검토하는 공식 규제 문서입니다."
         alert["investment_view"] = "핵심은 태양광·전력장비 수입금지가 아니라 국제 통신망 인허가와 보안 심사 시간표입니다. 신규 케이블 허가, 외국 지분·운영자 심사, 데이터센터 연결망 규제가 구체화될 때만 투자 재료가 됩니다."
-        alert["korea_market_impact"] = "한국장에서는 해저 통신케이블, 국제망 보안, 통신장비, 통신사 해외망 노출만 제한적으로 확인합니다. 원문 근거 없이 …2537 tokens truncated…가 재료로 약합니다."
+        alert["korea_market_impact"] = "한국장에서는 해저 통신케이블, 국제망 보안, 통신장비, 통신사 해외망 노출만 제한적으로 확인합니다. 원문 근거 없이 태양광·전력변환 테마로 확장하지 않습니다."
+        alert["priced_in"] = "낮음~중간. FCC 국가안보 문서라 테마 반응은 가능하지만, 한국 기업의 직접 수주·인허가 노출이 확인되기 전에는 가격 변수로 약합니다."
+        alert["counter"] = "규칙·절차 재검토 단계일 수 있어 특정 케이블 프로젝트의 승인·거절, 예산, 조달, 한국 기업 수혜가 확정된 것은 아닙니다."
+        alert["failure_signal"] = "구체 라이선스 변경, 신규 심사 기준, 케이블 사업자 영향, 한국 기업 수주·공급망 노출이 확인되지 않으면 관찰 재료로만 처리합니다."
+        return alert
+
+    alert = dict(alert)
+    impacts = alert.get("impacts") or ["의사결정 영향 제한적"]
+    sectors = alert.get("sectors") or ["정책/규제 일반"]
+    alert.setdefault("policy_plain_summary", f"공식 정책·규제 문서에서 {', '.join(impacts)} 관련 상태 변화 후보가 확인됐습니다.")
+    alert.setdefault("investment_view", "실제 투자 재료가 되려면 매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표 중 무엇이 바뀌는지 후속 원문과 시장 반응으로 확인해야 합니다.")
+    alert.setdefault("korea_market_impact", f"한국장 체크 대상은 {', '.join(sectors)}입니다. 원문에 직접 근거가 없는 업종 확장은 제외합니다.")
+    alert.setdefault("priced_in", "낮음~중간. 공식 원문 확인 후 한국장 확산 여부를 장전 레이더에서 재확인해야 합니다.")
+    alert.setdefault("failure_signal", "시행일, 예산, 계약, 수급 반응, 관련 기업 공시가 뒤따르지 않으면 단발성 정책 뉴스로 끝납니다.")
+    return ensure_explained(alert)
+
+
+def display_matched_keys(matched: dict) -> str:
+    if not matched:
+        return "정책·규제"
+    labels = [MATCHED_KEY_LABELS.get(str(key), str(key)) for key in matched.keys()]
+    return ", ".join(dict.fromkeys(labels))
+
+
+def display_terms(terms: list[str]) -> str:
+    labels = [TERM_LABELS.get(str(term).lower(), str(term)) for term in terms]
+    return ", ".join(dict.fromkeys(labels))
+
+
+def clip_text(value: object, limit: int) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 1)].rstrip() + "…"
+
+
+def no_general_report(now: dt.datetime) -> str:
+    return "\n".join([
+        f"🚨 KHS 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}",
+        "",
+        "고충격 일반 정책·규제 변경 직접 확인 없음",
+        "",
+        "💡 워치 판단: 이번 실행에서 일반 정책·규제 라인으로 따로 송출할 고충격 이벤트는 직접 확인되지 않았습니다.",
+        "",
+    ]) + "\n"
+
+
+def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
+    if not alerts:
+        return no_general_report(now)
+
+    lines = [f"🚨 KHS 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
+    for idx, alert in enumerate(alerts, 1):
+        alert = enrich_missing_context(alert)
+        matched = alert.get("matched") or {}
+        matched_terms = sorted({term for terms in matched.values() for term in terms})
+        matched_keys = display_matched_keys(matched)
+        matched_terms_text = display_terms(matched_terms[:8])
+        source_label = display_source(alert.get("source"))
+        title = safe_title(alert)
+        lines.extend([
+            f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
+            f"- 상태 변화: {matched_keys} 신호 확인 ({matched_terms_text})",
+            f"- 원문/출처: [{source_label}]({alert.get('link', '')}) · 원천시각 {alert.get('published_kst') or '확인 불가'} · 조회 {now:%H:%M KST}",
+            *explanation_lines(alert),
+            "- 즉시 체크: 원문 전문, 시행일/마감일, 한국 밸류체인 노출, 관련 해외 티커·ETF 반응",
+            "",
+        ])
+    lines.extend([
+        "💡 워치 판단: 이번 실행은 일반 정책·규제 라인으로 송출할 이벤트만 분리했습니다. 전용 감시 대상은 별도 워치에서 따로 송출됩니다.",
+        "",
+        "투자 조언이 아닌 참고용 정책·규제 알림입니다.",
+    ])
+    return "\n".join(lines) + "\n"
+
+
+def line_value(lines: list[str], prefix: str, fallback: object = "") -> str:
+    for line in lines:
+        if line.startswith(prefix):
+            return line.split(":", 1)[1].strip() if ":" in line else line.replace(prefix, "", 1).strip()
+    return str(fallback or "").strip()
+
+
+def compact_core_fallback(alert: dict, title: str) -> tuple[str, bool]:
+    text = alert_text(alert)
+    if "pac-3" in text and "amraam" in text and "nato" in text:
+        return "NATO 방위투자에 PAC-3·AMRAAM 생산이 포함됐습니다.", True
+    if "trump" in text and "iran" in text and "hormuz" in text:
+        return "트럼프 발언은 이란·이스라엘·중동 전쟁위험을 바꿉니다.", True
+    if "bwrx-300" in text and "first program" in text and "samsung c&t" in text:
+        return "FIRST 지원과 삼성물산·BWRX-300 유럽 배치가 포함됐습니다.", True
+    return title, False
+
+
+def compact_failure_fallback(alert: dict) -> str:
+    text = alert_text(alert)
+    if "trump" in text and "iran" in text and "hormuz" in text:
+        return "유가·환율·운임·방산 반응이 없으면 재료가 약해집니다."
+    return "후속 공시·가격·수급이 없으면 재료가 약해집니다."
+
+
+def compact_explanation_lines(alert: dict) -> list[str]:
+    apply_router_overrides(alert)
+    rendered = explanation_lines(alert)
+    # The shared explainer may replace specific FCC/White House fields with a
+    # generic profile. Reapply the source-specific override before compacting.
+    apply_router_overrides(alert)
+    title = safe_title(alert)
+    impacts = clip_text(line_value(rendered, "- 의사결정 영향", alert.get("decision_classification")), 90)
+    first_impact = (impacts.split(",", 1)[0] or "의사결정").strip()
+    raw_sectors = alert.get("sectors") or alert.get("korea_value_chain") or ["관련 업종"]
+    if isinstance(raw_sectors, (list, tuple, set)):
+        sector_values = [str(value).strip() for value in raw_sectors if str(value).strip()]
+    else:
+        sector_values = [
+            value.strip()
+            for value in re.split(r"[,|]", str(raw_sectors))
+            if value.strip()
+        ]
+    sector_values = sector_values or ["관련 업종"]
+    source_text = alert_text(alert)
+    if "trump" in source_text and "iran" in source_text and "hormuz" in source_text:
+        sector_values = ["정유/화학/해운", "방산/지정학"]
+    short_sectors = [
+        value.replace("반도체/HBM", "반도체·HBM")
+        for value in sector_values[:3]
+    ]
+    korea_fallback = f"한국장에서는 {', '.join(short_sectors)}만 확인합니다."
+    core_fallback, prefer_core_fallback = compact_core_fallback(alert, title)
+    core = concise_text(
+        alert.get("policy_plain_summary") or line_value(rendered, "- 핵심 내용"),
+        fallback=core_fallback,
+        prefer_fallback_when_long=prefer_core_fallback,
+    )
+    investment = concise_text(
+        alert.get("investment_view") or line_value(rendered, "- 투자 관점"),
+        fallback=f"{first_impact} 변화 여부를 확인합니다.",
+    )
+    korea = concise_text(
+        alert.get("korea_market_impact") or line_value(rendered, "- 한국장 영향"),
+        fallback=korea_fallback,
+        prefer_fallback_when_long=True,
+    )
+    priced = concise_text(
+        alert.get("priced_in") or line_value(rendered, "- 반영 가능성"),
+        fallback="중간. 후속 가격·수급 확인이 필요합니다.",
+    )
+    counter = concise_text(
+        alert.get("counter") or line_value(rendered, "- 반대 근거"),
+        fallback="원문 조건 확정 전 과대해석 가능성이 있습니다.",
+    )
+    failure = concise_text(
+        alert.get("failure_signal") or line_value(rendered, "- 실패 신호"),
+        fallback=compact_failure_fallback(alert),
+        prefer_fallback_when_long=True,
+    )
+    return [
+        f"- 핵심: {core}",
+        f"- 의사결정 영향: {impacts}",
+        f"- 투자 영향: {investment}",
+        f"- 한국장: {korea}",
+        f"- 반영/반대: {priced} / {counter}",
+        f"- 실패 신호: {failure}",
+    ]
+
+
+def apply_router_overrides(alert: dict) -> None:
+    text = alert_text(alert)
+    if "알뜰폰" in text and "데이터 안심옵션" in text:
+        alert["importance"] = "상"
+        alert["title_ko"] = "정부, 알뜰폰 데이터 안심옵션 도입"
+        alert["policy_plain_summary"] = "정부가 알뜰폰 데이터 소진 뒤에도 저속 이용 가능한 안심옵션을 도입했습니다."
+        alert["investment_view"] = "데이터 소진 뒤 이용 지속성을 높여 알뜰폰 가입자 유지에는 긍정적이지만, 비용과 도매대가 조건에 따라 사업자 마진 영향이 달라집니다."
+        alert["korea_market_impact"] = "한국장에서는 알뜰폰 사업자와 통신 3사의 가입자 이동, ARPU, 도매대가 조건을 확인합니다."
+        alert["impacts"] = ["매출·마진·현금흐름", "시간표"]
+        alert["paths"] = ["가입자 유지", "ARPU", "도매대가", "정책 시행"]
+        alert["sectors"] = ["알뜰폰/MVNO", "통신 3사"]
+        alert["korea_value_chain"] = alert["sectors"]
+        alert["priced_in"] = "낮음~중간. 서비스 도입은 확인됐지만 요금과 도매대가 조건의 실적 영향은 추가 확인이 필요합니다."
+        alert["counter"] = "저속 이용 옵션이 가입자 이동이나 ARPU를 크게 바꾸지 못하면 실적 영향은 제한적입니다."
+        alert["failure_signal"] = "가입자 순증, 해지율 개선, ARPU 또는 도매대가 변화가 없으면 주가 재료로 약합니다."
         return
     if is_china_mofcom_trade_control(alert):
         product = china_mofcom_product(text)
@@ -767,4 +947,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
