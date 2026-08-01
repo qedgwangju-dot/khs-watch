@@ -129,6 +129,46 @@ def is_policy_candidate(text: str, source_name: str) -> bool:
     return has_policy and has_actor
 
 
+def policy_evidence_summary(title: str, detail_text: str) -> str:
+    """Keep only article-authored sentences that directly describe telecom policy."""
+    sentences = [
+        clean_text(sentence)
+        for sentence in re.split(r"(?<=[.!?다요])\\s+|[\\r\\n]+", detail_text or "")
+    ]
+    evidence: list[str] = []
+    normalized_title = clean_text(title)
+    for sentence in sentences:
+        if len(sentence) < 18 or len(sentence) > 260:
+            continue
+        if not has_any(sentence, POLICY_TERMS):
+            continue
+        if has_any(sentence, ["관련기사", "많이 본", "메뉴", "로그인", "구독", "저작권"]):
+            continue
+        if sentence == normalized_title or sentence in evidence:
+            continue
+        evidence.append(sentence)
+        if len(evidence) >= 2:
+            break
+    if evidence:
+        return clip_text(" ".join(evidence), 240)
+    return clip_text(normalized_title, 180)
+
+
+def telecom_event_fingerprint(title: str, evidence: str) -> str:
+    """Deduplicate the policy event, not each article URL."""
+    normalized_title = re.sub(r"[^0-9A-Za-z가-힣]+", " ", title.lower())
+    normalized_title = re.sub(r"\\s+", " ", normalized_title).strip()
+    concrete_actions = [
+        "시행", "확정", "의결", "고시", "발표", "신설", "폐지", "확대", "축소",
+        "상향", "하향", "인상", "인하", "개편", "도입", "중단", "재개",
+    ]
+    if normalized_title and has_any(normalized_title, concrete_actions):
+        event_key = f"korea-telecom|{normalized_title}"
+    else:
+        event_key = "korea-telecom|general-price-plan-pressure"
+    return hashlib.sha256(event_key.encode("utf-8")).hexdigest()[:16]
+
+
 def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) -> list[dict]:
     link_pattern = re.compile(r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>", re.I | re.S)
     deduped: dict[str, dict] = {}
@@ -163,14 +203,19 @@ def parse_links(text: str, source_name: str, source_url: str, now: dt.datetime) 
         risk_hits = matched_terms(haystack, RISK_TERMS)
         all_hits = list(dict.fromkeys(policy_hits + risk_hits))
         high = has_any(haystack, HIGH_IMPACT_TERMS)
-        fingerprint = hashlib.sha256(f"{source_name}|{title}|{link}".encode("utf-8")).hexdigest()[:16]
-        summary = clip_text(detail_clean or context, 360)
+        summary = policy_evidence_summary(title, detail_clean or context)
+        # Navigation and related-article text must not turn an unrelated article into a telecom alert.
+        if not has_any(f"{title} {summary}", POLICY_TERMS):
+            continue
+        fingerprint = telecom_event_fingerprint(title, summary)
         deduped[link] = {
             "source": source_name,
-            "title": "정부, 통신비 인하·요금제 개편 정책 압박 확인",
+            "title": clip_text(title, 120),
+            "title_ko": clip_text(title, 120),
             "original_title": clip_text(title, 120),
             "link": link,
             "summary": summary,
+            "policy_plain_summary": summary,
             "published_kst": published.isoformat() if published else "",
             "fingerprint": fingerprint,
             "matched": {"korea_telecom_policy": all_hits[:12] or ["통신비 정책"]},
