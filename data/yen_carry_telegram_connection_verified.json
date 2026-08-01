@@ -1,0 +1,15 @@
+{
+  "status": "confirmed",
+  "confirmed_at_kst": "2026-08-02T00:02:34+09:00",
+  "telegram_message_id": 369,
+  "smoke_workflow_run_id": 30705042547,
+  "final_workflow_validation_run_id": 30705251286,
+  "checks": [
+    "telegram_api_delivery",
+    "python_compile",
+    "threshold_tests",
+    "futures_fallback_test",
+    "duplicate_suppression_test",
+    "final_workflow_dry_run"
+  ]
+}
