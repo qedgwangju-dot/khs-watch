@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
-      TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
+      TELEGRAM_TEST: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[telegram-test]') && 'true' || github.event.inputs.telegram_test || 'false' }}
       YEN_CARRY_MAX_DATA_AGE_MINUTES: "240"
       YEN_CARRY_CASH_FRESH_MINUTES: "150"
       YEN_CARRY_YAHOO_INTERVAL: "5m"
@@ -110,10 +110,15 @@ jobs:
               "message_id": result.get("result", {}).get("message_id"),
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
-          pathlib.Path("out/yen_carry_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
-          )
+          for destination in (
+              pathlib.Path("out/yen_carry_telegram_confirmed.json"),
+              pathlib.Path("data/yen_carry_telegram_last_confirmed.json"),
+          ):
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              destination.write_text(
+                  json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+                  encoding="utf-8",
+              )
           print("Telegram yen carry alert sent and confirmed.")
           PY
 
@@ -134,12 +139,12 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
-      - name: Commit alert state
-        if: always() && hashFiles('data/yen_carry_alert_state.json') != ''
+      - name: Commit alert state and delivery confirmation
+        if: always() && (hashFiles('data/yen_carry_alert_state.json') != '' || hashFiles('data/yen_carry_telegram_last_confirmed.json') != '')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/yen_carry_alert_state.json
+          git add data/yen_carry_alert_state.json data/yen_carry_telegram_last_confirmed.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "엔캐리 경보 상태 변경 없음"
           else
