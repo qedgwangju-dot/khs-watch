@@ -2,8 +2,8 @@ name: Yen carry unwind Telegram alert
 
 on:
   schedule:
-    # 15분마다 확인하되 혼잡한 정각 슬롯을 피한다. GitHub cron은 UTC 기준이다.
-    - cron: "7,22,37,52 * * * *"
+    # 최초 연결 확인을 빠르게 끝내기 위해 5분 간격으로 확인한다. GitHub cron은 UTC 기준이다.
+    - cron: "2,7,12,17,22,27,32,37,42,47,52,57 * * * *"
   workflow_dispatch:
     inputs:
       telegram_test:
@@ -32,7 +32,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
-      TELEGRAM_TEST: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[telegram-test]') && 'true' || github.event.inputs.telegram_test || 'false' }}
       YEN_CARRY_MAX_DATA_AGE_MINUTES: "240"
       YEN_CARRY_CASH_FRESH_MINUTES: "150"
       YEN_CARRY_YAHOO_INTERVAL: "5m"
@@ -40,6 +39,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Select one-time bootstrap test
+        shell: bash
+        run: |
+          requested="${{ github.event.inputs.telegram_test || 'false' }}"
+          if [ "$requested" = "true" ]; then
+            echo "TELEGRAM_TEST=true" >> "$GITHUB_ENV"
+            echo "Telegram mode: manual connection test" >> "$GITHUB_STEP_SUMMARY"
+          elif [ ! -f data/yen_carry_telegram_bootstrap_done.json ]; then
+            echo "TELEGRAM_TEST=true" >> "$GITHUB_ENV"
+            echo "Telegram mode: one-time automatic bootstrap test" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "TELEGRAM_TEST=false" >> "$GITHUB_ENV"
+            echo "Telegram mode: conditional alert monitoring" >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -109,17 +123,21 @@ jobs:
               "status": "confirmed",
               "message_id": result.get("result", {}).get("message_id"),
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              "mode": "test" if os.environ.get("TELEGRAM_TEST", "false").lower() == "true" else "alert",
           }
-          for destination in (
+          destinations = [
               pathlib.Path("out/yen_carry_telegram_confirmed.json"),
               pathlib.Path("data/yen_carry_telegram_last_confirmed.json"),
-          ):
+          ]
+          if confirmed["mode"] == "test":
+              destinations.append(pathlib.Path("data/yen_carry_telegram_bootstrap_done.json"))
+          for destination in destinations:
               destination.parent.mkdir(parents=True, exist_ok=True)
               destination.write_text(
                   json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
                   encoding="utf-8",
               )
-          print("Telegram yen carry alert sent and confirmed.")
+          print("Telegram yen carry message sent and confirmed.")
           PY
 
       - name: Finalize alert state
@@ -140,11 +158,11 @@ jobs:
           retention-days: 7
 
       - name: Commit alert state and delivery confirmation
-        if: always() && (hashFiles('data/yen_carry_alert_state.json') != '' || hashFiles('data/yen_carry_telegram_last_confirmed.json') != '')
+        if: always() && (hashFiles('data/yen_carry_alert_state.json') != '' || hashFiles('data/yen_carry_telegram_last_confirmed.json') != '' || hashFiles('data/yen_carry_telegram_bootstrap_done.json') != '')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/yen_carry_alert_state.json data/yen_carry_telegram_last_confirmed.json 2>/dev/null || true
+          git add data/yen_carry_alert_state.json data/yen_carry_telegram_last_confirmed.json data/yen_carry_telegram_bootstrap_done.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "엔캐리 경보 상태 변경 없음"
           else
