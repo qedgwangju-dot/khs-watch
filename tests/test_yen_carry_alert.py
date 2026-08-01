@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+# 이 파일 변경은 main 병합 시 엔캐리 경보의 1회 연결 시험을 실행한다.
 import datetime as dt
 import json
 import os
