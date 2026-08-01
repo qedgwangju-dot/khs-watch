@@ -1,0 +1,30 @@
+name: Yen carry bridge validation
+
+on:
+  pull_request:
+    paths:
+      - "scripts/yen_carry_alert.py"
+      - "scripts/yen_carry_khs_bridge.py"
+      - "scripts/khs_policy_source_status_alert.py"
+      - "tests/test_yen_carry_alert.py"
+      - "tests/yen_carry_validation_trigger.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile scripts
+        run: |
+          python -m py_compile scripts/yen_carry_alert.py
+          python -m py_compile scripts/yen_carry_khs_bridge.py
+          python -m py_compile scripts/khs_policy_source_status_alert.py
+      - name: Run threshold and state tests
+        run: python -m unittest tests/test_yen_carry_alert.py -v
