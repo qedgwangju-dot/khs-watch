@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+# This test change triggers the final pull-request dry-run validation.
 import pathlib
 import sys
 import unittest
