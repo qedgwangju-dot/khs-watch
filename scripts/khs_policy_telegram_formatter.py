@@ -30,6 +30,10 @@ REMOVED_FIELD_PREFIXES = (
     "- 원화 환산 기준:",
 )
 
+REMOVED_EXACT_LINES = {
+    "투자 조언이 아닌 참고용 정책·규제 알림입니다.",
+}
+
 CURRENCY_SPECS = {
     "USD": {"labels": ("미국 달러", "미달러", "달러", "USD", "US$", "$"), "symbol": "KRW=X"},
     "EUR": {"labels": ("유로", "EUR", "€"), "symbol": "EURKRW=X"},
@@ -395,6 +399,8 @@ def normalize_policy_structure(title: str, body: str) -> tuple[str, str]:
         line = re.sub(r"^(\s*(?:🚨|⚠️)?\s*)KHS\s+", r"\1", raw_line, flags=re.IGNORECASE)
         line = re.sub(r"^\s*##\s+", "", line)
         stripped = line.strip()
+        if stripped in REMOVED_EXACT_LINES:
+            continue
         if stripped.startswith(REMOVED_FIELD_PREFIXES):
             continue
         if re.match(r"^(?:Actions|Issues):\s*https?://", stripped, flags=re.IGNORECASE):
@@ -441,6 +447,8 @@ def validate_final_policy_message(title: str, body: str) -> list[str]:
             errors.append(f"removed_field_present:{prefix}")
     if re.search(r"(?mi)^(?:Actions|Issues):\s*https?://", body):
         errors.append("github_meta_link_present")
+    if any(line in body for line in REMOVED_EXACT_LINES):
+        errors.append("policy_disclaimer_present")
     for line in body.splitlines():
         stripped = line.strip()
         if not stripped.startswith("- 핵심:"):
