@@ -19,6 +19,8 @@ on:
       - ".github/workflows/yen-carry-alert.yml"
       - "scripts/yen_carry_alert.py"
       - "tests/test_yen_carry_alert.py"
+  issues:
+    types: [opened]
 
 permissions:
   contents: write
@@ -29,6 +31,7 @@ concurrency:
 
 jobs:
   monitor:
+    if: ${{ github.event_name != 'issues' || github.event.issue.title == 'YEN_CARRY_TELEGRAM_BOOTSTRAP' }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
