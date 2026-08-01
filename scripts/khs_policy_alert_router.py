@@ -338,46 +338,28 @@ def safe_title(alert: dict) -> str:
         text = alert_text(alert)
         if "petition for reconsideration" in text:
             return "FCC, 규칙 재심 청원 접수 공지"
-        if is_fcc_upper_c_band_auction(alert):
-        alert["importance"] = "상"
-        alert["title_ko"] = "FCC, 상단 C대역 차세대 무선통신 주파수 경매 일정 공표"
-        alert["policy_plain_summary"] = "FCC가 상단 C대역 100MHz 이상 면허의 차세대 무선통신 경매 일정을 공표했습니다."
-        alert["investment_view"] = "중대역 주파수 공급은 미국 통신사의 5G·차세대망 CAPEX와 네트워크 장비 발주 시간표를 바꿀 수 있습니다."
-        alert["korea_market_impact"] = "한국장에서는 미국향 통신장비·안테나·RF 부품과 통신사 CAPEX 노출이 확인되는 기업만 봅니다."
-        alert["impacts"] = ["매출·마진·현금흐름", "시간표", "수급"]
-        alert["paths"] = ["주파수 경매", "통신사 CAPEX", "장비 발주", "정책 타임라인"]
-        alert["sectors"] = ["통신장비", "안테나/RF", "5G·차세대 무선통신"]
-        alert["korea_value_chain"] = alert["sectors"]
-        alert["priced_in"] = "낮음~중간. 경매 일정은 공식화됐지만 실제 장비 매출은 낙찰자와 구축계획 확인 뒤 반영됩니다."
-        alert["counter"] = "주파수 경매가 통신사 CAPEX 총액 증가가 아니라 기존 투자 재배분에 그칠 수 있습니다."
-        alert["failure_signal"] = "낙찰 결과, 통신사 CAPEX 상향, 장비 발주가 뒤따르지 않으면 직접 실적 재료는 약합니다."
-        return
-    if is_fcc_foreign_equipment_proposal(alert):
-        alert["importance"] = "상"
-        alert["status"] = "예비"
-        alert["title_ko"] = "FCC, 외국산 보안위험 통신장비 수입·판매 금지안 의견수렴"
-        alert["policy_plain_summary"] = "FCC가 국가안보 위험 외국산 통신장비의 수입·판매 금지안에 대한 의견수렴을 시작했습니다."
-        alert["investment_view"] = "금지 대상과 시행일이 확정되면 중국산 장비 배제와 미국 내 대체 공급망 주문이 바뀔 수 있습니다."
-        alert["korea_market_impact"] = "한국장에서는 미국향 통신·네트워크·보안장비 매출과 중국 대체 공급망 노출이 확인되는 기업만 봅니다."
-        alert["impacts"] = ["매출·마진·현금흐름", "수급", "시간표"]
-        alert["paths"] = ["수입 제한", "공급망 대체", "장비 조달", "정책 타임라인"]
-        alert["sectors"] = ["통신장비", "네트워크 장비", "보안장비", "중국 대체 공급망"]
-        alert["korea_value_chain"] = alert["sectors"]
-        alert["priced_in"] = "낮음~중간. 현재는 의견수렴 단계여서 최종 금지 범위와 시행일이 남았습니다."
-        alert["counter"] = "대상 장비가 제한적이거나 기존 승인 제품이 예외면 대체 수요가 작을 수 있습니다."
-        alert["failure_signal"] = "최종규칙, 대상 업체·제품, 시행일, 한국 기업 대체 수주가 없으면 테마성 반응에 그칩니다."
-        return
-    if "covered communications equipment" in text or ("covered list" in text and ("prohibit" in text or "importation" in text or "marketing" in text)):
+        if "covered communications equipment" in text or (
+            "covered list" in text
+            and ("prohibit" in text or "importation" in text or "marketing" in text)
+        ):
             return "FCC, 보안 위험 통신장비 수입·판매 제한 절차 공표"
         if "fcc" in source or "federal communications commission" in text:
             return "FCC, 통신 규제 문서 공표"
-        if "distribution transformer" in text or "electrical core steel" in text or "grain-oriented electrical steel" in text or "goes" in text or "amorphous" in text:
+        if (
+            "distribution transformer" in text
+            or "electrical core steel" in text
+            or "grain-oriented electrical steel" in text
+            or "goes" in text
+            or "amorphous" in text
+        ):
             return "미국, 변압기 효율규제 재검토"
         if "tariff" in text or "section 301" in text or "customs" in text:
             return "미국, 관세·통상 규정 공표"
         if "export control" in text or "entity list" in text:
             return "미국, 수출통제 규정 공표"
-        if "memorandum of cooperation" in text and ("small modular reactor" in text or "smr" in text):
+        if "memorandum of cooperation" in text and (
+            "small modular reactor" in text or "smr" in text
+        ):
             return "미·일·한, 제3국 SMR 배치 협력 MOC 체결"
         if "nuclear" in text or "reactor" in text:
             return "미국, 원전 정책 문서 공표"
@@ -398,7 +380,6 @@ def safe_title(alert: dict) -> str:
                 return "백악관, 정책 성명·브리핑 발표"
         return "미국 정책·규제 문서 공표"
     return title
-
 
 def display_source(source: object) -> str:
     raw = str(source or "source").strip()
@@ -647,6 +628,35 @@ def apply_router_overrides(alert: dict) -> None:
         alert["priced_in"] = "낮음~중간. FCC 국가안보 문서라 테마 반응은 가능하지만, 한국 기업의 직접 수주·인허가 노출이 확인되기 전에는 가격 변수로 약합니다."
         alert["counter"] = "규칙·절차 재검토 단계일 수 있어 특정 케이블 프로젝트의 승인·거절, 예산, 조달, 한국 기업 수혜가 확정된 것은 아닙니다."
         alert["failure_signal"] = "구체 라이선스 변경, 신규 심사 기준, 케이블 사업자 영향, 한국 기업 수주·공급망 노출이 확인되지 않으면 관찰 재료로만 처리합니다."
+        return
+    if is_fcc_upper_c_band_auction(alert):
+        alert["importance"] = "상"
+        alert["title_ko"] = "FCC, 상단 C대역 차세대 무선통신 주파수 경매 일정 공표"
+        alert["policy_plain_summary"] = "FCC가 상단 C대역 100MHz 이상 면허의 차세대 무선통신 경매 일정을 공표했습니다."
+        alert["investment_view"] = "중대역 주파수 공급은 미국 통신사의 5G·차세대망 CAPEX와 네트워크 장비 발주 시간표를 바꿀 수 있습니다."
+        alert["korea_market_impact"] = "한국장에서는 미국향 통신장비·안테나·RF 부품과 통신사 CAPEX 노출이 확인되는 기업만 봅니다."
+        alert["impacts"] = ["매출·마진·현금흐름", "시간표", "수급"]
+        alert["paths"] = ["주파수 경매", "통신사 CAPEX", "장비 발주", "정책 타임라인"]
+        alert["sectors"] = ["통신장비", "안테나/RF", "5G·차세대 무선통신"]
+        alert["korea_value_chain"] = alert["sectors"]
+        alert["priced_in"] = "낮음~중간. 경매 일정은 공식화됐지만 실제 장비 매출은 낙찰자와 구축계획 확인 뒤 반영됩니다."
+        alert["counter"] = "주파수 경매가 통신사 CAPEX 총액 증가가 아니라 기존 투자 재배분에 그칠 수 있습니다."
+        alert["failure_signal"] = "낙찰 결과, 통신사 CAPEX 상향, 장비 발주가 뒤따르지 않으면 직접 실적 재료는 약합니다."
+        return
+    if is_fcc_foreign_equipment_proposal(alert):
+        alert["importance"] = "상"
+        alert["status"] = "예비"
+        alert["title_ko"] = "FCC, 외국산 보안위험 통신장비 수입·판매 금지안 의견수렴"
+        alert["policy_plain_summary"] = "FCC가 국가안보 위험 외국산 통신장비의 수입·판매 금지안에 대한 의견수렴을 시작했습니다."
+        alert["investment_view"] = "금지 대상과 시행일이 확정되면 중국산 장비 배제와 미국 내 대체 공급망 주문이 바뀔 수 있습니다."
+        alert["korea_market_impact"] = "한국장에서는 미국향 통신·네트워크·보안장비 매출과 중국 대체 공급망 노출이 확인되는 기업만 봅니다."
+        alert["impacts"] = ["매출·마진·현금흐름", "수급", "시간표"]
+        alert["paths"] = ["수입 제한", "공급망 대체", "장비 조달", "정책 타임라인"]
+        alert["sectors"] = ["통신장비", "네트워크 장비", "보안장비", "중국 대체 공급망"]
+        alert["korea_value_chain"] = alert["sectors"]
+        alert["priced_in"] = "낮음~중간. 현재는 의견수렴 단계여서 최종 금지 범위와 시행일이 남았습니다."
+        alert["counter"] = "대상 장비가 제한적이거나 기존 승인 제품이 예외면 대체 수요가 작을 수 있습니다."
+        alert["failure_signal"] = "최종규칙, 대상 업체·제품, 시행일, 한국 기업 대체 수주가 없으면 테마성 반응에 그칩니다."
         return
     if "covered communications equipment" in text or ("covered list" in text and ("prohibit" in text or "importation" in text or "marketing" in text)):
         alert["title_ko"] = "FCC, 보안 위험 통신장비 수입·판매 제한 절차 공표"
