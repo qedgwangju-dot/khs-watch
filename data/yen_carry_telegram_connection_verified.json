@@ -4,12 +4,16 @@
   "telegram_message_id": 369,
   "smoke_workflow_run_id": 30705042547,
   "final_workflow_validation_run_id": 30705251286,
+  "usd_jpy_24h_validation_run_id": 30705485853,
   "checks": [
     "telegram_api_delivery",
     "python_compile",
     "threshold_tests",
     "futures_fallback_test",
     "duplicate_suppression_test",
-    "final_workflow_dry_run"
+    "final_workflow_dry_run",
+    "usd_jpy_24h_change_test",
+    "usd_jpy_24h_low_high_range_test",
+    "stale_data_no_alert_test"
   ]
 }
