@@ -11,46 +11,46 @@ from khs_article_detail import extract_article_detail
 
 
 CASES = (
-    ("NAVER, ?붾퉬?붿븘 ???1議?809??洹쒕え ?좎긽利앹옄 寃곗젙", "?좎긽利앹옄", "?섍툒"),
-    ("SK?섏씠?됱뒪, 10媛쒖궗? LTA ?κ린怨듦툒怨꾩빟 泥닿껐", "lta", "??踰꾨뒗 ?λ젰"),
-    ("肄붿뒪?? 2嫄곕옒???곗냽 留ㅻ룄 ?ъ씠?쒖뭅 諛쒕룞", "?ъ씠?쒖뭅", "?섍툒"),
-    ("肄붿뒪???쒗궥釉뚮젅?댁빱 1?④퀎 諛쒕룞", "?쒗궥釉뚮젅?댁빱", "?섍툒"),
-    ("援щ쭏紐⑦넗 洹쒕え 7.1 媛뺤쭊, TSMC 怨듭옣 以묐떒", "媛뺤쭊", "??踰꾨뒗 ?λ젰"),
-    ("10?꾨Ъ 誘멸뎅梨?湲덈━ 4.7%, ?몃읆??2湲?理쒓퀬", "誘멸뎅梨?, "?좎씤??),
-    ("?쇱꽦?꾧린, 10媛?怨좉컼怨?MLCC ?κ린怨듦툒怨꾩빟", "mlcc", "??踰꾨뒗 ?λ젰"),
-    ("誘멸뎅, ?멸뎅???대㉧?몄씠???섏엯 ?쒗븳", "?섏엯 ?쒗븳", "?좎씤??),
-    ("?붾퉬?붿븘, AI ?쒗솚湲덉쑖 ?곕젮 ?ъ젏??, "?쒗솚湲덉쑖", "??踰꾨뒗 ?λ젰"),
-    ("誘멸뎅, 湲濡쒕쾶?뚯슫?쒕━?ㅼ뿉 AI 愿묐컲?꾩껜 媛쒕컻鍮?3?듬떖??吏??, "媛쒕컻鍮?, "??踰꾨뒗 ?λ젰"),
-    ("以묎뎅 ?뺤튂援? ?깆옣 ?뷀솕 ????뺤콉 吏?먃룹옱??吏異??쎌냽", "?뺤튂援?, "?좎씤??),
-    ("援???곌툑, 援?궡二쇱떇 ?섏씡瑜?106% 湲곕줉", "援???곌툑", "?섍툒"),
-    ("援?퀬梨?湲덈━, 誘멸뎅 湲덈━ ?ы뙆???숇컲 ?곸듅", "援?퀬梨?, "?좎씤??),
-    ("LG?붿뒪?뚮젅?? 1.5議?援???깆옣????ъ옄 ?좎튂", "援???깆옣???, "??踰꾨뒗 ?λ젰"),
-    ("理쒗깭???뚯옣, SK?섏씠?됱뒪 二쇱떇 3620二?留ㅼ닔", "?대???吏곸젒留ㅼ닔", "?섍툒"),
-    ("?묓쁽??珥앷큵 ?꾨줈??? YG 二쇱떇 46留?940二??λ궡留ㅼ닔", "?대???吏곸젒留ㅼ닔", "?섍툒"),
+    ("NAVER, 엔비디아 대상 1조4809억 규모 유상증자 결정", "유상증자", "수급"),
+    ("SK하이닉스, 10개사와 LTA 장기공급계약 체결", "lta", "돈 버는 능력"),
+    ("코스피, 2거래일 연속 매도 사이드카 발동", "사이드카", "수급"),
+    ("코스닥 서킷브레이커 1단계 발동", "서킷브레이커", "수급"),
+    ("구마모토 규모 7.1 강진, TSMC 공장 중단", "강진", "돈 버는 능력"),
+    ("10년물 미국채 금리 4.7%, 트럼프 2기 최고", "미국채", "할인율"),
+    ("삼성전기, 10개 고객과 MLCC 장기공급계약", "mlcc", "돈 버는 능력"),
+    ("미국, 외국산 휴머노이드 수입 제한", "수입 제한", "할인율"),
+    ("엔비디아, AI 순환금융 우려 재점화", "순환금융", "돈 버는 능력"),
+    ("미국, 글로벌파운드리스에 AI 광반도체 개발비 3억달러 지원", "개발비", "돈 버는 능력"),
+    ("중국 정치국, 성장 둔화 대응 정책 지원·재정 지출 약속", "정치국", "할인율"),
+    ("국민연금, 국내주식 수익률 106% 기록", "국민연금", "수급"),
+    ("국고채 금리, 미국 금리 여파에 동반 상승", "국고채", "할인율"),
+    ("LG디스플레이, 1.5조 국민성장펀드 투자 유치", "국민성장펀드", "돈 버는 능력"),
+    ("최태원 회장, SK하이닉스 주식 3620주 매수", "내부자 직접매수", "수급"),
+    ("양현석 총괄 프로듀서, YG 주식 46만1940주 장내매수", "내부자 직접매수", "수급"),
     (
-        "?좎븞?利앷텒, ?⑥씪醫낅ぉ ?덈쾭由ъ? ETF 洹쒖젣 肄붿뒪??諛섎벑 怨꾧린",
-        "?⑥씪醫낅ぉ ?덈쾭由ъ?",
-        "?섍툒",
+        "유안타증권, 단일종목 레버리지 ETF 규제 코스닥 반등 계기",
+        "단일종목 레버리지",
+        "수급",
     ),
-    ("?몃읆?? ?ㅼ씠?꾨が?쑣룹꽍?졖룰??ㅒ룰뎄由?愿??硫댁젣 諛쒗몴", "愿??硫댁젣", "?좎씤??),
-    ("?쇱꽦?꾩옄, HBM4 留ㅼ텧 3諛?利앷?쨌HBM4E ?섑뵆 異쒗븯", "hbm4", "??踰꾨뒗 ?λ젰"),
-    ("LG AI?곌뎄?? 7500?듦컻 K-?묒궗??2.0 怨듦컻", "怨듦컻", "?쒓컙??),
-    ("LG CNS, ?곷컲湲???? 理쒕? 留ㅼ텧 2.8議곗썝", "留ㅼ텧", "??踰꾨뒗 ?λ젰"),
-    ("8???섎Т蹂댁쑀?깅줉 45媛쒖궗 1??078留뚯＜ ?댁젣", "?섎Т蹂댁쑀", "?섍툒"),
-    ("?⑥퐫???먰걧蹂? ?몃룄 CDSCO ?덈ぉ?덇? 沅뚭퀬", "?덈ぉ?덇?", "?쒓컙??),
-    ("?멸뎅??利앷텒嫄곕옒???명솚嫄곕옒 ?섎（ 1200?듬떖??, "?명솚嫄곕옒", "?섍툒"),
-    ("?ㅼ삦?쒖븘 ?곸뾽???쒖옣 ?덉긽 7% ?섑쉶쨌二쇱떇遺꾪븷", "?곸뾽??, "??踰꾨뒗 ?λ젰"),
-    ("AI ?④텒 寃쎌웳, 鍮낇뀒??AI ?ъ옄 1議곕떖??룹쟾???명봽???뺣?", "ai ?ъ옄", "??踰꾨뒗 ?λ젰"),
-    ("?⑥씪醫낅ぉ ?덈쾭由ъ? 洹쒖젣 泥ル궇 嫄곕옒?湲?12議곗썝???3議곗썝?濡?湲됯컧", "嫄곕옒?湲?, "?섍툒"),
-    ("7???섏텧 ?ㅼ쟻 989?듬떖??룸컲?꾩껜 ?섏텧 ??? 2??, "?섏텧 ?ㅼ쟻", "??踰꾨뒗 ?λ젰"),
-    ("誘??곗?, ??8??湲덈━寃곗젙 ?뚯쓽 異뺤냼 寃??, "?뚯쓽 異뺤냼", "?좎씤??),
-    ("誘??щТ遺, ?뷀솕 ?쎌꽭 ????섏쑉 媛쒖엯 ?뺥솴", "?섏쑉 媛쒖엯", "?좎씤??),
-    ("CXMT, D???앹궛 ?λ젰 ?⑥씠????30留뚯옣?쇰줈 利앹꽕", "?앹궛 ?λ젰", "??踰꾨뒗 ?λ젰"),
-    ("?꾨쭏議?AWS 留ㅼ텧쨌?대씪?곕뱶 ?깆옣, AI ?ъ옄 ?뺣?", "aws 留ㅼ텧", "??踰꾨뒗 ?λ젰"),
-    ("?몃읆?? ?대? 異붽? 怨듦꺽 ?꾨컯 寃쎄퀬쨌荑좎썾?댄듃 ?쒕줎 怨듦꺽", "異붽? 怨듦꺽", "?좎씤??),
-    ("?ㅻ젋?ㅽ궎, ?몃읆?꾩뿉 ?ㅽ?留곹겕 ?寃??뱀씤 ?붿껌", "?ㅽ?留곹겕", "?섍툒"),
-    ("媛???댁쟾, ?섎쭏??臾댁옣?댁젣쨌?됲솕 ?묒젙 ?쒗뿕?", "媛???댁쟾", "?좎씤??),
-    ("?⑥씪醫낅ぉ ?덈쾭由ъ? ETF 援?젙議곗궗 ?붽뎄", "援?젙議곗궗", "?섍툒"),
+    ("트럼프, 다이아몬드·석유·가스·구리 관세 면제 발표", "관세 면제", "할인율"),
+    ("삼성전자, HBM4 매출 3배 증가·HBM4E 샘플 출하", "hbm4", "돈 버는 능력"),
+    ("LG AI연구원, 7500억개 K-엑사원 2.0 공개", "공개", "시간표"),
+    ("LG CNS, 상반기 역대 최대 매출 2.8조원", "매출", "돈 버는 능력"),
+    ("8월 의무보유등록 45개사 1억8078만주 해제", "의무보유", "수급"),
+    ("온코닉 자큐보, 인도 CDSCO 품목허가 권고", "품목허가", "시간표"),
+    ("외국인 증권거래에 외환거래 하루 1200억달러", "외환거래", "수급"),
+    ("키옥시아 영업익 시장 예상 7% 하회·주식분할", "영업익", "돈 버는 능력"),
+    ("AI 패권 경쟁, 빅테크 AI 투자 1조달러·전력 인프라 확대", "ai 투자", "돈 버는 능력"),
+    ("단일종목 레버리지 규제 첫날 거래대금 12조원대서 3조원대로 급감", "거래대금", "수급"),
+    ("7월 수출 실적 989억달러·반도체 수출 역대 2위", "수출 실적", "돈 버는 능력"),
+    ("미 연준, 연 8회 금리결정 회의 축소 검토", "회의 축소", "할인율"),
+    ("미 재무부, 엔화 약세 대응 환율 개입 정황", "환율 개입", "할인율"),
+    ("CXMT, D램 생산 능력 웨이퍼 월 30만장으로 증설", "생산 능력", "돈 버는 능력"),
+    ("아마존 AWS 매출·클라우드 성장, AI 투자 확대", "aws 매출", "돈 버는 능력"),
+    ("트럼프, 이란 추가 공격 임박 경고·쿠웨이트 드론 공격", "추가 공격", "할인율"),
+    ("젤렌스키, 트럼프에 스타링크 타격 승인 요청", "스타링크", "수급"),
+    ("가자 휴전, 하마스 무장해제·평화 협정 시험대", "가자 휴전", "할인율"),
+    ("단일종목 레버리지 ETF 국정조사 요구", "국정조사", "수급"),
 )
 
 
@@ -107,8 +107,8 @@ def main() -> int:
         failures.append(f"missing_domains={sorted(missing_domains)}")
 
     if not radar.is_korean_business_row({
-        "source": "?댁떆??寃쎌젣",
-        "publisher": "?댁떆??,
+        "source": "뉴시스 경제",
+        "publisher": "뉴시스",
         "link": "https://www.newsis.com/view/example",
     }):
         failures.append("korean_business_source=newsis_not_routed")
@@ -116,7 +116,7 @@ def main() -> int:
         "source": "AP",
         "publisher": "AP",
         "link": "https://apnews.com/article/example",
-        "title": "?몃읆?? ?대? 異붽? 怨듦꺽 ?꾨컯 寃쎄퀬쨌荑좎썾?댄듃 ?쒕줎 怨듦꺽 蹂닿퀬",
+        "title": "트럼프, 이란 추가 공격 임박 경고·쿠웨이트 드론 공격 보고",
     }):
         failures.append("trusted_geopolitical_source=ap_not_routed")
 
@@ -133,29 +133,29 @@ def main() -> int:
         failures.append(f"missing_direct_sources={sorted(missing_direct_sources)}")
 
     search_names = {source[0] for source in radar.KOREAN_BUSINESS_SEARCH_SOURCES}
-    if "援?궡 寃쎌쁺吏꽷룹턀?二쇱＜ 吏곸젒留ㅼ닔" not in search_names:
-        failures.append("missing_search=援?궡 寃쎌쁺吏꽷룹턀?二쇱＜ 吏곸젒留ㅼ닔")
-    if "?⑥씪醫낅ぉ ?덈쾭由ъ? 洹쒖젣쨌肄붿뒪???섍툒" not in search_names:
-        failures.append("missing_search=?⑥씪醫낅ぉ ?덈쾭由ъ? 洹쒖젣쨌肄붿뒪???섍툒")
-    if "援?궡 ?湲곗뾽 ?꾨왂湲곗닠 異쒖옄쨌?ㅽ??몄뾽 ?ъ옄" not in search_names:
-        failures.append("missing_search=援?궡 ?湲곗뾽 ?꾨왂湲곗닠 異쒖옄쨌?ㅽ??몄뾽 ?ъ옄")
+    if "국내 경영진·최대주주 직접매수" not in search_names:
+        failures.append("missing_search=국내 경영진·최대주주 직접매수")
+    if "단일종목 레버리지 규제·코스닥 수급" not in search_names:
+        failures.append("missing_search=단일종목 레버리지 규제·코스닥 수급")
+    if "국내 대기업 전략기술 출자·스타트업 투자" not in search_names:
+        failures.append("missing_search=국내 대기업 전략기술 출자·스타트업 투자")
     for required_search in (
-        "湲곗뾽 ?ㅼ쟻쨌怨듦툒遺議굿룹떆?μ젏?좎쑉",
-        "AI 紐⑤뜽쨌?곗씠?곗꽱??援ъ텞",
-        "諛붿씠???덇?쨌?곸뾽??,
-        "?섍툒쨌?먮낯?됱궗쨌?명솚",
-        "?몃읆??愿?맞룹썝?먯옱쨌以묐룞",
-        "鍮낇뀒??AI ?ъ옄쨌諛섎룄泥는룹쟾???명봽??CAPEX",
-        "?⑥씪醫낅ぉ ?덈쾭由ъ? 洹쒖젣 ?쒗뻾?④낵쨌嫄곕옒湲됯컧",
-        "?쒓뎅 ?붽컙 ?섏텧쨌諛섎룄泥??섏텧쨌臾댁뿭?섏?",
-        "?곗? FOMC ?뚯쓽泥닿퀎쨌?뺤콉寃곗젙 ?쇱젙",
-        "誘멸뎅쨌?쇰낯 ?섏쑉媛쒖엯쨌?듯솕怨듭“",
-        "以묎뎅 DRAM ?앹궛?λ젰쨌硫붾え由?利앹꽕",
-        "?섏씠?쇱뒪耳?쇰윭 ?ㅼ쟻쨌?대씪?곕뱶 ?깆옣쨌AI CAPEX",
-        "?몃읆???대?쨌嫄명봽 援곗궗湲댁옣",
-        "?고겕?쇱씠???ㅽ?留곹겕 援곗궗?ъ슜 ?뱀씤",
-        "媛???댁쟾쨌?섎쭏??臾댁옣?댁젣",
-        "?⑥씪醫낅ぉ ?덈쾭由ъ? 援?젙議곗궗쨌泥?Ц??,
+        "기업 실적·공급부족·시장점유율",
+        "AI 모델·데이터센터 구축",
+        "바이오 허가·상업화",
+        "수급·자본행사·외환",
+        "트럼프 관세·원자재·중동",
+        "빅테크 AI 투자·반도체·전력 인프라 CAPEX",
+        "단일종목 레버리지 규제 시행효과·거래급감",
+        "한국 월간 수출·반도체 수출·무역수지",
+        "연준 FOMC 회의체계·정책결정 일정",
+        "미국·일본 환율개입·통화공조",
+        "중국 DRAM 생산능력·메모리 증설",
+        "하이퍼스케일러 실적·클라우드 성장·AI CAPEX",
+        "트럼프 이란·걸프 군사긴장",
+        "우크라이나 스타링크 군사사용 승인",
+        "가자 휴전·하마스 무장해제",
+        "단일종목 레버리지 국정조사·청문회",
     ):
         if required_search not in search_names:
             failures.append(f"missing_search={required_search}")
@@ -171,11 +171,11 @@ def main() -> int:
         failures.append("missing_direct_articles=single_stock_leverage_rule_effect")
 
     leverage_effect_a = {
-        "news": "?덈쾭由ъ? 洹쒖젣 泥ル궇 嫄곕옒 ?섎슍?쇺?2議곗썝???3議곗썝?濡?湲됯컧",
+        "news": "레버리지 규제 첫날 거래 ‘뚝’…12조원대서 3조원대로 급감",
         "published": now,
     }
     leverage_effect_b = {
-        "news": "?⑥씪?덈쾭由ъ? ?덊긽湲??곹뼢 泥ル궇??굅?섎웾 媛먯냼, 媛쒕???留ㅻ룄",
+        "news": "단일레버리지 예탁금 상향 첫날…거래량 감소, 개미는 매도",
         "published": now,
     }
     if radar.alert_dedup_key(leverage_effect_a) != radar.alert_dedup_key(leverage_effect_b):
@@ -183,7 +183,7 @@ def main() -> int:
 
     if not any(
         row.get("url") == "https://www.mk.co.kr/article/12113486"
-        and row.get("publisher") == "留ㅼ씪寃쎌젣"
+        and row.get("publisher") == "매일경제"
         for row in radar.coverage.DIRECT_ARTICLES
     ):
         failures.append("missing_direct_article=bigtech_ai_capex_one_trillion")
@@ -208,47 +208,47 @@ def main() -> int:
         failures.append("missing_direct_article=samsung_strategic_technology_funds_amp")
 
     duplicate_a = {
-        "news": "?쇱꽦?꾧린 2遺꾧린 ?곸뾽?댁씡 4404?듭썝, 10媛?怨좉컼怨?MLCC ?κ린怨꾩빟",
+        "news": "삼성전기 2분기 영업이익 4404억원, 10개 고객과 MLCC 장기계약",
         "published": now,
     }
     duplicate_b = {
-        "news": "?쇱꽦?꾧린, ?섏씠?쇱뒪耳?쇰윭 10?ш납怨?MLCC LTA 泥닿껐",
+        "news": "삼성전기, 하이퍼스케일러 10여곳과 MLCC LTA 체결",
         "published": now,
     }
     if radar.alert_dedup_key(duplicate_a) != radar.alert_dedup_key(duplicate_b):
         failures.append("semantic_duplicate=mlcc_lta")
 
-    structured_title = "?붾퉬?붿븘, ?ㅽ뵂AI ?곗씠?곗꽱?곗뿉 2500?듬떖??蹂댁쬆 ?쇱쓽"
+    structured_title = "엔비디아, 오픈AI 데이터센터에 2500억달러 보증 논의"
     structured_body = (
-        "?붾퉬?붿븘媛 ?ㅽ뵂AI???ㅽ븯?댁삤 ?곗씠?곗꽱???먭툑議곕떖??"
-        "2500?듬떖??洹쒕え??蹂댁쬆???쒓났?섎뒗 諛⑹븞???쇱쓽?섍퀬 ?덈떎. "
-        "?꾨줈?앺듃??10湲곌????洹쒕え?대ŉ 援ъ껜 議곌굔? ?뺤젙?섏? ?딆븯?? "
-        "蹂댁쬆???깆궗?섎㈃ ?ъ옄?깃툒 ?좎슜?깃툒???녿뒗 ?ㅽ뵂AI??議곕떖 議곌굔??"
-        "媛쒖꽑?????덉?留? 諛섎룄泥?援щℓ 鍮꾩슜? ?대쾲 蹂댁쬆 ??곸뿉 ?ы븿?섏? ?딅뒗?? "
-        "?꾩껜 ?ъ뾽鍮꾩? ?꾨젰 諛곕텇, ?꾩감 怨꾩빟? ?꾩냽 ?묒긽?먯꽌 ?뺤젙???덉젙?대떎."
+        "엔비디아가 오픈AI의 오하이오 데이터센터 자금조달에 "
+        "2500억달러 규모의 보증을 제공하는 방안을 논의하고 있다. "
+        "프로젝트는 10기가와트 규모이며 구체 조건은 확정되지 않았다. "
+        "보증이 성사되면 투자등급 신용등급이 없는 오픈AI의 조달 조건이 "
+        "개선될 수 있지만, 반도체 구매 비용은 이번 보증 대상에 포함되지 않는다. "
+        "전체 사업비와 전력 배분, 임차 계약은 후속 협상에서 확정될 예정이다."
     )
     structured_html = f"""
     <html><head><script type="application/ld+json">
     {{"@context":"https://schema.org","@type":"NewsArticle",
       "headline":"{structured_title}","articleBody":"{structured_body}",
       "datePublished":"2026-07-27T15:37:00+09:00"}}
-    </script></head><body><div>?숈쟻 湲곗궗 蹂몃Ц</div></body></html>
+    </script></head><body><div>동적 기사 본문</div></body></html>
     """
     detail = extract_article_detail(structured_html, structured_title)
-    if not detail.get("body_verified") or "2500?듬떖?? not in detail.get("body", ""):
+    if not detail.get("body_verified") or "2500억달러" not in detail.get("body", ""):
         failures.append("structured_article_body=not_verified")
 
     insider_core = radar.detailed_article_core(
-        "理쒗깭???뚯옣, SK?섏씠?됱뒪 二쇱떇 3620二?留ㅼ닔",
-        "理쒗깭??SK洹몃９ ?뚯옣??SK?섏씠?됱뒪 二쇱떇 3620二쇰? ?λ궡 留ㅼ닔?덈떎.",
+        "최태원 회장, SK하이닉스 주식 3620주 매수",
+        "최태원 SK그룹 회장이 SK하이닉스 주식 3620주를 장내 매수했다.",
     )
-    if "理쒗깭?? not in insider_core or "3620二? not in insider_core or "媛쒖씤 紐낆쓽" not in insider_core:
+    if "최태원" not in insider_core or "3620주" not in insider_core or "개인 명의" not in insider_core:
         failures.append(f"insider_purchase_core={insider_core}")
 
-    viral_title = '"?쇰줎 癒몄뒪?ъ씤 以??뚯븯????SNS ?ш뎔 訝?\'?꾪뵆媛깆뼱\' 諛붾퉬???ъ옣'
-    contaminated_core = "?쇱꽦?꾩옄 ?ъ옣 171留?000?? 10二쇰? 媛쒖씤 紐낆쓽濡?留ㅼ닔?덉뒿?덈떎."
+    viral_title = '"일론 머스크인 줄 알았네"… SNS 달군 中 \'도플갱어\' 바비큐 사장'
+    contaminated_core = "삼성전자 사장 171만8000원, 10주를 개인 명의로 매수했습니다."
     contaminated_sentences = [
-        "?쇱꽦?꾩옄 ?ъ옣???쇱꽦?꾩옄 二쇱떇 10二쇰? 171留?000?먯뿉 媛쒖씤 紐낆쓽濡?留ㅼ닔?덈떎."
+        "삼성전자 사장이 삼성전자 주식 10주를 171만8000원에 개인 명의로 매수했다."
     ]
     if radar.insider_purchase_fact(viral_title, contaminated_sentences):
         failures.append("viral_related_article_insider_fact=not_blocked")
@@ -256,18 +256,18 @@ def main() -> int:
         failures.append("viral_generic_role_alignment=not_blocked")
 
     reporter_prefixed_core = radar.detailed_article_core(
-        "?뚯떆, FOMC ?뺣??뚯쓽 ??8??異뺤냼 寃??,
+        "워시, FOMC 정례회의 연 8회 축소 검토",
         (
-            "[?대뜲?쇰━ 源?ㅼ? 湲곗옄] 耳鍮??뚯떆 ?곗? ?섏옣???꾩옱 ??8?뚯씤 "
-            "?곕갑怨듦컻?쒖옣?꾩썝???뺣??뚯쓽 ?잛닔瑜?以꾩씠??諛⑹븞??寃?좏븯怨??덈떎."
+            "[이데일리 김윤지 기자] 케빈 워시 연준 의장이 현재 연 8회인 "
+            "연방공개시장위원회 정례회의 횟수를 줄이는 방안을 검토하고 있다."
         ),
     )
-    if "湲곗옄" in reporter_prefixed_core or "?대뜲?쇰━" in reporter_prefixed_core:
+    if "기자" in reporter_prefixed_core or "이데일리" in reporter_prefixed_core:
         failures.append(f"reporter_boilerplate_not_removed={reporter_prefixed_core}")
 
     viral_alert = {
-        "source": "援?궡 ?좊ː留ㅼ껜 吏곸젒媛먯떆",
-        "publisher": "?댁떆??,
+        "source": "국내 신뢰매체 직접감시",
+        "publisher": "뉴시스",
         "news": viral_title,
         "source_title": viral_title,
         "source_abstract": "",
@@ -283,47 +283,47 @@ def main() -> int:
         failures.append("viral_low_value_filter=not_blocked")
 
     entertainment_core = radar.detailed_article_core(
-        "YG ?묓쁽??200?돠텷YP 諛뺤쭊??50???먯궗二?留ㅼ엯",
+        "YG 양현석 200억·JYP 박진영 50억 자사주 매입",
         (
-            "?묓쁽??YG 珥앷큵 ?꾨줈??쒓? 200?듭썝???ㅼ뿬 ?먯궗 二쇱떇 "
-            "46留?940二쇰? ?λ궡 留ㅼ닔?덈떎. "
-            "諛뺤쭊??JYP CCO媛 50?듭썝???ㅼ뿬 ?먯궗 二쇱떇 "
-            "6留?00二쇰? ?λ궡 留ㅼ닔?덈떎."
+            "양현석 YG 총괄 프로듀서가 200억원을 들여 자사 주식 "
+            "46만1940주를 장내 매수했다. "
+            "박진영 JYP CCO가 50억원을 들여 자사 주식 "
+            "6만200주를 장내 매수했다."
         ),
     )
-    for fact in ("?묓쁽??, "200?듭썝", "46留?940二?, "諛뺤쭊??, "50?듭썝", "6留?00二?):
+    for fact in ("양현석", "200억원", "46만1940주", "박진영", "50억원", "6만200주"):
         if fact not in entertainment_core:
             failures.append(f"entertainment_insider_core_missing={fact}:{entertainment_core}")
 
     company_buyback_core = radar.detailed_article_core(
-        "?꾨?李? 1議곗썝 洹쒕え ?먯궗二?痍⑤뱷쨌?뚭컖",
-        "?꾨?李⑤뒗 ?댁궗?뚯뿉??1議곗썝 洹쒕え???먯궗二쇰? 痍⑤뱷???꾨웾 ?뚭컖?섍린濡?寃곗젙?덈떎.",
+        "현대차, 1조원 규모 자사주 취득·소각",
+        "현대차는 이사회에서 1조원 규모의 자사주를 취득해 전량 소각하기로 결정했다.",
     )
-    if "媛쒖씤 紐낆쓽" in company_buyback_core:
+    if "개인 명의" in company_buyback_core:
         failures.append(f"company_buyback_misclassified={company_buyback_core}")
 
     leverage_core = radar.detailed_article_core(
-        "?좎븞?利앷텒, ?⑥씪醫낅ぉ ?덈쾭由ъ? ETF 洹쒖젣 肄붿뒪??諛섎벑 怨꾧린",
+        "유안타증권, 단일종목 레버리지 ETF 규제 코스닥 반등 계기",
         (
-            "?ㅻ뒗 31?쇰????⑥씪醫낅ぉ ?덈쾭由ъ? ETF 洹쒖젣媛 ?쒗뻾?쒕떎. "
-            "?좎븞?利앷텒 ?곌뎄?먯? ???諛섎룄泥??덈쾭由ъ? ?곹뭹???먭툑 ?⑥쑉怨?"
-            "?묎렐?깆씠 ??븘吏硫?肄붿뒪???곕웾 ?깆옣二쇱쓽 ?곷???湲고쉶鍮꾩슜??"
-            "?뺤긽?붾맆 ???덈떎怨?遺꾩꽍?덈떎."
+            "오는 31일부터 단일종목 레버리지 ETF 규제가 시행된다. "
+            "유안타증권 연구원은 대형 반도체 레버리지 상품의 자금 효율과 "
+            "접근성이 낮아지면 코스닥 우량 성장주의 상대적 기회비용이 "
+            "정상화될 수 있다고 분석했다."
         ),
     )
-    for fact in ("31?쇰???, "???諛섎룄泥?, "肄붿뒪???곕웾 ?깆옣二?, "?섍툒"):
+    for fact in ("31일부터", "대형 반도체", "코스닥 우량 성장주", "수급"):
         if fact not in leverage_core:
             failures.append(f"leverage_kosdaq_core_missing={fact}:{leverage_core}")
 
     leverage_effect_row = {
-        "source": "援?궡 ?좊ː留ㅼ껜 吏곸젒媛먯떆",
-        "publisher": "援???쇰낫",
-        "title": "?덈쾭由ъ? 洹쒖젣 泥ル궇 嫄곕옒 ?섎슍?쇺?2議곗썝???3議곗썝?濡?湲됯컧",
-        "source_title": "?덈쾭由ъ? 洹쒖젣 泥ル궇 嫄곕옒 ?섎슍?쇺?2議곗썝???3議곗썝?濡?湲됯컧",
+        "source": "국내 신뢰매체 직접감시",
+        "publisher": "국민일보",
+        "title": "레버리지 규제 첫날 거래 ‘뚝’…12조원대서 3조원대로 급감",
+        "source_title": "레버리지 규제 첫날 거래 ‘뚝’…12조원대서 3조원대로 급감",
         "source_body": (
-            "?쇱꽦?꾩옄? SK?섏씠?됱뒪 ?⑥씪醫낅ぉ ?덈쾭由ъ? ETF 湲곕낯?덊긽湲덉씠 "
-            "1000留뚯썝?먯꽌 3000留뚯썝?쇰줈 ?곹뼢??泥ル궇 愿??ETF 嫄곕옒?≪씠 "
-            "12議곗썝??먯꽌 3議곗썝?濡?湲됯컧?덈떎."
+            "삼성전자와 SK하이닉스 단일종목 레버리지 ETF 기본예탁금이 "
+            "1000만원에서 3000만원으로 상향된 첫날 관련 ETF 거래액이 "
+            "12조원대에서 3조원대로 급감했다."
         ),
         "source_abstract": "",
         "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000000424&cp=nv",
@@ -342,23 +342,146 @@ def main() -> int:
         failures.append("single_stock_leverage_rule_effect_alert=missing")
     else:
         effect_core = str(leverage_effect_alert.get("telegram_core_fact") or "")
-        for fact in ("1000留뚯썝", "3000留뚯썝", "12議곗썝?", "3議곗썝?", "湲됯컧"):
+        for fact in ("1000만원", "3000만원", "12조원대", "3조원대", "급감"):
             if fact not in effect_core:
                 failures.append(
                     f"single_stock_leverage_rule_effect_core_missing={fact}:{effect_core}"
                 )
-        if "?좎븞?利앷텒" in effect_core or "肄붿뒪???곕웾 ?깆옣二? in effect_core:
+        if "유안타증권" in effect_core or "코스닥 우량 성장주" in effect_core:
             failures.append(
                 f"single_stock_leverage_rule_effect_stale_template={effect_core}"
             )
 
     emergency_leverage_row = {
-        "source": "?댄닾?곗씠 寃쎌젣",
-        "publisher": "?댄닾?곗씠",
-        "title": "湲덉쑖?밴뎅, 利앹떆 湲됰???湲닿툒議곗튂沅??뺣낫 異붿쭊??떒?쇱쥌紐??덈쾭由ъ? ?뺤“以",
-        "source_title": "湲덉쑖?밴뎅, 利앹떆 湲됰???湲닿툒議곗튂沅??뺣낫 異붿쭊??떒?쇱쥌紐??덈쾭由ъ? ?뺤“以",
+        "source": "이투데이 경제",
+        "publisher": "이투데이",
+        "title": "금융당국, 증시 급변에 긴급조치권 확보 추진…단일종목 레버리지 정조준",
+        "source_title": "금융당국, 증시 급변에 긴급조치권 확보 추진…단일종목 레버리지 정조준",
         "source_body": (
-            "湲덉쑖?밴뎅??利앹떆 湲됰? ???⑥씪醫낅ぉ ?덈쾭由ъ? ETF 嫄…1641 tokens truncated…ot radar.has_decision_impact(hyperscaler_normalized):
+            "금융당국이 증시 급변 때 단일종목 레버리지 ETF 거래를 제한할 수 있는 "
+            "긴급조치권 확보를 추진한다. 기본예탁금 상향에 이은 추가 규제 검토다."
+        ),
+        "source_abstract": "단일종목 레버리지 ETF 긴급조치권 확보 추진",
+        "link": "https://www.etoday.co.kr/news/view/example",
+        "published": now,
+        "body_verified": True,
+    }
+    emergency_text = " ".join(
+        str(emergency_leverage_row.get(key) or "")
+        for key in ("title", "source_body", "source_abstract")
+    ).lower()
+    emergency_alert = radar.build_single_stock_leverage_rule_alert(
+        emergency_leverage_row, now, emergency_text
+    )
+    if not emergency_alert:
+        failures.append("single_stock_leverage_emergency_alert=missing")
+    elif not radar.source_output_aligned(emergency_alert):
+        failures.append(
+            "single_stock_leverage_emergency_alignment=source_body_mismatch:"
+            + str(emergency_alert.get("telegram_core_fact") or "")
+        )
+
+    samsung_fund_row = {
+        "source": "국내 신뢰매체 직접감시",
+        "publisher": "조선비즈",
+        "title": "삼성전자, 반도체 스타트업 투자·기술 확보에 8000억 출자",
+        "source_title": "삼성전자, 반도체 스타트업 투자·기술 확보에 8000억 출자",
+        "source_body": (
+            "30일 삼성전자 공시에 따르면 DS 부문은 SVIC 82호에 4950억원을 출자한다. "
+            "DX 부문은 SVIC 83호에 2970억원을 출자한다. "
+            "두 펀드는 다음 달부터 각각 13년과 10년간 운용되며 "
+            "반도체·AI·로봇 스타트업 기술 확보에 활용된다."
+        ),
+        "source_abstract": (
+            "삼성전자 공시에 따르면 SVIC 82호 4950억원, "
+            "SVIC 83호 2970억원 출자가 확정됐다."
+        ),
+        "link": (
+            "https://biz.chosun.com/it-science/ict/2026/07/30/"
+            "E5GYIUCGO5HNPGVB6P7ZT3IBWA/"
+        ),
+        "published": now,
+        "body_verified": True,
+        "_pinned_direct_article": True,
+    }
+    samsung_fund_alert = radar.build_verified_korean_business_alert(samsung_fund_row, now)
+    if not samsung_fund_alert:
+        failures.append("samsung_strategic_fund_alert=missing")
+    else:
+        samsung_core = str(samsung_fund_alert.get("telegram_core_fact") or "")
+        for fact in ("4,950억원", "2,970억원", "7,920억원", "13년", "10년"):
+            if fact not in samsung_core:
+                failures.append(
+                    f"samsung_strategic_fund_core_missing={fact}:{samsung_core}"
+                )
+        if not samsung_fund_alert.get("_pinned_direct_article"):
+            failures.append("samsung_strategic_fund_direct_priority=missing")
+        if samsung_fund_alert.get("impacts") != ["돈 버는 능력", "시간표"]:
+            failures.append(
+                f"samsung_strategic_fund_impacts={samsung_fund_alert.get('impacts')}"
+            )
+
+    sovereign_row = {
+        "source": "뉴시스 경제",
+        "publisher": "뉴시스",
+        "title": "정부, 'K-국부펀드'로 전략적 투자 나선다…20조+α 규모",
+        "source_title": "정부, 'K-국부펀드'로 전략적 투자 나선다…20조+α 규모",
+        "source_body": (
+            "정부가 20조원+α 규모의 K-국부펀드를 조성해 국가전략산업에 "
+            "전략적으로 투자하고 민간 자금을 연계할 계획이다. "
+            "구체적인 출자 구조와 투자 대상, 집행 일정은 후속 발표한다."
+        ),
+        "link": "https://news.google.com/rss/articles/example-sovereign-fund",
+        "published": now,
+        "body_verified": False,
+        "_article_verification_failed": True,
+    }
+    sovereign_alert = radar.build_title_verified_korean_business_alert(sovereign_row, now)
+    if not sovereign_alert:
+        failures.append("korea_sovereign_fund_alert=missing")
+    else:
+        if not {"돈 버는 능력", "수급", "시간표"}.issubset(set(sovereign_alert.get("impacts") or [])):
+            failures.append(f"korea_sovereign_fund_impacts={sovereign_alert.get('impacts')}")
+        sovereign_normalized = radar.normalize_alert_for_output(sovereign_alert)
+        if not radar.has_decision_impact(sovereign_normalized):
+            failures.append(
+                "korea_sovereign_fund_decision_impact=blocked:"
+                f"{sovereign_normalized.get('guardrail_note')}:"
+                f"kind={sovereign_normalized.get('korean_business_kind')}:"
+                f"sectors={sovereign_normalized.get('sectors')}"
+            )
+        sovereign_selected = radar.quality_display_alerts([sovereign_alert], 1)
+        if not sovereign_selected:
+            failures.append(
+                "korea_sovereign_fund_final_selection=blocked:"
+                f"{sovereign_alert.get('_exclusion_reason')}:"
+                f"{sovereign_alert.get('guardrail_note')}:"
+                f"{sovereign_alert.get('_decision_debug')}"
+            )
+
+    hyperscaler_row = {
+        "source": "뉴시스 경제",
+        "publisher": "뉴시스",
+        "title": "아마존, AWS 37% 성장에 자신감…AI 투자 314조원 확대",
+        "source_title": "아마존, AWS 37% 성장에 자신감…AI 투자 314조원 확대",
+        "source_body": (
+            "아마존은 AWS 매출이 37% 성장했다고 밝혔다. "
+            "AI 데이터센터와 클라우드 설비에 314조원을 투자해 "
+            "GPU와 서버, 전력 인프라를 확대할 계획이다."
+        ),
+        "link": "https://news.google.com/rss/articles/example-aws-capex",
+        "published": now,
+        "body_verified": False,
+        "_article_verification_failed": True,
+    }
+    hyperscaler_alert = radar.build_title_verified_korean_business_alert(hyperscaler_row, now)
+    if not hyperscaler_alert:
+        failures.append("hyperscaler_ai_capex_alert=missing")
+    else:
+        if not {"돈 버는 능력", "수급", "시간표"}.issubset(set(hyperscaler_alert.get("impacts") or [])):
+            failures.append(f"hyperscaler_ai_capex_impacts={hyperscaler_alert.get('impacts')}")
+        hyperscaler_normalized = radar.normalize_alert_for_output(hyperscaler_alert)
+        if not radar.has_decision_impact(hyperscaler_normalized):
             failures.append(
                 "hyperscaler_ai_capex_decision_impact=blocked:"
                 f"{hyperscaler_normalized.get('guardrail_note')}:"
@@ -375,10 +498,10 @@ def main() -> int:
             )
 
     title_only_row = {
-        "source": "?쒖슱?좊Ц",
-        "publisher": "?쒖슱?좊Ц",
-        "title": "?몃읆?? ?ㅼ씠?꾨が?쑣룹꽍?졖룰??ㅒ룰뎄由?愿??硫댁젣 諛쒗몴",
-        "source_title": "?몃읆?? ?ㅼ씠?꾨が?쑣룹꽍?졖룰??ㅒ룰뎄由?愿??硫댁젣 諛쒗몴",
+        "source": "서울신문",
+        "publisher": "서울신문",
+        "title": "트럼프, 다이아몬드·석유·가스·구리 관세 면제 발표",
+        "source_title": "트럼프, 다이아몬드·석유·가스·구리 관세 면제 발표",
         "source_body": "",
         "source_abstract": "",
         "link": "https://www.seoul.co.kr/news/international/example",
@@ -390,12 +513,12 @@ def main() -> int:
     if not title_only_alert:
         failures.append("trusted_title_material_event=missing")
     else:
-        if title_only_alert.get("status") != "?덈퉬":
+        if title_only_alert.get("status") != "예비":
             failures.append(f"trusted_title_status={title_only_alert.get('status')}")
         if not title_only_alert.get("title_fact_verified") or title_only_alert.get("body_verified"):
             failures.append("trusted_title_verification_flags=invalid")
         if not str(title_only_alert.get("telegram_core_fact") or "").startswith(
-            "怨듦컻???쒕ぉ???곕Ⅴ硫?
+            "공개된 제목에 따르면"
         ):
             failures.append(
                 f"trusted_title_core={title_only_alert.get('telegram_core_fact')}"
@@ -403,11 +526,11 @@ def main() -> int:
         mismatched_alert = dict(title_only_alert)
         mismatched_alert.update(
             {
-                "news": "援щ쭏紐⑦넗 洹쒕え 7.1 媛뺤쭊, TSMC 怨듭옣 以묐떒",
-                "original_news": "援щ쭏紐⑦넗 洹쒕え 7.1 媛뺤쭊, TSMC 怨듭옣 以묐떒",
-                "source_title": "援щ쭏紐⑦넗 洹쒕え 7.1 媛뺤쭊, TSMC 怨듭옣 以묐떒",
-                "telegram_core_fact": "?멸뎅?몄씠 ?쇱꽦?꾩옄 二쇱떇???쒕ℓ?섑뻽?듬땲??",
-                "policy_plain_summary": "?멸뎅?몄씠 ?쇱꽦?꾩옄 二쇱떇???쒕ℓ?섑뻽?듬땲??",
+                "news": "구마모토 규모 7.1 강진, TSMC 공장 중단",
+                "original_news": "구마모토 규모 7.1 강진, TSMC 공장 중단",
+                "source_title": "구마모토 규모 7.1 강진, TSMC 공장 중단",
+                "telegram_core_fact": "외국인이 삼성전자 주식을 순매수했습니다.",
+                "policy_plain_summary": "외국인이 삼성전자 주식을 순매수했습니다.",
             }
         )
         synced = radar.compact_quality_final_alerts(
@@ -421,10 +544,10 @@ def main() -> int:
             )
 
     vague_title_row = {
-        "source": "吏?붾꽬肄붾━??,
-        "publisher": "吏?붾꽬肄붾━??,
-        "title": "?곗씠?곗꽱?곌? 援?? 寃쎌웳?μ씠??,
-        "source_title": "?곗씠?곗꽱?곌? 援?? 寃쎌웳?μ씠??,
+        "source": "지디넷코리아",
+        "publisher": "지디넷코리아",
+        "title": "데이터센터가 국가 경쟁력이다",
+        "source_title": "데이터센터가 국가 경쟁력이다",
         "source_body": "",
         "link": "https://zdnet.co.kr/view/?no=example",
         "published": now,
@@ -436,61 +559,61 @@ def main() -> int:
 
     opinion_alert = {
         "korean_business_news": True,
-        "source_title": "?쒕컲?꾩껜 ?ъ옄, ?섏떖?????ъ꽌 ?뺤떊?????붿븘?쇄앪?렇寃??몄젣?쇨퉴??,
-        "news": "?쒕컲?꾩껜 ?ъ옄, ?섏떖?????ъ꽌 ?뺤떊?????붿븘?쇄앪?렇寃??몄젣?쇨퉴??,
+        "source_title": "“반도체 투자, 의심할 때 사서 확신할 때 팔아야”…그게 언제일까요",
+        "news": "“반도체 투자, 의심할 때 사서 확신할 때 팔아야”…그게 언제일까요",
     }
     if not radar.is_low_value_market_commentary(opinion_alert):
         failures.append("low_value_market_commentary=not_blocked")
 
     leverage_opinion_alert = {
         "korean_business_news": True,
-        "source_title": "'ETF ?꾨쾭吏' ??寃쎄퀬??떒?쇱쥌紐??덈쾭由ъ????ъ옄?섏? ?딅뒗 寃껋씠 理쒖꽑",
-        "news": "'ETF ?꾨쾭吏' ??寃쎄퀬??떒?쇱쥌紐??덈쾭由ъ????ъ옄?섏? ?딅뒗 寃껋씠 理쒖꽑",
+        "source_title": "'ETF 아버지' 또 경고…단일종목 레버리지에 투자하지 않는 것이 최선",
+        "news": "'ETF 아버지' 또 경고…단일종목 레버리지에 투자하지 않는 것이 최선",
     }
     if not radar.is_low_value_market_commentary(leverage_opinion_alert):
         failures.append("leverage_opinion_commentary=not_blocked")
 
     retrospective_alert = {
         "korean_business_news": True,
-        "source_title": "醫뗭? 轅덉쓣 袁몄뿀?듬땲?ㅲ?븳???섏씡瑜?106% 援???곌툑, 吏湲덉??",
-        "news": "醫뗭? 轅덉쓣 袁몄뿀?듬땲?ㅲ?븳???섏씡瑜?106% 援???곌툑, 吏湲덉??",
+        "source_title": "좋은 꿈을 꾸었습니다…한때 수익률 106% 국민연금, 지금은?",
+        "news": "좋은 꿈을 꾸었습니다…한때 수익률 106% 국민연금, 지금은?",
     }
     if not radar.is_low_value_market_commentary(retrospective_alert):
         failures.append("retrospective_clickbait=not_blocked")
 
     if not radar.korean_business_source_allowed({
-        "publisher": "?댁떆??,
-        "source": "?댁떆??寃쎌젣",
+        "publisher": "뉴시스",
+        "source": "뉴시스 경제",
         "link": "https://news.google.com/rss/articles/example",
     }):
         failures.append("trusted_publisher_google_news_link=blocked")
 
-    glyph_amounts = radar.extract_foreign_amounts("7???섏텧 988.9?드폌쨌諛섎룄泥?400?드폌 ?뚰뙆")
+    glyph_amounts = radar.extract_foreign_amounts("7월 수출 988.9억弗·반도체 400억弗 돌파")
     if len(glyph_amounts) != 2 or any(item.get("code") != "USD" for item in glyph_amounts):
         failures.append(f"dollar_glyph_not_normalized={glyph_amounts}")
     glyph_core = radar.apply_krw_conversions(
-        "7???섏텧 988.9?드폌??湲곕줉?덉뒿?덈떎.",
+        "7월 수출 988.9억弗을 기록했습니다.",
         {
             "amounts": [
                 {
-                    "original": "988.9?듬떖??,
+                    "original": "988.9억달러",
                     "krw_value": 137_000_000_000_000,
-                    "krw_text": "137議곗썝",
+                    "krw_text": "137조원",
                 }
             ]
         },
     )
-    if "988.9?듬떖????137議곗썝)" not in glyph_core or "凉? in glyph_core:
+    if "988.9억달러(약 137조원)" not in glyph_core or "弗" in glyph_core:
         failures.append(f"dollar_glyph_conversion_core={glyph_core}")
 
     export_row = {
-        "source": "?쒓뎅寃쎌젣",
-        "publisher": "?쒓뎅寃쎌젣",
-        "title": "7???섏텧 989?듬떖?щ줈 62.8% 利앷?쨌諛섎룄泥?410?듬떖????? 2??,
-        "source_title": "7???섏텧 989?듬떖?щ줈 62.8% 利앷?쨌諛섎룄泥?410?듬떖????? 2??,
+        "source": "한국경제",
+        "publisher": "한국경제",
+        "title": "7월 수출 989억달러로 62.8% 증가·반도체 410억달러 역대 2위",
+        "source_title": "7월 수출 989억달러로 62.8% 증가·반도체 410억달러 역대 2위",
         "source_body": (
-            "7???섏텧? 989?듬떖?щ줈 ?꾨뀈 ?鍮?62.8% 利앷??덈떎. "
-            "諛섎룄泥??섏텧? 410?듬떖?щ줈 179% ?섏뼱 ??? ?붽컙 2?꾨? 湲곕줉?덈떎."
+            "7월 수출은 989억달러로 전년 대비 62.8% 증가했다. "
+            "반도체 수출은 410억달러로 179% 늘어 역대 월간 2위를 기록했다."
         ),
         "link": "https://www.hankyung.com/article/example-exports",
         "published": now,
@@ -501,15 +624,15 @@ def main() -> int:
         failures.append(f"korea_monthly_exports_alert={export_alert}")
     else:
         export_core = str(export_alert.get("telegram_core_fact") or "")
-        for fact in ("989?듬떖??, "62.8%", "410?듬떖??, "179%"):
+        for fact in ("989억달러", "62.8%", "410억달러", "179%"):
             if fact not in export_core:
                 failures.append(f"korea_monthly_exports_core_missing={fact}:{export_core}")
 
     fed_title_row = {
-        "source": "癒몃땲?щ뜲??,
-        "publisher": "癒몃땲?щ뜲??,
-        "title": "?뚯떆 誘??곗? ?섏옣, ??8??湲덈━ 寃곗젙 ?뚯쓽 異뺤냼 寃??,
-        "source_title": "?뚯떆 誘??곗? ?섏옣, ??8??湲덈━ 寃곗젙 ?뚯쓽 異뺤냼 寃??,
+        "source": "머니투데이",
+        "publisher": "머니투데이",
+        "title": "워시 미 연준 의장, 연 8회 금리 결정 회의 축소 검토",
+        "source_title": "워시 미 연준 의장, 연 8회 금리 결정 회의 축소 검토",
         "source_body": "",
         "link": "https://www.mt.co.kr/world/example-fed-meetings",
         "published": now,
@@ -520,15 +643,15 @@ def main() -> int:
     if not fed_title_alert or fed_title_alert.get("korean_business_kind") != "fed_meeting_structure":
         failures.append(f"fed_meeting_title_fallback={fed_title_alert}")
     else:
-        if fed_title_alert.get("status") != "?덈퉬":
+        if fed_title_alert.get("status") != "예비":
             failures.append(f"fed_meeting_title_status={fed_title_alert.get('status')}")
 
     fx_row = {
-        "source": "?댄닾?곗씠",
-        "publisher": "?댄닾?곗씠",
-        "title": "?쇰낯, 60議곗썝 ?덊뙉 ?섏쑉 媛쒖엯 異붿젙쨌誘몄씪 怨듭“???뺤궛",
-        "source_title": "?쇰낯, 60議곗썝 ?덊뙉 ?섏쑉 媛쒖엯 異붿젙쨌誘몄씪 怨듭“???뺤궛",
-        "source_body": "?뷀솕 ?쎌꽭瑜?留됯린 ?꾪빐 ?쇰낯 ?щТ遺媛 ?명솚?쒖옣??媛쒖엯???뺥솴???ъ갑?먮떎.",
+        "source": "이투데이",
+        "publisher": "이투데이",
+        "title": "일본, 60조원 안팎 환율 개입 추정·미일 공조설 확산",
+        "source_title": "일본, 60조원 안팎 환율 개입 추정·미일 공조설 확산",
+        "source_body": "엔화 약세를 막기 위해 일본 재무부가 외환시장에 개입한 정황이 포착됐다.",
         "link": "https://www.etoday.co.kr/news/view/example-fx",
         "published": now,
         "body_verified": True,
@@ -538,11 +661,11 @@ def main() -> int:
         failures.append(f"fx_intervention_alert={fx_alert}")
 
     china_memory_row = {
-        "source": "?꾩떆?꾧꼍??,
-        "publisher": "?꾩떆?꾧꼍??,
-        "title": "CXMT, D???앹궛 ?λ젰 ?⑥씠????30留뚯옣?쇰줈 利앹꽕",
-        "source_title": "CXMT, D???앹궛 ?λ젰 ?⑥씠????30留뚯옣?쇰줈 利앹꽕",
-        "source_body": "CXMT媛 2028?꾧퉴吏 D???⑥씠?????앹궛 ?λ젰???뺣???怨꾪쉷?대떎.",
+        "source": "아시아경제",
+        "publisher": "아시아경제",
+        "title": "CXMT, D램 생산 능력 웨이퍼 월 30만장으로 증설",
+        "source_title": "CXMT, D램 생산 능력 웨이퍼 월 30만장으로 증설",
+        "source_body": "CXMT가 2028년까지 D램 웨이퍼 월 생산 능력을 확대할 계획이다.",
         "link": "https://view.asiae.co.kr/article/example-cxmt-capacity",
         "published": now,
         "body_verified": True,
@@ -554,11 +677,11 @@ def main() -> int:
     iran_row = {
         "source": "AP",
         "publisher": "AP",
-        "title": "?몃읆?? ?대? 異붽? 怨듦꺽 ?꾨컯 寃쎄퀬??퓼?⑥씠?몃뒗 ?쒕줎 怨듦꺽 蹂닿퀬",
-        "source_title": "?몃읆?? ?대? 異붽? 怨듦꺽 ?꾨컯 寃쎄퀬??퓼?⑥씠?몃뒗 ?쒕줎 怨듦꺽 蹂닿퀬",
+        "title": "트럼프, 이란 추가 공격 임박 경고…쿠웨이트는 드론 공격 보고",
+        "source_title": "트럼프, 이란 추가 공격 임박 경고…쿠웨이트는 드론 공격 보고",
         "source_body": (
-            "?몃읆????듬졊? ?대??????異붽? 怨듦꺽???꾨컯?덈떎怨?寃쎄퀬?덈떎. "
-            "荑좎썾?댄듃 ?밴뎅? ?먭뎅 ?쒖꽕??寃⑤깷???쒕줎 怨듦꺽??蹂닿퀬?덈떎."
+            "트럼프 대통령은 이란에 대한 추가 공격이 임박했다고 경고했다. "
+            "쿠웨이트 당국은 자국 시설을 겨냥한 드론 공격을 보고했다."
         ),
         "link": "https://apnews.com/article/example-iran-kuwait",
         "published": now,
@@ -569,15 +692,15 @@ def main() -> int:
         failures.append(f"iran_gulf_attack_alert={iran_alert}")
     else:
         iran_core = str(iran_alert.get("telegram_core_fact") or "")
-        if "異붽? 怨듦꺽" not in iran_core or "荑좎썾?댄듃" not in iran_core or "?쒕줎 怨듦꺽" not in iran_core:
+        if "추가 공격" not in iran_core or "쿠웨이트" not in iran_core or "드론 공격" not in iran_core:
             failures.append(f"iran_gulf_attack_core={iran_core}")
 
     starlink_row = {
         "source": "Reuters",
         "publisher": "Reuters",
-        "title": "?ㅻ젋?ㅽ궎, ?몃읆?꾩뿉 ?ъ떆???寃⑹슜 ?ㅽ?留곹겕 ?뱀씤 吏???붿껌",
-        "source_title": "?ㅻ젋?ㅽ궎, ?몃읆?꾩뿉 ?ъ떆???寃⑹슜 ?ㅽ?留곹겕 ?뱀씤 吏???붿껌",
-        "source_body": "?ㅻ젋?ㅽ궎 ??듬졊? ?몃읆????듬졊?먭쾶 ?ъ떆???寃?吏?먯쓣 ?꾪븳 ?ㅽ?留곹겕 ?ъ슜 ?뱀씤???꾩??щ씪怨??붿껌?덈떎.",
+        "title": "젤렌스키, 트럼프에 러시아 타격용 스타링크 승인 지원 요청",
+        "source_title": "젤렌스키, 트럼프에 러시아 타격용 스타링크 승인 지원 요청",
+        "source_body": "젤렌스키 대통령은 트럼프 대통령에게 러시아 타격 지원을 위한 스타링크 사용 승인을 도와달라고 요청했다.",
         "link": "https://www.reuters.com/world/example-starlink-request",
         "published": now,
         "body_verified": True,
@@ -586,18 +709,18 @@ def main() -> int:
     if not starlink_alert or starlink_alert.get("korean_business_kind") != "ukraine_starlink_military_request":
         failures.append(f"ukraine_starlink_alert={starlink_alert}")
     else:
-        if starlink_alert.get("status") != "?덈퉬":
+        if starlink_alert.get("status") != "예비":
             failures.append(f"ukraine_starlink_status={starlink_alert.get('status')}")
         starlink_core = str(starlink_alert.get("telegram_core_fact") or "")
-        if "?붿껌" not in starlink_core or "?뱀씤?덈떎" in starlink_core:
+        if "요청" not in starlink_core or "승인했다" in starlink_core:
             failures.append(f"ukraine_starlink_core={starlink_core}")
 
     gaza_row = {
         "source": "AP",
         "publisher": "AP",
-        "title": "媛???댁쟾 ?꾩썝?? ?섎쭏??臾댁옣?댁젣쨌?됲솕 ?묒젙 ?쒗뿕?",
-        "source_title": "媛???댁쟾 ?꾩썝?? ?섎쭏??臾댁옣?댁젣쨌?됲솕 ?묒젙 ?쒗뿕?",
-        "source_body": "2二쇨컙??媛???댁쟾? ?섎쭏??臾댁옣?댁젣? ?됲솕 ?묒젙 媛쒖떆瑜?紐⑺몴濡??쒕떎.",
+        "title": "가자 휴전 위원회, 하마스 무장해제·평화 협정 시험대",
+        "source_title": "가자 휴전 위원회, 하마스 무장해제·평화 협정 시험대",
+        "source_body": "2주간의 가자 휴전은 하마스 무장해제와 평화 협정 개시를 목표로 한다.",
         "link": "https://apnews.com/article/example-gaza-ceasefire",
         "published": now,
         "body_verified": True,
@@ -607,11 +730,11 @@ def main() -> int:
         failures.append(f"gaza_ceasefire_alert={gaza_alert}")
 
     inquiry_row = {
-        "source": "硫뷀듃濡쒖떊臾?,
-        "publisher": "硫뷀듃濡쒖떊臾?,
-        "title": "援???섑옒, ?⑥씪醫낅ぉ ?덈쾭由ъ? ETF 援?젙議곗궗 ?붽뎄",
-        "source_title": "援???섑옒, ?⑥씪醫낅ぉ ?덈쾭由ъ? ETF 援?젙議곗궗 ?붽뎄",
-        "source_body": "援???섑옒? ?⑥씪醫낅ぉ ?덈쾭由ъ? ETF ?ы깭??援?젙議곗궗瑜??붽뎄?섍쿋?ㅺ퀬 諛앺삍??",
+        "source": "메트로신문",
+        "publisher": "메트로신문",
+        "title": "국민의힘, 단일종목 레버리지 ETF 국정조사 요구",
+        "source_title": "국민의힘, 단일종목 레버리지 ETF 국정조사 요구",
+        "source_body": "국민의힘은 단일종목 레버리지 ETF 사태의 국정조사를 요구하겠다고 밝혔다.",
         "link": "https://www.metroseoul.co.kr/article/example-leverage-inquiry",
         "published": now,
         "body_verified": True,
@@ -619,19 +742,19 @@ def main() -> int:
     inquiry_alert = radar.build_verified_korean_business_alert(inquiry_row, now)
     if not inquiry_alert or inquiry_alert.get("korean_business_kind") != "single_stock_leverage_parliamentary_inquiry":
         failures.append(f"leverage_parliamentary_inquiry_alert={inquiry_alert}")
-    elif inquiry_alert.get("status") != "?덈퉬":
+    elif inquiry_alert.get("status") != "예비":
         failures.append(f"leverage_parliamentary_inquiry_status={inquiry_alert.get('status')}")
 
     for noisy, expected in (
         (
-            "fn 怨듭쑀 怨듭쑀?섍린 湲?먰겕湲?湲?먰겕湲??ㅼ젙 ?꾨┛??援щ룆 援щ룆 利앷텒 利앷텒?쇰컲 "
-            "肄붿뒪?쇨? 10.2% 湲됰벑?덈떎.",
-            "肄붿뒪?쇨? 10.2% 湲됰벑?덈떎.",
+            "fn 공유 공유하기 글자크기 글자크기 설정 프린트 구독 구독 증권 증권일반 "
+            "코스피가 10.2% 급등했다.",
+            "코스피가 10.2% 급등했다.",
         ),
         (
-            "?섏씠?ㅻ턿 X(?몄쐞?? 硫붿씪 URL 蹂듭궗 ?묎쾶 蹂댄넻 ?ш쾶 "
-            "湲덉쑖?밴뎅???⑥씪醫낅ぉ ?덈쾭由ъ? 洹쒖젣瑜??쒗뻾?쒕떎.",
-            "湲덉쑖?밴뎅???⑥씪醫낅ぉ ?덈쾭由ъ? 洹쒖젣瑜??쒗뻾?쒕떎.",
+            "페이스북 X(트위터) 메일 URL 복사 작게 보통 크게 "
+            "금융당국이 단일종목 레버리지 규제를 시행한다.",
+            "금융당국이 단일종목 레버리지 규제를 시행한다.",
         ),
     ):
         cleaned = radar.clean_article_summary_text(noisy)
@@ -639,84 +762,84 @@ def main() -> int:
             failures.append(f"article_ui_noise_not_removed={cleaned}")
 
     insider_core = radar.insider_purchase_fact(
-        "理쒗깭???뚯옣, SK?섏씠?됱뒪 二쇱떇 3620二?留ㅼ닔",
+        "최태원 회장, SK하이닉스 주식 3620주 매수",
         [
-            "SK?섏씠?됱뒪??理쒕?二쇱＜?깆냼?좎＜?앸??숈떊怨좎꽌瑜??듯빐 "
-            "理쒗깭???뚯옣??3620二쇰? 媛쒖씤 紐낆쓽濡?留ㅼ닔?덈떎怨?諛앺삍??"
+            "SK하이닉스는 최대주주등소유주식변동신고서를 통해 "
+            "최태원 회장이 3620주를 개인 명의로 매수했다고 밝혔다."
         ],
     )
-    if not insider_core.startswith("理쒗깭???뚯옣 3620二?):
+    if not insider_core.startswith("최태원 회장 3620주"):
         failures.append(f"insider_buyer_prefix_polluted={insider_core}")
 
     lta_core = radar.detailed_article_core(
-        "SK?섏씠?됱뒪, AI 硫붾え由??섏슂 媛뺤꽭 ??10媛?怨좉컼?ъ? ?κ린怨듦툒怨꾩빟 泥닿껐",
+        "SK하이닉스, AI 메모리 수요 강세 속 10개 고객사와 장기공급계약 체결",
         (
-            "SK?섏씠?됱뒪媛 10媛?怨좉컼?ъ? AI 硫붾え由??κ린怨듦툒怨꾩빟??泥닿껐?덈떎. "
-            "愿??留ㅼ텧? 24議곗썝?쇰줈 蹂대룄?먮떎."
+            "SK하이닉스가 10개 고객사와 AI 메모리 장기공급계약을 체결했다. "
+            "관련 매출은 24조원으로 보도됐다."
         ),
     )
-    for fact in ("10媛?怨좉컼??, "?κ린怨듦툒怨꾩빟", "24議곗썝"):
+    for fact in ("10개 고객사", "장기공급계약", "24조원"):
         if fact not in lta_core:
             failures.append(f"lta_compact_core_missing={fact}:{lta_core}")
 
     growth_core = radar.detailed_article_core(
-        "援???깆옣??? OLED 珥덇꺽李?LG?붿뒪?뚮젅?댁뿉 1.5議??由щ?異?,
+        "국민성장펀드, OLED 초격차 LG디스플레이에 1.5조 저리대출",
         (
-            "援???깆옣??쒓? LG?붿뒪?뚮젅?댁뿉 1.5議곗썝 ?由щ?異쒖쓣 吏?먰븳?? "
-            "HBM 怨듦툒留?媛뺥솕瑜??꾪빐 ?뚰겕?숈뿉??500?듭썝???由??異쒗븳??"
+            "국민성장펀드가 LG디스플레이에 1.5조원 저리대출을 지원한다. "
+            "HBM 공급망 강화를 위해 테크윙에도 500억원을 저리 대출한다."
         ),
     )
-    for fact in ("LG?붿뒪?뚮젅?댁뿉 1.5議곗썝", "?뚰겕?숈뿉 500?듭썝", "OLED쨌HBM"):
+    for fact in ("LG디스플레이에 1.5조원", "테크윙에 500억원", "OLED·HBM"):
         if fact not in growth_core:
             failures.append(f"growth_fund_compact_core_missing={fact}:{growth_core}")
 
     buy_sidecar_core = radar.detailed_article_core(
-        "[?띾낫]肄붿뒪?? 10% ?섎뒗 湲됰벑?몄뿉 留ㅼ닔 ?ъ씠?쒖뭅 諛쒕룞",
+        "[속보]코스피, 10% 넘는 급등세에 매수 사이드카 발동",
         (
-            "肄붿뒪?쇨? 10.2% 湲됰벑?덈떎. 肄붿뒪??00?좊Ъ 湲됰벑?쇰줈 ?꾨줈洹몃옩 "
-            "留ㅼ닔?멸? ?⑤젰??5遺꾧컙 ?뺤??섎뒗 留ㅼ닔 ?ъ씠?쒖뭅媛 諛쒕룞?먮떎."
+            "코스피가 10.2% 급등했다. 코스피200선물 급등으로 프로그램 "
+            "매수호가 효력을 5분간 정지하는 매수 사이드카가 발동됐다."
         ),
     )
-    if "留ㅼ닔 ?ъ씠?쒖뭅" not in buy_sidecar_core or "5遺꾧컙" not in buy_sidecar_core:
+    if "매수 사이드카" not in buy_sidecar_core or "5분간" not in buy_sidecar_core:
         failures.append(f"buy_sidecar_compact_core_invalid={buy_sidecar_core}")
-    if any(term in buy_sidecar_core for term in ("怨듭쑀?섍린", "湲?먰겕湲?, "?꾨┛??, "援щ룆")):
+    if any(term in buy_sidecar_core for term in ("공유하기", "글자크기", "프린트", "구독")):
         failures.append(f"buy_sidecar_boilerplate_leaked={buy_sidecar_core}")
 
     duplicate_insider_core = radar.detailed_article_core(
-        "理쒗깭???뚯옣, SK?섏씠?됱뒪 二쇱떇 3620二?留ㅼ닔",
+        "최태원 회장, SK하이닉스 주식 3620주 매수",
         (
-            "理쒗깭??SK洹몃９ ?뚯옣??SK?섏씠?됱뒪 二쇱떇 3620二쇰? 留ㅼ닔?덈떎. "
-            "理??뚯옣??媛쒖씤 紐낆쓽濡?3620二쇰? 痍⑤뱷?덈떎怨?怨듭떆?덈떎."
+            "최태원 SK그룹 회장이 SK하이닉스 주식 3620주를 매수했다. "
+            "최 회장이 개인 명의로 3620주를 취득했다고 공시했다."
         ),
     )
-    if duplicate_insider_core.count("3620二?) != 1:
+    if duplicate_insider_core.count("3620주") != 1:
         failures.append(f"duplicate_insider_purchase_not_removed={duplicate_insider_core}")
 
     mismatch_errors = radar.compact_alert_block_errors(
-        "1) [以?| ?덈퉬] ?쇰낯 媛뺤쭊 吏곹썑 湲곗뾽 諛⑹옱 ?덉젏\n"
-        "- ?듭떖: 肄붿뒪??湲됰벑?쇰줈 ?꾨줈洹몃옩 留ㅼ닔?멸?瑜?5遺꾧컙 ?뺤??섎뒗 留ㅼ닔 ?ъ씠?쒖뭅媛 諛쒕룞?먮떎.\n"
-        "- 異쒖쿂: ?먮Ц ?댁뒪蹂닿린"
+        "1) [중 | 예비] 일본 강진 직후 기업 방재 허점\n"
+        "- 핵심: 코스피 급등으로 프로그램 매수호가를 5분간 정지하는 매수 사이드카가 발동됐다.\n"
+        "- 출처: 원문 뉴스보기"
     )
     if "title_core_mismatch" not in mismatch_errors:
         failures.append(f"title_core_mismatch_not_blocked={mismatch_errors}")
 
     repaired_core = radar.complete_prose_text(
-        "誘멸뎅??AI ?곗씠?곗꽱?곗슜 愿묐컲?꾩껜 媛쒕컻鍮?吏?먯쓣 ?뺣???,
+        "미국이 AI 데이터센터용 광반도체 개발비 지원을 확대…",
         limit=radar.GAMEJOA_CORE_MAX_CHARS,
     )
-    if "?? in repaired_core or "..." in repaired_core:
+    if "…" in repaired_core or "..." in repaired_core:
         failures.append(f"compact_core_ellipsis_not_repaired={repaired_core}")
     if radar.compact_alert_block_errors(
-        "1) [??| ?뺤젙] 誘멸뎅, AI 愿묐컲?꾩껜 媛쒕컻 吏???뺣?\n"
-        f"- ?듭떖: {repaired_core}\n"
-        "- 異쒖쿂: ?먮Ц ?댁뒪蹂닿린"
+        "1) [상 | 확정] 미국, AI 광반도체 개발 지원 확대\n"
+        f"- 핵심: {repaired_core}\n"
+        "- 출처: 원문 뉴스보기"
     ):
         failures.append(f"repaired_compact_core_rejected={repaired_core}")
 
     malformed_errors = radar.compact_alert_block_errors(
-        "1) [??| ?뺤젙] 誘멸뎅, AI 愿묐컲?꾩껜 媛쒕컻 吏???뺣?\n"
-        "- ?듭떖: 誘멸뎅??AI ?곗씠?곗꽱?곗슜 愿묐컲?꾩껜 媛쒕컻鍮?吏?먯쓣 ?뺣???n"
-        "- 異쒖쿂: ?먮Ц ?댁뒪蹂닿린"
+        "1) [상 | 확정] 미국, AI 광반도체 개발 지원 확대\n"
+        "- 핵심: 미국이 AI 데이터센터용 광반도체 개발비 지원을 확대…\n"
+        "- 출처: 원문 뉴스보기"
     )
     if "truncated_core" not in malformed_errors:
         failures.append(f"malformed_compact_core_not_detected={malformed_errors}")
@@ -732,4 +855,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
