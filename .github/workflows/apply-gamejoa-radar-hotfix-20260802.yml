@@ -6,6 +6,8 @@ on:
     paths:
       - ".github/workflows/apply-gamejoa-radar-hotfix-20260802.yml"
   workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
