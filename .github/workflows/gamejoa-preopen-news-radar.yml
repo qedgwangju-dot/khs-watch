@@ -76,16 +76,6 @@ jobs:
         with:
           python-version: "3.12"
 
-')+len('      # GAMEJOA_HOTFIX_20260802_END\\n'); p.write_text(s[:a]+s[b:])"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add scripts/gamejoa_preopen_news_radar_full_compact_runner.py scripts/verify_gamejoa_news_coverage_contract.py .github/workflows/gamejoa-preopen-news-radar.yml
-          git rm .github/hotfixes/gamejoa-radar-preflight-20260802.patch
-          git rm .github/workflows/apply-gamejoa-radar-hotfix-20260802.yml
-          git commit -m "Fix GAMEJOA radar preflight and leverage coverage"
-          git pull --rebase origin main
-          git push origin main
-      # GAMEJOA_HOTFIX_20260802_END
 
       - name: Verify GAMEJOA delivery contract
         run: |
@@ -171,3 +161,4 @@ jobs:
             out/gamejoa_preopen_news_radar_title.txt
             out/gamejoa_preopen_news_radar_delivery.json
           if-no-files-found: ignore
+
