@@ -76,16 +76,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      # GAMEJOA_HOTFIX_20260802_BEGIN
-      - name: Apply and persist verified GAMEJOA radar hotfix
-        if: ${{ hashFiles('.github/hotfixes/gamejoa-radar-preflight-20260802.patch') != '' }}
-        run: |
-          git apply --3way --whitespace=fix .github/hotfixes/gamejoa-radar-preflight-20260802.patch
-          python scripts/verify_gamejoa_news_coverage_contract.py | tee /tmp/hotfix-coverage.log
-          ! grep -E "failed:|=failed|Traceback|AssertionError" /tmp/hotfix-coverage.log
-          python scripts/verify_gamejoa_delivery_contract.py | tee /tmp/hotfix-delivery.log
-          ! grep -E "failed:|=failed|Traceback|AssertionError" /tmp/hotfix-delivery.log
-          python -c "from pathlib import Path; p=Path('.github/workflows/gamejoa-preopen-news-radar.yml'); s=p.read_text(); a=s.index('      # GAMEJOA_HOTFIX_20260802_BEGIN'); b=s.index('      # GAMEJOA_HOTFIX_20260802_END')+len('      # GAMEJOA_HOTFIX_20260802_END\\n'); p.write_text(s[:a]+s[b:])"
+')+len('      # GAMEJOA_HOTFIX_20260802_END\\n'); p.write_text(s[:a]+s[b:])"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add scripts/gamejoa_preopen_news_radar_full_compact_runner.py scripts/verify_gamejoa_news_coverage_contract.py .github/workflows/gamejoa-preopen-news-radar.yml
