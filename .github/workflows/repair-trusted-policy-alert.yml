@@ -1,0 +1,111 @@
+name: Repair trusted policy alert
+
+on:
+  push:
+    paths:
+      - ".github/workflows/repair-trusted-policy-alert.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Apply source-faithful alert patch
+        shell: python
+        run: |
+          from pathlib import Path
+
+          watch = Path("scripts/khs_trusted_policy_news_watch.py")
+          text = watch.read_text(encoding="utf-8")
+          marker = '    if ("iran" in low or "이란" in low) and any(term in low for term in ("negot", "talk", "deal", "contact", "reached out", "agreement", "협상", "연락")):\n'
+          branch = '''    if (
+              "iran" in low
+              and any(term in low for term in ("hold off", "held off", "pause", "delay"))
+              and any(term in low for term in ("attack", "strike"))
+              and any(term in low for term in ("deal", "agreement"))
+          ):
+              return {
+                  **common,
+                  "revision": "trump-iran-attack-holdoff-deal-ko-v1",
+                  "title": "트럼프, 신속한 합의 기대하며 이란 추가 공격 보류",
+                  "core": "트럼프는 신속한 합의를 기대해 이란 추가 공격을 보류했습니다. 조건부 유예입니다.",
+                  "investment": "추가 공격 유예는 중동 위험프리미엄을 낮출 수 있지만 합의가 지연되면 재공격 위험이 남습니다.",
+                  "korea": "정유·화학 원가, 해운·항공 운임, 방산과 원/달러 반응을 함께 확인합니다.",
+                  "impacts": "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표",
+                  "paths": "지정학 리스크, 유가·운임, 환율, 정책 타임라인",
+                  "sectors": "정유/화학, 해운, 항공/운송, 방산/지정학",
+                  "failure": "신속한 합의나 공식 협상 일정이 확인되지 않고 추가 공격이 재개되면 완화 재료가 소멸합니다.",
+              }
+          '''
+          assert marker in text
+          text = text.replace(marker, branch + marker, 1)
+          old = 'f"🚨 신뢰외신 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}"'
+          assert text.count(old) == 2
+          text = text.replace(old, 'f"{now:%Y년 %m월 %d일 %H:%M KST}"')
+          watch.write_text(text, encoding="utf-8")
+
+          verify = Path("scripts/verify_khs_policy_delivery_contract.py")
+          text = verify.read_text(encoding="utf-8")
+          call = "    assert_trusted_iran_hormuz_escalation_reaches_policy_lane()\n"
+          assert call in text
+          text = text.replace(call, call + "    assert_trusted_trump_iran_holdoff_summary_and_header()\n", 1)
+          marker = "\ndef assert_trusted_policy_news_story_fingerprint_allows_intraday_updates() -> None:\n"
+          test = '''
+          def assert_trusted_trump_iran_holdoff_summary_and_header() -> None:
+              rule = next(
+                  rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+                  if rule.key == "trump_direct_policy_remarks_watch"
+              )
+              item = {
+                  "title": "Trump says he will hold off on fresh Iran attack in hope of quick deal - Reuters",
+                  "source": "Reuters",
+                  "published_kst": "2026-08-02T07:33:00+09:00",
+                  "link": "https://news.google.com/rss/articles/reuters-trump-iran-holdoff-fixture",
+                  "priority": 8,
+              }
+              rendered = khs_trusted_policy_news_watch.render_alert(
+                  rule,
+                  [item],
+                  dt.datetime(2026, 8, 2, 12, 29, tzinfo=ZoneInfo("Asia/Seoul")),
+              )
+              lines = rendered.splitlines()
+              if not lines or lines[0] != "2026년 08월 02일 12:29 KST":
+                  raise AssertionError("trusted-policy body header is not date/time only")
+              for expected in (
+                  "트럼프, 신속한 합의 기대하며 이란 추가 공격 보류",
+                  "트럼프는 신속한 합의를 기대해 이란 추가 공격을 보류했습니다. 조건부 유예입니다.",
+                  "Reuters",
+              ):
+                  if expected not in rendered:
+                      raise AssertionError(f"Trump Iran holdoff alert missing: {expected}")
+              if "신뢰외신 정책·규제 고충격 워치" in lines[0]:
+                  raise AssertionError("trusted-policy body header still contains watch name")
+
+          '''
+          assert marker in text
+          text = text.replace(marker, "\n" + test + marker.lstrip("\n"), 1)
+          text = text.replace(
+              '"🚨 신뢰외신 정책·규제 고충격 워치 · 2026년 07월 23일 20:00 KST",',
+              '"2026년 07월 23일 20:00 KST",',
+              1,
+          )
+          verify.write_text(text, encoding="utf-8")
+      - name: Verify
+        run: |
+          python -m py_compile scripts/khs_trusted_policy_news_watch.py scripts/verify_khs_policy_delivery_contract.py
+          python scripts/verify_khs_policy_delivery_contract.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/khs_trusted_policy_news_watch.py scripts/verify_khs_policy_delivery_contract.py
+          git commit -m "Fix trusted policy Iran summary and body header"
+          git push origin HEAD:main
