@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+­r‡^Ñf¥–Ø¦{^,yÊ'vÃ®¶›­#!/usr/bin/env python3
 """KHS trusted policy-news watch.
 
 This lane is intentionally separate from the official-source policy watcher.
@@ -251,448 +251,26 @@ STORY_RULES = (
         sectors="ì² ê°•/ê°•ê´€, EUí–¥ ìˆ˜ì¶œì£¼, ìžë™ì°¨ê°•íŒ/ì¡°ì„ í›„íŒ, ê´€ì„¸Â·ì¿¼í„° ì •ì±…",
         impacts=("ëˆ ë²„ëŠ” ëŠ¥ë ¥", "ìˆ˜ê¸‰", "ì‹œê°„í‘œ"),
         paths=("ì´ìµ", "ë¬´ì—­ê·œì œ", "ì •ì±… íƒ€ìž„ë¼ì¸", "ìˆ˜ê¸‰"),
-        follow_up="í•µì‹¬ì€ ê·œì œ ì™„í™”ê°€ ì‹¤ì œ EU ê´€ë³´Â·ì§‘í–‰ìœ„ ë¬¸ì„œì™€ í’ˆëª©ë³„ ì¿¼í„°ë¡œ í™•ì •ë˜ëŠ”ì§€ìž…ë‹ˆë‹¤. í¬ìŠ¤ì½”í™€ë”©ìŠ¤Â·í˜„ëŒ€ì œì² Â·ì„¸ì•„ì œê°• ë“± ì² ê°•/ê°•ê´€ ìˆ˜ì¶œì£¼ì™€ EUí–¥ ë…¸ì¶œ ì¢…ëª©ì˜ ê°€ê²©Â·ìˆ˜ê¸‰ ë°˜ì‘ì„ ìž¬í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤.",
-    ),
-    StoryRule(
-        key="eu_korea_trade_regulation_watch",
-        title="EU, í•œêµ­ ì˜í–¥ ë¬´ì—­ê·œì œÂ·ê´€ì„¸Â·ì¿¼í„° ì •ì±… ì‹ í˜¸",
-        google_queries=(
-            "Reuters European Union South Korea tariff quota safeguard anti-dumping regulation",
-            "Bloomberg EU South Korea trade regulation tariff quota customs duty",
-            "European Commission South Korea trade regulation tariff quota safeguard",
-            "\"EU\" \"South Korea\" tariff quota safeguard anti-dumping",
-            "\"ìœ ëŸ½ì—°í•©\" \"í•œêµ­\" ê´€ì„¸ ì¿¼í„° ì„¸ì´í”„ê°€ë“œ ë°˜ë¤í•‘ ê·œì œ",
-        ),
-        required_groups=(
-            ("eu", "european union", "european commission", "ìœ ëŸ½ì—°í•©", "ìœ ëŸ½", "euì§‘í–‰ìœ„"),
-            ("korea", "south korea", "korean", "í•œêµ­", "í•œêµ­ì‚°"),
-            ("tariff", "quota", "safeguard", "anti-dumping", "duty", "customs", "regulation", "import", "export", "ê´€ì„¸", "ì¿¼í„°", "ì„¸ì´í”„ê°€ë“œ", "ë°˜ë¤í•‘", "ê·œì œ", "ìˆ˜ìž…", "ìˆ˜ì¶œ", "ì™„í™”", "ê°•í™”"),
-        ),
-        core="EUë°œ ë¬´ì—­ê·œì œÂ·ê´€ì„¸Â·ì¿¼í„°Â·ë°˜ë¤í•‘ ì •ì±…ì´ í•œêµ­ ìˆ˜ì¶œ í’ˆëª©ì˜ ê°€ê²©ê²½ìŸë ¥ê³¼ ë¬¼ëŸ‰ ì¡°ê±´ì„ ë°”ê¿€ ìˆ˜ ìžˆëŠ” ì‹ ë¢° ë³´ë„/ê³µì‹ ì‹ í˜¸ìž…ë‹ˆë‹¤.",
-        impact="EUí–¥ ìˆ˜ì¶œì£¼, ì² ê°•/í™”í•™/ë°°í„°ë¦¬/ìžë™ì°¨/ì¡°ì„ , ê´€ì„¸Â·ì¿¼í„° ì •ì±… | ëˆ ë²„ëŠ” ëŠ¥ë ¥Â·ìˆ˜ê¸‰Â·ì‹œê°„í‘œ",
-        point="í’ˆëª©Â·ì„¸ìœ¨Â·ì¿¼í„°Â·ì‹œí–‰ì¼ì´ ê³µì‹í™”ë˜ë©´ í•œêµ­ ìˆ˜ì¶œê¸°ì—…ì˜ ë§ˆì§„, ì£¼ë¬¸ ì´ì „, ë°¸ë¥˜ì²´ì¸ ìˆ˜ê¸‰ ê¸°ëŒ€ê°€ ë™ì‹œì— ë°”ë€” ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
-        counter="EU ê³µì‹ ë¬¸ì„œ ì „ì—ëŠ” í’ˆëª© ë²”ìœ„, êµ­ê°€ë³„ ì¿¼í„°, ì ìš© ê¸°ê°„, ì˜ˆì™¸ ì¡°í•­ì´ ë‹¬ë¼ì§ˆ ìˆ˜ ìžˆì–´ í™•ì • ë§¤ì¶œë¡œ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.",
-        sectors="EU ë¬´ì—­ê·œì œ/ê´€ì„¸, ì² ê°•/í™”í•™/ë°°í„°ë¦¬/ìžë™ì°¨/ì¡°ì„ , í•œêµ­ ìˆ˜ì¶œì£¼",
-        impacts=("ëˆ ë²„ëŠ” ëŠ¥ë ¥", "ìˆ˜ê¸‰", "ì‹œê°„í‘œ"),
-        paths=("ì´ìµ", "ë¬´ì—­ê·œì œ", "ì •ì±… íƒ€ìž„ë¼ì¸", "ìˆ˜ê¸‰"),
-        follow_up="ì² ê°•ì— í•œì •í•˜ì§€ ë§ê³  EU ê´€ë³´Â·ì§‘í–‰ìœ„Â·ì˜íšŒÂ·ì´ì‚¬íšŒ ë¬¸ì„œì—ì„œ í•œêµ­ í’ˆëª©ì˜ ì„¸ìœ¨, ì¿¼í„°, ì‹œí–‰ì¼, ì˜ˆì™¸ ì¡°í•­ì„ í™•ì¸í•´ì•¼ í•©ë‹ˆë‹¤.",
-    ),
-    StoryRule(
-        key="eu_korea_green_industry_watch",
-        title="EU, í•œêµ­ ì˜í–¥ íƒ„ì†ŒÂ·ë°°í„°ë¦¬Â·ì¹œí™˜ê²½ ì‚°ì—… ê·œì œ ì‹ í˜¸",
-        google_queries=(
-            "Reuters EU South Korea CBAM battery regulation critical raw materials due diligence",
-            "Bloomberg European Union Korea carbon border battery regulation supply chain",
-            "European Commission Korea CBAM battery regulation critical raw materials due diligence",
-            "\"EU\" \"Korea\" CBAM battery regulation critical raw materials",
-            "\"ìœ ëŸ½ì—°í•©\" \"í•œêµ­\" íƒ„ì†Œêµ­ê²½ ë°°í„°ë¦¬ê·œì • í•µì‹¬ì›ìžìž¬ ê³µê¸‰ë§ì‹¤ì‚¬",
-        ),
-        required_groups=(
-            ("eu", "european union", "european commission", "ìœ ëŸ½ì—°í•©", "ìœ ëŸ½", "euì§‘í–‰ìœ„"),
-            ("korea", "south korea", "korean", "í•œêµ­", "í•œêµ­ì‚°"),
-            ("cbam", "carbon border", "battery regulation", "critical raw materials", "due diligence", "reach", "recycling", "emissions", "íƒ„ì†Œêµ­ê²½", "ë°°í„°ë¦¬ê·œì •", "í•µì‹¬ì›ìžìž¬", "ê³µê¸‰ë§ì‹¤ì‚¬", "ìž¬í™œìš©", "ë°°ì¶œ", "í™˜ê²½ê·œì œ"),
-        ),
-        core="EUì˜ íƒ„ì†Œêµ­ê²½ì¡°ì •, ë°°í„°ë¦¬ê·œì •, í•µì‹¬ì›ìžìž¬Â·ê³µê¸‰ë§ ì‹¤ì‚¬ ì •ì±…ì´ í•œêµ­ ì œì¡°ì‚¬ì˜ ì›ê°€Â·ì¸ì¦Â·ìˆ˜ì¶œ ì‹œê°„í‘œë¥¼ ë°”ê¿€ ìˆ˜ ìžˆëŠ” ì‹ ë¢° ë³´ë„/ê³µì‹â€¦16880 tokens truncatedâ€¦   }
-    if any(
-        term in low
-        for term in (
-            "cut interest rates",
-            "cut rates",
-            "lower interest rates",
-            "lower rates",
-            "rate cut",
-            "rates should be lower",
-            "may cut interest rates",
-        )
-    ):
-        chair = "ì—°ì¤€ ì˜ìž¥ì´ " if any(term in low for term in ("fed chair", "chair may", "chairman")) else ""
-        return {
-            **common,
-            "revision": "trump-rate-cut-ko-v1",
-            "title": "íŠ¸ëŸ¼í”„, ì—°ì¤€ ê¸ˆë¦¬ ì¸í•˜ í•„ìš”ì„± ê°•ì¡°",
-            "core": f"íŠ¸ëŸ¼í”„ëŠ” {chair}ê¸ˆë¦¬ ì¸í•˜ì— ë‚˜ì„œì•¼ í•œë‹¤ê³  ë§í–ˆìŠµë‹ˆë‹¤.",
-            "investment": "ì •ì±… ì••ë°•ì´ êµ­ì±„ê¸ˆë¦¬ì™€ ë‹¬ëŸ¬ë¥¼ ì›€ì§ì´ë©´ ì„±ìž¥ì£¼ í• ì¸ìœ¨ê³¼ ì›/ë‹¬ëŸ¬ê°€ ë°˜ì‘í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
-            "korea": "ì›/ë‹¬ëŸ¬, ì™¸êµ­ì¸ ìˆ˜ê¸‰ê³¼ ê³ ë°¸ë¥˜ ì„±ìž¥ì£¼ë§Œ í™•ì¸í•©ë‹ˆë‹¤.",
-            "impacts": "ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨, ìˆ˜ê¸‰",
-            "paths": "ê¸ˆë¦¬, í™˜ìœ¨, ì™¸êµ­ì¸ ìˆ˜ê¸‰",
-            "sectors": "ê¸ˆë¦¬Â·í™˜ìœ¨ ë¯¼ê°ì£¼, ì„±ìž¥ì£¼",
-            "failure": "ì—°ì¤€ ë°˜ì‘ê³¼ ë¯¸êµ­ì±„ ê¸ˆë¦¬Â·DXY ë³€í™”ê°€ ì—†ìœ¼ë©´ ë°œì–¸ì„± ìž¬ë£Œë¡œ ëë‚©ë‹ˆë‹¤.",
-        }
-    if any(term in low for term in ("rate hike", "raise interest rates", "higher interest rates")):
-        return {
-            **common,
-            "revision": "trump-rate-hike-ko-v1",
-            "title": "íŠ¸ëŸ¼í”„, ì—°ì¤€ ê¸ˆë¦¬ ì¸ìƒ ê°€ëŠ¥ì„± ì–¸ê¸‰",
-            "core": "íŠ¸ëŸ¼í”„ëŠ” ì—°ì¤€ì˜ ê¸ˆë¦¬ ì¸ìƒ ê°€ëŠ¥ì„±ì— ê´€í•œ ìž…ìž¥ì„ ë°í˜”ìŠµë‹ˆë‹¤.",
-            "investment": "ê¸ˆë¦¬ ì¸ìƒ ê¸°ëŒ€ëŠ” êµ­ì±„ê¸ˆë¦¬ì™€ ë‹¬ëŸ¬, ì„±ìž¥ì£¼ í• ì¸ìœ¨ì„ ë†’ì¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
-            "korea": "ì›/ë‹¬ëŸ¬, ì™¸êµ­ì¸ ìˆ˜ê¸‰ê³¼ ê³ ë°¸ë¥˜ ì„±ìž¥ì£¼ë§Œ í™•ì¸í•©ë‹ˆë‹¤.",
-            "impacts": "ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨, ìˆ˜ê¸‰",
-            "paths": "ê¸ˆë¦¬, í™˜ìœ¨, ì™¸êµ­ì¸ ìˆ˜ê¸‰",
-            "sectors": "ê¸ˆë¦¬Â·í™˜ìœ¨ ë¯¼ê°ì£¼, ì„±ìž¥ì£¼",
-            "failure": "ì—°ì¤€ ë°˜ì‘ê³¼ ë¯¸êµ­ì±„ ê¸ˆë¦¬Â·DXY ë³€í™”ê°€ ì—†ìœ¼ë©´ ë°œì–¸ì„± ìž¬ë£Œë¡œ ëë‚©ë‹ˆë‹¤.",
-        }
-    if "south korea" in low or "usfk" in low or "burden sharing" in low:
-        return {
-            **common,
-            "title": "íŠ¸ëŸ¼í”„, í•œêµ­Â·ì£¼í•œë¯¸êµ°Â·ë°©ìœ„ë¹„ ê´€ë ¨ ë°œì–¸: ì§€ì •í•™Â·ë°©ì‚° ë³€ìˆ˜",
-            "core": "íŠ¸ëŸ¼í”„ê°€ í•œêµ­, ì£¼í•œë¯¸êµ° ë˜ëŠ” ë°©ìœ„ë¹„ì™€ ê´€ë ¨í•œ ì •ì±… ë°©í–¥ì„ ì–¸ê¸‰í•œ ë³´ë„ìž…ë‹ˆë‹¤.",
-            "investment": "ì‹¤ì œ í˜‘ìƒ ìš”êµ¬ë‚˜ ì£¼ë‘” ì¡°ì •ì€ ì§€ì •í•™ ìœ„í—˜í”„ë¦¬ë¯¸ì—„ê³¼ ë°©ì‚° ìˆ˜ìš” ê¸°ëŒ€ë¥¼ ë°”ê¿€ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
-            "korea": "K-ë°©ì‚°ê³¼ ì§€ì •í•™ ë¯¼ê°ì£¼ë¥¼ ë³´ë˜, êµ¬ì²´ í˜‘ìƒì•ˆÂ·ì˜ˆì‚°Â·ì£¼ë‘” ê³„íš ì „ì—ëŠ” ì‹¤ì  ì—°ê²°ì„ ë‹¨ì •í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.",
-            "impacts": "ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ",
-            "paths": "ì§€ì •í•™ ë¦¬ìŠ¤í¬, ë°©ì‚° ìˆ˜ìš”, ì •ì±… íƒ€ìž„ë¼ì¸",
-            "sectors": "ë°©ì‚°/ì§€ì •í•™",
-            "failure": "í•œë¯¸ ê³µë™ë°œí‘œ, ë°©ìœ„ë¹„ í˜‘ìƒì•ˆ, ì£¼ë‘”Â·ì¡°ë‹¬ ê³„íšì´ ì—†ìœ¼ë©´ ì •ì¹˜ ë°œì–¸ìœ¼ë¡œ ì•½í™”ë©ë‹ˆë‹¤.",
-        }
-    if "nato" in low or "allies" in low:
-        return {
-            **common,
-            "title": "íŠ¸ëŸ¼í”„, NATOÂ·ë°©ìœ„ë¹„ ê´€ë ¨ ë°œì–¸: ë°©ì‚° ìˆ˜ìš”Â·ë™ë§¹ ë¦¬ìŠ¤í¬",
-            "core": "íŠ¸ëŸ¼í”„ì˜ NATOÂ·ë™ë§¹êµ­ ë°©ìœ„ë¹„ ê´€ë ¨ ë°œì–¸ìœ¼ë¡œ ë°©ì‚° ì¡°ë‹¬ê³¼ ë™ë§¹ ì •ì±…ì˜ ë¶ˆí™•ì‹¤ì„±ì´ ë¶€ê°ëœ ë³´ë„ìž…ë‹ˆë‹¤.",
-            "investment": "ë°©ìœ„ë¹„ í™•ëŒ€ê°€ ì˜ˆì‚°Â·ì¡°ë‹¬ë¡œ ì´ì–´ì§ˆ ë•Œë§Œ ë°©ì‚° ë§¤ì¶œê³¼ ìˆ˜ì£¼ ê°€ì‹œì„±ì´ ì‹¤ì œë¡œ ë°”ë€ë‹ˆë‹¤.",
-            "korea": "K-ë°©ì‚°ì€ ë¯¸êµ­Â·ìœ ëŸ½ ì¡°ë‹¬, í´ëž€ë“œ ë“± ìˆ˜ì¶œê³„ì•½ì˜ í›„ì† ì˜ˆì‚°Â·ì„œëª… ì—¬ë¶€ë¥¼ ì¤‘ì‹¬ìœ¼ë¡œ í™•ì¸í•©ë‹ˆë‹¤.",
-            "impacts": "ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„, ìˆ˜ê¸‰, ì‹œê°„í‘œ",
-            "paths": "ë°©ì‚° ìˆ˜ìš”, ì •ì±… íƒ€ìž„ë¼ì¸, ê³„ì•½ ê°€ì‹œì„±",
-            "sectors": "ë°©ì‚°/ì§€ì •í•™",
-            "failure": "ì˜ˆì‚°Â·ì¡°ë‹¬ ê³µê³ Â·ê³„ì•½ ì„œëª…ì´ ì—†ìœ¼ë©´ ë°©ì‚° í…Œë§ˆ ìˆ˜ê¸‰ìœ¼ë¡œ ëë‚©ë‹ˆë‹¤.",
-        }
-    if any(term in low for term in ("ukraine", "russia", "putin", "zelenskiy")):
-        return {
-            **common,
-            "title": "íŠ¸ëŸ¼í”„, ìš°í¬ë¼ì´ë‚˜Â·ëŸ¬ì‹œì•„ ê´€ë ¨ ë°œì–¸: ì œìž¬Â·ì „ìŸ ì‹œê°„í‘œ ë³€ìˆ˜",
-            "core": "íŠ¸ëŸ¼í”„ì˜ ìš°í¬ë¼ì´ë‚˜Â·ëŸ¬ì‹œì•„ ê´€ë ¨ ë°œì–¸ìœ¼ë¡œ ì œìž¬, íœ´ì „, ì—ë„ˆì§€Â·ë°©ì‚° ë¦¬ìŠ¤í¬ì˜ ì‹œê°„í‘œê°€ í”ë“¤ë¦´ ìˆ˜ ìžˆë‹¤ëŠ” ë³´ë„ìž…ë‹ˆë‹¤.",
-            "investment": "ì œìž¬Â·íœ´ì „ì˜ ì‹¤ì œ ì§„ì „ ì—¬ë¶€ëŠ” ì—ë„ˆì§€Â·ì›ìžìž¬ ê°€ê²©ê³¼ ë°©ì‚° ìˆ˜ìš” ê¸°ëŒ€ë¥¼ ë°”ê¿€ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.",
-            "korea": "ë°©ì‚°Â·ì—ë„ˆì§€Â·í•´ìš´ë§Œ ì§ì ‘ í™•ì¸í•˜ë©°, ê³µì‹ í˜‘ìƒë¬¸Â·ì œìž¬ ë³€ê²½ ì „ì—ëŠ” í…Œë§ˆ í™•ìž¥ì„ ì œí•œí•©ë‹ˆë‹¤.",
-            "impacts": "ë°¸ë¥˜ì—ì´ì…˜/í• ì¸ìœ¨, ìˆ˜ê¸‰, ì‹œê°„í‘œ",
-            "paths": "ì§€ì •í•™ ë¦¬ìŠ¤í¬, ì œìž¬, ì •ì±… íƒ€ìž„ë¼ì¸",
-            "sectors": "ë°©ì‚°/ì§€ì •í•™, ì—ë„ˆì§€/í•´ìš´",
-            "failure": "ê³µì‹ í˜‘ìƒÂ·ì œìž¬ ë¬¸ì„œì™€ ì›ìžìž¬Â·ë°©ì‚° ë°˜ì‘ì´ ì—†ìœ¼ë©´ ë°œì–¸ì„± ìž¬ë£Œë¡œ ì•½í™”ë©ë‹ˆë‹¤.",
-        }
-    return None
-
-
-def korean_trump_story_title(title: str) -> str:
-    profile = trump_story_profile(title)
-    return str((profile or {}).get("title") or "íŠ¸ëŸ¼í”„ ì§ì ‘ ë°œì–¸: ì„¸ë¶€ ë‚´ìš© í™•ì¸ í•„ìš”")
-
-
-def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] | None:
-    if not items:
-        return None
-    title = str(items[0].get("title", ""))
-    if rule.key == "trump_direct_policy_remarks_watch":
-        return trump_story_profile(title)
-    if rule.key == "global_extreme_heat_mortality_watch":
-        return heat_mortality_story_profile(title)
-    if rule.key == "iran_hormuz_military_escalation":
-        return iran_hormuz_story_profile(title)
-    return None
-
-
-def story_display_title(rule: StoryRule, items: list[dict]) -> str:
-    profile = item_story_profile(rule, items)
-    if profile:
-        return str(profile["title"])
-    return rule.title
-
-
-def story_summary_lines(rule: StoryRule, items: list[dict], limit: int = 3) -> list[str]:
-    if rule.key != "trump_direct_policy_remarks_watch":
-        return []
-    lines: list[str] = []
-    for idx, item in enumerate(items[:limit], start=1):
-        lines.append(
-            f"- ì£¼ìš” ë³´ë„ {idx}: {korean_trump_story_title(str(item.get('title', '')))} "
-            f"({item.get('source', 'í™•ì¸ ë¶ˆê°€')}, {item.get('published_kst', 'ì‹œê° í™•ì¸ ë¶ˆê°€')})"
-        )
-    return lines
-
-
-def alert_latest_kst(alert: dict) -> str:
-    items = alert.get("items") or []
-    return max((str(item.get("published_kst", "")) for item in items), default="")
-
-
-def source_bits(items: list[dict], limit: int = 1) -> str:
-    bits = [
-        f"[{item['source']}]({item['link']}) Â· ì›ì²œì‹œê° {item['published_kst']}"
-        for item in items[:limit]
-    ]
-    return " / ".join(bits) if bits else "í™•ì¸ ë¶ˆê°€"
-
-
-def short_text(value: object, limit: int = 120) -> str:
-    text = clean_text(str(value or ""))
-    if len(text) <= limit:
-        return text
-    return text[: max(0, limit - 1)].rstrip() + "â€¦"
-
-
-def split_display_values(value: object) -> list[str]:
-    if isinstance(value, (list, tuple, set)):
-        return [clean_text(str(part)) for part in value if clean_text(str(part))]
-    text = clean_text(str(value or ""))
-    if not text:
-        return []
-    return [part.strip() for part in re.split(r"[,|]", text) if part.strip()]
-
-
-def join_short_values(value: object, max_items: int = 3, fallback: str = "í™•ì¸ í•„ìš”") -> str:
-    values = split_display_values(value)
-    if not values:
-        return fallback
-    return ", ".join(values[:max_items])
-
-
-def compact_core(rule: StoryRule, items: list[dict]) -> str:
-    profile = item_story_profile(rule, items)
-    if profile:
-        return str(profile["core"])
-    return short_text(rule.core, 125)
-
-
-def compact_investment_view(rule: StoryRule, items: list[dict]) -> str:
-    profile = item_story_profile(rule, items)
-    if profile:
-        return str(profile["investment"])
-    return short_text(rule.point, 125)
-
-
-def compact_korea_market_view(rule: StoryRule, items: list[dict]) -> str:
-    profile = item_story_profile(rule, items)
-    if profile:
-        return str(profile["korea"])
-    return short_text(f"{join_short_values(rule.sectors, max_items=3)} ì¤‘ì‹¬ìœ¼ë¡œ ê³µì‹ ì›ë¬¸ê³¼ í•œêµ­ ê¸°ì—… ì§ì ‘ ë…¸ì¶œë§Œ í™•ì¸í•©ë‹ˆë‹¤.", 125)
-
-
-def compact_priced_in(rule: StoryRule, items: list[dict]) -> str:
-    profile = item_story_profile(rule, items)
-    if profile:
-        return str(profile["priced_in"])
-    if rule.key == "iran_hormuz_military_escalation":
-        return "ë‚®ìŒ~ì¤‘ê°„. ì‹ ê·œ ìƒì„  í”¼ê²©ê³¼ ìž¬ê³µê²©ì€ íœ´ì „ ë¶•ê´´ í™•ë¥ ì„ ë‹¤ì‹œ ë†’ì´ëŠ” ìƒˆ ì •ë³´ìž…ë‹ˆë‹¤."
-    if rule.key == "trump_direct_policy_remarks_watch":
-        return "ë‚®ìŒ~ì¤‘ê°„. ë°œì–¸ì€ ë¹ ë¥´ê²Œ ë°˜ì˜ë˜ì§€ë§Œ ê³µì‹ ë¬¸ì„œ ì „ì—ëŠ” ë˜ëŒë¦¼ë„ ë¹ ë¦…ë‹ˆë‹¤."
-    return "ë‚®ìŒ~ì¤‘ê°„. ê³µì‹ ë¬¸ì„œÂ·ì‹œí–‰ì¼Â·ì ìš© ëŒ€ìƒ í™•ì¸ ì „ê¹Œì§€ëŠ” ì˜ˆë¹„ ìž¬ë£Œìž…ë‹ˆë‹¤."
-
-
-def compact_failure_signal(rule: StoryRule, items: list[dict]) -> str:
-    profile = item_story_profile(rule, items)
-    if profile:
-        return str(profile["failure"])
-    if rule.key == "iran_hormuz_military_escalation":
-        return "ë¯¸ êµ­ë°©ë¶€Â·CENTCOM í›„ì†, í†µí•­ ê°ì†Œ, ìœ ê°€Â·ìš´ìž„Â·í™˜ìœ¨ ë°˜ì‘ì´ ì—†ìœ¼ë©´ ë‹¨ë°œì„± ì¶©ëŒë¡œ ì•½í™”ë©ë‹ˆë‹¤."
-    if rule.key == "trump_direct_policy_remarks_watch":
-        return "ë°±ì•…ê´€/ë¶€ì²˜ í›„ì†, ìœ ê°€Â·í™˜ìœ¨Â·ìš´ìž„Â·ë°©ì‚° í‹°ì»¤ ë°˜ì‘ì´ ì—†ìœ¼ë©´ ë‹¨ë°œì„± ë°œì–¸ìœ¼ë¡œ ì œì™¸í•©ë‹ˆë‹¤."
-    return "ê³µì‹ ì›ë¬¸, ì‹œí–‰ì¼, ì ìš© ëŒ€ìƒ, í•œêµ­ ê¸°ì—… ì§ì ‘ ë…¸ì¶œì´ í™•ì¸ë˜ì§€ ì•Šìœ¼ë©´ ì œì™¸í•©ë‹ˆë‹¤."
-
-
-def compact_counter(rule: StoryRule, items: list[dict]) -> str:
-    profile = item_story_profile(rule, items)
-    if profile:
-        return str(profile["counter"])
-    if rule.key == "iran_hormuz_military_escalation":
-        return "ë‹¨ë°œì„± ë³´ë³µ ë’¤ ì¶”ê°€ ê³µê²©ì´ ë©ˆì¶”ê³  ìƒì„  í†µí•­ì´ ìœ ì§€ë˜ë©´ ìœ ê°€Â·ìš´ìž„ ì¶©ê²©ì€ ë¹ ë¥´ê²Œ ë˜ëŒë¦´ ìˆ˜ ìžˆìŠµë‹ˆë‹¤."
-    return "ê³µì‹ ë¬¸ì„œÂ·ì‹œí–‰ì¼Â·ì ìš© ë²”ìœ„ê°€ ì•„ì§ ì—†ë‹¤ëŠ” ì ìž…ë‹ˆë‹¤."
-
-
-def is_trump_iran_item(rule: StoryRule, items: list[dict]) -> bool:
-    if rule.key != "trump_direct_policy_remarks_watch" or not items:
-        return False
-    title = clean_story_title(str(items[0].get("title", ""))).lower()
-    return "iran" in title or "ì´ëž€" in title
-
-
-def compact_impacts(rule: StoryRule, items: list[dict]) -> str:
-    profile = item_story_profile(rule, items)
-    if profile:
-        return str(profile["impacts"])
-    mapped = ["ë§¤ì¶œÂ·ë§ˆì§„Â·í˜„ê¸ˆíë¦„" if value == "ëˆ ë²„ëŠ” ëŠ¥ë ¥" else value for value in split_display_values(rule.impacts)]
-    return join_short_values(mapped, max_items=4, fallback="ì˜ì‚¬ê²°ì • ì˜í–¥ ì œí•œì ")
-
-
-def compact_paths(rule: StoryRule, items: list[dict]) -> str:
-    profile = item_story_profile(rule, items)
-    if profile:
-        return str(profile["paths"])
-    return join_short_values(rule.paths, max_items=4, fallback="ì •ì±… íƒ€ìž„ë¼ì¸")
-
-
-def compact_sectors(rule: StoryRule, items: list[dict]) -> str:
-    profile = item_story_profile(rule, items)
-    if profile:
-        return str(profile["sectors"])
-    return join_short_values(rule.sectors, max_items=3, fallback="ì •ì±…/ê·œì œ ì¼ë°˜")
-
-
-def compact_policy_core(value: object, fallback: object = "", limit: int = 50) -> str:
-    text = re.sub(r"\s+", " ", str(value or fallback or "í™•ì¸ ë¶ˆê°€")).strip()
-    if len(text) <= limit:
-        return text
-    for match in re.finditer(r".+?[.!?](?=\s|$)", text):
-        sentence = match.group(0).strip()
-        if 8 <= len(sentence) <= limit:
-            return sentence
-    room = max(8, limit - 4)
-    head = text[: room + 1]
-    boundary = max(
-        head.rfind(" "),
-        head.rfind(","),
-        head.rfind("Â·"),
-        head.rfind(";"),
-        head.rfind(":"),
-    )
-    if boundary < int(room * 0.6):
-        boundary = room
-    return head[:boundary].rstrip(" ,Â·;:.") + "ìž…ë‹ˆë‹¤."
-
-
-def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: dict) -> list[str]:
-    ensure_explained(explain_item)
-    title = story_display_title(rule, items)
-    core = compact_policy_core(compact_core(rule, items), fallback=title)
-    return [f"- í•µì‹¬: {core}"]
-
-
-def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, index: int, source_limit: int = 1) -> list[str]:
-    display_title = story_display_title(rule, items)
-    sources = source_bits(items, source_limit)
-    source_names = ", ".join(dict.fromkeys(str(item["source"]) for item in items[:3]))
-    matched = {rule.key: ["EU", "Korea", "policy"] if rule.key.startswith("eu_korea_") else ["trusted policy news"]}
-    if rule.key == "us_japan_korea_smr_moc_state_watch":
-        matched["state_smr_moc_policy"] = ["moc", "smr", "samsung c&t", "bwrx-300"]
-    explain_item = {
-        "title": rule.title,
-        "source": source_names,
-        "summary": f"{rule.core} {rule.point}",
-        "status": "ê³µì‹ í™•ì¸ ì „",
-        "policy_plain_summary": rule.core,
-        "investment_view": rule.point,
-        "counter": rule.counter,
-        "sectors": rule.sectors,
-        "impacts": list(rule.impacts),
-        "paths": list(rule.paths),
-        "eu_korea_policy_watch": rule.key.startswith("eu_korea_"),
-        "eu_policy_category": rule.key if rule.key.startswith("eu_korea_") else "",
-        "eu_korea_steel_policy_watch": rule.key == "eu_korea_steel_safeguard_relief",
-        "trusted_policy_rule_key": rule.key,
-        "matched": matched,
-    }
-    ensure_explained(explain_item)
-
-    return [
-        f"{index}. [ìƒÂ·ê³µì‹ í™•ì¸ ì „] {display_title}",
-        f"- í™•ì¸ ìƒíƒœ: ê³µì‹ ì›ë¬¸/í›„ì† ë¬¸ì„œ í™•ì¸ ì „. ì‹ ë¢° ì†ŒìŠ¤ í™•ì¸: {source_names or 'í™•ì¸ ë¶ˆê°€'}.",
-        *compact_explanation_lines(rule, items, explain_item),
-        f"- ì¶œì²˜: {sources} Â· ì¡°íšŒ {now:%H:%M KST}",
-        "",
-    ]
-
-
-def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
-    lines = [
-        f"{now:%Yë…„ %mì›” %dì¼ %H:%M KST}",
-        "ê³µì‹ ë°œí‘œ ì „ ì •ì±… ë‰´ìŠ¤ 1ê±´ í™•ì¸",
-        "",
-        *render_alert_section(rule, items, now, index=1, source_limit=3),
-        "íˆ¬ìž ì¡°ì–¸ì´ ì•„ë‹Œ ì°¸ê³ ìš© ì •ì±…Â·ê·œì œ ì•Œë¦¼ìž…ë‹ˆë‹¤.",
-    ]
-    return "\n".join(lines) + "\n"
-
-
-def render_alert_bundle(alerts: list[dict], now: dt.datetime, limit: int = 3) -> str:
-    selected = alerts[:limit]
-    lines = [
-        f"{now:%Yë…„ %mì›” %dì¼ %H:%M KST}",
-        f"ê³µì‹ ë°œí‘œ ì „ ì •ì±… ë‰´ìŠ¤ {len(selected)}ê±´ í™•ì¸",
-        "",
-    ]
-    for idx, alert in enumerate(selected, start=1):
-        lines.extend(render_alert_section(alert["rule"], alert["items"], now, index=idx, source_limit=1))
-    lines.append("íˆ¬ìž ì¡°ì–¸ì´ ì•„ë‹Œ ì°¸ê³ ìš© ì •ì±…Â·ê·œì œ ì•Œë¦¼ìž…ë‹ˆë‹¤.")
-    return "\n".join(lines) + "\n"
-
-
-def main() -> int:
-    now = now_kst()
-    OUT_DIR.mkdir(exist_ok=True)
-    DATA_DIR.mkdir(exist_ok=True)
-    seen_payload = load_seen()
-    seen = seen_payload.setdefault("seen", {})
-
-    alerts: list[dict] = []
-    for rule in STORY_RULES:
-        if rule.key.startswith("_disabled_"):
-            continue
-        items = collect_rule_items(rule, now)
-        for alert_items in alert_item_groups(rule, items):
-            alert_items = unseen_items_for_rule(rule, alert_items, seen)
-            if not alert_items:
-                continue
-            fp = story_event_fingerprint(rule, alert_items)
-            if fp in seen:
-                continue
-            alerts.append(
-                {
-                    "rule": rule,
-                    "items": alert_items,
-                    "fingerprint": fp,
-                    "legacy_fingerprint": fingerprint(rule, alert_items),
-                }
-            )
-
-    if not alerts:
-        for path in (ALERT_PATH, TITLE_PATH, ALERTS_JSON_PATH):
-            if path.exists():
-                path.unlink()
-        print("trusted_policy_news_alerts=0")
-        return 0
-
-    alerts.sort(key=alert_latest_kst, reverse=True)
-    selected_alerts = alerts[:3]
-    top = selected_alerts[0]
-    extra_count = max(0, len(selected_alerts) - 1)
-    title_suffix = f" ì™¸ {extra_count}ê±´" if extra_count else ""
-    report = render_alert_bundle(selected_alerts, now)
-    ALERT_PATH.write_text(report, encoding="utf-8")
-    TITLE_PATH.write_text(
-        f"ì‹ ë¢°ì™¸ì‹  ì •ì±… ì›Œì¹˜: [ìƒÂ·ê³µì‹ í™•ì¸ ì „] {story_display_title(top['rule'], top['items'])}{title_suffix}\n",
-        encoding="utf-8",
-    )
-    ALERTS_JSON_PATH.write_text(
-        json.dumps(
-            [
-                {
-                    "key": alert["rule"].key,
-                    "title": alert["rule"].title,
-                    "status": "ê³µì‹ í™•ì¸ ì „",
-                    "items": alert["items"],
-                    "fingerprint": alert["fingerprint"],
-                }
-                for alert in alerts
-            ],
-            ensure_ascii=False,
-            indent=2,
-        )
-        + "\n",
-        encoding="utf-8",
-    )
-
-    for alert in alerts:
-        seen_entry = {
-            "key": alert["rule"].key,
-            "title": alert["rule"].title,
-            "first_seen_kst": now.isoformat(timespec="seconds"),
-            "status": "ê³µì‹ í™•ì¸ ì „",
-            "sources": [item["source"] for item in alert["items"][:3]],
-        }
-        seen[alert["fingerprint"]] = seen_entry
-        seen[alert["legacy_fingerprint"]] = seen_entry
-    seen_payload["updated_at_kst"] = now.isoformat(timespec="seconds")
-    SEEN_PATH.write_text(json.dumps(seen_payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-
-    print(f"trusted_policy_news_alerts={len(alerts)}")
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+        follow_up="í•µì‹¬ì€ ê·œì œ ì™„í™”ê°€ ì‹¤ì œ EU ê´€ë³´Â·ì§‘í–‰ìœ„ ë¬¸ì„œì™€ í’ˆëª©ë³„ ì¿¼í„°ë¡œ í™•ì •ë˜ëŠ”ì§€ìž…ë‹ˆë‹¤. í¬ìŠ¤ì½”í™€ë”©ìŠ¤Â·í˜„ëŒ€ì œì² Â·ì„¸ì•„ì œê°• ë“Û}»îÚ$z{-®éÜj×&6÷&R#¢.Ø«Ž¹ûÎÙHNÉÙ‚äDü+~¸ùžº{ž«ZÒ»
+žÉÈN»˜B«Hº
+‚»	ÎÉkŽÉËÎºÂ»
+žÈ+Ê¸ºÎ«;Â¸ùžº{’Ê	^Ë^ÉÙ‚»hŽÙ™^ÈºNÈKÉÛB»h«¹	Â»;N¸øNÉè^¸¸Ž¸ºBâ"ÀÐ¢&–çfW7FÖVçB#¢.»
+žÉÈN»˜BÙ™^¸È«ÉˆŽÈ++~Ê¸ºÎºÂÉÛNÉkNÊx‚¹XÎºxÂ»
+žÈ+ºzNËiÎ«;ÂÈ‰ŽÊ;Â«È¹ÎÈKÉÛBÈºNÊ	ÎºÂ»	N¸	Þ¸¸Ž¸ºBâ"ÀÐ¢&¶÷&V#¢$²Þ»
+žÈ+ÉØºûŽ«ZÜ+~ÉÊ¹ûÒÊ¸ºÂÂØûN¹è¹9Â¹;È‰ŽËiÎ«8NÉ[ÞÉÙ‚Ù¸NÈhÒÉˆŽÈ++~ÈIÎº¨RÉzÎ»hº[ÂÊIÈºÎÉËÎºÂÙ™^ÉÛŽÙZž¸¸Ž¸ºBâ"ÀÐ¢&–×7G2#¢.ºzNËiÌ+~ºxŽÊxL+~ÙˆN«ˆŽÙÙºhBÂÈ‰Ž«ˆ’ÂÈ¹Î«NÙÂ"ÀÐ¢'F‡2#¢.»
+žÈ+È‰ŽÉ©BÂÊ	^ËRØ8ÉèN¹ÛÎÉÛ‚Â«8NÉ[Ò«È¹ÎÈK"ÀÐ¢'6V7F÷'2#¢.»
+žÈ+þÊxÊ	^ÙY’"ÀÐ¢&f–ÇW&R#¢.ÉˆŽÈ++~Ê¸ºÂ«;^«:+~«8NÉ[ÒÈIÎº¨^ÉÛBÉxnÉËÎº›B»
+žÈ+ØXÎºx‚È‰Ž«ˆžÉËÎºÂ¸Þ¸*ž¸¸Ž¸ºBâ"ÀÐ¢ÐÐ¢–bç’‡FW&Ò–âÆ÷rf÷"FW&Ò–â‚'V·&–æR"Â''W76–"Â'WF–â"Â'¦VÆVç6¶—’"’“ Ð¢&WGW&â°Ð¢¢¦6öÖÖöâÀÐ¢'F—FÆR#¢.Ø«Ž¹ûÎÙHBÂÉ«ØÎ¹ÛÎÉÛN¸)Œ+~¹úÎÈ¹ÎÉXB«Hº
+‚»	ÎÉkƒ¢Ê	ÎÉêÌ+~ÊNÉøÈ¹Î«NÙÂ»8È‰‚"ÀÐ¢&6÷&R#¢.Ø«Ž¹ûÎÙHNÉÙ‚É«ØÎ¹ÛÎÉÛN¸)Œ+~¹úÎÈ¹ÎÉXB«Hº
+‚»	ÎÉkŽÉËÎºÂÊ	ÎÉêÂÂÙËNÊBÂÉy¸HŽÊx+~»
+žÈ+ºjÎÈªNØÎÉÙ‚È¹Î«NÙÎ«ÙÙN¹:NºkBÈ‰‚ÉèŽ¸ºN¸©B»;N¸øNÉè^¸¸Ž¸ºBâ"ÀÐ¢&–çfW7FÖVçB#¢.Ê	ÎÉêÌ+~ÙËNÊNÉÙ‚ÈºNÊ	ÂÊxNÊBÉzÎ»h¸©BÉy¸HŽÊx+~É¹ÉéÉêÂ««*ž«;Â»
+žÈ+È‰ŽÉ©B«‹¸Èº[Â»	N«øÈ‰‚ÉèŽÈ«^¸¸Ž¸ºBâ"ÀÐ¢&¶÷&V#¢.»
+žÈ++~Éy¸HŽÊx+~Ù[NÉ«NºxÂÊxÊ	Ù™^ÉÛŽÙYŽº›Â«;^È¹ÒÙ‰È8ºËŒ+~Ê	ÎÉêÂ»8«+ÒÊNÉy¸©BØXÎºx‚Ù™^Éê^ÉØBÊ	ÎÙYÎÙZž¸¸Ž¸ºBâ"ÀÐ¢&–×7G2#¢.»ŽºYŽÉyÉÛNÈY‚þÙZÉÛŽÉÊ‚ÂÈ‰Ž«ˆ’ÂÈ¹Î«NÙÂ"ÀÐ¢'F‡2#¢.ÊxÊ	^ÙY’ºjÎÈªNØÂÂÊ	ÎÉêÂÂÊ	^ËRØ8ÉèN¹ÛÎÉÛ‚"ÀÐ¢'6V7F÷'2#¢.»
+žÈ+þÊxÊ	^ÙY’ÂÉy¸HŽÊxþÙ[NÉ«B"ÀÐ¢&f–ÇW&R#¢.«;^È¹ÒÙ‰È8+~Ê	ÎÉêÂºËŽÈIÎÉ˜É¹ÉéÉêÌ+~»
+žÈ+»	ŽÉÙÉÛBÉxnÉËÎº›B»	ÎÉkŽÈKÉêÎº8ÎºÂÉ[ÞÙ™N¹
+ž¸¸Ž¸ºBâ"ÀÐ¢ÐÐ¢&WGW&âæöæPÐ Ð Ð¦FVb¶÷&Vå÷G'V×÷7F÷'•÷F—FÆR‡F—FÆS¢7G"’Óâ7G# Ð¢&öf–ÆRÒG'V×÷7F÷'•÷&öf–ÆR‡F—FÆRÐ¢&WGW&â7G"‚‡&öf–ÆR÷"·Ò’ævWB‚'F—FÆR"’÷".Ø«Ž¹ûÎÙHBÊxÊ	»	ÎÉkƒ¢ÈKŽ»h¸+NÉª’Ù™^ÉÛ‚ÙXNÉ©B"Ð Ð Ð¦FVb—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’ÓâF–7E·7G"Âö&¦V7EÒÂæöæS Ð¢–bæ÷B—FV×3 Ð¢&WGW&âæöæPÐ¢F—FÆRÒ7G"†—FV×5³ÒævWB‚'F—FÆR"Â""’Ð¢–b'VÆRæ¶W’ÓÒ'G'V×öF—&V7E÷öÆ–7•÷&VÖ&·5÷vF6‚# Ð¢&WGW&âG'V×÷7F÷'•÷&öf–ÆR‡F—FÆRÐ¢–b'VÆRæ¶W’ÓÒ&vÆö&ÅöW‡G&VÖUö†VEöÖ÷'FÆ—G•÷vF6‚# Ð¢&WGW&â†VEöÖ÷'FÆ—G•÷7F÷'•÷&öf–ÆR‡F—FÆRÐ¢–b'VÆRæ¶W’ÓÒ&—&åö†÷&×W¥öÖ–Æ—F'•öW66ÆF–öâ# Ð¢&WGW&â—&åö†÷&×W¥÷7F÷'•÷&öf–ÆR‡F—FÆRÐ¢&WGW&âæöæPÐ Ð Ð¦FVb7F÷'•öF—7Æ•÷F—FÆR‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ7G# Ð¢&öf–ÆRÒ—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆRÂ—FV×2Ð¢–b&öf–ÆS Ð¢&WGW&â7G"‡&öf–ÆU²'F—FÆR%ÒÐ¢&WGW&â'VÆRçF—FÆPÐ Ð Ð¦FVb7F÷'•÷7VÖÖ'•öÆ–æW2‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒÂÆ–Ö—C¢–çBÒ2’ÓâÆ—7E·7G%Ó Ð¢–b'VÆRæ¶W’Ò'G'V×öF—&V7E÷öÆ–7•÷&VÖ&·5÷vF6‚# Ð¢&WGW&âµÐÐ¢Æ–æW3¢Æ—7E·7G%ÒÒµÐÐ¢f÷"–G‚Â—FVÒ–âVçVÖW&FR†—FV×5³¦Æ–Ö—EÒÂ7F'CÓ“ Ð¢Æ–æW2æVæB€Ð¢b"ÒÊ;ÎÉ©B»;N¸øB¶–G‡Ó¢¶¶÷&Vå÷G'V×÷7F÷'•÷F—FÆR‡7G"†—FVÒævWB‚wF—FÆRrÂrr’’—Ò Ð¢b"‡¶—FVÒævWB‚w6÷W&6RrÂ~Ù™^ÉÛ‚»hŽ«r—ÒÂ¶—FVÒævWB‚wV&Æ—6†VEö·7BrÂ~È¹Î«Ù™^ÉÛ‚»hŽ«r—Ò’ Ð¢Ð¢&WGW&âÆ–æW0Ð Ð Ð¦FVbÆW'EöÆFW7Eö·7B†ÆW'C¢F–7B’Óâ7G# Ð¢—FV×2ÒÆW'BævWB‚&—FV×2"’÷"µÐÐ¢&WGW&âÖ‚‚‡7G"†—FVÒævWB‚'V&Æ—6†VEö·7B"Â""’’f÷"—FVÒ–â—FV×2’ÂFVfVÇCÒ""Ð Ð Ð¦FVb6÷W&6Uö&—G2†—FV×3¢Æ—7E¶F–7EÒÂÆ–Ö—C¢–çBÒ’Óâ7G# Ð¢&—G2Ò°Ð¢b%·¶—FVÕ²w6÷W&6Ru×ÕÒ‡¶—FVÕ²vÆ–æ²u×Ò’+rÉ¹Ë)ÎÈ¹Î«¶—FVÕ²wV&Æ—6†VEö·7Bu×Ò Ð¢f÷"—FVÒ–â—FV×5³¦Æ–Ö—EÐÐ¢ÐÐ¢&WGW&â"ò"æ¦ö–â†&—G2’–b&—G2VÇ6R.Ù™^ÉÛ‚»hŽ« Ð Ð Ð¦FVb6†÷'E÷FW‡B‡fÇVS¢ö&¦V7BÂÆ–Ö—C¢–çBÒ#’Óâ7G# Ð¢FW‡BÒ6ÆVå÷FW‡B‡7G"‡fÇVR÷"""’Ð¢–bÆVâ‡FW‡B’ÃÒÆ–Ö—C Ð¢&WGW&âFW‡@Ð¢&WGW&âFW‡E³¢Ö‚ƒÂÆ–Ö—BÒ•Òç'7G&—‚’².(
+b Ð Ð Ð¦FVb7Æ—EöF—7Æ•÷fÇVW2‡fÇVS¢ö&¦V7B’ÓâÆ—7E·7G%Ó Ð¢–b—6–ç7Fæ6R‡fÇVRÂ†Æ—7BÂGWÆRÂ6WB’“ Ð¢&WGW&â¶6ÆVå÷FW‡B‡7G"‡'B’’f÷"'B–âfÇVR–b6ÆVå÷FW‡B‡7G"‡'B’•ÐÐ¢FW‡BÒ6ÆVå÷FW‡B‡7G"‡fÇVR÷"""’Ð¢–bæ÷BFW‡C Ð¢&WGW&âµÐÐ¢&WGW&â·'Bç7G&—‚’f÷"'B–â&Rç7Æ—B‡"%²ÇÅÒ"ÂFW‡B’–b'Bç7G&—‚•ÐÐ Ð Ð¦FVb¦ö–å÷6†÷'E÷fÇVW2‡fÇVS¢ö&¦V7BÂÖ…ö—FV×3¢–çBÒ2ÂfÆÆ&6³¢7G"Ò.Ù™^ÉÛ‚ÙXNÉ©B"’Óâ7G# Ð¢fÇVW2Ò7Æ—EöF—7Æ•÷fÇVW2‡fÇVRÐ¢–bæ÷BfÇVW3 Ð¢&WGW&âfÆÆ&6°Ð¢&WGW&â"Â"æ¦ö–â‡fÇVW5³¦Ö…ö—FV×5ÒÐ Ð Ð¦FVb6ö×7Eö6÷&R‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ7G# Ð¢&öf–ÆRÒ—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆRÂ—FV×2Ð¢–b&öf–ÆS Ð¢&WGW&â7G"‡&öf–ÆU²&6÷&R%ÒÐ¢&WGW&â6†÷'E÷FW‡B‡'VÆRæ6÷&RÂ#RÐ Ð Ð¦FVb6ö×7Eö–çfW7FÖVçE÷f–Wr‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ7G# Ð¢&öf–ÆRÒ—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆRÂ—FV×2Ð¢–b&öf–ÆS Ð¢&WGW&â7G"‡&öf–ÆU²&–çfW7FÖVçB%ÒÐ¢&WGW&â6†÷'E÷FW‡B‡'VÆRçö–çBÂ#RÐ Ð Ð¦FVb6ö×7Eö¶÷&VöÖ&¶WE÷f–Wr‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ7G# Ð¢&öf–ÆRÒ—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆRÂ—FV×2Ð¢–b&öf–ÆS Ð¢&WGW&â7G"‡&öf–ÆU²&¶÷&V%ÒÐ¢&WGW&â6†÷'E÷FW‡B†b'¶¦ö–å÷6†÷'E÷fÇVW2‡'VÆRç6V7F÷'2ÂÖ…ö—FV×3Ó2—ÒÊIÈºÎÉËÎºÂ«;^È¹ÒÉ¹ºËŽ«;ÂÙYÎ«ZÒ«‹ÉxRÊxÊ	¸[ŽËiÎºxÂÙ™^ÉÛŽÙZž¸¸Ž¸ºBâ"Â#RÐ Ð Ð¦FVb6ö×7E÷&–6VEö–â‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ7G# Ð¢&öf–ÆRÒ—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆRÂ—FV×2Ð¢–b&öf–ÆS Ð¢&WGW&â7G"‡&öf–ÆU²'&–6VEö–â%ÒÐ¢–b'VÆRæ¶W’ÓÒ&—&åö†÷&×W¥öÖ–Æ—F'•öW66ÆF–öâ# Ð¢&WGW&â.¸*îÉØÇîÊI«BâÈº«yÂÈ8ÈJÙKÎ«*ž«;ÂÉêÎ«;^«*žÉØÙËNÊB»i^«KBÙ™^ºZÉØB¸ºNÈ¹Â¸i.ÉÛN¸©BÈ8‚Ê	^»;NÉè^¸¸Ž¸ºBâ Ð¢–b'VÆRæ¶W’ÓÒ'G'V×öF—&V7E÷öÆ–7•÷&VÖ&·5÷vF6‚# Ð¢&WGW&â.¸*îÉØÇîÊI«Bâ»	ÎÉkŽÉØ»šº[N«(Â»	ŽÉˆ¹	ŽÊxºxÂ«;^È¹ÒºËŽÈIÂÊNÉy¸©B¹	Ž¸øÎºkÎ¸øB»šºh^¸¸Ž¸ºBâ Ð¢&WGW&â.¸*îÉØÇîÊI«Bâ«;^È¹ÒºËŽÈIÌ+~È¹ÎÙhžÉÛÌ+~ÊÉª’¸ÈÈ8Ù™^ÉÛ‚ÊN«˜ÎÊx¸©BÉˆŽ»˜BÉêÎº8ÎÉè^¸¸Ž¸ºBâ Ð Ð Ð¦FVb6ö×7Eöf–ÇW&U÷6–væÂ‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ7G# Ð¢&öf–ÆRÒ—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆRÂ—FV×2Ð¢–b&öf–ÆS Ð¢&WGW&â7G"‡&öf–ÆU²&f–ÇW&R%ÒÐ¢–b'VÆRæ¶W’ÓÒ&—&åö†÷&×W¥öÖ–Æ—F'•öW66ÆF–öâ# Ð¢&WGW&â.ºû‚«ZÞ»
+ž»h+t4TåD4ôÒÙ¸NÈhÒÂØk^ÙZÒ«	ÈhÂÂÉÊ«+~É«NÉèL+~Ù™ŽÉÊ‚»	ŽÉÙÉÛBÉxnÉËÎº›B¸ºŽ»	ÎÈKËjž¸øÎºÂÉ[ÞÙ™N¹
+ž¸¸Ž¸ºBâ Ð¢–b'VÆRæ¶W’ÓÒ'G'V×öF—&V7E÷öÆ–7•÷&VÖ&·5÷vF6‚# Ð¢&WGW&â.»ÉX^«Hþ»hË)‚Ù¸NÈhÒÂÉÊ«+~Ù™ŽÉÊŒ+~É«NÉèL+~»
+žÈ+Ø»ËºB»	ŽÉÙÉÛBÉxnÉËÎº›B¸ºŽ»	ÎÈK»	ÎÉkŽÉËÎºÂÊ	ÎÉ›ŽÙZž¸¸Ž¸ºBâ Ð¢&WGW&â.«;^È¹ÒÉ¹ºË‚ÂÈ¹ÎÙhžÉÛÂÂÊÉª’¸ÈÈ8ÂÙYÎ«ZÒ«‹ÉxRÊxÊ	¸[ŽËiÎÉÛBÙ™^ÉÛŽ¹	ŽÊxÉX®ÉËÎº›BÊ	ÎÉ›ŽÙZž¸¸Ž¸ºBâ Ð Ð Ð¦FVb6ö×7Eö6÷VçFW"‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ7G# Ð¢&öf–ÆRÒ—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆRÂ—FV×2Ð¢–b&öf–ÆS Ð¢&WGW&â7G"‡&öf–ÆU²&6÷VçFW"%ÒÐ¢–b'VÆRæ¶W’ÓÒ&—&åö†÷&×W¥öÖ–Æ—F'•öW66ÆF–öâ# Ð¢&WGW&â.¸ºŽ»	ÎÈK»;N»;R¹*BËiN««;^«*žÉÛBº˜ŽËiN«:È8ÈJØk^ÙZÞÉÛBÉÊÊx¹	Žº›BÉÊ«+~É«NÉèBËjž«*žÉØ»šº[N«(Â¹	Ž¸øÎºkBÈ‰‚ÉèŽÈ«^¸¸Ž¸ºBâ Ð¢&WGW&â.«;^È¹ÒºËŽÈIÌ+~È¹ÎÙhžÉÛÌ+~ÊÉª’»)NÉÈN«ÉXNÊxÉxn¸ºN¸©BÊ	Éè^¸¸Ž¸ºBâ Ð Ð Ð¦FVb—5÷G'V×ö—&åö—FVÒ‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ&ööÃ Ð¢–b'VÆRæ¶W’Ò'G'V×öF—&V7E÷öÆ–7•÷&VÖ&·5÷vF6‚"÷"æ÷B—FV×3 Ð¢&WGW&âfÇ6PÐ¢F—FÆRÒ6ÆVå÷7F÷'•÷F—FÆR‡7G"†—FV×5³ÒævWB‚'F—FÆR"Â""’’’æÆ÷vW"‚Ð¢&WGW&â&—&â"–âF—FÆR÷".ÉÛN¹è"–âF—FÆPÐ Ð Ð¦FVb6ö×7Eö–×7G2‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ7G# Ð¢&öf–ÆRÒ—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆRÂ—FV×2Ð¢–b&öf–ÆS Ð¢&WGW&â7G"‡&öf–ÆU²&–×7G2%ÒÐ¢ÖVBÒ².ºzNËiÌ+~ºxŽÊxL+~ÙˆN«ˆŽÙÙºhB"–bfÇVRÓÒ.¸ø‚»(N¸©B¸ª^º
+R"VÇ6RfÇVRf÷"fÇVR–â7Æ—EöF—7Æ•÷fÇVW2‡'VÆRæ–×7G2•ÐÐ¢&WGW&â¦ö–å÷6†÷'E÷fÇVW2†ÖVBÂÖ…ö—FV×3ÓBÂfÆÆ&6³Ò.ÉÙŽÈ*Î«+Ê	RÉˆÙjRÊ	ÎÙYÎÊ"Ð Ð Ð¦FVb6ö×7E÷F‡2‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ7G# Ð¢&öf–ÆRÒ—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆRÂ—FV×2Ð¢–b&öf–ÆS Ð¢&WGW&â7G"‡&öf–ÆU²'F‡2%ÒÐ¢&WGW&â¦ö–å÷6†÷'E÷fÇVW2‡'VÆRçF‡2ÂÖ…ö—FV×3ÓBÂfÆÆ&6³Ò.Ê	^ËRØ8ÉèN¹ÛÎÉÛ‚"Ð Ð Ð¦FVb6ö×7E÷6V7F÷'2‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒ’Óâ7G# Ð¢&öf–ÆRÒ—FVÕ÷7F÷'•÷&öf–ÆR‡'VÆRÂ—FV×2Ð¢–b&öf–ÆS Ð¢&WGW&â7G"‡&öf–ÆU²'6V7F÷'2%ÒÐ¢&WGW&â¦ö–å÷6†÷'E÷fÇVW2‡'VÆRç6V7F÷'2ÂÖ…ö—FV×3Ó2ÂfÆÆ&6³Ò.Ê	^ËRþ«yÎÊ	ÂÉÛÎ»	‚"Ð Ð Ð¦FVb6ö×7E÷öÆ–7•ö6÷&R‡fÇVS¢ö&¦V7BÂfÆÆ&6³¢ö&¦V7BÒ""ÂÆ–Ö—C¢–çBÒS’Óâ7G# Ð¢FW‡BÒ&Rç7V"‡"%Ç2²"Â""Â7G"‡fÇVR÷"fÆÆ&6²÷".Ù™^ÉÛ‚»hŽ«"’’ç7G&—‚Ð¢–bÆVâ‡FW‡B’ÃÒÆ–Ö—C Ð¢&WGW&âFW‡@Ð¢f÷"ÖF6‚–â&Ræf–æF—FW"‡""â³õ²âõÒƒóÕÇ7ÂB’"ÂFW‡B“ Ð¢6VçFVæ6RÒÖF6‚æw&÷Wƒ’ç7G&—‚Ð¢–b‚ÃÒÆVâ‡6VçFVæ6R’ÃÒÆ–Ö—C Ð¢&WGW&â6VçFVæ6PÐ¢&ööÒÒÖ‚ƒ‚ÂÆ–Ö—BÒBÐ¢†VBÒFW‡E³¢&ööÒ²ÐÐ¢&÷VæF'’ÒÖ‚€Ð¢†VBç&f–æB‚""’ÀÐ¢†VBç&f–æB‚"Â"’ÀÐ¢†VBç&f–æB‚,+r"’ÀÐ¢†VBç&f–æB‚#²"’ÀÐ¢†VBç&f–æB‚#¢"’ÀÐ¢Ð¢–b&÷VæF'’Â–çB‡&ööÒ¢ãb“ Ð¢&÷VæF'’Ò&ööÐÐ¢&WGW&â†VE³¦&÷VæF'•Òç'7G&—‚"Ì+s³¢â"’².Éè^¸¸Ž¸ºBâ Ð Ð Ð¦FVb6ö×7EöW‡ÆæF–öåöÆ–æW2‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒÂW‡Æ–åö—FVÓ¢F–7B’ÓâÆ—7E·7G%Ó Ð¢Vç7W&UöW‡Æ–æVB†W‡Æ–åö—FVÒÐ¢F—FÆRÒ7F÷'•öF—7Æ•÷F—FÆR‡'VÆRÂ—FV×2Ð¢6÷&RÒ6ö×7E÷öÆ–7•ö6÷&R†6ö×7Eö6÷&R‡'VÆRÂ—FV×2’ÂfÆÆ&6³×F—FÆRÐ¢&WGW&â¶b"ÒÙ[^ÈºÃ¢¶6÷&WÒ%ÐÐ Ð Ð¦FVb&VæFW%öÆW'E÷6V7F–öâ‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒÂæ÷s¢GBæFFWF–ÖRÂ–æFWƒ¢–çBÂ6÷W&6UöÆ–Ö—C¢–çBÒ’ÓâÆ—7E·7G%Ó Ð¢F—7Æ•÷F—FÆRÒ7F÷'•öF—7Æ•÷F—FÆR‡'VÆRÂ—FV×2Ð¢6÷W&6W2Ò6÷W&6Uö&—G2†—FV×2Â6÷W&6UöÆ–Ö—BÐ¢6÷W&6UöæÖW2Ò"Â"æ¦ö–â†F–7Bæg&öÖ¶W—2‡7G"†—FVÕ²'6÷W&6R%Ò’f÷"—FVÒ–â—FV×5³£5Ò’Ð¢ÖF6†VBÒ·'VÆRæ¶W“¢²$UR"Â$¶÷&V"Â'öÆ–7’%Ò–b'VÆRæ¶W’ç7F'G7v—F‚‚&WUö¶÷&Vò"’VÇ6R²'G'W7FVBöÆ–7’æWw2%×ÐÐ¢–b'VÆRæ¶W’ÓÒ'W5ö¦åö¶÷&V÷6×%öÖö5÷7FFU÷vF6‚# Ð¢ÖF6†VE²'7FFU÷6×%öÖö5÷öÆ–7’%ÒÒ²&Öö2"Â'6×""Â'6×7Vær2gB"Â&'w'‚Ó3%ÐÐ¢W‡Æ–åö—FVÒÒ°Ð¢'F—FÆR#¢'VÆRçF—FÆRÀÐ¢'6÷W&6R#¢6÷W&6UöæÖW2ÀÐ¢'7VÖÖ'’#¢b'·'VÆRæ6÷&WÒ·'VÆRçö–çGÒ"ÀÐ¢'7FGW2#¢.«;^È¹ÒÙ™^ÉÛ‚ÊB"ÀÐ¢'öÆ–7•÷Æ–å÷7VÖÖ'’#¢'VÆRæ6÷&RÀÐ¢&–çfW7FÖVçE÷f–Wr#¢'VÆRçö–çBÀÐ¢&6÷VçFW"#¢'VÆRæ6÷VçFW"ÀÐ¢'6V7F÷'2#¢'VÆRç6V7F÷'2ÀÐ¢&–×7G2#¢Æ—7B‡'VÆRæ–×7G2’ÀÐ¢'F‡2#¢Æ—7B‡'VÆRçF‡2’ÀÐ¢&WUö¶÷&V÷öÆ–7•÷vF6‚#¢'VÆRæ¶W’ç7F'G7v—F‚‚&WUö¶÷&Vò"’ÀÐ¢&WU÷öÆ–7•ö6FVv÷'’#¢'VÆRæ¶W’–b'VÆRæ¶W’ç7F'G7v—F‚‚&WUö¶÷&Vò"’VÇ6R""ÀÐ¢&WUö¶÷&V÷7FVVÅ÷öÆ–7•÷vF6‚#¢'VÆRæ¶W’ÓÒ&WUö¶÷&V÷7FVVÅ÷6fVwV&E÷&VÆ–Vb"ÀÐ¢'G'W7FVE÷öÆ–7•÷'VÆUö¶W’#¢'VÆRæ¶W’ÀÐ¢&ÖF6†VB#¢ÖF6†VBÀÐ¢ÐÐ¢Vç7W&UöW‡Æ–æVB†W‡Æ–åö—FVÒÐ Ð¢&WGW&â°Ð¢b'¶–æFW‡Òâ¾È8+~«;^È¹ÒÙ™^ÉÛ‚ÊEÒ¶F—7Æ•÷F—FÆWÒ"ÀÐ¢b"ÒÙ™^ÉÛ‚È8Ø9Ã¢«;^È¹ÒÉ¹ºË‚þÙ¸NÈhÒºËŽÈIÂÙ™^ÉÛ‚ÊBâÈºº+ÈhÎÈªBÙ™^ÉÛƒ¢·6÷W&6UöæÖW2÷"~Ù™^ÉÛ‚»hŽ«wÒâ"ÀÐ¢¦6ö×7EöW‡ÆæF–öåöÆ–æW2‡'VÆRÂ—FV×2ÂW‡Æ–åö—FVÒ’ÀÐ¢b"ÒËiÎË)ƒ¢·6÷W&6W7Ò+rÊÙ¨Â¶æ÷s¢Tƒ¢TÒµ5GÒ"ÀÐ¢""ÀÐ¢ÐÐ Ð Ð¦FVb&VæFW%öÆW'B‡'VÆS¢7F÷'•'VÆRÂ—FV×3¢Æ—7E¶F–7EÒÂæ÷s¢GBæFFWF–ÖR’Óâ7G# ¢Æ–æW2Ò°¢b'¶æ÷s¢Už¸XBVÞÉ¹BVNÉÛÂTƒ¢TÒµ5GÒ"À¢.«;^È¹Ò»	ÎÙÂÊBÊ	^ËR¸›NÈªB«BÙ™^ÉÛ‚"À¢""ÀÐ¢§&VæFW%öÆW'E÷6V7F–öâ‡'VÆRÂ—FV×2Âæ÷rÂ–æFWƒÓÂ6÷W&6UöÆ–Ö—CÓ2’ÀÐ¢.ØŠÎÉéÊÉkŽÉÛBÉXN¸¸ÂËŽ«:Éª’Ê	^Ë\+~«yÎÊ	ÂÉXÎºkÎÉè^¸¸Ž¸ºBâ"ÀÐ¢ÐÐ¢&WGW&â%Æâ"æ¦ö–â†Æ–æW2’²%Æâ Ð Ð Ð¦FVb&VæFW%öÆW'Eö'VæFÆR†ÆW'G3¢Æ—7E¶F–7EÒÂæ÷s¢GBæFFWF–ÖRÂÆ–Ö—C¢–çBÒ2’Óâ7G# ¢6VÆV7FVBÒÆW'G5³¦Æ–Ö—EÐÐ¢Æ–æW2Ò°¢b'¶æ÷s¢Už¸XBVÞÉ¹BVNÉÛÂTƒ¢TÒµ5GÒ"À¢b.«;^È¹Ò»	ÎÙÂÊBÊ	^ËR¸›NÈªB¶ÆVâ‡6VÆV7FVB—Þ«BÙ™^ÉÛ‚"À¢""ÀÐ¢ÐÐ¢f÷"–G‚ÂÆW'B–âVçVÖW&FR‡6VÆV7FVBÂ7F'CÓ“ Ð¢Æ–æW2æW‡FVæB‡&VæFW%öÆW'E÷6V7F–öâ†ÆW'E²''VÆR%ÒÂÆW'E²&—FV×2%ÒÂæ÷rÂ–æFWƒÖ–G‚Â6÷W&6UöÆ–Ö—CÓ’Ð¢Æ–æW2æVæB‚.ØŠÎÉéÊÉkŽÉÛBÉXN¸¸ÂËŽ«:Éª’Ê	^Ë\+~«yÎÊ	ÂÉXÎºkÎÉè^¸¸Ž¸ºBâ"Ð¢&WGW&â%Æâ"æ¦ö–â†Æ–æW2’²%Æâ Ð Ð Ð¦FVbÖ–â‚’Óâ–çC Ð¢æ÷rÒæ÷uö·7B‚Ð¢õUEôD•"æÖ¶F—"†W†—7Eöö³ÕG'VRÐ¢DDôD•"æÖ¶F—"†W†—7Eöö³ÕG'VRÐ¢6VVå÷–ÆöBÒÆöE÷6VVâ‚Ð¢6VVâÒ6VVå÷–ÆöBç6WFFVfVÇB‚'6VVâ"Â·ÒÐ Ð¢ÆW'G3¢Æ—7E¶F–7EÒÒµÐÐ¢f÷"'VÆR–â5Dõ%•õ%TÄU3 Ð¢–b'VÆRæ¶W’ç7F'G7v—F‚‚%öF—6&ÆVEò"“ Ð¢6öçF–çVPÐ¢—FV×2Ò6öÆÆV7E÷'VÆUö—FV×2‡'VÆRÂæ÷rÐ¢f÷"ÆW'Eö—FV×2–âÆW'Eö—FVÕöw&÷W2‡'VÆRÂ—FV×2“ Ð¢ÆW'Eö—FV×2ÒVç6VVåö—FV×5öf÷%÷'VÆR‡'VÆRÂÆW'Eö—FV×2Â6VVâÐ¢–bæ÷BÆW'Eö—FV×3 Ð¢6öçF–çVPÐ¢gÒ7F÷'•öWfVçEöf–ævW'&–çB‡'VÆRÂÆW'Eö—FV×2Ð¢–bg–â6VVã Ð¢6öçF–çVPÐ¢ÆW'G2æVæB€Ð¢°Ð¢''VÆR#¢'VÆRÀÐ¢&—FV×2#¢ÆW'Eö—FV×2ÀÐ¢&f–ævW'&–çB#¢gÀÐ¢&ÆVv7•öf–ævW'&–çB#¢f–ævW'&–çB‡'VÆRÂÆW'Eö—FV×2’ÀÐ¢ÐÐ¢Ð Ð¢–bæ÷BÆW'G3 Ð¢f÷"F‚–â„ÄU%EõD‚ÂD•DÄUõD‚ÂÄU%E5ô¥4ôåõD‚“ Ð¢–bF‚æW†—7G2‚“ Ð¢F‚çVæÆ–æ²‚Ð¢&–çB‚'G'W7FVE÷öÆ–7•öæWw5öÆW'G3Ó"Ð¢&WGW&â Ð Ð¢ÆW'G2ç6÷'B†¶W“ÖÆW'EöÆFW7Eö·7BÂ&WfW'6SÕG'VRÐ¢6VÆV7FVEöÆW'G2ÒÆW'G5³£5ÐÐ¢F÷Ò6VÆV7FVEöÆW'G5³ÐÐ¢W‡G&ö6÷VçBÒÖ‚ƒÂÆVâ‡6VÆV7FVEöÆW'G2’ÒÐ¢F—FÆU÷7Vff—‚Òb"É›‚¶W‡G&ö6÷VçGÞ«B"–bW‡G&ö6÷VçBVÇ6R" Ð¢&W÷'BÒ&VæFW%öÆW'Eö'VæFÆR‡6VÆV7FVEöÆW'G2Âæ÷rÐ¢ÄU%EõD‚çw&—FU÷FW‡B‡&W÷'BÂVæ6öF–æsÒ'WFbÓ‚"Ð¢D•DÄUõD‚çw&—FU÷FW‡B€Ð¢b.Èºº+É›ŽÈºÊ	^ËRÉ¸ÎË™ƒ¢¾È8+~«;^È¹ÒÙ™^ÉÛ‚ÊEÒ·7F÷'•öF—7Æ•÷F—FÆR‡F÷²w'VÆRuÒÂF÷²v—FV×2uÒ—×·F—FÆU÷7Vff—‡ÕÆâ"ÀÐ¢Væ6öF–æsÒ'WFbÓ‚"ÀÐ¢Ð¢ÄU%E5ô¥4ôåõD‚çw&—FU÷FW‡B€Ð¢§6öâæGV×2€Ð¢°Ð¢°Ð¢&¶W’#¢ÆW'E²''VÆR%Òæ¶W’ÀÐ¢'F—FÆR#¢ÆW'E²''VÆR%ÒçF—FÆRÀÐ¢'7FGW2#¢.«;^È¹ÒÙ™^ÉÛ‚ÊB"ÀÐ¢&—FV×2#¢ÆW'E²&—FV×2%ÒÀÐ¢&f–ævW'&–çB#¢ÆW'E²&f–ævW'&–çB%ÒÀÐ¢ÐÐ¢f÷"ÆW'B–âÆW'G0Ð¢ÒÀÐ¢Vç7W&Uö66–“ÔfÇ6RÀÐ¢–æFVçCÓ"ÀÐ¢Ð¢²%Æâ"ÀÐ¢Væ6öF–æsÒ'WFbÓ‚"ÀÐ¢Ð Ð¢f÷"ÆW'B–âÆW'G3 Ð¢6VVåöVçG'’Ò°Ð¢&¶W’#¢ÆW'E²''VÆR%Òæ¶W’ÀÐ¢'F—FÆR#¢ÆW'E²''VÆR%ÒçF—FÆRÀÐ¢&f—'7E÷6VVåö·7B#¢æ÷ræ—6öf÷&ÖB‡F–ÖW7V3Ò'6V6öæG2"’ÀÐ¢'7FGW2#¢.«;^È¹ÒÙ™^ÉÛ‚ÊB"ÀÐ¢'6÷W&6W2#¢¶—FVÕ²'6÷W&6R%Òf÷"—FVÒ–âÆW'E²&—FV×2%Õ³£5ÕÒÀÐ¢ÐÐ¢6VVå¶ÆW'E²&f–ævW'&–çB%ÕÒÒ6VVåöVçG'Ð¢6VVå¶ÆW'E²&ÆVv7•öf–ævW'&–çB%ÕÒÒ6VVåöVçG'Ð¢6VVå÷–ÆöE²'WFFVEöEö·7B%ÒÒæ÷ræ—6öf÷&ÖB‡F–ÖW7V3Ò'6V6öæG2"Ð¢4TTåõD‚çw&—FU÷FW‡B†§6öâæGV×2‡6VVå÷–ÆöBÂVç7W&Uö66–“ÔfÇ6RÂ–æFVçCÓ"Â6÷'Eö¶W—3ÕG'VR’²%Æâ"ÂVæ6öF–æsÒ'WFbÓ‚"Ð Ð¢&–çB†b'G'W7FVE÷öÆ–7•öæWw5öÆW'G3×¶ÆVâ†ÆW'G2—Ò"Ð¢&WGW&â Ð Ð Ð¦–bõöæÖUõòÓÒ%õöÖ–åõò# Ð¢&—6R7—7FVÔW†—B†Ö–â‚’Ð 
