@@ -1,4 +1,4 @@
-≠rá^—f•ñÿ¶{^,y 'v√Æ∂õ≠#!/usr/bin/env python3
+#!/usr/bin/env python3
 """KHS trusted policy-news watch.
 
 This lane is intentionally separate from the official-source policy watcher.

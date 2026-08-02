@@ -1,4 +1,4 @@
-≠rá^—f•ñÿ¶{^ly 'v√Æ∂õ≠#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Contract tests for KHS policy Telegram delivery quality.
 
 These checks encode regressions that already reached Telegram once:
