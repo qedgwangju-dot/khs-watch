@@ -1,0 +1,95 @@
+name: Telegram policy bot target test
+
+on:
+  push:
+    paths:
+      - ".github/workflows/telegram-policy-bot-target-test.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: telegram-policy-bot-target-test
+  cancel-in-progress: false
+
+jobs:
+  verify-and-send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify bot identity and send test
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+          chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip()
+          if not token or not chat_id:
+              raise RuntimeError("KHS_POLICY Telegram secret is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          if not identity.get("ok"):
+              raise RuntimeError(f"Telegram getMe failed: {identity}")
+          actual = identity.get("result", {}).get("username", "")
+          if actual != expected:
+              raise RuntimeError(
+                  f"Wrong Telegram bot: expected=@{expected}, actual=@{actual or 'unknown'}; test blocked"
+              )
+
+          now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          text = (
+              "[송출 대상 검증 테스트]\n\n"
+              f"발신 봇: @{actual}\n"
+              f"확인 시각: {now:%Y-%m-%d %H:%M:%S KST}\n\n"
+              "첫 번째 이미지의 알림 봇 전용 연결입니다. 실제 시장 조건 알림이 아닙니다."
+          )
+          payload = urllib.parse.urlencode(
+              {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"}
+          ).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              sent = json.loads(response.read().decode("utf-8"))
+          if not sent.get("ok"):
+              raise RuntimeError(f"Telegram sendMessage failed: {sent}")
+
+          result = {
+              "status": "confirmed",
+              "bot": f"@{actual}",
+              "message_id": sent.get("result", {}).get("message_id"),
+              "confirmed_at_kst": now.isoformat(timespec="seconds"),
+              "purpose": "telegram_policy_bot_target_test",
+          }
+          path = pathlib.Path("data/telegram_policy_bot_target_test_latest.json")
+          path.parent.mkdir(parents=True, exist_ok=True)
+          path.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(result, ensure_ascii=False))
+          PY
+
+      - name: Commit verification result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/telegram_policy_bot_target_test_latest.json
+          git commit -m "Record Telegram policy bot target test" || exit 0
+          git pull --rebase origin main
+          git push
