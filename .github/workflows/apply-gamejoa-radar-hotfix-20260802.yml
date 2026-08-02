@@ -1,0 +1,40 @@
+name: Apply GAMEJOA radar preflight hotfix
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/apply-gamejoa-radar-hotfix-20260802.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Apply focused patch
+        run: git apply --whitespace=fix .github/hotfixes/gamejoa-radar-preflight-20260802.patch
+      - name: Verify GAMEJOA contracts
+        run: |
+          python scripts/verify_gamejoa_news_coverage_contract.py | tee /tmp/coverage.log
+          ! grep -E "failed:|=failed|Traceback|AssertionError" /tmp/coverage.log
+          python scripts/verify_gamejoa_delivery_contract.py | tee /tmp/delivery.log
+          ! grep -E "failed:|=failed|Traceback|AssertionError" /tmp/delivery.log
+          python scripts/verify_gamejoa_native_schedule.py
+          python scripts/verify_gamejoa_semisupply_contract.py
+          python scripts/verify_high_impact_news_self_audit.py
+      - name: Commit verified hotfix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/gamejoa_preopen_news_radar_full_compact_runner.py scripts/verify_gamejoa_news_coverage_contract.py
+          git rm .github/hotfixes/gamejoa-radar-preflight-20260802.patch
+          git rm .github/workflows/apply-gamejoa-radar-hotfix-20260802.yml
+          git commit -m "Fix GAMEJOA radar preflight and leverage coverage"
+          git push origin main
