@@ -2,7 +2,6 @@ name: Iran Hormuz market turn Telegram alert
 
 on:
   schedule:
-    # GitHub cron is UTC. Check hourly at an offset from crowded slots.
     - cron: "41 * * * *"
   workflow_dispatch:
     inputs:
@@ -74,15 +73,11 @@ jobs:
       - name: Send Telegram alert
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/iran_hormuz_market_turn_alert.md') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_PRIMARY_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
           EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
         run: |
-          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "KHS_POLICY_TELEGRAM_BOT_TOKEN 또는 KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
-            exit 1
-          fi
-
           python - <<'PY'
           import datetime as dt
           import json
@@ -92,34 +87,31 @@ jobs:
           import urllib.request
           from zoneinfo import ZoneInfo
 
-          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
-          expected_bot_username = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip()
+          token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+          chat_id = (
+              os.environ.get("TELEGRAM_PRIMARY_CHAT_ID", "").strip()
+              or os.environ.get("TELEGRAM_FALLBACK_CHAT_ID", "").strip()
+          )
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip()
+          if not token or not chat_id:
+              raise RuntimeError("verified Telegram bot token or chat id is missing")
 
-          with urllib.request.urlopen(
-              f"https://api.telegram.org/bot{token}/getMe",
-              timeout=25,
-          ) as response:
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
           if not identity.get("ok"):
               raise RuntimeError(f"Telegram bot identity check failed: {identity}")
 
-          actual_bot_username = identity.get("result", {}).get("username", "")
-          if actual_bot_username != expected_bot_username:
+          actual = identity.get("result", {}).get("username", "")
+          if actual != expected:
               raise RuntimeError(
-                  "Telegram bot mismatch: "
-                  f"expected=@{expected_bot_username}, actual=@{actual_bot_username or 'unknown'}; "
-                  "message blocked"
+                  f"Telegram bot mismatch: expected=@{expected}, actual=@{actual or 'unknown'}; message blocked"
               )
 
           title = pathlib.Path("out/iran_hormuz_market_turn_title.txt").read_text(encoding="utf-8").strip()
           body = pathlib.Path("out/iran_hormuz_market_turn_alert.md").read_text(encoding="utf-8").strip()
           text = f"{title}\n\n{body}"[:4096]
           payload = urllib.parse.urlencode(
-              {
-                  "chat_id": os.environ["TELEGRAM_CHAT_ID"].strip(),
-                  "text": text,
-                  "disable_web_page_preview": "true",
-              }
+              {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"}
           ).encode("utf-8")
           request = urllib.request.Request(
               f"https://api.telegram.org/bot{token}/sendMessage",
@@ -133,7 +125,7 @@ jobs:
 
           confirmed = {
               "status": "confirmed",
-              "bot": f"@{actual_bot_username}",
+              "bot": f"@{actual}",
               "message_id": result.get("result", {}).get("message_id"),
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
@@ -141,10 +133,7 @@ jobs:
               json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
               encoding="utf-8",
           )
-          print(
-              "telegram_delivery_confirmed=true "
-              f"bot=@{actual_bot_username} message_id={confirmed['message_id']}"
-          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={confirmed['message_id']}")
           PY
 
       - name: Finalize alert state
