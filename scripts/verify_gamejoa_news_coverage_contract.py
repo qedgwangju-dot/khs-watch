@@ -381,6 +381,35 @@ def main() -> int:
             + str(emergency_alert.get("telegram_core_fact") or "")
         )
 
+    aquaculture_row = {
+        "source": "국내 신뢰매체 직접감시",
+        "publisher": "아시아경제",
+        "title": "끓는 바다에 양식어류 3만마리 떼죽음…양식장 시름",
+        "source_title": "끓는 바다에 양식어류 3만마리 떼죽음…양식장 시름",
+        "source_body": (
+            "고수온으로 양식어류 3만마리가 집단 폐사했다. 어가는 출하량 감소와 "
+            "추가 피해를 우려하고 지자체는 피해 규모를 조사 중이다."
+        ),
+        "source_abstract": "고수온 양식어류 집단 폐사",
+        "link": "https://n.news.naver.com/article/277/0005797720",
+        "published": now,
+        "body_verified": True,
+    }
+    aquaculture_text = " ".join(
+        str(aquaculture_row.get(key) or "")
+        for key in ("title", "source_body", "source_abstract")
+    ).lower()
+    aquaculture_alert = radar.build_korea_aquaculture_heat_loss_alert(
+        aquaculture_row, now, aquaculture_text
+    )
+    if not aquaculture_alert:
+        failures.append("aquaculture_heat_mass_mortality_alert=missing")
+    elif not radar.source_output_aligned(aquaculture_alert):
+        failures.append(
+            "aquaculture_heat_mass_mortality_alignment=source_body_mismatch:"
+            + str(aquaculture_alert.get("telegram_core_fact") or "")
+        )
+
     samsung_fund_row = {
         "source": "국내 신뢰매체 직접감시",
         "publisher": "조선비즈",
