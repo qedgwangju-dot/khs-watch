@@ -17,6 +17,10 @@ on:
   push:
     paths:
       - ".github/workflows/lng-supply-crisis-alert.yml"
+  pull_request:
+    paths:
+      - ".github/workflows/lng-supply-crisis-alert.yml"
+      - "data/lng_supply_crisis_trigger.txt"
 
 permissions:
   contents: write
@@ -30,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
-      LNG_SETUP_TEST: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test == 'true')) && 'true' || 'false' }}
+      LNG_SETUP_TEST: ${{ (github.event_name == 'push' || github.event_name == 'pull_request' || (github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test == 'true')) && 'true' || 'false' }}
 
     steps:
       - name: Checkout
@@ -64,12 +68,13 @@ jobs:
       - name: Send Telegram alert
         if: hashFiles('out/lng_supply_crisis_alert.md') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
           EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
         run: |
-          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "KHS_POLICY_TELEGRAM_BOT_TOKEN 또는 KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
+          if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
+            echo "YEN_CARRY_TELEGRAM_BOT_TOKEN이 없습니다." >&2
             exit 1
           fi
 
@@ -83,8 +88,13 @@ jobs:
           from zoneinfo import ZoneInfo
 
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
-          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          chat_id = (
+              os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+              or os.environ.get("FALLBACK_TELEGRAM_CHAT_ID", "").strip()
+          )
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip()
+          if not chat_id:
+              raise RuntimeError("Telegram chat id is missing")
 
           with urllib.request.urlopen(
               f"https://api.telegram.org/bot{token}/getMe",
@@ -180,7 +190,7 @@ jobs:
           retention-days: 7
 
       - name: Commit confirmed alert state
-        if: always() && hashFiles('data/lng_supply_crisis_state.json') != ''
+        if: always() && github.event_name != 'pull_request' && hashFiles('data/lng_supply_crisis_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
