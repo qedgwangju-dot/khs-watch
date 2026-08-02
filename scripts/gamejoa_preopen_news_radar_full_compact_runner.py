@@ -3316,6 +3316,74 @@ def build_korea_oil_fx_inflation_alert(row: dict, now, text: str) -> dict | None
     return alert
 
 
+def build_korea_aquaculture_heat_loss_alert(row: dict, now, text: str) -> dict | None:
+    marine_terms = ("양식장", "양식어류", "양식 어류", "어가")
+    mortality_terms = ("집단 폐사", "집단폐사", "떼죽음", "폐사")
+    cause_terms = ("고수온", "수온", "폭염", "적조", "산소 부족", "빈산소")
+    if not (
+        any(term in text for term in marine_terms)
+        and any(term in text for term in mortality_terms)
+        and any(term in text for term in cause_terms)
+    ):
+        return None
+
+    title = str(row.get("source_title") or row.get("title") or "").strip()
+    body = str(row.get("source_body") or row.get("source_abstract") or "").strip()
+    core = article_sentences(
+        body,
+        ["양식", "폐사", "고수온", "수온", "피해", "마리", "억원", "가격"],
+        2,
+        title=title,
+    )
+    if not core:
+        core = title
+
+    alert = base_korean_business_alert(
+        row,
+        now,
+        score=104,
+        impacts=["돈 버는 능력", "시간표"],
+    )
+    alert.update(
+        {
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "investment_view": (
+                "고수온·적조 피해가 확대되면 양식 출하량 감소와 폐사 손실이 수산물 "
+                "공급·가격, 사료·백신·보험 및 냉각·산소공급 장비 수요를 바꿀 수 있습니다."
+            ),
+            "korea_market_impact": (
+                "수산물 유통·가공, 양식 사료·백신, 어업재해보험과 수처리·냉각·산소공급 "
+                "장비 중 실제 피해 지역과 매출 노출이 확인되는 종목만 연결합니다."
+            ),
+            "priced_in": (
+                "낮음~중간. 현장 폐사는 빠르게 발생하지만 전국 피해 집계와 출하가격 "
+                "전가는 뒤늦게 확인되는 경우가 많습니다."
+            ),
+            "counter": (
+                "단일 양식장 사고이거나 조기 출하·긴급 방류로 공급 차질이 제한되면 "
+                "전국 수산물 가격과 상장사 실적 영향은 작을 수 있습니다."
+            ),
+            "failed_signal": (
+                "해수부·지자체 피해 집계, 산지가격 상승, 출하량 감소 또는 관련 기업의 "
+                "비용·수주 변화가 확인되지 않으면 지역성 피해 뉴스로 낮춥니다."
+            ),
+            "sectors": [
+                "수산물/양식",
+                "사료·백신/어업재해보험",
+                "수처리·냉각/산소공급 장비",
+            ],
+            "korean_business_kind": "korea_aquaculture_heat_mass_mortality",
+            "supply_chain_theme": (
+                "korea_aquaculture_heat_loss:"
+                f"{korean_business_event_date(row)}:"
+                f"{base.norm(title)[:24]}"
+            ),
+        }
+    )
+    return alert
+
+
 def build_fomc_rate_outlook_alert(row: dict, now, text: str) -> dict | None:
     title = str(row.get("source_title") or row.get("title") or "").lower()
     if not (
@@ -4036,6 +4104,7 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
         build_korea_nvidia_ecosystem_alert,
         build_bigtech_ai_layoff_alert,
         build_middle_east_geopolitical_alert,
+        build_korea_aquaculture_heat_loss_alert,
         build_korea_oil_fx_inflation_alert,
         build_fomc_rate_outlook_alert,
         build_china_memory_ipo_alert,
