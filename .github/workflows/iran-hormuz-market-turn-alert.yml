@@ -1,0 +1,155 @@
+name: Iran Hormuz market turn Telegram alert
+
+on:
+  schedule:
+    # GitHub cron is UTC. Check hourly at an offset from crowded slots.
+    - cron: "41 * * * *"
+  workflow_dispatch:
+    inputs:
+      telegram_test:
+        description: "Send a one-time Telegram connection test"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+  pull_request:
+    paths:
+      - ".github/workflows/iran-hormuz-market-turn-alert.yml"
+      - "scripts/iran_hormuz_market_turn_alert.py"
+      - "tests/test_iran_hormuz_market_turn_alert.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: iran-hormuz-market-turn-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_TEST: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false' }}
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      IRAN_HORMUZ_MAX_NEWS_AGE_HOURS: "72"
+      IRAN_HORMUZ_MARKET_MAX_AGE_MINUTES: "240"
+      IRAN_HORMUZ_YAHOO_INTERVAL: "5m"
+      IRAN_HORMUZ_YAHOO_RANGE: "5d"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate monitor
+        run: |
+          python -m py_compile scripts/iran_hormuz_market_turn_alert.py
+          python -m unittest tests/test_iran_hormuz_market_turn_alert.py -v
+
+      - name: Check Iran Hormuz market turn conditions
+        run: python scripts/iran_hormuz_market_turn_alert.py
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/iran_hormuz_market_turn_watch.md ]; then
+            cat out/iran_hormuz_market_turn_watch.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "이란·호르무즈 시장 전환 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Preview pull request alert without sending
+        if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/iran_hormuz_market_turn_alert.md') != ''
+        run: |
+          printf '\n---\n\nTelegram 미전송 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/iran_hormuz_market_turn_alert.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Send Telegram alert
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/iran_hormuz_market_turn_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "KHS_POLICY_TELEGRAM_BOT_TOKEN 또는 KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          title = pathlib.Path("out/iran_hormuz_market_turn_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/iran_hormuz_market_turn_alert.md").read_text(encoding="utf-8").strip()
+          text = f"{title}\n\n{body}"[:4096]
+          payload = urllib.parse.urlencode(
+              {
+                  "chat_id": os.environ["TELEGRAM_CHAT_ID"].strip(),
+                  "text": text,
+                  "disable_web_page_preview": "true",
+              }
+          ).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{os.environ['TELEGRAM_BOT_TOKEN'].strip()}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/iran_hormuz_market_turn_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true message_id={confirmed['message_id']}")
+          PY
+
+      - name: Finalize alert state
+        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: python scripts/iran_hormuz_market_turn_alert.py --finalize
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iran-hormuz-market-turn-${{ github.run_id }}
+          path: |
+            out/iran_hormuz_market_turn_watch.md
+            out/iran_hormuz_market_turn_alert.md
+            out/iran_hormuz_market_turn_alert.json
+            out/iran_hormuz_market_turn_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Commit confirmed alert state
+        if: always() && github.event_name != 'pull_request' && hashFiles('data/iran_hormuz_market_turn_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/iran_hormuz_market_turn_state.json
+          if git diff --cached --quiet; then
+            echo "이란·호르무즈 시장 전환 상태 변경 없음"
+          else
+            git commit -m "Update Iran Hormuz market turn state"
+            git pull --rebase origin main
+            git push
+          fi
