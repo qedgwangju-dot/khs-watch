@@ -17,10 +17,6 @@ on:
   push:
     paths:
       - ".github/workflows/lng-supply-crisis-alert.yml"
-  pull_request:
-    paths:
-      - ".github/workflows/lng-supply-crisis-alert.yml"
-      - "data/lng_supply_crisis_trigger.txt"
 
 permissions:
   contents: write
@@ -34,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
-      LNG_SETUP_TEST: ${{ (github.event_name == 'push' || github.event_name == 'pull_request' || (github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test == 'true')) && 'true' || 'false' }}
+      LNG_SETUP_TEST: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test == 'true')) && 'true' || 'false' }}
 
     steps:
       - name: Checkout
@@ -190,7 +186,7 @@ jobs:
           retention-days: 7
 
       - name: Commit confirmed alert state
-        if: always() && github.event_name != 'pull_request' && hashFiles('data/lng_supply_crisis_state.json') != ''
+        if: always() && hashFiles('data/lng_supply_crisis_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
