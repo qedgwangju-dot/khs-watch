@@ -1,33 +1,16 @@
 diff --git a/scripts/gamejoa_preopen_news_radar_full_compact_runner.py b/scripts/gamejoa_preopen_news_radar_full_compact_runner.py
-index 808bb90..14cecd1 100644
+index e9ef96b..13332ba 100644
 --- a/scripts/gamejoa_preopen_news_radar_full_compact_runner.py
 +++ b/scripts/gamejoa_preopen_news_radar_full_compact_runner.py
-@@ -1063,8 +1063,8 @@ ARTICLE_SUMMARY_NOISE_PATTERNS = [
-     r"AI\s*학습\s*및\s*활용\s*금지",
+@@ -1064,7 +1064,7 @@ ARTICLE_SUMMARY_NOISE_PATTERNS = [
      r"저작권자\s*©?\s*이투데이",
      r"Copyright\s*©?\s*Etoday",
--    r"\[(?:헤럴드경제|이데일리|머니투데이|매일경제|전자신문|연합뉴스)"
+     r"\[(?:헤럴드경제|이데일리|머니투데이|매일경제|전자신문|연합뉴스)"
 -    r"\s*=\s*[^\]]{1,30}\s*기자\]",
-+    r"\[(?:헤럴드경제|이데일리|머니투데이|매일경제|전자신문|연합뉴스)"
 +    r"(?:\s*=\s*|\s+)[^\]]{1,30}\s*기자\]",
      r"(?:fn\s+)?공유(?:\s+공유하기)?(?:\s+글자크기){1,2}\s+설정\s+"
      r"프린트(?:\s+구독){1,2}(?:\s+증권(?:일반)?){0,2}",
      r"페이스북\s+X\(트위터\)\s+메일\s+URL\s+복사\s+작게\s+보통\s+크게",
-@@ -2735,10 +2735,10 @@ def build_strategic_technology_investment_alert(row: dict, now, text: str) -> di
-             "korean_business_kind": "strategic_technology_fund_investment",
-             "supply_chain_theme": (
-                 f"strategic_technology_fund:{company_key}:{korean_business_event_date(row)}"
--            ),
--        }
--    )
--    if row.get("_pinned_direct_article"):
-+            ),
-+        }
-+    )
-+    if row.get("_pinned_direct_article"):
-         article_id = re.sub(r"[^A-Za-z0-9]", "", str(row.get("link") or "").rstrip("/").rsplit("/", 1)[-1])
-         alert["_pinned_direct_article"] = True
-         alert["supply_chain_theme"] = f"direct_trusted_article:{article_id}"
 @@ -2749,8 +2749,17 @@ def build_single_stock_leverage_rule_alert(row: dict, now, text: str) -> dict |
      if not (
          "레버리지" in text
@@ -48,22 +31,10 @@ index 808bb90..14cecd1 100644
      ):
          return None
      date_key = korean_business_event_date(row)
-@@ -2771,15 +2780,30 @@ def build_single_stock_leverage_rule_alert(row: dict, now, text: str) -> dict |
-             "korea_market_impact": "삼성전자·SK하이닉스 단일종목 레버리지 ETF·ETN 거래대금과 현물 연계수급을 확인합니다.",
-             "sectors": ["금융/자본시장", "반도체/HBM/CXL"],
-             "paths": ["상품 진입규제", "수급", "정책 시행일"],
--            "korean_business_kind": "single_stock_leverage_rule",
-+            "korean_business_kind": "single_stock_leverage_rule",
-             "supply_chain_theme": (
-                 "korea_single_stock_leverage_rule:2026-07-31"
-                 if "31일" in text
-                 else f"korea_single_stock_leverage_rule:{date_key}"
+@@ -2779,6 +2788,21 @@ def build_single_stock_leverage_rule_alert(row: dict, now, text: str) -> dict |
              ),
--        }
--    )
--    if row.get("_pinned_direct_article"):
-+        }
-+    )
+         }
+     )
 +    if "긴급조치권" in text:
 +        alert.update(
 +            {
@@ -79,10 +50,9 @@ index 808bb90..14cecd1 100644
 +                "supply_chain_theme": f"korea_single_stock_leverage_emergency_power:{date_key}",
 +            }
 +        )
-+    if row.get("_pinned_direct_article"):
+     if row.get("_pinned_direct_article"):
          article_id = str(row.get("link") or "").rstrip("/").rsplit("/", 1)[-1]
          title = str(row.get("source_title") or row.get("title") or "")
-         body = str(row.get("source_body") or row.get("source_abstract") or "")
 @@ -4549,7 +4573,9 @@ def source_output_aligned(alert: dict) -> bool:
          source_title = base.norm(alert.get("source_title"))
          rendered_title = base.norm(alert.get("news"))
@@ -95,18 +65,13 @@ index 808bb90..14cecd1 100644
              f"{alert.get('source_title') or ''} {alert.get('source_abstract') or ''}"
          )
 diff --git a/scripts/verify_gamejoa_news_coverage_contract.py b/scripts/verify_gamejoa_news_coverage_contract.py
-index 2828b6f..9ae7583 100644
+index 5c1ad69..38a7b16 100644
 --- a/scripts/verify_gamejoa_news_coverage_contract.py
 +++ b/scripts/verify_gamejoa_news_coverage_contract.py
-@@ -252,8 +252,18 @@ def main() -> int:
-     ]
-     if radar.insider_purchase_fact(viral_title, contaminated_sentences):
-         failures.append("viral_related_article_insider_fact=not_blocked")
--    if radar.korean_title_core_aligned(viral_title, contaminated_core):
--        failures.append("viral_generic_role_alignment=not_blocked")
-+    if radar.korean_title_core_aligned(viral_title, contaminated_core):
-+        failures.append("viral_generic_role_alignment=not_blocked")
-+
+@@ -255,6 +255,16 @@ def main() -> int:
+     if radar.korean_title_core_aligned(viral_title, contaminated_core):
+         failures.append("viral_generic_role_alignment=not_blocked")
+ 
 +    reporter_prefixed_core = radar.detailed_article_core(
 +        "워시, FOMC 정례회의 연 8회 축소 검토",
 +        (
@@ -116,35 +81,14 @@ index 2828b6f..9ae7583 100644
 +    )
 +    if "기자" in reporter_prefixed_core or "이데일리" in reporter_prefixed_core:
 +        failures.append(f"reporter_boilerplate_not_removed={reporter_prefixed_core}")
- 
++
      viral_alert = {
          "source": "국내 신뢰매체 직접감시",
-@@ -325,9 +335,9 @@ def main() -> int:
-         str(leverage_effect_row.get(key) or "")
-         for key in ("title", "source_body", "source_abstract")
-     ).lower()
--    leverage_effect_alert = radar.build_single_stock_leverage_rule_alert(
--        leverage_effect_row, now, leverage_effect_text
--    )
-+    leverage_effect_alert = radar.build_single_stock_leverage_rule_alert(
-+        leverage_effect_row, now, leverage_effect_text
-+    )
-     if not leverage_effect_alert:
-         failures.append("single_stock_leverage_rule_effect_alert=missing")
-     else:
-@@ -337,10 +347,39 @@ def main() -> int:
-                 failures.append(
-                     f"single_stock_leverage_rule_effect_core_missing={fact}:{effect_core}"
-                 )
--        if "유안타증권" in effect_core or "코스닥 우량 성장주" in effect_core:
--            failures.append(
--                f"single_stock_leverage_rule_effect_stale_template={effect_core}"
--            )
-+        if "유안타증권" in effect_core or "코스닥 우량 성장주" in effect_core:
-+            failures.append(
-+                f"single_stock_leverage_rule_effect_stale_template={effect_core}"
-+            )
-+
+         "publisher": "뉴시스",
+@@ -342,6 +352,35 @@ def main() -> int:
+                 f"single_stock_leverage_rule_effect_stale_template={effect_core}"
+             )
+ 
 +    emergency_leverage_row = {
 +        "source": "이투데이 경제",
 +        "publisher": "이투데이",
@@ -173,6 +117,9 @@ index 2828b6f..9ae7583 100644
 +            "single_stock_leverage_emergency_alignment=source_body_mismatch:"
 +            + str(emergency_alert.get("telegram_core_fact") or "")
 +        )
- 
++
      samsung_fund_row = {
          "source": "국내 신뢰매체 직접감시",
+         "publisher": "조선비즈",
+warning: in the working copy of 'scripts/gamejoa_preopen_news_radar_full_compact_runner.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/verify_gamejoa_news_coverage_contract.py', LF will be replaced by CRLF the next time Git touches it
