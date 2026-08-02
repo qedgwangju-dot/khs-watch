@@ -1102,6 +1102,24 @@ def trump_story_profile(title: str) -> dict[str, object] | None:
             "sectors": "정유/화학, 해운, 항공/운송, 방산/지정학",
             "failure": "공식 협상 일정, 통항 정상화, 유가·운임·환율 반응이 없으면 단발성 발언으로 약화됩니다.",
         }
+    if (
+        "iran" in low
+        and any(term in low for term in ("hold off", "held off", "pause", "delay"))
+        and any(term in low for term in ("attack", "strike"))
+        and any(term in low for term in ("deal", "agreement"))
+    ):
+        return {
+            **common,
+            "revision": "trump-iran-attack-holdoff-deal-ko-v1",
+            "title": "트럼프, 신속한 합의 기대하며 이란 추가 공격 보류",
+            "core": "트럼프는 신속한 합의를 기대해 이란 추가 공격을 보류했습니다. 조건부 유예입니다.",
+            "investment": "추가 공격 유예는 중동 위험프리미엄을 낮출 수 있지만 합의가 지연되면 재공격 위험이 남습니다.",
+            "korea": "정유·화학 원가, 해운·항공 운임, 방산과 원/달러 반응을 함께 확인합니다.",
+            "impacts": "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표",
+            "paths": "지정학 리스크, 유가·운임, 환율, 정책 타임라인",
+            "sectors": "정유/화학, 해운, 항공/운송, 방산/지정학",
+            "failure": "신속한 합의나 공식 협상 일정이 확인되지 않고 추가 공격이 재개되면 완화 재료가 소멸합니다.",
+        }
     if ("iran" in low or "이란" in low) and any(term in low for term in ("negot", "talk", "deal", "contact", "reached out", "agreement", "협상", "연락")):
         return {
             **common,
@@ -1501,7 +1519,7 @@ def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, i
 
 def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
     lines = [
-        f"🚨 신뢰외신 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}",
+        f"{now:%Y년 %m월 %d일 %H:%M KST}",
         "공식 발표 전 정책 뉴스 1건 확인",
         "",
         *render_alert_section(rule, items, now, index=1, source_limit=3),
@@ -1513,7 +1531,7 @@ def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
 def render_alert_bundle(alerts: list[dict], now: dt.datetime, limit: int = 3) -> str:
     selected = alerts[:limit]
     lines = [
-        f"🚨 신뢰외신 정책·규제 고충격 워치 · {now:%Y년 %m월 %d일 %H:%M KST}",
+        f"{now:%Y년 %m월 %d일 %H:%M KST}",
         f"공식 발표 전 정책 뉴스 {len(selected)}건 확인",
         "",
     ]

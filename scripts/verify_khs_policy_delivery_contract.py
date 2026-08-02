@@ -94,6 +94,7 @@ def main() -> int:
     assert_nato_defense_fact_sheet_is_not_generic_trump_alert()
     assert_trump_iran_war_statement_reaches_geopolitical_lane()
     assert_trusted_iran_hormuz_escalation_reaches_policy_lane()
+    assert_trusted_trump_iran_holdoff_summary_and_header()
     assert_trusted_policy_news_story_fingerprint_allows_intraday_updates()
     assert_trusted_policy_news_render_is_compact()
     assert_trusted_trump_rate_and_dollar_profiles_are_specific()
@@ -859,6 +860,37 @@ def assert_trusted_iran_hormuz_escalation_reaches_policy_lane() -> None:
             raise AssertionError(f"trusted Iran/Hormuz alert leaked removed field: {marker}")
 
 
+def assert_trusted_trump_iran_holdoff_summary_and_header() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "trump_direct_policy_remarks_watch"
+    )
+    item = {
+        "title": "Trump says he will hold off on fresh Iran attack in hope of quick deal - Reuters",
+        "source": "Reuters",
+        "published_kst": "2026-08-02T07:33:00+09:00",
+        "link": "https://news.google.com/rss/articles/reuters-trump-iran-holdoff-fixture",
+        "priority": 8,
+    }
+    rendered = khs_trusted_policy_news_watch.render_alert(
+        rule,
+        [item],
+        dt.datetime(2026, 8, 2, 12, 29, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    lines = rendered.splitlines()
+    if not lines or lines[0] != "2026년 08월 02일 12:29 KST":
+        raise AssertionError("trusted-policy body header is not date/time only")
+    for marker in (
+        "트럼프, 신속한 합의 기대하며 이란 추가 공격 보류",
+        "트럼프는 신속한 합의를 기대해 이란 추가 공격을 보류했습니다. 조건부 유예입니다.",
+        "Reuters",
+    ):
+        if marker not in rendered:
+            raise AssertionError(f"Trump Iran holdoff alert missing source-specific marker: {marker}")
+    if "신뢰외신 정책·규제 고충격 워치" in lines[0]:
+        raise AssertionError("trusted-policy body header still contains the watch name")
+
+
 def assert_trusted_policy_news_story_fingerprint_allows_intraday_updates() -> None:
     rule = next(
         rule for rule in khs_trusted_policy_news_watch.STORY_RULES
@@ -1342,7 +1374,7 @@ def assert_delivery_guard_compacts_and_sends_51_character_prose() -> None:
     )
     lane.body.write_text(
         "\n".join([
-            "🚨 신뢰외신 정책·규제 고충격 워치 · 2026년 07월 23일 20:00 KST",
+            "2026년 07월 23일 20:00 KST",
             "",
             "1. [상·예비] 미국, 반도체 수출통제 확대 검토",
             (
