@@ -1,0 +1,120 @@
+name: USDJPY rapid-move immediate alert
+
+on:
+  push:
+    paths:
+      - ".github/workflows/yen-carry-fx-shock-now.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yen-carry-fx-shock-immediate
+  cancel-in-progress: true
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      YEN_CARRY_FX_SHOCK_MAX_AGE_MINUTES: "20"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate rapid-move monitor
+        run: |
+          python -m py_compile scripts/yen_carry_fx_shock.py
+          python -m unittest tests/test_yen_carry_fx_shock.py -v
+
+      - name: Check current USDJPY rapid move
+        run: python scripts/yen_carry_fx_shock.py
+
+      - name: Send actual rapid-move alert through second bot
+        if: hashFiles('out/yen_carry_fx_shock_alert.md') != ''
+        env:
+          BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          YEN_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          EXISTING_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ.get("BOT_TOKEN", "").strip()
+          chat_id = os.environ.get("YEN_CHAT_ID", "").strip() or os.environ.get("EXISTING_CHAT_ID", "").strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("second bot token or chat id missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
+
+          title = pathlib.Path("out/yen_carry_fx_shock_alert_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/yen_carry_fx_shock_alert.md").read_text(encoding="utf-8").strip()
+          data = urllib.parse.urlencode(
+              {"chat_id": chat_id, "text": f"{title}\n\n{body}"[:4096], "disable_web_page_preview": "true"}
+          ).encode("utf-8")
+          request = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+          confirmed = {
+              "status": "confirmed",
+              "lane": "fx_shock",
+              "bot_username": actual,
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/yen_carry_fx_shock_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          print(f"fx_shock_delivery_confirmed=true bot=@{actual} message_id={confirmed['message_id']}")
+          PY
+
+      - name: Finalize state after confirmed delivery
+        if: always()
+        run: python scripts/yen_carry_fx_shock.py --finalize
+
+      - name: Commit rapid-move state
+        if: always() && hashFiles('data/yen_carry_fx_shock_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/yen_carry_fx_shock_state.json
+          if git diff --cached --quiet; then
+            echo "USDJPY 급변 상태 변경 없음"
+          else
+            git commit -m "Update USDJPY rapid-move alert state"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: usdjpy-rapid-alert-${{ github.run_id }}
+          path: |
+            out/yen_carry_fx_shock_watch.md
+            out/yen_carry_fx_shock_alert.md
+            out/yen_carry_fx_shock_alert.json
+            out/yen_carry_fx_shock_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 7
