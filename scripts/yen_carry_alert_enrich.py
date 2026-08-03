@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Add a verified USD/JPY 24-hour change and range line to alert output."""
+"""Enrich yen alerts with verified market context and compact sector impacts."""
 
 from __future__ import annotations
 
@@ -12,12 +12,16 @@ import urllib.parse
 from khs_source_fetch import fetch_text
 
 BODY_PATH = pathlib.Path("out/yen_carry_alert.md")
+FX_BODY_PATH = pathlib.Path("out/yen_carry_fx_shock_alert.md")
+FX_JSON_PATH = pathlib.Path("out/yen_carry_fx_shock_alert.json")
 SYMBOL = "JPY=X"
 BASES = (
     "https://query1.finance.yahoo.com/v8/finance/chart",
     "https://query2.finance.yahoo.com/v8/finance/chart",
 )
-USER_AGENT = "Mozilla/5.0 yen-carry-alert/2.0"
+USER_AGENT = "Mozilla/5.0 yen-carry-alert/2.1"
+SECTOR_HEADING = "산업·업종 영향"
+FINAL_MARKER = "이 경보는 기존 엔캐리 청산 확정 경보와 별개입니다."
 
 
 def finite(value: object) -> float | None:
@@ -96,17 +100,88 @@ def insert_line(body: str, line: str) -> str:
     lines = body.splitlines()
     lines = [item for item in lines if not item.startswith("USD/JPY 24시간:")]
     insert_at = next(
-        (index + 1 for index, item in enumerate(lines) if item.strip().startswith(("USD/JPY:", "- USD/JPY:"))),
+        (
+            index + 1
+            for index, item in enumerate(lines)
+            if item.strip().startswith(("USD/JPY:", "- USD/JPY:"))
+        ),
         1 if lines else 0,
     )
     lines.insert(insert_at, line)
     return "\n".join(lines).strip() + "\n"
 
 
-def main() -> int:
+def sector_impact_block(alert: dict) -> str:
+    """Return a compact, lane-aware sector impact block for Telegram."""
+    stage = int(alert.get("stage") or 0)
+    fast_stage = int(alert.get("fast_stage") or 0)
+    sustained_stage = int(alert.get("sustained_stage") or 0)
+
+    if sustained_stage > 0:
+        timing = (
+            "지속 엔고 영향: 환율 변화가 기업의 매출 환산·수입 원가에 "
+            "반영될 가능성이 커지는 구간"
+        )
+    elif fast_stage > 0:
+        timing = (
+            "급변 직후 영향: 우선 주가·수급 반응이며, 실제 실적 영향은 "
+            "엔고의 지속 여부를 더 확인"
+        )
+    else:
+        timing = "참고 영향: 활성 엔화 강세 경보의 지속 여부를 확인"
+
+    intensity = "강함" if stage >= 2 else "주의"
+    return "\n".join(
+        [
+            SECTOR_HEADING,
+            f"판정 강도: {intensity} · {timing}",
+            "• 일본 부담: 자동차·전자·기계 수출주 — 엔화 환산 매출 감소와 가격경쟁력 약화 가능",
+            "• 일본 수혜: 전력·항공·유통·식품 — 원유·LNG·수입 원가 부담 완화 가능",
+            "• 한국 상대 수혜: 자동차·부품·기계 — 일본 경쟁사의 엔저 가격 이점 축소",
+            "• 한국 반도체: 직접 영향 제한적 — AI 투자·메모리 업황이 우선이며 엔캐리 청산 수급은 단기 부담",
+            "• 소비자: 일본 여행·일본산 수입품 가격 상승 가능, 국내 대체재·한국 관광은 상대 수혜 가능",
+            "주의: 실제 영향은 환헤지·해외생산 비중·원자재 가격에 따라 달라집니다.",
+        ]
+    )
+
+
+def insert_sector_block(body: str, block: str) -> str:
+    """Insert or replace the sector block before the final alert disclaimer."""
+    lines = body.splitlines()
+    try:
+        start = lines.index(SECTOR_HEADING)
+    except ValueError:
+        start = -1
+
+    if start >= 0:
+        end = next(
+            (
+                index
+                for index in range(start + 1, len(lines))
+                if lines[index].strip() == FINAL_MARKER
+            ),
+            len(lines),
+        )
+        del lines[start:end]
+        while start < len(lines) and not lines[start].strip():
+            del lines[start]
+
+    insert_at = next(
+        (
+            index
+            for index, item in enumerate(lines)
+            if item.strip() == FINAL_MARKER
+        ),
+        len(lines),
+    )
+    block_lines = ["", *block.splitlines(), ""]
+    lines[insert_at:insert_at] = block_lines
+    return "\n".join(lines).strip() + "\n"
+
+
+def enrich_24h_alert() -> str:
     if not BODY_PATH.exists():
-        print("yen_carry_24h=skipped_no_alert")
-        return 0
+        return "skipped_no_alert"
 
     body = BODY_PATH.read_text(encoding="utf-8")
     try:
@@ -121,7 +196,27 @@ def main() -> int:
         status = "unavailable"
 
     BODY_PATH.write_text(insert_line(body, line), encoding="utf-8")
-    print(f"yen_carry_24h={status}")
+    return status
+
+
+def enrich_fx_sector_alert() -> str:
+    if not FX_BODY_PATH.exists() or not FX_JSON_PATH.exists():
+        return "skipped_no_fx_alert"
+    try:
+        alert = json.loads(FX_JSON_PATH.read_text(encoding="utf-8"))
+        body = FX_BODY_PATH.read_text(encoding="utf-8")
+        FX_BODY_PATH.write_text(
+            insert_sector_block(body, sector_impact_block(alert)),
+            encoding="utf-8",
+        )
+        return "added"
+    except Exception as exc:
+        return f"unavailable_{type(exc).__name__}"
+
+
+def main() -> int:
+    print(f"yen_carry_24h={enrich_24h_alert()}")
+    print(f"yen_carry_sector={enrich_fx_sector_alert()}")
     return 0
 
 
