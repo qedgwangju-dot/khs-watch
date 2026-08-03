@@ -1,0 +1,11 @@
+{
+  "status": "preparing",
+  "measurement": [
+    "immediate_snapshot",
+    "30_minute_followup",
+    "market_close_followup"
+  ],
+  "core_metric": "sector return minus TOPIX or KOSPI return",
+  "data_policy": "sector ETF primary, representative-stock median fallback, query1/query2 cross-check",
+  "causality_policy": "relative performance indicates possible linkage, not sole causation"
+}
