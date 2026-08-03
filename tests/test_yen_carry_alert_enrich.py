@@ -12,6 +12,9 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import yen_carry_alert_enrich as enrich  # noqa: E402
+import yen_sector_config as sector_config  # noqa: E402
+import yen_sector_data as sector_data  # noqa: E402
+import yen_sector_format as sector_format  # noqa: E402
 import yen_sector_reaction as reaction  # noqa: E402
 
 
@@ -87,6 +90,111 @@ class YenCarryAlertEnrichTests(unittest.TestCase):
         )
 
 
+class KoreanSectorPrecisionTests(unittest.TestCase):
+    def test_korean_benchmarks_are_market_specific(self) -> None:
+        specs = {spec.key: spec for spec in sector_config.SECTORS}
+        self.assertEqual(specs["kr_auto"].benchmark, "069500.KS")
+        self.assertEqual(specs["kr_auto"].benchmark_label, "KOSPI 200")
+        self.assertEqual(specs["kr_semis"].benchmark, "069500.KS")
+        self.assertEqual(specs["kr_semis"].primary, ())
+        self.assertEqual(specs["kr_semicap"].benchmark, "229200.KS")
+        self.assertEqual(specs["kr_semicap"].benchmark_label, "KOSDAQ 150")
+        self.assertTrue(
+            all(symbol.endswith(".KQ") for symbol in specs["kr_semicap"].components)
+        )
+
+    def test_all_symbols_include_every_sector_benchmark(self) -> None:
+        symbols = sector_data.all_symbols()
+        for spec in sector_config.SECTORS:
+            self.assertIn(spec.benchmark, symbols)
+        self.assertIn("069500.KS", symbols)
+        self.assertIn("229200.KS", symbols)
+        self.assertIn("^KS11", symbols)
+
+    def test_baseline_stores_benchmark_identity(self) -> None:
+        item = reaction.SectorResult(
+            key="kr_auto",
+            name="한국 자동차 대형주",
+            country="KR",
+            role="한국 상대 수혜",
+            expected_sign=1,
+            timeframe="30분",
+            sector_change_pct=1.0,
+            benchmark_change_pct=0.2,
+            relative_pct=0.8,
+            sigma_pct=0.2,
+            zscore=4.0,
+            significant=True,
+            aligned=True,
+            contrary=False,
+            breadth_pct=66.7,
+            market_status="장중",
+            data_epoch=1_785_700_000.0,
+            component_prices={"005380.KS": 100.0},
+            benchmark_price=100.0,
+            source="test",
+        )
+        baseline = sector_format.result_baseline([item])["kr_auto"]
+        self.assertEqual(baseline["benchmark_symbol"], "069500.KS")
+        self.assertEqual(baseline["benchmark_label"], "KOSPI 200")
+
+    def test_followup_uses_baseline_specific_benchmark(self) -> None:
+        epoch = 1_785_700_000.0
+
+        def quote(symbol: str, price: float) -> reaction.QuoteSeries:
+            return reaction.QuoteSeries(
+                symbol=symbol,
+                latest_price=price,
+                latest_epoch=epoch,
+                previous_close=price,
+                session_change_pct=0.0,
+                points=((epoch - 300, price), (epoch, price)),
+                exchange_timezone="Asia/Seoul",
+            )
+
+        result = reaction.SectorResult(
+            key="kr_auto",
+            name="한국 자동차 대형주",
+            country="KR",
+            role="한국 상대 수혜",
+            expected_sign=1,
+            timeframe="30분",
+            sector_change_pct=0.0,
+            benchmark_change_pct=0.0,
+            relative_pct=0.0,
+            sigma_pct=0.2,
+            zscore=0.0,
+            significant=False,
+            aligned=False,
+            contrary=False,
+            breadth_pct=None,
+            market_status="장중",
+            data_epoch=epoch,
+            component_prices={"005380.KS": 102.0},
+            benchmark_price=101.0,
+            source="test",
+        )
+        baseline = {
+            "component_prices": {"005380.KS": 100.0},
+            "benchmark_price": 100.0,
+            "benchmark_symbol": "069500.KS",
+        }
+        values = reaction.aggregate_since_baseline(
+            result,
+            baseline,
+            {
+                "005380.KS": quote("005380.KS", 102.0),
+                "069500.KS": quote("069500.KS", 101.0),
+                "^KS11": quote("^KS11", 150.0),
+            },
+        )
+        self.assertIsNotNone(values)
+        sector_return, benchmark_return, relative = values
+        self.assertAlmostEqual(sector_return, 2.0)
+        self.assertAlmostEqual(benchmark_return, 1.0)
+        self.assertAlmostEqual(relative, 1.0)
+
+
 class YenSectorReactionTests(unittest.TestCase):
     def result(
         self,
@@ -96,13 +204,14 @@ class YenSectorReactionTests(unittest.TestCase):
         expected: int = 1,
         significant: bool = True,
         status: str = "장중",
+        country: str = "JP",
     ) -> reaction.SectorResult:
         aligned = significant and expected != 0 and relative * expected > 0
         contrary = significant and expected != 0 and relative * expected < 0
         return reaction.SectorResult(
             key=key,
             name=key,
-            country="JP",
+            country=country,
             role="role",
             expected_sign=expected,
             timeframe="30분",
@@ -131,10 +240,15 @@ class YenSectorReactionTests(unittest.TestCase):
             "FX_PENDING_STATE_PATH": root / "out/pending.json",
             "FX_SUMMARY_PATH": root / "out/summary.md",
         }
-        patchers = [mock.patch.object(reaction, name, value) for name, value in paths.items()]
+        patchers = [
+            mock.patch.object(reaction, name, value)
+            for name, value in paths.items()
+        ]
         for patcher in patchers:
             patcher.start()
-        self.addCleanup(lambda: [patcher.stop() for patcher in reversed(patchers)])
+        self.addCleanup(
+            lambda: [patcher.stop() for patcher in reversed(patchers)]
+        )
         return paths
 
     def test_confidence_requires_broad_confirmation(self) -> None:
@@ -150,10 +264,10 @@ class YenSectorReactionTests(unittest.TestCase):
 
     def test_observed_block_uses_market_relative_return(self) -> None:
         block = reaction.observed_sector_block(
-            [self.result("일본 자동차", -1.2, expected=-1)],
+            [self.result("jp_auto", -1.2, expected=-1)],
             {},
         )
-        self.assertIn("TOPIX·KOSPI", block)
+        self.assertIn("TOPIX·KOSPI 200·KOSDAQ 150", block)
         self.assertIn("상대 -1.20%p", block)
         self.assertIn("예상 방향 확인", block)
         self.assertIn("환율이 유일한 원인", block)

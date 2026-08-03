@@ -7,6 +7,11 @@ import datetime as dt
 from yen_sector_config import *
 from yen_sector_data import all_symbols
 
+
+def spec_map() -> dict[str, SectorSpec]:
+    return {spec.key: spec for spec in SECTORS}
+
+
 def confidence_label(results: list[SectorResult]) -> str:
     aligned = sum(item.aligned is True for item in results)
     contrary = sum(item.contrary is True for item in results)
@@ -29,28 +34,44 @@ def result_signal(item: SectorResult) -> str:
     return "유의한 상대변동 미확인"
 
 
+def benchmark_label(item: SectorResult) -> str:
+    spec = spec_map().get(item.key)
+    return spec.benchmark_label if spec is not None else "시장"
+
+
 def result_line(item: SectorResult) -> str:
     breadth = ""
     if item.breadth_pct is not None:
         breadth = f" · 확산 {item.breadth_pct:.0f}%"
     return (
-        f"• {item.name}: {item.sector_change_pct:+.2f}% / 시장 {item.benchmark_change_pct:+.2f}% "
-        f"→ 상대 {item.relative_pct:+.2f}%p({item.timeframe}, {item.market_status})"
+        f"• {item.name}: {item.sector_change_pct:+.2f}% / "
+        f"{benchmark_label(item)} {item.benchmark_change_pct:+.2f}% "
+        f"→ 상대 {item.relative_pct:+.2f}%p"
+        f"({item.timeframe}, {item.market_status})"
         f"{breadth} · {result_signal(item)}"
     )
 
 
-def select_display_results(results: list[SectorResult], limit: int = 6) -> list[SectorResult]:
-    semis = [item for item in results if item.key == "kr_semis"]
-    others = [item for item in results if item.key != "kr_semis"]
-    others.sort(key=lambda item: (item.significant, abs(item.relative_pct)), reverse=True)
-    selected = others[: max(0, limit - len(semis))]
-    if semis:
-        selected.append(semis[0])
+def select_display_results(
+    results: list[SectorResult],
+    limit: int = 7,
+) -> list[SectorResult]:
+    priority_keys = {"kr_semis", "kr_semicap"}
+    priority = [item for item in results if item.key in priority_keys]
+    priority.sort(key=lambda item: item.key)
+    others = [item for item in results if item.key not in priority_keys]
+    others.sort(
+        key=lambda item: (item.significant, abs(item.relative_pct)),
+        reverse=True,
+    )
+    selected = others[: max(0, limit - len(priority))] + priority
     return selected[:limit]
 
 
-def observed_sector_block(results: list[SectorResult], errors: dict[str, str]) -> str:
+def observed_sector_block(
+    results: list[SectorResult],
+    errors: dict[str, str],
+) -> str:
     if not results:
         return "\n".join(
             [
@@ -62,13 +83,22 @@ def observed_sector_block(results: list[SectorResult], errors: dict[str, str]) -
     confidence = confidence_label(results)
     lines = [
         SECTOR_HEADING,
-        "실제 업종 반응: 업종 등락률에서 TOPIX·KOSPI 등락률을 뺀 상대수익률 기준",
+        (
+            "실제 업종 반응: 각 업종에 맞는 기준지수"
+            "(TOPIX·KOSPI 200·KOSDAQ 150) 대비 상대수익률"
+        ),
         *(result_line(item) for item in select_display_results(results)),
         f"종합 판정: 엔화 강세 연동 가능성 {confidence}",
     ]
     if errors:
-        lines.append(f"데이터 참고: 전체 {len(all_symbols())}개 중 {len(errors)}개 조회 실패·제외")
-    lines.append("주의: 상대수익률은 연동 가능성을 보여줄 뿐, 환율이 유일한 원인임을 뜻하지 않습니다.")
+        lines.append(
+            f"데이터 참고: 전체 {len(all_symbols())}개 중 "
+            f"{len(errors)}개 조회 실패·제외"
+        )
+    lines.append(
+        "주의: 상대수익률은 연동 가능성을 보여줄 뿐, "
+        "환율이 유일한 원인임을 뜻하지 않습니다."
+    )
     return "\n".join(lines)
 
 
@@ -91,7 +121,11 @@ def replace_sector_block(body: str, block: str) -> str:
         )
         del lines[start:end]
     insert_at = next(
-        (index for index, item in enumerate(lines) if item.strip() == FINAL_MARKER),
+        (
+            index
+            for index, item in enumerate(lines)
+            if item.strip() == FINAL_MARKER
+        ),
         len(lines),
     )
     while insert_at > 0 and not lines[insert_at - 1].strip():
@@ -114,14 +148,20 @@ def parse_datetime(value: object) -> dt.datetime | None:
 
 
 def result_baseline(results: list[SectorResult]) -> dict[str, dict]:
-    return {
-        item.key: {
+    specs = spec_map()
+    baseline: dict[str, dict] = {}
+    for item in results:
+        spec = specs.get(item.key)
+        baseline[item.key] = {
             "name": item.name,
             "country": item.country,
             "expected_sign": item.expected_sign,
             "component_prices": item.component_prices,
             "benchmark_price": item.benchmark_price,
+            "benchmark_symbol": spec.benchmark if spec is not None else None,
+            "benchmark_label": (
+                spec.benchmark_label if spec is not None else "시장"
+            ),
             "data_epoch": item.data_epoch,
         }
-        for item in results
-    }
+    return baseline

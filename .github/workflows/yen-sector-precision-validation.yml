@@ -1,0 +1,44 @@
+name: Yen sector precision validation
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/yen-sector-precision-validation.yml"
+      - "scripts/yen_sector_config.py"
+      - "scripts/yen_sector_data.py"
+      - "scripts/yen_sector_format.py"
+      - "scripts/yen_sector_reaction.py"
+      - "scripts/yen_carry_alert_enrich.py"
+      - "tests/test_yen_carry_alert_enrich.py"
+      - "data/korea_sector_precision_design.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_DRY_RUN: "true"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile sector monitor
+        run: |
+          python -m py_compile scripts/yen_sector_config.py
+          python -m py_compile scripts/yen_sector_data.py
+          python -m py_compile scripts/yen_sector_format.py
+          python -m py_compile scripts/yen_sector_reaction.py
+          python -m py_compile scripts/yen_carry_alert_enrich.py
+      - name: Run sector tests
+        run: python -m unittest tests/test_yen_carry_alert_enrich.py -v
+      - name: Live-query sector universe without Telegram
+        run: python scripts/yen_carry_alert_enrich.py

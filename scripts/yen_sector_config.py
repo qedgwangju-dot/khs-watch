@@ -15,7 +15,7 @@ YAHOO_BASES = (
     "https://query1.finance.yahoo.com/v8/finance/chart",
     "https://query2.finance.yahoo.com/v8/finance/chart",
 )
-USER_AGENT = "Mozilla/5.0 yen-sector-reaction/1.0"
+USER_AGENT = "Mozilla/5.0 yen-sector-reaction/1.1"
 SECTOR_HEADING = "산업·업종 영향"
 FINAL_MARKER = "이 경보는 기존 엔캐리 청산 확정 경보와 별개입니다."
 
@@ -37,6 +37,7 @@ class SectorSpec:
     name: str
     country: str
     benchmark: str
+    benchmark_label: str
     expected_sign: int
     role: str
     primary: tuple[str, ...]
@@ -45,94 +46,48 @@ class SectorSpec:
 
 SECTORS: tuple[SectorSpec, ...] = (
     SectorSpec(
-        "jp_auto",
-        "일본 자동차",
-        "JP",
-        "1306.T",
-        -1,
-        "일본 수출주",
-        ("1622.T",),
-        ("7203.T", "7267.T", "7201.T"),
+        "jp_auto", "일본 자동차", "JP", "1306.T", "TOPIX", -1, "일본 수출주",
+        ("1622.T",), ("7203.T", "7267.T", "7201.T"),
     ),
     SectorSpec(
-        "jp_electronics",
-        "일본 전기·정밀",
-        "JP",
-        "1306.T",
-        -1,
-        "일본 수출주",
-        ("1625.T",),
-        ("6758.T", "6501.T", "6503.T"),
+        "jp_electronics", "일본 전기·정밀", "JP", "1306.T", "TOPIX", -1, "일본 수출주",
+        ("1625.T",), ("6758.T", "6501.T", "6503.T"),
     ),
     SectorSpec(
-        "jp_machinery",
-        "일본 기계",
-        "JP",
-        "1306.T",
-        -1,
-        "일본 수출주",
-        ("1624.T",),
-        ("7011.T", "6301.T", "6367.T"),
+        "jp_machinery", "일본 기계", "JP", "1306.T", "TOPIX", -1, "일본 수출주",
+        ("1624.T",), ("7011.T", "6301.T", "6367.T"),
     ),
     SectorSpec(
-        "jp_utilities",
-        "일본 전력·가스",
-        "JP",
-        "1306.T",
-        1,
-        "일본 수입원가 수혜",
-        ("1627.T",),
-        ("9501.T", "9502.T", "9503.T"),
+        "jp_utilities", "일본 전력·가스", "JP", "1306.T", "TOPIX", 1, "일본 수입원가 수혜",
+        ("1627.T",), ("9501.T", "9502.T", "9503.T"),
     ),
     SectorSpec(
-        "jp_airlines",
-        "일본 항공",
-        "JP",
-        "1306.T",
-        1,
-        "일본 수입원가 수혜",
-        (),
-        ("9201.T", "9202.T"),
+        "jp_airlines", "일본 항공", "JP", "1306.T", "TOPIX", 1, "일본 수입원가 수혜",
+        (), ("9201.T", "9202.T"),
     ),
     SectorSpec(
-        "jp_food",
-        "일본 식품",
-        "JP",
-        "1306.T",
-        1,
-        "일본 수입원가 수혜",
-        ("1617.T",),
-        ("2802.T", "2502.T", "2801.T"),
+        "jp_food", "일본 식품", "JP", "1306.T", "TOPIX", 1, "일본 수입원가 수혜",
+        ("1617.T",), ("2802.T", "2502.T", "2801.T"),
     ),
     SectorSpec(
-        "jp_retail",
-        "일본 소매",
-        "JP",
-        "1306.T",
-        1,
-        "일본 수입원가 수혜",
-        ("1630.T",),
-        ("3382.T", "8267.T", "7532.T"),
+        "jp_retail", "일본 소매", "JP", "1306.T", "TOPIX", 1, "일본 수입원가 수혜",
+        ("1630.T",), ("3382.T", "8267.T", "7532.T"),
     ),
     SectorSpec(
-        "kr_auto",
-        "한국 자동차",
-        "KR",
-        "^KS11",
-        1,
-        "한국 상대 수혜",
-        ("091180.KS",),
-        ("005380.KS", "000270.KS", "012330.KS"),
+        "kr_auto", "한국 자동차 대형주", "KR", "069500.KS", "KOSPI 200", 1, "한국 상대 수혜",
+        ("091180.KS",), ("005380.KS", "000270.KS", "012330.KS"),
     ),
     SectorSpec(
-        "kr_semis",
-        "한국 반도체",
-        "KR",
-        "^KS11",
-        0,
-        "직접 환율 영향 판단 보류",
-        ("091160.KS",),
-        ("005930.KS", "000660.KS"),
+        "kr_semis", "한국 메모리 대형주", "KR", "069500.KS", "KOSPI 200", 0,
+        "직접 환율 영향 판단 보류", (), ("005930.KS", "000660.KS"),
+    ),
+    SectorSpec(
+        "kr_semicap", "한국 반도체 장비·소재·부품", "KR", "229200.KS", "KOSDAQ 150", 0,
+        "직접 환율 영향 판단 보류", (),
+        (
+            "036930.KQ", "240810.KQ", "058470.KQ", "039030.KQ",
+            "403870.KQ", "319660.KQ", "067310.KQ", "084370.KQ",
+        ),
     ),
 )
 

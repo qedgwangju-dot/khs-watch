@@ -18,6 +18,7 @@ FX_STATE_PATH = pathlib.Path("data/yen_carry_fx_shock_state.json")
 FX_PENDING_STATE_PATH = pathlib.Path("out/yen_carry_fx_shock_pending_state.json")
 FX_SUMMARY_PATH = pathlib.Path("out/yen_carry_fx_shock_watch.md")
 
+
 def read_json(path: pathlib.Path, default: dict) -> dict:
     if not path.exists():
         return dict(default)
@@ -70,7 +71,9 @@ def new_event(
         else None
     )
     close_due = (
-        close_epoch if market_open and alert_time.timestamp() < close_epoch else None
+        close_epoch
+        if market_open and alert_time.timestamp() < close_epoch
+        else None
     )
     return {
         "event_id": f"{int(alert_time.timestamp())}-{fx_alert.get('stage', 0)}",
@@ -121,6 +124,17 @@ def archive_if_complete(state: dict) -> dict:
     return state
 
 
+def baseline_benchmark_symbol(
+    result: SectorResult,
+    baseline: dict,
+) -> str:
+    symbol = baseline.get("benchmark_symbol")
+    if symbol:
+        return str(symbol)
+    # Compatibility with events created before market-specific KR benchmarks.
+    return "^TOPX" if result.country == "JP" else "^KS11"
+
+
 def aggregate_since_baseline(
     result: SectorResult,
     baseline: dict,
@@ -133,7 +147,7 @@ def aggregate_since_baseline(
         if quote is not None and price is not None and price > 0:
             component_returns.append(((quote.latest_price - price) / price) * 100)
     sector_return = median(component_returns)
-    benchmark_symbol = "^TOPX" if result.country == "JP" else "^KS11"
+    benchmark_symbol = baseline_benchmark_symbol(result, baseline)
     benchmark_quote = quotes.get(benchmark_symbol)
     benchmark_base = finite(baseline.get("benchmark_price"))
     if (
@@ -191,6 +205,8 @@ def followup_rows(
                 "expected_sign": spec.expected_sign,
                 "sector_return_pct": sector_return,
                 "benchmark_return_pct": benchmark_return,
+                "benchmark_symbol": spec.benchmark,
+                "benchmark_label": spec.benchmark_label,
                 "relative_pct": relative,
                 "significant": significant,
                 "aligned": aligned,
@@ -222,11 +238,27 @@ def followup_line(row: dict) -> str:
         verdict = "예상과 반대"
     else:
         verdict = "유의한 상대변동 미확인"
+    label = row.get("benchmark_label") or "시장"
     return (
         f"• {row['name']}: 경보 후 {row['sector_return_pct']:+.2f}% / "
-        f"시장 {row['benchmark_return_pct']:+.2f}% → "
+        f"{label} {row['benchmark_return_pct']:+.2f}% → "
         f"상대 {row['relative_pct']:+.2f}%p · {verdict}"
     )
+
+
+def select_followup_rows(
+    rows: list[dict],
+    limit: int = 7,
+) -> list[dict]:
+    priority_keys = {"kr_semis", "kr_semicap"}
+    ordered = sorted(
+        rows,
+        key=lambda row: (row.get("significant", False), abs(row["relative_pct"])),
+        reverse=True,
+    )
+    priority = [row for row in ordered if row["key"] in priority_keys]
+    others = [row for row in ordered if row["key"] not in priority_keys]
+    return (others[: max(0, limit - len(priority))] + priority)[:limit]
 
 
 def build_followup_message(
@@ -236,20 +268,13 @@ def build_followup_message(
     current: dt.datetime,
 ) -> tuple[str, str, dict]:
     confidence = followup_confidence(rows)
-    ordered = sorted(
-        rows,
-        key=lambda row: (row.get("significant", False), abs(row["relative_pct"])),
-        reverse=True,
-    )
-    semis = [row for row in ordered if row["key"] == "kr_semis"]
-    others = [row for row in ordered if row["key"] != "kr_semis"]
-    display = others[:5] + semis[:1]
+    display = select_followup_rows(rows)
     title = f"📊 엔화 강세 업종 반응 — {kind} 확인"
     body = "\n".join(
         [
             f"확인 시각: {current.astimezone(KST).strftime('%Y-%m-%d %H:%M:%S KST')}",
             f"원 경보: {event.get('alert_at_kst')} · USD/JPY {event.get('fx_price')}",
-            "기준: 경보 시점 이후 업종 수익률 - TOPIX·KOSPI 수익률",
+            "기준: 경보 시점 이후 업종 수익률 - 각 업종별 기준지수 수익률",
             "",
             *(followup_line(row) for row in display),
             "",
@@ -290,11 +315,7 @@ def handle_new_fx_alert(current: dt.datetime) -> dict:
             f"연동 가능성 {confidence_label(results)}",
         ],
     )
-    return {
-        "mode": "new_fx_alert",
-        "results": len(results),
-        "errors": len(errors),
-    }
+    return {"mode": "new_fx_alert", "results": len(results), "errors": len(errors)}
 
 
 def handle_followup(current: dt.datetime) -> dict:
@@ -352,9 +373,7 @@ def handle_followup(current: dt.datetime) -> dict:
         or int(event.get("sustained_stage") or 0) > 0
     )
     if should_send:
-        title, body, payload = build_followup_message(
-            event, rows, due_kind, current
-        )
+        title, body, payload = build_followup_message(event, rows, due_kind, current)
         FX_ALERT_TITLE.write_text(title + "\n", encoding="utf-8")
         FX_ALERT_BODY.write_text(body + "\n", encoding="utf-8")
         write_json(FX_ALERT_JSON, payload)
@@ -363,11 +382,7 @@ def handle_followup(current: dt.datetime) -> dict:
             f"{due_kind} 업종 반응 알림 생성",
             [f"유효 업종 {len(rows)}개", f"연동 가능성 {confidence}"],
         )
-        return {
-            "mode": "alert",
-            "kind": due_kind,
-            "confidence": confidence,
-        }
+        return {"mode": "alert", "kind": due_kind, "confidence": confidence}
 
     updated = archive_if_complete(updated)
     write_json(FX_STATE_PATH, updated)
@@ -375,11 +390,7 @@ def handle_followup(current: dt.datetime) -> dict:
         f"{due_kind} 업종 반응 기록·텔레그램 생략",
         [f"유효 업종 {len(rows)}개", f"연동 가능성 {confidence}"],
     )
-    return {
-        "mode": "recorded",
-        "kind": due_kind,
-        "confidence": confidence,
-    }
+    return {"mode": "recorded", "kind": due_kind, "confidence": confidence}
 
 
 def process(current: dt.datetime | None = None) -> dict:
