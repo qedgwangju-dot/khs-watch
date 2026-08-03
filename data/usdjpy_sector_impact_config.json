@@ -1,0 +1,23 @@
+{
+  "status": "active",
+  "merged_commit_sha": "2e9872f0df6a67e620f9147abab1a1859f27bfa1",
+  "validation_workflow_run_id": 30802074169,
+  "tests_passed": 29,
+  "display_policy": {
+    "fast_move": "Emphasize immediate price and flow reaction; state that earnings impact requires persistence.",
+    "sustained_yen_strength": "Emphasize translation revenue and import-cost effects becoming more relevant."
+  },
+  "sector_lines": [
+    "Japan exporters: autos, electronics, machinery",
+    "Japan import beneficiaries: utilities, airlines, retail, food",
+    "Korea relative beneficiaries: autos, parts, machinery",
+    "Korea semiconductors: limited direct FX benefit; AI, memory cycle and carry-unwind flow dominate",
+    "Consumers: Japan travel and Japanese imports may become more expensive; Korean substitutes and inbound tourism may benefit"
+  ],
+  "caveats": [
+    "hedging",
+    "overseas production mix",
+    "commodity prices"
+  ],
+  "telegram_bot_username": "hs8879887988798879_bot"
+}
