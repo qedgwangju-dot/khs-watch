@@ -130,6 +130,26 @@ class AccurateMarketDataTests(unittest.TestCase):
         self.assertAlmostEqual(quote.previous_close, 160.00, places=2)
         self.assertAlmostEqual(quote.change_pct, -1.625, places=6)
 
+    def test_usdjpy_weekend_gap_keeps_current_quote(self):
+        friday = dt.datetime(2026, 7, 31, 21, 0, tzinfo=dt.timezone.utc).timestamp()
+        sunday = friday + 48 * 60 * 60
+        points = [
+            (friday, 160.20),
+            (sunday, 159.40),
+        ]
+        quote = market.parse_payload(
+            payload(
+                points,
+                timezone="UTC",
+                chart_previous_close=160.00,
+            ),
+            legacy.SYMBOLS["usd_jpy"],
+        )
+        self.assertAlmostEqual(quote.price, 159.40, places=2)
+        self.assertAlmostEqual(quote.previous_close, 160.00, places=2)
+        self.assertAlmostEqual(quote.change_pct, -0.375, places=6)
+        self.assertEqual(quote.timestamp_epoch, sunday)
+
 
 if __name__ == "__main__":
     unittest.main()
