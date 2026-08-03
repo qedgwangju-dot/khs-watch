@@ -1,0 +1,14 @@
+{
+  "status": "designing",
+  "principle": "Use a benchmark that matches each Korean sector's listing market and size profile.",
+  "benchmarks": {
+    "Korean autos": "069500.KS KODEX 200",
+    "Korean memory large caps": "069500.KS KODEX 200",
+    "Korean semiconductor equipment and materials": "229200.KS KODEX KOSDAQ 150"
+  },
+  "separation": [
+    "Korean memory large caps",
+    "Korean semiconductor equipment and materials"
+  ],
+  "remove_as_primary_benchmark": "^KS11 KOSPI"
+}
