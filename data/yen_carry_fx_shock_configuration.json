@@ -1,0 +1,53 @@
+{
+  "status": "active",
+  "bot_username": "hs8879887988798879_bot",
+  "schedule_kst_minutes": [8, 23, 38, 53],
+  "data_interval": "5m",
+  "data_max_age_minutes": 20,
+  "source_cross_check": [
+    "Yahoo query1",
+    "Yahoo query2"
+  ],
+  "warning_stage_1": {
+    "any_condition": [
+      "15m <= -0.50%",
+      "30m <= -0.75%",
+      "60m <= -1.00%"
+    ]
+  },
+  "severe_stage_2": {
+    "any_condition": [
+      "15m <= -1.00%",
+      "30m <= -1.25%",
+      "60m <= -1.50%"
+    ]
+  },
+  "duplicate_policy": "same stage suppressed; re-alert after clear/re-entry or escalation",
+  "independent_from_equity_conditions": true,
+  "existing_yen_carry_confirmation_alert_unchanged": true,
+  "validation": {
+    "workflow_run_id": 30775661440,
+    "tests_passed": 13,
+    "first_observation_kst": "2026-08-03T09:56:50+09:00",
+    "first_observation": {
+      "usd_jpy": 155.94700622558594,
+      "change_15m_pct": 0.3455392515427174,
+      "change_30m_pct": -0.45194379957730657,
+      "change_60m_pct": -1.0375515599730192,
+      "stage": 1,
+      "telegram_sent": false,
+      "reason": "pull-request dry-run validation"
+    },
+    "recheck_workflow_run_id": 30775763559,
+    "recheck_observation_kst": "2026-08-03T09:59:29+09:00",
+    "recheck_observation": {
+      "usd_jpy": 156.16600036621094,
+      "change_15m_pct": 0.24650003932677653,
+      "change_30m_pct": -0.01857098924269831,
+      "change_60m_pct": -0.9249813601991704,
+      "stage": 0,
+      "telegram_sent": false,
+      "reason": "condition had cleared before live-send recheck"
+    }
+  }
+}
