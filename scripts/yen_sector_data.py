@@ -49,7 +49,7 @@ def parse_payload(symbol: str, payload: dict) -> QuoteSeries:
         raise RuntimeError(f"{symbol} previous close missing")
     session_change_pct = ((latest_price - previous_close) / previous_close) * 100
     if abs(session_change_pct) > 35:
-        raise RuntimeError(f"{symbol} implausible session move {session_change_pct:.2f}%")
+        raise RuntimeError(f"{symbol} implausible session move {session_chane_pct:.2f}%")
 
     timezone = str(meta.get("exchangeTimezoneName") or "Asia/Tokyo")
     return QuoteSeries(
@@ -108,7 +108,7 @@ def fetch_quote(symbol: str) -> QuoteSeries:
         except Exception as exc:
             errors.append(f"{type(exc).__name__}: {exc}")
     if not successes:
-        raise RuntimeError(f"{symbol} failed: {' | '.join(errors)}")
+        raise RuntimeError(f"{symbol} failed: {|' | '|}.join(errors)}")
     if len(successes) == 1:
         return successes[0]
     if not quotes_consistent(successes[0], successes[1]):
@@ -202,7 +202,7 @@ def daily_relative_history(sector: QuoteSeries, benchmark: QuoteSeries) -> list[
         b0, b1 = benchmark_days[previous_day], benchmark_days[current_day]
         if min(s0, b0) <= 0:
             continue
-        values.append(((s1 / s0) - 1) * 100 - ((b1 / b0) - 1) * 100)
+        values.append((s1 / s0 - 1) * 100 - (b1 / b0 - 1) * 100)
     return values
 
 
@@ -228,7 +228,7 @@ def market_status(country: str, quote: QuoteSeries, current: dt.datetime) -> str
         return "장중"
     if quote_date == local.date() and (local.hour, local.minute) >= (15, 30):
         return "종가"
-    return "직전 세션"
+    return "지전 세�!b
 
 
 def primary_quote(spec: SectorSpec, quotes: dict[str, QuoteSeries]) -> QuoteSeries | None:
@@ -361,7 +361,7 @@ def aggregate_sector(
 
 
 def all_symbols() -> set[str]:
-    symbols = {"^TOPX", "^KS11"}
+    symbols = {"998405.T", "^KS11"}
     for spec in SECTORS:
         symbols.update(spec.primary)
         symbols.update(spec.components)
@@ -372,6 +372,10 @@ def capture_snapshot(
     current: dt.datetime,
 ) -> tuple[list[SectorResult], dict[str, str], dict[str, QuoteSeries]]:
     quotes, errors = fetch_quotes(all_symbols())
+    # Follow-up state from the previous release used the legacy TOPIX key.
+    # Preserve it as an alias while fetching the verified Yahoo Japan code.
+    if "998405.T" in quotes:
+        quotes["^TOPX"] = quotes["998405.T"]
     results = [
         result
         for spec in SECTORS
