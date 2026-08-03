@@ -10,6 +10,7 @@ import pathlib
 import urllib.parse
 
 from khs_source_fetch import fetch_text
+from yen_sector_reaction import process as process_sector_reaction
 
 BODY_PATH = pathlib.Path("out/yen_carry_alert.md")
 FX_BODY_PATH = pathlib.Path("out/yen_carry_fx_shock_alert.md")
@@ -19,7 +20,7 @@ BASES = (
     "https://query1.finance.yahoo.com/v8/finance/chart",
     "https://query2.finance.yahoo.com/v8/finance/chart",
 )
-USER_AGENT = "Mozilla/5.0 yen-carry-alert/2.1"
+USER_AGENT = "Mozilla/5.0 yen-carry-alert/2.2"
 SECTOR_HEADING = "산업·업종 영향"
 FINAL_MARKER = "이 경보는 기존 엔캐리 청산 확정 경보와 별개입니다."
 
@@ -112,7 +113,7 @@ def insert_line(body: str, line: str) -> str:
 
 
 def sector_impact_block(alert: dict) -> str:
-    """Return a compact, lane-aware sector impact block for Telegram."""
+    """Return a compact, lane-aware qualitative sector block before actual measurement."""
     stage = int(alert.get("stage") or 0)
     fast_stage = int(alert.get("fast_stage") or 0)
     sustained_stage = int(alert.get("sustained_stage") or 0)
@@ -221,6 +222,12 @@ def enrich_fx_sector_alert() -> str:
 def main() -> int:
     print(f"yen_carry_24h={enrich_24h_alert()}")
     print(f"yen_carry_sector={enrich_fx_sector_alert()}")
+    try:
+        result = process_sector_reaction()
+        print("yen_sector_reaction=" + json.dumps(result, ensure_ascii=False, sort_keys=True))
+    except Exception as exc:
+        # Sector measurement must never suppress the primary FX alert.
+        print(f"yen_sector_reaction=unavailable_{type(exc).__name__}: {exc}")
     return 0
 
 
