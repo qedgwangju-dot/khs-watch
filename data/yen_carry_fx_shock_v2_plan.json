@@ -1,0 +1,10 @@
+{
+  "status": "preparing",
+  "changes": [
+    "five_minute_schedule",
+    "active_15_30_minute_alerts_only",
+    "60_minute_residual_context_only",
+    "same_stage_redrop_realert",
+    "same_stage_new_low_realert"
+  ]
+}
