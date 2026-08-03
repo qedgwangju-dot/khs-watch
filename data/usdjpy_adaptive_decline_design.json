@@ -1,0 +1,9 @@
+{
+  "status": "designing",
+  "principle": "Detect the actual decline interval from the rolling peak rather than adding fixed 90m/120m windows.",
+  "lookback_minutes": 720,
+  "minimum_duration_minutes": 45,
+  "warning_drawdown_pct": -1.0,
+  "severe_drawdown_pct": -1.5,
+  "maximum_rebound_from_low_pct": 0.2
+}
