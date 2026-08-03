@@ -1,10 +1,31 @@
 {
-  "status": "preparing",
-  "changes": [
-    "five_minute_schedule",
-    "active_15_30_minute_alerts_only",
-    "60_minute_residual_context_only",
-    "same_stage_redrop_realert",
-    "same_stage_new_low_realert"
-  ]
+  "status": "active",
+  "merged_commit_sha": "281421a6b920c9a9e53c152a627c2aa4bdff1267",
+  "validation_workflow_run_id": 30789722578,
+  "tests_passed": 22,
+  "schedule_minutes_kst": [3, 8, 13, 18, 23, 28, 33, 38, 43, 48, 53, 58],
+  "data_interval": "5m",
+  "data_max_age_minutes": 12,
+  "active_alert": {
+    "stage_1": {
+      "any_condition": ["15m <= -0.50%", "30m <= -0.75%"]
+    },
+    "stage_2": {
+      "any_condition": ["15m <= -1.00%", "30m <= -1.25%"]
+    }
+  },
+  "residual_context_only": {
+    "60m_stage_1": "<= -1.00%",
+    "60m_stage_2": "<= -1.50%",
+    "telegram_on_60m_only": false
+  },
+  "same_stage_realert": {
+    "minimum_interval_minutes": 20,
+    "conditions": [
+      "15m trigger becomes newly active after it was inactive",
+      "latest USDJPY is at least 0.30% below the last alerted price"
+    ]
+  },
+  "source_cross_check": ["Yahoo query1", "Yahoo query2"],
+  "telegram_bot_username": "hs8879887988798879_bot"
 }
