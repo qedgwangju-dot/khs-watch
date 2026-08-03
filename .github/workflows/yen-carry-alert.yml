@@ -21,10 +21,12 @@ on:
       - "scripts/yen_carry_alert_v2.py"
       - "scripts/yen_carry_market_data_v2.py"
       - "scripts/yen_carry_alert_enrich.py"
+      - "scripts/yen_carry_fx_shock.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_alert.py"
       - "tests/test_yen_carry_alert_enrich.py"
       - "tests/test_yen_carry_market_data_v2.py"
+      - "tests/test_yen_carry_fx_shock.py"
       - "tests/yen_carry_workflow_trigger.txt"
 
 permissions:
@@ -44,6 +46,7 @@ jobs:
       EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
       YEN_CARRY_MAX_DATA_AGE_MINUTES: "240"
       YEN_CARRY_CASH_FRESH_MINUTES: "150"
+      YEN_CARRY_FX_SHOCK_MAX_AGE_MINUTES: "20"
       YEN_CARRY_YAHOO_INTERVAL: "5m"
       YEN_CARRY_YAHOO_RANGE: "5d"
       KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
@@ -65,14 +68,19 @@ jobs:
           python -m py_compile scripts/yen_carry_alert_v2.py
           python -m py_compile scripts/yen_carry_market_data_v2.py
           python -m py_compile scripts/yen_carry_alert_enrich.py
+          python -m py_compile scripts/yen_carry_fx_shock.py
           python -m py_compile scripts/khs_source_fetch.py
           python -m unittest \
             tests/test_yen_carry_alert.py \
             tests/test_yen_carry_alert_enrich.py \
-            tests/test_yen_carry_market_data_v2.py -v
+            tests/test_yen_carry_market_data_v2.py \
+            tests/test_yen_carry_fx_shock.py -v
 
       - name: Check yen carry conditions with accurate session basis
         run: python scripts/yen_carry_alert_v2.py
+
+      - name: Check independent USDJPY rapid move
+        run: python scripts/yen_carry_fx_shock.py
 
       - name: Add USDJPY 24-hour range
         run: python scripts/yen_carry_alert_enrich.py
@@ -85,15 +93,27 @@ jobs:
           else
             echo "엔캐리 경보 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f out/yen_carry_fx_shock_watch.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/yen_carry_fx_shock_watch.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "USD/JPY 급변 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
 
-      - name: Preview pull request alert without sending
-        if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/yen_carry_alert.md') != ''
+      - name: Preview pull request alerts without sending
+        if: env.TELEGRAM_DRY_RUN == 'true' && (hashFiles('out/yen_carry_alert.md') != '' || hashFiles('out/yen_carry_fx_shock_alert.md') != '')
         run: |
           printf '\n---\n\n텔레그램 미전송 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
-          cat out/yen_carry_alert.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -f out/yen_carry_alert.md ]; then
+            cat out/yen_carry_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/yen_carry_fx_shock_alert.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/yen_carry_fx_shock_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
 
-      - name: Send Telegram alert through second bot only
-        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_alert.md') != ''
+      - name: Send Telegram alerts through second bot only
+        if: env.TELEGRAM_DRY_RUN != 'true' && (hashFiles('out/yen_carry_alert.md') != '' || hashFiles('out/yen_carry_fx_shock_alert.md') != '')
         env:
           YEN_CARRY_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
           YEN_CARRY_TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
@@ -136,45 +156,69 @@ jobs:
                   f"Wrong Telegram bot configured: expected @{expected_username}, got @{actual_username or 'unknown'}"
               )
 
-          title = pathlib.Path("out/yen_carry_alert_title.txt").read_text(encoding="utf-8").strip()
-          body = pathlib.Path("out/yen_carry_alert.md").read_text(encoding="utf-8").strip()
-          text = f"{title}\n\n{body}"[:4096]
-          payload = urllib.parse.urlencode(
-              {
-                  "chat_id": chat_id,
-                  "text": text,
-                  "disable_web_page_preview": "true",
-              }
-          ).encode("utf-8")
-          request = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/sendMessage",
-              data=payload,
-              method="POST",
-          )
-          with urllib.request.urlopen(request, timeout=25) as response:
-              result = json.loads(response.read().decode("utf-8"))
-          if not result.get("ok"):
-              raise RuntimeError(f"Telegram rejected message: {result}")
+          messages = [
+              (
+                  pathlib.Path("out/yen_carry_alert_title.txt"),
+                  pathlib.Path("out/yen_carry_alert.md"),
+                  pathlib.Path("out/yen_carry_telegram_confirmed.json"),
+                  "yen_carry",
+              ),
+              (
+                  pathlib.Path("out/yen_carry_fx_shock_alert_title.txt"),
+                  pathlib.Path("out/yen_carry_fx_shock_alert.md"),
+                  pathlib.Path("out/yen_carry_fx_shock_telegram_confirmed.json"),
+                  "fx_shock",
+              ),
+          ]
+          sent = 0
+          for title_path, body_path, confirmation_path, lane in messages:
+              if not title_path.exists() or not body_path.exists():
+                  continue
+              title = title_path.read_text(encoding="utf-8").strip()
+              body = body_path.read_text(encoding="utf-8").strip()
+              text = f"{title}\n\n{body}"[:4096]
+              payload = urllib.parse.urlencode(
+                  {
+                      "chat_id": chat_id,
+                      "text": text,
+                      "disable_web_page_preview": "true",
+                  }
+              ).encode("utf-8")
+              request = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(request, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected {lane} message: {result}")
 
-          confirmed = {
-              "status": "confirmed",
-              "bot_username": actual_username,
-              "message_id": result.get("result", {}).get("message_id"),
-              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
-          }
-          pathlib.Path("out/yen_carry_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
-          )
-          print(
-              f"telegram_delivery_confirmed=true bot_username=@{actual_username} "
-              f"message_id={confirmed['message_id']}"
-          )
+              confirmed = {
+                  "status": "confirmed",
+                  "lane": lane,
+                  "bot_username": actual_username,
+                  "message_id": result.get("result", {}).get("message_id"),
+                  "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              }
+              confirmation_path.write_text(
+                  json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+                  encoding="utf-8",
+              )
+              sent += 1
+              print(
+                  f"telegram_delivery_confirmed=true lane={lane} bot_username=@{actual_username} "
+                  f"message_id={confirmed['message_id']}"
+              )
+          if sent == 0:
+              raise RuntimeError("No alert file was available to send")
           PY
 
-      - name: Finalize alert state
+      - name: Finalize alert states
         if: always() && env.TELEGRAM_DRY_RUN != 'true'
-        run: python scripts/yen_carry_alert_v2.py --finalize
+        run: |
+          python scripts/yen_carry_alert_v2.py --finalize
+          python scripts/yen_carry_fx_shock.py --finalize
 
       - name: Upload verification artifacts
         if: always()
@@ -186,19 +230,27 @@ jobs:
             out/yen_carry_alert.md
             out/yen_carry_alert.json
             out/yen_carry_telegram_confirmed.json
+            out/yen_carry_fx_shock_watch.md
+            out/yen_carry_fx_shock_alert.md
+            out/yen_carry_fx_shock_alert.json
+            out/yen_carry_fx_shock_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 7
 
-      - name: Commit confirmed alert state
-        if: always() && github.event_name != 'pull_request' && hashFiles('data/yen_carry_alert_state.json') != ''
+      - name: Commit confirmed alert states
+        if: always() && github.event_name != 'pull_request' && (hashFiles('data/yen_carry_alert_state.json') != '' || hashFiles('data/yen_carry_fx_shock_state.json') != '')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/yen_carry_alert_state.json
+          for state_file in data/yen_carry_alert_state.json data/yen_carry_fx_shock_state.json; do
+            if [ -f "$state_file" ]; then
+              git add "$state_file"
+            fi
+          done
           if git diff --cached --quiet; then
-            echo "엔캐리 경보 상태 변경 없음"
+            echo "엔캐리·환율 급변 상태 변경 없음"
           else
-            git commit -m "Update yen carry alert state"
+            git commit -m "Update yen carry alert states"
             git pull --rebase origin main
             git push
           fi
