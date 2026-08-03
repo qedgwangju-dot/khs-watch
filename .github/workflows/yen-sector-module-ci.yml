@@ -1,0 +1,45 @@
+name: Yen sector module CI
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/yen-sector-module-ci.yml"
+      - "scripts/yen_sector_config.py"
+      - "scripts/yen_sector_data.py"
+      - "scripts/yen_sector_format.py"
+      - "scripts/yen_sector_reaction.py"
+      - "scripts/yen_carry_alert_enrich.py"
+      - "scripts/yen_carry_market_data_v2.py"
+      - "tests/test_yen_carry_alert_enrich.py"
+      - "tests/test_yen_carry_market_data_v2.py"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile sector modules
+        run: |
+          python -m py_compile scripts/yen_sector_config.py
+          python -m py_compile scripts/yen_sector_data.py
+          python -m py_compile scripts/yen_sector_format.py
+          python -m py_compile scripts/yen_sector_reaction.py
+          python -m py_compile scripts/yen_carry_alert_enrich.py
+          python -m py_compile scripts/yen_carry_market_data_v2.py
+
+      - name: Run focused tests
+        run: |
+          python -m unittest \
+            tests/test_yen_carry_alert_enrich.py \
+            tests/test_yen_carry_market_data_v2.py -v
