@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""USD/JPY 단기 급락(엔화 강세) 경보.
+"""USD/JPY 급락(엔화 강세) 통합 경보.
 
-15·30분 구간은 '현재 진행형 급락'으로 텔레그램 경보를 생성한다.
-60분 구간은 과거 충격 잔존 참고치로만 표시하며 단독으로 알림을 만들지 않는다.
+- 15·30분: 빠른 급락을 감지한다.
+- 최근 12시간의 고점부터 현재까지: 고정된 60·90·120분이 아니라
+  실제 하락이 시작된 구간을 자동으로 찾아 지속 하락을 감지한다.
+- 60분: 충격 잔존 참고치로만 표시한다.
 """
 
 from __future__ import annotations
@@ -36,13 +38,20 @@ YAHOO_BASES = (
     "https://query1.finance.yahoo.com/v8/finance/chart",
     "https://query2.finance.yahoo.com/v8/finance/chart",
 )
-USER_AGENT = "Mozilla/5.0 yen-carry-fx-shock/2.0"
+USER_AGENT = "Mozilla/5.0 yen-carry-fx-shock/3.0"
 
-# 진행형 경보: 15·30분만 사용한다.
-WARNING_THRESHOLDS = {15: -0.50, 30: -0.75}
-SEVERE_THRESHOLDS = {15: -1.00, 30: -1.25}
+# 빠른 급락
+FAST_WARNING_THRESHOLDS = {15: -0.50, 30: -0.75}
+FAST_SEVERE_THRESHOLDS = {15: -1.00, 30: -1.25}
 
-# 60분은 텔레그램 경보가 아니라 충격 잔존 참고치다.
+# 지속 하락: 고정된 90분 등이 아니라 최근 12시간의 실제 고점부터 계산
+SUSTAINED_LOOKBACK_MINUTES = 12 * 60
+SUSTAINED_MIN_DURATION_MINUTES = 45
+SUSTAINED_WARNING_DRAWDOWN_PCT = -1.00
+SUSTAINED_SEVERE_DRAWDOWN_PCT = -1.50
+SUSTAINED_MAX_REBOUND_PCT = 0.20
+
+# 60분 단독 값은 참고용
 RESIDUAL_WARNING_60M = -1.00
 RESIDUAL_SEVERE_60M = -1.50
 
@@ -64,6 +73,12 @@ class FxMove:
     reference_60m: float
     reference_60m_epoch: float
     change_60m_pct: float
+    sustained_peak_price: float
+    sustained_peak_epoch: float
+    sustained_duration_minutes: float
+    sustained_drawdown_pct: float
+    sustained_low_price: float
+    sustained_rebound_pct: float
 
 
 def finite(value: object) -> float | None:
@@ -112,12 +127,50 @@ def rolling_reference(
     return ref_ts, ref_price, ((latest_price - ref_price) / ref_price) * 100
 
 
+def sustained_metrics(
+    points: list[tuple[float, float]],
+) -> tuple[float, float, float, float, float, float]:
+    """최근 12시간 최고점부터 현재까지의 지속 하락을 계산한다."""
+    latest_ts, latest_price = points[-1]
+    cutoff = latest_ts - SUSTAINED_LOOKBACK_MINUTES * 60
+    window = [item for item in points if item[0] >= cutoff]
+    if len(window) < 2:
+        return latest_price, latest_ts, 0.0, 0.0, latest_price, 0.0
+
+    # 같은 최고가가 여러 번이면 가장 최근 최고점을 사용한다.
+    peak_ts, peak_price = max(window[:-1], key=lambda item: (item[1], item[0]))
+    duration_minutes = max(0.0, (latest_ts - peak_ts) / 60.0)
+    drawdown_pct = ((latest_price - peak_price) / peak_price) * 100
+
+    post_peak = [price for ts, price in window if ts >= peak_ts]
+    low_price = min(post_peak) if post_peak else latest_price
+    rebound_pct = ((latest_price - low_price) / low_price) * 100
+
+    return (
+        peak_price,
+        peak_ts,
+        duration_minutes,
+        drawdown_pct,
+        low_price,
+        rebound_pct,
+    )
+
+
 def calculate_move(payload: dict) -> FxMove:
     points = valid_points(payload)
     latest_epoch, latest_price = points[-1]
     ref15_epoch, ref15, chg15 = rolling_reference(points, 15)
     ref30_epoch, ref30, chg30 = rolling_reference(points, 30)
     ref60_epoch, ref60, chg60 = rolling_reference(points, 60)
+    (
+        sustained_peak_price,
+        sustained_peak_epoch,
+        sustained_duration_minutes,
+        sustained_drawdown_pct,
+        sustained_low_price,
+        sustained_rebound_pct,
+    ) = sustained_metrics(points)
+
     return FxMove(
         latest_price=latest_price,
         latest_epoch=latest_epoch,
@@ -130,6 +183,12 @@ def calculate_move(payload: dict) -> FxMove:
         reference_60m=ref60,
         reference_60m_epoch=ref60_epoch,
         change_60m_pct=chg60,
+        sustained_peak_price=sustained_peak_price,
+        sustained_peak_epoch=sustained_peak_epoch,
+        sustained_duration_minutes=sustained_duration_minutes,
+        sustained_drawdown_pct=sustained_drawdown_pct,
+        sustained_low_price=sustained_low_price,
+        sustained_rebound_pct=sustained_rebound_pct,
     )
 
 
@@ -167,6 +226,9 @@ def moves_consistent(first: FxMove, second: FxMove) -> bool:
         and abs(first.change_15m_pct - second.change_15m_pct) <= 0.05
         and abs(first.change_30m_pct - second.change_30m_pct) <= 0.08
         and abs(first.change_60m_pct - second.change_60m_pct) <= 0.10
+        and abs(first.sustained_drawdown_pct - second.sustained_drawdown_pct) <= 0.10
+        and abs(first.sustained_rebound_pct - second.sustained_rebound_pct) <= 0.05
+        and abs(first.sustained_duration_minutes - second.sustained_duration_minutes) <= 10
         and abs(first.latest_epoch - second.latest_epoch) <= 600
     )
 
@@ -207,17 +269,32 @@ def _reference_epoch(move: FxMove, minutes: int) -> float:
     return getattr(move, f"reference_{minutes}m_epoch")
 
 
-def determine_stage(move: FxMove) -> int:
-    """진행형 급락 단계. 15·30분만 사용한다."""
-    if any(_change(move, m) <= v for m, v in SEVERE_THRESHOLDS.items()):
+def determine_fast_stage(move: FxMove) -> int:
+    if any(_change(move, m) <= v for m, v in FAST_SEVERE_THRESHOLDS.items()):
         return 2
-    if any(_change(move, m) <= v for m, v in WARNING_THRESHOLDS.items()):
+    if any(_change(move, m) <= v for m, v in FAST_WARNING_THRESHOLDS.items()):
+        return 1
+    return 0
+
+
+# 이전 호출과 호환되는 이름
+def determine_stage(move: FxMove) -> int:
+    return determine_fast_stage(move)
+
+
+def determine_sustained_stage(move: FxMove) -> int:
+    if move.sustained_duration_minutes < SUSTAINED_MIN_DURATION_MINUTES:
+        return 0
+    if move.sustained_rebound_pct > SUSTAINED_MAX_REBOUND_PCT:
+        return 0
+    if move.sustained_drawdown_pct <= SUSTAINED_SEVERE_DRAWDOWN_PCT:
+        return 2
+    if move.sustained_drawdown_pct <= SUSTAINED_WARNING_DRAWDOWN_PCT:
         return 1
     return 0
 
 
 def determine_residual_stage(move: FxMove) -> int:
-    """60분 충격 잔존 단계. 단독 텔레그램 경보에는 사용하지 않는다."""
     if move.change_60m_pct <= RESIDUAL_SEVERE_60M:
         return 2
     if move.change_60m_pct <= RESIDUAL_WARNING_60M:
@@ -225,18 +302,32 @@ def determine_residual_stage(move: FxMove) -> int:
     return 0
 
 
-def threshold_for(stage: int, minutes: int) -> float:
-    return (SEVERE_THRESHOLDS if stage == 2 else WARNING_THRESHOLDS)[minutes]
+def active_stage(move: FxMove) -> int:
+    return max(determine_fast_stage(move), determine_sustained_stage(move))
 
 
-def trigger_windows(stage: int, move: FxMove) -> list[int]:
-    if stage not in (1, 2):
+def fast_threshold_for(stage: int, minutes: int) -> float:
+    return (FAST_SEVERE_THRESHOLDS if stage == 2 else FAST_WARNING_THRESHOLDS)[minutes]
+
+
+def trigger_windows(fast_stage: int, move: FxMove) -> list[int]:
+    if fast_stage not in (1, 2):
         return []
     return [
         minutes
         for minutes in (15, 30)
-        if _change(move, minutes) <= threshold_for(stage, minutes)
+        if _change(move, minutes) <= fast_threshold_for(fast_stage, minutes)
     ]
+
+
+def active_lanes(move: FxMove) -> list[str]:
+    lanes: list[str] = []
+    fast_stage = determine_fast_stage(move)
+    for minutes in trigger_windows(fast_stage, move):
+        lanes.append(f"fast_{minutes}m")
+    if determine_sustained_stage(move) > 0:
+        lanes.append("sustained")
+    return lanes
 
 
 def direction_label(change_pct: float) -> str:
@@ -250,35 +341,33 @@ def direction_label(change_pct: float) -> str:
 def current_state(move: FxMove) -> str:
     c15 = move.change_15m_pct
     c30 = move.change_30m_pct
+    sustained = determine_sustained_stage(move)
 
     if c15 <= -DIRECTION_EPSILON and c30 <= -DIRECTION_EPSILON:
-        return "급락 진행 중 — 최근 15·30분 모두 USD/JPY 하락(엔화 강세)"
+        return "빠른 하락 진행 중 — 최근 15·30분 모두 USD/JPY 하락(엔화 강세)"
     if c15 <= -DIRECTION_EPSILON and c30 >= DIRECTION_EPSILON:
         return "반등 뒤 재하락 — 최근 15분 USD/JPY가 다시 하락"
     if c15 >= DIRECTION_EPSILON and c30 <= -DIRECTION_EPSILON:
         return "30분 급락 뒤 단기 반등 — 최근 15분은 USD/JPY 상승"
+    if sustained > 0 and move.sustained_rebound_pct <= SUSTAINED_MAX_REBOUND_PCT:
+        return (
+            f"지속 하락 중 — 최근 고점 이후 {move.sustained_duration_minutes:.0f}분, "
+            f"{move.sustained_drawdown_pct:.2f}% 하락"
+        )
     if c15 >= DIRECTION_EPSILON and c30 >= DIRECTION_EPSILON:
         return "USD/JPY 반등 진행 중 — 최근 15·30분 모두 상승"
     if abs(c15) < DIRECTION_EPSILON and c30 <= -DIRECTION_EPSILON:
-        return "최근 30분 급락 후 현재 보합 — 진행형 충격 잔존"
+        return "최근 30분 급락 후 현재 보합 — 단기 충격 잔존"
     if abs(c15) < DIRECTION_EPSILON and c30 >= DIRECTION_EPSILON:
         return "반등 후 현재 보합 — 지금 재급락 중은 아님"
-    return "구간별 방향 혼조 — 15·30분 수치를 각각 확인"
+    return "구간별 방향 혼조 — 단기·지속 하락 수치를 함께 확인"
 
 
-def title_state(stage: int, move: FxMove, alert_reason: str) -> str:
-    if alert_reason == "반등 후 15분 재급락":
-        return "반등 후 15분 재급락"
-    if alert_reason == "같은 단계 새 저점 확대":
-        return "같은 단계 새 저점 확대"
-    triggers = trigger_windows(stage, move)
-    if 15 in triggers:
-        return "15분 급락 진행"
-    if 30 in triggers and move.change_15m_pct >= DIRECTION_EPSILON:
-        return "30분 급락 뒤 단기 반등"
-    if 30 in triggers:
-        return "30분 급락 진행"
-    return "진행형 급락"
+def normalize_lanes(value: object) -> list[str]:
+    allowed = {"fast_15m", "fast_30m", "sustained"}
+    if not isinstance(value, (list, tuple, set)):
+        return []
+    return sorted({str(item) for item in value if str(item) in allowed})
 
 
 def normalize_windows(value: object) -> list[int]:
@@ -301,6 +390,8 @@ def load_state() -> dict:
         "last_alert_at_kst": None,
         "last_alert_epoch": None,
         "last_alert_price": None,
+        "last_alert_lanes": [],
+        "last_observed_lanes": [],
         "last_alert_trigger_windows": [],
         "last_observed_trigger_windows": [],
     }
@@ -314,12 +405,26 @@ def load_state() -> dict:
     result = {**default, **value}
     if result.get("stage") not in (0, 1, 2):
         result["stage"] = 0
+
+    # 이전 버전 상태와 호환
     result["last_alert_trigger_windows"] = normalize_windows(
         result.get("last_alert_trigger_windows", [])
     )
     result["last_observed_trigger_windows"] = normalize_windows(
         result.get("last_observed_trigger_windows", [])
     )
+    result["last_alert_lanes"] = normalize_lanes(result.get("last_alert_lanes", []))
+    result["last_observed_lanes"] = normalize_lanes(
+        result.get("last_observed_lanes", [])
+    )
+    if not result["last_alert_lanes"]:
+        result["last_alert_lanes"] = [
+            f"fast_{minutes}m" for minutes in result["last_alert_trigger_windows"]
+        ]
+    if not result["last_observed_lanes"]:
+        result["last_observed_lanes"] = [
+            f"fast_{minutes}m" for minutes in result["last_observed_trigger_windows"]
+        ]
     return result
 
 
@@ -364,16 +469,21 @@ def same_stage_reason(
     previous: dict,
     stage: int,
     move: FxMove,
-    triggers: list[int],
+    lanes: list[str],
 ) -> str | None:
     if stage not in (1, 2) or not cooldown_elapsed(previous, move):
         return None
 
     previous_observed = set(
-        normalize_windows(previous.get("last_observed_trigger_windows", []))
+        normalize_lanes(previous.get("last_observed_lanes", []))
     )
-    if 15 in triggers and 15 not in previous_observed:
+    new_lanes = [lane for lane in lanes if lane not in previous_observed]
+    if "fast_15m" in new_lanes:
         return "반등 후 15분 재급락"
+    if "fast_30m" in new_lanes:
+        return "30분 급락 새로 확인"
+    if "sustained" in new_lanes:
+        return "지속 하락 새로 확인"
 
     last_alert_price = finite(previous.get("last_alert_price"))
     if last_alert_price is not None:
@@ -386,21 +496,73 @@ def same_stage_reason(
 
 def alert_reason(previous_stage: int, stage: int, same_reason: str | None) -> str | None:
     if stage > previous_stage:
-        return "상위 단계 악화" if previous_stage > 0 else "신규 진행형 급락"
+        return "상위 단계 악화" if previous_stage > 0 else "신규 하락 경보"
     if stage == previous_stage and same_reason:
         return same_reason
     return None
 
 
-def format_window_line(stage: int, move: FxMove, minutes: int) -> str:
+def title_state(move: FxMove, reason: str) -> str:
+    if reason in {
+        "반등 후 15분 재급락",
+        "30분 급락 새로 확인",
+        "지속 하락 새로 확인",
+        "같은 단계 새 저점 확대",
+    }:
+        return reason
+
+    lanes = active_lanes(move)
+    if "sustained" in lanes and ("fast_15m" in lanes or "fast_30m" in lanes):
+        return "빠른 급락·지속 하락 동시"
+    if "sustained" in lanes:
+        return (
+            f"고점 대비 {move.sustained_drawdown_pct:.2f}%·"
+            f"{move.sustained_duration_minutes:.0f}분 지속 하락"
+        )
+    if "fast_15m" in lanes:
+        return "15분 급락 진행"
+    if "fast_30m" in lanes:
+        return "30분 급락 진행"
+    return "엔화 강세 경보"
+
+
+def format_fast_window_line(fast_stage: int, move: FxMove, minutes: int) -> str:
     change = _change(move, minutes)
-    threshold = threshold_for(stage, minutes)
-    met = change <= threshold
-    result = "충족 ← 이번 경보 원인" if met else "미충족"
+    if fast_stage in (1, 2):
+        threshold = fast_threshold_for(fast_stage, minutes)
+        met = change <= threshold
+        result = "충족 ← 경보 원인" if met else "미충족"
+        threshold_text = f"{fast_stage}단계 기준 {threshold:+.2f}% {result}"
+    else:
+        threshold_text = "빠른 급락 기준 미충족"
     return (
         f"{minutes}분({fmt_hm(_reference_epoch(move, minutes))}→{fmt_hm(move.latest_epoch)}): "
         f"{_reference_price(move, minutes):.3f} → {move.latest_price:.3f}, {change:+.2f}% | "
-        f"{direction_label(change)} | {stage}단계 기준 {threshold:+.2f}% {result}"
+        f"{direction_label(change)} | {threshold_text}"
+    )
+
+
+def sustained_line(move: FxMove) -> str:
+    stage = determine_sustained_stage(move)
+    if stage == 2:
+        state = "2단계·심각 지속 하락"
+    elif stage == 1:
+        state = "1단계·주의 지속 하락"
+    elif move.sustained_rebound_pct > SUSTAINED_MAX_REBOUND_PCT:
+        state = (
+            f"하락 후 {move.sustained_rebound_pct:.2f}% 반등 — "
+            "현재 지속 하락 경보는 해제"
+        )
+    elif move.sustained_duration_minutes < SUSTAINED_MIN_DURATION_MINUTES:
+        state = "지속 시간 45분 미만 — 빠른 급락 구간으로 판단"
+    else:
+        state = "지속 하락 기준 미충족"
+    return (
+        f"가변 구간({fmt_hm(move.sustained_peak_epoch)}→{fmt_hm(move.latest_epoch)}, "
+        f"{move.sustained_duration_minutes:.0f}분): "
+        f"{move.sustained_peak_price:.3f} → {move.latest_price:.3f}, "
+        f"{move.sustained_drawdown_pct:+.2f}% | 구간 저점 {move.sustained_low_price:.3f}, "
+        f"저점 대비 반등 {move.sustained_rebound_pct:.2f}% | {state}"
     )
 
 
@@ -427,8 +589,15 @@ def build_body(
     reason: str,
 ) -> str:
     level = "2단계·심각" if stage == 2 else "1단계·주의"
-    triggers = trigger_windows(stage, move)
-    trigger_text = "·".join(f"{minutes}분" for minutes in triggers)
+    fast_stage = determine_fast_stage(move)
+    sustained_stage = determine_sustained_stage(move)
+    lanes = active_lanes(move)
+    lane_names = {
+        "fast_15m": "15분 급락",
+        "fast_30m": "30분 급락",
+        "sustained": "가변 구간 지속 하락",
+    }
+    lane_text = "·".join(lane_names[lane] for lane in lanes)
     return "\n".join(
         [
             f"조회 시각: {checked_at.astimezone(KST).strftime('%Y-%m-%d %H:%M:%S KST')}",
@@ -437,18 +606,22 @@ def build_body(
             "",
             f"현재 상태: {current_state(move)}",
             f"알림 사유: {reason}",
-            f"경보 발동 근거: {trigger_text} 구간이 진행형 {level} 기준 충족",
+            f"감지 경로: {lane_text}",
             f"USD/JPY 현재가: {move.latest_price:.3f}",
             "",
-            "진행형 구간",
-            format_window_line(stage, move, 15),
-            format_window_line(stage, move, 30),
+            "빠른 급락 감지",
+            format_fast_window_line(fast_stage, move, 15),
+            format_fast_window_line(fast_stage, move, 30),
             "",
-            "60분 충격 잔존 참고 — 단독으로는 텔레그램을 보내지 않음",
+            "지속 하락 감지 — 90분처럼 고정하지 않고 실제 고점부터 자동 계산",
+            sustained_line(move),
+            "",
+            "60분 단순 비교 — 참고용",
             residual_line(move),
             "",
-            f"최종 판정: USD/JPY 진행형 급락 {level}",
-            "같은 단계라도 15분 급락이 새로 재발하거나, 직전 알림 가격보다 0.30% 이상 새 저점을 만들면 재알림합니다.",
+            f"최종 판정: USD/JPY 엔화 강세 경보 {level}",
+            f"빠른 급락 단계: {fast_stage} / 지속 하락 단계: {sustained_stage}",
+            "같은 단계라도 새로운 감지 경로가 생기거나 직전 알림가보다 0.30% 이상 새 저점을 만들면 재알림합니다.",
             f"같은 단계 재알림 최소 간격: {SAME_STAGE_COOLDOWN_MINUTES}분",
             "",
             "이 경보는 기존 엔캐리 청산 확정 경보와 별개입니다.",
@@ -459,36 +632,37 @@ def build_body(
 def write_summary(
     move: FxMove | None,
     stage: int | None,
+    fast_stage: int | None,
+    sustained_stage: int | None,
     residual_stage: int | None,
     previous_stage: int,
     status: str,
     error: str | None = None,
 ) -> None:
     lines = [
-        "# USD/JPY 단기 급변 점검",
+        "# USD/JPY 엔화 강세 감시",
         "",
         f"- 상태: {status}",
-        f"- 직전 진행형 단계: {previous_stage}",
-        f"- 현재 진행형 단계: {'판정 보류' if stage is None else stage}",
-        f"- 60분 충격 잔존 단계: {'판정 보류' if residual_stage is None else residual_stage}",
+        f"- 직전 통합 단계: {previous_stage}",
+        f"- 현재 통합 단계: {'판정 보류' if stage is None else stage}",
+        f"- 빠른 급락 단계: {'판정 보류' if fast_stage is None else fast_stage}",
+        f"- 지속 하락 단계: {'판정 보류' if sustained_stage is None else sustained_stage}",
+        f"- 60분 참고 단계: {'판정 보류' if residual_stage is None else residual_stage}",
     ]
     if move is not None:
         lines.extend(
             [
-                f"- 현재 방향: {current_state(move)}",
+                f"- 현재 상태: {current_state(move)}",
                 f"- 현재가: {move.latest_price:.3f}",
                 f"- 15분: {move.change_15m_pct:+.3f}%",
                 f"- 30분: {move.change_30m_pct:+.3f}%",
+                f"- 가변 구간: {move.sustained_duration_minutes:.0f}분 / {move.sustained_drawdown_pct:+.3f}%",
+                f"- 가변 구간 저점 대비 반등: {move.sustained_rebound_pct:.3f}%",
                 f"- 60분 참고: {move.change_60m_pct:+.3f}%",
                 f"- 데이터 시각: {fmt_kst(move.latest_epoch)}",
+                f"- 감지 경로: {', '.join(active_lanes(move)) or '없음'}",
             ]
         )
-        if stage in (1, 2):
-            lines.append(
-                f"- 진행형 발동 구간: {', '.join(f'{item}분' for item in trigger_windows(stage, move))}"
-            )
-        if residual_stage in (1, 2) and stage == 0:
-            lines.append("- 60분 단독 충족: 상태 참고만 기록·텔레그램 미발송")
     if error:
         lines.extend(["", f"- 오류: {error}"])
     SUMMARY_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -498,38 +672,49 @@ def state_for_observation(
     previous: dict,
     *,
     stage: int,
-    triggers: list[int],
+    lanes: list[str],
+    move: FxMove,
 ) -> dict:
     result = dict(previous)
-    result["stage"] = stage
-    result["last_observed_trigger_windows"] = triggers
+    result.update(
+        {
+            "stage": stage,
+            "last_observed_lanes": lanes,
+            "last_observed_trigger_windows": [
+                int(lane.removeprefix("fast_").removesuffix("m"))
+                for lane in lanes
+                if lane.startswith("fast_")
+            ],
+            "fast_stage": determine_fast_stage(move),
+            "sustained_stage": determine_sustained_stage(move),
+            "sustained_peak_price": move.sustained_peak_price,
+            "sustained_peak_epoch": move.sustained_peak_epoch,
+            "sustained_duration_minutes": move.sustained_duration_minutes,
+            "sustained_drawdown_pct": move.sustained_drawdown_pct,
+            "sustained_rebound_pct": move.sustained_rebound_pct,
+        }
+    )
     return result
 
 
-def should_persist_observed_windows(
+def should_persist_observed_lanes(
     previous: dict,
     *,
     stage: int,
-    triggers: list[int],
+    lanes: list[str],
     move: FxMove,
 ) -> bool:
-    previous_windows = normalize_windows(
-        previous.get("last_observed_trigger_windows", [])
-    )
-    if triggers == previous_windows:
+    previous_lanes = normalize_lanes(previous.get("last_observed_lanes", []))
+    if lanes == previous_lanes:
         return False
 
-    # 같은 단계에서 새 15분 급락이 시작됐지만 재알림 쿨다운 중이면,
-    # 즉시 관측 상태를 덮지 않는다. 급락이 쿨다운 이후에도 지속될 경우
-    # 다음 실행에서 정확히 재알림할 수 있게 하기 위함이다.
-    new_15m_during_cooldown = (
+    new_lane_during_cooldown = (
         stage == int(previous.get("stage", 0))
         and stage in (1, 2)
-        and 15 in triggers
-        and 15 not in previous_windows
+        and any(lane not in previous_lanes for lane in lanes)
         and not cooldown_elapsed(previous, move)
     )
-    return not new_15m_during_cooldown
+    return not new_lane_during_cooldown
 
 
 def run(current: dt.datetime | None = None) -> dict:
@@ -545,6 +730,8 @@ def run(current: dt.datetime | None = None) -> dict:
             None,
             None,
             None,
+            None,
+            None,
             previous_stage,
             "데이터 불일치·조회 실패로 판정 보류",
             str(exc),
@@ -552,6 +739,8 @@ def run(current: dt.datetime | None = None) -> dict:
         return {
             "alerted": False,
             "stage": None,
+            "fast_stage": None,
+            "sustained_stage": None,
             "residual_stage": None,
             "previous_stage": previous_stage,
             "error": str(exc),
@@ -561,33 +750,44 @@ def run(current: dt.datetime | None = None) -> dict:
     age_minutes = max(0.0, (current.timestamp() - move.latest_epoch) / 60.0)
     if age_minutes > max_age_minutes:
         status = f"데이터가 {age_minutes:.1f}분 지연되어 판정 보류"
-        write_summary(move, None, None, previous_stage, status)
+        write_summary(move, None, None, None, None, previous_stage, status)
         return {
             "alerted": False,
             "stage": None,
+            "fast_stage": None,
+            "sustained_stage": None,
             "residual_stage": None,
             "previous_stage": previous_stage,
             "age_minutes": age_minutes,
         }
 
-    stage = determine_stage(move)
+    fast_stage = determine_fast_stage(move)
+    sustained_stage = determine_sustained_stage(move)
     residual_stage = determine_residual_stage(move)
-    triggers = trigger_windows(stage, move)
-    same_reason = same_stage_reason(previous, stage, move, triggers)
+    stage = max(fast_stage, sustained_stage)
+    lanes = active_lanes(move)
+    same_reason = same_stage_reason(previous, stage, move, lanes)
     reason = alert_reason(previous_stage, stage, same_reason)
     checked_at_kst = current.astimezone(KST).isoformat(timespec="seconds")
 
     if reason is not None:
-        pending = state_for_observation(previous, stage=stage, triggers=triggers)
+        pending = state_for_observation(
+            previous, stage=stage, lanes=lanes, move=move
+        )
         pending.update(
             {
                 "last_alert_at_kst": checked_at_kst,
                 "last_alert_epoch": move.latest_epoch,
                 "last_alert_price": move.latest_price,
-                "last_alert_trigger_windows": triggers,
+                "last_alert_lanes": lanes,
+                "last_alert_trigger_windows": [
+                    int(lane.removeprefix("fast_").removesuffix("m"))
+                    for lane in lanes
+                    if lane.startswith("fast_")
+                ],
             }
         )
-        title = f"🚨 USD/JPY 진행형 급락 {stage}단계 — {title_state(stage, move, reason)}"
+        title = f"🚨 USD/JPY 엔화 강세 {stage}단계 — {title_state(move, reason)}"
         body = build_body(stage, move, current, reason=reason)
         ALERT_TITLE_PATH.write_text(title + "\n", encoding="utf-8")
         ALERT_BODY_PATH.write_text(body + "\n", encoding="utf-8")
@@ -595,10 +795,12 @@ def run(current: dt.datetime | None = None) -> dict:
             ALERT_JSON_PATH,
             {
                 "stage": stage,
+                "fast_stage": fast_stage,
+                "sustained_stage": sustained_stage,
                 "residual_stage": residual_stage,
                 "move": asdict(move),
                 "current_state": current_state(move),
-                "trigger_windows": triggers,
+                "active_lanes": lanes,
                 "alert_reason": reason,
                 "checked_at_kst": checked_at_kst,
             },
@@ -607,53 +809,64 @@ def run(current: dt.datetime | None = None) -> dict:
         write_summary(
             move,
             stage,
+            fast_stage,
+            sustained_stage,
             residual_stage,
             previous_stage,
-            f"진행형 급락 경보 생성 — {reason}",
+            f"엔화 강세 경보 생성 — {reason}",
         )
         return {
             "alerted": True,
             "stage": stage,
+            "fast_stage": fast_stage,
+            "sustained_stage": sustained_stage,
             "residual_stage": residual_stage,
             "previous_stage": previous_stage,
             "current_state": current_state(move),
-            "trigger_windows": triggers,
+            "active_lanes": lanes,
             "alert_reason": reason,
             "move": asdict(move),
         }
 
     state_changed = (
         stage != previous_stage
-        or should_persist_observed_windows(
-            previous,
-            stage=stage,
-            triggers=triggers,
-            move=move,
+        or should_persist_observed_lanes(
+            previous, stage=stage, lanes=lanes, move=move
         )
     )
     if state_changed:
         write_json(
             STATE_PATH,
-            state_for_observation(previous, stage=stage, triggers=triggers),
+            state_for_observation(previous, stage=stage, lanes=lanes, move=move),
         )
 
     if stage == 0 and residual_stage > 0:
-        status = "진행형 급락 해제·60분 충격 잔존 참고만 기록"
+        status = "활성 경보 해제·60분 충격은 참고만 기록"
     elif stage == 0:
-        status = "진행형 급락 기준 미충족"
+        status = "빠른 급락·지속 하락 기준 모두 미충족"
     elif stage == previous_stage:
-        status = "같은 진행형 단계 유지·재알림 조건 미충족"
+        status = "같은 단계 유지·재알림 조건 미충족"
     else:
-        status = "진행형 단계 하향 상태 갱신"
+        status = "통합 단계 하향 상태 갱신"
 
-    write_summary(move, stage, residual_stage, previous_stage, status)
+    write_summary(
+        move,
+        stage,
+        fast_stage,
+        sustained_stage,
+        residual_stage,
+        previous_stage,
+        status,
+    )
     return {
         "alerted": False,
         "stage": stage,
+        "fast_stage": fast_stage,
+        "sustained_stage": sustained_stage,
         "residual_stage": residual_stage,
         "previous_stage": previous_stage,
         "current_state": current_state(move),
-        "trigger_windows": triggers,
+        "active_lanes": lanes,
         "move": asdict(move),
     }
 
