@@ -1,14 +1,25 @@
 {
-  "status": "designing",
+  "status": "active",
+  "merged_commit_sha": "962cea604590dc5476f36b0987f49f7fa8424a8c",
+  "validation_workflow_run_id": 30823536842,
+  "tests_passed": 40,
+  "live_validation": {
+    "sector_results": 10,
+    "errors": 0,
+    "telegram_sent": false
+  },
   "principle": "Use a benchmark that matches each Korean sector's listing market and size profile.",
   "benchmarks": {
     "Korean autos": "069500.KS KODEX 200",
     "Korean memory large caps": "069500.KS KODEX 200",
-    "Korean semiconductor equipment and materials": "229200.KS KODEX KOSDAQ 150"
+    "Korean semiconductor equipment, materials and parts": "229200.KS KODEX KOSDAQ 150"
   },
-  "separation": [
-    "Korean memory large caps",
-    "Korean semiconductor equipment and materials"
-  ],
-  "remove_as_primary_benchmark": "^KS11 KOSPI"
+  "sector_construction": {
+    "Korean autos": "091180.KS sector ETF plus Hyundai Motor, Kia and Hyundai Mobis breadth",
+    "Korean memory large caps": "median of Samsung Electronics and SK hynix; no broad semiconductor ETF substitution",
+    "Korean semiconductor equipment, materials and parts": "median of eight KOSDAQ semiconductor equipment and parts stocks"
+  },
+  "followup_policy": "Persist each sector's benchmark symbol and reuse it for immediate, 30-minute and close follow-ups.",
+  "compatibility": "Only an already-open legacy event may finish against ^KS11; all new events use market-specific benchmarks.",
+  "removed_as_new_event_primary_benchmark": "^KS11 KOSPI"
 }
