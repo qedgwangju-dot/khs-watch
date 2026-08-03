@@ -20,5 +20,12 @@
     "trigger_window": "60m",
     "non_trigger_windows": ["15m", "30m"]
   },
-  "rule": "Alert stage describes the largest shock among 15/30/60-minute windows; current direction is stated separately and takes interpretive priority."
+  "rule": "Alert stage describes the largest shock among 15/30/60-minute windows; current direction is stated separately and takes interpretive priority.",
+  "validation": {
+    "workflow_run_id": 30776819716,
+    "tests_passed": 16,
+    "result": "success",
+    "telegram_sent": false,
+    "reason": "pull-request dry-run"
+  }
 }
