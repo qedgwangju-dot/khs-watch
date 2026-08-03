@@ -154,6 +154,8 @@ def insert_sector_block(body: str, block: str) -> str:
         start = -1
 
     if start >= 0:
+        while start > 0 and not lines[start - 1].strip():
+            start -= 1
         end = next(
             (
                 index
@@ -163,8 +165,6 @@ def insert_sector_block(body: str, block: str) -> str:
             len(lines),
         )
         del lines[start:end]
-        while start < len(lines) and not lines[start].strip():
-            del lines[start]
 
     insert_at = next(
         (
@@ -174,6 +174,10 @@ def insert_sector_block(body: str, block: str) -> str:
         ),
         len(lines),
     )
+    while insert_at > 0 and not lines[insert_at - 1].strip():
+        del lines[insert_at - 1]
+        insert_at -= 1
+
     block_lines = ["", *block.splitlines(), ""]
     lines[insert_at:insert_at] = block_lines
     return "\n".join(lines).strip() + "\n"
