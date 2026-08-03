@@ -38,7 +38,10 @@ def parse_payload(symbol: str, payload: dict) -> QuoteSeries:
     bar_epoch, bar_price = points[-1]
     latest_price = finite(meta.get("regularMarketPrice")) or bar_price
     latest_epoch = finite(meta.get("regularMarketTime")) or bar_epoch
-    previous_close = finite(meta.get("regularMarketPreviousClose")) or finite(meta.get("previousClose"))
+    previous_close = (
+        finite(meta.get("regularMarketPreviousClose"))
+        or finite(meta.get("previousClose"))
+    )
     if previous_close is None or previous_close <= 0:
         raise RuntimeError(f"{symbol} previous close missing")
     session_change = ((latest_price - previous_close) / previous_close) * 100
@@ -58,14 +61,23 @@ def parse_payload(symbol: str, payload: dict) -> QuoteSeries:
 
 def yahoo_url(base: str, symbol: str) -> str:
     params = urllib.parse.urlencode(
-        {"interval": "5m", "range": "5d", "includePrePost": "false", "events": "div,splits"}
+        {
+            "interval": "5m",
+            "range": "5d",
+            "includePrePost": "false",
+            "events": "div,splits",
+        }
     )
     return f"{base}/{urllib.parse.quote(symbol, safe='')}?{params}"
 
 
 def fetch_one(base: str, symbol: str) -> QuoteSeries:
     text, error = fetch_text(
-        yahoo_url(base, symbol), USER_AGENT, timeout=18, attempts=2, accept="application/json"
+        yahoo_url(base, symbol),
+        USER_AGENT,
+        timeout=18,
+        attempts=2,
+        accept="application/json",
     )
     if error or not text:
         raise RuntimeError(error or f"{symbol} empty response")
@@ -73,7 +85,11 @@ def fetch_one(base: str, symbol: str) -> QuoteSeries:
 
 
 def quotes_consistent(first: QuoteSeries, second: QuoteSeries) -> bool:
-    price_gap = abs(first.latest_price - second.latest_price) / max(first.latest_price, second.latest_price) * 100
+    price_gap = (
+        abs(first.latest_price - second.latest_price)
+        / max(first.latest_price, second.latest_price)
+        * 100
+    )
     return (
         price_gap <= 0.08
         and abs(first.session_change_pct - second.session_change_pct) <= 0.15
@@ -98,7 +114,9 @@ def fetch_quote(symbol: str) -> QuoteSeries:
     return max(successes, key=lambda item: item.latest_epoch)
 
 
-def fetch_quotes(symbols: set[str]) -> tuple[dict[str, QuoteSeries], dict[str, str]]:
+def fetch_quotes(
+    symbols: set[str],
+) -> tuple[dict[str, QuoteSeries], dict[str, str]]:
     quotes: dict[str, QuoteSeries] = {}
     errors: dict[str, str] = {}
     with ThreadPoolExecutor(max_workers=min(12, max(1, len(symbols)))) as executor:
@@ -113,7 +131,9 @@ def fetch_quotes(symbols: set[str]) -> tuple[dict[str, QuoteSeries], dict[str, s
 
 
 def nearest_price(
-    points: tuple[tuple[float, float], ...], target: float, max_gap: float = 480
+    points: tuple[tuple[float, float], ...],
+    target: float,
+    max_gap: float = 480,
 ) -> tuple[float, float] | None:
     if not points:
         return None
@@ -139,7 +159,9 @@ def rolling_change(quote: QuoteSeries, minutes: int) -> float | None:
 
 
 def rolling_relative_history(
-    sector: QuoteSeries, benchmark: QuoteSeries, minutes: int = 30
+    sector: QuoteSeries,
+    benchmark: QuoteSeries,
+    minutes: int = 30,
 ) -> list[float]:
     values: list[float] = []
     for timestamp, price in sector.points:
@@ -164,12 +186,20 @@ def grouped_daily_closes(quote: QuoteSeries) -> dict[str, float]:
         zone = KST
     result: dict[str, float] = {}
     for timestamp, price in quote.points:
-        day = dt.datetime.fromtimestamp(timestamp, UTC).astimezone(zone).date().isoformat()
+        day = (
+            dt.datetime.fromtimestamp(timestamp, UTC)
+            .astimezone(zone)
+            .date()
+            .isoformat()
+        )
         result[day] = price
     return result
 
 
-def daily_relative_history(sector: QuoteSeries, benchmark: QuoteSeries) -> list[float]:
+def daily_relative_history(
+    sector: QuoteSeries,
+    benchmark: QuoteSeries,
+) -> list[float]:
     sector_days = grouped_daily_closes(sector)
     benchmark_days = grouped_daily_closes(benchmark)
     common = sorted(set(sector_days) & set(benchmark_days))
@@ -188,17 +218,29 @@ def local_session_open(country: str, current: dt.datetime) -> bool:
         return False
     minute = local.hour * 60 + local.minute
     if country == "JP":
-        return 9 * 60 <= minute <= 11 * 60 + 30 or 12 * 60 + 30 <= minute <= 15 * 60 + 30
+        return (
+            9 * 60 <= minute <= 11 * 60 + 30
+            or 12 * 60 + 30 <= minute <= 15 * 60 + 30
+        )
     return 9 * 60 <= minute <= 15 * 60 + 30
 
 
 def quote_is_fresh(quote: QuoteSeries, current: dt.datetime) -> bool:
-    return max(0.0, current.timestamp() - quote.points[-1][0]) / 60 <= DATA_MAX_AGE_MINUTES
+    age_minutes = max(0.0, current.timestamp() - quote.points[-1][0]) / 60
+    return age_minutes <= DATA_MAX_AGE_MINUTES
 
 
-def market_status(country: str, quote: QuoteSeries, current: dt.datetime) -> str:
+def market_status(
+    country: str,
+    quote: QuoteSeries,
+    current: dt.datetime,
+) -> str:
     local = current.astimezone(KST)
-    quote_date = dt.datetime.fromtimestamp(quote.latest_epoch, UTC).astimezone(KST).date()
+    quote_date = (
+        dt.datetime.fromtimestamp(quote.latest_epoch, UTC)
+        .astimezone(KST)
+        .date()
+    )
     if local_session_open(country, current) and quote_is_fresh(quote, current):
         return "장중"
     if quote_date == local.date() and (local.hour, local.minute) >= (15, 30):
@@ -206,16 +248,24 @@ def market_status(country: str, quote: QuoteSeries, current: dt.datetime) -> str
     return "직전 세션"
 
 
-def primary_quote(spec: SectorSpec, quotes: dict[str, QuoteSeries]) -> QuoteSeries | None:
+def primary_quote(
+    spec: SectorSpec,
+    quotes: dict[str, QuoteSeries],
+) -> QuoteSeries | None:
     return next((quotes[symbol] for symbol in spec.primary if symbol in quotes), None)
 
 
-def component_quotes(spec: SectorSpec, quotes: dict[str, QuoteSeries]) -> list[QuoteSeries]:
+def component_quotes(
+    spec: SectorSpec,
+    quotes: dict[str, QuoteSeries],
+) -> list[QuoteSeries]:
     return [quotes[symbol] for symbol in spec.components if symbol in quotes]
 
 
 def aggregate_sector(
-    spec: SectorSpec, quotes: dict[str, QuoteSeries], current: dt.datetime
+    spec: SectorSpec,
+    quotes: dict[str, QuoteSeries],
+    current: dt.datetime,
 ) -> SectorResult | None:
     benchmark = quotes.get(spec.benchmark)
     if benchmark is None:
@@ -225,19 +275,29 @@ def aggregate_sector(
     if primary is None and not components:
         return None
 
-    open_and_fresh = local_session_open(spec.country, current) and quote_is_fresh(benchmark, current)
-    component_30 = [value for item in components if (value := rolling_change(item, 30)) is not None]
+    open_and_fresh = (
+        local_session_open(spec.country, current)
+        and quote_is_fresh(benchmark, current)
+    )
+    component_30 = [
+        value
+        for item in components
+        if (value := rolling_change(item, 30)) is not None
+    ]
     benchmark_30 = rolling_change(benchmark, 30)
     primary_30 = rolling_change(primary, 30) if primary is not None else None
-    sector_30 = (
-        median(component_30)
-        if len(component_30) >= MIN_COMPONENTS_FOR_BREADTH
-        else primary_30
-    ) if open_and_fresh and benchmark_30 is not None else None
+
+    sector_30 = None
+    if open_and_fresh and benchmark_30 is not None:
+        if len(component_30) >= MIN_COMPONENTS_FOR_BREADTH:
+            sector_30 = median(component_30)
+        else:
+            sector_30 = primary_30
 
     if sector_30 is not None and benchmark_30 is not None:
         timeframe = "30분"
-        sector_change, benchmark_change = sector_30, benchmark_30
+        sector_change = sector_30
+        benchmark_change = benchmark_30
         relative = sector_change - benchmark_change
         histories: list[float] = []
         if primary is not None:
@@ -246,11 +306,18 @@ def aggregate_sector(
             histories.extend(rolling_relative_history(item, benchmark))
         sigma = robust_sigma(histories, 0.10)
         threshold = max(INTRADAY_MIN_RELATIVE_PCT, SIGNIFICANCE_Z * sigma)
-        source = "대표종목 중앙값" if len(component_30) >= MIN_COMPONENTS_FOR_BREADTH else "업종 ETF"
+        source = (
+            "대표종목 중앙값"
+            if len(component_30) >= MIN_COMPONENTS_FOR_BREADTH
+            else "업종 ETF"
+        )
     else:
         timeframe = "당일"
         component_session = [item.session_change_pct for item in components]
-        sector_session = primary.session_change_pct if primary is not None else median(component_session)
+        if primary is not None:
+            sector_session = primary.session_change_pct
+        else:
+            sector_session = median(component_session)
         if sector_session is None:
             return None
         sector_change = sector_session
@@ -282,17 +349,27 @@ def aggregate_sector(
             ]
         else:
             component_relatives = [
-                item.session_change_pct - benchmark.session_change_pct for item in components
+                item.session_change_pct - benchmark.session_change_pct
+                for item in components
             ]
         if component_relatives:
             if spec.expected_sign == 0:
-                breadth = sum(value > 0 for value in component_relatives) / len(component_relatives) * 100
+                breadth = (
+                    sum(value > 0 for value in component_relatives)
+                    / len(component_relatives)
+                    * 100
+                )
             else:
-                breadth = sum(value * spec.expected_sign > 0 for value in component_relatives) / len(component_relatives) * 100
+                breadth = (
+                    sum(value * spec.expected_sign > 0 for value in component_relatives)
+                    / len(component_relatives)
+                    * 100
+                )
 
     component_prices = {item.symbol: item.latest_price for item in components}
     if primary is not None:
         component_prices[primary.symbol] = primary.latest_price
+
     data_epoch = max(
         [benchmark.latest_epoch]
         + [item.latest_epoch for item in components]
@@ -323,8 +400,11 @@ def aggregate_sector(
 
 
 def all_symbols() -> set[str]:
-    symbols = {"1306.T", "^KS11"}
+    # ^KS11 is retained only to finish a follow-up event created before
+    # the market-specific Korean benchmark migration.
+    symbols = {"^KS11"}
     for spec in SECTORS:
+        symbols.add(spec.benchmark)
         symbols.update(spec.primary)
         symbols.update(spec.components)
     return symbols
@@ -334,7 +414,7 @@ def capture_snapshot(
     current: dt.datetime,
 ) -> tuple[list[SectorResult], dict[str, str], dict[str, QuoteSeries]]:
     quotes, errors = fetch_quotes(all_symbols())
-    # Keep compatibility with follow-up state created before the TOPIX-code correction.
+    # Compatibility with Japanese events created before the TOPIX-code fix.
     if "1306.T" in quotes:
         quotes["^TOPX"] = quotes["1306.T"]
     results = [
