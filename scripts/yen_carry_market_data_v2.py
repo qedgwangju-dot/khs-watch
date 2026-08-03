@@ -3,8 +3,9 @@
 
 Cash indices use Yahoo's official regular-market close and immediately preceding
 regular-market close when available. Five-minute candles are used only as a
-fallback and for rolling USD/JPY calculations. This avoids mistaking an
-incomplete final candle or a five-day chart baseline for the official close.
+fallback and for rolling USD/JPY calculations. If an exact 24-hour FX reference
+is unavailable across a weekend or holiday, the current USD/JPY quote is kept
+and Yahoo's official previous-close metadata is used only for the display change.
 """
 
 from __future__ import annotations
@@ -20,7 +21,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 import yen_carry_alert as legacy
 from khs_source_fetch import fetch_text
 
-USER_AGENT = "Mozilla/5.0 yen-carry-alert/2.1"
+USER_AGENT = "Mozilla/5.0 yen-carry-alert/2.2"
 YAHOO_BASES = (
     "https://query1.finance.yahoo.com/v8/finance/chart",
     "https://query2.finance.yahoo.com/v8/finance/chart",
@@ -90,6 +91,40 @@ def fallback_previous_session(points: list[tuple[float, float]], meta: dict) -> 
     return previous_price
 
 
+def official_previous_close(meta: dict) -> float | None:
+    return (
+        finite(meta.get("regularMarketPreviousClose"))
+        or finite(meta.get("previousClose"))
+        or finite(meta.get("chartPreviousClose"))
+    )
+
+
+def fx_reference(
+    points: list[tuple[float, float]],
+    meta: dict,
+) -> tuple[float, float, float, float]:
+    """Return current FX quote and a robust display reference.
+
+    The alert stage uses only the current USD/JPY price. A missing exact 24-hour
+    reference must therefore not suppress the quote. Across weekends or market
+    holidays, fall back to Yahoo's official previous-close metadata for the
+    display change while preserving the latest five-minute price and timestamp.
+    """
+    latest_ts, latest_price = points[-1]
+    try:
+        previous, change_pct = rolling_reference(
+            points,
+            86_400,
+            max_gap_seconds=28_800,
+        )
+    except RuntimeError:
+        previous = official_previous_close(meta)
+        if previous is None or previous <= 0:
+            previous = fallback_previous_session(points, meta)
+        change_pct = ((latest_price - previous) / previous) * 100
+    return latest_price, latest_ts, previous, change_pct
+
+
 def official_cash_reference(
     points: list[tuple[float, float]],
     meta: dict,
@@ -135,13 +170,8 @@ def parse_payload(payload: dict, spec: legacy.SymbolSpec) -> legacy.Quote:
     if len(points) < 2:
         raise RuntimeError(f"{spec.symbol} valid points insufficient")
 
-    latest_ts, latest_price = points[-1]
     if spec.kind == "환율":
-        previous_close, change_pct = rolling_reference(
-            points,
-            86_400,
-            max_gap_seconds=28_800,
-        )
+        latest_price, latest_ts, previous_close, change_pct = fx_reference(points, meta)
     elif spec.kind == "현물":
         latest_price, latest_ts, previous_close, change_pct = official_cash_reference(points, meta)
     else:
@@ -150,7 +180,7 @@ def parse_payload(payload: dict, spec: legacy.SymbolSpec) -> legacy.Quote:
     if spec.kind in {"현물", "선물"} and abs(change_pct) > 30:
         raise RuntimeError(f"{spec.symbol} implausible session move: {change_pct:.2f}%")
     if spec.kind == "환율" and abs(change_pct) > 12:
-        raise RuntimeError(f"{spec.symbol} implausible 24h move: {change_pct:.2f}%")
+        raise RuntimeError(f"{spec.symbol} implausible reference move: {change_pct:.2f}%")
 
     observed = dt.datetime.fromtimestamp(latest_ts, tz=dt.timezone.utc)
     return legacy.Quote(
