@@ -1,11 +1,46 @@
 {
-  "status": "preparing",
+  "status": "active",
+  "merged_commit_sha": "57740af70bd9b50e0b99fb8e1d998dd50da070f6",
+  "validation_workflow_run_id": 30808726724,
+  "tests_passed": 35,
+  "live_validation": {
+    "sector_results": 9,
+    "errors": 0,
+    "telegram_sent": false
+  },
   "measurement": [
     "immediate_snapshot",
     "30_minute_followup",
     "market_close_followup"
   ],
   "core_metric": "sector return minus TOPIX or KOSPI return",
+  "benchmarks": {
+    "Japan": "1306.T NEXT FUNDS TOPIX ETF",
+    "Korea": "^KS11 KOSPI"
+  },
   "data_policy": "sector ETF primary, representative-stock median fallback, query1/query2 cross-check",
-  "causality_policy": "relative performance indicates possible linkage, not sole causation"
+  "significance_policy": {
+    "intraday_min_relative_pct_point": 0.5,
+    "session_min_relative_pct_point": 0.8,
+    "minimum_z_score": 2.0,
+    "breadth_components_minimum": 2
+  },
+  "tracked_sectors": [
+    "Japan autos",
+    "Japan electric and precision",
+    "Japan machinery",
+    "Japan utilities",
+    "Japan airlines",
+    "Japan food",
+    "Japan retail",
+    "Korea autos",
+    "Korea semiconductors"
+  ],
+  "causality_policy": "relative performance indicates possible linkage, not sole causation",
+  "failure_lessons": [
+    "Replace unsupported Yahoo TOPIX symbol with verified liquid TOPIX ETF benchmark",
+    "Sector-data errors must never suppress the primary USDJPY alert",
+    "Compile, unit-test, then live-query before merge"
+  ],
+  "telegram_bot_username": "hs8879887988798879_bot"
 }
