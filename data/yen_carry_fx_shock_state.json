@@ -1,9 +1,11 @@
 {
-  "change_15m_pct": 0.057002373046322344,
-  "change_30m_pct": 0.510900888075052,
-  "change_60m_pct": -1.0239592562699098,
+  "change_15m_pct": -0.023020608274927933,
+  "change_30m_pct": 0.0646490131917586,
+  "change_60m_pct": 0.13515583238761067,
   "last_alert_at_kst": "2026-08-03T10:10:12+09:00",
-  "last_checked_at_kst": "2026-08-03T10:10:12+09:00",
-  "latest_price": 156.20399475097656,
-  "stage": 1
+  "last_checked_at_kst": "2026-08-03T10:54:50+09:00",
+  "latest_price": 156.3260040283203,
+  "stage": 0,
+  "status": "cleared_after_live_recheck",
+  "verification_run_id": 30777988988
 }
