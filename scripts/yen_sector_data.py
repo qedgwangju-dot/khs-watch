@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-"""Verified Yahoo market-data retrieval and sector aggregation."""
+"""Verified Yahoo sector and benchmark data aggregation."""
 from __future__ import annotations
 
 import datetime as dt
 import json
-import math
-import os
 import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from zoneinfo import ZoneInfo
@@ -13,18 +11,17 @@ from zoneinfo import ZoneInfo
 from khs_source_fetch import fetch_text
 from yen_sector_config import *
 
+
 def valid_points(result: dict) -> list[tuple[float, float]]:
     timestamps = result.get("timestamp") or []
     rows = ((result.get("indicators") or {}).get("quote") or [])
     closes = rows[0].get("close", []) if rows else []
     points: list[tuple[float, float]] = []
     for timestamp, close in zip(timestamps, closes):
-        ts_value = finite(timestamp)
-        close_value = finite(close)
+        ts_value, close_value = finite(timestamp), finite(close)
         if ts_value is not None and close_value is not None and close_value > 0:
             points.append((ts_value, close_value))
-    points.sort(key=lambda item: item[0])
-    return points
+    return sorted(points)
 
 
 def parse_payload(symbol: str, payload: dict) -> QuoteSeries:
@@ -38,26 +35,22 @@ def parse_payload(symbol: str, payload: dict) -> QuoteSeries:
     points = valid_points(result)
     if len(points) < 2:
         raise RuntimeError(f"{symbol} observations insufficient")
-
-    latest_bar_epoch, latest_bar_price = points[-1]
-    latest_price = finite(meta.get("regularMarketPrice")) or latest_bar_price
-    latest_epoch = finite(meta.get("regularMarketTime")) or latest_bar_epoch
-    previous_close = finite(meta.get("regularMarketPreviousClose")) or finite(
-        meta.get("previousClose")
-    )
+    bar_epoch, bar_price = points[-1]
+    latest_price = finite(meta.get("regularMarketPrice")) or bar_price
+    latest_epoch = finite(meta.get("regularMarketTime")) or bar_epoch
+    previous_close = finite(meta.get("regularMarketPreviousClose")) or finite(meta.get("previousClose"))
     if previous_close is None or previous_close <= 0:
         raise RuntimeError(f"{symbol} previous close missing")
-    session_change_pct = ((latest_price - previous_close) / previous_close) * 100
-    if abs(session_change_pct) > 35:
-        raise RuntimeError(f"{symbol} implausible session move {session_change_pct:.2f}%")
-
+    session_change = ((latest_price - previous_close) / previous_close) * 100
+    if abs(session_change) > 35:
+        raise RuntimeError(f"{symbol} implausible session move {session_change:.2f}%")
     timezone = str(meta.get("exchangeTimezoneName") or "Asia/Tokyo")
     return QuoteSeries(
         symbol=symbol,
         latest_price=latest_price,
         latest_epoch=latest_epoch,
         previous_close=previous_close,
-        session_change_pct=session_change_pct,
+        session_change_pct=session_change,
         points=tuple(points),
         exchange_timezone=timezone,
     )
@@ -65,23 +58,14 @@ def parse_payload(symbol: str, payload: dict) -> QuoteSeries:
 
 def yahoo_url(base: str, symbol: str) -> str:
     params = urllib.parse.urlencode(
-        {
-            "interval": "5m",
-            "range": "5d",
-            "includePrePost": "false",
-            "events": "div,splits",
-        }
+        {"interval": "5m", "range": "5d", "includePrePost": "false", "events": "div,splits"}
     )
     return f"{base}/{urllib.parse.quote(symbol, safe='')}?{params}"
 
 
 def fetch_one(base: str, symbol: str) -> QuoteSeries:
     text, error = fetch_text(
-        yahoo_url(base, symbol),
-        USER_AGENT,
-        timeout=18,
-        attempts=2,
-        accept="application/json",
+        yahoo_url(base, symbol), USER_AGENT, timeout=18, attempts=2, accept="application/json"
     )
     if error or not text:
         raise RuntimeError(error or f"{symbol} empty response")
@@ -89,9 +73,7 @@ def fetch_one(base: str, symbol: str) -> QuoteSeries:
 
 
 def quotes_consistent(first: QuoteSeries, second: QuoteSeries) -> bool:
-    price_gap = abs(first.latest_price - second.latest_price) / max(
-        first.latest_price, second.latest_price
-    ) * 100
+    price_gap = abs(first.latest_price - second.latest_price) / max(first.latest_price, second.latest_price) * 100
     return (
         price_gap <= 0.08
         and abs(first.session_change_pct - second.session_change_pct) <= 0.15
@@ -136,9 +118,7 @@ def nearest_price(
     if not points:
         return None
     timestamp, price = min(points, key=lambda item: abs(item[0] - target))
-    if abs(timestamp - target) > max_gap:
-        return None
-    return timestamp, price
+    return None if abs(timestamp - target) > max_gap else (timestamp, price)
 
 
 def rolling_change(quote: QuoteSeries, minutes: int) -> float | None:
@@ -162,21 +142,18 @@ def rolling_relative_history(
     sector: QuoteSeries, benchmark: QuoteSeries, minutes: int = 30
 ) -> list[float]:
     values: list[float] = []
-    benchmark_points = benchmark.points
     for timestamp, price in sector.points:
         sector_ref = nearest_price(sector.points, timestamp - minutes * 60)
-        bench_now = nearest_price(benchmark_points, timestamp)
-        bench_ref = nearest_price(benchmark_points, timestamp - minutes * 60)
+        bench_now = nearest_price(benchmark.points, timestamp)
+        bench_ref = nearest_price(benchmark.points, timestamp - minutes * 60)
         if sector_ref is None or bench_now is None or bench_ref is None:
             continue
-        _, sector_ref_price = sector_ref
-        _, bench_now_price = bench_now
-        _, bench_ref_price = bench_ref
-        if min(sector_ref_price, bench_ref_price) <= 0:
+        _, s0 = sector_ref
+        _, b1 = bench_now
+        _, b0 = bench_ref
+        if min(s0, b0) <= 0:
             continue
-        sector_return = ((price - sector_ref_price) / sector_ref_price) * 100
-        bench_return = ((bench_now_price - bench_ref_price) / bench_ref_price) * 100
-        values.append(sector_return - bench_return)
+        values.append(((price / s0) - 1) * 100 - ((b1 / b0) - 1) * 100)
     return values
 
 
@@ -200,9 +177,8 @@ def daily_relative_history(sector: QuoteSeries, benchmark: QuoteSeries) -> list[
     for previous_day, current_day in zip(common, common[1:]):
         s0, s1 = sector_days[previous_day], sector_days[current_day]
         b0, b1 = benchmark_days[previous_day], benchmark_days[current_day]
-        if min(s0, b0) <= 0:
-            continue
-        values.append(((s1 / s0) - 1) * 100 - ((b1 / b0) - 1) * 100)
+        if min(s0, b0) > 0:
+            values.append((s1 / s0 - 1) * 100 - (b1 / b0 - 1) * 100)
     return values
 
 
@@ -217,8 +193,7 @@ def local_session_open(country: str, current: dt.datetime) -> bool:
 
 
 def quote_is_fresh(quote: QuoteSeries, current: dt.datetime) -> bool:
-    age = max(0.0, current.timestamp() - quote.points[-1][0]) / 60
-    return age <= DATA_MAX_AGE_MINUTES
+    return max(0.0, current.timestamp() - quote.points[-1][0]) / 60 <= DATA_MAX_AGE_MINUTES
 
 
 def market_status(country: str, quote: QuoteSeries, current: dt.datetime) -> str:
@@ -232,10 +207,7 @@ def market_status(country: str, quote: QuoteSeries, current: dt.datetime) -> str
 
 
 def primary_quote(spec: SectorSpec, quotes: dict[str, QuoteSeries]) -> QuoteSeries | None:
-    for symbol in spec.primary:
-        if symbol in quotes:
-            return quotes[symbol]
-    return None
+    return next((quotes[symbol] for symbol in spec.primary if symbol in quotes), None)
 
 
 def component_quotes(spec: SectorSpec, quotes: dict[str, QuoteSeries]) -> list[QuoteSeries]:
@@ -243,9 +215,7 @@ def component_quotes(spec: SectorSpec, quotes: dict[str, QuoteSeries]) -> list[Q
 
 
 def aggregate_sector(
-    spec: SectorSpec,
-    quotes: dict[str, QuoteSeries],
-    current: dt.datetime,
+    spec: SectorSpec, quotes: dict[str, QuoteSeries], current: dt.datetime
 ) -> SectorResult | None:
     benchmark = quotes.get(spec.benchmark)
     if benchmark is None:
@@ -255,22 +225,19 @@ def aggregate_sector(
     if primary is None and not components:
         return None
 
-    open_and_fresh = local_session_open(spec.country, current) and quote_is_fresh(
-        benchmark, current
-    )
+    open_and_fresh = local_session_open(spec.country, current) and quote_is_fresh(benchmark, current)
     component_30 = [value for item in components if (value := rolling_change(item, 30)) is not None]
     benchmark_30 = rolling_change(benchmark, 30)
     primary_30 = rolling_change(primary, 30) if primary is not None else None
-
-    if open_and_fresh and benchmark_30 is not None:
-        sector_30 = median(component_30) if len(component_30) >= MIN_COMPONENTS_FOR_BREADTH else primary_30
-    else:
-        sector_30 = None
+    sector_30 = (
+        median(component_30)
+        if len(component_30) >= MIN_COMPONENTS_FOR_BREADTH
+        else primary_30
+    ) if open_and_fresh and benchmark_30 is not None else None
 
     if sector_30 is not None and benchmark_30 is not None:
         timeframe = "30ë¶„"
-        sector_change = sector_30
-        benchmark_change = benchmark_30
+        sector_change, benchmark_change = sector_30, benchmark_30
         relative = sector_change - benchmark_change
         histories: list[float] = []
         if primary is not None:
@@ -283,11 +250,7 @@ def aggregate_sector(
     else:
         timeframe = "ë‹¹ì¼"
         component_session = [item.session_change_pct for item in components]
-        sector_session = (
-            primary.session_change_pct
-            if primary is not None
-            else median(component_session)
-        )
+        sector_session = primary.session_change_pct if primary is not None else median(component_session)
         if sector_session is None:
             return None
         sector_change = sector_session
@@ -298,6 +261,85 @@ def aggregate_sector(
             histories.extend(daily_relative_history(primary, benchmark))
         for item in components:
             histories.extend(daily_relative_history(item, benchmark))
-        sigma = robust_sigma(histories, 0.20)
+        sigma = robust_sigma(histories, 0.22)
         threshold = max(SESSION_MIN_RELATIVE_PCT, SIGNIFICANCE_Z * sigma)
-        source = "ì—…ì¢… ETF""–b&–Ö'’—2æ÷BæöæRVÇ6R.¸ÈÙÎÊ(^ºª’ÊIÙYž«	  ¢6–væ–f–6çBÒ'2‡&VÆF—fR’ãÒF‡&W6†öÆ@¢–b7V2æW‡V7FVE÷6–vâÓÒ ¢Æ–væVBÒæöæP¢6öçG&'’ÒæöæP¢VÇ6S ¢Æ–væVBÒ6–væ–f–6çBæB&VÆF—fR¢7V2æW‡V7FVE÷6–vââ ¢6öçG&'’Ò6–væ–f–6çBæB&VÆF—fR¢7V2æW‡V7FVE÷6–vâÂ  ¢'&VGFƒ¢fÆöBÂæöæRÒæöæP¢–bÆVâ†6ö×öæVçG2’ãÒÔ”åô4ôÕôäTåE5ôdõ%ô%$TEDƒ ¢–bF–ÖVg&ÖRÓÒ#3»hB"æB&Væ6†Ö&µó3—2æ÷BæöæS ¢6ö×öæVçE÷&VÆF—fW2Ò°¢fÇVRÒ&Væ6†Ö&µó3 ¢f÷"—FVÒ–â6ö×öæVçG0¢–b‡fÇVR£Ò&öÆÆ–æuö6†ævR†—FVÒÂ3’’—2æ÷BæöæP¢Ð¢VÇ6S ¢6ö×öæVçE÷&VÆF—fW2Ò°¢—FVÒç6W76–öåö6†ævU÷7BÒ&Væ6†Ö&²ç6W76–öåö6†ævU÷7Bf÷"—FVÒ–â6ö×öæVçG0¢Ð¢–b6ö×öæVçE÷&VÆF—fW3 ¢–b7V2æW‡V7FVE÷6–vâÓÒ ¢'&VGF‚Ò7VÒ‡fÇVRâf÷"fÇVR–â6ö×öæVçE÷&VÆF—fW2’òÆVâ†6ö×öæVçE÷&VÆF—fW2’¢ ¢VÇ6S ¢'&VGF‚Ò7VÒ‡fÇVR¢7V2æW‡V7FVE÷6–vââf÷"fÇVR–â6ö×öæVçE÷&VÆF—fW2’òÆVâ†6ö×öæVçE÷&VÆF—fW2’¢  ¢6ö×öæVçE÷&–6W2Ò¶—FVÒç7–Ö&öÃ¢—FVÒæÆFW7E÷&–6Rf÷"—FVÒ–â6ö×öæVçG7Ð¢–b&–Ö'’—2æ÷BæöæS ¢6ö×öæVçE÷&–6W5·&–Ö'’ç7–Ö&öÅÒÒ&–Ö'’æÆFW7E÷&–6P¢FFöWö6‚ÒÖ‚€¢¶&Væ6†Ö&²æÆFW7EöWö6…Ð¢²¶—FVÒæÆFW7EöWö6‚f÷"—FVÒ–â6ö×öæVçG5Ð¢²…·&–Ö'’æÆFW7EöWö6…Ò–b&–Ö'’—2æ÷BæöæRVÇ6RµÒ¢¢&WGW&â6V7F÷%&W7VÇB€¢¶W“×7V2æ¶W’À¢æÖS×7V2ææÖRÀ¢6÷VçG'“×7V2æ6÷VçG'’À¢&öÆS×7V2ç&öÆRÀ¢W‡V7FVE÷6–vã×7V2æW‡V7FVE÷6–vâÀ¢F–ÖVg&ÖS×F–ÖVg&ÖRÀ¢6V7F÷%ö6†ævU÷7C×6V7F÷%ö6†ævRÀ¢&Væ6†Ö&µö6†ævU÷7CÖ&Væ6†Ö&µö6†ævRÀ¢&VÆF—fU÷7C×&VÆF—fRÀ¢6–vÖ÷7C×6–vÖÀ¢§66÷&S×&VÆF—fRò6–vÖ–b6–vÖâVÇ6RãÀ¢6–væ–f–6çC×6–væ–f–6çBÀ¢Æ–væVCÖÆ–væVBÀ¢6öçG&'“Ö6öçG&'’À¢'&VGF…÷7CÖ'&VGF‚À¢Ö&¶WE÷7FGW3ÖÖ&¶WE÷7FGW2‡7V2æ6÷VçG'’Â&Væ6†Ö&²Â7W'&VçB’À¢FFöWö6ƒÖFFöWö6‚À¢6ö×öæVçE÷&–6W3Ö6ö×öæVçE÷&–6W2À¢&Væ6†Ö&µ÷&–6SÖ&Væ6†Ö&²æÆFW7E÷&–6RÀ¢6÷W&6S×6÷W&6RÀ¢  ¦FVbÆÅ÷7–Ö&öÇ2‚’Óâ6WE·7G%Ó ¢7–Ö&öÇ2Ò²#““ƒCRåB"Â%äµ3'Ð¢f÷"7V2–â4T5Dõ%3 ¢7–Ö&öÇ2çWFFR‡7V2ç&–Ö'’¢7–Ö&öÇ2çWFFR‡7V2æ6ö×öæVçG2¢&WGW&â7–Ö&öÇ0  ¦FVb6GW&U÷6æ6†÷B€¢7W'&VçC¢GBæFFWF–ÖRÀ¢’ÓâGWÆU¶Æ—7Eµ6V7F÷%&W7VÇEÒÂF–7E·7G"Â7G%ÒÂF–7E·7G"ÂV÷FU6W&–W5ÕÓ ¢V÷FW2ÂW'&÷'2ÒfWF6…÷V÷FW2†ÆÅ÷7–Ö&öÇ2‚’¢2föÆÆ÷r×W7FFRg&öÒF†R&Wf–÷W2&VÆV6RW6VBF†RÆVv7’Dõ•‚¶W’à¢2&W6W'fR—B2âÆ–2v†–ÆRfWF6†–ærF†RfW&–f–VB–†öò¦â6öFRà¢–b#““ƒCRåB"–âV÷FW3 ¢V÷FW5²%åDõ‚%ÒÒV÷FW5²#““ƒCRåB%Ð¢&W7VÇG2Ò°¢&W7VÇ@¢f÷"7V2–â4T5Dõ%0¢–b‡&W7VÇB£Òvw&VvFU÷6V7F÷"‡7V2ÂV÷FW2Â7W'&VçB’’—2æ÷BæöæP¢Ð¢&WGW&â&W7VÇG2ÂW'&÷'2ÂV÷FW0
+        source = "ì—…ì¢… ETF" if primary is not None else "ëŒ€í‘œì¢…ëª© ì¤‘ì•™ê°’"
+
+    significant = abs(relative) >= threshold
+    if spec.expected_sign == 0:
+        aligned = contrary = None
+    else:
+        aligned = significant and relative * spec.expected_sign > 0
+        contrary = significant and relative * spec.expected_sign < 0
+
+    breadth: float | None = None
+    if len(components) >= MIN_COMPONENTS_FOR_BREADTH:
+        if timeframe == "30ë¶„" and benchmark_30 is not None:
+            component_relatives = [
+                value - benchmark_30
+                for item in components
+                if (value := rolling_change(item, 30)) is not None
+            ]
+        else:
+            component_relatives = [
+                item.session_change_pct - benchmark.session_change_pct for item in components
+            ]
+        if component_relatives:
+            if spec.expected_sign == 0:
+                breadth = sum(value > 0 for value in component_relatives) / len(component_relatives) * 100
+            else:
+                breadth = sum(value * spec.expected_sign > 0 for value in component_relatives) / len(component_relatives) * 100
+
+    component_prices = {item.symbol: item.latest_price for item in components}
+    if primary is not None:
+        component_prices[primary.symbol] = primary.latest_price
+    data_epoch = max(
+        [benchmark.latest_epoch]
+        + [item.latest_epoch for item in components]
+        + ([primary.latest_epoch] if primary is not None else [])
+    )
+    return SectorResult(
+        key=spec.key,
+        name=spec.name,
+        country=spec.country,
+        role=spec.role,
+        expected_sign=spec.expected_sign,
+        timeframe=timeframe,
+        sector_change_pct=sector_change,
+        benchmark_change_pct=benchmark_change,
+        relative_pct=relative,
+        sigma_pct=sigma,
+        zscore=relative / sigma if sigma > 0 else 0.0,
+        significant=significant,
+        aligned=aligned,
+        contrary=contrary,
+        breadth_pct=breadth,
+        market_status=market_status(spec.country, benchmark, current),
+        data_epoch=data_epoch,
+        component_prices=component_prices,
+        benchmark_price=benchmark.latest_price,
+        source=source,
+    )
+
+
+def all_symbols() -> set[str]:
+    symbols = {"998405.T", "^KS11"}
+    for spec in SECTORS:
+        symbols.update(spec.primary)
+        symbols.update(spec.components)
+    return symbols
+
+
+def capture_snapshot(
+    current: dt.datetime,
+) -> tuple[list[SectorResult], dict[str, str], dict[str, QuoteSeries]]:
+    quotes, errors = fetch_quotes(all_symbols())
+    # Keep compatibility with follow-up state created before the TOPIX-code correction.
+    if "998405.T" in quotes:
+        quotes["^TOPX"] = quotes["998405.T"]
+    results = [
+        result
+        for spec in SECTORS
+        if (result := aggregate_sector(spec, quotes, current)) is not None
+    ]
+    return results, errors, quotes
