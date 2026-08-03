@@ -2,8 +2,8 @@ name: Yen carry unwind Telegram alert
 
 on:
   schedule:
-    # GitHub cron is UTC. Run every 15 minutes, offset from crowded slots.
-    - cron: "8,23,38,53 * * * *"
+    # GitHub cron is UTC. Check every 5 minutes, offset from crowded minute 0.
+    - cron: "3,8,13,18,23,28,33,38,43,48,53,58 * * * *"
   workflow_dispatch:
     inputs:
       telegram_test:
@@ -46,7 +46,7 @@ jobs:
       EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
       YEN_CARRY_MAX_DATA_AGE_MINUTES: "240"
       YEN_CARRY_CASH_FRESH_MINUTES: "150"
-      YEN_CARRY_FX_SHOCK_MAX_AGE_MINUTES: "20"
+      YEN_CARRY_FX_SHOCK_MAX_AGE_MINUTES: "12"
       YEN_CARRY_YAHOO_INTERVAL: "5m"
       YEN_CARRY_YAHOO_RANGE: "5d"
       KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
@@ -199,7 +199,9 @@ jobs:
                   "lane": lane,
                   "bot_username": actual_username,
                   "message_id": result.get("result", {}).get("message_id"),
-                  "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+                  "confirmed_at_kst": dt.datetime.now(
+                      ZoneInfo("Asia/Seoul")
+                  ).isoformat(timespec="seconds"),
               }
               confirmation_path.write_text(
                   json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
@@ -207,9 +209,11 @@ jobs:
               )
               sent += 1
               print(
-                  f"telegram_delivery_confirmed=true lane={lane} bot_username=@{actual_username} "
+                  f"telegram_delivery_confirmed=true lane={lane} "
+                  f"bot_username=@{actual_username} "
                   f"message_id={confirmed['message_id']}"
               )
+
           if sent == 0:
               raise RuntimeError("No alert file was available to send")
           PY
