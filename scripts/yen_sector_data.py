@@ -49,7 +49,7 @@ def parse_payload(symbol: str, payload: dict) -> QuoteSeries:
         raise RuntimeError(f"{symbol} previous close missing")
     session_change_pct = ((latest_price - previous_close) / previous_close) * 100
     if abs(session_change_pct) > 35:
-        raise RuntimeError(f"{symbol} implausible session move {session_chane_pct:.2f}%")
+        raise RuntimeError(f"{symbol} implausible session move {session_change_pct:.2f}%")
 
     timezone = str(meta.get("exchangeTimezoneName") or "Asia/Tokyo")
     return QuoteSeries(
@@ -108,7 +108,7 @@ def fetch_quote(symbol: str) -> QuoteSeries:
         except Exception as exc:
             errors.append(f"{type(exc).__name__}: {exc}")
     if not successes:
-        raise RuntimeError(f"{symbol} failed: {|' | '|}.join(errors)}")
+        raise RuntimeError(f"{symbol} failed: {' | '.join(errors)}")
     if len(successes) == 1:
         return successes[0]
     if not quotes_consistent(successes[0], successes[1]):
@@ -202,7 +202,7 @@ def daily_relative_history(sector: QuoteSeries, benchmark: QuoteSeries) -> list[
         b0, b1 = benchmark_days[previous_day], benchmark_days[current_day]
         if min(s0, b0) <= 0:
             continue
-        values.append((s1 / s0 - 1) * 100 - (b1 / b0 - 1) * 100)
+        values.append(((s1 / s0) - 1) * 100 - ((b1 / b0) - 1) * 100)
     return values
 
 
@@ -228,7 +228,7 @@ def market_status(country: str, quote: QuoteSeries, current: dt.datetime) -> str
         return "ì¥ì¤‘"
     if quote_date == local.date() and (local.hour, local.minute) >= (15, 30):
         return "ì¢…ê°€"
-    return "ì§€ì „ ì„¸ì!b
+    return "ì§ì „ ì„¸ì…˜"
 
 
 def primary_quote(spec: SectorSpec, quotes: dict[str, QuoteSeries]) -> QuoteSeries | None:
@@ -300,85 +300,4 @@ def aggregate_sector(
             histories.extend(daily_relative_history(item, benchmark))
         sigma = robust_sigma(histories, 0.20)
         threshold = max(SESSION_MIN_RELATIVE_PCT, SIGNIFICANCE_Z * sigma)
-        source = "ì—…ì¢… ETF" if primary is not None else "ëŒ€í‘œì¢…ëª© ì¤‘ì•™ê°’"
-
-    significant = abs(relative) >= threshold
-    if spec.expected_sign == 0:
-        aligned = None
-        contrary = None
-    else:
-        aligned = significant and relative * spec.expected_sign > 0
-        contrary = significant and relative * spec.expected_sign < 0
-
-    breadth: float | None = None
-    if len(components) >= MIN_COMPONENTS_FOR_BREADTH:
-        if timeframe == "30ë¶„" and benchmark_30 is not None:
-            component_relatives = [
-                value - benchmark_30
-                for item in components
-                if (value := rolling_change(item, 30)) is not None
-            ]
-        else:
-            component_relatives = [
-                item.session_change_pct - benchmark.session_change_pct for item in components
-            ]
-        if component_relatives:
-            if spec.expected_sign == 0:
-                breadth = sum(value > 0 for value in component_relatives) / len(component_relatives) * 100
-            else:
-                breadth = sum(value * spec.expected_sign > 0 for value in component_relatives) / len(component_relatives) * 100
-
-    component_prices = {item.symbol: item.latest_price for item in components}
-    if primary is not None:
-        component_prices[primary.symbol] = primary.latest_price
-    data_epoch = max(
-        [benchmark.latest_epoch]
-        + [item.latest_epoch for item in components]
-        + ([primary.latest_epoch] if primary is not None else [])
-    )
-    return SectorResult(
-        key=spec.key,
-        name=spec.name,
-        country=spec.country,
-        role=spec.role,
-        expected_sign=spec.expected_sign,
-        timeframe=timeframe,
-        sector_change_pct=sector_change,
-        benchmark_change_pct=benchmark_change,
-        relative_pct=relative,
-        sigma_pct=sigma,
-        zscore=relative / sigma if sigma > 0 else 0.0,
-        significant=significant,
-        aligned=aligned,
-        contrary=contrary,
-        breadth_pct=breadth,
-        market_status=market_status(spec.country, benchmark, current),
-        data_epoch=data_epoch,
-        component_prices=component_prices,
-        benchmark_price=benchmark.latest_price,
-        source=source,
-    )
-
-
-def all_symbols() -> set[str]:
-    symbols = {"998405.T", "^KS11"}
-    for spec in SECTORS:
-        symbols.update(spec.primary)
-        symbols.update(spec.components)
-    return symbols
-
-
-def capture_snapshot(
-    current: dt.datetime,
-) -> tuple[list[SectorResult], dict[str, str], dict[str, QuoteSeries]]:
-    quotes, errors = fetch_quotes(all_symbols())
-    # Follow-up state from the previous release used the legacy TOPIX key.
-    # Preserve it as an alias while fetching the verified Yahoo Japan code.
-    if "998405.T" in quotes:
-        quotes["^TOPX"] = quotes["998405.T"]
-    results = [
-        result
-        for spec in SECTORS
-        if (result := aggregate_sector(spec, quotes, current)) is not None
-    ]
-    return results, errors, quotes
+        source = "ì—…ì¢… ETF""–b&–Ö'’—2æ÷BæöæRVÇ6R.¸ÈÙÎÊ(^ºª’ÊIÙY«	  ¢6–væ–f–6çBÒ'2‡&VÆF—fR’ãÒF‡&W6†öÆ@¢–b7V2æW‡V7FVE÷6–vâÓÒ ¢Æ–væVBÒæöæP¢6öçG&'’ÒæöæP¢VÇ6S ¢Æ–væVBÒ6–væ–f–6çBæB&VÆF—fR¢7V2æW‡V7FVE÷6–vââ ¢6öçG&'’Ò6–væ–f–6çBæB&VÆF—fR¢7V2æW‡V7FVE÷6–vâÂ  ¢'&VGFƒ¢fÆöBÂæöæRÒæöæP¢–bÆVâ†6ö×öæVçG2’ãÒÔ”åô4ôÕôäTåE5ôdõ%ô%$TEDƒ ¢–bF–ÖVg&ÖRÓÒ#3»hB"æB&Væ6†Ö&µó3—2æ÷BæöæS ¢6ö×öæVçE÷&VÆF—fW2Ò°¢fÇVRÒ&Væ6†Ö&µó3 ¢f÷"—FVÒ–â6ö×öæVçG0¢–b‡fÇVR£Ò&öÆÆ–æuö6†ævR†—FVÒÂ3’’—2æ÷BæöæP¢Ğ¢VÇ6S ¢6ö×öæVçE÷&VÆF—fW2Ò°¢—FVÒç6W76–öåö6†ævU÷7BÒ&Væ6†Ö&²ç6W76–öåö6†ævU÷7Bf÷"—FVÒ–â6ö×öæVçG0¢Ğ¢–b6ö×öæVçE÷&VÆF—fW3 ¢–b7V2æW‡V7FVE÷6–vâÓÒ ¢'&VGF‚Ò7VÒ‡fÇVRâf÷"fÇVR–â6ö×öæVçE÷&VÆF—fW2’òÆVâ†6ö×öæVçE÷&VÆF—fW2’¢ ¢VÇ6S ¢'&VGF‚Ò7VÒ‡fÇVR¢7V2æW‡V7FVE÷6–vââf÷"fÇVR–â6ö×öæVçE÷&VÆF—fW2’òÆVâ†6ö×öæVçE÷&VÆF—fW2’¢  ¢6ö×öæVçE÷&–6W2Ò¶—FVÒç7–Ö&öÃ¢—FVÒæÆFW7E÷&–6Rf÷"—FVÒ–â6ö×öæVçG7Ğ¢–b&–Ö'’—2æ÷BæöæS ¢6ö×öæVçE÷&–6W5·&–Ö'’ç7–Ö&öÅÒÒ&–Ö'’æÆFW7E÷&–6P¢FFöWö6‚ÒÖ‚€¢¶&Væ6†Ö&²æÆFW7EöWö6…Ğ¢²¶—FVÒæÆFW7EöWö6‚f÷"—FVÒ–â6ö×öæVçG5Ğ¢²…·&–Ö'’æÆFW7EöWö6…Ò–b&–Ö'’—2æ÷BæöæRVÇ6RµÒ¢¢&WGW&â6V7F÷%&W7VÇB€¢¶W“×7V2æ¶W’À¢æÖS×7V2ææÖRÀ¢6÷VçG'“×7V2æ6÷VçG'’À¢&öÆS×7V2ç&öÆRÀ¢W‡V7FVE÷6–vã×7V2æW‡V7FVE÷6–vâÀ¢F–ÖVg&ÖS×F–ÖVg&ÖRÀ¢6V7F÷%ö6†ævU÷7C×6V7F÷%ö6†ævRÀ¢&Væ6†Ö&µö6†ævU÷7CÖ&Væ6†Ö&µö6†ævRÀ¢&VÆF—fU÷7C×&VÆF—fRÀ¢6–vÖ÷7C×6–vÖÀ¢§66÷&S×&VÆF—fRò6–vÖ–b6–vÖâVÇ6RãÀ¢6–væ–f–6çC×6–væ–f–6çBÀ¢Æ–væVCÖÆ–væVBÀ¢6öçG&'“Ö6öçG&'’À¢'&VGF…÷7CÖ'&VGF‚À¢Ö&¶WE÷7FGW3ÖÖ&¶WE÷7FGW2‡7V2æ6÷VçG'’Â&Væ6†Ö&²Â7W'&VçB’À¢FFöWö6ƒÖFFöWö6‚À¢6ö×öæVçE÷&–6W3Ö6ö×öæVçE÷&–6W2À¢&Væ6†Ö&µ÷&–6SÖ&Væ6†Ö&²æÆFW7E÷&–6RÀ¢6÷W&6S×6÷W&6RÀ¢  ¦FVbÆÅ÷7–Ö&öÇ2‚’Óâ6WE·7G%Ó ¢7–Ö&öÇ2Ò²#““ƒCRåB"Â%äµ3'Ğ¢f÷"7V2–â4T5Dõ%3 ¢7–Ö&öÇ2çWFFR‡7V2ç&–Ö'’¢7–Ö&öÇ2çWFFR‡7V2æ6ö×öæVçG2¢&WGW&â7–Ö&öÇ0  ¦FVb6GW&U÷6æ6†÷B€¢7W'&VçC¢GBæFFWF–ÖRÀ¢’ÓâGWÆU¶Æ—7Eµ6V7F÷%&W7VÇEÒÂF–7E·7G"Â7G%ÒÂF–7E·7G"ÂV÷FU6W&–W5ÕÓ ¢V÷FW2ÂW'&÷'2ÒfWF6…÷V÷FW2†ÆÅ÷7–Ö&öÇ2‚’¢2föÆÆ÷r×W7FFRg&öÒF†R&Wf–÷W2&VÆV6RW6VBF†RÆVv7’Dõ•‚¶W’à¢2&W6W'fR—B2âÆ–2v†–ÆRfWF6†–ærF†RfW&–f–VB–†öò¦â6öFRà¢–b#““ƒCRåB"–âV÷FW3 ¢V÷FW5²%åDõ‚%ÒÒV÷FW5²#““ƒCRåB%Ğ¢&W7VÇG2Ò°¢&W7VÇ@¢f÷"7V2–â4T5Dõ%0¢–b‡&W7VÇB£Òvw&VvFU÷6V7F÷"‡7V2ÂV÷FW2Â7W'&VçB’’—2æ÷BæöæP¢Ğ¢&WGW&â&W7VÇG2ÂW'&÷'2ÂV÷FW0
