@@ -1,9 +1,23 @@
 {
-  "status": "designing",
+  "status": "active",
+  "merged_commit_sha": "31e2081264bd2b10fdd1870329169b00919c6f4c",
+  "validation_workflow_run_id": 30795242159,
+  "tests_passed": 26,
   "principle": "Detect the actual decline interval from the rolling peak rather than adding fixed 90m/120m windows.",
   "lookback_minutes": 720,
   "minimum_duration_minutes": 45,
   "warning_drawdown_pct": -1.0,
   "severe_drawdown_pct": -1.5,
-  "maximum_rebound_from_low_pct": 0.2
+  "maximum_rebound_from_low_pct": 0.2,
+  "fast_windows": {
+    "warning": ["15m <= -0.50%", "30m <= -0.75%"],
+    "severe": ["15m <= -1.00%", "30m <= -1.25%"]
+  },
+  "same_stage_realert": {
+    "minimum_interval_minutes": 20,
+    "new_low_from_last_alert_pct": -0.3,
+    "new_detection_lane": true
+  },
+  "schedule_minutes_each_hour": [3, 8, 13, 18, 23, 28, 33, 38, 43, 48, 53, 58],
+  "telegram_bot_username": "hs8879887988798879_bot"
 }
