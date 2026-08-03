@@ -323,7 +323,7 @@ def aggregate_sector(
 
 
 def all_symbols() -> set[str]:
-    symbols = {"998405.T", "^KS11"}
+    symbols = {"1306.T", "^KS11"}
     for spec in SECTORS:
         symbols.update(spec.primary)
         symbols.update(spec.components)
@@ -335,8 +335,8 @@ def capture_snapshot(
 ) -> tuple[list[SectorResult], dict[str, str], dict[str, QuoteSeries]]:
     quotes, errors = fetch_quotes(all_symbols())
     # Keep compatibility with follow-up state created before the TOPIX-code correction.
-    if "998405.T" in quotes:
-        quotes["^TOPX"] = quotes["998405.T"]
+    if "1306.T" in quotes:
+        quotes["^TOPX"] = quotes["1306.T"]
     results = [
         result
         for spec in SECTORS
