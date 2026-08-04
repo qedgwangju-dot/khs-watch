@@ -79,6 +79,7 @@ def main() -> int:
     assert_router_explains_current_fcc_documents()
     assert_runtime_patch_accepts_mofcom_watch_source()
     assert_foreign_first_policy_sources()
+    assert_treasury_borrowing_estimate_is_source_faithful()
     assert_china_mofcom_export_control_reaches_policy_lane()
     assert_stablecoin_watch_rejects_bok_generic_page()
     assert_stablecoin_semantic_dedupe()
@@ -143,6 +144,46 @@ def assert_foreign_first_policy_sources() -> None:
         for token in forbidden:
             if token in text:
                 raise AssertionError(f"foreign-first policy source contract violation: {path.name} contains {token}")
+
+
+
+def assert_treasury_borrowing_estimate_is_source_faithful() -> None:
+    body = (
+        "WASHINGTON -- The U.S. Department of the Treasury today announced its current estimates "
+        "of privately-held net marketable borrowing. During the July–September 2026 quarter, "
+        "Treasury expects to borrow $739 billion in privately-held net marketable debt, assuming "
+        "an end-of-September cash balance of $950 billion. The borrowing estimate is $68 billion "
+        "higher than announced in May 2026. During the October–December 2026 quarter, Treasury "
+        "expects to borrow $628 billion in privately-held net marketable debt, assuming an "
+        "end-of-December cash balance of $850 billion. Additional financing details relating to "
+        "Treasury’s Quarterly Refunding will be released at 8:30 a.m. on Wednesday, August 5, 2026."
+    )
+    item = {
+        "source": "U.S. Treasury press releases",
+        "title": "Treasury Announces Marketable Borrowing Estimates",
+        "source_title": "Treasury Announces Marketable Borrowing Estimates",
+        "link": "https://home.treasury.gov/news/press-releases/sb0584",
+        "summary": body,
+        "source_body": body,
+        "published_kst": "2026-08-04T04:00:00+09:00",
+        "body_verified": True,
+    }
+    result = khs_policy_watch.classify_item(item)
+    if not result:
+        raise AssertionError("Treasury borrowing estimate was not classified")
+    khs_policy_watch.ensure_explained(result)
+    expected = ["7,390억달러", "9,500억달러", "6,280억달러", "680억달러 증가", "2026년 8월 5일"]
+    summary = result.get("policy_plain_summary") or ""
+    for token in expected:
+        if token not in summary:
+            raise AssertionError(f"Treasury source fact missing from summary: {token}")
+    if result.get("title_ko") != "미 재무부, 분기별 순시장성 차입 전망 발표":
+        raise AssertionError("Treasury Korean title is not source-specific")
+    if result.get("matched", {}).keys() != {"treasury_borrowing"}:
+        raise AssertionError(f"Treasury navigation text leaked into classification: {result.get('matched')}")
+    unverified = dict(item, body_verified=False)
+    if khs_policy_watch.classify_item(unverified) is not None:
+        raise AssertionError("Unverified Treasury listing must fail closed")
 
 
 def assert_runtime_patch_accepts_mofcom_watch_source() -> None:
