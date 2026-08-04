@@ -562,6 +562,24 @@ def parse_state_html(text: str, source: Source) -> list[dict]:
 
 
 def parse_treasury_html(text: str, source: Source) -> list[dict]:
+    if re.search(r"/news/press-releases/[a-z]{2}\\d+$", source.url, re.I):
+        detail = extract_article_detail(text, "Treasury Announces Marketable Borrowing Estimates")
+        title = clean_text(str(detail.get("title") or ""))
+        if "marketable borrowing estimates" not in title.lower() or not detail.get("body_verified"):
+            return []
+        return [{
+            "source": source.name,
+            "title": title,
+            "source_title": title,
+            "link": source.url,
+            "summary": clean_text(
+                f"{detail.get('abstract') or ''} {str(detail.get('body') or '')[:24000]}"
+            ),
+            "source_abstract": detail.get("abstract") or "",
+            "source_body": detail.get("body") or "",
+            "published_kst": detail.get("published_kst") or "",
+            "body_verified": True,
+        }]
     link_pattern = re.compile(
         r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>",
         re.I | re.S,
