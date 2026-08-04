@@ -2,18 +2,15 @@ name: LNG supply crisis Telegram alert
 
 on:
   schedule:
-    # GitHub cron is UTC. Run once an hour away from crowded minute slots.
     - cron: "47 * * * *"
   workflow_dispatch:
     inputs:
       telegram_test:
-        description: "Send the one-time Telegram setup test again if state is reset"
+        description: "Send one accuracy-rule setup test"
         required: false
         default: "false"
         type: choice
-        options:
-          - "false"
-          - "true"
+        options: ["false", "true"]
   push:
     paths:
       - ".github/workflows/lng-supply-crisis-alert.yml"
@@ -30,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
-      LNG_SETUP_TEST: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test == 'true')) && 'true' || 'false' }}
+      LNG_SETUP_TEST: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test == 'true' && 'true' || 'false' }}
 
     steps:
       - name: Checkout
@@ -42,14 +39,14 @@ jobs:
           python-version: "3.12"
 
       - name: Validate monitor
-        run: python -m py_compile scripts/lng_supply_crisis_alert.py
+        run: python -m py_compile scripts/lng_supply_crisis_alert_v2.py
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert.py --setup-test
+            python scripts/lng_supply_crisis_alert_v2.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert.py
+            python scripts/lng_supply_crisis_alert_v2.py
           fi
 
       - name: Publish status summary
@@ -69,11 +66,6 @@ jobs:
           FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
           EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
         run: |
-          if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
-            echo "YEN_CARRY_TELEGRAM_BOT_TOKEN이 없습니다." >&2
-            exit 1
-          fi
-
           python - <<'PY'
           import datetime as dt
           import json
@@ -83,36 +75,36 @@ jobs:
           import urllib.request
           from zoneinfo import ZoneInfo
 
-          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
           chat_id = (
               os.environ.get("TELEGRAM_CHAT_ID", "").strip()
               or os.environ.get("FALLBACK_TELEGRAM_CHAT_ID", "").strip()
           )
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip()
-          if not chat_id:
-              raise RuntimeError("Telegram chat id is missing")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram bot token or chat id is missing")
 
           with urllib.request.urlopen(
               f"https://api.telegram.org/bot{token}/getMe",
               timeout=25,
           ) as response:
               identity = json.loads(response.read().decode("utf-8"))
-          if not identity.get("ok"):
-              raise RuntimeError(f"Telegram bot identity check failed: {identity}")
-          actual = identity.get("result", {}).get("username", "")
-          if actual != expected:
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual != expected:
               raise RuntimeError(
                   f"Telegram bot mismatch: expected=@{expected}, "
                   f"actual=@{actual or 'unknown'}; message blocked"
               )
 
-          title = pathlib.Path("out/lng_supply_crisis_title.txt").read_text(encoding="utf-8").strip()
-          body = pathlib.Path("out/lng_supply_crisis_alert.md").read_text(encoding="utf-8").strip()
+          title = pathlib.Path("out/lng_supply_crisis_title.txt").read_text(
+              encoding="utf-8"
+          ).strip()
+          body = pathlib.Path("out/lng_supply_crisis_alert.md").read_text(
+              encoding="utf-8"
+          ).strip()
           full_text = f"{title}\n\n{body}".strip()
 
           def split_text(text: str, limit: int = 3900) -> list[str]:
-              if len(text) <= limit:
-                  return [text]
               chunks: list[str] = []
               remaining = text
               while remaining:
@@ -170,7 +162,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v2.py --finalize
 
       - name: Upload verification artifacts
         if: always()
