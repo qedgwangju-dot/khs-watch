@@ -567,12 +567,17 @@ def parse_treasury_html(text: str, source: Source) -> list[dict]:
         title = "Treasury Announces Marketable Borrowing Estimates"
         required = (
             "treasury announces marketable borrowing estimates",
-            "privately-held net marketable borrowing",
-            "july",
-            "september 2026 quarter",
+            "net marketable",
+            "739",
+            "950",
         )
         if not all(term in body.lower() for term in required):
+            print(
+                "treasury_direct_rejected "
+                f"body_length={len(body)} matched={[term for term in required if term in body.lower()]!r}"
+            )
             return []
+        print(f"treasury_direct_verified body_length={len(body)}")
         datetime_matches = re.findall(r'<time\b[^>]*datetime=["\']([^"\']+)', text, re.I)
         published = parse_date(datetime_matches[-1]) if datetime_matches else None
         return [{
