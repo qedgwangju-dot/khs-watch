@@ -1,6 +1,11 @@
 name: QRA 2026 Q3 Telegram alert
 
 on:
+  push:
+    paths:
+      - ".github/workflows/qra-2026-q3-telegram-alert.yml"
+      - "scripts/qra_2026_q3_alert.py"
+      - "tests/test_qra_2026_q3_alert.py"
   schedule:
     # GitHub cron is UTC. Treasury release: 2026-08-05 12:30 UTC / 21:30 KST.
     - cron: "33,48 12 5 8 *"
