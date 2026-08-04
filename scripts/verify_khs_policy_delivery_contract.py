@@ -181,6 +181,11 @@ def assert_treasury_borrowing_estimate_is_source_faithful() -> None:
         raise AssertionError("Treasury Korean title is not source-specific")
     if result.get("matched", {}).keys() != {"treasury_borrowing"}:
         raise AssertionError(f"Treasury navigation text leaked into classification: {result.get('matched')}")
+    result["sectors"] = khs_policy_alert_guardrails.direct_sectors(result)
+    if "미국 국채/금리/달러" not in result["sectors"]:
+        raise AssertionError(f"Treasury sector was removed by guardrails: {result['sectors']}")
+    if not khs_policy_alert_guardrails.has_actionable_decision_impact(result):
+        raise AssertionError(f"Treasury alert was removed by decision guard: {result.get('guardrail_note')}")
     unverified = dict(item, body_verified=False)
     if khs_policy_watch.classify_item(unverified) is not None:
         raise AssertionError("Unverified Treasury listing must fail closed")
