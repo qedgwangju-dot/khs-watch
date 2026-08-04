@@ -1300,6 +1300,12 @@ def main() -> int:
             break
     write_outputs(new_alerts, source_notes, now)
     write_pending_seen(new_alerts, now)
+    for item in new_alerts:
+        print(
+            "policy_selected "
+            f"source={item.get('source')!r} title={item.get('title')!r} "
+            f"matched={sorted((item.get('matched') or {}).keys())!r}"
+        )
     whitehouse_candidates = sum(
         str(item.get("source") or "").lower().startswith("white house")
         for item in candidates
