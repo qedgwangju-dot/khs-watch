@@ -30,6 +30,10 @@ KOREA_PERSONNEL_ALERTS_JSON_PATH = OUT_DIR / "khs_korea_presidential_personnel_a
 
 
 SECTOR_RULES: list[tuple[str, list[str]]] = [
+    ("미국 국채/금리/달러", [
+        "marketable borrowing estimates", "privately-held net marketable debt",
+        "quarterly refunding", "borrowing estimate", "cash balance",
+    ]),
     ("풍력/해상풍력", [
         "offshore wind", "wind energy", "wind lease", "wind leasing", "wind project",
         "wind area", "wind auction", "wind farm", "wind turbine",
