@@ -1,0 +1,156 @@
+name: QRA 2026 Q3 Telegram alert
+
+on:
+  schedule:
+    # GitHub cron is UTC. Treasury release: 2026-08-05 12:30 UTC / 21:30 KST.
+    - cron: "33,48 12 5 8 *"
+    - cron: "3,18,33,48 13-15 5 8 *"
+    - cron: "15 16-23 5 8 *"
+    - cron: "15 0-3 6 8 *"
+  workflow_dispatch:
+    inputs:
+      telegram_test:
+        description: "Send a one-time Telegram route test"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qra-2026-q3-telegram-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TELEGRAM_TEST: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate watcher
+        run: |
+          python -m py_compile scripts/qra_2026_q3_alert.py
+          python -m unittest tests/test_qra_2026_q3_alert.py -v
+
+      - name: Check official Treasury QRA page
+        run: python scripts/qra_2026_q3_alert.py
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/qra_2026_q3_watch.md ]; then
+            cat out/qra_2026_q3_watch.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "QRA 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send Telegram alert
+        if: hashFiles('out/qra_2026_q3_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "KHS_POLICY_TELEGRAM_BOT_TOKEN 또는 KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          title = pathlib.Path("out/qra_2026_q3_alert_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/qra_2026_q3_alert.md").read_text(encoding="utf-8").strip()
+          text = f"{title}\n\n{body}"[:4096]
+          payload = urllib.parse.urlencode(
+              {
+                  "chat_id": os.environ["TELEGRAM_CHAT_ID"].strip(),
+                  "text": text,
+                  "disable_web_page_preview": "true",
+              }
+          ).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{os.environ['TELEGRAM_BOT_TOKEN'].strip()}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/qra_2026_q3_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true message_id={confirmed['message_id']}")
+          PY
+
+      - name: Persist successful production delivery
+        if: success() && env.TELEGRAM_TEST != 'true' && hashFiles('out/qra_2026_q3_telegram_confirmed.json') != ''
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+
+          confirmed = json.loads(pathlib.Path("out/qra_2026_q3_telegram_confirmed.json").read_text(encoding="utf-8"))
+          state = {
+              "status": "sent",
+              "sent_at_kst": confirmed.get("confirmed_at_kst"),
+              "telegram_message_id": confirmed.get("message_id"),
+              "source": "U.S. Treasury QRA 2026 Q3",
+          }
+          path = pathlib.Path("data/qra_2026_q3_alert_state.json")
+          path.parent.mkdir(parents=True, exist_ok=True)
+          path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qra-2026-q3-alert-${{ github.run_id }}
+          path: |
+            out/qra_2026_q3_watch.md
+            out/qra_2026_q3_alert.md
+            out/qra_2026_q3_alert.json
+            out/qra_2026_q3_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Commit confirmed alert state
+        if: success() && env.TELEGRAM_TEST != 'true' && hashFiles('data/qra_2026_q3_alert_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/qra_2026_q3_alert_state.json
+          if git diff --cached --quiet; then
+            echo "QRA 알림 상태 변경 없음"
+          else
+            git commit -m "Record QRA 2026 Q3 Telegram delivery"
+            git pull --rebase origin main
+            git push
+          fi
