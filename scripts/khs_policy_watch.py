@@ -142,6 +142,10 @@ STAGE_KEYWORDS = {
         "신주인수권", "자기주식", "타법인주식", "합병", "최대주주", "투자판단",
     ],
     "fda_decision": ["fda approves", "fda approval", "complete response letter", "crl", "rejection"],
+    "treasury_borrowing": [
+        "marketable borrowing estimates", "privately-held net marketable debt",
+        "quarterly refunding", "borrowing estimate", "cash balance",
+    ],
 }
 
 SECTOR_KEYWORDS = {
@@ -301,6 +305,11 @@ SOURCES = [
     Source("Commerce news", "https://www.commerce.gov/news/rss.xml"),
     Source("BIS news", "https://www.bis.doc.gov/index.php/newsroom/news-releases?format=feed&type=rss"),
     Source("OFAC recent actions", "https://ofac.treasury.gov/recent-actions/rss.xml"),
+    Source(
+        "U.S. Treasury press releases",
+        "https://home.treasury.gov/news/press-releases",
+        "treasury_html",
+    ),
     Source("SEC press releases", "https://www.sec.gov/news/pressreleases.rss"),
     Source("FTC press releases", "https://www.ftc.gov/news-events/news/press-releases/rss.xml"),
     Source("FDA press announcements", "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-announcements/rss.xml"),
@@ -545,6 +554,159 @@ def parse_state_html(text: str, source: Source) -> list[dict]:
             "published_kst": published.isoformat() if published else "",
         }
     return list(deduped.values())[:20]
+
+
+def parse_treasury_html(text: str, source: Source) -> list[dict]:
+    link_pattern = re.compile(
+        r"<a\b[^>]*href=[\"'](?P<href>[^\"']+)[\"'][^>]*>(?P<label>.*?)</a>",
+        re.I | re.S,
+    )
+    date_pattern = re.compile(
+        r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December)"
+        r"\s+\d{1,2},\s+20\d{2}\b",
+        re.I,
+    )
+    deduped: dict[str, dict] = {}
+    for match in link_pattern.finditer(text):
+        title = clean_text(match.group("label"))
+        link = urllib.parse.urljoin(source.url, html.unescape(match.group("href")))
+        if (
+            len(title) < 12
+            or "home.treasury.gov/news/press-releases/" not in link.lower()
+            or link.rstrip("/") == source.url.rstrip("/")
+        ):
+            continue
+        before = text[max(0, match.start() - 600):match.start()]
+        datetime_matches = re.findall(r'<time\b[^>]*datetime=["\']([^"\']+)', before, re.I)
+        tail = clean_text(text[match.end(): match.end() + 900])
+        date_match = date_pattern.search(f"{title} {tail}")
+        published = parse_date(datetime_matches[-1]) if datetime_matches else (
+            parse_date(date_match.group(0)) if date_match else None
+        )
+        deduped[link] = {
+            "source": source.name,
+            "title": title,
+            "link": link,
+            "summary": f"U.S. Treasury official press release: {title}",
+            "published_kst": published.isoformat() if published else "",
+            "body_verified": False,
+        }
+    return list(deduped.values())[:30]
+
+
+def enrich_treasury_items(items: list[dict]) -> list[dict]:
+    enriched: list[dict] = []
+    for raw in items:
+        item = dict(raw)
+        title = str(item.get("title") or "")
+        if not any(
+            term in title.lower()
+            for term in ("borrowing", "quarterly refunding", "treasury borrowing advisory committee")
+        ):
+            enriched.append(item)
+            continue
+        detail_html, detail_error = fetch_text(str(item.get("link") or ""), timeout=16)
+        if detail_error or not detail_html:
+            item["detail_error"] = detail_error or "empty detail response"
+            enriched.append(item)
+            continue
+        detail = extract_article_detail(detail_html, title)
+        if not detail.get("body_verified"):
+            item["detail_error"] = "Treasury title/body verification failed"
+            enriched.append(item)
+            continue
+        item.update(
+            {
+                "source_title": detail.get("title") or title,
+                "source_abstract": detail.get("abstract") or "",
+                "source_body": detail.get("body") or "",
+                "summary": clean_text(
+                    f"{detail.get('abstract') or ''} {str(detail.get('body') or '')[:24000]}"
+                ),
+                "published_kst": item.get("published_kst") or detail.get("published_kst"),
+                "body_verified": True,
+            }
+        )
+        enriched.append(item)
+    return enriched
+
+
+def apply_treasury_borrowing_profile(item: dict, haystack: str) -> None:
+    if not (
+        str(item.get("source") or "") == "U.S. Treasury press releases"
+        and item.get("body_verified")
+        and "marketable borrowing estimates" in haystack
+    ):
+        return
+    body = clean_text(str(item.get("source_body") or item.get("summary") or ""))
+    quarter_matches = re.findall(
+        r"During the ([A-Za-z]+)[–—-]([A-Za-z]+) (20\d{2}) quarter, Treasury expects to borrow "
+        r"\$([\d,.]+) billion.*?cash balance of \$([\d,.]+) billion",
+        body,
+        re.I,
+    )
+    change_match = re.search(
+        r"borrowing estimate is \$([\d,.]+) billion (higher|lower) than announced",
+        body,
+        re.I,
+    )
+    refunding_match = re.search(
+        r"Additional financing details relating to Treasury.s Quarterly Refunding will be released "
+        r"at ([\d:]+ [ap]\.m\.) on ([A-Za-z]+), ([A-Za-z]+ \d{1,2}, 20\d{2})",
+        body,
+        re.I,
+    )
+
+    def format_billion_usd(value: str) -> str:
+        return f"{float(value.replace(',', '')) * 10:,.0f}억달러"
+
+    month_ko = {
+        "january": "1월", "february": "2월", "march": "3월", "april": "4월",
+        "may": "5월", "june": "6월", "july": "7월", "august": "8월",
+        "september": "9월", "october": "10월", "november": "11월", "december": "12월",
+    }
+
+    facts = []
+    for start, end, year, borrowing, cash in quarter_matches[:2]:
+        facts.append(
+            f"{year}년 {month_ko[start.lower()]}~{month_ko[end.lower()]} 순시장성 차입 {format_billion_usd(borrowing)}, "
+            f"분기말 현금잔고 {format_billion_usd(cash)} 가정"
+        )
+    if change_match:
+        direction = "증가" if change_match.group(2).lower() == "higher" else "감소"
+        facts.append(f"이전 전망보다 {format_billion_usd(change_match.group(1))} {direction}")
+    if refunding_match:
+        refunding_date = parse_date(refunding_match.group(3))
+        refunding_date_ko = (
+            f"{refunding_date.year}년 {refunding_date.month}월 {refunding_date.day}일"
+            if refunding_date else refunding_match.group(3)
+        )
+        facts.append(
+            f"분기 리펀딩 세부안은 {refunding_date_ko} {refunding_match.group(1)}(미 동부시간) 발표"
+        )
+    summary = ". ".join(facts) + "." if facts else body[:420]
+    item.update(
+        {
+            "importance": "상",
+            "status": "확정",
+            "title_ko": "미 재무부, 분기별 순시장성 차입 전망 발표",
+            "policy_plain_summary": summary,
+            "impacts": ["밸류에이션/할인율", "수급", "시간표"],
+            "paths": ["미 국채 공급", "장기금리", "달러", "외국인 수급", "분기환급 일정"],
+            "sectors": ["미국 국채/금리/달러", "한국 성장주", "반도체/수출주", "금융주"],
+            "investment_view": (
+                "예상 차입 증가와 장기물 발행 확대는 미 국채 기간프리미엄과 장기금리를 높여 "
+                "한국 성장주 할인율과 외국인 수급에 부담이 될 수 있습니다."
+            ),
+            "korea_market_impact": (
+                "한국장에서는 미국 10년·30년 금리, 원/달러, 외국인 선물·현물 수급과 "
+                "반도체·고밸류 성장주의 동행 여부를 확인합니다."
+            ),
+            "priced_in": "중간. 총차입 추정치는 즉시 반영되지만 만기별 발행 규모는 후속 분기환급계획에서 확정됩니다.",
+            "counter": "단기물 중심 조달, 연준 수요, 세수 개선 또는 현금잔고 변화가 장기물 공급 충격을 완화할 수 있습니다.",
+            "failure_signal": "후속 분기환급계획에서 장기물 경매 규모가 늘지 않고 미 장기금리·달러가 반응하지 않으면 영향이 약해집니다.",
+        }
+    )
 
 
 def parse_fcc_html(text: str, source: Source) -> list[dict]:
@@ -846,6 +1008,9 @@ def classify_item(item: dict) -> dict | None:
     is_whitehouse_source = source_lower.startswith("white house") or "whitehouse.gov/" in link_lower
     if is_whitehouse_source and not item.get("body_verified"):
         return None
+    is_treasury_source = source_name == "U.S. Treasury press releases"
+    if is_treasury_source and not item.get("body_verified"):
+        return None
     is_whitehouse_remark_or_video = (
         source_lower in {"white house remarks", "white house videos"}
         or "whitehouse.gov/remarks/" in link_lower
@@ -854,6 +1019,8 @@ def classify_item(item: dict) -> dict | None:
     if is_whitehouse_remark_or_video and not any(keyword_in_text(haystack, term) for term in TRUMP_OFFICIAL_REMARK_STRONG_TERMS):
         return None
     matched = {bucket: [kw for kw in keywords if keyword_in_text(haystack, kw)] for bucket, keywords in STAGE_KEYWORDS.items()}
+    if is_treasury_source:
+        matched = {"treasury_borrowing": matched.get("treasury_borrowing", [])}
     if "fda_decision" in matched and matched["fda_decision"] and "FDA" not in item.get("source", "") and "fda" not in haystack:
         matched["fda_decision"] = []
     is_fcc_source = source_name.startswith("FCC") or source_name == "Federal Register FCC"
@@ -871,7 +1038,7 @@ def classify_item(item: dict) -> dict | None:
     is_fcc_admin_reporting = is_fcc_source and any(keyword_in_text(haystack, term) for term in FCC_ADMIN_REPORTING_TERMS)
     if is_fcc_admin_reporting:
         importance = "중"
-    elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "china_trade_controls", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fda_decision")) or ("fcc_decision_notice" in matched and is_fcc_source):
+    elif any(bucket in matched for bucket in ("court_order", "final_rule", "sanctions_tariffs_export", "china_trade_controls", "energy_security_policy", "state_smr_moc_policy", "presidential_action", "fda_decision", "treasury_borrowing")) or ("fcc_decision_notice" in matched and is_fcc_source):
         importance = "상"
     elif "agriculture_supply_policy" in matched:
         importance = "중"
@@ -908,7 +1075,9 @@ def classify_item(item: dict) -> dict | None:
     else:
         fingerprint_input = f"{item.get('source')}|{item.get('title')}|{item.get('link')}"
     fingerprint = hashlib.sha256(fingerprint_input.encode("utf-8")).hexdigest()[:16]
-    return {**item, "fingerprint": fingerprint, "matched": matched, "importance": importance, "status": "예비" if item["source"].startswith(("CourtListener", "KRX KIND")) else "확정", "impacts": list(dict.fromkeys(impacts)) or ["의사결정 영향 제한적"], "paths": list(dict.fromkeys(paths)) or ["정책 타임라인"], "sectors": sectors}
+    result = {**item, "fingerprint": fingerprint, "matched": matched, "importance": importance, "status": "예비" if item["source"].startswith(("CourtListener", "KRX KIND")) else "확정", "impacts": list(dict.fromkeys(impacts)) or ["의사결정 영향 제한적"], "paths": list(dict.fromkeys(paths)) or ["정책 타임라인"], "sectors": sectors}
+    apply_treasury_borrowing_profile(result, haystack)
+    return result
 
 
 def load_seen() -> dict:
@@ -950,6 +1119,8 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
             items = parse_state_html(text or "", source)
         elif source.kind == "mofcom_html":
             items = parse_mofcom_html(text or "", source)
+        elif source.kind == "treasury_html":
+            items = enrich_treasury_items(parse_treasury_html(text or "", source))
         elif source.kind == "link_html":
             items = parse_link_html(text or "", source)
         else:
@@ -966,7 +1137,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
         source_notes.append(f"- {source.name}: {len(items)}건 확인")
         for item in items:
             age = item_age_hours(item, now)
-            if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html", "state_html", "mofcom_html"} and age is None:
+            if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html", "state_html", "mofcom_html", "treasury_html"} and age is None:
                 continue
             max_age = WHITEHOUSE_MAX_AGE_HOURS if source.kind == "whitehouse_html" else MAX_SOURCE_AGE_HOURS
             if age is not None and age > max_age:
