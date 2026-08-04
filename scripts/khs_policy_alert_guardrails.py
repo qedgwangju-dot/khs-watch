@@ -501,19 +501,25 @@ def main() -> int:
             whitehouse_count += 1
         item["sectors"] = direct_sectors(item)
         if is_low_impact_false_positive(item):
+            print(f"policy_guardrail_drop source={item.get('source')!r} title={item.get('title')!r} reason={item.get('guardrail_note')!r}")
             continue
         ensure_explained(item)
         if not has_actionable_decision_impact(item):
+            print(f"policy_guardrail_drop source={item.get('source')!r} title={item.get('title')!r} reason={item.get('guardrail_note')!r}")
             continue
         normalize_title(item)
         key = dedup_key(item)
         if key in seen:
+            print(f"policy_guardrail_drop source={item.get('source')!r} title={item.get('title')!r} reason='semantic_duplicate'")
             continue
         seen.add(key)
         if is_personnel(item):
             personnel_alerts.append(item)
+            lane = "personnel"
         else:
             general_alerts.append(item)
+            lane = "general"
+        print(f"policy_guardrail_keep source={item.get('source')!r} title={item.get('title')!r} lane={lane!r} sectors={item.get('sectors')!r}")
 
     write_general_outputs(general_alerts, now)
     if personnel_alerts:
