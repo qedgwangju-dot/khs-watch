@@ -562,7 +562,7 @@ def parse_state_html(text: str, source: Source) -> list[dict]:
 
 
 def parse_treasury_html(text: str, source: Source) -> list[dict]:
-    if re.search(r"/news/press-releases/[a-z]{2}\\d+$", source.url, re.I):
+    if re.search(r"/news/press-releases/[a-z]{2}\d+$", source.url, re.I):
         detail = extract_article_detail(text, "Treasury Announces Marketable Borrowing Estimates")
         title = clean_text(str(detail.get("title") or ""))
         if "marketable borrowing estimates" not in title.lower() or not detail.get("body_verified"):
