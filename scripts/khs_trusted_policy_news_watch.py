@@ -102,6 +102,8 @@ SOURCE_PRIORITY = {
 
 TRUSTED_WIRE_RELAY_SOURCES = {
     "aol.com",
+    "devdiscourse",
+    "devdiscourse.com",
     "investing.com",
     "kfgo",
     "kfgo am",
@@ -180,6 +182,37 @@ STORY_RULES = (
         impacts=("돈 버는 능력", "수급", "시간표"),
         paths=("정책 타임라인", "공급망", "밸류체인", "수급"),
         follow_up="핵심은 FCC가 실제 규칙안을 내고 적용 대상을 중국산 인버터 전체, 신규 모델, 특정 통신 모듈 내장 장비 중 어디까지로 확정하느냐입니다. 한국장에서는 인버터 직접 종목보다 전력변환장치, ESS/전력기기, 태양광 부품, 전력망 보안 밸류체인으로 연결되는지 확인해야 합니다.",
+    ),
+    StoryRule(
+        key="us_fcc_chinese_optical_transceiver_ban",
+        title="미 FCC, 중국산 데이터센터 광트랜시버 수입금지 검토",
+        google_queries=(
+            "Reuters Trump administration drafting ban Chinese data center devices optical transceivers FCC",
+            '"drafting ban on Chinese data center devices" Reuters',
+            '"Chinese optical transceivers" FCC data centers ban',
+            "FCC Chinese fiber optic transceivers import ban Reuters",
+        ),
+        required_groups=(
+            ("optical transceiver", "optical transceivers", "fiber optic transceiver", "fiber-optic transceiver"),
+            ("data center", "data centers"),
+            ("fcc", "federal communications commission"),
+            ("ban", "bar", "prohibit", "import", "imports", "drafting"),
+            ("china", "chinese"),
+        ),
+        core=(
+            "Reuters는 미 FCC가 데이터센터 광섬유망에 쓰이는 신규 중국산 광트랜시버의 "
+            "수입금지안을 마련 중이라고 보도했습니다. 아직 초안 단계로 적용 기업·제품·시행일은 확정 전입니다."
+        ),
+        impact="광통신/광트랜시버, 데이터센터 네트워크, 중국 대체 공급망 | 매출·마진·현금흐름·수급·시간표",
+        point="금지가 확정되면 미국 데이터센터의 중국산 광모듈 대체 수요와 비중국 공급사의 주문·가격결정력이 커질 수 있습니다.",
+        counter="소식통 보도와 초안 단계이며 FCC 공식 문서, 대상 업체·모델, 기존 장비 예외와 시행일이 확인되지 않았습니다.",
+        sectors="광트랜시버/광통신, 데이터센터 네트워크, AI 인프라, 중국 대체 공급망",
+        impacts=("매출·마진·현금흐름", "수급", "시간표"),
+        paths=("정책 타임라인", "공급망", "밸류체인", "수급"),
+        follow_up=(
+            "FCC 공식안과 Covered List 적용 범위, 신규·기존 모델 구분, 미국 클라우드 업체 조달 변경, "
+            "한국 광통신 업체의 미국향 매출·수주 노출을 확인해야 합니다."
+        ),
     ),
     StoryRule(
         key="us_fcc_security_import_restriction",
