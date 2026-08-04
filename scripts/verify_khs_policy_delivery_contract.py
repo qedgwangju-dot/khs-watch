@@ -161,6 +161,18 @@ def assert_treasury_borrowing_estimate_is_source_faithful() -> None:
         "end-of-December cash balance of $850 billion. Additional financing details relating to "
         "Treasury’s Quarterly Refunding will be released at 8:30 a.m. on Wednesday, August 5, 2026."
     )
+    direct_html = (
+        '<html><head><title>Treasury Announces Marketable Borrowing Estimates</title></head>'
+        '<body><h1>Treasury Announces Marketable Borrowing Estimates</h1>'
+        f'<article>{body}</article></body></html>'
+    )
+    direct_source = next(
+        source for source in khs_policy_watch.SOURCES
+        if source.url == "https://home.treasury.gov/news/press-releases/sb0584"
+    )
+    direct_items = khs_policy_watch.parse_treasury_html(direct_html, direct_source)
+    if len(direct_items) != 1 or not direct_items[0].get("body_verified"):
+        raise AssertionError("Direct Treasury release page must produce one verified item")
     item = {
         "source": "U.S. Treasury press releases",
         "title": "Treasury Announces Marketable Borrowing Estimates",
