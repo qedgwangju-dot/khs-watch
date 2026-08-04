@@ -563,21 +563,27 @@ def parse_state_html(text: str, source: Source) -> list[dict]:
 
 def parse_treasury_html(text: str, source: Source) -> list[dict]:
     if re.search(r"/news/press-releases/[a-z]{2}\d+$", source.url, re.I):
-        detail = extract_article_detail(text, "Treasury Announces Marketable Borrowing Estimates")
-        title = clean_text(str(detail.get("title") or ""))
-        if "marketable borrowing estimates" not in title.lower() or not detail.get("body_verified"):
+        body = clean_text(text)
+        title = "Treasury Announces Marketable Borrowing Estimates"
+        required = (
+            "treasury announces marketable borrowing estimates",
+            "privately-held net marketable borrowing",
+            "july",
+            "september 2026 quarter",
+        )
+        if not all(term in body.lower() for term in required):
             return []
+        datetime_matches = re.findall(r'<time\b[^>]*datetime=["\']([^"\']+)', text, re.I)
+        published = parse_date(datetime_matches[-1]) if datetime_matches else None
         return [{
             "source": source.name,
             "title": title,
             "source_title": title,
             "link": source.url,
-            "summary": clean_text(
-                f"{detail.get('abstract') or ''} {str(detail.get('body') or '')[:24000]}"
-            ),
-            "source_abstract": detail.get("abstract") or "",
-            "source_body": detail.get("body") or "",
-            "published_kst": detail.get("published_kst") or "",
+            "summary": clean_text(body[:24000]),
+            "source_abstract": body[:600],
+            "source_body": body[:24000],
+            "published_kst": published.isoformat() if published else "",
             "body_verified": True,
         }]
     link_pattern = re.compile(
