@@ -99,6 +99,7 @@ def main() -> int:
     assert_trusted_trump_iran_holdoff_summary_and_header()
     assert_trusted_policy_news_story_fingerprint_allows_intraday_updates()
     assert_trusted_policy_news_render_is_compact()
+    assert_fcc_chinese_optical_transceiver_ban_is_monitored()
     assert_trusted_trump_rate_and_dollar_profiles_are_specific()
     assert_trusted_trump_current_iran_profiles_are_source_faithful()
     assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped()
@@ -1383,6 +1384,25 @@ def assert_boem_space_launch_is_excluded() -> None:
     }
     if not khs_policy_alert_guardrails.is_low_impact_false_positive(item):
         raise AssertionError("BOEM OCS space launch/recovery item was not excluded")
+
+
+def assert_fcc_chinese_optical_transceiver_ban_is_monitored() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "us_fcc_chinese_optical_transceiver_ban"
+    )
+    headline = "EXCLUSIVE-Trump administration drafting ban on Chinese data center devices, sources say"
+    text = (
+        f"{headline} Reuters says the Federal Communications Commission is drafting an import ban "
+        "on new Chinese optical transceivers used in data centers."
+    )
+    if not khs_trusted_policy_news_watch.has_required_terms(text, rule):
+        raise AssertionError("Reuters Chinese optical-transceiver ban headline was not detected")
+    if not khs_trusted_policy_news_watch.is_trusted_wire_relay("Devdiscourse", text):
+        raise AssertionError("Reuters Devdiscourse relay was not accepted")
+    for marker in ("광트랜시버", "초안 단계", "확정 전"):
+        if marker not in rule.core:
+            raise AssertionError(f"Optical-transceiver core missing: {marker}")
 
 
 def assert_boem_arctic_drilling_is_source_faithful() -> None:
