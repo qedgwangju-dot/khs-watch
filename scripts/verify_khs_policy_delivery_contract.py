@@ -189,6 +189,13 @@ def assert_treasury_borrowing_estimate_is_source_faithful() -> None:
     unverified = dict(item, body_verified=False)
     if khs_policy_watch.classify_item(unverified) is not None:
         raise AssertionError("Unverified Treasury listing must fail closed")
+    wrong_document = dict(
+        item,
+        title="Economy Statement for the Treasury Borrowing Advisory Committee",
+        source_title="Economy Statement for the Treasury Borrowing Advisory Committee",
+    )
+    if khs_policy_watch.classify_item(wrong_document) is not None:
+        raise AssertionError("Treasury TBAC economy statement must not reuse borrowing estimate profile")
 
 
 def assert_runtime_patch_accepts_mofcom_watch_source() -> None:
