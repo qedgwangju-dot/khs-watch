@@ -15,6 +15,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import khs_article_detail
+import khs_policy_alert_explainer
 from khs_compact_text import compact_prose_lines, concise_text
 import khs_policy_alert_guardrails
 import khs_policy_alert_router
@@ -106,6 +107,7 @@ def main() -> int:
     assert_state_smr_moc_reaches_policy_lane()
     assert_state_smr_moc_trusted_news_fallback_is_not_overfiltered()
     assert_boem_space_launch_is_excluded()
+    assert_boem_arctic_drilling_is_source_faithful()
     assert_delivery_guard_blocks_duplicate_policy_alerts()
     assert_delivery_guard_blocks_source_body_mismatch()
     assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch()
@@ -1381,6 +1383,31 @@ def assert_boem_space_launch_is_excluded() -> None:
     }
     if not khs_policy_alert_guardrails.is_low_impact_false_positive(item):
         raise AssertionError("BOEM OCS space launch/recovery item was not excluded")
+
+
+def assert_boem_arctic_drilling_is_source_faithful() -> None:
+    item = {
+        "source": "BOEM news",
+        "title": "Department of the Interior Proposes Targeted Updates to Arctic Exploratory Drilling Rule to Advance American Energy Dominance",
+        "link": "https://www.boem.gov/newsroom/press-releases/department-interior-proposes-targeted-updates-arctic-exploratory-drilling",
+        "summary": "The proposed rule revises the 2016 Arctic Exploratory Drilling Rule and starts a 90-day public comment period.",
+        "source_body": (
+            "The proposal updates blowout preventer monitoring, source control and containment equipment, "
+            "relief rig capability and the Integrated Operations Plan. It does not approve any specific lease, "
+            "exploration plan, permit or drilling activity. A 90-day public comment period will begin."
+        ),
+        "body_verified": True,
+        "matched": {"final_rule": ["proposed rule"]},
+    }
+    explained = khs_policy_alert_explainer.ensure_explained(item)
+    if explained.get("title_ko") != "미 내무부, 북극해 탐사시추 규제 완화안 발표":
+        raise AssertionError(f"BOEM Arctic title mismatch: {explained.get('title_ko')}")
+    core = str(explained.get("policy_plain_summary") or "")
+    for marker in ("2016년", "90일", "승인한 것은 아닙니다"):
+        if marker not in core:
+            raise AssertionError(f"BOEM Arctic summary missing: {marker}")
+    if "트럼프 대통령 발언" in core or "트럼프 대통령 발언" in str(explained.get("title_ko") or ""):
+        raise AssertionError("BOEM Arctic release reused generic Trump profile")
 
 
 def assert_delivery_guard_blocks_duplicate_policy_alerts() -> None:
