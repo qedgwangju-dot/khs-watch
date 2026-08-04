@@ -456,6 +456,11 @@ def is_fcc_resilient(text: str) -> bool:
 
 
 def is_trump_direct_policy_statement(text: str, item: dict) -> bool:
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "").lower()
+    direct_sources = ("white house", "reuters", "bloomberg", "ap", "cnbc", "marketwatch")
+    if not ("whitehouse.gov/" in link or any(name in source for name in direct_sources)):
+        return False
     matched = item.get("matched") or {}
     if "trump_direct_policy_remarks_watch" in matched:
         return True
@@ -527,6 +532,17 @@ def is_trump_direct_policy_statement(text: str, item: dict) -> bool:
                 "해운",
             ],
         )
+    )
+
+
+def is_boem_arctic_drilling_rule(text: str, item: dict) -> bool:
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "").lower()
+    return (
+        ("boem" in source or "boem.gov/" in link)
+        and "arctic" in text
+        and "exploratory drilling" in text
+        and has_any(text, ["targeted updates", "proposed rule", "2016 arctic exploratory drilling rule"])
     )
 
 
@@ -830,7 +846,26 @@ def ensure_explained(item: dict) -> dict:
     if item.get("source") == "U.S. Treasury press releases" and item.get("policy_plain_summary"):
         return item
 
-    if is_china_mofcom_trade_control(text, item):
+    if is_boem_arctic_drilling_rule(text, item):
+        put(
+            item,
+            importance="상",
+            title_ko="미 내무부, 북극해 탐사시추 규제 완화안 발표",
+            impacts=["매출·마진·현금흐름", "시간표"],
+            paths=["정책 타임라인", "에너지 공급", "규제 비용"],
+            sectors=["북극해 석유·가스", "해양플랜트/시추장비", "정유/에너지"],
+            policy_plain_summary=(
+                "미 내무부는 2016년 북극해 탐사시추 규정의 방폭장치 실시간 감시, "
+                "유출 대응장비, 보조 시추선과 통합운영계획 요건을 일부 완화하는 제안규칙을 냈습니다. "
+                "90일 의견수렴에 들어가며 특정 리스·시추계획·허가를 승인한 것은 아닙니다."
+            ),
+            investment_view="규제 준수비용과 북극해 개발 시간표를 낮출 수 있지만 아직 제안규칙 단계라 확정 매출은 아닙니다.",
+            korea_market_impact="한국장에서는 해양플랜트·시추장비·정유주의 북극해 직접 수주 노출이 확인될 때만 연결합니다.",
+            priced_in="낮음~중간. 제안규칙 발표는 초기 재료이며 최종규칙과 실제 사업자 계획이 남았습니다.",
+            counter="특정 리스·탐사계획·시추허가를 승인하지 않았고 환경·안전 심사도 유지됩니다.",
+            failure_signal="90일 의견수렴 뒤 최종규칙이 지연되거나 실제 리스·허가·발주가 없으면 테마성 기대에 그칩니다.",
+        )
+    elif is_china_mofcom_trade_control(text, item):
         product = china_mofcom_product(text)
         action = china_mofcom_action(text)
         if product == "헬륨":
