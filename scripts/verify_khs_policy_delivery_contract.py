@@ -1387,6 +1387,11 @@ def assert_boem_space_launch_is_excluded() -> None:
 
 
 def assert_fcc_chinese_optical_transceiver_ban_is_monitored() -> None:
+    direct_urls = khs_trusted_policy_news_watch.DIRECT_STORY_URLS.get(
+        "us_fcc_chinese_optical_transceiver_ban", ()
+    )
+    if not any("devdiscourse.com/article/politics/3959328" in fetch_url for fetch_url, _ in direct_urls):
+        raise AssertionError("Direct Reuters relay fallback for optical transceivers is missing")
     rule = next(
         rule for rule in khs_trusted_policy_news_watch.STORY_RULES
         if rule.key == "us_fcc_chinese_optical_transceiver_ban"
