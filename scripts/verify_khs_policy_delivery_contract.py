@@ -148,6 +148,9 @@ def assert_foreign_first_policy_sources() -> None:
 
 
 def assert_treasury_borrowing_estimate_is_source_faithful() -> None:
+    treasury_urls = [source.url for source in khs_policy_watch.SOURCES if source.kind == "treasury_html"]
+    if "https://home.treasury.gov/news/press-releases/sb0584" not in treasury_urls:
+        raise AssertionError("Current Treasury borrowing release direct fallback is missing")
     body = (
         "WASHINGTON -- The U.S. Department of the Treasury today announced its current estimates "
         "of privately-held net marketable borrowing. During the July–September 2026 quarter, "
