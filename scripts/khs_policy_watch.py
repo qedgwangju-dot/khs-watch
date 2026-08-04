@@ -599,10 +599,7 @@ def enrich_treasury_items(items: list[dict]) -> list[dict]:
     for raw in items:
         item = dict(raw)
         title = str(item.get("title") or "")
-        if not any(
-            term in title.lower()
-            for term in ("borrowing", "quarterly refunding", "treasury borrowing advisory committee")
-        ):
+        if "marketable borrowing estimates" not in title.lower():
             enriched.append(item)
             continue
         detail_html, detail_error = fetch_text(str(item.get("link") or ""), timeout=16)
@@ -1011,6 +1008,14 @@ def classify_item(item: dict) -> dict | None:
     is_treasury_source = source_name == "U.S. Treasury press releases"
     if is_treasury_source and not item.get("body_verified"):
         return None
+    if is_treasury_source:
+        treasury_title = str(item.get("source_title") or item.get("title") or "").lower()
+        if "marketable borrowing estimates" not in treasury_title:
+            return None
+        haystack = " ".join(
+            str(item.get(key) or "")
+            for key in ("title", "source_title", "source_abstract")
+        ).lower()
     is_whitehouse_remark_or_video = (
         source_lower in {"white house remarks", "white house videos"}
         or "whitehouse.gov/remarks/" in link_lower
