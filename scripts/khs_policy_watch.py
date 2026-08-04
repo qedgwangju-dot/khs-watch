@@ -310,6 +310,11 @@ SOURCES = [
         "https://home.treasury.gov/news/press-releases",
         "treasury_html",
     ),
+    Source(
+        "U.S. Treasury press releases",
+        "https://home.treasury.gov/news/press-releases/sb0584",
+        "treasury_html",
+    ),
     Source("SEC press releases", "https://www.sec.gov/news/pressreleases.rss"),
     Source("FTC press releases", "https://www.ftc.gov/news-events/news/press-releases/rss.xml"),
     Source("FDA press announcements", "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-announcements/rss.xml"),
