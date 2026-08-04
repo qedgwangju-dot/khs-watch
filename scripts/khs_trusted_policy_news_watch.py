@@ -24,8 +24,10 @@ from zoneinfo import ZoneInfo
 
 try:
     from khs_policy_alert_explainer import ensure_explained
+    from khs_article_detail import extract_article_detail
 except ImportError:  # pragma: no cover - supports module-style local tests.
     from scripts.khs_policy_alert_explainer import ensure_explained
+    from scripts.khs_article_detail import extract_article_detail
 try:
     from khs_compact_text import concise_text
 except ImportError:  # pragma: no cover - supports module-style local tests.
@@ -38,6 +40,15 @@ OUT_DIR = ROOT / "out"
 DATA_DIR = ROOT / "data"
 SEEN_PATH = DATA_DIR / "khs_trusted_policy_news_seen.json"
 ALERT_PATH = OUT_DIR / "khs_trusted_policy_news_alert.md"
+
+DIRECT_STORY_URLS = {
+    "us_fcc_chinese_optical_transceiver_ban": (
+        (
+            "https://www.devdiscourse.com/article/politics/3959328-exclusive-trump-administration-drafting-ban-on-chinese-data-center-devices-sources-say",
+            "https://www.reuters.com/world/trump-administration-drafting-ban-chinese-data-center-devices-sources-say-2026-08-04/",
+        ),
+    ),
+}
 TITLE_PATH = OUT_DIR / "khs_trusted_policy_news_title.txt"
 ALERTS_JSON_PATH = OUT_DIR / "khs_trusted_policy_news_alerts.json"
 
@@ -634,7 +645,10 @@ def parse_pub_date(value: str | None) -> dt.datetime | None:
     try:
         parsed = email.utils.parsedate_to_datetime(value)
     except Exception:
-        return None
+        try:
+            parsed = dt.datetime.fromisoformat(value)
+        except (TypeError, ValueError):
+            return None
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=UTC)
     return parsed.astimezone(KST)
@@ -709,6 +723,40 @@ def load_seen() -> dict:
 def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
+    for fetch_url, canonical_url in DIRECT_STORY_URLS.get(rule.key, ()):
+        try:
+            raw = fetch_text(fetch_url)
+            expected_title = (
+                "EXCLUSIVE-Trump administration drafting ban on Chinese data center devices, sources say"
+                if rule.key == "us_fcc_chinese_optical_transceiver_ban"
+                else rule.title
+            )
+            detail = extract_article_detail(raw, expected_title)
+        except Exception as exc:
+            print(f"trusted_policy_news=direct_failed key={rule.key} error={type(exc).__name__}: {exc}")
+            continue
+        title = clean_text(detail.get("title"))
+        description = clean_text(f"{detail.get('abstract') or ''} {detail.get('body') or ''}")
+        published = parse_pub_date(detail.get("published_kst"))
+        haystack = f"{title} Devdiscourse Reuters {description}"
+        if (
+            not detail.get("body_verified")
+            or not published
+            or (now - published).total_seconds() / 3600 > MAX_AGE_HOURS
+            or not has_required_terms(haystack, rule)
+        ):
+            print(f"trusted_policy_news=direct_rejected key={rule.key} verified={detail.get('body_verified')!r}")
+            continue
+        seen_links.add(canonical_url)
+        items.append({
+            "title": title,
+            "description": description,
+            "link": canonical_url,
+            "source": "Devdiscourse (Reuters 보도 인용)",
+            "published_kst": published.isoformat(timespec="seconds"),
+            "priority": SOURCE_PRIORITY.get("reuters", 0),
+        })
+        print(f"trusted_policy_news=direct_verified key={rule.key} title={title!r}")
     for query in rule.google_queries:
         try:
             raw = fetch_text(google_news_rss_url(query))
