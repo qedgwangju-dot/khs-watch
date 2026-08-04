@@ -827,6 +827,9 @@ def ensure_explained(item: dict) -> dict:
     default_context(item)
     text = text_for(item)
 
+    if item.get("source") == "U.S. Treasury press releases" and item.get("policy_plain_summary"):
+        return item
+
     if is_china_mofcom_trade_control(text, item):
         product = china_mofcom_product(text)
         action = china_mofcom_action(text)
