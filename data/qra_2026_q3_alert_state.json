@@ -1,6 +1,7 @@
 {
-  "status": "sent",
-  "sent_at_kst": "2026-08-05T23:56:43+09:00",
-  "telegram_message_id": 536,
-  "source": "U.S. Treasury QRA 2026 Q3"
+  "status": "pending_second_bot_resend",
+  "wrong_route_sent_at_kst": "2026-08-05T23:56:43+09:00",
+  "wrong_route_telegram_message_id": 536,
+  "target_bot_username": "hs8879887988798879_bot",
+  "reason": "QRA alert was sent through the first policy bot; resend once through the dedicated second alert bot."
 }
