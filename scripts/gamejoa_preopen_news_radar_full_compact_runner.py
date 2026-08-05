@@ -5392,4 +5392,833 @@ def explanation_for(alert: dict) -> dict[str, str]:
         return {
             "core": "FCC가 국가안보를 이유로 외국산 장비, 통신모듈, 에너지 인버터, 전력망 연결 장비의 수입·인증·판매 제한을 검토하거나 공표한 사안입니다.",
             "view": "단순 통신 행정공지와 다르게 적용 장비가 특정되면 미국 시장에서 중국산 장비가 배제되고 대체 공급망의 주문 기대와 가격결정력이 바뀔 수 있습니다.",
-            "korea": "한국장에서는 전력변환장치, ESS/PCS, 전력기기, 통신장비, 위성·보안장비 중 미국향 공급망 노출과 중국 대체 수요가 있는 종목만 선별 확인합
+            "korea": "한국장에서는 전력변환장치, ESS/PCS, 전력기기, 통신장비, 위성·보안장비 중 미국향 공급망 노출과 중국 대체 수요가 있는 종목만 선별 확인합니다.",
+            "priced": "낮음~중간. 신뢰외신 보도나 규칙 제안 단계에서는 테마가 먼저 움직일 수 있지만 공식 적용 대상·시행일 전에는 직접 반영이 제한적입니다.",
+            "counter": "FCC 공식 규칙, 적용 장비, 기존 인증 장비 예외, 시행일, 한국 기업의 미국향 공급망 노출이 확인되지 않으면 과대해석입니다.",
+            "failure": "FCC 원문, Covered List·장비인증 제한 범위, 적용 장비, 국내 기업 수주·공급망 노출이 확인되지 않으면 테마성 반응으로 끝납니다.",
+        }
+    if has_term(text, ["european union", "european commission", "eu집행위", "유럽연합"]) and has_term(text, ["korea", "south korea", "korean", "한국", "한국산"]):
+        return {
+            "core": "EU 등 해외 정책이 한국산 제품이나 한국 기업의 수출 조건을 직접 바꿀 수 있는 무역·규제 사안입니다.",
+            "view": "품목·세율·쿼터·인증·시행일이 공식화되면 한국 수출기업의 마진, 물량, 주문 이전, 밸류체인 수급 기대가 바뀔 수 있습니다.",
+            "korea": "한국장에서는 원문에 직접 언급된 품목과 유럽·해외 매출 노출이 있는 철강, 배터리, 반도체, 조선, 자동차, 화학, 전력기기 수출주만 연결합니다.",
+            "priced": "낮음~중간. 보도 직후 테마 수급은 빠르지만 관보·집행위·의회·이사회 문서로 품목과 시행일이 확인돼야 실적 추정에 반영됩니다.",
+            "counter": "해외 정책 보도만으로는 품목 범위, 국가별 쿼터, 예외 조항, 시행일, 한국 기업 직접 노출이 확정되지 않습니다.",
+            "failure": "공식 문서, 품목별 수치, 적용일, 한국 기업 직접 노출, 국내 가격·수급 반응이 없으면 제외해야 합니다.",
+        }
+    if has_term(text, ["doe", "department of energy", "energy.gov"]) and has_term(text, ["loan", "loans", "low-cost loan", "loan guarantee", "conditional commitment", "funding opportunity", "efficiency standard", "grid deployment", "nuclear fuel", "critical materials", "ap1000"]):
+        return {
+            "core": "미 에너지부(DOE)의 대출보증, 조건부 지원 약정, 자금지원, 효율규제, 금지·제한, 핵연료·전력망 정책이 확인된 사안입니다.",
+            "view": "DOE 정책은 보조금성 자금, 저리 대출, 효율 기준, 조달·인허가 일정으로 원전·전력기기·송전망·데이터센터 전력 밸류체인의 수주 가시성과 할인율을 동시에 바꿀 수 있습니다.",
+            "korea": "한국장에서는 두산에너빌리티, 원전 기자재, 전력기기, 변압기·전선, ESS/전력변환장치, 핵연료·핵심소재 중 미국 프로젝트 노출이 있는 종목만 선별 확인합니다.",
+            "priced": "중간. 원전·전력망 테마는 선반영이 강하지만 DOE 금액, 대출조건, 선정기업, 시행일이 공식화되면 실적 추정과 수급이 다시 움직일 수 있습니다.",
+            "counter": "DOE 발표라도 공고·의향서·조건부 약정 단계는 최종 계약이나 매출 확정이 아닙니다. 수혜 기업, 금액, 매칭 자금, 인허가, 착공 일정 확인이 필요합니다.",
+            "failure": "DOE 원문에서 금액·대상기업·대출조건·시행일·조달일정이 확인되지 않거나 국내 기업의 미국 프로젝트 노출이 없으면 테마성 반응으로 끝납니다.",
+        }
+    if has_term(text, ["transformer", "large power transformer", "변압기"]):
+        return {
+            "core": "미국 변압기 관세·효율규제 변화가 한국 전력기기 수출 가격경쟁력과 수주 기대를 바꿀 수 있는지 확인하는 사안입니다.",
+            "view": "세율, 품목코드, 시행일이 공식화되면 마진과 신규 수주 기대가 동시에 바뀝니다.",
+            "korea": "효성중공업, HD현대일렉트릭, LS ELECTRIC 등 변압기·전력기기 밸류체인과 데이터센터 전력망 테마 수급을 확인합니다.",
+            "priced": "중간. 전력기기 테마가 이미 강해도 공식 세율·시행일이 확인되면 실적 추정 조정 여지가 남습니다.",
+            "counter": "공식 관보·상무부·USTR 근거 없이 보도만 있으면 예비 재료입니다.",
+            "failure": "품목코드·시행일·예외조항·개별 기업 수주/마진 변화가 확인되지 않으면 재료가 약해집니다.",
+        }
+    if has_term(text, ["nuclear", "reactor", "smr", "ap1000", "westinghouse", "doosan", "원전"]):
+        return {
+            "core": "원전, SMR, 가스터빈, AI 전력수요 관련 정책·계약 시간표가 밸류체인 기대를 다시 움직이는 사안입니다.",
+            "view": "당장 매출 확정보다 인허가, 대출·예산, 최종 계약, 기자재 발주 시간표가 돈 버는 능력으로 이어지는지 봐야 합니다.",
+            "korea": "두산에너빌리티, 원전 기자재, 전력기기, 송전망, KHNP·체코·중동 원전 노출 종목의 수급을 확인합니다.",
+            "priced": "중간~높음. 원전 테마는 선반영이 빨라 계약·인허가·발주가 없으면 되돌림 위험이 큽니다.",
+            "counter": "부지, NRC/국내 인허가, 주민수용성, 방폐장·송전망, 최종 계약금액이 확정되지 않으면 매출 인식까지 시차가 큽니다.",
+            "failure": "공식 계약·대출조건·인허가 일정·기자재 발주가 확인되지 않으면 정책 기대에 그칩니다.",
+        }
+    if has_term(text, ["fcc", "broadband", "spectrum", "satellite", "communications", "dirs"]):
+        return {
+            "core": "FCC 통신·브로드밴드·장애보고 규제 문서입니다. 주파수 경매, 장비 의무화, 보조금인지 단순 행정 절차인지 구분해야 합니다.",
+            "view": "통신사 CAPEX, 위성·장비 인증, 공공안전망 조달로 연결될 때만 실적 재료입니다.",
+            "korea": "한국장에서는 통신장비·위성통신·네트워크 장비 테마 반응 가능성은 있으나 행정 공지라면 직접 영향은 제한적입니다.",
+            "priced": "낮음~중간. 구체 인허가·경매·예산·장비 발주가 없으면 선반영보다 영향 자체가 작습니다.",
+            "counter": "회의 공고, 데이터 수집, 보고 양식 정비 수준이면 고충격 재료가 아닙니다.",
+            "failure": "통신사 CAPEX 가이던스, 장비 발주, 공공안전망 예산, 국내 장비사 수주 공시가 없으면 제외해야 합니다.",
+        }
+    if has_term(text, ["robot", "robotics", "automation"]):
+        return {
+            "core": "로봇·자동화 정책 또는 기업 실행 단계가 중국 대체 공급망과 생산자동화 수요를 자극할 수 있는 사안입니다.",
+            "view": "관세·수입제한·제조지원 또는 실제 발주·CAPEX로 이어질 때 매출 기대가 바뀝니다.",
+            "korea": "로봇, 감속기, FA, 스마트팩토리, 삼성·레인보우로보틱스 연계 수급을 확인합니다.",
+            "priced": "중간. 로봇 테마는 기대가 빠르게 붙지만 공식 조치나 발주 전에는 되돌림이 큽니다.",
+            "counter": "검토·조직개편·소식통 보도 단계면 품목, 세율, 시행일, 발주 규모가 미확정입니다.",
+            "failure": "상무부 공식 조사, 관세·대출 조건, 생산라인 발주·공급계약이 나오지 않으면 테마성 반응으로 끝납니다.",
+        }
+    if has_term(text, ["oil", "gas", "coal", "biofuel", "feedstocks", "agriculture"]):
+        return {
+            "core": "미국 에너지·자원개발·바이오연료 관련 규정/지침입니다. 가격, 공급량, 세액공제, 의무혼합으로 연결되는지 확인해야 합니다.",
+            "view": "유가·가스·석탄·바이오연료 가격 또는 정유·화학 원가에 반영될 때만 돈 버는 능력 변화입니다.",
+            "korea": "정유·화학, 에너지 비용 민감 업종, 바이오연료 밸류체인을 보되 한국 직접 영향은 공식 시행 조건 확인 전 제한적입니다.",
+            "priced": "중간. 원자재 정책은 반복 재료라 가격 반응이 동행해야 추가 반영됩니다.",
+            "counter": "기술지침·의견수렴·행정 개정은 실제 공급·가격 변화와 거리가 있을 수 있습니다.",
+            "failure": "WTI/Brent/천연가스/정제마진/관련 ETF가 반응하지 않으면 단발성 정책 문서입니다.",
+        }
+    if has_term(text, ["tariff", "customs", "duty", "section 301", "section 232", "antidumping", "countervailing", "anti-dumping", "safeguard", "quota"]):
+        return {
+            "core": "관세·통관 뉴스는 품목, 국가, 세율, 쿼터, 적용일이 실제로 바뀔 때만 한국 수출기업의 가격경쟁력과 마진을 바꾸는 재료입니다.",
+            "view": "반덤핑·상계관세 행정재심 신청 안내처럼 절차만 여는 공고는 가격 변수가 아니며, 최종판정·예비판정·현금예치율·관세율·시행일이 확인될 때 고충격으로 봅니다.",
+            "korea": "한국장에서는 원문에 한국산 품목, 세율 변화, 적용일, 예외 조항이 직접 확인될 때 철강, 배터리, 화학, 전력기기, 자동차부품 등 수출주로만 연결합니다.",
+            "priced": "낮음~중간. 보도나 행정 공고 단계에서는 테마 반응이 먼저 나올 수 있지만, 실제 세율과 시행일이 없으면 실적 추정 반영은 제한적입니다.",
+            "counter": "행정재심 신청 기회, 서비스리스트 갱신, 절차 안내는 새 관세 부과나 완화가 아니므로 고충격 정책 뉴스로 보기 어렵습니다.",
+            "failure": "품목·국가·세율·현금예치율·시행일·한국 기업 노출이 확인되지 않으면 레이더에서 제외합니다.",
+        }
+    return {
+        "core": "공식 문서 또는 신뢰 보도에서 한국장 가격 변수 후보가 확인됐습니다.",
+        "view": "돈 버는 능력, 할인율, 수급, 시간표 중 무엇이 실제로 바뀌는지 원문과 시장 반응으로 재확인해야 합니다.",
+        "korea": "한국장 직접 영향은 원문에 근거가 있는 업종과 종목군으로만 제한해 확인합니다.",
+        "priced": f"{alert.get('reflection') or '중간'}. 발표 직후라도 개별 밸류체인 반영은 후속 일정·가격·수급 확인이 필요합니다.",
+        "counter": alert.get("counter") or "세부 조건 확인 전까지 직접 실적 연결은 제한적입니다.",
+        "failure": alert.get("failed_signal") or "후속 시행일·예산·계약·수급 반응이 없으면 단발성 뉴스로 끝납니다.",
+    }
+
+
+def normalize_alert_for_output(alert: dict) -> dict:
+    out = dict(alert)
+    if is_china_mofcom_control(out):
+        out["china_mofcom_trade_control"] = True
+        out["impacts"] = ["돈 버는 능력", "수급", "시간표"]
+        out["paths"] = ["공급·수요", "원자재 비용", "공급망", "정책 타임라인"]
+    if not out.get("source_title"):
+        out["source_title"] = out.get("original_news") or out.get("news")
+    if not out.get("original_news"):
+        out["original_news"] = out.get("source_title") or out.get("news")
+    if not out.get("supply_chain_theme"):
+        inferred_theme = semantic_event_theme(out)
+        if inferred_theme:
+            out["supply_chain_theme"] = inferred_theme
+    profile = federal_register_profile(out)
+    out["news"] = korean_title(out)
+    out["sectors"] = curated_sectors(out)
+    impacts = unique([str(x) for x in out.get("impacts") or []]) or ["의사결정 영향 제한적"]
+    if len(impacts) > 1:
+        impacts = [x for x in impacts if x != "의사결정 영향 제한적"]
+    if profile:
+        impacts = list(profile["impacts"])
+    out["impacts"] = impacts
+    if profile:
+        out["paths"] = list(profile["paths"])
+    else:
+        out["paths"] = unique([str(x) for x in out.get("paths") or []]) or [
+        "이익" if x == "돈 버는 능력" else "할인율" if x == "할인율" else "수급" if x == "수급" else "정책 타임라인"
+        for x in impacts
+        ]
+    explanation = explanation_for(out)
+    if profile or not out.get("policy_plain_summary"):
+        out["policy_plain_summary"] = explanation["core"]
+    if profile or not out.get("investment_view"):
+        out["investment_view"] = explanation["view"]
+    if profile or not out.get("korea_market_impact"):
+        out["korea_market_impact"] = explanation["korea"]
+    if profile or not out.get("priced_in"):
+        out["priced_in"] = explanation["priced"]
+    generic_counter_terms = [
+        "시행일, 적용 대상, 금액, 기간",
+        "제목·요약 기반 1차 감지",
+        "원문 세부조건과 공식 문서 확인 전",
+    ]
+    counter_text = str(out.get("counter") or "")
+    if profile or not counter_text or any(term in counter_text for term in generic_counter_terms):
+        out["counter"] = explanation["counter"]
+    failed_text = str(out.get("failed_signal") or "")
+    stale_failure_terms = [
+        "메모리 가격·고객사 재고",
+        "SOX/MU/NVDA",
+        "관련 해외 티커·원자재·금리·환율",
+    ]
+    if profile or not failed_text or any(term in failed_text for term in stale_failure_terms):
+        out["failed_signal"] = explanation["failure"]
+    stale_interpretation_terms = [
+        "반도체 급락은",
+        "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는 후보",
+    ]
+    if profile or not out.get("interpretation") or (
+        any(term in str(out.get("interpretation")) for term in stale_interpretation_terms)
+        and "반도체/AI" not in out.get("sectors", [])
+    ):
+        out["interpretation"] = explanation["view"]
+    return out
+
+
+KOREAN_BUSINESS_LOW_VALUE_COMMENTARY_TERMS = [
+    "의심할 때 사서",
+    "확신할 때 팔아",
+    "그게 언제일까요",
+    "주식 투자법",
+    "투자 고수의 조언",
+    "투자하지 않는 것이 최선",
+    "ETF 아버지",
+    "상폐 아닌 자연사",
+    "좋은 꿈을 꾸었습니다",
+    "한때 수익률",
+    "지금은?",
+    "SNS 달군",
+    "도플갱어",
+    "닮은꼴",
+    "바비큐 사장",
+    "화제의 인물",
+]
+
+
+def is_low_value_market_commentary(alert: dict) -> bool:
+    if not alert.get("korean_business_news"):
+        return False
+    title = base.norm(str(alert.get("source_title") or alert.get("news") or ""))
+    if not has_term(title, KOREAN_BUSINESS_LOW_VALUE_COMMENTARY_TERMS):
+        return False
+    hard_facts = [
+        "영업이익", "순이익", "매출", "가이던스", "공급계약", "수주", "발주",
+        "증설", "유상증자", "자사주", "순매수", "순매도", "관세", "수출통제",
+    ]
+    return not has_term(title, hard_facts)
+
+
+def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
+    initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
+    candidates = initial + alerts
+    iran_candidates = [alert for alert in candidates if alert.get("iran_hormuz_escalation")]
+    if iran_candidates:
+        def iran_source_rank(alert: dict) -> int:
+            source = alert_text(alert)
+            if has_term(source, ["ap news", "associated press"]):
+                return 0
+            if has_term(source, ["reuters"]):
+                return 1
+            if has_term(source, ["cnbc"]):
+                return 2
+            return 3
+
+        best_rank = min(iran_source_rank(alert) for alert in iran_candidates)
+        preferred_iran = max(
+            (alert for alert in iran_candidates if iran_source_rank(alert) == best_rank),
+            key=lambda alert: str(alert.get("published") or ""),
+        )
+        candidates = [preferred_iran] + [alert for alert in candidates if not alert.get("iran_hormuz_escalation")]
+    selected: list[dict] = []
+    seen: set[tuple[str, str]] = set()
+    for alert in candidates:
+        if is_low_value_market_commentary(alert):
+            alert["_exclusion_reason"] = "low_value_market_commentary"
+            continue
+        if is_low_impact_admin_alert(alert):
+            alert["_exclusion_reason"] = "low_impact_admin_document"
+            continue
+        if is_low_impact_trade_admin_notice(alert):
+            alert["_exclusion_reason"] = "low_impact_trade_admin_notice"
+            continue
+        if is_local_dc_like(alert) and not is_actionable_local_dc_policy(alert):
+            alert["_exclusion_reason"] = "local_data_center_without_trusted_hard_action"
+            continue
+        normalized = normalize_alert_for_output(alert)
+        if not source_output_aligned(normalized):
+            alert["_exclusion_reason"] = "source_body_mismatch"
+            continue
+        if not has_korea_market_link(normalized):
+            alert["_exclusion_reason"] = "korea_market_link_guard"
+            continue
+        key = alert_dedup_key(normalized)
+        if key in seen:
+            alert.setdefault("_exclusion_reason", "semantic_duplicate")
+            continue
+        seen.add(key)
+        if is_low_impact_admin_alert(normalized):
+            alert["_exclusion_reason"] = "low_impact_admin_document"
+            continue
+        if is_low_impact_trade_admin_notice(normalized):
+            alert["_exclusion_reason"] = "low_impact_trade_admin_notice"
+            continue
+        if not has_decision_impact(normalized):
+            alert["_exclusion_reason"] = "decision_impact_guard"
+            alert["guardrail_note"] = normalized.get("guardrail_note") or "구체 사유 확인 불가"
+            alert["_decision_debug"] = {
+                "kind": normalized.get("korean_business_kind"),
+                "impacts": display_impacts(normalized.get("impacts")),
+                "sectors": normalized.get("sectors") or [],
+                "body_verified": bool(normalized.get("body_verified")),
+                "has_korea_market_link": has_korea_market_link(normalized),
+                "generic_explanation": has_generic_explanation(normalized),
+            }
+            continue
+        if (
+            is_local_dc_like(normalized)
+            and not normalized.get("cluster_count")
+            and any(is_local_dc_like(item) and item.get("cluster_count") for item in selected)
+        ):
+            alert["_exclusion_reason"] = "covered_by_data_center_cluster"
+            continue
+        alert.pop("_exclusion_reason", None)
+        selected.append(normalized)
+        if len(selected) >= limit:
+            break
+    return selected
+
+
+def related_text(alert: dict, fred: dict, te: dict) -> str:
+    extra = []
+    if alert.get("iran_hormuz_escalation"):
+        extra += ["WTI", "Brent", "XLE", "탱커·컨테이너 운임", "USD/KRW", "DXY", "방산 ETF/티커"]
+    if "해운/항만/물류" in alert.get("sectors", []):
+        extra += ["SCFI", "Drewry WCI", "BDI", "컨테이너 운임", "벌크선 운임"]
+    if "메가프로젝트 일정/물류" in alert.get("sectors", []):
+        extra += ["대형 CAPEX 일정", "기자재 납기", "EPC/전력기기 수주 인식", "SCFI", "Drewry WCI"]
+    if "중국 경기부양/벌크선" in alert.get("sectors", []):
+        extra += ["Iron Ore", "Coal", "BDI", "벌크선 운임", "중국 인프라/부동산 지표"]
+    if alert.get("grid_policy_delay"):
+        extra += ["FERC", "DOE", "주 공공서비스위원회", "유틸리티 CAPEX", "전력기기/전선/변압기"]
+    if alert.get("biotech_leadership_filter"):
+        extra += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
+    if alert.get("robotics_execution_filter"):
+        extra += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "협동로봇"]
+    if "전력망 보안/FCC 장비규제" in alert.get("sectors", []):
+        extra += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV", "FCC Covered List"]
+    if "EU/한국 정책 영향" in alert.get("sectors", []):
+        extra += ["EU 집행위/관보", "철강·배터리·반도체·조선 수출주", "EUR/KRW"]
+    if "DOE 전력망/원전/에너지지원" in alert.get("sectors", []):
+        extra += ["DOE", "FERC", "NRC", "AP1000", "Westinghouse", "VRT", "ETN", "GEV", "Uranium"]
+    try:
+        base_text = base.related(alert, fred, te)
+        base_parts = [] if base_text == "확인 가능한 직접 티커 없음" else [part.strip() for part in base_text.split(",") if part.strip()]
+        return ", ".join(dict.fromkeys(base_parts + extra)) or "확인 가능한 직접 지표 없음"
+    except Exception:
+        out = []
+        if "데이터센터/전력망/전력기기" in alert.get("sectors", []):
+            out += ["VRT", "ETN", "GEV", "CEG", "SMH"]
+        if "반도체/AI" in alert.get("sectors", []):
+            out += ["NVDA", "MU", "AVGO", "AMD", "TSM", "ASML"]
+        if "전력망 보안/FCC 장비규제" in alert.get("sectors", []):
+            out += ["FSLR", "ENPH", "SEDG", "VRT", "ETN", "GEV", "FCC Covered List"]
+        if "EU/한국 정책 영향" in alert.get("sectors", []):
+            out += ["EU 집행위/관보", "철강·배터리·반도체·조선 수출주", "EUR/KRW"]
+        if "DOE 전력망/원전/에너지지원" in alert.get("sectors", []):
+            out += ["DOE", "FERC", "NRC", "AP1000", "Westinghouse", "VRT", "ETN", "GEV", "Uranium"]
+        if alert.get("biotech_leadership_filter"):
+            out += ["FDA", "PDUFA", "XBI", "IBB", "DFII10", "10Y TIPS"]
+        if alert.get("robotics_execution_filter"):
+            out += ["Samsung Electronics", "Rainbow Robotics", "RB5-850", "협동로봇"]
+        out += extra
+        if "할인율" in alert.get("impacts", []):
+            out += [
+                f"DFII10 {fred.get('value') if fred.get('value') is not None else '확인 불가'}",
+                f"TE TIPS {te.get('value') if te.get('value') is not None else '확인 불가'}",
+                "IWM/SPY",
+            ]
+        return ", ".join(dict.fromkeys(out)) or "확인 가능한 직접 지표 없음"
+
+
+def semiconductor_cycle_check(alert: dict) -> str | None:
+    if not alert.get("semiconductor_selloff"):
+        return None
+    return "메모리 가격·고객사 재고·CAPEX·밸류에이션 부담 동시 악화 여부"
+
+
+def semiconductor_policy_check(alert: dict) -> str | None:
+    if not alert.get("policy_drive"):
+        return None
+    return "R&D 세액공제 대상·시행 시점·소부장 발주/수주 연결성"
+
+
+def port_strike_check(alert: dict) -> str | None:
+    if not alert.get("port_strike_risk"):
+        return None
+    return "ILA/USMX 계약 만료·협상 결렬 여부·동부/걸프 항만 차질·기자재 납기/대형 CAPEX 일정"
+
+
+def china_bulk_check(alert: dict) -> str | None:
+    if not alert.get("china_stimulus_bulk"):
+        return None
+    return "중국 부양책 실물 강도·철광석/석탄 물동량·BDI/벌크선 운임 동행"
+
+
+def grid_policy_check(alert: dict) -> str | None:
+    if not alert.get("grid_policy_delay"):
+        return None
+    return "정부 승인·규제/인허가·계통접속 일정·유틸리티 CAPEX 집행 속도"
+
+
+def biotech_leadership_check(alert: dict) -> str | None:
+    if not alert.get("biotech_leadership_filter"):
+        return None
+    return alert.get("biotech_check") or "실제 매출/이익·빅파마 우선순위·FDA 일정·금리/할인율 동시 확인"
+
+
+def robotics_execution_check(alert: dict) -> str | None:
+    if not alert.get("robotics_execution_filter"):
+        return None
+    return alert.get("robotics_check") or "삼성 조직개편 방향·RB5-850 테스트·발주/CAPEX/매출 인식 연결 확인"
+
+
+def display_news(alert: dict) -> str:
+    return korean_title(alert)
+
+
+def complete_prose_text(value: object, *, fallback: object = "", limit: int) -> str:
+    text = clean_article_summary_text(value) or clean_article_summary_text(fallback) or "확인 불가"
+    # Publisher snippets frequently use an ellipsis as a transport truncation
+    # marker. Normalize it before length handling so one damaged snippet cannot
+    # invalidate the complete Telegram payload.
+    text = re.sub(r"\s*(?:…+|\.{3,})\s*", ". ", text)
+    text = re.sub(r"\.\s*\.", ".", text)
+    text = re.sub(r"^(?:및|또한|아울러|이어|여기에)\s+", "", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"기대할\.$", "기대할 수 있습니다.", text)
+    if len(text) <= limit:
+        if re.search(r"[.!?。]$", text):
+            return text
+        suffix = "." if re.search(r"(?:다|요|함|됨|임|음)$", text) else "입니다."
+        if len(text) + len(suffix) <= limit:
+            return text + suffix
+    head = text[: limit + 1]
+    sentence_ends = [
+        match.end()
+        for match in re.finditer(r"(?:[.!?。]|다)(?=\s|$)", head)
+        if match.end() >= int(limit * 0.55)
+    ]
+    if sentence_ends:
+        return head[: sentence_ends[-1]].rstrip()
+    boundary = max(
+        head.rfind(",", int(limit * 0.55), limit),
+        head.rfind("·", int(limit * 0.55), limit),
+        head.rfind(";", int(limit * 0.55), limit),
+        head.rfind(" ", int(limit * 0.7), limit),
+    )
+    if boundary < int(limit * 0.55):
+        boundary = limit - 4
+    return head[:boundary].rstrip(" ,·;:.") + "입니다."
+
+
+def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
+    limits = {
+        "- 핵심:": GAMEJOA_CORE_MAX_CHARS,
+    }
+    output: list[str] = []
+    changed = 0
+    for raw_line in str(body or "").splitlines():
+        stripped = raw_line.strip()
+        indent = raw_line[: len(raw_line) - len(raw_line.lstrip())]
+        compacted_line = raw_line
+        for prefix, limit in limits.items():
+            if not stripped.startswith(prefix):
+                continue
+            value = stripped.removeprefix(prefix).strip()
+            compacted = complete_prose_text(value, limit=limit)
+            compacted_line = f"{indent}{prefix} {compacted}"
+            changed += compacted != value
+            break
+        output.append(compacted_line)
+    suffix = "\n" if str(body or "").endswith("\n") else ""
+    return "\n".join(output) + suffix, changed
+
+
+def compact_title_summary_aligned(title: str, summary: str) -> bool:
+    title_low = clean_article_summary_text(title).lower()
+    summary_low = clean_article_summary_text(summary).lower()
+    event_rules = (
+        (("지진", "강진", "쓰나미"), ("지진", "강진", "쓰나미", "대피", "방재", "폭발")),
+        (("사이드카", "서킷브레이커"), ("사이드카", "서킷브레이커", "프로그램 매수", "프로그램 매도")),
+    )
+    for title_terms, summary_terms in event_rules:
+        if any(term in title_low for term in title_terms):
+            return any(term in summary_low for term in summary_terms)
+    if "사이드카" in summary_low and not any(
+        term in title_low for term in ("사이드카", "코스피", "코스닥", "증시")
+    ):
+        return False
+    return True
+
+
+def compact_alert_block_errors(block: str) -> list[str]:
+    errors: list[str] = []
+    title = ""
+    summary = ""
+    for line in str(block or "").splitlines():
+        visible = html.unescape(line).strip()
+        if re.match(r"^\d+\)\s+\[", visible):
+            title = re.sub(r"^\d+\)\s+\[[^\]]+\]\s*", "", visible).strip()
+            title = re.sub(r"\(\d+건 묶음\)$", "", title).strip()
+        elif visible.startswith("- 핵심:"):
+            summary = visible.removeprefix("- 핵심:").strip()
+    if not title:
+        errors.append("missing_title")
+    elif mostly_ascii(title):
+        errors.append("raw_english_heading")
+    if not summary:
+        errors.append("missing_core")
+        return errors
+    if len(summary) > GAMEJOA_CORE_MAX_CHARS:
+        errors.append("core_too_long")
+    if "…" in summary or re.search(r"\.{3,}", summary):
+        errors.append("truncated_core")
+    if re.search(
+        r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)(?:[.!?。])?$",
+        summary,
+    ):
+        errors.append("incomplete_core")
+    if title and (summary == title or article_title_restatement(summary, title)):
+        errors.append("headline_repeated_as_summary")
+    if title and not compact_title_summary_aligned(title, summary):
+        errors.append("title_core_mismatch")
+    if any(term.lower() in summary.lower() for term in ARTICLE_UI_BOILERPLATE_TERMS):
+        errors.append("article_ui_boilerplate")
+    foreign_amounts = extract_foreign_amounts(summary)
+    if foreign_amounts and not (
+        re.search(r"\(약\s*[\d,.]+(?:조|억|만)?원\)", summary)
+        or "원화 환산 확인 불가" in summary
+    ):
+        errors.append("foreign_currency_not_converted")
+    return errors
+
+
+def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
+    alert = normalize_alert_for_output(alert)
+    examples = alert.get("examples") or []
+    count_suffix = f" ({alert['cluster_count']}건 묶음)" if alert.get("cluster_count") else ""
+    status = alert.get("status") or ("공식 확인 전" if examples else "확인 불가")
+    impacts = alert.get("impacts") or ["의사결정 영향 제한적"]
+    displayed_impacts = display_impacts(impacts)
+    interpretation = alert.get("interpretation") or "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는지 확인해야 합니다."
+    title = display_news(alert)
+    first_impact = displayed_impacts[0] if displayed_impacts else "의사결정"
+    article_core = (
+        alert.get("telegram_core_fact")
+        if alert.get("korean_business_news")
+        else ""
+    )
+    if alert.get("memory_antitrust_lawsuit"):
+        core = "\uc0bc\uc131\uc804\uc790\u00b7SK\ud558\uc774\ub2c9\uc2a4\u00b7Micron\uc5d0 DRAM \uac00\uaca9\ub2f4\ud569 \uc9d1\ub2e8\uc18c\uc1a1\uc774 \uc81c\uae30\ub410\uc2b5\ub2c8\ub2e4."
+    else:
+        core = complete_prose_text(
+            article_core or alert.get("policy_plain_summary"),
+            fallback=title,
+            limit=GAMEJOA_CORE_MAX_CHARS,
+        )
+    conversion = alert.get("fx_conversion") or {"amounts": []}
+    core = compact_converted_core(core, conversion, limit=GAMEJOA_CORE_MAX_CHARS)
+
+    lines = [f"{idx}) [{safe(alert.get('importance'))} | {safe(status)}] {safe(title)}{html.escape(count_suffix, quote=False)}"]
+    if examples:
+        source_text = source_summary(examples[:4])
+    else:
+        source_text = html_link(
+            "원문 뉴스보기",
+            alert.get("link") or "",
+        )
+    fx_source = fx_provenance_text(conversion)
+    if fx_source:
+        source_text = f"{source_text} · 환율: {fx_source}"
+
+    lines += [
+        f"- 핵심: {safe(core)}",
+        f"- 출처: {source_text}",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def compact_quality_final_alerts(alerts: list[dict], limit: int) -> list[dict]:
+    """Return only alerts that can be rendered, keeping report/JSON/send in sync."""
+    now = base.kst_now()
+    candidates = quality_display_alerts(alerts, max(limit * 2, limit))
+    needs_fx = any(extract_foreign_amounts(alert_text(alert)) for alert in candidates)
+    fx_snapshot = collect_fx_snapshot(candidates, now) if needs_fx else {"rates": {}}
+    selected: list[dict] = []
+    for alert in candidates:
+        alert["fx_conversion"] = build_alert_fx_conversion(alert, fx_snapshot, now)
+        block = compact_alert(alert, len(selected) + 1, now, {}, {})
+        block_errors = compact_alert_block_errors(block)
+        if block_errors:
+            alert["_exclusion_reason"] = "compact_quality:" + ",".join(block_errors)
+            print(
+                "GAMEJOA final alert dropped "
+                f"title={display_news(alert)!r} errors={','.join(block_errors)}"
+            )
+            continue
+        selected.append(alert)
+        if len(selected) >= limit:
+            break
+    return selected
+
+
+def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
+    limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "7"))))
+    candidates = alerts[: max(limit * 2, limit)]
+    fx_snapshot = collect_fx_snapshot(candidates, now)
+    for alert in candidates:
+        alert["fx_conversion"] = build_alert_fx_conversion(alert, fx_snapshot, now)
+    live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
+    if live_mode:
+        title = f"📰 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
+        empty_line = "실시간 고충격 뉴스 직접 확인 없음"
+    else:
+        title = f"📰 GAMEJOA 장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
+        comment_title = "💡 06:30 장전 뉴스 코멘트"
+        followup_line = "06:50 투자기상도에서 수치·수급·테마와 재확인 필요."
+        empty_line = "장전 고충격 뉴스 직접 확인 없음"
+
+    visible: list[dict] = []
+    rendered: list[str] = []
+    for alert in candidates:
+        block = compact_alert(alert, len(rendered) + 1, now, fred, te)
+        block_errors = compact_alert_block_errors(block)
+        if block_errors:
+            print(
+                "GAMEJOA compact item dropped "
+                f"title={display_news(alert)!r} errors={','.join(block_errors)}"
+            )
+            continue
+        visible.append(alert)
+        rendered.append(block)
+        if len(rendered) >= limit:
+            break
+
+    lines = [title, f"선별: 핵심 {len(rendered)}건", ""]
+    if rendered:
+        lines.extend(rendered)
+        changed = "·".join(display_impacts(visible[0].get("impacts")))
+    else:
+        lines += [empty_line, ""]
+        changed = "명확한 변화 없음"
+    if not live_mode:
+        lines += [
+            comment_title,
+            f"오늘 핵심 변화는 `{safe(changed)}`입니다.",
+            f"할인율: {safe(telegram.compact_real_yield(fred, te))}",
+            followup_line,
+        ]
+    report = "\n".join(lines).strip() + "\n"
+    return guard_preopen_report(report)
+
+
+def guard_preopen_report(text: str) -> str:
+    text, compacted_fields = compact_gamejoa_prose_lines(text)
+    errors: list[str] = []
+    valid_title = (
+        text.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · ")
+        or text.startswith("📰 실시간 핵심 뉴스 레이더 · ")
+    )
+    if not valid_title:
+        errors.append("title_contract")
+    item_count = sum(1 for line in text.splitlines() if re.match(r"^\d+\)\s+\[", line))
+    required = [
+        "- 핵심:",
+        "- 출처:",
+    ]
+    for marker in required:
+        if item_count and text.count(marker) < item_count:
+            errors.append(f"missing_{marker}")
+    forbidden_markers = (
+        "- 기준/시각:",
+        "- 경로/섹터:",
+        "- 투자 포인트:",
+        "- 의사결정 영향:",
+        "- 한국장:",
+        "- 반영/반대:",
+        "- 실패 신호:",
+    )
+    for marker in forbidden_markers:
+        if item_count and marker in text:
+            errors.append(f"forbidden_compact_marker={marker}")
+    if text.startswith("📰 실시간 핵심 뉴스 레이더 · ") and "💡 실시간 뉴스 코멘트" in text:
+        errors.append("forbidden_live_commentary")
+    for marker in ("외화 환산:", "≈"):
+        if marker in text:
+            errors.append(f"forbidden_currency_format={marker}")
+    for phrase in GENERIC_EXPLANATION_PHRASES:
+        if item_count and phrase in text:
+            errors.append("generic_policy_explanation_displayed")
+    for line in text.splitlines():
+        if not re.match(r"^\d+\)\s+\[", line):
+            continue
+        title = re.sub(r"^\d+\)\s+\[[^\]]+\]\s*", "", line).strip()
+        title = re.sub(r"\(\d+건 묶음\)$", "", title).strip()
+        if mostly_ascii(title):
+            errors.append(f"raw_english_heading={title[:80]}")
+    low = re.sub(r"https?://\S+", "", text).lower()
+    for marker in [
+        "this document is also available in the following formats",
+        "normalized attributes and metadata",
+        "original full text xml",
+        "government publishing office metadata",
+        "developer tools pages",
+    ]:
+        if marker in low:
+            errors.append(f"federal_register_boilerplate={marker}")
+    for marker in ["무단 전재", "재배포 금지", "ai 학습 및 활용 금지"]:
+        if marker in low:
+            errors.append(f"article_boilerplate={marker}")
+    for line in text.splitlines():
+        visible_line = html.unescape(line)
+        if not visible_line.startswith("- 핵심:"):
+            continue
+        prefix = "- 핵심:"
+        summary = visible_line.removeprefix(prefix).strip()
+        limit = GAMEJOA_CORE_MAX_CHARS
+        if len(summary) > limit:
+            errors.append(f"compact_field_too_long={prefix}{len(summary)}")
+        if "…" in summary or re.search(r"\.{3,}", summary):
+            errors.append(f"truncated_compact_field={prefix}")
+        if any(term.lower() in summary.lower() for term in ARTICLE_UI_BOILERPLATE_TERMS):
+            errors.append("article_ui_boilerplate")
+        if re.search(
+            r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)(?:[.!?。])?$",
+            summary,
+        ):
+            errors.append(f"incomplete_article_summary={summary[-30:]}")
+        foreign_amounts = extract_foreign_amounts(summary)
+        if foreign_amounts and not (
+            re.search(r"\(약\s*[\d,.]+(?:조|억|만)?원\)", summary)
+            or "원화 환산 확인 불가" in summary
+        ):
+            errors.append("foreign_currency_not_converted")
+    current_title = ""
+    for line in text.splitlines():
+        if re.match(r"^\d+\)\s+\[", line):
+            current_title = re.sub(r"^\d+\)\s+\[[^\]]+\]\s*", "", html.unescape(line)).strip()
+            current_title = re.sub(r"\(\d+건 묶음\)$", "", current_title).strip()
+            continue
+        if current_title and line.startswith("- 핵심:"):
+            summary = html.unescape(line.removeprefix("- 핵심:").strip())
+            if summary == current_title or article_title_restatement(summary, current_title):
+                errors.append("headline_repeated_as_summary")
+    if errors:
+        raise RuntimeError("GAMEJOA preopen radar quality guard blocked Telegram output: " + "; ".join(errors))
+    if compacted_fields:
+        print(f"GAMEJOA compact prose rewritten={compacted_fields}")
+    return text
+
+
+def send_telegram(text: str) -> None:
+    text = guard_preopen_report(text)
+    chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+    if is_empty_radar_report(text) and not should_send_empty_radar():
+        write_delivery_status("skipped_empty", chat_id, len(text), "No high-impact radar item selected")
+        print(f"Telegram: skipped empty radar original_chars={len(text)}")
+        return
+    if not preopen_send_window_open():
+        write_delivery_status("skipped_off_window", chat_id, len(text), "Outside GAMEJOA preopen Telegram send window")
+        print(f"Telegram: skipped outside preopen send window original_chars={len(text)}")
+        return
+    token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+    if not token or not chat_id:
+        write_delivery_status("blocked", chat_id, len(text), "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
+        raise RuntimeError("Telegram delivery blocked: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
+    message = fit_telegram_html(text, base.TELEGRAM_LIMIT)
+    body = urllib.parse.urlencode({
+        "chat_id": chat_id,
+        "text": message,
+        "disable_web_page_preview": "true",
+        "parse_mode": "HTML",
+    }).encode("utf-8")
+    last_error = ""
+    for attempt in range(1, 4):
+        req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=body, method="POST")
+        try:
+            with urllib.request.urlopen(req, timeout=25) as resp:
+                resp.read()
+            write_delivery_status("sent", chat_id, len(text), "", len(message), attempt)
+            print(f"Telegram: sent chars={len(message)} original_chars={len(text)} attempt={attempt}")
+            return
+        except urllib.error.HTTPError as exc:
+            error_text = exc.read().decode("utf-8", "replace")[:500]
+            last_error = f"Telegram HTTP {exc.code}: {error_text}"
+            if attempt < 3 and (exc.code == 429 or exc.code >= 500):
+                retry_after = exc.headers.get("retry-after")
+                delay = int(retry_after) if retry_after and retry_after.isdigit() else attempt
+                time.sleep(delay)
+                continue
+            break
+        except Exception as exc:
+            last_error = f"{type(exc).__name__}: {exc}"
+            if attempt < 3:
+                time.sleep(attempt)
+                continue
+            break
+    write_delivery_status("failed", chat_id, len(text), last_error, len(message), 3)
+    raise RuntimeError(f"Telegram delivery failed: {last_error}")
+
+
+def is_empty_radar_report(text: str) -> bool:
+    return "선별: 핵심 0건" in text
+
+
+def should_send_empty_radar() -> bool:
+    return os.getenv("SEND_EMPTY_RADAR", "").lower() in {"1", "true", "yes", "y"}
+
+
+def parse_hhmm(value: str, fallback: tuple[int, int]) -> int:
+    match = re.match(r"^\s*(\d{1,2}):(\d{2})\s*$", value or "")
+    if not match:
+        return fallback[0] * 60 + fallback[1]
+    hour, minute = int(match.group(1)), int(match.group(2))
+    return max(0, min(23, hour)) * 60 + max(0, min(59, minute))
+
+
+def preopen_send_window_open() -> bool:
+    if os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live":
+        return True
+    if os.getenv("ALLOW_OFF_WINDOW_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
+        return True
+    now = base.kst_now()
+    current = now.hour * 60 + now.minute
+    start = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_START_KST", "05:30"), (5, 30))
+    end = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_END_KST", "07:30"), (7, 30))
+    if start <= end:
+        return start <= current <= end
+    return current >= start or current <= end
+
+
+def fit_telegram_html(text: str, limit: int) -> str:
+    if len(text) <= limit:
+        return text
+    suffix = "\n\n전체 보고서는 GitHub Actions artifact에서 확인 필요."
+    candidate = text[: max(0, limit - len(suffix))]
+    newline = candidate.rfind("\n")
+    if newline > 1800:
+        candidate = candidate[:newline]
+    if candidate.count("<a ") > candidate.count("</a>"):
+        candidate = candidate[: candidate.rfind("<a ")].rstrip()
+    return (candidate.rstrip() + suffix)[:limit]
+
+
+def write_delivery_status(
+    status: str,
+    chat_id: str,
+    original_chars: int,
+    error: str = "",
+    sent_chars: int | None = None,
+    attempts: int | None = None,
+) -> None:
+    payload = {
+        "status": status,
+        "chat_id_masked": mask_chat_id(chat_id),
+        "original_chars": original_chars,
+        "sent_chars": sent_chars,
+        "attempts": attempts,
+        "error": error,
+    }
+    base.OUT.mkdir(exist_ok=True)
+    (base.OUT / "gamejoa_preopen_news_radar_delivery.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+def mask_chat_id(value: str) -> str:
+    if not value:
+        return ""
+    return "*" * max(0, len(value) - 4) + value[-4:]
+
+
+telegram.compact_report = compact_report
+telegram.send_telegram = send_telegram
+telegram.final_alerts_for_output = compact_quality_final_alerts
+telegram.canonical_alert_for_seen = normalize_alert_for_output
+
+
+if __name__ == "__main__":
+    raise SystemExit(telegram.main())
