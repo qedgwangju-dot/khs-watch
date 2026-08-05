@@ -1,0 +1,169 @@
+name: Korea Grid Policy Alert Bot Watch
+
+on:
+  schedule:
+    # GitHub Actions는 UTC 기준. 매시간 37분에 확인.
+    - cron: "37 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description: "현재 기준선을 저장하고 알림 봇 경로 확인 메시지 전송"
+        required: false
+        type: boolean
+        default: false
+  push:
+    paths:
+      - ".github/workflows/korea-grid-policy-watch.yml"
+      - "scripts/korea_grid_policy_watch.py"
+      - "tests/test_korea_grid_policy_watch.py"
+      - ".github/korea-grid-policy-trigger"
+
+concurrency:
+  group: korea-grid-policy-alert-bot-watch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 저장소 확인
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: 의존성 설치
+        run: pip install requests beautifulsoup4 pytest
+
+      - name: 문법·단위 테스트
+        run: |
+          python -m compileall -q scripts/korea_grid_policy_watch.py
+          pytest -q tests/test_korea_grid_policy_watch.py
+
+      - name: 전력망 정책·발주 공식 원문 확인
+        id: grid
+        shell: bash
+        env:
+          FORCE_INPUT: ${{ inputs.force_notify || false }}
+          FORCE_PUSH: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[grid-route-test]') }}
+        run: |
+          EXTRA=""
+          if [[ "$FORCE_INPUT" == "true" || "$FORCE_PUSH" == "true" ]]; then
+            EXTRA="--force-notify"
+          fi
+          python scripts/korea_grid_policy_watch.py $EXTRA
+
+      - name: 알림 봇으로 Telegram 전송
+        if: steps.grid.outputs.changed == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          EXPECTED_TELEGRAM_BOT_USERNAME: hs8879887988798879_bot
+          REPORT_PATH: ${{ steps.grid.outputs.report_path }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "KHS_POLICY_TELEGRAM_BOT_TOKEN 또는 KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import json
+          import os
+          import pathlib
+          import requests
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          report_path = pathlib.Path(os.environ["REPORT_PATH"])
+
+          me_response = requests.get(
+              f"https://api.telegram.org/bot{token}/getMe",
+              timeout=25,
+          )
+          me_response.raise_for_status()
+          me = me_response.json()
+          if not me.get("ok"):
+              raise RuntimeError(f"Telegram getMe 실패: {me}")
+          actual = str(me.get("result", {}).get("username", ""))
+          if actual != expected:
+              raise RuntimeError(
+                  f"잘못된 Telegram 봇 경로 차단: expected=@{expected}, actual=@{actual or '확인불가'}"
+              )
+
+          text = report_path.read_text(encoding="utf-8").strip()
+          if not text:
+              raise RuntimeError("Telegram으로 보낼 보고서가 비어 있습니다.")
+
+          chunks = []
+          while text:
+              if len(text) <= 3500:
+                  chunks.append(text)
+                  break
+              cut = text.rfind("\n", 0, 3500)
+              if cut < 1700:
+                  cut = 3500
+              chunks.append(text[:cut].rstrip())
+              text = text[cut:].lstrip()
+
+          message_ids = []
+          for index, chunk in enumerate(chunks, start=1):
+              body = (f"[{index}/{len(chunks)}]\n" if len(chunks) > 1 else "") + chunk
+              response = requests.post(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  json={
+                      "chat_id": chat_id,
+                      "text": body,
+                      "disable_web_page_preview": True,
+                  },
+                  timeout=30,
+              )
+              response.raise_for_status()
+              payload = response.json()
+              if not payload.get("ok"):
+                  raise RuntimeError(f"Telegram 전송 실패: {payload}")
+              message_ids.append(payload.get("result", {}).get("message_id"))
+
+          confirmation = {
+              "status": "confirmed",
+              "bot_username": actual,
+              "message_ids": message_ids,
+          }
+          pathlib.Path("out").mkdir(parents=True, exist_ok=True)
+          pathlib.Path("out/korea_grid_policy_telegram_confirmed.json").write_text(
+              json.dumps(confirmation, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(
+              f"telegram_delivery_confirmed=true bot=@{actual} "
+              f"messages={len(message_ids)} last_message_id={message_ids[-1]}"
+          )
+          PY
+
+      - name: 기준선·보고서 저장
+        if: success()
+        run: |
+          git config user.name "korea-grid-policy-watch[bot]"
+          git config user.email "korea-grid-policy-watch[bot]@users.noreply.github.com"
+          git add data/korea_grid_policy_state.json out 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update Korea grid policy alert state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
