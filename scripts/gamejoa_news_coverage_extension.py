@@ -228,6 +228,57 @@ SEARCH_SOURCES = [
         "(site:reuters.com OR site:yna.co.kr OR site:hankyung.com OR site:wowtv.co.kr "
         "OR site:etoday.co.kr OR site:edaily.co.kr OR site:mk.co.kr)",
     ),
+    (
+        "미국장 빅테크 실적·한국 ADR·반도체 수급",
+        "(아마존 OR AWS OR 엔비디아 OR 애플 OR 마이크로소프트 OR 구글 OR 메타) "
+        "(실적 OR 가이던스 OR 매출 OR 영업이익 OR CAPEX) "
+        "(SK하이닉스ADR OR SK하이닉스 ADR OR 하이닉스ADR OR 하이닉스 ADR "
+        "OR 반도체주 OR 필라델피아반도체 OR SMH OR 나스닥) "
+        "(급등 OR 급락 OR 상승 OR 하락 OR 차익실현 OR 시가총액) "
+        "(site:wowtv.co.kr OR site:etoday.co.kr OR site:edaily.co.kr OR site:mt.co.kr "
+        "OR site:mk.co.kr OR site:hankyung.com OR site:yna.co.kr)",
+    ),
+    (
+        "HBM5·zHBM·HBF 차세대 메모리 기술·상용화",
+        "(HBM5 OR HBM 5 OR zHBM OR HBF OR HBM4E OR HBM 4E OR 3D메모리 OR 3D 메모리) "
+        "(공개 OR 개발 OR 샘플 OR 양산 OR 상용화 OR 성능 OR 적층 OR 스펙다운) "
+        "(삼성전자 OR SK하이닉스 OR 엔비디아 OR AMD OR 마이크론) "
+        "(site:yna.co.kr OR site:yonhapnewstv.co.kr OR site:mk.co.kr OR site:dt.co.kr "
+        "OR site:zdnet.co.kr OR site:joongang.co.kr OR site:fnnews.com OR site:etnews.com)",
+    ),
+    (
+        "메모리 장기공급·수요전망·고객 사양 변경",
+        "(메모리 OR D램 OR DRAM OR HBM OR 낸드 OR NAND) "
+        "(LTA OR 장기공급 OR 장기 공급 OR 장기계약 OR 장기 계약 OR 수요전망 "
+        "OR 수요 전망 OR 스펙다운 OR 사양변경 OR 사양 변경) "
+        "(삼성전자 OR SK하이닉스 OR 마이크론 OR 엔비디아 OR 머스크 OR 빅테크) "
+        "(site:etoday.co.kr OR site:mk.co.kr OR site:hankyung.com OR site:dt.co.kr "
+        "OR site:yna.co.kr OR site:etnews.com OR site:zdnet.co.kr)",
+    ),
+    (
+        "삼성 파운드리 가동률·풀캐파·공정 주문",
+        "(삼성파운드리 OR 삼성 파운드리 OR 파운드리) "
+        "(풀캐파 OR 완전가동 OR 가동률 OR 주문증가 OR 주문 증가 OR 수주 OR 고객사) "
+        "(4나노 OR 5나노 OR 3나노 OR AI OR 서버 OR HBM) "
+        "(site:zdnet.co.kr OR site:etnews.com OR site:yna.co.kr OR site:mk.co.kr "
+        "OR site:hankyung.com OR site:biz.chosun.com)",
+    ),
+    (
+        "핵심 원자재 사상최고·공급차질",
+        "(구리 OR 리튬 OR 우라늄 OR 원유 OR 천연가스 OR 알루미늄 OR 니켈) "
+        "(사상최고 OR 사상 최고 OR 최고가 OR 공급난 OR 공급차질 OR 공급 차질 "
+        "OR 생산중단 OR 생산 중단 OR 광산사고 OR 광산 사고) "
+        "(site:reuters.com OR site:yna.co.kr OR site:newsis.com OR site:edaily.co.kr "
+        "OR site:hankyung.com OR site:etoday.co.kr OR site:g-enews.com)",
+    ),
+    (
+        "레버리지 규제 후 거래대금·자금이동",
+        "(단일종목레버리지 OR 단일종목 레버리지 OR 삼전닉스레버리지 OR 삼전닉스 레버리지) "
+        "(거래대금 OR 거래량 OR 자금이동 OR 자금 이동 OR 리밸런싱 OR 쏠림완화 OR 쏠림 완화) "
+        "(규제 OR 예탁금 OR 시행 OR 1조 OR 3조 OR 12조) "
+        "(site:hankyung.com OR site:edaily.co.kr OR site:kmib.co.kr OR site:asiae.co.kr "
+        "OR site:mk.co.kr OR site:yna.co.kr OR site:news1.kr)",
+    ),
 ]
 
 DIRECT_RSS_SOURCES = [
@@ -285,6 +336,14 @@ PRIORITY_TERMS = {
     "아파트 정전": 18, "아파트정전": 18, "대규모 정전": 18,
     "변압기 과부하": 17, "전력 피크": 16, "전력피크": 16,
     "노후 변압기": 15, "배전 설비": 14, "배전설비": 14,
+    "sk하이닉스 adr": 17, "하이닉스 adr": 17, "adr": 11,
+    "zhbm": 18, "hbf": 16, "hbm4e": 16, "3d 메모리": 15,
+    "풀캐파": 18, "가동률": 14, "주문 증가": 16, "주문증가": 16,
+    "스펙다운": 16, "사양 변경": 15, "사양변경": 15,
+    "사상 최고": 17, "사상최고": 17, "공급난": 17,
+    "공급 차질": 17, "공급차질": 17, "광산 사고": 17,
+    "자금 이동": 17, "자금이동": 17, "리밸런싱": 15,
+    "쏠림 완화": 15, "쏠림완화": 15,
 }
 
 MATERIAL_TERMS = tuple(PRIORITY_TERMS)
@@ -306,6 +365,10 @@ IMPACT_TERMS = {
         "클라우드 성장", "aws 매출", "아파트 정전", "아파트정전",
         "대규모 정전", "변압기 과부하", "전력 피크", "전력피크",
         "노후 변압기", "배전 설비", "배전설비",
+        "sk하이닉스 adr", "하이닉스 adr", "adr", "zhbm", "hbf", "hbm4e",
+        "3d 메모리", "풀캐파", "가동률", "주문 증가", "주문증가", "스펙다운",
+        "사양 변경", "사양변경", "사상 최고", "사상최고", "공급난",
+        "공급 차질", "공급차질", "광산 사고",
     ),
     "할인율": (
         "미국채", "수입 금지", "수입금지", "수입 제한", "수입제한",
@@ -325,6 +388,8 @@ IMPACT_TERMS = {
         "개인 매도", "개인매도", "예탁금 상향", "규제 첫날",
         "단일종목 레버리지", "코스닥 반등", "연기금 벤치마크",
         "코스닥 펀드", "코스닥 프리미엄 지수",
+        "sk하이닉스 adr", "하이닉스 adr", "adr", "자금 이동", "자금이동",
+        "리밸런싱", "쏠림 완화", "쏠림완화",
     ),
     "시간표": (
         "공장 중단", "공장중단", "대피", "복구", "lta", "장기공급계약",
@@ -338,6 +403,10 @@ IMPACT_TERMS = {
         "생산능력", "월 생산", "클라우드 성장", "aws 매출",
         "아파트 정전", "아파트정전", "대규모 정전", "변압기 과부하",
         "전력 피크", "전력피크", "노후 변압기", "배전 설비", "배전설비",
+        "zhbm", "hbf", "hbm4e", "3d 메모리", "풀캐파", "주문 증가",
+        "주문증가", "스펙다운", "사양 변경", "사양변경", "공급난",
+        "공급 차질", "공급차질", "광산 사고", "자금 이동", "자금이동",
+        "리밸런싱", "쏠림 완화", "쏠림완화",
     ),
 }
 
