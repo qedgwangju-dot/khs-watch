@@ -64,6 +64,15 @@ def main() -> int:
                 f"missing_impacts={sorted(required_impacts - impacts)}:{title}"
             )
 
+    prose_cases = {
+        "MSCI 반영 시 1조원대 자금 유입을 기대할…": "MSCI 반영 시 1조원대 자금 유입을 기대할 수 있습니다.",
+        "및 수주잔고 20억달러를 기록했습니다.": "수주잔고 20억달러를 기록했습니다.",
+    }
+    for raw, expected in prose_cases.items():
+        actual = radar.complete_prose_text(raw, limit=100)
+        if actual != expected:
+            failures.append(f"damaged_core_prose={actual!r}:expected={expected!r}")
+
     if failures:
         print("GAMEJOA cross-market coverage contract failed:")
         for failure in failures:
