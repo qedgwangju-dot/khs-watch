@@ -63,16 +63,17 @@ jobs:
           fi
           python scripts/korea_grid_policy_watch.py $EXTRA
 
-      - name: 알림 봇으로 Telegram 전송
+      - name: 두 번째 알림 봇으로 Telegram 전송
         if: steps.grid.outputs.changed == 'true'
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
           EXPECTED_TELEGRAM_BOT_USERNAME: hs8879887988798879_bot
           REPORT_PATH: ${{ steps.grid.outputs.report_path }}
         run: |
-          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "KHS_POLICY_TELEGRAM_BOT_TOKEN 또는 KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
+          if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
+            echo "YEN_CARRY_TELEGRAM_BOT_TOKEN이 없습니다." >&2
             exit 1
           fi
 
@@ -83,9 +84,14 @@ jobs:
           import requests
 
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
-          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          chat_id = (
+              os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+              or os.environ.get("FALLBACK_TELEGRAM_CHAT_ID", "").strip()
+          )
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
           report_path = pathlib.Path(os.environ["REPORT_PATH"])
+          if not chat_id:
+              raise RuntimeError("Telegram chat id가 없습니다.")
 
           me_response = requests.get(
               f"https://api.telegram.org/bot{token}/getMe",
