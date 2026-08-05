@@ -1,4 +1,3 @@
-
 name: GAMEJOA preopen news radar
 
 on:
@@ -84,6 +83,7 @@ jobs:
           python scripts/verify_gamejoa_native_schedule.py
           python scripts/verify_gamejoa_news_coverage_contract.py
           python scripts/verify_gamejoa_heat_grid_contract.py
+          python scripts/verify_gamejoa_cross_market_coverage_contract.py
           python scripts/verify_gamejoa_semisupply_contract.py
           python scripts/verify_high_impact_news_self_audit.py
 
