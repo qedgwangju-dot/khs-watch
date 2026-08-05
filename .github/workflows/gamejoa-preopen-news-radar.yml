@@ -1,3 +1,4 @@
+
 name: GAMEJOA preopen news radar
 
 on:
@@ -82,6 +83,7 @@ jobs:
           python scripts/verify_gamejoa_delivery_contract.py
           python scripts/verify_gamejoa_native_schedule.py
           python scripts/verify_gamejoa_news_coverage_contract.py
+          python scripts/verify_gamejoa_heat_grid_contract.py
           python scripts/verify_gamejoa_semisupply_contract.py
           python scripts/verify_high_impact_news_self_audit.py
 
@@ -161,4 +163,5 @@ jobs:
             out/gamejoa_preopen_news_radar_title.txt
             out/gamejoa_preopen_news_radar_delivery.json
           if-no-files-found: ignore
+
 
