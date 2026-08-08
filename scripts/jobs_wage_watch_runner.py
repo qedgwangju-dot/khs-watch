@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import jobs_wage_watch as watch
-import jobs_wage_watch_full_report_v2 as full_report
+import jobs_wage_watch_full_report_v3 as full_report
 
 BLS_API_URL = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
 BLS_SCHEDULE_URL = "https://www.bls.gov/schedule/news_release/empsit.htm"
