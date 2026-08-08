@@ -7,14 +7,12 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import jobs_wage_watch as watch
-import jobs_wage_watch_full_report as full_report
+import jobs_wage_watch_full_report_v2 as full_report
 
 BLS_API_URL = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
 BLS_SCHEDULE_URL = "https://www.bls.gov/schedule/news_release/empsit.htm"
 ET = ZoneInfo("America/New_York")
 
-# Official BLS Employment Situation schedule. Fail closed if a newly returned
-# reference month is not mapped here; never guess an official release date.
 BLS_RELEASE_DATES = {
     "2025-11": "2025-12-16",
     "2025-12": "2026-01-09",
@@ -164,8 +162,6 @@ def parse_bls_api() -> watch.Release | None:
     if scheduled_period is None:
         return None
 
-    # Do not burn one of the unregistered BLS API's 25 daily queries on an
-    # Employment Situation key that is already known to have been delivered.
     if os.getenv("FORCE_BLS_API") != "1":
         reported = set(watch.load_state().get("reported_successfully") or [])
         if _reported_key_for(scheduled_period) in reported:
@@ -193,9 +189,6 @@ def parse_bls_api() -> watch.Release | None:
     if now < release_dt:
         return None
 
-    # At 08:30 ET the public API can still temporarily expose the prior month.
-    # In that case return the prior key only; the next hourly run will retry
-    # because the newly scheduled month's key remains absent from state.
     nfp_rows = by_id[SERIES["nfp_level"]]
     latest_level = _value_for(nfp_rows, period)
     previous_level = _value_for(nfp_rows, _previous_period(period))
@@ -248,9 +241,6 @@ def parse_bls_api() -> watch.Release | None:
     )
 
 
-# Cache all three official parsers within one workflow run. The full report
-# reuses these results as comparison values and never causes a second fetch of
-# the same release page/API in the same run.
 _original_claims = watch.parse_claims
 _original_adp = watch.parse_adp
 _cache: dict[str, watch.Release | None] = {}
