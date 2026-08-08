@@ -1,0 +1,73 @@
+name: Jobs Wage Telegram route test
+
+on:
+  push:
+    paths:
+      - ".github/workflows/jobs-wage-telegram-route-test.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: jobs-wage-telegram-route-test
+  cancel-in-progress: true
+
+jobs:
+  test-route:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+      TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Verify and send one-time Jobs Wage route test
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+
+          if not token:
+              raise RuntimeError("YEN_CARRY_TELEGRAM_BOT_TOKEN secret is missing")
+          if not chat_id:
+              raise RuntimeError("Telegram chat id secret is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              me = json.loads(r.read().decode("utf-8"))
+          username = str((me.get("result") or {}).get("username") or "")
+          if not me.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          now = datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M:%S KST")
+          text = (
+              "✅ Jobs Wage Watch 텔레그램 연결 테스트\n\n"
+              f"봇: @{username}\n"
+              f"시각: {now}\n"
+              "상태: GitHub Actions → Telegram 발송 경로 정상 확인용 테스트입니다."
+          )
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=25) as r:
+              result = json.loads(r.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_id={result.get('result', {}).get('message_id')}")
+          PY
