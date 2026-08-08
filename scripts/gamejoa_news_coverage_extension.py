@@ -291,6 +291,62 @@ SEARCH_SOURCES = [
     ),
 ]
 
+PUBLISHER_DOMAINS.update(
+    {
+        "theguru.co.kr": "더구루",
+        "ngetnews.com": "전자신문 계열",
+        "magazine.hankyung.com": "한경머니",
+    }
+)
+
+# Coverage requested from the August 6-8 real-time review. These are event
+# families, not a one-off list: a match still needs a source-faithful body
+# before the final sender can publish it.
+SEARCH_SOURCES.extend(
+    [
+        (
+            "연준 위원 발언·미국 고용·서비스 물가",
+            "(연준 OR Fed OR FOMC OR 리사 쿡 OR 연준 이사) "
+            "(금리인상 OR 금리 인상 OR 인플레이션 OR 고용쇼크 OR 고용 충격 OR 서비스업 PMI OR ISM) "
+            "(site:reuters.com OR site:edaily.co.kr OR site:biz.chosun.com OR site:yna.co.kr OR site:newsis.com)",
+        ),
+        (
+            "AI 메모리 아키텍처·엔비디아 사양 변경",
+            "(zHBM OR HBF OR CXL OR HBM4E OR 루빈 울트라 OR Rubin Ultra OR AI가속기 OR AI 가속기) "
+            "(공개 OR 개발 OR 양산 OR 사양축소 OR 사양 축소 OR 공급부족 OR 공급 부족 OR 표준화) "
+            "(삼성전자 OR SK하이닉스 OR 엔비디아 OR 마이크론) "
+            "(site:yna.co.kr OR site:newsis.com OR site:edaily.co.kr OR site:biz.heraldcorp.com OR site:etnews.com)",
+        ),
+        (
+            "SK하이닉스 해외 패키징·국내 대형 CAPEX",
+            "(SK하이닉스 OR SK hynix) "
+            "(인디애나 OR 첨단패키징 OR 어드밴스드 패키징 OR 용인 OR 청주 OR Y2 OR M17) "
+            "(착공 OR 양산 OR 투자확정 OR 투자 확정 OR CAPEX OR 공장건설 OR 생산기지) "
+            "(site:theguru.co.kr OR site:etnews.com OR site:yna.co.kr OR site:newsis.com OR site:chosun.com)",
+        ),
+        (
+            "이란·호르무즈 협상·해협 통항",
+            "(이란 OR Iran OR 호르무즈 OR 오만 OR Oman OR 걸프) "
+            "(협상 OR 회담 OR 합의 OR 통항 OR 항로 OR 봉쇄 OR 유조선 OR 추가공격 OR 추가 공격) "
+            "(트럼프 OR 미국 OR Tehran OR 테헤란) "
+            "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:yna.co.kr OR site:newsis.com)",
+        ),
+        (
+            "한국 경상수지·반도체 수출·외국인 자금",
+            "(경상수지 OR 경상 흑자 OR 상품수지 OR 반도체 수출 OR 수출 호조 OR 외국인 증권자금) "
+            "(사상최대 OR 역대최대 OR 최대 OR 순유출 OR 순유입 OR 497억달러 OR 2500억달러) "
+            "(site:yna.co.kr OR site:news1.kr OR site:edaily.co.kr OR site:hankyung.com OR site:newsis.com)",
+        ),
+        (
+            "코스피 사이드카·단일종목 레버리지 수급 변화",
+            "(코스피 OR 코스닥 OR 삼성전자 OR SK하이닉스) "
+            "(매도 사이드카 OR 매수 사이드카 OR 사이드카 발동 OR 단일종목 레버리지 OR 기본예탁금) "
+            "(급락 OR 급등 OR 거래대금 OR 거래량 OR 자금유입 OR 자금 유입 OR 심사) "
+            "(site:mk.co.kr OR site:yna.co.kr OR site:newsis.com OR site:edaily.co.kr OR site:hankyung.com)",
+        ),
+    ]
+)
+
 DIRECT_RSS_SOURCES = [
     ("뉴시스 속보", "https://www.newsis.com/RSS/sokbo.xml", "trusted"),
     ("뉴시스 경제", "https://www.newsis.com/RSS/economy.xml", "trusted"),
@@ -359,6 +415,36 @@ PRIORITY_TERMS = {
     "자동용접": 16, "스마트조선소": 16, "조선 mro": 17,
 }
 
+# August 6-8 coverage: all terms below must be material before the runner builds
+# its title/body filter. This prevents a search hit from being discarded later.
+PRIORITY_TERMS.update(
+    {
+        "연준 이사": 16,
+        "금리 인상": 18,
+        "고용 충격": 18,
+        "서비스업 pmi": 15,
+        "cxl": 16,
+        "루빈 울트라": 17,
+        "사양 축소": 16,
+        "공급 부족": 17,
+        "첨단패키징": 17,
+        "첨단 패키징": 17,
+        "어드밴스드 패키징": 17,
+        "인디애나": 16,
+        "투자확정": 18,
+        "투자 확정": 18,
+        "호르무즈": 18,
+        "해협 통항": 18,
+        "이란 오만": 16,
+        "경상수지": 18,
+        "경상 흑자": 18,
+        "외국인 증권자금": 16,
+        "매도 사이드카": 18,
+        "매수 사이드카": 18,
+        "사이드카 발동": 18,
+    }
+)
+
 MATERIAL_TERMS = tuple(PRIORITY_TERMS)
 
 IMPACT_TERMS = {
@@ -426,6 +512,29 @@ IMPACT_TERMS = {
         "ai 용접", "ai용접", "자동용접", "스마트조선소", "조선 mro",
     ),
 }
+
+
+# Keep the impact matrix tied to the new coverage lanes. A matching headline
+# must carry the economic dimension that caused it to be sent.
+ATTACHED_NEWS_IMPACT_TERMS = {
+    "돈 버는 능력": (
+        "zhbm", "hbf", "cxl", "hbm4e", "루빈 울트라", "사양 축소", "공급 부족",
+        "첨단패키징", "첨단 패키징", "어드밴스드 패키징", "인디애나",
+        "투자확정", "투자 확정", "경상수지", "경상 흑자",
+    ),
+    "할인율": (
+        "연준 이사", "금리 인상", "고용 충격", "서비스업 pmi", "호르무즈", "해협 통항", "이란 오만",
+    ),
+    "수급": (
+        "외국인 증권자금", "매도 사이드카", "매수 사이드카", "사이드카 발동",
+    ),
+    "시간표": (
+        "첨단패키징", "첨단 패키징", "어드밴스드 패키징", "인디애나",
+        "투자확정", "투자 확정", "호르무즈", "해협 통항",
+    ),
+}
+for _impact_label, _impact_terms in ATTACHED_NEWS_IMPACT_TERMS.items():
+    IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
 
 def extend_unique(target: list, values) -> None:
