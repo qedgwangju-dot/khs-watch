@@ -6,7 +6,9 @@ on:
       - ".github/workflows/jobs-wage-watch-telegram.yml"
       - "scripts/jobs_wage_watch.py"
       - "scripts/jobs_wage_watch_runner.py"
+      - "scripts/jobs_wage_watch_full_report.py"
       - "data/jobs_wage_watch_state.json"
+      - "data/jobs_wage_full_state.json"
   schedule:
     # GitHub cron is UTC. Hourly conditional check; no new official release => no Telegram message.
     - cron: "12 * * * *"
@@ -138,10 +140,13 @@ jobs:
           print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids}")
           PY
 
-      - name: Persist dedupe state only after confirmed delivery
+      - name: Persist dedupe and full-analysis state only after confirmed delivery
         if: success() && hashFiles('out/jobs_wage_watch_alert.md') != '' && hashFiles('out/jobs_wage_watch_telegram_confirmed.json') != ''
         run: |
           cp out/jobs_wage_watch_pending_state.json data/jobs_wage_watch_state.json
+          if [ -f out/jobs_wage_full_state_pending.json ]; then
+            cp out/jobs_wage_full_state_pending.json data/jobs_wage_full_state.json
+          fi
           python - <<'PY'
           import json
           import pathlib
@@ -158,16 +163,19 @@ jobs:
           path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
 
-      - name: Commit confirmed dedupe state
+      - name: Commit confirmed states
         if: success() && hashFiles('out/jobs_wage_watch_telegram_confirmed.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/jobs_wage_watch_state.json
+          if [ -f data/jobs_wage_full_state.json ]; then
+            git add data/jobs_wage_full_state.json
+          fi
           if git diff --cached --quiet; then
-            echo "Jobs Wage dedupe state unchanged"
+            echo "Jobs Wage state unchanged"
           else
-            git commit -m "Record Jobs Wage Telegram delivery"
+            git commit -m "Record Jobs Wage Telegram delivery and analysis vintage"
             git pull --rebase origin main
             git push
           fi
@@ -182,5 +190,6 @@ jobs:
             out/jobs_wage_watch_alert.md
             out/jobs_wage_watch_alert.json
             out/jobs_wage_watch_telegram_confirmed.json
+            out/jobs_wage_full_state_pending.json
           if-no-files-found: ignore
           retention-days: 14
