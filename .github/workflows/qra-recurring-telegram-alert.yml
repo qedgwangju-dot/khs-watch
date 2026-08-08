@@ -1,0 +1,183 @@
+name: QRA recurring interpreted Telegram alert
+
+on:
+  push:
+    paths:
+      - "scripts/qra_recurring_alert.py"
+      - "tests/test_qra_recurring_alert.py"
+      - ".github/workflows/qra-recurring-telegram-alert.yml"
+  schedule:
+    # QRA 8:30 a.m. ET is 12:30 UTC during DST and 13:30 UTC during standard time.
+    # Run at both 12:40 and 13:40 UTC on weekdays. Duplicate state blocks repeats.
+    - cron: "40 12,13 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Validate and build alert without sending Telegram"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qra-recurring-telegram-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      QRA_DRY_RUN: ${{ github.event_name == 'push' && 'true' || (github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run || 'false') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate watcher
+        run: |
+          python -m py_compile scripts/qra_recurring_alert.py
+          if [ -f tests/test_qra_recurring_alert.py ]; then
+            python -m unittest tests/test_qra_recurring_alert.py -v
+          fi
+
+      - name: Check official Treasury QRA page and build interpretation
+        run: python scripts/qra_recurring_alert.py
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/qra_recurring_watch.md ]; then
+            cat out/qra_recurring_watch.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/qra_recurring_alert.md ]; then
+            printf '\n---\n\n생성된 해석 알림:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/qra_recurring_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send interpreted QRA alert through second bot only
+        if: env.QRA_DRY_RUN != 'true' && hashFiles('out/qra_recurring_alert.md') != ''
+        env:
+          SECOND_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          SECOND_TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          EXISTING_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          TELEGRAM_BOT_TOKEN="$SECOND_TELEGRAM_BOT_TOKEN"
+          TELEGRAM_CHAT_ID="${SECOND_TELEGRAM_CHAT_ID:-$EXISTING_TELEGRAM_CHAT_ID}"
+          export TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID
+
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "두 번째 QRA 알림 봇 토큰 또는 대상 CHAT_ID가 없습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+
+          with urllib.request.urlopen(
+              urllib.request.Request(f"https://api.telegram.org/bot{token}/getMe"), timeout=25
+          ) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"잘못된 텔레그램 봇: expected @{expected}, got @{actual or 'unknown'}")
+
+          title = pathlib.Path("out/qra_recurring_alert_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/qra_recurring_alert.md").read_text(encoding="utf-8").strip()
+          text = f"{title}\n\n{body}"[:4096]
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+
+          detail = json.loads(pathlib.Path("out/qra_recurring_alert.json").read_text(encoding="utf-8"))
+          confirmed = {
+              "status": "confirmed",
+              "heading": detail.get("heading"),
+              "bot_username": actual,
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/qra_recurring_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot_username=@{actual} message_id={confirmed['message_id']}")
+          PY
+
+      - name: Persist successful new QRA state
+        if: success() && env.QRA_DRY_RUN != 'true' && hashFiles('out/qra_recurring_telegram_confirmed.json') != ''
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+
+          confirmed = json.loads(pathlib.Path("out/qra_recurring_telegram_confirmed.json").read_text(encoding="utf-8"))
+          state = {
+              "last_heading": confirmed.get("heading"),
+              "last_sent_at_kst": confirmed.get("confirmed_at_kst"),
+              "telegram_message_id": confirmed.get("message_id"),
+              "bot_username": confirmed.get("bot_username"),
+              "route": "second_alert_bot_only",
+          }
+          path = pathlib.Path("data/qra_recurring_alert_state.json")
+          path.parent.mkdir(parents=True, exist_ok=True)
+          path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Commit new QRA state
+        if: success() && env.QRA_DRY_RUN != 'true' && hashFiles('out/qra_recurring_telegram_confirmed.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/qra_recurring_alert_state.json
+          if git diff --cached --quiet; then
+            echo "QRA 상태 변경 없음"
+          else
+            git commit -m "Record recurring interpreted QRA delivery"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qra-recurring-${{ github.run_id }}
+          path: |
+            out/qra_recurring_watch.md
+            out/qra_recurring_alert.md
+            out/qra_recurring_alert.json
+            out/qra_recurring_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
