@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import jobs_wage_watch as watch
@@ -39,6 +40,52 @@ SERIES = {
     "manufacturing_workweek": "CES3000000002",
     "manufacturing_overtime": "CES3000000004",
 }
+
+
+def _release_dt(period: str) -> datetime:
+    release_date = BLS_RELEASE_DATES.get(period)
+    if not release_date:
+        raise RuntimeError(
+            f"Official BLS release date not mapped for {period}; fail closed. "
+            f"Verify {BLS_SCHEDULE_URL} before enabling this period."
+        )
+    return datetime.fromisoformat(release_date + "T08:30:00").replace(tzinfo=ET)
+
+
+def _latest_scheduled_period(now: datetime) -> str | None:
+    eligible = []
+    for period in BLS_RELEASE_DATES:
+        dt = _release_dt(period)
+        if dt <= now:
+            eligible.append((dt, period))
+    if not eligible:
+        return None
+    eligible.sort()
+    latest_dt, latest_period = eligible[-1]
+    max_dt = max(_release_dt(p) for p in BLS_RELEASE_DATES)
+    if now > max_dt + timedelta(days=40):
+        raise RuntimeError(
+            "BLS official release-date map is stale; fail closed until the official Employment Situation calendar is extended."
+        )
+    return latest_period
+
+
+def _reported_key_for(period: str) -> str:
+    return watch.make_key("employment_situation", period, _release_dt(period))
+
+
+def _already_reported_release(period: str) -> watch.Release:
+    release_dt = _release_dt(period)
+    return watch.Release(
+        kind="employment_situation",
+        key=_reported_key_for(period),
+        title=f"Employment Situation {period}",
+        period=period,
+        release_dt_et=release_dt,
+        source_url=BLS_SCHEDULE_URL,
+        metrics={},
+        raw_summary="Official BLS release already reported; API call suppressed to preserve public API quota.",
+    )
 
 
 def _bls_api() -> dict:
@@ -111,6 +158,18 @@ def _year_ago(period: str) -> str:
 
 
 def parse_bls_api() -> watch.Release | None:
+    now = datetime.now(ET)
+    scheduled_period = _latest_scheduled_period(now)
+    if scheduled_period is None:
+        return None
+
+    # Do not burn one of the unregistered BLS API's 25 daily queries on an
+    # Employment Situation key that is already known to have been delivered.
+    if os.getenv("FORCE_BLS_API") != "1":
+        reported = set(watch.load_state().get("reported_successfully") or [])
+        if _reported_key_for(scheduled_period) in reported:
+            return _already_reported_release(scheduled_period)
+
     obj = _bls_api()
     raw_series = (obj.get("Results") or {}).get("series") or []
     by_id = {str(s.get("seriesID")): _monthly(s) for s in raw_series}
@@ -124,16 +183,18 @@ def parse_bls_api() -> watch.Release | None:
         raise RuntimeError(f"BLS API core series period mismatch: {latest_periods}")
     period = latest_periods[0]
 
-    release_date = BLS_RELEASE_DATES.get(period)
-    if not release_date:
+    if period not in BLS_RELEASE_DATES:
         raise RuntimeError(
-            f"Official BLS release date not mapped for {period}; fail closed. "
+            f"Official BLS release date not mapped for API period {period}; fail closed. "
             f"Verify {BLS_SCHEDULE_URL} before enabling this period."
         )
-    release_dt = datetime.fromisoformat(release_date + "T08:30:00").replace(tzinfo=ET)
-    if datetime.now(ET) < release_dt:
+    release_dt = _release_dt(period)
+    if now < release_dt:
         return None
 
+    # At 08:30 ET the public API can still temporarily expose the prior month.
+    # In that case return the prior key only; the next hourly run will retry
+    # because the newly scheduled month's key remains absent from state.
     nfp_rows = by_id[SERIES["nfp_level"]]
     latest_level = _value_for(nfp_rows, period)
     previous_level = _value_for(nfp_rows, _previous_period(period))
@@ -182,7 +243,7 @@ def parse_bls_api() -> watch.Release | None:
         release_dt_et=release_dt,
         source_url=BLS_API_URL,
         metrics=metrics,
-        raw_summary="Official BLS Public Data API fallback; schedule date verified against BLS official Employment Situation calendar.",
+        raw_summary="Official BLS Public Data API fallback; release date comes from the official Employment Situation calendar.",
     )
 
 
