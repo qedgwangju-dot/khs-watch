@@ -1,4 +1,4 @@
-name: Jobs Wage Full Report V5 Test
+name: Jobs Wage Full Report V6 Test
 
 on:
   push:
@@ -21,14 +21,14 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install --disable-pip-version-check beautifulsoup4 pypdf
-      - name: Generate v5 full report without Telegram
+      - name: Generate v6 full report without Telegram
         run: |
           python - <<'PY'
           import pathlib, re, sys
           sys.path.insert(0, str(pathlib.Path('scripts').resolve()))
           import jobs_wage_watch_runner
           import jobs_wage_watch as watch
-          import jobs_wage_watch_full_report_v5 as full
+          import jobs_wage_watch_full_report_v6 as full
 
           releases=[]
           for parser in (watch.parse_bls, watch.parse_claims, watch.parse_adp):
@@ -38,7 +38,7 @@ jobs:
               raise RuntimeError(f"trigger set incomplete: {[r.kind for r in releases]}")
           report=full.build_report(releases)
           pathlib.Path('out').mkdir(exist_ok=True)
-          pathlib.Path('out/jobs_wage_full_report_v5_test.md').write_text(report,encoding='utf-8')
+          pathlib.Path('out/jobs_wage_full_report_v6_test.md').write_text(report,encoding='utf-8')
 
           required=[
             '## 1) 조회 시각·자료 처리 상태','## 2) 오늘 발표 결과 요약','## 3) 1단계 현재 숫자 추적',
@@ -63,17 +63,17 @@ jobs:
               raise RuntimeError('mixed reaction overclassified as recession')
 
           fred_missing=all(x in report for x in ['UST 2Y 확인 불가','UST 5Y 확인 불가','UST 10Y 확인 불가','10Y real yield 확인 불가'])
-          if fred_missing and '상태: 부분완료' not in report:
-              raise RuntimeError('missing FRED but status not partial')
-          if not fred_missing and '상태: 원천 재조회·중복 확인·수치 재검증 완료.' not in report:
+          if fred_missing:
+              raise RuntimeError('FRED official rate path still failed in v6')
+          if '상태: 원천 재조회·중복 확인·수치 재검증 완료.' not in report:
               raise RuntimeError('complete FRED path but completion status missing')
 
-          print(f"full_report_v5_test_ok=true chars={len(report)} breakeven={lo}~{hi} fred_missing={fred_missing}")
+          print(f"full_report_v6_test_ok=true chars={len(report)} breakeven={lo}~{hi} fred_missing={fred_missing}")
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: jobs-wage-full-report-v5-test-${{ github.run_id }}
-          path: out/jobs_wage_full_report_v5_test.md
+          name: jobs-wage-full-report-v6-test-${{ github.run_id }}
+          path: out/jobs_wage_full_report_v6_test.md
           if-no-files-found: ignore
           retention-days: 3
