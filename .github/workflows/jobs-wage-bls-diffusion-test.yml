@@ -1,4 +1,4 @@
-name: Jobs Wage BLS Diffusion Test
+name: Jobs Wage Market Source Test
 
 on:
   push:
@@ -11,22 +11,33 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 4
     steps:
-      - name: Test official BLS extended series
+      - name: Test FRED and Yahoo Treasury alternatives
         run: |
           python - <<'PY'
-          import json, urllib.request
-          series = [
-            "CES0500000021","CES3000000021","CES6562000101","LNS13327709",
-            "LNS10000000","LNS11000000","LNS12000000","LNS15000000"
-          ]
-          payload = json.dumps({"seriesid": series, "startyear":"2025", "endyear":"2026"}).encode()
-          req = urllib.request.Request("https://api.bls.gov/publicAPI/v2/timeseries/data/", data=payload, headers={"Content-Type":"application/json","User-Agent":"Mozilla/5.0"}, method="POST")
-          with urllib.request.urlopen(req, timeout=25) as r:
-              obj=json.loads(r.read().decode())
-          print("status", obj.get("status"))
-          for s in (obj.get("Results") or {}).get("series") or []:
-              rows=s.get("data") or []
-              print("SERIES",s.get("seriesID"),"TOP4", [(x.get('year'),x.get('period'),x.get('value')) for x in rows[:7]])
+          import csv, io, json, urllib.parse, urllib.request
+          headers={"User-Agent":"Mozilla/5.0 (compatible; khs-jobs-wage-watch/1.0)"}
+          for sid in ["DGS2","DGS5","DGS10","DFII10","T10YIE"]:
+              url="https://fred.stlouisfed.org/graph/fredgraph.csv?"+urllib.parse.urlencode({"id":sid,"cosd":"2026-07-25","coed":"2026-08-08"})
+              try:
+                  req=urllib.request.Request(url,headers=headers)
+                  with urllib.request.urlopen(req,timeout=15) as r:
+                      body=r.read().decode('utf-8',errors='replace')
+                  rows=list(csv.reader(io.StringIO(body)))
+                  print("FRED",sid,"OK",rows[:2],rows[-3:])
+              except Exception as e:
+                  print("FRED",sid,"ERROR",type(e).__name__,e)
+          for sym in ["^IRX","^FVX","^TNX","^TYX","^UST2YR","^UST5Y","^UST10Y"]:
+              url="https://query1.finance.yahoo.com/v8/finance/chart/"+urllib.parse.quote(sym,safe="")+"?"+urllib.parse.urlencode({"period1":1786000000,"period2":1786300000,"interval":"5m","includePrePost":"true"})
+              try:
+                  req=urllib.request.Request(url,headers=headers)
+                  with urllib.request.urlopen(req,timeout=15) as r:
+                      obj=json.loads(r.read().decode())
+                  result=((obj.get('chart') or {}).get('result') or [None])[0]
+                  meta=(result or {}).get('meta') or {}
+                  ts=(result or {}).get('timestamp') or []
+                  print("YAHOO",sym,"OK",meta.get('symbol'),meta.get('regularMarketPrice'),"points",len(ts))
+              except Exception as e:
+                  print("YAHOO",sym,"ERROR",type(e).__name__,e)
           PY
