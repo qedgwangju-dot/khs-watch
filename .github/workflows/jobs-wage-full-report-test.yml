@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install --disable-pip-version-check beautifulsoup4 pypdf
-      - name: Generate hardened full report without Telegram
+      - name: Generate final full report without Telegram
         run: |
           python - <<'PY'
           import pathlib
@@ -30,7 +30,7 @@ jobs:
           sys.path.insert(0, str(pathlib.Path('scripts').resolve()))
           import jobs_wage_watch_runner as runner
           import jobs_wage_watch as watch
-          import jobs_wage_watch_full_report_v3 as full
+          import jobs_wage_watch_full_report_v4 as full
 
           releases = []
           for parser in (watch.parse_bls, watch.parse_claims, watch.parse_adp):
@@ -50,7 +50,9 @@ jobs:
               "임금 성격:", "ADP/BLS 방향:",
               "## 4) 2단계 미래 재평가 요인 발굴",
               "## 5) breakeven 고용·경제활동참가율 해석",
-              "## 6) 달러 안전자산·경기침체 공포 점검", "UUP",
+              "CPS 노동력+비경제활동으로 재구성한 민간 비제도권 인구",
+              "## 6) 달러 안전자산·경기침체 공포 점검", "UUP", "2Y Treasury futures", "5Y yield", "10Y yield",
+              "UST 2Y", "UST 5Y", "UST 10Y", "10Y real yield", "10Y BEI",
               "## 7) 연준 반응함수 보조 프레임", "## 8) 숨은 역풍·실패모드",
               "## 다음 공식 발표별 시나리오", "## 9) 결론",
               "### 더 강한 종합 해석", "투자 관점의 4축으로 보면:",
@@ -63,7 +65,7 @@ jobs:
 
           m = re.search(r"현재 추정 범위:\s*약\s*([+\-\d,]+)\s*~\s*([+\-\d,]+)명/월", report)
           if not m:
-              raise RuntimeError("Breakeven range missing; inspect uploaded report")
+              raise RuntimeError("Breakeven range missing")
           lo = int(m.group(1).replace(',', '').replace('+',''))
           hi = int(m.group(2).replace(',', '').replace('+',''))
           if lo < 0 or hi < 0:
@@ -72,7 +74,21 @@ jobs:
               raise RuntimeError("KOSPI incorrectly labeled as immediate reaction while Korea cash market was closed")
           if re.search(r"KOSDAQ\s+[+\-]?\d+\.\d+%", report):
               raise RuntimeError("KOSDAQ incorrectly labeled as immediate reaction while Korea cash market was closed")
-          print(f"full_report_v3_test_ok=true releases={[r.kind for r in releases]} chars={len(report)} breakeven={lo}~{hi}")
+
+          # The current forced sample has positive ES/NQ returns. It must not be
+          # called a recession/safe-haven-dollar reaction merely because VIX rose.
+          if "S&P 500 0.05%" in report and "NASDAQ 0.47%" in report and "판정: 경기침체·안전자산 달러형" in report:
+              raise RuntimeError("Market regime is still over-classifying recession risk")
+
+          # FRED should be directly retrievable on this runner. If a transient
+          # outage remains, the report must honestly downgrade its status.
+          fred_all_missing = all(x in report for x in [
+              "UST 2Y 확인 불가", "UST 5Y 확인 불가", "UST 10Y 확인 불가", "10Y real yield 확인 불가"
+          ])
+          if fred_all_missing and "상태: 부분완료" not in report:
+              raise RuntimeError("FRED missing but final status incorrectly says complete")
+
+          print(f"full_report_v4_test_ok=true releases={[r.kind for r in releases]} chars={len(report)} breakeven={lo}~{hi}")
           PY
       - uses: actions/upload-artifact@v4
         if: always()
