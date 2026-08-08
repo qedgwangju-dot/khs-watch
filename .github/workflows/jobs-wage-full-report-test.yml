@@ -1,0 +1,76 @@
+name: Jobs Wage Full Report Test
+
+on:
+  push:
+    paths:
+      - ".github/workflows/jobs-wage-full-report-test.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      FORCE_BLS_API: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check beautifulsoup4 pypdf
+      - name: Generate full report without Telegram
+        run: |
+          python - <<'PY'
+          import pathlib
+          import sys
+          sys.path.insert(0, str(pathlib.Path('scripts').resolve()))
+          import jobs_wage_watch_runner as runner
+          import jobs_wage_watch as watch
+          import jobs_wage_watch_full_report as full
+
+          releases = []
+          for parser in (watch.parse_bls, watch.parse_claims, watch.parse_adp):
+              r = parser()
+              if r:
+                  releases.append(r)
+          if len(releases) < 3:
+              raise RuntimeError(f"Expected BLS+Claims+ADP current releases, got {[r.kind for r in releases]}")
+          report = full.build_report(releases)
+          required = [
+              "## 1) 조회 시각·자료 처리 상태",
+              "## 2) 오늘 발표 결과 요약",
+              "## 3) 1단계 현재 숫자 추적",
+              "## 4) 2단계 미래 재평가 요인 발굴",
+              "## 5) breakeven 고용·경제활동참가율 해석",
+              "## 6) 달러 안전자산·경기침체 공포 점검",
+              "## 7) 연준 반응함수 보조 프레임",
+              "## 8) 숨은 역풍·실패모드",
+              "## 다음 공식 발표별 시나리오",
+              "## 9) 결론",
+              "### 더 강한 종합 해석",
+              "투자 관점의 4축으로 보면:",
+              "- 돈 버는 능력:",
+              "- 할인율:",
+              "- 수급:",
+              "- 시간표:",
+              "## 10) 핵심 한 줄 요약",
+          ]
+          missing = [x for x in required if x not in report]
+          if missing:
+              raise RuntimeError(f"Missing required report sections: {missing}")
+          pathlib.Path('out').mkdir(exist_ok=True)
+          pathlib.Path('out/jobs_wage_full_report_test.md').write_text(report, encoding='utf-8')
+          print(f"full_report_test_ok=true releases={[r.kind for r in releases]} chars={len(report)}")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jobs-wage-full-report-test-${{ github.run_id }}
+          path: |
+            out/jobs_wage_full_report_test.md
+            out/jobs_wage_full_state_pending.json
+          if-no-files-found: ignore
+          retention-days: 3
