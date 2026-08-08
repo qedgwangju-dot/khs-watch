@@ -13,20 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - name: Test official BLS diffusion and health candidate series
+      - name: Test official BLS extended series
         run: |
           python - <<'PY'
           import json, urllib.request
           series = [
-            "CES0500000021","CES3000000021","CES0500000022","CES3000000022",
-            "CES6562000001","CES6562000101","CES6562100001","LNS13327709"
+            "CES0500000021","CES3000000021","CES6562000101","LNS13327709",
+            "LNS10000000","LNS11000000","LNS12000000","LNS15000000"
           ]
-          payload = json.dumps({"seriesid": series, "startyear":"2026", "endyear":"2026"}).encode()
+          payload = json.dumps({"seriesid": series, "startyear":"2025", "endyear":"2026"}).encode()
           req = urllib.request.Request("https://api.bls.gov/publicAPI/v2/timeseries/data/", data=payload, headers={"Content-Type":"application/json","User-Agent":"Mozilla/5.0"}, method="POST")
           with urllib.request.urlopen(req, timeout=25) as r:
               obj=json.loads(r.read().decode())
           print("status", obj.get("status"))
           for s in (obj.get("Results") or {}).get("series") or []:
               rows=s.get("data") or []
-              print("SERIES",s.get("seriesID"),"LATEST", rows[0] if rows else None)
+              print("SERIES",s.get("seriesID"),"TOP4", [(x.get('year'),x.get('period'),x.get('value')) for x in rows[:7]])
           PY
