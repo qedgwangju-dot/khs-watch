@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """Regression gate for heat-driven Korean distribution-grid outage alerts."""
 
@@ -21,7 +20,7 @@ def main() -> int:
             "아파트에서 정전 사고가 발생했다. 변압기 불량과 과부하가 원인으로 확인됐다."
         ),
         "published": now,
-        "link": "https://example.com/seoul-heat-grid-outage",
+        "link": "https://www.newsis.com/view/NISX20260804_0003736539",
     }
     text = f"{row['source_title']} {row['source_body']}".lower()
     alert = quality.heat_grid_outage_alert(row, now, text)
@@ -33,6 +32,8 @@ def main() -> int:
         raise SystemExit("heat_grid_contract=missing_sector")
     if "정전" not in str(alert.get("telegram_core_fact") or ""):
         raise SystemExit("heat_grid_contract=source_fact_missing")
+    if not quality.source_output_aligned(alert):
+        raise SystemExit("heat_grid_contract=valid_source_rejected")
 
     weather_only = {
         "title": "서울 폭염과 열대야 이어져",
@@ -43,7 +44,32 @@ def main() -> int:
     if quality.heat_grid_outage_alert(weather_only, now, weather_text):
         raise SystemExit("heat_grid_contract=generic_weather_promoted")
 
-    print("heat_grid_contract=passed material_outage=yes generic_weather=blocked")
+    contaminated = {
+        "title": "폭염 속 서울 아파트 정전 잇따라…영등포·동대문 주민 불편(종합)",
+        "source_title": "폭염 속 서울 아파트 정전 잇따라…영등포·동대문 주민 불편(종합)",
+        "source_body": (
+            "하태경 금융위 AI 투자 반대로 사업 좌초 위기라고 말했다. "
+            "삼전닉스 본격 반등과 외국인 수급을 점검해야 한다."
+        ),
+        "published": now,
+        "link": "https://example.com/contaminated-newsis-page",
+    }
+    contaminated_text = f"{contaminated['source_title']} {contaminated['source_body']}".lower()
+    if quality.heat_grid_outage_alert(contaminated, now, contaminated_text):
+        raise SystemExit("heat_grid_contract=unrelated_body_promoted")
+
+    poisoned = dict(alert)
+    poisoned["telegram_core_fact"] = (
+        "하태경 금융위 AI 투자 반대와 삼성전자·SK하이닉스 외국인 수급을 점검한다."
+    )
+    poisoned["policy_plain_summary"] = poisoned["telegram_core_fact"]
+    if quality.source_output_aligned(poisoned):
+        raise SystemExit("heat_grid_contract=title_body_mismatch_sent")
+
+    print(
+        "heat_grid_contract=passed material_outage=yes generic_weather=blocked "
+        "contaminated_body=blocked title_body_mismatch=blocked"
+    )
     return 0
 
 
