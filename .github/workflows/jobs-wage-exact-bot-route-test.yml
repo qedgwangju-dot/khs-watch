@@ -1,0 +1,47 @@
+name: Jobs Wage exact bot route test
+
+on:
+  push:
+    paths:
+      - ".github/workflows/jobs-wage-exact-bot-route-test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.JOBS_WAGE_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.JOBS_WAGE_TELEGRAM_CHAT_ID }}
+      TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Verify exact bot and send one test message
+        run: |
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+          token=(os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id=(os.getenv('TELEGRAM_CHAT_ID_PRIMARY') or os.getenv('TELEGRAM_CHAT_ID_FALLBACK') or '').strip()
+          expected=(os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
+          if not token:
+              raise RuntimeError('JOBS_WAGE_TELEGRAM_BOT_TOKEN missing')
+          if not chat_id:
+              raise RuntimeError('Telegram chat id missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
+              me=json.loads(r.read().decode('utf-8'))
+          result=me.get('result') or {}
+          username=str(result.get('username') or '')
+          bot_id=result.get('id')
+          if not me.get('ok') or username.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong bot: expected @{expected}, got @{username or "unknown"} id={bot_id}')
+          text='✅ Jobs Wage Watch 최종 연결 확인\n이 대화로 BLS·Weekly Claims·ADP의 새 공식 발표만 전송합니다.\n중복 발표나 새 발표가 없으면 메시지를 보내지 않습니다.'
+          payload=urllib.parse.urlencode({'chat_id':chat_id,'text':text,'disable_web_page_preview':'true'}).encode('utf-8')
+          req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage',data=payload,method='POST')
+          with urllib.request.urlopen(req,timeout=20) as r:
+              out=json.loads(r.read().decode('utf-8'))
+          if not out.get('ok'):
+              raise RuntimeError(f'Telegram rejected message: {out}')
+          print(f"exact_route_ok=true bot=@{username} bot_id={bot_id} message_id={out.get('result',{}).get('message_id')}")
+          PY
