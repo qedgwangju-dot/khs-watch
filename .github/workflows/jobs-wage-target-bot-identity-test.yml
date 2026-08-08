@@ -1,0 +1,35 @@
+name: Jobs Wage target bot identity test
+
+on:
+  push:
+    paths:
+      - ".github/workflows/jobs-wage-target-bot-identity-test.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  identify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      YEN_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+      KHS_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+    steps:
+      - name: Identify configured Telegram bots without sending
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          for label, env in [('YEN_CARRY','YEN_TOKEN'),('KHS_POLICY','KHS_TOKEN')]:
+              token=(os.getenv(env) or '').strip()
+              if not token:
+                  print(f'BOT_IDENTITY {label} missing')
+                  continue
+              try:
+                  with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
+                      obj=json.loads(r.read().decode())
+                  result=obj.get('result') or {}
+                  print(f"BOT_IDENTITY {label} ok={obj.get('ok')} id={result.get('id')} username=@{result.get('username')}")
+              except Exception as e:
+                  print(f'BOT_IDENTITY {label} ERROR {type(e).__name__}: {e}')
+          PY
