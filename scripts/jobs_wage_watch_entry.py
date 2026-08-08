@@ -4,10 +4,10 @@ from __future__ import annotations
 # cache are installed without executing watch.main().
 import jobs_wage_watch_runner  # noqa: F401
 import jobs_wage_watch as watch
-import jobs_wage_watch_full_report_v5 as full_report
+import jobs_wage_watch_full_report_v6 as full_report
 
-# v5 keeps the v4 full report but bounds ancillary FRED latency and preserves
-# fail-honest partial status if those rate comparisons are temporarily missing.
+# v6 preserves the full v4/v5 report, fetches FRED official rates first, then
+# checks market 5-minute reactions, and stays fail-honest if ancillary data fail.
 watch.build_report = full_report.build_report
 
 if __name__ == "__main__":
