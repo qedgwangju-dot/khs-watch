@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import jobs_wage_watch as watch
+import jobs_wage_watch_full_report as full_report
 
 BLS_API_URL = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
 BLS_SCHEDULE_URL = "https://www.bls.gov/schedule/news_release/empsit.htm"
@@ -247,9 +248,27 @@ def parse_bls_api() -> watch.Release | None:
     )
 
 
-# GitHub-hosted runners currently receive HTTP 403 from www.bls.gov while
-# api.bls.gov is reachable. Replace only the BLS parser; DOL/ADP stay unchanged.
-watch.parse_bls = parse_bls_api
+# Cache all three official parsers within one workflow run. The full report
+# reuses these results as comparison values and never causes a second fetch of
+# the same release page/API in the same run.
+_original_claims = watch.parse_claims
+_original_adp = watch.parse_adp
+_cache: dict[str, watch.Release | None] = {}
+
+
+def _cached(name: str, parser):
+    def inner():
+        if name not in _cache:
+            _cache[name] = parser()
+        return _cache[name]
+    inner.__name__ = f"parse_{name}"
+    return inner
+
+
+watch.parse_bls = _cached("bls", parse_bls_api)
+watch.parse_claims = _cached("claims", _original_claims)
+watch.parse_adp = _cached("adp", _original_adp)
+watch.build_report = full_report.build_report
 
 if __name__ == "__main__":
     raise SystemExit(watch.main())
