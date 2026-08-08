@@ -14,6 +14,7 @@ PUBLISHER_DOMAINS = {
     "seoul.co.kr": "서울신문",
     "scmp.com": "South China Morning Post",
     "isplus.com": "일간스포츠",
+    "ezyeconomy.com": "이지경제",
 }
 
 DIRECT_ARTICLES = [
