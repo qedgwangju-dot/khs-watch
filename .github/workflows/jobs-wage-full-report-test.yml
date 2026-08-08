@@ -40,50 +40,37 @@ jobs:
           if len(releases) < 3:
               raise RuntimeError(f"Expected BLS+Claims+ADP current releases, got {[r.kind for r in releases]}")
           report = full.build_report(releases)
+          pathlib.Path('out').mkdir(exist_ok=True)
+          pathlib.Path('out/jobs_wage_full_report_test.md').write_text(report, encoding='utf-8')
+
           required = [
-              "## 1) 조회 시각·자료 처리 상태",
-              "트리거 원천:",
-              "## 2) 오늘 발표 결과 요약",
-              "## 3) 1단계 현재 숫자 추적",
-              "NFP 3개월 평균",
-              "U-6",
-              "임금 성격:",
-              "ADP/BLS 방향:",
+              "## 1) 조회 시각·자료 처리 상태", "트리거 원천:",
+              "## 2) 오늘 발표 결과 요약", "## 3) 1단계 현재 숫자 추적",
+              "NFP 3개월 평균", "U-6", "임금 성격:", "ADP/BLS 방향:",
               "## 4) 2단계 미래 재평가 요인 발굴",
               "## 5) breakeven 고용·경제활동참가율 해석",
-              "## 6) 달러 안전자산·경기침체 공포 점검",
-              "UUP",
-              "## 7) 연준 반응함수 보조 프레임",
-              "## 8) 숨은 역풍·실패모드",
-              "## 다음 공식 발표별 시나리오",
-              "## 9) 결론",
-              "### 더 강한 종합 해석",
-              "투자 관점의 4축으로 보면:",
-              "- 돈 버는 능력:",
-              "- 할인율:",
-              "- 수급:",
-              "- 시간표:",
-              "자산 차별화:",
-              "## 10) 핵심 한 줄 요약",
+              "## 6) 달러 안전자산·경기침체 공포 점검", "UUP",
+              "## 7) 연준 반응함수 보조 프레임", "## 8) 숨은 역풍·실패모드",
+              "## 다음 공식 발표별 시나리오", "## 9) 결론",
+              "### 더 강한 종합 해석", "투자 관점의 4축으로 보면:",
+              "- 돈 버는 능력:", "- 할인율:", "- 수급:", "- 시간표:",
+              "자산 차별화:", "## 10) 핵심 한 줄 요약",
           ]
           missing = [x for x in required if x not in report]
           if missing:
               raise RuntimeError(f"Missing required report sections: {missing}")
 
-          m = re.search(r"현재 추정 범위: 약\s*([+\-\d,]+)\s*~\s*([+\-\d,]+)명/월", report)
+          m = re.search(r"현재 추정 범위:\s*약\s*([+\-\d,]+)\s*~\s*([+\-\d,]+)명/월", report)
           if not m:
-              raise RuntimeError("Breakeven range missing")
+              raise RuntimeError("Breakeven range missing; inspect uploaded report")
           lo = int(m.group(1).replace(',', '').replace('+',''))
           hi = int(m.group(2).replace(',', '').replace('+',''))
           if lo < 0 or hi < 0:
               raise RuntimeError(f"Negative breakeven still present: {lo}, {hi}")
           if re.search(r"KOSPI\s+[+\-]?\d+\.\d+%", report):
-              raise RuntimeError("KOSPI incorrectly labeled as an immediate U.S.-release reaction while Korea cash market was closed")
+              raise RuntimeError("KOSPI incorrectly labeled as immediate reaction while Korea cash market was closed")
           if re.search(r"KOSDAQ\s+[+\-]?\d+\.\d+%", report):
-              raise RuntimeError("KOSDAQ incorrectly labeled as an immediate U.S.-release reaction while Korea cash market was closed")
-
-          pathlib.Path('out').mkdir(exist_ok=True)
-          pathlib.Path('out/jobs_wage_full_report_test.md').write_text(report, encoding='utf-8')
+              raise RuntimeError("KOSDAQ incorrectly labeled as immediate reaction while Korea cash market was closed")
           print(f"full_report_v2_test_ok=true releases={[r.kind for r in releases]} chars={len(report)} breakeven={lo}~{hi}")
           PY
       - uses: actions/upload-artifact@v4
