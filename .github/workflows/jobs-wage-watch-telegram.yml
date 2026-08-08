@@ -7,6 +7,7 @@ on:
       - "scripts/jobs_wage_watch.py"
       - "scripts/jobs_wage_watch_runner.py"
       - "scripts/jobs_wage_watch_full_report.py"
+      - "scripts/jobs_wage_watch_full_report_v2.py"
       - "data/jobs_wage_watch_state.json"
       - "data/jobs_wage_full_state.json"
   schedule:
