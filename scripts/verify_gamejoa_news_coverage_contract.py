@@ -56,6 +56,16 @@ CASES = (
 )
 
 
+ATTACHED_CASES = (
+    ("리사 쿡 연준 이사, 인플레 지속 시 금리 인상 준비", "금리 인상", "할인율"),
+    ("삼성전자, AI 가속기용 zHBM 차세대 3D 메모리 공개", "zhbm", "돈 버는 능력"),
+    ("SK하이닉스, 인디애나 첨단 패키징 공장 2028년 양산 목표", "첨단 패키징", "시간표"),
+    ("이란·오만, 호르무즈 해협 통항 합의 협상 최종 단계", "호르무즈", "할인율"),
+    ("경상수지 497억달러 흑자, 반도체 수출 호조", "경상수지", "돈 버는 능력"),
+    ("코스피 4%대 낙폭 확대, 매도 사이드카 발동", "매도 사이드카", "수급"),
+)
+
+
 def main() -> int:
     failures = []
     now = datetime.now().astimezone()
@@ -69,7 +79,7 @@ def main() -> int:
         "                return None"
     ) in fda_runner_source:
         failures.append("production_fda_wrapper=body_fetch_failure_still_blocked")
-    for index, (title, required_term, required_impact) in enumerate(CASES):
+    for index, (title, required_term, required_impact) in enumerate(CASES + ATTACHED_CASES):
         row = {
             "title": title,
             "summary": title,
@@ -104,6 +114,9 @@ def main() -> int:
         "apnews.com",
         "cnbc.com",
         "ezyeconomy.com",
+        "theguru.co.kr",
+        "ngetnews.com",
+        "magazine.hankyung.com",
     }
     missing_domains = expected_domains - set(radar.KOREAN_BUSINESS_PUBLISHER_DOMAINS)
     if missing_domains:
@@ -163,6 +176,17 @@ def main() -> int:
     ):
         if required_search not in search_names:
             failures.append(f"missing_search={required_search}")
+
+    for required_search in (
+        "연준 위원 발언·미국 고용·서비스 물가",
+        "AI 메모리 아키텍처·엔비디아 사양 변경",
+        "SK하이닉스 해외 패키징·국내 대형 CAPEX",
+        "이란·호르무즈 협상·해협 통항",
+        "한국 경상수지·반도체 수출·외국인 자금",
+        "코스피 사이드카·단일종목 레버리지 수급 변화",
+    ):
+        if required_search not in search_names:
+            failures.append(f"missing_attached_search={required_search}")
 
     leverage_effect_urls = {
         "https://www.kmib.co.kr/article/view.asp?arcid=9000000424&cp=nv",
