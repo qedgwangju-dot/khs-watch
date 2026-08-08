@@ -30,7 +30,7 @@ jobs:
           sys.path.insert(0, str(pathlib.Path('scripts').resolve()))
           import jobs_wage_watch_runner as runner
           import jobs_wage_watch as watch
-          import jobs_wage_watch_full_report_v2 as full
+          import jobs_wage_watch_full_report_v3 as full
 
           releases = []
           for parser in (watch.parse_bls, watch.parse_claims, watch.parse_adp):
@@ -46,7 +46,8 @@ jobs:
           required = [
               "## 1) 조회 시각·자료 처리 상태", "트리거 원천:",
               "## 2) 오늘 발표 결과 요약", "## 3) 1단계 현재 숫자 추적",
-              "NFP 3개월 평균", "U-6", "임금 성격:", "ADP/BLS 방향:",
+              "NFP 3개월 평균", "U-6", "Health care", "BLS 1개월 고용 확산지수",
+              "임금 성격:", "ADP/BLS 방향:",
               "## 4) 2단계 미래 재평가 요인 발굴",
               "## 5) breakeven 고용·경제활동참가율 해석",
               "## 6) 달러 안전자산·경기침체 공포 점검", "UUP",
@@ -71,7 +72,7 @@ jobs:
               raise RuntimeError("KOSPI incorrectly labeled as immediate reaction while Korea cash market was closed")
           if re.search(r"KOSDAQ\s+[+\-]?\d+\.\d+%", report):
               raise RuntimeError("KOSDAQ incorrectly labeled as immediate reaction while Korea cash market was closed")
-          print(f"full_report_v2_test_ok=true releases={[r.kind for r in releases]} chars={len(report)} breakeven={lo}~{hi}")
+          print(f"full_report_v3_test_ok=true releases={[r.kind for r in releases]} chars={len(report)} breakeven={lo}~{hi}")
           PY
       - uses: actions/upload-artifact@v4
         if: always()
