@@ -103,6 +103,7 @@ def main() -> int:
         "reuters.com",
         "apnews.com",
         "cnbc.com",
+        "ezyeconomy.com",
     }
     missing_domains = expected_domains - set(radar.KOREAN_BUSINESS_PUBLISHER_DOMAINS)
     if missing_domains:
