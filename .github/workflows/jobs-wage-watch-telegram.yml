@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,8 +62,8 @@ jobs:
       - name: Send new official release to Telegram
         if: hashFiles('out/jobs_wage_watch_alert.md') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.JOBS_WAGE_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.JOBS_WAGE_TELEGRAM_CHAT_ID }}
           TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
@@ -79,9 +79,9 @@ jobs:
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
-              raise RuntimeError("YEN_CARRY_TELEGRAM_BOT_TOKEN secret is missing")
+              raise RuntimeError("JOBS_WAGE_TELEGRAM_BOT_TOKEN secret is missing")
           if not chat_id:
-              raise RuntimeError("Telegram chat id secret is missing")
+              raise RuntimeError("Jobs Wage Telegram chat id is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
               identity = json.loads(r.read().decode("utf-8"))
