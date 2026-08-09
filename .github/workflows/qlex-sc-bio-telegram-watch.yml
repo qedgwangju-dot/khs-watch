@@ -115,6 +115,34 @@ jobs:
             cat out/qlex_sc_conversion_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
+      - name: Normalize user-facing wording to Korean
+        if: steps.telegram.outputs.configured == 'true'
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              "미국 SC adoption/conversion": "미국 피하주사(SC) 채택률·전환율",
+              "미국 gross-sales QLEX SC 전환율": "미국 총판매액(gross sales) 기준 QLEX SC 전환율",
+              "gross-sales 전환율은 환자수 점유율과 다르게 해석": "총판매액 기준 전환율은 환자 수 기준 점유율과 다름",
+              "동일 gross-sales 기준": "동일한 총판매액 기준",
+              "gross-sales 전환율 ≠ 환자수 점유율.": "총판매액 기준 전환율은 환자 수 기준 점유율과 다릅니다.",
+              "gross-sales와 환자수/처방 기준 분리 해석": "총판매액 기준과 환자 수·처방 기준을 분리해 해석",
+              "gross-sales와 환자수/처방 기준은 구분합니다.": "총판매액 기준과 환자 수·처방 기준은 구분합니다.",
+              "출처: Merck official": "출처: Merck 공식",
+              "출처: Alteogen official": "출처: Alteogen 공식",
+          }
+
+          for filename in ("qlex_sc_conversion_setup.md", "qlex_sc_conversion_alert.md"):
+              path = Path("out") / filename
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding="utf-8")
+              for old, new in replacements.items():
+                  text = text.replace(old, new)
+              path.write_text(text, encoding="utf-8")
+          PY
+
       - name: Build connection verification message on push
         if: steps.telegram.outputs.configured == 'true' && github.event_name == 'push'
         run: |
@@ -122,12 +150,12 @@ jobs:
           cat > out/qlex_sc_connection_test.md <<'EOF'
           [바이오 감시] Telegram 연결 확인
 
-          KEYTRUDA QLEX SC 전환 감시 연결이 정상 확인됐습니다.
-          - Merck 공식 QLEX 매출·미국 SC adoption/conversion
+          KEYTRUDA QLEX 피하주사(SC) 전환 감시 연결이 정상 확인됐습니다.
+          - Merck 공식 QLEX 매출·미국 피하주사(SC) 채택률·전환율
           - Alteogen 판매 마일스톤·로열티·ALT-B4 공급 공시
           - UBS/Symphony Health/Bloomberg 및 공개 인용자료의 월간 미국 SC 전환율
-          - QLEX vs Opdivo SC vs Tecentriq SC 동일 M+N 비교
-          - gross-sales와 환자수/처방 기준 분리 해석
+          - QLEX·Opdivo SC·Tecentriq SC를 동일 출시 후 개월(M+N) 기준으로 비교
+          - 총판매액 기준과 환자 수·처방 기준을 분리해 해석
           - 새 데이터가 없으면 무통지
           EOF
 
@@ -139,9 +167,9 @@ jobs:
           cat > out/qlex_sc_connection_test.md <<'EOF'
           [바이오 감시] Telegram 연결 시험
 
-          KEYTRUDA QLEX SC 전환 감시 연결 정상입니다.
+          KEYTRUDA QLEX 피하주사(SC) 전환 감시 연결 정상입니다.
           - 새 QLEX 매출·SC 전환 데이터가 있을 때만 해석해 알립니다.
-          - gross-sales와 환자수/처방 기준은 구분합니다.
+          - 총판매액 기준과 환자 수·처방 기준은 구분합니다.
           - Opdivo SC·Tecentriq SC는 동일 출시 후 개월(M+N)로 비교합니다.
           EOF
 
