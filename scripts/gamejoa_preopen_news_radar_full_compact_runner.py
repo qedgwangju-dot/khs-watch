@@ -5838,8 +5838,10 @@ def compact_alert_block_errors(block: str) -> list[str]:
     summary = ""
     for line in str(block or "").splitlines():
         visible = html.unescape(line).strip()
-        if re.match(r"^\d+\)\s+\[", visible):
-            title = re.sub(r"^\d+\)\s+\[[^\]]+\]\s*", "", visible).strip()
+        if re.match(r"^\d+\)\s+(?:\[[^\]]+\]\s*)?\S", visible):
+            # Accept legacy fixtures but require new production output to omit
+            # importance and verification-state labels from the Telegram line.
+            title = re.sub(r"^\d+\)\s+(?:\[[^\]]+\]\s*)?", "", visible).strip()
             title = re.sub(r"\(\d+건 묶음\)$", "", title).strip()
         elif visible.startswith("- 핵심:"):
             summary = visible.removeprefix("- 핵심:").strip()
@@ -5878,7 +5880,6 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     alert = normalize_alert_for_output(alert)
     examples = alert.get("examples") or []
     count_suffix = f" ({alert['cluster_count']}건 묶음)" if alert.get("cluster_count") else ""
-    status = alert.get("status") or ("공식 확인 전" if examples else "확인 불가")
     impacts = alert.get("impacts") or ["의사결정 영향 제한적"]
     displayed_impacts = display_impacts(impacts)
     interpretation = alert.get("interpretation") or "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는지 확인해야 합니다."
@@ -5900,7 +5901,7 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     conversion = alert.get("fx_conversion") or {"amounts": []}
     core = compact_converted_core(core, conversion, limit=GAMEJOA_CORE_MAX_CHARS)
 
-    lines = [f"{idx}) [{safe(alert.get('importance'))} | {safe(status)}] {safe(title)}{html.escape(count_suffix, quote=False)}"]
+    lines = [f"{idx}) {safe(title)}{html.escape(count_suffix, quote=False)}"]
     if examples:
         source_text = source_summary(examples[:4])
     else:
