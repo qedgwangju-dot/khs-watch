@@ -5615,6 +5615,17 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         if is_local_dc_like(alert) and not is_actionable_local_dc_policy(alert):
             alert["_exclusion_reason"] = "local_data_center_without_trusted_hard_action"
             continue
+        # A headline-only fallback is useful while collecting candidates, but it
+        # is not sufficient for a Telegram alert.  Publishing it would repeat
+        # the headline instead of explaining the linked article.
+        if (
+            not alert.get("body_verified")
+            and str(alert.get("telegram_core_fact") or "").strip().startswith(
+                "공개된 제목에 따르면"
+            )
+        ):
+            alert["_exclusion_reason"] = "title_only_summary"
+            continue
         normalized = normalize_alert_for_output(alert)
         if not source_output_aligned(normalized):
             alert["_exclusion_reason"] = "source_body_mismatch"
@@ -6004,7 +6015,11 @@ def guard_preopen_report(text: str) -> str:
     )
     if not valid_title:
         errors.append("title_contract")
-    item_count = sum(1 for line in text.splitlines() if re.match(r"^\d+\)\s+\[", line))
+    item_count = sum(
+        1
+        for line in text.splitlines()
+        if re.match(r"^\d+\)\s+(?:\[[^\]]+\]\s*)?\S", line)
+    )
     required = [
         "- 핵심:",
         "- 출처:",
@@ -6033,9 +6048,9 @@ def guard_preopen_report(text: str) -> str:
         if item_count and phrase in text:
             errors.append("generic_policy_explanation_displayed")
     for line in text.splitlines():
-        if not re.match(r"^\d+\)\s+\[", line):
+        if not re.match(r"^\d+\)\s+(?:\[[^\]]+\]\s*)?\S", line):
             continue
-        title = re.sub(r"^\d+\)\s+\[[^\]]+\]\s*", "", line).strip()
+        title = re.sub(r"^\d+\)\s+(?:\[[^\]]+\]\s*)?", "", line).strip()
         title = re.sub(r"\(\d+건 묶음\)$", "", title).strip()
         if mostly_ascii(title):
             errors.append(f"raw_english_heading={title[:80]}")
@@ -6078,8 +6093,10 @@ def guard_preopen_report(text: str) -> str:
             errors.append("foreign_currency_not_converted")
     current_title = ""
     for line in text.splitlines():
-        if re.match(r"^\d+\)\s+\[", line):
-            current_title = re.sub(r"^\d+\)\s+\[[^\]]+\]\s*", "", html.unescape(line)).strip()
+        if re.match(r"^\d+\)\s+(?:\[[^\]]+\]\s*)?\S", line):
+            current_title = re.sub(
+                r"^\d+\)\s+(?:\[[^\]]+\]\s*)?", "", html.unescape(line)
+            ).strip()
             current_title = re.sub(r"\(\d+건 묶음\)$", "", current_title).strip()
             continue
         if current_title and line.startswith("- 핵심:"):
