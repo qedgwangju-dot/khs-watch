@@ -34,7 +34,7 @@ jobs:
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
       BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
-      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+      CONFIGURED_BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
 
     steps:
       - name: Checkout
@@ -47,7 +47,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Check bio Telegram configuration
+      - name: Resolve and verify bio Telegram route
         id: telegram
         shell: bash
         run: |
@@ -56,23 +56,47 @@ jobs:
             echo "BIO_TELEGRAM_BOT_TOKEN missing; watcher remains staged and does not consume state." >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
-          if [ -z "$BIO_TELEGRAM_CHAT_ID" ]; then
-            echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "BIO Telegram chat id missing; watcher remains staged and does not consume state." >> "$GITHUB_STEP_SUMMARY"
-            exit 0
-          fi
           python - <<'PY'
-          import json, os, urllib.request
+          import json, os, pathlib, urllib.request
           token=os.environ['BIO_TELEGRAM_BOT_TOKEN'].strip()
           expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+          configured_chat=(os.environ.get('CONFIGURED_BIO_TELEGRAM_CHAT_ID') or '').strip()
+
           with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
-              payload=json.loads(r.read().decode('utf-8'))
-          actual=str((payload.get('result') or {}).get('username') or '')
-          if not payload.get('ok') or actual.lower()!=expected.lower():
+              identity=json.loads(r.read().decode('utf-8'))
+          actual=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower()!=expected.lower():
               raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+
+          chat_id=configured_chat
+          route='secret'
+          if not chat_id:
+              with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0', timeout=25) as r:
+                  updates=json.loads(r.read().decode('utf-8'))
+              candidates=[]
+              for upd in updates.get('result') or []:
+                  msg=upd.get('message') or upd.get('edited_message') or {}
+                  chat=msg.get('chat') or {}
+                  if str(chat.get('type') or '') == 'private' and chat.get('id') is not None:
+                      candidates.append((int(upd.get('update_id') or 0), str(chat['id'])))
+              if candidates:
+                  candidates.sort()
+                  chat_id=candidates[-1][1]
+                  route='getUpdates'
+
+          out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
+          with out.open('a', encoding='utf-8') as f:
+              f.write(f'bot_username={actual}\n')
+              f.write(f'chat_id={chat_id}\n')
+              f.write(f'chat_route={route}\n')
+              f.write(f'configured={"true" if chat_id else "false"}\n')
+
           print(f'bio_telegram_bot_verified=@{actual}')
+          if chat_id:
+              print(f'bio_telegram_chat_resolved=true route={route}')
+          else:
+              print('bio_telegram_chat_resolved=false; send /start to the bot once')
           PY
-          echo "configured=true" >> "$GITHUB_OUTPUT"
 
       - name: Validate watcher
         if: steps.telegram.outputs.configured == 'true'
@@ -91,14 +115,14 @@ jobs:
             cat out/qlex_sc_conversion_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Build manual test message
-        if: steps.telegram.outputs.configured == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+      - name: Build connection verification message on push
+        if: steps.telegram.outputs.configured == 'true' && github.event_name == 'push'
         run: |
           mkdir -p out
           cat > out/qlex_sc_connection_test.md <<'EOF'
-          [바이오 감시] Telegram 연결 시험
+          [바이오 감시] Telegram 연결 확인
 
-          KEYTRUDA QLEX SC 전환 감시 연결 정상입니다.
+          KEYTRUDA QLEX SC 전환 감시 연결이 정상 확인됐습니다.
           - Merck 공식 QLEX 매출·미국 SC adoption/conversion
           - Alteogen 판매 마일스톤·로열티·ALT-B4 공급 공시
           - UBS/Symphony Health/Bloomberg 및 공개 인용자료의 월간 미국 SC 전환율
@@ -107,16 +131,36 @@ jobs:
           - 새 데이터가 없으면 무통지
           EOF
 
-      - name: Send manual connection test
+      - name: Build manual test message
         if: steps.telegram.outputs.configured == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        run: |
+          mkdir -p out
+          cp /dev/null out/qlex_sc_connection_test.md
+          cat > out/qlex_sc_connection_test.md <<'EOF'
+          [바이오 감시] Telegram 연결 시험
+
+          KEYTRUDA QLEX SC 전환 감시 연결 정상입니다.
+          - 새 QLEX 매출·SC 전환 데이터가 있을 때만 해석해 알립니다.
+          - gross-sales와 환자수/처방 기준은 구분합니다.
+          - Opdivo SC·Tecentriq SC는 동일 출시 후 개월(M+N)로 비교합니다.
+          EOF
+
+      - name: Send connection verification
+        if: steps.telegram.outputs.configured == 'true' && hashFiles('out/qlex_sc_connection_test.md') != ''
+        env:
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
         run: python scripts/qlex_telegram_send.py out/qlex_sc_connection_test.md
 
       - name: Send baseline confirmation
         if: steps.telegram.outputs.configured == 'true' && hashFiles('out/qlex_sc_conversion_setup.md') != ''
+        env:
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
         run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_setup.md
 
       - name: Send new QLEX alert
         if: steps.telegram.outputs.configured == 'true' && hashFiles('out/qlex_sc_conversion_alert.md') != ''
+        env:
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
         run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_alert.md
 
       - name: Persist state only after successful run
@@ -159,4 +203,4 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
-# Secret verification trigger: 2026-08-09 13:54 KST
+# Auto-resolve private chat ID from /start when no BIO_TELEGRAM_CHAT_ID secret is set.
