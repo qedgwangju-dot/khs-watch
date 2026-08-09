@@ -62,6 +62,7 @@ jobs:
           git add data/qlex_sc_conversion_watch_state.json
           if ! git diff --cached --quiet; then
             git commit -m "Migrate QLEX dedupe state to v2"
+            rm -rf out scripts/__pycache__
             git pull --rebase origin main
             git push
           fi
