@@ -522,12 +522,9 @@ def main() -> int:
                 f"sectors={sovereign_normalized.get('sectors')}"
             )
         sovereign_selected = radar.quality_display_alerts([sovereign_alert], 1)
-        if not sovereign_selected:
+        if sovereign_selected:
             failures.append(
-                "korea_sovereign_fund_final_selection=blocked:"
-                f"{sovereign_alert.get('_exclusion_reason')}:"
-                f"{sovereign_alert.get('guardrail_note')}:"
-                f"{sovereign_alert.get('_decision_debug')}"
+                "korea_sovereign_fund_title_only=published_without_verified_body"
             )
 
     hyperscaler_row = {
@@ -560,12 +557,9 @@ def main() -> int:
                 f"sectors={hyperscaler_normalized.get('sectors')}"
             )
         hyperscaler_selected = radar.quality_display_alerts([hyperscaler_alert], 1)
-        if not hyperscaler_selected:
+        if hyperscaler_selected:
             failures.append(
-                "hyperscaler_ai_capex_final_selection=blocked:"
-                f"{hyperscaler_alert.get('_exclusion_reason')}:"
-                f"{hyperscaler_alert.get('guardrail_note')}:"
-                f"{hyperscaler_alert.get('_decision_debug')}"
+                "hyperscaler_ai_capex_title_only=published_without_verified_body"
             )
 
     title_only_row = {
@@ -608,9 +602,9 @@ def main() -> int:
             [mismatched_alert, title_only_alert],
             2,
         )
-        if len(synced) != 1 or synced[0].get("source_title") != title_only_row["source_title"]:
+        if synced:
             failures.append(
-                "render_json_delivery_sync="
+                "title_only_render_json_delivery_sync="
                 f"{[(row.get('source_title'), row.get('_exclusion_reason')) for row in synced]}"
             )
 
@@ -1002,6 +996,23 @@ def main() -> int:
         failures.append(f"telegram_display_labels_not_removed={format_first_line}")
     if radar.compact_alert_block_errors(rendered_format):
         failures.append(f"telegram_display_format_invalid={rendered_format}")
+
+    title_only_alert = {
+        "news": "본문 미확인 제목 전용 후보",
+        "source_title": "본문 미확인 제목 전용 후보",
+        "telegram_core_fact": "공개된 제목에 따르면, 본문 미확인 제목 전용 후보입니다.",
+        "policy_plain_summary": "공개된 제목에 따르면, 본문 미확인 제목 전용 후보입니다.",
+        "korean_business_kind": "trusted_title_material_event",
+        "korean_business_news": True,
+        "body_verified": False,
+        "impacts": ["수급"],
+        "sectors": ["금융/자본시장"],
+        "link": "https://example.com/title-only",
+        "publisher": "테스트",
+        "published": now.isoformat(),
+    }
+    if radar.quality_display_alerts([title_only_alert], 1):
+        failures.append("title_only_summary=published_without_verified_body")
 
     if failures:
         print("GAMEJOA news coverage contract failed:")
