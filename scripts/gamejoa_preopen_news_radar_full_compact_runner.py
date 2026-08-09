@@ -6125,7 +6125,7 @@ def send_telegram(text: str) -> None:
     if not token or not chat_id:
         write_delivery_status("blocked", chat_id, len(text), "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
         raise RuntimeError("Telegram delivery blocked: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
-    message = fit_telegram_html(text, base.TELEGRAM_LIMIT)
+    message = fit_telegram_html(sanitize_telegram_html(text), base.TELEGRAM_LIMIT)
     body = urllib.parse.urlencode({
         "chat_id": chat_id,
         "text": message,
@@ -6201,6 +6201,26 @@ def fit_telegram_html(text: str, limit: int) -> str:
     if candidate.count("<a ") > candidate.count("</a>"):
         candidate = candidate[: candidate.rfind("<a ")].rstrip()
     return (candidate.rstrip() + suffix)[:limit]
+
+
+def sanitize_telegram_html(text: str) -> str:
+    """Keep generated source links while escaping every article-body HTML token."""
+    anchors: list[str] = []
+
+    def stash_anchor(match: re.Match[str]) -> str:
+        anchors.append(match.group(0))
+        return f"\x00GAMEJOA_LINK_{len(anchors) - 1}\x00"
+
+    protected = re.sub(
+        r'<a href="https?://[^"<>]+">.*?</a>',
+        stash_anchor,
+        str(text or ""),
+        flags=re.DOTALL,
+    )
+    escaped = html.escape(html.unescape(protected), quote=False)
+    for index, anchor in enumerate(anchors):
+        escaped = escaped.replace(f"\x00GAMEJOA_LINK_{index}\x00", anchor)
+    return escaped
 
 
 def write_delivery_status(
