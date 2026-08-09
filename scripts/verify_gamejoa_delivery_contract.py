@@ -88,6 +88,7 @@ FORBIDDEN_WORKFLOW_SNIPPETS = [
 
 REQUIRED_RUNNER_SNIPPETS = [
     "guard_preopen_report(text)",
+    "sanitize_telegram_html",
     "preopen_send_window_open",
     "raise RuntimeError(\"Telegram delivery blocked:",
     "raise RuntimeError(f\"Telegram delivery failed:",
@@ -314,6 +315,15 @@ def main() -> int:
     production = importlib.import_module(PRODUCTION_RUNNER)
     compact = importlib.import_module(LOCKED_TELEGRAM_MODULE)
     runtime_delivery = importlib.import_module("verify_gamejoa_delivery_result")
+    raw_html_regression = (
+        '1) 기사 제목\n- 핵심: <질문 1> & 원문 표기\n'
+        '- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'
+    )
+    escaped_html_regression = production.runner.sanitize_telegram_html(raw_html_regression)
+    if "&lt;질문 1&gt;" not in escaped_html_regression or "&amp; 원문" not in escaped_html_regression:
+        errors.append(f"telegram_html_escape_regression={escaped_html_regression}")
+    if '<a href="https://example.com/article">원문 뉴스보기</a>' not in escaped_html_regression:
+        errors.append("telegram_html_escape_regression=source_link_not_preserved")
     send_module = getattr(production.telegram.send_telegram, "__module__", "")
     compact_module = getattr(production.telegram.compact_report, "__module__", "")
     final_selection_module = getattr(production.telegram.final_alerts_for_output, "__module__", "")
