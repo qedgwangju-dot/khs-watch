@@ -1,0 +1,24 @@
+{
+  "initialized": true,
+  "bill": "H.R. 3633 — Digital Asset Market Clarity Act of 2025",
+  "last_checked_kst": "2026-08-09T20:25:28+09:00",
+  "last_checked_et": "2026-08-09T07:25:28-04:00",
+  "seen_event_keys": [
+    "0c66c1ef94728a83e8ecbafaa4fdc5f038cba54010112b43462b09e826966d4c",
+    "1a9898923f85d4233fb780b2ee1a3d06bdb9c23a6ef435b2330be9be048e7e8f",
+    "30e7b21c600622356207bfe6121f67c1a2a916c6499ee7b917abfebeff54d5ee",
+    "369c748a0fd42ff7ca6e3666b9264549d508fdcd4c7d284a9079e5c3602cf4d2",
+    "4fa39a9377fc1bc743fc1618feb3cd5a1d52a0456e7904c00acc81420076bf28",
+    "980559a32469067fb786085741ba2ee65360f95c25d5d642d3e03584772ceedf",
+    "a084c3acfb1f8e72a7e21c29dafd5d36163d98d50854e2499900fb9d5390e226",
+    "caf5db402a1c1fe94de3cfdc3bbd42f43a4f54b09b6d5fcc4ff097b0de3029bd",
+    "d0fadf00b1204c805e11fd323da1768148ecd0ea34bd0f8aad5226a7810c93b2"
+  ],
+  "event_count": 9,
+  "source_errors": [
+    "Congress.gov actions: fetch failed: https://www.congress.gov/bill/119th-congress/house-bill/3633/all-actions: HTTP Error 403: Forbidden",
+    "Congress.gov text: fetch failed: https://www.congress.gov/bill/119th-congress/house-bill/3633/text: HTTP Error 403: Forbidden",
+    "CFTC 제안규칙: fetch failed: https://comments.cftc.gov/handlers/RSSHandler.ashx?category=Proposed+Rule&type=Releases: HTTP Error 403: Forbidden",
+    "CFTC 최종규칙: fetch failed: https://comments.cftc.gov/handlers/RSSHandler.ashx?category=Final+Rule&type=Releases: HTTP Error 403: Forbidden"
+  ]
+}
