@@ -1,15 +1,5 @@
 {
   "seen": {
-    "event:005b6f5fca2d18c9c8f2c22c": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.asiae.co.kr/article/2026072313085895394",
-      "source": "아시아경제",
-      "title": "\"CXMT 상장, SMIC와는 다르다\"…ETF 뭐로 담을까[주末머니]"
-    },
     "event:010cd9c8f1cf85ae85c4ff88": {
       "first_seen_kst": "2026-07-31T18:24:36+09:00",
       "lanes": {
@@ -284,6 +274,16 @@
       "source": "매일경제",
       "title": "미래에셋 ‘TIGER 배당커버드콜액티브’, 하반기 첫 분배금 375원 지급"
     },
+    "event:401832115aa6c46408d9ba98": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
+      "lanes": {
+        "live": "2026-08-09T23:14:43+09:00"
+      },
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260807122900003",
+      "source": "연합뉴스",
+      "title": "SK하이닉스, 용인 2기 팹·청주 M17에 총 54조 투자 확정 | 연합뉴스"
+    },
     "event:4141212d3b881a5aafd59193": {
       "first_seen_kst": "2026-08-01T19:55:21+09:00",
       "lanes": {
@@ -374,16 +374,6 @@
       "link": "https://www.news1.kr/world/international-economy/6242899",
       "source": "뉴스1",
       "title": "월가 \"연준 동결하면 달러 약세…금리인상 위험 과대평가\""
-    },
-    "event:57adcb900c2a8474c090a364": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.mt.co.kr/world/2026/07/24/2026072406123266842",
-      "source": "머니투데이",
-      "title": "유가 100달러 돌파, AI 수익성 우려까지…나스닥 2.15% 뚝[뉴욕마감]"
     },
     "event:5a764475cdc23e885447fddf": {
       "first_seen_kst": "2026-08-05T04:37:51+09:00",
@@ -536,16 +526,6 @@
       "source": "파이낸셜뉴스",
       "title": "[컨콜]삼성전자 \"메모리 전체 캐파 60~70% 장기계약…기본 5년\""
     },
-    "event:6e29c151c6ef3297d3c46f93": {
-      "first_seen_kst": "2026-07-26T12:39:20+09:00",
-      "lanes": {
-        "live": "2026-07-26T12:39:20+09:00"
-      },
-      "last_seen_kst": "2026-07-26T12:39:20+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12107533",
-      "source": "매일경제",
-      "title": "“이제 레버리지·곱버스 말곤 복구 안돼”…초고위험에도 식지 않는 투기 광풍"
-    },
     "event:6e8168a48a8b106b423d6388": {
       "first_seen_kst": "2026-08-02T07:27:53+09:00",
       "lanes": {
@@ -627,6 +607,16 @@
       "link": "https://www.mk.co.kr/news/economy/12109892",
       "source": "매일경제",
       "title": "“中 CXMT 상장보다 ‘이것’ 개발이 더 큰 충격”…반도체주 흔든 주범, 따로 있었다"
+    },
+    "event:81220d1569045bd81c3fa92b": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
+      "lanes": {
+        "live": "2026-08-09T23:14:43+09:00"
+      },
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/08/08/2026080714455982199",
+      "source": "머니투데이",
+      "title": "메모리반도체 품귀에 '장기계약' 러시..샌디스크·난야도 LTA 확대"
     },
     "event:817b13999bd8485688cd2e3b": {
       "first_seen_kst": "2026-08-04T06:54:54+09:00",
@@ -942,16 +932,6 @@
       "source": "전자신문",
       "title": "삼성전자, HBM5 대비 성능 최대 8배 'zHBM' 공개"
     },
-    "event:c37442bf2ab3e78aa5f74278": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/07/26/2026072610421684519",
-      "source": "머니투데이",
-      "title": "국민연금, 실리콘밸리 대표 벤처캐피털 6사와 투자협력 MOU"
-    },
     "event:c487f38252b47b30fa1e77cb": {
       "first_seen_kst": "2026-08-02T22:29:49+09:00",
       "lanes": {
@@ -1093,26 +1073,6 @@
       "source": "뉴시스",
       "title": "폭염 속 서울 아파트 정전 잇따라…영등포·동대문 주민 불편(종합)"
     },
-    "event:e285989102f625183403033f": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607498",
-      "source": "이투데이",
-      "title": "‘AI 수도’ 총집결한 K기업…엔비디아와 미래 생태계 판 짠다"
-    },
-    "event:e310ac986f58a1c32bc85f58": {
-      "first_seen_kst": "2026-07-26T18:32:46+09:00",
-      "lanes": {
-        "live": "2026-07-26T18:32:46+09:00"
-      },
-      "last_seen_kst": "2026-07-26T18:32:46+09:00",
-      "link": "https://www.mk.co.kr/news/business/12107697",
-      "source": "매일경제",
-      "title": "SK, MS에 메모리 장기 공급…앤트로픽과 데이터센터 추진"
-    },
     "event:e4993ba1178ce5d3d4f14c15": {
       "first_seen_kst": "2026-08-02T06:27:53+09:00",
       "lanes": {
@@ -1203,16 +1163,6 @@
       "link": "https://www.mk.co.kr/news/stock/12114343",
       "source": "매일경제",
       "title": "“폭등했는데도 아직 멀었다”…삼전닉스 목표가, ‘주가의 두 배’"
-    },
-    "event:f5ff8b3011014736e19a4d00": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01889286645518456",
-      "source": "이데일리",
-      "title": "케빈 워시式 '깜깜이' FOMC…월가 '동결 vs 인상' 팽팽"
     },
     "event:faed697b2b2eb029641105dc": {
       "first_seen_kst": "2026-07-31T17:39:41+09:00",
@@ -1353,16 +1303,6 @@
       "link": "https://www.newsis.com/view/NISX20260803_0003733355",
       "source": "뉴시스",
       "title": "전 세계 극장 장악 '스파이더맨4' 사흘만에 매출 1조원↑"
-    },
-    "link:0650ec6dd2a985f660e7eb86": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607498",
-      "source": "이투데이",
-      "title": "‘AI 수도’ 총집결한 K기업…엔비디아와 미래 생태계 판 짠다"
     },
     "link:069bd7560f3dccb1cb6f7dd3": {
       "first_seen_kst": "2026-08-08T05:47:34+09:00",
@@ -1844,16 +1784,6 @@
       "source": "뉴시스",
       "title": "與 \"선관위 특검·국정조사로 선관위 쇄신하고 국민 참정권 회복할 것\""
     },
-    "link:1398afd4ff55c33a88086f9a": {
-      "first_seen_kst": "2026-07-26T11:32:47+09:00",
-      "lanes": {
-        "live": "2026-07-26T11:32:47+09:00"
-      },
-      "last_seen_kst": "2026-07-26T11:32:47+09:00",
-      "link": "https://www.etnews.com/20260724000242",
-      "source": "전자신문",
-      "title": "KT, 상반기 금융권 AX 사업 22건 수주·800명 전담조직 배치…차세대 성장동력 정조준"
-    },
     "link:14319e05e2148d41294fee8f": {
       "first_seen_kst": "2026-07-28T17:38:08+09:00",
       "lanes": {
@@ -2154,16 +2084,6 @@
       "source": "뉴시스 경제",
       "title": "스페이스X, 상장 후 첫 실적서 매출 92%↑…전망 웃돌아"
     },
-    "link:2368216c4a334288127f99ef": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.mt.co.kr/world/2026/07/24/2026072406123266842",
-      "source": "머니투데이",
-      "title": "유가 100달러 돌파, AI 수익성 우려까지…나스닥 2.15% 뚝[뉴욕마감]"
-    },
     "link:237ef01ab2dba8c58cb56b6e": {
       "first_seen_kst": "2026-07-31T22:59:42+09:00",
       "lanes": {
@@ -2233,16 +2153,6 @@
       "link": "https://www.yna.co.kr/view/AKR20260731142300051?section=local/busan/index",
       "source": "연합뉴스",
       "title": "SB선보, 대선조선 인수 본계약 체결…\"주력사업 역량 확장\" | 연합뉴스"
-    },
-    "link:2520adf1377569df502d1cc1": {
-      "first_seen_kst": "2026-07-26T17:07:38+09:00",
-      "lanes": {
-        "live": "2026-07-26T17:07:38+09:00"
-      },
-      "last_seen_kst": "2026-07-26T17:07:38+09:00",
-      "link": "https://www.etnews.com/20260722000253",
-      "source": "전자신문",
-      "title": "레이크머티리얼즈, 반도체 소재 매출 1100억원 정조준…글로벌 고객사 확대"
     },
     "link:265a3fa10b24c294ad381340": {
       "first_seen_kst": "2026-07-29T05:22:38+09:00",
@@ -2945,17 +2855,6 @@
       "source": "이투데이",
       "title": "LG유플러스, 2분기 영업익 3445억 역대 최대…AIDC가 실적 견인"
     },
-    "link:4a6e1ae6b0bb809e415f64cb": {
-      "first_seen_kst": "2026-07-26T18:32:46+09:00",
-      "lanes": {
-        "live": "2026-07-26T18:32:46+09:00",
-        "preopen": "2026-07-28T06:32:57+09:00"
-      },
-      "last_seen_kst": "2026-07-28T06:32:57+09:00",
-      "link": "https://www.mk.co.kr/news/business/12107697",
-      "source": "매일경제",
-      "title": "SK, MS에 메모리 장기 공급…앤트로픽과 데이터센터 추진"
-    },
     "link:4ac55bd7091ea2835b9eee07": {
       "first_seen_kst": "2026-07-31T20:09:44+09:00",
       "lanes": {
@@ -2995,16 +2894,6 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04175446645520096",
       "source": "이데일리",
       "title": "“中메모리 사지마”…美의회, 애플 팀 쿡에 강력 경고"
-    },
-    "link:4cd08593318718f1dbf04b2a": {
-      "first_seen_kst": "2026-07-26T19:14:17+09:00",
-      "lanes": {
-        "live": "2026-07-26T19:14:17+09:00"
-      },
-      "last_seen_kst": "2026-07-26T19:14:17+09:00",
-      "link": "https://biz.heraldcorp.com/article/10819496",
-      "source": "헤럴드경제",
-      "title": "HD현대重, 상선 수주 연간 목표 돌파…고부가선 대거 계약 효과 [비즈360]"
     },
     "link:4d46bc5ec8ad4638f729bcf0": {
       "first_seen_kst": "2026-08-03T23:40:11+09:00",
@@ -3055,6 +2944,16 @@
       "link": "https://www.newsis.com/view/NISX20260803_0003734220",
       "source": "뉴시스 산업",
       "title": "현대제철, 2Q 영업익 전분기比 267.5% 개선…\"봉형강 판매 증가·가격 상승\""
+    },
+    "link:4da2108949db5ab00501490e": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
+      "lanes": {
+        "live": "2026-08-09T23:14:43+09:00"
+      },
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260807122900003",
+      "source": "연합뉴스",
+      "title": "SK하이닉스, 용인 2기 팹·청주 M17에 총 54조 투자 확정 | 연합뉴스"
     },
     "link:4e1bb97af2e4a467eedb24ab": {
       "first_seen_kst": "2026-07-28T10:34:35+09:00",
@@ -3477,6 +3376,16 @@
       "source": "연합뉴스",
       "title": "DB자산운용, AI 데이터센터 밸류체인 ETF 출시 | 연합뉴스"
     },
+    "link:609029eddc23a139fecde6b2": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
+      "lanes": {
+        "live": "2026-08-09T23:14:43+09:00"
+      },
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/08/08/2026080714455982199",
+      "source": "머니투데이",
+      "title": "메모리반도체 품귀에 '장기계약' 러시..샌디스크·난야도 LTA 확대"
+    },
     "link:616a5f01ff082627275d20b9": {
       "first_seen_kst": "2026-08-06T19:07:52+09:00",
       "lanes": {
@@ -3746,16 +3655,6 @@
       "link": "https://www.etoday.co.kr/news/view/2607864",
       "source": "이투데이",
       "title": "[단독] 분양 홍보 VR 믿고 계약했는데⋯풍무 호반써밋Ⅱ, 달라진 설계 논란"
-    },
-    "link:6bed9eeb1d20fb4e5db293ed": {
-      "first_seen_kst": "2026-07-26T12:39:20+09:00",
-      "lanes": {
-        "live": "2026-07-26T12:39:20+09:00"
-      },
-      "last_seen_kst": "2026-07-26T12:39:20+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01535046645518456",
-      "source": "이데일리",
-      "title": "코스피 7000선 회복할까…빅테크·FOMC에 쏠린 눈[주간증시전망]"
     },
     "link:6d05be585d682bc084e7c978": {
       "first_seen_kst": "2026-08-01T11:52:42+09:00",
@@ -4028,16 +3927,6 @@
       "source": "뉴시스 연예",
       "title": "CJ ENM, 2분기 영업익 334억…미디어 흑자 전환·커머스 체질 개선"
     },
-    "link:786b23e98f5ff968d5a97466": {
-      "first_seen_kst": "2026-07-26T12:39:20+09:00",
-      "lanes": {
-        "live": "2026-07-26T12:39:20+09:00"
-      },
-      "last_seen_kst": "2026-07-26T12:39:20+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12107533",
-      "source": "매일경제",
-      "title": "“이제 레버리지·곱버스 말곤 복구 안돼”…초고위험에도 식지 않는 투기 광풍"
-    },
     "link:79689667d23739a19e591740": {
       "first_seen_kst": "2026-08-05T07:47:36+09:00",
       "lanes": {
@@ -4228,16 +4117,6 @@
       "link": "https://www.mk.co.kr/news/stock/12117203",
       "source": "매일경제",
       "title": "Z 스퀘어드, 패러독스 데이터 100% 인수..최대 2,500만 달러 규모"
-    },
-    "link:7fdf78daf62b20f4a95812cb": {
-      "first_seen_kst": "2026-07-26T14:32:49+09:00",
-      "lanes": {
-        "live": "2026-07-26T14:32:49+09:00"
-      },
-      "last_seen_kst": "2026-07-26T14:32:49+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607433",
-      "source": "이투데이",
-      "title": "외형 지킨 네이버ㆍ내실 다진 카카오, 2분기 나란히 호실적…하반기 AI 진검승부"
     },
     "link:80094644d86dc7eab2e80a0d": {
       "first_seen_kst": "2026-07-27T07:34:22+09:00",
@@ -4439,16 +4318,6 @@
       "link": "https://www.newsis.com/view/NISX20260807_0003739803",
       "source": "뉴시스",
       "title": "이언주 \"ISA 세제 개편안 재검토해야…미장 탈출 강요는 강압적 행정\""
-    },
-    "link:864ea49dd219f9e8fec0cab8": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/07/26/2026072610421684519",
-      "source": "머니투데이",
-      "title": "국민연금, 실리콘밸리 대표 벤처캐피털 6사와 투자협력 MOU"
     },
     "link:86e946aeaa6d68d0399e4483": {
       "first_seen_kst": "2026-07-30T11:33:29+09:00",
@@ -4870,16 +4739,6 @@
       "source": "이투데이",
       "title": "백화점 VIP, 온라인서도 큰손…비욘드신세계 매출 60% 책임졌다"
     },
-    "link:98bc46e51a018c5f8d2a6fae": {
-      "first_seen_kst": "2026-07-26T14:54:21+09:00",
-      "lanes": {
-        "live": "2026-07-26T14:54:21+09:00"
-      },
-      "last_seen_kst": "2026-07-26T14:54:21+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607504",
-      "source": "이투데이",
-      "title": "“트럼프 대체 관세, 기존 상호관세 손실분 60%도 대체 못 해”"
-    },
     "link:99054696271dfaf41ff609ee": {
       "first_seen_kst": "2026-08-01T17:20:05+09:00",
       "lanes": {
@@ -5140,16 +4999,6 @@
       "source": "뉴시스",
       "title": "정부, 단일종목 레버리지 ETF 투자비중 20%로 제한 추진"
     },
-    "link:a37bb3dcfb974dc266371f2c": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.asiae.co.kr/article/2026072313085895394",
-      "source": "아시아경제",
-      "title": "\"CXMT 상장, SMIC와는 다르다\"…ETF 뭐로 담을까[주末머니]"
-    },
     "link:a47ab4a05d347b7774e14d6b": {
       "first_seen_kst": "2026-08-07T12:09:53+09:00",
       "lanes": {
@@ -5250,16 +5099,6 @@
       "source": "매일경제",
       "title": "알라모그룹, 2분기 매출 4억5070만 달러·조정 EPS 2.82달러 기록"
     },
-    "link:a6a32080b467e06b951a50cf": {
-      "first_seen_kst": "2026-07-26T12:39:20+09:00",
-      "lanes": {
-        "live": "2026-07-26T12:39:20+09:00"
-      },
-      "last_seen_kst": "2026-07-26T12:39:20+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12107527",
-      "source": "매일경제",
-      "title": "“월요일 하닉 들어갑니다”…증권가 “2분기 영업익 64조·이익률 75% 이상”"
-    },
     "link:a6a4ed55dd7116b6f5bb7a4e": {
       "first_seen_kst": "2026-08-03T02:02:21+09:00",
       "lanes": {
@@ -5310,16 +5149,6 @@
       "link": "https://www.newsis.com/view/NISX20260731_0003731210",
       "source": "뉴시스",
       "title": "삼성전자·SK하이닉스, '장기계약' 일제히 속도…메모리 업황 공식 바꿀까"
-    },
-    "link:a91b275d71b4b6f88e628506": {
-      "first_seen_kst": "2026-07-26T11:54:14+09:00",
-      "lanes": {
-        "live": "2026-07-26T11:54:14+09:00"
-      },
-      "last_seen_kst": "2026-07-26T11:54:14+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607488",
-      "source": "이투데이",
-      "title": "대한민국관 엿새간 7만2143명 방문…스토어 매출 1.4억 [韓 첫 세계유산위]"
     },
     "link:aa6dd9b8d954bc0967405fbb": {
       "first_seen_kst": "2026-07-30T15:18:11+09:00",
@@ -5380,16 +5209,6 @@
       "link": "https://www.mk.co.kr/news/stock/12116104",
       "source": "매일경제",
       "title": "“대형 프로젝트 수주 가시성 확대”…대우건설, 상반기 영업이익 4879억원"
-    },
-    "link:afd96f2014881200e6f57f92": {
-      "first_seen_kst": "2026-07-26T19:58:09+09:00",
-      "lanes": {
-        "live": "2026-07-26T19:58:09+09:00"
-      },
-      "last_seen_kst": "2026-07-26T19:58:09+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12107667",
-      "source": "매일경제",
-      "title": "호실적에 배당 짭짤…피난처된 증권·금융株"
     },
     "link:b00dc467e2a7af9105526d1e": {
       "first_seen_kst": "2026-08-06T19:07:52+09:00",
@@ -5541,16 +5360,6 @@
       "source": "머니투데이",
       "title": "\"이 정도 폭락은 심하지\" 코스피 반등 시도...'공포의 7월' 뒤엔 다시 뛸까"
     },
-    "link:b47086ad247db0728f1e0c11": {
-      "first_seen_kst": "2026-07-26T17:47:43+09:00",
-      "lanes": {
-        "live": "2026-07-26T17:47:43+09:00"
-      },
-      "last_seen_kst": "2026-07-26T17:47:43+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12107666",
-      "source": "매일경제",
-      "title": "이번주 삼전닉스 실적 발표…증권사 \"AI 아직 고점아냐\""
-    },
     "link:b48435de7dcad6da2f04db7e": {
       "first_seen_kst": "2026-08-06T17:14:58+09:00",
       "lanes": {
@@ -5650,6 +5459,16 @@
       "link": "https://www.etoday.co.kr/news/view/2607641",
       "source": "이투데이",
       "title": "[특징주] 우리금융지주, 호실적·주주환원 확대에 7%대 급등"
+    },
+    "link:b740d005d9b106c3277dd3da": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
+      "lanes": {
+        "live": "2026-08-09T23:14:43+09:00"
+      },
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.mt.co.kr/world/2026/08/08/2026080800594465382",
+      "source": "머니투데이",
+      "title": "\"SK하이닉스, 中 충칭공장 지분 일부 처분 검토…4조원 규모 자산\""
     },
     "link:b7c09b431992a1539ba670f1": {
       "first_seen_kst": "2026-08-05T20:55:18+09:00",
@@ -5971,16 +5790,6 @@
       "link": "https://www.mt.co.kr/industry/2026/07/30/2026072920125523331",
       "source": "머니투데이",
       "title": "SK하이닉스 \"엔비디아 등 10여곳과 장기계약\"…피크아웃 우려 지웠다"
-    },
-    "link:c4b7266b5d5756303f152c4e": {
-      "first_seen_kst": "2026-07-26T11:32:47+09:00",
-      "lanes": {
-        "live": "2026-07-26T11:32:47+09:00"
-      },
-      "last_seen_kst": "2026-07-26T11:32:47+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607452",
-      "source": "이투데이",
-      "title": "한화오션, 남미 맞춤형 FPSO 표준모델 선급 인증…수주 경쟁력 강화"
     },
     "link:c57c8529d5bb9077856b0026": {
       "first_seen_kst": "2026-08-06T14:49:56+09:00",
@@ -6461,16 +6270,6 @@
       "link": "https://www.etnews.com/20260806000224",
       "source": "전자신문",
       "title": "롯데에너지머티리얼즈, 매출액 1942억·영업손실 169억 기록"
-    },
-    "link:d71028cb1e5fff163b814a1e": {
-      "first_seen_kst": "2026-07-26T17:28:10+09:00",
-      "lanes": {
-        "live": "2026-07-26T17:28:10+09:00"
-      },
-      "last_seen_kst": "2026-07-26T17:28:10+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607241",
-      "source": "이투데이",
-      "title": "현대차그룹, 매출 82조 '역대 최대'…하반기 ‘신차 모멘텀’ 승부수"
     },
     "link:d7aa3d7d1fe9088e10ccfbdd": {
       "first_seen_kst": "2026-07-30T14:22:54+09:00",
@@ -7083,16 +6882,6 @@
       "source": "이투데이",
       "title": "에코프로, 영업익 전년比 102.7%↑…신사업·소재 다각화 박차 [종합]"
     },
-    "link:eeb35852a1d81a17e3672854": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01889286645518456",
-      "source": "이데일리",
-      "title": "케빈 워시式 '깜깜이' FOMC…월가 '동결 vs 인상' 팽팽"
-    },
     "link:ef2e5ffd7a578fed129b4dc8": {
       "first_seen_kst": "2026-07-28T10:57:48+09:00",
       "lanes": {
@@ -7534,16 +7323,6 @@
       "source": "뉴시스 경제",
       "title": "산업장관 \"영업익 N% 성과급 반대…자본주의 발전 안돼\""
     },
-    "original:02d327d7d43ef19d630a97c1": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.mt.co.kr/world/2026/07/24/2026072406123266842",
-      "source": "머니투데이",
-      "title": "유가 100달러 돌파, AI 수익성 우려까지…나스닥 2.15% 뚝[뉴욕마감]"
-    },
     "original:030574c45001d81a37cc3f4b": {
       "first_seen_kst": "2026-08-08T05:47:34+09:00",
       "lanes": {
@@ -7603,16 +7382,6 @@
       "link": "https://www.mk.co.kr/news/business/12107558",
       "source": "매일경제",
       "title": "샘 올트먼 만난 이재용, 무슨 이야기 나눴나…AI 반도체 협력 논의?"
-    },
-    "original:04d17d88591b4e412b2c6e08": {
-      "first_seen_kst": "2026-07-26T17:07:38+09:00",
-      "lanes": {
-        "live": "2026-07-26T17:07:38+09:00"
-      },
-      "last_seen_kst": "2026-07-26T17:07:38+09:00",
-      "link": "https://www.etnews.com/20260722000253",
-      "source": "전자신문",
-      "title": "레이크머티리얼즈, 반도체 소재 매출 1100억원 정조준…글로벌 고객사 확대"
     },
     "original:0503823083212b4b9db067bd": {
       "first_seen_kst": "2026-08-04T17:02:23+09:00",
@@ -7703,6 +7472,16 @@
       "link": "https://www.etoday.co.kr/news/view/2607644",
       "source": "이투데이",
       "title": "[특징주] JB금융지주, 장 초반 7%대 강세⋯“분기 최대 실적에 주주환원↑”"
+    },
+    "original:07cf3301b80dc46c8f39ddf1": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
+      "lanes": {
+        "live": "2026-08-09T23:14:43+09:00"
+      },
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260807122900003",
+      "source": "연합뉴스",
+      "title": "SK하이닉스, 용인 2기 팹·청주 M17에 총 54조 투자 확정 | 연합뉴스"
     },
     "original:082cc640d21940efef7edab1": {
       "first_seen_kst": "2026-08-03T17:43:05+09:00",
@@ -7944,16 +7723,6 @@
       "source": "이투데이",
       "title": "나라마다 다른 인증, 고관세·물류비 부담…“중남미 진출, 정부 지원 뒷받침돼야”[라틴 홀린 K뷰티]"
     },
-    "original:17265d9cc0d540335e987cbd": {
-      "first_seen_kst": "2026-07-26T12:39:20+09:00",
-      "lanes": {
-        "live": "2026-07-26T12:39:20+09:00"
-      },
-      "last_seen_kst": "2026-07-26T12:39:20+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01535046645518456",
-      "source": "이데일리",
-      "title": "코스피 7000선 회복할까…빅테크·FOMC에 쏠린 눈[주간증시전망]"
-    },
     "original:17421acd624ffa5074ec60c2": {
       "first_seen_kst": "2026-07-29T13:04:42+09:00",
       "lanes": {
@@ -8033,17 +7802,6 @@
       "link": "https://www.etoday.co.kr/news/view/2612415",
       "source": "이투데이",
       "title": "BK21 연구성과 10년 새 59% 증가…석·박사 유학생도 '유출→유입'"
-    },
-    "original:18ed9c104ab75031c4899302": {
-      "first_seen_kst": "2026-07-26T18:32:46+09:00",
-      "lanes": {
-        "live": "2026-07-26T18:32:46+09:00",
-        "preopen": "2026-07-28T06:32:57+09:00"
-      },
-      "last_seen_kst": "2026-07-28T06:32:57+09:00",
-      "link": "https://www.mk.co.kr/news/business/12107697",
-      "source": "매일경제",
-      "title": "SK, MS에 메모리 장기 공급…앤트로픽과 데이터센터 추진"
     },
     "original:190a1cbb1f74a20009ca551d": {
       "first_seen_kst": "2026-08-06T15:58:04+09:00",
@@ -8244,16 +8002,6 @@
       "link": "https://www.newsis.com/view/NISX20260806_0003738865",
       "source": "뉴시스 산업",
       "title": "\"메모리 매출 1조 달러 눈앞\"…삼성전자·SK하이닉스 호황 이어지나"
-    },
-    "original:25053e1d12733eaf70bdf2d3": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.asiae.co.kr/article/2026072313085895394",
-      "source": "아시아경제",
-      "title": "\"CXMT 상장, SMIC와는 다르다\"…ETF 뭐로 담을까[주末머니]"
     },
     "original:252d08ebfaf6940aac98d3c4": {
       "first_seen_kst": "2026-08-01T22:39:38+09:00",
@@ -8704,16 +8452,6 @@
       "link": "https://www.newsis.com/view/NISX20260731_0003731142",
       "source": "뉴시스",
       "title": "엔화, 日 통화당국 시장 개입에 1달러=159엔대 후반 급등 출발"
-    },
-    "original:34a1dfc380dfe24a3f83ab08": {
-      "first_seen_kst": "2026-07-26T12:39:20+09:00",
-      "lanes": {
-        "live": "2026-07-26T12:39:20+09:00"
-      },
-      "last_seen_kst": "2026-07-26T12:39:20+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12107527",
-      "source": "매일경제",
-      "title": "“월요일 하닉 들어갑니다”…증권가 “2분기 영업익 64조·이익률 75% 이상”"
     },
     "original:3544e1ad74d62e14ca141636": {
       "first_seen_kst": "2026-08-05T18:32:44+09:00",
@@ -9998,16 +9736,6 @@
       "source": "매일경제",
       "title": "앱셀레라 바이오로직스, 2분기 매출액 410만 달러..전년비 76% 감소"
     },
-    "original:6813afa7b5a1960da5de2b30": {
-      "first_seen_kst": "2026-07-26T14:32:49+09:00",
-      "lanes": {
-        "live": "2026-07-26T14:32:49+09:00"
-      },
-      "last_seen_kst": "2026-07-26T14:32:49+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607433",
-      "source": "이투데이",
-      "title": "외형 지킨 네이버ㆍ내실 다진 카카오, 2분기 나란히 호실적…하반기 AI 진검승부"
-    },
     "original:6838e2c1c9c420c5ae9275b4": {
       "first_seen_kst": "2026-08-06T07:09:51+09:00",
       "lanes": {
@@ -10047,16 +9775,6 @@
       "link": "https://www.mk.co.kr/news/stock/12114004",
       "source": "매일경제",
       "title": "RBC베어링스, 1분기 매출·EPS 시장 예상 크게 상회…항공우주·방산 수주잔고 130% 급증"
-    },
-    "original:69a51098d0be685027dda409": {
-      "first_seen_kst": "2026-07-26T17:28:10+09:00",
-      "lanes": {
-        "live": "2026-07-26T17:28:10+09:00"
-      },
-      "last_seen_kst": "2026-07-26T17:28:10+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607241",
-      "source": "이투데이",
-      "title": "현대차그룹, 매출 82조 '역대 최대'…하반기 ‘신차 모멘텀’ 승부수"
     },
     "original:69ad7418bc13b28435d21e97": {
       "first_seen_kst": "2026-07-30T12:14:29+09:00",
@@ -10548,6 +10266,16 @@
       "source": "지디넷코리아",
       "title": "[컨콜] LG CNS \"2분기 영업익 감소, 일시 프로젝트·투자 영향\""
     },
+    "original:7bda6237244904425136f6dd": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
+      "lanes": {
+        "live": "2026-08-09T23:14:43+09:00"
+      },
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.mt.co.kr/world/2026/08/08/2026080800594465382",
+      "source": "머니투데이",
+      "title": "\"SK하이닉스, 中 충칭공장 지분 일부 처분 검토…4조원 규모 자산\""
+    },
     "original:7be43c209e84e2152f5541dc": {
       "first_seen_kst": "2026-08-03T01:37:23+09:00",
       "lanes": {
@@ -10918,16 +10646,6 @@
       "source": "연합뉴스",
       "title": "美, 中겨냥해 외국산 로봇 수입 금지…中 \"美 이익만 훼손할 뿐\"(종합) | 연합뉴스"
     },
-    "original:8bde117be703d02289998151": {
-      "first_seen_kst": "2026-07-26T17:47:43+09:00",
-      "lanes": {
-        "live": "2026-07-26T17:47:43+09:00"
-      },
-      "last_seen_kst": "2026-07-26T17:47:43+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12107666",
-      "source": "매일경제",
-      "title": "이번주 삼전닉스 실적 발표…증권사 \"AI 아직 고점아냐\""
-    },
     "original:8bfc177a5a01d3214e3ba5a0": {
       "first_seen_kst": "2026-08-06T19:20:51+09:00",
       "lanes": {
@@ -10977,16 +10695,6 @@
       "link": "https://www.mk.co.kr/news/business/12110155",
       "source": "매일경제",
       "title": "[속보] SK하이닉스 2분기 영업익 60.5조…상반기 100조 육박"
-    },
-    "original:8da5e9cf44b1431b26b96966": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01889286645518456",
-      "source": "이데일리",
-      "title": "케빈 워시式 '깜깜이' FOMC…월가 '동결 vs 인상' 팽팽"
     },
     "original:8f413a9de2d996d99aa66fe1": {
       "first_seen_kst": "2026-08-01T18:27:42+09:00",
@@ -11329,15 +11037,15 @@
       "source": "지디넷코리아",
       "title": "아마존, 오픈AI에 72조원 투자 완료…지분 5% 확보"
     },
-    "original:a012f2e2d82fe06638eaf3b3": {
-      "first_seen_kst": "2026-07-26T19:58:09+09:00",
+    "original:9fddb70c9d7bd4daa66fbb31": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
       "lanes": {
-        "live": "2026-07-26T19:58:09+09:00"
+        "live": "2026-08-09T23:14:43+09:00"
       },
-      "last_seen_kst": "2026-07-26T19:58:09+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12107667",
-      "source": "매일경제",
-      "title": "호실적에 배당 짭짤…피난처된 증권·금융株"
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/08/08/2026080714455982199",
+      "source": "머니투데이",
+      "title": "메모리반도체 품귀에 '장기계약' 러시..샌디스크·난야도 LTA 확대"
     },
     "original:a1156135776c2e7c09a57d20": {
       "first_seen_kst": "2026-08-04T00:14:12+09:00",
@@ -11820,16 +11528,6 @@
       "source": "뉴시스",
       "title": "보령, 올해 상반기 매출 5350억원…\"역대 최대\""
     },
-    "original:b55ef493e5153df422f7b6ec": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607498",
-      "source": "이투데이",
-      "title": "‘AI 수도’ 총집결한 K기업…엔비디아와 미래 생태계 판 짠다"
-    },
     "original:b58b83ad128e3e9505268853": {
       "first_seen_kst": "2026-08-05T07:47:36+09:00",
       "lanes": {
@@ -11899,16 +11597,6 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=07983526645520096",
       "source": "이데일리",
       "title": "[美특징주]애브비, 2Q 호실적 불구 아포지 인수 비용 부담에 가이던스 하향...주가↓"
-    },
-    "original:b814102b7761834bca29cf14": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/07/26/2026072610421684519",
-      "source": "머니투데이",
-      "title": "국민연금, 실리콘밸리 대표 벤처캐피털 6사와 투자협력 MOU"
     },
     "original:b8eb6320023905829209554e": {
       "first_seen_kst": "2026-07-30T11:33:29+09:00",
@@ -12089,16 +11777,6 @@
       "link": "https://biz.heraldcorp.com/article/10821575",
       "source": "헤럴드경제",
       "title": "삼성카드 2분기 순이익 1542억원…작년 동기比 2.0%↑"
-    },
-    "original:c1d3620f83fd7b79708e1db5": {
-      "first_seen_kst": "2026-07-26T11:32:47+09:00",
-      "lanes": {
-        "live": "2026-07-26T11:32:47+09:00"
-      },
-      "last_seen_kst": "2026-07-26T11:32:47+09:00",
-      "link": "https://www.etnews.com/20260724000242",
-      "source": "전자신문",
-      "title": "KT, 상반기 금융권 AX 사업 22건 수주·800명 전담조직 배치…차세대 성장동력 정조준"
     },
     "original:c1e4c2c229d0cde3998d501a": {
       "first_seen_kst": "2026-08-05T02:53:08+09:00",
@@ -13012,16 +12690,6 @@
       "source": "이투데이",
       "title": "GS25 신선강화점 1000호 개점…일매출 일반점보다 100만원 높아"
     },
-    "original:e250cfbae3e12f0232d8e179": {
-      "first_seen_kst": "2026-07-26T11:54:14+09:00",
-      "lanes": {
-        "live": "2026-07-26T11:54:14+09:00"
-      },
-      "last_seen_kst": "2026-07-26T11:54:14+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607488",
-      "source": "이투데이",
-      "title": "대한민국관 엿새간 7만2143명 방문…스토어 매출 1.4억 [韓 첫 세계유산위]"
-    },
     "original:e27d144a8aa934780937514f": {
       "first_seen_kst": "2026-07-30T16:24:57+09:00",
       "lanes": {
@@ -13082,16 +12750,6 @@
       "source": "이투데이",
       "title": "채명신 경기도의원 \"실적보다 도민 체감\"…기흥 문화벨트 구축 제안"
     },
-    "original:e5fb684f273deaa897977c63": {
-      "first_seen_kst": "2026-07-26T12:39:20+09:00",
-      "lanes": {
-        "live": "2026-07-26T12:39:20+09:00"
-      },
-      "last_seen_kst": "2026-07-26T12:39:20+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12107533",
-      "source": "매일경제",
-      "title": "“이제 레버리지·곱버스 말곤 복구 안돼”…초고위험에도 식지 않는 투기 광풍"
-    },
     "original:e660dba3caccd641b3f16d7d": {
       "first_seen_kst": "2026-08-03T19:09:52+09:00",
       "lanes": {
@@ -13133,16 +12791,6 @@
       "source": "뉴시스",
       "title": "롯데하이마트, 2분기 총매출 7339억…전년比 소폭 증가"
     },
-    "original:e804875496945aff09af4964": {
-      "first_seen_kst": "2026-07-26T19:14:17+09:00",
-      "lanes": {
-        "live": "2026-07-26T19:14:17+09:00"
-      },
-      "last_seen_kst": "2026-07-26T19:14:17+09:00",
-      "link": "https://biz.heraldcorp.com/article/10819496",
-      "source": "헤럴드경제",
-      "title": "HD현대重, 상선 수주 연간 목표 돌파…고부가선 대거 계약 효과 [비즈360]"
-    },
     "original:e832cd4bc1319feabb527cf2": {
       "first_seen_kst": "2026-08-04T13:21:14+09:00",
       "lanes": {
@@ -13172,16 +12820,6 @@
       "link": "https://biz.heraldcorp.com/article/10827223",
       "source": "헤럴드경제",
       "title": "현대건설, 상반기 영업이익 4427억원…수주잔고 100조원 돌파"
-    },
-    "original:e9302ac33b8ff94f4e5f9500": {
-      "first_seen_kst": "2026-07-26T14:54:21+09:00",
-      "lanes": {
-        "live": "2026-07-26T14:54:21+09:00"
-      },
-      "last_seen_kst": "2026-07-26T14:54:21+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607504",
-      "source": "이투데이",
-      "title": "“트럼프 대체 관세, 기존 상호관세 손실분 60%도 대체 못 해”"
     },
     "original:e961b46f87ffb427726fab73": {
       "first_seen_kst": "2026-08-02T09:52:51+09:00",
@@ -13624,16 +13262,6 @@
       "source": "매일경제",
       "title": "인디비어, 슈퍼누스와 대등합병..연매출 22억 달러 CNS 제약사 탄생"
     },
-    "original:faef9287ef0b459068aa119a": {
-      "first_seen_kst": "2026-07-26T11:32:47+09:00",
-      "lanes": {
-        "live": "2026-07-26T11:32:47+09:00"
-      },
-      "last_seen_kst": "2026-07-26T11:32:47+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607452",
-      "source": "이투데이",
-      "title": "한화오션, 남미 맞춤형 FPSO 표준모델 선급 인증…수주 경쟁력 강화"
-    },
     "original:fbc5836993f0e495df8617cb": {
       "first_seen_kst": "2026-08-06T16:20:19+09:00",
       "lanes": {
@@ -13784,16 +13412,6 @@
       "source": "뉴시스 경제",
       "title": "산업장관 \"영업익 N% 성과급 반대…자본주의 발전 안돼\""
     },
-    "title:02d327d7d43ef19d630a97c1": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.mt.co.kr/world/2026/07/24/2026072406123266842",
-      "source": "머니투데이",
-      "title": "유가 100달러 돌파, AI 수익성 우려까지…나스닥 2.15% 뚝[뉴욕마감]"
-    },
     "title:030574c45001d81a37cc3f4b": {
       "first_seen_kst": "2026-08-08T05:47:34+09:00",
       "lanes": {
@@ -13853,16 +13471,6 @@
       "link": "https://www.mk.co.kr/news/business/12107558",
       "source": "매일경제",
       "title": "샘 올트먼 만난 이재용, 무슨 이야기 나눴나…AI 반도체 협력 논의?"
-    },
-    "title:04d17d88591b4e412b2c6e08": {
-      "first_seen_kst": "2026-07-26T17:07:38+09:00",
-      "lanes": {
-        "live": "2026-07-26T17:07:38+09:00"
-      },
-      "last_seen_kst": "2026-07-26T17:07:38+09:00",
-      "link": "https://www.etnews.com/20260722000253",
-      "source": "전자신문",
-      "title": "레이크머티리얼즈, 반도체 소재 매출 1100억원 정조준…글로벌 고객사 확대"
     },
     "title:0503823083212b4b9db067bd": {
       "first_seen_kst": "2026-08-04T17:02:23+09:00",
@@ -13953,6 +13561,16 @@
       "link": "https://www.etoday.co.kr/news/view/2607644",
       "source": "이투데이",
       "title": "[특징주] JB금융지주, 장 초반 7%대 강세⋯“분기 최대 실적에 주주환원↑”"
+    },
+    "title:07cf3301b80dc46c8f39ddf1": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
+      "lanes": {
+        "live": "2026-08-09T23:14:43+09:00"
+      },
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260807122900003",
+      "source": "연합뉴스",
+      "title": "SK하이닉스, 용인 2기 팹·청주 M17에 총 54조 투자 확정 | 연합뉴스"
     },
     "title:082cc640d21940efef7edab1": {
       "first_seen_kst": "2026-08-03T17:43:05+09:00",
@@ -14194,16 +13812,6 @@
       "source": "이투데이",
       "title": "나라마다 다른 인증, 고관세·물류비 부담…“중남미 진출, 정부 지원 뒷받침돼야”[라틴 홀린 K뷰티]"
     },
-    "title:17265d9cc0d540335e987cbd": {
-      "first_seen_kst": "2026-07-26T12:39:20+09:00",
-      "lanes": {
-        "live": "2026-07-26T12:39:20+09:00"
-      },
-      "last_seen_kst": "2026-07-26T12:39:20+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01535046645518456",
-      "source": "이데일리",
-      "title": "코스피 7000선 회복할까…빅테크·FOMC에 쏠린 눈[주간증시전망]"
-    },
     "title:17421acd624ffa5074ec60c2": {
       "first_seen_kst": "2026-07-29T13:04:42+09:00",
       "lanes": {
@@ -14283,17 +13891,6 @@
       "link": "https://www.etoday.co.kr/news/view/2612415",
       "source": "이투데이",
       "title": "BK21 연구성과 10년 새 59% 증가…석·박사 유학생도 '유출→유입'"
-    },
-    "title:18ed9c104ab75031c4899302": {
-      "first_seen_kst": "2026-07-26T18:32:46+09:00",
-      "lanes": {
-        "live": "2026-07-26T18:32:46+09:00",
-        "preopen": "2026-07-28T06:32:57+09:00"
-      },
-      "last_seen_kst": "2026-07-28T06:32:57+09:00",
-      "link": "https://www.mk.co.kr/news/business/12107697",
-      "source": "매일경제",
-      "title": "SK, MS에 메모리 장기 공급…앤트로픽과 데이터센터 추진"
     },
     "title:190a1cbb1f74a20009ca551d": {
       "first_seen_kst": "2026-08-06T15:58:04+09:00",
@@ -14504,16 +14101,6 @@
       "link": "https://www.newsis.com/view/NISX20260806_0003738865",
       "source": "뉴시스 산업",
       "title": "\"메모리 매출 1조 달러 눈앞\"…삼성전자·SK하이닉스 호황 이어지나"
-    },
-    "title:25053e1d12733eaf70bdf2d3": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.asiae.co.kr/article/2026072313085895394",
-      "source": "아시아경제",
-      "title": "\"CXMT 상장, SMIC와는 다르다\"…ETF 뭐로 담을까[주末머니]"
     },
     "title:252d08ebfaf6940aac98d3c4": {
       "first_seen_kst": "2026-08-01T22:39:38+09:00",
@@ -14964,16 +14551,6 @@
       "link": "https://www.newsis.com/view/NISX20260731_0003731142",
       "source": "뉴시스",
       "title": "엔화, 日 통화당국 시장 개입에 1달러=159엔대 후반 급등 출발"
-    },
-    "title:34a1dfc380dfe24a3f83ab08": {
-      "first_seen_kst": "2026-07-26T12:39:20+09:00",
-      "lanes": {
-        "live": "2026-07-26T12:39:20+09:00"
-      },
-      "last_seen_kst": "2026-07-26T12:39:20+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12107527",
-      "source": "매일경제",
-      "title": "“월요일 하닉 들어갑니다”…증권가 “2분기 영업익 64조·이익률 75% 이상”"
     },
     "title:3544e1ad74d62e14ca141636": {
       "first_seen_kst": "2026-08-05T18:32:44+09:00",
@@ -16268,16 +15845,6 @@
       "source": "매일경제",
       "title": "앱셀레라 바이오로직스, 2분기 매출액 410만 달러..전년비 76% 감소"
     },
-    "title:6813afa7b5a1960da5de2b30": {
-      "first_seen_kst": "2026-07-26T14:32:49+09:00",
-      "lanes": {
-        "live": "2026-07-26T14:32:49+09:00"
-      },
-      "last_seen_kst": "2026-07-26T14:32:49+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607433",
-      "source": "이투데이",
-      "title": "외형 지킨 네이버ㆍ내실 다진 카카오, 2분기 나란히 호실적…하반기 AI 진검승부"
-    },
     "title:6838e2c1c9c420c5ae9275b4": {
       "first_seen_kst": "2026-08-06T07:09:51+09:00",
       "lanes": {
@@ -16317,16 +15884,6 @@
       "link": "https://www.mk.co.kr/news/stock/12114004",
       "source": "매일경제",
       "title": "RBC베어링스, 1분기 매출·EPS 시장 예상 크게 상회…항공우주·방산 수주잔고 130% 급증"
-    },
-    "title:69a51098d0be685027dda409": {
-      "first_seen_kst": "2026-07-26T17:28:10+09:00",
-      "lanes": {
-        "live": "2026-07-26T17:28:10+09:00"
-      },
-      "last_seen_kst": "2026-07-26T17:28:10+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607241",
-      "source": "이투데이",
-      "title": "현대차그룹, 매출 82조 '역대 최대'…하반기 ‘신차 모멘텀’ 승부수"
     },
     "title:69ad7418bc13b28435d21e97": {
       "first_seen_kst": "2026-07-30T12:14:29+09:00",
@@ -16829,6 +16386,16 @@
       "source": "지디넷코리아",
       "title": "[컨콜] LG CNS \"2분기 영업익 감소, 일시 프로젝트·투자 영향\""
     },
+    "title:7bda6237244904425136f6dd": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
+      "lanes": {
+        "live": "2026-08-09T23:14:43+09:00"
+      },
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.mt.co.kr/world/2026/08/08/2026080800594465382",
+      "source": "머니투데이",
+      "title": "\"SK하이닉스, 中 충칭공장 지분 일부 처분 검토…4조원 규모 자산\""
+    },
     "title:7be43c209e84e2152f5541dc": {
       "first_seen_kst": "2026-08-03T01:37:23+09:00",
       "lanes": {
@@ -17199,16 +16766,6 @@
       "source": "연합뉴스",
       "title": "美, 中겨냥해 외국산 로봇 수입 금지…中 \"美 이익만 훼손할 뿐\"(종합) | 연합뉴스"
     },
-    "title:8bde117be703d02289998151": {
-      "first_seen_kst": "2026-07-26T17:47:43+09:00",
-      "lanes": {
-        "live": "2026-07-26T17:47:43+09:00"
-      },
-      "last_seen_kst": "2026-07-26T17:47:43+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12107666",
-      "source": "매일경제",
-      "title": "이번주 삼전닉스 실적 발표…증권사 \"AI 아직 고점아냐\""
-    },
     "title:8bfc177a5a01d3214e3ba5a0": {
       "first_seen_kst": "2026-08-06T19:20:51+09:00",
       "lanes": {
@@ -17258,16 +16815,6 @@
       "link": "https://www.mk.co.kr/news/business/12110155",
       "source": "매일경제",
       "title": "[속보] SK하이닉스 2분기 영업익 60.5조…상반기 100조 육박"
-    },
-    "title:8da5e9cf44b1431b26b96966": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01889286645518456",
-      "source": "이데일리",
-      "title": "케빈 워시式 '깜깜이' FOMC…월가 '동결 vs 인상' 팽팽"
     },
     "title:8f413a9de2d996d99aa66fe1": {
       "first_seen_kst": "2026-08-01T18:27:42+09:00",
@@ -17610,15 +17157,15 @@
       "source": "지디넷코리아",
       "title": "아마존, 오픈AI에 72조원 투자 완료…지분 5% 확보"
     },
-    "title:a012f2e2d82fe06638eaf3b3": {
-      "first_seen_kst": "2026-07-26T19:58:09+09:00",
+    "title:9fddb70c9d7bd4daa66fbb31": {
+      "first_seen_kst": "2026-08-09T23:14:43+09:00",
       "lanes": {
-        "live": "2026-07-26T19:58:09+09:00"
+        "live": "2026-08-09T23:14:43+09:00"
       },
-      "last_seen_kst": "2026-07-26T19:58:09+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12107667",
-      "source": "매일경제",
-      "title": "호실적에 배당 짭짤…피난처된 증권·금융株"
+      "last_seen_kst": "2026-08-09T23:14:43+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/08/08/2026080714455982199",
+      "source": "머니투데이",
+      "title": "메모리반도체 품귀에 '장기계약' 러시..샌디스크·난야도 LTA 확대"
     },
     "title:a1156135776c2e7c09a57d20": {
       "first_seen_kst": "2026-08-04T00:14:12+09:00",
@@ -18101,16 +17648,6 @@
       "source": "뉴시스",
       "title": "보령, 올해 상반기 매출 5350억원…\"역대 최대\""
     },
-    "title:b55ef493e5153df422f7b6ec": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607498",
-      "source": "이투데이",
-      "title": "‘AI 수도’ 총집결한 K기업…엔비디아와 미래 생태계 판 짠다"
-    },
     "title:b58b83ad128e3e9505268853": {
       "first_seen_kst": "2026-08-05T07:47:36+09:00",
       "lanes": {
@@ -18180,16 +17717,6 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=07983526645520096",
       "source": "이데일리",
       "title": "[美특징주]애브비, 2Q 호실적 불구 아포지 인수 비용 부담에 가이던스 하향...주가↓"
-    },
-    "title:b814102b7761834bca29cf14": {
-      "first_seen_kst": "2026-07-26T23:14:25+09:00",
-      "lanes": {
-        "live": "2026-07-26T23:14:25+09:00"
-      },
-      "last_seen_kst": "2026-07-26T23:14:25+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/07/26/2026072610421684519",
-      "source": "머니투데이",
-      "title": "국민연금, 실리콘밸리 대표 벤처캐피털 6사와 투자협력 MOU"
     },
     "title:b8eb6320023905829209554e": {
       "first_seen_kst": "2026-07-30T11:33:29+09:00",
@@ -18370,16 +17897,6 @@
       "link": "https://biz.heraldcorp.com/article/10821575",
       "source": "헤럴드경제",
       "title": "삼성카드 2분기 순이익 1542억원…작년 동기比 2.0%↑"
-    },
-    "title:c1d3620f83fd7b79708e1db5": {
-      "first_seen_kst": "2026-07-26T11:32:47+09:00",
-      "lanes": {
-        "live": "2026-07-26T11:32:47+09:00"
-      },
-      "last_seen_kst": "2026-07-26T11:32:47+09:00",
-      "link": "https://www.etnews.com/20260724000242",
-      "source": "전자신문",
-      "title": "KT, 상반기 금융권 AX 사업 22건 수주·800명 전담조직 배치…차세대 성장동력 정조준"
     },
     "title:c1e4c2c229d0cde3998d501a": {
       "first_seen_kst": "2026-08-05T02:53:08+09:00",
@@ -19273,16 +18790,6 @@
       "source": "이투데이",
       "title": "GS25 신선강화점 1000호 개점…일매출 일반점보다 100만원 높아"
     },
-    "title:e250cfbae3e12f0232d8e179": {
-      "first_seen_kst": "2026-07-26T11:54:14+09:00",
-      "lanes": {
-        "live": "2026-07-26T11:54:14+09:00"
-      },
-      "last_seen_kst": "2026-07-26T11:54:14+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607488",
-      "source": "이투데이",
-      "title": "대한민국관 엿새간 7만2143명 방문…스토어 매출 1.4억 [韓 첫 세계유산위]"
-    },
     "title:e27d144a8aa934780937514f": {
       "first_seen_kst": "2026-07-30T16:24:57+09:00",
       "lanes": {
@@ -19343,16 +18850,6 @@
       "source": "이투데이",
       "title": "채명신 경기도의원 \"실적보다 도민 체감\"…기흥 문화벨트 구축 제안"
     },
-    "title:e5fb684f273deaa897977c63": {
-      "first_seen_kst": "2026-07-26T12:39:20+09:00",
-      "lanes": {
-        "live": "2026-07-26T12:39:20+09:00"
-      },
-      "last_seen_kst": "2026-07-26T12:39:20+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12107533",
-      "source": "매일경제",
-      "title": "“이제 레버리지·곱버스 말곤 복구 안돼”…초고위험에도 식지 않는 투기 광풍"
-    },
     "title:e660dba3caccd641b3f16d7d": {
       "first_seen_kst": "2026-08-03T19:09:52+09:00",
       "lanes": {
@@ -19394,16 +18891,6 @@
       "source": "뉴시스",
       "title": "롯데하이마트, 2분기 총매출 7339억…전년比 소폭 증가"
     },
-    "title:e804875496945aff09af4964": {
-      "first_seen_kst": "2026-07-26T19:14:17+09:00",
-      "lanes": {
-        "live": "2026-07-26T19:14:17+09:00"
-      },
-      "last_seen_kst": "2026-07-26T19:14:17+09:00",
-      "link": "https://biz.heraldcorp.com/article/10819496",
-      "source": "헤럴드경제",
-      "title": "HD현대重, 상선 수주 연간 목표 돌파…고부가선 대거 계약 효과 [비즈360]"
-    },
     "title:e832cd4bc1319feabb527cf2": {
       "first_seen_kst": "2026-08-04T13:21:14+09:00",
       "lanes": {
@@ -19433,16 +18920,6 @@
       "link": "https://biz.heraldcorp.com/article/10827223",
       "source": "헤럴드경제",
       "title": "현대건설, 상반기 영업이익 4427억원…수주잔고 100조원 돌파"
-    },
-    "title:e9302ac33b8ff94f4e5f9500": {
-      "first_seen_kst": "2026-07-26T14:54:21+09:00",
-      "lanes": {
-        "live": "2026-07-26T14:54:21+09:00"
-      },
-      "last_seen_kst": "2026-07-26T14:54:21+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607504",
-      "source": "이투데이",
-      "title": "“트럼프 대체 관세, 기존 상호관세 손실분 60%도 대체 못 해”"
     },
     "title:e961b46f87ffb427726fab73": {
       "first_seen_kst": "2026-08-02T09:52:51+09:00",
@@ -19874,16 +19351,6 @@
       "source": "매일경제",
       "title": "인디비어, 슈퍼누스와 대등합병..연매출 22억 달러 CNS 제약사 탄생"
     },
-    "title:faef9287ef0b459068aa119a": {
-      "first_seen_kst": "2026-07-26T11:32:47+09:00",
-      "lanes": {
-        "live": "2026-07-26T11:32:47+09:00"
-      },
-      "last_seen_kst": "2026-07-26T11:32:47+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2607452",
-      "source": "이투데이",
-      "title": "한화오션, 남미 맞춤형 FPSO 표준모델 선급 인증…수주 경쟁력 강화"
-    },
     "title:fbc5836993f0e495df8617cb": {
       "first_seen_kst": "2026-08-06T16:20:19+09:00",
       "lanes": {
@@ -20005,5 +19472,5 @@
       "title": "최태원 회장 SK하닉 매수 48억원인 이유 있었네…사전공시 규정 최대치"
     }
   },
-  "updated_at_kst": "2026-08-09T11:22:54+09:00"
+  "updated_at_kst": "2026-08-09T23:14:43+09:00"
 }
