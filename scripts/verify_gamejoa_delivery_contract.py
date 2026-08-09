@@ -206,6 +206,7 @@ REQUIRED_RUNTIME_GUARD_SNIPPETS = [
     "runtime Telegram status mismatch",
     "GAMEJOA runtime delivery verified",
     "ALLOW_OFF_WINDOW_TELEGRAM",
+    'r"^\\d+\\)\\s+(?:\\[[^\\]]+\\]\\s*)?\\S"',
 ]
 
 REQUIRED_MAINTENANCE_CONTRACT_SNIPPETS = [
