@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import html
 import json
 import os
 import pathlib
@@ -33,6 +34,37 @@ def split_message(text: str) -> list[str]:
     return chunks
 
 
+def clean_source_url(url: str) -> str:
+    """Hide search-engine redirect noise and use the embedded article URL when available."""
+    try:
+        parsed = urllib.parse.urlparse(url)
+        host = parsed.netloc.lower()
+        if host.endswith("bing.com") and parsed.path.endswith("/news/apiclick.aspx"):
+            target = urllib.parse.parse_qs(parsed.query).get("url", [""])[0]
+            if target.startswith(("http://", "https://")):
+                return target
+    except Exception:
+        pass
+    return url
+
+
+def render_html(text: str) -> str:
+    """Escape normal text and render only source URLs as compact Telegram inline links."""
+    rendered: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("- 원문:"):
+            url = stripped.split(":", 1)[1].strip()
+            if url.startswith(("http://", "https://")):
+                target = clean_source_url(url)
+                rendered.append(
+                    f'- <a href="{html.escape(target, quote=True)}">[원문 뉴스보기]</a>'
+                )
+                continue
+        rendered.append(html.escape(line, quote=False))
+    return "\n".join(rendered)
+
+
 def main() -> int:
     if len(sys.argv) != 2:
         print("usage: qlex_telegram_send.py REPORT_PATH", file=sys.stderr)
@@ -59,9 +91,11 @@ def main() -> int:
     for index, chunk in enumerate(split_message(text), 1):
         if index > 1:
             chunk = f"[QLEX 감시 계속 {index}]\n\n{chunk}"
+        chunk_html = render_html(chunk)
         payload = urllib.parse.urlencode({
             "chat_id": chat_id,
-            "text": chunk,
+            "text": chunk_html,
+            "parse_mode": "HTML",
             "disable_web_page_preview": "true",
         }).encode("utf-8")
         request = urllib.request.Request(
