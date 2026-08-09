@@ -340,6 +340,8 @@ def render_report(items: list[dict[str, Any]], errors: list[str]) -> str:
     for index, item in enumerate(items[:6], start=1):
         category = str(item.get("category") or "전력망 정책")
         published = normalize(str(item.get("published") or "")) or "발표일 확인 필요"
+        url = normalize(str(item.get("url") or ""))
+        source_link = f"[공식 원문 보기]({url})" if url else "공식 원문 링크 확인 필요"
         lines.extend(
             [
                 f"\n## {index}. {item.get('title')}",
@@ -347,7 +349,7 @@ def render_report(items: list[dict[str, Any]], errors: list[str]) -> str:
                 f"- 기관: {item.get('source')}",
                 f"- 발표일: {published}",
                 f"- 투자 의미: {investment_meaning(category)}",
-                f"- 공식 원문: {item.get('url')}",
+                f"- 공식 원문: {source_link}",
             ]
         )
     if len(items) > 6:
