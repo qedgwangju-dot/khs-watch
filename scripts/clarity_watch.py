@@ -9,7 +9,7 @@ import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from zoneinfo import ZoneInfo
 
 from bs4 import BeautifulSoup
@@ -18,29 +18,40 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "clarity_watch_state.json"
 OUT_DIR = ROOT / "out"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
+SOURCE_VERSION = 2
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (compatible; KHS-CLARITY-Watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)",
+    "User-Agent": "Mozilla/5.0 (compatible; KHS-CLARITY-Watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)",
     "Accept-Language": "en-US,en;q=0.9",
+    "Accept": "text/html,application/xhtml+xml,application/xml,application/json;q=0.9,*/*;q=0.8",
 }
 OFFICIAL_DOMAINS = {
-    "www.congress.gov", "www.senate.gov", "www.banking.senate.gov",
-    "www.agriculture.senate.gov", "www.sec.gov", "www.cftc.gov",
-    "comments.cftc.gov", "www.whitehouse.gov",
+    "www.govinfo.gov",
+    "www.senate.gov",
+    "www.banking.senate.gov",
+    "www.agriculture.senate.gov",
+    "www.sec.gov",
+    "www.cftc.gov",
+    "www.federalregister.gov",
+    "www.whitehouse.gov",
 }
 TOPIC_RE = re.compile(
     r"\b(?:CLARITY(?:\s+Act)?|H\.?\s*R\.?\s*3633|Digital\s+Asset\s+Market\s+Clarity|digital\s+asset\s+market\s+structure|crypto\s+asset\s+market\s+structure)\b",
     re.I,
 )
-CRYPTO_RE = re.compile(r"\b(?:crypto|digital asset|blockchain|tokeni[sz]|non-security crypto asset)\b", re.I)
+CRYPTO_RE = re.compile(
+    r"\b(?:crypto(?:currency| asset)?s?|digital assets?|digital commodities?|blockchain|tokeni[sz](?:e|ed|ation)?|non-security crypto asset|stablecoin|decentralized finance|DeFi)\b",
+    re.I,
+)
 REG_ACTION_RE = re.compile(
-    r"\b(?:rule|rulemaking|propos(?:e|ed|al)|adopt(?:s|ed|ion)|final rule|interpretation|guidance|no-action|order|staff letter|framework|registration|market structure|jurisdiction|enforcement)\b",
+    r"\b(?:rule|rulemaking|propos(?:e|ed|al)|adopt(?:s|ed|ion)|final rule|interpretation|guidance|no-action|order|staff letter|framework|registration|market structure|jurisdiction|enforcement|exemptive relief)\b",
     re.I,
 )
 LEG_ACTION_RE = re.compile(
-    r"\b(?:markup|mark-up|vote|voted|advance(?:d)?|pass(?:ed|age)?|fail(?:ed|ure)?|reject(?:ed)?|cloture|floor|calendar|schedule|consideration|amendment|amended|new text|bill text|revised text|reported|referred|signed|signature|veto|became law|enacted|session adjourn|sine die)\b",
+    r"\b(?:markup|mark-up|vote|voted|advance(?:d)?|pass(?:ed|age)?|fail(?:ed|ure)?|reject(?:ed)?|cloture|floor|calendar|schedule|consideration|amendment|amended|new text|bill text|revised text|reported|referred|signed|signature|veto|became law|enacted|session adjourn|sine die|read twice)\b",
     re.I,
 )
+
 
 @dataclass(frozen=True)
 class Event:
@@ -94,6 +105,10 @@ def abs_url(base, href):
     return urllib.parse.urljoin(base, href)
 
 
+def local_tag(tag):
+    return str(tag).split("}")[-1]
+
+
 def classify_leg(text):
     t = text.lower()
     if "cloture" in t:
@@ -113,44 +128,56 @@ def classify_leg(text):
     return "공식 입법 진행 변화"
 
 
-def collect_congress(errors):
+def collect_govinfo(errors):
     events = []
-    actions_url = "https://www.congress.gov/bill/119th-congress/house-bill/3633/all-actions"
-    text_url = "https://www.congress.gov/bill/119th-congress/house-bill/3633/text"
+    status_url = "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119hr3633.xml"
     try:
-        soup = soup_for(actions_url)
-        for row in soup.find_all(["tr", "li"]):
-            text = clean(row.get_text(" ", strip=True))
+        root = ET.fromstring(fetch(status_url))
+        for item in root.iter():
+            if local_tag(item.tag) != "item":
+                continue
+            vals = {}
+            for node in item.iter():
+                tag = local_tag(node.tag)
+                if node.text and tag not in vals:
+                    vals[tag] = clean(node.text)
+            text = vals.get("text", "")
+            date = vals.get("actionDate", "") or vals.get("date", "")
+            code = vals.get("actionCode", "")
             if not text or not LEG_ACTION_RE.search(text):
                 continue
-            if not (TOPIC_RE.search(text) or re.search(r"\b(?:Senate|House)\b", text, re.I)):
+            if not (TOPIC_RE.search(text) or re.search(r"\b(?:Senate|House|Committee|President)\b", text, re.I)):
                 continue
-            events.append(Event("Congress.gov", classify_leg(text), text[:800], actions_url))
-        page_text = clean(soup.get_text(" ", strip=True))
-        for pattern, label in [
-            (r"Latest Action:\s*(.{1,500}?)(?=Roll Call Votes:|Tracker:|More on This Bill)", "최신 공식 조치"),
-            (r"Tracker:\s*(.{1,300}?)(?=More on This Bill|Subject)", "법안 상태"),
-        ]:
-            match = re.search(pattern, page_text, re.I)
-            if match:
-                detail = clean(match.group(1))
-                events.append(Event("Congress.gov", label, detail, actions_url, detail=detail))
+            detail = clean(" | ".join(x for x in [date, code] if x))
+            events.append(Event("GovInfo BILLSTATUS", classify_leg(text), text[:900], status_url, date=date, detail=detail))
     except Exception as exc:
-        errors.append(f"Congress.gov actions: {exc}")
+        errors.append(f"GovInfo BILLSTATUS: {exc}")
+
+    related_url = "https://www.govinfo.gov/app/details/BILLS-119hr3633rs/related"
     try:
-        soup = soup_for(text_url)
+        soup = soup_for(related_url)
         seen = set()
         for a in soup.find_all("a", href=True):
-            href = abs_url(text_url, a["href"])
-            title = clean(a.get_text(" ", strip=True))
-            if "/bill/119th-congress/house-bill/3633/text/" not in href or not title or len(title) > 220:
+            href = abs_url(related_url, a["href"])
+            if "/app/details/BILLS-119hr3633" not in href:
                 continue
-            if (title, href) in seen:
+            href = href.split("?")[0].rstrip("/")
+            if href.endswith("/related"):
+                href = href[:-8].rstrip("/")
+            title = clean(a.get_text(" ", strip=True)) or href.rsplit("/", 1)[-1]
+            key = (title, href)
+            if key in seen:
                 continue
-            seen.add((title, href))
-            events.append(Event("Congress.gov", "법안 원문 버전", title, href))
+            seen.add(key)
+            events.append(Event("GovInfo 법안 원문", "법안 원문 버전", title[:500], href))
+        detail_url = "https://www.govinfo.gov/app/details/BILLS-119hr3633rs"
+        body = clean(soup_for(detail_url).get_text(" ", strip=True))
+        m = re.search(r"Last Action Date Listed\s+(.{1,80}?)\s+Actions?\s+(.{1,700}?)(?=Bill Number|Bill Version|Short Title)", body, re.I)
+        if m:
+            date, action = clean(m.group(1)), clean(m.group(2))
+            events.append(Event("GovInfo 법안 원문", classify_leg(action), action, detail_url, date=date))
     except Exception as exc:
-        errors.append(f"Congress.gov text: {exc}")
+        errors.append(f"GovInfo bill versions: {exc}")
     return events
 
 
@@ -168,19 +195,16 @@ def collect_banking(errors):
             if not TOPIC_RE.search(title) or ("/newsroom/" not in href and "/hearings/" not in href):
                 continue
             pairs.append((title, href))
-        for title, href in list(dict.fromkeys(pairs))[:20]:
+        for title, href in list(dict.fromkeys(pairs))[:30]:
             try:
                 body = clean(soup_for(href).get_text(" ", strip=True))
             except Exception:
                 body = title
-            signal = f"{title} {body[:5000]}"
+            signal = f"{title} {body[:7000]}"
             if not LEG_ACTION_RE.search(signal):
                 continue
-            date = ""
             dm = re.search(r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+2026\b", body)
-            if dm:
-                date = dm.group(0)
-            events.append(Event("상원 은행위원회", classify_leg(signal), title, href, date=date))
+            events.append(Event("상원 은행위원회", classify_leg(signal), title, href, date=dm.group(0) if dm else ""))
     except Exception as exc:
         errors.append(f"Senate Banking: {exc}")
     return events
@@ -196,7 +220,7 @@ def collect_agriculture(errors):
                 href = abs_url(url, a["href"])
                 if not title or "agriculture.senate.gov" not in urllib.parse.urlparse(href).netloc:
                     continue
-                if not (TOPIC_RE.search(title) or ("digital asset" in title.lower() and LEG_ACTION_RE.search(title))):
+                if not (TOPIC_RE.search(title) or (CRYPTO_RE.search(title) and LEG_ACTION_RE.search(title))):
                     continue
                 events.append(Event("상원 농업위원회", classify_leg(title), title, href))
         except Exception as exc:
@@ -216,13 +240,10 @@ def collect_floor(errors):
             soup = soup_for(url)
             for node in soup.find_all(["tr", "li", "p", "div"]):
                 text = clean(node.get_text(" ", strip=True))
-                if not text or len(text) > 1200 or not TOPIC_RE.search(text) or not LEG_ACTION_RE.search(text):
+                if not text or len(text) > 1400 or not TOPIC_RE.search(text) or not LEG_ACTION_RE.search(text):
                     continue
-                link = url
                 a = node.find("a", href=True)
-                if a:
-                    link = abs_url(url, a["href"])
-                events.append(Event(source, classify_leg(text), text[:800], link))
+                events.append(Event(source, classify_leg(text), text[:900], abs_url(url, a["href"]) if a else url))
         except Exception as exc:
             errors.append(f"{source}: {exc}")
     return list({e.key: e for e in events}.values())
@@ -233,7 +254,7 @@ def parse_rss(url, source, errors):
     try:
         root = ET.fromstring(fetch(url))
         items = root.findall(".//item") or root.findall(".//{http://www.w3.org/2005/Atom}entry")
-        for item in items[:80]:
+        for item in items[:100]:
             def text_of(names):
                 for name in names:
                     node = item.find(name)
@@ -249,26 +270,64 @@ def parse_rss(url, source, errors):
                 if node is not None:
                     link = node.attrib.get("href", "")
             signal = clean(f"{title} {desc}")
-            relevant = bool(TOPIC_RE.search(signal) or (CRYPTO_RE.search(signal) and REG_ACTION_RE.search(signal)))
-            if not relevant or not REG_ACTION_RE.search(signal):
+            if not (TOPIC_RE.search(signal) or (CRYPTO_RE.search(signal) and REG_ACTION_RE.search(signal))):
                 continue
-            events.append(Event(source, "SEC·CFTC 공식 규칙·해석·집행지침", title or signal[:180], link or url, date=pub, detail=desc[:600]))
+            if not REG_ACTION_RE.search(signal):
+                continue
+            events.append(Event(source, "SEC·CFTC 공식 규칙·해석·집행지침", title or signal[:180], link or url, date=pub, detail=desc[:700]))
     except Exception as exc:
         errors.append(f"{source}: {exc}")
     return events
 
 
+def collect_federal_register(errors):
+    events = []
+    searches = [
+        ("CFTC Federal Register 제안규칙", "commodity-futures-trading-commission", "PRORULE"),
+        ("CFTC Federal Register 최종규칙", "commodity-futures-trading-commission", "RULE"),
+        ("SEC Federal Register 제안규칙", "securities-and-exchange-commission", "PRORULE"),
+        ("SEC Federal Register 최종규칙", "securities-and-exchange-commission", "RULE"),
+    ]
+    for source, agency, doc_type in searches:
+        query = urllib.parse.urlencode({
+            "conditions[agencies][]": agency,
+            "conditions[search_type_id]": "3",
+            "conditions[type][]": doc_type,
+            "order": "newest",
+            "format": "json",
+        })
+        url = f"https://www.federalregister.gov/documents/search?{query}"
+        try:
+            payload = json.loads(fetch(url).decode("utf-8"))
+            for row in (payload.get("results") or [])[:60]:
+                title = clean(row.get("title") or "")
+                abstract = clean(row.get("abstract") or "")
+                signal = f"{title} {abstract}"
+                if not (TOPIC_RE.search(signal) or (CRYPTO_RE.search(signal) and REG_ACTION_RE.search(signal))):
+                    continue
+                events.append(Event(
+                    source,
+                    "SEC·CFTC 공식 규칙·해석·집행지침",
+                    title,
+                    row.get("html_url") or url,
+                    date=row.get("publication_date") or "",
+                    detail=abstract[:700],
+                ))
+        except Exception as exc:
+            errors.append(f"{source}: {exc}")
+    return events
+
+
 def collect_regulators(errors):
+    events = []
     feeds = [
         ("SEC 보도자료", "https://www.sec.gov/news/pressreleases.rss"),
         ("SEC 발언·성명", "https://www.sec.gov/news/speeches-statements.rss"),
         ("CFTC 보도자료", "https://www.cftc.gov/RSS/RSSGP/rssgp.xml"),
-        ("CFTC 제안규칙", "https://comments.cftc.gov/handlers/RSSHandler.ashx?category=Proposed+Rule&type=Releases"),
-        ("CFTC 최종규칙", "https://comments.cftc.gov/handlers/RSSHandler.ashx?category=Final+Rule&type=Releases"),
     ]
-    events = []
     for source, url in feeds:
         events.extend(parse_rss(url, source, errors))
+    events.extend(collect_federal_register(errors))
     return list({e.key: e for e in events}.values())
 
 
@@ -286,7 +345,7 @@ def collect_whitehouse(errors):
                     body = clean(soup_for(href).get_text(" ", strip=True))
                 except Exception:
                     body = title
-                signal = f"{title} {body[:4000]}"
+                signal = f"{title} {body[:5000]}"
                 if re.search(r"\b(?:sign(?:ed|s)?|veto|law|enact|statement|presidential action)\b", signal, re.I):
                     events.append(Event("백악관", "대통령 최종 조치", title, href))
         except Exception as exc:
@@ -306,16 +365,16 @@ def load_state():
 def impact_hint(event):
     text = f"{event.event_type} {event.title} {event.detail}".lower()
     if any(x in text for x in ["passed", "advance", "agreed to", "signed", "became law", "enacted"]):
-        return "시간표가 앞당겨지는 변화로 해석. 미국 내 규제 불확실성 축소 방향."
+        return "입법 시간표가 앞당겨지는 변화로 해석. 미국 내 규제 불확실성 축소 방향."
     if any(x in text for x in ["failed", "rejected", "veto", "adjourn", "sine die"]):
-        return "시간표가 늦춰지는 변화로 해석. 법률 공백이 길어질 가능성."
+        return "입법 시간표가 늦춰지는 변화로 해석. 법률 공백이 길어질 가능성."
     if any(x in text for x in ["new text", "amendment", "amended", "revised text"]):
         return "핵심 조항 재평가 필요. SEC·CFTC 권한 배분, DeFi·중개업자·윤리 조항 변경 여부를 우선 확인."
     if any(x in text for x in ["cloture", "floor", "calendar"]):
         return "상원 본회의 시간표가 구체화된 변화. 실제 최종 표결 가능성이 이전보다 높아졌는지 확인."
     if event.source.startswith(("SEC", "CFTC")):
-        return "법 통과 전후와 별개로 규칙 제정을 통해 규제 공백이 줄어드는 경로."
-    return "공식 진행 단계 변화. 통과 확률 자체보다 다음 절차와 규제 공백 기간을 재평가."
+        return "법 통과와 별개로 규칙 제정을 통해 규제 공백이 줄어드는 경로."
+    return "공식 진행 단계 변화. 다음 절차와 규제 공백 기간을 재평가."
 
 
 def build_alert(events):
@@ -324,7 +383,7 @@ def build_alert(events):
         "🔔 CLARITY 법안 공식 변화", "",
         f"확인 시각: 미국 동부 {et:%Y-%m-%d %H:%M %Z} / 한국 {kst:%Y-%m-%d %H:%M KST}", "",
     ]
-    for i, event in enumerate(events[:8], 1):
+    for i, event in enumerate(events[:10], 1):
         lines += [
             f"{i}. 사건 유형: {event.event_type}",
             f"공식 출처: {event.source}",
@@ -333,16 +392,16 @@ def build_alert(events):
         if event.date:
             lines.append(f"공식 날짜: {event.date}")
         if event.detail:
-            lines.append(f"확인 내용: {clean(event.detail)[:500]}")
+            lines.append(f"확인 내용: {clean(event.detail)[:600]}")
         lines += [f"해석: {impact_hint(event)}", f"원문: {event.url}", ""]
     lines += [
         "투자 4축",
         "- 돈 버는 능력: Coinbase·Circle 등 미국 규제권 내 사업자의 규제비용·상품 확장 가능성 변화 여부를 확인.",
         "- 할인율: 법안 자체보다 국채금리·유동성이 직접 변수. 이번 알림은 규제 불확실성 변화만 분리.",
         "- 수급: 법적 명확성이 기관·개발자·자본의 미국 잔류·유입 조건을 바꾸는지 후속 공식 자료로 확인.",
-        "- 시간표: 이번 공식 변화가 상원 최종 표결 → 하원 재처리 → 대통령 조치의 순서를 얼마나 앞당기거나 늦추는지가 핵심.", "",
-        "원인 분리: 가격 변동이 있더라도 이 알림은 공식 입법·규제 변화만 원인으로 확정하며, 시장 가격은 별도 데이터 검증 없이는 인과로 단정하지 않음.",
-        "후속 확인: SEC·CFTC의 규칙·해석·집행지침, 상원 본회의 일정·cloture·표결, 백악관 서명·거부권.", "",
+        "- 시간표: 상원 최종 표결 → 필요 시 하원 재처리 → 대통령 조치의 순서를 얼마나 앞당기거나 늦추는지가 핵심.", "",
+        "원인 분리: 시장 가격·거래량은 별도 검증 없이 이번 공식 변화의 결과라고 단정하지 않음.",
+        "후속 확인: SEC·CFTC 규칙·해석·집행지침, 상원 본회의 일정·cloture·표결, 백악관 서명·거부권.", "",
         "핵심 한 줄 요약: 새 공식 문서·표결·일정·규칙이 실제 확인된 경우에만 전송하며, 전망·루머·기사 재인용은 알림 대상에서 제외.",
     ]
     return "\n".join(lines).strip() + "\n"
@@ -350,19 +409,20 @@ def build_alert(events):
 
 def main():
     errors, events = [], []
-    for collector in [collect_congress, collect_banking, collect_agriculture, collect_floor, collect_regulators, collect_whitehouse]:
+    for collector in [collect_govinfo, collect_banking, collect_agriculture, collect_floor, collect_regulators, collect_whitehouse]:
         events.extend(collector(errors))
     events = sorted({e.key: e for e in events}.values(), key=lambda e: (e.source, e.event_type, e.date, e.title))
     state = load_state()
-    baseline = not bool(state.get("initialized"))
+    baseline = (not state.get("initialized")) or state.get("source_version") != SOURCE_VERSION
     seen = set(state.get("seen_event_keys") or [])
     new_events = [] if baseline else [e for e in events if e.key not in seen]
-    merged = list(dict.fromkeys(list(state.get("seen_event_keys") or []) + sorted(e.key for e in events)))
-    if len(merged) > 1500:
-        merged = merged[-1500:]
+    merged = sorted(set(state.get("seen_event_keys") or []) | {e.key for e in events})
+    if len(merged) > 2000:
+        merged = merged[-2000:]
     pending = {
         "initialized": True,
-        "bill": "H.R. 3633 — Digital Asset Market Clarity Act of 2025",
+        "source_version": SOURCE_VERSION,
+        "bill": "H.R. 3633 — Digital Asset Market Clarity Act",
         "last_checked_kst": now_kst().isoformat(timespec="seconds"),
         "last_checked_et": now_et().isoformat(timespec="seconds"),
         "seen_event_keys": merged,
@@ -370,16 +430,23 @@ def main():
         "source_errors": errors,
     }
     (OUT_DIR / "clarity_watch_pending_state.json").write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    rebaseline_path = OUT_DIR / "clarity_watch_rebaseline.txt"
+    if baseline:
+        rebaseline_path.write_text("source-version baseline refresh\n", encoding="utf-8")
+    elif rebaseline_path.exists():
+        rebaseline_path.unlink()
+
     status = [
         "# CLARITY Watch 상태", "", "- 기준 법안: H.R. 3633",
         f"- 확인 시각: {pending['last_checked_kst']}",
         f"- 공식 항목 수: {len(events)}", f"- 신규 공식 변화: {len(new_events)}",
-        f"- 최초 기준선 생성: {'예' if baseline else '아니오'}",
+        f"- 기준선 갱신: {'예' if baseline else '아니오'}",
         f"- Telegram 전송 대상: {'없음' if not new_events else '있음'}",
     ]
     if errors:
-        status.append("- 일부 공식 출처 접근 오류: " + " | ".join(errors[:8]))
+        status.append("- 일부 공식 출처 접근 오류: " + " | ".join(errors[:10]))
     (OUT_DIR / "clarity_watch_status.md").write_text("\n".join(status) + "\n", encoding="utf-8")
+
     alert_path = OUT_DIR / "clarity_watch_alert.md"
     alert_json = OUT_DIR / "clarity_watch_alert.json"
     for path in [alert_path, alert_json]:
@@ -391,9 +458,12 @@ def main():
         print(f"clarity_new_official_change=true count={len(new_events)}")
     else:
         print("clarity_new_official_change=false")
+    if baseline:
+        print("clarity_rebaseline=true")
     if errors:
-        print("source_errors=" + " || ".join(errors[:8]))
+        print("source_errors=" + " || ".join(errors[:10]))
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())
