@@ -1,0 +1,160 @@
+name: QLEX SC Bio Telegram Watch
+
+on:
+  schedule:
+    # GitHub cron is UTC. Hourly condition watch at :33.
+    - cron: "33 * * * *"
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "Send a connection test message"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+  push:
+    paths:
+      - ".github/workflows/qlex-sc-bio-telegram-watch.yml"
+      - "scripts/qlex_sc_conversion_watch.py"
+      - "scripts/qlex_telegram_send.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qlex-sc-bio-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check bio Telegram configuration
+        id: telegram
+        shell: bash
+        run: |
+          if [ -z "$BIO_TELEGRAM_BOT_TOKEN" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "BIO_TELEGRAM_BOT_TOKEN missing; watcher remains staged and does not consume state." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if [ -z "$BIO_TELEGRAM_CHAT_ID" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "BIO Telegram chat id missing; watcher remains staged and does not consume state." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          python - <<'PY'
+          import json, os, urllib.request
+          token=os.environ['BIO_TELEGRAM_BOT_TOKEN'].strip()
+          expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              payload=json.loads(r.read().decode('utf-8'))
+          actual=str((payload.get('result') or {}).get('username') or '')
+          if not payload.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+          print(f'bio_telegram_bot_verified=@{actual}')
+          PY
+          echo "configured=true" >> "$GITHUB_OUTPUT"
+
+      - name: Validate watcher
+        if: steps.telegram.outputs.configured == 'true'
+        run: python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/qlex_telegram_send.py
+
+      - name: Build current baseline or check new data
+        if: steps.telegram.outputs.configured == 'true'
+        shell: bash
+        run: |
+          if [ -f data/qlex_sc_conversion_watch_state.json ]; then
+            python scripts/qlex_sc_conversion_watch.py --mode check
+          else
+            python scripts/qlex_sc_conversion_watch.py --mode baseline
+          fi
+          if [ -f out/qlex_sc_conversion_status.md ]; then
+            cat out/qlex_sc_conversion_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Build manual test message
+        if: steps.telegram.outputs.configured == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        run: |
+          mkdir -p out
+          cat > out/qlex_sc_connection_test.md <<'EOF'
+          [바이오 감시] Telegram 연결 시험
+
+          KEYTRUDA QLEX SC 전환 감시 연결 정상입니다.
+          - Merck 공식 QLEX 매출·미국 SC adoption/conversion
+          - Alteogen 판매 마일스톤·로열티·ALT-B4 공급 공시
+          - UBS/Symphony Health/Bloomberg 및 공개 인용자료의 월간 미국 SC 전환율
+          - QLEX vs Opdivo SC vs Tecentriq SC 동일 M+N 비교
+          - gross-sales와 환자수/처방 기준 분리 해석
+          - 새 데이터가 없으면 무통지
+          EOF
+
+      - name: Send manual connection test
+        if: steps.telegram.outputs.configured == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        run: python scripts/qlex_telegram_send.py out/qlex_sc_connection_test.md
+
+      - name: Send baseline confirmation
+        if: steps.telegram.outputs.configured == 'true' && hashFiles('out/qlex_sc_conversion_setup.md') != ''
+        run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_setup.md
+
+      - name: Send new QLEX alert
+        if: steps.telegram.outputs.configured == 'true' && hashFiles('out/qlex_sc_conversion_alert.md') != ''
+        run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_alert.md
+
+      - name: Persist state only after successful run
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/qlex_sc_conversion_watch_state_pending.json') != ''
+        run: |
+          cp out/qlex_sc_conversion_watch_state_pending.json data/qlex_sc_conversion_watch_state.json
+
+      - name: Commit watch state
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('data/qlex_sc_conversion_watch_state.json') != ''
+        run: |
+          git config user.name "qlex-bio-watch[bot]"
+          git config user.email "qlex-bio-watch[bot]@users.noreply.github.com"
+          git add data/qlex_sc_conversion_watch_state.json
+          if git diff --cached --quiet; then
+            echo "QLEX bio watch state unchanged"
+          else
+            git commit -m "Update QLEX SC bio watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qlex-sc-bio-watch-${{ github.run_id }}
+          path: |
+            out/qlex_sc_conversion_status.md
+            out/qlex_sc_conversion_setup.md
+            out/qlex_sc_conversion_alert.md
+            out/qlex_sc_connection_test.md
+            out/qlex_sc_conversion_errors.log
+            out/qlex_sc_conversion_watch_state_pending.json
+          if-no-files-found: ignore
+          retention-days: 14
