@@ -161,7 +161,7 @@ jobs:
           PY
 
       - name: Persist baseline state
-        if: success() && hashFiles('out/clarity_watch_alert.md') == '' && hashFiles('data/clarity_watch_state.json') == ''
+        if: success() && hashFiles('out/clarity_watch_alert.md') == '' && (hashFiles('data/clarity_watch_state.json') == '' || hashFiles('out/clarity_watch_rebaseline.txt') != '')
         run: cp out/clarity_watch_pending_state.json data/clarity_watch_state.json
 
       - name: Persist state only after confirmed Telegram delivery
@@ -204,6 +204,7 @@ jobs:
             out/clarity_watch_alert.md
             out/clarity_watch_alert.json
             out/clarity_watch_pending_state.json
+            out/clarity_watch_rebaseline.txt
             out/clarity_watch_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
