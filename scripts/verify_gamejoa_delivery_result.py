@@ -54,7 +54,14 @@ def main() -> int:
     data = json.loads(JSON_REPORT.read_text(encoding="utf-8"))
     delivery = json.loads(DELIVERY.read_text(encoding="utf-8"))
 
-    visible_count = sum(1 for line in report.splitlines() if re.match(r"^\d+\)\s+\[", line))
+    # Production headings intentionally omit importance/status labels.  Keep
+    # the delivery verifier compatible with that compact output and with old
+    # artifacts that still contain bracketed labels.
+    visible_count = sum(
+        1
+        for line in report.splitlines()
+        if re.match(r"^\d+\)\s+(?:\[[^\]]+\]\s*)?\S", line)
+    )
     alerts = data.get("alerts")
     if not isinstance(alerts, list):
         errors.append("runtime JSON alerts is not a list")
