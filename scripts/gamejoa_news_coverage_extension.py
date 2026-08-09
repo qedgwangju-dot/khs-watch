@@ -347,6 +347,47 @@ SEARCH_SOURCES.extend(
     ]
 )
 
+# August 9 coverage: each lane requires a company, operating action, and a
+# concrete financial, capacity, supply-chain, or timetable consequence.
+SEARCH_SOURCES.extend(
+    [
+        (
+            "SK하이닉스 중국 패키징 지분·운영 재편",
+            "(SK하이닉스 OR SK hynix) (충칭 OR 중국 패키징 OR 후공정 OR 테스트공장 OR 테스트 공장) "
+            "(지분매각 OR 지분 매각 OR 매각검토 OR 매각 검토 OR 운영재편 OR 운영 재편 OR 소수지분) "
+            "(Bloomberg OR 블룸버그 OR Reuters OR 로이터 OR site:news1.kr OR site:edaily.co.kr OR site:mk.co.kr OR site:reuters.com)",
+        ),
+        (
+            "SK하이닉스 노사·성과급 주식 보상",
+            "(SK하이닉스 OR SK hynix) (통합노조 OR 노조 신설 OR 임금교섭 OR 성과급 OR 주식보상 OR 주식 보상) "
+            "(교섭 OR 제안 OR 합의 OR 파업 OR 쟁의 OR 매도제한 OR 매도 제한) "
+            "(site:hankyung.com OR site:magazine.hankyung.com OR site:yna.co.kr OR site:newsis.com OR site:edaily.co.kr)",
+        ),
+        (
+            "삼성 테일러 팹 가동·미국 파운드리 인력",
+            "(삼성전자 OR 삼성 파운드리 OR Samsung Foundry) (테일러팹 OR 테일러 팹 OR Taylor fab OR Texas fab) "
+            "(가동 OR 양산 OR 인턴십 OR 채용 OR 현지인력 OR 현지 인력 OR 장비반입 OR 장비 반입) "
+            "(연말 OR 일정 OR 고객사 OR 생산능력 OR 생산 능력) "
+            "(site:biz.chosun.com OR site:fnnews.com OR site:yna.co.kr OR site:newsis.com OR site:reuters.com)",
+        ),
+        (
+            "전력반도체 정책·대형 투자·생산기지",
+            "(전력반도체 OR 전력 반도체 OR SiC OR GaN) "
+            "(정부지원 OR 정부 지원 OR 정책금융 OR 정책 금융 OR 예산 OR 세액공제 OR 투자확정 OR 투자 확정 OR 생산기지) "
+            "(삼성전자 OR SK OR 현대차 OR 산업부 OR 과기정통부) "
+            "(site:dt.co.kr OR site:yna.co.kr OR site:newsis.com OR site:edaily.co.kr OR site:motie.go.kr)",
+        ),
+        (
+            "해외 AI 슈퍼컴퓨터·한국 반도체·보안 수주",
+            "(슈퍼컴퓨터 OR AI 슈퍼컴퓨터 OR 국가AI OR 국가 AI) "
+            "(SK하이닉스 OR 삼성전자 OR 퓨리오사AI OR 안랩 OR 펜타시큐리티 OR 한국) "
+            "(HBM OR NPU OR 보안 OR 공급 OR 탑재 OR 구축 OR 계약 OR 수주) "
+            "(인도네시아 OR 동남아 OR 해외) "
+            "(site:mk.co.kr OR site:yna.co.kr OR site:newsis.com OR site:etnews.com OR site:edaily.co.kr)",
+        ),
+    ]
+)
+
 DIRECT_RSS_SOURCES = [
     ("뉴시스 속보", "https://www.newsis.com/RSS/sokbo.xml", "trusted"),
     ("뉴시스 경제", "https://www.newsis.com/RSS/economy.xml", "trusted"),
@@ -445,6 +486,30 @@ PRIORITY_TERMS.update(
     }
 )
 
+PRIORITY_TERMS.update(
+    {
+        "충칭": 15,
+        "지분매각": 17,
+        "지분 매각": 17,
+        "매각검토": 15,
+        "매각 검토": 15,
+        "통합노조": 15,
+        "노조 신설": 15,
+        "주식보상": 14,
+        "주식 보상": 14,
+        "테일러팹": 17,
+        "테일러 팹": 17,
+        "taylor fab": 17,
+        "현지 인력": 14,
+        "현지인력": 14,
+        "전력반도체": 16,
+        "전력 반도체": 16,
+        "인도네시아": 14,
+        "슈퍼컴퓨터": 15,
+        "ai 슈퍼컴퓨터": 16,
+    }
+)
+
 MATERIAL_TERMS = tuple(PRIORITY_TERMS)
 
 IMPACT_TERMS = {
@@ -534,6 +599,20 @@ ATTACHED_NEWS_IMPACT_TERMS = {
     ),
 }
 for _impact_label, _impact_terms in ATTACHED_NEWS_IMPACT_TERMS.items():
+    IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
+
+AUGUST9_IMPACT_TERMS = {
+    "돈 버는 능력": (
+        "충칭", "지분매각", "지분 매각", "테일러팹", "테일러 팹", "taylor fab",
+        "전력반도체", "전력 반도체", "슈퍼컴퓨터", "ai 슈퍼컴퓨터",
+    ),
+    "수급": ("통합노조", "노조 신설", "주식보상", "주식 보상"),
+    "시간표": (
+        "매각검토", "매각 검토", "테일러팹", "테일러 팹", "taylor fab",
+        "현지 인력", "현지인력", "전력반도체", "전력 반도체", "인도네시아",
+    ),
+}
+for _impact_label, _impact_terms in AUGUST9_IMPACT_TERMS.items():
     IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
 
