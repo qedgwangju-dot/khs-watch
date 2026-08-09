@@ -511,6 +511,11 @@ def main() -> int:
         f"classified={pinned_count} fresh_after_seen={pinned_fresh_count}"
     )
 
+    # Keep a wider candidate pool than the seven-message display limit.  A
+    # source/body mismatch must reject only that item, not silence every valid
+    # lower-ranked article behind it.
+    output_limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "7"))))
+    candidate_limit = max(output_limit * 5, 35)
     deduped, seen = [], set()
     for alert in alerts:
         key = (base.norm(alert["original_news"]), base.norm(alert["publisher"]), alert["published"][:10])
@@ -518,7 +523,7 @@ def main() -> int:
             continue
         seen.add(key)
         deduped.append(alert)
-        if len(deduped) >= 7:
+        if len(deduped) >= candidate_limit:
             break
 
     local_candidates = [a for a in alerts if a.get("local_dc_policy")]
@@ -528,13 +533,12 @@ def main() -> int:
         key = (base.norm(candidate["original_news"]), base.norm(candidate["publisher"]), candidate["published"][:10])
         if key in seen:
             continue
-        if len(deduped) < 7:
+        if len(deduped) < candidate_limit:
             deduped.append(candidate)
             seen.add(key)
 
     deduped.sort(key=lambda a: (-a["score"], a["published"]))
-    limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "7"))))
-    final_alerts = final_alerts_for_output(deduped, limit)
+    final_alerts = final_alerts_for_output(deduped, output_limit)
     diagnostics = selection_diagnostics(rows, notes, classified, skipped_seen, deduped, final_alerts, live_mode)
     print(
         "GAMEJOA radar selection: "
