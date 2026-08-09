@@ -59,7 +59,7 @@ def mostly_ascii(value: str) -> bool:
 
 
 def normalize_title(value: str) -> str:
-    text = re.sub(r"^\d+\)\s+\[[^\]]+\]\s*", "", value).strip()
+    text = re.sub(r"^\d+\)\s+(?:\[[^\]]+\]\s*)?", "", value).strip()
     text = re.sub(r"\(\d+건 묶음\)$", "", text).strip()
     text = re.sub(r"\s+", " ", text)
     return text.lower()
@@ -70,7 +70,7 @@ def item_blocks(lines: list[str]) -> list[tuple[str, list[str]]]:
     current_title = ""
     current: list[str] = []
     for line in lines:
-        if re.match(r"^\d+\)\s+\[", line):
+        if re.match(r"^\d+\)\s+(?:\[[^\]]+\]\s*)?\S", line):
             if current_title:
                 blocks.append((current_title, current))
             current_title = line
