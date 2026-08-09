@@ -1,0 +1,209 @@
+name: CLARITY Watch Telegram
+
+on:
+  push:
+    paths:
+      - ".github/workflows/clarity-watch-telegram.yml"
+      - "scripts/clarity_watch.py"
+      - "data/clarity_watch_state.json"
+  schedule:
+    # GitHub cron is UTC. Hourly check; no new official change => no Telegram message.
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: clarity-watch-telegram
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install parser dependency
+        run: python -m pip install --disable-pip-version-check beautifulsoup4
+
+      - name: Validate Telegram route without sending
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("YEN_CARRY_TELEGRAM_BOT_TOKEN secret is missing")
+          if not chat_id:
+              raise RuntimeError("Telegram chat id is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{username}")
+          PY
+
+      - name: Check official CLARITY sources
+        run: |
+          python -m py_compile scripts/clarity_watch.py
+          python scripts/clarity_watch.py
+
+      - name: Publish watcher summary
+        if: always()
+        run: |
+          if [ -f out/clarity_watch_status.md ]; then
+            cat out/clarity_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "CLARITY Watch 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send new official CLARITY change to Telegram
+        if: hashFiles('out/clarity_watch_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram token/chat id is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/clarity_watch_alert.md").read_text(encoding="utf-8").strip()
+          def split_message(value, limit=3900):
+              chunks, current = [], ""
+              for paragraph in value.split("\n\n"):
+                  candidate = paragraph if not current else current + "\n\n" + paragraph
+                  if len(candidate) <= limit:
+                      current = candidate
+                      continue
+                  if current:
+                      chunks.append(current)
+                      current = ""
+                  while len(paragraph) > limit:
+                      cut = paragraph.rfind("\n", 0, limit)
+                      if cut < 1:
+                          cut = limit
+                      chunks.append(paragraph[:cut])
+                      paragraph = paragraph[cut:].lstrip()
+                  current = paragraph
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          message_ids = []
+          for idx, chunk in enumerate(split_message(text), 1):
+              if idx > 1:
+                  chunk = f"CLARITY Watch (계속 {idx})\n\n{chunk}"
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              request = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(request, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
+              message_ids.append(result.get("result", {}).get("message_id"))
+
+          confirmed = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_ids": message_ids,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/clarity_watch_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids}")
+          PY
+
+      - name: Persist baseline state
+        if: success() && hashFiles('out/clarity_watch_alert.md') == '' && hashFiles('data/clarity_watch_state.json') == ''
+        run: cp out/clarity_watch_pending_state.json data/clarity_watch_state.json
+
+      - name: Persist state only after confirmed Telegram delivery
+        if: success() && hashFiles('out/clarity_watch_alert.md') != '' && hashFiles('out/clarity_watch_telegram_confirmed.json') != ''
+        run: |
+          cp out/clarity_watch_pending_state.json data/clarity_watch_state.json
+          python - <<'PY'
+          import json
+          import pathlib
+          state_path = pathlib.Path("data/clarity_watch_state.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          confirmed = json.loads(pathlib.Path("out/clarity_watch_telegram_confirmed.json").read_text(encoding="utf-8"))
+          state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
+          state["telegram_message_ids"] = confirmed.get("message_ids")
+          state["bot_username"] = confirmed.get("bot_username")
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Commit CLARITY state
+        if: success() && hashFiles('data/clarity_watch_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/clarity_watch_state.json
+          if git diff --cached --quiet; then
+            echo "CLARITY state unchanged"
+          else
+            git commit -m "Record CLARITY Watch state"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clarity-watch-${{ github.run_id }}
+          path: |
+            out/clarity_watch_status.md
+            out/clarity_watch_alert.md
+            out/clarity_watch_alert.json
+            out/clarity_watch_pending_state.json
+            out/clarity_watch_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
