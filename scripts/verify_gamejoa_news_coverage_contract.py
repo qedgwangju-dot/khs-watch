@@ -66,6 +66,15 @@ ATTACHED_CASES = (
 )
 
 
+AUGUST9_CASES = (
+    ("SK하이닉스, 충칭 패키징 공장 지분 매각 검토", "지분 매각", "돈 버는 능력"),
+    ("SK하이닉스 통합노조 신설 추진, 성과급 주식 보상 논의", "통합노조", "수급"),
+    ("삼성전자 테일러 팹, 연말 가동 앞두고 현지 인력 채용", "테일러 팹", "시간표"),
+    ("정부, 전력반도체 생산기지 투자 지원 확대", "전력반도체", "시간표"),
+    ("인도네시아 AI 슈퍼컴퓨터에 한국 HBM·NPU·보안 장비 탑재", "슈퍼컴퓨터", "돈 버는 능력"),
+)
+
+
 def main() -> int:
     failures = []
     now = datetime.now().astimezone()
@@ -79,7 +88,7 @@ def main() -> int:
         "                return None"
     ) in fda_runner_source:
         failures.append("production_fda_wrapper=body_fetch_failure_still_blocked")
-    for index, (title, required_term, required_impact) in enumerate(CASES + ATTACHED_CASES):
+    for index, (title, required_term, required_impact) in enumerate(CASES + ATTACHED_CASES + AUGUST9_CASES):
         row = {
             "title": title,
             "summary": title,
@@ -184,6 +193,11 @@ def main() -> int:
         "이란·호르무즈 협상·해협 통항",
         "한국 경상수지·반도체 수출·외국인 자금",
         "코스피 사이드카·단일종목 레버리지 수급 변화",
+        "SK하이닉스 중국 패키징 지분·운영 재편",
+        "SK하이닉스 노사·성과급 주식 보상",
+        "삼성 테일러 팹 가동·미국 파운드리 인력",
+        "전력반도체 정책·대형 투자·생산기지",
+        "해외 AI 슈퍼컴퓨터·한국 반도체·보안 수주",
     ):
         if required_search not in search_names:
             failures.append(f"missing_attached_search={required_search}")
@@ -962,12 +976,39 @@ def main() -> int:
     if not shipbuilding_impacts:
         failures.append(f"shipbuilding_ai_welding=missing_impact:{shipbuilding_impacts}")
 
+    rendered_format = radar.compact_alert(
+        {
+            "importance": "상",
+            "status": "예비",
+            "news": "SK하이닉스, 충칭 패키징 공장 지분 매각 검토",
+            "original_news": "SK하이닉스, 충칭 패키징 공장 지분 매각 검토",
+            "source_title": "SK하이닉스, 충칭 패키징 공장 지분 매각 검토",
+            "source_abstract": "SK하이닉스가 충칭 패키징 공장 지분 매각을 포함한 운영 방안을 검토 중입니다.",
+            "telegram_core_fact": "충칭 패키징 공장 지분 매각을 포함한 운영 방안을 검토 중입니다.",
+            "policy_plain_summary": "충칭 패키징 공장 지분 매각을 포함한 운영 방안을 검토 중입니다.",
+            "link": "https://example.com/hynix-chongqing",
+            "publisher": "뉴스1",
+            "impacts": ["돈 버는 능력"],
+            "sectors": ["반도체/HBM/CXL"],
+            "korean_business_news": True,
+        },
+        1,
+        now,
+        {},
+        {},
+    )
+    format_first_line = rendered_format.splitlines()[0] if rendered_format else ""
+    if "[상" in format_first_line or "예비" in format_first_line or "확정" in format_first_line:
+        failures.append(f"telegram_display_labels_not_removed={format_first_line}")
+    if radar.compact_alert_block_errors(rendered_format):
+        failures.append(f"telegram_display_format_invalid={rendered_format}")
+
     if failures:
         print("GAMEJOA news coverage contract failed:")
         for failure in failures:
             print(f"- {failure}")
         return 1
-    print(f"GAMEJOA news coverage contract OK: cases={len(CASES)}")
+    print(f"GAMEJOA news coverage contract OK: cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES)}")
     return 0
 
 
