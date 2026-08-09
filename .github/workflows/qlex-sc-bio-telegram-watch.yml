@@ -2,7 +2,7 @@ name: QLEX SC Bio Telegram Watch
 
 on:
   schedule:
-    # GitHub cron is UTC. Hourly condition watch at :33.
+    # GitHub cron is UTC. Hourly condition watch; GitHub may start it a little late.
     - cron: "33 * * * *"
   workflow_dispatch:
     inputs:
@@ -14,11 +14,6 @@ on:
         options:
           - "false"
           - "true"
-  push:
-    paths:
-      - ".github/workflows/qlex-sc-bio-telegram-watch.yml"
-      - "scripts/qlex_sc_conversion_watch.py"
-      - "scripts/qlex_telegram_send.py"
 
 permissions:
   contents: write
@@ -53,7 +48,7 @@ jobs:
         run: |
           if [ -z "$BIO_TELEGRAM_BOT_TOKEN" ]; then
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "BIO_TELEGRAM_BOT_TOKEN missing; watcher remains staged and does not consume state." >> "$GITHUB_STEP_SUMMARY"
+            echo "BIO_TELEGRAM_BOT_TOKEN missing; watcher does not consume state." >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
           python - <<'PY'
@@ -61,13 +56,11 @@ jobs:
           token=os.environ['BIO_TELEGRAM_BOT_TOKEN'].strip()
           expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
           configured_chat=(os.environ.get('CONFIGURED_BIO_TELEGRAM_CHAT_ID') or '').strip()
-
           with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
               identity=json.loads(r.read().decode('utf-8'))
           actual=str((identity.get('result') or {}).get('username') or '')
           if not identity.get('ok') or actual.lower()!=expected.lower():
               raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
-
           chat_id=configured_chat
           route='secret'
           if not chat_id:
@@ -83,107 +76,46 @@ jobs:
                   candidates.sort()
                   chat_id=candidates[-1][1]
                   route='getUpdates'
-
           out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
           with out.open('a', encoding='utf-8') as f:
               f.write(f'bot_username={actual}\n')
               f.write(f'chat_id={chat_id}\n')
               f.write(f'chat_route={route}\n')
               f.write(f'configured={"true" if chat_id else "false"}\n')
-
           print(f'bio_telegram_bot_verified=@{actual}')
-          if chat_id:
-              print(f'bio_telegram_chat_resolved=true route={route}')
-          else:
-              print('bio_telegram_chat_resolved=false; send /start to the bot once')
+          print(f'bio_telegram_chat_resolved={bool(chat_id)} route={route}')
           PY
 
       - name: Validate watcher
         if: steps.telegram.outputs.configured == 'true'
         run: python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/qlex_telegram_send.py
 
-      - name: Build current baseline or check new data
+      - name: Check for genuinely new QLEX data
         if: steps.telegram.outputs.configured == 'true'
         shell: bash
         run: |
-          if [ -f data/qlex_sc_conversion_watch_state.json ]; then
-            python scripts/qlex_sc_conversion_watch.py --mode check
-          else
-            python scripts/qlex_sc_conversion_watch.py --mode baseline
-          fi
-          if [ -f out/qlex_sc_conversion_status.md ]; then
-            cat out/qlex_sc_conversion_status.md >> "$GITHUB_STEP_SUMMARY"
-          fi
+          rm -f out/qlex_sc_conversion_alert.md out/qlex_sc_conversion_setup.md out/qlex_sc_connection_test.md
+          python scripts/qlex_sc_conversion_watch.py --mode check
+          test -f out/qlex_sc_conversion_status.md && cat out/qlex_sc_conversion_status.md >> "$GITHUB_STEP_SUMMARY" || true
 
-      - name: Normalize user-facing wording to Korean
-        if: steps.telegram.outputs.configured == 'true'
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          replacements = {
-              "미국 SC adoption/conversion": "미국 피하주사(SC) 채택률·전환율",
-              "미국 gross-sales QLEX SC 전환율": "미국 총판매액(gross sales) 기준 QLEX SC 전환율",
-              "gross-sales 전환율은 환자수 점유율과 다르게 해석": "총판매액 기준 전환율은 환자 수 기준 점유율과 다름",
-              "동일 gross-sales 기준": "동일한 총판매액 기준",
-              "gross-sales 전환율 ≠ 환자수 점유율.": "총판매액 기준 전환율은 환자 수 기준 점유율과 다릅니다.",
-              "gross-sales와 환자수/처방 기준 분리 해석": "총판매액 기준과 환자 수·처방 기준을 분리해 해석",
-              "gross-sales와 환자수/처방 기준은 구분합니다.": "총판매액 기준과 환자 수·처방 기준은 구분합니다.",
-              "출처: Merck official": "출처: Merck 공식",
-              "출처: Alteogen official": "출처: Alteogen 공식",
-          }
-
-          for filename in ("qlex_sc_conversion_setup.md", "qlex_sc_conversion_alert.md"):
-              path = Path("out") / filename
-              if not path.exists():
-                  continue
-              text = path.read_text(encoding="utf-8")
-              for old, new in replacements.items():
-                  text = text.replace(old, new)
-              path.write_text(text, encoding="utf-8")
-          PY
-
-      - name: Build connection verification message on push
-        if: steps.telegram.outputs.configured == 'true' && github.event_name == 'push'
-        run: |
-          mkdir -p out
-          cat > out/qlex_sc_connection_test.md <<'EOF'
-          [바이오 감시] Telegram 연결 확인
-
-          KEYTRUDA QLEX 피하주사(SC) 전환 감시 연결이 정상 확인됐습니다.
-          - Merck 공식 QLEX 매출·미국 피하주사(SC) 채택률·전환율
-          - Alteogen 판매 마일스톤·로열티·ALT-B4 공급 공시
-          - UBS/Symphony Health/Bloomberg 및 공개 인용자료의 월간 미국 SC 전환율
-          - QLEX·Opdivo SC·Tecentriq SC를 동일 출시 후 개월(M+N) 기준으로 비교
-          - 총판매액 기준과 환자 수·처방 기준을 분리해 해석
-          - 새 데이터가 없으면 무통지
-          EOF
-
-      - name: Build manual test message
+      - name: Build manual connection test
         if: steps.telegram.outputs.configured == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
         run: |
           mkdir -p out
-          cp /dev/null out/qlex_sc_connection_test.md
           cat > out/qlex_sc_connection_test.md <<'EOF'
           [바이오 감시] Telegram 연결 시험
 
           KEYTRUDA QLEX 피하주사(SC) 전환 감시 연결 정상입니다.
-          - 새 QLEX 매출·SC 전환 데이터가 있을 때만 해석해 알립니다.
-          - 총판매액 기준과 환자 수·처방 기준은 구분합니다.
-          - Opdivo SC·Tecentriq SC는 동일 출시 후 개월(M+N)로 비교합니다.
+          - 새 QLEX 매출·전환 데이터가 있을 때만 알림
+          - 총판매액 기준과 환자 수·처방 기준을 구분
+          - Opdivo SC·Tecentriq SC는 동일 출시 후 개월(M+N)로 비교
           EOF
 
-      - name: Send connection verification
+      - name: Send manual connection test
         if: steps.telegram.outputs.configured == 'true' && hashFiles('out/qlex_sc_connection_test.md') != ''
         env:
           BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
         run: python scripts/qlex_telegram_send.py out/qlex_sc_connection_test.md
-
-      - name: Send baseline confirmation
-        if: steps.telegram.outputs.configured == 'true' && hashFiles('out/qlex_sc_conversion_setup.md') != ''
-        env:
-          BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
-        run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_setup.md
 
       - name: Send new QLEX alert
         if: steps.telegram.outputs.configured == 'true' && hashFiles('out/qlex_sc_conversion_alert.md') != ''
@@ -191,7 +123,7 @@ jobs:
           BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
         run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_alert.md
 
-      - name: Persist state only after successful run
+      - name: Persist state only after successful delivery/check
         if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/qlex_sc_conversion_watch_state_pending.json') != ''
         run: |
           cp out/qlex_sc_conversion_watch_state_pending.json data/qlex_sc_conversion_watch_state.json
@@ -223,12 +155,9 @@ jobs:
           name: qlex-sc-bio-watch-${{ github.run_id }}
           path: |
             out/qlex_sc_conversion_status.md
-            out/qlex_sc_conversion_setup.md
             out/qlex_sc_conversion_alert.md
             out/qlex_sc_connection_test.md
             out/qlex_sc_conversion_errors.log
             out/qlex_sc_conversion_watch_state_pending.json
           if-no-files-found: ignore
           retention-days: 14
-
-# Auto-resolve private chat ID from /start when no BIO_TELEGRAM_CHAT_ID secret is set.
