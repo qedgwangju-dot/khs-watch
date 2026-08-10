@@ -161,6 +161,9 @@ def main() -> int:
         failures.append("trusted_geopolitical_source=ap_not_routed")
 
     expected_direct_sources = {
+        "https://www.yna.co.kr/rss/economy.xml",
+        "https://www.yna.co.kr/rss/industry.xml",
+        "https://www.yna.co.kr/rss/market.xml",
         "https://www.newsis.com/RSS/sokbo.xml",
         "https://www.newsis.com/RSS/economy.xml",
         "https://www.newsis.com/RSS/bank.xml",
