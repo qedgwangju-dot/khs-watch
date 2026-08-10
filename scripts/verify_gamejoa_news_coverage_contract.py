@@ -83,6 +83,8 @@ AUGUST10_CASES = (
     ("HBF, AI 추론용 차세대 메모리로 2027년 제한 상용화 전망", "hbf", "시간표"),
     ("미국 고용 쇼크에 달러/원 1410원선, 미 국채금리 하락", "미국 고용", "할인율"),
     ("미국 CPI 발표 앞두고 AI 랠리와 금리인하 기대 재평가", "미국 cpi", "할인율"),
+    ("한미반도체, 한미 USA 설립으로 미국 HBM 고객 기술지원 강화", "한미반도체", "돈 버는 능력"),
+    ("삼성전자 주주환원 최대 200조원 전망, 이사회 발표 전 추정", "주주환원", "수급"),
 )
 
 
@@ -216,6 +218,8 @@ def main() -> int:
         "중국 피지컬 AI·휴머노이드 로봇·반도체 경쟁",
         "토큰화 주식·24시간 거래·가상자산 증권 규제",
         "미국 고용·CPI·달러/원·미 국채금리",
+        "한미반도체 미국 법인·북미 장비 수주·고객지원",
+        "삼성전자 주주환원·배당·자사주 이사회 정책",
     ):
         if required_search not in search_names:
             failures.append(f"missing_attached_search={required_search}")
@@ -1037,7 +1041,10 @@ def main() -> int:
         for failure in failures:
             print(f"- {failure}")
         return 1
-    print(f"GAMEJOA news coverage contract OK: cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES)}")
+    print(
+        "GAMEJOA news coverage contract OK: "
+        f"cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES) + len(AUGUST10_CASES)}"
+    )
     return 0
 
 
