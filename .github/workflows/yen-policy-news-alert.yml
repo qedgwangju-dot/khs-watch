@@ -1,0 +1,182 @@
+name: Yen policy news Telegram alert
+
+on:
+  schedule:
+    # Offset from the price monitor. GitHub cron is UTC.
+    - cron: "1,6,11,16,21,26,31,36,41,46,51,56 * * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/yen-policy-news-alert.yml"
+      - "scripts/yen_policy_news_alert.py"
+      - "scripts/khs_source_fetch.py"
+      - "tests/test_yen_policy_news_alert.py"
+      - "data/yen_policy_news_state.json"
+      - "data/yen_policy_news_alert_config.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yen-policy-news-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate policy-news monitor
+        run: |
+          python -m py_compile scripts/yen_policy_news_alert.py
+          python -m py_compile scripts/khs_source_fetch.py
+          python -m unittest tests/test_yen_policy_news_alert.py -v
+
+      - name: Check BOJ and yen policy catalysts
+        run: python scripts/yen_policy_news_alert.py
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/yen_policy_news_watch.md ]; then
+            cat out/yen_policy_news_watch.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "엔화 정책 촉매 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Preview pull request alert without sending
+        if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/yen_policy_news_alert.md') != ''
+        run: |
+          printf '\n---\n\n텔레그램 미전송 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/yen_policy_news_alert_title.txt >> "$GITHUB_STEP_SUMMARY"
+          printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/yen_policy_news_alert.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Send policy catalyst through second bot only
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_policy_news_alert.md') != ''
+        env:
+          YEN_CARRY_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          YEN_CARRY_TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          EXISTING_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          TELEGRAM_BOT_TOKEN="$YEN_CARRY_TELEGRAM_BOT_TOKEN"
+          TELEGRAM_CHAT_ID="${YEN_CARRY_TELEGRAM_CHAT_ID:-$EXISTING_TELEGRAM_CHAT_ID}"
+          export TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID
+
+          if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
+            echo "두 번째 봇용 YEN_CARRY_TELEGRAM_BOT_TOKEN이 없습니다. 첫 번째 봇으로 대체하지 않습니다." >&2
+            exit 1
+          fi
+          if [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "엔화 정책 촉매 Telegram 대상 CHAT_ID가 없습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+
+          with urllib.request.urlopen(
+              urllib.request.Request(f"https://api.telegram.org/bot{token}/getMe"),
+              timeout=25,
+          ) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(
+                  f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}"
+              )
+
+          title = pathlib.Path("out/yen_policy_news_alert_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/yen_policy_news_alert.md").read_text(encoding="utf-8").strip()
+          text = f"{title}\n\n{body}"[:4096]
+          payload = urllib.parse.urlencode(
+              {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"}
+          ).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected yen_policy_news message: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "lane": "yen_policy_news",
+              "bot_username": actual,
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(
+                  ZoneInfo("Asia/Seoul")
+              ).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/yen_policy_news_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(
+              "telegram_delivery_confirmed=true "
+              f"lane=yen_policy_news bot_username=@{actual} "
+              f"message_id={confirmed['message_id']}"
+          )
+          PY
+
+      - name: Finalize policy-news state
+        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: python scripts/yen_policy_news_alert.py --finalize
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yen-policy-news-${{ github.run_id }}
+          path: |
+            out/yen_policy_news_watch.md
+            out/yen_policy_news_alert_title.txt
+            out/yen_policy_news_alert.md
+            out/yen_policy_news_alert.json
+            out/yen_policy_news_telegram_confirmed.json
+            out/khs_source_failures.json
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Commit confirmed policy-news state
+        if: always() && github.event_name != 'pull_request' && hashFiles('data/yen_policy_news_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/yen_policy_news_state.json
+          if git diff --cached --quiet; then
+            echo "엔화 정책 촉매 상태 변경 없음"
+          else
+            git commit -m "Update yen policy news alert state"
+            git pull --rebase origin main
+            git push
+          fi

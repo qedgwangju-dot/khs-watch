@@ -1,0 +1,23 @@
+{
+  "status": "validation",
+  "schedule": "every 5 minutes, offset from the USDJPY price monitor",
+  "source_discovery": "Google News RSS in English and Japanese via direct/proxy race",
+  "source_tiers": {
+    "3": "official BOJ/Japan MOF/US Treasury/Federal Reserve",
+    "2": "two or more independent major-media groups within 6 hours",
+    "1": "single major-media or identified Kyodo/Reuters syndication"
+  },
+  "single_source_policy": "Only high-materiality intervention, US participation, intervention-preparation, or timed BOJ-hike stories can alert on a single major source. Generic single-source BOJ hike speculation is suppressed.",
+  "topics": [
+    "US-Japan coordinated intervention or US participation",
+    "yen intervention",
+    "intervention preparation or rate check",
+    "BOJ timed or September hike signal",
+    "BOJ hike timing linked to US policy or intervention"
+  ],
+  "verification_upgrade": "A previously alerted unconfirmed story can re-alert when corroboration rises to multiple major media or official confirmation.",
+  "dedupe": "24-hour topic cooldown unless verification rank or materiality rises",
+  "telegram_route": "second yen-carry bot only",
+  "state_finalization": "only after Telegram confirmation",
+  "disclaimer": "single-source reports are always labeled unconfirmed and never presented as established fact"
+}
