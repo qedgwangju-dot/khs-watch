@@ -21,10 +21,12 @@ from khs_source_fetch import fetch_text, record_source_failure
 
 UTC = dt.timezone.utc
 KST = ZoneInfo("Asia/Seoul")
-USER_AGENT = "Mozilla/5.0 khs-yen-policy-news/1.3"
+USER_AGENT = "Mozilla/5.0 khs-yen-policy-news/1.4"
 MAX_ITEM_AGE_HOURS = 12
 CLUSTER_COOLDOWN_HOURS = 24
 MAX_ALERT_ITEMS = 3
+TRANSLATE_BASE_URL = "https://translate.googleapis.com/translate_a/single"
+KOREAN_RE = re.compile(r"[가-힣]")
 
 STATE_PATH = pathlib.Path("data/yen_policy_news_state.json")
 PENDING_PATH = pathlib.Path("out/yen_policy_news_pending_state.json")
@@ -281,6 +283,86 @@ def source_level(item: NewsItem) -> int:
     return 0
 
 
+def clean_headline(title: str, source: str) -> str:
+    value = html.unescape(re.sub(r"<[^>]+>", " ", title or "")).strip()
+    value = re.sub(r"\s+", " ", value)
+    if " - " in value:
+        head, tail = value.rsplit(" - ", 1)
+        tail_lower = tail.strip().lower().removeprefix("www.")
+        source_lower = (source or "").strip().lower().removeprefix("www.")
+        if tail_lower == source_lower or ("." in tail_lower and len(tail_lower.split()) <= 2):
+            value = head.strip()
+    return value
+
+
+def fallback_korean_headline(topic: str) -> str:
+    mapping = {
+        "미·일 공동개입/미국 참여": "미국과 일본의 엔화 공동개입 또는 미국 참여 관련 주요 보도",
+        "미국의 엔화 개입 참여·지원": "미국의 엔화 시장개입 참여·지원 관련 주요 보도",
+        "엔화 개입 준비·레이트체크": "일본 당국의 엔화 개입 준비·레이트체크 관련 주요 보도",
+        "엔화 시장개입": "일본 당국의 엔화 시장개입 관련 주요 보도",
+        "BOJ 9월 인상·미국 연계": "BOJ의 9월 금리 인상 가능성과 미국 정책 연계 관련 주요 보도",
+        "BOJ 조기·가속 인상·미국 연계": "BOJ의 조기·가속 금리 인상과 미국 정책 연계 관련 주요 보도",
+        "BOJ 9월 인상 기대·신호": "BOJ의 9월 금리 인상 기대·신호 관련 주요 보도",
+        "BOJ 조기·가속 인상 기대·신호": "BOJ의 조기·가속 금리 인상 기대가 확대됐다는 주요 보도",
+        "BOJ 금리인상 신호": "BOJ의 추가 금리 인상 신호 관련 주요 보도",
+    }
+    return mapping.get(topic, f"{topic} 관련 주요 보도")
+
+
+def translate_headline_to_korean(
+    title: str,
+    source: str,
+    topic: str,
+    current: dt.datetime,
+) -> tuple[str, str]:
+    headline = clean_headline(title, source)
+    if KOREAN_RE.search(headline):
+        return headline, "already_korean"
+
+    params = urllib.parse.urlencode(
+        {
+            "client": "gtx",
+            "sl": "auto",
+            "tl": "ko",
+            "dt": "t",
+            "q": headline,
+        }
+    )
+    url = f"{TRANSLATE_BASE_URL}?{params}"
+    text, error = fetch_text(
+        url,
+        USER_AGENT,
+        timeout=8,
+        attempts=1,
+        accept="application/json,text/plain,*/*",
+    )
+    if error is None and text:
+        try:
+            payload = json.loads(text)
+            translated = "".join(
+                str(segment[0])
+                for segment in (payload[0] or [])
+                if isinstance(segment, list) and segment and segment[0]
+            ).strip()
+            if translated and KOREAN_RE.search(translated):
+                return translated, "translated"
+            error = "translation response contained no Korean text"
+        except Exception as exc:
+            error = f"{type(exc).__name__}: {exc}"
+    else:
+        error = error or "empty translation response"
+
+    record_source_failure(
+        lane="yen_policy_news_translation",
+        source_name="Google Translate",
+        source_url=TRANSLATE_BASE_URL,
+        error=error,
+        checked_at=current.astimezone(KST),
+    )
+    return fallback_korean_headline(topic), "fallback_korean_summary"
+
+
 def classify(item: NewsItem) -> ClassifiedItem | None:
     text = item.text
     if not contains_any(text, CONTEXT_MARKERS):
@@ -534,12 +616,18 @@ def build_message(
     payload_items: list[dict] = []
     for index, (classified, rank, groups) in enumerate(selected, start=1):
         item = classified.item
-        headline = html.unescape(re.sub(r"<[^>]+>", " ", item.title)).strip()
+        original_headline = clean_headline(item.title, item.source)
+        korean_headline, translation_status = translate_headline_to_korean(
+            item.title,
+            item.source,
+            classified.topic,
+            current,
+        )
         body_lines.extend(
             [
                 f"{index}) {classified.topic} · {rank_label(rank)}",
                 f"출처: {item.source or classified.source_group} · {item.published.astimezone(KST).strftime('%m-%d %H:%M KST')}",
-                f"헤드라인: {headline}",
+                f"헤드라인: {korean_headline}",
                 f"교차확인: {', '.join(groups)}",
                 *axis_lines(classified.topic),
                 "",
@@ -556,6 +644,9 @@ def build_message(
                 "source_group": classified.source_group,
                 "corroborating_groups": groups,
                 "headline": item.title,
+                "headline_original": original_headline,
+                "headline_ko": korean_headline,
+                "headline_translation_status": translation_status,
                 "link": item.link,
                 "published_at_kst": item.published.astimezone(KST).isoformat(timespec="seconds"),
             }
