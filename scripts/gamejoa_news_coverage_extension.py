@@ -388,6 +388,48 @@ SEARCH_SOURCES.extend(
     ]
 )
 
+# August 10 coverage: these lanes are durable event families. They deliberately
+# require both a market mechanism and a concrete consequence so a generic
+# commentary article does not become a Telegram alert.
+SEARCH_SOURCES.extend(
+    [
+        (
+            "회사채 차환·신용등급·시설투자 위축",
+            "(회사채 OR 회사 채 OR 차환 OR 만기상환 OR 신용등급 OR 신용 스프레드) "
+            "(시설자금 OR 설비투자 OR 신규투자 OR 자금조달 OR 발행금리 OR 발행) "
+            "(비중 OR 감소 OR 급감 OR 하향 OR 상승 OR 확대) "
+            "(site:mk.co.kr OR site:yna.co.kr OR site:newsis.com OR site:edaily.co.kr OR site:hankyung.com)",
+        ),
+        (
+            "중국 CPI·PPI·디플레이션·전자부품 가격",
+            "(중국 OR China) (CPI OR PPI OR 소비자물가 OR 생산자물가 OR 도매물가 OR 디플레이션) "
+            "(반도체 OR 컴퓨터 OR 태블릿 OR 휴대폰 OR 전자부품 OR 내수 OR 수요) "
+            "(상승 OR 하락 OR 둔화 OR 반등 OR 발표) "
+            "(site:reuters.com OR site:scmp.com OR site:yna.co.kr OR site:mk.co.kr OR site:newsis.com)",
+        ),
+        (
+            "중국 피지컬 AI·휴머노이드 로봇·반도체 경쟁",
+            "(유니트리 OR Unitree OR CXMT OR 창신메모리 OR 중국 로봇 OR 휴머노이드 OR 피지컬 AI) "
+            "(상장 OR IPO OR 생산능력 OR 생산 능력 OR 정부지원 OR 정부 지원 OR 투자 OR 양산) "
+            "(미국 OR 중국 OR 경쟁 OR 공급망) "
+            "(site:reuters.com OR site:scmp.com OR site:ft.com OR site:dt.co.kr OR site:yna.co.kr)",
+        ),
+        (
+            "토큰화 주식·24시간 거래·가상자산 증권 규제",
+            "(토큰주식 OR 토큰 주식 OR tokenized stock OR 24시간 거래 OR 증권 토큰) "
+            "(거래액 OR 거래 규모 OR 규제 OR 인가 OR 금지 OR ETF OR 엔비디아 OR 테슬라) "
+            "(site:reuters.com OR site:ft.com OR site:dt.co.kr OR site:yna.co.kr OR site:newsis.com)",
+        ),
+        (
+            "미국 고용·CPI·달러/원·미 국채금리",
+            "(미국 고용 OR 비농업고용 OR 실업률 OR CPI OR 소비자물가 OR 미 국채금리 OR 달러/원 OR 원/달러) "
+            "(연준 OR Fed OR 금리인하 OR 금리 인하 OR 금리동결 OR 약달러 OR 달러 약세) "
+            "(발표 OR 예상치 OR 쇼크 OR 하회 OR 상회 OR 9월) "
+            "(site:reuters.com OR site:yna.co.kr OR site:newsis.com OR site:news1.kr OR site:edaily.co.kr)",
+        ),
+    ]
+)
+
 DIRECT_RSS_SOURCES = [
     ("뉴시스 속보", "https://www.newsis.com/RSS/sokbo.xml", "trusted"),
     ("뉴시스 경제", "https://www.newsis.com/RSS/economy.xml", "trusted"),
@@ -483,6 +525,46 @@ PRIORITY_TERMS.update(
         "매도 사이드카": 18,
         "매수 사이드카": 18,
         "사이드카 발동": 18,
+    }
+)
+
+PRIORITY_TERMS.update(
+    {
+        "회사채": 15,
+        "차환": 16,
+        "만기상환": 15,
+        "신용등급 하향": 18,
+        "신용등급": 13,
+        "신용 스프레드": 16,
+        "발행금리": 16,
+        "시설자금": 15,
+        "시설자금용": 16,
+        "설비투자 위축": 17,
+        "신규투자 위축": 17,
+        "중국 cpi": 15,
+        "중국 ppi": 15,
+        "cpi": 12,
+        "ppi": 12,
+        "중국 소비자물가": 15,
+        "중국 생산자물가": 15,
+        "중국 디플레이션": 16,
+        "도매물가": 12,
+        "유니트리": 16,
+        "unitree": 16,
+        "휴머노이드": 14,
+        "피지컬 ai": 15,
+        "토큰주식": 15,
+        "토큰 주식": 15,
+        "tokenized stock": 15,
+        "24시간 거래": 14,
+        "비농업고용": 17,
+        "미국 고용": 16,
+        "고용 쇼크": 18,
+        "미국 cpi": 17,
+        "달러/원": 17,
+        "원/달러": 17,
+        "약달러": 15,
+        "달러 약세": 15,
     }
 )
 
@@ -615,6 +697,34 @@ AUGUST9_IMPACT_TERMS = {
 for _impact_label, _impact_terms in AUGUST9_IMPACT_TERMS.items():
     IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
+AUGUST10_IMPACT_TERMS = {
+    "돈 버는 능력": (
+        "시설자금", "시설자금용", "설비투자 위축", "신규투자 위축",
+        "중국 디플레이션", "유니트리", "unitree", "휴머노이드", "피지컬 ai",
+        "hbf",
+    ),
+    "할인율": (
+        "회사채", "차환", "만기상환", "신용등급 하향", "신용등급",
+        "신용 스프레드", "발행금리", "cpi", "ppi", "중국 cpi", "중국 ppi", "중국 소비자물가",
+        "중국 생산자물가", "중국 디플레이션", "비농업고용", "미국 고용",
+        "고용 쇼크", "미국 cpi", "달러/원", "원/달러", "약달러", "달러 약세",
+    ),
+    "수급": (
+        "토큰주식", "토큰 주식", "tokenized stock", "24시간 거래",
+    ),
+    "시간표": (
+        "시설자금", "설비투자 위축", "신규투자 위축", "유니트리", "unitree",
+        "휴머노이드", "피지컬 ai", "토큰주식", "토큰 주식", "tokenized stock",
+        "24시간 거래", "hbf",
+    ),
+}
+for _impact_label, _impact_terms in AUGUST10_IMPACT_TERMS.items():
+    IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
+
+# Rebuild after every extension. A stale material tuple would score a new lane
+# but then silently discard it during the final material-title quality gate.
+MATERIAL_TERMS = tuple(PRIORITY_TERMS)
+
 
 def extend_unique(target: list, values) -> None:
     for value in values:
@@ -669,3 +779,4 @@ def semantic_theme(alert: dict, normalized_text: str) -> str:
             if hits >= minimum_hits:
                 return f"korean_business:{company}:{event}:{event_date}"
     return ""
+
