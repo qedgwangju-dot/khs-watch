@@ -51,6 +51,32 @@ class YenPolicyNewsAlertTests(unittest.TestCase):
             )
         )
 
+    def test_retrospective_intervention_market_story_is_ignored(self) -> None:
+        item = self.item(
+            "Yen gives up nearly half of gains from joint US-Japan market intervention",
+            source="Financial Times",
+        )
+        self.assertIsNone(news.classify(item))
+
+    def test_faster_hikes_do_not_get_september_label_without_september(self) -> None:
+        item = self.item(
+            "Growing expectations for faster BOJ rate hikes push up bond yields",
+            source="Nikkei Asia",
+        )
+        classified = news.classify(item)
+        self.assertIsNotNone(classified)
+        self.assertEqual(classified.topic, "BOJ 조기·가속 인상 기대·신호")
+        self.assertNotIn("9월", classified.topic)
+
+    def test_explicit_september_hike_gets_september_label(self) -> None:
+        item = self.item(
+            "BOJ September rate hike increasingly likely after hawkish debate",
+            source="Reuters",
+        )
+        classified = news.classify(item)
+        self.assertIsNotNone(classified)
+        self.assertEqual(classified.topic, "BOJ 9월 인상 기대·신호")
+
     def test_official_source_is_rank_three(self) -> None:
         item = self.item(
             "Bank of Japan signals faster rate hikes after yen weakness",
@@ -64,10 +90,10 @@ class YenPolicyNewsAlertTests(unittest.TestCase):
 
     def test_two_major_sources_upgrade_to_corroborated(self) -> None:
         first = news.classify(
-            self.item("Japan and U.S. discuss joint yen intervention", source="Reuters")
+            self.item("Japan and U.S. conduct joint yen intervention", source="Reuters")
         )
         second = news.classify(
-            self.item("U.S. joins Japan in yen market intervention", source="Kyodo News")
+            self.item("U.S. joins Japan in joint yen intervention", source="Kyodo News")
         )
         self.assertIsNotNone(first)
         self.assertIsNotNone(second)
