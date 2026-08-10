@@ -37,7 +37,7 @@ class YenPolicyNewsAlertTests(unittest.TestCase):
         )
         classified = news.classify(item)
         self.assertIsNotNone(classified)
-        self.assertEqual(classified.topic, "미·일 공동개입/미국 참여")
+        self.assertEqual(classified.topic, "미국의 엔화 개입 참여·지원")
         self.assertEqual(classified.material_score, 5)
         rank, groups = news.corroboration_rank(classified, [classified])
         self.assertEqual(rank, 1)
