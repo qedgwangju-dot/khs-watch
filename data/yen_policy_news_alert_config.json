@@ -1,5 +1,13 @@
 {
-  "status": "validation",
+  "status": "active",
+  "merged_commit_sha": "e85859d6d2328affb59cb5ac5a13a1e4ea3e6077",
+  "validation_workflow_run_id": 31388207029,
+  "tests_passed": 11,
+  "live_validation": {
+    "qualified_candidates": 1,
+    "source_errors": 0,
+    "notification_sent_during_validation": false
+  },
   "schedule": "every 5 minutes, offset from the USDJPY price monitor",
   "source_discovery": "Google News RSS in English and Japanese via direct/proxy race",
   "source_tiers": {
@@ -12,12 +20,12 @@
     "US-Japan coordinated intervention or US participation",
     "yen intervention",
     "intervention preparation or rate check",
-    "BOJ timed or September hike signal",
+    "explicit September BOJ hike expectation or signal",
+    "accelerated or early BOJ hike expectation or signal",
     "BOJ hike timing linked to US policy or intervention"
   ],
   "verification_upgrade": "A previously alerted unconfirmed story can re-alert when corroboration rises to multiple major media or official confirmation.",
   "dedupe": "24-hour topic cooldown unless verification rank or materiality rises",
-  "telegram_route": "second yen-carry bot only",
-  "state_finalization": "only after Telegram confirmation",
+  "state_finalization": "only after confirmed delivery",
   "disclaimer": "single-source reports are always labeled unconfirmed and never presented as established fact"
 }
