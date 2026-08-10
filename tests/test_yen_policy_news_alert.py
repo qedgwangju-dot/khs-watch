@@ -153,6 +153,96 @@ class YenPolicyNewsAlertTests(unittest.TestCase):
         self.assertEqual(items[0].source, "Reuters")
         self.assertEqual(items[0].published.tzinfo, dt.timezone.utc)
 
+    def test_clean_headline_removes_publisher_domain_suffix(self) -> None:
+        headline = news.clean_headline(
+            "Growing expectations for faster BOJ rate hikes push up bond yields - asia.nikkei.com",
+            "asia.nikkei.com",
+        )
+        self.assertEqual(
+            headline,
+            "Growing expectations for faster BOJ rate hikes push up bond yields",
+        )
+
+    def test_translation_api_result_is_korean(self) -> None:
+        current = dt.datetime(2026, 8, 10, 12, 0, tzinfo=dt.timezone.utc)
+        response = json.dumps(
+            [[[
+                "BOJ의 금리 인상 가속 기대가 커지며 채권금리가 상승",
+                "Growing expectations for faster BOJ rate hikes push up bond yields",
+                None,
+                None,
+            ]]]
+        )
+        with mock.patch.object(news, "fetch_text", return_value=(response, None)):
+            translated, status = news.translate_headline_to_korean(
+                "Growing expectations for faster BOJ rate hikes push up bond yields - asia.nikkei.com",
+                "asia.nikkei.com",
+                "BOJ 조기·가속 인상 기대·신호",
+                current,
+            )
+        self.assertEqual(status, "translated")
+        self.assertIn("금리 인상", translated)
+        self.assertNotIn("Growing expectations", translated)
+
+    def test_existing_korean_headline_skips_translation_api(self) -> None:
+        current = dt.datetime(2026, 8, 10, 12, 0, tzinfo=dt.timezone.utc)
+        with mock.patch.object(news, "fetch_text") as fetch:
+            translated, status = news.translate_headline_to_korean(
+                "일본은행 조기 금리 인상 기대 확산",
+                "연합뉴스",
+                "BOJ 조기·가속 인상 기대·신호",
+                current,
+            )
+        self.assertEqual(status, "already_korean")
+        self.assertEqual(translated, "일본은행 조기 금리 인상 기대 확산")
+        fetch.assert_not_called()
+
+    def test_translation_failure_uses_korean_fallback_only(self) -> None:
+        current = dt.datetime(2026, 8, 10, 12, 0, tzinfo=dt.timezone.utc)
+        with (
+            mock.patch.object(news, "fetch_text", return_value=(None, "network failure")),
+            mock.patch.object(news, "record_source_failure"),
+        ):
+            translated, status = news.translate_headline_to_korean(
+                "Growing expectations for faster BOJ rate hikes push up bond yields",
+                "Nikkei Asia",
+                "BOJ 조기·가속 인상 기대·신호",
+                current,
+            )
+        self.assertEqual(status, "fallback_korean_summary")
+        self.assertRegex(translated, r"[가-힣]")
+        self.assertNotIn("Growing expectations", translated)
+
+    def test_message_outputs_korean_headline_not_english(self) -> None:
+        current = dt.datetime(2026, 8, 10, 12, 0, tzinfo=dt.timezone.utc)
+        item = self.item(
+            "Growing expectations for faster BOJ rate hikes push up bond yields - asia.nikkei.com",
+            source="asia.nikkei.com",
+        )
+        classified = news.ClassifiedItem(
+            item=item,
+            topic="BOJ 조기·가속 인상 기대·신호",
+            material_score=3,
+            source_level=1,
+            source_group="Nikkei",
+        )
+        with mock.patch.object(
+            news,
+            "translate_headline_to_korean",
+            return_value=("BOJ의 금리 인상 가속 기대가 커지며 채권금리가 상승", "translated"),
+        ):
+            _title, body, payload = news.build_message(
+                [(classified, 1, ["Nikkei"])],
+                current,
+            )
+        self.assertIn("헤드라인: BOJ의 금리 인상 가속 기대가 커지며 채권금리가 상승", body)
+        self.assertNotIn("Growing expectations", body)
+        self.assertEqual(
+            payload["items"][0]["headline_ko"],
+            "BOJ의 금리 인상 가속 기대가 커지며 채권금리가 상승",
+        )
+        self.assertIn("Growing expectations", payload["items"][0]["headline_original"])
+
     def test_finalize_requires_telegram_confirmation(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = pathlib.Path(temp_dir)
