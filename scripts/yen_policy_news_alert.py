@@ -21,7 +21,7 @@ from khs_source_fetch import fetch_text, record_source_failure
 
 UTC = dt.timezone.utc
 KST = ZoneInfo("Asia/Seoul")
-USER_AGENT = "Mozilla/5.0 khs-yen-policy-news/1.1"
+USER_AGENT = "Mozilla/5.0 khs-yen-policy-news/1.2"
 MAX_ITEM_AGE_HOURS = 12
 CLUSTER_COOLDOWN_HOURS = 24
 MAX_ALERT_ITEMS = 3
@@ -102,32 +102,37 @@ INTERVENTION_MARKERS = (
 )
 
 INTERVENTION_ACTION_MARKERS = (
+    "intervene",
     "intervened",
-    "intervene again",
-    "will intervene",
-    "joins intervention",
-    "join intervention",
-    "joined intervention",
-    "participate in intervention",
-    "participated in intervention",
-    "participation in intervention",
-    "supports intervention",
-    "support intervention",
-    "joint intervention",
-    "coordinated intervention",
-    "conducted intervention",
-    "carried out intervention",
+    "join",
+    "joins",
+    "joined",
+    "participate",
+    "participated",
+    "participation",
+    "support",
+    "supports",
+    "supported",
+    "conduct",
+    "conducted",
+    "carry out",
+    "carried out",
+    "buy yen",
     "bought yen",
-    "yen buying operation",
     "介入した",
     "介入を実施",
     "介入を行",
     "介入へ",
     "介入に参加",
     "介入参加",
-    "米国も介入",
-    "共同介入",
-    "協調介入",
+    "参加した",
+)
+
+JOINT_CONTEXT_MARKERS = (
+    "joint",
+    "coordinated",
+    "共同",
+    "協調",
 )
 
 US_MARKERS = (
@@ -193,13 +198,6 @@ CONFIRM_MARKERS = (
     "officially",
     "確認",
     "正式",
-)
-
-JOINT_MARKERS = (
-    "joint intervention",
-    "coordinated intervention",
-    "共同介入",
-    "協調介入",
 )
 
 
@@ -281,17 +279,17 @@ def classify(item: NewsItem) -> ClassifiedItem | None:
         return None
 
     intervention = contains_any(text, INTERVENTION_MARKERS)
-    intervention_action = contains_any(text, INTERVENTION_ACTION_MARKERS)
+    intervention_action = intervention and contains_any(text, INTERVENTION_ACTION_MARKERS)
     preparation = contains_any(text, PREPARATION_MARKERS)
-    joint = contains_any(text, JOINT_MARKERS)
+    joint = intervention and contains_any(text, JOINT_CONTEXT_MARKERS)
     confirmed = contains_any(text, CONFIRM_MARKERS)
     us = contains_any(f" {text} ", US_MARKERS)
     hike = contains_any(text, HIKE_MARKERS)
     september = contains_any(text, SEPTEMBER_MARKERS)
     acceleration = contains_any(text, ACCELERATION_MARKERS)
 
-    # A story merely describing price action after a past intervention is not a new catalyst.
-    if intervention and not intervention_action and not preparation:
+    # Mere market commentary about the aftermath of an old intervention is not a new catalyst.
+    if intervention and not intervention_action and not preparation and not confirmed:
         return None
 
     if intervention and us and joint and (intervention_action or confirmed):
@@ -300,7 +298,7 @@ def classify(item: NewsItem) -> ClassifiedItem | None:
         topic, score = "미국의 엔화 개입 참여·지원", 5
     elif intervention and preparation:
         topic, score = "엔화 개입 준비·레이트체크", 4
-    elif intervention and intervention_action:
+    elif intervention and (intervention_action or confirmed):
         topic, score = "엔화 시장개입", 4
     elif hike and september and us:
         topic, score = "BOJ 9월 인상·미국 연계", 4
