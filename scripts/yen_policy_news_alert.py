@@ -21,7 +21,7 @@ from khs_source_fetch import fetch_text, record_source_failure
 
 UTC = dt.timezone.utc
 KST = ZoneInfo("Asia/Seoul")
-USER_AGENT = "Mozilla/5.0 khs-yen-policy-news/1.2"
+USER_AGENT = "Mozilla/5.0 khs-yen-policy-news/1.3"
 MAX_ITEM_AGE_HOURS = 12
 CLUSTER_COOLDOWN_HOURS = 24
 MAX_ALERT_ITEMS = 3
@@ -101,7 +101,7 @@ INTERVENTION_MARKERS = (
     "レートチェック",
 )
 
-INTERVENTION_ACTION_MARKERS = (
+ENGLISH_INTERVENTION_ACTIONS = (
     "intervene",
     "intervened",
     "join",
@@ -119,6 +119,9 @@ INTERVENTION_ACTION_MARKERS = (
     "carried out",
     "buy yen",
     "bought yen",
+)
+
+JAPANESE_INTERVENTION_ACTIONS = (
     "介入した",
     "介入を実施",
     "介入を行",
@@ -240,6 +243,11 @@ def contains_any(text: str, markers: tuple[str, ...]) -> bool:
     return any(marker.lower() in lowered for marker in markers)
 
 
+def contains_normalized_phrase(text: str, markers: tuple[str, ...]) -> bool:
+    normalized = f" {normalize_text(text)} "
+    return any(f" {normalize_text(marker)} " in normalized for marker in markers)
+
+
 def source_group(source: str, full_text: str) -> str:
     lowered = html.unescape(f"{source} {full_text}").lower()
     mapping = (
@@ -279,7 +287,10 @@ def classify(item: NewsItem) -> ClassifiedItem | None:
         return None
 
     intervention = contains_any(text, INTERVENTION_MARKERS)
-    intervention_action = intervention and contains_any(text, INTERVENTION_ACTION_MARKERS)
+    intervention_action = intervention and (
+        contains_normalized_phrase(text, ENGLISH_INTERVENTION_ACTIONS)
+        or contains_any(text, JAPANESE_INTERVENTION_ACTIONS)
+    )
     preparation = contains_any(text, PREPARATION_MARKERS)
     joint = intervention and contains_any(text, JOINT_CONTEXT_MARKERS)
     confirmed = contains_any(text, CONFIRM_MARKERS)
