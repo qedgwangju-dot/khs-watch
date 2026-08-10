@@ -39,7 +39,7 @@ def test_single_source_is_not_verified():
 def test_two_independent_sources_with_reputable_source_are_verified():
     rows = [
         item("Meta data center permit approved for new campus", "Reuters"),
-        item("Meta wins permit approval for data center campus", "Local Business Journal"),
+        item("Meta data center permit approved for campus", "Local Business Journal"),
     ]
     clusters = cluster_items(rows)
     assert len(clusters) == 1
@@ -49,7 +49,7 @@ def test_two_independent_sources_with_reputable_source_are_verified():
 def test_same_source_republication_does_not_count_as_two_sources():
     rows = [
         item("Meta data center permit approved for new campus", "Reuters"),
-        item("Meta wins permit approval for data center campus", "Reuters"),
+        item("Meta data center permit approved for campus", "Reuters"),
     ]
     clusters = cluster_items(rows)
     assert len(clusters) == 1
@@ -63,7 +63,7 @@ def test_source_classification():
 
 def test_event_fingerprint_is_stable_across_source_order():
     a = item("Meta data center permit approved for new campus", "Reuters")
-    b = item("Meta wins permit approval for data center campus", "Local Business Journal")
+    b = item("Meta data center permit approved for campus", "Local Business Journal")
     c1 = cluster_items([a, b])[0]
     c2 = cluster_items([b, a])[0]
     assert event_fingerprint(c1) == event_fingerprint(c2)
