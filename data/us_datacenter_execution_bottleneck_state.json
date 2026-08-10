@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "seen": [
     "58d413ed952b762dd1a3cbdba91b6f6720743ee8a9dd7e11b74706823ab018b6",
     "29061d58cc4162e35f1ac7cbdac41bbc1b96cc528d588825e58ffee754e16c58",
@@ -134,7 +134,10 @@
     "963d6a49ffbd23f83906063343649a340cd38207ce7e31d8a0177e8d9c9fa37c",
     "86a45629af9be39f21ee7be92efca581293d27d75802d626c875c247be62ec93"
   ],
-  "last_scan_count": 132,
+  "last_scan_count": 192,
   "last_errors": [],
-  "updated_at_utc": "2026-08-10T11:54:41.570651+00:00"
+  "updated_at_utc": "2026-08-10T12:21:40.622341+00:00",
+  "alerted_events": [],
+  "last_candidate_count": 16,
+  "last_verified_cluster_count": 0
 }
