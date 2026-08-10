@@ -430,6 +430,26 @@ SEARCH_SOURCES.extend(
     ]
 )
 
+# Corporate execution and shareholder-policy monitoring. A securities-firm
+# estimate stays an estimate until the board or company announces the policy.
+SEARCH_SOURCES.extend(
+    [
+        (
+            "한미반도체 미국 법인·북미 장비 수주·고객지원",
+            "(한미반도체 OR Hanmi Semiconductor) "
+            "(한미 USA OR 미국 법인 OR 미국법인 OR 현지 법인 OR 현지법인) "
+            "(설립 OR 출범 OR 출자 OR 고객지원 OR 기술지원 OR 수주 OR 하이퍼스케일러 OR HBM) "
+            "(site:yna.co.kr OR site:newsis.com OR site:etnews.com OR site:edaily.co.kr OR site:mk.co.kr)",
+        ),
+        (
+            "삼성전자 주주환원·배당·자사주 이사회 정책",
+            "(삼성전자) (주주환원 OR 주주 환원 OR 배당 OR 자사주 OR 자기주식) "
+            "(이사회 OR 정책 OR 발표 OR 확정 OR 전망 OR 소각 OR 매입 OR 배당수익률) "
+            "(site:yna.co.kr OR site:newsis.com OR site:mk.co.kr OR site:edaily.co.kr OR site:metroseoul.co.kr)",
+        ),
+    ]
+)
+
 DIRECT_RSS_SOURCES = [
     ("뉴시스 속보", "https://www.newsis.com/RSS/sokbo.xml", "trusted"),
     ("뉴시스 경제", "https://www.newsis.com/RSS/economy.xml", "trusted"),
@@ -525,6 +545,26 @@ PRIORITY_TERMS.update(
         "매도 사이드카": 18,
         "매수 사이드카": 18,
         "사이드카 발동": 18,
+    }
+)
+
+PRIORITY_TERMS.update(
+    {
+        "한미반도체": 18,
+        "hanmi semiconductor": 18,
+        "한미 usa": 18,
+        "미국 법인": 15,
+        "미국법인": 15,
+        "현지 법인": 14,
+        "현지법인": 14,
+        "고객지원": 13,
+        "기술지원": 13,
+        "주주환원": 17,
+        "주주 환원": 17,
+        "배당수익률": 15,
+        "배당 수익률": 15,
+        "이사회 결정": 17,
+        "이사회": 11,
     }
 )
 
@@ -719,6 +759,22 @@ AUGUST10_IMPACT_TERMS = {
     ),
 }
 for _impact_label, _impact_terms in AUGUST10_IMPACT_TERMS.items():
+    IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
+
+CORPORATE_EXECUTION_IMPACT_TERMS = {
+    "돈 버는 능력": (
+        "한미반도체", "hanmi semiconductor", "한미 usa", "미국 법인", "미국법인",
+        "현지 법인", "현지법인", "고객지원", "기술지원",
+    ),
+    "수급": (
+        "주주환원", "주주 환원", "배당수익률", "배당 수익률", "이사회 결정",
+    ),
+    "시간표": (
+        "한미 usa", "미국 법인", "미국법인", "현지 법인", "현지법인",
+        "이사회 결정", "이사회",
+    ),
+}
+for _impact_label, _impact_terms in CORPORATE_EXECUTION_IMPACT_TERMS.items():
     IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
 # Rebuild after every extension. A stale material tuple would score a new lane
