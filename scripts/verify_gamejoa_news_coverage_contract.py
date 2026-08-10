@@ -75,6 +75,17 @@ AUGUST9_CASES = (
 )
 
 
+AUGUST10_CASES = (
+    ("회사채 73% 차환용, 신용등급 하향에 시설자금 발행 급감", "회사채", "할인율"),
+    ("중국 7월 CPI·PPI 둔화, 반도체·전자부품 가격만 상승", "cpi", "할인율"),
+    ("유니트리 IPO와 CXMT 증설, 중국 피지컬 AI 경쟁 가속", "유니트리", "돈 버는 능력"),
+    ("테슬라·엔비디아 토큰주식 24시간 거래 규모 급증", "토큰주식", "수급"),
+    ("HBF, AI 추론용 차세대 메모리로 2027년 제한 상용화 전망", "hbf", "시간표"),
+    ("미국 고용 쇼크에 달러/원 1410원선, 미 국채금리 하락", "미국 고용", "할인율"),
+    ("미국 CPI 발표 앞두고 AI 랠리와 금리인하 기대 재평가", "미국 cpi", "할인율"),
+)
+
+
 def main() -> int:
     failures = []
     now = datetime.now().astimezone()
@@ -88,7 +99,9 @@ def main() -> int:
         "                return None"
     ) in fda_runner_source:
         failures.append("production_fda_wrapper=body_fetch_failure_still_blocked")
-    for index, (title, required_term, required_impact) in enumerate(CASES + ATTACHED_CASES + AUGUST9_CASES):
+    for index, (title, required_term, required_impact) in enumerate(
+        CASES + ATTACHED_CASES + AUGUST9_CASES + AUGUST10_CASES
+    ):
         row = {
             "title": title,
             "summary": title,
@@ -198,6 +211,11 @@ def main() -> int:
         "삼성 테일러 팹 가동·미국 파운드리 인력",
         "전력반도체 정책·대형 투자·생산기지",
         "해외 AI 슈퍼컴퓨터·한국 반도체·보안 수주",
+        "회사채 차환·신용등급·시설투자 위축",
+        "중국 CPI·PPI·디플레이션·전자부품 가격",
+        "중국 피지컬 AI·휴머노이드 로봇·반도체 경쟁",
+        "토큰화 주식·24시간 거래·가상자산 증권 규제",
+        "미국 고용·CPI·달러/원·미 국채금리",
     ):
         if required_search not in search_names:
             failures.append(f"missing_attached_search={required_search}")
@@ -1025,3 +1043,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
