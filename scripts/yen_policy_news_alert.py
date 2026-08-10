@@ -9,7 +9,6 @@ import email.utils
 import hashlib
 import html
 import json
-import os
 import pathlib
 import re
 import urllib.parse
@@ -22,7 +21,7 @@ from khs_source_fetch import fetch_text, record_source_failure
 
 UTC = dt.timezone.utc
 KST = ZoneInfo("Asia/Seoul")
-USER_AGENT = "Mozilla/5.0 khs-yen-policy-news/1.0"
+USER_AGENT = "Mozilla/5.0 khs-yen-policy-news/1.1"
 MAX_ITEM_AGE_HOURS = 12
 CLUSTER_COOLDOWN_HOURS = 24
 MAX_ALERT_ITEMS = 3
@@ -102,6 +101,35 @@ INTERVENTION_MARKERS = (
     "レートチェック",
 )
 
+INTERVENTION_ACTION_MARKERS = (
+    "intervened",
+    "intervene again",
+    "will intervene",
+    "joins intervention",
+    "join intervention",
+    "joined intervention",
+    "participate in intervention",
+    "participated in intervention",
+    "participation in intervention",
+    "supports intervention",
+    "support intervention",
+    "joint intervention",
+    "coordinated intervention",
+    "conducted intervention",
+    "carried out intervention",
+    "bought yen",
+    "yen buying operation",
+    "介入した",
+    "介入を実施",
+    "介入を行",
+    "介入へ",
+    "介入に参加",
+    "介入参加",
+    "米国も介入",
+    "共同介入",
+    "協調介入",
+)
+
 US_MARKERS = (
     "u.s.",
     " us ",
@@ -129,13 +157,17 @@ HIKE_MARKERS = (
     "金融引き締め",
 )
 
-TIMING_MARKERS = (
+SEPTEMBER_MARKERS = (
     "september",
     "9月",
+)
+
+ACCELERATION_MARKERS = (
     "next meeting",
     "next policy meeting",
     "faster",
     "accelerate",
+    "accelerated",
     "earlier",
     "soon",
     "前倒し",
@@ -159,10 +191,14 @@ CONFIRM_MARKERS = (
     "confirmed",
     "confirms",
     "officially",
-    "joint intervention",
-    "coordinated intervention",
     "確認",
     "正式",
+)
+
+JOINT_MARKERS = (
+    "joint intervention",
+    "coordinated intervention",
+    "共同介入",
     "協調介入",
 )
 
@@ -243,25 +279,37 @@ def classify(item: NewsItem) -> ClassifiedItem | None:
     text = item.text
     if not contains_any(text, CONTEXT_MARKERS):
         return None
+
     intervention = contains_any(text, INTERVENTION_MARKERS)
+    intervention_action = contains_any(text, INTERVENTION_ACTION_MARKERS)
+    preparation = contains_any(text, PREPARATION_MARKERS)
+    joint = contains_any(text, JOINT_MARKERS)
+    confirmed = contains_any(text, CONFIRM_MARKERS)
     us = contains_any(f" {text} ", US_MARKERS)
     hike = contains_any(text, HIKE_MARKERS)
-    timing = contains_any(text, TIMING_MARKERS)
-    preparation = contains_any(text, PREPARATION_MARKERS)
-    confirmed = contains_any(text, CONFIRM_MARKERS)
+    september = contains_any(text, SEPTEMBER_MARKERS)
+    acceleration = contains_any(text, ACCELERATION_MARKERS)
 
-    if intervention and us and confirmed:
+    # A story merely describing price action after a past intervention is not a new catalyst.
+    if intervention and not intervention_action and not preparation:
+        return None
+
+    if intervention and us and joint and (intervention_action or confirmed):
         topic, score = "미·일 공동개입/미국 참여", 5
-    elif intervention and us:
+    elif intervention and us and intervention_action:
         topic, score = "미국의 엔화 개입 참여·지원", 5
     elif intervention and preparation:
         topic, score = "엔화 개입 준비·레이트체크", 4
-    elif intervention:
+    elif intervention and intervention_action:
         topic, score = "엔화 시장개입", 4
-    elif hike and timing and us:
-        topic, score = "BOJ 인상 시점·미국 연계", 4
-    elif hike and timing:
-        topic, score = "BOJ 조기·9월 인상 신호", 3
+    elif hike and september and us:
+        topic, score = "BOJ 9월 인상·미국 연계", 4
+    elif hike and acceleration and us:
+        topic, score = "BOJ 조기·가속 인상·미국 연계", 4
+    elif hike and september:
+        topic, score = "BOJ 9월 인상 기대·신호", 3
+    elif hike and acceleration:
+        topic, score = "BOJ 조기·가속 인상 기대·신호", 3
     elif hike:
         topic, score = "BOJ 금리인상 신호", 2
     else:
@@ -477,11 +525,12 @@ def build_message(
     payload_items: list[dict] = []
     for index, (classified, rank, groups) in enumerate(selected, start=1):
         item = classified.item
+        headline = html.unescape(re.sub(r"<[^>]+>", " ", item.title)).strip()
         body_lines.extend(
             [
                 f"{index}) {classified.topic} · {rank_label(rank)}",
                 f"출처: {item.source or classified.source_group} · {item.published.astimezone(KST).strftime('%m-%d %H:%M KST')}",
-                f"헤드라인: {html.unescape(re.sub(r'<[^>]+>', ' ', item.title)).strip()}",
+                f"헤드라인: {headline}",
                 f"교차확인: {', '.join(groups)}",
                 *axis_lines(classified.topic),
                 "",
