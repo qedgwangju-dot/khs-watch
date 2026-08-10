@@ -451,6 +451,9 @@ SEARCH_SOURCES.extend(
 )
 
 DIRECT_RSS_SOURCES = [
+    ("연합뉴스 경제", "https://www.yna.co.kr/rss/economy.xml", "trusted"),
+    ("연합뉴스 산업", "https://www.yna.co.kr/rss/industry.xml", "trusted"),
+    ("연합뉴스 증권", "https://www.yna.co.kr/rss/market.xml", "trusted"),
     ("뉴시스 속보", "https://www.newsis.com/RSS/sokbo.xml", "trusted"),
     ("뉴시스 경제", "https://www.newsis.com/RSS/economy.xml", "trusted"),
     ("뉴시스 금융", "https://www.newsis.com/RSS/bank.xml", "trusted"),
