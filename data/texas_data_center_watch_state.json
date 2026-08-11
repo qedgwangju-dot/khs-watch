@@ -1,6 +1,6 @@
 {
   "source_version": 1,
-  "last_checked_kst": "2026-08-12T02:07:28+09:00",
+  "last_checked_kst": "2026-08-12T04:14:05+09:00",
   "seen_keys": [
     "609d75cf5cc90df8dff5f4ed2fb09ad754e450a0f523d84c02f4a214f14d1e45",
     "9b5437dbee3a8b670d45f6bad9804f011108d9c1ca20e0d72125672ff2fdd661",
@@ -26,10 +26,5 @@
     "PUCT search large load: fetch failed: https://www.puc.texas.gov/agency/sitesearch.aspx?q=large+load: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
     "PUCT search interconnection: fetch failed: https://www.puc.texas.gov/agency/sitesearch.aspx?q=interconnection: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
     "PUCT search ratepayer data center: fetch failed: https://www.puc.texas.gov/agency/sitesearch.aspx?q=ratepayer+data+center: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
-  ],
-  "last_successful_delivery_kst": "2026-08-12T02:08:08+09:00",
-  "telegram_message_ids": [
-    34
-  ],
-  "bot_username": "hs8879887988798879_bot"
+  ]
 }
