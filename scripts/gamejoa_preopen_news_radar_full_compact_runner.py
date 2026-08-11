@@ -3691,6 +3691,43 @@ def build_korea_strategic_etf_listing_alert(row: dict, now, text: str) -> dict |
     return alert
 
 
+def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | None:
+    """Route recurring company and market events from verified article bodies."""
+    title = str(row.get("source_title") or row.get("title") or "")
+    body = str(row.get("source_body") or row.get("source_abstract") or "")
+    profiles = (
+        ("korea_zinc_critical_minerals", ("고려아연",), ("핵심광물", "핵심 광물", "제련소", "통합제련소"), ["돈 버는 능력", "할인율", "시간표"], ["핵심광물", "비철금속/제련", "미국 공급망"], ["미국 정책 연결", "제련 CAPEX", "핵심광물 공급"], 111),
+        ("korea_anthropic_strategic_investment", ("앤트로픽", "anthropic"), ("네이버", "naver", "삼성전자", "sk텔레콤", "skt"), ["돈 버는 능력", "수급", "시간표"], ["AI/데이터센터", "반도체/HBM/CXL", "플랫폼/클라우드"], ["AI 전략투자", "모델 협업", "데이터센터 수요"], 109),
+        ("apple_cxmt_memory_supply_test", ("애플", "apple"), ("cxmt", "창신메모리", "중국 메모리", "중국 d램"), ["돈 버는 능력", "수급", "시간표"], ["반도체/HBM/CXL", "DRAM/NAND", "중국 메모리 공급"], ["고객 인증", "메모리 공급", "경쟁구도"], 112),
+        ("ai_infrastructure_finance_platform", ("금융플랫폼", "금융 플랫폼", "자금조달", "투자플랫폼", "투자 플랫폼"), ("ai 인프라", "ai인프라", "데이터센터", "gpu", "컴퓨팅"), ["돈 버는 능력", "할인율", "시간표"], ["AI/데이터센터", "전력기기/전력망", "반도체/HBM/CXL"], ["데이터센터 금융", "CAPEX 조달", "AI 인프라"], 110),
+        ("skhynix_kioxia_ownership_structure", ("sk하이닉스", "sk hynix"), ("키옥시아", "kioxia"), ["돈 버는 능력", "수급", "시간표"], ["반도체/HBM/CXL", "DRAM/NAND", "기업결합/지분"], ["낸드 경쟁구도", "CB 전환", "경쟁당국 승인"], 109),
+        ("korea_etf_asset_flow", ("etf", "상장지수펀드"), ("자금유출", "자금 유출", "자금유입", "자금 유입", "순자산", "설정액", "환매"), ["수급"], ["금융/자본시장", "ETF/ETN"], ["ETF 설정·환매", "투자자 수급"], 106),
+        ("korea_solar_module_capacity", ("태양광 모듈", "태양광모듈", "solar module"), ("신규 라인", "신규라인", "양산", "생산라인", "공장 가동", "증설"), ["돈 버는 능력", "시간표"], ["태양광/신재생", "전력기기/전력망"], ["모듈 생산능력", "양산 시간표"], 106),
+        ("korea_large_mna_credit_structure", ("인수", "m&a", "매각 계약", "매각계약"), ("조원", "억원", "pef", "사모펀드", "tpg", "kkr", "mbk"), ["돈 버는 능력", "수급", "시간표"], ["금융/자본시장", "기업 M&A"], ["인수 구조", "신용등급", "자금조달"], 110),
+    )
+    for kind, anchors, triggers, impacts, sectors, paths, score in profiles:
+        if not any(term in text for term in anchors) or not any(term in text for term in triggers):
+            continue
+        if kind == "apple_cxmt_memory_supply_test" and not any(term in text for term in ("테스트", "시험", "탑재", "공급", "협력", "채택")):
+            continue
+        if kind == "korea_etf_asset_flow" and not re.search(r"\d[\d,.]*(?:조|억)원", text):
+            continue
+        if kind == "korea_large_mna_credit_structure" and not any(term in text for term in ("계약", "결정", "인수한다", "인수하기로")):
+            continue
+        core = detailed_article_core(title, body)
+        if kind == "korea_etf_asset_flow":
+            amount_match = re.search(r"\d[\d,.]*(?:조|억)원", text)
+            direction = "유출" if any(term in text for term in ("자금유출", "자금 유출", "빠져나")) else "유입"
+            if amount_match:
+                core = f"국내 ETF에서 {amount_match.group(0)} 자금이 {direction}됐습니다."
+        elif kind == "korea_solar_module_capacity" and "신성이엔지" in text:
+            core = "신성이엔지가 김제공장 신규 라인을 가동해 태양광 모듈 양산을 시작했습니다."
+        alert = base_korean_business_alert(row, now, score=score, impacts=impacts)
+        alert.update({"importance": "상" if score >= 110 else "중", "status": "확정" if row.get("body_verified") else "예비", "policy_plain_summary": core, "telegram_core_fact": core, "sectors": sectors, "paths": paths, "korean_business_kind": kind, "supply_chain_theme": f"{kind}:{korean_business_event_date(row)}"})
+        return alert
+    return None
+
+
 def build_ai_factory_deployment_alert(row: dict, now, text: str) -> dict | None:
     if not (
         any(term in text for term in ("sk텔레콤", "skt"))
@@ -4152,6 +4189,7 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
         build_china_memory_ipo_alert,
         build_korea_etf_net_buy_alert,
         build_korea_strategic_etf_listing_alert,
+        build_attachment_verified_event_alert,
         build_ai_factory_deployment_alert,
         build_sk_ms_memory_supply_alert,
         build_korea_ai_bigtech_cooperation_alert,
