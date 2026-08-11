@@ -133,7 +133,22 @@ jobs:
             git push
           fi
 
+      - name: Check KRX credentials
+        id: krx_auth
+        env:
+          KRX_ID: ${{ secrets.KRX_ID }}
+          KRX_PW: ${{ secrets.KRX_PW }}
+        run: |
+          if [ -n "$KRX_ID" ] && [ -n "$KRX_PW" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "KRX authentication secrets present"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "KRX_ID/KRX_PW secrets are not configured; data fetch is paused without error."
+          fi
+
       - name: Read KRX RFHIC short-selling data
+        if: steps.krx_auth.outputs.ready == 'true'
         env:
           KRX_ID: ${{ secrets.KRX_ID }}
           KRX_PW: ${{ secrets.KRX_PW }}
@@ -142,7 +157,7 @@ jobs:
           python scripts/rfhic_short_watch.py
 
       - name: Send initial KRX monitor confirmation
-        if: hashFiles('out/rfhic_short_watch_rebaseline.txt') != ''
+        if: steps.krx_auth.outputs.ready == 'true' && hashFiles('out/rfhic_short_watch_rebaseline.txt') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
@@ -153,7 +168,6 @@ jobs:
           import os
           import urllib.parse
           import urllib.request
-
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
           text = (
@@ -161,9 +175,7 @@ jobs:
               "이제 새 거래일 데이터가 확인되면 당일 공매도량·비율과 최신 T+2 순보유잔고를 함께 알립니다."
           )
           payload = urllib.parse.urlencode({"chat_id": chat_id, "text": text}).encode("utf-8")
-          req = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST"
-          )
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
           with urllib.request.urlopen(req, timeout=25) as response:
               result = json.loads(response.read().decode("utf-8"))
           if not result.get("ok"):
@@ -172,7 +184,7 @@ jobs:
           PY
 
       - name: Send new KRX short-selling report
-        if: hashFiles('out/rfhic_short_watch_alert.txt') != ''
+        if: steps.krx_auth.outputs.ready == 'true' && hashFiles('out/rfhic_short_watch_alert.txt') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
@@ -186,7 +198,6 @@ jobs:
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
-
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
@@ -195,16 +206,9 @@ jobs:
           username = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or username.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
-
           text = pathlib.Path("out/rfhic_short_watch_alert.txt").read_text(encoding="utf-8").strip()
-          payload = urllib.parse.urlencode({
-              "chat_id": chat_id,
-              "text": text,
-              "disable_web_page_preview": "true",
-          }).encode("utf-8")
-          request = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST"
-          )
+          payload = urllib.parse.urlencode({"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"}).encode("utf-8")
+          request = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
           with urllib.request.urlopen(request, timeout=25) as response:
               result = json.loads(response.read().decode("utf-8"))
           if not result.get("ok"):
@@ -222,7 +226,7 @@ jobs:
           PY
 
       - name: Persist KRX watcher state
-        if: success()
+        if: steps.krx_auth.outputs.ready == 'true' && success() && hashFiles('out/rfhic_short_watch_pending_state.json') != ''
         run: |
           mkdir -p data
           cp out/rfhic_short_watch_pending_state.json data/rfhic_short_watch_state.json
@@ -241,7 +245,7 @@ jobs:
           fi
 
       - name: Commit KRX watcher state
-        if: success()
+        if: steps.krx_auth.outputs.ready == 'true' && success() && hashFiles('data/rfhic_short_watch_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -257,10 +261,12 @@ jobs:
       - name: Publish watcher summary
         if: always()
         run: |
-          if [ -f out/rfhic_short_watch_status.md ]; then
+          if [ "${{ steps.krx_auth.outputs.ready }}" != "true" ]; then
+            echo "### RFHIC 공매도 감시" >> "$GITHUB_STEP_SUMMARY"
+            echo "- Telegram 경로: 연결됨" >> "$GITHUB_STEP_SUMMARY"
+            echo "- KRX 자동조회: KRX_ID/KRX_PW Secrets 입력 대기" >> "$GITHUB_STEP_SUMMARY"
+          elif [ -f out/rfhic_short_watch_status.md ]; then
             cat out/rfhic_short_watch_status.md >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "KRX 공매도 데이터 조회 단계가 완료되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Upload verification artifacts
