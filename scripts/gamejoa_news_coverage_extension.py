@@ -435,6 +435,14 @@ SEARCH_SOURCES.extend(
 SEARCH_SOURCES.extend(
     [
         (
+            "국내 전략산업 ETF 신규상장·편입·리밸런싱",
+            "(ETF OR 상장지수펀드) (신규상장 OR 신규 상장 OR 상장예정 OR 상장 예정 OR 상장) "
+            "(반도체 OR 금융 OR 지주 OR 방산 OR AI OR 전력 OR 전략산업 OR 전략 산업) "
+            "(운용 OR 자산운용 OR 편입 OR 채권혼합 OR 액티브 OR 리밸런싱) "
+            "(site:yna.co.kr OR site:newsis.com OR site:edaily.co.kr OR site:mk.co.kr "
+            "OR site:hankyung.com OR site:etoday.co.kr OR site:fnnews.com)",
+        ),
+        (
             "한미반도체 미국 법인·북미 장비 수주·고객지원",
             "(한미반도체 OR Hanmi Semiconductor) "
             "(한미 USA OR 미국 법인 OR 미국법인 OR 현지 법인 OR 현지법인) "
@@ -764,6 +772,23 @@ AUGUST10_IMPACT_TERMS = {
 for _impact_label, _impact_terms in AUGUST10_IMPACT_TERMS.items():
     IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
+PRIORITY_TERMS.update(
+    {
+        "신규상장": 16,
+        "신규 상장": 16,
+        "상장 예정": 14,
+        "상장예정": 14,
+        "상장지수펀드": 13,
+        "채권혼합": 13,
+        "액티브 etf": 13,
+        "반도체·금융·지주": 16,
+        "전략산업 etf": 15,
+        "전략산업etf": 15,
+        "브이아이자산운용": 16,
+        "브이아이운용": 16,
+    }
+)
+
 CORPORATE_EXECUTION_IMPACT_TERMS = {
     "돈 버는 능력": (
         "한미반도체", "hanmi semiconductor", "한미 usa", "미국 법인", "미국법인",
@@ -778,6 +803,19 @@ CORPORATE_EXECUTION_IMPACT_TERMS = {
     ),
 }
 for _impact_label, _impact_terms in CORPORATE_EXECUTION_IMPACT_TERMS.items():
+    IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
+
+STRATEGIC_ETF_LISTING_IMPACT_TERMS = {
+    "수급": (
+        "신규상장", "신규 상장", "상장지수펀드", "채권혼합", "액티브 etf",
+        "반도체·금융·지주", "전략산업 etf", "전략산업etf",
+    ),
+    "시간표": (
+        "신규상장", "신규 상장", "상장 예정", "상장예정", "상장지수펀드",
+        "채권혼합", "액티브 etf", "전략산업 etf", "전략산업etf",
+    ),
+}
+for _impact_label, _impact_terms in STRATEGIC_ETF_LISTING_IMPACT_TERMS.items():
     IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
 # Rebuild after every extension. A stale material tuple would score a new lane
