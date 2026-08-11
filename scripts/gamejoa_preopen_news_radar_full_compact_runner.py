@@ -3649,6 +3649,48 @@ def build_korea_etf_net_buy_alert(row: dict, now, text: str) -> dict | None:
     return alert
 
 
+def build_korea_strategic_etf_listing_alert(row: dict, now, text: str) -> dict | None:
+    """Classify new strategic-industry ETF listings without calling them fund inflows."""
+    title = str(row.get("source_title") or row.get("title") or "")
+    has_listing_timetable = (
+        any(term in text for term in ("신규상장", "신규 상장", "상장 예정", "상장예정"))
+        or (
+            "상장" in text
+            and bool(re.search(r"\d{1,2}\s*일", text))
+        )
+    )
+    if not (
+        any(term in text for term in ("etf", "상장지수펀드"))
+        and has_listing_timetable
+    ):
+        return None
+    theme_terms = ("반도체", "금융", "지주", "방산", "ai", "전력", "전략산업", "전략 산업")
+    if sum(term in text for term in theme_terms) < 2:
+        return None
+
+    body = str(row.get("source_body") or row.get("source_abstract") or "")
+    if all(term in text for term in ("브이아이", "반도체", "금융", "지주")):
+        core = "브이아이운용이 반도체·금융·지주 분산 ETF를 11일 상장합니다."
+    else:
+        core = detailed_article_core(title, body)
+    alert = base_korean_business_alert(row, now, score=106, impacts=["수급", "시간표"])
+    alert.update(
+        {
+            "importance": "중",
+            "status": "확정" if row.get("body_verified") else "예비",
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "investment_view": "신규 ETF 상장은 해당 바스켓의 거래 접근성과 초기 편입·리밸런싱 수요 가능성을 만듭니다. 실제 자금 유입은 순자산·설정액·거래대금으로 별도 확인해야 합니다.",
+            "korea_market_impact": "삼성전자·SK하이닉스와 금융·지주 편입 비중, 상장일 거래대금, 순자산 및 설정·환매 변화를 분리해 확인합니다.",
+            "sectors": ["금융/자본시장", "반도체/HBM/CXL", "지주회사"],
+            "paths": ["ETF 신규상장", "편입·리밸런싱", "수급 접근성"],
+            "korean_business_kind": "korea_strategic_etf_listing",
+            "supply_chain_theme": f"korea_strategic_etf_listing:{korean_business_event_date(row)}",
+        }
+    )
+    return alert
+
+
 def build_ai_factory_deployment_alert(row: dict, now, text: str) -> dict | None:
     if not (
         any(term in text for term in ("sk텔레콤", "skt"))
@@ -4109,6 +4151,7 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
         build_fomc_rate_outlook_alert,
         build_china_memory_ipo_alert,
         build_korea_etf_net_buy_alert,
+        build_korea_strategic_etf_listing_alert,
         build_ai_factory_deployment_alert,
         build_sk_ms_memory_supply_alert,
         build_korea_ai_bigtech_cooperation_alert,
