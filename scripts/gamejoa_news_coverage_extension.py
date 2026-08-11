@@ -435,6 +435,57 @@ SEARCH_SOURCES.extend(
 SEARCH_SOURCES.extend(
     [
         (
+            "고려아연·핵심광물·미국 제련소·정부 프로젝트",
+            "(고려아연 OR Korea Zinc) (핵심광물 OR 핵심 광물 OR 제련소 OR 통합제련소 OR 미국 제련소) "
+            "(트럼프 OR 미국 정부 OR 상무부 OR 프로젝트 OR 모범사례 OR 투자 OR 생산) "
+            "(site:yna.co.kr OR site:wowtv.co.kr OR site:newsis.com OR site:reuters.com OR site:mk.co.kr)",
+        ),
+        (
+            "네이버·삼성·SKT 앤트로픽 투자·AI 협업",
+            "(NAVER OR 네이버 OR 삼성전자 OR SK텔레콤 OR SKT) (앤트로픽 OR Anthropic OR 클로드 OR Claude) "
+            "(투자 OR 출자 OR 지분 OR 협업 OR 협력 OR 전략 OR 데이터센터 OR AI) "
+            "(site:hankyung.com OR site:yna.co.kr OR site:newsis.com OR site:edaily.co.kr OR site:etnews.com)",
+        ),
+        (
+            "애플·CXMT 중국 메모리 탑재시험·공급망",
+            "(애플 OR Apple) (CXMT OR 창신메모리 OR 중국 메모리 OR 중국 D램) "
+            "(탑재 시험 OR 테스트 OR 공급 OR 협력 OR 채택 OR 모바일 AI OR 아이폰) "
+            "(site:mk.co.kr OR site:dt.co.kr OR site:reuters.com OR site:yna.co.kr OR site:newsis.com)",
+        ),
+        (
+            "AI 데이터센터 금융플랫폼·대형 자금조달",
+            "(엔비디아 OR Nvidia OR 오픈AI OR OpenAI OR 아폴로 OR 블랙스톤 OR 블랙록 OR 브룩필드) "
+            "(금융플랫폼 OR 금융 플랫폼 OR 자금조달 OR 투자플랫폼 OR 투자 플랫폼 OR 보증 OR 대출 OR 금융지원) "
+            "(AI 인프라 OR AI인프라 OR 데이터센터 OR GPU OR 컴퓨팅) "
+            "(site:reuters.com OR site:ft.com OR site:dt.co.kr OR site:yna.co.kr OR site:newsis.com)",
+        ),
+        (
+            "SK하이닉스·키옥시아 지분·CB 전환·경쟁당국",
+            "(SK하이닉스 OR SK hynix) (키옥시아 OR Kioxia) "
+            "(최대주주 OR 최대 주주 OR 전환사채 OR CB OR 의결권 OR 경쟁당국 OR 기업결합) "
+            "(전환 OR 승인 OR 지분 OR 낸드 OR NAND) "
+            "(site:mk.co.kr OR site:fnnews.com OR site:zdnet.co.kr OR site:yna.co.kr OR site:newsis.com)",
+        ),
+        (
+            "국내 ETF 순자산·설정·환매·대규모 자금 유출입",
+            "(ETF OR 상장지수펀드) (자금유출 OR 자금 유출 OR 자금유입 OR 자금 유입 OR 순자산 OR 설정액 OR 환매) "
+            "(조원 OR 억원 OR 7000억 OR 1조 OR 2조 OR 3조) "
+            "(site:yna.co.kr OR site:newsis.com OR site:edaily.co.kr OR site:dailian.co.kr OR site:mk.co.kr)",
+        ),
+        (
+            "국내 태양광 모듈 생산라인·양산·공장 증설",
+            "(태양광 모듈 OR 태양광모듈 OR solar module OR 신성이엔지 OR 한화솔루션 OR HD현대에너지솔루션) "
+            "(신규 라인 OR 신규라인 OR 양산 OR 생산라인 OR 공장 가동 OR 증설 OR 실증 OR KS 인증) "
+            "(site:newsis.com OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR site:hankyung.com)",
+        ),
+        (
+            "국내 대형 M&A·PEF 인수·인수자금·신용등급",
+            "(인수한다 OR 인수 계약 OR 인수계약 OR M&A OR 매각 계약 OR 매각계약) "
+            "(조원 OR 억원 OR PEF OR 사모펀드 OR TPG OR KKR OR MBK) "
+            "(신용등급 OR 인수자금 OR 자기자본 OR 차입매수 OR LBO OR 지분) "
+            "(site:hankyung.com OR site:yna.co.kr OR site:newsis.com OR site:mk.co.kr OR site:edaily.co.kr)",
+        ),
+        (
             "국내 전략산업 ETF 신규상장·편입·리밸런싱",
             "(ETF OR 상장지수펀드) (신규상장 OR 신규 상장 OR 상장예정 OR 상장 예정 OR 상장) "
             "(반도체 OR 금융 OR 지주 OR 방산 OR AI OR 전력 OR 전략산업 OR 전략 산업) "
@@ -789,6 +840,45 @@ PRIORITY_TERMS.update(
     }
 )
 
+PRIORITY_TERMS.update(
+    {
+        "고려아연": 18,
+        "etf": 12,
+        "핵심광물": 17,
+        "핵심 광물": 17,
+        "통합제련소": 16,
+        "앤트로픽": 18,
+        "anthropic": 18,
+        "cxmt": 17,
+        "창신메모리": 17,
+        "탑재 시험": 16,
+        "탑재시험": 16,
+        "금융플랫폼": 16,
+        "금융 플랫폼": 16,
+        "키옥시아": 17,
+        "kioxia": 17,
+        "의결권": 15,
+        "의결권 확보": 16,
+        "cb 전환": 16,
+        "기업결합": 16,
+        "자금유출": 16,
+        "자금 유출": 16,
+        "자금유입": 16,
+        "자금 유입": 16,
+        "순자산": 15,
+        "설정액": 15,
+        "환매": 15,
+        "태양광 모듈": 16,
+        "태양광모듈": 16,
+        "신규 라인": 15,
+        "신규라인": 15,
+        "인수 계약": 18,
+        "인수계약": 18,
+        "차입매수": 16,
+        "lbo": 16,
+    }
+)
+
 CORPORATE_EXECUTION_IMPACT_TERMS = {
     "돈 버는 능력": (
         "한미반도체", "hanmi semiconductor", "한미 usa", "미국 법인", "미국법인",
@@ -816,6 +906,26 @@ STRATEGIC_ETF_LISTING_IMPACT_TERMS = {
     ),
 }
 for _impact_label, _impact_terms in STRATEGIC_ETF_LISTING_IMPACT_TERMS.items():
+    IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
+
+ATTACHMENT_EVENT_IMPACT_TERMS = {
+    "돈 버는 능력": (
+        "고려아연", "핵심광물", "핵심 광물", "통합제련소", "앤트로픽", "anthropic",
+        "cxmt", "창신메모리", "탑재 시험", "탑재시험", "금융플랫폼", "금융 플랫폼",
+        "키옥시아", "kioxia", "태양광 모듈", "태양광모듈", "신규 라인", "신규라인",
+        "인수 계약", "인수계약", "차입매수", "lbo",
+    ),
+    "할인율": ("핵심광물", "핵심 광물", "기업결합", "차입매수", "lbo"),
+    "수급": (
+        "앤트로픽", "anthropic", "자금유출", "자금 유출", "자금유입", "자금 유입",
+        "순자산", "설정액", "환매", "의결권", "인수 계약", "인수계약",
+    ),
+    "시간표": (
+        "통합제련소", "탑재 시험", "탑재시험", "금융플랫폼", "금융 플랫폼",
+        "기업결합", "cb 전환", "의결권 확보", "신규 라인", "신규라인", "인수 계약", "인수계약",
+    ),
+}
+for _impact_label, _impact_terms in ATTACHMENT_EVENT_IMPACT_TERMS.items():
     IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
 # Rebuild after every extension. A stale material tuple would score a new lane
