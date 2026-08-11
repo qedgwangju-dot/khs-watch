@@ -7,7 +7,7 @@ on:
       - "scripts/rfhic_short_watch.py"
       - "data/rfhic_short_watch_state.json"
   schedule:
-    # GitHub cron is UTC. KRX full daily short-sale data is published after 18:10 KST.
+    # GitHub cron is UTC. KRX says full daily short-sale data is available after 18:10 KST.
     # Retry at 18:27, 19:27, 20:27 KST on weekdays; state prevents duplicate alerts.
     - cron: "27 9-11 * * 1-5"
   workflow_dispatch:
@@ -65,12 +65,83 @@ jobs:
           print(f"telegram_route_valid=true bot=@{username} chat_id_present=true")
           PY
 
+      - name: Send one-time route confirmation
+        if: hashFiles('data/rfhic_telegram_route_state.json') == ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = (
+              "✅ RFHIC(218410) 공매도 알림 Telegram 경로 연결 확인\n\n"
+              "수신 봇: @hs8879887988798879_bot\n"
+              "감시 항목: KRX 당일 공매도량·비율 + 최신 순보유잔고수량·비중\n"
+              "예정 확인: 평일 18:27·19:27·20:27 KST\n\n"
+              "※ KRX 데이터 인증 상태까지 정상화된 뒤 실제 수치 알림이 시작됩니다."
+          )
+          payload = urllib.parse.urlencode({"chat_id": chat_id, "text": text}).encode("utf-8")
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST"
+          )
+          with urllib.request.urlopen(req, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected route message: {result}")
+
+          pathlib.Path("data").mkdir(exist_ok=True)
+          state = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("data/rfhic_telegram_route_state.json").write_text(
+              json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          print(f"telegram_route_message_sent=true bot=@{username} message_id={state['message_id']}")
+          PY
+
+      - name: Persist Telegram route confirmation
+        if: success() && hashFiles('data/rfhic_telegram_route_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/rfhic_telegram_route_state.json
+          if git diff --cached --quiet; then
+            echo "Telegram route state already committed"
+          else
+            git commit -m "Confirm RFHIC Telegram alert route"
+            git pull --rebase origin main
+            git push
+          fi
+
       - name: Read KRX RFHIC short-selling data
+        env:
+          KRX_ID: ${{ secrets.KRX_ID }}
+          KRX_PW: ${{ secrets.KRX_PW }}
         run: |
           python -m py_compile scripts/rfhic_short_watch.py
           python scripts/rfhic_short_watch.py
 
-      - name: Send one-time connection confirmation
+      - name: Send initial KRX monitor confirmation
         if: hashFiles('out/rfhic_short_watch_rebaseline.txt') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
@@ -86,10 +157,8 @@ jobs:
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
           text = (
-              "✅ RFHIC(218410) 공매도 웹 감시 연결 완료\n\n"
-              "KRX 당일 공매도량·비율과 최신 순보유잔고수량·비중을 확인해, "
-              "새 거래일 데이터가 나온 경우에만 알립니다.\n"
-              "확인 시간: 평일 18:27·19:27·20:27 KST"
+              "✅ RFHIC(218410) KRX 공매도 데이터 감시 정상화\n\n"
+              "이제 새 거래일 데이터가 확인되면 당일 공매도량·비율과 최신 T+2 순보유잔고를 함께 알립니다."
           )
           payload = urllib.parse.urlencode({"chat_id": chat_id, "text": text}).encode("utf-8")
           req = urllib.request.Request(
@@ -99,7 +168,7 @@ jobs:
               result = json.loads(response.read().decode("utf-8"))
           if not result.get("ok"):
               raise RuntimeError(f"Telegram rejected connection message: {result}")
-          print(f"telegram_connection_confirmation=true message_id={result['result'].get('message_id')}")
+          print(f"krx_monitor_confirmation=true message_id={result['result'].get('message_id')}")
           PY
 
       - name: Send new KRX short-selling report
@@ -152,7 +221,7 @@ jobs:
           print(f"telegram_delivery_confirmed=true bot=@{username} message_id={confirmed['message_id']}")
           PY
 
-      - name: Persist state
+      - name: Persist KRX watcher state
         if: success()
         run: |
           mkdir -p data
@@ -171,7 +240,7 @@ jobs:
           PY
           fi
 
-      - name: Commit watcher state
+      - name: Commit KRX watcher state
         if: success()
         run: |
           git config user.name "github-actions[bot]"
@@ -190,6 +259,8 @@ jobs:
         run: |
           if [ -f out/rfhic_short_watch_status.md ]; then
             cat out/rfhic_short_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "KRX 공매도 데이터 조회 단계가 완료되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Upload verification artifacts
@@ -198,6 +269,7 @@ jobs:
         with:
           name: rfhic-short-watch-${{ github.run_id }}
           path: |
+            data/rfhic_telegram_route_state.json
             out/rfhic_short_watch_status.md
             out/rfhic_short_watch_alert.txt
             out/rfhic_short_watch_alert.json
