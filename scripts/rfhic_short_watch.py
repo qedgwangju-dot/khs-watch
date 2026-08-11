@@ -15,13 +15,13 @@ TICKER = "218410"
 NAME = "RFHIC"
 KRX_URL = "https://data.krx.co.kr/comm/srt/srtLoader/index.cmd?isuCd=218410&screenId=MDCSTAT300"
 KRX_API = "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
-SOURCE_VERSION = 2
+SOURCE_VERSION = 3
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0",
     "Accept": "*/*",
     "Referer": "https://data.krx.co.kr/contents/MDC/MDI/outerLoader/index.cmd",
-    "Content-Type": "application/x-www-form-urlencoded",
+    "X-Requested-With": "XMLHttpRequest",
 }
 
 
@@ -81,12 +81,16 @@ def krx_post(session, bld, **params):
     data = dict(params)
     data["bld"] = bld
     r = session.post(KRX_API, headers=HEADERS, data=data, timeout=30)
-    r.raise_for_status()
+    if not r.ok:
+        raise RuntimeError(
+            f"KRX 요청 실패: status={r.status_code} bld={bld} body={r.text[:500]!r}"
+        )
     try:
-        payload = r.json()
+        return r.json()
     except Exception as exc:
-        raise RuntimeError(f"KRX JSON 응답 해석 실패: status={r.status_code} body={r.text[:300]!r}") from exc
-    return payload
+        raise RuntimeError(
+            f"KRX JSON 응답 해석 실패: status={r.status_code} bld={bld} body={r.text[:500]!r}"
+        ) from exc
 
 
 def find_isin(session):
@@ -113,8 +117,11 @@ def extract_latest():
     end = now.date().strftime("%Y%m%d")
 
     session = requests.Session()
-    # Establish a normal public Data Marketplace session before POST calls.
-    session.get("https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd", headers=HEADERS, timeout=30)
+    session.get(
+        "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+        headers=HEADERS,
+        timeout=30,
+    )
     isin = find_isin(session)
 
     volume_payload = krx_post(
@@ -139,7 +146,6 @@ def extract_latest():
     if not balance_rows:
         raise RuntimeError("KRX 공매도 순보유잔고 데이터가 비어 있습니다")
 
-    # KRX returns newest first for these screens.
     v = volume_rows[0]
     b = balance_rows[0]
     prev = balance_rows[1] if len(balance_rows) >= 2 else None
