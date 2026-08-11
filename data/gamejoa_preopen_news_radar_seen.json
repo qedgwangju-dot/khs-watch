@@ -546,6 +546,16 @@
       "source": "이데일리",
       "title": "단일종목 레버리지 '20주씩 거래' 속도…이르면 9월부터 시행"
     },
+    "event:5df940147e153b7c4838c92b": {
+      "first_seen_kst": "2026-08-12T04:03:21+09:00",
+      "lanes": {
+        "live": "2026-08-12T04:03:21+09:00"
+      },
+      "last_seen_kst": "2026-08-12T04:03:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12123040",
+      "source": "매일경제",
+      "title": "애플, 아이폰에 中 CXMT칩 테스트"
+    },
     "event:5e6ef9cc41a114073defca2b": {
       "first_seen_kst": "2026-08-06T13:30:25+09:00",
       "lanes": {
@@ -3067,6 +3077,16 @@
       "link": "https://www.etnews.com/20260805000035",
       "source": "전자신문",
       "title": "스페이스X 상장 후 첫 성적표…스타링크가 AI 적자 메웠다"
+    },
+    "link:3e2083526f88c68af3eb96fd": {
+      "first_seen_kst": "2026-08-12T04:03:21+09:00",
+      "lanes": {
+        "live": "2026-08-12T04:03:21+09:00"
+      },
+      "last_seen_kst": "2026-08-12T04:03:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12123040",
+      "source": "매일경제",
+      "title": "애플, 아이폰에 中 CXMT칩 테스트"
     },
     "link:3ea1de56557287a64b9a6015": {
       "first_seen_kst": "2026-08-10T18:59:06+09:00",
@@ -6352,16 +6372,6 @@
       "link": "https://www.etoday.co.kr/news/view/2608511",
       "source": "이투데이",
       "title": "iM證 \"한미약품, 2Q 호실적…R&D 모멘텀 여전\""
-    },
-    "link:b7f06ae2799c67444a0ee564": {
-      "first_seen_kst": "2026-07-29T03:42:41+09:00",
-      "lanes": {
-        "live": "2026-07-29T03:42:41+09:00"
-      },
-      "last_seen_kst": "2026-07-29T03:42:41+09:00",
-      "link": "https://www.etnews.com/20260728000406",
-      "source": "전자신문",
-      "title": "한화시스템, 방산·ICT 성장에 2분기 영업이익 1037억원"
     },
     "link:b7f7e78df416869bc74f6fbf": {
       "first_seen_kst": "2026-08-04T01:02:43+09:00",
@@ -11900,16 +11910,6 @@
       "source": "연합뉴스",
       "title": "코스닥 4~5% 급등에 매수 사이드카…이달만 3차례 | 연합뉴스"
     },
-    "original:85a53963756ca52b84ca58d3": {
-      "first_seen_kst": "2026-07-29T03:42:41+09:00",
-      "lanes": {
-        "live": "2026-07-29T03:42:41+09:00"
-      },
-      "last_seen_kst": "2026-07-29T03:42:41+09:00",
-      "link": "https://www.etnews.com/20260728000406",
-      "source": "전자신문",
-      "title": "한화시스템, 방산·ICT 성장에 2분기 영업이익 1037억원"
-    },
     "original:85a6549dafed0163823c5d37": {
       "first_seen_kst": "2026-08-09T11:22:54+09:00",
       "lanes": {
@@ -14965,6 +14965,16 @@
       "link": "https://www.newsis.com/view/NISX20260803_0003733273",
       "source": "뉴시스",
       "title": "\"7월 원화 가치, 달러 대비 8% 올라…세계에서 두 번째 호실적\" FT"
+    },
+    "original:f695cb5eaa1b5411c979d1b2": {
+      "first_seen_kst": "2026-08-12T04:03:21+09:00",
+      "lanes": {
+        "live": "2026-08-12T04:03:21+09:00"
+      },
+      "last_seen_kst": "2026-08-12T04:03:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12123040",
+      "source": "매일경제",
+      "title": "애플, 아이폰에 中 CXMT칩 테스트"
     },
     "original:f6d86e00b8546b6004d384b6": {
       "first_seen_kst": "2026-08-01T16:38:19+09:00",
@@ -18771,16 +18781,6 @@
       "source": "연합뉴스",
       "title": "코스닥 4~5% 급등에 매수 사이드카…이달만 3차례 | 연합뉴스"
     },
-    "title:85a53963756ca52b84ca58d3": {
-      "first_seen_kst": "2026-07-29T03:42:41+09:00",
-      "lanes": {
-        "live": "2026-07-29T03:42:41+09:00"
-      },
-      "last_seen_kst": "2026-07-29T03:42:41+09:00",
-      "link": "https://www.etnews.com/20260728000406",
-      "source": "전자신문",
-      "title": "한화시스템, 방산·ICT 성장에 2분기 영업이익 1037억원"
-    },
     "title:85a6549dafed0163823c5d37": {
       "first_seen_kst": "2026-08-09T11:22:54+09:00",
       "lanes": {
@@ -21806,6 +21806,16 @@
       "source": "뉴시스",
       "title": "\"7월 원화 가치, 달러 대비 8% 올라…세계에서 두 번째 호실적\" FT"
     },
+    "title:f695cb5eaa1b5411c979d1b2": {
+      "first_seen_kst": "2026-08-12T04:03:21+09:00",
+      "lanes": {
+        "live": "2026-08-12T04:03:21+09:00"
+      },
+      "last_seen_kst": "2026-08-12T04:03:21+09:00",
+      "link": "https://www.mk.co.kr/news/it/12123040",
+      "source": "매일경제",
+      "title": "애플, 아이폰에 中 CXMT칩 테스트"
+    },
     "title:f6d86e00b8546b6004d384b6": {
       "first_seen_kst": "2026-08-01T16:38:19+09:00",
       "lanes": {
@@ -22047,5 +22057,5 @@
       "title": "최태원 회장 SK하닉 매수 48억원인 이유 있었네…사전공시 규정 최대치"
     }
   },
-  "updated_at_kst": "2026-08-12T03:41:58+09:00"
+  "updated_at_kst": "2026-08-12T04:03:21+09:00"
 }
