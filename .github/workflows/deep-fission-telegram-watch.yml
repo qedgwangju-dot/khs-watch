@@ -1,6 +1,12 @@
 name: Deep Fission Telegram Watch
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/deep-fission-telegram-watch.yml"
+      - "scripts/deep_fission_watch.py"
   schedule:
     # GitHub cron is UTC. Run hourly, offset from crowded top-of-hour slots.
     - cron: "7 * * * *"
