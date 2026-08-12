@@ -97,6 +97,16 @@ AUGUST10_CASES = (
 )
 
 
+AUGUST12_CASES = (
+    ("코어위브, AI 수요에 매출 2배 증가·가이던스 상향", "코어위브", "돈 버는 능력"),
+    ("CXMT, DDR5 수율 90% 돌파·PC 제조사 공급 확대", "ddr5 수율", "돈 버는 능력"),
+    ("한전·삼성전자·SK하이닉스, 반도체 산단 전력공급 협약", "전력공급 협약", "시간표"),
+    ("테마섹, 삼성전자·SK하이닉스 담는 한국 증시 직접 투자", "테마섹", "수급"),
+    ("삼성미국S&P500 인덱스펀드 순자산 1조원 돌파", "인덱스펀드", "수급"),
+    ("TSMC, CoWoS 첨단패키징에 42조원 자본지출 승인", "자본지출 승인", "돈 버는 능력"),
+)
+
+
 def main() -> int:
     failures = []
     now = datetime.now().astimezone()
@@ -111,7 +121,7 @@ def main() -> int:
     ) in fda_runner_source:
         failures.append("production_fda_wrapper=body_fetch_failure_still_blocked")
     for index, (title, required_term, required_impact) in enumerate(
-        CASES + ATTACHED_CASES + AUGUST9_CASES + AUGUST10_CASES
+        CASES + ATTACHED_CASES + AUGUST9_CASES + AUGUST10_CASES + AUGUST12_CASES
     ):
         row = {
             "title": title,
@@ -241,6 +251,12 @@ def main() -> int:
         "국내 전략산업 ETF 신규상장·편입·리밸런싱",
         "한미반도체 미국 법인·북미 장비 수주·고객지원",
         "삼성전자 주주환원·배당·자사주 이사회 정책",
+        "AI 클라우드·GPU 임대 사업자 실적·가이던스",
+        "CXMT DDR5 수율·PC OEM 공급·범용 DRAM 가격",
+        "반도체 산단 전력공급·송변전 협약·비용분담",
+        "해외 국부펀드·장기자금 한국 반도체 직접 투자",
+        "국내 공모펀드 순자산·대규모 설정·환매",
+        "TSMC 첨단패키징·CoWoS 자본지출·투자승인",
     ):
         if required_search not in search_names:
             failures.append(f"missing_attached_search={required_search}")
@@ -1064,7 +1080,7 @@ def main() -> int:
         return 1
     print(
         "GAMEJOA news coverage contract OK: "
-        f"cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES) + len(AUGUST10_CASES)}"
+        f"cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES) + len(AUGUST10_CASES) + len(AUGUST12_CASES)}"
     )
     return 0
 
