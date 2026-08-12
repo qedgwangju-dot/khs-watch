@@ -3704,6 +3704,12 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
         ("korea_etf_asset_flow", ("etf", "상장지수펀드"), ("자금유출", "자금 유출", "자금유입", "자금 유입", "순자산", "설정액", "환매"), ["수급"], ["금융/자본시장", "ETF/ETN"], ["ETF 설정·환매", "투자자 수급"], 106),
         ("korea_solar_module_capacity", ("태양광 모듈", "태양광모듈", "solar module"), ("신규 라인", "신규라인", "양산", "생산라인", "공장 가동", "증설"), ["돈 버는 능력", "시간표"], ["태양광/신재생", "전력기기/전력망"], ["모듈 생산능력", "양산 시간표"], 106),
         ("korea_large_mna_credit_structure", ("인수", "m&a", "매각 계약", "매각계약"), ("조원", "억원", "pef", "사모펀드", "tpg", "kkr", "mbk"), ["돈 버는 능력", "수급", "시간표"], ["금융/자본시장", "기업 M&A"], ["인수 구조", "신용등급", "자금조달"], 110),
+        ("ai_cloud_gpu_lessors_earnings", ("코어위브", "coreweave", "nebius", "crusoe", "gpu 클라우드", "gpu cloud"), ("매출", "실적", "가이던스", "수요", "계약", "revenue", "earnings", "guidance"), ["돈 버는 능력", "수급", "시간표"], ["AI/데이터센터", "반도체/HBM/CXL", "전력기기/전력망"], ["AI 클라우드 매출", "GPU 임대 수요", "AI CAPEX"], 116),
+        ("china_memory_yield_oem_supply", ("cxmt", "창신메모리", "중국 메모리"), ("수율", "yield", "hp", "에이수스", "asus", "에이서", "acer", "pc 제조사"), ["돈 버는 능력", "수급", "시간표"], ["반도체/HBM/CXL", "DRAM/NAND", "중국 메모리 공급"], ["DDR5 수율", "PC OEM 공급", "범용 DRAM 가격"], 115),
+        ("korea_semiconductor_power_supply_pact", ("한국전력", "한전"), ("삼성전자", "sk하이닉스", "반도체 산단", "반도체산단"), ["돈 버는 능력", "할인율", "시간표"], ["반도체/HBM/CXL", "전력기기/전력망", "송배전"], ["반도체 전력공급", "송변전 투자", "산단 가동 시간표"], 118),
+        ("foreign_sovereign_fund_korea_semis", ("테마섹", "temasek", "국부펀드", "sovereign fund"), ("삼성전자", "sk하이닉스", "한국 반도체", "k증시"), ["수급"], ["금융/자본시장", "반도체/HBM/CXL"], ["해외 장기자금", "대형주 수급"], 113),
+        ("korea_public_fund_asset_flow", ("공모펀드", "인덱스펀드", "인덱스 펀드"), ("순자산", "설정액", "환매", "자금유입", "자금 유입", "자금유출", "자금 유출"), ["수급"], ["금융/자본시장", "펀드 수급"], ["공모펀드 설정·환매", "장기자금 수급"], 105),
+        ("tsmc_advanced_packaging_capex", ("tsmc", "대만적층", "taiwan semiconductor"), ("cowos", "첨단패키징", "첨단 패키징", "2나노"), ["돈 버는 능력", "시간표"], ["반도체/HBM/CXL", "반도체 장비·소재", "AI/데이터센터"], ["첨단패키징 CAPEX", "CoWoS 공급", "AI 가속기 생산능력"], 116),
     )
     for kind, anchors, triggers, impacts, sectors, paths, score in profiles:
         if not any(term in text for term in anchors) or not any(term in text for term in triggers):
@@ -3713,6 +3719,16 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
         if kind == "korea_etf_asset_flow" and not re.search(r"\d[\d,.]*(?:조|억)원", text):
             continue
         if kind == "korea_large_mna_credit_structure" and not any(term in text for term in ("계약", "결정", "인수한다", "인수하기로")):
+            continue
+        if kind == "ai_cloud_gpu_lessors_earnings" and not re.search(r"\d[\d,.]*\s*(?:%|배|조|억|달러|원)", text):
+            continue
+        if kind == "korea_semiconductor_power_supply_pact" and not any(term in text for term in ("협약", "협정", "mou", "비용분담", "송전", "변전")):
+            continue
+        if kind == "foreign_sovereign_fund_korea_semis" and not any(term in text for term in ("투자", "지분", "매수", "편입", "출자", "보유")):
+            continue
+        if kind == "korea_public_fund_asset_flow" and not re.search(r"\d[\d,.]*\s*(?:조|억)원", text):
+            continue
+        if kind == "tsmc_advanced_packaging_capex" and not any(term in text for term in ("자본지출", "capex", "투자승인", "투자 승인", "이사회 승인", "증설")):
             continue
         core = detailed_article_core(title, body)
         if kind == "korea_etf_asset_flow":
