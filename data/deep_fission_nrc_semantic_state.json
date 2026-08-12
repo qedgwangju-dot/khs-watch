@@ -1,0 +1,27 @@
+{
+  "activities": {
+    "NRC 규제협의계획": {
+      "reference": "ML26111A380",
+      "status": "검토 요청 없음"
+    },
+    "개념설계 설명서": {
+      "reference": "ML26112A157",
+      "status": "검토 진행 중"
+    },
+    "심층 시추형 가압경수로 개념설계 검토": {
+      "reference": "ML24172A286",
+      "status": "검토 완료"
+    }
+  },
+  "last_updated": "Monday, June 22, 2026",
+  "metrics": {
+    "수압": "160 atm",
+    "열출력": "45 megawatts thermal (45 MWt)",
+    "원자로 설치 깊이": "1 mile",
+    "전기출력": "15 megawatts of electric power (15 MWe)",
+    "최소 시추공 지름": "30 inches"
+  },
+  "semantic_hash": "4b6a0c6acc17da3b6f611ce89acaa644872387cad26c6b4dbc470505074770a3",
+  "what": "Pre-Application activities associated with a future combined license application.",
+  "when": "May 2024 to Present"
+}
