@@ -1,0 +1,36 @@
+name: Deep Fission Korean Alert Guard
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/deep_fission_watch.py"
+      - ".github/workflows/deep-fission-korean-alert-ci.yml"
+  pull_request:
+    paths:
+      - "scripts/deep_fission_watch.py"
+      - ".github/workflows/deep-fission-korean-alert-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-korean-alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile watcher
+        run: python -m py_compile scripts/deep_fission_watch.py
+
+      - name: Verify Korean-only alert rendering
+        run: python scripts/deep_fission_watch.py --mode self-test
