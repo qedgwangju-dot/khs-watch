@@ -355,16 +355,19 @@ def format_alert(new_events, checked_at):
         "",
     ]
     for idx, e in enumerate(new_events[:10], 1):
-        title_ko = translate_to_korean(e.title)
-        detail_ko = translate_to_korean(e.detail) if e.detail else ""
+        source_ko = html.escape(SOURCE_KO.get(e.source, e.source))
+        title_ko = html.escape(translate_to_korean(e.title))
+        date_ko = html.escape(date_to_korean(e.date))
+        detail_ko = html.escape(translate_to_korean(e.detail)) if e.detail else ""
+        url_html = html.escape(e.url, quote=True)
         lines.extend([
-            f"[{idx}] {SOURCE_KO.get(e.source, e.source)}",
+            f"[{idx}] {source_ko}",
             f"제목: {title_ko}",
-            f"날짜: {date_to_korean(e.date)}",
+            f"날짜: {date_ko}",
         ])
         if detail_ko:
             lines.append(f"핵심: {detail_ko}")
-        lines.append(f"원문: {e.url}")
+        lines.append(f'<a href="{url_html}">원문</a>')
         lines.append("")
     lines.extend([
         "감시 기준: 감사 완료·승인 보류/해제·계통연결 재개·승인/거부/철회·기업 준수 약속·전력망/발전/용수/비용부담 기준의 공식 변화",
