@@ -612,6 +612,52 @@ PRIORITY_TERMS.update(
 
 PRIORITY_TERMS.update(
     {
+        "고려아연": 18,
+        "etf": 12,
+        "핵심광물": 17,
+        "핵심 광물": 17,
+        "통합제련소": 16,
+        "앤트로픽": 18,
+        "anthropic": 18,
+        "cxmt": 17,
+        "창신메모리": 17,
+        "탑재 시험": 16,
+        "탑재시험": 16,
+        "금융플랫폼": 16,
+        "금융 플랫폼": 16,
+        "키옥시아": 17,
+        "kioxia": 17,
+        "의결권": 15,
+        "의결권 확보": 16,
+        "cb 전환": 16,
+        "기업결합": 16,
+        "자금유출": 16,
+        "자금 유출": 16,
+        "자금유입": 16,
+        "자금 유입": 16,
+        "순자산": 15,
+        "설정액": 15,
+        "환매": 15,
+        "태양광 모듈": 16,
+        "태양광모듈": 16,
+        "신규 라인": 15,
+        "신규라인": 15,
+        "인수 계약": 18,
+        "인수계약": 18,
+        "차입매수": 16,
+        "lbo": 16,
+        "신규상장": 16,
+        "신규 상장": 16,
+        "상장 예정": 14,
+        "상장예정": 14,
+        "상장지수펀드": 13,
+        "채권혼합": 13,
+        "액티브 etf": 13,
+        "반도체·금융·지주": 16,
+        "전략산업 etf": 15,
+        "전략산업etf": 15,
+        "브이아이자산운용": 16,
+        "브이아이운용": 16,
         "한미반도체": 18,
         "hanmi semiconductor": 18,
         "한미 usa": 18,
@@ -823,62 +869,6 @@ AUGUST10_IMPACT_TERMS = {
 for _impact_label, _impact_terms in AUGUST10_IMPACT_TERMS.items():
     IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
-PRIORITY_TERMS.update(
-    {
-        "신규상장": 16,
-        "신규 상장": 16,
-        "상장 예정": 14,
-        "상장예정": 14,
-        "상장지수펀드": 13,
-        "채권혼합": 13,
-        "액티브 etf": 13,
-        "반도체·금융·지주": 16,
-        "전략산업 etf": 15,
-        "전략산업etf": 15,
-        "브이아이자산운용": 16,
-        "브이아이운용": 16,
-    }
-)
-
-PRIORITY_TERMS.update(
-    {
-        "고려아연": 18,
-        "etf": 12,
-        "핵심광물": 17,
-        "핵심 광물": 17,
-        "통합제련소": 16,
-        "앤트로픽": 18,
-        "anthropic": 18,
-        "cxmt": 17,
-        "창신메모리": 17,
-        "탑재 시험": 16,
-        "탑재시험": 16,
-        "금융플랫폼": 16,
-        "금융 플랫폼": 16,
-        "키옥시아": 17,
-        "kioxia": 17,
-        "의결권": 15,
-        "의결권 확보": 16,
-        "cb 전환": 16,
-        "기업결합": 16,
-        "자금유출": 16,
-        "자금 유출": 16,
-        "자금유입": 16,
-        "자금 유입": 16,
-        "순자산": 15,
-        "설정액": 15,
-        "환매": 15,
-        "태양광 모듈": 16,
-        "태양광모듈": 16,
-        "신규 라인": 15,
-        "신규라인": 15,
-        "인수 계약": 18,
-        "인수계약": 18,
-        "차입매수": 16,
-        "lbo": 16,
-    }
-)
-
 CORPORATE_EXECUTION_IMPACT_TERMS = {
     "돈 버는 능력": (
         "한미반도체", "hanmi semiconductor", "한미 usa", "미국 법인", "미국법인",
@@ -926,6 +916,94 @@ ATTACHMENT_EVENT_IMPACT_TERMS = {
     ),
 }
 for _impact_label, _impact_terms in ATTACHMENT_EVENT_IMPACT_TERMS.items():
+    IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
+
+# August 12 full-attachment coverage. These are recurring event families, not
+# pinned articles: the final sender still requires a source-faithful body.
+SEARCH_SOURCES.extend(
+    [
+        (
+            "AI 클라우드·GPU 임대 사업자 실적·가이던스",
+            "(CoreWeave OR 코어위브 OR Nebius OR Crusoe OR GPU cloud OR GPU 클라우드) "
+            "(earnings OR revenue OR guidance OR 매출 OR 실적 OR 가이던스 OR 수요 OR 계약) "
+            "(site:reuters.com OR site:cnbc.com OR site:ft.com OR site:mt.co.kr OR site:yna.co.kr OR site:newsis.com)",
+        ),
+        (
+            "CXMT DDR5 수율·PC OEM 공급·범용 DRAM 가격",
+            "(CXMT OR 창신메모리 OR 중국 메모리) (DDR5 OR D램 OR DRAM) "
+            "(수율 OR yield OR HP OR 에이수스 OR ASUS OR 에이서 OR Acer OR PC 제조사 OR 공급) "
+            "(site:reuters.com OR site:mt.co.kr OR site:dt.co.kr OR site:yna.co.kr OR site:newsis.com)",
+        ),
+        (
+            "반도체 산단 전력공급·송변전 협약·비용분담",
+            "(한국전력 OR 한전 OR 삼성전자 OR SK하이닉스) (반도체 산단 OR 반도체산단 OR 메가프로젝트) "
+            "(전력공급 OR 전력 공급 OR 송전 OR 변전 OR 송변전 OR 비용분담 OR 협약) "
+            "(site:edaily.co.kr OR site:yna.co.kr OR site:newsis.com OR site:mk.co.kr OR site:hankyung.com)",
+        ),
+        (
+            "해외 국부펀드·장기자금 한국 반도체 직접 투자",
+            "(테마섹 OR Temasek OR 국부펀드 OR sovereign fund OR 연기금) "
+            "(삼성전자 OR SK하이닉스 OR 한국 반도체 OR K증시) "
+            "(투자 OR 지분 OR 매수 OR 편입 OR 출자 OR 보유) "
+            "(site:asiae.co.kr OR site:yna.co.kr OR site:newsis.com OR site:reuters.com OR site:mk.co.kr)",
+        ),
+        (
+            "국내 공모펀드 순자산·대규모 설정·환매",
+            "(공모펀드 OR 인덱스펀드 OR 펀드) (순자산 OR 설정액 OR 환매 OR 자금유입 OR 자금 유입 OR 자금유출 OR 자금 유출) "
+            "(조원 OR 억원) (site:yna.co.kr OR site:newsis.com OR site:mk.co.kr OR site:metroseoul.co.kr OR site:edaily.co.kr)",
+        ),
+        (
+            "TSMC 첨단패키징·CoWoS 자본지출·투자승인",
+            "(TSMC OR 대만적층 OR Taiwan Semiconductor) (CoWoS OR 첨단패키징 OR 첨단 패키징 OR 2나노) "
+            "(자본지출 OR CAPEX OR 투자승인 OR 투자 승인 OR 이사회 승인 OR 증설) "
+            "(site:reuters.com OR site:yna.co.kr OR site:newsis.com OR site:biz.chosun.com OR site:ft.com)",
+        ),
+    ]
+)
+
+PRIORITY_TERMS.update(
+    {
+        "코어위브": 18,
+        "coreweave": 18,
+        "gpu 클라우드": 16,
+        "gpu cloud": 16,
+        "gpu 임대": 16,
+        "매출 2배": 17,
+        "매출 두배": 17,
+        "ddr5 수율": 17,
+        "수율 90%": 18,
+        "pc 제조사 공급": 16,
+        "반도체 산단 전력공급": 18,
+        "전력공급 협약": 18,
+        "송변전 협약": 18,
+        "비용분담": 15,
+        "테마섹": 17,
+        "temasek": 17,
+        "국부펀드": 15,
+        "공모펀드": 14,
+        "공모 펀드": 14,
+        "인덱스펀드": 14,
+        "펀드 순자산": 16,
+        "순자산 1조": 16,
+        "tsmc": 14,
+        "cowos": 17,
+        "투자승인": 17,
+        "투자 승인": 17,
+        "자본지출 승인": 18,
+    }
+)
+
+AUGUST12_ATTACHMENT_IMPACT_TERMS = {
+    "돈 버는 능력": (
+        "코어위브", "coreweave", "gpu 클라우드", "gpu cloud", "gpu 임대", "매출 2배", "매출 두배",
+        "ddr5 수율", "수율 90%", "pc 제조사 공급", "반도체 산단 전력공급", "전력공급 협약",
+        "송변전 협약", "cowos", "자본지출 승인",
+    ),
+    "할인율": ("반도체 산단 전력공급", "전력공급 협약", "송변전 협약", "비용분담"),
+    "수급": ("테마섹", "temasek", "국부펀드", "공모펀드", "인덱스펀드", "펀드 순자산", "순자산 1조"),
+    "시간표": ("전력공급 협약", "송변전 협약", "비용분담", "cowos", "투자승인", "투자 승인", "자본지출 승인"),
+}
+for _impact_label, _impact_terms in AUGUST12_ATTACHMENT_IMPACT_TERMS.items():
     IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
 # Rebuild after every extension. A stale material tuple would score a new lane
