@@ -5,13 +5,16 @@ import html
 import json
 import pathlib
 import re
+import ssl
 import time
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from zoneinfo import ZoneInfo
 
+import certifi
 from bs4 import BeautifulSoup
+from deep_translator import GoogleTranslator
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "texas_data_center_watch_state.json"
@@ -24,6 +27,7 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 }
+SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
 
 OFFICIAL_DOMAINS = {
     "gov.texas.gov",
@@ -37,7 +41,8 @@ OFFICIAL_DOMAINS = {
 TOPIC_RE = re.compile(
     r"(?:data[ -]?cent(?:er|re)s?|large (?:electricity )?(?:load|user)s?|"
     r"artificial intelligence infrastructure|AI infrastructure|hyperscale|hyperscaler|"
-    r"Stargate|Meta|OpenAI|Oracle|QTS|Digital Realty|Amazon|Google|Microsoft)",
+    r"Stargate|Meta|OpenAI|Oracle|QTS|Digital Realty|Amazon|Google|Microsoft|"
+    r"EdgeConneX|Stream Data Centers)",
     re.I,
 )
 
@@ -64,6 +69,27 @@ MATERIAL_RE = re.compile(
     r"tax incentive|moratorium)",
     re.I,
 )
+
+SOURCE_KO = {
+    "Texas Governor": "텍사스 주지사실",
+    "ERCOT": "ERCOT",
+    "PUCT": "PUCT",
+}
+
+MONTHS = {
+    "January": 1,
+    "February": 2,
+    "March": 3,
+    "April": 4,
+    "May": 5,
+    "June": 6,
+    "July": 7,
+    "August": 8,
+    "September": 9,
+    "October": 10,
+    "November": 11,
+    "December": 12,
+}
 
 
 @dataclass(frozen=True)
@@ -96,7 +122,7 @@ def fetch(url, timeout=30):
     for attempt in range(3):
         try:
             req = urllib.request.Request(url, headers=HEADERS)
-            with urllib.request.urlopen(req, timeout=timeout) as response:
+            with urllib.request.urlopen(req, timeout=timeout, context=SSL_CONTEXT) as response:
                 return response.read()
         except Exception as exc:
             last = exc
@@ -115,9 +141,12 @@ def abs_url(base, href):
 
 def page_text(url):
     soup = soup_for(url)
-    for node in soup(["script", "style", "noscript", "svg"]):
+    for node in soup(["script", "style", "noscript", "svg", "nav", "header", "footer", "form"]):
         node.decompose()
-    return clean(soup.get_text(" ", strip=True))
+
+    # Prefer the page's main/article body so navigation text never leaks into Telegram summaries.
+    container = soup.find("article") or soup.find("main") or soup.find(attrs={"role": "main"}) or soup
+    return clean(container.get_text(" ", strip=True))
 
 
 def extract_date(text):
@@ -133,11 +162,35 @@ def extract_date(text):
     return ""
 
 
+def date_to_korean(value):
+    value = clean(value)
+    if not value:
+        return "공식 페이지에서 날짜 자동추출 안 됨"
+
+    m = re.fullmatch(
+        r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s+(\d{4})",
+        value,
+        re.I,
+    )
+    if m:
+        month_name = m.group(1).title()
+        return f"{int(m.group(3))}년 {MONTHS[month_name]}월 {int(m.group(2))}일"
+
+    m = re.fullmatch(r"(\d{2})/(\d{2})/(\d{4})", value)
+    if m:
+        return f"{int(m.group(3))}년 {int(m.group(1))}월 {int(m.group(2))}일"
+
+    m = re.fullmatch(r"(\d{4})-(\d{2})-(\d{2})", value)
+    if m:
+        return f"{int(m.group(1))}년 {int(m.group(2))}월 {int(m.group(3))}일"
+
+    return value
+
+
 def relevant(title, body):
     signal = f"{title} {body[:18000]}"
     if TOPIC_RE.search(signal) and (GRID_RE.search(signal) or ACTION_RE.search(signal)):
         return True
-    # Data-center language itself plus a material regulatory/project action is sufficient.
     if re.search(r"data[ -]?cent(?:er|re)s?", signal, re.I) and MATERIAL_RE.search(signal):
         return True
     return False
@@ -147,15 +200,38 @@ def summarize_detail(body):
     body = clean(body)
     snippets = []
     for pattern in [
-        r".{0,180}(?:audit|pause|hold|resume|reopen|approve|reject|withdraw|comply|interconnection).{0,260}",
-        r".{0,180}(?:ratepayer|infrastructure cost|transmission|generation|water|tax incentive).{0,260}",
+        r".{0,220}(?:audit|pause|hold|resume|reopen|approve|reject|withdraw|comply|interconnection).{0,360}",
+        r".{0,220}(?:ratepayer|infrastructure cost|transmission|generation|water|tax incentive).{0,360}",
     ]:
         m = re.search(pattern, body, re.I)
         if m:
             s = clean(m.group(0))
             if s and s not in snippets:
                 snippets.append(s)
-    return " / ".join(snippets)[:900]
+    return " / ".join(snippets)[:1200]
+
+
+def translate_to_korean(text):
+    text = clean(text)
+    if not text:
+        return ""
+    # If it is already effectively Korean, keep it as-is.
+    if re.search(r"[가-힣]", text) and not re.search(r"[A-Za-z]{4,}", text):
+        return text
+
+    last = None
+    for attempt in range(3):
+        try:
+            translated = GoogleTranslator(source="auto", target="ko").translate(text)
+            translated = clean(translated)
+            if translated and re.search(r"[가-힣]", translated):
+                return translated
+            last = RuntimeError("translation returned no Korean text")
+        except Exception as exc:
+            last = exc
+        time.sleep(2 ** attempt)
+    # Fail closed: never send the original English alert when translation failed.
+    raise RuntimeError(f"한국어 번역 실패: {last}")
 
 
 def collect_governor(errors):
@@ -172,7 +248,6 @@ def collect_governor(errors):
             if not title:
                 continue
             links.append((title, href.split("?")[0]))
-        # Newest page is enough for hourly monitoring; cap network work.
         for title, href in list(dict.fromkeys(links))[:45]:
             try:
                 body = page_text(href)
@@ -226,7 +301,6 @@ def collect_ercot(errors):
 
 
 def collect_puct_search(errors):
-    # PUCT's public site search is useful because press-release URLs have changed over time.
     events = []
     queries = ["data center", "large load", "interconnection", "ratepayer data center"]
     for q in queries:
@@ -281,18 +355,21 @@ def format_alert(new_events, checked_at):
         "",
     ]
     for idx, e in enumerate(new_events[:10], 1):
+        title_ko = translate_to_korean(e.title)
+        detail_ko = translate_to_korean(e.detail) if e.detail else ""
         lines.extend([
-            f"[{idx}] {e.source}",
-            f"제목: {e.title}",
-            f"날짜: {e.date or '공식 페이지에서 날짜 자동추출 안 됨'}",
+            f"[{idx}] {SOURCE_KO.get(e.source, e.source)}",
+            f"제목: {title_ko}",
+            f"날짜: {date_to_korean(e.date)}",
         ])
-        if e.detail:
-            lines.append(f"핵심: {e.detail}")
+        if detail_ko:
+            lines.append(f"핵심: {detail_ko}")
         lines.append(f"원문: {e.url}")
         lines.append("")
     lines.extend([
         "감시 기준: 감사 완료·승인 보류/해제·계통연결 재개·승인/거부/철회·기업 준수 약속·전력망/발전/용수/비용부담 기준의 공식 변화",
-        "※ 단순 페이지 수정이 아니라 새 공식 문서·발표가 생긴 경우만 전송합니다.",
+        "※ 제목과 핵심 내용은 한국어로 번역하며, 기업명·기관명·고유명사는 식별을 위해 원문 표기를 유지할 수 있습니다.",
+        "※ 번역이 실패하면 영어 원문을 대신 보내지 않고 다음 실행에서 다시 시도합니다.",
     ])
     return "\n".join(lines).strip() + "\n"
 
@@ -316,7 +393,6 @@ def main():
     seen = set((state or {}).get("seen_keys", []))
     new_events = [] if rebaseline else [e for e in events if e.key not in seen]
 
-    # Keep a generous rolling set so an older official article that reappears does not re-alert.
     merged_seen = list(dict.fromkeys(current_keys + list(seen)))[:2000]
     pending = {
         "source_version": SOURCE_VERSION,
@@ -337,9 +413,10 @@ def main():
     if rebaseline:
         (OUT_DIR / "texas_data_center_watch_rebaseline.txt").write_text("baseline\n", encoding="utf-8")
     elif new_events:
-        (OUT_DIR / "texas_data_center_watch_alert.md").write_text(
-            format_alert(new_events, checked_at), encoding="utf-8"
-        )
+        # Translation happens before the state is persisted. If translation fails, the run fails
+        # and the event remains unseen so it can be retried instead of sending English text.
+        alert_text = format_alert(new_events, checked_at)
+        (OUT_DIR / "texas_data_center_watch_alert.md").write_text(alert_text, encoding="utf-8")
         (OUT_DIR / "texas_data_center_watch_alert.json").write_text(
             json.dumps([e.__dict__ for e in new_events], ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
@@ -353,6 +430,7 @@ def main():
         f"- 신규 알림 항목 수: {len(new_events)}",
         f"- 초기 기준값 생성: {'예' if rebaseline else '아니오'}",
         f"- 오류 수: {len(errors)}",
+        "- Telegram 출력 언어: 한국어",
     ]
     if errors:
         status.append("")
@@ -360,7 +438,7 @@ def main():
         status.extend(f"- {x}" for x in errors[-10:])
     (OUT_DIR / "texas_data_center_watch_status.md").write_text("\n".join(status) + "\n", encoding="utf-8")
 
-    print(f"events={len(events)} new={len(new_events)} rebaseline={rebaseline} errors={len(errors)}")
+    print(f"events={len(events)} new={len(new_events)} rebaseline={rebaseline} errors={len(errors)} language=ko")
 
 
 if __name__ == "__main__":
