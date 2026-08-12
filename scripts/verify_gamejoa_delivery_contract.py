@@ -993,6 +993,48 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
             ("TPG", "1조3000억원", "인수"),
         ),
         (
+            "연합뉴스",
+            "코어위브, AI 수요에 매출 2배 증가·가이던스 상향",
+            "코어위브는 AI GPU 클라우드 수요 증가로 매출이 2배 늘었고 연간 가이던스를 상향했다.",
+            "ai_cloud_gpu_lessors_earnings",
+            ("코어위브", "매출", "AI GPU"),
+        ),
+        (
+            "머니투데이",
+            "CXMT, DDR5 수율 90% 돌파·PC 제조사 공급 확대",
+            "CXMT는 DDR5 D램 수율 90%를 기록하고 HP·에이수스·에이서 등 PC 제조사 공급을 확대했다.",
+            "china_memory_yield_oem_supply",
+            ("CXMT", "DDR5", "90%"),
+        ),
+        (
+            "이데일리",
+            "한전·삼성전자·SK하이닉스, 반도체 산단 전력공급 협약",
+            "한국전력과 삼성전자·SK하이닉스는 반도체 산단 송변전 설비 구축과 비용분담 원칙을 담은 전력공급 협약을 체결했다.",
+            "korea_semiconductor_power_supply_pact",
+            ("한국전력", "송변전", "협약"),
+        ),
+        (
+            "아시아경제",
+            "테마섹, 삼성전자·SK하이닉스 담는 한국 증시 직접 투자",
+            "싱가포르 테마섹은 삼성전자와 SK하이닉스 등 한국 반도체 대형주에 직접 투자하는 방안을 검토한다.",
+            "foreign_sovereign_fund_korea_semis",
+            ("테마섹", "삼성전자", "투자"),
+        ),
+        (
+            "연합뉴스",
+            "삼성미국S&P500 인덱스펀드 순자산 1조원 돌파",
+            "삼성미국S&P500 인덱스 공모펀드는 순자산 1조원을 돌파하며 장기 분산투자 수요를 확인했다.",
+            "korea_public_fund_asset_flow",
+            ("인덱스", "순자산", "1조원"),
+        ),
+        (
+            "연합뉴스",
+            "TSMC, CoWoS 첨단패키징에 42조원 자본지출 승인",
+            "TSMC는 2나노와 CoWoS 첨단패키징 증설을 위해 42조원 규모의 자본지출을 승인했다.",
+            "tsmc_advanced_packaging_capex",
+            ("TSMC", "CoWoS", "42조원"),
+        ),
+        (
             "이데일리",
             "정의선, 엔비디아 본사서 젠슨 황과 회동",
             "정의선과 젠슨 황이 자율주행, 로봇, 제조 AI와 새만금 AI 밸리 협력을 논의했다.",
@@ -2037,3 +2079,4 @@ def assert_korean_business_article_contract(production, compact, now, errors: li
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
