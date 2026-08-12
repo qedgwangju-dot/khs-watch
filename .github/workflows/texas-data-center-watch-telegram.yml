@@ -35,8 +35,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install parser dependency
-        run: python -m pip install --disable-pip-version-check beautifulsoup4
+      - name: Install parser and Korean translation dependencies
+        run: python -m pip install --disable-pip-version-check beautifulsoup4 deep-translator certifi
 
       - name: Validate Telegram route without sending
         env:
