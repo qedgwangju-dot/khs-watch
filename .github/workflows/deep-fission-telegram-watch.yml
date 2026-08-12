@@ -1,0 +1,203 @@
+name: Deep Fission Telegram Watch
+
+on:
+  schedule:
+    # GitHub cron is UTC. Run hourly, offset from crowded top-of-hour slots.
+    - cron: "7 * * * *"
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "Send a Telegram connection test"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deep-fission-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      DEEP_FISSION_TELEGRAM_BOT_TOKEN: ${{ secrets.DEEP_FISSION_TELEGRAM_BOT_TOKEN || secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN || secrets.TELEGRAM_BOT_TOKEN }}
+      CONFIGURED_DEEP_FISSION_TELEGRAM_CHAT_ID: ${{ secrets.DEEP_FISSION_TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID || secrets.TELEGRAM_CHAT_ID }}
+      DEEP_FISSION_WATCH_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-Deep-Fission-Watch contact=github-actions' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve and verify Telegram route
+        id: telegram
+        shell: bash
+        run: |
+          if [ -z "$DEEP_FISSION_TELEGRAM_BOT_TOKEN" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "Deep Fission Telegram token missing. State will not be consumed." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          python - <<'PY'
+          import json, os, pathlib, urllib.request
+          token=os.environ['DEEP_FISSION_TELEGRAM_BOT_TOKEN'].strip()
+          expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+          configured_chat=(os.environ.get('CONFIGURED_DEEP_FISSION_TELEGRAM_CHAT_ID') or '').strip()
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              identity=json.loads(r.read().decode('utf-8'))
+          actual=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+          chat_id=configured_chat
+          route='secret'
+          if not chat_id:
+              with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0', timeout=25) as r:
+                  updates=json.loads(r.read().decode('utf-8'))
+              candidates=[]
+              for upd in updates.get('result') or []:
+                  msg=upd.get('message') or upd.get('edited_message') or {}
+                  chat=msg.get('chat') or {}
+                  if str(chat.get('type') or '') == 'private' and chat.get('id') is not None:
+                      candidates.append((int(upd.get('update_id') or 0), str(chat['id'])))
+              if candidates:
+                  candidates.sort()
+                  chat_id=candidates[-1][1]
+                  route='getUpdates'
+          out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
+          with out.open('a', encoding='utf-8') as f:
+              f.write(f'bot_username={actual}\n')
+              f.write(f'chat_id={chat_id}\n')
+              f.write(f'chat_route={route}\n')
+              f.write(f'configured={"true" if chat_id else "false"}\n')
+          print(f'deep_fission_bot_verified=@{actual}')
+          print(f'deep_fission_chat_resolved={bool(chat_id)} route={route}')
+          PY
+
+      - name: Validate watcher
+        if: steps.telegram.outputs.configured == 'true'
+        run: python -m py_compile scripts/deep_fission_watch.py
+
+      - name: Check Deep Fission official sources
+        if: steps.telegram.outputs.configured == 'true'
+        run: |
+          rm -f out/deep_fission_alert.md out/deep_fission_setup.md out/deep_fission_connection_test.md
+          python scripts/deep_fission_watch.py --mode check
+          test -f out/deep_fission_status.md && cat out/deep_fission_status.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Build manual connection test
+        if: steps.telegram.outputs.configured == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        run: |
+          mkdir -p out
+          cat > out/deep_fission_connection_test.md <<'EOF'
+          [Deep Fission 감시] Telegram 연결 시험
+
+          @hs8879887988798879_bot 연결 정상입니다.
+          - NRC·DOE·Deep Fission·SEC·캔자스주 파슨스 감시
+          - 두산에너빌리티·수산이앤에스 실명 공급망 연결 감시
+          - 과거 기사 재탕은 제외하고 새 중요 변화만 알림
+          EOF
+
+      - name: Send Telegram messages
+        if: steps.telegram.outputs.configured == 'true'
+        env:
+          DEEP_FISSION_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token=os.environ['DEEP_FISSION_TELEGRAM_BOT_TOKEN'].strip()
+          chat_id=os.environ['DEEP_FISSION_TELEGRAM_CHAT_ID'].strip()
+          files=[
+              pathlib.Path('out/deep_fission_connection_test.md'),
+              pathlib.Path('out/deep_fission_setup.md'),
+              pathlib.Path('out/deep_fission_alert.md'),
+          ]
+          sent=0
+          for path in files:
+              if not path.exists():
+                  continue
+              text=path.read_text(encoding='utf-8').strip()
+              if not text:
+                  continue
+              # Telegram sendMessage text limit is 4096 chars. Split conservatively by sections.
+              chunks=[]
+              while len(text)>3800:
+                  cut=text.rfind('\n\n',0,3800)
+                  if cut<1000:
+                      cut=3800
+                  chunks.append(text[:cut].strip())
+                  text=text[cut:].strip()
+              if text:
+                  chunks.append(text)
+              for chunk in chunks:
+                  payload=urllib.parse.urlencode({
+                      'chat_id': chat_id,
+                      'text': chunk,
+                      'disable_web_page_preview': 'true',
+                  }).encode('utf-8')
+                  req=urllib.request.Request(
+                      f'https://api.telegram.org/bot{token}/sendMessage',
+                      data=payload,
+                      method='POST',
+                  )
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      result=json.loads(r.read().decode('utf-8'))
+                  if not result.get('ok'):
+                      raise RuntimeError(f'Telegram send failed for {path}: {result}')
+                  sent+=1
+          print(f'deep_fission_telegram_messages_sent={sent}')
+          PY
+
+      - name: Persist state only after successful delivery/check
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/deep_fission_watch_state_pending.json') != ''
+        run: |
+          cp out/deep_fission_watch_state_pending.json data/deep_fission_watch_state.json
+
+      - name: Commit watch state
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('data/deep_fission_watch_state.json') != ''
+        run: |
+          git config user.name "deep-fission-watch[bot]"
+          git config user.email "deep-fission-watch[bot]@users.noreply.github.com"
+          git add data/deep_fission_watch_state.json
+          if git diff --cached --quiet; then
+            echo "Deep Fission watch state unchanged"
+          else
+            git commit -m "Update Deep Fission watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deep-fission-watch-${{ github.run_id }}
+          path: |
+            out/deep_fission_status.md
+            out/deep_fission_alert.md
+            out/deep_fission_setup.md
+            out/deep_fission_connection_test.md
+            out/deep_fission_errors.log
+            out/deep_fission_watch_state_pending.json
+          if-no-files-found: ignore
+          retention-days: 14
