@@ -1006,6 +1006,80 @@ AUGUST12_ATTACHMENT_IMPACT_TERMS = {
 for _impact_label, _impact_terms in AUGUST12_ATTACHMENT_IMPACT_TERMS.items():
     IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
+# August 13 full-attachment coverage. These are recurring event families,
+# not pinned articles: the final sender still requires a source-faithful body.
+PUBLISHER_DOMAINS.update(
+    {
+        "digitaltoday.co.kr": "디지털투데이",
+        "economist.co.kr": "이코노미스트",
+    }
+)
+
+SEARCH_SOURCES.extend(
+    [
+        (
+            "테슬라·미국 태양광 제조공장·대형 CAPEX",
+            "(테슬라 OR Tesla) (태양광 OR solar) (공장 OR factory OR 제조 OR 생산라인) "
+            "(투자 OR CAPEX OR 건설 OR 고용 OR 증설) "
+            "(site:reuters.com OR site:cnbc.com OR site:yna.co.kr OR site:newsis.com OR site:digitaltoday.co.kr)",
+        ),
+        (
+            "엔비디아 루빈·HBM4E 사양변경·공급망",
+            "(엔비디아 OR NVIDIA) (루빈 OR Rubin OR HBM4E OR HBM 4E) "
+            "(사양 OR 변경 OR 낮추 OR 검토 OR 공급 OR 메모리) "
+            "(site:reuters.com OR site:yna.co.kr OR site:newsis.com OR site:mk.co.kr OR site:dt.co.kr)",
+        ),
+        (
+            "SK하이닉스 미국 인디애나 첨단패키징 착공·양산",
+            "(SK하이닉스 OR SK hynix) (인디애나 OR Indiana) (첨단패키징 OR 첨단 패키징 OR HBM) "
+            "(착공 OR 공장 OR 양산 OR 가동 OR 투자) "
+            "(site:reuters.com OR site:yna.co.kr OR site:newsis.com OR site:dt.co.kr OR site:mk.co.kr)",
+        ),
+        (
+            "AI 데이터센터 광통신·광인터커넥트 병목",
+            "(광통신 OR 실리콘포토닉스 OR 실리콘 포토닉스 OR 광인터커넥트 OR 광 송수신기) "
+            "(AI OR GPU OR HBM OR 데이터센터 OR data center) "
+            "(수요 OR 투자 OR 증설 OR 병목 OR 공급 OR CAPEX) "
+            "(site:reuters.com OR site:etoday.co.kr OR site:yna.co.kr OR site:newsis.com OR site:biz.chosun.com)",
+        ),
+        (
+            "삼성 데이터센터 공조·냉각 생산능력·해외 증설",
+            "(삼성 OR Samsung) (데이터센터 OR data center) (공조 OR 냉각 OR HVAC OR 칠러 OR chiller) "
+            "(공장 OR 생산라인 OR 투자 OR 증설 OR 양산) "
+            "(site:yna.co.kr OR site:newsis.com OR site:economist.co.kr OR site:etoday.co.kr OR site:biz.chosun.com)",
+        ),
+    ]
+)
+
+PRIORITY_TERMS.update(
+    {
+        "테슬라 태양광": 16,
+        "solar factory": 16,
+        "태양광 공장": 16,
+        "루빈 울트라": 17,
+        "hbm4e 사양": 18,
+        "광통신": 15,
+        "광인터커넥트": 16,
+        "실리콘 포토닉스": 16,
+        "데이터센터 공조": 17,
+        "데이터센터 냉각": 17,
+        "hvac": 15,
+        "인디애나 팹": 17,
+    }
+)
+
+AUGUST13_ATTACHMENT_IMPACT_TERMS = {
+    "돈 버는 능력": (
+        "태양광 공장", "solar factory", "루빈 울트라", "hbm4e 사양",
+        "광통신", "광인터커넥트", "실리콘 포토닉스", "데이터센터 공조",
+        "데이터센터 냉각", "인디애나 팹",
+    ),
+    "수급": ("루빈 울트라", "hbm4e 사양"),
+    "시간표": ("태양광 공장", "인디애나 팹", "데이터센터 공조", "데이터센터 냉각"),
+}
+for _impact_label, _impact_terms in AUGUST13_ATTACHMENT_IMPACT_TERMS.items():
+    IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
+
 # Rebuild after every extension. A stale material tuple would score a new lane
 # but then silently discard it during the final material-title quality gate.
 MATERIAL_TERMS = tuple(PRIORITY_TERMS)
