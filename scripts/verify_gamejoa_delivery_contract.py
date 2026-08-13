@@ -322,7 +322,7 @@ def main() -> int:
     escaped_html_regression = production.runner.sanitize_telegram_html(raw_html_regression)
     if "&lt;질문 1&gt;" not in escaped_html_regression or "&amp; 원문" not in escaped_html_regression:
         errors.append(f"telegram_html_escape_regression={escaped_html_regression}")
-    if "<a href="https://example.com/article">원문 뉴스보기</a>" not in escaped_html_regression:
+    if '<a href="https://example.com/article">원문 뉴스보기</a>' not in escaped_html_regression:
         errors.append("telegram_html_escape_regression=direct_source_url_not_preserved")
     direct_source = compact.html_link("원문 뉴스보기", "https://example.com/article")
     if direct_source != "<a href="https://example.com/article">원문 뉴스보기</a>":
