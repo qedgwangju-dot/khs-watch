@@ -329,6 +329,23 @@ def main() -> int:
     direct_source = compact.html_link("원문 뉴스보기", "https://example.com/article")
     if direct_source != '<a href="https://example.com/article">원문 뉴스보기</a>':
         errors.append(f"telegram_labeled_source_link_regression={direct_source}")
+    split_source = compact.html_link("원문 뉴스보기", "h" + " ps://example.com/article")
+    if split_source != '<a href="https://example.com/article">원문 뉴스보기</a>':
+        errors.append(f"telegram_split_source_url_regression={split_source}")
+    split_entity_markup = (
+        '📰 검증\n- 출처: <a href="h' + ' ps://example.com/article">원문 뉴스보기</a>'
+    )
+    split_entity_text, split_entity_payload = compact.telegram_text_and_entities(split_entity_markup)
+    if split_entity_text != "📰 검증\n- 출처: 원문 뉴스보기" or split_entity_payload != [{
+        "type": "text_link",
+        "offset": compact.telegram_utf16_length("📰 검증\n- 출처: "),
+        "length": compact.telegram_utf16_length("원문 뉴스보기"),
+        "url": "h" + "ttps://example.com/article",
+    }]:
+        errors.append(
+            "telegram_split_source_entity_regression="
+            f"text={split_entity_text} payload={split_entity_payload}"
+        )
     entity_markup = '📰 검증\n- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'
     entity_text, entity_payload = compact.telegram_text_and_entities(entity_markup)
     expected_entity_text = "📰 검증\n- 출처: 원문 뉴스보기"
