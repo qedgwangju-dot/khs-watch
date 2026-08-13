@@ -109,7 +109,7 @@ jobs:
                 "- 핵심: 원문 뉴스보기 라벨을 누르면 해당 기사가 열리는지 확인합니다.\n"
                 '- 출처: <a href="https://www.mk.co.kr/news/business/12126513">원문 뉴스보기</a>\n'
             )
-            PY
+          PY
           else
             python scripts/gamejoa_preopen_news_radar_fda_quality_runner.py
           fi
