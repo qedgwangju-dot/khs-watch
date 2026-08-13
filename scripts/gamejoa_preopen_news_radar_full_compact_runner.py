@@ -6241,7 +6241,15 @@ def guard_preopen_report(text: str) -> str:
             errors.append(f"federal_register_boilerplate={marker}")
     for marker in ["무단 전재", "재배포 금지", "ai 학습 및 활용 금지"]:
         if marker in low:
-            errors.append(f"article_boilerplate={marker}")
+            context = next(
+                (
+                    re.sub(r"\\s+", " ", line).strip()[:180]
+                    for line in text.splitlines()
+                    if marker in re.sub(r"https?://\\S+", "", line).lower()
+                ),
+                "",
+            )
+            errors.append(f"article_boilerplate={marker}:{context}")
     for line in text.splitlines():
         visible_line = html.unescape(line)
         if not visible_line.startswith("- 핵심:"):
