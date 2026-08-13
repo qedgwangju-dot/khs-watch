@@ -2698,26 +2698,6 @@ def build_strategic_technology_investment_alert(row: dict, now, text: str) -> di
         company_key = "samsung_electronics"
         score = 120
     else:
-        if kind == "tesla_us_solar_factory_capex" and not any(
-            term in text for term in ("공장", "factory", "건설", "투자", "capex", "고용", "증설")
-        ):
-            continue
-        if kind == "nvidia_rubin_hbm_spec_change" and not any(
-            term in text for term in ("사양", "변경", "낮추", "검토", "공급", "수요")
-        ):
-            continue
-        if kind == "skhynix_indiana_advanced_packaging_timeline" and not any(
-            term in text for term in ("착공", "공장", "양산", "가동", "투자")
-        ):
-            continue
-        if kind == "ai_datacenter_optical_interconnect" and not any(
-            term in text for term in ("병목", "수요", "투자", "증설", "공급", "capex")
-        ):
-            continue
-        if kind == "samsung_datacenter_cooling_capacity" and not any(
-            term in text for term in ("공조", "냉각", "hvac", "칠러", "chiller")
-        ):
-            continue
         core = detailed_article_core(title, body)
         sectors = korean_business_source_sectors(title, body)
         company_key = next(
@@ -3798,6 +3778,26 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
         if kind == "korea_public_fund_asset_flow" and not re.search(r"\d[\d,.]*\s*(?:조|억)원", text):
             continue
         if kind == "tsmc_advanced_packaging_capex" and not any(term in text for term in ("자본지출", "capex", "투자승인", "투자 승인", "이사회 승인", "증설")):
+            continue
+        if kind == "tesla_us_solar_factory_capex" and not any(
+            term in text for term in ("공장", "factory", "건설", "투자", "capex", "고용", "증설")
+        ):
+            continue
+        if kind == "nvidia_rubin_hbm_spec_change" and not any(
+            term in text for term in ("사양", "변경", "낮추", "검토", "공급", "수요")
+        ):
+            continue
+        if kind == "skhynix_indiana_advanced_packaging_timeline" and not any(
+            term in text for term in ("착공", "공장", "양산", "가동", "투자")
+        ):
+            continue
+        if kind == "ai_datacenter_optical_interconnect" and not any(
+            term in text for term in ("병목", "수요", "투자", "증설", "공급", "capex")
+        ):
+            continue
+        if kind == "samsung_datacenter_cooling_capacity" and not any(
+            term in text for term in ("공조", "냉각", "hvac", "칠러", "chiller")
+        ):
             continue
         core = detailed_article_core(title, body)
         if kind == "korea_etf_asset_flow":
