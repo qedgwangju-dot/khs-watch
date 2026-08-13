@@ -3807,6 +3807,9 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
                 core = f"국내 ETF에서 {amount_match.group(0)} 자금이 {direction}됐습니다."
         elif kind == "korea_solar_module_capacity" and "신성이엔지" in text:
             core = "신성이엔지가 김제공장 신규 라인을 가동해 태양광 모듈 양산을 시작했습니다."
+        elif kind == "skhynix_indiana_advanced_packaging_timeline":
+            date = "27일" if "27일" in text else "예정된 일정에 따라"
+            core = f"SK하이닉스가 {date} 미국 인디애나 첨단 패키징 공장 착공식을 열고 현지 생산거점 구축을 추진합니다."
         alert = base_korean_business_alert(row, now, score=score, impacts=impacts)
         alert.update({"importance": "상" if score >= 110 else "중", "status": "확정" if row.get("body_verified") else "예비", "policy_plain_summary": core, "telegram_core_fact": core, "sectors": sectors, "paths": paths, "korean_business_kind": kind, "supply_chain_theme": f"{kind}:{korean_business_event_date(row)}"})
         return alert
