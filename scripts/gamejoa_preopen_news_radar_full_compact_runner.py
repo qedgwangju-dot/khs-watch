@@ -6041,6 +6041,9 @@ def compact_alert_block_errors(block: str) -> list[str]:
     if re.search(
         r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)(?:[.!?。])?$",
         summary,
+    ) or re.search(
+        r"(?:의|은|는|이|가|을|를)\s*(?:미국|한국|중국|일본|유럽|인도)[.!?。]?$",
+        summary,
     ):
         errors.append("incomplete_core")
     if title and (summary == title or article_title_restatement(summary, title)):
