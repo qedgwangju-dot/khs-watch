@@ -896,6 +896,11 @@ def main() -> int:
             "금융당국이 단일종목 레버리지 규제를 시행한다.",
             "금융당국이 단일종목 레버리지 규제를 시행한다.",
         ),
+        (
+            "무단 전재 및 재배포 금지. AI 학습 및 활용 금지. "
+            "SK하이닉스가 인디애나 첨단패키징 팹 착공식을 연다.",
+            "SK하이닉스가 인디애나 첨단패키징 팹 착공식을 연다.",
+        ),
     ):
         cleaned = radar.clean_article_summary_text(noisy)
         if cleaned != expected:
