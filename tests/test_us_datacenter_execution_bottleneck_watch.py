@@ -1,14 +1,19 @@
+import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+import scripts.us_datacenter_execution_bottleneck_watch as dc
 from scripts.us_datacenter_execution_bottleneck_watch import (
+    EventCluster,
+    clean_title,
     cluster_items,
     direction,
     event_fingerprint,
     source_class,
     stage,
+    translate_title_to_korean,
     verified,
 )
 
@@ -72,3 +77,64 @@ def test_event_fingerprint_is_stable_across_source_order():
     c1 = cluster_items([a, b])[0]
     c2 = cluster_items([b, a])[0]
     assert event_fingerprint(c1) == event_fingerprint(c2)
+
+
+def test_clean_title_removes_publisher_suffix():
+    assert clean_title(
+        "Dominion ordered to directly assign some transmission costs to data centers - Utility Dive",
+        "Utility Dive",
+    ) == "Dominion ordered to directly assign some transmission costs to data centers"
+
+
+def test_translate_title_outputs_korean(monkeypatch):
+    monkeypatch.setattr(
+        dc,
+        "_translate_via_google",
+        lambda _text: "도미니언에 데이터센터 송전 비용 일부를 직접 부담시키라는 명령",
+    )
+    translated, status = translate_title_to_korean(
+        "Dominion ordered to directly assign some transmission costs to data centers - Utility Dive",
+        "Utility Dive",
+        "계통접속",
+        "변화",
+        [],
+    )
+    assert status == "자동번역"
+    assert re.search(r"[가-힣]", translated)
+    assert "ordered to directly" not in translated
+
+
+def test_translation_failure_never_leaks_english_headline(monkeypatch):
+    def fail(_text):
+        raise RuntimeError("translation unavailable")
+
+    monkeypatch.setattr(dc, "_translate_via_google", fail)
+    translated, status = translate_title_to_korean(
+        "Dominion ordered to directly assign some transmission costs to data centers - Utility Dive",
+        "Utility Dive",
+        "계통접속",
+        "변화",
+        [],
+    )
+    assert status == "한국어 대체문구"
+    assert re.search(r"[가-힣]", translated)
+    assert "Dominion ordered" not in translated
+
+
+def test_report_uses_korean_title_and_clickable_original_links(monkeypatch):
+    monkeypatch.setattr(
+        dc,
+        "_translate_via_google",
+        lambda _text: "도미니언에 데이터센터 송전 비용 일부를 직접 부담시키라는 명령",
+    )
+    rows = [
+        item("Dominion data center transmission agreement approved by regulator - Utility Dive", "Utility Dive"),
+        item("Dominion data center transmission agreement approved by regulator - Data Center Dynamics", "Data Center Dynamics"),
+    ]
+    cluster = EventCluster(rank=2, stage_name="계통접속", direction="전진", items=rows)
+    text = dc.report([cluster], False)
+    assert "도미니언에 데이터센터 송전 비용 일부를 직접 부담시키라는 명령" in text
+    assert "Dominion data center transmission agreement" not in text
+    assert text.count(">원문</a>") == 2
+    assert '<a href="https://example.com/' in text
+    assert " · https://" not in text
