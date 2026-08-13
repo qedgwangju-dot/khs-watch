@@ -328,7 +328,7 @@ def main() -> int:
     if direct_source != '<a href="https://example.com/article">원문 뉴스보기</a>':
         errors.append(f"telegram_labeled_source_link_regression={direct_source}")
     fragment_errors = compact.compact_alert_block_errors(
-        "1) SK하이닉스 인디애나 공장 착공식\n- 핵심: SK하이닉스의 미국.\n- 출처: <a href="https://example.com/article">원문 뉴스보기</a>"
+        '1) SK하이닉스 인디애나 공장 착공식\n- 핵심: SK하이닉스의 미국.\n- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'
     )
     if "incomplete_core" not in fragment_errors:
         errors.append("incomplete Korea-location fragment passed Telegram quality guard")
