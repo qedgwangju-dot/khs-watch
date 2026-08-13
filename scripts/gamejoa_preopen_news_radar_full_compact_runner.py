@@ -6302,6 +6302,76 @@ def guard_preopen_report(text: str) -> str:
     return text
 
 
+TELEGRAM_SOURCE_ANCHOR = re.compile(
+    r'<a href="(https?://[^"<>]+)">(.+?)</a>',
+    re.DOTALL,
+)
+
+
+def telegram_utf16_length(value: str) -> int:
+    return len(str(value or "").encode("utf-16-le")) // 2
+
+
+def telegram_text_and_entities(text: str) -> tuple[str, list[dict]]:
+    """Convert generated source anchors into Telegram text-link entities.
+
+    Telegram's entity payload is independent of parse_mode, so a source label
+    cannot be exposed as literal HTML when the client ignores HTML parsing.
+    """
+    source = str(text or "")
+    pieces: list[str] = []
+    entities: list[dict] = []
+    cursor = 0
+    for match in TELEGRAM_SOURCE_ANCHOR.finditer(source):
+        pieces.append(html.unescape(source[cursor:match.start()]))
+        label = html.unescape(match.group(2))
+        url = html.unescape(match.group(1))
+        if label:
+            offset = telegram_utf16_length("".join(pieces))
+            pieces.append(label)
+            entities.append({
+                "type": "text_link",
+                "offset": offset,
+                "length": telegram_utf16_length(label),
+                "url": url,
+            })
+        cursor = match.end()
+    pieces.append(html.unescape(source[cursor:]))
+    return "".join(pieces), entities
+
+
+def fit_telegram_text_with_entities(
+    text: str,
+    entities: list[dict],
+    limit: int,
+) -> tuple[str, list[dict]]:
+    if telegram_utf16_length(text) <= limit:
+        return text, entities
+
+    suffix = "\n\n전체 보고서는 GitHub Actions artifact에서 확인 필요."
+    budget = max(0, limit - telegram_utf16_length(suffix))
+    chars: list[str] = []
+    used = 0
+    for char in text:
+        char_units = telegram_utf16_length(char)
+        if used + char_units > budget:
+            break
+        chars.append(char)
+        used += char_units
+    candidate = "".join(chars)
+    newline = candidate.rfind("\n")
+    if newline > 1800:
+        candidate = candidate[:newline]
+    message = candidate.rstrip() + suffix
+    message_units = telegram_utf16_length(message)
+    kept_entities = [
+        entity
+        for entity in entities
+        if int(entity["offset"]) + int(entity["length"]) <= message_units
+    ]
+    return message, kept_entities
+
+
 def send_telegram(text: str) -> None:
     text = guard_preopen_report(text)
     chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
@@ -6317,12 +6387,13 @@ def send_telegram(text: str) -> None:
     if not token or not chat_id:
         write_delivery_status("blocked", chat_id, len(text), "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
         raise RuntimeError("Telegram delivery blocked: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing")
-    message = fit_telegram_html(sanitize_telegram_html(text), base.TELEGRAM_LIMIT)
+    message, entities = telegram_text_and_entities(text)
+    message, entities = fit_telegram_text_with_entities(message, entities, base.TELEGRAM_LIMIT)
     body = urllib.parse.urlencode({
         "chat_id": chat_id,
         "text": message,
         "disable_web_page_preview": "true",
-        "parse_mode": "HTML",
+        "entities": json.dumps(entities, ensure_ascii=False, separators=(",", ":")),
     }).encode("utf-8")
     last_error = ""
     for attempt in range(1, 4):
@@ -6331,7 +6402,7 @@ def send_telegram(text: str) -> None:
             with urllib.request.urlopen(req, timeout=25) as resp:
                 resp.read()
             write_delivery_status("sent", chat_id, len(text), "", len(message), attempt)
-            print(f"Telegram: sent chars={len(message)} original_chars={len(text)} attempt={attempt}")
+            print(f"Telegram: sent chars={len(message)} entities={len(entities)} original_chars={len(text)} attempt={attempt}")
             return
         except urllib.error.HTTPError as exc:
             error_text = exc.read().decode("utf-8", "replace")[:500]
