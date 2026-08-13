@@ -327,6 +327,11 @@ def main() -> int:
     direct_source = compact.html_link("원문 뉴스보기", "https://example.com/article")
     if direct_source != "원문 뉴스보기: https://example.com/article":
         errors.append(f"telegram_direct_source_url_regression={direct_source}")
+    fragment_errors = compact.compact_alert_block_errors(
+        "1) SK하이닉스 인디애나 공장 착공식\n- 핵심: SK하이닉스의 미국.\n- 출처: 원문 뉴스보기: https://example.com/article"
+    )
+    if "incomplete_core" not in fragment_errors:
+        errors.append("incomplete Korea-location fragment passed Telegram quality guard")
     send_module = getattr(production.telegram.send_telegram, "__module__", "")
     compact_module = getattr(production.telegram.compact_report, "__module__", "")
     final_selection_module = getattr(production.telegram.final_alerts_for_output, "__module__", "")
