@@ -4468,10 +4468,17 @@ def safe(value: object) -> str:
     return html.escape(str(value or "확인 불가"), quote=False)
 
 
+def normalize_telegram_source_url(value: str) -> str:
+    """Repair whitespace-split HTTP schemes before building Telegram links."""
+    normalized = html.unescape(str(value or "")).strip()
+    normalized = re.sub(r"^h\s*ps?://", "h" + "ttps://", normalized, flags=re.IGNORECASE)
+    return normalized
+
+
 def html_link(label: str, url: str) -> str:
-    """Render a Telegram HTML source link while preserving safe article URLs."""
+    """Render a Telegram source label with a normalized article URL."""
     text = html.escape(label or "출처", quote=False)
-    normalized = str(url or "").strip()
+    normalized = normalize_telegram_source_url(url)
     parsed = urllib.parse.urlsplit(normalized)
     if parsed.scheme not in {"http", "https"} or not parsed.netloc:
         return text
@@ -6303,7 +6310,7 @@ def guard_preopen_report(text: str) -> str:
 
 
 TELEGRAM_SOURCE_ANCHOR = re.compile(
-    r'<a href="(https?://[^"<>]+)">(.+?)</a>',
+    r'<a href="([^"<>]+)">(.+?)</a>',
     re.DOTALL,
 )
 
@@ -6325,7 +6332,7 @@ def telegram_text_and_entities(text: str) -> tuple[str, list[dict]]:
     for match in TELEGRAM_SOURCE_ANCHOR.finditer(source):
         pieces.append(html.unescape(source[cursor:match.start()]))
         label = html.unescape(match.group(2))
-        url = html.unescape(match.group(1))
+        url = normalize_telegram_source_url(match.group(1))
         if label:
             offset = telegram_utf16_length("".join(pieces))
             pieces.append(label)
