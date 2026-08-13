@@ -107,6 +107,15 @@ AUGUST12_CASES = (
 )
 
 
+AUGUST13_CASES = (
+    ("테슬라, 미국에 태양광 공장 건설·101억달러 투자", "태양광 공장", "돈 버는 능력"),
+    ("엔비디아, 루빈 울트라 HBM4E 사양 변경 검토", "루빈 울트라", "돈 버는 능력"),
+    ("SK하이닉스, 인디애나 첨단패키징 팹 27일 착공", "인디애나", "시간표"),
+    ("AI 데이터센터 병목 광통신·실리콘 포토닉스 수요 확대", "광통신", "돈 버는 능력"),
+    ("삼성, 데이터센터 공조·냉각 생산라인 해외 증설", "데이터센터 공조", "돈 버는 능력"),
+)
+
+
 def main() -> int:
     failures = []
     now = datetime.now().astimezone()
@@ -121,7 +130,7 @@ def main() -> int:
     ) in fda_runner_source:
         failures.append("production_fda_wrapper=body_fetch_failure_still_blocked")
     for index, (title, required_term, required_impact) in enumerate(
-        CASES + ATTACHED_CASES + AUGUST9_CASES + AUGUST10_CASES + AUGUST12_CASES
+        CASES + ATTACHED_CASES + AUGUST9_CASES + AUGUST10_CASES + AUGUST12_CASES + AUGUST13_CASES
     ):
         row = {
             "title": title,
@@ -157,6 +166,8 @@ def main() -> int:
         "apnews.com",
         "cnbc.com",
         "ezyeconomy.com",
+        "digitaltoday.co.kr",
+        "economist.co.kr",
         "theguru.co.kr",
         "ngetnews.com",
         "magazine.hankyung.com",
@@ -257,6 +268,11 @@ def main() -> int:
         "해외 국부펀드·장기자금 한국 반도체 직접 투자",
         "국내 공모펀드 순자산·대규모 설정·환매",
         "TSMC 첨단패키징·CoWoS 자본지출·투자승인",
+        "테슬라·미국 태양광 제조공장·대형 CAPEX",
+        "엔비디아 루빈·HBM4E 사양변경·공급망",
+        "SK하이닉스 미국 인디애나 첨단패키징 착공·양산",
+        "AI 데이터센터 광통신·광인터커넥트 병목",
+        "삼성 데이터센터 공조·냉각 생산능력·해외 증설",
     ):
         if required_search not in search_names:
             failures.append(f"missing_attached_search={required_search}")
@@ -1080,7 +1096,7 @@ def main() -> int:
         return 1
     print(
         "GAMEJOA news coverage contract OK: "
-        f"cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES) + len(AUGUST10_CASES) + len(AUGUST12_CASES)}"
+        f"cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES) + len(AUGUST10_CASES) + len(AUGUST12_CASES) + len(AUGUST13_CASES)}"
     )
     return 0
 
