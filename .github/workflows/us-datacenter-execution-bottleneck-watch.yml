@@ -47,7 +47,7 @@ jobs:
       - name: 문법 확인
         run: python -m compileall -q scripts/us_datacenter_execution_bottleneck_watch.py
 
-      - name: 알림 판정 규칙 시험
+      - name: 알림 판정·한국어·링크 표시 시험
         run: pytest -q tests/test_us_datacenter_execution_bottleneck_watch.py
 
       - name: 미국 데이터센터 실행 병목 감시
@@ -79,40 +79,76 @@ jobs:
 
           python - <<'PY'
           import json, os, pathlib, requests
+
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip() or os.environ.get("FALLBACK_TELEGRAM_CHAT_ID", "").strip()
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
           if not chat_id:
               raise RuntimeError("Telegram chat id가 없습니다.")
+
           me = requests.get(f"https://api.telegram.org/bot{token}/getMe", timeout=25)
           me.raise_for_status()
           payload = me.json()
           actual = str(payload.get("result", {}).get("username", ""))
           if not payload.get("ok") or actual != expected:
               raise RuntimeError(f"잘못된 Telegram 봇 경로 차단: expected=@{expected}, actual=@{actual or '확인불가'}")
+
           text = pathlib.Path(os.environ["REPORT_PATH"]).read_text(encoding="utf-8").strip()
           if not text:
               raise RuntimeError("Telegram으로 보낼 보고서가 비어 있습니다.")
+
+          # HTML 링크 태그가 중간에서 잘리지 않도록 줄 단위로 분할한다.
           chunks = []
-          while text:
-              if len(text) <= 3500:
-                  chunks.append(text); break
-              cut = text.rfind("\n", 0, 3500)
-              if cut < 1700:
-                  cut = 3500
-              chunks.append(text[:cut].rstrip()); text = text[cut:].lstrip()
+          current = []
+          current_len = 0
+          limit = 3300
+          for line in text.splitlines():
+              line_len = len(line) + 1
+              if current and current_len + line_len > limit:
+                  chunks.append("\n".join(current).strip())
+                  current = [line]
+                  current_len = line_len
+              else:
+                  current.append(line)
+                  current_len += line_len
+          if current:
+              chunks.append("\n".join(current).strip())
+
           ids = []
           for i, chunk in enumerate(chunks, 1):
               body = (f"[{i}/{len(chunks)}]\n" if len(chunks) > 1 else "") + chunk
-              r = requests.post(f"https://api.telegram.org/bot{token}/sendMessage", json={"chat_id": chat_id, "text": body, "disable_web_page_preview": True}, timeout=30)
+              r = requests.post(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  json={
+                      "chat_id": chat_id,
+                      "text": body,
+                      "parse_mode": "HTML",
+                      "link_preview_options": {"is_disabled": True},
+                  },
+                  timeout=30,
+              )
               r.raise_for_status()
               p = r.json()
               if not p.get("ok"):
                   raise RuntimeError(f"Telegram 전송 실패: {p}")
               ids.append(p.get("result", {}).get("message_id"))
+
           pathlib.Path("out").mkdir(parents=True, exist_ok=True)
-          pathlib.Path("out/us_datacenter_execution_bottleneck_telegram_confirmed.json").write_text(json.dumps({"status":"confirmed","bot_username":actual,"message_ids":ids}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
-          print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(ids)} last_message_id={ids[-1]}")
+          pathlib.Path("out/us_datacenter_execution_bottleneck_telegram_confirmed.json").write_text(
+              json.dumps(
+                  {
+                      "status": "confirmed",
+                      "bot_username": actual,
+                      "message_ids": ids,
+                      "parse_mode": "HTML",
+                      "clickable_source_label": "원문",
+                  },
+                  ensure_ascii=False,
+                  indent=2,
+              ) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(ids)} last_message_id={ids[-1]} parse_mode=HTML")
           PY
 
       - name: 기준선·보고서 저장
