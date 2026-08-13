@@ -103,9 +103,10 @@ jobs:
             import gamejoa_preopen_news_radar_full_compact_runner as compact
 
             compact.send_telegram(
-                "🧪 실시간 핵심 뉴스 레이더 링크 검증\n\n"
+                "📰 실시간 핵심 뉴스 레이더 · 링크 검증\n"
+                "선별: 핵심 1건\n\n"
                 "1) 원문 링크 표시 검증\n"
-                "- 핵심: 원문 뉴스보기 라벨만 눌러 기사를 엽니다.\n"
+                "- 핵심: 원문 뉴스보기 라벨을 누르면 해당 기사가 열리는지 확인합니다.\n"
                 '- 출처: <a href="https://www.mk.co.kr/news/business/12126513">원문 뉴스보기</a>\n'
             )
             PY
