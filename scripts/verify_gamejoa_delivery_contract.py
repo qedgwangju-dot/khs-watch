@@ -1210,6 +1210,21 @@ def assert_detailed_summary_is_preserved_before_send(compact, now, errors: list[
     )
     if len(core_line.removeprefix("- 핵심:").strip()) <= 50:
         errors.append("GAMEJOA detailed core regressed to the former 50-character cap")
+
+    boilerplate_report = report.replace(
+        "- 핵심:",
+        "- 핵심: 무단 전재 및 재배포 금지. ",
+        1,
+    )
+    try:
+        cleaned = compact.guard_preopen_report(boilerplate_report)
+    except RuntimeError as exc:
+        errors.append(f"article boilerplate blocked a valid Telegram report: {exc}")
+    else:
+        if "무단 전재" in cleaned or "재배포 금지" in cleaned:
+            errors.append("article boilerplate survived Telegram summary normalization")
+        if "미국이 첨단 반도체 장비 수출통제를" not in cleaned:
+            errors.append("article boilerplate normalization removed the verified core")
     for marker in FORBIDDEN_COMPACT_MARKERS:
         if marker in compacted:
             errors.append(f"removed compact field returned during detailed-summary test: {marker}")
