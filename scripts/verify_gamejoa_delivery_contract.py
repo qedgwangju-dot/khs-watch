@@ -1212,6 +1212,10 @@ def assert_detailed_summary_is_preserved_before_send(compact, now, errors: list[
         errors.append("GAMEJOA detailed core regressed to the former 50-character cap")
 
     boilerplate_report = report.replace(
+        "1) [상 | 공식 확인 전]",
+        "1) 무단 전재 및 재배포 금지 [상 | 공식 확인 전]",
+        1,
+    ).replace(
         "- 핵심:",
         "- 핵심: 무단 전재 및 재배포 금지. ",
         1,
