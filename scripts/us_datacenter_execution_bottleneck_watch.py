@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import html
 import json
 import os
 import re
@@ -19,6 +20,8 @@ OUT_DIR = Path("out")
 LOOKBACK_DAYS = 45
 STATE_VERSION = 2
 MIN_INDEPENDENT_SOURCES = 2
+TRANSLATE_BASE_URL = "https://translate.googleapis.com/translate_a/single"
+KOREAN_RE = re.compile(r"[가-힣]")
 
 QUERIES = (
     'US data center local opposition moratorium zoning permit community 2026',
@@ -78,6 +81,26 @@ COMPANY_TERMS = {
     "Blackstone": ("blackstone",),
     "xAI": ("xai",),
     "Anthropic": ("anthropic",),
+}
+
+COMPANY_DISPLAY = {
+    "Meta": "메타(Meta)",
+    "Amazon/AWS": "아마존/AWS",
+    "Google": "구글(Google)",
+    "Microsoft": "마이크로소프트(Microsoft)",
+    "Oracle": "오라클(Oracle)",
+    "OpenAI/Stargate": "오픈AI·스타게이트(OpenAI·Stargate)",
+    "CoreWeave": "코어위브(CoreWeave)",
+    "Crusoe": "크루소(Crusoe)",
+    "QTS": "QTS",
+    "CyrusOne": "사이러스원(CyrusOne)",
+    "Vantage": "밴티지(Vantage)",
+    "Digital Realty": "디지털 리얼티(Digital Realty)",
+    "Equinix": "에퀴닉스(Equinix)",
+    "Lancium": "랜시움(Lancium)",
+    "Blackstone": "블랙스톤(Blackstone)",
+    "xAI": "xAI",
+    "Anthropic": "앤트로픽(Anthropic)",
 }
 
 OFFICIAL_OR_PARTY_HINTS = (
@@ -150,6 +173,10 @@ def direction(text: str, stage_name: str = "") -> str:
 def companies(text: str) -> list[str]:
     t = text.lower()
     return [name for name, terms in COMPANY_TERMS.items() if any(term in t for term in terms)]
+
+
+def display_company(name: str) -> str:
+    return COMPANY_DISPLAY.get(name, name)
 
 
 def source_class(source: str) -> str:
@@ -298,6 +325,58 @@ def fetch(session: requests.Session, query: str) -> list[dict[str, str]]:
     return rows
 
 
+def clean_title(title: str, source: str) -> str:
+    value = html.unescape(re.sub(r"<[^>]+>", " ", title or "")).strip()
+    value = re.sub(r"\s+", " ", value)
+    if " - " in value:
+        head, tail = value.rsplit(" - ", 1)
+        tail_norm = re.sub(r"[^a-z0-9]+", "", tail.lower().removeprefix("www."))
+        source_norm = re.sub(r"[^a-z0-9]+", "", (source or "").lower().removeprefix("www."))
+        if tail_norm and source_norm and (tail_norm == source_norm or tail_norm in source_norm or source_norm in tail_norm):
+            value = head.strip()
+    return value
+
+
+def _translate_via_google(text: str) -> str:
+    response = requests.get(
+        TRANSLATE_BASE_URL,
+        params={"client": "gtx", "sl": "auto", "tl": "ko", "dt": "t", "q": text},
+        headers={"User-Agent": "khs-watch/2.1 (+GitHub Actions)"},
+        timeout=8,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    translated = "".join(
+        str(segment[0])
+        for segment in (payload[0] or [])
+        if isinstance(segment, list) and segment and segment[0]
+    ).strip()
+    if not translated or not KOREAN_RE.search(translated):
+        raise ValueError("번역 결과에 한국어가 없습니다.")
+    return translated
+
+
+def fallback_korean_title(stage_name: str, direction_label: str, names: list[str]) -> str:
+    subject = ", ".join(display_company(name) for name in names) if names else "미국 데이터센터 프로젝트"
+    return f"{subject}의 {stage_name} 단계에서 {direction_label} 신호가 확인됨"
+
+
+def translate_title_to_korean(
+    title: str,
+    source: str,
+    stage_name: str,
+    direction_label: str,
+    names: list[str],
+) -> tuple[str, str]:
+    cleaned = clean_title(title, source)
+    if KOREAN_RE.search(cleaned):
+        return cleaned, "이미 한국어"
+    try:
+        return _translate_via_google(cleaned), "자동번역"
+    except Exception:
+        return fallback_korean_title(stage_name, direction_label, names), "한국어 대체문구"
+
+
 def axis(stage_name: str) -> str:
     if stage_name in {"토지", "계통접속", "인허가", "주민 반대"}:
         return "시간표·실행 가능성"
@@ -313,7 +392,7 @@ def meaning(stage_name: str) -> str:
         "인허가": "법적 착공 가능 상태가 전진·후퇴했는지 확인",
         "주민 반대": "소송·모라토리엄·주민투표가 착공·금융을 막는지 확인",
         "금융 종결": "대주단이 인허가·전력·지역 리스크를 감수하고 자금을 확정했는지 확인",
-        "실제 자금 인출": "약정이 아니라 실제 건설비 집행이 시작됐는지 확인",
+        "실제 자금 인출": "약정이 아니라 실제 건설비 집행가 시작됐는지 확인",
         "착공": "계획이 기자재·설계·조달·시공 매출로 전환되는 첫 구간",
         "전원 인가": "실제 가동 가능한 상태에 도달하는 최종 병목",
     }.get(stage_name, "프로젝트 실행 가능성 변화 확인")
@@ -343,34 +422,53 @@ def best_items(cluster: EventCluster) -> list[dict[str, str]]:
     )
 
 
+def cluster_report_lines(index: int, cluster: EventCluster) -> list[str]:
+    items = best_items(cluster)
+    sources = independent_sources(items)
+    names = sorted({name for item in items for name in companies(item["title"])})
+    korean_title, _translation_status = translate_title_to_korean(
+        items[0]["title"],
+        items[0]["source"],
+        cluster.stage_name,
+        cluster.direction,
+        names,
+    )
+    display_names = ", ".join(display_company(name) for name in names) if names else "프로젝트·지역"
+    lines = [
+        "",
+        f"{index}. {html.escape(korean_title)}",
+        f"- 단계: {cluster.rank}/8 {cluster.stage_name} · {cluster.direction}",
+        f"- 관련: {html.escape(display_names)}",
+        f"- 투자축: {axis(cluster.stage_name)}",
+        f"- 의미: {meaning(cluster.stage_name)}",
+        f"- 교차검증: {len(sources)}개 독립 출처 ({', '.join(html.escape(source) for source in sources[:4])})",
+        f"- 다음 확인지표: {next_indicator(cluster.stage_name)}",
+    ]
+    for idx, item in enumerate(items[:2], 1):
+        source = html.escape(item["source"])
+        link = html.escape(item["link"], quote=True)
+        lines.append(f'- 근거{idx}: [{source_class(item["source"])}] {source} · <a href="{link}">원문</a>')
+    return lines
+
+
 def report(clusters: list[EventCluster], force: bool) -> str:
     now = datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d %H:%M KST")
     if force:
-        return (
-            "✅ 미국 데이터센터 실행 병목 감시 연결·검증 완료\n"
-            "추적: ① 토지 ② 계통접속 ③ 인허가 ④ 주민 반대 ⑤ 금융 종결 ⑥ 실제 자금 인출 ⑦ 착공 ⑧ 전원 인가\n"
-            "알림 조건: 같은 단계 변화가 서로 다른 2개 이상 출처에서 확인되고, 그중 최소 1개가 공식·당사자 또는 신뢰 매체일 때만 전송\n"
-            "단순 GW·투자계획·중복 재인용은 전송하지 않습니다.\n"
-            f"확인시각: {now}"
-        )
+        lines = [
+            "✅ 미국 데이터센터 실행 병목 감시 한국어·링크 표시 검증",
+            "추적: ① 토지 ② 계통접속 ③ 인허가 ④ 주민 반대 ⑤ 금융 종결 ⑥ 실제 자금 인출 ⑦ 착공 ⑧ 전원 인가",
+            "알림 조건: 같은 단계 변화가 서로 다른 2개 이상 출처에서 확인되고, 그중 최소 1개가 공식·당사자 또는 신뢰 매체일 때만 전송",
+            "표시 규칙: 외국어 기사 제목은 한국어로 변환하고, 주소 대신 파란색 ‘원문’ 링크로 표시",
+            f"확인시각: {now}",
+        ]
+        if clusters:
+            lines.append("\n표시 점검용 최신 검증 사례")
+            lines.extend(cluster_report_lines(1, clusters[0]))
+        return "\n".join(lines)
 
     lines = ["🚨 미국 데이터센터 실행 병목 변화", f"확인시각: {now}"]
     for i, cluster in enumerate(clusters[:5], 1):
-        items = best_items(cluster)
-        sources = independent_sources(items)
-        names = sorted({name for item in items for name in companies(item["title"])})
-        lines.extend([
-            "",
-            f"{i}. {items[0]['title']}",
-            f"- 단계: {cluster.rank}/8 {cluster.stage_name} · {cluster.direction}",
-            f"- 관련: {', '.join(names) if names else '프로젝트/지역'}",
-            f"- 투자축: {axis(cluster.stage_name)}",
-            f"- 의미: {meaning(cluster.stage_name)}",
-            f"- 교차검증: {len(sources)}개 독립 출처 ({', '.join(sources[:4])})",
-            f"- 다음 확인지표: {next_indicator(cluster.stage_name)}",
-        ])
-        for idx, item in enumerate(items[:2], 1):
-            lines.append(f"- 근거{idx}: [{source_class(item['source'])}] {item['source']} · {item['link']}")
+        lines.extend(cluster_report_lines(i, cluster))
     lines.append("\n※ 1개 출처뿐인 속보·루머·단순 재인용은 보류하고, 2개 출처가 맞을 때만 알립니다.")
     return "\n".join(lines)
 
@@ -381,7 +479,7 @@ def main() -> int:
     args = ap.parse_args()
 
     session = requests.Session()
-    session.headers.update({"User-Agent": "khs-watch/2.0 (+GitHub Actions)"})
+    session.headers.update({"User-Agent": "khs-watch/2.1 (+GitHub Actions)"})
     state = load_state()
     all_items: dict[str, dict[str, str]] = {}
     errors: list[str] = []
@@ -410,7 +508,6 @@ def main() -> int:
     migrating = int(state.get("version", 1)) < STATE_VERSION
     alerted = set(state.get("alerted_events", []))
 
-    # v1 -> v2 전환 시 현재 확인된 이벤트를 기준선으로만 저장해 과거 기사 폭탄을 막는다.
     if migrating:
         alerted.update(current_fps)
         new_clusters: list[EventCluster] = []
@@ -429,7 +526,7 @@ def main() -> int:
     path = OUT_DIR / "us_datacenter_execution_bottleneck_alert.txt"
 
     if args.force_notify:
-        path.write_text(report([], True) + "\n", encoding="utf-8")
+        path.write_text(report(clusters[:1], True) + "\n", encoding="utf-8")
         output("changed", "true")
         output("report_path", str(path))
         print(f"force_notify=true scanned={len(all_items)} verified_clusters={len(clusters)}")
