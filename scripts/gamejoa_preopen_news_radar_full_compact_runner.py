@@ -2698,6 +2698,26 @@ def build_strategic_technology_investment_alert(row: dict, now, text: str) -> di
         company_key = "samsung_electronics"
         score = 120
     else:
+        if kind == "tesla_us_solar_factory_capex" and not any(
+            term in text for term in ("공장", "factory", "건설", "투자", "capex", "고용", "증설")
+        ):
+            continue
+        if kind == "nvidia_rubin_hbm_spec_change" and not any(
+            term in text for term in ("사양", "변경", "낮추", "검토", "공급", "수요")
+        ):
+            continue
+        if kind == "skhynix_indiana_advanced_packaging_timeline" and not any(
+            term in text for term in ("착공", "공장", "양산", "가동", "투자")
+        ):
+            continue
+        if kind == "ai_datacenter_optical_interconnect" and not any(
+            term in text for term in ("병목", "수요", "투자", "증설", "공급", "capex")
+        ):
+            continue
+        if kind == "samsung_datacenter_cooling_capacity" and not any(
+            term in text for term in ("공조", "냉각", "hvac", "칠러", "chiller")
+        ):
+            continue
         core = detailed_article_core(title, body)
         sectors = korean_business_source_sectors(title, body)
         company_key = next(
@@ -3691,11 +3711,60 @@ def build_korea_strategic_etf_listing_alert(row: dict, now, text: str) -> dict |
     return alert
 
 
+AUGUST13_ATTACHMENT_PROFILES = (
+    (
+        "tesla_us_solar_factory_capex",
+        ("테슬라", "tesla"),
+        ("태양광", "solar"),
+        ["돈 버는 능력", "시간표"],
+        ["태양광/신재생", "전력기기/전력망", "미국 제조 CAPEX"],
+        ["태양광 제조 CAPEX", "생산능력", "고용·가동 시간표"],
+        112,
+    ),
+    (
+        "nvidia_rubin_hbm_spec_change",
+        ("엔비디아", "nvidia"),
+        ("루빈", "rubin", "hbm4e", "hbm 4e"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "AI/데이터센터", "반도체 장비·소재"],
+        ["HBM 사양", "AI 가속기 수요", "고객 요구 변경"],
+        118,
+    ),
+    (
+        "skhynix_indiana_advanced_packaging_timeline",
+        ("sk하이닉스", "sk hynix"),
+        ("인디애나", "indiana"),
+        ["돈 버는 능력", "시간표"],
+        ["반도체/HBM/CXL", "반도체 장비·소재", "미국 제조 CAPEX"],
+        ["HBM 후공정", "미국 생산거점", "착공·양산 시간표"],
+        117,
+    ),
+    (
+        "ai_datacenter_optical_interconnect",
+        ("광통신", "광인터커넥트", "실리콘 포토닉스", "광 송수신기", "optical interconnect"),
+        ("ai", "gpu", "hbm", "데이터센터", "data center"),
+        ["돈 버는 능력", "시간표"],
+        ["AI/데이터센터", "반도체/HBM/CXL", "네트워크·광통신"],
+        ["광인터커넥트 수요", "AI 클러스터 병목", "네트워크 CAPEX"],
+        113,
+    ),
+    (
+        "samsung_datacenter_cooling_capacity",
+        ("삼성", "samsung"),
+        ("데이터센터", "data center"),
+        ["돈 버는 능력", "시간표"],
+        ["데이터센터 냉각", "전력기기/전력망", "AI/데이터센터"],
+        ["공조·냉각 생산능력", "해외 제조 CAPEX", "가동 시간표"],
+        112,
+    ),
+)
+
+
 def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | None:
     """Route recurring company and market events from verified article bodies."""
     title = str(row.get("source_title") or row.get("title") or "")
     body = str(row.get("source_body") or row.get("source_abstract") or "")
-    profiles = (
+    profiles = (*AUGUST13_ATTACHMENT_PROFILES,
         ("korea_zinc_critical_minerals", ("고려아연",), ("핵심광물", "핵심 광물", "제련소", "통합제련소"), ["돈 버는 능력", "할인율", "시간표"], ["핵심광물", "비철금속/제련", "미국 공급망"], ["미국 정책 연결", "제련 CAPEX", "핵심광물 공급"], 111),
         ("korea_anthropic_strategic_investment", ("앤트로픽", "anthropic"), ("네이버", "naver", "삼성전자", "sk텔레콤", "skt"), ["돈 버는 능력", "수급", "시간표"], ["AI/데이터센터", "반도체/HBM/CXL", "플랫폼/클라우드"], ["AI 전략투자", "모델 협업", "데이터센터 수요"], 109),
         ("apple_cxmt_memory_supply_test", ("애플", "apple"), ("cxmt", "창신메모리", "중국 메모리", "중국 d램"), ["돈 버는 능력", "수급", "시간표"], ["반도체/HBM/CXL", "DRAM/NAND", "중국 메모리 공급"], ["고객 인증", "메모리 공급", "경쟁구도"], 112),
