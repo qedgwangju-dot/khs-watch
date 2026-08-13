@@ -89,6 +89,8 @@ FORBIDDEN_WORKFLOW_SNIPPETS = [
 REQUIRED_RUNNER_SNIPPETS = [
     "guard_preopen_report(text)",
     "sanitize_telegram_html",
+    "telegram_text_and_entities",
+    '"entities": json.dumps',
     "preopen_send_window_open",
     "raise RuntimeError(\"Telegram delivery blocked:",
     "raise RuntimeError(f\"Telegram delivery failed:",
@@ -327,6 +329,23 @@ def main() -> int:
     direct_source = compact.html_link("원문 뉴스보기", "https://example.com/article")
     if direct_source != '<a href="https://example.com/article">원문 뉴스보기</a>':
         errors.append(f"telegram_labeled_source_link_regression={direct_source}")
+    entity_markup = '📰 검증\n- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'
+    entity_text, entity_payload = compact.telegram_text_and_entities(entity_markup)
+    expected_entity_text = "📰 검증\n- 출처: 원문 뉴스보기"
+    expected_entity_offset = compact.telegram_utf16_length("📰 검증\n- 출처: ")
+    if entity_text != expected_entity_text:
+        errors.append(f"telegram_link_entity_text_regression={entity_text}")
+    elif entity_text.count("원문 뉴스보기") != 1 or "<a " in entity_text or "https://example.com/article" in entity_text:
+        errors.append(f"telegram_link_entity_visible_markup={entity_text}")
+    if entity_payload != [{
+        "type": "text_link",
+        "offset": expected_entity_offset,
+        "length": compact.telegram_utf16_length("원문 뉴스보기"),
+        "url": "https://example.com/article",
+    }]:
+        errors.append(f"telegram_link_entity_payload_regression={entity_payload}")
+    if '"parse_mode": "HTML"' in runner:
+        errors.append("Telegram source-link sender still depends on HTML parse_mode")
     fragment_errors = compact.compact_alert_block_errors(
         '1) SK하이닉스 인디애나 공장 착공식\n- 핵심: SK하이닉스의 미국.\n- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'
     )
