@@ -1059,7 +1059,7 @@ def korean_business_detail_priority(row: dict) -> tuple[int, float]:
 
 
 ARTICLE_SUMMARY_NOISE_PATTERNS = [
-    r"무단\s*전재(?:\s*(?:및|[-·])?\s*재배포)?\s*금지",
+    r"(?:저작권자\s*\(?c\)?\s*)?[^.\n]{0,80}?무단\s*전재\s*[-·–—]?\s*(?:및\s*)?재배포(?:\s*금지)?[.!。]?",
     r"AI\s*학습\s*및\s*활용\s*금지",
     r"저작권자\s*©?\s*이투데이",
     r"Copyright\s*©?\s*Etoday",
