@@ -4469,12 +4469,13 @@ def safe(value: object) -> str:
 
 
 def html_link(label: str, url: str) -> str:
-    """Render a directly clickable URL without relying on Telegram HTML anchors."""
+    """Render a Telegram HTML source link while preserving safe article URLs."""
     text = html.escape(label or "출처", quote=False)
     normalized = str(url or "").strip()
-    if not normalized:
+    parsed = urllib.parse.urlsplit(normalized)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
         return text
-    return f"{text}: {html.escape(normalized, quote=False)}"
+    return f'<a href="{html.escape(normalized, quote=True)}">{text}</a>'
 
 
 def source_summary(items: list[dict]) -> str:
