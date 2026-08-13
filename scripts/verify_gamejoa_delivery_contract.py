@@ -1218,7 +1218,7 @@ def assert_detailed_summary_is_preserved_before_send(compact, now, errors: list[
 def assert_korean_business_article_contract(production, compact, now, errors: list[str]) -> None:
     noisy_summary = compact.article_sentences(
         (
-            "무단 전재 재배포 금지, AI 학습 및 활용 금지> "
+            "무단 전재 및 재배포 금지, AI 학습 및 활용 금지> "
             "원·달러 환율이 1470원을 밑돌며 두 달 만의 최저치를 기록했다. "
             "외국인 위험선호가 확대되며 원화가 강세를 보였다."
         ),
