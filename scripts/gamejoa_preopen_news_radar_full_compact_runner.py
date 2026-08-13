@@ -6172,7 +6172,16 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
     return guard_preopen_report(report)
 
 
+def strip_article_boilerplate_from_report(text: str) -> str:
+    """Remove publisher UI notices before validating the visible Telegram report."""
+    cleaned = str(text or "")
+    for pattern in ARTICLE_SUMMARY_NOISE_PATTERNS[:2]:
+        cleaned = re.sub(pattern, " ", cleaned, flags=re.IGNORECASE)
+    return re.sub(r"[ \\t]{2,}", " ", cleaned)
+
+
 def guard_preopen_report(text: str) -> str:
+    text = strip_article_boilerplate_from_report(text)
     text, compacted_fields = compact_gamejoa_prose_lines(text)
     errors: list[str] = []
     valid_title = (
