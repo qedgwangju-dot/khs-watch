@@ -317,18 +317,18 @@ def main() -> int:
     runtime_delivery = importlib.import_module("verify_gamejoa_delivery_result")
     raw_html_regression = (
         '1) 기사 제목\n- 핵심: <질문 1> & 원문 표기\n'
-        '- 출처: 원문 뉴스보기: https://example.com/article'
+        '- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'
     )
     escaped_html_regression = production.runner.sanitize_telegram_html(raw_html_regression)
     if "&lt;질문 1&gt;" not in escaped_html_regression or "&amp; 원문" not in escaped_html_regression:
         errors.append(f"telegram_html_escape_regression={escaped_html_regression}")
-    if "원문 뉴스보기: https://example.com/article" not in escaped_html_regression:
+    if "<a href="https://example.com/article">원문 뉴스보기</a>" not in escaped_html_regression:
         errors.append("telegram_html_escape_regression=direct_source_url_not_preserved")
     direct_source = compact.html_link("원문 뉴스보기", "https://example.com/article")
-    if direct_source != "원문 뉴스보기: https://example.com/article":
-        errors.append(f"telegram_direct_source_url_regression={direct_source}")
+    if direct_source != "<a href="https://example.com/article">원문 뉴스보기</a>":
+        errors.append(f"telegram_labeled_source_link_regression={direct_source}")
     fragment_errors = compact.compact_alert_block_errors(
-        "1) SK하이닉스 인디애나 공장 착공식\n- 핵심: SK하이닉스의 미국.\n- 출처: 원문 뉴스보기: https://example.com/article"
+        "1) SK하이닉스 인디애나 공장 착공식\n- 핵심: SK하이닉스의 미국.\n- 출처: <a href="https://example.com/article">원문 뉴스보기</a>"
     )
     if "incomplete_core" not in fragment_errors:
         errors.append("incomplete Korea-location fragment passed Telegram quality guard")
