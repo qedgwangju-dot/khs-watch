@@ -4466,10 +4466,12 @@ def safe(value: object) -> str:
 
 
 def html_link(label: str, url: str) -> str:
+    """Render a directly clickable URL without relying on Telegram HTML anchors."""
     text = html.escape(label or "출처", quote=False)
-    if not url:
+    normalized = str(url or "").strip()
+    if not normalized:
         return text
-    return f'<a href="{html.escape(url, quote=True)}">{text}</a>'
+    return f"{text}: {html.escape(normalized, quote=False)}"
 
 
 def source_summary(items: list[dict]) -> str:
