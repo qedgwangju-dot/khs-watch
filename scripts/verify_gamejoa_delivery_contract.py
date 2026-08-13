@@ -815,6 +815,8 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
         "연합뉴스TV": "yonhapnewstv.co.kr",
         "뉴스1": "news1.kr",
         "이데일리": "edaily.co.kr",
+        "디지털투데이": "digitaltoday.co.kr",
+        "이코노미스트": "economist.co.kr",
     }
     cases = [
         (
@@ -1033,6 +1035,41 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
             "TSMC는 2나노와 CoWoS 첨단패키징 증설을 위해 42조원 규모의 자본지출을 승인했다.",
             "tsmc_advanced_packaging_capex",
             ("TSMC", "CoWoS", "42조원"),
+        ),
+        (
+            "디지털투데이",
+            "테슬라, 미국에 101억달러 태양광 공장 건설·9712명 고용",
+            "테슬라는 미국에 101억달러를 투자해 태양광 공장을 짓고 9712명을 고용할 계획이다.",
+            "tesla_us_solar_factory_capex",
+            ("테슬라", "101억달러", "태양광"),
+        ),
+        (
+            "매일경제",
+            "엔비디아, 루빈 울트라 HBM4E 사양 하향 검토",
+            "엔비디아는 루빈 울트라 AI 가속기에 적용할 HBM4E 12단 사양을 낮추는 방안을 검토하고 있다.",
+            "nvidia_rubin_hbm_spec_change",
+            ("엔비디아", "루빈", "HBM4E"),
+        ),
+        (
+            "디지털타임스",
+            "SK하이닉스, 미국 인디애나 첨단패키징 팹 27일 착공",
+            "SK하이닉스는 인디애나에서 HBM 후공정 경쟁력 강화를 위한 첨단패키징 팹을 27일 착공하고 2028년 하반기 양산을 목표로 한다.",
+            "skhynix_indiana_advanced_packaging_timeline",
+            ("SK하이닉스", "인디애나", "2028년"),
+        ),
+        (
+            "이투데이",
+            "AI 데이터센터 병목은 광통신…GPU·HBM 연결 수요 확대",
+            "AI 클러스터에서 GPU와 HBM을 연결하는 광통신이 병목으로 부상해 광인터커넥트 수요와 네트워크 투자가 늘고 있다.",
+            "ai_datacenter_optical_interconnect",
+            ("광통신", "GPU", "HBM"),
+        ),
+        (
+            "이코노미스트",
+            "삼성, 데이터센터 공조 시장 공략…인도 냉각 생산라인 구축",
+            "삼성전자는 AI 데이터센터 공조 수요에 대응해 인도에 연 6500대 규모 냉각 생산라인을 구축한다.",
+            "samsung_datacenter_cooling_capacity",
+            ("삼성", "데이터센터", "냉각"),
         ),
         (
             "이데일리",
