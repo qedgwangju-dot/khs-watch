@@ -325,7 +325,7 @@ def main() -> int:
     if '<a href="https://example.com/article">원문 뉴스보기</a>' not in escaped_html_regression:
         errors.append("telegram_html_escape_regression=direct_source_url_not_preserved")
     direct_source = compact.html_link("원문 뉴스보기", "https://example.com/article")
-    if direct_source != "<a href="https://example.com/article">원문 뉴스보기</a>":
+    if direct_source != '<a href="https://example.com/article">원문 뉴스보기</a>':
         errors.append(f"telegram_labeled_source_link_regression={direct_source}")
     fragment_errors = compact.compact_alert_block_errors(
         "1) SK하이닉스 인디애나 공장 착공식\n- 핵심: SK하이닉스의 미국.\n- 출처: <a href="https://example.com/article">원문 뉴스보기</a>"
