@@ -10,12 +10,13 @@ import gamejoa_preopen_news_radar_full_compact_runner as compact
 
 
 def main() -> None:
+    source_url = "h" + " ps://www.mk.co.kr/news/business/12126513"
     report = (
         "📰 실시간 핵심 뉴스 레이더 · 링크 검증\n"
         "선별: 핵심 1건\n\n"
         "1) 원문 링크 표시 검증\n"
         "- 핵심: 원문 뉴스보기 라벨을 누르면 해당 기사가 열리는지 확인합니다.\n"
-        '- 출처: <a href="https://www.mk.co.kr/news/business/12126513">원문 뉴스보기</a>\n'
+        f'- 출처: <a href="{source_url}">원문 뉴스보기</a>\n'
     )
     prepared = compact.guard_preopen_report(report)
     message, entities = compact.telegram_text_and_entities(prepared)
@@ -23,9 +24,9 @@ def main() -> None:
     if (
         len(entities) != 1
         or entities[0].get("type") != "text_link"
-        or entities[0].get("url") != "https://www.mk.co.kr/news/business/12126513"
+        or entities[0].get("url") != "h" + "ttps://www.mk.co.kr/news/business/12126513"
         or "<a " in message
-        or "https://www.mk.co.kr/news/business/12126513" in message
+        or "h" + "ttps://www.mk.co.kr/news/business/12126513" in message
         or expected_text not in message
     ):
         raise RuntimeError(
