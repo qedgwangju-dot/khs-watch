@@ -53,9 +53,10 @@ class YenPolicyNewsLinkifyTests(unittest.TestCase):
                 )
             rendered = body.read_text(encoding="utf-8")
             self.assertIn(
-                '교차확인: Bloomberg · <a href="https://news.google.com/rss/articles/bloomberg-test">원문</a>',
+                '확인 출처: Bloomberg · <a href="https://news.google.com/rss/articles/bloomberg-test">원문</a>',
                 rendered,
             )
+            self.assertNotIn("교차확인: Bloomberg", rendered)
             payload = json.loads(alert_json.read_text(encoding="utf-8"))
             self.assertEqual(payload["telegram_parse_mode"], "HTML")
             self.assertEqual(
@@ -112,6 +113,7 @@ class YenPolicyNewsLinkifyTests(unittest.TestCase):
                 )
 
             rendered = body.read_text(encoding="utf-8")
+            self.assertIn("교차확인: ", rendered)
             self.assertIn(
                 'Bloomberg · <a href="https://example.com/bloomberg">원문</a>',
                 rendered,

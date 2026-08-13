@@ -71,7 +71,8 @@ def format_crosscheck_html(sources: list[dict]) -> str:
             parts.append(f'{group} · <a href="{safe_link}">원문</a>')
         else:
             parts.append(group)
-    return "교차확인: " + " | ".join(parts)
+    label = "확인 출처" if len(sources) <= 1 else "교차확인"
+    return f"{label}: " + " | ".join(parts)
 
 
 def linkify(
