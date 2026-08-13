@@ -9,8 +9,10 @@ on:
     paths:
       - ".github/workflows/yen-policy-news-alert.yml"
       - "scripts/yen_policy_news_alert.py"
+      - "scripts/yen_policy_news_linkify.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_policy_news_alert.py"
+      - "tests/test_yen_policy_news_linkify.py"
       - "data/yen_policy_news_state.json"
       - "data/yen_policy_news_alert_config.json"
 
@@ -45,11 +47,16 @@ jobs:
       - name: Validate policy-news monitor
         run: |
           python -m py_compile scripts/yen_policy_news_alert.py
+          python -m py_compile scripts/yen_policy_news_linkify.py
           python -m py_compile scripts/khs_source_fetch.py
-          python -m unittest tests/test_yen_policy_news_alert.py -v
+          python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_linkify.py -v
 
       - name: Check BOJ and yen policy catalysts
         run: python scripts/yen_policy_news_alert.py
+
+      - name: Add clickable source links
+        if: hashFiles('out/yen_policy_news_alert.md') != ''
+        run: python scripts/yen_policy_news_linkify.py
 
       - name: Publish status summary
         if: always()
@@ -116,7 +123,12 @@ jobs:
           body = pathlib.Path("out/yen_policy_news_alert.md").read_text(encoding="utf-8").strip()
           text = f"{title}\n\n{body}"[:4096]
           payload = urllib.parse.urlencode(
-              {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"}
+              {
+                  "chat_id": chat_id,
+                  "text": text,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }
           ).encode("utf-8")
           request = urllib.request.Request(
               f"https://api.telegram.org/bot{token}/sendMessage",
