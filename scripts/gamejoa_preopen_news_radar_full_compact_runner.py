@@ -5982,7 +5982,7 @@ def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
         for prefix, limit in limits.items():
             if not stripped.startswith(prefix):
                 continue
-            value = stripped.removeprefix(prefix).strip()
+            value = clean_article_summary_text(stripped.removeprefix(prefix).strip())
             compacted = complete_prose_text(value, limit=limit)
             compacted_line = f"{indent}{prefix} {compacted}"
             changed += compacted != value
