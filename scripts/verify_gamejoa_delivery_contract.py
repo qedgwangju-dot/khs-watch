@@ -1217,7 +1217,7 @@ def assert_detailed_summary_is_preserved_before_send(compact, now, errors: list[
         1,
     ).replace(
         "- 핵심:",
-        "- 핵심: 무단 전재 및 재배포 금지. ",
+        "- 핵심: josh@yna.co.kr 제보는 카카오톡 okjebo <저작권자(c) 연합뉴스, 무단 전재-재배포. ",
         1,
     )
     try:
