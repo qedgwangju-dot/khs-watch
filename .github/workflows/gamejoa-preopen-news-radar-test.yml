@@ -95,21 +95,7 @@ jobs:
           TELEGRAM_DRY_RUN: "false"
         run: |
           if [ "${{ github.event.inputs.link_entity_probe || 'false' }}" = "true" ]; then
-            python - <<'PY'
-            import sys
-            from pathlib import Path
-
-            sys.path.insert(0, str(Path.cwd() / "scripts"))
-            import gamejoa_preopen_news_radar_full_compact_runner as compact
-
-            compact.send_telegram(
-                "📰 실시간 핵심 뉴스 레이더 · 링크 검증\n"
-                "선별: 핵심 1건\n\n"
-                "1) 원문 링크 표시 검증\n"
-                "- 핵심: 원문 뉴스보기 라벨을 누르면 해당 기사가 열리는지 확인합니다.\n"
-                '- 출처: <a href="https://www.mk.co.kr/news/business/12126513">원문 뉴스보기</a>\n'
-            )
-          PY
+            python scripts/gamejoa_telegram_link_entity_probe.py
           else
             python scripts/gamejoa_preopen_news_radar_fda_quality_runner.py
           fi
@@ -117,15 +103,9 @@ jobs:
       - name: Verify GAMEJOA runtime delivery result
         run: |
           if [ "${{ github.event.inputs.link_entity_probe || 'false' }}" = "true" ]; then
-            python - <<'PY'
-            import json
-            from pathlib import Path
-
-            payload = json.loads(Path("out/gamejoa_preopen_news_radar_delivery.json").read_text(encoding="utf-8"))
-            if payload.get("status") != "sent":
-                raise SystemExit(f"Telegram link-entity probe was not sent: {payload}")
-            print(f"GAMEJOA link-entity probe verified: status={payload['status']}")
-            PY
+            test -f out/gamejoa_preopen_news_radar_delivery.json
+            grep -q '"status": "sent"' out/gamejoa_preopen_news_radar_delivery.json
+            echo "GAMEJOA link-entity delivery artifact verified: status=sent"
           else
             python scripts/verify_gamejoa_delivery_result.py
           fi
