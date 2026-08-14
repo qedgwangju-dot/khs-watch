@@ -32,6 +32,19 @@ def prepare_state() -> None:
         shutil.copyfile(OLD_STATE, v3.STATE)
 
 
+def install_parsons_guard() -> None:
+    """Prevent a full non-nuclear demo from being marked complete before deployment prerequisites."""
+    original = v3.extract_parsons_state
+
+    def guarded(text: str) -> dict[str, bool]:
+        state = original(text)
+        if not state.get("poc_depth_reached") or not state.get("prototype_underground_deployed"):
+            state["non_nuclear_demo_complete"] = False
+        return state
+
+    v3.extract_parsons_state = guarded
+
+
 def publish_compat_artifacts() -> None:
     if v3.PENDING.exists():
         shutil.copyfile(v3.PENDING, OLD_PENDING)
@@ -53,6 +66,7 @@ def publish_compat_artifacts() -> None:
 
 def main() -> int:
     prepare_state()
+    install_parsons_guard()
     rc = v3.main()
     publish_compat_artifacts()
     return rc
