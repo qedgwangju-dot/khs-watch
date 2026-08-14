@@ -1,4 +1,31 @@
 {
+  "doe": {
+    "criticality": false,
+    "fuel_loading": false,
+    "full_power": false,
+    "selected": true
+  },
+  "nrc": {
+    "docket": "99902126",
+    "phase": "pre-application",
+    "statuses": {
+      "conceptual_design_description": "Review in Progress",
+      "conceptual_design_review": "Review Complete",
+      "regulatory_engagement_plan": "No Review Requested"
+    }
+  },
+  "parsons": {
+    "data_well_6000_complete": true,
+    "deep_fission_criticality": false,
+    "doe_construct_operate_authorized": false,
+    "non_nuclear_demo_complete": true,
+    "nrc_col_submitted": false,
+    "poc_depth_reached": false,
+    "poc_drilling_started": false,
+    "prototype_canister_on_site": true,
+    "prototype_underground_deployed": false,
+    "second_well_ground_prep_complete": true
+  },
   "press_urls": {
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/105/deep-fission-kicks-off-historic-borehole-drilling-for-first-of-a-kind-nuclear-project": "Deep Fission Kicks Off Historic Borehole Drilling for First-of-a-Kind Nuclear Project",
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/108/deep-fission-inc-confidentially-submits-draft-registration-statement-for-primary-offering": "Deep Fission, Inc. Confidentially Submits Draft Registration Statement for Primary Offering",
@@ -84,12 +111,6 @@
       "form": "8-K",
       "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926012343/tm265399d1_8k.htm"
     },
-    "0001104659-26-012346": {
-      "date": "2026-02-10",
-      "description": "424B3",
-      "form": "424B3",
-      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926012346/tm265399d2_424b3.htm"
-    },
     "0001104659-26-016226": {
       "date": "2026-02-17",
       "description": "S-1",
@@ -131,18 +152,6 @@
       "description": "FORM 8-K",
       "form": "8-K",
       "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926046488/tm2612289d1_8k.htm"
-    },
-    "0001104659-26-054157": {
-      "date": "2026-05-01",
-      "description": "424B3",
-      "form": "424B3",
-      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926054157/tmb-20251231x424b3.htm"
-    },
-    "0001104659-26-054168": {
-      "date": "2026-05-01",
-      "description": "424B3",
-      "form": "424B3",
-      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926054168/tmb-20251231x424b3.htm"
     },
     "0001104659-26-057835": {
       "date": "2026-05-08",
@@ -299,54 +308,9 @@
       "description": "AMENDMENT NO 1. TO FORM S-1",
       "form": "S-1/A",
       "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390025091209/ea0258315-s1a1_deep.htm"
-    },
-    "9999999995-26-000450": {
-      "date": "2026-02-05",
-      "description": "",
-      "form": "EFFECT",
-      "url": "https://www.sec.gov/Archives/edgar/data/1918102/999999999526000450/xslEFFECTX01/primary_doc.xml"
-    },
-    "9999999995-26-001430": {
-      "date": "2026-05-01",
-      "description": "",
-      "form": "EFFECT",
-      "url": "https://www.sec.gov/Archives/edgar/data/1918102/999999999526001430/xslEFFECTX01/primary_doc.xml"
-    },
-    "9999999995-26-001434": {
-      "date": "2026-05-01",
-      "description": "",
-      "form": "EFFECT",
-      "url": "https://www.sec.gov/Archives/edgar/data/1918102/999999999526001434/xslEFFECTX01/primary_doc.xml"
-    },
-    "9999999995-26-002042": {
-      "date": "2026-06-17",
-      "description": "",
-      "form": "EFFECT",
-      "url": "https://www.sec.gov/Archives/edgar/data/1918102/999999999526002042/xslEFFECTX01/primary_doc.xml"
     }
   },
-  "source_hashes": {
-    "Deep Fission 규제": {
-      "checked_at": "2026-08-14T04:58:05+00:00",
-      "hash": "c2bb515e86035afcbfd8ffc954a5bfa8de709eefa0409bc9a3981e6e52761a0b",
-      "url": "https://www.deepfission.com/regulatory"
-    },
-    "미국 에너지부": {
-      "checked_at": "2026-08-14T04:58:05+00:00",
-      "hash": "f42819d87e06e0f16ef3373ea12fea97b213faa197fbd466e2889256fdaec168",
-      "url": "https://www.energy.gov/ne/us-department-energy-reactor-pilot-program"
-    },
-    "미국 원자력규제위원회": {
-      "checked_at": "2026-08-14T04:58:05+00:00",
-      "hash": "2170a0b0fe1426bca608343fac5331dd9f383f0a824925ee59ec39f21b0b662e",
-      "url": "https://www.nrc.gov/reactors/new-reactors/advanced/who-were-working-with/pre-application-activities/deep-fission"
-    },
-    "캔자스주 파슨스 실증": {
-      "checked_at": "2026-08-14T04:58:05+00:00",
-      "hash": "cd5e97acc6bb14fb9d2cbd616414a5f261db525f24932ca1967d9bf3c3b6ad03",
-      "url": "https://www.deepfission.com/sites/parsons"
-    }
-  },
-  "updated_at": "2026-08-14T04:58:05+00:00",
-  "version": 2
+  "sent_event_ids": [],
+  "updated_at": "2026-08-14T05:03:30+00:00",
+  "version": 3
 }
