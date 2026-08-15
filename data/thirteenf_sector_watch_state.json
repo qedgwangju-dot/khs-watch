@@ -1,5 +1,48 @@
 {
   "version": 1,
-  "managers": {},
-  "updated_at": null
+  "managers": {
+    "Situational Awareness": {
+      "accession": "0000935836-26-000418",
+      "report_date": "2026-06-30",
+      "filing_date": "2026-08-14",
+      "cik": "0002045724"
+    },
+    "Duquesne Family Office": {
+      "accession": "0001536411-26-000006",
+      "report_date": "2026-06-30",
+      "filing_date": "2026-08-14",
+      "cik": "0001536411"
+    },
+    "Pershing Square": {
+      "accession": "0001172661-26-003790",
+      "report_date": "2026-06-30",
+      "filing_date": "2026-08-14",
+      "cik": "0002026053"
+    },
+    "Third Point": {
+      "accession": "0001040273-26-000003",
+      "report_date": "2026-06-30",
+      "filing_date": "2026-08-14",
+      "cik": "0001040273"
+    },
+    "NVIDIA": {
+      "accession": "0001045810-26-000065",
+      "report_date": "2026-06-30",
+      "filing_date": "2026-08-14",
+      "cik": "0001045810"
+    },
+    "Appaloosa": {
+      "accession": "0001656456-26-000003",
+      "report_date": "2026-06-30",
+      "filing_date": "2026-08-14",
+      "cik": "0001656456"
+    },
+    "Berkshire Hathaway": {
+      "accession": "0001193125-26-352200",
+      "report_date": "2026-06-30",
+      "filing_date": "2026-08-14",
+      "cik": "0001067983"
+    }
+  },
+  "updated_at": "2026-08-15T10:53:51.447592+00:00"
 }
