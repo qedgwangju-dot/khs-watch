@@ -42,12 +42,12 @@ jobs:
           cache: pip
 
       - name: 의존성 설치
-        run: pip install requests pytest
+        run: pip install requests pytest trafilatura googlenewsdecoder
 
       - name: 문법 확인
         run: python -m compileall -q scripts/us_datacenter_execution_bottleneck_watch.py
 
-      - name: 알림 판정·한국어·링크 표시 시험
+      - name: 알림 판정·원문요약·한국어·링크 표시 시험
         run: pytest -q tests/test_us_datacenter_execution_bottleneck_watch.py
 
       - name: 미국 데이터센터 실행 병목 감시
@@ -97,7 +97,6 @@ jobs:
           if not text:
               raise RuntimeError("Telegram으로 보낼 보고서가 비어 있습니다.")
 
-          # HTML 링크 태그가 중간에서 잘리지 않도록 줄 단위로 분할한다.
           chunks = []
           current = []
           current_len = 0
@@ -142,6 +141,7 @@ jobs:
                       "message_ids": ids,
                       "parse_mode": "HTML",
                       "clickable_source_label": "원문",
+                      "summary_mode": "원문 본문 직접 추출 후 한국어 사실요약",
                   },
                   ensure_ascii=False,
                   indent=2,
