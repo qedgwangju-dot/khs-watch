@@ -3,6 +3,9 @@ name: 13F sector rotation Telegram watch
 on:
   schedule:
     - cron: "11,41 * * * *"
+  push:
+    paths:
+      - "data/thirteenf_korean_test_trigger.txt"
   workflow_dispatch:
     inputs:
       force_test:
@@ -26,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS 13F watch contact=github-actions' }}
-      THIRTEENF_FORCE_TEST: ${{ github.event.inputs.force_test || 'false' }}
+      THIRTEENF_FORCE_TEST: ${{ github.event_name == 'push' && 'true' || github.event.inputs.force_test || 'false' }}
       THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
       THIRTEENF_TELEGRAM_CHAT_ID: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
       KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
