@@ -1,0 +1,61 @@
+name: 13F sector rotation Telegram watch
+
+on:
+  schedule:
+    - cron: "11,41 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_test:
+        description: "Send a Telegram test message"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: thirteenf-sector-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    env:
+      SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS 13F watch contact=github-actions' }}
+      THIRTEENF_FORCE_TEST: ${{ github.event.inputs.force_test || 'false' }}
+      THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
+      THIRTEENF_TELEGRAM_CHAT_ID: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
+      KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+      KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate script
+        run: python -m py_compile scripts/thirteenf_sector_watch.py
+
+      - name: Check SEC 13F filings and send Telegram alert
+        run: python scripts/thirteenf_sector_watch.py
+
+      - name: Persist 13F seen state
+        if: success()
+        run: |
+          if git diff --quiet -- data/thirteenf_sector_watch_state.json; then
+            echo "13F state unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/thirteenf_sector_watch_state.json
+          git commit -m "Update 13F sector watch state"
+          git push
