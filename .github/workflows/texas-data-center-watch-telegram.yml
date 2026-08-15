@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/texas-data-center-watch-telegram.yml"
       - "scripts/texas_data_center_watch.py"
+      - "scripts/texas_data_center_alert_formatter.py"
       - "data/texas_data_center_watch_state.json"
   schedule:
     # GitHub cron is UTC. Hourly at :07 to avoid top-of-hour congestion.
@@ -66,8 +67,12 @@ jobs:
 
       - name: Check Texas Governor, ERCOT and PUCT official sources
         run: |
-          python -m py_compile scripts/texas_data_center_watch.py
+          python -m py_compile scripts/texas_data_center_watch.py scripts/texas_data_center_alert_formatter.py
           python scripts/texas_data_center_watch.py
+
+      - name: Build concise exact Korean alert
+        if: hashFiles('out/texas_data_center_watch_alert.json') != ''
+        run: python scripts/texas_data_center_alert_formatter.py
 
       - name: Publish watcher summary
         if: always()
@@ -77,9 +82,14 @@ jobs:
           else
             echo "텍사스 데이터센터 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f out/texas_data_center_watch_telegram.md ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "### Telegram 요약" >> "$GITHUB_STEP_SUMMARY"
+            cat out/texas_data_center_watch_telegram.md >> "$GITHUB_STEP_SUMMARY"
+          fi
 
-      - name: Send new official Texas data-center change to Telegram
-        if: hashFiles('out/texas_data_center_watch_alert.md') != ''
+      - name: Send concise Texas data-center change to Telegram
+        if: hashFiles('out/texas_data_center_watch_telegram.md') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
@@ -105,7 +115,7 @@ jobs:
           if not identity.get("ok") or username.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
 
-          text = pathlib.Path("out/texas_data_center_watch_alert.md").read_text(encoding="utf-8").strip()
+          text = pathlib.Path("out/texas_data_center_watch_telegram.md").read_text(encoding="utf-8").strip()
 
           def split_message(value, limit=3900):
               chunks, current = [], ""
@@ -209,6 +219,7 @@ jobs:
             out/texas_data_center_watch_status.md
             out/texas_data_center_watch_alert.md
             out/texas_data_center_watch_alert.json
+            out/texas_data_center_watch_telegram.md
             out/texas_data_center_watch_pending_state.json
             out/texas_data_center_watch_rebaseline.txt
             out/texas_data_center_watch_telegram_confirmed.json
