@@ -7,7 +7,7 @@ import json
 import os
 import re
 import xml.etree.ElementTree as ET
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
@@ -18,7 +18,8 @@ import requests
 STATE_PATH = Path("data/us_datacenter_execution_bottleneck_state.json")
 OUT_DIR = Path("out")
 LOOKBACK_DAYS = 45
-STATE_VERSION = 2
+MAX_ALERT_AGE_HOURS = 72
+STATE_VERSION = 3
 MIN_INDEPENDENT_SOURCES = 2
 TRANSLATE_BASE_URL = "https://translate.googleapis.com/translate_a/single"
 KOREAN_RE = re.compile(r"[가-힣]")
@@ -39,13 +40,14 @@ QUERIES = (
     'site:datacenterdynamics.com US data center permit construction financing power 2026',
 )
 
+# 실행 단계 기준. 모라토리엄은 주민 반대의 원인/배경이 아니라 실제로 인허가를 멈추는 규제 조치이므로 인허가 단계로 분류한다.
 STAGES = (
     (8, "전원 인가", ("energized", "energization", "power-on", "power on", "전원 인가")),
     (7, "착공", ("groundbreaking", "construction begins", "construction started", "breaks ground", "착공")),
     (6, "실제 자금 인출", ("drawdown", "draw down", "funds drawn", "funding draw", "자금 인출", "대출 실행")),
     (5, "금융 종결", ("financial close", "financing closed", "construction loan", "credit facility", "bond sale", "financing secured", "금융 종결", "대출 약정")),
-    (4, "주민 반대", ("community opposition", "resident opposition", "local opposition", "moratorium", "blocked", "lawsuit", "referendum", "주민 반대")),
-    (3, "인허가", ("zoning approved", "permit approved", "planning approval", "special use permit", "rezoning", "permit denied", "zoning denied", "인허가", "허가 승인", "허가 거부")),
+    (4, "주민 반대", ("community opposition", "resident opposition", "local opposition", "lawsuit", "referendum", "주민 반대", "소송", "주민투표")),
+    (3, "인허가", ("moratorium", "pause approvals", "halt approvals", "zoning approved", "permit approved", "planning approval", "special use permit", "rezoning", "permit denied", "zoning denied", "인허가", "허가 승인", "허가 거부", "모라토리엄", "유예")),
     (2, "계통접속", ("interconnection", "grid connection", "utility agreement", "substation", "transmission", "power agreement", "계통접속", "변전소", "송전")),
     (1, "토지", ("land purchase", "site acquired", "site control", "land deal", "parcel", "토지 매입", "부지 확보")),
 )
@@ -60,7 +62,7 @@ FORWARD_TERMS = (
 BACKWARD_TERMS = (
     "denied", "rejected", "blocked", "delay", "delayed", "moratorium", "lawsuit", "opposition",
     "suspend", "suspended", "cancel", "cancelled", "canceled", "halt", "paused", "appeal",
-    "거부", "반대", "지연", "중단", "취소", "소송", "모라토리엄",
+    "거부", "반대", "지연", "중단", "취소", "소송", "모라토리엄", "유예",
 )
 
 COMPANY_TERMS = {
@@ -112,8 +114,8 @@ OFFICIAL_OR_PARTY_HINTS = (
 )
 REPUTABLE_HINTS = (
     "reuters", "associated press", "ap news", "bloomberg", "wall street journal", "financial times",
-    "utility dive", "data center dynamics", "datacenterdynamics", "s&p global", "moody", "fitch",
-    "the information", "bisnow", "commercial observer",
+    "washington post", "new york times", "utility dive", "data center dynamics", "datacenterdynamics",
+    "s&p global", "moody", "fitch", "the information", "bisnow", "commercial observer",
 )
 
 STOPWORDS = {
@@ -122,6 +124,12 @@ STOPWORDS = {
     "u", "s", "with", "2026", "project", "projects", "site", "plans", "plan", "says", "said",
 }
 
+SUMMARY_PRIORITY_TERMS = (
+    "megawatt", "gigawatt", "mw", "gw", "year", "month", "permit", "approval", "moratorium", "construction",
+    "interconnection", "transmission", "substation", "financing", "loan", "bond", "drawdown", "groundbreaking",
+    "energization", "electricity", "utility", "water", "environmental", "ratepayer", "cost", "billion", "million",
+)
+
 
 @dataclass
 class EventCluster:
@@ -129,6 +137,10 @@ class EventCluster:
     stage_name: str
     direction: str
     items: list[dict[str, str]]
+    summary_ko: str = ""
+    summary_source: str = ""
+    summary_source_url: str = ""
+    resolved_urls: dict[str, str] = field(default_factory=dict)
 
 
 def norm(v: str | None) -> str:
@@ -249,6 +261,20 @@ def verified(cluster: EventCluster) -> bool:
     return bool(classes & {"공식·당사자", "신뢰보도"})
 
 
+def newest_published(cluster: EventCluster) -> datetime | None:
+    values = [parse_date(item.get("published", "")) for item in cluster.items]
+    values = [value for value in values if value is not None]
+    return max(values) if values else None
+
+
+def fresh_for_alert(cluster: EventCluster, now: datetime | None = None) -> bool:
+    now = now or datetime.now(timezone.utc)
+    newest = newest_published(cluster)
+    if newest is None:
+        return False
+    return newest >= now - timedelta(hours=MAX_ALERT_AGE_HOURS)
+
+
 def event_fingerprint(cluster: EventCluster) -> str:
     all_companies = sorted({name for item in cluster.items for name in companies(item["title"])})
     token_counts: dict[str, int] = {}
@@ -341,8 +367,8 @@ def _translate_via_google(text: str) -> str:
     response = requests.get(
         TRANSLATE_BASE_URL,
         params={"client": "gtx", "sl": "auto", "tl": "ko", "dt": "t", "q": text},
-        headers={"User-Agent": "khs-watch/2.1 (+GitHub Actions)"},
-        timeout=8,
+        headers={"User-Agent": "khs-watch/3.0 (+GitHub Actions)"},
+        timeout=10,
     )
     response.raise_for_status()
     payload = response.json()
@@ -377,6 +403,107 @@ def translate_title_to_korean(
         return fallback_korean_title(stage_name, direction_label, names), "한국어 대체문구"
 
 
+def resolve_publisher_url(link: str) -> str:
+    if "news.google.com" not in link:
+        return link
+    try:
+        from googlenewsdecoder import gnewsdecoder
+
+        result = gnewsdecoder(link, interval=0.2)
+        if isinstance(result, dict) and result.get("status") and result.get("decoded_url"):
+            return str(result["decoded_url"])
+    except Exception:
+        pass
+    return link
+
+
+def extract_article_text(session: requests.Session, url: str) -> str:
+    try:
+        import trafilatura
+
+        response = session.get(
+            url,
+            headers={"User-Agent": "Mozilla/5.0 khs-watch/3.0"},
+            timeout=20,
+            allow_redirects=True,
+        )
+        response.raise_for_status()
+        text = trafilatura.extract(
+            response.text,
+            include_comments=False,
+            include_tables=False,
+            favor_precision=True,
+        ) or ""
+        return re.sub(r"\s+", " ", text).strip()
+    except Exception:
+        return ""
+
+
+def split_sentences(text: str) -> list[str]:
+    cleaned = re.sub(r"\s+", " ", text).strip()
+    if not cleaned:
+        return []
+    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9\"'])", cleaned)
+    return [part.strip() for part in parts if 35 <= len(part.strip()) <= 700]
+
+
+def select_factual_sentences(text: str, stage_name: str, max_sentences: int = 4) -> str:
+    sentences = split_sentences(text)
+    if not sentences:
+        return ""
+
+    selected: list[tuple[int, str]] = []
+    for idx, sentence in enumerate(sentences[:60]):
+        lower = sentence.lower()
+        score = max(0, 8 - idx)
+        score += 3 * sum(1 for term in SUMMARY_PRIORITY_TERMS if term in lower)
+        score += 2 if re.search(r"\b\d+(?:\.\d+)?\s*(?:mw|gw|megawatts?|gigawatts?|years?|months?|days?|%|billion|million)\b", lower) else 0
+        if stage_name == "인허가" and any(term in lower for term in ("permit", "approval", "moratorium", "regulation", "environmental")):
+            score += 5
+        if stage_name == "계통접속" and any(term in lower for term in ("interconnection", "transmission", "substation", "grid", "utility")):
+            score += 5
+        if stage_name == "금융 종결" and any(term in lower for term in ("loan", "financing", "bond", "credit facility")):
+            score += 5
+        if stage_name == "착공" and any(term in lower for term in ("groundbreaking", "construction", "build")):
+            score += 5
+        selected.append((score, sentence))
+
+    # 기사 선두 문장을 반드시 포함하고, 숫자·적용범위·실행단계가 담긴 문장을 우선한다.
+    result: list[str] = [sentences[0]]
+    for _score, sentence in sorted(selected, key=lambda x: x[0], reverse=True):
+        if sentence in result:
+            continue
+        result.append(sentence)
+        if len(result) >= max_sentences:
+            break
+
+    # 원문 문장을 지나치게 길게 보내지 않는다.
+    joined = " ".join(result)
+    return joined[:1800].rsplit(" ", 1)[0] if len(joined) > 1800 else joined
+
+
+def hydrate_cluster_summary(cluster: EventCluster, session: requests.Session) -> bool:
+    items = best_items(cluster)
+    for item in items[:3]:
+        direct_url = resolve_publisher_url(item["link"])
+        cluster.resolved_urls[item["id"]] = direct_url
+        article_text = extract_article_text(session, direct_url)
+        if len(article_text) < 250:
+            continue
+        factual = select_factual_sentences(article_text, cluster.stage_name)
+        if not factual:
+            continue
+        try:
+            summary_ko = _translate_via_google(factual)
+        except Exception:
+            continue
+        cluster.summary_ko = summary_ko
+        cluster.summary_source = item["source"]
+        cluster.summary_source_url = direct_url
+        return True
+    return False
+
+
 def axis(stage_name: str) -> str:
     if stage_name in {"토지", "계통접속", "인허가", "주민 반대"}:
         return "시간표·실행 가능성"
@@ -389,10 +516,10 @@ def meaning(stage_name: str) -> str:
     return {
         "토지": "발표 용량이 실제 부지 통제권으로 넘어갔는지 확인",
         "계통접속": "전력망·변전소 병목이 실제로 해소되는지 확인",
-        "인허가": "법적 착공 가능 상태가 전진·후퇴했는지 확인",
-        "주민 반대": "소송·모라토리엄·주민투표가 착공·금융을 막는지 확인",
+        "인허가": "정부·지방당국의 허가가 실제 착공을 가능하게 하는지, 또는 모라토리엄·거부로 멈추는지 확인",
+        "주민 반대": "소송·주민투표·지역 반대가 인허가·착공·금융을 막는지 확인",
         "금융 종결": "대주단이 인허가·전력·지역 리스크를 감수하고 자금을 확정했는지 확인",
-        "실제 자금 인출": "약정이 아니라 실제 건설비 집행가 시작됐는지 확인",
+        "실제 자금 인출": "약정이 아니라 실제 건설비 집행이 시작됐는지 확인",
         "착공": "계획이 기자재·설계·조달·시공 매출로 전환되는 첫 구간",
         "전원 인가": "실제 가동 가능한 상태에 도달하는 최종 병목",
     }.get(stage_name, "프로젝트 실행 가능성 변화 확인")
@@ -402,8 +529,8 @@ def next_indicator(stage_name: str) -> str:
     return {
         "토지": "계통접속 신청·전력회사 협약",
         "계통접속": "변전소·송전 증설 일정과 인허가",
-        "인허가": "금융 종결 또는 착공 허가",
-        "주민 반대": "소송·주민투표·모라토리엄의 법적 효력과 인허가 일정",
+        "인허가": "허가 효력·예외 범위·금융 종결 또는 착공 허가",
+        "주민 반대": "소송·주민투표의 법적 효력과 인허가 일정",
         "금융 종결": "실제 대출 인출·공사비 집행",
         "실제 자금 인출": "착공·주요 기자재 발주",
         "착공": "전력망 공정률·전원 인가 예정일",
@@ -434,9 +561,12 @@ def cluster_report_lines(index: int, cluster: EventCluster) -> list[str]:
         names,
     )
     display_names = ", ".join(display_company(name) for name in names) if names else "프로젝트·지역"
+    summary_source = html.escape(cluster.summary_source) if cluster.summary_source else "원문 본문"
     lines = [
         "",
         f"{index}. {html.escape(korean_title)}",
+        f"- 정확한 내용 요약: {html.escape(cluster.summary_ko)}",
+        f"- 요약 기준: {summary_source} 원문 본문",
         f"- 단계: {cluster.rank}/8 {cluster.stage_name} · {cluster.direction}",
         f"- 관련: {html.escape(display_names)}",
         f"- 투자축: {axis(cluster.stage_name)}",
@@ -446,7 +576,8 @@ def cluster_report_lines(index: int, cluster: EventCluster) -> list[str]:
     ]
     for idx, item in enumerate(items[:2], 1):
         source = html.escape(item["source"])
-        link = html.escape(item["link"], quote=True)
+        resolved = cluster.resolved_urls.get(item["id"]) or resolve_publisher_url(item["link"])
+        link = html.escape(resolved, quote=True)
         lines.append(f'- 근거{idx}: [{source_class(item["source"])}] {source} · <a href="{link}">원문</a>')
     return lines
 
@@ -455,10 +586,11 @@ def report(clusters: list[EventCluster], force: bool) -> str:
     now = datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d %H:%M KST")
     if force:
         lines = [
-            "✅ 미국 데이터센터 실행 병목 감시 한국어·링크 표시 검증",
+            "✅ 미국 데이터센터 실행 병목 감시 원문요약·한국어·링크 검증",
             "추적: ① 토지 ② 계통접속 ③ 인허가 ④ 주민 반대 ⑤ 금융 종결 ⑥ 실제 자금 인출 ⑦ 착공 ⑧ 전원 인가",
-            "알림 조건: 같은 단계 변화가 서로 다른 2개 이상 출처에서 확인되고, 그중 최소 1개가 공식·당사자 또는 신뢰 매체일 때만 전송",
-            "표시 규칙: 외국어 기사 제목은 한국어로 변환하고, 주소 대신 파란색 ‘원문’ 링크로 표시",
+            "알림 조건: 같은 단계 변화가 서로 다른 2개 이상 출처에서 확인되고, 원문 본문을 직접 추출해 정확한 내용 요약을 만들 수 있을 때만 전송",
+            f"오래된 이벤트 차단: 최신 근거가 {MAX_ALERT_AGE_HOURS}시간보다 오래되면 신규 알림 금지",
+            "표시 규칙: 외국어 제목·본문은 한국어로 변환하고, 주소 대신 파란색 ‘원문’ 링크로 표시",
             f"확인시각: {now}",
         ]
         if clusters:
@@ -469,7 +601,7 @@ def report(clusters: list[EventCluster], force: bool) -> str:
     lines = ["🚨 미국 데이터센터 실행 병목 변화", f"확인시각: {now}"]
     for i, cluster in enumerate(clusters[:5], 1):
         lines.extend(cluster_report_lines(i, cluster))
-    lines.append("\n※ 1개 출처뿐인 속보·루머·단순 재인용은 보류하고, 2개 출처가 맞을 때만 알립니다.")
+    lines.append("\n※ 1개 출처·오래된 재발견·본문 미확인 기사·단순 재인용은 보류합니다. 새 단계 변화가 원문으로 확인될 때만 알립니다.")
     return "\n".join(lines)
 
 
@@ -479,7 +611,7 @@ def main() -> int:
     args = ap.parse_args()
 
     session = requests.Session()
-    session.headers.update({"User-Agent": "khs-watch/2.1 (+GitHub Actions)"})
+    session.headers.update({"User-Agent": "khs-watch/3.0 (+GitHub Actions)"})
     state = load_state()
     all_items: dict[str, dict[str, str]] = {}
     errors: list[str] = []
@@ -495,30 +627,40 @@ def main() -> int:
         raise RuntimeError("모든 검색 실패: " + " | ".join(errors[:3]))
 
     candidates = [x for x in all_items.values() if significant(x)]
-    clusters = [c for c in cluster_items(candidates) if verified(c)]
-    clusters.sort(
+    verified_clusters = [c for c in cluster_items(candidates) if verified(c)]
+    fresh_clusters = [c for c in verified_clusters if fresh_for_alert(c)]
+    fresh_clusters.sort(
         key=lambda c: (
             c.rank,
-            max((parse_date(x.get("published", "")) or datetime(1970, 1, 1, tzinfo=timezone.utc)).timestamp() for x in c.items),
+            (newest_published(c) or datetime(1970, 1, 1, tzinfo=timezone.utc)).timestamp(),
         ),
         reverse=True,
     )
 
-    current_fps = [event_fingerprint(c) for c in clusters]
+    # 원문 본문을 직접 읽고 한국어 사실요약을 만들 수 없는 이벤트는 알리지 않는다.
+    summarizable_clusters: list[EventCluster] = []
+    for cluster in fresh_clusters:
+        if hydrate_cluster_summary(cluster, session):
+            summarizable_clusters.append(cluster)
+
+    current_fps = [event_fingerprint(c) for c in summarizable_clusters]
     migrating = int(state.get("version", 1)) < STATE_VERSION
     alerted = set(state.get("alerted_events", []))
 
+    # 버전 전환 시 현재 이벤트는 기준선으로만 저장해 재알림 폭탄을 막는다.
     if migrating:
         alerted.update(current_fps)
         new_clusters: list[EventCluster] = []
     else:
-        new_clusters = [c for c in clusters if event_fingerprint(c) not in alerted]
+        new_clusters = [c for c in summarizable_clusters if event_fingerprint(c) not in alerted]
         alerted.update(event_fingerprint(c) for c in new_clusters)
 
     state["alerted_events"] = list(alerted)
     state["last_scan_count"] = len(all_items)
     state["last_candidate_count"] = len(candidates)
-    state["last_verified_cluster_count"] = len(clusters)
+    state["last_verified_cluster_count"] = len(verified_clusters)
+    state["last_fresh_cluster_count"] = len(fresh_clusters)
+    state["last_summarizable_cluster_count"] = len(summarizable_clusters)
     state["last_errors"] = errors[:10]
     save_state(state)
 
@@ -526,10 +668,14 @@ def main() -> int:
     path = OUT_DIR / "us_datacenter_execution_bottleneck_alert.txt"
 
     if args.force_notify:
-        path.write_text(report(clusters[:1], True) + "\n", encoding="utf-8")
+        preview = summarizable_clusters[:1]
+        path.write_text(report(preview, True) + "\n", encoding="utf-8")
         output("changed", "true")
         output("report_path", str(path))
-        print(f"force_notify=true scanned={len(all_items)} verified_clusters={len(clusters)}")
+        print(
+            f"force_notify=true scanned={len(all_items)} verified={len(verified_clusters)} "
+            f"fresh={len(fresh_clusters)} summarizable={len(summarizable_clusters)}"
+        )
         return 0
 
     if not new_clusters:
@@ -537,7 +683,8 @@ def main() -> int:
         output("report_path", str(path))
         print(
             f"changed=false scanned={len(all_items)} candidates={len(candidates)} "
-            f"verified_clusters={len(clusters)} migrating={migrating} errors={len(errors)}"
+            f"verified={len(verified_clusters)} fresh={len(fresh_clusters)} "
+            f"summarizable={len(summarizable_clusters)} migrating={migrating} errors={len(errors)}"
         )
         return 0
 
@@ -546,7 +693,7 @@ def main() -> int:
     output("report_path", str(path))
     print(
         f"changed=true new_clusters={len(new_clusters)} scanned={len(all_items)} "
-        f"verified_clusters={len(clusters)} errors={len(errors)}"
+        f"verified={len(verified_clusters)} fresh={len(fresh_clusters)} summarizable={len(summarizable_clusters)} errors={len(errors)}"
     )
     return 0
 
