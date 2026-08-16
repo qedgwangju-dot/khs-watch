@@ -1712,16 +1712,6 @@
       "source": "헤럴드경제",
       "title": "고용 악재가 증시 호재로…美증시, S&P500 사상 최고치 경신"
     },
-    "event:f5fb96337ee96bdc690357a0": {
-      "first_seen_kst": "2026-08-02T09:27:42+09:00",
-      "lanes": {
-        "live": "2026-08-02T09:27:42+09:00"
-      },
-      "last_seen_kst": "2026-08-02T09:27:42+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12114343",
-      "source": "매일경제",
-      "title": "“폭등했는데도 아직 멀었다”…삼전닉스 목표가, ‘주가의 두 배’"
-    },
     "event:f9cab98d5fac6f439bec7436": {
       "first_seen_kst": "2026-08-10T21:55:35+09:00",
       "lanes": {
@@ -3329,6 +3319,16 @@
       "link": "https://www.newsis.com/view/NISX20260806_0003738645",
       "source": "뉴시스",
       "title": "온코닉테라퓨틱스 '자큐보', 인도서 품목허가 획득"
+    },
+    "link:4463ed20f646f044066de9ef": {
+      "first_seen_kst": "2026-08-16T09:48:12+09:00",
+      "lanes": {
+        "live": "2026-08-16T09:48:12+09:00"
+      },
+      "last_seen_kst": "2026-08-16T09:48:12+09:00",
+      "link": "https://www.hankyung.com/article/202608139328P",
+      "source": "한국경제",
+      "title": "HD현대 ‘사장단 회의’ 개최"
     },
     "link:4482d0bfdbc39daca7193458": {
       "first_seen_kst": "2026-08-03T07:49:51+09:00",
@@ -5383,16 +5383,6 @@
       "link": "https://www.news1.kr/finance/market-exr/6253815",
       "source": "뉴스1",
       "title": "美 고용 쇼크에 약달러…달러·원 환율 1410원선 거래"
-    },
-    "link:9cbd29b08b351788921e1b51": {
-      "first_seen_kst": "2026-08-02T09:27:42+09:00",
-      "lanes": {
-        "live": "2026-08-02T09:27:42+09:00"
-      },
-      "last_seen_kst": "2026-08-02T09:27:42+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12114343",
-      "source": "매일경제",
-      "title": "“폭등했는데도 아직 멀었다”…삼전닉스 목표가, ‘주가의 두 배’"
     },
     "link:9cc27c5be67028e4dcbee44d": {
       "first_seen_kst": "2026-08-06T15:34:59+09:00",
@@ -12229,6 +12219,16 @@
       "source": "연합뉴스",
       "title": "[특징주] SK하이닉스, 장 초반 1%대 하락 중…삼전도 0.65%↓ | 연합뉴스"
     },
+    "original:b6782bd6dbaa62eef33bc3c7": {
+      "first_seen_kst": "2026-08-16T09:48:12+09:00",
+      "lanes": {
+        "live": "2026-08-16T09:48:12+09:00"
+      },
+      "last_seen_kst": "2026-08-16T09:48:12+09:00",
+      "link": "https://www.hankyung.com/article/202608139328P",
+      "source": "한국경제",
+      "title": "HD현대 ‘사장단 회의’ 개최"
+    },
     "original:b67907a32eae3d0f889dede6": {
       "first_seen_kst": "2026-08-15T20:55:42+09:00",
       "lanes": {
@@ -13334,16 +13334,6 @@
       "link": "https://www.newsis.com/view/NISX20260806_0003738551",
       "source": "뉴시스",
       "title": "ADT캡스, 매장 보안·매출·근태 통합 관리 솔루션 출시"
-    },
-    "original:de6b2b3481fe58c16abe1439": {
-      "first_seen_kst": "2026-08-02T09:27:42+09:00",
-      "lanes": {
-        "live": "2026-08-02T09:27:42+09:00"
-      },
-      "last_seen_kst": "2026-08-02T09:27:42+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12114343",
-      "source": "매일경제",
-      "title": "“폭등했는데도 아직 멀었다”…삼전닉스 목표가, ‘주가의 두 배’"
     },
     "original:de89159e0ef237c6ac6bd569": {
       "first_seen_kst": "2026-08-02T17:34:52+09:00",
@@ -18492,6 +18482,16 @@
       "source": "연합뉴스",
       "title": "[특징주] SK하이닉스, 장 초반 1%대 하락 중…삼전도 0.65%↓ | 연합뉴스"
     },
+    "title:b6782bd6dbaa62eef33bc3c7": {
+      "first_seen_kst": "2026-08-16T09:48:12+09:00",
+      "lanes": {
+        "live": "2026-08-16T09:48:12+09:00"
+      },
+      "last_seen_kst": "2026-08-16T09:48:12+09:00",
+      "link": "https://www.hankyung.com/article/202608139328P",
+      "source": "한국경제",
+      "title": "HD현대 ‘사장단 회의’ 개최"
+    },
     "title:b67907a32eae3d0f889dede6": {
       "first_seen_kst": "2026-08-15T20:55:42+09:00",
       "lanes": {
@@ -19588,16 +19588,6 @@
       "source": "뉴시스",
       "title": "ADT캡스, 매장 보안·매출·근태 통합 관리 솔루션 출시"
     },
-    "title:de6b2b3481fe58c16abe1439": {
-      "first_seen_kst": "2026-08-02T09:27:42+09:00",
-      "lanes": {
-        "live": "2026-08-02T09:27:42+09:00"
-      },
-      "last_seen_kst": "2026-08-02T09:27:42+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12114343",
-      "source": "매일경제",
-      "title": "“폭등했는데도 아직 멀었다”…삼전닉스 목표가, ‘주가의 두 배’"
-    },
     "title:de89159e0ef237c6ac6bd569": {
       "first_seen_kst": "2026-08-02T17:34:52+09:00",
       "lanes": {
@@ -20540,5 +20530,5 @@
       "title": "[속보]호르무즈 훈풍 꺼졌다…나스닥 0.6%↓"
     }
   },
-  "updated_at_kst": "2026-08-16T08:58:23+09:00"
+  "updated_at_kst": "2026-08-16T09:48:12+09:00"
 }
