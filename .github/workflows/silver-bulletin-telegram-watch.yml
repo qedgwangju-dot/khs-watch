@@ -9,8 +9,7 @@ on:
       - "scripts/silver_bulletin_issue_watch.py"
       - "data/silver_bulletin_issue_state.json"
   schedule:
-    # GitHub cron is UTC. Silver Bulletin changes far less often than this;
-    # hourly checks minimize delay while avoiding unnecessary traffic.
+    # GitHub cron is UTC. Check hourly; send only when the issue averages change.
     - cron: "23 * * * *"
   workflow_dispatch:
 
@@ -29,8 +28,10 @@ jobs:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879_bot"
       SILVER_BULLETIN_USER_AGENT: "KHS-Silver-Bulletin-Watch/1.0 contact=github-actions"
 
-      # Reuse already-configured repository Telegram routes. The resolver below
-      # selects a token only when Telegram getMe confirms the requested bot handle.
+      # Dedicated route for the requested bot. Existing known routes are also
+      # checked so the workflow starts automatically if the token was already saved.
+      TOKEN_SILVER: ${{ secrets.SILVER_BULLETIN_TELEGRAM_BOT_TOKEN }}
+      CHAT_SILVER: ${{ secrets.SILVER_BULLETIN_TELEGRAM_CHAT_ID }}
       TOKEN_KHS_POLICY: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
       CHAT_KHS_POLICY: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       TOKEN_DEEP_FISSION: ${{ secrets.DEEP_FISSION_TELEGRAM_BOT_TOKEN }}
@@ -52,6 +53,7 @@ jobs:
           python-version: "3.12"
 
       - name: Resolve requested Telegram bot and chat
+        id: telegram
         shell: bash
         run: |
           mkdir -p out
@@ -63,6 +65,7 @@ jobs:
 
           expected = (os.environ.get("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           candidates = [
+              ("SILVER", os.environ.get("TOKEN_SILVER", ""), os.environ.get("CHAT_SILVER", "")),
               ("KHS_POLICY", os.environ.get("TOKEN_KHS_POLICY", ""), os.environ.get("CHAT_KHS_POLICY", "")),
               ("DEEP_FISSION", os.environ.get("TOKEN_DEEP_FISSION", ""), os.environ.get("CHAT_DEEP_FISSION", "")),
               ("YEN_CARRY", os.environ.get("TOKEN_YEN_CARRY", ""), os.environ.get("CHAT_YEN_CARRY", "")),
@@ -87,19 +90,27 @@ jobs:
               except Exception as exc:
                   checked.append(f"{label}=getMe_error:{type(exc).__name__}")
 
+          output = pathlib.Path(os.environ["GITHUB_OUTPUT"])
+          summary = pathlib.Path(os.environ["GITHUB_STEP_SUMMARY"])
           if selected is None:
-              raise RuntimeError(
-                  f"No configured repository secret belongs to @{expected}. Checked: " + ", ".join(checked)
-              )
+              with output.open("a", encoding="utf-8") as f:
+                  f.write("configured=false\n")
+              with summary.open("a", encoding="utf-8") as f:
+                  f.write(
+                      f"@{expected} Telegram 토큰은 아직 저장되지 않았습니다. "
+                      "SILVER_BULLETIN_TELEGRAM_BOT_TOKEN이 추가되면 자동 활성화됩니다.\n"
+                  )
+              print("telegram_configured=false; requested bot token not found")
+              print("checked_routes=" + ", ".join(checked))
+              raise SystemExit(0)
 
           label, token, chat_id = selected
           if not chat_id and fallback_chats:
-              # Private-chat user IDs are stable across bots. Reuse an existing
-              # known destination only after the bot identity itself is verified.
+              # Private-chat user IDs are stable across bots. Reuse the already
+              # configured destination only after verifying this exact bot token.
               chat_id = fallback_chats[0]
 
           if not chat_id:
-              # Last resort: resolve the latest private chat that has started this bot.
               with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0", timeout=20) as resp:
                   updates = json.loads(resp.read().decode("utf-8"))
               private = []
@@ -113,9 +124,12 @@ jobs:
                   chat_id = private[-1][1]
 
           if not chat_id:
-              raise RuntimeError(
-                  f"@{expected} token is configured, but no destination chat could be resolved. Start the bot once and retry."
-              )
+              with output.open("a", encoding="utf-8") as f:
+                  f.write("configured=false\n")
+              with summary.open("a", encoding="utf-8") as f:
+                  f.write(f"@{expected} 토큰은 확인됐지만 수신 chat_id가 없습니다. 봇에서 /start를 한 번 보내야 합니다.\n")
+              print("telegram_configured=false; chat_id unresolved")
+              raise SystemExit(0)
 
           route = pathlib.Path("out/.silver_bulletin_telegram_route.json")
           route.write_text(
@@ -123,6 +137,8 @@ jobs:
               encoding="utf-8",
           )
           os.chmod(route, 0o600)
+          with output.open("a", encoding="utf-8") as f:
+              f.write("configured=true\n")
           print(f"telegram_bot_verified=@{expected} secret_route={label} chat_resolved=true")
           PY
 
@@ -135,7 +151,7 @@ jobs:
           cat out/silver_bulletin_issue_status.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Send Telegram alert when baseline or values change
-        if: hashFiles('out/silver_bulletin_issue_alert.md') != ''
+        if: steps.telegram.outputs.configured == 'true' && hashFiles('out/silver_bulletin_issue_alert.md') != ''
         shell: bash
         run: |
           python - <<'PY'
@@ -164,13 +180,13 @@ jobs:
           print(f"silver_bulletin_telegram_sent=true message_id={message_id}")
           PY
 
-      - name: Persist state after successful check and delivery
-        if: success() && hashFiles('out/silver_bulletin_issue_state_pending.json') != ''
+      - name: Persist state only after confirmed Telegram delivery
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/silver_bulletin_issue_state_pending.json') != '' && hashFiles('out/silver_bulletin_issue_alert.md') != ''
         run: |
           cp out/silver_bulletin_issue_state_pending.json data/silver_bulletin_issue_state.json
 
       - name: Commit confirmed Silver Bulletin state
-        if: success() && hashFiles('data/silver_bulletin_issue_state.json') != ''
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('data/silver_bulletin_issue_state.json') != ''
         shell: bash
         run: |
           git config user.name "silver-bulletin-watch[bot]"
