@@ -1,20 +1,31 @@
+import re
+
 import pytest
 
 from scripts.dc_telegram_report_formatter import sanitize_report
+
+
+def visible_text(result: str) -> str:
+    return re.sub(r'<a href="https?://[^"]+">원문</a>', '원문', result)
 
 
 def test_only_original_label_is_clickable():
     text = (
         "🚨 미국 데이터센터 실행 병목 변화\n"
         "- 정확한 내용 요약: 대주단이 인허가와 지역사회 반대를 신용위험으로 더 엄격히 점검합니다.\n"
+        "- 요약 기준: nwitimes.com 원문 본문\n"
+        "- 교차검증: 2개 독립 출처 (reuters.com, nwitimes.com)\n"
         '- 근거1: [신뢰보도] reuters.com · <a href="https://www.reuters.com/example">원문</a>\n'
         '- 근거2: [기타] nwitimes.com · 원문 (https://nwitimes.com/example)'
     )
     result = sanitize_report(text)
+    assert "- 요약 기준: NWI Times 원문 본문" in result
+    assert "- 교차검증: 2개 독립 출처 (Reuters, NWI Times)" in result
     assert '[신뢰보도] Reuters · <a href="https://www.reuters.com/example">원문</a>' in result
     assert '[기타] NWI Times · <a href="https://nwitimes.com/example">원문</a>' in result
-    assert "reuters.com ·" not in result
-    assert "nwitimes.com ·" not in result
+    visible = visible_text(result)
+    assert "reuters.com" not in visible.lower()
+    assert "nwitimes.com" not in visible.lower()
     assert "원문 (https://" not in result
 
 
@@ -56,3 +67,17 @@ def test_visible_raw_url_is_blocked():
     )
     with pytest.raises(ValueError, match="긴 URL"):
         sanitize_report(text)
+
+
+def test_unknown_domain_source_is_humanized_in_source_fields():
+    text = (
+        "- 정확한 내용 요약: 데이터센터 주민 반대와 인허가 위험이 커지고 있습니다.\n"
+        "- 요약 기준: example-news.com 원문 본문\n"
+        "- 교차검증: 2개 독립 출처 (Reuters, example-news.com)\n"
+        '- 근거1: [신뢰보도] Reuters · <a href="https://www.reuters.com/example">원문</a>\n'
+        '- 근거2: [기타] example-news.com · <a href="https://example-news.com/article">원문</a>'
+    )
+    result = sanitize_report(text)
+    visible = visible_text(result)
+    assert "example-news.com" not in visible.lower()
+    assert "Example News" in visible
