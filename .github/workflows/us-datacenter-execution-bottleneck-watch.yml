@@ -14,7 +14,9 @@ on:
     paths:
       - ".github/workflows/us-datacenter-execution-bottleneck-watch.yml"
       - "scripts/us_datacenter_execution_bottleneck_watch.py"
+      - "scripts/dc_telegram_report_formatter.py"
       - "tests/test_us_datacenter_execution_bottleneck_watch.py"
+      - "tests/test_dc_telegram_report_formatter.py"
       - ".github/us-datacenter-execution-bottleneck-trigger"
 
 concurrency:
@@ -45,10 +47,10 @@ jobs:
         run: pip install requests pytest trafilatura googlenewsdecoder
 
       - name: 문법 확인
-        run: python -m compileall -q scripts/us_datacenter_execution_bottleneck_watch.py
+        run: python -m compileall -q scripts/us_datacenter_execution_bottleneck_watch.py scripts/dc_telegram_report_formatter.py
 
-      - name: 알림 판정·원문요약·한국어·링크 표시 시험
-        run: pytest -q tests/test_us_datacenter_execution_bottleneck_watch.py
+      - name: 알림 판정·원문요약·한국어·원문링크 시험
+        run: pytest -q tests/test_us_datacenter_execution_bottleneck_watch.py tests/test_dc_telegram_report_formatter.py
 
       - name: 미국 데이터센터 실행 병목 감시
         id: dc
@@ -79,6 +81,7 @@ jobs:
 
           python - <<'PY'
           import json, os, pathlib, requests
+          from scripts.dc_telegram_report_formatter import sanitize_report
 
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip() or os.environ.get("FALLBACK_TELEGRAM_CHAT_ID", "").strip()
@@ -93,9 +96,13 @@ jobs:
           if not payload.get("ok") or actual != expected:
               raise RuntimeError(f"잘못된 Telegram 봇 경로 차단: expected=@{expected}, actual=@{actual or '확인불가'}")
 
-          text = pathlib.Path(os.environ["REPORT_PATH"]).read_text(encoding="utf-8").strip()
-          if not text:
+          raw_text = pathlib.Path(os.environ["REPORT_PATH"]).read_text(encoding="utf-8").strip()
+          if not raw_text:
               raise RuntimeError("Telegram으로 보낼 보고서가 비어 있습니다.")
+
+          # 최종 발송 직전에 출처 도메인 자동링크/긴 URL 노출/Google News 중계링크/로그인 문구를 모두 차단한다.
+          text = sanitize_report(raw_text)
+          pathlib.Path(os.environ["REPORT_PATH"]).write_text(text + "\n", encoding="utf-8")
 
           chunks = []
           current = []
@@ -141,6 +148,9 @@ jobs:
                       "message_ids": ids,
                       "parse_mode": "HTML",
                       "clickable_source_label": "원문",
+                      "source_name_mode": "일반 텍스트 매체명; 도메인 자동링크 금지",
+                      "direct_link_only": True,
+                      "raw_url_visible": False,
                       "summary_mode": "원문 본문 직접 추출 후 한국어 사실요약",
                   },
                   ensure_ascii=False,
@@ -148,7 +158,7 @@ jobs:
               ) + "\n",
               encoding="utf-8",
           )
-          print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(ids)} last_message_id={ids[-1]} parse_mode=HTML")
+          print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(ids)} last_message_id={ids[-1]} parse_mode=HTML direct_link_only=true")
           PY
 
       - name: 기준선·보고서 저장
