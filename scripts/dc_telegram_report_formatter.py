@@ -32,11 +32,35 @@ BOILERPLATE_TERMS = (
     "아래 양식을 제출",
     "이메일로 전송됩니다",
     "최신 뉴스를 기기로 바로",
-    "USA Today - Vertical",
     "Sign up for",
     "log in",
     "password reset",
     "your account",
+)
+
+SUMMARY_RELEVANCE_TERMS = (
+    "데이터 센터",
+    "데이터센터",
+    "은행",
+    "대출",
+    "대주단",
+    "금융",
+    "자산 관리자",
+    "인허가",
+    "지역 사회",
+    "주민",
+    "반대",
+    "전력",
+    "송전",
+    "변전소",
+    "착공",
+    "투자",
+    "data center",
+    "lender",
+    "bank",
+    "financing",
+    "permit",
+    "opposition",
 )
 
 EVIDENCE_RE = re.compile(
@@ -67,19 +91,50 @@ def validate_direct_url(url: str) -> None:
         raise ValueError("Google News 중계 URL은 원문 링크로 전송하지 않습니다.")
 
 
+def clean_summary_line(line: str) -> str:
+    prefix = "- 정확한 내용 요약:"
+    body = line[len(prefix):].strip()
+
+    # 지역 매체가 붙이는 제휴/섹션 헤더를 제거한다.
+    body = re.sub(
+        r"^[-–—\s]*(?:USA Today\s*-\s*Vertical|USA TODAY\s*NETWORK)[^—–-]{0,40}[—–-]\s*",
+        "",
+        body,
+        flags=re.IGNORECASE,
+    ).strip()
+
+    sentences = re.split(r"(?<=[.!?])\s+", body)
+    kept: list[str] = []
+    for sentence in sentences:
+        value = sentence.strip()
+        if not value:
+            continue
+        if any(term.lower() in value.lower() for term in BOILERPLATE_TERMS):
+            continue
+        kept.append(value)
+
+    cleaned = " ".join(kept).strip()
+    if not cleaned:
+        raise ValueError("기사 본문이 아닌 로그인/회원가입 문구만 남아 있어 Telegram 발송을 차단했습니다.")
+    if not any(term.lower() in cleaned.lower() for term in SUMMARY_RELEVANCE_TERMS):
+        raise ValueError("정확한 내용 요약에 데이터센터 실행 병목 관련 핵심 문장이 없어 Telegram 발송을 차단했습니다.")
+    return f"{prefix} {cleaned}"
+
+
 def sanitize_report(text: str) -> str:
     if not text.strip():
         raise ValueError("빈 보고서입니다.")
 
-    # 로그인·회원가입·비밀번호 재설정 같은 사이트 UI가 '정확한 내용 요약'에 섞이면 발송을 막는다.
-    summary_lines = [line for line in text.splitlines() if line.startswith("- 정확한 내용 요약:")]
-    for line in summary_lines:
-        if any(term.lower() in line.lower() for term in BOILERPLATE_TERMS):
-            raise ValueError("기사 본문이 아닌 로그인/회원가입 문구가 요약에 섞여 있어 Telegram 발송을 차단했습니다.")
-
     out: list[str] = []
     evidence_count = 0
+    summary_count = 0
+
     for line in text.splitlines():
+        if line.startswith("- 정확한 내용 요약:"):
+            summary_count += 1
+            out.append(clean_summary_line(line))
+            continue
+
         match = EVIDENCE_RE.match(line.strip())
         if not match:
             out.append(line)
@@ -90,9 +145,11 @@ def sanitize_report(text: str) -> str:
         validate_direct_url(url)
         source = html.escape(display_source(match.group("source")))
         safe_url = html.escape(html.unescape(url), quote=True)
-        # 출처명은 일반 텍스트. 오직 '원문'에만 링크를 건다.
+        # 출처명은 일반 텍스트. 오직 '원문'에만 직접 기사 URL을 건다.
         out.append(f'{match.group("prefix")}{source} · <a href="{safe_url}">원문</a>')
 
+    if summary_count == 0:
+        raise ValueError("정확한 내용 요약이 없어 Telegram 발송을 차단했습니다.")
     if evidence_count == 0:
         raise ValueError("원문 링크가 하나도 없어 Telegram 발송을 차단했습니다.")
 
