@@ -107,7 +107,7 @@ def compliance_message(event):
 
     joined = "·".join(companies)
     lines = [
-        f"🚨 <b>Texas 데이터센터 규제 — 신규 준수 기업 {len(companies)}곳</b>",
+        f"🚨 <b>텍사스 데이터센터 규제 — 신규 준수 기업 {len(companies)}곳</b>",
         "",
         f"<b>{html.escape(joined)}</b>가 Abbott의 데이터센터 기준 준수를 공식 약속했습니다.",
         "",
@@ -164,7 +164,7 @@ def generic_message(event):
     if len(detail_ko) > 320:
         detail_ko = detail_ko[:317].rstrip() + "…"
     lines = [
-        "🚨 <b>Texas 데이터센터 규제·계통연결 변화</b>",
+        "🚨 <b>텍사스 데이터센터 규제·계통연결 변화</b>",
         "",
         f"• 변경: <b>{html.escape(kind)}</b> ({html.escape(direction)})",
         f"• 내용: {html.escape(title_ko)}",
