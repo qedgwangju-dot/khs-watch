@@ -2,9 +2,12 @@
   "status": "confirmed",
   "bot_username": "hs8879887988798879_bot",
   "message_ids": [
-    66
+    67
   ],
   "parse_mode": "HTML",
   "clickable_source_label": "원문",
+  "source_name_mode": "일반 텍스트 매체명; 도메인 자동링크 금지",
+  "direct_link_only": true,
+  "raw_url_visible": false,
   "summary_mode": "원문 본문 직접 추출 후 한국어 사실요약"
 }
