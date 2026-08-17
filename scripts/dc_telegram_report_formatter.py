@@ -10,6 +10,7 @@ SOURCE_LABELS = {
     "Reuters": "Reuters",
     "nwitimes.com": "NWI Times",
     "www.nwitimes.com": "NWI Times",
+    "NWI Times": "NWI Times",
     "The Washington Post": "The Washington Post",
     "washingtonpost.com": "The Washington Post",
     "www.washingtonpost.com": "The Washington Post",
@@ -21,8 +22,11 @@ SOURCE_LABELS = {
     "Data Center Dynamics": "Data Center Dynamics",
     "Bloomberg": "Bloomberg",
     "bloomberg.com": "Bloomberg",
+    "www.bloomberg.com": "Bloomberg",
     "Associated Press": "AP",
     "AP News": "AP",
+    "apnews.com": "AP",
+    "www.apnews.com": "AP",
 }
 
 BOILERPLATE_TERMS = (
@@ -32,6 +36,7 @@ BOILERPLATE_TERMS = (
     "아래 양식을 제출",
     "이메일로 전송됩니다",
     "최신 뉴스를 기기로 바로",
+    "USA Today - Vertical",
     "Sign up for",
     "log in",
     "password reset",
@@ -68,6 +73,10 @@ EVIDENCE_RE = re.compile(
     r'(?P<source>.+?)\s+·\s+'
     r'(?:(?:<a href="(?P<href>[^"]+)">원문</a>)|(?:원문\s*\((?P<paren>https?://[^)]+)\)))\s*$'
 )
+SUMMARY_SOURCE_RE = re.compile(r'^(?P<prefix>- 요약 기준:\s*)(?P<source>.+?)(?P<suffix>\s+원문 본문)\s*$')
+CROSSCHECK_RE = re.compile(
+    r'^(?P<prefix>- 교차검증:\s*\d+개 독립 출처\s*\()(?P<sources>[^)]+)(?P<suffix>\))\s*$'
+)
 
 
 def display_source(source: str) -> str:
@@ -77,7 +86,7 @@ def display_source(source: str) -> str:
     lowered = source.lower().removeprefix("www.")
     if lowered in SOURCE_LABELS:
         return SOURCE_LABELS[lowered]
-    if lowered.endswith(".com") or lowered.endswith(".org") or lowered.endswith(".net"):
+    if lowered.endswith(".com") or lowered.endswith(".org") or lowered.endswith(".net") or lowered.endswith(".news"):
         host = lowered.split(".")[0]
         return host.replace("-", " ").title()
     return source
@@ -95,7 +104,6 @@ def clean_summary_line(line: str) -> str:
     prefix = "- 정확한 내용 요약:"
     body = line[len(prefix):].strip()
 
-    # 지역 매체가 붙이는 제휴/섹션 헤더를 제거한다.
     body = re.sub(
         r"^[-–—\s]*(?:USA Today\s*-\s*Vertical|USA TODAY\s*NETWORK)[^—–-]{0,40}[—–-]\s*",
         "",
@@ -121,6 +129,22 @@ def clean_summary_line(line: str) -> str:
     return f"{prefix} {cleaned}"
 
 
+def clean_summary_source_line(line: str) -> str:
+    match = SUMMARY_SOURCE_RE.match(line.strip())
+    if not match:
+        return line
+    source = display_source(match.group("source"))
+    return f'{match.group("prefix")}{source}{match.group("suffix")}'
+
+
+def clean_crosscheck_line(line: str) -> str:
+    match = CROSSCHECK_RE.match(line.strip())
+    if not match:
+        return line
+    sources = [display_source(value.strip()) for value in match.group("sources").split(",") if value.strip()]
+    return f'{match.group("prefix")}{", ".join(sources)}{match.group("suffix")}'
+
+
 def sanitize_report(text: str) -> str:
     if not text.strip():
         raise ValueError("빈 보고서입니다.")
@@ -133,6 +157,14 @@ def sanitize_report(text: str) -> str:
         if line.startswith("- 정확한 내용 요약:"):
             summary_count += 1
             out.append(clean_summary_line(line))
+            continue
+
+        if line.startswith("- 요약 기준:"):
+            out.append(clean_summary_source_line(line))
+            continue
+
+        if line.startswith("- 교차검증:"):
+            out.append(clean_crosscheck_line(line))
             continue
 
         match = EVIDENCE_RE.match(line.strip())
@@ -159,5 +191,15 @@ def sanitize_report(text: str) -> str:
     visible = re.sub(r'<a href="https?://[^"]+">원문</a>', '원문', result)
     if re.search(r'https?://', visible):
         raise ValueError("화면에 노출되는 긴 URL이 남아 있어 Telegram 발송을 차단했습니다.")
+
+    # 출처를 도메인 형태로 쓰면 Telegram 클라이언트가 자동 링크를 걸 수 있다.
+    # 요약 기준/교차검증/근거의 출처명은 반드시 사람이 읽는 매체명으로 정규화한다.
+    source_lines = [
+        line for line in visible.splitlines()
+        if line.startswith("- 요약 기준:") or line.startswith("- 교차검증:") or line.startswith("- 근거")
+    ]
+    for line in source_lines:
+        if re.search(r'\b(?:www\.)?[a-z0-9-]+\.(?:com|org|net|news)\b', line, flags=re.IGNORECASE):
+            raise ValueError("출처명이 도메인 형태로 남아 자동 링크될 수 있어 Telegram 발송을 차단했습니다.")
 
     return result
