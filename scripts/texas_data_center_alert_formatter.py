@@ -22,6 +22,28 @@ ABBOTT_STANDARDS = (
     "주민 전기료 전가 금지·지역사회 영향 최소화"
 )
 
+# Telegram 표시용 한국어명. 원문 URL과 내부 식별에는 원래 회사명을 그대로 사용한다.
+COMPANY_KO = {
+    "Google": "구글",
+    "Rowan": "로완",
+    "Rowan Digital Infrastructure": "로완 디지털 인프라스트럭처",
+    "CleanSpark": "클린스파크",
+    "Core Scientific": "코어 사이언티픽",
+    "Vantage Data Centers": "밴티지 데이터센터",
+    "SB Energy": "SB에너지",
+    "STACK Infrastructure": "스택 인프라스트럭처",
+    "Stack Infrastructure": "스택 인프라스트럭처",
+    "Anthropic": "앤트로픽",
+    "Nightpeak Energy": "나이트피크 에너지",
+    "New Era Energy & Digital": "뉴에라에너지&디지털",
+    "Switch": "스위치",
+    "Hanwha": "한화",
+    "Meta": "메타",
+    "OpenAI": "OpenAI",
+    "Oracle": "오라클",
+    "QTS": "QTS",
+}
+
 
 def clean(value):
     return re.sub(r"\s+", " ", str(value or "")).strip()
@@ -38,6 +60,11 @@ def ko(text):
         return clean(out) or text
     except Exception:
         return text
+
+
+def company_ko(name):
+    name = clean(name)
+    return COMPANY_KO.get(name, name)
 
 
 def fetch_text(url):
@@ -69,10 +96,10 @@ def nightpeak_context():
     try:
         text = fetch_text(url)
     except Exception:
-        return "Nightpeak Energy: Old Ocean 데이터센터는 620MW 규모로, 620MW Bulldog 발전소와 함께 개발 중이며 회사는 2027년부터 전원 인가 가능 목표를 제시하고 있습니다."
+        return "나이트피크 에너지: Old Ocean 데이터센터는 620MW 규모로, 620MW Bulldog 발전소와 함께 개발 중이며 회사는 2027년부터 전원 인가 가능 목표를 제시하고 있습니다."
     mw = "620MW" if re.search(r"620\s*MW", text, re.I) else "620MW"
     year = "2027년" if "2027" in text else "2027년"
-    return f"Nightpeak Energy: Old Ocean 데이터센터 {mw} + Bulldog 발전소 {mw}를 함께 개발 중이며, {year}부터 전원 인가 가능 목표입니다."
+    return f"나이트피크 에너지: Old Ocean 데이터센터 {mw} + Bulldog 발전소 {mw}를 함께 개발 중이며, {year}부터 전원 인가 가능 목표입니다."
 
 
 def anthropic_context():
@@ -80,12 +107,12 @@ def anthropic_context():
     try:
         text = fetch_text(url)
     except Exception:
-        return "Anthropic: 이미 데이터센터 계통연결에 필요한 전력망 증설비 100% 부담과 신규 발전 확보를 약속해, 이번 Texas 수용은 기존 정책의 연장선입니다."
+        return "앤트로픽: 이미 데이터센터 계통연결에 필요한 전력망 증설비 100% 부담과 신규 발전 확보를 약속해, 이번 텍사스 기준 수용은 기존 정책의 연장선입니다."
     has_100 = bool(re.search(r"100%", text))
     has_generation = bool(re.search(r"net-new power generation|new power generation", text, re.I))
     if has_100 and has_generation:
-        return "Anthropic: 이미 데이터센터 계통연결에 필요한 전력망 증설비 100% 부담과 신규 발전 확보를 약속해, 이번 Texas 수용은 기존 정책의 연장선입니다."
-    return "Anthropic: 기존에도 데이터센터 전력망 비용과 신규 발전 부담 원칙을 공개해 왔으며, 이번 Texas 수용은 그 연장선입니다."
+        return "앤트로픽: 이미 데이터센터 계통연결에 필요한 전력망 증설비 100% 부담과 신규 발전 확보를 약속해, 이번 텍사스 기준 수용은 기존 정책의 연장선입니다."
+    return "앤트로픽: 기존에도 데이터센터 전력망 비용과 신규 발전 부담 원칙을 공개해 왔으며, 이번 텍사스 기준 수용은 그 연장선입니다."
 
 
 def stack_context():
@@ -95,7 +122,7 @@ def stack_context():
     except Exception:
         return ""
     if re.search(r"300\s*MW", text, re.I) and re.search(r"500\+?\s*MW", text, re.I):
-        return "STACK Infrastructure: Texas DFW02는 300MW 이상 계획, 최대 500MW+ 확장 가능 규모라 전력·계통 비용 부담이 실제 대형 프로젝트에 적용되는 사례입니다."
+        return "스택 인프라스트럭처: 텍사스 DFW02는 300MW 이상 계획, 최대 500MW+ 확장 가능 규모라 전력·계통 비용 부담이 실제 대형 프로젝트에 적용되는 사례입니다."
     return ""
 
 
@@ -105,11 +132,11 @@ def compliance_message(event):
     if not companies:
         return None
 
-    joined = "·".join(companies)
+    joined = "·".join(company_ko(x) for x in companies)
     lines = [
         f"🚨 <b>텍사스 데이터센터 규제 — 신규 준수 기업 {len(companies)}곳</b>",
         "",
-        f"<b>{html.escape(joined)}</b>가 Abbott의 데이터센터 기준 준수를 공식 약속했습니다.",
+        f"<b>{html.escape(joined)}</b>가 애벗 주지사의 데이터센터 기준 준수를 공식 약속했습니다.",
         "",
         f"• 핵심 기준: <b>{ABBOTT_STANDARDS}</b>",
     ]
