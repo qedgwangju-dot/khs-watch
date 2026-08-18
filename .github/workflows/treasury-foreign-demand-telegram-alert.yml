@@ -82,10 +82,25 @@ jobs:
 
           title = pathlib.Path("out/treasury_foreign_demand_title.txt").read_text(encoding="utf-8").strip()
           body = pathlib.Path("out/treasury_foreign_demand_alert.md").read_text(encoding="utf-8").strip()
+
+          body = body.replace(
+              "원문: https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt",
+              '<a href="https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt">원문</a>',
+          )
+          body = body.replace(
+              "거래·평가 분해: https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table3.txt",
+              '<a href="https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table3.txt">거래·평가 분해</a>',
+          )
+          body = body.replace(
+              "원문: https://www.federalreserve.gov/releases/h41/current/",
+              '<a href="https://www.federalreserve.gov/releases/h41/current/">원문</a>',
+          )
+
           text = f"{title}\n\n{body}"[:4096]
           payload = urllib.parse.urlencode({
               "chat_id": chat_id,
               "text": text,
+              "parse_mode": "HTML",
               "disable_web_page_preview": "true",
           }).encode("utf-8")
           req = urllib.request.Request(
