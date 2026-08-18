@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,17 +44,17 @@ jobs:
       - name: Check official TIC and Fed custody data
         run: python scripts/treasury_foreign_demand_watch.py
 
-      - name: Send interpreted alert through second bot only
+      - name: Send interpreted alert through selected bot only
         if: hashFiles('out/treasury_foreign_demand_alert.md') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
           FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
           TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
           export TELEGRAM_CHAT_ID
           if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "두 번째 텔레그램 봇 토큰 또는 chat id가 없습니다." >&2
+            echo "미 국채 해외수요 텔레그램 봇 토큰 또는 chat id가 없습니다." >&2
             exit 1
           fi
           python - <<'PY'
