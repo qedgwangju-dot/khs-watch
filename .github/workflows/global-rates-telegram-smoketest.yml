@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - ".github/workflows/global-rates-telegram-smoketest.yml"
+      - "data/global_rates_smoketest_trigger.txt"
   workflow_dispatch:
 
 permissions:
