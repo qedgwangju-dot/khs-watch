@@ -39,6 +39,53 @@ class YenCarryNewsAlertTests(unittest.TestCase):
         self.assertEqual(classified.topic, "엔캐리 재구축·재확산")
         self.assertEqual(classified.material_score, 4)
 
+    def test_user_korean_example_is_captured(self) -> None:
+        classified = carry.classify(
+            self.item(
+                "미·일 개입에도 엔화 약세 베팅 재개…캐리 트레이드 다시 확산",
+                source="연합뉴스",
+                description=(
+                    "미국과 일본 당국의 외환시장 개입에도 일본의 낮은 기준금리와 "
+                    "주요국 간 금리 격차가 여전해 엔 캐리 트레이드 포지션을 재구축하는 "
+                    "움직임이 나타나고 있다. 엔화는 달러당 160엔 부근으로 되밀렸다."
+                ),
+            )
+        )
+        self.assertIsNotNone(classified)
+        self.assertEqual(classified.topic, "엔캐리 재구축·재확산")
+        self.assertEqual(classified.material_score, 4)
+        self.assertEqual(classified.source_group, "Yonhap")
+
+    def test_korean_syndicated_bloomberg_is_recognized(self) -> None:
+        classified = carry.classify(
+            self.item(
+                "엔화 약세 베팅 재개…캐리 트레이드 재확산",
+                source="국내 경제매체",
+                description="블룸버그에 따르면 개입 후 엔 캐리 트레이드 포지션 재구축이 나타났다.",
+            )
+        )
+        self.assertIsNotNone(classified)
+        self.assertEqual(classified.source_group, "Bloomberg")
+        self.assertEqual(classified.topic, "엔캐리 재구축·재확산")
+
+    def test_korean_outbound_flow_surge_is_captured(self) -> None:
+        classified = carry.classify(
+            self.item(
+                "일본 현지 투자자들, 개입 직후 해외 자산 2년여 만에 최대 규모 매수",
+                source="로이터",
+                description="엔화 약세 속 일본 투자자의 해외 자산 매수 확대가 이어졌다.",
+            )
+        )
+        self.assertIsNotNone(classified)
+        self.assertEqual(classified.topic, "일본 자금 해외투자 재확대·엔화 매도 압력")
+        self.assertEqual(classified.source_group, "Reuters")
+
+    def test_korean_google_news_uses_kr_locale(self) -> None:
+        url = carry.google_news_rss_url("ko", "엔 캐리 트레이드 개입 재개")
+        self.assertIn("hl=ko", url)
+        self.assertIn("gl=KR", url)
+        self.assertIn("ceid=KR%3Ako", url)
+
     def test_intervention_fades_and_carry_returns_is_alert(self) -> None:
         classified = carry.classify(
             self.item(
