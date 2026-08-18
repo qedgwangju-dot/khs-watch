@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   send-test:
@@ -17,6 +17,11 @@ jobs:
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Verify secrets and send Telegram test
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
@@ -26,6 +31,7 @@ jobs:
           import datetime as dt
           import json
           import os
+          import pathlib
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
@@ -46,7 +52,7 @@ jobs:
           if username.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
 
-          now = dt.datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M:%S KST")
+          now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
           text = (
               "[글로벌 금리·엔캐리 감시 테스트]\n\n"
               "전송 경로 정상 확인용 테스트입니다.\n"
@@ -58,7 +64,7 @@ jobs:
               "• USD/JPY 155 이하 또는 일간 -2%\n"
               "• 미·일 2년 금리차 2.00%p 이하\n\n"
               "※ JGB 3%는 엔캐리 자동청산선이 아니라 일본 FY2026 예산 금리 가정과 겹치는 재정 경계선입니다.\n"
-              f"테스트 시각: {now}"
+              f"테스트 시각: {now.strftime('%Y-%m-%d %H:%M:%S KST')}"
           )
 
           payload = urllib.parse.urlencode({
@@ -76,5 +82,24 @@ jobs:
           if not result.get("ok"):
               raise RuntimeError(f"Telegram rejected message: {result}")
           message_id = (result.get("result") or {}).get("message_id")
+          marker = {
+              "telegram_delivery_confirmed": True,
+              "bot_username": username,
+              "message_id": message_id,
+              "confirmed_at_kst": now.isoformat(timespec="seconds"),
+          }
+          pathlib.Path("data/global_rates_smoketest_result.json").write_text(
+              json.dumps(marker, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
           print(f"telegram_delivery_confirmed=true bot=@{username} message_id={message_id}")
           PY
+
+      - name: Commit confirmation marker
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/global_rates_smoketest_result.json
+          git commit -m "Record Telegram smoke test delivery"
+          git pull --rebase origin main
+          git push
