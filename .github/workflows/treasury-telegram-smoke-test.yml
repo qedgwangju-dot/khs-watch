@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 5
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
-      TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
       FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
     steps:
@@ -26,7 +26,7 @@ jobs:
           TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
           export TELEGRAM_CHAT_ID
           if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
-            echo "YEN_CARRY_TELEGRAM_BOT_TOKEN is missing" >&2
+            echo "TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN is missing" >&2
             exit 1
           fi
           if [ -z "$TELEGRAM_CHAT_ID" ]; then
