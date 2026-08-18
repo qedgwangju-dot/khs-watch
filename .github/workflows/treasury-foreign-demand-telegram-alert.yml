@@ -47,7 +47,7 @@ jobs:
       - name: Send interpreted alert through selected bot only
         if: hashFiles('out/treasury_foreign_demand_alert.md') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
           FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
