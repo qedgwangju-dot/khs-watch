@@ -9,9 +9,11 @@ on:
     paths:
       - ".github/workflows/yen-policy-news-alert.yml"
       - "scripts/yen_policy_news_alert.py"
+      - "scripts/yen_policy_carry_extension.py"
       - "scripts/yen_policy_news_linkify.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_policy_news_alert.py"
+      - "tests/test_yen_policy_carry_extension.py"
       - "tests/test_yen_policy_news_linkify.py"
       - "data/yen_policy_news_state.json"
       - "data/yen_policy_news_alert_config.json"
@@ -47,12 +49,13 @@ jobs:
       - name: Validate policy-news monitor
         run: |
           python -m py_compile scripts/yen_policy_news_alert.py
+          python -m py_compile scripts/yen_policy_carry_extension.py
           python -m py_compile scripts/yen_policy_news_linkify.py
           python -m py_compile scripts/khs_source_fetch.py
-          python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_linkify.py -v
+          python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_carry_extension.py tests/test_yen_policy_news_linkify.py -v
 
-      - name: Check BOJ and yen policy catalysts
-        run: python scripts/yen_policy_news_alert.py
+      - name: Check BOJ, intervention and yen carry catalysts
+        run: python scripts/yen_policy_carry_extension.py
 
       - name: Add clickable source links
         if: hashFiles('out/yen_policy_news_alert.md') != ''
@@ -64,7 +67,7 @@ jobs:
           if [ -f out/yen_policy_news_watch.md ]; then
             cat out/yen_policy_news_watch.md >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "엔화 정책 촉매 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+            echo "엔화 정책·수급 촉매 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Preview pull request alert without sending
@@ -91,7 +94,7 @@ jobs:
             exit 1
           fi
           if [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "엔화 정책 촉매 Telegram 대상 CHAT_ID가 없습니다." >&2
+            echo "엔화 정책·수급 촉매 Telegram 대상 CHAT_ID가 없습니다." >&2
             exit 1
           fi
 
@@ -186,7 +189,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/yen_policy_news_state.json
           if git diff --cached --quiet; then
-            echo "엔화 정책 촉매 상태 변경 없음"
+            echo "엔화 정책·수급 촉매 상태 변경 없음"
           else
             git commit -m "Update yen policy news alert state"
             git pull --rebase origin main

@@ -10,6 +10,9 @@ import pathlib
 from zoneinfo import ZoneInfo
 
 import yen_policy_news_alert as news
+import yen_policy_carry_extension as carry_extension
+
+carry_extension.install()
 
 KST = ZoneInfo("Asia/Seoul")
 ALERT_JSON_PATH = pathlib.Path("out/yen_policy_news_alert.json")
@@ -92,7 +95,7 @@ def linkify(
     rendered: list[str] = []
     cross_index = 0
     for line in raw_lines:
-        if line.startswith("교차확인:") and cross_index < len(source_sets):
+        if (line.startswith("교차확인:") or line.startswith("확인 출처:")) and cross_index < len(source_sets):
             rendered.append(format_crosscheck_html(source_sets[cross_index]))
             cross_index += 1
         else:
