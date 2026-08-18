@@ -6,6 +6,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import pathlib
+import urllib.parse
 from zoneinfo import ZoneInfo
 
 import yen_policy_news_alert as base
@@ -32,6 +33,9 @@ RSS_QUERIES = (
     ("ja", '円 キャリートレード 再開 為替介入'),
     ("ja", '円安 キャリートレード 金利差 介入'),
     ("ja", '日本 投資家 海外資産 円安 介入'),
+    ("ko", '"엔 캐리 트레이드" 개입 재개'),
+    ("ko", '엔화 약세 캐리 트레이드 금리 격차 개입'),
+    ("ko", '일본 투자자 해외 자산 엔화 개입'),
 )
 
 CARRY_MARKERS = (
@@ -42,6 +46,11 @@ CARRY_MARKERS = (
     "キャリートレード",
     "円キャリー",
     "円キャリートレード",
+    "캐리 트레이드",
+    "캐리트레이드",
+    "엔 캐리",
+    "엔캐리",
+    "엔화 캐리",
 )
 
 REBUILD_MARKERS = (
@@ -68,6 +77,14 @@ REBUILD_MARKERS = (
     "再び",
     "復活",
     "積み増し",
+    "재구축",
+    "재개",
+    "재진입",
+    "다시 확대",
+    "재확산",
+    "베팅 재개",
+    "포지션 재구축",
+    "다시 구축",
 )
 
 PERSIST_MARKERS = (
@@ -84,6 +101,13 @@ PERSIST_MARKERS = (
     "根強い",
     "続く",
     "継続",
+    "여전히 매력",
+    "여전히 유효",
+    "유인이 지속",
+    "유인 지속",
+    "계속 유지",
+    "지속되고",
+    "지속되는",
 )
 
 RATE_GAP_MARKERS = (
@@ -95,6 +119,12 @@ RATE_GAP_MARKERS = (
     "yield differential",
     "金利差",
     "利回り差",
+    "금리 격차",
+    "금리격차",
+    "금리 차",
+    "금리차",
+    "수익률 격차",
+    "수익률 차",
 )
 
 INTERVENTION_MARKERS = (
@@ -104,6 +134,12 @@ INTERVENTION_MARKERS = (
     "為替介入",
     "円買い介入",
     "協調介入",
+    "외환시장 개입",
+    "외환 개입",
+    "공동 개입",
+    "공동개입",
+    "시장 개입",
+    "개입",
 )
 
 WEAKNESS_MARKERS = (
@@ -126,6 +162,16 @@ WEAKNESS_MARKERS = (
     "円下落",
     "円が下落",
     "160円",
+    "엔화 약세",
+    "엔화가 약세",
+    "엔화 하락",
+    "엔화 가치 하락",
+    "엔저",
+    "달러당 160엔",
+    "160엔 부근",
+    "160엔대",
+    "상승분의 절반을 반납",
+    "상승분 절반을 반납",
 )
 
 OUTBOUND_MARKERS = (
@@ -141,6 +187,14 @@ OUTBOUND_MARKERS = (
     "外国証券",
     "対外証券",
     "海外投資",
+    "해외 자산",
+    "해외자산",
+    "해외 증권",
+    "해외증권",
+    "해외 투자",
+    "해외투자",
+    "외국 자산",
+    "외국 증권",
 )
 
 JAPAN_INVESTOR_MARKERS = (
@@ -152,6 +206,12 @@ JAPAN_INVESTOR_MARKERS = (
     "日本の投資家",
     "国内投資家",
     "日本勢",
+    "일본 투자자",
+    "일본 현지 투자자",
+    "일본 국내 투자자",
+    "일본계 투자자",
+    "일본 기관투자자",
+    "일본 자금",
 )
 
 FLOW_SURGE_MARKERS = (
@@ -173,6 +233,26 @@ FLOW_SURGE_MARKERS = (
     "最大",
     "急増",
     "買い越し",
+    "2년여 만에 최대",
+    "2년 만에 최대",
+    "최대 규모",
+    "급증",
+    "크게 늘",
+    "순매수",
+    "순매입",
+    "매수 확대",
+    "매입 확대",
+)
+
+KOREAN_SOURCE_GROUPS = (
+    (("reuters", "로이터"), "Reuters"),
+    (("kyodo", "共同通信", "교도통신", "교도 뉴스"), "Kyodo"),
+    (("bloomberg", "블룸버그"), "Bloomberg"),
+    (("financial times", "파이낸셜타임스"), "Financial Times"),
+    (("nikkei", "日本経済新聞", "니혼게이자이", "니케이"), "Nikkei"),
+    (("nhk",), "NHK"),
+    (("associated press", "ap news", "ap통신"), "AP"),
+    (("yonhap", "연합뉴스"), "Yonhap"),
 )
 
 
@@ -180,8 +260,73 @@ def contains(text: str, markers: tuple[str, ...]) -> bool:
     return base.contains_any(text, markers)
 
 
-def classify(item: base.NewsItem) -> base.ClassifiedItem | None:
+def source_level(item: base.NewsItem) -> int:
     level = base.source_level(item)
+    if level > 0:
+        return level
+    lowered = f"{item.source} {item.text}".lower()
+    if any(alias.lower() in lowered for aliases, _group in KOREAN_SOURCE_GROUPS for alias in aliases):
+        return 1
+    return 0
+
+
+def source_group(item: base.NewsItem) -> str:
+    default = base.source_group(item.source, item.text)
+    if default != (item.source.strip() or "unknown"):
+        return default
+    lowered = f"{item.source} {item.text}".lower()
+    for aliases, group in KOREAN_SOURCE_GROUPS:
+        if any(alias.lower() in lowered for alias in aliases):
+            return group
+    return default
+
+
+def google_news_rss_url(language: str, query: str) -> str:
+    if language == "ko":
+        params = {"q": query, "hl": "ko", "gl": "KR", "ceid": "KR:ko"}
+        return "https://news.google.com/rss/search?" + urllib.parse.urlencode(params)
+    return base.google_news_rss_url(language, query)
+
+
+def fetch_query(
+    language: str, query: str, current: dt.datetime
+) -> tuple[list[base.NewsItem], str | None]:
+    if language != "ko":
+        return base.fetch_query(language, query, current)
+
+    url = google_news_rss_url(language, query)
+    text, error = base.fetch_text(
+        url,
+        base.USER_AGENT,
+        timeout=18,
+        attempts=2,
+        accept="application/rss+xml,application/xml,text/xml,*/*",
+    )
+    if error or not text:
+        base.record_source_failure(
+            lane="yen_carry_news",
+            source_name="Google News RSS ko",
+            source_url=url,
+            error=error or "empty response",
+            checked_at=current.astimezone(KST),
+        )
+        return [], error or "empty response"
+    try:
+        return base.parse_rss(text), None
+    except Exception as exc:
+        error = f"{type(exc).__name__}: {exc}"
+        base.record_source_failure(
+            lane="yen_carry_news",
+            source_name="Google News RSS ko",
+            source_url=url,
+            error=error,
+            checked_at=current.astimezone(KST),
+        )
+        return [], error
+
+
+def classify(item: base.NewsItem) -> base.ClassifiedItem | None:
+    level = source_level(item)
     if level == 0:
         return None
 
@@ -196,21 +341,16 @@ def classify(item: base.NewsItem) -> base.ClassifiedItem | None:
     japan_investor = contains(text, JAPAN_INVESTOR_MARKERS)
     flow_surge = contains(text, FLOW_SURGE_MARKERS)
 
-    # Strongest signal: investors are explicitly rebuilding/restarting yen-funded carry.
     if carry and rebuild:
         topic, score = "엔캐리 재구축·재확산", 4
-    # Carry remains active after intervention and the yen is weakening again.
     elif carry and intervention and weakness:
         topic, score = "엔캐리 재확산·개입 효과 약화", 4
-    # Structural carry incentive remains because the rate/yield gap is still wide.
     elif carry and persists and (rate_gap or weakness or intervention):
         topic, score = "엔캐리 지속·재확산 압력", 3
-    # Japanese investors materially increase foreign-asset purchases, adding yen-selling flow.
     elif outbound and japan_investor and flow_surge and (weakness or intervention or carry):
         topic, score = "일본 자금 해외투자 재확대·엔화 매도 압력", 4
     elif outbound and japan_investor and weakness:
         topic, score = "일본 자금 해외투자 확대·엔화 매도 압력", 3
-    # Intervention fading is only material if a structural rate-gap driver is also present.
     elif intervention and weakness and rate_gap:
         topic, score = "개입 효과 약화·금리차 기반 엔화 약세", 3
     else:
@@ -221,7 +361,7 @@ def classify(item: base.NewsItem) -> base.ClassifiedItem | None:
         topic=topic,
         material_score=score,
         source_level=level,
-        source_group=base.source_group(item.source, item.text),
+        source_group=source_group(item),
     )
 
 
@@ -229,7 +369,7 @@ def collect_items(current: dt.datetime) -> tuple[list[base.NewsItem], list[str]]
     unique: dict[str, base.NewsItem] = {}
     errors: list[str] = []
     for language, query in RSS_QUERIES:
-        items, error = base.fetch_query(language, query, current)
+        items, error = fetch_query(language, query, current)
         if error:
             errors.append(f"{language}:{query}: {error}")
         for item in items:
