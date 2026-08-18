@@ -37,6 +37,10 @@ jobs:
       - name: Check official rate sources
         run: python scripts/global_rates_watch.py
 
+      - name: Check yen carry confirmation signals
+        if: always()
+        run: python scripts/yen_carry_confirmation.py
+
       - name: Build manual Telegram test message
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.force_test == true }}
         run: |
@@ -53,6 +57,29 @@ jobs:
             echo '{"manual_test": true}' > out/global_rates_watch_alert.json
           fi
 
+      - name: Enrich alert with yen carry confirmation
+        if: hashFiles('out/global_rates_watch_alert.md') != ''
+        run: |
+          if [ -f out/yen_carry_confirmation.md ]; then
+            {
+              echo
+              echo "---"
+              echo
+              cat out/yen_carry_confirmation.md
+            } >> out/global_rates_watch_alert.md
+          fi
+          {
+            echo
+            echo "---"
+            echo
+            echo "해석 잠금:"
+            echo "- JGB 10년 3.0%는 엔캐리 자동청산선이나 BOJ 공식 방어선이 아닙니다. 일본 FY2026 예산 금리 가정과 겹치는 재정·심리 경계선입니다."
+            echo "- 실제 엔캐리 위험은 BOJ 정책·일본 2년물 → 미·일 단기금리차 축소 → USD/JPY 급락 순서를 우선 확인합니다."
+            echo "- Nikkei·Nasdaq·VIX는 실제 디레버리징의 후행 확인 신호로 봅니다."
+            echo "- 2024년 8월 급락은 JGB 3% 때문이 아니라 BOJ 인상, 미국 금리 하락, 미·일 금리차 축소, 엔화 급등과 레버리지 캐리 청산이 겹친 사례입니다."
+            echo "- BOJ OIS 인상확률은 신뢰 가능한 자동 시계열이 확보되기 전까지 임의 추정하지 않습니다."
+          } >> out/global_rates_watch_alert.md
+
       - name: Publish watcher summary
         if: always()
         run: |
@@ -60,6 +87,10 @@ jobs:
             cat out/global_rates_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo "글로벌 금리 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/yen_carry_confirmation.md ]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            cat out/yen_carry_confirmation.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Send threshold change to Telegram
@@ -80,12 +111,10 @@ jobs:
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
 
-          # Deliberately do not consume the alert when the new secrets have not been entered yet.
           if not token or not chat_id:
               print("Telegram secrets are not configured yet; alert state will NOT be persisted.")
               raise SystemExit(0)
 
-          # Verify that the token belongs to a valid Telegram bot before sending.
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
               identity = json.loads(r.read().decode("utf-8"))
           if not identity.get("ok"):
@@ -151,8 +180,6 @@ jobs:
       - name: Persist dedupe state
         if: always()
         run: |
-          # No alert = safe to store the latest baseline.
-          # Alert = store only after Telegram confirmed delivery, preventing missed first alerts while secrets are absent.
           if [ ! -f out/global_rates_watch_alert.md ] || [ -f out/global_rates_watch_telegram_confirmed.json ]; then
             if [ -f out/global_rates_watch_pending_state.json ]; then
               cp out/global_rates_watch_pending_state.json data/global_rates_watch_state.json
@@ -186,5 +213,7 @@ jobs:
             out/global_rates_watch_alert.json
             out/global_rates_watch_pending_state.json
             out/global_rates_watch_telegram_confirmed.json
+            out/yen_carry_confirmation.md
+            out/yen_carry_confirmation.json
           if-no-files-found: ignore
           retention-days: 14
