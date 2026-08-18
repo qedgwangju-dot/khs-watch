@@ -1,6 +1,33 @@
 {
-  "last_values": {},
-  "active": {},
-  "last_source_dates": {},
-  "classification": "미초기화"
+  "last_values": {
+    "jgb2": 1.696,
+    "jgb10": 2.919,
+    "ust2": 4.19,
+    "ust10": 4.72,
+    "ust30": 5.31,
+    "usdjpy": 159.21,
+    "us_jp_2y_spread": 2.4940000000000007,
+    "usdjpy_daily_change_pct": -0.08785691873234303
+  },
+  "active": {
+    "jgb10:above:3.0": false,
+    "ust10:above:4.5": true,
+    "ust10:above:4.7": true,
+    "ust10:above:4.75": false,
+    "ust30:above:5.0": true,
+    "ust30:above:5.3": true,
+    "usdjpy:below:155.0": false,
+    "usdjpy:daily_change:below:-2.0": false,
+    "us_jp_2y_spread:below:2.0": false
+  },
+  "last_source_dates": {
+    "jgb2": "2026/8/17",
+    "jgb10": "2026/8/17",
+    "ust2": "2026-08-17",
+    "ust10": "2026-08-17",
+    "ust30": "2026-08-17",
+    "usdjpy": "2026-08-14"
+  },
+  "classification": "미국 장기채 스트레스",
+  "updated_at_kst": "2026-08-19T00:44:43+09:00"
 }
