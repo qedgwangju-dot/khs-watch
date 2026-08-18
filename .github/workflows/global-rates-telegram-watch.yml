@@ -1,6 +1,12 @@
 name: Global Rates & Yen Carry Telegram Watch
 
 on:
+  push:
+    paths:
+      - ".github/workflows/global-rates-telegram-watch.yml"
+      - "scripts/global_rates_watch.py"
+      - "scripts/yen_carry_confirmation.py"
+      - "data/global_rates_watch_state.json"
   schedule:
     # Official sources are daily; poll every 15 minutes so publication-time changes are picked up quickly.
     - cron: "*/15 * * * *"
