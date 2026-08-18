@@ -1,0 +1,149 @@
+name: Treasury foreign demand Telegram alert
+
+on:
+  push:
+    paths:
+      - ".github/workflows/treasury-foreign-demand-telegram-alert.yml"
+      - "scripts/treasury_foreign_demand_watch.py"
+      - "tests/test_treasury_foreign_demand_watch.py"
+  schedule:
+    # 05:10 and 06:10 KST daily. TIC monthly release is normally 16:00 ET;
+    # H.4.1 is normally published Thursday afternoon ET.
+    - cron: "10 20,21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: treasury-foreign-demand-telegram-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate monitor
+        run: |
+          python -m py_compile scripts/treasury_foreign_demand_watch.py
+          if [ -f tests/test_treasury_foreign_demand_watch.py ]; then
+            python -m unittest tests/test_treasury_foreign_demand_watch.py -v
+          fi
+
+      - name: Check official TIC and Fed custody data
+        run: python scripts/treasury_foreign_demand_watch.py
+
+      - name: Send interpreted alert through second bot only
+        if: hashFiles('out/treasury_foreign_demand_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
+          export TELEGRAM_CHAT_ID
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "두 번째 텔레그램 봇 토큰 또는 chat id가 없습니다." >&2
+            exit 1
+          fi
+          python - <<'PY'
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"잘못된 봇 경로: expected @{expected}, got @{actual or 'unknown'}")
+
+          title = pathlib.Path("out/treasury_foreign_demand_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/treasury_foreign_demand_alert.md").read_text(encoding="utf-8").strip()
+          text = f"{title}\n\n{body}"[:4096]
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=25) as r:
+              result = json.loads(r.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+          pathlib.Path("out/treasury_foreign_demand_telegram_confirmed.json").write_text(
+              json.dumps({
+                  "bot_username": actual,
+                  "message_id": (result.get("result") or {}).get("message_id"),
+              }, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Finalize state
+        if: success() && hashFiles('data/treasury_foreign_demand_state_next.json') != ''
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+
+          src = pathlib.Path("data/treasury_foreign_demand_state_next.json")
+          state = json.loads(src.read_text(encoding="utf-8"))
+          alert_exists = pathlib.Path("out/treasury_foreign_demand_alert.md").exists()
+          confirmed = pathlib.Path("out/treasury_foreign_demand_telegram_confirmed.json").exists()
+          if alert_exists and not confirmed:
+              raise RuntimeError("알림이 생성됐지만 텔레그램 전송 확인이 없습니다.")
+          if confirmed and state.get("pending_tic_month"):
+              state["last_tic_month"] = state.pop("pending_tic_month")
+          pathlib.Path("data/treasury_foreign_demand_state.json").write_text(
+              json.dumps(state, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Commit state
+        if: success() && hashFiles('data/treasury_foreign_demand_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/treasury_foreign_demand_state.json
+          if git diff --cached --quiet; then
+            echo "상태 변경 없음"
+          else
+            git commit -m "Update Treasury foreign demand state"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: treasury-foreign-demand-${{ github.run_id }}
+          path: |
+            out/treasury_foreign_demand_status.md
+            out/treasury_foreign_demand_alert.md
+            out/treasury_foreign_demand_detail.json
+            out/treasury_foreign_demand_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
