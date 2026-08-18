@@ -88,3 +88,5 @@ jobs:
           git add data/treasury_telegram_smoke_test_result.json
           git commit -m "Record Treasury Telegram smoke test" || exit 0
           git push
+
+# retrigger: 2026-08-18T22:08+09:00
