@@ -8,7 +8,6 @@ on:
       - "scripts/yen_carry_confirmation.py"
       - "data/global_rates_watch_state.json"
   schedule:
-    # Official sources are daily; poll every 15 minutes so publication-time changes are picked up quickly.
     - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
@@ -34,19 +33,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
       - name: Check official rate sources
         run: python scripts/global_rates_watch.py
-
       - name: Check yen carry confirmation signals
         if: always()
         run: python scripts/yen_carry_confirmation.py
-
       - name: Build manual Telegram test message
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.force_test == true }}
         run: |
@@ -56,23 +51,15 @@ jobs:
               echo
               echo "GitHub Actions → 공식 데이터 조회 → Python 조건 판정 → Telegram 전송 경로가 정상 작동하는지 확인하기 위한 테스트입니다."
               echo
-              if [ -f out/global_rates_watch_status.md ]; then
-                cat out/global_rates_watch_status.md
-              fi
+              if [ -f out/global_rates_watch_status.md ]; then cat out/global_rates_watch_status.md; fi
             } > out/global_rates_watch_alert.md
             echo '{"manual_test": true}' > out/global_rates_watch_alert.json
           fi
-
       - name: Enrich alert with yen carry confirmation
         if: hashFiles('out/global_rates_watch_alert.md') != ''
         run: |
           if [ -f out/yen_carry_confirmation.md ]; then
-            {
-              echo
-              echo "---"
-              echo
-              cat out/yen_carry_confirmation.md
-            } >> out/global_rates_watch_alert.md
+            { echo; echo "---"; echo; cat out/yen_carry_confirmation.md; } >> out/global_rates_watch_alert.md
           fi
           {
             echo
@@ -85,20 +72,11 @@ jobs:
             echo "- 2024년 8월 급락은 JGB 3% 때문이 아니라 BOJ 인상, 미국 금리 하락, 미·일 금리차 축소, 엔화 급등과 레버리지 캐리 청산이 겹친 사례입니다."
             echo "- BOJ OIS 인상확률은 신뢰 가능한 자동 시계열이 확보되기 전까지 임의 추정하지 않습니다."
           } >> out/global_rates_watch_alert.md
-
       - name: Publish watcher summary
         if: always()
         run: |
-          if [ -f out/global_rates_watch_status.md ]; then
-            cat out/global_rates_watch_status.md >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "글로벌 금리 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f out/yen_carry_confirmation.md ]; then
-            echo >> "$GITHUB_STEP_SUMMARY"
-            cat out/yen_carry_confirmation.md >> "$GITHUB_STEP_SUMMARY"
-          fi
-
+          if [ -f out/global_rates_watch_status.md ]; then cat out/global_rates_watch_status.md >> "$GITHUB_STEP_SUMMARY"; else echo "글로벌 금리 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f out/yen_carry_confirmation.md ]; then echo >> "$GITHUB_STEP_SUMMARY"; cat out/yen_carry_confirmation.md >> "$GITHUB_STEP_SUMMARY"; fi
       - name: Send threshold change to Telegram
         if: hashFiles('out/global_rates_watch_alert.md') != ''
         env:
@@ -106,108 +84,51 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
-          import datetime as dt
-          import json
-          import os
-          import pathlib
-          import urllib.parse
-          import urllib.request
+          import datetime as dt, json, os, pathlib, urllib.parse, urllib.request
           from zoneinfo import ZoneInfo
-
-          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
-          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
-
-          if not token or not chat_id:
-              print("Telegram secrets are not configured yet; alert state will NOT be persisted.")
-              raise SystemExit(0)
-
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
-              identity = json.loads(r.read().decode("utf-8"))
-          if not identity.get("ok"):
-              raise RuntimeError("Telegram getMe failed")
-          bot_username = str((identity.get("result") or {}).get("username") or "")
-
-          text = pathlib.Path("out/global_rates_watch_alert.md").read_text(encoding="utf-8").strip()
-
-          def split_message(value, limit=3900):
-              chunks, current = [], ""
+          token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip(); chat_id=(os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          if not token or not chat_id: print("Telegram secrets are not configured yet; alert state will NOT be persisted."); raise SystemExit(0)
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=25) as r: identity=json.loads(r.read().decode())
+          if not identity.get("ok"): raise RuntimeError("Telegram getMe failed")
+          bot_username=str((identity.get("result") or {}).get("username") or "")
+          text=pathlib.Path("out/global_rates_watch_alert.md").read_text(encoding="utf-8").strip()
+          def split_message(value,limit=3900):
+              chunks=[]; current=""
               for paragraph in value.split("\n\n"):
-                  candidate = paragraph if not current else current + "\n\n" + paragraph
-                  if len(candidate) <= limit:
-                      current = candidate
-                      continue
-                  if current:
-                      chunks.append(current)
-                      current = ""
-                  while len(paragraph) > limit:
-                      cut = paragraph.rfind("\n", 0, limit)
-                      if cut < 1:
-                          cut = limit
-                      chunks.append(paragraph[:cut])
-                      paragraph = paragraph[cut:].lstrip()
-                  current = paragraph
-              if current:
-                  chunks.append(current)
+                  candidate=paragraph if not current else current+"\n\n"+paragraph
+                  if len(candidate)<=limit: current=candidate; continue
+                  if current: chunks.append(current); current=""
+                  while len(paragraph)>limit:
+                      cut=paragraph.rfind("\n",0,limit)
+                      if cut<1: cut=limit
+                      chunks.append(paragraph[:cut]); paragraph=paragraph[cut:].lstrip()
+                  current=paragraph
+              if current: chunks.append(current)
               return chunks
-
-          message_ids = []
-          for idx, chunk in enumerate(split_message(text), start=1):
-              if idx > 1:
-                  chunk = f"글로벌 금리·엔캐리 경보 (계속 {idx})\n\n{chunk}"
-              payload = urllib.parse.urlencode({
-                  "chat_id": chat_id,
-                  "text": chunk,
-                  "disable_web_page_preview": "true",
-              }).encode("utf-8")
-              req = urllib.request.Request(
-                  f"https://api.telegram.org/bot{token}/sendMessage",
-                  data=payload,
-                  method="POST",
-              )
-              with urllib.request.urlopen(req, timeout=25) as r:
-                  result = json.loads(r.read().decode("utf-8"))
-              if not result.get("ok"):
-                  raise RuntimeError(f"Telegram rejected message: {result}")
-              message_ids.append(result.get("result", {}).get("message_id"))
-
-          confirmed = {
-              "status": "confirmed",
-              "bot_username": bot_username,
-              "message_ids": message_ids,
-              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
-          }
-          pathlib.Path("out/global_rates_watch_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
-          )
-          print(f"telegram_delivery_confirmed=true bot=@{bot_username} message_ids={message_ids}")
+          ids=[]
+          for idx,chunk in enumerate(split_message(text),1):
+              if idx>1: chunk=f"글로벌 금리·엔캐리 경보 (계속 {idx})\n\n{chunk}"
+              payload=urllib.parse.urlencode({"chat_id":chat_id,"text":chunk,"disable_web_page_preview":"true"}).encode()
+              req=urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage",data=payload,method="POST")
+              with urllib.request.urlopen(req,timeout=25) as r: result=json.loads(r.read().decode())
+              if not result.get("ok"): raise RuntimeError(f"Telegram rejected message: {result}")
+              ids.append(result.get("result",{}).get("message_id"))
+          confirmed={"status":"confirmed","bot_username":bot_username,"message_ids":ids,"confirmed_at_kst":dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
+          pathlib.Path("out/global_rates_watch_telegram_confirmed.json").write_text(json.dumps(confirmed,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print(f"telegram_delivery_confirmed=true bot=@{bot_username} message_ids={ids}")
           PY
-
       - name: Persist dedupe state
         if: always()
         run: |
           if [ ! -f out/global_rates_watch_alert.md ] || [ -f out/global_rates_watch_telegram_confirmed.json ]; then
-            if [ -f out/global_rates_watch_pending_state.json ]; then
-              cp out/global_rates_watch_pending_state.json data/global_rates_watch_state.json
-            fi
-          else
-            echo "Alert was not confirmed on Telegram; state intentionally not advanced."
-          fi
-
+            if [ -f out/global_rates_watch_pending_state.json ]; then cp out/global_rates_watch_pending_state.json data/global_rates_watch_state.json; fi
+          else echo "Alert was not confirmed on Telegram; state intentionally not advanced."; fi
       - name: Commit confirmed/baseline state
         if: always()
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/global_rates_watch_state.json
-          if git diff --cached --quiet; then
-            echo "Global rates state unchanged"
-          else
-            git commit -m "Update global rates watcher state"
-            git pull --rebase origin main
-            git push
-          fi
-
+          if git diff --cached --quiet; then echo "Global rates state unchanged"; else git commit -m "Update global rates watcher state"; git pull --rebase origin main; git push; fi
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
