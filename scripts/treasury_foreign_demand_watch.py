@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "out"
 DATA = ROOT / "data"
 STATE = DATA / "treasury_foreign_demand_state.json"
+NEXT_STATE = DATA / "treasury_foreign_demand_state_next.json"
 ALERT = OUT / "treasury_foreign_demand_alert.md"
 TITLE = OUT / "treasury_foreign_demand_title.txt"
 DETAIL = OUT / "treasury_foreign_demand_detail.json"
@@ -32,7 +33,6 @@ STATUS = OUT / "treasury_foreign_demand_status.md"
 TABLE5 = "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt"
 TABLE3 = "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table3.txt"
 H41 = "https://www.federalreserve.gov/releases/h41/current/"
-TIC_HOME = "https://home.treasury.gov/data/treasury-international-capital-tic-system"
 
 TRACKED = [
     "Japan",
@@ -86,21 +86,17 @@ def fnum(value: str | None) -> float | None:
         return None
 
 
-def fmt_b(v: float | None, signed: bool = False) -> str:
-    if v is None:
-        return "확인 불가"
-    sign = "+" if signed and v > 0 else ""
-    return f"{sign}{v:,.1f}억달러" if abs(v) < 100 else f"{sign}{v/10:,.2f}조달러"
+def fmt_bn(v: float | None, *, signed: bool = False) -> str:
+    """Format a value expressed in billions of U.S. dollars.
 
-
-def fmt_bn(v: float | None, signed: bool = False) -> str:
-    """Input is billions of dollars; render in 억달러/조달러 without unit mistakes."""
+    1 billion dollars = 10 억달러. Values >= $1tn are shown in 조달러.
+    """
     if v is None:
         return "확인 불가"
     sign = "+" if signed and v > 0 else ""
     if abs(v) >= 1000:
         return f"{sign}{v/1000:,.3f}조달러"
-    return f"{sign}{v:,.1f}억달러"
+    return f"{sign}{v*10:,.0f}억달러"
 
 
 def parse_table5(text: str) -> tuple[list[str], dict[str, list[float | None]]]:
@@ -144,9 +140,6 @@ def strip_html(text: str) -> str:
 
 def parse_h41(text: str) -> dict[str, float | str] | None:
     plain = strip_html(text)
-    # The H.4.1 row is expressed in millions of dollars. Capture the row and its
-    # week-over-week and year-over-year changes. Page layouts occasionally vary,
-    # so fail closed rather than inventing values.
     pat = re.compile(
         r"Marketable U\.S\. Treasury securities\s+1\s+([\d,]+)\s+([+-])?\s*([\d,]+)\s+([+-])?\s*([\d,]+)\s+([\d,]+)",
         re.I,
@@ -161,7 +154,6 @@ def parse_h41(text: str) -> dict[str, float | str] | None:
     yoy = float(m.group(5).replace(",", "")) / 1000.0
     if m.group(4) == "-":
         yoy = -yoy
-    # Best-effort date: first Wednesday date near the memorandum table.
     date_match = re.search(r"Wednesday\s+([A-Z][a-z]{2}\s+\d{1,2},\s+2026)", plain)
     date = date_match.group(1) if date_match else datetime.now(KST).date().isoformat()
     return {"date": date, "value_bn": value, "weekly_bn": weekly, "yoy_bn": yoy}
@@ -180,16 +172,10 @@ def classify(holding_change_bn: float, net_flow_bn: float | None, val_bn: float 
 
 
 def build_tic_alert(months: list[str], t5: dict[str, list[float | None]], t3: dict[str, dict[str, float | None]]) -> tuple[str, str, dict]:
-    latest, prev = months[0], months[1]
+    latest = months[0]
     total_now = t5.get("Grand Total", [None])[0]
     total_prev = t5.get("Grand Total", [None, None])[1]
-    total_change = (total_now - total_prev) if total_now is not None and total_prev is not None else None
-
-    lines = [
-        f"🇺🇸 미 국채 해외수요 점검 — TIC {latest}",
-        "",
-        "핵심 판단",
-    ]
+    total_change = total_now - total_prev if total_now is not None and total_prev is not None else None
 
     core_change = 0.0
     core_net = 0.0
@@ -198,6 +184,7 @@ def build_tic_alert(months: list[str], t5: dict[str, list[float | None]], t3: di
     core_val_known = True
     country_lines: list[str] = []
     details: dict[str, dict] = {}
+
     for name in TRACKED:
         vals = t5.get(name, [])
         if len(vals) < 2 or vals[0] is None or vals[1] is None:
@@ -218,38 +205,43 @@ def build_tic_alert(months: list[str], t5: dict[str, list[float | None]], t3: di
                 core_val_known = False
             else:
                 core_val += val_bn
-        country_lines.append(
-            f"• {DISPLAY[name]}: {fmt_bn(vals[0])} / 전월 {change:+.1f}억달러"
-            + (f" / 순거래 {net_bn:+.1f}억달러" if net_bn is not None else "")
-            + (f" / 장기채 평가효과 {val_bn:+.1f}억달러" if val_bn is not None else "")
-        )
+        line = f"• {DISPLAY[name]}: {fmt_bn(vals[0])} / 전월 {fmt_bn(change, signed=True)}"
+        if net_bn is not None:
+            line += f" / 순거래 {fmt_bn(net_bn, signed=True)}"
+        if val_bn is not None:
+            line += f" / 장기채 평가효과 {fmt_bn(val_bn, signed=True)}"
+        country_lines.append(line)
         details[name] = {"holding_bn": vals[0], "change_bn": change, "net_bn": net_bn, "lt_val_bn": val_bn}
 
     core_net_v = core_net if core_net_known else None
     core_val_v = core_val if core_val_known else None
     core_signal = classify(core_change, core_net_v, core_val_v)
-    lines += [
-        f"일본+영국+중국 보유액 변화: {core_change:+.1f}억달러.",
+
+    lines = [
+        f"🇺🇸 미 국채 해외수요 점검 — TIC {latest}",
+        "",
+        "핵심 판단",
+        f"일본+영국+중국 보유액 변화: {fmt_bn(core_change, signed=True)}.",
         f"판정: {core_signal}.",
         "※ ‘보유액 감소’와 ‘실제 매도’는 같은 말이 아닙니다. TIC 거래·평가변동을 같이 봅니다.",
         "",
         "확정 숫자",
-        f"• 전체 외국인 미 국채 보유액: {fmt_bn(total_now)} / 전월 {total_change:+.1f}억달러" if total_change is not None else "• 전체 외국인 보유액: 확인 불가",
+        f"• 전체 외국인 미 국채 보유액: {fmt_bn(total_now)} / 전월 {fmt_bn(total_change, signed=True)}",
         *country_lines,
         "",
         "시장 의미",
         "• 실제 해외 순매도가 확대되면 국채를 받아줄 민간 수요가 더 필요 → 기간 프리미엄·10년/30년 금리 상승 압력.",
-        "• 반대로 보유액 감소가 주로 평가손실이면 ‘외국이 대규모로 던졌다’는 해석은 과장입니다.",
+        "• 보유액 감소가 주로 평가손실이면 ‘외국이 대규모로 던졌다’는 해석은 과장입니다.",
         "• 장기 실질금리가 같이 오르면 AI·성장주는 할인율 부담이 커집니다.",
         "",
         "주의",
         "• 영국·벨기에·룩셈부르크·케이맨은 보관기관 위치 효과가 커 최종 실소유자로 단정하면 안 됩니다.",
-        "• ‘중국이 판 물량을 영국이 그대로 샀다’는 식의 1:1 연결도 TIC만으로는 확인할 수 없습니다.",
+        "• ‘중국이 판 물량을 영국이 그대로 샀다’는 1:1 연결도 TIC만으로는 확인할 수 없습니다.",
         "",
         "다음 확인",
         "• 다음 월간 TIC: 국가별 보유액 + 순거래 + 장기채 평가변동",
         "• 주간 Fed H.4.1 해외 공식계정 국채 보관잔액",
-        "• 10년·30년 입찰의 응찰률·꼬리·간접낙찰 비중으로 실제 수요를 재검증",
+        "• 10년·30년 입찰 응찰률·꼬리·간접낙찰 비중으로 실제 수요 재검증",
         "",
         f"원문: {TABLE5}",
         f"거래·평가 분해: {TABLE3}",
@@ -304,28 +296,30 @@ def main() -> int:
         if material and not alerts:
             direction = "감소" if float(h41["weekly_bn"]) < 0 else "증가"
             title = "🇺🇸 Fed 해외 공식계정 미 국채 보관잔액 급변"
-            body = "\n".join([
+            body_lines = [
                 title,
                 "",
                 "핵심 판단",
-                f"해외 공식·국제계정의 시장성 미 국채 보관잔액이 한 주 {abs(float(h41['weekly_bn'])):.1f}억달러 {direction}했습니다.",
-                "TIC보다 좁은 범위의 주간 신호이므로 실제 국가별 매매와 동일시하지는 않습니다.",
+                f"해외 공식·국제계정의 시장성 미 국채 보관잔액이 한 주 {fmt_bn(abs(float(h41['weekly_bn'])))} {direction}했습니다.",
+                "TIC보다 좁은 범위의 주간 신호이므로 실제 국가별 매매와 동일시하지 않습니다.",
                 "",
                 "현재 숫자",
                 f"• 보관잔액: {fmt_bn(float(h41['value_bn']))}",
-                f"• 주간 변화: {float(h41['weekly_bn']):+.1f}억달러",
-                f"• 전년 대비: {float(h41['yoy_bn']):+.1f}억달러",
-                *( [f"• 4주 변화: {four_week:+.1f}억달러"] if four_week is not None else [] ),
+                f"• 주간 변화: {fmt_bn(float(h41['weekly_bn']), signed=True)}",
+                f"• 전년 대비: {fmt_bn(float(h41['yoy_bn']), signed=True)}",
+            ]
+            if four_week is not None:
+                body_lines.append(f"• 4주 변화: {fmt_bn(four_week, signed=True)}")
+            body_lines += [
                 "",
                 "시장 의미",
                 "• 지속 감소면 해외 공식수요 약화 가능성 → 민간이 더 많은 국채를 흡수해야 해 기간 프리미엄 상승 압력.",
                 "• 단 한 주 변화는 결제·보관 이동일 수 있어 월간 TIC와 국채 입찰로 확인합니다.",
                 "",
                 f"원문: {H41}",
-            ])
-            alerts.append((title, body, {"type": "h41", **h41, "four_week_bn": four_week}))
+            ]
+            alerts.append((title, "\n".join(body_lines), {"type": "h41", **h41, "four_week_bn": four_week}))
 
-    # Update state every run so weekly history can build even when no Telegram alert fires.
     state["last_checked_kst"] = datetime.now(KST).isoformat(timespec="seconds")
     state["h41_history"] = h41_history
     if alerts:
@@ -335,9 +329,7 @@ def main() -> int:
         DETAIL.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         if detail.get("type") == "tic":
             state["pending_tic_month"] = detail.get("month")
-    (DATA / "treasury_foreign_demand_state_next.json").write_text(
-        json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    NEXT_STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     STATUS.write_text(
         "# 미 국채 해외수요 점검\n\n"
         f"- 조회시각: {state['last_checked_kst']}\n"
