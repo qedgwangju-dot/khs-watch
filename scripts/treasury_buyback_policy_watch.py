@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Watch official Treasury long-end buyback policy and special announcements.
+"""Watch official Treasury long-end buyback policy changes.
 
-Alerts only on material policy changes affecting the 10Y-20Y or 20Y-30Y
-nominal liquidity-support buyback program. It watches both the quarterly
-schedule and TreasuryDirect SPL special-announcement PDFs so an intra-quarter
-change is not missed while the tentative schedule still shows its old values.
+Sources:
+1) U.S. Treasury press releases (catches intra-quarter policy announcements)
+2) TreasuryDirect special buyback announcement PDFs
+3) The tentative quarterly buyback schedule
+
+Only material changes affecting the 10Y-20Y or 20Y-30Y nominal
+liquidity-support buyback program generate an alert.
 """
 
 from __future__ import annotations
@@ -14,8 +17,10 @@ import io
 import json
 import re
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
+from html.parser import HTMLParser
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -33,6 +38,7 @@ TITLE = OUT / "treasury_buyback_policy_title.txt"
 DETAIL = OUT / "treasury_buyback_policy_detail.json"
 STATUS = OUT / "treasury_buyback_policy_status.md"
 
+PRESS_RELEASES = "https://home.treasury.gov/news/press-releases"
 BUYBACK_PAGE = "https://treasurydirect.gov/auctions/announcements-data-results/buy-backs/"
 SCHEDULE_PDF = "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf"
 FAQ = "https://www.treasurydirect.gov/help-center/faqs/buyback-faqs/"
@@ -41,12 +47,64 @@ SPECIAL_TEMPLATE = "https://www.treasurydirect.gov/instit/annceresult/press/prea
 
 BUCKETS = ("10Y to 20Y", "20Y to 30Y")
 DEFAULT_BASELINE_BN = 2.0
+MONTHS = {
+    "january": 1,
+    "february": 2,
+    "march": 3,
+    "april": 4,
+    "may": 5,
+    "june": 6,
+    "july": 7,
+    "august": 8,
+    "september": 9,
+    "october": 10,
+    "november": 11,
+    "december": 12,
+}
+
+
+class LinkCollector(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.links: list[tuple[str, str]] = []
+        self._href: str | None = None
+        self._text: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() != "a":
+            return
+        href = dict(attrs).get("href")
+        if href:
+            self._href = href
+            self._text = []
+
+    def handle_data(self, data: str) -> None:
+        if self._href is not None:
+            self._text.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "a" and self._href is not None:
+            text = re.sub(r"\s+", " ", " ".join(self._text)).strip()
+            self.links.append((self._href, text))
+            self._href = None
+            self._text = []
+
+
+class TextCollector(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.parts: list[str] = []
+
+    def handle_data(self, data: str) -> None:
+        value = re.sub(r"\s+", " ", data).strip()
+        if value:
+            self.parts.append(value)
 
 
 def fetch_bytes(url: str) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 khs-watch/1.1"})
-    with urllib.request.urlopen(req, timeout=25) as r:
-        return r.read()
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 khs-watch/1.2"})
+    with urllib.request.urlopen(req, timeout=25) as response:
+        return response.read()
 
 
 def maybe_fetch(url: str) -> bytes | None:
@@ -68,12 +126,18 @@ def pdf_text(data: bytes) -> str:
     return "\n".join((page.extract_text() or "") for page in reader.pages)
 
 
+def html_text(data: bytes) -> str:
+    parser = TextCollector()
+    parser.feed(data.decode("utf-8", errors="replace"))
+    return re.sub(r"\s+", " ", " ".join(parser.parts)).strip()
+
+
 def parse_bucket_maxima(text: str) -> dict[str, list[float]]:
     clean = re.sub(r"\s+", " ", text)
     out: dict[str, list[float]] = {bucket: [] for bucket in BUCKETS}
     for bucket in BUCKETS:
-        for m in re.finditer(re.escape(bucket), clean, flags=re.I):
-            window = clean[m.end() : m.end() + 280]
+        for match in re.finditer(re.escape(bucket), clean, flags=re.I):
+            window = clean[match.end() : match.end() + 280]
             amount = re.search(r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*billion", window, flags=re.I)
             if amount:
                 out[bucket].append(float(amount.group(1)))
@@ -97,73 +161,164 @@ def fmt_krw(usd_bn: float, fx: float) -> str:
     return f"약 {trillion:,.2f}조원" if trillion >= 1 else f"약 {trillion * 10000:,.0f}억원"
 
 
-def is_long_end_buyback_special(text: str) -> bool:
+def is_long_end_buyback_change(text: str) -> bool:
     clean = re.sub(r"\s+", " ", text).lower()
-    if "buyback" not in clean:
+    if "buyback" not in clean and "buy-back" not in clean:
         return False
     long_terms = (
         "10-year to 20-year",
         "10 year to 20 year",
+        "10- to 20-year",
         "10y to 20y",
         "20-year to 30-year",
         "20 year to 30 year",
+        "20- to 30-year",
         "20y to 30y",
         "long-end",
         "long end",
     )
-    policy_terms = ("increase", "decrease", "double", "maximum", "liquidity support", "size")
-    return any(x in clean for x in long_terms) and any(x in clean for x in policy_terms)
+    policy_terms = (
+        "increase",
+        "decrease",
+        "double",
+        "maximum",
+        "liquidity support",
+        "size",
+        "frequency",
+        "expand",
+        "reduce",
+    )
+    return any(term in clean for term in long_terms) and any(term in clean for term in policy_terms)
 
 
-def special_amounts(text: str) -> list[float]:
+def dollar_amounts_bn(text: str) -> list[float]:
     clean = re.sub(r"\s+", " ", text)
-    vals: list[float] = []
-    for raw in re.findall(r"\$\s*([0-9][0-9,]*(?:\.[0-9]+)?)\s*(billion|million)?", clean, flags=re.I):
-        num = float(raw[0].replace(",", ""))
-        unit = raw[1].lower()
+    values: list[float] = []
+    for number, unit in re.findall(
+        r"\$\s*([0-9][0-9,]*(?:\.[0-9]+)?)\s*(billion|million)?",
+        clean,
+        flags=re.I,
+    ):
+        value = float(number.replace(",", ""))
+        unit = unit.lower()
         if unit == "million":
-            num /= 1000.0
+            value /= 1000.0
         elif unit == "":
-            # Most special releases use full dollar values; convert if clearly > 1m.
-            if num >= 1_000_000:
-                num /= 1_000_000_000.0
+            if value >= 1_000_000:
+                value /= 1_000_000_000.0
             else:
                 continue
-        if 0.1 <= num <= 100:
-            vals.append(num)
-    return vals
+        if 0.1 <= value <= 200:
+            values.append(value)
+    return values
+
+
+def release_date_iso(text: str) -> str | None:
+    match = re.search(
+        r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+([0-9]{1,2}),\s+(20[0-9]{2})\b",
+        text,
+        flags=re.I,
+    )
+    if not match:
+        return None
+    month = MONTHS[match.group(1).lower()]
+    return f"{int(match.group(3)):04d}-{month:02d}-{int(match.group(2)):02d}"
+
+
+def press_release_links() -> list[tuple[str, str]]:
+    raw = fetch_bytes(PRESS_RELEASES)
+    parser = LinkCollector()
+    parser.feed(raw.decode("utf-8", errors="replace"))
+    unique: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for href, title in parser.links:
+        url = urllib.parse.urljoin(PRESS_RELEASES, href)
+        if "/news/press-releases/" not in url or url.rstrip("/") == PRESS_RELEASES.rstrip("/"):
+            continue
+        if url in seen:
+            continue
+        seen.add(url)
+        unique.append((url, title))
+    return unique
+
+
+def find_new_press_releases(state: dict) -> list[dict]:
+    seen_ids = set(state.get("seen_source_ids", []))
+    found: list[dict] = []
+    for url, title in press_release_links()[:40]:
+        source_id = f"press:{url}"
+        if source_id in seen_ids:
+            continue
+        title_lower = title.lower()
+        if not any(key in title_lower for key in ("buyback", "buy-back", "long-end", "refunding")):
+            continue
+        raw = maybe_fetch(url)
+        if not raw:
+            continue
+        text = html_text(raw)
+        combined = f"{title} {text}"
+        if not is_long_end_buyback_change(combined):
+            continue
+        found.append({
+            "kind": "press_release",
+            "source_id": source_id,
+            "url": url,
+            "title": title or "미 재무부 공식 보도자료",
+            "date": release_date_iso(text),
+            "text": text,
+            "amounts_bn": dollar_amounts_bn(text),
+        })
+    return found
 
 
 def find_new_specials(state: dict) -> list[dict]:
-    seen = set(state.get("seen_long_end_special_shas", []))
+    seen_ids = set(state.get("seen_source_ids", []))
+    old_seen_shas = set(state.get("seen_long_end_special_shas", []))
     found: list[dict] = []
     now_et = datetime.now(ET)
-    # Treasury special releases are dated in ET. Scan today and the two prior
-    # business/calendar days because indexing and workflow timing can lag.
     for delta in range(0, 3):
         day = now_et.date() - timedelta(days=delta)
         ymd = day.strftime("%Y%m%d")
-        for n in range(1, 13):
-            url = SPECIAL_TEMPLATE.format(year=day.year, ymd=ymd, n=n)
+        for number in range(1, 13):
+            url = SPECIAL_TEMPLATE.format(year=day.year, ymd=ymd, n=number)
             raw = maybe_fetch(url)
             if not raw or not raw.startswith(b"%PDF"):
                 continue
             sha = hashlib.sha256(raw).hexdigest()
-            if sha in seen:
+            source_id = f"spl:{sha}"
+            if source_id in seen_ids or sha in old_seen_shas:
                 continue
             try:
                 text = pdf_text(raw)
             except Exception:
                 continue
-            if is_long_end_buyback_special(text):
+            if is_long_end_buyback_change(text):
                 found.append({
+                    "kind": "special_pdf",
+                    "source_id": source_id,
                     "url": url,
-                    "sha256": sha,
+                    "title": "TreasuryDirect 특별공지",
                     "date": day.isoformat(),
                     "text": re.sub(r"\s+", " ", text).strip(),
-                    "amounts_bn": special_amounts(text),
+                    "amounts_bn": dollar_amounts_bn(text),
+                    "legacy_sha": sha,
                 })
     return found
+
+
+def build_change_lines(source: dict, fx: float) -> list[str]:
+    lines = [f"• 공식 출처: <b>{source.get('title') or '미 재무부 공식 발표'}</b>"]
+    if source.get("date"):
+        lines.append(f"• 발표일: {source['date']}")
+    amounts = sorted(set(source.get("amounts_bn") or []))
+    if amounts:
+        lines.append("• 본문에서 확인된 주요 금액: " + ", ".join(f"${value:g}B" for value in amounts))
+    if 2.0 in amounts and any(value >= 4.0 for value in amounts):
+        higher = min(value for value in amounts if value >= 4.0)
+        lines.append(
+            f"• 회당 최대 $2B({fmt_krw(2.0, fx)}) → 최소 ${higher:g}B({fmt_krw(higher, fx)})로 확대"
+        )
+    return lines
 
 
 def build_common_body(fx: float, fx_date: str, source_url: str, change_lines: list[str], verdict: str) -> str:
@@ -173,47 +328,49 @@ def build_common_body(fx: float, fx_date: str, source_url: str, change_lines: li
         "",
         "<b>무엇이 바뀌었나</b>",
         *change_lines,
-        "• 대상은 10~20년·20~30년 구간의 <b>off-the-run 명목 이표채 유동성 지원 바이백</b>입니다.",
+        "• 대상은 10~20년·20~30년 구간의 <b>비지표물 명목 이표채 유동성 지원 바이백</b>입니다.",
         "",
         "<b>금리 해석</b>",
-        "• 재무부가 오래된 장기채를 더 많이 사서 소각할 수 있음 → 유통시장 장기채 공급 부담 완화 → 시장 유동성 개선 → 기간 프리미엄·10년/30년 금리 상승 압력을 일부 완화하는 방향입니다.",
-        "• 장기금리 급등 국면에서는 장기 듀레이션 채권과 AI·성장주의 할인율에 단기적으로 우호적인 신호입니다.",
+        "• 재무부가 오래된 장기채를 더 많이 되살 수 있음 → 딜러 재고·유통 공급 부담 완화 → 시장 유동성 개선 → 기간 프리미엄·10년/30년 금리 상승 압력을 일부 완화하는 방향입니다.",
+        "• 장기 실질금리까지 내려오면 AI·성장주의 할인율에도 단기적으로 우호적입니다.",
         "",
         "<b>중요한 오해 방지</b>",
         "• <b>신규 10년·20년·30년물 발행 확대가 아닙니다.</b> 기존에 유통 중인 비지표물 국채를 재무부가 되사는 조치입니다.",
         "• Fed의 QE가 아닙니다. 재무부의 부채관리 작업이라 은행 준비금을 새로 만드는 통화완화와 다릅니다.",
-        "• 금액은 최대 매입 상한입니다. 실제 매입은 제시 물량·가격에 따라 상한보다 작거나 0일 수도 있습니다.",
+        "• 바이백 재원은 다른 국채 발행 등으로 조달되므로 국가부채·순국채 공급 문제 자체를 구조적으로 없애지는 못합니다.",
+        "• 발표 금액은 최대 매입 상한일 수 있습니다. 실제 매입은 제시 물량·가격에 따라 상한보다 작을 수 있습니다.",
         "",
         "<b>다음 확인</b>",
-        "• 실제 매입액 / 총 제시액 / offer-to-max 비율",
+        "• 실제 매입액 / 총 제시액 / 제시액÷매입상한 비율",
         "• 20년·30년 입찰 꼬리와 간접낙찰 비중",
         "• 10년·30년 명목금리·실질금리가 실제로 내려오는지",
+        "• 다음 QRA에서 바이백 규모와 이표채 발행 가이던스가 어떻게 바뀌는지",
         "",
         f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.1f}원",
-        f'<a href="{source_url}">원문</a> · <a href="{BUYBACK_PAGE}">바이백 공지·결과</a> · <a href="{FAQ}">바이백 설명</a>',
+        f'<a href="{source_url}">미 재무부 공식 발표</a> · <a href="{BUYBACK_PAGE}">바이백 공지·결과</a> · <a href="{FAQ}">바이백 설명</a>',
     ])
 
 
 def main() -> int:
     DATA.mkdir(parents=True, exist_ok=True)
     OUT.mkdir(parents=True, exist_ok=True)
-    for p in (ALERT, TITLE, DETAIL):
+    for path in (ALERT, TITLE, DETAIL):
         try:
-            p.unlink()
+            path.unlink()
         except FileNotFoundError:
             pass
 
     state = load_state()
-    raw = fetch_bytes(SCHEDULE_PDF)
-    text = pdf_text(raw)
-    maxima = parse_bucket_maxima(text)
-    schedule_sha = hashlib.sha256(raw).hexdigest()
+    raw_schedule = fetch_bytes(SCHEDULE_PDF)
+    schedule_text = pdf_text(raw_schedule)
+    maxima = parse_bucket_maxima(schedule_text)
+    schedule_sha = hashlib.sha256(raw_schedule).hexdigest()
     fx, fx_date = latest_fx()
 
     current: dict[str, float | None] = {}
     for bucket in BUCKETS:
-        vals = maxima.get(bucket) or []
-        current[bucket] = max(vals) if vals else None
+        values = maxima.get(bucket) or []
+        current[bucket] = max(values) if values else None
 
     previous = state.get("long_end_max_bn") or {bucket: DEFAULT_BASELINE_BN for bucket in BUCKETS}
     schedule_changes: list[dict] = []
@@ -223,52 +380,68 @@ def main() -> int:
         if cur is not None and abs(cur - prev) > 1e-9:
             schedule_changes.append({"bucket": bucket, "previous_bn": prev, "current_bn": cur})
 
+    press_releases = find_new_press_releases(state)
     specials = find_new_specials(state)
+    official_changes = press_releases + specials
+
     checked = datetime.now(KST).isoformat(timespec="seconds")
     next_state = {
         **state,
         "last_checked_kst": checked,
         "schedule_sha256": schedule_sha,
-        "long_end_max_bn": {k: (v if v is not None else previous.get(k, DEFAULT_BASELINE_BN)) for k, v in current.items()},
+        "long_end_max_bn": {
+            key: (value if value is not None else previous.get(key, DEFAULT_BASELINE_BN))
+            for key, value in current.items()
+        },
     }
 
     detail: dict | None = None
-    if specials:
-        sp = specials[0]
-        amounts = sorted(set(sp.get("amounts_bn") or []))
-        amount_text = ", ".join(f"${x:g}B" for x in amounts) if amounts else "공식 특별공지 본문 참조"
-        change_lines = [
-            f"• 미 재무부 TreasuryDirect <b>특별공지</b>에서 장기물 바이백 정책 변경 감지",
-            f"• 공지에서 확인된 금액 후보: {amount_text}",
-        ]
-        # If $2B and >=$4B are both present, explain the doubling explicitly.
-        if 2.0 in amounts and any(x >= 4.0 for x in amounts):
-            hi = min(x for x in amounts if x >= 4.0)
-            change_lines.append(f"• 회당 최대 $2B({fmt_krw(2.0, fx)}) → 최소 ${hi:g}B({fmt_krw(hi, fx)})로 확대")
+    if official_changes:
+        source = official_changes[0]
+        change_lines = build_change_lines(source, fx)
         body = build_common_body(
             fx,
             fx_date,
-            sp["url"],
+            source["url"],
             change_lines,
-            "장기물 바이백 특별공지입니다. 재무부가 신규 장기채를 더 찍는 것이 아니라 기존 장기채를 더 적극적으로 흡수하는 방향이라 장기물 수급에는 우호적입니다.",
+            "미 재무부가 장기 비지표물 국채를 더 적극적으로 흡수하는 정책 변경을 발표했습니다. 장기물 수급·유동성에는 우호적이지만 재정적자와 전체 국채 공급 문제를 해결하는 조치는 아닙니다.",
         )
-        detail = {"type": "special_announcement", "special": sp, "fx": fx, "fx_date": fx_date, "checked_kst": checked}
-        next_state["pending_special_sha"] = sp["sha256"]
+        detail = {
+            "type": source["kind"],
+            "source": source,
+            "fx": fx,
+            "fx_date": fx_date,
+            "checked_kst": checked,
+        }
+        pending_ids = [source["source_id"]]
+        # If Treasury published a press release and a same-day TreasuryDirect
+        # special notice for the same policy action, suppress a duplicate alert.
+        if source["kind"] == "press_release":
+            for special in specials:
+                if not source.get("date") or special.get("date") == source.get("date"):
+                    pending_ids.append(special["source_id"])
+        next_state["pending_source_ids"] = list(dict.fromkeys(pending_ids))
     elif schedule_changes:
-        increases = [c for c in schedule_changes if c["current_bn"] > c["previous_bn"]]
+        increases = [change for change in schedule_changes if change["current_bn"] > change["previous_bn"]]
         verdict = (
             "장기물 바이백 상한 확대입니다. 신규 장기채 발행 확대가 아니라 기존 장기채 흡수가 늘어나는 방향이라 장기물 수급에 우호적입니다."
-            if increases else
-            "장기물 바이백 상한 축소입니다. 재무부의 유동성 지원이 줄어드는 방향이라 장기물 수급에는 부담입니다."
+            if increases
+            else "장기물 바이백 상한 축소입니다. 재무부의 유동성 지원이 줄어드는 방향이라 장기물 수급에는 부담입니다."
         )
-        change_lines = []
-        for c in schedule_changes:
+        change_lines: list[str] = []
+        for change in schedule_changes:
             change_lines.append(
-                f"• {c['bucket']}: 회당 최대 ${c['previous_bn']:g}B → ${c['current_bn']:g}B "
-                f"({fmt_krw(c['previous_bn'], fx)} → {fmt_krw(c['current_bn'], fx)})"
+                f"• {change['bucket']}: 회당 최대 ${change['previous_bn']:g}B → ${change['current_bn']:g}B "
+                f"({fmt_krw(change['previous_bn'], fx)} → {fmt_krw(change['current_bn'], fx)})"
             )
         body = build_common_body(fx, fx_date, SCHEDULE_PDF, change_lines, verdict)
-        detail = {"type": "schedule_change", "changes": schedule_changes, "fx": fx, "fx_date": fx_date, "checked_kst": checked}
+        detail = {
+            "type": "schedule_change",
+            "changes": schedule_changes,
+            "fx": fx,
+            "fx_date": fx_date,
+            "checked_kst": checked,
+        }
         next_state["pending_schedule_change"] = schedule_changes
 
     if detail is not None:
@@ -282,7 +455,8 @@ def main() -> int:
         f"- 조회시각: {checked}\n"
         f"- 10Y~20Y 일정상 최대: {current.get('10Y to 20Y')}B\n"
         f"- 20Y~30Y 일정상 최대: {current.get('20Y to 30Y')}B\n"
-        f"- 신규 장기물 특별공지: {'예' if specials else '아니오'}\n"
+        f"- 신규 관련 재무부 보도자료: {'예' if press_releases else '아니오'}\n"
+        f"- 신규 TreasuryDirect 특별공지: {'예' if specials else '아니오'}\n"
         f"- 일정 자체 변경: {'예' if schedule_changes else '아니오'}\n",
         encoding="utf-8",
     )
