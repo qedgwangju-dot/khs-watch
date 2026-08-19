@@ -11,7 +11,7 @@ SPEC.loader.exec_module(MOD)
 
 
 class ClarityFormatterTest(unittest.TestCase):
-    def test_sec_regulation_crypto_assets_is_korean_and_clickable(self):
+    def test_sec_regulation_crypto_assets_is_korean_clickable_and_investment_specific(self):
         event = {
             "source": "SEC 보도자료",
             "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
@@ -26,7 +26,27 @@ class ClarityFormatterTest(unittest.TestCase):
         self.assertIn("쉽게 말하면", rendered)
         self.assertIn('<a href="https://www.sec.gov/newsroom/press-releases/2026-76-sec-proposes-new-regulation-crypto-assets">원문</a>', rendered)
         self.assertNotIn("The Securities and Exchange Commission today announced", rendered)
+        self.assertIn("<b>핵심 한 줄 요약</b>", rendered)
+        self.assertIn("돈 버는 능력·할인율은 개선 방향", rendered)
+        self.assertIn("Coinbase", rendered)
+        self.assertIn("최대 실패 경로", rendered)
+        self.assertNotIn("새 공식 변화가 있을 때만 알리고", rendered)
+        self.assertNotIn("링크는 ‘원문’ 글자에 연결합니다", rendered)
         self.assertLessEqual(max(map(len, chunks)), 3900)
+
+    def test_schedule_change_summary_only_marks_timeline_as_changed(self):
+        event = {
+            "source": "상원 본회의",
+            "event_type": "상원 본회의 일정",
+            "title": "Senate schedules consideration of H.R. 3633",
+            "url": "https://www.senate.gov/",
+            "date": "2026-09-14",
+            "detail": "The Senate scheduled consideration of H.R. 3633.",
+        }
+        summary = MOD.core_summary(event)
+        self.assertIn("시간표만 가시화", summary)
+        self.assertIn("돈 버는 능력은 바뀌지 않았고", summary)
+        self.assertIn("표결 연기", summary)
 
 
 if __name__ == "__main__":
