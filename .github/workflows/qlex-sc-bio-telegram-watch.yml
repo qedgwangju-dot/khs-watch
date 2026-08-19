@@ -15,6 +15,7 @@ on:
           - "false"
           - "true"
   push:
+    # Workflow-file-only push trigger is retained for controlled health checks.
     paths:
       - ".github/workflows/qlex-sc-bio-telegram-watch.yml"
 
