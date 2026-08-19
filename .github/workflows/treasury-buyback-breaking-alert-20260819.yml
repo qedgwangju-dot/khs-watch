@@ -1,4 +1,5 @@
 name: Treasury long-end buyback breaking alert 2026-08-19
+# retrigger after workflow exists on default branch
 
 on:
   push:
