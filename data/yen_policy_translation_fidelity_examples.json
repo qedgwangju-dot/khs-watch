@@ -1,0 +1,14 @@
+{
+  "examples": [
+    {
+      "source": "Wall Street Journal",
+      "original": "BOJ Has Chance to Support Yen With September Rate Hike",
+      "faithful_translation": "BOJ는 9월 금리 인상으로 엔화를 지지할 기회가 있다",
+      "classification": "BOJ 9월 인상 전망·시장 기대",
+      "must_not_be_rendered_as": [
+        "BOJ가 9월 금리 인상을 결정했다",
+        "BOJ가 9월 금리 인상을 확정했다"
+      ]
+    }
+  ]
+}

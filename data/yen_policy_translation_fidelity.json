@@ -1,0 +1,16 @@
+{
+  "status": "validation",
+  "policy": {
+    "translation": "Preserve source actor, timing, modality, attribution and direction; never upgrade possibility or forecast into fact.",
+    "evidence_scope": "Alerts disclose when they rely on Google News headline/RSS summary rather than full article text.",
+    "interpretation": "Market interpretation must be visibly separated from source translation and labeled as outside-source linkage.",
+    "full_text_rule": "Do not invent or infer article-body details when the full original text is unavailable."
+  },
+  "regression_examples": [
+    {
+      "original": "BOJ Has Chance to Support Yen With September Rate Hike",
+      "faithful_ko": "BOJ는 9월 금리 인상으로 엔화를 지지할 기회가 있다",
+      "forbidden_upgrade": "BOJ가 9월 금리 인상을 결정했다"
+    }
+  ]
+}
