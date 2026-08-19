@@ -1,0 +1,45 @@
+{
+  "initialized": true,
+  "seen": [
+    "1917857ac895ba2702677ca4",
+    "2705f4ef894638cd9fe88978",
+    "658850bea69371d5eac3dfee",
+    "76b31d6e52d11b6fe8460141",
+    "d14e774999499005e36a9b3f",
+    "e2b24a27085339a3207f20d8",
+    "fd5dd6a882bb70c223eb4a4c"
+  ],
+  "seen_semantic": [
+    "41e2d04a6208182852bd7a83",
+    "77a367adcbba5172b106a532",
+    "8319abcf74218ba9136e8855",
+    "ad5f5c9b8dc135f63f8a06dc",
+    "dacf756fff2b8379c76fed7f",
+    "f56732045aac459974b810db",
+    "fcd9c56679f62278511404f4"
+  ],
+  "trials": {
+    "NCT05933577": {
+      "nct": "NCT05933577",
+      "overallStatus": "ACTIVE_NOT_RECRUITING",
+      "enrollment": 1089,
+      "enrollmentType": "ESTIMATED",
+      "startDate": "2023-07-19",
+      "primaryCompletion": "2029-10-26",
+      "completion": "2030-09-26",
+      "lastUpdate": "2023-07-06"
+    },
+    "NCT07513376": {
+      "nct": "NCT07513376",
+      "overallStatus": "RECRUITING",
+      "enrollment": 876,
+      "enrollmentType": "ESTIMATED",
+      "startDate": "2026-05-04",
+      "primaryCompletion": "2034-08-22",
+      "completion": "2038-05-11",
+      "lastUpdate": "2026-04-07"
+    }
+  },
+  "initialized_at_kst": "2026-08-20T00:38:52+09:00",
+  "last_check_kst": "2026-08-20T00:38:52+09:00"
+}
