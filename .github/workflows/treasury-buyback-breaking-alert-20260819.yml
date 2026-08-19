@@ -1,5 +1,5 @@
-name: Treasury long-end buyback breaking alert 2026-08-19
-# retrigger after workflow exists on default branch
+name: Treasury long-end buyback consolidated alert 2026-08-19
+# consolidated interpretation retrigger
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Send verified-context breaking alert
+      - name: Send consolidated interpreted alert
         run: |
           TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
           export TELEGRAM_CHAT_ID
@@ -46,33 +46,52 @@ jobs:
           if not identity.get("ok") or actual.lower() != expected.lower():
               raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
 
-          text = '''<b>🇺🇸 미 재무부, 장기채 바이백 상한 최소 2배 확대 보도</b>
+          text = '''<b>🇺🇸 미 재무부, 장기물 바이백 최소 2배 확대 — 총량 문제는 그대로, 11/4까지 장기금리 완충</b>
 
-<b>쉽게 말하면</b>
-🟢 <b>신규 장기채를 더 발행한다는 뜻이 아닙니다.</b> 이미 시장에 풀려 있는 오래된 10~30년 국채를 재무부가 더 많이 되사겠다는 조치라 장기물 수급·유동성에는 우호적입니다.
+<b>핵심 판단</b>
+🟢 <b>단기 장기금리에는 우호적.</b> 다만 미국 국채 순공급·재정적자 문제가 해결된 것은 아닙니다. 재무부가 신규 장기채 발행을 줄인 게 아니라, 이미 유통 중인 오래된 장기 명목국채를 더 적극적으로 되사 장기물 시장의 유동성·딜러 재고 부담을 완화하는 조치입니다.
 
-<b>무엇이 바뀌나</b>
-• FinancialJuice 속보: 10~20년·20~30년 명목 국채 유동성 지원 바이백을 회당 최대 20억달러 → 최소 40억달러로 확대
-• 적용 보도 기간: 9월 9일~11월 4일
-• 8월 5일 공식 정기 일정에는 아직 회당 20억달러가 표시돼 있어 <b>특별공지 세부 업데이트를 추가 확인 중</b>
+<b>확정 내용</b>
+• 대상: 10~20년·20~30년 <b>오프더런 명목 이표채</b> 유동성 지원 바이백
+• 회당 상한: <b>20억달러 → 최소 40억달러</b>
+  약 2조7,842억원 → 최소 5조5,684억원
+• 적용: <b>9월 9일~11월 4일</b>
+• 기존 일정상 대상 7회: 10~20년 4회 + 20~30년 3회
+• 따라서 남은 장기물 상한: <b>140억달러 → 최소 280억달러</b>
+  약 19조4,895억원 → 최소 38조9,791억원
+• 추가 최대 흡수여력: 최소 140억달러 ≈ <b>19조4,895억원</b>
 
-<b>숫자로 보면</b>
-• 기존 회당 최대 20억달러 ≈ 2조7,839억원
-• 최소 40억달러 ≈ 5조5,679억원
-• 기존 일정의 해당 장기물 7회를 모두 2배로 가정하면 최대 흡수여력 140억달러 → 최소 280억달러
-• 추가 최대 흡수여력 최소 140억달러 ≈ <b>19조4,876억원</b>
-※ 전부 상한까지 매입한다고 가정한 조건부 계산이며 실제 매입액은 더 작을 수 있습니다.
+<b>분기 전체로 보면</b>
+8월 QRA의 유동성 지원 바이백 상한은 380억달러. 나머지 일정이 그대로라면 이번 장기물 증액으로 <b>최소 520억달러</b>, 현금관리 바이백 250억달러까지 포함하면 전체 한도는 <b>최소 770억달러</b>로 계산됩니다.
+※ 520억·770억달러는 수정 일정이 기존 구조를 유지한다는 <b>조건부 계산</b>입니다.
 
-<b>금리 해석</b>
-• 기존 장기채 유통 공급 부담 ↓ → off-the-run 유동성 ↑ → 기간 프리미엄·10년/30년 금리 상승 압력 일부 완화
-• 장기 실질금리까지 내려오면 AI·성장주 할인율에도 우호적
-• 다만 <b>QE는 아닙니다.</b> 재무부 부채관리 작업이라 Fed가 준비금을 새로 공급하는 통화완화와 다릅니다.
-• 재정적자·인플레이션·신규 국채 공급 문제 자체를 없애는 조치도 아닙니다.
+<b>왜 늘렸나</b>
+재무부는 장기물 바이백에 매입상한을 크게 웃도는 양질의 매도 제안이 꾸준히 들어왔다고 설명했습니다. 즉 “장기채를 사고 싶은 수요”가 강하다는 뜻이 아니라, <b>시장 참가자가 오래된 장기채를 재무부에 팔고 싶은 수요가 강하다</b>는 의미입니다.
 
-<b>다음 확인</b>
-실제 매입액/상한 · 총 제시액 · 20년/30년 입찰 수요 · 10년/30년 명목·실질금리 반응
+<b>쉽게 해석하면</b>
+오프더런 장기채를 재무부가 더 흡수 → 딜러 재고 부담↓ → 거래 유동성↑ → 온더런·오프더런 가격 괴리·유동성 프리미엄↓ → 기간 프리미엄↓ → <b>10년·30년 금리 상승 압력 완화</b>.
+장기 실질금리까지 내려오면 AI·성장주 할인율에도 우호적입니다. 발표 후 FT 보도 기준 30년물 금리는 약 5.34%에서 5.20% 부근으로 밀렸습니다.
 
-<a href="https://x.com/financialjuice/status/2090055088563736745">속보 원문</a> · <a href="https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/">미 재무부 바이백 공지·결과</a> · <a href="https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf">공식 정기 일정</a>'''
+<b>하지만 ‘눈 가리고 아웅’인 부분도 있음</b>
+• 바이백 재원은 다른 국채 발행으로 보충 → <b>순시장성 차입·국가부채를 구조적으로 줄이지 않음</b>
+• Fed QE가 아님 → 준비금을 새로 만드는 통화완화가 아님
+• 따라서 재정적자·인플레이션·향후 신규 장기채 공급 문제는 그대로 남음
+→ 정확히는 <b>“총량 문제는 못 고치지만, 장기 듀레이션이 몰린 구간의 시장 마찰은 실제로 줄이는 조치”</b>입니다.
+
+<b>9/9~11/4 기간의 함의</b>
+11월 3일은 미국 중간선거, 11월 4일은 다음 QRA입니다. 선거 직후까지 장기물 수급 완충장치를 강화해 놓은 일정은 시장적으로 의미가 있지만, <b>선거 목적이라는 공식 근거는 없습니다.</b> 공식적으로는 현 차환분기 종료 후 11/4 QRA에서 다음 규모를 다시 정하는 구조입니다.
+
+<b>가장 중요한 다음 확인</b>
+1) 수정 바이백 일정과 실제 회당 상한
+2) 실제 매입액 ÷ 총 제시액
+3) 20·30년 입찰 꼬리·간접낙찰
+4) 10·30년 명목·실질금리 반응
+5) <b>11/4 QRA: 바이백 연장/축소 + 이표채 발행 가이던스</b>
+
+<b>한 줄 결론</b>
+<b>단기적으로는 장기금리·AI주에 우호적이지만, 국채 공급 문제를 없앤 것이 아니라 11/4까지 장기물 유동성·기간 프리미엄을 눌러주는 한시적 완충장치를 크게 키운 것에 가깝습니다.</b>
+
+<a href="https://home.treasury.gov/news/press-releases/sb0607">미 재무부 공식 발표</a> · <a href="https://home.treasury.gov/news/press-releases/sb0590">8월 QRA</a> · <a href="https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf">기존 바이백 일정</a> · <a href="https://treasurydirect.gov/help-center/faqs/buyback-faqs/">바이백 설명</a>'''
 
           payload = urllib.parse.urlencode({
               "chat_id": chat_id,
@@ -92,7 +111,7 @@ jobs:
               "bot_username": actual,
               "message_id": (result.get("result") or {}).get("message_id"),
               "sent_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-              "topic": "Treasury long-end buyback breaking alert",
+              "topic": "Treasury long-end buyback consolidated alert",
           }
           pathlib.Path("data/treasury_buyback_breaking_alert_20260819_result.json").write_text(
               json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
@@ -104,6 +123,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/treasury_buyback_breaking_alert_20260819_result.json
-          git commit -m "Record Treasury buyback breaking alert delivery" || exit 0
+          git commit -m "Record Treasury buyback consolidated alert delivery" || exit 0
           git pull --rebase origin main
           git push
