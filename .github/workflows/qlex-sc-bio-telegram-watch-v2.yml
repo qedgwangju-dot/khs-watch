@@ -2,7 +2,7 @@ name: QLEX SC Bio Telegram Watch v2
 
 on:
   schedule:
-    # GitHub cron is UTC; hourly at :58 for schedule verification.
+    # GitHub cron is UTC; hourly at :58 to avoid top-of-hour congestion.
     - cron: "58 * * * *"
   workflow_dispatch:
     inputs:
@@ -17,6 +17,7 @@ on:
   push:
     paths:
       - ".github/workflows/qlex-sc-bio-telegram-watch-v2.yml"
+      - "scripts/intismeran_qlex_watch.py"
 
 permissions:
   contents: write
@@ -89,8 +90,8 @@ jobs:
           print(f'bio_telegram_chat_resolved=true route={route}')
           PY
 
-      - name: Validate watcher
-        run: python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/qlex_telegram_send.py
+      - name: Validate watchers
+        run: python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/intismeran_qlex_watch.py scripts/qlex_telegram_send.py
 
       - name: Check for genuinely new QLEX data
         shell: bash
@@ -99,6 +100,13 @@ jobs:
           python scripts/qlex_sc_conversion_watch.py --mode check
           test -f out/qlex_sc_conversion_status.md && cat out/qlex_sc_conversion_status.md >> "$GITHUB_STEP_SUMMARY" || true
 
+      - name: Check Intismeran and QLEX expansion data
+        shell: bash
+        run: |
+          rm -f out/intismeran_qlex_alert.md
+          python scripts/intismeran_qlex_watch.py
+          test -f out/intismeran_qlex_status.md && cat out/intismeran_qlex_status.md >> "$GITHUB_STEP_SUMMARY" || true
+
       - name: Build manual connection test
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
         run: |
@@ -106,24 +114,25 @@ jobs:
           cat > out/qlex_sc_connection_test.md <<'EOF'
           [바이오 감시] Telegram 연결 시험
 
-          KEYTRUDA QLEX 피하주사(SC) 감시 연결 정상입니다.
-          - 새 QLEX 매출·전환 데이터가 있을 때만 알림
-          - 총판매액 기준 전환율과 환자 수 기준 점유율을 구분
-          - Opdivo SC·Tecentriq SC는 동일 출시 후 개월(M+N) 기준 비교
+          KEYTRUDA QLEX + Intismeran 연계 감시 연결 정상입니다.
+          - QLEX 매출·전환 데이터 감시
+          - INTerpath-001 3상 RFS·DMFS·OS·HR 감시
+          - FDA 제출·접수·PDUFA·승인 일정 감시
+          - INTerpath-014 피하 Keytruda 연계 변화 감시
           EOF
 
       - name: Build push healthcheck
-        if: github.event_name == 'push' && contains(github.event.head_commit.message, 'QLEX v2 healthcheck')
+        if: github.event_name == 'push' && contains(github.event.head_commit.message, 'QLEX integrated healthcheck')
         run: |
           mkdir -p out
           cat > out/qlex_sc_connection_test.md <<'EOF'
-          [바이오 감시] QLEX 감시 복구 완료
+          [바이오 감시] 통합 감시 복구 확인
 
-          KEYTRUDA QLEX 피하주사(SC) 감시를 새 워크플로로 복구했습니다.
+          KEYTRUDA QLEX와 Intismeran 연계 감시가 같은 워크플로에서 정상 실행됩니다.
           - Telegram 봇·채팅 연결 정상
-          - 중복 방지 v2 유지
-          - 새 QLEX 매출·전환 데이터가 있을 때만 알림
-          - 총판매액 기준 전환율과 환자 수 기준 점유율을 구분
+          - QLEX 중복 방지 v2 유지
+          - Intismeran 3상·FDA·INTerpath-014 감시 포함
+          - 새 데이터가 있을 때만 알림
           EOF
 
       - name: Send connection test
@@ -138,20 +147,30 @@ jobs:
           BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
         run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_alert.md
 
-      - name: Persist state after successful check/delivery
+      - name: Send new Intismeran alert
+        if: hashFiles('out/intismeran_qlex_alert.md') != ''
+        env:
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
+        run: python scripts/qlex_telegram_send.py out/intismeran_qlex_alert.md
+
+      - name: Persist QLEX state
         if: success() && hashFiles('out/qlex_sc_conversion_watch_state_pending.json') != ''
         run: cp out/qlex_sc_conversion_watch_state_pending.json data/qlex_sc_conversion_watch_state.json
 
-      - name: Commit watch heartbeat/state
-        if: success() && hashFiles('data/qlex_sc_conversion_watch_state.json') != ''
+      - name: Persist Intismeran state
+        if: success() && hashFiles('out/intismeran_qlex_watch_state_pending.json') != ''
+        run: cp out/intismeran_qlex_watch_state_pending.json data/intismeran_qlex_watch_state.json
+
+      - name: Commit integrated heartbeat/state
+        if: success()
         run: |
-          git config user.name "qlex-bio-watch[bot]"
-          git config user.email "qlex-bio-watch[bot]@users.noreply.github.com"
-          git add data/qlex_sc_conversion_watch_state.json
+          git config user.name "bio-watch[bot]"
+          git config user.email "bio-watch[bot]@users.noreply.github.com"
+          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "QLEX bio watch state unchanged"
+            echo "Bio watch states unchanged"
           else
-            git commit -m "Update QLEX SC bio watch state"
+            git commit -m "Update integrated QLEX and Intismeran watch states"
             for attempt in 1 2 3; do
               if git pull --rebase origin main && git push; then
                 exit 0
@@ -173,5 +192,9 @@ jobs:
             out/qlex_sc_connection_test.md
             out/qlex_sc_conversion_errors.log
             out/qlex_sc_conversion_watch_state_pending.json
+            out/intismeran_qlex_status.md
+            out/intismeran_qlex_alert.md
+            out/intismeran_qlex_errors.log
+            out/intismeran_qlex_watch_state_pending.json
           if-no-files-found: ignore
           retention-days: 14
