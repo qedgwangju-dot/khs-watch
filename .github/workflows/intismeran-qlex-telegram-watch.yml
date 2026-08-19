@@ -138,3 +138,5 @@ jobs:
             out/intismeran_qlex_watch_state_pending.json
           if-no-files-found: ignore
           retention-days: 14
+
+# healthcheck: 2026-08-20
