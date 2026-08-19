@@ -136,6 +136,40 @@ jobs:
             exit 1
           fi
 
+      - name: Notify successful automatic recovery
+        if: steps.stale.outputs.run_qlex == 'true' && success()
+        env:
+          BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
+        run: |
+          mkdir -p out
+          cat > out/qlex_watchdog_recovery.md <<EOF
+          [바이오 감시] QLEX 자동 복구
+
+          QLEX 전환 감시 heartbeat가 기준 시간을 넘겨 watchdog이 자동 복구했습니다.
+          - 직전 확인: ${{ steps.stale.outputs.last_check }}
+          - 정체 시간: 약 ${{ steps.stale.outputs.age_minutes }}분
+          - 복구 후 감시 계속 진행
+          EOF
+          python scripts/qlex_telegram_send.py out/qlex_watchdog_recovery.md
+
+      - name: Notify recovery failure
+        if: steps.stale.outputs.run_qlex == 'true' && failure()
+        env:
+          BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+          BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+        run: |
+          mkdir -p out
+          cat > out/qlex_watchdog_failure.md <<EOF
+          [바이오 감시] QLEX 자동 복구 실패
+
+          QLEX 감시가 기준 시간을 넘겨 watchdog이 복구를 시도했지만 실패했습니다.
+          - 직전 확인: ${{ steps.stale.outputs.last_check }}
+          - 정체 시간: 약 ${{ steps.stale.outputs.age_minutes }}분
+          - GitHub Actions 점검 필요
+          EOF
+          python scripts/qlex_telegram_send.py out/qlex_watchdog_failure.md || true
+
       - name: Publish fallback status
         if: always()
         run: |
