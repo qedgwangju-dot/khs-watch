@@ -1,0 +1,144 @@
+name: QLEX SC Bio Watchdog Fallback
+
+on:
+  workflow_run:
+    workflows:
+      - "Global Rates & Yen Carry Telegram Watch"
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qlex-sc-bio-fallback
+  cancel-in-progress: true
+
+jobs:
+  recover-if-stale:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Decide whether QLEX watcher is stale
+        id: stale
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          from zoneinfo import ZoneInfo
+
+          path=pathlib.Path('data/qlex_sc_conversion_watch_state.json')
+          now=dt.datetime.now(ZoneInfo('Asia/Seoul'))
+          stale=True
+          age_minutes=None
+          last='missing'
+          if path.exists():
+              try:
+                  state=json.loads(path.read_text(encoding='utf-8'))
+                  last=str(state.get('last_check_kst') or '')
+                  if last:
+                      stamp=dt.datetime.fromisoformat(last)
+                      if stamp.tzinfo is None:
+                          stamp=stamp.replace(tzinfo=ZoneInfo('Asia/Seoul'))
+                      age_minutes=(now-stamp.astimezone(ZoneInfo('Asia/Seoul'))).total_seconds()/60
+                      stale=age_minutes >= 70
+              except Exception as exc:
+                  print(f'state_parse_error={exc}')
+          out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
+          with out.open('a', encoding='utf-8') as f:
+              f.write(f'run_qlex={"true" if stale else "false"}\n')
+              f.write(f'last_check={last}\n')
+              f.write(f'age_minutes={"unknown" if age_minutes is None else round(age_minutes,1)}\n')
+          print(f'qlex_fallback_stale={stale} last_check={last} age_minutes={age_minutes}')
+          PY
+
+      - name: Verify Telegram route for recovery
+        if: steps.stale.outputs.run_qlex == 'true'
+        id: telegram
+        env:
+          EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+          BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+          CONFIGURED_BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.request
+          token=(os.environ.get('BIO_TELEGRAM_BOT_TOKEN') or '').strip()
+          expected=(os.environ.get('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
+          chat_id=(os.environ.get('CONFIGURED_BIO_TELEGRAM_CHAT_ID') or '').strip()
+          if not token:
+              raise RuntimeError('BIO_TELEGRAM_BOT_TOKEN missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              identity=json.loads(r.read().decode('utf-8'))
+          actual=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+          if not chat_id:
+              raise RuntimeError('BIO_TELEGRAM_CHAT_ID missing; fallback refuses silent skip')
+          out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
+          with out.open('a', encoding='utf-8') as f:
+              f.write(f'chat_id={chat_id}\n')
+              f.write(f'bot_username={actual}\n')
+          print(f'qlex_fallback_telegram_verified=@{actual}')
+          PY
+
+      - name: Run QLEX recovery check
+        if: steps.stale.outputs.run_qlex == 'true'
+        run: |
+          rm -f out/qlex_sc_conversion_alert.md out/qlex_sc_connection_test.md
+          python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/qlex_telegram_send.py
+          python scripts/qlex_sc_conversion_watch.py --mode check
+
+      - name: Send recovered QLEX alert if new data exists
+        if: steps.stale.outputs.run_qlex == 'true' && hashFiles('out/qlex_sc_conversion_alert.md') != ''
+        env:
+          EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+          BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
+        run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_alert.md
+
+      - name: Persist recovered heartbeat/state
+        if: steps.stale.outputs.run_qlex == 'true' && success() && hashFiles('out/qlex_sc_conversion_watch_state_pending.json') != ''
+        run: cp out/qlex_sc_conversion_watch_state_pending.json data/qlex_sc_conversion_watch_state.json
+
+      - name: Commit recovered QLEX state
+        if: steps.stale.outputs.run_qlex == 'true' && success() && hashFiles('data/qlex_sc_conversion_watch_state.json') != ''
+        run: |
+          git config user.name "qlex-bio-watchdog[bot]"
+          git config user.email "qlex-bio-watchdog[bot]@users.noreply.github.com"
+          git add data/qlex_sc_conversion_watch_state.json
+          if git diff --cached --quiet; then
+            echo "QLEX fallback found no state change"
+          else
+            git commit -m "Recover QLEX SC bio watch heartbeat"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Publish fallback status
+        if: always()
+        run: |
+          echo "QLEX fallback run_qlex=${{ steps.stale.outputs.run_qlex }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "last_check=${{ steps.stale.outputs.last_check }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "age_minutes=${{ steps.stale.outputs.age_minutes }}" >> "$GITHUB_STEP_SUMMARY"
