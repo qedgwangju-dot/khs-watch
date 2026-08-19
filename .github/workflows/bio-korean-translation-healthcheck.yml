@@ -41,29 +41,6 @@ jobs:
         run: |
           result=$(python scripts/qlex_telegram_send.py out/bio_korean_translation_test.md)
           echo "$result"
-          mkdir -p data
-          python - <<'PY'
-          import datetime as dt, json, os, pathlib, re
-          from zoneinfo import ZoneInfo
-          text=os.environ.get('SEND_RESULT','')
-          match=re.search(r'message_ids=\[([^\]]*)\]', text)
-          ids=[]
-          if match:
-              ids=[int(x.strip()) for x in match.group(1).split(',') if x.strip().isdigit()]
-          payload={
-              'status':'confirmed',
-              'confirmed_at_kst':dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
-              'message_ids':ids,
-              'test':'English bio headline translated to Korean before Telegram send',
-          }
-          pathlib.Path('data/bio_korean_translation_healthcheck.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          PY
-        env:
-          SEND_RESULT: ${{ env.SEND_RESULT }}
-      - name: Rebuild proof from sender output
-        run: |
-          result=$(python scripts/qlex_telegram_send.py out/bio_korean_translation_test.md)
-          echo "$result"
           RESULT="$result" python - <<'PY'
           import datetime as dt, json, os, pathlib, re
           from zoneinfo import ZoneInfo
