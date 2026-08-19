@@ -120,7 +120,16 @@ jobs:
           confirmed = pathlib.Path("out/treasury_buyback_policy_telegram_confirmed.json").exists()
           if alert_exists and not confirmed:
               raise RuntimeError("바이백 정책 변경을 감지했지만 텔레그램 전송 확인이 없습니다.")
+
+          pending_special = state.pop("pending_special_sha", None)
+          if pending_special:
+              seen = list(state.get("seen_long_end_special_shas", []))
+              if pending_special not in seen:
+                  seen.append(pending_special)
+              state["seen_long_end_special_shas"] = seen[-50:]
+          state.pop("pending_schedule_change", None)
           state.pop("pending_change", None)
+
           pathlib.Path("data/treasury_buyback_policy_state.json").write_text(
               json.dumps(state, ensure_ascii=False, indent=2) + "\n",
               encoding="utf-8",
