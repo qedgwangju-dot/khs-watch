@@ -29,7 +29,7 @@ jobs:
     timeout-minutes: 10
     env:
       TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
       KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
       KHS_SOURCE_PROXY_FIRST: "true"
       KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
@@ -75,23 +75,22 @@ jobs:
           printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
           cat out/yen_policy_news_alert.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Send policy catalyst through second bot only
+      - name: Send policy catalyst through KHS policy bot only
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_policy_news_alert.md') != ''
         env:
-          YEN_CARRY_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          YEN_CARRY_TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
-          EXISTING_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
-          TELEGRAM_BOT_TOKEN="$YEN_CARRY_TELEGRAM_BOT_TOKEN"
-          TELEGRAM_CHAT_ID="${YEN_CARRY_TELEGRAM_CHAT_ID:-$EXISTING_TELEGRAM_CHAT_ID}"
+          TELEGRAM_BOT_TOKEN="$KHS_POLICY_TELEGRAM_BOT_TOKEN"
+          TELEGRAM_CHAT_ID="$KHS_POLICY_TELEGRAM_CHAT_ID"
           export TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID
 
           if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
-            echo "두 번째 봇용 YEN_CARRY_TELEGRAM_BOT_TOKEN이 없습니다. 첫 번째 봇으로 대체하지 않습니다." >&2
+            echo "KHS 정책 봇용 KHS_POLICY_TELEGRAM_BOT_TOKEN이 없습니다. 다른 봇으로 대체하지 않습니다." >&2
             exit 1
           fi
           if [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "엔화 정책 촉매 Telegram 대상 CHAT_ID가 없습니다." >&2
+            echo "엔화 정책 촉매 Telegram 대상 KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
             exit 1
           fi
 
