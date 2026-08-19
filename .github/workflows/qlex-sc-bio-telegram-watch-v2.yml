@@ -2,7 +2,7 @@ name: QLEX SC Bio Telegram Watch v2
 
 on:
   schedule:
-    # GitHub cron is UTC; hourly at :53 to avoid top-of-hour congestion.
+    # GitHub cron is UTC; hourly at :53 to avoid top-of-hour congestion and provide a visible heartbeat.
     - cron: "53 * * * *"
   workflow_dispatch:
     inputs:
