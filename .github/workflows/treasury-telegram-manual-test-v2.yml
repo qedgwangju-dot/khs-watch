@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Send Telegram test
+      - name: Send full interpreted Telegram test
         run: |
           TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
           export TELEGRAM_CHAT_ID
@@ -40,8 +40,46 @@ jobs:
           actual = str((identity.get('result') or {}).get('username') or '')
           if not identity.get('ok') or actual.lower() != expected.lower():
               raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
-          text = '<b>🇺🇸 [전송 테스트]</b> 미 재무부 장기채 바이백 알림 경로 확인\n\n이 메시지가 보이면 새 미 국채 알림 봇 경로는 정상입니다.'
-          payload = urllib.parse.urlencode({'chat_id': chat_id, 'text': text, 'parse_mode': 'HTML', 'disable_web_page_preview': 'true'}).encode('utf-8')
+
+          text = '''<b>🇺🇸 [테스트] 미 재무부, 장기 명목국채 바이백 최소 2배 확대</b>
+
+<b>핵심 판단</b>
+🟢 단기 장기금리에는 우호적. 하지만 미국 국채 공급·재정적자 문제가 해결된 것은 아닙니다. 신규 10·20·30년물을 더 발행한다는 뜻이 아니라, 이미 유통 중인 <b>10~20년·20~30년 비지표물 국채를 재무부가 더 많이 되사는 조치</b>입니다.
+
+<b>확정 숫자</b>
+• 회당 매입상한: 20억달러 → <b>최소 40억달러</b>
+• 적용: <b>9월 9일~11월 4일</b>
+• 기존 일정상 대상: 총 7회 = 10~20년 4회 + 20~30년 3회
+• 남은 장기물 상한: <b>140억달러 → 최소 280억달러</b>
+• 추가 최대 흡수여력: 최소 140억달러
+• 기존 QRA 구조가 유지되면 유동성 지원 바이백 상한은 380억달러 → <b>최소 520억달러</b>, 현금관리 250억달러까지 합치면 전체 최소 770억달러
+※ 520억·770억달러는 수정 일정이 기존 구조를 유지한다는 조건부 계산입니다.
+
+<b>왜 확대했나</b>
+재무부는 장기물 바이백에 매입상한을 크게 웃도는 양질의 매도 제안이 꾸준히 들어온 점을 이유로 제시했습니다. 즉 투자자의 장기채 매수수요가 강하다는 뜻이 아니라, <b>시장 참가자들이 오래된 장기채를 재무부에 팔려는 수요가 충분했다</b>는 뜻입니다.
+
+<b>금리 해석</b>
+비지표물 공급 부담 ↓ → 딜러 재고 부담 ↓ → 온더런·비지표물 가격 괴리·유동성 프리미엄 ↓ → 기간 프리미엄 완화 → <b>10년·30년 금리 상승 압력 일부 완화</b>. 장기 실질금리까지 내려오면 AI·성장주 할인율에도 우호적입니다.
+
+<b>하지만</b>
+• QE가 아님
+• 바이백 재원은 다른 국채 발행 등으로 조달 → 국가부채·순국채 공급을 구조적으로 줄이지 않음
+• 즉 <b>총량 문제는 그대로지만 장기물 시장의 마찰을 줄이는 한시적 완충장치</b>
+
+<b>9/9~11/4의 함의</b>
+• 11월 3일 미국 중간선거
+• 11월 4일 다음 QRA + 향후 바이백 규모 재결정
+• 일정이 선거 직후까지 겹치는 것은 시장적으로 의미가 있지만, <b>선거 때문에 확대했다는 공식 근거는 없음</b>
+
+<b>다음 확인</b>
+실제 매입액/상한 · 총 제시액 · 20년/30년 입찰 수요 · 10년/30년 명목·실질금리 · 11월 4일 바이백 연장/축소 · 이표채 발행 가이던스
+
+<b>한 줄 결론</b>
+장기채 공급 문제를 없앤 게 아니라 <b>11월 4일까지 장기물 유동성·기간 프리미엄을 눌러주는 수급 완충장치를 최소 2배 키운 것</b>으로 보는 게 가장 정확합니다.
+
+<a href="https://home.treasury.gov/news/press-releases/sb0607">미 재무부 공식 발표</a> · <a href="https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/">바이백 공지·결과</a> · <a href="https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf">기존 일정</a>'''
+
+          payload = urllib.parse.urlencode({'chat_id': chat_id, 'text': text[:4096], 'parse_mode': 'HTML', 'disable_web_page_preview': 'true'}).encode('utf-8')
           req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method='POST')
           with urllib.request.urlopen(req, timeout=25) as r:
               result = json.loads(r.read().decode('utf-8'))
@@ -52,7 +90,7 @@ jobs:
               'bot_username': actual,
               'message_id': (result.get('result') or {}).get('message_id'),
               'sent_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-              'topic': 'Treasury Telegram manual test v2'
+              'topic': 'Treasury full interpreted buyback alert test'
           }
           pathlib.Path('data/treasury_manual_test_v2_result.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           print(json.dumps(record, ensure_ascii=False))
@@ -63,6 +101,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/treasury_manual_test_v2_result.json
-          git commit -m "Record Treasury Telegram manual test v2" || exit 0
+          git commit -m "Record Treasury full interpreted Telegram test" || exit 0
           git pull --rebase origin main
           git push
