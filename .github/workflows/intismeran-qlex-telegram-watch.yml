@@ -1,0 +1,140 @@
+name: Intismeran QLEX Telegram Watch
+
+on:
+  schedule:
+    # Hourly at :13 UTC minute; avoids the QLEX :58 slot.
+    - cron: "13 * * * *"
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "Send a connection test message"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+  push:
+    paths:
+      - ".github/workflows/intismeran-qlex-telegram-watch.yml"
+      - "scripts/intismeran_qlex_watch.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: intismeran-qlex-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify Telegram route
+        shell: bash
+        run: |
+          if [ -z "$BIO_TELEGRAM_BOT_TOKEN" ] || [ -z "$BIO_TELEGRAM_CHAT_ID" ]; then
+            echo "BIO_TELEGRAM_BOT_TOKEN or BIO_TELEGRAM_CHAT_ID missing" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          python - <<'PY'
+          import json, os, urllib.request
+          token=os.environ['BIO_TELEGRAM_BOT_TOKEN'].strip()
+          expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              identity=json.loads(r.read().decode('utf-8'))
+          actual=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+          print(f'intismeran_telegram_bot_verified=@{actual}')
+          PY
+
+      - name: Validate scripts
+        run: python -m py_compile scripts/intismeran_qlex_watch.py scripts/qlex_telegram_send.py
+
+      - name: Check Intismeran and QLEX expansion data
+        run: |
+          rm -f out/intismeran_qlex_alert.md out/intismeran_qlex_setup.md
+          python scripts/intismeran_qlex_watch.py
+          test -f out/intismeran_qlex_status.md && cat out/intismeran_qlex_status.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Build setup confirmation
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true')
+        run: |
+          mkdir -p out
+          cat > out/intismeran_qlex_setup.md <<'EOF'
+          [바이오 감시] Intismeran·QLEX 연계 감시 추가
+
+          앞으로 다음 새 정보가 나올 때만 알립니다.
+          - INTerpath-001 흑색종 3상 RFS·DMFS·OS 결과와 HR
+          - FDA 제출·접수·PDUFA·승인 일정
+          - INTerpath-014의 intismeran + 피하 Keytruda(berahyaluronidase alfa) 임상 변경
+          - 알테오젠 관점에서 QLEX 적용 적응증·판매 기반이 실제로 넓어지는지 구분
+
+          현재 공식 기준
+          - INTerpath-001: 약 1,089명 3상, 진행 중·모집완료
+          - 기존 HR 0.51(RFS), 0.411(DMFS): 3상 결과가 아니라 2b상 KEYNOTE-942 5년 추적치
+          - INTerpath-014: 약 876명 폐암 3상, 피하 pembrolizumab+berahyaluronidase alfa 사용
+          EOF
+
+      - name: Send setup confirmation
+        if: hashFiles('out/intismeran_qlex_setup.md') != ''
+        run: python scripts/qlex_telegram_send.py out/intismeran_qlex_setup.md
+
+      - name: Send new Intismeran alert
+        if: hashFiles('out/intismeran_qlex_alert.md') != ''
+        run: python scripts/qlex_telegram_send.py out/intismeran_qlex_alert.md
+
+      - name: Persist Intismeran state after successful check/delivery
+        if: success() && hashFiles('out/intismeran_qlex_watch_state_pending.json') != ''
+        run: cp out/intismeran_qlex_watch_state_pending.json data/intismeran_qlex_watch_state.json
+
+      - name: Commit Intismeran watch state
+        if: success() && hashFiles('data/intismeran_qlex_watch_state.json') != ''
+        run: |
+          git config user.name "intismeran-bio-watch[bot]"
+          git config user.email "intismeran-bio-watch[bot]@users.noreply.github.com"
+          git add data/intismeran_qlex_watch_state.json
+          if git diff --cached --quiet; then
+            echo "Intismeran state unchanged"
+          else
+            git commit -m "Update Intismeran QLEX watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: intismeran-qlex-watch-${{ github.run_id }}
+          path: |
+            out/intismeran_qlex_status.md
+            out/intismeran_qlex_alert.md
+            out/intismeran_qlex_setup.md
+            out/intismeran_qlex_errors.log
+            out/intismeran_qlex_watch_state_pending.json
+          if-no-files-found: ignore
+          retention-days: 14
