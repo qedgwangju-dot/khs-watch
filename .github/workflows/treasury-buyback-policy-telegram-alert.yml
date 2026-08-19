@@ -5,6 +5,7 @@ on:
     paths:
       - "scripts/treasury_buyback_policy_watch.py"
       - ".github/workflows/treasury-buyback-policy-telegram-alert.yml"
+      - "data/treasury_production_test_trigger.txt"
   schedule:
     # Treasury buyback preliminary/final and special announcements are generally
     # released during the U.S. business day. Check every 15 minutes.
