@@ -235,7 +235,7 @@ class YenPolicyNewsAlertTests(unittest.TestCase):
                 [(classified, 1, ["Nikkei"])],
                 current,
             )
-        self.assertIn("헤드라인: BOJ의 금리 인상 가속 기대가 커지며 채권금리가 상승", body)
+        self.assertIn("원문 번역: BOJ의 금리 인상 가속 기대가 커지며 채권금리가 상승", body)
         self.assertNotIn("Growing expectations", body)
         self.assertEqual(
             payload["items"][0]["headline_ko"],
