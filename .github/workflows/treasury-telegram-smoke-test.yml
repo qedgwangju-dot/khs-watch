@@ -25,18 +25,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify bot identity and send interpreted buyback alert
+      - name: Send interpreted alert and always save diagnostic
         run: |
           TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
           export TELEGRAM_CHAT_ID
-          if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
-            echo "TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN is missing" >&2
-            exit 1
-          fi
-          if [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "Telegram chat id is missing" >&2
-            exit 1
-          fi
           mkdir -p data
           python - <<'PY'
           import datetime
@@ -47,17 +39,34 @@ jobs:
           import urllib.parse
           import urllib.request
 
-          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
-          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
-          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          record = {
+              "ok": False,
+              "stage": "start",
+              "bot_username": None,
+              "message_id": None,
+              "text_length": None,
+              "sent_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              "error": None,
+          }
 
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
-              identity = json.loads(r.read().decode("utf-8"))
-          actual = str((identity.get("result") or {}).get("username") or "")
-          if not identity.get("ok") or actual.lower() != expected.lower():
-              raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
+          try:
+              token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+              chat_id = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+              expected = (os.environ.get("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+              if not token:
+                  raise RuntimeError("TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN is missing")
+              if not chat_id:
+                  raise RuntimeError("Telegram chat id is missing")
 
-          text = '''<b>🇺🇸 [테스트] 미 재무부, 장기 명목국채 바이백 최소 2배 확대</b>
+              record["stage"] = "getMe"
+              with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+                  identity = json.loads(r.read().decode("utf-8"))
+              actual = str((identity.get("result") or {}).get("username") or "")
+              record["bot_username"] = actual
+              if not identity.get("ok") or actual.lower() != expected.lower():
+                  raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
+
+              text = '''<b>🇺🇸 [테스트] 미 재무부, 장기 명목국채 바이백 최소 2배 확대</b>
 
 <b>핵심 판단</b>
 🟢 단기적으로 장기금리에는 우호적입니다. 다만 미국 국채 순공급·재정적자 문제가 해결된 것은 아닙니다. 신규 장기채를 덜 발행하는 게 아니라, 이미 유통 중인 <b>10~20년·20~30년 비지표물 국채를 재무부가 더 많이 되사는 조치</b>입니다.
@@ -68,11 +77,11 @@ jobs:
 • 기존 일정상 대상: 총 7회 = 10~20년 4회 + 20~30년 3회
 • 남은 장기물 상한: <b>140억달러(약 19.49조원) → 최소 280억달러(약 38.98조원)</b>
 • 추가 최대 흡수여력: 최소 140억달러(약 19.49조원)
-• 기존 QRA 구조가 유지되면 유동성 지원 바이백 상한 380억달러 → <b>최소 520억달러</b>, 현금관리 바이백 250억달러까지 포함하면 전체 최소 770억달러
+• 기존 QRA 구조 유지 시 유동성 지원 바이백 상한 380억달러 → <b>최소 520억달러</b>, 현금관리 바이백 250억달러까지 포함하면 전체 최소 770억달러
 ※ 520억·770억달러는 수정 일정이 기존 구조를 유지한다는 조건부 계산입니다.
 
 <b>왜 확대했나</b>
-재무부는 장기물 바이백에 매입상한을 크게 웃도는 양질의 매도 제안이 꾸준히 들어왔다고 설명했습니다. 즉 “장기채를 사고 싶은 투자수요가 강하다”는 뜻이 아니라, <b>시장 참가자들이 오래된 장기채를 재무부에 팔려는 수요가 충분하다</b>는 뜻입니다.
+재무부는 장기물 바이백에 매입상한을 크게 웃도는 양질의 매도 제안이 꾸준히 들어왔다고 설명했습니다. 이는 장기채 최종 매수수요가 강하다는 뜻이 아니라, <b>시장 참가자가 오래된 장기채를 재무부에 팔려는 수요가 충분하다</b>는 뜻입니다.
 
 <b>쉽게 해석하면</b>
 비지표물 장기채를 재무부가 더 흡수 → 딜러 재고 부담↓ → 거래 유동성↑ → 유동성 프리미엄·기간 프리미엄↓ → <b>10년·30년 금리 상승 압력 일부 완화</b>. 장기 실질금리까지 내려오면 AI·성장주 할인율에도 우호적입니다.
@@ -96,51 +105,51 @@ jobs:
 
 <a href="https://home.treasury.gov/news/press-releases/sb0607">미 재무부 공식 발표</a> · <a href="https://home.treasury.gov/news/press-releases/sb0590">8월 QRA</a> · <a href="https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf">기존 바이백 일정</a>'''
 
-          if len(text) > 4096:
-              raise RuntimeError(f"Telegram text too long: {len(text)}")
+              record["text_length"] = len(text)
+              if len(text) > 4096:
+                  raise RuntimeError(f"Telegram text too long: {len(text)}")
 
-          payload = urllib.parse.urlencode({
-              "chat_id": chat_id,
-              "text": text,
-              "parse_mode": "HTML",
-              "disable_web_page_preview": "true",
-          }).encode("utf-8")
-          req = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/sendMessage",
-              data=payload,
-              method="POST",
-          )
-          try:
-              with urllib.request.urlopen(req, timeout=25) as r:
-                  result = json.loads(r.read().decode("utf-8"))
-          except urllib.error.HTTPError as exc:
-              detail = exc.read().decode("utf-8", errors="replace")
-              raise RuntimeError(f"Telegram HTTP {exc.code}: {detail}") from exc
-          if not result.get("ok"):
-              raise RuntimeError(f"Telegram rejected message: {result}")
+              record["stage"] = "sendMessage"
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": text,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=25) as r:
+                      result = json.loads(r.read().decode("utf-8"))
+              except urllib.error.HTTPError as exc:
+                  detail = exc.read().decode("utf-8", errors="replace")
+                  raise RuntimeError(f"Telegram HTTP {exc.code}: {detail}") from exc
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
 
-          record = {
-              "ok": True,
-              "bot_username": actual,
-              "message_id": (result.get("result") or {}).get("message_id"),
-              "sent_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-              "text_length": len(text),
-              "topic": "Treasury long-end buyback detailed interpreted smoke test",
-          }
-          pathlib.Path("data/treasury_telegram_smoke_test_result.json").write_text(
+              record["ok"] = True
+              record["stage"] = "done"
+              record["message_id"] = (result.get("result") or {}).get("message_id")
+          except Exception as exc:
+              record["error"] = f"{type(exc).__name__}: {exc}"
+
+          pathlib.Path("data/treasury_telegram_smoke_diag.json").write_text(
               json.dumps(record, ensure_ascii=False, indent=2) + "\n",
               encoding="utf-8",
           )
           print(json.dumps(record, ensure_ascii=False))
           PY
 
-      - name: Commit smoke test result
+      - name: Commit smoke diagnostic
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/treasury_telegram_smoke_test_result.json
-          git commit -m "Record Treasury Telegram detailed smoke test" || exit 0
+          git add data/treasury_telegram_smoke_diag.json
+          git commit -m "Record Treasury Telegram smoke diagnostic" || exit 0
           git pull --rebase origin main
           git push
 
-# retrigger: 2026-08-20T07:32+09:00
+# diagnostic retrigger: 2026-08-20T07:36+09:00
