@@ -49,10 +49,11 @@ jobs:
           now=dt.datetime.now(ZoneInfo('Asia/Seoul'))
           stale=True
           age=None
+          last='missing'
           if path.exists():
               try:
                   s=json.loads(path.read_text(encoding='utf-8'))
-                  last=s.get('last_check_kst')
+                  last=str(s.get('last_check_kst') or '')
                   if last:
                       t=dt.datetime.fromisoformat(last)
                       if t.tzinfo is None:
@@ -63,8 +64,9 @@ jobs:
                   print(f'state_parse_error={exc}')
           with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf-8') as f:
               f.write(f'run={"true" if stale else "false"}\n')
+              f.write(f'last={last}\n')
               f.write(f'age={"unknown" if age is None else round(age,1)}\n')
-          print(f'intismeran_fallback_stale={stale} age_minutes={age}')
+          print(f'intismeran_fallback_stale={stale} last={last} age_minutes={age}')
           PY
 
       - name: Verify Telegram route
@@ -111,3 +113,31 @@ jobs:
             git pull --rebase origin main
             git push
           fi
+
+      - name: Notify successful automatic recovery
+        if: steps.stale.outputs.run == 'true' && success()
+        run: |
+          mkdir -p out
+          cat > out/intismeran_watchdog_recovery.md <<EOF
+          [바이오 감시] Intismeran 자동 복구
+
+          Intismeran·QLEX 연계 감시 heartbeat가 기준 시간을 넘겨 watchdog이 자동 복구했습니다.
+          - 직전 확인: ${{ steps.stale.outputs.last }}
+          - 정체 시간: 약 ${{ steps.stale.outputs.age }}분
+          - 복구 후 감시 계속 진행
+          EOF
+          python scripts/qlex_telegram_send.py out/intismeran_watchdog_recovery.md
+
+      - name: Notify recovery failure
+        if: steps.stale.outputs.run == 'true' && failure()
+        run: |
+          mkdir -p out
+          cat > out/intismeran_watchdog_failure.md <<EOF
+          [바이오 감시] Intismeran 자동 복구 실패
+
+          Intismeran·QLEX 연계 감시가 기준 시간을 넘겨 watchdog이 복구를 시도했지만 실패했습니다.
+          - 직전 확인: ${{ steps.stale.outputs.last }}
+          - 정체 시간: 약 ${{ steps.stale.outputs.age }}분
+          - GitHub Actions 점검 필요
+          EOF
+          python scripts/qlex_telegram_send.py out/intismeran_watchdog_failure.md || true
