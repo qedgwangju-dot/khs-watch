@@ -41,7 +41,6 @@ def split_message(text: str) -> list[str]:
 
 
 def clean_source_url(url: str) -> str:
-    """Hide search-engine redirect noise and use the embedded article URL when available."""
     try:
         parsed = urllib.parse.urlparse(url)
         host = parsed.netloc.lower()
@@ -54,15 +53,62 @@ def clean_source_url(url: str) -> str:
     return url
 
 
+def strip_source_suffix(title: str) -> str:
+    return re.sub(
+        r"\s+-\s+(?:Yahoo Finance|Pulse 2\.0|BioPharm International|TipRanks(?:\.com)?|Seeking Alpha|MSN|Reuters|BusinessWire)\s*$",
+        "",
+        title,
+        flags=re.I,
+    ).strip()
+
+
 def is_english_dominant(value: str) -> bool:
     latin = len(re.findall(r"[A-Za-z]", value))
     korean = len(re.findall(r"[가-힣]", value))
     return latin >= 8 and latin > korean * 2
 
 
+def english_residue_words(value: str) -> list[str]:
+    probe = value
+    allowed_patterns = [
+        r"INTerpath-\d+", r"Intismeran(?:\s+Autogene)?", r"KEYTRUDA", r"QLEX",
+        r"Pembrolizumab", r"Moderna", r"Merck", r"mRNA(?:-\d+)?", r"V940",
+        r"RFS", r"DMFS", r"OS", r"FDA", r"PDUFA", r"sBLA", r"BLA", r"NCT\d+",
+    ]
+    for pat in allowed_patterns:
+        probe = re.sub(pat, " ", probe, flags=re.I)
+    return re.findall(r"[A-Za-z]{2,}", probe)
+
+
+def translation_quality_ok(candidate: str) -> bool:
+    if len(re.findall(r"[가-힣]", candidate)) < 8:
+        return False
+    residue = english_residue_words(candidate)
+    bad_words = {
+        "announce", "announces", "trial", "phase", "met", "meets", "endpoint", "endpoints",
+        "recurrence", "free", "survival", "distant", "metastasis", "patients", "patient",
+        "completely", "resected", "stage", "melanoma", "adjuvant", "plus", "with", "in",
+        "of", "and", "shows", "promise", "primary", "stock", "surging", "breakthrough",
+    }
+    if any(word.lower() in bad_words for word in residue):
+        return False
+    return len(residue) <= 2
+
+
 def fallback_title_ko(title: str) -> str:
-    """Deterministic Korean fallback for the recurring Intismeran/QLEX headline patterns."""
+    title = strip_source_suffix(title)
     low = title.lower()
+
+    if (
+        "interpath-001" in low
+        and ("met endpoints" in low or "meets endpoints" in low)
+        and "recurrence-free survival" in low
+        and "distant metastasis-free survival" in low
+    ):
+        return (
+            "Merck·Moderna, 완전 절제된 IIB~IV기 흑색종 환자 대상 INTerpath-001 3상에서 "
+            "Intismeran+KEYTRUDA가 재발 없는 생존기간(RFS)·원격전이 없는 생존기간(DMFS) 평가변수 달성"
+        )
 
     if "interpath-001" in low and "boosts rfs" in low:
         return "INTerpath-001: 흑색종 보조요법에서 Intismeran+Pembrolizumab이 재발 없는 생존기간(RFS) 개선"
@@ -84,13 +130,12 @@ def fallback_title_ko(title: str) -> str:
     if "stock surging" in low and "cancer" in low and "vaccine" in low:
         return "Moderna 주가, 암 백신 임상 진전으로 급등…향후 변동성 주의"
 
-    if "interpath-001" in low and "phase" in low and "melanoma" in low:
+    if "interpath-001" in low and ("phase" in low or "3상" in low) and "melanoma" in low:
         return "INTerpath-001 흑색종 3상 관련 신규 보도"
 
     if "intismeran" in low and "keytruda" in low:
         return "Intismeran·KEYTRUDA 관련 신규 보도"
 
-    # Last-resort glossary conversion: avoids sending a fully English headline even if translation API is unavailable.
     value = title
     replacements = [
         (r"\bPhase\s*III\b", "3상"),
@@ -110,46 +155,49 @@ def fallback_title_ko(title: str) -> str:
     ]
     for pattern, repl in replacements:
         value = re.sub(pattern, repl, value, flags=re.I)
-    if is_english_dominant(value):
+    if english_residue_words(value):
         return "Intismeran·KEYTRUDA 관련 신규 보도 — 세부 내용은 아래 한국어 해석 참조"
     return value
 
 
 def translate_title_to_ko(title: str) -> str:
-    """Translate an English headline to Korean; never fail the alert if translation service is unavailable."""
     if not is_english_dominant(title):
         return title
     if title in _TRANSLATION_CACHE:
         return _TRANSLATION_CACHE[title]
 
+    # Known biomedical headline patterns are translated deterministically first.
+    deterministic = fallback_title_ko(title)
+    if "세부 내용은 아래 한국어 해석 참조" not in deterministic and not english_residue_words(deterministic):
+        _TRANSLATION_CACHE[title] = deterministic
+        return deterministic
+
     translated = ""
     try:
-        # MyMemory documents basic REST translation without an API key. Headline length stays well below its 500-byte segment limit.
-        query = urllib.parse.urlencode({
-            "q": title[:480],
-            "langpair": "en|ko",
-            "mt": "1",
-        })
+        query = urllib.parse.urlencode({"q": strip_source_suffix(title)[:480], "langpair": "en|ko", "mt": "1"})
         req = urllib.request.Request(
             f"https://api.mymemory.translated.net/get?{query}",
-            headers={"User-Agent": "Mozilla/5.0 (compatible; BioAlertKorean/1.0)"},
+            headers={"User-Agent": "Mozilla/5.0 (compatible; BioAlertKorean/2.0)"},
         )
         with urllib.request.urlopen(req, timeout=8) as response:
             payload = json.loads(response.read().decode("utf-8", errors="replace"))
         candidate = html.unescape(str((payload.get("responseData") or {}).get("translatedText") or "")).strip()
-        if candidate and candidate.lower() != title.lower() and len(re.findall(r"[가-힣]", candidate)) >= 3:
+        if candidate and candidate.lower() != title.lower() and translation_quality_ok(candidate):
             translated = candidate
     except Exception:
         translated = ""
 
     if not translated:
-        translated = fallback_title_ko(title)
+        translated = deterministic
 
-    # Normalize recurring technical wording while preserving identifiers.
     translated = re.sub(r"임상 시험", "임상", translated)
     translated = re.sub(r"3 단계", "3상", translated)
     translated = re.sub(r"3단계", "3상", translated)
     translated = re.sub(r"재발[- ]?없는 생존", "재발 없는 생존기간", translated)
+
+    # Final hard gate: mixed Korean-English explanatory headlines are not allowed.
+    if english_residue_words(translated):
+        translated = fallback_title_ko(title)
     _TRANSLATION_CACHE[title] = translated
     return translated
 
@@ -165,7 +213,6 @@ def koreanize_timestamp(value: str) -> str:
 
 
 def normalize_alert_language(text: str) -> str:
-    """Korean-first Telegram output while preserving drug/trial identifiers."""
     out: list[str] = []
     title_pattern = re.compile(r"^(\d+[.)])\s+(.+)$")
 
@@ -179,7 +226,6 @@ def normalize_alert_language(text: str) -> str:
             value = stripped.split(":", 1)[1].strip()
             line = f"- 발표/게시: {koreanize_timestamp(value)}"
         elif not stripped.startswith("- 원문:"):
-            # General explanatory English should be Korean; identifiers/acronyms stay unchanged.
             line = line.replace("heartbeat", "상태 확인")
             line = line.replace("watchdog", "자동 복구 감시")
             line = re.sub(r"\bPhase\s*III\b", "3상", line, flags=re.I)
@@ -189,7 +235,6 @@ def normalize_alert_language(text: str) -> str:
 
 
 def render_html(text: str) -> str:
-    """Escape normal text and render only source URLs as compact Telegram inline links."""
     rendered: list[str] = []
     for line in text.splitlines():
         stripped = line.strip()
@@ -197,9 +242,7 @@ def render_html(text: str) -> str:
             url = stripped.split(":", 1)[1].strip()
             if url.startswith(("http://", "https://")):
                 target = clean_source_url(url)
-                rendered.append(
-                    f'- <a href="{html.escape(target, quote=True)}">원문 뉴스보기</a>'
-                )
+                rendered.append(f'- <a href="{html.escape(target, quote=True)}">원문 뉴스보기</a>')
                 continue
         rendered.append(html.escape(line, quote=False))
     return "\n".join(rendered)
