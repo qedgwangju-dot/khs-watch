@@ -1,0 +1,68 @@
+name: Treasury Telegram manual test v2
+
+on:
+  push:
+    paths:
+      - "data/treasury_manual_test_trigger.txt"
+
+permissions:
+  contents: write
+
+jobs:
+  send-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+      FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Send Telegram test
+        run: |
+          TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
+          export TELEGRAM_CHAT_ID
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "Telegram token/chat id missing" >&2
+            exit 1
+          fi
+          mkdir -p data
+          python - <<'PY'
+          import datetime, json, os, pathlib, urllib.parse, urllib.request
+          token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
+          chat_id = os.environ['TELEGRAM_CHAT_ID'].strip()
+          expected = os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode('utf-8'))
+          actual = str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower() != expected.lower():
+              raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
+          text = '<b>🇺🇸 [전송 테스트]</b> 미 재무부 장기채 바이백 알림 경로 확인\n\n이 메시지가 보이면 새 미 국채 알림 봇 경로는 정상입니다.'
+          payload = urllib.parse.urlencode({'chat_id': chat_id, 'text': text, 'parse_mode': 'HTML', 'disable_web_page_preview': 'true'}).encode('utf-8')
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method='POST')
+          with urllib.request.urlopen(req, timeout=25) as r:
+              result = json.loads(r.read().decode('utf-8'))
+          if not result.get('ok'):
+              raise RuntimeError(result)
+          record = {
+              'ok': True,
+              'bot_username': actual,
+              'message_id': (result.get('result') or {}).get('message_id'),
+              'sent_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'topic': 'Treasury Telegram manual test v2'
+          }
+          pathlib.Path('data/treasury_manual_test_v2_result.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(record, ensure_ascii=False))
+          PY
+
+      - name: Commit delivery record
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/treasury_manual_test_v2_result.json
+          git commit -m "Record Treasury Telegram manual test v2" || exit 0
+          git pull --rebase origin main
+          git push
