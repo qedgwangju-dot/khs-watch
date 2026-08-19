@@ -7,6 +7,9 @@ on:
     types:
       - completed
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/intismeran-qlex-fallback.yml"
 
 permissions:
   contents: write
@@ -79,6 +82,7 @@ jobs:
           actual=str((j.get('result') or {}).get('username') or '')
           if not j.get('ok') or actual.lower()!=expected.lower():
               raise RuntimeError(f'wrong bot @{actual}')
+          print(f'intismeran_fallback_bot_verified=@{actual}')
           PY
 
       - name: Run Intismeran watcher recovery
@@ -86,6 +90,7 @@ jobs:
         run: |
           rm -f out/intismeran_qlex_alert.md
           python scripts/intismeran_qlex_watch.py
+          test -f out/intismeran_qlex_status.md && cat out/intismeran_qlex_status.md >> "$GITHUB_STEP_SUMMARY" || true
 
       - name: Send recovered Intismeran alert
         if: steps.stale.outputs.run == 'true' && hashFiles('out/intismeran_qlex_alert.md') != ''
