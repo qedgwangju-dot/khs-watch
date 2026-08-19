@@ -271,3 +271,5 @@ jobs:
             data/treasury_buyback_manual_test_result.json
           if-no-files-found: ignore
           retention-days: 14
+
+# retrigger detailed test 2026-08-19 23:51 KST
