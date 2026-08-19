@@ -1,0 +1,113 @@
+name: CLARITY Korean format Telegram test
+
+on:
+  push:
+    paths:
+      - ".github/workflows/clarity-format-telegram-test.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  send-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build today's SEC alert in new Korean format
+        run: |
+          mkdir -p out
+          cat > out/clarity_watch_alert.json <<'JSON'
+          [
+            {
+              "source": "SEC 보도자료",
+              "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+              "title": "SEC Proposes New Regulation Crypto Assets",
+              "url": "https://www.sec.gov/newsroom/press-releases/2026-76-sec-proposes-new-regulation-crypto-assets",
+              "date": "Tue, 18 Aug 2026 13:15:48 -0400",
+              "detail": "The Securities and Exchange Commission today announced that it proposed new rules, titled Regulation Crypto Assets, that would create a clear and fit-for-purpose framework for certain investment contracts involving crypto assets."
+            }
+          ]
+          JSON
+          python scripts/clarity_alert_formatter.py
+          cat out/clarity_watch_alert.html
+
+      - name: Send test through the configured Telegram bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram token/chat id is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          chunks = json.loads(pathlib.Path("out/clarity_watch_telegram_chunks.json").read_text(encoding="utf-8"))
+          message_ids = []
+          for chunk in chunks:
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  result = json.loads(r.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(result)
+              message_ids.append(result["result"]["message_id"])
+
+          result = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_ids": message_ids,
+              "format": "korean_html_v1",
+              "source_link_label": "원문",
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("data/clarity_format_test_result.json").write_text(
+              json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          print(json.dumps(result, ensure_ascii=False))
+          PY
+
+      - name: Commit delivery confirmation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/clarity_format_test_result.json
+          git commit -m "Record CLARITY Korean Telegram format test"
+          git pull --rebase origin main
+          git push
