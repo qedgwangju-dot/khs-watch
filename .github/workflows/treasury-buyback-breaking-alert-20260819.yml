@@ -1,0 +1,108 @@
+name: Treasury long-end buyback breaking alert 2026-08-19
+
+on:
+  push:
+    paths:
+      - ".github/workflows/treasury-buyback-breaking-alert-20260819.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+      FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Send verified-context breaking alert
+        run: |
+          TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
+          export TELEGRAM_CHAT_ID
+          python - <<'PY'
+          import datetime
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram token/chat id missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
+
+          text = '''<b>🇺🇸 미 재무부, 장기채 바이백 상한 최소 2배 확대 보도</b>
+
+<b>쉽게 말하면</b>
+🟢 <b>신규 장기채를 더 발행한다는 뜻이 아닙니다.</b> 이미 시장에 풀려 있는 오래된 10~30년 국채를 재무부가 더 많이 되사겠다는 조치라 장기물 수급·유동성에는 우호적입니다.
+
+<b>무엇이 바뀌나</b>
+• FinancialJuice 속보: 10~20년·20~30년 명목 국채 유동성 지원 바이백을 회당 최대 20억달러 → 최소 40억달러로 확대
+• 적용 보도 기간: 9월 9일~11월 4일
+• 8월 5일 공식 정기 일정에는 아직 회당 20억달러가 표시돼 있어 <b>특별공지 세부 업데이트를 추가 확인 중</b>
+
+<b>숫자로 보면</b>
+• 기존 회당 최대 20억달러 ≈ 2조7,839억원
+• 최소 40억달러 ≈ 5조5,679억원
+• 기존 일정의 해당 장기물 7회를 모두 2배로 가정하면 최대 흡수여력 140억달러 → 최소 280억달러
+• 추가 최대 흡수여력 최소 140억달러 ≈ <b>19조4,876억원</b>
+※ 전부 상한까지 매입한다고 가정한 조건부 계산이며 실제 매입액은 더 작을 수 있습니다.
+
+<b>금리 해석</b>
+• 기존 장기채 유통 공급 부담 ↓ → off-the-run 유동성 ↑ → 기간 프리미엄·10년/30년 금리 상승 압력 일부 완화
+• 장기 실질금리까지 내려오면 AI·성장주 할인율에도 우호적
+• 다만 <b>QE는 아닙니다.</b> 재무부 부채관리 작업이라 Fed가 준비금을 새로 공급하는 통화완화와 다릅니다.
+• 재정적자·인플레이션·신규 국채 공급 문제 자체를 없애는 조치도 아닙니다.
+
+<b>다음 확인</b>
+실제 매입액/상한 · 총 제시액 · 20년/30년 입찰 수요 · 10년/30년 명목·실질금리 반응
+
+<a href="https://x.com/financialjuice/status/2090055088563736745">속보 원문</a> · <a href="https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/">미 재무부 바이백 공지·결과</a> · <a href="https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf">공식 정기 일정</a>'''
+
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text[:4096],
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
+          with urllib.request.urlopen(req, timeout=25) as r:
+              result = json.loads(r.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(result)
+
+          pathlib.Path("data").mkdir(exist_ok=True)
+          record = {
+              "ok": True,
+              "bot_username": actual,
+              "message_id": (result.get("result") or {}).get("message_id"),
+              "sent_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              "topic": "Treasury long-end buyback breaking alert",
+          }
+          pathlib.Path("data/treasury_buyback_breaking_alert_20260819_result.json").write_text(
+              json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          PY
+
+      - name: Commit delivery record
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/treasury_buyback_breaking_alert_20260819_result.json
+          git commit -m "Record Treasury buyback breaking alert delivery" || exit 0
+          git pull --rebase origin main
+          git push
