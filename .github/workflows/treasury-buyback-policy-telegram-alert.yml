@@ -50,7 +50,7 @@ jobs:
           fi
 
       - name: Send one-off detailed interpretation test
-        if: github.event_name == 'push' && contains(github.event.head_commit.message, '[manual-test]')
+        if: hashFiles('data/treasury_production_test_trigger.txt') != '' && hashFiles('data/treasury_buyback_manual_test_result.json') == ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
@@ -148,7 +148,7 @@ jobs:
           PY
 
       - name: Commit one-off test result
-        if: github.event_name == 'push' && contains(github.event.head_commit.message, '[manual-test]')
+        if: hashFiles('data/treasury_production_test_trigger.txt') != '' && hashFiles('data/treasury_buyback_manual_test_result.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
