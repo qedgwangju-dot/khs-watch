@@ -1,5 +1,5 @@
 {
-  "status": "validation",
+  "status": "active",
   "policy": {
     "translation": "Preserve source actor, timing, modality, attribution and direction; never upgrade possibility or forecast into fact.",
     "evidence_scope": "Alerts disclose when they rely on Google News headline/RSS summary rather than full article text.",
@@ -12,5 +12,11 @@
       "faithful_ko": "BOJ는 9월 금리 인상으로 엔화를 지지할 기회가 있다",
       "forbidden_upgrade": "BOJ가 9월 금리 인상을 결정했다"
     }
-  ]
+  ],
+  "validation": {
+    "workflow_run_id": 32229196199,
+    "tests_passed": 26,
+    "source_errors": 0,
+    "telegram_sent_in_pr": false
+  }
 }
