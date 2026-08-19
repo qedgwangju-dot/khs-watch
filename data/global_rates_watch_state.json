@@ -3,8 +3,8 @@
     "jgb2": 1.691,
     "jgb10": 2.934,
     "ust2": 4.19,
-    "ust10": 4.71,
-    "ust30": 5.28,
+    "ust10": 4.65,
+    "ust30": 5.19,
     "usdjpy": 159.21,
     "us_jp_2y_spread": 2.4990000000000006,
     "usdjpy_daily_change_pct": -0.08785691873234303
@@ -12,7 +12,7 @@
   "active": {
     "jgb10:above:3.0": false,
     "ust10:above:4.5": true,
-    "ust10:above:4.7": true,
+    "ust10:above:4.7": false,
     "ust10:above:4.75": false,
     "ust30:above:5.0": true,
     "ust30:above:5.3": false,
@@ -23,11 +23,11 @@
   "last_source_dates": {
     "jgb2": "2026/8/18",
     "jgb10": "2026/8/18",
-    "ust2": "2026-08-18",
-    "ust10": "2026-08-18",
-    "ust30": "2026-08-18",
+    "ust2": "2026-08-19",
+    "ust10": "2026-08-19",
+    "ust30": "2026-08-19",
     "usdjpy": "2026-08-14"
   },
   "classification": "단순 경계",
-  "updated_at_kst": "2026-08-20T04:37:22+09:00"
+  "updated_at_kst": "2026-08-20T04:58:42+09:00"
 }
