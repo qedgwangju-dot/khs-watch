@@ -5,6 +5,8 @@ on:
     paths:
       - ".github/workflows/clarity-watch-telegram.yml"
       - "scripts/clarity_watch.py"
+      - "scripts/clarity_alert_formatter.py"
+      - "tests/test_clarity_alert_formatter.py"
       - "data/clarity_watch_state.json"
   schedule:
     # GitHub cron is UTC. Hourly check; no new official change => no Telegram message.
@@ -38,6 +40,11 @@ jobs:
       - name: Install parser dependency
         run: python -m pip install --disable-pip-version-check beautifulsoup4
 
+      - name: Validate watcher and Korean Telegram formatter
+        run: |
+          python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_formatter.py
+          python -m unittest tests/test_clarity_alert_formatter.py -v
+
       - name: Validate Telegram route without sending
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
@@ -65,9 +72,11 @@ jobs:
           PY
 
       - name: Check official CLARITY sources
-        run: |
-          python -m py_compile scripts/clarity_watch.py
-          python scripts/clarity_watch.py
+        run: python scripts/clarity_watch.py
+
+      - name: Build Korean interpreted Telegram alert
+        if: hashFiles('out/clarity_watch_alert.json') != ''
+        run: python scripts/clarity_alert_formatter.py
 
       - name: Publish watcher summary
         if: always()
@@ -77,9 +86,13 @@ jobs:
           else
             echo "CLARITY Watch 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f out/clarity_watch_alert.html ]; then
+            printf '\n---\n\n한국어 Telegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/clarity_watch_alert.html >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Send new official CLARITY change to Telegram
-        if: hashFiles('out/clarity_watch_alert.md') != ''
+        if: hashFiles('out/clarity_watch_telegram_chunks.json') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
@@ -105,35 +118,16 @@ jobs:
           if not identity.get("ok") or username.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
 
-          text = pathlib.Path("out/clarity_watch_alert.md").read_text(encoding="utf-8").strip()
-          def split_message(value, limit=3900):
-              chunks, current = [], ""
-              for paragraph in value.split("\n\n"):
-                  candidate = paragraph if not current else current + "\n\n" + paragraph
-                  if len(candidate) <= limit:
-                      current = candidate
-                      continue
-                  if current:
-                      chunks.append(current)
-                      current = ""
-                  while len(paragraph) > limit:
-                      cut = paragraph.rfind("\n", 0, limit)
-                      if cut < 1:
-                          cut = limit
-                      chunks.append(paragraph[:cut])
-                      paragraph = paragraph[cut:].lstrip()
-                  current = paragraph
-              if current:
-                  chunks.append(current)
-              return chunks
+          chunks = json.loads(pathlib.Path("out/clarity_watch_telegram_chunks.json").read_text(encoding="utf-8"))
+          if not chunks:
+              raise RuntimeError("Formatted CLARITY Telegram chunks are empty")
 
           message_ids = []
-          for idx, chunk in enumerate(split_message(text), 1):
-              if idx > 1:
-                  chunk = f"CLARITY Watch (계속 {idx})\n\n{chunk}"
+          for chunk in chunks:
               payload = urllib.parse.urlencode({
                   "chat_id": chat_id,
                   "text": chunk,
+                  "parse_mode": "HTML",
                   "disable_web_page_preview": "true",
               }).encode("utf-8")
               request = urllib.request.Request(
@@ -149,6 +143,7 @@ jobs:
 
           confirmed = {
               "status": "confirmed",
+              "format": "korean_html_v1",
               "bot_username": username,
               "message_ids": message_ids,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
@@ -157,15 +152,15 @@ jobs:
               json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
               encoding="utf-8",
           )
-          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids}")
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids} format=korean_html_v1")
           PY
 
       - name: Persist baseline state
-        if: success() && hashFiles('out/clarity_watch_alert.md') == '' && (hashFiles('data/clarity_watch_state.json') == '' || hashFiles('out/clarity_watch_rebaseline.txt') != '')
+        if: success() && hashFiles('out/clarity_watch_alert.json') == '' && (hashFiles('data/clarity_watch_state.json') == '' || hashFiles('out/clarity_watch_rebaseline.txt') != '')
         run: cp out/clarity_watch_pending_state.json data/clarity_watch_state.json
 
       - name: Persist state only after confirmed Telegram delivery
-        if: success() && hashFiles('out/clarity_watch_alert.md') != '' && hashFiles('out/clarity_watch_telegram_confirmed.json') != ''
+        if: success() && hashFiles('out/clarity_watch_alert.json') != '' && hashFiles('out/clarity_watch_telegram_confirmed.json') != ''
         run: |
           cp out/clarity_watch_pending_state.json data/clarity_watch_state.json
           python - <<'PY'
@@ -177,6 +172,7 @@ jobs:
           state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
           state["telegram_message_ids"] = confirmed.get("message_ids")
           state["bot_username"] = confirmed.get("bot_username")
+          state["telegram_format"] = confirmed.get("format")
           state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
 
@@ -203,6 +199,8 @@ jobs:
             out/clarity_watch_status.md
             out/clarity_watch_alert.md
             out/clarity_watch_alert.json
+            out/clarity_watch_alert.html
+            out/clarity_watch_telegram_chunks.json
             out/clarity_watch_pending_state.json
             out/clarity_watch_rebaseline.txt
             out/clarity_watch_telegram_confirmed.json
