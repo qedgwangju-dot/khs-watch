@@ -130,12 +130,21 @@ jobs:
           if alert_exists and not confirmed:
               raise RuntimeError("바이백 정책 변경을 감지했지만 텔레그램 전송 확인이 없습니다.")
 
+          pending_ids = list(state.pop("pending_source_ids", []))
+          if pending_ids:
+              seen = list(state.get("seen_source_ids", []))
+              for source_id in pending_ids:
+                  if source_id not in seen:
+                      seen.append(source_id)
+              state["seen_source_ids"] = seen[-100:]
+
           pending_special = state.pop("pending_special_sha", None)
           if pending_special:
-              seen = list(state.get("seen_long_end_special_shas", []))
-              if pending_special not in seen:
-                  seen.append(pending_special)
-              state["seen_long_end_special_shas"] = seen[-50:]
+              seen_old = list(state.get("seen_long_end_special_shas", []))
+              if pending_special not in seen_old:
+                  seen_old.append(pending_special)
+              state["seen_long_end_special_shas"] = seen_old[-50:]
+
           state.pop("pending_schedule_change", None)
           state.pop("pending_change", None)
 
