@@ -21,27 +21,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Send full interpreted Telegram test
+      - name: Send full interpreted Telegram test with diagnostics
         run: |
           TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
           export TELEGRAM_CHAT_ID
-          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "Telegram token/chat id missing" >&2
-            exit 1
-          fi
           mkdir -p data
           python - <<'PY'
-          import datetime, json, os, pathlib, urllib.parse, urllib.request
-          token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
-          chat_id = os.environ['TELEGRAM_CHAT_ID'].strip()
-          expected = os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
-              identity = json.loads(r.read().decode('utf-8'))
-          actual = str((identity.get('result') or {}).get('username') or '')
-          if not identity.get('ok') or actual.lower() != expected.lower():
-              raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
+          import datetime, json, os, pathlib, urllib.parse, urllib.request, urllib.error
 
-          text = '''<b>🇺🇸 [테스트] 미 재무부, 장기 명목국채 바이백 최소 2배 확대</b>
+          record = {
+              'ok': False,
+              'bot_username': None,
+              'message_id': None,
+              'sent_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'topic': 'Treasury full interpreted buyback alert test diagnostics',
+              'stage': 'start',
+              'error': None,
+          }
+          try:
+              token = os.environ.get('TELEGRAM_BOT_TOKEN', '').strip()
+              chat_id = os.environ.get('TELEGRAM_CHAT_ID', '').strip()
+              expected = os.environ.get('EXPECTED_TELEGRAM_BOT_USERNAME', '').strip().lstrip('@')
+              if not token or not chat_id:
+                  raise RuntimeError('Telegram token/chat id missing')
+
+              record['stage'] = 'getMe'
+              with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+                  identity = json.loads(r.read().decode('utf-8'))
+              actual = str((identity.get('result') or {}).get('username') or '')
+              record['bot_username'] = actual
+              if not identity.get('ok') or actual.lower() != expected.lower():
+                  raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
+
+              text = '''<b>🇺🇸 [테스트] 미 재무부, 장기 명목국채 바이백 최소 2배 확대</b>
 
 <b>핵심 판단</b>
 🟢 단기 장기금리에는 우호적. 하지만 미국 국채 공급·재정적자 문제가 해결된 것은 아닙니다. 신규 10·20·30년물을 더 발행한다는 뜻이 아니라, 이미 유통 중인 <b>10~20년·20~30년 비지표물 국채를 재무부가 더 많이 되사는 조치</b>입니다.
@@ -79,28 +91,35 @@ jobs:
 
 <a href="https://home.treasury.gov/news/press-releases/sb0607">미 재무부 공식 발표</a> · <a href="https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/">바이백 공지·결과</a> · <a href="https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf">기존 일정</a>'''
 
-          payload = urllib.parse.urlencode({'chat_id': chat_id, 'text': text[:4096], 'parse_mode': 'HTML', 'disable_web_page_preview': 'true'}).encode('utf-8')
-          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method='POST')
-          with urllib.request.urlopen(req, timeout=25) as r:
-              result = json.loads(r.read().decode('utf-8'))
-          if not result.get('ok'):
-              raise RuntimeError(result)
-          record = {
-              'ok': True,
-              'bot_username': actual,
-              'message_id': (result.get('result') or {}).get('message_id'),
-              'sent_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-              'topic': 'Treasury full interpreted buyback alert test'
-          }
-          pathlib.Path('data/treasury_manual_test_v2_result.json').write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+              record['stage'] = 'sendMessage'
+              payload = urllib.parse.urlencode({
+                  'chat_id': chat_id,
+                  'text': text,
+                  'parse_mode': 'HTML',
+                  'disable_web_page_preview': 'true'
+              }).encode('utf-8')
+              req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method='POST')
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  result = json.loads(r.read().decode('utf-8'))
+              if not result.get('ok'):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
+              record['ok'] = True
+              record['message_id'] = (result.get('result') or {}).get('message_id')
+              record['stage'] = 'done'
+          except Exception as exc:
+              record['error'] = f"{type(exc).__name__}: {exc}"
+
+          pathlib.Path('data/treasury_manual_test_v2_result.json').write_text(
+              json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
           print(json.dumps(record, ensure_ascii=False))
           PY
 
-      - name: Commit delivery record
+      - name: Commit delivery diagnostic
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/treasury_manual_test_v2_result.json
-          git commit -m "Record Treasury full interpreted Telegram test" || exit 0
+          git commit -m "Record Treasury Telegram test diagnostic" || exit 0
           git pull --rebase origin main
           git push
