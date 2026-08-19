@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import datetime as dt
+import json
+import os
+import pathlib
+import urllib.error
+import urllib.parse
+import urllib.request
+from zoneinfo import ZoneInfo
+
+EXPECTED = "hs88798879887988798879_bot"
+RESULT = pathlib.Path("data/treasury_telegram_smoke_diag.json")
+
+MESSAGE = """<b>🇺🇸 [테스트] 미 재무부, 장기 명목국채 바이백 최소 2배 확대</b>
+
+<b>핵심 판단</b>
+🟢 단기적으로 장기금리에는 우호적입니다. 다만 미국 국채 순공급·재정적자 문제가 해결된 것은 아닙니다. 신규 장기채를 덜 발행하는 게 아니라, 이미 유통 중인 <b>10~20년·20~30년 비지표물 국채를 재무부가 더 많이 되사는 조치</b>입니다.
+
+<b>확정 숫자</b>
+• 회당 매입상한: 20억달러(약 2.78조원) → <b>최소 40억달러(약 5.57조원)</b>
+• 적용: <b>9월 9일~11월 4일</b>
+• 기존 일정상 대상: 총 7회 = 10~20년 4회 + 20~30년 3회
+• 남은 장기물 상한: <b>140억달러(약 19.49조원) → 최소 280억달러(약 38.98조원)</b>
+• 추가 최대 흡수여력: 최소 140억달러(약 19.49조원)
+• 기존 QRA 구조 유지 시 유동성 지원 바이백 상한 380억달러 → <b>최소 520억달러</b>, 현금관리 바이백 250억달러까지 포함하면 전체 최소 770억달러
+※ 520억·770억달러는 수정 일정이 기존 구조를 유지한다는 조건부 계산입니다.
+
+<b>왜 확대했나</b>
+재무부는 장기물 바이백에 매입상한을 크게 웃도는 양질의 매도 제안이 꾸준히 들어왔다고 설명했습니다. 이는 장기채 최종 매수수요가 강하다는 뜻이 아니라, <b>시장 참가자가 오래된 장기채를 재무부에 팔려는 수요가 충분하다</b>는 뜻입니다.
+
+<b>쉽게 해석하면</b>
+비지표물 장기채를 재무부가 더 흡수 → 딜러 재고 부담↓ → 거래 유동성↑ → 유동성 프리미엄·기간 프리미엄↓ → <b>10년·30년 금리 상승 압력 일부 완화</b>. 장기 실질금리까지 내려오면 AI·성장주 할인율에도 우호적입니다.
+
+<b>하지만</b>
+• Fed의 QE가 아님
+• 바이백 재원은 다른 국채 발행 등으로 조달 → 국가부채·순국채 공급을 구조적으로 줄이지 않음
+• 따라서 재정적자·인플레이션·향후 신규 장기채 공급 문제는 그대로
+→ 정확히는 <b>총량 문제는 못 고치지만 장기물 시장의 마찰을 실제로 줄이는 한시적 완충장치</b>입니다.
+
+<b>시간표</b>
+• 11월 3일 미국 중간선거
+• 11월 4일 다음 QRA + 향후 바이백 규모 재결정
+• 일정이 선거 직후까지 겹치는 것은 시장적으로 의미가 있지만, 선거 때문에 확대했다는 공식 근거는 없음
+
+<b>다음 확인</b>
+실제 매입액/상한 · 총 제시액 · 20년/30년 입찰 꼬리·간접낙찰 · 10년/30년 명목·실질금리 · <b>11월 4일 QRA의 바이백 연장/축소와 이표채 발행 가이던스</b>
+
+<b>한 줄 결론</b>
+장기채 공급 문제를 없앤 게 아니라 <b>11월 4일까지 장기물 유동성·기간 프리미엄을 눌러주는 수급 완충장치를 최소 2배 키운 것</b>으로 보는 게 가장 정확합니다.
+
+<a href="https://home.treasury.gov/news/press-releases/sb0607">미 재무부 공식 발표</a> · <a href="https://home.treasury.gov/news/press-releases/sb0590">8월 QRA</a> · <a href="https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf">기존 바이백 일정</a>"""
+
+
+def main() -> int:
+    RESULT.parent.mkdir(parents=True, exist_ok=True)
+    record = {
+        "ok": False,
+        "stage": "start",
+        "bot_username": None,
+        "message_id": None,
+        "text_length": len(MESSAGE),
+        "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+        "error": None,
+    }
+    try:
+        token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+        chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+        if not token:
+            raise RuntimeError("TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN is missing")
+        if not chat_id:
+            raise RuntimeError("Telegram chat id is missing")
+        if len(MESSAGE) > 4096:
+            raise RuntimeError(f"Telegram text too long: {len(MESSAGE)}")
+
+        record["stage"] = "getMe"
+        with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+            identity = json.loads(response.read().decode("utf-8"))
+        actual = str((identity.get("result") or {}).get("username") or "")
+        record["bot_username"] = actual
+        if not identity.get("ok") or actual.lower() != EXPECTED.lower():
+            raise RuntimeError(f"wrong bot: expected @{EXPECTED}, got @{actual or 'unknown'}")
+
+        record["stage"] = "sendMessage"
+        payload = urllib.parse.urlencode({
+            "chat_id": chat_id,
+            "text": MESSAGE,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": "true",
+        }).encode("utf-8")
+        request = urllib.request.Request(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            data=payload,
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=25) as response:
+                sent = json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")
+            raise RuntimeError(f"Telegram HTTP {exc.code}: {body}") from exc
+        if not sent.get("ok"):
+            raise RuntimeError(f"Telegram rejected message: {sent}")
+
+        record["ok"] = True
+        record["stage"] = "done"
+        record["message_id"] = (sent.get("result") or {}).get("message_id")
+    except Exception as exc:
+        record["error"] = f"{type(exc).__name__}: {exc}"
+
+    RESULT.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps(record, ensure_ascii=False))
+    return 0 if record["ok"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
