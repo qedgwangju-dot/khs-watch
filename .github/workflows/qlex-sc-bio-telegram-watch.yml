@@ -2,8 +2,8 @@ name: QLEX SC Bio Telegram Watch
 
 on:
   schedule:
-    # GitHub cron is UTC. Hourly condition watch; GitHub may start it a little late.
-    - cron: "33 * * * *"
+    # GitHub cron is UTC. Hourly condition watch; changing cron also reactivates a deactivated schedule.
+    - cron: "47 * * * *"
   workflow_dispatch:
     inputs:
       send_test:
@@ -14,6 +14,9 @@ on:
         options:
           - "false"
           - "true"
+  push:
+    paths:
+      - ".github/workflows/qlex-sc-bio-telegram-watch.yml"
 
 permissions:
   contents: write
@@ -47,9 +50,8 @@ jobs:
         shell: bash
         run: |
           if [ -z "$BIO_TELEGRAM_BOT_TOKEN" ]; then
-            echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "BIO_TELEGRAM_BOT_TOKEN missing; watcher does not consume state." >> "$GITHUB_STEP_SUMMARY"
-            exit 0
+            echo "BIO_TELEGRAM_BOT_TOKEN missing; fail loudly instead of silently skipping the watcher." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
           fi
           python - <<'PY'
           import json, os, pathlib, urllib.request
@@ -64,6 +66,7 @@ jobs:
           chat_id=configured_chat
           route='secret'
           if not chat_id:
+              route='getUpdates'
               with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0', timeout=25) as r:
                   updates=json.loads(r.read().decode('utf-8'))
               candidates=[]
@@ -75,15 +78,16 @@ jobs:
               if candidates:
                   candidates.sort()
                   chat_id=candidates[-1][1]
-                  route='getUpdates'
+          if not chat_id:
+              raise RuntimeError('BIO_TELEGRAM_CHAT_ID is empty and no private chat could be resolved from Telegram getUpdates')
           out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
           with out.open('a', encoding='utf-8') as f:
               f.write(f'bot_username={actual}\n')
               f.write(f'chat_id={chat_id}\n')
               f.write(f'chat_route={route}\n')
-              f.write(f'configured={"true" if chat_id else "false"}\n')
+              f.write('configured=true\n')
           print(f'bio_telegram_bot_verified=@{actual}')
-          print(f'bio_telegram_chat_resolved={bool(chat_id)} route={route}')
+          print(f'bio_telegram_chat_resolved=true route={route}')
           PY
 
       - name: Validate watcher
@@ -111,7 +115,21 @@ jobs:
           - Opdivo SC·Tecentriq SC는 동일 출시 후 개월(M+N)로 비교
           EOF
 
-      - name: Send manual connection test
+      - name: Build push healthcheck
+        if: steps.telegram.outputs.configured == 'true' && github.event_name == 'push' && contains(github.event.head_commit.message, 'QLEX healthcheck')
+        run: |
+          mkdir -p out
+          cat > out/qlex_sc_connection_test.md <<'EOF'
+          [바이오 감시] QLEX 감시 복구 확인
+
+          KEYTRUDA QLEX 피하주사(SC) 감시가 다시 정상 가동됐습니다.
+          - Telegram 봇·채팅 연결 확인 완료
+          - 중복 방지 v2 유지
+          - 새 QLEX 매출·전환 데이터가 있을 때만 알림
+          - 총판매액 기준 전환율과 환자 수 기준 점유율을 구분
+          EOF
+
+      - name: Send connection test
         if: steps.telegram.outputs.configured == 'true' && hashFiles('out/qlex_sc_connection_test.md') != ''
         env:
           BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
