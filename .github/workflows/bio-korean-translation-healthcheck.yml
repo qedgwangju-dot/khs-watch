@@ -1,0 +1,39 @@
+name: Bio Korean Translation Healthcheck
+
+on:
+  push:
+    paths:
+      - ".github/workflows/bio-korean-translation-healthcheck.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test-korean-output:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate sender
+        run: python -m py_compile scripts/qlex_telegram_send.py
+      - name: Build translation test
+        run: |
+          mkdir -p out
+          cat > out/bio_korean_translation_test.md <<'EOF'
+          [바이오 감시] 한국어 번역 적용 확인
+
+          1. Merck And Moderna’s Intismeran Plus KEYTRUDA Meets Phase 3 Melanoma Trial Endpoints
+          - 출처 구분: 2차 자료
+          - 발표/게시: Wed, 19 Aug 2026 17:09:10 GMT
+          - 판정: 앞으로 영문 기사 제목은 한국어로 번역해 표시합니다.
+          - 원문: https://www.merck.com/
+          EOF
+      - name: Send translated test
+        run: python scripts/qlex_telegram_send.py out/bio_korean_translation_test.md
