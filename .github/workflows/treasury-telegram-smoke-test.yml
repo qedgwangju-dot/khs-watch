@@ -52,31 +52,36 @@ jobs:
           if not identity.get("ok") or actual.lower() != expected.lower():
               raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
 
-          text = '''<b>🇺🇸 미 재무부, 장기채 바이백 상한 최소 2배 확대 보도</b>
+          text = '''<b>🇺🇸 [테스트] 미 재무부, 장기 명목국채 바이백 최소 2배 확대</b>
 
 <b>쉽게 말하면</b>
-🟢 <b>신규 장기채 발행 확대가 아닙니다.</b> 이미 시장에 풀린 오래된 10~30년 국채를 재무부가 더 많이 되사는 조치라 장기물 수급·유동성에는 우호적입니다.
+🟢 신규 10·20·30년 국채를 더 찍는 게 아닙니다. 이미 시장에 유통 중인 10~20년·20~30년 비지표물 국채를 재무부가 더 많이 되사는 조치라 <b>장기물 수급·유동성에는 우호적</b>입니다.
 
-<b>무엇이 바뀌나</b>
-• FinancialJuice 속보: 10~20년·20~30년 명목 국채 유동성 지원 바이백 회당 최대 20억달러 → 최소 40억달러
-• 적용 보도 기간: 9월 9일~11월 4일
-• 8월 5일 공식 정기 일정은 아직 회당 20억달러 표시 → 특별공지 세부 업데이트 추가 확인 중
-
-<b>숫자로 보면</b>
-• 20억달러 ≈ 2조7,839억원 / 40억달러 ≈ 5조5,679억원
-• 기존 일정의 해당 장기물 7회를 전부 2배로 가정: 최대 흡수여력 140억달러 → 최소 280억달러
-• 추가 최대 흡수여력 최소 140억달러 ≈ <b>19조4,876억원</b>
-※ 상한을 전부 채운다는 조건부 계산이며 실제 매입액은 더 작을 수 있습니다.
+<b>확정 숫자</b>
+• 회당 최대 20억달러 → <b>최소 40억달러</b>
+• 적용: <b>9월 9일~11월 4일</b>
+• 기존 일정상 대상 7회(10~20년 4회 + 20~30년 3회)
+• 남은 최대 바이백 상한: <b>140억달러 → 최소 280억달러</b>
+• 추가 최대 흡수여력: 최소 140억달러
 
 <b>금리 해석</b>
-• 기존 장기채 유통 공급 부담 ↓ → off-the-run 유동성 ↑ → 기간 프리미엄·10년/30년 금리 상승 압력 일부 완화
+• 비지표물 장기채 공급 부담 ↓ → 딜러 재고 부담 ↓ → 유동성 프리미엄·기간 프리미엄 완화 → 10년·30년 금리 상승 압력 일부 완화
 • 장기 실질금리까지 내려오면 AI·성장주 할인율에도 우호적
-• 다만 QE가 아니며 재정적자·인플레이션·신규 국채 공급 문제 자체를 없애지는 못합니다.
+
+<b>하지만</b>
+• QE 아님
+• 바이백 재원은 다른 국채 발행 등으로 조달되므로 국가부채·순국채 공급 문제 자체를 해결하지 않음
+• 즉 <b>총량 문제는 그대로지만 장기물 시장의 마찰을 줄이는 한시적 완충장치</b>
+
+<b>시간표</b>
+• 11월 3일 미국 중간선거
+• 11월 4일 다음 QRA + 바이백 규모 재결정
+• 선거 목적은 공식 확인된 이유가 아니므로 시장 해석으로만 구분
 
 <b>다음 확인</b>
-실제 매입액/상한 · 총 제시액 · 20년/30년 입찰 수요 · 10년/30년 명목·실질금리 반응
+실제 매입액/상한 · 총 제시액 · 20년/30년 입찰 수요 · 10년/30년 명목·실질금리 · 11월 4일 바이백 연장/축소 및 이표채 가이던스
 
-<a href="https://x.com/financialjuice/status/2090055088563736745">속보 원문</a> · <a href="https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/">미 재무부 바이백 공지·결과</a> · <a href="https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf">공식 정기 일정</a>'''
+<a href="https://home.treasury.gov/news/press-releases/sb0607">미 재무부 공식 발표</a> · <a href="https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/">바이백 공지·결과</a> · <a href="https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf">기존 일정</a>'''
           payload = urllib.parse.urlencode({
               "chat_id": chat_id,
               "text": text[:4096],
@@ -98,7 +103,7 @@ jobs:
               "bot_username": actual,
               "message_id": (result.get("result") or {}).get("message_id"),
               "sent_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-              "topic": "Treasury long-end buyback interpreted alert",
+              "topic": "Treasury long-end buyback interpreted alert test 2026-08-19 23:03 KST",
           }
           pathlib.Path("data/treasury_telegram_smoke_test_result.json").write_text(
               json.dumps(record, ensure_ascii=False, indent=2) + "\n",
@@ -115,4 +120,4 @@ jobs:
           git commit -m "Record Treasury Telegram smoke test" || exit 0
           git push
 
-# retrigger: 2026-08-19T21:58+09:00
+# retrigger: 2026-08-19T23:03+09:00
