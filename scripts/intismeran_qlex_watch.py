@@ -15,7 +15,7 @@ from zoneinfo import ZoneInfo
 
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
-UA = "Mozilla/5.0 (compatible; IntismeranQlexWatch/1.0)"
+UA = "Mozilla/5.0 (compatible; IntismeranQlexWatch/1.1)"
 STATE = Path("data/intismeran_qlex_watch_state.json")
 OUT = Path("out")
 PENDING = OUT / "intismeran_qlex_watch_state_pending.json"
@@ -45,9 +45,10 @@ MATERIAL_TERMS = (
     "phase 3", "3상", "topline", "rfs", "dmfs", "overall survival", "os ",
     "hazard ratio", "hr=", "hr ", "met primary", "met the primary", "primary endpoint",
     "fda", "submission", "filed", "filing", "accepted", "pdufa", "approval", "approved",
-    "regulatory", "sBLA", "bla", "supplemental biologics license",
+    "regulatory", "sbla", "bla", "supplemental biologics license",
     "subcutaneous", "berahyaluronidase", "keytruda qlex", "피하주사", "허가",
 )
+
 
 @dataclass
 class Item:
@@ -71,8 +72,7 @@ class Item:
         stamp = parse_published(self.published)
         if stamp:
             day = stamp.date().isoformat()
-        norm = normalize(self.title)
-        return digest(f"{norm}|{day}|{self.canonical}")
+        return digest(f"{normalize(self.title)}|{day}|{self.canonical}")
 
     @property
     def semantic_key(self) -> str:
@@ -98,7 +98,10 @@ def canonicalize_url(url: str) -> str:
             target = urllib.parse.parse_qs(p.query).get("url", [""])[0]
             if target.startswith(("http://", "https://")):
                 return canonicalize_url(target)
-        q = [(k, v) for k, v in urllib.parse.parse_qsl(p.query) if not k.lower().startswith("utm_")]
+        q = [
+            (k, v) for k, v in urllib.parse.parse_qsl(p.query)
+            if not k.lower().startswith("utm_") and k.lower() not in {"ocid", "ref", "source"}
+        ]
         return urllib.parse.urlunparse((p.scheme.lower(), host, p.path.rstrip("/"), "", urllib.parse.urlencode(q), ""))
     except Exception:
         return url
@@ -224,17 +227,54 @@ def extract_hr(text: str, label: str) -> str | None:
 
 def looks_like_phase3_result(item: Item) -> bool:
     low = item.full.lower()
-    return "interpath-001" in low and ("phase 3" in low or "3상" in low) and any(k in low for k in ("rfs", "dmfs", "primary endpoint", "topline", "met"))
+    return "interpath-001" in low and ("phase 3" in low or "3상" in low) and any(
+        k in low for k in ("rfs", "dmfs", "primary endpoint", "topline", "met endpoint", "meets endpoint")
+    )
 
 
 def looks_like_regulatory(item: Item) -> bool:
     low = item.full.lower()
-    return any(k in low for k in ("fda", "sbla", "submission", "filing", "accepted", "pdufa", "approval", "허가")) and any(k in low for k in ("intismeran", "mrna-4157", "v940", "interpath-001"))
+    return any(k in low for k in ("fda", "sbla", "submission", "filing", "accepted", "pdufa", "approval", "허가")) and any(
+        k in low for k in ("intismeran", "mrna-4157", "v940", "interpath-001")
+    )
 
 
 def looks_like_sc_link(item: Item) -> bool:
     low = item.full.lower()
     return "interpath-014" in low and any(k in low for k in ("subcutaneous", "berahyaluronidase", "keytruda qlex", "피하주사"))
+
+
+def event_key(item: Item) -> str | None:
+    """Deduplicate one clinical/regulatory event across many news outlets, while allowing official upgrades/new HRs."""
+    low = item.full.lower()
+    klass = source_class(item)
+    hrs = sorted(set(re.findall(r"\bHR\s*[=:]?\s*(0?\.\d+)", item.full, re.I)))
+
+    if looks_like_phase3_result(item):
+        if hrs:
+            base = "interpath001_phase3_hr_" + "_".join(hrs)
+        else:
+            base = "interpath001_phase3_endpoints_met"
+        return digest(f"{base}|{klass}")
+
+    if looks_like_regulatory(item):
+        if "approved" in low or "approval" in low:
+            stage = "approved"
+        elif "pdufa" in low:
+            stage = "pdufa"
+        elif "accepted" in low:
+            stage = "accepted"
+        elif "submission" in low or "filed" in low or "filing" in low:
+            stage = "submitted"
+        else:
+            stage = "regulatory"
+        return digest(f"interpath001_{stage}|{klass}")
+
+    if looks_like_sc_link(item):
+        nums = "|".join(metric_tokens(item.full))
+        return digest(f"interpath014_sc_update|{nums}|{klass}")
+
+    return None
 
 
 def load_state() -> dict:
@@ -243,7 +283,7 @@ def load_state() -> dict:
             return json.loads(STATE.read_text(encoding="utf-8"))
         except Exception:
             pass
-    return {"initialized": False, "seen": [], "seen_semantic": [], "trials": {}}
+    return {"initialized": False, "seen": [], "seen_semantic": [], "seen_event_keys": [], "trials": {}}
 
 
 def cap(values: set[str], limit: int = 5000) -> list[str]:
@@ -291,12 +331,12 @@ def build_alert(new_items: list[Item], trial_changes: list[str]) -> str:
         if looks_like_regulatory(item):
             lines.append("- 허가 경로: FDA 제출·접수·PDUFA·승인 중 어느 단계인지 구분해 추적합니다.")
         if looks_like_sc_link(item):
-            lines.append("- 알테오젠 연결: INTerpath-014는 intismeran과 pembrolizumab+berahyaluronidase alfa 피하주사를 직접 시험하는 별도 3상입니다.")
+            lines.append("- 알테오젠 연결: INTerpath-014는 Intismeran과 Pembrolizumab+berahyaluronidase alfa 피하주사를 직접 시험하는 별도 3상입니다.")
         if klass == "공식":
             lines.append("- 판정: 공식자료 확인치")
         else:
             lines.append("- 판정: 2차 자료. Merck·Moderna·ClinicalTrials.gov·FDA 중 최소 1곳의 공식 확인 전에는 확정하지 않습니다.")
-        lines.append("- 알테오젠 관점: intismeran 성공은 KEYTRUDA 병용 수요 기반을 넓힐 수 있지만, 곧바로 QLEX 매출이 늘어난다는 뜻은 아닙니다. 실제 QLEX/SC 적용 적응증·임상·허가 확대가 확인돼야 판매 마일스톤·후속 로열티 기반으로 연결됩니다.")
+        lines.append("- 알테오젠 관점: Intismeran 성공은 KEYTRUDA 병용 수요 기반을 넓힐 수 있지만, 곧바로 QLEX 매출이 늘어난다는 뜻은 아닙니다. 실제 QLEX/피하주사 적용 적응증·임상·허가 확대가 확인돼야 판매 마일스톤·후속 로열티 기반으로 연결됩니다.")
         lines.append(f"- 원문: {item.canonical}")
         lines.append("")
         idx += 1
@@ -308,7 +348,7 @@ def build_alert(new_items: list[Item], trial_changes: list[str]) -> str:
     lines.append("판정")
     lines.append("- INTerpath-001: 현재 기준 흑색종 3상, 약 1,089명, 진행 중·모집완료. 공식 3상 HR 공개 전에는 '3상 성공'으로 표시하지 않습니다.")
     lines.append("- 기존 2b상 5년 추적: RFS HR 0.51, DMFS HR 0.411은 배경자료일 뿐 새 3상 결과가 아닙니다.")
-    lines.append("- INTerpath-014: 약 876명 폐암 3상에서 intismeran + pembrolizumab/berahyaluronidase alfa 피하주사 경로를 직접 추적합니다.")
+    lines.append("- INTerpath-014: 약 876명 폐암 3상에서 Intismeran+Pembrolizumab/berahyaluronidase alfa 피하주사 경로를 직접 추적합니다.")
     return "\n".join(lines).strip() + "\n"
 
 
@@ -323,6 +363,7 @@ def main() -> int:
 
     seen = set(state.get("seen") or [])
     seen_semantic = set(state.get("seen_semantic") or [])
+    seen_events = set(state.get("seen_event_keys") or [])
     now = dt.datetime.now(KST).isoformat(timespec="seconds")
 
     if not state.get("initialized"):
@@ -330,19 +371,31 @@ def main() -> int:
         state["initialized_at_kst"] = now
         state["seen"] = cap({x.key for x in items})
         state["seen_semantic"] = cap({x.semantic_key for x in items})
+        state["seen_event_keys"] = cap({k for x in items if (k := event_key(x))})
         state["trials"] = current_trials
         state["last_check_kst"] = now
         PENDING.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         STATUS.write_text("Intismeran 감시 초기 기준선 저장 완료 — 기존 2b상 자료는 새 알림으로 보내지 않음.\n", encoding="utf-8")
         return 0
 
+    # Migration from pre-event-dedupe state: mark all currently visible repeated stories as already represented.
+    if "seen_event_keys" not in state:
+        seen_events.update(k for x in items if (k := event_key(x)))
+
     new_items: list[Item] = []
     for item in items:
-        if item.key in seen or item.semantic_key in seen_semantic:
+        ekey = event_key(item)
+        if item.key in seen or item.semantic_key in seen_semantic or (ekey and ekey in seen_events):
+            seen.add(item.key)
+            seen_semantic.add(item.semantic_key)
+            if ekey:
+                seen_events.add(ekey)
             continue
         new_items.append(item)
         seen.add(item.key)
         seen_semantic.add(item.semantic_key)
+        if ekey:
+            seen_events.add(ekey)
 
     trial_changes: list[str] = []
     previous_trials = state.get("trials") or {}
@@ -359,10 +412,14 @@ def main() -> int:
 
     state["seen"] = cap(seen)
     state["seen_semantic"] = cap(seen_semantic)
+    state["seen_event_keys"] = cap(seen_events)
     state["trials"] = current_trials
     state["last_check_kst"] = now
     PENDING.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    STATUS.write_text(f"Intismeran 감시 정상 — {now}; 신규={len(new_items)}, 임상등록변경={len(trial_changes)}\n", encoding="utf-8")
+    STATUS.write_text(
+        f"Intismeran 감시 정상 — {now}; 신규={len(new_items)}, 임상등록변경={len(trial_changes)}, 사건중복키={len(seen_events)}\n",
+        encoding="utf-8",
+    )
     return 0
 
 
