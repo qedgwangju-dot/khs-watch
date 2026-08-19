@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Verify bot identity and send test message
+      - name: Verify bot identity and send interpreted buyback alert
         run: |
           TELEGRAM_CHAT_ID="${TELEGRAM_CHAT_ID:-$FALLBACK_CHAT_ID}"
           export TELEGRAM_CHAT_ID
@@ -52,10 +52,35 @@ jobs:
           if not identity.get("ok") or actual.lower() != expected.lower():
               raise RuntimeError(f"wrong bot: expected @{expected}, got @{actual or 'unknown'}")
 
-          text = "[테스트] 미 국채 해외수요 알림 봇 경로 확인 완료 — @hs88798879887988798879_bot"
+          text = '''<b>🇺🇸 미 재무부, 장기채 바이백 상한 최소 2배 확대 보도</b>
+
+<b>쉽게 말하면</b>
+🟢 <b>신규 장기채 발행 확대가 아닙니다.</b> 이미 시장에 풀린 오래된 10~30년 국채를 재무부가 더 많이 되사는 조치라 장기물 수급·유동성에는 우호적입니다.
+
+<b>무엇이 바뀌나</b>
+• FinancialJuice 속보: 10~20년·20~30년 명목 국채 유동성 지원 바이백 회당 최대 20억달러 → 최소 40억달러
+• 적용 보도 기간: 9월 9일~11월 4일
+• 8월 5일 공식 정기 일정은 아직 회당 20억달러 표시 → 특별공지 세부 업데이트 추가 확인 중
+
+<b>숫자로 보면</b>
+• 20억달러 ≈ 2조7,839억원 / 40억달러 ≈ 5조5,679억원
+• 기존 일정의 해당 장기물 7회를 전부 2배로 가정: 최대 흡수여력 140억달러 → 최소 280억달러
+• 추가 최대 흡수여력 최소 140억달러 ≈ <b>19조4,876억원</b>
+※ 상한을 전부 채운다는 조건부 계산이며 실제 매입액은 더 작을 수 있습니다.
+
+<b>금리 해석</b>
+• 기존 장기채 유통 공급 부담 ↓ → off-the-run 유동성 ↑ → 기간 프리미엄·10년/30년 금리 상승 압력 일부 완화
+• 장기 실질금리까지 내려오면 AI·성장주 할인율에도 우호적
+• 다만 QE가 아니며 재정적자·인플레이션·신규 국채 공급 문제 자체를 없애지는 못합니다.
+
+<b>다음 확인</b>
+실제 매입액/상한 · 총 제시액 · 20년/30년 입찰 수요 · 10년/30년 명목·실질금리 반응
+
+<a href="https://x.com/financialjuice/status/2090055088563736745">속보 원문</a> · <a href="https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/">미 재무부 바이백 공지·결과</a> · <a href="https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.pdf">공식 정기 일정</a>'''
           payload = urllib.parse.urlencode({
               "chat_id": chat_id,
-              "text": text,
+              "text": text[:4096],
+              "parse_mode": "HTML",
               "disable_web_page_preview": "true",
           }).encode("utf-8")
           req = urllib.request.Request(
@@ -73,6 +98,7 @@ jobs:
               "bot_username": actual,
               "message_id": (result.get("result") or {}).get("message_id"),
               "sent_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              "topic": "Treasury long-end buyback interpreted alert",
           }
           pathlib.Path("data/treasury_telegram_smoke_test_result.json").write_text(
               json.dumps(record, ensure_ascii=False, indent=2) + "\n",
@@ -89,4 +115,4 @@ jobs:
           git commit -m "Record Treasury Telegram smoke test" || exit 0
           git push
 
-# retrigger: 2026-08-18T22:08+09:00
+# retrigger: 2026-08-19T21:58+09:00
