@@ -9,9 +9,11 @@ on:
     paths:
       - ".github/workflows/yen-policy-news-alert.yml"
       - "scripts/yen_policy_news_alert.py"
+      - "scripts/yen_policy_news_alert_runner.py"
       - "scripts/yen_policy_news_linkify.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_policy_news_alert.py"
+      - "tests/test_yen_policy_news_alert_runner.py"
       - "tests/test_yen_policy_news_linkify.py"
       - "data/yen_policy_news_state.json"
       - "data/yen_policy_news_alert_config.json"
@@ -47,12 +49,13 @@ jobs:
       - name: Validate policy-news monitor
         run: |
           python -m py_compile scripts/yen_policy_news_alert.py
+          python -m py_compile scripts/yen_policy_news_alert_runner.py
           python -m py_compile scripts/yen_policy_news_linkify.py
           python -m py_compile scripts/khs_source_fetch.py
-          python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_linkify.py -v
+          PYTHONPATH=scripts python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_alert_runner.py tests/test_yen_policy_news_linkify.py -v
 
       - name: Check BOJ and yen policy catalysts
-        run: python scripts/yen_policy_news_alert.py
+        run: PYTHONPATH=scripts python scripts/yen_policy_news_alert_runner.py
 
       - name: Add clickable source links
         if: hashFiles('out/yen_policy_news_alert.md') != ''
@@ -161,7 +164,7 @@ jobs:
 
       - name: Finalize policy-news state
         if: always() && env.TELEGRAM_DRY_RUN != 'true'
-        run: python scripts/yen_policy_news_alert.py --finalize
+        run: PYTHONPATH=scripts python scripts/yen_policy_news_alert_runner.py --finalize
 
       - name: Upload verification artifacts
         if: always()
