@@ -141,7 +141,6 @@ def build_structured_summary(title: str, article_text: str, resolved_url: str) -
     lines = [
         f'**{headline}**',
         '',
-        '- **원문 확인:** 기사 본문 직접 열람',
         f'- **시험:** {trial_line}',
         f'- **결과:** {result_line}',
         f'- **의미:** {meaning_line}',
@@ -149,6 +148,7 @@ def build_structured_summary(title: str, article_text: str, resolved_url: str) -
         f'- **다음 일정:** {next_line}',
         f'- **안전성:** {safety_line}',
         f'- **알테오젠 관점:** {alteogen_line}',
+        '- **원문 확인:** 기사 본문 직접 열람',
         f'- 원문: {resolved_url}',
     ]
     return '\n'.join(lines)
