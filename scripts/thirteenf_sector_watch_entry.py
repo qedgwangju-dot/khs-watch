@@ -8,13 +8,56 @@ import urllib.request
 
 import thirteenf_sector_watch as watch
 
-PURR_ISSUER = "HYPERLIQUID STRATEGIES"
-PURR_DISPLAY = "하이퍼리퀴드 스트래티지스(PURR·HYPE 간접노출)"
-PURR_SECTOR = "디지털자산·온체인 금융"
+# SEC 13F 감시 대상 확장.
+# 금융기관은 특정 CEO의 개인 베팅으로 오해하지 않도록 법인 공시 주체명으로 표시한다.
+watch.MANAGERS.update({
+    "Tudor Investment": ["0000923093"],
+    "Morgan Stanley": ["0000895421"],
+    "JPMorgan Chase": ["0000019617"],
+    "UBS Group": ["0001610520"],
+    "BlackRock": ["0001364742"],
+    "Brevan Howard": ["0001512857"],
+})
+watch.MANAGER_KR.update({
+    "Tudor Investment": "튜더 인베스트먼트",
+    "Morgan Stanley": "모건스탠리",
+    "JPMorgan Chase": "JP모건체이스",
+    "UBS Group": "UBS 그룹",
+    "BlackRock": "블랙록",
+    "Brevan Howard": "브레반 하워드 캐피털 매니지먼트",
+})
 
-# 종목 식별 및 산업 분류 보정
-watch.SECURITY_DISPLAY_RULES.insert(0, (PURR_ISSUER, PURR_DISPLAY))
-watch.SECTOR_RULES.insert(0, (PURR_SECTOR, [PURR_ISSUER]))
+# 디지털자산 관련 13F 종목은 일반 금융/기타가 아니라 별도 산업축으로 분리한다.
+CRYPTO_DISPLAY_RULES = [
+    ("HYPERLIQUID STRATEGIES", "하이퍼리퀴드 스트래티지스(PURR·HYPE 간접노출)"),
+    ("ISHARES BITCOIN", "아이셰어즈 비트코인 트러스트(IBIT)"),
+    ("GRAYSCALE BITCOIN", "그레이스케일 비트코인 트러스트(GBTC)"),
+    ("FIDELITY WISE ORIGIN BITCOIN", "피델리티 와이즈 오리진 비트코인 펀드(FBTC)"),
+    ("ARK 21SHARES BITCOIN", "ARK 21셰어즈 비트코인 ETF(ARKB)"),
+    ("STRATEGY INC", "스트래티지(MSTR·비트코인 재무전략)"),
+    ("CIRCLE INTERNET", "서클 인터넷 그룹(CRCL·USDC)"),
+    ("COINBASE GLOBAL", "코인베이스(COIN)"),
+    ("ISHARES ETHEREUM", "아이셰어즈 이더리움 트러스트(ETHA)"),
+    ("GRAYSCALE ETHEREUM", "그레이스케일 이더리움 트러스트"),
+    ("SOLANA", "솔라나 관련 상장상품"),
+]
+for rule in reversed(CRYPTO_DISPLAY_RULES):
+    watch.SECURITY_DISPLAY_RULES.insert(0, rule)
+
+CRYPTO_ISSUER_NEEDLES = [
+    "HYPERLIQUID STRATEGIES",
+    "ISHARES BITCOIN",
+    "GRAYSCALE BITCOIN",
+    "FIDELITY WISE ORIGIN BITCOIN",
+    "ARK 21SHARES BITCOIN",
+    "STRATEGY INC",
+    "CIRCLE INTERNET",
+    "COINBASE GLOBAL",
+    "ISHARES ETHEREUM",
+    "GRAYSCALE ETHEREUM",
+    "SOLANA",
+]
+watch.SECTOR_RULES.insert(0, ("디지털자산·온체인 금융", CRYPTO_ISSUER_NEEDLES))
 
 # 텔레그램에서 '누가 이 포트폴리오를 공시했는지'를 반드시 먼저 표시한다.
 PORTFOLIO_OWNER_KR = {
@@ -25,6 +68,12 @@ PORTFOLIO_OWNER_KR = {
     "NVIDIA": "엔비디아",
     "Appaloosa": "데이비드 테퍼의 아팔루사",
     "Berkshire Hathaway": "버크셔 해서웨이",
+    "Tudor Investment": "폴 튜더 존스의 튜더 인베스트먼트",
+    "Morgan Stanley": "모건스탠리",
+    "JPMorgan Chase": "JP모건체이스",
+    "UBS Group": "UBS 그룹",
+    "BlackRock": "블랙록",
+    "Brevan Howard": "브레반 하워드 캐피털 매니지먼트",
 }
 
 # 모든 외화 평가액은 한국 원화로 반드시 병기한다.
@@ -35,7 +84,6 @@ FX_BASIS = None
 
 
 def _fetch_usdkrw():
-    # 빠른 현재 환율 조회
     try:
         req = urllib.request.Request(
             "https://open.er-api.com/v6/latest/USD",
@@ -50,7 +98,6 @@ def _fetch_usdkrw():
     except Exception as e:
         print(f"WARN live USD/KRW lookup failed: {e}")
 
-    # 공식 연준 H.10의 최신 관측치(FRED DEXKOUS)로 대체
     try:
         req = urllib.request.Request(
             "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXKOUS",
@@ -108,7 +155,6 @@ def money_with_krw(v):
     return f"{_usd_text(v)} ({_krw_text(v * rate)})"
 
 
-# 기존 13F 알림의 모든 분기말 평가액을 달러+원화로 강제 변환한다.
 watch.money = money_with_krw
 
 _original_build_message = watch.build_message
@@ -119,7 +165,6 @@ def build_message_with_owner(label, filing, previous, changes, info_url):
     lines = text.splitlines()
     owner = PORTFOLIO_OWNER_KR.get(label, watch.MANAGER_KR.get(label, label))
     rate, basis = ensure_fx()
-    # 제목 바로 아래에 공시 주체와 환율 기준을 고정한다.
     lines.insert(1, f"포트폴리오 공시 주체: {owner}")
     lines.insert(2, f"원화 환산 기준: 1달러={rate:,.2f}원 ({basis})")
     return "\n".join(lines)
