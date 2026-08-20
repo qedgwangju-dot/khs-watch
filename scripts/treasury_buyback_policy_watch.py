@@ -62,6 +62,19 @@ MONTHS = {
     "december": 12,
 }
 
+# Verified market-reaction snippets are only inserted when we have a named,
+# externally verifiable source. Do not invent a reaction for future releases.
+MARKET_REACTIONS: dict[str, dict[str, str]] = {
+    "https://home.treasury.gov/news/press-releases/sb0607": {
+        "text": (
+            "Financial Times 보도 기준 발표 뒤 미 30년물 금리는 장중 약 5.34%에서 "
+            "5.20~5.21% 부근으로 내려왔고, 10년물도 약 4.67%까지 하락했습니다. "
+            "즉 시장도 이번 조치를 장기물 수급·유동성 부담 완화로 받아들였습니다."
+        ),
+        "url": "https://www.ft.com/content/777c9014-2f12-45cf-8224-6bbe808c62cb",
+    }
+}
+
 
 class LinkCollector(HTMLParser):
     def __init__(self) -> None:
@@ -102,7 +115,7 @@ class TextCollector(HTMLParser):
 
 
 def fetch_bytes(url: str) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 khs-watch/1.2"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 khs-watch/1.3"})
     with urllib.request.urlopen(req, timeout=25) as response:
         return response.read()
 
@@ -259,15 +272,17 @@ def find_new_press_releases(state: dict) -> list[dict]:
         combined = f"{title} {text}"
         if not is_long_end_buyback_change(combined):
             continue
-        found.append({
-            "kind": "press_release",
-            "source_id": source_id,
-            "url": url,
-            "title": title or "미 재무부 공식 보도자료",
-            "date": release_date_iso(text),
-            "text": text,
-            "amounts_bn": dollar_amounts_bn(text),
-        })
+        found.append(
+            {
+                "kind": "press_release",
+                "source_id": source_id,
+                "url": url,
+                "title": title or "미 재무부 공식 보도자료",
+                "date": release_date_iso(text),
+                "text": text,
+                "amounts_bn": dollar_amounts_bn(text),
+            }
+        )
     return found
 
 
@@ -293,16 +308,18 @@ def find_new_specials(state: dict) -> list[dict]:
             except Exception:
                 continue
             if is_long_end_buyback_change(text):
-                found.append({
-                    "kind": "special_pdf",
-                    "source_id": source_id,
-                    "url": url,
-                    "title": "TreasuryDirect 특별공지",
-                    "date": day.isoformat(),
-                    "text": re.sub(r"\s+", " ", text).strip(),
-                    "amounts_bn": dollar_amounts_bn(text),
-                    "legacy_sha": sha,
-                })
+                found.append(
+                    {
+                        "kind": "special_pdf",
+                        "source_id": source_id,
+                        "url": url,
+                        "title": "TreasuryDirect 특별공지",
+                        "date": day.isoformat(),
+                        "text": re.sub(r"\s+", " ", text).strip(),
+                        "amounts_bn": dollar_amounts_bn(text),
+                        "legacy_sha": sha,
+                    }
+                )
     return found
 
 
@@ -321,8 +338,40 @@ def build_change_lines(source: dict, fx: float) -> list[str]:
     return lines
 
 
-def build_common_body(fx: float, fx_date: str, source_url: str, change_lines: list[str], verdict: str) -> str:
-    return "\n".join([
+def title_for(source: dict | None, schedule_changes: list[dict]) -> str:
+    if source is not None:
+        amounts = sorted(set(source.get("amounts_bn") or []))
+        url = source.get("url") or ""
+        if url.endswith("/sb0607") or (2.0 in amounts and any(value >= 4.0 for value in amounts)):
+            return "🇺🇸 미 재무부, 장기물 바이백 최소 2배 확대 — 총량 문제는 그대로, 장기금리 완충 강화"
+        return "🇺🇸 미 재무부 장기채 바이백 정책 변경 — 장기금리 수급 영향 점검"
+    if schedule_changes:
+        if any(change["current_bn"] > change["previous_bn"] for change in schedule_changes):
+            return "🇺🇸 미 재무부, 장기물 바이백 확대 — 장기금리 수급 완충 강화"
+        return "🇺🇸 미 재무부, 장기물 바이백 축소 — 장기금리 수급 부담 확대"
+    return "🇺🇸 미 재무부 장기채 바이백 정책 변경"
+
+
+def market_reaction_lines(source_url: str) -> list[str]:
+    reaction = MARKET_REACTIONS.get(source_url)
+    if not reaction:
+        return []
+    return [
+        "",
+        "<b>시장 실제 반응</b>",
+        f"• {reaction['text']}",
+        f'<a href="{reaction["url"]}">시장 반응 원문</a>',
+    ]
+
+
+def build_common_body(
+    fx: float,
+    fx_date: str,
+    source_url: str,
+    change_lines: list[str],
+    verdict: str,
+) -> str:
+    lines = [
         "<b>쉽게 말하면</b>",
         f"🟢 {verdict}",
         "",
@@ -333,22 +382,33 @@ def build_common_body(fx: float, fx_date: str, source_url: str, change_lines: li
         "<b>금리 해석</b>",
         "• 재무부가 오래된 장기채를 더 많이 되살 수 있음 → 딜러 재고·유통 공급 부담 완화 → 시장 유동성 개선 → 기간 프리미엄·10년/30년 금리 상승 압력을 일부 완화하는 방향입니다.",
         "• 장기 실질금리까지 내려오면 AI·성장주의 할인율에도 단기적으로 우호적입니다.",
-        "",
-        "<b>중요한 오해 방지</b>",
-        "• <b>신규 10년·20년·30년물 발행 확대가 아닙니다.</b> 기존에 유통 중인 비지표물 국채를 재무부가 되사는 조치입니다.",
-        "• Fed의 QE가 아닙니다. 재무부의 부채관리 작업이라 은행 준비금을 새로 만드는 통화완화와 다릅니다.",
-        "• 바이백 재원은 다른 국채 발행 등으로 조달되므로 국가부채·순국채 공급 문제 자체를 구조적으로 없애지는 못합니다.",
-        "• 발표 금액은 최대 매입 상한일 수 있습니다. 실제 매입은 제시 물량·가격에 따라 상한보다 작을 수 있습니다.",
-        "",
-        "<b>다음 확인</b>",
-        "• 실제 매입액 / 총 제시액 / 제시액÷매입상한 비율",
-        "• 20년·30년 입찰 꼬리와 간접낙찰 비중",
-        "• 10년·30년 명목금리·실질금리가 실제로 내려오는지",
-        "• 다음 QRA에서 바이백 규모와 이표채 발행 가이던스가 어떻게 바뀌는지",
-        "",
-        f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.1f}원",
-        f'<a href="{source_url}">미 재무부 공식 발표</a> · <a href="{BUYBACK_PAGE}">바이백 공지·결과</a> · <a href="{FAQ}">바이백 설명</a>',
-    ])
+    ]
+    lines.extend(market_reaction_lines(source_url))
+    lines.extend(
+        [
+            "",
+            "<b>중요한 오해 방지</b>",
+            "• <b>신규 10년·20년·30년물 발행 확대가 아닙니다.</b> 기존에 유통 중인 비지표물 국채를 재무부가 되사는 조치입니다.",
+            "• Fed의 QE가 아닙니다. 재무부의 부채관리 작업이라 은행 준비금을 새로 만드는 통화완화와 다릅니다.",
+            "• 바이백 재원은 다른 국채 발행 등으로 조달되므로 국가부채·순국채 공급 문제 자체를 구조적으로 없애지는 못합니다.",
+            "• 발표 금액은 최대 매입 상한일 수 있습니다. 실제 매입은 제시 물량·가격에 따라 상한보다 작을 수 있습니다.",
+            "",
+            "<b>다음 확인</b>",
+            "• 실제 매입액 / 총 제시액 / 제시액÷매입상한 비율",
+            "• 20년·30년 입찰 꼬리와 간접낙찰 비중",
+            "• 10년·30년 명목금리·실질금리가 실제로 내려오는지",
+            "• 다음 QRA에서 바이백 규모와 이표채 발행 가이던스가 어떻게 바뀌는지",
+            "",
+            f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.1f}원",
+            (
+                f'<a href="{source_url}">미 재무부 공식 발표</a> · '
+                f'<a href="{BUYBACK_PAGE}">바이백 공지·결과</a> · '
+                f'<a href="{SCHEDULE_PDF}">기존 바이백 일정</a> · '
+                f'<a href="{FAQ}">바이백 설명</a>'
+            ),
+        ]
+    )
+    return "\n".join(lines)
 
 
 def main() -> int:
@@ -396,6 +456,8 @@ def main() -> int:
     }
 
     detail: dict | None = None
+    alert_title = title_for(None, schedule_changes)
+
     if official_changes:
         source = official_changes[0]
         change_lines = build_change_lines(source, fx)
@@ -406,6 +468,7 @@ def main() -> int:
             change_lines,
             "미 재무부가 장기 비지표물 국채를 더 적극적으로 흡수하는 정책 변경을 발표했습니다. 장기물 수급·유동성에는 우호적이지만 재정적자와 전체 국채 공급 문제를 해결하는 조치는 아닙니다.",
         )
+        alert_title = title_for(source, schedule_changes)
         detail = {
             "type": source["kind"],
             "source": source,
@@ -414,13 +477,12 @@ def main() -> int:
             "checked_kst": checked,
         }
         pending_ids = [source["source_id"]]
-        # If Treasury published a press release and a same-day TreasuryDirect
-        # special notice for the same policy action, suppress a duplicate alert.
         if source["kind"] == "press_release":
             for special in specials:
                 if not source.get("date") or special.get("date") == source.get("date"):
                     pending_ids.append(special["source_id"])
         next_state["pending_source_ids"] = list(dict.fromkeys(pending_ids))
+
     elif schedule_changes:
         increases = [change for change in schedule_changes if change["current_bn"] > change["previous_bn"]]
         verdict = (
@@ -435,6 +497,7 @@ def main() -> int:
                 f"({fmt_krw(change['previous_bn'], fx)} → {fmt_krw(change['current_bn'], fx)})"
             )
         body = build_common_body(fx, fx_date, SCHEDULE_PDF, change_lines, verdict)
+        alert_title = title_for(None, schedule_changes)
         detail = {
             "type": "schedule_change",
             "changes": schedule_changes,
@@ -445,7 +508,7 @@ def main() -> int:
         next_state["pending_schedule_change"] = schedule_changes
 
     if detail is not None:
-        TITLE.write_text("🇺🇸 미 재무부 장기채 바이백 정책 변경\n", encoding="utf-8")
+        TITLE.write_text(alert_title + "\n", encoding="utf-8")
         ALERT.write_text(body[:4096].rstrip() + "\n", encoding="utf-8")
         DETAIL.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
