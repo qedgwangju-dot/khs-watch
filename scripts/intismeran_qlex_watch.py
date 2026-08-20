@@ -346,7 +346,7 @@ def build_alert(new_items: list[Item], trial_changes: list[str]) -> str:
             lines.append(f"- {change}")
         lines.append("")
     lines.append("판정")
-    lines.append("- INTerpath-001: 현재 기준 흑색종 3상, 약 1,089명, 진행 중·모집완료. 공식 3상 HR 공개 전에는 '3상 성공'으로 표시하지 않습니다.")
+    lines.append("- INTerpath-001: 3상 톱라인에서 RFS·DMFS 평가변수 달성은 발표됐습니다. 정확한 3상 HR·위험감소율·OS는 아직 미공개이므로 후속 학회 수치를 별도 추적합니다.")
     lines.append("- 기존 2b상 5년 추적: RFS HR 0.51, DMFS HR 0.411은 배경자료일 뿐 새 3상 결과가 아닙니다.")
     lines.append("- INTerpath-014: 약 876명 폐암 3상에서 Intismeran+Pembrolizumab/berahyaluronidase alfa 피하주사 경로를 직접 추적합니다.")
     return "\n".join(lines).strip() + "\n"
