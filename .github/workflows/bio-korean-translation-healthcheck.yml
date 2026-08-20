@@ -32,14 +32,14 @@ jobs:
           [바이오 감시] Intismeran·KEYTRUDA QLEX 새 데이터
 
           1. Merck and Moderna Announce Phase 3 INTerpath-001 Trial of Intismeran Autogene Plus KEYTRUDA Met Endpoints of Recurrence-Free Survival (RFS) and Distant Metastasis-Free Survival (DMFS) in Patients With Completely Resected Stage IIB-IV Melanoma
-          - 출처 구분: 2차 자료
+          - 출처 구분: 공식
           - 발표/게시: Wed, 19 Aug 2026 10:45:00 GMT
           - 판정: 제목만으로 확정하지 않습니다.
           - 알테오젠 관점: Intismeran 성공은 KEYTRUDA 병용영역 확대 가능성을 높이지만 실제 QLEX 적용·허가 확대를 확인해야 합니다.
-          - 원문: https://marketchameleon.com/PressReleases/i/2361029/MRNA/merck-and-moderna-announce-phase-3-interpath001
+          - 원문: https://www.merck.com/news/merck-and-moderna-announce-phase-3-interpath-001-trial-of-intismeran-autogene-plus-keytruda-met-endpoints-of-recurrence-free-survival-rfs-and-distant-metastasis-free-survival-dmfs-in-patient/
 
           판정
-          - 테스트: 원문 본문을 직접 열어 RFS·DMFS·규제 일정 등 핵심 내용을 한국어로 넣는지 확인합니다.
+          - 테스트: Merck 원문 본문을 직접 열어 RFS·DMFS·규제 일정 등 핵심 내용을 한국어로 넣는지 확인합니다.
           EOF
       - name: Send body-enriched test and save proof
         run: |
@@ -57,7 +57,7 @@ jobs:
               'status':'confirmed',
               'confirmed_at_kst':dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
               'message_ids':ids,
-              'test':'Direct publisher article body opened and summarized into Korean before Telegram send',
+              'test':'Merck original article body opened and summarized into Korean before Telegram send',
           }
           pathlib.Path('data/bio_korean_translation_healthcheck.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
