@@ -1,0 +1,37 @@
+name: Patch Intismeran Phase 3 Verdict
+
+on:
+  push:
+    paths:
+      - ".github/workflows/patch-intismeran-static-verdict.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Correct static Phase 3 verdict
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/intismeran_qlex_watch.py')
+          text=p.read_text(encoding='utf-8')
+          old="- INTerpath-001: 현재 기준 흑색종 3상, 약 1,089명, 진행 중·모집완료. 공식 3상 HR 공개 전에는 '3상 성공'으로 표시하지 않습니다."
+          new="- INTerpath-001: 3상 톱라인에서 RFS·DMFS 평가변수 달성은 발표됐습니다. 정확한 3상 HR·위험감소율·OS는 아직 미공개이므로 후속 학회 수치를 별도 추적합니다."
+          if old not in text:
+              raise SystemExit('target verdict line not found')
+          p.write_text(text.replace(old,new),encoding='utf-8')
+          PY
+      - name: Commit corrected wording
+        run: |
+          git config user.name "bio-watch-fix[bot]"
+          git config user.email "bio-watch-fix[bot]@users.noreply.github.com"
+          git add scripts/intismeran_qlex_watch.py
+          git commit -m "Correct INTerpath-001 Phase 3 verdict wording"
+          git pull --rebase origin main
+          git push
