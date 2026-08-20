@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
-"""13F Telegram entrypoint with Korean display, sector, and owner overrides."""
+"""13F Telegram entrypoint with Korean display, owner, sector, and KRW conversion."""
 
+import datetime as dt
+import json
 import os
+import urllib.request
 
 import thirteenf_sector_watch as watch
 
@@ -24,6 +27,90 @@ PORTFOLIO_OWNER_KR = {
     "Berkshire Hathaway": "버크셔 해서웨이",
 }
 
+# 모든 외화 평가액은 한국 원화로 반드시 병기한다.
+# 1순위: 공개 USD/KRW 환율 조회, 2순위: 연준 H.10(FRED DEXKOUS),
+# 최종 실패 시 환경변수/내장 대체환율을 사용하고 대체 사용 사실을 표시한다.
+FX_RATE = None
+FX_BASIS = None
+
+
+def _fetch_usdkrw():
+    # 빠른 현재 환율 조회
+    try:
+        req = urllib.request.Request(
+            "https://open.er-api.com/v6/latest/USD",
+            headers={"User-Agent": "KHS-13F-Telegram/1.0"},
+        )
+        with urllib.request.urlopen(req, timeout=12) as r:
+            data = json.load(r)
+        rate = float(data["rates"]["KRW"])
+        updated = data.get("time_last_update_utc") or data.get("time_next_update_utc") or "조회 시점"
+        if rate > 0:
+            return rate, f"공개 USD/KRW 환율 · {updated}"
+    except Exception as e:
+        print(f"WARN live USD/KRW lookup failed: {e}")
+
+    # 공식 연준 H.10의 최신 관측치(FRED DEXKOUS)로 대체
+    try:
+        req = urllib.request.Request(
+            "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXKOUS",
+            headers={"User-Agent": "KHS-13F-Telegram/1.0"},
+        )
+        with urllib.request.urlopen(req, timeout=15) as r:
+            text = r.read().decode("utf-8", errors="replace")
+        for line in reversed(text.strip().splitlines()[1:]):
+            parts = line.split(",")
+            if len(parts) >= 2 and parts[1] not in {"", "."}:
+                rate = float(parts[1])
+                if rate > 0:
+                    return rate, f"연준 H.10/FRED DEXKOUS · {parts[0]}"
+    except Exception as e:
+        print(f"WARN FRED USD/KRW lookup failed: {e}")
+
+    fallback = float(os.environ.get("USD_KRW_FALLBACK", "1393.24"))
+    today = dt.datetime.now(dt.timezone.utc).date().isoformat()
+    return fallback, f"대체 기준환율 · {today}"
+
+
+def ensure_fx():
+    global FX_RATE, FX_BASIS
+    if FX_RATE is None:
+        FX_RATE, FX_BASIS = _fetch_usdkrw()
+    return FX_RATE, FX_BASIS
+
+
+def _usd_text(v):
+    a = abs(v)
+    if a >= 1_000_000_000:
+        return f"{v/1_000_000_000:.2f}십억달러"
+    if a >= 100_000_000:
+        return f"{v/100_000_000:.2f}억달러"
+    if a >= 1_000_000:
+        return f"{v/1_000_000:.1f}백만달러"
+    if a >= 1_000:
+        return f"{v/1_000:.1f}천달러"
+    return f"{v:,.0f}달러"
+
+
+def _krw_text(won):
+    a = abs(won)
+    if a >= 1_000_000_000_000:
+        return f"약 {won/1_000_000_000_000:,.2f}조원"
+    if a >= 100_000_000:
+        return f"약 {won/100_000_000:,.1f}억원"
+    if a >= 10_000:
+        return f"약 {won/10_000:,.0f}만원"
+    return f"약 {won:,.0f}원"
+
+
+def money_with_krw(v):
+    rate, _ = ensure_fx()
+    return f"{_usd_text(v)} ({_krw_text(v * rate)})"
+
+
+# 기존 13F 알림의 모든 분기말 평가액을 달러+원화로 강제 변환한다.
+watch.money = money_with_krw
+
 _original_build_message = watch.build_message
 
 
@@ -31,8 +118,10 @@ def build_message_with_owner(label, filing, previous, changes, info_url):
     text = _original_build_message(label, filing, previous, changes, info_url)
     lines = text.splitlines()
     owner = PORTFOLIO_OWNER_KR.get(label, watch.MANAGER_KR.get(label, label))
-    # 제목 바로 아래에 공시 주체를 고정해서 종목 수량의 주체가 혼동되지 않게 한다.
+    rate, basis = ensure_fx()
+    # 제목 바로 아래에 공시 주체와 환율 기준을 고정한다.
     lines.insert(1, f"포트폴리오 공시 주체: {owner}")
+    lines.insert(2, f"원화 환산 기준: 1달러={rate:,.2f}원 ({basis})")
     return "\n".join(lines)
 
 
@@ -57,6 +146,7 @@ def send_purr_test_if_requested() -> bool:
         raise RuntimeError("13F Telegram 비밀값이 없습니다.")
 
     username = watch.verify_bot(token)
+    rate, basis = ensure_fx()
     sample = {
         "issuer": "HYPERLIQUID STRATEGIES INC",
         "title": "COM",
@@ -70,6 +160,7 @@ def send_purr_test_if_requested() -> bool:
         [
             "✅ [13F PURR 분류 테스트]",
             "포트폴리오 공시 주체: 스탠리 드러켄밀러의 듀케인 패밀리 오피스",
+            f"원화 환산 기준: 1달러={rate:,.2f}원 ({basis})",
             f"발신 봇: @{username}",
             "산업: 디지털자산·온체인 금융",
             watch.line_for(sample),
