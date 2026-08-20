@@ -15,7 +15,9 @@ watch.MANAGERS.update({
     "Morgan Stanley": ["0000895421"],
     "JPMorgan Chase": ["0000019617"],
     "UBS Group": ["0001610520"],
-    "BlackRock": ["0001364742"],
+    # BlackRock은 2026년 현재 새 CIK 0002012383으로 13F를 제출한다.
+    # 과거 이력 연속성을 위해 이전 CIK 0001364742도 함께 조회한다.
+    "BlackRock": ["0002012383", "0001364742"],
     "Brevan Howard": ["0001512857"],
 })
 watch.MANAGER_KR.update({
