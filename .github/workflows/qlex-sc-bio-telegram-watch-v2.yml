@@ -18,6 +18,7 @@ on:
     paths:
       - ".github/workflows/qlex-sc-bio-telegram-watch-v2.yml"
       - "scripts/intismeran_qlex_watch.py"
+      - "scripts/intismeran_structured_telegram_send.py"
 
 permissions:
   contents: write
@@ -91,7 +92,7 @@ jobs:
           PY
 
       - name: Validate watchers
-        run: python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/intismeran_qlex_watch.py scripts/qlex_telegram_send.py
+        run: python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/intismeran_qlex_watch.py scripts/qlex_telegram_send.py scripts/intismeran_structured_telegram_send.py
 
       - name: Check for genuinely new QLEX data
         shell: bash
@@ -151,7 +152,7 @@ jobs:
         if: hashFiles('out/intismeran_qlex_alert.md') != ''
         env:
           BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
-        run: python scripts/qlex_telegram_send.py out/intismeran_qlex_alert.md
+        run: python scripts/intismeran_structured_telegram_send.py out/intismeran_qlex_alert.md
 
       - name: Persist QLEX state
         if: success() && hashFiles('out/qlex_sc_conversion_watch_state_pending.json') != ''
