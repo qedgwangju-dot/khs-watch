@@ -1,0 +1,60 @@
+name: Bio Original Body Parser Check
+
+on:
+  push:
+    paths:
+      - ".github/workflows/bio-original-body-parser-check.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile sender
+        run: python -m py_compile scripts/qlex_telegram_send.py
+      - name: Verify article-body extraction
+        run: |
+          python - <<'PY'
+          import importlib.util, json, pathlib, datetime as dt
+          from zoneinfo import ZoneInfo
+          path='scripts/qlex_telegram_send.py'
+          spec=importlib.util.spec_from_file_location('sender', path)
+          m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+          url='https://marketchameleon.com/PressReleases/i/2361029/MRNA/merck-and-moderna-announce-phase-3-interpath001'
+          page, final, ctype=m.fetch_response(url, timeout=20)
+          body=m.extract_article_text(page)
+          low=body.lower()
+          required=['interpath-001','recurrence-free survival','distant metastasis-free survival','regulators']
+          missing=[x for x in required if x not in low]
+          if len(body)<1000 or missing:
+              raise SystemExit(f'body extraction failed length={len(body)} missing={missing}')
+          facts=m.article_fact_lines(body)
+          if len(facts)<3:
+              raise SystemExit(f'fact extraction too weak: {facts}')
+          payload={
+            'status':'confirmed',
+            'checked_at_kst':dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
+            'article_url':final,
+            'body_chars':len(body),
+            'facts':facts,
+          }
+          pathlib.Path('data/bio_original_body_parser_check.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(payload)
+          PY
+      - name: Commit proof
+        run: |
+          git config user.name "bio-body-check[bot]"
+          git config user.email "bio-body-check[bot]@users.noreply.github.com"
+          git add data/bio_original_body_parser_check.json
+          git commit -m "Confirm bio original article body parser"
+          git pull --rebase origin main
+          git push
