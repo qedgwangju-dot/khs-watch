@@ -17,8 +17,14 @@ on:
   push:
     paths:
       - ".github/workflows/qlex-sc-bio-telegram-watch-v2.yml"
+      - "scripts/qlex_sc_conversion_watch.py"
+      - "scripts/qlex_telegram_send.py"
       - "scripts/intismeran_qlex_watch.py"
       - "scripts/intismeran_structured_telegram_send.py"
+      # Fallback pulse: the global-rates monitor is independently running every 15 minutes.
+      # Its state commits wake this bio watcher even if GitHub drops the hourly schedule event.
+      - "data/global_rates_watch_state.json"
+      - "data/global_rates_telegram_state.json"
 
 permissions:
   contents: write
