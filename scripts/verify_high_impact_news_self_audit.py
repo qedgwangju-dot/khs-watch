@@ -59,6 +59,18 @@ def assert_workflows_run_self_audit(errors: list[str]) -> None:
         require(workflow, ["python scripts/verify_high_impact_news_self_audit.py"], errors)
 
 
+def assert_attachment_coverage_gates(errors: list[str]) -> None:
+    for workflow in WORKFLOWS[:2]:
+        require(
+            workflow,
+            [
+                "python scripts/verify_gamejoa_news_coverage_contract.py",
+                "python scripts/verify_gamejoa_cross_market_coverage_contract.py",
+            ],
+            errors,
+        )
+
+
 def assert_no_late_translation_sources(errors: list[str]) -> None:
     for path in SOURCE_FILES:
         if not path.exists():
@@ -346,6 +358,7 @@ def assert_foreign_trade_requires_korea_link(errors: list[str]) -> None:
 def main() -> int:
     errors: list[str] = []
     assert_workflows_run_self_audit(errors)
+    assert_attachment_coverage_gates(errors)
     assert_no_late_translation_sources(errors)
     assert_guardrail_hooks(errors)
     assert_generic_gamejoa_item_is_rejected(errors)
