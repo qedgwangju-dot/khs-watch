@@ -223,9 +223,12 @@ def verify_full_attachment_audit_manifest(failures: list[str]) -> None:
         "트럼프 행정부, 애플에 \\\"중국산 메모리칩 사지 말라\\\" 직접 경고": ("route_policy_watch", "정책·통상·지정학"),
         "모더나·머크, 맞춤형 mRNA 암 치료제 3상 성공…주가 177% 폭등(종합)": ("monitor", "바이오·임상·허가"),
     }
-    item_by_title = {str(item.get("title") or ""): item for item in items}
+    item_by_title = {
+        normalized_attachment_title(str(item.get("title") or "")): item
+        for item in items
+    }
     for title, (disposition, lane) in mandatory.items():
-        item = item_by_title.get(title)
+        item = item_by_title.get(normalized_attachment_title(title))
         if not item:
             failures.append(f"full_attachment_manifest=missing_mandatory:{title}")
         elif item.get("disposition") != disposition or item.get("lane") != lane:
