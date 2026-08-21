@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import html
 import json
 import os
 import re
@@ -17,6 +18,7 @@ from bs4 import BeautifulSoup
 
 STATE_PATH = Path("data/korea_grid_policy_state.json")
 OUT_DIR = Path("out")
+KST = timezone(timedelta(hours=9))
 
 MCEE_PRESS_URLS = (
     "https://www.mcee.go.kr/home/web/board/list.do?boardCategoryId=39&boardMasterId=1&menuId=10525&maxPageItems=50",
@@ -220,7 +222,7 @@ def parse_date(value: str) -> datetime | None:
         parsed = parsedate_to_datetime(value)
         if parsed.tzinfo is None:
             parsed = parsed.replace(tzinfo=timezone.utc)
-        return parsed.astimezone(timezone.utc)
+        return parsed
     except (TypeError, ValueError, OverflowError):
         pass
     for fmt in ("%Y-%m-%d", "%Y.%m.%d", "%Y/%m/%d"):
@@ -231,8 +233,15 @@ def parse_date(value: str) -> datetime | None:
     return None
 
 
-def parse_html_items(html: str, base_url: str, source: str) -> list[dict[str, Any]]:
-    soup = BeautifulSoup(html, "html.parser")
+def format_korean_date(value: str | None) -> str:
+    parsed = parse_date(value or "")
+    if parsed is None:
+        return normalize(value) if value else "발표일 확인 필요"
+    return f"{parsed.astimezone(KST).year}년 {parsed.astimezone(KST).month}월 {parsed.astimezone(KST).day}일"
+
+
+def parse_html_items(html_text: str, base_url: str, source: str) -> list[dict[str, Any]]:
+    soup = BeautifulSoup(html_text, "html.parser")
     items: list[dict[str, Any]] = []
     for anchor in soup.find_all("a", href=True):
         title = normalize(anchor.get_text(" ", strip=True))
@@ -246,13 +255,14 @@ def parse_html_items(html: str, base_url: str, source: str) -> list[dict[str, An
         url = urljoin(base_url, str(anchor.get("href")))
         category, stage = classify_item(haystack)
         date_match = re.search(r"20\d{2}[-./]\d{1,2}[-./]\d{1,2}", context)
+        published = date_match.group(0) if date_match else ""
         items.append(
             {
                 "id": digest(f"{source}|{url}|{title}"),
                 "title": title,
                 "source": source,
                 "url": url,
-                "published": date_match.group(0) if date_match else "",
+                "published": published,
                 "category": category,
                 "stage": stage,
             }
@@ -297,8 +307,8 @@ def parse_rss(xml_text: str, source_name: str) -> list[dict[str, Any]]:
     return list({str(item["id"]): item for item in items}.values())
 
 
-def extract_law_version(html: str, name: str) -> str:
-    soup = BeautifulSoup(html, "html.parser")
+def extract_law_version(html_text: str, name: str) -> str:
+    soup = BeautifulSoup(html_text, "html.parser")
     text = normalize(soup.get_text(" ", strip=True))
     parts: list[str] = []
     for pattern in VERSION_PATTERNS:
@@ -312,7 +322,7 @@ def extract_law_version(html: str, name: str) -> str:
 def setup_report() -> str:
     return "\n".join(
         [
-            "# 전력망 정책 알림 경로 변경 완료",
+            "<b>전력망 정책 알림 경로 변경 완료</b>",
             "- 수신 봇: @hs8879887988798879_bot · 알림",
             "- 감시 1: 정부 최종 대책 확정과 국가기간 전력망 확충 실무위원회 의결",
             "- 감시 2: 입지선정위원회 고시·시행령 개정",
@@ -336,19 +346,21 @@ def investment_meaning(category: str) -> str:
 
 
 def render_report(items: list[dict[str, Any]], errors: list[str]) -> str:
-    lines = ["# 전력망 정책·발주 새 공식 변화"]
+    lines = ["<b>전력망 정책·발주 새 공식 변화</b>"]
     for index, item in enumerate(items[:6], start=1):
         category = str(item.get("category") or "전력망 정책")
-        published = normalize(str(item.get("published") or "")) or "발표일 확인 필요"
+        published = format_korean_date(str(item.get("published") or ""))
+        title = html.escape(normalize(str(item.get("title") or "")))
+        source = html.escape(normalize(str(item.get("source") or "")))
         url = normalize(str(item.get("url") or ""))
-        source_link = f"[공식 원문 보기]({url})" if url else "공식 원문 링크 확인 필요"
+        source_link = f'<a href="{html.escape(url, quote=True)}">공식 원문 보기</a>' if url else "공식 원문 링크 확인 필요"
         lines.extend(
             [
-                f"\n## {index}. {item.get('title')}",
-                f"- 단계: {category}",
-                f"- 기관: {item.get('source')}",
+                f"\n<b>{index}. {title}</b>",
+                f"- 단계: {html.escape(category)}",
+                f"- 기관: {source}",
                 f"- 발표일: {published}",
-                f"- 투자 의미: {investment_meaning(category)}",
+                f"- 투자 의미: {html.escape(investment_meaning(category))}",
                 f"- 공식 원문: {source_link}",
             ]
         )
@@ -454,7 +466,7 @@ def main(argv: list[str] | None = None) -> int:
         report_path.write_text(setup_report(), encoding="utf-8")
         output("changed", "true")
         output("report_path", str(report_path))
-        output("report_title", f"[전력망 정책] 알림 봇 경로 확인 {now:%Y-%m-%d}")
+        output("report_title", f"전력망 정책 알림 봇 경로 확인 {now.astimezone(KST):%Y-%m-%d}")
         return 0
 
     if initial_run:
@@ -476,7 +488,7 @@ def main(argv: list[str] | None = None) -> int:
     report_path.write_text(render_report(notify_items, errors), encoding="utf-8")
     output("changed", "true")
     output("report_path", str(report_path))
-    output("report_title", f"[전력망 정책] 공식 변화 {now:%Y-%m-%d}")
+    output("report_title", f"전력망 정책 공식 변화 {now.astimezone(KST):%Y-%m-%d}")
     return 0
 
 
