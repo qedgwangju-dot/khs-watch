@@ -1,0 +1,164 @@
+name: QLEX SC Bio Telegram Watch v3
+
+on:
+  schedule:
+    # Twice-hourly independent schedule, away from top-of-hour congestion.
+    - cron: "13,43 * * * *"
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "Send a connection test message"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+  push:
+    paths:
+      - ".github/workflows/qlex-sc-bio-telegram-watch-v3.yml"
+      - "scripts/qlex_sc_conversion_watch.py"
+      - "scripts/qlex_telegram_send.py"
+      - "scripts/intismeran_qlex_watch.py"
+      - "scripts/intismeran_structured_telegram_send.py"
+      # Independent 15-minute pulse from a watcher that is currently running normally.
+      - "data/global_rates_watch_state.json"
+      - "data/global_rates_telegram_state.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qlex-sc-bio-telegram-watch-v3
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify Telegram route
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token=(os.environ.get('BIO_TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id=(os.environ.get('BIO_TELEGRAM_CHAT_ID') or '').strip()
+          expected=(os.environ.get('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
+          if not token or not chat_id:
+              raise RuntimeError('BIO_TELEGRAM_BOT_TOKEN or BIO_TELEGRAM_CHAT_ID is missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              identity=json.loads(r.read().decode('utf-8'))
+          actual=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+          print(f'bio_telegram_route_ok=true bot=@{actual}')
+          PY
+
+      - name: Validate watchers
+        run: python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/intismeran_qlex_watch.py scripts/qlex_telegram_send.py scripts/intismeran_structured_telegram_send.py
+
+      - name: Check QLEX data
+        run: |
+          rm -f out/qlex_sc_conversion_alert.md out/qlex_sc_connection_test.md
+          python scripts/qlex_sc_conversion_watch.py --mode check
+
+      - name: Check Intismeran data
+        run: |
+          rm -f out/intismeran_qlex_alert.md
+          python scripts/intismeran_qlex_watch.py
+
+      - name: Build one-time activation test
+        if: github.event_name == 'push' && contains(github.event.head_commit.message, 'Activate QLEX bio watch v3')
+        run: |
+          mkdir -p out
+          cat > out/qlex_sc_connection_test.md <<'EOF'
+          [바이오 감시] QLEX·Intismeran 감시 v3 정상 연결
+
+          - Telegram 봇·채팅 연결 확인
+          - QLEX 매출·전환율 감시
+          - INTerpath-001·INTerpath-014 감시
+          - 30분 예약 + 15분 외부 상태 펄스 이중 실행
+          - 새 데이터가 있을 때만 본 알림 발송
+          EOF
+
+      - name: Build manual connection test
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        run: |
+          mkdir -p out
+          cat > out/qlex_sc_connection_test.md <<'EOF'
+          [바이오 감시] QLEX·Intismeran 감시 연결 시험
+          현재 Telegram 연결과 감시 실행 경로가 정상입니다.
+          EOF
+
+      - name: Send connection test
+        if: hashFiles('out/qlex_sc_connection_test.md') != ''
+        run: python scripts/qlex_telegram_send.py out/qlex_sc_connection_test.md
+
+      - name: Send new QLEX alert
+        if: hashFiles('out/qlex_sc_conversion_alert.md') != ''
+        run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_alert.md
+
+      - name: Send new Intismeran alert
+        if: hashFiles('out/intismeran_qlex_alert.md') != ''
+        run: python scripts/intismeran_structured_telegram_send.py out/intismeran_qlex_alert.md
+
+      - name: Persist watch states
+        if: success()
+        run: |
+          if [ -f out/qlex_sc_conversion_watch_state_pending.json ]; then
+            cp out/qlex_sc_conversion_watch_state_pending.json data/qlex_sc_conversion_watch_state.json
+          fi
+          if [ -f out/intismeran_qlex_watch_state_pending.json ]; then
+            cp out/intismeran_qlex_watch_state_pending.json data/intismeran_qlex_watch_state.json
+          fi
+
+      - name: Commit heartbeat/state
+        if: success()
+        run: |
+          git config user.name "bio-watch-v3[bot]"
+          git config user.email "bio-watch-v3[bot]@users.noreply.github.com"
+          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Bio watch states unchanged"
+            exit 0
+          fi
+          git commit -m "Update QLEX bio watch v3 states"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 3))
+          done
+          exit 1
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qlex-sc-bio-watch-v3-${{ github.run_id }}
+          path: |
+            out/qlex_sc_conversion_status.md
+            out/qlex_sc_conversion_alert.md
+            out/qlex_sc_conversion_watch_state_pending.json
+            out/intismeran_qlex_status.md
+            out/intismeran_qlex_alert.md
+            out/intismeran_qlex_watch_state_pending.json
+            out/qlex_sc_connection_test.md
+          if-no-files-found: ignore
+          retention-days: 14
