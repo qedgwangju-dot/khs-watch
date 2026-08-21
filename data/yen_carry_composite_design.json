@@ -1,5 +1,15 @@
 {
-  "status": "design",
+  "status": "active",
+  "merged_commit": "0104fa3337220293acfec696510c4d2984ac93de",
+  "validation_run": 32444211809,
+  "tests_passed": 11,
+  "live_validation": {
+    "all_structural_sources_verified": true,
+    "source_errors": 0,
+    "unwind_level": 0,
+    "rebuild_level": 2,
+    "telegram_sent_in_pr": false
+  },
   "principle": "Carry unwind risk and persistent yen strength are separate questions. Never infer either from one threshold such as JGB 10Y 3%.",
   "factors": [
     "Japan 2Y JGB as a short-rate proxy",
@@ -12,9 +22,21 @@
   ],
   "source_priority": {
     "rates": "Japan MOF / U.S. Treasury",
-    "positioning": "CFTC TFF Futures Only",
-    "outward_flows": "Japan MOF International Transactions in Securities",
-    "policy": "Japan MOF official statement",
+    "positioning": "CFTC Traders in Financial Futures - Futures Only current report",
+    "outward_flows": "Japan MOF International Transactions in Securities weekly historical CSV",
+    "policy": "Japan MOF official joint-intervention statement",
     "intraday_fx": "Yahoo query1/query2 cross-check; may be delayed"
+  },
+  "alert_policy": {
+    "cadence": "every 15 minutes, GitHub schedule may start late",
+    "fast_usdjpy_lane_unchanged": true,
+    "first_production_run": "establish baseline without sending",
+    "realert_on": [
+      "unwind level change",
+      "rebuild level change",
+      "new short-covering / yen-weakness divergence",
+      "new CFTC release while a risk state is active",
+      "new Japan MOF outward-flow release while a risk state is active"
+    ]
   }
 }
