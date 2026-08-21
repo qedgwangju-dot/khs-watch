@@ -92,8 +92,8 @@ jobs:
       - name: Send composite risk alert to Telegram
         if: hashFiles('out/global_rates_watch_telegram.md') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
@@ -218,7 +218,6 @@ jobs:
             out/qlex_sc_conversion_watch_state_pending.json
             out/intismeran_qlex_status.md
             out/intismeran_qlex_alert.md
-            out/intismeran_qlex_watch_state_pending.json
             out/intismeran_structured_send_confirmed.json
             out/global_rates_watch_status.md
             out/global_rates_watch_alert.md
