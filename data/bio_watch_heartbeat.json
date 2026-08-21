@@ -1,9 +1,10 @@
 {
   "status": "degraded",
-  "checked_at_kst": "2026-08-21T13:23:28+09:00",
-  "qlex_state_persisted": false,
+  "checked_at_kst": "2026-08-21T13:32:50+09:00",
+  "route_source": "getUpdates-once",
+  "qlex_state_persisted": true,
   "intismeran_state_persisted": false,
   "qlex_send_outcome": "skipped",
-  "intismeran_send_outcome": "skipped",
+  "intismeran_send_outcome": "success",
   "test_send_outcome": "skipped"
 }
