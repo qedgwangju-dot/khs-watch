@@ -1,0 +1,16 @@
+{
+  "checked_at_kst": "2026-08-21T13:18:56+09:00",
+  "status": "failed",
+  "telegram_route_ok": false,
+  "qlex_collector_rc": null,
+  "intismeran_collector_rc": null,
+  "qlex_alert_present": false,
+  "intismeran_alert_present": false,
+  "qlex_sender_rc": null,
+  "intismeran_sender_rc": null,
+  "qlex_state_persisted": false,
+  "intismeran_state_persisted": false,
+  "errors": [
+    "RuntimeError: BIO Telegram token/chat_id/expected username missing"
+  ]
+}
