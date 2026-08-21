@@ -19,9 +19,25 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
-      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+      CONFIGURED_BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Resolve Telegram route for status messages
+        id: route
+        shell: bash
+        run: |
+          set -euo pipefail
+          chat_id="${CONFIGURED_BIO_TELEGRAM_CHAT_ID:-}"
+          if [ -z "$chat_id" ] && [ -n "${BIO_TELEGRAM_BOT_TOKEN:-}" ] && [ -f data/bio_telegram_chat_id.enc ]; then
+            chat_id=$(openssl enc -d -aes-256-cbc -a -A -pbkdf2 \
+              -pass env:BIO_TELEGRAM_BOT_TOKEN \
+              -in data/bio_telegram_chat_id.enc 2>/dev/null || true)
+          fi
+          if [ -n "$chat_id" ]; then
+            echo "::add-mask::$chat_id"
+            echo "chat_id=$chat_id" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Evaluate heartbeat
         id: hb
@@ -63,9 +79,10 @@ jobs:
           echo "바이오 메인 감시 재실행 요청 완료"
 
       - name: Notify Telegram when recovery is triggered
-        if: steps.hb.outputs.stale == 'true'
+        if: steps.hb.outputs.stale == 'true' && steps.route.outputs.chat_id != ''
         continue-on-error: true
         env:
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.route.outputs.chat_id }}
           AGE_MINUTES: ${{ steps.hb.outputs.age_minutes }}
           HB_STATUS: ${{ steps.hb.outputs.status }}
           HB_CHECKED_AT: ${{ steps.hb.outputs.checked_at }}
@@ -90,9 +107,10 @@ jobs:
           PY
 
       - name: Daily healthy status
-        if: github.event.schedule == '5 0 * * *' && steps.hb.outputs.stale == 'false'
+        if: github.event.schedule == '5 0 * * *' && steps.hb.outputs.stale == 'false' && steps.route.outputs.chat_id != ''
         continue-on-error: true
         env:
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.route.outputs.chat_id }}
           HB_CHECKED_AT: ${{ steps.hb.outputs.checked_at }}
         run: |
           python - <<'PY'
