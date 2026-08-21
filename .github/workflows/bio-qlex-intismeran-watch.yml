@@ -36,7 +36,7 @@ jobs:
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
       BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
-      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+      CONFIGURED_BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
 
     steps:
       - name: Checkout
@@ -49,22 +49,72 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Verify Telegram route
+      - name: Resolve and verify Telegram route
+        id: route
+        shell: bash
         run: |
+          set -euo pipefail
+          token="${BIO_TELEGRAM_BOT_TOKEN:-}"
+          chat_id="${CONFIGURED_BIO_TELEGRAM_CHAT_ID:-}"
+          route_source="secret"
+          if [ -z "$token" ]; then
+            echo "BIO_TELEGRAM_BOT_TOKEN 누락" >&2
+            exit 1
+          fi
+
           python - <<'PY'
           import json, os, urllib.request
-          token=(os.environ.get('BIO_TELEGRAM_BOT_TOKEN') or '').strip()
-          chat_id=(os.environ.get('BIO_TELEGRAM_CHAT_ID') or '').strip()
-          expected=(os.environ.get('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
-          if not token or not chat_id:
-              raise RuntimeError('BIO_TELEGRAM_BOT_TOKEN 또는 BIO_TELEGRAM_CHAT_ID 누락')
-          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+          token=os.environ['BIO_TELEGRAM_BOT_TOKEN'].strip()
+          expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe',timeout=25) as r:
               payload=json.loads(r.read().decode('utf-8'))
           actual=str((payload.get('result') or {}).get('username') or '')
           if not payload.get('ok') or actual.lower()!=expected.lower():
               raise RuntimeError(f'잘못된 Telegram 봇: expected @{expected}, got @{actual or "unknown"}')
-          print(f'bio_telegram_route_ok=true bot=@{actual}')
+          print(f'bio_telegram_bot_ok=@{actual}')
           PY
+
+          if [ -z "$chat_id" ] && [ -f data/bio_telegram_chat_id.enc ]; then
+            route_source="encrypted-route"
+            chat_id=$(openssl enc -d -aes-256-cbc -a -A -pbkdf2 \
+              -pass env:BIO_TELEGRAM_BOT_TOKEN \
+              -in data/bio_telegram_chat_id.enc 2>/dev/null || true)
+          fi
+
+          if [ -z "$chat_id" ]; then
+            route_source="getUpdates-once"
+            chat_id=$(python - <<'PY'
+          import json, os, urllib.request
+          token=os.environ['BIO_TELEGRAM_BOT_TOKEN'].strip()
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0',timeout=25) as r:
+              data=json.loads(r.read().decode('utf-8'))
+          candidates=[]
+          for upd in data.get('result') or []:
+              msg=upd.get('message') or upd.get('edited_message') or {}
+              chat=msg.get('chat') or {}
+              if str(chat.get('type') or '')=='private' and chat.get('id') is not None:
+                  candidates.append((int(upd.get('update_id') or 0),str(chat['id'])))
+          if candidates:
+              candidates.sort()
+              print(candidates[-1][1])
+          PY
+            )
+          fi
+
+          if [ -z "$chat_id" ]; then
+            echo "BIO_TELEGRAM_CHAT_ID가 워크플로에 전달되지 않았고 저장된 암호화 경로도 없습니다. 봇에 /start를 한 번 보내면 다음 실행에서 자동 저장됩니다." >&2
+            exit 1
+          fi
+
+          echo "::add-mask::$chat_id"
+          echo "chat_id=$chat_id" >> "$GITHUB_OUTPUT"
+          echo "route_source=$route_source" >> "$GITHUB_OUTPUT"
+
+          # Secret이 비어 있어도 이후 /start 기록 만료와 무관하게 재사용하도록 암호화 저장.
+          printf '%s' "$chat_id" | openssl enc -aes-256-cbc -a -A -pbkdf2 -salt \
+            -pass env:BIO_TELEGRAM_BOT_TOKEN \
+            -out data/bio_telegram_chat_id.enc
+          echo "bio_telegram_route_ok=true source=$route_source"
 
       - name: Validate scripts
         run: python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/qlex_telegram_send.py scripts/intismeran_qlex_watch.py scripts/intismeran_structured_telegram_send.py
@@ -80,17 +130,16 @@ jobs:
           rm -f out/intismeran_qlex_alert.md out/intismeran_structured_send_confirmed.json
           python scripts/intismeran_qlex_watch.py
 
-      - name: Build activation test
-        if: github.event_name == 'push' && contains(github.event.head_commit.message, 'Activate stable single-writer QLEX bio watch')
+      - name: Build route repair test
+        if: github.event_name == 'push' && contains(github.event.head_commit.message, 'Make bio Telegram route self-healing')
         run: |
           cat > out/qlex_sc_connection_test.md <<'EOF'
           [바이오 감시] QLEX·Intismeran 감시 구조 정상화
 
-          - 바이오 상태파일 쓰기는 이 워크플로 1개만 담당
+          - 바이오 상태파일 쓰기는 단일 워크플로만 담당
           - 15분 간격 감시
-          - Telegram 봇·채팅 연결 검증
-          - 신규 데이터가 있을 때만 본 알림 발송
-          - 원문 본문 확인 실패 시 Intismeran 기사를 소비하지 않고 다음 실행에서 재시도
+          - Telegram 채팅 경로를 암호화 저장해 /start 기록 만료에 의존하지 않음
+          - 원문 본문 확인 실패 시 해당 Intismeran 기사는 소비하지 않고 재시도
           EOF
 
       - name: Build manual test
@@ -105,18 +154,24 @@ jobs:
         if: hashFiles('out/qlex_sc_connection_test.md') != ''
         id: test_send
         continue-on-error: true
+        env:
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.route.outputs.chat_id }}
         run: python scripts/qlex_telegram_send.py out/qlex_sc_connection_test.md
 
       - name: Send new QLEX alert
         if: hashFiles('out/qlex_sc_conversion_alert.md') != ''
         id: qlex_send
         continue-on-error: true
+        env:
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.route.outputs.chat_id }}
         run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_alert.md
 
       - name: Send new Intismeran alert
         if: hashFiles('out/intismeran_qlex_alert.md') != ''
         id: intis_send
         continue-on-error: true
+        env:
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.route.outputs.chat_id }}
         run: python scripts/intismeran_structured_telegram_send.py out/intismeran_qlex_alert.md
 
       - name: Persist only safely handled states
@@ -155,6 +210,7 @@ jobs:
           TEST_SEND_OUTCOME: ${{ steps.test_send.outcome }}
           QLEX_SEND_OUTCOME: ${{ steps.qlex_send.outcome }}
           INTIS_SEND_OUTCOME: ${{ steps.intis_send.outcome }}
+          ROUTE_SOURCE: ${{ steps.route.outputs.route_source }}
         run: |
           python - <<'PY'
           import datetime as dt, json, os, pathlib
@@ -166,6 +222,7 @@ jobs:
           payload={
               'status':status,
               'checked_at_kst':now,
+              'route_source':os.environ.get('ROUTE_SOURCE',''),
               'qlex_state_persisted':qlex_ok,
               'intismeran_state_persisted':intis_ok,
               'qlex_send_outcome':os.environ.get('QLEX_SEND_OUTCOME',''),
@@ -176,12 +233,12 @@ jobs:
           print(json.dumps(payload,ensure_ascii=False))
           PY
 
-      - name: Commit state and heartbeat
+      - name: Commit state, route and heartbeat
         if: always()
         run: |
           git config user.name "bio-watch[bot]"
           git config user.email "bio-watch[bot]@users.noreply.github.com"
-          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
+          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json data/bio_watch_heartbeat.json data/bio_telegram_chat_id.enc 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Bio state unchanged"
             exit 0
