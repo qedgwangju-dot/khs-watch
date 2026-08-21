@@ -7,7 +7,6 @@ on:
       - "scripts/global_rates_watch.py"
       - "scripts/yen_carry_confirmation.py"
       - "scripts/global_rates_telegram_formatter.py"
-      - "scripts/bio_single_runner.py"
       - "data/global_rates_watch_state.json"
       - "data/global_rates_telegram_state.json"
   schedule:
@@ -32,10 +31,6 @@ jobs:
   monitor:
     runs-on: ubuntu-latest
     timeout-minutes: 12
-    env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
-      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
-      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,17 +41,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - name: Run QLEX and Intismeran bio watch
-        run: python scripts/bio_single_runner.py
-
-      - name: Publish bio watch status
-        if: always()
-        run: |
-          if [ -f data/bio_watch_heartbeat.json ]; then
-            echo "# 바이오 감시 상태" >> "$GITHUB_STEP_SUMMARY"
-            cat data/bio_watch_heartbeat.json >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Check official rate sources
         run: python scripts/global_rates_watch.py
@@ -191,11 +175,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/global_rates_watch_state.json data/global_rates_telegram_state.json data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
+          git add data/global_rates_watch_state.json data/global_rates_telegram_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Watcher states unchanged"
           else
-            git commit -m "Update global rates and bio watch states"
+            git commit -m "Update global rates watch states"
             for attempt in 1 2 3; do
               if git pull --rebase origin main && git push; then
                 exit 0
@@ -212,13 +196,6 @@ jobs:
         with:
           name: global-rates-watch-${{ github.run_id }}
           path: |
-            data/bio_watch_heartbeat.json
-            out/qlex_sc_conversion_status.md
-            out/qlex_sc_conversion_alert.md
-            out/qlex_sc_conversion_watch_state_pending.json
-            out/intismeran_qlex_status.md
-            out/intismeran_qlex_alert.md
-            out/intismeran_structured_send_confirmed.json
             out/global_rates_watch_status.md
             out/global_rates_watch_alert.md
             out/global_rates_watch_alert.json
