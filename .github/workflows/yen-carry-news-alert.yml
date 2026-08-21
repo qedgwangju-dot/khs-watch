@@ -9,9 +9,11 @@ on:
     paths:
       - ".github/workflows/yen-carry-news-alert.yml"
       - "scripts/yen_carry_news_alert.py"
+      - "scripts/yen_carry_news_alert_v2.py"
       - "scripts/yen_policy_news_alert.py"
       - "scripts/yen_policy_news_linkify.py"
       - "tests/test_yen_carry_news_alert.py"
+      - "tests/test_yen_carry_news_alert_v2.py"
       - "data/yen_carry_news_state.json"
 
 permissions:
@@ -45,12 +47,15 @@ jobs:
       - name: Validate carry-news monitor
         run: |
           python -m py_compile scripts/yen_carry_news_alert.py
+          python -m py_compile scripts/yen_carry_news_alert_v2.py
           python -m py_compile scripts/yen_policy_news_alert.py
           python -m py_compile scripts/yen_policy_news_linkify.py
-          PYTHONPATH=scripts python -m unittest tests/test_yen_carry_news_alert.py -v
+          PYTHONPATH=scripts python -m unittest \
+            tests/test_yen_carry_news_alert.py \
+            tests/test_yen_carry_news_alert_v2.py -v
 
       - name: Check yen carry and outbound-flow catalysts
-        run: PYTHONPATH=scripts python scripts/yen_carry_news_alert.py
+        run: PYTHONPATH=scripts python scripts/yen_carry_news_alert_v2.py
 
       - name: Add clickable source links
         if: hashFiles('out/yen_carry_news_alert.md') != ''
@@ -165,7 +170,7 @@ jobs:
 
       - name: Finalize carry-news state
         if: always() && env.TELEGRAM_DRY_RUN != 'true'
-        run: PYTHONPATH=scripts python scripts/yen_carry_news_alert.py --finalize
+        run: PYTHONPATH=scripts python scripts/yen_carry_news_alert_v2.py --finalize
 
       - name: Upload verification artifacts
         if: always()
