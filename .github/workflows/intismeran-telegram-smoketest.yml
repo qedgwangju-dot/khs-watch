@@ -1,0 +1,86 @@
+name: Intismeran Telegram Smoke Test
+
+on:
+  push:
+    paths:
+      - ".github/workflows/intismeran-telegram-smoketest.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify bot and send test message
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token=(os.getenv('BIO_TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id=(os.getenv('BIO_TELEGRAM_CHAT_ID') or '').strip()
+          expected=(os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
+          if not token:
+              raise RuntimeError('BIO_TELEGRAM_BOT_TOKEN missing')
+          if not chat_id:
+              raise RuntimeError('BIO_TELEGRAM_CHAT_ID missing')
+
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
+              ident=json.loads(r.read().decode('utf-8'))
+          actual=str((ident.get('result') or {}).get('username') or '')
+          if not ident.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'wrong bot: expected @{expected}, got @{actual or "unknown"}')
+
+          now=dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds')
+          text=(
+              '[바이오 감시] Intismeran Telegram 연결 시험\n\n'
+              'GitHub Actions → 공식 웹 감시 → 변화 감지 → Telegram Bot API 전송 경로가 정상 연결되었습니다.\n'
+              f'확인시각: {now}\n'
+              '감시대상: Moderna intismeran autogene (V940/mRNA-4157), Merck KEYTRUDA, FDA, ClinicalTrials.gov'
+          )
+          payload=urllib.parse.urlencode({'chat_id':chat_id,'text':text,'disable_web_page_preview':'true'}).encode()
+          req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage', data=payload, method='POST')
+          with urllib.request.urlopen(req, timeout=20) as r:
+              sent=json.loads(r.read().decode('utf-8'))
+          if not sent.get('ok'):
+              raise RuntimeError(f'Telegram sendMessage failed: {sent}')
+
+          result={
+              'status':'success',
+              'checked_at_kst':now,
+              'bot_username':'@'+actual,
+              'telegram_message_id':(sent.get('result') or {}).get('message_id'),
+          }
+          path=pathlib.Path('data/intismeran_telegram_smoketest.json')
+          path.parent.mkdir(parents=True, exist_ok=True)
+          path.write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          print(json.dumps(result, ensure_ascii=False))
+          PY
+
+      - name: Commit smoke-test result
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "intismeran-watch[bot]"
+          git config user.email "intismeran-watch[bot]@users.noreply.github.com"
+          git add -- data/intismeran_telegram_smoketest.json
+          git commit -m "Record Intismeran Telegram smoke test"
+          git push origin HEAD
