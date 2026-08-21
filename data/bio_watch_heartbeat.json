@@ -1,10 +1,18 @@
 {
-  "status": "degraded",
-  "checked_at_kst": "2026-08-21T16:04:12+09:00",
+  "status": "ok",
+  "checked_at_kst": "2026-08-21T16:47:29+09:00",
   "route_source": "encrypted-route",
-  "qlex_state_persisted": true,
-  "intismeran_state_persisted": false,
+  "telegram_route_ok": true,
+  "qlex_collector_rc": 0,
+  "intismeran_collector_rc": 0,
+  "qlex_alert_present": false,
+  "intismeran_alert_present": true,
   "qlex_send_outcome": "skipped",
   "intismeran_send_outcome": "success",
-  "test_send_outcome": "skipped"
+  "qlex_state_persisted": true,
+  "intismeran_state_persisted": false,
+  "intismeran_retry_pending": true,
+  "last_health_notice_date": "2026-08-21",
+  "errors": [],
+  "health_notice_message_id": 41
 }
