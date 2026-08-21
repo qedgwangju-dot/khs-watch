@@ -1080,6 +1080,138 @@ AUGUST13_ATTACHMENT_IMPACT_TERMS = {
 for _impact_label, _impact_terms in AUGUST13_ATTACHMENT_IMPACT_TERMS.items():
     IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
 
+
+# Full-attachment coverage (2026-08-10 through 2026-08-21).
+# These are discovery lanes only. Historical examples are never pinned for
+# replay; the normal freshness, body-verification, decision-impact, and seen
+# state gates still decide whether a new article may be sent.
+SEARCH_SOURCES.extend(
+    [
+        (
+            "AI 메모리 고객선점·CPO·광연결",
+            "(삼성전자 OR SK하이닉스 OR 마이크론 OR 엔비디아 OR 애플) "
+            "(HBM OR CPO OR 공동패키징광학 OR co-packaged optics OR 광연결 OR 광인터커넥트 OR 계약부채) "
+            "(고객선점 OR 선구매 OR 공급 OR 양산 OR 논문 OR 상용화 OR 가격) "
+            "(site:yna.co.kr OR site:newsis.com OR site:mk.co.kr OR site:edaily.co.kr OR "
+            "site:etnews.com OR site:dt.co.kr OR site:hankyung.com)",
+        ),
+        (
+            "반도체 팹 용수·수처리·소부장 수주",
+            "(삼성전자 OR SK하이닉스 OR 반도체 팹 OR 반도체공장 OR 반도체 공장) "
+            "(용수 OR 초순수 OR 수처리 OR 폐수처리 OR 소재 OR 장비) "
+            "(수주 OR 공급계약 OR 계약 OR 증설 OR 양산 OR 투자 OR 인허가) "
+            "(site:yna.co.kr OR site:newsis.com OR site:etnews.com OR site:edaily.co.kr OR "
+            "site:mk.co.kr OR site:fnnews.com OR site:thebell.co.kr)",
+        ),
+        (
+            "상장사 주주환원·조회공시·사업재편",
+            "(삼성전자 OR SK하이닉스 OR 대기업 OR 코스피) "
+            "(주주환원 OR 현금배당 OR 자사주소각 OR 자사주 소각 OR 조회공시 OR 조회 공시 OR "
+            "사업재편 OR 자회사 상장 OR 지분매각 OR 지분 매각) "
+            "(이사회 OR 결정 OR 공시 OR 요구 OR 검토 OR 확정) "
+            "(site:yna.co.kr OR site:newsis.com OR site:mk.co.kr OR site:edaily.co.kr OR "
+            "site:fnnews.com OR site:hankyung.com OR site:asiae.co.kr)",
+        ),
+        (
+            "AI 인프라 차입·장기국채·장기금리",
+            "(빅테크 OR 엔비디아 OR 오픈AI OR 마이크로소프트 OR 아마존 OR 구글 OR 메타 OR 데이터센터) "
+            "(차입 OR 회사채 OR 채무보증 OR 채무 보증 OR 채권발행 OR 장기국채 OR 미국채30년물 OR "
+            "미국채 30년물 OR 장기금리 OR term premium) "
+            "(AI OR 데이터센터 OR 설비투자 OR CAPEX OR 금리 OR 수익률) "
+            "(site:reuters.com OR site:ft.com OR site:cnbc.com OR site:yna.co.kr OR "
+            "site:newsis.com OR site:mk.co.kr OR site:edaily.co.kr)",
+        ),
+        (
+            "공식 AI 협업·전장·로봇·데이터센터",
+            "(삼성전자 OR LG전자 OR 현대차 OR SK텔레콤 OR 네이버 OR 카카오 OR 한화) "
+            "(엔비디아 OR 오픈AI OR 앤트로픽 OR 마이크로소프트 OR 구글) "
+            "(공식화 OR 공식 협력 OR 계약 OR 공급 OR 공동개발 OR 전장 OR 차량 OR 로봇 OR 데이터센터) "
+            "(site:yna.co.kr OR site:newsis.com OR site:edaily.co.kr OR site:etnews.com OR "
+            "site:mk.co.kr OR site:dt.co.kr OR site:biz.chosun.com)",
+        ),
+        (
+            "K방산 미국·NATO 시험·수주",
+            "(한화에어로스페이스 OR 한화 OR LIG넥스원 OR 현대로템 OR 한국항공우주 OR K9 OR K2 OR "
+            "천궁 OR 레드백 OR FA-50) "
+            "(미 육군 OR 미국 육군 OR NATO OR 시험평가 OR 선정 OR 수주 OR 계약 OR 양산 OR 수출) "
+            "(site:yna.co.kr OR site:newsis.com OR site:mk.co.kr OR site:edaily.co.kr OR "
+            "site:fnnews.com OR site:biz.chosun.com OR site:dt.co.kr)",
+        ),
+    ]
+)
+
+PRIORITY_TERMS.update(
+    {
+        "cpo": 18,
+        "co-packaged optics": 18,
+        "공동패키징광학": 18,
+        "광 연결": 17,
+        "광연결": 17,
+        "고객선점": 17,
+        "고객 선점": 17,
+        "선구매": 17,
+        "계약부채": 17,
+        "계약 부채": 17,
+        "조회공시": 17,
+        "조회 공시": 17,
+        "공시 요구": 16,
+        "현금배당": 17,
+        "현금 배당": 17,
+        "대규모 주주환원": 18,
+        "역대급 주주환원": 18,
+        "자회사 상장": 16,
+        "수처리": 17,
+        "초순수": 17,
+        "반도체 수처리": 18,
+        "용수 공급": 17,
+        "파운드리 가격 인상": 18,
+        "파운드리 가격": 16,
+        "메모리 연구소": 17,
+        "대미 메모리 연구": 18,
+        "ai 차입": 18,
+        "ai 빚": 17,
+        "채무보증": 17,
+        "채무 보증": 17,
+        "미국채 30년물": 17,
+        "미국채30년물": 17,
+        "장기금리": 16,
+        "장기 금리": 16,
+        "협업 공식화": 17,
+        "공식 협력": 16,
+        "ai 차량": 16,
+        "전력사용량": 15,
+        "재생에너지 발전소": 17,
+        "미 육군": 17,
+        "미국 육군": 17,
+        "k9": 18,
+    }
+)
+
+FULL_ATTACHMENT_IMPACT_TERMS = {
+    "돈 버는 능력": (
+        "cpo", "co-packaged optics", "공동패키징광학", "광연결",
+        "고객선점", "선구매", "계약부채", "수처리", "초순수",
+        "반도체 수처리", "파운드리 가격 인상", "메모리 연구소",
+        "대미 메모리 연구", "공식 협력", "ai 차량", "k9", "미 육군",
+        "미국 육군", "재생에너지 발전소",
+    ),
+    "할인율": (
+        "ai 차입", "ai 빚", "채무보증", "채무 보증", "미국채 30년물",
+        "미국채30년물", "장기금리", "장기 금리",
+    ),
+    "수급": (
+        "현금배당", "현금 배당", "대규모 주주환원", "역대급 주주환원",
+        "조회공시", "조회 공시", "자회사 상장",
+    ),
+    "시간표": (
+        "조회공시", "조회 공시", "공시 요구", "수처리", "초순수",
+        "반도체 수처리", "메모리 연구소", "공식 협력", "미 육군",
+        "미국 육군", "재생에너지 발전소",
+    ),
+}
+for _impact_label, _impact_terms in FULL_ATTACHMENT_IMPACT_TERMS.items():
+    IMPACT_TERMS[_impact_label] = tuple((*IMPACT_TERMS[_impact_label], *_impact_terms))
+
 # Rebuild after every extension. A stale material tuple would score a new lane
 # but then silently discard it during the final material-title quality gate.
 MATERIAL_TERMS = tuple(PRIORITY_TERMS)
@@ -1114,6 +1246,27 @@ def semantic_theme(alert: dict, normalized_text: str) -> str:
         and any(term in text for term in ("거래", "거래대금", "거래량", "거래 급감", "거래급감", "개인 매도", "개인매도"))
     ):
         return f"korean_market:single_stock_leverage_rule_effect:{event_date}"
+    if (
+        any(alias in text for alias in ("삼성전자", "sk하이닉스", "하이닉스"))
+        and any(term in text for term in ("주주환원", "현금배당", "자사주 소각", "자사주소각"))
+    ):
+        return f"korean_business:shareholder_return:{event_date}"
+    if (
+        any(alias in text for alias in ("삼성전자", "sk하이닉스", "하이닉스"))
+        and any(term in text for term in ("조회공시", "조회 공시", "공시 요구"))
+    ):
+        return f"korean_business:krx_inquiry_disclosure:{event_date}"
+    if (
+        any(alias in text for alias in ("sk하이닉스", "하이닉스"))
+        and any(term in text for term in ("cpo", "공동패키징광학", "광연결", "광 연결"))
+    ):
+        return f"korean_business:skhynix_cpo:{event_date}"
+    if (
+        "ai" in text
+        and any(term in text for term in ("차입", "ai 빚", "채무보증", "채무 보증"))
+        and any(term in text for term in ("장기금리", "장기 금리", "미국채 30년물", "미국채30년물"))
+    ):
+        return f"global_market:ai_financing_long_yield:{event_date}"
     company_aliases = (
         ("삼성전기", ("삼성전기",)),
         ("삼성전자", ("삼성전자",)),
