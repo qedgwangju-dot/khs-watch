@@ -24,11 +24,12 @@ jobs:
 
       - name: Verify secrets and send Telegram test
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
+          import html
           import json
           import os
           import pathlib
@@ -40,9 +41,9 @@ jobs:
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
-              raise RuntimeError("GLOBAL_RATES_TELEGRAM_BOT_TOKEN secret is missing")
+              raise RuntimeError("KHS_POLICY_TELEGRAM_BOT_TOKEN secret is missing")
           if not chat_id:
-              raise RuntimeError("GLOBAL_RATES_TELEGRAM_CHAT_ID secret is missing")
+              raise RuntimeError("KHS_POLICY_TELEGRAM_CHAT_ID secret is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
               identity = json.loads(r.read().decode("utf-8"))
@@ -53,23 +54,22 @@ jobs:
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
 
           now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          jgb = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
+          treasury = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml"
           text = (
-              "[글로벌 금리·엔캐리 감시 테스트]\n\n"
-              "전송 경로 정상 확인용 테스트입니다.\n"
-              "GitHub Actions → Python → Telegram Bot API\n\n"
-              "감시 기준:\n"
-              "• 일본 10년 JGB 3.00%\n"
-              "• 미국 10년 4.50% / 4.70% / 4.75%\n"
-              "• 미국 30년 5.00% / 5.30%\n"
-              "• USD/JPY 155 이하 또는 일간 -2%\n"
-              "• 미·일 2년 금리차 2.00%p 이하\n\n"
-              "※ JGB 3%는 엔캐리 자동청산선이 아니라 일본 FY2026 예산 금리 가정과 겹치는 재정 경계선입니다.\n"
-              f"테스트 시각: {now.strftime('%Y-%m-%d %H:%M:%S KST')}"
+              "🟠 <b>엔캐리 복합 수급 알림 테스트</b>\n\n"
+              "송출 경로와 출처 링크 형식을 확인하는 테스트입니다.\n"
+              f"- 대상 봇: @{html.escape(username)}\n"
+              f"- 테스트 시각: {now.strftime('%Y-%m-%d %H:%M:%S KST')}\n\n"
+              "출처\n"
+              f"- 일본 재무성 JGB — <a href=\"{html.escape(jgb, quote=True)}\">원문</a>\n"
+              f"- 미국 재무부 — <a href=\"{html.escape(treasury, quote=True)}\">원문</a>\n"
           )
 
           payload = urllib.parse.urlencode({
               "chat_id": chat_id,
               "text": text,
+              "parse_mode": "HTML",
               "disable_web_page_preview": "true",
           }).encode("utf-8")
           req = urllib.request.Request(
@@ -87,6 +87,8 @@ jobs:
               "bot_username": username,
               "message_id": message_id,
               "confirmed_at_kst": now.isoformat(timespec="seconds"),
+              "route_secret": "KHS_POLICY_TELEGRAM_*",
+              "source_link_format": "HTML inline 원문 links",
           }
           pathlib.Path("data/global_rates_smoketest_result.json").write_text(
               json.dumps(marker, ensure_ascii=False, indent=2) + "\n",
@@ -100,6 +102,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/global_rates_smoketest_result.json
-          git commit -m "Record Telegram smoke test delivery"
-          git pull --rebase origin main
-          git push
+          if git diff --cached --quiet; then
+            echo "Smoke test marker unchanged"
+          else
+            git commit -m "Record KHS Telegram smoke test delivery"
+            git pull --rebase origin main
+            git push
+          fi
