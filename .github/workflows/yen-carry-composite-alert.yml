@@ -95,18 +95,18 @@ jobs:
           printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
           cat out/yen_carry_composite_alert.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Send through KHS policy bot only
+      - name: Send through verified KHS Telegram route only
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_composite_alert.md') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
         run: |
           if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
-            echo "KHS_POLICY_TELEGRAM_BOT_TOKEN이 없습니다. 다른 봇으로 대체하지 않습니다." >&2
+            echo "GLOBAL_RATES_TELEGRAM_BOT_TOKEN이 없습니다. 다른 봇으로 대체하지 않습니다." >&2
             exit 1
           fi
           if [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
+            echo "GLOBAL_RATES_TELEGRAM_CHAT_ID가 없습니다." >&2
             exit 1
           fi
 
