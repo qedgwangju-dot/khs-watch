@@ -47,6 +47,7 @@ jobs:
           from zoneinfo import ZoneInfo
           p=pathlib.Path('data/bio_watch_heartbeat.json')
           stale=True
+          retry_pending=False
           age=99999
           status='missing'
           checked='없음'
@@ -58,16 +59,23 @@ jobs:
                   ts=dt.datetime.fromisoformat(checked)
                   now=dt.datetime.now(ZoneInfo('Asia/Seoul'))
                   age=max(0,int((now-ts.astimezone(ZoneInfo('Asia/Seoul'))).total_seconds()//60))
-                  stale=(age>45 or status!='ok')
+                  retry_pending=(
+                      bool(data.get('qlex_state_persisted'))
+                      and not bool(data.get('intismeran_state_persisted'))
+                      and str(data.get('intismeran_send_outcome') or '') == 'success'
+                  )
+                  operational=(status=='ok' or retry_pending)
+                  stale=(age>45 or not operational)
               except Exception:
                   stale=True
           out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
           with out.open('a',encoding='utf-8') as f:
               f.write(f'stale={str(stale).lower()}\n')
+              f.write(f'retry_pending={str(retry_pending).lower()}\n')
               f.write(f'age_minutes={age}\n')
               f.write(f'status={status}\n')
               f.write(f'checked_at={checked}\n')
-          print(f'bio_heartbeat stale={stale} age_minutes={age} status={status} checked_at={checked}')
+          print(f'bio_heartbeat stale={stale} retry_pending={retry_pending} age_minutes={age} status={status} checked_at={checked}')
           PY
 
       - name: Dispatch main bio watcher when stale
@@ -112,6 +120,7 @@ jobs:
         env:
           BIO_TELEGRAM_CHAT_ID: ${{ steps.route.outputs.chat_id }}
           HB_CHECKED_AT: ${{ steps.hb.outputs.checked_at }}
+          RETRY_PENDING: ${{ steps.hb.outputs.retry_pending }}
         run: |
           python - <<'PY'
           import json, os, urllib.parse, urllib.request
@@ -119,9 +128,11 @@ jobs:
           chat=(os.getenv('BIO_TELEGRAM_CHAT_ID') or '').strip()
           if not token or not chat:
               raise SystemExit(0)
+          retry=os.getenv('RETRY_PENDING')=='true'
+          detail='원문 직접 확인이 필요한 기사 재시도 중' if retry else '정상'
           text=("[바이오 감시] 정상 작동 확인\n\n"
                 f"- QLEX·Intismeran 마지막 확인: {os.getenv('HB_CHECKED_AT')}\n"
-                "- 상태: 정상\n"
+                f"- 상태: {detail}\n"
                 "- 새 데이터가 없으면 별도 본 알림은 보내지 않습니다.")
           payload=urllib.parse.urlencode({'chat_id':chat,'text':text,'disable_web_page_preview':'true'}).encode()
           req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage',data=payload,method='POST')
