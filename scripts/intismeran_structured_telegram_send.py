@@ -244,3 +244,5 @@ def main() -> int:
 
 if __name__ == '__main__':
     raise SystemExit(main())
+
+# Telegram route smoke trigger 2026-08-21
