@@ -1,0 +1,24 @@
+name: Bio Route Recovery Once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/bio-route-recovery-once.yml"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch main bio watcher
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run bio-qlex-intismeran-watch.yml --repo "$GITHUB_REPOSITORY" --ref main
+          echo "main_bio_watch_dispatched=true"
+
+# immediate recovery trigger 2026-08-21 15:40 KST
