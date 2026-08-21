@@ -30,7 +30,11 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,6 +45,45 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Run QLEX and Intismeran bio watchdog pulse
+        id: bio_watchdog
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${BIO_TELEGRAM_BOT_TOKEN:-}" ] || [ -z "${BIO_TELEGRAM_CHAT_ID:-}" ]; then
+            echo "바이오 Telegram secret 누락" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          python - <<'PY'
+          import json, os, urllib.request
+          token=os.environ['BIO_TELEGRAM_BOT_TOKEN'].strip()
+          expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              identity=json.loads(r.read().decode('utf-8'))
+          actual=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong bio Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+          print(f'bio_watchdog_bot_verified=@{actual}')
+          PY
+          python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/qlex_telegram_send.py scripts/intismeran_qlex_watch.py scripts/intismeran_structured_telegram_send.py
+          rm -f out/qlex_sc_conversion_alert.md out/intismeran_qlex_alert.md
+          python scripts/qlex_sc_conversion_watch.py --mode check
+          python scripts/intismeran_qlex_watch.py
+          if [ -f out/qlex_sc_conversion_alert.md ]; then
+            python scripts/qlex_telegram_send.py out/qlex_sc_conversion_alert.md
+          fi
+          if [ -f out/intismeran_qlex_alert.md ]; then
+            python scripts/intismeran_structured_telegram_send.py out/intismeran_qlex_alert.md
+          fi
+          if [ -f out/qlex_sc_conversion_watch_state_pending.json ]; then
+            cp out/qlex_sc_conversion_watch_state_pending.json data/qlex_sc_conversion_watch_state.json
+          fi
+          if [ -f out/intismeran_qlex_watch_state_pending.json ]; then
+            cp out/intismeran_qlex_watch_state_pending.json data/intismeran_qlex_watch_state.json
+          fi
+          echo "바이오 QLEX·Intismeran 15분 상태 확인 실행 완료" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Check official rate sources
         run: python scripts/global_rates_watch.py
@@ -175,11 +218,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/global_rates_watch_state.json data/global_rates_telegram_state.json
+          git add data/global_rates_watch_state.json data/global_rates_telegram_state.json data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "Global rates states unchanged"
+            echo "Watcher states unchanged"
           else
-            git commit -m "Update global rates and yen-carry alert states"
+            git commit -m "Update global rates and bio watchdog states"
             git pull --rebase origin main
             git push
           fi
@@ -199,5 +242,11 @@ jobs:
             out/global_rates_watch_telegram.md
             out/global_rates_telegram_pending_state.json
             out/global_rates_watch_telegram_confirmed.json
+            out/qlex_sc_conversion_status.md
+            out/qlex_sc_conversion_alert.md
+            out/qlex_sc_conversion_watch_state_pending.json
+            out/intismeran_qlex_status.md
+            out/intismeran_qlex_alert.md
+            out/intismeran_qlex_watch_state_pending.json
           if-no-files-found: ignore
           retention-days: 14
