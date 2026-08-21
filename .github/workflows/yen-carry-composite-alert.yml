@@ -31,7 +31,7 @@ jobs:
     timeout-minutes: 10
     env:
       TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
       KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
       KHS_SOURCE_PROXY_FIRST: "true"
       KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
@@ -95,31 +95,28 @@ jobs:
           printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
           cat out/yen_carry_composite_alert.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Send through yen-carry bot only
+      - name: Send through KHS policy bot only
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_composite_alert.md') != ''
         env:
-          YEN_CARRY_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          YEN_CARRY_TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
-          EXISTING_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
-          TELEGRAM_BOT_TOKEN="$YEN_CARRY_TELEGRAM_BOT_TOKEN"
-          TELEGRAM_CHAT_ID="${YEN_CARRY_TELEGRAM_CHAT_ID:-$EXISTING_TELEGRAM_CHAT_ID}"
-          export TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID
-
           if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
-            echo "YEN_CARRY_TELEGRAM_BOT_TOKEN이 없습니다. 다른 봇으로 대체하지 않습니다." >&2
+            echo "KHS_POLICY_TELEGRAM_BOT_TOKEN이 없습니다. 다른 봇으로 대체하지 않습니다." >&2
             exit 1
           fi
           if [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "엔캐리 Telegram 대상 chat id가 없습니다." >&2
+            echo "KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
             exit 1
           fi
 
           python - <<'PY'
           import datetime as dt
+          import html
           import json
           import os
           import pathlib
+          import re
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
@@ -140,7 +137,35 @@ jobs:
           body = pathlib.Path('out/yen_carry_composite_alert.md').read_text(encoding='utf-8').strip()
           text = f'{title}\n\n{body}'
 
-          def split_message(value, limit=3900):
+          source_labels = {
+              'Japan MOF JGB': '일본 재무성 JGB',
+              'U.S. Treasury': '미국 재무부',
+              'CFTC TFF Futures Only': 'CFTC TFF 선물',
+              'Japan MOF 해외증권투자': '일본 재무성 해외증권투자',
+              'Japan MOF 공동개입 공식발표': '일본 재무성 공동개입 공식발표',
+          }
+          yahoo_url = 'https://finance.yahoo.com/quote/JPY=X/'
+          raw_source_re = re.compile(r'^- (.+?): (https?://\S+)$')
+
+          def render_html(value):
+              rendered = []
+              for line in value.splitlines():
+                  match = raw_source_re.match(line)
+                  if match and match.group(1) in source_labels:
+                      label = source_labels[match.group(1)]
+                      url = match.group(2)
+                      rendered.append(
+                          f'- {html.escape(label)} — <a href="{html.escape(url, quote=True)}">원문</a>'
+                      )
+                  elif line.startswith('- USD/JPY: Yahoo query1/query2'):
+                      rendered.append(
+                          f'- USD/JPY(Yahoo 5분 데이터) — <a href="{html.escape(yahoo_url, quote=True)}">원문</a>'
+                      )
+                  else:
+                      rendered.append(html.escape(line))
+              return '\n'.join(rendered)
+
+          def split_message(value, limit=3600):
               chunks, current = [], ''
               for paragraph in value.split('\n\n'):
                   candidate = paragraph if not current else current + '\n\n' + paragraph
@@ -165,8 +190,14 @@ jobs:
           for index, chunk in enumerate(split_message(text), start=1):
               if index > 1:
                   chunk = f'엔캐리 복합 수급 알림 (계속 {index})\n\n{chunk}'
+              telegram_html = render_html(chunk)
               payload = urllib.parse.urlencode(
-                  {'chat_id': chat_id, 'text': chunk, 'disable_web_page_preview': 'true'}
+                  {
+                      'chat_id': chat_id,
+                      'text': telegram_html,
+                      'parse_mode': 'HTML',
+                      'disable_web_page_preview': 'true',
+                  }
               ).encode('utf-8')
               request = urllib.request.Request(
                   f'https://api.telegram.org/bot{token}/sendMessage', data=payload, method='POST'
