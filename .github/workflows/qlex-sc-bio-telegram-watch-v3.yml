@@ -24,6 +24,8 @@ on:
       # Independent 15-minute pulse from a watcher that is currently running normally.
       - "data/global_rates_watch_state.json"
       - "data/global_rates_telegram_state.json"
+      # Explicit operator wakeup file for deterministic health checks.
+      - "data/bio_watch_wakeup.txt"
 
 permissions:
   contents: write
@@ -83,7 +85,7 @@ jobs:
           python scripts/intismeran_qlex_watch.py
 
       - name: Build one-time activation test
-        if: github.event_name == 'push' && contains(github.event.head_commit.message, 'Activate QLEX bio watch v3')
+        if: github.event_name == 'push' && (contains(github.event.head_commit.message, 'Activate QLEX bio watch v3') || contains(github.event.head_commit.message, 'Wake QLEX bio watch v3'))
         run: |
           mkdir -p out
           cat > out/qlex_sc_connection_test.md <<'EOF'
