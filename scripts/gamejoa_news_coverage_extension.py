@@ -1211,6 +1211,15 @@ PRIORITY_TERMS.update(
         "shareholder approval": 17,
         "희석": 15,
         "dilution": 15,
+        "테슬라": 4,
+        "tesla": 4,
+        "일론 머스크": 4,
+        "elon musk": 4,
+        "musk": 1,
+        "ceo": 2,
+        "평균 직원": 5,
+        "average worker": 5,
+        "250만 배": 5,
     }
 )
 
@@ -1235,6 +1244,7 @@ FULL_ATTACHMENT_IMPACT_TERMS = {
         "머스크 보상", "musk compensation", "musk pay package", "보상 패키지",
         "pay package", "성과보상", "성과 보상", "performance award", "stock award",
         "희석", "dilution",
+        "평균 직원", "average worker", "250만 배",
     ),
     "시간표": (
         "조회공시", "조회 공시", "공시 요구", "수처리", "초순수",
