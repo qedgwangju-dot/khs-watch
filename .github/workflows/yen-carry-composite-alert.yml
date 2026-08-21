@@ -1,0 +1,225 @@
+name: Yen carry composite flow alert
+
+on:
+  schedule:
+    # Structural sources are daily/weekly; 15-minute polling is sufficient.
+    - cron: "6,21,36,51 * * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/yen-carry-composite-alert.yml"
+      - "scripts/yen_carry_composite_watch.py"
+      - "scripts/yen_carry_composite_runner.py"
+      - "scripts/yen_carry_fx_shock.py"
+      - "scripts/global_rates_watch.py"
+      - "scripts/khs_source_fetch.py"
+      - "tests/test_yen_carry_composite_watch.py"
+      - "tests/test_yen_carry_composite_sources.py"
+      - "data/yen_carry_composite_design.json"
+      - "data/yen_carry_composite_state.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yen-carry-composite-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate composite monitor
+        run: |
+          python -m py_compile scripts/yen_carry_composite_watch.py
+          python -m py_compile scripts/yen_carry_composite_runner.py
+          PYTHONPATH=scripts python -m unittest \
+            tests/test_yen_carry_composite_watch.py \
+            tests/test_yen_carry_composite_sources.py -v
+
+      - name: Check multi-factor carry state
+        run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py
+
+      - name: Require all structural sources in validation
+        if: github.event_name == 'pull_request'
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          pending = json.loads(pathlib.Path('out/yen_carry_composite_pending_state.json').read_text(encoding='utf-8'))
+          required = ['jgb2', 'ust2', 'cftc', 'mof_week', 'policy_action']
+          missing = [key for key in required if not (pending.get('source_dates') or {}).get(key)]
+          failures_path = pathlib.Path('out/khs_source_failures.json')
+          failures = json.loads(failures_path.read_text(encoding='utf-8')) if failures_path.exists() else []
+          current = [row for row in failures if row.get('lane') == 'yen_carry_composite']
+          if missing:
+              raise SystemExit(f'missing structural sources: {missing}')
+          if current:
+              raise SystemExit(f'composite source failures: {current}')
+          print('yen_carry_composite_structural_sources=all_verified')
+          PY
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/yen_carry_composite_watch.md ]; then
+            cat out/yen_carry_composite_watch.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "엔캐리 복합 수급 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Preview pull request alert without sending
+        if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/yen_carry_composite_alert.md') != ''
+        run: |
+          printf '\n---\n\n텔레그램 미전송 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/yen_carry_composite_alert_title.txt >> "$GITHUB_STEP_SUMMARY"
+          printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/yen_carry_composite_alert.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Send through yen-carry bot only
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_composite_alert.md') != ''
+        env:
+          YEN_CARRY_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          YEN_CARRY_TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          EXISTING_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          TELEGRAM_BOT_TOKEN="$YEN_CARRY_TELEGRAM_BOT_TOKEN"
+          TELEGRAM_CHAT_ID="${YEN_CARRY_TELEGRAM_CHAT_ID:-$EXISTING_TELEGRAM_CHAT_ID}"
+          export TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID
+
+          if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
+            echo "YEN_CARRY_TELEGRAM_BOT_TOKEN이 없습니다. 다른 봇으로 대체하지 않습니다." >&2
+            exit 1
+          fi
+          if [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "엔캐리 Telegram 대상 chat id가 없습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
+          chat_id = os.environ['TELEGRAM_CHAT_ID'].strip()
+          expected = os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+
+          with urllib.request.urlopen(
+              urllib.request.Request(f'https://api.telegram.org/bot{token}/getMe'), timeout=25
+          ) as response:
+              identity = json.loads(response.read().decode('utf-8'))
+          actual = str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower() != expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+
+          title = pathlib.Path('out/yen_carry_composite_alert_title.txt').read_text(encoding='utf-8').strip()
+          body = pathlib.Path('out/yen_carry_composite_alert.md').read_text(encoding='utf-8').strip()
+          text = f'{title}\n\n{body}'
+
+          def split_message(value, limit=3900):
+              chunks, current = [], ''
+              for paragraph in value.split('\n\n'):
+                  candidate = paragraph if not current else current + '\n\n' + paragraph
+                  if len(candidate) <= limit:
+                      current = candidate
+                      continue
+                  if current:
+                      chunks.append(current)
+                      current = ''
+                  while len(paragraph) > limit:
+                      cut = paragraph.rfind('\n', 0, limit)
+                      if cut < 1:
+                          cut = limit
+                      chunks.append(paragraph[:cut])
+                      paragraph = paragraph[cut:].lstrip()
+                  current = paragraph
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          message_ids = []
+          for index, chunk in enumerate(split_message(text), start=1):
+              if index > 1:
+                  chunk = f'엔캐리 복합 수급 알림 (계속 {index})\n\n{chunk}'
+              payload = urllib.parse.urlencode(
+                  {'chat_id': chat_id, 'text': chunk, 'disable_web_page_preview': 'true'}
+              ).encode('utf-8')
+              request = urllib.request.Request(
+                  f'https://api.telegram.org/bot{token}/sendMessage', data=payload, method='POST'
+              )
+              with urllib.request.urlopen(request, timeout=25) as response:
+                  result = json.loads(response.read().decode('utf-8'))
+              if not result.get('ok'):
+                  raise RuntimeError(f'Telegram rejected yen_carry_composite: {result}')
+              message_ids.append((result.get('result') or {}).get('message_id'))
+
+          confirmed = {
+              'status': 'confirmed',
+              'lane': 'yen_carry_composite',
+              'bot_username': actual,
+              'message_ids': message_ids,
+              'confirmed_at_kst': dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
+          }
+          pathlib.Path('out/yen_carry_composite_telegram_confirmed.json').write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          print(f'telegram_delivery_confirmed=true lane=yen_carry_composite bot=@{actual} message_ids={message_ids}')
+          PY
+
+      - name: Finalize state only after baseline or confirmed delivery
+        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py --finalize
+
+      - name: Commit confirmed or baseline state
+        if: always() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('data/yen_carry_composite_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/yen_carry_composite_state.json
+          if git diff --cached --quiet; then
+            echo "엔캐리 복합 상태 변경 없음"
+          else
+            git commit -m "Update yen carry composite state"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yen-carry-composite-${{ github.run_id }}
+          path: |
+            out/yen_carry_composite_watch.md
+            out/yen_carry_composite_pending_state.json
+            out/yen_carry_composite_alert_title.txt
+            out/yen_carry_composite_alert.md
+            out/yen_carry_composite_alert.json
+            out/yen_carry_composite_telegram_confirmed.json
+            out/khs_source_failures.json
+          if-no-files-found: ignore
+          retention-days: 14
