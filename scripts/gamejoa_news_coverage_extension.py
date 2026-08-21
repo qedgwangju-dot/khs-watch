@@ -92,6 +92,44 @@ SEARCH_SOURCES = [
         "OR site:ir.tesla.com OR site:theguardian.com)",
     ),
     (
+        "대형 M&A·합작법인·사업재편 체결·중단",
+        "(인수 OR M&A OR 합작법인 OR JV OR 지분인수 OR 지분 매각 OR 사업재편 OR 분할) "
+        "(계약 OR 체결 OR 인수 OR 중단 OR 해지 OR 철회 OR 승인 OR 추진) "
+        "(site:reuters.com OR site:ft.com OR site:wsj.com OR site:yna.co.kr OR site:newsis.com "
+        "OR site:mk.co.kr OR site:hankyung.com OR site:edaily.co.kr)",
+    ),
+    (
+        "중국 메모리·애플 공급망·미국 구매제한",
+        "(애플 OR Apple OR CXMT OR 창신메모리 OR 중국산 메모리 OR 중국 메모리칩) "
+        "(탑재 OR 공급 OR 구매 OR 구매말라 OR 구매 말라 OR 수입 제한 OR 금지 OR 직접 경고 OR 제재) "
+        "(미국 OR 트럼프 OR 상무부 OR 백악관 OR 수출통제 OR export control) "
+        "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:ft.com OR site:yna.co.kr "
+        "OR site:newsis.com OR site:mk.co.kr)",
+    ),
+    (
+        "장기금리·달러/원 임계치·기업 신용",
+        "(미국 30년물 OR 30년물 금리 OR 장기금리 OR 장기 금리 OR 달러-원 OR 원·달러 OR 원/달러) "
+        "(5% OR 1300원 OR 1400원 OR 1410원 OR 급등 OR 급락 OR 최고 OR 최저 OR 쇼크) "
+        "(국채 OR 회사채 OR 신용등급 OR 자금조달 OR 재정적자 OR 유가) "
+        "(site:reuters.com OR site:ft.com OR site:wsj.com OR site:yna.co.kr OR site:newsis.com "
+        "OR site:mk.co.kr OR site:hankyung.com OR site:edaily.co.kr)",
+    ),
+    (
+        "바이오 3상·FDA·대형 기술이전",
+        "(3상 OR 임상 3상 OR phase 3 OR FDA OR 품목허가 OR 기술이전 OR M&A) "
+        "(성공 OR 승인 OR 허가 OR 실패 OR 중단 OR 계약 OR 인수) "
+        "(바이오 OR mRNA OR 의약품 OR 신약 OR 항암 OR 제약) "
+        "(site:reuters.com OR site:apnews.com OR site:fda.gov OR site:yna.co.kr OR site:newsis.com "
+        "OR site:mk.co.kr OR site:hankyung.com)",
+    ),
+    (
+        "기업 회사채·회생안·차환·신용등급",
+        "(회사채 OR 차환 OR 회생안 OR 법정관리 OR 신용등급 OR 채권단 OR 일반채권) "
+        "(발행 OR 급감 OR 상환 OR 만기 OR 구조조정 OR 매각 OR 조달 OR 하향) "
+        "(site:reuters.com OR site:ft.com OR site:yna.co.kr OR site:newsis.com OR site:mk.co.kr "
+        "OR site:hankyung.com OR site:edaily.co.kr)",
+    ),
+    (
         "국내 기업 실적·장기계약·자본조달",
         "(실적 OR 영업이익 OR 순이익 OR 컨콜 OR LTA OR 장기공급계약 OR 유상증자 "
         "OR 자사주 OR 소각 OR 장내매수 OR 지분매수 OR 주식매수 OR 내부자매수) "
@@ -1220,6 +1258,30 @@ PRIORITY_TERMS.update(
         "평균 직원": 5,
         "average worker": 5,
         "250만 배": 5,
+        "인수 계약": 17,
+        "합작법인": 16,
+        "합작 법인": 16,
+        "합작법인 중단": 18,
+        "합작 법인 중단": 18,
+        "사업재편": 16,
+        "중국산 메모리": 17,
+        "중국 메모리칩": 17,
+        "구매말라": 18,
+        "구매 말라": 18,
+        "직접 경고": 16,
+        "미국 30년물": 17,
+        "30년물 금리": 17,
+        "장기 국채 금리": 17,
+        "달러-원": 16,
+        "원·달러": 16,
+        "임상 3상": 18,
+        "3상 성공": 18,
+        "phase 3": 18,
+        "기술이전": 17,
+        "회사채": 16,
+        "회생안": 18,
+        "일반채권": 17,
+        "채권단": 16,
     }
 )
 
@@ -1232,10 +1294,14 @@ FULL_ATTACHMENT_IMPACT_TERMS = {
         "미국 육군", "재생에너지 발전소",
         "주주 승인", "shareholder approval", "이사회 승인", "board approval",
         "베스팅", "vesting", "performance award",
+        "인수 계약", "합작법인", "합작 법인", "합작법인 중단", "합작 법인 중단",
+        "사업재편", "임상 3상", "3상 성공", "phase 3", "기술이전", "회생안",
     ),
     "할인율": (
         "ai 차입", "ai 빚", "채무보증", "채무 보증", "미국채 30년물",
         "미국채30년물", "장기금리", "장기 금리",
+        "미국 30년물", "30년물 금리", "장기 국채 금리", "달러-원", "원·달러",
+        "회사채", "회생안", "일반채권", "채권단",
     ),
     "수급": (
         "현금배당", "현금 배당", "대규모 주주환원", "역대급 주주환원",
@@ -1245,6 +1311,9 @@ FULL_ATTACHMENT_IMPACT_TERMS = {
         "pay package", "성과보상", "성과 보상", "performance award", "stock award",
         "희석", "dilution",
         "평균 직원", "average worker", "250만 배",
+        "인수 계약", "합작법인", "합작 법인", "합작법인 중단", "합작 법인 중단",
+        "사업재편", "중국산 메모리", "중국 메모리칩", "구매말라", "구매 말라",
+        "직접 경고", "임상 3상", "3상 성공", "phase 3", "기술이전",
     ),
     "시간표": (
         "조회공시", "조회 공시", "공시 요구", "수처리", "초순수",
