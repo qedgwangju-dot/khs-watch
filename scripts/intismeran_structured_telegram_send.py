@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import datetime as dt
 import html
 import json
 import os
@@ -8,8 +9,12 @@ import re
 import sys
 import urllib.parse
 import urllib.request
+from zoneinfo import ZoneInfo
 
 import qlex_telegram_send as base
+
+KST = ZoneInfo('Asia/Seoul')
+CONFIRM_PATH = pathlib.Path('out/intismeran_structured_send_confirmed.json')
 
 
 def report_blocks(text: str) -> list[tuple[str, str]]:
@@ -167,7 +172,6 @@ def build_message(report_text: str) -> str:
             article_text = base.extract_article_text(page)
         except Exception:
             continue
-        # 원문 본문을 실제로 확보하지 못했으면 제목만으로 알림하지 않는다.
         if len(article_text) < 350:
             continue
         summaries.append(build_structured_summary(title, article_text, resolved))
@@ -182,7 +186,6 @@ def render_html(text: str) -> str:
             url = stripped.split(':', 1)[1].strip()
             rendered.append(f'- <a href="{html.escape(url, quote=True)}">원문 뉴스보기</a>')
             continue
-        # **강조**만 Telegram HTML bold로 변환한다.
         escaped = html.escape(line, quote=False)
         escaped = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', escaped)
         rendered.append(escaped)
@@ -219,6 +222,7 @@ def send_message(text: str) -> list[int]:
 
 
 def main() -> int:
+    CONFIRM_PATH.unlink(missing_ok=True)
     if len(sys.argv) != 2:
         print('usage: intismeran_structured_telegram_send.py REPORT_PATH', file=sys.stderr)
         return 2
@@ -228,6 +232,12 @@ def main() -> int:
         print('intismeran_structured_alert_skipped=true reason=original_body_not_verified')
         return 0
     ids = send_message(message)
+    CONFIRM_PATH.parent.mkdir(parents=True, exist_ok=True)
+    CONFIRM_PATH.write_text(json.dumps({
+        'status': 'confirmed',
+        'confirmed_at_kst': dt.datetime.now(KST).isoformat(timespec='seconds'),
+        'message_ids': ids,
+    }, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f'intismeran_structured_delivery_confirmed=true message_ids={ids}')
     return 0
 
