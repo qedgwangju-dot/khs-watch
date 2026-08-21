@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 from pathlib import Path
 import sys
@@ -133,8 +134,106 @@ AUGUST21_CASES = (
     ("테슬라, 일론 머스크가 평균 직원보다 250만 배 많은 CEO 보상 공시", "평균 직원", "수급"),
 )
 
+
+FULL_ATTACHMENT_AUDIT_CASES = (
+    ("테슬라, 일론 머스크 CEO 보상으로 평균 직원 대비 250만 배 급여 지급", "평균 직원", "수급"),
+    ("TPG, 롯데렌탈 1조3000억원 인수 계약", "인수 계약", "돈 버는 능력"),
+    ("트럼프 행정부, 애플에 중국산 메모리 구매 말라 직접 경고", "구매 말라", "수급"),
+    ("미국 30년물 금리 5%대 쇼크, 기업 자금조달 부담 확대", "미국 30년물", "할인율"),
+    ("모더나·머크, 맞춤형 mRNA 암 치료제 임상 3상 성공", "3상 성공", "돈 버는 능력"),
+    ("홈플러스 회생안, 일반채권 상환 조건 공개", "회생안", "할인율"),
+)
+
+
+FULL_ATTACHMENT_AUDIT_PATH = ROOT / "data" / "gamejoa_attachment_coverage_audit_20260822.json"
+FULL_ATTACHMENT_ALLOWED_DISPOSITIONS = {"monitor", "route_policy_watch", "exclude"}
+FULL_ATTACHMENT_ALLOWED_LANES = {
+    "반도체·AI·데이터센터",
+    "기업행동·지배구조·자본조달",
+    "금리·환율·채권·원자재",
+    "정책·통상·지정학",
+    "바이오·임상·허가",
+    "방산·조선·수주",
+    "ETF·시장구조·수급",
+    "디지털 플랫폼·AI·결제",
+    "글로벌 거시·공급망",
+    "제외",
+}
+
+
+def normalized_attachment_title(value: str) -> str:
+    return "".join(char for char in str(value).lower() if char.isalnum())
+
+
+def verify_full_attachment_audit_manifest(failures: list[str]) -> None:
+    try:
+        payload = json.loads(FULL_ATTACHMENT_AUDIT_PATH.read_text(encoding="utf-8"))
+    except Exception as exc:
+        failures.append(f"full_attachment_manifest=unreadable:{exc}")
+        return
+
+    items = payload.get("items")
+    if payload.get("raw_title_count") != 261:
+        failures.append(f"full_attachment_manifest=raw_count:{payload.get('raw_title_count')}")
+    if payload.get("unique_title_count") != 253:
+        failures.append(f"full_attachment_manifest=unique_count:{payload.get('unique_title_count')}")
+    if payload.get("duplicate_title_count") != 8:
+        failures.append(f"full_attachment_manifest=duplicate_count:{payload.get('duplicate_title_count')}")
+    if not isinstance(items, list) or len(items) != 253:
+        failures.append(f"full_attachment_manifest=item_count:{len(items) if isinstance(items, list) else 'invalid'}")
+        return
+
+    seen_titles = set()
+    counts = {"monitor": 0, "route_policy_watch": 0, "exclude": 0}
+    for index, item in enumerate(items, start=1):
+        title = str(item.get("title") or "").strip()
+        title_key = normalized_attachment_title(title)
+        disposition = item.get("disposition")
+        lane = item.get("lane")
+        axes = item.get("axes")
+        reason = str(item.get("reason") or "").strip()
+        if not title or not title_key:
+            failures.append(f"full_attachment_manifest=row:{index}:missing_title")
+        elif title_key in seen_titles:
+            failures.append(f"full_attachment_manifest=row:{index}:duplicate_title")
+        else:
+            seen_titles.add(title_key)
+        if disposition not in FULL_ATTACHMENT_ALLOWED_DISPOSITIONS:
+            failures.append(f"full_attachment_manifest=row:{index}:invalid_disposition:{disposition}")
+            continue
+        counts[disposition] += 1
+        if lane not in FULL_ATTACHMENT_ALLOWED_LANES:
+            failures.append(f"full_attachment_manifest=row:{index}:invalid_lane:{lane}")
+        if not reason:
+            failures.append(f"full_attachment_manifest=row:{index}:missing_reason")
+        if disposition == "exclude":
+            if lane != "제외" or axes:
+                failures.append(f"full_attachment_manifest=row:{index}:invalid_exclusion")
+        elif not isinstance(axes, list) or not axes:
+            failures.append(f"full_attachment_manifest=row:{index}:missing_decision_axis")
+
+    expected_counts = {"monitor": 207, "route_policy_watch": 28, "exclude": 18}
+    if counts != expected_counts:
+        failures.append(f"full_attachment_manifest=disposition_counts:{counts}")
+
+    mandatory = {
+        "테슬라가 2025년에 최고경영자(CEO)인 일론 머스크에게 평균 직원보다 250만 배 더 많은 급여를 지급했다.": ("monitor", "기업행동·지배구조·자본조달"),
+        "테슬라·엔비디아도 24시간 거래…‘토큰주식’ 올들어 4배 급성장": ("monitor", "ETF·시장구조·수급"),
+        "SK하이닉스, 'HBM 다음' CPO 기술 청사진 제시": ("monitor", "반도체·AI·데이터센터"),
+        "트럼프 행정부, 애플에 \\\"중국산 메모리칩 사지 말라\\\" 직접 경고": ("route_policy_watch", "정책·통상·지정학"),
+        "모더나·머크, 맞춤형 mRNA 암 치료제 3상 성공…주가 177% 폭등(종합)": ("monitor", "바이오·임상·허가"),
+    }
+    item_by_title = {str(item.get("title") or ""): item for item in items}
+    for title, (disposition, lane) in mandatory.items():
+        item = item_by_title.get(title)
+        if not item:
+            failures.append(f"full_attachment_manifest=missing_mandatory:{title}")
+        elif item.get("disposition") != disposition or item.get("lane") != lane:
+            failures.append(f"full_attachment_manifest=mandatory_mapping:{title}:{item}")
+
 def main() -> int:
     failures = []
+    verify_full_attachment_audit_manifest(failures)
     now = datetime.now().astimezone()
     fda_runner_source = (ROOT / "scripts" / "gamejoa_preopen_news_radar_fda_quality_runner.py").read_text(
         encoding="utf-8"
@@ -147,7 +246,7 @@ def main() -> int:
     ) in fda_runner_source:
         failures.append("production_fda_wrapper=body_fetch_failure_still_blocked")
     for index, (title, required_term, required_impact) in enumerate(
-        CASES + ATTACHED_CASES + AUGUST9_CASES + AUGUST10_CASES + AUGUST12_CASES + AUGUST13_CASES + AUGUST21_CASES
+        CASES + ATTACHED_CASES + AUGUST9_CASES + AUGUST10_CASES + AUGUST12_CASES + AUGUST13_CASES + AUGUST21_CASES + FULL_ATTACHMENT_AUDIT_CASES
     ):
         row = {
             "title": title,
@@ -304,6 +403,18 @@ def main() -> int:
     ):
         if required_search not in search_names:
             failures.append(f"missing_full_attachment_search={required_search}")
+
+    for required_search in (
+        "테슬라·머스크 대규모 CEO 보상·희석·주주승인",
+        "대형 M&A·합작법인·사업재편 체결·중단",
+        "중국 메모리·애플 공급망·미국 구매제한",
+        "장기금리·달러/원 임계치·기업 신용",
+        "바이오 3상·FDA·대형 기술이전",
+        "기업 회사채·회생안·차환·신용등급",
+    ):
+        if required_search not in search_names:
+            failures.append(f"missing_full_audit_search={required_search}")
+
 
     leverage_effect_urls = {
         "https://www.kmib.co.kr/article/view.asp?arcid=9000000424&cp=nv",
@@ -1129,7 +1240,7 @@ def main() -> int:
         return 1
     print(
         "GAMEJOA news coverage contract OK: "
-        f"cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES) + len(AUGUST10_CASES) + len(AUGUST12_CASES) + len(AUGUST13_CASES) + len(AUGUST21_CASES)}"
+        f"cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES) + len(AUGUST10_CASES) + len(AUGUST12_CASES) + len(AUGUST13_CASES) + len(AUGUST21_CASES) + len(FULL_ATTACHMENT_AUDIT_CASES)}"
     )
     return 0
 
