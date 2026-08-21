@@ -1,0 +1,20 @@
+{
+  "status": "design",
+  "principle": "Carry unwind risk and persistent yen strength are separate questions. Never infer either from one threshold such as JGB 10Y 3%.",
+  "factors": [
+    "Japan 2Y JGB as a short-rate proxy",
+    "US-Japan 2Y yield spread",
+    "USD/JPY direction and speed",
+    "12-hour realized USD/JPY volatility",
+    "CFTC leveraged-fund JPY positioning",
+    "Japan MOF resident purchases of foreign equities and long-term debt",
+    "official intervention context"
+  ],
+  "source_priority": {
+    "rates": "Japan MOF / U.S. Treasury",
+    "positioning": "CFTC TFF Futures Only",
+    "outward_flows": "Japan MOF International Transactions in Securities",
+    "policy": "Japan MOF official statement",
+    "intraday_fx": "Yahoo query1/query2 cross-check; may be delayed"
+  }
+}
