@@ -24,8 +24,8 @@ jobs:
 
       - name: Verify secrets and send Telegram test
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
@@ -41,9 +41,9 @@ jobs:
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
-              raise RuntimeError("KHS_POLICY_TELEGRAM_BOT_TOKEN secret is missing")
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_BOT_TOKEN secret is missing")
           if not chat_id:
-              raise RuntimeError("KHS_POLICY_TELEGRAM_CHAT_ID secret is missing")
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_CHAT_ID secret is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
               identity = json.loads(r.read().decode("utf-8"))
@@ -87,7 +87,7 @@ jobs:
               "bot_username": username,
               "message_id": message_id,
               "confirmed_at_kst": now.isoformat(timespec="seconds"),
-              "route_secret": "KHS_POLICY_TELEGRAM_*",
+              "route_secret": "GLOBAL_RATES_TELEGRAM_*",
               "source_link_format": "HTML inline 원문 links",
           }
           pathlib.Path("data/global_rates_smoketest_result.json").write_text(
