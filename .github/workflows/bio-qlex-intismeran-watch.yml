@@ -1,0 +1,90 @@
+name: Bio QLEX & Intismeran Telegram Watch
+
+on:
+  push:
+    paths:
+      - ".github/workflows/bio-qlex-intismeran-watch.yml"
+      - "scripts/bio_single_runner.py"
+      - "scripts/qlex_sc_conversion_watch.py"
+      - "scripts/intismeran_qlex_watch.py"
+      - "scripts/qlex_telegram_send.py"
+      - "scripts/intismeran_structured_telegram_send.py"
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bio-qlex-intismeran-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run QLEX and Intismeran bio watch
+        run: python scripts/bio_single_runner.py
+
+      - name: Publish bio watch status
+        if: always()
+        run: |
+          if [ -f data/bio_watch_heartbeat.json ]; then
+            echo "# 바이오 감시 상태" >> "$GITHUB_STEP_SUMMARY"
+            cat data/bio_watch_heartbeat.json >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "바이오 감시 heartbeat 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Commit bio watch states
+        if: always()
+        run: |
+          git config user.name "bio-watch[bot]"
+          git config user.email "bio-watch[bot]@users.noreply.github.com"
+          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Bio watcher states unchanged"
+          else
+            git commit -m "Update QLEX and Intismeran bio watch states"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload bio verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bio-qlex-intismeran-watch-${{ github.run_id }}
+          path: |
+            data/bio_watch_heartbeat.json
+            out/qlex_sc_conversion_status.md
+            out/qlex_sc_conversion_alert.md
+            out/qlex_sc_conversion_watch_state_pending.json
+            out/intismeran_qlex_status.md
+            out/intismeran_qlex_alert.md
+            out/intismeran_qlex_watch_state_pending.json
+            out/intismeran_structured_send_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
