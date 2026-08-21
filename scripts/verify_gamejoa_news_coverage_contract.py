@@ -116,6 +116,21 @@ AUGUST13_CASES = (
 )
 
 
+
+
+AUGUST21_CASES = (
+    ("SK하이닉스, 차세대 광 연결 CPO 청사진 제시", "cpo", "돈 버는 능력"),
+    ("한성크린텍, SK하이닉스 청주 팹 수처리 수주", "수처리", "돈 버는 능력"),
+    ("삼성전자, 최대 110조 주주환원·30조 현금배당 확정", "현금배당", "수급"),
+    ("빅테크 AI 차입이 미국채 30년물 장기금리 압박", "ai 차입", "할인율"),
+    ("LG전자, 엔비디아와 전장 AI 협업 공식화", "협업 공식화", "돈 버는 능력"),
+    ("한화 K9, 미국 육군 시험평가·선정 절차 진입", "미국 육군", "시간표"),
+    ("마이크론, 미국 메모리 전문연구소에 10년간 투자", "메모리 연구소", "돈 버는 능력"),
+    ("삼성전자, AI 수요에 파운드리 가격 인상 검토", "파운드리 가격 인상", "돈 버는 능력"),
+    ("한국거래소, SK하이닉스 해외 반도체 공장 보도 조회공시 요구", "조회공시", "수급"),
+    ("네이버, 전력사용량 증가 대응 재생에너지 발전소 투자", "재생에너지 발전소", "돈 버는 능력"),
+)
+
 def main() -> int:
     failures = []
     now = datetime.now().astimezone()
@@ -130,7 +145,7 @@ def main() -> int:
     ) in fda_runner_source:
         failures.append("production_fda_wrapper=body_fetch_failure_still_blocked")
     for index, (title, required_term, required_impact) in enumerate(
-        CASES + ATTACHED_CASES + AUGUST9_CASES + AUGUST10_CASES + AUGUST12_CASES + AUGUST13_CASES
+        CASES + ATTACHED_CASES + AUGUST9_CASES + AUGUST10_CASES + AUGUST12_CASES + AUGUST13_CASES + AUGUST21_CASES
     ):
         row = {
             "title": title,
@@ -276,6 +291,17 @@ def main() -> int:
     ):
         if required_search not in search_names:
             failures.append(f"missing_attached_search={required_search}")
+
+    for required_search in (
+        "AI 메모리 고객선점·CPO·광연결",
+        "반도체 팹 용수·수처리·소부장 수주",
+        "상장사 주주환원·조회공시·사업재편",
+        "AI 인프라 차입·장기국채·장기금리",
+        "공식 AI 협업·전장·로봇·데이터센터",
+        "K방산 미국·NATO 시험·수주",
+    ):
+        if required_search not in search_names:
+            failures.append(f"missing_full_attachment_search={required_search}")
 
     leverage_effect_urls = {
         "https://www.kmib.co.kr/article/view.asp?arcid=9000000424&cp=nv",
@@ -1101,7 +1127,7 @@ def main() -> int:
         return 1
     print(
         "GAMEJOA news coverage contract OK: "
-        f"cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES) + len(AUGUST10_CASES) + len(AUGUST12_CASES) + len(AUGUST13_CASES)}"
+        f"cases={len(CASES) + len(ATTACHED_CASES) + len(AUGUST9_CASES) + len(AUGUST10_CASES) + len(AUGUST12_CASES) + len(AUGUST13_CASES) + len(AUGUST21_CASES)}"
     )
     return 0
 
