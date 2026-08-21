@@ -7,6 +7,7 @@ on:
       - "scripts/global_rates_watch.py"
       - "scripts/yen_carry_confirmation.py"
       - "scripts/global_rates_telegram_formatter.py"
+      - "scripts/global_rates_telegram_htmlify.py"
       - "data/global_rates_watch_state.json"
       - "data/global_rates_telegram_state.json"
   schedule:
@@ -54,6 +55,10 @@ jobs:
         env:
           FORCE_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.force_test == true && '1' || '0' }}
         run: python scripts/global_rates_telegram_formatter.py
+
+      - name: Format clickable Telegram source links
+        if: hashFiles('out/global_rates_watch_telegram.md') != ''
+        run: python scripts/global_rates_telegram_htmlify.py
 
       - name: Publish watcher summary
         if: always()
@@ -130,6 +135,7 @@ jobs:
               payload = urllib.parse.urlencode({
                   "chat_id": chat_id,
                   "text": chunk,
+                  "parse_mode": "HTML",
                   "disable_web_page_preview": "true",
               }).encode("utf-8")
               req = urllib.request.Request(
