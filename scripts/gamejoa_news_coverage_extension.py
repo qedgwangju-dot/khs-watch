@@ -82,6 +82,16 @@ SEARCH_SOURCES = [
         "OR site:fnnews.com OR site:mk.co.kr OR site:hankyung.com OR site:isplus.com)",
     ),
     (
+        "테슬라·머스크 대규모 CEO 보상·희석·주주승인",
+        "(테슬라 OR Tesla OR 머스크 OR Musk OR Elon Musk OR 일론 머스크) "
+        "(CEO 보상 OR CEO 급여 OR CEO pay OR CEO compensation OR 보상 패키지 OR pay package "
+        "OR 성과보상 OR performance award OR stock award OR 주식보상 OR 주식 보상 OR 평균 직원) "
+        "(주주 승인 OR shareholder approval OR 이사회 승인 OR board approval OR 희석 OR dilution "
+        "OR 베스팅 OR vesting OR 공시 OR filing) "
+        "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:ft.com OR site:sec.gov "
+        "OR site:ir.tesla.com OR site:theguardian.com)",
+    ),
+    (
         "국내 기업 실적·장기계약·자본조달",
         "(실적 OR 영업이익 OR 순이익 OR 컨콜 OR LTA OR 장기공급계약 OR 유상증자 "
         "OR 자사주 OR 소각 OR 장내매수 OR 지분매수 OR 주식매수 OR 내부자매수) "
@@ -1185,6 +1195,22 @@ PRIORITY_TERMS.update(
         "미 육군": 17,
         "미국 육군": 17,
         "k9": 18,
+        "테슬라 ceo 보상": 18,
+        "tesla ceo compensation": 18,
+        "tesla ceo pay": 17,
+        "머스크 보상": 16,
+        "musk compensation": 16,
+        "musk pay package": 16,
+        "보상 패키지": 16,
+        "pay package": 16,
+        "성과보상": 16,
+        "성과 보상": 16,
+        "performance award": 18,
+        "stock award": 17,
+        "주주 승인": 15,
+        "shareholder approval": 17,
+        "희석": 15,
+        "dilution": 15,
     }
 )
 
@@ -1195,6 +1221,8 @@ FULL_ATTACHMENT_IMPACT_TERMS = {
         "반도체 수처리", "파운드리 가격 인상", "메모리 연구소",
         "대미 메모리 연구", "메모리 전문연구소", "공식 협력", "협업 공식화", "ai 차량", "k9", "미 육군",
         "미국 육군", "재생에너지 발전소",
+        "주주 승인", "shareholder approval", "이사회 승인", "board approval",
+        "베스팅", "vesting", "performance award",
     ),
     "할인율": (
         "ai 차입", "ai 빚", "채무보증", "채무 보증", "미국채 30년물",
@@ -1203,6 +1231,10 @@ FULL_ATTACHMENT_IMPACT_TERMS = {
     "수급": (
         "현금배당", "현금 배당", "대규모 주주환원", "역대급 주주환원",
         "조회공시", "조회 공시", "자회사 상장",
+        "테슬라 ceo 보상", "tesla ceo compensation", "tesla ceo pay",
+        "머스크 보상", "musk compensation", "musk pay package", "보상 패키지",
+        "pay package", "성과보상", "성과 보상", "performance award", "stock award",
+        "희석", "dilution",
     ),
     "시간표": (
         "조회공시", "조회 공시", "공시 요구", "수처리", "초순수",
