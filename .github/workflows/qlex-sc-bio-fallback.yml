@@ -3,7 +3,7 @@ name: QLEX SC Bio Watchdog Fallback
 on:
   workflow_run:
     workflows:
-      - "Global Rates & Yen Carry Telegram Watch"
+      - "Bio QLEX & Intismeran Telegram Watch"
     types:
       - completed
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Decide whether integrated bio watcher is stale
+      - name: Decide whether dedicated bio watcher is stale
         id: stale
         shell: bash
         run: |
@@ -61,7 +61,7 @@ jobs:
               f.write(f'run_bio={"true" if stale else "false"}\n')
               f.write(f'age_minutes={"unknown" if oldest is None else round(oldest,1)}\n')
               f.write('last_checks=' + ' | '.join(f'{p}:{last}' for p,last,_ in checks).replace('\n',' ') + '\n')
-          print(f'integrated_bio_fallback_stale={stale} checks={checks}')
+          print(f'dedicated_bio_fallback_stale={stale} checks={checks}')
           PY
 
       - name: Verify Telegram route for recovery
@@ -88,10 +88,10 @@ jobs:
           out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
           with out.open('a', encoding='utf-8') as f:
               f.write(f'chat_id={chat_id}\n')
-          print(f'integrated_bio_fallback_telegram_verified=@{actual}')
+          print(f'dedicated_bio_fallback_telegram_verified=@{actual}')
           PY
 
-      - name: Run integrated QLEX and Intismeran recovery check
+      - name: Run QLEX and Intismeran recovery check
         if: steps.stale.outputs.run_bio == 'true'
         run: |
           rm -f out/qlex_sc_conversion_alert.md out/intismeran_qlex_alert.md
@@ -113,22 +113,22 @@ jobs:
           BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
         run: python scripts/qlex_telegram_send.py out/intismeran_qlex_alert.md
 
-      - name: Persist recovered integrated states
+      - name: Persist recovered bio states
         if: steps.stale.outputs.run_bio == 'true' && success()
         run: |
           test ! -f out/qlex_sc_conversion_watch_state_pending.json || cp out/qlex_sc_conversion_watch_state_pending.json data/qlex_sc_conversion_watch_state.json
           test ! -f out/intismeran_qlex_watch_state_pending.json || cp out/intismeran_qlex_watch_state_pending.json data/intismeran_qlex_watch_state.json
 
-      - name: Commit recovered integrated state
+      - name: Commit recovered bio state
         if: steps.stale.outputs.run_bio == 'true' && success()
         run: |
           git config user.name "bio-watchdog[bot]"
           git config user.email "bio-watchdog[bot]@users.noreply.github.com"
           git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "Integrated fallback found no state change"
+            echo "Bio fallback found no state change"
           else
-            git commit -m "Recover integrated QLEX and Intismeran heartbeat"
+            git commit -m "Recover QLEX and Intismeran heartbeat"
             for attempt in 1 2 3; do
               if git pull --rebase origin main && git push; then
                 exit 0
@@ -149,7 +149,7 @@ jobs:
           cat > out/bio_watchdog_recovery.md <<EOF
           [바이오 감시] 자동 복구
 
-          QLEX·Intismeran 통합 감시 heartbeat가 기준 시간을 넘겨 watchdog이 자동 복구했습니다.
+          QLEX·Intismeran 전용 감시 heartbeat가 기준 시간을 넘겨 watchdog이 자동 복구했습니다.
           - 정체 시간: 약 ${{ steps.stale.outputs.age_minutes }}분
           - 복구 후 두 감시 모두 계속 진행
           EOF
@@ -165,7 +165,7 @@ jobs:
           cat > out/bio_watchdog_failure.md <<EOF
           [바이오 감시] 자동 복구 실패
 
-          QLEX·Intismeran 통합 감시가 기준 시간을 넘겨 watchdog이 복구를 시도했지만 실패했습니다.
+          QLEX·Intismeran 전용 감시가 기준 시간을 넘겨 watchdog이 복구를 시도했지만 실패했습니다.
           - GitHub Actions 점검 필요
           EOF
           python scripts/qlex_telegram_send.py out/bio_watchdog_failure.md || true
@@ -173,5 +173,5 @@ jobs:
       - name: Publish fallback status
         if: always()
         run: |
-          echo "Integrated bio fallback run=${{ steps.stale.outputs.run_bio }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Dedicated bio fallback run=${{ steps.stale.outputs.run_bio }}" >> "$GITHUB_STEP_SUMMARY"
           echo "age_minutes=${{ steps.stale.outputs.age_minutes }}" >> "$GITHUB_STEP_SUMMARY"
