@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import html
 import json
 import os
 import re
@@ -380,6 +381,124 @@ def _compact_converted_core(core: str, limit: int = 50) -> str:
     return text
 
 
+
+SOURCE_LINE_RE = re.compile(r"^(?P<indent>\s*-\s*출처:\s*)(?P<value>.*)$")
+MARKDOWN_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
+HTML_SOURCE_LINK_RE = re.compile(
+    r'<a\s+href=(?P<quote>["\'])(?P<url>https?://[^"\'<>\s]+)(?P=quote)>'
+    r'(?P<label>[^<]*)</a>',
+    re.IGNORECASE,
+)
+SOURCE_LINK_GENERIC_LABELS = {
+    "원문",
+    "원문 보기",
+    "원문보기",
+    "원문 뉴스보기",
+    "원문뉴스보기",
+    "source",
+    "출처",
+}
+
+
+def _clean_source_url(url: str) -> str:
+    return str(url or "").strip().rstrip(".,;:)")
+
+
+def _html_source_link(url: str) -> str:
+    url = _clean_source_url(url)
+    parsed = urllib.parse.urlparse(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return ""
+    return '<a href="' + html.escape(url, quote=True) + '">원문</a>'
+
+
+def _source_suffix(parts: list[str]) -> str:
+    cleaned: list[str] = []
+    for value in parts:
+        value = re.sub(r"^\s*[·|]\s*", "", str(value or "")).strip()
+        value = re.sub(r"\s+", " ", value)
+        if value and value not in cleaned:
+            cleaned.append(value)
+    return " · ".join(cleaned)
+
+
+def normalize_source_line(line: str) -> str:
+    """Render every source row as one Telegram-safe, clickable 원문 link."""
+    match = SOURCE_LINE_RE.match(str(line or ""))
+    if not match:
+        return line
+
+    prefix = match.group("indent")
+    value = match.group("value").strip()
+    link_match = HTML_SOURCE_LINK_RE.search(value)
+    if link_match:
+        label = link_match.group("label").strip()
+        url = link_match.group("url")
+        before = value[: link_match.start()]
+        after = value[link_match.end() :]
+    else:
+        link_match = MARKDOWN_LINK_RE.search(value)
+        if link_match:
+            label = link_match.group(1).strip()
+            url = link_match.group(2)
+            before = value[: link_match.start()]
+            after = value[link_match.end() :]
+        else:
+            raw_url = re.search(r"https?://[^\s)>]+", value)
+            if not raw_url:
+                return line
+            label = ""
+            url = raw_url.group(0)
+            before = value[: raw_url.start()]
+            after = value[raw_url.end() :]
+
+    source_link = _html_source_link(url)
+    if not source_link:
+        return line
+
+    parts: list[str] = []
+    normalized_label = re.sub(r"\s+", " ", label).strip().lower()
+    cleaned_before = re.sub(
+        r"(?i)원문(?:\s*뉴스)?\s*보기?\s*[:(]?$",
+        "",
+        before,
+    ).strip(" ·:()")
+    if cleaned_before:
+        parts.append(cleaned_before)
+    if label and normalized_label not in SOURCE_LINK_GENERIC_LABELS:
+        parts.append(label)
+    if after:
+        parts.append(after)
+
+    suffix = _source_suffix(parts)
+    return prefix + source_link + (f" · {suffix}" if suffix else "")
+
+
+def normalize_source_links(body: str) -> str:
+    return "\n".join(normalize_source_line(line) for line in str(body or "").splitlines())
+
+
+def prepare_telegram_html(title: str, body: str) -> str:
+    """Escape message text while preserving only validated source-link anchors."""
+    message = f"{title}\n\n{body}".strip()
+    anchors: list[str] = []
+
+    def protect(match: re.Match[str]) -> str:
+        url = _clean_source_url(match.group("url"))
+        anchor = _html_source_link(url)
+        if not anchor:
+            return ""
+        token = f"@@KHS_SOURCE_LINK_{len(anchors)}@@"
+        anchors.append(anchor)
+        return token
+
+    escaped = html.escape(HTML_SOURCE_LINK_RE.sub(protect, message), quote=False)
+    for index, anchor in enumerate(anchors):
+        escaped = escaped.replace(f"@@KHS_SOURCE_LINK_{index}@@", anchor)
+    return escaped
+
+
+
 def _compact_converted_core_lines(body: str) -> str:
     output: list[str] = []
     for raw_line in str(body or "").splitlines():
@@ -407,6 +526,7 @@ def normalize_policy_structure(title: str, body: str) -> tuple[str, str]:
             continue
         lines.append(line.rstrip())
     body = "\n".join(lines)
+    body = normalize_source_links(body)
     body = re.sub(r"\n{3,}", "\n\n", body).strip()
     return title, body
 
@@ -458,6 +578,19 @@ def validate_final_policy_message(title: str, body: str) -> list[str]:
             errors.append(f"policy_core_too_long:{len(core)}")
         if "…" in core or re.search(r"\.{3,}", core):
             errors.append("policy_core_truncated")
+    for line in body.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("- 출처:"):
+            continue
+        anchors = list(HTML_SOURCE_LINK_RE.finditer(stripped))
+        if len(anchors) != 1 or anchors[0].group("label").strip() != "원문":
+            errors.append("source_link_not_single_html_anchor")
+            continue
+        visible = HTML_SOURCE_LINK_RE.sub("", stripped)
+        if re.search(r"\[[^\]]+\]\(https?://", stripped) or re.search(r"https?://", visible):
+            errors.append("source_link_raw_or_markdown_url_present")
+        if "원문 보기" in stripped or "원문뉴스보기" in stripped:
+            errors.append("source_link_verbose_label_present")
     if extract_foreign_amounts(combined):
         errors.append("foreign_currency_not_converted")
     return errors
