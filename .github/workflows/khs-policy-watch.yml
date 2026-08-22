@@ -300,6 +300,7 @@ jobs:
           import urllib.request
           from scripts.khs_policy_telegram_formatter import (
               format_policy_message,
+              prepare_telegram_html,
               validate_final_policy_message,
           )
 
@@ -412,8 +413,15 @@ jobs:
               )
           else:
               for title, body, digest in sendable:
-                  text = f"{title}\n\n{body}".strip()
-                  data = urllib.parse.urlencode({"chat_id": chat_id, "text": text[:4096], "disable_web_page_preview": "true"}).encode("utf-8")
+                  text = prepare_telegram_html(title, body)
+                  if len(text) > 4096:
+                      raise RuntimeError(f"Telegram HTML message exceeds 4096 characters: {len(text)}")
+                  data = urllib.parse.urlencode({
+                      "chat_id": chat_id,
+                      "text": text,
+                      "parse_mode": "HTML",
+                      "disable_web_page_preview": "true",
+                  }).encode("utf-8")
                   req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
                   with urllib.request.urlopen(req, timeout=20) as resp:
                       resp.read()
