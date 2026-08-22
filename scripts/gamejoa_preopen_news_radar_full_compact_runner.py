@@ -4147,9 +4147,7 @@ def build_title_verified_korean_business_alert(row: dict, now) -> dict | None:
         alert["title_fact_verified"] = True
         alert["body_verified"] = False
         alert["source_abstract"] = title
-        alert["policy_plain_summary"] = complete_prose_text(
-            f"공개된 제목에 따르면, {title}", limit=GAMEJOA_CORE_MAX_CHARS
-        )
+        alert["policy_plain_summary"] = title_only_provisional_core(title)
         alert["telegram_core_fact"] = alert["policy_plain_summary"]
         alert["interpretation"] = alert["policy_plain_summary"]
         return alert
@@ -4175,10 +4173,7 @@ def build_title_verified_korean_business_alert(row: dict, now) -> dict | None:
         ) // 8,
     )
     alert = base_korean_business_alert(fallback_row, now, score=score, impacts=impacts)
-    core = complete_prose_text(
-        f"공개된 제목에 따르면, {title}",
-        limit=GAMEJOA_CORE_MAX_CHARS,
-    )
+    core = title_only_provisional_core(title)
     alert.update(
         {
             "status": "예비",
@@ -6061,6 +6056,15 @@ def canonical_title_fact(title: object) -> str:
         if partner:
             return f"{subject}은 {partner}와의 합작법인 설립 검토를 중단했습니다."
     return ""
+
+
+def title_only_provisional_core(title: object) -> str:
+    """Retain title-only items as explicitly provisional facts, never as body evidence."""
+    headline = clean_article_summary_text(title)
+    if not headline or core_has_ui_garbage(headline):
+        return ""
+    candidate = f"공개된 제목에 따르면, {headline}."
+    return candidate if len(candidate) <= GAMEJOA_CORE_MAX_CHARS else ""
 
 
 def single_stock_leverage_core(alert: dict, title: str) -> str:
