@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-08-23T00:14:33+09:00",
+  "updated_at_kst": "2026-08-23T00:26:45+09:00",
   "last_sent_month": "2026-08",
   "latest_kstat_update_month": "2026-07",
   "recent_posts": [
@@ -148,6 +148,12 @@
       "published_month": "2026-08"
     }
   ],
+  "usdkrw": {
+    "rate": 1389.54,
+    "date": "2026-08-22",
+    "source": "Frankfurter v2 중앙은행 기준환율 집계",
+    "error": ""
+  },
   "bernstein_model": {
     "label": "Bernstein 2026-08 회귀식",
     "slope": 5.5459,
