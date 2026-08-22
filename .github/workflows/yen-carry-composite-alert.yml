@@ -135,6 +135,19 @@ jobs:
 
           title = pathlib.Path('out/yen_carry_composite_alert_title.txt').read_text(encoding='utf-8').strip()
           body = pathlib.Path('out/yen_carry_composite_alert.md').read_text(encoding='utf-8').strip()
+
+          # The title color must carry information. Use the higher of unwind/rebuild risk levels.
+          # 0=green(normal/unconfirmed), 1=yellow(watch), 2=orange(stronger warning), 3=red(high risk).
+          alert_payload_path = pathlib.Path('out/yen_carry_composite_alert.json')
+          if alert_payload_path.exists():
+              alert_payload = json.loads(alert_payload_path.read_text(encoding='utf-8'))
+              verdict = alert_payload.get('verdict') or {}
+              unwind_level = int(verdict.get('unwind_level') or 0)
+              rebuild_level = int(verdict.get('rebuild_level') or 0)
+              top_level = max(unwind_level, rebuild_level)
+              risk_emoji = {0: '🟢', 1: '🟡', 2: '🟠', 3: '🔴'}.get(top_level, '🔴')
+              title = re.sub(r'^[🟢🟡🟠🔴]\s*', risk_emoji + ' ', title)
+
           text = f'{title}\n\n{body}'
 
           source_labels = {
