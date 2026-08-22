@@ -103,6 +103,25 @@ def parse_event_date(value):
     return None
 
 
+def format_event_date_korean(value):
+    """Use Korean date notation; convert timestamped official dates to Korea Standard Time."""
+    raw = clean(value)
+    if not raw:
+        return "", False
+    parsed = parse_event_date(raw)
+    if parsed is None:
+        return raw, False
+
+    has_clock = bool(
+        re.search(r"\b\d{1,2}:\d{2}(?::\d{2})?\b", raw)
+        or re.search(r"\b\d{1,2}\s*(?:AM|PM)\b", raw, re.I)
+    )
+    if has_clock:
+        kst = parsed.astimezone(ZoneInfo("Asia/Seoul"))
+        return f"{kst.year}년 {kst.month}월 {kst.day}일 {kst:%H:%M} KST", True
+    return f"{parsed.year}년 {parsed.month}월 {parsed.day}일", False
+
+
 def is_committee_commentary(event):
     source = clean(event.get("source", ""))
     if source not in {"상원 은행위원회", "상원 농업위원회"}:
@@ -173,10 +192,8 @@ def filter_alertable_events(events, now=None, freshness_days=7):
     candidates = []
     for event in events:
         when = parse_event_date(event.get("date", ""))
-        # A newly rediscovered old press release is not a new official change.
         if when is not None and when < cutoff:
             continue
-        # Minority/majority remarks, advisories and reaction pieces are context, not procedural triggers.
         if is_committee_commentary(event):
             continue
         candidates.append(event)
@@ -323,7 +340,9 @@ def event_block(event, index):
         f"공식 출처: {html.escape(clean(event.get('source','')))}",
     ]
     if event.get("date"):
-        lines.append(f"공식 날짜: {html.escape(clean(event.get('date','')))}")
+        formatted_date, converted_to_kst = format_event_date_korean(event.get("date", ""))
+        label = "공식 날짜(한국시간)" if converted_to_kst else "공식 날짜"
+        lines.append(f"{label}: {html.escape(formatted_date)}")
     if body_ko:
         lines += ["", "<b>무슨 내용?</b>", html.escape(body_ko)]
     lines += ["", "<b>쉽게 말하면</b>", html.escape(meaning)]
@@ -366,7 +385,6 @@ def main():
     events = json.loads(ALERT_JSON.read_text(encoding="utf-8"))
     events = filter_alertable_events(events)
 
-    # Do not leave stale output files around; absence of chunks means Telegram send step is skipped.
     for path in (OUT_HTML, OUT_CHUNKS):
         if path.exists():
             path.unlink()
