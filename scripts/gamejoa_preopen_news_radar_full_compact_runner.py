@@ -5966,6 +5966,14 @@ def core_has_ui_garbage(value: object) -> bool:
     )
 
 
+def strip_core_ui_garbage(value: object) -> str:
+    """Remove known publisher chrome before sentence ranking, never before direct output."""
+    text = html.unescape(str(value or ""))
+    for pattern in CORE_UI_GARBAGE_PATTERNS:
+        text = re.sub(pattern, " ", text, flags=re.IGNORECASE)
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def core_sentence_is_complete(value: object, limit: int = GAMEJOA_CORE_MAX_CHARS) -> bool:
     text = clean_article_summary_text(value)
     if not text or text == "확인 불가" or len(text) > limit:
@@ -6057,16 +6065,18 @@ def verified_alert_core(alert: dict, title: str) -> str:
 
     if is_business:
         candidates.append(str(alert.get("telegram_core_fact") or ""))
-        source_body = "\n".join(
-            str(alert.get(key) or "")
-            for key in (
-                "source_body",
-                "article_body",
-                "source_abstract",
-                "summary",
-                "original_summary",
+        source_body = strip_core_ui_garbage(
+            "\n".join(
+                str(alert.get(key) or "")
+                for key in (
+                    "source_body",
+                    "article_body",
+                    "source_abstract",
+                    "summary",
+                    "original_summary",
+                )
+                if alert.get(key)
             )
-            if alert.get(key)
         )
         if source_body:
             candidates.append(detailed_article_core(source_title or title, source_body))
