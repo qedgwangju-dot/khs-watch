@@ -249,10 +249,14 @@ def fmt_krw_from_usd_mn(v_mn: float | None, rate: float | None) -> str:
     if v_mn is None or rate is None:
         return "원화 환산 불가"
     won = v_mn * 1_000_000 * rate
-    if abs(won) >= 1_000_000_000_000:
-        return f"약 {won/1_000_000_000_000:.2f}조원"
-    if abs(won) >= 100_000_000:
-        return f"약 {won/100_000_000:,.0f}억원"
+    eok_total = int(round(won / 100_000_000))
+    if abs(eok_total) >= 10_000:
+        sign = "-" if eok_total < 0 else ""
+        eok_abs = abs(eok_total)
+        jo, eok = divmod(eok_abs, 10_000)
+        return f"약 {sign}{jo:,}조{eok:,}억원" if eok else f"약 {sign}{jo:,}조원"
+    if abs(eok_total) >= 1:
+        return f"약 {eok_total:,}억원"
     return f"약 {won:,.0f}원"
 
 
