@@ -2,9 +2,9 @@
   "failure_streaks": {
     "domestic_telecom|korea.kr": {
       "lane": "domestic_telecom",
-      "last_seen_kst": "2026-08-22T14:19:00+09:00",
+      "last_seen_kst": "2026-08-22T14:59:09+09:00",
       "source": "Korea Policy Briefing telecom policy",
-      "streak": 1
+      "streak": 2
     }
   },
   "seen": {
@@ -122,6 +122,15 @@
       "sources": [
         "Korea Policy Briefing telecom policy",
         "Korea Communications Commission notices"
+      ]
+    },
+    "a68abec4a877f29c": {
+      "failure_count": 2,
+      "first_seen_kst": "2026-08-22T14:59:09+09:00",
+      "logical_failure_count": 1,
+      "sources": [
+        "Korea Policy Briefing telecom policy",
+        "Korea Policy Briefing telecom search"
       ]
     },
     "a78de8f3f85a2624": {
