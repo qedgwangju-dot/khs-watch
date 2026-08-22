@@ -5948,10 +5948,13 @@ def display_news(alert: dict) -> str:
 
 
 CORE_UI_GARBAGE_PATTERNS = (
-    r"\b(?:등록|수정)\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}",
+    r"\b등록\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}:\d{2})?"
+    r"(?:\s*수정\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}:\d{2})?)?",
     r"구글에서\s*선호하는\s*매체로\s*추가",
     r"\b작게\s*크게\b",
     r"재판매\s*및\s*DB\s*금지",
+    r"\]?\s*\([^)]{0,30}=.{0,30}\)\s*[^.!?]{0,50}?기자\s*=",
+    r"\b[가-힣]{2,4}\s*기자\s*=",
     r"무단\s*전재(?:-?재배포)?\s*금지",
     r"AI\s*학습\s*및\s*활용\s*금지",
     r"저작권자.{0,40}무단\s*전재",
@@ -5985,17 +5988,22 @@ def core_sentence_is_complete(value: object, limit: int = GAMEJOA_CORE_MAX_CHARS
         text,
     ):
         return False
+    terminal = re.sub(r"[.!?。]+$", "", text).strip()
     return bool(
         re.search(
-            r"(?:[.!?。]|(?:합니다|했습니다|됩니다|됐습니다|있습니다|없습니다|한다|했다|됐다|된다|이다|입니다|아니다))$",
-            text,
+            r"(?:다|요|함|됨|임|음)$",
+            terminal,
         )
     )
 
 
 def complete_prose_text(value: object, *, fallback: object = "", limit: int) -> str:
     """Keep only a verified, complete sentence; never fabricate a suffix for a fragment."""
-    raw = clean_article_summary_text(value) or clean_article_summary_text(fallback)
+    raw_value = html.unescape(str(value or ""))
+    fallback_value = html.unescape(str(fallback or ""))
+    if core_has_ui_garbage(raw_value):
+        raw_value = ""
+    raw = clean_article_summary_text(raw_value) or clean_article_summary_text(fallback_value)
     if not raw or raw == "확인 불가" or core_has_ui_garbage(raw):
         return ""
 
