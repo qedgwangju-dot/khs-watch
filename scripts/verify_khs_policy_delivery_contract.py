@@ -76,6 +76,7 @@ def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_workflow_delivery_dedupe()
     assert_final_policy_telegram_format_and_currency_conversion()
+    assert_policy_source_links_are_html_safe()
     assert_domestic_telecom_title_gate_and_semantic_dedupe()
     assert_router_explains_current_fcc_documents()
     assert_runtime_patch_accepts_mofcom_watch_source()
@@ -128,6 +129,41 @@ def main() -> int:
         cleanup()
     print("khs_policy_delivery_contract=passed")
     return 0
+
+
+
+def assert_policy_source_links_are_html_safe() -> None:
+    title, body = khs_policy_telegram_formatter.format_policy_message(
+        "정책 워치: FCC, 무인기 수입 제한 의견수렴",
+        "\n".join(
+            [
+                "🚨 정책·규제 고충격 워치 · 2026년 08월 22일 14:19 KST",
+                "1. FCC, 외국산 무인기 수입·판매 제한안 의견수렴",
+                "- 핵심: FCC가 외국산 무인기 핵심부품 제한 의견을 받습니다.",
+                "- 출처: [원문 보기](https://www.federalregister.gov/documents/2026/08/24/2026-17193/comment-sought-on-prohibiting-the-importation-and-marketing-of-certain-covered-uas-and-uas-critical) · 미 연방관보 FCC · 조회 14:19 KST",
+            ]
+        ),
+        now=dt.datetime(2026, 8, 22, 14, 19, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    expected_anchor = (
+        '<a href="https://www.federalregister.gov/documents/2026/08/24/2026-17193/'
+        'comment-sought-on-prohibiting-the-importation-and-marketing-of-certain-covered-uas-and-uas-critical">원문</a>'
+    )
+    if expected_anchor not in body:
+        raise AssertionError("Policy source link was not normalized to one HTML 원문 anchor")
+    if "[원문 보기]" in body or "https://" in body.replace(expected_anchor, ""):
+        raise AssertionError("Policy source row still exposes Markdown or a raw URL")
+    errors = khs_policy_telegram_formatter.validate_final_policy_message(title, body)
+    if errors:
+        raise AssertionError(f"Policy source link validation failed: {errors}")
+    telegram_html = khs_policy_telegram_formatter.prepare_telegram_html(title, body)
+    if expected_anchor not in telegram_html:
+        raise AssertionError("Telegram HTML payload lost the clickable 원문 anchor")
+    if "&lt;a href=" in telegram_html:
+        raise AssertionError("Telegram source anchor was escaped and would not be clickable")
+    if "정책·규제" not in telegram_html:
+        raise AssertionError("Telegram HTML payload did not preserve policy text")
+
 
 
 def assert_foreign_first_policy_sources() -> None:
@@ -296,6 +332,8 @@ def assert_workflow_delivery_dedupe() -> None:
         "out/khs_telegram_dry_run.md",
         "format_policy_message(title, body)",
         "validate_final_policy_message(title, body)",
+        "prepare_telegram_html(title, body)",
+        '"parse_mode": "HTML"',
     ]
     for marker in required:
         if marker not in workflow:
