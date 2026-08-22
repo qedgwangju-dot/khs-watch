@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/hbm-monthly-telegram.yml"
       - "scripts/hbm_monthly_watch.py"
+      - "scripts/hbm_emib_context.py"
   schedule:
     # GitHub cron is UTC. 00:20 UTC = 09:20 KST.
     # Runs daily but sends at most once per calendar month, after the 20th,
@@ -66,6 +67,12 @@ jobs:
         run: |
           python -m py_compile scripts/hbm_monthly_watch.py
           python scripts/hbm_monthly_watch.py
+
+      - name: Append Intel EMIB context
+        if: hashFiles('out/hbm_monthly_alert.md') != ''
+        run: |
+          python -m py_compile scripts/hbm_emib_context.py
+          python scripts/hbm_emib_context.py
 
       - name: Publish watcher summary
         if: always()
