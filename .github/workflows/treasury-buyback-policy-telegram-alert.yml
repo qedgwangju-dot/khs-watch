@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "scripts/treasury_buyback_policy_watch.py"
+      - "scripts/treasury_alert_korean_guard.py"
       - ".github/workflows/treasury-buyback-policy-telegram-alert.yml"
   schedule:
     # U.S. business hours during EDT. Check every 15 minutes.
@@ -38,10 +39,16 @@ jobs:
         run: python -m pip install --quiet pypdf
 
       - name: Validate watcher
-        run: python -m py_compile scripts/treasury_buyback_policy_watch.py
+        run: |
+          python -m py_compile scripts/treasury_buyback_policy_watch.py
+          python -m py_compile scripts/treasury_alert_korean_guard.py
 
       - name: Check official Treasury buyback policy
         run: python scripts/treasury_buyback_policy_watch.py
+
+      - name: Translate user-facing Treasury source title to Korean
+        if: hashFiles('out/treasury_buyback_policy_alert.html') != ''
+        run: python scripts/treasury_alert_korean_guard.py
 
       - name: Publish status
         if: always()
