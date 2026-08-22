@@ -31,7 +31,22 @@ class ClarityFormatterTest(unittest.TestCase):
         self.assertIn("<b>핵심 한 줄 요약</b>", rendered)
         self.assertIn("Coinbase", rendered)
         self.assertIn("최대 실패 경로", rendered)
+        self.assertIn("공식 날짜(한국시간): 2026년 8월 19일 02:15 KST", rendered)
+        self.assertNotIn("Tue, 18 Aug 2026 13:15:48 -0400", rendered)
         self.assertLessEqual(max(map(len, chunks)), 3900)
+
+    def test_date_only_is_shown_in_korean_calendar_format(self):
+        event = {
+            "source": "상원 은행위원회",
+            "event_type": "표결 결과",
+            "title": "Chairman Scott, Senate Banking Committee Advance Clarity Act in Historic Bipartisan Vote",
+            "url": "https://www.banking.senate.gov/vote",
+            "date": "May 14, 2026",
+            "detail": "The bill advanced 15-9 and now moves to the Senate floor.",
+        }
+        rendered = "\n".join(MOD.build_chunks([event]))
+        self.assertIn("공식 날짜: 2026년 5월 14일", rendered)
+        self.assertNotIn("May 14, 2026", rendered)
 
     def test_schedule_change_summary_only_marks_timeline_as_changed(self):
         event = {
