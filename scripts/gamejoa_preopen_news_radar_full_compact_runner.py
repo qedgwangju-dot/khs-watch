@@ -5947,42 +5947,146 @@ def display_news(alert: dict) -> str:
     return korean_title(alert)
 
 
+CORE_UI_GARBAGE_PATTERNS = (
+    r"\b(?:등록|수정)\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}",
+    r"구글에서\s*선호하는\s*매체로\s*추가",
+    r"\b작게\s*크게\b",
+    r"재판매\s*및\s*DB\s*금지",
+    r"무단\s*전재(?:-?재배포)?\s*금지",
+    r"AI\s*학습\s*및\s*활용\s*금지",
+    r"저작권자.{0,40}무단\s*전재",
+)
+
+
+def core_has_ui_garbage(value: object) -> bool:
+    text = html.unescape(str(value or ""))
+    return any(
+        re.search(pattern, text, flags=re.IGNORECASE)
+        for pattern in CORE_UI_GARBAGE_PATTERNS
+    )
+
+
+def core_sentence_is_complete(value: object, limit: int = GAMEJOA_CORE_MAX_CHARS) -> bool:
+    text = clean_article_summary_text(value)
+    if not text or text == "확인 불가" or len(text) > limit:
+        return False
+    if core_has_ui_garbage(text) or "…" in text or re.search(r"\.{3,}", text):
+        return False
+    if re.search(
+        r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)(?:[.!?。])?$",
+        text,
+    ):
+        return False
+    return bool(
+        re.search(
+            r"(?:[.!?。]|(?:합니다|했습니다|됩니다|됐습니다|있습니다|없습니다|한다|했다|됐다|된다|이다|입니다|아니다))$",
+            text,
+        )
+    )
+
+
 def complete_prose_text(value: object, *, fallback: object = "", limit: int) -> str:
-    text = clean_article_summary_text(value) or clean_article_summary_text(fallback) or "확인 불가"
-    # Publisher snippets frequently use an ellipsis as a transport truncation
-    # marker. Normalize it before length handling so one damaged snippet cannot
-    # invalidate the complete Telegram payload.
-    text = re.sub(r"\s*(?:…+|\.{3,})\s*", ". ", text)
+    """Keep only a verified, complete sentence; never fabricate a suffix for a fragment."""
+    raw = clean_article_summary_text(value) or clean_article_summary_text(fallback)
+    if not raw or raw == "확인 불가" or core_has_ui_garbage(raw):
+        return ""
+
+    text = re.sub(r"\s*(?:…+|\.{3,})\s*", ". ", raw)
     text = re.sub(r"\.\s*\.", ".", text)
     text = re.sub(r"^(?:및|또한|아울러|이어|여기에)\s+", "", text)
     text = re.sub(r"\s+", " ", text).strip()
-    text = re.sub(r"기대할\.$", "기대할 수 있습니다.", text)
+    if not text or core_has_ui_garbage(text):
+        return ""
+
     if len(text) <= limit:
-        if re.search(r"[.!?。]$", text):
+        if re.search(r"[.!?。]$", text) and core_sentence_is_complete(text, limit):
             return text
-        suffix = "." if re.search(r"(?:다|요|함|됨|임|음)$", text) else "입니다."
-        if len(text) + len(suffix) <= limit:
-            return text + suffix
-    head = text[: limit + 1]
-    sentence_ends = [
-        match.end()
-        for match in re.finditer(r"(?:[.!?。]|다)(?=\s|$)", head)
-        if match.end() >= int(limit * 0.55)
+        if re.search(r"(?:합니다|했습니다|됩니다|됐습니다|있습니다|없습니다|한다|했다|됐다|된다|이다|입니다|아니다)$", text):
+            completed = f"{text}."
+            if core_sentence_is_complete(completed, limit):
+                return completed
+
+    sentences = [
+        match.group(0).strip()
+        for match in re.finditer(r"[^.!?。]{8,}[.!?。]", text)
     ]
-    if sentence_ends:
-        return head[: sentence_ends[-1]].rstrip()
-    boundary = max(
-        head.rfind(",", int(limit * 0.55), limit),
-        head.rfind("·", int(limit * 0.55), limit),
-        head.rfind(";", int(limit * 0.55), limit),
-        head.rfind(" ", int(limit * 0.7), limit),
+    complete = [
+        sentence
+        for sentence in sentences
+        if len(sentence) <= limit and core_sentence_is_complete(sentence, limit)
+    ]
+    if complete:
+        return max(complete, key=len)
+    return ""
+
+
+def canonical_title_fact(title: object) -> str:
+    """Use a narrow title-derived fact only when article text is unusable."""
+    headline = clean_article_summary_text(title)
+    headline = re.sub(r"\s*\|.*$", "", headline).strip()
+    subject_match = re.match(r"^\s*([A-Za-z0-9가-힣·]+)", headline)
+    subject = subject_match.group(1) if subject_match else ""
+    if not subject:
+        return ""
+
+    if "자사주" in headline and ("취득" in headline or "소각" in headline):
+        action = "자사주 취득·소각"
+        if "주주환원" in headline:
+            return f"{subject}가 {action}과 주주환원 조기 시행을 발표했습니다."
+        return f"{subject}가 {action}을 발표했습니다."
+
+    if "합작법인" in headline and "검토 중단" in headline:
+        remainder = headline[len(subject):].lstrip(" ,:\"“")
+        partner_match = re.search(
+            r"(.+?)(?:와|과)\s*합작법인\s*설립\s*검토\s*중단",
+            remainder,
+        )
+        partner = partner_match.group(1).strip(" \"“”") if partner_match else ""
+        if partner:
+            return f"{subject}은 {partner}와의 합작법인 설립 검토를 중단했습니다."
+    return ""
+
+
+def verified_alert_core(alert: dict, title: str) -> str:
+    """Recover a source-backed complete core or return an empty value for exclusion."""
+    is_business = bool(alert.get("korean_business_news"))
+    source_title = clean_article_summary_text(
+        alert.get("source_title") or alert.get("original_news") or title
     )
-    if boundary < int(limit * 0.55):
-        boundary = limit - 4
-    return head[:boundary].rstrip(" ,·;:.") + "입니다."
+    candidates: list[str] = []
+
+    if is_business:
+        candidates.append(str(alert.get("telegram_core_fact") or ""))
+        source_body = "\n".join(
+            str(alert.get(key) or "")
+            for key in (
+                "source_body",
+                "article_body",
+                "source_abstract",
+                "summary",
+                "original_summary",
+            )
+            if alert.get(key)
+        )
+        if source_body:
+            candidates.append(detailed_article_core(source_title or title, source_body))
+        candidates.append(canonical_title_fact(source_title or title))
+    else:
+        candidates.extend(
+            [
+                str(alert.get("policy_plain_summary") or ""),
+                str(alert.get("telegram_core_fact") or ""),
+            ]
+        )
+
+    for candidate in candidates:
+        core = complete_prose_text(candidate, limit=GAMEJOA_CORE_MAX_CHARS)
+        if core_sentence_is_complete(core):
+            return core
+    return ""
 
 
-def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
+def compact_gamejoa_prose_linesdef compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
     limits = {
         "- 핵심:": GAMEJOA_CORE_MAX_CHARS,
     }
@@ -5997,8 +6101,9 @@ def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
                 continue
             value = clean_article_summary_text(stripped.removeprefix(prefix).strip())
             compacted = complete_prose_text(value, limit=limit)
-            compacted_line = f"{indent}{prefix} {compacted}"
-            changed += compacted != value
+            if compacted:
+                compacted_line = f"{indent}{prefix} {compacted}"
+                changed += compacted != value
             break
         output.append(compacted_line)
     suffix = "\n" if str(body or "").endswith("\n") else ""
@@ -6042,6 +6147,10 @@ def compact_alert_block_errors(block: str) -> list[str]:
     if not summary:
         errors.append("missing_core")
         return errors
+    if core_has_ui_garbage(summary):
+        errors.append("article_ui_boilerplate")
+    if not core_sentence_is_complete(summary):
+        errors.append("incomplete_core")
     if len(summary) > GAMEJOA_CORE_MAX_CHARS:
         errors.append("core_too_long")
     if "…" in summary or re.search(r"\.{3,}", summary):
@@ -6054,7 +6163,7 @@ def compact_alert_block_errors(block: str) -> list[str]:
         summary,
     ):
         errors.append("incomplete_core")
-    if title and (summary == title or article_title_restatement(summary, title)):
+    if title and (summary == title or article_title_restatement(summary, title)) and not canonical_title_fact(title) == summary:
         errors.append("headline_repeated_as_summary")
     if title and not compact_title_summary_aligned(title, summary):
         errors.append("title_core_mismatch")
@@ -6078,21 +6187,14 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     interpretation = alert.get("interpretation") or "돈 버는 능력, 할인율, 수급, 시간표 중 하나를 바꿀 수 있는지 확인해야 합니다."
     title = display_news(alert)
     first_impact = displayed_impacts[0] if displayed_impacts else "의사결정"
-    article_core = (
-        alert.get("telegram_core_fact")
-        if alert.get("korean_business_news")
-        else ""
-    )
     if alert.get("memory_antitrust_lawsuit"):
-        core = "\uc0bc\uc131\uc804\uc790\u00b7SK\ud558\uc774\ub2c9\uc2a4\u00b7Micron\uc5d0 DRAM \uac00\uaca9\ub2f4\ud569 \uc9d1\ub2e8\uc18c\uc1a1\uc774 \uc81c\uae30\ub410\uc2b5\ub2c8\ub2e4."
+        core = "삼성전자·SK하이닉스·Micron에 DRAM 가격담합 집단소송이 제기됐습니다."
     else:
-        core = complete_prose_text(
-            article_core or alert.get("policy_plain_summary"),
-            fallback=title,
-            limit=GAMEJOA_CORE_MAX_CHARS,
-        )
+        core = verified_alert_core(alert, title)
     conversion = alert.get("fx_conversion") or {"amounts": []}
     core = compact_converted_core(core, conversion, limit=GAMEJOA_CORE_MAX_CHARS)
+    if not core_sentence_is_complete(core):
+        core = ""
 
     lines = [f"{idx}) {safe(title)}{html.escape(count_suffix, quote=False)}"]
     if examples:
@@ -6277,8 +6379,10 @@ def guard_preopen_report(text: str) -> str:
             errors.append(f"compact_field_too_long={prefix}{len(summary)}")
         if "…" in summary or re.search(r"\.{3,}", summary):
             errors.append(f"truncated_compact_field={prefix}")
-        if any(term.lower() in summary.lower() for term in ARTICLE_UI_BOILERPLATE_TERMS):
+        if any(term.lower() in summary.lower() for term in ARTICLE_UI_BOILERPLATE_TERMS) or core_has_ui_garbage(summary):
             errors.append("article_ui_boilerplate")
+        if not core_sentence_is_complete(summary):
+            errors.append(f"incomplete_article_summary={summary[-30:]}")
         if re.search(
             r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)(?:[.!?。])?$",
             summary,
@@ -6300,7 +6404,10 @@ def guard_preopen_report(text: str) -> str:
             continue
         if current_title and line.startswith("- 핵심:"):
             summary = html.unescape(line.removeprefix("- 핵심:").strip())
-            if summary == current_title or article_title_restatement(summary, current_title):
+            if (
+                summary == current_title
+                or article_title_restatement(summary, current_title)
+            ) and canonical_title_fact(current_title) != summary:
                 errors.append("headline_repeated_as_summary")
     if errors:
         raise RuntimeError("GAMEJOA preopen radar quality guard blocked Telegram output: " + "; ".join(errors))
