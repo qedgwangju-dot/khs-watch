@@ -6086,7 +6086,7 @@ def verified_alert_core(alert: dict, title: str) -> str:
     return ""
 
 
-def compact_gamejoa_prose_linesdef compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
+def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
     limits = {
         "- 핵심:": GAMEJOA_CORE_MAX_CHARS,
     }
