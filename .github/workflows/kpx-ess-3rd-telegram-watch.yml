@@ -1,5 +1,6 @@
 name: KPX 3rd ESS Central Contract Market Telegram Watch
 
+# Verification trigger: 2026-08-22 KST
 on:
   push:
     paths:
