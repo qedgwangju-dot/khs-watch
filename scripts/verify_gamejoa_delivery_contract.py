@@ -144,6 +144,9 @@ REQUIRED_RUNNER_SNIPPETS = [
     "build_alert_fx_conversion",
     "foreign_currency_not_converted",
     "📰 실시간 핵심 뉴스 레이더 ·",
+    "CORE_UI_GARBAGE_PATTERNS",
+    "def core_sentence_is_complete",
+    "def verified_alert_core",
 ]
 
 
@@ -161,6 +164,58 @@ def compact_prose_errors(body: str) -> list[str]:
                 if re.search(r"\[[^\]]{0,60}\s*기자\]", value):
                     errors.append(f"{prefix} 매체·기자 표기")
     return errors
+
+
+def assert_complete_core_recovery_contract(compact, now, errors: list[str]) -> None:
+    """A raw publisher UI snippet must never reach the Telegram core line."""
+    fixtures = [
+        (
+            "SK하이닉스, '40조원 규모' 자사주 취득·소각…'3개년 주주환원 조기 시행'",
+            "등록 2026.08.19 16:03:33 수정 2026.08.19 16:07:38 "
+            "구글에서 선호하는 매체로 추가 작게 크게 누적 FCF 주주환원 규모.",
+            "SK하이닉스가 자사주 취득·소각과 주주환원 조기 시행을 발표했습니다.",
+        ),
+        (
+            'HD한국조선해양 "인도 코친조선소와 합작법인 설립 검토 중단"',
+            "재판매 및 DB 금지] (서울=연합뉴스) 장하나 기자 = "
+            "블록 제작 공장 신규 건설을 위한.",
+            "HD한국조선해양은 인도 코친조선소와의 합작법인 설립 검토를 중단했습니다.",
+        ),
+    ]
+    for title, raw_core, expected_core in fixtures:
+        if compact.complete_prose_text(raw_core, limit=100):
+            errors.append(f"publisher UI fragment was completed instead of rejected: {title}")
+        alert = {
+            "korean_business_news": True,
+            "source_title": title,
+            "original_news": title,
+            "news": title,
+            "telegram_core_fact": raw_core,
+            "source_body": raw_core,
+            "policy_plain_summary": raw_core,
+            "link": "https://example.com/article",
+            "published": now.isoformat(timespec="minutes"),
+            "impacts": ["수급"],
+            "paths": ["수급"],
+            "sectors": ["한국 기업/산업 뉴스"],
+        }
+        core = compact.verified_alert_core(alert, title)
+        if core != expected_core:
+            errors.append(f"complete core fallback mismatch: title={title} core={core}")
+            continue
+        if not compact.core_sentence_is_complete(core, 100):
+            errors.append(f"complete core fallback did not end as a sentence: {core}")
+        if compact.core_has_ui_garbage(core):
+            errors.append(f"publisher UI leaked into fallback core: {core}")
+        block = (
+            f"1) {title}\n- 핵심: {core}\n"
+            '- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'
+        )
+        block_errors = compact.compact_alert_block_errors(block)
+        if block_errors:
+            errors.append(f"complete core fallback failed output guard: {block_errors}")
+
+
 
 REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
     "gamejoa_preopen_news_radar_seen.json",
@@ -424,6 +479,7 @@ def main() -> int:
 
     now = production.base.kst_now()
     assert_compact_live_output_contract(compact, now, errors)
+    assert_complete_core_recovery_contract(compact, now, errors)
     assert_current_high_impact_article_coverage(production, compact, now, errors)
     china_mofcom_row = {
         "source": "Trusted news 중국 상무부 수출통제/관세",
