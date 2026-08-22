@@ -1114,14 +1114,15 @@ def main() -> int:
         "미국이 AI 데이터센터용 광반도체 개발비 지원을 확대…",
         limit=radar.GAMEJOA_CORE_MAX_CHARS,
     )
-    if "…" in repaired_core or "..." in repaired_core:
-        failures.append(f"compact_core_ellipsis_not_repaired={repaired_core}")
-    if radar.compact_alert_block_errors(
+    if repaired_core:
+        failures.append(f"truncated_compact_core_was_fabricated={repaired_core}")
+    rejected_fragment_errors = radar.compact_alert_block_errors(
         "1) [상 | 확정] 미국, AI 광반도체 개발 지원 확대\n"
-        f"- 핵심: {repaired_core}\n"
+        "- 핵심: 미국이 AI 데이터센터용 광반도체 개발비 지원을 확대…\n"
         "- 출처: 원문 뉴스보기"
-    ):
-        failures.append(f"repaired_compact_core_rejected={repaired_core}")
+    )
+    if "truncated_core" not in rejected_fragment_errors:
+        failures.append(f"truncated_compact_core_not_rejected={rejected_fragment_errors}")
 
     malformed_errors = radar.compact_alert_block_errors(
         "1) [상 | 확정] 미국, AI 광반도체 개발 지원 확대\n"
