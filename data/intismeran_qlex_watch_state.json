@@ -98,13 +98,7 @@
   "trials": {
     "NCT05933577": {
       "nct": "NCT05933577",
-      "overallStatus": "ACTIVE_NOT_RECRUITING",
-      "enrollment": 1089,
-      "enrollmentType": "ESTIMATED",
-      "startDate": "2023-07-19",
-      "primaryCompletion": "2029-10-26",
-      "completion": "2030-09-26",
-      "lastUpdate": "2023-07-06"
+      "error": "<urlopen error [Errno 101] Network is unreachable>"
     },
     "NCT07513376": {
       "nct": "NCT07513376",
@@ -118,7 +112,7 @@
     }
   },
   "initialized_at_kst": "2026-08-20T00:38:52+09:00",
-  "last_check_kst": "2026-08-23T00:19:41+09:00",
+  "last_check_kst": "2026-08-23T00:46:45+09:00",
   "seen_event_keys": [
     "886e806a7045faf095775b6f"
   ]
