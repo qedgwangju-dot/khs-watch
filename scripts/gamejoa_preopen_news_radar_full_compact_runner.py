@@ -6063,6 +6063,33 @@ def canonical_title_fact(title: object) -> str:
     return ""
 
 
+def single_stock_leverage_core(alert: dict, title: str) -> str:
+    """Keep both rule amounts and the effective date inside the compact core."""
+    source = " ".join(
+        str(alert.get(key) or "")
+        for key in ("source_body", "source_abstract", "summary", "telegram_core_fact", "policy_plain_summary")
+    )
+    if not (
+        alert.get("korean_business_kind") == "single_stock_leverage_rule"
+        or ("단일종목" in source and "기본예탁금" in source)
+    ):
+        return ""
+    amount_match = re.search(
+        r"기본예탁금(?:이|을)?\s*(\d+(?:,\d+)?만원)\s*(?:에서|→)\s*(\d+(?:,\d+)?만원)",
+        source,
+    )
+    date_match = re.search(
+        r"(\d{1,2}일(?:부터)?)\s*(?:동시|시행|적용|부터)",
+        source,
+    )
+    if not amount_match or not date_match:
+        return ""
+    return (
+        "삼성전자·SK하이닉스 단일종목 레버리지 ETF·ETN 기본예탁금이 "
+        f"{date_match.group(1)} {amount_match.group(1)}에서 {amount_match.group(2)}으로 상향됩니다."
+    )
+
+
 def verified_alert_core(alert: dict, title: str) -> str:
     """Recover a source-backed complete core or return an empty value for exclusion."""
     is_business = bool(alert.get("korean_business_news"))
@@ -6070,6 +6097,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
         alert.get("source_title") or alert.get("original_news") or title
     )
     candidates: list[str] = []
+    rule_core = single_stock_leverage_core(alert, title)
+    if core_sentence_is_complete(rule_core):
+        return rule_core
 
     if is_business:
         candidates.append(str(alert.get("telegram_core_fact") or ""))
