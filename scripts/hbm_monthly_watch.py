@@ -18,7 +18,7 @@ OUT.mkdir(exist_ok=True)
 
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 
-# HSK 8542323000 = 복합구조칩 집적회로. HBM 전용 세번은 아니므로
+# HSK 8542323000 = 복합구조칩 집적회로. HBM 전용 세번이 아니므로
 # 항상 'HBM 대용지표'로만 표현한다.
 HSK = "8542323000"
 KSTAT_ITEM_URL = (
@@ -33,32 +33,28 @@ KSTAT_REGION_ITEM_URL = "https://stat.kita.net/stat/kts/prod/ProdItemImpExpList.
 KSTAT_REGION_COUNTRY_URL = "https://stat.kita.net/stat/kts/prod/ProdCtrImpExpList.screen"
 KSTAT_ITEM_COUNTRY_URL = "https://stat.kita.net/stat/kts/pum/PumCtrImpExpList.screen"
 
+# Bernstein 2026-08 자료의 삼성전자 회귀식.
+# x = 충남→대만+말레이시아 복합구조칩 메모리 월 수출액(백만달러)
+# y = 삼성전자 해당 분기 HBM 매출 추정치(백만달러)
+BERNSTEIN_SLOPE = 5.5459
+BERNSTEIN_INTERCEPT = -240.89
+BERNSTEIN_MODEL_LABEL = "Bernstein 2026-08 회귀식"
+
 # 공개 웹에서 월별 MCP/HBM 수출 차트를 꾸준히 올리는 보조 모니터.
-# 숫자의 공식 원천은 K-stat/관세청이며, 이 채널은 공개 차트 발견용으로만 사용한다.
+# 숫자의 공식 원천은 K-stat/관세청이며, 이 채널은 차트·수치 발견용 보조 출처다.
 PUBLIC_CHANNEL = "https://t.me/s/Brain_And_Body_Research"
 CHANNEL_QUERIES = [
     PUBLIC_CHANNEL,
     PUBLIC_CHANNEL + "?q=" + urllib.parse.quote("복합구조칩 집적회로"),
     PUBLIC_CHANNEL + "?q=" + urllib.parse.quote("HBM"),
     PUBLIC_CHANNEL + "?q=" + urllib.parse.quote("MCP"),
+    PUBLIC_CHANNEL + "?q=" + urllib.parse.quote("충남 아산"),
+    PUBLIC_CHANNEL + "?q=" + urllib.parse.quote("충북 청주 이천"),
 ]
 
-PRIMARY = (
-    "복합구조칩 집적회로",
-    "mcp",
-    "hbm",
-)
+PRIMARY = ("복합구조칩 집적회로", "mcp", "hbm")
 SECONDARY = (
-    "삼성전자",
-    "sk하이닉스",
-    "하이닉스",
-    "충남",
-    "아산",
-    "충북",
-    "청주",
-    "이천",
-    "대만",
-    "말레이시아",
+    "삼성전자", "sk하이닉스", "하이닉스", "전국", "충남", "아산", "충북", "청주", "이천", "대만", "말레이시아",
 )
 
 
@@ -113,7 +109,7 @@ def extract_public_posts() -> tuple[list[dict], list[str]]:
                     "id": post_id,
                     "data_post": data_post,
                     "url": post_url,
-                    "text": text[:1400],
+                    "text": text[:1800],
                     "published_at_kst": published,
                     "published_month": published_month,
                 }
@@ -124,12 +120,7 @@ def extract_public_posts() -> tuple[list[dict], list[str]]:
 
 
 def probe_kstat() -> dict:
-    result = {
-        "ok": False,
-        "update_month": "",
-        "item_page_ok": False,
-        "errors": [],
-    }
+    result = {"ok": False, "update_month": "", "item_page_ok": False, "errors": []}
     try:
         html = fetch(KSTAT_MAIN_URL)
         text = clean(BeautifulSoup(html, "html.parser").get_text(" ", strip=True))
@@ -163,43 +154,191 @@ def write_json(path: pathlib.Path, obj: dict) -> None:
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def post_bucket(text: str) -> str:
+    low = text.lower()
+    if "삼성전자" in low or "충남" in low or "아산" in low:
+        return "samsung"
+    if "sk하이닉스" in low or "하이닉스" in low or "충북" in low or "청주" in low or "이천" in low:
+        return "skhynix"
+    if "전국" in low:
+        return "overall"
+    return "other"
+
+
+def pct_hits(text: str) -> dict[str, float]:
+    out: dict[str, float] = {}
+    patterns = {
+        "mom": [r"MoM\s*([+-]?\d+(?:\.\d+)?)%", r"전월\s*대비\s*([+-]?\d+(?:\.\d+)?)%"],
+        "yoy": [r"YoY\s*([+-]?\d+(?:\.\d+)?)%", r"전년\s*(?:동월|동기)?\s*대비\s*([+-]?\d+(?:\.\d+)?)%"],
+        "qoq_proxy": [r"(?:4월|3개월\s*전)\s*대비\s*([+-]?\d+(?:\.\d+)?)%", r"QoQ\s*([+-]?\d+(?:\.\d+)?)%"],
+        "unit_mom": [r"(?:중량당|단위\s*중량당|수출단가|단위당)\s*(?:가치|단가)?[^%]{0,40}?전월\s*대비\s*([+-]?\d+(?:\.\d+)?)%"],
+    }
+    for key, pats in patterns.items():
+        for pat in pats:
+            m = re.search(pat, text, re.I)
+            if m:
+                try:
+                    out[key] = float(m.group(1))
+                    break
+                except Exception:
+                    pass
+    return out
+
+
+def usd_million_hits(text: str) -> list[float]:
+    values: list[float] = []
+    patterns = [
+        (r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*[Bb](?:n|illion)?", 1000.0),
+        (r"([0-9]+(?:\.[0-9]+)?)\s*(?:billion|십억)\s*(?:미국\s*)?달러", 1000.0),
+        (r"([0-9]+(?:\.[0-9]+)?)\s*억\s*달러", 100.0),
+        (r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*[Mm](?:n|illion)?", 1.0),
+    ]
+    for pat, mult in patterns:
+        for m in re.finditer(pat, text, re.I):
+            try:
+                values.append(float(m.group(1)) * mult)
+            except Exception:
+                pass
+    return values
+
+
+def summarize_bucket(posts: list[dict], bucket: str) -> dict:
+    selected = [p for p in posts if post_bucket(p.get("text") or "") == bucket]
+    joined = " ".join(p.get("text") or "" for p in selected)
+    pcts = pct_hits(joined)
+    usd_values = usd_million_hits(joined)
+    return {
+        "posts": selected,
+        "mom": pcts.get("mom"),
+        "yoy": pcts.get("yoy"),
+        "qoq_proxy": pcts.get("qoq_proxy"),
+        "unit_mom": pcts.get("unit_mom"),
+        "usd_mn_candidates": usd_values,
+    }
+
+
+def fmt_pct(v: float | None) -> str:
+    if v is None:
+        return "자동 추출 불가"
+    return f"{v:+.2f}%".replace("+.00%", "%").replace("-.00%", "%")
+
+
+def fmt_usd_mn(v: float | None) -> str:
+    if v is None:
+        return "자동 추출 불가"
+    if abs(v) >= 1000:
+        return f"${v/1000:.2f}B"
+    return f"${v:.0f}M"
+
+
+def choose_samsung_x(summary: dict) -> float | None:
+    # 삼성 버킷 안에서 발견된 달러 금액 중 회귀식 입력으로 쓸 수 있는 후보를 택한다.
+    # 정확한 지역×국가 합산인지 텍스트로 확인할 수 없으면 단정하지 않기 위해
+    # 후보가 하나일 때만 자동 계산한다.
+    vals = [v for v in summary.get("usd_mn_candidates") or [] if v > 0]
+    unique = sorted({round(v, 6) for v in vals})
+    if len(unique) == 1:
+        return unique[0]
+    return None
+
+
+def bernstein_estimate(x_mn: float | None) -> float | None:
+    if x_mn is None:
+        return None
+    return BERNSTEIN_SLOPE * x_mn + BERNSTEIN_INTERCEPT
+
+
+def source_lines(posts: list[dict], limit: int = 8) -> list[str]:
+    out: list[str] = []
+    for p in posts[-limit:]:
+        text = p.get("text") or ""
+        if len(text) > 260:
+            text = text[:257].rstrip() + "..."
+        out += [f"• {text}", f"  원문: {p.get('url')}"]
+    return out
+
+
 def build_alert(now: datetime, report_month: str, posts: list[dict], kstat: dict) -> str:
-    recent = [p for p in posts if p.get("published_month") == report_month]
-    # 최신 공개 차트 묶음을 우선 표시한다.
-    recent = recent[-12:]
+    recent = [p for p in posts if p.get("published_month") == report_month][-20:]
+    overall = summarize_bucket(recent, "overall")
+    samsung = summarize_bucket(recent, "samsung")
+    skhynix = summarize_bucket(recent, "skhynix")
+
+    samsung_x = choose_samsung_x(samsung)
+    samsung_y = bernstein_estimate(samsung_x)
+
     lines = [
         "📊 HBM 월간 수출 대용지표 업데이트",
         "",
         f"확인 시각: {now.isoformat(timespec='seconds')}",
         f"공개자료 게시월: {report_month}",
         f"추적 세번: HSK {HSK} 복합구조칩 집적회로",
-        "주의: 이 세번에는 HBM 외 메모리도 포함될 수 있어 HBM 확정 매출이 아니라 출하 대용지표입니다.",
+        "주의: HSK 8542323000은 HBM 전용 통계가 아니며 MCP·기타 복합 메모리가 포함될 수 있습니다. 아래 숫자는 HBM 확정 매출이 아니라 출하 대용지표입니다.",
         "",
-        "이번 달 새 공개 차트",
+        "1) 전국 HBM 대용지표",
+        f"• 전월 대비: {fmt_pct(overall.get('mom'))}",
+        f"• 3개월 전/분기 대응월 대비: {fmt_pct(overall.get('qoq_proxy'))}",
+        f"• 전년 동월 대비: {fmt_pct(overall.get('yoy'))}",
+        "• 해석: 삼성 개별 지표가 강해도 전국 지표가 약하면 '삼성 점유율 이동'과 '전체 HBM 수요 증가'를 구분합니다.",
+        "",
+        "2) 삼성전자 HBM 대용지표 — 충남/아산 중심",
+        f"• 수출액 후보: {fmt_usd_mn(samsung_x)}",
+        f"• 전월 대비: {fmt_pct(samsung.get('mom'))}",
+        f"• 3개월 전/분기 대응월 대비: {fmt_pct(samsung.get('qoq_proxy'))}",
+        f"• 전년 동월 대비: {fmt_pct(samsung.get('yoy'))}",
+        f"• 중량당 가치/수출단가 전월 대비: {fmt_pct(samsung.get('unit_mom'))}",
+        "",
+        "3) Bernstein 회귀식 검산 — 삼성전자",
+        f"• 식: y = {BERNSTEIN_SLOPE}x {BERNSTEIN_INTERCEPT:+.2f}",
+        "• x 정의: 충남→대만+말레이시아 복합구조칩 메모리 월 수출액(백만달러)",
     ]
-    for p in recent:
-        text = p["text"]
-        if len(text) > 360:
-            text = text[:357].rstrip() + "..."
-        lines += [f"• {text}", f"  원문: {p['url']}"]
+
+    if samsung_x is not None and samsung_y is not None:
+        lines += [
+            f"• 입력 x = {samsung_x:,.0f}M달러",
+            f"• 계산 y = {samsung_y:,.0f}M달러 ≈ {samsung_y/1000:.2f}B달러",
+            "• 성격: 회사 가이던스가 아니라 Bernstein 역사적 상관관계 기반 보조 추정치",
+        ]
+    else:
+        lines += [
+            "• 입력 x: 자동 확정 불가 — 충남→대만+말레이시아 합산 수출액을 텍스트에서 단일 값으로 식별하지 못해 회귀값을 임의 계산하지 않음",
+            "• 성격: 정확한 x가 확인되는 달에만 회귀값 계산",
+        ]
 
     lines += [
         "",
-        "공식 원천 확인",
+        "4) SK하이닉스 HBM 대용지표 — 충북/청주 + 경기/이천",
+        f"• 전월 대비: {fmt_pct(skhynix.get('mom'))}",
+        f"• 3개월 전/분기 대응월 대비: {fmt_pct(skhynix.get('qoq_proxy'))}",
+        f"• 전년 동월 대비: {fmt_pct(skhynix.get('yoy'))}",
+        f"• 중량당 가치/수출단가 전월 대비: {fmt_pct(skhynix.get('unit_mom'))}",
+        "• Rubin향 선적 지연 등 원인은 기사·회사자료로 별도 확인되기 전까지 '가능성'으로만 표시",
+        "",
+        "5) 비교 판정",
+        "• 삼성 수출 증가만으로 HBM 전체 수요 증가를 단정하지 않음",
+        "• 전국 대용지표, 삼성, SK하이닉스를 반드시 같은 달 기준으로 나란히 비교",
+        "• 단일 월 점유율 역전은 확정하지 않고 최소 다음 달 지속성까지 확인",
+        "• 중량당 가치 상승은 같은 규격 가격 상승과 제품 혼합(HBM4 비중 상승)을 구분",
+        "",
+        "6) 공식 원천·보조 원천",
         f"• K-stat 업데이트 표기: {kstat.get('update_month') or '자동 확인 불가'}",
-        f"• HSK {HSK} 직접 페이지: {KSTAT_ITEM_URL}",
+        f"• K-stat HSK 직접 페이지: {KSTAT_ITEM_URL}",
         f"• 지자체×품목: {KSTAT_REGION_ITEM_URL}",
         f"• 지자체×국가: {KSTAT_REGION_COUNTRY_URL}",
         f"• 품목×국가: {KSTAT_ITEM_COUNTRY_URL}",
+        "• Brain and Body Research 공개 차트는 숫자 발견·교차확인용 보조 출처로만 사용",
         "",
-        "체크포인트",
-        "• 삼성전자: 충남/아산 관련 MCP 수출과 대만·말레이시아향 흐름",
-        "• SK하이닉스: 충북/청주·경기/이천 관련 MCP 수출 흐름",
-        "• 단일 월만으로 HBM 점유율 역전을 확정하지 않고 다음 달 지속성을 확인",
-        "• Bernstein식 분기 매출 추정은 공개된 동일 회귀식·입력 숫자가 확인될 때만 별도 계산",
+        "7) 이번 달 원문 근거",
     ]
+    lines += source_lines(recent, limit=10) or ["• 관련 공개 텍스트 없음"]
+
     if kstat.get("errors"):
         lines += ["", "⚠️ 공식 페이지 자동 확인 일부 실패", " | ".join(kstat["errors"][:3])]
+
+    lines += [
+        "",
+        "핵심: 회귀식 숫자와 전국 지표를 반드시 같이 본다. 예를 들어 삼성 x가 강해 회귀 매출 추정치가 높아져도 전국 HBM 대용지표가 전월 대비 감소하면 '전체 수요 급증'이 아니라 '삼성의 제품혼합·점유율 이동' 가능성을 우선 점검한다.",
+    ]
     return "\n".join(lines).strip() + "\n"
 
 
@@ -212,7 +351,6 @@ def main() -> None:
     posts, post_errors = extract_public_posts()
     kstat = probe_kstat()
 
-    # 너무 오래된 게시물은 상태 크기를 줄이기 위해 120일 이내만 보존한다.
     cutoff = now - timedelta(days=120)
     kept_posts = []
     for p in posts:
@@ -238,6 +376,13 @@ def main() -> None:
         "last_sent_month": current_month if should_alert else (current_month if first_run else last_sent_month),
         "latest_kstat_update_month": kstat.get("update_month") or "",
         "recent_posts": kept_posts,
+        "bernstein_model": {
+            "label": BERNSTEIN_MODEL_LABEL,
+            "slope": BERNSTEIN_SLOPE,
+            "intercept": BERNSTEIN_INTERCEPT,
+            "x_definition": "충남→대만+말레이시아 복합구조칩 메모리 월 수출액(백만달러)",
+            "y_definition": "삼성전자 해당 분기 HBM 매출 보조 추정치(백만달러)",
+        },
         "source_errors": post_errors + list(kstat.get("errors") or []),
     }
     write_json(OUT / "hbm_monthly_pending_state.json", pending)
@@ -262,6 +407,7 @@ def main() -> None:
         f"- current_month_relevant_posts: {len(current_month_posts)}",
         f"- kstat_update_month: {kstat.get('update_month') or 'unknown'}",
         f"- should_alert: {str(should_alert).lower()}",
+        f"- bernstein_formula: y={BERNSTEIN_SLOPE}x{BERNSTEIN_INTERCEPT:+.2f}",
         f"- source_errors: {len(post_errors) + len(kstat.get('errors') or [])}",
     ]
     for e in (post_errors + list(kstat.get("errors") or []))[:8]:
