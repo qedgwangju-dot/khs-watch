@@ -1,0 +1,86 @@
+name: KPX 3rd ESS Central Contract Market Telegram Watch
+
+on:
+  push:
+    paths:
+      - ".github/workflows/kpx-ess-3rd-telegram-watch.yml"
+      - "scripts/kpx_ess_3rd_watch.py"
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kpx-ess-3rd-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+      KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      GLOBAL_RATES_TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      GLOBAL_RATES_TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check KPX 3rd ESS notice and notify Telegram
+        run: python scripts/kpx_ess_3rd_watch.py
+
+      - name: Publish watcher status
+        if: always()
+        run: |
+          if [ -f out/kpx_ess_3rd_watch_status.md ]; then
+            cat out/kpx_ess_3rd_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "제3차 ESS 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Commit watcher state
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/kpx_ess_3rd_watch_state.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "KPX ESS watcher state unchanged"
+          else
+            git commit -m "Update KPX 3rd ESS watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kpx-ess-3rd-watch-${{ github.run_id }}
+          path: |
+            out/kpx_ess_3rd_watch_status.md
+            out/kpx_ess_3rd_telegram_confirmed.json
+            data/kpx_ess_3rd_watch_state.json
+          if-no-files-found: ignore
+          retention-days: 14
