@@ -40,6 +40,11 @@ BERNSTEIN_SLOPE = 5.5459
 BERNSTEIN_INTERCEPT = -240.89
 BERNSTEIN_MODEL_LABEL = "Bernstein 2026-08 회귀식"
 
+# 원화 환산은 실행 시점의 최신 공개 일일 기준환율을 사용한다.
+# Frankfurter v2는 중앙은행 환율 데이터를 모아 제공하며 API key가 필요 없다.
+FX_URL = "https://api.frankfurter.dev/v2/rate/USD/KRW"
+FX_SOURCE = "Frankfurter v2 중앙은행 기준환율 집계"
+
 # 공개 웹에서 월별 MCP/HBM 수출 차트를 꾸준히 올리는 보조 모니터.
 # 숫자의 공식 원천은 K-stat/관세청이며, 이 채널은 차트·수치 발견용 보조 출처다.
 PUBLIC_CHANNEL = "https://t.me/s/Brain_And_Body_Research"
@@ -54,7 +59,8 @@ CHANNEL_QUERIES = [
 
 PRIMARY = ("복합구조칩 집적회로", "mcp", "hbm")
 SECONDARY = (
-    "삼성전자", "sk하이닉스", "하이닉스", "전국", "충남", "아산", "충북", "청주", "이천", "대만", "말레이시아",
+    "삼성전자", "sk하이닉스", "하이닉스", "전국", "충남", "아산",
+    "충북", "청주", "이천", "대만", "말레이시아",
 )
 
 
@@ -115,8 +121,7 @@ def extract_public_posts() -> tuple[list[dict], list[str]]:
                 }
         except Exception as e:
             errors.append(f"{url}: {type(e).__name__}: {e}")
-    rows = sorted(posts.values(), key=lambda x: (x.get("published_at_kst") or "", x["data_post"]))
-    return rows, errors
+    return sorted(posts.values(), key=lambda x: (x.get("published_at_kst") or "", x["data_post"])), errors
 
 
 def probe_kstat() -> dict:
@@ -138,6 +143,20 @@ def probe_kstat() -> dict:
         result["item_page_ok"] = HSK in text or "복합구조칩 집적회로" in text
     except Exception as e:
         result["errors"].append(f"K-stat HSK 페이지: {type(e).__name__}: {e}")
+    return result
+
+
+def fetch_usdkrw() -> dict:
+    result = {"rate": None, "date": "", "source": FX_SOURCE, "error": ""}
+    try:
+        obj = json.loads(fetch(FX_URL, timeout=20))
+        rate = float(obj.get("rate"))
+        if rate <= 0:
+            raise ValueError("non-positive USD/KRW rate")
+        result["rate"] = rate
+        result["date"] = str(obj.get("date") or "")
+    except Exception as e:
+        result["error"] = f"USD/KRW 환율 조회 실패: {type(e).__name__}: {e}"
     return result
 
 
@@ -206,46 +225,51 @@ def summarize_bucket(posts: list[dict], bucket: str) -> dict:
     selected = [p for p in posts if post_bucket(p.get("text") or "") == bucket]
     joined = " ".join(p.get("text") or "" for p in selected)
     pcts = pct_hits(joined)
-    usd_values = usd_million_hits(joined)
     return {
         "posts": selected,
         "mom": pcts.get("mom"),
         "yoy": pcts.get("yoy"),
         "qoq_proxy": pcts.get("qoq_proxy"),
         "unit_mom": pcts.get("unit_mom"),
-        "usd_mn_candidates": usd_values,
+        "usd_mn_candidates": usd_million_hits(joined),
     }
 
 
 def fmt_pct(v: float | None) -> str:
-    if v is None:
-        return "자동 추출 불가"
-    return f"{v:+.2f}%".replace("+.00%", "%").replace("-.00%", "%")
+    return "자동 추출 불가" if v is None else f"{v:+.2f}%"
 
 
 def fmt_usd_mn(v: float | None) -> str:
     if v is None:
         return "자동 추출 불가"
-    if abs(v) >= 1000:
-        return f"${v/1000:.2f}B"
-    return f"${v:.0f}M"
+    return f"${v/1000:.2f}B" if abs(v) >= 1000 else f"${v:.0f}M"
+
+
+def fmt_krw_from_usd_mn(v_mn: float | None, rate: float | None) -> str:
+    if v_mn is None or rate is None:
+        return "원화 환산 불가"
+    won = v_mn * 1_000_000 * rate
+    if abs(won) >= 1_000_000_000_000:
+        return f"약 {won/1_000_000_000_000:.2f}조원"
+    if abs(won) >= 100_000_000:
+        return f"약 {won/100_000_000:,.0f}억원"
+    return f"약 {won:,.0f}원"
+
+
+def fmt_usd_krw(v_mn: float | None, rate: float | None) -> str:
+    if v_mn is None:
+        return "자동 추출 불가"
+    return f"{fmt_usd_mn(v_mn)} ({fmt_krw_from_usd_mn(v_mn, rate)})"
 
 
 def choose_samsung_x(summary: dict) -> float | None:
-    # 삼성 버킷 안에서 발견된 달러 금액 중 회귀식 입력으로 쓸 수 있는 후보를 택한다.
-    # 정확한 지역×국가 합산인지 텍스트로 확인할 수 없으면 단정하지 않기 위해
-    # 후보가 하나일 때만 자동 계산한다.
     vals = [v for v in summary.get("usd_mn_candidates") or [] if v > 0]
     unique = sorted({round(v, 6) for v in vals})
-    if len(unique) == 1:
-        return unique[0]
-    return None
+    return unique[0] if len(unique) == 1 else None
 
 
 def bernstein_estimate(x_mn: float | None) -> float | None:
-    if x_mn is None:
-        return None
-    return BERNSTEIN_SLOPE * x_mn + BERNSTEIN_INTERCEPT
+    return None if x_mn is None else BERNSTEIN_SLOPE * x_mn + BERNSTEIN_INTERCEPT
 
 
 def source_lines(posts: list[dict], limit: int = 8) -> list[str]:
@@ -258,14 +282,28 @@ def source_lines(posts: list[dict], limit: int = 8) -> list[str]:
     return out
 
 
-def build_alert(now: datetime, report_month: str, posts: list[dict], kstat: dict) -> str:
+def all_usd_values(posts: list[dict]) -> list[float]:
+    vals: list[float] = []
+    for p in posts:
+        vals.extend(usd_million_hits(p.get("text") or ""))
+    return sorted({round(v, 6) for v in vals if v > 0})
+
+
+def build_alert(now: datetime, report_month: str, posts: list[dict], kstat: dict, fx: dict) -> str:
     recent = [p for p in posts if p.get("published_month") == report_month][-20:]
     overall = summarize_bucket(recent, "overall")
     samsung = summarize_bucket(recent, "samsung")
     skhynix = summarize_bucket(recent, "skhynix")
+    rate = fx.get("rate")
 
     samsung_x = choose_samsung_x(samsung)
     samsung_y = bernstein_estimate(samsung_x)
+
+    fx_line = (
+        f"원화 환산 환율: 1달러 = {rate:,.2f}원 ({fx.get('source')}, 기준일 {fx.get('date') or '미표시'})"
+        if rate is not None
+        else f"원화 환산 환율: 조회 실패 — {fx.get('error') or '원인 미상'}"
+    )
 
     lines = [
         "📊 HBM 월간 수출 대용지표 업데이트",
@@ -273,6 +311,7 @@ def build_alert(now: datetime, report_month: str, posts: list[dict], kstat: dict
         f"확인 시각: {now.isoformat(timespec='seconds')}",
         f"공개자료 게시월: {report_month}",
         f"추적 세번: HSK {HSK} 복합구조칩 집적회로",
+        fx_line,
         "주의: HSK 8542323000은 HBM 전용 통계가 아니며 MCP·기타 복합 메모리가 포함될 수 있습니다. 아래 숫자는 HBM 확정 매출이 아니라 출하 대용지표입니다.",
         "",
         "1) 전국 HBM 대용지표",
@@ -282,7 +321,7 @@ def build_alert(now: datetime, report_month: str, posts: list[dict], kstat: dict
         "• 해석: 삼성 개별 지표가 강해도 전국 지표가 약하면 '삼성 점유율 이동'과 '전체 HBM 수요 증가'를 구분합니다.",
         "",
         "2) 삼성전자 HBM 대용지표 — 충남/아산 중심",
-        f"• 수출액 후보: {fmt_usd_mn(samsung_x)}",
+        f"• 수출액 후보: {fmt_usd_krw(samsung_x, rate)}",
         f"• 전월 대비: {fmt_pct(samsung.get('mom'))}",
         f"• 3개월 전/분기 대응월 대비: {fmt_pct(samsung.get('qoq_proxy'))}",
         f"• 전년 동월 대비: {fmt_pct(samsung.get('yoy'))}",
@@ -295,8 +334,8 @@ def build_alert(now: datetime, report_month: str, posts: list[dict], kstat: dict
 
     if samsung_x is not None and samsung_y is not None:
         lines += [
-            f"• 입력 x = {samsung_x:,.0f}M달러",
-            f"• 계산 y = {samsung_y:,.0f}M달러 ≈ {samsung_y/1000:.2f}B달러",
+            f"• 입력 x = {samsung_x:,.0f}M달러 = {fmt_krw_from_usd_mn(samsung_x, rate)}",
+            f"• 계산 y = {samsung_y:,.0f}M달러 ≈ ${samsung_y/1000:.2f}B = {fmt_krw_from_usd_mn(samsung_y, rate)}",
             "• 성격: 회사 가이던스가 아니라 Bernstein 역사적 상관관계 기반 보조 추정치",
         ]
     else:
@@ -320,24 +359,42 @@ def build_alert(now: datetime, report_month: str, posts: list[dict], kstat: dict
         "• 단일 월 점유율 역전은 확정하지 않고 최소 다음 달 지속성까지 확인",
         "• 중량당 가치 상승은 같은 규격 가격 상승과 제품 혼합(HBM4 비중 상승)을 구분",
         "",
-        "6) 공식 원천·보조 원천",
+        "6) 달러 금액 원화 환산표",
+    ]
+
+    values = all_usd_values(recent)
+    if samsung_y is not None:
+        values = sorted(set(values + [round(samsung_y, 6)]))
+    if values:
+        for v in values[:15]:
+            lines.append(f"• {fmt_usd_mn(v)} = {fmt_krw_from_usd_mn(v, rate)}")
+    else:
+        lines.append("• 이번 달 공개 텍스트에서 자동 추출된 달러 금액 없음")
+
+    lines += [
+        "",
+        "7) 공식 원천·보조 원천",
         f"• K-stat 업데이트 표기: {kstat.get('update_month') or '자동 확인 불가'}",
         f"• K-stat HSK 직접 페이지: {KSTAT_ITEM_URL}",
         f"• 지자체×품목: {KSTAT_REGION_ITEM_URL}",
         f"• 지자체×국가: {KSTAT_REGION_COUNTRY_URL}",
         f"• 품목×국가: {KSTAT_ITEM_COUNTRY_URL}",
+        f"• 원화 환산: {fx.get('source')} / 기준일 {fx.get('date') or '자동 확인 불가'}",
         "• Brain and Body Research 공개 차트는 숫자 발견·교차확인용 보조 출처로만 사용",
         "",
-        "7) 이번 달 원문 근거",
+        "8) 이번 달 원문 근거",
     ]
     lines += source_lines(recent, limit=10) or ["• 관련 공개 텍스트 없음"]
 
-    if kstat.get("errors"):
-        lines += ["", "⚠️ 공식 페이지 자동 확인 일부 실패", " | ".join(kstat["errors"][:3])]
+    errors = list(kstat.get("errors") or [])
+    if fx.get("error"):
+        errors.append(fx["error"])
+    if errors:
+        lines += ["", "⚠️ 자동 확인 일부 실패", " | ".join(errors[:4])]
 
     lines += [
         "",
-        "핵심: 회귀식 숫자와 전국 지표를 반드시 같이 본다. 예를 들어 삼성 x가 강해 회귀 매출 추정치가 높아져도 전국 HBM 대용지표가 전월 대비 감소하면 '전체 수요 급증'이 아니라 '삼성의 제품혼합·점유율 이동' 가능성을 우선 점검한다.",
+        "핵심: 회귀식 숫자와 전국 지표를 반드시 같이 보고, 달러 금액은 같은 보고서 안에서 기준 환율·기준일을 명시해 원화로 함께 환산합니다.",
     ]
     return "\n".join(lines).strip() + "\n"
 
@@ -350,6 +407,7 @@ def main() -> None:
 
     posts, post_errors = extract_public_posts()
     kstat = probe_kstat()
+    fx = fetch_usdkrw()
 
     cutoff = now - timedelta(days=120)
     kept_posts = []
@@ -371,11 +429,16 @@ def main() -> None:
         and current_month != last_sent_month
     )
 
+    source_errors = post_errors + list(kstat.get("errors") or [])
+    if fx.get("error"):
+        source_errors.append(fx["error"])
+
     pending = {
         "updated_at_kst": now_iso,
         "last_sent_month": current_month if should_alert else (current_month if first_run else last_sent_month),
         "latest_kstat_update_month": kstat.get("update_month") or "",
         "recent_posts": kept_posts,
+        "usdkrw": fx,
         "bernstein_model": {
             "label": BERNSTEIN_MODEL_LABEL,
             "slope": BERNSTEIN_SLOPE,
@@ -383,7 +446,7 @@ def main() -> None:
             "x_definition": "충남→대만+말레이시아 복합구조칩 메모리 월 수출액(백만달러)",
             "y_definition": "삼성전자 해당 분기 HBM 매출 보조 추정치(백만달러)",
         },
-        "source_errors": post_errors + list(kstat.get("errors") or []),
+        "source_errors": source_errors,
     }
     write_json(OUT / "hbm_monthly_pending_state.json", pending)
 
@@ -394,9 +457,11 @@ def main() -> None:
         )
 
     if should_alert:
-        alert = build_alert(now, current_month, kept_posts, kstat)
-        (OUT / "hbm_monthly_alert.md").write_text(alert, encoding="utf-8")
+        (OUT / "hbm_monthly_alert.md").write_text(
+            build_alert(now, current_month, kept_posts, kstat, fx), encoding="utf-8"
+        )
 
+    rate = fx.get("rate")
     status = [
         "# HBM Monthly Export Proxy Watch",
         f"- checked_at_kst: {now_iso}",
@@ -408,9 +473,11 @@ def main() -> None:
         f"- kstat_update_month: {kstat.get('update_month') or 'unknown'}",
         f"- should_alert: {str(should_alert).lower()}",
         f"- bernstein_formula: y={BERNSTEIN_SLOPE}x{BERNSTEIN_INTERCEPT:+.2f}",
-        f"- source_errors: {len(post_errors) + len(kstat.get('errors') or [])}",
+        f"- usdkrw: {rate if rate is not None else 'unavailable'}",
+        f"- usdkrw_date: {fx.get('date') or 'unknown'}",
+        f"- source_errors: {len(source_errors)}",
     ]
-    for e in (post_errors + list(kstat.get("errors") or []))[:8]:
+    for e in source_errors[:8]:
         status.append(f"  - {e}")
     (OUT / "hbm_monthly_status.md").write_text("\n".join(status) + "\n", encoding="utf-8")
 
