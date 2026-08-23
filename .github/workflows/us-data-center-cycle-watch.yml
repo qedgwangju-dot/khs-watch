@@ -117,12 +117,13 @@ jobs:
         run: |
           mkdir -p out
           cat > out/us_data_center_cycle_connection_test.txt <<'EOF'
-          [미국 데이터센터 건설 사이클 감시] Telegram 연결 시험
+          [미국 데이터센터 건설 사이클 감시] 텔레그램 연결 시험
 
           @hs8879887988798879_bot 연결 정상입니다.
-          - U.S. Census Bureau 데이터센터 건설 지출 감시
-          - Dodge Construction Network 착공 자료 감시
+          - 미국 인구조사국 데이터센터 건설 지출 감시
+          - Dodge Construction Network 데이터센터 착공 자료 감시
           - 매시간 웹 확인, 새 월간 데이터·수정치·새 착공 발표가 있을 때만 알림
+          - 알림 본문은 한국어로 전달하며 고유 프로젝트명만 원문 식별명을 유지
           - 기존 GitHub Actions 감시는 수정하지 않고 별도 워크플로로 동작
           EOF
 
