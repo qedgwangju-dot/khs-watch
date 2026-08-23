@@ -31,6 +31,13 @@ SEARCH_NAMES = {
     "반도체 노조·성과급·가동 리스크",
     "트럼프 자산공시·대형 주식거래",
     "미국 쇠고기 관세·통상",
+    "중동 경제전·원유·해운 리스크",
+    "러시아·우크라이나 경제목표·에너지·물류",
+    "AGI·HBM 첨단패키징 병목",
+    "삼성 엑시노스·2나노·퀄컴 성능",
+    "엔비디아 실적·잭슨홀 일정",
+    "미 재정적자·장기국채 금리",
+    "고배당·커버드콜 ETF 순매수",
 }
 
 CASES = (
@@ -182,6 +189,69 @@ ATTACHMENT_ALERT_CASES = (
 )
 
 
+ATTACHMENT_20260823_GROUPS = {
+    "iran_economic_war_trade_risk": {"source_items": 1, "route": "policy"},
+    "russia_ukraine_economic_targets": {"source_items": 1, "route": "conditional"},
+    "agi_advanced_packaging_hbm_bottleneck": {"source_items": 1, "route": "send"},
+    "active_covered_call_etf_net_buy": {"source_items": 1, "route": "send"},
+    "samsung_exynos_2nm_performance": {"source_items": 1, "route": "send"},
+    "nvidia_earnings_jackson_hole_calendar": {"source_items": 1, "route": "send"},
+    "nvidia_ai_server_memory_price": {"source_items": 1, "route": "send"},
+    "us_fiscal_deficit_treasury_yield": {"source_items": 1, "route": "send"},
+}
+
+ATTACHMENT_20260823_ALERT_CASES = (
+    (
+        "테헤란, 미국 경제 전쟁 무력화 다짐",
+        "테헤란은 미국의 경제 전쟁을 무력화하겠다고 다짐하며 제재와 원유 수출 불확실성이 이어졌습니다.",
+        "iran_economic_war_trade_risk",
+        "테헤란",
+    ),
+    (
+        "푸틴, 우크라이나 경제적 목표물 공격은 판도라의 상자",
+        "푸틴은 우크라이나 경제적 목표물 공격이 판도라의 상자를 열었다고 말해 에너지·물류 위험을 경고했습니다.",
+        "russia_ukraine_economic_targets",
+        "푸틴",
+    ),
+    (
+        "반도체 패키징이 AGI 성패 좌우…HBM 병목 심화",
+        "AGI 연산 확대에 반도체 패키징과 HBM 병목이 심해지면 한국 공급망에 기회가 커질 수 있습니다.",
+        "agi_advanced_packaging_hbm_bottleneck",
+        "AGI",
+    ),
+    (
+        "ACE 고배당주PLUS커버드콜액티브 순매수 1천억 돌파",
+        "ACE 고배당주PLUS커버드콜액티브 ETF 순매수가 1천억원을 돌파했습니다.",
+        "active_covered_call_etf_net_buy",
+        "ACE",
+    ),
+    (
+        "삼성 엑시노스 사내 테스트서 퀄컴칩 압도",
+        "엑시노스가 사내 테스트에서 퀄컴칩을 앞섰고 삼성 2나노 공정 적용 가능성이 거론됐습니다.",
+        "samsung_exynos_2nm_performance",
+        "엑시노스",
+    ),
+    (
+        "엔비디아 실적 발표와 잭슨홀 미팅에 주목",
+        "엔비디아 실적 발표와 잭슨홀 회의가 AI 투자심리와 금리 경로를 가를 일정으로 주목됩니다.",
+        "nvidia_earnings_jackson_hole_calendar",
+        "엔비디아",
+    ),
+    (
+        "엔비디아도 메모리 부족에 AI 서버 가격 15% 인상",
+        "엔비디아가 메모리 부족으로 AI 서버 가격을 15% 인상하겠다고 고객사에 통보했습니다.",
+        "nvidia_ai_server_memory_price",
+        "엔비디아",
+    ),
+    (
+        "미국 재정적자 40조달러, 장기 국채 금리 상승 경고",
+        "미국 재정적자가 40조달러로 늘면서 30년물 국채 금리 상승과 달러 경로가 경고 요인으로 지목됐습니다.",
+        "us_fiscal_deficit_treasury_yield",
+        "미국",
+    ),
+)
+
+
 def source_row(title: str, body: str) -> dict:
     return {
         "source_title": title,
@@ -256,6 +326,49 @@ def main() -> int:
                 f"attachment_alert_incomplete_core={expected_kind}:{core!r}"
             )
 
+    attachment23_route_counts = {}
+    for group, item in ATTACHMENT_20260823_GROUPS.items():
+        route = item["route"]
+        attachment23_route_counts[route] = (
+            attachment23_route_counts.get(route, 0) + int(item["source_items"])
+        )
+        if route not in {"send", "policy", "conditional", "exclude"}:
+            failures.append(f"invalid_attachment23_route={group}:{route}")
+    attachment23_source_item_count = sum(
+        int(item["source_items"]) for item in ATTACHMENT_20260823_GROUPS.values()
+    )
+    if attachment23_source_item_count != 8:
+        failures.append(
+            f"attachment23_source_count={attachment23_source_item_count}:expected=8"
+        )
+    if attachment23_route_counts.get("send", 0) < 6:
+        failures.append(
+            f"attachment23_send_coverage={attachment23_route_counts.get('send', 0)}"
+        )
+
+    for title, body, expected_kind, required_fact in ATTACHMENT_20260823_ALERT_CASES:
+        row = source_row(title, body)
+        alert = radar.build_attachment_verified_event_alert(
+            row, now, f"{title} {body}".lower()
+        )
+        if not alert:
+            failures.append(f"attachment23_alert_missing={expected_kind}:{title}")
+            continue
+        if alert.get("korean_business_kind") != expected_kind:
+            failures.append(
+                f"attachment23_alert_kind={alert.get('korean_business_kind')}:"
+                f"expected={expected_kind}:{title}"
+            )
+        core = str(alert.get("telegram_core_fact") or "")
+        if required_fact.lower() not in core.lower():
+            failures.append(
+                f"attachment23_alert_core_mismatch={expected_kind}:{core!r}"
+            )
+        if not radar.core_sentence_is_complete(core, limit=160):
+            failures.append(
+                f"attachment23_alert_incomplete_core={expected_kind}:{core!r}"
+            )
+
     ymtc_row = source_row(
         "YMTC, 낸드 생산 확대 위한 IPO 추진",
         "YMTC가 낸드와 SSD 생산 확대 자금을 조달하기 위해 IPO를 추진합니다.",
@@ -298,7 +411,10 @@ def main() -> int:
         "cross_market_coverage_contract=passed "
         f"cases={len(CASES)} attachment_cases={len(ATTACHMENT_ALERT_CASES)} "
         f"attachment_groups={len(ATTACHMENT_20260822_GROUPS)} "
-        f"source_items={source_item_count}"
+        f"source_items={source_item_count} "
+        f"attachment23_cases={len(ATTACHMENT_20260823_ALERT_CASES)} "
+        f"attachment23_groups={len(ATTACHMENT_20260823_GROUPS)} "
+        f"attachment23_source_items={attachment23_source_item_count}"
     )
     return 0
 
