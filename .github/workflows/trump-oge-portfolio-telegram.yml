@@ -8,6 +8,7 @@ on:
     paths:
       - ".github/workflows/trump-oge-portfolio-telegram.yml"
       - "scripts/trump_oge_portfolio_watch.py"
+      - "scripts/trump_oge_portfolio_watch_entry.py"
 
 permissions:
   contents: write
@@ -38,11 +39,13 @@ jobs:
       - name: Install PDF parser
         run: python -m pip install --disable-pip-version-check pypdf
 
-      - name: Validate script
-        run: python -m py_compile scripts/trump_oge_portfolio_watch.py
+      - name: Validate scripts
+        run: |
+          python -m py_compile scripts/trump_oge_portfolio_watch.py
+          python -m py_compile scripts/trump_oge_portfolio_watch_entry.py
 
       - name: Check Trump OGE 278-T filings and send Telegram alert
-        run: python scripts/trump_oge_portfolio_watch.py
+        run: python scripts/trump_oge_portfolio_watch_entry.py
 
       - name: Persist seen OGE filing state
         if: success()
