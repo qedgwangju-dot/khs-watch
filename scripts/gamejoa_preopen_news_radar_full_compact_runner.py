@@ -4024,7 +4024,7 @@ AUGUST23_ATTACHMENT_PROFILES = (
     (
         "us_fiscal_deficit_treasury_yield",
         ("미국", "u.s.", "us treasury", "미 재정"),
-        ("재정적자", "재정 적자", "국채 금리", "30년물", "treasury yield"),
+        ("재정적자", "재정 적자", "정부부채", "정부 부채", "국가부채", "국가 부채", "fiscal deficit", "government debt"),
         ["할인율", "수급"],
         ["미국 증시/금리", "환율/수출입", "성장주/밸류에이션"],
         ["미 국채 공급", "장기금리", "달러·외국인 수급"],
