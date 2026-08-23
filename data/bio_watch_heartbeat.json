@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at_kst": "2026-08-23T08:45:27+09:00",
+  "checked_at_kst": "2026-08-23T10:14:36+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -12,6 +12,7 @@
   "qlex_state_persisted": true,
   "intismeran_state_persisted": true,
   "intismeran_retry_pending": false,
-  "last_health_notice_date": "2026-08-22",
-  "errors": []
+  "last_health_notice_date": "2026-08-23",
+  "errors": [],
+  "health_notice_message_id": 48
 }
