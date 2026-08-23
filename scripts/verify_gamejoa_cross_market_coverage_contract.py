@@ -2,6 +2,12 @@
 """Regression gate for cross-market and next-generation semiconductor coverage."""
 
 from datetime import datetime, timezone
+from pathlib import Path
+import sys
+
+# Prefer the runner checked into this scripts directory over any same-named
+# module in the caller's working directory.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import gamejoa_preopen_news_radar_full_compact_runner as radar
 
