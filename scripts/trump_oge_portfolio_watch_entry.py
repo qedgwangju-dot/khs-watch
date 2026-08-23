@@ -47,11 +47,19 @@ def _polish_common(text: str) -> str:
         "• 백악관/트럼프 측은 자산이 제3자 운용계좌·신탁 구조로 관리돼 대통령이 개별 거래를 지시하지 않는다는 입장입니다.",
         "• 백악관은 투자계좌가 독립적으로 관리되며 대통령과 가족이 해당 계좌를 통제하지 않는다고 설명했습니다.",
     )
+    text = text.replace(
+        "• 팔란티어(PLTR), RTX(RTX), 노스럽그러먼(NOC), 코인베이스(COIN), 미국 국채·기술주·원자재 ETF, 지방채 등에서 다수 매수·매도",
+        "• 팔란티어(PLTR), RTX(RTX), 노스럽그러먼(NOC), 코인베이스(COIN), 미국 국채·기술주·원자재 ETF, 지방채 관련 거래가 확인됐습니다.",
+    )
     return text
 
 
 def curated_seed_message(url, rate, basis):
     text = _polish_common(_original_curated_seed_message(url, rate, basis))
+    header = "공시 종류: OGE Form 278-T(정기 거래 보고서)"
+    if header in text and "공개일: 2026-08-22" not in text:
+        text = text.replace(header, header + "\n공개일: 2026-08-22")
+
     marker = "• 주의: 위 금액은 6월 거래액 범위 합계이며 전체 보유자산 규모가 아닙니다."
     if marker in text and "매수 총액 하한" not in text:
         extra = "\n".join(
