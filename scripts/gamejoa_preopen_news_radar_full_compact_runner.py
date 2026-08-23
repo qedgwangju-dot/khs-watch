@@ -456,6 +456,15 @@ KOREAN_BUSINESS_SEARCH_SOURCES = [
         ),
     ),
     (
+        "미국 쇠고기 관세·통상",
+        (
+            "(트럼프 OR Trump OR 미국) (쇠고기 OR beef OR 미국산 소고기 OR 미국산 쇠고기) "
+            "(관세 OR 관세철폐 OR 관세 철폐 OR 수입 OR 무역협정) "
+            "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:yna.co.kr OR "
+            "site:edaily.co.kr OR site:mt.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
         "트럼프 자산공시·대형 주식거래",
         (
             "(트럼프 OR Trump) (자산공시 OR 투자계좌 OR 주식 거래 OR ETF 거래) "
@@ -3896,6 +3905,15 @@ AUGUST13_ATTACHMENT_PROFILES = (
 
 AUGUST22_ATTACHMENT_PROFILES = (
     (
+        "iran_china_trade_policy",
+        ("이란", "iran"),
+        ("중국", "china", "경제적 d-day", "경제적 d day", "경제적 데이"),
+        ["돈 버는 능력", "할인율", "수급", "시간표"],
+        ["관세/수출주", "원유/인플레이션", "정유/화학/해운", "방산/지정학"],
+        ["이란 제재·무역압박", "중국 원유수요", "대미 통상 위험"],
+        116,
+    ),
+    (
         "iran_china_oil_trade",
         ("이란", "iran"),
         ("중국 원유", "중국의 석유", "석유 수입", "브렌트", "brent"),
@@ -3993,6 +4011,15 @@ AUGUST22_ATTACHMENT_PROFILES = (
         ["관세/수출주", "반도체/HBM/CXL", "중국 공급망"],
         ["미·중 통상정책", "APEC 정상외교", "수출통제 위험"],
         109,
+    ),
+    (
+        "us_beef_tariff_policy",
+        ("트럼프", "trump", "미국"),
+        ("쇠고기", "beef", "미국산 소고기", "미국산 쇠고기"),
+        ["돈 버는 능력", "할인율", "시간표"],
+        ["관세/수출주", "원자재/매크로", "식품/유통"],
+        ["농축산물 관세", "물가·소비", "통상 협상"],
+        108,
     ),
     (
         "trump_asset_trade_disclosure",
