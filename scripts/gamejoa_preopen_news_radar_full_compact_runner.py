@@ -4186,6 +4186,10 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             continue
         if kind == "apple_cxmt_memory_supply_test" and not any(term in text for term in ("테스트", "시험", "탑재", "공급", "협력", "채택")):
             continue
+        if kind == "us_fiscal_deficit_treasury_yield" and not any(
+            term in text for term in ("재정적자", "재정 적자", "정부부채", "정부 부채", "국가부채", "국가 부채", "fiscal deficit")
+        ):
+            continue
         if kind == "korea_etf_asset_flow" and not re.search(r"\d[\d,.]*(?:조|억)원", text):
             continue
         if kind == "korea_large_mna_credit_structure" and not any(term in text for term in ("계약", "결정", "인수한다", "인수하기로")):
