@@ -124,6 +124,7 @@ jobs:
           - Dodge Construction Network 데이터센터 착공 자료 감시
           - 매시간 웹 확인, 새 월간 데이터·수정치·새 착공 발표가 있을 때만 알림
           - 알림 본문은 한국어로 전달하며 고유 프로젝트명만 원문 식별명을 유지
+          - 원문 주소는 긴 URL 대신 파란색 '원문' 링크로 표시
           - 기존 GitHub Actions 감시는 수정하지 않고 별도 워크플로로 동작
           EOF
 
@@ -134,7 +135,8 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import json, os, pathlib, urllib.parse, urllib.request
+          import html as html_lib
+          import json, os, pathlib, re, urllib.parse, urllib.request
 
           token = os.environ['DATA_CENTER_TELEGRAM_BOT_TOKEN'].strip()
           chat_id = os.environ['DATA_CENTER_TELEGRAM_CHAT_ID'].strip()
@@ -142,6 +144,17 @@ jobs:
               pathlib.Path('out/us_data_center_cycle_connection_test.txt'),
               pathlib.Path('out/us_data_center_cycle_alert.txt'),
           ]
+
+          def render_html(text: str) -> str:
+              rendered = []
+              for line in text.splitlines():
+                  match = re.fullmatch(r'\s*-?\s*원문:\s*(https?://\S+)\s*', line)
+                  if match:
+                      url = html_lib.escape(match.group(1), quote=True)
+                      rendered.append(f'<a href="{url}">원문</a>')
+                  else:
+                      rendered.append(html_lib.escape(line))
+              return '\n'.join(rendered)
 
           sent = 0
           for path in files:
@@ -163,7 +176,8 @@ jobs:
               for chunk in chunks:
                   payload = urllib.parse.urlencode({
                       'chat_id': chat_id,
-                      'text': chunk,
+                      'text': render_html(chunk),
+                      'parse_mode': 'HTML',
                       'disable_web_page_preview': 'true',
                   }).encode('utf-8')
                   request = urllib.request.Request(
