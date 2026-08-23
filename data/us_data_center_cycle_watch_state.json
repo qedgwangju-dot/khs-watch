@@ -1,0 +1,38 @@
+{
+  "census": {
+    "calculated_mom_pct": 6.976,
+    "calculated_yoy_pct": 45.778,
+    "data_center_saar_musd": 68297,
+    "pdf_sha256": "961e1ef3636e8d7576e77808d89391ecbec406a830b4ffcbcd6b68b478b748cc",
+    "period": "Jun 2026",
+    "period_key": "2026-06",
+    "previous_month_saar_musd": 63843,
+    "release_date": "August 3, 2026",
+    "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
+    "reported_mom_pct": 7.0,
+    "reported_yoy_pct": 45.8,
+    "retrieved_at_utc": "2026-08-23T09:38:07.844397+00:00",
+    "source": "U.S. Census Bureau Construction Spending",
+    "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
+    "year_ago_saar_musd": 46850
+  },
+  "dodge": {
+    "article_sha256": "2934d3caa66a18f55d8931ce688a65dacae813426720515a3168931f48cef6fc",
+    "data_center_mention_count": 6,
+    "data_center_sentences": [
+      "“There is strength in pockets, multifamily within residential, data centers within commercial, energy within non-building, but also verticals struggling to stabilize.” Nonresidential Nonresidential building starts jumped 57.7% in July to a seasonally adjusted annual rate of $917 billion.",
+      "Offices and data centers, more than doubled (+107.9% m/m), offsetting weaker warehouse growth (+1.0% m/m) and declining hotels (-51.5% m/m), parking garages (-19.4% m/m), and retail stores (-9.5% m/m).",
+      "The largest nonresidential building projects to break ground in July were the $12.8 billion data center portion of the Project Jupiter Data Center and Microgrid Phase 1 in Santa Teresa, New Mexico, the $12.0 billion Micron Semiconductor Mega-Factory Fab 1 – Phase 1 in Clay, New York, and the $4.0 billion Amazon STACK Highway 3 Data Center in Benton, Louisiana.",
+      "The largest nonbuilding projects to break ground in July included the $2.4 billion CHSRA New Track & Systems (Two Sections) in Bakersfield, California, the $2.3 billion microgrid portion of the Project Jupiter Data Center and Microgrid Phase 1 in Santa Teresa, New Mexico, and the $1.5 billion Transco Southeast Supply Enhancement Pipeline Expansion-SSE in Chatham, Georgia."
+    ],
+    "index_url": "https://www.construction.com/category/total-construction-starts/",
+    "published": "July 21, 2026",
+    "retrieved_at_utc": "2026-08-23T09:38:08.674444+00:00",
+    "source": "Dodge Construction Network Total Construction Starts",
+    "title": "Construction Starts Rebound 25.6% in July",
+    "total_starts_saar_usd_bn": 1790.0,
+    "url": "https://www.construction.com/construction-starts-rebound-july-2026/"
+  },
+  "updated_at_utc": "2026-08-23T09:38:07.521770+00:00",
+  "watch": "US data center construction starts vs spending"
+}
