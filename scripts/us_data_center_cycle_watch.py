@@ -23,6 +23,7 @@ ALERT_PATH = OUT_DIR / "us_data_center_cycle_alert.txt"
 PENDING_STATE_PATH = OUT_DIR / "us_data_center_cycle_state_pending.json"
 STATUS_PATH = OUT_DIR / "us_data_center_cycle_status.md"
 ERROR_PATH = OUT_DIR / "us_data_center_cycle_errors.log"
+FORMAT_VERSION = 2
 
 HEADERS = {
     "User-Agent": (
@@ -34,6 +35,20 @@ HEADERS = {
 }
 
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
+FULL_MONTHS = {
+    "january": 1,
+    "february": 2,
+    "march": 3,
+    "april": 4,
+    "may": 5,
+    "june": 6,
+    "july": 7,
+    "august": 8,
+    "september": 9,
+    "october": 10,
+    "november": 11,
+    "december": 12,
+}
 
 
 def clean(value: str) -> str:
@@ -44,6 +59,51 @@ def get(url: str, *, timeout: int = 40) -> requests.Response:
     response = requests.get(url, headers=HEADERS, timeout=timeout)
     response.raise_for_status()
     return response
+
+
+def korean_period(period_key: str | None, fallback: str | None = None) -> str:
+    if period_key and re.fullmatch(r"20\d{2}-\d{2}", period_key):
+        year, month = period_key.split("-")
+        return f"{int(year)}년 {int(month)}월"
+    if fallback:
+        m = re.fullmatch(r"([A-Za-z]{3})\s+(20\d{2})", fallback.strip())
+        if m and m.group(1).title() in MONTHS:
+            return f"{int(m.group(2))}년 {MONTHS.index(m.group(1).title()) + 1}월"
+    return fallback or "확인 불가"
+
+
+def korean_date(value: str | None) -> str:
+    if not value:
+        return "날짜 직접 추출 실패"
+    value = clean(value)
+    iso = re.match(r"(20\d{2})-(\d{2})-(\d{2})", value)
+    if iso:
+        return f"{int(iso.group(1))}년 {int(iso.group(2))}월 {int(iso.group(3))}일"
+    m = re.search(
+        r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
+        r"(\d{1,2}),\s+(20\d{2})",
+        value,
+        flags=re.I,
+    )
+    if m:
+        return f"{int(m.group(3))}년 {FULL_MONTHS[m.group(1).lower()]}월 {int(m.group(2))}일"
+    return value
+
+
+def usd_bn_ko(value_bn: float | int | None) -> str:
+    if value_bn is None:
+        return "확인 불가"
+    hundred_million_usd = float(value_bn) * 10.0
+    if hundred_million_usd >= 10000:
+        trillion = int(hundred_million_usd // 10000)
+        remainder = round(hundred_million_usd - trillion * 10000)
+        return f"{trillion}조{remainder:,.0f}억달러" if remainder else f"{trillion}조달러"
+    return f"{hundred_million_usd:,.0f}억달러"
+
+
+def extract_pct(text: str, pattern: str) -> float | None:
+    m = re.search(pattern, text, flags=re.I)
+    return float(m.group(1)) if m else None
 
 
 def parse_census() -> dict:
@@ -155,6 +215,12 @@ def parse_dodge() -> dict:
         unit = saar_match.group(2).lower()
         total_saar_usd_bn = round(amount * (1000.0 if unit == "trillion" else 1.0), 3)
 
+    total_change_pct = extract_pct(article_text, r"Total construction starts.{0,100}?([0-9.]+)%\s+in\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)")
+    nonresidential_change_pct = extract_pct(article_text, r"Nonresidential building starts.{0,50}?([0-9.]+)%")
+    commercial_change_pct = extract_pct(article_text, r"Commercial starts were up\s+([0-9.]+)%")
+    office_dc_change_pct = extract_pct(article_text, r"Offices and data centers.{0,80}?\(([+-]?[0-9.]+)%\s*m/m\)")
+    utility_change_pct = extract_pct(article_text, r"utilities improved\s+([0-9.]+)%\s*m/m")
+
     sentence_candidates = re.split(r"(?<=[.!?])\s+", article_text)
     data_center_sentences: list[str] = []
     for sentence in sentence_candidates:
@@ -168,6 +234,17 @@ def parse_dodge() -> dict:
         if len(data_center_sentences) >= 6:
             break
 
+    project_matches = re.findall(
+        r"\$([0-9.]+)\s+billion\s+(.{5,180}?(?:Data Center|data center).{0,100}?)(?=,\s+the\s+\$|\.\s|$)",
+        article_text,
+        flags=re.I,
+    )
+    data_center_projects = []
+    for amount, description in project_matches[:5]:
+        description = clean(description)
+        description = re.sub(r"\s+in\s+[A-Z][A-Za-z .'-]+,\s*[A-Z][A-Za-z .'-]+$", "", description)
+        data_center_projects.append({"amount_usd_bn": float(amount), "name": description})
+
     return {
         "source": "Dodge Construction Network Total Construction Starts",
         "index_url": DODGE_STARTS_INDEX_URL,
@@ -175,8 +252,14 @@ def parse_dodge() -> dict:
         "url": article_url,
         "published": published,
         "total_starts_saar_usd_bn": total_saar_usd_bn,
+        "total_change_pct": total_change_pct,
+        "nonresidential_change_pct": nonresidential_change_pct,
+        "commercial_change_pct": commercial_change_pct,
+        "office_dc_change_pct": office_dc_change_pct,
+        "utility_change_pct": utility_change_pct,
         "data_center_mention_count": article_text.lower().count("data center"),
         "data_center_sentences": data_center_sentences,
+        "data_center_projects": data_center_projects,
         "article_sha256": hashlib.sha256(article_response.content).hexdigest(),
         "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),
     }
@@ -223,18 +306,60 @@ def signal_label(mom: float, yoy: float) -> str:
     return "혼조"
 
 
-def build_alert(old_state: dict, new_state: dict, changed_sources: list[str], first_run: bool) -> str:
+def dodge_korean_lines(dodge: dict) -> list[str]:
+    lines = [
+        "■ Dodge Construction Network 데이터센터 착공",
+        f"- 발표일: {korean_date(dodge.get('published'))}",
+        f"- 데이터센터 언급: {dodge.get('data_center_mention_count', 0)}회",
+    ]
+    if dodge.get("total_starts_saar_usd_bn") is not None:
+        lines.append(f"- 미국 전체 건설 착공 계절조정 연율: {usd_bn_ko(dodge['total_starts_saar_usd_bn'])}")
+    if dodge.get("total_change_pct") is not None:
+        lines.append(f"- 미국 전체 건설 착공: 전월 대비 {dodge['total_change_pct']:+.1f}%")
+    if dodge.get("nonresidential_change_pct") is not None:
+        lines.append(f"- 비주거용 건축 착공: 전월 대비 {dodge['nonresidential_change_pct']:+.1f}%")
+    if dodge.get("commercial_change_pct") is not None:
+        lines.append(f"- 상업용 건축 착공: 전월 대비 {dodge['commercial_change_pct']:+.1f}%")
+    if dodge.get("office_dc_change_pct") is not None:
+        lines.append(f"- 오피스·데이터센터 착공: 전월 대비 {dodge['office_dc_change_pct']:+.1f}% → 두 배 이상 증가")
+    if dodge.get("utility_change_pct") is not None:
+        lines.append(f"- 전력·공공설비 착공: 전월 대비 {dodge['utility_change_pct']:+.1f}%")
+
+    projects = dodge.get("data_center_projects") or []
+    if projects:
+        lines.append("- 주요 데이터센터 착공 프로젝트:")
+        for project in projects[:3]:
+            name = project.get("name") or "프로젝트명 확인 불가"
+            amount = usd_bn_ko(project.get("amount_usd_bn"))
+            lines.append(f"  · {name}: {amount}")
+    else:
+        lines.append("- 주요 데이터센터 착공 프로젝트: 자동 구조화된 신규 프로젝트가 없거나 추출되지 않음")
+
+    lines.append("- 해석: 데이터센터 착공이 급증하면 약 1년 뒤 건설·전력기기·냉각 지출로 이어질 가능성이 커집니다.")
+    lines.append(f"- 원문: {dodge['url']}")
+    return lines
+
+
+def build_alert(old_state: dict, new_state: dict, changed_sources: list[str], first_run: bool, format_changed: bool) -> str:
     lines: list[str] = []
     if first_run:
         lines.append("[미국 데이터센터 건설 사이클 감시] 설정 완료")
-        lines.append("")
-        lines.append("Goldman Sachs 차트의 핵심 원자료인 Census 데이터센터 건설 지출과 Dodge 착공 자료를 매시간 확인합니다.")
-        lines.append("변화가 있을 때만 Telegram 알림을 보냅니다.")
+    elif format_changed and not changed_sources:
+        lines.append("[미국 데이터센터 건설 사이클 감시] 한국어 알림 형식 적용 완료")
     else:
         lines.append("[미국 데이터센터 건설 사이클 감시] 새 변화 감지")
 
+    lines.extend(
+        [
+            "",
+            "골드만삭스 차트의 핵심 원자료인 미국 인구조사국 데이터센터 건설 지출과 Dodge Construction Network 착공 자료를 매시간 확인합니다.",
+            "변화가 있을 때만 텔레그램 알림을 보냅니다.",
+            "영문 원문은 내부에서 숫자와 사실관계 확인에만 사용하고, 알림 본문은 한국어로 전달합니다.",
+        ]
+    )
+
     census = new_state.get("census")
-    if census and (first_run or "census" in changed_sources):
+    if census and (first_run or format_changed or "census" in changed_sources):
         current_bn = census["data_center_saar_musd"] / 1000.0
         previous_bn = census["previous_month_saar_musd"] / 1000.0
         year_ago_bn = census["year_ago_saar_musd"] / 1000.0
@@ -243,10 +368,10 @@ def build_alert(old_state: dict, new_state: dict, changed_sources: list[str], fi
         lines.extend(
             [
                 "",
-                "■ Census 데이터센터 건설 지출",
-                f"- 기준월: {census['period']}",
-                f"- 계절조정 연율: ${current_bn:,.1f}B",
-                f"- 직전월: ${previous_bn:,.1f}B / 전년동월: ${year_ago_bn:,.1f}B",
+                "■ 미국 인구조사국 데이터센터 건설 지출",
+                f"- 기준월: {korean_period(census.get('period_key'), census.get('period'))}",
+                f"- 계절조정 연율: {usd_bn_ko(current_bn)}",
+                f"- 직전월: {usd_bn_ko(previous_bn)} / 전년동월: {usd_bn_ko(year_ago_bn)}",
                 f"- 변화: 전월 대비 {mom:+.1f}% / 전년 대비 {yoy:+.1f}%",
                 f"- 해석: {signal_label(mom, yoy)}",
                 f"- 원문: {census['url']}",
@@ -254,24 +379,9 @@ def build_alert(old_state: dict, new_state: dict, changed_sources: list[str], fi
         )
 
     dodge = new_state.get("dodge")
-    if dodge and (first_run or "dodge" in changed_sources):
-        lines.extend(
-            [
-                "",
-                "■ Dodge Construction Starts",
-                f"- 최신: {dodge['title']}",
-                f"- 발표: {dodge.get('published') or '페이지에서 날짜 직접 추출 실패'}",
-                f"- 데이터센터 언급: {dodge.get('data_center_mention_count', 0)}회",
-            ]
-        )
-        if dodge.get("total_starts_saar_usd_bn") is not None:
-            lines.append(f"- 전체 착공 계절조정 연율: ${dodge['total_starts_saar_usd_bn']:,.1f}B")
-        snippets = dodge.get("data_center_sentences") or []
-        for snippet in snippets[:3]:
-            lines.append(f"- 데이터센터 핵심: {snippet}")
-        if not snippets:
-            lines.append("- 데이터센터 핵심: 최신 착공 보도에서 데이터센터 직접 언급이 확인되지 않음 → 선행 파이프라인 둔화 여부 점검 필요")
-        lines.append(f"- 원문: {dodge['url']}")
+    if dodge and (first_run or format_changed or "dodge" in changed_sources):
+        lines.append("")
+        lines.extend(dodge_korean_lines(dodge))
 
     if not first_run:
         lines.extend(
@@ -279,8 +389,8 @@ def build_alert(old_state: dict, new_state: dict, changed_sources: list[str], fi
                 "",
                 "■ 투자 해석",
                 "- 착공이 먼저 약해지면 약 1년 뒤 건설·전력기기·냉각 지출 둔화 신호로 봅니다.",
-                "- Census 지출이 계속 증가하면 기존 착공 물량이 실제 매출로 전환되는 구간입니다.",
-                "- 두 지표가 동시에 둔화할 때 데이터센터 건설 투자 사이클 피크 위험을 가장 강하게 봅니다.",
+                "- 미국 인구조사국 지출이 계속 증가하면 기존 착공 물량이 실제 공사·설비 매출로 전환되는 구간입니다.",
+                "- 두 지표가 동시에 둔화할 때 데이터센터 건설 투자 사이클 정점 위험을 가장 강하게 봅니다.",
             ]
         )
     return "\n".join(lines).strip() + "\n"
@@ -294,6 +404,7 @@ def main() -> int:
     old_state = load_state()
     new_state = {
         "watch": "US data center construction starts vs spending",
+        "format_version": FORMAT_VERSION,
         "updated_at_utc": datetime.now(timezone.utc).isoformat(),
     }
     errors: list[str] = []
@@ -301,14 +412,14 @@ def main() -> int:
     try:
         new_state["census"] = parse_census()
     except Exception as exc:
-        errors.append(f"Census: {type(exc).__name__}: {exc}")
+        errors.append(f"미국 인구조사국: {type(exc).__name__}: {exc}")
         if old_state.get("census"):
             new_state["census"] = old_state["census"]
 
     try:
         new_state["dodge"] = parse_dodge()
     except Exception as exc:
-        errors.append(f"Dodge: {type(exc).__name__}: {exc}")
+        errors.append(f"Dodge Construction Network: {type(exc).__name__}: {exc}")
         if old_state.get("dodge"):
             new_state["dodge"] = old_state["dodge"]
 
@@ -320,15 +431,22 @@ def main() -> int:
         return 2
 
     first_run = not bool(old_state)
+    format_changed = old_state.get("format_version") != FORMAT_VERSION
     changed_sources: list[str] = []
     if "census" in new_state and census_changed(old_state.get("census"), new_state["census"]):
-        changed_sources.append("census")
+        changed_sources.append("미국 인구조사국")
     if "dodge" in new_state and dodge_changed(old_state.get("dodge"), new_state["dodge"]):
-        changed_sources.append("dodge")
+        changed_sources.append("Dodge Construction Network")
 
-    if first_run or changed_sources:
+    source_keys = []
+    if "미국 인구조사국" in changed_sources:
+        source_keys.append("census")
+    if "Dodge Construction Network" in changed_sources:
+        source_keys.append("dodge")
+
+    if first_run or format_changed or source_keys:
         ALERT_PATH.write_text(
-            build_alert(old_state, new_state, changed_sources, first_run),
+            build_alert(old_state, new_state, source_keys, first_run, format_changed),
             encoding="utf-8",
         )
 
@@ -341,18 +459,19 @@ def main() -> int:
         "# 미국 데이터센터 건설 사이클 감시",
         "",
         f"- 최초 실행: {'예' if first_run else '아니오'}",
+        f"- 한국어 알림 형식 갱신: {'예' if format_changed else '아니오'}",
         f"- 변화 감지: {', '.join(changed_sources) if changed_sources else '없음'}",
-        f"- Telegram 발송 파일: {'생성' if ALERT_PATH.exists() else '없음'}",
+        f"- 텔레그램 발송 파일: {'생성' if ALERT_PATH.exists() else '없음'}",
         f"- 조회 오류: {len(errors)}건",
     ]
     if new_state.get("census"):
         c = new_state["census"]
         status_lines.append(
-            f"- Census: {c['period']} ${c['data_center_saar_musd']/1000:.1f}B, MoM {c['reported_mom_pct']:+.1f}%, YoY {c['reported_yoy_pct']:+.1f}%"
+            f"- 미국 인구조사국: {korean_period(c.get('period_key'), c.get('period'))}, {usd_bn_ko(c['data_center_saar_musd']/1000)}, 전월 대비 {c['reported_mom_pct']:+.1f}%, 전년 대비 {c['reported_yoy_pct']:+.1f}%"
         )
     if new_state.get("dodge"):
         d = new_state["dodge"]
-        status_lines.append(f"- Dodge: {d['title']}")
+        status_lines.append(f"- Dodge Construction Network: 발표일 {korean_date(d.get('published'))}")
     STATUS_PATH.write_text("\n".join(status_lines) + "\n", encoding="utf-8")
 
     print(STATUS_PATH.read_text(encoding="utf-8"))
