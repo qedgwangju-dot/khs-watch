@@ -456,6 +456,69 @@ KOREAN_BUSINESS_SEARCH_SOURCES = [
         ),
     ),
     (
+        "중동 경제전·원유·해운 리스크",
+        (
+            "(이란 OR Iran OR 테헤란 OR Tehran) "
+            "(경제전쟁 OR 경제 전쟁 OR 제재 OR 원유 OR 석유 OR 브렌트 OR 운임 OR 해운) "
+            "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:yna.co.kr OR "
+            "site:edaily.co.kr OR site:mt.co.kr)"
+        ),
+    ),
+    (
+        "러시아·우크라이나 경제목표·에너지·물류",
+        (
+            "(푸틴 OR Putin OR 러시아 OR Russia OR 우크라이나 OR Ukraine) "
+            "(경제목표 OR 경제 목표 OR 에너지시설 OR 에너지 시설 OR 제재 OR 원유 OR 가스 OR 운임) "
+            "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:yna.co.kr OR "
+            "site:edaily.co.kr OR site:mt.co.kr)"
+        ),
+    ),
+    (
+        "AGI·HBM 첨단패키징 병목",
+        (
+            "(AGI OR 인공일반지능 OR 반도체패키징 OR 반도체 패키징) "
+            "(HBM OR 첨단패키징 OR 첨단 패키징 OR 병목 OR 공급부족 OR 공급 부족) "
+            "(site:hankyung.com OR site:etnews.com OR site:zdnet.co.kr OR site:yna.co.kr OR "
+            "site:mk.co.kr OR site:edaily.co.kr)"
+        ),
+    ),
+    (
+        "삼성 엑시노스·2나노·퀄컴 성능",
+        (
+            "(삼성전자 OR Samsung) (엑시노스 OR Exynos) "
+            "(퀄컴 OR Qualcomm OR 2나노 OR 2nm OR 2㎚ OR 성능 OR 테스트) "
+            "(site:hankyung.com OR site:etnews.com OR site:zdnet.co.kr OR site:yna.co.kr OR "
+            "site:mk.co.kr OR site:edaily.co.kr)"
+        ),
+    ),
+    (
+        "엔비디아 실적·잭슨홀 일정",
+        (
+            "(엔비디아 OR NVIDIA) (실적발표 OR 실적 발표 OR 잭슨홀 OR Jackson Hole) "
+            "(AI OR 반도체 OR HBM OR 금리 OR 연준 OR FOMC) "
+            "(site:reuters.com OR site:cnbc.com OR site:yna.co.kr OR site:edaily.co.kr OR "
+            "site:mt.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
+        "미 재정적자·장기국채 금리",
+        (
+            "(미국 OR U.S. OR US Treasury) (재정적자 OR 재정 적자 OR 국채금리 OR 국채 금리 OR 30년물) "
+            "(달러 OR 금리 OR 국채발행 OR 국채 발행 OR 재정경로 OR 재정 경로) "
+            "(site:reuters.com OR site:ft.com OR site:wsj.com OR site:edaily.co.kr OR "
+            "site:yna.co.kr OR site:mt.co.kr)"
+        ),
+    ),
+    (
+        "고배당·커버드콜 ETF 순매수",
+        (
+            "(ACE OR TIGER OR KODEX OR 커버드콜 OR Covered Call) "
+            "(ETF OR 상장지수펀드) (순매수 OR 자금유입 OR 자금 유입 OR 설정액 OR 순자산) "
+            "(site:fnnews.com OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR "
+            "site:mt.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
         "미국 쇠고기 관세·통상",
         (
             "(트럼프 OR Trump OR 미국) (쇠고기 OR beef OR 미국산 소고기 OR 미국산 쇠고기) "
@@ -3903,6 +3966,73 @@ AUGUST13_ATTACHMENT_PROFILES = (
 
 
 
+AUGUST23_ATTACHMENT_PROFILES = (
+    (
+        "iran_economic_war_trade_risk",
+        ("이란", "iran", "테헤란", "tehran"),
+        ("경제 전쟁", "economic war", "무력화", "neutralise", "neutralize"),
+        ["할인율", "수급", "시간표"],
+        ["원유/인플레이션", "정유/화학/해운", "방산/지정학"],
+        ["제재·전쟁 대응", "중동 지정학", "원유·운임"],
+        116,
+    ),
+    (
+        "russia_ukraine_economic_targets",
+        ("푸틴", "putin", "러시아", "russia"),
+        ("경제적 목표", "경제 목표", "경제 시설", "pandora", "판도라의 상자"),
+        ["할인율", "시간표"],
+        ["원유/인플레이션", "방산/지정학", "해운/물류"],
+        ["러시아·우크라이나 전쟁", "에너지·물류 위험", "제재 시간표"],
+        112,
+    ),
+    (
+        "agi_advanced_packaging_hbm_bottleneck",
+        ("agi", "인공일반지능", "반도체 패키징", "반도체패키징"),
+        ("hbm", "병목", "첨단 패키징", "첨단패키징"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "반도체 장비·소재", "AI/데이터센터"],
+        ["HBM 패키징 수요", "첨단패키징 병목", "AI 공급능력"],
+        118,
+    ),
+    (
+        "active_covered_call_etf_net_buy",
+        ("ace", "커버드콜", "covered call"),
+        ("순매수", "자금 유입", "자금유입"),
+        ["수급"],
+        ["금융/자본시장", "ETF/ETN", "고배당·커버드콜"],
+        ["ETF 순매수", "개인·기관 수급"],
+        109,
+    ),
+    (
+        "samsung_exynos_2nm_performance",
+        ("엑시노스", "exynos"),
+        ("퀄컴", "qualcomm", "2나노", "2nm", "2㎚"),
+        ["돈 버는 능력", "시간표"],
+        ["반도체/HBM/CXL", "파운드리", "모바일 AP"],
+        ["모바일 AP 성능", "2나노 공정", "고객 인증"],
+        114,
+    ),
+    (
+        "nvidia_earnings_jackson_hole_calendar",
+        ("엔비디아", "nvidia"),
+        ("실적 발표", "실적발표", "잭슨홀", "jackson hole"),
+        ["할인율", "수급", "시간표"],
+        ["반도체/HBM/CXL", "AI/데이터센터", "미국 증시/금리"],
+        ["엔비디아 실적", "연준 정책신호", "AI 투자심리"],
+        116,
+    ),
+    (
+        "us_fiscal_deficit_treasury_yield",
+        ("미국", "u.s.", "us treasury", "미 재정"),
+        ("재정적자", "재정 적자", "국채 금리", "30년물", "treasury yield"),
+        ["할인율", "수급"],
+        ["미국 증시/금리", "환율/수출입", "성장주/밸류에이션"],
+        ["미 국채 공급", "장기금리", "달러·외국인 수급"],
+        118,
+    ),
+)
+
+
 AUGUST22_ATTACHMENT_PROFILES = (
     (
         "iran_china_trade_policy",
@@ -4035,7 +4165,7 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
     """Route recurring company and market events from verified article bodies."""
     title = str(row.get("source_title") or row.get("title") or "")
     body = str(row.get("source_body") or row.get("source_abstract") or "")
-    profiles = (*AUGUST13_ATTACHMENT_PROFILES, *AUGUST22_ATTACHMENT_PROFILES,
+    profiles = (*AUGUST23_ATTACHMENT_PROFILES, *AUGUST13_ATTACHMENT_PROFILES, *AUGUST22_ATTACHMENT_PROFILES,
         ("korea_zinc_critical_minerals", ("고려아연",), ("핵심광물", "핵심 광물", "제련소", "통합제련소"), ["돈 버는 능력", "할인율", "시간표"], ["핵심광물", "비철금속/제련", "미국 공급망"], ["미국 정책 연결", "제련 CAPEX", "핵심광물 공급"], 111),
         ("korea_anthropic_strategic_investment", ("앤트로픽", "anthropic"), ("네이버", "naver", "삼성전자", "sk텔레콤", "skt"), ["돈 버는 능력", "수급", "시간표"], ["AI/데이터센터", "반도체/HBM/CXL", "플랫폼/클라우드"], ["AI 전략투자", "모델 협업", "데이터센터 수요"], 109),
         ("apple_cxmt_memory_supply_test", ("애플", "apple"), ("cxmt", "창신메모리", "중국 메모리", "중국 d램"), ["돈 버는 능력", "수급", "시간표"], ["반도체/HBM/CXL", "DRAM/NAND", "중국 메모리 공급"], ["고객 인증", "메모리 공급", "경쟁구도"], 112),
@@ -4112,6 +4242,8 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
                 core = f"국내 ETF에 {amount_match.group(0)} 자금이 유입됐습니다."
         elif kind == "nvidia_ai_server_memory_price" and "15%" in text:
             core = "엔비디아가 메모리 부족을 이유로 AI 서버 가격을 15% 인상하겠다고 고객사에 통보했습니다."
+        elif kind == "active_covered_call_etf_net_buy" and "ace" in text and "1천억" in text:
+            core = "ACE 고배당주PLUS커버드콜액티브 순매수가 1천억원을 돌파했습니다."
         elif kind == "korea_solar_module_capacity" and "신성이엔지" in text:
             core = "신성이엔지가 김제공장 신규 라인을 가동해 태양광 모듈 양산을 시작했습니다."
         elif kind == "skhynix_indiana_advanced_packaging_timeline":
