@@ -29,15 +29,14 @@ jobs:
 
       - name: Test Telegram route and persist result
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
           import json
           import os
           import pathlib
-          import traceback
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
@@ -58,9 +57,9 @@ jobs:
               chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
               expected = record["expected_bot_username"]
               if not token:
-                  raise RuntimeError("KHS_POLICY_TELEGRAM_BOT_TOKEN secret is missing")
+                  raise RuntimeError("HBM_TELEGRAM_BOT_TOKEN secret is missing")
               if not chat_id:
-                  raise RuntimeError("KHS_POLICY_TELEGRAM_CHAT_ID secret is missing")
+                  raise RuntimeError("HBM_TELEGRAM_CHAT_ID secret is missing")
 
               record["stage"] = "getMe"
               with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
