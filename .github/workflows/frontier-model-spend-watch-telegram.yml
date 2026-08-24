@@ -1,0 +1,309 @@
+name: Frontier model spend watch Telegram
+
+on:
+  push:
+    paths:
+      - ".github/workflows/frontier-model-spend-watch-telegram.yml"
+  schedule:
+    # GitHub cron is UTC. Hourly check; no meaningful change => no Telegram message.
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: frontier-model-spend-watch-telegram
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
+      STATE_FILE: "data/frontier_model_spend_watch_state.json"
+      RAMP_AI_URL: "https://ramp.com/data/ai-index-august-2026"
+      RAMP_ANTHROPIC_URL: "https://ramp.com/vendors/anthropic/"
+      OPENROUTER_RANKINGS_URL: "https://openrouter.ai/rankings?view=daily"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check requests beautifulsoup4
+
+      - name: Validate Telegram route without sending
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("KHS_POLICY_TELEGRAM_BOT_TOKEN secret is missing")
+          if not chat_id:
+              raise RuntimeError("KHS_POLICY_TELEGRAM_CHAT_ID secret is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{username}")
+          PY
+
+      - name: Check Ramp and OpenRouter
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import re
+          from zoneinfo import ZoneInfo
+
+          import requests
+          from bs4 import BeautifulSoup
+
+          state_path = pathlib.Path(os.environ["STATE_FILE"])
+          state_path.parent.mkdir(parents=True, exist_ok=True)
+          out_dir = pathlib.Path("out")
+          out_dir.mkdir(exist_ok=True)
+
+          headers = {
+              "User-Agent": "Mozilla/5.0 (compatible; khs-frontier-model-watch/1.0)",
+              "Accept-Language": "en-US,en;q=0.9",
+          }
+
+          def get_text(url):
+              r = requests.get(url, headers=headers, timeout=35)
+              r.raise_for_status()
+              soup = BeautifulSoup(r.text, "html.parser")
+              return " ".join(soup.stripped_strings), r.text
+
+          def first_float(pattern, text):
+              m = re.search(pattern, text, flags=re.I | re.S)
+              return float(m.group(1)) if m else None
+
+          def rounded(v):
+              return None if v is None else round(float(v), 4)
+
+          ramp_text, ramp_html = get_text(os.environ["RAMP_AI_URL"])
+          vendor_text, vendor_html = get_text(os.environ["RAMP_ANTHROPIC_URL"])
+
+          current = {
+              "checked_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              "ramp": {
+                  "fable_token_share_pct": rounded(first_float(r"Fable 5 has made up only\s*([0-9.]+)%\s*of tokens", ramp_text)),
+                  "fable_spend_share_pct": rounded(first_float(r"([0-9.]+)%\s*of dollars spent on Anthropic models", ramp_text)),
+                  "anthropic_business_adoption_pct": rounded(first_float(r"Anthropic extended.*?([0-9.]+)%\s*of U\.S\. businesses paid", ramp_text)),
+                  "openai_business_adoption_pct": rounded(first_float(r"OpenAI underperformed.*?to\s*([0-9.]+)%\s*of businesses", ramp_text)),
+                  "anthropic_vendor_adoption_pct": rounded(first_float(r"As of August 2026,\s*([0-9.]+)%\s*of organizations.*?use Anthropic", vendor_text)),
+                  "anthropic_enterprise_adoption_pct": rounded(first_float(r"enterprise companies\s*\(([0-9.]+)%\)", vendor_text)),
+                  "source_hash": hashlib.sha256((ramp_text + "\n" + vendor_text).encode()).hexdigest(),
+              },
+              "openrouter": {
+                  "available": False,
+                  "source": "https://openrouter.ai/api/v1/datasets/rankings-daily",
+              },
+          }
+
+          # Optional exact OpenRouter token-share tracking. The public Data API requires a valid API key.
+          key = (os.getenv("OPENROUTER_API_KEY") or "").strip()
+          if key:
+              end = dt.datetime.now(dt.timezone.utc).date() - dt.timedelta(days=1)
+              start = end - dt.timedelta(days=6)
+              resp = requests.get(
+                  "https://openrouter.ai/api/v1/datasets/rankings-daily",
+                  headers={"Authorization": f"Bearer {key}", "User-Agent": headers["User-Agent"]},
+                  params={"start_date": start.isoformat(), "end_date": end.isoformat()},
+                  timeout=35,
+              )
+              if resp.ok:
+                  payload = resp.json()
+                  rows = payload.get("data") or []
+                  totals = {}
+                  anthropic = {}
+                  opus_fable = {}
+                  for row in rows:
+                      d = str(row.get("date"))
+                      model = str(row.get("model_permaslug") or "")
+                      tokens = int(row.get("total_tokens") or 0)
+                      totals[d] = totals.get(d, 0) + tokens
+                      if model.startswith("anthropic/"):
+                          anthropic[d] = anthropic.get(d, 0) + tokens
+                          low = model.lower()
+                          if "opus" in low or "fable" in low:
+                              opus_fable[d] = opus_fable.get(d, 0) + tokens
+                  daily = []
+                  for d in sorted(totals):
+                      total = totals[d]
+                      daily.append({
+                          "date": d,
+                          "anthropic_token_share_pct": round(100 * anthropic.get(d, 0) / total, 3) if total else None,
+                          "opus_fable_token_share_pct": round(100 * opus_fable.get(d, 0) / total, 3) if total else None,
+                      })
+                  current["openrouter"] = {
+                      "available": True,
+                      "as_of": (payload.get("meta") or {}).get("as_of"),
+                      "start_date": start.isoformat(),
+                      "end_date": end.isoformat(),
+                      "daily": daily,
+                      "latest_anthropic_token_share_pct": daily[-1]["anthropic_token_share_pct"] if daily else None,
+                      "latest_opus_fable_token_share_pct": daily[-1]["opus_fable_token_share_pct"] if daily else None,
+                      "source": "https://openrouter.ai/api/v1/datasets/rankings-daily",
+                  }
+              else:
+                  current["openrouter"]["error"] = f"HTTP {resp.status_code}"
+
+          previous = {}
+          if state_path.exists():
+              try:
+                  previous = json.loads(state_path.read_text(encoding="utf-8"))
+              except Exception:
+                  previous = {}
+
+          alerts = []
+          def compare(label, path, threshold):
+              old = previous
+              new = current
+              for keypart in path:
+                  old = old.get(keypart, {}) if isinstance(old, dict) else {}
+                  new = new.get(keypart, {}) if isinstance(new, dict) else {}
+              if isinstance(old, (int, float)) and isinstance(new, (int, float)):
+                  delta = new - old
+                  if abs(delta) >= threshold:
+                      arrow = "↑" if delta > 0 else "↓"
+                      alerts.append(f"• {label}: {old:.2f}% → {new:.2f}% ({arrow}{abs(delta):.2f}%p)")
+
+          compare("Ramp Fable 5 토큰 비중", ["ramp", "fable_token_share_pct"], 1.0)
+          compare("Ramp Fable 5 지출 비중", ["ramp", "fable_spend_share_pct"], 1.0)
+          compare("Ramp Anthropic 기업 채택률", ["ramp", "anthropic_business_adoption_pct"], 1.0)
+          compare("Ramp OpenAI 기업 채택률", ["ramp", "openai_business_adoption_pct"], 1.0)
+          compare("Ramp Anthropic 벤더 채택률", ["ramp", "anthropic_vendor_adoption_pct"], 2.0)
+          compare("Ramp Anthropic 대기업 채택률", ["ramp", "anthropic_enterprise_adoption_pct"], 2.0)
+          compare("OpenRouter Anthropic 토큰 점유율", ["openrouter", "latest_anthropic_token_share_pct"], 1.5)
+          compare("OpenRouter Opus+Fable 토큰 점유율", ["openrouter", "latest_opus_fable_token_share_pct"], 1.5)
+
+          # Alert if the Anthropic/OpenAI leadership flips in Ramp business adoption.
+          def lead(snapshot):
+              r = snapshot.get("ramp", {}) if isinstance(snapshot, dict) else {}
+              a, o = r.get("anthropic_business_adoption_pct"), r.get("openai_business_adoption_pct")
+              if isinstance(a, (int, float)) and isinstance(o, (int, float)):
+                  return "Anthropic" if a > o else "OpenAI" if o > a else "Tie"
+              return None
+          old_lead, new_lead = lead(previous), lead(current)
+          if old_lead and new_lead and old_lead != new_lead:
+              alerts.append(f"• Ramp 기업 채택률 선두 변경: {old_lead} → {new_lead}")
+
+          # Detect a material Fable price-acceptance regime shift around key levels.
+          old_fs = (previous.get("ramp") or {}).get("fable_spend_share_pct") if previous else None
+          new_fs = current["ramp"].get("fable_spend_share_pct")
+          if isinstance(old_fs, (int, float)) and isinstance(new_fs, (int, float)):
+              for level in (10.0, 15.0, 20.0, 25.0):
+                  if (old_fs < level <= new_fs) or (old_fs >= level > new_fs):
+                      alerts.append(f"• Fable 5 지출 비중 {level:.0f}% 기준선 통과: {old_fs:.2f}% → {new_fs:.2f}%")
+
+          # First run is baseline only; never send a Telegram message just for initialization.
+          is_baseline = not bool(previous)
+          pathlib.Path("out/frontier_model_spend_pending_state.json").write_text(
+              json.dumps(current, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+
+          status = [
+              "# Frontier model spend watch",
+              f"- 확인시각(KST): {current['checked_at_kst']}",
+              f"- Ramp Fable 토큰/지출 비중: {current['ramp'].get('fable_token_share_pct')}% / {current['ramp'].get('fable_spend_share_pct')}%",
+              f"- Ramp Anthropic/OpenAI 기업 채택률: {current['ramp'].get('anthropic_business_adoption_pct')}% / {current['ramp'].get('openai_business_adoption_pct')}%",
+              f"- OpenRouter 정량 추적: {'활성' if current['openrouter'].get('available') else '비활성(OPENROUTER_API_KEY 미설정 또는 API 오류)'}",
+              f"- 알림 이벤트: {len(alerts)}개",
+          ]
+          pathlib.Path("out/frontier_model_spend_status.md").write_text("\n".join(status) + "\n", encoding="utf-8")
+
+          if alerts and not is_baseline:
+              msg = [
+                  "🚨 <b>프론티어 모델 수요 변화 감지</b>",
+                  "",
+                  *alerts,
+                  "",
+                  "<b>해석 기준</b>",
+                  "• Fable 단독 부진과 프론티어(Opus+Fable) 전체 약화를 구분",
+                  "• 저가 모델 확대가 Anthropic 전체 매출·기업 채택률 약화로 이어지는지 별도 확인",
+                  "• OpenRouter는 토큰 점유율과 금액 점유율을 혼동하지 않음",
+                  "",
+                  "출처: Ramp AI Index / Ramp Anthropic vendor page / OpenRouter rankings Data API",
+                  os.environ["RAMP_AI_URL"],
+                  os.environ["RAMP_ANTHROPIC_URL"],
+                  os.environ["OPENROUTER_RANKINGS_URL"],
+              ]
+              pathlib.Path("out/frontier_model_spend_alert.html").write_text("\n".join(msg), encoding="utf-8")
+          PY
+
+      - name: Publish watcher summary
+        if: always()
+        run: |
+          if [ -f out/frontier_model_spend_status.md ]; then
+            cat out/frontier_model_spend_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send meaningful change to Telegram
+        if: hashFiles('out/frontier_model_spend_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+          text = pathlib.Path("out/frontier_model_spend_alert.html").read_text(encoding="utf-8")
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
+          with urllib.request.urlopen(req, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_id={result['result'].get('message_id')}")
+          PY
+
+      - name: Persist state
+        if: success() && hashFiles('out/frontier_model_spend_pending_state.json') != ''
+        run: cp out/frontier_model_spend_pending_state.json "$STATE_FILE"
+
+      - name: Commit watcher state
+        if: success() && hashFiles('data/frontier_model_spend_watch_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/frontier_model_spend_watch_state.json
+          if git diff --cached --quiet; then
+            echo "Frontier model watch state unchanged"
+          else
+            git commit -m "Record frontier model spend watch state"
+            git pull --rebase origin main
+            git push
+          fi
