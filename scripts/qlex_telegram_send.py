@@ -452,7 +452,12 @@ def render_html(text: str) -> str:
                 target = clean_source_url(url)
                 rendered.append(f'- <a href="{html.escape(target, quote=True)}">원문 뉴스보기</a>')
                 continue
-        rendered.append(html.escape(line, quote=False))
+
+        escaped = html.escape(line, quote=False)
+        # 바이오 알림의 Markdown식 굵은 표시를 Telegram HTML로 변환해
+        # 제목과 핵심 라벨이 한눈에 들어오도록 한다.
+        escaped = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', escaped)
+        rendered.append(escaped)
     return '\n'.join(rendered)
 
 
