@@ -31,6 +31,26 @@ ACTION_TERMS = [
 ]
 SUBJECT_TERMS = ["리벨리온", "rebellions", "rebel", "atom-max", "atom max", "atom"]
 
+SPECULATION_TERMS = [
+    "특징주", "관련주", "부각", "기대감", "가능성", "검토", "논의", "거론",
+    "상한가", "급등", "주가", "인수 가능", "ipo 부각"
+]
+
+FOREIGN_PARTNER_MARKERS = [
+    "arm", "marvell", "기가컴퓨팅", "giga computing", "gigabyte", "페가트론", "pegatron",
+    "토멘디바이스", "tomen devices", "aramco", "아람코", "wa'ed", "말레이시아 주정부"
+]
+
+KNOWN_KOREAN_PARTNERS = [
+    "삼성전자", "sk텔레콤", "skt", "kt cloud", "kt클라우드", "네이버클라우드", "nhn클라우드",
+    "세미파이브", "에이디테크놀로지", "코아시아세미", "큐알티", "코난테크놀로지",
+    "코오롱베니트", "이글루코퍼레이션", "슈퍼브에이아이", "솔트룩스", "스탠다드에너지",
+    "엘리스그룹", "이노뎁", "루닛", "워트인텔리전스", "cck솔루션", "에코피스",
+    "베슬ai", "엑셈", "시즐", "라이너", "kb금융", "가비아", "제이디원",
+    "아이에이", "아이에이클라우드", "몬드리안에이아이", "스퀴즈비츠", "비투엔", "모레",
+    "한국정보통신기술협회", "한국컴퓨팅산업협회"
+]
+
 GOOGLE_QUERIES = [
     '리벨리온 (협력 OR 업무협약 OR MOU OR 파트너 OR 공동개발)',
     '리벨리온 (공급 OR 수주 OR 계약 OR 도입 OR 채택 OR 상용화 OR 양산)',
@@ -71,6 +91,19 @@ def key_for(title):
 def relevant(title, summary=""):
     text = (norm_text(title) + " " + norm_text(summary)).lower()
     return any(x in text for x in SUBJECT_TERMS) and any(x in text for x in ACTION_TERMS)
+
+
+def domestic_candidate(title, summary=""):
+    text = (norm_text(title) + " " + norm_text(summary)).lower()
+    if any(x in text for x in SPECULATION_TERMS):
+        return False
+    if any(x in text for x in KNOWN_KOREAN_PARTNERS):
+        return True
+    if any(x in text for x in FOREIGN_PARTNER_MARKERS):
+        return False
+    # Keep new, previously unknown Korean partners discoverable when the article explicitly
+    # frames the deal around Korean/domestic AI infrastructure.
+    return any(x in text for x in ["국내", "국산", "한국형", "k-ai", "k-npu", "k ai", "k npu"])
 
 
 def classify(title, summary=""):
@@ -120,6 +153,8 @@ def collect_official():
             seen_urls.add(href)
             if not relevant(title):
                 continue
+            if not domestic_candidate(title):
+                continue
             items.append({
                 "title": title,
                 "url": href.split("#")[0],
@@ -152,6 +187,8 @@ def collect_google_news():
             source = norm_text(source_node.text if source_node is not None else "Google News")
             pub = parse_pubdate(node.findtext("pubDate"))
             if not relevant(title, summary):
+                continue
+            if not domestic_candidate(title, summary):
                 continue
             items.append({
                 "title": title,
