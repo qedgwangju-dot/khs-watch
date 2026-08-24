@@ -9,6 +9,8 @@ Principles:
 - A JGB 10Y 3% print is a structural/fiscal boundary, never an automatic unwind trigger.
 - Red requires an active yen-strength shock plus funding/spread pressure and volatility or
   cross-asset deleveraging confirmation.
+- User-facing Telegram alerts must not expose raw Python/network exception strings. Retrieval
+  failures are summarized in Korean while raw errors remain in the JSON/artifacts for audit.
 
 Inputs:
   out/yen_carry_composite_alert.json
@@ -122,7 +124,87 @@ def refine(payload: dict, confirm: dict) -> dict:
     }
 
 
-def rewrite_body(body: str, refined: dict) -> str:
+def concise_failure(raw: str) -> tuple[str, str]:
+    """Return a compact user-facing source name and reason without losing the audit trail."""
+    text = str(raw or "")
+    lower = text.lower()
+
+    if text.startswith("Japan MOF 해외증권투자:"):
+        source = "일본 재무성 해외증권투자"
+    elif text.startswith("CFTC:"):
+        source = "CFTC 레버리지 포지션"
+    elif text.startswith("Japan MOF 공동개입:"):
+        source = "일본 재무성 공동개입 자료"
+    else:
+        source = "보조자료"
+
+    reasons = []
+    if "timeout" in lower:
+        reasons.append("응답 시간초과")
+    if "403" in lower or "forbidden" in lower:
+        reasons.append("대체 경로 접속 차단")
+    if "connection reset" in lower or "errno 104" in lower:
+        reasons.append("연결 재설정")
+    if "parse" in lower or "decode" in lower or "json" in lower:
+        reasons.append("자료 형식 확인 필요")
+
+    # Deduplicate while preserving order.
+    reasons = list(dict.fromkeys(reasons))
+    if not reasons:
+        reasons = ["원문 재조회 실패"]
+
+    return source, "·".join(reasons)
+
+
+def clean_failure_section(body: str, errors: list[str]) -> str:
+    if not errors:
+        return body
+
+    notices = []
+    for raw in errors:
+        source, reason = concise_failure(raw)
+        notices.append(f"- {source} — 일시적 확인 지연({reason}) / 다음 실행에서 자동 재시도")
+
+    # Keep user-facing status concise. Raw exception text remains in alert JSON/artifacts.
+    clean_block = (
+        "자료 확인 상태\n"
+        + "\n".join(notices)
+        + "\n※ 확인이 지연된 항목은 이번 위험도 판정의 확정 근거에서 제외했습니다."
+    )
+
+    # Replace the raw '확인 실패' block, if present.
+    body = re.sub(
+        r"\n\n확인 실패\n(?:- .*?(?:\n|$))+",
+        "\n\n" + clean_block + "\n",
+        body,
+        flags=re.MULTILINE,
+    )
+
+    # If the upstream body did not contain a raw failure block, append a clean status block.
+    if "자료 확인 상태" not in body:
+        body = body.rstrip() + "\n\n" + clean_block
+
+    # Improve the inline data row so it does not look like the statistic itself is missing.
+    if any(str(e).startswith("Japan MOF 해외증권투자:") for e in errors):
+        body = body.replace(
+            "- 일본 재무성 해외증권투자: 확인 불가",
+            "- 일본 재무성 해외증권투자: 이번 실행 확인 지연(원문 재조회 실패)",
+        )
+    if any(str(e).startswith("CFTC:") for e in errors):
+        body = body.replace(
+            "- CFTC 레버리지 펀드: 확인 불가",
+            "- CFTC 레버리지 펀드: 이번 실행 확인 지연(원문 재조회 실패)",
+        )
+    if any(str(e).startswith("Japan MOF 공동개입:") for e in errors):
+        body = body.replace(
+            "- 정책개입 신뢰도: 공식 원문 재확인 실패",
+            "- 정책개입 자료: 이번 실행 확인 지연(공식 원문 재조회 실패)",
+        )
+
+    return body
+
+
+def rewrite_body(body: str, refined: dict, errors: list[str]) -> str:
     unwind_line = f"- 캐리 청산 위험: {refined['emoji']} {refined['label']}"
     rebuild_line = f"- 엔화 재약세·캐리 재구축: {refined['rebuild_emoji']} {refined['rebuild_label']}"
 
@@ -133,7 +215,8 @@ def rewrite_body(body: str, refined: dict) -> str:
     if marker not in body:
         anchor = "※ 두 판정은 서로 다른 질문이며 동시에 높거나 서로 엇갈릴 수 있습니다."
         body = body.replace(anchor, anchor + "\n" + marker)
-    return body
+
+    return clean_failure_section(body, errors)
 
 
 def main() -> int:
@@ -153,7 +236,8 @@ def main() -> int:
     TITLE_PATH.write_text(title + "\n", encoding="utf-8")
 
     body = BODY_PATH.read_text(encoding="utf-8")
-    BODY_PATH.write_text(rewrite_body(body, refined).rstrip() + "\n", encoding="utf-8")
+    errors = payload.get("errors") or []
+    BODY_PATH.write_text(rewrite_body(body, refined, errors).rstrip() + "\n", encoding="utf-8")
 
     print(json.dumps(refined, ensure_ascii=False))
     return 0
