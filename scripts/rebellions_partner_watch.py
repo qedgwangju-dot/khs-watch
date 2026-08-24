@@ -77,6 +77,10 @@ def norm_text(value):
     return value
 
 
+def tg_html(value):
+    return html.escape(str(value or ""), quote=True)
+
+
 def norm_title(value):
     v = norm_text(value).lower()
     v = re.sub(r"\s*[-|]\s*(리벨리온|rebellions).*$", "", v)
@@ -282,18 +286,23 @@ def main():
 
     if fresh:
         lines = [
-            "리벨리온 협력·수주·도입 웹감시",
+            "<b>리벨리온 협력·수주·도입 웹감시</b>",
             "",
             f"조회시각: {now:%Y-%m-%d %H:%M} KST",
             f"신규 핵심 변화: {len(fresh)}건",
             "",
         ]
         for idx, (k, item) in enumerate(fresh[:8], start=1):
+            category = tg_html(classify(item['title'], item.get('summary','')))
+            title = tg_html(item['title'])
+            source = tg_html(item['source'])
+            published = tg_html(item.get('published_kst') or '페이지 직접 확인')
+            link = tg_html(item['url'])
             lines.extend([
-                f"{idx}. [{classify(item['title'], item.get('summary',''))}] {item['title']}",
-                f"- 출처: {item['source']}" + (" · 공식" if item["official"] else ""),
-                f"- 공개시각: {item.get('published_kst') or '페이지 직접 확인'}",
-                f"- 링크: {item['url']}",
+                f"{idx}. [{category}] {title}",
+                f"- 출처: {source}" + (" · 공식" if item["official"] else ""),
+                f"- 공개시각: {published}",
+                f'- <a href="{link}">원문</a>',
                 "",
             ])
             seen[k] = {
