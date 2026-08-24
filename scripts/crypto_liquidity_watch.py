@@ -272,14 +272,23 @@ def signed_pct(value: float | None) -> str:
 
 
 def market_read(rates: dict, etf: dict) -> str:
+    rate_date = rates.get("date")
+    etf_date = etf.get("date")
+    if not rate_date or not etf_date:
+        return "종합판정 보류: 기준일 확인 불가"
+    if rate_date != etf_date:
+        return f"종합판정 보류: 기준일 불일치(미 국채 {rate_date} / BTC ETF {etf_date})"
+    if etf.get("status") != "complete":
+        return f"종합판정 보류: BTC ETF {etf_date} 집계 미완료"
+
     r10 = rates.get("daily_10y_bp", 0.0)
     r30 = rates.get("daily_30y_bp", 0.0)
     flow = etf.get("total_usd_m", 0.0)
     if r10 <= 0 and r30 <= 0 and flow > 0:
-        return "위험자산에 우호적: 장기금리 하락 + BTC ETF 순유입"
+        return f"{rate_date} 기준 위험자산에 우호적: 장기금리 하락 + BTC ETF 순유입"
     if r10 >= 0 and r30 >= 0 and flow < 0:
-        return "위험자산에 불리: 장기금리 상승 + BTC ETF 순유출"
-    return "혼조: 금리와 ETF 자금흐름이 같은 방향이 아님"
+        return f"{rate_date} 기준 위험자산에 불리: 장기금리 상승 + BTC ETF 순유출"
+    return f"{rate_date} 기준 혼조: 금리와 ETF 자금흐름이 같은 방향이 아님"
 
 
 def main() -> None:
@@ -399,16 +408,17 @@ def main() -> None:
         ]
         if rates:
             lines += [
-                "미 국채",
-                f"• 10Y {rates.get('10y', 0):.2f}% | 전일 {rates.get('daily_10y_bp', 0):+.1f}bp | 5거래일 {rates.get('five_day_10y_bp', 0):+.1f}bp",
-                f"• 30Y {rates.get('30y', 0):.2f}% | 전일 {rates.get('daily_30y_bp', 0):+.1f}bp | 5거래일 {rates.get('five_day_30y_bp', 0):+.1f}bp",
+                f"미 국채 — 미 재무부 공식 수익률곡선 기준일 {rates.get('date', 'N/A')}",
+                f"• 10Y {rates.get('10y', 0):.2f}% | 직전 공식일({rates.get('prev_date', 'N/A')}) 대비 {rates.get('daily_10y_bp', 0):+.1f}bp | 5거래일 {rates.get('five_day_10y_bp', 0):+.1f}bp",
+                f"• 30Y {rates.get('30y', 0):.2f}% | 직전 공식일({rates.get('prev_date', 'N/A')}) 대비 {rates.get('daily_30y_bp', 0):+.1f}bp | 5거래일 {rates.get('five_day_30y_bp', 0):+.1f}bp",
+                "※ 미 재무부 일일 수익률은 장중 실시간 시세가 아니라 약 3:30 PM ET 시장 호가를 바탕으로 산출되는 공식 일일값",
                 "",
             ]
         if etf:
             etf_status = "잠정 집계" if etf.get("status") == "partial" else "집계 완료"
             lines += [
-                "BTC 현물 ETF",
-                f"• 최신: {etf.get('date')} {signed_millions(etf.get('total_usd_m', 0.0))} ({etf_status})",
+                f"BTC 현물 ETF — Farside 기준 최신 유효일 {etf.get('date')}",
+                f"• 최신: {etf.get('date')} {signed_millions(etf.get('total_usd_m', 0.0))} ({etf_status}, 개별 ETF 합계 재검산 {'일치' if etf.get('latest_total_validated') else '불일치'})",
                 f"• 직전: {etf.get('prev_date')} {signed_millions(etf.get('prev_total_usd_m', 0.0))}",
                 f"• 전일 대비: {signed_millions(etf.get('day_change_usd_m', 0.0))} ({signed_pct(etf.get('day_change_pct'))})",
                 f"• 최근 5거래일: {signed_millions(etf.get('last5_usd_m', 0.0))}",
