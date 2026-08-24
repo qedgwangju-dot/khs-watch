@@ -1,0 +1,121 @@
+name: Treasury buyback media signal Telegram alert
+
+on:
+  push:
+    paths:
+      - "scripts/treasury_buyback_media_watch.py"
+      - ".github/workflows/treasury-buyback-media-telegram-alert.yml"
+  schedule:
+    - cron: "*/15 12-23 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: treasury-buyback-media-telegram-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate watcher
+        run: python -m py_compile scripts/treasury_buyback_media_watch.py
+
+      - name: Check trusted media signals
+        run: python scripts/treasury_buyback_media_watch.py
+
+      - name: Send interpreted alert
+        if: hashFiles('out/treasury_buyback_media_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
+          PRIMARY_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          TELEGRAM_CHAT_ID="${PRIMARY_CHAT_ID:-$FALLBACK_CHAT_ID}"
+          export TELEGRAM_CHAT_ID
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token=os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat=os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected=os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=25) as r:
+              ident=json.loads(r.read().decode())
+          actual=str((ident.get("result") or {}).get("username") or "")
+          if not ident.get("ok") or actual.lower()!=expected.lower():
+              raise RuntimeError(f"잘못된 봇 경로: expected @{expected}, got @{actual or 'unknown'}")
+          title=pathlib.Path("out/treasury_buyback_media_title.txt").read_text(encoding="utf-8").strip()
+          body=pathlib.Path("out/treasury_buyback_media_alert.html").read_text(encoding="utf-8").strip()
+          text=f"<b>{title}</b>\n\n{body}"
+          if len(text)>4096:
+              raise RuntimeError(f"Telegram text too long: {len(text)}")
+          data=urllib.parse.urlencode({"chat_id":chat,"text":text,"parse_mode":"HTML","disable_web_page_preview":"true"}).encode()
+          req=urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage",data=data,method="POST")
+          with urllib.request.urlopen(req,timeout=25) as r:
+              result=json.loads(r.read().decode())
+          if not result.get("ok"):
+              raise RuntimeError(result)
+          pathlib.Path("out/treasury_buyback_media_telegram_confirmed.json").write_text(
+              json.dumps({"bot_username":actual,"message_id":(result.get("result") or {}).get("message_id")},ensure_ascii=False,indent=2)+"\n",
+              encoding="utf-8")
+          PY
+
+      - name: Finalize state
+        if: success() && hashFiles('data/treasury_buyback_media_state_next.json') != ''
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          src=pathlib.Path("data/treasury_buyback_media_state_next.json")
+          state=json.loads(src.read_text(encoding="utf-8"))
+          alert=pathlib.Path("out/treasury_buyback_media_alert.html").exists()
+          confirmed=pathlib.Path("out/treasury_buyback_media_telegram_confirmed.json").exists()
+          if alert and not confirmed:
+              raise RuntimeError("중요 신호 감지 후 텔레그램 확인 없음")
+          pending=state.pop("pending",None)
+          if pending:
+              seen=list(state.get("seen",[]))
+              if pending not in seen:
+                  seen.append(pending)
+              state["seen"]=seen[-100:]
+          pathlib.Path("data/treasury_buyback_media_state.json").write_text(
+              json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+
+      - name: Commit state
+        if: success() && hashFiles('data/treasury_buyback_media_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/treasury_buyback_media_state.json
+          if git diff --cached --quiet; then
+            echo "상태 변경 없음"
+          else
+            git commit -m "Update Treasury buyback media signal state"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: treasury-buyback-media-${{ github.run_id }}
+          path: |
+            out/treasury_buyback_media_status.md
+            out/treasury_buyback_media_alert.html
+            out/treasury_buyback_media_detail.json
+            out/treasury_buyback_media_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
