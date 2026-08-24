@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-08-24T22:13:06+09:00",
+  "updated_at_kst": "2026-08-24T22:17:20+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -33,6 +33,9 @@
     "source_latest_date": "2026-08-24",
     "source_latest_status": "pending",
     "pending_date": "2026-08-24",
+    "latest_recomputed_total_usd_m": 307.5,
+    "latest_total_gap_usd_m": 0.0,
+    "latest_total_validated": true,
     "last5_usd_m": 1917.8,
     "last5_dates": [
       "2026-08-17",
@@ -40,6 +43,13 @@
       "2026-08-19",
       "2026-08-20",
       "2026-08-21"
+    ],
+    "last5_values_usd_m": [
+      297.5,
+      189.3,
+      517.2,
+      606.3,
+      307.5
     ],
     "prev5_usd_m": -385.2,
     "prev5_dates": [
@@ -49,8 +59,17 @@
       "2026-08-13",
       "2026-08-14"
     ],
+    "prev5_values_usd_m": [
+      -144.6,
+      7.8,
+      -61.1,
+      -131.1,
+      -56.2
+    ],
+    "five_day_compare_valid": true,
     "five_day_change_usd_m": 2303.0,
-    "five_day_change_pct": null
+    "five_day_change_pct": null,
+    "five_day_direction": "순유출→순유입 전환"
   },
   "sources": {
     "treasury_buyback_xml": "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.xml",
