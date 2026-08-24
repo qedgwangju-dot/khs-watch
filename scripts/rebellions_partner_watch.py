@@ -26,7 +26,7 @@ UA = "Mozilla/5.0 (compatible; RebellionsPartnerWatch/1.0; +https://github.com/q
 ACTION_TERMS = [
     "협력", "업무협약", "mou", "파트너", "공동개발", "공동 개발", "공동사업", "공동 사업",
     "공급", "수주", "계약", "도입", "채택", "상용", "출시", "양산", "생산",
-    "실증", "poc", "검증", "고객", "npu", "rebel", "atom", "ai 서버", "ai server",
+    "실증", "poc", "검증", "고객", "제휴", "납품", "선정", "탑재", "장착",
     "투자", "지분", "인수", "합병", "유통", "총판", "var"
 ]
 SUBJECT_TERMS = ["리벨리온", "rebellions", "rebel", "atom-max", "atom max", "atom"]
