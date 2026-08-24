@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-08-25T07:52:02+09:00",
+  "updated_at_kst": "2026-08-25T08:17:55+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -22,21 +22,21 @@
   },
   "btc_etf": {
     "date": "2026-08-24",
-    "total_usd_m": 1.4,
+    "total_usd_m": 20.8,
     "status": "partial",
-    "reported_funds": 1,
-    "missing_funds": 11,
+    "reported_funds": 5,
+    "missing_funds": 7,
     "prev_date": "2026-08-21",
     "prev_total_usd_m": 307.5,
-    "day_change_usd_m": -306.1,
-    "day_change_pct": -99.5,
+    "day_change_usd_m": -286.7,
+    "day_change_pct": -93.2,
     "source_latest_date": "2026-08-24",
     "source_latest_status": "partial",
     "pending_date": null,
-    "latest_recomputed_total_usd_m": 1.4,
+    "latest_recomputed_total_usd_m": 20.8,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
-    "last5_usd_m": 1621.7,
+    "last5_usd_m": 1641.1,
     "last5_dates": [
       "2026-08-18",
       "2026-08-19",
@@ -49,7 +49,7 @@
       517.2,
       606.3,
       307.5,
-      1.4
+      20.8
     ],
     "prev5_usd_m": 56.9,
     "prev5_dates": [
@@ -67,8 +67,8 @@
       297.5
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": 1564.8,
-    "five_day_change_pct": 2750.1,
+    "five_day_change_usd_m": 1584.2,
+    "five_day_change_pct": 2784.2,
     "five_day_direction": "순자금흐름 개선"
   },
   "sources": {
