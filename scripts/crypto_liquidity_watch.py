@@ -269,10 +269,10 @@ def main() -> None:
             lines += [f"판단: {market_read(rates, etf)}"]
         lines += [
             "",
-            "공식/데이터 원천:",
-            TREASURY_BUYBACK_PAGE,
-            TREASURY_RATES_URL,
-            FARSIDE_BTC_ETF_URL,
+            "공식·데이터 원천:",
+            f'• 미 재무부 바이백: <a href="{TREASURY_BUYBACK_PAGE}">원문</a>',
+            f'• 미 국채 금리: <a href="{TREASURY_RATES_URL}">원문</a>',
+            f'• BTC 현물 ETF: <a href="{FARSIDE_BTC_ETF_URL}">원문</a>',
             "",
             "※ CLARITY Act는 기존 별도 공식 웹감시가 계속 담당합니다.",
         ]
