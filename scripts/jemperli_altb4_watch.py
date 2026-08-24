@@ -399,13 +399,17 @@ def build_item_summary(item: Item) -> str:
     )
 
     lines = [
-        headline,
+        f"**{headline}**",
         "",
-        f"- 규제: {population} · {regulatory_line}",
-        f"- 임상: {trial_line}",
-        f"- 알테오젠: {alteogen_line}",
-        f"- 다음 확인: {next_line}",
-        f"- 원문 확인: {'GSK·공식자료 본문 직접 열람' if official and body else ('기사 본문 직접 열람' if body else '원문 본문 자동 추출 불완전')}",
+        f"- **규제:** {population}\n  {regulatory_line}",
+        "",
+        f"- **임상:** {trial_line}",
+        "",
+        f"- **알테오젠:** {alteogen_line}",
+        "",
+        f"- **다음 확인:** {next_line}",
+        "",
+        f"- **원문 확인:** {'GSK 공식자료 본문 직접 열람' if official and body else ('기사 본문 직접 열람' if body else '원문 본문 자동 추출 불완전')}",
         f"- 원문: {resolved}",
     ]
     return "\n".join(lines)
