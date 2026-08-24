@@ -34,7 +34,7 @@ FED_H41 = "https://www.federalreserve.gov/releases/h41/current/h41.htm"
 TREASURY_QRA = "https://home.treasury.gov/news/press-releases/sb0590"
 TREASURY_BORROWING = "https://home.treasury.gov/news/press-releases/sb0584"
 TREASURY_BUYBACK_FAQ = "https://www.treasurydirect.gov/help-center/faqs/buyback-faqs/"
-TREASURY_OIG_AFR = "https://oig.treasury.gov/system/files/2026-02/OIG-26-014-%28508%29.pdf"
+TREASURY_OIG_AFR = "https://oig.treasury.gov/system/files/2026-02/OIG-26-014-%28508%29.pdf"\nFRED_FX = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXKOUS"
 
 QUERIES = (
     'Bessent Treasury buyback "general account"',
@@ -51,7 +51,7 @@ MATERIAL_TERMS = (
     "more than $4 billion", "could increase", "increase further", "buyback",
 )
 KEY_INTERVENTION_TERMS = ("buyback", "buybacks", "repurchase", "repurchases")
-FORMAT_REVISION = 2
+FORMAT_REVISION = 3
 
 
 def fetch(url: str) -> str:
@@ -69,6 +69,27 @@ def load_state() -> dict:
 
 def strip_html(s: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html.unescape(s or ""))).strip()
+
+
+def latest_fx() -> tuple[float, str]:
+    try:
+        text = fetch(FRED_FX)
+        rows = [line.strip().split(",") for line in text.splitlines()[1:] if "," in line]
+        for date, value, *_ in reversed(rows):
+            if value and value != ".":
+                return float(value), date
+    except Exception:
+        pass
+    return 1384.63, "2026-08-24 fallback"
+
+
+def fmt_krw(usd_bn: float, fx: float) -> str:
+    trillion = usd_bn * fx / 1000.0
+    return f"약 {trillion:,.1f}조원"
+
+
+def money_label(usd_bn: float, fx: float, usd_text: str) -> str:
+    return f"{usd_text}({fmt_krw(usd_bn, fx)})"
 
 
 def news_items() -> list[dict]:
@@ -123,19 +144,19 @@ def is_tga_signal(item: dict) -> bool:
     )
 
 
-def build_tga_alert(item: dict) -> tuple[str, str, dict]:
+def build_tga_alert(item: dict, fx: float, fx_date: str) -> tuple[str, str, dict]:
     source = item.get("source") or "신뢰 보도"
     source_link = item.get("link") or TREASURY_QRA
     title = "🇺🇸 미 재무부, TGA를 장기국채 바이백 재원으로 활용 가능 — ‘1조달러 전액 투입’은 아님"
     body = "\n".join([
         "<b>핵심 판단</b>",
-        "🟢 재무부가 약 1조달러 규모의 TGA(재무부 일반계정)를 장기국채 바이백의 <b>추가 재원·시간조절 수단</b>으로 활용할 수 있다는 보도입니다. 장기물 수급·금리에는 우호적이지만, 1조달러를 전부 시장에 투입한다는 확정 계획은 아닙니다.",
+        f"🟢 재무부가 약 1조달러({fmt_krw(1000.0, fx)}) 규모의 TGA(재무부 일반계정)를 장기국채 바이백의 <b>추가 재원·시간조절 수단</b>으로 활용할 수 있다는 보도입니다. 장기물 수급·금리에는 우호적이지만, 1조달러를 전부 시장에 투입한다는 확정 계획은 아닙니다.",
         "",
         "<b>확정 사실 / 보도 단계</b>",
         f"• <b>보도 단계:</b> {source}가 재무부 고위 관계자들을 인용해 TGA로 미 국채 바이백 자금을 댈 수 있다고 전했습니다.",
-        "• <b>공식 확정:</b> 재무부는 8월 19일 10~20년·20~30년 비지표물 바이백을 회당 최대 20억달러 → 최소 40억달러로 확대했습니다.",
-        "• <b>공식 숫자:</b> Fed H.4.1의 8월 19일 TGA는 약 9,364억달러로 ‘거의 1조달러’와 대체로 일치합니다.",
-        "• <b>공식 계획:</b> 8월 QRA는 9월말 TGA 9,500억달러, 10월말 1조500억달러±500억달러를 예상합니다.",
+        f"• <b>공식 확정:</b> 재무부는 8월 19일 10~20년·20~30년 비지표물 바이백을 회당 최대 20억달러({fmt_krw(2.0, fx)}) → 최소 40억달러({fmt_krw(4.0, fx)})로 확대했습니다.",
+        f"• <b>공식 숫자:</b> Fed H.4.1의 8월 19일 TGA는 약 9,364억달러({fmt_krw(936.4, fx)})로 ‘거의 1조달러’와 대체로 일치합니다.",
+        f"• <b>공식 계획:</b> 8월 QRA는 9월말 TGA 9,500억달러({fmt_krw(950.0, fx)}), 10월말 1조500억달러({fmt_krw(1050.0, fx)})±500억달러({fmt_krw(50.0, fx)})를 예상합니다.",
         "",
         "<b>가장 중요한 오해 방지</b>",
         "• 재무부가 <b>회사채를 사는 이야기가 아닙니다.</b> 매입 대상은 미국 정부가 발행한 국채입니다.",
@@ -159,18 +180,19 @@ def build_tga_alert(item: dict) -> tuple[str, str, dict]:
         "‘Fed 개입 필요가 줄어든다’는 것은 <b>시장 해석</b>이지 공식 확정 정책이 아닙니다.",
         "",
         "<b>다음 확인</b>",
-        "① 실제 바이백 회당 금액이 40억달러를 얼마나 넘는지 ② TGA가 실제 감소하는지 ③ 이후 Bill 발행으로 얼마나 재충전하는지 ④ 10년·30년 명목·실질금리와 기간 프리미엄 ⑤ 11월 4일 QRA.",
+        f"① 실제 바이백 회당 금액이 40억달러({fmt_krw(4.0, fx)})를 얼마나 넘는지 ② TGA가 실제 감소하는지 ③ 이후 Bill 발행으로 얼마나 재충전하는지 ④ 10년·30년 명목·실질금리와 기간 프리미엄 ⑤ 11월 4일 QRA.",
         "",
         "<b>한 줄 결론</b>",
-        "‘재무부가 1조달러를 푼다’가 아니라, 약 9,364억달러 TGA를 장기국채 바이백의 추가 재원·타이밍 도구로 쓸 수 있다는 신호입니다. 단기 장기금리·AI 할인율에는 우호적이지만 구조적 부채 해결책이나 QE는 아닙니다.",
+        f"‘재무부가 1조달러를 푼다’가 아니라, 약 9,364억달러({fmt_krw(936.4, fx)}) TGA를 장기국채 바이백의 추가 재원·타이밍 도구로 쓸 수 있다는 신호입니다. 단기 장기금리·AI 할인율에는 우호적이지만 구조적 부채 해결책이나 QE는 아닙니다.",
         "",
+        f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.2f}원",
         f'<a href="{source_link}">보도 원문</a> · <a href="https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-nasdaq-nvidia-earnings-results-jackson-hole/card/10-year-yield-drifts-lower-on-report-treasury-could-tap-tga-for-bond-buybacks-Z0to77hREQ4eoFTuD7Ao">시장 반응</a> · <a href="{FED_H41}">Fed TGA 원문</a> · <a href="{TREASURY_QRA}">8월 QRA</a> · <a href="{TREASURY_BUYBACK_FAQ}">바이백 설명</a>',
     ])
     detail = {
         "type": "tga_buyback_media_signal",
         "format_revision": FORMAT_REVISION,
         "item": item,
-        "checked_kst": datetime.now(KST).isoformat(timespec="seconds"),
+        "fx": fx,\n        "fx_date": fx_date,\n        "checked_kst": datetime.now(KST).isoformat(timespec="seconds"),
     }
     return title, body, detail
 
@@ -186,7 +208,7 @@ def main() -> int:
 
     state = load_state()
     seen = set(state.get("seen", []))
-    items = sorted(news_items(), key=lambda x: parse_pub_epoch(x.get("pubDate", "")), reverse=True)
+    fx, fx_date = latest_fx()\n    items = sorted(news_items(), key=lambda x: parse_pub_epoch(x.get("pubDate", "")), reverse=True)
     force_format_resend = int(state.get("format_revision", 0) or 0) < FORMAT_REVISION
     if force_format_resend:
         new = [x for x in items if is_tga_signal(x)]
@@ -198,7 +220,7 @@ def main() -> int:
 
     if new:
         item = new[0]
-        title, body, detail = build_tga_alert(item)
+        title, body, detail = build_tga_alert(item, fx, fx_date)
         TITLE.write_text(title + "\n", encoding="utf-8")
         if len(title) + 2 + len(body) > 4096:
             raise RuntimeError(f"Telegram message too long: {len(title) + 2 + len(body)}")
