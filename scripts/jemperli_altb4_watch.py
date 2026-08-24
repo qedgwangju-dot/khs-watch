@@ -331,10 +331,11 @@ def build_item_summary(item: Item) -> str:
 
     rectal = any(x in low for x in ("rectal cancer", "직장암"))
     priority = "priority review" in low or "우선 검토" in low
+
     if rectal and priority:
-        headline = "GSK Jemperli, dMMR/MSI-H 국소 진행성 직장암 적응증 FDA 우선 검토 수락"
+        headline = "GSK Jemperli, 직장암 적응증 FDA 우선 검토"
     else:
-        headline = "GSK Jemperli 관련 신규 규제·임상 업데이트"
+        headline = "GSK Jemperli 규제·임상 업데이트"
 
     population = (
         "이전 치료를 받지 않은 2·3기 dMMR/MSI-H 국소 진행성 직장암"
@@ -344,73 +345,67 @@ def build_item_summary(item: Item) -> str:
 
     regulatory: list[str] = []
     if "supplemental biologics license" in low or "sbla" in low:
-        regulatory.append("FDA가 추가 생물학적 제제 허가 신청(sBLA)을 접수")
+        regulatory.append("sBLA 접수")
     if priority:
-        regulatory.append("우선 검토 지정")
-    pdufa = re.search(r"(?:PDUFA[^.]{0,80}?|action date[^.]{0,50}?)(February\s+2027|Feb(?:ruary)?\.?\s+2027)", full, re.I)
+        regulatory.append("우선 검토")
+    pdufa = re.search(
+        r"(?:PDUFA[^.]{0,80}?|action date[^.]{0,50}?)(February\s+2027|Feb(?:ruary)?\.?\s+2027)",
+        full,
+        re.I,
+    )
     if pdufa or ("february 2027" in low and "pdufa" in low):
-        regulatory.append("PDUFA 결정 예정 시점은 2027년 2월")
+        regulatory.append("PDUFA 2027년 2월")
     if contains_any(full, ("National Priority Voucher", "Commissioner's National Priority Voucher")):
-        regulatory.append("National Priority Voucher 신속 심사 대상이어서 FDA 결정이 2027년 2월보다 앞당겨질 가능성")
+        regulatory.append("National Priority Voucher 적용 시 결정 시점 추가 단축 가능")
     if "project orbis" in low:
-        regulatory.append("Project Orbis를 통한 국제 규제기관 공동 심사 대상")
-    regulatory_line = " · ".join(regulatory) if regulatory else "규제 단계는 원문 추가 확인 필요"
+        regulatory.append("Project Orbis 병행")
+    regulatory_line = " · ".join(regulatory) if regulatory else "규제 단계 추가 확인 필요"
 
     trial_parts: list[str] = []
     if "azur-1" in low:
-        trial_parts.append("근거 임상은 단일군 등록 2상 AZUR-1")
-    enroll = re.search(r"\b(154)\s+(?:patients|participants)", full, re.I)
-    if enroll:
-        trial_parts.append("등록환자 154명")
+        trial_parts.append("AZUR-1 단일군 2상")
+    if re.search(r"\b154\s+(?:patients|participants)", full, re.I):
+        trial_parts.append("154명")
     if "500mg" in low or "500 mg" in low:
-        trial_parts.append("500mg 정맥주사를 3주마다 투여")
+        trial_parts.append("500mg 정맥주사")
+    if "every three weeks" in low or "every 3 weeks" in low:
+        trial_parts.append("3주 간격")
     if "nine cycles" in low:
-        trial_parts.append("총 9회 투여")
+        trial_parts.append("9회")
     if "six months" in low:
-        trial_parts.append("약 6개월 치료")
-    trial_line = " · ".join(trial_parts) if trial_parts else "임상 세부사항은 원문 추가 확인 필요"
+        trial_parts.append("약 6개월")
 
     result_parts: list[str] = []
     if "clinical complete response" in low or "ccr12" in low:
-        result_parts.append("12개월 임상적 완전반응(cCR12)을 의미 있게 지속")
-    if "no detectable signs of cancer" in low:
-        result_parts.append("치료 후 1년 이상 암이 검출되지 않은 환자 비율을 근거로 제출")
+        result_parts.append("12개월 임상적 완전반응(cCR12) 지속")
     if any(x in low for x in ("eliminate the need for chemotherapy", "eliminating or delaying the need for chemotherapy")):
-        result_parts.append("일부 환자에서 항암화학요법·방사선·수술을 없애거나 늦출 가능성")
-    result_line = " · ".join(result_parts) if result_parts else "핵심 효능 수치는 후속 공개자료에서 추가 확인"
+        result_parts.append("일부 환자에서 화학요법·방사선·수술 회피 또는 지연 가능성")
+    if "safety" in low and "consistent" in low:
+        result_parts.append("안전성은 기존 프로파일과 대체로 일관")
 
-    safety_line = (
-        "기존 고형암에서 알려진 Jemperli 안전성·내약성 프로파일과 대체로 일관"
-        if "safety" in low and "consistent" in low
-        else "안전성 세부 내용은 원문 추가 확인 필요"
-    )
+    trial_line = " · ".join(trial_parts + result_parts)
+    if not trial_line:
+        trial_line = "임상 핵심 수치·결과 추가 확인 필요"
 
     alteogen_line = (
-        "Jemperli(dostarlimab)는 GSK 자회사 Tesaro와 알테오젠이 ALT-B4를 이용한 "
-        "피하주사 제형 개발·상업화 독점 라이선스 계약을 체결한 제품입니다. "
-        "다만 이번 직장암 FDA 신청은 정맥주사 Jemperli의 적응증 확대이므로 ALT-B4 피하주사 허가 자체는 아닙니다. "
-        "적응증이 넓어지면 향후 Jemperli 피하주사 개발·허가가 성공할 경우 적용 가능한 환자·매출 기반이 커지는 간접 재평가 요인입니다."
+        "이번 건은 정맥주사 Jemperli의 적응증 확대이며 ALT-B4 피하주사 허가 자체는 아닙니다. "
+        "다만 적응증 확대는 향후 ALT-B4 기반 피하주사 개발·허가가 성공할 경우 전환 가능한 환자·매출 기반을 넓히는 요인입니다."
     )
 
     next_line = (
-        "2027년 2월 PDUFA 또는 National Priority Voucher에 따른 더 이른 FDA 결정, "
-        "그리고 Jemperli 피하주사(ALT-B4) 임상 개시·허가 신청·승인을 별도로 추적"
+        "FDA 결정 시점과 Jemperli 피하주사(ALT-B4) 임상 개시·허가 신청·승인"
         if rectal and priority
-        else "후속 FDA·EMA 허가, 주요 임상 결과, ALT-B4 피하주사 개발 진행을 추적"
+        else "후속 FDA·EMA 허가, 주요 임상 결과, ALT-B4 피하주사 개발 진행"
     )
 
     lines = [
-        f"**{headline}**",
+        headline,
         "",
-        f"- **출처 구분:** {'GSK·규제기관 공식자료' if official else '2차 자료 — 공식자료 교차확인 대상'}",
-        f"- **대상:** {population}",
-        f"- **규제:** {regulatory_line}",
-        f"- **근거 임상:** {trial_line}",
-        f"- **결과:** {result_line}",
-        f"- **안전성:** {safety_line}",
-        f"- **알테오젠 관점:** {alteogen_line}",
-        f"- **다음 확인:** {next_line}",
-        f"- **원문 확인:** {'기사·공식자료 본문 직접 열람' if body else '원문 본문 자동 추출 불완전 — 제목·검색원문 기준'}",
+        f"- 규제: {population} · {regulatory_line}",
+        f"- 임상: {trial_line}",
+        f"- 알테오젠: {alteogen_line}",
+        f"- 다음 확인: {next_line}",
+        f"- 원문 확인: {'GSK·공식자료 본문 직접 열람' if official and body else ('기사 본문 직접 열람' if body else '원문 본문 자동 추출 불완전')}",
         f"- 원문: {resolved}",
     ]
     return "\n".join(lines)
@@ -470,7 +465,7 @@ def main() -> int:
     if new_items:
         summaries = [build_item_summary(x) for x in new_items[:5]]
         ALERT.write_text(
-            "[바이오 감시] 알테오젠 파트너제품 Jemperli 새 데이터\n\n"
+            "[바이오 감시] Jemperli 새 데이터\n\n"
             + "\n\n".join(summaries)
             + "\n",
             encoding="utf-8",
