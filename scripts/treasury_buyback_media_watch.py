@@ -152,6 +152,14 @@ def build_tga_alert(item: dict) -> tuple[str, str, dict]:
         "• 따라서 ‘1조달러 전부 투입’이 아니라 <b>TGA를 추가 재원·시간조절 수단으로 활용할 여지가 있다</b>가 정확한 해석입니다.",
         "• 구조적으로는 재정적자·국가부채·향후 국채 발행 필요성이 그대로 남습니다.",
         "",
+        "<b>시장 실제 반응</b>",
+        "• CNBC의 TGA 활용 가능성 보도가 전해진 뒤 MarketWatch 기준 미 10년물 금리는 약 3bp 하락했습니다.",
+        "• Barron's는 같은 날 10년물 -3.4bp(4.702%), 30년물 -3.9bp(5.236%)를 집계했습니다. 다만 유가 하락도 동시에 작용해 전부 TGA 보도 효과로 단정하면 안 됩니다.",
+        "",
+        "<b>Fed 개입 관련 해석</b>",
+        "• TGA를 활용한 재무부 바이백이 커지면 장기물 시장 기능을 지원하는 역할은 강화될 수 있습니다.",
+        "• 그러나 ‘Fed 개입 필요가 줄어든다’는 것은 공식 확정이 아니라 시장 해석입니다. 재무부는 돈을 창출하는 중앙은행이 아니며, 인플레이션·재정적자가 장기금리를 밀어올리면 Fed와 별개로 한계가 있습니다.",
+        "",
         "<b>투자 의미</b>",
         "• 할인율: 장기금리 상단을 누를 수 있어 AI·성장주에 우호적.",
         "• 수급: 장기 비지표물 국채에 추가 공적 매수자 역할 강화 가능.",
@@ -167,7 +175,7 @@ def build_tga_alert(item: dict) -> tuple[str, str, dict]:
         "<b>한 줄 결론</b>",
         "재무부가 ‘1조달러를 풀겠다’가 아니라, 거의 1조달러인 TGA를 장기채 바이백의 추가 재원·타이밍 도구로 쓸 수 있다는 신호라 단기 장기금리에는 우호적이지만, 결국 TGA를 다시 채워야 하므로 재정·국채 공급 문제를 없애는 QE는 아닙니다.",
         "",
-        f'<a href="{source_link}">보도 원문</a> · <a href="{FED_H41}">Fed TGA 원문</a> · <a href="{TREASURY_QRA}">8월 QRA</a> · <a href="{TREASURY_BORROWING}">재무부 차입 추정치</a> · <a href="{TREASURY_BUYBACK_FAQ}">바이백 설명</a>',
+        f'<a href="{source_link}">보도 원문</a> · <a href="https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-nasdaq-nvidia-earnings-results-jackson-hole/card/10-year-yield-drifts-lower-on-report-treasury-could-tap-tga-for-bond-buybacks-Z0to77hREQ4eoFTuD7Ao">시장 반응</a> · <a href="{FED_H41}">Fed TGA 원문</a> · <a href="{TREASURY_QRA}">8월 QRA</a> · <a href="{TREASURY_BORROWING}">재무부 차입 추정치</a> · <a href="{TREASURY_BUYBACK_FAQ}">바이백 설명</a>',
     ])
     detail = {"type": "tga_buyback_media_signal", "item": item, "checked_kst": datetime.now(KST).isoformat(timespec="seconds")}
     return title, body, detail
