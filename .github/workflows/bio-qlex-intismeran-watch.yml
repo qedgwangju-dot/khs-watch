@@ -1,4 +1,4 @@
-name: Bio QLEX & Intismeran Telegram Watch
+name: Bio QLEX, Intismeran & Jemperli Telegram Watch
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
       - "scripts/intismeran_qlex_watch.py"
       - "scripts/qlex_telegram_send.py"
       - "scripts/intismeran_structured_telegram_send.py"
+      - "scripts/jemperli_altb4_watch.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -39,7 +40,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run QLEX and Intismeran bio watch
+      - name: Run QLEX, Intismeran and Jemperli bio watch
         run: python scripts/bio_single_runner.py
 
       - name: Publish bio watch status
@@ -57,7 +58,7 @@ jobs:
         run: |
           git config user.name "bio-watch[bot]"
           git config user.email "bio-watch[bot]@users.noreply.github.com"
-          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
+          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json data/jemperli_altb4_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Bio watcher states unchanged"
           else
@@ -86,5 +87,9 @@ jobs:
             out/intismeran_qlex_alert.md
             out/intismeran_qlex_watch_state_pending.json
             out/intismeran_structured_send_confirmed.json
+            out/jemperli_altb4_status.md
+            out/jemperli_altb4_alert.md
+            out/jemperli_altb4_watch_state_pending.json
+            out/jemperli_altb4_errors.log
           if-no-files-found: ignore
           retention-days: 14
