@@ -78,7 +78,7 @@ def clean_source_url(url: str) -> str:
 
 def normalize_title(value: str) -> str:
     value = html.unescape(value).lower()
-    value = re.sub(r'[^0-9a-z가-힣]+', ' ', value)
+    value = re.sub(r'[^0-9a-z가-힣ぁ-んァ-ン一-龯]+', ' ', value)
     return re.sub(r'\s+', ' ', value).strip()
 
 
@@ -167,16 +167,30 @@ def extract_article_text(page: str) -> str:
     return re.sub(r'\s+', ' ', html.unescape(text)).strip()[:18000]
 
 
+def detect_translation_pair(text: str) -> str:
+    # 일본어 가나가 있으면 일본어로 판정. 한자는 한국어 문장에도 있을 수 있어 가나를 우선 사용.
+    if re.search(r'[ぁ-んァ-ン]', text):
+        return 'ja|ko'
+    if re.search(r'[A-Za-z]{4}', text):
+        return 'en|ko'
+    return ''
+
+
+def has_leftover_japanese(value: str) -> bool:
+    return bool(re.search(r'[ぁ-んァ-ン一-龯]', value))
+
+
 def translate_short(text: str) -> str:
-    if not re.search(r'[A-Za-z]{4}', text):
+    pair = detect_translation_pair(text)
+    if not pair:
         return text
     try:
-        query = urllib.parse.urlencode({'q': text[:430], 'langpair': 'en|ko', 'mt': '1'})
+        query = urllib.parse.urlencode({'q': text[:430], 'langpair': pair, 'mt': '1'})
         req = urllib.request.Request(f'https://api.mymemory.translated.net/get?{query}', headers={'User-Agent': UA})
         with urllib.request.urlopen(req, timeout=8) as response:
             payload = json.loads(response.read().decode('utf-8', errors='replace'))
         candidate = html.unescape(str((payload.get('responseData') or {}).get('translatedText') or '')).strip()
-        if len(re.findall(r'[가-힣]', candidate)) >= 5:
+        if len(re.findall(r'[가-힣]', candidate)) >= 5 and not has_leftover_japanese(candidate):
             return candidate
     except Exception:
         pass
@@ -332,6 +346,13 @@ def is_english_dominant(value: str) -> bool:
 
 def fallback_title_ko(title: str) -> str:
     low = title.lower()
+    if re.search(r'[ぁ-んァ-ン]', title):
+        if ('悪性黒色腫' in title or 'メラノーマ' in title) and 'RFS' in title and 'DMFS' in title:
+            return '고위험 악성 흑색종 수술 후 치료에서 mRNA 개인맞춤형 암 치료 Intismeran autogene+Pembrolizumab, RFS·DMFS 유의하게 개선'
+        if '悪性黒色腫' in title or 'メラノーマ' in title:
+            return '고위험 악성 흑색종에서 Intismeran autogene+Pembrolizumab 병용요법 관련 신규 보도'
+        if 'Intismeran' in title or 'インティスメラン' in title or 'インティスメラン' in title:
+            return 'Intismeran 관련 일본어 신규 보도'
     if 'interpath-001' in low and ('met endpoints' in low or 'meets' in low) and ('rfs' in low or 'recurrence-free' in low):
         return 'Merck·Moderna, INTerpath-001 흑색종 3상에서 RFS·DMFS 평가변수 달성'
     if 'interpath-001' in low and 'boosts rfs' in low:
@@ -361,21 +382,29 @@ def has_leftover_general_english(value: str) -> bool:
 
 
 def translate_title_to_ko(title: str) -> str:
-    if not is_english_dominant(title) and not has_leftover_general_english(title):
+    pair = detect_translation_pair(title)
+    needs_translation = bool(pair) or is_english_dominant(title) or has_leftover_general_english(title)
+    if not needs_translation:
         return title
     if title in _TRANSLATION_CACHE:
         return _TRANSLATION_CACHE[title]
     translated = ''
-    try:
-        query = urllib.parse.urlencode({'q': title[:450], 'langpair': 'en|ko', 'mt': '1'})
-        req = urllib.request.Request(f'https://api.mymemory.translated.net/get?{query}', headers={'User-Agent': UA})
-        with urllib.request.urlopen(req, timeout=8) as response:
-            payload = json.loads(response.read().decode('utf-8', errors='replace'))
-        candidate = html.unescape(str((payload.get('responseData') or {}).get('translatedText') or '')).strip()
-        if candidate and len(re.findall(r'[가-힣]', candidate)) >= 5 and not has_leftover_general_english(candidate):
-            translated = candidate
-    except Exception:
-        pass
+    if pair:
+        try:
+            query = urllib.parse.urlencode({'q': title[:450], 'langpair': pair, 'mt': '1'})
+            req = urllib.request.Request(f'https://api.mymemory.translated.net/get?{query}', headers={'User-Agent': UA})
+            with urllib.request.urlopen(req, timeout=8) as response:
+                payload = json.loads(response.read().decode('utf-8', errors='replace'))
+            candidate = html.unescape(str((payload.get('responseData') or {}).get('translatedText') or '')).strip()
+            if (
+                candidate
+                and len(re.findall(r'[가-힣]', candidate)) >= 5
+                and not has_leftover_general_english(candidate)
+                and not has_leftover_japanese(candidate)
+            ):
+                translated = candidate
+        except Exception:
+            pass
     if not translated:
         translated = fallback_title_ko(title)
     _TRANSLATION_CACHE[title] = translated
