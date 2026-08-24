@@ -1,0 +1,16 @@
+{
+  "checked_at_kst": "2026-08-24T11:34:37+09:00",
+  "ramp": {
+    "fable_token_share_pct": 6.0,
+    "fable_spend_share_pct": 11.4,
+    "anthropic_business_adoption_pct": 43.5,
+    "openai_business_adoption_pct": 39.7,
+    "anthropic_vendor_adoption_pct": 79.0,
+    "anthropic_enterprise_adoption_pct": 85.0,
+    "source_hash": "845f0d0e0339a67749d11f8e86e1488303250547ca9d182abaef992fe4cbbcc3"
+  },
+  "openrouter": {
+    "available": false,
+    "source": "https://openrouter.ai/api/v1/datasets/rankings-daily"
+  }
+}
