@@ -375,6 +375,20 @@ def main() -> None:
             qualifier = "잠정" if etf.get("status") == "partial" else "집계"
             triggers.append(f"BTC 현물 ETF 당일 합계 수정({qualifier}): {signed_millions(etf.get('total_usd_m', 0.0))}")
 
+        # Historical revisions matter because they can change the 5-day regime
+        # comparison even when today's headline flow is unchanged.
+        if old_etf.get("last5_usd_m") is not None and etf.get("last5_usd_m") is not None:
+            d_last5 = round(etf.get("last5_usd_m") - old_etf.get("last5_usd_m"), 1)
+            d_prev5 = (
+                round(etf.get("prev5_usd_m") - old_etf.get("prev5_usd_m"), 1)
+                if old_etf.get("prev5_usd_m") is not None and etf.get("prev5_usd_m") is not None
+                else 0.0
+            )
+            if abs(d_last5) >= 0.1 or abs(d_prev5) >= 0.1:
+                triggers.append(
+                    f"BTC 현물 ETF 5거래일 원자료 수정: 최근5 {d_last5:+,.1f}백만달러 / 이전5 {d_prev5:+,.1f}백만달러"
+                )
+
     if triggers:
         lines = [
             "[크립토 유동성 변화 감지]",
