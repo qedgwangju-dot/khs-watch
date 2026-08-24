@@ -1,0 +1,79 @@
+name: Bio Japanese Korean Resend Once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/bio-japanese-korean-resend-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    env:
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      CONFIGURED_BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve saved bio Telegram route
+        id: route
+        shell: bash
+        run: |
+          set -euo pipefail
+          chat_id="${CONFIGURED_BIO_TELEGRAM_CHAT_ID:-}"
+          if [ -z "$chat_id" ] && [ -f data/bio_telegram_chat_id.enc ]; then
+            chat_id=$(openssl enc -d -aes-256-cbc -a -A -pbkdf2 \
+              -pass env:BIO_TELEGRAM_BOT_TOKEN \
+              -in data/bio_telegram_chat_id.enc)
+          fi
+          test -n "$chat_id"
+          echo "::add-mask::$chat_id"
+          echo "chat_id=$chat_id" >> "$GITHUB_OUTPUT"
+
+      - name: Send corrected Korean alert
+        env:
+          BIO_TELEGRAM_CHAT_ID: ${{ steps.route.outputs.chat_id }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+          token=os.environ['BIO_TELEGRAM_BOT_TOKEN'].strip()
+          chat=os.environ['BIO_TELEGRAM_CHAT_ID'].strip()
+          text="""<b>고위험 악성 흑색종 수술 후 보조요법에서 mRNA 기반 개인맞춤형 암 치료 Intismeran autogene+펨브롤리주맙이 RFS·DMFS를 유의하게 개선</b>
+
+- <b>시험:</b> 시험 대상 환자 — 원문에서 등록인원 직접 확인되지 않음
+- <b>결과:</b> 원문에서 핵심 효능 결과를 자동 확정하지 못함
+- <b>의미:</b> 원문의 임상적 의미를 추가 확인해야 함
+- <b>아직 미공개:</b> 3상 RFS HR·3상 DMFS HR·정확한 위험감소율·OS 세부값은 아직 미공개
+- <b>다음 일정:</b> 후속 데이터 공개·허가 일정은 원문에서 추가 확인 필요
+- <b>안전성:</b> 안전성 세부 내용은 원문에서 직접 확인되지 않음
+- <b>알테오젠 관점:</b> 이번 흑색종 3상에는 ALT-B4가 직접 사용된 것은 아닙니다. 다만 Intismeran 병용영역 확대 후 해당 적응증에서 KEYTRUDA QLEX 사용·허가가 확대되면 알테오젠 판매 마일스톤·후속 로열티 기반이 넓어질 수 있습니다.
+- <b>원문 확인:</b> 기사 본문 직접 열람
+- <a href="https://medical.nikkeibp.co.jp/leaf/all/cancernavi/news/202608/594296.html">원문 뉴스보기</a>"""
+          payload=urllib.parse.urlencode({
+              'chat_id':chat,
+              'text':text,
+              'parse_mode':'HTML',
+              'disable_web_page_preview':'true',
+          }).encode()
+          req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage',data=payload,method='POST')
+          with urllib.request.urlopen(req,timeout=25) as r:
+              result=json.loads(r.read().decode())
+          if not result.get('ok'):
+              raise RuntimeError(result)
+          mid=(result.get('result') or {}).get('message_id')
+          print(f'corrected_korean_bio_alert_message_id={mid}')
+          with open('data/bio_japanese_korean_resend_confirmed.json','w',encoding='utf-8') as f:
+              json.dump({'status':'confirmed','message_id':mid},f,ensure_ascii=False,indent=2)
+
+      - name: Commit confirmation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/bio_japanese_korean_resend_confirmed.json
+          git commit -m "Confirm Korean resend of Japanese bio alert"
+          git pull --rebase origin main
+          git push
