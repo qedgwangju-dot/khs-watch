@@ -115,28 +115,66 @@ def treasury_rates() -> dict:
 def btc_etf_flow() -> dict:
     html = fetch(FARSIDE_BTC_ETF_URL).decode("utf-8", errors="replace")
     soup = BeautifulSoup(html, "html.parser")
-    rows: list[tuple[dt.date, float]] = []
+    rows: list[dict] = []
     for tr in soup.find_all("tr"):
         cells = [" ".join(td.get_text(" ", strip=True).split()) for td in tr.find_all(["td", "th"])]
-        if len(cells) < 2:
+        if len(cells) < 3:
             continue
         d = parse_date(cells[0])
         if not d:
             continue
+
+        fund_cells = cells[1:-1]
+        normalized = [x.strip() for x in fund_cells]
+        numeric_funds = [parse_number(x) for x in normalized if x not in {"", "-", "—"}]
+        reported_count = sum(v is not None for v in numeric_funds)
+        missing_count = sum(x in {"", "-", "—"} for x in normalized)
         total = parse_number(cells[-1])
-        if total is None:
-            continue
-        rows.append((d, total))
+
+        # Farside creates the current trading-day row before issuer flow data is
+        # available. In that state every fund column is "-" while Total is
+        # mechanically displayed as 0.0. That is "not reported yet", not a
+        # genuine zero-flow observation.
+        if reported_count == 0 and missing_count == len(normalized):
+            status = "pending"
+            total = None
+        elif missing_count > 0:
+            status = "partial"
+        else:
+            status = "complete"
+
+        rows.append({
+            "date": d,
+            "total": total,
+            "status": status,
+            "reported_funds": reported_count,
+            "missing_funds": missing_count,
+        })
+
     if not rows:
         raise RuntimeError("Farside BTC ETF flow rows could not be parsed")
-    rows.sort(key=lambda x: x[0])
-    latest = rows[-1]
-    last5 = rows[-5:]
+
+    rows.sort(key=lambda x: x["date"])
+    source_latest = rows[-1]
+    valid_rows = [x for x in rows if x["total"] is not None and x["status"] != "pending"]
+    if not valid_rows:
+        raise RuntimeError("Farside has no reported BTC ETF flow rows")
+
+    latest_valid = valid_rows[-1]
+    complete_rows = [x for x in rows if x["total"] is not None and x["status"] == "complete"]
+    last5 = complete_rows[-5:] if len(complete_rows) >= 5 else valid_rows[-5:]
+
     return {
-        "date": latest[0].isoformat(),
-        "total_usd_m": latest[1],
-        "last5_usd_m": round(sum(x[1] for x in last5), 1),
-        "last5_dates": [x[0].isoformat() for x in last5],
+        "date": latest_valid["date"].isoformat(),
+        "total_usd_m": latest_valid["total"],
+        "status": latest_valid["status"],
+        "reported_funds": latest_valid["reported_funds"],
+        "missing_funds": latest_valid["missing_funds"],
+        "source_latest_date": source_latest["date"].isoformat(),
+        "source_latest_status": source_latest["status"],
+        "pending_date": source_latest["date"].isoformat() if source_latest["status"] == "pending" else None,
+        "last5_usd_m": round(sum(x["total"] for x in last5), 1),
+        "last5_dates": [x["date"].isoformat() for x in last5],
     }
 
 
@@ -244,10 +282,14 @@ def main() -> None:
 
     old_etf = old.get("btc_etf") or {}
     if etf and old_etf:
+        # Do not alert merely because Farside has opened a new trading-day row
+        # with all issuer cells still "-" and a synthetic Total=0.0.
         if etf.get("date") != old_etf.get("date"):
-            triggers.append(f"BTC 현물 ETF 새 일간 자금흐름: {signed_millions(etf.get('total_usd_m', 0.0))}")
+            qualifier = "잠정" if etf.get("status") == "partial" else "확정 집계"
+            triggers.append(f"BTC 현물 ETF 새 일간 자금흐름({qualifier}): {signed_millions(etf.get('total_usd_m', 0.0))}")
         elif abs(etf.get("total_usd_m", 0.0) - old_etf.get("total_usd_m", etf.get("total_usd_m", 0.0))) >= 0.1:
-            triggers.append(f"BTC 현물 ETF 당일 합계 수정: {signed_millions(etf.get('total_usd_m', 0.0))}")
+            qualifier = "잠정" if etf.get("status") == "partial" else "집계"
+            triggers.append(f"BTC 현물 ETF 당일 합계 수정({qualifier}): {signed_millions(etf.get('total_usd_m', 0.0))}")
 
     if triggers:
         lines = [
@@ -262,9 +304,12 @@ def main() -> None:
                 f"미 국채: 10Y {rates.get('10y', 0):.2f}% ({rates.get('daily_10y_bp', 0):+.1f}bp), 30Y {rates.get('30y', 0):.2f}% ({rates.get('daily_30y_bp', 0):+.1f}bp)",
             ]
         if etf:
+            etf_status = "잠정 집계" if etf.get("status") == "partial" else "집계 완료"
             lines += [
-                f"BTC 현물 ETF: {etf.get('date')} {signed_millions(etf.get('total_usd_m', 0.0))}, 최근 5개 데이터 합계 {signed_millions(etf.get('last5_usd_m', 0.0))}",
+                f"BTC 현물 ETF: {etf.get('date')} {signed_millions(etf.get('total_usd_m', 0.0))} ({etf_status}), 최근 5개 완료 거래일 합계 {signed_millions(etf.get('last5_usd_m', 0.0))}",
             ]
+            if etf.get("pending_date"):
+                lines += [f"※ {etf.get('pending_date')} Farside 행은 전 종목 미보고(-) 상태라 0.0을 실제 자금흐름으로 사용하지 않음"]
         if rates and etf:
             lines += [f"판단: {market_read(rates, etf)}"]
         lines += [
