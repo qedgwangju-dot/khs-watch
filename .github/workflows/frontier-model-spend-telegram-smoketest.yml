@@ -1,0 +1,110 @@
+name: Frontier model Telegram smoke test
+
+on:
+  push:
+    paths:
+      - ".github/workflows/frontier-model-spend-telegram-smoketest.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: frontier-model-telegram-smoketest
+  cancel-in-progress: true
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Send Telegram smoke test and record confirmation
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+
+          if not token:
+              raise RuntimeError("KHS_POLICY_TELEGRAM_BOT_TOKEN secret is missing")
+          if not chat_id:
+              raise RuntimeError("KHS_POLICY_TELEGRAM_CHAT_ID secret is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok"):
+              raise RuntimeError(f"Telegram getMe failed: {identity}")
+          if username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          text = (
+              "✅ 프론티어 모델 웹감시 Telegram 테스트 성공\n"
+              f"봇: @{username}\n"
+              f"확인시각: {now.strftime('%Y-%m-%d %H:%M:%S KST')}\n"
+              "감시: Ramp Fable 5·Opus / Anthropic 기업 채택률 / OpenRouter 점유율\n"
+              "이 메시지는 실제 전송 경로 확인용 테스트입니다."
+          )
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram sendMessage failed: {result}")
+
+          record = {
+              "ok": True,
+              "bot_username": username,
+              "message_id": (result.get("result") or {}).get("message_id"),
+              "chat_id_confirmed": str((result.get("result") or {}).get("chat", {}).get("id") or ""),
+              "confirmed_at_kst": now.isoformat(timespec="seconds"),
+              "purpose": "frontier_model_spend_watch_telegram_smoketest",
+          }
+          pathlib.Path("data").mkdir(exist_ok=True)
+          pathlib.Path("data/frontier_model_spend_telegram_smoketest.json").write_text(
+              json.dumps(record, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(record, ensure_ascii=False))
+          PY
+
+      - name: Commit smoke test confirmation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/frontier_model_spend_telegram_smoketest.json
+          git commit -m "Record frontier model Telegram smoke test"
+          git pull --rebase origin main
+          git push
