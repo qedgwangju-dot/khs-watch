@@ -100,6 +100,7 @@ def treasury_rates() -> dict:
     rows.sort(key=lambda x: x[0])
     latest = rows[-1]
     prev = rows[-2] if len(rows) >= 2 else latest
+    prev5 = rows[-6] if len(rows) >= 6 else rows[0]
     return {
         "date": latest[0].isoformat(),
         "10y": latest[1],
@@ -109,6 +110,11 @@ def treasury_rates() -> dict:
         "prev_30y": prev[2],
         "daily_10y_bp": round((latest[1] - prev[1]) * 100, 1),
         "daily_30y_bp": round((latest[2] - prev[2]) * 100, 1),
+        "prev5_date": prev5[0].isoformat(),
+        "prev5_10y": prev5[1],
+        "prev5_30y": prev5[2],
+        "five_day_10y_bp": round((latest[1] - prev5[1]) * 100, 1),
+        "five_day_30y_bp": round((latest[2] - prev5[2]) * 100, 1),
     }
 
 
@@ -161,8 +167,27 @@ def btc_etf_flow() -> dict:
         raise RuntimeError("Farside has no reported BTC ETF flow rows")
 
     latest_valid = valid_rows[-1]
-    complete_rows = [x for x in rows if x["total"] is not None and x["status"] == "complete"]
-    last5 = complete_rows[-5:] if len(complete_rows) >= 5 else valid_rows[-5:]
+    prev_valid = valid_rows[-2] if len(valid_rows) >= 2 else latest_valid
+
+    # Use reported rows for rolling comparisons. A fully unreported synthetic
+    # 0.0 row is already excluded above.
+    last5 = valid_rows[-5:]
+    prev5 = valid_rows[-10:-5] if len(valid_rows) >= 10 else valid_rows[:-5]
+    last5_sum = round(sum(x["total"] for x in last5), 1)
+    prev5_sum = round(sum(x["total"] for x in prev5), 1) if prev5 else None
+
+    day_change = round(latest_valid["total"] - prev_valid["total"], 1)
+    day_change_pct = (
+        round(day_change / abs(prev_valid["total"]) * 100, 1)
+        if prev_valid["total"] not in (None, 0)
+        else None
+    )
+    five_day_change = round(last5_sum - prev5_sum, 1) if prev5_sum is not None else None
+    five_day_change_pct = (
+        round(five_day_change / abs(prev5_sum) * 100, 1)
+        if prev5_sum not in (None, 0) and last5_sum * prev5_sum > 0
+        else None
+    )
 
     return {
         "date": latest_valid["date"].isoformat(),
@@ -170,11 +195,19 @@ def btc_etf_flow() -> dict:
         "status": latest_valid["status"],
         "reported_funds": latest_valid["reported_funds"],
         "missing_funds": latest_valid["missing_funds"],
+        "prev_date": prev_valid["date"].isoformat(),
+        "prev_total_usd_m": prev_valid["total"],
+        "day_change_usd_m": day_change,
+        "day_change_pct": day_change_pct,
         "source_latest_date": source_latest["date"].isoformat(),
         "source_latest_status": source_latest["status"],
         "pending_date": source_latest["date"].isoformat() if source_latest["status"] == "pending" else None,
-        "last5_usd_m": round(sum(x["total"] for x in last5), 1),
+        "last5_usd_m": last5_sum,
         "last5_dates": [x["date"].isoformat() for x in last5],
+        "prev5_usd_m": prev5_sum,
+        "prev5_dates": [x["date"].isoformat() for x in prev5],
+        "five_day_change_usd_m": five_day_change,
+        "five_day_change_pct": five_day_change_pct,
     }
 
 
@@ -198,6 +231,13 @@ def buyback_schedule() -> dict:
 def signed_millions(value: float) -> str:
     sign = "+" if value > 0 else ""
     return f"{sign}{value:,.1f}백만달러"
+
+
+def signed_pct(value: float | None) -> str:
+    if value is None:
+        return "비교 불가"
+    sign = "+" if value > 0 else ""
+    return f"{sign}{value:,.1f}%"
 
 
 def market_read(rates: dict, etf: dict) -> str:
@@ -260,7 +300,8 @@ def main() -> None:
             "- 상태: 최초 기준값 저장 예정(텔레그램 미전송)",
             f"- 조회시각(KST): {now_kst}",
             f"- 미 국채 10Y/30Y: {rates.get('10y', 'N/A')}% / {rates.get('30y', 'N/A')}% ({rates.get('date', 'N/A')})",
-            f"- BTC 현물 ETF: {signed_millions(etf.get('total_usd_m', 0.0)) if etf else 'N/A'} ({etf.get('date', 'N/A') if etf else 'N/A'})",
+            f"- BTC 현물 ETF 최신/직전: {signed_millions(etf.get('total_usd_m', 0.0)) if etf else 'N/A'} / {signed_millions(etf.get('prev_total_usd_m', 0.0)) if etf else 'N/A'} ({etf.get('date', 'N/A') if etf else 'N/A'} / {etf.get('prev_date', 'N/A') if etf else 'N/A'})",
+        f"- BTC ETF 최근5/이전5: {signed_millions(etf.get('last5_usd_m', 0.0)) if etf else 'N/A'} / {signed_millions(etf.get('prev5_usd_m', 0.0)) if etf and etf.get('prev5_usd_m') is not None else 'N/A'}",
             f"- 오류: {'; '.join(errors) if errors else '없음'}",
         ]
         atomic_write(STATUS_PATH, "\n".join(status) + "\n")
@@ -313,15 +354,33 @@ def main() -> None:
         ]
         if rates:
             lines += [
-                f"미 국채: 10Y {rates.get('10y', 0):.2f}% ({rates.get('daily_10y_bp', 0):+.1f}bp), 30Y {rates.get('30y', 0):.2f}% ({rates.get('daily_30y_bp', 0):+.1f}bp)",
+                "미 국채",
+                f"• 10Y {rates.get('10y', 0):.2f}% | 전일 {rates.get('daily_10y_bp', 0):+.1f}bp | 5거래일 {rates.get('five_day_10y_bp', 0):+.1f}bp",
+                f"• 30Y {rates.get('30y', 0):.2f}% | 전일 {rates.get('daily_30y_bp', 0):+.1f}bp | 5거래일 {rates.get('five_day_30y_bp', 0):+.1f}bp",
+                "",
             ]
         if etf:
             etf_status = "잠정 집계" if etf.get("status") == "partial" else "집계 완료"
             lines += [
-                f"BTC 현물 ETF: {etf.get('date')} {signed_millions(etf.get('total_usd_m', 0.0))} ({etf_status}), 최근 5개 완료 거래일 합계 {signed_millions(etf.get('last5_usd_m', 0.0))}",
+                "BTC 현물 ETF",
+                f"• 최신: {etf.get('date')} {signed_millions(etf.get('total_usd_m', 0.0))} ({etf_status})",
+                f"• 직전: {etf.get('prev_date')} {signed_millions(etf.get('prev_total_usd_m', 0.0))}",
+                f"• 전일 대비: {signed_millions(etf.get('day_change_usd_m', 0.0))} ({signed_pct(etf.get('day_change_pct'))})",
+                f"• 최근 5거래일: {signed_millions(etf.get('last5_usd_m', 0.0))}",
             ]
+            if etf.get("prev5_usd_m") is not None:
+                if etf.get("last5_usd_m", 0.0) * etf.get("prev5_usd_m", 0.0) < 0:
+                    direction = "유출→유입 전환" if etf.get("last5_usd_m", 0.0) > 0 else "유입→유출 전환"
+                    five_compare = f"{signed_millions(etf.get('five_day_change_usd_m', 0.0))} ({direction})"
+                else:
+                    five_compare = f"{signed_millions(etf.get('five_day_change_usd_m', 0.0))} ({signed_pct(etf.get('five_day_change_pct'))})"
+                lines += [
+                    f"• 이전 5거래일: {signed_millions(etf.get('prev5_usd_m', 0.0))}",
+                    f"• 5거래일 구간 대비: {five_compare}",
+                ]
             if etf.get("pending_date"):
-                lines += [f"※ {etf.get('pending_date')} Farside 행은 전 종목 미보고(-) 상태라 0.0을 실제 자금흐름으로 사용하지 않음"]
+                lines += [f"※ {etf.get('pending_date')}: 전 ETF 미보고(-) → 0.0으로 간주하지 않고 미집계 처리"]
+            lines += [""]
         if rates and etf:
             lines += [f"판단: {market_read(rates, etf)}"]
         lines += [
