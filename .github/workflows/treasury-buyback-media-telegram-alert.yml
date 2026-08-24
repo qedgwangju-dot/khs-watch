@@ -83,12 +83,18 @@ jobs:
           confirmed=pathlib.Path("out/treasury_buyback_media_telegram_confirmed.json").exists()
           if alert and not confirmed:
               raise RuntimeError("중요 신호 감지 후 텔레그램 확인 없음")
-          pending=state.pop("pending",None)
-          if pending:
+
+          pending_items=list(state.pop("pending_items",[]) or [])
+          legacy=state.pop("pending",None)
+          if legacy:
+              pending_items.append(legacy)
+          if pending_items:
               seen=list(state.get("seen",[]))
-              if pending not in seen:
-                  seen.append(pending)
-              state["seen"]=seen[-100:]
+              for item in pending_items:
+                  if item and item not in seen:
+                      seen.append(item)
+              state["seen"]=seen[-200:]
+
           pathlib.Path("data/treasury_buyback_media_state.json").write_text(
               json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
