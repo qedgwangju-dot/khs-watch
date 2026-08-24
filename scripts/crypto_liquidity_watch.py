@@ -284,10 +284,22 @@ def main() -> None:
     if etf and old_etf:
         # Do not alert merely because Farside has opened a new trading-day row
         # with all issuer cells still "-" and a synthetic Total=0.0.
-        if etf.get("date") != old_etf.get("date"):
+        old_date = old_etf.get("date")
+        new_date = etf.get("date")
+        pending_date = etf.get("pending_date")
+        # Migration guard: an older watcher may have mistakenly persisted the
+        # pending Farside row as a real 0.0 observation. When the corrected
+        # parser falls back to the last reported day, silently repair state.
+        legacy_pending_zero = (
+            pending_date
+            and old_date == pending_date
+            and float(old_etf.get("total_usd_m", 0.0) or 0.0) == 0.0
+            and new_date != old_date
+        )
+        if new_date != old_date and not legacy_pending_zero:
             qualifier = "잠정" if etf.get("status") == "partial" else "확정 집계"
             triggers.append(f"BTC 현물 ETF 새 일간 자금흐름({qualifier}): {signed_millions(etf.get('total_usd_m', 0.0))}")
-        elif abs(etf.get("total_usd_m", 0.0) - old_etf.get("total_usd_m", etf.get("total_usd_m", 0.0))) >= 0.1:
+        elif new_date == old_date and abs(etf.get("total_usd_m", 0.0) - old_etf.get("total_usd_m", etf.get("total_usd_m", 0.0))) >= 0.1:
             qualifier = "잠정" if etf.get("status") == "partial" else "집계"
             triggers.append(f"BTC 현물 ETF 당일 합계 수정({qualifier}): {signed_millions(etf.get('total_usd_m', 0.0))}")
 
