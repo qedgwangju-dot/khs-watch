@@ -2,7 +2,7 @@
 """Treasury buyback/TGA/media signal watcher.
 
 Monitors trusted reports that materially change the expected size, funding
-source, maturity mix, or market impact of Treasury buybacks.  User-facing
+source, maturity mix, or market impact of Treasury buybacks. User-facing
 Telegram output is Korean, interpretation-first, and separates official facts
 from sourced reports and market inference.
 """
@@ -83,7 +83,6 @@ def latest_fx() -> tuple[float, str]:
 
 
 def fmt_krw(usd_bn: float, fx: float) -> str:
-    # USD bn * KRW/USD / 1000 = KRW trillion
     return f"약 {usd_bn * fx / 1000:,.1f}조원"
 
 
@@ -165,7 +164,7 @@ def build_alert(tga_item: dict | None, vigilante_item: dict | None, fx: float, f
         f"• 장기 비지표물 바이백: 회당 20억달러({fmt_krw(2, fx)}) → 최소 40억달러({fmt_krw(4, fx)}), 9월 9일 시행.",
         f"• Fed 공식 TGA(8월 19일): 약 9,364억달러({fmt_krw(936.4, fx)}).",
         f"• 8월 QRA: 9월말 TGA 9,500억달러({fmt_krw(950, fx)}), 10월말 1조500억달러({fmt_krw(1050, fx)})±500억달러({fmt_krw(50, fx)}).",
-        "• 현재 공식 20년물 경매 계획: 8월 160억달러, 9월 130억달러, 10월 130억달러. 즉 <b>20년물 중단은 아직 공식 정책이 아닙니다.</b>",
+        f"• 현재 공식 20년물 경매 계획: 8월 160억달러({fmt_krw(16, fx)}), 9월 130억달러({fmt_krw(13, fx)}), 10월 130억달러({fmt_krw(13, fx)}). 즉 <b>20년물 중단은 아직 공식 정책이 아닙니다.</b>",
         "",
         "<b>새 보도 신호</b>",
         "• CNBC 인용 보도: TGA 현금을 미 국채 바이백 재원으로 활용할 수 있다는 재무부 관계자 설명.",
@@ -180,7 +179,7 @@ def build_alert(tga_item: dict | None, vigilante_item: dict | None, fx: float, f
         "• 시장이 재무부의 정책 민감 구간으로 받아들일 가능성은 있지만, Fed와 달리 재무부는 돈을 무제한 창출할 수 없어 방어선의 신뢰도는 실제 매입 규모와 발행구조 변화로 확인해야 합니다.",
         "",
         "<b>하지만</b>",
-        "TGA는 정부 운영 현금이라 약 1조달러를 전부 쓸 수 없습니다. TGA를 쓰더라도 나중에 국채를 발행해 다시 채워야 하므로 <b>재정적자·국가부채 문제를 해결하는 QE가 아니라 수급과 시점을 조절하는 한시적 완충책</b>입니다.",
+        f"TGA는 정부 운영 현금이라 약 1조달러({fmt_krw(1000, fx)})를 전부 쓸 수 없습니다. TGA를 쓰더라도 나중에 국채를 발행해 다시 채워야 하므로 <b>재정적자·국가부채 문제를 해결하는 QE가 아니라 수급과 시점을 조절하는 한시적 완충책</b>입니다.",
         "",
         "<b>시장·AI 연결</b>",
         "• TGA 활용 가능성 보도 뒤 미 10년물 금리는 약 3bp 하락. 다만 다른 시장요인도 있어 단독 인과로 단정하지 않습니다.",
@@ -190,7 +189,7 @@ def build_alert(tga_item: dict | None, vigilante_item: dict | None, fx: float, f
         f"① 9월 9일 실제 회당 바이백이 40억달러({fmt_krw(4, fx)})를 얼마나 넘는지 ② TGA 실제 감소 ③ Bill 발행 증가 ④ 20년물 공식 경매 변경 여부 ⑤ 10년물 5% 접근 시 재무부 행동 ⑥ 11월 4일 QRA.",
         "",
         "<b>한 줄 결론</b>",
-        f"재무부가 1조달러를 당장 푸는 것이 아니라 약 9,364억달러({fmt_krw(936.4, fx)}) TGA·바이백·만기구조 조정을 조합해 장기금리 상승을 완충할 수 있다는 신호이며, 5% 방어선·20년물 중단은 아직 비공식 보도 단계라 9월 9일 실제 매입과 11월 4일 QRA가 진짜 시험대입니다.",
+        f"재무부가 1조달러({fmt_krw(1000, fx)})를 당장 푸는 것이 아니라 약 9,364억달러({fmt_krw(936.4, fx)}) TGA·바이백·만기구조 조정을 조합해 장기금리 상승을 완충할 수 있다는 신호이며, 5% 방어선·20년물 중단은 아직 비공식 보도 단계라 9월 9일 실제 매입과 11월 4일 QRA가 진짜 시험대입니다.",
         "",
         f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.2f}원",
         f'<a href="{TREASURY_BUYBACK_RELEASE}">미 재무부 바이백 공식 발표</a> · <a href="{TREASURY_QRA}">8월 QRA</a> · <a href="{tga_link}">TGA 보도</a> · <a href="{vigilante_link}">5%·채권 자경단 보도</a> · <a href="{FED_H41}">Fed TGA 원문</a> · <a href="{TREASURY_BUYBACK_FAQ}">바이백 설명</a>',
