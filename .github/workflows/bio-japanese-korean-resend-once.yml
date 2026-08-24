@@ -77,3 +77,5 @@ jobs:
           git commit -m "Confirm Korean resend of Japanese bio alert"
           git pull --rebase origin main
           git push
+
+# trigger retry
