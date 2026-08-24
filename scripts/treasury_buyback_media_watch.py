@@ -35,6 +35,7 @@ TREASURY_QRA = "https://home.treasury.gov/news/press-releases/sb0590"
 TREASURY_BUYBACK_RELEASE = "https://home.treasury.gov/news/press-releases/sb0607"
 TREASURY_BUYBACK_FAQ = "https://www.treasurydirect.gov/help-center/faqs/buyback-faqs/"
 FRED_FX = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXKOUS"
+FRED_FX_ALT = "https://fred.stlouisfed.org/data/DEXKOUS.txt"
 MARKETWATCH_TGA = "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-nasdaq-nvidia-earnings-results-jackson-hole/card/10-year-yield-drifts-lower-on-report-treasury-could-tap-tga-for-bond-buybacks-Z0to77hREQ4eoFTuD7Ao"
 NEWSQUAWK_VIGILANTE = "https://www.newsquawk.com/headlines/fbns-gasparino-says-treasury-secretary-bessent-will-do-whatever-it-takes-to-put-the-fear-of-god-into-bond-vigilantes-shorting-the-long-end-of-the-curve-in-an-attempt-to-drive-the-10-year-yield-to-5-according-to-wall-st-execs-with-direct-knowledge"
 
@@ -72,14 +73,25 @@ def strip_html(value: str) -> str:
 
 
 def latest_fx() -> tuple[float, str]:
+    errors: list[str] = []
     try:
         rows = [line.strip().split(",") for line in fetch(FRED_FX).splitlines()[1:] if "," in line]
         for date, value, *_ in reversed(rows):
             if value and value != ".":
                 return float(value), date
-    except Exception:
-        pass
-    return 1382.37, "2026-08-25 fallback"
+    except Exception as exc:
+        errors.append(f"csv={exc}")
+
+    try:
+        text = fetch(FRED_FX_ALT)
+        matches = re.findall(r"^(20\d{2}-\d{2}-\d{2})\s+([0-9]+(?:\.[0-9]+)?)\s*$", text, flags=re.M)
+        if matches:
+            date, value = matches[-1]
+            return float(value), date
+    except Exception as exc:
+        errors.append(f"txt={exc}")
+
+    raise RuntimeError("FRED DEXKOUS 환율 확인 실패: " + " | ".join(errors))
 
 
 def fmt_krw(usd_bn: float, fx: float) -> str:
@@ -216,37 +228,38 @@ def main() -> int:
             pass
 
     state = load_state()
-    seen = set(state.get("seen", []))
-    fx, fx_date = latest_fx()
     items = news_items()
     tga_item = pick(items, is_tga_signal)
     vigilante_item = pick(items, is_vigilante_signal)
-    force_resend = int(state.get("format_revision", 0) or 0) < FORMAT_REVISION
+    fx, fx_date = latest_fx()
 
-    candidates = [item for item in (tga_item, vigilante_item) if item]
-    unseen = [item for item in candidates if (item.get("link") or item.get("title")) not in seen]
-    should_alert = bool(candidates) and (force_resend or bool(unseen))
     checked = datetime.now(KST).isoformat(timespec="seconds")
     next_state = {**state, "last_checked_kst": checked}
+    seen = set(state.get("seen", []))
+    force_format_resend = int(state.get("format_revision", 0) or 0) < FORMAT_REVISION
 
-    if should_alert:
+    signals = [item for item in (tga_item, vigilante_item) if item]
+    signal_ids = [item.get("link") or item.get("title") for item in signals]
+    has_new = any(signal_id and signal_id not in seen for signal_id in signal_ids)
+
+    if signals and (has_new or force_format_resend):
         title, body, detail = build_alert(tga_item, vigilante_item, fx, fx_date)
-        full_len = len(title) + 2 + len(body)
-        if full_len > 4096:
-            raise RuntimeError(f"Telegram message too long: {full_len}")
+        text_length = len(title) + 2 + len(body)
+        if text_length > 4096:
+            raise RuntimeError(f"Telegram message too long: {text_length}")
         TITLE.write_text(title + "\n", encoding="utf-8")
-        ALERT.write_text(body + "\n", encoding="utf-8")
+        ALERT.write_text(body.rstrip() + "\n", encoding="utf-8")
         DETAIL.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        next_state["pending_items"] = [item.get("link") or item.get("title") for item in candidates]
+        next_state["pending_ids"] = [signal_id for signal_id in signal_ids if signal_id]
         next_state["format_revision"] = FORMAT_REVISION
 
     NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     STATUS.write_text(
-        "# 재무부 장기금리 방어 신호 점검\n\n"
+        "# 미 재무부 장기금리 방어 신호 점검\n\n"
         f"- 조회시각: {checked}\n"
-        f"- TGA/바이백 신호: {'예' if tga_item else '아니오'}\n"
-        f"- 5%/채권 자경단 신호: {'예' if vigilante_item else '아니오'}\n"
-        f"- 알림 생성: {'예' if should_alert else '아니오'}\n",
+        f"- TGA·바이백 신호: {'예' if tga_item else '아니오'}\n"
+        f"- 5%·채권 자경단 신호: {'예' if vigilante_item else '아니오'}\n"
+        f"- 신규 신호: {'예' if has_new else '아니오'}\n",
         encoding="utf-8",
     )
     return 0
