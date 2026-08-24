@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-08-24T22:08:58+09:00",
+  "updated_at_kst": "2026-08-24T22:13:06+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -13,7 +13,12 @@
     "prev_10y": 4.69,
     "prev_30y": 5.23,
     "daily_10y_bp": 5.0,
-    "daily_30y_bp": 4.0
+    "daily_30y_bp": 4.0,
+    "prev5_date": "2026-08-14",
+    "prev5_10y": 4.68,
+    "prev5_30y": 5.25,
+    "five_day_10y_bp": 6.0,
+    "five_day_30y_bp": 2.0
   },
   "btc_etf": {
     "date": "2026-08-21",
@@ -21,6 +26,10 @@
     "status": "complete",
     "reported_funds": 12,
     "missing_funds": 0,
+    "prev_date": "2026-08-20",
+    "prev_total_usd_m": 606.3,
+    "day_change_usd_m": -298.8,
+    "day_change_pct": -49.3,
     "source_latest_date": "2026-08-24",
     "source_latest_status": "pending",
     "pending_date": "2026-08-24",
@@ -31,7 +40,17 @@
       "2026-08-19",
       "2026-08-20",
       "2026-08-21"
-    ]
+    ],
+    "prev5_usd_m": -385.2,
+    "prev5_dates": [
+      "2026-08-10",
+      "2026-08-11",
+      "2026-08-12",
+      "2026-08-13",
+      "2026-08-14"
+    ],
+    "five_day_change_usd_m": 2303.0,
+    "five_day_change_pct": null
   },
   "sources": {
     "treasury_buyback_xml": "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.xml",
