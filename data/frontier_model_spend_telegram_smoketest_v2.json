@@ -1,0 +1,9 @@
+{
+  "ok": false,
+  "stage": "getMe",
+  "expected_bot_username": "khs88798879887988798879_bot",
+  "confirmed_bot_username": "hs8879_bot",
+  "message_id": null,
+  "confirmed_at_kst": "2026-08-24T11:22:30+09:00",
+  "error": "RuntimeError: Wrong Telegram bot: expected @khs88798879887988798879_bot, got @hs8879_bot"
+}
