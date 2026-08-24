@@ -103,7 +103,7 @@ def parse_pubdate(value):
 def collect_official():
     items = []
     seen_urls = set()
-    for page in range(1, 4):
+    for page in range(1, 11):
         url = "https://kr.rebellions.ai/company/newsroom/" + (f"page/{page}/" if page > 1 else "")
         try:
             body = fetch_text(url)
