@@ -48,6 +48,7 @@ def extract_enrollment(text: str) -> str:
     patterns = [
         r'(?:enrolled|included)\s+(\d{1,3}(?:,\d{3})+)\s+(?:patients|participants)',
         r'(\d{1,3}(?:,\d{3})+)\s+(?:patients|participants)',
+        r'(\d{1,3}(?:,\d{3})+)\s*(?:例|人)',
     ]
     for pattern in patterns:
         m = re.search(pattern, text, re.I)
@@ -78,10 +79,18 @@ def phase3_hr(text: str, label: str) -> str:
 def build_structured_summary(title: str, article_text: str, resolved_url: str) -> str:
     low = article_text.lower()
     title_low = title.lower()
-    is_interpath001 = 'interpath-001' in low or 'interpath-001' in title_low
-    has_rfs = 'recurrence-free survival' in low or re.search(r'\bRFS\b', article_text)
-    has_dmfs = 'distant metastasis-free survival' in low or re.search(r'\bDMFS\b', article_text)
-    endpoints_met = any(x in low for x in ('met endpoints', 'met its primary endpoint', 'met the primary endpoint', 'statistically significant'))
+    japanese = bool(re.search(r'[ぁ-んァ-ン]', article_text + title))
+    is_interpath001 = (
+        'interpath-001' in low
+        or 'interpath-001' in title_low
+        or 'interpath－001' in article_text
+        or 'interpath‐001' in article_text
+    )
+    has_rfs = 'recurrence-free survival' in low or bool(re.search(r'\bRFS\b', article_text))
+    has_dmfs = 'distant metastasis-free survival' in low or bool(re.search(r'\bDMFS\b', article_text))
+    endpoints_met = any(x in low for x in ('met endpoints', 'met its primary endpoint', 'met the primary endpoint', 'statistically significant')) or any(
+        x in article_text for x in ('評価項目を達成', '主要評価項目を達成', '有意に改善', '統計学的に有意')
+    )
 
     if is_interpath001 and has_rfs and has_dmfs and endpoints_met:
         headline = 'Merck·Moderna, INTerpath-001 흑색종 3상에서 RFS·DMFS 모두 달성'
@@ -89,7 +98,14 @@ def build_structured_summary(title: str, article_text: str, resolved_url: str) -
         headline = base.translate_title_to_ko(title)
 
     enrollment = extract_enrollment(article_text)
-    stage = '완전 절제된 IIB~IV기 흑색종 환자' if ('stage iib' in low and ('stage iv' in low or 'iib-iv' in low)) else '시험 대상 환자'
+    stage = (
+        '완전 절제된 IIB~IV기 흑색종 환자'
+        if (
+            ('stage iib' in low and ('stage iv' in low or 'iib-iv' in low))
+            or (('IIB' in article_text or 'ⅡB' in article_text) and ('IV' in article_text or 'Ⅳ' in article_text) and ('黒色腫' in article_text or 'メラノーマ' in article_text))
+        )
+        else '시험 대상 환자'
+    )
     if enrollment:
         trial_line = f'{stage} {enrollment}명'
         if 'randomized 2:1' in low or '2:1' in low:
@@ -97,14 +113,22 @@ def build_structured_summary(title: str, article_text: str, resolved_url: str) -
     else:
         trial_line = f'{stage} — 원문에서 등록인원 직접 확인되지 않음'
 
-    if has_rfs and has_dmfs and ('clinically meaningful' in low and 'statistically significant' in low):
-        result_line = 'Intismeran+KEYTRUDA가 KEYTRUDA 단독 대비 RFS·DMFS를 모두 통계적으로 유의하고 임상적으로 의미 있게 개선'
+    if has_rfs and has_dmfs and (
+        ('clinically meaningful' in low and 'statistically significant' in low)
+        or ('有意に改善' in article_text)
+        or ('統計学的に有意' in article_text)
+    ):
+        result_line = 'Intismeran+KEYTRUDA가 KEYTRUDA 단독 대비 RFS·DMFS를 모두 통계적으로 유의하게 개선'
     elif has_rfs and has_dmfs and endpoints_met:
         result_line = 'Intismeran+KEYTRUDA가 RFS·DMFS 평가변수를 모두 달성'
     else:
         result_line = '원문에서 핵심 효능 결과를 자동 확정하지 못함'
 
-    if 'first positive phase 3' in low or 'first positive phase iii' in low:
+    if (
+        'first positive phase 3' in low
+        or 'first positive phase iii' in low
+        or ('初' in article_text and ('第3相' in article_text or 'フェーズ3' in article_text) and ('mRNA' in article_text or '個別化' in article_text))
+    ):
         meaning_line = '개인맞춤형 신생항원 치료이자 mRNA 기반 항암치료의 첫 긍정적 3상 결과'
     elif is_interpath001 and endpoints_met:
         meaning_line = '개인맞춤형 mRNA 항암치료의 후기 임상 플랫폼 검증이 강화됨'
@@ -126,15 +150,22 @@ def build_structured_summary(title: str, article_text: str, resolved_url: str) -
     unpublished_line = '·'.join(missing) + '은 아직 미공개' if missing else f'3상 RFS HR {rfs_hr}, DMFS HR {dmfs_hr}'
 
     next_parts: list[str] = []
-    if any(x in low for x in ('upcoming international medical meeting', 'future medical meeting', 'will present data', 'present detailed results')):
+    if any(x in low for x in ('upcoming international medical meeting', 'future medical meeting', 'will present data', 'present detailed results')) or any(
+        x in article_text for x in ('医学会で発表', '学会で発表', '詳細データを発表', '今後発表')
+    ):
         next_parts.append('상세 데이터를 후속 국제 의학 학회에서 공개')
-    if any(x in low for x in ('engage with regulators', 'regulatory submissions', 'filing submissions', 'discuss with regulators')):
+    if any(x in low for x in ('engage with regulators', 'regulatory submissions', 'filing submissions', 'discuss with regulators')) or any(
+        x in article_text for x in ('規制当局', '承認申請', '申請を協議')
+    ):
         next_parts.append('Merck·Moderna가 규제기관과 허가신청 제출 협의')
     next_line = ' → '.join(next_parts) if next_parts else '후속 데이터 공개·허가 일정은 원문에서 추가 확인 필요'
 
-    if 'safety profile' in low and ('consistent' in low or 'no new safety' in low or 'no new signals' in low):
+    if (
+        ('safety profile' in low and ('consistent' in low or 'no new safety' in low or 'no new signals' in low))
+        or ('安全性' in article_text and any(x in article_text for x in ('一貫', '新たな安全性シグナルは認められなかった', '新たな安全性シグナルなし')))
+    ):
         safety_line = '기존 병용요법 경험과 대체로 일관됐고 새로운 안전성 신호는 없었다는 설명'
-    elif 'no new safety' in low or 'no new signals' in low:
+    elif 'no new safety' in low or 'no new signals' in low or '新たな安全性シグナルなし' in article_text:
         safety_line = '새로운 안전성 신호 없음'
     else:
         safety_line = '안전성 세부 내용은 원문에서 직접 확인되지 않음'
