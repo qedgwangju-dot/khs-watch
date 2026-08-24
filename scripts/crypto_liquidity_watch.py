@@ -136,6 +136,7 @@ def btc_etf_flow() -> dict:
         reported_count = sum(v is not None for v in numeric_funds)
         missing_count = sum(x in {"", "-", "—"} for x in normalized)
         total = parse_number(cells[-1])
+        recomputed_total = round(sum(v for v in numeric_funds if v is not None), 1) if numeric_funds else None
 
         # Farside creates the current trading-day row before issuer flow data is
         # available. In that state every fund column is "-" while Total is
@@ -144,10 +145,14 @@ def btc_etf_flow() -> dict:
         if reported_count == 0 and missing_count == len(normalized):
             status = "pending"
             total = None
-        elif missing_count > 0:
-            status = "partial"
+            total_gap = None
+            total_validated = False
         else:
-            status = "complete"
+            status = "partial" if missing_count > 0 else "complete"
+            total_gap = round(total - recomputed_total, 1) if total is not None and recomputed_total is not None else None
+            # Farside displays fund and total values rounded to US$0.1m, so
+            # allow a small cumulative rounding gap but reject larger parser/data mismatches.
+            total_validated = total_gap is not None and abs(total_gap) <= 0.6
 
         rows.append({
             "date": d,
@@ -155,6 +160,9 @@ def btc_etf_flow() -> dict:
             "status": status,
             "reported_funds": reported_count,
             "missing_funds": missing_count,
+            "recomputed_total": recomputed_total,
+            "total_gap": total_gap,
+            "total_validated": total_validated,
         })
 
     if not rows:
@@ -162,17 +170,20 @@ def btc_etf_flow() -> dict:
 
     rows.sort(key=lambda x: x["date"])
     source_latest = rows[-1]
-    valid_rows = [x for x in rows if x["total"] is not None and x["status"] != "pending"]
+    valid_rows = [
+        x for x in rows
+        if x["total"] is not None and x["status"] != "pending" and x.get("total_validated")
+    ]
     if not valid_rows:
-        raise RuntimeError("Farside has no reported BTC ETF flow rows")
+        raise RuntimeError("Farside has no validated BTC ETF flow rows")
 
     latest_valid = valid_rows[-1]
     prev_valid = valid_rows[-2] if len(valid_rows) >= 2 else latest_valid
 
-    # Use reported rows for rolling comparisons. A fully unreported synthetic
-    # 0.0 row is already excluded above.
+    # Rolling comparison is only called a 5-trading-day comparison when both
+    # windows contain exactly five validated reported dates.
     last5 = valid_rows[-5:]
-    prev5 = valid_rows[-10:-5] if len(valid_rows) >= 10 else valid_rows[:-5]
+    prev5 = valid_rows[-10:-5] if len(valid_rows) >= 10 else []
     last5_sum = round(sum(x["total"] for x in last5), 1)
     prev5_sum = round(sum(x["total"] for x in prev5), 1) if prev5 else None
 
@@ -182,12 +193,25 @@ def btc_etf_flow() -> dict:
         if prev_valid["total"] not in (None, 0)
         else None
     )
-    five_day_change = round(last5_sum - prev5_sum, 1) if prev5_sum is not None else None
+    five_day_compare_valid = len(last5) == 5 and len(prev5) == 5
+    five_day_change = round(last5_sum - prev5_sum, 1) if five_day_compare_valid and prev5_sum is not None else None
     five_day_change_pct = (
         round(five_day_change / abs(prev5_sum) * 100, 1)
-        if prev5_sum not in (None, 0) and last5_sum * prev5_sum > 0
+        if five_day_compare_valid and prev5_sum not in (None, 0) and last5_sum * prev5_sum > 0
         else None
     )
+    five_day_direction = None
+    if five_day_compare_valid and prev5_sum is not None:
+        if prev5_sum < 0 < last5_sum:
+            five_day_direction = "순유출→순유입 전환"
+        elif prev5_sum > 0 > last5_sum:
+            five_day_direction = "순유입→순유출 전환"
+        elif last5_sum > prev5_sum:
+            five_day_direction = "순자금흐름 개선"
+        elif last5_sum < prev5_sum:
+            five_day_direction = "순자금흐름 악화"
+        else:
+            five_day_direction = "변화 없음"
 
     return {
         "date": latest_valid["date"].isoformat(),
@@ -202,12 +226,19 @@ def btc_etf_flow() -> dict:
         "source_latest_date": source_latest["date"].isoformat(),
         "source_latest_status": source_latest["status"],
         "pending_date": source_latest["date"].isoformat() if source_latest["status"] == "pending" else None,
+        "latest_recomputed_total_usd_m": latest_valid.get("recomputed_total"),
+        "latest_total_gap_usd_m": latest_valid.get("total_gap"),
+        "latest_total_validated": latest_valid.get("total_validated"),
         "last5_usd_m": last5_sum,
         "last5_dates": [x["date"].isoformat() for x in last5],
+        "last5_values_usd_m": [x["total"] for x in last5],
         "prev5_usd_m": prev5_sum,
         "prev5_dates": [x["date"].isoformat() for x in prev5],
+        "prev5_values_usd_m": [x["total"] for x in prev5],
+        "five_day_compare_valid": five_day_compare_valid,
         "five_day_change_usd_m": five_day_change,
         "five_day_change_pct": five_day_change_pct,
+        "five_day_direction": five_day_direction,
     }
 
 
@@ -368,16 +399,23 @@ def main() -> None:
                 f"• 전일 대비: {signed_millions(etf.get('day_change_usd_m', 0.0))} ({signed_pct(etf.get('day_change_pct'))})",
                 f"• 최근 5거래일: {signed_millions(etf.get('last5_usd_m', 0.0))}",
             ]
-            if etf.get("prev5_usd_m") is not None:
-                if etf.get("last5_usd_m", 0.0) * etf.get("prev5_usd_m", 0.0) < 0:
-                    direction = "유출→유입 전환" if etf.get("last5_usd_m", 0.0) > 0 else "유입→유출 전환"
-                    five_compare = f"{signed_millions(etf.get('five_day_change_usd_m', 0.0))} ({direction})"
-                else:
-                    five_compare = f"{signed_millions(etf.get('five_day_change_usd_m', 0.0))} ({signed_pct(etf.get('five_day_change_pct'))})"
+            if etf.get("five_day_compare_valid"):
+                last5_dates = etf.get("last5_dates") or []
+                prev5_dates = etf.get("prev5_dates") or []
+                last5_range = f"{last5_dates[0]}~{last5_dates[-1]}" if len(last5_dates) == 5 else "기간 확인 불가"
+                prev5_range = f"{prev5_dates[0]}~{prev5_dates[-1]}" if len(prev5_dates) == 5 else "기간 확인 불가"
+                direction = etf.get("five_day_direction") or "판정 불가"
                 lines += [
-                    f"• 이전 5거래일: {signed_millions(etf.get('prev5_usd_m', 0.0))}",
-                    f"• 5거래일 구간 대비: {five_compare}",
+                    f"• 최근 5거래일({last5_range}): {signed_millions(etf.get('last5_usd_m', 0.0))}",
+                    f"• 이전 5거래일({prev5_range}): {signed_millions(etf.get('prev5_usd_m', 0.0))}",
+                    f"• 5거래일 구간 대비: {signed_millions(etf.get('five_day_change_usd_m', 0.0))} | {direction}",
                 ]
+                if etf.get("five_day_change_pct") is not None:
+                    lines += [f"• 5거래일 변화율: {signed_pct(etf.get('five_day_change_pct'))}"]
+                elif etf.get("prev5_usd_m", 0.0) * etf.get("last5_usd_m", 0.0) < 0:
+                    lines += ["• 5거래일 변화율: 부호 전환 구간이라 % 비교하지 않음"]
+            else:
+                lines += ["• 5거래일 구간 대비: 검증된 10개 거래일이 확보될 때까지 계산 보류"]
             if etf.get("pending_date"):
                 lines += [f"※ {etf.get('pending_date')}: 전 ETF 미보고(-) → 0.0으로 간주하지 않고 미집계 처리"]
             lines += [""]
