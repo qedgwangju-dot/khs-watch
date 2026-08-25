@@ -21,6 +21,10 @@ def find(pattern: str, text: str, default: str = "") -> str:
     return m.group(1).strip() if m else default
 
 
+def section_present(title: str, text: str) -> bool:
+    return bool(re.search(rf"^■\s*{re.escape(title)}\s*$", text, re.M))
+
+
 def source_label(source: str) -> str:
     low = source.lower().strip()
     if any(k in low for k in OFFICIAL_SOURCES):
@@ -39,11 +43,21 @@ def htmlify_lines(text: str) -> str:
             out.append(f"- 출처: {html.escape(source)} / {source_label(source)}")
             continue
 
-        m = re.match(r"\s*-\s*원문:\s*(https?://\S+)\s*$", line)
-        if m:
-            url = html.escape(m.group(1), quote=True)
+        m_link = re.match(r"\s*-\s*원문:\s*(https?://\S+)\s*$", line)
+        if m_link:
+            url = html.escape(m_link.group(1), quote=True)
             out.append(f'<a href="{url}">원문</a>')
             continue
+
+        m_title = re.match(r"^(\d+)\.\s+(.+)$", line)
+        if m_title:
+            out.append(f'{m_title.group(1)}. <b>{html.escape(m_title.group(2), quote=False)}</b>')
+            continue
+
+        if line.startswith("■ "):
+            out.append(f"<b>{html.escape(line, quote=False)}</b>")
+            continue
+
         out.append(html.escape(line, quote=False))
     return "\n".join(out)
 
@@ -63,11 +77,12 @@ def main() -> None:
     count = find(r"신규 핵심 변화:\s*(\d+건)", original, "확인 불가")
     fx = find(r"원화 환산:\s*(.+)", original)
 
-    has_192 = "192GB" in original
-    has_validation = "HBM4E 고객 검증·양산" in original
-    has_shipments = "Rubin Ultra·NVL576 실제 출하" in original
-    has_contract = "2027 HBM 계약가격·물량" in original
-    has_migration = "DDR5·SOCAMM2·기업용 eSSD 이동" in original
+    has_rubin_spec = section_present("Rubin Ultra 최종 HBM 사양", original)
+    has_validation = section_present("HBM4E 고객 검증·양산", original)
+    has_shipments = section_present("Rubin Ultra·NVL576 실제 출하", original)
+    has_contract = section_present("2027 HBM 계약가격·물량", original)
+    has_migration = section_present("DDR5·SOCAMM2·기업용 eSSD 이동", original)
+    has_192 = has_rubin_spec and "192GB" in original
 
     quick = [
         "🚨 <b>Rubin/HBM 구조 변화 감시</b>",
@@ -115,6 +130,8 @@ def main() -> None:
     ]
 
     detected = []
+    if has_rubin_spec:
+        detected.append("Rubin Ultra 최종 HBM 사양")
     if has_validation:
         detected.append("HBM4E 고객 검증·양산")
     if has_shipments:
@@ -125,7 +142,7 @@ def main() -> None:
         detected.append("DDR5·SOCAMM2·기업용 eSSD 이동")
 
     if detected:
-        quick += ["", "📌 <b>이번 알림에서 확인할 축</b>"]
+        quick += ["", "📌 <b>이번 알림에서 실제로 감지된 축</b>"]
         quick.extend(f"• {html.escape(x)}" for x in detected)
 
     quick += [
