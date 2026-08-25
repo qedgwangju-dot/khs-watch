@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-08-25T20:41:14+09:00",
+  "last_checked_kst": "2026-08-25T21:52:43+09:00",
   "media_id": null,
   "cftc_date": "August 18, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-08-25T20:41:14+09:00",
+    "checked_kst": "2026-08-25T21:52:43+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "August 18, 2026",
@@ -97,10 +97,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 111.3125,
-        "settlement": 111.3125,
-        "change": 0.53125,
-        "pct_change": 0.4795486600846166,
+        "last": 111.34375,
+        "settlement": 111.34375,
+        "change": 0.5625,
+        "pct_change": 0.5077574047954947,
         "open_interest": 2493394,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 18, 2026)",
         "volume": 0,
@@ -119,19 +119,19 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-08-21",
+        "date": "2026-08-24",
         "rate": 3.65,
-        "volume_bn": 2952
+        "volume_bn": 2919
       },
       "BGCR": {
-        "date": "2026-08-21",
+        "date": "2026-08-24",
         "rate": 3.63,
-        "volume_bn": 1198
+        "volume_bn": 1214
       },
       "TGCR": {
-        "date": "2026-08-21",
+        "date": "2026-08-24",
         "rate": 3.63,
-        "volume_bn": 1172
+        "volume_bn": 1180
       }
     },
     "format_revision": 6
