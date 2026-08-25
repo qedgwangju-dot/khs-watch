@@ -1,0 +1,1 @@
+Final structure: QRA plan → buyback policy → buyback execution → auction final demand → TGA/Bill/SOMA liquidity → foreign demand → CTA squeeze → global rates. Each stage owns one question and does not repeat earlier stages.
