@@ -132,10 +132,11 @@ jobs:
           message_ids = []
           for idx, chunk in enumerate(split_message(text), 1):
               if idx > 1:
-                  chunk = f"Rubin/HBM 구조 변화 감시 (계속 {idx})\n\n{chunk}"
+                  chunk = f"<b>Rubin/HBM 구조 변화 감시 (계속 {idx})</b>\n\n{chunk}"
               payload = urllib.parse.urlencode({
                   "chat_id": chat_id,
                   "text": chunk,
+                  "parse_mode": "HTML",
                   "disable_web_page_preview": "true",
               }).encode("utf-8")
               req = urllib.request.Request(
