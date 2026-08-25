@@ -42,7 +42,7 @@ def htmlify_lines(text: str) -> str:
         m = re.match(r"\s*-\s*원문:\s*(https?://\S+)\s*$", line)
         if m:
             url = html.escape(m.group(1), quote=True)
-            out.append(f'🔗 <a href="{url}">원문</a>')
+            out.append(f'<a href="{url}">원문</a>')
             continue
         out.append(html.escape(line, quote=False))
     return "\n".join(out)
