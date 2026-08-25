@@ -1,0 +1,206 @@
+name: Rubin HBM Telegram Watch
+
+on:
+  push:
+    paths:
+      - ".github/workflows/rubin-hbm-telegram.yml"
+      - "scripts/rubin_hbm_watch.py"
+  schedule:
+    # GitHub cron is UTC. Run once per hour and send only when a new relevant event appears.
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rubin-hbm-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate Telegram route without sending
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("HBM_TELEGRAM_BOT_TOKEN secret is missing")
+          if not chat_id:
+              raise RuntimeError("HBM_TELEGRAM_CHAT_ID secret is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{username} chat_id_present=true")
+          PY
+
+      - name: Check Rubin and HBM sources
+        run: |
+          python -m py_compile scripts/rubin_hbm_watch.py
+          python scripts/rubin_hbm_watch.py
+
+      - name: Publish watcher summary
+        if: always()
+        run: |
+          if [ -f out/rubin_hbm_status.md ]; then
+            cat out/rubin_hbm_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Rubin/HBM 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send Rubin HBM update to Telegram
+        if: hashFiles('out/rubin_hbm_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("HBM Telegram token/chat id is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/rubin_hbm_alert.md").read_text(encoding="utf-8").strip()
+
+          def split_message(value, limit=3900):
+              chunks, current = [], ""
+              for paragraph in value.split("\n\n"):
+                  candidate = paragraph if not current else current + "\n\n" + paragraph
+                  if len(candidate) <= limit:
+                      current = candidate
+                      continue
+                  if current:
+                      chunks.append(current)
+                      current = ""
+                  while len(paragraph) > limit:
+                      cut = paragraph.rfind("\n", 0, limit)
+                      if cut < 1:
+                          cut = limit
+                      chunks.append(paragraph[:cut])
+                      paragraph = paragraph[cut:].lstrip()
+                  current = paragraph
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          message_ids = []
+          for idx, chunk in enumerate(split_message(text), 1):
+              if idx > 1:
+                  chunk = f"Rubin/HBM 구조 변화 감시 (계속 {idx})\n\n{chunk}"
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  result = json.loads(r.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
+              message_ids.append(result.get("result", {}).get("message_id"))
+
+          confirmed = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_ids": message_ids,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/rubin_hbm_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids}")
+          PY
+
+      - name: Persist initial baseline
+        if: success() && hashFiles('out/rubin_hbm_alert.md') == '' && hashFiles('out/rubin_hbm_rebaseline.txt') != ''
+        run: cp out/rubin_hbm_pending_state.json data/rubin_hbm_watch_state.json
+
+      - name: Persist state after confirmed Telegram delivery
+        if: success() && hashFiles('out/rubin_hbm_alert.md') != '' && hashFiles('out/rubin_hbm_telegram_confirmed.json') != ''
+        run: |
+          cp out/rubin_hbm_pending_state.json data/rubin_hbm_watch_state.json
+          python - <<'PY'
+          import json, pathlib
+          state_path = pathlib.Path("data/rubin_hbm_watch_state.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          confirmed = json.loads(pathlib.Path("out/rubin_hbm_telegram_confirmed.json").read_text(encoding="utf-8"))
+          state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
+          state["telegram_message_ids"] = confirmed.get("message_ids")
+          state["bot_username"] = confirmed.get("bot_username")
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Keep state fresh when no alert is due
+        if: success() && hashFiles('out/rubin_hbm_alert.md') == '' && hashFiles('out/rubin_hbm_rebaseline.txt') == '' && hashFiles('data/rubin_hbm_watch_state.json') != ''
+        run: cp out/rubin_hbm_pending_state.json data/rubin_hbm_watch_state.json
+
+      - name: Commit watcher state
+        if: success() && hashFiles('data/rubin_hbm_watch_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/rubin_hbm_watch_state.json
+          if git diff --cached --quiet; then
+            echo "Rubin HBM state unchanged"
+          else
+            git commit -m "Record Rubin HBM watch state"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rubin-hbm-${{ github.run_id }}
+          path: |
+            out/rubin_hbm_status.md
+            out/rubin_hbm_alert.md
+            out/rubin_hbm_pending_state.json
+            out/rubin_hbm_rebaseline.txt
+            out/rubin_hbm_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
