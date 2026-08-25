@@ -1,0 +1,23 @@
+{
+  "updated_at_kst": "2026-08-25T15:36:00+09:00",
+  "seen_ids": [],
+  "last_new_event_count": 0,
+  "last_send_event_count": 0,
+  "usdkrw": {
+    "rate": 1384.07,
+    "date": "2026-08-25",
+    "error": ""
+  },
+  "errors": [
+    "rubin_spec/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_spec/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm4e_validation/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm4e_validation/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_shipments/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_shipments/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm_2027_contract/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm_2027_contract/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "memory_migration/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "memory_migration/ko: HTTPError: HTTP Error 503: Service Unavailable"
+  ]
+}
