@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-08-25T16:07:53+09:00",
+  "updated_at_kst": "2026-08-25T16:08:41+09:00",
   "seen_ids": [
     "0a11d6e55d20a20d438eea0b",
     "4a4d0cce8254b1bcb31b5074",
@@ -10,11 +10,9 @@
   "last_new_event_count": 0,
   "last_send_event_count": 0,
   "usdkrw": {
-    "rate": null,
-    "date": "",
-    "error": "USD/KRW 조회 실패: TimeoutError: The read operation timed out"
+    "rate": 1384.22,
+    "date": "2026-08-25",
+    "error": ""
   },
-  "errors": [
-    "USD/KRW 조회 실패: TimeoutError: The read operation timed out"
-  ]
+  "errors": []
 }
