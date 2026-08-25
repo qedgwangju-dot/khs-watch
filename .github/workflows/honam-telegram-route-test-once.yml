@@ -1,0 +1,65 @@
+name: Honam Telegram Route Test Once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/honam-telegram-route-test-once.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Validate route and send one test message
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("HONAM_TELEGRAM_BOT_TOKEN secret is missing")
+          if not chat_id:
+              raise RuntimeError("HONAM_TELEGRAM_CHAT_ID secret is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          now = dt.datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M:%S KST")
+          text = (
+              "✅ <b>호남 반도체 국가산단 · 장록습지 웹감시 연결 완료</b>\n\n"
+              "① 용역 수행업체 선정·계약·현지조사 착수\n"
+              "② 장록습지 수량·수질 조사범위\n"
+              "③ 람사르습지 등록 심사 결과\n\n"
+              "새로운 의미 있는 변화가 있을 때만 알림을 보냅니다.\n"
+              f"연결 확인: {now}"
+          )
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
+          with urllib.request.urlopen(req, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+          print(f"telegram_route_valid=true bot=@{username} message_id={result.get('result', {}).get('message_id')}")
+          PY
