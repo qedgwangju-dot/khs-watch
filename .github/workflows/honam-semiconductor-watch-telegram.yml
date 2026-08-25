@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/honam-semiconductor-watch-telegram.yml"
       - "scripts/honam_semiconductor_watch.py"
+      - "scripts/honam_telegram_formatter.py"
       - "data/honam_semiconductor_watch_state.json"
   schedule:
     # GitHub cron is UTC. Check hourly; no meaningful new change => no Telegram message.
@@ -35,11 +36,15 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate watcher
-        run: python -m py_compile scripts/honam_semiconductor_watch.py
+      - name: Validate watcher and formatter
+        run: python -m py_compile scripts/honam_semiconductor_watch.py scripts/honam_telegram_formatter.py
 
       - name: Check Honam semiconductor and Jangrok sources
         run: python scripts/honam_semiconductor_watch.py
+
+      - name: Build readable Telegram alert
+        if: hashFiles('out/honam_semiconductor_alert.json') != ''
+        run: python scripts/honam_telegram_formatter.py
 
       - name: Publish watcher summary
         if: always()
@@ -48,6 +53,10 @@ jobs:
             cat out/honam_semiconductor_status.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo "호남 반도체 웹감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/honam_semiconductor_telegram_chunks.json ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "### Telegram 알림 생성 완료" >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Validate Telegram route when needed
@@ -94,13 +103,13 @@ jobs:
           chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
           now = dt.datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M KST")
           text = (
-              "✅ <b>호남 반도체 국가산단 · 장록습지 웹감시 연결 완료</b>\n\n"
-              "다음 3가지만 순서대로 감시합니다.\n"
-              "1) 환경영향평가 용역 수행업체 선정·계약·현지조사 착수\n"
-              "2) 장록습지 수량·수질 조사범위·유량·수위·지하수·방류·저감대책\n"
-              "3) 기후에너지환경부 신청 람사르습지 등록 심사 결과\n\n"
-              "의미 있는 새 변화가 있을 때만 알림을 보냅니다.\n"
-              f"연결 확인: {now}"
+              "🚨 <b>호남 반도체 국가산단 · 장록습지</b>\n"
+              "웹감시 연결 정상 · " + now + "\n\n"
+              "<b>확인 순서</b>\n"
+              "① 수행업체 선정·현지조사 착수\n"
+              "② 장록습지 수량·수질 조사범위\n"
+              "③ 람사르 등록 심사 결과\n\n"
+              "의미 있는 새 변화가 있을 때만 알림"
           )
           payload = urllib.parse.urlencode({
               "chat_id": chat_id,
@@ -117,14 +126,13 @@ jobs:
           PY
 
       - name: Send meaningful change to Telegram
-        if: hashFiles('out/honam_semiconductor_alert.json') != ''
+        if: hashFiles('out/honam_semiconductor_telegram_chunks.json') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
-          import html
           import json
           import os
           import pathlib
@@ -134,52 +142,9 @@ jobs:
 
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
-          data = json.loads(pathlib.Path("out/honam_semiconductor_alert.json").read_text(encoding="utf-8"))
-
-          stage_names = {
-              "1_용역선정_현지조사": "① 용역업체 선정·현지조사",
-              "2_수량수질_조사범위": "② 장록습지 수량·수질",
-              "3_람사르_심사결과": "③ 람사르 등록 심사",
-          }
-
-          lines = ["🚨 <b>호남 반도체 국가산단 · 장록습지 변화 감지</b>", ""]
-          for change in data.get("official_changes", []):
-              lines += [
-                  "🏛 <b>공식 페이지 변경</b>",
-                  html.escape(change.get("snippet", "")[:900]),
-                  f"시간표 판단: {html.escape(change.get('impact', '세부 확인 필요'))}",
-                  f"원문: {html.escape(change.get('url', ''))}",
-                  "",
-              ]
-
-          for item in data.get("new_items", []):
-              stages = ", ".join(stage_names.get(x, x) for x in item.get("stages", []))
-              lines += [
-                  f"🔎 <b>{html.escape(stages)}</b>",
-                  html.escape(item.get("title", "")),
-                  f"출처: {html.escape(item.get('source') or '웹 검색')}",
-                  f"시간표 판단: {html.escape(item.get('impact', '확인 필요'))}",
-                  f"원문: {html.escape(item.get('link', ''))}",
-                  "",
-              ]
-
-          lines += [
-              "<b>확인 순서</b>",
-              "1) 수행업체 선정·현지조사 착수 → 2) 수량·수질 조사범위 → 3) 람사르 심사 결과",
-              "",
-              f"확인시각: {html.escape(data.get('checked_at_kst', ''))}",
-          ]
-          text = "\n".join(lines)
-          # Telegram text limit is 4096 characters; split safely on line boundaries.
-          chunks = []
-          current = ""
-          for line in text.splitlines(True):
-              if len(current) + len(line) > 3900 and current:
-                  chunks.append(current)
-                  current = ""
-              current += line
-          if current:
-              chunks.append(current)
+          chunks = json.loads(pathlib.Path("out/honam_semiconductor_telegram_chunks.json").read_text(encoding="utf-8"))
+          if not chunks:
+              raise RuntimeError("Telegram chunks are empty")
 
           ids = []
           for chunk in chunks:
@@ -230,6 +195,7 @@ jobs:
           path: |
             out/honam_semiconductor_status.md
             out/honam_semiconductor_alert.json
+            out/honam_semiconductor_telegram_chunks.json
             out/honam_semiconductor_pending_state.json
             out/honam_semiconductor_telegram_confirmed.json
           if-no-files-found: ignore
