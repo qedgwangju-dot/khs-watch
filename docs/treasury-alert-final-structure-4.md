@@ -1,0 +1,1 @@
+Final Treasury alert architecture: QRA → buyback policy → buyback execution → auction final demand → net liquidity → foreign demand → CTA squeeze → rates. Duplicate narrative across stages is prohibited.
