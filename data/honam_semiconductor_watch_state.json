@@ -1,22 +1,32 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-08-25T20:03:51+09:00",
+  "monitor_started_at_kst": "2026-08-25T20:03:51+09:00",
+  "updated_at_kst": "2026-08-25T20:11:37+09:00",
   "seen_ids": [
-    "6bcc1a8dc701e076d4726633",
     "8ae53837ec7e502558cf0659",
     "22f7dfd77207d692ae24adea",
-    "1f4844071fbd81459be4ac4d",
-    "b237c24fb8c8ab5ea156adcb"
+    "6bcc1a8dc701e076d4726633",
+    "b237c24fb8c8ab5ea156adcb",
+    "1f4844071fbd81459be4ac4d"
+  ],
+  "seen_story_keys": [
+    "8ddd60fb5399cbe17d861b70",
+    "302564da164985fa8c9087ca",
+    "922013e6004424670c82c0bb",
+    "9a3f3456cb6c7d14d1b06e1f"
   ],
   "official_page_signatures": {
     "lh_project_press": "1b06e9ac9765edc46df11605890846be2695ae2b1ea0a0653e45bf80484de227",
     "lh_design_bid": "ba8a61f88be738c789c3dbfefdc1641f11b6b235216161b4336bc68e3969038b"
   },
   "last_relevant_count": 4,
+  "last_stale_suppressed_count": 0,
   "errors": [],
   "noise_filters": [
     "LH 보도자료 다운로드 수",
     "조회수",
-    "스크립트·메뉴 문구"
+    "스크립트·메뉴 문구",
+    "감시 시작시점보다 오래된 기사 재노출",
+    "동일 제목·출처·발행일 중복"
   ]
 }
