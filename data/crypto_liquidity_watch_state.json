@@ -1,24 +1,24 @@
 {
-  "updated_at_kst": "2026-08-26T04:17:24+09:00",
+  "updated_at_kst": "2026-08-26T04:54:37+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
     "long_bucket_summary": "2026-08-26 13:40 14:00 Nominal Coupons 1Mo to 2Y NOMINAL COUPONS Cash Management 0 12500000000 2026-10-04 2028-09-03 2026-09-02 2026-09-03 2026-09-04 13:40 14:00 Nominal Coupons 1Mo to 2Y NOMINAL COUPONS Cash Management 0 12500000000 2026-10-10 2028-09-09 2026-09-08 2 | August 2026 Refunding Tentative Buyback Calendar V1 2026-08-18 2026-11-05 Nominal Coupons 20Y to 30Y NOMINAL COUPONS Liquidity Support 0 2000000000 2046-08-19 2056-08-18 2026-08-17 2026-08-18 2026-08-19 13:40 14:00 Nominal Coupons 3Y to 5Y NOMINAL COUPONS Liq"
   },
   "rates": {
-    "date": "2026-08-24",
-    "10y": 4.7,
-    "30y": 5.23,
-    "prev_date": "2026-08-21",
-    "prev_10y": 4.74,
-    "prev_30y": 5.27,
-    "daily_10y_bp": -4.0,
-    "daily_30y_bp": -4.0,
-    "prev5_date": "2026-08-17",
-    "prev5_10y": 4.72,
-    "prev5_30y": 5.31,
-    "five_day_10y_bp": -2.0,
-    "five_day_30y_bp": -8.0
+    "date": "2026-08-25",
+    "10y": 4.64,
+    "30y": 5.17,
+    "prev_date": "2026-08-24",
+    "prev_10y": 4.7,
+    "prev_30y": 5.23,
+    "daily_10y_bp": -6.0,
+    "daily_30y_bp": -6.0,
+    "prev5_date": "2026-08-18",
+    "prev5_10y": 4.71,
+    "prev5_30y": 5.28,
+    "five_day_10y_bp": -7.0,
+    "five_day_30y_bp": -11.0
   },
   "btc_etf": {
     "date": "2026-08-24",
