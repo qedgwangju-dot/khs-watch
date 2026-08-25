@@ -1,10 +1,10 @@
-name: Treasury buyback media signal Telegram alert
+name: Treasury buyback execution results Telegram alert
 
 on:
   push:
     paths:
-      - "scripts/treasury_buyback_media_watch_v2.py"
       - "scripts/treasury_buyback_execution_watch.py"
+      - "scripts/treasury_buyback_media_watch_v2.py"
       - ".github/workflows/treasury-buyback-media-telegram-alert.yml"
   schedule:
     - cron: "*/15 12-23 * * 1-5"
@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: treasury-buyback-media-telegram-alert
+  group: treasury-buyback-execution-results-telegram-alert
   cancel-in-progress: true
 
 jobs:
@@ -32,15 +32,15 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate watcher
+      - name: Validate execution-only watcher
         run: |
           python -m py_compile scripts/treasury_buyback_media_watch_v2.py
           python -m py_compile scripts/treasury_buyback_execution_watch.py
 
-      - name: Check Treasury signals and official execution chain
+      - name: Check official Treasury buyback execution results only
         run: python scripts/treasury_buyback_execution_watch.py
 
-      - name: Send interpreted alert
+      - name: Send execution alert only
         if: hashFiles('out/treasury_buyback_media_alert.html') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
@@ -75,7 +75,7 @@ jobs:
               encoding="utf-8")
           PY
 
-      - name: Finalize state
+      - name: Finalize execution state
         if: success() && hashFiles('data/treasury_buyback_media_state_next.json') != ''
         run: |
           python - <<'PY'
@@ -85,7 +85,7 @@ jobs:
           alert=pathlib.Path("out/treasury_buyback_media_alert.html").exists()
           confirmed=pathlib.Path("out/treasury_buyback_media_telegram_confirmed.json").exists()
           if alert and not confirmed:
-              raise RuntimeError("중요 신호 감지 후 텔레그램 확인 없음")
+              raise RuntimeError("공식 바이백 결과 변경 감지 후 텔레그램 확인 없음")
 
           pending_items=list(state.pop("pending_items",[]) or [])
           legacy=state.pop("pending",None)
@@ -102,7 +102,7 @@ jobs:
               json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
 
-      - name: Commit state
+      - name: Commit execution state
         if: success() && hashFiles('data/treasury_buyback_media_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
@@ -111,16 +111,16 @@ jobs:
           if git diff --cached --quiet; then
             echo "상태 변경 없음"
           else
-            git commit -m "Update Treasury buyback media signal state"
+            git commit -m "Update Treasury buyback execution state"
             git pull --rebase origin main
             git push
           fi
 
-      - name: Upload verification artifacts
+      - name: Upload execution verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: treasury-buyback-media-${{ github.run_id }}
+          name: treasury-buyback-execution-${{ github.run_id }}
           path: |
             out/treasury_buyback_media_status.md
             out/treasury_buyback_media_alert.html
