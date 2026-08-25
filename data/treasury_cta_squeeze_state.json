@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-08-25T23:50:15+09:00",
+  "last_checked_kst": "2026-08-26T00:36:50+09:00",
   "media_id": null,
   "cftc_date": "August 18, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-08-25T23:50:15+09:00",
+    "checked_kst": "2026-08-26T00:36:50+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "August 18, 2026",
@@ -65,10 +65,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 108.78125,
-        "settlement": 108.78125,
-        "change": 0.328125,
-        "pct_change": 0.3025500648321522,
+        "last": 108.796875,
+        "settlement": 108.796875,
+        "change": 0.34375,
+        "pct_change": 0.31695721077653616,
         "open_interest": 5596739,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 18, 2026)",
         "volume": 0,
@@ -81,10 +81,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 110.09375,
-        "settlement": 110.09375,
-        "change": 0.59375,
-        "pct_change": 0.5422374429223664,
+        "last": 110.1875,
+        "settlement": 110.1875,
+        "change": 0.6875,
+        "pct_change": 0.6278538812785284,
         "open_interest": 1894436,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 18, 2026)",
         "volume": 0,
@@ -97,10 +97,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 111.5,
-        "settlement": 111.5,
-        "change": 0.71875,
-        "pct_change": 0.6488011283497963,
+        "last": 111.625,
+        "settlement": 111.625,
+        "change": 0.84375,
+        "pct_change": 0.7616361071932198,
         "open_interest": 2493394,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 18, 2026)",
         "volume": 0,
@@ -134,7 +134,18 @@
         "volume_bn": 1180
       }
     },
-    "format_revision": 6
+    "format_revision": 7
   },
-  "format_revision": 6
+  "format_revision": 7,
+  "short_bias_active": false,
+  "episode_active": false,
+  "episode_stage": 0,
+  "last_gate": {
+    "futures_price_oi": false,
+    "cftc_short_bias": false,
+    "z_below_minus_1": false,
+    "repo_not_worse": true,
+    "composite_confirmed": false,
+    "stage": 0
+  }
 }
