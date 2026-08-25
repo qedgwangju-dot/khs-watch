@@ -34,13 +34,38 @@ def source_label(source: str) -> str:
     return "일반 보도 — 추가 교차검증 필요"
 
 
+def emphasize_metrics(line: str) -> str:
+    """정보를 줄이지 않고 핵심 숫자만 굵게 만들어 눈에 바로 들어오게 한다."""
+    escaped = html.escape(line, quote=False)
+    patterns = [
+        r"(?<![\w])([+-]?\d+(?:\.\d+)?%)",
+        r"(?<![\w])(\d+(?:\.\d+)?\s*(?:GB|TB|Gbps|TB/s|GB/s|W|GW))\b",
+        r"(?<![\w])(\$\s*\d+(?:\.\d+)?\s*(?:B|M)?)\b",
+        r"(?<![\w])(20\d{2})\b",
+    ]
+    for pattern in patterns:
+        escaped = re.sub(pattern, r"<b>\1</b>", escaped, flags=re.I)
+    return escaped
+
+
 def htmlify_lines(text: str) -> str:
     out: list[str] = []
     for line in text.splitlines():
         m_source = re.match(r"\s*-\s*출처:\s*(.+?)\s*/\s*.+$", line)
         if m_source:
             source = m_source.group(1).strip()
-            out.append(f"- 출처: {html.escape(source)} / {source_label(source)}")
+            label = source_label(source)
+            out.append(f"- <b>출처</b>: {html.escape(source)} / <b>{html.escape(label)}</b>")
+            continue
+
+        m_time = re.match(r"\s*-\s*공개시각:\s*(.+)$", line)
+        if m_time:
+            out.append(f"- <b>공개시각</b>: {emphasize_metrics(m_time.group(1).strip())}")
+            continue
+
+        m_judge = re.match(r"\s*•\s*판정 기준:\s*(.+)$", line)
+        if m_judge:
+            out.append(f"• <b>판정 기준</b>: {emphasize_metrics(m_judge.group(1).strip())}")
             continue
 
         m_link = re.match(r"\s*-\s*원문:\s*(https?://\S+)\s*$", line)
@@ -58,7 +83,7 @@ def htmlify_lines(text: str) -> str:
             out.append(f"<b>{html.escape(line, quote=False)}</b>")
             continue
 
-        out.append(html.escape(line, quote=False))
+        out.append(emphasize_metrics(line))
     return "\n".join(out)
 
 
@@ -84,6 +109,8 @@ def main() -> None:
     has_migration = section_present("DDR5·SOCAMM2·기업용 eSSD 이동", original)
     has_192 = has_rubin_spec and "192GB" in original
 
+    # 가독성은 '정보 삭제'가 아니라 '시각적 우선순위'로 만든다.
+    # 상세 근거는 아래에 원문 그대로 보존한다.
     quick = [
         "🚨 <b>Rubin/HBM 구조 변화 감시</b>",
         "━━━━━━━━━━━━━━━━",
