@@ -1,0 +1,1 @@
+Invariant: a Treasury event is reported once per stage only: policy → execution → liquidity → auction final demand → market squeeze. Later stages update the event rather than restating earlier narrative.
