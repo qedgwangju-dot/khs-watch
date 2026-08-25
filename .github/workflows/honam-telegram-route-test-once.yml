@@ -17,7 +17,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
     steps:
-      - name: Validate route and send one test message
+      - name: Send readability test
         run: |
           python - <<'PY'
           import datetime as dt
@@ -30,10 +30,8 @@ jobs:
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
-          if not token:
-              raise RuntimeError("HONAM_TELEGRAM_BOT_TOKEN secret is missing")
-          if not chat_id:
-              raise RuntimeError("HONAM_TELEGRAM_CHAT_ID secret is missing")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram secret is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
@@ -41,14 +39,19 @@ jobs:
           if not identity.get("ok") or username.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
 
-          now = dt.datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M:%S KST")
+          now = dt.datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M KST")
           text = (
-              "✅ <b>호남 반도체 국가산단 · 장록습지 웹감시 연결 완료</b>\n\n"
-              "① 용역 수행업체 선정·계약·현지조사 착수\n"
-              "② 장록습지 수량·수질 조사범위\n"
-              "③ 람사르습지 등록 심사 결과\n\n"
-              "새로운 의미 있는 변화가 있을 때만 알림을 보냅니다.\n"
-              f"연결 확인: {now}"
+              "🚨 <b>호남 반도체 국가산단 · 장록습지</b>\n"
+              f"가독성 수정 테스트 · {now}\n\n"
+              "<b>한눈에 보기</b>\n"
+              "• ① 용역업체 선정·현지조사: 새 변화 없음\n"
+              "• ② 장록습지 수량·수질: 새 변화 없음\n"
+              "• ③ 람사르 등록 심사: 새 변화 없음\n\n"
+              "<b>알림 기준 수정</b>\n"
+              "• 긴 웹페이지 본문·메뉴·스크립트 문구 제거\n"
+              "• 다운로드 수·조회수 변동은 변화에서 제외\n"
+              "• 낙찰·계약·착수·조사범위·람사르 심사처럼 실제 단계 변화만 발송\n"
+              "• 원문 주소는 긴 URL 대신 ‘원문’ 링크로 표시"
           )
           payload = urllib.parse.urlencode({
               "chat_id": chat_id,
@@ -61,5 +64,5 @@ jobs:
               result = json.loads(response.read().decode("utf-8"))
           if not result.get("ok"):
               raise RuntimeError(f"Telegram rejected message: {result}")
-          print(f"telegram_route_valid=true bot=@{username} message_id={result.get('result', {}).get('message_id')}")
+          print(f"telegram_readability_test=true bot=@{username} message_id={result.get('result', {}).get('message_id')}")
           PY
