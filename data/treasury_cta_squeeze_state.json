@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-08-25T20:21:09+09:00",
+  "last_checked_kst": "2026-08-25T20:31:47+09:00",
   "media_id": null,
   "cftc_date": "August 18, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-08-25T20:21:09+09:00",
+    "checked_kst": "2026-08-25T20:31:47+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "August 18, 2026",
@@ -60,9 +60,51 @@
       }
     },
     "cme": {
-      "ZN": null,
-      "ZB": null,
-      "UB": null
+      "ZN": {
+        "symbol": "ZN",
+        "display_symbol": "TY/ZN",
+        "ticker": "ZN=F",
+        "month": "",
+        "last": 108.671875,
+        "settlement": 108.671875,
+        "change": 0.21875,
+        "pct_change": 0.2017000432214422,
+        "open_interest": 0,
+        "volume": 0,
+        "market_time": 1787630400,
+        "source": "https://finance.yahoo.com/quote/ZN%3DF/",
+        "source_type": "Yahoo Finance 지연 데이터 (CBOT/CME 파생상품 2차 배포)"
+      },
+      "ZB": {
+        "symbol": "ZB",
+        "display_symbol": "US/ZB",
+        "ticker": "ZB=F",
+        "month": "",
+        "last": 109.96875,
+        "settlement": 109.96875,
+        "change": 0.46875,
+        "pct_change": 0.42808219178083196,
+        "open_interest": 0,
+        "volume": 0,
+        "market_time": 1787630400,
+        "source": "https://finance.yahoo.com/quote/ZB%3DF/",
+        "source_type": "Yahoo Finance 지연 데이터 (CBOT/CME 파생상품 2차 배포)"
+      },
+      "UB": {
+        "symbol": "UB",
+        "display_symbol": "WN/UB",
+        "ticker": "UB=F",
+        "month": "",
+        "last": 111.28125,
+        "settlement": 111.28125,
+        "change": 0.5,
+        "pct_change": 0.4513399153737607,
+        "open_interest": 0,
+        "volume": 0,
+        "market_time": 1787630400,
+        "source": "https://finance.yahoo.com/quote/UB%3DF/",
+        "source_type": "Yahoo Finance 지연 데이터 (CBOT/CME 파생상품 2차 배포)"
+      }
     },
     "yield10": {
       "date": "2026-08-24",
@@ -89,7 +131,7 @@
         "volume_bn": 1172
       }
     },
-    "format_revision": 1
+    "format_revision": 3
   },
-  "format_revision": 1
+  "format_revision": 3
 }
