@@ -1,20 +1,21 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-08-25T17:21:44+09:00",
+  "updated_at_kst": "2026-08-25T17:30:22+09:00",
   "seen_ids": [
     "6bcc1a8dc701e076d4726633",
     "8ae53837ec7e502558cf0659",
     "22f7dfd77207d692ae24adea",
     "b237c24fb8c8ab5ea156adcb"
   ],
-  "ramsar_jangrok_present": false,
   "official_page_signatures": {
-    "lh_project_press": "1b06e9ac9765edc46df11605890846be2695ae2b1ea0a0653e45bf80484de227"
+    "lh_project_press": "1b06e9ac9765edc46df11605890846be2695ae2b1ea0a0653e45bf80484de227",
+    "lh_design_bid": "ba8a61f88be738c789c3dbfefdc1641f11b6b235216161b4336bc68e3969038b"
   },
   "last_relevant_count": 4,
-  "errors": [
-    "공식 페이지 실패: ramsar_country_profile: HTTPError: HTTP Error 403: Forbidden",
-    "공식 페이지 실패: lh_design_bid: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
-    "Ramsar 직접 확인 실패: HTTPError: HTTP Error 403: Forbidden"
+  "errors": [],
+  "noise_filters": [
+    "LH 보도자료 다운로드 수",
+    "조회수",
+    "스크립트·메뉴 문구"
   ]
 }
