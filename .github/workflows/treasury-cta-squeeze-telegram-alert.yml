@@ -1,0 +1,116 @@
+name: Treasury CTA squeeze Telegram alert
+
+on:
+  push:
+    paths:
+      - "scripts/treasury_cta_squeeze_watch.py"
+      - ".github/workflows/treasury-cta-squeeze-telegram-alert.yml"
+  schedule:
+    - cron: "*/15 12-23 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: treasury-cta-squeeze-telegram-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate CTA squeeze watcher
+        run: python -m py_compile scripts/treasury_cta_squeeze_watch.py
+
+      - name: Check CTA squeeze chain
+        run: python scripts/treasury_cta_squeeze_watch.py
+
+      - name: Send interpreted Telegram alert
+        if: hashFiles('out/treasury_cta_squeeze_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
+          PRIMARY_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          TELEGRAM_CHAT_ID="${PRIMARY_CHAT_ID:-$FALLBACK_CHAT_ID}"
+          export TELEGRAM_CHAT_ID
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token=os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat=os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected=os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=25) as r:
+              ident=json.loads(r.read().decode())
+          actual=str((ident.get("result") or {}).get("username") or "")
+          if not ident.get("ok") or actual.lower()!=expected.lower():
+              raise RuntimeError(f"잘못된 봇 경로: expected @{expected}, got @{actual or 'unknown'}")
+          title=pathlib.Path("out/treasury_cta_squeeze_title.txt").read_text(encoding="utf-8").strip()
+          body=pathlib.Path("out/treasury_cta_squeeze_alert.html").read_text(encoding="utf-8").strip()
+          text=f"<b>{title}</b>\n\n{body}"
+          if len(text)>4096:
+              raise RuntimeError(f"Telegram text too long: {len(text)}")
+          data=urllib.parse.urlencode({"chat_id":chat,"text":text,"parse_mode":"HTML","disable_web_page_preview":"true"}).encode()
+          req=urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage",data=data,method="POST")
+          with urllib.request.urlopen(req,timeout=25) as r:
+              result=json.loads(r.read().decode())
+          if not result.get("ok"):
+              raise RuntimeError(result)
+          pathlib.Path("out/treasury_cta_squeeze_telegram_confirmed.json").write_text(
+              json.dumps({"bot_username":actual,"message_id":(result.get("result") or {}).get("message_id")},ensure_ascii=False,indent=2)+"\n",
+              encoding="utf-8"
+          )
+          PY
+
+      - name: Finalize CTA state
+        if: success() && hashFiles('data/treasury_cta_squeeze_state_next.json') != ''
+        run: |
+          python - <<'PY'
+          import pathlib
+          src=pathlib.Path("data/treasury_cta_squeeze_state_next.json")
+          dst=pathlib.Path("data/treasury_cta_squeeze_state.json")
+          alert=pathlib.Path("out/treasury_cta_squeeze_alert.html").exists()
+          confirmed=pathlib.Path("out/treasury_cta_squeeze_telegram_confirmed.json").exists()
+          if alert and not confirmed:
+              raise RuntimeError("CTA 중요신호 감지 후 텔레그램 확인 없음")
+          dst.write_text(src.read_text(encoding="utf-8"),encoding="utf-8")
+          PY
+
+      - name: Commit CTA state
+        if: success() && hashFiles('data/treasury_cta_squeeze_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/treasury_cta_squeeze_state.json
+          if git diff --cached --quiet; then
+            echo "상태 변경 없음"
+          else
+            git commit -m "Update Treasury CTA squeeze state"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload CTA verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: treasury-cta-squeeze-${{ github.run_id }}
+          path: |
+            out/treasury_cta_squeeze_status.md
+            out/treasury_cta_squeeze_alert.html
+            out/treasury_cta_squeeze_detail.json
+            out/treasury_cta_squeeze_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
