@@ -3,7 +3,7 @@ name: Treasury buyback media signal Telegram alert
 on:
   push:
     paths:
-      - "scripts/treasury_buyback_media_watch.py"
+      - "scripts/treasury_buyback_media_watch_v2.py"
       - ".github/workflows/treasury-buyback-media-telegram-alert.yml"
   schedule:
     - cron: "*/15 12-23 * * 1-5"
@@ -32,10 +32,10 @@ jobs:
           python-version: "3.12"
 
       - name: Validate watcher
-        run: python -m py_compile scripts/treasury_buyback_media_watch.py
+        run: python -m py_compile scripts/treasury_buyback_media_watch_v2.py
 
-      - name: Check trusted media signals
-        run: python scripts/treasury_buyback_media_watch.py
+      - name: Check Treasury signals and official execution chain
+        run: python scripts/treasury_buyback_media_watch_v2.py
 
       - name: Send interpreted alert
         if: hashFiles('out/treasury_buyback_media_alert.html') != ''
