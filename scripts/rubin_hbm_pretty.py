@@ -6,15 +6,39 @@ import re
 
 ALERT = pathlib.Path("out/rubin_hbm_alert.md")
 
+OFFICIAL_SOURCES = (
+    "nvidia", "samsung newsroom", "삼성전자 뉴스룸", "sk hynix", "sk하이닉스 뉴스룸",
+    "micron technology", "micron newsroom",
+)
+TRUSTED_SOURCES = (
+    "trendforce", "reuters", "bloomberg", "the information", "semianalysis", "digitimes",
+    "tom's hardware", "toms hardware", "financial times", "wall street journal", "wsj", "cnbc",
+)
+
 
 def find(pattern: str, text: str, default: str = "") -> str:
     m = re.search(pattern, text, re.I | re.M)
     return m.group(1).strip() if m else default
 
 
+def source_label(source: str) -> str:
+    low = source.lower().strip()
+    if any(k in low for k in OFFICIAL_SOURCES):
+        return "공식·회사자료"
+    if any(k in low for k in TRUSTED_SOURCES):
+        return "신뢰 리서치·보도"
+    return "일반 보도 — 추가 교차검증 필요"
+
+
 def htmlify_lines(text: str) -> str:
     out: list[str] = []
     for line in text.splitlines():
+        m_source = re.match(r"\s*-\s*출처:\s*(.+?)\s*/\s*.+$", line)
+        if m_source:
+            source = m_source.group(1).strip()
+            out.append(f"- 출처: {html.escape(source)} / {source_label(source)}")
+            continue
+
         m = re.match(r"\s*-\s*원문:\s*(https?://\S+)\s*$", line)
         if m:
             url = html.escape(m.group(1), quote=True)
@@ -32,7 +56,6 @@ def main() -> None:
     if not original:
         return
 
-    # 이미 새 포맷이 붙은 경우 중복 적용하지 않는다.
     if "[HBM 좋아지는 조건]" in original:
         return
 
