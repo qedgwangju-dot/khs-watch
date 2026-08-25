@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 import datetime as dt
+import email.utils
 import hashlib
 import html
 import json
 import pathlib
 import re
 import ssl
+import subprocess
+import sys
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -23,7 +26,8 @@ STATUS_PATH = OUT / "honam_semiconductor_status.md"
 DATA.mkdir(exist_ok=True)
 OUT.mkdir(exist_ok=True)
 
-UA = "Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot/khs-watch)"
+UA = "Mozilla/5.0 (compatible; khs-watch/1.2; +https://github.com/qedgwangju-dot/khs-watch)"
+KST = ZoneInfo("Asia/Seoul")
 
 QUERIES = [
     '"호남권 반도체 첨단 국가산업단지" 장록습지',
@@ -70,8 +74,6 @@ def fetch(url: str, timeout: int = 25) -> bytes:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return resp.read()
     except urllib.error.URLError as exc:
-        # LH e-bid occasionally presents a certificate-chain issue on GitHub hosted runners.
-        # This fallback is read-only and restricted to the official LH e-bid hostname.
         if urllib.parse.urlparse(url).hostname == "ebid.lh.or.kr" and "CERTIFICATE_VERIFY_FAILED" in str(exc):
             with urllib.request.urlopen(req, timeout=timeout, context=ssl._create_unverified_context()) as resp:
                 return resp.read()
@@ -90,8 +92,97 @@ def normalize_dynamic_noise(text: str) -> str:
     text = re.sub(r"다운로드\s*:?\s*\d+", "다운로드", text, flags=re.I)
     text = re.sub(r"조회수\s*:?\s*\d+", "조회수", text, flags=re.I)
     text = re.sub(r"\b(?:session|jsessionid|token|timestamp)\s*[:=]\s*[A-Za-z0-9._-]+", " ", text, flags=re.I)
-    text = re.sub(r"\s+", " ", text).strip()
-    return text
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def parse_news_date(value: str):
+    if not value:
+        return None
+    try:
+        parsed = email.utils.parsedate_to_datetime(value)
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=dt.timezone.utc)
+        return parsed.astimezone(KST)
+    except Exception:
+        return None
+
+
+def parse_iso_kst(value: str):
+    try:
+        parsed = dt.datetime.fromisoformat(value)
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=KST)
+        return parsed.astimezone(KST)
+    except Exception:
+        return None
+
+
+def story_key(title: str, source: str, pub: str) -> str:
+    normalized = re.sub(r"\s+", " ", (title or "").strip().lower())
+    published = parse_news_date(pub)
+    day = published.strftime("%Y-%m-%d") if published else "unknown"
+    base = f"{normalized}\n{(source or '').strip().lower()}\n{day}"
+    return hashlib.sha256(base.encode("utf-8")).hexdigest()[:24]
+
+
+def resolve_google_news_url(url: str):
+    host = (urllib.parse.urlparse(url).hostname or "").lower()
+    if host != "news.google.com":
+        return url, False
+    try:
+        from googlenewsdecoder import gnewsdecoder
+    except Exception:
+        try:
+            subprocess.run(
+                [sys.executable, "-m", "pip", "install", "--quiet", "googlenewsdecoder>=0.1.7"],
+                check=True,
+                timeout=75,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            from googlenewsdecoder import gnewsdecoder
+        except Exception:
+            return url, False
+    try:
+        result = gnewsdecoder(url, interval=0)
+        decoded = ""
+        if isinstance(result, dict):
+            decoded = result.get("decoded_url") or result.get("url") or ""
+            ok = result.get("status", bool(decoded))
+            if not ok:
+                decoded = ""
+        elif isinstance(result, str):
+            decoded = result
+        decoded = (decoded or "").strip()
+        decoded_host = (urllib.parse.urlparse(decoded).hostname or "").lower()
+        if decoded.startswith("http") and decoded_host and decoded_host != "news.google.com":
+            return decoded, True
+    except Exception:
+        pass
+    return url, False
+
+
+def identify_publisher(url: str, fallback_source: str):
+    host = (urllib.parse.urlparse(url).hostname or "").lower()
+    fallback = (fallback_source or "").strip()
+    if host == "news.google.com":
+        return f"Google 뉴스 경유 · {fallback}" if fallback else "Google 뉴스 경유"
+    if host == "v.daum.net":
+        try:
+            page = fetch(url, timeout=20).decode("utf-8", errors="ignore")
+            text = clean_text(page)[:25000]
+            m = re.search(r"\([^)]{0,30}=\s*([가-힣A-Za-z0-9&·._-]{2,30})\)", text)
+            if m:
+                return f"{m.group(1)}(다음)"
+            m = re.search(r"Copyright\s*[©ⓒ]\s*([^.<]{2,40})", text, flags=re.I)
+            if m:
+                return f"{m.group(1).strip()}(다음)"
+        except Exception:
+            pass
+        return f"{fallback}(다음)" if fallback and fallback != "v.daum.net" else "다음뉴스"
+    if host in {"m.news.nate.com", "news.nate.com"}:
+        return f"{fallback}(네이트)" if fallback and "nate" not in fallback.lower() else "네이트뉴스"
+    return fallback or host or "웹 원문"
 
 
 def google_news_items(query: str):
@@ -108,7 +199,16 @@ def google_news_items(query: str):
         source_el = item.find("source")
         source = clean_text(source_el.text if source_el is not None and source_el.text else "")
         identity = hashlib.sha256((title + "\n" + link).encode("utf-8")).hexdigest()[:24]
-        items.append({"id": identity, "title": title, "link": link, "description": desc, "pubDate": pub, "source": source, "query": query})
+        items.append({
+            "id": identity,
+            "story_key": story_key(title, source, pub),
+            "title": title,
+            "link": link,
+            "description": desc,
+            "pubDate": pub,
+            "source": source,
+            "query": query,
+        })
     return items
 
 
@@ -139,11 +239,14 @@ def impact(text: str):
 
 def compact_news_item(item):
     stages = item.get("stages", [])
+    resolved_url, resolved = resolve_google_news_url(item.get("link", ""))
+    display_source = identify_publisher(resolved_url, item.get("source") or "")
     return {
         "title": item.get("title", ""),
-        "source": item.get("source") or "웹 검색",
+        "source": display_source,
         "published": item.get("pubDate", ""),
-        "url": item.get("link", ""),
+        "url": resolved_url,
+        "url_resolved": resolved,
         "stages": stages,
         "stage_labels": [STAGE_LABELS.get(s, s) for s in stages],
         "impact": item.get("impact", "영향 확인 필요"),
@@ -152,15 +255,16 @@ def compact_news_item(item):
 
 def load_state():
     if not STATE_PATH.exists():
-        return {"initialized": False, "seen_ids": [], "official_page_signatures": {}}
+        return {"initialized": False, "seen_ids": [], "seen_story_keys": [], "official_page_signatures": {}}
     try:
         state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
         state.setdefault("initialized", True)
         state.setdefault("seen_ids", [])
+        state.setdefault("seen_story_keys", [])
         state.setdefault("official_page_signatures", {})
         return state
     except Exception:
-        return {"initialized": False, "seen_ids": [], "official_page_signatures": {}}
+        return {"initialized": False, "seen_ids": [], "seen_story_keys": [], "official_page_signatures": {}}
 
 
 def filtered_signature(url: str, keywords):
@@ -197,12 +301,18 @@ def summarize_official_change(name: str, url: str, snippet: str):
 
 
 def main():
-    now = dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")
+    now_dt = dt.datetime.now(KST)
+    now = now_dt.isoformat(timespec="seconds")
     state = load_state()
     initialized = bool(state.get("initialized"))
     seen = set(state.get("seen_ids", []))
+    seen_story_keys = set(state.get("seen_story_keys", []))
     all_items = []
     errors = []
+
+    monitor_started = parse_iso_kst(state.get("monitor_started_at_kst") or "")
+    if monitor_started is None:
+        monitor_started = parse_iso_kst(state.get("updated_at_kst") or "") or now_dt
 
     for query in QUERIES:
         try:
@@ -212,7 +322,7 @@ def main():
 
     dedup = {}
     for item in all_items:
-        dedup[item["id"]] = item
+        dedup[item["story_key"]] = item
 
     relevant_items = []
     for item in dedup.values():
@@ -223,11 +333,21 @@ def main():
         item["impact"] = impact(f"{item['title']} {item['description']}")
         relevant_items.append(item)
 
-    relevant_items.sort(key=lambda x: x.get("pubDate", ""), reverse=True)
-    new_items = [i for i in relevant_items if i["id"] not in seen]
+    relevant_items.sort(key=lambda x: parse_news_date(x.get("pubDate", "")) or dt.datetime.min.replace(tzinfo=KST), reverse=True)
 
-    # Fixed 2026-07-30 LH press-release pages are intentionally NOT hashed.
-    # Their download counters change continuously and previously caused false alerts.
+    new_items = []
+    stale_suppressed = []
+    for item in relevant_items:
+        if item["id"] in seen or item["story_key"] in seen_story_keys:
+            continue
+        published = parse_news_date(item.get("pubDate", ""))
+        # The watcher started with a baseline. Articles older than that baseline are not "new changes"
+        # even if Google News surfaces them later because of ranking/index changes.
+        if initialized and published and published < monitor_started:
+            stale_suppressed.append(item)
+            continue
+        new_items.append(item)
+
     official_changes = []
     page_specs = {
         "lh_design_bid": (OFFICIAL_LH_DESIGN_BID, ["호남권 반도체", "입찰", "개찰", "낙찰", "계약", "착수", "입찰진행"]),
@@ -246,15 +366,25 @@ def main():
     send_items = [compact_news_item(i) for i in new_items] if initialized else []
     send_official = official_changes if initialized else []
 
-    next_seen = list(dict.fromkeys([i["id"] for i in relevant_items] + list(seen)))[:800]
+    next_seen = list(dict.fromkeys([i["id"] for i in relevant_items] + list(seen)))[:1200]
+    next_story_keys = list(dict.fromkeys([i["story_key"] for i in relevant_items] + list(seen_story_keys)))[:1200]
     pending = {
         "initialized": True,
+        "monitor_started_at_kst": state.get("monitor_started_at_kst") or monitor_started.isoformat(timespec="seconds"),
         "updated_at_kst": now,
         "seen_ids": next_seen,
+        "seen_story_keys": next_story_keys,
         "official_page_signatures": signatures,
         "last_relevant_count": len(relevant_items),
+        "last_stale_suppressed_count": len(stale_suppressed),
         "errors": errors[-20:],
-        "noise_filters": ["LH 보도자료 다운로드 수", "조회수", "스크립트·메뉴 문구"],
+        "noise_filters": [
+            "LH 보도자료 다운로드 수",
+            "조회수",
+            "스크립트·메뉴 문구",
+            "감시 시작시점보다 오래된 기사 재노출",
+            "동일 제목·출처·발행일 중복",
+        ],
     }
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -274,16 +404,23 @@ def main():
         "# 호남 반도체·장록습지 웹감시 상태",
         "",
         f"- 확인시각(KST): {now}",
+        f"- 감시 기준선(KST): {monitor_started.isoformat(timespec='seconds')}",
         f"- 관련 검색결과: {len(relevant_items)}건",
         f"- 새 관련정보: {len(send_items)}건",
+        f"- 과거 기사 재노출 차단: {len(stale_suppressed)}건",
         f"- 공식 핵심페이지 변경: {len(send_official)}건",
         f"- 초기기준선 실행: {'아니오' if initialized else '예'}",
+        "- 원문 링크: Google News 중계 URL은 가능한 경우 실제 기사 URL로 변환",
+        "- 출처 표기: 실제 기사 페이지 기준으로 표시",
         "- 동적 잡음 제외: LH 다운로드 수·조회수·메뉴/스크립트 문구",
     ]
     if errors:
         status_lines += ["", "## 일부 조회 오류"] + [f"- {e}" for e in errors[-8:]]
     STATUS_PATH.write_text("\n".join(status_lines) + "\n", encoding="utf-8")
-    print(f"relevant={len(relevant_items)} new={len(send_items)} official_changes={len(send_official)} initialized_before={initialized}")
+    print(
+        f"relevant={len(relevant_items)} new={len(send_items)} stale_suppressed={len(stale_suppressed)} "
+        f"official_changes={len(send_official)} initialized_before={initialized}"
+    )
 
 
 if __name__ == "__main__":
