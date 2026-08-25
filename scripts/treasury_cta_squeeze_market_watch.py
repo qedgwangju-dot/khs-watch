@@ -3,27 +3,28 @@
 
 CME's public website can return HTTP 403 to cloud runners. The preferred official
 CME Daily Bulletin wrapper is tried first. If CME blocks the runner, use Yahoo Finance's
-CBOT delayed quote layer for ZN/ZB/UB price and open interest, and label it explicitly
-as a secondary/delayed feed. CFTC remains the official positioning source.
+CBOT delayed quote layer for ZN/ZB/UB prices. If Yahoo does not expose contract OI,
+fill OI with the matching official CFTC TFF weekly market open interest and label the
+frequency/source explicitly. This avoids showing fake zeros or pretending weekly OI is live.
 """
 from __future__ import annotations
 
 import json
 import re
-import time
 import urllib.parse
 import urllib.request
 
 import treasury_cta_squeeze_watch as watcher
 import treasury_cta_squeeze_execution_watch as official
 
-watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 3)
+watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 4)
 
 YAHOO_QUOTE = "https://query1.finance.yahoo.com/v7/finance/quote?symbols="
 YAHOO_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?range=5d&interval=1d&includePrePost=false"
 YAHOO_PAGE = "https://finance.yahoo.com/quote/{ticker}/"
 TICKERS = {"ZN": "ZN=F", "ZB": "ZB=F", "UB": "UB=F"}
 LABELS = {"ZN": "TY/ZN", "ZB": "US/ZB", "UB": "WN/UB"}
+CFTC_OI_MAP = {"ZN": "10Y", "ZB": "BOND", "UB": "ULTRABOND"}
 
 
 def _get(url: str) -> str:
@@ -97,6 +98,10 @@ def _page_open_interest(ticker: str) -> int | None:
 
 def yahoo_snapshot() -> dict:
     batch = _quote_batch()
+    try:
+        cftc = watcher.cftc_snapshot()
+    except Exception:
+        cftc = {"report_date": "확인 불가", "markets": {}}
     out = {}
     for symbol, ticker in TICKERS.items():
         row = batch.get(ticker) or {}
@@ -106,6 +111,7 @@ def yahoo_snapshot() -> dict:
         change = row.get("regularMarketChange")
         pct = row.get("regularMarketChangePercent")
         oi = row.get("openInterest")
+        oi_source = "Yahoo Finance 지연 계약 OI"
         volume = row.get("regularMarketVolume")
         market_time = row.get("regularMarketTime")
         if chart:
@@ -141,6 +147,10 @@ def yahoo_snapshot() -> dict:
             oi = None
         if oi is None:
             oi = _page_open_interest(ticker)
+        if oi is None:
+            cftc_row = (cftc.get("markets") or {}).get(CFTC_OI_MAP[symbol]) or {}
+            oi = cftc_row.get("open_interest")
+            oi_source = f"CFTC TFF 주간 전체 시장 OI ({cftc.get('report_date','확인 불가')})"
         try:
             volume = int(volume) if volume is not None else 0
         except Exception:
@@ -155,10 +165,11 @@ def yahoo_snapshot() -> dict:
             "change": change,
             "pct_change": pct,
             "open_interest": oi or 0,
+            "oi_source": oi_source,
             "volume": volume,
             "market_time": market_time,
             "source": f"https://finance.yahoo.com/quote/{urllib.parse.quote(ticker, safe='')}/",
-            "source_type": "Yahoo Finance 지연 데이터 (CBOT/CME 파생상품 2차 배포)",
+            "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         } if last is not None else None
     return out
 
@@ -185,7 +196,8 @@ def squeeze_evidence(current: dict, previous: dict) -> list[str]:
         prev_oi = prev.get("open_interest")
         label = row.get("display_symbol") or symbol
         if pct is not None and pct > 0 and oi and prev_oi and oi < prev_oi:
-            signals.append(f"{label} 가격↑({pct:+.2f}%) + OI↓({prev_oi:,}→{oi:,}) = 숏커버 확인 신호")
+            freq = "주간 " if "CFTC TFF 주간" in str(row.get("oi_source") or "") else ""
+            signals.append(f"{label} 가격↑({pct:+.2f}%) + {freq}OI↓({prev_oi:,}→{oi:,}) = 숏커버 확인 강화")
     return signals
 
 
@@ -207,12 +219,13 @@ def format_alert(snapshot, previous, fx, fx_date, reasons):
         pct = row.get("pct_change")
         pct_text = f"{pct:+.2f}%" if pct is not None else "변화율 확인 불가"
         oi = row.get("open_interest") or 0
-        block_lines.append(f"• {LABELS[symbol]}: 가격 {row.get('last'):.5f} ({pct_text}) · OI {oi:,}")
+        oi_source = row.get("oi_source") or "CME 공식 OI"
+        block_lines.append(f"• {LABELS[symbol]}: 가격 {row.get('last'):.5f} ({pct_text}) · OI {oi:,} [{oi_source}]")
     evidence = squeeze_evidence(snapshot, previous)
     source_note = (
         "※ CME 공식 Daily Bulletin 기준"
         if source_is_official else
-        "※ CME 클라우드 접근 차단 시 Yahoo Finance 지연 CBOT 데이터 사용. CFTC 공식 포지션으로 반드시 교차검증"
+        "※ CME가 클라우드 러너를 차단하면 Yahoo 지연가격 + CFTC 공식 주간 OI로 교차검증. 주간 OI를 실시간 OI처럼 표시하지 않음"
     )
     start = "<b>3️⃣ TY/US/WN 대응 CME 선물 — 가격 + 미결제약정</b>"
     end = "<b>4️⃣ 1σ·2σ 추세 전환 프록시</b>"
