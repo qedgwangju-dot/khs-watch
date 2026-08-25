@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/rubin-hbm-telegram.yml"
       - "scripts/rubin_hbm_watch.py"
+      - "scripts/rubin_hbm_pretty.py"
   schedule:
     # GitHub cron is UTC. Run once per hour and send only when a new relevant event appears.
     - cron: "23 * * * *"
@@ -62,6 +63,12 @@ jobs:
         run: |
           python -m py_compile scripts/rubin_hbm_watch.py
           python scripts/rubin_hbm_watch.py
+
+      - name: Reformat Telegram alert for readability
+        if: hashFiles('out/rubin_hbm_alert.md') != ''
+        run: |
+          python -m py_compile scripts/rubin_hbm_pretty.py
+          python scripts/rubin_hbm_pretty.py
 
       - name: Publish watcher summary
         if: always()
