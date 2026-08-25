@@ -1,0 +1,95 @@
+{
+  "last_checked_kst": "2026-08-25T20:21:09+09:00",
+  "media_id": null,
+  "cftc_date": "August 18, 2026",
+  "yield_bucket": "4.50% 초과",
+  "snapshot": {
+    "checked_kst": "2026-08-25T20:21:09+09:00",
+    "cta_media": null,
+    "cftc": {
+      "report_date": "August 18, 2026",
+      "markets": {
+        "2Y": {
+          "open_interest": 4432451,
+          "leveraged_long": 638468,
+          "leveraged_short": 1881472,
+          "leveraged_spreading": 203486,
+          "leveraged_net": -1243004,
+          "short_share_oi_pct": 42.44766608813047
+        },
+        "5Y": {
+          "open_interest": 6604060,
+          "leveraged_long": 379397,
+          "leveraged_short": 2549211,
+          "leveraged_spreading": 463396,
+          "leveraged_net": -2169814,
+          "short_share_oi_pct": 38.60066383406571
+        },
+        "10Y": {
+          "open_interest": 5596739,
+          "leveraged_long": 352319,
+          "leveraged_short": 2581332,
+          "leveraged_spreading": 205243,
+          "leveraged_net": -2229013,
+          "short_share_oi_pct": 46.122072156661226
+        },
+        "ULTRA10Y": {
+          "open_interest": 2554270,
+          "leveraged_long": 170435,
+          "leveraged_short": 523912,
+          "leveraged_spreading": 47698,
+          "leveraged_net": -353477,
+          "short_share_oi_pct": 20.511222384477755
+        },
+        "BOND": {
+          "open_interest": 1894436,
+          "leveraged_long": 125133,
+          "leveraged_short": 486516,
+          "leveraged_spreading": 54673,
+          "leveraged_net": -361383,
+          "short_share_oi_pct": 25.68131095481716
+        },
+        "ULTRABOND": {
+          "open_interest": 2493394,
+          "leveraged_long": 92327,
+          "leveraged_short": 953684,
+          "leveraged_spreading": 105371,
+          "leveraged_net": -861357,
+          "short_share_oi_pct": 38.2484276452097
+        }
+      }
+    },
+    "cme": {
+      "ZN": null,
+      "ZB": null,
+      "UB": null
+    },
+    "yield10": {
+      "date": "2026-08-24",
+      "yield": 4.7,
+      "mean20": 4.6815,
+      "sd20": 0.03758656674930551,
+      "z20": 0.4921971225355993,
+      "distance_to_4_3_bp": 40.000000000000036
+    },
+    "repo": {
+      "SOFR": {
+        "date": "2026-08-21",
+        "rate": 3.65,
+        "volume_bn": 2952
+      },
+      "BGCR": {
+        "date": "2026-08-21",
+        "rate": 3.63,
+        "volume_bn": 1198
+      },
+      "TGCR": {
+        "date": "2026-08-21",
+        "rate": 3.63,
+        "volume_bn": 1172
+      }
+    },
+    "format_revision": 1
+  },
+  "format_revision": 1
+}
