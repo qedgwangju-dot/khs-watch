@@ -28,6 +28,7 @@ ULTRA_NVLINK_GPU = 576
 BASE_SYSTEM_GB = BASE_NVLINK_GPU * OFFICIAL_RUBIN_GB
 ULTRA_SYSTEM_GB = ULTRA_NVLINK_GPU * RUMORED_ULTRA_GB
 SYSTEM_HBM_GROWTH = ULTRA_SYSTEM_GB / BASE_SYSTEM_GB - 1
+SEND_FRESHNESS_HOURS = 72
 
 QUERIES = [
     (
@@ -60,11 +61,13 @@ CATEGORY_KO = {
     "memory_migration": "DDR5·SOCAMM2·기업용 eSSD 이동",
 }
 
+OFFICIAL_SOURCE_HINTS = (
+    "nvidia", "samsung newsroom", "삼성전자 뉴스룸", "sk hynix", "sk하이닉스 뉴스룸",
+    "micron technology", "micron newsroom",
+)
 TRUSTED_SOURCE_HINTS = (
-    "nvidia", "samsung", "sk hynix", "sk하이닉스", "micron", "trendforce",
-    "reuters", "bloomberg", "the information", "semianalysis", "digitimes",
-    "tom's hardware", "toms hardware", "financial times", "wall street journal",
-    "wsj", "cnbc", "businesswire", "globenewswire", "seeking alpha",
+    "trendforce", "reuters", "bloomberg", "the information", "semianalysis", "digitimes",
+    "tom's hardware", "toms hardware", "financial times", "wall street journal", "wsj", "cnbc",
 )
 
 
@@ -112,18 +115,63 @@ def relevant(category: str, text: str) -> bool:
     return False
 
 
-def source_quality(source: str, title: str) -> str:
-    low = f"{source} {title}".lower()
-    if any(k in low for k in ("nvidia", "samsung newsroom", "sk hynix", "sk하이닉스", "micron technology")):
-        return "공식·회사자료 가능성 높음"
+def source_quality(source: str, title: str = "") -> str:
+    low = (source or "").lower().strip()
+    if any(k in low for k in OFFICIAL_SOURCE_HINTS):
+        return "공식·회사자료"
     if any(k in low for k in TRUSTED_SOURCE_HINTS):
         return "신뢰 리서치·보도"
-    return "보조 보도 — 추가 교차검증 필요"
+    return "일반 보도 — 추가 교차검증 필요"
+
+
+def quality_rank(value: str) -> int:
+    if value.startswith("공식"):
+        return 3
+    if value.startswith("신뢰"):
+        return 2
+    return 1
+
+
+def normalized_title(title: str) -> str:
+    value = clean_text(title).lower()
+    # Google News titles usually append the publisher after the final ' - '.
+    if " - " in value:
+        value = value.rsplit(" - ", 1)[0]
+    value = re.sub(r"[^a-z0-9가-힣]+", " ", value)
+    return re.sub(r"\s+", " ", value).strip()
 
 
 def event_id(category: str, title: str, link: str) -> str:
     raw = f"{category}|{title}|{link}".encode("utf-8")
     return hashlib.sha256(raw).hexdigest()[:24]
+
+
+def dedupe_events(events: list[dict]) -> list[dict]:
+    chosen: dict[tuple[str, str], dict] = {}
+    for e in events:
+        key = (e.get("category") or "", normalized_title(e.get("title") or ""))
+        old = chosen.get(key)
+        if old is None:
+            chosen[key] = e
+            continue
+        new_rank = quality_rank(e.get("quality") or "")
+        old_rank = quality_rank(old.get("quality") or "")
+        if new_rank > old_rank:
+            chosen[key] = e
+        elif new_rank == old_rank and (e.get("published_at_kst") or "") > (old.get("published_at_kst") or ""):
+            chosen[key] = e
+    return sorted(chosen.values(), key=lambda x: x.get("published_at_kst") or "")
+
+
+def is_fresh_for_send(event: dict, now: datetime) -> bool:
+    raw = event.get("published_at_kst") or ""
+    if not raw:
+        return False
+    try:
+        dt = datetime.fromisoformat(raw)
+    except Exception:
+        return False
+    return now - timedelta(hours=SEND_FRESHNESS_HOURS) <= dt <= now + timedelta(minutes=10)
 
 
 def read_feed(category: str, query: str, lang: str) -> tuple[list[dict], list[str]]:
@@ -285,11 +333,11 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
 
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
-    cutoff = now - timedelta(days=14)
+    history_cutoff = now - timedelta(days=14)
     state, first_run = load_state()
     seen_before = set(state.get("seen_ids") or [])
 
-    events_by_id: dict[str, dict] = {}
+    raw_events_by_id: dict[str, dict] = {}
     errors: list[str] = []
     for category, query in QUERIES:
         for lang in ("en", "ko"):
@@ -298,15 +346,17 @@ def main() -> None:
             for e in events:
                 try:
                     dt = datetime.fromisoformat(e["published_at_kst"])
-                    if dt < cutoff:
+                    if dt < history_cutoff:
                         continue
                 except Exception:
                     pass
-                events_by_id[e["id"]] = e
+                raw_events_by_id[e["id"]] = e
 
-    all_events = sorted(events_by_id.values(), key=lambda x: x.get("published_at_kst") or "")
-    current_ids = {e["id"] for e in all_events}
-    new_events = [e for e in all_events if e["id"] not in seen_before]
+    raw_events = sorted(raw_events_by_id.values(), key=lambda x: x.get("published_at_kst") or "")
+    current_ids = {e["id"] for e in raw_events}
+    unseen_raw = [e for e in raw_events if e["id"] not in seen_before]
+    fresh_unseen = [e for e in unseen_raw if is_fresh_for_send(e, now)]
+    new_events = dedupe_events(fresh_unseen)
 
     fx = fetch_fx()
     if fx.get("error"):
@@ -318,8 +368,10 @@ def main() -> None:
     pending = {
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "seen_ids": sorted((seen_before | current_ids))[-1200:],
+        "last_unseen_raw_count": len(unseen_raw),
         "last_new_event_count": len(new_events),
         "last_send_event_count": len(send_events),
+        "freshness_hours": SEND_FRESHNESS_HOURS,
         "usdkrw": fx,
         "errors": errors,
     }
@@ -327,12 +379,11 @@ def main() -> None:
 
     if first_run:
         (OUT / "rubin_hbm_rebaseline.txt").write_text(
-            f"Initial baseline at {now.isoformat(timespec='seconds')}; {len(all_events)} recent items stored; no Telegram alert sent.\n",
+            f"Initial baseline at {now.isoformat(timespec='seconds')}; {len(raw_events)} recent items stored; no Telegram alert sent.\n",
             encoding="utf-8",
         )
 
     if send_events:
-        # 한 번에 너무 많은 과거 기사 재등장을 막는다.
         send_events = send_events[-12:]
         (OUT / "rubin_hbm_alert.md").write_text(build_alert(now, send_events, fx), encoding="utf-8")
 
@@ -340,9 +391,11 @@ def main() -> None:
         "# Rubin HBM Watch",
         f"- checked_at_kst: {now.isoformat(timespec='seconds')}",
         f"- first_run_baseline: {str(first_run).lower()}",
-        f"- recent_events: {len(all_events)}",
-        f"- new_events: {len(new_events)}",
+        f"- recent_raw_events: {len(raw_events)}",
+        f"- unseen_raw_events: {len(unseen_raw)}",
+        f"- fresh_deduped_events: {len(new_events)}",
         f"- send_events: {len(send_events)}",
+        f"- freshness_hours: {SEND_FRESHNESS_HOURS}",
         f"- break_even_gpu_growth: {BREAKEVEN_GPU_GROWTH*100:.1f}%",
         f"- base_system_hbm_gb: {BASE_SYSTEM_GB}",
         f"- ultra_system_hbm_gb_if_192: {ULTRA_SYSTEM_GB}",
