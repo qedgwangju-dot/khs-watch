@@ -1,0 +1,1 @@
+Temporary rollout note: new Treasury auction final-demand and TGA/Bill/SOMA liquidity workflows were added on 2026-08-26. CI and first baselines should be checked in Actions before considering delivery verified.
