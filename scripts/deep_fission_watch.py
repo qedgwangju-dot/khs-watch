@@ -23,6 +23,7 @@ OLD_PENDING = OUT / "deep_fission_watch_state_pending.json"
 OLD_ALERT = OUT / "deep_fission_alert.md"
 OLD_STATUS = OUT / "deep_fission_status.md"
 OLD_ERRORS = OUT / "deep_fission_errors.log"
+FALSE_EVENT_IDS = {"customer-pipeline:2026-08-25"}
 
 
 def load_old_state() -> dict:
@@ -39,8 +40,10 @@ def prepare_state() -> None:
     v3.STATE.unlink(missing_ok=True)
     state = load_old_state()
     if state.get("version") == 3:
+        sent = state.get("sent_event_ids") or []
+        state["sent_event_ids"] = [eid for eid in sent if eid not in FALSE_EVENT_IDS]
         v3.STATE.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(OLD_STATE, v3.STATE)
+        v3.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def install_parsons_guard() -> None:
@@ -95,7 +98,6 @@ REPLACEMENTS = [
     ("pipeline", "잠재 고객 프로젝트 규모"),
     ("non-binding LOI", "구속력 없는 의향서(LOI)"),
     ("non-binding", "구속력 없음"),
-    ("LOI", "의향서(LOI)"),
     ("named customer", "실명 고객"),
     ("binding PPA/offtake", "구속력 있는 전력구매계약(PPA)·오프테이크 계약"),
     ("definitive agreement", "본계약"),
@@ -138,6 +140,9 @@ def koreanize(value: str) -> str:
     text = value
     for src, dst in REPLACEMENTS:
         text = text.replace(src, dst)
+    text = re.sub(r"(?<!의향서\()\bLOI\b", "의향서(LOI)", text)
+    text = re.sub(r"(?<!전력구매계약\()\bPPA\b", "전력구매계약(PPA)", text)
+    text = re.sub(r"\bofftake\b", "오프테이크 계약", text, flags=re.I)
     text = re.sub(r"\bcontract\b", "계약", text, flags=re.I)
     text = re.sub(r"\border\b", "수주", text, flags=re.I)
     text = re.sub(r"\bcustomer\b", "고객", text, flags=re.I)
