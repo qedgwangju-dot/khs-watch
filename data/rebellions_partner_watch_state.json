@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-08-25T17:20:54+09:00",
+  "last_checked_kst": "2026-08-25T18:10:42+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -920,6 +920,12 @@
       "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE52TThlYkNyZDJBX3BvWWFmN0pGbFo4aEFiaU0yMDcwQV9NaWl6Y2tHNFJTa2huT1hFRzJxeXlZQlB4enV4T3c?oc=5",
       "first_seen_kst": "2026-08-25T08:51:39+09:00",
       "alerted": true
+    },
+    "a2da5d24378568629fbeb557": {
+      "title": "[AI픽] 리벨리온, 공공 AI CCTV에 국산 NPU 첫 공급 - 연합뉴스 한민족센터",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1iWHk4OVhyTHRqTzBvdkY0Y2lCdkplMXpKM2Q4N1NFSjFRd0Z5RHNLWWlqRTBlaTNfRE5XZmV0dUMyWTJ6ejMwamU4c1UyQVVPcHY3S2tfSVJpeU10THRKZmpVUk5YR0xDbHE3N0d3OHdNSUpj?oc=5",
+      "first_seen_kst": "2026-08-25T18:10:42+09:00",
+      "suppressed_stale": true
     }
   }
 }
