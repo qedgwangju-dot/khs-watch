@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "scripts/treasury_cta_squeeze_watch.py"
+      - "scripts/treasury_cta_squeeze_execution_watch.py"
       - ".github/workflows/treasury-cta-squeeze-telegram-alert.yml"
   schedule:
     - cron: "*/15 12-23 * * 1-5"
@@ -32,11 +33,16 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install PDF parser
+        run: python -m pip install --disable-pip-version-check -q pypdf
+
       - name: Validate CTA squeeze watcher
-        run: python -m py_compile scripts/treasury_cta_squeeze_watch.py
+        run: |
+          python -m py_compile scripts/treasury_cta_squeeze_watch.py
+          python -m py_compile scripts/treasury_cta_squeeze_execution_watch.py
 
       - name: Check CTA squeeze chain
-        run: python scripts/treasury_cta_squeeze_watch.py
+        run: python scripts/treasury_cta_squeeze_execution_watch.py
 
       - name: Send interpreted Telegram alert
         if: hashFiles('out/treasury_cta_squeeze_alert.html') != ''
