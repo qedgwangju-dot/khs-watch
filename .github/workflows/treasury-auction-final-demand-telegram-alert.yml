@@ -1,0 +1,134 @@
+name: Treasury auction final-demand Telegram alert
+
+on:
+  push:
+    paths:
+      - "scripts/treasury_auction_final_demand_watch.py"
+      - ".github/workflows/treasury-auction-final-demand-telegram-alert.yml"
+  schedule:
+    # Long coupon auctions normally publish results during U.S. business hours.
+    # Poll every 15 minutes, but the watcher alerts only on a new official 10Y/20Y/30Y result.
+    - cron: "*/15 15-22 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: treasury-auction-final-demand-telegram-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install parsers
+        run: python -m pip install --quiet beautifulsoup4 pypdf
+
+      - name: Validate watcher
+        run: python -m py_compile scripts/treasury_auction_final_demand_watch.py
+
+      - name: Check official Treasury auction results
+        run: python scripts/treasury_auction_final_demand_watch.py
+
+      - name: Publish status
+        if: always()
+        run: |
+          if [ -f out/treasury_auction_final_demand_status.md ]; then
+            cat out/treasury_auction_final_demand_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/treasury_auction_final_demand_alert.html ]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            echo "# Telegram 전송 예정" >> "$GITHUB_STEP_SUMMARY"
+            cat out/treasury_auction_final_demand_alert.html >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send new auction interpretation
+        if: hashFiles('out/treasury_auction_final_demand_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
+          PRIMARY_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          TELEGRAM_CHAT_ID="${PRIMARY_CHAT_ID:-$FALLBACK_CHAT_ID}"
+          export TELEGRAM_CHAT_ID
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "미 국채 입찰 알림용 텔레그램 토큰 또는 chat id가 없습니다." >&2
+            exit 1
+          fi
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              ident = json.loads(r.read().decode("utf-8"))
+          actual = str((ident.get("result") or {}).get("username") or "")
+          if not ident.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"잘못된 봇 경로: expected @{expected}, got @{actual or 'unknown'}")
+          title = pathlib.Path("out/treasury_auction_final_demand_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/treasury_auction_final_demand_alert.html").read_text(encoding="utf-8").strip()
+          text = f"<b>{title}</b>\n\n{body}"
+          if len(text) > 4096:
+              raise RuntimeError(f"Telegram text too long: {len(text)}")
+          payload = urllib.parse.urlencode({"chat_id":chat_id,"text":text,"parse_mode":"HTML","disable_web_page_preview":"true"}).encode()
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
+          with urllib.request.urlopen(req, timeout=25) as r:
+              result = json.loads(r.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+          pathlib.Path("out/treasury_auction_final_demand_telegram_confirmed.json").write_text(
+              json.dumps({"bot_username":actual,"message_id":(result.get("result") or {}).get("message_id")}, ensure_ascii=False, indent=2)+"\n",
+              encoding="utf-8")
+          PY
+
+      - name: Persist state only after safe baseline or confirmed delivery
+        if: always()
+        run: |
+          if [ -f out/treasury_auction_final_demand_state_next.json ]; then
+            if [ ! -f out/treasury_auction_final_demand_alert.html ] || [ -f out/treasury_auction_final_demand_telegram_confirmed.json ]; then
+              cp out/treasury_auction_final_demand_state_next.json data/treasury_auction_final_demand_state.json
+            else
+              echo "알림 전송 확인 없음 — 상태를 전진시키지 않습니다."
+            fi
+          fi
+
+      - name: Commit state
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/treasury_auction_final_demand_state.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "입찰 상태 변경 없음"
+          else
+            git commit -m "Update Treasury auction final-demand state"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: treasury-auction-final-demand-${{ github.run_id }}
+          path: |
+            out/treasury_auction_final_demand_status.md
+            out/treasury_auction_final_demand_alert.html
+            out/treasury_auction_final_demand_detail.json
+            out/treasury_auction_final_demand_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
