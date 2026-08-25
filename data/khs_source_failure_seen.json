@@ -1,18 +1,5 @@
 {
-  "failure_streaks": {
-    "domestic_stablecoin|fsc.go.kr": {
-      "lane": "domestic_stablecoin",
-      "last_seen_kst": "2026-08-25T12:14:08+09:00",
-      "source": "Financial Services Commission stablecoin explanations",
-      "streak": 2
-    },
-    "domestic_telecom|korea.kr": {
-      "lane": "domestic_telecom",
-      "last_seen_kst": "2026-08-25T16:31:53+09:00",
-      "source": "Korea Policy Briefing telecom search",
-      "streak": 4
-    }
-  },
+  "failure_streaks": {},
   "seen": {
     "02e2949450e1137c": {
       "failure_count": 2,
