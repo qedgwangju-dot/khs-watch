@@ -36,7 +36,8 @@
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/113/deep-fission-joins-doe-secretary-wright-at-idaho-national-laboratory-event-to-celebrate-nuclear-innovation": "Deep Fission Joins DOE Secretary Wright at Idaho National Laboratory Event to Celebrate Nuclear Innovation",
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/114/deep-fission-prototype-reactor-canister-arrives-at-kansas-site-advancing-reactor-proof-of-concept-program": "Deep Fission Prototype Reactor Canister Arrives at Kansas Site, Advancing Reactor Proof-of-Concept Program",
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/115/deep-fission-ceo-liz-muller-to-present-at-canaccord-genuitys-46th-annual-growth-conference": "Deep Fission CEO Liz Muller to Present at Canaccord Genuity’s 46th Annual Growth Conference",
-    "https://www.deepfission.com/pr-media-kit/press-releases/detail/116/department-of-energy-approves-nuclear-safety-design-agreement-for-deep-fissions-gravity-reactor-designed-to-convert-to-commercial-operation": "Department of Energy Approves Nuclear Safety Design Agreement for Deep Fission's Gravity™ Reactor, Designed to Convert to Commercial Operation"
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/116/department-of-energy-approves-nuclear-safety-design-agreement-for-deep-fissions-gravity-reactor-designed-to-convert-to-commercial-operation": "Department of Energy Approves Nuclear Safety Design Agreement for Deep Fission's Gravity™ Reactor, Designed to Convert to Commercial Operation",
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/117/deep-fission-names-shawntrell-scales-as-its-first-chief-people-officer": "Deep Fission Names ShawnTrell Scales as Its First Chief People Officer"
   },
   "sec_filings": {
     "0001013762-25-003765": {
@@ -310,7 +311,9 @@
       "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390025091209/ea0258315-s1a1_deep.htm"
     }
   },
-  "sent_event_ids": [],
-  "updated_at": "2026-08-25T10:45:48+00:00",
+  "sent_event_ids": [
+    "customer-pipeline:2026-08-25"
+  ],
+  "updated_at": "2026-08-25T11:38:10+00:00",
   "version": 3
 }
