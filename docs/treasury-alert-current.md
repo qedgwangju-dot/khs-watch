@@ -1,0 +1,1 @@
+Current Treasury alerts: QRA plan / buyback policy / buyback execution / auction final demand / TGA-Bill-SOMA liquidity / foreign demand / CTA squeeze / global rates. Each module should alert only on its own stage to prevent duplicates.
