@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       force_notify:
-        description: "현재 주요 전기본·전원믹스 항목을 시험 전송"
+        description: "현재 주요 전기본·전원믹스 항목을 수동 시험 전송"
         required: false
         type: boolean
         default: false
@@ -53,11 +53,10 @@ jobs:
         id: energy
         env:
           FORCE_INPUT: ${{ inputs.force_notify || false }}
-          FORCE_PUSH: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[energy-mix-route-test]') }}
         shell: bash
         run: |
           EXTRA=""
-          if [[ "$FORCE_INPUT" == "true" || "$FORCE_PUSH" == "true" ]]; then
+          if [[ "$FORCE_INPUT" == "true" ]]; then
             EXTRA="--force-notify"
           fi
           python scripts/korea_energy_mix_watch_runner.py $EXTRA
