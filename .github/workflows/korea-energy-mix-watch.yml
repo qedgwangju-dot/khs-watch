@@ -1,0 +1,147 @@
+name: Korea Energy Mix Telegram Watch
+
+on:
+  schedule:
+    # 15분 주기, 혼잡한 정각 슬롯 회피
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description: "현재 주요 전기본·전원믹스 항목을 시험 전송"
+        required: false
+        type: boolean
+        default: false
+  push:
+    paths:
+      - ".github/workflows/korea-energy-mix-watch.yml"
+      - "scripts/korea_energy_mix_watch.py"
+      - "tests/test_korea_energy_mix_watch.py"
+
+concurrency:
+  group: korea-energy-mix-watch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+
+    steps:
+      - name: 저장소 확인
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 의존성 설치
+        run: pip install requests pytest
+
+      - name: 검사
+        run: |
+          python -m compileall -q scripts/korea_energy_mix_watch.py
+          pytest -q tests/test_korea_energy_mix_watch.py
+
+      - name: 전기본·전원믹스 확인
+        id: energy
+        env:
+          FORCE_INPUT: ${{ inputs.force_notify || false }}
+          FORCE_PUSH: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[energy-mix-route-test]') }}
+        shell: bash
+        run: |
+          EXTRA=""
+          if [[ "$FORCE_INPUT" == "true" || "$FORCE_PUSH" == "true" ]]; then
+            EXTRA="--force-notify"
+          fi
+          python scripts/korea_energy_mix_watch.py $EXTRA
+
+      - name: 지정 KHS Telegram 봇으로 전송
+        if: steps.energy.outputs.changed == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          EXPECTED_TELEGRAM_BOT_USERNAME: khs887988798879887988798879_bot
+          REPORT_PATH: ${{ steps.energy.outputs.report_path }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "KHS policy Telegram secret가 없습니다." >&2
+            exit 1
+          fi
+          python - <<'PY'
+          import os
+          import pathlib
+          import requests
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          report_path = pathlib.Path(os.environ["REPORT_PATH"])
+
+          me = requests.get(f"https://api.telegram.org/bot{token}/getMe", timeout=25)
+          me.raise_for_status()
+          payload = me.json()
+          actual = str(payload.get("result", {}).get("username", ""))
+          if not payload.get("ok") or actual != expected:
+              raise RuntimeError(
+                  f"잘못된 Telegram 경로 차단: expected=@{expected}, actual=@{actual or '확인불가'}"
+              )
+
+          text = report_path.read_text(encoding="utf-8").strip()
+          if not text:
+              raise RuntimeError("전송할 전기본·전원믹스 알림이 비어 있습니다.")
+
+          chunks = []
+          while text:
+              if len(text) <= 3500:
+                  chunks.append(text)
+                  break
+              cut = text.rfind("\n", 0, 3500)
+              if cut < 1800:
+                  cut = 3500
+              chunks.append(text[:cut].rstrip())
+              text = text[cut:].lstrip()
+
+          ids = []
+          for idx, chunk in enumerate(chunks, 1):
+              body = (f"<i>[{idx}/{len(chunks)}]</i>\n" if len(chunks) > 1 else "") + chunk
+              response = requests.post(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  json={
+                      "chat_id": chat_id,
+                      "text": body,
+                      "parse_mode": "HTML",
+                      "disable_web_page_preview": True,
+                  },
+                  timeout=30,
+              )
+              response.raise_for_status()
+              result = response.json()
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram 전송 실패: {result}")
+              ids.append(result.get("result", {}).get("message_id"))
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={ids}")
+          PY
+
+      - name: 기준선 저장
+        if: success()
+        run: |
+          git config user.name "korea-energy-mix-watch[bot]"
+          git config user.email "korea-energy-mix-watch[bot]@users.noreply.github.com"
+          git add data/korea_energy_mix_state.json out/korea_energy_mix_alert.html 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update Korea energy mix watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
