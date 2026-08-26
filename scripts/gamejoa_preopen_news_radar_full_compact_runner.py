@@ -4067,6 +4067,15 @@ AUGUST26_ATTACHMENT_PROFILES = (
         120,
     ),
     (
+        "korea_samsung_skhynix_us_treasury_mixed_etf",
+        ("삼성전자", "sk하이닉스"),
+        ("미국 단기국채", "미국채혼합", "미국채 혼합"),
+        ["수급", "시간표"],
+        ["ETF/ETN", "금융/자본시장", "반도체/HBM/CXL"],
+        ["ETF 신규 상장", "연금계좌 수급", "미국 단기국채 혼합"],
+        107,
+    ),
+    (
         "korea_ai_semiconductor_etf_listing",
         ("삼성전자", "sk하이닉스", "삼성전기", "ai 반도체"),
         ("퇴직연금", "채권혼합", "채권 혼합", "etf 상장", "etf 출시"),
@@ -4440,7 +4449,14 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
         ):
             continue
         if kind == "korea_ai_semiconductor_etf_listing" and not any(
-            term in text for term in ("상장", "출시", "신규")
+            term in text for term in ("ai 반도체", "ai반도체", "삼성전기")
+        ):
+            continue
+        if kind == "korea_samsung_skhynix_us_treasury_mixed_etf" and not (
+            "삼성전자" in text
+            and "sk하이닉스" in text
+            and any(term in text for term in ("미국 단기국채", "미국채혼합", "미국채 혼합"))
+            and any(term in text for term in ("상장", "출시", "신규"))
         ):
             continue
         if kind == "china_humanoid_robot_funding" and not (
@@ -4522,6 +4538,8 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             core = f"SK하이닉스가 {date} 미국 인디애나 첨단 패키징 공장 착공식을 열며 2028년 하반기 양산을 목표로 합니다."
         elif kind == "nvidia_samsung_foundry_inference_mass_production":
             core = "엔비디아가 삼성전자 파운드리에 그록3 LPX 추론가속기 양산을 맡겼다고 보도됐습니다."
+        elif kind == "korea_samsung_skhynix_us_treasury_mixed_etf":
+            core = "미래에셋운용이 삼성전자·SK하이닉스 각 25%와 미국 단기국채 50%를 담은 혼합 ETF를 상장했습니다."
         elif kind == "korea_ai_semiconductor_etf_listing":
             core = "삼성전자·SK하이닉스·삼성전기를 담은 퇴직연금 AI반도체 ETF가 상장됩니다."
         elif kind == "china_humanoid_robot_funding":
@@ -7081,7 +7099,7 @@ def strip_article_boilerplate_from_report(text: str) -> str:
     cleaned = str(text or "")
     for pattern in ARTICLE_SUMMARY_NOISE_PATTERNS[:2]:
         cleaned = re.sub(pattern, " ", cleaned, flags=re.IGNORECASE)
-    return re.sub(r"[ \\t]{2,}", " ", cleaned)
+    return re.sub(r"[ \t]{2,}", " ", cleaned)
 
 
 def guard_preopen_report(text: str) -> str:

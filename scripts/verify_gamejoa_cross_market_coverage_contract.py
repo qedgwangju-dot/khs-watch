@@ -532,6 +532,43 @@ def main() -> int:
             failures.append(
                 f"attachment26_alert_incomplete_core={expected_kind}:{core!r}"
             )
+
+    mixed_etf_row = source_row(
+        "미래에셋운용, '삼전닉스+미국 단기국채' 혼합 ETF 상장 | 연합뉴스",
+        (
+            "미래에셋자산운용은 삼성전자와 SK하이닉스에 각각 25%를 투자하고 "
+            "나머지 50%는 잔존만기 0~1년의 미국 단기국채에 투자하는 "
+            "채권혼합형 ETF를 상장했다고 밝혔습니다."
+        ),
+    )
+    mixed_etf_alert = radar.build_attachment_verified_event_alert(
+        mixed_etf_row,
+        attachment26_now,
+        f"{mixed_etf_row['source_title']} {mixed_etf_row['source_body']}".lower(),
+    )
+    mixed_etf_core = str((mixed_etf_alert or {}).get("telegram_core_fact") or "")
+    if (mixed_etf_alert or {}).get("korean_business_kind") != "korea_samsung_skhynix_us_treasury_mixed_etf":
+        failures.append(f"mixed_etf_kind={mixed_etf_alert!r}")
+    if not all(term in mixed_etf_core for term in ("미국 단기국채", "50%", "삼성전자", "SK하이닉스")):
+        failures.append(f"mixed_etf_core_mismatch={mixed_etf_core!r}")
+    mixed_block = radar.compact_alert(mixed_etf_alert or {}, 1, attachment26_now, {}, {})
+    if radar.compact_alert_block_errors(mixed_block):
+        failures.append(f"mixed_etf_block_quality={mixed_block!r}")
+    linked_report = radar.strip_article_boilerplate_from_report(
+        '출처: <a href="https://www.yna.co.kr/view/AKR20260825057300008">원문</a>'
+    )
+    linked_text, linked_entities = radar.telegram_text_and_entities(linked_report)
+    if "h ps://" in linked_report or "https://" not in linked_report:
+        failures.append(f"source_link_scheme_corrupted={linked_report!r}")
+    if linked_text != "출처: 원문" or linked_entities != [
+        {
+            "type": "text_link",
+            "offset": 4,
+            "length": 2,
+            "url": "https://www.yna.co.kr/view/AKR20260825057300008",
+        }
+    ]:
+        failures.append(f"telegram_link_entity={linked_text!r}:{linked_entities!r}")
     duplicate_rows = (
         source_row(
             "엔비디아, 삼성 파운드리에 그록3 LPX 추론가속기 양산 위탁",
