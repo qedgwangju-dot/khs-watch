@@ -176,16 +176,47 @@ def meaning(category: str) -> str:
     return "향후 발전원·전력망 투자 배분과 정책 시간표를 바꿈"
 
 
+def renewable_220_detail(title: str) -> list[str]:
+    """2026-08-26 제12차 전기본 재생에너지 잠정안의 검증된 핵심 수치."""
+    lower = norm(title).lower()
+    if not any(term in lower for term in ("220gw", "155gw", "61gw")):
+        return []
+    return [
+        "<b>2040년 보급량 순위</b>",
+        "1위  태양광  <b>155GW</b>",
+        "2위  해상풍력  <b>45GW</b>",
+        "3위  육상풍력  <b>16GW</b>",
+        "풍력 합계  <b>61GW</b>  = 해상 45 + 육상 16",
+        "사업용 재생에너지 합계  <b>220GW</b>",
+        "",
+        "<b>보급 경로</b>",
+        "2025년 <b>33.4GW</b> → 2030년 <b>100GW</b> → 2035년 <b>163GW</b> → 2040년 <b>220GW</b>",
+        "",
+        "<b>현재 대비 증설 배수</b>",
+        "태양광 31 → 155GW  <b>5.0배</b>",
+        "해상풍력 0.4 → 45GW  <b>112.5배</b>",
+        "육상풍력 2 → 16GW  <b>8.0배</b>",
+        "",
+        "<b>핵심 해석</b>",
+        "절대 보급량 1위는 태양광, 증설 난도·배수 1위는 해상풍력",
+        "",
+        "<b>정책 단계</b>  제12차 전기본 반영 전 <b>잠정안</b>",
+        "<b>주요 병목</b>  전력계통·ESS, 해상풍력 인허가, 지원항만·설치선박 확보",
+    ]
+
+
 def render(rows: list[dict[str, Any]]) -> str:
     lines = ["<b>한국 전기본·전원믹스 새 변화</b>"]
     for idx, row in enumerate(rows[:5], 1):
         status = "공식자료" if row["official"] else "신뢰 보도"
-        title = html.escape(str(row["title"]))
+        title_raw = str(row["title"])
+        title = html.escape(title_raw)
         publisher = html.escape(str(row["publisher"]))
         category = html.escape(str(row["category"]))
         url = html.escape(str(row["url"]), quote=True)
         date_text = html.escape(korean_date(str(row["published"])))
         meaning_text = html.escape(meaning(str(row["category"])))
+        link_label = "공식 원문 보기" if row["official"] else "기사 원문 보기"
         lines.extend(
             [
                 "",
@@ -195,9 +226,16 @@ def render(rows: list[dict[str, Any]]) -> str:
                 f"<b>확인 상태</b>  {status}",
                 f"<b>발표일</b>  {date_text}",
                 f"<b>출처</b>  {publisher}",
+            ]
+        )
+        detail = renewable_220_detail(title_raw)
+        if detail:
+            lines.extend(["", *detail])
+        lines.extend(
+            [
                 "",
                 f"<b>투자 의미</b>  {meaning_text}",
-                f'<a href="{url}"><b>공식 원문 보기</b></a>',
+                f'<a href="{url}"><b>{link_label}</b></a>',
             ]
         )
     return "\n".join(lines).rstrip() + "\n"
