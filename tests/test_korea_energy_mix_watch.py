@@ -8,20 +8,24 @@ if str(ROOT) not in sys.path:
 from scripts.korea_energy_mix_watch import classify, korean_date, parse_rss, render, topic_match
 
 
-def test_topic_match_requires_power_plan_and_energy_mix_term():
+def test_topic_match_alerts_on_any_power_plan_item():
     assert topic_match("제12차 전기본 재생에너지 2040년 220GW 전망") is True
+    assert topic_match("제12차 전기본 총괄위원회 회의 개최") is True
+    assert topic_match("전력수급기본계획 정부안 확정") is True
+    assert topic_match("12차 전기본 공청회 개최") is True
     assert topic_match("일반 태양광 기업 신제품 출시") is False
 
 
-def test_classifies_renewable_and_nuclear():
+def test_classifies_renewable_nuclear_and_final_plan():
     assert classify("12차 전기본 재생에너지 220GW")[0] == "재생에너지·전원믹스"
     assert classify("12차 전기본 신규 원전 논의")[0] == "원전·전원믹스"
+    assert classify("제12차 전기본 정부안 확정")[0] == "전기본 확정·의결"
 
 
 def test_rss_trusted_media_filter_and_korean_date():
     xml = """
     <rss><channel><item>
-      <title>제12차 전력수급기본계획 재생에너지 220GW 전망</title>
+      <title>제12차 전력수급기본계획 총괄위원회 회의 개최</title>
       <source>연합뉴스</source>
       <link>https://example.com/story</link>
       <guid>story-1</guid>
@@ -30,6 +34,7 @@ def test_rss_trusted_media_filter_and_korean_date():
     """
     rows = parse_rss(xml, "국내 주요 언론", False)
     assert len(rows) == 1
+    assert rows[0]["plan_stage"] == "수립·공론화"
     assert korean_date(rows[0]["published"]) == "2026년 8월 26일"
 
 
@@ -43,13 +48,15 @@ def test_render_is_readable_and_ranks_2040_capacity():
             "url": "https://example.com/story",
             "published": "Wed, 26 Aug 2026 07:00:00 GMT",
             "category": "재생에너지·전원믹스",
-            "stage": 5,
+            "plan_stage": "전망·잠정안",
+            "stage": 6,
             "id": "x",
         }
     ])
     assert "#" not in body
     assert "2026년 8월 26일" in body
     assert "<b>핵심 분야</b>" in body
+    assert "<b>전기본 단계</b>  전망·잠정안" in body
     assert "<b>확인 상태</b>" in body
     assert "<b>2040년 보급량 순위</b>" in body
     assert "1위  태양광  <b>155GW</b>" in body
