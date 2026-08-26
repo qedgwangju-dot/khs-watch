@@ -1,30 +1,30 @@
 {
   "initialized": true,
   "monitor_started_at_kst": "2026-08-25T20:03:51+09:00",
-  "updated_at_kst": "2026-08-26T18:23:38+09:00",
+  "updated_at_kst": "2026-08-26T19:17:17+09:00",
   "seen_ids": [
     "8ae53837ec7e502558cf0659",
-    "80513878b75726a1d7bfbedd",
     "100382bc4efe1ec7929c7d2e",
     "6bcc1a8dc701e076d4726633",
     "1f4844071fbd81459be4ac4d",
     "22f7dfd77207d692ae24adea",
-    "b237c24fb8c8ab5ea156adcb"
+    "b237c24fb8c8ab5ea156adcb",
+    "80513878b75726a1d7bfbedd"
   ],
   "seen_story_keys": [
     "8ddd60fb5399cbe17d861b70",
-    "960056cddd61d7f6cfb52009",
     "302564da164985fa8c9087ca",
     "922013e6004424670c82c0bb",
     "564889913103bd6d09ae3576",
-    "9a3f3456cb6c7d14d1b06e1f"
+    "9a3f3456cb6c7d14d1b06e1f",
+    "960056cddd61d7f6cfb52009"
   ],
   "official_page_signatures": {
     "lh_project_press": "1b06e9ac9765edc46df11605890846be2695ae2b1ea0a0653e45bf80484de227",
     "lh_design_bid": "ba8a61f88be738c789c3dbfefdc1641f11b6b235216161b4336bc68e3969038b"
   },
-  "last_relevant_count": 5,
-  "last_stale_suppressed_count": 1,
+  "last_relevant_count": 4,
+  "last_stale_suppressed_count": 0,
   "errors": [],
   "noise_filters": [
     "LH 보도자료 다운로드 수",
