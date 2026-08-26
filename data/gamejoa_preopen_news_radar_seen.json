@@ -494,16 +494,6 @@
       "source": "매일경제",
       "title": "엑시나·보스반도체 핫칩스 무대 올라.. 주목받는 韓반도체 스타트업"
     },
-    "event:342fa7a64adbd638f6dbd750": {
-      "first_seen_kst": "2026-08-13T04:53:41+09:00",
-      "lanes": {
-        "live": "2026-08-13T04:53:41+09:00"
-      },
-      "last_seen_kst": "2026-08-13T04:53:41+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12125847",
-      "source": "매일경제",
-      "title": "마이크론, HBM 영업이익률 SK하이닉스 역전…엔비디아 HBM4 공급까지 수주"
-    },
     "event:382c0f6dd8d1b40b2923d8a0": {
       "first_seen_kst": "2026-08-26T12:18:25+09:00",
       "lanes": {
@@ -657,6 +647,16 @@
       "source": "연합뉴스",
       "title": "케스피온, 130억원 제3자배정 유상증자 | 연합뉴스"
     },
+    "event:4912b93bcb5959e539acd24d": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.mk.co.kr/news/it/12134341",
+      "source": "매일경제",
+      "title": "삼성 “HBM, 저장 넘어 연산까지 한다”…차세대 메모리 혁명 선언 [핫칩스 2026]"
+    },
     "event:4a0046ff05b3151ad59df7df": {
       "first_seen_kst": "2026-08-14T11:35:15+09:00",
       "lanes": {
@@ -666,6 +666,16 @@
       "link": "https://view.asiae.co.kr/article/2026081409064935177",
       "source": "아시아경제",
       "title": "中 매체 \"CXMT 최신 D램 수율, 삼성과 2%P 격차\""
+    },
+    "event:4a31b3dea52fdd021f1e1368": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01794166645551584",
+      "source": "이데일리",
+      "title": "[속보] 엔비디아 실적 앞두고 뉴욕증시 하락"
     },
     "event:4b81ac734c63133ca7c72e2a": {
       "first_seen_kst": "2026-08-15T06:39:06+09:00",
@@ -1486,6 +1496,16 @@
       "source": "머니투데이",
       "title": "라운드힐, 삼성그룹 ETF 美증시 출시 시동…이르면 10월 상장"
     },
+    "event:bd68283a57601254c5a362da": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260827006800072",
+      "source": "연합뉴스",
+      "title": "뉴욕증시, 엔비디아 실적 앞두고 약보합 마감…나스닥 0.08%↓ | 연합뉴스"
+    },
     "event:bff17ea1f9548b9b1864fa3b": {
       "first_seen_kst": "2026-08-27T01:57:52+09:00",
       "lanes": {
@@ -1646,17 +1666,6 @@
       "link": "https://www.etoday.co.kr/news/view/2615449",
       "source": "이투데이",
       "title": "이은택 KB증권 이사 \"증시 상승, 반도체 '실적 성장'이 관건…금리는 복병\""
-    },
-    "event:cc0a725bcf54f7b23610742d": {
-      "first_seen_kst": "2026-08-13T05:43:13+09:00",
-      "lanes": {
-        "live": "2026-08-13T05:43:13+09:00",
-        "preopen": "2026-08-15T06:33:29+09:00"
-      },
-      "last_seen_kst": "2026-08-15T06:33:29+09:00",
-      "link": "https://www.fnnews.com/news/202608130636105595",
-      "source": "파이낸셜뉴스",
-      "title": "인플레 둔화 속 AI 낙관론 재개…SK하이닉스ADR 9%↑ 등 나스닥 0.5%↑"
     },
     "event:cc5e7574dab08986b68aff74": {
       "first_seen_kst": "2026-08-26T04:33:04+09:00",
@@ -2173,6 +2182,16 @@
       "link": "https://www.etnews.com/20260818000132",
       "source": "전자신문",
       "title": "[기고]용인 반도체 클러스터, 정부가 답할 차례"
+    },
+    "link:0553f0e9096213bee95527a5": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01794166645551584",
+      "source": "이데일리",
+      "title": "[속보] 엔비디아 실적 앞두고 뉴욕증시 하락"
     },
     "link:05d146236dee56c336ab8b3a": {
       "first_seen_kst": "2026-08-14T00:22:52+09:00",
@@ -2939,16 +2958,6 @@
       "source": "연합뉴스",
       "title": "[게시판] 핀크, 정부지원대출 진단 서비스…서금원 전용대출 금리 등 확인 | 연합뉴스"
     },
-    "link:2ed24a8b8bfab89f009c6189": {
-      "first_seen_kst": "2026-08-13T05:18:36+09:00",
-      "lanes": {
-        "live": "2026-08-13T05:18:36+09:00"
-      },
-      "last_seen_kst": "2026-08-13T05:18:36+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12125917",
-      "source": "매일경제",
-      "title": "ESS테크, 2분기 매출 97% 폭락…기업결합으로 반전 노린다"
-    },
     "link:31321f7e734edffbe3d8cceb": {
       "first_seen_kst": "2026-08-23T10:37:29+09:00",
       "lanes": {
@@ -3560,16 +3569,6 @@
       "link": "https://www.newsis.com/view/NISX20260814_0003750057",
       "source": "뉴시스",
       "title": "원유 수급은 돌아왔는데…중동 '비상조치' 언제 풀리나"
-    },
-    "link:521afb259cd3805fdd96e81a": {
-      "first_seen_kst": "2026-08-13T04:53:41+09:00",
-      "lanes": {
-        "live": "2026-08-13T04:53:41+09:00"
-      },
-      "last_seen_kst": "2026-08-13T04:53:41+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12125847",
-      "source": "매일경제",
-      "title": "마이크론, HBM 영업이익률 SK하이닉스 역전…엔비디아 HBM4 공급까지 수주"
     },
     "link:527db056162811545fcedbe4": {
       "first_seen_kst": "2026-08-24T05:27:51+09:00",
@@ -4314,6 +4313,16 @@
       "source": "매일경제",
       "title": "“유학비 부담 확 줄어 좋아요”…삼전닉스 주주환원 300조원의 ‘나비효과’"
     },
+    "link:826d87dcdc5f258d10c21d7e": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260827006800072",
+      "source": "연합뉴스",
+      "title": "뉴욕증시, 엔비디아 실적 앞두고 약보합 마감…나스닥 0.08%↓ | 연합뉴스"
+    },
     "link:836bb85a40fd5cca83deef90": {
       "first_seen_kst": "2026-08-17T09:48:37+09:00",
       "lanes": {
@@ -4554,16 +4563,6 @@
       "link": "https://www.etnews.com/20260821000279",
       "source": "전자신문",
       "title": "아이에이 “모듈형 데이터센터, 소버린·피지컬 AI 시대 새 표준”"
-    },
-    "link:9250e14746216b7d21762c8e": {
-      "first_seen_kst": "2026-08-13T05:43:13+09:00",
-      "lanes": {
-        "live": "2026-08-13T05:43:13+09:00"
-      },
-      "last_seen_kst": "2026-08-13T05:43:13+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02309126645546992",
-      "source": "이데일리",
-      "title": "CPI 안도+AI 실적 훈풍…나스닥100 한달來 최고[월스트리트in]"
     },
     "link:93b817dea768fa8c2d70709a": {
       "first_seen_kst": "2026-08-20T08:58:37+09:00",
@@ -5853,6 +5852,16 @@
       "source": "머니투데이",
       "title": "서학개미 장바구니 1년새 달라졌다…'반도체·레버리지'로 쏠림"
     },
+    "link:d4917b5f1b367993baf0729e": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.mk.co.kr/news/it/12134341",
+      "source": "매일경제",
+      "title": "삼성 “HBM, 저장 넘어 연산까지 한다”…차세대 메모리 혁명 선언 [핫칩스 2026]"
+    },
     "link:d53cdb528a7a6eb7520822bd": {
       "first_seen_kst": "2026-08-18T05:28:04+09:00",
       "lanes": {
@@ -6142,6 +6151,16 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01338246645550272",
       "source": "이데일리",
       "title": "“고금리엔 주주환원株 투자…기아·LG·GS 등 주목”"
+    },
+    "link:e3b70cd89101838489ac64b4": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.mk.co.kr/news/business/12137265",
+      "source": "매일경제",
+      "title": "“두 달 만에 다시 만난 이재명·이재용…비공개 만찬서 무슨 얘기?”"
     },
     "link:e4073497419db9b202501f0b": {
       "first_seen_kst": "2026-08-20T06:33:37+09:00",
@@ -7638,6 +7657,16 @@
       "source": "매일경제",
       "title": "‘40조 자사주 카드’ 통했다…SK하이닉스 11% 뛰며 코스피 6800선 회복"
     },
+    "original:282c9191052d44fce9987769": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260827006800072",
+      "source": "연합뉴스",
+      "title": "뉴욕증시, 엔비디아 실적 앞두고 약보합 마감…나스닥 0.08%↓ | 연합뉴스"
+    },
     "original:28ce3adda880b41e188948e8": {
       "first_seen_kst": "2026-08-21T18:45:25+09:00",
       "lanes": {
@@ -7748,16 +7777,6 @@
       "link": "https://www.yna.co.kr/view/AKR20260825057300008",
       "source": "연합뉴스",
       "title": "미래에셋운용, '삼전닉스+미국 단기국채' 혼합 ETF 상장 | 연합뉴스"
-    },
-    "original:2cd2071e57561211baf59a51": {
-      "first_seen_kst": "2026-08-13T05:43:13+09:00",
-      "lanes": {
-        "live": "2026-08-13T05:43:13+09:00"
-      },
-      "last_seen_kst": "2026-08-13T05:43:13+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02309126645546992",
-      "source": "이데일리",
-      "title": "CPI 안도+AI 실적 훈풍…나스닥100 한달來 최고[월스트리트in]"
     },
     "original:2dc938acb1186955877de046": {
       "first_seen_kst": "2026-08-18T06:52:25+09:00",
@@ -10166,6 +10185,16 @@
       "source": "뉴시스",
       "title": "'500억 매출' 박미희 대표, 김우중 회장 가사도우미 출신이었다"
     },
+    "original:b44ca927a529a36b9c8b4d6c": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01794166645551584",
+      "source": "이데일리",
+      "title": "[속보] 엔비디아 실적 앞두고 뉴욕증시 하락"
+    },
     "original:b4e44c53dd510538556f8b08": {
       "first_seen_kst": "2026-08-20T06:33:37+09:00",
       "lanes": {
@@ -10185,6 +10214,16 @@
       "link": "https://www.mk.co.kr/news/stock/12131725",
       "source": "매일경제",
       "title": "오큘러테라퓨틱스, AXPAXLI NDA 4분기 제출 확정…상업 출시 준비 본격화"
+    },
+    "original:b551f9164470fb1bb5adfbf0": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.mk.co.kr/news/business/12137265",
+      "source": "매일경제",
+      "title": "“두 달 만에 다시 만난 이재명·이재용…비공개 만찬서 무슨 얘기?”"
     },
     "original:b6782bd6dbaa62eef33bc3c7": {
       "first_seen_kst": "2026-08-16T09:48:12+09:00",
@@ -10236,6 +10275,16 @@
       "link": "https://www.etnews.com/20260814000285",
       "source": "전자신문",
       "title": "LS전선 주요 자회사, 상반기 역대 최대 실적 릴레이"
+    },
+    "original:b95d10df8d10e7270cbfc021": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.mk.co.kr/news/it/12134341",
+      "source": "매일경제",
+      "title": "삼성 “HBM, 저장 넘어 연산까지 한다”…차세대 메모리 혁명 선언 [핫칩스 2026]"
     },
     "original:b96463152ce1463dfd081882": {
       "first_seen_kst": "2026-08-21T18:45:25+09:00",
@@ -10619,26 +10668,6 @@
       "link": "https://www.newsis.com/view/NISX20260815_0003750684",
       "source": "뉴시스",
       "title": "관세 낮춘 후 물류·판로까지…K-푸드 수출 '패키지 지원'[FTA 시대, 수출은 시스템이다③]"
-    },
-    "original:ce8589de608186d631073b9c": {
-      "first_seen_kst": "2026-08-13T04:53:41+09:00",
-      "lanes": {
-        "live": "2026-08-13T04:53:41+09:00"
-      },
-      "last_seen_kst": "2026-08-13T04:53:41+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12125847",
-      "source": "매일경제",
-      "title": "마이크론, HBM 영업이익률 SK하이닉스 역전…엔비디아 HBM4 공급까지 수주"
-    },
-    "original:cffa6af64d06e89c97ca6a5b": {
-      "first_seen_kst": "2026-08-13T05:18:36+09:00",
-      "lanes": {
-        "live": "2026-08-13T05:18:36+09:00"
-      },
-      "last_seen_kst": "2026-08-13T05:18:36+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12125917",
-      "source": "매일경제",
-      "title": "ESS테크, 2분기 매출 97% 폭락…기업결합으로 반전 노린다"
     },
     "original:d03c09770492c68423f2eca2": {
       "first_seen_kst": "2026-08-21T21:58:09+09:00",
@@ -12329,6 +12358,16 @@
       "source": "매일경제",
       "title": "‘40조 자사주 카드’ 통했다…SK하이닉스 11% 뛰며 코스피 6800선 회복"
     },
+    "title:282c9191052d44fce9987769": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260827006800072",
+      "source": "연합뉴스",
+      "title": "뉴욕증시, 엔비디아 실적 앞두고 약보합 마감…나스닥 0.08%↓ | 연합뉴스"
+    },
     "title:28ce3adda880b41e188948e8": {
       "first_seen_kst": "2026-08-21T18:45:25+09:00",
       "lanes": {
@@ -12439,16 +12478,6 @@
       "link": "https://www.yna.co.kr/view/AKR20260825057300008",
       "source": "연합뉴스",
       "title": "미래에셋운용, '삼전닉스+미국 단기국채' 혼합 ETF 상장 | 연합뉴스"
-    },
-    "title:2cd2071e57561211baf59a51": {
-      "first_seen_kst": "2026-08-13T05:43:13+09:00",
-      "lanes": {
-        "live": "2026-08-13T05:43:13+09:00"
-      },
-      "last_seen_kst": "2026-08-13T05:43:13+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02309126645546992",
-      "source": "이데일리",
-      "title": "CPI 안도+AI 실적 훈풍…나스닥100 한달來 최고[월스트리트in]"
     },
     "title:2dc938acb1186955877de046": {
       "first_seen_kst": "2026-08-18T06:52:25+09:00",
@@ -14857,6 +14886,16 @@
       "source": "뉴시스",
       "title": "'500억 매출' 박미희 대표, 김우중 회장 가사도우미 출신이었다"
     },
+    "title:b44ca927a529a36b9c8b4d6c": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01794166645551584",
+      "source": "이데일리",
+      "title": "[속보] 엔비디아 실적 앞두고 뉴욕증시 하락"
+    },
     "title:b4e44c53dd510538556f8b08": {
       "first_seen_kst": "2026-08-20T06:33:37+09:00",
       "lanes": {
@@ -14876,6 +14915,16 @@
       "link": "https://www.mk.co.kr/news/stock/12131725",
       "source": "매일경제",
       "title": "오큘러테라퓨틱스, AXPAXLI NDA 4분기 제출 확정…상업 출시 준비 본격화"
+    },
+    "title:b551f9164470fb1bb5adfbf0": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.mk.co.kr/news/business/12137265",
+      "source": "매일경제",
+      "title": "“두 달 만에 다시 만난 이재명·이재용…비공개 만찬서 무슨 얘기?”"
     },
     "title:b6782bd6dbaa62eef33bc3c7": {
       "first_seen_kst": "2026-08-16T09:48:12+09:00",
@@ -14927,6 +14976,16 @@
       "link": "https://www.etnews.com/20260814000285",
       "source": "전자신문",
       "title": "LS전선 주요 자회사, 상반기 역대 최대 실적 릴레이"
+    },
+    "title:b95d10df8d10e7270cbfc021": {
+      "first_seen_kst": "2026-08-27T05:57:42+09:00",
+      "lanes": {
+        "live": "2026-08-27T05:57:42+09:00"
+      },
+      "last_seen_kst": "2026-08-27T05:57:42+09:00",
+      "link": "https://www.mk.co.kr/news/it/12134341",
+      "source": "매일경제",
+      "title": "삼성 “HBM, 저장 넘어 연산까지 한다”…차세대 메모리 혁명 선언 [핫칩스 2026]"
     },
     "title:b96463152ce1463dfd081882": {
       "first_seen_kst": "2026-08-21T18:45:25+09:00",
@@ -15320,26 +15379,6 @@
       "link": "https://www.newsis.com/view/NISX20260815_0003750684",
       "source": "뉴시스",
       "title": "관세 낮춘 후 물류·판로까지…K-푸드 수출 '패키지 지원'[FTA 시대, 수출은 시스템이다③]"
-    },
-    "title:ce8589de608186d631073b9c": {
-      "first_seen_kst": "2026-08-13T04:53:41+09:00",
-      "lanes": {
-        "live": "2026-08-13T04:53:41+09:00"
-      },
-      "last_seen_kst": "2026-08-13T04:53:41+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12125847",
-      "source": "매일경제",
-      "title": "마이크론, HBM 영업이익률 SK하이닉스 역전…엔비디아 HBM4 공급까지 수주"
-    },
-    "title:cffa6af64d06e89c97ca6a5b": {
-      "first_seen_kst": "2026-08-13T05:18:36+09:00",
-      "lanes": {
-        "live": "2026-08-13T05:18:36+09:00"
-      },
-      "last_seen_kst": "2026-08-13T05:18:36+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12125917",
-      "source": "매일경제",
-      "title": "ESS테크, 2분기 매출 97% 폭락…기업결합으로 반전 노린다"
     },
     "title:d03c09770492c68423f2eca2": {
       "first_seen_kst": "2026-08-21T21:58:09+09:00",
@@ -16133,5 +16172,5 @@
       "title": "고유가에 지갑 닫는 美 소비자…월마트 매출 증가율 6년 만에 최저"
     }
   },
-  "updated_at_kst": "2026-08-27T04:02:55+09:00"
+  "updated_at_kst": "2026-08-27T05:57:42+09:00"
 }
