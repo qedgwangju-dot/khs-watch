@@ -32,6 +32,10 @@ jobs:
   monitor:
     runs-on: ubuntu-latest
     timeout-minutes: 12
+    env:
+      # Never let a branch push send a live Telegram message. Scheduled/manual main runs only.
+      TELEGRAM_DRY_RUN: ${{ github.ref != 'refs/heads/main' && 'true' || 'false' }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,6 +46,25 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Validate Telegram routing guard
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          text = Path(".github/workflows/global-rates-telegram-watch.yml").read_text(encoding="utf-8")
+          required = (
+              'EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"',
+              'secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN',
+              'secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID',
+              'actual.lower() != expected.lower()',
+              "Wrong Telegram bot configured",
+          )
+          missing = [value for value in required if value not in text]
+          if missing:
+              raise RuntimeError(f"Global-rates Telegram routing guard incomplete: {missing}")
+          print("global_rates_telegram_route_guard=ok expected=@khs8879887988798879_bot")
+          PY
 
       - name: Check official rate sources
         run: python scripts/global_rates_watch.py
@@ -78,11 +101,19 @@ jobs:
             cat out/global_rates_watch_telegram.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Send composite risk alert to Telegram
-        if: hashFiles('out/global_rates_watch_telegram.md') != ''
+      - name: Preview branch alert without sending
+        if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/global_rates_watch_telegram.md') != ''
+        run: |
+          echo >> "$GITHUB_STEP_SUMMARY"
+          echo "# Telegram 미전송 검증" >> "$GITHUB_STEP_SUMMARY"
+          echo "대상 봇 고정: @khs8879887988798879_bot" >> "$GITHUB_STEP_SUMMARY"
+          cat out/global_rates_watch_telegram.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Send composite risk alert through dedicated global-rates bot only
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/global_rates_watch_telegram.md') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
@@ -95,15 +126,21 @@ jobs:
 
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
-          if not token or not chat_id:
-              print("Telegram secrets are not configured; states will not advance.")
-              raise SystemExit(0)
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_BOT_TOKEN secret is missing; refusing fallback")
+          if not chat_id:
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_CHAT_ID secret is missing; refusing fallback")
+          if not expected:
+              raise RuntimeError("EXPECTED_TELEGRAM_BOT_USERNAME is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
               identity = json.loads(r.read().decode("utf-8"))
-          if not identity.get("ok"):
-              raise RuntimeError("Telegram getMe failed")
-          bot_username = str((identity.get("result") or {}).get("username") or "")
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(
+                  f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}"
+              )
 
           text = pathlib.Path("out/global_rates_watch_telegram.md").read_text(encoding="utf-8").strip()
 
@@ -151,7 +188,9 @@ jobs:
 
           confirmed = {
               "status": "confirmed",
-              "bot_username": bot_username,
+              "lane": "global_rates_yen_carry",
+              "bot_username": actual,
+              "route_secret": "GLOBAL_RATES_TELEGRAM_*",
               "message_ids": ids,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
@@ -159,7 +198,10 @@ jobs:
               json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
               encoding="utf-8",
           )
-          print(f"telegram_delivery_confirmed=true bot=@{bot_username} message_ids={ids}")
+          print(
+              "telegram_delivery_confirmed=true "
+              f"lane=global_rates_yen_carry bot=@{actual} message_ids={ids}"
+          )
           PY
 
       - name: Persist states only after safe baseline or confirmed Telegram delivery
@@ -177,7 +219,7 @@ jobs:
           fi
 
       - name: Commit confirmed/baseline states
-        if: always()
+        if: always() && github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
