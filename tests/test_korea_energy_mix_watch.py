@@ -33,11 +33,11 @@ def test_rss_trusted_media_filter_and_korean_date():
     assert korean_date(rows[0]["published"]) == "2026년 8월 26일"
 
 
-def test_render_is_readable_without_losing_core_fields():
+def test_render_is_readable_and_ranks_2040_capacity():
     body = render([
         {
-            "title": "제12차 전기본 재생에너지 220GW 전망",
-            "publisher": "연합뉴스",
+            "title": "2040년 재생에너지 220GW 보급…태양광 155GW·풍력 61GW - 뉴시스",
+            "publisher": "뉴시스",
             "source": "국내 주요 언론",
             "official": False,
             "url": "https://example.com/story",
@@ -51,5 +51,11 @@ def test_render_is_readable_without_losing_core_fields():
     assert "2026년 8월 26일" in body
     assert "<b>핵심 분야</b>" in body
     assert "<b>확인 상태</b>" in body
+    assert "<b>2040년 보급량 순위</b>" in body
+    assert "1위  태양광  <b>155GW</b>" in body
+    assert "2위  해상풍력  <b>45GW</b>" in body
+    assert "3위  육상풍력  <b>16GW</b>" in body
+    assert "해상풍력 0.4 → 45GW  <b>112.5배</b>" in body
+    assert "<b>정책 단계</b>" in body
     assert "<b>투자 의미</b>" in body
-    assert '<a href="https://example.com/story"><b>공식 원문 보기</b></a>' in body
+    assert '<a href="https://example.com/story"><b>기사 원문 보기</b></a>' in body
