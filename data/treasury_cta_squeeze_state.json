@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-08-27T03:18:43+09:00",
+  "last_checked_kst": "2026-08-27T05:38:24+09:00",
   "media_id": null,
   "cftc_date": "August 18, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-08-27T03:18:43+09:00",
+    "checked_kst": "2026-08-27T05:38:24+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "August 18, 2026",
@@ -65,10 +65,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 108.625,
-        "settlement": 108.625,
-        "change": -0.234375,
-        "pct_change": -0.2153007033156351,
+        "last": 108.734375,
+        "settlement": 108.734375,
+        "change": -0.125,
+        "pct_change": -0.11482704176833947,
         "open_interest": 5596739,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 18, 2026)",
         "volume": 0,
@@ -81,10 +81,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 109.96875,
-        "settlement": 109.96875,
-        "change": -0.28125,
-        "pct_change": -0.25510204081632404,
+        "last": 110.28125,
+        "settlement": 110.28125,
+        "change": 0.03125,
+        "pct_change": 0.028344671201807614,
         "open_interest": 1894436,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 18, 2026)",
         "volume": 0,
@@ -97,10 +97,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 111.5,
-        "settlement": 111.5,
-        "change": -0.21875,
-        "pct_change": -0.1958041958041945,
+        "last": 111.8125,
+        "settlement": 111.8125,
+        "change": 0.09375,
+        "pct_change": 0.08391608391609129,
         "open_interest": 2493394,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 18, 2026)",
         "volume": 0,
@@ -110,12 +110,12 @@
       }
     },
     "yield10": {
-      "date": "2026-08-25",
-      "yield": 4.64,
-      "mean20": 4.683,
-      "sd20": 0.0352278299076171,
-      "z20": -1.2206258549778712,
-      "distance_to_4_3_bp": 33.999999999999986
+      "date": "2026-08-26",
+      "yield": 4.66,
+      "mean20": 4.6825,
+      "sd20": 0.0354788669492136,
+      "z20": -0.6341803426870339,
+      "distance_to_4_3_bp": 36.00000000000003
     },
     "repo": {
       "SOFR": {
@@ -143,7 +143,7 @@
   "last_gate": {
     "futures_price_oi": false,
     "cftc_short_bias": false,
-    "z_below_minus_1": true,
+    "z_below_minus_1": false,
     "repo_not_worse": true,
     "composite_confirmed": false,
     "stage": 0
