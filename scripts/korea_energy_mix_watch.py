@@ -18,14 +18,17 @@ OUT_DIR = Path("out")
 KST = timezone(timedelta(hours=9))
 MAX_AGE_HOURS = int(os.getenv("KOREA_ENERGY_MIX_MAX_AGE_HOURS", "96"))
 
+# 전기본은 세부 전원 키워드가 없어도 전부 잡는다.
 RSS_SOURCES = (
     {
         "name": "기후에너지환경부 공식",
         "official": True,
         "url": (
             "https://news.google.com/rss/search?q=site%3Amcee.go.kr+"
-            "%28%22%EC%A0%9C12%EC%B0%A8+%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22+OR+%2212%EC%B0%A8+%EC%A0%84%EA%B8%B0%EB%B3%B8%22+OR+%22%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22%29+"
-            "%28%22%EC%9E%AC%EC%83%9D%EC%97%90%EB%84%88%EC%A7%80%22+OR+%22%ED%83%9C%EC%96%91%EA%B4%91%22+OR+%22%ED%92%8D%EB%A0%A5%22+OR+%22%EC%9B%90%EC%A0%84%22+OR+%22%EC%9B%90%EC%9E%90%EB%A0%A5%22+OR+%22%EC%A0%84%EB%A0%A5%EC%88%98%EC%9A%94%22+OR+%22%EC%97%90%EB%84%88%EC%A7%80%EB%AF%B9%EC%8A%A4%22%29+when%3A30d"
+            "%28%22%EC%A0%9C12%EC%B0%A8+%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22+OR+"
+            "%2212%EC%B0%A8+%EC%A0%84%EA%B8%B0%EB%B3%B8%22+OR+"
+            "%22%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22+OR+"
+            "%22%EC%A0%84%EA%B8%B0%EB%B3%B8%22%29+when%3A30d"
             "&hl=ko&gl=KR&ceid=KR%3Ako"
         ),
     },
@@ -33,8 +36,10 @@ RSS_SOURCES = (
         "name": "국내 주요 언론",
         "official": False,
         "url": (
-            "https://news.google.com/rss/search?q=%28%22%EC%A0%9C12%EC%B0%A8+%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22+OR+%2212%EC%B0%A8+%EC%A0%84%EA%B8%B0%EB%B3%B8%22+OR+%22%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22%29+"
-            "%28%22220GW%22+OR+%22%EC%9E%AC%EC%83%9D%EC%97%90%EB%84%88%EC%A7%80%22+OR+%22%ED%83%9C%EC%96%91%EA%B4%91%22+OR+%22%ED%95%B4%EC%83%81%ED%92%8D%EB%A0%A5%22+OR+%22%EC%9C%A1%EC%83%81%ED%92%8D%EB%A0%A5%22+OR+%22%EC%9B%90%EC%A0%84%22+OR+%22%EC%9B%90%EC%9E%90%EB%A0%A5%22+OR+%22%EC%A0%84%EB%A0%A5%EC%88%98%EC%9A%94%22%29+when%3A7d"
+            "https://news.google.com/rss/search?q=%28%22%EC%A0%9C12%EC%B0%A8+%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22+OR+"
+            "%2212%EC%B0%A8+%EC%A0%84%EA%B8%B0%EB%B3%B8%22+OR+"
+            "%22%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22+OR+"
+            "%22%EC%A0%84%EA%B8%B0%EB%B3%B8%22%29+when%3A7d"
             "&hl=ko&gl=KR&ceid=KR%3Ako"
         ),
     },
@@ -84,19 +89,37 @@ def korean_date(value: str) -> str:
 
 
 def topic_match(title: str) -> bool:
+    """전기본이라는 핵심 식별어가 있으면 세부 전원 키워드가 없어도 알림 대상."""
     lower = norm(title).lower()
-    return any(x in lower for x in PLAN_TERMS) and any(x in lower for x in ENERGY_TERMS)
+    return any(x in lower for x in PLAN_TERMS)
+
+
+def plan_stage(title: str) -> str:
+    lower = norm(title).lower()
+    if any(x in lower for x in ("최종 확정", "확정", "의결", "정부안", "최종안")):
+        return "확정·의결"
+    if any(x in lower for x in ("공청회", "정책토론회", "토론회", "총괄위원회", "분과회의")):
+        return "수립·공론화"
+    if any(x in lower for x in ("전망", "잠정안", "실무안", "시나리오")):
+        return "전망·잠정안"
+    if any(x in lower for x in ("발표", "공개", "보도자료", "설명")):
+        return "발표·공개"
+    return "전기본 관련"
 
 
 def classify(title: str) -> tuple[str, int]:
     lower = norm(title).lower()
+    if any(x in lower for x in ("최종 확정", "확정", "의결", "정부안", "최종안")):
+        return "전기본 확정·의결", 7
     if any(x in lower for x in ("원전", "원자력")):
-        return "원전·전원믹스", 5
+        return "원전·전원믹스", 6
     if any(x in lower for x in ("재생에너지", "태양광", "해상풍력", "육상풍력", "풍력", "220gw", "236gw")):
-        return "재생에너지·전원믹스", 5
+        return "재생에너지·전원믹스", 6
     if "전력수요" in lower:
-        return "전력수요 전망", 4
-    return "전력수급기본계획", 3
+        return "전력수요 전망", 5
+    if any(x in lower for x in ("공청회", "정책토론회", "토론회", "총괄위원회", "분과회의")):
+        return "전기본 수립 절차", 5
+    return "전력수급기본계획", 4
 
 
 def tag_text(item: ET.Element, name: str) -> str:
@@ -132,6 +155,7 @@ def parse_rss(xml_text: str, source_name: str, official: bool) -> list[dict[str,
                 "url": link,
                 "published": published,
                 "category": category,
+                "plan_stage": plan_stage(title),
                 "stage": stage,
             }
         )
@@ -167,12 +191,16 @@ def set_output(name: str, value: str) -> None:
 
 
 def meaning(category: str) -> str:
+    if category == "전기본 확정·의결":
+        return "잠정 논의가 정부의 실제 전원·전력망 투자 기준으로 넘어가는 핵심 확정 이벤트"
     if category == "재생에너지·전원믹스":
         return "발전원 구성과 송전망·ESS·태양광·풍력 설비투자 시간표를 직접 바꿈"
     if category == "원전·전원믹스":
         return "신규 원전·계속운전·기저전원 투자와 장기 전력공급 시간표를 바꿈"
     if category == "전력수요 전망":
         return "발전·송전·변전·데이터센터 전원 인가에 필요한 총 설비투자 규모를 바꿈"
+    if category == "전기본 수립 절차":
+        return "향후 전원별 목표와 전력망 투자가 확정되기 전 정책 방향·일정이 바뀌는 단계"
     return "향후 발전원·전력망 투자 배분과 정책 시간표를 바꿈"
 
 
@@ -213,6 +241,7 @@ def render(rows: list[dict[str, Any]]) -> str:
         title = html.escape(title_raw)
         publisher = html.escape(str(row["publisher"]))
         category = html.escape(str(row["category"]))
+        stage_text = html.escape(str(row.get("plan_stage") or plan_stage(title_raw)))
         url = html.escape(str(row["url"]), quote=True)
         date_text = html.escape(korean_date(str(row["published"])))
         meaning_text = html.escape(meaning(str(row["category"])))
@@ -223,6 +252,7 @@ def render(rows: list[dict[str, Any]]) -> str:
                 f"<b>{idx}. {title}</b>",
                 "",
                 f"<b>핵심 분야</b>  {category}",
+                f"<b>전기본 단계</b>  {stage_text}",
                 f"<b>확인 상태</b>  {status}",
                 f"<b>발표일</b>  {date_text}",
                 f"<b>출처</b>  {publisher}",
