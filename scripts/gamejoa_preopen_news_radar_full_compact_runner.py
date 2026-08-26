@@ -4456,8 +4456,9 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             "예산" in text and re.search(r"\d[\d,.]*\s*(?:조|억)원", text)
         ):
             continue
-        if kind == "china_memory_self_sufficiency_forecast" and not any(
-            term in text for term in ("점유율", "수요", "전망", "추정", "자급", "자립", "공급")
+        if kind == "china_memory_self_sufficiency_forecast" and not (
+            ("2028" in text and any(term in text for term in ("d램", "dram", "hbm")))
+            or any(term in text for term in ("자급", "자립"))
         ):
             continue
         if kind == "nvidia_rubin_margin_ramp" and not (
