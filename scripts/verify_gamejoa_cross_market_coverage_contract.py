@@ -285,7 +285,7 @@ ATTACHMENT_20260826_GROUPS = {
     "ai_memory_revenue_growth_outlook": {"source_items": 1, "route": "send"},
     "korea_single_stock_leverage_etf_volatility": {"source_items": 1, "route": "send"},
     "china_listed_company_tax_recovery": {"source_items": 1, "route": "conditional"},
-    "global_hbm_etf_performance": {"source_items": 2, "route": "exclude"},
+    "global_hbm_etf_performance": {"source_items": 3, "route": "exclude"},
     "us_market_nvidia_yield_recap": {"source_items": 1, "route": "conditional"},
     "samsung_pim_ai_pc_commercialization": {"source_items": 2, "route": "send"},
     "nvidia_amkor_advanced_packaging_contract": {"source_items": 1, "route": "send"},
