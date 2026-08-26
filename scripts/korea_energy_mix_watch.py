@@ -184,16 +184,20 @@ def render(rows: list[dict[str, Any]]) -> str:
         publisher = html.escape(str(row["publisher"]))
         category = html.escape(str(row["category"]))
         url = html.escape(str(row["url"]), quote=True)
+        date_text = html.escape(korean_date(str(row["published"])))
+        meaning_text = html.escape(meaning(str(row["category"])))
         lines.extend(
             [
                 "",
                 f"<b>{idx}. {title}</b>",
-                f"- 상태: {status}",
-                f"- 단계: {category}",
-                f"- 출처: {publisher}",
-                f"- 발표일: {korean_date(str(row['published']))}",
-                f"- 투자 의미: {html.escape(meaning(str(row['category'])))}",
-                f'- 원문: <a href="{url}">원문 보기</a>',
+                "",
+                f"<b>핵심 분야</b>  {category}",
+                f"<b>확인 상태</b>  {status}",
+                f"<b>발표일</b>  {date_text}",
+                f"<b>출처</b>  {publisher}",
+                "",
+                f"<b>투자 의미</b>  {meaning_text}",
+                f'<a href="{url}"><b>공식 원문 보기</b></a>',
             ]
         )
     return "\n".join(lines).rstrip() + "\n"
