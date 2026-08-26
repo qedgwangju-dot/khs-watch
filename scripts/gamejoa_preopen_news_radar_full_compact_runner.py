@@ -536,6 +536,96 @@ KOREAN_BUSINESS_SEARCH_SOURCES = [
             "site:hankyung.com OR site:yna.co.kr)"
         ),
     ),
+    (
+        "엔비디아·삼성 파운드리 추론칩 양산",
+        (
+            "(엔비디아 OR NVIDIA) (삼성전자 OR 삼성 파운드리 OR Samsung Foundry) "
+            "(그록3 OR Groq3 OR LPX OR 추론칩 OR 추론 가속기 OR inference accelerator) "
+            "(양산 OR 위탁생산 OR 파운드리 OR 공급) "
+            "(site:dt.co.kr OR site:edaily.co.kr OR site:mt.co.kr OR site:mk.co.kr OR site:yna.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "AI 반도체·퇴직연금 ETF 신규 상장",
+        (
+            "(삼성전자 OR SK하이닉스 OR 삼성전기 OR AI 반도체) "
+            "(퇴직연금 OR 채권혼합 OR ETF 상장 OR ETF 출시) "
+            "(site:etoday.co.kr OR site:edaily.co.kr OR site:mt.co.kr OR site:mk.co.kr OR site:yna.co.kr)"
+        ),
+    ),
+    (
+        "중국 휴머노이드 로봇·대규모 투자",
+        (
+            "(샤오펑 OR XPeng OR 도고틱스 OR Dogo OR 휴머노이드 로봇) "
+            "(투자 OR 자금조달 OR 신주 OR 출자 OR 달러) "
+            "(site:mt.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR site:yna.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "SK하이닉스 HBM 열관리·하이브리드 본딩",
+        (
+            "(SK하이닉스 OR SK hynix) (HBM OR I-HBM) "
+            "(하이브리드 본딩 OR hybrid bonding OR 수직 적층 OR EMIB OR 열 관리) "
+            "(site:edaily.co.kr OR site:mk.co.kr OR site:yna.co.kr OR site:hankyung.com OR site:dt.co.kr)"
+        ),
+    ),
+    (
+        "AI·반도체 슈퍼예산·재정지원",
+        (
+            "(정부 OR 기획재정부 OR 재정) (AI OR 반도체) "
+            "(슈퍼예산 OR 슈퍼 예산 OR 예산안 OR 재정지원 OR R&D) "
+            "(site:yna.co.kr OR site:edaily.co.kr OR site:mt.co.kr OR site:mk.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "CXMT·SMIC 메모리 자립·공급",
+        (
+            "(CXMT OR 창신메모리 OR SMIC) (D램 OR DRAM OR HBM OR 메모리) "
+            "(2028 OR 자립 OR 자급 OR 수요 OR 점유율 OR 증설) "
+            "(site:edaily.co.kr OR site:mk.co.kr OR site:mt.co.kr OR site:hankyung.com OR site:dt.co.kr)"
+        ),
+    ),
+    (
+        "엔비디아 베라루빈·총마진·양산",
+        (
+            "(엔비디아 OR NVIDIA) (베라 루빈 OR Vera Rubin) "
+            "(양산 OR 램프업 OR 총마진 OR 마진 OR HBM 수요) "
+            "(site:reuters.com OR site:cnbc.com OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
+        "삼성 PIM·AI PC 상용화",
+        (
+            "(삼성전자 OR Samsung) (PIM OR LPDDR5X-PIM OR 가이아 OR Gaia) "
+            "(상용화 OR AI PC OR 온디바이스 OR 출시) "
+            "(site:zdnet.co.kr OR site:etnews.com OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
+        "엔비디아·앰코 첨단패키징 장기계약",
+        (
+            "(엔비디아 OR NVIDIA) (앰코 OR Amkor OR 첨단패키징 OR 첨단 패키징) "
+            "(장기계약 OR 장기 계약 OR 선급금 OR 공급계약 OR 계약) "
+            "(site:reuters.com OR site:bloomberg.com OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
+        "삼성·SK 레버리지 ETF 자금유출",
+        (
+            "(삼성전자 OR SK하이닉스 OR 삼전 OR 하닉) "
+            "(레버리지 ETF OR 2배 ETF OR 단일종목 레버리지) "
+            "(자금유출 OR 자금 유출 OR 순유출 OR 빠져나) "
+            "(site:theguru.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR site:mt.co.kr OR site:yna.co.kr)"
+        ),
+    ),
+    (
+        "AI MLCC 공급부족·리드타임",
+        (
+            "(MLCC OR 적층세라믹콘덴서) (AI OR 데이터센터 OR 서버) "
+            "(공급부족 OR 공급 부족 OR 리드타임 OR 가격 인상 OR 쇼티지) "
+            "(site:etnews.com OR site:zdnet.co.kr OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
+        ),
+    ),
 ]
 
 coverage.apply_source_extensions(
@@ -3966,6 +4056,127 @@ AUGUST13_ATTACHMENT_PROFILES = (
 
 
 
+AUGUST26_ATTACHMENT_PROFILES = (
+    (
+        "nvidia_samsung_foundry_inference_mass_production",
+        ("엔비디아", "nvidia"),
+        ("그록3", "groq3", "lpx", "추론가속기", "추론 가속기", "inference accelerator"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "파운드리", "AI/데이터센터"],
+        ["AI 추론칩 양산", "파운드리 매출", "고객 다변화"],
+        120,
+    ),
+    (
+        "korea_ai_semiconductor_etf_listing",
+        ("삼성전자", "sk하이닉스", "삼성전기", "ai 반도체"),
+        ("퇴직연금", "채권혼합", "채권 혼합", "etf 상장", "etf 출시"),
+        ["수급", "시간표"],
+        ["ETF/ETN", "금융/자본시장", "반도체/HBM/CXL"],
+        ["ETF 신규 상장", "연금계좌 수급"],
+        107,
+    ),
+    (
+        "china_humanoid_robot_funding",
+        ("샤오펑", "xpeng", "도고틱스", "dogo"),
+        ("휴머노이드", "로봇", "robot", "로보틱스"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["로봇/생산자동화", "중국 공급망", "AI/데이터센터"],
+        ["로봇 자금조달", "중국 피지컬 AI CAPEX"],
+        112,
+    ),
+    (
+        "skhynix_advanced_memory_thermal_packaging",
+        ("sk하이닉스", "sk hynix"),
+        ("하이브리드 본딩", "hybrid bonding", "i-hbm", "수직 적층", "수직적층", "emib", "열 관리"),
+        ["돈 버는 능력", "시간표"],
+        ["반도체/HBM/CXL", "반도체 장비·소재", "AI/데이터센터"],
+        ["HBM 열관리", "차세대 패키징", "고객 인증"],
+        116,
+    ),
+    (
+        "korea_ai_semiconductor_budget",
+        ("정부", "기획재정부", "재정"),
+        ("슈퍼예산", "슈퍼 예산", "ai·반도체", "ai 반도체", "반도체·ai"),
+        ["돈 버는 능력", "할인율", "시간표"],
+        ["산업정책/첨단전략산업", "반도체/HBM/CXL", "AI/데이터센터"],
+        ["재정지원", "R&D·인프라 투자", "예산 편성 시간표"],
+        116,
+    ),
+    (
+        "china_memory_self_sufficiency_forecast",
+        ("cxmt", "창신메모리", "smic"),
+        ("2028", "d램", "dram", "hbm", "자급", "자립", "수요"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["DRAM/NAND", "중국 메모리 공급", "반도체/HBM/CXL"],
+        ["중국 메모리 증설", "공급경쟁", "가격 사이클"],
+        115,
+    ),
+    (
+        "nvidia_rubin_margin_ramp",
+        ("엔비디아", "nvidia"),
+        ("베라 루빈", "vera rubin", "마진 75", "75%"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "AI/데이터센터"],
+        ["AI 가속기 램프", "총마진", "HBM 수요"],
+        116,
+    ),
+    (
+        "ai_memory_revenue_growth_outlook",
+        ("삼성전자", "sk하이닉스"),
+        ("메모리 매출", "hbm", "d램", "dram", "낸드"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "DRAM/NAND", "AI/데이터센터"],
+        ["메모리 ASP·물량", "AI 데이터센터 수요"],
+        115,
+    ),
+    (
+        "korea_single_stock_leverage_etf_volatility",
+        ("삼성전자", "sk하이닉스", "삼전", "닉스"),
+        ("2배 etf", "2배etf", "단일종목 레버리지", "레버리지 etf", "레버리지etf"),
+        ["수급"],
+        ["ETF/ETN", "금융/자본시장", "반도체/HBM/CXL"],
+        ["레버리지 거래", "개인 수급", "변동성"],
+        108,
+    ),
+    (
+        "samsung_pim_ai_pc_commercialization",
+        ("삼성전자", "삼성", "samsung"),
+        ("pim", "lpddr5x-pim", "가이아", "gaia", "온디바이스"),
+        ["돈 버는 능력", "시간표"],
+        ["반도체/HBM/CXL", "모바일/AI PC", "반도체 장비·소재"],
+        ["PIM 상용화", "AI PC 제품", "메모리 믹스"],
+        113,
+    ),
+    (
+        "nvidia_amkor_advanced_packaging_contract",
+        ("엔비디아", "nvidia"),
+        ("앰코", "amkor", "15억달러", "15억 달러", "선급금", "장기계약", "장기 계약"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "반도체 장비·소재", "AI/데이터센터"],
+        ["첨단패키징 장기계약", "선급금", "AI 공급망"],
+        120,
+    ),
+    (
+        "samsung_skhynix_leveraged_etf_outflow",
+        ("삼성전자", "sk하이닉스", "삼전", "닉스"),
+        ("레버리지 etf", "레버리지etf", "2배 etf", "2배etf"),
+        ["수급"],
+        ["ETF/ETN", "금융/자본시장", "반도체/HBM/CXL"],
+        ["레버리지 ETF 자금유출", "단기 매매 수급"],
+        112,
+    ),
+    (
+        "ai_mlcc_supply_bottleneck",
+        ("mlcc",),
+        ("ai", "인공지능", "데이터센터", "반도체"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["전자부품/MLCC", "AI/데이터센터", "반도체/HBM/CXL"],
+        ["AI 부품 수요", "MLCC 공급병목"],
+        110,
+    ),
+)
+
+
 AUGUST23_ATTACHMENT_PROFILES = (
     (
         "iran_economic_war_trade_risk",
@@ -4165,7 +4376,7 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
     """Route recurring company and market events from verified article bodies."""
     title = str(row.get("source_title") or row.get("title") or "")
     body = str(row.get("source_body") or row.get("source_abstract") or "")
-    profiles = (*AUGUST23_ATTACHMENT_PROFILES, *AUGUST13_ATTACHMENT_PROFILES, *AUGUST22_ATTACHMENT_PROFILES,
+    profiles = (*AUGUST26_ATTACHMENT_PROFILES, *AUGUST23_ATTACHMENT_PROFILES, *AUGUST13_ATTACHMENT_PROFILES, *AUGUST22_ATTACHMENT_PROFILES,
         ("korea_zinc_critical_minerals", ("고려아연",), ("핵심광물", "핵심 광물", "제련소", "통합제련소"), ["돈 버는 능력", "할인율", "시간표"], ["핵심광물", "비철금속/제련", "미국 공급망"], ["미국 정책 연결", "제련 CAPEX", "핵심광물 공급"], 111),
         ("korea_anthropic_strategic_investment", ("앤트로픽", "anthropic"), ("네이버", "naver", "삼성전자", "sk텔레콤", "skt"), ["돈 버는 능력", "수급", "시간표"], ["AI/데이터센터", "반도체/HBM/CXL", "플랫폼/클라우드"], ["AI 전략투자", "모델 협업", "데이터센터 수요"], 109),
         ("apple_cxmt_memory_supply_test", ("애플", "apple"), ("cxmt", "창신메모리", "중국 메모리", "중국 d램"), ["돈 버는 능력", "수급", "시간표"], ["반도체/HBM/CXL", "DRAM/NAND", "중국 메모리 공급"], ["고객 인증", "메모리 공급", "경쟁구도"], 112),
@@ -4224,6 +4435,61 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             term in text for term in ("공조", "냉각", "hvac", "칠러", "chiller")
         ):
             continue
+        if kind == "nvidia_samsung_foundry_inference_mass_production" and not any(
+            term in text for term in ("양산", "생산", "위탁 생산", "위탁생산", "파운드리", "foundry")
+        ):
+            continue
+        if kind == "korea_ai_semiconductor_etf_listing" and not any(
+            term in text for term in ("상장", "출시", "신규")
+        ):
+            continue
+        if kind == "china_humanoid_robot_funding" and not (
+            any(term in text for term in ("투자", "자금조달", "자금 조달", "신주", "출자", "조달"))
+            and re.search(r"\d[\d,.]*\s*(?:억|만)?\s*(?:달러|원)", text)
+        ):
+            continue
+        if kind == "skhynix_advanced_memory_thermal_packaging" and not any(
+            term in text for term in ("하이브리드 본딩", "hybrid bonding", "i-hbm", "수직 적층", "수직적층", "emib")
+        ):
+            continue
+        if kind == "korea_ai_semiconductor_budget" and not (
+            "예산" in text and re.search(r"\d[\d,.]*\s*(?:조|억)원", text)
+        ):
+            continue
+        if kind == "china_memory_self_sufficiency_forecast" and not any(
+            term in text for term in ("점유율", "수요", "전망", "추정", "자급", "자립", "공급")
+        ):
+            continue
+        if kind == "nvidia_rubin_margin_ramp" and not (
+            any(term in text for term in ("베라 루빈", "vera rubin"))
+            and any(term in text for term in ("마진", "양산", "램프", "ramp"))
+        ):
+            continue
+        if kind == "ai_memory_revenue_growth_outlook" and not (
+            any(term in text for term in ("전망", "예상", "추정", "급증", "증가"))
+            and re.search(r"\d[\d,.]*\s*(?:%|배)", text)
+        ):
+            continue
+        if kind == "korea_single_stock_leverage_etf_volatility" and not any(
+            term in text for term in ("변동성", "거래대금", "거래량", "급감", "규제", "수급")
+        ):
+            continue
+        if kind == "samsung_pim_ai_pc_commercialization" and not any(
+            term in text for term in ("상용화", "탑재", "출시", "양산")
+        ):
+            continue
+        if kind == "nvidia_amkor_advanced_packaging_contract" and not any(
+            term in text for term in ("계약", "선급금", "공급", "협력")
+        ):
+            continue
+        if kind == "samsung_skhynix_leveraged_etf_outflow" and not any(
+            term in text for term in ("자금유출", "자금 유출", "순유출", "빠져나", "이탈")
+        ):
+            continue
+        if kind == "ai_mlcc_supply_bottleneck" and not any(
+            term in text for term in ("공급부족", "공급 부족", "리드타임", "가격 인상", "쇼티지")
+        ):
+            continue
         core = detailed_article_core(title, body)
         if kind == "korea_etf_asset_flow":
             valuation_drop = (
@@ -4253,6 +4519,30 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
         elif kind == "skhynix_indiana_advanced_packaging_timeline":
             date = "27일" if "27일" in text else "예정된 일정에 따라"
             core = f"SK하이닉스가 {date} 미국 인디애나 첨단 패키징 공장 착공식을 열며 2028년 하반기 양산을 목표로 합니다."
+        elif kind == "nvidia_samsung_foundry_inference_mass_production":
+            core = "엔비디아가 삼성전자 파운드리에 그록3 LPX 추론가속기 양산을 맡겼다고 보도됐습니다."
+        elif kind == "korea_ai_semiconductor_etf_listing":
+            core = "삼성전자·SK하이닉스·삼성전기를 담은 퇴직연금 AI반도체 ETF가 상장됩니다."
+        elif kind == "china_humanoid_robot_funding":
+            core = "샤오펑 로봇 자회사 도고틱스가 대규모 자금조달을 추진한다고 보도됐습니다."
+        elif kind == "skhynix_advanced_memory_thermal_packaging":
+            core = "SK하이닉스가 HBM 열 문제 대응으로 하이브리드 본딩·I-HBM과 인텔 EMIB 활용을 제시했습니다."
+        elif kind == "korea_ai_semiconductor_budget":
+            core = "정부가 AI·반도체 경쟁력 강화를 위해 800조원대 슈퍼예산 편성을 추진한다고 보도됐습니다."
+        elif kind == "china_memory_self_sufficiency_forecast":
+            core = "골드만삭스는 CXMT가 2028년 중국 D램·HBM 수요의 상당 부분을 충족할 수 있다고 전망했습니다."
+        elif kind == "nvidia_rubin_margin_ramp":
+            core = "엔비디아 베라루빈의 양산 속도와 75% 마진 유지가 AI 반도체 투자심리의 핵심 변수로 제시됐습니다."
+        elif kind == "ai_memory_revenue_growth_outlook":
+            core = "AI 데이터센터 투자 확대로 삼성전자·SK하이닉스 메모리 매출이 280% 급증할 수 있다는 전망이 나왔습니다."
+        elif kind == "korea_single_stock_leverage_etf_volatility":
+            core = "삼성전자·SK하이닉스 단일종목 2배 ETF가 한국 증시 변동성을 키웠다는 분석이 나왔습니다."
+        elif kind == "samsung_pim_ai_pc_commercialization":
+            core = "삼성전자가 AI PC용 가이아에 LPDDR5X-PIM을 탑재해 PIM 상용화를 추진한다고 밝혔습니다."
+        elif kind == "nvidia_amkor_advanced_packaging_contract":
+            core = "엔비디아가 앰코와 첨단패키징 장기계약을 맺고 선급금을 제공했다는 보도가 나왔습니다."
+        elif kind == "samsung_skhynix_leveraged_etf_outflow":
+            core = "삼성전자·SK하이닉스 연계 레버리지 ETF에서 10억달러(약 1조4000억원) 순유출이 발생했다고 보도됐습니다."
         alert = base_korean_business_alert(row, now, score=score, impacts=impacts)
         alert.update({"importance": "상" if score >= 110 else "중", "status": "확정" if row.get("body_verified") else "예비", "policy_plain_summary": core, "telegram_core_fact": core, "sectors": sectors, "paths": paths, "korean_business_kind": kind, "supply_chain_theme": f"{kind}:{korean_business_event_date(row)}"})
         return alert
