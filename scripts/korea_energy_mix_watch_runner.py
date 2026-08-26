@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from scripts import korea_energy_mix_watch as watch
+import korea_energy_mix_watch as watch
 
 
 def headline_match(title: str) -> bool:
