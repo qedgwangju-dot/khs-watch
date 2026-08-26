@@ -38,6 +38,17 @@ SEARCH_NAMES = {
     "엔비디아 실적·잭슨홀 일정",
     "미 재정적자·장기국채 금리",
     "고배당·커버드콜 ETF 순매수",
+    "엔비디아·삼성 파운드리 추론칩 양산",
+    "AI 반도체·퇴직연금 ETF 신규 상장",
+    "중국 휴머노이드 로봇·대규모 투자",
+    "SK하이닉스 HBM 열관리·하이브리드 본딩",
+    "AI·반도체 슈퍼예산·재정지원",
+    "CXMT·SMIC 메모리 자립·공급",
+    "엔비디아 베라루빈·총마진·양산",
+    "삼성 PIM·AI PC 상용화",
+    "엔비디아·앰코 첨단패키징 장기계약",
+    "삼성·SK 레버리지 ETF 자금유출",
+    "AI MLCC 공급부족·리드타임",
 }
 
 CASES = (
@@ -252,6 +263,115 @@ ATTACHMENT_20260823_ALERT_CASES = (
 )
 
 
+
+# The 2026-08-25/26 attachment had 38 source articles. Duplicate coverage is
+# retained in this ledger; delivery is deduplicated by the canonical event key.
+ATTACHMENT_20260826_GROUPS = {
+    "nvidia_samsung_foundry_inference_mass_production": {"source_items": 4, "route": "send"},
+    "samsung_skhynix_bond_mixed_etf_performance": {"source_items": 1, "route": "conditional"},
+    "samsung_skhynix_ir_price_recap": {"source_items": 1, "route": "conditional"},
+    "trump_spacex_personal_investment": {"source_items": 1, "route": "conditional"},
+    "bok_rate_survey": {"source_items": 1, "route": "conditional"},
+    "nvidia_earnings_jackson_hole_calendar": {"source_items": 3, "route": "send"},
+    "korea_ai_semiconductor_etf_listing": {"source_items": 1, "route": "send"},
+    "china_humanoid_robot_funding": {"source_items": 1, "route": "send"},
+    "index_etf_product_launch": {"source_items": 1, "route": "conditional"},
+    "skhynix_advanced_memory_thermal_packaging": {"source_items": 3, "route": "send"},
+    "korea_ai_semiconductor_budget": {"source_items": 1, "route": "policy"},
+    "china_semiconductor_general_commentary": {"source_items": 1, "route": "exclude"},
+    "nvidia_rubin_margin_ramp": {"source_items": 1, "route": "send"},
+    "china_memory_self_sufficiency_forecast": {"source_items": 2, "route": "send"},
+    "wealthy_investor_portfolio_commentary": {"source_items": 1, "route": "exclude"},
+    "ai_memory_revenue_growth_outlook": {"source_items": 1, "route": "send"},
+    "korea_single_stock_leverage_etf_volatility": {"source_items": 1, "route": "send"},
+    "china_listed_company_tax_recovery": {"source_items": 1, "route": "conditional"},
+    "global_hbm_etf_performance": {"source_items": 2, "route": "exclude"},
+    "us_market_nvidia_yield_recap": {"source_items": 1, "route": "conditional"},
+    "samsung_pim_ai_pc_commercialization": {"source_items": 2, "route": "send"},
+    "nvidia_amkor_advanced_packaging_contract": {"source_items": 1, "route": "send"},
+    "lgchem_semiconductor_material_showcase": {"source_items": 1, "route": "conditional"},
+    "samsung_skhynix_leveraged_etf_outflow": {"source_items": 1, "route": "send"},
+    "samsung_hbm4_expo_photo": {"source_items": 1, "route": "exclude"},
+    "ai_mlcc_supply_bottleneck": {"source_items": 1, "route": "conditional"},
+    "group_etf_rotation": {"source_items": 1, "route": "exclude"},
+}
+
+ATTACHMENT_20260826_ALERT_CASES = (
+    (
+        "엔비디아, 삼성 파운드리에 그록3 LPX 추론가속기 양산 위탁",
+        "엔비디아가 삼성전자 파운드리에 그록3 LPX 추론가속기 양산을 맡겼다고 보도됐습니다.",
+        "nvidia_samsung_foundry_inference_mass_production",
+        "그록3",
+    ),
+    (
+        "삼성전자·SK하이닉스·삼성전기 담은 퇴직연금 AI반도체 ETF 상장",
+        "삼성전자와 SK하이닉스, 삼성전기를 담은 퇴직연금 AI반도체 ETF가 상장됩니다.",
+        "korea_ai_semiconductor_etf_listing",
+        "퇴직연금",
+    ),
+    (
+        "샤오펑 로봇 자회사 도고틱스, 신주 발행으로 9억달러 자금조달",
+        "도고틱스가 휴머노이드 로봇 개발을 위해 신주 발행으로 9억달러 자금을 조달합니다.",
+        "china_humanoid_robot_funding",
+        "도고틱스",
+    ),
+    (
+        "SK하이닉스, HBM 열관리 위해 하이브리드 본딩·I-HBM·EMIB 활용",
+        "SK하이닉스가 HBM 열 문제 대응으로 하이브리드 본딩과 I-HBM, 인텔 EMIB 활용을 제시했습니다.",
+        "skhynix_advanced_memory_thermal_packaging",
+        "하이브리드 본딩",
+    ),
+    (
+        "정부, AI·반도체 경쟁력 위해 800조원대 슈퍼예산 편성 추진",
+        "정부가 AI와 반도체 경쟁력 강화를 위해 800조원대 슈퍼예산 편성을 추진한다고 보도됐습니다.",
+        "korea_ai_semiconductor_budget",
+        "800조원대",
+    ),
+    (
+        "골드만삭스, CXMT 2028년 중국 D램·HBM 수요 상당 부분 충족 전망",
+        "골드만삭스는 CXMT가 2028년 중국 D램과 HBM 수요의 상당 부분을 충족할 수 있다고 전망했습니다.",
+        "china_memory_self_sufficiency_forecast",
+        "CXMT",
+    ),
+    (
+        "엔비디아 베라루빈 양산 속도·75% 마진 유지 주목",
+        "엔비디아 베라루빈의 양산 속도와 75% 마진 유지, HBM 수요가 투자심리의 핵심 변수입니다.",
+        "nvidia_rubin_margin_ramp",
+        "베라루빈",
+    ),
+    (
+        "AI 데이터센터 투자로 삼성전자·SK하이닉스 메모리 매출 280% 급증 전망",
+        "AI 데이터센터 투자 확대로 삼성전자와 SK하이닉스의 HBM·D램 메모리 매출이 280% 급증할 수 있다는 전망이 나왔습니다.",
+        "ai_memory_revenue_growth_outlook",
+        "280%",
+    ),
+    (
+        "삼성전자·SK하이닉스 단일종목 2배 ETF가 증시 변동성 확대",
+        "삼성전자와 SK하이닉스 단일종목 2배 ETF의 거래량과 변동성이 확대됐다는 분석이 나왔습니다.",
+        "korea_single_stock_leverage_etf_volatility",
+        "2배 ETF",
+    ),
+    (
+        "삼성전자, 가이아 AI PC에 LPDDR5X-PIM 탑재해 PIM 상용화",
+        "삼성전자가 가이아 AI PC에 LPDDR5X-PIM을 탑재해 PIM 상용화를 추진한다고 밝혔습니다.",
+        "samsung_pim_ai_pc_commercialization",
+        "LPDDR5X-PIM",
+    ),
+    (
+        "엔비디아, 앰코와 15억달러 첨단패키징 장기계약·선급금 제공",
+        "엔비디아가 앰코와 15억달러 첨단패키징 장기계약을 맺고 선급금을 제공했다는 보도가 나왔습니다.",
+        "nvidia_amkor_advanced_packaging_contract",
+        "앰코",
+    ),
+    (
+        "삼성전자·SK하이닉스 연계 레버리지 ETF에서 10억달러 순유출",
+        "삼성전자와 SK하이닉스 연계 레버리지 ETF에서 10억달러가 빠져나갔다고 보도됐습니다.",
+        "samsung_skhynix_leveraged_etf_outflow",
+        "10억달러",
+    ),
+)
+
+
 def source_row(title: str, body: str) -> dict:
     return {
         "source_title": title,
@@ -369,6 +489,70 @@ def main() -> int:
                 f"attachment23_alert_incomplete_core={expected_kind}:{core!r}"
             )
 
+    attachment26_route_counts = {}
+    for group, item in ATTACHMENT_20260826_GROUPS.items():
+        route = item["route"]
+        attachment26_route_counts[route] = (
+            attachment26_route_counts.get(route, 0) + int(item["source_items"])
+        )
+        if route not in {"send", "policy", "conditional", "exclude"}:
+            failures.append(f"invalid_attachment26_route={group}:{route}")
+    attachment26_source_item_count = sum(
+        int(item["source_items"]) for item in ATTACHMENT_20260826_GROUPS.values()
+    )
+    if attachment26_source_item_count != 38:
+        failures.append(
+            f"attachment26_source_count={attachment26_source_item_count}:expected=38"
+        )
+    if attachment26_route_counts.get("send", 0) < 20:
+        failures.append(
+            f"attachment26_send_coverage={attachment26_route_counts.get('send', 0)}"
+        )
+
+    attachment26_now = datetime(2026, 8, 26, 12, tzinfo=timezone.utc)
+    for title, body, expected_kind, required_fact in ATTACHMENT_20260826_ALERT_CASES:
+        row = source_row(title, body)
+        alert = radar.build_attachment_verified_event_alert(
+            row, attachment26_now, f"{title} {body}".lower()
+        )
+        if not alert:
+            failures.append(f"attachment26_alert_missing={expected_kind}:{title}")
+            continue
+        if alert.get("korean_business_kind") != expected_kind:
+            failures.append(
+                f"attachment26_alert_kind={alert.get('korean_business_kind')}:"
+                f"expected={expected_kind}:{title}"
+            )
+        core = str(alert.get("telegram_core_fact") or "")
+        if required_fact.lower() not in core.lower():
+            failures.append(
+                f"attachment26_alert_core_mismatch={expected_kind}:{core!r}"
+            )
+        if not radar.core_sentence_is_complete(core, limit=160):
+            failures.append(
+                f"attachment26_alert_incomplete_core={expected_kind}:{core!r}"
+            )
+    duplicate_rows = (
+        source_row(
+            "엔비디아, 삼성 파운드리에 그록3 LPX 추론가속기 양산 위탁",
+            "엔비디아가 삼성전자 파운드리에 그록3 LPX 추론가속기 양산을 맡겼다고 보도됐습니다.",
+        ),
+        source_row(
+            "삼성 파운드리, 엔비디아 그록3 LPX 추론칩 생산",
+            "삼성전자 파운드리가 엔비디아 그록3 LPX 추론가속기 생산을 맡았다고 보도됐습니다.",
+        ),
+    )
+    duplicate_themes = {
+        str(
+            (radar.build_attachment_verified_event_alert(
+                row, attachment26_now, f"{row['source_title']} {row['source_body']}".lower()
+            ) or {}).get("supply_chain_theme") or ""
+        )
+        for row in duplicate_rows
+    }
+    if len(duplicate_themes) != 1 or "" in duplicate_themes:
+        failures.append(f"attachment26_duplicate_theme={sorted(duplicate_themes)}")
+
     ymtc_row = source_row(
         "YMTC, 낸드 생산 확대 위한 IPO 추진",
         "YMTC가 낸드와 SSD 생산 확대 자금을 조달하기 위해 IPO를 추진합니다.",
@@ -414,7 +598,10 @@ def main() -> int:
         f"source_items={source_item_count} "
         f"attachment23_cases={len(ATTACHMENT_20260823_ALERT_CASES)} "
         f"attachment23_groups={len(ATTACHMENT_20260823_GROUPS)} "
-        f"attachment23_source_items={attachment23_source_item_count}"
+        f"attachment23_source_items={attachment23_source_item_count} "
+        f"attachment26_cases={len(ATTACHMENT_20260826_ALERT_CASES)} "
+        f"attachment26_groups={len(ATTACHMENT_20260826_GROUPS)} "
+        f"attachment26_source_items={attachment26_source_item_count}"
     )
     return 0
 
