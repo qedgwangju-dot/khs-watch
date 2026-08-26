@@ -5,6 +5,7 @@ import hashlib
 import html
 import json
 import os
+import re
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -50,6 +51,21 @@ TRUSTED_MEDIA = (
     "전자신문", "머니투데이", "뉴시스", "헤럴드경제", "파이낸셜뉴스", "뉴스1",
 )
 
+MEDIA_PRIORITY = {
+    "연합뉴스": 95,
+    "뉴스1": 90,
+    "뉴시스": 90,
+    "한국경제": 85,
+    "매일경제": 85,
+    "서울경제": 84,
+    "이데일리": 84,
+    "전자신문": 84,
+    "머니투데이": 83,
+    "조선일보": 82,
+    "헤럴드경제": 80,
+    "파이낸셜뉴스": 80,
+}
+
 PLAN_TERMS = (
     "제12차 전력수급기본계획", "12차 전기본", "전력수급기본계획", "전기본",
 )
@@ -88,6 +104,13 @@ def korean_date(value: str) -> str:
     return f"{local.year}년 {local.month}월 {local.day}일"
 
 
+def event_day(value: str) -> str:
+    parsed = parse_date(value)
+    if parsed is None:
+        return "date-unknown"
+    return parsed.astimezone(KST).strftime("%Y-%m-%d")
+
+
 def topic_match(title: str) -> bool:
     """전기본이라는 핵심 식별어가 있으면 세부 전원 키워드가 없어도 알림 대상."""
     lower = norm(title).lower()
@@ -113,7 +136,7 @@ def classify(title: str) -> tuple[str, int]:
         return "전기본 확정·의결", 7
     if any(x in lower for x in ("원전", "원자력")):
         return "원전·전원믹스", 6
-    if any(x in lower for x in ("재생에너지", "태양광", "해상풍력", "육상풍력", "풍력", "220gw", "236gw")):
+    if any(x in lower for x in ("재생에너지", "재생e", "태양광", "해상풍력", "육상풍력", "풍력", "220gw", "236gw")):
         return "재생에너지·전원믹스", 6
     if "전력수요" in lower:
         return "전력수요 전망", 5
@@ -162,22 +185,118 @@ def parse_rss(xml_text: str, source_name: str, official: bool) -> list[dict[str,
     return list({str(row["id"]): row for row in rows}.values())
 
 
+def event_key(row: dict[str, Any]) -> str:
+    """기사 URL/GUID가 달라도 같은 정책 이벤트면 같은 키를 만든다."""
+    title = norm(str(row.get("title", ""))).lower()
+    day = event_day(str(row.get("published", "")))
+
+    # 2026-08-26 제12차 전기본 제6차 토론회의 재생에너지 2040 보급 전망.
+    if "재생" in title and any(
+        term in title
+        for term in ("2040", "15년 뒤", "5.6배", "6배", "220gw", "236gw", "155gw", "61gw")
+    ):
+        return f"{day}|12th-plan|renewable-2040-capacity"
+
+    if any(term in title for term in ("최종 확정", "최종안", "정부안", "의결")):
+        return f"{day}|12th-plan|final"
+    if any(term in title for term in ("원전", "원자력")):
+        return f"{day}|12th-plan|nuclear"
+    if "전력수요" in title:
+        return f"{day}|12th-plan|demand"
+    if "재생" in title or any(term in title for term in ("태양광", "해상풍력", "육상풍력", "풍력")):
+        return f"{day}|12th-plan|renewable"
+    if "공청회" in title:
+        return f"{day}|12th-plan|hearing"
+    if any(term in title for term in ("총괄위원회", "분과회의")):
+        return f"{day}|12th-plan|committee"
+    if any(term in title for term in ("정책토론회", "토론회")):
+        return f"{day}|12th-plan|forum"
+
+    cleaned = re.sub(r"\s+-\s+[^-]{1,40}$", "", title)
+    cleaned = re.sub(r"[^0-9a-z가-힣]+", " ", cleaned)
+    cleaned = " ".join(cleaned.split())
+    return f"{day}|12th-plan|{digest(cleaned)[:16]}"
+
+
+def event_level(row: dict[str, Any]) -> int:
+    """같은 이벤트는 공식자료 또는 최종 확정으로 승격될 때만 다시 알린다."""
+    final = str(row.get("plan_stage", "")) == "확정·의결"
+    official = bool(row.get("official"))
+    if final and official:
+        return 4
+    if final:
+        return 3
+    if official:
+        return 2
+    return 1
+
+
+def source_score(row: dict[str, Any]) -> int:
+    if row.get("official"):
+        return 1000
+    publisher = str(row.get("publisher", ""))
+    for name, score in MEDIA_PRIORITY.items():
+        if name in publisher:
+            return score
+    return 0
+
+
+def detail_score(row: dict[str, Any]) -> int:
+    title = str(row.get("title", ""))
+    numeric = len(re.findall(r"\d+(?:\.\d+)?(?:\s*gw|\s*%|배|년)?", title.lower()))
+    keywords = sum(1 for term in ENERGY_TERMS if term in title.lower())
+    return numeric * 5 + keywords * 3 + min(len(title), 120) // 20
+
+
+def collapse_events(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """동일 정책 이벤트의 여러 언론사 기사와 Google News 재색인 링크를 한 건으로 합친다."""
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for row in rows:
+        key = event_key(row)
+        grouped.setdefault(key, []).append(row)
+
+    collapsed: list[dict[str, Any]] = []
+    for key, members in grouped.items():
+        best = max(
+            members,
+            key=lambda row: (
+                event_level(row),
+                source_score(row),
+                detail_score(row),
+                str(row.get("published", "")),
+            ),
+        ).copy()
+        best["event_key"] = key
+        best["members"] = members
+        collapsed.append(best)
+
+    collapsed.sort(key=lambda x: (int(x["stage"]), str(x["published"])), reverse=True)
+    return collapsed
+
+
 def load_state() -> dict[str, Any]:
     if not STATE_PATH.exists():
-        return {"seen": []}
+        return {"seen": [], "seen_events": {}}
     try:
         data = json.loads(STATE_PATH.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
-        return {"seen": []}
+        return {"seen": [], "seen_events": {}}
     data.setdefault("seen", [])
+    data.setdefault("seen_events", {})
+    if not isinstance(data["seen_events"], dict):
+        data["seen_events"] = {}
     return data
 
 
-def save_state(rows: list[dict[str, Any]]) -> None:
+def save_state(seen_ids: set[str], seen_events: dict[str, int]) -> None:
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    seen = [str(row["id"]) for row in rows][-5000:]
+    payload = {
+        "seen": sorted(seen_ids)[-5000:],
+        "seen_events": dict(list(sorted(seen_events.items()))[-5000:]),
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+    }
     STATE_PATH.write_text(
-        json.dumps({"seen": seen, "updated_at": datetime.now(timezone.utc).isoformat()}, ensure_ascii=False, indent=2) + "\n",
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
 
@@ -207,7 +326,7 @@ def meaning(category: str) -> str:
 def renewable_220_detail(title: str) -> list[str]:
     """2026-08-26 제12차 전기본 재생에너지 잠정안의 검증된 핵심 수치."""
     lower = norm(title).lower()
-    if not any(term in lower for term in ("220gw", "155gw", "61gw")):
+    if not any(term in lower for term in ("220gw", "155gw", "61gw", "5.6배", "6배", "15년 뒤")):
         return []
     return [
         "<b>2040년 보급량 순위</b>",
@@ -216,6 +335,7 @@ def renewable_220_detail(title: str) -> list[str]:
         "3위  육상풍력  <b>16GW</b>",
         "풍력 합계  <b>61GW</b>  = 해상 45 + 육상 16",
         "사업용 재생에너지 합계  <b>220GW</b>",
+        "자가용 태양광 포함 전체  <b>약 236GW</b>",
         "",
         "<b>보급 경로</b>",
         "2025년 <b>33.4GW</b> → 2030년 <b>100GW</b> → 2035년 <b>163GW</b> → 2040년 <b>220GW</b>",
@@ -283,16 +403,16 @@ def collect() -> tuple[list[dict[str, Any]], list[str]]:
             rows.extend(parse_rss(response.text, str(src["name"]), bool(src["official"])))
         except Exception as exc:  # noqa: BLE001
             errors.append(f"{src['name']}: {exc}")
+
     unique = {str(row["id"]): row for row in rows}
     now = datetime.now(timezone.utc)
-    recent = []
+    recent: list[dict[str, Any]] = []
     for row in unique.values():
         published = parse_date(str(row["published"]))
         if published is not None and now - published.astimezone(timezone.utc) > timedelta(hours=MAX_AGE_HOURS):
             continue
         recent.append(row)
-    recent.sort(key=lambda x: (int(x["stage"]), str(x["published"])), reverse=True)
-    return recent, errors
+    return collapse_events(recent), errors
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -301,14 +421,37 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     state = load_state()
-    seen = set(str(x) for x in state.get("seen", []))
+    seen_ids = set(str(x) for x in state.get("seen", []))
+    seen_events = {str(k): int(v) for k, v in dict(state.get("seen_events", {})).items()}
     rows, errors = collect()
-    new_rows = [row for row in rows if str(row["id"]) not in seen]
 
-    all_seen_rows = [{"id": item} for item in sorted(seen | {str(row["id"]) for row in rows})]
-    save_state(all_seen_rows)
+    notify: list[dict[str, Any]] = []
+    for row in rows:
+        key = str(row["event_key"])
+        members = list(row.get("members", []))
+        legacy_level = max(
+            (event_level(member) for member in members if str(member.get("id")) in seen_ids),
+            default=0,
+        )
+        previous_level = max(int(seen_events.get(key, 0)), legacy_level)
+        current_level = event_level(row)
 
-    notify = rows[:3] if args.force_notify else new_rows[:5]
+        # 같은 이벤트는 새 언론사 기사/GUID만 추가된 경우 재전송하지 않는다.
+        # 공식자료 등장 또는 최종 확정 단계로 승격될 때만 다시 알린다.
+        if current_level > previous_level:
+            notify.append(row)
+
+        seen_events[key] = max(previous_level, current_level)
+        for member in members:
+            member_id = str(member.get("id", ""))
+            if member_id:
+                seen_ids.add(member_id)
+
+    if args.force_notify:
+        notify = rows[:3]
+
+    save_state(seen_ids, seen_events)
+
     if not notify:
         print("한국 전기본·전원믹스 신규 변화 없음")
         if errors:
@@ -318,10 +461,10 @@ def main(argv: list[str] | None = None) -> int:
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     path = OUT_DIR / "korea_energy_mix_alert.html"
-    path.write_text(render(notify), encoding="utf-8")
+    path.write_text(render(notify[:5]), encoding="utf-8")
     set_output("changed", "true")
     set_output("report_path", str(path))
-    print(f"alert_rows={len(notify)} errors={len(errors)}")
+    print(f"alert_rows={len(notify[:5])} errors={len(errors)}")
     return 0
 
 
