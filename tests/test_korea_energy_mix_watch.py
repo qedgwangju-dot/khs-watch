@@ -33,7 +33,7 @@ def test_rss_trusted_media_filter_and_korean_date():
     assert korean_date(rows[0]["published"]) == "2026년 8월 26일"
 
 
-def test_render_has_no_markdown_hash_and_clean_link():
+def test_render_is_readable_without_losing_core_fields():
     body = render([
         {
             "title": "제12차 전기본 재생에너지 220GW 전망",
@@ -49,4 +49,7 @@ def test_render_has_no_markdown_hash_and_clean_link():
     ])
     assert "#" not in body
     assert "2026년 8월 26일" in body
-    assert '<a href="https://example.com/story">원문 보기</a>' in body
+    assert "<b>핵심 분야</b>" in body
+    assert "<b>확인 상태</b>" in body
+    assert "<b>투자 의미</b>" in body
+    assert '<a href="https://example.com/story"><b>공식 원문 보기</b></a>' in body
