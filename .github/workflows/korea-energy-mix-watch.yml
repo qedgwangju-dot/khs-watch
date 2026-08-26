@@ -15,6 +15,7 @@ on:
     paths:
       - ".github/workflows/korea-energy-mix-watch.yml"
       - "scripts/korea_energy_mix_watch.py"
+      - "scripts/korea_energy_mix_watch_runner.py"
       - "tests/test_korea_energy_mix_watch.py"
 
 concurrency:
@@ -45,7 +46,7 @@ jobs:
 
       - name: 검사
         run: |
-          python -m compileall -q scripts/korea_energy_mix_watch.py
+          python -m compileall -q scripts/korea_energy_mix_watch.py scripts/korea_energy_mix_watch_runner.py
           pytest -q tests/test_korea_energy_mix_watch.py
 
       - name: 전기본·전원믹스 확인
@@ -59,7 +60,7 @@ jobs:
           if [[ "$FORCE_INPUT" == "true" || "$FORCE_PUSH" == "true" ]]; then
             EXTRA="--force-notify"
           fi
-          python scripts/korea_energy_mix_watch.py $EXTRA
+          python scripts/korea_energy_mix_watch_runner.py $EXTRA
 
       - name: 지정 KHS Telegram 봇으로 전송
         if: steps.energy.outputs.changed == 'true'
