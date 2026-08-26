@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-08-26T11:03:01+09:00",
+  "updated_at_kst": "2026-08-26T12:29:18+09:00",
   "seen_ids": [
     "0a11d6e55d20a20d438eea0b",
     "44974ccaa7ba66fe19dffd08",
@@ -8,19 +8,14 @@
     "86e3b5a2a1b5f5a0a64b608e",
     "fd0ab513604f145f508ff4dd"
   ],
-  "last_unseen_raw_count": 1,
-  "last_new_event_count": 1,
-  "last_send_event_count": 1,
+  "last_unseen_raw_count": 0,
+  "last_new_event_count": 0,
+  "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1383.45,
+    "rate": 1383.47,
     "date": "2026-08-26",
     "error": ""
   },
-  "errors": [],
-  "last_successful_delivery_kst": "2026-08-26T11:03:07+09:00",
-  "telegram_message_ids": [
-    9
-  ],
-  "bot_username": "khs88798879887988798879_bot"
+  "errors": []
 }
