@@ -588,7 +588,7 @@ KOREAN_BUSINESS_SEARCH_SOURCES = [
     (
         "엔비디아 베라루빈·총마진·양산",
         (
-            "(엔비디아 OR NVIDIA) (베라 루빈 OR Vera Rubin) "
+            "(엔비디아 OR NVIDIA) (베라 루빈 OR 베라루빈 OR Vera Rubin) "
             "(양산 OR 램프업 OR 총마진 OR 마진 OR HBM 수요) "
             "(site:reuters.com OR site:cnbc.com OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
         ),
@@ -4114,7 +4114,7 @@ AUGUST26_ATTACHMENT_PROFILES = (
     (
         "nvidia_rubin_margin_ramp",
         ("엔비디아", "nvidia"),
-        ("베라 루빈", "vera rubin", "마진 75", "75%"),
+        ("베라 루빈", "베라루빈", "vera rubin", "마진 75", "75%"),
         ["돈 버는 능력", "수급", "시간표"],
         ["반도체/HBM/CXL", "AI/데이터센터"],
         ["AI 가속기 램프", "총마진", "HBM 수요"],
@@ -4461,7 +4461,7 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
         ):
             continue
         if kind == "nvidia_rubin_margin_ramp" and not (
-            any(term in text for term in ("베라 루빈", "vera rubin"))
+            any(term in text for term in ("베라 루빈", "베라루빈", "vera rubin"))
             and any(term in text for term in ("마진", "양산", "램프", "ramp"))
         ):
             continue
