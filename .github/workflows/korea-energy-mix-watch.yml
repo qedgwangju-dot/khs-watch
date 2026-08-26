@@ -62,17 +62,20 @@ jobs:
           fi
           python scripts/korea_energy_mix_watch_runner.py $EXTRA
 
-      - name: 지정 KHS Telegram 봇으로 전송
+      - name: 지정 에너지믹스 Telegram 봇으로 전송
+        id: telegram
         if: steps.energy.outputs.changed == 'true'
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.ENERGY_MIX_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.ENERGY_MIX_TELEGRAM_CHAT_ID }}
+          FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
           EXPECTED_TELEGRAM_BOT_USERNAME: khs887988798879887988798879_bot
           REPORT_PATH: ${{ steps.energy.outputs.report_path }}
         run: |
-          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "KHS policy Telegram secret가 없습니다." >&2
-            exit 1
+          if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
+            echo "delivered=false" >> "$GITHUB_OUTPUT"
+            echo "ENERGY_MIX_TELEGRAM_BOT_TOKEN 미설정: 잘못된 봇으로 대체 전송하지 않습니다." >&2
+            exit 0
           fi
           python - <<'PY'
           import os
@@ -80,15 +83,20 @@ jobs:
           import requests
 
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
-          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          chat_id = (
+              os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+              or os.environ.get("FALLBACK_TELEGRAM_CHAT_ID", "").strip()
+          )
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
           report_path = pathlib.Path(os.environ["REPORT_PATH"])
+          if not chat_id:
+              raise RuntimeError("Telegram chat id가 없습니다.")
 
           me = requests.get(f"https://api.telegram.org/bot{token}/getMe", timeout=25)
           me.raise_for_status()
           payload = me.json()
           actual = str(payload.get("result", {}).get("username", ""))
-          if not payload.get("ok") or actual != expected:
+          if not payload.get("ok") or actual.lower() != expected.lower():
               raise RuntimeError(
                   f"잘못된 Telegram 경로 차단: expected=@{expected}, actual=@{actual or '확인불가'}"
               )
@@ -126,11 +134,15 @@ jobs:
               if not result.get("ok"):
                   raise RuntimeError(f"Telegram 전송 실패: {result}")
               ids.append(result.get("result", {}).get("message_id"))
+          output_path = os.environ.get("GITHUB_OUTPUT")
+          if output_path:
+              with open(output_path, "a", encoding="utf-8") as handle:
+                  handle.write("delivered=true\n")
           print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={ids}")
           PY
 
       - name: 기준선 저장
-        if: success()
+        if: steps.energy.outputs.changed != 'true' || steps.telegram.outputs.delivered == 'true'
         run: |
           git config user.name "korea-energy-mix-watch[bot]"
           git config user.email "korea-energy-mix-watch[bot]@users.noreply.github.com"
