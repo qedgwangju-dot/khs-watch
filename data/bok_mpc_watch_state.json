@@ -1,13 +1,21 @@
 {
-  "updated_at_kst": "2026-08-27T12:51:48+09:00",
-  "statement_hash": "ae5d3df6f75f40f37257a5c0e1b983fa37da66df0363ba9c3085396bf638aae7",
+  "updated_at_kst": "2026-08-27T12:53:12+09:00",
+  "statement_hash": "7d02f4c2ca254dc7e5507003896d13f348ae85b52ae2c1448965eada2ca3ee39",
   "statement": {
     "title": "통화정책방향(2026.8.27)",
     "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=11064191&menuNo=200690",
-    "hash": "ae5d3df6f75f40f37257a5c0e1b983fa37da66df0363ba9c3085396bf638aae7",
-    "parser_version": 3,
+    "hash": "7d02f4c2ca254dc7e5507003896d13f348ae85b52ae2c1448965eada2ca3ee39",
+    "parser_version": 4,
+    "rate_from": 2.75,
+    "rate_to": 3.0,
+    "growth_this": 3.3,
+    "growth_next": 2.9,
+    "cpi_this": 2.7,
+    "cpi_next": 2.3,
+    "core_this": 2.5,
+    "core_next": 2.5,
     "vote_for": 6,
-    "minority_hold": false,
+    "minority_hold": true,
     "flags": {
       "preemptive": true,
       "hike_bias": false,
@@ -18,16 +26,16 @@
       "domestic_recovery": true
     }
   },
-  "dotplot_hash": "9a06d2bb1d0a32528f5fcc6bc68c169d843a997aac3ea1db2b48f54546fda13e",
+  "dotplot_hash": "8715069b2cce873761db745666024bc7e552e5b1deef2bae2b0562b974dd9d3b",
   "dotplot": {
-    "title": "금통위원 6개월 금리전망 최고 연 3.50%…1∼2회 추가 인상 우세 - 연합뉴스",
-    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBBWmtWR2NLYWU5Q3ZLN1pTRXB6T3BxcHQ0RFhrNTd6VVNNeVFUUi1QNkdua0xJWl9sWV9CZG90U1JGQ1Rua3FoN1BLTk03dXhyOUlENmNsMWl6Vmx4N05vMtIBYEFVX3lxTFBBWmtWR2NLYWU5Q3ZLN1pTRXB6T3BxcHQ0RFhrNTd6VVNNeVFUUi1QNkdua0xJWl9sWV9CZG90U1JGQ1Rua3FoN1BLTk03dXhyOUlENmNsMWl6Vmx4N05vMg?oc=5",
+    "title": "금통위원 6개월 금리전망 최고 연 3.50%…1∼2회 추가 인상 우세",
+    "link": "https://www.yna.co.kr/view/AKR20260827069200002",
     "counts": {
-      "3.50": 6,
-      "3.25": 6,
-      "3.00": 6
+      "3.00": 5,
+      "3.25": 10,
+      "3.50": 6
     },
-    "total": 18,
-    "hash": "9a06d2bb1d0a32528f5fcc6bc68c169d843a997aac3ea1db2b48f54546fda13e"
+    "total": 21,
+    "hash": "8715069b2cce873761db745666024bc7e552e5b1deef2bae2b0562b974dd9d3b"
   }
 }
