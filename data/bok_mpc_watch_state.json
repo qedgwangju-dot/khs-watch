@@ -1,20 +1,13 @@
 {
-  "updated_at_kst": "2026-08-27T12:48:57+09:00",
-  "statement_hash": "01cc9d569fe3bafe92ddb9b2b395d71a92c9e320d3487911e789538ceb427073",
+  "updated_at_kst": "2026-08-27T12:51:48+09:00",
+  "statement_hash": "ae5d3df6f75f40f37257a5c0e1b983fa37da66df0363ba9c3085396bf638aae7",
   "statement": {
     "title": "통화정책방향(2026.8.27)",
     "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=11064191&menuNo=200690",
-    "hash": "01cc9d569fe3bafe92ddb9b2b395d71a92c9e320d3487911e789538ceb427073",
-    "parser_version": 2,
-    "rate_from": 2.75,
-    "rate_to": 3.0,
-    "growth_this": 2.6,
-    "growth_next": 2.0,
-    "cpi_this": 2.3,
-    "cpi_next": 2.5,
-    "core_this": 2.5,
-    "core_next": 2.5,
-    "minority_hold": true,
+    "hash": "ae5d3df6f75f40f37257a5c0e1b983fa37da66df0363ba9c3085396bf638aae7",
+    "parser_version": 3,
+    "vote_for": 6,
+    "minority_hold": false,
     "flags": {
       "preemptive": true,
       "hike_bias": false,
@@ -25,15 +18,16 @@
       "domestic_recovery": true
     }
   },
-  "dotplot_hash": "cb94d9f5afe03bf9b68a504043b3218b7cb8e5fec85cf47479ede04310d3928f",
+  "dotplot_hash": "9a06d2bb1d0a32528f5fcc6bc68c169d843a997aac3ea1db2b48f54546fda13e",
   "dotplot": {
-    "title": "금통위 점도표, 6개월 뒤 금리 3.25%에 10개 최다…3.50%도 6개 - 뉴스1",
-    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1rRFR4TEVZSGlCM3hCbVAzRDFBYXF2UmN2RklBMkFmUmZCc0J0MExvNlFJVGFWMXJiZld2TmE4WVR1ZHdFWFRpdE1FUk5wZDV2aWJvYdIBWkFVX3lxTE9kUnNPX3Ytdmh4SkxFYjZqdHNaUVVGcjdxRmpFeEdFaU9CM3cyNEtxUG1BbGxiM0tSNjlZWFd3ZHg1YXZEQ3pPT3N4VUhVT1hJVm05OGREaWJ6Zw?oc=5",
+    "title": "금통위원 6개월 금리전망 최고 연 3.50%…1∼2회 추가 인상 우세 - 연합뉴스",
+    "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBBWmtWR2NLYWU5Q3ZLN1pTRXB6T3BxcHQ0RFhrNTd6VVNNeVFUUi1QNkdua0xJWl9sWV9CZG90U1JGQ1Rua3FoN1BLTk03dXhyOUlENmNsMWl6Vmx4N05vMtIBYEFVX3lxTFBBWmtWR2NLYWU5Q3ZLN1pTRXB6T3BxcHQ0RFhrNTd6VVNNeVFUUi1QNkdua0xJWl9sWV9CZG90U1JGQ1Rua3FoN1BLTk03dXhyOUlENmNsMWl6Vmx4N05vMg?oc=5",
     "counts": {
-      "3.25": 10,
-      "3.50": 6
+      "3.50": 6,
+      "3.25": 6,
+      "3.00": 6
     },
-    "total": 16,
-    "hash": "cb94d9f5afe03bf9b68a504043b3218b7cb8e5fec85cf47479ede04310d3928f"
+    "total": 18,
+    "hash": "9a06d2bb1d0a32528f5fcc6bc68c169d843a997aac3ea1db2b48f54546fda13e"
   }
 }
