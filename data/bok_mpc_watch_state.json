@@ -1,0 +1,34 @@
+{
+  "updated_at_kst": "2026-08-27T12:42:18+09:00",
+  "statement_hash": "e47e9559c21a9d961b55d6b1d0b10a54f5f8060b3f0b7123b76af0b2d3b0dc2a",
+  "statement": {
+    "title": "통화정책방향(2026.8.27)",
+    "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=11064191&menuNo=200690",
+    "hash": "e47e9559c21a9d961b55d6b1d0b10a54f5f8060b3f0b7123b76af0b2d3b0dc2a",
+    "cpi_this": 2.7,
+    "cpi_next": 2.3,
+    "core_this": 2.4,
+    "core_next": 2.4,
+    "minority_hold": false,
+    "flags": {
+      "preemptive": true,
+      "hike_bias": false,
+      "timing_speed": true,
+      "housing": true,
+      "household_debt": true,
+      "fx_volatility": false,
+      "domestic_recovery": true
+    }
+  },
+  "dotplot_hash": "cb94d9f5afe03bf9b68a504043b3218b7cb8e5fec85cf47479ede04310d3928f",
+  "dotplot": {
+    "title": "금통위 점도표, 6개월 뒤 금리 3.25%에 10개 최다…3.50%도 6개 - 뉴스1",
+    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1rRFR4TEVZSGlCM3hCbVAzRDFBYXF2UmN2RklBMkFmUmZCc0J0MExvNlFJVGFWMXJiZld2TmE4WVR1ZHdFWFRpdE1FUk5wZDV2aWJvYdIBWkFVX3lxTE9kUnNPX3Ytdmh4SkxFYjZqdHNaUVVGcjdxRmpFeEdFaU9CM3cyNEtxUG1BbGxiM0tSNjlZWFd3ZHg1YXZEQ3pPT3N4VUhVT1hJVm05OGREaWJ6Zw?oc=5",
+    "counts": {
+      "3.25": 10,
+      "3.50": 6
+    },
+    "total": 16,
+    "hash": "cb94d9f5afe03bf9b68a504043b3218b7cb8e5fec85cf47479ede04310d3928f"
+  }
+}
