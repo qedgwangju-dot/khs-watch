@@ -10,6 +10,7 @@ from typing import Any
 import bok_mpc_watch_resilient as resilient
 
 base = resilient.base
+original_build_alert = base.build_alert
 
 
 def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
@@ -88,7 +89,7 @@ def latest_dotplot_correct(now: dt.datetime) -> dict[str, Any] | None:
 
 
 def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correction: bool) -> str:
-    text = base.build_alert(p, dot, correction)
+    text = original_build_alert(p, dot, correction)
     return text.replace("🏦 <b>한국은행 금통위 핵심 알림</b>", "🔄 <b>한국은행 금통위 정정·최신 알림</b>", 1)
 
 
