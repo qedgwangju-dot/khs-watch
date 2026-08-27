@@ -56,6 +56,9 @@ SEARCH_NAMES = {
     "엔비디아 메모리·생산능력 구매약정",
     "CATL 리튬광산 재가동·환경평가",
     "엔비디아 NVHBM·아마존 협력",
+    "엔비디아 루빈·베라 HBM4·LPDDR5X 메모리 공급",
+    "이란 전쟁·중국·OPEC+ 원유시장 영향",
+    "트럼프 관세·미국 데이터센터 CAPEX",
     "SK하이닉스 미국 HBM 첨단패키징 투자",
     "키옥시아 이와테 낸드 공장 CAPEX",
     "트럼프 H-1B 비자 수수료 정책",
@@ -521,14 +524,58 @@ ATTACHMENT_20260827_ALERT_CASES = (
 )
 
 
-def source_row(title: str, body: str) -> dict:
+ATTACHMENT_20260827_EVENING_GROUPS = {
+    "nvidia_hbm4_rubin_vera_memory_shortage": {"source_items": 2, "route": "send"},
+    "nvidia_nvhbm_amazon_collaboration": {"source_items": 3, "route": "send"},
+    "iran_opec_china_oil_market_shift": {"source_items": 1, "route": "conditional"},
+    "us_datacenter_tariff_cost_pressure": {"source_items": 1, "route": "conditional"},
+}
+
+ATTACHMENT_20260827_EVENING_ALERT_CASES = (
+    (
+        "엔비디아 메모리 부족에 HBM4·LPDDR5X 수요 확대",
+        "엔비디아 루빈 GPU와 베라 CPU의 HBM4·LPDDR5X 수요가 메모리 부족 우려로 부각됐고 삼성전자와 SK하이닉스가 핵심 공급사입니다.",
+        "nvidia_hbm4_rubin_vera_memory_shortage",
+        "HBM4·LPDDR5X",
+        "News1",
+    ),
+    (
+        "엔비디아, 맞춤형 HBM 기술 NVHBM 공개",
+        "엔비디아가 NVHBM을 공개하고 아마존 안나푸르나랩과 공동 개발을 추진합니다.",
+        "nvidia_nvhbm_amazon_collaboration",
+        "NVHBM",
+        "매일경제",
+    ),
+    (
+        "이란 전쟁으로 중국 영향력 커져 OPEC+ 지배력 약화",
+        "이란 전쟁 장기화로 중국의 원유 조달 영향력이 커지고 OPEC+의 석유 시장 가격 조절력이 약화됐다고 Reuters가 보도했습니다.",
+        "iran_opec_china_oil_market_shift",
+        "OPEC+",
+        "Reuters",
+    ),
+    (
+        "트럼프 관세, 미국 데이터센터 비용 압박",
+        "트럼프 관세가 수입 장비와 건설비를 높여 미국 데이터센터 CAPEX를 압박할 수 있다고 Reuters가 보도했습니다.",
+        "us_datacenter_tariff_cost_pressure",
+        "데이터센터",
+        "Reuters",
+    ),
+)
+
+
+def source_row(
+    title: str,
+    body: str,
+    *,
+    publisher: str = "contract fixture",
+) -> dict:
     return {
         "source_title": title,
         "title": title,
         "source_body": body,
         "source_abstract": body,
-        "source": "contract fixture",
-        "publisher": "contract fixture",
+        "source": publisher,
+        "publisher": publisher,
         "link": "https://example.com/article",
         "published": datetime(2026, 8, 22, tzinfo=timezone.utc),
         "body_verified": True,
@@ -758,6 +805,96 @@ def main() -> int:
             and "미국 7월 PCE 예상 상회" not in rendered
         ):
             failures.append(f"attachment27_pce_headline_missing={rendered!r}")
+        if (
+            expected_kind == "us_pce_ndf_rate_shift"
+            and alert.get("news")
+            != "미국 7월 PCE 예상 상회…원·달러 NDF·연준 금리 경로 재평가"
+        ):
+            failures.append(f"attachment27_pce_send_title={alert.get('news')!r}")
+
+    attachment27_evening_route_counts = {}
+    for group, item in ATTACHMENT_20260827_EVENING_GROUPS.items():
+        route = item["route"]
+        attachment27_evening_route_counts[route] = (
+            attachment27_evening_route_counts.get(route, 0)
+            + int(item["source_items"])
+        )
+        if route not in {"send", "policy", "conditional", "exclude"}:
+            failures.append(f"invalid_attachment27_evening_route={group}:{route}")
+    attachment27_evening_source_item_count = sum(
+        int(item["source_items"])
+        for item in ATTACHMENT_20260827_EVENING_GROUPS.values()
+    )
+    if attachment27_evening_source_item_count != 7:
+        failures.append(
+            "attachment27_evening_source_count="
+            f"{attachment27_evening_source_item_count}:expected=7"
+        )
+    expected_attachment27_evening_routes = {"send": 5, "conditional": 2}
+    if attachment27_evening_route_counts != expected_attachment27_evening_routes:
+        failures.append(
+            "attachment27_evening_routes="
+            f"{attachment27_evening_route_counts}:expected={expected_attachment27_evening_routes}"
+        )
+
+    for title, body, expected_kind, required_fact, publisher in ATTACHMENT_20260827_EVENING_ALERT_CASES:
+        row = source_row(title, body, publisher=publisher)
+        alert = radar.build_attachment_verified_event_alert(
+            row, attachment27_now, f"{title} {body}".lower()
+        )
+        if not alert:
+            failures.append(f"attachment27_evening_alert_missing={expected_kind}:{title}")
+            continue
+        if alert.get("korean_business_kind") != expected_kind:
+            failures.append(
+                "attachment27_evening_alert_kind="
+                f"{alert.get('korean_business_kind')}:expected={expected_kind}:{title}"
+            )
+        core = str(alert.get("telegram_core_fact") or "")
+        if required_fact.lower() not in core.lower():
+            failures.append(
+                f"attachment27_evening_alert_core_mismatch={expected_kind}:{core!r}"
+            )
+        if not radar.core_sentence_is_complete(core, limit=160):
+            failures.append(
+                f"attachment27_evening_alert_incomplete_core={expected_kind}:{core!r}"
+            )
+        rendered = radar.compact_alert(alert, 1, attachment27_now, {}, {})
+        rendered_errors = radar.compact_alert_block_errors(rendered)
+        if rendered_errors:
+            failures.append(
+                "attachment27_evening_rendered_block="
+                f"{expected_kind}:{rendered_errors}:{rendered!r}"
+            )
+
+    nvhbm_duplicates = (
+        source_row(
+            "엔비디아, 맞춤형 HBM 기술 NVHBM 공개",
+            "엔비디아가 NVHBM을 공개하고 아마존 안나푸르나랩과 공동 개발을 추진합니다.",
+        ),
+        source_row(
+            "엔비디아, NVHBM 기반 맞춤형 HBM 협력 발표",
+            "엔비디아는 아마존과 NVHBM 공동 개발 협력을 공식화했습니다.",
+        ),
+        source_row(
+            "엔비디아, 메모리 대역폭 높인 NVHBM 공개",
+            "엔비디아가 주요 메모리 공급사와 설계·검증한 맞춤형 HBM NVHBM을 공개했습니다.",
+        ),
+    )
+    nvhbm_duplicate_themes = {
+        str(
+            (radar.build_attachment_verified_event_alert(
+                row,
+                attachment27_now,
+                f"{row['source_title']} {row['source_body']}".lower(),
+            ) or {}).get("supply_chain_theme") or ""
+        )
+        for row in nvhbm_duplicates
+    }
+    if len(nvhbm_duplicate_themes) != 1 or "" in nvhbm_duplicate_themes:
+        failures.append(
+            f"attachment27_evening_duplicate_theme={sorted(nvhbm_duplicate_themes)}"
+        )
 
     attachment27_duplicates = (
         source_row(
