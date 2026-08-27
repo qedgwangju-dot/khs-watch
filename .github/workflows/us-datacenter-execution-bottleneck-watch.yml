@@ -65,17 +65,16 @@ jobs:
           fi
           python scripts/us_datacenter_execution_bottleneck_watch.py $EXTRA
 
-      - name: hs8879887988798879_bot으로 Telegram 전송
+      - name: khs8879887988798879_bot으로 Telegram 전송
         if: steps.dc.outputs.changed == 'true'
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
-          FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
-          EXPECTED_TELEGRAM_BOT_USERNAME: hs8879887988798879_bot
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+          EXPECTED_TELEGRAM_BOT_USERNAME: khs8879887988798879_bot
           REPORT_PATH: ${{ steps.dc.outputs.report_path }}
         run: |
           if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
-            echo "YEN_CARRY_TELEGRAM_BOT_TOKEN이 없습니다." >&2
+            echo "GLOBAL_RATES_TELEGRAM_BOT_TOKEN이 없습니다." >&2
             exit 1
           fi
 
@@ -84,7 +83,7 @@ jobs:
           from scripts.dc_telegram_report_formatter import sanitize_report
 
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
-          chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip() or os.environ.get("FALLBACK_TELEGRAM_CHAT_ID", "").strip()
+          chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
           if not chat_id:
               raise RuntimeError("Telegram chat id가 없습니다.")
