@@ -626,6 +626,90 @@ KOREAN_BUSINESS_SEARCH_SOURCES = [
             "(site:etnews.com OR site:zdnet.co.kr OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
         ),
     ),
+    (
+        "오픈AI·브로드컴 자체 AI칩·HBM",
+        (
+            "(오픈AI OR OpenAI OR 브로드컴 OR Broadcom) "
+            "(할라페뇨 OR Jalapeno OR 자체 AI칩 OR 자체 AI 칩 OR HBM4) "
+            "(가동 OR 상용화 OR 성능 OR 추론 OR inference) "
+            "(site:yna.co.kr OR site:news1.kr OR site:chosun.com OR site:edaily.co.kr OR "
+            "site:mk.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "SK하이닉스·인텔 EMIB·HBM 패키징",
+        (
+            "(SK하이닉스 OR SK hynix) (EMIB OR 2.5D OR HBM 패키징 OR HBM패키징) "
+            "(인텔 OR Intel OR 기판 OR 고객 인증 OR 다변화) "
+            "(site:theguru.co.kr OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "AI 반도체 절연필름·기판 공급병목",
+        (
+            "(절연필름 OR 절연 필름 OR 패키지기판 OR 패키지 기판) "
+            "(AI칩 OR AI 칩 OR HBM OR 반도체) "
+            "(병목 OR 공급부족 OR 공급 부족 OR 생산량 OR 증설) "
+            "(site:edaily.co.kr OR site:etnews.com OR site:yna.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
+        "아마존·엔비디아 GPU 대형도입",
+        (
+            "(아마존 OR Amazon OR AWS) (엔비디아 OR NVIDIA OR GPU) "
+            "(200만 OR 추가 도입 OR 확보 OR 구매 OR CAPEX) "
+            "(site:yna.co.kr OR site:news1.kr OR site:edaily.co.kr OR site:mk.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "엔비디아 메모리·생산능력 구매약정",
+        (
+            "(엔비디아 OR NVIDIA) (구매약정 OR 구매 약정 OR 생산능력 OR 메모리) "
+            "(달러 OR 약정 OR 증가 OR 확대) "
+            "(site:hankyung.com OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
+        "CATL 리튬광산 재가동·환경평가",
+        (
+            "(CATL OR 닝더스다이 OR 리튬광산 OR 리튬 광산) "
+            "(재가동 OR 환경영향평가 OR EIA OR 공시 철회 OR 생산중단) "
+            "(site:theguru.co.kr OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
+        "엔비디아 NVHBM·아마존 협력",
+        (
+            "(NVHBM OR 엔비디아 OR NVIDIA) (아마존 OR Amazon OR NVLink Fusion OR NV링크 퓨전) "
+            "(공개 OR 공동 개발 OR 협력 OR HBM) "
+            "(site:zdnet.co.kr OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
+        "SK하이닉스 미국 HBM 첨단패키징 투자",
+        (
+            "(SK하이닉스 OR SK hynix) (웨스트라피엣 OR 인디애나 OR Purdue OR 퍼듀) "
+            "(HBM OR 첨단 패키징 OR 첨단패키징) "
+            "(투자 OR 공정 OR 생산시설 OR 착공 OR 가동) "
+            "(site:dailian.co.kr OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR site:hankyung.com)"
+        ),
+    ),
+    (
+        "키옥시아 이와테 낸드 공장 CAPEX",
+        (
+            "(키옥시아 OR Kioxia) (이와테 OR Iwate OR 낸드 OR NAND) "
+            "(공장 OR 투자 OR 추진 OR 증설 OR CAPEX) "
+            "(site:joongang.co.kr OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
+        "트럼프 H-1B 비자 수수료 정책",
+        (
+            "(트럼프 OR Trump OR 미국 행정부) (H-1B OR H1B OR 전문직 비자) "
+            "(수수료 OR 비자비용 OR 이민정책 OR 제안 OR 규칙) "
+            "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:yna.co.kr OR site:chosun.com)"
+        ),
+    ),
 ]
 
 coverage.apply_source_extensions(
@@ -4056,6 +4140,172 @@ AUGUST13_ATTACHMENT_PROFILES = (
 
 
 
+AUGUST27_ATTACHMENT_PROFILES = (
+    (
+        "us_h1b_visa_fee_proposal",
+        ("h-1b", "h1b", "전문직 비자"),
+        ("트럼프", "trump", "미국 행정부", "수수료", "비자비용"),
+        ["돈 버는 능력", "할인율", "시간표"],
+        ["미국 IT/인력", "AI/데이터센터", "환율/수출입"],
+        ["전문인력 비용", "이민정책", "빅테크 인건비"],
+        111,
+    ),
+    (
+        "samsung_labor_separate_bargaining",
+        ("삼성전자", "삼성"),
+        ("분리교섭", "분리 교섭", "ds", "dx", "노조"),
+        ["돈 버는 능력", "시간표"],
+        ["반도체/HBM/CXL", "가전/디스플레이"],
+        ["노사 교섭", "인건비", "가동 리스크"],
+        108,
+    ),
+    (
+        "korea_single_stock_leverage_etf_volume_drop",
+        ("삼성전자", "sk하이닉스", "삼전", "닉스"),
+        ("단일종목 레버리지", "레버리지 etf", "레버리지etf", "거래대금", "거래량"),
+        ["수급"],
+        ["ETF/ETN", "금융/자본시장", "반도체/HBM/CXL"],
+        ["레버리지 거래", "개인 수급", "변동성"],
+        113,
+    ),
+    (
+        "openai_broadcom_jalapeno_inference_chip",
+        ("오픈ai", "openai"),
+        ("할라페뇨", "jalapeno", "자체 ai칩", "자체 ai 칩", "브로드컴"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["AI/데이터센터", "반도체/HBM/CXL", "반도체 장비·소재"],
+        ["AI 추론칩", "HBM 수요", "AI 서비스 원가"],
+        120,
+    ),
+    (
+        "china_ai_price_war_short_interest",
+        ("지푸", "미니맥스", "minimax", "중국 ai"),
+        ("가격전쟁", "가격 전쟁", "공매도", "short interest", "공매도 잔액"),
+        ["수급", "시간표"],
+        ["중국 공급망", "AI/데이터센터", "금융/자본시장"],
+        ["중국 AI 가격경쟁", "공매도 수급", "AI 수익성"],
+        107,
+    ),
+    (
+        "skhynix_emib_hbm_2p5d_packaging",
+        ("sk하이닉스", "sk hynix"),
+        ("emib", "2.5d", "hbm 패키징", "hbm패키징"),
+        ["돈 버는 능력", "시간표"],
+        ["반도체/HBM/CXL", "반도체 장비·소재", "AI/데이터센터"],
+        ["2.5D 패키징", "HBM 고객 인증", "패키징 공급망"],
+        119,
+    ),
+    (
+        "ai_semiconductor_insulation_film_bottleneck",
+        ("절연필름", "절연 필름", "패키지기판", "패키지 기판"),
+        ("ai칩", "ai 칩", "hbm", "반도체", "기판 생산량"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체 장비·소재", "반도체/HBM/CXL", "AI/데이터센터"],
+        ["기판 소재 병목", "AI 칩 공급", "패키징 생산능력"],
+        118,
+    ),
+    (
+        "samsung_electro_mlcc_lta",
+        ("삼성전기", "samsung electro"),
+        ("mlcc", "lta", "장기공급", "장기 공급"),
+        ["돈 버는 능력", "시간표"],
+        ["전자부품/MLCC", "AI/데이터센터", "반도체/HBM/CXL"],
+        ["고부가 MLCC", "고객 LTA", "AI 부품 수요"],
+        115,
+    ),
+    (
+        "amazon_nvidia_gpu_2m_capex",
+        ("아마존", "amazon", "aws"),
+        ("엔비디아", "nvidia", "gpu"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["AI/데이터센터", "반도체/HBM/CXL", "전력기기/전력망"],
+        ["GPU 도입", "AI 데이터센터 CAPEX", "HBM 수요"],
+        120,
+    ),
+    (
+        "us_pce_ndf_rate_shift",
+        ("pce", "개인소비지출"),
+        ("ndf", "원·달러", "원달러", "예상 상회", "금리"),
+        ["할인율", "수급"],
+        ["미국 증시/금리", "환율/수출입", "성장주/밸류에이션"],
+        ["미국 물가", "원·달러 환율", "연준 금리 경로"],
+        118,
+    ),
+    (
+        "nvidia_earnings_actual",
+        ("엔비디아", "nvidia"),
+        ("깜짝 실적", "실적 상회", "어닝 서프라이즈", "월가 예상"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "AI/데이터센터", "미국 증시/금리"],
+        ["AI 가속기 실적", "HBM 수요", "빅테크 CAPEX"],
+        120,
+    ),
+    (
+        "nvidia_memory_purchase_commitments",
+        ("엔비디아", "nvidia"),
+        ("구매약정", "구매 약정", "생산능력", "생산 능력"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "반도체 장비·소재", "AI/데이터센터"],
+        ["메모리 구매약정", "공급망 선점", "HBM 생산능력"],
+        120,
+    ),
+    (
+        "catl_lithium_mine_restart_halted",
+        ("catl", "닝더스다이"),
+        ("리튬광산", "리튬 광산", "환경영향평가", "eia", "재가동"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["2차전지/핵심광물", "원자재/매크로", "중국 공급망"],
+        ["리튬 공급", "환경 인허가", "배터리 원가"],
+        117,
+    ),
+    (
+        "nvidia_nvhbm_amazon_collaboration",
+        ("nvhbm",),
+        ("엔비디아", "nvidia", "아마존", "amazon", "nv링크", "nvlink"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "AI/데이터센터", "반도체 장비·소재"],
+        ["맞춤형 HBM", "AI 가속기", "아마존 협력"],
+        120,
+    ),
+    (
+        "skhynix_us_hbm_advanced_packaging_capex",
+        ("sk하이닉스", "sk hynix"),
+        ("웨스트라피엣", "인디애나", "퍼듀", "purdue", "첨단 패키징", "첨단패키징"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "미국·일본 제조 CAPEX", "반도체 장비·소재"],
+        ["미국 HBM 생산시설", "첨단 패키징 CAPEX", "현지 고객 지원"],
+        120,
+    ),
+    (
+        "korea_bok_rate_policy_event",
+        ("한국은행", "한은", "금통위"),
+        ("기준금리", "금리 인상", "금리 결정", "10월 금리"),
+        ["할인율", "수급", "시간표"],
+        ["미국 증시/금리", "환율/수출입", "금융/자본시장"],
+        ["기준금리", "물가·환율", "통화정책 시간표"],
+        119,
+    ),
+    (
+        "iran_china_sanctions_policy",
+        ("이란", "iran", "테헤란"),
+        ("중국", "china", "제재", "경제적 압박", "보복"),
+        ["돈 버는 능력", "할인율", "수급", "시간표"],
+        ["원유/인플레이션", "정유/화학/해운", "방산/지정학"],
+        ["대이란 제재", "중국 원유·무역", "유가·운임"],
+        119,
+    ),
+    (
+        "kioxia_iwate_nand_factory_capex",
+        ("키옥시아", "kioxia"),
+        ("이와테", "iwate", "낸드", "nand"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["DRAM/NAND", "반도체 장비·소재", "일본 제조 CAPEX"],
+        ["낸드 생산능력", "일본 공장 CAPEX", "공급 경쟁"],
+        116,
+    ),
+)
+
+
 AUGUST26_ATTACHMENT_PROFILES = (
     (
         "nvidia_samsung_foundry_inference_mass_production",
@@ -4385,7 +4635,7 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
     """Route recurring company and market events from verified article bodies."""
     title = str(row.get("source_title") or row.get("title") or "")
     body = str(row.get("source_body") or row.get("source_abstract") or "")
-    profiles = (*AUGUST26_ATTACHMENT_PROFILES, *AUGUST23_ATTACHMENT_PROFILES, *AUGUST13_ATTACHMENT_PROFILES, *AUGUST22_ATTACHMENT_PROFILES,
+    profiles = (*AUGUST27_ATTACHMENT_PROFILES, *AUGUST26_ATTACHMENT_PROFILES, *AUGUST23_ATTACHMENT_PROFILES, *AUGUST13_ATTACHMENT_PROFILES, *AUGUST22_ATTACHMENT_PROFILES,
         ("korea_zinc_critical_minerals", ("고려아연",), ("핵심광물", "핵심 광물", "제련소", "통합제련소"), ["돈 버는 능력", "할인율", "시간표"], ["핵심광물", "비철금속/제련", "미국 공급망"], ["미국 정책 연결", "제련 CAPEX", "핵심광물 공급"], 111),
         ("korea_anthropic_strategic_investment", ("앤트로픽", "anthropic"), ("네이버", "naver", "삼성전자", "sk텔레콤", "skt"), ["돈 버는 능력", "수급", "시간표"], ["AI/데이터센터", "반도체/HBM/CXL", "플랫폼/클라우드"], ["AI 전략투자", "모델 협업", "데이터센터 수요"], 109),
         ("apple_cxmt_memory_supply_test", ("애플", "apple"), ("cxmt", "창신메모리", "중국 메모리", "중국 d램"), ["돈 버는 능력", "수급", "시간표"], ["반도체/HBM/CXL", "DRAM/NAND", "중국 메모리 공급"], ["고객 인증", "메모리 공급", "경쟁구도"], 112),
@@ -4507,6 +4757,43 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             term in text for term in ("공급부족", "공급 부족", "리드타임", "가격 인상", "쇼티지")
         ):
             continue
+        if kind == "samsung_labor_separate_bargaining" and not (
+            any(term in text for term in ("분리교섭", "분리 교섭"))
+            or ("ds" in text and "dx" in text)
+        ):
+            continue
+        if kind == "korea_single_stock_leverage_etf_volume_drop" and not any(
+            term in text for term in ("급감", "감소", "줄어", "91%")
+        ):
+            continue
+        if kind == "skhynix_emib_hbm_2p5d_packaging" and not any(
+            term in text for term in ("2.5d", "다변화", "diversif")
+        ):
+            continue
+        if kind == "iran_china_sanctions_policy" and not any(
+            term in text for term in ("새로운 경제적 압박", "보복을 공언", "보복 공언", "new economic pressure")
+        ):
+            continue
+        if kind == "amazon_nvidia_gpu_2m_capex" and not any(
+            term in text for term in ("200만", "2 million", "two million")
+        ):
+            continue
+        if kind == "nvidia_memory_purchase_commitments" and not any(
+            term in text for term in ("2790억", "279 billion", "2790")
+        ):
+            continue
+        if kind == "nvidia_earnings_actual" and not any(
+            term in text for term in ("15분기", "15 quarter", "fifteen quarter")
+        ):
+            continue
+        if kind == "skhynix_us_hbm_advanced_packaging_capex" and not any(
+            term in text for term in ("웨스트라피엣", "west lafayette")
+        ):
+            continue
+        if kind == "kioxia_iwate_nand_factory_capex" and not any(
+            term in text for term in ("이와테", "iwate")
+        ):
+            continue
         core = detailed_article_core(title, body)
         if kind == "korea_etf_asset_flow":
             valuation_drop = (
@@ -4548,7 +4835,9 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             core = "SK하이닉스가 HBM 열 문제 대응으로 하이브리드 본딩·I-HBM과 인텔 EMIB 활용을 제시했습니다."
         elif kind == "korea_ai_semiconductor_budget":
             core = "정부가 AI·반도체 경쟁력 강화를 위해 800조원대 슈퍼예산 편성을 추진한다고 보도됐습니다."
-        elif kind == "china_memory_self_sufficiency_forecast":
+        elif kind == "china_memory_self_sufficiency_forecast" and any(
+            term in text for term in ("골드만", "goldman")
+        ):
             core = "골드만삭스는 CXMT가 2028년 중국 D램·HBM 수요의 상당 부분을 충족할 수 있다고 전망했습니다."
         elif kind == "nvidia_rubin_margin_ramp":
             core = "엔비디아 베라루빈의 양산 속도와 75% 마진 유지가 AI 반도체 투자심리의 핵심 변수로 제시됐습니다."
@@ -4562,6 +4851,42 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             core = "엔비디아가 앰코와 첨단패키징 장기계약을 맺고 선급금을 제공했다는 보도가 나왔습니다."
         elif kind == "samsung_skhynix_leveraged_etf_outflow":
             core = "삼성전자·SK하이닉스 연계 레버리지 ETF에서 10억달러(약 1조4000억원) 순유출이 발생했다고 보도됐습니다."
+        elif kind == "us_h1b_visa_fee_proposal":
+            core = "트럼프 행정부가 H-1B 전문직 비자 수수료 인상안을 제안했다고 보도됐습니다."
+        elif kind == "samsung_labor_separate_bargaining":
+            core = "삼성전자 DS·DX 사업장 노조의 분리교섭 구조가 현실화됐다고 보도됐습니다."
+        elif kind == "korea_single_stock_leverage_etf_volume_drop":
+            core = "삼성전자·SK하이닉스 단일종목 레버리지 ETF 거래대금이 한 달 새 91% 감소했습니다."
+        elif kind == "openai_broadcom_jalapeno_inference_chip":
+            core = "오픈AI가 브로드컴과 개발한 자체 AI칩 할라페뇨를 연내 추론 서비스에 투입한다고 보도됐습니다."
+        elif kind == "china_ai_price_war_short_interest":
+            core = "중국 AI 가격경쟁 속 지푸·미니맥스에 공매도 수요가 몰렸다고 보도됐습니다."
+        elif kind == "skhynix_emib_hbm_2p5d_packaging":
+            core = "SK하이닉스가 인텔 EMIB 기반 2.5D HBM 패키징 다변화를 모색한다고 보도됐습니다."
+        elif kind == "ai_semiconductor_insulation_film_bottleneck":
+            core = "AI칩용 패키지기판 절연필름 공급부족이 기판 생산의 새 병목으로 부각됐습니다."
+        elif kind == "samsung_electro_mlcc_lta":
+            core = "삼성전기가 빅테크·반도체 고객 10여곳과 고부가 MLCC 장기공급 협의를 진행 중입니다."
+        elif kind == "amazon_nvidia_gpu_2m_capex":
+            core = "아마존이 AI 수요 대응을 위해 엔비디아 GPU 200만개를 추가 도입한다고 보도됐습니다."
+        elif kind == "us_pce_ndf_rate_shift":
+            core = "미국 7월 PCE가 예상을 웃돌며 원·달러 NDF와 연준 금리 경로가 재평가됐습니다."
+        elif kind == "nvidia_earnings_actual":
+            core = "엔비디아가 15분기 연속 월가 예상을 웃도는 실적을 발표했다고 보도됐습니다."
+        elif kind == "nvidia_memory_purchase_commitments":
+            core = "엔비디아의 메모리·생산능력 구매약정이 2790억달러로 석 달 새 134% 증가했습니다."
+        elif kind == "catl_lithium_mine_restart_halted":
+            core = "CATL 리튬광산 재가동 절차가 환경영향평가 공시 철회로 중단됐다고 보도됐습니다."
+        elif kind == "nvidia_nvhbm_amazon_collaboration":
+            core = "엔비디아가 맞춤형 HBM 기술 NVHBM을 공개하고 아마존과 공동 개발을 추진합니다."
+        elif kind == "skhynix_us_hbm_advanced_packaging_capex":
+            core = "SK하이닉스가 미국 웨스트라피엣에 AI용 HBM 첨단패키징 생산시설을 구축합니다."
+        elif kind == "korea_bok_rate_policy_event" and any(
+            term in text for term in ("인상", "인하", "동결")
+        ):
+            core = "한국은행이 물가·환율·경기지표를 반영해 기준금리 경로를 재조정했습니다."
+        elif kind == "kioxia_iwate_nand_factory_capex":
+            core = "키옥시아가 일본 이와테에 낸드 생산능력 확대를 위한 공장 투자를 추진합니다."
         alert = base_korean_business_alert(row, now, score=score, impacts=impacts)
         alert.update({"importance": "상" if score >= 110 else "중", "status": "확정" if row.get("body_verified") else "예비", "policy_plain_summary": core, "telegram_core_fact": core, "sectors": sectors, "paths": paths, "korean_business_kind": kind, "supply_chain_theme": f"{kind}:{korean_business_event_date(row)}"})
         return alert

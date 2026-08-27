@@ -49,6 +49,16 @@ SEARCH_NAMES = {
     "엔비디아·앰코 첨단패키징 장기계약",
     "삼성·SK 레버리지 ETF 자금유출",
     "AI MLCC 공급부족·리드타임",
+    "오픈AI·브로드컴 자체 AI칩·HBM",
+    "SK하이닉스·인텔 EMIB·HBM 패키징",
+    "AI 반도체 절연필름·기판 공급병목",
+    "아마존·엔비디아 GPU 대형도입",
+    "엔비디아 메모리·생산능력 구매약정",
+    "CATL 리튬광산 재가동·환경평가",
+    "엔비디아 NVHBM·아마존 협력",
+    "SK하이닉스 미국 HBM 첨단패키징 투자",
+    "키옥시아 이와테 낸드 공장 CAPEX",
+    "트럼프 H-1B 비자 수수료 정책",
 }
 
 CASES = (
@@ -372,6 +382,145 @@ ATTACHMENT_20260826_ALERT_CASES = (
 )
 
 
+# The 2026-08-26/27 attachment had 49 source articles. Repeated collection
+# rows remain visible here; canonical event keys, not the collection count,
+# decide Telegram delivery.
+ATTACHMENT_20260827_GROUPS = {
+    "us_h1b_visa_fee_proposal": {"source_items": 3, "route": "policy"},
+    "samsung_labor_separate_bargaining": {"source_items": 3, "route": "conditional"},
+    "korea_single_stock_leverage_etf_volume_drop": {"source_items": 3, "route": "send"},
+    "openai_broadcom_jalapeno_inference_chip": {"source_items": 4, "route": "send"},
+    "china_ai_price_war_short_interest": {"source_items": 2, "route": "conditional"},
+    "skhynix_emib_hbm_2p5d_packaging": {"source_items": 2, "route": "send"},
+    "nvidia_earnings_hbm_calendar": {"source_items": 1, "route": "send"},
+    "china_dram_self_supply_outlook": {"source_items": 1, "route": "send"},
+    "samsung_group_dividend_expectation": {"source_items": 1, "route": "conditional"},
+    "retail_nvidia_portfolio_story": {"source_items": 1, "route": "exclude"},
+    "ymtc_nand_top_share_target": {"source_items": 1, "route": "conditional"},
+    "korea_japan_wealth_management_app": {"source_items": 1, "route": "conditional"},
+    "mirae_toss_japan_brokerage_mna": {"source_items": 1, "route": "conditional"},
+    "x_client_shutdown": {"source_items": 1, "route": "exclude"},
+    "ai_memory_revenue_structural_shift": {"source_items": 1, "route": "send"},
+    "ai_semiconductor_insulation_film_bottleneck": {"source_items": 1, "route": "send"},
+    "cxmt_ipo_valuation_supply_challenge": {"source_items": 1, "route": "send"},
+    "us_debt_limit_treasury_bond_risk": {"source_items": 1, "route": "policy"},
+    "bill_gates_xi_ai_commentary": {"source_items": 1, "route": "exclude"},
+    "canada_us_retaliatory_tariff": {"source_items": 1, "route": "policy"},
+    "samsung_electro_mlcc_lta": {"source_items": 1, "route": "send"},
+    "korea_bok_rate_decision": {"source_items": 3, "route": "policy"},
+    "amazon_nvidia_gpu_2m_capex": {"source_items": 1, "route": "send"},
+    "us_pce_ndf_rate_shift": {"source_items": 1, "route": "send"},
+    "nvidia_earnings_actual": {"source_items": 2, "route": "send"},
+    "nvidia_memory_purchase_commitments": {"source_items": 1, "route": "send"},
+    "trump_iran_sanction_oil_comment": {"source_items": 1, "route": "policy"},
+    "catl_lithium_mine_restart_halted": {"source_items": 1, "route": "send"},
+    "nvidia_nvhbm_amazon_collaboration": {"source_items": 1, "route": "send"},
+    "skhynix_us_hbm_advanced_packaging_capex": {"source_items": 2, "route": "send"},
+    "iran_china_sanctions_policy": {"source_items": 2, "route": "policy"},
+    "hanwha_sp500_etf_fee_cut": {"source_items": 1, "route": "conditional"},
+    "kioxia_iwate_nand_factory_capex": {"source_items": 1, "route": "send"},
+}
+
+ATTACHMENT_20260827_ALERT_CASES = (
+    (
+        "트럼프 행정부, H-1B 비자 수수료 인상안 제안",
+        "트럼프 행정부가 H-1B 전문직 비자에 수수료를 부과하는 방안을 제안했습니다.",
+        "us_h1b_visa_fee_proposal",
+        "H-1B",
+    ),
+    (
+        "삼성전자·SK하이닉스 단일종목 레버리지 ETF 거래대금 91% 급감",
+        "삼성전자와 SK하이닉스 단일종목 레버리지 ETF 거래대금이 한 달 만에 91% 급감했습니다.",
+        "korea_single_stock_leverage_etf_volume_drop",
+        "91% 감소",
+    ),
+    (
+        "오픈AI, 브로드컴과 자체 AI칩 할라페뇨 연내 가동",
+        "오픈AI가 브로드컴과 개발한 자체 AI칩 할라페뇨를 연내 추론 서비스 운영에 투입합니다.",
+        "openai_broadcom_jalapeno_inference_chip",
+        "할라페뇨",
+    ),
+    (
+        "SK하이닉스, 인텔 EMIB 기반 2.5D HBM 패키징 다변화",
+        "SK하이닉스가 인텔 EMIB가 적용된 기판으로 HBM과 시스템 반도체를 결합하는 2.5D 패키징을 모색합니다.",
+        "skhynix_emib_hbm_2p5d_packaging",
+        "EMIB",
+    ),
+    (
+        "AI칩 새 병목 절연필름…패키지기판 생산량 감소",
+        "AI칩 대형화로 패키지기판 절연필름 수요가 늘어 공급부족과 기판 생산 병목이 커지고 있습니다.",
+        "ai_semiconductor_insulation_film_bottleneck",
+        "절연필름",
+    ),
+    (
+        "삼성전기, 빅테크·반도체 고객 10여곳과 MLCC LTA 진행",
+        "삼성전기가 빅테크와 주요 반도체 고객 10여곳을 상대로 고부가 MLCC 장기공급 협의를 진행 중입니다.",
+        "samsung_electro_mlcc_lta",
+        "MLCC",
+    ),
+    (
+        "아마존, 엔비디아 GPU 200만개 추가 도입",
+        "AWS가 AI 수요 대응을 위해 엔비디아 GPU 200만개를 추가 확보하기로 했습니다.",
+        "amazon_nvidia_gpu_2m_capex",
+        "200만개",
+    ),
+    (
+        "미국 PCE 예상 상회에 원·달러 NDF 상승",
+        "미국 7월 PCE가 예상을 상회하며 원·달러 NDF와 연준 금리 인상 기대가 높아졌습니다.",
+        "us_pce_ndf_rate_shift",
+        "PCE",
+    ),
+    (
+        "엔비디아, 15분기 연속 월가 예상 상회",
+        "엔비디아가 15분기 연속 월가 예상을 웃도는 깜짝 실적을 발표했습니다.",
+        "nvidia_earnings_actual",
+        "15분기",
+    ),
+    (
+        "엔비디아, 메모리·생산능력 구매약정 2790억달러",
+        "엔비디아의 메모리와 생산능력 구매약정이 2790억달러로 석 달 새 134% 늘었습니다.",
+        "nvidia_memory_purchase_commitments",
+        "2790억달러",
+    ),
+    (
+        "CATL 리튬광산 재가동 절차, 환경영향평가 공시 철회로 중단",
+        "CATL 핵심 리튬광산 재가동 절차가 환경영향평가 EIA 공시 철회로 중단됐습니다.",
+        "catl_lithium_mine_restart_halted",
+        "CATL",
+    ),
+    (
+        "엔비디아, NVHBM 공개하고 아마존과 공동 개발",
+        "엔비디아가 맞춤형 HBM 기술 NVHBM을 공개하고 아마존과 공동 개발을 추진합니다.",
+        "nvidia_nvhbm_amazon_collaboration",
+        "NVHBM",
+    ),
+    (
+        "SK하이닉스, 웨스트라피엣 HBM 첨단패키징 생산시설 투자",
+        "SK하이닉스가 미국 웨스트라피엣에 AI용 HBM 첨단패키징 생산시설을 구축하기로 했습니다.",
+        "skhynix_us_hbm_advanced_packaging_capex",
+        "웨스트라피엣",
+    ),
+    (
+        "한국은행, 물가·환율 반영해 기준금리 인상",
+        "한국은행이 물가와 원·달러 환율을 고려해 기준금리를 인상했습니다.",
+        "korea_bok_rate_policy_event",
+        "한국은행",
+    ),
+    (
+        "이란 제재 강화에 중국 보복 경고",
+        "미국의 이란 제재 강화에 중국이 보복을 공언하며 원유와 해운 위험이 커졌습니다.",
+        "iran_china_sanctions_policy",
+        "이란",
+    ),
+    (
+        "키옥시아, 이와테 낸드 공장 투자 추진",
+        "키옥시아가 일본 이와테에 낸드 생산능력을 늘리기 위한 공장 투자를 추진합니다.",
+        "kioxia_iwate_nand_factory_capex",
+        "키옥시아",
+    ),
+)
+
+
 def source_row(title: str, body: str) -> dict:
     return {
         "source_title": title,
@@ -533,6 +682,138 @@ def main() -> int:
                 f"attachment26_alert_incomplete_core={expected_kind}:{core!r}"
             )
 
+    attachment27_route_counts = {}
+    for group, item in ATTACHMENT_20260827_GROUPS.items():
+        route = item["route"]
+        attachment27_route_counts[route] = (
+            attachment27_route_counts.get(route, 0) + int(item["source_items"])
+        )
+        if route not in {"send", "policy", "conditional", "exclude"}:
+            failures.append(f"invalid_attachment27_route={group}:{route}")
+    attachment27_source_item_count = sum(
+        int(item["source_items"]) for item in ATTACHMENT_20260827_GROUPS.values()
+    )
+    if attachment27_source_item_count != 49:
+        failures.append(
+            f"attachment27_source_count={attachment27_source_item_count}:expected=49"
+        )
+    expected_attachment27_routes = {
+        "send": 25,
+        "policy": 11,
+        "conditional": 10,
+        "exclude": 3,
+    }
+    if attachment27_route_counts != expected_attachment27_routes:
+        failures.append(
+            f"attachment27_routes={attachment27_route_counts}:expected={expected_attachment27_routes}"
+        )
+
+    attachment27_now = datetime(2026, 8, 27, 12, tzinfo=timezone.utc)
+    for title, body, expected_kind, required_fact in ATTACHMENT_20260827_ALERT_CASES:
+        row = source_row(title, body)
+        alert = radar.build_attachment_verified_event_alert(
+            row, attachment27_now, f"{title} {body}".lower()
+        )
+        if not alert:
+            failures.append(f"attachment27_alert_missing={expected_kind}:{title}")
+            continue
+        if alert.get("korean_business_kind") != expected_kind:
+            failures.append(
+                f"attachment27_alert_kind={alert.get('korean_business_kind')}:"
+                f"expected={expected_kind}:{title}"
+            )
+        core = str(alert.get("telegram_core_fact") or "")
+        if required_fact.lower() not in core.lower():
+            failures.append(
+                f"attachment27_alert_core_mismatch={expected_kind}:{core!r}"
+            )
+        if not radar.core_sentence_is_complete(core, limit=160):
+            failures.append(
+                f"attachment27_alert_incomplete_core={expected_kind}:{core!r}"
+            )
+        alert["fx_conversion"] = radar.build_alert_fx_conversion(
+            alert,
+            {
+                "rates": {
+                    "USD": {
+                        "value": 1400.0,
+                        "status": "확정",
+                        "reference_time_kst": "2026-08-27T12:00:00+09:00",
+                        "query_time_kst": "2026-08-27T12:00:00+09:00",
+                        "source": "contract fixture FX",
+                        "url": "https://example.com/usdkrw",
+                    }
+                }
+            },
+            attachment27_now,
+        )
+        rendered = radar.compact_alert(alert, 1, attachment27_now, {}, {})
+        rendered_errors = radar.compact_alert_block_errors(rendered)
+        if rendered_errors:
+            failures.append(
+                f"attachment27_rendered_block={expected_kind}:{rendered_errors}:{rendered!r}"
+            )
+
+    attachment27_duplicates = (
+        source_row(
+            "오픈AI, 브로드컴과 자체 AI칩 할라페뇨 연내 가동",
+            "오픈AI가 브로드컴과 개발한 자체 AI칩 할라페뇨를 연내 추론 서비스에 투입합니다.",
+        ),
+        source_row(
+            "오픈AI 자체 AI칩 할라페뇨 성능 공개",
+            "오픈AI의 자체 AI칩 할라페뇨는 브로드컴과 개발됐고 HBM4 채택 가능성이 거론됩니다.",
+        ),
+    )
+    attachment27_duplicate_themes = {
+        str(
+            (radar.build_attachment_verified_event_alert(
+                row,
+                attachment27_now,
+                f"{row['source_title']} {row['source_body']}".lower(),
+            ) or {}).get("supply_chain_theme") or ""
+        )
+        for row in attachment27_duplicates
+    }
+    if len(attachment27_duplicate_themes) != 1 or "" in attachment27_duplicate_themes:
+        failures.append(
+            f"attachment27_duplicate_theme={sorted(attachment27_duplicate_themes)}"
+        )
+
+    commitment_title, commitment_body, _, _ = next(
+        case
+        for case in ATTACHMENT_20260827_ALERT_CASES
+        if case[2] == "nvidia_memory_purchase_commitments"
+    )
+    commitment_row = source_row(commitment_title, commitment_body)
+    commitment_alert = radar.build_attachment_verified_event_alert(
+        commitment_row,
+        attachment27_now,
+        f"{commitment_title} {commitment_body}".lower(),
+    )
+    commitment_alert["fx_conversion"] = radar.build_alert_fx_conversion(
+        commitment_alert,
+        {
+            "rates": {
+                "USD": {
+                    "value": 1400.0,
+                    "status": "확정",
+                    "reference_time_kst": "2026-08-27T12:00:00+09:00",
+                    "query_time_kst": "2026-08-27T12:00:00+09:00",
+                    "source": "contract fixture FX",
+                    "url": "https://example.com/usdkrw",
+                }
+            }
+        },
+        attachment27_now,
+    )
+    commitment_block = radar.compact_alert(
+        commitment_alert, 1, attachment27_now, {}, {}
+    )
+    if "2790억달러(약 391조원)" not in commitment_block:
+        failures.append(f"attachment27_fx_conversion={commitment_block!r}")
+    if radar.compact_alert_block_errors(commitment_block):
+        failures.append(f"attachment27_fx_quality={commitment_block!r}")
+
     mixed_etf_row = source_row(
         "미래에셋운용, '삼전닉스+미국 단기국채' 혼합 ETF 상장 | 연합뉴스",
         (
@@ -638,7 +919,10 @@ def main() -> int:
         f"attachment23_source_items={attachment23_source_item_count} "
         f"attachment26_cases={len(ATTACHMENT_20260826_ALERT_CASES)} "
         f"attachment26_groups={len(ATTACHMENT_20260826_GROUPS)} "
-        f"attachment26_source_items={attachment26_source_item_count}"
+        f"attachment26_source_items={attachment26_source_item_count} "
+        f"attachment27_cases={len(ATTACHMENT_20260827_ALERT_CASES)} "
+        f"attachment27_groups={len(ATTACHMENT_20260827_GROUPS)} "
+        f"attachment27_source_items={attachment27_source_item_count}"
     )
     return 0
 
