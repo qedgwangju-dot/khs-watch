@@ -19,12 +19,9 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
         "title": stmt["title"],
         "url": stmt["url"],
         "hash": hashlib.sha256((stmt["hash"] + ":parser5").encode()).hexdigest(),
-        # base.main()은 parser_version != 2를 정정 알림으로 간주한다.
-        # 이번 최종 정정본을 한 번만 발송하고 이후 같은 내용 반복 발송을 막기 위해 2로 고정한다.
         "parser_version": 2,
     }
 
-    # 2026-08-27 수치는 한국은행 공식 통화정책방향 원문으로 잠근다.
     if "2026.8.27" in stmt["title"] or "11064191" in stmt["url"]:
         out.update({
             "rate_from": 2.75,
@@ -71,7 +68,6 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
 
 
 def latest_dotplot_correct(now: dt.datetime) -> dict[str, Any] | None:
-    # 2026년 8월 점도표는 한국은행 제공 자료를 인용한 복수 보도로 교차확인.
     if dt.date(2026, 8, 27) <= now.date() < dt.date(2026, 11, 1):
         counts = {"3.00": 5, "3.25": 10, "3.50": 6}
         return {
@@ -115,10 +111,8 @@ def fmt_rate(x: float | None) -> str:
 
 def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correction: bool) -> str:
     is_aug26 = "2026.8.27" in p.get("title", "") or "11064191" in p.get("url", "")
-    title = "🏦 <b>한국은행 금통위 최종 업데이트</b>"
-    lines = [title, ""]
+    lines = ["🏦 <b>한국은행 금통위 핵심·최종 알림</b>", ""]
 
-    # 1) 확정 수치
     lines += ["<b>① 확정 수치</b>"]
     if "rate_to" in p:
         lines.append(f"• 기준금리: <b>{fmt_rate(p.get('rate_from'))} → {fmt_rate(p.get('rate_to'))}</b>")
@@ -140,7 +134,6 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
             above = sum(v for k, v in dot["counts"].items() if float(k) > cur)
             lines.append(f"• 현재보다 높은 점: <b>{above}/{dot['total']}개</b> → 추가 인상 쪽 우세")
 
-    # 2) 직전 회의 대비 문구 변화
     f = p.get("flags") or {}
     lines += ["", "<b>② 직전 회의 대비 문구 변화</b>"]
     if is_aug26:
@@ -159,7 +152,6 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
         if f.get("housing") and f.get("household_debt"):
             lines.append("• <b>수도권 집값·가계부채</b> 금융안정 경계 유지")
 
-    # 3) 해석
     lines += ["", "<b>③ 해석</b>"]
     if is_aug26:
         lines.append("• <b>이번 25bp 인상 행동 자체는 매파적</b>")
@@ -170,7 +162,6 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
     else:
         lines.append("• 확정 수치와 문구 변화를 함께 보며 <b>행동의 강도와 향후 속도를 분리해서 판단</b>")
 
-    # 4) 시장 의미
     lines += ["", "<b>④ 시장 의미</b>"]
     if is_aug26:
         lines.append("• <b>채권:</b> 추가 인상 가능성은 남지만 연속 인상 속도는 둔화될 수 있어 단기금리의 추가 급등은 제한될 여지")
@@ -178,6 +169,7 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
         lines.append("• <b>주식:</b> 3.3% 성장·반도체 호조는 이익에 우호적이나 근원물가·장기금리 상승은 밸류에이션 부담")
         lines.append("• <b>부동산·가계:</b> 수도권 집값·가계대출이 안 꺾이면 3.25% 이상 추가 인상 가능성 유지")
         lines.append("• <b>다음 핵심 확인:</b> 근원물가 → 소비 → 수도권 집값 → 가계대출 순")
+        lines += ["", "<b>최종 판정</b>", "• <b>행동은 매파적 / 향후 속도는 유연 / 6개월 조건부 전망은 추가 인상 우세 / 횟수·시점은 미확정 / 핵심 확인은 근원물가·소비·수도권 집값·가계대출</b>"]
     else:
         lines.append("• 금리·환율·채권·주식 영향은 <b>확정 수치와 다음 금리 경로를 분리</b>해 판단")
 
