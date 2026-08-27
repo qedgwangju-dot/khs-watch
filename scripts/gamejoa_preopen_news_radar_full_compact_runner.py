@@ -686,6 +686,30 @@ KOREAN_BUSINESS_SEARCH_SOURCES = [
         ),
     ),
     (
+        "엔비디아 루빈·베라 HBM4·LPDDR5X 메모리 공급",
+        (
+            "(엔비디아 OR NVIDIA) (루빈 OR Rubin OR 베라 OR Vera OR HBM4 OR LPDDR5X OR 메모리 부족) "
+            "(삼성전자 OR SK하이닉스 OR 메모리 공급 OR 공급부족 OR 공급 부족) "
+            "(site:news1.kr OR site:mt.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR site:hankyung.com OR site:yna.co.kr)"
+        ),
+    ),
+    (
+        "이란 전쟁·중국·OPEC+ 원유시장 영향",
+        (
+            "(이란 OR Iran) (중국 OR China) (OPEC OR OPEC+) (석유 OR 원유 OR oil) "
+            "(전쟁 OR 제재 OR 공급 OR 시장점유율 OR 가격) "
+            "(site:reuters.com OR site:bloomberg.com OR site:ft.com OR site:cnbc.com)"
+        ),
+    ),
+    (
+        "트럼프 관세·미국 데이터센터 CAPEX",
+        (
+            "(트럼프 OR Trump OR 미국 행정부) (관세 OR tariff) (데이터센터 OR data center) "
+            "(장비 OR 건설비 OR CAPEX OR 비용 OR 수입) "
+            "(site:reuters.com OR site:bloomberg.com OR site:ft.com OR site:cnbc.com)"
+        ),
+    ),
+    (
         "SK하이닉스 미국 HBM 첨단패키징 투자",
         (
             "(SK하이닉스 OR SK hynix) (웨스트라피엣 OR 인디애나 OR Purdue OR 퍼듀) "
@@ -4259,6 +4283,15 @@ AUGUST27_ATTACHMENT_PROFILES = (
         117,
     ),
     (
+        "nvidia_hbm4_rubin_vera_memory_shortage",
+        ("엔비디아", "nvidia"),
+        ("메모리 부족", "메모리 공급부족", "메모리 공급 부족", "hbm4", "루빈", "rubin", "베라", "vera", "lpddr5x"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "AI/데이터센터", "DRAM/NAND"],
+        ["HBM4·LPDDR5X 수요", "AI 가속기 메모리", "메모리 공급"],
+        120,
+    ),
+    (
         "nvidia_nvhbm_amazon_collaboration",
         ("nvhbm",),
         ("엔비디아", "nvidia", "아마존", "amazon", "nv링크", "nvlink"),
@@ -4266,6 +4299,24 @@ AUGUST27_ATTACHMENT_PROFILES = (
         ["반도체/HBM/CXL", "AI/데이터센터", "반도체 장비·소재"],
         ["맞춤형 HBM", "AI 가속기", "아마존 협력"],
         120,
+    ),
+    (
+        "iran_opec_china_oil_market_shift",
+        ("이란", "iran"),
+        ("중국", "china", "opec", "석유", "원유", "oil"),
+        ["돈 버는 능력", "할인율", "수급"],
+        ["원유/인플레이션", "정유/화학/해운", "방산/지정학"],
+        ["원유 공급망", "OPEC+ 가격 조절력", "중국 원유 수요"],
+        114,
+    ),
+    (
+        "us_datacenter_tariff_cost_pressure",
+        ("데이터센터", "data center"),
+        ("관세", "tariff", "트럼프", "trump"),
+        ["돈 버는 능력", "할인율", "시간표"],
+        ["AI/데이터센터", "전력기기/전력망", "반도체/HBM/CXL"],
+        ["AI 인프라 CAPEX", "수입 장비 비용", "관세 정책"],
+        114,
     ),
     (
         "skhynix_us_hbm_advanced_packaging_capex",
@@ -4782,6 +4833,36 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             term in text for term in ("2790억", "279 billion", "2790")
         ):
             continue
+        if kind == "nvidia_hbm4_rubin_vera_memory_shortage" and not (
+            any(
+                term in text
+                for term in ("메모리 부족", "메모리 공급부족", "메모리 공급 부족", "supply shortage")
+            )
+            and (
+                any(term in text for term in ("루빈", "rubin", "베라", "vera", "hbm4", "lpddr5x"))
+                or (
+                    any(term in text for term in ("삼성전자", "삼전"))
+                    and any(term in text for term in ("sk하이닉스", "하이닉스", "sk hynix"))
+                )
+            )
+        ):
+            continue
+        if kind == "iran_opec_china_oil_market_shift" and not (
+            base.trusted(str(row.get("publisher") or row.get("source") or ""))
+            and all(
+                term in text
+                for term in ("이란", "중국", "opec")
+            )
+            and any(term in text for term in ("석유", "원유", "oil"))
+        ):
+            continue
+        if kind == "us_datacenter_tariff_cost_pressure" and not (
+            base.trusted(str(row.get("publisher") or row.get("source") or ""))
+            and any(term in text for term in ("트럼프", "trump"))
+            and any(term in text for term in ("관세", "tariff"))
+            and any(term in text for term in ("데이터센터", "data center"))
+        ):
+            continue
         if kind == "nvidia_earnings_actual" and not any(
             term in text for term in ("15분기", "15 quarter", "fifteen quarter")
         ):
@@ -4877,8 +4958,14 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             core = "엔비디아의 메모리·생산능력 구매약정이 2790억달러로 석 달 새 134% 증가했습니다."
         elif kind == "catl_lithium_mine_restart_halted":
             core = "CATL 리튬광산 재가동 절차가 환경영향평가 공시 철회로 중단됐다고 보도됐습니다."
+        elif kind == "nvidia_hbm4_rubin_vera_memory_shortage":
+            core = "엔비디아 루빈·베라 플랫폼의 HBM4·LPDDR5X 수요가 메모리 부족 우려로 부각됐습니다."
         elif kind == "nvidia_nvhbm_amazon_collaboration":
             core = "엔비디아가 맞춤형 HBM 기술 NVHBM을 공개하고 아마존과 공동 개발을 추진합니다."
+        elif kind == "iran_opec_china_oil_market_shift":
+            core = "이란 전쟁 장기화로 중국의 원유 조달 영향력과 OPEC+ 가격 조절력 변화가 거론됐습니다."
+        elif kind == "us_datacenter_tariff_cost_pressure":
+            core = "트럼프 관세가 미국 데이터센터 장비·건설비를 높여 AI 인프라 CAPEX를 압박할 수 있다는 보도입니다."
         elif kind == "skhynix_us_hbm_advanced_packaging_capex":
             core = "SK하이닉스가 미국 웨스트라피엣에 AI용 HBM 첨단패키징 생산시설을 구축합니다."
         elif kind == "korea_bok_rate_policy_event" and any(
@@ -4891,7 +4978,20 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             "us_pce_ndf_rate_shift": "미국 7월 PCE 예상 상회…원·달러 NDF·연준 금리 경로 재평가",
         }.get(kind, "")
         alert = base_korean_business_alert(row, now, score=score, impacts=impacts)
-        alert.update({"importance": "상" if score >= 110 else "중", "status": "확정" if row.get("body_verified") else "예비", "policy_plain_summary": core, "telegram_core_fact": core, "sectors": sectors, "paths": paths, "korean_business_kind": kind, "supply_chain_theme": f"{kind}:{korean_business_event_date(row)}", "headline_override": headline_override})
+        alert.update(
+            {
+                "importance": "상" if score >= 110 else "중",
+                "status": "확정" if row.get("body_verified") else "예비",
+                "news": headline_override or alert["news"],
+                "policy_plain_summary": core,
+                "telegram_core_fact": core,
+                "sectors": sectors,
+                "paths": paths,
+                "korean_business_kind": kind,
+                "supply_chain_theme": f"{kind}:{korean_business_event_date(row)}",
+                "headline_override": headline_override,
+            }
+        )
         return alert
     return None
 
