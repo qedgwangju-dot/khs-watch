@@ -31,7 +31,7 @@ PENDING_PATH = OUT / "bok_mpc_pending_state.json"
 BOK_RSS = "https://www.bok.or.kr/portal/bbs/P0000559/news.rss?menuNo=200690"
 GOOGLE_NEWS = "https://news.google.com/rss/search"
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (compatible; khs-bok-mpc-watch/2.0)",
+    "User-Agent": "Mozilla/5.0 (compatible; khs-bok-mpc-watch/2.1)",
     "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
 }
 
@@ -57,19 +57,15 @@ def load_state() -> dict[str, Any]:
 
 def latest_bok_statement() -> dict[str, Any]:
     root = ET.fromstring(get(BOK_RSS).content)
-    items = root.findall(".//item")
-    for item in items:
+    for item in root.findall(".//item"):
         title = normalize(item.findtext("title") or "")
         if "통화정책방향" not in title:
             continue
         link = normalize(item.findtext("link") or "")
-        desc = item.findtext("description") or ""
         if not link:
             continue
         page = BeautifulSoup(get(link).text, "html.parser")
         text = normalize(page.get_text(" ", strip=True))
-        if "금융통화위원회" not in text or "기준금리" not in text:
-            text = normalize(BeautifulSoup(desc, "html.parser").get_text(" ", strip=True))
         return {
             "title": title,
             "url": link,
@@ -79,34 +75,51 @@ def latest_bok_statement() -> dict[str, Any]:
     raise RuntimeError("한국은행 통화정책 RSS에서 최신 통화정책방향을 찾지 못함")
 
 
+def pct_values(text: str) -> list[float]:
+    return [float(x) for x in re.findall(r"([0-9]+(?:\.[0-9]+)?)\s*%", text)]
+
+
+def window_after(text: str, key: str, length: int = 420) -> str:
+    idx = text.find(key)
+    if idx < 0:
+        return ""
+    return text[idx: idx + length]
+
+
 def parse_statement(stmt: dict[str, Any]) -> dict[str, Any]:
     text = stmt["text"]
-    out: dict[str, Any] = {"title": stmt["title"], "url": stmt["url"], "hash": stmt["hash"]}
+    out: dict[str, Any] = {"title": stmt["title"], "url": stmt["url"], "hash": stmt["hash"], "parser_version": 2}
 
-    m = re.search(r"기준금리를 현재의\s*([0-9.]+)%?\s*수준에서\s*([0-9.]+)%?로", text)
-    if m:
-        out["rate_from"], out["rate_to"] = float(m.group(1)), float(m.group(2))
+    rate_window = window_after(text, "한국은행 기준금리를", 260)
+    vals = pct_values(rate_window)
+    if len(vals) >= 2:
+        out["rate_from"], out["rate_to"] = vals[0], vals[1]
 
-    m = re.search(r"금년 및 내년 성장률은[^.]{0,220}?([0-9.]+)%\s*및\s*([0-9.]+)%", text)
-    if m:
-        out["growth_this"], out["growth_next"] = float(m.group(1)), float(m.group(2))
+    growth_window = window_after(text, "금년 및 내년 성장률", 420)
+    vals = pct_values(growth_window)
+    if len(vals) >= 2:
+        out["growth_this"], out["growth_next"] = vals[-2], vals[-1]
 
-    m = re.search(r"금년 및 내년 소비자물가 상승률은[^.]{0,220}?([0-9.]+)%\s*및\s*([0-9.]+)%", text)
-    if m:
-        out["cpi_this"], out["cpi_next"] = float(m.group(1)), float(m.group(2))
+    cpi_window = window_after(text, "금년 및 내년 소비자물가 상승률", 420)
+    vals = pct_values(cpi_window)
+    if len(vals) >= 2:
+        out["cpi_this"], out["cpi_next"] = vals[-2], vals[-1]
 
-    m = re.search(r"근원물가 상승률은[^.]{0,220}?금년 및 내년 모두[^0-9]{0,30}?([0-9.]+)%", text)
-    if m:
-        out["core_this"] = out["core_next"] = float(m.group(1))
-    else:
-        m = re.search(r"근원물가 상승률은[^.]{0,220}?([0-9.]+)%\s*및\s*([0-9.]+)%", text)
-        if m:
-            out["core_this"], out["core_next"] = float(m.group(1)), float(m.group(2))
+    core_window = window_after(text, "근원물가 상승률", 420)
+    vals = pct_values(core_window)
+    if vals:
+        if "모두" in core_window[:260]:
+            out["core_this"] = out["core_next"] = vals[-1]
+        elif len(vals) >= 2:
+            out["core_this"], out["core_next"] = vals[-2], vals[-1]
 
-    m = re.search(r"금번 기준금리 (?:인상|동결) 결정에 대해 금융통화위원\s*([0-9]+)명은 찬성", text)
+    m = re.search(r"금융통화위원\s*([0-9]+)명은\s*찬성", text)
     if m:
         out["vote_for"] = int(m.group(1))
-    out["minority_hold"] = bool(re.search(r"위원은 기준금리를\s*[0-9.]+%로 유지", text))
+    out["minority_hold"] = bool(
+        re.search(r"위원은\s*기준금리를\s*[0-9.]+%?로\s*유지", text)
+        or ("황건일 위원" in text and "유지하는 것이 바람직" in text)
+    )
 
     out["flags"] = {
         "preemptive": "선제적 대응" in text,
@@ -120,7 +133,7 @@ def parse_statement(stmt: dict[str, Any]) -> dict[str, Any]:
     return out
 
 
-def google_news(query: str, limit: int = 20) -> list[dict[str, Any]]:
+def google_news(query: str, limit: int = 30) -> list[dict[str, Any]]:
     params = urllib.parse.urlencode({"q": query, "hl": "ko", "gl": "KR", "ceid": "KR:ko"})
     root = ET.fromstring(get(f"{GOOGLE_NEWS}?{params}").content)
     rows = []
@@ -143,29 +156,35 @@ def google_news(query: str, limit: int = 20) -> list[dict[str, Any]]:
 
 def latest_dotplot(now: dt.datetime) -> dict[str, Any] | None:
     cutoff = now.astimezone(dt.timezone.utc) - dt.timedelta(days=10)
-    for item in google_news('금통위원 6개월 금리전망 3.00 3.25 3.50', 25):
+    found: dict[str, int] = {}
+    source_link = ""
+    source_title = ""
+    for item in google_news('금통위원 6개월 금리전망 3.00 3.25 3.50', 30):
         if not item.get("published_dt") or item["published_dt"] < cutoff:
             continue
         blob = item["title"] + " " + item["description"]
-        counts: dict[str, int] = {}
         for level in ("2.75", "3.00", "3.25", "3.50", "3.75"):
-            patterns = [
-                rf"{re.escape(level)}%?[^0-9]{{0,20}}([0-9]+)개",
-                rf"([0-9]+)개[^0-9]{{0,20}}{re.escape(level)}%",
-            ]
-            for pat in patterns:
+            if level in found:
+                continue
+            for pat in (
+                rf"{re.escape(level)}%?[^0-9]{{0,30}}([0-9]+)개",
+                rf"([0-9]+)개[^0-9]{{0,30}}{re.escape(level)}%",
+            ):
                 m = re.search(pat, blob)
                 if m:
-                    counts[level] = int(m.group(1)); break
-        if len(counts) >= 2:
-            return {
-                "title": item["title"],
-                "link": item["link"],
-                "counts": counts,
-                "total": sum(counts.values()),
-                "hash": hashlib.sha256(json.dumps(counts, sort_keys=True).encode()).hexdigest(),
-            }
-    return None
+                    found[level] = int(m.group(1))
+                    if not source_link:
+                        source_link, source_title = item["link"], item["title"]
+                    break
+    if len(found) < 2:
+        return None
+    return {
+        "title": source_title,
+        "link": source_link,
+        "counts": found,
+        "total": sum(found.values()),
+        "hash": hashlib.sha256(json.dumps(found, sort_keys=True).encode()).hexdigest(),
+    }
 
 
 def fmt_rate(x: float | None) -> str:
@@ -174,8 +193,9 @@ def fmt_rate(x: float | None) -> str:
     return f"{x:.2f}%".replace(".00%", "%")
 
 
-def build_alert(p: dict[str, Any], dot: dict[str, Any] | None) -> str:
-    lines = ["🏦 <b>한국은행 금통위 핵심 알림</b>", ""]
+def build_alert(p: dict[str, Any], dot: dict[str, Any] | None, correction: bool) -> str:
+    title = "🔄 <b>한국은행 금통위 정정·최신 알림</b>" if correction else "🏦 <b>한국은행 금통위 핵심 알림</b>"
+    lines = [title, ""]
     if "rate_to" in p:
         lines.append(f"• 기준금리: <b>{fmt_rate(p.get('rate_from'))} → {fmt_rate(p.get('rate_to'))}</b>")
     if p.get("vote_for"):
@@ -223,6 +243,7 @@ def main() -> int:
     now = dt.datetime.now(KST)
     old = load_state()
     errors = []
+
     try:
         statement = latest_bok_statement()
         parsed = parse_statement(statement)
@@ -236,11 +257,12 @@ def main() -> int:
         dot = None
         errors.append(f"점도표 조회 실패: {type(exc).__name__}: {exc}")
 
+    correction = (old.get("statement") or {}).get("parser_version") != 2
     bootstrap = not bool(old)
     statement_changed = old.get("statement_hash") != parsed.get("hash")
     dot_changed = bool(dot) and old.get("dotplot_hash") != dot.get("hash")
-    if bootstrap or statement_changed or dot_changed:
-        ALERT_PATH.write_text(build_alert(parsed, dot), encoding="utf-8")
+    if bootstrap or correction or statement_changed or dot_changed:
+        ALERT_PATH.write_text(build_alert(parsed, dot, correction and not bootstrap), encoding="utf-8")
 
     pending = {
         "updated_at_kst": now.isoformat(timespec="seconds"),
@@ -257,6 +279,7 @@ def main() -> int:
         f"- 최신 문서: {parsed.get('title')}",
         f"- 기준금리: {parsed.get('rate_to', '확인 불가')}",
         f"- 성장률: {parsed.get('growth_this', '확인 불가')} / {parsed.get('growth_next', '확인 불가')}",
+        f"- 소비자물가: {parsed.get('cpi_this', '확인 불가')} / {parsed.get('cpi_next', '확인 불가')}",
         f"- 근원물가: {parsed.get('core_this', '확인 불가')} / {parsed.get('core_next', '확인 불가')}",
         f"- 점도표: {dot.get('counts') if dot else '확인 불가'}",
         f"- 새 알림: {'예' if ALERT_PATH.exists() else '아니오'}",
