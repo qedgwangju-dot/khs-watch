@@ -33,9 +33,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
-      DATA_CENTER_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN || secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-      CONFIGURED_DATA_CENTER_TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      DATA_CENTER_TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      CONFIGURED_DATA_CENTER_TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
 
     steps:
       - name: Checkout
@@ -119,7 +119,7 @@ jobs:
           cat > out/us_data_center_cycle_connection_test.txt <<'EOF'
           [미국 데이터센터 건설 사이클 감시] 텔레그램 연결 시험
 
-          @hs8879887988798879_bot 연결 정상입니다.
+          @khs8879887988798879_bot 연결 정상입니다.
           - 미국 인구조사국 데이터센터 건설 지출 감시
           - Dodge Construction Network 데이터센터 착공 자료 감시
           - 매시간 웹 확인, 새 월간 데이터·수정치·새 착공 발표가 있을 때만 알림
