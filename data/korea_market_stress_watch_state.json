@@ -30,10 +30,10 @@
     "policy_spread": {
       "date": "2026-08-27",
       "fed_upper": 3.75,
-      "bok_base": 3.0,
-      "spread_pp": 0.75,
+      "bok_base": 2.75,
+      "spread_pp": 1.0,
       "fed_source": "https://fred.stlouisfed.org/series/DFEDTARU",
-      "bok_source": "https://www.bok.or.kr/portal/main/main.do"
+      "bok_source": "https://www.bok.or.kr/portal/singl/baseRate/list.do?menuNo=200656"
     },
     "foreign_flow": {
       "date": "2026-08-27",
