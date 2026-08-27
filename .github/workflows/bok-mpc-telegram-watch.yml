@@ -1,0 +1,143 @@
+name: BOK MPC Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/bok-mpc-telegram-watch.yml"
+      - "scripts/bok_mpc_watch.py"
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bok-mpc-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 의존성 설치
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4
+
+      - name: 정확한 텔레그램 봇 경로 검증
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram secrets are missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{actual}")
+          PY
+
+      - name: 금통위·점도표 감시 실행
+        run: |
+          rm -f out/bok_mpc_alert.html out/bok_mpc_errors.log
+          python -m py_compile scripts/bok_mpc_watch.py
+          python scripts/bok_mpc_watch.py
+          cat out/bok_mpc_status.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -s out/bok_mpc_errors.log ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "## 부분 조회 오류" >> "$GITHUB_STEP_SUMMARY"
+            cat out/bok_mpc_errors.log >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: 새 금통위 변화만 텔레그램 전송
+        if: hashFiles('out/bok_mpc_alert.html') != ''
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          text = pathlib.Path("out/bok_mpc_alert.html").read_text(encoding="utf-8").strip()
+          chunks = []
+          while len(text) > 3800:
+              cut = text.rfind("\n\n", 0, 3800)
+              if cut < 1000:
+                  cut = 3800
+              chunks.append(text[:cut].strip())
+              text = text[cut:].strip()
+          if text:
+              chunks.append(text)
+          ids = []
+          for chunk in chunks:
+              body = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=body, method="POST")
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  result = json.loads(r.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
+              ids.append(result["result"].get("message_id"))
+          print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(ids)} ids={ids}")
+          PY
+
+      - name: 기준선 저장
+        if: success() && hashFiles('out/bok_mpc_pending_state.json') != ''
+        run: cp out/bok_mpc_pending_state.json data/bok_mpc_watch_state.json
+
+      - name: 기준선 커밋
+        if: success() && hashFiles('data/bok_mpc_watch_state.json') != ''
+        run: |
+          git config user.name "bok-mpc-watch[bot]"
+          git config user.email "bok-mpc-watch[bot]@users.noreply.github.com"
+          git add data/bok_mpc_watch_state.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update BOK MPC watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: 검증 결과 보관
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bok-mpc-watch-${{ github.run_id }}
+          path: |
+            out/bok_mpc_status.md
+            out/bok_mpc_errors.log
+            out/bok_mpc_alert.html
+            out/bok_mpc_pending_state.json
+          if-no-files-found: ignore
+          retention-days: 14
