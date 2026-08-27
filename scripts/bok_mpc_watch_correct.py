@@ -142,6 +142,14 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
         if cur is not None and dot.get("total"):
             above = sum(v for k, v in dot["counts"].items() if float(k) > cur)
             lines.append(f"• 현재보다 높은 점: <b>{above}/{dot['total']}개</b> → 추가 인상 쪽 우세")
+            if is_aug26:
+                lines.append("• <b>6개월 점도표:</b> <b>3.00% 5개 / 3.25% 10개 / 3.50% 6개</b>. 총 21개 가운데 <b>16개가 현재 3.00%보다 위</b>라서, 현재로서는 <b>1~2회 추가 인상 가능성이 우세</b>합니다.")
+            else:
+                max_level = max(float(k) for k in dot["counts"])
+                max_hikes = max(0, int(round((max_level - cur) / 0.25)))
+                if above > 0:
+                    hike_text = f"1~{max_hikes}회" if max_hikes >= 2 else "1회"
+                    lines.append(f"• 점도표 해석: 총 {dot['total']}개 가운데 <b>{above}개가 현재 {fmt_rate(cur)}보다 위</b>라서, 현재로서는 <b>{hike_text} 추가 인상 가능성이 우세</b>합니다.")
 
     f = p.get("flags") or {}
     lines += ["", "<b>② 직전 회의 대비 문구 변화</b>"]
