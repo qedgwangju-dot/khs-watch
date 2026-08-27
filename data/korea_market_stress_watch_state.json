@@ -1,22 +1,24 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-08-27T12:09:24+09:00",
+  "updated_at_kst": "2026-08-27T12:16:13+09:00",
   "seen_event_keys": [
-    "foreign3d_neg:2026-08-27"
+    "foreign3d_neg:2026-08-27",
+    "policy_spread:2026-08-27:0.75",
+    "capex:13cbe150930d23d8"
   ],
   "active_keys": [
     "foreign3d_neg:2026-08-27"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-08-27T12:09:24+09:00",
+    "checked_at_kst": "2026-08-27T12:16:13+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-08-27",
-      "value": 1381.8,
+      "value": 1382.2,
       "prev_date": "2026-08-26",
       "prev_value": 1386.0,
-      "change_krw": -4.2,
-      "change_pct": -0.303,
+      "change_krw": -3.8,
+      "change_pct": -0.2742,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
@@ -30,18 +32,32 @@
     "policy_spread": {
       "date": "2026-08-27",
       "fed_upper": 3.75,
-      "bok_base": 2.75,
-      "spread_pp": 1.0,
+      "bok_base": 3.0,
+      "spread_pp": 0.75,
       "fed_source": "https://fred.stlouisfed.org/series/DFEDTARU",
       "bok_source": "https://www.bok.or.kr/portal/singl/baseRate/list.do?menuNo=200656"
     },
     "foreign_flow": {
       "date": "2026-08-27",
-      "daily_eok": 2328.0,
-      "three_day_eok": -36960.0,
-      "daily_krw": 232800000000,
-      "three_day_krw": -3696000000000,
+      "daily_eok": 2259.0,
+      "three_day_eok": -37029.0,
+      "daily_krw": 225900000000,
+      "three_day_krw": -3702900000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260827&sosok=01"
-    }
+    },
+    "global_wave_news": [],
+    "hyperscaler_capex_news": [
+      {
+        "title": "Why Amazon (AMZN) Stock Is Jumping 12% Despite a Massive AI Capex Hike - Barron's",
+        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9zMWhyV3ZJYzlEUzdXRzFjc3MyODlubkZidkVaRml4R3FfN0NqRTAyVHhvaEV5WWJGYnZDeWFyeFZTM3NFMVBEdXRwOEdOampuQU5DcmRhdFg4QXFiRDZfcFJHSlZWRXlYNFI0UmhZWXYxM3JidENNQw?oc=5",
+        "description": "Why Amazon (AMZN) Stock Is Jumping 12% Despite a Massive AI Capex Hike Barron's",
+        "published": "Fri, 31 Jul 2026 07:00:00 GMT",
+        "published_dt": "2026-07-31 07:00:00+00:00",
+        "percentages": [
+          12.0,
+          12.0
+        ]
+      }
+    ]
   }
 }
