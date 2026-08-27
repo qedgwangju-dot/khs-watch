@@ -18,8 +18,8 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
     out: dict[str, Any] = {
         "title": stmt["title"],
         "url": stmt["url"],
-        "hash": hashlib.sha256((stmt["hash"] + ":parser6").encode()).hexdigest(),
-        "parser_version": 2,
+        "hash": hashlib.sha256((stmt["hash"] + ":parser7").encode()).hexdigest(),
+        "parser_version": 3,
     }
 
     if "2026.8.27" in stmt["title"] or "11064191" in stmt["url"]:
@@ -35,6 +35,9 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
             "vote_for": 6,
             "minority_hold": True,
             "minority_hold_names": ["황건일"],
+            "minority_opinions": [
+                {"name": "황건일", "direction": "동결", "target_rate": 2.75}
+            ],
         })
     else:
         m = re.search(r"기준금리를\s*현재의\s*([0-9.]+)%\s*수준에서\s*([0-9.]+)%로", text)
@@ -49,11 +52,27 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
         m = re.search(r"근원물가 상승률은[^.]{0,320}?상회하는\s*([0-9.]+)%", text)
         if m:
             out["core_this"] = out["core_next"] = float(m.group(1))
-        m = re.search(r"금번 기준금리 (?:인상|동결) 결정에 대해 금융통화위원\s*([0-9]+)\s*명은 찬성", text)
+        m = re.search(r"금번 기준금리 (?:인상|동결|인하) 결정에 대해 금융통화위원\s*([0-9]+)\s*명은 찬성", text)
         if m:
             out["vote_for"] = int(m.group(1))
-        names = re.findall(r"([가-힣]{2,4})\s*위원은\s*기준금리를\s*[0-9.]+%로\s*유지하는 것이 바람직", text)
-        out["minority_hold_names"] = list(dict.fromkeys(names))
+
+        opinions: list[dict[str, Any]] = []
+        for m in re.finditer(
+            r"([가-힣]{2,4})\s*위원은\s*기준금리를\s*([0-9.]+)%로\s*(유지|인상|인하)하는 것이 바람직",
+            text,
+        ):
+            name, target, verb = m.group(1), float(m.group(2)), m.group(3)
+            direction = {"유지": "동결", "인상": "인상", "인하": "인하"}[verb]
+            opinions.append({"name": name, "direction": direction, "target_rate": target})
+        # 같은 위원이 본문에서 반복 언급될 경우 1회만 남긴다.
+        unique: dict[tuple[str, str, float], dict[str, Any]] = {}
+        for opinion in opinions:
+            key = (opinion["name"], opinion["direction"], opinion["target_rate"])
+            unique[key] = opinion
+        out["minority_opinions"] = list(unique.values())
+        out["minority_hold_names"] = [
+            x["name"] for x in out["minority_opinions"] if x["direction"] == "동결"
+        ]
         out["minority_hold"] = bool(out["minority_hold_names"]) or "유지하는 것이 바람직" in text
         if "rate_to" not in out:
             raise RuntimeError("새 통화정책방향 기준금리 파싱 실패 — 오탐 알림 차단")
@@ -116,18 +135,32 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
     is_aug26 = "2026.8.27" in p.get("title", "") or "11064191" in p.get("url", "")
     lines = ["🏦 <b>한국은행 금통위 핵심·최종 알림</b>", ""]
 
+    # 고정 베이스: 확정 수치 → 직전 회의 대비 문구 변화 → 해석 → 시장 의미 → 최종 판정.
+    # 표결 소수의견자 실명·방향, 성장률, 소비자물가, 근원물가, 점도표 전체 분포는 가능한 경우 절대 생략하지 않는다.
     lines += ["<b>① 확정 수치</b>"]
     if "rate_to" in p:
         lines.append(f"• 기준금리: <b>{fmt_rate(p.get('rate_from'))} → {fmt_rate(p.get('rate_to'))}</b>")
     if p.get("vote_for"):
-        names = p.get("minority_hold_names") or []
-        if names:
-            tail = " / 동결: " + ", ".join(f"{name} 위원" for name in names)
-        elif p.get("minority_hold"):
-            tail = " / 동결 소수의견 1명"
+        opinions = p.get("minority_opinions") or []
+        if opinions:
+            grouped: dict[str, list[str]] = {}
+            for op in opinions:
+                grouped.setdefault(op["direction"], []).append(
+                    f"{op['name']} 위원({fmt_rate(op.get('target_rate'))})"
+                )
+            tail = "".join(
+                f" / {direction}: " + ", ".join(names)
+                for direction, names in grouped.items()
+            )
         else:
-            tail = ""
-        lines.append(f"• 표결: <b>인상 찬성 {p['vote_for']}명{tail}</b>")
+            names = p.get("minority_hold_names") or []
+            if names:
+                tail = " / 동결: " + ", ".join(f"{name} 위원" for name in names)
+            elif p.get("minority_hold"):
+                tail = " / 동결 소수의견 1명"
+            else:
+                tail = ""
+        lines.append(f"• 표결: <b>결정 찬성 {p['vote_for']}명{tail}</b>")
     if "growth_this" in p:
         lines.append(f"• 성장률: <b>올해 {p['growth_this']:.1f}% / 내년 {p['growth_next']:.1f}%</b>")
     if "cpi_this" in p:
@@ -141,7 +174,11 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
         cur = p.get("rate_to")
         if cur is not None and dot.get("total"):
             above = sum(v for k, v in dot["counts"].items() if float(k) > cur)
-            lines.append(f"• 현재보다 높은 점: <b>{above}/{dot['total']}개</b> → 추가 인상 쪽 우세")
+            below = sum(v for k, v in dot["counts"].items() if float(k) < cur)
+            same = dot["total"] - above - below
+            lines.append(
+                f"• 현재 대비 분포: <b>상향 {above}개 / 동일 {same}개 / 하향 {below}개</b>"
+            )
             if is_aug26:
                 lines.append("• <b>6개월 점도표:</b> <b>3.00% 5개 / 3.25% 10개 / 3.50% 6개</b>. 총 21개 가운데 <b>16개가 현재 3.00%보다 위</b>라서, 현재로서는 <b>1~2회 추가 인상 가능성이 우세</b>합니다.")
             else:
@@ -150,6 +187,10 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
                 if above > 0:
                     hike_text = f"1~{max_hikes}회" if max_hikes >= 2 else "1회"
                     lines.append(f"• 점도표 해석: 총 {dot['total']}개 가운데 <b>{above}개가 현재 {fmt_rate(cur)}보다 위</b>라서, 현재로서는 <b>{hike_text} 추가 인상 가능성이 우세</b>합니다.")
+                elif below > 0:
+                    lines.append(f"• 점도표 해석: 총 {dot['total']}개 가운데 <b>{below}개가 현재 {fmt_rate(cur)}보다 아래</b>라서, 인하 가능성 분포도 함께 확인해야 합니다.")
+                else:
+                    lines.append("• 점도표 해석: 모든 점이 현재 금리와 같아 6개월 조건부 전망은 현 수준 유지에 집중돼 있습니다.")
 
     f = p.get("flags") or {}
     lines += ["", "<b>② 직전 회의 대비 문구 변화</b>"]
