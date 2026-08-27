@@ -23,11 +23,11 @@
     "data_center_projects": [
       {
         "amount_usd_bn": 12.8,
-        "name": "data center portion of the Project Jupiter Data Center and Microgrid Phase 1"
+        "label_ko": "Project Jupiter Data Center and Microgrid Phase 1 데이터센터 부문"
       },
       {
         "amount_usd_bn": 12.0,
-        "name": "Micron Semiconductor Mega-Factory Fab 1 – Phase 1 in Clay, New York, and the $4.0 billion Amazon STACK Highway 3 Data Center"
+        "label_ko": "Micron Semiconductor Mega-Factory Fab 1 – Phase 1"
       }
     ],
     "data_center_sentences": [
@@ -48,7 +48,7 @@
     "url": "https://www.construction.com/construction-starts-rebound-july-2026/",
     "utility_change_pct": 44.7
   },
-  "format_version": 2,
+  "format_version": 3,
   "updated_at_utc": "2026-08-23T09:43:11.194084+00:00",
   "watch": "US data center construction starts vs spending"
 }
