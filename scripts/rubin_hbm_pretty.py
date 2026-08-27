@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import html
+import json
 import pathlib
 import re
+import urllib.parse
+import urllib.request
 
 ALERT = pathlib.Path("out/rubin_hbm_alert.md")
 
@@ -14,6 +17,23 @@ TRUSTED_SOURCES = (
     "trendforce", "reuters", "bloomberg", "the information", "semianalysis", "digitimes",
     "tom's hardware", "toms hardware", "financial times", "wall street journal", "wsj", "cnbc",
 )
+
+# 자주 나오는 제목은 자동번역보다 수동 번역을 우선해 의미를 고정한다.
+MANUAL_TITLE_TRANSLATIONS = {
+    "Micron: HBM3E Consumes 3x More Wafer Capacity Than DDR5, and the Gap Will Widen - XenoSpectrum":
+        "Micron: HBM3E는 DDR5보다 웨이퍼 생산능력을 3배 더 소모하며, 세대가 갈수록 격차 확대 - XenoSpectrum",
+}
+
+# 자동번역 뒤에도 검색·기술 식별이 깨지지 않도록 원문 표기를 복원한다.
+IDENTIFIER_RESTORE = {
+    "마이크론": "Micron",
+    "엔비디아": "NVIDIA",
+    "트렌드포스": "TrendForce",
+    "루빈 울트라": "Rubin Ultra",
+    "베라 루빈": "Vera Rubin",
+    "그레이스 블랙웰": "Grace Blackwell",
+    "코워스": "CoWoS",
+}
 
 
 def find(pattern: str, text: str, default: str = "") -> str:
@@ -32,6 +52,45 @@ def source_label(source: str) -> str:
     if any(k in low for k in TRUSTED_SOURCES):
         return "신뢰 리서치·보도"
     return "일반 보도 — 추가 교차검증 필요"
+
+
+def has_korean(value: str) -> bool:
+    return bool(re.search(r"[가-힣]", value or ""))
+
+
+def translate_title_ko(title: str) -> str:
+    """영문 기사 제목의 설명어는 한국어로 옮기고 기술 식별어는 원문을 유지한다."""
+    title = html.unescape(title or "").strip()
+    if not title or has_korean(title):
+        return title
+    if title in MANUAL_TITLE_TRANSLATIONS:
+        return MANUAL_TITLE_TRANSLATIONS[title]
+
+    # Google 공개 번역 엔드포인트를 보조적으로 사용한다. 실패 시 제목을 그대로 노출하지 않고
+    # 해당 섹션의 상세 근거와 원문 링크로 확인할 수 있도록 한국어 안내문으로 대체한다.
+    try:
+        params = urllib.parse.urlencode({
+            "client": "gtx",
+            "sl": "en",
+            "tl": "ko",
+            "dt": "t",
+            "q": title,
+        })
+        req = urllib.request.Request(
+            f"https://translate.googleapis.com/translate_a/single?{params}",
+            headers={"User-Agent": "Mozilla/5.0"},
+        )
+        with urllib.request.urlopen(req, timeout=12) as r:
+            obj = json.loads(r.read().decode("utf-8"))
+        translated = "".join(seg[0] for seg in (obj[0] or []) if seg and seg[0]).strip()
+        for ko, original in IDENTIFIER_RESTORE.items():
+            translated = translated.replace(ko, original)
+        if translated and has_korean(translated):
+            return translated
+    except Exception:
+        pass
+
+    return "관련 신규 보도 — 제목 자동번역 확인 필요"
 
 
 def emphasize_metrics(line: str) -> str:
@@ -76,7 +135,8 @@ def htmlify_lines(text: str) -> str:
 
         m_title = re.match(r"^(\d+)\.\s+(.+)$", line)
         if m_title:
-            out.append(f'{m_title.group(1)}. <b>{html.escape(m_title.group(2), quote=False)}</b>')
+            title_ko = translate_title_ko(m_title.group(2))
+            out.append(f'{m_title.group(1)}. <b>{html.escape(title_ko, quote=False)}</b>')
             continue
 
         if line.startswith("■ "):
