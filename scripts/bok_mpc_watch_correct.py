@@ -18,7 +18,7 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
     out: dict[str, Any] = {
         "title": stmt["title"],
         "url": stmt["url"],
-        "hash": hashlib.sha256((stmt["hash"] + ":parser5").encode()).hexdigest(),
+        "hash": hashlib.sha256((stmt["hash"] + ":parser6").encode()).hexdigest(),
         "parser_version": 2,
     }
 
@@ -34,6 +34,7 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
             "core_next": 2.5,
             "vote_for": 6,
             "minority_hold": True,
+            "minority_hold_names": ["황건일"],
         })
     else:
         m = re.search(r"기준금리를\s*현재의\s*([0-9.]+)%\s*수준에서\s*([0-9.]+)%로", text)
@@ -51,7 +52,9 @@ def parse_statement_correct(stmt: dict[str, Any]) -> dict[str, Any]:
         m = re.search(r"금번 기준금리 (?:인상|동결) 결정에 대해 금융통화위원\s*([0-9]+)\s*명은 찬성", text)
         if m:
             out["vote_for"] = int(m.group(1))
-        out["minority_hold"] = "유지하는 것이 바람직" in text
+        names = re.findall(r"([가-힣]{2,4})\s*위원은\s*기준금리를\s*[0-9.]+%로\s*유지하는 것이 바람직", text)
+        out["minority_hold_names"] = list(dict.fromkeys(names))
+        out["minority_hold"] = bool(out["minority_hold_names"]) or "유지하는 것이 바람직" in text
         if "rate_to" not in out:
             raise RuntimeError("새 통화정책방향 기준금리 파싱 실패 — 오탐 알림 차단")
 
@@ -117,7 +120,13 @@ def build_alert_correct(p: dict[str, Any], dot: dict[str, Any] | None, correctio
     if "rate_to" in p:
         lines.append(f"• 기준금리: <b>{fmt_rate(p.get('rate_from'))} → {fmt_rate(p.get('rate_to'))}</b>")
     if p.get("vote_for"):
-        tail = " / 동결 소수의견 1명" if p.get("minority_hold") else ""
+        names = p.get("minority_hold_names") or []
+        if names:
+            tail = " / 동결: " + ", ".join(f"{name} 위원" for name in names)
+        elif p.get("minority_hold"):
+            tail = " / 동결 소수의견 1명"
+        else:
+            tail = ""
         lines.append(f"• 표결: <b>인상 찬성 {p['vote_for']}명{tail}</b>")
     if "growth_this" in p:
         lines.append(f"• 성장률: <b>올해 {p['growth_this']:.1f}% / 내년 {p['growth_next']:.1f}%</b>")
