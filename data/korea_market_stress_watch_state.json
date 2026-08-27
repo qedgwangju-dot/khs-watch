@@ -1,0 +1,53 @@
+{
+  "updated_at_kst": "2026-08-27T11:57:57+09:00",
+  "seen_event_keys": [
+    "globalwave:576243a674d09641",
+    "capex:13cbe150930d23d8"
+  ],
+  "snapshot": {
+    "checked_at_kst": "2026-08-27T11:57:57+09:00",
+    "watch_version": 1,
+    "usdkrw": {
+      "date": "2026-08-21",
+      "value": 1385.01,
+      "prev_date": "2026-08-20",
+      "prev_value": 1393.35,
+      "change_krw": -8.34,
+      "change_pct": -0.5986,
+      "source": "https://fred.stlouisfed.org/series/DEXKOUS"
+    },
+    "ust10": {
+      "date": "2026-08-25",
+      "value": 4.64,
+      "prev_date": "2026-08-24",
+      "prev_value": 4.7,
+      "change_bp": -6.0,
+      "source": "https://fred.stlouisfed.org/series/DGS10"
+    },
+    "policy_spread": {
+      "date": "2026-08-27",
+      "fed_upper": 3.75,
+      "bok_base": 3.0,
+      "spread_pp": 0.75,
+      "fed_source": "https://fred.stlouisfed.org/series/DFEDTARU",
+      "bok_source": "https://www.bok.or.kr/portal/singl/baseRate/list.do?menuNo=200643"
+    },
+    "global_wave_news": [
+      {
+        "title": "Posthaste: The 'Global Wave' has peaked after a 15-month upturn, says BofA - Financial Post",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPeGotOGRQNk1GMFBlR19rLXlhVkt6Q1VJMjMyaHZ0MTlXNGRoV3I2MDdKOC1ERExkSUk2aVhGa0RPM01ZZTc2NVpydDhINjNlQjFBSDg0Y3ZtNTZHLXBaLXBLbFNSdng4RmE0d2oyVkxBRWpZTFFvaHBiQUc2UEZHTmZ3dmdheDFackpiQUlld2JlZkpVUXpEQ2hjWHJSNXRVZlF5VVl1ZDhOX0JBZU5id0JsQ0p1T08tVFFiT2VTenBzdw?oc=5",
+        "description": "Posthaste: The 'Global Wave' has peaked after a 15-month upturn, says BofA Financial Post",
+        "published": "Thu, 23 Dec 2021 08:00:00 GMT"
+      }
+    ],
+    "hyperscaler_capex_news": [
+      {
+        "title": "Why Amazon (AMZN) Stock Is Jumping 12% Despite a Massive AI Capex Hike - Barron's",
+        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9zMWhyV3ZJYzlEUzdXRzFjc3MyODlubkZidkVaRml4R3FfN0NqRTAyVHhvaEV5WWJGYnZDeWFyeFZTM3NFMVBEdXRwOEdOampuQU5DcmRhdFg4QXFiRDZfcFJHSlZWRXlYNFI0UmhZWXYxM3JidENNQw?oc=5",
+        "description": "Why Amazon (AMZN) Stock Is Jumping 12% Despite a Massive AI Capex Hike Barron's",
+        "published": "Fri, 31 Jul 2026 07:00:00 GMT",
+        "percentages": "12%, 12%"
+      }
+    ]
+  }
+}
