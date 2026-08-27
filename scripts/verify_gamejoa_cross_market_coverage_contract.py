@@ -753,6 +753,11 @@ def main() -> int:
             failures.append(
                 f"attachment27_rendered_block={expected_kind}:{rendered_errors}:{rendered!r}"
             )
+        if (
+            expected_kind == "us_pce_ndf_rate_shift"
+            and "미국 7월 PCE 예상 상회" not in rendered
+        ):
+            failures.append(f"attachment27_pce_headline_missing={rendered!r}")
 
     attachment27_duplicates = (
         source_row(

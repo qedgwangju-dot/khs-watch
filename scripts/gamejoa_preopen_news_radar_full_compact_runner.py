@@ -4887,8 +4887,11 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             core = "한국은행이 물가·환율·경기지표를 반영해 기준금리 경로를 재조정했습니다."
         elif kind == "kioxia_iwate_nand_factory_capex":
             core = "키옥시아가 일본 이와테에 낸드 생산능력 확대를 위한 공장 투자를 추진합니다."
+        headline_override = {
+            "us_pce_ndf_rate_shift": "미국 7월 PCE 예상 상회…원·달러 NDF·연준 금리 경로 재평가",
+        }.get(kind, "")
         alert = base_korean_business_alert(row, now, score=score, impacts=impacts)
-        alert.update({"importance": "상" if score >= 110 else "중", "status": "확정" if row.get("body_verified") else "예비", "policy_plain_summary": core, "telegram_core_fact": core, "sectors": sectors, "paths": paths, "korean_business_kind": kind, "supply_chain_theme": f"{kind}:{korean_business_event_date(row)}"})
+        alert.update({"importance": "상" if score >= 110 else "중", "status": "확정" if row.get("body_verified") else "예비", "policy_plain_summary": core, "telegram_core_fact": core, "sectors": sectors, "paths": paths, "korean_business_kind": kind, "supply_chain_theme": f"{kind}:{korean_business_event_date(row)}", "headline_override": headline_override})
         return alert
     return None
 
@@ -6442,6 +6445,11 @@ def china_mofcom_action_label(alert: dict) -> str:
 
 
 def korean_title(alert: dict) -> str:
+    # A verified source-body profile may expose the actual price-moving event
+    # when a broad market-recap title would hide it.
+    headline_override = str(alert.get("headline_override") or "").strip()
+    if headline_override and not mostly_ascii(headline_override):
+        return headline_override
     if alert.get("korean_business_news"):
         raw = str(
             alert.get("source_title")
