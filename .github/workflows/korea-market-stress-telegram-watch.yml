@@ -1,0 +1,135 @@
+name: Korea Market Stress and Global Wave Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/korea-market-stress-telegram-watch.yml"
+      - "scripts/korea_market_stress_watch_v4.py"
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: korea-market-stress-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 의존성 설치
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml
+
+      - name: 정확한 텔레그램 봇 경로 검증
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram secrets are missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{actual}")
+          PY
+
+      - name: 시장 스트레스 감시 실행
+        run: |
+          rm -f out/korea_market_stress_alert.html out/korea_market_stress_errors.log
+          python -m py_compile scripts/korea_market_stress_watch_v4.py
+          python scripts/korea_market_stress_watch_v4.py
+          cat out/korea_market_stress_status.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -s out/korea_market_stress_errors.log ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "## 부분 조회 오류" >> "$GITHUB_STEP_SUMMARY"
+            cat out/korea_market_stress_errors.log >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: 새 임계치 이벤트만 텔레그램 전송
+        if: hashFiles('out/korea_market_stress_alert.html') != ''
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          text = pathlib.Path("out/korea_market_stress_alert.html").read_text(encoding="utf-8").strip()
+          chunks = []
+          while len(text) > 3800:
+              cut = text.rfind("\n\n", 0, 3800)
+              if cut < 1000:
+                  cut = 3800
+              chunks.append(text[:cut].strip())
+              text = text[cut:].strip()
+          if text:
+              chunks.append(text)
+          for chunk in chunks:
+              body = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=body, method="POST")
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  result = json.loads(r.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
+          print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(chunks)}")
+          PY
+
+      - name: 기준선 저장
+        if: success() && hashFiles('out/korea_market_stress_pending_state.json') != ''
+        run: cp out/korea_market_stress_pending_state.json data/korea_market_stress_watch_state.json
+
+      - name: 기준선 커밋
+        if: success() && hashFiles('data/korea_market_stress_watch_state.json') != ''
+        run: |
+          git config user.name "korea-market-stress-watch[bot]"
+          git config user.email "korea-market-stress-watch[bot]@users.noreply.github.com"
+          git add data/korea_market_stress_watch_state.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Korea market stress watch state"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: 검증 결과 보관
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korea-market-stress-watch-${{ github.run_id }}
+          path: |
+            out/korea_market_stress_status.md
+            out/korea_market_stress_errors.log
+            out/korea_market_stress_alert.html
+            out/korea_market_stress_pending_state.json
+          if-no-files-found: ignore
+          retention-days: 14
