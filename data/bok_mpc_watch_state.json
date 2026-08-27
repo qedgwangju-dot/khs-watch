@@ -1,11 +1,11 @@
 {
-  "updated_at_kst": "2026-08-27T13:15:24+09:00",
-  "statement_hash": "34d9e3bb4876f563bb9cfac8db3a2d8af5249ebbf5469d99bf02b7d441588838",
+  "updated_at_kst": "2026-08-27T13:21:46+09:00",
+  "statement_hash": "889563d465452ad64f7e92c9deae0599f510cc12f9f06387f72b99fcf27a0662",
   "statement": {
     "title": "통화정책방향(2026.8.27)",
     "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=11064191&menuNo=200690",
-    "hash": "34d9e3bb4876f563bb9cfac8db3a2d8af5249ebbf5469d99bf02b7d441588838",
-    "parser_version": 2,
+    "hash": "889563d465452ad64f7e92c9deae0599f510cc12f9f06387f72b99fcf27a0662",
+    "parser_version": 3,
     "rate_from": 2.75,
     "rate_to": 3.0,
     "growth_this": 3.3,
@@ -18,6 +18,13 @@
     "minority_hold": true,
     "minority_hold_names": [
       "황건일"
+    ],
+    "minority_opinions": [
+      {
+        "name": "황건일",
+        "direction": "동결",
+        "target_rate": 2.75
+      }
     ],
     "flags": {
       "preemptive": true,
