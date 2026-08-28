@@ -1,0 +1,316 @@
+{
+  "doe": {
+    "criticality": false,
+    "fuel_loading": false,
+    "full_power": false,
+    "selected": true
+  },
+  "nrc": {
+    "docket": "99902126",
+    "phase": "pre-application",
+    "statuses": {
+      "conceptual_design_description": "Review in Progress",
+      "conceptual_design_review": "Review Complete",
+      "regulatory_engagement_plan": "No Review Requested"
+    }
+  },
+  "parsons": {
+    "data_well_6000_complete": true,
+    "deep_fission_criticality": false,
+    "doe_construct_operate_authorized": false,
+    "non_nuclear_demo_complete": true,
+    "nrc_col_submitted": false,
+    "poc_depth_reached": false,
+    "poc_drilling_started": false,
+    "prototype_canister_on_site": true,
+    "prototype_underground_deployed": false,
+    "second_well_ground_prep_complete": true
+  },
+  "press_urls": {
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/108/deep-fission-inc-confidentially-submits-draft-registration-statement-for-primary-offering": "Deep Fission, Inc. Confidentially Submits Draft Registration Statement for Primary Offering",
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/109/advanced-nuclear-company-deep-fission-announces-launch-of-public-offering-of-common-stock": "Advanced Nuclear Company Deep Fission Announces Launch of Public Offering of Common Stock",
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/110/advanced-nuclear-company-deep-fission-announces-pricing-of-public-offering-of-common-stock": "Advanced Nuclear Company Deep Fission Announces Pricing of Public Offering of Common Stock",
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/111/advanced-nuclear-company-deep-fission-announces-closing-of-public-offering-of-common-stock": "Advanced Nuclear Company Deep Fission Announces Closing of Public Offering of Common Stock",
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/112/advanced-nuclear-company-deep-fission-announces-customer-pipeline-of-up-to-18-5-gigawatts-of-generation-capacity": "Advanced Nuclear Company Deep Fission Announces Customer Pipeline of Up to 18.5 Gigawatts of Generation Capacity",
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/113/deep-fission-joins-doe-secretary-wright-at-idaho-national-laboratory-event-to-celebrate-nuclear-innovation": "Deep Fission Joins DOE Secretary Wright at Idaho National Laboratory Event to Celebrate Nuclear Innovation",
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/114/deep-fission-prototype-reactor-canister-arrives-at-kansas-site-advancing-reactor-proof-of-concept-program": "Deep Fission Prototype Reactor Canister Arrives at Kansas Site, Advancing Reactor Proof-of-Concept Program",
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/115/deep-fission-ceo-liz-muller-to-present-at-canaccord-genuitys-46th-annual-growth-conference": "Deep Fission CEO Liz Muller to Present at Canaccord Genuity’s 46th Annual Growth Conference",
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/116/department-of-energy-approves-nuclear-safety-design-agreement-for-deep-fissions-gravity-reactor-designed-to-convert-to-commercial-operation": "Department of Energy Approves Nuclear Safety Design Agreement for Deep Fission's Gravity™ Reactor, Designed to Convert to Commercial Operation",
+    "https://www.deepfission.com/pr-media-kit/press-releases/detail/117/deep-fission-names-shawntrell-scales-as-its-first-chief-people-officer": "Deep Fission Names ShawnTrell Scales as Its First Chief People Officer"
+  },
+  "sec_filings": {
+    "0001013762-25-003765": {
+      "date": "2025-03-28",
+      "description": "ANNUAL REPORT",
+      "form": "10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000101376225003765/ea0235510-10k_surfside.htm"
+    },
+    "0001104659-25-107929": {
+      "date": "2025-11-07",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465925107929/tm2530540d1_8k.htm"
+    },
+    "0001104659-25-110309": {
+      "date": "2025-11-12",
+      "description": "CURRENT REPORT",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465925110309/tm2530746d1_8k.htm"
+    },
+    "0001104659-25-112717": {
+      "date": "2025-11-14",
+      "description": "10-Q",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465925112717/tmb-20250930x10q.htm"
+    },
+    "0001104659-25-114959": {
+      "date": "2025-11-21",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465925114959/tm2531798d1_8k.htm"
+    },
+    "0001104659-25-117373": {
+      "date": "2025-12-01",
+      "description": "S-1/A",
+      "form": "S-1/A",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465925117373/tmb-20250930xs1a.htm"
+    },
+    "0001104659-25-118387": {
+      "date": "2025-12-04",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465925118387/tm2532758d1_8k.htm"
+    },
+    "0001104659-25-120071": {
+      "date": "2025-12-11",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465925120071/tm2533117d1_8k.htm"
+    },
+    "0001104659-25-123840": {
+      "date": "2025-12-22",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465925123840/tm2533770d1_8k.htm"
+    },
+    "0001104659-25-125146": {
+      "date": "2025-12-30",
+      "description": "S-1/A",
+      "form": "S-1/A",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465925125146/tmb-20250930xs1a.htm"
+    },
+    "0001104659-26-006743": {
+      "date": "2026-01-27",
+      "description": "S-1/A",
+      "form": "S-1/A",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926006743/tmb-20250930xs1a.htm"
+    },
+    "0001104659-26-012343": {
+      "date": "2026-02-10",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926012343/tm265399d1_8k.htm"
+    },
+    "0001104659-26-016226": {
+      "date": "2026-02-17",
+      "description": "S-1",
+      "form": "S-1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926016226/tmb-20250930xs1.htm"
+    },
+    "0001104659-26-019327": {
+      "date": "2026-02-25",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926019327/tm267068d1_8k.htm"
+    },
+    "0001104659-26-023876": {
+      "date": "2026-03-05",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926023876/tm267549d1_8k.htm"
+    },
+    "0001104659-26-041290": {
+      "date": "2026-04-09",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926041290/tm2611448d1_8k.htm"
+    },
+    "0001104659-26-043870": {
+      "date": "2026-04-15",
+      "description": "10-K",
+      "form": "10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926043870/tmb-20251231x10k.htm"
+    },
+    "0001104659-26-045974": {
+      "date": "2026-04-21",
+      "description": "S-1/A",
+      "form": "S-1/A",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926045974/tmb-20251231xs1a.htm"
+    },
+    "0001104659-26-046488": {
+      "date": "2026-04-22",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926046488/tm2612289d1_8k.htm"
+    },
+    "0001104659-26-057835": {
+      "date": "2026-05-08",
+      "description": "10-Q",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926057835/tmb-20260331x10q.htm"
+    },
+    "0001104659-26-064074": {
+      "date": "2026-05-20",
+      "description": "S-1",
+      "form": "S-1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926064074/tmb-20260331xs1.htm"
+    },
+    "0001104659-26-072286": {
+      "date": "2026-06-10",
+      "description": "S-1/A",
+      "form": "S-1/A",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926072286/tm2612179-5_s1a.htm"
+    },
+    "0001104659-26-075763": {
+      "date": "2026-06-18",
+      "description": "424B4",
+      "form": "424B4",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926075763/tm2612179-14_424b4.htm"
+    },
+    "0001104659-26-076400": {
+      "date": "2026-06-22",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926076400/tm2618457d1_8k.htm"
+    },
+    "0001104659-26-084625": {
+      "date": "2026-07-17",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926084625/tm2620785d1_8k.htm"
+    },
+    "0001104659-26-088125": {
+      "date": "2026-07-29",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926088125/tm2621528d1_8k.htm"
+    },
+    "0001104659-26-089884": {
+      "date": "2026-08-03",
+      "description": "10-Q",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926089884/tmb-20260630x10q.htm"
+    },
+    "0001213900-22-027248": {
+      "date": "2022-05-16",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390022027248/f10q0322_surfsideacq.htm"
+    },
+    "0001213900-22-040363": {
+      "date": "2022-07-19",
+      "description": "CURRENT REPORT",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390022040363/ea163032-8k_surfside.htm"
+    },
+    "0001213900-22-042318": {
+      "date": "2022-07-28",
+      "description": "CURRENT REPORT",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390022042318/ea163444-8k_surfside.htm"
+    },
+    "0001213900-22-048232": {
+      "date": "2022-08-15",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390022048232/f10q0622_surfsideacq.htm"
+    },
+    "0001213900-22-071363": {
+      "date": "2022-11-14",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390022071363/f10q0922_surfsideacq.htm"
+    },
+    "0001213900-23-025556": {
+      "date": "2023-03-31",
+      "description": "ANNUAL REPORT",
+      "form": "10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390023025556/f10k2022_surfside.htm"
+    },
+    "0001213900-23-039646": {
+      "date": "2023-05-15",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390023039646/f10q0323_surfsideacq.htm"
+    },
+    "0001213900-23-065649": {
+      "date": "2023-08-10",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390023065649/f10q0623_surfsideacq.htm"
+    },
+    "0001213900-23-086211": {
+      "date": "2023-11-13",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390023086211/f10q0923_surfsideacq.htm"
+    },
+    "0001213900-24-028655": {
+      "date": "2024-04-01",
+      "description": "ANNUAL REPORT",
+      "form": "10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390024028655/ea0202061-10k_surfside.htm"
+    },
+    "0001213900-24-042962": {
+      "date": "2024-05-14",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390024042962/ea0205817-10q_surfside.htm"
+    },
+    "0001213900-24-068372": {
+      "date": "2024-08-13",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390024068372/ea0211128-10q_surfside.htm"
+    },
+    "0001213900-24-095020": {
+      "date": "2024-11-06",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390024095020/ea0220045-10q_surfside.htm"
+    },
+    "0001213900-25-043294": {
+      "date": "2025-05-14",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390025043294/ea0241619-10q_surfside.htm"
+    },
+    "0001213900-25-074964": {
+      "date": "2025-08-12",
+      "description": "QUARTERLY REPORT",
+      "form": "10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390025074964/ea0251931-10q_surfside.htm"
+    },
+    "0001213900-25-086894": {
+      "date": "2025-09-11",
+      "description": "CURRENT REPORT",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390025086894/ea0256443-8k_deep.htm"
+    },
+    "0001213900-25-089735": {
+      "date": "2025-09-22",
+      "description": "REGISTRATION STATEMENT",
+      "form": "S-1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390025089735/ea0257750-s1_deep.htm"
+    },
+    "0001213900-25-091209": {
+      "date": "2025-09-24",
+      "description": "AMENDMENT NO 1. TO FORM S-1",
+      "form": "S-1/A",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000121390025091209/ea0258315-s1a1_deep.htm"
+    }
+  },
+  "sent_event_ids": [],
+  "updated_at": "2026-08-28T03:39:23+00:00",
+  "version": 3
+}
