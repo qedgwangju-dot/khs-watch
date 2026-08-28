@@ -1,24 +1,22 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-08-28T08:52:11+09:00",
+  "updated_at_kst": "2026-08-28T18:25:09+09:00",
   "seen_event_keys": [
-    "policy_spread:2026-08-27:0.75",
     "capex:13cbe150930d23d8",
-    "foreign3d_neg:2026-08-27"
+    "foreign3d_neg:2026-08-27",
+    "policy_spread:2026-08-27:0.75"
   ],
-  "active_keys": [
-    "foreign3d_neg:2026-08-27"
-  ],
+  "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-08-28T08:52:11+09:00",
+    "checked_at_kst": "2026-08-28T18:25:09+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-08-28",
-      "value": 1381.5,
+      "value": 1372.1,
       "prev_date": "2026-08-27",
       "prev_value": 1382.0,
-      "change_krw": -0.5,
-      "change_pct": -0.0362,
+      "change_krw": -9.9,
+      "change_pct": -0.7164,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
@@ -38,11 +36,11 @@
       "bok_source": "https://www.bok.or.kr/portal/singl/baseRate/list.do?menuNo=200656"
     },
     "foreign_flow": {
-      "date": "2026-08-27",
-      "daily_eok": 1333.0,
-      "three_day_eok": -37955.0,
-      "daily_krw": 133300000000,
-      "three_day_krw": -3795500000000,
+      "date": "2026-08-28",
+      "daily_eok": -8525.0,
+      "three_day_eok": -8340.0,
+      "daily_krw": -852500000000,
+      "three_day_krw": -834000000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260828&sosok=01"
     },
     "global_wave_news": [],
