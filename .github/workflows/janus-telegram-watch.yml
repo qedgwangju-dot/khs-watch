@@ -1,0 +1,190 @@
+name: Janus Telegram Web Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/janus-telegram-watch.yml"
+      - "scripts/janus_watch.py"
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "Send a one-time Janus Telegram connection test"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: janus-telegram-web-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      JANUS_WATCH_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-Janus-Watch contact=github-actions' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4
+
+      - name: Verify exact Telegram route
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token=(os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id=(os.getenv('TELEGRAM_CHAT_ID') or '').strip()
+          expected=(os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
+          if not token:
+              raise RuntimeError('GLOBAL_RATES_TELEGRAM_BOT_TOKEN secret is missing')
+          if not chat_id:
+              raise RuntimeError('GLOBAL_RATES_TELEGRAM_CHAT_ID secret is missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              identity=json.loads(r.read().decode('utf-8'))
+          actual=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+          print(f'telegram_route_valid=true bot=@{actual}')
+          PY
+
+      - name: Validate Janus watcher
+        run: |
+          python -m py_compile scripts/janus_watch.py
+          python scripts/janus_watch.py --mode self-test
+
+      - name: Check Janus web sources
+        run: |
+          python scripts/janus_watch.py --mode check
+          cat out/janus_status.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -s out/janus_errors.log ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "## 부분 조회 오류" >> "$GITHUB_STEP_SUMMARY"
+            cat out/janus_errors.log >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Build manual connection test
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        run: |
+          mkdir -p out
+          cat > out/janus_connection_test.html <<'EOF'
+          <b>[Janus 웹감시] 텔레그램 연결 시험</b>
+
+          • 수신 봇: @khs8879887988798879_bot
+          • 확인 주기: 15분
+          • 감시: 미 육군·미 전쟁부 공식 Janus 발표 + 5개 선정업체 공식 뉴스
+          • 핵심 조건: 계약·예산, 2028 일정, Army 규제·시험, HALEU·TRISO 연료, 제작·배치, 후속 기지·업체 추가
+          • 같은 링크·같은 제목은 중복 발송하지 않음
+          EOF
+
+      - name: Send Telegram messages
+        if: hashFiles('out/janus_connection_test.html') != '' || hashFiles('out/janus_alert.html') != ''
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+
+          token=os.environ['TELEGRAM_BOT_TOKEN'].strip()
+          chat_id=os.environ['TELEGRAM_CHAT_ID'].strip()
+          expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              identity=json.loads(r.read().decode('utf-8'))
+          actual=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+
+          files=[pathlib.Path('out/janus_connection_test.html'), pathlib.Path('out/janus_alert.html')]
+          sent_ids=[]
+          for path in files:
+              if not path.exists():
+                  continue
+              text=path.read_text(encoding='utf-8').strip()
+              if not text:
+                  continue
+              chunks=[]
+              while len(text)>3800:
+                  cut=text.rfind('\n\n',0,3800)
+                  if cut<1000:
+                      cut=3800
+                  chunks.append(text[:cut].strip())
+                  text=text[cut:].strip()
+              if text:
+                  chunks.append(text)
+              for chunk in chunks:
+                  payload=urllib.parse.urlencode({
+                      'chat_id':chat_id,
+                      'text':chunk,
+                      'parse_mode':'HTML',
+                      'disable_web_page_preview':'true',
+                  }).encode('utf-8')
+                  req=urllib.request.Request(
+                      f'https://api.telegram.org/bot{token}/sendMessage',
+                      data=payload,
+                      method='POST',
+                  )
+                  with urllib.request.urlopen(req,timeout=30) as r:
+                      result=json.loads(r.read().decode('utf-8'))
+                  if not result.get('ok'):
+                      raise RuntimeError(f'Telegram rejected message: {result}')
+                  sent_ids.append(result['result'].get('message_id'))
+          print(f'janus_telegram_delivery_confirmed=true bot=@{actual} messages={len(sent_ids)} ids={sent_ids}')
+          PY
+
+      - name: Persist state after successful check and delivery
+        if: success() && hashFiles('out/janus_watch_state_pending.json') != ''
+        run: cp out/janus_watch_state_pending.json data/janus_watch_state.json
+
+      - name: Commit Janus watcher state
+        if: success() && hashFiles('data/janus_watch_state.json') != ''
+        run: |
+          git config user.name "janus-watch[bot]"
+          git config user.email "janus-watch[bot]@users.noreply.github.com"
+          git add data/janus_watch_state.json
+          if git diff --cached --quiet; then
+            echo "Janus watch state unchanged"
+          else
+            git commit -m "Update Janus watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: janus-watch-${{ github.run_id }}
+          path: |
+            out/janus_status.md
+            out/janus_errors.log
+            out/janus_alert.html
+            out/janus_connection_test.html
+            out/janus_watch_state_pending.json
+          if-no-files-found: ignore
+          retention-days: 14
