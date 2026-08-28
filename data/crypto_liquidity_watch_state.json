@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-08-28T05:00:13+09:00",
+  "updated_at_kst": "2026-08-28T13:21:21+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -21,55 +21,55 @@
     "five_day_30y_bp": -4.0
   },
   "btc_etf": {
-    "date": "2026-08-26",
-    "total_usd_m": 232.2,
+    "date": "2026-08-27",
+    "total_usd_m": 242.3,
     "status": "complete",
     "reported_funds": 12,
     "missing_funds": 0,
-    "prev_date": "2026-08-25",
-    "prev_total_usd_m": 314.3,
-    "day_change_usd_m": -82.1,
-    "day_change_pct": -26.1,
+    "prev_date": "2026-08-26",
+    "prev_total_usd_m": 232.2,
+    "day_change_usd_m": 10.1,
+    "day_change_pct": 4.3,
     "source_latest_date": "2026-08-27",
-    "source_latest_status": "pending",
-    "pending_date": "2026-08-27",
-    "latest_recomputed_total_usd_m": 232.2,
+    "source_latest_status": "complete",
+    "pending_date": null,
+    "latest_recomputed_total_usd_m": 242.3,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
-    "last5_usd_m": 1797.9,
+    "last5_usd_m": 1433.9,
     "last5_dates": [
-      "2026-08-20",
       "2026-08-21",
       "2026-08-24",
       "2026-08-25",
-      "2026-08-26"
+      "2026-08-26",
+      "2026-08-27"
     ],
     "last5_values_usd_m": [
-      606.3,
       307.5,
       337.6,
       314.3,
-      232.2
+      232.2,
+      242.3
     ],
-    "prev5_usd_m": 816.7,
+    "prev5_usd_m": 1554.1,
     "prev5_dates": [
-      "2026-08-13",
       "2026-08-14",
       "2026-08-17",
       "2026-08-18",
-      "2026-08-19"
+      "2026-08-19",
+      "2026-08-20"
     ],
     "prev5_values_usd_m": [
-      -131.1,
       -56.2,
       297.5,
       189.3,
-      517.2
+      517.2,
+      606.3
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": 981.2,
-    "five_day_change_pct": 120.1,
-    "five_day_direction": "순자금흐름 개선"
+    "five_day_change_usd_m": -120.2,
+    "five_day_change_pct": -7.7,
+    "five_day_direction": "순자금흐름 악화"
   },
   "sources": {
     "treasury_buyback_xml": "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.xml",
