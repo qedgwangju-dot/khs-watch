@@ -1,34 +1,34 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-08-28T18:25:09+09:00",
+  "updated_at_kst": "2026-08-29T05:58:13+09:00",
   "seen_event_keys": [
-    "capex:13cbe150930d23d8",
     "foreign3d_neg:2026-08-27",
-    "policy_spread:2026-08-27:0.75"
+    "policy_spread:2026-08-27:0.75",
+    "capex:13cbe150930d23d8"
   ],
   "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-08-28T18:25:09+09:00",
+    "checked_at_kst": "2026-08-29T05:58:13+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-08-28",
-      "value": 1372.1,
+      "value": 1380.5,
       "prev_date": "2026-08-27",
       "prev_value": 1382.0,
-      "change_krw": -9.9,
-      "change_pct": -0.7164,
+      "change_krw": -1.5,
+      "change_pct": -0.1085,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
-      "date": "2026-08-26",
-      "value": 4.66,
-      "prev_date": "2026-08-25",
-      "prev_value": 4.64,
-      "change_bp": 2.0,
+      "date": "2026-08-27",
+      "value": 4.67,
+      "prev_date": "2026-08-26",
+      "prev_value": 4.66,
+      "change_bp": 1.0,
       "source": "https://fred.stlouisfed.org/series/DGS10"
     },
     "policy_spread": {
-      "date": "2026-08-27",
+      "date": "2026-08-28",
       "fed_upper": 3.75,
       "bok_base": 3.0,
       "spread_pp": 0.75,
@@ -41,7 +41,7 @@
       "three_day_eok": -8340.0,
       "daily_krw": -852500000000,
       "three_day_krw": -834000000000,
-      "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260828&sosok=01"
+      "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260829&sosok=01"
     },
     "global_wave_news": [],
     "hyperscaler_capex_news": []
