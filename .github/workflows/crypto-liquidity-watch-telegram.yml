@@ -73,6 +73,23 @@ jobs:
       - name: Check Treasury buybacks, long yields and BTC ETF flows
         run: python scripts/crypto_liquidity_watch.py
 
+      - name: Verify KRW conversion source
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          from scripts.crypto_alert_krw import get_usdkrw, format_krw_from_usd_m
+
+          state = json.load(open("out/crypto_liquidity_watch_pending_state.json", encoding="utf-8"))
+          target = dt.date.fromisoformat(state["btc_etf"]["date"])
+          fx = get_usdkrw(target)
+          rate = float(fx["rate"])
+          if not 800.0 <= rate <= 2500.0:
+              raise RuntimeError(f"USD/KRW sanity check failed: {rate}")
+          print(f"krw_conversion_valid=true date={target} rate={rate:.2f} source={fx['source']} crosscheck={fx['crosscheck']}")
+          print(f"sample_242.3m={format_krw_from_usd_m(242.3, rate)}")
+          PY
+
       - name: Convert dollar amounts to KRW using date-matched FX
         if: hashFiles('out/crypto_liquidity_watch_telegram.txt') != ''
         run: python scripts/crypto_alert_krw.py
