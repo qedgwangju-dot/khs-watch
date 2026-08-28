@@ -8,6 +8,7 @@ on:
       - "scripts/bok_mpc_watch_v2.py"
       - "scripts/bok_mpc_watch_resilient.py"
       - "scripts/bok_mpc_watch_correct.py"
+      - "scripts/bok_mpc_watch_final.py"
   schedule:
     - cron: "7 * * * *"
   workflow_dispatch:
@@ -53,8 +54,8 @@ jobs:
       - name: 금통위·점도표 감시 실행
         run: |
           rm -f out/bok_mpc_alert.html out/bok_mpc_errors.log
-          python -m py_compile scripts/bok_mpc_watch_v2.py scripts/bok_mpc_watch_resilient.py scripts/bok_mpc_watch_correct.py
-          python scripts/bok_mpc_watch_correct.py
+          python -m py_compile scripts/bok_mpc_watch_v2.py scripts/bok_mpc_watch_resilient.py scripts/bok_mpc_watch_correct.py scripts/bok_mpc_watch_final.py
+          python scripts/bok_mpc_watch_final.py
           cat out/bok_mpc_status.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/bok_mpc_errors.log ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
