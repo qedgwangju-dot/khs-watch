@@ -49,7 +49,6 @@ def atomic_write(path: pathlib.Path, text: str) -> None:
 
 
 def sha256_bytes(data: bytes) -> str:
-    # Normalize line endings and surrounding whitespace so harmless transport changes do not alert.
     normalized = b"\n".join(line.strip() for line in data.replace(b"\r\n", b"\n").split(b"\n") if line.strip())
     return hashlib.sha256(normalized).hexdigest()
 
@@ -89,7 +88,6 @@ def treasury_rates() -> dict:
         d = parse_date(cells[0])
         if not d:
             continue
-        # Treasury daily par yield table ends with 10Y, 20Y, 30Y.
         y10 = parse_number(cells[-3])
         y30 = parse_number(cells[-1])
         if y10 is None or y30 is None:
@@ -138,10 +136,6 @@ def btc_etf_flow() -> dict:
         total = parse_number(cells[-1])
         recomputed_total = round(sum(v for v in numeric_funds if v is not None), 1) if numeric_funds else None
 
-        # Farside creates the current trading-day row before issuer flow data is
-        # available. In that state every fund column is "-" while Total is
-        # mechanically displayed as 0.0. That is "not reported yet", not a
-        # genuine zero-flow observation.
         if reported_count == 0 and missing_count == len(normalized):
             status = "pending"
             total = None
@@ -150,8 +144,6 @@ def btc_etf_flow() -> dict:
         else:
             status = "partial" if missing_count > 0 else "complete"
             total_gap = round(total - recomputed_total, 1) if total is not None and recomputed_total is not None else None
-            # Farside displays fund and total values rounded to US$0.1m, so
-            # allow a small cumulative rounding gap but reject larger parser/data mismatches.
             total_validated = total_gap is not None and abs(total_gap) <= 0.6
 
         rows.append({
@@ -180,8 +172,6 @@ def btc_etf_flow() -> dict:
     latest_valid = valid_rows[-1]
     prev_valid = valid_rows[-2] if len(valid_rows) >= 2 else latest_valid
 
-    # Rolling comparison is only called a 5-trading-day comparison when both
-    # windows contain exactly five validated reported dates.
     last5 = valid_rows[-5:]
     prev5 = valid_rows[-10:-5] if len(valid_rows) >= 10 else []
     last5_sum = round(sum(x["total"] for x in last5), 1)
@@ -245,7 +235,6 @@ def btc_etf_flow() -> dict:
 def buyback_schedule() -> dict:
     xml = fetch(TREASURY_BUYBACK_XML)
     text = xml.decode("utf-8", errors="replace")
-    # Keep only the long-duration buckets and dollar limits in a human-readable summary when possible.
     compact = " ".join(re.sub(r"<[^>]+>", " ", text).split())
     snippets = []
     for pattern in (r".{0,100}10.{0,12}20.{0,160}", r".{0,100}20.{0,12}30.{0,160}"):
@@ -291,6 +280,15 @@ def market_read(rates: dict, etf: dict) -> str:
     return f"{rate_date} 기준 혼조: 금리와 ETF 자금흐름이 같은 방향이 아님"
 
 
+def dated_values(obj: dict) -> dict[str, float]:
+    result: dict[str, float] = {}
+    for dates_key, values_key in (("prev5_dates", "prev5_values_usd_m"), ("last5_dates", "last5_values_usd_m")):
+        for d, value in zip(obj.get(dates_key) or [], obj.get(values_key) or []):
+            if d is not None and value is not None:
+                result[str(d)] = float(value)
+    return result
+
+
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     ALERT_PATH.unlink(missing_ok=True)
@@ -332,7 +330,6 @@ def main() -> None:
     }
     atomic_write(PENDING_STATE, json.dumps(new_state, ensure_ascii=False, indent=2) + "\n")
 
-    # First successful run is a silent baseline; only subsequent changes alert.
     if not old:
         status = [
             "# 크립토 유동성 웹감시",
@@ -341,7 +338,7 @@ def main() -> None:
             f"- 조회시각(KST): {now_kst}",
             f"- 미 국채 10Y/30Y: {rates.get('10y', 'N/A')}% / {rates.get('30y', 'N/A')}% ({rates.get('date', 'N/A')})",
             f"- BTC 현물 ETF 최신/직전: {signed_millions(etf.get('total_usd_m', 0.0)) if etf else 'N/A'} / {signed_millions(etf.get('prev_total_usd_m', 0.0)) if etf else 'N/A'} ({etf.get('date', 'N/A') if etf else 'N/A'} / {etf.get('prev_date', 'N/A') if etf else 'N/A'})",
-        f"- BTC ETF 최근5/이전5: {signed_millions(etf.get('last5_usd_m', 0.0)) if etf else 'N/A'} / {signed_millions(etf.get('prev5_usd_m', 0.0)) if etf and etf.get('prev5_usd_m') is not None else 'N/A'}",
+            f"- BTC ETF 최근5/이전5: {signed_millions(etf.get('last5_usd_m', 0.0)) if etf else 'N/A'} / {signed_millions(etf.get('prev5_usd_m', 0.0)) if etf and etf.get('prev5_usd_m') is not None else 'N/A'}",
             f"- 오류: {'; '.join(errors) if errors else '없음'}",
         ]
         atomic_write(STATUS_PATH, "\n".join(status) + "\n")
@@ -357,46 +354,56 @@ def main() -> None:
     if rates and old_rates and rates.get("date") != old_rates.get("date"):
         d10 = (rates.get("10y", 0.0) - old_rates.get("10y", rates.get("10y", 0.0))) * 100
         d30 = (rates.get("30y", 0.0) - old_rates.get("30y", rates.get("30y", 0.0))) * 100
-        # Avoid daily noise; alert only when either long yield moves at least 10 bp from the last stored official observation.
         if max(abs(d10), abs(d30)) >= 10.0:
             triggers.append(f"미 국채 장기금리 큰 변동: 10Y {d10:+.1f}bp / 30Y {d30:+.1f}bp")
 
     old_etf = old.get("btc_etf") or {}
     if etf and old_etf:
-        # Do not alert merely because Farside has opened a new trading-day row
-        # with all issuer cells still "-" and a synthetic Total=0.0.
         old_date = old_etf.get("date")
         new_date = etf.get("date")
         pending_date = etf.get("pending_date")
-        # Migration guard: an older watcher may have mistakenly persisted the
-        # pending Farside row as a real 0.0 observation. When the corrected
-        # parser falls back to the last reported day, silently repair state.
         legacy_pending_zero = (
             pending_date
             and old_date == pending_date
             and float(old_etf.get("total_usd_m", 0.0) or 0.0) == 0.0
             and new_date != old_date
         )
+
         if new_date != old_date and not legacy_pending_zero:
-            qualifier = "잠정" if etf.get("status") == "partial" else "확정 집계"
+            qualifier = "잠정 집계" if etf.get("status") == "partial" else "현재 전체 집계"
             triggers.append(f"BTC 현물 ETF 새 일간 자금흐름({qualifier}): {signed_millions(etf.get('total_usd_m', 0.0))}")
         elif new_date == old_date and abs(etf.get("total_usd_m", 0.0) - old_etf.get("total_usd_m", etf.get("total_usd_m", 0.0))) >= 0.1:
-            qualifier = "잠정" if etf.get("status") == "partial" else "집계"
-            triggers.append(f"BTC 현물 ETF 당일 합계 수정({qualifier}): {signed_millions(etf.get('total_usd_m', 0.0))}")
+            qualifier = "잠정 집계" if etf.get("status") == "partial" else "현재 집계"
+            triggers.append(
+                f"BTC 현물 ETF 당일 합계 수정({qualifier}): {signed_millions(old_etf.get('total_usd_m', 0.0))} → {signed_millions(etf.get('total_usd_m', 0.0))}"
+            )
 
-        # Historical revisions matter because they can change the 5-day regime
-        # comparison even when today's headline flow is unchanged.
-        if old_etf.get("last5_usd_m") is not None and etf.get("last5_usd_m") is not None:
+        old_values = dated_values(old_etf)
+        new_values = dated_values(etf)
+        revisions = []
+        for d in sorted(set(old_values) & set(new_values)):
+            old_value = old_values[d]
+            new_value = new_values[d]
+            if abs(new_value - old_value) >= 0.1:
+                revisions.append(f"{d} {signed_millions(old_value)} → {signed_millions(new_value)}")
+        if revisions:
+            triggers.append("BTC 현물 ETF 과거 원자료 수정: " + " / ".join(revisions))
+
+        if new_date != old_date and old_etf.get("last5_usd_m") is not None and etf.get("last5_usd_m") is not None:
             d_last5 = round(etf.get("last5_usd_m") - old_etf.get("last5_usd_m"), 1)
             d_prev5 = (
                 round(etf.get("prev5_usd_m") - old_etf.get("prev5_usd_m"), 1)
                 if old_etf.get("prev5_usd_m") is not None and etf.get("prev5_usd_m") is not None
-                else 0.0
+                else None
             )
-            if abs(d_last5) >= 0.1 or abs(d_prev5) >= 0.1:
-                triggers.append(
-                    f"BTC 현물 ETF 5거래일 원자료 수정: 최근5 {d_last5:+,.1f}백만달러 / 이전5 {d_prev5:+,.1f}백만달러"
+            movement = (
+                f"최근5 {signed_millions(old_etf.get('last5_usd_m', 0.0))} → {signed_millions(etf.get('last5_usd_m', 0.0))} ({signed_millions(d_last5)})"
+            )
+            if d_prev5 is not None:
+                movement += (
+                    f" / 이전5 {signed_millions(old_etf.get('prev5_usd_m', 0.0))} → {signed_millions(etf.get('prev5_usd_m', 0.0))} ({signed_millions(d_prev5)})"
                 )
+            triggers.append("BTC 현물 ETF 5거래일 구간 이동: " + movement)
 
     if triggers:
         lines = [
@@ -415,13 +422,12 @@ def main() -> None:
                 "",
             ]
         if etf:
-            etf_status = "잠정 집계" if etf.get("status") == "partial" else "집계 완료"
+            etf_status = "잠정 집계" if etf.get("status") == "partial" else "현재 집계 완료(추후 수정 가능)"
             lines += [
                 f"BTC 현물 ETF — Farside 기준 최신 유효일 {etf.get('date')}",
                 f"• 최신: {etf.get('date')} {signed_millions(etf.get('total_usd_m', 0.0))} ({etf_status}, 개별 ETF 합계 재검산 {'일치' if etf.get('latest_total_validated') else '불일치'})",
                 f"• 직전: {etf.get('prev_date')} {signed_millions(etf.get('prev_total_usd_m', 0.0))}",
                 f"• 전일 대비: {signed_millions(etf.get('day_change_usd_m', 0.0))} ({signed_pct(etf.get('day_change_pct'))})",
-                f"• 최근 5거래일: {signed_millions(etf.get('last5_usd_m', 0.0))}",
             ]
             if etf.get("five_day_compare_valid"):
                 last5_dates = etf.get("last5_dates") or []
