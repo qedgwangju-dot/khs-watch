@@ -1,61 +1,61 @@
 {
-  "last_checked_kst": "2026-08-28T15:04:20+09:00",
+  "last_checked_kst": "2026-08-29T06:54:44+09:00",
   "media_id": null,
-  "cftc_date": "August 18, 2026",
+  "cftc_date": "August 25, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-08-28T15:04:20+09:00",
+    "checked_kst": "2026-08-29T06:54:44+09:00",
     "cta_media": null,
     "cftc": {
-      "report_date": "August 18, 2026",
+      "report_date": "August 25, 2026",
       "markets": {
         "2Y": {
-          "open_interest": 4432451,
-          "leveraged_long": 638468,
-          "leveraged_short": 1881472,
-          "leveraged_spreading": 203486,
-          "leveraged_net": -1243004,
-          "short_share_oi_pct": 42.44766608813047
+          "open_interest": 4678195,
+          "leveraged_long": 627120,
+          "leveraged_short": 1859873,
+          "leveraged_spreading": 448184,
+          "leveraged_net": -1232753,
+          "short_share_oi_pct": 39.75620939272518
         },
         "5Y": {
-          "open_interest": 6604060,
-          "leveraged_long": 379397,
-          "leveraged_short": 2549211,
-          "leveraged_spreading": 463396,
-          "leveraged_net": -2169814,
-          "short_share_oi_pct": 38.60066383406571
+          "open_interest": 7012385,
+          "leveraged_long": 509359,
+          "leveraged_short": 2621169,
+          "leveraged_spreading": 520905,
+          "leveraged_net": -2111810,
+          "short_share_oi_pct": 37.37913705536704
         },
         "10Y": {
-          "open_interest": 5596739,
-          "leveraged_long": 352319,
-          "leveraged_short": 2581332,
-          "leveraged_spreading": 205243,
-          "leveraged_net": -2229013,
-          "short_share_oi_pct": 46.122072156661226
+          "open_interest": 6208739,
+          "leveraged_long": 316808,
+          "leveraged_short": 2451147,
+          "leveraged_spreading": 583582,
+          "leveraged_net": -2134339,
+          "short_share_oi_pct": 39.47898276928697
         },
         "ULTRA10Y": {
-          "open_interest": 2554270,
-          "leveraged_long": 170435,
-          "leveraged_short": 523912,
-          "leveraged_spreading": 47698,
-          "leveraged_net": -353477,
-          "short_share_oi_pct": 20.511222384477755
+          "open_interest": 2981802,
+          "leveraged_long": 171433,
+          "leveraged_short": 543590,
+          "leveraged_spreading": 178099,
+          "leveraged_net": -372157,
+          "short_share_oi_pct": 18.2302513714861
         },
         "BOND": {
-          "open_interest": 1894436,
-          "leveraged_long": 125133,
-          "leveraged_short": 486516,
-          "leveraged_spreading": 54673,
-          "leveraged_net": -361383,
-          "short_share_oi_pct": 25.68131095481716
+          "open_interest": 2096351,
+          "leveraged_long": 115729,
+          "leveraged_short": 418723,
+          "leveraged_spreading": 112591,
+          "leveraged_net": -302994,
+          "short_share_oi_pct": 19.973897500943306
         },
         "ULTRABOND": {
-          "open_interest": 2493394,
-          "leveraged_long": 92327,
-          "leveraged_short": 953684,
-          "leveraged_spreading": 105371,
-          "leveraged_net": -861357,
-          "short_share_oi_pct": 38.2484276452097
+          "open_interest": 2968853,
+          "leveraged_long": 105446,
+          "leveraged_short": 954434,
+          "leveraged_spreading": 324233,
+          "leveraged_net": -848988,
+          "short_share_oi_pct": 32.14824041473256
         }
       }
     },
@@ -65,12 +65,12 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 108.28125,
-        "settlement": 108.28125,
-        "change": -0.296875,
-        "pct_change": -0.2734206360627378,
-        "open_interest": 5596739,
-        "oi_source": "CFTC TFF 주간 전체 시장 OI (August 18, 2026)",
+        "last": 107.890625,
+        "settlement": 107.890625,
+        "change": -0.6875,
+        "pct_change": -0.6331846308821443,
+        "open_interest": 6208739,
+        "oi_source": "CFTC TFF 주간 전체 시장 OI (August 25, 2026)",
         "volume": 0,
         "market_time": 1787889600,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
@@ -81,12 +81,12 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 109.3125,
-        "settlement": 109.3125,
-        "change": -0.65625,
-        "pct_change": -0.5967604433077534,
-        "open_interest": 1894436,
-        "oi_source": "CFTC TFF 주간 전체 시장 OI (August 18, 2026)",
+        "last": 109.1875,
+        "settlement": 109.1875,
+        "change": -0.78125,
+        "pct_change": -0.7104290991759021,
+        "open_interest": 5,
+        "oi_source": "Yahoo Finance 지연 계약 OI",
         "volume": 0,
         "market_time": 1787889600,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
@@ -97,12 +97,12 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 110.875,
-        "settlement": 110.875,
-        "change": -0.59375,
-        "pct_change": -0.5326604990187778,
-        "open_interest": 2493394,
-        "oi_source": "CFTC TFF 주간 전체 시장 OI (August 18, 2026)",
+        "last": 110.75,
+        "settlement": 110.75,
+        "change": -0.71875,
+        "pct_change": -0.6447995514437865,
+        "open_interest": 2968853,
+        "oi_source": "CFTC TFF 주간 전체 시장 OI (August 25, 2026)",
         "volume": 0,
         "market_time": 1787889600,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
@@ -110,39 +110,39 @@
       }
     },
     "yield10": {
-      "date": "2026-08-27",
-      "yield": 4.67,
-      "mean20": 4.682,
-      "sd20": 0.03558089374931441,
-      "z20": -0.3372596563916182,
-      "distance_to_4_3_bp": 37.000000000000014
+      "date": "2026-08-28",
+      "yield": 4.73,
+      "mean20": 4.681,
+      "sd20": 0.03389690251335664,
+      "z20": 1.4455598112745716,
+      "distance_to_4_3_bp": 43.00000000000006
     },
     "repo": {
       "SOFR": {
-        "date": "2026-08-26",
+        "date": "2026-08-27",
         "rate": 3.64,
-        "volume_bn": 2859
+        "volume_bn": 2836
       },
       "BGCR": {
-        "date": "2026-08-26",
+        "date": "2026-08-27",
         "rate": 3.62,
-        "volume_bn": 1203
+        "volume_bn": 1198
       },
       "TGCR": {
-        "date": "2026-08-26",
+        "date": "2026-08-27",
         "rate": 3.62,
-        "volume_bn": 1174
+        "volume_bn": 1176
       }
     },
     "format_revision": 7
   },
   "format_revision": 7,
-  "short_bias_active": false,
+  "short_bias_active": true,
   "episode_active": false,
   "episode_stage": 0,
   "last_gate": {
     "futures_price_oi": false,
-    "cftc_short_bias": false,
+    "cftc_short_bias": true,
     "z_below_minus_1": false,
     "repo_not_worse": true,
     "composite_confirmed": false,
