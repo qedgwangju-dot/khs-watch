@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "sources": {
+    "employment": {
+      "fingerprint": "90e377f34e39b08f43f1093315957f10ee78c8d6bcaa494ae24d0edd7cdedb3e",
+      "url": "https://www.bls.gov/news.release/empsit.htm",
+      "key": "2026-07"
+    },
+    "cpi": {
+      "fingerprint": "fc773dc15d323f7fd4c27611de774506449ec11fe1aa2faed4f6c40259bb9eb8",
+      "url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "key": "2026-07"
+    },
+    "pce": {
+      "fingerprint": "d3070df8a5a597828121c8657fe850a76679fe7fbeff06d5681a5fef8c14b166",
+      "url": "https://www.bea.gov/news/2026/personal-income-and-outlays-july-2026",
+      "key": "August 26, 2026"
+    },
+    "fomc": {
+      "fingerprint": "280589f257485bd11e3e1950fb002f88ea2319381eef3da8300bc5516318c72f",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
+      "key": "July 29, 2026"
+    }
+  },
+  "last_errors": [
+    "Fed speeches: latest Warsh speech not found"
+  ],
+  "updated_at_utc": "2026-08-28T15:24:03.419894+00:00"
+}
