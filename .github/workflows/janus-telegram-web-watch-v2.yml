@@ -32,9 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
-      TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.DEEP_FISSION_TELEGRAM_BOT_TOKEN || secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.DEEP_FISSION_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       JANUS_WATCH_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-Janus-Watch contact=github-actions' }}
 
     steps:
@@ -59,9 +59,9 @@ jobs:
           chat_id=(os.getenv('TELEGRAM_CHAT_ID') or '').strip()
           expected=(os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
           if not token:
-              raise RuntimeError('GLOBAL_RATES_TELEGRAM_BOT_TOKEN secret is missing')
+              raise RuntimeError('Telegram bot token secret is missing')
           if not chat_id:
-              raise RuntimeError('GLOBAL_RATES_TELEGRAM_CHAT_ID secret is missing')
+              raise RuntimeError('Telegram chat id secret is missing')
           with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
               identity=json.loads(r.read().decode('utf-8'))
           actual=str((identity.get('result') or {}).get('username') or '')
@@ -85,14 +85,14 @@ jobs:
             cat out/janus_errors_v2.log >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Build manual connection test
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+      - name: Build connection test
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true')
         run: |
           mkdir -p out
           cat > out/janus_connection_test_v2.html <<'EOF'
-          <b>[Janus 웹감시] 텔레그램 연결 시험</b>
+          <b>[Janus 웹감시] 텔레그램 수신 경로 수정 완료</b>
 
-          • 수신 봇: @khs8879887988798879_bot
+          • 수신 봇: @hs8879887988798879_bot
           • 확인 주기: 15분
           • 감시: 미 육군·미 에너지부 공식 Janus/원자로 실증 자료 + 5개 선정업체 공식 뉴스
           • 핵심 조건: 계약·예산, 2028 일정, Army 규제·시험, HALEU·TRISO 연료, 제작·배치, 후속 기지·업체 추가
