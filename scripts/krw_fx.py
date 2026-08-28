@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import csv
+import datetime as dt
 import io
+import time
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
@@ -11,7 +13,7 @@ from dataclasses import dataclass
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 FRED_USDKRW = "https://fred.stlouisfed.org/series/DEXKOUS"
 FRED_USDJPY = "https://fred.stlouisfed.org/series/DEXJPUS"
-UA = "Mozilla/5.0 khs-watch-krw-fx/1.0"
+UA = "Mozilla/5.0 khs-watch-krw-fx/1.1"
 
 
 @dataclass(frozen=True)
@@ -27,13 +29,36 @@ class JpyKrwQuote:
 
 
 def _fred_rows(series_id: str, max_rows: int = 60) -> dict[str, float]:
-    params = urllib.parse.urlencode({"id": series_id})
-    req = urllib.request.Request(
-        f"{FRED_CSV}?{params}",
-        headers={"User-Agent": UA, "Cache-Control": "no-cache"},
-    )
-    with urllib.request.urlopen(req, timeout=20) as response:
-        text = response.read().decode("utf-8-sig", errors="replace")
+    # fredgraph.csv without a date bound can return decades of history and has
+    # occasionally timed out on GitHub-hosted runners.  We only need the latest
+    # common H.10 date, so bound the request to recent observations and retry.
+    today = dt.datetime.now(dt.timezone.utc).date()
+    start = today - dt.timedelta(days=120)
+    params = urllib.parse.urlencode({
+        "id": series_id,
+        "cosd": start.isoformat(),
+        "coed": today.isoformat(),
+    })
+    url = f"{FRED_CSV}?{params}"
+    last_error: Exception | None = None
+    text = ""
+    for attempt in range(1, 4):
+        try:
+            req = urllib.request.Request(
+                url,
+                headers={"User-Agent": UA, "Cache-Control": "no-cache", "Accept": "text/csv,*/*"},
+            )
+            with urllib.request.urlopen(req, timeout=30) as response:
+                text = response.read().decode("utf-8-sig", errors="replace")
+            if text:
+                break
+        except Exception as exc:
+            last_error = exc
+            if attempt < 3:
+                time.sleep(attempt * 1.5)
+    if not text:
+        raise RuntimeError(f"FRED {series_id} retrieval failed: {last_error}")
+
     rows: list[tuple[str, float]] = []
     for row in csv.DictReader(io.StringIO(text)):
         day = (row.get("DATE") or row.get("observation_date") or "").strip()
@@ -44,6 +69,8 @@ def _fred_rows(series_id: str, max_rows: int = 60) -> dict[str, float]:
             rows.append((day, float(raw)))
         except ValueError:
             continue
+    if not rows:
+        raise RuntimeError(f"FRED {series_id} returned no recent observations")
     return dict(rows[-max_rows:])
 
 
@@ -51,7 +78,7 @@ def latest_jpy_krw() -> JpyKrwQuote:
     """Return the latest common-date JPY/KRW cross rate.
 
     DEXKOUS = KRW per USD, DEXJPUS = JPY per USD.
-    JPY/KRW = DEXKOUS / DEXJPUS.  Different observation dates are never mixed.
+    JPY/KRW = DEXKOUS / DEXJPUS. Different observation dates are never mixed.
     """
     krw = _fred_rows("DEXKOUS")
     jpy = _fred_rows("DEXJPUS")
