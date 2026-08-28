@@ -1,0 +1,59 @@
+name: Warsh Reaction Function Telegram Watch
+
+on:
+  schedule:
+    - cron: '26 * * * *'
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description: '현재 기준선도 강제로 Telegram 전송'
+        required: false
+        default: false
+        type: boolean
+  push:
+    paths:
+      - 'scripts/warsh_reaction_watch.py'
+      - '.github/workflows/warsh-reaction-telegram-watch.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: warsh-reaction-telegram-watch
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check official sources and notify Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          EXPECTED_BOT_USERNAME: khs8879887988798879_bot
+          FORCE_NOTIFY: ${{ (github.event_name == 'workflow_dispatch' && inputs.force_notify) && '1' || '0' }}
+          STARTUP_NOTIFY: ${{ github.event_name == 'push' && '1' || '0' }}
+        run: python scripts/warsh_reaction_watch.py
+
+      - name: Persist deduplication baseline
+        run: |
+          if git diff --quiet -- data/warsh_reaction_watch_state.json; then
+            echo 'No state change to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/warsh_reaction_watch_state.json
+          git commit -m 'Update Warsh reaction watch state'
+          git push
