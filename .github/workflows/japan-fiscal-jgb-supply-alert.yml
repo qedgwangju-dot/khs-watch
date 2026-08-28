@@ -1,0 +1,176 @@
+name: Japan Fiscal JGB Supply Alert
+
+on:
+  schedule:
+    # Offset from other yen watchers. GitHub cron is UTC.
+    - cron: "4,9,14,19,24,29,34,39,44,49,54,59 * * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/japan-fiscal-jgb-supply-alert.yml"
+      - "scripts/japan_fiscal_jgb_supply_alert.py"
+      - "scripts/krw_fx.py"
+      - "tests/test_japan_fiscal_jgb_supply_alert.py"
+      - "data/japan_fiscal_jgb_supply_state.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: japan-fiscal-jgb-supply-alert
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate fiscal JGB monitor
+        run: |
+          python -m py_compile scripts/krw_fx.py
+          python -m py_compile scripts/japan_fiscal_jgb_supply_alert.py
+          PYTHONPATH=scripts python -m unittest tests/test_japan_fiscal_jgb_supply_alert.py -v
+
+      - name: Scan Japan fiscal and JGB supply catalysts
+        run: PYTHONPATH=scripts python scripts/japan_fiscal_jgb_supply_alert.py
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/japan_fiscal_jgb_supply_watch.md ]; then
+            cat out/japan_fiscal_jgb_supply_watch.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "일본 재정·JGB 공급 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Preview pull request alert without sending
+        if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/japan_fiscal_jgb_supply_alert.html') != ''
+        run: |
+          printf '\n---\n\n텔레그램 미전송 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/japan_fiscal_jgb_supply_title.txt >> "$GITHUB_STEP_SUMMARY"
+          printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/japan_fiscal_jgb_supply_alert.html >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Send fiscal JGB catalyst through KHS bot only
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/japan_fiscal_jgb_supply_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import html
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("KHS_POLICY_TELEGRAM_BOT_TOKEN missing; refusing fallback")
+          if not chat_id:
+              raise RuntimeError("KHS_POLICY_TELEGRAM_CHAT_ID missing; refusing fallback")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+
+          title = pathlib.Path("out/japan_fiscal_jgb_supply_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/japan_fiscal_jgb_supply_alert.html").read_text(encoding="utf-8").strip()
+          text = f"<b>{html.escape(title)}</b>\n\n{body}"
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text[:4096],
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected fiscal JGB alert: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "lane": "japan_fiscal_jgb_supply",
+              "bot_username": actual,
+              "message_id": (result.get("result") or {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/japan_fiscal_jgb_supply_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={confirmed['message_id']}")
+          PY
+
+      - name: Finalize state only after confirmed Telegram delivery
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/japan_fiscal_jgb_supply_pending.json') != '' && hashFiles('out/japan_fiscal_jgb_supply_telegram_confirmed.json') != ''
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          confirmation = json.loads(pathlib.Path('out/japan_fiscal_jgb_supply_telegram_confirmed.json').read_text(encoding='utf-8'))
+          if confirmation.get('status') != 'confirmed' or confirmation.get('lane') != 'japan_fiscal_jgb_supply':
+              raise SystemExit('Telegram confirmation invalid; state not advanced')
+          pending = pathlib.Path('out/japan_fiscal_jgb_supply_pending.json')
+          target = pathlib.Path('data/japan_fiscal_jgb_supply_state.json')
+          target.write_text(pending.read_text(encoding='utf-8'), encoding='utf-8')
+          PY
+
+      - name: Commit confirmed state
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/japan_fiscal_jgb_supply_telegram_confirmed.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/japan_fiscal_jgb_supply_state.json
+          if git diff --cached --quiet; then
+            echo "Fiscal JGB state unchanged"
+          else
+            git commit -m "Update Japan fiscal JGB supply alert state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: japan-fiscal-jgb-supply-${{ github.run_id }}
+          path: |
+            out/japan_fiscal_jgb_supply_watch.md
+            out/japan_fiscal_jgb_supply_title.txt
+            out/japan_fiscal_jgb_supply_alert.html
+            out/japan_fiscal_jgb_supply_pending.json
+            out/japan_fiscal_jgb_supply_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
