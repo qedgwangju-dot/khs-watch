@@ -8,6 +8,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import yen_carry_composite_runner as runner  # noqa: E402
+from krw_fx import JpyKrwQuote  # noqa: E402
 
 
 class YenCarryCompositeSourceTests(unittest.TestCase):
@@ -29,7 +30,6 @@ class YenCarryCompositeSourceTests(unittest.TestCase):
         self.assertEqual(result.leveraged_long, 75758)
         self.assertEqual(result.leveraged_short, 136583)
         self.assertEqual(result.net_short, 60825)
-        # Previous = current - published weekly change.
         self.assertEqual(result.previous_net_short, 101990)
         self.assertTrue(result.short_covering)
 
@@ -48,6 +48,30 @@ class YenCarryCompositeSourceTests(unittest.TestCase):
 
     def test_cftc_source_is_official_current_tff_page(self):
         self.assertEqual(runner.base.CFTC_TFF_API, "https://www.cftc.gov/dea/futures/financial_lf.htm")
+
+    def test_mof_yen_money_is_always_paired_with_krw(self):
+        mof = runner.base.MofOutwardFlow(
+            latest_week="2026-08-09~08-15",
+            previous_week="2026-08-02~08-08",
+            latest_two_week_trillion_yen=5.0905,
+            previous_two_week_trillion_yen=-0.3195,
+            outward_buying=True,
+            outward_accelerating=True,
+        )
+        quote = JpyKrwQuote("2026-08-21", 1385.01, 158.91, 1385.01 / 158.91)
+        body = "\n".join([
+            "포지션·자금",
+            "- 일본 거주자 해외주식+장기채: 최근 2주 +5.09조엔 / 직전 2주 -0.32조엔 (순매수 +)",
+            "",
+            "출처",
+            "- Japan MOF 해외증권투자: https://www.mof.go.jp/example.csv",
+        ])
+        enriched = runner.enrich_krw_lines(body, mof, quote)
+        self.assertIn("+5.09조엔 (약", enriched)
+        self.assertIn("-0.32조엔 (약 -", enriched)
+        self.assertIn("원화 환산 기준", enriched)
+        self.assertIn("FRED USD/KRW", enriched)
+        self.assertIn("FRED USD/JPY", enriched)
 
 
 if __name__ == "__main__":
