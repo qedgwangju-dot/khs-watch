@@ -1,0 +1,77 @@
+name: Gwangju Airport Telegram Smoke Test
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "data/gwangju_airport_smoketest_trigger.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  telegram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.GWANGJU_AIRPORT_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.GWANGJU_AIRPORT_TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Verify Telegram and send connection test
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+
+          token = (os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
+          expected = (os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
+          if not token:
+              raise RuntimeError('GWANGJU_AIRPORT_TELEGRAM_BOT_TOKEN secret is missing')
+
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as response:
+              identity = json.loads(response.read().decode('utf-8'))
+          actual = str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower() != expected.lower():
+              raise RuntimeError(f'Wrong bot: expected @{expected}, got @{actual or "unknown"}')
+
+          if not chat_id:
+              with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0', timeout=20) as response:
+                  updates = json.loads(response.read().decode('utf-8'))
+              candidates = []
+              for update in updates.get('result') or []:
+                  message = update.get('message') or update.get('edited_message') or {}
+                  chat = message.get('chat') or {}
+                  if str(chat.get('type') or '') == 'private' and chat.get('id') is not None:
+                      candidates.append((int(update.get('update_id') or 0), str(chat['id'])))
+              if candidates:
+                  candidates.sort()
+                  chat_id = candidates[-1][1]
+          if not chat_id:
+              raise RuntimeError('GWANGJU_AIRPORT_TELEGRAM_CHAT_ID is missing and no private /start chat was found')
+
+          text = ('[광주 군공항 이전 감시] 연결 시험\n'
+                  'GitHub Actions → Python → Telegram Bot API 연결이 정상입니다.\n'
+                  '이후 의미 있는 공식 변화가 생길 때만 알립니다.')
+          payload = urllib.parse.urlencode({
+              'chat_id': chat_id,
+              'text': text,
+              'disable_web_page_preview': 'true',
+          }).encode('utf-8')
+          request = urllib.request.Request(
+              f'https://api.telegram.org/bot{token}/sendMessage',
+              data=payload,
+              method='POST',
+          )
+          with urllib.request.urlopen(request, timeout=20) as response:
+              result = json.loads(response.read().decode('utf-8'))
+          if not result.get('ok'):
+              raise RuntimeError(result)
+          print(f'telegram_send_ok=true bot=@{actual}')
+          PY
