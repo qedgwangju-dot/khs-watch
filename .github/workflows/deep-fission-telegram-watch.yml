@@ -6,10 +6,8 @@ on:
       - main
     paths:
       - ".github/workflows/deep-fission-telegram-watch.yml"
-      - "scripts/deep_fission_watch.py"
-      - "scripts/deep_fission_nrc_semantic_filter.py"
+      - "scripts/deep_fission_watch_v4.py"
   schedule:
-    # GitHub cron is UTC. Run hourly, offset from crowded top-of-hour slots.
     - cron: "7 * * * *"
   workflow_dispatch:
     inputs:
@@ -94,33 +92,32 @@ jobs:
           print(f'deep_fission_chat_resolved={bool(chat_id)} route={route}')
           PY
 
-      - name: Validate watcher
+      - name: Validate structured watcher
         if: steps.telegram.outputs.configured == 'true'
         run: |
-          python -m py_compile scripts/deep_fission_watch.py
-          python -m py_compile scripts/deep_fission_nrc_semantic_filter.py
+          python -m py_compile scripts/deep_fission_watch_v4.py
+          python scripts/deep_fission_watch_v4.py --mode self-test
 
       - name: Check Deep Fission official sources
         if: steps.telegram.outputs.configured == 'true'
         run: |
-          rm -f out/deep_fission_alert.md out/deep_fission_setup.md out/deep_fission_connection_test.md
-          python scripts/deep_fission_watch.py --mode check
-          # NRC 페이지 전체 HTML 변화는 오탐이 많으므로 실제 인허가 상태만 다시 비교해 필터링한다.
-          python scripts/deep_fission_nrc_semantic_filter.py
-          test -f out/deep_fission_status.md && cat out/deep_fission_status.md >> "$GITHUB_STEP_SUMMARY" || true
+          rm -f out/deep_fission_alert_v4.md out/deep_fission_connection_test.md
+          python scripts/deep_fission_watch_v4.py --mode check
+          test -f out/deep_fission_status_v4.md && cat out/deep_fission_status_v4.md >> "$GITHUB_STEP_SUMMARY" || true
 
       - name: Build manual connection test
         if: steps.telegram.outputs.configured == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
         run: |
           mkdir -p out
           cat > out/deep_fission_connection_test.md <<'EOF'
-          [Deep Fission 감시] Telegram 연결 시험
+          [Deep Fission 감시] 텔레그램 연결 시험
 
           @hs8879887988798879_bot 연결 정상입니다.
-          - NRC·DOE·Deep Fission·SEC·캔자스주 파슨스 감시
-          - 두산에너빌리티·수산이앤에스 실명 공급망 연결 감시
-          - NRC 페이지 껍데기 변경은 제외하고 실제 인허가 상태 변화만 알림
-          - 과거 기사 재탕은 제외하고 새 중요 변화만 알림
+          - 미국 원자력규제위원회(NRC): 실제 인허가 단계·심사 상태만 비교
+          - 미국 에너지부(DOE): Deep Fission 실명 임계 도달·연료 장전·전출력만 확인
+          - 캔자스주 파슨스: 실제 시추 착수·목표 깊이·시제품 지하 배치·실증 완료만 확인
+          - 미국 증권거래위원회(SEC): 신규 공시 식별번호 기준 중복 제거
+          - 페이지 메뉴·문구·갱신시각 변화만으로는 알림하지 않음
           EOF
 
       - name: Send Telegram messages
@@ -132,14 +129,9 @@ jobs:
           python - <<'PY'
           import html as html_lib
           import json, os, pathlib, re, urllib.parse, urllib.request
-
           token=os.environ['DEEP_FISSION_TELEGRAM_BOT_TOKEN'].strip()
           chat_id=os.environ['DEEP_FISSION_TELEGRAM_CHAT_ID'].strip()
-          files=[
-              pathlib.Path('out/deep_fission_connection_test.md'),
-              pathlib.Path('out/deep_fission_setup.md'),
-              pathlib.Path('out/deep_fission_alert.md'),
-          ]
+          files=[pathlib.Path('out/deep_fission_connection_test.md'), pathlib.Path('out/deep_fission_alert_v4.md')]
 
           def render_html(text: str) -> str:
               rendered=[]
@@ -147,7 +139,7 @@ jobs:
                   m=re.fullmatch(r'\s*- 링크:\s*(https?://\S+)\s*', line)
                   if m:
                       url=html_lib.escape(m.group(1), quote=True)
-                      rendered.append(f'- 링크: <a href="{url}">[원문 뉴스보기]</a>')
+                      rendered.append(f'- 원문: <a href="{url}">[원문 뉴스보기]</a>')
                   else:
                       rendered.append(html_lib.escape(line))
               return '\n'.join(rendered)
@@ -159,16 +151,12 @@ jobs:
               text=path.read_text(encoding='utf-8').strip()
               if not text:
                   continue
-              # Telegram sendMessage text limit is 4096 chars. Split conservatively by sections.
               chunks=[]
               while len(text)>3600:
                   cut=text.rfind('\n\n',0,3600)
-                  if cut<1000:
-                      cut=3600
-                  chunks.append(text[:cut].strip())
-                  text=text[cut:].strip()
-              if text:
-                  chunks.append(text)
+                  if cut<1000: cut=3600
+                  chunks.append(text[:cut].strip()); text=text[cut:].strip()
+              if text: chunks.append(text)
               for chunk in chunks:
                   payload=urllib.parse.urlencode({
                       'chat_id': chat_id,
@@ -176,12 +164,8 @@ jobs:
                       'parse_mode': 'HTML',
                       'disable_web_page_preview': 'true',
                   }).encode('utf-8')
-                  req=urllib.request.Request(
-                      f'https://api.telegram.org/bot{token}/sendMessage',
-                      data=payload,
-                      method='POST',
-                  )
-                  with urllib.request.urlopen(req, timeout=30) as r:
+                  req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage',data=payload,method='POST')
+                  with urllib.request.urlopen(req,timeout=30) as r:
                       result=json.loads(r.read().decode('utf-8'))
                   if not result.get('ok'):
                       raise RuntimeError(f'Telegram send failed for {path}: {result}')
@@ -189,27 +173,20 @@ jobs:
           print(f'deep_fission_telegram_messages_sent={sent}')
           PY
 
-      - name: Persist state only after successful delivery/check
-        if: steps.telegram.outputs.configured == 'true' && success()
-        run: |
-          if [ -f out/deep_fission_watch_state_pending.json ]; then
-            cp out/deep_fission_watch_state_pending.json data/deep_fission_watch_state.json
-          fi
-          if [ -f out/deep_fission_nrc_semantic_state_pending.json ]; then
-            cp out/deep_fission_nrc_semantic_state_pending.json data/deep_fission_nrc_semantic_state.json
-          fi
+      - name: Persist state after successful check
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/deep_fission_watch_v4_state_pending.json') != ''
+        run: cp out/deep_fission_watch_v4_state_pending.json data/deep_fission_watch_v4_state.json
 
       - name: Commit watch state
-        if: steps.telegram.outputs.configured == 'true' && success()
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('data/deep_fission_watch_v4_state.json') != ''
         run: |
           git config user.name "deep-fission-watch[bot]"
           git config user.email "deep-fission-watch[bot]@users.noreply.github.com"
-          [ -f data/deep_fission_watch_state.json ] && git add data/deep_fission_watch_state.json || true
-          [ -f data/deep_fission_nrc_semantic_state.json ] && git add data/deep_fission_nrc_semantic_state.json || true
+          git add data/deep_fission_watch_v4_state.json
           if git diff --cached --quiet; then
             echo "Deep Fission watch state unchanged"
           else
-            git commit -m "Update Deep Fission watch state"
+            git commit -m "Update Deep Fission v4 watch state"
             for attempt in 1 2 3; do
               if git pull --rebase origin main && git push; then
                 exit 0
@@ -224,14 +201,12 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: deep-fission-watch-${{ github.run_id }}
+          name: deep-fission-watch-v4-${{ github.run_id }}
           path: |
-            out/deep_fission_status.md
-            out/deep_fission_alert.md
-            out/deep_fission_setup.md
+            out/deep_fission_status_v4.md
+            out/deep_fission_alert_v4.md
             out/deep_fission_connection_test.md
-            out/deep_fission_errors.log
-            out/deep_fission_watch_state_pending.json
-            out/deep_fission_nrc_semantic_state_pending.json
+            out/deep_fission_errors_v4.log
+            out/deep_fission_watch_v4_state_pending.json
           if-no-files-found: ignore
           retention-days: 14
