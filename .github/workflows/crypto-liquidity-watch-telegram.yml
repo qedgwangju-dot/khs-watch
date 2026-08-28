@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/crypto-liquidity-watch-telegram.yml"
       - "scripts/crypto_liquidity_watch.py"
+      - "scripts/crypto_alert_krw.py"
       - "data/crypto_liquidity_watch_state.json"
   schedule:
     # 15-minute web watch. Silent when there is no meaningful change.
@@ -39,7 +40,9 @@ jobs:
         run: python -m pip install --disable-pip-version-check beautifulsoup4
 
       - name: Validate watcher
-        run: python -m py_compile scripts/crypto_liquidity_watch.py
+        run: |
+          python -m py_compile scripts/crypto_liquidity_watch.py
+          python -m py_compile scripts/crypto_alert_krw.py
 
       - name: Validate exact Telegram bot route without sending
         env:
@@ -69,6 +72,10 @@ jobs:
 
       - name: Check Treasury buybacks, long yields and BTC ETF flows
         run: python scripts/crypto_liquidity_watch.py
+
+      - name: Convert dollar amounts to KRW using date-matched FX
+        if: hashFiles('out/crypto_liquidity_watch_telegram.txt') != ''
+        run: python scripts/crypto_alert_krw.py
 
       - name: Publish watcher summary
         if: always()
