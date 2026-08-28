@@ -1,10 +1,10 @@
 {
-  "updated_at_kst": "2026-08-28T09:51:05+09:00",
-  "statement_hash": "b2cffddb657105fb606b9c0d76c27561492266f10ce84b777101c73a7eb811cc",
+  "updated_at_kst": "2026-08-28T16:08:06+09:00",
+  "statement_hash": "967d5d57ce98cc35415a940e2f0ab41285c83752b7114e384a33547cc2026cab",
   "statement": {
     "title": "통화정책방향(2026.8.27)",
     "url": "https://www.bok.or.kr/portal/bbs/P0000559/view.do?nttId=11064191&menuNo=200690",
-    "hash": "b2cffddb657105fb606b9c0d76c27561492266f10ce84b777101c73a7eb811cc",
+    "hash": "967d5d57ce98cc35415a940e2f0ab41285c83752b7114e384a33547cc2026cab",
     "parser_version": 3,
     "rate_from": 2.75,
     "rate_to": 3.0,
@@ -46,6 +46,7 @@
       "3.50": 6
     },
     "total": 21,
-    "hash": "8715069b2cce873761db745666024bc7e552e5b1deef2bae2b0562b974dd9d3b"
+    "hash": "8715069b2cce873761db745666024bc7e552e5b1deef2bae2b0562b974dd9d3b",
+    "as_of_date": "2026-08-27"
   }
 }
