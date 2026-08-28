@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - ".github/workflows/deep-fission-telegram-watch.yml"
-      - "scripts/deep_fission_watch_v4.py"
+      - "scripts/deep_fission_watch_v3.py"
   schedule:
     - cron: "7 * * * *"
   workflow_dispatch:
@@ -54,7 +54,6 @@ jobs:
         run: |
           if [ -z "$DEEP_FISSION_TELEGRAM_BOT_TOKEN" ]; then
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "Deep Fission Telegram token missing. State will not be consumed." >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
           python - <<'PY'
@@ -68,7 +67,6 @@ jobs:
           if not identity.get('ok') or actual.lower()!=expected.lower():
               raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
           chat_id=configured_chat
-          route='secret'
           if not chat_id:
               with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0', timeout=25) as r:
                   updates=json.loads(r.read().decode('utf-8'))
@@ -79,31 +77,81 @@ jobs:
                   if str(chat.get('type') or '') == 'private' and chat.get('id') is not None:
                       candidates.append((int(upd.get('update_id') or 0), str(chat['id'])))
               if candidates:
-                  candidates.sort()
-                  chat_id=candidates[-1][1]
-                  route='getUpdates'
+                  candidates.sort(); chat_id=candidates[-1][1]
           out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
           with out.open('a', encoding='utf-8') as f:
               f.write(f'bot_username={actual}\n')
               f.write(f'chat_id={chat_id}\n')
-              f.write(f'chat_route={route}\n')
               f.write(f'configured={"true" if chat_id else "false"}\n')
           print(f'deep_fission_bot_verified=@{actual}')
-          print(f'deep_fission_chat_resolved={bool(chat_id)} route={route}')
           PY
 
-      - name: Validate structured watcher
+      - name: Validate semantic watcher
         if: steps.telegram.outputs.configured == 'true'
         run: |
-          python -m py_compile scripts/deep_fission_watch_v4.py
-          python scripts/deep_fission_watch_v4.py --mode self-test
+          python -m py_compile scripts/deep_fission_watch_v3.py
+          python scripts/deep_fission_watch_v3.py --mode self-test
 
       - name: Check Deep Fission official sources
         if: steps.telegram.outputs.configured == 'true'
         run: |
-          rm -f out/deep_fission_alert_v4.md out/deep_fission_connection_test.md
-          python scripts/deep_fission_watch_v4.py --mode check
-          test -f out/deep_fission_status_v4.md && cat out/deep_fission_status_v4.md >> "$GITHUB_STEP_SUMMARY" || true
+          rm -f out/deep_fission_alert_v3.md out/deep_fission_connection_test.md
+          python scripts/deep_fission_watch_v3.py --mode check
+          test -f out/deep_fission_status_v3.md && cat out/deep_fission_status_v3.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Enforce Korean alert wording
+        if: steps.telegram.outputs.configured == 'true'
+        run: |
+          python - <<'PY'
+          import pathlib, re
+          p=pathlib.Path('out/deep_fission_alert_v3.md')
+          if not p.exists():
+              raise SystemExit(0)
+          text=p.read_text(encoding='utf-8')
+          replacements=[
+              ('Nuclear Safety Design Agreement', '원자력 안전설계협약'),
+              ('Gravity Reactor', 'Gravity 원자로'),
+              ('prototype reactor canister', '시제품 원자로 용기'),
+              ('prototype canister', '시제품 원자로 용기'),
+              ('non-nuclear prototype', '비핵 시제품'),
+              ('prototype', '시제품'),
+              ('proof of concept', '개념검증'),
+              ('PoC borehole', '개념검증 시추공'),
+              ('borehole integrity', '시추공 건전성'),
+              ('borehole', '시추공'),
+              ('customer pipeline', '고객 후보군'),
+              ('pipeline', '고객 후보군'),
+              ('non-binding', '비구속적'),
+              ('named customer', '실명 고객'),
+              ('binding PPA/offtake', '구속력 있는 전력구매계약·전력구매약정'),
+              ('Combined License', '통합허가'),
+              ('combined license', '통합허가'),
+              ('pre-application', '사전협의'),
+              ('licensing phase', '인허가 단계'),
+              ('commercial licensing', '상업 인허가'),
+              ('docketing', '정식 접수'),
+              ('review schedule', '심사 일정'),
+              ('full-power milestone', '전출력 단계'),
+              ('fuel loading', '연료 장전'),
+              ('criticality', '임계 도달'),
+              ('authorization', '승인'),
+              ('going concern', '계속기업 불확실성'),
+              ('pilot CAPEX', '시범사업 설비투자'),
+              ('counterparty', '거래상대방'),
+              ('U.S. NRC', '미국 원자력규제위원회(NRC)'),
+              ('U.S. DOE', '미국 에너지부(DOE)'),
+              ('U.S. SEC', '미국 증권거래위원회(SEC)'),
+              ('Parsons', '파슨스'),
+          ]
+          for a,b in replacements:
+              text=text.replace(a,b)
+          # 임의의 영문 보도자료 제목이 그대로 노출되는 fallback을 막는다.
+          text=re.sub(r'- 새 사실: 신규 공식 보도자료 발표:.*', '- 새 사실: Deep Fission이 투자 판단상 중요한 신규 공식 보도자료를 공개', text)
+          text=re.sub(r'- 다음 확인: 8-K Item과.*', '- 다음 확인: 8-K 세부 항목과 계약·인허가·경영진·자금조달의 실제 변경 내용', text)
+          text=text.replace('SEC Form ', '미국 증권거래위원회(SEC) ')
+          text=text.replace('해당 accession 미제출', '해당 공시 식별번호 미제출')
+          p.write_text(text,encoding='utf-8')
+          PY
 
       - name: Build manual connection test
         if: steps.telegram.outputs.configured == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
@@ -113,11 +161,11 @@ jobs:
           [Deep Fission 감시] 텔레그램 연결 시험
 
           @hs8879887988798879_bot 연결 정상입니다.
-          - 미국 원자력규제위원회(NRC): 실제 인허가 단계·심사 상태만 비교
-          - 미국 에너지부(DOE): Deep Fission 실명 임계 도달·연료 장전·전출력만 확인
-          - 캔자스주 파슨스: 실제 시추 착수·목표 깊이·시제품 지하 배치·실증 완료만 확인
-          - 미국 증권거래위원회(SEC): 신규 공시 식별번호 기준 중복 제거
-          - 페이지 메뉴·문구·갱신시각 변화만으로는 알림하지 않음
+          - NRC: 실제 인허가 단계·심사 상태 변화만 알림
+          - DOE: Deep Fission 실명 임계 도달·연료 장전·전출력 변화만 알림
+          - 파슨스: 실제 시추 착수·목표 깊이·시제품 지하 배치·실증 완료만 알림
+          - 페이지 메뉴·갱신시각·문구 재배치만으로는 알림하지 않음
+          - 동일 사건은 한 번만 알림
           EOF
 
       - name: Send Telegram messages
@@ -131,9 +179,8 @@ jobs:
           import json, os, pathlib, re, urllib.parse, urllib.request
           token=os.environ['DEEP_FISSION_TELEGRAM_BOT_TOKEN'].strip()
           chat_id=os.environ['DEEP_FISSION_TELEGRAM_CHAT_ID'].strip()
-          files=[pathlib.Path('out/deep_fission_connection_test.md'), pathlib.Path('out/deep_fission_alert_v4.md')]
-
-          def render_html(text: str) -> str:
+          files=[pathlib.Path('out/deep_fission_connection_test.md'), pathlib.Path('out/deep_fission_alert_v3.md')]
+          def render_html(text):
               rendered=[]
               for line in text.splitlines():
                   m=re.fullmatch(r'\s*- 링크:\s*(https?://\S+)\s*', line)
@@ -143,14 +190,11 @@ jobs:
                   else:
                       rendered.append(html_lib.escape(line))
               return '\n'.join(rendered)
-
           sent=0
           for path in files:
-              if not path.exists():
-                  continue
+              if not path.exists(): continue
               text=path.read_text(encoding='utf-8').strip()
-              if not text:
-                  continue
+              if not text: continue
               chunks=[]
               while len(text)>3600:
                   cut=text.rfind('\n\n',0,3600)
@@ -158,39 +202,31 @@ jobs:
                   chunks.append(text[:cut].strip()); text=text[cut:].strip()
               if text: chunks.append(text)
               for chunk in chunks:
-                  payload=urllib.parse.urlencode({
-                      'chat_id': chat_id,
-                      'text': render_html(chunk),
-                      'parse_mode': 'HTML',
-                      'disable_web_page_preview': 'true',
-                  }).encode('utf-8')
+                  payload=urllib.parse.urlencode({'chat_id':chat_id,'text':render_html(chunk),'parse_mode':'HTML','disable_web_page_preview':'true'}).encode('utf-8')
                   req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage',data=payload,method='POST')
                   with urllib.request.urlopen(req,timeout=30) as r:
                       result=json.loads(r.read().decode('utf-8'))
-                  if not result.get('ok'):
-                      raise RuntimeError(f'Telegram send failed for {path}: {result}')
+                  if not result.get('ok'): raise RuntimeError(result)
                   sent+=1
           print(f'deep_fission_telegram_messages_sent={sent}')
           PY
 
       - name: Persist state after successful check
-        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/deep_fission_watch_v4_state_pending.json') != ''
-        run: cp out/deep_fission_watch_v4_state_pending.json data/deep_fission_watch_v4_state.json
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/deep_fission_watch_v3_state_pending.json') != ''
+        run: cp out/deep_fission_watch_v3_state_pending.json data/deep_fission_watch_v3_state.json
 
       - name: Commit watch state
-        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('data/deep_fission_watch_v4_state.json') != ''
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('data/deep_fission_watch_v3_state.json') != ''
         run: |
           git config user.name "deep-fission-watch[bot]"
           git config user.email "deep-fission-watch[bot]@users.noreply.github.com"
-          git add data/deep_fission_watch_v4_state.json
+          git add data/deep_fission_watch_v3_state.json
           if git diff --cached --quiet; then
             echo "Deep Fission watch state unchanged"
           else
-            git commit -m "Update Deep Fission v4 watch state"
+            git commit -m "Update Deep Fission v3 watch state"
             for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
+              if git pull --rebase origin main && git push; then exit 0; fi
               git rebase --abort 2>/dev/null || true
               sleep $((attempt * 3))
             done
@@ -201,12 +237,12 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: deep-fission-watch-v4-${{ github.run_id }}
+          name: deep-fission-watch-v3-${{ github.run_id }}
           path: |
-            out/deep_fission_status_v4.md
-            out/deep_fission_alert_v4.md
+            out/deep_fission_status_v3.md
+            out/deep_fission_alert_v3.md
             out/deep_fission_connection_test.md
-            out/deep_fission_errors_v4.log
-            out/deep_fission_watch_v4_state_pending.json
+            out/deep_fission_errors_v3.log
+            out/deep_fission_watch_v3_state_pending.json
           if-no-files-found: ignore
           retention-days: 14
