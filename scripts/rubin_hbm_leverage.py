@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import html
 import pathlib
+import re
 
 ALERT = pathlib.Path("out/rubin_hbm_alert.md")
 
@@ -20,12 +22,31 @@ def fmt_pct(value: float, digits: int = 0) -> str:
     return f"{value * 100:.{digits}f}%"
 
 
+def fix_source_links(text: str) -> str:
+    """HTML parse_mode에서 Markdown 원문 링크가 글자로 노출되지 않도록 인라인 HTML 링크로 고친다."""
+    pattern = re.compile(
+        r"(?m)^\s*-?\s*\[원문\]\((https?://[^\s)]+)\)\s*$"
+    )
+    return pattern.sub(
+        lambda m: f'<a href="{html.escape(m.group(1), quote=True)}">원문</a>',
+        text,
+    )
+
+
 def main() -> None:
     if not ALERT.exists():
         return
 
     text = ALERT.read_text(encoding="utf-8").strip()
-    if not text or "[HBM 수요·가격 레버리지]" in text:
+    if not text:
+        return
+
+    # pretty 단계가 처리하지 못한 [원문](URL) 형식도 최종 Telegram HTML 형식으로 보정한다.
+    text = fix_source_links(text)
+
+    # 같은 알림을 재처리하더라도 링크 보정은 유지하고 레버리지 블록만 중복 삽입하지 않는다.
+    if "[HBM 수요·가격 레버리지]" in text:
+        ALERT.write_text(text.strip() + "\n", encoding="utf-8")
         return
 
     bit_low = (1 + ACCELERATOR_GROWTH) * (1 + HBM_CONTENT_LOW) - 1
