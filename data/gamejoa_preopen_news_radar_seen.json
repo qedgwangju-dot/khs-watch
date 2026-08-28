@@ -360,16 +360,6 @@
       "source": "매일경제",
       "title": "AI 반도체 훈풍에 파운드리 시장 29% 성장…1위는 대만 TSMC"
     },
-    "event:263db389183dd437f74193e5": {
-      "first_seen_kst": "2026-08-14T15:41:25+09:00",
-      "lanes": {
-        "live": "2026-08-14T15:41:25+09:00"
-      },
-      "last_seen_kst": "2026-08-14T15:41:25+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2614748",
-      "source": "이투데이",
-      "title": "미래에셋 'TIGER 200 ETF', 개인 순매수 1조원 돌파…코스피200 ETF 수익률 1위"
-    },
     "event:2665ca24384bc13eec9ba6e7": {
       "first_seen_kst": "2026-08-19T11:35:17+09:00",
       "lanes": {
@@ -943,6 +933,16 @@
       "link": "https://www.mk.co.kr/news/stock/12137859",
       "source": "매일경제",
       "title": "‘엔비디아 vs 금리 인상’ 줄다리기…코스피, 1.53% 상승한 6912.37 마감"
+    },
+    "event:7aba2d654fa3fd0fbd147db3": {
+      "first_seen_kst": "2026-08-28T16:55:28+09:00",
+      "lanes": {
+        "live": "2026-08-28T16:55:28+09:00"
+      },
+      "last_seen_kst": "2026-08-28T16:55:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260828139600008",
+      "source": "연합뉴스",
+      "title": "'삼성·SK그룹 상장사 투자 패시브' 등 ETF 4종 신규 상장 | 연합뉴스"
     },
     "event:81a41fe336bb31fbfb8a52bf": {
       "first_seen_kst": "2026-08-24T12:15:46+09:00",
@@ -3444,16 +3444,6 @@
       "source": "연합뉴스",
       "title": "DS증권 \"삼전, 금산법 10% 규제에 자사주 소각 여력 10조~20조원\" | 연합뉴스"
     },
-    "link:4e8e5a422fef6b7ec7f88509": {
-      "first_seen_kst": "2026-08-14T15:41:25+09:00",
-      "lanes": {
-        "live": "2026-08-14T15:41:25+09:00"
-      },
-      "last_seen_kst": "2026-08-14T15:41:25+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2614748",
-      "source": "이투데이",
-      "title": "미래에셋 'TIGER 200 ETF', 개인 순매수 1조원 돌파…코스피200 ETF 수익률 1위"
-    },
     "link:4f67ff9bcfd7d756fac85714": {
       "first_seen_kst": "2026-08-20T07:35:07+09:00",
       "lanes": {
@@ -5204,6 +5194,16 @@
       "link": "https://www.news1.kr/finance/market-exr/6265428",
       "source": "뉴스1",
       "title": "'주주환원 뒷심' 삼전닉스 3~4%대 강세…코스피 6900선 회복[장중시황]"
+    },
+    "link:b7282fccf59efb69ad202fa5": {
+      "first_seen_kst": "2026-08-28T16:55:28+09:00",
+      "lanes": {
+        "live": "2026-08-28T16:55:28+09:00"
+      },
+      "last_seen_kst": "2026-08-28T16:55:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260828139600008",
+      "source": "연합뉴스",
+      "title": "'삼성·SK그룹 상장사 투자 패시브' 등 ETF 4종 신규 상장 | 연합뉴스"
     },
     "link:b7dac6e4ca7e33665b8f9a7a": {
       "first_seen_kst": "2026-08-15T22:08:30+09:00",
@@ -10361,16 +10361,6 @@
       "source": "매일경제",
       "title": "기술주 흔들려도 1조 베팅…서학개미, 반도체 3배 ETF에 ‘뭉칫돈’- 매경ECONOMY"
     },
-    "original:c60b27dca839bb73f9d59b2d": {
-      "first_seen_kst": "2026-08-14T15:41:25+09:00",
-      "lanes": {
-        "live": "2026-08-14T15:41:25+09:00"
-      },
-      "last_seen_kst": "2026-08-14T15:41:25+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2614748",
-      "source": "이투데이",
-      "title": "미래에셋 'TIGER 200 ETF', 개인 순매수 1조원 돌파…코스피200 ETF 수익률 1위"
-    },
     "original:c61913538bf270b94388148a": {
       "first_seen_kst": "2026-08-26T11:18:28+09:00",
       "lanes": {
@@ -10734,6 +10724,16 @@
       "link": "https://www.yna.co.kr/view/AKR20260821153351003",
       "source": "연합뉴스",
       "title": "[2보] 삼성전자 \"3분기 30조원 등 올해 최대 110조 주주환원\" | 연합뉴스"
+    },
+    "original:e0e8001f046fa0eeeb1496f0": {
+      "first_seen_kst": "2026-08-28T16:55:28+09:00",
+      "lanes": {
+        "live": "2026-08-28T16:55:28+09:00"
+      },
+      "last_seen_kst": "2026-08-28T16:55:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260828139600008",
+      "source": "연합뉴스",
+      "title": "'삼성·SK그룹 상장사 투자 패시브' 등 ETF 4종 신규 상장 | 연합뉴스"
     },
     "original:e10b28d2da3bd2febf8654db": {
       "first_seen_kst": "2026-08-28T09:28:21+09:00",
@@ -14973,16 +14973,6 @@
       "source": "매일경제",
       "title": "기술주 흔들려도 1조 베팅…서학개미, 반도체 3배 ETF에 ‘뭉칫돈’- 매경ECONOMY"
     },
-    "title:c60b27dca839bb73f9d59b2d": {
-      "first_seen_kst": "2026-08-14T15:41:25+09:00",
-      "lanes": {
-        "live": "2026-08-14T15:41:25+09:00"
-      },
-      "last_seen_kst": "2026-08-14T15:41:25+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2614748",
-      "source": "이투데이",
-      "title": "미래에셋 'TIGER 200 ETF', 개인 순매수 1조원 돌파…코스피200 ETF 수익률 1위"
-    },
     "title:c61913538bf270b94388148a": {
       "first_seen_kst": "2026-08-26T11:18:28+09:00",
       "lanes": {
@@ -15346,6 +15336,16 @@
       "link": "https://www.yna.co.kr/view/AKR20260821153351003",
       "source": "연합뉴스",
       "title": "[2보] 삼성전자 \"3분기 30조원 등 올해 최대 110조 주주환원\" | 연합뉴스"
+    },
+    "title:e0e8001f046fa0eeeb1496f0": {
+      "first_seen_kst": "2026-08-28T16:55:28+09:00",
+      "lanes": {
+        "live": "2026-08-28T16:55:28+09:00"
+      },
+      "last_seen_kst": "2026-08-28T16:55:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260828139600008",
+      "source": "연합뉴스",
+      "title": "'삼성·SK그룹 상장사 투자 패시브' 등 ETF 4종 신규 상장 | 연합뉴스"
     },
     "title:e10b28d2da3bd2febf8654db": {
       "first_seen_kst": "2026-08-28T09:28:21+09:00",
@@ -15920,5 +15920,5 @@
       "title": "고유가에 지갑 닫는 美 소비자…월마트 매출 증가율 6년 만에 최저"
     }
   },
-  "updated_at_kst": "2026-08-28T14:10:19+09:00"
+  "updated_at_kst": "2026-08-28T16:55:28+09:00"
 }
