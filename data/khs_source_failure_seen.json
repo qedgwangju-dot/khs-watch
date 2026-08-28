@@ -1,12 +1,5 @@
 {
-  "failure_streaks": {
-    "domestic_telecom|korea.kr": {
-      "lane": "domestic_telecom",
-      "last_seen_kst": "2026-08-28T08:08:42+09:00",
-      "source": "Korea Policy Briefing telecom policy",
-      "streak": 1
-    }
-  },
+  "failure_streaks": {},
   "seen": {
     "02e2949450e1137c": {
       "failure_count": 2,
