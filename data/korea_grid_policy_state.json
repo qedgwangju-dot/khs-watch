@@ -1,9 +1,6 @@
 {
   "last_source_errors": [
-    "https://www.mcee.go.kr/home/web/board/list.do?boardCategoryId=39&boardMasterId=1&menuId=10525&maxPageItems=50: HTTPSConnectionPool(host='www.mcee.go.kr', port=443): Max retries exceeded with url: /home/web/board/list.do?boardCategoryId=39&boardMasterId=1&menuId=10525&maxPageItems=50 (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.mcee.go.kr', port=443) at 0x7f4cd08c3770>, 'Connection to www.mcee.go.kr timed out. (connect timeout=35)'))",
-    "https://www.mcee.go.kr/home/web/board/list.do?boardCategoryId=&boardMasterId=939&menuId=10598&maxPageItems=50: HTTPSConnectionPool(host='www.mcee.go.kr', port=443): Max retries exceeded with url: /home/web/board/list.do?boardCategoryId=&boardMasterId=939&menuId=10598&maxPageItems=50 (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.mcee.go.kr', port=443) at 0x7f4cd0592a50>, 'Connection to www.mcee.go.kr timed out. (connect timeout=35)'))",
-    "https://www.law.go.kr/LSW/lsInfoP.do?ancYnChk=0&chrClsCd=010202&efYd=20260603&lsiSeq=286475&urlMode=lsInfoP: HTTPSConnectionPool(host='www.law.go.kr', port=443): Max retries exceeded with url: /LSW/lsInfoP.do?ancYnChk=0&chrClsCd=010202&efYd=20260603&lsiSeq=286475&urlMode=lsInfoP (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.law.go.kr', port=443) at 0x7f4cd05928d0>, 'Connection to www.law.go.kr timed out. (connect timeout=35)'))",
-    "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000277830&chrClsCd=010202&urlMode=admRulLsInfoP: HTTPSConnectionPool(host='www.law.go.kr', port=443): Max retries exceeded with url: /LSW/admRulInfoP.do?admRulSeq=2100000277830&chrClsCd=010202&urlMode=admRulLsInfoP (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.law.go.kr', port=443) at 0x7f4cd0593f50>, 'Connection to www.law.go.kr timed out. (connect timeout=35)'))"
+    "https://www.mcee.go.kr/home/web/board/list.do?boardCategoryId=39&boardMasterId=1&menuId=10525&maxPageItems=50: 404 Client Error: Not Found for url: https://www.mcee.go.kr/404.jsp;jsessionid=CooNk0Z_aZjRGklmUEtMZWCVUOihhGGCe3P6qHt5.mehome1"
   ],
   "page_versions": {
     "송·변전설비 주변지역 보상·지원 기준 고시": "[시행 2025. 11. 30.] | [기후에너지환경부고시 제2025-61호, 2025. 11. 24., 일부개정] | 기후에너지환경부고시 제2025-61호",
@@ -25,6 +22,6 @@
     "ced55bb20a43ecc63cd29095f85b5a29458af742526fcdcebac0d0dc0cc708ea",
     "d86dc5b86c5cebb63ee7c3e788f2fed013b7b8867055ef865783747ff7ccbe20"
   ],
-  "updated_at": "2026-08-29T02:25:07.371236+00:00",
+  "updated_at": "2026-08-29T09:20:42.825217+00:00",
   "version": 1
 }
