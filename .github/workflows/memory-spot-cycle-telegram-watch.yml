@@ -63,8 +63,8 @@ jobs:
       - name: Send meaningful memory change to Telegram
         if: hashFiles('out/memory_spot_cycle_watch_telegram.txt') != ''
         env:
-          TELEGRAM_BOT_TOKEN_PRIMARY: ${{ secrets.MEMORY_WATCH_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.MEMORY_WATCH_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN_PRIMARY: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
           TELEGRAM_BOT_TOKEN_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
@@ -81,9 +81,9 @@ jobs:
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
-              raise RuntimeError("Telegram bot token is missing: add MEMORY_WATCH_TELEGRAM_BOT_TOKEN")
+              raise RuntimeError("Telegram bot token is missing: HBM_TELEGRAM_BOT_TOKEN")
           if not chat_id:
-              raise RuntimeError("Telegram chat id is missing: add MEMORY_WATCH_TELEGRAM_CHAT_ID")
+              raise RuntimeError("Telegram chat id is missing: HBM_TELEGRAM_CHAT_ID")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
