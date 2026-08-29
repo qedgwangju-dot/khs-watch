@@ -1,6 +1,6 @@
 """Runtime Korean wording guard for Warsh Telegram alerts.
 
-Loaded automatically through PYTHONPATH=scripts.  It only rewrites the value of
+Loaded automatically through PYTHONPATH=scripts. It only rewrites the value of
 Telegram-style `text` payloads passed to urllib.parse.urlencode, so data parsing
 and source identifiers are untouched.
 """
@@ -11,8 +11,6 @@ _ORIGINAL_URLENCODE = _urlparse.urlencode
 
 
 def _koreanize_alert(text: str) -> str:
-    # Headings / indicators: keep original identifiers where they are useful,
-    # but make the explanation readable in Korean first.
     replacements = [
         ("[Warsh 새 정보축] Money·Credit", "[Warsh 새 정보축] 통화·신용"),
         ("[Warsh 새 정보축] Productivity vs ULC", "[Warsh 새 정보축] 생산성·단위노동비용(ULC)"),
@@ -37,14 +35,15 @@ def _koreanize_alert(text: str) -> str:
         ("Fed policy path", "연준 정책경로"),
         ("Fed 정책경로", "연준 정책경로"),
         ("Treasury 공식 종가", "미 재무부 공식 종가"),
-        ("Treasury", "미 재무부(Treasury)"),
-        ("Fed", "연준(Fed)"),
         ("원문:", "원천:"),
     ]
     for old, new in replacements:
         text = text.replace(old, new)
 
-    # Rates / time-comparison labels.
+    # Only replace standalone abbreviations. Never corrupt words such as Federal.
+    text = re.sub(r"\bFed\b", "연준(Fed)", text)
+    text = re.sub(r"\bTreasury\b", "미 재무부(Treasury)", text)
+
     text = re.sub(r"\b2Y\b", "2년물", text)
     text = re.sub(r"\b10Y\b", "10년물", text)
     text = re.sub(r"\b30Y\b", "30년물", text)
@@ -52,16 +51,13 @@ def _koreanize_alert(text: str) -> str:
     text = text.replace("MoM", "전월 대비")
     text = text.replace("YoY", "전년 대비")
 
-    # Make it explicit why some English sentences can still appear: they are
-    # source-identification quotes, not the explanation itself.
     text = text.replace("[AI·생산성·성장]", "[AI·생산성·성장 — 원문 문장은 식별용]")
     text = text.replace("[물가·고용·금리]", "[물가·고용·금리 — 원문 문장은 식별용]")
     text = text.replace(
-        "[Fed AI 생산성·고용 태스크포스 변화 감지]",
+        "[연준(Fed) AI 생산성·고용 태스크포스 변화 감지]",
         "[연준(Fed) AI 생산성·고용 태스크포스 변화 감지]",
     )
 
-    # Avoid accidental double labels from repeated runtime passes.
     text = text.replace("연준(연준(Fed))", "연준(Fed)")
     text = text.replace("미 재무부(미 재무부(Treasury))", "미 재무부(Treasury)")
     return text
