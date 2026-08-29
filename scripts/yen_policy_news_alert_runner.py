@@ -78,7 +78,6 @@ INTERVENTION_SCALE_CONTEXT = (
 MOF_MONTHLY_INDEX = "https://www.mof.go.jp/policy/international_policy/reference/feio/data/monthly/index.html"
 MOF_MONTHLY_BASE = "https://www.mof.go.jp/policy/international_policy/reference/feio/data/monthly/"
 
-# Exact, high-impact headlines that previously exposed a modality/attribution risk.
 VERIFIED_LITERAL_TRANSLATIONS = {
     "boj has chance to support yen with september rate hike":
         "BOJ는 9월 금리 인상으로 엔화를 지지할 기회가 있다",
@@ -117,8 +116,6 @@ def _has_money(text: str) -> bool:
 def _is_intervention_scale_disclosure(item: base.NewsItem) -> bool:
     text = item.text
     context = _contains(text, INTERVENTION_SCALE_CONTEXT)
-    # Reuters-style headlines can omit the word "intervention" while saying
-    # Japan "spent a record $... to support yen ... ministry data shows".
     reuters_style = (
         "yen" in text.lower()
         and _contains(text, ("spent", "support yen", "ministry data", "official data"))
@@ -166,7 +163,6 @@ def translate_headline_to_korean(
     topic: str,
     current,
 ) -> tuple[str, str]:
-    """Translate without upgrading possibility/forecast wording into a fact."""
     headline = base.clean_headline(title, source)
     normalized = _normalized_headline(headline)
     literal = VERIFIED_LITERAL_TRANSLATIONS.get(normalized)
@@ -174,7 +170,6 @@ def translate_headline_to_korean(
         return literal, "verified_literal"
 
     translated, status = _original_translate_headline(title, source, topic, current)
-
     if _contains(headline, ("has chance to", "could", "may", "might")) and not _contains(
         translated, KOREAN_MODAL_MARKERS
     ):
@@ -190,7 +185,6 @@ def translate_headline_to_korean(
 
 
 def _latest_mof_monthly_item(current: dt.datetime) -> base.NewsItem | None:
-    """Read the latest official MOF monthly intervention disclosure directly."""
     index_text, error = base.fetch_text(
         MOF_MONTHLY_INDEX,
         base.USER_AGENT,
@@ -208,7 +202,7 @@ def _latest_mof_monthly_item(current: dt.datetime) -> base.NewsItem | None:
         )
         return None
 
-    filenames = sorted(set(re.findall(r"(?:^|/)(20\d{6}\.html)", index_text)))
+    filenames = sorted(set(re.findall(r"(20\d{6}\.html)", index_text)))
     if not filenames:
         return None
     filename = filenames[-1]
@@ -338,7 +332,6 @@ def _money_context(item: base.NewsItem, quote: JpyKrwQuote) -> list[str]:
 
 
 def build_message(selected, current):
-    """Make source translation and our market interpretation visibly separate."""
     title, body, payload = _original_build_message(selected, current)
     rows = body.splitlines()
     output: list[str] = []
