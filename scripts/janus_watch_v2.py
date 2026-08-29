@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 from pathlib import Path
+from urllib.parse import urlparse
 import html
 import re
 import sys
 
-import janus_watch as base
+from bs4 import BeautifulSoup
 from deep_translator import GoogleTranslator
+import janus_watch as base
 
 ROOT = Path(__file__).resolve().parents[1]
 
-# war.gov is protected against GitHub-hosted runners (HTTP 403). Replace it with
-# DOE's official Reactor Pilot Program page, which tracks Antares/Radiant and
-# related reactor criticality/deployment milestones that can affect Janus supply.
+# war.gov is protected against GitHub-hosted runners. Replace it with DOE's
+# official Reactor Pilot Program page, which tracks reactor testing milestones
+# relevant to Janus vendors and their supply chains.
 base.SOURCES = [
     source for source in base.SOURCES
     if source.get("name") != "미 전쟁부 Janus 발표"
@@ -25,8 +27,6 @@ base.SOURCES.insert(
     },
 )
 
-# Keep v2 state/output isolated so the first successful run establishes a clean
-# baseline and does not replay old Janus headlines as new alerts.
 base.STATE_PATH = ROOT / "data" / "janus_watch_v2_state.json"
 base.PENDING_STATE_PATH = ROOT / "out" / "janus_watch_v2_state_pending.json"
 base.ALERT_PATH = ROOT / "out" / "janus_alert_v2.html"
@@ -35,9 +35,10 @@ base.ERROR_PATH = ROOT / "out" / "janus_errors_v2.log"
 base.CONNECTION_TEST_PATH = ROOT / "out" / "janus_connection_test_v2.html"
 
 _TRANSLATOR = GoogleTranslator(source="auto", target="ko")
+
+# 식별이 깨지면 안 되는 회사명·제품명·기술약어만 원문 유지한다.
+# U.S. Army, Air Force, Department of Energy 같은 일반 기관 설명은 한국어로 번역한다.
 _PROTECTED_TERMS = [
-    "Janus Program",
-    "Janus",
     "Antares Nuclear",
     "Antares",
     "BWXT Advanced Technologies",
@@ -56,66 +57,210 @@ _PROTECTED_TERMS = [
     "Kaleidos",
     "eVinci",
     "GA-TES",
+    "Janus",
     "TRISO",
     "HALEU",
     "DOE",
-    "U.S. Army",
-    "Army",
+    "NRC",
+    "INL",
+    "DOME",
+    "R-50",
 ]
 
+_BAD_TITLE_RE = re.compile(
+    r"(?:error\s*\d+|server\s+error|that['’]?s\s+an\s+error|"
+    r"please\s+try\s+again\s+later|something\s+went\s+wrong|"
+    r"service\s+unavailable|access\s+denied|forbidden|captcha|"
+    r"temporarily\s+unavailable|internal\s+server\s+error)",
+    re.I,
+)
 
-def _has_korean(text: str) -> bool:
-    return bool(re.search(r"[가-힣]", text or ""))
+# 현재 Radiant 기사들은 URL 슬러그만으로도 원문 제목을 안전하게 복원할 수 있게 둔다.
+_RADIANT_SLUG_TITLES = {
+    "radiant-locks-triso-fuel-supply-through-early-2030s": "Radiant Locks TRISO Fuel Supply Through Early 2030s",
+    "triso-fuel-supply": "Radiant Locks TRISO Fuel Supply Through Early 2030s",
+    "buckley-space-force": "Air Force Selects Radiant to Deliver Microreactors to Buckley Space Force Base",
+    "triso-fuel-inl": "Radiant Receives First TRISO Fuel Shipment at INL DOME, Clearing Path to Full-Power Testing",
+    "radiant-wins-750m-janus-army-contract": "Radiant Wins $750M Contract from U.S. Army for Janus Microreactor Deployment",
+    "second-haleu-allocation": "DOE Selects Radiant for Second HALEU Allocation for Buckley Space Force Base",
+    "factory-site-license": "NRC Accepts Radiant R-50 Production Facility License Application for Accelerated Review",
+    "kaleidos-has-left-the-building": "Kaleidos Has Left the Building and Is En Route to INL DOME",
+    "kaleidos-shipped": "Kaleidos Has Left the Building and Is En Route to INL DOME",
+}
+
+
+def _append_error(message: str) -> None:
+    base.OUT_DIR.mkdir(parents=True, exist_ok=True)
+    with base.ERROR_PATH.open("a", encoding="utf-8") as f:
+        f.write(base.norm(message) + "\n")
+
+
+def _is_bad_title(text: str) -> bool:
+    text = base.norm(text)
+    if not text:
+        return True
+    if _BAD_TITLE_RE.search(text):
+        return True
+    # 오류 페이지의 반복 문구나 숫자만 있는 제목도 차단한다.
+    if len(text) < 5 or not re.search(r"[A-Za-z가-힣]", text):
+        return True
+    return False
+
+
+def _clean_page_title(text: str) -> str:
+    text = base.norm(text)
+    text = re.sub(r"\s*[|\-–—]\s*Radiant(?: Nuclear)?\s*$", "", text, flags=re.I)
+    return base.norm(text)
+
+
+def _title_from_detail_page(url: str) -> str:
+    try:
+        page = base.fetch(url)
+        soup = BeautifulSoup(page, "html.parser")
+        candidates = []
+        for attr, value in [("property", "og:title"), ("name", "twitter:title")]:
+            tag = soup.find("meta", attrs={attr: value})
+            if tag and tag.get("content"):
+                candidates.append(tag.get("content"))
+        h1 = soup.find("h1")
+        if h1:
+            candidates.append(h1.get_text(" ", strip=True))
+        if soup.title:
+            candidates.append(soup.title.get_text(" ", strip=True))
+        for candidate in candidates:
+            candidate = _clean_page_title(candidate)
+            if not _is_bad_title(candidate):
+                return candidate
+    except Exception as exc:
+        _append_error(f"상세 제목 조회 실패 | {url} | {type(exc).__name__}: {exc}")
+    return ""
+
+
+def _title_from_slug(url: str) -> str:
+    slug = urlparse(url).path.rstrip("/").split("/")[-1].lower()
+    if slug in _RADIANT_SLUG_TITLES:
+        return _RADIANT_SLUG_TITLES[slug]
+    words = re.sub(r"[-_]+", " ", slug).strip()
+    if not words:
+        return ""
+    return words.title()
+
+
+def _resolve_event_title(event) -> str:
+    title = _clean_page_title(event.get("title", ""))
+    if not _is_bad_title(title):
+        return title
+
+    # 소스 목록이 일시적으로 500 오류 문구를 링크 텍스트로 내보내도
+    # 상세 페이지의 메타데이터/H1을 다시 읽어 실제 기사 제목으로 복구한다.
+    resolved = _title_from_detail_page(event.get("url", ""))
+    if not resolved:
+        resolved = _title_from_slug(event.get("url", ""))
+    resolved = _clean_page_title(resolved)
+    if _is_bad_title(resolved):
+        _append_error(
+            f"오류 제목 차단 | {event.get('source','')} | {event.get('url','')} | 원문={event.get('title','')}"
+        )
+        return ""
+    return resolved
+
+
+# fingerprint 생성 전에 오류 제목을 실제 제목으로 교정해 같은 URL이 오류/정상 상태를
+# 오갈 때 가짜 신규 알림이 생기는 것도 막는다.
+_ORIGINAL_EXTRACT_ITEMS = base.extract_items
+
+
+def _extract_items_clean(source, page_html):
+    items = _ORIGINAL_EXTRACT_ITEMS(source, page_html)
+    cleaned = []
+    for item in items:
+        title = _resolve_event_title(item)
+        if not title:
+            continue
+        item = dict(item)
+        item["title"] = title
+        cleaned.append(item)
+    return cleaned
+
+
+base.extract_items = _extract_items_clean
 
 
 def _needs_translation(text: str) -> bool:
     text = text or ""
-    # 번역 대상은 설명형 영문이 남아 있는 경우다. 회사명·모델명만 남는 것은 식별을 위해 허용한다.
-    letters = re.findall(r"[A-Za-z]{2,}", text)
-    if not letters:
+    if not re.search(r"[A-Za-z]{2,}", text):
         return False
     stripped = text
     for term in sorted(_PROTECTED_TERMS, key=len, reverse=True):
         stripped = re.sub(re.escape(term), " ", stripped, flags=re.I)
-    return bool(re.search(r"[A-Za-z]{3,}", stripped))
+    # 단위·통화 기호나 순수 약어 외에 설명형 영어가 남아 있으면 번역 대상이다.
+    return bool(re.search(r"\b[A-Za-z]{3,}\b", stripped))
+
+
+def _restore_known_korean(text: str) -> str:
+    replacements = [
+        (r"\bU\.?S\.?\s+Army\b", "미 육군"),
+        (r"\bUS\s+Army\b", "미 육군"),
+        (r"\bU\.?S\.?\s+Air\s+Force\b", "미 공군"),
+        (r"\bAir\s+Force\b", "미 공군"),
+        (r"\bDepartment\s+of\s+Energy\b", "미 에너지부"),
+        (r"\bDepartment\s+of\s+the\s+Air\s+Force\b", "미 공군부"),
+        (r"\bSpace\s+Force\s+Base\b", "우주군기지"),
+        (r"\bFuel\s+Supply\s+Agreement\b", "연료 공급계약"),
+        (r"\bMicroreactors?\b", "마이크로원자로"),
+        (r"\bContract\b", "계약"),
+        (r"\bFactory\b", "공장"),
+        (r"\bLicense\s+Application\b", "허가 신청"),
+    ]
+    out = text
+    for pattern, repl in replacements:
+        out = re.sub(pattern, repl, out, flags=re.I)
+    return base.norm(out)
 
 
 def _translate_ko(text: str) -> str:
-    text = base.norm(text)
+    text = _restore_known_korean(base.norm(text))
     if not text or not _needs_translation(text):
+        if _BAD_TITLE_RE.search(text):
+            raise RuntimeError("오류 페이지 문구가 포함되어 송출 차단")
         return text
 
     protected = {}
     work = text
-    # 고유명·노형·약어는 원문 식별성을 유지하고 일반 설명어만 한국어로 바꾼다.
     for idx, term in enumerate(sorted(_PROTECTED_TERMS, key=len, reverse=True)):
         pattern = re.compile(re.escape(term), re.I)
-        if pattern.search(work):
-            token = f"ZXQ{idx}QXZ"
-            matched = pattern.search(work).group(0)
-            protected[token] = matched
+        match = pattern.search(work)
+        if match:
+            token = f"ZXQTERM{idx}QXZ"
+            protected[token] = match.group(0)
             work = pattern.sub(token, work)
 
     try:
         translated = _TRANSLATOR.translate(work)
     except Exception as exc:
-        # 영어를 그대로 송출하지 않는다. 실패 시 해당 사실은 보류하고 오류 파일에 남긴다.
         raise RuntimeError(f"한국어 번역 실패: {exc}") from exc
 
+    translated = base.norm(translated or "")
     for token, original in protected.items():
-        translated = translated.replace(token, original)
-        translated = translated.replace(token.lower(), original)
+        translated = re.sub(re.escape(token), original, translated, flags=re.I)
 
-    translated = base.norm(translated)
+    translated = _restore_known_korean(translated)
+
+    # 설명형 영어가 남으면 한 번 더 번역한다. 그 뒤에도 남으면 절대 송출하지 않는다.
     if _needs_translation(translated):
-        # 번역기가 설명형 영어를 남긴 경우 한 번 더 번역한다.
         try:
-            translated2 = _TRANSLATOR.translate(translated)
-            if translated2:
-                translated = base.norm(translated2)
+            retry = _TRANSLATOR.translate(translated)
+            if retry:
+                translated = _restore_known_korean(base.norm(retry))
         except Exception:
             pass
 
+    if _BAD_TITLE_RE.search(translated):
+        raise RuntimeError("오류 페이지 문구가 포함되어 송출 차단")
+    if _needs_translation(translated):
+        raise RuntimeError(f"설명형 영어 미번역 잔존: {translated}")
+    if not re.search(r"[가-힣]", translated):
+        raise RuntimeError(f"한국어 번역 결과 없음: {translated}")
     return translated
 
 
@@ -125,12 +270,15 @@ def _render_alert_korean(events, fact_changes):
     shown_events = 0
 
     for event in events[:12]:
+        resolved_title = _resolve_event_title(event)
+        if not resolved_title:
+            continue
         try:
-            title_ko = _translate_ko(event["title"])
+            title_ko = _translate_ko(resolved_title)
         except Exception as exc:
             translation_errors.append(f"{event['source']} | {event['url']} | {exc}")
             continue
-        cat = base.classify(event["title"])
+        cat = base.classify(resolved_title)
         lines.extend(
             [
                 f"• <b>분류:</b> {html.escape(cat)}",
@@ -161,24 +309,22 @@ def _render_alert_korean(events, fact_changes):
         )
         shown_facts += 1
 
-    if translation_errors:
-        base.OUT_DIR.mkdir(parents=True, exist_ok=True)
-        with base.ERROR_PATH.open("a", encoding="utf-8") as f:
-            for err in translation_errors:
-                f.write(err + "\n")
+    for err in translation_errors:
+        _append_error(err)
 
     if shown_events + shown_facts == 0:
-        # 번역되지 않은 영어를 보내느니 알림을 보류한다.
         return ""
 
     total = len(events) + len(fact_changes)
     shown = shown_events + shown_facts
     if total > shown:
-        lines.append(f"• 번역 또는 표시 제한으로 보류된 항목 {total-shown}건은 다음 실행에서 재검증")
-    return "\n".join(lines).strip()
+        lines.append(f"• 오류·번역 미완료로 송출 보류된 항목 {total-shown}건은 다음 실행에서 재검증")
+    result = "\n".join(lines).strip()
+    if _BAD_TITLE_RE.search(result):
+        raise RuntimeError("최종 알림에 서버 오류 문구가 남아 송출 차단")
+    return result
 
 
-# 기존 영문 제목 기반 알림 생성기를 한국어 번역 강제 버전으로 교체한다.
 base.render_alert = _render_alert_korean
 
 if __name__ == "__main__":
