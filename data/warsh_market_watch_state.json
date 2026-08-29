@@ -3,5 +3,14 @@
   "value": 4.34,
   "prev_date": "2026-08-27",
   "prev_value": 4.2,
-  "updated_at_utc": "2026-08-29T00:02:42.307193+00:00"
+  "last_alert_date": "2026-08-28",
+  "pending_event": {
+    "event_date": "2026-08-28",
+    "base_date": "2026-08-27",
+    "base_value": 4.2,
+    "event_value": 4.34,
+    "move_bp": 13.999999999999968
+  },
+  "last_followup_completed": false,
+  "updated_at_utc": "2026-08-29T04:31:32.469918+00:00"
 }
