@@ -121,6 +121,86 @@ class YenPolicyNewsRunnerTests(unittest.TestCase):
         )
         self.assertIn("full_text_rule", payload["fidelity_policy"])
 
+    def test_bloomberg_record_intervention_amount_is_material_alert(self) -> None:
+        item = self.item(
+            "Japan Yen Intervention Hits Record $96 Billion in Past Month",
+            "Bloomberg",
+        )
+        classified = runner.base.classify(item)
+        self.assertIsNotNone(classified)
+        self.assertEqual(classified.topic, runner.INTERVENTION_SCALE_TOPIC)
+        self.assertEqual(classified.material_score, 5)
+        self.assertEqual(classified.source_group, "Bloomberg")
+
+    def test_reuters_record_spending_wording_is_material_alert(self) -> None:
+        item = self.item(
+            "Japan spent record $96.5 billion to support yen over past month, ministry data shows",
+            "Reuters",
+        )
+        classified = runner.base.classify(item)
+        self.assertIsNotNone(classified)
+        self.assertEqual(classified.topic, runner.INTERVENTION_SCALE_TOPIC)
+        self.assertEqual(classified.material_score, 5)
+
+    def test_old_market_recap_without_scale_stays_suppressed(self) -> None:
+        item = self.item(
+            "Yen gives up nearly half of gains from joint US-Japan market intervention",
+            "Financial Times",
+        )
+        self.assertIsNone(runner.base.classify(item))
+
+    def test_official_mof_monthly_disclosure_is_collected_and_ranked_official(self) -> None:
+        current = dt.datetime(2026, 8, 28, 12, 0, tzinfo=dt.timezone.utc)
+        index_html = '<a href="20260828.html">令和8年7月30日～令和8年8月26日</a>'
+        page_html = '''<html><title>外国為替平衡操作の実施状況</title><body>
+        外国為替平衡操作の実施状況（令和8年7月30日～令和8年8月26日）
+        外国為替平衡操作額 15兆3,993億円
+        </body></html>'''
+        with mock.patch.object(runner.base, "fetch_text", side_effect=[(index_html, None), (page_html, None)]):
+            item = runner._latest_mof_monthly_item(current)
+        self.assertIsNotNone(item)
+        self.assertEqual(item.source, "Japan Ministry of Finance")
+        classified = runner.base.classify(item)
+        self.assertIsNotNone(classified)
+        self.assertEqual(classified.topic, runner.INTERVENTION_SCALE_TOPIC)
+        rank, groups = runner.base.corroboration_rank(classified, [classified])
+        self.assertEqual(rank, 3)
+        self.assertEqual(groups, ["Japan MOF"])
+
+    def test_intervention_money_context_always_pairs_foreign_amount_with_krw(self) -> None:
+        item = self.item(
+            "Japan Yen Intervention Hits Record $96 Billion in Past Month",
+            "Bloomberg",
+            "Japan intervened by 15.3993 trillion yen over the period.",
+        )
+        quote = runner.JpyKrwQuote("2026-08-28", 1377.18, 161.50, 1377.18 / 161.50)
+        lines = runner._money_context(item, quote)
+        text = "\n".join(lines)
+        self.assertIn("15조3,993억엔 (약", text)
+        self.assertIn("96.0십억달러 (약", text)
+        self.assertIn("원화 환산 기준", text)
+
+    def test_scale_message_labels_period_total_not_new_same_day_intervention(self) -> None:
+        current = dt.datetime(2026, 8, 28, 12, 0, tzinfo=dt.timezone.utc)
+        item = self.item(
+            "Japan Yen Intervention Hits Record $96 Billion in Past Month",
+            "Bloomberg",
+            "Japan intervened by 15.3993 trillion yen over the period.",
+        )
+        classified = runner.base.classify(item)
+        self.assertIsNotNone(classified)
+        quote = runner.JpyKrwQuote("2026-08-28", 1377.18, 161.50, 1377.18 / 161.50)
+        with mock.patch.object(runner, "latest_jpy_krw", return_value=quote):
+            title, body, payload = runner.base.build_message(
+                [(classified, 1, ["Bloomberg"])],
+                current,
+            )
+        self.assertIn("개입 실적 촉매", title)
+        self.assertIn("누적 집행 실적", body)
+        self.assertIn("15조3,993억엔 (약", body)
+        self.assertIn("96.0십억달러 (약", body)
+        self.assertTrue(payload["items"][0]["krw_conversion"]["required"])
+
 
 if __name__ == "__main__":
     unittest.main()
