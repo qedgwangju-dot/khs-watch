@@ -5,8 +5,8 @@ import html
 import re
 import sys
 
+import requests
 from bs4 import BeautifulSoup
-from deep_translator import GoogleTranslator
 import janus_watch as base
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,10 +31,6 @@ base.STATUS_PATH = ROOT / "out" / "janus_status_v2.md"
 base.ERROR_PATH = ROOT / "out" / "janus_errors_v2.log"
 base.CONNECTION_TEST_PATH = ROOT / "out" / "janus_connection_test_v2.html"
 
-_TRANSLATOR_EN = GoogleTranslator(source="en", target="ko")
-_TRANSLATOR_AUTO = GoogleTranslator(source="auto", target="ko")
-
-# 최종 한국어 문장 안에서 원문 유지가 허용되는 식별자만 화이트리스트 처리한다.
 _PROTECTED_TERMS = [
     "Antares Nuclear", "Antares", "BWXT Advanced Technologies", "BWXT",
     "General Atomics Electromagnetic Systems", "General Atomics",
@@ -156,7 +152,6 @@ def _needs_translation(text: str) -> bool:
     stripped = text
     for term in sorted(_PROTECTED_TERMS, key=len, reverse=True):
         stripped = re.sub(re.escape(term), " ", stripped, flags=re.I)
-    # 2글자 이하 약어/단위는 허용하되 일반 설명형 영어 단어는 차단한다.
     return bool(re.search(r"\b[A-Za-z]{3,}\b", stripped))
 
 
@@ -181,6 +176,47 @@ def _restore_known_korean(text: str) -> str:
     return base.norm(out)
 
 
+def _translate_google_web(text: str, source: str = "en") -> str:
+    params = {
+        "client": "gtx",
+        "sl": source,
+        "tl": "ko",
+        "dt": "t",
+        "q": text,
+    }
+    r = requests.get(
+        "https://translate.googleapis.com/translate_a/single",
+        params=params,
+        headers={"User-Agent": base.UA},
+        timeout=20,
+    )
+    r.raise_for_status()
+    data = r.json()
+    parts = []
+    for row in (data[0] if isinstance(data, list) and data else []):
+        if isinstance(row, list) and row and row[0]:
+            parts.append(str(row[0]))
+    result = base.norm("".join(parts))
+    if not result:
+        raise RuntimeError("Google 웹 번역 결과가 비어 있음")
+    return result
+
+
+def _translate_mymemory(text: str) -> str:
+    r = requests.get(
+        "https://api.mymemory.translated.net/get",
+        params={"q": text, "langpair": "en|ko"},
+        headers={"User-Agent": base.UA},
+        timeout=20,
+    )
+    r.raise_for_status()
+    data = r.json()
+    result = base.norm(((data.get("responseData") or {}).get("translatedText") or ""))
+    if not result:
+        raise RuntimeError("MyMemory 번역 결과가 비어 있음")
+    return html.unescape(result)
+
+
 def _translate_ko(text: str) -> str:
     raw = base.norm(text)
     if not raw:
@@ -190,29 +226,28 @@ def _translate_ko(text: str) -> str:
     if not _needs_translation(raw):
         return _restore_known_korean(raw)
 
-    # 보호 토큰을 넣으면 Google 번역이 전체 문장을 실패하는 경우가 있어
-    # 영문 원문 전체를 먼저 번역하고, 최종 검사에서 식별자만 예외 허용한다.
-    translator = _TRANSLATOR_AUTO if re.search(r"[가-힣]", raw) else _TRANSLATOR_EN
+    translated = ""
+    errors = []
     try:
-        translated = base.norm(translator.translate(raw) or "")
+        translated = _translate_google_web(raw, "auto" if re.search(r"[가-힣]", raw) else "en")
     except Exception as exc:
-        raise RuntimeError(f"한국어 번역 실패: {exc}") from exc
+        errors.append(f"Google={exc}")
 
-    translated = _restore_known_korean(translated)
-
-    # 자동 감지에서 영어 조각이 남으면 전체 문장을 영어 원문 기준으로 한 번 더 번역한다.
-    if _needs_translation(translated) and not re.search(r"[가-힣]", raw):
+    if not translated or _needs_translation(_restore_known_korean(translated)):
         try:
-            translated = _restore_known_korean(base.norm(_TRANSLATOR_EN.translate(raw) or translated))
-        except Exception:
-            pass
+            fallback = _translate_mymemory(raw)
+            if fallback:
+                translated = fallback
+        except Exception as exc:
+            errors.append(f"MyMemory={exc}")
 
+    translated = _restore_known_korean(base.norm(translated))
     if _BAD_TITLE_RE.search(translated):
         raise RuntimeError("오류 페이지 문구가 포함되어 송출 차단")
     if _needs_translation(translated):
-        raise RuntimeError(f"설명형 영어 미번역 잔존: {translated}")
+        raise RuntimeError(f"설명형 영어 미번역 잔존: {translated} | {'; '.join(errors)}")
     if not re.search(r"[가-힣]", translated):
-        raise RuntimeError(f"한국어 번역 결과 없음: {translated}")
+        raise RuntimeError(f"한국어 번역 결과 없음: {translated} | {'; '.join(errors)}")
     return translated
 
 
