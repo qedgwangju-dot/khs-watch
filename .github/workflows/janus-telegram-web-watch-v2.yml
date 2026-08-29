@@ -78,11 +78,15 @@ jobs:
           import sys
           sys.path.insert(0, 'scripts')
           import janus_watch_v2 as j
-          sample='Army selects Fort Drum for Janus Program microreactor'
+          if not j._is_bad_title("Error 500 (Server Error). Please try again later."):
+              raise RuntimeError('Server-error title filter is not working')
+          sample='U.S. Army selects Fort Drum for Janus Program microreactor deployment'
           translated=j._translate_ko(sample)
           print('translation_test=', translated)
-          if 'selects' in translated.lower() or 'microreactor' in translated.lower():
+          if j._needs_translation(translated):
               raise RuntimeError('English descriptive words remained in Korean translation test')
+          if not any('가' <= ch <= '힣' for ch in translated):
+              raise RuntimeError('Korean translation was not produced')
           PY
 
       - name: Check Janus web sources
@@ -95,6 +99,30 @@ jobs:
             cat out/janus_errors_v2.log >> "$GITHUB_STEP_SUMMARY"
           fi
 
+      - name: Reject broken or untranslated alert before Telegram
+        if: hashFiles('out/janus_alert_v2.html') != ''
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import html, re, sys
+          sys.path.insert(0, 'scripts')
+          import janus_watch_v2 as j
+          p=Path('out/janus_alert_v2.html')
+          text=p.read_text(encoding='utf-8')
+          plain=html.unescape(re.sub(r'<[^>]+>', '', text))
+          if j._BAD_TITLE_RE.search(plain):
+              raise RuntimeError('Blocked Telegram alert: server/error-page text remains')
+          for line in plain.splitlines():
+              line=line.strip()
+              if line.startswith('• 새 사실:') or line.startswith('• 변경:'):
+                  value=line.split(':',1)[1].strip()
+                  if j._needs_translation(value):
+                      raise RuntimeError(f'Blocked Telegram alert: untranslated descriptive English remains: {value}')
+                  if not re.search(r'[가-힣]', value):
+                      raise RuntimeError(f'Blocked Telegram alert: Korean text missing: {value}')
+          print('janus_alert_preflight=passed')
+          PY
+
       - name: Build manual connection test
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
         run: |
@@ -104,9 +132,10 @@ jobs:
 
           • 수신 봇: @hs8879887988798879_bot
           • 확인 주기: 15분
-          • 감시: 미 육군·미 에너지부 공식 Janus/원자로 실증 자료 + 5개 선정업체 공식 뉴스
-          • 핵심 조건: 계약·예산, 2028 일정, Army 규제·시험, HALEU·TRISO 연료, 제작·배치, 후속 기지·업체 추가
-          • 영어 기사·발표 제목은 일반 설명어를 한국어로 번역하고 회사명·제품명·약어는 식별을 위해 원문 유지
+          • 감시: 미 육군·미 에너지부 공식 Janus 원자로 실증 자료 + 5개 선정업체 공식 뉴스
+          • 핵심 조건: 계약·예산, 2028 일정, 육군 규제·시험, HALEU·TRISO 연료, 제작·배치, 후속 기지·업체 추가
+          • 영어 기사·발표 제목은 일반 설명어를 한국어로 번역하고 회사명·제품명·약어만 식별을 위해 원문 유지
+          • 서버 오류·접근 오류 문구는 신규 사실로 취급하지 않고 송출 차단
           • 번역 실패 시 영어 원문을 그대로 보내지 않고 해당 항목 송출을 보류한 뒤 재검증
           • 같은 링크·같은 제목은 중복 발송하지 않음
           EOF
