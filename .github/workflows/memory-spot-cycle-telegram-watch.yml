@@ -1,0 +1,189 @@
+name: Memory Spot Contract HBM Telegram Watch
+
+on:
+  push:
+    paths:
+      - ".github/workflows/memory-spot-cycle-telegram-watch.yml"
+      - "scripts/memory_spot_cycle_watch.py"
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description: "Send current high-signal items as a Telegram smoke test"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: memory-spot-cycle-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate watcher
+        run: python -m py_compile scripts/memory_spot_cycle_watch.py
+
+      - name: Scan memory spot, contract and HBM supply signals
+        env:
+          FORCE_NOTIFY: ${{ github.event_name == 'push' && 'true' || inputs.force_notify }}
+        run: python scripts/memory_spot_cycle_watch.py
+
+      - name: Publish watcher summary
+        if: always()
+        run: |
+          if [ -f out/memory_spot_cycle_watch_status.md ]; then
+            cat out/memory_spot_cycle_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "메모리 웹 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/memory_spot_cycle_watch_telegram.txt ]; then
+            printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/memory_spot_cycle_watch_telegram.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send meaningful memory change to Telegram
+        if: hashFiles('out/memory_spot_cycle_watch_telegram.txt') != ''
+        env:
+          TELEGRAM_BOT_TOKEN_PRIMARY: ${{ secrets.MEMORY_WATCH_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.MEMORY_WATCH_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN_PRIMARY") or os.getenv("TELEGRAM_BOT_TOKEN_FALLBACK") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("Telegram bot token is missing: add MEMORY_WATCH_TELEGRAM_BOT_TOKEN")
+          if not chat_id:
+              raise RuntimeError("Telegram chat id is missing: add MEMORY_WATCH_TELEGRAM_CHAT_ID")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/memory_spot_cycle_watch_telegram.txt").read_text(encoding="utf-8").strip()
+          if not text:
+              raise RuntimeError("Telegram alert is empty")
+
+          def split_message(value, limit=3900):
+              chunks, current = [], ""
+              for line in value.splitlines():
+                  candidate = line if not current else current + "\n" + line
+                  if len(candidate) <= limit:
+                      current = candidate
+                  else:
+                      if current:
+                          chunks.append(current)
+                      current = line
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          ids = []
+          for chunk in split_message(text):
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
+              ids.append((result.get("result") or {}).get("message_id"))
+
+          confirmed = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_ids": ids,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/memory_spot_cycle_watch_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={ids}")
+          PY
+
+      - name: Persist baseline or confirmed state
+        if: always()
+        run: |
+          if [ ! -f out/memory_spot_cycle_watch_telegram.txt ] || [ -f out/memory_spot_cycle_watch_telegram_confirmed.json ]; then
+            if [ -f out/memory_spot_cycle_watch_pending_state.json ]; then
+              cp out/memory_spot_cycle_watch_pending_state.json data/memory_spot_cycle_watch_state.json
+            fi
+          else
+            echo "Telegram delivery was not confirmed; watcher state intentionally not advanced."
+          fi
+
+      - name: Commit watcher state
+        if: always()
+        run: |
+          if [ ! -f data/memory_spot_cycle_watch_state.json ]; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/memory_spot_cycle_watch_state.json
+          if git diff --cached --quiet; then
+            echo "Memory watch state unchanged"
+          else
+            git commit -m "Update memory spot cycle watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: memory-spot-cycle-watch-${{ github.run_id }}
+          path: |
+            out/memory_spot_cycle_watch_status.md
+            out/memory_spot_cycle_watch_telegram.txt
+            out/memory_spot_cycle_watch_pending_state.json
+            out/memory_spot_cycle_watch_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
