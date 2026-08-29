@@ -4,7 +4,8 @@
 The watcher is intentionally conservative:
 - scans multiple Google News RSS queries in Korean and English,
 - scores only memory-supply/price/capacity items,
-- stays silent on the first baseline run,
+- translates English alert titles into Korean before Telegram delivery,
+- stays silent when there is no new meaningful change,
 - deduplicates by normalized title/source,
 - emits a compact Telegram alert only for new meaningful items.
 """
@@ -17,6 +18,7 @@ import json
 import os
 import pathlib
 import re
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -77,7 +79,7 @@ def _fetch(url: str) -> bytes:
     req = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "Mozilla/5.0 (compatible; khs-memory-watch/1.0)",
+            "User-Agent": "Mozilla/5.0 (compatible; khs-memory-watch/1.1)",
             "Accept": "application/rss+xml,application/xml,text/xml,*/*",
         },
     )
@@ -90,6 +92,67 @@ def _clean(text: str | None) -> str:
     value = re.sub(r"<[^>]+>", " ", value)
     value = re.sub(r"\s+", " ", value).strip()
     return value
+
+
+def _translate_to_ko(text: str) -> str:
+    """Translate non-Korean alert text to Korean.
+
+    We deliberately do not expose an English title if translation is temporarily
+    unavailable. The source name and original link remain untouched identifiers.
+    """
+    text = _clean(text)
+    if not text:
+        return "메모리 관련 신규 변화"
+    # Already Korean enough: preserve the original wording/identifiers.
+    hangul = len(re.findall(r"[가-힣]", text))
+    latin = len(re.findall(r"[A-Za-z]", text))
+    if hangul >= max(4, latin // 3):
+        return text
+
+    params = {
+        "client": "gtx",
+        "sl": "auto",
+        "tl": "ko",
+        "dt": "t",
+        "ie": "UTF-8",
+        "oe": "UTF-8",
+        "q": text,
+    }
+    url = "https://translate.googleapis.com/translate_a/single?" + urllib.parse.urlencode(params)
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(
+                url,
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+                    "Accept": "application/json,text/plain,*/*",
+                },
+            )
+            with urllib.request.urlopen(req, timeout=20) as response:
+                data = json.loads(response.read().decode("utf-8"))
+            translated = "".join(
+                str(part[0]) for part in (data[0] or [])
+                if isinstance(part, list) and part and part[0]
+            ).strip()
+            if translated and re.search(r"[가-힣]", translated):
+                return translated
+        except Exception:
+            if attempt < 2:
+                time.sleep(1.0 + attempt)
+
+    # Korean-only fallback: never send the untranslated English headline.
+    lower = text.lower()
+    if "spot" in lower and "price" in lower:
+        return "메모리 현물가격 관련 신규 상승·수급 변화 기사 감지"
+    if "shortage" in lower or "supply" in lower:
+        return "메모리 공급부족·수급 관련 신규 변화 기사 감지"
+    if "hbm" in lower:
+        return "HBM 수요·공급능력 관련 신규 변화 기사 감지"
+    if "dram" in lower:
+        return "DRAM 가격·수급 관련 신규 변화 기사 감지"
+    if "nand" in lower or "ssd" in lower:
+        return "NAND·SSD 가격·수급 관련 신규 변화 기사 감지"
+    return "해외 메모리 관련 신규 변화 기사 감지"
 
 
 def _parse_date(value: str | None) -> dt.datetime | None:
@@ -231,10 +294,13 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     initialized = bool(state.get("initialized"))
 
     new_items = [x for x in items if x["fingerprint"] not in seen]
-    # On the first run create the baseline silently, unless explicit force mode is requested.
     force_notify = os.getenv("FORCE_NOTIFY", "").strip().lower() in {"1", "true", "yes"}
-    report_items = new_items if initialized else ([] if not force_notify else items[:5])
-    report_items = report_items[:5]
+    if force_notify:
+        report_items = items[:5]
+    elif initialized:
+        report_items = new_items[:5]
+    else:
+        report_items = []
 
     for item in items:
         seen[item["fingerprint"]] = {
@@ -282,7 +348,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     ]
     for item in report_items:
         label = classify(item["title"])
-        title = compact_title(item["title"], item.get("source", ""))
+        raw_title = compact_title(item["title"], item.get("source", ""))
+        title = _translate_to_ko(raw_title)
         if len(title) > 112:
             title = title[:109].rstrip() + "…"
         source = item.get("source") or "출처 확인"
@@ -298,7 +365,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         safe_link = html.escape(item["link"], quote=True)
         lines.append(f"• <b>{label}</b> | {safe_title}")
         lines.append(f"  {date_text}{safe_source} · <a href=\"{safe_link}\">원문</a>")
-    lines.append("※ 가격·수급·LTA·2027~28 HBM/CAPA의 신규 변화만 알림")
+    lines.append("※ 영어 원문은 제목을 한국어로 번역 · 가격·수급·LTA·2027~28 HBM/CAPA의 신규 변화만 알림")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
 
