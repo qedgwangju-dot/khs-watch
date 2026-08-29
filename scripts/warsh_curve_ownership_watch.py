@@ -122,17 +122,17 @@ def curve_label(d210, d230, current, prev):
     dlong = (((current['10y'] - prev['10y']) + (current['30y'] - prev['30y'])) / 2.0) * 100.0
     if avg_spread < 0:
         if d2 > 0:
-            return 'Bear Flattening — Fed/front-end 재가격 우세'
+            return '단기금리가 더 많이 올라 장단기 금리차 축소'
         if dlong < 0:
-            return 'Bull Flattening — long-end 하락 우세'
-        return 'Flattening — 장단기 금리차 축소'
+            return '장기금리가 더 많이 내려 장단기 금리차 축소'
+        return '장단기 금리차 축소'
     if avg_spread > 0:
         if dlong > 0:
-            return 'Bear Steepening — term premium/long-end 상승 우세'
+            return '장기금리가 더 많이 올라 장단기 금리차 확대'
         if d2 < 0:
-            return 'Bull Steepening — front-end 하락 우세'
-        return 'Steepening — 장단기 금리차 확대'
-    return 'Curve 변화 제한적'
+            return '단기금리가 더 많이 내려 장단기 금리차 확대'
+        return '장단기 금리차 확대'
+    return '장단기 금리차 변화 제한적'
 
 
 def curve_message(current, prev):
@@ -144,17 +144,18 @@ def curve_message(current, prev):
     d230 = s230 - p230
     verdict = curve_label(d210, d230, current, prev)
     return '\n'.join([
-        '<b>[Warsh·Treasury 커브 소유권 변화]</b>',
+        '<b>[Warsh·미 재무부 금리곡선 변화]</b>',
         f"기준일 {html.escape(current['date'])}",
-        f"2Y {current['2y']:.2f}% | 10Y {current['10y']:.2f}% | 30Y {current['30y']:.2f}%",
+        f"미 국채 2년 {current['2y']:.2f}% | 10년 {current['10y']:.2f}% | 30년 {current['30y']:.2f}%",
         '',
-        f"2s10s {s210:+.0f}bp ({d210:+.1f}bp)",
-        f"2s30s {s230:+.0f}bp ({d230:+.1f}bp)",
+        f"2년-10년 금리차(2s10s) {s210:+.0f}bp (전일 대비 {d210:+.1f}bp)",
+        f"2년-30년 금리차(2s30s) {s230:+.0f}bp (전일 대비 {d230:+.1f}bp)",
         f"판정: <b>{html.escape(verdict)}</b>",
         '',
-        '해석: 2Y가 상대적으로 더 오르면 Fed/front-end가 커브를 지배하는 Flattening, 10~30Y가 상대적으로 더 오르면 시장의 term premium이 강한 Steepening으로 봅니다.',
+        '쉽게 보면: 2년물이 상대적으로 더 오르면 연준(Fed)의 금리 전망 영향이 강한 것이고, 10~30년물이 상대적으로 더 오르면 재정·국채공급·인플레이션 위험 때문에 시장이 장기채에 더 높은 보상을 요구하는 것입니다.',
+        '※ 1bp = 0.01%포인트',
         '',
-        f'<a href="{html.escape(TREASURY_TEXT_URL, quote=True)}">원천</a>',
+        f'<a href="{html.escape(TREASURY_TEXT_URL, quote=True)}">미 재무부 공식 금리 원천</a>',
     ])
 
 
@@ -166,35 +167,36 @@ def buyback_market_message(current, prev, d210, d230):
     avg_curve = (d210 + d230) / 2.0
 
     if avg_long <= -BUYBACK_LONG_END_BP and avg_curve <= -BUYBACK_CURVE_BP:
-        verdict = 'Treasury/Flattening 방향 우세'
-        detail = '10Y·30Y가 함께 하락하고 장단기 스프레드도 축소 → long-end buyback 정책 방향과 일치'
+        verdict = '미 재무부의 장기국채 재매입 효과와 같은 방향'
+        detail = '10년·30년 금리가 함께 내리고 장단기 금리차도 축소 → 장기국채 유동성 지원 정책이 시장 방향과 맞아떨어진 패턴'
     elif avg_long >= BUYBACK_LONG_END_BP and avg_curve >= BUYBACK_CURVE_BP:
-        verdict = '시장 Term Premium/Steepening 우세'
-        detail = '10Y·30Y가 함께 상승하고 장단기 스프레드 확대 → buyback보다 시장의 장기금리 요구가 강한 패턴'
+        verdict = '시장 장기금리 상승 압력이 재매입 효과보다 우세'
+        detail = '10년·30년 금리가 함께 오르고 장단기 금리차도 확대 → 재무부가 국채를 재매입해도 시장이 장기채에 더 높은 금리를 요구하는 패턴'
     else:
         return None
 
     return '\n'.join([
-        '<b>[Treasury Long-end Buyback 효과 감지]</b>',
+        '<b>[미 재무부 장기국채 재매입 효과 감지]</b>',
         f"기준일 {html.escape(current['date'])} | 확대 적용기간 {BUYBACK_START}~{BUYBACK_END}",
-        f"2Y {d2:+.1f}bp | 10Y {d10:+.1f}bp | 30Y {d30:+.1f}bp",
-        f"2s10s {d210:+.1f}bp | 2s30s {d230:+.1f}bp",
+        f"2년 금리 {d2:+.1f}bp | 10년 {d10:+.1f}bp | 30년 {d30:+.1f}bp",
+        f"2년-10년 금리차 변화 {d210:+.1f}bp | 2년-30년 금리차 변화 {d230:+.1f}bp",
         '',
         f"판정: <b>{html.escape(verdict)}</b>",
         f"• {html.escape(detail)}",
-        '• 이 판정은 수익률곡선의 시장 반응이며, 해당 날짜의 개별 buyback operation만의 인과효과로 단정하지 않습니다.',
+        '• 주의: 이 알림은 수익률곡선의 시장 반응을 보는 것이며, 특정 날짜의 국채 재매입(Buyback) 한 번만으로 금리가 움직였다고 단정하지 않습니다.',
+        '※ 1bp = 0.01%포인트',
         '',
-        f'<a href="{html.escape(BUYBACK_RELEASE_URL, quote=True)}">원천</a>',
+        f'<a href="{html.escape(BUYBACK_RELEASE_URL, quote=True)}">미 재무부 공식 발표</a>',
     ])
 
 
 def schedule_message():
     return '\n'.join([
-        '<b>[Treasury Long-end Buyback 일정 변경]</b>',
-        '미 재무부의 공식 Tentative Buyback Schedule이 변경됐습니다.',
-        '10~20Y·20~30Y 구간의 operation 날짜·한도 변경 여부를 확인하세요.',
+        '<b>[미 재무부 장기국채 재매입 일정 변경]</b>',
+        '미 재무부의 공식 국채 재매입 예정 일정이 변경됐습니다.',
+        '10~20년물·20~30년물의 재매입 날짜와 최대 매입 한도가 달라졌는지 확인하세요.',
         '',
-        f'<a href="{html.escape(BUYBACK_SCHEDULE_URL, quote=True)}">원천</a>',
+        f'<a href="{html.escape(BUYBACK_SCHEDULE_URL, quote=True)}">미 재무부 공식 재매입 일정</a>',
     ])
 
 
