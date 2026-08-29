@@ -11,9 +11,6 @@ import janus_watch as base
 
 ROOT = Path(__file__).resolve().parents[1]
 
-# war.gov is protected against GitHub-hosted runners. Replace it with DOE's
-# official Reactor Pilot Program page, which tracks reactor testing milestones
-# relevant to Janus vendors and their supply chains.
 base.SOURCES = [
     source for source in base.SOURCES
     if source.get("name") != "미 전쟁부 Janus 발표"
@@ -34,10 +31,10 @@ base.STATUS_PATH = ROOT / "out" / "janus_status_v2.md"
 base.ERROR_PATH = ROOT / "out" / "janus_errors_v2.log"
 base.CONNECTION_TEST_PATH = ROOT / "out" / "janus_connection_test_v2.html"
 
-_TRANSLATOR = GoogleTranslator(source="auto", target="ko")
+# 영문 기사 제목은 source=en으로 고정해야 혼합 문장에서도 일반 설명어가 빠짐없이 번역된다.
+_TRANSLATOR_EN = GoogleTranslator(source="en", target="ko")
+_TRANSLATOR_AUTO = GoogleTranslator(source="auto", target="ko")
 
-# 식별이 깨지면 안 되는 회사명·제품명·기술약어만 원문 유지한다.
-# U.S. Army, Air Force, Department of Energy 같은 일반 기관 설명은 한국어로 번역한다.
 _PROTECTED_TERMS = [
     "Antares Nuclear",
     "Antares",
@@ -75,7 +72,6 @@ _BAD_TITLE_RE = re.compile(
     re.I,
 )
 
-# 현재 Radiant 기사들은 URL 슬러그만으로도 원문 제목을 안전하게 복원할 수 있게 둔다.
 _RADIANT_SLUG_TITLES = {
     "radiant-locks-triso-fuel-supply-through-early-2030s": "Radiant Locks TRISO Fuel Supply Through Early 2030s",
     "triso-fuel-supply": "Radiant Locks TRISO Fuel Supply Through Early 2030s",
@@ -97,11 +93,8 @@ def _append_error(message: str) -> None:
 
 def _is_bad_title(text: str) -> bool:
     text = base.norm(text)
-    if not text:
+    if not text or _BAD_TITLE_RE.search(text):
         return True
-    if _BAD_TITLE_RE.search(text):
-        return True
-    # 오류 페이지의 반복 문구나 숫자만 있는 제목도 차단한다.
     if len(text) < 5 or not re.search(r"[A-Za-z가-힣]", text):
         return True
     return False
@@ -141,21 +134,14 @@ def _title_from_slug(url: str) -> str:
     if slug in _RADIANT_SLUG_TITLES:
         return _RADIANT_SLUG_TITLES[slug]
     words = re.sub(r"[-_]+", " ", slug).strip()
-    if not words:
-        return ""
-    return words.title()
+    return words.title() if words else ""
 
 
 def _resolve_event_title(event) -> str:
     title = _clean_page_title(event.get("title", ""))
     if not _is_bad_title(title):
         return title
-
-    # 소스 목록이 일시적으로 500 오류 문구를 링크 텍스트로 내보내도
-    # 상세 페이지의 메타데이터/H1을 다시 읽어 실제 기사 제목으로 복구한다.
-    resolved = _title_from_detail_page(event.get("url", ""))
-    if not resolved:
-        resolved = _title_from_slug(event.get("url", ""))
+    resolved = _title_from_detail_page(event.get("url", "")) or _title_from_slug(event.get("url", ""))
     resolved = _clean_page_title(resolved)
     if _is_bad_title(resolved):
         _append_error(
@@ -165,8 +151,6 @@ def _resolve_event_title(event) -> str:
     return resolved
 
 
-# fingerprint 생성 전에 오류 제목을 실제 제목으로 교정해 같은 URL이 오류/정상 상태를
-# 오갈 때 가짜 신규 알림이 생기는 것도 막는다.
 _ORIGINAL_EXTRACT_ITEMS = base.extract_items
 
 
@@ -193,7 +177,6 @@ def _needs_translation(text: str) -> bool:
     stripped = text
     for term in sorted(_PROTECTED_TERMS, key=len, reverse=True):
         stripped = re.sub(re.escape(term), " ", stripped, flags=re.I)
-    # 단위·통화 기호나 순수 약어 외에 설명형 영어가 남아 있으면 번역 대상이다.
     return bool(re.search(r"\b[A-Za-z]{3,}\b", stripped))
 
 
@@ -218,42 +201,70 @@ def _restore_known_korean(text: str) -> str:
     return base.norm(out)
 
 
-def _translate_ko(text: str) -> str:
-    text = _restore_known_korean(base.norm(text))
-    if not text or not _needs_translation(text):
-        if _BAD_TITLE_RE.search(text):
-            raise RuntimeError("오류 페이지 문구가 포함되어 송출 차단")
-        return text
-
+def _protect_terms(text: str):
     protected = {}
     work = text
     for idx, term in enumerate(sorted(_PROTECTED_TERMS, key=len, reverse=True)):
         pattern = re.compile(re.escape(term), re.I)
         match = pattern.search(work)
         if match:
-            token = f"ZXQTERM{idx}QXZ"
+            # 문자 단어가 아닌 기호+숫자 토큰을 사용해 번역기가 토큰 자체를 번역하지 못하게 한다.
+            token = f"⟦{idx}⟧"
             protected[token] = match.group(0)
             work = pattern.sub(token, work)
+    return work, protected
 
+
+def _restore_terms(text: str, protected) -> str:
+    out = text
+    for token, original in protected.items():
+        out = out.replace(token, original)
+        # 번역기가 괄호 주변 공백을 바꾸는 경우를 보완한다.
+        out = out.replace(token.replace("⟦", "[ ").replace("⟧", " ]"), original)
+    return base.norm(out)
+
+
+def _translate_once(text: str, source: str) -> str:
+    translator = _TRANSLATOR_EN if source == "en" else _TRANSLATOR_AUTO
+    return base.norm(translator.translate(text) or "")
+
+
+def _translate_ko(text: str) -> str:
+    raw = base.norm(text)
+    if not raw:
+        return raw
+    if _BAD_TITLE_RE.search(raw):
+        raise RuntimeError("오류 페이지 문구가 포함되어 송출 차단")
+    if not _needs_translation(raw):
+        return _restore_known_korean(raw)
+
+    work, protected = _protect_terms(raw)
+    # 영문 제목은 source=en 고정. 이미 한국어가 섞인 변경 요약은 auto를 먼저 사용한다.
+    source = "auto" if re.search(r"[가-힣]", work) else "en"
     try:
-        translated = _TRANSLATOR.translate(work)
+        translated = _translate_once(work, source)
     except Exception as exc:
         raise RuntimeError(f"한국어 번역 실패: {exc}") from exc
 
-    translated = base.norm(translated or "")
-    for token, original in protected.items():
-        translated = re.sub(re.escape(token), original, translated, flags=re.I)
-
+    translated = _restore_terms(translated, protected)
     translated = _restore_known_korean(translated)
 
-    # 설명형 영어가 남으면 한 번 더 번역한다. 그 뒤에도 남으면 절대 송출하지 않는다.
+    # 혼합문장 자동감지가 영어 조각을 남긴 경우 영문 조각만 source=en으로 재번역한다.
     if _needs_translation(translated):
-        try:
-            retry = _TRANSLATOR.translate(translated)
-            if retry:
-                translated = _restore_known_korean(base.norm(retry))
-        except Exception:
-            pass
+        def repl(match):
+            frag = match.group(0).strip()
+            if not frag or not re.search(r"[A-Za-z]{3,}", frag):
+                return match.group(0)
+            frag_work, frag_protected = _protect_terms(frag)
+            try:
+                frag_ko = _translate_once(frag_work, "en")
+                frag_ko = _restore_terms(frag_ko, frag_protected)
+                return _restore_known_korean(frag_ko)
+            except Exception:
+                return match.group(0)
+
+        translated = re.sub(r"[A-Za-z][A-Za-z0-9\s.,'’\-/$%:()]{2,}", repl, translated)
+        translated = base.norm(translated)
 
     if _BAD_TITLE_RE.search(translated):
         raise RuntimeError("오류 페이지 문구가 포함되어 송출 차단")
