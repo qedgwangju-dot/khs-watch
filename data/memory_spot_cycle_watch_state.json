@@ -1,5 +1,26 @@
 {
-  "initialized": false,
-  "seen": {},
-  "updated_at_kst": null
+  "initialized": true,
+  "seen": {
+    "015c2c907106b39549b09583": {
+      "title": "Memory Chip Spot Market in Crisis; Bank of America Sees Prices Rising Another 20% in September - finance.biggo.com",
+      "source": "finance.biggo.com",
+      "published_kst": "2026-08-28T22:36:00+09:00",
+      "first_seen_kst": "2026-08-29T23:21:49+09:00"
+    },
+    "9e274024c82c493d32a675e4": {
+      "title": "Micron Stock Outlook: Could the AI Memory Shortage Last Through 2028? - MEXC",
+      "source": "MEXC",
+      "published_kst": "2026-08-27T17:36:25+09:00",
+      "first_seen_kst": "2026-08-29T23:21:49+09:00"
+    },
+    "5f7f8ec2d90406e3d72351a0": {
+      "title": "Micron Stock Forecast: BofA Says AI May Have Broken Memory Cycle, Stock Could Rise to $1,144 - TradingKey",
+      "source": "TradingKey",
+      "published_kst": "2026-08-21T00:35:21+09:00",
+      "first_seen_kst": "2026-08-29T23:21:49+09:00"
+    }
+  },
+  "updated_at_kst": "2026-08-29T23:21:49+09:00",
+  "last_scan_count": 3,
+  "last_new_count": 3
 }
