@@ -41,8 +41,8 @@ jobs:
 
       - name: Validate exact requested Telegram route without sending
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import json
@@ -53,9 +53,9 @@ jobs:
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
-              raise RuntimeError("TELEGRAM_BOT_TOKEN secret is missing")
+              raise RuntimeError("HBM_TELEGRAM_BOT_TOKEN secret is missing")
           if not chat_id:
-              raise RuntimeError("TELEGRAM_CHAT_ID secret is missing")
+              raise RuntimeError("HBM_TELEGRAM_CHAT_ID secret is missing")
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
           username = str((identity.get("result") or {}).get("username") or "")
@@ -83,8 +83,8 @@ jobs:
       - name: Send meaningful new signal to exact requested Telegram bot
         if: hashFiles('out/ai_networking_optics_watch_telegram.html') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
@@ -99,7 +99,7 @@ jobs:
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token or not chat_id:
-              raise RuntimeError("Telegram token/chat id is missing")
+              raise RuntimeError("HBM Telegram token/chat id is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
