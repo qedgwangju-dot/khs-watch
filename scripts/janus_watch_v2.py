@@ -169,6 +169,16 @@ def _restore_known_korean(text: str) -> str:
         (r"\bContract\b", "계약"),
         (r"\bFactory\b", "공장"),
         (r"\bLicense\s+Application\b", "허가 신청"),
+        (r"\bProgram\b", "프로그램"),
+        (r"\bDeployment\b", "배치"),
+        (r"\bDeployments\b", "배치"),
+        (r"\bSelects\b", "선정"),
+        (r"\bSelected\b", "선정"),
+        (r"미세\s*반응기", "마이크로원자로"),
+        (r"소형\s*반응기", "마이크로원자로"),
+        (r"마이크로\s*리액터", "마이크로원자로"),
+        (r"배포", "배치"),
+        (r"포트\s+드럼", "포트 드럼"),
     ]
     out = text
     for pattern, repl in replacements:
