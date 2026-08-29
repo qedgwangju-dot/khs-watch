@@ -1,0 +1,228 @@
+name: AI Networking Optics Telegram Watch
+
+on:
+  push:
+    paths:
+      - ".github/workflows/ai-networking-optics-telegram-watch.yml"
+      - "scripts/ai_networking_optics_watch.py"
+      - "data/ai_networking_optics_watch_state.json"
+  schedule:
+    # GitHub cron is UTC. Check twice per hour; remain silent without a meaningful new signal.
+    - cron: "23,53 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ai-networking-optics-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      # Keep the same Telegram route already validated by the existing khs-watch jobs.
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate watcher
+        run: python -m py_compile scripts/ai_networking_optics_watch.py
+
+      - name: Validate existing Telegram route without sending
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("YEN_CARRY_TELEGRAM_BOT_TOKEN secret is missing")
+          if not chat_id:
+              raise RuntimeError("Telegram chat id is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{username}")
+          PY
+
+      - name: Check AI networking, optics and Corning signals
+        run: python scripts/ai_networking_optics_watch.py
+
+      - name: Publish watcher summary
+        if: always()
+        run: |
+          if [ -f out/ai_networking_optics_watch_status.md ]; then
+            cat out/ai_networking_optics_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "AI 네트워킹·광통신 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/ai_networking_optics_watch_telegram.html ]; then
+            printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/ai_networking_optics_watch_telegram.html >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send meaningful new signal to Telegram
+        if: hashFiles('out/ai_networking_optics_watch_telegram.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram token/chat id is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/ai_networking_optics_watch_telegram.html").read_text(encoding="utf-8").strip()
+          if not text:
+              raise RuntimeError("Telegram alert is empty")
+
+          def split_message(value, limit=3900):
+              chunks, current = [], ""
+              for paragraph in value.split("\n\n"):
+                  candidate = paragraph if not current else current + "\n\n" + paragraph
+                  if len(candidate) <= limit:
+                      current = candidate
+                      continue
+                  if current:
+                      chunks.append(current)
+                      current = ""
+                  while len(paragraph) > limit:
+                      cut = paragraph.rfind("\n", 0, limit)
+                      if cut < 1:
+                          cut = limit
+                      chunks.append(paragraph[:cut])
+                      paragraph = paragraph[cut:].lstrip()
+                  current = paragraph
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          message_ids = []
+          for chunk in split_message(text):
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              request = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(request, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
+              message_ids.append((result.get("result") or {}).get("message_id"))
+
+          confirmed = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_ids": message_ids,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/ai_networking_optics_watch_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids}")
+          PY
+
+      - name: Persist baseline or delivered state
+        if: always()
+        run: |
+          if [ ! -f out/ai_networking_optics_watch_telegram.html ] || [ -f out/ai_networking_optics_watch_telegram_confirmed.json ]; then
+            if [ -f out/ai_networking_optics_watch_pending_state.json ]; then
+              cp out/ai_networking_optics_watch_pending_state.json data/ai_networking_optics_watch_state.json
+              if [ -f out/ai_networking_optics_watch_telegram_confirmed.json ]; then
+                python - <<'PY'
+                import json
+                import pathlib
+                state_path = pathlib.Path("data/ai_networking_optics_watch_state.json")
+                state = json.loads(state_path.read_text(encoding="utf-8"))
+                confirmed = json.loads(pathlib.Path("out/ai_networking_optics_watch_telegram_confirmed.json").read_text(encoding="utf-8"))
+                state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
+                state["telegram_message_ids"] = confirmed.get("message_ids")
+                state["bot_username"] = confirmed.get("bot_username")
+                state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+                PY
+              fi
+            fi
+          else
+            echo "Telegram delivery was not confirmed; watcher state intentionally not advanced."
+          fi
+
+      - name: Commit watcher state
+        if: always()
+        run: |
+          if [ ! -f data/ai_networking_optics_watch_state.json ]; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ai_networking_optics_watch_state.json
+          if git diff --cached --quiet; then
+            echo "AI networking optics state unchanged"
+          else
+            git commit -m "Update AI networking optics watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-networking-optics-watch-${{ github.run_id }}
+          path: |
+            out/ai_networking_optics_watch_status.md
+            out/ai_networking_optics_watch_telegram.html
+            out/ai_networking_optics_watch_pending_state.json
+            out/ai_networking_optics_watch_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
