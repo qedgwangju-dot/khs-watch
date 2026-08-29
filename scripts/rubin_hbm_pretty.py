@@ -16,15 +16,14 @@ OFFICIAL_SOURCES = (
 TRUSTED_SOURCES = (
     "trendforce", "reuters", "bloomberg", "the information", "semianalysis", "digitimes",
     "tom's hardware", "toms hardware", "financial times", "wall street journal", "wsj", "cnbc",
+    "thelec", "the elec", "연합뉴스", "yonhap",
 )
 
-# 자주 나오는 제목은 자동번역보다 수동 번역을 우선해 의미를 고정한다.
 MANUAL_TITLE_TRANSLATIONS = {
     "Micron: HBM3E Consumes 3x More Wafer Capacity Than DDR5, and the Gap Will Widen - XenoSpectrum":
         "Micron: HBM3E는 DDR5보다 웨이퍼 생산능력을 3배 더 소모하며, 세대가 갈수록 격차 확대 - XenoSpectrum",
 }
 
-# 자동번역 뒤에도 검색·기술 식별이 깨지지 않도록 원문 표기를 복원한다.
 IDENTIFIER_RESTORE = {
     "마이크론": "Micron",
     "엔비디아": "NVIDIA",
@@ -59,15 +58,12 @@ def has_korean(value: str) -> bool:
 
 
 def translate_title_ko(title: str) -> str:
-    """영문 기사 제목의 설명어는 한국어로 옮기고 기술 식별어는 원문을 유지한다."""
     title = html.unescape(title or "").strip()
     if not title or has_korean(title):
         return title
     if title in MANUAL_TITLE_TRANSLATIONS:
         return MANUAL_TITLE_TRANSLATIONS[title]
 
-    # Google 공개 번역 엔드포인트를 보조적으로 사용한다. 실패 시 제목을 그대로 노출하지 않고
-    # 해당 섹션의 상세 근거와 원문 링크로 확인할 수 있도록 한국어 안내문으로 대체한다.
     try:
         params = urllib.parse.urlencode({
             "client": "gtx",
@@ -90,11 +86,11 @@ def translate_title_ko(title: str) -> str:
     except Exception:
         pass
 
-    return "관련 신규 보도 — 제목 자동번역 확인 필요"
+    # 새 감시기는 검증·요약된 한국어 제목만 발송하므로 이 문구는 정상 경로에서는 나타나지 않는다.
+    return "제목 자동번역 실패 — 발송 검증 필요"
 
 
 def emphasize_metrics(line: str) -> str:
-    """정보를 줄이지 않고 핵심 숫자만 굵게 만들어 눈에 바로 들어오게 한다."""
     escaped = html.escape(line, quote=False)
     patterns = [
         r"(?<![\w])([+-]?\d+(?:\.\d+)?%)",
@@ -110,10 +106,15 @@ def emphasize_metrics(line: str) -> str:
 def htmlify_lines(text: str) -> str:
     out: list[str] = []
     for line in text.splitlines():
-        m_source = re.match(r"\s*-\s*출처:\s*(.+?)\s*/\s*.+$", line)
+        m_source = re.match(r"\s*-\s*출처:\s*(.+?)\s*/\s*(.+)$", line)
         if m_source:
             source = m_source.group(1).strip()
-            label = source_label(source)
+            supplied = m_source.group(2).strip()
+            # watcher가 원문 확인/교차검증 결과를 이미 붙였으면 그 판정을 그대로 보존한다.
+            if any(k in supplied for k in ("확인", "교차검증", "공식자료")):
+                label = supplied
+            else:
+                label = source_label(source)
             out.append(f"- <b>출처</b>: {html.escape(source)} / <b>{html.escape(label)}</b>")
             continue
 
@@ -169,8 +170,6 @@ def main() -> None:
     has_migration = section_present("DDR5·SOCAMM2·기업용 eSSD 이동", original)
     has_192 = has_rubin_spec and "192GB" in original
 
-    # 가독성은 '정보 삭제'가 아니라 '시각적 우선순위'로 만든다.
-    # 상세 근거는 아래에 원문 그대로 보존한다.
     quick = [
         "🚨 <b>Rubin/HBM 구조 변화 감시</b>",
         "━━━━━━━━━━━━━━━━",
