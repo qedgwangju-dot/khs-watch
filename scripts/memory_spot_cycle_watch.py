@@ -103,7 +103,6 @@ def _translate_to_ko(text: str) -> str:
     text = _clean(text)
     if not text:
         return "메모리 관련 신규 변화"
-    # Already Korean enough: preserve the original wording/identifiers.
     hangul = len(re.findall(r"[가-힣]", text))
     latin = len(re.findall(r"[A-Za-z]", text))
     if hangul >= max(4, latin // 3):
@@ -140,7 +139,6 @@ def _translate_to_ko(text: str) -> str:
             if attempt < 2:
                 time.sleep(1.0 + attempt)
 
-    # Korean-only fallback: never send the untranslated English headline.
     lower = text.lower()
     if "spot" in lower and "price" in lower:
         return "메모리 현물가격 관련 신규 상승·수급 변화 기사 감지"
@@ -236,7 +234,6 @@ def collect() -> tuple[list[dict], list[str]]:
         except Exception as exc:
             errors.append(f"{lang}:{query}: {type(exc).__name__}: {exc}")
 
-    # Deduplicate cross-query matches, preferring the higher-scored/latest copy.
     by_fp: dict[str, dict] = {}
     for item in items:
         fp = item["fingerprint"]
@@ -310,7 +307,6 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             "first_seen_kst": seen.get(item["fingerprint"], {}).get("first_seen_kst") or now.isoformat(timespec="seconds"),
         }
 
-    # Keep bounded state while preserving newest insertions.
     if len(seen) > 700:
         keys = list(seen.keys())[-700:]
         seen = {k: seen[k] for k in keys}
@@ -365,7 +361,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         safe_link = html.escape(item["link"], quote=True)
         lines.append(f"• <b>{label}</b> | {safe_title}")
         lines.append(f"  {date_text}{safe_source} · <a href=\"{safe_link}\">원문</a>")
-    lines.append("※ 영어 원문은 제목을 한국어로 번역 · 가격·수급·LTA·2027~28 HBM/CAPA의 신규 변화만 알림")
+    lines.append("※ 가격·수급·LTA·2027~28 HBM/CAPA의 신규 변화만 알림")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
 
