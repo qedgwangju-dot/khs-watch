@@ -23,13 +23,11 @@ URLS = {
     "cpi": "https://www.bls.gov/news.release/cpi.nr0.htm",
     "bls_api": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
     "bea_schedule": "https://www.bea.gov/news/schedule/full",
-    "fed_speeches": "https://www.federalreserve.gov/newsevents/speeches.htm",
     "fomc_calendar": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
 }
 
 KEYWORDS = {
     "pce": ["pce price index", "excluding food and energy", "personal consumption expenditures", "from the same month one year ago", "prices"],
-    "warsh": ["inflation", "prices", "interest rates", "restrictive", "full employment", "financial conditions", "work to do", "federal funds"],
     "fomc": ["federal funds rate", "inflation", "unemployment", "economic activity", "committee decided", "target range"],
 }
 
@@ -90,12 +88,6 @@ def _dated_url(urls: list[str], pattern: str) -> str | None:
         if m:
             dated.append((m.group(1), u))
     return max(dated)[1] if dated else None
-
-
-def find_latest_warsh(speeches_html: str) -> str | None:
-    hrefs = re.findall(r'href=["\']([^"\']*warsh\d{8}[a-z]?\.htm)["\']', speeches_html, flags=re.I)
-    urls = [abs_url(URLS["fed_speeches"], h) for h in hrefs]
-    return _dated_url(urls, r"warsh(\d{8})")
 
 
 def find_latest_fomc_statement(calendar_html: str) -> str | None:
@@ -269,15 +261,9 @@ def build_snapshots() -> tuple[dict, list[str]]:
     except Exception as e:
         errors.append(f"BEA PCE: {e}")
 
-    try:
-        speeches_html, _ = fetch(URLS["fed_speeches"])
-        warsh_url = find_latest_warsh(speeches_html)
-        if warsh_url:
-            snaps["warsh"] = html_snapshot(warsh_url, KEYWORDS["warsh"])
-        else:
-            errors.append("Fed speeches: latest Warsh speech not found")
-    except Exception as e:
-        errors.append(f"Fed speeches: {e}")
+    # Kevin Warsh speech monitoring is handled exclusively by warsh_speech_watch.py
+    # via the Federal Reserve's official speeches RSS feed. Keeping it out of this
+    # general reaction watcher prevents duplicate alerts and false scrape warnings.
 
     try:
         fomc_html, _ = fetch(URLS["fomc_calendar"])
@@ -292,7 +278,7 @@ def build_snapshots() -> tuple[dict, list[str]]:
 
 
 def label(name: str) -> str:
-    return {"employment": "BLS 고용", "cpi": "BLS CPI", "pce": "BEA PCE", "warsh": "Kevin Warsh 공식 발언", "fomc": "FOMC 결정"}.get(name, name)
+    return {"employment": "BLS 고용", "cpi": "BLS CPI", "pce": "BEA PCE", "fomc": "FOMC 결정"}.get(name, name)
 
 
 def message_for(name: str, snap: dict) -> str:
