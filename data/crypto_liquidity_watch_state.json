@@ -1,74 +1,74 @@
 {
-  "updated_at_kst": "2026-08-29T01:47:06+09:00",
+  "updated_at_kst": "2026-08-29T09:49:38+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
     "long_bucket_summary": "2026-08-26 13:40 14:00 Nominal Coupons 1Mo to 2Y NOMINAL COUPONS Cash Management 0 12500000000 2026-10-04 2028-09-03 2026-09-02 2026-09-03 2026-09-04 13:40 14:00 Nominal Coupons 1Mo to 2Y NOMINAL COUPONS Cash Management 0 12500000000 2026-10-10 2028-09-09 2026-09-08 2 | August 2026 Refunding Tentative Buyback Calendar V1 2026-08-18 2026-11-05 Nominal Coupons 20Y to 30Y NOMINAL COUPONS Liquidity Support 0 2000000000 2046-08-19 2056-08-18 2026-08-17 2026-08-18 2026-08-19 13:40 14:00 Nominal Coupons 3Y to 5Y NOMINAL COUPONS Liq"
   },
   "rates": {
-    "date": "2026-08-27",
-    "10y": 4.67,
-    "30y": 5.19,
-    "prev_date": "2026-08-26",
-    "prev_10y": 4.66,
-    "prev_30y": 5.18,
-    "daily_10y_bp": 1.0,
-    "daily_30y_bp": 1.0,
-    "prev5_date": "2026-08-20",
-    "prev5_10y": 4.69,
-    "prev5_30y": 5.23,
-    "five_day_10y_bp": -2.0,
-    "five_day_30y_bp": -4.0
+    "date": "2026-08-28",
+    "10y": 4.73,
+    "30y": 5.22,
+    "prev_date": "2026-08-27",
+    "prev_10y": 4.67,
+    "prev_30y": 5.19,
+    "daily_10y_bp": 6.0,
+    "daily_30y_bp": 3.0,
+    "prev5_date": "2026-08-21",
+    "prev5_10y": 4.74,
+    "prev5_30y": 5.27,
+    "five_day_10y_bp": -1.0,
+    "five_day_30y_bp": -5.0
   },
   "btc_etf": {
-    "date": "2026-08-27",
-    "total_usd_m": 242.3,
-    "status": "complete",
-    "reported_funds": 12,
-    "missing_funds": 0,
-    "prev_date": "2026-08-26",
-    "prev_total_usd_m": 232.2,
-    "day_change_usd_m": 10.1,
-    "day_change_pct": 4.3,
+    "date": "2026-08-28",
+    "total_usd_m": -168.5,
+    "status": "partial",
+    "reported_funds": 11,
+    "missing_funds": 1,
+    "prev_date": "2026-08-27",
+    "prev_total_usd_m": 242.3,
+    "day_change_usd_m": -410.8,
+    "day_change_pct": -169.5,
     "source_latest_date": "2026-08-28",
-    "source_latest_status": "pending",
-    "pending_date": "2026-08-28",
-    "latest_recomputed_total_usd_m": 242.3,
+    "source_latest_status": "partial",
+    "pending_date": null,
+    "latest_recomputed_total_usd_m": -168.5,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
-    "last5_usd_m": 1433.9,
+    "last5_usd_m": 957.9,
     "last5_dates": [
-      "2026-08-21",
       "2026-08-24",
       "2026-08-25",
       "2026-08-26",
-      "2026-08-27"
+      "2026-08-27",
+      "2026-08-28"
     ],
     "last5_values_usd_m": [
-      307.5,
       337.6,
       314.3,
       232.2,
-      242.3
+      242.3,
+      -168.5
     ],
-    "prev5_usd_m": 1554.1,
+    "prev5_usd_m": 1917.8,
     "prev5_dates": [
-      "2026-08-14",
       "2026-08-17",
       "2026-08-18",
       "2026-08-19",
-      "2026-08-20"
+      "2026-08-20",
+      "2026-08-21"
     ],
     "prev5_values_usd_m": [
-      -56.2,
       297.5,
       189.3,
       517.2,
-      606.3
+      606.3,
+      307.5
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": -120.2,
-    "five_day_change_pct": -7.7,
+    "five_day_change_usd_m": -959.9,
+    "five_day_change_pct": -50.1,
     "five_day_direction": "순자금흐름 악화"
   },
   "sources": {
