@@ -1,14 +1,14 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-08-29T19:02:45+09:00",
+  "updated_at_kst": "2026-08-30T00:03:58+09:00",
   "seen_event_keys": [
-    "capex:13cbe150930d23d8",
     "policy_spread:2026-08-27:0.75",
-    "foreign3d_neg:2026-08-27"
+    "foreign3d_neg:2026-08-27",
+    "capex:13cbe150930d23d8"
   ],
   "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-08-29T19:02:45+09:00",
+    "checked_at_kst": "2026-08-30T00:03:58+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-08-28",
@@ -28,7 +28,7 @@
       "source": "https://fred.stlouisfed.org/series/DGS10"
     },
     "policy_spread": {
-      "date": "2026-08-28",
+      "date": "2026-08-29",
       "fed_upper": 3.75,
       "bok_base": 3.0,
       "spread_pp": 0.75,
@@ -41,7 +41,7 @@
       "three_day_eok": -8340.0,
       "daily_krw": -852500000000,
       "three_day_krw": -834000000000,
-      "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260829&sosok=01"
+      "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260830&sosok=01"
     },
     "global_wave_news": [],
     "hyperscaler_capex_news": []
