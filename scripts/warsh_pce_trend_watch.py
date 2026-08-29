@@ -2,7 +2,6 @@
 import csv
 import io
 import json
-import math
 import os
 import urllib.parse
 import urllib.request
@@ -15,7 +14,7 @@ TOKEN = (os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
 CHAT_ID = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
 EXPECTED_BOT = (os.getenv('EXPECTED_BOT_USERNAME') or 'khs8879887988798879_bot').strip().lstrip('@')
 FORCE_NOTIFY = os.getenv('FORCE_NOTIFY', '0') == '1'
-UA = 'Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)'
+UA = 'Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot/khs-watch)'
 
 
 def fetch_text(url):
@@ -39,16 +38,18 @@ def load_series():
         try:
             pce = float(row['PCEPI'])
             core = float(row['PCEPILFE'])
+            date = row.get('DATE') or row.get('observation_date') or row.get('date')
+            if not date:
+                continue
         except Exception:
             continue
-        rows.append((row['DATE'], pce, core))
+        rows.append((date, pce, core))
     if len(rows) < 13:
         raise RuntimeError('PCE FRED series too short')
     return rows
 
 
 def classify(core3, core6, headline3, headline6):
-    # Warsh principle: trends matter most. Alert only when the trend regime changes.
     if core3 >= 3.0 and core6 >= 3.0:
         if core3 >= core6 + 0.25:
             return '재가속 — 추가긴축 논리 강화'
@@ -129,8 +130,8 @@ def main():
     new_period = old.get('date') not in (None, cur['date'])
     regime_changed = old.get('regime') not in (None, cur['regime'])
 
-    # Existing PCE watcher already reports every release. This watcher only sends a NEW INFORMATION alert
-    # when the 3m/6m trend regime changes, avoiding duplicate monthly release alerts.
+    # Existing PCE watcher reports the monthly release. This sends only a new-information
+    # alert when the 3m/6m trend regime changes, avoiding duplicate PCE alerts.
     if FORCE_NOTIFY or (not first_run and new_period and regime_changed):
         msg = [
             '[Warsh 새 정보축] PCE 3개월·6개월 추세',
