@@ -12,6 +12,7 @@ on:
         type: boolean
   push:
     paths:
+      - 'scripts/sitecustomize.py'
       - 'scripts/warsh_reaction_watch.py'
       - 'scripts/warsh_speech_watch.py'
       - 'scripts/warsh_market_watch.py'
@@ -54,7 +55,14 @@ jobs:
           TREASURY_CURVE_ALERT_BP: '5'
           TREASURY_BUYBACK_LONG_END_BP: '5'
           TREASURY_BUYBACK_CURVE_BP: '3'
+          PYTHONPATH: scripts
         run: |
+          python - <<'PY'
+          import urllib.parse
+          probe = urllib.parse.urlencode({'text': 'Headline PCE MoM YoY | Fed | Treasury | 2Y'})
+          assert '종합+PCE' in probe and '연준%28Fed%29' in probe and '2년물' in urllib.parse.unquote_plus(probe), probe
+          print('한글 알림 표기 가드 정상')
+          PY
           python scripts/warsh_reaction_watch.py
           python scripts/warsh_speech_watch.py
           python scripts/warsh_market_watch.py
