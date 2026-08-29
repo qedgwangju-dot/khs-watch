@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import html
 import json
 import os
 import urllib.parse
@@ -14,7 +15,7 @@ EXPECTED_BOT = (os.getenv('EXPECTED_BOT_USERNAME') or 'khs8879887988798879_bot')
 THRESHOLD_BP = float(os.getenv('TREASURY_2Y_ALERT_BP') or '10')
 RETENTION_THRESHOLD = float(os.getenv('TREASURY_2Y_RETENTION_RATIO') or '0.50')
 FORCE_NOTIFY = os.getenv('FORCE_NOTIFY', '0') == '1'
-UA = 'Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot/khs-watch)'
+UA = 'Mozilla/5.0 (compatible; khs-watch/1.2; +https://github.com/qedgwangju-dot/khs-watch)'
 
 
 def treasury_url(year: int) -> str:
@@ -64,13 +65,22 @@ def get_bot_username():
     return str((data.get('result') or {}).get('username') or '')
 
 
+def source_link(url: str) -> str:
+    return f'<a href="{html.escape(url, quote=True)}">원천</a>'
+
+
 def send(text: str):
     if not TOKEN or not CHAT_ID:
         raise RuntimeError('Telegram token/chat id missing')
     username = get_bot_username()
     if username.lower() != EXPECTED_BOT.lower():
         raise RuntimeError(f'Wrong Telegram bot: expected @{EXPECTED_BOT}, got @{username}')
-    payload = urllib.parse.urlencode({'chat_id': CHAT_ID, 'text': text, 'disable_web_page_preview': 'true'}).encode('utf-8')
+    payload = urllib.parse.urlencode({
+        'chat_id': CHAT_ID,
+        'text': text,
+        'parse_mode': 'HTML',
+        'disable_web_page_preview': 'true',
+    }).encode('utf-8')
     req = urllib.request.Request(f'https://api.telegram.org/bot{TOKEN}/sendMessage', data=payload, method='POST')
     with urllib.request.urlopen(req, timeout=20) as r:
         data = json.loads(r.read().decode('utf-8'))
@@ -108,7 +118,7 @@ def send_initial_alert(date, value, prev, day_bp, source):
         f'다음 Treasury 공식 종가에서 최초 움직임의 {RETENTION_THRESHOLD*100:.0f}% 이상 유지되는지 재확인합니다.',
         'Warsh의 물가 우선·추가긴축 선택지가 시장금리에 실제로 남는지 고용/CPI/PCE/FOMC와 함께 판단',
         '',
-        f'원천: {source}',
+        source_link(source),
     ]
     send('\n'.join(msg))
 
@@ -130,7 +140,7 @@ def send_followup_alert(current_date, current_value, event, source):
         if kept_direction:
             detail = f'최초 이동의 {ratio*100:.0f}%만 유지 → 50% 기준 미달, 상당 부분 반납'
         else:
-            detail = f'최초 이동 방향까지 되돌림 → 당일 반응의 지속성 약함'
+            detail = '최초 이동 방향까지 되돌림 → 당일 반응의 지속성 약함'
 
     msg = [
         '[Warsh 반응함수 2Y 지속성 재확인]',
@@ -142,7 +152,7 @@ def send_followup_alert(current_date, current_value, event, source):
         f'• {detail}',
         '• 당일 반응보다 다음 공식 종가의 유지 여부를 우선해 정책 신호의 지속성을 판정',
         '',
-        f'원천: {source}',
+        source_link(source),
     ]
     send('\n'.join(msg))
     return persistent, ratio, retained_bp
