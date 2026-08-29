@@ -1,0 +1,37 @@
+{
+  "h6": {
+    "release": "August 25, 2026",
+    "period": "July 2026",
+    "m2": 23218.0,
+    "m2_3m_ann": 8.358276905665353,
+    "m2_yoy": 5.414179019772547,
+    "url": "https://www.federalreserve.gov/releases/h6/current/"
+  },
+  "h8": {
+    "release": "August 28, 2026",
+    "ci_latest": 2945.7,
+    "ci_4wk_pct": 1.0982599444005814,
+    "bank_credit_latest": 19828.1,
+    "bank_credit_4wk_pct": 0.3035193063572139,
+    "regime": "신용 확장",
+    "url": "https://www.federalreserve.gov/releases/h8/current/"
+  },
+  "sloos": {
+    "key": "202607",
+    "regime": "신용 완화",
+    "url": "https://www.federalreserve.gov/data/sloos/sloos-202607.htm",
+    "fingerprint": "04196b8982422ab8960cb71e8b90e5e119218c10edf984641759768f22f0afde"
+  },
+  "productivity": {
+    "key": "2026 Q2",
+    "date": "2026-04-01",
+    "productivity_qoq_saar": 1.4223104900269457,
+    "ulc_qoq_saar": 1.307119077317176,
+    "productivity_yoy": 2.2421944882225153,
+    "ulc_yoy": 1.4328944140018063,
+    "regime": "혼합",
+    "url": "https://fred.stlouisfed.org/series/OPHNFB",
+    "ulc_url": "https://fred.stlouisfed.org/series/ULCNFB"
+  },
+  "updated_at_utc": "2026-08-29T05:42:10.416252+00:00"
+}
