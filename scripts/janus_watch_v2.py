@@ -31,37 +31,16 @@ base.STATUS_PATH = ROOT / "out" / "janus_status_v2.md"
 base.ERROR_PATH = ROOT / "out" / "janus_errors_v2.log"
 base.CONNECTION_TEST_PATH = ROOT / "out" / "janus_connection_test_v2.html"
 
-# 영문 기사 제목은 source=en으로 고정해야 혼합 문장에서도 일반 설명어가 빠짐없이 번역된다.
 _TRANSLATOR_EN = GoogleTranslator(source="en", target="ko")
 _TRANSLATOR_AUTO = GoogleTranslator(source="auto", target="ko")
 
+# 최종 한국어 문장 안에서 원문 유지가 허용되는 식별자만 화이트리스트 처리한다.
 _PROTECTED_TERMS = [
-    "Antares Nuclear",
-    "Antares",
-    "BWXT Advanced Technologies",
-    "BWXT",
-    "General Atomics Electromagnetic Systems",
-    "General Atomics",
-    "Radiant Industries",
-    "Radiant",
-    "Westinghouse Government Services",
-    "Westinghouse",
-    "Fort Bragg",
-    "Fort Campbell",
-    "Fort Hood",
-    "Fort Benning",
-    "Fort Drum",
-    "Kaleidos",
-    "eVinci",
-    "GA-TES",
-    "Janus",
-    "TRISO",
-    "HALEU",
-    "DOE",
-    "NRC",
-    "INL",
-    "DOME",
-    "R-50",
+    "Antares Nuclear", "Antares", "BWXT Advanced Technologies", "BWXT",
+    "General Atomics Electromagnetic Systems", "General Atomics",
+    "Radiant Industries", "Radiant", "Westinghouse Government Services", "Westinghouse",
+    "Kaleidos", "eVinci", "GA-TES", "Janus", "TRISO", "HALEU", "DOE", "NRC",
+    "INL", "DOME", "R-50", "Standard Nuclear", "Centrus Energy", "Equinix", "DIU",
 ]
 
 _BAD_TITLE_RE = re.compile(
@@ -177,6 +156,7 @@ def _needs_translation(text: str) -> bool:
     stripped = text
     for term in sorted(_PROTECTED_TERMS, key=len, reverse=True):
         stripped = re.sub(re.escape(term), " ", stripped, flags=re.I)
+    # 2글자 이하 약어/단위는 허용하되 일반 설명형 영어 단어는 차단한다.
     return bool(re.search(r"\b[A-Za-z]{3,}\b", stripped))
 
 
@@ -189,8 +169,8 @@ def _restore_known_korean(text: str) -> str:
         (r"\bDepartment\s+of\s+Energy\b", "미 에너지부"),
         (r"\bDepartment\s+of\s+the\s+Air\s+Force\b", "미 공군부"),
         (r"\bSpace\s+Force\s+Base\b", "우주군기지"),
-        (r"\bFuel\s+Supply\s+Agreement\b", "연료 공급계약"),
         (r"\bMicroreactors?\b", "마이크로원자로"),
+        (r"\bFuel\s+Supply\s+Agreement\b", "연료 공급계약"),
         (r"\bContract\b", "계약"),
         (r"\bFactory\b", "공장"),
         (r"\bLicense\s+Application\b", "허가 신청"),
@@ -199,34 +179,6 @@ def _restore_known_korean(text: str) -> str:
     for pattern, repl in replacements:
         out = re.sub(pattern, repl, out, flags=re.I)
     return base.norm(out)
-
-
-def _protect_terms(text: str):
-    protected = {}
-    work = text
-    for idx, term in enumerate(sorted(_PROTECTED_TERMS, key=len, reverse=True)):
-        pattern = re.compile(re.escape(term), re.I)
-        match = pattern.search(work)
-        if match:
-            # 문자 단어가 아닌 기호+숫자 토큰을 사용해 번역기가 토큰 자체를 번역하지 못하게 한다.
-            token = f"⟦{idx}⟧"
-            protected[token] = match.group(0)
-            work = pattern.sub(token, work)
-    return work, protected
-
-
-def _restore_terms(text: str, protected) -> str:
-    out = text
-    for token, original in protected.items():
-        out = out.replace(token, original)
-        # 번역기가 괄호 주변 공백을 바꾸는 경우를 보완한다.
-        out = out.replace(token.replace("⟦", "[ ").replace("⟧", " ]"), original)
-    return base.norm(out)
-
-
-def _translate_once(text: str, source: str) -> str:
-    translator = _TRANSLATOR_EN if source == "en" else _TRANSLATOR_AUTO
-    return base.norm(translator.translate(text) or "")
 
 
 def _translate_ko(text: str) -> str:
@@ -238,33 +190,22 @@ def _translate_ko(text: str) -> str:
     if not _needs_translation(raw):
         return _restore_known_korean(raw)
 
-    work, protected = _protect_terms(raw)
-    # 영문 제목은 source=en 고정. 이미 한국어가 섞인 변경 요약은 auto를 먼저 사용한다.
-    source = "auto" if re.search(r"[가-힣]", work) else "en"
+    # 보호 토큰을 넣으면 Google 번역이 전체 문장을 실패하는 경우가 있어
+    # 영문 원문 전체를 먼저 번역하고, 최종 검사에서 식별자만 예외 허용한다.
+    translator = _TRANSLATOR_AUTO if re.search(r"[가-힣]", raw) else _TRANSLATOR_EN
     try:
-        translated = _translate_once(work, source)
+        translated = base.norm(translator.translate(raw) or "")
     except Exception as exc:
         raise RuntimeError(f"한국어 번역 실패: {exc}") from exc
 
-    translated = _restore_terms(translated, protected)
     translated = _restore_known_korean(translated)
 
-    # 혼합문장 자동감지가 영어 조각을 남긴 경우 영문 조각만 source=en으로 재번역한다.
-    if _needs_translation(translated):
-        def repl(match):
-            frag = match.group(0).strip()
-            if not frag or not re.search(r"[A-Za-z]{3,}", frag):
-                return match.group(0)
-            frag_work, frag_protected = _protect_terms(frag)
-            try:
-                frag_ko = _translate_once(frag_work, "en")
-                frag_ko = _restore_terms(frag_ko, frag_protected)
-                return _restore_known_korean(frag_ko)
-            except Exception:
-                return match.group(0)
-
-        translated = re.sub(r"[A-Za-z][A-Za-z0-9\s.,'’\-/$%:()]{2,}", repl, translated)
-        translated = base.norm(translated)
+    # 자동 감지에서 영어 조각이 남으면 전체 문장을 영어 원문 기준으로 한 번 더 번역한다.
+    if _needs_translation(translated) and not re.search(r"[가-힣]", raw):
+        try:
+            translated = _restore_known_korean(base.norm(_TRANSLATOR_EN.translate(raw) or translated))
+        except Exception:
+            pass
 
     if _BAD_TITLE_RE.search(translated):
         raise RuntimeError("오류 페이지 문구가 포함되어 송출 차단")
