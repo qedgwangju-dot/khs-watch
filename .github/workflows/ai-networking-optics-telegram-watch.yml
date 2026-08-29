@@ -23,7 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
-      # Route only through the dedicated KHS policy Telegram bot/chat already used in this repository.
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
 
     steps:
@@ -40,10 +39,10 @@ jobs:
       - name: Validate watcher
         run: python -m py_compile scripts/ai_networking_optics_watch.py
 
-      - name: Validate exact KHS Telegram route without sending
+      - name: Validate exact requested Telegram route without sending
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import json
@@ -54,9 +53,9 @@ jobs:
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
-              raise RuntimeError("KHS_POLICY_TELEGRAM_BOT_TOKEN secret is missing")
+              raise RuntimeError("TELEGRAM_BOT_TOKEN secret is missing")
           if not chat_id:
-              raise RuntimeError("KHS_POLICY_TELEGRAM_CHAT_ID secret is missing")
+              raise RuntimeError("TELEGRAM_CHAT_ID secret is missing")
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
           username = str((identity.get("result") or {}).get("username") or "")
@@ -81,11 +80,11 @@ jobs:
             cat out/ai_networking_optics_watch_telegram.html >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Send meaningful new signal to exact KHS Telegram bot
+      - name: Send meaningful new signal to exact requested Telegram bot
         if: hashFiles('out/ai_networking_optics_watch_telegram.html') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
@@ -100,7 +99,7 @@ jobs:
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token or not chat_id:
-              raise RuntimeError("KHS Telegram token/chat id is missing")
+              raise RuntimeError("Telegram token/chat id is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
@@ -171,23 +170,26 @@ jobs:
           if [ ! -f out/ai_networking_optics_watch_telegram.html ] || [ -f out/ai_networking_optics_watch_telegram_confirmed.json ]; then
             if [ -f out/ai_networking_optics_watch_pending_state.json ]; then
               cp out/ai_networking_optics_watch_pending_state.json data/ai_networking_optics_watch_state.json
-              if [ -f out/ai_networking_optics_watch_telegram_confirmed.json ]; then
-                python - <<'PY'
-                import json
-                import pathlib
-                state_path = pathlib.Path("data/ai_networking_optics_watch_state.json")
-                state = json.loads(state_path.read_text(encoding="utf-8"))
-                confirmed = json.loads(pathlib.Path("out/ai_networking_optics_watch_telegram_confirmed.json").read_text(encoding="utf-8"))
-                state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
-                state["telegram_message_ids"] = confirmed.get("message_ids")
-                state["bot_username"] = confirmed.get("bot_username")
-                state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-                PY
-              fi
             fi
           else
             echo "Telegram delivery was not confirmed; watcher state intentionally not advanced."
           fi
+
+      - name: Record confirmed Telegram delivery in watcher state
+        if: always() && hashFiles('data/ai_networking_optics_watch_state.json') != '' && hashFiles('out/ai_networking_optics_watch_telegram_confirmed.json') != ''
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+
+          state_path = pathlib.Path("data/ai_networking_optics_watch_state.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          confirmed = json.loads(pathlib.Path("out/ai_networking_optics_watch_telegram_confirmed.json").read_text(encoding="utf-8"))
+          state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
+          state["telegram_message_ids"] = confirmed.get("message_ids")
+          state["bot_username"] = confirmed.get("bot_username")
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
 
       - name: Commit watcher state
         if: always()
