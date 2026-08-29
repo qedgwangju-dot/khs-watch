@@ -37,6 +37,10 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install Google News original-link decoder
+        run: |
+          python -m pip install --disable-pip-version-check --no-cache-dir googlenewsdecoder==0.1.7
+
       - name: Validate Telegram route without sending
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
