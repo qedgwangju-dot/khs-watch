@@ -60,7 +60,8 @@ jobs:
           python - <<'PY'
           import urllib.parse
           probe = urllib.parse.urlencode({'text': 'Headline PCE MoM YoY | Fed | Treasury | 2Y'})
-          assert '종합+PCE' in probe and '연준%28Fed%29' in probe and '2년물' in urllib.parse.unquote_plus(probe), probe
+          decoded = urllib.parse.unquote_plus(probe)
+          assert '종합 PCE' in decoded and '연준(Fed)' in decoded and '미 재무부(Treasury)' in decoded and '2년물' in decoded, decoded
           print('한글 알림 표기 가드 정상')
           PY
           python scripts/warsh_reaction_watch.py
