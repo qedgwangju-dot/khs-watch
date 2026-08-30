@@ -7,7 +7,10 @@ from typing import Any
 import requests
 from bs4 import BeautifulSoup
 
-import korea_energy_mix_watch as watch
+try:
+    import korea_energy_mix_watch as watch
+except ModuleNotFoundError:
+    from scripts import korea_energy_mix_watch as watch
 
 
 _ORIGINAL_RENDER = watch.render
