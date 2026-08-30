@@ -1,0 +1,61 @@
+name: Treasury ETF Exact Telegram Route Test Once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/treasury-etf-exact-route-test-once.yml"
+
+jobs:
+  send-test:
+    runs-on: ubuntu-latest
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+    steps:
+      - name: Verify exact bot and send test
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Dedicated global-rates Telegram secrets are missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              ident = json.loads(r.read().decode("utf-8"))
+          actual = str((ident.get("result") or {}).get("username") or "")
+          if not ident.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong bot: expected @{expected}, got @{actual or 'unknown'}")
+
+          now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          text = (
+              "[미 국채 ETF Fund Flow 알림 연결 확인]\n"
+              f"전송시각(KST): {now:%Y-%m-%d %H:%M:%S}\n"
+              "대상: SHY · IEF · TLT 일일 자금흐름\n"
+              "이 메시지가 보이면 이후 일일 보고도 이 봇으로 전송됩니다."
+          )
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=25) as r:
+              result = json.loads(r.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram sendMessage failed: {result}")
+          msg = result.get("result") or {}
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={msg.get('message_id')} chat_id={msg.get('chat',{}).get('id')}")
+          PY
