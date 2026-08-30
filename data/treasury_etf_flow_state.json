@@ -13,8 +13,7 @@
         "nav_change_pct": null,
         "net_assets": 25739431699.0,
         "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
-        "flow_usd": null,
-        "flow_momentum": "비교 대기"
+        "flow_usd": null
       }
     ],
     "IEF": [
@@ -30,8 +29,7 @@
         "nav_change_pct": null,
         "net_assets": 41839709507.0,
         "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
-        "flow_usd": null,
-        "flow_momentum": "비교 대기"
+        "flow_usd": null
       }
     ],
     "TLT": [
@@ -47,19 +45,19 @@
         "nav_change_pct": null,
         "net_assets": 47015498098.0,
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
-        "flow_usd": null,
-        "flow_momentum": "비교 대기"
+        "flow_usd": null
       }
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-08-30T23:45:33+09:00",
+    "at_kst": "2026-08-31T00:00:12+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      52
+      53
     ],
-    "classification": "중립·방향 확인 대기",
+    "classification": "Fund Flow 판정 대기",
+    "curve_regime": "베어 플래트닝",
     "treasury_date": "2026-08-28",
-    "format": "directional-readable-v1"
+    "format": "directional-curve-readable-v2"
   }
 }
