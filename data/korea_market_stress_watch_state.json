@@ -1,22 +1,22 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-08-31T04:50:29+09:00",
+  "updated_at_kst": "2026-08-31T07:22:45+09:00",
   "seen_event_keys": [
     "policy_spread:2026-08-27:0.75",
-    "foreign3d_neg:2026-08-27",
-    "capex:13cbe150930d23d8"
+    "capex:13cbe150930d23d8",
+    "foreign3d_neg:2026-08-27"
   ],
   "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-08-31T04:50:29+09:00",
+    "checked_at_kst": "2026-08-31T07:22:45+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-08-28",
-      "value": 1380.5,
+      "value": 1381.0,
       "prev_date": "2026-08-27",
       "prev_value": 1382.0,
-      "change_krw": -1.5,
-      "change_pct": -0.1085,
+      "change_krw": -1.0,
+      "change_pct": -0.0724,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
