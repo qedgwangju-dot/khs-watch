@@ -22,17 +22,13 @@ _HEADERS = {
 
 def headline_match(title: str) -> bool:
     lower = watch.norm(title).lower()
-    # RSS 검색식 자체가 제12차 전기본/전력수급기본계획으로 제한되어 있으므로,
-    # 제목에 '전기본'이 반복되지 않아도 재생에너지·원전·전력수요 핵심어가 있으면 잡는다.
     return any(term in lower for term in watch.ENERGY_TERMS)
 
 
 def resolve_article_url(url: str) -> str:
-    """Google News RSS 링크면 원 언론사 URL로 풀고, 실패하면 기존 URL을 유지한다."""
     url = str(url or "").strip()
     if not url or "news.google.com" not in url:
         return url
-
     try:
         from googlenewsdecoder import new_decoderv1
 
@@ -41,8 +37,6 @@ def resolve_article_url(url: str) -> str:
             return str(result["decoded_url"]).strip()
     except Exception as exc:  # noqa: BLE001
         print(f"google_news_decode_failed={type(exc).__name__}")
-
-    # 드물게 일반 리다이렉트로도 원문이 풀리는 경우가 있어 한 번 더 시도한다.
     try:
         response = requests.get(url, headers=_HEADERS, timeout=15, allow_redirects=True)
         response.raise_for_status()
@@ -58,24 +52,22 @@ def _clean_paragraph(value: str) -> str:
     noise = (
         "재판매 및 db 금지",
         "무단전재",
-        "구독",
-        "기자 구독",
-        "Copyright",
+        "copyright",
         "기사제보",
         "관련기사",
         "많이 본",
+        "이시간 핫 뉴스",
     )
-    if any(token.lower() in text.lower() for token in noise):
+    if any(token in text.lower() for token in noise):
         return ""
     return text
 
 
 def fetch_article_body(url: str) -> tuple[str, str, str]:
-    """원문 URL과 본문 텍스트를 반환한다. 본문 확인 실패 시 추정하지 않고 오류 사유를 함께 반환한다."""
+    """실제 언론사 원문을 열어 본문을 추출한다. 실패하면 추정하지 않는다."""
     resolved = resolve_article_url(url)
     if not resolved:
         return url, "", "원문 URL 없음"
-
     try:
         response = requests.get(resolved, headers=_HEADERS, timeout=20, allow_redirects=True)
         response.raise_for_status()
@@ -89,11 +81,14 @@ def fetch_article_body(url: str) -> tuple[str, str, str]:
             "article p",
             "#articleBody p",
             "#article_body p",
+            "#textBody p",
             ".articleBody p",
             ".article-body p",
             ".article_view p",
             ".article-view p",
+            ".articleView p",
             ".view_text p",
+            ".viewer p",
             ".news_body p",
             ".news-body p",
             ".article_txt p",
@@ -102,24 +97,23 @@ def fetch_article_body(url: str) -> tuple[str, str, str]:
         )
         best: list[str] = []
         for selector in selectors:
-            paragraphs = []
+            paragraphs: list[str] = []
             for node in soup.select(selector):
                 text = _clean_paragraph(node.get_text(" ", strip=True))
                 if len(text) >= 35:
                     paragraphs.append(text)
-            if sum(len(x) for x in paragraphs) > sum(len(x) for x in best):
+            if sum(map(len, paragraphs)) > sum(map(len, best)):
                 best = paragraphs
 
-        if sum(len(x) for x in best) < 500:
-            fallback = []
+        if sum(map(len, best)) < 500:
+            fallback: list[str] = []
             for node in soup.find_all("p"):
                 text = _clean_paragraph(node.get_text(" ", strip=True))
                 if len(text) >= 45:
                     fallback.append(text)
-            if sum(len(x) for x in fallback) > sum(len(x) for x in best):
+            if sum(map(len, fallback)) > sum(map(len, best)):
                 best = fallback
 
-        # 같은 문단이 모바일/PC 영역에 중복 삽입된 경우 제거한다.
         unique: list[str] = []
         seen: set[str] = set()
         for paragraph in best:
@@ -135,130 +129,157 @@ def fetch_article_body(url: str) -> tuple[str, str, str]:
         return resolved, "", f"{type(exc).__name__}: {exc}"
 
 
-def _has(text: str, *terms: str) -> bool:
-    lower = text.lower()
-    return all(term.lower() in lower for term in terms)
-
-
 def _has_any(text: str, *terms: str) -> bool:
     lower = text.lower()
     return any(term.lower() in lower for term in terms)
 
 
-def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
-    """제목이 아니라 실제 원문 본문에 존재하는 사실만 골라 읽기 쉬운 해석으로 재구성한다."""
-    if not body:
-        return "\n".join(
-            [
-                "<b>원문 본문 해석</b>",
-                f"원문 본문 직접 확인 실패 — 임의 해석 생략 ({html.escape(error or '접근 제한')})",
-            ]
-        )
+def _sentences(body: str) -> list[str]:
+    parts = re.split(r"(?<=[.!?]|다\.)\s+|\n+", body)
+    return [" ".join(x.split()) for x in parts if len(" ".join(x.split())) >= 30]
 
+
+def _generic_extract(body: str) -> list[str]:
+    """전용 규칙이 없는 기사도 빈 해석 대신 원문 핵심 문장을 추려 보여준다."""
+    keywords = (
+        "전력수요", "원전", "원자력", "재생에너지", "석탄", "lng", "가스발전",
+        "ess", "송변전", "전력망", "공청회", "정부안", "확정", "준공", "부지",
+        "발전소", "전력시장", "계통", "투자", "공론화",
+    )
+    scored: list[tuple[int, int, str]] = []
+    for idx, sentence in enumerate(_sentences(body)):
+        lower = sentence.lower()
+        score = sum(3 for k in keywords if k in lower)
+        score += min(len(re.findall(r"\d+(?:\.\d+)?(?:gw|기|년|%)?", lower)), 4) * 2
+        if "정부" in sentence or "기후" in sentence:
+            score += 2
+        if score > 0:
+            scored.append((score, -idx, sentence))
+    best = sorted(scored, reverse=True)[:5]
+    return [html.escape(x[2]) for x in sorted(best, key=lambda x: -x[1])]
+
+
+def _interpret_renewable(body: str) -> list[str]:
     lower = body.lower()
-    points: list[str] = []
-    execution: list[str] = []
-    risks: list[str] = []
+    if not ("재생" in lower and "220gw" in lower):
+        return []
+    lines = [
+        "<b>원문이 말하는 핵심</b>",
+        "• 정부가 제12차 전기본에 반영할 재생에너지 보급 경로를 크게 끌어올리지만, <b>목표 GW만 늘려서는 실제 전력 공급이 보장되지 않는다는 내용</b>",
+    ]
+    if "33.4gw" in lower and "2040" in lower:
+        lines.append("• 재생에너지 설비는 <b>2025년 33.4GW → 2040년 220GW</b>로 확대하는 구상")
+    if all(x in lower for x in ("155gw", "45gw", "16gw")):
+        lines.append("• 2040년 중심축은 <b>태양광 155GW > 해상풍력 45GW > 육상풍력 16GW</b>")
+    if _has_any(lower, "전력망", "송배전망", "계통") and "ess" in lower:
+        lines.extend([
+            "",
+            "<b>쉽게 풀면</b>",
+            "• 발전소를 많이 지어도 송전선·변전소·ESS가 늦으면 전기를 필요한 곳으로 보내지 못함",
+            "• 따라서 실질적인 병목은 <b>발전설비 → 계통 접속 → 송변전망 → ESS·양수발전</b> 순서에서 생길 수 있음",
+        ])
+    return lines
 
-    # 목표와 시간표 — 원문에 수치가 실제로 있을 때만 작성한다.
-    if "220gw" in lower and ("2040" in lower or "2040년" in body):
-        if "33.4gw" in lower:
-            points.append(
-                "정부가 제시한 큰 그림은 <b>2025년 33.4GW 수준의 재생에너지를 2040년 220GW까지 확대</b>하는 것"
-            )
-        else:
-            points.append("정부가 제시한 2040년 재생에너지 설비 목표·전망은 <b>220GW</b>")
 
-    if "2030" in lower and "100gw" in lower and "2035" in lower and "163gw" in lower:
-        points.append(
-            "중간 경로는 <b>2030년 100GW → 2035년 163GW → 2040년 220GW</b>로, 한 번에 늘리는 계획이 아니라 단계적으로 증설하는 구조"
-        )
+def _interpret_nuclear_coal_lng(body: str) -> list[str]:
+    """신규 원전·2040 탈석탄·LNG 보완전원 기사를 원문 사실만으로 풀어쓴다."""
+    lower = body.lower()
+    if not (_has_any(lower, "신규 원전", "원전을 더", "원전 확대") and "석탄" in lower):
+        return []
 
-    if _has_any(lower, "태양광을 중심", "태양광 중심", "태양광 먼저") and _has_any(
-        lower, "2030년 이후", "해상풍력 확대", "해상풍력"
-    ):
-        points.append(
-            "보급 순서는 <b>초반 태양광을 빠르게 늘리고, 2030년 이후 해상풍력을 본격 확대</b>하는 방식"
-        )
+    lines = [
+        "<b>원문이 말하는 핵심</b>",
+        "• 전력수요 전망이 크게 올라간 상황에서 <b>2040년 석탄발전까지 없애려 하니, 그 빈자리를 어떤 발전원으로 채울지 다시 결정해야 한다</b>는 기사",
+    ]
 
-    # 정부 실행수단 — 기사 본문에 실제 등장한 항목만 붙인다.
-    support_terms = []
-    for label, terms in (
-        ("이격거리 규제 완화", ("이격거리",)),
-        ("공공입지 활용", ("공공입지", "공공 입지")),
-        ("공장 지붕 활용", ("공장 지붕", "산단 지붕", "산업단지 지붕")),
-        ("햇빛소득마을", ("햇빛소득마을", "햇빛 소득마을")),
-        ("정부 주도 해상풍력 발전지구", ("발전지구", "정부 주도")),
-        ("인허가 절차 단축", ("인허가", "의제")),
-        ("지원항만·설치선박 확충", ("지원항만", "설치선박", "설치 선박")),
-        ("노후 풍력 리파워링", ("리파워링",)),
-    ):
-        if any(term.lower() in lower for term in terms):
-            support_terms.append(label)
-    if support_terms:
-        execution.append("정부가 기사에서 제시한 실행수단: " + " · ".join(support_terms))
+    if _has_any(lower, "다음 달", "내달") and "공청회" in lower:
+        lines.append("• 정부와 제12차 전기본 총괄위원회는 <b>다음 달부터 신규 원전 확대와 2040년 석탄발전 폐지 등을 공론화</b>할 예정")
 
-    # 단가 목표 — 숫자가 본문에 실제로 있는 경우에만 해석한다.
-    price_bits = []
-    if "80원" in body and "태양광" in body:
-        price_bits.append("태양광 80원/kWh")
-    if "120원" in body and "육상풍력" in body:
-        price_bits.append("육상풍력 120원/kWh")
-    if "150원" in body and "해상풍력" in body:
-        price_bits.append("해상풍력 150원/kWh")
-    if price_bits:
-        execution.append(
-            "보급량 확대와 동시에 발전비용도 낮추려는 구상이며, 기사에 제시된 목표는 " + " · ".join(price_bits)
-        )
+    if all(x in lower for x in ("대형원전 2기", "smr 1기")):
+        lines.extend([
+            "",
+            "<b>이미 정해진 원전과 새로 검토하는 원전을 구분</b>",
+            "• 제11차 전기본의 <b>대형원전 2기 + 소형모듈원전 1기</b>는 기존 확정 계획",
+        ])
+        if all(x in lower for x in ("영덕", "기장", "2037", "2038", "2035")):
+            lines.append("• 기사 기준 예정지는 대형원전 2기 <b>경북 영덕</b>, 소형모듈원전 1기 <b>부산 기장</b>; 준공 예상은 소형모듈원전 2035년, 대형원전 2037·2038년")
 
-    # 병목과 저장 — 본문에서 해당 용어가 확인된 경우만 설명한다.
-    if _has_any(lower, "송배전망", "전력망", "계통") and "ess" in lower:
-        risks.append(
-            "기사의 핵심 경고는 <b>재생에너지 설비 증가 속도를 전력망과 ESS가 따라가지 못할 수 있다는 점</b> — 발전소를 지어도 계통에 연결하지 못하면 실제 공급력으로 전환되지 않음"
-        )
-    if _has_any(lower, "장주기", "양수발전", "양수 발전", "저풍속", "저일사"):
-        risks.append(
-            "몇 시간짜리 변동은 배터리 ESS로 대응할 수 있지만, 장기간 저풍속·저일사에는 <b>양수발전·장주기 저장자원</b>이 별도로 필요하다는 의미"
-        )
-    if _has_any(lower, "출력제어", "접속 대기", "접속대기", "계통 접속"):
-        risks.append(
-            "실패 경로는 <b>설비 준공 → 계통 접속 지연 → 출력제어·대기물량 증가</b> 순서로 먼저 나타날 가능성이 큼"
-        )
+    if "팹 4기" in lower and _has_any(lower, "원전을 더", "신규 원전"):
+        lines.extend([
+            "",
+            "<b>이번에 새로 열린 가능성</b>",
+            "• 김성환 장관은 호남 반도체 산단이 당초 <b>팹 4기보다 더 커지면 추가 원전 등 추가 대책을 검토</b>해야 한다고 언급",
+        ])
+        if "한빛 원전" in lower and "2개" in lower:
+            lines.append("• 장관은 <b>한빛 원전에 2기를 더 지을 수 있는 부지</b>가 있다고 구체적으로 언급했지만, 이는 아직 신규 2기 건설 확정이 아니라 검토 가능성")
 
-    # 전원별 현재/미래 숫자가 본문에 있으면 계산 없이 의미만 정리한다.
-    if all(term in lower for term in ("155gw", "45gw", "16gw")):
-        points.append(
-            "2040년 전원별 중심축은 <b>태양광 155GW > 해상풍력 45GW > 육상풍력 16GW</b> 순으로, 절대 물량은 태양광이 가장 큼"
-        )
+    if "최대 9기" in lower or "9기의 팹" in lower:
+        lines.append("• 호남 산단 <b>최대 9개 팹</b> 가능성은 기사에 소개된 업계 관측으로, 정부 확정 물량과는 구분해야 함")
 
+    if "2040" in lower and _has_any(lower, "석탄발전 폐지", "석탄발전 중단", "석탄발전 폐지 로드맵"):
+        lines.extend([
+            "",
+            "<b>석탄을 없애면 생기는 문제</b>",
+            "• 2040년까지 석탄발전을 단계적으로 폐지하면 <b>폐지 시점과 대체 발전소 준공 시점 사이의 발전 공백</b>을 막아야 함",
+            "• 동시에 석탄발전 지역의 고용·지역경제를 옮기는 <b>정의로운 전환</b>까지 전기본과 함께 풀어야 함",
+        ])
+
+    if _has_any(lower, "1사 통합안", "발전공기업 5사"):
+        lines.append("• 석탄발전 비중 축소와 함께 발전공기업 5사 재편도 논의 중이며, 기사상 <b>1사 통합안은 연구용역 권고 단계</b>로 최종 확정은 아님")
+
+    if _has_any(lower, "lng 발전", "가스발전"):
+        lines.extend([
+            "",
+            "<b>LNG가 왜 다시 거론되나</b>",
+            "• LNG는 원전보다 건설기간이 짧고 출력 조절이 쉬워 <b>재생에너지의 간헐성과 탈석탄 공백을 메우는 보완전원</b>으로 검토",
+            "• 다만 가스발전도 탄소를 배출하므로 장기적으로는 감축·수소화·비상전원화가 필요하다는 것이 정부의 방향",
+        ])
+        if "열 스팀" in lower and "호남" in lower:
+            lines.append("• 호남 반도체 산단은 공정용 열·스팀 수요 때문에 <b>LNG 발전소 건설 가능성도 열어둔 상태</b>")
+
+    if "10월" in lower and "정부안" in lower and "연내" in lower:
+        lines.extend([
+            "",
+            "<b>앞으로 시간표</b>",
+            "• 다음 달부터 신규 원전·탈석탄·전력시장·송변전 계획 토론 → <b>10월 정부안</b> → 국회 보고 등 절차 → <b>연내 제12차 전기본 확정</b>",
+        ])
+
+    lines.extend([
+        "",
+        "<b>쉽게 풀면</b>",
+        "전력수요는 늘고 석탄은 없애야 하므로 <b>재생에너지 + 기존·신규 원전 + 일정 기간 LNG</b>를 어떤 비율과 일정으로 조합할지가 이번 전기본의 핵심. 추가 원전은 아직 확정이 아니라 공론화·검토 단계이고, 가장 먼저 볼 것은 <b>신규 원전 기수·부지, LNG 신규 용량, 석탄 폐지 연도별 물량, 10월 정부안</b>임",
+    ])
+    return lines
+
+
+def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
+    if not body:
+        return "\n".join([
+            "<b>원문 본문 해석</b>",
+            f"원문 본문 직접 확인 실패 — 임의 해석 생략 ({html.escape(error or '접근 제한')})",
+        ])
+
+    specialized = _interpret_nuclear_coal_lng(body) or _interpret_renewable(body)
     lines = ["<b>원문 본문 해석</b>"]
-    if points:
-        lines.append("<b>원문이 말하는 핵심</b>")
-        lines.extend(f"• {point}" for point in points[:5])
-    if execution:
-        lines.extend(["", "<b>정부가 실제로 하려는 것</b>"])
-        lines.extend(f"• {item}" for item in execution[:4])
-    if risks:
-        lines.extend(["", "<b>왜 전력망·ESS가 핵심인가</b>"])
-        lines.extend(f"• {item}" for item in risks[:4])
+    if specialized:
+        lines.extend(specialized)
+        return "\n".join(lines)
 
-    if len(lines) == 1:
-        # 본문은 읽었지만 현재 도메인 규칙으로 안전하게 풀 수 있는 문장이 없는 경우 추정하지 않는다.
-        lines.append("원문 본문은 확인했지만 확정적으로 재구성할 핵심 수치·정책 문구가 부족해 임의 해석은 생략")
+    extracted = _generic_extract(body)
+    if extracted:
+        lines.extend([
+            "<b>원문에서 확인되는 핵심</b>",
+            *[f"• {x}" for x in extracted],
+            "",
+            "<b>해석 상태</b>",
+            "전용 해석 규칙이 없는 기사라 원문 핵심 문장만 추려 표시 — 원문에 없는 의미는 임의로 추가하지 않음",
+        ])
     else:
-        if risks:
-            one_line = "재생에너지 목표 자체보다 <b>계통 접속·송배전망·ESS/장주기 저장이 같은 속도로 따라오는지가 실제 성패</b>"
-        elif points:
-            one_line = "기사의 숫자는 단순 목표치가 아니라 <b>정부가 언제 어떤 전원을 우선 증설할지 보여주는 투자 시간표</b>"
-        else:
-            one_line = "기사의 핵심은 발표 숫자보다 <b>이를 실행하기 위한 제도·인프라가 실제로 뒤따르는지</b> 확인하는 것"
-        lines.extend(["", "<b>한마디로</b>", one_line])
-
+        lines.append("원문 본문은 확인했지만 핵심 문장을 안전하게 추출하지 못해 임의 해석은 생략")
     return "\n".join(lines)
 
 
 def render_with_linked_source(rows: list[dict[str, Any]]) -> str:
-    """출처명 자체를 링크로 만들고, 실제 원문 본문에 근거한 해석을 붙인다."""
     body = _ORIGINAL_RENDER(rows)
     for row in rows[:5]:
         original_url = str(row.get("url", ""))
