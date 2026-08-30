@@ -35,6 +35,11 @@ def _extract_bp(text, tenor):
     return int(m.group(1)) if m else None
 
 
+def _extract_rate(text, tenor):
+    m = re.search(rf"• {tenor}년:\s*([\d.]+)%", text)
+    return float(m.group(1)) if m else None
+
+
 def fixed_curve_label(text):
     d2 = _extract_bp(text, 2)
     d10 = _extract_bp(text, 10)
@@ -55,11 +60,59 @@ def fixed_curve_label(text):
     return "혼합 이동 = 단기·장기 금리가 같은 방향으로 정렬되지 않음 → 한 가지 커브 용어로 억지 분류하지 않고 개별 원인 확인"
 
 
+def ten_thirty_diagnosis(text):
+    r10 = _extract_rate(text, 10)
+    r30 = _extract_rate(text, 30)
+    d10 = _extract_bp(text, 10)
+    d30 = _extract_bp(text, 30)
+    d2 = _extract_bp(text, 2)
+    if None in (r10, r30, d10, d30):
+        return None
+
+    prev10 = r10 - d10 / 100.0
+    prev30 = r30 - d30 / 100.0
+    spread_now = (r30 - r10) * 100.0
+    spread_prev = (prev30 - prev10) * 100.0
+    spread_change = spread_now - spread_prev
+
+    if spread_change > 0.5:
+        back = "10년-30년 금리차 확대 → 30년물이 10년물보다 상대적으로 더 약함 → 재정·장기채 공급·기간프리미엄 부담 강화"
+    elif spread_change < -0.5:
+        back = "10년-30년 금리차 축소 → 30년물이 10년물보다 상대적으로 덜 약함/더 강함 → 뒷단 재정·장기채 공급 압력은 상대적으로 완화"
+    else:
+        back = "10년-30년 금리차 변화 제한 → 뒷단 재정·장기채 공급 압력에 뚜렷한 추가 변화 없음"
+
+    front_fed = d2 is not None and d10 is not None and d2 > 0 and d10 > 0 and d2 > d10
+    back_fiscal = d30 > d10 and d30 > 0
+
+    if front_fed and not back_fiscal:
+        driver = "오늘의 주도축: 앞단 Fed 문제 우세 → 재인상·고금리 장기화 우려가 핵심"
+    elif back_fiscal and not front_fed:
+        driver = "오늘의 주도축: 뒷단 재정·장기채 공급 문제 우세 → 기간프리미엄·국채 공급 부담이 핵심"
+    elif front_fed and back_fiscal:
+        driver = "오늘의 주도축: 앞단 Fed 문제와 뒷단 재정·장기채 공급 문제가 동시에 압박"
+    else:
+        driver = "오늘의 주도축: Fed와 재정 중 한쪽으로 단정하기 어려움 → 개별 금리 움직임 추가 확인"
+
+    direction = "확대" if spread_change > 0.5 else "축소" if spread_change < -0.5 else "보합"
+    return (
+        f"• 10년-30년 금리차: 현재 {spread_now:.0f}bp | 직전 {spread_prev:.0f}bp | {spread_change:+.0f}bp {direction}\n"
+        f"• 뒷단 해석: {back}\n"
+        f"• {driver}"
+    )
+
+
 def send_with_fixed_curve_language(text):
     label = fixed_curve_label(text)
-    if label and "[금리 구조 쉬운 해석]" not in text:
+    ten30 = ten_thirty_diagnosis(text)
+    if (label or ten30) and "[금리 구조 쉬운 해석]" not in text:
         marker = "\n[방향성 판독]"
-        block = f"\n[금리 구조 쉬운 해석]\n• {label}\n"
+        block_lines = ["", "[금리 구조 쉬운 해석]"]
+        if label:
+            block_lines.append(f"• {label}")
+        if ten30:
+            block_lines.append(ten30)
+        block = "\n".join(block_lines) + "\n"
         if marker in text:
             text = text.replace(marker, block + marker, 1)
         else:
