@@ -67,7 +67,6 @@ def _clean_paragraph(value: str) -> str:
 
 
 def fetch_article_body(url: str) -> tuple[str, str, str]:
-    """실제 언론사 원문을 열어 본문을 추출한다. 실패하면 추정하지 않는다."""
     resolved = resolve_article_url(url)
     if not resolved:
         return url, "", "원문 URL 없음"
@@ -143,7 +142,6 @@ def _sentences(body: str) -> list[str]:
 
 
 def _generic_extract(body: str) -> list[str]:
-    """전용 규칙이 없는 기사도 빈 해석 대신 원문 핵심 문장을 추려 보여준다."""
     keywords = (
         "전력수요", "원전", "원자력", "재생에너지", "석탄", "lng", "가스발전",
         "ess", "송변전", "전력망", "공청회", "정부안", "확정", "준공", "부지",
@@ -185,7 +183,6 @@ def _interpret_renewable(body: str) -> list[str]:
 
 
 def _interpret_nuclear_coal_lng(body: str) -> list[str]:
-    """신규 원전·2040 탈석탄·LNG 보완전원 기사를 원문 사실만으로 풀어쓴다."""
     lower = body.lower()
     if not (_has_any(lower, "신규 원전", "원전을 더", "원전 확대") and "석탄" in lower):
         return []
@@ -198,7 +195,7 @@ def _interpret_nuclear_coal_lng(body: str) -> list[str]:
     if _has_any(lower, "다음 달", "내달") and "공청회" in lower:
         lines.append("• 정부와 제12차 전기본 총괄위원회는 <b>다음 달부터 신규 원전 확대와 2040년 석탄발전 폐지 등을 공론화</b>할 예정")
 
-    if all(x in lower for x in ("대형원전 2기", "smr 1기")):
+    if "대형원전 2기" in lower and "smr" in lower and "1기" in lower:
         lines.extend([
             "",
             "<b>이미 정해진 원전과 새로 검토하는 원전을 구분</b>",
