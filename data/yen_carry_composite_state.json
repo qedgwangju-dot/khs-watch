@@ -14,7 +14,7 @@
     "unwind::레버리지 펀드 엔화 순숏": true,
     "unwind::미·일 2년 금리차 축소": false,
     "unwind::일본 단기금리 상승": false,
-    "unwind::최근 공식 공동개입·추가개입 경고": true
+    "unwind::최근 공식 공동개입·추가개입 경고": false
   },
   "initialized": true,
   "rebuild_label": "엔화 재약세·캐리 재구축 미확인",
@@ -28,7 +28,7 @@
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-08-30T21:15:21+09:00",
+  "updated_at_kst": "2026-08-31T01:41:56+09:00",
   "values": {
     "cftc_net_short": 77042,
     "cftc_net_short_pct_oi": 20.05174172861099,
