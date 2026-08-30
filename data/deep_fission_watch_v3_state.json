@@ -18,7 +18,7 @@
     "data_well_6000_complete": true,
     "deep_fission_criticality": false,
     "doe_construct_operate_authorized": false,
-    "non_nuclear_demo_complete": true,
+    "non_nuclear_demo_complete": false,
     "nrc_col_submitted": false,
     "poc_depth_reached": false,
     "poc_drilling_started": false,
@@ -311,6 +311,6 @@
     }
   },
   "sent_event_ids": [],
-  "updated_at": "2026-08-30T00:14:17+00:00",
+  "updated_at": "2026-08-30T06:23:55+00:00",
   "version": 3
 }
