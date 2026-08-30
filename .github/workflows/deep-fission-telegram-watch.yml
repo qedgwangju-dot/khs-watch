@@ -7,6 +7,7 @@ on:
     paths:
       - ".github/workflows/deep-fission-telegram-watch.yml"
       - "scripts/deep_fission_watch_v3.py"
+      - "scripts/deep_fission_live_runner.py"
   schedule:
     - cron: "7 * * * *"
   workflow_dispatch:
@@ -89,14 +90,14 @@ jobs:
       - name: Validate semantic watcher
         if: steps.telegram.outputs.configured == 'true'
         run: |
-          python -m py_compile scripts/deep_fission_watch_v3.py
-          python scripts/deep_fission_watch_v3.py --mode self-test
+          python -m py_compile scripts/deep_fission_watch_v3.py scripts/deep_fission_live_runner.py
+          python scripts/deep_fission_live_runner.py --mode self-test
 
       - name: Check Deep Fission official sources
         if: steps.telegram.outputs.configured == 'true'
         run: |
           rm -f out/deep_fission_alert_v3.md out/deep_fission_connection_test.md
-          python scripts/deep_fission_watch_v3.py --mode check
+          python scripts/deep_fission_live_runner.py --mode check
           test -f out/deep_fission_status_v3.md && cat out/deep_fission_status_v3.md >> "$GITHUB_STEP_SUMMARY" || true
 
       - name: Enforce Korean alert wording
@@ -145,7 +146,6 @@ jobs:
           ]
           for a,b in replacements:
               text=text.replace(a,b)
-          # 임의의 영문 보도자료 제목이 그대로 노출되는 fallback을 막는다.
           text=re.sub(r'- 새 사실: 신규 공식 보도자료 발표:.*', '- 새 사실: Deep Fission이 투자 판단상 중요한 신규 공식 보도자료를 공개', text)
           text=re.sub(r'- 다음 확인: 8-K Item과.*', '- 다음 확인: 8-K 세부 항목과 계약·인허가·경영진·자금조달의 실제 변경 내용', text)
           text=text.replace('SEC Form ', '미국 증권거래위원회(SEC) ')
@@ -165,6 +165,7 @@ jobs:
           - DOE: Deep Fission 실명 임계 도달·연료 장전·전출력 변화만 알림
           - 파슨스: 실제 시추 착수·목표 깊이·시제품 지하 배치·실증 완료만 알림
           - 페이지 메뉴·갱신시각·문구 재배치만으로는 알림하지 않음
+          - 과거 18.5GW 고객 후보군 문구 재사용은 신규 계약으로 알리지 않음
           - 동일 사건은 한 번만 알림
           EOF
 
