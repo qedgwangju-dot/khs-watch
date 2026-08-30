@@ -15,6 +15,7 @@ from scripts.korea_energy_mix_watch import (
     render,
     topic_match,
 )
+from scripts.korea_energy_mix_watch_runner import interpret_article_body
 
 
 def test_topic_match_all_power_plan_mentions():
@@ -118,3 +119,25 @@ def test_official_source_is_a_material_upgrade():
     collapsed = collapse_events([media, official])
     assert len(collapsed) == 1
     assert collapsed[0]["official"] is True
+
+
+def test_nuclear_coal_lng_article_gets_real_body_interpretation():
+    article_body = """
+    정부와 제12차 전력수급기본계획 수립 총괄위원회는 다음 달부터 신규 원전 확대 여부와 2040년 석탄발전 폐지 등을 주제로 공청회를 개최할 예정이다.
+    제11차 전기본에 반영된 대형원전 2기와 소형모듈원전(SMR) 1기는 확정됐고 대형원전은 경북 영덕군, SMR은 부산 기장군으로 부지가 정해졌다. SMR은 2035년, 대형원전은 2037년과 2038년 준공이 예상된다.
+    김성환 장관은 호남 반도체 산단이 당초 팹 4기보다 커질 경우 원전을 더 지어야 할지 추가 대책을 찾아야 한다고 말했다. 한빛 원전은 현재 6개이고 2개를 더 지을 부지가 있다고 언급했다. 업계에서는 최대 9기의 팹 가능성이 제기된다.
+    정부는 2040년 석탄발전 폐지 로드맵을 논의하고 있으며 발전 공백과 정의로운 전환을 함께 고민하고 있다. 발전공기업 5사 재편과 1사 통합안도 연구용역 권고 단계다.
+    LNG 발전은 재생에너지 간헐성을 보완하고 원전보다 건설기간이 짧아 대안으로 거론된다. 호남 반도체 산단은 열 스팀 수요 때문에 LNG 발전소 가능성도 열어뒀다.
+    정부는 다음 달부터 토론회를 열고 10월 정부안을 낸 뒤 연내 제12차 전기본을 확정할 방침이다.
+    """
+    result = interpret_article_body(
+        {"title": "전력수요 폭증에 2040 석탄폐지까지…신규 원전 공론화 개시"},
+        article_body,
+        "",
+    )
+    assert "추가 원전" in result
+    assert "확정 계획" in result
+    assert "검토 가능성" in result
+    assert "LNG" in result
+    assert "10월 정부안" in result
+    assert "임의 해석은 생략" not in result
