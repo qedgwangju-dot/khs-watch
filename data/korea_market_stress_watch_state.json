@@ -1,17 +1,15 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-08-31T15:16:07+09:00",
+  "updated_at_kst": "2026-08-31T16:34:19+09:00",
   "seen_event_keys": [
     "capex:13cbe150930d23d8",
     "policy_spread:2026-08-27:0.75",
     "foreign3d_neg:2026-08-27",
     "foreign1d_neg:2026-08-31"
   ],
-  "active_keys": [
-    "foreign1d_neg:2026-08-31"
-  ],
+  "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-08-31T15:16:07+09:00",
+    "checked_at_kst": "2026-08-31T16:34:19+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-08-31",
@@ -40,10 +38,10 @@
     },
     "foreign_flow": {
       "date": "2026-08-31",
-      "daily_eok": -10410.0,
-      "three_day_eok": -17602.0,
-      "daily_krw": -1041000000000,
-      "three_day_krw": -1760200000000,
+      "daily_eok": -6403.0,
+      "three_day_eok": -13595.0,
+      "daily_krw": -640300000000,
+      "three_day_krw": -1359500000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260831&sosok=01"
     },
     "global_wave_news": [],
