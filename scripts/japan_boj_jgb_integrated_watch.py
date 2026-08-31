@@ -125,10 +125,6 @@ def fresh_within(pub,hours):
     except Exception:return False
 def scan_news(state):
     events=[]; seen=set(state.get('news_seen') or [])
-    for item in google_news_rss('Japan FY2027 debt service new bond issuance JGB Ministry of Finance')[:20]:
-        if not fresh_within(item['pub'],48) or item['link'] in seen:continue
-        t=item['title'].lower(); s=item['source'].lower(); trusted=any(x in s for x in ('reuters','nikkei','ministry of finance','財務省','kyodo')); material=any(x in t for x in ('debt service','new bond','issuance','budget','国債','국채'))
-        if trusted and material:events.append({'kind':'fiscal',**item})
     for item in google_news_rss('個人向け国債 NISA 財務省 税制 非課税',hl='ja',gl='JP',ceid='JP:ja')[:20]:
         if not fresh_within(item['pub'],72) or item['link'] in seen:continue
         t=item['title']; s=item['source'].lower(); official=any(x in s for x in ('ministry of finance','financial services agency','財務省','金融庁')); confirmed=any(x in t for x in ('税制改正','非課税','NISA','対象','tax','exempt')); jgb=any(x in t for x in ('国債','JGB','government bond'))
@@ -156,14 +152,13 @@ def main():
     if not first and statement_url and statement_url!=old_statement:
         if policy_rate is not None and old_rate is not None and policy_rate>old_rate:
             latest_hike_date=now.date().isoformat(); events.append({'kind':'boj_hike','old_rate':old_rate,'new_rate':policy_rate,'url':statement_url})
-        else:events.append({'kind':'boj_decision','rate':policy_rate,'url':statement_url})
+        else:pass
     hawkish_hits=boj.get('hawkish_hits') or []; opinion_url=boj.get('opinion_url') or ''; old_opinion=state.get('opinion_url') or ''
     if not first and opinion_url and opinion_url!=old_opinion and hawkish_hits:events.append({'kind':'boj_hawkish','hits':hawkish_hits,'url':opinion_url})
     streak=int(state.get('jgb10_above3_streak') or 0); last_jgb_date=state.get('jgb_source_date') or ''
     if cur_jgb:
         if cur_jgb['date']!=last_jgb_date:streak=streak+1 if cur_jgb['jgb10']>=3.0 else 0
         old_active=bool(state.get('jgb10_above3_active')); new_active=cur_jgb['jgb10']>=3.0
-        if not first and new_active and not old_active:events.append({'kind':'jgb10_cross','value':cur_jgb['jgb10'],'date':cur_jgb['date'],'url':MOF_YIELDS})
         if not first and streak==3 and int(state.get('jgb10_above3_streak') or 0)<3:events.append({'kind':'jgb10_persist','value':cur_jgb['jgb10'],'date':cur_jgb['date'],'url':MOF_YIELDS})
     usd_change=pct(usd_cur,usd_prev) if None not in (usd_cur,usd_prev) else None; jgb2_change=bp(cur_jgb['jgb2'],prev_jgb['jgb2']) if cur_jgb and prev_jgb else None; combo=False
     if usd_change is not None and jgb2_change is not None:
@@ -198,12 +193,9 @@ def main():
         if k=='critical': priority='최상'; lines += ['🚨 <b>최상위 경보: BOJ 인상 뒤 비정상 조합</b>',f"정책 긴축 이후에도 JGB 10Y {e['d10']:+.1f}bp·30Y {e['d30']:+.1f}bp 상승, USD/JPY {e['usd_change']:+.2f}%로 엔화 약세.",'의미: 금리인상보다 재정·국채수급 불안이 더 크게 평가되는지 즉시 확인 필요.']
         elif k=='boj_hike': priority='최상'; lines += [f"🔴 <b>BOJ 정책금리 인상</b>: {e['old_rate']:.2f}% → {e['new_rate']:.2f}%",f'<a href="{esc(e["url"])}">BOJ 공식 결정</a>']
         elif k=='boj_hawkish': priority='최상'; lines += [f"🔴 <b>BOJ 매파 신호 강화</b>: {', '.join(e['hits'])}",f'<a href="{esc(e["url"])}">BOJ 주요 의견</a>']
-        elif k=='boj_decision': lines += [f"🟡 <b>BOJ 새 정책결정 공개</b>: 정책금리 {e['rate'] if e['rate'] is not None else '자동 추출 불가'}",f'<a href="{esc(e["url"])}">BOJ 공식 결정</a>']
-        elif k=='jgb10_cross': priority='최상'; lines += [f"🔴 <b>일본 10년 JGB 3.0% 상향 돌파</b>: {e['value']:.3f}% ({e['date']})",f'<a href="{esc(e["url"])}">일본 재무성 금리</a>']
         elif k=='jgb10_persist': priority='최상'; lines += [f"🔴 <b>일본 10년 JGB 3.0% 3영업일 고착</b>: {e['value']:.3f}%",'의미: 단발성 돌파보다 일본 전체 할인율·재정부담 재평가 가능성이 커짐.']
         elif k=='auction': priority='최상'; lines += [f"🔴 <b>{e['tenor']}년 JGB 입찰 수요 급격 악화</b> ({e['date']})",f"응찰배율 {e['btc']:.2f}배 ({e['btc_drop']:+.1f}% vs 직전), 테일 {e['tail_bp']:.1f}bp ({e['tail_widen']:+.1f}bp).",f'<a href="{esc(e["url"])}">일본 재무성 입찰 결과</a>']
         elif k=='yen_carry_combo': priority='최상'; lines += ['🔴 <b>엔캐리 청산 선행조합</b>',f"USD/JPY {e['usdjpy']:.3f} (1일 {e['usd_change']:+.2f}%) + 일본 2Y {e['jgb2']:.3f}% ({e['jgb2_change']:+.1f}bp).",'의미: 엔화 강세와 엔 조달비용 상승이 동시에 진행.']
-        elif k=='fiscal': lines += [f"🟠 <b>일본 재정·JGB 공급 중요 변화</b>: {esc(e['title'])}",f'<a href="{esc(e["link"])}">원문</a>']
         elif k=='nisa': lines += [f"🟠 <b>개인 JGB NISA·세제 정책 공식 변화</b>: {esc(e['title'])}",f'<a href="{esc(e["link"])}">공식 원문</a>']
         lines.append('')
     current=[]
