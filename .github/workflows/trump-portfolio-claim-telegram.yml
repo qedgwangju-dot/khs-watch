@@ -8,6 +8,7 @@ on:
     paths:
       - ".github/workflows/trump-portfolio-claim-telegram.yml"
       - "scripts/trump_portfolio_claim_watch.py"
+      - "scripts/trump_portfolio_claim_watch_entry.py"
       - "data/trump_portfolio_claim_watch_state.json"
 
 permissions:
@@ -21,7 +22,7 @@ jobs:
   watch:
     runs-on: ubuntu-latest
     env:
-      THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
+      THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTETEEF_TELEGRAM_BOT_TOKEN || secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
       THIRTEENF_TELEGRAM_CHAT_ID: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
       KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
       KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
@@ -35,11 +36,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate script
-        run: python -m py_compile scripts/trump_portfolio_claim_watch.py
+      - name: Validate scripts
+        run: |
+          python -m py_compile scripts/trump_portfolio_claim_watch.py
+          python -m py_compile scripts/trump_portfolio_claim_watch_entry.py
 
-      - name: Check web-indexed Trump portfolio claims and send Telegram alert
-        run: python scripts/trump_portfolio_claim_watch.py
+      - name: Check web-indexed Trump portfolio claims and send Korean Telegram alert
+        run: python scripts/trump_portfolio_claim_watch_entry.py
 
       - name: Persist claim seen state
         if: success()
