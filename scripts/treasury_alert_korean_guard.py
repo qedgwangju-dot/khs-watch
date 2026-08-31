@@ -60,28 +60,82 @@ def load_json(path: Path) -> dict:
         return {}
 
 
-def fetch_series(series_id: str, lookback_days: int = 120) -> list[tuple[str, float]]:
-    start = (date.today() - timedelta(days=lookback_days)).isoformat()
-    query = urllib.parse.urlencode({"id": series_id, "cosd": start})
-    req = urllib.request.Request(f"{FRED_CSV}?{query}", headers={"User-Agent": UA, "Cache-Control": "no-cache"})
-    with urllib.request.urlopen(req, timeout=30) as response:
-        text = response.read().decode("utf-8-sig", errors="replace")
+def _url_text(url: str, timeout: int = 12) -> str:
+    last_error = None
+    for _attempt in range(2):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA, "Cache-Control": "no-cache"})
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                return response.read().decode("utf-8-sig", errors="replace")
+        except Exception as exc:
+            last_error = exc
+    raise RuntimeError(f"자료 다운로드 실패: {url} / {type(last_error).__name__}: {last_error}")
+
+
+def _parse_fred_txt(text: str, start: str) -> list[tuple[str, float]]:
+    out: list[tuple[str, float]] = []
+    data_started = False
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not data_started:
+            if re.match(r"^DATE\s+VALUE$", stripped):
+                data_started = True
+            continue
+        parts = stripped.split()
+        if len(parts) < 2:
+            continue
+        d, raw = parts[0], parts[1]
+        if d < start or raw == ".":
+            continue
+        try:
+            out.append((d, float(raw)))
+        except ValueError:
+            continue
+    return out
+
+
+def _parse_fred_csv(text: str) -> list[tuple[str, float]]:
     rows = list(csv.reader(io.StringIO(text)))
     out: list[tuple[str, float]] = []
     for row in rows[1:]:
         if len(row) < 2:
             continue
-        d = row[0].strip()
-        raw = row[1].strip()
+        d, raw = row[0].strip(), row[1].strip()
         if not d or not raw or raw == ".":
             continue
         try:
             out.append((d, float(raw)))
         except ValueError:
             continue
-    if len(out) < 2:
-        raise RuntimeError(f"FRED {series_id} 유효 관측치가 2개 미만입니다.")
     return out
+
+
+def fetch_series(series_id: str, lookback_days: int = 120) -> list[tuple[str, float]]:
+    start = (date.today() - timedelta(days=lookback_days)).isoformat()
+    errors = []
+
+    # Static FRED text files are materially faster/more reliable on GitHub-hosted runners.
+    try:
+        text = _url_text(f"https://fred.stlouisfed.org/data/{series_id}.txt", timeout=12)
+        out = _parse_fred_txt(text, start)
+        if len(out) >= 2:
+            return out
+        errors.append("txt: 유효 관측치 부족")
+    except Exception as exc:
+        errors.append(f"txt: {type(exc).__name__}: {exc}")
+
+    # Fallback to graph CSV, but do not let one slow FRED endpoint hang the whole watcher.
+    try:
+        query = urllib.parse.urlencode({"id": series_id, "cosd": start})
+        text = _url_text(f"{FRED_CSV}?{query}", timeout=12)
+        out = _parse_fred_csv(text)
+        if len(out) >= 2:
+            return out
+        errors.append("csv: 유효 관측치 부족")
+    except Exception as exc:
+        errors.append(f"csv: {type(exc).__name__}: {exc}")
+
+    raise RuntimeError(f"FRED {series_id} 조회 실패: {' | '.join(errors)}")
 
 
 def latest_two(rows: list[tuple[str, float]]) -> tuple[tuple[str, float], tuple[str, float]]:
@@ -364,7 +418,6 @@ def main() -> int:
         return match.group(1) + shown + match.group(3)
     text = pattern.sub(repl, text)
 
-    # Append the policy boundary + live causal snapshot to a fresh official Treasury policy alert.
     if UPGRADE_MARKER not in text:
         text = text.rstrip() + "\n" + policy_block(snapshot) + "\n"
 
