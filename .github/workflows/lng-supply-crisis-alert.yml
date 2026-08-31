@@ -47,6 +47,41 @@ jobs:
           python -m py_compile scripts/lng_supply_crisis_alert_v6.py
           python -m py_compile scripts/lng_supply_crisis_alert_v7.py
           python -m py_compile scripts/lng_supply_crisis_alert_v8.py
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, "scripts")
+          import lng_supply_crisis_alert_v2 as core
+          import lng_supply_crisis_alert_v8 as v8
+
+          item = core.NewsItem(
+              category="hormuz_shipping",
+              polarity="worsening",
+              subtype="facility_damage",
+              title="US forces strike two Iranian launchers on Iran's Larak island, US official says - Reuters",
+              source="Reuters",
+              link="https://example.com/source",
+              published_utc="2026-08-31T00:00:00+00:00",
+              published_epoch=0.0,
+              official=False,
+              event_id="format-test",
+          )
+          translated = v8.translate_title_ko(item)
+          assert translated == "미군, 이란 라라크섬의 발사대 2곳 타격…미 당국자 확인"
+          group = {
+              "category": "hormuz_shipping",
+              "polarity": "worsening",
+              "subtype": "facility_damage",
+              "event_id": "format-test",
+              "latest_epoch": 0.0,
+              "evidence": [item],
+              "verification": "신뢰 매체 2곳 교차",
+          }
+          _, body, _ = v8.build_regular_alert_v8([group], {}, set(), set())
+          assert "US forces strike" not in body
+          assert "로이터: 미군, 이란 라라크섬의 발사대 2곳 타격…미 당국자 확인" in body
+          assert '<a href="https://example.com/source">원문</a>' in body
+          print("v8_format_validation=true")
+          PY
 
       - name: Check LNG supply crisis conditions
         run: |
