@@ -8,6 +8,15 @@ promoted as high-impact biotech news.
 
 from __future__ import annotations
 
+# Keep chained radar overlays on the same checkout as this entrypoint. The
+# Windows wrapper can leave the project-root scripts directory on sys.path.
+import sys
+from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
 import gamejoa_preopen_news_radar_semisupply_runner as current
 
 
@@ -228,3 +237,4 @@ runner.source_output_aligned = source_output_aligned
 
 if __name__ == "__main__":
     raise SystemExit(telegram.main())
+
