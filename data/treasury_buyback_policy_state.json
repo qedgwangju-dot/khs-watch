@@ -5,8 +5,6 @@
     "10Y to 20Y": 2.0,
     "20Y to 30Y": 2.0
   },
-  "seen_source_ids": [
-    "press:https://home.treasury.gov/news/press-releases/sb0607/"
-  ],
-  "upgrade_note": "rearm canonical sb0607 once so the next successful run sends the upgraded Bessent policy-boundary interpretation"
+  "seen_source_ids": [],
+  "upgrade_note": "one-time resend armed for upgraded Bessent policy-boundary interpretation"
 }
