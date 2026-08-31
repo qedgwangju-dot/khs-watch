@@ -5,7 +5,6 @@ import io
 import json
 import os
 import re
-import sys
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -41,7 +40,7 @@ def api_json(endpoint: str, params: dict) -> dict:
 
 
 def load_corp_codes():
-    raw = fetch(api_url("corpCode.xml", {}))
+    raw = fetch(api_url("corpCode.xml", {}), timeout=90)
     try:
         zf = zipfile.ZipFile(io.BytesIO(raw))
         xml_name = next(n for n in zf.namelist() if n.lower().endswith(".xml"))
@@ -63,10 +62,10 @@ def resolve_company(query: str):
     q = (query or "").strip()
     if not q:
         fail("회사명·종목코드·고유번호가 필요합니다.")
-    rows = load_corp_codes()
     if q.isdigit() and len(q) == 8:
-        hit = [r for r in rows if r["corp_code"] == q]
-    elif q.isdigit() and len(q) == 6:
+        return {"corp_code": q, "corp_name": q, "stock_code": "", "modify_date": ""}
+    rows = load_corp_codes()
+    if q.isdigit() and len(q) == 6:
         hit = [r for r in rows if r["stock_code"] == q]
     else:
         hit = [r for r in rows if r["corp_name"] == q]
@@ -93,9 +92,23 @@ def strip_markup(text: str) -> str:
     return text.strip()
 
 
-def do_list(payload: dict, title_query: str):
+def corp_from_payload(payload: dict, title_query: str):
+    direct = str(payload.get("corp_code") or "").strip()
+    if direct:
+        if not (direct.isdigit() and len(direct) == 8):
+            fail("corp_code는 8자리 숫자여야 합니다.")
+        return {
+            "corp_code": direct,
+            "corp_name": str(payload.get("company") or title_query or direct),
+            "stock_code": str(payload.get("stock_code") or ""),
+            "modify_date": "",
+        }
     company = payload.get("company") or payload.get("query") or title_query
-    corp = resolve_company(company)
+    return resolve_company(company)
+
+
+def do_list(payload: dict, title_query: str):
+    corp = corp_from_payload(payload, title_query)
     today = dt.date.today()
     bgn = payload.get("bgn_de") or (today - dt.timedelta(days=int(payload.get("days", 30)))).strftime("%Y%m%d")
     end = payload.get("end_de") or today.strftime("%Y%m%d")
@@ -114,10 +127,10 @@ def do_list(payload: dict, title_query: str):
     data = api_json("list.json", params)
     print("# OpenDART 실시간 공시 조회")
     print()
-    print(f'- 회사: {corp["corp_name"]} ({corp["stock_code"] or "비상장"})')
+    print(f'- 회사: {corp["corp_name"]} ({corp["stock_code"] or "종목코드 미지정"})')
     print(f'- 고유번호: {corp["corp_code"]}')
     print(f'- 조회기간: {bgn} ~ {end}')
-    print(f'- OpenDART 상태: {data.get("status")} / {data.get("message")}', )
+    print(f'- OpenDART 상태: {data.get("status")} / {data.get("message")}')
     if data.get("status") == "013":
         print("- 조회 결과: 해당 기간 공시 없음")
         return
@@ -135,8 +148,7 @@ def do_list(payload: dict, title_query: str):
 
 
 def do_company(payload: dict, title_query: str):
-    company = payload.get("company") or payload.get("query") or title_query
-    corp = resolve_company(company)
+    corp = corp_from_payload(payload, title_query)
     data = api_json("company.json", {"corp_code": corp["corp_code"]})
     print("# OpenDART 기업개황")
     print()
