@@ -46,8 +46,8 @@ jobs:
       - name: Check official Treasury buyback policy
         run: python scripts/treasury_buyback_policy_watch.py
 
-      - name: Translate user-facing Treasury source title to Korean
-        if: hashFiles('out/treasury_buyback_policy_alert.html') != ''
+      - name: Upgrade user-facing Treasury interpretation
+        if: always()
         run: python scripts/treasury_alert_korean_guard.py
 
       - name: Publish status
