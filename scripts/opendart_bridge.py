@@ -192,7 +192,8 @@ def main():
     if not API_KEY:
         fail("GitHub Secret OPENDART_API_KEY가 비어 있습니다.")
     raw = os.environ.get("OPENDART_REQUEST", "").strip()
-    title_query = os.environ.get("OPENDART_TITLE_QUERY", "").strip()
+    raw_title = os.environ.get("OPENDART_TITLE_QUERY", "").strip()
+    title_query = re.sub(r"^\[OpenDART\]\s*", "", raw_title, flags=re.IGNORECASE).strip()
     payload = {}
     if raw:
         try:
