@@ -1,10 +1,10 @@
 {
   "risk_level": 0,
   "risk_label": "관찰",
-  "updated_at_kst": "2026-08-31T08:54:35+09:00",
+  "updated_at_kst": "2026-08-31T12:06:27+09:00",
   "signals": {
     "jgb10_3": false,
-    "jgb_curve_up": false,
+    "jgb_curve_up": true,
     "us_jp_2y_spread_narrow": false,
     "us_2y_down": false,
     "yen_surge": false,
