@@ -1,23 +1,23 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-08-31T16:41:54+09:00",
+  "updated_at_kst": "2026-08-31T16:46:28+09:00",
   "seen_event_keys": [
-    "foreign1d_neg:2026-08-31",
     "policy_spread:2026-08-27:0.75",
-    "capex:13cbe150930d23d8",
-    "foreign3d_neg:2026-08-27"
+    "foreign3d_neg:2026-08-27",
+    "foreign1d_neg:2026-08-31",
+    "capex:13cbe150930d23d8"
   ],
   "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-08-31T16:41:54+09:00",
+    "checked_at_kst": "2026-08-31T16:46:28+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-08-31",
-      "value": 1370.2,
+      "value": 1369.8,
       "prev_date": "2026-08-28",
       "prev_value": 1381.0,
-      "change_krw": -10.8,
-      "change_pct": -0.782,
+      "change_krw": -11.2,
+      "change_pct": -0.811,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
@@ -36,7 +36,23 @@
       "fed_source": "https://fred.stlouisfed.org/series/DFEDTARU",
       "bok_source": "https://www.bok.or.kr/portal/singl/baseRate/list.do?menuNo=200656"
     },
+    "foreign_flow": {
+      "date": "2026-08-31",
+      "daily_eok": -6404.0,
+      "three_day_eok": -13596.0,
+      "daily_krw": -640400000000,
+      "three_day_krw": -1359600000000,
+      "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260831&sosok=01",
+      "phase": "정규장 마감",
+      "finality": "정규장 마감값"
+    },
     "global_wave_news": [],
-    "hyperscaler_capex_news": []
+    "hyperscaler_capex_news": [],
+    "kospi_close": {
+      "date": "2026-08-31",
+      "close": 6820.02,
+      "change_pct": 0.46,
+      "source": "https://m.stock.naver.com/api/index/KOSPI/price?pageSize=5&page=1"
+    }
   }
 }
