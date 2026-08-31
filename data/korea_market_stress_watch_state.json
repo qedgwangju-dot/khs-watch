@@ -1,31 +1,31 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-01T05:15:17+09:00",
+  "updated_at_kst": "2026-09-01T08:54:10+09:00",
   "seen_event_keys": [
+    "capex:13cbe150930d23d8",
     "policy_spread:2026-08-27:0.75",
-    "foreign3d_neg:2026-08-27",
     "foreign1d_neg:2026-08-31",
-    "capex:13cbe150930d23d8"
+    "foreign3d_neg:2026-08-27"
   ],
   "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-09-01T05:15:17+09:00",
+    "checked_at_kst": "2026-09-01T08:54:10+09:00",
     "watch_version": 4,
     "usdkrw": {
-      "date": "2026-08-31",
-      "value": 1368.6,
-      "prev_date": "2026-08-28",
-      "prev_value": 1381.0,
-      "change_krw": -12.4,
-      "change_pct": -0.8979,
+      "date": "2026-09-01",
+      "value": 1367.5,
+      "prev_date": "2026-08-31",
+      "prev_value": 1369.5,
+      "change_krw": -2.0,
+      "change_pct": -0.146,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
-      "date": "2026-08-27",
-      "value": 4.67,
-      "prev_date": "2026-08-26",
-      "prev_value": 4.66,
-      "change_bp": 1.0,
+      "date": "2026-08-28",
+      "value": 4.73,
+      "prev_date": "2026-08-27",
+      "prev_value": 4.67,
+      "change_bp": 6.0,
       "source": "https://fred.stlouisfed.org/series/DGS10"
     },
     "policy_spread": {
