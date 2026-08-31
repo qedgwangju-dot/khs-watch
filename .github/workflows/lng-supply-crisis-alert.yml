@@ -43,13 +43,14 @@ jobs:
           python -m py_compile scripts/lng_supply_crisis_alert_v2.py
           python -m py_compile scripts/lng_supply_crisis_alert_v3.py
           python -m py_compile scripts/lng_supply_crisis_alert_v4.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v5.py
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v4.py --setup-test
+            python scripts/lng_supply_crisis_alert_v5.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v4.py
+            python scripts/lng_supply_crisis_alert_v5.py
           fi
 
       - name: Publish status summary
@@ -165,7 +166,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v4.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v5.py --finalize
 
       - name: Upload verification artifacts
         if: always()
