@@ -1,0 +1,55 @@
+name: Trump portfolio claim Telegram watch
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/trump-portfolio-claim-telegram.yml"
+      - "scripts/trump_portfolio_claim_watch.py"
+      - "data/trump_portfolio_claim_watch_state.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trump-portfolio-claim-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    env:
+      THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
+      THIRTEENF_TELEGRAM_CHAT_ID: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
+      KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+      KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate script
+        run: python -m py_compile scripts/trump_portfolio_claim_watch.py
+
+      - name: Check web-indexed Trump portfolio claims and send Telegram alert
+        run: python scripts/trump_portfolio_claim_watch.py
+
+      - name: Persist claim seen state
+        if: success()
+        run: |
+          if git diff --quiet -- data/trump_portfolio_claim_watch_state.json; then
+            echo "Claim state unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/trump_portfolio_claim_watch_state.json
+          git commit -m "Update Trump portfolio claim watch state"
+          git push
