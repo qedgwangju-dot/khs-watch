@@ -130,6 +130,11 @@ KOREAN_BUSINESS_PUBLISHER_DOMAINS = {
     "zdnet.co.kr": "지디넷코리아",
     "thebell.co.kr": "더벨",
     "newsis.com": "뉴시스",
+    "inews24.com": "아이뉴스24",
+    "dailian.co.kr": "데일리안",
+    "kmib.co.kr": "국민일보",
+    "biz.chosun.com": "조선비즈",
+    "chosun.com": "조선일보",
     "bloter.net": "블로터",
     "wowtv.co.kr": "한국경제TV",
     "hankookilbo.com": "한국일보",
@@ -734,6 +739,78 @@ KOREAN_BUSINESS_SEARCH_SOURCES = [
             "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:yna.co.kr OR site:chosun.com)"
         ),
     ),
+    (
+        "반도체 소재·패키징·황산 증설",
+        (
+            "(고려아연 OR 반도체황산 OR 반도체 황산 OR 글라스 캐리어 OR 유리 웨이퍼 OR HBM 패키징) "
+            "(증설 OR 생산능력 OR 수율 OR 결함 OR 검사 OR 투자 OR 양산) "
+            "(site:hankyung.com OR site:edaily.co.kr OR site:mk.co.kr OR site:etnews.com OR "
+            "site:inews24.com OR site:biz.chosun.com OR site:yna.co.kr)"
+        ),
+    ),
+    (
+        "ESS 규제·NXT 거래제도",
+        (
+            "(ESS OR 에너지저장장치 OR NXT OR 넥스트레이드 OR 프리마켓 OR 프리 마켓) "
+            "(법적 분류 OR 이격거리 OR 규제 개선 OR 규제개선 OR 거래 방식 OR 거래방식 OR 시행) "
+            "(site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR site:mt.co.kr OR "
+            "site:inews24.com OR site:dailian.co.kr OR site:newsis.com)"
+        ),
+    ),
+    (
+        "중국 메모리 생산능력·LPDDR6",
+        (
+            "(CXMT OR 창신메모리 OR YMTC OR 창장메모리) "
+            "(매출 OR 웨이퍼 OR 낸드 OR LPDDR6 OR 양산 OR 생산능력 OR 점유율) "
+            "(site:edaily.co.kr OR site:mk.co.kr OR site:mt.co.kr OR site:hankyung.com OR "
+            "site:dt.co.kr OR site:yna.co.kr)"
+        ),
+    ),
+    (
+        "미국 반도체 관세·내장제품",
+        (
+            "(트럼프 OR Trump OR 미국 행정부) (반도체 관세 OR 칩 관세 OR tariff) "
+            "(칩 들어간 제품 OR 내장 제품 OR 수입품 OR 공급망 OR 적용 대상) "
+            "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:ft.com OR "
+            "site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr)"
+        ),
+    ),
+    (
+        "삼성·SK 주주환원·자사주",
+        (
+            "(삼성전자 OR SK하이닉스 OR 삼전 OR 하이닉스) "
+            "(자사주 OR 자기주식 OR 주주환원 OR 소각 OR 매입) "
+            "(공시 OR 이사회 OR 결정 OR 규모 OR 취득) "
+            "(site:dart.fss.or.kr OR site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR "
+            "site:mt.co.kr OR site:hankyung.com OR site:newsis.com)"
+        ),
+    ),
+    (
+        "신용융자·삼성·SK 수급",
+        (
+            "(삼성전자 OR SK하이닉스 OR 삼전 OR 하이닉스) "
+            "(신용거래융자 OR 신용잔고 OR 빚투 OR 신용자금) "
+            "(증가 OR 집중 OR 비중 OR 금액 OR 수급) "
+            "(site:edaily.co.kr OR site:mk.co.kr OR site:mt.co.kr OR site:yna.co.kr OR site:fnnews.com)"
+        ),
+    ),
+    (
+        "한국 로보택시·ESS 합작법인",
+        (
+            "(포니AI OR Pony AI OR 로보택시 OR robotaxi OR 삼성SDI OR Samsung SDI) "
+            "(상용화 OR 운행 OR 도입 OR 시범 OR GM OR 합작법인 OR JV OR 26GWh) "
+            "(site:yna.co.kr OR site:edaily.co.kr OR site:mk.co.kr OR site:mt.co.kr OR "
+            "site:news1.kr OR site:biz.chosun.com)"
+        ),
+    ),
+    (
+        "미국·베네수엘라 원유협정",
+        (
+            "(트럼프 OR Trump OR 미국) (베네수엘라 OR Venezuela) "
+            "(석유 합의 OR 원유 합의 OR oil agreement OR 650억 배럴 OR 65 billion barrels) "
+            "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:bbc.com OR site:ft.com)"
+        ),
+    ),
 ]
 
 coverage.apply_source_extensions(
@@ -1317,7 +1394,7 @@ def korean_business_event_date(row: dict) -> str:
 
 KOREAN_BUSINESS_DETAIL_LIMIT = max(
     12,
-    int(os.environ.get("GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT", "72")),
+    int(os.environ.get("GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT", "96")),
 )
 KOREAN_BUSINESS_DETAIL_WORKERS = max(
     2,
@@ -1435,6 +1512,24 @@ KOREAN_BUSINESS_PRIORITY_TERMS = {
     "특별배당": 10,
     "자산공시": 9,
     "투자계좌": 9,
+    "자기주식": 12,
+    "자사주": 12,
+    "웨스트라피엣": 14,
+    "인디애나": 12,
+    "반도체황산": 11,
+    "글라스 캐리어": 10,
+    "nxt": 12,
+    "넥스트레이드": 12,
+    "ess": 10,
+    "이격거리": 10,
+    "반도체 관세": 13,
+    "칩 들어간 제품": 13,
+    "베네수엘라": 12,
+    "lpddr6": 11,
+    "신용거래융자": 11,
+    "신용잔고": 10,
+    "로보택시": 10,
+    "포니ai": 10,
 }
 
 
@@ -1454,6 +1549,14 @@ ARTICLE_SUMMARY_NOISE_PATTERNS = [
     r"AI\s*학습\s*및\s*활용\s*금지",
     r"저작권자\s*©?\s*이투데이",
     r"Copyright\s*©?\s*Etoday",
+    r"\b(?:등록|입력)\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?"
+    r"(?:\s*수정\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?)?"
+    r"\s*[가-힣]{2,6}\s*기자\b",
+    r"^\s*\([^)]{0,80}(?:로이터|연합뉴스|Reuters|AP|AFP)[^)]*\)\s*",
+    r"\b(?:북마크|마이페이지에서\s*확인하세요)\b",
+    r"\b카카오톡\s+페이스북\s+엑스\s+URL\s*공유\b",
+    r"\[(?:서울|세종|부산|대구|대전|인천|광주|울산|수원|제주)\s*=\s*[^\]]{1,60}\]",
+    r"\((?:서울|세종|부산|대구|대전|인천|광주|울산|수원|제주)\s*=\s*[^)]{1,80}\)",
     r"\[(?:헤럴드경제|이데일리|머니투데이|매일경제|전자신문|연합뉴스)"
     r"(?:\s*=\s*|\s+)[^\]]{1,30}\s*기자\]",
     r"(?:fn\s+)?공유(?:\s+공유하기)?(?:\s+글자크기){1,2}\s+설정\s+"
@@ -1462,7 +1565,8 @@ ARTICLE_SUMMARY_NOISE_PATTERNS = [
 ]
 ARTICLE_UI_BOILERPLATE_TERMS = (
     "공유하기", "글자크기 설정", "프린트 구독", "페이스북 X(트위터)",
-    "메일 URL 복사", "작게 보통 크게",
+    "메일 URL 복사", "작게 보통 크게", "북마크", "마이페이지에서 확인하세요",
+    "카카오톡 페이스북", "URL공유",
 )
 ARTICLE_SUMMARY_MAX_CHARS = 420
 ARTICLE_MATERIAL_TERMS = (
@@ -2479,6 +2583,23 @@ def tariff_policy_fact(title: str, body: str) -> str:
 
 
 def detailed_article_core(title: str, body: str) -> str:
+    raw_body = str(body or "")
+    if core_has_ui_garbage(raw_body):
+        # Some publishers concatenate the abstract, title chrome, and the
+        # article body without punctuation. Keep the body after the share UI
+        # so an abstract fragment cannot become the reported sentence.
+        ui_boundary = re.search(r"URL\s*(?:공유|복사)", raw_body, flags=re.IGNORECASE)
+        if ui_boundary:
+            body_tail = raw_body[ui_boundary.end():]
+            body_tail = re.sub(
+                r"^(?:\s*(?:가장\s*크게|가장\s*작게|작게|기본|보통|크게|프린트|구독)){1,12}\s*",
+                "",
+                body_tail,
+                flags=re.IGNORECASE,
+            )
+            if body_tail.strip():
+                raw_body = body_tail
+    body = strip_core_ui_garbage(raw_body)
     normalized_title = title.lower()
     if "sk하이닉스" in normalized_title and any(
         term in normalized_title for term in ("실적", "역대급")
@@ -2530,6 +2651,7 @@ def detailed_article_core(title: str, body: str) -> str:
                 not fact
                 or article_title_restatement(fact, title)
                 or sentence_has_suspect_financial_amount(fact)
+                or not core_sentence_is_complete(fact)
             ):
                 continue
             facts.append(fact)
@@ -2787,6 +2909,13 @@ KOREAN_BUSINESS_MATERIAL_TERMS = [
     "임단협",
     "파업",
     "자산공시",
+    "자기주식",
+    "반도체황산",
+    "웨이퍼",
+    "lpddr6",
+    "신용거래융자",
+    "로보택시",
+    "이격거리",
 ]
 
 
@@ -4357,6 +4486,226 @@ AUGUST27_ATTACHMENT_PROFILES = (
 )
 
 
+AUGUST30_ATTACHMENT_PROFILES = (
+    (
+        "skhynix_2030_memory_shortage_outlook",
+        ("곽노정", "sk하이닉스", "sk hynix"),
+        ("2030년", "2030년말", "2030년 말", "공급 부족", "공급부족"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "DRAM/NAND", "AI/데이터센터"],
+        ["메모리 공급 전망", "HBM 수요", "공급부족 시간표"],
+        119,
+    ),
+    (
+        "nvidia_memory_cost_margin_pressure",
+        ("엔비디아", "nvidia"),
+        ("메모리값", "메모리 가격", "메모리 부담", "마진", "gpm"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "AI/데이터센터", "DRAM/NAND"],
+        ["메모리 원가", "엔비디아 마진", "HBM 가격"],
+        119,
+    ),
+    (
+        "nvidia_ai_hbm_demand_outlook",
+        ("엔비디아", "nvidia"),
+        ("삼성전자", "sk하이닉스", "메모리 공급 부족", "메모리 부족", "ai 수요"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "AI/데이터센터", "DRAM/NAND"],
+        ["AI 가속기 수요", "메모리 공급", "HBM 매출 기대"],
+        118,
+    ),
+    (
+        "iran_ceasefire_oil_price_move",
+        ("이란", "iran"),
+        ("휴전", "ceasefire", "유가", "원유", "oil", "2%"),
+        ["돈 버는 능력", "할인율", "수급", "시간표"],
+        ["원유/인플레이션", "정유/화학/해운", "방산/지정학"],
+        ["중동 휴전", "유가", "운임·위험프리미엄"],
+        118,
+    ),
+    (
+        "hbm_glass_carrier_yield_inspection",
+        ("hbm", "글라스 캐리어", "유리 웨이퍼", "glass carrier"),
+        ("수율", "결함", "검사", "재생가공", "ai 활용"),
+        ["돈 버는 능력", "시간표"],
+        ["반도체/HBM/CXL", "반도체 장비·소재"],
+        ["HBM 수율", "글라스 캐리어 검사", "후공정 생산성"],
+        112,
+    ),
+    (
+        "samsung_china_semiconductor_localization_research",
+        ("삼성전자", "삼성"),
+        ("중국 반도체국산화", "반도체 국산화", "중국 국산화", "kb증권"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "중국 공급망", "파운드리"],
+        ["중국 반도체 국산화", "삼성전자 수혜", "경쟁구도"],
+        107,
+    ),
+    (
+        "samsung_skhynix_shareholder_return_program",
+        ("삼성전자", "sk하이닉스", "삼전", "닉스"),
+        ("자사주", "자기주식", "주주환원", "소각", "매입"),
+        ["수급", "돈 버는 능력", "시간표"],
+        ["금융/자본시장", "반도체/HBM/CXL"],
+        ["자사주 매입·소각", "주주환원", "유통주식수"],
+        120,
+    ),
+    (
+        "korea_ess_regulatory_improvement",
+        ("ess", "에너지저장장치"),
+        ("법적 분류", "이격거리", "규제 개선", "규제개선"),
+        ["돈 버는 능력", "할인율", "시간표"],
+        ["ESS/전력변환장치", "전력기기/전력망", "산업정책/첨단전략산업"],
+        ["ESS 인허가", "안전기준", "프로젝트 시간표"],
+        114,
+    ),
+    (
+        "tsmc_foundry_share_gap",
+        ("tsmc", "대만 tsmc", "대만적층"),
+        ("점유율 73", "73%", "삼성은 7", "삼성전자 7"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["파운드리", "반도체/HBM/CXL", "AI/데이터센터"],
+        ["파운드리 점유율", "고객 수주", "첨단공정 경쟁"],
+        113,
+    ),
+    (
+        "korea_zinc_semiconductor_sulfuric_acid_capacity",
+        ("고려아연", "korea zinc"),
+        ("반도체황산", "반도체 황산", "4만t", "4만톤", "4만 t"),
+        ["돈 버는 능력", "시간표"],
+        ["반도체 장비·소재", "비철금속/제련"],
+        ["반도체황산 공급", "소재 생산능력", "증설 시간표"],
+        114,
+    ),
+    (
+        "samsung_skhynix_hbm_packaging_roadmap",
+        ("삼성전자", "sk하이닉스", "삼성", "sk"),
+        ("hbm", "패키징", "cube-e", "2.3d"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "반도체 장비·소재", "AI/데이터센터"],
+        ["HBM 패키징", "고객 인증", "첨단패키징 경쟁"],
+        113,
+    ),
+    (
+        "nxt_premarket_microstructure_rule",
+        ("nxt", "넥스트레이드"),
+        ("프리마켓", "프리 마켓", "거래 방식", "거래방식", "하한가"),
+        ["수급", "시간표"],
+        ["금융/자본시장", "ETF/ETN", "반도체/HBM/CXL"],
+        ["대체거래소 제도", "프리마켓 가격발견", "거래규칙"],
+        114,
+    ),
+    (
+        "us_chip_tariff_embedded_products",
+        ("트럼프", "trump", "미국 행정부", "미국"),
+        ("반도체 관세", "칩 관세", "칩 들어간 제품", "칩이 들어간", "embedded product"),
+        ["돈 버는 능력", "할인율", "시간표"],
+        ["관세/수출주", "반도체/HBM/CXL", "중국 공급망"],
+        ["반도체 관세", "내장제품 적용", "공급망 원가"],
+        120,
+    ),
+    (
+        "openai_samsung_computational_memory",
+        ("오픈ai", "openai"),
+        ("삼성", "연산 메모리", "z hbm", "zhbm", "베이스다이"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["반도체/HBM/CXL", "AI/데이터센터", "반도체 장비·소재"],
+        ["AI 자체칩", "연산 메모리", "HBM 병목"],
+        115,
+    ),
+    (
+        "us_venezuela_oil_agreement",
+        ("베네수엘라", "venezuela"),
+        ("석유 합의", "원유 합의", "oil agreement", "650억 배럴", "65 billion barrels"),
+        ["돈 버는 능력", "할인율", "수급", "시간표"],
+        ["원유/인플레이션", "정유/화학/해운", "방산/지정학"],
+        ["원유 공급", "대베네수엘라 정책", "유가 위험프리미엄"],
+        120,
+    ),
+    (
+        "cxmt_memory_revenue_growth",
+        ("cxmt", "창신메모리"),
+        ("매출", "10배", "10 배", "10x", "hbm"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["DRAM/NAND", "중국 메모리 공급", "반도체/HBM/CXL"],
+        ["중국 D램 매출", "메모리 공급경쟁", "가격 사이클"],
+        118,
+    ),
+    (
+        "ymtc_nand_wafer_capacity_expansion",
+        ("ymtc", "창장메모리", "yangtze memory"),
+        ("250만장", "250만 장", "웨이퍼", "생산능력", "캐파"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["DRAM/NAND", "중국 메모리 공급", "반도체/HBM/CXL"],
+        ["낸드 웨이퍼 공급", "중국 생산능력", "점유율 경쟁"],
+        118,
+    ),
+    (
+        "china_mobile_lpddr6_commercialization",
+        ("cxmt", "창신메모리"),
+        ("lpddr6", "샤오미", "xiaomi", "양산", "탑재"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["DRAM/NAND", "중국 메모리 공급", "모바일/AI PC"],
+        ["LPDDR6 양산", "모바일 고객 채택", "중국 메모리 경쟁"],
+        116,
+    ),
+    (
+        "single_stock_leverage_etf_rule_effect",
+        ("단일종목", "레버리지"),
+        ("19조", "5000억", "거래대금", "거래량", "규제"),
+        ["수급"],
+        ["ETF/ETN", "금융/자본시장", "반도체/HBM/CXL"],
+        ["레버리지 ETF 규제", "개인 수급", "거래대금"],
+        116,
+    ),
+    (
+        "korea_robotaxi_commercialization",
+        ("포니ai", "pony ai", "로보택시", "robotaxi"),
+        ("상용화", "퓨처링크", "7세대", "도입", "운행"),
+        ["돈 버는 능력", "수급", "시간표"],
+        ["로봇/생산자동화", "자동차/부품", "AI/데이터센터"],
+        ["로보택시 상용화", "자율주행 도입", "국내 서비스 일정"],
+        111,
+    ),
+    (
+        "samsung_sdi_gm_ess_jv_restructure",
+        ("삼성sdi", "samsung sdi"),
+        ("gm", "시너지셀스", "26gwh", "전략 인수", "합작법인"),
+        ["돈 버는 능력", "시간표"],
+        ["2차전지/배터리", "ESS/전력변환장치", "미국 제조 CAPEX"],
+        ["ESS 셀 생산능력", "합작법인 지분", "미국 가동 일정"],
+        115,
+    ),
+    (
+        "samsung_skhynix_margin_credit_concentration",
+        ("삼성전자", "sk하이닉스", "삼전", "하이닉스"),
+        ("신용거래융자", "신용잔고", "빚투", "신용자금"),
+        ["수급"],
+        ["금융/자본시장", "반도체/HBM/CXL"],
+        ["신용융자", "개인 수급", "변동성"],
+        113,
+    ),
+    (
+        "korea_ai_megaproject_personnel_policy",
+        ("ai 메가프로젝트", "ai·메가프로젝트", "메가프로젝트"),
+        ("핀셋인사", "핀셋 인사", "인사", "정부", "대통령"),
+        ["시간표", "할인율"],
+        ["산업정책/첨단전략산업", "AI/데이터센터", "반도체/HBM/CXL"],
+        ["AI 산업정책", "프로젝트 집행", "정책 시간표"],
+        109,
+    ),
+    (
+        "us_china_trade_truce_calendar",
+        ("미국", "중국", "시진핑"),
+        ("무역 휴전", "무역휴전", "휴전 연장", "방문", "정상회담"),
+        ["할인율", "시간표"],
+        ["관세/수출주", "중국 공급망", "반도체/HBM/CXL"],
+        ["미·중 무역협상", "관세 일정", "정상외교"],
+        112,
+    ),
+)
+
+
 AUGUST26_ATTACHMENT_PROFILES = (
     (
         "nvidia_samsung_foundry_inference_mass_production",
@@ -4686,7 +5035,7 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
     """Route recurring company and market events from verified article bodies."""
     title = str(row.get("source_title") or row.get("title") or "")
     body = str(row.get("source_body") or row.get("source_abstract") or "")
-    profiles = (*AUGUST27_ATTACHMENT_PROFILES, *AUGUST26_ATTACHMENT_PROFILES, *AUGUST23_ATTACHMENT_PROFILES, *AUGUST13_ATTACHMENT_PROFILES, *AUGUST22_ATTACHMENT_PROFILES,
+    profiles = (*AUGUST30_ATTACHMENT_PROFILES, *AUGUST27_ATTACHMENT_PROFILES, *AUGUST26_ATTACHMENT_PROFILES, *AUGUST23_ATTACHMENT_PROFILES, *AUGUST13_ATTACHMENT_PROFILES, *AUGUST22_ATTACHMENT_PROFILES,
         ("korea_zinc_critical_minerals", ("고려아연",), ("핵심광물", "핵심 광물", "제련소", "통합제련소"), ["돈 버는 능력", "할인율", "시간표"], ["핵심광물", "비철금속/제련", "미국 공급망"], ["미국 정책 연결", "제련 CAPEX", "핵심광물 공급"], 111),
         ("korea_anthropic_strategic_investment", ("앤트로픽", "anthropic"), ("네이버", "naver", "삼성전자", "sk텔레콤", "skt"), ["돈 버는 능력", "수급", "시간표"], ["AI/데이터센터", "반도체/HBM/CXL", "플랫폼/클라우드"], ["AI 전략투자", "모델 협업", "데이터센터 수요"], 109),
         ("apple_cxmt_memory_supply_test", ("애플", "apple"), ("cxmt", "창신메모리", "중국 메모리", "중국 d램"), ["돈 버는 능력", "수급", "시간표"], ["반도체/HBM/CXL", "DRAM/NAND", "중국 메모리 공급"], ["고객 인증", "메모리 공급", "경쟁구도"], 112),
@@ -4703,7 +5052,153 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
         ("tsmc_advanced_packaging_capex", ("tsmc", "대만적층", "taiwan semiconductor"), ("cowos", "첨단패키징", "첨단 패키징", "2나노"), ["돈 버는 능력", "시간표"], ["반도체/HBM/CXL", "반도체 장비·소재", "AI/데이터센터"], ["첨단패키징 CAPEX", "CoWoS 공급", "AI 가속기 생산능력"], 116),
     )
     for kind, anchors, triggers, impacts, sectors, paths, score in profiles:
-        if not any(term in text for term in anchors) or not any(term in text for term in triggers):
+        normalized_anchors = tuple(str(term).lower() for term in anchors)
+        normalized_triggers = tuple(str(term).lower() for term in triggers)
+        if not any(term in text for term in normalized_anchors) or not any(term in text for term in normalized_triggers):
+            continue
+        if kind == "skhynix_2030_memory_shortage_outlook" and not (
+            any(term in title.lower() for term in ("곽노정", "2030년", "공급 부족"))
+            and any(term in text for term in ("2030년", "2030년말", "2030년 말"))
+            and any(term in text for term in ("공급 부족", "공급부족"))
+        ):
+            continue
+        if kind == "nvidia_memory_cost_margin_pressure" and not (
+            any(term in text for term in ("메모리값", "메모리 가격", "메모리 부담"))
+            and any(term in text for term in ("마진", "gpm"))
+            and re.search(r"71\s*[~～-]\s*72\s*%", text)
+        ):
+            continue
+        if kind == "nvidia_ai_hbm_demand_outlook" and any(
+            term in text
+            for term in (
+                "hbm4",
+                "루빈",
+                "rubin",
+                "베라",
+                "vera",
+                "lpddr5x",
+                "15%",
+                "그록3",
+                "groq3",
+                "lpx",
+                "추론가속기",
+                "200만",
+                "2 million",
+                "two million",
+            )
+        ):
+            continue
+        if kind == "nvidia_ai_hbm_demand_outlook" and not (
+            any(term in title.lower() for term in ("엔비디아", "nvidia"))
+            and any(
+                term in text
+                for term in ("메모리 공급 부족", "메모리 공급부족", "메모리 부족")
+            )
+            and any(term in text for term in ("삼성전자", "sk하이닉스"))
+        ):
+            continue
+        if kind == "iran_ceasefire_oil_price_move" and not any(
+            term in text for term in ("2%", "2 퍼센트", "2프로", "상승 마감")
+        ):
+            continue
+        if kind == "hbm_glass_carrier_yield_inspection" and not any(
+            term in text for term in ("수율", "결함", "검사", "재생가공")
+        ):
+            continue
+        if kind == "samsung_china_semiconductor_localization_research" and not (
+            "중국" in text and any(term in text for term in ("국산화", "국산", "현지화"))
+        ):
+            continue
+        if kind == "samsung_skhynix_shareholder_return_program" and not (
+            all(term in text for term in ("삼성전자", "sk하이닉스"))
+            and re.search(r"\d[\d,.]*\s*조\s*원", text)
+            and any(term in text for term in ("자사주", "자기주식"))
+            and any(term in text for term in ("매입", "취득", "소각"))
+        ):
+            continue
+        if kind == "korea_ess_regulatory_improvement" and not (
+            any(term in text for term in ("법적 분류", "이격거리"))
+            and any(term in text for term in ("규제", "개선", "신설"))
+        ):
+            continue
+        if kind == "tsmc_foundry_share_gap" and not all(
+            term in text for term in ("73%", "7%")
+        ):
+            continue
+        if kind == "korea_zinc_semiconductor_sulfuric_acid_capacity" and not re.search(
+            r"4만\s*(?:t|톤)", text
+        ):
+            continue
+        if kind == "samsung_skhynix_hbm_packaging_roadmap" and not any(
+            term in text for term in ("cube-e", "2.3d", "차세대 기술 경쟁")
+        ):
+            continue
+        if kind == "nxt_premarket_microstructure_rule" and not any(
+            term in text for term in ("하한가", "가격이 크게", "가격 급변", "가격 변동")
+        ):
+            continue
+        if kind == "us_chip_tariff_embedded_products" and not (
+            any(term in text for term in ("칩 들어간 제품", "칩이 들어간", "내장 제품", "내장제품"))
+            and any(term in text for term in ("관세", "tariff"))
+        ):
+            continue
+        if kind == "openai_samsung_computational_memory" and not (
+            "삼성" in text
+            and any(
+                term in text
+                for term in (
+                    "연산 메모리",
+                    "연산메모리",
+                    "베이스다이",
+                    "zhbm",
+                    "z hbm",
+                )
+            )
+        ):
+            continue
+        if kind == "us_venezuela_oil_agreement" and not (
+            base.trusted(str(row.get("publisher") or row.get("source") or ""))
+            and re.search(r"650억\s*배럴|65\s*billion\s*barrels", text)
+            and any(term in text for term in ("합의", "agreement", "통제권", "통제"))
+        ):
+            continue
+        if kind == "cxmt_memory_revenue_growth" and not re.search(
+            r"10\s*배|10x|열\s*배", text
+        ):
+            continue
+        if kind == "ymtc_nand_wafer_capacity_expansion" and not re.search(
+            r"250만\s*장|250\s*만장", text
+        ):
+            continue
+        if kind == "china_mobile_lpddr6_commercialization" and not (
+            "lpddr6" in text and any(term in text for term in ("샤오미", "xiaomi"))
+        ):
+            continue
+        if kind == "single_stock_leverage_etf_rule_effect" and not (
+            all(term in text for term in ("19조", "5000억"))
+            and any(term in text for term in ("규제", "거래대금", "거래량"))
+        ):
+            continue
+        if kind == "korea_robotaxi_commercialization" and not (
+            "퓨처링크" in text and any(term in text for term in ("상용화", "7세대", "도입"))
+        ):
+            continue
+        if kind == "samsung_sdi_gm_ess_jv_restructure" and not (
+            "gm" in text and "26gwh" in text
+        ):
+            continue
+        if kind == "samsung_skhynix_margin_credit_concentration" and not (
+            all(term in text for term in ("삼성전자", "sk하이닉스"))
+            and any(term in text for term in ("신용거래융자", "신용잔고", "빚투", "신용자금"))
+        ):
+            continue
+        if kind == "korea_ai_megaproject_personnel_policy" and not any(
+            term in text for term in ("핀셋인사", "핀셋 인사", "미래 먹거리")
+        ):
+            continue
+        if kind == "us_china_trade_truce_calendar" and not (
+            "무역" in text and any(term in text for term in ("휴전", "정상회담", "시진핑"))
+        ):
             continue
         if kind == "apple_cxmt_memory_supply_test" and not any(term in text for term in ("테스트", "시험", "탑재", "공급", "협력", "채택")):
             continue
@@ -4974,6 +5469,54 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
             core = "한국은행이 물가·환율·경기지표를 반영해 기준금리 경로를 재조정했습니다."
         elif kind == "kioxia_iwate_nand_factory_capex":
             core = "키옥시아가 일본 이와테에 낸드 생산능력 확대를 위한 공장 투자를 추진합니다."
+        elif kind == "skhynix_2030_memory_shortage_outlook":
+            core = "SK하이닉스 CEO는 메모리 공급 부족이 2030년 말까지 이어질 수 있다고 전망했습니다."
+        elif kind == "nvidia_memory_cost_margin_pressure":
+            core = "엔비디아는 메모리 가격 상승으로 4분기 매출총이익률을 71~72%로 전망했습니다."
+        elif kind == "nvidia_ai_hbm_demand_outlook":
+            core = "엔비디아 AI 수요와 메모리 공급 부족이 삼성전자·SK하이닉스의 내년 실적 기대를 높였습니다."
+        elif kind == "iran_ceasefire_oil_price_move":
+            core = "트럼프의 이란 휴전 조건 복귀 거부 뒤 국제유가가 2% 상승 마감했습니다."
+        elif kind == "hbm_glass_carrier_yield_inspection":
+            core = "AI 기반 글라스 캐리어 결함검사가 HBM 수율 개선 기술로 부각됐습니다."
+        elif kind == "samsung_china_semiconductor_localization_research":
+            core = "KB증권은 중국 반도체 국산화 가속에 삼성전자 수혜 가능성을 제시했습니다."
+        elif kind == "samsung_skhynix_shareholder_return_program":
+            core = "삼성전자·SK하이닉스가 총 46조원 규모 자사주 매입·소각 계획을 발표했습니다."
+        elif kind == "korea_ess_regulatory_improvement":
+            core = "정부가 ESS 법적 분류와 이격거리 기준을 신설하는 규제개선을 추진합니다."
+        elif kind == "tsmc_foundry_share_gap":
+            core = "2분기 TSMC 파운드리 점유율은 73%, 삼성전자는 7%로 격차가 확대됐습니다."
+        elif kind == "korea_zinc_semiconductor_sulfuric_acid_capacity":
+            core = "고려아연이 반도체황산 생산라인을 연 4만톤 증설합니다."
+        elif kind == "samsung_skhynix_hbm_packaging_roadmap":
+            core = "삼성전자·SK하이닉스가 HBM 연결성을 높이는 차세대 패키징 경쟁을 강화합니다."
+        elif kind == "nxt_premarket_microstructure_rule":
+            core = "NXT가 프리마켓 급격한 가격변동을 막기 위한 거래방식 개편을 검토합니다."
+        elif kind == "us_chip_tariff_embedded_products":
+            core = "미국이 칩 내장 제품까지 반도체 관세 대상을 넓히는 방안을 검토합니다."
+        elif kind == "openai_samsung_computational_memory":
+            core = "오픈AI 자체칩과 삼성전자 연산메모리가 AI 반도체 병목 완화 경쟁으로 부각됐습니다."
+        elif kind == "us_venezuela_oil_agreement":
+            core = "트럼프가 베네수엘라 650억 배럴 원유 매장량 통제 합의를 주장했습니다."
+        elif kind == "cxmt_memory_revenue_growth":
+            core = "CXMT 상반기 매출이 10배 늘며 중국 D램 경쟁력 확대 신호가 나왔습니다."
+        elif kind == "ymtc_nand_wafer_capacity_expansion":
+            core = "YMTC가 낸드 웨이퍼 생산을 내년 250만장으로 확대해 점유율 경쟁을 키웁니다."
+        elif kind == "china_mobile_lpddr6_commercialization":
+            core = "CXMT가 LPDDR6을 양산해 샤오미 스마트폰에 처음 탑재했습니다."
+        elif kind == "single_stock_leverage_etf_rule_effect":
+            core = "단일종목 레버리지 ETF 규제 후 거래대금이 19조원에서 5000억원으로 줄었습니다."
+        elif kind == "korea_robotaxi_commercialization":
+            core = "포니AI가 퓨처링크와 한국 로보택시 상용화·7세대 자율주행 도입을 추진합니다."
+        elif kind == "samsung_sdi_gm_ess_jv_restructure":
+            core = "삼성SDI가 GM 합작법인 지분 인수로 ESS 셀 26GWh 확보를 추진합니다."
+        elif kind == "samsung_skhynix_margin_credit_concentration":
+            core = "증시 신용자금 증가분이 삼성전자·SK하이닉스에 집중됐다는 분석이 나왔습니다."
+        elif kind == "korea_ai_megaproject_personnel_policy":
+            core = "정부가 AI 메가프로젝트 추진을 위한 인사를 단행하며 산업 육성을 재확인했습니다."
+        elif kind == "us_china_trade_truce_calendar":
+            core = "미·중 무역 휴전 연장과 시진핑 방미 가능성이 통상 일정 변수로 부각됐습니다."
         headline_override = {
             "us_pce_ndf_rate_shift": "미국 7월 PCE 예상 상회…원·달러 NDF·연준 금리 경로 재평가",
         }.get(kind, "")
@@ -5138,6 +5681,8 @@ def build_hyperscaler_ai_capex_alert(row: dict, now, text: str) -> dict | None:
 
 
 def build_korea_monthly_export_alert(row: dict, now, text: str) -> dict | None:
+    title = str(row.get("source_title") or row.get("title") or "")
+    title_lower = title.lower()
     if not (
         "수출" in text
         and any(term in text for term in ("반도체", "무역수지", "월간", "7월", "8월"))
@@ -5145,7 +5690,14 @@ def build_korea_monthly_export_alert(row: dict, now, text: str) -> dict | None:
         and re.search(r"\d[\d,.]*\s*(?:%|억달러|조원)", text)
     ):
         return None
-    title = str(row.get("source_title") or row.get("title") or "")
+    if not (
+        any(
+            term in title_lower
+            for term in ("월간", "무역수지", "반도체 수출", "수출액", "수출 증가", "수출입")
+        )
+        or ("수출" in title_lower and "반도체" in title_lower)
+    ):
+        return None
     core = detailed_article_core(
         title,
         str(row.get("source_body") or row.get("source_abstract") or ""),
@@ -5979,15 +6531,38 @@ def title_core_alignment_tokens(value: str) -> set[str]:
 def korean_title_core_aligned(title: str, core: str) -> bool:
     title_tokens = title_core_alignment_tokens(title)
     core_tokens = title_core_alignment_tokens(core)
+    if not title_tokens or not core_tokens:
+        return False
+    matched: set[str] = set()
     for title_token in title_tokens:
         for core_token in core_tokens:
             if title_token == core_token:
-                return True
+                matched.add(title_token)
+                break
             if min(len(title_token), len(core_token)) >= 3 and (
                 title_token in core_token or core_token in title_token
             ):
-                return True
-    return False
+                matched.add(title_token)
+                break
+    if not matched:
+        return False
+
+    # Company names often split into several tokens (for example SK +
+    # 하이닉스). A company-only overlap is insufficient evidence that the
+    # compact sentence describes the headline's actual event.
+    entity_tokens = {
+        "sk", "하이닉스", "sk하이닉스", "삼성", "삼성전자", "엔비디아", "nvidia",
+        "아마존", "amazon", "aws", "브로드컴", "broadcom", "애플", "apple",
+        "현대차", "현대자동차", "lg", "lg전자", "tsmc", "마이크론", "micron",
+    }
+    if any(token not in entity_tokens for token in matched):
+        return True
+
+    event_terms = (
+        "매수", "매각", "취득", "소각", "실적", "수주", "계약", "증설", "양산", "착공",
+        "가동", "관세", "금리", "유가", "폭염", "정전", "수출", "상장", "인상", "하락",
+    )
+    return any(term in title.lower() and term in core.lower() for term in event_terms)
 
 
 def source_output_aligned(alert: dict) -> bool:
@@ -6017,6 +6592,7 @@ def source_output_aligned(alert: dict) -> bool:
             and source_title
             and rendered_title == source_title
             and len(summary) >= 12
+            and not core_has_ui_garbage(summary)
             and korean_business_source_allowed(alert)
             and korean_title_core_aligned(source_title, summary)
             and not direction_conflict
@@ -7128,10 +7704,16 @@ def display_news(alert: dict) -> str:
 
 
 CORE_UI_GARBAGE_PATTERNS = (
-    r"\b등록\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}:\d{2})?"
-    r"(?:\s*수정\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}:\d{2})?)?",
+    r"\b등록\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?"
+    r"(?:\s*수정\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?)?",
+    r"\b(?:입력|등록)\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?"
+    r"(?:\s*수정\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?)?"
+    r"\s*[가-힣]{2,6}\s*기자\b",
+    r"^\s*\([^)]{0,80}(?:로이터|연합뉴스|Reuters|AP|AFP)[^)]*\)\s*",
     r"구글에서\s*선호하는\s*매체로\s*추가",
     r"\b작게\s*크게\b",
+    r"\b(?:북마크|마이페이지에서\s*확인하세요)\b",
+    r"\b카카오톡\s+페이스북\s+엑스\s+URL\s*공유\b",
     r"재판매\s*및\s*DB\s*금지",
     r"\]?\s*\([^)]{0,30}=.{0,30}\)\s*[^.!?]{0,50}?기자\s*=",
     r"\b[가-힣]{2,4}\s*기자\s*=",
@@ -7162,6 +7744,10 @@ def core_sentence_is_complete(value: object, limit: int = GAMEJOA_CORE_MAX_CHARS
     if not text or text == "확인 불가" or len(text) > limit:
         return False
     if core_has_ui_garbage(text) or "…" in text or re.search(r"\.{3,}", text):
+        return False
+    # A sentence beginning with a discourse connector is usually a clipped
+    # paragraph fragment from a publisher page, not a self-contained summary.
+    if re.match(r"^(?:그리고|한편|다만|그러나|이에|이와s*관련해)\s+", text):
         return False
     if re.search(
         r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)(?:[.!?。])?$",
@@ -7874,3 +8460,4 @@ telegram.canonical_alert_for_seen = normalize_alert_for_output
 
 if __name__ == "__main__":
     raise SystemExit(telegram.main())
+
