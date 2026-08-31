@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/korea-market-stress-telegram-watch.yml"
-      - "scripts/korea_market_stress_watch_v7.py"
+      - "scripts/korea_market_stress_watch_v8.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -47,7 +47,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml pykrx
 
       - name: Verify exact Telegram route
         run: |
@@ -56,10 +56,8 @@ jobs:
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
-          if not token:
-              raise RuntimeError("GLOBAL_RATES_TELEGRAM_BOT_TOKEN secret is missing")
-          if not chat_id:
-              raise RuntimeError("GLOBAL_RATES_TELEGRAM_CHAT_ID secret is missing")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram secrets are missing")
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
           actual = str((identity.get("result") or {}).get("username") or "")
@@ -68,11 +66,11 @@ jobs:
           print(f"telegram_route_valid=true bot=@{actual}")
           PY
 
-      - name: Run v7 market stress watcher
+      - name: Run v8 close-first market stress watcher
         run: |
           rm -f out/korea_market_stress_alert.html out/korea_market_stress_errors.log out/korea_market_stress_connection_test.html
-          python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v7.py
-          python scripts/korea_market_stress_watch_v7.py
+          python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v7.py scripts/korea_market_stress_watch_v8.py
+          python scripts/korea_market_stress_watch_v8.py
           cat out/korea_market_stress_status.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/korea_market_stress_errors.log ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
@@ -88,14 +86,16 @@ jobs:
 
           • 수신 봇: @khs8879887988798879_bot
           • 확인 주기: 15분
+          • KOSPI 외국인 수급: 장중 수치는 상태 확인만 하고 임계치 알림에는 사용하지 않음
+          • 15:45 이후 KRX 정규장 마감 수급·KOSPI 종가를 우선 확인
+          • 18:10 이후 KRX 최종 매매내역을 최종 확정치로 사용
           • 원/달러: 일간 ±20원 또는 ±1%, 1,400원 상단·1,350원 하단
-          • KOSPI 외국인: 장중 잠정과 장마감 확인을 구분, 1일 ±1조원 또는 최근 3거래일 누적 ±3조원
+          • KOSPI 외국인: 마감/최종 1일 ±1조원 또는 최근 3거래일 누적 ±3조원
           • 미국 10년물: 일간 ±10bp
           • 한미 정책금리차: 직전 감시값 대비 ±25bp
           • BofA Global Wave: 최근 30일 공개자료 중 방향 전환만 감지
           • 하이퍼스케일러 AI 설비투자: 최근 7일 신규자료 중 ±10% 이상 수치만 감지
           • 같은 기준일·같은 조건은 중복 발송하지 않음
-          • 장중 임계치가 마감 때 해제되면 장마감 정정 알림 발송
           EOF
 
       - name: Send Telegram messages
@@ -103,21 +103,15 @@ jobs:
         run: |
           python - <<'PY'
           import json, os, pathlib, urllib.parse, urllib.request
-
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
-
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
           actual = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or actual.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
-
-          files = [
-              pathlib.Path("out/korea_market_stress_connection_test.html"),
-              pathlib.Path("out/korea_market_stress_alert.html"),
-          ]
+          files = [pathlib.Path("out/korea_market_stress_connection_test.html"), pathlib.Path("out/korea_market_stress_alert.html")]
           sent_ids = []
           for path in files:
               if not path.exists():
@@ -135,17 +129,8 @@ jobs:
               if text:
                   chunks.append(text)
               for chunk in chunks:
-                  payload = urllib.parse.urlencode({
-                      "chat_id": chat_id,
-                      "text": chunk,
-                      "parse_mode": "HTML",
-                      "disable_web_page_preview": "true",
-                  }).encode("utf-8")
-                  req = urllib.request.Request(
-                      f"https://api.telegram.org/bot{token}/sendMessage",
-                      data=payload,
-                      method="POST",
-                  )
+                  payload = urllib.parse.urlencode({"chat_id": chat_id, "text": chunk, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode("utf-8")
+                  req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
                   with urllib.request.urlopen(req, timeout=30) as response:
                       result = json.loads(response.read().decode("utf-8"))
                   if not result.get("ok"):
@@ -164,14 +149,10 @@ jobs:
           git config user.name "korea-market-stress-watch[bot]"
           git config user.email "korea-market-stress-watch[bot]@users.noreply.github.com"
           git add data/korea_market_stress_watch_state.json
-          if git diff --cached --quiet; then
-            echo "Market stress watch state unchanged"
-          else
+          if ! git diff --cached --quiet; then
             git commit -m "Update Korea market stress watch state"
             for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
+              if git pull --rebase origin main && git push; then exit 0; fi
               git rebase --abort 2>/dev/null || true
               sleep $((attempt * 3))
             done
