@@ -3,10 +3,15 @@ from datetime import datetime
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-from scripts import gamejoa_preopen_news_radar_full_compact_runner as radar
+SCRIPT_DIR = Path(__file__).resolve().parent
+sys.path = [str(SCRIPT_DIR)] + [
+    path
+    for path in sys.path
+    if Path(path or ".").resolve() not in {SCRIPT_DIR, ROOT}
+]
+import gamejoa_preopen_news_radar_full_compact_runner as radar
 
-WORKFLOW = Path(".github/workflows/gamejoa-preopen-news-radar.yml")
+WORKFLOW = ROOT / ".github/workflows/gamejoa-preopen-news-radar.yml"
 REQUIRED = (
     'cron: "7,27,47 * * * *"',
     "RADAR_RUN_MODE: ${{ github.event_name == 'schedule' && 'live' || github.event.inputs.radar_run_mode || 'preopen' }}",
@@ -55,3 +60,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
