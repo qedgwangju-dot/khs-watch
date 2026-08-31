@@ -1,0 +1,17 @@
+name: KRX Flow Probe
+on:
+  push:
+    paths:
+      - ".github/workflows/krx-flow-probe.yml"
+      - "scripts/krx_flow_probe.py"
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests
+      - run: python scripts/krx_flow_probe.py
