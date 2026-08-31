@@ -44,13 +44,14 @@ jobs:
           python -m py_compile scripts/lng_supply_crisis_alert_v3.py
           python -m py_compile scripts/lng_supply_crisis_alert_v4.py
           python -m py_compile scripts/lng_supply_crisis_alert_v5.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v6.py
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v5.py --setup-test
+            python scripts/lng_supply_crisis_alert_v6.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v5.py
+            python scripts/lng_supply_crisis_alert_v6.py
           fi
 
       - name: Publish status summary
@@ -88,28 +89,20 @@ jobs:
           if not token or not chat_id:
               raise RuntimeError("Telegram bot token or chat id is missing")
 
-          with urllib.request.urlopen(
-              f"https://api.telegram.org/bot{token}/getMe",
-              timeout=25,
-          ) as response:
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
           actual = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or actual != expected:
               raise RuntimeError(
-                  f"Telegram bot mismatch: expected=@{expected}, "
-                  f"actual=@{actual or 'unknown'}; message blocked"
+                  f"Telegram bot mismatch: expected=@{expected}, actual=@{actual or 'unknown'}; message blocked"
               )
 
-          title = pathlib.Path("out/lng_supply_crisis_title.txt").read_text(
-              encoding="utf-8"
-          ).strip()
-          body = pathlib.Path("out/lng_supply_crisis_alert.md").read_text(
-              encoding="utf-8"
-          ).strip()
+          title = pathlib.Path("out/lng_supply_crisis_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/lng_supply_crisis_alert.md").read_text(encoding="utf-8").strip()
           full_text = f"{title}\n\n{body}".strip()
 
           def split_text(text: str, limit: int = 3900) -> list[str]:
-              chunks: list[str] = []
+              chunks = []
               remaining = text
               while remaining:
                   if len(remaining) <= limit:
@@ -124,16 +117,12 @@ jobs:
                   remaining = remaining[cut:].strip()
               return [chunk for chunk in chunks if chunk]
 
-          message_ids: list[int] = []
+          message_ids = []
           pieces = split_text(full_text)
           for index, piece in enumerate(pieces, start=1):
               text = piece if len(pieces) == 1 else f"[{index}/{len(pieces)}]\n{piece}"
               payload = urllib.parse.urlencode(
-                  {
-                      "chat_id": chat_id,
-                      "text": text,
-                      "disable_web_page_preview": "true",
-                  }
+                  {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"}
               ).encode("utf-8")
               request = urllib.request.Request(
                   f"https://api.telegram.org/bot{token}/sendMessage",
@@ -150,23 +139,17 @@ jobs:
               "status": "confirmed",
               "bot": f"@{actual}",
               "message_ids": message_ids,
-              "confirmed_at_kst": dt.datetime.now(
-                  ZoneInfo("Asia/Seoul")
-              ).isoformat(timespec="seconds"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
           pathlib.Path("out/lng_supply_crisis_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
           )
-          print(
-              "telegram_delivery_confirmed=true "
-              f"bot=@{actual} message_ids={message_ids}"
-          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={message_ids}")
           PY
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v5.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v6.py --finalize
 
       - name: Upload verification artifacts
         if: always()
