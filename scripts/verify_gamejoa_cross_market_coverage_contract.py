@@ -62,6 +62,14 @@ SEARCH_NAMES = {
     "SK하이닉스 미국 HBM 첨단패키징 투자",
     "키옥시아 이와테 낸드 공장 CAPEX",
     "트럼프 H-1B 비자 수수료 정책",
+    "반도체 소재·패키징·황산 증설",
+    "ESS 규제·NXT 거래제도",
+    "중국 메모리 생산능력·LPDDR6",
+    "미국 반도체 관세·내장제품",
+    "삼성·SK 주주환원·자사주",
+    "신용융자·삼성·SK 수급",
+    "한국 로보택시·ESS 합작법인",
+    "미국·베네수엘라 원유협정",
 }
 
 CASES = (
@@ -563,6 +571,454 @@ ATTACHMENT_20260827_EVENING_ALERT_CASES = (
 )
 
 
+# The 2026-08-27 through 2026-08-30 attachment contained 93 raw article
+# entries. Every raw index is retained here, including repeated wire stories;
+# only the canonical theme is eligible for one Telegram delivery.
+ATTACHMENT_20260827_30_FULL_GROUPS = {
+    "nvidia_ai_hbm_demand_outlook": {
+        "source_indexes": (1, 3, 16, 53),
+        "route": "send",
+        "reason": "AI 수요·메모리 공급과 한국 메모리 실적 연결",
+    },
+    "iran_opec_china_oil_market_shift": {
+        "source_indexes": (2,),
+        "route": "conditional",
+        "reason": "신뢰외신 원문·실제 공급정책 확인 전",
+    },
+    "nvidia_nvhbm_amazon_collaboration": {
+        "source_indexes": (4, 5, 7),
+        "route": "send",
+        "reason": "맞춤형 HBM 공개와 고객 협력의 동일 사건",
+    },
+    "us_datacenter_tariff_cost_pressure": {
+        "source_indexes": (6,),
+        "route": "conditional",
+        "reason": "관세 적용범위·공식 시행문서 확인 전",
+    },
+    "russia_film_entertainment": {
+        "source_indexes": (8,),
+        "route": "exclude",
+        "reason": "시장·기업 현금흐름과 직접 연결되지 않음",
+    },
+    "trump_social_media_commentary": {
+        "source_indexes": (9,),
+        "route": "exclude",
+        "reason": "정책·가격 변수 없는 정치·SNS 해설",
+    },
+    "russia_ukraine_infrastructure_escalation": {
+        "source_indexes": (10,),
+        "route": "conditional",
+        "reason": "에너지·물류 시설 피해의 신뢰원문 교차확인 필요",
+    },
+    "iran_us_navy_deployment": {
+        "source_indexes": (11,),
+        "route": "conditional",
+        "reason": "군사배치 보도만으로 경제효과 확정 불가",
+    },
+    "ukraine_starlink_military_request": {
+        "source_indexes": (12,),
+        "route": "conditional",
+        "reason": "승인·계약·사용범위가 확인돼야 수급 연결",
+    },
+    "iran_china_sanctions_policy": {
+        "source_indexes": (13,),
+        "route": "policy",
+        "reason": "대이란 제재와 중국 대응은 정책 워치 대상",
+    },
+    "musk_wisconsin_legal": {
+        "source_indexes": (14,),
+        "route": "exclude",
+        "reason": "상장사 실적·정책 변수와 직접 연결되지 않음",
+    },
+    "market_preview_mixed_headlines": {
+        "source_indexes": (15,),
+        "route": "exclude",
+        "reason": "여러 기사 예고를 한 건으로 검증할 수 없음",
+    },
+    "us_china_trade_truce_calendar": {
+        "source_indexes": (17,),
+        "route": "policy",
+        "reason": "미·중 통상 일정과 수출통제 정책 변수",
+    },
+    "iran_ceasefire_oil_price_move": {
+        "source_indexes": (18,),
+        "route": "send",
+        "reason": "휴전 조건과 유가의 즉시 시장 반응",
+    },
+    "skhynix_us_hbm_advanced_packaging_capex": {
+        "source_indexes": (19, 21, 24, 28, 30, 34, 36, 68),
+        "route": "send",
+        "reason": "미국 HBM 공장·착공·양산 일정의 중복 보도",
+    },
+    "hbm_glass_carrier_yield_inspection": {
+        "source_indexes": (20,),
+        "route": "send",
+        "reason": "HBM 수율과 검사 생산성에 직접 연결",
+    },
+    "samsung_china_semiconductor_localization_research": {
+        "source_indexes": (22, 25),
+        "route": "conditional",
+        "reason": "증권사 전망은 원문·수치 확인 후 송출",
+    },
+    "sp500_etf_fee_cut": {
+        "source_indexes": (23, 26),
+        "route": "conditional",
+        "reason": "보수 인하만으로 실제 자금유입 확정 불가",
+    },
+    "consumer_experience_award": {
+        "source_indexes": (27,),
+        "route": "exclude",
+        "reason": "고객만족도 수상은 즉시 이익·수급 변화가 아님",
+    },
+    "us_fiscal_debt_policy_commentary": {
+        "source_indexes": (29,),
+        "route": "conditional",
+        "reason": "부채 해설은 국채금리·공식 조달계획 확인 필요",
+    },
+    "space_datacenter_speculation": {
+        "source_indexes": (31,),
+        "route": "conditional",
+        "reason": "궤도 데이터센터는 공식 발주·CAPEX 전 확인 필요",
+    },
+    "samsung_skhynix_shareholder_return_program": {
+        "source_indexes": (32,),
+        "route": "send",
+        "reason": "대규모 자사주 매입·소각은 유통주식·수급 변수",
+    },
+    "korea_ess_regulatory_improvement": {
+        "source_indexes": (33,),
+        "route": "send",
+        "reason": "ESS 분류·이격거리 규정은 프로젝트 시간표 변수",
+    },
+    "tsmc_foundry_share_gap": {
+        "source_indexes": (35, 37),
+        "route": "send",
+        "reason": "분기 파운드리 점유율은 경쟁구도 데이터",
+    },
+    "korea_zinc_semiconductor_sulfuric_acid_capacity": {
+        "source_indexes": (38,),
+        "route": "send",
+        "reason": "반도체 소재 생산능력 증설과 매출 기반",
+    },
+    "samsung_skhynix_hbm_packaging_roadmap": {
+        "source_indexes": (39,),
+        "route": "send",
+        "reason": "차세대 HBM 패키징 기술 경쟁",
+    },
+    "nxt_premarket_microstructure_rule": {
+        "source_indexes": (40,),
+        "route": "send",
+        "reason": "프리마켓 가격발견·거래규칙 변경",
+    },
+    "honam_semiconductor_hearing": {
+        "source_indexes": (41,),
+        "route": "policy",
+        "reason": "국회 청문회는 투자정책·집행 일정 워치 대상",
+    },
+    "grok_starlink_usage_metrics": {
+        "source_indexes": (42,),
+        "route": "exclude",
+        "reason": "한국 상장사·계약·공식 매출 연결이 불명확",
+    },
+    "treasury_yield_gold_rotation": {
+        "source_indexes": (43,),
+        "route": "conditional",
+        "reason": "시장 해설은 금리·금 가격 실제 수치 확인 필요",
+    },
+    "spacex_revenue_projection": {
+        "source_indexes": (44,),
+        "route": "exclude",
+        "reason": "검증된 계약·공시 없는 장기 매출 전망",
+    },
+    "us_chip_tariff_embedded_products": {
+        "source_indexes": (45,),
+        "route": "policy",
+        "reason": "반도체 관세 적용대상 확대는 정책 워치 대상",
+    },
+    "us_monetary_policy_warsh_rate_outlook": {
+        "source_indexes": (46, 55, 57, 70, 77, 78, 86, 87),
+        "route": "conditional",
+        "reason": "연준 발언·전망은 FOMC·금리선물 확인 전 중복 송출 방지",
+    },
+    "trump_coupang_asset_trade_disclosure": {
+        "source_indexes": (47, 54, 58),
+        "route": "policy",
+        "reason": "대통령 자산거래·이해충돌 공시는 정책 워치 대상",
+    },
+    "openai_samsung_computational_memory": {
+        "source_indexes": (48,),
+        "route": "send",
+        "reason": "자체 AI칩·연산메모리의 공급망 경쟁",
+    },
+    "ai_public_opinion_survey": {
+        "source_indexes": (49,),
+        "route": "exclude",
+        "reason": "여론조사만으로 기업 실적·수급 변화를 확정할 수 없음",
+    },
+    "us_venezuela_oil_agreement": {
+        "source_indexes": (50, 51, 52, 56, 64, 73, 74),
+        "route": "send",
+        "reason": "신뢰외신이 반복 확인한 원유정책·공급 변수",
+    },
+    "cxmt_memory_revenue_growth": {
+        "source_indexes": (59, 61, 62),
+        "route": "send",
+        "reason": "CXMT 실적 급증과 중국 메모리 경쟁 심화",
+    },
+    "generic_ai_memory_supply_beneficiary": {
+        "source_indexes": (60,),
+        "route": "conditional",
+        "reason": "기업 식별·원문 수치가 부족한 제목형 기사",
+    },
+    "oil_rate_hold_commentary": {
+        "source_indexes": (63,),
+        "route": "conditional",
+        "reason": "유가·금리 연동 전망은 실제 정책·가격 확인 필요",
+    },
+    "trump_debt_inflation_election_commentary": {
+        "source_indexes": (65,),
+        "route": "exclude",
+        "reason": "정치 해설 중심으로 직접 시장 조치가 없음",
+    },
+    "korea_silicon_valley_ai_alliance": {
+        "source_indexes": (66,),
+        "route": "conditional",
+        "reason": "협력 의향과 실제 계약·투자를 분리 확인",
+    },
+    "china_russia_pipeline_meeting": {
+        "source_indexes": (67,),
+        "route": "policy",
+        "reason": "에너지 공급망 외교 일정은 정책 워치 대상",
+    },
+    "ymtc_nand_wafer_capacity_expansion": {
+        "source_indexes": (69, 75),
+        "route": "send",
+        "reason": "낸드 웨이퍼 증설과 한국 업체 점유율 위협",
+    },
+    "korea_equity_weekly_outlook": {
+        "source_indexes": (71,),
+        "route": "exclude",
+        "reason": "주간 전망은 개별 새 사실·촉매가 아님",
+    },
+    "semiconductor_trickle_down_household_debt": {
+        "source_indexes": (72,),
+        "route": "conditional",
+        "reason": "거시 해설은 가계금리·소득 공식지표 확인 필요",
+    },
+    "samsung_skhynix_corporate_tax": {
+        "source_indexes": (76, 84, 88),
+        "route": "exclude",
+        "reason": "동일 법인세 추정의 반복·파생 수치",
+    },
+    "canada_usa_boycott": {
+        "source_indexes": (79,),
+        "route": "exclude",
+        "reason": "소비자 반응 해설이며 한국 기업 직접 노출 부족",
+    },
+    "musk_johnson_meeting": {
+        "source_indexes": (80,),
+        "route": "exclude",
+        "reason": "회동 계획만으로 정책·계약 변화가 없음",
+    },
+    "semiconductor_etf_thematic_expansion": {
+        "source_indexes": (81,),
+        "route": "conditional",
+        "reason": "ETF 테마 확장은 실제 설정액·편입 확인 필요",
+    },
+    "single_stock_leverage_etf_rule_effect": {
+        "source_indexes": (82,),
+        "route": "send",
+        "reason": "거래대금 급감은 직접적인 수급 변화",
+    },
+    "korea_robotaxi_commercialization": {
+        "source_indexes": (83,),
+        "route": "send",
+        "reason": "상용화·자율주행 도입 일정의 사업화 신호",
+    },
+    "samsung_sdi_gm_ess_jv_restructure": {
+        "source_indexes": (85,),
+        "route": "send",
+        "reason": "ESS 합작법인 생산능력·지분 변경",
+    },
+    "bigtech_ai_profitability_commentary": {
+        "source_indexes": (89,),
+        "route": "conditional",
+        "reason": "산업 해설은 실제 실적·CAPEX 자료 확인 필요",
+    },
+    "china_mobile_lpddr6_commercialization": {
+        "source_indexes": (90,),
+        "route": "send",
+        "reason": "LPDDR6 양산·고객 탑재는 경쟁제품 상용화 신호",
+    },
+    "korea_ai_megaproject_personnel_policy": {
+        "source_indexes": (91,),
+        "route": "policy",
+        "reason": "정부 AI 산업정책 집행 인사는 정책 워치 대상",
+    },
+    "china_memory_competition_general": {
+        "source_indexes": (92,),
+        "route": "conditional",
+        "reason": "경쟁위협의 원문 수치·생산능력 확인 필요",
+    },
+    "samsung_skhynix_margin_credit_concentration": {
+        "source_indexes": (93,),
+        "route": "send",
+        "reason": "신용자금 집중은 대형주 수급·변동성 변수",
+    },
+}
+
+
+ATTACHMENT_20260827_30_ALERT_CASES = (
+    (
+        "엔비디아 AI 수요·메모리 공급 부족에 삼전닉스 내년 기대",
+        "엔비디아가 AI 수요와 메모리 공급 부족을 재확인했고 삼성전자와 SK하이닉스의 내년 호조 전망이 나왔습니다.",
+        "nvidia_ai_hbm_demand_outlook",
+        "삼성전자·SK하이닉스",
+        "뉴스1",
+    ),
+    (
+        "트럼프 이란 휴전 조건 거부 뒤 유가 2% 상승",
+        "트럼프가 이란 휴전 조건 복귀를 거부한 뒤 국제유가가 2% 상승 마감했습니다.",
+        "iran_ceasefire_oil_price_move",
+        "2%",
+        "Reuters",
+    ),
+    (
+        "AI 활용 글라스 캐리어 결함검사로 HBM 수율 개선",
+        "AI 기술로 HBM 글라스 캐리어 유리 웨이퍼의 보이지 않는 결함을 검사해 수율 개선을 추진합니다.",
+        "hbm_glass_carrier_yield_inspection",
+        "결함",
+        "한국일보",
+    ),
+    (
+        "삼성전자·SK하이닉스 총 46조원 자사주 매입·소각",
+        "삼성전자와 SK하이닉스가 총 46조원 규모 자사주 매입과 소각을 결정했습니다.",
+        "samsung_skhynix_shareholder_return_program",
+        "46조원",
+        "한국경제TV",
+    ),
+    (
+        "ESS 법적 분류·이격거리 기준 신설",
+        "정부가 ESS 법적 분류를 명확히 하고 이격거리 기준을 신설하는 규제개선을 추진합니다.",
+        "korea_ess_regulatory_improvement",
+        "이격거리",
+        "아이뉴스24",
+    ),
+    (
+        "TSMC 파운드리 점유율 73%·삼성전자 7%",
+        "2분기 파운드리 점유율은 TSMC 73%, 삼성전자 7%로 격차가 확대됐습니다.",
+        "tsmc_foundry_share_gap",
+        "73%",
+        "이데일리",
+    ),
+    (
+        "고려아연, 반도체황산 라인 4만톤 증설",
+        "고려아연이 반도체황산 생산라인을 연 4만톤 증설합니다.",
+        "korea_zinc_semiconductor_sulfuric_acid_capacity",
+        "4만톤",
+        "한국경제",
+    ),
+    (
+        "NXT, 하이닉스 하한가 뒤 프리마켓 거래방식 개편 검토",
+        "NXT가 프리마켓 가격 급변을 막기 위해 거래방식 개편을 검토합니다.",
+        "nxt_premarket_microstructure_rule",
+        "거래방식",
+        "데일리안",
+    ),
+    (
+        "미국, 칩 내장 제품까지 반도체 관세 확대 검토",
+        "미국이 반도체뿐 아니라 칩이 들어간 제품까지 관세 대상을 넓히는 방안을 검토합니다.",
+        "us_chip_tariff_embedded_products",
+        "칩 내장 제품",
+        "Reuters",
+    ),
+    (
+        "오픈AI 자체칩·삼성 연산메모리로 AI 병목 대응",
+        "오픈AI는 자체 AI칩을, 삼성전자는 연산 메모리를 추진하며 AI 반도체 병목 완화 경쟁이 커졌습니다.",
+        "openai_samsung_computational_memory",
+        "연산메모리",
+        "한국경제",
+    ),
+    (
+        "트럼프, 베네수엘라 원유 매장량 통제 합의 주장",
+        "트럼프가 베네수엘라의 650억 배럴 원유 매장량 통제 관련 합의가 있었다고 밝혔습니다.",
+        "us_venezuela_oil_agreement",
+        "650억 배럴",
+        "Reuters",
+    ),
+    (
+        "CXMT 상반기 매출 10배 증가",
+        "CXMT 상반기 매출이 10배 증가하며 중국 D램 경쟁력 확대 신호가 나왔습니다.",
+        "cxmt_memory_revenue_growth",
+        "10배",
+        "머니투데이",
+    ),
+    (
+        "YMTC, 낸드 웨이퍼 생산 내년 250만장 확대",
+        "YMTC가 낸드 웨이퍼 생산을 내년 250만장으로 늘려 점유율 경쟁을 키웁니다.",
+        "ymtc_nand_wafer_capacity_expansion",
+        "250만장",
+        "이데일리",
+    ),
+    (
+        "단일종목 레버리지 ETF 거래대금 19조원에서 5000억원",
+        "단일종목 레버리지 ETF 규제 후 거래대금이 19조원에서 5000억원으로 줄었습니다.",
+        "single_stock_leverage_etf_rule_effect",
+        "5000억원",
+        "이데일리",
+    ),
+    (
+        "포니AI, 퓨처링크와 한국 로보택시 상용화 추진",
+        "포니AI가 퓨처링크와 한국 로보택시 상용화와 7세대 자율주행 도입을 추진합니다.",
+        "korea_robotaxi_commercialization",
+        "퓨처링크",
+        "이데일리",
+    ),
+    (
+        "삼성SDI, GM 합작법인 지분 인수로 ESS 26GWh 확보 추진",
+        "삼성SDI가 GM 합작법인 지분 인수로 ESS 셀 26GWh 생산능력 확보를 추진합니다.",
+        "samsung_sdi_gm_ess_jv_restructure",
+        "26GWh",
+        "머니투데이",
+    ),
+    (
+        "CXMT LPDDR6 양산·샤오미 스마트폰 첫 탑재",
+        "CXMT가 LPDDR6을 양산해 샤오미 스마트폰에 처음 탑재했습니다.",
+        "china_mobile_lpddr6_commercialization",
+        "LPDDR6",
+        "매일경제",
+    ),
+    (
+        "증시 신용자금 증가분, 삼성전자·SK하이닉스에 집중",
+        "증시에서 늘어난 신용자금의 40% 이상이 삼성전자와 SK하이닉스로 향했습니다.",
+        "samsung_skhynix_margin_credit_concentration",
+        "신용자금",
+        "머니투데이",
+    ),
+    (
+        "HBM 다음은 패키징…삼성·SK, 차세대 기술 경쟁 본격화",
+        "삼성전자와 SK하이닉스가 HBM 패키징과 Cube-E·2.3D 기술 경쟁을 본격화합니다.",
+        "samsung_skhynix_hbm_packaging_roadmap",
+        "차세대 패키징",
+        "한국경제",
+    ),
+    (
+        "AI·메가프로젝트 '핀셋인사'…미래 먹거리 육성 의지 재천명",
+        "정부가 AI 메가프로젝트 추진을 위한 핀셋인사를 단행했습니다.",
+        "korea_ai_megaproject_personnel_policy",
+        "AI 메가프로젝트",
+        "정부",
+    ),
+    (
+        "무역 휴전 연장 가능성에 시진핑 방미 일정 주목",
+        "미·중 무역 휴전 연장과 시진핑 방미 가능성이 통상 일정 변수로 부각됐습니다.",
+        "us_china_trade_truce_calendar",
+        "무역 휴전",
+        "Reuters",
+    ),
+)
+
+
 def source_row(
     title: str,
     body: str,
@@ -921,6 +1377,102 @@ def main() -> int:
             f"attachment27_duplicate_theme={sorted(attachment27_duplicate_themes)}"
         )
 
+    full_indexes = [
+        index
+        for item in ATTACHMENT_20260827_30_FULL_GROUPS.values()
+        for index in item["source_indexes"]
+    ]
+    if len(ATTACHMENT_20260827_30_FULL_GROUPS) != 58:
+        failures.append(
+            "attachment27_30_group_count="
+            f"{len(ATTACHMENT_20260827_30_FULL_GROUPS)}:expected=58"
+        )
+    if len(full_indexes) != 93 or sorted(full_indexes) != list(range(1, 94)):
+        failures.append(
+            "attachment27_30_full_index_coverage="
+            f"count={len(full_indexes)} unique={len(set(full_indexes))}"
+        )
+    full_route_counts = {}
+    for group, item in ATTACHMENT_20260827_30_FULL_GROUPS.items():
+        route = item["route"]
+        full_route_counts[route] = full_route_counts.get(route, 0) + len(
+            item["source_indexes"]
+        )
+        if route not in {"send", "policy", "conditional", "exclude"}:
+            failures.append(f"invalid_attachment27_30_route={group}:{route}")
+        if not item.get("reason"):
+            failures.append(f"attachment27_30_missing_reason={group}")
+    expected_full_route_counts = {
+        "send": 42,
+        "policy": 9,
+        "conditional": 27,
+        "exclude": 15,
+    }
+    if full_route_counts != expected_full_route_counts:
+        failures.append(
+            "attachment27_30_routes="
+            f"{full_route_counts}:expected={expected_full_route_counts}"
+        )
+
+    attachment27_30_now = datetime(2026, 8, 30, 12, tzinfo=timezone.utc)
+    for title, body, expected_kind, required_fact, publisher in ATTACHMENT_20260827_30_ALERT_CASES:
+        row = source_row(title, body, publisher=publisher)
+        alert = radar.build_attachment_verified_event_alert(
+            row, attachment27_30_now, f"{title} {body}".lower()
+        )
+        if not alert:
+            failures.append(f"attachment27_30_alert_missing={expected_kind}:{title}")
+            continue
+        if alert.get("korean_business_kind") != expected_kind:
+            failures.append(
+                "attachment27_30_alert_kind="
+                f"{alert.get('korean_business_kind')}:expected={expected_kind}:{title}"
+            )
+        core = str(alert.get("telegram_core_fact") or "")
+        if required_fact.lower() not in core.lower():
+            failures.append(
+                f"attachment27_30_alert_core_mismatch={expected_kind}:{core!r}"
+            )
+        if not radar.core_sentence_is_complete(core, limit=160):
+            failures.append(
+                f"attachment27_30_alert_incomplete_core={expected_kind}:{core!r}"
+            )
+        rendered = radar.compact_alert(alert, 1, attachment27_30_now, {}, {})
+        rendered_errors = radar.compact_alert_block_errors(rendered)
+        if rendered_errors:
+            failures.append(
+                "attachment27_30_rendered_block="
+                f"{expected_kind}:{rendered_errors}:{rendered!r}"
+            )
+
+    full_duplicate_rows = (
+        source_row(
+            "트럼프, 베네수엘라 석유 합의로 650억 배럴 통제 주장",
+            "트럼프가 미국과 베네수엘라가 650억 배럴 원유 매장량 통제 합의에 도달했다고 밝혔습니다.",
+            publisher="Reuters",
+        ),
+        source_row(
+            "미국, 베네수엘라 원유 매장량 부분 통제권 확보",
+            "미국이 베네수엘라의 650억 배럴 석유 매장량에 대한 부분 통제권을 확보했다는 보도입니다.",
+            publisher="CNBC",
+        ),
+    )
+    full_duplicate_themes = {
+        str(
+            (radar.build_attachment_verified_event_alert(
+                row,
+                attachment27_30_now,
+                f"{row['source_title']} {row['source_body']}".lower(),
+            ) or {}).get("supply_chain_theme")
+            or ""
+        )
+        for row in full_duplicate_rows
+    }
+    if len(full_duplicate_themes) != 1 or "" in full_duplicate_themes:
+        failures.append(
+            f"attachment27_30_duplicate_theme={sorted(full_duplicate_themes)}"
+        )
+
     commitment_title, commitment_body, _, _ = next(
         case
         for case in ATTACHMENT_20260827_ALERT_CASES
@@ -1038,6 +1590,7 @@ def main() -> int:
     prose_cases = (
         ("MSCI 반영 시 1조원대 자금 유입을 기대할…", ""),
         ("및 수주잔고 20억달러를 기록했습니다.", "수주잔고 20억달러를 기록했습니다."),
+        ("그리고 이번 레버리지 ETF 사태의 배후를 조사해야 한다.", ""),
     )
     for raw, expected in prose_cases:
         actual = radar.complete_prose_text(raw, limit=100)
@@ -1045,6 +1598,59 @@ def main() -> int:
             failures.append(f"damaged_core_prose={actual!r}:expected={expected!r}")
         if actual and not radar.core_sentence_is_complete(actual, limit=100):
             failures.append(f"incomplete_core_prose={actual!r}")
+
+    ui_core = radar.detailed_article_core(
+        "[오늘의 투자전략] 코스피, 7000선 재진입 시도 전망",
+        (
+            "이번 주 국내 증시는 코스피 7000선 재진입을 시도할 전망이다. "
+            "이투데이 마켓 일반 [오늘의 투자전략] 코스피, 7000선 재진입 시도 전망 "
+            "입력 2026-08-31 07:55 정수천 기자 북마크 되었습니다. "
+            "마이페이지에서 확인하세요. 카카오톡 페이스북 엑스 URL공유 "
+            "가장크게 작게 기본 크게 이번 주 국내 증시는 잭슨홀 이후 금리와 수출을 주목한다."
+        ),
+    )
+    if radar.core_has_ui_garbage(ui_core) or not radar.core_sentence_is_complete(ui_core, limit=160):
+        failures.append(f"ui_core_cleanup_failed={ui_core!r}")
+    if "입력" in ui_core or "북마크" in ui_core or "이번 주 국내 증시" not in ui_core:
+        failures.append(f"ui_core_content_failed={ui_core!r}")
+
+    profile_rows = (
+        (
+            "곽노정 \"2030년말까지 반도체 공급 부족 지속\"",
+            "SK하이닉스 CEO 곽노정은 메모리 공급 부족이 2030년 말까지 이어질 수 있다고 전망했습니다.",
+            "skhynix_2030_memory_shortage_outlook",
+        ),
+        (
+            "엔비디아 마진 깎은 메모리값…삼전닉스 몰래 웃는다",
+            "엔비디아는 메모리 가격 상승으로 4분기 매출총이익률을 71~72%로 전망했습니다. 곽노정은 공급 부족이 2030년까지 이어질 수 있다고 말했습니다.",
+            "nvidia_memory_cost_margin_pressure",
+        ),
+    )
+    for title, body, expected_kind in profile_rows:
+        profile_alert = radar.build_attachment_verified_event_alert(
+            source_row(title, body),
+            attachment27_30_now,
+            f"{title} {body}".lower(),
+        )
+        if not profile_alert or profile_alert.get("korean_business_kind") != expected_kind:
+            failures.append(
+                f"specific_profile_not_selected={expected_kind}:"
+                f"{(profile_alert or {}).get('korean_business_kind')}"
+            )
+
+    mismatched_alert = {
+        "korean_business_news": True,
+        "body_verified": True,
+        "source_title": "SK하이닉스 미국 인디애나 HBM 생산기지 착공",
+        "news": "SK하이닉스 미국 인디애나 HBM 생산기지 착공",
+        "policy_plain_summary": "엔비디아 AI 수요와 메모리 공급 부족이 삼성전자·SK하이닉스의 내년 실적 기대를 높였습니다.",
+        "telegram_core_fact": "엔비디아 AI 수요와 메모리 공급 부족이 삼성전자·SK하이닉스의 내년 실적 기대를 높였습니다.",
+        "source_abstract": "SK하이닉스가 미국 인디애나주에 HBM 후공정 생산기지를 착공합니다.",
+        "publisher": "뉴시스",
+        "link": "https://www.newsis.com/view/NISX20260828_0003766487",
+    }
+    if radar.source_output_aligned(mismatched_alert):
+        failures.append("title_body_mismatch_not_blocked_in_cross_contract")
 
     if failures:
         print("GAMEJOA cross-market coverage contract failed:")
@@ -1064,10 +1670,15 @@ def main() -> int:
         f"attachment26_source_items={attachment26_source_item_count} "
         f"attachment27_cases={len(ATTACHMENT_20260827_ALERT_CASES)} "
         f"attachment27_groups={len(ATTACHMENT_20260827_GROUPS)} "
-        f"attachment27_source_items={attachment27_source_item_count}"
+        f"attachment27_source_items={attachment27_source_item_count} "
+        f"attachment27_30_cases={len(ATTACHMENT_20260827_30_ALERT_CASES)} "
+        f"attachment27_30_groups={len(ATTACHMENT_20260827_30_FULL_GROUPS)} "
+        f"attachment27_30_source_items={len(full_indexes)} "
+        f"attachment27_30_routes={full_route_counts}"
     )
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
