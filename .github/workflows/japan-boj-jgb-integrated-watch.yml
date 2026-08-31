@@ -1,0 +1,167 @@
+name: Japan BOJ JGB Integrated Watch
+
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/japan-boj-jgb-integrated-watch.yml"
+      - "scripts/japan_boj_jgb_integrated_watch.py"
+      - "data/japan_boj_jgb_integrated_state.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: japan-boj-jgb-integrated-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'push' && 'true' || 'false' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install parser dependencies
+        run: pip install --disable-pip-version-check beautifulsoup4 pypdf
+
+      - name: Validate watcher
+        run: python -m py_compile scripts/japan_boj_jgb_integrated_watch.py
+
+      - name: Scan BOJ JGB yen-carry conditions
+        run: python scripts/japan_boj_jgb_integrated_watch.py
+
+      - name: Publish status
+        if: always()
+        run: |
+          if [ -f out/japan_boj_jgb_integrated_status.md ]; then
+            cat out/japan_boj_jgb_integrated_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "일본 BOJ·JGB 통합 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/japan_boj_jgb_integrated_alert.html ]; then
+            printf '\n---\n\n# 경보 미리보기\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/japan_boj_jgb_integrated_alert.html >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send through KHS Telegram bot only
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/japan_boj_jgb_integrated_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import html
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_BOT_TOKEN missing")
+          if not chat_id:
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_CHAT_ID missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+
+          title = pathlib.Path("out/japan_boj_jgb_integrated_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/japan_boj_jgb_integrated_alert.html").read_text(encoding="utf-8").strip()
+          text = f"<b>{html.escape(title)}</b>\n\n{body}"
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text[:4096],
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected integrated alert: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "lane": "japan_boj_jgb_integrated",
+              "bot_username": actual,
+              "message_id": (result.get("result") or {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/japan_boj_jgb_integrated_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={confirmed['message_id']}")
+          PY
+
+      - name: Persist watcher state
+        if: env.TELEGRAM_DRY_RUN != 'true' && always()
+        run: |
+          if [ -f out/japan_boj_jgb_integrated_alert.html ] && [ ! -f out/japan_boj_jgb_integrated_telegram_confirmed.json ]; then
+            echo "Telegram delivery not confirmed; state intentionally not advanced."
+            exit 0
+          fi
+          if [ -f out/japan_boj_jgb_integrated_pending.json ]; then
+            cp out/japan_boj_jgb_integrated_pending.json data/japan_boj_jgb_integrated_state.json
+          fi
+
+      - name: Commit state
+        if: env.TELEGRAM_DRY_RUN != 'true' && always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/japan_boj_jgb_integrated_state.json
+          if git diff --cached --quiet; then
+            echo "Integrated BOJ/JGB state unchanged"
+          else
+            git commit -m "Update integrated BOJ JGB watcher state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: japan-boj-jgb-integrated-${{ github.run_id }}
+          path: |
+            out/japan_boj_jgb_integrated_status.md
+            out/japan_boj_jgb_integrated_title.txt
+            out/japan_boj_jgb_integrated_alert.html
+            out/japan_boj_jgb_integrated_pending.json
+            out/japan_boj_jgb_integrated_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
