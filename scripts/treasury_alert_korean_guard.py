@@ -21,6 +21,7 @@ BESSENT_REUTERS = "https://www.reuters.com/business/bessent-pushes-back-fears-ov
 TREASURY_RELEASE = "https://home.treasury.gov/news/press-releases/sb0607"
 BUYBACK_FAQ = "https://www.treasurydirect.gov/help-center/faqs/buyback-faqs/"
 UPGRADE_MARKER = "<b>정책 목적·경계선</b>"
+UPGRADE_REVISION = 1
 
 EXACT_TITLES = {
     "Treasury Announces Increased Sizes of Nominal Long-End Liquidity Support Buybacks Beginning September 9":
