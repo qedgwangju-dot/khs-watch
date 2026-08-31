@@ -2,8 +2,36 @@
 """Regression gate for heat-driven Korean distribution-grid outage alerts."""
 
 from datetime import datetime
+from pathlib import Path
+import sys
+
+# The wrapper can execute this file from the project root, where another
+# checkout may expose modules with the same names. Pin every radar import to
+# the sibling scripts directory so this gate tests the code under test.
+SCRIPT_DIR = Path(__file__).resolve().parent
+sys.path = [str(SCRIPT_DIR)] + [
+    path
+    for path in sys.path
+    if Path(path or ".").resolve() not in {SCRIPT_DIR, SCRIPT_DIR.parent}
+]
+for module_name in (
+    "gamejoa_preopen_news_radar_fda_quality_runner",
+    "gamejoa_preopen_news_radar_semisupply_runner",
+    "gamejoa_preopen_news_radar_memory_antitrust_runner",
+    "gamejoa_preopen_news_radar_korea_nuclear_siting_runner",
+    "gamejoa_preopen_news_radar_full_compact_runner",
+):
+    loaded = sys.modules.get(module_name)
+    loaded_path = getattr(loaded, "__file__", "") if loaded else ""
+    if loaded_path and Path(loaded_path).resolve().parent != SCRIPT_DIR:
+        del sys.modules[module_name]
 
 import gamejoa_preopen_news_radar_fda_quality_runner as quality
+
+if Path(quality.__file__).resolve().parent != SCRIPT_DIR:
+    raise SystemExit(
+        "heat_grid_contract=wrong_runner_path:" + str(quality.__file__)
+    )
 
 
 def main() -> int:
@@ -75,3 +103,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
