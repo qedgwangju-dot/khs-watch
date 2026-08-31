@@ -105,7 +105,7 @@ def format_alert(text: str) -> str:
             continue
 
         if stripped.startswith("※ 미 재무부 일일 수익률은"):
-            out.append(f"<i>{stripped}</i>")
+            out.append(stripped)
             continue
 
         if stripped.startswith("BTC 현물 ETF — Farside 기준 최신 유효일"):
@@ -174,7 +174,7 @@ def format_alert(text: str) -> str:
 
         if stripped.startswith("※ CLARITY Act"):
             out.append("")
-            out.append(f"<i>{stripped}</i>")
+            out.append(stripped)
             continue
 
         out.append(line)
