@@ -15,7 +15,9 @@ on:
     paths:
       - ".github/workflows/korea-grid-policy-watch.yml"
       - "scripts/korea_grid_policy_watch.py"
+      - "scripts/korea_grid_policy_watch_v2.py"
       - "tests/test_korea_grid_policy_watch.py"
+      - "tests/test_korea_grid_policy_watch_v2.py"
       - ".github/korea-grid-policy-trigger"
 
 concurrency:
@@ -43,12 +45,12 @@ jobs:
           cache: pip
 
       - name: 의존성 설치
-        run: pip install requests beautifulsoup4 pytest
+        run: pip install requests beautifulsoup4 pytest googlenewsdecoder
 
       - name: 문법·단위 테스트
         run: |
-          python -m compileall -q scripts/korea_grid_policy_watch.py
-          pytest -q tests/test_korea_grid_policy_watch.py
+          python -m compileall -q scripts/korea_grid_policy_watch.py scripts/korea_grid_policy_watch_v2.py
+          pytest -q tests/test_korea_grid_policy_watch.py tests/test_korea_grid_policy_watch_v2.py
 
       - name: 전력망 정책·발주 공식 원문 확인
         id: grid
@@ -61,7 +63,7 @@ jobs:
           if [[ "$FORCE_INPUT" == "true" || "$FORCE_PUSH" == "true" ]]; then
             EXTRA="--force-notify"
           fi
-          python scripts/korea_grid_policy_watch.py $EXTRA
+          python scripts/korea_grid_policy_watch_v2.py $EXTRA
 
       - name: 두 번째 알림 봇으로 Telegram 전송
         if: steps.grid.outputs.changed == 'true'
@@ -162,7 +164,7 @@ jobs:
         run: |
           git config user.name "korea-grid-policy-watch[bot]"
           git config user.email "korea-grid-policy-watch[bot]@users.noreply.github.com"
-          git add data/korea_grid_policy_state.json out 2>/dev/null || true
+          git add data/korea_grid_policy_state.json data/korea_grid_policy_event_state.json out 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "chore: update Korea grid policy alert state"
             for attempt in 1 2 3; do
