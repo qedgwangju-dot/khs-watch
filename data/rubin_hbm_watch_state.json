@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-01T08:56:05+09:00",
+  "updated_at_kst": "2026-09-01T14:20:44+09:00",
   "seen_ids": [
     "09ccca98004f94ddc78adf4f",
     "0a11d6e55d20a20d438eea0b",
@@ -10,6 +10,7 @@
     "4d6b3e75273924248c11b1c1",
     "5010456efcf2a9cd4b3c6336",
     "51472fa7253bfc2a1683afa7",
+    "59dea53db71c13bdf6c120ef",
     "7c4fab38f3ac9aeca880db5a",
     "817f217f23561cc348f4159b",
     "86e3b5a2a1b5f5a0a64b608e",
@@ -23,14 +24,16 @@
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1373.61,
-    "date": "2026-08-31",
+    "rate": 1372.41,
+    "date": "2026-09-01",
     "error": ""
   },
-  "errors": []
+  "errors": [
+    "핵심 사실 자동추출 실패로 발송 제외: 경제타임스 | 삼전 HBM 올인 덕에…SFA반도체, DDR5 물량 독식 - 경제타임스"
+  ]
 }
