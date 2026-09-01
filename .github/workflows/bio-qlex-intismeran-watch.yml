@@ -8,6 +8,7 @@ on:
       - "scripts/bio_single_runner_v2.py"
       - "scripts/bio_single_runner_v3.py"
       - "scripts/bio_korean_guard.py"
+      - "scripts/bio_korean_guard_strict.py"
       - "scripts/qlex_sc_conversion_watch.py"
       - "scripts/intismeran_qlex_watch.py"
       - "scripts/qlex_telegram_send.py"
