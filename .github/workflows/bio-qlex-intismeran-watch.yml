@@ -6,10 +6,14 @@ on:
       - ".github/workflows/bio-qlex-intismeran-watch.yml"
       - "scripts/bio_single_runner.py"
       - "scripts/bio_single_runner_v2.py"
+      - "scripts/bio_single_runner_v3.py"
+      - "scripts/bio_korean_guard.py"
       - "scripts/qlex_sc_conversion_watch.py"
       - "scripts/intismeran_qlex_watch.py"
       - "scripts/qlex_telegram_send.py"
+      - "scripts/qlex_telegram_send_v2.py"
       - "scripts/intismeran_structured_telegram_send.py"
+      - "scripts/intismeran_structured_telegram_send_v2.py"
       - "scripts/jemperli_altb4_watch.py"
       - "scripts/enhertu_altb4_watch.py"
       - "scripts/enhertu_altb4_watch_v2.py"
@@ -43,8 +47,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run QLEX, Intismeran, Jemperli and Enhertu bio watch
-        run: python scripts/bio_single_runner_v2.py
+      - name: Run Korean-guarded bio watch
+        run: python scripts/bio_single_runner_v3.py
 
       - name: Publish bio watch status
         if: always()
