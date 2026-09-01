@@ -113,11 +113,18 @@
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-09-01T23:57:27+09:00",
+  "last_checked_kst": "2026-09-01T23:58:29+09:00",
   "confirmed_events": {
     "news:2026-08-30:strike:hormuz:1": {
-      "baseline": true,
-      "note": "Known pre-monitor single-projectile tanker incident"
+      "warning": null,
+      "event_kind": "strike",
+      "location": "hormuz",
+      "projectile_count": 1,
+      "sources": [
+        "Gulf News",
+        "Anadolu Ajansı"
+      ],
+      "first_seen_kst": "2026-09-01T23:58:29+09:00"
     },
     "news:2026-08-31:strike:hormuz:3": {
       "warning": null,
@@ -149,7 +156,6 @@
       "projectile_count": null,
       "sources": [
         "Reuters",
-        "Lloyd's List",
         "Arab News",
         "Radio Free Europe/Radio Liberty"
       ],
