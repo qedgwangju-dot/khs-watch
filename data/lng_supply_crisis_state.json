@@ -1,13 +1,15 @@
 {
   "version": 2,
   "setup_test_sent_at_kst": "2026-08-03T07:51:17+09:00",
-  "last_alert_at_kst": "2026-09-01T14:42:46+09:00",
+  "last_alert_at_kst": "2026-09-02T07:01:29+09:00",
   "alerted_event_ids": [
-    "a138cf877b55be8f46cb"
+    "a138cf877b55be8f46cb",
+    "afb5c771ef035dda00ef"
   ],
   "active_market_signals": [
     "ttf_above_50",
     "ttf_above_60",
-    "ttf_above_70"
+    "ttf_above_70",
+    "ttf_up_5"
   ]
 }
