@@ -1,6 +1,7 @@
 {
   "last_source_errors": [
-    "https://www.mcee.go.kr/home/web/board/list.do?boardCategoryId=39&boardMasterId=1&menuId=10525&maxPageItems=50: 404 Client Error: Not Found for url: https://www.mcee.go.kr/404.jsp;jsessionid=lUEK6u-tcHrJq4TvgWMAPA33-YPs6UBQ3fH2A51z.mehome2"
+    "https://www.mcee.go.kr/home/web/board/list.do?boardCategoryId=39&boardMasterId=1&menuId=10525&maxPageItems=50: 404 Client Error: Not Found for url: https://www.mcee.go.kr/404.jsp;jsessionid=Ult3WgLCmYVtfXd4bc457eP-41N0HVYkqbijq0uC.mehome2",
+    "https://www.law.go.kr/LSW/lsInfoP.do?ancYnChk=0&chrClsCd=010202&efYd=20260603&lsiSeq=286475&urlMode=lsInfoP: HTTPSConnectionPool(host='www.law.go.kr', port=443): Max retries exceeded with url: /LSW/lsInfoP.do?ancYnChk=0&chrClsCd=010202&efYd=20260603&lsiSeq=286475&urlMode=lsInfoP (Caused by NameResolutionError(\"HTTPSConnection(host='www.law.go.kr', port=443): Failed to resolve 'www.law.go.kr' ([Errno -3] Temporary failure in name resolution)\"))"
   ],
   "page_versions": {
     "송·변전설비 주변지역 보상·지원 기준 고시": "[시행 2025. 11. 30.] | [기후에너지환경부고시 제2025-61호, 2025. 11. 24., 일부개정] | 기후에너지환경부고시 제2025-61호",
@@ -18,10 +19,11 @@
     "7870098a31f0059bf174d579e81e94b380098bc81b80c50ec36c0455d5f70cf9",
     "956d66540807427c439b889b37d629b04fe15f0efcedb040d7e29b8b3efa21e9",
     "a6e0d3137ee55370a0f5960e55d2b0db1f58b6a6cbbc24fb7a181bfd9e789f38",
+    "ac8dfae97208c96a67ed4f9f80c7c9e7dd4da17a4b570bb22635018c1b5a24da",
     "cd01b2f9a2c26d68761412fcb0f1d0aa60b5bb5f825b1b2c3575953113631129",
     "ced55bb20a43ecc63cd29095f85b5a29458af742526fcdcebac0d0dc0cc708ea",
     "d86dc5b86c5cebb63ee7c3e788f2fed013b7b8867055ef865783747ff7ccbe20"
   ],
-  "updated_at": "2026-09-01T00:02:54.076463+00:00",
+  "updated_at": "2026-09-01T05:34:29.677421+00:00",
   "version": 1
 }
