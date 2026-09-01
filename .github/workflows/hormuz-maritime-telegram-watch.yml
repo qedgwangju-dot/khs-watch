@@ -1,0 +1,229 @@
+name: Hormuz Maritime Telegram Watch
+
+on:
+  push:
+    paths:
+      - ".github/workflows/hormuz-maritime-telegram-watch.yml"
+      - "scripts/hormuz_maritime_watch.py"
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hormuz-maritime-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PDF parser
+        run: python -m pip install --disable-pip-version-check --quiet pypdf
+
+      - name: Validate monitor syntax
+        run: python -m py_compile scripts/hormuz_maritime_watch.py
+
+      - name: Validate existing Telegram route without sending
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_BOT_TOKEN secret is missing; refusing fallback")
+          if not chat_id:
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_CHAT_ID secret is missing; refusing fallback")
+          if not expected:
+              raise RuntimeError("EXPECTED_TELEGRAM_BOT_USERNAME is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}")
+
+          payload = urllib.parse.urlencode({"chat_id": chat_id}).encode("utf-8")
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/getChat", data=payload, method="POST")
+          with urllib.request.urlopen(req, timeout=25) as r:
+              chat = json.loads(r.read().decode("utf-8"))
+          if not chat.get("ok"):
+              raise RuntimeError("Telegram getChat rejected configured destination")
+          chat_type = str((chat.get("result") or {}).get("type") or "unknown")
+          print(f"telegram_route_ok=true bot=@{actual} chat_type={chat_type}")
+          PY
+
+      - name: Check UKMTO and trusted cross-check sources
+        run: python scripts/hormuz_maritime_watch.py
+
+      - name: Publish watcher summary
+        if: always()
+        run: |
+          if [ -f out/hormuz_maritime_watch_status.md ]; then
+            cat out/hormuz_maritime_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Hormuz watcher status file missing" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/hormuz_maritime_watch_telegram.txt ]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            echo "# Telegram alert candidate" >> "$GITHUB_STEP_SUMMARY"
+            cat out/hormuz_maritime_watch_telegram.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send verified Hormuz alert to dedicated bot
+        if: hashFiles('out/hormuz_maritime_watch_telegram.txt') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Dedicated Telegram route secrets missing; refusing fallback")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}")
+
+          text = pathlib.Path("out/hormuz_maritime_watch_telegram.txt").read_text(encoding="utf-8").strip()
+
+          def split_message(value, limit=3900):
+              chunks, current = [], ""
+              for paragraph in value.split("\n\n"):
+                  candidate = paragraph if not current else current + "\n\n" + paragraph
+                  if len(candidate) <= limit:
+                      current = candidate
+                      continue
+                  if current:
+                      chunks.append(current)
+                      current = ""
+                  while len(paragraph) > limit:
+                      cut = paragraph.rfind("\n", 0, limit)
+                      if cut < 1:
+                          cut = limit
+                      chunks.append(paragraph[:cut])
+                      paragraph = paragraph[cut:].lstrip()
+                  current = paragraph
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          ids = []
+          for idx, chunk in enumerate(split_message(text), start=1):
+              if idx > 1:
+                  chunk = f"[호르무즈 해상보안 경보 계속 {idx}]\n\n{chunk}"
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  result = json.loads(r.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError("Telegram rejected Hormuz alert")
+              msg_id = (result.get("result") or {}).get("message_id")
+              if msg_id is None:
+                  raise RuntimeError("Telegram response missing message_id")
+              ids.append(msg_id)
+
+          confirmed = {
+              "status": "confirmed",
+              "lane": "hormuz_maritime_security",
+              "bot_username": actual,
+              "route_secret": "GLOBAL_RATES_TELEGRAM_*",
+              "message_ids": ids,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/hormuz_maritime_watch_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_count={len(ids)}")
+          PY
+
+      - name: Persist baseline or confirmed state
+        if: always()
+        run: |
+          if [ -f out/hormuz_maritime_watch_pending_state.json ]; then
+            if [ ! -f out/hormuz_maritime_watch_telegram.txt ] || [ -f out/hormuz_maritime_watch_telegram_confirmed.json ]; then
+              mkdir -p data
+              cp out/hormuz_maritime_watch_pending_state.json data/hormuz_maritime_watch_state.json
+            else
+              echo "Alert existed but Telegram delivery was not confirmed; state intentionally not advanced."
+            fi
+          fi
+
+      - name: Commit watcher state
+        if: always() && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/hormuz_maritime_watch_state.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Hormuz watcher state unchanged"
+          else
+            git commit -m "Update Hormuz maritime watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hormuz-maritime-watch-${{ github.run_id }}
+          path: |
+            out/hormuz_maritime_watch_status.md
+            out/hormuz_maritime_watch_debug.json
+            out/hormuz_maritime_watch_pending_state.json
+            out/hormuz_maritime_watch_telegram.txt
+            out/hormuz_maritime_watch_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
