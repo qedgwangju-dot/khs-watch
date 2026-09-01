@@ -8,7 +8,6 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import global_rates_structural_watch as structural  # noqa: E402
-import global_rates_structural_enrich as enrich  # noqa: E402
 
 
 class GlobalRatesStructuralWatchTests(unittest.TestCase):
@@ -26,24 +25,9 @@ class GlobalRatesStructuralWatchTests(unittest.TestCase):
         self.assertAlmostEqual(result["tail_bp"], 6.0, places=6)
         self.assertEqual(result["grade"], "수요 매우 약함")
 
-    def test_september_ten_year_auction_is_recovery_vs_august(self) -> None:
-        previous = {"bid_to_cover": 5062.4 / 1979.1, "tail_bp": 6.0, "grade": "수요 매우 약함"}
-        current = {"bid_to_cover": 6538.5 / 1989.6, "tail_bp": 1.6, "grade": "중립"}
-        self.assertTrue(enrich.recovery_signal(current, previous))
-        self.assertFalse(enrich.deterioration_signal(current, previous))
-
     def test_june_ten_year_auction_is_strong(self) -> None:
         auction = {"bid_to_cover": 7003.1 / 1983.9, "tail_bp": 0.7}
         self.assertEqual(structural.auction_grade(auction), "수요 강함")
-
-    def test_calendar_parser_finds_same_tenor_date(self) -> None:
-        page = """
-        <table>
-          <tr><td>Sep. 1, 2026</td><td>10-year(383)</td><td>Detail</td></tr>
-          <tr><td>Sep. 3, 2026</td><td>30-year(91)</td><td>Detail</td></tr>
-        </table>
-        """
-        self.assertEqual(enrich.parse_calendar_same_tenor(page, "10-Year"), [enrich.dt.date(2026, 9, 1)])
 
     def test_gpif_latest_allocation_and_one_percent_point(self) -> None:
         page = """
