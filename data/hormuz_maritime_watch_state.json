@@ -103,10 +103,17 @@
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPbTdiazZLdjJmZFUzaDZwUHpSV3R0b2lubVJLcXdtNmk1WEZjbU96MjJveEl4dl9FWjl3V3kwTVQtY0N5WnhINS1PSXoyNUNtYXpub0EwWVBCZklqaTJPTXN0QmxaTWJ3b284NWx4ckg4S3NONkl4WEVnSzdaaV94cUJ0YXI3UlZHV3RwZ1B2am8xMHc2VnV1TTBjcExjSEg1R2d0RWhuUkY?oc=5",
       "published_utc": "2026-09-01T12:31:35Z",
       "first_seen_kst": "2026-09-01T23:39:26+09:00"
+    },
+    "fd844fbff51d8e2328d9": {
+      "source": "Lloyd's List",
+      "title": "Two tankers hit within minutes of each other in Strait of Hormuz - Lloyd's List",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPSTZZWkNLM3MyOUJnTGZsTE9JcFZ3eGlqajIwbkFveHVxY3ZRakNFMGhNeU5EMGQtWEJuVDZ0bGozUTJNNnpSQUQxUHhKOW1oV2lqY1hZWFQ3R2xEQnlyN2lSeC16eTA2LUdxU2lpYlhhQ0I5OGVBMU94N0paTl9lUW5jQzBLN1ZQTFBJdVNIV3BkempqT3pPUUNmUEVYMG1XdGFZ?oc=5",
+      "published_utc": "2026-09-01T10:48:17Z",
+      "first_seen_kst": "2026-09-01T23:57:27+09:00"
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-09-01T23:39:26+09:00",
+  "last_checked_kst": "2026-09-01T23:57:27+09:00",
   "confirmed_events": {
     "news:2026-08-30:strike:hormuz:1": {
       "baseline": true,
@@ -118,6 +125,7 @@
       "location": "hormuz",
       "projectile_count": 3,
       "sources": [
+        "Radio Free Europe/Radio Liberty",
         "Anadolu Ajansı",
         "Arab News"
       ],
@@ -141,6 +149,7 @@
       "projectile_count": null,
       "sources": [
         "Reuters",
+        "Lloyd's List",
         "Arab News",
         "Radio Free Europe/Radio Liberty"
       ],
