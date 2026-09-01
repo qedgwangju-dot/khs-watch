@@ -1,0 +1,34 @@
+{
+  "treasury_date": "2026-08-31",
+  "pretightening_active": false,
+  "pretightening": {
+    "date": "2026-08-31",
+    "base_date": "2026-08-24",
+    "active": false,
+    "d2_bp": 9.999999999999964,
+    "d2s10s_bp": -4.999999999999986,
+    "d2s30s_bp": -8.000000000000014,
+    "avg_curve_bp": -6.5,
+    "verdict": "시장 선긴축 기준 미충족"
+  },
+  "macro": {
+    "employment_period": "2026-07",
+    "payroll_change_k": -23.0,
+    "unemployment_rate": 4.1,
+    "unemployment_change_pp": -0.10000000000000053,
+    "cpi_period": "2026-07",
+    "core_cpi_mom": 0.2154345141564873,
+    "employment_soft": true,
+    "inflation_cooling": false
+  },
+  "pce": {
+    "regime": "3%대 고착 — 추가긴축 논리 유지",
+    "core_yoy": 3.3441430040338282,
+    "core_6m_ann": 3.4594071030808804,
+    "sticky": true
+  },
+  "last_seen_fomc_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
+  "pending_fomc": null,
+  "last_credibility_completed": false,
+  "updated_at_utc": "2026-09-01T15:11:21.528856+00:00"
+}
