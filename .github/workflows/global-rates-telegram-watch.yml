@@ -8,6 +8,7 @@ on:
       - "scripts/global_rates_freshness_guard.py"
       - "scripts/global_rates_structural_watch.py"
       - "scripts/yen_carry_confirmation.py"
+      - "scripts/yen_carry_market_data_v2.py"
       - "scripts/global_rates_telegram_formatter.py"
       - "scripts/global_rates_telegram_htmlify.py"
       - "tests/test_global_rates_structural_watch.py"
@@ -16,7 +17,6 @@ on:
       - "data/global_rates_structural_state.json"
       - "data/global_rates_telegram_state.json"
   schedule:
-    # Official sources are daily/event driven; 15-minute polling catches publications quickly.
     - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
@@ -38,7 +38,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
-      # Never let a branch push send a live Telegram message. Scheduled/manual main runs only.
       TELEGRAM_DRY_RUN: ${{ github.ref != 'refs/heads/main' && 'true' || 'false' }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
     steps:
@@ -58,6 +57,7 @@ jobs:
           python -m py_compile scripts/global_rates_freshness_guard.py
           python -m py_compile scripts/global_rates_structural_watch.py
           python -m py_compile scripts/yen_carry_confirmation.py
+          python -m py_compile scripts/yen_carry_market_data_v2.py
           python -m py_compile scripts/global_rates_telegram_formatter.py
           python -m py_compile scripts/global_rates_telegram_htmlify.py
           PYTHONPATH=scripts python -m unittest tests/test_global_rates_structural_watch.py -v
@@ -67,7 +67,6 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-
           text = Path(".github/workflows/global-rates-telegram-watch.yml").read_text(encoding="utf-8")
           required = (
               'EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"',
@@ -85,7 +84,7 @@ jobs:
       - name: Check official rate sources
         run: python scripts/global_rates_watch.py
 
-      - name: Enforce source-date freshness and alignment
+      - name: Enforce source-date freshness and live FX
         if: always()
         run: python scripts/global_rates_freshness_guard.py
 
@@ -96,6 +95,18 @@ jobs:
       - name: Check yen carry confirmation signals
         if: always()
         run: python scripts/yen_carry_confirmation.py
+
+      - name: Recheck official rate sources immediately before report
+        if: always()
+        run: python scripts/global_rates_watch.py
+
+      - name: Recheck source-date alignment and current USDJPY immediately before report
+        if: always()
+        run: python scripts/global_rates_freshness_guard.py
+
+      - name: Recheck structural sources immediately before report
+        if: always()
+        run: python scripts/global_rates_structural_watch.py
 
       - name: Build concise Telegram report
         if: always()
@@ -126,7 +137,10 @@ jobs:
           import json, pathlib
           x = json.loads(pathlib.Path("out/global_rates_freshness.json").read_text(encoding="utf-8"))
           print(f"- 미·일 2년물 동일 기준일: {x.get('same_2y_date')} / JGB {x.get('jgb2_date')} / UST {x.get('ust2_date')}")
-          print(f"- USD/JPY 신호 사용 가능: {x.get('fx_signal_eligible')} / 기준일 {x.get('usdjpy_date')} / 최신 금리 기준일 {x.get('latest_rate_date')}")
+          print(f"- USD/JPY 현재 신호 사용 가능: {x.get('live_fx_signal_eligible')} / 관측 {x.get('live_fx_timestamp_utc')} / 지연 {x.get('live_fx_age_seconds')}초")
+          print(f"- FRED H.10 USD/JPY 참고값: {x.get('fred_usdjpy_reference')} / 기준일 {x.get('fred_usdjpy_date')}")
+          if x.get('live_fx_error'):
+              print(f"- USD/JPY 현재값 오류: {x.get('live_fx_error')}")
           PY
           fi
           if [ -f out/global_rates_structural.json ]; then
