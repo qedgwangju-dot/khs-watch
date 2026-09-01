@@ -15,8 +15,9 @@ watch = v6.watch
 _original_add_event = watch.add_event
 _original_fetch_flow = watch.fetch_kospi_foreign_flow
 
-KRX_FLOW_URL = "https://data.krx.co.kr/contents/MDC/MDI/outerLoader/index.cmd?screenId=MDCSTAT022"
+NAVER_FLOW_URL = "https://finance.naver.com/sise/investorDealTrendDay.naver"
 NAVER_KOSPI_PRICE_URL = "https://m.stock.naver.com/api/index/KOSPI/price?pageSize=5&page=1"
+KRX_FLOW_PAGE = "https://data.krx.co.kr/contents/MDC/MDI/outerLoader/index.cmd?screenId=MDCSTAT022"
 
 
 def _fmt_amount(value_krw: int) -> str:
@@ -39,21 +40,16 @@ def _phase(now: dt.datetime) -> str:
     if now.weekday() >= 5:
         return "최근 거래일"
     if now.time() >= dt.time(18, 10):
-        return "최종 재조회"
+        return "마감 후 재조회"
     if now.time() >= dt.time(15, 45):
-        return "정규장 마감"
-    return "장중 잠정"
+        return "정규장 마감 확인"
+    return "장중 참고"
 
 
 def fetch_flow(now: dt.datetime) -> dict[str, Any]:
     flow = _original_fetch_flow(now)
     flow["phase"] = _phase(now)
-    flow["finality"] = (
-        "KRX 공식 최종 매매내역 제공시각(18시 이후)을 지난 뒤 재조회"
-        if now.weekday() < 5 and now.time() >= dt.time(18, 10)
-        else "정규장 마감값" if now.weekday() < 5 and now.time() >= dt.time(15, 45)
-        else "장중 잠정값"
-    )
+    flow["source_note"] = "네이버 투자자별 매매동향 재조회"
     return flow
 
 
@@ -72,15 +68,13 @@ def _rewrite_foreign_text(text: str, phase: str) -> str:
 def add_event_close_first(events, key: str, text: str, source: str) -> None:
     now = dt.datetime.now(watch.KST)
     if key.startswith("foreign1d_") or key.startswith("foreign3d_"):
-        # 투자 판단용 외국인 수급 경보는 장중 잠정치로 발송하지 않는다.
+        # 사용자 기준: 장중 잠정 수급은 투자 경보로 보내지 않고, 정규장 마감 뒤에만 판정한다.
         if now.weekday() < 5 and now.time() < dt.time(15, 45):
             return
         phase = _phase(now)
         text = _rewrite_foreign_text(text, phase)
-        # 정규장 마감과 18:10 이후 최종 재조회는 서로 다른 단계로 한 번씩만 기록한다.
-        suffix = "final" if phase == "최종 재조회" else "close"
+        suffix = "postclose" if phase == "마감 후 재조회" else "close"
         key = f"{key}:{suffix}"
-        source = KRX_FLOW_URL if phase == "최종 재조회" else source
     _original_add_event(events, key, text, source)
 
 
@@ -112,7 +106,7 @@ def _thresholds(flow: dict[str, Any]) -> dict[str, bool]:
     }
 
 
-def _write_final_correction_if_needed(old: dict, pending: dict) -> None:
+def _write_postclose_correction_if_needed(old: dict, pending: dict) -> None:
     now = dt.datetime.now(watch.KST)
     if now.weekday() >= 5 or now.time() < dt.time(18, 10):
         return
@@ -124,20 +118,20 @@ def _write_final_correction_if_needed(old: dict, pending: dict) -> None:
     new_state = _thresholds(new_flow)
     lines = []
     if old_state["foreign1d_neg"] and not new_state["foreign1d_neg"]:
-        lines.append(f"• 1일 수급: 마감 순매도 {_fmt_amount(int(old_flow['daily_krw'])).lstrip('-')} → 최종 재조회 {_fmt_amount(int(new_flow['daily_krw'])).lstrip('-')} — 1조원 기준 이탈")
+        lines.append(f"• 1일 수급: 정규장 마감 순매도 {_fmt_amount(int(old_flow['daily_krw'])).lstrip('-')} → 마감 후 재조회 {_fmt_amount(int(new_flow['daily_krw'])).lstrip('-')} — 1조원 기준 이탈")
     elif old_state["foreign1d_pos"] and not new_state["foreign1d_pos"]:
-        lines.append(f"• 1일 수급: 마감 순매수 {_fmt_amount(int(old_flow['daily_krw'])).lstrip('+')} → 최종 재조회 {_fmt_amount(int(new_flow['daily_krw'])).lstrip('+')} — 1조원 기준 이탈")
+        lines.append(f"• 1일 수급: 정규장 마감 순매수 {_fmt_amount(int(old_flow['daily_krw'])).lstrip('+')} → 마감 후 재조회 {_fmt_amount(int(new_flow['daily_krw'])).lstrip('+')} — 1조원 기준 이탈")
     if old_state["foreign3d_neg"] and not new_state["foreign3d_neg"]:
-        lines.append(f"• 3거래일: 마감 누적 순매도 {_fmt_amount(int(old_flow['three_day_krw'])).lstrip('-')} → 최종 재조회 {_fmt_amount(int(new_flow['three_day_krw'])).lstrip('-')} — 3조원 기준 이탈")
+        lines.append(f"• 3거래일: 정규장 마감 누적 순매도 {_fmt_amount(int(old_flow['three_day_krw'])).lstrip('-')} → 마감 후 재조회 {_fmt_amount(int(new_flow['three_day_krw'])).lstrip('-')} — 3조원 기준 이탈")
     elif old_state["foreign3d_pos"] and not new_state["foreign3d_pos"]:
-        lines.append(f"• 3거래일: 마감 누적 순매수 {_fmt_amount(int(old_flow['three_day_krw'])).lstrip('+')} → 최종 재조회 {_fmt_amount(int(new_flow['three_day_krw'])).lstrip('+')} — 3조원 기준 이탈")
+        lines.append(f"• 3거래일: 정규장 마감 누적 순매수 {_fmt_amount(int(old_flow['three_day_krw'])).lstrip('+')} → 마감 후 재조회 {_fmt_amount(int(new_flow['three_day_krw'])).lstrip('+')} — 3조원 기준 이탈")
     if not lines:
         return
     idx = _fetch_kospi_close()
-    msg = ["🔄 <b>KOSPI 외국인 수급 최종 정정</b>", f"• 조회: {now:%Y-%m-%d %H:%M} KST"]
+    msg = ["🔄 <b>KOSPI 외국인 수급 마감 후 정정</b>", f"• 조회: {now:%Y-%m-%d %H:%M} KST"]
     if idx:
         msg.append(f"• KOSPI 종가: {idx['close']:,.2f} ({idx['change_pct']:+.2f}%)")
-    msg += ["", *lines, "", "• KRX는 당일자 최종 매매내역을 오후 6시 이후 제공합니다. 따라서 최종 판정은 18:10 이후 재조회값을 우선합니다.", f'• <a href="{html.escape(KRX_FLOW_URL, quote=True)}">KRX 투자자별 거래실적</a>']
+    msg += ["", *lines, "", "• 장중 잠정치는 경보에 사용하지 않습니다. 정규장 마감 이후 값을 우선하고, 18:10 이후 한 번 더 재조회해 변동 시 정정합니다.", f'• <a href="{html.escape(KRX_FLOW_PAGE, quote=True)}">KRX 투자자별 거래실적 페이지</a>']
     watch.ALERT_PATH.write_text("\n".join(msg) + "\n", encoding="utf-8")
 
 
@@ -157,8 +151,6 @@ def _append_close_context(pending: dict) -> None:
     phase = _phase(now)
     lines = text.splitlines()
     lines.insert(2 if len(lines) >= 2 else len(lines), f"• {phase} KOSPI 종가: {idx['close']:,.2f} ({idx['change_pct']:+.2f}%)")
-    if phase == "최종 재조회":
-        lines.insert(3 if len(lines) >= 3 else len(lines), "• 최종 판정 기준: KRX 공식 최종 매매내역 제공시각(18시 이후)을 지난 뒤 재조회")
     watch.ALERT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -173,11 +165,11 @@ def main() -> int:
     if watch.PENDING_PATH.exists():
         try:
             pending = json.loads(watch.PENDING_PATH.read_text(encoding="utf-8"))
-            _write_final_correction_if_needed(old, pending)
+            _write_postclose_correction_if_needed(old, pending)
             _append_close_context(pending)
         except Exception as exc:
             with watch.ERROR_PATH.open("a", encoding="utf-8") as f:
-                f.write(f"마감/최종 수급 확인 실패: {type(exc).__name__}: {exc}\n")
+                f.write(f"마감/재조회 수급 확인 실패: {type(exc).__name__}: {exc}\n")
     return rc
 
 
