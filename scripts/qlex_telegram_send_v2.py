@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import qlex_telegram_send as base
-from bio_korean_guard import ensure_korean_text
+from bio_korean_guard_strict import ensure_korean_text
 
 _original_normalize = base.normalize_alert_language
 
