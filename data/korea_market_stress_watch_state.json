@@ -1,23 +1,23 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-01T22:55:18+09:00",
+  "updated_at_kst": "2026-09-02T02:34:52+09:00",
   "seen_event_keys": [
-    "capex:13cbe150930d23d8",
     "policy_spread:2026-08-27:0.75",
     "foreign1d_neg:2026-08-31",
-    "foreign3d_neg:2026-08-27"
+    "foreign3d_neg:2026-08-27",
+    "capex:13cbe150930d23d8"
   ],
   "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-09-01T22:55:18+09:00",
+    "checked_at_kst": "2026-09-02T02:34:52+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-01",
-      "value": 1371.7,
+      "value": 1374.2,
       "prev_date": "2026-08-31",
       "prev_value": 1369.5,
-      "change_krw": 2.2,
-      "change_pct": 0.1606,
+      "change_krw": 4.7,
+      "change_pct": 0.3432,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
@@ -42,17 +42,11 @@
       "three_day_eok": -19927.0,
       "daily_krw": -496800000000,
       "three_day_krw": -1992700000000,
-      "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260901&sosok=01",
-      "phase": "최종 재조회",
-      "finality": "KRX 공식 최종 매매내역 제공시각(18시 이후)을 지난 뒤 재조회"
+      "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260902&sosok=01",
+      "phase": "장중 잠정",
+      "finality": "장중 잠정값"
     },
     "global_wave_news": [],
-    "hyperscaler_capex_news": [],
-    "kospi_close": {
-      "date": "2026-09-01",
-      "close": 6835.8,
-      "change_pct": 0.23,
-      "source": "https://m.stock.naver.com/api/index/KOSPI/price?pageSize=5&page=1"
-    }
+    "hyperscaler_capex_news": []
   }
 }
