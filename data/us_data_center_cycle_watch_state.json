@@ -11,7 +11,7 @@
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
     "reported_mom_pct": 6.2,
     "reported_yoy_pct": 57.2,
-    "retrieved_at_utc": "2026-09-01T15:05:31.075237+00:00",
+    "retrieved_at_utc": "2026-09-01T15:25:27.628120+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
     "year_ago_saar_musd": 47810
@@ -48,7 +48,13 @@
     "url": "https://www.construction.com/construction-starts-rebound-july-2026/",
     "utility_change_pct": 44.7
   },
-  "format_version": 3,
-  "updated_at_utc": "2026-09-01T15:05:30.455511+00:00",
+  "format_version": 4,
+  "fx": {
+    "basis_kst": "2026-09-02 00:25 KST",
+    "source": "Yahoo Finance USD/KRW",
+    "source_type": "실시간 시장환율",
+    "usdkrw": 1372.28
+  },
+  "updated_at_utc": "2026-09-01T15:25:27.328745+00:00",
   "watch": "US data center construction starts vs spending"
 }
