@@ -8,7 +8,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT_PATH = ROOT / "out" / "crypto_liquidity_watch_telegram.txt"
 
 
-def format_trigger(line: str) -> list[str]:
+def format_trigger(line: str, is_partial: bool = False) -> list[str]:
     text = line.removeprefix("• ").strip()
 
     if text.startswith("BTC 현물 ETF 5거래일 구간 이동:"):
@@ -16,9 +16,11 @@ def format_trigger(line: str) -> list[str]:
         if " / 이전5 " in body:
             recent, previous = body.split(" / 이전5 ", 1)
             recent = recent.removeprefix("최근5 ")
+            heading = "• <b>5거래일 구간 이동 · 잠정</b>" if is_partial else "• <b>5거래일 구간 이동</b>"
+            recent_label = "최근5(잠정)" if is_partial else "최근5"
             return [
-                "• <b>5거래일 구간 이동</b>",
-                f"  최근5  {recent}",
+                heading,
+                f"  {recent_label}  {recent}",
                 f"  이전5  {previous}",
             ]
 
@@ -63,6 +65,7 @@ def format_alert(text: str) -> str:
     out: list[str] = []
     in_trigger_block = False
     inserted_trigger_heading = False
+    is_partial = "잠정 집계" in text
 
     for line in raw_lines:
         stripped = line.strip()
@@ -83,7 +86,7 @@ def format_alert(text: str) -> str:
                     out.append("")
                 out.append("<b>핵심 변화</b>")
                 inserted_trigger_heading = True
-            out.extend(format_trigger(stripped))
+            out.extend(format_trigger(stripped, is_partial=is_partial))
             continue
 
         if stripped.startswith("미 국채 — 미 재무부 공식 수익률곡선 기준일"):
@@ -120,7 +123,10 @@ def format_alert(text: str) -> str:
             m = re.match(r"(\d{4}-\d{2}-\d{2})\s+(.+?)\s+\((잠정 집계|현재 집계 완료[^,)]*)(.*)\)$", body)
             if m:
                 out.append(f"• <b>최신 {m.group(2)}</b>")
-                out.append(f"  {m.group(1)} · {m.group(3)}{m.group(4)}")
+                status = m.group(3)
+                if status == "잠정 집계":
+                    status += " · 일부 ETF 미보고"
+                out.append(f"  {m.group(1)} · {status}{m.group(4)}")
             else:
                 out.append(f"• <b>최신</b> {body}")
             continue
@@ -130,11 +136,13 @@ def format_alert(text: str) -> str:
             continue
 
         if stripped.startswith("• 전일 대비:"):
-            out.append(f"• <b>전일 대비</b>  {stripped.split(':', 1)[1].strip()}")
+            label = "전일 대비 · 잠정" if is_partial else "전일 대비"
+            out.append(f"• <b>{label}</b>  {stripped.split(':', 1)[1].strip()}")
             continue
 
         if stripped.startswith("• 최근 5거래일("):
-            out.append(f"• <b>최근 5거래일</b> {stripped.split('):', 1)[0].split('(', 1)[1]} · {stripped.split('):', 1)[1].strip()}")
+            label = "최근 5거래일 · 잠정" if is_partial else "최근 5거래일"
+            out.append(f"• <b>{label}</b> {stripped.split('):', 1)[0].split('(', 1)[1]} · {stripped.split('):', 1)[1].strip()}")
             continue
 
         if stripped.startswith("• 이전 5거래일("):
@@ -142,15 +150,17 @@ def format_alert(text: str) -> str:
             continue
 
         if stripped.startswith("• 5거래일 구간 대비:"):
-            out.append(f"• <b>5거래일 구간 대비</b>  {stripped.split(':', 1)[1].strip()}")
+            label = "5거래일 구간 대비 · 잠정" if is_partial else "5거래일 구간 대비"
+            out.append(f"• <b>{label}</b>  {stripped.split(':', 1)[1].strip()}")
             continue
 
         if stripped.startswith("• 5거래일 변화율:"):
-            out.append(f"• 5거래일 변화율  {stripped.split(':', 1)[1].strip()}")
+            label = "5거래일 변화율 · 잠정" if is_partial else "5거래일 변화율"
+            out.append(f"• {label}  {stripped.split(':', 1)[1].strip()}")
             continue
 
         if stripped.startswith("※ ") and "미보고" in stripped:
-            out.append(f"<i>{stripped}</i>")
+            out.append(stripped)
             continue
 
         if stripped.startswith("판단:"):
@@ -179,7 +189,6 @@ def format_alert(text: str) -> str:
 
         out.append(line)
 
-    # Collapse excessive blank lines while preserving section spacing.
     compact: list[str] = []
     for line in out:
         if line == "" and compact and compact[-1] == "":
