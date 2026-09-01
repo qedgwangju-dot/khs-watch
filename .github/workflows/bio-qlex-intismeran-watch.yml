@@ -1,4 +1,4 @@
-name: Bio QLEX, Intismeran & Jemperli Telegram Watch
+name: Bio QLEX, Intismeran, Jemperli & Enhertu Telegram Watch
 
 on:
   push:
@@ -10,6 +10,7 @@ on:
       - "scripts/qlex_telegram_send.py"
       - "scripts/intismeran_structured_telegram_send.py"
       - "scripts/jemperli_altb4_watch.py"
+      - "scripts/enhertu_altb4_watch.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -40,7 +41,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run QLEX, Intismeran and Jemperli bio watch
+      - name: Run QLEX, Intismeran, Jemperli and Enhertu bio watch
         run: python scripts/bio_single_runner.py
 
       - name: Publish bio watch status
@@ -58,11 +59,11 @@ jobs:
         run: |
           git config user.name "bio-watch[bot]"
           git config user.email "bio-watch[bot]@users.noreply.github.com"
-          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json data/jemperli_altb4_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
+          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json data/jemperli_altb4_watch_state.json data/enhertu_altb4_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Bio watcher states unchanged"
           else
-            git commit -m "Update QLEX and Intismeran bio watch states"
+            git commit -m "Update bio partner product watch states"
             for attempt in 1 2 3; do
               if git pull --rebase origin main && git push; then
                 exit 0
@@ -77,7 +78,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bio-qlex-intismeran-watch-${{ github.run_id }}
+          name: bio-partner-products-${{ github.run_id }}
           path: |
             data/bio_watch_heartbeat.json
             out/qlex_sc_conversion_status.md
@@ -91,5 +92,9 @@ jobs:
             out/jemperli_altb4_alert.md
             out/jemperli_altb4_watch_state_pending.json
             out/jemperli_altb4_errors.log
+            out/enhertu_altb4_status.md
+            out/enhertu_altb4_alert.md
+            out/enhertu_altb4_watch_state_pending.json
+            out/enhertu_altb4_errors.log
           if-no-files-found: ignore
           retention-days: 14
