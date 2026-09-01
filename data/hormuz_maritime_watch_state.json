@@ -110,10 +110,38 @@
       "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPSTZZWkNLM3MyOUJnTGZsTE9JcFZ3eGlqajIwbkFveHVxY3ZRakNFMGhNeU5EMGQtWEJuVDZ0bGozUTJNNnpSQUQxUHhKOW1oV2lqY1hZWFQ3R2xEQnlyN2lSeC16eTA2LUdxU2lpYlhhQ0I5OGVBMU94N0paTl9lUW5jQzBLN1ZQTFBJdVNIV3BkempqT3pPUUNmUEVYMG1XdGFZ?oc=5",
       "published_utc": "2026-09-01T10:48:17Z",
       "first_seen_kst": "2026-09-01T23:57:27+09:00"
+    },
+    "d6da1a40bca370330a9e": {
+      "source": "Arab News",
+      "title": "Two Tankers Struck by Unknown Projectiles in Strait of Hormuz Amid Rising Tensions - Arab News",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOUGtNM0ZyZXRlWGdUNmNGQzlvOEVKSHJPNmctUWxJeGpjZVg3QkJhOXFNRFNJZ0RzMWZhd3RBa0pRaGRoaGlWQWdzTWk4XzVwd3Z6WWVvekJRUnNUa2gtcDNjc2NaNl9kdzNXRkhxeFpBdGJzakltaDgyOEFFM0JfemVZSXZqZjFHOV95OGpCM2NRQUh0a3ZVQ25UQkMwZE5GTHM3LVo2R0RFdndGVjBTbHlEekNCM3JxVUlnUjVRYXpwWEk0LXc?oc=5",
+      "published_utc": "2026-09-01T15:56:18Z",
+      "first_seen_kst": "2026-09-02T05:58:00+09:00"
+    },
+    "df14be9035ad186d3311": {
+      "source": "Anadolu Ajansı",
+      "title": "3 projectiles struck tanker exiting Strait of Hormuz off Oman: UK maritime agency - Anadolu Ajansı",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNSENzQjg0MXZpdTA4S2NaeVFWbGVYRFdJN2RWdzJSdS1FdVBCaTJqRnJwZ0NnVzNiVVRUaTBzMDN1Z3V3Q2F4bkUyV0h1OXREcDBwWmNRdFlNZ2lYTlNKM0hzZ1liN01qR016dERXZ1RsSkVfX3VidFNNd1NlQkdYazVXMjB1ZkliVUZRMlNVSUUyYjNYemViTlZNejRXaGJqNXU5am5OWmpySXdPT2FUTmZCMERSbEhLWmFfY29PUm9sNkVTNTBCWjljOGE?oc=5",
+      "published_utc": "2026-08-31T23:36:27Z",
+      "first_seen_kst": "2026-09-02T05:58:00+09:00"
+    },
+    "f10695635b61e315366b": {
+      "source": "Arab News",
+      "title": "Iran’s Revolutionary Guards say supertanker struck by mines in Strait of Hormuz - Arab News",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE4wd1V6TTJRUW1GZ01VWGZ0RHNaY2dCLUVObGR5WmZxZ1FCRjBxSGhweGtCQUVhZmFjVXM4M0tXRngzVGVGY040ZUdPREtfX0dQSXQwbjlQbG5LNmN5UHc?oc=5",
+      "published_utc": "2026-08-31T05:19:37Z",
+      "first_seen_kst": "2026-09-02T05:58:00+09:00"
+    },
+    "f7c04bacf087ddeaed34": {
+      "source": "The Maritime Executive",
+      "title": "Iran Increases Hormuz Pressure with Nearly Simultaneous Attacks on Tankers - The Maritime Executive",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQZ1QzNXVndV95S0hId3VLd3BLdUllZGNxTWhadVE2Vm9sT1lrZ0dHVVlUelNHY2puWnRRSFBZQkhQWnA4N1BOamN6UHlHRFhNQ1lzcGhjemU5dW5PWDhnOXZCWVFiOEJ3UTZ1dnU2bzhxVzdQUzBYNkszZ2tRWEVfRjZvOVlhM1VZS1lkWE0ySUhGT0hfaWpCZG53RHZPTjVLNlFyTllBUnB6dEhSUlptZjhpbw?oc=5",
+      "published_utc": "2026-09-01T15:57:59Z",
+      "first_seen_kst": "2026-09-02T05:58:00+09:00"
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-09-02T02:59:12+09:00",
+  "last_checked_kst": "2026-09-02T05:58:00+09:00",
   "confirmed_events": {
     "news:2026-08-30:strike:hormuz:1": {
       "warning": null,
@@ -132,7 +160,6 @@
       "location": "hormuz",
       "projectile_count": 3,
       "sources": [
-        "Radio Free Europe/Radio Liberty",
         "Anadolu Ajansı",
         "Arab News"
       ],
@@ -156,8 +183,9 @@
       "projectile_count": null,
       "sources": [
         "Reuters",
-        "Arab News",
-        "Radio Free Europe/Radio Liberty"
+        "The Maritime Executive",
+        "Lloyd's List",
+        "Arab News"
       ],
       "first_seen_kst": "2026-09-01T23:39:26+09:00"
     }
