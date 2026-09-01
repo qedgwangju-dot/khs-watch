@@ -80,7 +80,6 @@ def translate_title_to_korean(title, fallback):
     title = re.sub(r"\s+-\s+[^-]{2,80}$", "", str(title or "")).strip()
     if not title:
         return fallback
-    # 이미 한글이 충분히 들어 있으면 그대로 사용한다.
     if len(re.findall(r"[가-힣]", title)) >= 4:
         return title
     try:
@@ -102,7 +101,6 @@ def translate_title_to_korean(title, fallback):
             return translated
     except Exception:
         pass
-    # 번역 실패 시 영어 원문을 그대로 내보내지 않는다.
     return fallback
 
 
@@ -160,7 +158,7 @@ def readable_official_alert(item, news, update):
             )
     lines.extend([
         "",
-        "<b>주의</b> · ‘unknown/unidentified projectile’은 <b>미상 발사체</b>로 표기하며, 미사일·포탄·드론으로 임의 단정하지 않습니다.",
+        "<b>주의</b> · 원문에서 무기 종류가 특정되지 않은 경우 <b>미상 발사체</b>로 표기하며, 미사일·포탄·드론으로 임의 단정하지 않습니다.",
     ])
     return "\n".join(lines) + "\n"
 
@@ -194,8 +192,8 @@ def readable_cluster_alert(cluster):
         )
     lines.extend([
         "",
-        "<b>판정 기준</b> · UKMTO 직접 원문이 잡히지 않을 때만 복수 독립 출처가 같은 사건을 확인한 경우 보조 경보로 송출",
-        "<b>주의</b> · ‘unknown/unidentified projectile’은 <b>미상 발사체</b>로 유지하며 공격주체·미사일·포탄·드론은 공식 확인 전 단정하지 않습니다.",
+        "<b>판정 기준</b> · UKMTO 직접 원문을 읽지 못한 경우에만 복수 독립 출처가 같은 사건을 확인했을 때 보조 경보로 송출",
+        "<b>주의</b> · 원문에서 무기 종류가 특정되지 않은 경우 <b>미상 발사체</b>로 유지하며 공격주체·미사일·포탄·드론은 공식 확인 전 단정하지 않습니다.",
     ])
     return "\n".join(lines) + "\n"
 
