@@ -11,13 +11,13 @@
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
     "reported_mom_pct": 6.2,
     "reported_yoy_pct": 57.2,
-    "retrieved_at_utc": "2026-09-01T15:25:27.628120+00:00",
+    "retrieved_at_utc": "2026-09-01T15:30:08.523552+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
     "year_ago_saar_musd": 47810
   },
   "dodge": {
-    "article_sha256": "3efc71fd87e9ee02fa7c8d0dd80e3d54250b1c79fe00928f430405c772a308cd",
+    "article_sha256": "93c4cdc0af1559f6060a2579247b3e85faa66d110e85e006b0a5989edac9caf2",
     "commercial_change_pct": 70.0,
     "data_center_mention_count": 6,
     "data_center_projects": [
@@ -26,35 +26,33 @@
         "label_ko": "Project Jupiter Data Center and Microgrid Phase 1 데이터센터 부문"
       },
       {
-        "amount_usd_bn": 12.0,
-        "label_ko": "Micron Semiconductor Mega-Factory Fab 1 – Phase 1"
+        "amount_usd_bn": 4.0,
+        "label_ko": "Amazon STACK Highway 3 Data Center 데이터센터 부문"
+      },
+      {
+        "amount_usd_bn": 2.3,
+        "label_ko": "Project Jupiter Data Center and Microgrid Phase 1 마이크로그리드 부문"
       }
-    ],
-    "data_center_sentences": [
-      "“There is strength in pockets, multifamily within residential, data centers within commercial, energy within non-building, but also verticals struggling to stabilize.” Nonresidential Nonresidential building starts jumped 57.7% in July to a seasonally adjusted annual rate of $917 billion.",
-      "Offices and data centers, more than doubled (+107.9% m/m), offsetting weaker warehouse growth (+1.0% m/m) and declining hotels (-51.5% m/m), parking garages (-19.4% m/m), and retail stores (-9.5% m/m).",
-      "The largest nonresidential building projects to break ground in July were the $12.8 billion data center portion of the Project Jupiter Data Center and Microgrid Phase 1 in Santa Teresa, New Mexico, the $12.0 billion Micron Semiconductor Mega-Factory Fab 1 – Phase 1 in Clay, New York, and the $4.0 billion Amazon STACK Highway 3 Data Center in Benton, Louisiana.",
-      "The largest nonbuilding projects to break ground in July included the $2.4 billion CHSRA New Track & Systems (Two Sections) in Bakersfield, California, the $2.3 billion microgrid portion of the Project Jupiter Data Center and Microgrid Phase 1 in Santa Teresa, New Mexico, and the $1.5 billion Transco Southeast Supply Enhancement Pipeline Expansion-SSE in Chatham, Georgia."
     ],
     "index_url": "https://www.construction.com/category/total-construction-starts/",
     "nonresidential_change_pct": 57.7,
     "office_dc_change_pct": 107.9,
-    "published": "July 21, 2026",
-    "retrieved_at_utc": "2026-08-23T09:43:12.348195+00:00",
+    "published": "2026-08-20T21:00:03+00:00",
+    "retrieved_at_utc": "2026-09-01T15:30:08.884631+00:00",
     "source": "Dodge Construction Network Total Construction Starts",
-    "title": "Construction Starts Rebound 25.6% in July",
+    "title": "Construction Starts Rebound July 2026",
     "total_change_pct": 25.6,
     "total_starts_saar_usd_bn": 1790.0,
     "url": "https://www.construction.com/construction-starts-rebound-july-2026/",
     "utility_change_pct": 44.7
   },
-  "format_version": 4,
+  "format_version": 5,
   "fx": {
-    "basis_kst": "2026-09-02 00:25 KST",
+    "basis_kst": "2026-09-02 00:30 KST",
     "source": "Yahoo Finance USD/KRW",
     "source_type": "실시간 시장환율",
-    "usdkrw": 1372.28
+    "usdkrw": 1371.58
   },
-  "updated_at_utc": "2026-09-01T15:25:27.328745+00:00",
+  "updated_at_utc": "2026-09-01T15:30:07.445832+00:00",
   "watch": "US data center construction starts vs spending"
 }
