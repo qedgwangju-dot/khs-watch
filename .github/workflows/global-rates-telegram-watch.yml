@@ -5,11 +5,13 @@ on:
     paths:
       - ".github/workflows/global-rates-telegram-watch.yml"
       - "scripts/global_rates_watch.py"
+      - "scripts/global_rates_freshness_guard.py"
       - "scripts/global_rates_structural_watch.py"
       - "scripts/yen_carry_confirmation.py"
       - "scripts/global_rates_telegram_formatter.py"
       - "scripts/global_rates_telegram_htmlify.py"
       - "tests/test_global_rates_structural_watch.py"
+      - "tests/test_global_rates_freshness_guard.py"
       - "data/global_rates_watch_state.json"
       - "data/global_rates_structural_state.json"
       - "data/global_rates_telegram_state.json"
@@ -53,11 +55,13 @@ jobs:
       - name: Validate structural signal layer
         run: |
           python -m py_compile scripts/global_rates_watch.py
+          python -m py_compile scripts/global_rates_freshness_guard.py
           python -m py_compile scripts/global_rates_structural_watch.py
           python -m py_compile scripts/yen_carry_confirmation.py
           python -m py_compile scripts/global_rates_telegram_formatter.py
           python -m py_compile scripts/global_rates_telegram_htmlify.py
           PYTHONPATH=scripts python -m unittest tests/test_global_rates_structural_watch.py -v
+          PYTHONPATH=scripts python -m unittest tests/test_global_rates_freshness_guard.py -v
 
       - name: Validate Telegram routing guard
         run: |
@@ -81,6 +85,10 @@ jobs:
       - name: Check official rate sources
         run: python scripts/global_rates_watch.py
 
+      - name: Enforce source-date freshness and alignment
+        if: always()
+        run: python scripts/global_rates_freshness_guard.py
+
       - name: Check JGB demand GPIF and BOJ market structure
         if: always()
         run: python scripts/global_rates_structural_watch.py
@@ -95,6 +103,10 @@ jobs:
           FORCE_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.force_test == true && '1' || '0' }}
         run: python scripts/global_rates_telegram_formatter.py
 
+      - name: Annotate freshness in Telegram report
+        if: always()
+        run: python scripts/global_rates_freshness_guard.py --annotate
+
       - name: Format clickable Telegram source links
         if: hashFiles('out/global_rates_watch_telegram.md') != ''
         run: python scripts/global_rates_telegram_htmlify.py
@@ -106,6 +118,16 @@ jobs:
             cat out/global_rates_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo "글로벌 금리 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/global_rates_freshness.json ]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            echo "# 데이터 최신성 검증" >> "$GITHUB_STEP_SUMMARY"
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          x = json.loads(pathlib.Path("out/global_rates_freshness.json").read_text(encoding="utf-8"))
+          print(f"- 미·일 2년물 동일 기준일: {x.get('same_2y_date')} / JGB {x.get('jgb2_date')} / UST {x.get('ust2_date')}")
+          print(f"- USD/JPY 신호 사용 가능: {x.get('fx_signal_eligible')} / 기준일 {x.get('usdjpy_date')} / 최신 금리 기준일 {x.get('latest_rate_date')}")
+          PY
           fi
           if [ -f out/global_rates_structural.json ]; then
             echo >> "$GITHUB_STEP_SUMMARY"
@@ -280,6 +302,7 @@ jobs:
             out/global_rates_watch_alert.md
             out/global_rates_watch_alert.json
             out/global_rates_watch_pending_state.json
+            out/global_rates_freshness.json
             out/global_rates_structural.json
             out/global_rates_structural_event.json
             out/global_rates_structural_pending_state.json
