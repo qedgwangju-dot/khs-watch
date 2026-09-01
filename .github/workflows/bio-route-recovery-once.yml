@@ -21,4 +21,4 @@ jobs:
           gh workflow run bio-qlex-intismeran-watch.yml --repo "$GITHUB_REPOSITORY" --ref main
           echo "main_bio_watch_dispatched=true"
 
-# immediate recovery trigger 2026-09-01 Enhertu setup
+# immediate recovery trigger 2026-09-01 Enhertu dedupe v2
