@@ -5,12 +5,14 @@ on:
     paths:
       - ".github/workflows/bio-qlex-intismeran-watch.yml"
       - "scripts/bio_single_runner.py"
+      - "scripts/bio_single_runner_v2.py"
       - "scripts/qlex_sc_conversion_watch.py"
       - "scripts/intismeran_qlex_watch.py"
       - "scripts/qlex_telegram_send.py"
       - "scripts/intismeran_structured_telegram_send.py"
       - "scripts/jemperli_altb4_watch.py"
       - "scripts/enhertu_altb4_watch.py"
+      - "scripts/enhertu_altb4_watch_v2.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -42,7 +44,7 @@ jobs:
           python-version: "3.12"
 
       - name: Run QLEX, Intismeran, Jemperli and Enhertu bio watch
-        run: python scripts/bio_single_runner.py
+        run: python scripts/bio_single_runner_v2.py
 
       - name: Publish bio watch status
         if: always()
