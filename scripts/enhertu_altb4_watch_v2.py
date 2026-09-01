@@ -6,6 +6,7 @@ from pathlib import Path
 import enhertu_altb4_watch as base
 
 STATE = Path("data/enhertu_altb4_watch_state.json")
+_ORIGINAL_BUILD_SUMMARY = base.build_item_summary
 
 
 def unified_event_key(item: base.Item) -> str:
@@ -37,6 +38,26 @@ def unified_event_key(item: base.Item) -> str:
     # 매체/공식자료 구분은 사건 중복키에 넣지 않는다.
     # 동일 사건은 AstraZeneca 공식자료를 우선 선택하고 한 번만 송출한다.
     return base.digest(f"enhertu|{indication}|{stage}")
+
+
+def build_item_summary(item: base.Item) -> str:
+    text = _ORIGINAL_BUILD_SUMMARY(item)
+    low = item.full.lower()
+    is_destiny_breast09_1l = (
+        "destiny-breast09" in low
+        or (
+            "pertuzumab" in low
+            and any(x in low for x in ("first-line", "first line", "1st-line"))
+            and "her2" in low
+            and "breast" in low
+        )
+    )
+    if is_destiny_breast09_1l and "임상 핵심 수치 추가 확인 필요" in text:
+        text = text.replace(
+            "임상 핵심 수치 추가 확인 필요",
+            "DESTINY-Breast09 3상 · 질병 진행·사망 위험 44% 감소 · HR 0.56 · 중앙값 PFS 40.7개월 vs THP 26.9개월 · ORR 85.1% vs 78.6%",
+        )
+    return text
 
 
 def migrate_seen_event_keys() -> None:
@@ -72,6 +93,7 @@ def migrate_seen_event_keys() -> None:
 def main() -> int:
     migrate_seen_event_keys()
     base.event_key = unified_event_key
+    base.build_item_summary = build_item_summary
     return base.main()
 
 
