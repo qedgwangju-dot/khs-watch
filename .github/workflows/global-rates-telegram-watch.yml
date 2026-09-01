@@ -5,13 +5,16 @@ on:
     paths:
       - ".github/workflows/global-rates-telegram-watch.yml"
       - "scripts/global_rates_watch.py"
+      - "scripts/global_rates_structural_watch.py"
       - "scripts/yen_carry_confirmation.py"
       - "scripts/global_rates_telegram_formatter.py"
       - "scripts/global_rates_telegram_htmlify.py"
+      - "tests/test_global_rates_structural_watch.py"
       - "data/global_rates_watch_state.json"
+      - "data/global_rates_structural_state.json"
       - "data/global_rates_telegram_state.json"
   schedule:
-    # Official sources are daily; 15-minute polling catches publication changes quickly.
+    # Official sources are daily/event driven; 15-minute polling catches publications quickly.
     - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
@@ -47,6 +50,15 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Validate structural signal layer
+        run: |
+          python -m py_compile scripts/global_rates_watch.py
+          python -m py_compile scripts/global_rates_structural_watch.py
+          python -m py_compile scripts/yen_carry_confirmation.py
+          python -m py_compile scripts/global_rates_telegram_formatter.py
+          python -m py_compile scripts/global_rates_telegram_htmlify.py
+          PYTHONPATH=scripts python -m unittest tests/test_global_rates_structural_watch.py -v
+
       - name: Validate Telegram routing guard
         run: |
           python - <<'PY'
@@ -69,6 +81,10 @@ jobs:
       - name: Check official rate sources
         run: python scripts/global_rates_watch.py
 
+      - name: Check JGB demand GPIF and BOJ market structure
+        if: always()
+        run: python scripts/global_rates_structural_watch.py
+
       - name: Check yen carry confirmation signals
         if: always()
         run: python scripts/yen_carry_confirmation.py
@@ -90,6 +106,19 @@ jobs:
             cat out/global_rates_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo "글로벌 금리 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/global_rates_structural.json ]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            echo "# JGB·GPIF 구조 신호" >> "$GITHUB_STEP_SUMMARY"
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          p = pathlib.Path("out/global_rates_structural.json")
+          x = json.loads(p.read_text(encoding="utf-8"))
+          print(f"- 조회: {x.get('checked_at_kst')}")
+          print(f"- 구조 신호: {x.get('signals')}")
+          if x.get('errors'):
+              print(f"- 부분완료: {' | '.join(x['errors'][:3])}")
+          PY
           fi
           if [ -f out/yen_carry_confirmation.md ]; then
             echo >> "$GITHUB_STEP_SUMMARY"
@@ -211,6 +240,9 @@ jobs:
             if [ -f out/global_rates_watch_pending_state.json ]; then
               cp out/global_rates_watch_pending_state.json data/global_rates_watch_state.json
             fi
+            if [ -f out/global_rates_structural_pending_state.json ]; then
+              cp out/global_rates_structural_pending_state.json data/global_rates_structural_state.json
+            fi
             if [ -f out/global_rates_telegram_pending_state.json ]; then
               cp out/global_rates_telegram_pending_state.json data/global_rates_telegram_state.json
             fi
@@ -223,7 +255,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/global_rates_watch_state.json data/global_rates_telegram_state.json 2>/dev/null || true
+          git add data/global_rates_watch_state.json data/global_rates_structural_state.json data/global_rates_telegram_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Watcher states unchanged"
           else
@@ -248,6 +280,9 @@ jobs:
             out/global_rates_watch_alert.md
             out/global_rates_watch_alert.json
             out/global_rates_watch_pending_state.json
+            out/global_rates_structural.json
+            out/global_rates_structural_event.json
+            out/global_rates_structural_pending_state.json
             out/yen_carry_confirmation.md
             out/yen_carry_confirmation.json
             out/global_rates_watch_telegram.md
