@@ -82,9 +82,32 @@
       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPcHd4Y29xc1p1bjlkZ25wWmQ0OExIMklXeDR5YVgwYkwxd1BIQ3RTSUYzNExnU2xGRHNlM0d3VVBqT3ctS242RVhmTnZYRWJ2VjBfSjllZ1BWV0VJa3FGYmh6cWh0aVV3VlB1TEoxSXFEUjFhRm9jVWlvMnd4eWxBa2l3OVlOU0xtV0RVY1pTRTIwUmNTMXo1eDgxaXgwT0lBbTk3bjBucVQ3Z2dyTmc?oc=5",
       "published_utc": "2026-08-31T09:43:02Z",
       "first_seen_kst": "2026-09-01T19:01:25+09:00"
+    },
+    "84b973e3d14ae541bcb2": {
+      "source": "Arab News",
+      "title": "Tanker struck by three projectiles while sailing out of Strait of Hormuz, UKMTO says - Arab News",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPWUtXelpmMlVqb08wV1hzSG5rQkU1aWMzTnN6dDRKMy1aby13OVk4dXZONnd6N1BVRVo1bHVuNFEtdGZZVGgxWXpKN3I4eWNQd1JBYzFWNzhMYVhmNEpIc0V2SVVoM19uNjgzMDJfMURWVzFXOGd1U0ltREZHWEtjdWR4alI2c1BkUHd4eGFpaUdHRGRHeHZ6NlJ5OEpISF9TMF9KXzFEM1NrcGtZTEhsTk5GdmtFamxYd0xWbjhZaFFabGhaZkhz?oc=5",
+      "published_utc": "2026-08-31T23:09:06Z",
+      "first_seen_kst": "2026-09-01T19:03:05+09:00"
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-09-01T19:01:25+09:00",
-  "confirmed_events": {}
+  "last_checked_kst": "2026-09-01T19:03:05+09:00",
+  "confirmed_events": {
+    "news:2026-08-30:strike:hormuz:1": {
+      "baseline": true,
+      "note": "Known pre-monitor single-projectile tanker incident"
+    },
+    "news:2026-08-31:strike:hormuz:3": {
+      "warning": null,
+      "event_kind": "strike",
+      "location": "hormuz",
+      "projectile_count": 3,
+      "sources": [
+        "Anadolu Ajansı",
+        "Arab News"
+      ],
+      "first_seen_kst": "2026-09-01T19:03:05+09:00"
+    }
+  }
 }
