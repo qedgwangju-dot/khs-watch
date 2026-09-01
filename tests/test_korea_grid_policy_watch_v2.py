@@ -71,3 +71,5 @@ def test_gfm_alert_contains_readable_core_numbers_and_risk():
     assert "개별 PCS·인버터 공급사는 이번 공식자료에서 공개되지 않음" in report
     assert "숨은 역풍" in report
     assert "2026년 6월 24일" in report
+
+# 이 파일 변경은 GitHub Actions에서 v2 검사 파이프라인을 다시 실행하기 위한 트리거이기도 하다.
