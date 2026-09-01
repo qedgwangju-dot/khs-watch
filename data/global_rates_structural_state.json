@@ -36,7 +36,7 @@
       "foreign_bonds": 787980.0,
       "foreign_equities": 811454.0
     },
-    "domestic_bonds_delta_pp": null,
+    "domestic_bonds_delta_pp": 0.0,
     "one_pct_point_krw": 27625554529724.324,
     "one_pct_point_trillion_yen": 3.203732,
     "target_pct": {
@@ -54,7 +54,7 @@
     "total_krw": 2762555452972432.5,
     "total_oku_yen": 3203732.0,
     "url": "https://www.gpif.go.jp/gpif/portfolio.html",
-    "zero_sum_summary": "첫 기준선 저장 — 다음 공식 분기와 제로섬 비교"
+    "zero_sum_summary": "비중 변화 없음"
   },
   "intervention": {
     "amount_krw": 132787075157842.11,
@@ -65,5 +65,5 @@
     "period": "令和8年7月30日～令和8年8月28日",
     "url": "https://www.mof.go.jp/policy/international_policy/reference/feio/data/monthly/20260828.html"
   },
-  "updated_at_kst": "2026-09-01T14:13:53+09:00"
+  "updated_at_kst": "2026-09-01T15:02:48+09:00"
 }
