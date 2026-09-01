@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-01T06:54:27+09:00",
+  "updated_at_kst": "2026-09-01T15:01:24+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -21,54 +21,54 @@
     "five_day_30y_bp": 2.0
   },
   "btc_etf": {
-    "date": "2026-08-28",
-    "total_usd_m": -201.9,
+    "date": "2026-08-31",
+    "total_usd_m": 216.7,
     "status": "complete",
     "reported_funds": 12,
     "missing_funds": 0,
-    "prev_date": "2026-08-27",
-    "prev_total_usd_m": 242.3,
-    "day_change_usd_m": -444.2,
-    "day_change_pct": -183.3,
+    "prev_date": "2026-08-28",
+    "prev_total_usd_m": -201.9,
+    "day_change_usd_m": 418.6,
+    "day_change_pct": 207.3,
     "source_latest_date": "2026-08-31",
-    "source_latest_status": "pending",
-    "pending_date": "2026-08-31",
-    "latest_recomputed_total_usd_m": -201.9,
+    "source_latest_status": "complete",
+    "pending_date": null,
+    "latest_recomputed_total_usd_m": 216.7,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
-    "last5_usd_m": 924.5,
+    "last5_usd_m": 803.6,
     "last5_dates": [
-      "2026-08-24",
       "2026-08-25",
       "2026-08-26",
       "2026-08-27",
-      "2026-08-28"
+      "2026-08-28",
+      "2026-08-31"
     ],
     "last5_values_usd_m": [
-      337.6,
       314.3,
       232.2,
       242.3,
-      -201.9
+      -201.9,
+      216.7
     ],
-    "prev5_usd_m": 1917.8,
+    "prev5_usd_m": 1957.9,
     "prev5_dates": [
-      "2026-08-17",
       "2026-08-18",
       "2026-08-19",
       "2026-08-20",
-      "2026-08-21"
+      "2026-08-21",
+      "2026-08-24"
     ],
     "prev5_values_usd_m": [
-      297.5,
       189.3,
       517.2,
       606.3,
-      307.5
+      307.5,
+      337.6
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": -993.3,
-    "five_day_change_pct": -51.8,
+    "five_day_change_usd_m": -1154.3,
+    "five_day_change_pct": -59.0,
     "five_day_direction": "순자금흐름 악화"
   },
   "sources": {
