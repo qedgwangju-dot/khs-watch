@@ -103,10 +103,10 @@ def bls_macro():
     by_id = {}
     for series in data.get('Results', {}).get('series', []):
         vals = {}
-        for r in series.get('data', []):
-            p = r.get('period', '')
-            if re.fullmatch(r'M(0[1-9]|1[0-2])', p):
-                vals[(int(r['year']), int(p[1:]))] = float(str(r['value']).replace(',', ''))
+        for row in series.get('data', []):
+            period = row.get('period', '')
+            if re.fullmatch(r'M(0[1-9]|1[0-2])', period):
+                vals[(int(row['year']), int(period[1:]))] = float(str(row['value']).replace(',', ''))
         by_id[series['seriesID']] = vals
 
     payroll = by_id.get('CES0000000001', {})
@@ -153,16 +153,13 @@ def save_state(state):
 
 
 def pce_context():
-    p = load_json(PCE_STATE_PATH, {})
-    core_yoy = p.get('core_yoy')
-    core_6m = p.get('core_6m_ann')
-    sticky = False
-    if isinstance(core_yoy, (int, float)) and core_yoy >= 2.8:
-        sticky = True
-    if isinstance(core_6m, (int, float)) and core_6m >= 3.0:
-        sticky = True
+    state = load_json(PCE_STATE_PATH, {})
+    core_yoy = state.get('core_yoy')
+    core_6m = state.get('core_6m_ann')
+    sticky = ((isinstance(core_yoy, (int, float)) and core_yoy >= 2.8) or
+              (isinstance(core_6m, (int, float)) and core_6m >= 3.0))
     return {
-        'regime': p.get('regime', '확인 필요'),
+        'regime': state.get('regime', '확인 필요'),
         'core_yoy': core_yoy,
         'core_6m_ann': core_6m,
         'sticky': sticky,
@@ -173,12 +170,12 @@ def parse_num_token(token: str) -> float:
     token = token.strip().replace('–', '-').replace('—', '-')
     if re.fullmatch(r'\d+(?:\.\d+)?', token):
         return float(token)
-    m = re.fullmatch(r'(\d+)-(\d+)/(\d+)', token)
-    if m:
-        return float(m.group(1)) + float(m.group(2)) / float(m.group(3))
-    m = re.fullmatch(r'(\d+)/(\d+)', token)
-    if m:
-        return float(m.group(1)) / float(m.group(2))
+    match = re.fullmatch(r'(\d+)-(\d+)/(\d+)', token)
+    if match:
+        return float(match.group(1)) + float(match.group(2)) / float(match.group(3))
+    match = re.fullmatch(r'(\d+)/(\d+)', token)
+    if match:
+        return float(match.group(1)) / float(match.group(2))
     raise ValueError(token)
 
 
@@ -187,10 +184,10 @@ def statement_range(text: str):
         r'target range for the federal funds rate (?:at|to)\s+([0-9.]+|\d+-\d+/\d+)\s+to\s+([0-9.]+|\d+-\d+/\d+)\s+percent',
         r'target range[^\n.]{0,120}?([0-9.]+|\d+-\d+/\d+)\s+to\s+([0-9.]+|\d+-\d+/\d+)\s+percent',
     ]
-    for pat in patterns:
-        m = re.search(pat, text, re.I)
-        if m:
-            return parse_num_token(m.group(1)), parse_num_token(m.group(2))
+    for pattern in patterns:
+        match = re.search(pattern, text, re.I)
+        if match:
+            return parse_num_token(match.group(1)), parse_num_token(match.group(2))
     return None
 
 
@@ -198,26 +195,27 @@ def fomc_statements():
     raw, _ = fetch_text(FOMC_CALENDAR_URL)
     hrefs = re.findall(r'href=["\']([^"\']*/newsevents/pressreleases/monetary(\d{8})a\.htm)["\']', raw, flags=re.I)
     found = {}
-    for href, ds in hrefs:
-        url = urllib.parse.urljoin(FOMC_CALENDAR_URL, href)
-        found[ds] = url
+    for href, date_string in hrefs:
+        found[date_string] = urllib.parse.urljoin(FOMC_CALENDAR_URL, href)
     if len(found) < 2:
         raise RuntimeError('FOMC 성명 링크를 2개 이상 찾지 못했습니다.')
-    ordered = sorted(found.items())
-    out = []
-    for ds, url in ordered[-3:]:
-        body, final = fetch_text(url)
+    output = []
+    for date_string, url in sorted(found.items())[-3:]:
+        body, final_url = fetch_text(url)
         text = clean_text(body)
-        rng = statement_range(text)
-        out.append({'date': f'{ds[:4]}-{ds[4:6]}-{ds[6:]}', 'url': final, 'range': rng, 'text': text})
-    return out
+        output.append({
+            'date': f'{date_string[:4]}-{date_string[4:6]}-{date_string[6:]}',
+            'url': final_url,
+            'range': statement_range(text),
+        })
+    return output
 
 
 def get_bot_username():
     if not TOKEN:
         raise RuntimeError('Telegram 토큰이 없습니다.')
-    with urllib.request.urlopen(f'https://api.telegram.org/bot{TOKEN}/getMe', timeout=20) as r:
-        data = json.loads(r.read().decode('utf-8'))
+    with urllib.request.urlopen(f'https://api.telegram.org/bot{TOKEN}/getMe', timeout=20) as response:
+        data = json.loads(response.read().decode('utf-8'))
     if not data.get('ok'):
         raise RuntimeError('Telegram getMe 실패')
     return str((data.get('result') or {}).get('username') or '')
@@ -229,10 +227,15 @@ def send_html(text: str):
     username = get_bot_username()
     if username.lower() != EXPECTED_BOT.lower():
         raise RuntimeError(f'잘못된 Telegram 봇: expected @{EXPECTED_BOT}, got @{username}')
-    payload = urllib.parse.urlencode({'chat_id': CHAT_ID, 'text': text[:4090], 'parse_mode': 'HTML', 'disable_web_page_preview': 'true'}).encode('utf-8')
-    req = urllib.request.Request(f'https://api.telegram.org/bot{TOKEN}/sendMessage', data=payload, method='POST')
-    with urllib.request.urlopen(req, timeout=20) as r:
-        data = json.loads(r.read().decode('utf-8'))
+    payload = urllib.parse.urlencode({
+        'chat_id': CHAT_ID,
+        'text': text[:4090],
+        'parse_mode': 'HTML',
+        'disable_web_page_preview': 'true',
+    }).encode('utf-8')
+    request = urllib.request.Request(f'https://api.telegram.org/bot{TOKEN}/sendMessage', data=payload, method='POST')
+    with urllib.request.urlopen(request, timeout=20) as response:
+        data = json.loads(response.read().decode('utf-8'))
     if not data.get('ok'):
         raise RuntimeError(f'Telegram 전송 실패: {data}')
 
@@ -240,38 +243,44 @@ def send_html(text: str):
 def pretightening_snapshot(rows, macro):
     latest = rows[-1]
     base = rows[-1 - PRETIGHTEN_LOOKBACK]
-    d2 = (latest['2y'] - base['2y']) * 100.0
-    d210 = spread(latest, '10y') - spread(base, '10y')
-    d230 = spread(latest, '30y') - spread(base, '30y')
-    avg_curve = (d210 + d230) / 2.0
-    active = d2 >= PRETIGHTEN_2Y_BP and avg_curve <= -PRETIGHTEN_CURVE_BP
+    delta_2y = (latest['2y'] - base['2y']) * 100.0
+    delta_2s10s = spread(latest, '10y') - spread(base, '10y')
+    delta_2s30s = spread(latest, '30y') - spread(base, '30y')
+    average_curve = (delta_2s10s + delta_2s30s) / 2.0
+    active = delta_2y >= PRETIGHTEN_2Y_BP and average_curve <= -PRETIGHTEN_CURVE_BP
 
     if active and macro['employment_soft'] and macro['inflation_cooling']:
         verdict = '시장이 먼저 긴축했고 경제지표도 식는 중 — 실제 추가 인상 필요성이 일부 낮아질 수 있음'
     elif active and not macro['employment_soft'] and not macro['inflation_cooling']:
         verdict = '시장이 먼저 긴축했지만 고용·물가도 강함 — 실제 인상 논리는 아직 유지'
     elif active:
-        verdict = '시장 선긴축 후보 — 고용·물가가 같은 방향인지 추가 확인 필요'
+        verdict = '시장이 먼저 긴축한 후보 — 고용·물가가 같은 방향인지 추가 확인 필요'
     else:
-        verdict = '시장 선긴축 기준 미충족'
+        verdict = '시장이 먼저 긴축한 기준 미충족'
 
     return {
-        'date': latest['date'], 'base_date': base['date'], 'active': active, 'd2_bp': d2,
-        'd2s10s_bp': d210, 'd2s30s_bp': d230, 'avg_curve_bp': avg_curve, 'verdict': verdict,
+        'date': latest['date'],
+        'base_date': base['date'],
+        'active': active,
+        'd2_bp': delta_2y,
+        'd2s10s_bp': delta_2s10s,
+        'd2s30s_bp': delta_2s30s,
+        'avg_curve_bp': average_curve,
+        'verdict': verdict,
     }
 
 
-def pretightening_message(snap, macro):
+def pretightening_message(snapshot, macro):
     return '\n'.join([
         '<b>[워시 반응함수 · 시장이 먼저 긴축했는지 감지]</b>',
-        f"기간: {html.escape(snap['base_date'])} → {html.escape(snap['date'])} ({PRETIGHTEN_LOOKBACK}거래일)",
-        f"미 국채 2년물: {snap['d2_bp']:+.1f}bp",
-        f"2년-10년 금리차: {snap['d2s10s_bp']:+.1f}bp | 2년-30년 금리차: {snap['d2s30s_bp']:+.1f}bp",
+        f"기간: {html.escape(snapshot['base_date'])} → {html.escape(snapshot['date'])} ({PRETIGHTEN_LOOKBACK}거래일)",
+        f"미 국채 2년물: {snapshot['d2_bp']:+.1f}bp",
+        f"2년-10년 금리차: {snapshot['d2s10s_bp']:+.1f}bp | 2년-30년 금리차: {snapshot['d2s30s_bp']:+.1f}bp",
         '',
         f"고용: 비농업 고용 {macro['payroll_change_k']:+.0f}천명 / 실업률 {macro['unemployment_rate']:.1f}%",
         f"근원 소비자물가: 전월 대비 {macro['core_cpi_mom']:+.2f}%",
         '',
-        f"판정: <b>{html.escape(snap['verdict'])}</b>",
+        f"판정: <b>{html.escape(snapshot['verdict'])}</b>",
         '쉽게 보면: 연준이 실제 금리를 올리기 전에 2년물 금리가 먼저 크게 오르면 시장금리 자체가 대출·투자를 억제합니다. 이후 고용과 물가까지 식으면 연준이 추가로 금리를 올릴 필요가 줄 수 있습니다.',
         '※ 1bp = 0.01%포인트',
         '',
@@ -280,41 +289,41 @@ def pretightening_message(snap, macro):
 
 
 def find_event_row(rows, event_date):
-    for i, r in enumerate(rows):
-        if r['date'] >= event_date:
-            if i == 0:
+    for index, row in enumerate(rows):
+        if row['date'] >= event_date:
+            if index == 0:
                 return None, None
-            return rows[i - 1], r
+            return rows[index - 1], row
     return None, None
 
 
 def credibility_verdict(delta_mid_bp, before, after, macro, pce):
-    d2 = (after['2y'] - before['2y']) * 100.0
-    d30 = (after['30y'] - before['30y']) * 100.0
-    d230 = spread(after, '30y') - spread(before, '30y')
+    delta_2y = (after['2y'] - before['2y']) * 100.0
+    delta_30y = (after['30y'] - before['30y']) * 100.0
+    delta_2s30s = spread(after, '30y') - spread(before, '30y')
     sticky = pce['sticky']
     cooling = macro['employment_soft'] and macro['inflation_cooling']
 
     if delta_mid_bp >= 20:
-        if d230 <= -5 or d2 >= d30 + 5:
+        if delta_2s30s <= -5 or delta_2y >= delta_30y + 5:
             return '인상 실행 + 장기금리 상대 안정 — 워시의 물가대응 말과 행동이 일치하고 신뢰가 강화되는 패턴'
-        if d30 >= CREDIBILITY_LONG_END_BP and d230 >= CREDIBILITY_STEEPEN_BP:
+        if delta_30y >= CREDIBILITY_LONG_END_BP and delta_2s30s >= CREDIBILITY_STEEPEN_BP:
             return '금리를 올렸지만 장기금리도 더 크게 상승 — 시장이 물가·재정 위험을 아직 신뢰하지 않는 패턴'
         return '금리 인상 실행 — 장기채 반응은 혼합, 신뢰 강화 여부 추가 확인'
 
     if abs(delta_mid_bp) < 10:
-        if sticky and d30 >= CREDIBILITY_LONG_END_BP and d230 >= CREDIBILITY_STEEPEN_BP:
-            return '높은 물가 속 동결 + 장기금리 상승·금리차 확대 — 7월형 말-행동 괴리와 신뢰 우려 재발 가능성'
+        if sticky and delta_30y >= CREDIBILITY_LONG_END_BP and delta_2s30s >= CREDIBILITY_STEEPEN_BP:
+            return '높은 물가 속 동결 + 장기금리 상승·장단기 금리차 확대 — 7월형 말-행동 괴리와 신뢰 우려 재발 가능성'
         if cooling:
             return '동결했지만 고용·물가 둔화가 확인 — 데이터에 따른 동결 근거가 있어 신뢰 훼손으로 단정하기 어려움'
-        if sticky and d230 <= 0:
+        if sticky and delta_2s30s <= 0:
             return '높은 물가 속 동결이지만 장기채 반응 안정 — 시장이 설명을 일단 수용한 패턴'
         return '동결 — 물가·고용과 장기채 반응이 혼합돼 신뢰 판정 보류'
 
     if delta_mid_bp <= -20:
         if cooling:
             return '금리 인하 + 고용·물가 둔화 — 완화 근거가 데이터에서 확인되는 패턴'
-        if sticky and d30 >= CREDIBILITY_LONG_END_BP:
+        if sticky and delta_30y >= CREDIBILITY_LONG_END_BP:
             return '물가 고착 속 금리 인하 + 장기금리 상승 — 정책 신뢰 부담이 커지는 패턴'
         return '금리 인하 — 데이터와 장기채 반응을 추가 확인'
 
@@ -325,20 +334,22 @@ def credibility_message(event, before, after, macro, pce):
     old_mid = sum(event['old_range']) / 2.0
     new_mid = sum(event['new_range']) / 2.0
     delta_mid_bp = (new_mid - old_mid) * 100.0
-    d2 = (after['2y'] - before['2y']) * 100.0
-    d10 = (after['10y'] - before['10y']) * 100.0
-    d30 = (after['30y'] - before['30y']) * 100.0
-    d210 = spread(after, '10y') - spread(before, '10y')
-    d230 = spread(after, '30y') - spread(before, '30y')
+    delta_2y = (after['2y'] - before['2y']) * 100.0
+    delta_10y = (after['10y'] - before['10y']) * 100.0
+    delta_30y = (after['30y'] - before['30y']) * 100.0
+    delta_2s10s = spread(after, '10y') - spread(before, '10y')
+    delta_2s30s = spread(after, '30y') - spread(before, '30y')
     verdict = credibility_verdict(delta_mid_bp, before, after, macro, pce)
     action = '인상' if delta_mid_bp >= 20 else ('인하' if delta_mid_bp <= -20 else '동결')
+    event_url = html.escape(event['url'], quote=True)
+    treasury_url = html.escape(TREASURY_TEXT_URL, quote=True)
     return '\n'.join([
         '<b>[워시 FOMC · 말과 행동 신뢰도 판정]</b>',
         f"FOMC: {html.escape(event['date'])} | 결정: <b>{action}</b>",
         f"정책금리 범위: {event['old_range'][0]:.2f}~{event['old_range'][1]:.2f}% → {event['new_range'][0]:.2f}~{event['new_range'][1]:.2f}%",
         '',
-        f"FOMC 전후 미 국채: 2년 {d2:+.1f}bp | 10년 {d10:+.1f}bp | 30년 {d30:+.1f}bp",
-        f"금리차 변화: 2년-10년 {d210:+.1f}bp | 2년-30년 {d230:+.1f}bp",
+        f"FOMC 전후 미 국채: 2년 {delta_2y:+.1f}bp | 10년 {delta_10y:+.1f}bp | 30년 {delta_30y:+.1f}bp",
+        f"금리차 변화: 2년-10년 {delta_2s10s:+.1f}bp | 2년-30년 {delta_2s30s:+.1f}bp",
         f"물가 추세: {html.escape(str(pce['regime']))}",
         f"고용: 비농업 고용 {macro['payroll_change_k']:+.0f}천명 / 실업률 {macro['unemployment_rate']:.1f}% | 근원 소비자물가 전월 대비 {macro['core_cpi_mom']:+.2f}%",
         '',
@@ -346,7 +357,7 @@ def credibility_message(event, before, after, macro, pce):
         '쉽게 보면: 인상·동결 자체보다 그 뒤 30년물과 장단기 금리차가 어떻게 움직이는지가 시장이 연준의 물가대응을 믿는지 보여줍니다.',
         '※ 1bp = 0.01%포인트',
         '',
-        f'<a href="{html.escape(event['url'], quote=True)}">연준 FOMC 공식 성명</a> · <a href="{html.escape(TREASURY_TEXT_URL, quote=True)}">미 재무부 공식 금리 원천</a>',
+        f'<a href="{event_url}">연준 FOMC 공식 성명</a> · <a href="{treasury_url}">미 재무부 공식 금리 원천</a>',
     ])
 
 
@@ -357,20 +368,19 @@ def main():
     macro = bls_macro()
     pce = pce_context()
     statements = fomc_statements()
-    latest_stmt = statements[-1]
-    prev_stmt = statements[-2]
+    latest_statement = statements[-1]
+    previous_statement = statements[-2]
 
-    if not latest_stmt['range'] or not prev_stmt['range']:
+    if not latest_statement['range'] or not previous_statement['range']:
         raise RuntimeError('FOMC 정책금리 범위를 성명에서 읽지 못했습니다.')
 
-    # 1) 시장이 연준 대신 먼저 긴축했는지: 5거래일 2Y +15bp 이상 + 금리차 평균 8bp 이상 축소.
     pre = pretightening_snapshot(rows, macro)
-    prev_active = bool(state.get('pretightening_active', False))
+    previous_active = bool(state.get('pretightening_active', False))
     new_treasury_date = state.get('treasury_date') not in (None, pre['date'])
-    if FORCE_NOTIFY or (new_treasury_date and pre['active'] and not prev_active):
+    if FORCE_NOTIFY or (new_treasury_date and pre['active'] and not previous_active):
         send_html(pretightening_message(pre, macro))
-    elif new_treasury_date and prev_active and not pre['active']:
-        msg = '\n'.join([
+    elif new_treasury_date and previous_active and not pre['active']:
+        message = '\n'.join([
             '<b>[워시 반응함수 · 시장 선긴축 경보 해제]</b>',
             f"기준일 {html.escape(pre['date'])}",
             f"최근 {PRETIGHTEN_LOOKBACK}거래일 2년물 {pre['d2_bp']:+.1f}bp / 금리차 평균 {pre['avg_curve_bp']:+.1f}bp",
@@ -378,22 +388,20 @@ def main():
             '',
             f'<a href="{html.escape(TREASURY_TEXT_URL, quote=True)}">미 재무부 공식 금리 원천</a>',
         ])
-        send_html(msg)
+        send_html(message)
 
-    # 2) 새 FOMC가 나오면, 같은 날(또는 이후 첫 공식일) Treasury 종가가 생길 때 말-행동 신뢰도를 1회 판정.
     last_seen_fomc = state.get('last_seen_fomc_url')
     pending = state.get('pending_fomc')
     if first_run:
-        # 설치 시 과거 7월 FOMC를 새 이벤트로 재발송하지 않고 기준선만 저장.
-        last_seen_fomc = latest_stmt['url']
-    elif latest_stmt['url'] != last_seen_fomc:
+        last_seen_fomc = latest_statement['url']
+    elif latest_statement['url'] != last_seen_fomc:
         pending = {
-            'date': latest_stmt['date'],
-            'url': latest_stmt['url'],
-            'old_range': list(prev_stmt['range']),
-            'new_range': list(latest_stmt['range']),
+            'date': latest_statement['date'],
+            'url': latest_statement['url'],
+            'old_range': list(previous_statement['range']),
+            'new_range': list(latest_statement['range']),
         }
-        last_seen_fomc = latest_stmt['url']
+        last_seen_fomc = latest_statement['url']
 
     credibility_done = False
     if pending:
@@ -420,7 +428,7 @@ def main():
         'pretightening': pre,
         'macro': macro,
         'pce': pce,
-        'latest_fomc': latest_stmt['date'],
+        'latest_fomc': latest_statement['date'],
         'pending_fomc': pending,
         'credibility_done': credibility_done,
     }, ensure_ascii=False))
