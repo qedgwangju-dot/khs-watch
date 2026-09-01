@@ -87,12 +87,26 @@
       "source": "Arab News",
       "title": "Tanker struck by three projectiles while sailing out of Strait of Hormuz, UKMTO says - Arab News",
       "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPWUtXelpmMlVqb08wV1hzSG5rQkU1aWMzTnN6dDRKMy1aby13OVk4dXZONnd6N1BVRVo1bHVuNFEtdGZZVGgxWXpKN3I4eWNQd1JBYzFWNzhMYVhmNEpIc0V2SVVoM19uNjgzMDJfMURWVzFXOGd1U0ltREZHWEtjdWR4alI2c1BkUHd4eGFpaUdHRGRHeHZ6NlJ5OEpISF9TMF9KXzFEM1NrcGtZTEhsTk5GdmtFamxYd0xWbjhZaFFabGhaZkhz?oc=5",
-      "published_utc": "2026-08-31T23:09:06Z",
+      "published_utc": "2026-09-01T09:44:19Z",
       "first_seen_kst": "2026-09-01T19:03:05+09:00"
+    },
+    "c73cd869ad0b1b5fece8": {
+      "source": "Radio Free Europe/Radio Liberty",
+      "title": "Oil Tanker Struck By Projectiles In Strait Of Hormuz, Says Shipping Monitor - Radio Free Europe/Radio Liberty",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9OeTc1VE5lcEx0QzNhVlh6TnBVZUhfdi1MR0xZQnJOLWo2U3dHb09ucVhPNXctSTFXNTF6R3EwZEJXSl96SF9zS2FPUWFwcHpHeFVMaGtUckZiaGIydHc1SFMwT3U1R1h5WnMtY2RGUkdtYm1jV2VUMWFB?oc=5",
+      "published_utc": "2026-09-01T05:05:00Z",
+      "first_seen_kst": "2026-09-01T23:39:26+09:00"
+    },
+    "68d58abec01d9d45c6b9": {
+      "source": "Reuters",
+      "title": "Two tankers carrying Saudi oil attacked in Strait of Hormuz - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPbTdiazZLdjJmZFUzaDZwUHpSV3R0b2lubVJLcXdtNmk1WEZjbU96MjJveEl4dl9FWjl3V3kwTVQtY0N5WnhINS1PSXoyNUNtYXpub0EwWVBCZklqaTJPTXN0QmxaTWJ3b284NWx4ckg4S3NONkl4WEVnSzdaaV94cUJ0YXI3UlZHV3RwZ1B2am8xMHc2VnV1TTBjcExjSEg1R2d0RWhuUkY?oc=5",
+      "published_utc": "2026-09-01T12:31:35Z",
+      "first_seen_kst": "2026-09-01T23:39:26+09:00"
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-09-01T19:03:05+09:00",
+  "last_checked_kst": "2026-09-01T23:39:26+09:00",
   "confirmed_events": {
     "news:2026-08-30:strike:hormuz:1": {
       "baseline": true,
@@ -108,6 +122,29 @@
         "Arab News"
       ],
       "first_seen_kst": "2026-09-01T19:03:05+09:00"
+    },
+    "news:2026-08-31:strike:hormuz:x": {
+      "warning": null,
+      "event_kind": "strike",
+      "location": "hormuz",
+      "projectile_count": null,
+      "sources": [
+        "Radio Free Europe/Radio Liberty",
+        "Arab News"
+      ],
+      "first_seen_kst": "2026-09-01T23:39:26+09:00"
+    },
+    "news:2026-09-01:strike:hormuz:x": {
+      "warning": null,
+      "event_kind": "strike",
+      "location": "hormuz",
+      "projectile_count": null,
+      "sources": [
+        "Reuters",
+        "Arab News",
+        "Radio Free Europe/Radio Liberty"
+      ],
+      "first_seen_kst": "2026-09-01T23:39:26+09:00"
     }
   }
 }
