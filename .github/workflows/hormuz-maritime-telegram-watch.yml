@@ -194,25 +194,62 @@ jobs:
             fi
           fi
 
-      - name: Commit watcher state
+      - name: Commit watcher state safely
         if: always() && github.ref == 'refs/heads/main'
         run: |
+          if [ ! -f data/hormuz_maritime_watch_state.json ]; then
+            echo "No Hormuz state to persist"
+            exit 0
+          fi
+          cp data/hormuz_maritime_watch_state.json /tmp/hormuz-local-state.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/hormuz_maritime_watch_state.json 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "Hormuz watcher state unchanged"
-          else
+
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          import json
+          from pathlib import Path
+
+          local_path = Path('/tmp/hormuz-local-state.json')
+          repo_path = Path('data/hormuz_maritime_watch_state.json')
+          local = json.loads(local_path.read_text(encoding='utf-8'))
+          try:
+              remote = json.loads(repo_path.read_text(encoding='utf-8')) if repo_path.exists() else {}
+          except Exception:
+              remote = {}
+
+          merged = dict(remote)
+          merged['version'] = max(int(remote.get('version') or 0), int(local.get('version') or 0))
+          merged['initialized'] = bool(remote.get('initialized')) or bool(local.get('initialized'))
+          for field in ('official', 'news', 'confirmed_events'):
+              value = dict(remote.get(field) or {})
+              value.update(dict(local.get(field) or {}))
+              if len(value) > 800:
+                  value = dict(list(value.items())[-800:])
+              merged[field] = value
+          merged['highest_warning_seen'] = max(int(remote.get('highest_warning_seen') or 0), int(local.get('highest_warning_seen') or 0))
+          rtime = str(remote.get('last_checked_kst') or '')
+          ltime = str(local.get('last_checked_kst') or '')
+          merged['last_checked_kst'] = max(rtime, ltime)
+          repo_path.parent.mkdir(parents=True, exist_ok=True)
+          repo_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+            git add data/hormuz_maritime_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Hormuz watcher state already current"
+              exit 0
+            fi
             git commit -m "Update Hormuz maritime watch state"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            git reset --hard HEAD~1
+            sleep $((attempt * 2))
+          done
+          echo "Failed to persist Hormuz watcher state after retries" >&2
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
