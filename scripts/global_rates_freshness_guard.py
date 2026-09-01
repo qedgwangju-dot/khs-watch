@@ -42,9 +42,12 @@ def save(path: pathlib.Path, value: Any) -> None:
 def parse_date(value: str | None) -> dt.date | None:
     if not value:
         return None
-    text = str(value).strip().replace("/", "-")
+    match = re.match(r"^\s*(\d{4})[/-](\d{1,2})[/-](\d{1,2})", str(value))
+    if not match:
+        return None
     try:
-        return dt.date.fromisoformat(text[:10])
+        year, month, day = map(int, match.groups())
+        return dt.date(year, month, day)
     except Exception:
         return None
 
