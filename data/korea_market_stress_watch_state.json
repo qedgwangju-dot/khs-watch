@@ -1,6 +1,6 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-02T05:09:16+09:00",
+  "updated_at_kst": "2026-09-02T07:36:31+09:00",
   "seen_event_keys": [
     "foreign3d_neg:2026-08-27",
     "policy_spread:2026-08-27:0.75",
@@ -9,23 +9,23 @@
   ],
   "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-09-02T05:09:16+09:00",
+    "checked_at_kst": "2026-09-02T07:36:31+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-01",
-      "value": 1375.3,
+      "value": 1375.5,
       "prev_date": "2026-08-31",
       "prev_value": 1369.5,
-      "change_krw": 5.8,
-      "change_pct": 0.4235,
+      "change_krw": 6.0,
+      "change_pct": 0.4381,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
-      "date": "2026-08-28",
-      "value": 4.73,
-      "prev_date": "2026-08-27",
-      "prev_value": 4.67,
-      "change_bp": 6.0,
+      "date": "2026-08-31",
+      "value": 4.75,
+      "prev_date": "2026-08-28",
+      "prev_value": 4.73,
+      "change_bp": 2.0,
       "source": "https://fred.stlouisfed.org/series/DGS10"
     },
     "policy_spread": {
