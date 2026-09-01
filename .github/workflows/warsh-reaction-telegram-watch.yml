@@ -20,7 +20,7 @@ on:
       - 'scripts/warsh_new_axes_watch.py'
       - 'scripts/warsh_pce_trend_watch.py'
       - 'scripts/warsh_curve_ownership_watch.py'
-      - 'scripts/warsh_credibility_pretightening_watch.py'
+      - 'scripts/warsh_credibility_pretightening_watch_v2.py'
       - '.github/workflows/warsh-reaction-telegram-watch.yml'
 
 permissions:
@@ -77,7 +77,7 @@ jobs:
           python scripts/warsh_new_axes_watch.py
           python scripts/warsh_pce_trend_watch.py
           python scripts/warsh_curve_ownership_watch.py
-          python scripts/warsh_credibility_pretightening_watch.py
+          python scripts/warsh_credibility_pretightening_watch_v2.py
 
       - name: Ignore timestamp-only state changes
         run: |
