@@ -1,13 +1,13 @@
 {
-  "checked_at_kst": "2026-09-02T03:35:13+09:00",
+  "checked_at_kst": "2026-09-02T06:49:09+09:00",
   "ramp": {
     "fable_token_share_pct": 6.0,
     "fable_spend_share_pct": 11.4,
     "anthropic_business_adoption_pct": 43.5,
     "openai_business_adoption_pct": 39.7,
-    "anthropic_vendor_adoption_pct": 79.0,
-    "anthropic_enterprise_adoption_pct": 85.0,
-    "source_hash": "08d5225b3687a9ee92b2059500fe40d64d950e9c46880fc045dc4b7b16c9cfd7"
+    "anthropic_vendor_adoption_pct": null,
+    "anthropic_enterprise_adoption_pct": 84.0,
+    "source_hash": "59d5a948335ee9f03eb9f301abd510f1880ddd68a9e658c433d3c30a3abf35ae"
   },
   "openrouter": {
     "available": false,
