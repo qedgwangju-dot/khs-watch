@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import intismeran_structured_telegram_send as base
-from bio_korean_guard import ensure_korean_text
+from bio_korean_guard_strict import ensure_korean_text
 
 _original_send_message = base.send_message
 
