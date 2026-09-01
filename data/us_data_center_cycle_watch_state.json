@@ -1,20 +1,20 @@
 {
   "census": {
-    "calculated_mom_pct": 6.976,
-    "calculated_yoy_pct": 45.778,
-    "data_center_saar_musd": 68297,
-    "pdf_sha256": "961e1ef3636e8d7576e77808d89391ecbec406a830b4ffcbcd6b68b478b748cc",
-    "period": "Jun 2026",
-    "period_key": "2026-06",
-    "previous_month_saar_musd": 63843,
-    "release_date": "August 3, 2026",
+    "calculated_mom_pct": 6.234,
+    "calculated_yoy_pct": 57.218,
+    "data_center_saar_musd": 75166,
+    "pdf_sha256": "3e2159cca2009569637a841d96592f4d52983517c2f5ae1c77f3c32eeae88190",
+    "period": "Jul 2026",
+    "period_key": "2026-07",
+    "previous_month_saar_musd": 70755,
+    "release_date": "September 1, 2026",
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
-    "reported_mom_pct": 7.0,
-    "reported_yoy_pct": 45.8,
-    "retrieved_at_utc": "2026-09-01T10:22:56.613309+00:00",
+    "reported_mom_pct": 6.2,
+    "reported_yoy_pct": 57.2,
+    "retrieved_at_utc": "2026-09-01T15:05:31.075237+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
-    "year_ago_saar_musd": 46850
+    "year_ago_saar_musd": 47810
   },
   "dodge": {
     "article_sha256": "3efc71fd87e9ee02fa7c8d0dd80e3d54250b1c79fe00928f430405c772a308cd",
@@ -49,6 +49,6 @@
     "utility_change_pct": 44.7
   },
   "format_version": 3,
-  "updated_at_utc": "2026-09-01T10:22:56.386997+00:00",
+  "updated_at_utc": "2026-09-01T15:05:30.455511+00:00",
   "watch": "US data center construction starts vs spending"
 }
