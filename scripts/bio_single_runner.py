@@ -115,15 +115,19 @@ def main() -> int:
         "qlex_collector_rc": None,
         "intismeran_collector_rc": None,
         "jemperli_collector_rc": None,
+        "enhertu_collector_rc": None,
         "qlex_alert_present": False,
         "intismeran_alert_present": False,
         "jemperli_alert_present": False,
+        "enhertu_alert_present": False,
         "qlex_send_outcome": "skipped",
         "intismeran_send_outcome": "skipped",
         "jemperli_send_outcome": "skipped",
+        "enhertu_send_outcome": "skipped",
         "qlex_state_persisted": False,
         "intismeran_state_persisted": False,
         "jemperli_state_persisted": False,
+        "enhertu_state_persisted": False,
         "intismeran_retry_pending": False,
         "last_health_notice_date": prev.get("last_health_notice_date", ""),
         "errors": [],
@@ -141,6 +145,7 @@ def main() -> int:
             "intismeran_qlex_alert.md",
             "intismeran_structured_send_confirmed.json",
             "jemperli_altb4_alert.md",
+            "enhertu_altb4_alert.md",
         ):
             (OUT / name).unlink(missing_ok=True)
 
@@ -159,12 +164,19 @@ def main() -> int:
         if jemp_rc != 0:
             hb["errors"].append(f"Jemperli collector rc={jemp_rc}: {jemp_log}")
 
+        enh_rc, enh_log = run([sys.executable, "scripts/enhertu_altb4_watch.py"])
+        hb["enhertu_collector_rc"] = enh_rc
+        if enh_rc != 0:
+            hb["errors"].append(f"Enhertu collector rc={enh_rc}: {enh_log}")
+
         qlex_alert = OUT / "qlex_sc_conversion_alert.md"
         int_alert = OUT / "intismeran_qlex_alert.md"
         jemp_alert = OUT / "jemperli_altb4_alert.md"
+        enh_alert = OUT / "enhertu_altb4_alert.md"
         hb["qlex_alert_present"] = qlex_alert.exists()
         hb["intismeran_alert_present"] = int_alert.exists()
         hb["jemperli_alert_present"] = jemp_alert.exists()
+        hb["enhertu_alert_present"] = enh_alert.exists()
 
         qlex_handled = qlex_rc == 0
         if qlex_rc == 0 and qlex_alert.exists():
@@ -211,17 +223,33 @@ def main() -> int:
             shutil.copy2(jemp_pending, DATA / "jemperli_altb4_watch_state.json")
             hb["jemperli_state_persisted"] = True
 
+        enh_handled = enh_rc == 0
+        if enh_rc == 0 and enh_alert.exists():
+            rc, log = run([sys.executable, "scripts/qlex_telegram_send.py", str(enh_alert.relative_to(ROOT))])
+            hb["enhertu_send_outcome"] = "success" if rc == 0 else "failure"
+            enh_handled = rc == 0
+            if rc != 0:
+                hb["errors"].append(f"Enhertu sender rc={rc}: {log}")
+
+        enh_pending = OUT / "enhertu_altb4_watch_state_pending.json"
+        if enh_handled and enh_pending.exists():
+            shutil.copy2(enh_pending, DATA / "enhertu_altb4_watch_state.json")
+            hb["enhertu_state_persisted"] = True
+
         operational = (
             hb["telegram_route_ok"]
             and qlex_rc == 0
             and int_rc == 0
             and jemp_rc == 0
+            and enh_rc == 0
             and hb["qlex_state_persisted"]
             and (hb["intismeran_state_persisted"] or hb["intismeran_retry_pending"])
             and hb["jemperli_state_persisted"]
+            and hb["enhertu_state_persisted"]
             and hb["qlex_send_outcome"] != "failure"
             and hb["intismeran_send_outcome"] != "failure"
             and hb["jemperli_send_outcome"] != "failure"
+            and hb["enhertu_send_outcome"] != "failure"
         )
         hb["status"] = "ok" if operational else "degraded"
 
@@ -232,7 +260,7 @@ def main() -> int:
                 chat_id,
                 "[바이오 감시] 정상 작동 확인\n\n"
                 f"- 마지막 확인: {now_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
-                "- QLEX·Intismeran·Jemperli 감시: 정상\n"
+                "- QLEX·Intismeran·Jemperli·Enhertu 감시: 정상\n"
                 f"- Telegram 경로: {route_source}\n"
                 "- 새 데이터가 없으면 별도 본 알림은 보내지 않습니다.",
             )
@@ -249,7 +277,7 @@ def main() -> int:
                     chat_id,
                     "[바이오 감시] 실행 오류\n\n"
                     f"- 시각: {now_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
-                    "- QLEX·Intismeran·Jemperli 감시 실행 중 오류가 발생했습니다.\n"
+                    "- QLEX·Intismeran·Jemperli·Enhertu 감시 실행 중 오류가 발생했습니다.\n"
                     "- 다음 15분 실행에서 다시 확인합니다.",
                 )
             except Exception:
