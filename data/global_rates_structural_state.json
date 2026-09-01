@@ -1,1 +1,69 @@
-{}
+{
+  "auctions": {
+    "10-Year": {
+      "accepted_billion_yen": 1989.6,
+      "accepted_krw": 17156180133775.084,
+      "auction_date": "9/1/2026",
+      "average_yield_pct": 2.995,
+      "bid_to_cover": 3.286338962605549,
+      "competitive_bids_billion_yen": 6538.5,
+      "coupon_pct": 2.7,
+      "grade": "중립",
+      "lowest_accepted_yield_pct": 3.011,
+      "tail_bp": 1.6000000000000014,
+      "tenor": "10-Year",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20260901.htm"
+    }
+  },
+  "boj_survey": {
+    "label": "2026年5月調査",
+    "posted_date": "2026-05-20",
+    "survey_month": 5,
+    "survey_year": 2026,
+    "timeseries_url": "https://www.boj.or.jp/paym/bond/timeseries.xlsx",
+    "url": "https://www.boj.or.jp/paym/bond/bond_list/bond2605.pdf"
+  },
+  "gpif": {
+    "actual_pct": {
+      "domestic_bonds": 25.59,
+      "domestic_equities": 24.48,
+      "foreign_bonds": 24.6,
+      "foreign_equities": 25.33
+    },
+    "amounts_oku_yen": {
+      "domestic_bonds": 819976.0,
+      "domestic_equities": 784321.0,
+      "foreign_bonds": 787980.0,
+      "foreign_equities": 811454.0
+    },
+    "domestic_bonds_delta_pp": null,
+    "one_pct_point_krw": 27625554529724.324,
+    "one_pct_point_trillion_yen": 3.203732,
+    "target_pct": {
+      "domestic_bonds": 25.0,
+      "domestic_equities": 25.0,
+      "foreign_bonds": 25.0,
+      "foreign_equities": 25.0
+    },
+    "tolerance_pp": {
+      "domestic_bonds": 6.0,
+      "domestic_equities": 6.0,
+      "foreign_bonds": 5.0,
+      "foreign_equities": 6.0
+    },
+    "total_krw": 2762555452972432.5,
+    "total_oku_yen": 3203732.0,
+    "url": "https://www.gpif.go.jp/gpif/portfolio.html",
+    "zero_sum_summary": "첫 기준선 저장 — 다음 공식 분기와 제로섬 비교"
+  },
+  "intervention": {
+    "amount_krw": 132787075157842.11,
+    "amount_yen": 15399300000000.0,
+    "efficiency_rule": "월간 총액은 실시일별 금액을 알 수 없어 1조엔당 USD/JPY 효과를 계산하지 않음. 분기 일별자료 공개 후 계산.",
+    "next_daily_detail_release": "2026-11-02~11-09 (2026년 7~9월 일별 상세)",
+    "overview_url": "https://www.mof.go.jp/policy/international_policy/reference/feio/index.html",
+    "period": "令和8年7月30日～令和8年8月28日",
+    "url": "https://www.mof.go.jp/policy/international_policy/reference/feio/data/monthly/20260828.html"
+  },
+  "updated_at_kst": "2026-09-01T14:13:53+09:00"
+}
