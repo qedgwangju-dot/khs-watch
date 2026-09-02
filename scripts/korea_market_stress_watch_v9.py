@@ -41,15 +41,15 @@ def _final_window(now: dt.datetime) -> bool:
 
 def fetch_flow(now: dt.datetime) -> dict[str, Any]:
     flow = _original_fetch_flow(now)
-    flow["phase"] = "장마감 최종 확인" if _final_window(now) else "장중 참고"
+    flow["phase"] = "장마감 최종 재확인" if _final_window(now) else "장중 참고"
     return flow
 
 
 def _rewrite_foreign_text(text: str) -> str:
-    text = re.sub(r"KOSPI 외국인 1일 순매수 -([^—]+)", r"KOSPI 외국인 장마감 최종 확인: 1일 순매도 \1", text)
-    text = re.sub(r"KOSPI 외국인 1일 순매수 \+([^—]+)", r"KOSPI 외국인 장마감 최종 확인: 1일 순매수 \1", text)
-    text = re.sub(r"KOSPI 외국인 최근 3거래일 누적 -([^—]+)", r"KOSPI 외국인 장마감 최종 확인: 최근 3거래일 누적 순매도 \1", text)
-    text = re.sub(r"KOSPI 외국인 최근 3거래일 누적 \+([^—]+)", r"KOSPI 외국인 장마감 최종 확인: 최근 3거래일 누적 순매수 \1", text)
+    text = re.sub(r"KOSPI 외국인 1일 순매수 -([^—]+)", r"KOSPI 외국인 장마감 최종 재확인: 1일 순매도 \1", text)
+    text = re.sub(r"KOSPI 외국인 1일 순매수 \+([^—]+)", r"KOSPI 외국인 장마감 최종 재확인: 1일 순매수 \1", text)
+    text = re.sub(r"KOSPI 외국인 최근 3거래일 누적 -([^—]+)", r"KOSPI 외국인 장마감 최종 재확인: 최근 3거래일 누적 순매도 \1", text)
+    text = re.sub(r"KOSPI 외국인 최근 3거래일 누적 \+([^—]+)", r"KOSPI 외국인 장마감 최종 재확인: 최근 3거래일 누적 순매수 \1", text)
     text = text.replace("— -1조원 기준 돌파", "— 순매도 1조원 기준 돌파")
     text = text.replace("— +1조원 기준 돌파", "— 순매수 1조원 기준 돌파")
     text = text.replace("— -3조원 기준 돌파", "— 누적 순매도 3조원 기준 돌파")
@@ -60,8 +60,8 @@ def _rewrite_foreign_text(text: str) -> str:
 def add_event_final_only(events, key: str, text: str, source: str) -> None:
     now = dt.datetime.now(watch.KST)
     if key.startswith("foreign1d_") or key.startswith("foreign3d_"):
-        # 한국거래소는 당일 최종 투자자별 매매내역을 오후 6시 이후 제공한다.
-        # 따라서 외국인 수급 임계치 경보는 18:10 이후에만 허용한다.
+        # 사용자 기준: 외국인 수급 임계치 경보는 장중 잠정치가 아니라 장마감 이후 재확인값으로만 판정한다.
+        # KRX는 당일 최종 투자자별 매매내역을 오후 6시 이후 제공한다고 명시한다.
         if now.weekday() < 5 and now.time() < dt.time(18, 10):
             return
         text = _rewrite_foreign_text(text)
@@ -97,8 +97,8 @@ def _append_final_context() -> None:
             if idx:
                 pending.setdefault("snapshot", {})["kospi_close"] = idx
             pending.setdefault("snapshot", {})["flow_finality_note"] = (
-                "외국인 수급 임계치 경보는 KRX 당일 최종 매매내역 제공 시점인 오후 6시 이후만 사용. "
-                "자동 실행 여유를 두어 18:10 이후 판정."
+                "외국인 임계치 경보는 18:10 이후 재조회한 마감값으로만 판정. "
+                "KRX는 당일 최종 투자자별 매매내역을 오후 6시 이후 제공하며, 자동화에서는 접근 가능한 KRX 기반 네이버 국내증시 데이터를 재조회해 사용."
             )
             pending.setdefault("snapshot", {})["krx_flow_info_url"] = KRX_FLOW_PAGE
             watch.PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -111,7 +111,7 @@ def _append_final_context() -> None:
         lines = text.splitlines()
         insert_at = 2 if len(lines) >= 2 else len(lines)
         lines.insert(insert_at, f"• KOSPI 종가: {idx['close']:,.2f} ({idx['change_pct']:+.2f}%)")
-        lines.insert(insert_at + 1, "• 외국인 수급: 18:10 이후 장마감 최종 확인값만 임계치 판정")
+        lines.insert(insert_at + 1, "• 외국인 수급: 18:10 이후 마감값 재확인 후 임계치 판정")
         lines += ["", f'• <a href="{html.escape(KRX_FLOW_PAGE, quote=True)}">KRX 투자자별 거래실적</a>']
         watch.ALERT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
     except Exception as exc:
