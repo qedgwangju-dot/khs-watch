@@ -8,7 +8,7 @@
     "ec2b004cd91a18e18feeeb55"
   ],
   "seen_urls": [],
-  "last_check_kst": "2026-09-02T12:30:58+09:00",
+  "last_check_kst": "2026-09-02T14:50:14+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -51,5 +51,11 @@
     "IPR2026-00314": "11,066,656"
   },
   "discovered_cases": {},
-  "district_case": "2:25-cv-03179"
+  "district_case": "2:25-cv-03179",
+  "legal_v3_initialized": true,
+  "search_regions": [
+    "미국 뉴스",
+    "한국 뉴스",
+    "Bing 웹"
+  ]
 }

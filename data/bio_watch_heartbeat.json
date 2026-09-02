@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at_kst": "2026-09-02T13:34:15+09:00",
+  "checked_at_kst": "2026-09-02T14:49:29+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -8,11 +8,11 @@
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
   "qlex_alert_present": false,
-  "intismeran_alert_present": true,
+  "intismeran_alert_present": false,
   "jemperli_alert_present": false,
   "enhertu_alert_present": false,
   "qlex_send_outcome": "skipped",
-  "intismeran_send_outcome": "success",
+  "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
   "qlex_state_persisted": true,
@@ -21,6 +21,5 @@
   "enhertu_state_persisted": true,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-09-02",
-  "errors": [],
-  "health_notice_message_id": 75
+  "errors": []
 }
