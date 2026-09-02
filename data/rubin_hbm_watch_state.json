@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-02T13:47:32+09:00",
+  "updated_at_kst": "2026-09-02T18:43:51+09:00",
   "seen_ids": [
     "09ccca98004f94ddc78adf4f",
     "0a11d6e55d20a20d438eea0b",
@@ -28,16 +28,14 @@
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 2,
+  "last_unseen_raw_count": 0,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1371.6,
+    "rate": 1371.76,
     "date": "2026-09-02",
     "error": ""
   },
-  "errors": [
-    "교차검증 부족으로 발송 제외: ebn.co.kr | \"HBM 다음은 eSSD\"…삼전닉스, AI 메모리 '쩐의 전쟁' - ebn.co.kr"
-  ]
+  "errors": []
 }
