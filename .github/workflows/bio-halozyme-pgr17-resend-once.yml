@@ -1,0 +1,68 @@
+name: Bio Halozyme PGR17 Resend Once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/bio-halozyme-pgr17-resend-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    env:
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve Telegram route
+        id: route
+        shell: bash
+        run: |
+          set -euo pipefail
+          chat_id="${BIO_TELEGRAM_CHAT_ID:-}"
+          if [ -z "$chat_id" ] && [ -f data/bio_telegram_chat_id.enc ]; then
+            chat_id=$(openssl enc -d -aes-256-cbc -a -A -pbkdf2 \
+              -pass env:BIO_TELEGRAM_BOT_TOKEN \
+              -in data/bio_telegram_chat_id.enc)
+          fi
+          test -n "$chat_id"
+          echo "::add-mask::$chat_id"
+          echo "chat_id=$chat_id" >> "$GITHUB_OUTPUT"
+
+      - name: Send Halozyme PGR2025-00017 alert
+        env:
+          CHAT_ID: ${{ steps.route.outputs.chat_id }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+          token=os.environ['BIO_TELEGRAM_BOT_TOKEN'].strip()
+          chat=os.environ['CHAT_ID'].strip()
+          text='''<b>[바이오 감시] Halozyme 특허분쟁</b>\n\n<b>MSD 승소 — PGR2025-00017, Halozyme 미국 특허 12,110,520 심판대상 청구항 전부 무효</b>\n\n- <b>사건:</b> Merck Sharp & Dohme LLC vs Halozyme · PGR2025-00017\n- <b>결정:</b> 청구항 1, 2, 6~15, 17~30 전부 특허 받을 수 없음으로 최종 판단\n- <b>근거:</b> §112 서면기재요건 + 실시가능요건 불충족\n- <b>자명성:</b> §103 주장은 불인정\n- <b>알테오젠:</b> ALT-B4 자체 특허 판정은 아니지만 Halozyme의 변형 PH20 특허 장벽이 약해져 MSD·알테오젠의 미국 피하주사 전환 관련 특허분쟁 부담을 낮추는 방향\n- <b>아직 남음:</b> 국장 재검토·재심·연방순회항소법원 항소 + 다른 관련 PGR/IPR + 뉴저지 연방법원 민사소송\n- <b>다음 확인:</b> 국장 재검토/재심 → 항소 → 다른 관련 사건 최종서면결정\n- <b>원문 확인:</b> USPTO/PTAB 사건자료\n- <a href="https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557197">USPTO/PTAB 사건보기</a>'''
+          body=urllib.parse.urlencode({
+              'chat_id':chat,
+              'text':text,
+              'parse_mode':'HTML',
+              'disable_web_page_preview':'true',
+          }).encode()
+          req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage',data=body,method='POST')
+          with urllib.request.urlopen(req,timeout=25) as r:
+              result=json.loads(r.read().decode())
+          if not result.get('ok'):
+              raise RuntimeError(result)
+          mid=(result.get('result') or {}).get('message_id')
+          print(f'message_id={mid}')
+          os.makedirs('data',exist_ok=True)
+          with open('data/bio_halozyme_pgr17_resend_confirmed.json','w',encoding='utf-8') as f:
+              json.dump({'status':'confirmed','message_id':mid},f,ensure_ascii=False,indent=2)
+
+      - name: Commit confirmation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/bio_halozyme_pgr17_resend_confirmed.json
+          git commit -m "Confirm Halozyme PGR17 Telegram resend"
+          git pull --rebase origin main
+          git push
