@@ -1,14 +1,14 @@
 {
-  "treasury_date": "2026-09-01",
+  "treasury_date": "2026-09-02",
   "pretightening_active": true,
   "pretightening": {
-    "date": "2026-09-01",
-    "base_date": "2026-08-25",
+    "date": "2026-09-02",
+    "base_date": "2026-08-26",
     "active": true,
-    "d2_bp": 21.999999999999975,
+    "d2_bp": 19.99999999999993,
     "d2s10s_bp": -6.999999999999936,
-    "d2s30s_bp": -12.000000000000014,
-    "avg_curve_bp": -9.499999999999975,
+    "d2s30s_bp": -10.999999999999943,
+    "avg_curve_bp": -8.99999999999994,
     "verdict": "시장이 먼저 긴축한 후보 — 고용·물가 추가 확인 필요"
   },
   "macro": {
@@ -30,5 +30,5 @@
   "last_seen_fomc_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
   "pending_fomc": null,
   "last_credibility_completed": false,
-  "updated_at_utc": "2026-09-01T21:52:40.947623+00:00"
+  "updated_at_utc": "2026-09-02T21:54:44.516171+00:00"
 }
