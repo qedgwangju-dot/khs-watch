@@ -119,13 +119,13 @@ jobs:
           cat > out/us_data_center_cycle_connection_test.txt <<'EOF'
           [미국 데이터센터 건설 사이클 감시] 텔레그램 연결 시험
 
-          @khs8879887988798879_bot 연결 정상입니다.
+          텔레그램 연결 정상입니다.
           - 미국 인구조사국 데이터센터 건설 지출 감시
-          - Dodge Construction Network 데이터센터 착공 자료 감시
+          - 도지 컨스트럭션 네트워크 데이터센터 착공 자료 감시
           - 매시간 웹 확인, 새 월간 데이터·수정치·새 착공 발표가 있을 때만 알림
-          - 알림 본문은 한국어로 전달하며 고유 프로젝트명만 원문 식별명을 유지
-          - 원문 주소는 긴 URL 대신 파란색 '원문' 링크로 표시
-          - 기존 GitHub Actions 감시는 수정하지 않고 별도 워크플로로 동작
+          - 알림에 표시되는 설명·기관명·프로젝트명·환율 출처는 모두 한국어로 표기
+          - 원문 주소는 긴 주소 대신 파란색 '원문' 링크로 표시
+          - 기존 깃허브 액션 감시는 수정하지 않고 별도 워크플로로 동작
           EOF
 
       - name: Send Telegram messages
@@ -145,6 +145,49 @@ jobs:
               pathlib.Path('out/us_data_center_cycle_alert.txt'),
           ]
 
+          REPLACEMENTS = [
+              ('Project Jupiter Data Center and Microgrid Phase 1 데이터센터 부문', '프로젝트 주피터 데이터센터 및 마이크로그리드 1단계 데이터센터 부문'),
+              ('Project Jupiter Data Center and Microgrid Phase 1 마이크로그리드 부문', '프로젝트 주피터 데이터센터 및 마이크로그리드 1단계 마이크로그리드 부문'),
+              ('Amazon STACK Highway 3 Data Center 데이터센터 부문', '아마존 스택 하이웨이 3 데이터센터 부문'),
+              ('Amazon STACK Highway 3 Data Center', '아마존 스택 하이웨이 3 데이터센터'),
+              ('Micron Semiconductor Mega-Factory Fab 1 – Phase 1', '마이크론 반도체 메가팩토리 팹 1 1단계'),
+              ('Dodge Construction Network', '도지 컨스트럭션 네트워크'),
+              ('Yahoo Finance USD/KRW', '야후 파이낸스 달러/원 환율'),
+              ('Yahoo Finance', '야후 파이낸스'),
+              ('Federal Reserve H.10 via Frankfurter', '미국 연방준비제도 H.10·프랑크푸르터'),
+              ('USD/KRW', '달러/원'),
+              ('GitHub Actions', '깃허브 액션'),
+              ('GitHub', '깃허브'),
+              ('KST', '한국시간'),
+          ]
+
+          def koreanize_visible_line(line: str) -> str:
+              translated = line
+              for src, dst in REPLACEMENTS:
+                  translated = translated.replace(src, dst)
+
+              # 향후 새 프로젝트명이 영문으로 들어오더라도 텔레그램에는 영문을 노출하지 않는다.
+              # 원문 프로젝트명은 상태 파일에 그대로 보존하고, 알림에서는 한국어 일반명으로 대체한다.
+              stripped = translated.lstrip()
+              if stripped.startswith('·') and re.search(r'[A-Za-z]', translated):
+                  if ': ' in translated:
+                      amount = translated.rsplit(': ', 1)[1]
+                      kind = '마이크로그리드 관련 프로젝트' if '마이크로그리드' in translated else '데이터센터 관련 프로젝트'
+                      translated = f'  · {kind}: {amount}'
+                  else:
+                      translated = '  · 데이터센터 관련 프로젝트'
+
+              # 환율 출처가 향후 다른 영문 공급자로 바뀌어도 영문 노출을 막는다.
+              if translated.startswith('- 출처:') and re.search(r'[A-Za-z]', translated):
+                  source_type = translated.split('·', 1)[1].strip() if '·' in translated else '환율 자료'
+                  translated = f'- 출처: 공식·신뢰 환율 자료 · {source_type}'
+
+              # URL은 별도 링크 처리하므로 이 검사는 일반 본문에만 적용된다.
+              if re.search(r'[A-Za-z]', translated):
+                  translated = re.sub(r'\b[A-Za-z][A-Za-z0-9._/&+\-]*\b', '', translated)
+                  translated = re.sub(r'\s{2,}', ' ', translated).rstrip()
+              return translated
+
           def render_html(text: str) -> str:
               rendered = []
               for line in text.splitlines():
@@ -153,7 +196,7 @@ jobs:
                       url = html_lib.escape(match.group(1), quote=True)
                       rendered.append(f'<a href="{url}">원문</a>')
                   else:
-                      rendered.append(html_lib.escape(line))
+                      rendered.append(html_lib.escape(koreanize_visible_line(line)))
               return '\n'.join(rendered)
 
           sent = 0
