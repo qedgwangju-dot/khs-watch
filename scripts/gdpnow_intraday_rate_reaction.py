@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Capture the *at-the-time* Treasury-yield reaction around a new GDPNow update.
+"""Capture the exact event-time Treasury-yield reaction around a new GDPNow update.
 
 Purpose
-- Do not report the latest Treasury yield as if it were the yield at the GDPNow event.
+- Never report the latest Treasury yield as if it were the yield at the GDPNow event.
 - Resolve the exact latest FRED GDPNow update timestamp when available.
 - Pull 1-minute Cboe TNX/TYX observations (via Yahoo Finance chart endpoint) around that timestamp.
-- Save pre-event, +5 minute, +30 minute values and basis-point changes.
+- Save release-time, pre-event, +5 minute, +30 minute values and basis-point changes.
 
 The intraday feed is used for event-time market reaction only. The main watcher still
 keeps U.S. Treasury official daily par yields as an end-of-day validation source.
@@ -188,14 +188,17 @@ def classify(ten: dict[str, Any], thirty: dict[str, Any], key: str) -> str:
 
 def analyze_symbol(symbol: str, release_utc: dt.datetime) -> dict[str, Any]:
     points = fetch_chart(symbol, release_utc - dt.timedelta(hours=2), release_utc + dt.timedelta(hours=3))
-    pre = point_before(points, release_utc, max_age_min=15)
+    pre = point_before(points, release_utc - dt.timedelta(seconds=1), max_age_min=15)
+    at = point_nearest(points, release_utc, max_gap_min=3)
     p5 = point_nearest(points, release_utc + dt.timedelta(minutes=5), max_gap_min=8)
     p30 = point_nearest(points, release_utc + dt.timedelta(minutes=30), max_gap_min=8)
     return {
         "symbol": symbol,
         "pre": pack_point(pre),
+        "at_release": pack_point(at),
         "plus_5m": pack_point(p5),
         "plus_30m": pack_point(p30),
+        "change_at_bp": bp(at, pre),
         "change_5m_bp": bp(p5, pre),
         "change_30m_bp": bp(p30, pre),
     }
@@ -232,6 +235,7 @@ def main() -> int:
         thirty = analyze_symbol("^TYX", release_utc)
         out["ten_year"] = ten
         out["thirty_year"] = thirty
+        out["market_confirmation_at"] = classify(ten, thirty, "change_at_bp")
         out["market_confirmation_5m"] = classify(ten, thirty, "change_5m_bp")
         out["market_confirmation_30m"] = classify(ten, thirty, "change_30m_bp")
         out["error"] = None
