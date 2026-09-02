@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/gdpnow-long-rates-telegram-watch.yml"
       - "scripts/gdpnow_long_rates_watch.py"
+      - "scripts/gdpnow_long_rates_reformat.py"
       - "data/gdpnow_long_rates_state.json"
   schedule:
     # Atlanta Fed updates are event driven; 15-minute polling catches a new official update quickly.
@@ -38,11 +39,17 @@ jobs:
       - name: Install parser dependency
         run: python -m pip install --disable-pip-version-check openpyxl==3.1.5
 
-      - name: Validate watcher
-        run: python -m py_compile scripts/gdpnow_long_rates_watch.py
+      - name: Validate watcher and formatter
+        run: |
+          python -m py_compile scripts/gdpnow_long_rates_watch.py
+          python -m py_compile scripts/gdpnow_long_rates_reformat.py
 
       - name: Check official GDPNow and rate sources
         run: python scripts/gdpnow_long_rates_watch.py
+
+      - name: Reformat Telegram alert for scanability
+        if: hashFiles('out/gdpnow_long_rates_alert.html') != ''
+        run: python scripts/gdpnow_long_rates_reformat.py
 
       - name: Publish status
         if: always()
@@ -92,6 +99,7 @@ jobs:
           import json
           import os
           import pathlib
+          import re
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
@@ -109,36 +117,75 @@ jobs:
               raise RuntimeError(f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}")
 
           text = pathlib.Path("out/gdpnow_long_rates_alert.html").read_text(encoding="utf-8").strip()
-          if len(text) > 3900:
-              text = text[:3850] + "\n\n…메시지 길이 제한으로 일부 생략"
-          payload = urllib.parse.urlencode({
-              "chat_id": chat_id,
-              "text": text,
-              "parse_mode": "HTML",
-              "disable_web_page_preview": "true",
-          }).encode("utf-8")
-          req = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/sendMessage",
-              data=payload,
-              method="POST",
-          )
-          with urllib.request.urlopen(req, timeout=25) as r:
-              result = json.loads(r.read().decode("utf-8"))
-          if not result.get("ok"):
-              raise RuntimeError(f"Telegram rejected message: {result}")
-          message_id = (result.get("result") or {}).get("message_id")
+
+          def visible_len(value: str) -> int:
+              return len(re.sub(r"<[^>]+>", "", value))
+
+          def split_message(value: str, limit: int = 3900) -> list[str]:
+              # Split only at blank-line section boundaries so HTML tags and visual groups stay intact.
+              blocks = value.split("\n\n")
+              chunks: list[str] = []
+              current = ""
+              for block in blocks:
+                  candidate = block if not current else current + "\n\n" + block
+                  if visible_len(candidate) <= limit:
+                      current = candidate
+                      continue
+                  if current:
+                      chunks.append(current)
+                      current = ""
+                  if visible_len(block) <= limit:
+                      current = block
+                      continue
+                  # Safety fallback for an abnormally long plain section.
+                  plain_parts = block.split("\n")
+                  piece = ""
+                  for part in plain_parts:
+                      cand = part if not piece else piece + "\n" + part
+                      if visible_len(cand) <= limit:
+                          piece = cand
+                      else:
+                          if piece:
+                              chunks.append(piece)
+                          piece = part
+                  current = piece
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          message_ids = []
+          for idx, chunk in enumerate(split_message(text), start=1):
+              if idx > 1:
+                  chunk = f"📊 <b>GDPNow · 장기금리 업데이트 (계속 {idx})</b>\n\n{chunk}"
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  result = json.loads(r.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
+              message_ids.append((result.get("result") or {}).get("message_id"))
+
           marker = {
               "telegram_delivery_confirmed": True,
               "lane": "gdpnow_long_rates",
               "bot_username": actual,
-              "message_id": message_id,
+              "message_ids": message_ids,
               "route_secret": "GLOBAL_RATES_TELEGRAM_*",
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
           pathlib.Path("out/gdpnow_long_rates_telegram_confirmed.json").write_text(
               json.dumps(marker, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
           )
-          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={message_id}")
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={message_ids}")
           PY
 
       - name: Persist state only after safe baseline or confirmed delivery
