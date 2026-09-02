@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-09-02T18:51:57+09:00",
+  "last_checked_kst": "2026-09-02T23:39:38+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -1477,6 +1477,78 @@
       "title": "[AI서머리] 더이노베이터스, LIPS 선정‧리벨리온, 국산 NPU 서버로 SKT 초거대 AI 구동 성공 - 스타트업레시피",
       "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5wZ1k4ejFvUlJJazRKZm5XYnl3cGtsV01VTXZ3QjhENWxrNGV0cVIwUTQ4ZWlYSkI5VnY1NjlTaTllcUUwbDBHRUdPWlFaNFlMaFU3a2tjdw?oc=5",
       "first_seen_kst": "2026-09-02T18:51:57+09:00",
+      "suppressed_stale": true
+    },
+    "5711c0b336680319141483b7": {
+      "title": "[재계는 지금] 리벨리온, Arm·SKT와 소버린 AI 추론 인프라 협력 外 - dealsite.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE95c1dfY2tZX3BiYlRTNUxkdXNFa3IxYjl1YW5pcjdiVXFsZTkwMGwza1Z0YnpERHZGdHdwUFd5NVhwbTFJUW5wSjhnQVdTUnc?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "3755e6c847d6969a59e0a5bd": {
+      "title": "SKT·Arm·리벨리온, AI 데이터센터 협력…추론 인프라 공동 개발 - v.daum.net",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE52UGZDTW52ZG1DY0ZBeEYtOHZ3VGI1aHFMR3F0TjhnN3FuNHJWdVpMYjJIbUpaVl9LRmRHdmt0RzZLaEtrRmtPUGcyWXh1WUE?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "872e54e5967bf95e3cd66479": {
+      "title": "리벨리온 NPU, SKT 데이터센터에 들어간다… \"AI 추론 기능 검증\" - 한국일보",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9ZS1NCMmtBaWtJQ3p6aDFGVjhiR0dEVTZjRzhwV0xNc3JzN2RCNWRyMWw2NXEtdF9YZE5EYXR0bzVUallRbUFFNlFZWk1FaEkzSGRxR3pEYU5fUzF6c3ZmVDI0ZlhEMjItWF9pd2Jn0gFzQVVfeXFMT2J6ajBzSUt6MmRlU3VtWU1KXzUzMHZ0NXVBOFZiZUhETVM0eEgwZlFETWg1aHhjV29DQjllSUU1UjlvT1oyRV9NVDdURmpnZk9OdEVXdEFTQ2lyTUNHMnlTdU55Z245MUFaNGw4eDFFdnE1Yw?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "805d986c0c1c50dce5a7a948": {
+      "title": "가비아, 정부 AI 컴퓨팅 지원사업 공급기업 선정…리벨리온 NPU 제공 - 네이트",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9vVjFUY3ltcEhralM4UXFhN2c3UE80REJpbkRjbkNEUmoyQ2lrOThRSV8wNVdORUItR3FKdmxzMnB5VWJMWmh1c2xlWWxFak1Qa3k4?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "3787e4d3b23d724923e17444": {
+      "title": "리벨리온, KB금융과 AI 인프라 구축 협력...국산 NPU 첫 적용 - zdnet.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9JTVkyWHdCR1FEOXk1cXZGaXM2S25BRlItWElKV1BkTFlZNFdfUnVjbklaU256dVpTUVV2cUZFWkM1TkMtRUNWMGtOdjJHaGJiY0xwUzVR?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "53b5d5c878b24c739b875cd8": {
+      "title": "리벨리온, KB금융에 NPU 공급 협약…금융권 첫 NPU도입 - 네이트",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBuSkV0ckJxNEdwV1N5S1RSUWUzaFVGa3Z2MDFRSjlGb29mcnJ2OUtMRG9pX3J5UUJJV1pwTjlCRVAwM1l3ZkNUc1JpZnFFM05ldUFGV2tFWjVlU3VEdlpua3RHQlJET3hnNEVRcmlRVTN3OFRjOWUzNw?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "23e19235b76976456ef2f3b4": {
+      "title": "KT클라우드, 공공 전용 NPU 시장 연다…리벨리온 기반 첫 상용화 - zdnet.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1CbzRIQ2lRY2RuV0ZtQUgtVlJaZlJsT0tRQnFyTVAzMlJDMm55dHQ1Nk04X0xZeWpoZ002RlY3YlVVUi1SVmFZYXpvWFJkWU1icC1KMlNB?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "caf3fdfdb64c4352809b3983": {
+      "title": "리벨리온-에코피스 맞손, \"NPU 탑재 K-수상로봇으로 중동 공략\" - zdnet.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBSRy1RVk9jODlOSGJTeTh3OGVxMU5yRlpRU3lHUGlJakZOeG5fdUhzNjdnMmRwUVdjLUs2aGdyb0NSZ1VuSUhjcUE4NEhYUkxfTHZ1aGl3?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "76788d16976a9431e7d8ebae": {
+      "title": "리벨리온-CCK솔루션, 기업 백오피스 'AX 풀스택 솔루션' 공동 개발 - zdnet.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5Gbnl4TzZ2el92ZWdQN1FsSHk4aG9jT3BJalZWVGM0bFJoLV93a0JoU0pJZ2U0TE0xdlg3dGJ0dVRLT1NHemhSa19wT1N0NjU5QlFXeFVR?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "34067cdf53bcdc4810cfcf68": {
+      "title": "리벨리온, SK텔레콤에 K-NPU '리벨' 칩 공급...\"물량은 미정\" - zdnet.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9iNlIzWFQtTG1MRWhUQ25zem1CYmlPamFFaWtPZ3UxQ050cDFBWTdwTFVSRGVVT3NPYW1YQU9xbkQ3Q3NKeTVxRUhuRVQ5TWllYUJFRExn?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "083ea7ece8ad08d7ff08d316": {
+      "title": "'국산 AI 반도체' 리벨리온-딥엑스, 공공기관 수의계약·조달 채널 확보 - zdnet.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE81TzdEbGp5NG0yS3lhdlZ4Y0tCNjJtRjRneFFpdzNhNVVjU0o1VXBDajc4cWJjRlh3T2Zvc20wUkU0TmxpeTRsOHBHYncyd2x6UHloRndR?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
+      "suppressed_stale": true
+    },
+    "977e780319b97d5b38a36059": {
+      "title": "비투엔, 리벨리온에 100억 간접투자…몽골 관세 사업도 협력 - bloter.net",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBHcjEyYjQ2czFWdDFTNW9rTHR6V1ZsM2NyS2lRYTZrQ0t3NHc3b3JiUXJqSWo5RmlISWJfY25VN1BVZ1d1SXlId25zY2NwN2lLZFlhNjNIV204Q19YZ3pCekE4R0V2Ry1m0gFsQVVfeXFMUDF6TU1ZOXJKUUlGdWlwQ2dRR3N6eUJJY0pFaVgxV21RRGhjYTNwNHoydWw5Nkx5NnZ1Q09ocnM5MjdSeGp2VUxzaWNLRDZKa2hKeFBCVmVDSU5JYnlQak55eGtXT2FMNGh2dXFS?oc=5",
+      "first_seen_kst": "2026-09-02T23:39:38+09:00",
       "suppressed_stale": true
     }
   }
