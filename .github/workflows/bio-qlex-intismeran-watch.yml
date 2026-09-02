@@ -18,7 +18,7 @@ on:
       - "scripts/jemperli_altb4_watch.py"
       - "scripts/enhertu_altb4_watch.py"
       - "scripts/enhertu_altb4_watch_v2.py"
-      - "scripts/halozyme_ptab_watch.py"
+      - "scripts/halozyme_legal_watch_v2.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -52,8 +52,8 @@ jobs:
       - name: Run Korean-guarded bio watch
         run: python scripts/bio_single_runner_v3.py
 
-      - name: Run Halozyme PTAB patent dispute watch
-        run: python scripts/halozyme_ptab_watch.py
+      - name: Run Halozyme PTAB and legal watch
+        run: python scripts/halozyme_legal_watch_v2.py
 
       - name: Publish bio watch status
         if: always()
