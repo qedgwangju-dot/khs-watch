@@ -8,11 +8,11 @@ import urllib.request
 
 UA = 'Mozilla/5.0 (compatible; BioKoreanGuard/1.0)'
 
-# 제품명·회사명·임상명·규제 약어처럼 번역하면 식별성이 깨지는 항목만 보존한다.
+# 제품명·회사명·임상명·규제 약어·종목코드처럼 번역하면 식별성이 깨지는 항목만 보존한다.
 ALLOWED_IDENTIFIERS = (
     'Enhertu', 'Jemperli', 'dostarlimab', 'trastuzumab deruxtecan', 'pertuzumab',
     'Intismeran', 'Intismeran autogene', 'pembrolizumab', 'berahyaluronidase alfa',
-    'KEYTRUDA', 'QLEX', 'ALT-B4', 'Hybrozyme', 'GSK', 'Merck', 'Moderna',
+    'KEYTRUDA', 'QLEX', 'ALT-B4', 'Hybrozyme', 'GSK', 'Merck', 'Moderna', 'MRK',
     'AstraZeneca', 'Daiichi Sankyo', 'Tesaro', 'FDA', 'EMA', 'EU', 'EC', 'PDUFA',
     'CHMP', 'Project Orbis', 'ClinicalTrials.gov', 'DESTINY-Breast09', 'DESTINY-Breast05',
     'AZUR-1', 'AZUR-2', 'AZUR-4', 'DOMENICA', 'JADE', 'INTerpath-001', 'INTerpath-014',
