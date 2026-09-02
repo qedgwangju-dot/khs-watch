@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/korea-market-stress-telegram-watch.yml"
-      - "scripts/korea_market_stress_watch_v9.py"
+      - "scripts/korea_market_stress_watch_v10.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -64,11 +64,11 @@ jobs:
           print(f"telegram_route_valid=true bot=@{actual}")
           PY
 
-      - name: Run v9 final-close market stress watcher
+      - name: Run v10 KOSPI and KOSDAQ final-close watcher
         run: |
           rm -f out/korea_market_stress_alert.html out/korea_market_stress_errors.log out/korea_market_stress_connection_test.html
-          python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v9.py
-          python scripts/korea_market_stress_watch_v9.py
+          python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v9.py scripts/korea_market_stress_watch_v10.py
+          python scripts/korea_market_stress_watch_v10.py
           cat out/korea_market_stress_status.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/korea_market_stress_errors.log ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
@@ -84,11 +84,12 @@ jobs:
 
           • 수신 봇: @khs8879887988798879_bot
           • 확인 주기: 15분
-          • 외국인 수급: 장중 잠정치는 상태 확인만 하고 경보 발송 금지
-          • KRX는 당일 최종 투자자별 매매내역을 오후 6시 이후 제공
-          • 외국인 수급 경보는 18:10 이후 최종 확인값만 사용
-          • 외국인 수급 경보에는 KOSPI 종가와 등락률을 반드시 함께 표시
-          • KOSPI 외국인: 최종 1일 ±1조원 또는 최근 3거래일 누적 ±3조원
+          • 외국인 수급: 장중 잠정치는 경보 발송 금지, 18:10 이후 장마감 수급 피드만 임계치 판정
+          • KOSPI 경보에는 KOSPI 종가·외국인 1일/3거래일 수급을 표시
+          • 같은 알림에 KOSDAQ 종가·외국인 1일/3거래일 수급도 반드시 표시
+          • 자동 수급 숫자는 네이버 장마감 투자자별 매매동향, KRX 투자자별 거래실적은 공식 원천 재확인 링크로 제공
+          • 자동 숫자를 KRX 직접 조회값이라고 오표기하지 않음
+          • KOSPI 외국인 경보 기준: 1일 ±1조원 또는 최근 3거래일 누적 ±3조원
           • 원/달러: 일간 ±20원 또는 ±1%, 1,400원 상단·1,350원 하단
           • 미국 10년물: 일간 ±10bp
           • 한미 정책금리차: 직전 감시값 대비 ±25bp
