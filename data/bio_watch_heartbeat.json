@@ -1,6 +1,6 @@
 {
-  "status": "ok",
-  "checked_at_kst": "2026-09-02T08:01:31+09:00",
+  "status": "degraded",
+  "checked_at_kst": "2026-09-02T10:01:07+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -8,18 +8,20 @@
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
   "qlex_alert_present": false,
-  "intismeran_alert_present": false,
+  "intismeran_alert_present": true,
   "jemperli_alert_present": false,
   "enhertu_alert_present": false,
   "qlex_send_outcome": "skipped",
-  "intismeran_send_outcome": "skipped",
+  "intismeran_send_outcome": "failure",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
   "qlex_state_persisted": true,
-  "intismeran_state_persisted": true,
+  "intismeran_state_persisted": false,
   "jemperli_state_persisted": true,
   "enhertu_state_persisted": true,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-09-01",
-  "errors": []
+  "errors": [
+    "Intismeran sender rc=1: Traceback (most recent call last):\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/intismeran_structured_telegram_send_v2.py\", line 17, in <module>\n    raise SystemExit(base.main())\n                     ^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/intismeran_structured_telegram_send.py\", line 265, in main\n    ids = send_message(message)\n          ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/intismeran_structured_telegram_send_v2.py\", line 10, in send_message\n    return _original_send_message(ensure_korean_text(text))\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict.py\", line 31, in ensure_korean_text\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict.py\", line 31, in <genexpr>\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict.py\", line 23, in strict_translate_line\n    raise RuntimeError(\nRuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있어 발송 차단: MRK"
+  ]
 }
