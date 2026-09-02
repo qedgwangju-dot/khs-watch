@@ -5,7 +5,6 @@ from __future__ import annotations
 import html
 import json
 import pathlib
-import re
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT = ROOT / "out" / "gdpnow_long_rates_alert.html"
@@ -49,6 +48,7 @@ def main() -> int:
         kst_short = kst.replace("T", " ")[:16] + " KST" if kst else "확인 불가"
         et_short = et.replace("T", " ")[:16] + " ET" if et else "확인 불가"
 
+        mat = str(data.get("market_confirmation_at") or "확인 불가")
         m5 = str(data.get("market_confirmation_5m") or "확인 불가")
         m30 = str(data.get("market_confirmation_30m") or "확인 불가")
 
@@ -58,8 +58,9 @@ def main() -> int:
         elif "장기금리 하락" in text[:700]:
             predicted = "하락"
 
+        # Prefer +5m for a prompt confirmation; use +30m only when already available.
+        confirm_source = m30 if m30 != "확인 불가" else (m5 if m5 != "확인 불가" else mat)
         actual = ""
-        confirm_source = m30 if m30 != "확인 불가" else m5
         if "상승 확인" in confirm_source:
             actual = "상승"
         elif "하락 확인" in confirm_source:
@@ -78,11 +79,14 @@ def main() -> int:
             "⏱ <b>발표 당시 금리 · 정확한 시각값</b>",
             f"• GDPNow 확인시각: <b>{html.escape(kst_short)}</b> ({html.escape(et_short)})",
             "• 10Y: "
-            f"직전 <b>{fmt_point(ten.get('pre'))}</b> → +5분 <b>{fmt_point(ten.get('plus_5m'))}</b> ({fmt_bp(ten.get('change_5m_bp'))}) "
+            f"직전 <b>{fmt_point(ten.get('pre'))}</b> → 발표시각 <b>{fmt_point(ten.get('at_release'))}</b> ({fmt_bp(ten.get('change_at_bp'))}) "
+            f"→ +5분 <b>{fmt_point(ten.get('plus_5m'))}</b> ({fmt_bp(ten.get('change_5m_bp'))}) "
             f"→ +30분 <b>{fmt_point(ten.get('plus_30m'))}</b> ({fmt_bp(ten.get('change_30m_bp'))})",
             "• 30Y: "
-            f"직전 <b>{fmt_point(thirty.get('pre'))}</b> → +5분 <b>{fmt_point(thirty.get('plus_5m'))}</b> ({fmt_bp(thirty.get('change_5m_bp'))}) "
+            f"직전 <b>{fmt_point(thirty.get('pre'))}</b> → 발표시각 <b>{fmt_point(thirty.get('at_release'))}</b> ({fmt_bp(thirty.get('change_at_bp'))}) "
+            f"→ +5분 <b>{fmt_point(thirty.get('plus_5m'))}</b> ({fmt_bp(thirty.get('change_5m_bp'))}) "
             f"→ +30분 <b>{fmt_point(thirty.get('plus_30m'))}</b> ({fmt_bp(thirty.get('change_30m_bp'))})",
+            f"• 발표시각 시장 확인: <b>{html.escape(mat)}</b>",
             f"• +5분 시장 확인: <b>{html.escape(m5)}</b>",
             f"• +30분 시장 확인: <b>{html.escape(m30)}</b>",
             f"• {consistency}",
