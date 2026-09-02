@@ -1,28 +1,30 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-02T18:37:05+09:00",
+  "updated_at_kst": "2026-09-02T20:03:44+09:00",
   "seen_event_keys": [
     "foreign1d_neg:2026-08-31",
-    "capex:13cbe150930d23d8",
-    "foreign3d_neg:2026-08-27",
     "policy_spread:2026-08-27:0.75",
+    "foreign3d_neg:2026-09-02:postclose",
+    "capex:13cbe150930d23d8",
     "foreign1d_neg:2026-09-02:postclose",
-    "foreign3d_neg:2026-09-02:postclose"
+    "foreign3d_neg:2026-08-27",
+    "foreign1d_neg:2026-09-02:final",
+    "foreign3d_neg:2026-09-02:final"
   ],
   "active_keys": [
     "foreign1d_neg:2026-09-02",
     "foreign3d_neg:2026-09-02"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-02T18:37:05+09:00",
+    "checked_at_kst": "2026-09-02T20:03:44+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-02",
-      "value": 1366.3,
+      "value": 1365.1,
       "prev_date": "2026-09-01",
       "prev_value": 1375.5,
-      "change_krw": -9.2,
-      "change_pct": -0.6688,
+      "change_krw": -10.4,
+      "change_pct": -0.7561,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
@@ -48,8 +50,7 @@
       "daily_krw": -1917300000000,
       "three_day_krw": -3057500000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260902&sosok=01",
-      "phase": "마감 후 재조회",
-      "source_note": "네이버 투자자별 매매동향 재조회"
+      "phase": "장마감 최종 확인"
     },
     "global_wave_news": [],
     "hyperscaler_capex_news": [],
@@ -58,6 +59,8 @@
       "close": 6562.72,
       "change_pct": -3.99,
       "source": "https://m.stock.naver.com/api/index/KOSPI/price?pageSize=5&page=1"
-    }
+    },
+    "flow_finality_note": "외국인 수급 임계치 경보는 KRX 당일 최종 매매내역 제공 시점인 오후 6시 이후만 사용. 자동 실행 여유를 두어 18:10 이후 판정.",
+    "krx_flow_info_url": "https://data.krx.co.kr/contents/MDC/MDI/outerLoader/index.cmd?screenId=MDCSTAT022"
   }
 }
