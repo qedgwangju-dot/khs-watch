@@ -148,16 +148,23 @@ jobs:
         run: |
           git config user.name "korea-market-stress-watch[bot]"
           git config user.email "korea-market-stress-watch[bot]@users.noreply.github.com"
-          git add data/korea_market_stress_watch_state.json
-          if ! git diff --cached --quiet; then
+          cp data/korea_market_stress_watch_state.json /tmp/korea_market_stress_watch_state.json
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/korea_market_stress_watch_state.json data/korea_market_stress_watch_state.json
+            git add data/korea_market_stress_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Market stress watch state unchanged"
+              exit 0
+            fi
             git commit -m "Update Korea market stress watch state"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then exit 0; fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
