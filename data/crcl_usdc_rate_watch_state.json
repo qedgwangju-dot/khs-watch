@@ -1,0 +1,50 @@
+{
+  "updated_at_kst": "2026-09-04T06:55:50+09:00",
+  "circle": {
+    "date": "2026-08-31",
+    "circulation_usd_b": 73.3,
+    "precision": "0.1B official webpage display"
+  },
+  "usdxx": {
+    "date": "2026-09-02",
+    "sec_yield_7d": 3.62,
+    "fund_size_usd_m": 62317.4,
+    "fund_size_date": "2026-09-02"
+  },
+  "sofr": {},
+  "treasury": {
+    "date": "2026-09-03",
+    "three_month": 3.89,
+    "ten_year": 4.77,
+    "prev_date": "2026-09-02",
+    "prev_three_month": 3.92,
+    "prev_ten_year": 4.79,
+    "daily_3m_bp": -3.0,
+    "daily_10y_bp": -2.0,
+    "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
+  },
+  "crcl": {
+    "date": "2026-09-03",
+    "close": 103.2300033569336,
+    "prev_date": "2026-09-02",
+    "prev_close": 88.63999938964844,
+    "daily_pct": 16.46
+  },
+  "tbx": {
+    "date": "2026-09-03",
+    "close": 28.979999542236328,
+    "prev_date": "2026-09-02",
+    "prev_close": 29.020000457763672,
+    "daily_pct": -0.14
+  },
+  "fx": {
+    "rate": 1355.8299560546875,
+    "date": "2026-09-03",
+    "source": "Yahoo Finance USD/KRW 일일 종가(한국은행 원문 자동조회 실패 시 보조값)",
+    "source_url": "https://finance.yahoo.com/quote/KRW=X/",
+    "crosscheck": "한국은행 원문 자동조회 실패"
+  },
+  "errors": [
+    "sofr: NY Fed SOFR rows could not be parsed"
+  ]
+}
