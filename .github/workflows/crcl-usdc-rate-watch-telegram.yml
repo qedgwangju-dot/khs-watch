@@ -67,7 +67,7 @@ jobs:
           PY
 
       - name: Check CRCL, USDC and rate fundamentals
-        run: python scripts/crcl_usdc_rate_watch.py
+        run: PYTHONPATH=. python scripts/crcl_usdc_rate_watch.py
 
       - name: Publish watcher summary
         if: always()
