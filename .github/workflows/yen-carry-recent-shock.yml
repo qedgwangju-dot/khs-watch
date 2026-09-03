@@ -1,0 +1,180 @@
+name: Yen carry current vs recent FX shock
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/yen-carry-recent-shock.yml"
+      - "scripts/yen_carry_recent_shock.py"
+      - "scripts/yen_carry_composite_watch.py"
+      - "scripts/yen_carry_fx_shock.py"
+      - "scripts/khs_source_fetch.py"
+      - "tests/test_yen_carry_recent_shock.py"
+  schedule:
+    # Fast FX lane: preserve a 90-minute shock memory even after the immediate move rebounds.
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yen-carry-recent-shock
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TELEGRAM_DRY_RUN: ${{ github.ref != 'refs/heads/main' && 'true' || 'false' }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate recent shock layer
+        run: |
+          python -m py_compile scripts/yen_carry_recent_shock.py
+          PYTHONPATH=scripts python -m unittest tests/test_yen_carry_recent_shock.py -v
+
+      - name: Check current and recent yen shock
+        run: PYTHONPATH=scripts python scripts/yen_carry_recent_shock.py
+
+      - name: Publish status
+        if: always()
+        run: |
+          if [ -f out/yen_carry_recent_shock_status.md ]; then
+            cat out/yen_carry_recent_shock_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "엔캐리 환율 충격 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/yen_carry_composite_alert.md ]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            echo "# Telegram 전송 예정 메시지" >> "$GITHUB_STEP_SUMMARY"
+            cat out/yen_carry_composite_alert_title.txt >> "$GITHUB_STEP_SUMMARY"
+            echo >> "$GITHUB_STEP_SUMMARY"
+            cat out/yen_carry_composite_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send FX shock state change through verified KHS Telegram route
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_composite_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import html
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
+          expected = (os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
+          if not token or not chat_id:
+              raise RuntimeError('GLOBAL_RATES_TELEGRAM_* secrets are required; refusing fallback')
+
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              identity = json.loads(r.read().decode('utf-8'))
+          actual = str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower() != expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+
+          title = pathlib.Path('out/yen_carry_composite_alert_title.txt').read_text(encoding='utf-8').strip()
+          body = pathlib.Path('out/yen_carry_composite_alert.md').read_text(encoding='utf-8').strip()
+          text = f'{title}\n\n{body}'
+          yahoo_url = 'https://finance.yahoo.com/quote/JPY=X/'
+
+          rendered = []
+          for line in text.splitlines():
+              if line.startswith('- USD/JPY: Yahoo query1/query2'):
+                  rendered.append(
+                      f'- USD/JPY(Yahoo 5분 데이터) — <a href="{html.escape(yahoo_url, quote=True)}">원문</a>'
+                  )
+              else:
+                  rendered.append(html.escape(line))
+          telegram_html = '\n'.join(rendered)
+
+          payload = urllib.parse.urlencode({
+              'chat_id': chat_id,
+              'text': telegram_html,
+              'parse_mode': 'HTML',
+              'disable_web_page_preview': 'true',
+          }).encode('utf-8')
+          req = urllib.request.Request(
+              f'https://api.telegram.org/bot{token}/sendMessage', data=payload, method='POST'
+          )
+          with urllib.request.urlopen(req, timeout=25) as r:
+              result = json.loads(r.read().decode('utf-8'))
+          if not result.get('ok'):
+              raise RuntimeError(f'Telegram rejected recent shock alert: {result}')
+
+          confirmed = {
+              'status': 'confirmed',
+              'lane': 'yen_carry_recent_shock',
+              'bot_username': actual,
+              'message_ids': [(result.get('result') or {}).get('message_id')],
+              'confirmed_at_kst': dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
+          }
+          pathlib.Path('out/yen_carry_composite_telegram_confirmed.json').write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          print(f'telegram_delivery_confirmed=true lane=yen_carry_recent_shock bot=@{actual}')
+          PY
+
+      - name: Finalize recent shock state
+        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: PYTHONPATH=scripts python scripts/yen_carry_recent_shock.py --finalize
+
+      - name: Commit recent shock state
+        if: always() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('data/yen_carry_recent_shock_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/yen_carry_recent_shock_state.json
+          if git diff --cached --quiet; then
+            echo "최근 환율 충격 상태 변경 없음"
+          else
+            git commit -m "Update yen carry recent shock state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yen-carry-recent-shock-${{ github.run_id }}
+          path: |
+            out/yen_carry_recent_shock_status.md
+            out/yen_carry_recent_shock_pending_state.json
+            out/yen_carry_composite_alert_title.txt
+            out/yen_carry_composite_alert.md
+            out/yen_carry_composite_alert.json
+            out/yen_carry_composite_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
