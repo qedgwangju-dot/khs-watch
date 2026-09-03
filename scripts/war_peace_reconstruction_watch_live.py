@@ -10,13 +10,11 @@ import war_peace_reconstruction_watch_clean as clean
 watch = clean.watch
 runner = clean.runner
 
-# Google News 색인만 기다리면 Reuters 원문이 늦게 잡히거나 1시간 검색창을 벗어날 수 있다.
-# Reuters 공개 웹 검색 엔드포인트를 직접 조회하고, Google News는 보강 경로로 유지한다.
-DIRECT_REUTERS_QUERIES = [
-    "reuters-direct:Ukraine peace deal Putin Zelenskiy",
-    "reuters-direct:Zelenskiy U.S. delegation Moscow Kyiv",
-    "reuters-direct:Russia Ukraine peace agreement U.S. envoys",
-    "reuters-direct:Iran Trump peace war advisers",
+# Google News 색인을 기다리지 않고 Reuters 섹션 자체를 5분마다 직접 확인한다.
+# 검색 API가 차단될 때도 섹션 API → Google News 보강창 순서로 계속 동작한다.
+DIRECT_REUTERS_SECTIONS = [
+    "reuters-section:/world/europe",
+    "reuters-section:/world/middle-east",
 ]
 
 UKRAINE_FAST_QUERIES = [
@@ -32,7 +30,7 @@ IRAN_BACKFILL_QUERIES = [
     'site:wsj.com Iran Trump ("end the war" OR "declare the war over" OR advisers OR midterms) when:24h',
 ]
 
-watch.QUERIES = DIRECT_REUTERS_QUERIES + UKRAINE_FAST_QUERIES + IRAN_BACKFILL_QUERIES + list(watch.QUERIES)
+watch.QUERIES = DIRECT_REUTERS_SECTIONS + UKRAINE_FAST_QUERIES + IRAN_BACKFILL_QUERIES + list(watch.QUERIES)
 watch.TRUSTED = tuple(list(watch.TRUSTED) + ["Voice of America", "VOA", "VOA Korea"])
 watch.PEACE = list(watch.PEACE) + [
     "chance of peace", "new dynamic", "u.s. delegation", "us delegation",
@@ -43,74 +41,86 @@ watch.PEACE = list(watch.PEACE) + [
 _prev_google_news = watch.google_news
 
 
-def _reuters_direct_search(keyword):
+def _make_reuters_row(article):
+    title = watch.clean(article.get("title") or article.get("web") or "")
+    desc = watch.clean(article.get("description") or "")
+    canonical = article.get("canonical_url") or ""
+    if canonical.startswith("http"):
+        link = canonical
+    elif canonical:
+        link = "https://www.reuters.com" + canonical
+    else:
+        return None
+
+    display = article.get("published_time") or article.get("display_time") or ""
+    pub = ""
+    if display:
+        try:
+            d = dt.datetime.fromisoformat(display.replace("Z", "+00:00"))
+            pub = format_datetime(d)
+        except Exception:
+            pub = ""
+
+    row = {
+        "title": title,
+        "title_original": title,
+        "link": link,
+        "published": pub,
+        "source": "Reuters",
+        "description": desc,
+    }
+
+    text = (title + " " + desc).lower()
+    signals = []
+    if "putin" in text and any(k in text for k in ("peace deal", "peace agreement", "chance of peace")):
+        signals.append("푸틴, 우크라이나 전쟁 종식을 위한 평화 협정 타결 가능성 언급")
+    if any(k in text for k in ("delegation", "envoys")) and "moscow" in text and any(k in text for k in ("kyiv", "kiev")):
+        signals.append("젤렌스키, 미국 협상단이 모스크바와 키이우를 방문할 예정이라고 밝혀")
+    if signals:
+        row["signals_ko"] = signals
+        row["forced_tags"] = ["종전·협상", "시간표"]
+        row["deep_signal"] = True
+    return row
+
+
+def _reuters_section(section):
     args = {
-        "keyword": keyword,
-        "offset": 0,
-        "orderby": "display_date:desc",
-        "size": 20,
+        "section_id": section,
+        "size": 30,
         "website": "reuters",
+        "fetch_type": "section",
     }
     url = (
-        "https://www.reuters.com/pf/api/v3/content/fetch/articles-by-search-v2?query="
+        "https://www.reuters.com/pf/api/v3/content/fetch/articles-by-section-alias-or-id-v1?query="
         + urllib.parse.quote_plus(json.dumps(args, ensure_ascii=False, separators=(",", ":")))
     )
     try:
         data = json.loads(watch.req(url, 15).decode("utf-8"))
     except Exception as e:
-        return [], f"Reuters direct {keyword}: {type(e).__name__}"
+        return [], f"Reuters section {section}: {type(e).__name__}"
+
+    articles = []
+    if isinstance(data.get("arcResult"), dict):
+        articles = data["arcResult"].get("articles") or []
+    if not articles and isinstance(data.get("result"), dict):
+        articles = data["result"].get("articles") or []
 
     rows = []
-    for article in (data.get("result") or {}).get("articles", [])[:20]:
-        title = watch.clean(article.get("web") or article.get("title") or "")
-        desc = watch.clean(article.get("description") or "")
-        canonical = article.get("canonical_url") or ""
-        if canonical.startswith("http"):
-            link = canonical
-        elif canonical:
-            link = "https://www.reuters.com" + canonical
-        else:
-            continue
-        display = article.get("display_time") or ""
-        pub = ""
-        if display:
-            try:
-                d = dt.datetime.fromisoformat(display.replace("Z", "+00:00"))
-                pub = format_datetime(d)
-            except Exception:
-                pub = ""
-
-        row = {
-            "title": title,
-            "title_original": title,
-            "link": link,
-            "published": pub,
-            "source": "Reuters",
-            "description": desc,
-        }
-
-        text = (title + " " + desc).lower()
-        signals = []
-        if "putin" in text and any(k in text for k in ("peace deal", "peace agreement", "chance of peace")):
-            signals.append("푸틴, 우크라이나 전쟁 종식을 위한 평화 협정 타결 가능성 언급")
-        if any(k in text for k in ("delegation", "envoys")) and "moscow" in text and any(k in text for k in ("kyiv", "kiev")):
-            signals.append("젤렌스키, 미국 협상단이 모스크바와 키이우를 방문할 예정이라고 밝혀")
-        if signals:
-            row["signals_ko"] = signals
-            row["forced_tags"] = ["종전·협상", "시간표"]
-            row["deep_signal"] = True
-        rows.append(row)
+    for article in articles[:30]:
+        row = _make_reuters_row(article)
+        if row:
+            rows.append(row)
     return rows, None
 
 
-def google_news_with_reuters_direct(query):
-    prefix = "reuters-direct:"
+def google_news_with_reuters_section(query):
+    prefix = "reuters-section:"
     if query.startswith(prefix):
-        return _reuters_direct_search(query[len(prefix):])
+        return _reuters_section(query[len(prefix):])
     return _prev_google_news(query)
 
 
-watch.google_news = google_news_with_reuters_direct
+watch.google_news = google_news_with_reuters_section
 
 _prev_score = watch.score_item
 
