@@ -91,6 +91,7 @@ jobs:
 
           python - <<'PY'
           import datetime as dt
+          import html
           import json
           import os
           import pathlib
@@ -112,9 +113,24 @@ jobs:
 
           title = pathlib.Path("out/boj_policy_lead_alert_title.txt").read_text(encoding="utf-8").strip()
           body = pathlib.Path("out/boj_policy_lead_alert.md").read_text(encoding="utf-8").strip()
-          text = f"{title}\n\n{body}"[:4096]
+          raw = f"{title}\n\n{body}"
+          rendered = []
+          for line in raw.splitlines():
+              if line.startswith("원문: "):
+                  source_url = line[len("원문: "):].strip()
+                  rendered.append(f'<a href="{html.escape(source_url, quote=True)}">원문</a>')
+              else:
+                  rendered.append(html.escape(line))
+          text = "\n".join(rendered)
+          if len(text) > 4096:
+              raise RuntimeError(f"BOJ Telegram message too long after HTML rendering: {len(text)}")
           payload = urllib.parse.urlencode(
-              {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"}
+              {
+                  "chat_id": chat_id,
+                  "text": text,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }
           ).encode("utf-8")
           request = urllib.request.Request(
               f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST"
@@ -130,6 +146,8 @@ jobs:
               "bot_username": actual,
               "route_secret": "GLOBAL_RATES_TELEGRAM_*",
               "message_id": result.get("result", {}).get("message_id"),
+              "render_mode": "HTML",
+              "source_link_label": "원문",
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
           pathlib.Path("out/boj_policy_lead_telegram_confirmed.json").write_text(
@@ -137,7 +155,7 @@ jobs:
           )
           print(
               "telegram_delivery_confirmed=true lane=boj_policy "
-              f"bot_username=@{actual} message_id={confirmed['message_id']}"
+              f"bot_username=@{actual} message_id={confirmed['message_id']} render_mode=HTML source_link=원문"
           )
           PY
 
