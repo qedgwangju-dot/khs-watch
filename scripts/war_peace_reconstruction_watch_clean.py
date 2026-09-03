@@ -10,10 +10,15 @@ watch = runner.watch
 
 CORE_TERMS = (
     "iran", "hormuz", "tehran", "이란", "호르무즈", "테헤란",
-    "ukraine", "russia", "putin", "zelensky", "우크라이나", "러시아", "푸틴", "젤렌스키",
+    "ukraine", "russia", "putin", "zelensky", "zelenskiy", "우크라이나", "러시아", "푸틴", "젤렌스키",
     "israel", "hezbollah", "lebanon", "이스라엘", "헤즈볼라", "레바논",
-    "ceasefire", "peace talks", "peace agreement", "end the war", "종전", "휴전", "평화협상",
+    "ceasefire", "peace talks", "peace agreement", "peace deal", "end the war", "종전", "휴전", "평화협상", "평화협정",
     "reconstruction", "rebuilding", "재건", "복구", "재건기금",
+)
+
+MARKET_ONLY = (
+    "oil prices", "wti", "brent", "stocks rise", "stocks fall", "futures rise", "futures fall",
+    "investors weigh", "markets weigh", "유가 상승", "유가 하락", "선물 상승", "선물 하락",
 )
 
 _original_score = watch.score_item
@@ -22,8 +27,12 @@ _original_score = watch.score_item
 def strict_score_item(x, now):
     score, tags = _original_score(x, now)
     text = (x.get("title_original", "") + " " + x.get("description", "")).lower()
+    title = x.get("title_original", "").lower()
     # 구글뉴스 검색의 주변 결과가 핵심 변화에 섞이지 않도록 전쟁 당사자·종전·재건 키워드가 없는 기사는 제외.
     if not x.get("deep_signal") and not any(term.lower() in text for term in CORE_TERMS):
+        return 0, tags
+    # 가격·선물·시장 반응 기사 자체는 '핵심 변화'에 중복 노출하지 않는다. 숫자는 별도 시장 반응 블록에서 보여준다.
+    if not x.get("deep_signal") and any(term in title for term in MARKET_ONLY):
         return 0, tags
     return score, tags
 
@@ -50,7 +59,7 @@ def clean_topic_label(x):
     parts = []
     if any(k in text for k in ("iran", "hormuz", "tehran", "이란", "호르무즈", "테헤란")):
         parts.append("이란·호르무즈")
-    if any(k in text for k in ("ukraine", "russia", "putin", "zelensky", "우크라이나", "러시아", "푸틴", "젤렌스키")):
+    if any(k in text for k in ("ukraine", "russia", "putin", "zelensky", "zelenskiy", "우크라이나", "러시아", "푸틴", "젤렌스키")):
         parts.append("우크라이나·러시아")
     if any(k in text for k in ("israel", "hezbollah", "lebanon", "이스라엘", "헤즈볼라", "레바논")):
         parts.append("이스라엘·레바논")
@@ -59,12 +68,25 @@ def clean_topic_label(x):
     return " · ".join(dict.fromkeys(parts)) or "종전·협상"
 
 
+def _topic_flags(items):
+    iran = False
+    ukraine = False
+    for x in items:
+        if "종전·협상" not in x.get("tags", []):
+            continue
+        label = clean_topic_label(x)
+        iran = iran or "이란·호르무즈" in label
+        ukraine = ukraine or "우크라이나·러시아" in label
+    return iran, ukraine
+
+
 def build_clean_alert(items, markets, now):
     peace = any("종전·협상" in x.get("tags", []) for x in items)
     escalation = any("확전" in x.get("tags", []) for x in items)
     rebuild = any("재건" in x.get("tags", []) for x in items)
     political = any("정치일정" in x.get("tags", []) for x in items)
     pressure = any("제재·압박" in x.get("tags", []) for x in items)
+    iran_peace, ukraine_peace = _topic_flags(items)
 
     lines = [
         "<b>전쟁·종전·재건 웹감시</b>",
@@ -100,8 +122,11 @@ def build_clean_alert(items, markets, now):
         judgments.extend([
             "<b>할인율:</b> 종전·휴전 진전이면 유가·전쟁 위험프리미엄 완화 가능",
             "<b>수급:</b> 달러·금리 안정이 동반되면 나스닥·신흥국 위험선호에 우호적",
-            "<b>시간표:</b> 종전 선언·공식 휴전문·정상회담·제재 변화·병력 철수 확인",
         ])
+    if ukraine_peace:
+        judgments.append("<b>시간표:</b> 미국 협상단의 모스크바·키이우 방문 → 정상급 회담 → 휴전 조건·안보보장 문안 순서 확인")
+    if iran_peace:
+        judgments.append("<b>시간표:</b> 종전 선언 → 공식 휴전문 → 호르무즈·제재 변화 → 병력 철수 순서 확인")
     if political:
         judgments.append("<b>정치일정:</b> 11월 중간선거 부담이 확전 억제 또는 종전 선언을 앞당기는지 확인")
     if pressure:
@@ -125,8 +150,15 @@ def build_clean_alert(items, markets, now):
         ])
 
     checkpoints = []
-    if peace:
-        checkpoints.extend(["트럼프의 종전 선언 여부", "공식 합의문·공동성명", "실제 교전 중단", "후속 정상·실무회담 일정"])
+    if ukraine_peace:
+        checkpoints.extend([
+            "미국 협상단의 모스크바·키이우 방문 날짜",
+            "트럼프·푸틴·젤렌스키 정상급 회담 여부",
+            "영토·안보보장·제재를 포함한 실제 휴전 조건",
+            "양측 장거리 공습 감소 여부",
+        ])
+    if iran_peace:
+        checkpoints.extend(["트럼프의 종전 선언 여부", "공식 합의문·공동성명", "실제 교전 중단", "호르무즈 통항·제재·병력 철수"])
     if political:
         checkpoints.extend(["공화당 중간선거 여론·전쟁 지지율", "추가 대규모 공습 승인 여부"])
     if rebuild:
