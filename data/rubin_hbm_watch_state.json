@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-03T06:53:37+09:00",
+  "updated_at_kst": "2026-09-03T09:22:10+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -33,7 +33,7 @@
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 3,
+  "last_unseen_raw_count": 0,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
@@ -42,7 +42,5 @@
     "date": "2026-09-02",
     "error": ""
   },
-  "errors": [
-    "핵심 사실 자동추출 실패로 발송 제외: Investing.com 한국어 | \"HBM 다음은 eSSD\"…삼전닉스, AI 메모리 ’쩐의 전쟁’ EBN - Investing.com 한국어"
-  ]
+  "errors": []
 }
