@@ -43,7 +43,7 @@ jobs:
     env:
       TELEGRAM_TEST: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false' }}
       TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
       YEN_CARRY_MAX_DATA_AGE_MINUTES: "240"
       YEN_CARRY_CASH_FRESH_MINUTES: "150"
       YEN_CARRY_FX_SHOCK_MAX_AGE_MINUTES: "12"
@@ -76,6 +76,28 @@ jobs:
             tests/test_yen_carry_market_data_v2.py \
             tests/test_yen_carry_fx_shock.py -v
 
+      - name: Validate dedicated Telegram route
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          expected = "khs8879887988798879_bot"
+          actual = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").lstrip("@")
+          if actual != expected:
+              raise RuntimeError(f"Unexpected bot route: @{actual or 'missing'}")
+          text = Path(".github/workflows/yen-carry-alert.yml").read_text(encoding="utf-8")
+          required = (
+              'actual_username.lower() != expected_username.lower()',
+              'Wrong Telegram bot configured',
+              'TELEGRAM_BOT_TOKEN:',
+              'TELEGRAM_CHAT_ID:',
+          )
+          missing = [item for item in required if item not in text]
+          if missing:
+              raise RuntimeError(f"Yen-carry Telegram route invalid: missing={missing}")
+          print("yen_carry_telegram_route_guard=ok expected=@khs8879887988798879_bot")
+          PY
+
       - name: Check yen carry conditions with accurate session basis
         run: python scripts/yen_carry_alert_v2.py
 
@@ -104,6 +126,7 @@ jobs:
         if: env.TELEGRAM_DRY_RUN == 'true' && (hashFiles('out/yen_carry_alert.md') != '' || hashFiles('out/yen_carry_fx_shock_alert.md') != '')
         run: |
           printf '\n---\n\n텔레그램 미전송 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
+          echo "대상 봇 고정: @khs8879887988798879_bot" >> "$GITHUB_STEP_SUMMARY"
           if [ -f out/yen_carry_alert.md ]; then
             cat out/yen_carry_alert.md >> "$GITHUB_STEP_SUMMARY"
           fi
@@ -112,23 +135,18 @@ jobs:
             cat out/yen_carry_fx_shock_alert.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Send Telegram alerts through second bot only
+      - name: Send yen carry alerts through khs dedicated bot only
         if: env.TELEGRAM_DRY_RUN != 'true' && (hashFiles('out/yen_carry_alert.md') != '' || hashFiles('out/yen_carry_fx_shock_alert.md') != '')
         env:
-          YEN_CARRY_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          YEN_CARRY_TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
-          EXISTING_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
         run: |
-          TELEGRAM_BOT_TOKEN="$YEN_CARRY_TELEGRAM_BOT_TOKEN"
-          TELEGRAM_CHAT_ID="${YEN_CARRY_TELEGRAM_CHAT_ID:-$EXISTING_TELEGRAM_CHAT_ID}"
-          export TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID
-
           if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
-            echo "두 번째 봇용 YEN_CARRY_TELEGRAM_BOT_TOKEN이 없습니다. 첫 번째 봇으로는 대체 송출하지 않습니다." >&2
+            echo "GLOBAL_RATES_TELEGRAM_BOT_TOKEN이 없습니다. 다른 봇으로 대체 송출하지 않습니다." >&2
             exit 1
           fi
           if [ -z "$TELEGRAM_CHAT_ID" ]; then
-            echo "YEN_CARRY_TELEGRAM_CHAT_ID와 기존 대상 CHAT_ID가 모두 없습니다." >&2
+            echo "GLOBAL_RATES_TELEGRAM_CHAT_ID가 없습니다. 다른 채팅으로 대체 송출하지 않습니다." >&2
             exit 1
           fi
 
@@ -198,6 +216,7 @@ jobs:
                   "status": "confirmed",
                   "lane": lane,
                   "bot_username": actual_username,
+                  "route_secret": "GLOBAL_RATES_TELEGRAM_*",
                   "message_id": result.get("result", {}).get("message_id"),
                   "confirmed_at_kst": dt.datetime.now(
                       ZoneInfo("Asia/Seoul")
