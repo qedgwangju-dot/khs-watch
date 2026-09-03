@@ -13,7 +13,7 @@
     "unwind::USD/JPY 급락·엔화 급등": false,
     "unwind::레버리지 펀드 엔화 순숏": true,
     "unwind::미·일 2년 금리차 축소": false,
-    "unwind::일본 단기금리 상승": true,
+    "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
   "initialized": true,
@@ -26,23 +26,23 @@
     "policy_action": "2026-07-31",
     "ust2": "2026-09-02"
   },
-  "unwind_label": "엔캐리 청산 구조적 경계",
-  "unwind_level": 1,
-  "updated_at_kst": "2026-09-03T12:33:56+09:00",
+  "unwind_label": "엔캐리 청산 미확인",
+  "unwind_level": 0,
+  "updated_at_kst": "2026-09-03T17:02:32+09:00",
   "values": {
     "cftc_net_short": 77042,
     "cftc_net_short_pct_oi": 20.05174172861099,
-    "fx_12h_5m_sigma_bps": 3.0988384278862355,
-    "fx_vol_ratio": 2.167892752396589,
+    "fx_12h_5m_sigma_bps": 5.344265100778051,
+    "fx_vol_ratio": 2.717048136425613,
     "jgb2": 1.854,
     "mof_latest_2w_outward_trillion_yen": -3.6267,
     "mof_prior_2w_outward_trillion_yen": 5.1074,
     "us_jp_2y_spread": 2.5359999999999996,
-    "usdjpy": 157.81399536132812,
-    "usdjpy_12h_drawdown_pct": -0.7159397289719823,
-    "usdjpy_15m_pct": 0.0012666346108197474,
-    "usdjpy_30m_pct": 0.04437066637544084,
-    "usdjpy_60m_pct": -0.10254884640999351,
+    "usdjpy": 157.1020050048828,
+    "usdjpy_12h_drawdown_pct": -1.1638676411945845,
+    "usdjpy_15m_pct": -0.02926540057721002,
+    "usdjpy_30m_pct": -0.0050891766518287385,
+    "usdjpy_60m_pct": 0.4456419110807853,
     "ust2": 4.39
   }
 }
