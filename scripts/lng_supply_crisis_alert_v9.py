@@ -25,7 +25,6 @@ ALASKA_NEWS_QUERIES = (
 )
 core.NEWS_QUERIES = tuple(core.NEWS_QUERIES) + ALASKA_NEWS_QUERIES
 
-# 한국·미국 1차/신뢰 출처를 보강한다.
 core.TRUSTED_SOURCE_ALIASES = tuple(core.TRUSTED_SOURCE_ALIASES) + (
     "yonhap", "yonhap news agency", "sbs", "korea economic daily", "한국경제",
     "chosunbiz", "조선비즈", "herald economy", "헤럴드경제",
@@ -52,7 +51,6 @@ core.EASING_TERMS["alaska_lng"] = (
     "장기계약", "양해각서", "협약", "계약", "최종투자결정", "발주", "수주",
 )
 
-# 동일 사건의 매체별 제목이 같은 단계로 묶이도록 알래스카 전용 subtype을 최우선 적용한다.
 core.SUBTYPE_TERMS = (
     ("alaska_setback", ("stalled", "delay", "delayed", "cancel", "withdraw", "제동", "지연", "취소", "철회", "무산")),
     ("alaska_fid", ("final investment decision", "fid", "최종투자결정")),
@@ -61,7 +59,6 @@ core.SUBTYPE_TERMS = (
     ("alaska_policy_signal", ("trump", "president", "going to alaska", "korea", "japan", "트럼프", "대통령", "한국", "일본")),
 ) + tuple(core.SUBTYPE_TERMS)
 
-# 자주 나오는 영문 헤드라인은 번역 서비스 장애와 무관하게 정확히 한국어로 고정한다.
 v8.KNOWN_TRANSLATIONS.update(
     {
         "Trump says S. Korea, Japan, others going to Alaska to 'load up' with oil, build pipelines":
@@ -74,6 +71,7 @@ v8.KNOWN_TRANSLATIONS.update(
 )
 
 _original_category_label = core.category_label
+_original_classify_polarity = core.classify_polarity
 _original_classify_context = core.classify_alert_context
 _original_impact_text = core.impact_text
 
@@ -82,6 +80,18 @@ def category_label_v9(category: str) -> str:
     if category == "alaska_lng":
         return "알래스카 LNG·미국 공급 다변화"
     return _original_category_label(category)
+
+
+def classify_polarity_v9(category: str, title: str) -> str | None:
+    if category != "alaska_lng":
+        return _original_classify_polarity(category, title)
+    normalized = core.normalize_text(title)
+    # 'stalled ... investors'처럼 투자라는 단어가 있어도 지연/취소가 있으면 후퇴가 우선이다.
+    if any(term in normalized for term in core.WORSENING_TERMS["alaska_lng"]):
+        return "worsening"
+    if any(term in normalized for term in core.EASING_TERMS["alaska_lng"]):
+        return "easing"
+    return None
 
 
 def signal_label_v9(signal: str, cleared: bool = False) -> str:
@@ -144,7 +154,6 @@ def impact_text_v9(context: str):
 
 
 def build_regular_alert_v9(groups, quotes, new_signals, cleared_signals):
-    # v8의 한국어 번역 + HTML 원문 링크 포맷을 그대로 사용한다.
     title, body, metadata = v8.build_regular_alert_v8(groups, quotes, new_signals, cleared_signals)
     body = body.replace(
         "알래스카 LNG·미국 공급 다변화: 완화",
@@ -174,6 +183,7 @@ def build_setup_test_v9(quotes):
 
 
 core.category_label = category_label_v9
+core.classify_polarity = classify_polarity_v9
 core.classify_alert_context = classify_alert_context_v9
 core.impact_text = impact_text_v9
 core.fetch_market_quotes = v8.v7.fetch_market_quotes_v7
