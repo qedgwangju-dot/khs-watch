@@ -19,6 +19,14 @@ TRUSTED={"Reuters","Bloomberg","Nikkei Asia","Financial Times"}
 QUERIES=('"Bank of Japan" rate hike Reuters when:2d','BOJ rate hike yen Reuters when:2d','"Bank of Japan" tightening Bloomberg OR "Nikkei Asia" when:2d')
 MAX_AGE_H=48; RESET_H=72; COOLDOWN_MIN=180; PROB_STEP=10.0; HIGH_PROB=70.0
 KNOWN_RATE=1.00; KNOWN_RATE_UNTIL=dt.date(2026,9,18)
+ROUTE_LABELS={
+    "reuters_poll":"Reuters 조사",
+    "survey_expectation":"조사·전망",
+    "market_probability":"시장 인상확률",
+    "hike_bets":"금리 인상 기대",
+    "official_commentary":"BOJ 핵심 인사 발언",
+    "hike_expectation":"금리 인상 전망",
+}
 
 @dataclass(frozen=True)
 class Item:
@@ -83,6 +91,41 @@ def classify(i):
     if stage==0 and any(x in low for x in ("hike","tightening")): stage=1
     return Signal(key(i),stage,route,src,i.title,i.link,i.published,p,b,tr,note) if stage else None
 
+def route_label(route): return ROUTE_LABELS.get(route,"정책 신호")
+def korean_signal_title(s):
+    low=re.sub(r"\s+-\s+(reuters|bloomberg|nikkei asia|financial times)$","",s.title.lower()).strip()
+    if "boj chief signals chance of september rate hike" in low:
+        return "우에다 일본은행 총재, 9월 금리 인상 가능성 시사…물가 상방위험 논의"
+    if "yen jumps on boj hike bets" in low:
+        return "일본은행 금리 인상 기대에 엔화 급등…달러는 약세"
+    if "boj to speed up its tightening campaign" in low and s.target_rate is not None:
+        return f"Reuters 조사: 일본은행, 긴축 속도 높여 9월 정책금리 {s.target_rate:.2f}%로 인상 전망"
+    if s.route=="official_commentary":
+        if "takata" in low: return "다카타 일본은행 심의위원, 적시에 유연한 금리 인상 필요성 시사"
+        if "himino" in low: return "히미노 일본은행 부총재, 추가 금리 인상 필요성 시사"
+        if "tamura" in low: return "다무라 일본은행 심의위원, 추가 금리 인상 필요성 시사"
+        return "일본은행 핵심 인사, 추가 금리 인상 가능성 시사"
+    if s.route=="market_probability":
+        if s.probability is not None and s.hike_bp is not None: return f"시장, 일본은행 다음 회의 {s.hike_bp}bp 금리 인상 확률 {s.probability:.0f}% 반영"
+        if s.probability is not None: return f"시장, 일본은행 다음 회의 금리 인상 확률 {s.probability:.0f}% 반영"
+        return "시장, 일본은행 금리 인상 기대 확대"
+    if s.route=="reuters_poll":
+        if s.target_rate is not None: return f"Reuters 조사, 일본은행 정책금리 {s.target_rate:.2f}% 인상 전망"
+        return "Reuters 조사, 일본은행 금리 인상 전망 강화"
+    if s.route=="survey_expectation": return "주요 조사에서 일본은행 금리 인상 전망 강화"
+    if s.route=="hike_bets": return "시장 내 일본은행 금리 인상 기대 강화"
+    return "일본은행 추가 금리 인상 전망 관련 고신뢰 보도"
+def korean_official_title(i):
+    low=i.title.lower()
+    if "speech by board member takata" in low: return "다카타 일본은행 심의위원 연설: 일본의 경제활동·물가·통화정책"
+    if "speech by governor ueda" in low: return "우에다 일본은행 총재 연설"
+    if "speech by deputy governor himino" in low: return "히미노 일본은행 부총재 연설"
+    if "summary of opinions" in low: return "일본은행 금융정책결정회의 주요 의견 요약"
+    if "statement on monetary policy" in low: return "일본은행 금융정책 결정문"
+    if "monetary policy" in low: return "일본은행 통화정책 관련 공식 자료"
+    if "speech" in low: return "일본은행 정책위원 공식 연설"
+    return "일본은행 공식 자료·발언"
+
 def load_state():
     try: x=json.loads(STATE.read_text()); return x if isinstance(x,dict) else {}
     except Exception: return {}
@@ -131,16 +174,16 @@ def build(s,reason,now,cs,off,fx):
     if s.probability is not None: top.append(f"다음 회의 인상 확률 {s.probability:.0f}%")
     if s.hike_bp is not None: top.append(f"+{s.hike_bp}bp 가능성")
     if s.target_rate is not None and now.date()<=KNOWN_RATE_UNTIL: top.append(f"목표 {s.target_rate:.2f}%")
-    L=[" │ ".join(top) or "BOJ 인상 기대 강화","","핵심 상태",f"• 판정: {reason}",f"• 감지 경로: {s.route}",f"• 다음 금융정책결정회의: {meeting(now)}",f"• 정확한 의미: {s.note}"]
+    L=[" │ ".join(top) or "BOJ 인상 기대 강화","","핵심 상태",f"• 판정: {reason}",f"• 감지 경로: {route_label(s.route)}",f"• 다음 금융정책결정회의: {meeting(now)}",f"• 정확한 의미: {s.note}"]
     if s.target_rate is not None and now.date()<=KNOWN_RATE_UNTIL: L.append(f"• 정책금리 경로: {KNOWN_RATE:.2f}% → {s.target_rate:.2f}% 가능성")
     elif s.hike_bp is not None: L.append(f"• 예상 조정폭: +{s.hike_bp}bp")
-    L += ["","선행 정책 촉매",f"• {s.source} · {label(s.published)}",f"  {s.title}"]
+    L += ["","선행 정책 촉매",f"• {s.source} · {label(s.published)}",f"  {korean_signal_title(s)}"]
     if cs:
         L.append("• 교차 확인")
-        for x in cs: L.append(f"  - {x.source}: {x.title}"+(f" · 인상 확률 {x.probability:.0f}%" if x.probability is not None else ""))
+        for x in cs: L.append(f"  - {x.source}: {korean_signal_title(x)}"+(f" · 인상 확률 {x.probability:.0f}%" if x.probability is not None else ""))
     else: L.append("• 교차 확인: 추가 고신뢰 출처 확인 전 — 1차 선행신호로 취급")
     if off:
-        x=off[0]; L += ["","BOJ 공식 확인",f"• 최근 공식 자료·발언 일정: {x.title}",f"• 공개: {label(x.published)}","• 공식 자료 존재와 ‘금리인상 확정’은 같은 뜻이 아님"]
+        x=off[0]; L += ["","BOJ 공식 확인",f"• 최근 공식 자료·발언 일정: {korean_official_title(x)}",f"• 공개: {label(x.published)}","• 공식 자료 존재와 ‘금리인상 확정’은 같은 뜻이 아님"]
     L += ["","환율 확인"]
     if fx:
         L += [f"• USD/JPY {fx['price']:.3f} · 시장 데이터 {label(fx['time'])}",f"• 15분 {fx['m15']:+.2f}% │ 30분 {fx['m30']:+.2f}% │ 고점 대비 {fx['draw']:+.2f}% · {fx['mins']:.0f}분"]
@@ -148,7 +191,7 @@ def build(s,reason,now,cs,off,fx):
     else: L.append("• USD/JPY 실시간 교차조회 실패 — 정책 선행경보 자체는 유지")
     L += ["","최종 판정","• 정책 촉매를 가격 경보보다 먼저 알림","• ‘인상 전망·확률 상승’과 ‘BOJ 공식 인상 결정’을 반드시 분리","• 이후 기존 USD/JPY 경보가 가격 확인 역할","",f"조회 시각: {label(now)}"]
     if s.link: L.append(f"원문: {s.link}")
-    payload={"stage":s.stage,"reason":reason,"signal":asdict(s),"confirmation_sources":[asdict(x) for x in cs],"official_context":[asdict(x) for x in off[:2]],"fx":fx,"checked_at_kst":now.isoformat()}
+    payload={"stage":s.stage,"reason":reason,"signal":asdict(s),"signal_title_ko":korean_signal_title(s),"route_label_ko":route_label(s.route),"confirmation_sources":[asdict(x) for x in cs],"official_context":[asdict(x) for x in off[:2]],"fx":fx,"checked_at_kst":now.isoformat()}
     return title,"\n".join(L),payload
 def clear():
     for p in (TITLE,BODY,DATA,PENDING,CONFIRMED):
@@ -165,7 +208,7 @@ def main():
     clear(); now=dt.datetime.now(KST); sigs=latest_signals(now); off=official(now); state=load_state(); OUT.mkdir(exist_ok=True)
     if not sigs:
         WATCH.write_text(f"BOJ 정책 선행감시: 새 고신뢰 인상 신호 없음 · 조회 {label(now)}\n"); print(json.dumps({"alerted":False,"reason":"no_signal"},ensure_ascii=False)); return 0
-    s=sigs[0]; ok,reason=should(s,state,now); WATCH.write_text(f"BOJ 정책 선행감시: 후보 {s.stage}단계 · {s.source} · {s.title}\n판정: {'알림' if ok else '미알림'} — {reason}\n조회: {label(now)}\n")
+    s=sigs[0]; ok,reason=should(s,state,now); WATCH.write_text(f"BOJ 정책 선행감시: 후보 {s.stage}단계 · {s.source} · {korean_signal_title(s)}\n판정: {'알림' if ok else '미알림'} — {reason}\n조회: {label(now)}\n")
     if not ok: print(json.dumps({"alerted":False,"reason":reason,"stage":s.stage},ensure_ascii=False)); return 0
     title,body,payload=build(s,reason,now,confirms(sigs,s),off,fx_context()); TITLE.write_text(title+"\n"); BODY.write_text(body+"\n"); DATA.write_text(json.dumps(payload,ensure_ascii=False,indent=2,default=str)+"\n")
     PENDING.write_text(json.dumps({"stage":s.stage,"route":s.route,"probability_pct":s.probability,"last_signal_key":s.key,"last_alert_at_kst":now.isoformat(),"last_published_at_kst":s.published.isoformat(),"last_source":s.source,"last_title":s.title},ensure_ascii=False,indent=2)+"\n")
