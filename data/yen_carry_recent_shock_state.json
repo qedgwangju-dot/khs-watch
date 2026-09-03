@@ -2,21 +2,21 @@
   "current_shock": false,
   "initialized": true,
   "recent_shock": false,
-  "updated_at_kst": "2026-09-04T08:52:47+09:00",
+  "updated_at_kst": "2026-09-04T08:58:48+09:00",
   "values": {
-    "change_15m_pct": -0.0596750134990853,
-    "change_30m_pct": -0.1340050445850251,
-    "current_rebound_pct": 0.04303564902237156,
+    "change_15m_pct": -0.042391512368649756,
+    "change_30m_pct": -0.1533151726520892,
+    "current_rebound_pct": 0.0,
     "current_shock": false,
-    "current_vs_peak_pct": -0.24401592216352075,
-    "latest_epoch": 1788479567.0,
-    "latest_price": 155.7550048828125,
-    "max_drawdown_pct": -0.28692808982021534,
+    "current_vs_peak_pct": -0.3125522536999381,
+    "latest_epoch": 1788479927.0,
+    "latest_price": 155.6479949951172,
+    "max_drawdown_pct": -0.3125522536999381,
     "peak_epoch": 1788476400.0,
     "peak_price": 156.13600158691406,
     "recent_shock": false,
-    "trough_age_minutes": 2.783333333333333,
-    "trough_epoch": 1788479400.0,
-    "trough_price": 155.68800354003906
+    "trough_age_minutes": 0.0,
+    "trough_epoch": 1788479927.0,
+    "trough_price": 155.6479949951172
   }
 }
