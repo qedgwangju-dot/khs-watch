@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch
 
 import global_rates_regime_flow_upgrade as m
+import global_rates_weekly_flow_pdf as pdf_flow
 
 
 class RegimeFlowUpgradeTest(unittest.TestCase):
@@ -52,12 +53,29 @@ class RegimeFlowUpgradeTest(unittest.TestCase):
         self.assertIn("-0.40조엔", out["subtotal_display"])
         self.assertIn("-3.4조원", out["subtotal_display"])
 
-    def test_week_csv_parser_uses_outward_assets_table_only(self):
-        sample = """1. Portfolio Investment Assets,,,,,,,,,,\nPeriod,eq acq,eq disp,eq net,lt acq,lt disp,lt net,subtotal,st acq,st disp,st net,total\nAugust 16 - August 22 2026,10,5,5,20,10,10,15,2,1,1,16\nAugust 23 - August 29 2026,10,15,-5,20,25,-5,-10,2,1,1,-9\n2. Portfolio Investment Liabilities,,,,,,,,,,\nAugust 23 - August 29 2026,100,0,100,100,0,100,200,0,0,0,200\n""".encode()
-        with patch.object(m, "get_bytes", return_value=sample):
-            rows = m.fetch_weekly_outward_flows()
+    def test_official_pdf_parser_uses_outward_section_and_direction(self):
+        sample_text = """
+        報道発表・財務省 令和8年9月3日
+        令和8年8月23日～8月29日の対外及び対内証券売買契約等の状況
+        １．対外証券投資の状況（居住者による取得・処分）
+        （1）株式・投資ファンド持分
+        ▲1,000億円の処分超（居住者による売り越し）
+        （前週2,000億円の取得超）
+        （2）中長期債投資
+        3,000億円の取得超（居住者による買い越し）
+        （前週▲5,000億円の処分超）
+        ２．対内証券投資の状況（非居住者による取得・処分）
+        （1）株式・投資ファンド持分
+        9,999億円の取得超
+        """
+        with patch.object(pdf_flow, "extract_pdf_text", return_value=sample_text):
+            rows = pdf_flow.fetch_weekly_outward_flows(lambda _: b"fake-pdf")
         self.assertEqual(len(rows), 2)
-        self.assertEqual(rows[-1]["equity_long_subtotal_100m_yen"], -10)
+        self.assertEqual(rows[-1]["period"], "8/23~8/29")
+        self.assertEqual(rows[-1]["equity_net_100m_yen"], -1000)
+        self.assertEqual(rows[-1]["long_term_net_100m_yen"], 3000)
+        self.assertEqual(rows[-1]["equity_long_subtotal_100m_yen"], 2000)
+        self.assertEqual(rows[0]["equity_long_subtotal_100m_yen"], -3000)
 
 
 if __name__ == "__main__":
