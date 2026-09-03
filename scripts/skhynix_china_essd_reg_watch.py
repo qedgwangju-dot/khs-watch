@@ -267,6 +267,31 @@ def html_link(text: str, url: str) -> str:
     return f'<a href="{html.escape(url, quote=True)}">{html.escape(text)}</a>'
 
 
+def clean_display_title(title: str, source: str = "") -> str:
+    """Remove redundant publisher suffixes from Google News titles."""
+    result = normalize(title)
+    source = normalize(source)
+    if source:
+        result = re.sub(rf"\s+-\s+{re.escape(source)}$", "", result, flags=re.I).strip()
+    # Google News frequently appends a domain such as " - dealsite.co.kr".
+    result = re.sub(r"\s+-\s+[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", "", result).strip()
+    return result
+
+
+def usable_direct_link(url: str) -> str:
+    """Return only a direct publisher/official link; suppress Google News RSS wrappers."""
+    value = normalize(url)
+    if not value:
+        return ""
+    try:
+        host = (urllib.parse.urlparse(value).hostname or "").lower()
+    except Exception:
+        return ""
+    if not host or host == "news.google.com" or host.endswith(".news.google.com"):
+        return ""
+    return value
+
+
 def load_state() -> dict:
     if not STATE_PATH.exists():
         return {}
@@ -321,14 +346,18 @@ def build_event_message(events: list[dict]) -> str:
                 when = when_dt.strftime("%Y-%m-%d %H:%M KST")
             except Exception:
                 when = ""
-        parts.append(
+
+        title = clean_display_title(event.get("title", ""), event.get("source", ""))
+        direct_link = usable_direct_link(event.get("link", ""))
+        block = (
             f"\n<b>{idx}. {html.escape(event['category'])}</b>"
-            f"\n• {html.escape(event['title'])}"
-            + (f"\n• 출처: {html.escape(event['source'])}" if event.get("source") else "")
-            + (f" · {html.escape(when)}" if when else "")
+            f"\n• {html.escape(title)}"
+            + (f"\n• {html.escape(when)}" if when else "")
             + f"\n• 의미: {html.escape(event['meaning'])}"
-            + f"\n• {html_link('원문', event['link'])}"
         )
+        if direct_link:
+            block += f"\n• {html_link('원문', direct_link)}"
+        parts.append(block)
 
     parts.append(
         "\n<b>판정 기준</b>\n"
