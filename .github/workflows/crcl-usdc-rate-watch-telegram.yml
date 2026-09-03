@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/crcl-usdc-rate-watch-telegram.yml"
       - "scripts/crcl_usdc_rate_watch.py"
+      - "scripts/crcl_usdc_rate_watch_runner.py"
       - "scripts/crypto_alert_krw.py"
       - "data/crcl_usdc_rate_watch_state.json"
   schedule:
@@ -43,6 +44,7 @@ jobs:
       - name: Validate watcher
         run: |
           python -m py_compile scripts/crcl_usdc_rate_watch.py
+          python -m py_compile scripts/crcl_usdc_rate_watch_runner.py
           python -m py_compile scripts/crypto_alert_krw.py
 
       - name: Validate exact Telegram bot route without sending
@@ -67,7 +69,7 @@ jobs:
           PY
 
       - name: Check CRCL, USDC and rate fundamentals
-        run: PYTHONPATH=. python scripts/crcl_usdc_rate_watch.py
+        run: PYTHONPATH=. python scripts/crcl_usdc_rate_watch_runner.py
 
       - name: Publish watcher summary
         if: always()
