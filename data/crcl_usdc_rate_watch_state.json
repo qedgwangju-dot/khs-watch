@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-04T06:55:50+09:00",
+  "updated_at_kst": "2026-09-04T06:59:22+09:00",
   "circle": {
     "date": "2026-08-31",
     "circulation_usd_b": 73.3,
@@ -11,7 +11,15 @@
     "fund_size_usd_m": 62317.4,
     "fund_size_date": "2026-09-02"
   },
-  "sofr": {},
+  "sofr": {
+    "date": "2026-09-02",
+    "rate": 3.65,
+    "prev_date": "2026-09-01",
+    "prev_rate": 3.66,
+    "daily_bp": -1.0,
+    "source": "FRED 재게시·원출처 Federal Reserve Bank of New York",
+    "source_url": "https://fred.stlouisfed.org/series/SOFR"
+  },
   "treasury": {
     "date": "2026-09-03",
     "three_month": 3.89,
@@ -38,13 +46,11 @@
     "daily_pct": -0.14
   },
   "fx": {
-    "rate": 1355.8299560546875,
+    "rate": 1355.9100341796875,
     "date": "2026-09-03",
     "source": "Yahoo Finance USD/KRW 일일 종가(한국은행 원문 자동조회 실패 시 보조값)",
     "source_url": "https://finance.yahoo.com/quote/KRW=X/",
     "crosscheck": "한국은행 원문 자동조회 실패"
   },
-  "errors": [
-    "sofr: NY Fed SOFR rows could not be parsed"
-  ]
+  "errors": []
 }
