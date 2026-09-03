@@ -20,6 +20,7 @@ on:
     paths:
       - ".github/workflows/war-peace-reconstruction-telegram-watch.yml"
       - "scripts/war_peace_reconstruction_watch.py"
+      - "scripts/war_peace_reconstruction_watch_runner.py"
 
 permissions:
   contents: write
@@ -46,14 +47,16 @@ jobs:
           python-version: "3.12"
 
       - name: Validate monitor
-        run: python -m py_compile scripts/war_peace_reconstruction_watch.py
+        run: |
+          python -m py_compile scripts/war_peace_reconstruction_watch.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_runner.py
 
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_runner.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch.py
+            python scripts/war_peace_reconstruction_watch_runner.py
           fi
 
       - name: Publish status summary
@@ -128,7 +131,7 @@ jobs:
 
       - name: Finalize state after confirmed delivery
         if: success() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch.py --finalize
+        run: python scripts/war_peace_reconstruction_watch_runner.py --finalize
 
       - name: Commit confirmed alert state
         if: success() && github.event_name != 'pull_request' && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
