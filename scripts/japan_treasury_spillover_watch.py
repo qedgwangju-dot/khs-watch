@@ -43,7 +43,6 @@ STATUS_PATH = OUT / "japan_treasury_spillover_status.md"
 
 UA = "Mozilla/5.0 khs-japan-treasury-spillover/1.0"
 MOF_WEEK = "https://www.mof.go.jp/policy/international_policy/reference/itn_transactions_in_securities/week.csv"
-MOF_WEEK_PAGE = "https://www.mof.go.jp/english/policy/international_policy/reference/itn_transactions_in_securities/index.htm"
 MOF_JGB_YIELDS = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
 MOF_JGB_NEWS = "https://www.mof.go.jp/english/public_relations/whats_new/2026jgbs.html"
 FED_H41 = "https://www.federalreserve.gov/releases/h41/current/"
@@ -52,7 +51,6 @@ FED_HF = "https://www.federalreserve.gov/econres/notes/feds-notes/decomposing-he
 FRED = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 TENORS = (2, 10, 20, 30, 40)
 
-# Alert thresholds. They are intentionally combinations, not single-level triggers.
 LT_DEBT_WEEKLY_SELL_TRILLION_YEN = -0.50
 LT_DEBT_TWO_WEEK_SELL_TRILLION_YEN = -1.00
 JGB_BTC_WEAK = 3.0
@@ -64,14 +62,15 @@ REPO_SPREAD_BP = 10.0
 REPO_SPREAD_JUMP_BP = 5.0
 UST_LONG_YIELD_JUMP_BP = 8.0
 JGB2_UP_BP = 5.0
-YEN_STRENGTH_PCT = -1.0  # DEXJPUS falls when yen strengthens.
+YEN_STRENGTH_PCT = -1.0
 
 
 def num(value) -> float | None:
     if value is None:
         return None
     text = str(value).strip().replace(",", "").replace("%", "").replace("−", "-").replace("△", "-")
-    if text in {"", ".", "-"}:
+    text = re.sub(r"\s+", "", text)
+    if text in {"", ".", "-", "+"}:
         return None
     try:
         return float(text)
@@ -119,9 +118,6 @@ class MofFlow:
 
 
 def parse_mof_week_csv(text: str) -> MofFlow:
-    # Columns (2014+ convention):
-    # 0 date | 1-3 equity acq/disp/net | 4-6 LT debt acq/disp/net |
-    # 7 equity+LT subtotal net | 8-10 ST debt acq/disp/net | 11 total net.
     rows: list[tuple[str, float, float]] = []
     for row in csv.reader(io.StringIO(text.lstrip("\ufeff"))):
         if len(row) < 12 or not any(ch.isdigit() for ch in (row[0] or "")):
@@ -227,10 +223,6 @@ def parse_auction(text: str, url: str, tenor: int) -> Auction:
     raise RuntimeError(f"auction row not found: {tenor}Y {url}")
 
 
-def absolute(base: str, href: str) -> str:
-    return urllib.parse.urljoin(base, href)
-
-
 def latest_two_auctions(news_text: str, tenor: int, now: dt.datetime) -> tuple[Auction, Auction] | None:
     soup = BeautifulSoup(news_text, "html.parser")
     pattern = re.compile(rf"Auction Result of {tenor}-Year JGBs", re.I)
@@ -286,8 +278,8 @@ def parse_h41_foreign_official_repo(text: str) -> FimaProxy:
         re.I,
     )
     if match:
-        level = num(match.group(1).replace(" ", ""))
-        change = num(match.group(2).replace(" ", ""))
+        level = num(match.group(1))
+        change = num(match.group(2))
         if level is not None:
             return FimaProxy(release_date, level / 1000.0, None if change is None else change / 1000.0)
     raise RuntimeError("Fed H.4.1 foreign official repo row not found")
