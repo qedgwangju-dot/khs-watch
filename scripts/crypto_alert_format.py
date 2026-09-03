@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
 import pathlib
 import re
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT_PATH = ROOT / "out" / "crypto_liquidity_watch_telegram.txt"
+PENDING_STATE_PATH = ROOT / "out" / "crypto_liquidity_watch_pending_state.json"
 
 
 def format_trigger(line: str, is_partial: bool = False) -> list[str]:
@@ -58,6 +60,50 @@ def format_fx_line(line: str) -> list[str]:
     if rest:
         out.append(f"• {' · '.join(rest)}")
     return out
+
+
+def load_pending_state() -> dict:
+    if not PENDING_STATE_PATH.exists():
+        return {}
+    try:
+        return json.loads(PENDING_STATE_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def provisional_judgement() -> str | None:
+    state = load_pending_state()
+    rates = state.get("rates") or {}
+    etf = state.get("btc_etf") or {}
+    if not rates or not etf or etf.get("status") == "complete":
+        return None
+    if rates.get("date") != etf.get("date"):
+        return None
+
+    r10 = float(rates.get("daily_10y_bp", 0.0) or 0.0)
+    r30 = float(rates.get("daily_30y_bp", 0.0) or 0.0)
+    flow = float(etf.get("total_usd_m", 0.0) or 0.0)
+    missing = int(etf.get("missing_funds", 0) or 0)
+    reported = int(etf.get("reported_funds", 0) or 0)
+    total_funds = reported + missing
+    date = str(etf.get("date") or "")
+
+    if r10 <= 0 and r30 <= 0 and flow > 0:
+        view = "위험자산에 우호적 — 장기금리 하락 + 현재 확인분 BTC ETF 순유입"
+    elif r10 >= 0 and r30 >= 0 and flow < 0:
+        view = "위험자산에 불리 — 장기금리 상승 + 현재 확인분 BTC ETF 순유출"
+    else:
+        view = "혼조 — 장기금리와 현재 확인분 BTC ETF 자금흐름의 방향이 엇갈림"
+
+    coverage = (
+        f"Farside {total_funds}개 ETF 중 {reported}개 반영·{missing}개 미보고"
+        if total_funds > 0
+        else "일부 ETF 미보고"
+    )
+    return (
+        f"<b>잠정판정</b> · {date} 기준 {view}\n"
+        f"<b>최종판정 보류</b> · {coverage}라 당일 합계가 추가 수정될 수 있음"
+    )
 
 
 def format_alert(text: str) -> str:
@@ -165,9 +211,13 @@ def format_alert(text: str) -> str:
 
         if stripped.startswith("판단:"):
             body = stripped.split(":", 1)[1].strip()
+            provisional = provisional_judgement() if "집계 미완료" in body else None
             if out and out[-1] != "":
                 out.append("")
-            out.append(f"<blockquote><b>판단</b>\n{body}</blockquote>")
+            if provisional:
+                out.append(f"<blockquote><b>판단</b>\n{provisional}</blockquote>")
+            else:
+                out.append(f"<blockquote><b>판단</b>\n{body}</blockquote>")
             continue
 
         if stripped.startswith("원화 환산 기준:"):
