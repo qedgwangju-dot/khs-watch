@@ -3,12 +3,12 @@
   "change_30m_pct": 0.0646490131917586,
   "change_60m_pct": 0.13515583238761067,
   "fast_stage": 0,
-  "last_alert_at_kst": "2026-09-03T18:12:33+09:00",
-  "last_alert_epoch": 1788426752.0,
+  "last_alert_at_kst": "2026-09-03T22:36:48+09:00",
+  "last_alert_epoch": 1788442607.0,
   "last_alert_lanes": [
     "sustained"
   ],
-  "last_alert_price": 156.58700561523438,
+  "last_alert_price": 155.6580047607422,
   "last_alert_trigger_windows": [],
   "last_checked_at_kst": "2026-08-03T10:54:50+09:00",
   "last_observed_lanes": [
@@ -17,8 +17,8 @@
   "last_observed_trigger_windows": [],
   "latest_price": 156.3260040283203,
   "sector_reaction": {
-    "alert_at_kst": "2026-09-03T18:12:33+09:00",
-    "alert_epoch": 1788426753.0,
+    "alert_at_kst": "2026-09-03T22:36:48+09:00",
+    "alert_epoch": 1788442608.0,
     "baseline": {
       "jp_airlines": {
         "benchmark_label": "TOPIX",
@@ -174,26 +174,198 @@
     "close_confidence": null,
     "close_done": true,
     "close_due_epoch": null,
-    "created_at_kst": "2026-09-03T18:12:34+09:00",
+    "created_at_kst": "2026-09-03T22:36:49+09:00",
     "event_date_kst": "2026-09-03",
-    "event_id": "1788426753-1",
+    "event_id": "1788442608-2",
     "fast_stage": 0,
-    "fx_price": 156.58700561523438,
-    "fx_stage": 1,
+    "fx_price": 155.6580047607422,
+    "fx_stage": 2,
     "immediate_confidence": "미확인",
-    "sustained_stage": 1,
+    "sustained_stage": 2,
     "thirty_confidence": null,
     "thirty_done": true,
     "thirty_due_epoch": null
   },
-  "sector_reaction_history": [],
-  "stage": 1,
+  "sector_reaction_history": [
+    {
+      "alert_at_kst": "2026-09-03T18:12:33+09:00",
+      "alert_epoch": 1788426753.0,
+      "baseline": {
+        "jp_airlines": {
+          "benchmark_label": "TOPIX",
+          "benchmark_price": 427.2,
+          "benchmark_symbol": "1306.T",
+          "component_prices": {
+            "9201.T": 2957.0,
+            "9202.T": 2977.0
+          },
+          "country": "JP",
+          "data_epoch": 1788417000.0,
+          "expected_sign": 1,
+          "name": "일본 항공"
+        },
+        "jp_auto": {
+          "benchmark_label": "TOPIX",
+          "benchmark_price": 427.2,
+          "benchmark_symbol": "1306.T",
+          "component_prices": {
+            "1622.T": 35550.0,
+            "7201.T": 316.9,
+            "7203.T": 3117.0,
+            "7267.T": 1718.0
+          },
+          "country": "JP",
+          "data_epoch": 1788417000.0,
+          "expected_sign": -1,
+          "name": "일본 자동차"
+        },
+        "jp_electronics": {
+          "benchmark_label": "TOPIX",
+          "benchmark_price": 427.2,
+          "benchmark_symbol": "1306.T",
+          "component_prices": {
+            "1625.T": 62670.0,
+            "6501.T": 5352.0,
+            "6503.T": 5310.0,
+            "6758.T": 3895.0
+          },
+          "country": "JP",
+          "data_epoch": 1788417000.0,
+          "expected_sign": -1,
+          "name": "일본 전기·정밀"
+        },
+        "jp_food": {
+          "benchmark_label": "TOPIX",
+          "benchmark_price": 427.2,
+          "benchmark_symbol": "1306.T",
+          "component_prices": {
+            "1617.T": 48780.0,
+            "2502.T": 1649.5,
+            "2801.T": 1824.5,
+            "2802.T": 5180.0
+          },
+          "country": "JP",
+          "data_epoch": 1788417000.0,
+          "expected_sign": 1,
+          "name": "일본 식품"
+        },
+        "jp_machinery": {
+          "benchmark_label": "TOPIX",
+          "benchmark_price": 427.2,
+          "benchmark_symbol": "1306.T",
+          "component_prices": {
+            "1624.T": 82680.0,
+            "6301.T": 7513.0,
+            "6367.T": 20820.0,
+            "7011.T": 3795.0
+          },
+          "country": "JP",
+          "data_epoch": 1788417000.0,
+          "expected_sign": -1,
+          "name": "일본 기계"
+        },
+        "jp_retail": {
+          "benchmark_label": "TOPIX",
+          "benchmark_price": 427.2,
+          "benchmark_symbol": "1306.T",
+          "component_prices": {
+            "1630.T": 37190.0,
+            "3382.T": 2060.0,
+            "7532.T": 760.0,
+            "8267.T": 1390.5
+          },
+          "country": "JP",
+          "data_epoch": 1788417000.0,
+          "expected_sign": 1,
+          "name": "일본 소매"
+        },
+        "jp_utilities": {
+          "benchmark_label": "TOPIX",
+          "benchmark_price": 427.2,
+          "benchmark_symbol": "1306.T",
+          "component_prices": {
+            "1627.T": 12915.0,
+            "9501.T": 569.5,
+            "9502.T": 2978.5,
+            "9503.T": 3026.0
+          },
+          "country": "JP",
+          "data_epoch": 1788417000.0,
+          "expected_sign": 1,
+          "name": "일본 전력·가스"
+        },
+        "kr_auto": {
+          "benchmark_label": "KOSPI 200",
+          "benchmark_price": 103610.0,
+          "benchmark_symbol": "069500.KS",
+          "component_prices": {
+            "000270.KS": 127400.0,
+            "005380.KS": 383500.0,
+            "012330.KS": 423500.0,
+            "091180.KS": 27210.0
+          },
+          "country": "KR",
+          "data_epoch": 1788417024.0,
+          "expected_sign": 1,
+          "name": "한국 자동차 대형주"
+        },
+        "kr_semicap": {
+          "benchmark_label": "KOSDAQ 150",
+          "benchmark_price": 13295.0,
+          "benchmark_symbol": "229200.KS",
+          "component_prices": {
+            "036930.KQ": 168000.0,
+            "039030.KQ": 418000.0,
+            "058470.KQ": 64300.0,
+            "067310.KQ": 34700.0,
+            "084370.KQ": 130800.0,
+            "240810.KQ": 105000.0,
+            "319660.KQ": 122400.0,
+            "403870.KQ": 50200.0
+          },
+          "country": "KR",
+          "data_epoch": 1788417025.0,
+          "expected_sign": 0,
+          "name": "한국 반도체 장비·소재·부품"
+        },
+        "kr_semis": {
+          "benchmark_label": "KOSPI 200",
+          "benchmark_price": 103610.0,
+          "benchmark_symbol": "069500.KS",
+          "component_prices": {
+            "000660.KS": 1596000.0,
+            "005930.KS": 250000.0
+          },
+          "country": "KR",
+          "data_epoch": 1788417023.0,
+          "expected_sign": 0,
+          "name": "한국 메모리 대형주"
+        }
+      },
+      "close_confidence": null,
+      "close_done": true,
+      "close_due_epoch": null,
+      "created_at_kst": "2026-09-03T18:12:34+09:00",
+      "event_date_kst": "2026-09-03",
+      "event_id": "1788426753-1",
+      "fast_stage": 0,
+      "fx_price": 156.58700561523438,
+      "fx_stage": 1,
+      "immediate_confidence": "미확인",
+      "status": "superseded_by_new_fx_alert",
+      "sustained_stage": 1,
+      "thirty_confidence": null,
+      "thirty_done": true,
+      "thirty_due_epoch": null
+    }
+  ],
+  "stage": 2,
   "status": "cleared_after_live_recheck",
-  "sustained_drawdown_pct": -1.4878644472087086,
-  "sustained_duration_minutes": 537.5333333333333,
-  "sustained_peak_epoch": 1788394500.0,
-  "sustained_peak_price": 158.95199584960938,
-  "sustained_rebound_pct": 0.11636893792271301,
-  "sustained_stage": 1,
+  "sustained_drawdown_pct": -1.7980107778413128,
+  "sustained_duration_minutes": 701.7833333333333,
+  "sustained_peak_epoch": 1788400500.0,
+  "sustained_peak_price": 158.50799560546875,
+  "sustained_rebound_pct": 0.14347296661060605,
+  "sustained_stage": 2,
   "verification_run_id": 30777988988
 }
