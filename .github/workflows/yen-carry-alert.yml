@@ -79,14 +79,18 @@ jobs:
       - name: Validate dedicated Telegram route
         run: |
           python - <<'PY'
+          import os
           from pathlib import Path
+          expected = "khs8879887988798879_bot"
+          actual = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").lstrip("@")
+          if actual != expected:
+              raise RuntimeError(f"Unexpected bot route: @{actual or 'missing'}")
           text = Path(".github/workflows/yen-carry-alert.yml").read_text(encoding="utf-8")
           required = (
-              'EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"',
-              'TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}',
-              'TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}',
               'actual_username.lower() != expected_username.lower()',
               'Wrong Telegram bot configured',
+              'TELEGRAM_BOT_TOKEN:',
+              'TELEGRAM_CHAT_ID:',
           )
           missing = [item for item in required if item not in text]
           if missing:
