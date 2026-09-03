@@ -4,11 +4,11 @@ from __future__ import annotations
 # cache are installed without executing watch.main().
 import jobs_wage_watch_runner  # noqa: F401
 import jobs_wage_watch as watch
-import jobs_wage_watch_full_report_v7 as full_report
+import jobs_wage_watch_full_report_v8 as full_report
 
-# v7 preserves the full v6 analysis and trigger/dedupe behavior, but reformats
-# the Telegram body for scanability: a verified 5~8-line overview, plain-text
-# section dividers, grouped market data, and no visible Markdown #/** markers.
+# v8 preserves the readable v7 Telegram layout and full v6 analysis, while
+# strengthening the Fed reaction-function section with live official FOMC
+# statement context and a separate labor-axis vs final-policy judgment.
 watch.build_report = full_report.build_report
 
 if __name__ == "__main__":
