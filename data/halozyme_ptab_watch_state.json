@@ -8,7 +8,7 @@
     "ec2b004cd91a18e18feeeb55"
   ],
   "seen_urls": [],
-  "last_check_kst": "2026-09-03T08:26:30+09:00",
+  "last_check_kst": "2026-09-03T10:18:24+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -29,23 +29,7 @@
     "IPR2026-00313": "11,041,149",
     "IPR2026-00314": "11,066,656"
   },
-  "errors_last_run": [
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError",
-    "Google 뉴스:HTTPError"
-  ],
+  "errors_last_run": [],
   "tracked_known_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
