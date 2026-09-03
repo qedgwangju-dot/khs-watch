@@ -1,0 +1,154 @@
+name: War peace reconstruction Telegram watch
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      telegram_test:
+        description: "Send one Telegram connection test"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+  pull_request:
+    paths:
+      - ".github/workflows/war-peace-reconstruction-telegram-watch.yml"
+      - "scripts/war_peace_reconstruction_watch.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: war-peace-reconstruction-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      TELEGRAM_TEST: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate monitor
+        run: python -m py_compile scripts/war_peace_reconstruction_watch.py
+
+      - name: Check war peace reconstruction conditions
+        run: |
+          if [ "$TELEGRAM_TEST" = "true" ]; then
+            python scripts/war_peace_reconstruction_watch.py --telegram-test
+          else
+            python scripts/war_peace_reconstruction_watch.py
+          fi
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/war_peace_reconstruction_watch.md ]; then
+            cat out/war_peace_reconstruction_watch.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/war_peace_reconstruction_alert.txt ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/war_peace_reconstruction_alert.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send Telegram alert
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.WAR_PEACE_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.WAR_PEACE_TELEGRAM_CHAT_ID }}
+          EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900_bot"
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+          chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("WAR_PEACE_TELEGRAM_BOT_TOKEN or WAR_PEACE_TELEGRAM_CHAT_ID is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          if not identity.get("ok"):
+              raise RuntimeError(f"Telegram bot identity check failed: {identity}")
+          actual = identity.get("result", {}).get("username", "")
+          if actual != expected:
+              raise RuntimeError(f"Telegram bot mismatch: expected=@{expected}, actual=@{actual or 'unknown'}")
+
+          text = pathlib.Path("out/war_peace_reconstruction_alert.txt").read_text(encoding="utf-8").strip()[:4096]
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "bot": f"@{actual}",
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/war_peace_reconstruction_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={confirmed['message_id']}")
+          PY
+
+      - name: Finalize state after confirmed delivery
+        if: success() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
+        run: python scripts/war_peace_reconstruction_watch.py --finalize
+
+      - name: Commit confirmed alert state
+        if: success() && github.event_name != 'pull_request' && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/war_peace_reconstruction_watch_state.json
+          if git diff --cached --quiet; then
+            echo "No state changes"
+          else
+            git commit -m "Update war peace reconstruction watch state"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: war-peace-reconstruction-${{ github.run_id }}
+          path: |
+            out/war_peace_reconstruction_watch.md
+            out/war_peace_reconstruction_alert.txt
+            out/war_peace_reconstruction_pending.json
+            out/war_peace_reconstruction_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 7
