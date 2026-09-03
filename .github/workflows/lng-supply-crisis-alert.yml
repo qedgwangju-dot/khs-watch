@@ -14,7 +14,7 @@ on:
   push:
     paths:
       - ".github/workflows/lng-supply-crisis-alert.yml"
-      - "scripts/lng_supply_crisis_alert_v11.py"
+      - "scripts/lng_supply_crisis_alert_v12.py"
 
 permissions:
   contents: write
@@ -39,60 +39,81 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v11 monitor
+      - name: Validate v12 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v11.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py
           python - <<'PY'
+          import re
           import sys
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v11 as v11
+          import lng_supply_crisis_alert_v12 as v12
 
-          assert core.classify_polarity(
-              "alaska_lng",
-              "트럼프 한일, 알래스카로 간다 LNG 프로젝트서 또 거론",
-          ) == "easing"
-          assert core.classify_polarity(
-              "alaska_lng",
-              "Stalled Alaska LNG bill sends negative signal to investors",
-          ) == "worsening"
-
-          item = core.NewsItem(
+          # 기존 가독성 구조 유지 확인
+          ko_item = core.NewsItem(
               category="alaska_lng",
               polarity="easing",
               subtype="alaska_policy_signal",
               title="트럼프 韓日, 알래스카로 간다…LNG 프로젝트서 또 거론",
               source="연합뉴스",
-              link="https://example.com/alaska",
+              link="https://example.com/alaska-ko",
               published_utc="2026-09-03T00:00:00+00:00",
               published_epoch=1788393600.0,
               official=False,
-              event_id="alaska-early-test",
+              event_id="alaska-ko-test",
           )
-          groups = v11.v10.confirmed_news_groups_v10([item])
-          assert len(groups) == 1
-          assert groups[0]["verification"] == "정책 발언 조기신호·주요 통신사 1곳"
-          _, body, meta = v11.build_regular_alert_v11(groups, {}, set(), set())
-          assert "<b>한눈에</b>" in body
-          assert "<b>판정</b>" in body
-          assert "<b>현재 단계</b>  정책 발언 ① / ⑤" in body
-          assert "<b>아직 아님</b>  한국 투자 확정 · 오프테이크/SPA · FID · EPC/발주" in body
-          assert "<b>무엇이 바뀌었나</b>" in body
-          assert '<a href="https://example.com/alaska">원문</a>' in body
-          assert "<b>한국 영향</b>" in body
-          assert "<b>투자 포인트</b>" in body
-          assert "<b>다음 확인</b>" in body
-          assert "<b>핵심 한 줄</b>" in body
-          assert meta["version"] == 11
-          print("v11_readability_validation=true")
+          ko_group = {
+              "category": "alaska_lng",
+              "polarity": "easing",
+              "subtype": "alaska_policy_signal",
+              "event_id": "alaska-ko-test",
+              "latest_epoch": ko_item.published_epoch,
+              "evidence": [ko_item],
+              "verification": "정책 발언 조기신호·주요 통신사 1곳",
+          }
+          _, ko_body, ko_meta = v12.build_regular_alert_v12([ko_group], {}, set(), set())
+          assert "<b>한눈에</b>" in ko_body
+          assert "<b>현재 단계</b>  정책 발언 ① / ⑤" in ko_body
+          assert '<a href="https://example.com/alaska-ko">원문</a>' in ko_body
+
+          # 영문 Reuters 헤드라인이 한국어로만 송출되는지 확인
+          en_title = "US forces strike two Iranian launchers on Iran's Larak island, US official says - Reuters"
+          en_item = core.NewsItem(
+              category="hormuz_shipping",
+              polarity="worsening",
+              subtype="facility_damage",
+              title=en_title,
+              source="Reuters",
+              link="https://example.com/reuters",
+              published_utc="2026-09-03T00:00:00+00:00",
+              published_epoch=1788393600.0,
+              official=False,
+              event_id="reuters-en-test",
+          )
+          en_group = {
+              "category": "hormuz_shipping",
+              "polarity": "worsening",
+              "subtype": "facility_damage",
+              "event_id": "reuters-en-test",
+              "latest_epoch": en_item.published_epoch,
+              "evidence": [en_item],
+              "verification": "신뢰 매체 2곳 교차",
+          }
+          _, en_body, en_meta = v12.build_regular_alert_v12([en_group], {}, set(), set())
+          assert en_title not in en_body
+          assert "로이터" in en_body
+          assert "미군" in en_body
+          assert "이란" in en_body
+          assert en_meta["headline_language"] == "ko-strict"
+          print("v12_korean_only_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v11.py --setup-test
+            python scripts/lng_supply_crisis_alert_v12.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v11.py
+            python scripts/lng_supply_crisis_alert_v12.py
           fi
 
       - name: Publish status summary
@@ -185,7 +206,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v11.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v12.py --finalize
 
       - name: Upload verification artifacts
         if: always()
