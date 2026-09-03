@@ -71,11 +71,11 @@ def build_regular_alert_v12(groups, quotes, new_signals, cleared_signals):
         groups, quotes, new_signals, cleared_signals
     )
 
-    # 방어적 최종검사: 영문 원제목 문자열이 Telegram 본문에 그대로 들어가면 송출 전에 차단한다.
+    # 방어적 최종검사: 'LNG' 같은 표준 약어는 허용하되, 영문 문장형 원제목이 그대로 들어가면 차단한다.
     for group in groups:
         for item in group.get("evidence", []):
             raw_title = str(item.title).strip()
-            if re.search(r"[A-Za-z]{2,}", raw_title):
+            if _contains_untranslated_prose(raw_title):
                 if html.escape(raw_title) in body or raw_title in body:
                     raise RuntimeError("영문 기사 원제목 노출 감지: Telegram 송출 차단")
 
