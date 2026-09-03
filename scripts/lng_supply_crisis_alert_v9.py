@@ -12,8 +12,6 @@ v8의 가격·번역·Telegram 링크 규칙을 유지하면서 알래스카 LNG
 
 from __future__ import annotations
 
-import html
-
 import lng_supply_crisis_alert_v2 as core
 import lng_supply_crisis_alert_v8 as v8
 
@@ -47,10 +45,10 @@ core.WORSENING_TERMS["alaska_lng"] = (
 )
 core.EASING_TERMS["alaska_lng"] = (
     "going to alaska", "go to alaska", "participate", "participation", "join", "investment",
-    "invest", "funding", "funds", "pipeline", "build pipelines", "offtake", "spa",
+    "invest", "funding", "funds", "build pipelines", "offtake", "spa",
     "letter of intent", "loi", "memorandum of understanding", "mou", "agreement", "contract",
     "final investment decision", "fid", "epc", "notice to proceed", "committed", "commitment",
-    "알래스카로 간다", "참여", "투자", "자금", "가스관", "파이프라인", "구매계약",
+    "알래스카로 간다", "참여", "투자", "자금", "가스관 건설", "파이프라인 건설", "구매계약",
     "장기계약", "양해각서", "협약", "계약", "최종투자결정", "발주", "수주",
 )
 
@@ -84,6 +82,24 @@ def category_label_v9(category: str) -> str:
     if category == "alaska_lng":
         return "알래스카 LNG·미국 공급 다변화"
     return _original_category_label(category)
+
+
+def signal_label_v9(signal: str, cleared: bool = False) -> str:
+    labels = {
+        "ttf_up_5": "Trading Economics TTF 추종값 이전값 대비 +5% 이상",
+        "ttf_down_5": "Trading Economics TTF 추종값 이전값 대비 -5% 이하",
+        "ttf_above_50": "Trading Economics TTF 추종값 50유로/MWh 상회",
+        "ttf_above_60": "Trading Economics TTF 추종값 60유로/MWh 상회",
+        "ttf_above_70": "Trading Economics TTF 추종값 70유로/MWh 상회",
+        "ttf_above_80": "Trading Economics TTF 추종값 80유로/MWh 상회",
+        "brent_up_5": "Brent 이전 종가 대비 +5% 이상",
+        "brent_down_5": "Brent 이전 종가 대비 -5% 이하",
+        "brent_above_90": "Brent 90달러/배럴 상회",
+        "brent_above_100": "Brent 100달러/배럴 상회",
+        "brent_above_120": "Brent 120달러/배럴 상회",
+    }
+    base = labels.get(signal, signal)
+    return f"{base} 종료" if cleared else base
 
 
 def classify_alert_context_v9(groups, new_signals, cleared_signals) -> str:
@@ -162,7 +178,7 @@ core.classify_alert_context = classify_alert_context_v9
 core.impact_text = impact_text_v9
 core.fetch_market_quotes = v8.v7.fetch_market_quotes_v7
 core.format_quote = v8.v7.v6.format_quote_v6
-core.signal_label = v8.v7.te.signal_label_v4
+core.signal_label = signal_label_v9
 core.build_regular_alert = build_regular_alert_v9
 core.build_setup_test = build_setup_test_v9
 
