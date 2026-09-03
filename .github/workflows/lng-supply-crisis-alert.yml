@@ -14,7 +14,7 @@ on:
   push:
     paths:
       - ".github/workflows/lng-supply-crisis-alert.yml"
-      - "scripts/lng_supply_crisis_alert_v10.py"
+      - "scripts/lng_supply_crisis_alert_v11.py"
 
 permissions:
   contents: write
@@ -39,14 +39,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v10 monitor
+      - name: Validate v11 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v10.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v11.py
           python - <<'PY'
           import sys
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v10 as v10
+          import lng_supply_crisis_alert_v11 as v11
 
           assert core.classify_polarity(
               "alaska_lng",
@@ -69,22 +69,30 @@ jobs:
               official=False,
               event_id="alaska-early-test",
           )
-          groups = v10.confirmed_news_groups_v10([item])
+          groups = v11.v10.confirmed_news_groups_v10([item])
           assert len(groups) == 1
           assert groups[0]["verification"] == "정책 발언 조기신호·주요 통신사 1곳"
-          _, body, _ = v10.v9.build_regular_alert_v9(groups, {}, set(), set())
-          assert "알래스카 LNG·미국 공급 다변화: 정책·사업 진전" in body
+          _, body, meta = v11.build_regular_alert_v11(groups, {}, set(), set())
+          assert "<b>한눈에</b>" in body
+          assert "<b>판정</b>" in body
+          assert "<b>현재 단계</b>  정책 발언 ① / ⑤" in body
+          assert "<b>아직 아님</b>  한국 투자 확정 · 오프테이크/SPA · FID · EPC/발주" in body
+          assert "<b>무엇이 바뀌었나</b>" in body
           assert '<a href="https://example.com/alaska">원문</a>' in body
-          assert "오프테이크·SPA" in body
-          print("v10_early_alaska_validation=true")
+          assert "<b>한국 영향</b>" in body
+          assert "<b>투자 포인트</b>" in body
+          assert "<b>다음 확인</b>" in body
+          assert "<b>핵심 한 줄</b>" in body
+          assert meta["version"] == 11
+          print("v11_readability_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v10.py --setup-test
+            python scripts/lng_supply_crisis_alert_v11.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v10.py
+            python scripts/lng_supply_crisis_alert_v11.py
           fi
 
       - name: Publish status summary
@@ -177,7 +185,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v10.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v11.py --finalize
 
       - name: Upload verification artifacts
         if: always()
