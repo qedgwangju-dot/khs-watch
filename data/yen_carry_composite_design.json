@@ -1,42 +1,52 @@
 {
   "status": "active",
-  "merged_commit": "0104fa3337220293acfec696510c4d2984ac93de",
-  "validation_run": 32444211809,
-  "tests_passed": 11,
-  "live_validation": {
-    "all_structural_sources_verified": true,
-    "source_errors": 0,
-    "unwind_level": 0,
-    "rebuild_level": 2,
-    "telegram_sent_in_pr": false
+  "principle": "Carry unwind risk, structural JGB stress, capital repatriation and persistent yen weakness are separate questions. Never infer an unwind from JGB 10Y 3% alone.",
+  "risk_colour": {
+    "green": "current unwind / market-stress risk unconfirmed",
+    "yellow": "structural vulnerability / watch",
+    "orange": "active unwind warning with yen-strength plus corroborating funding or volatility pressure",
+    "red": "yen-strength shock plus funding pressure plus volatility/cross-asset deleveraging confirmation"
   },
-  "principle": "Carry unwind risk and persistent yen strength are separate questions. Never infer either from one threshold such as JGB 10Y 3%.",
-  "factors": [
+  "fast_unwind_factors": [
     "Japan 2Y JGB as a short-rate proxy",
     "US-Japan 2Y yield spread",
     "USD/JPY direction and speed",
     "12-hour realized USD/JPY volatility",
     "CFTC leveraged-fund JPY positioning",
-    "Japan MOF resident purchases of foreign equities and long-term debt",
     "official intervention context"
+  ],
+  "structural_factors": [
+    "Japan 10Y JGB 3% as a structural/fiscal boundary, not an automatic unwind trigger",
+    "consecutive official JGB 10Y closes at or above 3%",
+    "Japan MOF outward equity flows separated from outward long-term debt flows",
+    "Japan MOF 2-week and year-to-date outward long-term debt flows for repatriation pressure",
+    "10Y and 30Y JGB auction bid-to-cover ratios and yield tails versus prior auctions"
   ],
   "source_priority": {
     "rates": "Japan MOF / U.S. Treasury",
     "positioning": "CFTC Traders in Financial Futures - Futures Only current report",
-    "outward_flows": "Japan MOF International Transactions in Securities weekly historical CSV",
+    "outward_flows": "Japan MOF International Transactions in Securities weekly historical CSV; equities and long-term debt are parsed separately",
+    "jgb_auctions": "Japan MOF official 10-year and 30-year auction result pages",
     "policy": "Japan MOF official joint-intervention statement",
     "intraday_fx": "Yahoo query1/query2 cross-check; may be delayed"
   },
+  "not_yet_scored": [
+    "BOJ OIS hike probability until a reliable automated market source is locked",
+    "bank/overseas yen funding balances until the exact BOJ/BIS official series used by market commentary is identified"
+  ],
   "alert_policy": {
     "cadence": "every 15 minutes, GitHub schedule may start late",
     "fast_usdjpy_lane_unchanged": true,
-    "first_production_run": "establish baseline without sending",
+    "first_structural_run": "establish structural baseline without sending",
     "realert_on": [
       "unwind level change",
       "rebuild level change",
       "new short-covering / yen-weakness divergence",
-      "new CFTC release while a risk state is active",
-      "new Japan MOF outward-flow release while a risk state is active"
+      "JGB 10Y entering or leaving the 3% structural boundary",
+      "JGB 10Y remaining at or above 3% for at least two official business-day closes",
+      "new Japan MOF outward-flow release when risk is active or long-term-debt direction changes",
+      "year-to-date outward long-term-debt direction change",
+      "new 10Y or 30Y JGB auction result"
     ]
   }
 }
