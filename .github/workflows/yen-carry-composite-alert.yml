@@ -13,12 +13,15 @@ on:
       - "scripts/yen_carry_fx_shock.py"
       - "scripts/yen_carry_confirmation.py"
       - "scripts/yen_carry_risk_refine.py"
+      - "scripts/yen_carry_structural_upgrade.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_composite_watch.py"
       - "tests/test_yen_carry_composite_sources.py"
+      - "tests/test_yen_carry_structural_upgrade.py"
       - "data/yen_carry_composite_design.json"
       - "data/yen_carry_composite_state.json"
+      - "data/yen_carry_structural_state.json"
 
 permissions:
   contents: write
@@ -30,7 +33,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     env:
       TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
@@ -56,9 +59,11 @@ jobs:
           python -m py_compile scripts/yen_carry_composite_runner.py
           python -m py_compile scripts/yen_carry_confirmation.py
           python -m py_compile scripts/yen_carry_risk_refine.py
+          python -m py_compile scripts/yen_carry_structural_upgrade.py
           PYTHONPATH=scripts python -m unittest \
             tests/test_yen_carry_composite_watch.py \
-            tests/test_yen_carry_composite_sources.py -v
+            tests/test_yen_carry_composite_sources.py \
+            tests/test_yen_carry_structural_upgrade.py -v
 
       - name: Check multi-factor carry state
         run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py
@@ -66,6 +71,10 @@ jobs:
       - name: Check daily deleveraging confirmation layer
         if: always()
         run: python scripts/yen_carry_confirmation.py
+
+      - name: Add JGB 3 percent, repatriation and auction structure
+        if: always()
+        run: PYTHONPATH=scripts python scripts/yen_carry_structural_upgrade.py
 
       - name: Refine current unwind risk hierarchy
         if: hashFiles('out/yen_carry_composite_alert.md') != ''
@@ -101,6 +110,10 @@ jobs:
           if [ -f out/yen_carry_confirmation.md ]; then
             printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/yen_carry_confirmation.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/yen_carry_structural_context.md ]; then
+            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/yen_carry_structural_context.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Preview pull request alert without sending
@@ -159,6 +172,8 @@ jobs:
               'CFTC TFF Futures Only': 'CFTC TFF 선물',
               'Japan MOF 해외증권투자': '일본 재무성 해외증권투자',
               'Japan MOF 공동개입 공식발표': '일본 재무성 공동개입 공식발표',
+              'Japan MOF JGB 10Y auction': '일본 재무성 10년 JGB 입찰',
+              'Japan MOF JGB 30Y auction': '일본 재무성 30년 JGB 입찰',
           }
           yahoo_url = 'https://finance.yahoo.com/quote/JPY=X/'
           raw_source_re = re.compile(r'^- (.+?): (https?://\S+)$')
@@ -237,20 +252,24 @@ jobs:
           print(f'telegram_delivery_confirmed=true lane=yen_carry_composite bot=@{actual} message_ids={message_ids}')
           PY
 
-      - name: Finalize state only after baseline or confirmed delivery
+      - name: Finalize composite state only after baseline or confirmed delivery
         if: always() && env.TELEGRAM_DRY_RUN != 'true'
         run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py --finalize
+
+      - name: Finalize structural state only after baseline or confirmed delivery
+        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: PYTHONPATH=scripts python scripts/yen_carry_structural_upgrade.py --finalize
 
       - name: Commit confirmed or baseline state
         if: always() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('data/yen_carry_composite_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/yen_carry_composite_state.json
+          git add data/yen_carry_composite_state.json data/yen_carry_structural_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "엔캐리 복합 상태 변경 없음"
+            echo "엔캐리 복합·구조 상태 변경 없음"
           else
-            git commit -m "Update yen carry composite state"
+            git commit -m "Update yen carry composite and structural states"
             git pull --rebase origin main
             git push
           fi
@@ -269,6 +288,9 @@ jobs:
             out/yen_carry_composite_telegram_confirmed.json
             out/yen_carry_confirmation.md
             out/yen_carry_confirmation.json
+            out/yen_carry_structural_context.md
+            out/yen_carry_structural_context.json
+            out/yen_carry_structural_pending_state.json
             out/khs_source_failures.json
           if-no-files-found: ignore
           retention-days: 14
