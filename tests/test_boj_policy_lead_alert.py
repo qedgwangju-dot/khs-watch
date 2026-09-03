@@ -86,7 +86,9 @@ class BojPolicyLeadAlertTests(unittest.TestCase):
                 "Markets price a 75% probability of a 25 basis-point hike.",
             )
         )
-        self.assertIn("금리 인상 확률 75%", korean_signal_title(signal))
+        translated = korean_signal_title(signal)
+        self.assertIn("일본은행 금리 인상 기대", translated)
+        self.assertNotIn("Yen jumps", translated)
 
     def test_boj_official_title_is_koreanized(self):
         item = self.mk(
