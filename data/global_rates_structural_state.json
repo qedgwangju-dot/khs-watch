@@ -13,6 +13,20 @@
       "tail_bp": 1.6000000000000014,
       "tenor": "10-Year",
       "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20260901.htm"
+    },
+    "30-Year": {
+      "accepted_billion_yen": 456.2,
+      "accepted_krw": 3933780346314.934,
+      "auction_date": "9/3/2026",
+      "average_yield_pct": 4.079,
+      "bid_to_cover": 3.788031565103025,
+      "competitive_bids_billion_yen": 1728.1,
+      "coupon_pct": 4.0,
+      "grade": "중립",
+      "lowest_accepted_yield_pct": 4.1,
+      "tail_bp": 2.0999999999999908,
+      "tenor": "30-Year",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20260903.htm"
     }
   },
   "boj_survey": {
@@ -65,5 +79,5 @@
     "period": "令和8年7月30日～令和8年8月28日",
     "url": "https://www.mof.go.jp/policy/international_policy/reference/feio/data/monthly/20260828.html"
   },
-  "updated_at_kst": "2026-09-03T10:19:01+09:00"
+  "updated_at_kst": "2026-09-03T15:05:44+09:00"
 }
