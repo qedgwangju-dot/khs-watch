@@ -67,6 +67,91 @@ jobs:
       - name: Check AI networking, optics and Corning signals
         run: python scripts/ai_networking_optics_watch.py
 
+      - name: Translate alert narrative to Korean and remove source timestamp
+        if: hashFiles('out/ai_networking_optics_watch_telegram.html') != ''
+        run: |
+          python - <<'PY'
+          import html
+          import json
+          import pathlib
+          import re
+          import urllib.parse
+          import urllib.request
+
+          path = pathlib.Path("out/ai_networking_optics_watch_telegram.html")
+          text = path.read_text(encoding="utf-8")
+
+          keep_terms = [
+              "NVIDIA", "Broadcom", "Arista Networks", "Marvell", "Lumentum",
+              "Coherent", "Astera Labs", "Corning", "Spectrum-X", "NVLink",
+              "BlueField", "Tomahawk", "Thor", "CPO", "DSP", "PCIe", "CXL",
+              "GPU", "XPU", "AI", "1.6T", "3.2T", "800G", "FY25", "FY26",
+              "FY27", "FY28", "AVGO", "NVDA", "ANET", "MRVL", "LITE",
+              "COHR", "ALAB", "GLW",
+          ]
+
+          def strip_publisher_suffix(value: str) -> str:
+              publishers = [
+                  "Investing.com", "Reuters", "Bloomberg", "Financial Times",
+                  "The Wall Street Journal", "CNBC", "DigiTimes", "DIGITIMES",
+                  "Barron's", "MarketWatch",
+              ]
+              for publisher in publishers:
+                  value = re.sub(rf"\s+-\s+{re.escape(publisher)}\s*$", "", value, flags=re.I)
+              return value.strip()
+
+          def translate_to_korean(value: str) -> str:
+              original = strip_publisher_suffix(html.unescape(value).strip())
+              protected = original
+              replacements = {}
+              for idx, term in enumerate(sorted(keep_terms, key=len, reverse=True)):
+                  marker = f"ZXKEEP{idx}QZ"
+                  if term in protected:
+                      protected = protected.replace(term, marker)
+                      replacements[marker] = term
+
+              params = urllib.parse.urlencode({
+                  "client": "gtx",
+                  "sl": "auto",
+                  "tl": "ko",
+                  "dt": "t",
+                  "q": protected,
+              })
+              req = urllib.request.Request(
+                  "https://translate.googleapis.com/translate_a/single?" + params,
+                  headers={"User-Agent": "Mozilla/5.0 khs-watch/1.0"},
+              )
+              with urllib.request.urlopen(req, timeout=25) as response:
+                  payload = json.loads(response.read().decode("utf-8"))
+              translated = "".join(
+                  str(segment[0]) for segment in (payload[0] or [])
+                  if segment and segment[0]
+              ).strip()
+              for marker, term in replacements.items():
+                  translated = translated.replace(marker, term)
+
+              translated = re.sub(r"\$([0-9]+(?:\.[0-9]+)?)B\b", r"\1십억달러", translated)
+              translated = re.sub(r"\s+", " ", translated).strip()
+              if not re.search(r"[가-힣]", translated):
+                  raise RuntimeError(f"Korean translation failed; refusing to send English title: {original}")
+              return translated
+
+          output = []
+          for line in text.splitlines():
+              if line.startswith("• 출처·시각:"):
+                  continue
+              if line.startswith("• 원문 제목:"):
+                  raw_title = line.split(":", 1)[1].strip()
+                  translated = translate_to_korean(raw_title)
+                  output.append(f"• 제목: {html.escape(translated)}")
+                  continue
+              output.append(line)
+
+          rendered = "\n".join(output).strip() + "\n"
+          path.write_text(rendered, encoding="utf-8")
+          print("telegram_alert_korean_translation=true source_timestamp_removed=true")
+          PY
+
       - name: Publish watcher summary
         if: always()
         run: |
