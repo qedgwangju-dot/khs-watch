@@ -13,7 +13,7 @@ class RegimeFlowUpgradeTest(unittest.TestCase):
         cur_u = {"date": "2026-09-02", "ust10": 4.79}
         fx = {"live_fx_price": 159.0, "live_fx_change_pct": 0.05}
         out = m.classify_regime(prev_j, cur_j, prev_u, cur_u, fx)
-        self.assertEqual(out["label"], "글로벌 금리 동조형")
+        self.assertEqual(out["label"], "글로벌 금리 동조 신호 우세")
 
     def test_fiscal_risk_requires_long_end_and_weak_yen(self):
         prev_j = {"date": "2026/9/1", "jgb2": 1.80, "jgb5": 2.20, "jgb10": 3.00, "jgb30": 3.50}
@@ -22,7 +22,7 @@ class RegimeFlowUpgradeTest(unittest.TestCase):
         cur_u = {"date": "2026-09-02", "ust10": 4.77}
         fx = {"live_fx_price": 160.2, "live_fx_change_pct": 0.60}
         out = m.classify_regime(prev_j, cur_j, prev_u, cur_u, fx)
-        self.assertEqual(out["label"], "재정 위험 프리미엄형")
+        self.assertEqual(out["label"], "재정 위험 프리미엄 신호 우세")
 
     def test_policy_normalisation_requires_front_end_and_yen_strength(self):
         prev_j = {"date": "2026/9/1", "jgb2": 1.75, "jgb5": 2.15, "jgb10": 2.98, "jgb30": 3.55}
@@ -31,7 +31,18 @@ class RegimeFlowUpgradeTest(unittest.TestCase):
         cur_u = {"date": "2026-09-02", "ust10": 4.76}
         fx = {"live_fx_price": 158.5, "live_fx_change_pct": -0.70}
         out = m.classify_regime(prev_j, cur_j, prev_u, cur_u, fx)
-        self.assertEqual(out["label"], "BOJ 정상화형")
+        self.assertEqual(out["label"], "BOJ 정상화 신호 우세")
+
+    def test_overlapping_policy_and_global_signals_are_mixed(self):
+        prev_j = {"date": "2026/9/1", "jgb2": 1.75, "jgb5": 2.15, "jgb10": 2.94, "jgb30": 3.50}
+        cur_j = {"date": "2026/9/2", "jgb2": 1.82, "jgb5": 2.22, "jgb10": 3.01, "jgb30": 3.55}
+        prev_u = {"date": "2026-09-01", "ust10": 4.71}
+        cur_u = {"date": "2026-09-02", "ust10": 4.79}
+        fx = {"live_fx_price": 158.3, "live_fx_change_pct": -1.0}
+        out = m.classify_regime(prev_j, cur_j, prev_u, cur_u, fx)
+        self.assertIn("혼재형", out["label"])
+        self.assertIn("BOJ 정상화 신호", out["label"])
+        self.assertIn("글로벌 금리 동조 신호", out["label"])
 
     def test_three_percent_with_good_auction_is_counter_signal(self):
         regime = {"jgb10": 3.01}
