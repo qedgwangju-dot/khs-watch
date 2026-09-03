@@ -1,0 +1,46 @@
+name: Yen carry monitor heartbeat bridge
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/yen-carry-monitor-bridge.yml"
+  workflow_run:
+    workflows:
+      - "Yen carry unwind Telegram alert"
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: yen-carry-monitor-heartbeat-bridge
+  cancel-in-progress: true
+
+jobs:
+  fanout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Dispatch composite live monitor
+        run: |
+          gh workflow run yen-carry-composite-live.yml \
+            --repo "${{ github.repository }}" \
+            --ref main
+
+      - name: Dispatch current-versus-recent FX shock monitor
+        run: |
+          gh workflow run yen-carry-recent-shock.yml \
+            --repo "${{ github.repository }}" \
+            --ref main
+
+      - name: Record heartbeat bridge status
+        run: |
+          echo "엔캐리 5분 핵심 감시 완료 이벤트를 복합 감시와 최근 90분 충격 감시로 전달했습니다." >> "$GITHUB_STEP_SUMMARY"
+          echo "원래 cron이 지연되더라도 기존 5분 엔캐리 감시가 완료될 때마다 두 보강 감시를 다시 실행합니다." >> "$GITHUB_STEP_SUMMARY"
