@@ -5,16 +5,22 @@ on:
     paths:
       - ".github/workflows/global-rates-telegram-watch.yml"
       - "scripts/global_rates_watch.py"
+      - "scripts/global_rates_freshness_guard.py"
       - "scripts/global_rates_structural_watch.py"
+      - "scripts/global_rates_regime_flow_upgrade.py"
+      - "scripts/global_rates_regime_flow_append.py"
       - "scripts/yen_carry_confirmation.py"
+      - "scripts/yen_carry_market_data_v2.py"
       - "scripts/global_rates_telegram_formatter.py"
       - "scripts/global_rates_telegram_htmlify.py"
       - "tests/test_global_rates_structural_watch.py"
+      - "tests/test_global_rates_freshness_guard.py"
+      - "tests/test_global_rates_regime_flow_upgrade.py"
       - "data/global_rates_watch_state.json"
       - "data/global_rates_structural_state.json"
+      - "data/global_rates_regime_flow_state.json"
       - "data/global_rates_telegram_state.json"
   schedule:
-    # Official sources are daily/event driven; 15-minute polling catches publications quickly.
     - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
@@ -36,7 +42,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
-      # Never let a branch push send a live Telegram message. Scheduled/manual main runs only.
       TELEGRAM_DRY_RUN: ${{ github.ref != 'refs/heads/main' && 'true' || 'false' }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
     steps:
@@ -50,20 +55,25 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate structural signal layer
+      - name: Validate alert layers
         run: |
           python -m py_compile scripts/global_rates_watch.py
+          python -m py_compile scripts/global_rates_freshness_guard.py
           python -m py_compile scripts/global_rates_structural_watch.py
+          python -m py_compile scripts/global_rates_regime_flow_upgrade.py
+          python -m py_compile scripts/global_rates_regime_flow_append.py
           python -m py_compile scripts/yen_carry_confirmation.py
+          python -m py_compile scripts/yen_carry_market_data_v2.py
           python -m py_compile scripts/global_rates_telegram_formatter.py
           python -m py_compile scripts/global_rates_telegram_htmlify.py
           PYTHONPATH=scripts python -m unittest tests/test_global_rates_structural_watch.py -v
+          PYTHONPATH=scripts python -m unittest tests/test_global_rates_freshness_guard.py -v
+          PYTHONPATH=scripts python -m unittest tests/test_global_rates_regime_flow_upgrade.py -v
 
       - name: Validate Telegram routing guard
         run: |
           python - <<'PY'
           from pathlib import Path
-
           text = Path(".github/workflows/global-rates-telegram-watch.yml").read_text(encoding="utf-8")
           required = (
               'EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"',
@@ -81,6 +91,10 @@ jobs:
       - name: Check official rate sources
         run: python scripts/global_rates_watch.py
 
+      - name: Enforce source-date freshness and live FX
+        if: always()
+        run: python scripts/global_rates_freshness_guard.py
+
       - name: Check JGB demand GPIF and BOJ market structure
         if: always()
         run: python scripts/global_rates_structural_watch.py
@@ -89,11 +103,35 @@ jobs:
         if: always()
         run: python scripts/yen_carry_confirmation.py
 
+      - name: Recheck official rates immediately before report
+        if: always()
+        run: python scripts/global_rates_watch.py
+
+      - name: Recheck date alignment and current USDJPY immediately before report
+        if: always()
+        run: python scripts/global_rates_freshness_guard.py
+
+      - name: Recheck JGB demand and allocator structure immediately before report
+        if: always()
+        run: python scripts/global_rates_structural_watch.py
+
+      - name: Classify JGB regime and Japanese overseas flows
+        if: always()
+        run: python scripts/global_rates_regime_flow_upgrade.py
+
       - name: Build concise Telegram report
         if: always()
         env:
           FORCE_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.force_test == true && '1' || '0' }}
         run: python scripts/global_rates_telegram_formatter.py
+
+      - name: Append JGB regime and capital flow context
+        if: always()
+        run: python scripts/global_rates_regime_flow_append.py
+
+      - name: Annotate freshness in Telegram report
+        if: always()
+        run: python scripts/global_rates_freshness_guard.py --annotate
 
       - name: Format clickable Telegram source links
         if: hashFiles('out/global_rates_watch_telegram.md') != ''
@@ -107,15 +145,40 @@ jobs:
           else
             echo "글로벌 금리 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f out/global_rates_freshness.json ]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            echo "# 데이터 최신성 검증" >> "$GITHUB_STEP_SUMMARY"
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          x = json.loads(pathlib.Path("out/global_rates_freshness.json").read_text(encoding="utf-8"))
+          print(f"- 미·일 2년물 동일 기준일: {x.get('same_2y_date')} / JGB {x.get('jgb2_date')} / UST {x.get('ust2_date')}")
+          print(f"- USD/JPY 현재 신호 사용 가능: {x.get('live_fx_signal_eligible')} / 관측 {x.get('live_fx_timestamp_utc')} / 지연 {x.get('live_fx_age_seconds')}초")
+          print(f"- FRED H.10 USD/JPY 참고값: {x.get('fred_usdjpy_reference')} / 기준일 {x.get('fred_usdjpy_date')}")
+          if x.get('live_fx_error'):
+              print(f"- USD/JPY 현재값 오류: {x.get('live_fx_error')}")
+          PY
+          fi
           if [ -f out/global_rates_structural.json ]; then
             echo >> "$GITHUB_STEP_SUMMARY"
             echo "# JGB·GPIF 구조 신호" >> "$GITHUB_STEP_SUMMARY"
             python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
           import json, pathlib
-          p = pathlib.Path("out/global_rates_structural.json")
-          x = json.loads(p.read_text(encoding="utf-8"))
+          x = json.loads(pathlib.Path("out/global_rates_structural.json").read_text(encoding="utf-8"))
           print(f"- 조회: {x.get('checked_at_kst')}")
           print(f"- 구조 신호: {x.get('signals')}")
+          if x.get('errors'):
+              print(f"- 부분완료: {' | '.join(x['errors'][:3])}")
+          PY
+          fi
+          if [ -f out/global_rates_regime_flow.json ]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            echo "# JGB 3% 체제·해외자금 흐름" >> "$GITHUB_STEP_SUMMARY"
+            python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          x = json.loads(pathlib.Path("out/global_rates_regime_flow.json").read_text(encoding="utf-8"))
+          print(f"- 원인 판정: {(x.get('regime') or {}).get('label')}")
+          print(f"- 입찰 흡수력: {(x.get('absorption') or {}).get('label')}")
+          print(f"- 해외증권 수급: {(x.get('flow') or {}).get('label')} / {(x.get('flow') or {}).get('period')}")
           if x.get('errors'):
               print(f"- 부분완료: {' | '.join(x['errors'][:3])}")
           PY
@@ -167,9 +230,7 @@ jobs:
               identity = json.loads(r.read().decode("utf-8"))
           actual = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or actual.lower() != expected.lower():
-              raise RuntimeError(
-                  f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}"
-              )
+              raise RuntimeError(f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}")
 
           text = pathlib.Path("out/global_rates_watch_telegram.md").read_text(encoding="utf-8").strip()
 
@@ -198,72 +259,43 @@ jobs:
           for idx, chunk in enumerate(split_message(text), start=1):
               if idx > 1:
                   chunk = f"글로벌 금리·엔캐리 경보 (계속 {idx})\n\n{chunk}"
-              payload = urllib.parse.urlencode({
-                  "chat_id": chat_id,
-                  "text": chunk,
-                  "parse_mode": "HTML",
-                  "disable_web_page_preview": "true",
-              }).encode("utf-8")
-              req = urllib.request.Request(
-                  f"https://api.telegram.org/bot{token}/sendMessage",
-                  data=payload,
-                  method="POST",
-              )
+              payload = urllib.parse.urlencode({"chat_id": chat_id, "text": chunk, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode("utf-8")
+              req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
               with urllib.request.urlopen(req, timeout=25) as r:
                   result = json.loads(r.read().decode("utf-8"))
               if not result.get("ok"):
                   raise RuntimeError(f"Telegram rejected message: {result}")
               ids.append((result.get("result") or {}).get("message_id"))
 
-          confirmed = {
-              "status": "confirmed",
-              "lane": "global_rates_yen_carry",
-              "bot_username": actual,
-              "route_secret": "GLOBAL_RATES_TELEGRAM_*",
-              "message_ids": ids,
-              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
-          }
-          pathlib.Path("out/global_rates_watch_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
-          )
-          print(
-              "telegram_delivery_confirmed=true "
-              f"lane=global_rates_yen_carry bot=@{actual} message_ids={ids}"
-          )
+          confirmed = {"status": "confirmed", "lane": "global_rates_yen_carry", "bot_username": actual, "route_secret": "GLOBAL_RATES_TELEGRAM_*", "message_ids": ids, "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
+          pathlib.Path("out/global_rates_watch_telegram_confirmed.json").write_text(json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print("telegram_delivery_confirmed=true " f"lane=global_rates_yen_carry bot=@{actual} message_ids={ids}")
           PY
 
       - name: Persist states only after safe baseline or confirmed Telegram delivery
         if: always()
         run: |
           if [ ! -f out/global_rates_watch_telegram.md ] || [ -f out/global_rates_watch_telegram_confirmed.json ]; then
-            if [ -f out/global_rates_watch_pending_state.json ]; then
-              cp out/global_rates_watch_pending_state.json data/global_rates_watch_state.json
-            fi
-            if [ -f out/global_rates_structural_pending_state.json ]; then
-              cp out/global_rates_structural_pending_state.json data/global_rates_structural_state.json
-            fi
-            if [ -f out/global_rates_telegram_pending_state.json ]; then
-              cp out/global_rates_telegram_pending_state.json data/global_rates_telegram_state.json
-            fi
+            if [ -f out/global_rates_watch_pending_state.json ]; then cp out/global_rates_watch_pending_state.json data/global_rates_watch_state.json; fi
+            if [ -f out/global_rates_structural_pending_state.json ]; then cp out/global_rates_structural_pending_state.json data/global_rates_structural_state.json; fi
+            if [ -f out/global_rates_regime_flow_pending.json ]; then cp out/global_rates_regime_flow_pending.json data/global_rates_regime_flow_state.json; fi
+            if [ -f out/global_rates_telegram_pending_state.json ]; then cp out/global_rates_telegram_pending_state.json data/global_rates_telegram_state.json; fi
           else
             echo "Telegram delivery was not confirmed; watcher states intentionally not advanced."
           fi
 
-      - name: Commit confirmed/baseline states
+      - name: Commit confirmed or baseline states
         if: always() && github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/global_rates_watch_state.json data/global_rates_structural_state.json data/global_rates_telegram_state.json 2>/dev/null || true
+          git add data/global_rates_watch_state.json data/global_rates_structural_state.json data/global_rates_regime_flow_state.json data/global_rates_telegram_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Watcher states unchanged"
           else
             git commit -m "Update global rates watch states"
             for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
+              if git pull --rebase origin main && git push; then exit 0; fi
               git rebase --abort 2>/dev/null || true
               sleep $((attempt * 3))
             done
@@ -280,9 +312,14 @@ jobs:
             out/global_rates_watch_alert.md
             out/global_rates_watch_alert.json
             out/global_rates_watch_pending_state.json
+            out/global_rates_freshness.json
             out/global_rates_structural.json
             out/global_rates_structural_event.json
             out/global_rates_structural_pending_state.json
+            out/global_rates_regime_flow.json
+            out/global_rates_regime_flow_event.json
+            out/global_rates_regime_flow_pending.json
+            out/global_rates_regime_flow_block.md
             out/yen_carry_confirmation.md
             out/yen_carry_confirmation.json
             out/global_rates_watch_telegram.md
