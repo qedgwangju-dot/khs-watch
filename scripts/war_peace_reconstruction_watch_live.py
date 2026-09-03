@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
 import argparse
-import datetime as dt
-import json
-import urllib.parse
-from email.utils import format_datetime
 
 import war_peace_reconstruction_watch_clean as clean
 
 watch = clean.watch
 runner = clean.runner
 
-# Google News 색인을 기다리지 않고 Reuters 섹션 자체를 5분마다 직접 확인한다.
-# 검색 API가 차단될 때도 섹션 API → Google News 보강창 순서로 계속 동작한다.
-DIRECT_REUTERS_SECTIONS = [
-    "reuters-section:/world/europe",
-    "reuters-section:/world/middle-east",
+# Reuters의 /pf/api는 GitHub hosted runner에서 차단될 수 있다.
+# robots.txt가 공개하는 Reuters 공식 News Sitemap을 직접 5분마다 읽어 원문 색인 지연을 줄인다.
+DIRECT_REUTERS_SITEMAPS = [
+    "reuters-sitemap:0",
+    "reuters-sitemap:100",
+    "reuters-sitemap:200",
+    "reuters-sitemap:300",
 ]
 
+# Google News는 보강 경로다. 1시간 창만 쓰지 않고 6/12/24시간 창을 병행해 색인 지연도 회수한다.
 UKRAINE_FAST_QUERIES = [
     'site:reuters.com (Putin OR Zelenskiy OR Zelensky OR Ukraine OR Russia) ("peace deal" OR "peace agreement" OR "chance of peace" OR "constructive peace" OR "new dynamic") when:6h',
     'site:reuters.com (Zelenskiy OR Zelensky OR Ukraine) ("US delegation" OR "U.S. delegation" OR Witkoff OR Kushner) (Moscow OR Kyiv OR Kiev OR visit) when:12h',
@@ -30,7 +29,7 @@ IRAN_BACKFILL_QUERIES = [
     'site:wsj.com Iran Trump ("end the war" OR "declare the war over" OR advisers OR midterms) when:24h',
 ]
 
-watch.QUERIES = DIRECT_REUTERS_SECTIONS + UKRAINE_FAST_QUERIES + IRAN_BACKFILL_QUERIES + list(watch.QUERIES)
+watch.QUERIES = DIRECT_REUTERS_SITEMAPS + UKRAINE_FAST_QUERIES + IRAN_BACKFILL_QUERIES + list(watch.QUERIES)
 watch.TRUSTED = tuple(list(watch.TRUSTED) + ["Voice of America", "VOA", "VOA Korea"])
 watch.PEACE = list(watch.PEACE) + [
     "chance of peace", "new dynamic", "u.s. delegation", "us delegation",
@@ -41,86 +40,53 @@ watch.PEACE = list(watch.PEACE) + [
 _prev_google_news = watch.google_news
 
 
-def _make_reuters_row(article):
-    title = watch.clean(article.get("title") or article.get("web") or "")
-    desc = watch.clean(article.get("description") or "")
-    canonical = article.get("canonical_url") or ""
-    if canonical.startswith("http"):
-        link = canonical
-    elif canonical:
-        link = "https://www.reuters.com" + canonical
-    else:
-        return None
-
-    display = article.get("published_time") or article.get("display_time") or ""
-    pub = ""
-    if display:
-        try:
-            d = dt.datetime.fromisoformat(display.replace("Z", "+00:00"))
-            pub = format_datetime(d)
-        except Exception:
-            pub = ""
-
-    row = {
-        "title": title,
-        "title_original": title,
-        "link": link,
-        "published": pub,
-        "source": "Reuters",
-        "description": desc,
-    }
-
-    text = (title + " " + desc).lower()
-    signals = []
-    if "putin" in text and any(k in text for k in ("peace deal", "peace agreement", "chance of peace")):
-        signals.append("푸틴, 우크라이나 전쟁 종식을 위한 평화 협정 타결 가능성 언급")
-    if any(k in text for k in ("delegation", "envoys")) and "moscow" in text and any(k in text for k in ("kyiv", "kiev")):
-        signals.append("젤렌스키, 미국 협상단이 모스크바와 키이우를 방문할 예정이라고 밝혀")
-    if signals:
-        row["signals_ko"] = signals
-        row["forced_tags"] = ["종전·협상", "시간표"]
-        row["deep_signal"] = True
-    return row
-
-
-def _reuters_section(section):
-    args = {
-        "section_id": section,
-        "size": 30,
-        "website": "reuters",
-        "fetch_type": "section",
-    }
-    url = (
-        "https://www.reuters.com/pf/api/v3/content/fetch/articles-by-section-alias-or-id-v1?query="
-        + urllib.parse.quote_plus(json.dumps(args, ensure_ascii=False, separators=(",", ":")))
-    )
+def _reuters_news_sitemap(offset):
+    base = "https://www.reuters.com/arc/outboundfeeds/news-sitemap/?outputType=xml"
+    if offset:
+        base += f"&from={offset}"
     try:
-        data = json.loads(watch.req(url, 15).decode("utf-8"))
+        root = watch.ET.fromstring(watch.req(base, 20))
     except Exception as e:
-        return [], f"Reuters section {section}: {type(e).__name__}"
+        return [], f"Reuters news sitemap {offset}: {type(e).__name__}"
 
-    articles = []
-    if isinstance(data.get("arcResult"), dict):
-        articles = data["arcResult"].get("articles") or []
-    if not articles and isinstance(data.get("result"), dict):
-        articles = data["result"].get("articles") or []
-
+    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9", "news": "http://www.google.com/schemas/sitemap-news/0.9"}
     rows = []
-    for article in articles[:30]:
-        row = _make_reuters_row(article)
-        if row:
-            rows.append(row)
+    for node in root.findall("sm:url", ns):
+        loc = watch.clean(node.findtext("sm:loc", default="", namespaces=ns))
+        title = watch.clean(node.findtext("news:news/news:title", default="", namespaces=ns))
+        pub = watch.clean(node.findtext("news:news/news:publication_date", default="", namespaces=ns))
+        if not loc or not title:
+            continue
+        row = {
+            "title": title,
+            "title_original": title,
+            "link": loc,
+            "published": pub,
+            "source": "Reuters",
+            "description": "",
+        }
+        text = title.lower()
+        signals = []
+        if "putin" in text and any(k in text for k in ("peace deal", "peace agreement", "chance of peace")):
+            signals.append("푸틴, 우크라이나 전쟁 종식을 위한 평화 협정 타결 가능성 언급")
+        if any(k in text for k in ("delegation", "envoys")) and "moscow" in text and any(k in text for k in ("kyiv", "kiev")):
+            signals.append("젤렌스키, 미국 협상단이 모스크바와 키이우를 방문할 예정이라고 밝혀")
+        if signals:
+            row["signals_ko"] = signals
+            row["forced_tags"] = ["종전·협상", "시간표"]
+            row["deep_signal"] = True
+        rows.append(row)
     return rows, None
 
 
-def google_news_with_reuters_section(query):
-    prefix = "reuters-section:"
+def google_news_with_reuters_sitemap(query):
+    prefix = "reuters-sitemap:"
     if query.startswith(prefix):
-        return _reuters_section(query[len(prefix):])
+        return _reuters_news_sitemap(int(query[len(prefix):] or 0))
     return _prev_google_news(query)
 
 
-watch.google_news = google_news_with_reuters_section
+watch.google_news = google_news_with_reuters_sitemap
 
 _prev_score = watch.score_item
 
