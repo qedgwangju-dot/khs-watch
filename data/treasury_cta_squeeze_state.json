@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-09-04T06:50:33+09:00",
+  "last_checked_kst": "2026-09-04T07:53:33+09:00",
   "media_id": null,
   "cftc_date": "August 25, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-04T06:50:33+09:00",
+    "checked_kst": "2026-09-04T07:53:33+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "August 25, 2026",
@@ -65,32 +65,36 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 107.609375,
-        "settlement": 107.609375,
-        "change": -0.0625,
-        "pct_change": -0.05804672761573482,
+        "last": 107.625,
+        "settlement": 107.625,
+        "change": -0.046875,
+        "pct_change": -0.04353504571179556,
         "open_interest": 6208739,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 25, 2026)",
         "volume": 0,
         "market_time": 1788408000,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
-        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
+        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
+        "oi_comparable": true,
+        "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY"
       },
       "ZB": {
         "symbol": "ZB",
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 108.625,
-        "settlement": 108.625,
-        "change": -0.15625,
-        "pct_change": -0.14363688595231405,
+        "last": 108.65625,
+        "settlement": 108.65625,
+        "change": -0.125,
+        "pct_change": -0.11490950876185124,
         "open_interest": 2096351,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 25, 2026)",
         "volume": 0,
         "market_time": 1788408000,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
-        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
+        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
+        "oi_comparable": true,
+        "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY"
       },
       "UB": {
         "symbol": "UB",
@@ -106,7 +110,9 @@
         "volume": 0,
         "market_time": 1788408000,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
-        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
+        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
+        "oi_comparable": true,
+        "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY"
       }
     },
     "yield10": {
@@ -134,18 +140,19 @@
         "volume_bn": 1153
       }
     },
-    "format_revision": 7
+    "format_revision": 8
   },
-  "format_revision": 7,
+  "format_revision": 8,
   "short_bias_active": true,
   "episode_active": false,
   "episode_stage": 0,
   "last_gate": {
-    "futures_price_oi": false,
+    "futures_price_same_scope_oi": false,
     "cftc_short_bias": true,
     "z_below_minus_1": false,
     "repo_not_worse": true,
     "composite_confirmed": false,
-    "stage": 0
+    "stage": 0,
+    "oi_scope_fixes": []
   }
 }
