@@ -83,21 +83,14 @@ jobs:
           text = Path(".github/workflows/yen-carry-alert.yml").read_text(encoding="utf-8")
           required = (
               'EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"',
-              'secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN',
-              'secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID',
+              'TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}',
+              'TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}',
               'actual_username.lower() != expected_username.lower()',
               'Wrong Telegram bot configured',
           )
-          forbidden = (
-              'EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"',
-              'secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN',
-          )
           missing = [item for item in required if item not in text]
-          present_forbidden = [item for item in forbidden if item in text]
-          if missing or present_forbidden:
-              raise RuntimeError(
-                  f"Yen-carry Telegram route invalid: missing={missing}, forbidden={present_forbidden}"
-              )
+          if missing:
+              raise RuntimeError(f"Yen-carry Telegram route invalid: missing={missing}")
           print("yen_carry_telegram_route_guard=ok expected=@khs8879887988798879_bot")
           PY
 
