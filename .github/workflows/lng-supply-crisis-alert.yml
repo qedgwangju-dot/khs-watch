@@ -16,6 +16,7 @@ on:
       - ".github/workflows/lng-supply-crisis-alert.yml"
       - "scripts/lng_supply_crisis_alert_v12.py"
       - "scripts/lng_supply_crisis_alert_v13.py"
+      - "scripts/lng_supply_crisis_alert_v14.py"
 
 permissions:
   contents: write
@@ -40,14 +41,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v13 monitor
+      - name: Validate v14 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py
           python - <<'PY'
           import sys
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v13 as v13
+          import lng_supply_crisis_alert_v14 as v14
 
           ko_item = core.NewsItem(
               category="alaska_lng",
@@ -70,7 +71,7 @@ jobs:
               "evidence": [ko_item],
               "verification": "정책 발언 조기신호·주요 통신사 1곳",
           }
-          _, ko_body, _ = v13.build_regular_alert_v13([ko_group], {}, set(), set())
+          _, ko_body, _ = v14.build_regular_alert_v14([ko_group], {}, set(), set())
           assert "<b>한눈에</b>" in ko_body
           assert "<b>현재 단계</b>  정책 발언 ① / ⑤" in ko_body
           assert '<a href="https://example.com/alaska-ko">원문</a>' in ko_body
@@ -97,7 +98,7 @@ jobs:
               "evidence": [en_item],
               "verification": "신뢰 매체 2곳 교차",
           }
-          _, en_body, en_meta = v13.build_regular_alert_v13([en_group], {}, set(), set())
+          _, en_body, _ = v14.build_regular_alert_v14([en_group], {}, set(), set())
           assert en_title not in en_body
           assert "로이터" in en_body
           assert "미군" in en_body
@@ -124,19 +125,32 @@ jobs:
               "evidence": [manitoba_item],
               "verification": "조달·공급망 조기신호·주요 매체/공식 1곳",
           }
-          _, mb_body, mb_meta = v13.build_regular_alert_v13([manitoba_group], {}, set(), set())
-          for required in ["30억 캐나다달러", "750MW", "가스터빈 <b>3기</b>", "GE 버노바", "예약계약", "무역전쟁", "지멘스 에너지", "최대 7년", "예약계약 ≠ 최종 발주"]:
+          v14.fetch_verified_fx = lambda currency: {
+              "currency": currency,
+              "symbol": "CADKRW=X",
+              "rate": 984.23,
+              "timestamp_utc": "2026-09-03T05:07:00+00:00",
+              "timestamp_kst": "2026-09-03 14:07 KST",
+              "source": "validation fixture",
+          }
+          _, mb_body, mb_meta = v14.build_regular_alert_v14([manitoba_group], {}, set(), set())
+          for required in [
+              "30억 캐나다달러", "약 2조9,527억원", "750MW", "가스터빈 <b>3기</b>",
+              "GE 버노바", "예약계약", "무역전쟁", "지멘스 에너지", "최대 7년",
+              "예약계약 ≠ 최종 발주", "1캐나다달러", "984.23원", "2026-09-03 14:07 KST"
+          ]:
               assert required in mb_body, required
-          assert mb_meta["version"] == 13
-          print("v13_validation=true")
+          assert mb_meta["version"] == 14
+          assert mb_meta["krw_conversion_policy"]["on_failure"].startswith("원통화는 유지")
+          print("v14_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v13.py --setup-test
+            python scripts/lng_supply_crisis_alert_v14.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v13.py
+            python scripts/lng_supply_crisis_alert_v14.py
           fi
 
       - name: Publish status summary
@@ -229,7 +243,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v13.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v14.py --finalize
 
       - name: Upload verification artifacts
         if: always()
