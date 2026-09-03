@@ -2,12 +2,12 @@
   "last_values": {
     "jgb2": 1.854,
     "jgb10": 3.006,
-    "ust2": 4.39,
-    "ust10": 4.79,
-    "ust30": 5.27,
-    "usdjpy": 155.44400024414062,
-    "us_jp_2y_spread": 2.5359999999999996,
-    "usdjpy_daily_change_pct": -2.186652297531732
+    "ust2": 4.34,
+    "ust10": 4.77,
+    "ust30": 5.25,
+    "usdjpy": 155.822998046875,
+    "us_jp_2y_spread": null,
+    "usdjpy_daily_change_pct": -1.7887177802438488
   },
   "active": {
     "jgb10:above:3.0": true,
@@ -17,25 +17,25 @@
     "ust30:above:5.0": true,
     "ust30:above:5.3": false,
     "usdjpy:below:155.0": false,
-    "usdjpy:daily_change:below:-2.0": true,
+    "usdjpy:daily_change:below:-2.0": false,
     "us_jp_2y_spread:below:2.0": false
   },
   "last_source_dates": {
     "jgb2": "2026/9/2",
     "jgb10": "2026/9/2",
-    "ust2": "2026-09-02",
-    "ust10": "2026-09-02",
-    "ust30": "2026-09-02",
+    "ust2": "2026-09-03",
+    "ust10": "2026-09-03",
+    "ust30": "2026-09-03",
     "usdjpy": "2026-09-03"
   },
   "classification": "미·일 장기채 동시 스트레스",
-  "updated_at_kst": "2026-09-04T03:30:14+09:00",
+  "updated_at_kst": "2026-09-04T06:16:17+09:00",
   "date_alignment": {
     "jgb2_date": "2026/9/2",
-    "ust2_date": "2026-09-02",
-    "same_2y_date": true,
-    "latest_rate_date": "2026-09-02",
+    "ust2_date": "2026-09-03",
+    "same_2y_date": false,
+    "latest_rate_date": "2026-09-03",
     "live_fx_signal_eligible": true,
-    "live_fx_timestamp_utc": "2026-09-03T18:30:34Z"
+    "live_fx_timestamp_utc": "2026-09-03T21:16:34Z"
   }
 }
