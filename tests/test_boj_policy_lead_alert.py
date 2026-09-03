@@ -6,7 +6,7 @@ from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from boj_policy_lead_alert import Item, classify, prob, should
+from boj_policy_lead_alert import Item, classify, korean_official_title, korean_signal_title, prob, route_label, should
 
 KST = ZoneInfo("Asia/Seoul")
 
@@ -67,6 +67,36 @@ class BojPolicyLeadAlertTests(unittest.TestCase):
         ok, reason = should(signal, state, dt.datetime(2026, 9, 3, 12, 5, tzinfo=KST))
         self.assertTrue(ok)
         self.assertEqual(reason, "정책 경보 단계 상승")
+
+    def test_route_code_is_shown_in_korean(self):
+        self.assertEqual(route_label("official_commentary"), "BOJ 핵심 인사 발언")
+        self.assertEqual(route_label("market_probability"), "시장 인상확률")
+
+    def test_current_reuters_title_is_koreanized(self):
+        signal = classify(self.mk("BOJ chief signals chance of September rate hike, debate on price risks - Reuters"))
+        self.assertEqual(
+            korean_signal_title(signal),
+            "우에다 일본은행 총재, 9월 금리 인상 가능성 시사…물가 상방위험 논의",
+        )
+
+    def test_market_probability_title_is_koreanized(self):
+        signal = classify(
+            self.mk(
+                "Yen jumps on BOJ hike bets - Reuters",
+                "Markets price a 75% probability of a 25 basis-point hike.",
+            )
+        )
+        self.assertIn("금리 인상 확률 75%", korean_signal_title(signal))
+
+    def test_boj_official_title_is_koreanized(self):
+        item = self.mk(
+            "Speech by Board Member TAKATA in Sapporo (Economic Activity, Prices, and Monetary Policy in Japan)",
+            source="Bank of Japan",
+        )
+        self.assertEqual(
+            korean_official_title(item),
+            "다카타 일본은행 심의위원 연설: 일본의 경제활동·물가·통화정책",
+        )
 
 
 if __name__ == "__main__":
