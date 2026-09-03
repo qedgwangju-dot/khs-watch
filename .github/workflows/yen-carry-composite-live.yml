@@ -1,0 +1,161 @@
+name: Yen carry composite live fallback
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/yen-carry-composite-live.yml"
+      - "scripts/yen_carry_composite_watch.py"
+      - "scripts/yen_carry_composite_runner.py"
+      - "scripts/yen_carry_fx_shock.py"
+      - "scripts/yen_carry_confirmation.py"
+      - "scripts/yen_carry_risk_refine.py"
+      - "scripts/yen_carry_structural_upgrade.py"
+      - "scripts/yen_carry_structural_risk_floor.py"
+      - "scripts/global_rates_watch.py"
+      - "scripts/khs_source_fetch.py"
+      - "scripts/krw_fx.py"
+  schedule:
+    - cron: "4,19,34,49 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yen-carry-composite-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate live monitor
+        run: |
+          python -m py_compile scripts/yen_carry_composite_watch.py
+          python -m py_compile scripts/yen_carry_composite_runner.py
+          python -m py_compile scripts/yen_carry_confirmation.py
+          python -m py_compile scripts/yen_carry_risk_refine.py
+          python -m py_compile scripts/yen_carry_structural_upgrade.py
+          python -m py_compile scripts/yen_carry_structural_risk_floor.py
+
+      - name: Check current composite state
+        run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py
+
+      - name: Check daily confirmation
+        if: always()
+        run: python scripts/yen_carry_confirmation.py
+
+      - name: Add structural context
+        if: always()
+        run: PYTHONPATH=scripts python scripts/yen_carry_structural_upgrade.py
+
+      - name: Refine risk hierarchy
+        if: hashFiles('out/yen_carry_composite_alert.md') != ''
+        run: python scripts/yen_carry_risk_refine.py
+
+      - name: Apply JGB structural floor
+        if: hashFiles('out/yen_carry_composite_alert.md') != ''
+        run: python scripts/yen_carry_structural_risk_floor.py
+
+      - name: Send Telegram alert
+        if: hashFiles('out/yen_carry_composite_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import html, json, os, pathlib, re, urllib.parse, urllib.request
+          from zoneinfo import ZoneInfo
+
+          token=(os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id=(os.getenv('TELEGRAM_CHAT_ID') or '').strip()
+          expected=(os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
+          if not token or not chat_id:
+              raise RuntimeError('GLOBAL_RATES_TELEGRAM secrets missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe',timeout=25) as r:
+              ident=json.loads(r.read().decode('utf-8'))
+          actual=str((ident.get('result') or {}).get('username') or '')
+          if not ident.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+
+          title=pathlib.Path('out/yen_carry_composite_alert_title.txt').read_text(encoding='utf-8').strip()
+          body=pathlib.Path('out/yen_carry_composite_alert.md').read_text(encoding='utf-8').strip()
+          text=f'{title}\n\n{body}'
+          labels={
+              'Japan MOF JGB':'일본 재무성 JGB',
+              'U.S. Treasury':'미국 재무부',
+              'CFTC TFF Futures Only':'CFTC TFF 선물',
+              'Japan MOF 해외증권투자':'일본 재무성 해외증권투자',
+              'Japan MOF 공동개입 공식발표':'일본 재무성 공동개입 공식발표',
+              'Japan MOF JGB 10Y auction':'일본 재무성 10년 JGB 입찰',
+              'Japan MOF JGB 30Y auction':'일본 재무성 30년 JGB 입찰',
+              'FRED USD/KRW':'FRED USD/KRW',
+              'FRED USD/JPY':'FRED USD/JPY',
+          }
+          source_re=re.compile(r'^- (.+?): (https?://\S+)$')
+          out=[]
+          for line in text.splitlines():
+              m=source_re.match(line)
+              if m and m.group(1) in labels:
+                  out.append(f'- {html.escape(labels[m.group(1)])} — <a href="{html.escape(m.group(2),quote=True)}">원문</a>')
+              elif line.startswith('- USD/JPY: Yahoo query1/query2'):
+                  out.append('- USD/JPY(Yahoo 5분 데이터) — <a href="https://finance.yahoo.com/quote/JPY=X/">원문</a>')
+              else:
+                  out.append(html.escape(line))
+          rendered='\n'.join(out)
+          chunks=[]
+          while len(rendered)>3900:
+              cut=rendered.rfind('\n',0,3900)
+              if cut<1: cut=3900
+              chunks.append(rendered[:cut]); rendered=rendered[cut:].lstrip()
+          chunks.append(rendered)
+          ids=[]
+          for i,chunk in enumerate(chunks,1):
+              if i>1: chunk=f'엔캐리 복합 수급 알림 (계속 {i})\n\n'+chunk
+              payload=urllib.parse.urlencode({'chat_id':chat_id,'text':chunk,'parse_mode':'HTML','disable_web_page_preview':'true'}).encode()
+              req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage',data=payload,method='POST')
+              with urllib.request.urlopen(req,timeout=25) as r:
+                  result=json.loads(r.read().decode('utf-8'))
+              if not result.get('ok'): raise RuntimeError(f'Telegram rejected: {result}')
+              ids.append((result.get('result') or {}).get('message_id'))
+          pathlib.Path('out/yen_carry_composite_telegram_confirmed.json').write_text(json.dumps({'status':'confirmed','lane':'yen_carry_composite','bot_username':actual,'message_ids':ids,'confirmed_at_kst':dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds')},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+
+      - name: Finalize composite state
+        if: always()
+        run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py --finalize
+
+      - name: Finalize structural state
+        if: always()
+        run: PYTHONPATH=scripts python scripts/yen_carry_structural_upgrade.py --finalize
+
+      - name: Commit states
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/yen_carry_composite_state.json data/yen_carry_structural_state.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No state changes"
+          else
+            git commit -m "Update yen carry live states"
+            git pull --rebase origin main
+            git push
+          fi
