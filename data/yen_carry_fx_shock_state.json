@@ -11,9 +11,7 @@
   "last_alert_price": 155.6580047607422,
   "last_alert_trigger_windows": [],
   "last_checked_at_kst": "2026-08-03T10:54:50+09:00",
-  "last_observed_lanes": [
-    "sustained"
-  ],
+  "last_observed_lanes": [],
   "last_observed_trigger_windows": [],
   "latest_price": 156.3260040283203,
   "sector_reaction": {
@@ -359,13 +357,13 @@
       "thirty_due_epoch": null
     }
   ],
-  "stage": 1,
+  "stage": 0,
   "status": "cleared_after_live_recheck",
-  "sustained_drawdown_pct": -1.3958764428951589,
-  "sustained_duration_minutes": 717.3,
-  "sustained_peak_epoch": 1788412500.0,
-  "sustained_peak_price": 157.6790008544922,
-  "sustained_rebound_pct": 0.10559348786451023,
-  "sustained_stage": 1,
+  "sustained_drawdown_pct": -0.8462336733146277,
+  "sustained_duration_minutes": 716.9833333333333,
+  "sustained_peak_epoch": 1788422100.0,
+  "sustained_peak_price": 157.0500030517578,
+  "sustained_rebound_pct": 0.2620482975260589,
+  "sustained_stage": 0,
   "verification_run_id": 30777988988
 }
