@@ -1,21 +1,47 @@
 #!/usr/bin/env python3
 """Parse the latest Japan MOF weekly securities flow PDF.
 
-The MOF historical CSV layout is not stable enough for the current release parser.
-The official fixed `week.pdf` contains a second-page narrative with the latest and
-previous-week outward figures. We parse only the resident/outward section and use
-MOF's post-2014 convention: acquisition excess = positive, disposition excess = negative.
+The fixed official `week.pdf` contains a narrative with the latest and previous-week
+resident/outward figures. We parse that authoritative release. PDF text extraction
+uses the runner's `pdftotext` when available and falls back to pypdf if installed.
+MOF's post-2014 convention is preserved: acquisition excess = positive, disposition
+excess = negative.
 """
 from __future__ import annotations
 
 import datetime as dt
 import io
 import re
+import subprocess
+import tempfile
 from typing import Any
 
-from pypdf import PdfReader
-
 MOF_WEEK_PDF = "https://www.mof.go.jp/policy/international_policy/reference/itn_transactions_in_securities/week.pdf"
+
+
+def extract_pdf_text(raw: bytes) -> str:
+    try:
+        with tempfile.NamedTemporaryFile(suffix=".pdf") as tmp:
+            tmp.write(raw)
+            tmp.flush()
+            proc = subprocess.run(
+                ["pdftotext", "-layout", tmp.name, "-"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                timeout=20,
+                check=False,
+            )
+        if proc.returncode == 0 and proc.stdout:
+            return proc.stdout.decode("utf-8", errors="replace")
+    except (FileNotFoundError, subprocess.SubprocessError):
+        pass
+
+    try:
+        from pypdf import PdfReader
+        reader = PdfReader(io.BytesIO(raw))
+        return "\n".join((page.extract_text() or "") for page in reader.pages)
+    except Exception as exc:
+        raise RuntimeError(f"MOF weekly PDF text extraction failed: {type(exc).__name__}: {exc}") from exc
 
 
 def fnum_jpy_100m(raw: str, direction: str) -> float:
@@ -40,8 +66,8 @@ def fnum_jpy_100m(raw: str, direction: str) -> float:
 
 def extract_category(section: str, category_pattern: str) -> tuple[float, float]:
     pattern = re.compile(
-        rf"(?:{category_pattern}).{{0,120}}?([▲△\-−]?[0-9兆億,\.]+円)\s*の\s*(取得超|処分超)"
-        rf".{{0,180}}?前週\s*([▲△\-−]?[0-9兆億,\.]+円)\s*の\s*(取得超|処分超)",
+        rf"(?:{category_pattern}).{{0,180}}?([▲△\-−]?[0-9兆億,\.]+円)\s*の\s*(取得超|処分超)"
+        rf".{{0,240}}?前週\s*([▲△\-−]?[0-9兆億,\.]+円)\s*の\s*(取得超|処分超)",
         re.S,
     )
     match = pattern.search(section)
@@ -53,14 +79,17 @@ def extract_category(section: str, category_pattern: str) -> tuple[float, float]
 
 
 def period_label(text: str) -> tuple[str, str]:
-    match = re.search(r"令和\s*8\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日\s*[～〜~\-]\s*(?:(\d{1,2})\s*月\s*)?(\d{1,2})\s*日\s*の対外", text)
+    match = re.search(
+        r"令和\s*8\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日\s*[～〜~\-]\s*(?:(\d{1,2})\s*月\s*)?(\d{1,2})\s*日\s*の対外",
+        text,
+    )
     if not match:
         return "最新週", "前週"
     start_month, start_day, end_month, end_day = match.groups()
     end_month = end_month or start_month
     try:
-        end = dt.date(2026, int(end_month), int(end_day))
         start = dt.date(2026, int(start_month), int(start_day))
+        end = dt.date(2026, int(end_month), int(end_day))
         prev_end = start - dt.timedelta(days=1)
         prev_start = prev_end - dt.timedelta(days=6)
         return f"{start.month}/{start.day}~{end.month}/{end.day}", f"{prev_start.month}/{prev_start.day}~{prev_end.month}/{prev_end.day}"
@@ -70,9 +99,7 @@ def period_label(text: str) -> tuple[str, str]:
 
 def fetch_weekly_outward_flows(get_bytes) -> list[dict[str, Any]]:
     raw = get_bytes(MOF_WEEK_PDF)
-    reader = PdfReader(io.BytesIO(raw))
-    text = "\n".join((page.extract_text() or "") for page in reader.pages)
-    # Normalize whitespace but preserve enough Japanese labels for strict category parsing.
+    text = extract_pdf_text(raw)
     compact = re.sub(r"[\t\r ]+", " ", text)
     start = compact.find("１．対外証券投資")
     if start < 0:
