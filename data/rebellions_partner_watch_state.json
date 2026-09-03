@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-09-03T23:42:24+09:00",
+  "last_checked_kst": "2026-09-04T03:50:55+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -1789,6 +1789,60 @@
       "title": "\"국산 NPU 풀스택 AI 인프라로\"…리벨리온, 스퀴즈비츠 인수 - 뉴스1",
       "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBZTEctYW1aVXBBZnpyakdubHFENmdHemJ0VHpRcXcxZ1haWHpLYkVCbDhFVXhzXzZlTHNSNHZISm1Fa3RhNDhMM2FkRFY4U2dRMUNVTU1XSkxJdy1k0gFiQVVfeXFMTjNyNk4xSTIwMUlYbWgzbkN3di0xbG9XRXFjdF8taUJ5ZEZTUklKTGl4XzBLbDhZbEdCMUk1SU81ZjE0Vk52RkRaTHhvVGEyYmFadGJmbnFleDJKQ3Fza1k4d0E?oc=5",
       "first_seen_kst": "2026-09-03T19:03:02+09:00",
+      "suppressed_stale": true
+    },
+    "adb2b37ded74b3ebb4f676b2": {
+      "title": "가비아, 리벨리온 NPU 구독 서비스 출시 - ajunews.com",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBfRUFGVi1pbnhZV2liVHZpZl9jbmFvdGF3dmtId2FmTTB5cUJ2dEtLcWpjV1NiVi16dUdJaW5NMGhxYnRJTXdKcktxcW9NVFJnX2pzcmg0SHpZZ9IBWEFVX3lxTE9CRUpzdUZ0MkN1NDBmU1NUZlZDT3pBZ3lhN1p1S3ZyV0QxTF9TWW15anVMNjVQVzNWOEE5c2cxZzVteTBjcGtFb29CekhLOGdZOGFhd2tLcHU?oc=5",
+      "first_seen_kst": "2026-09-04T03:50:55+09:00",
+      "suppressed_stale": true
+    },
+    "045cc0bf0865c6ff3cfaf83d": {
+      "title": "가비아, 리벨리온 NPU 기반 클라우드 서비스 'NPUaaS' 출시 - 아이티비즈",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1DRzhmM1UzVXVDbUl4aHk3WUh3NDJRbl8yMGJMWjQ3SkhfZTNlVjc1MThFNzdGYVhheWhXdzhhT1g5WWg2TWNqR1JFVlRnYVNxVXNlU3ZsNE5jNFROQzZrX0syTzduQUk?oc=5",
+      "first_seen_kst": "2026-09-04T03:50:55+09:00",
+      "suppressed_stale": true
+    },
+    "2be717e31410569c6eefba57": {
+      "title": "SKT·Arm·리벨리온, AI 데이터센터 협력…“추론 인프라 공략” - 뉴스락",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9laDQ5Q2FxZUhlZVU1dmZ3NjhUajRJVE1FZ0ZmUlJkZFd0djNPbmEzYzJac1VtTlgycFhiZF81eHI0OWlWdW1uaE9jOFNDSVdaU1V0eDBtMktfZjlCTWh6VDg1MW90UWlRNjF0MQ?oc=5",
+      "first_seen_kst": "2026-09-04T03:50:55+09:00",
+      "suppressed_stale": true
+    },
+    "bc0df2d3e9a755a7f1d318c6": {
+      "title": "SKT·Arm·리벨리온, AI 추론 서버 공동 개발…\"GPU 대신 CPU+NPU\" - 모바일한경",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQTFgtaTI4dTBfTjd2UU1kUlVxV1RNdURDaGdfQ29ab2cwcXRfeFp4M0Qtb0hZYTlmb0paWnoxM28yZGZaRm11R2NHemh6eEJsel9UbDdJdkxqd0pZYlF5ZUJYSFgxZUN5MU5SYjhWQzkzcGxsRGtDcjJWbTM4Q0NtbjdWakUyRTQ?oc=5",
+      "first_seen_kst": "2026-09-04T03:50:55+09:00",
+      "suppressed_stale": true
+    },
+    "557462cc18914ed72720b2f0": {
+      "title": "SKT·Arm·리벨리온 CPU·NPU AI데이터센터 구축 협력 - 세계일보",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9ETk00QmJZUlBHR3lKa1ZpdjJKVXdkelA2NVJQYmVEXzMyU0ZxTXRyZnV4TkZjTWVqR3RHV3JJLTJOcHB3bUNOTk56c2YtOFgyaXl6UEQxR2HSAVRBVV95cUxQa0lMdHB4c3ZYMzVlcExnNU9Ybl9kTF9sZ2lQdWNVWV9DMWhKV1FUd1RsRFVNR3dFczFldjhmdEJKRjhKNUtfOTFiYW1uQnBoR0hPT3c?oc=5",
+      "first_seen_kst": "2026-09-04T03:50:55+09:00",
+      "suppressed_stale": true
+    },
+    "94bb9325aa503f6cd7040cbe": {
+      "title": "제이디원,리벨리온과 AI 반도체 유통-사업 확대 위한 파트너 계약 체결 - bodnara.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1UREFqTTE3TmpKQWxJdG12cEFGdEZZX3BPTERBdF9mZDNZOHdXT21HeS0zdjIxVC1ZNFRjWVplSHZUZlNWNUFRTDNGeDdnMDRZMnFMdHd5UkUteHdzWjRITjVKcw?oc=5",
+      "first_seen_kst": "2026-09-04T03:50:55+09:00",
+      "suppressed_stale": true
+    },
+    "e2cc7927f1ad27aa4a71dc31": {
+      "title": "리벨리온·KB금융, AI 금융 인프라 협력 - 한스경제",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1RSElZS0YxVkZ2WU0yNTJ1M0g2M0VaVktyYnVmNkRVUjNGYzRpb3lsdUZnVjhKNXRpUHZoU3pHYnNROWptbWttMmVRTHFObmpPcVJDcUdZU1dDY3FZTjdWeXd0bVZBcng4c1R30gFvQVVfeXFMT2ZyeG1HU0RoRF9Da1d3V0Uxanh5VDBrV3dTcE1iVzFLbEJTeEtJd1JUSHg0Uk9qOEdTSUhUNC00dmM0b1cxNVZnRjE1LWxpcHlWdThzVklLejBlLUZWeFU3amUta19oQWprZUU1QTlJ?oc=5",
+      "first_seen_kst": "2026-09-04T03:50:55+09:00",
+      "suppressed_stale": true
+    },
+    "3b500e5c349724aa53d609af": {
+      "title": "리벨리온·에코피스, K-수상로봇 사업화 협력 - 한스경제",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBMdFdjY3draDJhU2ROdF9NQlk5Z3BjbTFjUlJRSW8tVUpEUFVGZmRFVERpd2dQNTRWdThaQ0g5bERzUkpXMjFwVUpxeExrdFFPeldnbFVjX0FJUU9TTjVQbEc5UDZMbjNmRURN0gFvQVVfeXFMTmdtSzFPeEpOX1FYdDAyZWtxZERTdGJMdm15OHdQdFJhdG9lNzVyVTlWQ3dpNldDajNCeFViT3EzMnZ5YTNRdG4wblhYZ256OG40RTU4RVN0TUxqTUhrazk4YkZCQV9oZzhndTJVczdz?oc=5",
+      "first_seen_kst": "2026-09-04T03:50:55+09:00",
+      "suppressed_stale": true
+    },
+    "55375bd4dd05d02392710aef": {
+      "title": "아이에이, 리벨리온과 국산 NPU 기반 AI 데이터센터 구축 협력 - mk.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5mVE43RG1Kbk5fQ2pyNUFhUGI5ZVJldE9FTWR0X0pNR29GVGpoQUliQkNxVGlUNElVaEpCMFhkT3UyVmUyMDFLWWdINXRvQQ?oc=5",
+      "first_seen_kst": "2026-09-04T03:50:55+09:00",
       "suppressed_stale": true
     }
   }
