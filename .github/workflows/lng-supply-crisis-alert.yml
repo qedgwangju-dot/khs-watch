@@ -14,7 +14,7 @@ on:
   push:
     paths:
       - ".github/workflows/lng-supply-crisis-alert.yml"
-      - "scripts/lng_supply_crisis_alert_v9.py"
+      - "scripts/lng_supply_crisis_alert_v10.py"
 
 permissions:
   contents: write
@@ -39,18 +39,18 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v9 monitor
+      - name: Validate v10 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v9.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v10.py
           python - <<'PY'
           import sys
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v9 as v9
+          import lng_supply_crisis_alert_v10 as v10
 
           assert core.classify_polarity(
               "alaska_lng",
-              "Trump says S. Korea, Japan, others going to Alaska to load up with oil, build pipelines",
+              "트럼프 한일, 알래스카로 간다 LNG 프로젝트서 또 거론",
           ) == "easing"
           assert core.classify_polarity(
               "alaska_lng",
@@ -61,37 +61,30 @@ jobs:
               category="alaska_lng",
               polarity="easing",
               subtype="alaska_policy_signal",
-              title="Trump says S. Korea, Japan, others going to Alaska to 'load up' with oil, build pipelines",
-              source="Yonhap News Agency",
+              title="트럼프 韓日, 알래스카로 간다…LNG 프로젝트서 또 거론",
+              source="연합뉴스",
               link="https://example.com/alaska",
               published_utc="2026-09-03T00:00:00+00:00",
-              published_epoch=0.0,
+              published_epoch=1788393600.0,
               official=False,
-              event_id="alaska-format-test",
+              event_id="alaska-early-test",
           )
-          group = {
-              "category": "alaska_lng",
-              "polarity": "easing",
-              "subtype": "alaska_policy_signal",
-              "event_id": "alaska-format-test",
-              "latest_epoch": 0.0,
-              "evidence": [item],
-              "verification": "신뢰 매체 2곳 교차",
-          }
-          _, body, _ = v9.build_regular_alert_v9([group], {}, set(), set())
+          groups = v10.confirmed_news_groups_v10([item])
+          assert len(groups) == 1
+          assert groups[0]["verification"] == "정책 발언 조기신호·주요 통신사 1곳"
+          _, body, _ = v10.v9.build_regular_alert_v9(groups, {}, set(), set())
           assert "알래스카 LNG·미국 공급 다변화: 정책·사업 진전" in body
-          assert "트럼프, 한국·일본의 알래스카행 재차 언급" in body
           assert '<a href="https://example.com/alaska">원문</a>' in body
-          assert "대통령 발언 → 정부 협의/MOU → 오프테이크·SPA → FID → EPC·강관/설비 발주" in body
-          print("v9_alaska_validation=true")
+          assert "오프테이크·SPA" in body
+          print("v10_early_alaska_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v9.py --setup-test
+            python scripts/lng_supply_crisis_alert_v10.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v9.py
+            python scripts/lng_supply_crisis_alert_v10.py
           fi
 
       - name: Publish status summary
@@ -158,8 +151,12 @@ jobs:
                   "parse_mode": "HTML",
                   "disable_web_page_preview": "true",
               }).encode("utf-8")
-              req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
-              with urllib.request.urlopen(req, timeout=25) as response:
+              request = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(request, timeout=25) as response:
                   result = json.loads(response.read().decode("utf-8"))
               if not result.get("ok"):
                   raise RuntimeError(f"Telegram rejected message: {result}")
@@ -180,7 +177,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v9.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v10.py --finalize
 
       - name: Upload verification artifacts
         if: always()
