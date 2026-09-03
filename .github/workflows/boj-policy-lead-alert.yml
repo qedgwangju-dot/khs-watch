@@ -5,6 +5,13 @@ on:
     # GitHub cron is UTC. Offset from the existing yen-carry job.
     - cron: "1,6,11,16,21,26,31,36,41,46,51,56 * * * *"
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/boj-policy-lead-alert.yml"
+      - "scripts/boj_policy_lead_alert.py"
+      - "scripts/yen_carry_fx_shock.py"
+      - "scripts/khs_source_fetch.py"
+      - "tests/test_boj_policy_lead_alert.py"
   pull_request:
     paths:
       - ".github/workflows/boj-policy-lead-alert.yml"
