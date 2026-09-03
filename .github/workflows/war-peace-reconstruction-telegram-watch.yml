@@ -68,7 +68,7 @@ jobs:
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.WAR_PEACE_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.WAR_PEACE_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID: ${{ secrets.WAR_PEACE_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
           EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900_bot"
         run: |
           python - <<'PY'
@@ -84,7 +84,7 @@ jobs:
           chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
           if not token or not chat_id:
-              raise RuntimeError("WAR_PEACE_TELEGRAM_BOT_TOKEN or WAR_PEACE_TELEGRAM_CHAT_ID is missing")
+              raise RuntimeError("WAR_PEACE_TELEGRAM_BOT_TOKEN or a Telegram chat id secret is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
