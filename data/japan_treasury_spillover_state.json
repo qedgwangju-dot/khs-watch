@@ -1,10 +1,10 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-04T04:28:36+09:00",
+  "updated_at_kst": "2026-09-04T06:52:19+09:00",
   "source_dates": {
     "mof_week": "2026-08-23~08-29",
     "jgb_yield": "2026/9/2",
-    "h41": "August 27, 2026",
+    "h41": "September 03, 2026",
     "market": "2026-09-02"
   },
   "snapshot": {
@@ -16,9 +16,9 @@
     "market": {
       "market_date": "2026-09-02",
       "dgs10": 4.79,
-      "dgs10_change_bp": 4.0000000000000036,
+      "dgs10_change_bp": 0.0,
       "dgs30": 5.27,
-      "dgs30_change_bp": 1.9999999999999574,
+      "dgs30_change_bp": 0.0,
       "sofr_iorb_date": "2026-09-02",
       "sofr_iorb_bp": 0.0,
       "sofr_iorb_change_bp": -1.000000000000023,
