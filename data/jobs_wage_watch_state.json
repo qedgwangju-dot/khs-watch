@@ -5,16 +5,17 @@
     "adp|2026-07|2026-08-05T08:15:00-04:00|initial",
     "weekly_claims|2026-08-08|2026-08-13T08:30:00-04:00|initial",
     "weekly_claims|2026-08-15|2026-08-20T08:30:00-04:00|initial",
-    "weekly_claims|2026-08-22|2026-08-27T08:30:00-04:00|initial"
+    "weekly_claims|2026-08-22|2026-08-27T08:30:00-04:00|initial",
+    "weekly_claims|2026-08-29|2026-09-03T08:30:00-04:00|initial"
   ],
   "seeded_at_kst": "2026-08-08T18:09:00+09:00",
   "note": "Initial dedupe seeds from previously reported official releases. Update only after confirmed Telegram delivery.",
-  "last_generated_at_kst": "2026-08-28T05:22:29+09:00",
-  "last_successful_delivery_kst": "2026-08-28T05:22:33+09:00",
+  "last_generated_at_kst": "2026-09-03T23:30:44+09:00",
+  "last_successful_delivery_kst": "2026-09-03T23:30:46+09:00",
   "telegram_message_ids": [
-    26,
-    27
+    28,
+    29
   ],
   "bot_username": "hs88798879887988798879_bot",
-  "state_updated_at_kst": "2026-08-28T05:22:33+09:00"
+  "state_updated_at_kst": "2026-09-03T23:30:46+09:00"
 }
