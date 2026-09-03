@@ -1,0 +1,189 @@
+name: Japan Treasury Spillover Watch
+
+on:
+  schedule:
+    # Structural sources are daily/weekly; 15-minute polling catches JGB auction releases without duplicating alerts.
+    - cron: "11,26,41,56 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/japan-treasury-spillover-watch.yml"
+      - "scripts/japan_treasury_spillover_watch.py"
+      - "tests/test_japan_treasury_spillover_watch.py"
+      - "data/japan_treasury_spillover_state.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: japan-treasury-spillover-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install parser dependency
+        run: pip install --disable-pip-version-check beautifulsoup4
+
+      - name: Validate upgraded spillover monitor
+        run: |
+          python -m py_compile scripts/japan_treasury_spillover_watch.py
+          PYTHONPATH=scripts python -m unittest tests/test_japan_treasury_spillover_watch.py -v
+
+      - name: Check Japan to Treasury spillover channels
+        run: PYTHONPATH=scripts python scripts/japan_treasury_spillover_watch.py
+
+      - name: Publish status
+        if: always()
+        run: |
+          if [ -f out/japan_treasury_spillover_status.md ]; then
+            cat out/japan_treasury_spillover_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "일본→미국채 복합 수급 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/japan_treasury_spillover_alert.html ]; then
+            printf '\n---\n\n# 경보 미리보기\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/japan_treasury_spillover_alert.html >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send through verified KHS Telegram route only
+        if: hashFiles('out/japan_treasury_spillover_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "GLOBAL_RATES 텔레그램 토큰 또는 chat id가 없습니다." >&2
+            exit 1
+          fi
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+
+          title = pathlib.Path("out/japan_treasury_spillover_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/japan_treasury_spillover_alert.html").read_text(encoding="utf-8").strip()
+          text = f"<b>{title}</b>\n\n{body}"
+
+          chunks, current = [], ""
+          for paragraph in text.split("\n\n"):
+              candidate = paragraph if not current else current + "\n\n" + paragraph
+              if len(candidate) <= 3600:
+                  current = candidate
+              else:
+                  if current:
+                      chunks.append(current)
+                  current = paragraph
+          if current:
+              chunks.append(current)
+
+          message_ids = []
+          for index, chunk in enumerate(chunks, start=1):
+              if index > 1:
+                  chunk = f"<b>일본→미국채 복합 수급 (계속 {index})</b>\n\n{chunk}"
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              request = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST"
+              )
+              with urllib.request.urlopen(request, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected spillover alert: {result}")
+              message_ids.append((result.get("result") or {}).get("message_id"))
+
+          pathlib.Path("out/japan_treasury_spillover_telegram_confirmed.json").write_text(
+              json.dumps({
+                  "status": "confirmed",
+                  "lane": "japan_treasury_spillover",
+                  "bot_username": actual,
+                  "message_ids": message_ids,
+                  "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              }, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={message_ids}")
+          PY
+
+      - name: Persist state only after baseline/no-alert or confirmed delivery
+        if: always()
+        run: |
+          if [ -f out/japan_treasury_spillover_alert.html ] && [ ! -f out/japan_treasury_spillover_telegram_confirmed.json ]; then
+            echo "경보 생성 후 텔레그램 전송이 확인되지 않아 상태를 진행하지 않습니다."
+            exit 0
+          fi
+          if [ -f out/japan_treasury_spillover_pending.json ]; then
+            cp out/japan_treasury_spillover_pending.json data/japan_treasury_spillover_state.json
+          fi
+
+      - name: Commit state
+        if: always() && hashFiles('data/japan_treasury_spillover_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/japan_treasury_spillover_state.json
+          if git diff --cached --quiet; then
+            echo "일본→미국채 복합 수급 상태 변경 없음"
+          else
+            git commit -m "Update Japan Treasury spillover state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: japan-treasury-spillover-${{ github.run_id }}
+          path: |
+            out/japan_treasury_spillover_status.md
+            out/japan_treasury_spillover_title.txt
+            out/japan_treasury_spillover_alert.html
+            out/japan_treasury_spillover_pending.json
+            out/japan_treasury_spillover_telegram_confirmed.json
+            out/khs_source_failures.json
+          if-no-files-found: ignore
+          retention-days: 14
