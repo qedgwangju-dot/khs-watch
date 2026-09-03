@@ -1,28 +1,28 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-03T23:07:07+09:00",
+  "updated_at_kst": "2026-09-04T02:51:15+09:00",
   "seen_event_keys": [
-    "foreign3d_neg:2026-08-27",
-    "capex:13cbe150930d23d8",
-    "policy_spread:2026-08-27:0.75",
-    "foreign1d_neg:2026-09-02:final",
+    "foreign3d_neg:2026-09-02:final",
     "foreign1d_neg:2026-08-31",
     "fx_daily_down:2026-09-02",
+    "policy_spread:2026-08-27:0.75",
+    "capex:13cbe150930d23d8",
+    "foreign3d_neg:2026-08-27",
     "foreign3d_neg:2026-09-02:postclose",
-    "foreign3d_neg:2026-09-02:final",
-    "foreign1d_neg:2026-09-02:postclose"
+    "foreign1d_neg:2026-09-02:postclose",
+    "foreign1d_neg:2026-09-02:final"
   ],
   "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-09-03T23:07:07+09:00",
+    "checked_at_kst": "2026-09-04T02:51:15+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-03",
-      "value": 1357.0,
+      "value": 1356.3,
       "prev_date": "2026-09-02",
       "prev_value": 1360.3,
-      "change_krw": -3.3,
-      "change_pct": -0.2426,
+      "change_krw": -4.0,
+      "change_pct": -0.2941,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
@@ -47,35 +47,8 @@
       "three_day_eok": -23727.0,
       "daily_krw": 41400000000,
       "three_day_krw": -2372700000000,
-      "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260903&sosok=01",
-      "phase": "장마감 최종 재확인",
-      "source_label": "네이버 장마감 투자자별 매매동향"
-    },
-    "global_wave_news": [],
-    "hyperscaler_capex_news": [],
-    "kospi_close": {
-      "date": "2026-09-03",
-      "close": 6579.48,
-      "change_pct": 0.26,
-      "source": "https://m.stock.naver.com/api/index/KOSPI/price?pageSize=5&page=1"
-    },
-    "flow_finality_note": "외국인 임계치 경보는 18:10 이후 재조회한 마감값으로만 판정. KRX는 당일 최종 투자자별 매매내역을 오후 6시 이후 제공하며, 자동화에서는 접근 가능한 KRX 기반 네이버 국내증시 데이터를 재조회해 사용.",
-    "krx_flow_info_url": "https://data.krx.co.kr/contents/MDC/MDI/outerLoader/index.cmd?screenId=MDCSTAT022",
-    "kosdaq_close": {
-      "date": "2026-09-03",
-      "close": 790.21,
-      "change_pct": -1.71,
-      "source": "https://m.stock.naver.com/api/index/KOSDAQ/price?pageSize=5&page=1"
-    },
-    "kosdaq_foreign_flow": {
-      "date": "2026-09-03",
-      "daily_eok": -1082.0,
-      "three_day_eok": -1995.0,
-      "daily_krw": -108200000000,
-      "three_day_krw": -199500000000,
-      "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260903&sosok=02",
-      "phase": "18:10 이후 장마감 수급 피드"
-    },
-    "flow_source_note": "자동 수급 숫자는 18:10 이후 네이버 장마감 투자자별 매매동향을 사용. KRX 투자자별 거래실적은 공식 원천 확인 링크로 제공. KRX 직접 조회값으로 오표기 금지."
+      "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260904&sosok=01",
+      "phase": "장중 참고"
+    }
   }
 }
