@@ -1,0 +1,166 @@
+name: BOJ policy lead Telegram alert
+
+on:
+  schedule:
+    # GitHub cron is UTC. Offset from the existing yen-carry job.
+    - cron: "1,6,11,16,21,26,31,36,41,46,51,56 * * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/boj-policy-lead-alert.yml"
+      - "scripts/boj_policy_lead_alert.py"
+      - "scripts/yen_carry_fx_shock.py"
+      - "scripts/khs_source_fetch.py"
+      - "tests/test_boj_policy_lead_alert.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: boj-policy-lead-alert
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate BOJ policy monitor
+        run: |
+          python -m py_compile scripts/boj_policy_lead_alert.py
+          python -m unittest tests/test_boj_policy_lead_alert.py -v
+
+      - name: Check BOJ policy lead conditions
+        run: python scripts/boj_policy_lead_alert.py
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/boj_policy_lead_watch.md ]; then
+            cat out/boj_policy_lead_watch.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "BOJ 정책 선행감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/boj_policy_lead_alert.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/boj_policy_lead_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Preview pull request alert without sending
+        if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/boj_policy_lead_alert.md') != ''
+        run: |
+          echo "텔레그램 미전송 검증 — 대상 봇 @khs8879887988798879_bot" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Send BOJ policy lead alert through khs dedicated bot only
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/boj_policy_lead_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
+            echo "GLOBAL_RATES_TELEGRAM_BOT_TOKEN이 없습니다. 다른 봇으로 대체 송출하지 않습니다." >&2
+            exit 1
+          fi
+          if [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "GLOBAL_RATES_TELEGRAM_CHAT_ID가 없습니다. 다른 채팅으로 대체 송출하지 않습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+
+          with urllib.request.urlopen(
+              urllib.request.Request(f"https://api.telegram.org/bot{token}/getMe"), timeout=25
+          ) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}")
+
+          title = pathlib.Path("out/boj_policy_lead_alert_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/boj_policy_lead_alert.md").read_text(encoding="utf-8").strip()
+          text = f"{title}\n\n{body}"[:4096]
+          payload = urllib.parse.urlencode(
+              {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"}
+          ).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST"
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected BOJ policy message: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "lane": "boj_policy",
+              "bot_username": actual,
+              "route_secret": "GLOBAL_RATES_TELEGRAM_*",
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/boj_policy_lead_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          print(
+              "telegram_delivery_confirmed=true lane=boj_policy "
+              f"bot_username=@{actual} message_id={confirmed['message_id']}"
+          )
+          PY
+
+      - name: Finalize BOJ policy alert state
+        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: python scripts/boj_policy_lead_alert.py --finalize
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: boj-policy-lead-${{ github.run_id }}
+          path: |
+            out/boj_policy_lead_watch.md
+            out/boj_policy_lead_alert.md
+            out/boj_policy_lead_alert.json
+            out/boj_policy_lead_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Commit confirmed BOJ policy state
+        if: always() && github.event_name != 'pull_request' && hashFiles('data/boj_policy_lead_alert_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/boj_policy_lead_alert_state.json
+          if git diff --cached --quiet; then
+            echo "BOJ 정책 선행경보 상태 변경 없음"
+          else
+            git commit -m "Update BOJ policy lead alert state"
+            git pull --rebase origin main
+            git push
+          fi
