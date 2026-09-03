@@ -22,6 +22,7 @@ on:
       - "scripts/war_peace_reconstruction_watch.py"
       - "scripts/war_peace_reconstruction_watch_runner.py"
       - "scripts/war_peace_reconstruction_watch_clean.py"
+      - "scripts/war_peace_reconstruction_watch_live.py"
 
 permissions:
   contents: write
@@ -36,7 +37,7 @@ jobs:
     timeout-minutes: 12
     env:
       TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
-      TELEGRAM_TEST: ${{ github.event_name == 'push' && 'true' || (github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false') }}
+      TELEGRAM_TEST: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'Test') && 'true' || (github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false') }}
 
     steps:
       - name: Checkout
@@ -52,13 +53,14 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch.py
           python -m py_compile scripts/war_peace_reconstruction_watch_runner.py
           python -m py_compile scripts/war_peace_reconstruction_watch_clean.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_live.py
 
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch_clean.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_live.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch_clean.py
+            python scripts/war_peace_reconstruction_watch_live.py
           fi
 
       - name: Publish status summary
@@ -133,7 +135,7 @@ jobs:
 
       - name: Finalize state after confirmed delivery
         if: success() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch_clean.py --finalize
+        run: python scripts/war_peace_reconstruction_watch_live.py --finalize
 
       - name: Commit confirmed alert state
         if: success() && github.event_name != 'pull_request' && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
