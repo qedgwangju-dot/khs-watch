@@ -1,0 +1,137 @@
+name: Japan Treasury Spillover Bootstrap Once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/japan-treasury-spillover-bootstrap-once.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  send-current-material-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Send current material baseline through verified KHS bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import datetime as dt
+          import html
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+          from krw_fx import latest_jpy_krw, format_krw
+
+          state_path = pathlib.Path('data/japan_treasury_spillover_state.json')
+          if not state_path.exists():
+              raise RuntimeError('spillover baseline state missing')
+          state = json.loads(state_path.read_text(encoding='utf-8'))
+          snap = state.get('snapshot') or {}
+          week = float(snap.get('lt_debt_week_trillion_yen') or 0.0)
+          two = float(snap.get('lt_debt_two_week_trillion_yen') or 0.0)
+          material = week <= -0.50 or two <= -1.00
+          if not material:
+              print('current_material_baseline=false; no Telegram sent')
+              raise SystemExit(0)
+
+          token = (os.environ.get('TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id = (os.environ.get('TELEGRAM_CHAT_ID') or '').strip()
+          expected = (os.environ.get('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
+          if not token or not chat_id:
+              raise RuntimeError('GLOBAL_RATES Telegram secret missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              ident = json.loads(r.read().decode('utf-8'))
+          actual = str((ident.get('result') or {}).get('username') or '')
+          if not ident.get('ok') or actual.lower() != expected.lower():
+              raise RuntimeError(f'Wrong bot expected @{expected}, got @{actual or "unknown"}')
+
+          quote = latest_jpy_krw()
+          def yen_krw(v):
+              won = v * 1_000_000_000_000 * quote.krw_per_yen
+              return f'{v:+.4f}조엔 (약 {format_krw(won)})'
+
+          auctions = state.get('auctions') or {}
+          a2 = auctions.get('2') or {}
+          a10 = auctions.get('10') or {}
+          a30 = auctions.get('30') or {}
+          market = snap.get('market') or {}
+          fima = float(snap.get('fima_bn_usd') or 0.0)
+          repo = market.get('sofr_iorb_bp')
+
+          text = '\n'.join([
+              '<b>🟠 일본→미국채 복합 수급 업그레이드 기준선</b>',
+              '',
+              '<b>핵심 판단</b>',
+              '• 일본의 해외 중장기채 매도가 이미 신규 경보 임계치를 넘었습니다.',
+              '• 다만 FIMA/외국공식 레포와 SOFR-IORB에는 아직 자금조달 스트레스가 확인되지 않아, 현재 판정은 <b>본국회귀·해외채 수요 약화 HIGH / 베이시스 청산 미확정</b>입니다.',
+              '',
+              '<b>확정 숫자</b>',
+              f'• 해외 중장기채 최신 주간: <b>{html.escape(yen_krw(week))}</b>',
+              f'• 최근 2주 합계: <b>{html.escape(yen_krw(two))}</b>',
+              f'• JGB 2년 입찰 BTC: <b>{float(a2.get("btc") or 0):.3f}배</b> / 직전 대비 {float(a2.get("btc_drop_pct") or 0):+.1f}%',
+              f'• JGB 10년 입찰 BTC: {float(a10.get("btc") or 0):.3f}배 / 직전 대비 {float(a10.get("btc_drop_pct") or 0):+.1f}%',
+              f'• JGB 30년 입찰 BTC: {float(a30.get("btc") or 0):.3f}배 / 꼬리 {float(a30.get("tail_bp") or 0):.1f}bp',
+              f'• Fed 외국공식 레포 프록시: {fima:.2f}십억달러',
+              f'• SOFR-IORB: {float(repo or 0):+.1f}bp',
+              '',
+              '<b>해석</b>',
+              '• 일본 국채 금리 상승으로 일본 투자자의 해외채 매수 유인이 약해지는 흐름은 실제 자금 데이터에서 확인되기 시작했습니다.',
+              '• 그러나 이것을 곧바로 헤지펀드 미국채 베이시스 청산으로 해석하지 않습니다. 앞으로 엔화 강세·JGB2 상승·미국 10/30년 금리 상승·레포 스트레스가 겹칠 때 상위 경보로 승격합니다.',
+              '',
+              '<b>원문</b>',
+              '• <a href="https://www.mof.go.jp/policy/international_policy/reference/itn_transactions_in_securities/week.csv">일본 재무성 해외증권투자 주간</a>',
+              '• <a href="https://www.mof.go.jp/english/public_relations/whats_new/2026jgbs.html">일본 재무성 JGB 입찰</a>',
+              '• <a href="https://www.federalreserve.gov/releases/h41/current/">Fed H.4.1</a>',
+              '',
+              f'원화 환산: FRED 동일 기준일 {quote.date} · USD/KRW {quote.usdkrw:.2f} · USD/JPY {quote.usdjpy:.2f}',
+              f'확인 {dt.datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M:%S")} KST',
+          ])
+          payload = urllib.parse.urlencode({
+              'chat_id': chat_id,
+              'text': text[:4096],
+              'parse_mode': 'HTML',
+              'disable_web_page_preview': 'true',
+          }).encode('utf-8')
+          req = urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage', data=payload, method='POST')
+          with urllib.request.urlopen(req, timeout=25) as r:
+              result = json.loads(r.read().decode('utf-8'))
+          if not result.get('ok'):
+              raise RuntimeError(f'Telegram rejected baseline: {result}')
+          pathlib.Path('out').mkdir(exist_ok=True)
+          pathlib.Path('out/japan_treasury_spillover_bootstrap_confirmed.json').write_text(
+              json.dumps({
+                  'status': 'confirmed',
+                  'bot_username': actual,
+                  'message_id': (result.get('result') or {}).get('message_id'),
+                  'sent_at_kst': dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
+              }, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          print(f'telegram_delivery_confirmed=true bot=@{actual} message_id={(result.get("result") or {}).get("message_id")}')
+          PY
+
+      - name: Upload delivery proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: japan-treasury-spillover-bootstrap-${{ github.run_id }}
+          path: out/japan_treasury_spillover_bootstrap_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 7
