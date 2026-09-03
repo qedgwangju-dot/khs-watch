@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-03T10:24:59+09:00",
+  "updated_at_kst": "2026-09-03T15:27:33+09:00",
   "policy_rate": 1.0,
   "statement_url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260731a.pdf",
   "opinion_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi260731.pdf",
@@ -35,13 +35,13 @@
       "prev_tail_bp": 0.0
     },
     "30": {
-      "date": "8/6/2026",
-      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20260806.htm",
-      "btc": 3.8637560333479595,
-      "tail_bp": 1.5000000000000124,
-      "prev_date": "7/7/2026",
-      "prev_btc": 4.5504506484941745,
-      "prev_tail_bp": 0.30000000000001137
+      "date": "9/3/2026",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20260903.htm",
+      "btc": 3.788031565103025,
+      "tail_bp": 2.0999999999999908,
+      "prev_date": "8/6/2026",
+      "prev_btc": 3.8637560333479595,
+      "prev_tail_bp": 1.5000000000000124
     }
   },
   "news_seen": []
