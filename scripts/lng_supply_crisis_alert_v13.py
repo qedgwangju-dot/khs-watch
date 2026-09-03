@@ -12,7 +12,18 @@ def build_regular_alert_v13(groups, quotes, new_signals, cleared_signals):
         for group in groups
         for item in group.get("evidence", [])
     ).lower()
-    if ("manitoba" in evidence_text or "매니토바" in evidence_text) and ("gas turbine" in evidence_text or "가스터빈" in evidence_text or "ge vernova" in evidence_text):
+    manitoba_case = (
+        "manitoba" in evidence_text
+        or "매니토바" in evidence_text
+        or "trade war complicates hydro plan to purchase gas turbines" in evidence_text
+    )
+    turbine_case = (
+        "gas turbine" in evidence_text
+        or "gas turbines" in evidence_text
+        or "가스터빈" in evidence_text
+        or "ge vernova" in evidence_text
+    )
+    if manitoba_case and turbine_case:
         details = [
             "<b>핵심 내용</b>",
             "• <b>사업</b> 매니토바 하이드로 브랜던 발전소 확장 · 총 <b>30억 캐나다달러</b> 규모 · 공식 제안 설비용량 <b>750MW</b>",
