@@ -59,3 +59,5 @@ class JapanTreasurySpilloverTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+# Keep a path-matched push trigger so the live workflow validates after installation.
