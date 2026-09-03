@@ -1,6 +1,23 @@
 name: Yen carry composite flow alert
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/yen-carry-composite-alert.yml"
+      - "scripts/yen_carry_composite_watch.py"
+      - "scripts/yen_carry_composite_runner.py"
+      - "scripts/yen_carry_fx_shock.py"
+      - "scripts/yen_carry_confirmation.py"
+      - "scripts/yen_carry_risk_refine.py"
+      - "scripts/yen_carry_structural_upgrade.py"
+      - "scripts/yen_carry_structural_risk_floor.py"
+      - "scripts/global_rates_watch.py"
+      - "scripts/khs_source_fetch.py"
+      - "tests/test_yen_carry_composite_watch.py"
+      - "tests/test_yen_carry_composite_sources.py"
+      - "tests/test_yen_carry_structural_upgrade.py"
   schedule:
     # Structural sources are daily/weekly; 15-minute polling is sufficient.
     - cron: "6,21,36,51 * * * *"
