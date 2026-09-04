@@ -46,12 +46,22 @@ jobs:
           if not identity.get('ok') or username.lower() != expected.lower():
               raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{username or "unknown"}')
 
-          now = dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds')
+          now_dt = dt.datetime.now(ZoneInfo('Asia/Seoul'))
+          now_iso = now_dt.isoformat(timespec='seconds')
+          now_display = now_dt.strftime('%Y-%m-%d %H:%M KST')
           text = (
-              '<b>[실전 점검] 새 한국은행 자산토큰화 알림 봇 정상</b>\n'
-              f'확인시각: {now}\n'
-              'GitHub Actions → Python → Telegram Bot API 새 봇 전송 성공 테스트입니다.\n'
-              '<a href="https://www.fsc.go.kr/po010101/87650">원문</a>'
+              '🔔 <b>한국은행 자산토큰화·국채토큰화</b>\n'
+              '<b>가독성 개선 테스트</b>\n\n'
+              f'<b>신규 3건</b>  ·  <code>{now_display}</code>\n\n'
+              '<blockquote>📄 <b>1. 자산 토큰화</b>\n'
+              '<b>토큰증권 정책방향 발표</b>\n'
+              '<i>금융위원회 금융정책</i>  ·  <a href="https://www.fsc.go.kr/po010101/87650"><b>원문</b></a></blockquote>\n\n'
+              '<blockquote>🏛 <b>2. 국채 토큰화</b>\n'
+              '<b>국채 토큰화 실증 관련 공식 발표</b>\n'
+              '<i>한국은행 보도자료</i>  ·  <a href="https://www.bok.or.kr/"><b>원문</b></a></blockquote>\n\n'
+              '<blockquote>🛠 <b>3. 시스템 구축·조달</b>\n'
+              '<b>토큰증권 분산원장 표준요건 가이드라인</b>\n'
+              '<i>금융위원회 금융정책</i>  ·  <a href="https://www.fsc.go.kr/comm/getFile?srvcId=BBSTY1&amp;upperNo=87650&amp;fileTy=ATTACH&amp;fileNo=5"><b>원문</b></a></blockquote>'
           )
           payload = urllib.parse.urlencode({
               'chat_id': chat_id,
@@ -69,9 +79,10 @@ jobs:
               'status': 'confirmed',
               'bot_username': username,
               'message_id': (result.get('result') or {}).get('message_id'),
-              'confirmed_at_kst': now,
+              'confirmed_at_kst': now_iso,
               'route': 'GitHub Actions -> Python -> Telegram Bot API',
               'link_format': 'HTML text_link',
+              'layout': 'readable_blockquote_cards',
           }
           pathlib.Path('data').mkdir(exist_ok=True)
           pathlib.Path('data/bok_asset_tokenization_smoketest_newbot.json').write_text(
@@ -85,6 +96,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/bok_asset_tokenization_smoketest_newbot.json
-          git commit -m "Record BOK new Telegram bot smoke test receipt"
+          git commit -m "Record BOK readable Telegram smoke test receipt"
           git pull --rebase origin main
           git push
