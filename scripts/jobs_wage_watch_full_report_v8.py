@@ -93,36 +93,42 @@ def _fed_section_v8(signals: dict, bls: dict, period: str, latest: dict) -> str:
     wage_soft = ahe is not None and ahe < 3.5
     wage_sticky = ahe is not None and ahe >= 3.5
 
+    # Give the user the immediate policy-direction read first, then the caveat.
+    # This is deliberately a directional signal, not a claim that the FOMC has
+    # already decided to move rates.
     if weak_hiring and wage_soft:
-        labor_axis = "완화 방향 — 채용 약화와 임금 둔화가 함께 나타나 최대고용 하방 위험이 커집니다."
+        direction_label = "인하 쪽"
+        labor_axis = "고용이 약하고 임금도 둔화해 고용축은 분명히 인하 쪽입니다."
     elif weak_hiring and wage_sticky:
-        labor_axis = "혼합 — 채용은 약하지만 임금이 끈적해 고용 하방과 물가 상방이 충돌합니다."
+        direction_label = "인하 쪽 신호 있으나 제한적"
+        labor_axis = "고용 약화는 인하 쪽이지만 임금 강세가 동결·인상 쪽으로 맞서고 있습니다."
     elif (not weak_hiring) and wage_sticky:
-        labor_axis = "동결·긴축 방향 — 고용이 버티는 가운데 임금 압력도 남아 있으면 완화 필요성이 약합니다."
+        direction_label = "동결·인상 쪽"
+        labor_axis = "고용이 버티고 임금도 강해 인하 필요성이 낮습니다."
     else:
-        labor_axis = "중립 — 고용과 임금이 한 방향으로 충분히 정렬되지 않았습니다."
+        direction_label = "중립"
+        labor_axis = "고용과 임금이 한 방향으로 충분히 정렬되지 않았습니다."
 
     if fed.get("inflation_elevated") and fed.get("price_stability_commitment"):
         if weak_hiring and wage_soft:
             policy_judgment = (
-                "고용축만 보면 완화 쪽이지만 금리 인하로 바로 연결하면 안 됩니다. "
-                "최신 FOMC 공식 문구가 물가의 2% 목표 상회와 가격안정 의지를 함께 명시하고 있으므로, "
-                "다음 CPI·PCE와 임금에서 디스인플레이션이 재확인돼야 완화 논리가 강해집니다."
+                "고용만 보면 인하 쪽입니다. 다만 최신 FOMC는 물가가 2% 목표보다 높다고 보고 있어, "
+                "실제 정책 결론은 다음 CPI·PCE에서 디스인플레이션이 이어지는지까지 확인해야 합니다."
             )
         elif weak_hiring and wage_sticky:
             policy_judgment = (
-                "현재는 인하 확신이 약한 충돌 구간입니다. 고용 약화만으로는 부족하고, "
-                "임금·서비스 물가가 식지 않으면 동결 또는 더 긴 제약적 정책이 유지될 수 있습니다."
+                "고용은 인하 쪽, 임금·물가는 동결·인상 쪽입니다. 따라서 지금은 인하 신호가 생겼지만 "
+                "확신은 낮고, 다음 물가가 식어야 인하 논리가 우세해집니다."
             )
         else:
             policy_judgment = (
-                "현재 FOMC 공식 문구상 물가 제약이 남아 있습니다. 고용이 버티면 정책 완화보다 "
-                "물가의 2% 복귀 확인이 우선됩니다."
+                "현재는 인하보다 동결·물가 확인 쪽입니다. 최신 FOMC 공식 문구상 물가 제약이 남아 있어 "
+                "고용이 버티는 동안에는 2% 복귀 확인이 우선됩니다."
             )
     else:
         policy_judgment = (
-            "FOMC는 최대고용과 2% 물가안정을 함께 봅니다. 고용 한 지표만으로 금리 방향을 확정하지 않고 "
-            "물가·기대인플레이션·금융여건과 함께 판단해야 합니다."
+            f"고용·임금 조합의 1차 방향은 {direction_label}입니다. 다만 FOMC 최종 결정은 최대고용과 "
+            "2% 물가안정을 함께 보므로 물가·기대인플레이션까지 확인해야 합니다."
         )
 
     backdrop_parts = []
@@ -139,10 +145,11 @@ def _fed_section_v8(signals: dict, bls: dict, period: str, latest: dict) -> str:
     return (
         "- 공식 기준 | 최대고용 + 2% PCE 물가안정. 최대고용은 고정 숫자가 아니며 실업률·참가율·고용 폭·임금 등 여러 지표를 함께 봅니다.\n"
         f"- 현재 FOMC 배경 | {backdrop} | {fed.get('status')}\n"
-        f"- 이번 고용축 | NFP {base._fmt_int(nfp)}명 · 실업률 {base._fmt_pct(unemployment)} · 참가율 {base._fmt_pct(participation)} · AHE YoY {base._fmt_pct(ahe)} → {labor_axis}\n"
+        f"- 방향 한눈에 | {direction_label} — {labor_axis}\n"
+        f"- 이번 고용축 | NFP {base._fmt_int(nfp)}명 · 실업률 {base._fmt_pct(unemployment)} · 참가율 {base._fmt_pct(participation)} · AHE YoY {base._fmt_pct(ahe)}\n"
         f"- 실업수당 보조축 | Initial {base._fmt_level(initial)}건 · Continuing {base._fmt_level(continuing)}건. Initial이 낮고 Continuing이 높으면 '해고 급증'보다 '재취업 지연'에 가깝습니다.\n"
         f"- 최종 반응함수 | {policy_judgment}\n"
-        "- 강화·무효화 | 약한 고용+임금·CPI·PCE 동반 둔화가 반복되면 완화 논리 강화. 반대로 물가 재가속 또는 고용 급반등이면 완화 해석을 무효화합니다."
+        "- 강화·무효화 | 약한 고용+임금·CPI·PCE 동반 둔화가 반복되면 인하 논리 강화. 반대로 물가 재가속 또는 고용 급반등이면 인하 해석을 약화·무효화합니다."
     )
 
 
