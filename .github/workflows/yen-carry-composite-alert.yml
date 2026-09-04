@@ -10,6 +10,7 @@ on:
       - "scripts/yen_carry_composite_runner.py"
       - "scripts/yen_carry_fx_shock.py"
       - "scripts/yen_carry_confirmation.py"
+      - "scripts/yen_carry_target_currency_confirmation.py"
       - "scripts/yen_carry_risk_refine.py"
       - "scripts/yen_carry_structural_upgrade.py"
       - "scripts/yen_carry_structural_risk_floor.py"
@@ -18,6 +19,7 @@ on:
       - "tests/test_yen_carry_composite_watch.py"
       - "tests/test_yen_carry_composite_sources.py"
       - "tests/test_yen_carry_structural_upgrade.py"
+      - "tests/test_yen_carry_target_currency_confirmation.py"
   schedule:
     # Structural sources are daily/weekly; 15-minute polling is sufficient.
     - cron: "6,21,36,51 * * * *"
@@ -29,6 +31,7 @@ on:
       - "scripts/yen_carry_composite_runner.py"
       - "scripts/yen_carry_fx_shock.py"
       - "scripts/yen_carry_confirmation.py"
+      - "scripts/yen_carry_target_currency_confirmation.py"
       - "scripts/yen_carry_risk_refine.py"
       - "scripts/yen_carry_structural_upgrade.py"
       - "scripts/yen_carry_structural_risk_floor.py"
@@ -37,6 +40,7 @@ on:
       - "tests/test_yen_carry_composite_watch.py"
       - "tests/test_yen_carry_composite_sources.py"
       - "tests/test_yen_carry_structural_upgrade.py"
+      - "tests/test_yen_carry_target_currency_confirmation.py"
       - "data/yen_carry_composite_design.json"
       - "data/yen_carry_composite_state.json"
       - "data/yen_carry_structural_state.json"
@@ -76,18 +80,20 @@ jobs:
           python -m py_compile scripts/yen_carry_composite_watch.py
           python -m py_compile scripts/yen_carry_composite_runner.py
           python -m py_compile scripts/yen_carry_confirmation.py
+          python -m py_compile scripts/yen_carry_target_currency_confirmation.py
           python -m py_compile scripts/yen_carry_risk_refine.py
           python -m py_compile scripts/yen_carry_structural_upgrade.py
           python -m py_compile scripts/yen_carry_structural_risk_floor.py
           PYTHONPATH=scripts python -m unittest \
             tests/test_yen_carry_composite_watch.py \
             tests/test_yen_carry_composite_sources.py \
-            tests/test_yen_carry_structural_upgrade.py -v
+            tests/test_yen_carry_structural_upgrade.py \
+            tests/test_yen_carry_target_currency_confirmation.py -v
 
       - name: Check multi-factor carry state
         run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py
 
-      - name: Check daily deleveraging confirmation layer
+      - name: Check deleveraging and target-currency confirmation layers
         if: always()
         run: python scripts/yen_carry_confirmation.py
 
@@ -133,6 +139,10 @@ jobs:
           if [ -f out/yen_carry_confirmation.md ]; then
             printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/yen_carry_confirmation.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/yen_carry_target_currency_context.md ]; then
+            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/yen_carry_target_currency_context.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/yen_carry_structural_context.md ]; then
             printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
@@ -213,7 +223,7 @@ jobs:
                       )
                   elif line.startswith('- USD/JPY: Yahoo query1/query2'):
                       rendered.append(
-                          f'- USD/JPY(Yahoo 5분 데이터) — <a href="{html.escape(yahoo_url, quote=True)}">원문</a>'
+                          f'- USD/JPY·MXN/JPY·BRL/JPY·ZAR/JPY(Yahoo 5분 데이터) — <a href="{html.escape(yahoo_url, quote=True)}">원문</a>'
                       )
                   else:
                       rendered.append(html.escape(line))
@@ -311,6 +321,8 @@ jobs:
             out/yen_carry_composite_telegram_confirmed.json
             out/yen_carry_confirmation.md
             out/yen_carry_confirmation.json
+            out/yen_carry_target_currency_context.md
+            out/yen_carry_target_currency_context.json
             out/yen_carry_structural_context.md
             out/yen_carry_structural_context.json
             out/yen_carry_structural_pending_state.json
