@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-04T13:28:42+09:00",
+  "updated_at_kst": "2026-09-04T18:37:01+09:00",
   "circle": {
     "date": "2026-08-31",
     "circulation_usd_b": 73.3,
@@ -32,24 +32,24 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-09-02",
-    "close": 88.63999938964844,
-    "prev_date": "2026-09-01",
-    "prev_close": 89.4800033569336,
-    "daily_pct": -0.94
+    "date": "2026-09-03",
+    "close": 103.2300033569336,
+    "prev_date": "2026-09-02",
+    "prev_close": 88.63999938964844,
+    "daily_pct": 16.46
   },
   "tbx": {
-    "date": "2026-09-02",
-    "close": 29.020000457763672,
-    "prev_date": "2026-09-01",
-    "prev_close": 29.040000915527344,
-    "daily_pct": -0.07
+    "date": "2026-09-03",
+    "close": 28.979999542236328,
+    "prev_date": "2026-09-02",
+    "prev_close": 29.020000457763672,
+    "daily_pct": -0.14
   },
   "fx": {
     "rate": 1359.3,
     "date": "2026-09-03",
     "source": "한국은행 일일 금융시장 주요지표",
-    "source_url": "https://www.bok.or.kr/portal/bbs/P0002018/view.do?nttId=11064469&oldMenuNo=201150&menuNo=200366&programType=newsData&depth=200366&relate=Y",
+    "source_url": "https://www.bok.or.kr/portal/bbs/P0002018/view.do?nttId=11064470&oldMenuNo=201150&menuNo=200366&programType=newsData&depth=200366&relate=Y",
     "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
   "errors": []
