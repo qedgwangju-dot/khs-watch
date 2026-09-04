@@ -163,6 +163,38 @@ def priority_score_item(x, now):
 watch.score_item = priority_score_item
 
 
+# Yahoo chartPreviousClose는 range=5d에서 '전일 종가'가 아니라 조회 구간 직전 값이 들어갈 수 있어
+# WTI/Brent/DXY 일간 등락률이 며칠 누적치로 잘못 표시됐다. 1일 차트의 previousClose를 우선 사용한다.
+def corrected_market_snapshot():
+    symbols = {"NQ=F": "나스닥100 선물", "CL=F": "WTI", "BZ=F": "Brent", "DX-Y.NYB": "달러지수"}
+    rows = []
+    for sym, name in symbols.items():
+        try:
+            url = f"https://query1.finance.yahoo.com/v8/finance/chart/{watch.urllib.parse.quote(sym)}?range=1d&interval=5m"
+            data = watch.json.loads(watch.req(url, 15).decode())
+            r = data["chart"]["result"][0]
+            meta = r["meta"]
+            px = float(meta.get("regularMarketPrice") or 0)
+            prev = float(meta.get("previousClose") or meta.get("chartPreviousClose") or 0)
+            if px and prev:
+                pct = (px / prev - 1) * 100
+                arrow = "▲" if pct > 0 else "▼" if pct < 0 else "－"
+                rows.append({
+                    "name": name,
+                    "price": px,
+                    "pct": pct,
+                    "arrow": arrow,
+                    "basis": "전일 종가 대비",
+                    "source": "Yahoo Finance",
+                })
+        except Exception:
+            pass
+    return rows
+
+
+watch.market_snapshot = corrected_market_snapshot
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--finalize", action="store_true")
