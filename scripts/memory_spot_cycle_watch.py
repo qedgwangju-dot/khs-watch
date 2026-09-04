@@ -96,8 +96,8 @@ def _clean(text: str | None) -> str:
 def _translate_to_ko(text: str) -> str:
     """Translate non-Korean alert text to Korean.
 
-    If translation is temporarily unavailable, send a Korean-only fallback instead
-    of exposing the untranslated English headline.
+    We deliberately do not expose an English title if translation is temporarily
+    unavailable. The source name and original link remain untouched identifiers.
     """
     text = _clean(text)
     if not text:
@@ -355,9 +355,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             except Exception:
                 pass
         safe_title = html.escape(title)
+        safe_link = html.escape(item["link"], quote=True)
         lines.append(f"• <b>{label}</b> | {safe_title}")
         if date_text:
-            lines.append(f"  {date_text}")
+            lines.append(f"  {date_text} · <a href=\"{safe_link}\">원문</a>")
+        else:
+            lines.append(f"  <a href=\"{safe_link}\">원문</a>")
     lines.append("※ 가격·수급·LTA·2027~28 HBM/CAPA의 신규 변화만 알림")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
