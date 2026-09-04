@@ -23,7 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      NEW_EXPECTED_TELEGRAM_BOT_USERNAME: "khs88790088790000_bot"
+      OLD_EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,15 +41,22 @@ jobs:
 
       - name: Validate Telegram route without sending
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          NEW_TELEGRAM_BOT_TOKEN: ${{ secrets.BOK_ASSET_TELEGRAM_BOT_TOKEN }}
+          OLD_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
           TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import json, os, urllib.request
-          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          new_token = (os.getenv("NEW_TELEGRAM_BOT_TOKEN") or "").strip()
+          old_token = (os.getenv("OLD_TELEGRAM_BOT_TOKEN") or "").strip()
+          token = new_token or old_token
+          expected = (
+              (os.getenv("NEW_EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+              if new_token
+              else (os.getenv("OLD_EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          )
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
-          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
               raise RuntimeError("Telegram bot token secret is missing")
           if not chat_id:
@@ -58,7 +66,8 @@ jobs:
           username = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or username.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
-          print(f"telegram_route_valid=true bot=@{username}")
+          route = "new" if new_token else "legacy-fallback"
+          print(f"telegram_route_valid=true route={route} bot=@{username}")
           PY
 
       - name: Check official asset-tokenization sources
@@ -78,7 +87,8 @@ jobs:
       - name: Send new official update to Telegram
         if: hashFiles('out/bok_asset_tokenization_alert.md') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          NEW_TELEGRAM_BOT_TOKEN: ${{ secrets.BOK_ASSET_TELEGRAM_BOT_TOKEN }}
+          OLD_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
           TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
@@ -91,9 +101,15 @@ jobs:
           import urllib.request
           from zoneinfo import ZoneInfo
 
-          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          new_token = (os.getenv("NEW_TELEGRAM_BOT_TOKEN") or "").strip()
+          old_token = (os.getenv("OLD_TELEGRAM_BOT_TOKEN") or "").strip()
+          token = new_token or old_token
+          expected = (
+              (os.getenv("NEW_EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+              if new_token
+              else (os.getenv("OLD_EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          )
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
-          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token or not chat_id:
               raise RuntimeError("Telegram token/chat id is missing")
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
@@ -127,10 +143,11 @@ jobs:
           message_ids = []
           for idx, chunk in enumerate(split_message(text), 1):
               if idx > 1:
-                  chunk = f"한국은행 자산토큰화 Watch (계속 {idx})\n\n{chunk}"
+                  chunk = f"<b>한국은행 자산토큰화 Watch (계속 {idx})</b>\n\n{chunk}"
               payload = urllib.parse.urlencode({
                   "chat_id": chat_id,
                   "text": chunk,
+                  "parse_mode": "HTML",
                   "disable_web_page_preview": "true",
               }).encode("utf-8")
               req = urllib.request.Request(
@@ -147,6 +164,7 @@ jobs:
           confirmed = {
               "status": "confirmed",
               "bot_username": username,
+              "route": "new" if new_token else "legacy-fallback",
               "message_ids": message_ids,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
@@ -172,6 +190,7 @@ jobs:
           state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
           state["telegram_message_ids"] = confirmed.get("message_ids")
           state["bot_username"] = confirmed.get("bot_username")
+          state["telegram_route"] = confirmed.get("route")
           state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
 
