@@ -1,14 +1,14 @@
 {
-  "treasury_date": "2026-09-03",
+  "treasury_date": "2026-09-04",
   "pretightening_active": false,
   "pretightening": {
-    "date": "2026-09-03",
-    "base_date": "2026-08-27",
+    "date": "2026-09-04",
+    "base_date": "2026-08-28",
     "active": false,
-    "d2_bp": 13.999999999999968,
-    "d2s10s_bp": -4.0,
-    "d2s30s_bp": -8.000000000000014,
-    "avg_curve_bp": -6.000000000000007,
+    "d2_bp": 3.000000000000025,
+    "d2s10s_bp": 1.9999999999999574,
+    "d2s30s_bp": -0.9999999999999716,
+    "avg_curve_bp": 0.4999999999999929,
     "verdict": "시장 선긴축 기준 미충족"
   },
   "macro": {
@@ -30,5 +30,5 @@
   "last_seen_fomc_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
   "pending_fomc": null,
   "last_credibility_completed": false,
-  "updated_at_utc": "2026-09-04T14:27:05.456492+00:00"
+  "updated_at_utc": "2026-09-04T21:36:28.522953+00:00"
 }
