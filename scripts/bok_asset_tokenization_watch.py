@@ -53,6 +53,15 @@ SECONDARY = (
 
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 
+CATEGORY_ICON = {
+    "시스템 구축·조달": "🛠",
+    "참여기관·당사자": "🏦",
+    "국채 토큰화": "🏛",
+    "통합원장": "🔗",
+    "프로젝트 한강·예금토큰": "💳",
+    "자산 토큰화": "📄",
+}
+
 
 def fetch(url: str) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": UA})
@@ -117,12 +126,17 @@ def extract(source: dict) -> list[dict]:
 def source_link(url: str) -> str:
     safe_url = html.escape(url, quote=True)
     if url.startswith(("https://", "http://")):
-        return f'<a href="{safe_url}">원문</a>'
+        return f'<a href="{safe_url}"><b>원문</b></a>'
     return "원문 링크 없음"
 
 
+def display_time(value: datetime) -> str:
+    return value.strftime("%Y-%m-%d %H:%M KST")
+
+
 def main() -> None:
-    now = datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")
+    now_dt = datetime.now(ZoneInfo("Asia/Seoul"))
+    now = now_dt.isoformat(timespec="seconds")
     all_items: dict[str, dict] = {}
     errors: list[str] = []
     for src in SOURCES:
@@ -166,21 +180,34 @@ def main() -> None:
                 x["title"],
             ),
         )
+        visible = priority[:8]
         lines = [
-            "🔔 <b>한국은행 자산토큰화·국채토큰화 새 공식 업데이트</b>",
+            "🔔 <b>한국은행 자산토큰화·국채토큰화</b>",
+            "<b>새 공식 업데이트</b>",
             "",
-            f"확인 시각: {html.escape(now)}",
+            f"<b>신규 {len(priority)}건</b>  ·  <code>{html.escape(display_time(now_dt))}</code>",
         ]
-        for item in priority[:8]:
+        for idx, item in enumerate(visible, 1):
+            icon = CATEGORY_ICON.get(item["category"], "•")
+            category = html.escape(item["category"])
+            title = html.escape(item["title"])
+            source = html.escape(item["source"])
             lines += [
                 "",
-                f"[{html.escape(item['category'])}] {html.escape(item['title'])}",
-                f"출처: {html.escape(item['source'])} · {source_link(item['url'])}",
+                "<blockquote>",
+                f"{icon} <b>{idx}. {category}</b>",
+                f"<b>{title}</b>",
+                f"<i>{source}</i>  ·  {source_link(item['url'])}",
+                "</blockquote>",
             ]
-        if len(priority) > 8:
-            lines += ["", f"그 외 신규 항목 {len(priority)-8}건"]
+        if len(priority) > len(visible):
+            lines += ["", f"<i>그 외 신규 항목 {len(priority)-len(visible)}건</i>"]
         if errors:
-            lines += ["", "⚠️ 일부 공식 페이지 조회 오류: " + html.escape(" | ".join(errors[:3]))]
+            lines += [
+                "",
+                "⚠️ <b>일부 공식 페이지 조회 오류</b>",
+                html.escape(" | ".join(errors[:3])),
+            ]
         (OUT / "bok_asset_tokenization_alert.md").write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
     status = [
