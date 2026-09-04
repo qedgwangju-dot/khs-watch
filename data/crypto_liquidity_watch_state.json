@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-04T08:22:43+09:00",
+  "updated_at_kst": "2026-09-04T14:52:27+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -22,21 +22,21 @@
   },
   "btc_etf": {
     "date": "2026-09-03",
-    "total_usd_m": 89.5,
-    "status": "partial",
-    "reported_funds": 5,
-    "missing_funds": 7,
+    "total_usd_m": 730.8,
+    "status": "complete",
+    "reported_funds": 12,
+    "missing_funds": 0,
     "prev_date": "2026-09-02",
     "prev_total_usd_m": 101.1,
-    "day_change_usd_m": -11.6,
-    "day_change_pct": -11.5,
+    "day_change_usd_m": 629.7,
+    "day_change_pct": 622.8,
     "source_latest_date": "2026-09-03",
-    "source_latest_status": "partial",
+    "source_latest_status": "complete",
     "pending_date": null,
-    "latest_recomputed_total_usd_m": 89.5,
+    "latest_recomputed_total_usd_m": 730.8,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
-    "last5_usd_m": -31.1,
+    "last5_usd_m": 610.2,
     "last5_dates": [
       "2026-08-28",
       "2026-08-31",
@@ -49,7 +49,7 @@
       216.7,
       -236.5,
       101.1,
-      89.5
+      730.8
     ],
     "prev5_usd_m": 1433.9,
     "prev5_dates": [
@@ -67,9 +67,9 @@
       242.3
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": -1465.0,
-    "five_day_change_pct": null,
-    "five_day_direction": "순유입→순유출 전환"
+    "five_day_change_usd_m": -823.7,
+    "five_day_change_pct": -57.4,
+    "five_day_direction": "순자금흐름 악화"
   },
   "sources": {
     "treasury_buyback_xml": "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.xml",
