@@ -20,7 +20,6 @@ MXN/BRL carry-to-risk versus JPY and leveraged positioning in 2026.
 """
 from __future__ import annotations
 
-import argparse
 import datetime as dt
 import json
 import pathlib
@@ -39,15 +38,13 @@ OUT = ROOT / "out"
 DATA.mkdir(exist_ok=True)
 OUT.mkdir(exist_ok=True)
 
-STATE_PATH = DATA / "yen_carry_target_currency_state.json"
-PENDING_PATH = OUT / "yen_carry_target_currency_pending_state.json"
+COMPOSITE_STATE = DATA / "yen_carry_composite_state.json"
 CONTEXT_JSON = OUT / "yen_carry_target_currency_context.json"
 CONTEXT_MD = OUT / "yen_carry_target_currency_context.md"
 ALERT_TITLE = OUT / "yen_carry_composite_alert_title.txt"
 ALERT_BODY = OUT / "yen_carry_composite_alert.md"
 ALERT_JSON = OUT / "yen_carry_composite_alert.json"
 COMPOSITE_PENDING = OUT / "yen_carry_composite_pending_state.json"
-CONFIRM_PATH = OUT / "yen_carry_composite_telegram_confirmed.json"
 
 USER_AGENT = "Mozilla/5.0 khs-yen-carry-target-currency/1.0"
 TARGETS = {
@@ -220,9 +217,7 @@ def append_context(body: str, context: dict) -> str:
     lines += [
         "",
         "출처",
-        f"- Yahoo USD/MXN: {SOURCE_PAGES['MXN']}",
-        f"- Yahoo USD/BRL: {SOURCE_PAGES['BRL']}",
-        f"- Yahoo USD/ZAR: {SOURCE_PAGES['ZAR']}",
+        "- USD/JPY: Yahoo query1/query2 5분 데이터 교차확인(USD/MXN·USD/BRL·USD/ZAR 조합, 지연 가능)",
     ]
     return body.rstrip() + "\n\n" + "\n".join(lines) + "\n"
 
@@ -266,7 +261,8 @@ def create_alert(now: dt.datetime, pending: dict, context: dict, reason: str) ->
 
 def process(now: dt.datetime | None = None) -> int:
     now = (now or dt.datetime.now(UTC)).astimezone(UTC)
-    previous = load_json(STATE_PATH, {})
+    composite_previous = load_json(COMPOSITE_STATE, {})
+    previous = composite_previous.get("target_currency") or {}
     errors: list[str] = []
 
     symbol_points: dict[str, list[tuple[float, float]]] = {}
@@ -347,7 +343,10 @@ def process(now: dt.datetime | None = None) -> int:
         "stressed_codes": list(classification.get("stressed_codes") or []),
         "available_count": available,
     }
-    write_json(PENDING_PATH, pending)
+    composite_pending = load_json(COMPOSITE_PENDING, {})
+    if composite_pending:
+        composite_pending["target_currency"] = pending
+        write_json(COMPOSITE_PENDING, composite_pending)
 
     reason = None
     if previous.get("initialized") and not incomplete:
@@ -388,28 +387,8 @@ def process(now: dt.datetime | None = None) -> int:
     return 0
 
 
-def finalize() -> int:
-    if not PENDING_PATH.exists():
-        print("yen carry target-currency pending state missing")
-        return 1
-    if ALERT_BODY.exists():
-        confirmation = load_json(CONFIRM_PATH, {})
-        if confirmation.get("status") != "confirmed" or confirmation.get("lane") != "yen_carry_composite":
-            print("target-currency Telegram confirmation missing; state not advanced")
-            return 1
-    pending = load_json(PENDING_PATH, {})
-    if not pending:
-        return 1
-    write_json(STATE_PATH, pending)
-    print(f"Finalized yen carry target-currency state: {STATE_PATH}")
-    return 0
-
-
 def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--finalize", action="store_true")
-    args = parser.parse_args()
-    return finalize() if args.finalize else process()
+    return process()
 
 
 if __name__ == "__main__":
