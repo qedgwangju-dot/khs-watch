@@ -51,17 +51,20 @@ jobs:
           now_display = now_dt.strftime('%Y-%m-%d %H:%M KST')
           text = (
               '🔔 <b>한국은행 자산토큰화·국채토큰화</b>\n'
-              '<b>가독성 개선 테스트</b>\n\n'
-              f'<b>신규 3건</b>  ·  <code>{now_display}</code>\n\n'
+              '<b>제목 + 핵심 해석 가독성 테스트</b>\n\n'
+              f'<b>신규 3건</b>  ·  {now_display}\n\n'
               '<blockquote>📄 <b>1. 자산 토큰화</b>\n'
-              '<b>토큰증권 정책방향 발표</b>\n'
-              '<i>금융위원회 금융정책</i>  ·  <a href="https://www.fsc.go.kr/po010101/87650"><b>원문</b></a></blockquote>\n\n'
+              '<b>토큰증권 정책방향 발표 · 보도자료 · PDF</b>\n'
+              '<b>핵심</b>  토큰증권 발행·유통과 제도권 인프라의 세부 기준을 구체화하는 정책 업데이트입니다.\n'
+              '출처  금융위원회 금융정책  ·  <a href="https://www.fsc.go.kr/po010101/87650"><b>원문</b></a></blockquote>\n\n'
               '<blockquote>🏛 <b>2. 국채 토큰화</b>\n'
               '<b>국채 토큰화 실증 관련 공식 발표</b>\n'
-              '<i>한국은행 보도자료</i>  ·  <a href="https://www.bok.or.kr/"><b>원문</b></a></blockquote>\n\n'
+              '<b>핵심</b>  CBDC·예금토큰과 국채토큰을 연결하는 실증의 일정·참여기관·결제 구조를 확인할 핵심 업데이트입니다.\n'
+              '출처  한국은행 보도자료  ·  <a href="https://www.bok.or.kr/"><b>원문</b></a></blockquote>\n\n'
               '<blockquote>🛠 <b>3. 시스템 구축·조달</b>\n'
-              '<b>토큰증권 분산원장 표준요건 가이드라인</b>\n'
-              '<i>금융위원회 금융정책</i>  ·  <a href="https://www.fsc.go.kr/comm/getFile?srvcId=BBSTY1&amp;upperNo=87650&amp;fileTy=ATTACH&amp;fileNo=5"><b>원문</b></a></blockquote>'
+              '<b>토큰증권 분산원장 표준요건 가이드라인 · 별첨3 · PDF</b>\n'
+              '<b>핵심</b>  토큰증권을 실제 금융시스템에 올릴 때 필요한 분산원장 기술·운영 기준을 구체화한 실무 가이드입니다.\n'
+              '출처  금융위원회 금융정책  ·  <a href="https://www.fsc.go.kr/comm/getFile?srvcId=BBSTY1&amp;upperNo=87650&amp;fileTy=ATTACH&amp;fileNo=5"><b>원문</b></a></blockquote>'
           )
           payload = urllib.parse.urlencode({
               'chat_id': chat_id,
@@ -82,7 +85,7 @@ jobs:
               'confirmed_at_kst': now_iso,
               'route': 'GitHub Actions -> Python -> Telegram Bot API',
               'link_format': 'HTML text_link',
-              'layout': 'readable_blockquote_cards',
+              'layout': 'headline_core_plain_font_cards',
           }
           pathlib.Path('data').mkdir(exist_ok=True)
           pathlib.Path('data/bok_asset_tokenization_smoketest_newbot.json').write_text(
@@ -96,6 +99,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/bok_asset_tokenization_smoketest_newbot.json
-          git commit -m "Record BOK readable Telegram smoke test receipt"
+          git commit -m "Record BOK headline-core Telegram smoke test receipt"
           git pull --rebase origin main
           git push
