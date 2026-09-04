@@ -1,28 +1,31 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-04T18:23:35+09:00",
+  "updated_at_kst": "2026-09-04T22:40:39+09:00",
   "seen_event_keys": [
-    "policy_spread:2026-08-27:0.75",
-    "fx_daily_down:2026-09-02",
-    "foreign3d_neg:2026-09-02:postclose",
-    "foreign1d_neg:2026-09-02:final",
-    "foreign1d_neg:2026-09-02:postclose",
     "foreign3d_neg:2026-09-02:final",
+    "foreign1d_neg:2026-09-02:postclose",
     "foreign1d_neg:2026-08-31",
+    "foreign3d_neg:2026-08-27",
+    "foreign3d_neg:2026-09-02:postclose",
+    "policy_spread:2026-08-27:0.75",
     "capex:13cbe150930d23d8",
-    "foreign3d_neg:2026-08-27"
+    "foreign1d_neg:2026-09-02:final",
+    "fx_daily_down:2026-09-02",
+    "fx_1350_down:2026-09-04"
   ],
-  "active_keys": [],
+  "active_keys": [
+    "fx_1350_down:2026-09-04"
+  ],
   "snapshot": {
-    "checked_at_kst": "2026-09-04T18:23:35+09:00",
+    "checked_at_kst": "2026-09-04T22:40:39+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-04",
-      "value": 1352.4,
+      "value": 1347.0,
       "prev_date": "2026-09-03",
       "prev_value": 1358.5,
-      "change_krw": -6.1,
-      "change_pct": -0.449,
+      "change_krw": -11.5,
+      "change_pct": -0.8465,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
@@ -34,7 +37,7 @@
       "source": "https://fred.stlouisfed.org/series/DGS10"
     },
     "policy_spread": {
-      "date": "2026-09-03",
+      "date": "2026-09-04",
       "fed_upper": 3.75,
       "bok_base": 3.0,
       "spread_pp": 0.75,
