@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-04T18:55:41+09:00",
+  "updated_at_kst": "2026-09-05T02:47:03+09:00",
   "items": {
     "fc098bcafac72dbd22070a98": {
       "id": "fc098bcafac72dbd22070a98",
@@ -113,11 +113,11 @@
       "url": "https://www.bok.or.kr/portal/singl/multiCont/list.do?menuNo=201729",
       "category": "자산 토큰화"
     },
-    "8b085d4fbf098f1cb26a319e": {
-      "id": "8b085d4fbf098f1cb26a319e",
+    "ddfd8d2d2378e4654338b5ff": {
+      "id": "ddfd8d2d2378e4654338b5ff",
       "source": "금융위원회 금융정책",
-      "title": "토큰증권 정책방향 발표- 민·관 합동 토큰증권 협의체 3차회의 개최 . 금일 등록된 게시글",
-      "context": "토큰증권 정책방향 발표- 민·관 합동 토큰증권 협의체 3차회의 개최 . 금일 등록된 게시글",
+      "title": "토큰증권 정책방향 발표- 민·관 합동 토큰증권 협의체 3차회의 개최",
+      "context": "토큰증권 정책방향 발표- 민·관 합동 토큰증권 협의체 3차회의 개최",
       "url": "https://www.fsc.go.kr/po010101/87650?srchCtgry=&curPage=&srchKey=&srchText=&srchBeginDt=&srchEndDt=",
       "category": "자산 토큰화"
     },
@@ -155,9 +155,10 @@
     }
   },
   "errors": [],
-  "last_successful_delivery_kst": "2026-09-04T18:55:57+09:00",
+  "last_successful_delivery_kst": "2026-09-05T02:47:13+09:00",
   "telegram_message_ids": [
-    141
+    8
   ],
-  "bot_username": "hs8879887988798879_bot"
+  "bot_username": "khs88790088790000_bot",
+  "telegram_route": "new"
 }
