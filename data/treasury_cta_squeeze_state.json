@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-09-05T00:59:46+09:00",
+  "last_checked_kst": "2026-09-05T03:57:44+09:00",
   "media_id": null,
   "cftc_date": "August 25, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-05T00:59:46+09:00",
+    "checked_kst": "2026-09-05T03:57:44+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "August 25, 2026",
@@ -65,10 +65,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 107.578125,
-        "settlement": 107.578125,
-        "change": -0.34375,
-        "pct_change": -0.31851744606919974,
+        "last": 107.484375,
+        "settlement": 107.484375,
+        "change": -0.4375,
+        "pct_change": -0.4053858404517108,
         "open_interest": 6208739,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 25, 2026)",
         "volume": 0,
@@ -83,10 +83,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 108.78125,
-        "settlement": 108.78125,
-        "change": -0.4375,
-        "pct_change": -0.4005722460658112,
+        "last": 108.6875,
+        "settlement": 108.6875,
+        "change": -0.53125,
+        "pct_change": -0.4864091559370509,
         "open_interest": 2096351,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 25, 2026)",
         "volume": 0,
@@ -101,10 +101,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 110.3125,
-        "settlement": 110.3125,
-        "change": -0.25,
-        "pct_change": -0.22611644997173608,
+        "last": 110.1875,
+        "settlement": 110.1875,
+        "change": -0.375,
+        "pct_change": -0.33917467495759857,
         "open_interest": 2968853,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (August 25, 2026)",
         "volume": 0,
@@ -155,7 +155,8 @@
     "stage": 0,
     "oi_scope_fixes": [
       "ZN OI 11→6,208,739로 동일 범위 교체",
-      "ZB OI 11→2,096,351로 동일 범위 교체"
+      "ZB OI 11→2,096,351로 동일 범위 교체",
+      "UB OI 11→2,968,853로 동일 범위 교체"
     ]
   }
 }
