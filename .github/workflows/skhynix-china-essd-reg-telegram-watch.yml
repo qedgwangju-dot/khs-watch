@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/skhynix-china-essd-reg-telegram-watch.yml"
       - "scripts/skhynix_china_essd_reg_watch.py"
+      - "scripts/skhynix_china_essd_direct_link_fix.py"
       - "data/skhynix_china_essd_reg_watch_state.json"
   schedule:
     # GitHub cron is UTC. Check twice per hour and stay silent without a meaningful new signal.
@@ -36,8 +37,17 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install Google News direct-link resolver
+        run: python -m pip install --disable-pip-version-check --quiet googlenewsdecoder==0.1.7
+
       - name: Validate watcher
-        run: python -m py_compile scripts/skhynix_china_essd_reg_watch.py
+        run: |
+          python -m py_compile scripts/skhynix_china_essd_reg_watch.py
+          python -m py_compile scripts/skhynix_china_essd_direct_link_fix.py
+
+      - name: Probe direct-link resolver after code changes
+        if: github.event_name == 'push'
+        run: python scripts/skhynix_china_essd_direct_link_fix.py --probe-state data/skhynix_china_essd_reg_watch_state.json
 
       - name: Validate exact requested Telegram route without sending
         env:
@@ -66,6 +76,9 @@ jobs:
 
       - name: Check SAMR, SK hynix, eSSD pricing and Dalian signals
         run: python scripts/skhynix_china_essd_reg_watch.py
+
+      - name: Resolve publisher links for Telegram alert
+        run: python scripts/skhynix_china_essd_direct_link_fix.py
 
       - name: Publish watcher summary
         if: always()
