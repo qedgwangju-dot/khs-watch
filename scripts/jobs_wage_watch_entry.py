@@ -4,11 +4,12 @@ from __future__ import annotations
 # cache are installed without executing watch.main().
 import jobs_wage_watch_runner  # noqa: F401
 import jobs_wage_watch as watch
-import jobs_wage_watch_full_report_v8 as full_report
+import jobs_wage_watch_full_report_v9 as full_report
 
-# v8 preserves the readable v7 Telegram layout and full v6 analysis, while
-# strengthening the Fed reaction-function section with live official FOMC
-# statement context and a separate labor-axis vs final-policy judgment.
+# v9 preserves the readable Telegram layout and full analysis, while forcing
+# an explicit first-line rate direction such as '인하 쪽' / '동결·인상 쪽'
+# before the final Fed policy judgment. Labor-axis direction and final Fed
+# decision are intentionally separated.
 watch.build_report = full_report.build_report
 
 if __name__ == "__main__":
