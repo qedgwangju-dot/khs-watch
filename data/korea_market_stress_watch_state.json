@@ -1,28 +1,28 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-04T09:27:20+09:00",
+  "updated_at_kst": "2026-09-04T13:57:35+09:00",
   "seen_event_keys": [
-    "capex:13cbe150930d23d8",
-    "foreign1d_neg:2026-09-02:postclose",
     "foreign1d_neg:2026-09-02:final",
-    "foreign3d_neg:2026-09-02:final",
-    "foreign1d_neg:2026-08-31",
-    "foreign3d_neg:2026-08-27",
     "foreign3d_neg:2026-09-02:postclose",
+    "foreign3d_neg:2026-09-02:final",
     "fx_daily_down:2026-09-02",
-    "policy_spread:2026-08-27:0.75"
+    "policy_spread:2026-08-27:0.75",
+    "foreign1d_neg:2026-09-02:postclose",
+    "foreign3d_neg:2026-08-27",
+    "foreign1d_neg:2026-08-31",
+    "capex:13cbe150930d23d8"
   ],
   "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-09-04T09:27:20+09:00",
+    "checked_at_kst": "2026-09-04T13:57:35+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-04",
-      "value": 1356.7,
+      "value": 1354.6,
       "prev_date": "2026-09-03",
       "prev_value": 1358.5,
-      "change_krw": -1.8,
-      "change_pct": -0.1325,
+      "change_krw": -3.9,
+      "change_pct": -0.2871,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
     },
     "ust10": {
@@ -43,10 +43,10 @@
     },
     "foreign_flow": {
       "date": "2026-09-04",
-      "daily_eok": 1062.0,
-      "three_day_eok": -17697.0,
-      "daily_krw": 106200000000,
-      "three_day_krw": -1769700000000,
+      "daily_eok": 4461.0,
+      "three_day_eok": -14298.0,
+      "daily_krw": 446100000000,
+      "three_day_krw": -1429800000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260904&sosok=01",
       "phase": "장중 참고"
     },
