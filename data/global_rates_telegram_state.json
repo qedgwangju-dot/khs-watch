@@ -1,10 +1,10 @@
 {
-  "risk_level": 1,
-  "risk_label": "구조적 경계 상승",
-  "updated_at_kst": "2026-09-04T08:21:01+09:00",
+  "risk_level": 0,
+  "risk_label": "관찰",
+  "updated_at_kst": "2026-09-04T13:48:09+09:00",
   "signals": {
-    "jgb10_3": true,
-    "jgb_curve_up": true,
+    "jgb10_3": false,
+    "jgb_curve_up": false,
     "us_jp_2y_spread_narrow": false,
     "us_2y_down": false,
     "yen_surge": false,
