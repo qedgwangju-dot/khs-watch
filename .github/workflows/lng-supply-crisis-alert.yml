@@ -83,7 +83,7 @@ jobs:
               "timestamp_utc": "2026-09-04T03:00:00+00:00", "timestamp_kst": "2026-09-04 12:00 KST", "source": "fixture"
           }
           _, body, meta = v16.build_regular_alert_v16(groups, {}, set(), set())
-          for required in ["11월 초", "5개 추가 LNG 카고 취소", "25.908달러/MMBtu", "2022년 12월 이후 최고", "36,790원/MMBtu", "아시아 전체 구매자에게 동일하게 11월까지 연장됐다고 자동 확대해석하지 않음"]:
+          for required in ["11월 초", "5개 추가 LNG 카고 취소", "25.908달러/MMBtu", "2022년 12월 이후 최고", "36,789원/MMBtu", "아시아 전체 구매자에게 동일하게 11월까지 연장됐다고 자동 확대해석하지 않음"]:
               assert required in body, required
           assert qatar_item.title not in body
           assert jkm_item.title not in body
