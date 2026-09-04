@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import html
 import json
 import pathlib
 import re
@@ -70,7 +71,6 @@ def relevant(text: str) -> bool:
     primary_hit = any(k.lower() in low for k in PRIMARY)
     if not primary_hit:
         return False
-    # Broad official tokenization updates are relevant. Participant/procurement terms raise priority.
     return True
 
 
@@ -90,8 +90,8 @@ def classify(text: str) -> str:
 
 
 def extract(source: dict) -> list[dict]:
-    html = fetch(source["url"])
-    soup = BeautifulSoup(html, "html.parser")
+    page = fetch(source["url"])
+    soup = BeautifulSoup(page, "html.parser")
     rows: dict[str, dict] = {}
     for a in soup.find_all("a", href=True):
         title = clean(a.get_text(" ", strip=True))
@@ -112,6 +112,13 @@ def extract(source: dict) -> list[dict]:
             "category": classify(combined),
         }
     return list(rows.values())
+
+
+def source_link(url: str) -> str:
+    safe_url = html.escape(url, quote=True)
+    if url.startswith(("https://", "http://")):
+        return f'<a href="{safe_url}">원문</a>'
+    return "원문 링크 없음"
 
 
 def main() -> None:
@@ -150,7 +157,6 @@ def main() -> None:
             "Initial baseline created; no Telegram alert sent.\n", encoding="utf-8"
         )
 
-    # On subsequent runs, alert only on genuinely new relevant official items.
     if (not first_run) and new_items:
         priority = sorted(
             new_items,
@@ -161,21 +167,20 @@ def main() -> None:
             ),
         )
         lines = [
-            "🔔 한국은행 자산토큰화·국채토큰화 새 공식 업데이트",
+            "🔔 <b>한국은행 자산토큰화·국채토큰화 새 공식 업데이트</b>",
             "",
-            f"확인 시각: {now}",
+            f"확인 시각: {html.escape(now)}",
         ]
         for item in priority[:8]:
             lines += [
                 "",
-                f"[{item['category']}] {item['title']}",
-                f"출처: {item['source']}",
-                item["url"],
+                f"[{html.escape(item['category'])}] {html.escape(item['title'])}",
+                f"출처: {html.escape(item['source'])} · {source_link(item['url'])}",
             ]
         if len(priority) > 8:
             lines += ["", f"그 외 신규 항목 {len(priority)-8}건"]
         if errors:
-            lines += ["", "⚠️ 일부 공식 페이지 조회 오류: " + " | ".join(errors[:3])]
+            lines += ["", "⚠️ 일부 공식 페이지 조회 오류: " + html.escape(" | ".join(errors[:3]))]
         (OUT / "bok_asset_tokenization_alert.md").write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
     status = [
