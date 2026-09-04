@@ -11,6 +11,7 @@ Series:
 - NASDAQCOM : Nasdaq Composite
 - NIKKEI225 : Nikkei 225
 
+Also invokes the intraday MXN/JPY, BRL/JPY and ZAR/JPY carry-target confirmation layer.
 Outputs out/yen_carry_confirmation.json and .md.
 """
 from __future__ import annotations
@@ -23,6 +24,8 @@ import urllib.parse
 import urllib.request
 from datetime import datetime
 from zoneinfo import ZoneInfo
+
+import yen_carry_target_currency_confirmation as target_currency
 
 KST = ZoneInfo("Asia/Seoul")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -109,6 +112,13 @@ def main():
         lines += ["", "## 확인 불가"] + [f"- {e}" for e in errors]
     (OUT / "yen_carry_confirmation.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False))
+
+    # Intraday carry-target confirmation is supplemental. A retrieval failure here must not
+    # suppress the established rates/FX lane; missing target data are excluded from risk scoring.
+    try:
+        target_currency.process()
+    except Exception as exc:
+        print(f"target_currency_confirmation_failed={type(exc).__name__}: {exc}")
 
 
 if __name__ == "__main__":
