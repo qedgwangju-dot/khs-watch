@@ -18,6 +18,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v13.py"
       - "scripts/lng_supply_crisis_alert_v14.py"
       - "scripts/lng_supply_crisis_alert_v15.py"
+      - "scripts/lng_supply_crisis_alert_v16.py"
 
 permissions:
   contents: write
@@ -42,77 +43,60 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v15 monitor
+      - name: Validate v16 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py
           python - <<'PY'
           import sys
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v15 as v15
+          import lng_supply_crisis_alert_v16 as v16
 
-          storage_item = core.NewsItem(
-              category="europe_storage",
-              polarity="worsening",
-              subtype="storage_lng_competition",
-              title="Europe gas storage shortfall raises risk of global LNG cargo competition this winter",
-              source="Reuters",
-              link="https://example.com/storage",
-              published_utc="2026-09-03T00:00:00+00:00",
-              published_epoch=1788393600.0,
-              official=False,
-              event_id="storage-test",
+          fixture = """
+          실제 이전 최고 최저 날짜 단위 업데이트 주기 23.76 23.61 69.96 2.00 2012 - 2026 USD / MMBTU 매일
+          LNG JKM 23.76 0.15 0.61%
+          2026년 9월 2일 lng jkm은 23.76 usd/mmbtu로 상승했으며, 전날 대비 0.61% 증가했습니다.
+          """
+          parsed = v16.parse_te_jkm(fixture)
+          assert parsed["actual"] == 23.76
+          assert parsed["previous"] == 23.61
+          assert parsed["source_date"] == "2026-09-02"
+
+          qatar_item = core.NewsItem(
+              category="qatar_supply", polarity="worsening", subtype="qatar_force_majeure_november",
+              title="QatarEnergy cancels gas deliveries to Italy's Edison until early November over Iran war",
+              source="Reuters", link="https://example.com/qatar", published_utc="2026-09-03T00:00:00+00:00",
+              published_epoch=1788393600.0, official=False, event_id="qatar-nov-test",
           )
-          storage_group = {
-              "category": "europe_storage",
-              "polarity": "worsening",
-              "subtype": "storage_lng_competition",
-              "event_id": "storage-test",
-              "latest_epoch": storage_item.published_epoch,
-              "evidence": [storage_item],
-              "verification": "유럽 저장부족 조기신호 + GIE 공식 재고 검산",
+          jkm_item = core.NewsItem(
+              category="asia_procurement", polarity="worsening", subtype="asia_jkm_2022_high",
+              title="JKM soars to highest since December 2022 as Middle East war shuts arbitrage window",
+              source="S&P Global", link="https://example.com/jkm", published_utc="2026-09-03T01:00:00+00:00",
+              published_epoch=1788397200.0, official=False, event_id="jkm-high-test",
+          )
+          groups = [
+              {"category":"qatar_supply","polarity":"worsening","subtype":"qatar_force_majeure_november","event_id":"qatar-nov-test","latest_epoch":qatar_item.published_epoch,"evidence":[qatar_item],"verification":"카타르 공급 장기화 조기신호·로이터 확인"},
+              {"category":"asia_procurement","polarity":"worsening","subtype":"asia_jkm_2022_high","event_id":"jkm-high-test","latest_epoch":jkm_item.published_epoch,"evidence":[jkm_item],"verification":"Platts JKM 가격평가 원천·S&P 글로벌 확인"},
+          ]
+          v16.v14.fetch_verified_fx = lambda currency: {
+              "currency": currency, "symbol": "KRW=X", "rate": 1420.00,
+              "timestamp_utc": "2026-09-04T03:00:00+00:00", "timestamp_kst": "2026-09-04 12:00 KST", "source": "fixture"
           }
-          v15.fetch_gie_storage = lambda: {
-              "date": "2026-08-31", "trend_pp": 0.34, "stored_twh": 739.61,
-              "fill_pct": 65.44, "capacity_twh": 1130.21,
-              "gaps": {
-                  "75": {"target_pct": 75.0, "gap_pp": 9.56, "required_twh": 108.0},
-                  "80": {"target_pct": 80.0, "gap_pp": 14.56, "required_twh": 164.6},
-                  "90": {"target_pct": 90.0, "gap_pp": 24.56, "required_twh": 277.6},
-              },
-              "source": "validation fixture",
-          }
-          _, body, meta = v15.build_regular_alert_v15([storage_group], {}, set(), set())
-          for required in ["65.44%", "739.61TWh", "108.0TWh", "164.6TWh", "277.6TWh", "75%는 평상시 기본 목표가 아니라", "동북아"]:
+          _, body, meta = v16.build_regular_alert_v16(groups, {}, set(), set())
+          for required in ["11월 초", "5개 추가 LNG 카고 취소", "25.908달러/MMBtu", "2022년 12월 이후 최고", "36,790원/MMBtu", "아시아 전체 구매자에게 동일하게 11월까지 연장됐다고 자동 확대해석하지 않음"]:
               assert required in body, required
-          assert meta["version"] == 15
-          assert meta["europe_storage_watch"]["thresholds"] == [75, 80, 90]
-
-          # 기존 한국어 전용 송출 규칙이 v15에서도 유지되는지 확인
-          en_title = "US forces strike two Iranian launchers on Iran's Larak island, US official says - Reuters"
-          en_item = core.NewsItem(
-              category="hormuz_shipping", polarity="worsening", subtype="facility_damage",
-              title=en_title, source="Reuters", link="https://example.com/reuters",
-              published_utc="2026-09-03T00:00:00+00:00", published_epoch=1788393600.0,
-              official=False, event_id="reuters-en-test",
-          )
-          en_group = {
-              "category": "hormuz_shipping", "polarity": "worsening", "subtype": "facility_damage",
-              "event_id": "reuters-en-test", "latest_epoch": en_item.published_epoch,
-              "evidence": [en_item], "verification": "신뢰 매체 2곳 교차",
-          }
-          _, en_body, _ = v15.build_regular_alert_v15([en_group], {}, set(), set())
-          assert en_title not in en_body
-          assert "로이터" in en_body and "미군" in en_body and "이란" in en_body
-          print("v15_validation=true")
+          assert qatar_item.title not in body
+          assert jkm_item.title not in body
+          assert meta["version"] == 16
+          print("v16_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v15.py --setup-test
+            python scripts/lng_supply_crisis_alert_v16.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v15.py
+            python scripts/lng_supply_crisis_alert_v16.py
           fi
 
       - name: Publish status summary
@@ -180,9 +164,7 @@ jobs:
                   "disable_web_page_preview": "true",
               }).encode("utf-8")
               request = urllib.request.Request(
-                  f"https://api.telegram.org/bot{token}/sendMessage",
-                  data=payload,
-                  method="POST",
+                  f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST"
               )
               with urllib.request.urlopen(request, timeout=25) as response:
                   result = json.loads(response.read().decode("utf-8"))
@@ -191,21 +173,18 @@ jobs:
               message_ids.append(int(result["result"]["message_id"]))
 
           confirmed = {
-              "status": "confirmed",
-              "bot": f"@{actual}",
-              "message_ids": message_ids,
+              "status": "confirmed", "bot": f"@{actual}", "message_ids": message_ids,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
           }
           pathlib.Path("out/lng_supply_crisis_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
           )
           print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={message_ids}")
           PY
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v15.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v16.py --finalize
 
       - name: Upload verification artifacts
         if: always()
