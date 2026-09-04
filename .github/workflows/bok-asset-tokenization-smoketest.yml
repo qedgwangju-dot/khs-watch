@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88790088790000_bot"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
 
       - name: Send Telegram smoke test and record receipt
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.BOK_ASSET_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
           TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
@@ -36,7 +36,7 @@ jobs:
           chat_id = (os.getenv('TELEGRAM_CHAT_ID_PRIMARY') or os.getenv('TELEGRAM_CHAT_ID_FALLBACK') or '').strip()
           expected = (os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
           if not token:
-              raise RuntimeError('Telegram bot token secret is missing')
+              raise RuntimeError('BOK_ASSET_TELEGRAM_BOT_TOKEN secret is missing')
           if not chat_id:
               raise RuntimeError('Telegram chat id secret is missing')
 
@@ -47,8 +47,18 @@ jobs:
               raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{username or "unknown"}')
 
           now = dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds')
-          text = f'[실전 점검] 한국은행 자산토큰화 알림 경로 정상\n확인시각: {now}\nGitHub Actions → Python → Telegram Bot API 전송 성공 여부를 확인하는 1회 테스트입니다.'
-          payload = urllib.parse.urlencode({'chat_id': chat_id, 'text': text, 'disable_web_page_preview': 'true'}).encode('utf-8')
+          text = (
+              '<b>[실전 점검] 새 한국은행 자산토큰화 알림 봇 정상</b>\n'
+              f'확인시각: {now}\n'
+              'GitHub Actions → Python → Telegram Bot API 새 봇 전송 성공 테스트입니다.\n'
+              '<a href="https://www.fsc.go.kr/po010101/87650">원문</a>'
+          )
+          payload = urllib.parse.urlencode({
+              'chat_id': chat_id,
+              'text': text,
+              'parse_mode': 'HTML',
+              'disable_web_page_preview': 'true',
+          }).encode('utf-8')
           req = urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage', data=payload, method='POST')
           with urllib.request.urlopen(req, timeout=25) as r:
               result = json.loads(r.read().decode('utf-8'))
@@ -61,9 +71,12 @@ jobs:
               'message_id': (result.get('result') or {}).get('message_id'),
               'confirmed_at_kst': now,
               'route': 'GitHub Actions -> Python -> Telegram Bot API',
+              'link_format': 'HTML text_link',
           }
           pathlib.Path('data').mkdir(exist_ok=True)
-          pathlib.Path('data/bok_asset_tokenization_smoketest.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          pathlib.Path('data/bok_asset_tokenization_smoketest_newbot.json').write_text(
+              json.dumps(receipt, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
           print(json.dumps(receipt, ensure_ascii=False))
           PY
 
@@ -71,7 +84,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/bok_asset_tokenization_smoketest.json
-          git commit -m "Record BOK Telegram smoke test receipt"
+          git add data/bok_asset_tokenization_smoketest_newbot.json
+          git commit -m "Record BOK new Telegram bot smoke test receipt"
           git pull --rebase origin main
           git push
