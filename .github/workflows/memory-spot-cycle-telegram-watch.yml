@@ -44,7 +44,7 @@ jobs:
 
       - name: Scan memory spot, contract and HBM supply signals
         env:
-          FORCE_NOTIFY: ${{ github.event_name == 'push' && 'true' || inputs.force_notify }}
+          FORCE_NOTIFY: ${{ inputs.force_notify }}
         run: python scripts/memory_spot_cycle_watch.py
 
       - name: Publish watcher summary
