@@ -8,7 +8,7 @@
     "ec2b004cd91a18e18feeeb55"
   ],
   "seen_urls": [],
-  "last_check_kst": "2026-09-05T05:19:33+09:00",
+  "last_check_kst": "2026-09-05T07:28:15+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -50,7 +50,9 @@
     "IPR2026-00313": "11,041,149",
     "IPR2026-00314": "11,066,656"
   },
-  "discovered_cases": {},
+  "discovered_cases": {
+    "PGR2025-00003": "11,952,600"
+  },
   "district_case": "2:25-cv-03179",
   "legal_v3_initialized": true,
   "search_regions": [
