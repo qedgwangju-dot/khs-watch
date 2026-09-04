@@ -45,7 +45,6 @@ QUERIES = [
     ("en", 'HBM trade ratio Micron HBM4E DRAM capacity'),
 ]
 
-# Strong topic markers. At least one memory marker and one change/supply marker are required.
 MEMORY_MARKERS = {
     "dram", "ddr4", "ddr5", "lpddr", "hbm", "hbm4", "hbm4e", "nand",
     "essd", "ssd", "memory", "메모리", "디램", "낸드", "현물", "고정가",
@@ -97,8 +96,8 @@ def _clean(text: str | None) -> str:
 def _translate_to_ko(text: str) -> str:
     """Translate non-Korean alert text to Korean.
 
-    We deliberately do not expose an English title if translation is temporarily
-    unavailable. The source name and original link remain untouched identifiers.
+    If translation is temporarily unavailable, send a Korean-only fallback instead
+    of exposing the untranslated English headline.
     """
     text = _clean(text)
     if not text:
@@ -348,19 +347,17 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         title = _translate_to_ko(raw_title)
         if len(title) > 112:
             title = title[:109].rstrip() + "…"
-        source = item.get("source") or "출처 확인"
         pub = item.get("published_kst")
         date_text = ""
         if pub:
             try:
-                date_text = dt.datetime.fromisoformat(pub).strftime("%m/%d %H:%M") + " "
+                date_text = dt.datetime.fromisoformat(pub).strftime("%m/%d %H:%M")
             except Exception:
                 pass
         safe_title = html.escape(title)
-        safe_source = html.escape(source)
-        safe_link = html.escape(item["link"], quote=True)
         lines.append(f"• <b>{label}</b> | {safe_title}")
-        lines.append(f"  {date_text}{safe_source} · <a href=\"{safe_link}\">원문</a>")
+        if date_text:
+            lines.append(f"  {date_text}")
     lines.append("※ 가격·수급·LTA·2027~28 HBM/CAPA의 신규 변화만 알림")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
