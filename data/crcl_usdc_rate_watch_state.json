@@ -1,13 +1,9 @@
 {
-  "updated_at_kst": "2026-09-05T03:22:54+09:00",
+  "updated_at_kst": "2026-09-05T06:26:38+09:00",
   "circle": {
     "date": "2026-09-03",
     "circulation_usd_b": 74.3,
-    "precision": "0.1B official webpage display",
-    "_previous_distinct": {
-      "date": "2026-08-31",
-      "circulation_usd_b": 73.3
-    }
+    "precision": "0.1B official webpage display"
   },
   "usdxx": {
     "date": "2026-09-03",
@@ -37,24 +33,24 @@
   },
   "crcl": {
     "date": "2026-09-04",
-    "close": 101.32499694824219,
+    "close": 102.05000305175781,
     "prev_date": "2026-09-03",
     "prev_close": 103.2300033569336,
-    "daily_pct": -1.85
+    "daily_pct": -1.14
   },
   "tbx": {
     "date": "2026-09-04",
-    "close": 29.010000228881836,
+    "close": 29.040000915527344,
     "prev_date": "2026-09-03",
     "prev_close": 28.979999542236328,
-    "daily_pct": 0.1
+    "daily_pct": 0.21
   },
   "fx": {
     "rate": 1359.3,
     "date": "2026-09-03",
     "source": "한국은행 일일 금융시장 주요지표",
     "source_url": "https://www.bok.or.kr/portal/bbs/P0002018/view.do?nttId=11064470&oldMenuNo=201150&menuNo=200366&programType=newsData&depth=200366&relate=Y",
-    "crosscheck": "Yahoo Finance 교차검증 접근 불가"
+    "crosscheck": "Yahoo Finance 1,355.41원, 차이 0.29%"
   },
   "errors": []
 }
