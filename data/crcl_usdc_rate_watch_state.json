@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-04T07:03:11+09:00",
+  "updated_at_kst": "2026-09-04T09:04:34+09:00",
   "circle": {
     "date": "2026-08-31",
     "circulation_usd_b": 73.3,
@@ -32,18 +32,18 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-09-03",
-    "close": 103.2300033569336,
-    "prev_date": "2026-09-02",
-    "prev_close": 88.63999938964844,
-    "daily_pct": 16.46
+    "date": "2026-09-02",
+    "close": 88.63999938964844,
+    "prev_date": "2026-09-01",
+    "prev_close": 89.4800033569336,
+    "daily_pct": -0.94
   },
   "tbx": {
-    "date": "2026-09-03",
-    "close": 28.979999542236328,
-    "prev_date": "2026-09-02",
-    "prev_close": 29.020000457763672,
-    "daily_pct": -0.14
+    "date": "2026-09-02",
+    "close": 29.020000457763672,
+    "prev_date": "2026-09-01",
+    "prev_close": 29.040000915527344,
+    "daily_pct": -0.07
   },
   "fx": {
     "rate": 1355.8199462890625,
@@ -52,5 +52,7 @@
     "source_url": "https://finance.yahoo.com/quote/KRW=X/",
     "crosscheck": "한국은행 원문 자동조회 실패"
   },
-  "errors": []
+  "errors": [
+    "fx: USD/KRW 환율을 확인하지 못해 원화 환산을 중단함"
+  ]
 }
