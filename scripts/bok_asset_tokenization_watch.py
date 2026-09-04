@@ -134,6 +134,55 @@ def display_time(value: datetime) -> str:
     return value.strftime("%Y-%m-%d %H:%M KST")
 
 
+def readable_title(raw: str) -> str:
+    text = clean(raw)
+    extension = ""
+    ext_match = re.search(r"\.(pdf|hwp|hwpx|docx?)$", text, flags=re.I)
+    if ext_match:
+        extension = ext_match.group(1).upper()
+        text = text[:ext_match.start()].strip()
+
+    tag = ""
+    lead = re.match(r"^\d{6}\s*(?:\(([^)]+)\)|\[([^\]]+)\])?\s*", text)
+    if lead:
+        tag = clean(lead.group(1) or lead.group(2) or "")
+        text = text[lead.end():].strip()
+    else:
+        bracket = re.match(r"^\[([^\]]+)\]\s*", text)
+        if bracket:
+            tag = clean(bracket.group(1))
+            text = text[bracket.end():].strip()
+
+    text = clean(text).strip("-–— ") or clean(raw)
+    suffix = ""
+    if tag:
+        suffix += f" · {tag}"
+    if extension:
+        suffix += f" · {extension}"
+    return f"{text}{suffix}"
+
+
+def core_interpretation(item: dict) -> str:
+    text = clean(f"{item.get('title', '')} {item.get('context', '')}").lower()
+    category = item.get("category", "")
+
+    if "분산원장" in text and ("표준요건" in text or "가이드라인" in text):
+        return "토큰증권을 실제 금융시스템에 올릴 때 필요한 분산원장 기술·운영 기준을 구체화한 실무 가이드입니다."
+    if "토큰증권" in text and "정책방향" in text:
+        return "토큰증권 발행·유통과 제도권 인프라의 세부 기준을 구체화하는 정책 업데이트입니다."
+    if any(k in text for k in ("국채토큰", "국채 토큰", "토큰화 국채", "국채 토큰화")):
+        return "CBDC·예금토큰과 국채토큰을 연결하는 실증의 일정·참여기관·결제 구조를 확인할 핵심 업데이트입니다."
+    if "통합원장" in text or "통합 원장" in text:
+        return "중앙은행화폐·예금토큰·자산토큰을 같은 원장에서 처리하는 통합원장 구축 방향과 관련된 업데이트입니다."
+    if "프로젝트 한강" in text or "예금토큰" in text or "예금 토큰" in text:
+        return "예금토큰의 결제·송금·국고금 활용과 실거래 확대 단계가 어디까지 진행됐는지 보여주는 업데이트입니다."
+    if category == "시스템 구축·조달":
+        return "정책·실증이 실제 시스템 구축·발주·수주 단계로 넘어가는지 확인할 실행 단계 업데이트입니다."
+    if category == "참여기관·당사자":
+        return "어떤 은행·증권사·인프라 기관이 실제 실증·구축에 참여하는지 확인할 당사자 업데이트입니다."
+    return "자산 토큰화 제도·실증·인프라의 진행 단계가 바뀌었는지 확인할 공식 업데이트입니다."
+
+
 def main() -> None:
     now_dt = datetime.now(ZoneInfo("Asia/Seoul"))
     now = now_dt.isoformat(timespec="seconds")
@@ -185,23 +234,25 @@ def main() -> None:
             "🔔 <b>한국은행 자산토큰화·국채토큰화</b>",
             "<b>새 공식 업데이트</b>",
             "",
-            f"<b>신규 {len(priority)}건</b>  ·  <code>{html.escape(display_time(now_dt))}</code>",
+            f"<b>신규 {len(priority)}건</b>  ·  {html.escape(display_time(now_dt))}",
         ]
         for idx, item in enumerate(visible, 1):
             icon = CATEGORY_ICON.get(item["category"], "•")
             category = html.escape(item["category"])
-            title = html.escape(item["title"])
+            title = html.escape(readable_title(item["title"]))
+            interpretation = html.escape(core_interpretation(item))
             source = html.escape(item["source"])
             lines += [
                 "",
                 "<blockquote>",
                 f"{icon} <b>{idx}. {category}</b>",
                 f"<b>{title}</b>",
-                f"<i>{source}</i>  ·  {source_link(item['url'])}",
+                f"<b>핵심</b>  {interpretation}",
+                f"출처  {source}  ·  {source_link(item['url'])}",
                 "</blockquote>",
             ]
         if len(priority) > len(visible):
-            lines += ["", f"<i>그 외 신규 항목 {len(priority)-len(visible)}건</i>"]
+            lines += ["", f"그 외 신규 항목 {len(priority)-len(visible)}건"]
         if errors:
             lines += [
                 "",
