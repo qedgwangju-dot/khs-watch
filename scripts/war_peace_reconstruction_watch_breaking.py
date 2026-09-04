@@ -159,6 +159,26 @@ def _pick_best(rows, wanted_marks):
     return candidates[0][3]
 
 
+def _inline_source_links(text, displayed_items):
+    """하단 원문 목록을 없애고 각 핵심 변화의 출처를 바로 누를 수 있게 만든다."""
+    marker = "\n<b>원문</b>\n"
+    if marker in text:
+        text = text.split(marker, 1)[0].rstrip() + "\n"
+
+    for x in displayed_items:
+        src = watch.h(x.get("source") or "출처미상")
+        url = watch.h(x.get("link") or "")
+        if not url:
+            continue
+        old = f" · {src}\n"
+        new = f' · <a href="{url}">{src} 원문</a>\n'
+        pos = text.find(old)
+        if pos == -1:
+            continue
+        text = text[:pos] + new + text[pos + len(old):]
+    return text.strip()[:4000] + "\n"
+
+
 def breaking_build_alert(items, markets, now):
     us_marks = {"이번주말", "수일내", "잠정일정", "양국방문"}
     putin_marks = {"푸틴외교경로"}
@@ -176,10 +196,27 @@ def breaking_build_alert(items, markets, now):
             continue
         chosen.append(x)
 
-    return _prev_build_alert(chosen[:8], markets, now)
+    chosen = chosen[:8]
+    text = _prev_build_alert(chosen, markets, now)
+
+    # clean 알림의 실제 표시 순서와 동일하게 핵심 변화 → 시장 파급 순서로 링크를 삽입한다.
+    core_items = [x for x in chosen if "시장파급" not in x.get("tags", [])][:6]
+    market_items = [x for x in chosen if "시장파급" in x.get("tags", [])][:4]
+    return _inline_source_links(text, core_items + market_items)
 
 
 watch.build_alert = breaking_build_alert
+
+
+def _write_inline_test():
+    clean.write_clean_test()
+    if not watch.ALERT.exists():
+        return
+    text = watch.ALERT.read_text(encoding="utf-8")
+    marker = "\n<b>원문</b>\n"
+    if marker in text:
+        text = text.split(marker, 1)[0].rstrip() + "\n"
+    watch.ALERT.write_text(text, encoding="utf-8")
 
 
 def main():
@@ -191,7 +228,7 @@ def main():
         watch.finalize()
         return
     if args.telegram_test:
-        clean.write_clean_test()
+        _write_inline_test()
     else:
         watch.run(test=False)
     runner.verify_alert(test_mode=False)
