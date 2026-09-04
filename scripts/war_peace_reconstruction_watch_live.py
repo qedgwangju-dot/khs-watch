@@ -30,8 +30,23 @@ IRAN_BACKFILL_QUERIES = [
     'site:wsj.com Iran Trump ("end the war" OR "declare the war over" OR advisers OR midterms) when:24h',
 ]
 
-watch.QUERIES = DIRECT_REUTERS_SITEMAPS + UKRAINE_FAST_QUERIES + IRAN_BACKFILL_QUERIES + list(watch.QUERIES)
-watch.TRUSTED = tuple(list(watch.TRUSTED) + ["Voice of America", "VOA", "VOA Korea"])
+# 전쟁·종전 발언이 실제 자산가격으로 번지는 2차 파급도 별도 포착한다.
+# 곡물·에너지·귀금속·해운 가격 반응은 '시장 파급'으로 분리해 텔레그램에 노출한다.
+MARKET_IMPACT_QUERIES = [
+    'site:barchart.com (Putin OR Russia OR Ukraine) (wheat OR grain OR corn OR soybeans) (peace OR deal OR comments OR talks) when:12h',
+    'site:reuters.com (Putin OR Russia OR Ukraine) (wheat OR grain OR oil OR gas OR gold) (peace OR deal OR talks OR ceasefire) when:12h',
+    'site:barchart.com (Iran OR Hormuz OR Tehran) (crude OR oil OR gold OR natural gas) (strike OR blockade OR ceasefire OR peace) when:12h',
+    'site:reuters.com (Iran OR Hormuz OR Tehran) (oil OR tanker OR shipping OR insurance OR gold) (strike OR blockade OR ceasefire OR peace) when:12h',
+]
+
+watch.QUERIES = (
+    DIRECT_REUTERS_SITEMAPS
+    + UKRAINE_FAST_QUERIES
+    + IRAN_BACKFILL_QUERIES
+    + MARKET_IMPACT_QUERIES
+    + list(watch.QUERIES)
+)
+watch.TRUSTED = tuple(list(watch.TRUSTED) + ["Voice of America", "VOA", "VOA Korea", "Barchart"])
 watch.PEACE = list(watch.PEACE) + [
     "chance of peace", "new dynamic", "u.s. delegation", "us delegation",
     "u.s. envoys", "us envoys", "u.s. negotiators", "us negotiators", "negotiators",
@@ -40,6 +55,25 @@ watch.PEACE = list(watch.PEACE) + [
 ]
 
 _prev_google_news = watch.google_news
+_MARKET_QUERIES = set(MARKET_IMPACT_QUERIES)
+
+
+def _market_signal(row):
+    text = (row.get("title_original", "") + " " + row.get("description", "")).lower()
+    signals = []
+    if "wheat" in text or "밀" in text:
+        signals.append("전쟁·종전 발언이 밀 가격에 직접 반영 — 흑해 공급 기대와 곡물 선물 반응 확인")
+    elif any(k in text for k in ("corn", "soybean", "grain", "옥수수", "대두", "곡물")):
+        signals.append("전쟁·종전 발언이 곡물 가격에 직접 반영 — 흑해 공급·수출 경로 변화 확인")
+    elif any(k in text for k in ("oil", "crude", "brent", "wti", "원유", "유가")):
+        signals.append("전쟁·종전 변화가 원유 가격에 직접 반영 — 공급차질 위험프리미엄 변화 확인")
+    elif any(k in text for k in ("shipping", "tanker", "insurance", "해운", "탱커", "보험")):
+        signals.append("전쟁·봉쇄 변화가 해운·탱커·보험 비용에 직접 반영되는지 확인")
+    elif any(k in text for k in ("gold", "금 가격", "금값")):
+        signals.append("전쟁 위험 변화가 안전자산 수요와 금 가격에 직접 반영되는지 확인")
+    else:
+        signals.append("전쟁·종전 변화가 실물·금융시장 가격에 직접 반영된 2차 파급 신호")
+    return signals
 
 
 def _reuters_news_sitemap(offset):
@@ -69,13 +103,19 @@ def _reuters_news_sitemap(offset):
         }
         text = title.lower()
         signals = []
+        forced_tags = []
         if "putin" in text and any(k in text for k in ("peace deal", "peace agreement", "chance of peace")):
             signals.append("푸틴, 우크라이나 전쟁 종식을 위한 평화 협정 타결 가능성 언급")
+            forced_tags.extend(["종전·협상", "시간표"])
         if "zelenski" in text and any(k in text for k in ("negotiators", "delegation", "envoys")):
             signals.append("젤렌스키, 미국 협상단이 우크라이나와 러시아 양국을 곧 방문할 예정이라고 밝혀")
+            forced_tags.extend(["종전·협상", "시간표"])
+        if any(k in text for k in ("wheat", "grain", "corn", "soybean", "oil", "crude", "brent", "gold", "shipping", "tanker", "insurance")) and any(k in text for k in ("putin", "ukraine", "russia", "iran", "hormuz", "tehran")):
+            signals.extend(_market_signal(row))
+            forced_tags.append("시장파급")
         if signals:
-            row["signals_ko"] = signals
-            row["forced_tags"] = ["종전·협상", "시간표"]
+            row["signals_ko"] = list(dict.fromkeys(signals))
+            row["forced_tags"] = list(dict.fromkeys(forced_tags))
             row["deep_signal"] = True
         rows.append(row)
     return rows, None
@@ -85,7 +125,21 @@ def google_news_with_reuters_sitemap(query):
     prefix = "reuters-sitemap:"
     if query.startswith(prefix):
         return _reuters_news_sitemap(int(query[len(prefix):] or 0))
-    return _prev_google_news(query)
+    rows, err = _prev_google_news(query)
+    if query in _MARKET_QUERIES:
+        for row in rows:
+            text = (row.get("title_original", "") + " " + row.get("description", "")).lower()
+            if not any(k in text for k in ("putin", "ukraine", "russia", "iran", "hormuz", "tehran", "푸틴", "우크라이나", "러시아", "이란", "호르무즈")):
+                continue
+            row["signals_ko"] = list(dict.fromkeys(list(row.get("signals_ko", [])) + _market_signal(row)))
+            tags = list(row.get("forced_tags", [])) + ["시장파급"]
+            if any(k in text for k in ("peace", "deal", "talks", "ceasefire", "평화", "종전", "휴전")):
+                tags.append("종전·협상")
+            if any(k in text for k in ("strike", "attack", "blockade", "missile", "공습", "공격", "봉쇄")):
+                tags.append("확전")
+            row["forced_tags"] = list(dict.fromkeys(tags))
+            row["deep_signal"] = True
+    return rows, err
 
 
 watch.google_news = google_news_with_reuters_sitemap
@@ -100,6 +154,9 @@ def priority_score_item(x, now):
         if any(k in text for k in ("peace deal", "peace agreement", "chance of peace", "constructive peace", "u.s. delegation", "us delegation", "u.s. envoys", "us envoys", "u.s. negotiators", "us negotiators", "negotiators", "평화협정", "평화 협정", "미국 협상단", "미국 대표단")):
             score += 10
             tags = sorted(set(tags + ["종전·협상", "시간표"]))
+    if "시장파급" in x.get("forced_tags", []) or "시장파급" in tags:
+        score += 7
+        tags = sorted(set(tags + ["시장파급"]))
     return score, tags
 
 
