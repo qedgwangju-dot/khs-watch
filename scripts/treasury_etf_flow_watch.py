@@ -130,23 +130,9 @@ def get_treasury_curve():
 
 
 def get_usdkrw():
-    # Primary: Frankfurter (ECB-reference based cross rates). Fallback: open.er-api.com.
-    try:
-        r = requests.get("https://api.frankfurter.app/latest?from=USD&to=KRW", timeout=20)
-        r.raise_for_status()
-        j = r.json()
-        rate = float(j["rates"]["KRW"])
-        if 800 <= rate <= 2500:
-            return {"rate": rate, "date": j.get("date"), "source": "Frankfurter/ECB cross-rate"}
-    except Exception:
-        pass
-    r = requests.get("https://open.er-api.com/v6/latest/USD", timeout=20)
-    r.raise_for_status()
-    j = r.json()
-    rate = float(j["rates"]["KRW"])
-    if not 800 <= rate <= 2500:
-        raise RuntimeError(f"USD/KRW sanity check failed: {rate}")
-    return {"rate": rate, "date": j.get("time_last_update_utc"), "source": "ExchangeRate-API"}
+    from fx_api import daily_krw
+    q = daily_krw()
+    return {"rate": q.rate, "date": q.basis, "source": q.source}
 
 
 def previous_snapshot(history, date):

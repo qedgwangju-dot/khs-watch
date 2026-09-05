@@ -54,19 +54,12 @@ def load_state() -> dict:
         return {"seen_result_urls": [], "history": {}}
 
 
-def latest_fx() -> tuple[str | None, float | None]:
+def latest_fx():
+    from fx_api import daily_krw
     try:
-        text = fetch(FRED_FX).decode("utf-8-sig", errors="replace")
-        rows = []
-        for line in text.splitlines()[1:]:
-            parts = line.split(",")
-            if len(parts) >= 2 and parts[1].strip() not in {"", "."}:
-                try:
-                    rows.append((parts[0].strip(), float(parts[1].strip())))
-                except ValueError:
-                    pass
-        return rows[-1] if rows else (None, None)
-    except Exception:
+        q = daily_krw()
+        return q.basis, q.rate
+    except RuntimeError:
         return None, None
 
 
@@ -325,7 +318,7 @@ def main() -> int:
         "<b>🔍 다음 확인</b>",
         "20·30년물 후속 입찰 · 바이백 실제 집행 · 해외 TIC 수요 · CTA 숏커버 · 10년 실질금리",
         "",
-        f"환율 기준: FRED DEXKOUS {fx_date or '확인 불가'}, 1달러={fx:,.2f}원" if fx is not None else "환율 기준: FRED DEXKOUS 확인 불가 — 원화 환산 미제공",
+        f"환율 기준: {fx_date or '확인 불가'}, 1달러={fx:,.2f}원" if fx is not None else "환율 기준: 확인 불가 — 원화 환산 미제공",
         f'<a href="{cur.result_url}">미 재무부 공식 입찰 결과</a>',
     ]
     TITLE.write_text(f"🇺🇸 미 국채 {cur.tenor_ko} 입찰 — 신규 장기채 최종수요 판정", encoding="utf-8")

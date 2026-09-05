@@ -142,9 +142,10 @@ def latest_two(rows: list[tuple[str, float]]) -> tuple[tuple[str, float], tuple[
     return rows[-2], rows[-1]
 
 
-def latest_fx() -> tuple[float, str]:
-    _prev, cur = latest_two(fetch_series(SERIES["fx"], lookback_days=45))
-    return cur[1], cur[0]
+def latest_fx():
+    from fx_api import daily_krw
+    q = daily_krw()
+    return q.rate, q.basis
 
 
 def fmt_krw(usd_bn: float, fx: float) -> str:
@@ -321,7 +322,7 @@ def one_time_alert(fx: float, fx_date: str, snapshot: dict) -> str:
         "<b>한 줄 결론</b>",
         "공식 정책선과 시장 결과를 분리합니다. 앞으로는 ‘유가·기대인플레이션이 내려가면 장기금리도 내려가는가’와 ‘실질금리·기간프리미엄이 이를 상쇄하는가’를 실제 숫자로 판정합니다.",
         "",
-        f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.2f}원",
+        f"환율 기준: {fx_date}, 1달러={fx:,.2f}원",
         source_links(),
     ])
 

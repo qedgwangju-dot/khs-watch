@@ -146,18 +146,13 @@ def probe_kstat() -> dict:
     return result
 
 
-def fetch_usdkrw() -> dict:
-    result = {"rate": None, "date": "", "source": FX_SOURCE, "error": ""}
+def fetch_usdkrw():
+    from fx_api import daily_krw
     try:
-        obj = json.loads(fetch(FX_URL, timeout=20))
-        rate = float(obj.get("rate"))
-        if rate <= 0:
-            raise ValueError("non-positive USD/KRW rate")
-        result["rate"] = rate
-        result["date"] = str(obj.get("date") or "")
-    except Exception as e:
-        result["error"] = f"USD/KRW 환율 조회 실패: {type(e).__name__}: {e}"
-    return result
+        q = daily_krw()
+        return {"rate": q.rate, "date": q.basis, "source": q.source, "error": ""}
+    except RuntimeError as exc:
+        return {"rate": None, "date": "", "source": "환율 API", "error": str(exc)}
 
 
 def load_state() -> tuple[dict, bool]:

@@ -83,24 +83,10 @@ def digest(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8", errors="replace")).hexdigest()
 
 
-def latest_fx() -> tuple[float, str]:
-    errors: list[str] = []
-    try:
-        rows = [line.strip().split(",") for line in fetch(FRED_FX).splitlines()[1:] if "," in line]
-        for date, value, *_ in reversed(rows):
-            if value and value != ".":
-                return float(value), date
-    except Exception as exc:
-        errors.append(f"csv={exc}")
-    try:
-        text = fetch(FRED_FX_ALT)
-        matches = re.findall(r"^(20\d{2}-\d{2}-\d{2})\s+([0-9]+(?:\.[0-9]+)?)\s*$", text, flags=re.M)
-        if matches:
-            date, value = matches[-1]
-            return float(value), date
-    except Exception as exc:
-        errors.append(f"txt={exc}")
-    raise RuntimeError("FRED DEXKOUS 환율 확인 실패: " + " | ".join(errors))
+def latest_fx():
+    from fx_api import daily_krw
+    q = daily_krw()
+    return q.rate, q.basis
 
 
 def fmt_krw(usd_bn: float, fx: float) -> str:
@@ -249,7 +235,7 @@ def build_alert(tga_item: dict | None, vigilante_item: dict | None, fx: float, f
         "<b>한 줄 결론</b>",
         "지금은 ‘재무부가 장기금리를 누르겠다’는 신호가 강해진 단계이고, <b>진짜 정책효과는 40억달러 상한 자체가 아니라 실제 매입액·TGA 감소·단기국채 재충전·20/30년 입찰수요·실질금리가 한 방향으로 움직이는지</b>로 판정해야 합니다.",
         "",
-        f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.2f}원",
+        f"환율 기준: {fx_date}, 1달러={fx:,.2f}원",
         f'<a href="{TREASURY_BUYBACK_RELEASE}">바이백 공식 발표</a> · <a href="{TENTATIVE_SCHEDULE_PDF}">바이백 일정</a> · <a href="{BUYBACK_RESULTS_PAGE}">바이백 결과</a> · <a href="{DTS_PAGE}">일별 TGA</a> · <a href="{AUCTION_RESULTS_PAGE}">국채 입찰</a> · <a href="{REAL_YIELD_PAGE}">실질금리</a> · <a href="{TREASURY_QRA}">8월 QRA</a> · <a href="{REUTERS_EXECUTION}">실행 상태</a> · <a href="{DRUCKENMILLER_WSJ}">Druckenmiller 반론</a> · <a href="{tga_link}">TGA 보도</a> · <a href="{vigilante_link}">5% 보도</a>',
     ])
     detail = {

@@ -91,12 +91,10 @@ def load_state() -> dict:
         return {}
 
 
-def latest_fx() -> tuple[float, str]:
-    rows = [line.split(",") for line in fetch(FRED_FX).splitlines()[1:] if "," in line]
-    for row in reversed(rows):
-        if len(row) >= 2 and row[1] not in ("", "."):
-            return float(row[1]), row[0]
-    raise RuntimeError("FRED DEXKOUS 최신 환율 확인 실패")
+def latest_fx():
+    from fx_api import daily_krw
+    q = daily_krw()
+    return q.rate, q.basis
 
 
 def krw(usd: float, fx: float) -> str:
@@ -478,7 +476,7 @@ def format_alert(snapshot: dict, previous: dict, fx: float, fx_date: str, reason
         "<b>한 줄 결론</b>",
         "<b>4.3%라는 숫자보다 ‘CTA DV01↓ → CFTC 숏↓ → ZN/ZB/UB 가격↑·OI↓ → -1σ/-2σ → repo 안정 → 10Y 하락’의 연쇄가 실제로 발생하는지가 핵심</b>이며, 한 축만 움직이면 숏 스퀴즈로 단정하지 않습니다.",
         "",
-        f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.2f}원",
+        f"환율 기준: {fx_date}, 1달러={fx:,.2f}원",
         f'<a href="{CFTC_TFF}">CFTC 포지션</a> · <a href="{TREASURY_YIELD_XML}">미 재무부 금리</a> · <a href="{NYFED_SOFR_API}">NY Fed SOFR</a> · <a href="{CME_PAGES["ZN"]}">CME ZN</a> · <a href="{CME_PAGES["ZB"]}">CME ZB</a> · <a href="{CME_PAGES["UB"]}">CME UB</a> · <a href="{NYFED_PRIMARY_DEALER}">Primary Dealer 통계</a>'
     ])
     return title, body

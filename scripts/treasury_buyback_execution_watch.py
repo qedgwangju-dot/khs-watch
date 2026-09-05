@@ -139,7 +139,7 @@ def build_execution_alert(
         "• TGA 활용 가능성·언론 발언 → 이 알림에서는 전송하지 않음",
         "• CTA 숏커버·10년물 구간 변화 → 별도 ‘CTA’ 감시가 복합 확인 때만 담당",
         "",
-        f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.2f}원",
+        f"환율 기준: {fx_date}, 1달러={fx:,.2f}원",
         f'<a href="{watcher.BUYBACK_RESULTS_PAGE}">미 재무부 공식 바이백 결과</a>',
     ]
     body = "\n".join(lines)

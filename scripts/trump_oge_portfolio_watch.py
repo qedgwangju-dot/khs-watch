@@ -177,14 +177,9 @@ def kr_name(desc):
 
 
 def fx_rate():
-    try:
-        data = json.loads(http_text("https://open.er-api.com/v6/latest/USD", timeout=12))
-        r = float(data["rates"]["KRW"])
-        if r > 0:
-            return r, data.get("time_last_update_utc") or "조회 시점"
-    except Exception as e:
-        print(f"WARN FX lookup failed: {e}")
-    return float(os.environ.get("USD_KRW_FALLBACK", "1393.24")), "대체 기준환율"
+    from fx_api import daily_krw
+    q = daily_krw()
+    return q.rate, q.basis
 
 
 def usd_range(low, high):

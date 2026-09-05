@@ -116,52 +116,10 @@ def pct(text: str, pattern: str) -> float | None:
     return float(m.group(1)) if m else None
 
 
-def fetch_fx() -> dict:
-    errors: list[str] = []
-    try:
-        data = get(YAHOO_FX_URL, timeout=20).json()
-        result = ((data.get("chart") or {}).get("result") or [None])[0]
-        if not result:
-            raise RuntimeError("Yahoo Finance 결과 없음")
-        meta = result.get("meta") or {}
-        rate = meta.get("regularMarketPrice")
-        ts = meta.get("regularMarketTime")
-        if rate is None:
-            closes = (((result.get("indicators") or {}).get("quote") or [{}])[0].get("close") or [])
-            rate = next((x for x in reversed(closes) if x is not None), None)
-            timestamps = result.get("timestamp") or []
-            ts = timestamps[-1] if timestamps else None
-        if rate is None:
-            raise RuntimeError("Yahoo Finance USD/KRW 값 없음")
-        basis = datetime.fromtimestamp(int(ts), tz=timezone.utc).astimezone(KST).strftime("%Y-%m-%d %H:%M KST") if ts else datetime.now(timezone.utc).astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
-        return {
-            "usdkrw": round(float(rate), 4),
-            "basis_kst": basis,
-            "source": "Yahoo Finance USD/KRW",
-            "source_type": "실시간 시장환율",
-        }
-    except Exception as exc:
-        errors.append(f"Yahoo Finance: {type(exc).__name__}: {exc}")
-
-    try:
-        raw = get(FRED_FX_URL, timeout=20).json()
-        item = raw[0] if isinstance(raw, list) and raw else (raw or {})
-        rate = item.get("rate")
-        if rate is None and isinstance(item.get("rates"), dict):
-            rate = item["rates"].get("KRW")
-        if rate is None:
-            raise RuntimeError("FRED USD/KRW 값 없음")
-        date = item.get("date")
-        return {
-            "usdkrw": round(float(rate), 4),
-            "basis_kst": f"{date} 기준" if date else "최신 공표일 기준",
-            "source": "Federal Reserve H.10 via Frankfurter",
-            "source_type": "공식 일일 기준환율",
-            "fallback": True,
-        }
-    except Exception as exc:
-        errors.append(f"FRED/Frankfurter: {type(exc).__name__}: {exc}")
-    raise RuntimeError("USD/KRW 조회 실패 | " + " | ".join(errors))
+def fetch_fx():
+    from fx_api import daily_krw
+    q = daily_krw()
+    return {"usdkrw": q.rate, "basis_kst": q.basis, "source": q.source, "source_type": "일일 기준환율"}
 
 
 def parse_census() -> dict:

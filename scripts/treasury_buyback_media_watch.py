@@ -74,26 +74,10 @@ def strip_html(value: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html.unescape(value or ""))).strip()
 
 
-def latest_fx() -> tuple[float, str]:
-    errors: list[str] = []
-    try:
-        rows = [line.strip().split(",") for line in fetch(FRED_FX).splitlines()[1:] if "," in line]
-        for date, value, *_ in reversed(rows):
-            if value and value != ".":
-                return float(value), date
-    except Exception as exc:
-        errors.append(f"csv={exc}")
-
-    try:
-        text = fetch(FRED_FX_ALT)
-        matches = re.findall(r"^(20\d{2}-\d{2}-\d{2})\s+([0-9]+(?:\.[0-9]+)?)\s*$", text, flags=re.M)
-        if matches:
-            date, value = matches[-1]
-            return float(value), date
-    except Exception as exc:
-        errors.append(f"txt={exc}")
-
-    raise RuntimeError("FRED DEXKOUS 환율 확인 실패: " + " | ".join(errors))
+def latest_fx():
+    from fx_api import daily_krw
+    q = daily_krw()
+    return q.rate, q.basis
 
 
 def fmt_krw(usd_bn: float, fx: float) -> str:
@@ -211,7 +195,7 @@ def build_alert(tga_item: dict | None, vigilante_item: dict | None, fx: float, f
         "<b>한 줄 결론</b>",
         f"재무부가 1조달러({fmt_krw(1000, fx)})를 당장 푸는 것이 아니라 TGA·바이백·만기구조로 장기금리를 완충하려는 신호이며, <b>아직 확대 프로그램 실제 매입은 시작 전</b>입니다. 유동성 지원이 금리 관리로 변하는지와 첫 실제 매입, Druckenmiller가 지적한 재정 신뢰가 11월 4일 QRA까지의 핵심 시험대입니다.",
         "",
-        f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.2f}원",
+        f"환율 기준: {fx_date}, 1달러={fx:,.2f}원",
         f'<a href="{TREASURY_BUYBACK_RELEASE}">미 재무부 바이백 공식 발표</a> · <a href="{TREASURY_QRA}">8월 QRA</a> · <a href="{REUTERS_EXECUTION}">실행 상태·정규 경매 확인</a> · <a href="{DRUCKENMILLER_WSJ}">Druckenmiller 반론</a> · <a href="{tga_link}">TGA 보도</a> · <a href="{vigilante_link}">5%·채권 자경단 보도</a> · <a href="{FED_H41}">Fed TGA 원문</a> · <a href="{TREASURY_BUYBACK_FAQ}">바이백 설명</a>',
     ])
     detail = {

@@ -85,9 +85,13 @@ def fred(series: str, n: int = 12) -> list[tuple[str, float]]:
     return out[-n:]
 
 
-def latest_fx() -> tuple[str | None, float | None]:
-    rows = fred("DEXKOUS", 5)
-    return rows[-1] if rows else (None, None)
+def latest_fx():
+    from fx_api import daily_krw
+    try:
+        q = daily_krw()
+        return q.basis, q.rate
+    except RuntimeError:
+        return None, None
 
 
 def krw_usd_bn(usd_bn: float | None, fx: float | None) -> str:
@@ -274,7 +278,7 @@ def main() -> int:
         "<b>🔍 다음 확인</b>",
         "TGA 5일 변화 · Bill 순발행 · Fed TREAST · 지급준비금 · ON RRP · 10/20/30년 입찰 결과",
         "",
-        f"환율 기준: FRED DEXKOUS {fx_date or '확인 불가'}, 1달러={fx:,.2f}원" if fx is not None else "환율 기준: FRED DEXKOUS 확인 불가 — 원화 환산 미제공",
+        f"환율 기준: {fx_date or '확인 불가'}, 1달러={fx:,.2f}원" if fx is not None else "환율 기준: 확인 불가 — 원화 환산 미제공",
         f'<a href="{DTS_PAGE}">미 재무부 일일 TGA 원문</a> · <a href="{FED_H41}">Fed H.4.1</a> · <a href="{NYFED_RRP}">NY Fed ON RRP</a>',
     ]
     TITLE.write_text("🇺🇸 TGA·Bill·SOMA 순유동성 — 실제 달러가 들어오나 빠지나", encoding="utf-8")

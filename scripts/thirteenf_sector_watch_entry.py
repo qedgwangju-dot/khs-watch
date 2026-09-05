@@ -86,39 +86,9 @@ FX_BASIS = None
 
 
 def _fetch_usdkrw():
-    try:
-        req = urllib.request.Request(
-            "https://open.er-api.com/v6/latest/USD",
-            headers={"User-Agent": "KHS-13F-Telegram/1.0"},
-        )
-        with urllib.request.urlopen(req, timeout=12) as r:
-            data = json.load(r)
-        rate = float(data["rates"]["KRW"])
-        updated = data.get("time_last_update_utc") or data.get("time_next_update_utc") or "조회 시점"
-        if rate > 0:
-            return rate, f"공개 USD/KRW 환율 · {updated}"
-    except Exception as e:
-        print(f"WARN live USD/KRW lookup failed: {e}")
-
-    try:
-        req = urllib.request.Request(
-            "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXKOUS",
-            headers={"User-Agent": "KHS-13F-Telegram/1.0"},
-        )
-        with urllib.request.urlopen(req, timeout=15) as r:
-            text = r.read().decode("utf-8", errors="replace")
-        for line in reversed(text.strip().splitlines()[1:]):
-            parts = line.split(",")
-            if len(parts) >= 2 and parts[1] not in {"", "."}:
-                rate = float(parts[1])
-                if rate > 0:
-                    return rate, f"연준 H.10/FRED DEXKOUS · {parts[0]}"
-    except Exception as e:
-        print(f"WARN FRED USD/KRW lookup failed: {e}")
-
-    fallback = float(os.environ.get("USD_KRW_FALLBACK", "1393.24"))
-    today = dt.datetime.now(dt.timezone.utc).date().isoformat()
-    return fallback, f"대체 기준환율 · {today}"
+    from fx_api import daily_krw
+    q = daily_krw()
+    return q.rate, q.basis
 
 
 def ensure_fx():

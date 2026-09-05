@@ -518,15 +518,13 @@ def choose_verified_events(fresh_unseen: list[dict], raw_events: list[dict], see
     return sorted(chosen.values(), key=lambda x: x.get("published_at_kst") or ""), errors
 
 
-def fetch_fx() -> dict:
-    result = {"rate": None, "date": "", "error": ""}
+def fetch_fx():
+    from fx_api import daily_krw
     try:
-        obj = json.loads(fetch(FX_URL).decode("utf-8"))
-        result["rate"] = float(obj.get("rate"))
-        result["date"] = str(obj.get("date") or "")
-    except Exception as e:
-        result["error"] = f"USD/KRW 조회 실패: {type(e).__name__}: {e}"
-    return result
+        q = daily_krw()
+        return {"rate": q.rate, "date": q.basis, "source": q.source, "error": ""}
+    except RuntimeError as exc:
+        return {"rate": None, "date": "", "source": "환율 API", "error": str(exc)}
 
 
 def load_state() -> tuple[dict, bool]:

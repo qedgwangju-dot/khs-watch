@@ -157,16 +157,10 @@ def parse_bucket_maxima(text: str) -> dict[str, list[float]]:
     return out
 
 
-def latest_fx() -> tuple[float, str]:
-    try:
-        text = fetch_bytes(FRED_FX).decode("utf-8", errors="replace")
-        rows = [line.strip().split(",") for line in text.splitlines()[1:] if "," in line]
-        for date, value, *_ in reversed(rows):
-            if value and value != ".":
-                return float(value), date
-    except Exception:
-        pass
-    return 1392.0, "fallback"
+def latest_fx():
+    from fx_api import daily_krw
+    q = daily_krw()
+    return q.rate, q.basis
 
 
 def fmt_krw(usd_bn: float, fx: float) -> str:
@@ -399,7 +393,7 @@ def build_common_body(
             "• 10년·30년 명목금리·실질금리가 실제로 내려오는지",
             "• 다음 QRA에서 바이백 규모와 이표채 발행 가이던스가 어떻게 바뀌는지",
             "",
-            f"환율 기준: FRED DEXKOUS {fx_date}, 1달러={fx:,.1f}원",
+            f"환율 기준: {fx_date}, 1달러={fx:,.1f}원",
             (
                 f'<a href="{source_url}">미 재무부 공식 발표</a> · '
                 f'<a href="{BUYBACK_PAGE}">바이백 공지·결과</a> · '
