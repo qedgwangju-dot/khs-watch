@@ -64,8 +64,9 @@ def _format_krw(amount_krw):
     return f"약 {eok:,}억원"
 
 
-def _format_usd_billion(amount_usd):
-    return f"{amount_usd / 1_000_000_000:.0f}억달러"
+def _format_usd_eok(amount_usd):
+    # 1억달러 = 100,000,000달러. 예: 300억달러 = 30 billion USD.
+    return f"{amount_usd / 100_000_000:.0f}억달러"
 
 
 def _ny_cost_lines():
@@ -76,14 +77,14 @@ def _ny_cost_lines():
 
     if rate:
         initial = (
-            f"{_format_usd_billion(low_usd)}~{_format_usd_billion(high_usd)} "
+            f"{_format_usd_eok(low_usd)}~{_format_usd_eok(high_usd)} "
             f"≈ {_format_krw(low_usd * rate)}~{_format_krw(high_usd * rate).replace('약 ', '')}"
         )
-        mature = f"{_format_usd_billion(noak_usd)} ≈ {_format_krw(noak_usd * rate)}"
+        mature = f"{_format_usd_eok(noak_usd)} ≈ {_format_krw(noak_usd * rate)}"
         fx_note = f"환율 {rate:,.2f}원/달러 · {source}"
     else:
-        initial = f"{_format_usd_billion(low_usd)}~{_format_usd_billion(high_usd)}"
-        mature = _format_usd_billion(noak_usd)
+        initial = f"{_format_usd_eok(low_usd)}~{_format_usd_eok(high_usd)}"
+        mature = _format_usd_eok(noak_usd)
         fx_note = "환율 API 일시 실패로 원화 환산 보류"
     return initial, mature, fx_note
 
