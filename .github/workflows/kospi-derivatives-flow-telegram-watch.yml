@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/kospi-derivatives-flow-telegram-watch.yml"
+      - "scripts/kospi_derivatives_flow_watch.py"
   schedule:
     - cron: "*/5 4-6 * * 1-5"
   workflow_dispatch:
@@ -83,18 +84,30 @@ jobs:
         if: (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[telegram-test]'))
         run: |
           cat > out/kospi_derivatives_flow_connection_test.html <<'EOF'
-          ✅ <b>코스피 파생·수급 이상변동 경보 연결 정상</b>
+          ✅ <b>코스피 파생·수급 경보 연결 정상</b>
+          <code>가독성 개편 적용 테스트</code>
 
-          • 송출 봇: @khs887900887900008879_bot
-          • 감시 시간: 평일 13:45~15:25 KST
-          • 조회 주기: 5분
-          • 1차 경보: KOSPI 10분 -1.50% 이하 또는 최근 15분 고점 대비 -2.00% 이하
-          • 되돌림 경보: 급락 구간 저점 대비 +1.20% 이상 회복
-          • 월·목 KOSPI200 파생 만기 여부를 별도로 표시
-          • 둘째 목요일은 위클리옵션이 아니라 정규 월물 만기로 표시
-          • 불법 시세조종·업틱룰 예외 공매도를 자동으로 원인 확정하지 않음
-          • 실시간 시세는 네이버페이 증권 지수 폴링, 규정·공매도 확인은 KRX 공식 링크 제공
+          <b>감시 상태</b>
+          • 송출 봇: <b>@khs887900887900008879_bot</b>
+          • 감시 시간: <b>평일 13:45~15:25 KST</b>
+          • 조회 주기: <b>5분</b>
+
+          <b>급락 경보 기준</b>
+          • KOSPI 10분 변화 <b>-1.50% 이하</b>
+          • 또는 최근 15분 고점 대비 <b>-2.00% 이하</b>
+
+          <b>되돌림 경보 기준</b>
+          • 급락 구간 저점 대비 <b>+1.20% 이상 회복</b>
           • 같은 급락 구간은 중복 발송하지 않음
+
+          <b>파생 일정 판정</b>
+          • 월·목 KOSPI200 파생 만기 여부를 별도로 표시
+          • 둘째 목요일은 <b>정규 월물 만기</b>로 표시하고 위클리옵션 미상장 구분
+
+          <b>해석 원칙</b>
+          • 불법 시세조종·업틱룰 예외 공매도를 자동으로 원인 확정하지 않음
+          • 급락 숫자 → 파생 일정 → 뉴스·수급 확인 순서로 판정
+          • 실시간 시세는 네이버페이 증권, 규정·공매도 확인은 KRX 공식 자료 사용
           EOF
 
       - name: Send Telegram messages
