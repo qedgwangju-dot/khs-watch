@@ -42,6 +42,20 @@
         "net_assets": 26196271430.0,
         "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
         "flow_usd": 351224000.0
+      },
+      {
+        "ticker": "SHY",
+        "label": "1~3년",
+        "date": "2026-09-04",
+        "nav_date": "2026-09-04",
+        "shares_date": "2026-09-04",
+        "nav": 81.66,
+        "shares": 321500000.0,
+        "sec_yield": 4.14,
+        "nav_change_pct": null,
+        "net_assets": 26252477328.0,
+        "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
+        "flow_usd": 65328000.0
       }
     ],
     "IEF": [
@@ -86,6 +100,20 @@
         "net_assets": 42098326767.0,
         "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
         "flow_usd": 479752000.0
+      },
+      {
+        "ticker": "IEF",
+        "label": "7~10년",
+        "date": "2026-09-04",
+        "nav_date": "2026-09-04",
+        "shares_date": "2026-09-04",
+        "nav": 92.2,
+        "shares": 454900000.0,
+        "sec_yield": 4.58,
+        "nav_change_pct": null,
+        "net_assets": 41943399067.0,
+        "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
+        "flow_usd": -129080000.0
       }
     ],
     "TLT": [
@@ -130,16 +158,30 @@
         "net_assets": 47033552336.0,
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
         "flow_usd": 237916000.00000003
+      },
+      {
+        "ticker": "TLT",
+        "label": "20년 이상",
+        "date": "2026-09-04",
+        "nav_date": "2026-09-04",
+        "shares_date": "2026-09-04",
+        "nav": 82.17,
+        "shares": 572600000.0,
+        "sec_yield": 5.17,
+        "nav_change_pct": null,
+        "net_assets": 47049613946.0,
+        "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
+        "flow_usd": -57519000.0
       }
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-09-05T10:13:07+09:00",
+    "at_kst": "2026-09-05T16:02:23+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      89
+      90
     ],
-    "classification": "혼조·방향 확인 대기",
+    "classification": "단기채 피신·방어적",
     "curve_regime": "베어 플래트닝",
     "treasury_date": "2026-09-04",
     "format": "directional-curve-readable-v2"
