@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/crypto-liquidity-watch-telegram.yml"
       - "scripts/crypto_liquidity_watch.py"
+      - "scripts/crypto_liquidity_watch_runner.py"
       - "scripts/crypto_alert_krw.py"
       - "scripts/crypto_alert_format.py"
       - "data/crypto_liquidity_watch_state.json"
@@ -25,7 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88790088790000_bot"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -43,14 +45,15 @@ jobs:
       - name: Validate watcher
         run: |
           python -m py_compile scripts/crypto_liquidity_watch.py
+          python -m py_compile scripts/crypto_liquidity_watch_runner.py
           python -m py_compile scripts/crypto_alert_krw.py
           python -m py_compile scripts/crypto_alert_format.py
 
       - name: Validate exact Telegram bot route without sending
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
-          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import json
@@ -61,7 +64,7 @@ jobs:
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
-              raise RuntimeError("YEN_CARRY_TELEGRAM_BOT_TOKEN secret is missing")
+              raise RuntimeError("TELEGRAM_BOT_TOKEN secret is missing")
           if not chat_id:
               raise RuntimeError("Telegram chat id is missing")
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
@@ -73,7 +76,7 @@ jobs:
           PY
 
       - name: Check Treasury buybacks, long yields and BTC ETF flows
-        run: python scripts/crypto_liquidity_watch.py
+        run: PYTHONPATH=. python scripts/crypto_liquidity_watch_runner.py
 
       - name: Verify KRW conversion source
         run: |
@@ -116,9 +119,9 @@ jobs:
       - name: Send meaningful change to Telegram
         if: hashFiles('out/crypto_liquidity_watch_telegram.txt') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
-          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
