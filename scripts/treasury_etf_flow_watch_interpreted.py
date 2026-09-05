@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import datetime as dt
+import html
 import json
 import re
 import urllib.parse
@@ -167,6 +168,20 @@ def flow_classification(results, curve):
     return "혼조·방향 확인 대기", "SHY·IEF·TLT 자금이 아직 한 방향으로 정렬되지 않음"
 
 
+def _format_telegram_html(chunk):
+    """Escape the message safely, then bold the user's fixed high-signal lines."""
+    formatted = []
+    for line in chunk.splitlines():
+        escaped = html.escape(line, quote=False)
+        bold = (
+            line == "[오늘의 결론]"
+            or line.startswith("ETF 자금 방향:")
+            or line.startswith("• 현재 형태:")
+        )
+        formatted.append(f"<b>{escaped}</b>" if bold else escaped)
+    return "\n".join(formatted)
+
+
 def send_exact(text):
     token = (base.os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
     chat_id = (base.os.getenv("TELEGRAM_CHAT_ID") or "").strip()
@@ -191,7 +206,13 @@ def send_exact(text):
         chunks.append(current)
     ids = []
     for chunk in chunks:
-        payload = urllib.parse.urlencode({"chat_id": chat_id, "text": chunk, "disable_web_page_preview": "true"}).encode()
+        formatted_chunk = _format_telegram_html(chunk)
+        payload = urllib.parse.urlencode({
+            "chat_id": chat_id,
+            "text": formatted_chunk,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": "true",
+        }).encode()
         req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
         with urllib.request.urlopen(req, timeout=25) as r:
             result = json.loads(r.read().decode("utf-8"))
@@ -301,7 +322,7 @@ def main():
         "classification": flow_head,
         "curve_regime": regime,
         "treasury_date": curve["date"],
-        "format": "directional-curve-readable-v2",
+        "format": "directional-curve-readable-v3-bold-key-lines",
     }
     base.save_state(state)
     print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={ids} flow={flow_head} curve={regime}")
