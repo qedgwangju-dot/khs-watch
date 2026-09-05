@@ -70,8 +70,8 @@ _RADIANT_SLUG_TITLES = {
 }
 
 _SPECIAL_KO_TITLES = {
-    "new york’s big new bet on nuclear energy": "뉴욕, 신규 원전 5GW 목표…NYPA 공공금융·지역 표준화로 반복 건설 비용 절감 추진",
-    "new york's big new bet on nuclear energy": "뉴욕, 신규 원전 5GW 목표…NYPA 공공금융·지역 표준화로 반복 건설 비용 절감 추진",
+    "new york’s big new bet on nuclear energy": "뉴욕, 신규 원전 5GW 추진",
+    "new york's big new bet on nuclear energy": "뉴욕, 신규 원전 5GW 추진",
 }
 
 _SPECIAL_MACRO_SUMMARY = {
@@ -377,8 +377,49 @@ def _macro_summary(event) -> str:
     return _SPECIAL_MACRO_SUMMARY.get(slug, "")
 
 
+def _display_source(source: str) -> str:
+    if source == "Canary Media 원전 정책·금융":
+        return "Canary Media"
+    return source
+
+
+def _macro_highlights(event):
+    slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
+    if slug == "new-york-big-new-bet-on-nuclear-energy":
+        return [
+            ("신규 원전 목표", "5GW"),
+            ("NYPA 역할", "최소 1GW 우선 개발"),
+            ("설계 표준화", "Ontario와 1~2개 원자로 설계"),
+            ("지역 협력", "뉴잉글랜드 6개주까지 확대"),
+        ]
+    core = _macro_summary(event)
+    return [("핵심 변화", core)] if core else []
+
+
+def _bottleneck_lines(event):
+    if event.get("kind") == "macro_nuclear":
+        return [
+            "기술보다 금융·비용회수 구조가 우선 병목",
+            "NYISO 경쟁 전력시장에서는 민간이 장기 건설비 위험을 감당하기 어려움",
+            "NYPA의 공공금융·개발 역할이 실제 착공 가능성을 좌우",
+        ]
+    return []
+
+
+def _next_check(event, category: str) -> str:
+    if event.get("kind") == "macro_nuclear":
+        return "부지 선정 · 노형 선정 · 금융 구조 · 인허가 · 설계·조달·시공(EPC)·기자재 발주"
+    return {
+        "공급망·연료": "HALEU·TRISO 확보량 · 납기 · 연료 계약 · 실제 배치 일정",
+        "기지·입지": "후속 기지 선정 · 설치 물량 · 부지 인허가",
+        "인허가·기술 일정": "승인 일정 · 임계·시험 · 상업운전 목표",
+        "계약·예산": "확정 계약금 · 업체별 물량 · 민간자금 · 매출 인식 시점",
+        "제작·배치 일정": "공장·제작 진척 · 현장 설치 · 전원 인가·운전 시점",
+    }.get(category, "후속 계약 · 일정 · 공급망 · 실제 배치 물량")
+
+
 def _render_alert_korean(events, fact_changes):
-    lines = ["<b>[원전·Janus 웹감시] 신규 변화</b>", ""]
+    lines = ["🚨 <b>[원전·Janus 웹감시]</b>", ""]
     translation_errors = []
     shown_events = 0
 
@@ -391,24 +432,39 @@ def _render_alert_korean(events, fact_changes):
         except Exception as exc:
             translation_errors.append(f"{event['source']} | {event['url']} | {exc}")
             continue
+
         cat = _event_category(event, resolved_title)
-        lines.extend(
-            [
-                f"• <b>분류:</b> {html.escape(cat)}",
-                f"• <b>출처:</b> {html.escape(event['source'])}",
-                f"• <b>새 사실:</b> {html.escape(title_ko)}",
-            ]
-        )
-        core = _macro_summary(event)
-        if core:
-            lines.append(f"• <b>핵심:</b> {html.escape(core)}")
-        lines.extend(
-            [
-                f"• <b>의미:</b> {html.escape(_event_meaning(event, cat))}",
-                f"• <a href=\"{html.escape(event['url'], quote=True)}\">원문</a>",
-                "",
-            ]
-        )
+        source = _display_source(event["source"])
+        lines.extend([
+            f"<b>{html.escape(title_ko)}</b>",
+            f"<code>{html.escape(cat)} | {html.escape(source)}</code>",
+            "",
+        ])
+
+        highlights = _macro_highlights(event)
+        if highlights:
+            lines.append("<b>한눈에 보기</b>")
+            for label, value in highlights:
+                lines.append(f"• {html.escape(label)}: <b>{html.escape(value)}</b>")
+            lines.append("")
+
+        bottlenecks = _bottleneck_lines(event)
+        if bottlenecks:
+            lines.append("<b>핵심 병목</b>")
+            for value in bottlenecks:
+                lines.append(f"• {html.escape(value)}")
+            lines.append("")
+
+        lines.extend([
+            "<b>왜 중요한가</b>",
+            f"• {html.escape(_event_meaning(event, cat))}",
+            "",
+            "<b>다음 확인</b>",
+            f"• {html.escape(_next_check(event, cat))}",
+            "",
+            f"<a href=\"{html.escape(event['url'], quote=True)}\">원문 보기</a>",
+            "",
+        ])
         shown_events += 1
 
     shown_facts = 0
@@ -418,15 +474,16 @@ def _render_alert_korean(events, fact_changes):
         except Exception as exc:
             translation_errors.append(f"{fc['source']} | {fc['url']} | {exc}")
             continue
-        lines.extend(
-            [
-                "• <b>분류:</b> 공식 핵심 수치·당사자 변경",
-                f"• <b>출처:</b> {html.escape(fc['source'])}",
-                f"• <b>변경:</b> {html.escape(summary_ko)}",
-                f"• <a href=\"{html.escape(fc['url'], quote=True)}\">원문</a>",
-                "",
-            ]
-        )
+        lines.extend([
+            "<b>공식 핵심 수치·당사자 변경</b>",
+            f"<code>{html.escape(_display_source(fc['source']))}</code>",
+            "",
+            "<b>변경 내용</b>",
+            f"• {html.escape(summary_ko)}",
+            "",
+            f"<a href=\"{html.escape(fc['url'], quote=True)}\">원문 보기</a>",
+            "",
+        ])
         shown_facts += 1
 
     for err in translation_errors:
