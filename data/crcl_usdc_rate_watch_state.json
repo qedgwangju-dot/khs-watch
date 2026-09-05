@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-05T13:23:25+09:00",
+  "updated_at_kst": "2026-09-05T15:45:20+09:00",
   "circle": {
     "date": "2026-09-03",
     "circulation_usd_b": 74.3,
@@ -27,14 +27,14 @@
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-09-03",
-    "three_month": 3.89,
-    "ten_year": 4.77,
-    "prev_date": "2026-09-02",
-    "prev_three_month": 3.92,
-    "prev_ten_year": 4.79,
-    "daily_3m_bp": -3.0,
-    "daily_10y_bp": -2.0,
+    "date": "2026-09-04",
+    "three_month": 3.91,
+    "ten_year": 4.78,
+    "prev_date": "2026-09-03",
+    "prev_three_month": 3.89,
+    "prev_ten_year": 4.77,
+    "daily_3m_bp": 2.0,
+    "daily_10y_bp": 1.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
@@ -59,6 +59,6 @@
     "crosscheck": "Yahoo Finance 1,355.41원, 차이 0.29%"
   },
   "errors": [
-    "fx: USD/KRW 환율을 확인하지 못해 원화 환산을 중단함"
+    "fx: USD/KRW 환율을 확인하지 못함"
   ]
 }
