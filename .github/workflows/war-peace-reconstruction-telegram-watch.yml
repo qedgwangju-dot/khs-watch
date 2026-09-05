@@ -25,6 +25,7 @@ on:
       - "scripts/war_peace_reconstruction_watch_live.py"
       - "scripts/war_peace_reconstruction_watch_precise.py"
       - "scripts/war_peace_reconstruction_watch_breaking.py"
+      - "scripts/war_peace_reconstruction_watch_flashwire.py"
 
 permissions:
   contents: write
@@ -58,13 +59,14 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch_live.py
           python -m py_compile scripts/war_peace_reconstruction_watch_precise.py
           python -m py_compile scripts/war_peace_reconstruction_watch_breaking.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_flashwire.py
 
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch_breaking.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_flashwire.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch_breaking.py
+            python scripts/war_peace_reconstruction_watch_flashwire.py
           fi
 
       - name: Publish status summary
@@ -139,7 +141,7 @@ jobs:
 
       - name: Finalize state after confirmed delivery
         if: success() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch_breaking.py --finalize
+        run: python scripts/war_peace_reconstruction_watch_flashwire.py --finalize
 
       - name: Commit confirmed alert state
         if: success() && github.event_name != 'pull_request' && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
