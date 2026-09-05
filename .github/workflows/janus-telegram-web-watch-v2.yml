@@ -7,6 +7,7 @@ on:
       - ".github/workflows/janus-telegram-web-watch-v2.yml"
       - "scripts/janus_watch.py"
       - "scripts/janus_watch_v2.py"
+      - "scripts/janus_watch_v3.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -72,12 +73,13 @@ jobs:
 
       - name: Validate Janus watcher
         run: |
-          python -m py_compile scripts/janus_watch.py scripts/janus_watch_v2.py
-          python scripts/janus_watch_v2.py --mode self-test
+          python -m py_compile scripts/janus_watch.py scripts/janus_watch_v2.py scripts/janus_watch_v3.py
+          python scripts/janus_watch_v3.py --mode self-test
           python - <<'PY'
           import sys
           sys.path.insert(0, 'scripts')
           import janus_watch_v2 as j
+          import janus_watch_v3 as j3
           if not j._is_bad_title("Error 500 (Server Error). Please try again later."):
               raise RuntimeError('Server-error title filter is not working')
           sample='U.S. Army selects Fort Drum for Janus Program microreactor deployment'
@@ -87,11 +89,15 @@ jobs:
               raise RuntimeError('English descriptive words remained in Korean translation test')
           if not any('가' <= ch <= '힣' for ch in translated):
               raise RuntimeError('Korean translation was not produced')
+          initial, mature, fx_note=j3._ny_cost_lines()
+          print('ny_5gw_cost_test=', initial, '|', mature, '|', fx_note)
+          if '달러' not in initial or '달러' not in mature:
+              raise RuntimeError('New York 5GW cost estimate was not generated')
           PY
 
       - name: Check Janus web sources
         run: |
-          python scripts/janus_watch_v2.py --mode check
+          python scripts/janus_watch_v3.py --mode check
           cat out/janus_status_v2.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/janus_errors_v2.log ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
@@ -132,8 +138,9 @@ jobs:
 
           • 수신 봇: @hs8879887988798879_bot
           • 확인 주기: 15분
-          • 감시: 미 육군·미 에너지부 공식 Janus 원자로 실증 자료 + 5개 선정업체 공식 뉴스
-          • 핵심 조건: 계약·예산, 2028 일정, 육군 규제·시험, HALEU·TRISO 연료, 제작·배치, 후속 기지·업체 추가
+          • 감시: 미 육군·미 에너지부 공식 Janus 원자로 실증 자료 + 5개 선정업체 공식 뉴스 + 원전 정책·금융·대형 설비투자
+          • 핵심 조건: 계약·예산, 2028 일정, 육군 규제·시험, HALEU·TRISO 연료, 제작·배치, 후속 기지·업체 추가, 신규 원전 GW 목표·금융·입지·표준화
+          • GW·MW 등 물량이 나오면 공식·신뢰 벤치마크 단가를 적용해 총비용을 계산하고 USD/KRW 환율 API로 원화 환산
           • 영어 기사·발표 제목은 일반 설명어를 한국어로 번역하고 회사명·제품명·약어만 식별을 위해 원문 유지
           • 서버 오류·접근 오류 문구는 신규 사실로 취급하지 않고 송출 차단
           • 번역 실패 시 영어 원문을 그대로 보내지 않고 해당 항목 송출을 보류한 뒤 재검증
