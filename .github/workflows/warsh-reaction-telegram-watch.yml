@@ -15,6 +15,7 @@ on:
       - 'scripts/sitecustomize.py'
       - 'scripts/warsh_reaction_watch.py'
       - 'scripts/warsh_reaction_watch_v2.py'
+      - 'scripts/warsh_reaction_watch_v3.py'
       - 'scripts/warsh_speech_watch.py'
       - 'scripts/warsh_market_watch.py'
       - 'scripts/warsh_ai_taskforce_watch.py'
@@ -71,7 +72,7 @@ jobs:
           assert '종합 PCE' in decoded and '연준(Fed)' in decoded and '미 재무부(Treasury)' in decoded and '2년물' in decoded, decoded
           print('한글 알림 표기 가드 정상')
           PY
-          python scripts/warsh_reaction_watch_v2.py
+          python scripts/warsh_reaction_watch_v3.py
           python scripts/warsh_speech_watch.py
           python scripts/warsh_market_watch.py
           python scripts/warsh_ai_taskforce_watch.py
