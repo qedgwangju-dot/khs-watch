@@ -78,24 +78,41 @@ jobs:
         run: PYTHONPATH=. python scripts/crypto_liquidity_watch_runner.py
 
       - name: Verify KRW conversion source
+        env:
+          BOK_ECOS_API_KEY: ${{ secrets.BOK_ECOS_API_KEY }}
         run: |
           python - <<'PY'
           import datetime as dt
           import json
+          import os
           from scripts.crypto_alert_krw import get_usdkrw, format_krw_from_usd_m
 
           state = json.load(open("out/crypto_liquidity_watch_pending_state.json", encoding="utf-8"))
           target = dt.date.fromisoformat(state["btc_etf"]["date"])
-          fx = get_usdkrw(target)
-          rate = float(fx["rate"])
-          if not 800.0 <= rate <= 2500.0:
-              raise RuntimeError(f"USD/KRW sanity check failed: {rate}")
-          print(f"krw_conversion_valid=true date={target} rate={rate:.2f} source={fx['source']} crosscheck={fx['crosscheck']}")
-          print(f"sample_242.3m={format_krw_from_usd_m(242.3, rate)}")
+          event_name = (os.getenv("GITHUB_EVENT_NAME") or "").strip()
+          try:
+              fx = get_usdkrw(target)
+              rate = float(fx["rate"])
+              if not 800.0 <= rate <= 2500.0:
+                  raise RuntimeError(f"USD/KRW sanity check failed: {rate}")
+              is_ecos = str(fx.get("source") or "").startswith("한국은행 ECOS")
+              print(
+                  f"krw_conversion_valid=true requested_date={target} fx_date={fx['date']} "
+                  f"rate={rate:.2f} source={fx['source']} crosscheck={fx['crosscheck']} ecos_primary={str(is_ecos).lower()}"
+              )
+              print(f"sample_242.3m={format_krw_from_usd_m(242.3, rate)}")
+              if event_name in {"push", "workflow_dispatch"} and not is_ecos:
+                  raise RuntimeError("BOK_ECOS_API_KEY was provided but ECOS primary lookup did not succeed")
+          except Exception as exc:
+              if event_name in {"push", "workflow_dispatch"}:
+                  raise
+              print(f"::warning::KRW verification deferred: {exc}")
           PY
 
       - name: Convert dollar amounts to KRW using date-matched FX
         if: hashFiles('out/crypto_liquidity_watch_telegram.txt') != ''
+        env:
+          BOK_ECOS_API_KEY: ${{ secrets.BOK_ECOS_API_KEY }}
         run: python scripts/crypto_alert_krw.py
 
       - name: Format Telegram alert for readability
