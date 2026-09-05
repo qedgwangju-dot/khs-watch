@@ -7,6 +7,7 @@ on:
       - "scripts/crcl_usdc_rate_watch.py"
       - "scripts/crcl_usdc_rate_watch_runner.py"
       - "scripts/crcl_tbx_alert_format.py"
+      - "scripts/crcl_directional_summary.py"
       - "scripts/crypto_alert_krw.py"
       - "data/crcl_usdc_rate_watch_state.json"
   schedule:
@@ -47,6 +48,7 @@ jobs:
           python -m py_compile scripts/crcl_usdc_rate_watch.py
           python -m py_compile scripts/crcl_usdc_rate_watch_runner.py
           python -m py_compile scripts/crcl_tbx_alert_format.py
+          python -m py_compile scripts/crcl_directional_summary.py
           python -m py_compile scripts/crypto_alert_krw.py
 
       - name: Validate exact Telegram bot route without sending
@@ -78,6 +80,10 @@ jobs:
       - name: Add readable TBX to CRCL interpretation
         if: hashFiles('out/crcl_usdc_rate_watch_telegram.txt') != ''
         run: python scripts/crcl_tbx_alert_format.py
+
+      - name: Make CRCL direction explicit
+        if: hashFiles('out/crcl_usdc_rate_watch_telegram.txt') != ''
+        run: python scripts/crcl_directional_summary.py
 
       - name: Publish watcher summary
         if: always()
