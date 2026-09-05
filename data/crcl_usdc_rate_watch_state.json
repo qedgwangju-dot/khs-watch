@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-05T15:45:20+09:00",
+  "updated_at_kst": "2026-09-05T16:44:39+09:00",
   "circle": {
     "date": "2026-09-03",
     "circulation_usd_b": 74.3,
@@ -9,13 +9,7 @@
     "date": "2026-09-04",
     "sec_yield_7d": 3.61,
     "fund_size_usd_m": 62317.4,
-    "fund_size_date": "2026-09-04",
-    "_previous_distinct": {
-      "date": "2026-09-03",
-      "sec_yield_7d": 3.62,
-      "fund_size_usd_m": 62317.4,
-      "fund_size_date": "2026-09-03"
-    }
+    "fund_size_date": "2026-09-04"
   },
   "sofr": {
     "date": "2026-09-03",
@@ -52,13 +46,13 @@
     "daily_pct": 0.21
   },
   "fx": {
-    "rate": 1359.3,
-    "date": "2026-09-03",
-    "source": "한국은행 일일 금융시장 주요지표",
-    "source_url": "https://www.bok.or.kr/portal/bbs/P0002018/view.do?nttId=11064470&oldMenuNo=201150&menuNo=200366&programType=newsData&depth=200366&relate=Y",
-    "crosscheck": "Yahoo Finance 1,355.41원, 차이 0.29%"
+    "rate": 1359.5,
+    "date": "2026-09-04",
+    "requested_date": "2026-09-04",
+    "source": "한국은행 ECOS 원/미국달러(매매기준율)",
+    "source_url": "https://ecos.bok.or.kr/",
+    "official": true,
+    "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
-  "errors": [
-    "fx: USD/KRW 환율을 확인하지 못함"
-  ]
+  "errors": []
 }
