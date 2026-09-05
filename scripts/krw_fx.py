@@ -88,8 +88,10 @@ def latest_jpy_krw() -> JpyKrwQuote:
     day = common[-1]
     usdkrw = krw[day]
     usdjpy = jpy[day]
-    if usdkrw <= 0 or usdjpy <= 0:
-        raise RuntimeError("invalid FRED FX observation")
+    from fx_api import _validate
+    now = dt.datetime.now(dt.timezone.utc)
+    usdkrw, day = _validate(usdkrw, day, now)
+    usdjpy, _ = _validate(usdjpy, day, now)
     return JpyKrwQuote(day, usdkrw, usdjpy, usdkrw / usdjpy)
 
 

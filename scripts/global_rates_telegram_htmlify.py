@@ -88,8 +88,11 @@ def krw_per_100_yen() -> tuple[str, float, float, float] | None:
         day = common[-1]
         usdkrw = krw[day]
         usdjpy = jpy[day]
-        if usdjpy <= 0:
-            return None
+        from fx_api import _validate, UTC
+        import datetime as fx_dt
+        now = fx_dt.datetime.now(UTC)
+        usdkrw, day = _validate(usdkrw, day, now)
+        usdjpy, _ = _validate(usdjpy, day, now)
         return day, usdkrw, usdjpy, 100.0 * usdkrw / usdjpy
     except Exception:
         return None

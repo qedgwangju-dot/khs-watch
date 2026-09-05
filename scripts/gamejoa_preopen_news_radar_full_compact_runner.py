@@ -1860,10 +1860,25 @@ def collect_fx_snapshot(alerts: list[dict], now) -> dict:
         for amount in extract_foreign_amounts(source_text):
             if amount["code"] not in codes:
                 codes.append(amount["code"])
-    rates = {code: fetch_yahoo_krw_rate(code, now) for code in codes}
-    missing = [code for code, item in rates.items() if item.get("value") is None]
-    for code, fallback in fetch_frankfurter_krw_rates(missing, now).items():
-        rates[code] = fallback
+    from fx_api import daily_krw
+    rates = {}
+    for code in codes:
+        try:
+            q = daily_krw(code, now=now)
+            rates[code] = {
+                "code": code, "value": q.rate, "status": "일일 기준",
+                "reference_time_kst": q.date + " 일일 기준(장중값 아님)",
+                "query_time_kst": q.fetched_at, "source": q.source,
+                "url": "https://www.exchangerate-api.com" if "ExchangeRate" in q.source else "https://frankfurter.dev/",
+                "error": "", "crosscheck": q.check,
+            }
+        except Exception as exc:
+            rates[code] = {
+                "code": code, "value": None, "status": "확인 불가",
+                "reference_time_kst": None, "query_time_kst": now.isoformat(timespec="seconds"),
+                "source": "환율 API", "url": "https://frankfurter.dev/",
+                "error": type(exc).__name__,
+            }
     return {
         "query_time_kst": now.isoformat(timespec="seconds"),
         "rates": rates,

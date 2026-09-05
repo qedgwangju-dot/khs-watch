@@ -219,49 +219,20 @@ def get_usdkrw(target: dt.date) -> dict:
             crosscheck = "Yahoo Finance 교차검증 접근 불가"
         return {**ecos, "crosscheck": crosscheck}
 
-    bok = None
-    yahoo = None
     try:
-        bok = bok_usdkrw(target)
-    except Exception:
-        bok = None
-    try:
-        yahoo = yahoo_usdkrw(target)
-    except Exception:
-        yahoo = None
-
-    if bok and yahoo:
-        gap_pct = abs(bok[0] - yahoo[0]) / bok[0] * 100
-        return {
-            "rate": bok[0],
-            "date": target.isoformat(),
-            "requested_date": target.isoformat(),
-            "source": "한국은행 일일 금융시장 주요지표(ECOS 자동조회 실패 시 보조)",
-            "source_url": bok[1],
-            "crosscheck": f"Yahoo Finance {yahoo[0]:,.2f}원, 차이 {gap_pct:.2f}%",
-            "official": True,
-        }
-    if bok:
-        return {
-            "rate": bok[0],
-            "date": target.isoformat(),
-            "requested_date": target.isoformat(),
-            "source": "한국은행 일일 금융시장 주요지표(ECOS 자동조회 실패 시 보조)",
-            "source_url": bok[1],
-            "crosscheck": "Yahoo Finance 교차검증 접근 불가",
-            "official": True,
-        }
-    if yahoo:
-        return {
-            "rate": yahoo[0],
-            "date": target.isoformat(),
-            "requested_date": target.isoformat(),
-            "source": "Yahoo Finance USD/KRW 일일 종가(한국은행 공식값 자동조회 실패 시 보조)",
-            "source_url": yahoo[1],
-            "crosscheck": "한국은행 공식값 자동조회 실패",
-            "official": False,
-        }
-    raise RuntimeError("USD/KRW 환율을 확인하지 못함")
+        from .fx_api import historical_krw
+    except ImportError:
+        from fx_api import historical_krw
+    q = historical_krw("USD", target)
+    return {
+        "rate": q.rate,
+        "date": q.date,
+        "requested_date": target.isoformat(),
+        "source": q.source + " 일일 기준환율",
+        "source_url": "https://api.frankfurter.dev/v2/rates?base=USD&quotes=KRW&providers=ECB&date=" + q.date,
+        "crosscheck": q.check,
+        "official": True,
+    }
 
 
 def format_krw_from_usd_m(value_usd_m: float, rate: float) -> str:

@@ -43,4 +43,24 @@ class FxTest(unittest.TestCase):
         payload=self.er();payload['time_last_update_unix']=int(self.now.timestamp())+1
         with patch.object(fx,'_json',side_effect=[OSError(),payload]):
             with self.assertRaises(RuntimeError):fx.daily_krw(now=self.now)
+    def test_different_date_extreme_gap_blocks(self):
+        with patch.object(fx,'_json',side_effect=[self.row(),self.er(1600)]):
+            with self.assertRaises(RuntimeError):fx.daily_krw(now=self.now)
+    def test_historical_uses_actual_previous_business_date(self):
+        rows=self.row(date='2026-08-28')+self.row(1410,date='2026-08-31')
+        with patch.object(fx,'_json',return_value=rows) as api:
+            q=fx.historical_krw('USD',dt.date(2026,8,30),now=self.now)
+            self.assertEqual(q.date,'2026-08-28')
+            self.assertEqual(q.rate,1400)
+            self.assertIn('to=2026-08-30',api.call_args.args[0])
+    def test_historical_rejects_missing_stale_or_nonfinite(self):
+        for rows in [[],self.row(date='2026-08-01'),self.row(float('inf'),date='2026-08-28')]:
+            with patch.object(fx,'_json',return_value=rows):
+                with self.assertRaises(RuntimeError):
+                    fx.historical_krw('USD',dt.date(2026,8,30),now=self.now)
+    def test_historical_rejects_future_request_without_network(self):
+        with patch.object(fx,'_json') as api:
+            with self.assertRaises(ValueError):
+                fx.historical_krw('USD',dt.date(2026,9,6),now=self.now)
+            api.assert_not_called()
 if __name__=='__main__':unittest.main()

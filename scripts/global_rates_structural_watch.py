@@ -365,8 +365,11 @@ def latest_common_fx() -> dict[str, Any] | None:
         day = common[-1]
         usdkrw = krw[day]
         usdjpy = jpy[day]
-        if usdjpy <= 0:
-            return None
+        from fx_api import _validate, UTC
+        import datetime as fx_dt
+        now = fx_dt.datetime.now(UTC)
+        usdkrw, day = _validate(usdkrw, day, now)
+        usdjpy, _ = _validate(usdjpy, day, now)
         return {"date": day, "usdkrw": usdkrw, "usdjpy": usdjpy, "yenkrw": usdkrw / usdjpy}
     except Exception:
         return None
