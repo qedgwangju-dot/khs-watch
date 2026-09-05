@@ -1,0 +1,185 @@
+name: KOSPI Derivatives Flow Telegram Watch
+
+on:
+  schedule:
+    - cron: "*/5 4-6 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "Send a one-time Telegram route test"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kospi-derivatives-flow-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests
+
+      - name: Verify exact Telegram route
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = ((os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or "").strip()
+                     or (os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip())
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("Missing GitHub Actions secret: KOSPI_DERIV_TELEGRAM_BOT_TOKEN")
+          if not chat_id:
+              raise RuntimeError("Missing Telegram chat id: set KOSPI_DERIV_TELEGRAM_CHAT_ID or GLOBAL_RATES_TELEGRAM_CHAT_ID")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{actual}")
+          PY
+
+      - name: Run KOSPI derivatives flow watcher
+        run: |
+          rm -f out/kospi_derivatives_flow_alert.html out/kospi_derivatives_flow_status.md out/kospi_derivatives_flow_errors.log out/kospi_derivatives_flow_connection_test.html
+          python -m py_compile scripts/kospi_derivatives_flow_watch.py
+          python scripts/kospi_derivatives_flow_watch.py
+          cat out/kospi_derivatives_flow_status.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -s out/kospi_derivatives_flow_errors.log ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "## 조회 오류" >> "$GITHUB_STEP_SUMMARY"
+            cat out/kospi_derivatives_flow_errors.log >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Build manual connection test
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        run: |
+          cat > out/kospi_derivatives_flow_connection_test.html <<'EOF'
+          ✅ <b>코스피 파생·수급 이상변동 경보 연결 정상</b>
+
+          • 송출 봇: @khs887900887900008879_bot
+          • 감시 시간: 평일 13:45~15:25 KST
+          • 조회 주기: 5분
+          • 1차 경보: KOSPI 10분 -1.50% 이하 또는 최근 15분 고점 대비 -2.00% 이하
+          • 되돌림 경보: 급락 구간 저점 대비 +1.20% 이상 회복
+          • 월·목 KOSPI200 파생 만기 여부를 별도로 표시
+          • 둘째 목요일은 위클리옵션이 아니라 정규 월물 만기로 표시
+          • 불법 시세조종·업틱룰 예외 공매도를 자동으로 원인 확정하지 않음
+          • 실시간 시세는 네이버페이 증권 지수 폴링, 규정·공매도 확인은 KRX 공식 링크 제공
+          • 같은 급락 구간은 중복 발송하지 않음
+          EOF
+
+      - name: Send Telegram messages
+        if: hashFiles('out/kospi_derivatives_flow_connection_test.html') != '' || hashFiles('out/kospi_derivatives_flow_alert.html') != ''
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = ((os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or "").strip()
+                     or (os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip())
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          files = [
+              pathlib.Path("out/kospi_derivatives_flow_connection_test.html"),
+              pathlib.Path("out/kospi_derivatives_flow_alert.html"),
+          ]
+          sent_ids = []
+          for path in files:
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding="utf-8").strip()
+              if not text:
+                  continue
+              chunks = []
+              while len(text) > 3800:
+                  cut = text.rfind("\n\n", 0, 3800)
+                  if cut < 1000:
+                      cut = 3800
+                  chunks.append(text[:cut].strip())
+                  text = text[cut:].strip()
+              if text:
+                  chunks.append(text)
+              for chunk in chunks:
+                  payload = urllib.parse.urlencode({
+                      "chat_id": chat_id,
+                      "text": chunk,
+                      "parse_mode": "HTML",
+                      "disable_web_page_preview": "true",
+                  }).encode("utf-8")
+                  req = urllib.request.Request(
+                      f"https://api.telegram.org/bot{token}/sendMessage",
+                      data=payload,
+                      method="POST",
+                  )
+                  with urllib.request.urlopen(req, timeout=30) as response:
+                      result = json.loads(response.read().decode("utf-8"))
+                  if not result.get("ok"):
+                      raise RuntimeError(f"Telegram rejected message: {result}")
+                  sent_ids.append(result["result"].get("message_id"))
+          print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(sent_ids)} ids={sent_ids}")
+          PY
+
+      - name: Commit intraday state
+        if: success() && hashFiles('data/kospi_derivatives_flow_state.json') != ''
+        run: |
+          git config user.name "kospi-derivatives-flow-watch[bot]"
+          git config user.email "kospi-derivatives-flow-watch[bot]@users.noreply.github.com"
+          cp data/kospi_derivatives_flow_state.json /tmp/kospi_derivatives_flow_state.json
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/kospi_derivatives_flow_state.json data/kospi_derivatives_flow_state.json
+            git add data/kospi_derivatives_flow_state.json
+            if git diff --cached --quiet; then
+              echo "KOSPI derivatives flow state unchanged"
+              exit 0
+            fi
+            git commit -m "Update KOSPI derivatives flow state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kospi-derivatives-flow-watch-${{ github.run_id }}
+          path: |
+            out/kospi_derivatives_flow_status.md
+            out/kospi_derivatives_flow_errors.log
+            out/kospi_derivatives_flow_alert.html
+            out/kospi_derivatives_flow_connection_test.html
+            data/kospi_derivatives_flow_state.json
+          if-no-files-found: ignore
+          retention-days: 14
