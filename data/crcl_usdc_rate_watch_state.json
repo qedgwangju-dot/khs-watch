@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-05T18:02:57+09:00",
+  "updated_at_kst": "2026-09-05T18:12:02+09:00",
   "circle": {
     "date": "2026-09-03",
     "circulation_usd_b": 74.3,
@@ -46,13 +46,13 @@
     "daily_pct": 0.21
   },
   "fx": {
-    "rate": 1359.5,
+    "rate": 1350.35,
     "date": "2026-09-04",
     "requested_date": "2026-09-04",
-    "source": "한국은행 ECOS 원/미국달러(매매기준율)",
-    "source_url": "https://ecos.bok.or.kr/",
-    "official": true,
-    "crosscheck": "Yahoo Finance 교차검증 접근 불가"
+    "source": "ECB/Frankfurter 일일 기준환율",
+    "source_url": "https://api.frankfurter.dev/v2/rates?base=USD&quotes=KRW&providers=ECB&date=2026-09-04",
+    "crosscheck": "단일 공식 API · 독립 교차검증 미완료",
+    "official": true
   },
   "errors": []
 }
