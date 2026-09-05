@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import hashlib
+import re
 
 import war_peace_reconstruction_watch_precise as precise
 
@@ -179,6 +180,56 @@ def _inline_source_links(text, displayed_items):
     return text.strip()[:4000] + "\n"
 
 
+def _bold_relative_age(text):
+    """기사 경과시간만 굵게 표시해 새 기사인지 오래된 후속인지 한눈에 보이게 한다."""
+    def repl(match):
+        start, end = match.span(1)
+        before = text[max(0, start - 3):start]
+        after = text[end:end + 4]
+        if before == "<b>" and after == "</b>":
+            return match.group(1)
+        return f"<b>{match.group(1)}</b>"
+
+    return re.sub(r"(\d{1,5}분 전)", repl, text)
+
+
+def _compact_investment_judgment(text):
+    """투자 판정은 핵심 경로만 2~5줄로 압축하고 의미가 겹치는 할인율·수급 문장을 합친다."""
+    marker = "<b>투자 판정</b>\n"
+    start = text.find(marker)
+    if start == -1:
+        return text
+    body_start = start + len(marker)
+    end_candidates = []
+    for next_marker in ("\n<b>반대 신호</b>\n", "\n<b>다음 확인</b>\n"):
+        pos = text.find(next_marker, body_start)
+        if pos != -1:
+            end_candidates.append(pos)
+    end = min(end_candidates) if end_candidates else len(text)
+    block = text[body_start:end]
+
+    lines = []
+    if "할인율:" in block or "수급:" in block:
+        lines.append("- <b>시장:</b> 종전 진전 → 유가·위험프리미엄↓ / 달러·금리 안정 동반 시 위험선호↑")
+    if "실물가격:" in block:
+        lines.append("- <b>실물가격:</b> 밀·원유·금·해운의 실제 가격 반응이 이어지는지 확인")
+    if "미국 협상단의 모스크바·키이우 방문" in block:
+        lines.append("- <b>시간표:</b> 미 협상단 방문 → 정상회담 → 휴전 조건·안보보장")
+    if "종전 선언 → 공식 휴전문" in block:
+        lines.append("- <b>이란 시간표:</b> 종전 선언 → 공식 휴전 → 호르무즈·제재 변화 → 병력 철수")
+    if "정치일정:" in block:
+        lines.append("- <b>정치:</b> 중간선거 부담이 확전 억제로 이어지는지 확인")
+    if "전략변화:" in block:
+        lines.append("- <b>전략:</b> 군사 확전보다 제재·경제압박으로 무게가 이동하는지 확인")
+    if "돈 버는 능력:" in block or "한국 기업:" in block:
+        lines.append("- <b>재건:</b> 기금 → 입찰 → 본계약 → 수주 / 한국기업 실명 확인 전 후보")
+
+    if not lines:
+        return text
+    compact = marker + "\n".join(lines)
+    return text[:start] + compact + text[end:]
+
+
 def breaking_build_alert(items, markets, now):
     us_marks = {"이번주말", "수일내", "잠정일정", "양국방문"}
     putin_marks = {"푸틴외교경로"}
@@ -202,7 +253,10 @@ def breaking_build_alert(items, markets, now):
     # clean 알림의 실제 표시 순서와 동일하게 핵심 변화 → 시장 파급 순서로 링크를 삽입한다.
     core_items = [x for x in chosen if "시장파급" not in x.get("tags", [])][:6]
     market_items = [x for x in chosen if "시장파급" in x.get("tags", [])][:4]
-    return _inline_source_links(text, core_items + market_items)
+    text = _inline_source_links(text, core_items + market_items)
+    text = _bold_relative_age(text)
+    text = _compact_investment_judgment(text)
+    return text.strip()[:4000] + "\n"
 
 
 watch.build_alert = breaking_build_alert
@@ -216,6 +270,8 @@ def _write_inline_test():
     marker = "\n<b>원문</b>\n"
     if marker in text:
         text = text.split(marker, 1)[0].rstrip() + "\n"
+    text = _bold_relative_age(text)
+    text = _compact_investment_judgment(text)
     watch.ALERT.write_text(text, encoding="utf-8")
 
 
