@@ -16,7 +16,7 @@
     },
     "30-Year": {
       "accepted_billion_yen": 456.2,
-      "accepted_krw": 3933780346314.934,
+      "accepted_krw": null,
       "auction_date": "9/3/2026",
       "average_yield_pct": 4.079,
       "bid_to_cover": 3.788031565103025,
@@ -51,7 +51,7 @@
       "foreign_equities": 811454.0
     },
     "domestic_bonds_delta_pp": 0.0,
-    "one_pct_point_krw": 27625554529724.324,
+    "one_pct_point_krw": null,
     "one_pct_point_trillion_yen": 3.203732,
     "target_pct": {
       "domestic_bonds": 25.0,
@@ -65,13 +65,13 @@
       "foreign_bonds": 5.0,
       "foreign_equities": 6.0
     },
-    "total_krw": 2762555452972432.5,
+    "total_krw": null,
     "total_oku_yen": 3203732.0,
     "url": "https://www.gpif.go.jp/gpif/portfolio.html",
     "zero_sum_summary": "비중 변화 없음"
   },
   "intervention": {
-    "amount_krw": 132787075157842.11,
+    "amount_krw": null,
     "amount_yen": 15399300000000.0,
     "efficiency_rule": "월간 총액은 실시일별 금액을 알 수 없어 1조엔당 USD/JPY 효과를 계산하지 않음. 분기 일별자료 공개 후 계산.",
     "next_daily_detail_release": "2026-11-02~11-09 (2026년 7~9월 일별 상세)",
@@ -79,5 +79,5 @@
     "period": "令和8年7月30日～令和8年8月28日",
     "url": "https://www.mof.go.jp/policy/international_policy/reference/feio/data/monthly/20260828.html"
   },
-  "updated_at_kst": "2026-09-05T17:31:00+09:00"
+  "updated_at_kst": "2026-09-05T18:14:49+09:00"
 }
