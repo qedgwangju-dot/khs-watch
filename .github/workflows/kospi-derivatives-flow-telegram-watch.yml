@@ -1,6 +1,10 @@
 name: KOSPI Derivatives Flow Telegram Watch
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/kospi-derivatives-flow-telegram-watch.yml"
   schedule:
     - cron: "*/5 4-6 * * 1-5"
   workflow_dispatch:
@@ -76,7 +80,7 @@ jobs:
           fi
 
       - name: Build manual connection test
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        if: (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[telegram-test]'))
         run: |
           cat > out/kospi_derivatives_flow_connection_test.html <<'EOF'
           ✅ <b>코스피 파생·수급 이상변동 경보 연결 정상</b>
