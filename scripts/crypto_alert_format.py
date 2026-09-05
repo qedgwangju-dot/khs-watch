@@ -10,6 +10,74 @@ ALERT_PATH = ROOT / "out" / "crypto_liquidity_watch_telegram.txt"
 PENDING_STATE_PATH = ROOT / "out" / "crypto_liquidity_watch_pending_state.json"
 
 
+def load_pending_state() -> dict:
+    if not PENDING_STATE_PATH.exists():
+        return {}
+    try:
+        return json.loads(PENDING_STATE_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def extract_fx_rate(text: str) -> float | None:
+    patterns = [
+        r"1달러\s*=\s*([\d,]+(?:\.\d+)?)원",
+        r"1달러=([\d,]+(?:\.\d+)?)원",
+    ]
+    for pattern in patterns:
+        m = re.search(pattern, text)
+        if not m:
+            continue
+        try:
+            rate = float(m.group(1).replace(",", ""))
+        except ValueError:
+            continue
+        if 800.0 <= rate <= 2500.0:
+            return rate
+    return None
+
+
+def format_krw_from_usd_m(value_usd_m: float, rate: float) -> str:
+    eok = value_usd_m * rate / 100.0
+    sign = "-" if eok < 0 else "+" if eok > 0 else ""
+    rounded = int(round(abs(eok)))
+    jo, rem = divmod(rounded, 10000)
+    if jo:
+        body = f"{jo}조{rem:,}억원" if rem else f"{jo}조원"
+    else:
+        body = f"{rounded:,}억원"
+    return f"약 {sign}{body}"
+
+
+def fmt_usd_m(value: float, rate: float | None = None) -> str:
+    sign = "+" if value > 0 else ""
+    base = f"{sign}{value:,.1f}백만달러"
+    if rate is None:
+        return base
+    return f"{base} ({format_krw_from_usd_m(value, rate)})"
+
+
+def fmt_pct(value: float | None) -> str:
+    if value is None:
+        return "비교 불가"
+    sign = "+" if value > 0 else ""
+    return f"{sign}{value:,.1f}%"
+
+
+def ensure_krw_for_bare_usd(text: str, rate: float | None) -> str:
+    """Final guard: no 백만달러 amount should be left without KRW when FX exists."""
+    if rate is None:
+        return text
+    pattern = re.compile(r"(?P<amount>[+-]?\d[\d,]*(?:\.\d+)?)백만달러(?!\s*\(약)")
+
+    def repl(m: re.Match[str]) -> str:
+        raw = m.group("amount")
+        value = float(raw.replace(",", ""))
+        return f"{raw}백만달러 ({format_krw_from_usd_m(value, rate)})"
+
+    return pattern.sub(repl, text)
+
+
 def format_trigger(line: str, is_partial: bool = False) -> list[str]:
     text = line.removeprefix("• ").strip()
 
@@ -20,11 +88,7 @@ def format_trigger(line: str, is_partial: bool = False) -> list[str]:
             recent = recent.removeprefix("최근5 ")
             heading = "• <b>5거래일 구간 이동 · 잠정</b>" if is_partial else "• <b>5거래일 구간 이동</b>"
             recent_label = "최근5(잠정)" if is_partial else "최근5"
-            return [
-                heading,
-                f"  {recent_label}  {recent}",
-                f"  이전5  {previous}",
-            ]
+            return [heading, f"  {recent_label}  {recent}", f"  이전5  {previous}"]
 
     if text.startswith("BTC 현물 ETF 새 일간 자금흐름"):
         m = re.match(r"BTC 현물 ETF 새 일간 자금흐름\(([^)]+)\):\s*(.+)", text)
@@ -53,7 +117,6 @@ def format_fx_line(line: str) -> list[str]:
     parts = [x.strip() for x in body.split(" | ") if x.strip()]
     if not parts:
         return ["<b>원화 환산</b>", line]
-
     first = " · ".join(parts[:2])
     rest = parts[2:]
     out = ["<b>원화 환산</b>", f"• {first}"]
@@ -62,40 +125,14 @@ def format_fx_line(line: str) -> list[str]:
     return out
 
 
-def load_pending_state() -> dict:
-    if not PENDING_STATE_PATH.exists():
-        return {}
-    try:
-        return json.loads(PENDING_STATE_PATH.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
-
-
-def fmt_usd_m(value: float) -> str:
-    sign = "+" if value > 0 else ""
-    return f"{sign}{value:,.1f}백만달러"
-
-
-def fmt_pct(value: float | None) -> str:
-    if value is None:
-        return "비교 불가"
-    sign = "+" if value > 0 else ""
-    return f"{sign}{value:,.1f}%"
-
-
-def detailed_judgement() -> str | None:
-    """Build a directional interpretation instead of a generic '혼조' label.
-
-    Separate four things that can point in different directions:
-    1) today's ETF flow direction, 2) change in daily flow intensity,
-    3) 5-day flow trend, 4) long-rate discount-rate pressure.
-    """
+def detailed_judgement(source_text: str) -> str | None:
     state = load_pending_state()
     rates = state.get("rates") or {}
     etf = state.get("btc_etf") or {}
     if not rates or not etf:
         return None
 
+    fx_rate = extract_fx_rate(source_text)
     rate_date = str(rates.get("date") or "")
     etf_date = str(etf.get("date") or "")
     status = str(etf.get("status") or "")
@@ -108,104 +145,84 @@ def detailed_judgement() -> str | None:
     prev5 = etf.get("prev5_usd_m")
     last5 = float(last5) if last5 is not None else None
     prev5 = float(prev5) if prev5 is not None else None
-    five_change = etf.get("five_day_change_usd_m")
-    five_change = float(five_change) if five_change is not None else None
     five_pct = etf.get("five_day_change_pct")
     five_pct = float(five_pct) if five_pct is not None else None
     r10 = float(rates.get("daily_10y_bp", 0.0) or 0.0)
     r30 = float(rates.get("daily_30y_bp", 0.0) or 0.0)
 
-    # ETF current direction.
     if flow > 0:
-        flow_label = "우호적"
-        flow_text = f"{fmt_usd_m(flow)} 순유입 → BTC 위험자산 수급에 플러스"
-        flow_score = 1
+        flow_label, flow_score = "우호적", 1
+        flow_text = f"{fmt_usd_m(flow, fx_rate)} 순유입 → BTC 위험자산 수급에 플러스"
     elif flow < 0:
-        flow_label = "불리"
-        flow_text = f"{fmt_usd_m(flow)} 순유출 → BTC 위험자산 수급에 마이너스"
-        flow_score = -1
+        flow_label, flow_score = "불리", -1
+        flow_text = f"{fmt_usd_m(flow, fx_rate)} 순유출 → BTC 위험자산 수급에 마이너스"
     else:
-        flow_label = "중립"
+        flow_label, flow_score = "중립", 0
         flow_text = "순유입·순유출이 0에 가까워 당일 ETF 수급 방향이 뚜렷하지 않음"
-        flow_score = 0
 
-    # Daily momentum: distinguish direction from strength.
     if flow > 0 and prev_flow > 0:
         if day_change < 0:
             momentum_label = "둔화"
             momentum_text = (
-                f"순유입은 유지됐지만 {fmt_usd_m(prev_flow)} → {fmt_usd_m(flow)}"
-                f" ({fmt_pct(day_change_pct)})로 매수 강도는 약해짐"
+                f"순유입은 유지됐지만 {fmt_usd_m(prev_flow, fx_rate)} → {fmt_usd_m(flow, fx_rate)} "
+                f"({fmt_pct(day_change_pct)})로 매수 강도는 약해짐"
             )
         elif day_change > 0:
             momentum_label = "강화"
             momentum_text = (
-                f"순유입이 {fmt_usd_m(prev_flow)} → {fmt_usd_m(flow)}"
-                f" ({fmt_pct(day_change_pct)})로 확대"
+                f"순유입이 {fmt_usd_m(prev_flow, fx_rate)} → {fmt_usd_m(flow, fx_rate)} "
+                f"({fmt_pct(day_change_pct)})로 확대"
             )
         else:
-            momentum_label = "유지"
-            momentum_text = "전일과 같은 수준의 순유입"
+            momentum_label, momentum_text = "유지", "전일과 같은 수준의 순유입"
     elif flow < 0 and prev_flow < 0:
         if flow > prev_flow:
             momentum_label = "개선"
-            momentum_text = f"순유출은 지속되지만 {fmt_usd_m(prev_flow)} → {fmt_usd_m(flow)}로 유출 강도 완화"
+            momentum_text = f"순유출은 지속되지만 {fmt_usd_m(prev_flow, fx_rate)} → {fmt_usd_m(flow, fx_rate)}로 유출 강도 완화"
         elif flow < prev_flow:
             momentum_label = "악화"
-            momentum_text = f"순유출이 {fmt_usd_m(prev_flow)} → {fmt_usd_m(flow)}로 확대"
+            momentum_text = f"순유출이 {fmt_usd_m(prev_flow, fx_rate)} → {fmt_usd_m(flow, fx_rate)}로 확대"
         else:
-            momentum_label = "유지"
-            momentum_text = "전일과 같은 수준의 순유출"
+            momentum_label, momentum_text = "유지", "전일과 같은 수준의 순유출"
     elif prev_flow <= 0 < flow:
         momentum_label = "개선"
-        momentum_text = f"전일 순유출/중립에서 {fmt_usd_m(flow)} 순유입으로 전환"
+        momentum_text = f"전일 순유출/중립에서 {fmt_usd_m(flow, fx_rate)} 순유입으로 전환"
     elif prev_flow >= 0 > flow:
         momentum_label = "악화"
-        momentum_text = f"전일 순유입/중립에서 {fmt_usd_m(flow)} 순유출로 전환"
+        momentum_text = f"전일 순유입/중립에서 {fmt_usd_m(flow, fx_rate)} 순유출로 전환"
     else:
-        momentum_label = "중립"
-        momentum_text = "전일 대비 자금흐름 강도 변화 제한"
+        momentum_label, momentum_text = "중립", "전일 대비 자금흐름 강도 변화 제한"
 
-    # 5-day trend.
     five_score = 0
     if last5 is not None and prev5 is not None:
         if last5 > 0 and prev5 > 0:
             if last5 > prev5:
-                five_label = "개선"
-                five_score = 1
-                five_text = f"최근5 {fmt_usd_m(last5)} vs 이전5 {fmt_usd_m(prev5)} · {fmt_pct(five_pct)} → 누적 순유입 확대"
+                five_label, five_score = "개선", 1
+                five_text = f"최근5 {fmt_usd_m(last5, fx_rate)} vs 이전5 {fmt_usd_m(prev5, fx_rate)} · {fmt_pct(five_pct)} → 누적 순유입 확대"
             elif last5 < prev5:
                 five_label = "둔화"
-                five_score = 0
-                five_text = f"최근5 {fmt_usd_m(last5)} vs 이전5 {fmt_usd_m(prev5)} · {fmt_pct(five_pct)} → 순유입은 유지되지만 누적 강도 둔화"
+                five_text = f"최근5 {fmt_usd_m(last5, fx_rate)} vs 이전5 {fmt_usd_m(prev5, fx_rate)} · {fmt_pct(five_pct)} → 순유입은 유지되지만 누적 강도 둔화"
             else:
                 five_label = "유지"
-                five_text = f"최근5와 이전5 모두 {fmt_usd_m(last5)} → 누적 흐름 변화 없음"
+                five_text = f"최근5와 이전5 모두 {fmt_usd_m(last5, fx_rate)} → 누적 흐름 변화 없음"
         elif last5 > 0 >= prev5:
-            five_label = "강한 개선"
-            five_score = 1
-            five_text = f"최근5 {fmt_usd_m(last5)} · 이전5 {fmt_usd_m(prev5)} → 순유출에서 순유입으로 전환"
+            five_label, five_score = "강한 개선", 1
+            five_text = f"최근5 {fmt_usd_m(last5, fx_rate)} · 이전5 {fmt_usd_m(prev5, fx_rate)} → 순유출에서 순유입으로 전환"
         elif last5 < 0 <= prev5:
-            five_label = "강한 악화"
-            five_score = -1
-            five_text = f"최근5 {fmt_usd_m(last5)} · 이전5 {fmt_usd_m(prev5)} → 순유입에서 순유출로 전환"
+            five_label, five_score = "강한 악화", -1
+            five_text = f"최근5 {fmt_usd_m(last5, fx_rate)} · 이전5 {fmt_usd_m(prev5, fx_rate)} → 순유입에서 순유출로 전환"
         elif last5 < 0 and prev5 < 0:
             if last5 > prev5:
                 five_label = "개선"
-                five_score = 0
-                five_text = f"최근5 {fmt_usd_m(last5)} vs 이전5 {fmt_usd_m(prev5)} → 순유출 지속이나 유출 규모 축소"
+                five_text = f"최근5 {fmt_usd_m(last5, fx_rate)} vs 이전5 {fmt_usd_m(prev5, fx_rate)} → 순유출 지속이나 유출 규모 축소"
             else:
-                five_label = "악화"
-                five_score = -1
-                five_text = f"최근5 {fmt_usd_m(last5)} vs 이전5 {fmt_usd_m(prev5)} → 누적 순유출 확대"
+                five_label, five_score = "악화", -1
+                five_text = f"최근5 {fmt_usd_m(last5, fx_rate)} vs 이전5 {fmt_usd_m(prev5, fx_rate)} → 누적 순유출 확대"
         else:
-            five_label = "중립"
-            five_text = "5거래일 누적 자금흐름 방향 제한"
+            five_label, five_text = "중립", "5거래일 누적 자금흐름 방향 제한"
     else:
-        five_label = "확인 불가"
-        five_text = "검증된 10개 거래일이 부족해 5거래일 구간 비교 보류"
+        five_label, five_text = "확인 불가", "검증된 10개 거래일이 부족해 5거래일 구간 비교 보류"
 
-    # Rate effect. Opposite-sign or tiny moves are treated as near-neutral rather than generic mixed.
     max_rate_move = max(abs(r10), abs(r30))
     if r10 > 0 and r30 > 0:
         rate_label = "불리" if max_rate_move >= 3 else "소폭 불리"
@@ -216,12 +233,10 @@ def detailed_judgement() -> str | None:
         rate_score = 1 if max_rate_move >= 3 else 0
         rate_text = f"10Y {r10:+.1f}bp · 30Y {r30:+.1f}bp 하락 → 할인율 부담 완화"
     elif r10 == 0 and r30 == 0:
-        rate_label = "중립"
-        rate_score = 0
+        rate_label, rate_score = "중립", 0
         rate_text = "10Y·30Y 모두 전일 대비 변화 없음 → 할인율 영향 제한"
     else:
-        rate_label = "거의 중립"
-        rate_score = 0
+        rate_label, rate_score = "거의 중립", 0
         rate_text = f"10Y {r10:+.1f}bp · 30Y {r30:+.1f}bp로 방향이 엇갈려 서로 상쇄 → 할인율 영향 제한"
 
     same_date = bool(rate_date and etf_date and rate_date == etf_date)
@@ -318,9 +333,7 @@ def format_alert(text: str) -> str:
             stripped,
         )
         if m_rate:
-            out.append(
-                f"• <b>{m_rate.group(1)} {m_rate.group(2)}%</b> | 직전({m_rate.group(3)}) {m_rate.group(4)} | 5거래일 {m_rate.group(5)}"
-            )
+            out.append(f"• <b>{m_rate.group(1)} {m_rate.group(2)}%</b> | 직전({m_rate.group(3)}) {m_rate.group(4)} | 5거래일 {m_rate.group(5)}")
             continue
 
         if stripped.startswith("※ 미 재무부 일일 수익률은"):
@@ -339,10 +352,10 @@ def format_alert(text: str) -> str:
             m = re.match(r"(\d{4}-\d{2}-\d{2})\s+(.+?)\s+\((잠정 집계|현재 집계 완료[^,)]*)(.*)\)$", body)
             if m:
                 out.append(f"• <b>최신 {m.group(2)}</b>")
-                status = m.group(3)
-                if status == "잠정 집계":
-                    status += " · 일부 ETF 미보고"
-                out.append(f"  {m.group(1)} · {status}{m.group(4)}")
+                status_text = m.group(3)
+                if status_text == "잠정 집계":
+                    status_text += " · 일부 ETF 미보고"
+                out.append(f"  {m.group(1)} · {status_text}{m.group(4)}")
             else:
                 out.append(f"• <b>최신</b> {body}")
             continue
@@ -380,7 +393,7 @@ def format_alert(text: str) -> str:
             continue
 
         if stripped.startswith("판단:"):
-            detailed = detailed_judgement()
+            detailed = detailed_judgement(text)
             body = detailed or stripped.split(":", 1)[1].strip()
             if out and out[-1] != "":
                 out.append("")
@@ -411,7 +424,9 @@ def format_alert(text: str) -> str:
         if line == "" and compact and compact[-1] == "":
             continue
         compact.append(line)
-    return "\n".join(compact).strip() + "\n"
+
+    formatted = "\n".join(compact).strip() + "\n"
+    return ensure_krw_for_bare_usd(formatted, extract_fx_rate(text))
 
 
 def main() -> None:
