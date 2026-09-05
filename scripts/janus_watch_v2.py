@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 import html
 import re
 import sys
@@ -23,6 +23,15 @@ base.SOURCES.insert(
         "kind": "official",
     },
 )
+# Janus·업체 뉴스만 보던 기존 범위를 넘어, 주정부 원전 목표·공공금융·대형 건설·
+# 입지·표준화·지역 공급망 같은 고충격 원전 정책 변화도 같은 정확한 텔레그램 경로로 감시한다.
+base.SOURCES.append(
+    {
+        "name": "Canary Media 원전 정책·금융",
+        "url": "https://www.canarymedia.com/articles/nuclear",
+        "kind": "macro_nuclear",
+    }
+)
 
 base.STATE_PATH = ROOT / "data" / "janus_watch_v2_state.json"
 base.PENDING_STATE_PATH = ROOT / "out" / "janus_watch_v2_state_pending.json"
@@ -37,6 +46,7 @@ _PROTECTED_TERMS = [
     "Radiant Industries", "Radiant", "Westinghouse Government Services", "Westinghouse",
     "Kaleidos", "eVinci", "GA-TES", "Janus", "TRISO", "HALEU", "DOE", "NRC",
     "INL", "DOME", "R-50", "Standard Nuclear", "Centrus Energy", "Equinix", "DIU",
+    "NYPA", "NYISO", "Ontario", "BWRX-300", "AP1000", "SMR",
 ]
 
 _BAD_TITLE_RE = re.compile(
@@ -59,6 +69,34 @@ _RADIANT_SLUG_TITLES = {
     "kaleidos-shipped": "Kaleidos Has Left the Building and Is En Route to INL DOME",
 }
 
+_SPECIAL_KO_TITLES = {
+    "new york’s big new bet on nuclear energy": "뉴욕, 신규 원전 5GW 목표…NYPA 공공금융·지역 표준화로 반복 건설 비용 절감 추진",
+    "new york's big new bet on nuclear energy": "뉴욕, 신규 원전 5GW 목표…NYPA 공공금융·지역 표준화로 반복 건설 비용 절감 추진",
+}
+
+_SPECIAL_MACRO_SUMMARY = {
+    "new-york-big-new-bet-on-nuclear-energy": (
+        "뉴욕은 신규 원전 5GW를 목표로 하고, NYPA가 우선 최소 1GW 프로젝트 개발을 맡습니다. "
+        "Ontario와는 1~2개 원자로 설계 중심의 표준화·지역 공급망 구축을 추진했고, 이후 뉴잉글랜드 6개주와도 "
+        "원전 협력을 확대했습니다. 최대 병목은 NYISO 경쟁 전력시장에서 장기간 건설비와 비용회수 위험을 누가 부담하느냐이며, "
+        "주정부 소유 NYPA의 금융·개발 역할이 핵심입니다."
+    ),
+}
+
+_MACRO_POLICY_TERMS = [
+    "governor", "state", "power authority", "public service commission", "department of energy",
+    "federal", "government", "legislature", "utility", "utilities", "state-owned", "memorandum",
+    "agreement", "request for qualification", "request for proposals", "procurement", "siting",
+]
+_MACRO_FINANCE_TERMS = [
+    "financing", "finance", "funding", "loan", "loan guarantee", "subsidy", "tax credit",
+    "billion", "million", "cost recovery", "ratepayer", "power purchase agreement", "ppa",
+]
+_MACRO_BUILD_TERMS = [
+    "gigawatt", " gw", "build", "construction", "construct", "reactor", "capacity", "deploy",
+    "standardiz", "supply chain", "workforce", "site", "backbone",
+]
+
 
 def _append_error(message: str) -> None:
     base.OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -78,6 +116,7 @@ def _is_bad_title(text: str) -> bool:
 def _clean_page_title(text: str) -> str:
     text = base.norm(text)
     text = re.sub(r"\s*[|\-–—]\s*Radiant(?: Nuclear)?\s*$", "", text, flags=re.I)
+    text = re.sub(r"\s*[|\-–—]\s*Canary Media\s*$", "", text, flags=re.I)
     return base.norm(text)
 
 
@@ -126,10 +165,67 @@ def _resolve_event_title(event) -> str:
     return resolved
 
 
+def _macro_high_signal(title: str, url: str) -> bool:
+    slug = urlparse(url).path.rstrip("/").split("/")[-1].lower()
+    if slug in _SPECIAL_MACRO_SUMMARY:
+        return True
+    try:
+        page = base.fetch(url)
+        text = base.norm(BeautifulSoup(page, "html.parser").get_text(" ", strip=True)).lower()
+    except Exception as exc:
+        _append_error(f"원전 정책 상세 조회 실패 | {url} | {type(exc).__name__}: {exc}")
+        text = ""
+    hay = f"{title} {url} {text[:30000]}".lower()
+    policy = sum(1 for term in _MACRO_POLICY_TERMS if term in hay)
+    finance = sum(1 for term in _MACRO_FINANCE_TERMS if term in hay)
+    build = sum(1 for term in _MACRO_BUILD_TERMS if term in hay)
+    # 단순 기술 기사보다 실제 발주·금융·정책·대규모 설비투자와 연결되는 기사만 통과시킨다.
+    return (policy >= 2 and build >= 2) or (finance >= 2 and build >= 2) or (policy >= 1 and finance >= 1 and build >= 2)
+
+
+def _extract_macro_nuclear_items(source, page_html):
+    soup = BeautifulSoup(page_html, "html.parser")
+    candidates = []
+    seen_urls = set()
+    for a in soup.find_all("a", href=True):
+        href = urljoin(source["url"], a.get("href", ""))
+        parsed = urlparse(href)
+        if parsed.netloc not in {"www.canarymedia.com", "canarymedia.com"}:
+            continue
+        if "/articles/nuclear/" not in parsed.path:
+            continue
+        href = f"{parsed.scheme or 'https'}://{parsed.netloc}{parsed.path}"
+        if href in seen_urls:
+            continue
+        seen_urls.add(href)
+        title = _clean_page_title(a.get_text(" ", strip=True))
+        if len(title) < 8:
+            title = _title_from_slug(href)
+        if _is_bad_title(title):
+            continue
+        candidates.append((title, href))
+        if len(candidates) >= 8:
+            break
+
+    # 새 고충격 기사만 잡고 과거 백로그가 한꺼번에 쏟아지지 않도록 최신 고신호 1건만 반환한다.
+    for title, href in candidates:
+        if not _macro_high_signal(title, href):
+            continue
+        return [{
+            "source": source["name"],
+            "title": title[:500],
+            "url": href,
+            "kind": source["kind"],
+        }]
+    return []
+
+
 _ORIGINAL_EXTRACT_ITEMS = base.extract_items
 
 
 def _extract_items_clean(source, page_html):
+    if source.get("kind") == "macro_nuclear":
+        return _extract_macro_nuclear_items(source, page_html)
     items = _ORIGINAL_EXTRACT_ITEMS(source, page_html)
     cleaned = []
     for item in items:
@@ -233,6 +329,9 @@ def _translate_ko(text: str) -> str:
         return raw
     if _BAD_TITLE_RE.search(raw):
         raise RuntimeError("오류 페이지 문구가 포함되어 송출 차단")
+    special = _SPECIAL_KO_TITLES.get(raw.lower())
+    if special:
+        return special
     if not _needs_translation(raw):
         return _restore_known_korean(raw)
 
@@ -261,8 +360,25 @@ def _translate_ko(text: str) -> str:
     return translated
 
 
+def _event_category(event, resolved_title: str) -> str:
+    if event.get("kind") == "macro_nuclear":
+        return "정책·금융·설비투자"
+    return base.classify(resolved_title)
+
+
+def _event_meaning(event, category: str) -> str:
+    if event.get("kind") == "macro_nuclear":
+        return "원전 용량 목표·공공금융·입지·표준화·지역 공급망 변화는 실제 발주와 장납기 기자재 수요의 시점을 바꾸는 핵심 재평가 요인입니다."
+    return base.meaning(category)
+
+
+def _macro_summary(event) -> str:
+    slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
+    return _SPECIAL_MACRO_SUMMARY.get(slug, "")
+
+
 def _render_alert_korean(events, fact_changes):
-    lines = ["<b>[Janus 웹감시] 신규 변화</b>", ""]
+    lines = ["<b>[원전·Janus 웹감시] 신규 변화</b>", ""]
     translation_errors = []
     shown_events = 0
 
@@ -275,13 +391,20 @@ def _render_alert_korean(events, fact_changes):
         except Exception as exc:
             translation_errors.append(f"{event['source']} | {event['url']} | {exc}")
             continue
-        cat = base.classify(resolved_title)
+        cat = _event_category(event, resolved_title)
         lines.extend(
             [
                 f"• <b>분류:</b> {html.escape(cat)}",
                 f"• <b>출처:</b> {html.escape(event['source'])}",
                 f"• <b>새 사실:</b> {html.escape(title_ko)}",
-                f"• <b>의미:</b> {html.escape(base.meaning(cat))}",
+            ]
+        )
+        core = _macro_summary(event)
+        if core:
+            lines.append(f"• <b>핵심:</b> {html.escape(core)}")
+        lines.extend(
+            [
+                f"• <b>의미:</b> {html.escape(_event_meaning(event, cat))}",
                 f"• <a href=\"{html.escape(event['url'], quote=True)}\">원문</a>",
                 "",
             ]
