@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-05T18:09:54+09:00",
+  "updated_at_kst": "2026-09-05T21:49:46+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -28,19 +28,20 @@
     "e05c1927e16110a949b8b797",
     "eed867761a24cbad33b1c104",
     "f07ec9c4d4039ee24a7a82d9",
-    "fd0ab513604f145f508ff4dd"
+    "fd0ab513604f145f508ff4dd",
+    "ff9744abe3535e79694d130b"
   ],
   "seen_fact_keys": [
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1350.35,
-    "date": "2026-09-04 일일 기준 · ECB/Frankfurter · 조회 2026-09-05 18:09 KST · 보조 API 2026-09-05 · 차이 0.10% · 일중 기준시각 차이 가능",
+    "date": "2026-09-04 일일 기준 · ECB/Frankfurter · 조회 2026-09-05 21:49 KST · 보조 API 2026-09-05 · 차이 0.10% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
