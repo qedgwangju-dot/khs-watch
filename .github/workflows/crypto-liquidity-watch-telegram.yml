@@ -48,6 +48,32 @@ jobs:
           python -m py_compile scripts/crypto_alert_krw.py
           python -m py_compile scripts/crypto_alert_format.py
 
+      - name: Validate exact Telegram bot route without sending
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN secret is missing")
+          if not chat_id:
+              raise RuntimeError("Telegram chat id is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{username}")
+          PY
+
       - name: Check Treasury buybacks, long yields and BTC ETF flows
         run: PYTHONPATH=. python scripts/crypto_liquidity_watch_runner.py
 
@@ -108,10 +134,8 @@ jobs:
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
-          if not token:
-              raise RuntimeError("CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN secret is missing")
-          if not chat_id:
-              raise RuntimeError("Telegram chat id is missing")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram token/chat id is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
