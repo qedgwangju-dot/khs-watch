@@ -10,7 +10,11 @@ base = direct.base
 flash = direct.flash
 
 # IFX 단문 헤드라인이 공개 검색에 늦게 잡힐 때 AP·Reuters·FT의 확인 보도를 즉시 회수한다.
+DIRECT_AP_WORLD = "ap-direct-world-rss"
+DIRECT_AP_TOP = "ap-direct-top-rss"
 CONFIRMATION_QUERIES = [
+    DIRECT_AP_WORLD,
+    DIRECT_AP_TOP,
     'site:apnews.com Putin ("72-hour pause" OR "pause in strikes" OR "strikes on Kyiv") (Witkoff OR Kushner OR Peskov) when:6h',
     'site:reuters.com Putin (Kyiv OR Kiev) ("pause in strikes" OR "suspend strikes" OR "no strikes" OR "72-hour") (Witkoff OR Kushner OR Peskov) when:6h',
     'site:ft.com Putin Kyiv ("suspension of strikes" OR "pause in strikes" OR "no strikes") (Witkoff OR Kushner) when:6h',
@@ -20,6 +24,30 @@ CONFIRMATION_QUERIES = [
 watch.QUERIES = CONFIRMATION_QUERIES + list(watch.QUERIES)
 
 _prev_google_news = watch.google_news
+
+
+def _ap_rss(url):
+    try:
+        root = watch.ET.fromstring(watch.req(url, 20))
+    except Exception as e:
+        return [], f"AP RSS: {type(e).__name__}"
+    rows = []
+    for item in root.findall(".//item")[:60]:
+        title = watch.clean(item.findtext("title"))
+        link = watch.clean(item.findtext("link"))
+        pub = watch.clean(item.findtext("pubDate"))
+        desc = watch.clean(item.findtext("description"))
+        if not title or not link:
+            continue
+        rows.append({
+            "title": title,
+            "title_original": title,
+            "link": link,
+            "published": pub,
+            "source": "AP News",
+            "description": desc,
+        })
+    return rows, None
 
 
 def _pause_signals(row):
@@ -33,8 +61,9 @@ def _pause_signals(row):
     putin_peskov = any(k in text for k in ("putin", "peskov", "푸틴", "페스코프"))
     kyiv = any(k in text for k in ("kyiv", "kiev", "키이우", "키예프"))
     pause = any(k in text for k in (
-        "72-hour pause", "72 hour pause", "pause in strikes", "suspension of strikes",
-        "suspend strikes", "no strikes", "no air strikes", "공습 중단", "공습 금지", "공격 중단",
+        "72-hour pause", "72 hour pause", "pause in strikes", "pause on strikes",
+        "suspension of strikes", "suspend strikes", "no strikes", "no air strikes",
+        "공습 중단", "공습 금지", "공격 중단",
     ))
     if putin_peskov and kyiv and pause:
         signals.append("푸틴, 미국 특사단 방문을 위해 키이우에 대한 공습을 72시간 중단하도록 명령")
@@ -50,7 +79,13 @@ def _pause_signals(row):
 
 
 def google_news_with_confirmations(query):
-    rows, err = _prev_google_news(query)
+    if query == DIRECT_AP_WORLD:
+        rows, err = _ap_rss("https://apnews.com/hub/world-news?format=rss")
+    elif query == DIRECT_AP_TOP:
+        rows, err = _ap_rss("https://apnews.com/hub/ap-top-news?format=rss")
+    else:
+        rows, err = _prev_google_news(query)
+
     for row in rows:
         signals, marks = _pause_signals(row)
         if not marks:
