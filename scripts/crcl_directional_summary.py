@@ -174,6 +174,12 @@ def build_summary(pending: dict) -> tuple[str, str]:
         f"• <b>주가 할인율 → {html.escape(disc_label)}</b> · {html.escape(disc_text)}",
         f"• <b>주가 확인 → {html.escape(stock)}</b> · {html.escape(stock_take)}",
         f"• <b>한마디로</b> · {html.escape(take)}</blockquote>",
+        "",
+        "<b>SOFR 방향 읽는 법 — 고정</b>",
+        "• <b>SOFR 상승</b> → 단기 달러금리 상승 → Circle 준비금 수익률도 올라갈 가능성 → <b>Circle 이자수익에 유리</b>",
+        "• <b>SOFR 하락</b> → 단기 달러금리 하락 → Circle 준비금 수익률도 내려갈 가능성 → <b>Circle 이자수익에 불리</b>",
+        "• ※ SOFR은 <b>선행·보조지표</b>입니다. 실제 실적 판정은 <b>USDC 유통량 × 실제 준비금 수익률</b>을 우선합니다.",
+        "",
     ])
 
     judgment = "\n".join([
@@ -194,8 +200,8 @@ def main() -> None:
         return
 
     top, judgment = build_summary(pending)
-    text = re.sub(r"<blockquote><b>현재 결론</b>.*?</blockquote>", top, text, count=1, flags=re.S)
-    text = re.sub(r"<blockquote><b>현재 결론 · .*?</blockquote>", top, text, count=1, flags=re.S)
+    text = re.sub(r"<blockquote><b>현재 결론</b>.*?</blockquote>\n*", top, text, count=1, flags=re.S)
+    text = re.sub(r"<blockquote><b>현재 결론 · .*?</blockquote>\n*", top, text, count=1, flags=re.S)
     text = re.sub(r"<blockquote><b>판단</b>.*?</blockquote>", judgment, text, count=1, flags=re.S)
     ALERT_PATH.write_text(text, encoding="utf-8")
 
