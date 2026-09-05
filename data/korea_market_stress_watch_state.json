@@ -1,23 +1,23 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-05T19:34:51+09:00",
+  "updated_at_kst": "2026-09-05T22:33:25+09:00",
   "seen_event_keys": [
-    "foreign1d_neg:2026-09-02:postclose",
-    "foreign3d_neg:2026-08-27",
-    "foreign3d_neg:2026-09-02:postclose",
-    "foreign3d_neg:2026-09-02:final",
-    "fx_1350_down:2026-09-04",
-    "foreign1d_neg:2026-09-02:final",
     "policy_spread:2026-08-27:0.75",
-    "fx_daily_down:2026-09-02",
+    "foreign3d_neg:2026-09-02:final",
+    "foreign3d_neg:2026-08-27",
     "foreign1d_neg:2026-08-31",
-    "capex:13cbe150930d23d8"
+    "foreign1d_neg:2026-09-02:postclose",
+    "fx_daily_down:2026-09-02",
+    "fx_1350_down:2026-09-04",
+    "capex:13cbe150930d23d8",
+    "foreign1d_neg:2026-09-02:final",
+    "foreign3d_neg:2026-09-02:postclose"
   ],
   "active_keys": [
     "fx_1350_down:2026-09-04"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-05T19:34:51+09:00",
+    "checked_at_kst": "2026-09-05T22:33:25+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-04",
@@ -37,7 +37,7 @@
       "source": "https://fred.stlouisfed.org/series/DGS10"
     },
     "policy_spread": {
-      "date": "2026-09-04",
+      "date": "2026-09-05",
       "fed_upper": 3.75,
       "bok_base": 3.0,
       "spread_pp": 0.75,
