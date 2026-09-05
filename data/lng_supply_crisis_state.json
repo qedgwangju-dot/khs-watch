@@ -1,14 +1,15 @@
 {
   "version": 2,
   "setup_test_sent_at_kst": "2026-08-03T07:51:17+09:00",
-  "last_alert_at_kst": "2026-09-04T12:28:30+09:00",
+  "last_alert_at_kst": "2026-09-05T23:00:07+09:00",
   "alerted_event_ids": [
-    "eba7d08db35bd14141aa",
+    "2bfc82a83816d87b7ac5",
     "1937452cca4dcc88c596",
+    "eba7d08db35bd14141aa",
     "afb5c771ef035dda00ef",
     "78d1f3938d5056d150de",
     "a138cf877b55be8f46cb",
-    "2bfc82a83816d87b7ac5"
+    "fd24822a85fcd171cc38"
   ],
   "active_market_signals": [
     "brent_above_90",
