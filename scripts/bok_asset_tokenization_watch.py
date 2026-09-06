@@ -77,10 +77,7 @@ def clean(text: str) -> str:
 
 def relevant(text: str) -> bool:
     low = text.lower()
-    primary_hit = any(k.lower() in low for k in PRIMARY)
-    if not primary_hit:
-        return False
-    return True
+    return any(k.lower() in low for k in PRIMARY)
 
 
 def classify(text: str) -> str:
@@ -123,10 +120,10 @@ def extract(source: dict) -> list[dict]:
     return list(rows.values())
 
 
-def source_link(url: str) -> str:
+def source_link(url: str, label: str = "원문") -> str:
     safe_url = html.escape(url, quote=True)
     if url.startswith(("https://", "http://")):
-        return f'<a href="{safe_url}"><b>원문</b></a>'
+        return f'<a href="{safe_url}"><b>{html.escape(label)}</b></a>'
     return "원문 링크 없음"
 
 
@@ -169,7 +166,7 @@ def core_interpretation(item: dict) -> str:
     if "분산원장" in text and ("표준요건" in text or "가이드라인" in text):
         return "토큰증권을 실제 금융시스템에 올릴 때 필요한 분산원장 기술·운영 기준을 구체화한 실무 가이드입니다."
     if "토큰증권" in text and "정책방향" in text:
-        return "토큰증권 발행·유통과 제도권 인프라의 세부 기준을 구체화하는 정책 업데이트입니다."
+        return "토큰증권을 조각투자 중심 논의에서 주식·채권·펀드와 스테이블코인 결제까지 확장하는 단계별 국가 인프라 로드맵입니다."
     if any(k in text for k in ("국채토큰", "국채 토큰", "토큰화 국채", "국채 토큰화")):
         return "CBDC·예금토큰과 국채토큰을 연결하는 실증의 일정·참여기관·결제 구조를 확인할 핵심 업데이트입니다."
     if "통합원장" in text or "통합 원장" in text:
@@ -181,6 +178,121 @@ def core_interpretation(item: dict) -> str:
     if category == "참여기관·당사자":
         return "어떤 은행·증권사·인프라 기관이 실제 실증·구축에 참여하는지 확인할 당사자 업데이트입니다."
     return "자산 토큰화 제도·실증·인프라의 진행 단계가 바뀌었는지 확인할 공식 업데이트입니다."
+
+
+def fsc_article_id(url: str) -> str:
+    parsed = urllib.parse.urlparse(url)
+    query = urllib.parse.parse_qs(parsed.query)
+    if query.get("upperNo"):
+        return str(query["upperNo"][0])
+    match = re.search(r"/(?:po010101|no010101|po010106)/(\d+)", parsed.path)
+    return match.group(1) if match else ""
+
+
+def event_key(item: dict) -> str:
+    if item.get("source") == "금융위원회 금융정책":
+        article_id = fsc_article_id(item.get("url", ""))
+        if article_id:
+            return f"FSC:{article_id}"
+    return f"ITEM:{item.get('id', '')}"
+
+
+def group_items(items: list[dict]) -> list[list[dict]]:
+    groups: dict[str, list[dict]] = {}
+    order: list[str] = []
+    for item in items:
+        key = event_key(item)
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(item)
+    return [groups[key] for key in order]
+
+
+def representative_item(group: list[dict]) -> dict:
+    pages = [item for item in group if "/comm/getFile" not in item.get("url", "")]
+    candidates = pages or group
+    return max(candidates, key=lambda item: len(clean(item.get("title", ""))))
+
+
+def link_label(item: dict) -> str:
+    title = clean(item.get("title", "")).lower()
+    url = item.get("url", "")
+    if "/comm/getFile" not in url:
+        return "정책본문"
+    if "별첨3" in title or ("분산원장" in title and "가이드라인" in title):
+        return "표준요건"
+    if "별첨2" in title or "모범규준" in title:
+        return "조각투자 모범규준"
+    if "별첨1" in title:
+        return "정책방향"
+    if "보도자료" in title and title.endswith(".pdf"):
+        return "보도자료 PDF"
+    if "보도자료" in title and title.endswith(".hwpx"):
+        return "보도자료 HWPX"
+    return readable_title(item.get("title", ""))
+
+
+def event_links(group: list[dict]) -> str:
+    if len(group) == 1:
+        return f"원문  {source_link(group[0].get('url', ''))}"
+    links: list[str] = []
+    seen: set[tuple[str, str]] = set()
+    for item in group:
+        url = item.get("url", "")
+        if not url.startswith(("https://", "http://")):
+            continue
+        label = link_label(item)
+        key = (label, url)
+        if key in seen:
+            continue
+        seen.add(key)
+        links.append(source_link(url, label))
+    return "원문  " + " · ".join(links[:7]) if links else "원문 링크 없음"
+
+
+def special_event_details(group: list[dict]) -> list[tuple[str, str]]:
+    article_ids = {fsc_article_id(item.get("url", "")) for item in group}
+    if "87650" not in article_ids:
+        return []
+    return [
+        (
+            "핵심 내용",
+            "금융위가 조각투자뿐 아니라 주식·채권·펀드까지 토큰화 범위를 넓히고, 발행·유통·결제를 단계별로 제도권 인프라에 올리는 정책방향을 확정했습니다.",
+        ),
+        (
+            "1단계 · 2027.2.4",
+            "기관투자자 전용 사모MMF·사모사채, 신탁방식 비상장주식, 공모 조각투자증권 토큰화를 시작합니다.",
+        ),
+        (
+            "한국거래소",
+            "NYSE·Nasdaq 파일럿을 참고해 상장주식 토큰화 모델검증·시범사업을 병행합니다.",
+        ),
+        (
+            "2단계",
+            "1단계의 안정성·효율성과 시장수요를 점검하면서 공모증권 등 기술적으로 가능한 범위까지 확대합니다.",
+        ),
+        (
+            "3단계",
+            "스테이블코인 등을 결제수단으로 연결해 온체인 결제를 구현합니다.",
+        ),
+        (
+            "전환 조건",
+            "2·3단계 시점은 1단계 안정성·효율성, 시장의 기술혁신 속도, 스테이블코인 법제화에 따라 달라집니다.",
+        ),
+        (
+            "유통",
+            "기존 증권사·장외거래소는 인가받은 업무범위 안에서 별도 추가인가 없이 취급할 수 있고, 장외거래소 일반투자자 한도는 거래소별 연간 순매수 1억원입니다.",
+        ),
+        (
+            "등록요건",
+            "발행인 계좌관리기관은 자기자본 40억원과 계좌관리·내부통제·전산 전문인력, 전산·보안 요건을 갖추는 방향입니다.",
+        ),
+        (
+            "다음 일정",
+            "2026년 9월말 하위법규 개정안을 입법예고하고, 예탁원·증권사가 인프라를 구축해 2027년 2월 4일 1단계를 시행할 계획입니다.",
+        ),
+    ]
 
 
 def main() -> None:
@@ -229,14 +341,16 @@ def main() -> None:
                 x["title"],
             ),
         )
-        visible = priority[:8]
+        groups = group_items(priority)
+        visible = groups[:6]
         lines = [
             "🔔 <b>한국은행 자산토큰화·국채토큰화</b>",
             "<b>새 공식 업데이트</b>",
             "",
-            f"<b>신규 {len(priority)}건</b>  ·  {html.escape(display_time(now_dt))}",
+            f"<b>신규 {len(priority)}건 · {len(groups)}개 이슈</b>  ·  {html.escape(display_time(now_dt))}",
         ]
-        for idx, item in enumerate(visible, 1):
+        for idx, group in enumerate(visible, 1):
+            item = representative_item(group)
             icon = CATEGORY_ICON.get(item["category"], "•")
             category = html.escape(item["category"])
             title = html.escape(readable_title(item["title"]))
@@ -247,12 +361,21 @@ def main() -> None:
                 "<blockquote>",
                 f"{icon} <b>{idx}. {category}</b>",
                 f"<b>{title}</b>",
-                f"<b>핵심</b>  {interpretation}",
-                f"출처  {source}  ·  {source_link(item['url'])}",
+                f"<b>핵심 해석</b>  {interpretation}",
+            ]
+            details = special_event_details(group)
+            if details:
+                lines.append("")
+                for label, value in details:
+                    lines.append(f"<b>{html.escape(label)}</b>  {html.escape(value)}")
+            lines += [
+                "",
+                f"출처  {source}",
+                event_links(group),
                 "</blockquote>",
             ]
-        if len(priority) > len(visible):
-            lines += ["", f"그 외 신규 항목 {len(priority)-len(visible)}건"]
+        if len(groups) > len(visible):
+            lines += ["", f"그 외 신규 이슈 {len(groups)-len(visible)}건"]
         if errors:
             lines += [
                 "",
