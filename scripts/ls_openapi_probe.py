@@ -56,7 +56,9 @@ def rest(token: str, tr_cd: str, body: dict) -> dict:
         data=json.dumps(body),
         timeout=30,
     )
-    r.raise_for_status()
+    if not r.ok:
+        text = (r.text or "").replace("\n", " ")[:800]
+        raise RuntimeError(f"{tr_cd} HTTP {r.status_code}: {text}")
     d = r.json()
     if str(d.get("rsp_cd") or "00000") not in ("00000", ""):
         raise RuntimeError(f"{tr_cd} failed: {d.get('rsp_cd')} {d.get('rsp_msg')}")
@@ -74,8 +76,8 @@ def probe_ws(token: str, futcode: str | None) -> dict:
             "body": {"tr_cd": tr_cd, "tr_key": tr_key},
         }))
     received = []
-    deadline = time.time() + 4.0
-    while time.time() < deadline and len(received) < 8:
+    deadline = time.time() + 5.0
+    while time.time() < deadline and len(received) < 10:
         try:
             raw = ws.recv()
         except Exception:
@@ -103,26 +105,27 @@ def main() -> int:
     now = datetime.now(KST)
     token = get_token()
 
-    futures = rest(token, "t8432", {"t8432InBlock": {"gubun": "1"}}).get("t8432OutBlock") or []
+    # 2026 current LS OpenAPI guide: t8467 is the current index-futures master TR.
+    futures = rest(token, "t8467", {"t8467InBlock": {"gubun": "1"}}).get("t8467OutBlock") or []
     futcode = str((futures[0] if futures else {}).get("shcode") or "").strip() or None
 
+    # Current regular index-option master. Sunday probe only validates master availability;
+    # ATM/near-OTM selection for the realtime watcher is done on a market day.
+    options = []
+    option_error = None
+    try:
+        options = rest(token, "t8433", {"t8433InBlock": {"dummy": ""}}).get("t8433OutBlock") or []
+    except Exception as exc:
+        option_error = f"{type(exc).__name__}: {exc}"
+
+    # Weekly discovery conventions have changed across LS/Xing revisions. Probe it only as
+    # an optional capability and never fail the credential test if unsupported.
     weekly = []
     weekly_error = None
     try:
         weekly = rest(token, "t8435", {"t8435InBlock": {"gubun": "WK"}}).get("t8435OutBlock") or []
     except Exception as exc:
         weekly_error = f"{type(exc).__name__}: {exc}"
-
-    regular_options = []
-    regular_error = None
-    try:
-        yyyymm = now.strftime("%Y%m")
-        board = rest(token, "t2301", {"t2301InBlock": {"yyyymm": yyyymm, "gubun": "G"}})
-        calls = board.get("t2301OutBlock1") or []
-        puts = board.get("t2301OutBlock2") or []
-        regular_options = [{"side": "call", **x} for x in calls[:3]] + [{"side": "put", **x} for x in puts[:3]]
-    except Exception as exc:
-        regular_error = f"{type(exc).__name__}: {exc}"
 
     ws_result = probe_ws(token, futcode)
 
@@ -135,17 +138,18 @@ def main() -> int:
             "shcode": futcode,
             "expcode": (futures[0] if futures else {}).get("expcode"),
         },
+        "index_option_count": len(options),
+        "index_option_sample": [
+            {k: x.get(k) for k in ("hname", "shcode", "expcode", "recprice")}
+            for x in options[:5]
+        ],
+        "index_option_error": option_error,
         "weekly_option_count": len(weekly),
         "weekly_sample": [
             {k: x.get(k) for k in ("hname", "shcode", "expcode", "recprice")}
             for x in weekly[:5]
         ],
         "weekly_error": weekly_error,
-        "regular_option_sample": [
-            {k: x.get(k) for k in ("side", "actprice", "optcode", "price", "atmgubun")}
-            for x in regular_options
-        ],
-        "regular_error": regular_error,
         "websocket": ws_result,
     }
     OUT.write_text(json.dumps(safe, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -153,13 +157,21 @@ def main() -> int:
         "# LS증권 OpenAPI 연결 검증\n\n"
         f"- 조회: {now:%Y-%m-%d %H:%M:%S} KST\n"
         "- Access Token: 발급 성공\n"
-        f"- KOSPI200 지수선물 마스터: {len(futures)}개 / 최근월물 {futcode or '미확인'}\n"
-        f"- 위클리옵션 마스터: {len(weekly)}개" + (f" / 오류 {weekly_error}" if weekly_error else "") + "\n"
-        f"- 정규 옵션 표본: {len(regular_options)}개" + (f" / 오류 {regular_error}" if regular_error else "") + "\n"
+        f"- KOSPI200 지수선물 마스터(t8467): {len(futures)}개 / 최근월물 {futcode or '미확인'}\n"
+        f"- 지수옵션 마스터(t8433): {len(options)}개" + (f" / 오류 {option_error}" if option_error else "") + "\n"
+        f"- 위클리옵션 추가 탐색: {len(weekly)}개" + (f" / 미지원 가능 {weekly_error}" if weekly_error else "") + "\n"
         f"- WebSocket 접속: {'성공' if ws_result.get('connected') else '실패'}\n",
         encoding="utf-8",
     )
-    print(json.dumps({"ls_probe_ok": True, "front_future": futcode, "weekly_count": len(weekly), "ws_connected": True}, ensure_ascii=False))
+    print(json.dumps({
+        "ls_probe_ok": True,
+        "front_future": futcode,
+        "futures_count": len(futures),
+        "option_count": len(options),
+        "weekly_count": len(weekly),
+        "ws_connected": True,
+        "ws_messages": len(ws_result.get("received") or []),
+    }, ensure_ascii=False))
     return 0
 
 
