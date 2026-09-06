@@ -19,6 +19,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v14.py"
       - "scripts/lng_supply_crisis_alert_v15.py"
       - "scripts/lng_supply_crisis_alert_v16.py"
+      - "scripts/lng_supply_crisis_alert_v17.py"
 
 permissions:
   contents: write
@@ -43,60 +44,64 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v16 monitor
+      - name: Validate v17 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py
           python - <<'PY'
           import sys
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v16 as v16
+          import lng_supply_crisis_alert_v17 as v17
 
           fixture = """
           실제 이전 최고 최저 날짜 단위 업데이트 주기 23.76 23.61 69.96 2.00 2012 - 2026 USD / MMBTU 매일
           LNG JKM 23.76 0.15 0.61%
           2026년 9월 2일 lng jkm은 23.76 usd/mmbtu로 상승했으며, 전날 대비 0.61% 증가했습니다.
           """
-          parsed = v16.parse_te_jkm(fixture)
+          parsed = v17.v16.parse_te_jkm(fixture)
           assert parsed["actual"] == 23.76
           assert parsed["previous"] == 23.61
           assert parsed["source_date"] == "2026-09-02"
 
-          qatar_item = core.NewsItem(
-              category="qatar_supply", polarity="worsening", subtype="qatar_force_majeure_november",
-              title="QatarEnergy cancels gas deliveries to Italy's Edison until early November over Iran war",
-              source="Reuters", link="https://example.com/qatar", published_utc="2026-09-03T00:00:00+00:00",
-              published_epoch=1788393600.0, official=False, event_id="qatar-nov-test",
+          marine_item = core.NewsItem(
+              category="marine_lng_fuel_demand",
+              polarity="easing",
+              subtype="marine_lng_orders_2024_high",
+              title="Alternative-Fuel Ship Orders Surge in August as LNG Drives Strongest Month Since 2024",
+              source="gCaptain",
+              link="https://example.com/marine",
+              published_utc="2026-09-03T00:00:00+00:00",
+              published_epoch=1788393600.0,
+              official=False,
+              event_id="marine-orders-test",
           )
-          jkm_item = core.NewsItem(
-              category="asia_procurement", polarity="worsening", subtype="asia_jkm_2022_high",
-              title="JKM soars to highest since December 2022 as Middle East war shuts arbitrage window",
-              source="S&P Global", link="https://example.com/jkm", published_utc="2026-09-03T01:00:00+00:00",
-              published_epoch=1788397200.0, official=False, event_id="jkm-high-test",
-          )
-          groups = [
-              {"category":"qatar_supply","polarity":"worsening","subtype":"qatar_force_majeure_november","event_id":"qatar-nov-test","latest_epoch":qatar_item.published_epoch,"evidence":[qatar_item],"verification":"카타르 공급 장기화 조기신호·로이터 확인"},
-              {"category":"asia_procurement","polarity":"worsening","subtype":"asia_jkm_2022_high","event_id":"jkm-high-test","latest_epoch":jkm_item.published_epoch,"evidence":[jkm_item],"verification":"Platts JKM 가격평가 원천·S&P 글로벌 확인"},
-          ]
-          v16.v14.fetch_verified_fx = lambda currency: {
-              "currency": currency, "symbol": "KRW=X", "rate": 1420.00,
-              "timestamp_utc": "2026-09-04T03:00:00+00:00", "timestamp_kst": "2026-09-04 12:00 KST", "source": "fixture"
+          marine_group = {
+              "category":"marine_lng_fuel_demand",
+              "polarity":"easing",
+              "subtype":"marine_lng_orders_2024_high",
+              "event_id":"marine-orders-test",
+              "latest_epoch":marine_item.published_epoch,
+              "evidence":[marine_item],
+              "verification":"DNV AFI 인용 해운 전문매체 조기신호",
           }
-          _, body, meta = v16.build_regular_alert_v16(groups, {}, set(), set())
-          for required in ["11월 초", "5개 추가 LNG 카고 취소", "25.908달러/MMBtu", "2022년 12월 이후 최고", "36,789원/MMBtu", "아시아 전체 구매자에게 동일하게 11월까지 연장됐다고 자동 확대해석하지 않음"]:
+          _, body, meta = v17.build_regular_alert_v17([marine_group], {}, set(), set())
+          for required in [
+              "52척", "2024년 10월 이후 최고 월간", "46척", "88.5%", "컨테이너선 <b>30척</b>",
+              "자동차운반선(PCTC) <b>12척</b>", "242척", "+27%", "99척",
+              "LNG를 연료로 쓰는 선박", "LNG선(LNG carrier) 46척 발주", "FGSS"
+          ]:
               assert required in body, required
-          assert qatar_item.title not in body
-          assert jkm_item.title not in body
-          assert meta["version"] == 16
-          print("v16_validation=true")
+          assert "두 달 100척 이상" not in body
+          assert meta["version"] == 17
+          print("v17_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v16.py --setup-test
+            python scripts/lng_supply_crisis_alert_v17.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v16.py
+            python scripts/lng_supply_crisis_alert_v17.py
           fi
 
       - name: Publish status summary
@@ -184,7 +189,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v16.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v17.py --finalize
 
       - name: Upload verification artifacts
         if: always()
