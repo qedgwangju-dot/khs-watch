@@ -7,6 +7,7 @@ on:
       - ".github/workflows/kospi-derivatives-flow-telegram-watch.yml"
       - "scripts/kospi_derivatives_flow_watch.py"
       - "scripts/ls_openapi_probe.py"
+      - "scripts/ls_ebest_realtime_probe.py"
   schedule:
     - cron: "*/5 4-6 * * 1-5"
   workflow_dispatch:
@@ -49,7 +50,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests websocket-client
+        run: python -m pip install --disable-pip-version-check --quiet requests websocket-client ebest
 
       - name: Verify exact Telegram route
         run: |
@@ -71,13 +72,22 @@ jobs:
           print(f"telegram_route_valid=true bot=@{actual}")
           PY
 
-      - name: Verify LS OpenAPI credentials and realtime route
+      - name: Verify LS OpenAPI official realtime client
         if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && contains(github.event.head_commit.message, '[ls-test]'))
         run: |
-          rm -f out/ls_openapi_probe.json out/ls_openapi_probe_status.md
-          python -m py_compile scripts/ls_openapi_probe.py
-          python scripts/ls_openapi_probe.py
-          cat out/ls_openapi_probe_status.md >> "$GITHUB_STEP_SUMMARY"
+          rm -f out/ls_ebest_realtime_probe.json
+          python -m py_compile scripts/ls_ebest_realtime_probe.py
+          python scripts/ls_ebest_realtime_probe.py
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('out/ls_ebest_realtime_probe.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          print('## LS증권 공식 실시간 클라이언트 검증')
+          print(f"- 최근월물 선물: {d.get('front_future')}")
+          print(f"- 위클리옵션 표본: {d.get('weekly_option_sample')}")
+          for r in d.get('registrations') or []:
+              print(f"- {r.get('tr_cd')} 등록: {'성공' if r.get('ok') else '실패'}")
+          PY
 
       - name: Run KOSPI derivatives flow watcher
         run: |
@@ -97,19 +107,16 @@ jobs:
           cat > out/kospi_derivatives_flow_connection_test.html <<'EOF'
           ✅ <b>코스피 파생·수급 경보 연결 정상</b>
 
-          <b>실시간 데이터 업그레이드</b>
+          <b>LS증권 실시간 데이터 연결</b>
           • 송출 봇: <b>@khs887900887900008879_bot</b>
-          • LS증권 OpenAPI: <b>APP Key·Secret 인증 검증</b>
-          • LS WebSocket: <b>지수 IJ_ · KOSPI 프로그램매매 PM_ · KOSPI200 선물 FC0</b> 연결 검증
-          • 파생 종목 마스터에서 최근월물 선물 및 옵션 종목을 자동 탐색
+          • LS증권 APP Key·Secret 인증: <b>정상</b>
+          • LS 공식 Python 클라이언트로 <b>지수 IJ_ · 프로그램매매 PM_ · KOSPI200 선물 FC0 · 옵션 OC0</b> 등록 검증
+          • 최근월물 선물·위클리옵션 종목은 마스터에서 자동 탐색
 
-          <b>기존 경보 기준</b>
-          • KOSPI 10분 변화 <b>-1.50% 이하</b> 또는 최근 15분 고점 대비 <b>-2.00% 이하</b>
-          • 급락 구간 저점 대비 <b>+1.20% 이상 회복</b> 시 되돌림 경보
-          • 원인 확정 전 불법 시세조종·업틱룰 예외 공매도로 단정하지 않음
-
-          <b>다음 단계</b>
-          • 평일 장중에는 5분 스냅샷 방식 대신 LS 실시간 스트림을 상시 연결해 선물 선행·프로그램 매도·옵션 급등을 함께 판정
+          <b>경보 기준</b>
+          • KOSPI 10분 <b>-1.50% 이하</b> 또는 최근 15분 고점 대비 <b>-2.00% 이하</b>
+          • 저점 대비 <b>+1.20% 이상</b> 회복 시 되돌림 경보
+          • 실시간 파생·프로그램 수급으로 급락 원인 판별을 보강
           EOF
 
       - name: Send Telegram messages
@@ -126,42 +133,24 @@ jobs:
           actual = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or actual.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
-          files = [
-              pathlib.Path("out/kospi_derivatives_flow_connection_test.html"),
-              pathlib.Path("out/kospi_derivatives_flow_alert.html"),
-          ]
+          files = [pathlib.Path("out/kospi_derivatives_flow_connection_test.html"), pathlib.Path("out/kospi_derivatives_flow_alert.html")]
           sent_ids = []
           for path in files:
-              if not path.exists():
-                  continue
+              if not path.exists(): continue
               text = path.read_text(encoding="utf-8").strip()
-              if not text:
-                  continue
-              chunks = []
-              while len(text) > 3800:
-                  cut = text.rfind("\n\n", 0, 3800)
-                  if cut < 1000:
-                      cut = 3800
-                  chunks.append(text[:cut].strip())
-                  text = text[cut:].strip()
-              if text:
-                  chunks.append(text)
+              if not text: continue
+              chunks=[]
+              while len(text)>3800:
+                  cut=text.rfind("\n\n",0,3800)
+                  if cut<1000: cut=3800
+                  chunks.append(text[:cut].strip()); text=text[cut:].strip()
+              if text: chunks.append(text)
               for chunk in chunks:
-                  payload = urllib.parse.urlencode({
-                      "chat_id": chat_id,
-                      "text": chunk,
-                      "parse_mode": "HTML",
-                      "disable_web_page_preview": "true",
-                  }).encode("utf-8")
-                  req = urllib.request.Request(
-                      f"https://api.telegram.org/bot{token}/sendMessage",
-                      data=payload,
-                      method="POST",
-                  )
-                  with urllib.request.urlopen(req, timeout=30) as response:
-                      result = json.loads(response.read().decode("utf-8"))
-                  if not result.get("ok"):
-                      raise RuntimeError(f"Telegram rejected message: {result}")
+                  payload=urllib.parse.urlencode({"chat_id":chat_id,"text":chunk,"parse_mode":"HTML","disable_web_page_preview":"true"}).encode("utf-8")
+                  req=urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage",data=payload,method="POST")
+                  with urllib.request.urlopen(req,timeout=30) as response:
+                      result=json.loads(response.read().decode("utf-8"))
+                  if not result.get("ok"): raise RuntimeError(f"Telegram rejected message: {result}")
                   sent_ids.append(result["result"].get("message_id"))
           print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(sent_ids)} ids={sent_ids}")
           PY
@@ -177,14 +166,9 @@ jobs:
             git reset --hard origin/main
             cp /tmp/kospi_derivatives_flow_state.json data/kospi_derivatives_flow_state.json
             git add data/kospi_derivatives_flow_state.json
-            if git diff --cached --quiet; then
-              echo "KOSPI derivatives flow state unchanged"
-              exit 0
-            fi
+            if git diff --cached --quiet; then echo "KOSPI derivatives flow state unchanged"; exit 0; fi
             git commit -m "Update KOSPI derivatives flow state"
-            if git push origin HEAD:main; then
-              exit 0
-            fi
+            if git push origin HEAD:main; then exit 0; fi
             sleep $((attempt * 3))
           done
           exit 1
@@ -199,8 +183,7 @@ jobs:
             out/kospi_derivatives_flow_errors.log
             out/kospi_derivatives_flow_alert.html
             out/kospi_derivatives_flow_connection_test.html
-            out/ls_openapi_probe.json
-            out/ls_openapi_probe_status.md
+            out/ls_ebest_realtime_probe.json
             data/kospi_derivatives_flow_state.json
           if-no-files-found: ignore
           retention-days: 14
