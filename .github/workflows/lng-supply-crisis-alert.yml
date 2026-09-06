@@ -91,7 +91,7 @@ jobs:
               "LNG를 연료로 쓰는 선박", "LNG선(LNG carrier) 46척 발주", "FGSS"
           ]:
               assert required in body, required
-          assert "두 달 100척 이상" not in body
+          assert "7월 47척 + 8월 52척 = <b>99척</b>" in body
           assert meta["version"] == 17
           print("v17_validation=true")
           PY
