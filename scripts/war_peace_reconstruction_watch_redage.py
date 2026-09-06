@@ -2,7 +2,7 @@
 import argparse
 import re
 
-import war_peace_reconstruction_watch_maxcapture as prev
+import war_peace_reconstruction_watch_compact as prev
 
 watch = prev.watch
 runner = prev.runner
@@ -12,10 +12,8 @@ _prev_build_alert = watch.build_alert
 
 
 def _highlight_relative_age(text):
-    """Telegram 일반 메시지는 글자색을 직접 지정할 수 없어, 경과시간에만 빨간 표시를 붙여 강조한다."""
-    # 이미 빨간 표시가 붙은 경우 중복 방지
+    """Telegram 일반 메시지는 글자색 지정이 안 되므로 경과시간에만 빨간 표시를 붙여 강조한다."""
     text = re.sub(r"(?<!🟥 )(<b>\d{1,5}분 전</b>)", r"🟥 \1", text)
-    # 혹시 굵게 처리되지 않은 경과시간도 동일하게 정규화
     text = re.sub(r"(?<!🟥 )(?<!<b>)(\d{1,5}분 전)(?!</b>)", r"🟥 <b>\1</b>", text)
     return text
 
