@@ -1,17 +1,18 @@
 {
   "version": 2,
   "setup_test_sent_at_kst": "2026-08-03T07:51:17+09:00",
-  "last_alert_at_kst": "2026-09-06T10:19:54+09:00",
+  "last_alert_at_kst": "2026-09-06T11:51:04+09:00",
   "alerted_event_ids": [
     "2bfc82a83816d87b7ac5",
-    "0c73bd59d008de4c4568",
-    "afb5c771ef035dda00ef",
-    "a138cf877b55be8f46cb",
-    "fd24822a85fcd171cc38",
-    "eba7d08db35bd14141aa",
     "78d1f3938d5056d150de",
+    "8d2846dfb4add3da1967",
+    "fd24822a85fcd171cc38",
+    "afb5c771ef035dda00ef",
+    "0c73bd59d008de4c4568",
+    "eba7d08db35bd14141aa",
     "1937452cca4dcc88c596",
-    "8d2846dfb4add3da1967"
+    "a138cf877b55be8f46cb",
+    "afbfcb6302f3eb39b3de"
   ],
   "active_market_signals": [
     "brent_above_90",
