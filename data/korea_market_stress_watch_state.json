@@ -1,23 +1,23 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-06T13:37:55+09:00",
+  "updated_at_kst": "2026-09-06T17:56:18+09:00",
   "seen_event_keys": [
-    "foreign3d_neg:2026-09-02:postclose",
-    "policy_spread:2026-08-27:0.75",
-    "foreign1d_neg:2026-08-31",
-    "fx_1350_down:2026-09-04",
-    "foreign1d_neg:2026-09-02:final",
     "foreign3d_neg:2026-08-27",
-    "capex:13cbe150930d23d8",
     "fx_daily_down:2026-09-02",
+    "foreign1d_neg:2026-09-02:postclose",
+    "fx_1350_down:2026-09-04",
+    "foreign1d_neg:2026-08-31",
+    "policy_spread:2026-08-27:0.75",
+    "foreign1d_neg:2026-09-02:final",
+    "capex:13cbe150930d23d8",
     "foreign3d_neg:2026-09-02:final",
-    "foreign1d_neg:2026-09-02:postclose"
+    "foreign3d_neg:2026-09-02:postclose"
   ],
   "active_keys": [
     "fx_1350_down:2026-09-04"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-06T13:37:55+09:00",
+    "checked_at_kst": "2026-09-06T17:56:18+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-04",
