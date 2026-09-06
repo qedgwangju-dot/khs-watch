@@ -16,22 +16,6 @@ on:
         options:
           - "false"
           - "true"
-  pull_request:
-    paths:
-      - ".github/workflows/war-peace-reconstruction-telegram-watch.yml"
-      - "scripts/war_peace_reconstruction_watch.py"
-      - "scripts/war_peace_reconstruction_watch_runner.py"
-      - "scripts/war_peace_reconstruction_watch_clean.py"
-      - "scripts/war_peace_reconstruction_watch_live.py"
-      - "scripts/war_peace_reconstruction_watch_precise.py"
-      - "scripts/war_peace_reconstruction_watch_breaking.py"
-      - "scripts/war_peace_reconstruction_watch_flashwire.py"
-      - "scripts/war_peace_reconstruction_watch_interfax.py"
-      - "scripts/war_peace_reconstruction_watch_apflash.py"
-      - "scripts/war_peace_reconstruction_watch_maxcapture.py"
-      - "scripts/war_peace_reconstruction_watch_compact.py"
-      - "scripts/war_peace_reconstruction_watch_redage.py"
-      - "scripts/war_peace_reconstruction_watch_reciprocal.py"
 
 permissions:
   contents: write
@@ -45,7 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
-      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
       TELEGRAM_TEST: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'Test') && 'true' || (github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false') }}
 
     steps:
@@ -72,13 +55,14 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch_compact.py
           python -m py_compile scripts/war_peace_reconstruction_watch_redage.py
           python -m py_compile scripts/war_peace_reconstruction_watch_reciprocal.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_allies.py
 
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch_reciprocal.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_allies.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch_reciprocal.py
+            python scripts/war_peace_reconstruction_watch_allies.py
           fi
 
       - name: Publish status summary
@@ -93,7 +77,7 @@ jobs:
           fi
 
       - name: Send Telegram alert
-        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
+        if: hashFiles('out/war_peace_reconstruction_alert.txt') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.WAR_PEACE_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.WAR_PEACE_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
@@ -112,14 +96,12 @@ jobs:
           chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
           if not token or not chat_id:
-              raise RuntimeError("WAR_PEACE_TELEGRAM_BOT_TOKEN or a Telegram chat id secret is missing")
+              raise RuntimeError("WAR_PEACE_TELEGRAM_BOT_TOKEN or Telegram chat id secret is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
-          if not identity.get("ok"):
-              raise RuntimeError(f"Telegram bot identity check failed: {identity}")
           actual = identity.get("result", {}).get("username", "")
-          if actual != expected:
+          if not identity.get("ok") or actual != expected:
               raise RuntimeError(f"Telegram bot mismatch: expected=@{expected}, actual=@{actual or 'unknown'}")
 
           text = pathlib.Path("out/war_peace_reconstruction_alert.txt").read_text(encoding="utf-8").strip()[:4096]
@@ -129,11 +111,7 @@ jobs:
               "parse_mode": "HTML",
               "disable_web_page_preview": "true",
           }).encode("utf-8")
-          req = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/sendMessage",
-              data=payload,
-              method="POST",
-          )
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
           with urllib.request.urlopen(req, timeout=25) as response:
               result = json.loads(response.read().decode("utf-8"))
           if not result.get("ok"):
@@ -152,11 +130,11 @@ jobs:
           PY
 
       - name: Finalize state after confirmed delivery
-        if: success() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch_reciprocal.py --finalize
+        if: success() && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
+        run: python scripts/war_peace_reconstruction_watch_allies.py --finalize
 
       - name: Commit confirmed alert state
-        if: success() && github.event_name != 'pull_request' && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
+        if: success() && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
