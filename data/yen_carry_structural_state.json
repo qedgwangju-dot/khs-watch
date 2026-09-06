@@ -1,15 +1,15 @@
 {
   "initialized": true,
   "source_dates": {
-    "auction10": null,
+    "auction10": "9/1/2026",
     "auction30": "9/3/2026",
     "jgb10": "2026/9/3",
     "mof_week": "2026�D8�D23�`8�D29"
   },
-  "updated_at_kst": "2026-09-07T03:35:02+09:00",
+  "updated_at_kst": "2026-09-07T05:30:37+09:00",
   "values": {
-    "auction10_bid_to_cover": null,
-    "auction10_tail_bp": null,
+    "auction10_bid_to_cover": 3.286338962605549,
+    "auction10_tail_bp": 1.6000000000000014,
     "auction30_bid_to_cover": 3.788031565103025,
     "auction30_tail_bp": 2.0999999999999908,
     "jgb10": 2.966,
