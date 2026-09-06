@@ -20,6 +20,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v15.py"
       - "scripts/lng_supply_crisis_alert_v16.py"
       - "scripts/lng_supply_crisis_alert_v17.py"
+      - "scripts/lng_supply_crisis_alert_v18.py"
 
 permissions:
   contents: write
@@ -44,64 +45,105 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v17 monitor
+      - name: Validate v18 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py
           python - <<'PY'
           import sys
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v17 as v17
+          import lng_supply_crisis_alert_v18 as v18
 
-          fixture = """
-          실제 이전 최고 최저 날짜 단위 업데이트 주기 23.76 23.61 69.96 2.00 2012 - 2026 USD / MMBTU 매일
-          LNG JKM 23.76 0.15 0.61%
-          2026년 9월 2일 lng jkm은 23.76 usd/mmbtu로 상승했으며, 전날 대비 0.61% 증가했습니다.
-          """
-          parsed = v17.v16.parse_te_jkm(fixture)
-          assert parsed["actual"] == 23.76
-          assert parsed["previous"] == 23.61
-          assert parsed["source_date"] == "2026-09-02"
-
-          marine_item = core.NewsItem(
-              category="marine_lng_fuel_demand",
-              polarity="easing",
-              subtype="marine_lng_orders_2024_high",
-              title="Alternative-Fuel Ship Orders Surge in August as LNG Drives Strongest Month Since 2024",
-              source="gCaptain",
-              link="https://example.com/marine",
-              published_utc="2026-09-03T00:00:00+00:00",
-              published_epoch=1788393600.0,
+          storage_item = core.NewsItem(
+              category="europe_storage",
+              polarity="worsening",
+              subtype="storage_lng_competition",
+              title="Europe gas storage shortfall raises global LNG competition and winter price risk",
+              source="Bloomberg",
+              link="https://example.com/storage",
+              published_utc="2026-09-05T00:00:00+00:00",
+              published_epoch=1788566400.0,
               official=False,
-              event_id="marine-orders-test",
+              event_id="storage-v18-test",
           )
-          marine_group = {
-              "category":"marine_lng_fuel_demand",
-              "polarity":"easing",
-              "subtype":"marine_lng_orders_2024_high",
-              "event_id":"marine-orders-test",
-              "latest_epoch":marine_item.published_epoch,
-              "evidence":[marine_item],
-              "verification":"DNV AFI 인용 해운 전문매체 조기신호",
+          storage_group = {
+              "category":"europe_storage",
+              "polarity":"worsening",
+              "subtype":"storage_lng_competition",
+              "event_id":"storage-v18-test",
+              "latest_epoch":storage_item.published_epoch,
+              "evidence":[storage_item],
+              "verification":"유럽 저장부족 조기신호 + GIE 공식 재고 검산",
           }
-          _, body, meta = v17.build_regular_alert_v17([marine_group], {}, set(), set())
+
+          fixture_gie = {
+              "date":"2026-09-05",
+              "trend_pp":0.25,
+              "stored_twh":753.00,
+              "fill_pct":66.60,
+              "capacity_twh":1130.63,
+              "net_change_twh_est":2.83,
+              "gaps":{
+                  "75":{"target_pct":75.0,"gap_pp":8.4,"required_twh":95.0},
+                  "80":{"target_pct":80.0,"gap_pp":13.4,"required_twh":151.5},
+                  "90":{"target_pct":90.0,"gap_pp":23.4,"required_twh":264.6},
+              },
+              "pace":{
+                  "75":{"days_to_oct1":26,"twh_per_day_to_oct1":3.65,"days_to_dec1":87,"twh_per_day_to_dec1":1.09},
+                  "80":{"days_to_oct1":26,"twh_per_day_to_oct1":5.83,"days_to_dec1":87,"twh_per_day_to_dec1":1.74},
+                  "90":{"days_to_oct1":26,"twh_per_day_to_oct1":10.18,"days_to_dec1":87,"twh_per_day_to_dec1":3.04},
+              },
+              "countries":{
+                  "DE":{"label":"독일","trend_pp":0.24,"stored_twh":133.82,"fill_pct":54.28},
+                  "NL":{"label":"네덜란드","trend_pp":0.50,"stored_twh":71.51,"fill_pct":49.64},
+                  "IT":{"label":"이탈리아","trend_pp":0.03,"stored_twh":169.82,"fill_pct":83.48},
+                  "FR":{"label":"프랑스","trend_pp":0.49,"stored_twh":91.07,"fill_pct":73.51},
+              },
+              "source":"fixture",
+          }
+          v18.fetch_gie_storage_v18 = lambda: fixture_gie
+          v18.v15.fetch_gie_storage = lambda: fixture_gie
+          v18.v14.fetch_verified_fx = lambda currency: {
+              "currency": currency,
+              "symbol": f"{currency}KRW=X",
+              "rate": 1570.0 if currency == "EUR" else 1350.0,
+              "timestamp_utc":"2026-09-06T00:00:00+00:00",
+              "timestamp_kst":"2026-09-06 09:00 KST",
+              "source":"fixture",
+          }
+
+          quotes = {
+              "ttf": core.Quote(
+                  key="ttf", symbol="TE-KO:EU-GAS", label="TTF", unit="유로/MWh",
+                  price=75.0, previous_close=73.0, change_pct=2.74,
+                  timestamp_epoch=1788652800.0, timestamp_utc="2026-09-06T00:00:00+00:00",
+                  age_minutes=0, source_note="fixture",
+              ),
+              "jkm": core.Quote(
+                  key="jkm", symbol="TE-KO:LNG-JKM", label="JKM", unit="달러/MMBtu",
+                  price=25.0, previous_close=24.0, change_pct=4.17,
+                  timestamp_epoch=1788652800.0, timestamp_utc="2026-09-06T00:00:00+00:00",
+                  age_minutes=0, source_note="fixture",
+              ),
+          }
+          _, body, meta = v18.build_regular_alert_v18([storage_group], quotes, set(), set())
           for required in [
-              "52척", "2024년 10월 이후 최고 월간", "46척", "88.5%", "컨테이너선 <b>30척</b>",
-              "자동차운반선(PCTC) <b>12척</b>", "242척", "+27%", "99척",
-              "LNG를 연료로 쓰는 선박", "LNG선(LNG carrier) 46척 발주", "FGSS"
+              "저장 충전속도·겨울 스트레스 업그레이드", "95.0TWh", "3.65TWh/일",
+              "독일 54.28%", "네덜란드 49.64%", "유럽 TTF 단위정규화",
+              "유럽-아시아 가격차", "100유로 스트레스선", "현재가격 환산비용"
           ]:
               assert required in body, required
-          assert "7월 47척 + 8월 52척 = <b>99척</b>" in body
-          assert meta["version"] == 17
-          print("v17_validation=true")
+          assert 100.0 in core.PRICE_SPECS["ttf"]["levels"]
+          assert meta["version"] == 18
+          print("v18_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v17.py --setup-test
+            python scripts/lng_supply_crisis_alert_v18.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v17.py
+            python scripts/lng_supply_crisis_alert_v18.py
           fi
 
       - name: Publish status summary
@@ -189,7 +231,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v17.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v18.py --finalize
 
       - name: Upload verification artifacts
         if: always()
