@@ -1,0 +1,78 @@
+name: Disaster reconstruction Telegram watch
+
+on:
+  schedule:
+    - cron: "4,9,14,19,24,29,34,39,44,49,54,59 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: disaster-reconstruction-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate monitor
+        run: python -m py_compile scripts/disaster_reconstruction_watch.py
+      - name: Check disaster reconstruction conditions
+        run: python scripts/disaster_reconstruction_watch.py
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/disaster_reconstruction_watch.md ]; then cat out/disaster_reconstruction_watch.md >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f out/disaster_reconstruction_alert.txt ]; then printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/disaster_reconstruction_alert.txt >> "$GITHUB_STEP_SUMMARY"; fi
+      - name: Send Telegram alert
+        if: hashFiles('out/disaster_reconstruction_alert.txt') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.WAR_PEACE_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.WAR_PEACE_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900_bot"
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+          chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          if not token or not chat_id: raise RuntimeError("Telegram secret missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r: identity = json.loads(r.read().decode())
+          actual = identity.get("result", {}).get("username", "")
+          if not identity.get("ok") or actual != expected: raise RuntimeError(f"Telegram bot mismatch: @{actual}")
+          text = pathlib.Path("out/disaster_reconstruction_alert.txt").read_text(encoding="utf-8").strip()[:4096]
+          payload = urllib.parse.urlencode({"chat_id": chat_id, "text": text, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode()
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
+          with urllib.request.urlopen(req, timeout=25) as r: result = json.loads(r.read().decode())
+          if not result.get("ok"): raise RuntimeError(f"Telegram rejected: {result}")
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={result.get('result',{}).get('message_id')}")
+          PY
+      - name: Finalize state after confirmed delivery
+        if: success() && hashFiles('out/disaster_reconstruction_alert.txt') != ''
+        run: python scripts/disaster_reconstruction_watch.py --finalize
+      - name: Commit confirmed alert state
+        if: success() && hashFiles('data/disaster_reconstruction_watch_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/disaster_reconstruction_watch_state.json
+          if ! git diff --cached --quiet; then git commit -m "Update disaster reconstruction watch state"; git pull --rebase origin main; git push; fi
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: disaster-reconstruction-${{ github.run_id }}
+          path: |
+            out/disaster_reconstruction_watch.md
+            out/disaster_reconstruction_alert.txt
+            out/disaster_reconstruction_pending.json
+          if-no-files-found: ignore
+          retention-days: 7
