@@ -9,6 +9,7 @@ on:
     paths:
       - ".github/workflows/japan-reserve-funding-watch.yml"
       - "scripts/japan_reserve_funding_watch.py"
+      - "scripts/japan_reserve_buyback_context.py"
       - "tests/test_japan_reserve_funding_watch.py"
       - "data/japan_reserve_funding_state.json"
 
@@ -47,10 +48,15 @@ jobs:
       - name: Validate reserve funding monitor
         run: |
           python -m py_compile scripts/japan_reserve_funding_watch.py
+          python -m py_compile scripts/japan_reserve_buyback_context.py
           PYTHONPATH=scripts python -m unittest tests/test_japan_reserve_funding_watch.py -v
 
       - name: Check intervention funding and Treasury confirmation channels
         run: PYTHONPATH=scripts python scripts/japan_reserve_funding_watch.py
+
+      - name: Append official Treasury buyback context
+        if: hashFiles('out/japan_reserve_funding_alert.html') != ''
+        run: PYTHONPATH=scripts python scripts/japan_reserve_buyback_context.py
 
       - name: Publish status
         if: always()
