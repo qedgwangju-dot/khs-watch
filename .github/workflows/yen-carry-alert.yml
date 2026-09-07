@@ -22,11 +22,13 @@ on:
       - "scripts/yen_carry_market_data_v2.py"
       - "scripts/yen_carry_alert_enrich.py"
       - "scripts/yen_carry_fx_shock.py"
+      - "scripts/yen_carry_telegram_format.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_alert.py"
       - "tests/test_yen_carry_alert_enrich.py"
       - "tests/test_yen_carry_market_data_v2.py"
       - "tests/test_yen_carry_fx_shock.py"
+      - "tests/test_yen_carry_telegram_format.py"
       - "tests/yen_carry_workflow_trigger.txt"
 
 permissions:
@@ -69,12 +71,14 @@ jobs:
           python -m py_compile scripts/yen_carry_market_data_v2.py
           python -m py_compile scripts/yen_carry_alert_enrich.py
           python -m py_compile scripts/yen_carry_fx_shock.py
+          python -m py_compile scripts/yen_carry_telegram_format.py
           python -m py_compile scripts/khs_source_fetch.py
           python -m unittest \
             tests/test_yen_carry_alert.py \
             tests/test_yen_carry_alert_enrich.py \
             tests/test_yen_carry_market_data_v2.py \
-            tests/test_yen_carry_fx_shock.py -v
+            tests/test_yen_carry_fx_shock.py \
+            tests/test_yen_carry_telegram_format.py -v
 
       - name: Validate dedicated Telegram route
         run: |
@@ -155,9 +159,13 @@ jobs:
           import json
           import os
           import pathlib
+          import sys
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
+
+          sys.path.insert(0, str(pathlib.Path("scripts").resolve()))
+          from yen_carry_telegram_format import render_telegram_html
 
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
@@ -194,11 +202,12 @@ jobs:
                   continue
               title = title_path.read_text(encoding="utf-8").strip()
               body = body_path.read_text(encoding="utf-8").strip()
-              text = f"{title}\n\n{body}"[:4096]
+              telegram_html = render_telegram_html(title, body, lane)
               payload = urllib.parse.urlencode(
                   {
                       "chat_id": chat_id,
-                      "text": text,
+                      "text": telegram_html,
+                      "parse_mode": "HTML",
                       "disable_web_page_preview": "true",
                   }
               ).encode("utf-8")
