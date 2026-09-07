@@ -1,32 +1,33 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-07T11:09:39+09:00",
+  "updated_at_kst": "2026-09-07T12:24:14+09:00",
   "seen_event_keys": [
-    "fx_daily_down:2026-09-02",
-    "foreign1d_neg:2026-09-02:final",
-    "policy_spread:2026-08-27:0.75",
-    "fx_1350_down:2026-09-04",
-    "foreign1d_neg:2026-09-02:postclose",
-    "fx_1350_down:2026-09-07",
-    "foreign3d_neg:2026-08-27",
-    "foreign1d_neg:2026-08-31",
     "foreign3d_neg:2026-09-02:postclose",
     "foreign3d_neg:2026-09-02:final",
-    "capex:13cbe150930d23d8"
+    "capex:13cbe150930d23d8",
+    "foreign1d_neg:2026-09-02:postclose",
+    "foreign1d_neg:2026-08-31",
+    "policy_spread:2026-08-27:0.75",
+    "fx_daily_down:2026-09-02",
+    "fx_1350_down:2026-09-04",
+    "fx_1350_down:2026-09-07",
+    "foreign3d_neg:2026-08-27",
+    "foreign1d_neg:2026-09-02:final"
   ],
   "active_keys": [
-    "fx_1350_down:2026-09-07"
+    "fx_1350_down:2026-09-07",
+    "foreign1d_pos:2026-09-07"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-07T11:09:39+09:00",
+    "checked_at_kst": "2026-09-07T12:24:14+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-07",
-      "value": 1344.4,
+      "value": 1346.4,
       "prev_date": "2026-09-04",
       "prev_value": 1349.5,
-      "change_krw": -5.1,
-      "change_pct": -0.3779,
+      "change_krw": -3.1,
+      "change_pct": -0.2297,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "ecos_official": {
         "date": "2026-09-07",
@@ -57,10 +58,10 @@
     },
     "foreign_flow": {
       "date": "2026-09-07",
-      "daily_eok": 8981.0,
-      "three_day_eok": 14191.0,
-      "daily_krw": 898100000000,
-      "three_day_krw": 1419100000000,
+      "daily_eok": 10158.0,
+      "three_day_eok": 15368.0,
+      "daily_krw": 1015800000000,
+      "three_day_krw": 1536800000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260907&sosok=01",
       "phase": "장중 참고"
     },
