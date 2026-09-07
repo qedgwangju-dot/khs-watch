@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Shared KRW conversion helpers using same-date Federal Reserve H.10 FX data."""
+"""Shared KRW conversion helpers with resilient daily-rate fallback."""
 from __future__ import annotations
 
 import csv
@@ -13,7 +13,7 @@ from dataclasses import dataclass
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 FRED_USDKRW = "https://fred.stlouisfed.org/series/DEXKOUS"
 FRED_USDJPY = "https://fred.stlouisfed.org/series/DEXJPUS"
-UA = "Mozilla/5.0 khs-watch-krw-fx/1.1"
+UA = "Mozilla/5.0 khs-watch-krw-fx/1.2"
 
 
 @dataclass(frozen=True)
@@ -22,6 +22,7 @@ class JpyKrwQuote:
     usdkrw: float
     usdjpy: float
     krw_per_yen: float
+    source: str = "Fed H.10/FRED"
 
     @property
     def krw_per_100_yen(self) -> float:
@@ -29,9 +30,6 @@ class JpyKrwQuote:
 
 
 def _fred_rows(series_id: str, max_rows: int = 60) -> dict[str, float]:
-    # fredgraph.csv without a date bound can return decades of history and has
-    # occasionally timed out on GitHub-hosted runners.  We only need the latest
-    # common H.10 date, so bound the request to recent observations and retry.
     today = dt.datetime.now(dt.timezone.utc).date()
     start = today - dt.timedelta(days=120)
     params = urllib.parse.urlencode({
@@ -74,12 +72,7 @@ def _fred_rows(series_id: str, max_rows: int = 60) -> dict[str, float]:
     return dict(rows[-max_rows:])
 
 
-def latest_jpy_krw() -> JpyKrwQuote:
-    """Return the latest common-date JPY/KRW cross rate.
-
-    DEXKOUS = KRW per USD, DEXJPUS = JPY per USD.
-    JPY/KRW = DEXKOUS / DEXJPUS. Different observation dates are never mixed.
-    """
+def _latest_jpy_krw_from_fred() -> JpyKrwQuote:
     krw = _fred_rows("DEXKOUS")
     jpy = _fred_rows("DEXJPUS")
     common = sorted(set(krw) & set(jpy))
@@ -92,7 +85,45 @@ def latest_jpy_krw() -> JpyKrwQuote:
     now = dt.datetime.now(dt.timezone.utc)
     usdkrw, day = _validate(usdkrw, day, now)
     usdjpy, _ = _validate(usdjpy, day, now)
-    return JpyKrwQuote(day, usdkrw, usdjpy, usdkrw / usdjpy)
+    return JpyKrwQuote(day, usdkrw, usdjpy, usdkrw / usdjpy, "Fed H.10/FRED")
+
+
+def _latest_jpy_krw_from_daily_api() -> JpyKrwQuote:
+    """Fallback when H.10/FRED is stale or temporarily unavailable.
+
+    Uses validated USD/KRW and direct JPY/KRW daily quotes from fx_api.
+    The direct JPY/KRW quote avoids mixing USD/JPY and USD/KRW observations
+    from different dates.
+    """
+    from fx_api import daily_krw
+
+    usd = daily_krw("USD")
+    jpy = daily_krw("JPY")
+    if usd.rate <= 0 or jpy.rate <= 0:
+        raise RuntimeError("fallback FX API returned non-positive rate")
+    usdjpy = usd.rate / jpy.rate
+    day = usd.date if usd.date == jpy.date else f"USD {usd.date}·JPY {jpy.date}"
+    source = f"{usd.source} + {jpy.source}"
+    return JpyKrwQuote(day, usd.rate, usdjpy, jpy.rate, source)
+
+
+def latest_jpy_krw() -> JpyKrwQuote:
+    """Return validated USD/KRW and JPY/KRW conversion rates.
+
+    Primary: same-date Fed H.10/FRED DEXKOUS and DEXJPUS.
+    Fallback: validated daily USD/KRW and direct JPY/KRW API quotes.
+    Never substitutes a hard-coded exchange rate.
+    """
+    try:
+        return _latest_jpy_krw_from_fred()
+    except Exception as fred_error:
+        try:
+            return _latest_jpy_krw_from_daily_api()
+        except Exception as api_error:
+            raise RuntimeError(
+                f"원화 환산용 환율 확보 실패: FRED={type(fred_error).__name__}; "
+                f"fallback={type(api_error).__name__}"
+            ) from api_error
 
 
 def yen_to_krw(yen_amount: float, quote: JpyKrwQuote) -> float:
