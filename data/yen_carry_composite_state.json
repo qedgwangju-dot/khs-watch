@@ -32,25 +32,25 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-09-08T06:50:15+09:00"
+    "updated_at_kst": "2026-09-08T07:04:27+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-09-08T06:47:51+09:00",
+  "updated_at_kst": "2026-09-08T07:02:05+09:00",
   "values": {
     "cftc_net_short": 102188,
     "cftc_net_short_pct_oi": 24.81001840332911,
-    "fx_12h_5m_sigma_bps": 2.702947768135836,
-    "fx_vol_ratio": 0.515787617183692,
+    "fx_12h_5m_sigma_bps": 2.7007550374346367,
+    "fx_vol_ratio": 0.5183012773816094,
     "jgb2": 1.83,
     "mof_latest_2w_outward_trillion_yen": -3.6267,
     "mof_prior_2w_outward_trillion_yen": 5.1074,
     "us_jp_2y_spread": 2.54,
-    "usdjpy": 154.35699462890625,
-    "usdjpy_12h_drawdown_pct": -0.26427756982946926,
-    "usdjpy_15m_pct": 0.012951536536680037,
-    "usdjpy_30m_pct": 0.03239502469378989,
-    "usdjpy_60m_pct": -0.0012949691634232302,
+    "usdjpy": 154.33099365234375,
+    "usdjpy_12h_drawdown_pct": -0.28107775557800185,
+    "usdjpy_15m_pct": -0.015549917955153168,
+    "usdjpy_30m_pct": 0.0019379001862757119,
+    "usdjpy_60m_pct": -0.0006525413221792271,
     "ust2": 4.37
   }
 }
