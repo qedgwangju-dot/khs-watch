@@ -27,9 +27,11 @@ jobs:
         with:
           python-version: "3.12"
       - name: Validate monitor
-        run: python -m py_compile scripts/disaster_reconstruction_watch.py
+        run: |
+          python -m py_compile scripts/disaster_reconstruction_watch.py
+          python -m py_compile scripts/disaster_reconstruction_watch_krw.py
       - name: Check disaster reconstruction conditions
-        run: python scripts/disaster_reconstruction_watch.py
+        run: python scripts/disaster_reconstruction_watch_krw.py
       - name: Publish status summary
         if: always()
         run: |
@@ -60,7 +62,7 @@ jobs:
           PY
       - name: Finalize state after confirmed delivery
         if: success() && hashFiles('out/disaster_reconstruction_alert.txt') != ''
-        run: python scripts/disaster_reconstruction_watch.py --finalize
+        run: python scripts/disaster_reconstruction_watch_krw.py --finalize
       - name: Commit confirmed alert state
         if: success() && hashFiles('data/disaster_reconstruction_watch_state.json') != ''
         run: |
