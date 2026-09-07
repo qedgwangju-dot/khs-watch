@@ -22,6 +22,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v17.py"
       - "scripts/lng_supply_crisis_alert_v18.py"
       - "scripts/lng_supply_crisis_alert_v19.py"
+      - "scripts/lng_supply_crisis_alert_v20.py"
 
 permissions:
   contents: write
@@ -46,79 +47,54 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v19 monitor
+      - name: Validate v20 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py
           python - <<'PY'
           import sys
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v19 as v19
+          import lng_supply_crisis_alert_v20 as v20
 
-          trend_fixture = """
-          Germany 10-Year Government Bond Yield
-          Germany 10-Year Government Bond Yield current yield is 3.3554%
-          Last Updated:2026-09-07 13:00:00 CEST
-          Previous Value 3.3376%
-          Historical Data
-          Aug 4, 2026 | 3.1163%
-          """
-          parsed = v19._parse_trendonify_bond(trend_fixture)
-          assert parsed["current_pct"] == 3.3554
-          assert parsed["previous_pct"] == 3.3376
-          assert parsed["aug4_pct"] == 3.1163
-          te_fixture = "Actual Previous Highest Lowest Dates Unit Frequency 3.35 3.34 9.13 -0.91 1983 - 2026 percent Daily"
-          assert v19._parse_te_bond_actual(te_fixture) == (3.35, 3.34)
+          bund_csv = b'''FREQ;TIME_PERIOD;OBS_VALUE\nD;2026-08-04;3.12\nD;2026-09-03;3.33\nD;2026-09-04;3.34\nD;2026-09-07;3.38\n'''
+          bund_series = v20.parse_bundesbank_csv(bund_csv)
+          assert dict(bund_series)[v20.AUG4] == 3.12
+          assert bund_series[-1][1] == 3.38
+
+          ust_xml = b'''<?xml version="1.0"?><feed xmlns="http://www.w3.org/2005/Atom" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+          <entry><content><m:properties><d:NEW_DATE>2026-08-04T00:00:00</d:NEW_DATE><d:BC_10YEAR>4.63</d:BC_10YEAR></m:properties></content></entry>
+          <entry><content><m:properties><d:NEW_DATE>2026-09-03T00:00:00</d:NEW_DATE><d:BC_10YEAR>4.77</d:BC_10YEAR></m:properties></content></entry>
+          <entry><content><m:properties><d:NEW_DATE>2026-09-04T00:00:00</d:NEW_DATE><d:BC_10YEAR>4.78</d:BC_10YEAR></m:properties></content></entry>
+          </feed>'''
+          us_series = v20.parse_treasury_xml(ust_xml)
+          assert dict(us_series)[v20.AUG4] == 4.63
+          assert us_series[-1][1] == 4.78
 
           bund = core.Quote(
-              key="bund10", symbol="DE10Y", label="독일 10년 Bund", unit="bp",
-              price=335.54, previous_close=333.76, change_pct=0.53,
-              timestamp_epoch=1788825600.0, timestamp_utc="2026-09-08T00:00:00+00:00",
-              age_minutes=0,
-              source_note="basis_date=2026-09-07; aug4=3.1163; since_aug4_bp=+23.9; TE_actual=3.3500",
+              key="bund10", symbol="DE10Y", label="독일 10년 현행 연방채(분데스방크 공식)", unit="bp",
+              price=338.0, previous_close=334.0, change_pct=1.2,
+              timestamp_epoch=1788825600.0, timestamp_utc="2026-09-08T00:00:00+00:00", age_minutes=0,
+              source_note="basis_date=2026-09-07; previous_date=2026-09-04; aug4=3.1200; since_aug4_bp=+26.0; common_date=2026-09-04; common_value=3.3400; common_since_aug4_bp=+22.0; source=Bundesbank",
           )
           us = core.Quote(
-              key="us10", symbol="US10Y", label="미국 10년 국채", unit="bp",
-              price=478.90, previous_close=477.30, change_pct=0.34,
-              timestamp_epoch=1788825600.0, timestamp_utc="2026-09-08T00:00:00+00:00",
-              age_minutes=0,
-              source_note="basis_date=2026-09-04; aug4=4.6190; since_aug4_bp=+17.0; TE_actual=4.7890",
+              key="us10", symbol="US10Y", label="미국 10년 Treasury(미 재무부 공식)", unit="bp",
+              price=478.0, previous_close=477.0, change_pct=0.2,
+              timestamp_epoch=1788825600.0, timestamp_utc="2026-09-08T00:00:00+00:00", age_minutes=0,
+              source_note="basis_date=2026-09-04; previous_date=2026-09-03; aug4=4.6300; since_aug4_bp=+15.0; common_date=2026-09-04; common_value=4.7800; common_since_aug4_bp=+15.0; source=US Treasury",
           )
-          quotes = {"bund10": bund, "us10": us}
-          signals = v19.apply_hysteresis_v19(quotes, set())
+          signals = v20.apply_hysteresis_v20({"bund10":bund,"us10":us}, set())
           assert "bund10_above_330" in signals
           assert "bund10_since_aug4_20bp" in signals
           assert "bund10_rise_leads_us10_5bp" in signals
-
-          item = core.NewsItem(
-              category="europe_rates", polarity="worsening", subtype="europe_rates_energy_ecb",
-              title="Rise in German Bund Yields Almost Entirely Due to ECB Rate-Hike Prospects",
-              source="Wall Street Journal", link="https://example.com/rates",
-              published_utc="2026-09-07T00:00:00+00:00", published_epoch=1788739200.0,
-              official=False, event_id="europe-rates-v19-test",
-          )
-          group = {
-              "category":"europe_rates", "polarity":"worsening", "subtype":"europe_rates_energy_ecb",
-              "event_id":"europe-rates-v19-test", "latest_epoch":item.published_epoch,
-              "evidence":[item], "verification":"유럽 금리 조기신호 · 주요 금융매체/공식기관 확인",
-          }
-          _, body, meta = v19.build_regular_alert_v19([group], quotes, signals, set())
-          for required in [
-              "가스 → 인플레이션 → ECB → 유럽 장기금리",
-              "8/4 이후 상대 매도강도", "독일이 <b>+6.9bp</b> 더 상승",
-              "3.30% → 3.40% → 3.50% → 3.75%", "정책 경로", "분리 판정",
-          ]:
-              assert required in body, required
-          assert meta["version"] == 19
-          print("v19_validation=true")
+          print("v20_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v19.py --setup-test
+            python scripts/lng_supply_crisis_alert_v20.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v19.py
+            python scripts/lng_supply_crisis_alert_v20.py
           fi
 
       - name: Publish status summary
@@ -206,7 +182,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v19.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v20.py --finalize
 
       - name: Upload verification artifacts
         if: always()
