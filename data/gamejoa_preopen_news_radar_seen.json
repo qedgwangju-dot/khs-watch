@@ -1600,16 +1600,6 @@
       "source": "파이낸셜뉴스",
       "title": "\"中, 10년간 첨단장비 구현 못해\"…CXMT의 삼전·닉스 추격 어디까지"
     },
-    "event:a99c4342bc96d1d73b469390": {
-      "first_seen_kst": "2026-08-25T06:56:33+09:00",
-      "lanes": {
-        "live": "2026-08-25T06:56:33+09:00"
-      },
-      "last_seen_kst": "2026-08-25T06:56:33+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02273046645550928",
-      "source": "이데일리",
-      "title": "[오늘장특징주]엔비디아, 애플, 마이크론, 샌디스크, 마벨 테크놀로지"
-    },
     "event:abf1f0c2de7f3a8af0c4e024": {
       "first_seen_kst": "2026-08-27T08:30:27+09:00",
       "lanes": {
@@ -2401,6 +2391,16 @@
       "link": "https://www.mk.co.kr/news/business/12141551",
       "source": "매일경제",
       "title": "韓턱밑 위협 CXMT … HBM3E 조기 생산"
+    },
+    "event:f923e762c323d1e288943897": {
+      "first_seen_kst": "2026-09-08T07:15:57+09:00",
+      "lanes": {
+        "live": "2026-09-08T07:15:57+09:00"
+      },
+      "last_seen_kst": "2026-09-08T07:15:57+09:00",
+      "link": "https://www.mk.co.kr/news/world/12146593",
+      "source": "매일경제",
+      "title": "이 없으면 잇몸, D램 없으면 낸드로…‘상식 깬 메모리’ 내놓은 키옥시아"
     },
     "event:f980697bca2ad15329f0d5bf": {
       "first_seen_kst": "2026-09-05T00:35:31+09:00",
@@ -3283,6 +3283,16 @@
       "source": "이데일리",
       "title": "엔비디아 역대 최대 실적 예고…반도체주 향방은"
     },
+    "link:38c6b7bf467cd82d3f70fb58": {
+      "first_seen_kst": "2026-09-08T07:15:57+09:00",
+      "lanes": {
+        "live": "2026-09-08T07:15:57+09:00"
+      },
+      "last_seen_kst": "2026-09-08T07:15:57+09:00",
+      "link": "https://www.mk.co.kr/news/world/12146593",
+      "source": "매일경제",
+      "title": "이 없으면 잇몸, D램 없으면 낸드로…‘상식 깬 메모리’ 내놓은 키옥시아"
+    },
     "link:3b5f319d92be75ea52d37424": {
       "first_seen_kst": "2026-09-07T04:24:09+09:00",
       "lanes": {
@@ -3947,16 +3957,6 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03844166645577824",
       "source": "이데일리",
       "title": "[마켓인]대신F&I, 회사채 수요예측에 1.6兆 주문 몰려"
-    },
-    "link:677ebaf8fd68a0e3a356f46b": {
-      "first_seen_kst": "2026-08-25T06:56:33+09:00",
-      "lanes": {
-        "live": "2026-08-25T06:56:33+09:00"
-      },
-      "last_seen_kst": "2026-08-25T06:56:33+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02273046645550928",
-      "source": "이데일리",
-      "title": "[오늘장특징주]엔비디아, 애플, 마이크론, 샌디스크, 마벨 테크놀로지"
     },
     "link:6797b9fa469cc466793400b7": {
       "first_seen_kst": "2026-08-26T14:27:56+09:00",
@@ -5789,16 +5789,6 @@
       "source": "조선일보",
       "title": "에이수스, AI 서버 넘어 데이터센터 구축까지… ‘AI 팩토리’ 승부"
     },
-    "link:dde3491ea1081d46fd96e275": {
-      "first_seen_kst": "2026-08-25T06:56:33+09:00",
-      "lanes": {
-        "live": "2026-08-25T06:56:33+09:00"
-      },
-      "last_seen_kst": "2026-08-25T06:56:33+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20260824091700530",
-      "source": "연합뉴스",
-      "title": "석탄비중 50% 넘어도 녹색채권 내면 투자허용?…국민연금 선택은 | 연합뉴스"
-    },
     "link:de040019a159117a41471400": {
       "first_seen_kst": "2026-08-26T06:32:44+09:00",
       "lanes": {
@@ -6979,16 +6969,6 @@
       "link": "https://www.newsis.com/view/NISX20260831_0003770308",
       "source": "뉴시스",
       "title": "[올댓차이나] 홍콩 증시, 美 조기 금리인상 관측에 혼조 마감… H주 0.27%↑"
-    },
-    "original:2f6d32776946189ab3aa4645": {
-      "first_seen_kst": "2026-08-25T06:56:33+09:00",
-      "lanes": {
-        "live": "2026-08-25T06:56:33+09:00"
-      },
-      "last_seen_kst": "2026-08-25T06:56:33+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20260824091700530",
-      "source": "연합뉴스",
-      "title": "석탄비중 50% 넘어도 녹색채권 내면 투자허용?…국민연금 선택은 | 연합뉴스"
     },
     "original:31dad6d7a9005e4ca3b26ee1": {
       "first_seen_kst": "2026-08-26T20:42:25+09:00",
@@ -8242,6 +8222,16 @@
       "link": "https://www.newsis.com/view/NISX20260901_0003771520",
       "source": "뉴시스",
       "title": "가을은 반도체 성수기…韓 수출 우상향 지속할까 '주목'"
+    },
+    "original:87e5e2a162f204d395b5426d": {
+      "first_seen_kst": "2026-09-08T07:15:57+09:00",
+      "lanes": {
+        "live": "2026-09-08T07:15:57+09:00"
+      },
+      "last_seen_kst": "2026-09-08T07:15:57+09:00",
+      "link": "https://www.mk.co.kr/news/world/12146593",
+      "source": "매일경제",
+      "title": "이 없으면 잇몸, D램 없으면 낸드로…‘상식 깬 메모리’ 내놓은 키옥시아"
     },
     "original:8846269c68b9750efb3fb160": {
       "first_seen_kst": "2026-09-05T04:59:21+09:00",
@@ -9844,16 +9834,6 @@
       "source": "전자신문",
       "title": "[ET특징주] 오픈AI 새 모델 출시에 웃는 삼전·하닉… 주가 3~5% 상승"
     },
-    "original:ea029912ceb9b006e8baab4c": {
-      "first_seen_kst": "2026-08-25T06:56:33+09:00",
-      "lanes": {
-        "live": "2026-08-25T06:56:33+09:00"
-      },
-      "last_seen_kst": "2026-08-25T06:56:33+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02273046645550928",
-      "source": "이데일리",
-      "title": "[오늘장특징주]엔비디아, 애플, 마이크론, 샌디스크, 마벨 테크놀로지"
-    },
     "original:ea1e8866c4759b87b0094b57": {
       "first_seen_kst": "2026-08-30T01:40:02+09:00",
       "lanes": {
@@ -10841,16 +10821,6 @@
       "link": "https://www.newsis.com/view/NISX20260831_0003770308",
       "source": "뉴시스",
       "title": "[올댓차이나] 홍콩 증시, 美 조기 금리인상 관측에 혼조 마감… H주 0.27%↑"
-    },
-    "title:2f6d32776946189ab3aa4645": {
-      "first_seen_kst": "2026-08-25T06:56:33+09:00",
-      "lanes": {
-        "live": "2026-08-25T06:56:33+09:00"
-      },
-      "last_seen_kst": "2026-08-25T06:56:33+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20260824091700530",
-      "source": "연합뉴스",
-      "title": "석탄비중 50% 넘어도 녹색채권 내면 투자허용?…국민연금 선택은 | 연합뉴스"
     },
     "title:31dad6d7a9005e4ca3b26ee1": {
       "first_seen_kst": "2026-08-26T20:42:25+09:00",
@@ -12114,6 +12084,16 @@
       "link": "https://www.trendforce.com/presscenter/news/20260827-13202.html",
       "source": "TrendForce semiconductor RSS",
       "title": "TrendForce, MLCC·알루미늄 콘덴서 가격 인상/쇼티지 신호"
+    },
+    "title:87e5e2a162f204d395b5426d": {
+      "first_seen_kst": "2026-09-08T07:15:57+09:00",
+      "lanes": {
+        "live": "2026-09-08T07:15:57+09:00"
+      },
+      "last_seen_kst": "2026-09-08T07:15:57+09:00",
+      "link": "https://www.mk.co.kr/news/world/12146593",
+      "source": "매일경제",
+      "title": "이 없으면 잇몸, D램 없으면 낸드로…‘상식 깬 메모리’ 내놓은 키옥시아"
     },
     "title:8846269c68b9750efb3fb160": {
       "first_seen_kst": "2026-09-05T04:59:21+09:00",
@@ -13706,16 +13686,6 @@
       "source": "전자신문",
       "title": "[ET특징주] 오픈AI 새 모델 출시에 웃는 삼전·하닉… 주가 3~5% 상승"
     },
-    "title:ea029912ceb9b006e8baab4c": {
-      "first_seen_kst": "2026-08-25T06:56:33+09:00",
-      "lanes": {
-        "live": "2026-08-25T06:56:33+09:00"
-      },
-      "last_seen_kst": "2026-08-25T06:56:33+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02273046645550928",
-      "source": "이데일리",
-      "title": "[오늘장특징주]엔비디아, 애플, 마이크론, 샌디스크, 마벨 테크놀로지"
-    },
     "title:ea1e8866c4759b87b0094b57": {
       "first_seen_kst": "2026-08-30T01:40:02+09:00",
       "lanes": {
@@ -14070,5 +14040,5 @@
       "title": "삼성·SK, HBM4 8단 출하 비중 늘린다…엔비디아 공급망 변화 예고"
     }
   },
-  "updated_at_kst": "2026-09-08T06:55:23+09:00"
+  "updated_at_kst": "2026-09-08T07:15:57+09:00"
 }
