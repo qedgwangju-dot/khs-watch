@@ -9,6 +9,7 @@ on:
       - "scripts/janus_watch_v2.py"
       - "scripts/janus_watch_v3.py"
       - "scripts/janus_watch_v4.py"
+      - "scripts/janus_watch_v5.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -74,14 +75,15 @@ jobs:
 
       - name: Validate Janus watcher
         run: |
-          python -m py_compile scripts/janus_watch.py scripts/janus_watch_v2.py scripts/janus_watch_v3.py scripts/janus_watch_v4.py
-          python scripts/janus_watch_v4.py --mode self-test
+          python -m py_compile scripts/janus_watch.py scripts/janus_watch_v2.py scripts/janus_watch_v3.py scripts/janus_watch_v4.py scripts/janus_watch_v5.py
+          python scripts/janus_watch_v5.py --mode self-test
           python - <<'PY'
           import sys
           sys.path.insert(0, 'scripts')
           import janus_watch_v2 as j
           import janus_watch_v3 as j3
           import janus_watch_v4 as j4
+          import janus_watch_v5 as j5
           if not j._is_bad_title("Error 500 (Server Error). Please try again later."):
               raise RuntimeError('Server-error title filter is not working')
           sample='U.S. Army selects Fort Drum for Janus Program microreactor deployment'
@@ -97,12 +99,20 @@ jobs:
               raise RuntimeError('New York 5GW cost estimate was not generated')
           if not j4._rss_relevant("韓 웨스팅하우스 지분 인수 검토 급물살"):
               raise RuntimeError('Westinghouse Korea stake RSS filter is not working')
+          grouped=j5._render_grouped([
+              {'kind':'westinghouse_stake','source':'연합뉴스','title':'정부·한전, 미국 원전 건설 돕고 웨스팅하우스 지분 확보 검토','url':'https://example.com/1'},
+              {'kind':'westinghouse_stake','source':'전자신문','title':'[ET특징주]한국전력, 웨스팅하우스 지분 확보설에 상승세','url':'https://example.com/2'},
+              {'kind':'westinghouse_stake','source':'전기신문','title':'웨스팅하우스 지분, 사는 건가 떠맡는 건가','url':'https://example.com/3'},
+          ], [])
+          print('westinghouse_grouped_format_test=', grouped[:500])
+          if grouped.count('한눈에 보기') != 1 or grouped.count('핵심 병목') != 1 or '기사별 확인' not in grouped:
+              raise RuntimeError('Westinghouse duplicate-topic grouping is not working')
           print('westinghouse_stake_watch_test=passed')
           PY
 
       - name: Check Janus web sources
         run: |
-          python scripts/janus_watch_v4.py --mode check
+          python scripts/janus_watch_v5.py --mode check
           cat out/janus_status_v2.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/janus_errors_v2.log ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
@@ -144,6 +154,7 @@ jobs:
           • 수신 봇: @hs8879887988798879_bot
           • 확인 주기: 15분
           • 감시: 미 육군·미 에너지부 Janus/마이크로원자로 + 원전 정책·금융·대형 설비투자 + 한국의 Westinghouse 지분 인수·투자·공동사업
+          • Westinghouse 동일 이슈 기사가 여러 건 잡히면 기사마다 설명을 반복하지 않고 하나의 이슈 묶음으로 통합해 현재 변화·기사별 역할·병목·다음 확인 순으로 표시
           • Westinghouse 핵심 조건: 산업통상부·한국전력·한수원·Westinghouse·Brookfield·Cameco 공식 발표, LOI/MOU/실사, 지분율·가격·재원, CFIUS/NRC, AP1000 설계·조달·시공 권한, 지식재산권·입찰 제한
           • GW·MW 등 물량이 나오면 공식·신뢰 벤치마크 단가를 적용해 총비용을 계산하고 USD/KRW 환율 API로 원화 환산
           • 영어 기사·발표 제목은 일반 설명어를 한국어로 번역하고 회사명·제품명·약어만 식별을 위해 원문 유지
