@@ -56,13 +56,14 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch_redage.py
           python -m py_compile scripts/war_peace_reconstruction_watch_reciprocal.py
           python -m py_compile scripts/war_peace_reconstruction_watch_allies.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_nepal.py
 
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch_allies.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_nepal.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch_allies.py
+            python scripts/war_peace_reconstruction_watch_nepal.py
           fi
 
       - name: Publish status summary
@@ -131,7 +132,7 @@ jobs:
 
       - name: Finalize state after confirmed delivery
         if: success() && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch_allies.py --finalize
+        run: python scripts/war_peace_reconstruction_watch_nepal.py --finalize
 
       - name: Commit confirmed alert state
         if: success() && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
