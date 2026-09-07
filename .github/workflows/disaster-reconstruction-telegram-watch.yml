@@ -3,6 +3,9 @@ name: Disaster reconstruction Telegram watch
 on:
   schedule:
     - cron: "4,9,14,19,24,29,34,39,44,49,54,59 * * * *"
+  push:
+    paths:
+      - ".github/disaster-reconstruction-trigger.txt"
   workflow_dispatch:
 
 permissions:
