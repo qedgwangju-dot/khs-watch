@@ -21,6 +21,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v16.py"
       - "scripts/lng_supply_crisis_alert_v17.py"
       - "scripts/lng_supply_crisis_alert_v18.py"
+      - "scripts/lng_supply_crisis_alert_v19.py"
 
 permissions:
   contents: write
@@ -45,105 +46,79 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v18 monitor
+      - name: Validate v19 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py
           python - <<'PY'
           import sys
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v18 as v18
+          import lng_supply_crisis_alert_v19 as v19
 
-          storage_item = core.NewsItem(
-              category="europe_storage",
-              polarity="worsening",
-              subtype="storage_lng_competition",
-              title="Europe gas storage shortfall raises global LNG competition and winter price risk",
-              source="Bloomberg",
-              link="https://example.com/storage",
-              published_utc="2026-09-05T00:00:00+00:00",
-              published_epoch=1788566400.0,
-              official=False,
-              event_id="storage-v18-test",
+          trend_fixture = """
+          Germany 10-Year Government Bond Yield
+          Germany 10-Year Government Bond Yield current yield is 3.3554%
+          Last Updated:2026-09-07 13:00:00 CEST
+          Previous Value 3.3376%
+          Historical Data
+          Aug 4, 2026 | 3.1163%
+          """
+          parsed = v19._parse_trendonify_bond(trend_fixture)
+          assert parsed["current_pct"] == 3.3554
+          assert parsed["previous_pct"] == 3.3376
+          assert parsed["aug4_pct"] == 3.1163
+          te_fixture = "Actual Previous Highest Lowest Dates Unit Frequency 3.35 3.34 9.13 -0.91 1983 - 2026 percent Daily"
+          assert v19._parse_te_bond_actual(te_fixture) == (3.35, 3.34)
+
+          bund = core.Quote(
+              key="bund10", symbol="DE10Y", label="독일 10년 Bund", unit="bp",
+              price=335.54, previous_close=333.76, change_pct=0.53,
+              timestamp_epoch=1788825600.0, timestamp_utc="2026-09-08T00:00:00+00:00",
+              age_minutes=0,
+              source_note="basis_date=2026-09-07; aug4=3.1163; since_aug4_bp=+23.9; TE_actual=3.3500",
           )
-          storage_group = {
-              "category":"europe_storage",
-              "polarity":"worsening",
-              "subtype":"storage_lng_competition",
-              "event_id":"storage-v18-test",
-              "latest_epoch":storage_item.published_epoch,
-              "evidence":[storage_item],
-              "verification":"유럽 저장부족 조기신호 + GIE 공식 재고 검산",
-          }
+          us = core.Quote(
+              key="us10", symbol="US10Y", label="미국 10년 국채", unit="bp",
+              price=478.90, previous_close=477.30, change_pct=0.34,
+              timestamp_epoch=1788825600.0, timestamp_utc="2026-09-08T00:00:00+00:00",
+              age_minutes=0,
+              source_note="basis_date=2026-09-04; aug4=4.6190; since_aug4_bp=+17.0; TE_actual=4.7890",
+          )
+          quotes = {"bund10": bund, "us10": us}
+          signals = v19.apply_hysteresis_v19(quotes, set())
+          assert "bund10_above_330" in signals
+          assert "bund10_since_aug4_20bp" in signals
+          assert "bund10_rise_leads_us10_5bp" in signals
 
-          fixture_gie = {
-              "date":"2026-09-05",
-              "trend_pp":0.25,
-              "stored_twh":753.00,
-              "fill_pct":66.60,
-              "capacity_twh":1130.63,
-              "net_change_twh_est":2.83,
-              "gaps":{
-                  "75":{"target_pct":75.0,"gap_pp":8.4,"required_twh":95.0},
-                  "80":{"target_pct":80.0,"gap_pp":13.4,"required_twh":151.5},
-                  "90":{"target_pct":90.0,"gap_pp":23.4,"required_twh":264.6},
-              },
-              "pace":{
-                  "75":{"days_to_oct1":26,"twh_per_day_to_oct1":3.65,"days_to_dec1":87,"twh_per_day_to_dec1":1.09},
-                  "80":{"days_to_oct1":26,"twh_per_day_to_oct1":5.83,"days_to_dec1":87,"twh_per_day_to_dec1":1.74},
-                  "90":{"days_to_oct1":26,"twh_per_day_to_oct1":10.18,"days_to_dec1":87,"twh_per_day_to_dec1":3.04},
-              },
-              "countries":{
-                  "DE":{"label":"독일","trend_pp":0.24,"stored_twh":133.82,"fill_pct":54.28},
-                  "NL":{"label":"네덜란드","trend_pp":0.50,"stored_twh":71.51,"fill_pct":49.64},
-                  "IT":{"label":"이탈리아","trend_pp":0.03,"stored_twh":169.82,"fill_pct":83.48},
-                  "FR":{"label":"프랑스","trend_pp":0.49,"stored_twh":91.07,"fill_pct":73.51},
-              },
-              "source":"fixture",
+          item = core.NewsItem(
+              category="europe_rates", polarity="worsening", subtype="europe_rates_energy_ecb",
+              title="Rise in German Bund Yields Almost Entirely Due to ECB Rate-Hike Prospects",
+              source="Wall Street Journal", link="https://example.com/rates",
+              published_utc="2026-09-07T00:00:00+00:00", published_epoch=1788739200.0,
+              official=False, event_id="europe-rates-v19-test",
+          )
+          group = {
+              "category":"europe_rates", "polarity":"worsening", "subtype":"europe_rates_energy_ecb",
+              "event_id":"europe-rates-v19-test", "latest_epoch":item.published_epoch,
+              "evidence":[item], "verification":"유럽 금리 조기신호 · 주요 금융매체/공식기관 확인",
           }
-          v18.fetch_gie_storage_v18 = lambda: fixture_gie
-          v18.v15.fetch_gie_storage = lambda: fixture_gie
-          v18.v14.fetch_verified_fx = lambda currency: {
-              "currency": currency,
-              "symbol": f"{currency}KRW=X",
-              "rate": 1570.0 if currency == "EUR" else 1350.0,
-              "timestamp_utc":"2026-09-06T00:00:00+00:00",
-              "timestamp_kst":"2026-09-06 09:00 KST",
-              "source":"fixture",
-          }
-
-          quotes = {
-              "ttf": core.Quote(
-                  key="ttf", symbol="TE-KO:EU-GAS", label="TTF", unit="유로/MWh",
-                  price=75.0, previous_close=73.0, change_pct=2.74,
-                  timestamp_epoch=1788652800.0, timestamp_utc="2026-09-06T00:00:00+00:00",
-                  age_minutes=0, source_note="fixture",
-              ),
-              "jkm": core.Quote(
-                  key="jkm", symbol="TE-KO:LNG-JKM", label="JKM", unit="달러/MMBtu",
-                  price=25.0, previous_close=24.0, change_pct=4.17,
-                  timestamp_epoch=1788652800.0, timestamp_utc="2026-09-06T00:00:00+00:00",
-                  age_minutes=0, source_note="fixture",
-              ),
-          }
-          _, body, meta = v18.build_regular_alert_v18([storage_group], quotes, set(), set())
+          _, body, meta = v19.build_regular_alert_v19([group], quotes, signals, set())
           for required in [
-              "저장 충전속도·겨울 스트레스 업그레이드", "95.0TWh", "3.65TWh/일",
-              "독일 54.28%", "네덜란드 49.64%", "유럽 TTF 단위정규화",
-              "유럽-아시아 가격차", "100유로 스트레스선", "현재가격 환산비용"
+              "가스 → 인플레이션 → ECB → 유럽 장기금리",
+              "8/4 이후 상대 매도강도", "독일이 <b>+6.9bp</b> 더 상승",
+              "3.30% → 3.40% → 3.50% → 3.75%", "정책 경로", "분리 판정",
           ]:
               assert required in body, required
-          assert 100.0 in core.PRICE_SPECS["ttf"]["levels"]
-          assert meta["version"] == 18
-          print("v18_validation=true")
+          assert meta["version"] == 19
+          print("v19_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v18.py --setup-test
+            python scripts/lng_supply_crisis_alert_v19.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v18.py
+            python scripts/lng_supply_crisis_alert_v19.py
           fi
 
       - name: Publish status summary
@@ -231,7 +206,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v18.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v19.py --finalize
 
       - name: Upload verification artifacts
         if: always()
