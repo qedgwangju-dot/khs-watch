@@ -103,6 +103,13 @@ def _threshold_verdict(value_krw: int, threshold_krw: int, *, cumulative: bool) 
     return f"{prefix}{direction} {threshold} 기준 돌파"
 
 
+def _threshold_verdict_html(value_krw: int, threshold_krw: int, *, cumulative: bool) -> str:
+    verdict = _threshold_verdict(value_krw, threshold_krw, cumulative=cumulative)
+    if abs(value_krw) >= threshold_krw:
+        return f"<b>{verdict}</b>"
+    return verdict
+
+
 def _market_flow_lines(
     market: str,
     idx: dict[str, Any] | None,
@@ -110,29 +117,31 @@ def _market_flow_lines(
     daily_threshold: int,
     three_day_threshold: int,
 ) -> list[str]:
-    lines = [f"<b>{market}</b>"]
     if idx:
-        lines.append(f"• 종가: {idx['close']:,.2f} ({idx['change_pct']:+.2f}%)")
+        lines = [
+            f"<b>{market}</b>  |  종가 <b>{idx['close']:,.2f}</b>  <b>({idx['change_pct']:+.2f}%)</b>"
+        ]
     else:
-        lines.append("• 종가: 조회 실패")
+        lines = [f"<b>{market}</b>  |  종가 조회 실패"]
+
     if flow:
         daily = int(flow["daily_krw"])
         three = int(flow["three_day_krw"])
-        lines.append(
-            "• 외국인 18:10 이후 장마감 확인: 1일 "
-            + _direction_amount(daily)
-            + " — "
-            + _threshold_verdict(daily, daily_threshold, cumulative=False)
-        )
-        lines.append(
-            "• 외국인 최근 3거래일 누적: "
-            + _direction_amount(three)
-            + " — "
-            + _threshold_verdict(three, three_day_threshold, cumulative=True)
+        lines.extend(
+            [
+                f"• 외국인 1일  <b>{_direction_amount(daily)}</b>",
+                f"  ↳ {_threshold_verdict_html(daily, daily_threshold, cumulative=False)}",
+                f"• 외국인 3거래일 누적  <b>{_direction_amount(three)}</b>",
+                f"  ↳ {_threshold_verdict_html(three, three_day_threshold, cumulative=True)}",
+            ]
         )
     else:
-        lines.append("• 외국인 18:10 이후 장마감 확인: 조회 실패")
-        lines.append("• 외국인 최근 3거래일 누적: 조회 실패")
+        lines.extend(
+            [
+                "• 외국인 1일  조회 실패",
+                "• 외국인 3거래일 누적  조회 실패",
+            ]
+        )
     return lines
 
 
@@ -176,19 +185,30 @@ def _ensure_alert_for_new_kosdaq_event(new_keys: list[str]) -> None:
 
 def _remove_old_market_lines(lines: list[str]) -> list[str]:
     out: list[str] = []
-    skip_labels = (
+    in_readability_block = False
+    old_skip_labels = (
         "<b>KOSPI</b>",
         "<b>KOSDAQ</b>",
         "• KOSPI 종가:",
         "• KOSDAQ 종가:",
         "• KOSPI 외국인",
         "• KOSDAQ 외국인",
+        "• 외국인 18:10 이후",
+        "• 외국인 최근 3거래일",
         "• 외국인 수급:",
         "• 수급 판정:",
         "• 수급 숫자 출처:",
     )
     for line in lines:
-        if line.startswith(skip_labels):
+        if line == "<b>한국 증시 수급</b>":
+            in_readability_block = True
+            continue
+        if in_readability_block:
+            if line == "<b>알림 기준</b>":
+                in_readability_block = False
+                out.append(line)
+            continue
+        if line.startswith(old_skip_labels):
             continue
         if "KRX 투자자별 거래실적" in line:
             continue
@@ -217,10 +237,12 @@ def _rewrite_alert(
                 break
 
     block = [
+        "<b>한국 증시 수급</b>",
+        "• 판정 시점: 두 시장 모두 18:10 이후 장마감 수급 피드",
+        "",
         *_market_flow_lines("KOSPI", kp_idx, kp_flow, KOSPI_DAILY_THRESHOLD, KOSPI_THREE_DAY_THRESHOLD),
         "",
         *_market_flow_lines("KOSDAQ", kq_idx, kq_flow, KOSDAQ_DAILY_THRESHOLD, KOSDAQ_THREE_DAY_THRESHOLD),
-        "• 수급 판정: 두 시장 모두 18:10 이후 장마감 수급 피드로 임계치 판정",
         "",
     ]
     insert_at = 2 if len(lines) >= 2 else len(lines)
