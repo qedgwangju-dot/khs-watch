@@ -13,9 +13,7 @@ on:
         required: false
         default: "false"
         type: choice
-        options:
-          - "false"
-          - "true"
+        options: ["false", "true"]
 
 permissions:
   contents: write
@@ -30,16 +28,13 @@ jobs:
     timeout-minutes: 12
     env:
       TELEGRAM_TEST: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'Test') && 'true' || (github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false') }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
       - name: Validate monitor
         run: |
           python -m py_compile scripts/war_peace_reconstruction_watch.py
@@ -56,27 +51,18 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch_redage.py
           python -m py_compile scripts/war_peace_reconstruction_watch_reciprocal.py
           python -m py_compile scripts/war_peace_reconstruction_watch_allies.py
-          python -m py_compile scripts/war_peace_reconstruction_watch_nepal.py
-
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch_nepal.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_allies.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch_nepal.py
+            python scripts/war_peace_reconstruction_watch_allies.py
           fi
-
       - name: Publish status summary
         if: always()
         run: |
-          if [ -f out/war_peace_reconstruction_watch.md ]; then
-            cat out/war_peace_reconstruction_watch.md >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f out/war_peace_reconstruction_alert.txt ]; then
-            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
-            cat out/war_peace_reconstruction_alert.txt >> "$GITHUB_STEP_SUMMARY"
-          fi
-
+          if [ -f out/war_peace_reconstruction_watch.md ]; then cat out/war_peace_reconstruction_watch.md >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f out/war_peace_reconstruction_alert.txt ]; then printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/war_peace_reconstruction_alert.txt >> "$GITHUB_STEP_SUMMARY"; fi
       - name: Send Telegram alert
         if: hashFiles('out/war_peace_reconstruction_alert.txt') != ''
         env:
@@ -85,69 +71,32 @@ jobs:
           EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900_bot"
         run: |
           python - <<'PY'
-          import datetime as dt
-          import json
-          import os
-          import pathlib
-          import urllib.parse
-          import urllib.request
+          import datetime as dt, json, os, pathlib, urllib.parse, urllib.request
           from zoneinfo import ZoneInfo
-
           token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
           chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
-          if not token or not chat_id:
-              raise RuntimeError("WAR_PEACE_TELEGRAM_BOT_TOKEN or Telegram chat id secret is missing")
-
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
-              identity = json.loads(response.read().decode("utf-8"))
+          if not token or not chat_id: raise RuntimeError("Telegram secret missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r: identity = json.loads(r.read().decode())
           actual = identity.get("result", {}).get("username", "")
-          if not identity.get("ok") or actual != expected:
-              raise RuntimeError(f"Telegram bot mismatch: expected=@{expected}, actual=@{actual or 'unknown'}")
-
+          if not identity.get("ok") or actual != expected: raise RuntimeError(f"Telegram bot mismatch: @{actual}")
           text = pathlib.Path("out/war_peace_reconstruction_alert.txt").read_text(encoding="utf-8").strip()[:4096]
-          payload = urllib.parse.urlencode({
-              "chat_id": chat_id,
-              "text": text,
-              "parse_mode": "HTML",
-              "disable_web_page_preview": "true",
-          }).encode("utf-8")
+          payload = urllib.parse.urlencode({"chat_id": chat_id, "text": text, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode()
           req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
-          with urllib.request.urlopen(req, timeout=25) as response:
-              result = json.loads(response.read().decode("utf-8"))
-          if not result.get("ok"):
-              raise RuntimeError(f"Telegram rejected message: {result}")
-
-          confirmed = {
-              "status": "confirmed",
-              "bot": f"@{actual}",
-              "message_id": result.get("result", {}).get("message_id"),
-              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
-          }
-          pathlib.Path("out/war_peace_reconstruction_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-          )
-          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={confirmed['message_id']}")
+          with urllib.request.urlopen(req, timeout=25) as r: result = json.loads(r.read().decode())
+          if not result.get("ok"): raise RuntimeError(f"Telegram rejected: {result}")
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={result.get('result',{}).get('message_id')}")
           PY
-
       - name: Finalize state after confirmed delivery
         if: success() && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch_nepal.py --finalize
-
+        run: python scripts/war_peace_reconstruction_watch_allies.py --finalize
       - name: Commit confirmed alert state
         if: success() && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/war_peace_reconstruction_watch_state.json
-          if git diff --cached --quiet; then
-            echo "No state changes"
-          else
-            git commit -m "Update war peace reconstruction watch state"
-            git pull --rebase origin main
-            git push
-          fi
-
+          if ! git diff --cached --quiet; then git commit -m "Update war peace reconstruction watch state"; git pull --rebase origin main; git push; fi
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -157,6 +106,5 @@ jobs:
             out/war_peace_reconstruction_watch.md
             out/war_peace_reconstruction_alert.txt
             out/war_peace_reconstruction_pending.json
-            out/war_peace_reconstruction_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 7
