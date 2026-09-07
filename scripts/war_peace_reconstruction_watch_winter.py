@@ -2,7 +2,7 @@
 import argparse
 import hashlib
 
-import war_peace_reconstruction_watch_allies as prev
+import war_peace_reconstruction_watch_newideas as prev
 
 watch = prev.watch
 runner = prev.runner
