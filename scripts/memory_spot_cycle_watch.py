@@ -4,7 +4,9 @@
 The watcher is intentionally conservative:
 - scans multiple Google News RSS queries in Korean and English,
 - scores only memory-supply/price/capacity items,
-- translates English alert titles into Korean before Telegram delivery,
+- translates and polishes English alert titles into natural Korean,
+- preserves uncertainty such as report/likely/expected instead of overstating it,
+- keeps the full Korean alert sentence without character-level truncation,
 - stays silent when there is no new meaningful change,
 - deduplicates by normalized title/source,
 - emits a compact Telegram alert only for new meaningful items.
@@ -78,7 +80,7 @@ def _fetch(url: str) -> bytes:
     req = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "Mozilla/5.0 (compatible; khs-memory-watch/1.1)",
+            "User-Agent": "Mozilla/5.0 (compatible; khs-memory-watch/1.2)",
             "Accept": "application/rss+xml,application/xml,text/xml,*/*",
         },
     )
@@ -97,7 +99,7 @@ def _translate_to_ko(text: str) -> str:
     """Translate non-Korean alert text to Korean.
 
     We deliberately do not expose an English title if translation is temporarily
-    unavailable. The source name and original link remain untouched identifiers.
+    unavailable. The original link remains untouched as an identifier.
     """
     text = _clean(text)
     if not text:
@@ -150,6 +152,48 @@ def _translate_to_ko(text: str) -> str:
     if "nand" in lower or "ssd" in lower:
         return "NAND·SSD 가격·수급 관련 신규 변화 기사 감지"
     return "해외 메모리 관련 신규 변화 기사 감지"
+
+
+def _polish_alert_title(raw_title: str, translated: str) -> str:
+    """Turn a literal machine translation into a complete Korean headline sentence.
+
+    This is intentionally conservative. It fixes common News/Google-Translate title
+    artifacts and uses explicit templates only when the original English wording
+    contains enough information to preserve report/likely/expected qualifiers.
+    """
+    raw = _clean(raw_title)
+    low = raw.lower()
+    title = _clean(translated)
+
+    # High-value known pattern: do not turn "said to have" / "seen as likely" into
+    # a confirmed Apple-Kioxia contract. Keep the report and likely-partner status.
+    if (
+        "apple" in low
+        and "nand" in low
+        and "lta" in low
+        and "kioxia" in low
+        and ("said to have signed" in low or "likely partner" in low)
+    ):
+        return "Apple, NAND 장기공급계약(LTA) 체결 보도…유력 상대는 Kioxia, 폴더블 iPhone 메모리 공급망 주목"
+
+    # Strip generic article labels that add no meaning in Telegram.
+    title = re.sub(r"^\s*\[(?:뉴스|속보|단독|News|NEWS)\]\s*", "", title).strip()
+    title = re.sub(r"^\s*(?:뉴스|속보)\s*[:：]\s*", "", title).strip()
+
+    # Make common machine-translated semicolon/title fragments read as one headline.
+    title = re.sub(r"\s*[;；]\s*", "…", title)
+    title = re.sub(r"\.\s*(주목받는|주목되는|관심이 쏠리는)\s+", "…", title)
+    title = re.sub(r"\s+\|\s+", "…", title)
+    title = re.sub(r"\s+", " ", title).strip()
+
+    # Preserve uncertainty implied by common English headline verbs if the literal
+    # translation accidentally sounds definitive.
+    if "reportedly" in low and "보도" not in title and "전해" not in title:
+        title = title.rstrip(".。 ") + "…관련 보도"
+    if "may " in low and not any(x in title for x in ("가능", "전망", "검토", "수 있")):
+        title = title.rstrip(".。 ") + " 가능성"
+
+    return title or "메모리 관련 신규 변화"
 
 
 def _parse_date(value: str | None) -> dt.datetime | None:
@@ -344,9 +388,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     for item in report_items:
         label = classify(item["title"])
         raw_title = compact_title(item["title"], item.get("source", ""))
-        title = _translate_to_ko(raw_title)
-        if len(title) > 112:
-            title = title[:109].rstrip() + "…"
+        translated = _translate_to_ko(raw_title)
+        title = _polish_alert_title(raw_title, translated)
         pub = item.get("published_kst")
         date_text = ""
         if pub:
