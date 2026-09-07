@@ -26,8 +26,6 @@ def parse_bundesbank_csv_v22(raw: bytes) -> list[tuple[dt.date, float]]:
             value = float(m.group(2).replace(",", "."))
         except Exception:
             continue
-        # 현재 독일 현행 10년 연방채 공식 시계열의 단위가 %인지 검증하는 안전범위.
-        # 범위를 벗어나면 추정/보정하지 않고 전체 bond quote를 보류한다.
         if not (-1.0 <= value <= 8.0):
             raise RuntimeError(f"Bundesbank 10Y implausible observation date={date} value={value}")
         out.append((date, value))
@@ -36,7 +34,9 @@ def parse_bundesbank_csv_v22(raw: bytes) -> list[tuple[dt.date, float]]:
         dedup[date] = value
     series = sorted(dedup.items())
     if len(series) < 3:
-        raise RuntimeError("Bundesbank data rows not found after strict line-start parsing")
+        preview_lines = [re.sub(r"\s+", " ", line).strip() for line in text.splitlines()[:18]]
+        preview = " || ".join(line for line in preview_lines if line)[:1400]
+        raise RuntimeError(f"Bundesbank data rows not found after strict line-start parsing preview={preview}")
     return series
 
 
