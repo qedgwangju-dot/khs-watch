@@ -24,6 +24,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v19.py"
       - "scripts/lng_supply_crisis_alert_v20.py"
       - "scripts/lng_supply_crisis_alert_v21.py"
+      - "scripts/lng_supply_crisis_alert_v22.py"
 
 permissions:
   contents: write
@@ -48,30 +49,33 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v21 monitor
+      - name: Validate v22 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py
           python - <<'PY'
           import sys
           sys.path.insert(0, "scripts")
-          import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v21 as v21
+          import lng_supply_crisis_alert_v22 as v22
 
-          standard = b'''FREQ;TIME_PERIOD;OBS_VALUE\nD;2026-08-04;3.12\nD;2026-09-04;3.34\nD;2026-09-07;3.38\n'''
-          assert dict(v21.parse_bundesbank_csv_v21(standard))[v21.v20.AUG4] == 3.12
-          locale_style = 'Datum;Wert\n2026-08-04;3,12\n2026-09-04;3,34\n2026-09-07;3,38\n'.encode('utf-8')
-          parsed = v21.parse_bundesbank_csv_v21(locale_style)
-          assert dict(parsed)[v21.v20.AUG4] == 3.12
+          fixture = '''"";SERIES;FLAGS
+Comment;updated 2026-09-07 13:00;anything
+2026-08-04;3,16;
+2026-09-04;3,34;
+2026-09-07;3,38;
+'''.encode('utf-8')
+          parsed = v22.parse_bundesbank_csv_v22(fixture)
+          assert dict(parsed)[v22.v20.AUG4] == 3.16
           assert parsed[-1][1] == 3.38
-          print("v21_validation=true")
+          assert all(value < 8.0 for _, value in parsed)
+          print("v22_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v21.py --setup-test
+            python scripts/lng_supply_crisis_alert_v22.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v21.py
+            python scripts/lng_supply_crisis_alert_v22.py
           fi
 
       - name: Publish status summary
@@ -159,7 +163,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v21.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v22.py --finalize
 
       - name: Upload verification artifacts
         if: always()
