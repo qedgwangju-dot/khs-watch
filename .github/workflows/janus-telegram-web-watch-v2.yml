@@ -38,7 +38,7 @@ jobs:
     env:
       GENERAL_EXPECTED_BOT_USERNAME: "hs8879887988798879_bot"
       GENERAL_TELEGRAM_BOT_TOKEN: ${{ secrets.DEEP_FISSION_TELEGRAM_BOT_TOKEN || secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-      GENERAL_TELEGRAM_CHAT_ID: ${{ secrets.DEEP_FISSION_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+      GENERAL_TELEGRAM_CHAT_ID: ${{ secrets.DEEP_FISSION_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       WEC_EXPECTED_BOT_USERNAME: "khs887900_bot"
       WEC_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
       WEC_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
@@ -143,7 +143,6 @@ jobs:
               plain = html.unescape(re.sub(r'<[^>]+>', '', text))
               if j._BAD_TITLE_RE.search(plain):
                   raise RuntimeError(f'Blocked Telegram alert: server/error-page text remains in {path}')
-              # 설명형 영어는 번역하고, 회사명·제품명·약어만 원문 유지한다.
               for line in plain.splitlines():
                   line = line.strip()
                   if line.startswith('• 새 사실:') or line.startswith('• 변경:'):
