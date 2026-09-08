@@ -8,6 +8,7 @@ on:
       - "scripts/korea_market_stress_watch_v10.py"
       - "scripts/korea_market_stress_watch_v11.py"
       - "scripts/korea_market_stress_watch_v12.py"
+      - "scripts/kospi_rapid_fallback_watch.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -35,6 +36,9 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+      DERIV_EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      DERIV_TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      DERIV_TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
 
     steps:
       - name: Checkout
@@ -183,6 +187,40 @@ jobs:
           done
           exit 1
 
+      - name: Run redundant KOSPI rapid-drop fallback
+        run: |
+          rm -f out/kospi_rapid_fallback_status.md out/kospi_rapid_fallback_pending_state.json
+          python -m py_compile scripts/kospi_rapid_fallback_watch.py
+          python scripts/kospi_rapid_fallback_watch.py
+          cat out/kospi_rapid_fallback_status.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Persist KOSPI rapid-drop fallback state
+        if: success() && hashFiles('out/kospi_rapid_fallback_pending_state.json') != ''
+        run: cp out/kospi_rapid_fallback_pending_state.json data/kospi_rapid_fallback_state.json
+
+      - name: Commit KOSPI rapid-drop fallback state
+        if: success() && hashFiles('data/kospi_rapid_fallback_state.json') != ''
+        run: |
+          git config user.name "kospi-rapid-fallback-watch[bot]"
+          git config user.email "kospi-rapid-fallback-watch[bot]@users.noreply.github.com"
+          cp data/kospi_rapid_fallback_state.json /tmp/kospi_rapid_fallback_state.json
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/kospi_rapid_fallback_state.json data/kospi_rapid_fallback_state.json
+            git add data/kospi_rapid_fallback_state.json
+            if git diff --cached --quiet; then
+              echo "KOSPI rapid fallback state unchanged"
+              exit 0
+            fi
+            git commit -m "Update KOSPI rapid fallback state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
+
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -194,5 +232,7 @@ jobs:
             out/korea_market_stress_alert.html
             out/korea_market_stress_connection_test.html
             out/korea_market_stress_pending_state.json
+            out/kospi_rapid_fallback_status.md
+            out/kospi_rapid_fallback_pending_state.json
           if-no-files-found: ignore
           retention-days: 14
