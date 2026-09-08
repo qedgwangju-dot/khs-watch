@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-09T03:05:15+09:00",
+  "updated_at_kst": "2026-09-09T06:05:07+09:00",
   "source_dates": {
     "mof_week": "2026-08-23~08-29",
     "jgb_yield": "2026/9/7",
@@ -15,16 +15,16 @@
     "fima_weekly_change_bn_usd": 0.0,
     "market": {
       "market_date": "2026-09-04",
-      "dgs10": 4.77,
-      "dgs10_change_bp": -2.000000000000046,
-      "dgs30": 5.25,
-      "dgs30_change_bp": -1.9999999999999574,
+      "dgs10": 4.78,
+      "dgs10_change_bp": 1.0000000000000675,
+      "dgs30": 5.24,
+      "dgs30_change_bp": -0.9999999999999787,
       "sofr_iorb_date": "2026-09-04",
       "sofr_iorb_bp": 0.0,
       "sofr_iorb_change_bp": -1.000000000000023,
-      "usdjpy_date": "2026-08-28",
-      "usdjpy": 159.97,
-      "usdjpy_change_pct": 0.44581187994474636
+      "usdjpy_date": "2026-09-04",
+      "usdjpy": 156.11,
+      "usdjpy_change_pct": 0.4633502799408218
     }
   },
   "auctions": {
