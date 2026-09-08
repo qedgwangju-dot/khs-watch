@@ -1,0 +1,34 @@
+name: Telegram route inventory once
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/telegram-route-inventory-once.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Print Telegram route inventory
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for p in sorted(Path('.github/workflows').glob('*.y*ml')):
+              text=p.read_text(encoding='utf-8', errors='ignore')
+              if 'TELEGRAM' not in text.upper():
+                  continue
+              expected=sorted(set(re.findall(r'EXPECTED(?:_TELEGRAM)?_BOT_USERNAME\s*:\s*["\']?@?([A-Za-z0-9_]+)', text)))
+              bots=sorted(set(re.findall(r'secrets\.([A-Z0-9_]*TELEGRAM[A-Z0-9_]*BOT_TOKEN)', text)))
+              chats=sorted(set(re.findall(r'secrets\.([A-Z0-9_]*TELEGRAM[A-Z0-9_]*CHAT_ID)', text)))
+              if expected or bots:
+                  print(f'FILE={p}')
+                  print(' EXPECTED=' + ','.join(expected))
+                  print(' BOT_SECRETS=' + ','.join(bots))
+                  print(' CHAT_SECRETS=' + ','.join(chats))
+          PY
