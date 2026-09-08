@@ -1,37 +1,46 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-08T15:35:43+09:00",
+  "updated_at_kst": "2026-09-08T16:03:11+09:00",
   "seen_event_keys": [
-    "fx_daily_down:2026-09-02",
-    "foreign1d_neg:2026-09-02:postclose",
-    "foreign3d_neg:2026-09-02:final",
-    "foreign1d_pos:2026-09-07:final",
-    "fx_1350_down:2026-09-04",
-    "foreign3d_neg:2026-08-27",
-    "foreign1d_neg:2026-09-02:final",
     "foreign3d_neg:2026-09-02:postclose",
-    "capex:13cbe150930d23d8",
     "fx_1350_down:2026-09-07",
     "policy_spread:2026-08-27:0.75",
+    "foreign1d_neg:2026-08-31",
+    "foreign1d_neg:2026-09-02:postclose",
+    "foreign3d_neg:2026-09-02:final",
+    "foreign3d_neg:2026-08-27",
+    "capex:13cbe150930d23d8",
+    "fx_daily_down:2026-09-02",
+    "foreign1d_neg:2026-09-02:final",
+    "fx_1350_down:2026-09-04",
     "foreign3d_pos:2026-09-07:final",
-    "foreign1d_neg:2026-08-31"
+    "foreign1d_pos:2026-09-07:final"
   ],
   "active_keys": [
     "fx_1350_down:2026-09-08",
     "foreign3d_pos:2026-09-08"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-08T15:35:43+09:00",
+    "checked_at_kst": "2026-09-08T16:03:11+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-08",
-      "value": 1345.7,
+      "value": 1346.3,
       "prev_date": "2026-09-07",
       "prev_value": 1347.0,
-      "change_krw": -1.3,
-      "change_pct": -0.0965,
+      "change_krw": -0.7,
+      "change_pct": -0.052,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
-      "ecos_error": "ConnectTimeout: HTTPSConnectionPool(host='ecos.bok.or.kr', port=443): Max retries exceeded with url: /api/StatisticSearch/3V2UDT13NQXR1D7H8N2A/json/kr/1/100/731Y001/D/20260825/20260908/0000001 (Caused by ConnectTimeoutError(<HTTPSConnection(host='ecos.bok.or.kr', port=443) at 0x7fd5d3eb79b0>, 'Connection to ecos.bok.or.kr timed out. (connect timeout=30)'))"
+      "ecos_official": {
+        "date": "2026-09-08",
+        "value": 1342.6,
+        "item_name": "원/미국달러(매매기준율)",
+        "unit": "원",
+        "stat_code": "731Y001",
+        "item_code": "0000001",
+        "source": "https://ecos.bok.or.kr/api/",
+        "role": "한국은행 공식 일일 검증값(장중 경보 판정에는 사용하지 않음)"
+      }
     },
     "ust10": {
       "date": "2026-09-03",
@@ -51,10 +60,10 @@
     },
     "foreign_flow": {
       "date": "2026-09-08",
-      "daily_eok": 6449.0,
-      "three_day_eok": 36777.0,
-      "daily_krw": 644900000000,
-      "three_day_krw": 3677700000000,
+      "daily_eok": 6316.0,
+      "three_day_eok": 36644.0,
+      "daily_krw": 631600000000,
+      "three_day_krw": 3664400000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260908&sosok=01",
       "phase": "장중 참고"
     },
