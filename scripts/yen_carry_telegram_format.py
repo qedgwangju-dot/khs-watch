@@ -4,11 +4,16 @@
 The alert calculation and source text remain unchanged. This module only applies
 safe Telegram HTML at send time so important FX-shock values are visually easier
 to scan without breaking sector enrichment or GitHub markdown artifacts.
+Long alerts are split by line/paragraph instead of being silently truncated.
 """
 from __future__ import annotations
 
 import html
 import re
+
+# Telegram sendMessage allows 1-4096 characters after entity parsing. Keep margin
+# for formatting and future changes while preserving every source line.
+TELEGRAM_SAFE_TEXT_LIMIT = 3900
 
 _SECTION_EXACT = {
     "빠른 급락 감지",
@@ -100,15 +105,67 @@ def _format_fx_line(line: str) -> str:
     return html.escape(line)
 
 
-def render_telegram_html(title: str, body: str, lane: str) -> str:
-    """Render a Telegram-safe HTML message without changing alert logic/content."""
-    plain = f"{title.strip()}\n\n{body.strip()}"[:4096]
-    lines = plain.splitlines()
+def _split_long_line(line: str, limit: int) -> list[str]:
+    if len(line) <= limit:
+        return [line]
+    return [line[index : index + limit] for index in range(0, len(line), limit)]
+
+
+def split_plain_message(title: str, body: str, limit: int = TELEGRAM_SAFE_TEXT_LIMIT) -> list[str]:
+    """Split without dropping text; prefer existing line boundaries."""
+    if limit < 100:
+        raise ValueError("Telegram chunk limit is unreasonably small")
+
+    plain = f"{title.strip()}\n\n{body.strip()}"
+    source_lines: list[str] = []
+    for line in plain.splitlines():
+        source_lines.extend(_split_long_line(line, limit))
+
+    chunks: list[str] = []
+    current: list[str] = []
+    current_len = 0
+    for line in source_lines:
+        added = len(line) + (1 if current else 0)
+        if current and current_len + added > limit:
+            chunks.append("\n".join(current))
+            current = [line]
+            current_len = len(line)
+        else:
+            current.append(line)
+            current_len += added
+    if current:
+        chunks.append("\n".join(current))
+    return chunks or [""]
+
+
+def _render_chunk(chunk: str, lane: str, *, first_chunk: bool) -> str:
+    if lane != "fx_shock":
+        return html.escape(chunk)
+
+    lines = chunk.splitlines()
     if not lines:
         return ""
-    if lane != "fx_shock":
-        return html.escape(plain)
-
-    rendered = [_bold(lines[0])]
-    rendered.extend(_format_fx_line(line) for line in lines[1:])
+    rendered: list[str] = []
+    for index, line in enumerate(lines):
+        if first_chunk and index == 0:
+            rendered.append(_bold(line))
+        else:
+            rendered.append(_format_fx_line(line))
     return "\n".join(rendered)
+
+
+def render_telegram_html_chunks(title: str, body: str, lane: str) -> list[str]:
+    """Render all Telegram-safe HTML chunks without truncating the alert."""
+    plain_chunks = split_plain_message(title, body)
+    return [
+        _render_chunk(chunk, lane, first_chunk=(index == 0))
+        for index, chunk in enumerate(plain_chunks)
+    ]
+
+
+def render_telegram_html(title: str, body: str, lane: str) -> str:
+    """Compatibility helper for alerts that fit in one Telegram message."""
+    chunks = render_telegram_html_chunks(title, body, lane)
+    if len(chunks) != 1:
+        raise ValueError("Alert exceeds one Telegram message; use render_telegram_html_chunks")
+    return chunks[0]
