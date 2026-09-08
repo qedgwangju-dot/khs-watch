@@ -16,6 +16,7 @@ on:
     paths:
       - ".github/workflows/kospi-derivatives-flow-ls-realtime.yml"
       - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/test_kospi_shock_episode.py"
       - "scripts/kospi_flow_attribution_ls.py"
 
 permissions:
@@ -68,8 +69,8 @@ jobs:
       - name: Validate variable episode detector
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode != 'production')
         run: |
-          python -m py_compile scripts/kospi_shock_episode_watch.py
-          python scripts/kospi_shock_episode_watch.py --synthetic-test
+          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/test_kospi_shock_episode.py
+          python scripts/test_kospi_shock_episode.py
 
       - name: Test LS realtime and flow runtime
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode != 'production')
