@@ -15,7 +15,6 @@ on:
       - ".github/workflows/japan-treasury-regime-overlay.yml"
       - "scripts/japan_treasury_regime_overlay.py"
       - "tests/test_japan_treasury_regime_overlay.py"
-      - "data/japan_treasury_regime_overlay_state.json"
 
 permissions:
   contents: write
