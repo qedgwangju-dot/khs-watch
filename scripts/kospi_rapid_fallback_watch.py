@@ -1,0 +1,248 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import datetime as dt
+import html
+import json
+import os
+import time
+import urllib.parse
+import urllib.request
+from pathlib import Path
+from typing import Any
+from zoneinfo import ZoneInfo
+
+import requests
+
+KST = ZoneInfo("Asia/Seoul")
+STATE_PATH = Path("data/kospi_rapid_fallback_state.json")
+PENDING_PATH = Path("out/kospi_rapid_fallback_pending_state.json")
+STATUS_PATH = Path("out/kospi_rapid_fallback_status.md")
+
+KOSPI_API = "https://m.stock.naver.com/api/index/KOSPI/basic"
+KOSPI_URL = "https://m.stock.naver.com/domestic/index/KOSPI/total"
+
+# LS 실시간 전용 감시가 기동되지 않더라도 기존 15분 시장감시 워크플로에서 잡는 안전망.
+SESSION_HIGH_DD = -1.50
+FAST_15M = -1.00
+FAST_30M = -1.25
+START_TIME = dt.time(9, 0)
+END_TIME = dt.time(15, 40)
+
+
+def fnum(v: Any) -> float | None:
+    try:
+        if v is None or str(v).strip() == "":
+            return None
+        return float(str(v).replace(",", "").strip())
+    except Exception:
+        return None
+
+
+def pct(a: float | None, b: float | None) -> float | None:
+    if a is None or b is None or a == 0:
+        return None
+    return (b / a - 1.0) * 100.0
+
+
+def load_state(today: str) -> dict[str, Any]:
+    try:
+        state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        state = {}
+    if state.get("date") != today:
+        state = {
+            "date": today,
+            "samples": [],
+            "session_high": None,
+            "sent_session_high": False,
+            "sent_fast": False,
+            "last_alert_ts": None,
+        }
+    return state
+
+
+def save_pending(state: dict[str, Any]) -> None:
+    PENDING_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def fetch_kospi() -> dict[str, Any]:
+    r = requests.get(KOSPI_API, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
+    r.raise_for_status()
+    data = r.json()
+    if not isinstance(data, dict):
+        raise RuntimeError("Naver KOSPI response is not an object")
+    return data
+
+
+def get_price(data: dict[str, Any]) -> float | None:
+    for key in ("closePrice", "currentPrice", "now", "price"):
+        value = fnum(data.get(key))
+        if value is not None:
+            return value
+    return None
+
+
+def get_high(data: dict[str, Any]) -> float | None:
+    for key in ("highPrice", "dayHighPrice", "high"):
+        value = fnum(data.get(key))
+        if value is not None:
+            return value
+    return None
+
+
+def nearest_sample(samples: list[dict[str, Any]], seconds_ago: int, now_ts: float) -> float | None:
+    if not samples:
+        return None
+    target = now_ts - seconds_ago
+    row = min(samples, key=lambda x: abs(float(x.get("ts", 0)) - target))
+    # 아직 해당 기간만큼 표본이 쌓이지 않았으면 계산하지 않는다.
+    if now_ts - float(row.get("ts", now_ts)) < seconds_ago * 0.65:
+        return None
+    return fnum(row.get("price"))
+
+
+def telegram_send(text: str) -> int:
+    token = (os.getenv("DERIV_TELEGRAM_BOT_TOKEN") or "").strip()
+    chat_id = (os.getenv("DERIV_TELEGRAM_CHAT_ID") or "").strip()
+    expected = (os.getenv("DERIV_EXPECTED_TELEGRAM_BOT_USERNAME") or "khs887900887900008879_bot").strip().lstrip("@")
+    if not token or not chat_id:
+        raise RuntimeError("KOSPI derivative Telegram secrets missing")
+
+    with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
+        identity = json.loads(response.read().decode("utf-8"))
+    actual = str((identity.get("result") or {}).get("username") or "")
+    if not identity.get("ok") or actual.lower() != expected.lower():
+        raise RuntimeError(f"Wrong derivative Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+
+    payload = urllib.parse.urlencode({
+        "chat_id": chat_id,
+        "text": text,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": "true",
+    }).encode("utf-8")
+    req = urllib.request.Request(
+        f"https://api.telegram.org/bot{token}/sendMessage",
+        data=payload,
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=30) as response:
+        result = json.loads(response.read().decode("utf-8"))
+    if not result.get("ok"):
+        raise RuntimeError(f"Telegram rejected fallback alert: {result}")
+    return int(result["result"]["message_id"])
+
+
+def build_alert(now: dt.datetime, cur: float, high: float, dd: float, m15: float | None, m30: float | None, reasons: list[str]) -> str:
+    lines = [
+        "🚨 <b>코스피 급락 안전망 경보</b>",
+        f"<code>{now:%Y-%m-%d %H:%M:%S} KST</code>",
+        "",
+        "<b>판정</b>  LS 실시간 감시와 별개로 15분 보조 감시에서 급락 조건 확인",
+        "",
+        "<b>현재 움직임</b>",
+        f"• KOSPI <b>{cur:,.2f}</b>",
+        f"• 장중 고점 <b>{high:,.2f}</b> → 현재 <b>{cur:,.2f}</b> · 고점 대비 <b>{dd:+.2f}%</b>",
+    ]
+    if m15 is not None:
+        lines.append(f"• 15분 <b>{m15:+.2f}%</b>")
+    if m30 is not None:
+        lines.append(f"• 30분 <b>{m30:+.2f}%</b>")
+    lines += ["", "<b>경보 사유</b>"]
+    lines += [f"• {html.escape(r)}" for r in reasons]
+    lines += [
+        "",
+        "<b>의미</b>",
+        "• 10분 안에 급락하지 않고 한 시간가량 천천히 고점을 반납하는 유형도 잡기 위해 장중 고점 대비 하락률을 별도로 감시합니다.",
+        "• 파생·프로그램매매 원인은 LS 실시간 경보와 함께 교차 확인하며, 이 안전망만으로 원인을 단정하지 않습니다.",
+        "",
+        f'• <a href="{KOSPI_URL}">KOSPI 확인</a>',
+    ]
+    return "\n".join(lines)
+
+
+def write_status(now: dt.datetime, status: str, details: dict[str, Any] | None = None) -> None:
+    STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    lines = [
+        "# 코스피 급락 안전망",
+        "",
+        f"- 조회: {now:%Y-%m-%d %H:%M:%S} KST",
+        f"- 상태: {status}",
+    ]
+    for k, v in (details or {}).items():
+        lines.append(f"- {k}: {v}")
+    STATUS_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def main() -> int:
+    now = dt.datetime.now(KST)
+    today = now.date().isoformat()
+    state = load_state(today)
+
+    if now.weekday() >= 5 or not (START_TIME <= now.time() <= END_TIME):
+        save_pending(state)
+        write_status(now, "장외 시간 — 발송 없음")
+        return 0
+
+    data = fetch_kospi()
+    cur = get_price(data)
+    if cur is None:
+        raise RuntimeError(f"KOSPI current price missing; keys={sorted(data.keys())[:50]}")
+
+    api_high = get_high(data)
+    prev_high = fnum(state.get("session_high"))
+    high_candidates = [x for x in (api_high, prev_high, cur) if x is not None]
+    session_high = max(high_candidates)
+    state["session_high"] = session_high
+
+    now_ts = time.time()
+    samples = list(state.get("samples") or [])
+    samples.append({"ts": now_ts, "price": cur})
+    cutoff = now_ts - 3 * 60 * 60
+    samples = [x for x in samples if float(x.get("ts", 0)) >= cutoff]
+    state["samples"] = samples[-30:]
+
+    p15 = nearest_sample(samples[:-1], 15 * 60, now_ts)
+    p30 = nearest_sample(samples[:-1], 30 * 60, now_ts)
+    m15 = pct(p15, cur)
+    m30 = pct(p30, cur)
+    dd = pct(session_high, cur) or 0.0
+
+    reasons: list[str] = []
+    session_hit = dd <= SESSION_HIGH_DD
+    fast_hit = ((m15 is not None and m15 <= FAST_15M) or
+                (m30 is not None and m30 <= FAST_30M))
+
+    if session_hit and not state.get("sent_session_high"):
+        reasons.append(f"장중 고점 대비 {dd:+.2f}% ≤ {SESSION_HIGH_DD:.2f}%")
+    if fast_hit and not state.get("sent_fast"):
+        if m15 is not None and m15 <= FAST_15M:
+            reasons.append(f"15분 {m15:+.2f}% ≤ {FAST_15M:.2f}%")
+        if m30 is not None and m30 <= FAST_30M:
+            reasons.append(f"30분 {m30:+.2f}% ≤ {FAST_30M:.2f}%")
+
+    msg_id = None
+    if reasons:
+        msg_id = telegram_send(build_alert(now, cur, session_high, dd, m15, m30, reasons))
+        if session_hit:
+            state["sent_session_high"] = True
+        if fast_hit:
+            state["sent_fast"] = True
+        state["last_alert_ts"] = now.isoformat(timespec="seconds")
+        state["last_message_id"] = msg_id
+
+    save_pending(state)
+    write_status(now, "경보 발송" if msg_id else "정상 감시 — 신규 조건 없음", {
+        "KOSPI": f"{cur:,.2f}",
+        "장중 고점": f"{session_high:,.2f}",
+        "고점 대비": f"{dd:+.2f}%",
+        "15분": "계산 대기" if m15 is None else f"{m15:+.2f}%",
+        "30분": "계산 대기" if m30 is None else f"{m30:+.2f}%",
+        "텔레그램 ID": msg_id,
+    })
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
