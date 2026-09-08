@@ -1,36 +1,36 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-08T19:03:12+09:00",
+  "updated_at_kst": "2026-09-08T22:19:02+09:00",
   "seen_event_keys": [
-    "foreign1d_neg:2026-09-02:final",
-    "fx_1350_down:2026-09-04",
-    "fx_1350_down:2026-09-07",
-    "foreign1d_neg:2026-08-31",
-    "foreign3d_neg:2026-08-27",
-    "fx_daily_down:2026-09-02",
-    "foreign3d_pos:2026-09-07:final",
     "foreign3d_neg:2026-09-02:final",
-    "foreign1d_neg:2026-09-02:postclose",
-    "foreign1d_pos:2026-09-07:final",
-    "capex:13cbe150930d23d8",
     "policy_spread:2026-08-27:0.75",
+    "capex:13cbe150930d23d8",
+    "foreign3d_pos:2026-09-08:final",
+    "foreign3d_pos:2026-09-07:final",
+    "foreign1d_neg:2026-08-31",
+    "fx_daily_down:2026-09-02",
+    "foreign1d_pos:2026-09-07:final",
     "foreign3d_neg:2026-09-02:postclose",
-    "foreign3d_pos:2026-09-08:final"
+    "foreign3d_neg:2026-08-27",
+    "fx_1350_down:2026-09-04",
+    "foreign1d_neg:2026-09-02:final",
+    "foreign1d_neg:2026-09-02:postclose",
+    "fx_1350_down:2026-09-07"
   ],
   "active_keys": [
     "fx_1350_down:2026-09-08",
     "foreign3d_pos:2026-09-08"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-08T19:03:12+09:00",
+    "checked_at_kst": "2026-09-08T22:19:02+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-08",
-      "value": 1342.7,
+      "value": 1341.6,
       "prev_date": "2026-09-07",
       "prev_value": 1347.0,
-      "change_krw": -4.3,
-      "change_pct": -0.3192,
+      "change_krw": -5.4,
+      "change_pct": -0.4009,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "ecos_official": {
         "date": "2026-09-08",
@@ -52,7 +52,7 @@
       "source": "https://fred.stlouisfed.org/series/DGS10"
     },
     "policy_spread": {
-      "date": "2026-09-07",
+      "date": "2026-09-08",
       "fed_upper": 3.75,
       "bok_base": 3.0,
       "spread_pp": 0.75,
