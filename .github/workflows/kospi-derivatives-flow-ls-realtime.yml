@@ -17,6 +17,7 @@ on:
       - ".github/workflows/kospi-derivatives-flow-ls-realtime.yml"
       - "scripts/kospi_derivatives_flow_ls_realtime.py"
       - "scripts/kospi_flow_attribution_ls.py"
+      - "scripts/kospi_intraday_forensics_20260908.py"
 
 permissions:
   contents: read
@@ -82,6 +83,12 @@ jobs:
               print(f"- {k}: rows={m.get('row_count')} latest={m.get('latest_row')}")
           PY
 
+      - name: Reconstruct September 8 intraday participant flow
+        if: github.event_name == 'push'
+        run: |
+          python -m py_compile scripts/kospi_intraday_forensics_20260908.py
+          python scripts/kospi_intraday_forensics_20260908.py | tee out/kospi_intraday_forensics_20260908.json
+
       - name: Test LS realtime runtime
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode != 'production')
         run: |
@@ -107,5 +114,6 @@ jobs:
             out/kospi_derivatives_flow_ls_status.md
             out/kospi_derivatives_flow_ls_raw_sample.json
             out/kospi_flow_attribution_ls_diagnostic.json
+            out/kospi_intraday_forensics_20260908.json
           if-no-files-found: ignore
           retention-days: 14
