@@ -16,6 +16,7 @@ on:
     paths:
       - ".github/workflows/kospi-derivatives-flow-ls-realtime.yml"
       - "scripts/kospi_derivatives_flow_ls_realtime.py"
+      - "scripts/kospi_flow_attribution_ls.py"
 
 permissions:
   contents: read
@@ -64,6 +65,23 @@ jobs:
           print(f'telegram_route_valid=true bot=@{actual}')
           PY
 
+      - name: Diagnose LS participant attribution
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode != 'production')
+        run: |
+          rm -f out/kospi_flow_attribution_ls_diagnostic.json
+          python -m py_compile scripts/kospi_flow_attribution_ls.py
+          python scripts/kospi_flow_attribution_ls.py --diagnose --window 15
+          echo '## LS 주체별 수급 진단' >> "$GITHUB_STEP_SUMMARY"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          d=json.load(open('out/kospi_flow_attribution_ls_diagnostic.json', encoding='utf-8'))
+          print(f"- 판정: {d.get('classification',{}).get('verdict')}")
+          print(f"- 오류: {d.get('errors')}")
+          for k in ('kospi_raw','kp200_raw','futures_raw','program_raw'):
+              m=d.get('raw_meta',{}).get(k,{})
+              print(f"- {k}: rows={m.get('row_count')} latest={m.get('latest_row')}")
+          PY
+
       - name: Test LS realtime runtime
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode != 'production')
         run: |
@@ -76,7 +94,7 @@ jobs:
         if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'production')
         run: |
           rm -f out/kospi_derivatives_flow_ls_status.md out/kospi_derivatives_flow_ls_raw_sample.json
-          python -m py_compile scripts/kospi_derivatives_flow_ls_realtime.py
+          python -m py_compile scripts/kospi_derivatives_flow_ls_realtime.py scripts/kospi_flow_attribution_ls.py
           python scripts/kospi_derivatives_flow_ls_realtime.py
           cat out/kospi_derivatives_flow_ls_status.md >> "$GITHUB_STEP_SUMMARY"
 
@@ -88,5 +106,6 @@ jobs:
           path: |
             out/kospi_derivatives_flow_ls_status.md
             out/kospi_derivatives_flow_ls_raw_sample.json
+            out/kospi_flow_attribution_ls_diagnostic.json
           if-no-files-found: ignore
           retention-days: 14
