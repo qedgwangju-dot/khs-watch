@@ -117,8 +117,37 @@ def _meaning(tags: list[str]) -> str:
     return "프로젝트 확정도와 집행 시간표가 한 단계 바뀐 신호입니다."
 
 
+def _fixed_project_cost_block() -> list[str]:
+    return [
+        "<b>💰 대미투자 프로젝트 기준 사업비</b>",
+        "",
+        "🔥 <b>엔시날 가스복합발전</b>",
+        "• 6.3GW · <b>223억달러</b>",
+        "└ GW당 <b>35.40억달러 ≈ 4조7,630억원</b>",
+        "",
+        "⚛️ <b>미국 대형원전</b>",
+        "• 8기 · <b>1,200억달러</b>",
+        "└ 기당 <b>150억달러 ≈ 20조1,840억원</b>",
+        "",
+        "🧊 <b>알래스카 LNG</b>",
+        "• <b>670억달러 ≈ 90조1,552억원</b>",
+        "",
+        "📦 <b>3개 프로젝트 합계</b>",
+        "• <b>2,093억달러 ≈ 281조6,341억원</b>",
+        "",
+        "<b>⚠️ 꼭 구분할 숫자</b>",
+        "• 첫 송금: <b>22억달러+α ≈ 2조9,603억원+α</b>",
+        "• 엔시날 총사업비 223억달러의 <b>약 9.9%</b>",
+        "• 첫 송금 전액이 엔시날에 들어간다는 의미는 아님",
+        "• 3개 후보사업 총액은 전략투자 2,000억달러보다 <b>93억달러 ≈ 12조5,141억원</b> 큼",
+        "└ 총사업비와 한국 정부 실제 투자액은 다를 수 있어 미국 측·민간·PF 자금 비중 확인 필요",
+        "",
+        "<i>원화 환산 기준: 1달러=1,345.6원 · 2026-09-08 15:30</i>",
+    ]
+
+
 def _bootstrap(now: dt.datetime) -> str:
-    return "\n".join([
+    parts = [
         "<b>🇺🇸 대미투자 | 텍사스 엔시날 1호 확정 보도</b>",
         "",
         "<b>무엇이 바뀌었나</b>",
@@ -139,12 +168,17 @@ def _bootstrap(now: dt.datetime) -> str:
         "• 미국 대형원전과 Alaska LNG는 이번 1호에서 빠지고 별도 검토합니다.",
         "• 반도체 투자 요구가 2,000억달러 패키지에 포함되는지도 계속 확인합니다.",
         "",
+    ]
+    parts += _fixed_project_cost_block()
+    parts += [
+        "",
         "<b>다음 확인</b>",
         "1) 정부 최종 발표  2) I-SPV 원문  3) PPA  4) EPC·가스터빈 본계약  5) 추가 증액 여부",
         "",
         '<b>출처</b> · <a href="https://biz.heraldcorp.com/article/10864870">헤럴드경제</a> · <a href="https://www.edaily.co.kr/News/Read?newsId=02499366645577824&mediaCodeNo=257">이데일리</a>',
         f"<i>조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 공식 최종문서가 나오면 공식 확정으로 갱신</i>",
-    ])
+    ]
+    return "\n".join(parts)
 
 
 def main() -> int:
@@ -193,7 +227,11 @@ def main() -> int:
             f"• 출처: <a href=\"{html.escape(row['link'], quote=True)}\">{html.escape(row['source'])}</a>",
             "",
         ]
-    parts.append(f"<i>조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 같은 사건의 단순 주가 반응은 제외</i>")
+    parts += _fixed_project_cost_block()
+    parts += [
+        "",
+        f"<i>조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 같은 사건의 단순 주가 반응은 제외</i>",
+    ]
     ALERT.write_text("\n".join(parts) + "\n", encoding="utf-8")
     print(f"new_alerts={len(fresh)}")
     return 0
