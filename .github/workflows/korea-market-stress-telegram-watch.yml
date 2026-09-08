@@ -9,6 +9,7 @@ on:
       - "scripts/korea_market_stress_watch_v11.py"
       - "scripts/korea_market_stress_watch_v12.py"
       - "scripts/kospi_rapid_fallback_watch.py"
+      - "scripts/kospi_flow_attribution_ls.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -39,6 +40,8 @@ jobs:
       DERIV_EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
       DERIV_TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
       DERIV_TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+      LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
 
     steps:
       - name: Checkout
@@ -190,7 +193,7 @@ jobs:
       - name: Run redundant KOSPI rapid-drop fallback
         run: |
           rm -f out/kospi_rapid_fallback_status.md out/kospi_rapid_fallback_pending_state.json
-          python -m py_compile scripts/kospi_rapid_fallback_watch.py
+          python -m py_compile scripts/kospi_flow_attribution_ls.py scripts/kospi_rapid_fallback_watch.py
           python scripts/kospi_rapid_fallback_watch.py
           cat out/kospi_rapid_fallback_status.md >> "$GITHUB_STEP_SUMMARY"
 
