@@ -1,0 +1,41 @@
+{
+  "initialized": true,
+  "updated_at_kst": "2026-09-08T10:53:44+09:00",
+  "levels": {
+    "official_funding": 3,
+    "structural_repatriation": 0,
+    "japan_long_end_fingerprint": 0,
+    "event_long_end_breakout": 0,
+    "fed_repricing_dominant": 0,
+    "one_off_relief": 1,
+    "official_private_overlap": 0
+  },
+  "seen_policy_ids": [],
+  "snapshot": {
+    "reserve_period": "August 2026",
+    "securities_drop_bn_usd": -87.77300000000002,
+    "intervention_trillion_yen": 15.3993,
+    "intervention_usd_bn": 99.51114873917786,
+    "funding_ratio": 0.8820418728162417,
+    "fima_bn_usd": 0.0,
+    "flow": {
+      "latest_week": "2026-08-23~08-29",
+      "one_week": -0.824,
+      "two_week": -2.8007999999999997,
+      "four_week": -0.012099999999999889,
+      "twelve_week": 0.11470000000000002,
+      "negative_streak": 2
+    },
+    "market": {
+      "observed_at_utc": "2026-09-08T01:53:46Z",
+      "usdjpy": 153.48800659179688,
+      "usdjpy_change_pct": -1.6272736918952195,
+      "ust2": null,
+      "ust2_change_bp": null,
+      "ust10": 4.784,
+      "ust10_change_bp": 0.0,
+      "ust30": 5.246,
+      "ust30_change_bp": 0.0
+    }
+  }
+}
