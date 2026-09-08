@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-08T08:35:39+09:00",
+  "updated_at_kst": "2026-09-08T13:51:17+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -27,6 +27,7 @@
     "d33a5fbc0d352f5813521b17",
     "dff177bae16621437b065202",
     "e05c1927e16110a949b8b797",
+    "e91a33b5d73da251921a7da4",
     "eed867761a24cbad33b1c104",
     "f07ec9c4d4039ee24a7a82d9",
     "fbd920db100fb7204a37af3d",
@@ -37,15 +38,17 @@
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1347.93,
-    "date": "2026-09-07 일일 기준 · ECB/Frankfurter · 조회 2026-09-08 08:35 KST · 보조 API 2026-09-07 · 차이 0.10% · 일중 기준시각 차이 가능",
+    "date": "2026-09-07 일일 기준 · ECB/Frankfurter · 조회 2026-09-08 13:51 KST · 보조 API 2026-09-08 · 차이 0.19% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": []
+  "errors": [
+    "교차검증 부족으로 발송 제외: 뉴스토마토 | 삼전·하닉, HBM 이어 eSSD도 AI 특수…미·중 추격은 변수 - 뉴스토마토"
+  ]
 }
