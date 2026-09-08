@@ -150,6 +150,37 @@ jobs:
           print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={ids}")
           PY
 
+      - name: Suppress state-only churn from live quote timestamps
+        if: always() && hashFiles('out/japan_treasury_regime_overlay_pending.json') != '' && hashFiles('out/japan_treasury_regime_overlay_alert.html') == ''
+        run: |
+          python - <<'PY'
+          import copy
+          import json
+          import pathlib
+
+          old_path = pathlib.Path('data/japan_treasury_regime_overlay_state.json')
+          new_path = pathlib.Path('out/japan_treasury_regime_overlay_pending.json')
+          if not old_path.exists() or not new_path.exists():
+              raise SystemExit(0)
+          old = json.loads(old_path.read_text(encoding='utf-8'))
+          new = json.loads(new_path.read_text(encoding='utf-8'))
+
+          def stable(value):
+              value = copy.deepcopy(value)
+              value.pop('updated_at_kst', None)
+              snap = value.get('snapshot') or {}
+              # These change with every poll but do not define a persistent regime by themselves.
+              snap.pop('market', None)
+              snap.pop('intervention_usd_bn', None)
+              snap.pop('funding_ratio', None)
+              value['snapshot'] = snap
+              return value
+
+          if stable(old) == stable(new):
+              new_path.unlink()
+              print('state_churn_suppressed=true reason=only_live_quote_or_timestamp_changed')
+          PY
+
       - name: Persist state only after no-alert or confirmed delivery
         if: always()
         run: |
