@@ -165,7 +165,7 @@ jobs:
           from zoneinfo import ZoneInfo
 
           sys.path.insert(0, str(pathlib.Path("scripts").resolve()))
-          from yen_carry_telegram_format import render_telegram_html
+          from yen_carry_telegram_format import render_telegram_html_chunks
 
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
@@ -202,31 +202,37 @@ jobs:
                   continue
               title = title_path.read_text(encoding="utf-8").strip()
               body = body_path.read_text(encoding="utf-8").strip()
-              telegram_html = render_telegram_html(title, body, lane)
-              payload = urllib.parse.urlencode(
-                  {
-                      "chat_id": chat_id,
-                      "text": telegram_html,
-                      "parse_mode": "HTML",
-                      "disable_web_page_preview": "true",
-                  }
-              ).encode("utf-8")
-              request = urllib.request.Request(
-                  f"https://api.telegram.org/bot{token}/sendMessage",
-                  data=payload,
-                  method="POST",
-              )
-              with urllib.request.urlopen(request, timeout=25) as response:
-                  result = json.loads(response.read().decode("utf-8"))
-              if not result.get("ok"):
-                  raise RuntimeError(f"Telegram rejected {lane} message: {result}")
+              chunks = render_telegram_html_chunks(title, body, lane)
+              message_ids = []
+              for telegram_html in chunks:
+                  payload = urllib.parse.urlencode(
+                      {
+                          "chat_id": chat_id,
+                          "text": telegram_html,
+                          "parse_mode": "HTML",
+                          "disable_web_page_preview": "true",
+                      }
+                  ).encode("utf-8")
+                  request = urllib.request.Request(
+                      f"https://api.telegram.org/bot{token}/sendMessage",
+                      data=payload,
+                      method="POST",
+                  )
+                  with urllib.request.urlopen(request, timeout=25) as response:
+                      result = json.loads(response.read().decode("utf-8"))
+                  if not result.get("ok"):
+                      raise RuntimeError(f"Telegram rejected {lane} message: {result}")
+                  message_ids.append((result.get("result") or {}).get("message_id"))
+                  sent += 1
 
               confirmed = {
                   "status": "confirmed",
                   "lane": lane,
                   "bot_username": actual_username,
                   "route_secret": "GLOBAL_RATES_TELEGRAM_*",
-                  "message_id": result.get("result", {}).get("message_id"),
+                  "message_id": message_ids[0] if message_ids else None,
+                  "message_ids": message_ids,
+                  "chunk_count": len(message_ids),
                   "confirmed_at_kst": dt.datetime.now(
                       ZoneInfo("Asia/Seoul")
                   ).isoformat(timespec="seconds"),
@@ -235,11 +241,10 @@ jobs:
                   json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
                   encoding="utf-8",
               )
-              sent += 1
               print(
                   f"telegram_delivery_confirmed=true lane={lane} "
                   f"bot_username=@{actual_username} "
-                  f"message_id={confirmed['message_id']}"
+                  f"message_ids={message_ids}"
               )
 
           if sent == 0:
