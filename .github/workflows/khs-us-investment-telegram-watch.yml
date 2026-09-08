@@ -40,58 +40,65 @@ jobs:
 
       - name: Validate exact Telegram route
         env:
-          TOKEN_GENERIC: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          CHAT_GENERIC: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TOKEN_KHS: ${{ secrets.KHS_TELEGRAM_BOT_TOKEN }}
-          CHAT_KHS: ${{ secrets.KHS_TELEGRAM_CHAT_ID }}
-          TOKEN_US_INVESTMENT: ${{ secrets.US_INVESTMENT_TELEGRAM_BOT_TOKEN }}
-          CHAT_US_INVESTMENT: ${{ secrets.US_INVESTMENT_TELEGRAM_CHAT_ID }}
-          TOKEN_POLICY: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          CHAT_POLICY: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
-          TOKEN_YEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          CHAT_YEN: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
-          TOKEN_HONAM: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
-          CHAT_HONAM: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_DIRECT: ${{ secrets.KHS887900_CHAT_ID }}
+          TELEGRAM_CHAT_ID_POLICY: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_GENERIC: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import json
           import os
+          import urllib.parse
           import urllib.request
 
-          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@").lower()
-          candidates = [
-              ("TELEGRAM", os.getenv("TOKEN_GENERIC"), os.getenv("CHAT_GENERIC")),
-              ("KHS", os.getenv("TOKEN_KHS"), os.getenv("CHAT_KHS")),
-              ("US_INVESTMENT", os.getenv("TOKEN_US_INVESTMENT"), os.getenv("CHAT_US_INVESTMENT")),
-              ("KHS_POLICY", os.getenv("TOKEN_POLICY"), os.getenv("CHAT_POLICY")),
-              ("YEN_CARRY", os.getenv("TOKEN_YEN"), os.getenv("CHAT_YEN")),
-              ("HONAM", os.getenv("TOKEN_HONAM"), os.getenv("CHAT_HONAM")),
-          ]
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("KHS887900_BOT_TOKEN secret is missing")
 
-          checked = []
-          for label, token, chat_id in candidates:
-              token = (token or "").strip()
-              chat_id = (chat_id or "").strip()
-              if not token:
-                  continue
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          def get_chat(chat_id):
+              if not chat_id:
+                  return None
+              query = urllib.parse.urlencode({"chat_id": chat_id})
               try:
-                  with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
-                      identity = json.loads(response.read().decode("utf-8"))
-                  username = str((identity.get("result") or {}).get("username") or "")
-              except Exception as exc:
-                  checked.append(f"{label}=API_ERROR:{type(exc).__name__}")
-                  continue
-              checked.append(f"{label}=@{username or 'unknown'}")
-              if identity.get("ok") and username.lower() == expected:
-                  if not chat_id:
-                      raise RuntimeError(f"Matched @{username} through {label}, but its chat id secret is missing")
-                  print(f"telegram_route_valid=true source={label} bot=@{username} chat_id_present=true")
+                  with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?{query}", timeout=20) as response:
+                      result = json.loads(response.read().decode("utf-8"))
+                  return result.get("result") if result.get("ok") else None
+              except Exception:
+                  return None
+
+          candidates = [
+              (os.getenv("TELEGRAM_CHAT_ID_DIRECT") or "").strip(),
+              (os.getenv("TELEGRAM_CHAT_ID_POLICY") or "").strip(),
+              (os.getenv("TELEGRAM_CHAT_ID_GENERIC") or "").strip(),
+          ]
+          chat = None
+          for chat_id in candidates:
+              chat = get_chat(chat_id)
+              if chat:
                   break
-          else:
-              raise RuntimeError(
-                  "No configured Telegram token matches "
-                  f"@{expected}. Checked identities: {', '.join(checked) or 'no token secrets present'}"
-              )
+
+          if not chat:
+              with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getUpdates?limit=100", timeout=20) as response:
+                  updates = json.loads(response.read().decode("utf-8"))
+              if updates.get("ok"):
+                  for update in reversed(updates.get("result") or []):
+                      obj = update.get("message") or update.get("channel_post") or update.get("edited_message") or {}
+                      candidate = obj.get("chat") or {}
+                      if candidate.get("id") is not None:
+                          chat = candidate
+                          break
+
+          if not chat:
+              raise RuntimeError("@khs887900_bot is valid, but no reachable Telegram chat could be resolved")
+
+          print(f"telegram_route_valid=true bot=@{username} chat_type={chat.get('type', 'unknown')}")
           PY
 
       - name: Run US investment watch
@@ -110,18 +117,10 @@ jobs:
       - name: Send Telegram alert
         if: hashFiles('out/khs_us_investment_alert.html') != ''
         env:
-          TOKEN_GENERIC: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          CHAT_GENERIC: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TOKEN_KHS: ${{ secrets.KHS_TELEGRAM_BOT_TOKEN }}
-          CHAT_KHS: ${{ secrets.KHS_TELEGRAM_CHAT_ID }}
-          TOKEN_US_INVESTMENT: ${{ secrets.US_INVESTMENT_TELEGRAM_BOT_TOKEN }}
-          CHAT_US_INVESTMENT: ${{ secrets.US_INVESTMENT_TELEGRAM_CHAT_ID }}
-          TOKEN_POLICY: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          CHAT_POLICY: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
-          TOKEN_YEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          CHAT_YEN: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
-          TOKEN_HONAM: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
-          CHAT_HONAM: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_DIRECT: ${{ secrets.KHS887900_CHAT_ID }}
+          TELEGRAM_CHAT_ID_POLICY: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_GENERIC: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import json
@@ -130,45 +129,55 @@ jobs:
           import urllib.parse
           import urllib.request
 
-          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@").lower()
-          candidates = [
-              ("TELEGRAM", os.getenv("TOKEN_GENERIC"), os.getenv("CHAT_GENERIC")),
-              ("KHS", os.getenv("TOKEN_KHS"), os.getenv("CHAT_KHS")),
-              ("US_INVESTMENT", os.getenv("TOKEN_US_INVESTMENT"), os.getenv("CHAT_US_INVESTMENT")),
-              ("KHS_POLICY", os.getenv("TOKEN_POLICY"), os.getenv("CHAT_POLICY")),
-              ("YEN_CARRY", os.getenv("TOKEN_YEN"), os.getenv("CHAT_YEN")),
-              ("HONAM", os.getenv("TOKEN_HONAM"), os.getenv("CHAT_HONAM")),
-          ]
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("KHS887900_BOT_TOKEN secret is missing")
 
-          selected = None
-          checked = []
-          for label, token, chat_id in candidates:
-              token = (token or "").strip()
-              chat_id = (chat_id or "").strip()
-              if not token:
-                  continue
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          def get_chat(chat_id):
+              if not chat_id:
+                  return None
+              query = urllib.parse.urlencode({"chat_id": chat_id})
               try:
-                  with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
-                      identity = json.loads(response.read().decode("utf-8"))
-                  username = str((identity.get("result") or {}).get("username") or "")
-              except Exception as exc:
-                  checked.append(f"{label}=API_ERROR:{type(exc).__name__}")
-                  continue
-              checked.append(f"{label}=@{username or 'unknown'}")
-              if identity.get("ok") and username.lower() == expected and chat_id:
-                  selected = (label, token, chat_id, username)
+                  with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?{query}", timeout=20) as response:
+                      result = json.loads(response.read().decode("utf-8"))
+                  return result.get("result") if result.get("ok") else None
+              except Exception:
+                  return None
+
+          chat = None
+          for chat_id in [
+              (os.getenv("TELEGRAM_CHAT_ID_DIRECT") or "").strip(),
+              (os.getenv("TELEGRAM_CHAT_ID_POLICY") or "").strip(),
+              (os.getenv("TELEGRAM_CHAT_ID_GENERIC") or "").strip(),
+          ]:
+              chat = get_chat(chat_id)
+              if chat:
                   break
 
-          if not selected:
-              raise RuntimeError(
-                  "Cannot send: no configured Telegram route matches "
-                  f"@{expected}. Checked identities: {', '.join(checked) or 'no token secrets present'}"
-              )
+          if not chat:
+              with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getUpdates?limit=100", timeout=20) as response:
+                  updates = json.loads(response.read().decode("utf-8"))
+              if updates.get("ok"):
+                  for update in reversed(updates.get("result") or []):
+                      obj = update.get("message") or update.get("channel_post") or update.get("edited_message") or {}
+                      candidate = obj.get("chat") or {}
+                      if candidate.get("id") is not None:
+                          chat = candidate
+                          break
 
-          label, token, chat_id, username = selected
+          if not chat or chat.get("id") is None:
+              raise RuntimeError("@khs887900_bot chat id could not be resolved")
+
           text = pathlib.Path("out/khs_us_investment_alert.html").read_text(encoding="utf-8").strip()
           payload = urllib.parse.urlencode({
-              "chat_id": chat_id,
+              "chat_id": str(chat["id"]),
               "text": text,
               "parse_mode": "HTML",
               "disable_web_page_preview": "true",
@@ -186,15 +195,12 @@ jobs:
           pathlib.Path("out/khs_us_investment_delivery.json").write_text(
               json.dumps({
                   "bot": username,
-                  "route_source": label,
                   "message_id": result.get("result", {}).get("message_id"),
+                  "chat_type": chat.get("type"),
               }, ensure_ascii=False) + "\n",
               encoding="utf-8",
           )
-          print(
-              f"telegram_delivery_confirmed=true source={label} "
-              f"bot=@{username} message_id={result.get('result', {}).get('message_id')}"
-          )
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_id={result.get('result', {}).get('message_id')}")
           PY
 
       - name: Persist seen state after confirmed delivery
