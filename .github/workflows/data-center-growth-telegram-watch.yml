@@ -20,22 +20,88 @@ jobs:
   monitor:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.DATA_CENTER_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.DATA_CENTER_TELEGRAM_CHAT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check requests openpyxl
-      - name: Inspect Census data center workbook
+
+      - name: Validate Telegram route
+        run: |
+          python - <<'PY'
+          import os, requests
+          token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+          chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+          if not token or not chat:
+              raise SystemExit("DATA_CENTER_TELEGRAM_BOT_TOKEN or DATA_CENTER_TELEGRAM_CHAT_ID is missing")
+          data = requests.get(f"https://api.telegram.org/bot{token}/getMe", timeout=20).json()
+          if not data.get("ok"):
+              raise SystemExit("Telegram getMe failed")
+          username = data["result"].get("username", "")
+          if username.lower() != "khs88790088790000887900_bot":
+              raise SystemExit(f"Wrong Telegram bot: @{username}")
+          print(f"Telegram route OK: @{username}")
+          PY
+
+      - name: Check official Census data center series
         run: python scripts/data_center_growth_watch.py
-      - name: Upload diagnostic
+
+      - name: Send Telegram only on meaningful change
+        run: |
+          if [ -s out/data_center_growth_alert.txt ]; then
+            python - <<'PY'
+          import os, pathlib, requests
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat = os.environ["TELEGRAM_CHAT_ID"].strip()
+          text = pathlib.Path("out/data_center_growth_alert.txt").read_text(encoding="utf-8").strip()
+          r = requests.post(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              json={"chat_id": chat, "text": text, "disable_web_page_preview": True},
+              timeout=30,
+          )
+          data = r.json()
+          if not r.ok or not data.get("ok"):
+              raise SystemExit(f"Telegram send failed: HTTP {r.status_code}")
+          print(f"Telegram sent: message_id={data['result']['message_id']}")
+          PY
+          else
+            echo "No meaningful change; Telegram silent."
+          fi
+
+      - name: Save latest official baseline
+        run: |
+          mkdir -p data
+          cp out/data_center_growth_pending_state.json data/data_center_growth_state.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data_center_growth_state.json
+          if git diff --cached --quiet; then
+            echo "State unchanged."
+          else
+            git commit -m "Update data center growth watch state [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Upload watcher status
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: data-center-growth-${{ github.run_id }}
-          path: out/data_center_growth_diagnostic.json
+          path: |
+            out/data_center_growth_status.md
+            out/data_center_growth_alert.txt
+            out/data_center_growth_pending_state.json
           if-no-files-found: ignore
           retention-days: 7
