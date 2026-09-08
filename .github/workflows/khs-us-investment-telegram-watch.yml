@@ -39,6 +39,7 @@ jobs:
         run: python -m py_compile scripts/khs_us_investment_watch.py
 
       - name: Validate exact Telegram route
+        id: telegram_route
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_DIRECT: ${{ secrets.KHS887900_CHAT_ID }}
@@ -51,16 +52,36 @@ jobs:
           import urllib.parse
           import urllib.request
 
+          output = os.environ["GITHUB_OUTPUT"]
+          summary = os.environ["GITHUB_STEP_SUMMARY"]
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
-          if not token:
-              raise RuntimeError("KHS887900_BOT_TOKEN secret is missing")
 
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
-              identity = json.loads(response.read().decode("utf-8"))
+          def set_result(ready, reason):
+              with open(output, "a", encoding="utf-8") as f:
+                  f.write(f"ready={'true' if ready else 'false'}\n")
+                  f.write(f"reason={reason}\n")
+              with open(summary, "a", encoding="utf-8") as f:
+                  if ready:
+                      f.write(f"Telegram 경로 확인: @{expected}\n")
+                  else:
+                      f.write(f"Telegram 경로 대기: {reason}\n")
+
+          if not token:
+              set_result(False, "KHS887900_BOT_TOKEN secret missing")
+              raise SystemExit(0)
+
+          try:
+              with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
+                  identity = json.loads(response.read().decode("utf-8"))
+          except Exception as exc:
+              set_result(False, f"Telegram getMe failed: {type(exc).__name__}")
+              raise SystemExit(0)
+
           username = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or username.lower() != expected.lower():
-              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+              set_result(False, f"bot mismatch: expected @{expected}, got @{username or 'unknown'}")
+              raise SystemExit(0)
 
           def get_chat(chat_id):
               if not chat_id:
@@ -73,31 +94,35 @@ jobs:
               except Exception:
                   return None
 
-          candidates = [
+          chat = None
+          for chat_id in [
               (os.getenv("TELEGRAM_CHAT_ID_DIRECT") or "").strip(),
               (os.getenv("TELEGRAM_CHAT_ID_POLICY") or "").strip(),
               (os.getenv("TELEGRAM_CHAT_ID_GENERIC") or "").strip(),
-          ]
-          chat = None
-          for chat_id in candidates:
+          ]:
               chat = get_chat(chat_id)
               if chat:
                   break
 
           if not chat:
-              with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getUpdates?limit=100", timeout=20) as response:
-                  updates = json.loads(response.read().decode("utf-8"))
-              if updates.get("ok"):
-                  for update in reversed(updates.get("result") or []):
-                      obj = update.get("message") or update.get("channel_post") or update.get("edited_message") or {}
-                      candidate = obj.get("chat") or {}
-                      if candidate.get("id") is not None:
-                          chat = candidate
-                          break
+              try:
+                  with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getUpdates?limit=100", timeout=20) as response:
+                      updates = json.loads(response.read().decode("utf-8"))
+                  if updates.get("ok"):
+                      for update in reversed(updates.get("result") or []):
+                          obj = update.get("message") or update.get("channel_post") or update.get("edited_message") or {}
+                          candidate = obj.get("chat") or {}
+                          if candidate.get("id") is not None:
+                              chat = candidate
+                              break
+              except Exception:
+                  pass
 
           if not chat:
-              raise RuntimeError("@khs887900_bot is valid, but no reachable Telegram chat could be resolved")
+              set_result(False, f"@{expected} valid but no reachable chat resolved")
+              raise SystemExit(0)
 
+          set_result(True, "ok")
           print(f"telegram_route_valid=true bot=@{username} chat_type={chat.get('type', 'unknown')}")
           PY
 
@@ -115,7 +140,7 @@ jobs:
           fi
 
       - name: Send Telegram alert
-        if: hashFiles('out/khs_us_investment_alert.html') != ''
+        if: hashFiles('out/khs_us_investment_alert.html') != '' && steps.telegram_route.outputs.ready == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_DIRECT: ${{ secrets.KHS887900_CHAT_ID }}
@@ -202,6 +227,12 @@ jobs:
           )
           print(f"telegram_delivery_confirmed=true bot=@{username} message_id={result.get('result', {}).get('message_id')}")
           PY
+
+      - name: Hold alert until exact Telegram route is ready
+        if: hashFiles('out/khs_us_investment_alert.html') != '' && steps.telegram_route.outputs.ready != 'true'
+        run: |
+          echo "중요 변화는 감지됐지만 @khs887900_bot 경로가 확인될 때까지 seen 상태를 저장하지 않습니다." >> "$GITHUB_STEP_SUMMARY"
+          echo "따라서 토큰 경로가 복구되면 같은 중요 변화를 다시 송출 시도합니다." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Persist seen state after confirmed delivery
         if: success() && hashFiles('out/khs_us_investment_pending_seen.json') != '' && hashFiles('out/khs_us_investment_delivery.json') != ''
