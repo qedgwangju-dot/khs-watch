@@ -20,6 +20,7 @@ PENDING_PATH = Path("out/kospi_rapid_fallback_pending_state.json")
 STATUS_PATH = Path("out/kospi_rapid_fallback_status.md")
 
 KOSPI_API = "https://m.stock.naver.com/api/index/KOSPI/basic"
+KOSPI_POLLING_API = "https://polling.finance.naver.com/api/realtime?query=SERVICE_INDEX:KOSPI"
 KOSPI_URL = "https://m.stock.naver.com/domestic/index/KOSPI/total"
 
 # LS 실시간 전용 감시가 기동되지 않더라도 기존 15분 시장감시 워크플로에서 잡는 안전망.
@@ -27,7 +28,7 @@ SESSION_HIGH_DD = -1.50
 FAST_15M = -1.00
 FAST_30M = -1.25
 START_TIME = dt.time(9, 0)
-END_TIME = dt.time(15, 40)
+END_TIME = dt.time(15, 35)
 
 
 def fnum(v: Any) -> float | None:
@@ -68,18 +69,39 @@ def save_pending(state: dict[str, Any]) -> None:
 
 
 def fetch_kospi() -> dict[str, Any]:
-    r = requests.get(KOSPI_API, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
+    headers = {"User-Agent": "Mozilla/5.0"}
+    try:
+        r = requests.get(KOSPI_POLLING_API, headers=headers, timeout=15)
+        r.raise_for_status()
+        payload = r.json()
+        row = (((payload.get("result") or {}).get("areas") or [{}])[0].get("datas") or [{}])[0]
+        if isinstance(row, dict) and row.get("nv") is not None:
+            # Naver polling index is integer-scaled by 100: 527730 -> 5277.30.
+            return {
+                "closePrice": (fnum(row.get("nv")) or 0.0) / 100.0,
+                "highPrice": (fnum(row.get("hv")) or 0.0) / 100.0 if row.get("hv") is not None else None,
+                "openPrice": (fnum(row.get("ov")) or 0.0) / 100.0 if row.get("ov") is not None else None,
+                "lowPrice": (fnum(row.get("lv")) or 0.0) / 100.0 if row.get("lv") is not None else None,
+                "fluctuationsRatio": fnum(row.get("cr")),
+                "marketStatus": row.get("ms"),
+                "source": "naver_polling",
+            }
+    except Exception:
+        pass
+
+    r = requests.get(KOSPI_API, headers=headers, timeout=15)
     r.raise_for_status()
     data = r.json()
     if not isinstance(data, dict):
         raise RuntimeError("Naver KOSPI response is not an object")
+    data["source"] = "naver_basic"
     return data
 
 
 def get_price(data: dict[str, Any]) -> float | None:
     for key in ("closePrice", "currentPrice", "now", "price"):
         value = fnum(data.get(key))
-        if value is not None:
+        if value is not None and value > 0:
             return value
     return None
 
@@ -87,7 +109,7 @@ def get_price(data: dict[str, Any]) -> float | None:
 def get_high(data: dict[str, Any]) -> float | None:
     for key in ("highPrice", "dayHighPrice", "high"):
         value = fnum(data.get(key))
-        if value is not None:
+        if value is not None and value > 0:
             return value
     return None
 
@@ -97,7 +119,6 @@ def nearest_sample(samples: list[dict[str, Any]], seconds_ago: int, now_ts: floa
         return None
     target = now_ts - seconds_ago
     row = min(samples, key=lambda x: abs(float(x.get("ts", 0)) - target))
-    # 아직 해당 기간만큼 표본이 쌓이지 않았으면 계산하지 않는다.
     if now_ts - float(row.get("ts", now_ts)) < seconds_ago * 0.65:
         return None
     return fnum(row.get("price"))
@@ -234,6 +255,7 @@ def main() -> int:
 
     save_pending(state)
     write_status(now, "경보 발송" if msg_id else "정상 감시 — 신규 조건 없음", {
+        "데이터 경로": data.get("source"),
         "KOSPI": f"{cur:,.2f}",
         "장중 고점": f"{session_high:,.2f}",
         "고점 대비": f"{dd:+.2f}%",
