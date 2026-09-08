@@ -1,0 +1,51 @@
+name: Telegram token identity probe once
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/telegram-token-identity-probe-once.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    env:
+      HBM_TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      GLOBAL_RATES_TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      BOK_ASSET_TELEGRAM_BOT_TOKEN: ${{ secrets.BOK_ASSET_TELEGRAM_BOT_TOKEN }}
+      YEN_CARRY_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+      CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN: ${{ secrets.CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN }}
+      DEEP_FISSION_TELEGRAM_BOT_TOKEN: ${{ secrets.DEEP_FISSION_TELEGRAM_BOT_TOKEN }}
+      WAR_PEACE_TELEGRAM_BOT_TOKEN: ${{ secrets.WAR_PEACE_TELEGRAM_BOT_TOKEN }}
+      GWANGJU_AIRPORT_TELEGRAM_BOT_TOKEN: ${{ secrets.GWANGJU_AIRPORT_TELEGRAM_BOT_TOKEN }}
+      HONAM_TELEGRAM_BOT_TOKEN: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
+      JOBS_WAGE_TELEGRAM_BOT_TOKEN: ${{ secrets.JOBS_WAGE_TELEGRAM_BOT_TOKEN }}
+      KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+      ENERGY_MIX_TELEGRAM_BOT_TOKEN: ${{ secrets.ENERGY_MIX_TELEGRAM_BOT_TOKEN }}
+      KOSPI_DERIV_TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
+      THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+    steps:
+      - name: Resolve bot usernames without sending
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          names=[k for k in os.environ if k.endswith('_TELEGRAM_BOT_TOKEN') or k=='TELEGRAM_BOT_TOKEN']
+          for name in sorted(names):
+              token=(os.getenv(name) or '').strip()
+              if not token:
+                  print(f'{name}=MISSING')
+                  continue
+              try:
+                  with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
+                      data=json.loads(r.read().decode('utf-8'))
+                  username=str((data.get('result') or {}).get('username') or '')
+                  print(f'{name}=@{username or "UNKNOWN"}')
+              except Exception as exc:
+                  print(f'{name}=ERROR:{type(exc).__name__}')
+          PY
