@@ -63,12 +63,12 @@ def fx_rate(old=None):
                 return v, name
         except Exception:
             pass
-    return (float(old), "직전 저장값") if old else (None, "조회 실패")
+    return (float(old), "직전 저장 환율") if old else (None, "조회 실패")
 
 
 def krw(usd_million, fx):
     if not fx:
-        return "원화 환산 확인 불가"
+        raise RuntimeError("KRW conversion unavailable")
     eok = round(usd_million * fx / 100)
     jo, rem = divmod(eok, 10000)
     if jo and rem:
@@ -88,6 +88,10 @@ def fpp(x):
 
 def usd_exact(usd_million):
     return f"${usd_million/1000:,.3f}B (원자료 {usd_million:,.0f}백만달러)"
+
+
+def money_line(label, usd_million, fx):
+    return f"• {label}: {usd_exact(usd_million)} = {krw(usd_million, fx)}"
 
 
 OUT.mkdir(exist_ok=True)
@@ -135,6 +139,8 @@ if not new_period and old.get("last_value_musd"):
     revision_pct = pct(value, float(old["last_value_musd"]))
 revision = revision_pct is not None and abs(revision_pct) >= 2
 fx, fx_source = fx_rate(old.get("last_fx_krw_per_usd"))
+if not fx:
+    raise SystemExit("USD/KRW 환율을 확보하지 못해 원화 병기 없이 알림을 보내지 않습니다.")
 fx_checked_utc = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 reasons = []
 if record:
@@ -169,7 +175,6 @@ if should_alert:
     title = "✅ 미국 AI 데이터센터 건설지출 감시 연결 완료" if baseline else "🚨 미국 AI 데이터센터 건설지출 추세 변화"
     why = "현재 공식 수치를 기준선으로 저장. 이후 의미 있는 변화만 알림" if baseline else " / ".join(reasons)
     monthly = value / 12
-    monthly_prev = prev / 12 if prev else None
     trend_word = "가속" if yoy_accel is not None and yoy_accel > 0 else "둔화"
     msg = [
         title,
@@ -177,11 +182,10 @@ if should_alert:
         "[현재 숫자]",
         f"• 기준월: {y}년 {m}월",
         "• 공식 기준: U.S. Census / 민간 데이터센터 건설지출 / 계절조정 연율(SAAR)",
-        f"• 공식치: {usd_exact(value)}",
-        f"• 원화 환산: {krw(value, fx)}",
-        f"• 전월 공식치: {usd_exact(prev)}" if prev is not None else "• 전월 공식치: 확인 불가",
+        money_line("공식치", value, fx),
+        money_line("전월 공식치", prev, fx) if prev is not None else "• 전월 공식치: 확인 불가",
         f"• 전월 대비: {fp(mom)}",
-        f"• 전년동월 공식치: {usd_exact(ago)}" if ago is not None else "• 전년동월 공식치: 확인 불가",
+        money_line("전년동월 공식치", ago, fx) if ago is not None else "• 전년동월 공식치: 확인 불가",
         f"• 전년 대비: {fp(yoy)}",
     ]
     if prev_yoy is not None and yoy_accel is not None:
@@ -193,8 +197,7 @@ if should_alert:
         f"• 사상 최고치: {'예' if record else '아니오'}",
         "",
         "[월간 속도 환산]",
-        f"• SAAR÷12: ${monthly/1000:,.3f}B (원자료 환산 {monthly:,.2f}백만달러)",
-        f"• 원화 환산: {krw(monthly, fx)}",
+        money_line("SAAR÷12", monthly, fx),
         "• 주의: 위 값은 연율을 12로 나눈 산술 환산이며 Census의 비계절조정 실제 월간 지출액이 아닙니다.",
         "",
         "[알림 사유]",
@@ -203,8 +206,8 @@ if should_alert:
     if revision:
         old_value = float(old["last_value_musd"])
         msg += [
-            f"• 수정 전: {usd_exact(old_value)}",
-            f"• 수정 후: {usd_exact(value)}",
+            money_line("수정 전", old_value, fx),
+            money_line("수정 후", value, fx),
             f"• 수정폭: {fp(revision_pct)}",
         ]
     msg += [
@@ -216,34 +219,36 @@ if should_alert:
         "",
         "[다음 확인]",
         "• 신규 착공액 → 전력기기 실제 수주 → 전원 인가 MW → 서버 반입 → 실제 가동 MW",
+        "",
+        "[환율]",
+        f"• 1달러 = {fx:,.2f}원",
+        f"• 출처: {fx_source}",
+        f"• 조회시각(UTC): {fx_checked_utc}",
+        "• 모든 외화 금액은 같은 알림 안에서 위 환율로 원화 환산해 병기합니다.",
+        "• 최신 환율 조회가 실패하면 직전 저장 환율을 명시해 사용하며, 환율 자체가 없으면 원화 없는 알림은 보내지 않습니다.",
+        "",
+        f"원문: {SOURCE}",
     ]
-    if fx:
-        msg += [
-            "",
-            "[환율]",
-            f"• 1달러 = {fx:,.2f}원",
-            f"• 출처: {fx_source}",
-            f"• 조회시각(UTC): {fx_checked_utc}",
-            "• 원화는 해당 환율을 적용한 환산값이므로 공식 Census 원자료와 구분합니다.",
-        ]
-    msg += ["", f"원문: {SOURCE}"]
     ALERT.write_text("\n".join(msg) + "\n", encoding="utf-8")
 
 STATUS.write_text(
     f"# 데이터센터 증가 감시\n\n"
     f"- 최신 기준월: **{period}**\n"
-    f"- 공식 SAAR: **{usd_exact(value)}**\n"
+    f"- 공식 SAAR: **{usd_exact(value)} = {krw(value, fx)}**\n"
+    f"- 전월 공식치: **{usd_exact(prev)} = {krw(prev, fx)}**\n" if prev is not None else ""
     f"- 전월 대비: **{fp(mom)}**\n"
+    f"- 전년동월 공식치: **{usd_exact(ago)} = {krw(ago, fx)}**\n" if ago is not None else ""
     f"- 전년 대비: **{fp(yoy)}**\n"
     f"- 직전월 전년 대비: **{fp(prev_yoy)}**\n"
     f"- 증가율 변화: **{fpp(yoy_accel)}**\n"
     f"- 사상 최고치: **{'예' if record else '아니오'}**\n"
     f"- 알림: **{'예' if should_alert else '아니오'}**\n"
-    f"- 사유: **{', '.join(reasons) if reasons else '기준선/임계치 미충족'}**\n",
+    f"- 사유: **{', '.join(reasons) if reasons else '기준선/임계치 미충족'}**\n"
+    f"- 환율: **1달러={fx:,.2f}원 ({fx_source})**\n",
     encoding="utf-8",
 )
 print(
     f"period={period} value_musd={value:.0f} "
     f"mom={mom:.2f} yoy={yoy:.2f} prev_yoy={prev_yoy:.2f} "
-    f"yoy_accel={yoy_accel:.2f} alert={should_alert}"
+    f"yoy_accel={yoy_accel:.2f} fx={fx:.2f} alert={should_alert}"
 )
