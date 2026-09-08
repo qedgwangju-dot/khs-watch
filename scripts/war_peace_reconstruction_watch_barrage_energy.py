@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import hashlib
+import re
 
 import war_peace_reconstruction_watch_counterstrike as prev
 
@@ -29,24 +30,86 @@ ATTACK_COLOR_WORDS = (
     '공격', '공습', '폭격', '포격', '피격', '미사일', '드론', '무인기', '확전',
     'attack', 'airstrike', 'air strike', 'bombard', 'shelling', 'struck', 'missile', 'drone',
 )
-GREEN_COLOR_WORDS = (
-    '재건', '복구', '휴전', '정전', '종전', '평화합의', '평화 합의', '평화협정', '평화 협정',
-    'ceasefire', 'truce', 'reconstruction', 'rebuild', 'rebuilding', 'peace agreement', 'peace deal',
+ACTIVE_ATTACK_PHRASES = (
+    '공격 지속', '공격 재개', '공습 지속', '공습 재개', '미사일 공격', '드론 공격', '무인기 공격',
+    '폭격 지속', '포격 지속', '피격', '공격받', '공격을 받',
+    'attack continues', 'attacks continue', 'attack resumed', 'attacks resumed', 'missile attack',
+    'drone attack', 'airstrike', 'air strike', 'shelling', 'struck', 'was hit', 'were hit',
 )
+GREEN_COLOR_WORDS = (
+    '재건', '복구', '휴전', '정전', '종전', '평화', '평화합의', '평화 합의', '평화협정', '평화 협정',
+    '협상', '회담', '긴장 완화', '완화 조치', '공격 자제', '공격 중단', '공습 중단', '상호 공격 자제',
+    'ceasefire', 'truce', 'reconstruction', 'rebuild', 'rebuilding', 'peace agreement', 'peace deal',
+    'peace talks', 'negotiations', 'trilateral talks', 'de-escalation', 'deescalation',
+)
+DEESCALATION_PHRASES = (
+    '공격 자제', '공격 중단', '공습 중단', '공격을 자제', '공격을 중단', '상호 공격 자제',
+    '긴장 완화', '완화 조치', '단계적 완화', '교전 중단', '적대행위 중단',
+    'halt attacks', 'halted attacks', 'stop attacks', 'stopping attacks', 'pause attacks',
+    'restraint on attacks', 'de-escalation', 'deescalation',
+)
+ACTIVE_ATTACK_MARKS = {
+    '러시아대규모복합공격', '사우디에너지공격', '화재확인', '운영일시중단',
+    '자잔FT미확정', '자잔확인필요',
+}
+
+
+def _text(row):
+    return ' '.join([
+        row.get('title_ko',''), row.get('title_original',''), row.get('description',''),
+        ' '.join(row.get('signals_ko',[])), ' '.join(row.get('forced_tags',[])),
+    ]).lower()
 
 
 def _event_color(row):
-    """공격은 빨강, 재건·휴전은 초록. 한 사건에 둘 다 있으면 공격을 우선한다."""
+    """실제 공격은 빨강, 휴전·종전·재건·공격중단은 초록으로 분류한다."""
     t = _text(row)
-    if any(k in t for k in ATTACK_COLOR_WORDS):
+    active_marks = set(row.get('barrage_energy_marks', [])) & ACTIVE_ATTACK_MARKS
+    if active_marks:
         return 'red'
+
+    # '공격 중단/자제'처럼 공격이라는 단어가 들어가도 의미는 완화이므로 초록 우선.
+    if any(k in t for k in DEESCALATION_PHRASES):
+        return 'green'
+
+    # 실제 공격의 발생·지속·재개를 명시한 경우에는 평화협상 문맥이 함께 있어도 빨강.
+    if any(k in t for k in ACTIVE_ATTACK_PHRASES):
+        return 'red'
+
+    # 협상·휴전·종전·재건 신호는 초록.
     if any(k in t for k in GREEN_COLOR_WORDS):
         return 'green'
+
+    # 마지막으로 일반 공격 키워드만 남은 경우 빨강.
+    if any(k in t for k in ATTACK_COLOR_WORDS):
+        return 'red'
     return ''
 
 
+def _prefix_item_markers(text, items):
+    """최종 제목이 중간 래퍼에서 바뀌어도 기사 번호를 기준으로 🔴/🟢를 강제 부착한다."""
+    lines = text.splitlines()
+    for idx, row in enumerate(items[:8], 1):
+        color = _event_color(row)
+        if not color:
+            continue
+        marker = '🔴' if color == 'red' else '🟢'
+        # 최종 출력은 보통 '[속보] <b>1. ...</b>' 또는 '[후속] <b>1. ...</b>' 형태다.
+        patterns = (
+            re.compile(rf'<b>{idx}\.\s'),
+            re.compile(rf'^\[[^\]]+\]\s*(?:<b>)?{idx}\.\s'),
+            re.compile(rf'^(?:🟥|🟧|🟨)?\s*(?:<b>)?{idx}\.\s'),
+        )
+        for j, line in enumerate(lines):
+            if any(p.search(line) for p in patterns):
+                if not line.lstrip().startswith(('🔴', '🟢')):
+                    lines[j] = f'{marker} {line}'
+                break
+    return '\n'.join(lines)
+
+
 def _apply_color_markers(text, items):
-    """Telegram은 HTML 글자색을 지원하지 않으므로 🔴/🟢 마커로 안정적으로 구분한다."""
+    """Telegram 일반 메시지는 글자색을 지정할 수 없어 🔴/🟢 아이콘으로 분류한다."""
     classes = {_event_color(x) for x in items}
     classes.discard('')
     if not classes:
@@ -59,7 +122,7 @@ def _apply_color_markers(text, items):
         badges.append('🟢 <b>재건·휴전</b>')
     badge_line = '  |  '.join(badges)
 
-    # 제목 바로 아래에 전체 변화 방향을 표시한다.
+    # 제목 바로 아래에는 이번 알림에 실제 포함된 분류만 표시한다.
     lines = text.splitlines()
     if lines:
         lines.insert(1, badge_line)
@@ -67,24 +130,8 @@ def _apply_color_markers(text, items):
     else:
         text = badge_line
 
-    # 개별 사건 제목도 가능한 경우 같은 색상 마커를 붙인다.
-    for row in items:
-        title = (row.get('title_ko') or '').strip()
-        color = _event_color(row)
-        if not title or not color:
-            continue
-        marker = '🔴' if color == 'red' else '🟢'
-        if f'{marker} {title}' in text:
-            continue
-        text = text.replace(title, f'{marker} {title}', 1)
-    return text
-
-
-def _text(row):
-    return ' '.join([
-        row.get('title_ko',''), row.get('title_original',''), row.get('description',''),
-        ' '.join(row.get('signals_ko',[])), ' '.join(row.get('forced_tags',[])),
-    ]).lower()
+    # 제목 문자열 치환 대신 기사 번호 기준으로 개별 마커를 강제 부착한다.
+    return _prefix_item_markers(text, items)
 
 
 def _signals(row):
