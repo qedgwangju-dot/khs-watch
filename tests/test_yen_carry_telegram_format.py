@@ -7,7 +7,12 @@ import unittest
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from yen_carry_telegram_format import render_telegram_html  # noqa: E402
+from yen_carry_telegram_format import (  # noqa: E402
+    TELEGRAM_SAFE_TEXT_LIMIT,
+    render_telegram_html,
+    render_telegram_html_chunks,
+    split_plain_message,
+)
 
 
 class YenCarryTelegramFormatTests(unittest.TestCase):
@@ -63,6 +68,22 @@ class YenCarryTelegramFormatTests(unittest.TestCase):
         for original in body.splitlines():
             if original:
                 self.assertIn(original.split(":", 1)[0].replace("• ", ""), rendered)
+
+    def test_long_alert_is_split_without_silent_truncation(self):
+        title = "🚨 USD/JPY 엔화 강세 1단계"
+        lines = [f"• 테스트 업종 {index}: 상대 +1.23%p · 예상 방향 확인" for index in range(180)]
+        body = "\n".join(lines)
+        plain_chunks = split_plain_message(title, body)
+        html_chunks = render_telegram_html_chunks(title, body, "fx_shock")
+
+        self.assertGreater(len(plain_chunks), 1)
+        self.assertEqual(len(plain_chunks), len(html_chunks))
+        self.assertTrue(all(len(chunk) <= TELEGRAM_SAFE_TEXT_LIMIT for chunk in plain_chunks))
+        reconstructed = "\n".join(plain_chunks)
+        self.assertEqual(reconstructed, f"{title}\n\n{body}")
+        self.assertIn("테스트 업종 179", html_chunks[-1])
+        with self.assertRaises(ValueError):
+            render_telegram_html(title, body, "fx_shock")
 
     def test_non_fx_lane_is_html_escaped_but_not_reformatted(self):
         rendered = render_telegram_html("일반 알림", "A&B < C", "yen_carry")
