@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-09-08T10:20:16+09:00",
+  "last_checked_kst": "2026-09-09T01:17:53+09:00",
   "media_id": null,
   "cftc_date": "September 1, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-08T10:20:16+09:00",
+    "checked_kst": "2026-09-09T01:17:53+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 1, 2026",
@@ -65,14 +65,14 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 107.40625,
-        "settlement": 107.40625,
-        "change": -0.328125,
-        "pct_change": -0.3045685279187804,
+        "last": 107.359375,
+        "settlement": 107.359375,
+        "change": -0.375,
+        "pct_change": -0.3480783176214697,
         "open_interest": 5276634,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 1, 2026)",
         "volume": 0,
-        "market_time": 1788829807,
+        "market_time": 1788883670,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -90,7 +90,7 @@
         "open_interest": 1811513,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 1, 2026)",
         "volume": 0,
-        "market_time": 1788829813,
+        "market_time": 1788883641,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -101,14 +101,14 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 110.0625,
-        "settlement": 110.0625,
-        "change": -0.53125,
-        "pct_change": -0.4803616840915459,
+        "last": 110.09375,
+        "settlement": 110.09375,
+        "change": -0.5,
+        "pct_change": -0.4521051144391053,
         "open_interest": 2398572,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 1, 2026)",
         "volume": 0,
-        "market_time": 1788829772,
+        "market_time": 1788840000,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -125,19 +125,19 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-09-03",
-        "rate": 3.66,
-        "volume_bn": 2949
+        "date": "2026-09-04",
+        "rate": 3.65,
+        "volume_bn": 2888
       },
       "BGCR": {
-        "date": "2026-09-03",
+        "date": "2026-09-04",
         "rate": 3.64,
-        "volume_bn": 1210
+        "volume_bn": 1197
       },
       "TGCR": {
-        "date": "2026-09-03",
+        "date": "2026-09-04",
         "rate": 3.64,
-        "volume_bn": 1181
+        "volume_bn": 1173
       }
     },
     "format_revision": 8
@@ -154,6 +154,7 @@
     "composite_confirmed": false,
     "stage": 0,
     "oi_scope_fixes": [
+      "ZN OI 11→5,276,634로 동일 범위 교체",
       "ZB OI 11→1,811,513로 동일 범위 교체"
     ]
   }
