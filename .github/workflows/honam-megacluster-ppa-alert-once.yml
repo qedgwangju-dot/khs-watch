@@ -1,0 +1,71 @@
+name: Honam Mega-cluster PPA Alert Once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/honam-megacluster-ppa-alert-once.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879887988798879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Send mega-cluster PPA alert
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Honam Telegram secret is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = (
+              "🚨 <b>메가특구 전력 규제 완화 · 재생에너지 직접거래 추진</b>\n\n"
+              "• 정부·여당, 메가특구 내 <b>재생에너지 특별선도단지</b> 지정 추진\n"
+              "• 태양광·풍력 발전사업자 ↔ 반도체·AI 데이터센터 입주기업 간 <b>장기 PPA 직접거래</b> 허용 방향\n"
+              "• 메가특구 특별법에 약 <b>330개 일반 특례</b> 보도: 이격거리 완화·국공유지 임대료 감면·정주 규제 완화 등\n"
+              "• 서남권 반도체 팹 4기 전력 수요 약 <b>6.3GW</b> → RE100 대응과 장기 전력가격 예측 가능성 개선 기대\n\n"
+              "<b>핵심 해석</b>\n"
+              "PPA는 전력을 새로 만드는 제도가 아니라 거래 구조다. 실제 팹 가동에는 발전설비·ESS·송전선·변전소·계통접속·전원 인가가 모두 필요하다.\n\n"
+              "<b>투자 확인 순서</b>\n"
+              "① 특별법 발의·최종 특례\n"
+              "② 특별선도단지 위치·재생에너지 MW\n"
+              "③ 삼성·SK PPA 계약\n"
+              "④ ESS GWh·송변전 설비 발주\n"
+              "⑤ 실제 전원 인가 시점\n\n"
+              "<b>의미</b>\n"
+              "정책 기대 단계에서 실제 실적 단계로 넘어가려면 PPA 계약보다 발전 MW·ESS GWh·송변전 수주가 먼저 확인돼야 한다.\n\n"
+              "<a href=\"https://www.sedaily.com/article/20087642\">원문</a>"
+          )
+
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
+          with urllib.request.urlopen(req, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_id={result.get('result', {}).get('message_id')}")
+          PY
