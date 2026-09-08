@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-08T18:50:41+09:00",
+  "updated_at_kst": "2026-09-08T23:38:50+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -31,6 +31,7 @@
     "e91a33b5d73da251921a7da4",
     "eed867761a24cbad33b1c104",
     "f07ec9c4d4039ee24a7a82d9",
+    "f0b052afbbfcb591daa146d8",
     "fbd920db100fb7204a37af3d",
     "fd0ab513604f145f508ff4dd",
     "ff9744abe3535e79694d130b"
@@ -44,12 +45,12 @@
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1347.93,
-    "date": "2026-09-07 일일 기준 · ECB/Frankfurter · 조회 2026-09-08 18:50 KST · 보조 API 2026-09-08 · 차이 0.19% · 일중 기준시각 차이 가능",
+    "rate": 1341.67,
+    "date": "2026-09-08 일일 기준 · ECB/Frankfurter · 조회 2026-09-08 23:38 KST · 보조 API 2026-09-08 · 차이 0.28% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
   "errors": [
-    "핵심 사실 자동추출 실패로 발송 제외: digitimes | Nvidia reportedly shifts Rubin Ultra toward 8-high HBM as memory costs rise - digitimes"
+    "교차검증 부족으로 발송 제외: newstomato.com | 삼전·하닉, HBM 이어 eSSD도 AI 특수…미·중 추격은 변수 - newstomato.com"
   ]
 }
