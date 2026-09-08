@@ -177,7 +177,7 @@ def _fixed_project_cost_block() -> list[str]:
         "• 미국 측·민간자금·프로젝트파이낸싱·지분구조를 분리 확인",
         "• 확정 수주로 간주하지 않고 정부 최종발표·국회 절차·본계약을 확인",
         "",
-        "<i>원화 환산 기준: 1달러=1,345.6원 · 기준값 고정, 후속 알림에서 최신 환율로 갱신 필요</i>",
+        "원화 환산 기준: 1달러=1,345.6원 · 기준값 고정, 후속 알림에서 최신 환율로 갱신 필요",
     ]
 
 
@@ -219,7 +219,7 @@ def _bootstrap(now: dt.datetime) -> str:
     parts += [
         "",
         '<b>출처</b> · <a href="https://www.reuters.com/business/energy/south-korea-us-agree-more-than-20-billion-gas-plant-investment-texas-media-2026-09-07/">Reuters</a> · <a href="https://www.yahoo.com/news/science/articles/data-center-developers-texas-plan-120000072.html">Yahoo/Inside Climate News</a>',
-        f"<i>조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 정부 최종문서가 나오면 확정 단계로 갱신</i>",
+        f"조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 정부 최종문서가 나오면 확정 단계로 갱신",
     ]
     return "\n".join(parts)
 
@@ -284,7 +284,7 @@ def main() -> int:
     parts += _fixed_project_cost_block()
     parts += [
         "",
-        f"<i>조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 같은 사건의 단순 주가 반응은 제외</i>",
+        f"조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 같은 사건의 단순 주가 반응은 제외",
     ]
     ALERT.write_text("\n".join(parts) + "\n", encoding="utf-8")
     print(f"new_alerts={len(fresh)}")
