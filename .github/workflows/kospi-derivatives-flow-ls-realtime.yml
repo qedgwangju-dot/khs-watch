@@ -84,7 +84,7 @@ jobs:
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json
           python -m py_compile scripts/kospi_shock_episode_watch.py
-          python scripts/kospi_shock_episode_watch.py --until 15:25
+          python scripts/kospi_shock_episode_watch.py --until 15:20
           cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload verification artifacts
