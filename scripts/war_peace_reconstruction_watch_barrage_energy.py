@@ -25,6 +25,60 @@ _prev_score = watch.score_item
 _prev_item_id = watch.item_id
 _prev_build_alert = watch.build_alert
 
+ATTACK_COLOR_WORDS = (
+    '공격', '공습', '폭격', '포격', '피격', '미사일', '드론', '무인기', '확전',
+    'attack', 'airstrike', 'air strike', 'bombard', 'shelling', 'struck', 'missile', 'drone',
+)
+GREEN_COLOR_WORDS = (
+    '재건', '복구', '휴전', '정전', '종전', '평화합의', '평화 합의', '평화협정', '평화 협정',
+    'ceasefire', 'truce', 'reconstruction', 'rebuild', 'rebuilding', 'peace agreement', 'peace deal',
+)
+
+
+def _event_color(row):
+    """공격은 빨강, 재건·휴전은 초록. 한 사건에 둘 다 있으면 공격을 우선한다."""
+    t = _text(row)
+    if any(k in t for k in ATTACK_COLOR_WORDS):
+        return 'red'
+    if any(k in t for k in GREEN_COLOR_WORDS):
+        return 'green'
+    return ''
+
+
+def _apply_color_markers(text, items):
+    """Telegram은 HTML 글자색을 지원하지 않으므로 🔴/🟢 마커로 안정적으로 구분한다."""
+    classes = {_event_color(x) for x in items}
+    classes.discard('')
+    if not classes:
+        return text
+
+    badges = []
+    if 'red' in classes:
+        badges.append('🔴 <b>공격·확전</b>')
+    if 'green' in classes:
+        badges.append('🟢 <b>재건·휴전</b>')
+    badge_line = '  |  '.join(badges)
+
+    # 제목 바로 아래에 전체 변화 방향을 표시한다.
+    lines = text.splitlines()
+    if lines:
+        lines.insert(1, badge_line)
+        text = '\n'.join(lines)
+    else:
+        text = badge_line
+
+    # 개별 사건 제목도 가능한 경우 같은 색상 마커를 붙인다.
+    for row in items:
+        title = (row.get('title_ko') or '').strip()
+        color = _event_color(row)
+        if not title or not color:
+            continue
+        marker = '🔴' if color == 'red' else '🟢'
+        if f'{marker} {title}' in text:
+            continue
+        text = text.replace(title, f'{marker} {title}', 1)
+    return text
+
 
 def _text(row):
     return ' '.join([
@@ -156,40 +210,41 @@ def build_alert(items, markets, now):
     marks = set()
     for x in items:
         _, m = _signals(x); marks.update(m)
-    if not marks:
-        return text
-    marker = '<b>투자 판정</b>\n'
-    pos = text.find(marker)
-    if pos == -1:
-        return text
-    head = text[:pos].rstrip()
-    if '사우디에너지공격' in marks:
-        status = []
-        if '운영일시중단' in marks:
-            status.append('일부 운영 일시중단 확인')
-        if '73명부상' in marks:
-            status.append('73명 부상')
-        if '자잔FT미확정' in marks:
-            status.append('아람코 자잔 실명은 아직 FT 보도 단계')
-        core_suffix = ' / '.join(status) if status else '피해 규모 평가 중'
-        core = f'사우디 남부 에너지시설 피격 확인 — {core_suffix}'
-        market = '브렌트 98달러 부근 위험프리미엄 반영 / 실제 생산·수송 감소 확인 시 추가 상승 압력'
-        nxt = '피격 시설 실명 → 가동중단 시간·처리량 감소 → 아람코 공식 확인·사우디 보복 확인'
-    elif '러시아대규모복합공격' in marks:
-        core = '3자회담 조율과 별개로 대규모 미사일·드론 공격 지속 — 군사적 완화는 아직 미확인'
-        market = '방공 소모·민간 피해 확대는 종전 기대를 제약하고 유럽 방산 수요를 지지'
-        nxt = '공식 발사·격추 수치 → 피해 규모 → 러·우 후속 보복과 협상 영향 확인'
-    else:
-        core = '에너지·군사 확전 신호가 종전 기대와 동시에 진행 중'
-        market = '유가·위험프리미엄 상승 여부와 위험자산 되돌림 확인'
-        nxt = '공식 피해·가동 차질·후속 공격 확인'
-    tail = (
-        '<b>투자 판정</b>\n'
-        f'- <b>핵심:</b> {core}\n'
-        f'- <b>시장:</b> {market}\n'
-        f'- <b>다음:</b> {nxt}'
-    )
-    return (head+'\n\n'+tail).strip()[:4000]+'\n'
+    if marks:
+        marker = '<b>투자 판정</b>\n'
+        pos = text.find(marker)
+        if pos != -1:
+            head = text[:pos].rstrip()
+            if '사우디에너지공격' in marks:
+                status = []
+                if '운영일시중단' in marks:
+                    status.append('일부 운영 일시중단 확인')
+                if '73명부상' in marks:
+                    status.append('73명 부상')
+                if '자잔FT미확정' in marks:
+                    status.append('아람코 자잔 실명은 아직 FT 보도 단계')
+                core_suffix = ' / '.join(status) if status else '피해 규모 평가 중'
+                core = f'사우디 남부 에너지시설 피격 확인 — {core_suffix}'
+                market = '브렌트 98달러 부근 위험프리미엄 반영 / 실제 생산·수송 감소 확인 시 추가 상승 압력'
+                nxt = '피격 시설 실명 → 가동중단 시간·처리량 감소 → 아람코 공식 확인·사우디 보복 확인'
+            elif '러시아대규모복합공격' in marks:
+                core = '3자회담 조율과 별개로 대규모 미사일·드론 공격 지속 — 군사적 완화는 아직 미확인'
+                market = '방공 소모·민간 피해 확대는 종전 기대를 제약하고 유럽 방산 수요를 지지'
+                nxt = '공식 발사·격추 수치 → 피해 규모 → 러·우 후속 보복과 협상 영향 확인'
+            else:
+                core = '에너지·군사 확전 신호가 종전 기대와 동시에 진행 중'
+                market = '유가·위험프리미엄 상승 여부와 위험자산 되돌림 확인'
+                nxt = '공식 피해·가동 차질·후속 공격 확인'
+            tail = (
+                '<b>투자 판정</b>\n'
+                f'- <b>핵심:</b> {core}\n'
+                f'- <b>시장:</b> {market}\n'
+                f'- <b>다음:</b> {nxt}'
+            )
+            text = (head+'\n\n'+tail).strip()
+
+    text = _apply_color_markers(text, items)
+    return text.strip()[:4000]+'\n'
 
 watch.build_alert = build_alert
 
