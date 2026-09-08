@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-08T13:51:17+09:00",
+  "updated_at_kst": "2026-09-08T18:50:41+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -18,6 +18,7 @@
     "7c4fab38f3ac9aeca880db5a",
     "817f217f23561cc348f4159b",
     "86e3b5a2a1b5f5a0a64b608e",
+    "879690aaf1650f4535c5fa3b",
     "959562dc71d2a106144c7eab",
     "9ccd14cf2278388157bd44a6",
     "ad831c0a9b75057895ffb73a",
@@ -44,11 +45,11 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1347.93,
-    "date": "2026-09-07 일일 기준 · ECB/Frankfurter · 조회 2026-09-08 13:51 KST · 보조 API 2026-09-08 · 차이 0.19% · 일중 기준시각 차이 가능",
+    "date": "2026-09-07 일일 기준 · ECB/Frankfurter · 조회 2026-09-08 18:50 KST · 보조 API 2026-09-08 · 차이 0.19% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
   "errors": [
-    "교차검증 부족으로 발송 제외: 뉴스토마토 | 삼전·하닉, HBM 이어 eSSD도 AI 특수…미·중 추격은 변수 - 뉴스토마토"
+    "핵심 사실 자동추출 실패로 발송 제외: digitimes | Nvidia reportedly shifts Rubin Ultra toward 8-high HBM as memory costs rise - digitimes"
   ]
 }
