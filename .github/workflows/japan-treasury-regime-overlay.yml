@@ -1,0 +1,198 @@
+name: Japan Treasury regime overlay
+
+on:
+  schedule:
+    - cron: "13,28,43,58 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_test:
+        description: "Send current overlay status as a Telegram route test"
+        required: false
+        default: false
+        type: boolean
+  push:
+    paths:
+      - ".github/workflows/japan-treasury-regime-overlay.yml"
+      - "scripts/japan_treasury_regime_overlay.py"
+      - "tests/test_japan_treasury_regime_overlay.py"
+      - "data/japan_treasury_regime_overlay_state.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: japan-treasury-regime-overlay
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install parser dependency
+        run: pip install --disable-pip-version-check beautifulsoup4
+
+      - name: Validate regime overlay
+        run: |
+          python -m py_compile scripts/japan_treasury_regime_overlay.py
+          PYTHONPATH=scripts python -m unittest tests/test_japan_treasury_regime_overlay.py -v
+
+      - name: Check official/private Japan to Treasury regime
+        run: PYTHONPATH=scripts python scripts/japan_treasury_regime_overlay.py
+
+      - name: Publish status
+        if: always()
+        run: |
+          if [ -f out/japan_treasury_regime_overlay_status.md ]; then
+            cat out/japan_treasury_regime_overlay_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/japan_treasury_regime_overlay_alert.html ]; then
+            printf '\n---\n\n# 경보 미리보기\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/japan_treasury_regime_overlay_alert.html >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Optional forced route-test body
+        if: github.event_name == 'workflow_dispatch' && inputs.force_test == true && hashFiles('out/japan_treasury_regime_overlay_alert.html') == ''
+        run: |
+          echo '🧪 일본→미국채 체제 전환 오버레이 테스트' > out/japan_treasury_regime_overlay_title.txt
+          cat > out/japan_treasury_regime_overlay_alert.html <<'EOF'
+          <b>라우팅 테스트</b>
+          • 외환개입 재원·FIMA·민간 본국회귀·UST 2/10/30년 원인 분리 오버레이가 정상 실행됐습니다.
+          • 실제 경보는 신호가 직전 상태보다 강화될 때만 전송합니다.
+          EOF
+
+      - name: Send through verified KHS Telegram route only
+        if: hashFiles('out/japan_treasury_regime_overlay_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "GLOBAL_RATES 텔레그램 토큰 또는 chat id가 없습니다." >&2
+            exit 1
+          fi
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+
+          title = pathlib.Path("out/japan_treasury_regime_overlay_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/japan_treasury_regime_overlay_alert.html").read_text(encoding="utf-8").strip()
+          text = f"<b>{title}</b>\n\n{body}"
+          chunks, current = [], ""
+          for paragraph in text.split("\n\n"):
+              candidate = paragraph if not current else current + "\n\n" + paragraph
+              if len(candidate) <= 3600:
+                  current = candidate
+              else:
+                  if current:
+                      chunks.append(current)
+                  current = paragraph
+          if current:
+              chunks.append(current)
+
+          ids = []
+          for idx, chunk in enumerate(chunks, start=1):
+              if idx > 1:
+                  chunk = f"<b>일본→미국채 체제 전환 (계속 {idx})</b>\n\n{chunk}"
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              request = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
+              with urllib.request.urlopen(request, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected regime overlay: {result}")
+              ids.append((result.get("result") or {}).get("message_id"))
+
+          pathlib.Path("out/japan_treasury_regime_overlay_telegram_confirmed.json").write_text(
+              json.dumps({
+                  "status": "confirmed",
+                  "lane": "japan_treasury_regime_overlay",
+                  "bot_username": actual,
+                  "message_ids": ids,
+                  "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              }, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={ids}")
+          PY
+
+      - name: Persist state only after no-alert or confirmed delivery
+        if: always()
+        run: |
+          if [ -f out/japan_treasury_regime_overlay_alert.html ] && [ ! -f out/japan_treasury_regime_overlay_telegram_confirmed.json ]; then
+            echo "경보 생성 후 텔레그램 전송이 확인되지 않아 상태를 진행하지 않습니다."
+            exit 0
+          fi
+          if [ -f out/japan_treasury_regime_overlay_pending.json ]; then
+            cp out/japan_treasury_regime_overlay_pending.json data/japan_treasury_regime_overlay_state.json
+          fi
+
+      - name: Commit state
+        if: always() && hashFiles('data/japan_treasury_regime_overlay_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/japan_treasury_regime_overlay_state.json
+          if git diff --cached --quiet; then
+            echo "체제 전환 오버레이 상태 변경 없음"
+          else
+            git commit -m "Update Japan Treasury regime overlay state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: japan-treasury-regime-overlay-${{ github.run_id }}
+          path: |
+            out/japan_treasury_regime_overlay_status.md
+            out/japan_treasury_regime_overlay_title.txt
+            out/japan_treasury_regime_overlay_alert.html
+            out/japan_treasury_regime_overlay_pending.json
+            out/japan_treasury_regime_overlay_telegram_confirmed.json
+            out/khs_source_failures.json
+          if-no-files-found: ignore
+          retention-days: 14
