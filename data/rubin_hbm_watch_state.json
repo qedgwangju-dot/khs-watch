@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-08T23:38:50+09:00",
+  "updated_at_kst": "2026-09-09T03:48:26+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -9,6 +9,7 @@
     "4254884b8b0b799b2b6b87a7",
     "44974ccaa7ba66fe19dffd08",
     "4a4d0cce8254b1bcb31b5074",
+    "4a94d2be7668e2271bd7f262",
     "4d6b3e75273924248c11b1c1",
     "5010456efcf2a9cd4b3c6336",
     "508271da4f03e4e64f5e8e39",
@@ -46,11 +47,9 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1341.67,
-    "date": "2026-09-08 일일 기준 · ECB/Frankfurter · 조회 2026-09-08 23:38 KST · 보조 API 2026-09-08 · 차이 0.28% · 일중 기준시각 차이 가능",
+    "date": "2026-09-08 일일 기준 · ECB/Frankfurter · 조회 2026-09-09 03:48 KST · 보조 API 2026-09-08 · 차이 0.28% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [
-    "교차검증 부족으로 발송 제외: newstomato.com | 삼전·하닉, HBM 이어 eSSD도 AI 특수…미·중 추격은 변수 - newstomato.com"
-  ]
+  "errors": []
 }
