@@ -10,12 +10,13 @@ on:
       - "scripts/janus_watch_v3.py"
       - "scripts/janus_watch_v4.py"
       - "scripts/janus_watch_v5.py"
+      - "scripts/janus_watch_v6.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
       send_test:
-        description: "Send a one-time Janus Telegram connection test"
+        description: "Send a one-time general Janus Telegram connection test"
         required: false
         default: "false"
         type: choice
@@ -35,9 +36,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
-      TELEGRAM_BOT_TOKEN: ${{ secrets.DEEP_FISSION_TELEGRAM_BOT_TOKEN || secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID: ${{ secrets.DEEP_FISSION_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      GENERAL_EXPECTED_BOT_USERNAME: "hs8879887988798879_bot"
+      GENERAL_TELEGRAM_BOT_TOKEN: ${{ secrets.DEEP_FISSION_TELEGRAM_BOT_TOKEN || secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+      GENERAL_TELEGRAM_CHAT_ID: ${{ secrets.DEEP_FISSION_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+      WEC_EXPECTED_BOT_USERNAME: "khs887900_bot"
+      WEC_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+      WEC_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       JANUS_WATCH_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-Janus-Watch contact=github-actions' }}
 
     steps:
@@ -54,65 +58,66 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 deep-translator
 
-      - name: Verify exact Telegram route
+      - name: Verify exact Telegram routes
         run: |
           python - <<'PY'
           import json, os, urllib.request
-          token=(os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
-          chat_id=(os.getenv('TELEGRAM_CHAT_ID') or '').strip()
-          expected=(os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
-          if not token:
-              raise RuntimeError('Telegram bot token secret is missing')
-          if not chat_id:
-              raise RuntimeError('Telegram chat id secret is missing')
-          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
-              identity=json.loads(r.read().decode('utf-8'))
-          actual=str((identity.get('result') or {}).get('username') or '')
-          if not identity.get('ok') or actual.lower()!=expected.lower():
-              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
-          print(f'telegram_route_valid=true bot=@{actual}')
+
+          routes = [
+              ("general", os.getenv("GENERAL_TELEGRAM_BOT_TOKEN", "").strip(), os.getenv("GENERAL_TELEGRAM_CHAT_ID", "").strip(), os.getenv("GENERAL_EXPECTED_BOT_USERNAME", "").strip().lstrip("@")),
+              ("westinghouse", os.getenv("WEC_TELEGRAM_BOT_TOKEN", "").strip(), os.getenv("WEC_TELEGRAM_CHAT_ID", "").strip(), os.getenv("WEC_EXPECTED_BOT_USERNAME", "").strip().lstrip("@")),
+          ]
+          for label, token, chat_id, expected in routes:
+              if not token or not chat_id:
+                  raise RuntimeError(f"{label}: Telegram token/chat id missing")
+              with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+                  identity = json.loads(r.read().decode("utf-8"))
+              actual = str((identity.get("result") or {}).get("username") or "")
+              if not identity.get("ok") or actual.lower() != expected.lower():
+                  raise RuntimeError(f"{label}: wrong Telegram bot; expected @{expected}, got @{actual or 'unknown'}")
+              print(f"telegram_route_valid=true lane={label} bot=@{actual}")
           PY
 
-      - name: Validate Janus watcher
+      - name: Validate watcher and split routing
         run: |
-          python -m py_compile scripts/janus_watch.py scripts/janus_watch_v2.py scripts/janus_watch_v3.py scripts/janus_watch_v4.py scripts/janus_watch_v5.py
-          python scripts/janus_watch_v5.py --mode self-test
+          python -m py_compile scripts/janus_watch.py scripts/janus_watch_v2.py scripts/janus_watch_v3.py scripts/janus_watch_v4.py scripts/janus_watch_v5.py scripts/janus_watch_v6.py
+          python scripts/janus_watch_v6.py --mode self-test
           python - <<'PY'
-          import sys
+          import pathlib, sys
           sys.path.insert(0, 'scripts')
-          import janus_watch_v2 as j
+          import janus_watch_v2 as j2
           import janus_watch_v3 as j3
           import janus_watch_v4 as j4
           import janus_watch_v5 as j5
-          if not j._is_bad_title("Error 500 (Server Error). Please try again later."):
+          import janus_watch_v6 as j6
+
+          if not j2._is_bad_title("Error 500 (Server Error). Please try again later."):
               raise RuntimeError('Server-error title filter is not working')
           sample='U.S. Army selects Fort Drum for Janus Program microreactor deployment'
-          translated=j._translate_ko(sample)
-          print('translation_test=', translated)
-          if j._needs_translation(translated):
-              raise RuntimeError('English descriptive words remained in Korean translation test')
-          if not any('가' <= ch <= '힣' for ch in translated):
-              raise RuntimeError('Korean translation was not produced')
+          translated=j2._translate_ko(sample)
+          if j2._needs_translation(translated) or not any('가' <= ch <= '힣' for ch in translated):
+              raise RuntimeError('Korean translation guard failed')
           initial, mature, fx_note=j3._ny_cost_lines()
           print('ny_5gw_cost_test=', initial, '|', mature, '|', fx_note)
           if '달러' not in initial or '달러' not in mature:
               raise RuntimeError('New York 5GW cost estimate was not generated')
           if not j4._rss_relevant("韓 웨스팅하우스 지분 인수 검토 급물살"):
               raise RuntimeError('Westinghouse Korea stake RSS filter is not working')
-          grouped=j5._render_grouped([
-              {'kind':'westinghouse_stake','source':'연합뉴스','title':'정부·한전, 미국 원전 건설 돕고 웨스팅하우스 지분 확보 검토','url':'https://example.com/1'},
-              {'kind':'westinghouse_stake','source':'전자신문','title':'[ET특징주]한국전력, 웨스팅하우스 지분 확보설에 상승세','url':'https://example.com/2'},
-              {'kind':'westinghouse_stake','source':'전기신문','title':'웨스팅하우스 지분, 사는 건가 떠맡는 건가','url':'https://example.com/3'},
-          ], [])
-          print('westinghouse_grouped_format_test=', grouped[:500])
-          if grouped.count('한눈에 보기') != 1 or grouped.count('핵심 병목') != 1 or '기사별 확인' not in grouped:
-              raise RuntimeError('Westinghouse duplicate-topic grouping is not working')
-          print('westinghouse_stake_watch_test=passed')
+
+          test_event = {'kind':'westinghouse_stake','source':'연합뉴스','title':'정부·한전, 미국 원전 건설 돕고 웨스팅하우스 지분 확보 검토','url':'https://example.com/wec'}
+          general = j6._render_split([test_event], [])
+          wec_path = pathlib.Path('out/westinghouse_alert.html')
+          if general.strip():
+              raise RuntimeError('Westinghouse alert leaked into general Janus output')
+          if not wec_path.exists() or '원전·Westinghouse 웹감시' not in wec_path.read_text(encoding='utf-8'):
+              raise RuntimeError('Westinghouse dedicated alert output was not generated')
+          wec_path.unlink()
+          print('westinghouse_split_route_test=passed')
           PY
 
-      - name: Check Janus web sources
+      - name: Check web sources
         run: |
-          python scripts/janus_watch_v5.py --mode check
+          python scripts/janus_watch_v6.py --mode check
           cat out/janus_status_v2.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/janus_errors_v2.log ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
@@ -120,120 +125,147 @@ jobs:
             cat out/janus_errors_v2.log >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Reject broken or untranslated alert before Telegram
-        if: hashFiles('out/janus_alert_v2.html') != ''
+      - name: Reject broken or untranslated alerts
+        if: hashFiles('out/janus_alert_v2.html') != '' || hashFiles('out/westinghouse_alert.html') != ''
         run: |
           python - <<'PY'
           from pathlib import Path
           import html, re, sys
           sys.path.insert(0, 'scripts')
           import janus_watch_v2 as j
-          p=Path('out/janus_alert_v2.html')
-          text=p.read_text(encoding='utf-8')
-          plain=html.unescape(re.sub(r'<[^>]+>', '', text))
-          if j._BAD_TITLE_RE.search(plain):
-              raise RuntimeError('Blocked Telegram alert: server/error-page text remains')
-          for line in plain.splitlines():
-              line=line.strip()
-              if line.startswith('• 새 사실:') or line.startswith('• 변경:'):
-                  value=line.split(':',1)[1].strip()
-                  if j._needs_translation(value):
-                      raise RuntimeError(f'Blocked Telegram alert: untranslated descriptive English remains: {value}')
-                  if not re.search(r'[가-힣]', value):
-                      raise RuntimeError(f'Blocked Telegram alert: Korean text missing: {value}')
-          print('janus_alert_preflight=passed')
+
+          for path in [Path('out/janus_alert_v2.html'), Path('out/westinghouse_alert.html')]:
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding='utf-8').strip()
+              if not text:
+                  continue
+              plain = html.unescape(re.sub(r'<[^>]+>', '', text))
+              if j._BAD_TITLE_RE.search(plain):
+                  raise RuntimeError(f'Blocked Telegram alert: server/error-page text remains in {path}')
+              # 설명형 영어는 번역하고, 회사명·제품명·약어만 원문 유지한다.
+              for line in plain.splitlines():
+                  line = line.strip()
+                  if line.startswith('• 새 사실:') or line.startswith('• 변경:'):
+                      value = line.split(':',1)[1].strip()
+                      if j._needs_translation(value):
+                          raise RuntimeError(f'Blocked Telegram alert: untranslated descriptive English remains: {value}')
+                      if not re.search(r'[가-힣]', value):
+                          raise RuntimeError(f'Blocked Telegram alert: Korean text missing: {value}')
+          print('telegram_alert_preflight=passed')
           PY
 
-      - name: Build manual connection test
+      - name: Build manual general connection test
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
         run: |
           mkdir -p out
           cat > out/janus_connection_test_v2.html <<'EOF'
           <b>[원전·Janus 웹감시] 텔레그램 연결 시험</b>
 
-          • 수신 봇: @hs8879887988798879_bot
+          • 일반 Janus·원전 알림 수신 봇: @hs8879887988798879_bot
+          • Westinghouse 지분 알림은 별도 @khs887900_bot으로 분리 송출
           • 확인 주기: 15분
-          • 감시: 미 육군·미 에너지부 Janus/마이크로원자로 + 원전 정책·금융·대형 설비투자 + 한국의 Westinghouse 지분 인수·투자·공동사업
-          • Westinghouse 동일 이슈 기사가 여러 건 잡히면 기사마다 설명을 반복하지 않고 하나의 이슈 묶음으로 통합해 현재 변화·기사별 역할·병목·다음 확인 순으로 표시
-          • Westinghouse 핵심 조건: 산업통상부·한국전력·한수원·Westinghouse·Brookfield·Cameco 공식 발표, LOI/MOU/실사, 지분율·가격·재원, CFIUS/NRC, AP1000 설계·조달·시공 권한, 지식재산권·입찰 제한
-          • GW·MW 등 물량이 나오면 공식·신뢰 벤치마크 단가를 적용해 총비용을 계산하고 USD/KRW 환율 API로 원화 환산
-          • 영어 기사·발표 제목은 일반 설명어를 한국어로 번역하고 회사명·제품명·약어만 식별을 위해 원문 유지
-          • 서버 오류·접근 오류 문구는 신규 사실로 취급하지 않고 송출 차단
-          • 번역 실패 시 영어 원문을 그대로 보내지 않고 해당 항목 송출을 보류한 뒤 재검증
-          • 같은 링크·같은 제목은 중복 발송하지 않음
           EOF
 
-      - name: Send Telegram messages
+      - name: Build one-time Westinghouse route migration test
+        run: |
+          if [ ! -f data/westinghouse_route_to_khs887900_v1.txt ]; then
+            mkdir -p out
+            cat > out/westinghouse_route_test.html <<'EOF'
+          <b>[원전·Westinghouse 웹감시] 송출 경로 이동 완료</b>
+
+          • 앞으로 Westinghouse 지분·원전동맹 알림은 <b>@khs887900_bot</b>으로만 송출
+          • Janus·기타 원전 웹감시는 기존 @hs8879887988798879_bot 유지
+          • 확인 주기: 15분
+          • 영어 설명은 한국어 번역 후 송출, 서버 오류·미번역 항목은 차단
+          • 동일 이슈 다수 기사는 하나의 묶음으로 통합해 가독성 있게 표시
+          EOF
+          fi
+
+      - name: Send general Janus and nuclear alerts
         if: hashFiles('out/janus_connection_test_v2.html') != '' || hashFiles('out/janus_alert_v2.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ env.GENERAL_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ env.GENERAL_TELEGRAM_CHAT_ID }}
+          EXPECTED_BOT_USERNAME: ${{ env.GENERAL_EXPECTED_BOT_USERNAME }}
         run: |
           python - <<'PY'
           import json, os, pathlib, urllib.parse, urllib.request
-
-          token=os.environ['TELEGRAM_BOT_TOKEN'].strip()
-          chat_id=os.environ['TELEGRAM_CHAT_ID'].strip()
-          expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
-
-          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
-              identity=json.loads(r.read().decode('utf-8'))
+          token=os.environ['TELEGRAM_BOT_TOKEN'].strip(); chat_id=os.environ['TELEGRAM_CHAT_ID'].strip(); expected=os.environ['EXPECTED_BOT_USERNAME'].strip().lstrip('@')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r: identity=json.loads(r.read().decode('utf-8'))
           actual=str((identity.get('result') or {}).get('username') or '')
-          if not identity.get('ok') or actual.lower()!=expected.lower():
-              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
-
-          files=[pathlib.Path('out/janus_connection_test_v2.html'), pathlib.Path('out/janus_alert_v2.html')]
-          sent_ids=[]
-          for path in files:
-              if not path.exists():
-                  continue
+          if not identity.get('ok') or actual.lower()!=expected.lower(): raise RuntimeError(f'wrong general bot: expected @{expected}, got @{actual}')
+          sent=[]
+          for path in [pathlib.Path('out/janus_connection_test_v2.html'), pathlib.Path('out/janus_alert_v2.html')]:
+              if not path.exists(): continue
               text=path.read_text(encoding='utf-8').strip()
-              if not text:
-                  continue
+              if not text: continue
               chunks=[]
               while len(text)>3800:
-                  cut=text.rfind('\n\n',0,3800)
-                  if cut<1000:
-                      cut=3800
-                  chunks.append(text[:cut].strip())
-                  text=text[cut:].strip()
-              if text:
-                  chunks.append(text)
+                  cut=text.rfind('\n\n',0,3800); cut=cut if cut>=1000 else 3800; chunks.append(text[:cut].strip()); text=text[cut:].strip()
+              if text: chunks.append(text)
               for chunk in chunks:
-                  payload=urllib.parse.urlencode({
-                      'chat_id':chat_id,
-                      'text':chunk,
-                      'parse_mode':'HTML',
-                      'disable_web_page_preview':'true',
-                  }).encode('utf-8')
-                  req=urllib.request.Request(
-                      f'https://api.telegram.org/bot{token}/sendMessage',
-                      data=payload,
-                      method='POST',
-                  )
-                  with urllib.request.urlopen(req,timeout=30) as r:
-                      result=json.loads(r.read().decode('utf-8'))
-                  if not result.get('ok'):
-                      raise RuntimeError(f'Telegram rejected message: {result}')
-                  sent_ids.append(result['result'].get('message_id'))
-          print(f'janus_v2_telegram_delivery_confirmed=true bot=@{actual} messages={len(sent_ids)} ids={sent_ids}')
+                  payload=urllib.parse.urlencode({'chat_id':chat_id,'text':chunk,'parse_mode':'HTML','disable_web_page_preview':'true'}).encode('utf-8')
+                  req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage',data=payload,method='POST')
+                  with urllib.request.urlopen(req,timeout=30) as r: result=json.loads(r.read().decode('utf-8'))
+                  if not result.get('ok'): raise RuntimeError(result)
+                  sent.append(result['result'].get('message_id'))
+          print(f'general_delivery_confirmed=true bot=@{actual} messages={len(sent)} ids={sent}')
           PY
 
-      - name: Persist state after successful check and delivery
+      - name: Send Westinghouse alerts to khs887900 bot
+        if: hashFiles('out/westinghouse_route_test.html') != '' || hashFiles('out/westinghouse_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ env.WEC_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ env.WEC_TELEGRAM_CHAT_ID }}
+          EXPECTED_BOT_USERNAME: ${{ env.WEC_EXPECTED_BOT_USERNAME }}
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token=os.environ['TELEGRAM_BOT_TOKEN'].strip(); chat_id=os.environ['TELEGRAM_CHAT_ID'].strip(); expected=os.environ['EXPECTED_BOT_USERNAME'].strip().lstrip('@')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r: identity=json.loads(r.read().decode('utf-8'))
+          actual=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower()!=expected.lower(): raise RuntimeError(f'wrong Westinghouse bot: expected @{expected}, got @{actual}')
+          sent=[]
+          for path in [pathlib.Path('out/westinghouse_route_test.html'), pathlib.Path('out/westinghouse_alert.html')]:
+              if not path.exists(): continue
+              text=path.read_text(encoding='utf-8').strip()
+              if not text: continue
+              chunks=[]
+              while len(text)>3800:
+                  cut=text.rfind('\n\n',0,3800); cut=cut if cut>=1000 else 3800; chunks.append(text[:cut].strip()); text=text[cut:].strip()
+              if text: chunks.append(text)
+              for chunk in chunks:
+                  payload=urllib.parse.urlencode({'chat_id':chat_id,'text':chunk,'parse_mode':'HTML','disable_web_page_preview':'true'}).encode('utf-8')
+                  req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage',data=payload,method='POST')
+                  with urllib.request.urlopen(req,timeout=30) as r: result=json.loads(r.read().decode('utf-8'))
+                  if not result.get('ok'): raise RuntimeError(result)
+                  sent.append(result['result'].get('message_id'))
+          print(f'westinghouse_delivery_confirmed=true bot=@{actual} messages={len(sent)} ids={sent}')
+          PY
+
+      - name: Mark Westinghouse route migration verified
+        if: success() && hashFiles('out/westinghouse_route_test.html') != ''
+        run: |
+          mkdir -p data
+          printf 'verified target=@khs887900_bot\n' > data/westinghouse_route_to_khs887900_v1.txt
+
+      - name: Persist watcher state after successful delivery
         if: success() && hashFiles('out/janus_watch_v2_state_pending.json') != ''
         run: cp out/janus_watch_v2_state_pending.json data/janus_watch_v2_state.json
 
-      - name: Commit Janus watcher state
-        if: success() && hashFiles('data/janus_watch_v2_state.json') != ''
+      - name: Commit watcher state and route marker
+        if: success()
         run: |
           git config user.name "janus-watch-v2[bot]"
           git config user.email "janus-watch-v2[bot]@users.noreply.github.com"
-          git add data/janus_watch_v2_state.json
+          git add data/janus_watch_v2_state.json data/westinghouse_route_to_khs887900_v1.txt 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "Janus v2 watch state unchanged"
+            echo "Watcher state unchanged"
           else
-            git commit -m "Update Janus v2 watch state"
+            git commit -m "Update nuclear watch state and Westinghouse route"
             for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
+              if git pull --rebase origin main && git push; then exit 0; fi
               git rebase --abort 2>/dev/null || true
               sleep $((attempt * 3))
             done
@@ -249,7 +281,8 @@ jobs:
             out/janus_status_v2.md
             out/janus_errors_v2.log
             out/janus_alert_v2.html
-            out/janus_connection_test_v2.html
+            out/westinghouse_alert.html
+            out/westinghouse_route_test.html
             out/janus_watch_v2_state_pending.json
           if-no-files-found: ignore
           retention-days: 14
