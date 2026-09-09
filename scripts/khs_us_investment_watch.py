@@ -33,37 +33,70 @@ QUERIES = [
     '"대미투자" 반도체 OR 삼성전자 OR SK하이닉스 when:3d',
     '"대미투자" 원전 OR AP1000 OR APR1400 when:3d',
     '"대미투자" "알래스카 LNG" when:3d',
+    '"알래스카 LNG" 한국 참여 OR 투자 OR 압박 when:3d',
+    '"Alaska LNG" Korea POSCO KOGAS when:3d',
+    '"Alaska LNG" offtake OR FID OR financing when:7d',
+    '"Alaska LNG" 13 MTPA OR 16 MTPA when:7d',
+    '"Alaska LNG" tax OR property tax OR pipeline when:7d',
     '"대미투자" 관세 OR 301조 OR 232조 when:3d',
 ]
 
 TRUSTED = [
     "산업통상", "연합뉴스", "뉴시스", "뉴스1", "이데일리", "헤럴드경제", "한국경제", "중앙일보",
-    "Reuters", "Yahoo", "Inside Climate News", "San Antonio Express-News", "Global Energy Monitor",
-    "Pipeline & Gas Journal", "Bloomberg", "Utility Dive",
+    "머니투데이", "글로벌경제신문", "GetNews", "Reuters", "Yahoo", "Inside Climate News",
+    "San Antonio Express-News", "Global Energy Monitor", "Pipeline & Gas Journal", "Bloomberg",
+    "Utility Dive", "Glenfarne", "Alaska's News Source",
 ]
 
 MATERIAL = [
     "확정", "의결", "합의", "계약", "체결", "승인", "허가", "착공", "증액", "감액", "사업비",
     "I-SPV", "PPA", "EPC", "가스터빈", "스팀터빈", "HRSG", "수주", "발전소", "가스발전",
     "현장발전", "데이터센터", "반도체", "원전", "LNG", "관세", "301조", "232조", "제외", "포함",
+    "압박", "참여", "최종투자결정", "FID", "금융종결", "오프테이크", "구매계약", "SPA", "HOA",
+    "MTPA", "세제", "재산세", "파이프라인", "Glenfarne", "POSCO", "포스코", "KOGAS", "한국가스공사",
     "gas power", "gas plant", "gas-fired", "combined-cycle", "data center", "turbine", "permit", "construction",
-    "6.3GW", "22.3 billion", "ERCOT", "behind-the-meter",
+    "offtake", "financial close", "pipeline", "property tax", "6.3GW", "22.3 billion", "ERCOT", "behind-the-meter",
+]
+
+MARKET_REACTION_TERMS = [
+    "강세", "급등", "상한가", "상승세", "주가", "관련주", "테마주", "株", "%↑", "% 상승",
+]
+
+HARD_PROGRESS_TERMS = [
+    "확정", "의결", "계약", "체결", "승인", "허가", "착공", "fid", "최종투자결정",
+    "financial close", "금융종결", "spa", "hoa", "오프테이크", "offtake", "구매계약",
+    "투자액", "투자규모", "배정액", "지분", "사업비", "증액", "감액", "수주",
+    "epc", "강재 공급", "mtpa", "만톤", "억달러", "조원", "재산세", "세제",
+]
+
+ALASKA_PRESSURE_TERMS = [
+    "압박", "빨리", "서둘러", "참여하라", "참여 요구", "참여 촉구", "pressure", "urge", "urges",
 ]
 
 
 def _load() -> dict:
     if not STATE.exists():
-        return {"bootstrap": False, "seen": {}}
+        return {"bootstrap": False, "seen": {}, "semantic_seen": {}}
     try:
-        return json.loads(STATE.read_text(encoding="utf-8"))
+        state = json.loads(STATE.read_text(encoding="utf-8"))
+        state.setdefault("seen", {})
+        state.setdefault("semantic_seen", {})
+        return state
     except Exception:
-        return {"bootstrap": False, "seen": {}}
+        return {"bootstrap": False, "seen": {}, "semantic_seen": {}}
 
 
 def _fetch(url: str) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 KHS-US-Investment-Watch"})
     with urllib.request.urlopen(req, timeout=20) as r:
         return r.read()
+
+
+def _is_simple_market_reaction(title: str) -> bool:
+    low = title.lower()
+    market = any(term.lower() in low for term in MARKET_REACTION_TERMS)
+    hard = any(term.lower() in low for term in HARD_PROGRESS_TERMS)
+    return market and not hard
 
 
 def _rss(query: str) -> list[dict]:
@@ -88,6 +121,8 @@ def _rss(query: str) -> list[dict]:
             continue
         if not any(x.lower() in blob.lower() for x in MATERIAL):
             continue
+        if _is_simple_market_reaction(title):
+            continue
         rows.append(
             {
                 "title": title,
@@ -104,6 +139,28 @@ def _key(row: dict) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()[:20]
 
 
+def _parse_utc(value: str) -> dt.datetime | None:
+    try:
+        parsed = dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=dt.timezone.utc)
+        return parsed.astimezone(dt.timezone.utc)
+    except Exception:
+        return None
+
+
+def _semantic_key(row: dict) -> str:
+    low = row["title"].lower()
+    alaska = "알래스카" in low or "alaska lng" in low
+    if not alaska:
+        return ""
+    pressure = any(term.lower() in low for term in ALASKA_PRESSURE_TERMS)
+    hard = any(term.lower() in low for term in HARD_PROGRESS_TERMS)
+    if pressure and not hard:
+        return "alaska_participation_pressure"
+    return ""
+
+
 def _tags(title: str) -> list[str]:
     low = title.lower()
     out = []
@@ -118,7 +175,9 @@ def _tags(title: str) -> list[str]:
         ("허가/착공", ["permit", "허가", "construction", "착공", "groundbreaking", "ercot"]),
         ("반도체", ["반도체", "삼성전자", "sk하이닉스"]),
         ("원전", ["원전", "ap1000", "apr1400"]),
-        ("알래스카 LNG", ["알래스카", "lng"]),
+        ("알래스카 LNG 압박", ["압박", "참여하라", "참여 촉구", "빨리", "서둘러"]),
+        ("알래스카 LNG 실질진전", ["fid", "최종투자결정", "financial close", "금융종결", "offtake", "오프테이크", "spa", "hoa", "mtpa", "재산세"]),
+        ("알래스카 LNG", ["알래스카", "alaska lng"]),
         ("관세", ["301조", "232조", "관세"]),
         ("사업비", ["사업비", "증액", "감액", "22.3 billion", "223억"]),
     ]:
@@ -148,6 +207,10 @@ def _meaning(tags: list[str]) -> str:
         return "미국 팹이 구체화되면 관세우대와 국내 설비투자 분산을 함께 봐야 합니다."
     if "원전" in tags:
         return "노형·사업 주도권에 따라 한국의 시공·기자재·운영 몫이 달라집니다."
+    if "알래스카 LNG 실질진전" in tags:
+        return "구속력 있는 장기구매계약·FID·금융종결·한국 투자액이 실제 착공과 매출을 결정합니다."
+    if "알래스카 LNG 압박" in tags:
+        return "단순 참여 압박 반복은 제외하고 새 시한·금액·당사자·계약이 붙을 때만 단계 상승으로 봅니다."
     if "알래스카 LNG" in tags:
         return "장기구매계약·세제·금융종결이 실제 착공을 결정합니다."
     if "관세" in tags:
@@ -170,7 +233,7 @@ def _fixed_project_cost_block() -> list[str]:
         "• 8기 · <b>1,200억달러 ≈ 161조4,720억원</b> 보도 기준",
         "",
         "🧊 <b>알래스카 LNG 후보</b>",
-        "• <b>670억달러 ≈ 90조1,552억원</b> 보도 기준",
+        "• <b>670억달러 ≈ 90조1,552억원</b> 한국 협상 보도 기준",
         "",
         "<b>⚠️ 숫자 해석</b>",
         "• 총사업비와 한국 정부 실제 투자액은 다를 수 있음",
@@ -197,6 +260,25 @@ def _texas_ai_power_block() -> list[str]:
         "",
         "<b>다음 확인</b>",
         "1) Encinal 정부 공식 확정  2) AI 고객 실명·PPA  3) EPC·터빈·HRSG 공급사  4) 가스관·환경허가  5) 착공·전원 인가",
+    ]
+
+
+def _alaska_lng_block() -> list[str]:
+    return [
+        "<b>🧊 알래스카 LNG 실질 진전 기준선</b>",
+        "• 수출설비: <b>20MTPA</b> · 금융종결 목표 <b>16MTPA(80%)</b>",
+        "• Reuters 2026-08-13: 확보 약정 <b>13MTPA</b> → 추가 <b>3MTPA</b> 필요",
+        "• 포스코인터내셔널: <b>1MTPA × 20년</b> + 최종투자결정 전 투자 + 42인치 가스관 강재 공급",
+        "• 1단계: 739마일·42인치 가스관, ConocoPhillips 30년 가스공급계약 확보",
+        "• 일정 기준선: 가스관 기계적 완공 2028년 · 첫 가스 2029년 · LNG 수출 목표 2031년",
+        "• 사업비 차이: 한국 협상 보도 <b>670억달러 ≈ 90조1,552억원</b> vs Reuters 8월 보도 약 <b>500억달러 ≈ 67조2,800억원</b>",
+        "└ 차이 <b>170억달러 ≈ 22조8,752억원</b>의 산정 범위 확인 필요",
+        "",
+        "<b>알림 승격 조건</b>",
+        "• 한국 투자액·배정액 확정 / SPA 체결 또는 HOA→SPA 전환·물량 변화 / FID·금융종결",
+        "• 포스코·한국가스공사·EPC·강재·LNG선 본계약 / 세제·재산세·허가 해결",
+        "• 단순 '한국 참여 압박' 반복과 관련주 급등은 제외",
+        "기준: Reuters 2026-08-13 · Glenfarne 공식자료",
     ]
 
 
@@ -240,6 +322,7 @@ def main() -> int:
         return 0
 
     seen = state.setdefault("seen", {})
+    semantic_seen = state.setdefault("semantic_seen", {})
     rows = []
     for q in QUERIES:
         try:
@@ -254,6 +337,14 @@ def main() -> int:
         if key in seen:
             continue
         seen[key] = now.isoformat()
+
+        semantic_key = _semantic_key(row)
+        if semantic_key:
+            previous = _parse_utc(str(semantic_seen.get(semantic_key) or ""))
+            if previous and now - previous < dt.timedelta(hours=72):
+                continue
+            semantic_seen[semantic_key] = now.isoformat()
+
         fresh.append(row)
         if len(fresh) >= 5:
             break
@@ -263,12 +354,26 @@ def main() -> int:
         print("new_alerts=0")
         return 0
 
-    parts = ["<b>🇺🇸 대미투자·텍사스 AI 전력 | 중요 업데이트</b>", ""]
     saw_texas = False
-    for idx, row in enumerate(fresh, 1):
+    saw_alaska = False
+    tagged_rows: list[tuple[dict, list[str]]] = []
+    for row in fresh:
         tags = _tags(row["title"])
+        tagged_rows.append((row, tags))
         if "텍사스 AI 전력" in tags or "1호/엔시날" in tags or "가스발전 설비" in tags:
             saw_texas = True
+        if any(tag.startswith("알래스카 LNG") for tag in tags):
+            saw_alaska = True
+
+    if saw_alaska and saw_texas:
+        alert_title = "🇺🇸 대미투자·미국 에너지 | 중요 업데이트"
+    elif saw_alaska:
+        alert_title = "🇺🇸 대미투자·알래스카 LNG | 중요 업데이트"
+    else:
+        alert_title = "🇺🇸 대미투자·텍사스 AI 전력 | 중요 업데이트"
+
+    parts = [f"<b>{alert_title}</b>", ""]
+    for idx, (row, tags) in enumerate(tagged_rows, 1):
         parts += [
             f"<b>{idx}. {html.escape(row['title'])}</b>",
             f"• 구분: {' / '.join(html.escape(x) for x in tags[:3])}",
@@ -281,10 +386,14 @@ def main() -> int:
         parts += _texas_ai_power_block()
         parts += [""]
 
+    if saw_alaska:
+        parts += _alaska_lng_block()
+        parts += [""]
+
     parts += _fixed_project_cost_block()
     parts += [
         "",
-        f"조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 같은 사건의 단순 주가 반응은 제외",
+        f"조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 단순 주가 반응·반복 압박 기사 제외",
     ]
     ALERT.write_text("\n".join(parts) + "\n", encoding="utf-8")
     print(f"new_alerts={len(fresh)}")
