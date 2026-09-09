@@ -59,7 +59,7 @@
       },
       {
         "ticker": "SHY",
-        "label": "1~3년",
+        "label": "미 국채 1~3년",
         "date": "2026-09-08",
         "nav_date": "2026-09-08",
         "shares_date": "2026-09-08",
@@ -131,7 +131,7 @@
       },
       {
         "ticker": "IEF",
-        "label": "7~10년",
+        "label": "미 국채 7~10년",
         "date": "2026-09-08",
         "nav_date": "2026-09-08",
         "shares_date": "2026-09-08",
@@ -203,7 +203,7 @@
       },
       {
         "ticker": "TLT",
-        "label": "20년 이상",
+        "label": "미 국채 20년 이상",
         "date": "2026-09-08",
         "nav_date": "2026-09-08",
         "shares_date": "2026-09-08",
@@ -215,17 +215,53 @@
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
         "flow_usd": -188991000.0
       }
+    ],
+    "LQD": [
+      {
+        "ticker": "LQD",
+        "label": "미 투자등급 회사채",
+        "date": "2026-09-08",
+        "nav_date": "2026-09-08",
+        "shares_date": "2026-09-08",
+        "nav": 105.46,
+        "shares": 282500000.0,
+        "sec_yield": 5.6,
+        "nav_change_pct": null,
+        "net_assets": 29792258270.0,
+        "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
+        "oas_bps": 85.64,
+        "flow_usd": null
+      }
+    ],
+    "HYG": [
+      {
+        "ticker": "HYG",
+        "label": "미 고수익 회사채",
+        "date": "2026-09-08",
+        "nav_date": "2026-09-08",
+        "shares_date": "2026-09-08",
+        "nav": 79.12,
+        "shares": 194200000.0,
+        "sec_yield": 6.51,
+        "nav_change_pct": null,
+        "net_assets": 15366039832.0,
+        "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
+        "oas_bps": 240.29,
+        "flow_usd": null
+      }
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-09-09T10:21:18+09:00",
+    "at_kst": "2026-09-09T21:13:42+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      106
+      110
     ],
-    "classification": "혼조·방향 확인 대기",
+    "overall": "혼조·추가 확인",
+    "treasury_flow": "국채 내부 혼조",
+    "credit_flow": "신용 Fund Flow 판정 대기",
     "curve_regime": "커브 트위스트·혼조",
     "treasury_date": "2026-09-08",
-    "format": "directional-curve-readable-v3-bold-key-lines"
+    "format": "treasury-credit-ishares-oas-v1"
   }
 }
