@@ -74,6 +74,7 @@ jobs:
           chat = os.environ["TELEGRAM_CHAT_ID"].strip()
           text = pathlib.Path("out/robotis_physical_ai_watch_telegram.txt").read_text(encoding="utf-8").strip()
 
+          # Split only on complete line boundaries so HTML tags remain intact.
           chunks, cur = [], ""
           for line in text.splitlines(True):
               if cur and len(cur) + len(line) > 3500:
@@ -87,6 +88,7 @@ jobs:
               payload = urllib.parse.urlencode({
                   "chat_id": chat,
                   "text": chunk,
+                  "parse_mode": "HTML",
                   "disable_web_page_preview": "true",
               }).encode()
               req = urllib.request.Request(
@@ -97,7 +99,7 @@ jobs:
               with urllib.request.urlopen(req, timeout=30) as r:
                   data = json.loads(r.read().decode())
               if not data.get("ok"):
-                  raise SystemExit("Telegram send failed")
+                  raise SystemExit(f"Telegram send failed: {data}")
               print(f"Telegram sent: message_id={data['result']['message_id']}")
           PY
           else
