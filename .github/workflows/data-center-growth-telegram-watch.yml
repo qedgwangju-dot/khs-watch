@@ -90,13 +90,11 @@ jobs:
               }
 
               if p.name == "pjm_data_center_policy_alert.txt":
-                  # A large clickable preview of the primary official PJM source,
-                  # plus tap-friendly buttons for the three core official sources.
                   payload["link_preview_options"] = {
                       "is_disabled": False,
                       "url": "https://www.pjm.com/committees-and-groups/cifp-rbp",
                       "prefer_large_media": True,
-                      "show_above_text": False,
+                      "show_above_text": True,
                   }
                   payload["reply_markup"] = {
                       "inline_keyboard": [
