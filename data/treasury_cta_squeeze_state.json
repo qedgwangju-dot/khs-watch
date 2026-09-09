@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-09-09T09:16:29+09:00",
+  "last_checked_kst": "2026-09-10T01:12:32+09:00",
   "media_id": null,
   "cftc_date": "September 1, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-09T09:16:29+09:00",
+    "checked_kst": "2026-09-10T01:12:32+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 1, 2026",
@@ -65,14 +65,14 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 107.40625,
-        "settlement": 107.40625,
-        "change": -0.328125,
-        "pct_change": -0.3045685279187804,
+        "last": 107.046875,
+        "settlement": 107.046875,
+        "change": -0.53125,
+        "pct_change": -0.4938271604938316,
         "open_interest": 5276634,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 1, 2026)",
         "volume": 0,
-        "market_time": 1788912373,
+        "market_time": 1788926400,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -83,14 +83,14 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 108.65625,
-        "settlement": 108.65625,
-        "change": -0.5625,
-        "pct_change": -0.5150214592274716,
+        "last": 107.9375,
+        "settlement": 107.9375,
+        "change": -0.96875,
+        "pct_change": -0.8895265423242482,
         "open_interest": 1811513,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 1, 2026)",
         "volume": 0,
-        "market_time": 1788912373,
+        "market_time": 1788926400,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -101,14 +101,14 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 110.1875,
-        "settlement": 110.1875,
-        "change": -0.40625,
-        "pct_change": -0.36733540548177235,
+        "last": 109.28125,
+        "settlement": 109.28125,
+        "change": -1.0,
+        "pct_change": -0.9067724567866198,
         "open_interest": 2398572,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 1, 2026)",
         "volume": 0,
-        "market_time": 1788912376,
+        "market_time": 1788926400,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -125,19 +125,19 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-09-04",
-        "rate": 3.65,
-        "volume_bn": 2888
+        "date": "2026-09-08",
+        "rate": 3.64,
+        "volume_bn": 2904
       },
       "BGCR": {
-        "date": "2026-09-04",
-        "rate": 3.64,
-        "volume_bn": 1197
+        "date": "2026-09-08",
+        "rate": 3.63,
+        "volume_bn": 1185
       },
       "TGCR": {
-        "date": "2026-09-04",
-        "rate": 3.64,
-        "volume_bn": 1173
+        "date": "2026-09-08",
+        "rate": 3.63,
+        "volume_bn": 1162
       }
     },
     "format_revision": 8
@@ -154,6 +154,7 @@
     "composite_confirmed": false,
     "stage": 0,
     "oi_scope_fixes": [
+      "ZN OI 11→5,276,634로 동일 범위 교체",
       "ZB OI 11→1,811,513로 동일 범위 교체"
     ]
   }
