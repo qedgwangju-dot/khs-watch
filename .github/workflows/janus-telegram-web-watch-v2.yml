@@ -1,4 +1,4 @@
-name: Janus Telegram Web Watch v2
+name: Nuclear Janus Telegram Web Watch
 
 on:
   push:
@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
     inputs:
       send_test:
-        description: "Send a one-time general Janus Telegram connection test"
+        description: "Send a one-time nuclear/Janus Telegram connection test"
         required: false
         default: "false"
         type: choice
@@ -28,7 +28,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: janus-telegram-web-watch-v2
+  group: nuclear-janus-telegram-khs887900
   cancel-in-progress: true
 
 jobs:
@@ -36,9 +36,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      EXPECTED_BOT_USERNAME: "hs8879887988798879_bot"
-      TELEGRAM_BOT_TOKEN: ${{ secrets.DEEP_FISSION_TELEGRAM_BOT_TOKEN || secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID: ${{ secrets.DEEP_FISSION_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      EXPECTED_BOT_USERNAME: "khs887900_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       JANUS_WATCH_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-Janus-Watch contact=github-actions' }}
 
     steps:
@@ -63,12 +63,12 @@ jobs:
           chat=(os.getenv('TELEGRAM_CHAT_ID') or '').strip()
           expected=(os.getenv('EXPECTED_BOT_USERNAME') or '').strip().lstrip('@')
           if not token or not chat:
-              raise RuntimeError('general Janus Telegram token/chat id missing')
+              raise RuntimeError('nuclear/Janus Telegram token/chat id missing')
           with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
               me=json.loads(r.read().decode('utf-8'))
           actual=str((me.get('result') or {}).get('username') or '')
           if not me.get('ok') or actual.lower()!=expected.lower():
-              raise RuntimeError(f'wrong general bot: expected @{expected}, got @{actual or "unknown"}')
+              raise RuntimeError(f'wrong bot: expected @{expected}, got @{actual or "unknown"}')
           print(f'telegram_route_valid=true bot=@{actual}')
           PY
 
@@ -86,24 +86,41 @@ jobs:
             echo "## 부분 조회 오류" >> "$GITHUB_STEP_SUMMARY"
             cat out/janus_errors_v2.log >> "$GITHUB_STEP_SUMMARY"
           fi
-          # Westinghouse 지분 알림은 별도 저장소의 @khs887900_bot 전용 감시로 이전했으므로 여기서는 송출하지 않는다.
-          rm -f out/westinghouse_alert.html out/westinghouse_route_test.html
 
-      - name: Reject broken or untranslated general alerts
-        if: hashFiles('out/janus_alert_v2.html') != ''
+      - name: Reject broken alerts
+        if: hashFiles('out/janus_alert_v2.html') != '' || hashFiles('out/westinghouse_alert.html') != ''
         run: |
           python - <<'PY'
           from pathlib import Path
           import html, re, sys
           sys.path.insert(0, 'scripts')
           import janus_watch_v2 as j
-          path=Path('out/janus_alert_v2.html')
-          text=path.read_text(encoding='utf-8').strip()
-          plain=html.unescape(re.sub(r'<[^>]+>', '', text))
-          if j._BAD_TITLE_RE.search(plain):
-              raise RuntimeError('Blocked Telegram alert: server/error-page text remains')
-          print('general_alert_preflight=passed')
+          for path in [Path('out/janus_alert_v2.html'), Path('out/westinghouse_alert.html')]:
+              if not path.exists():
+                  continue
+              text=path.read_text(encoding='utf-8').strip()
+              if not text:
+                  continue
+              plain=html.unescape(re.sub(r'<[^>]+>', '', text))
+              if j._BAD_TITLE_RE.search(plain):
+                  raise RuntimeError(f'Blocked Telegram alert: server/error-page text remains in {path}')
+          print('telegram_alert_preflight=passed')
           PY
+
+      - name: Build one-time migration test
+        run: |
+          if [ ! -f data/all_nuclear_route_to_khs887900_v1.txt ]; then
+            mkdir -p out
+            cat > out/nuclear_route_test.html <<'EOF'
+          <b>[원전·Janus 웹감시] 전체 송출 경로 이동 완료</b>
+
+          • 수신 봇: <b>@khs887900_bot</b>
+          • 대상: Janus · 일반 원전 정책/금융/설비투자 · 원전 재가동 · 신규 원전 · SMR · 연료/공급망 · Westinghouse 지분/원전동맹
+          • 확인 주기: 15분
+          • 기존 @hs8879887988798879_bot으로는 이 원전·Janus 감시를 더 이상 송출하지 않음
+          • 영어 설명은 한국어 번역 후 송출, 오류 페이지·미번역 문구는 차단
+          EOF
+          fi
 
       - name: Build manual connection test
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
@@ -112,13 +129,12 @@ jobs:
           cat > out/janus_connection_test_v2.html <<'EOF'
           <b>[원전·Janus 웹감시] 텔레그램 연결 시험</b>
 
-          • 일반 Janus·원전 알림 수신 봇: @hs8879887988798879_bot
-          • Westinghouse 지분·원전동맹 알림은 별도 @khs887900_bot 전용 감시로 이전
+          • 전체 원전·Janus 알림 수신 봇: @khs887900_bot
           • 확인 주기: 15분
           EOF
 
-      - name: Send general Janus and nuclear alerts
-        if: hashFiles('out/janus_connection_test_v2.html') != '' || hashFiles('out/janus_alert_v2.html') != ''
+      - name: Send all nuclear and Janus alerts
+        if: hashFiles('out/nuclear_route_test.html') != '' || hashFiles('out/janus_connection_test_v2.html') != '' || hashFiles('out/janus_alert_v2.html') != '' || hashFiles('out/westinghouse_alert.html') != ''
         run: |
           python - <<'PY'
           import json, os, pathlib, urllib.parse, urllib.request
@@ -127,9 +143,15 @@ jobs:
               me=json.loads(r.read().decode('utf-8'))
           actual=str((me.get('result') or {}).get('username') or '')
           if not me.get('ok') or actual.lower()!=expected.lower():
-              raise RuntimeError(f'wrong general bot: expected @{expected}, got @{actual}')
+              raise RuntimeError(f'wrong bot: expected @{expected}, got @{actual}')
           ids=[]
-          for path in [pathlib.Path('out/janus_connection_test_v2.html'), pathlib.Path('out/janus_alert_v2.html')]:
+          files=[
+              pathlib.Path('out/nuclear_route_test.html'),
+              pathlib.Path('out/janus_connection_test_v2.html'),
+              pathlib.Path('out/janus_alert_v2.html'),
+              pathlib.Path('out/westinghouse_alert.html'),
+          ]
+          for path in files:
               if not path.exists(): continue
               text=path.read_text(encoding='utf-8').strip()
               if not text: continue
@@ -145,23 +167,29 @@ jobs:
                       result=json.loads(r.read().decode('utf-8'))
                   if not result.get('ok'): raise RuntimeError(result)
                   ids.append((result.get('result') or {}).get('message_id'))
-          print(f'general_delivery_confirmed=true bot=@{actual} messages={len(ids)} ids={ids}')
+          print(f'nuclear_janus_delivery_confirmed=true bot=@{actual} messages={len(ids)} ids={ids}')
           PY
+
+      - name: Mark full migration verified
+        if: success() && hashFiles('out/nuclear_route_test.html') != ''
+        run: |
+          mkdir -p data
+          printf 'verified target=@khs887900_bot\n' > data/all_nuclear_route_to_khs887900_v1.txt
 
       - name: Persist watcher state
         if: success() && hashFiles('out/janus_watch_v2_state_pending.json') != ''
         run: cp out/janus_watch_v2_state_pending.json data/janus_watch_v2_state.json
 
       - name: Commit watcher state
-        if: success() && hashFiles('data/janus_watch_v2_state.json') != ''
+        if: success()
         run: |
           git config user.name "janus-watch-v2[bot]"
           git config user.email "janus-watch-v2[bot]@users.noreply.github.com"
-          git add data/janus_watch_v2_state.json
+          git add data/janus_watch_v2_state.json data/all_nuclear_route_to_khs887900_v1.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Watcher state unchanged"
           else
-            git commit -m "Update nuclear watch state"
+            git commit -m "Update nuclear watch state and full route migration"
             for attempt in 1 2 3; do
               if git pull --rebase origin main && git push; then exit 0; fi
               git rebase --abort 2>/dev/null || true
