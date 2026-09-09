@@ -5,7 +5,7 @@ on:
     paths:
       - ".github/workflows/treasury-etf-flow-telegram.yml"
       - "scripts/treasury_etf_flow_watch.py"
-      - "scripts/treasury_etf_flow_watch_interpreted.py"
+      - "scripts/treasury_credit_flow_watch.py"
   schedule:
     - cron: "30 8 * * *"
       timezone: "Asia/Seoul"
@@ -44,7 +44,7 @@ jobs:
       - name: Validate watcher
         run: |
           python -m py_compile scripts/treasury_etf_flow_watch.py
-          python -m py_compile scripts/treasury_etf_flow_watch_interpreted.py
+          python -m py_compile scripts/treasury_credit_flow_watch.py
 
       - name: Validate exact Telegram bot route
         run: |
@@ -68,8 +68,8 @@ jobs:
           print(f"telegram_route_valid=true bot=@{actual} chat_id_present=true")
           PY
 
-      - name: Run interpreted SHY IEF TLT monitor and send Telegram
-        run: python scripts/treasury_etf_flow_watch_interpreted.py
+      - name: Run Treasury plus credit ETF monitor and send Telegram
+        run: python scripts/treasury_credit_flow_watch.py
 
       - name: Publish summary
         if: always()
@@ -77,7 +77,7 @@ jobs:
           if [ -f out/treasury_etf_flow_status.md ]; then
             cat out/treasury_etf_flow_status.md >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "미 국채 ETF 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+            echo "미 국채·회사채 ETF 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Commit daily baseline/history
@@ -90,10 +90,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/treasury_etf_flow_state.json
           if git diff --cached --quiet; then
-            echo "Treasury ETF flow state unchanged"
+            echo "Treasury and credit ETF flow state unchanged"
             exit 0
           fi
-          git commit -m "Update Treasury ETF fund flow state"
+          git commit -m "Update Treasury and credit ETF fund flow state"
           for attempt in 1 2 3; do
             if git pull --rebase origin main && git push; then
               exit 0
@@ -107,7 +107,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: treasury-etf-flow-${{ github.run_id }}
+          name: treasury-credit-etf-flow-${{ github.run_id }}
           path: |
             out/treasury_etf_flow_status.md
             out/treasury_etf_flow_telegram.txt
