@@ -28,7 +28,7 @@ jobs:
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.ROBOTIS_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.DATA_CENTER_TELEGRAM_CHAT_ID }}
-      FORCE_SUMMARY: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.force_summary) && '1' || '0' }}
+      FORCE_SUMMARY: ${{ github.event_name == 'workflow_dispatch' && inputs.force_summary && '1' || '0' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
