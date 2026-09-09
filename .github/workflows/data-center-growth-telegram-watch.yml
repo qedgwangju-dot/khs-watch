@@ -6,6 +6,7 @@ on:
       - ".github/workflows/data-center-growth-telegram-watch.yml"
       - "scripts/data_center_growth_watch.py"
       - "scripts/pjm_data_center_policy_watch.py"
+      - "scripts/clean_pjm_alert_html.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -60,11 +61,12 @@ jobs:
 
       - name: Check PJM RBP IRAS and large-load policy
         run: |
-          # Format v3: the PJM watcher already produces Telegram-safe HTML.
-          # Do not run it through a second formatter, which would escape <b>/<a>
-          # and expose raw markup to the user.
-          sed -i 's/^FORMAT_VERSION = 2$/FORMAT_VERSION = 3/' scripts/pjm_data_center_policy_watch.py
+          # Format v4: native Telegram HTML + grouped source presentation.
+          sed -i 's/^FORMAT_VERSION = 2$/FORMAT_VERSION = 4/' scripts/pjm_data_center_policy_watch.py
           python scripts/pjm_data_center_policy_watch.py
+
+      - name: Group PJM source rows for readability
+        run: python scripts/clean_pjm_alert_html.py
 
       - name: Send Telegram only on meaningful changes
         run: |
@@ -84,44 +86,31 @@ jobs:
                   continue
 
               text = p.read_text(encoding="utf-8").strip()
-              payload = {
-                  "chat_id": chat,
-                  "text": text,
-              }
+              payload = {"chat_id": chat, "text": text}
 
               if p.name == "pjm_data_center_policy_alert.txt":
-                  # PJM watcher emits native Telegram-safe HTML. This makes bold
-                  # values and inline '원문' links render normally instead of
-                  # showing literal <b>/<a> tags.
                   payload["parse_mode"] = "HTML"
+                  # Use the official PJM Inside Lines article as the representative
+                  # preview card because it has a readable title/summary and the
+                  # image/card itself is tappable to the source.
                   payload["link_preview_options"] = {
                       "is_disabled": False,
-                      "url": "https://www.pjm.com/committees-and-groups/cifp-rbp",
+                      "url": "https://insidelines.pjm.com/pjm-reliability-backstop-proposal-outlines-steps-to-secure-new-supply-and-maintain-reliability/",
                       "prefer_large_media": True,
                       "show_above_text": False,
                   }
                   payload["reply_markup"] = {
                       "inline_keyboard": [
                           [
-                              {
-                                  "text": "📌 PJM RBP 원문",
-                                  "url": "https://www.pjm.com/committees-and-groups/cifp-rbp",
-                              },
-                              {
-                                  "text": "⚖️ FERC 원문",
-                                  "url": "https://www.ferc.gov/news-events/news/decisions-notices",
-                              },
+                              {"text": "📌 PJM RBP 원문", "url": "https://www.pjm.com/committees-and-groups/cifp-rbp"},
+                              {"text": "⚖️ FERC 원문", "url": "https://www.ferc.gov/news-events/news/decisions-notices"},
                           ],
                           [
-                              {
-                                  "text": "📄 PJM 기준 설명",
-                                  "url": "https://insidelines.pjm.com/pjm-reliability-backstop-proposal-outlines-steps-to-secure-new-supply-and-maintain-reliability/",
-                              }
+                              {"text": "📄 PJM 기준 설명", "url": "https://insidelines.pjm.com/pjm-reliability-backstop-proposal-outlines-steps-to-secure-new-supply-and-maintain-reliability/"}
                           ],
                       ]
                   }
               else:
-                  # Census alert is plain text, so do not apply HTML parsing.
                   payload["link_preview_options"] = {"is_disabled": True}
 
               r = requests.post(
@@ -132,9 +121,7 @@ jobs:
               data = r.json()
               if not r.ok or not data.get("ok"):
                   desc = data.get("description", "unknown") if isinstance(data, dict) else "unknown"
-                  raise SystemExit(
-                      f"Telegram send failed for {p.name}: HTTP {r.status_code} / {desc}"
-                  )
+                  raise SystemExit(f"Telegram send failed for {p.name}: HTTP {r.status_code} / {desc}")
               print(f"Telegram sent {p.name}: message_id={data['result']['message_id']}")
               sent += 1
               time.sleep(1)
@@ -148,8 +135,6 @@ jobs:
           mkdir -p data
           cp out/data_center_growth_pending_state.json data/data_center_growth_state.json
           cp out/pjm_data_center_policy_pending_state.json data/pjm_data_center_policy_state.json
-          # Restore the temporary runtime-only FORMAT_VERSION edit before Git
-          # operations so the checkout remains clean and rebase/push can succeed.
           git restore scripts/pjm_data_center_policy_watch.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
