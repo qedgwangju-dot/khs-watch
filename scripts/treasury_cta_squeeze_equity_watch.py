@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
-"""Add stock-market interpretation to the audited Treasury CTA squeeze alert."""
+"""Add policy-boundary and stock-market interpretation to the audited Treasury CTA squeeze alert.
+
+This layer does not create a new CTA trigger. It enriches only alerts already approved
+by the audited deduplication gate (plus the watcher's one-time format-revision resend).
+"""
 from __future__ import annotations
 
 import treasury_cta_squeeze_audited_watch as audited
 
 watcher = audited.watcher
+watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 9)
 _base_format = audited.format_alert
 
 
@@ -41,15 +46,38 @@ def _equity_impact(snapshot: dict, previous: dict, reasons: list[str]) -> tuple[
 def format_alert(snapshot, previous, fx, fx_date, reasons):
     title, body = _base_format(snapshot, previous, fx, fx_date, reasons)
     impact, path, caveat = _equity_impact(snapshot, previous, reasons)
-    block = (
+
+    policy_block = (
+        "<b>🧭 베센트 정책 목적·경계선</b>\n"
+        "• 현재 정책선: 장기 비지표물 바이백은 <b>유동성·변동성 완화와 시장 과속 억제</b>가 목적이라는 설명을 기준으로 판정합니다.\n"
+        "• 공식 목표 아님: <b>10년물 4.30% 고정 · 수익률 통제 · Fed QE</b>. 4.30%는 시장의 CTA 스퀴즈 시나리오일 뿐입니다.\n"
+        "• 의도와 결과 분리: CTA 숏커버가 실제 발생해도 이를 곧바로 ‘재무부의 공식 CTA 스퀴즈 목표’로 해석하지 않습니다.\n"
+        "• 정책선 이탈 경보: 시장 기능이 정상인데도 특정 금리 수준에 맞춰 바이백·발행구조를 반복 변경하면 <b>🟠 유동성 지원 → 사실상 금리관리 가능성</b>으로 격상합니다.\n"
+        "• 중복 방지: Bessent 발언 한 건만으로 CTA 알림을 새로 보내지 않으며, 실제 바이백 금액·제시액·매입액은 기존 바이백 집행 알림이 담당합니다.\n\n"
+    )
+
+    equity_block = (
         "<b>📈 주식시장 영향</b>\n"
         f"• 현재 판정: <b>{impact}</b>\n"
         f"• 경로: {path}\n"
-        f"• 뒤집는 조건: {caveat}\n\n"
+        f"• 뒤집는 조건: {caveat}\n"
+        "• 해석 원칙: <b>질서 있는 금리 하락</b>은 성장주 할인율에 우호적이지만, 경기침체·신용스트레스·repo 악화에 따른 금리 하락은 위험자산 악재일 수 있습니다.\n\n"
     )
+
     marker = "<b>한 줄 결론</b>"
-    if marker in body and "📈 주식시장 영향" not in body:
-        body = body.replace(marker, block + marker, 1)
+    if marker in body:
+        additions = ""
+        if "🧭 베센트 정책 목적·경계선" not in body:
+            additions += policy_block
+        if "📈 주식시장 영향" not in body:
+            additions += equity_block
+        if additions:
+            body = body.replace(marker, additions + marker, 1)
+    else:
+        if "🧭 베센트 정책 목적·경계선" not in body:
+            body += "\n\n" + policy_block.rstrip()
+        if "📈 주식시장 영향" not in body:
+            body += "\n\n" + equity_block.rstrip()
     return title, body
 
 
