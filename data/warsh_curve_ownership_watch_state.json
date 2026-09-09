@@ -1,14 +1,14 @@
 {
-  "curve_date": "2026-09-08",
-  "2y": 4.39,
-  "10y": 4.8,
-  "30y": 5.25,
-  "2s10s_bp": 41.000000000000014,
-  "2s30s_bp": 86.00000000000003,
-  "last_curve_move_2s10s_bp": 0.0,
-  "last_curve_move_2s30s_bp": -0.9999999999999858,
-  "buyback_active": false,
+  "curve_date": "2026-09-09",
+  "2y": 4.43,
+  "10y": 4.83,
+  "30y": 5.28,
+  "2s10s_bp": 40.000000000000036,
+  "2s30s_bp": 85.00000000000006,
+  "last_curve_move_2s10s_bp": -0.9999999999999787,
+  "last_curve_move_2s30s_bp": -0.9999999999999716,
+  "buyback_active": true,
   "buyback_schedule_hash": "8bed04c54df19606e193455a022a6342dbcb302aa3a7de1cd260e1acda8fed37",
   "last_error": null,
-  "updated_at_utc": "2026-09-08T21:57:33.217564+00:00"
+  "updated_at_utc": "2026-09-09T21:48:06.156319+00:00"
 }
