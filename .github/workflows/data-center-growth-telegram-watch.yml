@@ -6,6 +6,7 @@ on:
       - ".github/workflows/data-center-growth-telegram-watch.yml"
       - "scripts/data_center_growth_watch.py"
       - "scripts/pjm_data_center_policy_watch.py"
+      - "scripts/format_telegram_alerts.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -61,6 +62,9 @@ jobs:
       - name: Check PJM RBP IRAS and large-load policy
         run: python scripts/pjm_data_center_policy_watch.py
 
+      - name: Format Telegram alerts for readability
+        run: python scripts/format_telegram_alerts.py
+
       - name: Send Telegram only on meaningful changes
         run: |
           python - <<'PY'
@@ -82,34 +86,40 @@ jobs:
               payload = {
                   "chat_id": chat,
                   "text": text,
-                  "link_preview_options": {"is_disabled": True},
+                  "parse_mode": "HTML",
               }
 
-              # PJM alerts are generated as Telegram-safe HTML. Long raw URLs are
-              # replaced by clickable '원문' labels, and the three core official
-              # sources are also exposed as large tap-friendly buttons.
               if p.name == "pjm_data_center_policy_alert.txt":
-                  payload["parse_mode"] = "HTML"
+                  # A large clickable preview of the primary official PJM source,
+                  # plus tap-friendly buttons for the three core official sources.
+                  payload["link_preview_options"] = {
+                      "is_disabled": False,
+                      "url": "https://www.pjm.com/committees-and-groups/cifp-rbp",
+                      "prefer_large_media": True,
+                      "show_above_text": False,
+                  }
                   payload["reply_markup"] = {
                       "inline_keyboard": [
                           [
                               {
-                                  "text": "PJM RBP 원문",
+                                  "text": "📌 PJM RBP 원문",
                                   "url": "https://www.pjm.com/committees-and-groups/cifp-rbp",
                               },
                               {
-                                  "text": "FERC 원문",
+                                  "text": "⚖️ FERC 원문",
                                   "url": "https://www.ferc.gov/news-events/news/decisions-notices",
                               },
                           ],
                           [
                               {
-                                  "text": "PJM 기준 설명",
+                                  "text": "📄 PJM 기준 설명",
                                   "url": "https://insidelines.pjm.com/pjm-reliability-backstop-proposal-outlines-steps-to-secure-new-supply-and-maintain-reliability/",
                               }
                           ],
                       ]
                   }
+              else:
+                  payload["link_preview_options"] = {"is_disabled": True}
 
               r = requests.post(
                   f"https://api.telegram.org/bot{token}/sendMessage",
