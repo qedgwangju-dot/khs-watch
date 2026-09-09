@@ -4,7 +4,7 @@
 Adds high-signal lanes and alert-quality guards without duplicating the base watcher:
 1) Microduck / Reachy Mini sales milestones -> implied ROBOTIS actuator demand
 2) WONIK Holdings / WONIK Robotics commercialization, policy and customer expansion
-3) Cross-publisher event deduplication and repeated-label cleanup
+3) Cross-publisher event deduplication, price-noise filtering and cleaner alert labels
 """
 from __future__ import annotations
 
@@ -17,7 +17,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import robotis_physical_ai_watch as base
 
-# Broaden discovery while keeping the existing dedup state/output format.
 base.QUERIES.extend([
     '(Microduck OR 마이크로덕 OR "Reachy Mini" OR 리치미니) (판매 OR 판매량 OR sold OR sales OR orders OR 주문 OR 15000 OR 15,000 OR 20000 OR 20,000) (ROBOTIS OR 로보티즈 OR DYNAMIXEL OR 액추에이터)',
     '(Microduck OR 마이크로덕) (15000 OR 15,000 OR 1만5000 OR 1.5만 OR 600만달러 OR "6 million")',
@@ -32,38 +31,58 @@ base.TRUSTED.update({
 base.OFFICIAL_OR_PRIMARY.update({
     "원익로보틱스", "WONIK Robotics",
 })
-base.MAX_ALERTS = max(base.MAX_ALERTS, 9)
+# Keep enough unique information, but avoid a wall of nine near-identical headlines.
+base.MAX_ALERTS = 8
 
 _orig_topic_group = base.topic_group
 _orig_score = base.score
 _orig_category = base.category
-_orig_tag_for = base.tag_for
 _orig_meaning = base.meaning
 _orig_risk = base.risk
 _orig_verification = base.verification
 _orig_clean_title = base.clean_title
 
+EDITORIAL_PREFIX = r"\[(?:단독|현장|fn마켓워치|리포트\s*브리핑)[^\]]*\]"
+
 
 def _norm_title(value: str) -> str:
     value = re.sub(r"\s+-\s+[^-]+$", "", value or "")
     value = value.lower()
-    value = re.sub(r"\[(?:단독|현장|fn마켓워치|리포트\s*브리핑)[^\]]*\]", " ", value, flags=re.I)
+    value = re.sub(EDITORIAL_PREFIX, " ", value, flags=re.I)
     value = re.sub(r"[^0-9a-z가-힣一-龥]+", " ", value, flags=re.I)
     return re.sub(r"\s+", " ", value).strip()
 
 
 def key(item: dict) -> str:
-    """Source-independent key so an identical syndicated headline is one story."""
+    """Source-independent key so exact syndicated headlines are one story."""
     title = _norm_title(item.get("title", ""))
     return hashlib.sha256(title.encode()).hexdigest()
 
 
 def clean_title(title: str, source: str) -> str:
-    """Avoid output such as '로보티즈 로보티즈 ...'."""
-    title = _orig_clean_title(title, source)
-    for label in ("로보티즈", "원익로보틱스", "배터리", "테슬라옵티머스", "촉각·로봇데이터"):
-        title = re.sub(rf"^{re.escape(label)}(?:\s+|\s*[,·:：\-–—]\s*)", "", title, count=1, flags=re.I)
-    return title.strip()
+    """Remove a repeated lane/company label from the headline itself.
+
+    The lane is displayed in the '분류' line, so a title like
+    '[현장] 로보티즈 로보티즈 ...' becomes '[현장] 로보티즈 ...' visually,
+    and '로보티즈 휴머노이드 ...' becomes '휴머노이드 ...'.
+    """
+    title = _orig_clean_title(title, source).strip()
+    prefix = ""
+    m = re.match(rf"^({EDITORIAL_PREFIX})\s*", title, flags=re.I)
+    if m:
+        prefix = m.group(1) + " "
+        title = title[m.end():].lstrip()
+
+    # Remove only a leading category/company marker; do not delete entity names
+    # that appear naturally later in the headline.
+    title = re.sub(
+        r"^(?:로보티즈|원익로보틱스|배터리|테슬라옵티머스|촉각·로봇데이터)(?:\s+|\s*[,·:：\-–—]\s*)",
+        "",
+        title,
+        count=1,
+        flags=re.I,
+    ).strip()
+    return (prefix + title).strip()
 
 
 def topic_group(text: str) -> str | None:
@@ -72,9 +91,30 @@ def topic_group(text: str) -> str | None:
     return _orig_topic_group(text)
 
 
+def _price_only_headline(title: str) -> bool:
+    price_noise = re.search(
+        r"주가|급등|상한가|하한가|뛴\s*이유|오른\s*이유|내린\s*이유|"
+        r"한달새|한\s*달\s*새|오늘\s*또|장중|신고가|\d+(?:\.\d+)?%\s*(?:상승|하락|급등|급락|뛰)",
+        title,
+        re.I,
+    )
+    direct_in_title = re.search(
+        r"공급계약|수주|발주|주문|양산|출하|생산능력|공장|배치|투입|"
+        r"블록딜|클럽딜|지분|완판|상업\s*생산|MOU|협력|고객",
+        title,
+        re.I,
+    )
+    return bool(price_noise and not direct_in_title)
+
+
 def score(item: dict) -> int:
-    text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    title = item.get("title", "")
+    text = f"{title} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
+
+    # Never let a pure price-reaction headline outrank an actual operating event.
+    if _price_only_headline(title):
+        return -30
 
     if group == "wonik":
         source = item.get("source") or ""
@@ -102,40 +142,57 @@ def score(item: dict) -> int:
     return s
 
 
-def category(text: str, group: str) -> str:
+def _raw_category(text: str, group: str) -> str:
     if group == "wonik":
         if re.search(r"정책|예산|육성|규제|정부|산업부|과기정통부|조달", text, re.I):
             return "정책·상용화"
-        return "원익로보틱스 사업 확장"
+        return "사업 확장"
     if group == "robotis" and re.search(r"Microduck|마이크로덕|Reachy Mini|리치미니", text, re.I) and re.search(r"판매|판매량|sold|sales|orders|주문", text, re.I):
         return "판매량×액추에이터 수요"
     return _orig_category(text, group)
 
 
+def _lane_label(group: str) -> str:
+    return {
+        "robotis": "로보티즈",
+        "battery": "배터리",
+        "tesla": "테슬라옵티머스",
+        "byd_paxini": "촉각·로봇데이터",
+        "wonik": "원익로보틱스",
+    }[group]
+
+
+def category(text: str, group: str) -> str:
+    # Put the lane in the metadata line, not in front of the headline.
+    return f"{_lane_label(group)} · {_raw_category(text, group)}"
+
+
 def tag_for(group: str) -> str:
-    if group == "wonik":
-        return "원익로보틱스"
-    return _orig_tag_for(group)
+    # Base formatter prepends tag_for() to titles. Return empty so the headline
+    # remains clean; the lane is already shown in the category line.
+    return ""
 
 
 def meaning(cat: str) -> str:
-    if cat == "판매량×액추에이터 수요":
+    raw = cat.split(" · ", 1)[-1]
+    if raw == "판매량×액추에이터 수요":
         return "완제품 판매대수에 대당 액추에이터 탑재량을 곱해 ROBOTIS의 잠재 부품 수요를 바로 검산합니다. 예를 들어 Microduck 1.5만대×15개면 22.5만개로, 지난해 ROBOTIS 연간 실제 출하량 약 22만개와 맞먹는 규모입니다."
-    if cat == "정책·상용화":
+    if raw == "정책·상용화":
         return "정부 로봇 상용화·실증·예산 확대가 원익로보틱스의 Allegro Hand·AMR·AMMR·모바일 휴머노이드 사업에 실제 고객·조달·양산으로 연결되는지 봅니다."
-    if cat == "원익로보틱스 사업 확장":
+    if raw == "사업 확장":
         return "원익로보틱스가 로봇핸드 중심 연구개발 사업에서 AMR·AMMR·모바일 휴머노이드와 산업 자동화 고객으로 매출 경로를 넓히는 신호인지 확인합니다."
-    return _orig_meaning(cat)
+    return _orig_meaning(raw)
 
 
 def risk(cat: str) -> str:
-    if cat == "판매량×액추에이터 수요":
+    raw = cat.split(" · ", 1)[-1]
+    if raw == "판매량×액추에이터 수요":
         return "22.5만개는 판매대수×15개로 계산한 내재 수요입니다. ROBOTIS가 22.5만개를 이미 출하·매출 인식했다는 뜻은 아니므로 실제 납품·생산·재고 변화를 따로 확인해야 합니다."
-    if cat == "정책·상용화":
+    if raw == "정책·상용화":
         return "정책 수혜 기대와 확정 매출은 다릅니다. 세부 예산 집행, 조달 공고, 고객 실명, 납품 대수와 원익로보틱스 수주 공시가 없으면 주가 테마에 그칠 수 있습니다."
-    if cat == "원익로보틱스 사업 확장":
+    if raw == "사업 확장":
         return "MOU·전시·시제품만으로 양산 매출을 확정할 수 없습니다. 반복 주문, 설치 대수, 가동률과 유지보수 매출을 확인해야 합니다."
-    return _orig_risk(cat)
+    return _orig_risk(raw)
 
 
 def verification(item: dict, group: str, text: str) -> str:
@@ -157,6 +214,7 @@ def _event_features(text: str) -> set[str]:
         "1000eok": r"1000\s*억|1,?000\s*억",
         "solidstate": r"전고체|고체전해질|solid[- ]state|sulfide|황화물",
         "robot_battery": r"휴머노이드.*배터리|배터리.*휴머노이드|로봇.*배터리|배터리.*로봇",
+        "highnickel": r"하이니켈|high[- ]nickel|삼원계|NCM|NCA",
         "2027_mass": r"2027.*양산|2027.*생산|양산.*2027",
         "k1_sale": r"AI\s*사피엔스|AI\s*Sapiens|\bK1\b",
         "nov_sale": r"11월.*판매|판매.*11월|초기.*완판|완판",
@@ -173,6 +231,8 @@ def _entity_features(text: str) -> set[str]:
     checks = {
         "robotis": r"로보티즈|ROBOTIS|DYNAMIXEL|다이나믹셀",
         "ecopro": r"에코프로|EcoPro",
+        "skon": r"SK온|SK On",
+        "yuil": r"유일로보틱스|Yuil Robotics",
         "wonik": r"원익홀딩스|원익로보틱스|WONIK",
         "tesla": r"Tesla|테슬라|特斯拉",
         "byd": r"BYD|비야디|比亚迪|PaXini|파시니|帕西尼",
@@ -190,13 +250,23 @@ def _same_event(a: dict, b: dict) -> bool:
         return False
     if ta == tb:
         return True
-    if SequenceMatcher(None, ta, tb).ratio() >= 0.72:
+    if SequenceMatcher(None, ta, tb).ratio() >= 0.69:
         return True
 
     text_a = f"{a.get('title','')} {a.get('description','')}"
     text_b = f"{b.get('title','')} {b.get('description','')}"
     entities = _entity_features(text_a) & _entity_features(text_b)
     events = _event_features(text_a) & _event_features(text_b)
+
+    # Strong same-event signatures that commonly appear as differently worded rewrites.
+    if "blockdeal" in events and "robotis" in entities:
+        return True
+    if a.get("group") == "battery" and "ecopro" in entities and "solidstate" in events:
+        return True
+    if a.get("group") == "robotis" and "microduck" in events and "15000" in events:
+        return True
+    if a.get("group") == "robotis" and "k1_sale" in events and "nov_sale" in events:
+        return True
     if entities and len(events) >= 2:
         return True
     return False
@@ -216,8 +286,7 @@ def _source_rank(item: dict) -> tuple[int, int, str]:
 def _dedupe_events(candidates: list[dict]) -> list[dict]:
     """Collapse syndicated/rewritten copies of one underlying event.
 
-    When copies exist, prefer official/primary, then trusted media, then the
-    highest-scoring/freshest item.
+    Prefer official/primary, then trusted media, then highest-scoring/freshest.
     """
     clusters: list[list[dict]] = []
     for item in candidates:
@@ -259,7 +328,6 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
     return chosen
 
 
-# Monkey-patch extension hooks used by base.main().
 base.key = key
 base.clean_title = clean_title
 base.topic_group = topic_group
