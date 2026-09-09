@@ -62,7 +62,7 @@ jobs:
           PY
 
       - name: Scan physical AI / battery / grid / ROBOTIS-NVIDIA sources
-        run: python scripts/physical_ai_watch_robotis_nvidia.py
+        run: python scripts/physical_ai_watch_korean_display.py
 
       - name: Send Telegram only on meaningful change
         if: success()
