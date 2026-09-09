@@ -23,15 +23,20 @@
     "fingerprint": "04196b8982422ab8960cb71e8b90e5e119218c10edf984641759768f22f0afde"
   },
   "productivity": {
-    "key": "2026 Q2",
+    "source_kind": "FRED-대체",
+    "key": "2026년 2분기",
     "date": "2026-04-01",
     "productivity_qoq_saar": 1.4223104900269457,
     "ulc_qoq_saar": 1.1666942779722245,
     "productivity_yoy": 2.2421944882225153,
     "ulc_yoy": 1.3977263433385234,
+    "labor_share": null,
+    "manufacturing_productivity": null,
+    "manufacturing_ulc": null,
+    "cycle_productivity_ann": null,
+    "real_hourly_comp": null,
     "regime": "혼합",
-    "url": "https://fred.stlouisfed.org/series/OPHNFB",
-    "ulc_url": "https://fred.stlouisfed.org/series/ULCNFB"
+    "url": "https://fred.stlouisfed.org/series/OPHNFB"
   },
-  "updated_at_utc": "2026-09-04T21:35:57.650258+00:00"
+  "updated_at_utc": "2026-09-09T13:21:33.355066+00:00"
 }
