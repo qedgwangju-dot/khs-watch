@@ -7,6 +7,7 @@ on:
       - "scripts/data_center_growth_watch.py"
       - "scripts/pjm_data_center_policy_watch.py"
       - "scripts/clean_pjm_alert_html.py"
+      - "scripts/guard_pjm_baseline_source.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -61,38 +62,8 @@ jobs:
 
       - name: Check PJM RBP IRAS and large-load policy
         run: |
-          # Format v5: native Telegram HTML + grouped Korean clickable headlines.
           sed -i 's/^FORMAT_VERSION = 2$/FORMAT_VERSION = 5/' scripts/pjm_data_center_policy_watch.py
-
-          # If the PJM page is temporarily unparsable, preserve the last official
-          # baseline instead of emitting blank numbers. The hard fallback below is
-          # the PJM official July 31, 2026 baseline and is used only when both the
-          # live parse and saved baseline are unavailable.
-          python - <<'PY'
-          from pathlib import Path
-
-          p = Path("scripts/pjm_data_center_policy_watch.py")
-          s = p.read_text(encoding="utf-8")
-          old = "baseline = parse_baseline()\nitems = []"
-          new = '''baseline = parse_baseline()
-_saved_baseline = old.get("baseline", {})
-_verified_fallback = {
-    "target_mw": 6831,
-    "max_price_usd_mw_day": 555.0,
-    "max_years": 15,
-    "planned_start": "2026-09-30",
-}
-for _k in ("target_mw", "max_price_usd_mw_day", "max_years", "planned_start"):
-    if baseline.get(_k) is None:
-        baseline[_k] = _saved_baseline.get(_k)
-    if baseline.get(_k) is None:
-        baseline[_k] = _verified_fallback[_k]
-items = []'''
-          if old not in s:
-              raise SystemExit("PJM baseline guard insertion point not found")
-          p.write_text(s.replace(old, new, 1), encoding="utf-8")
-          PY
-
+          python scripts/guard_pjm_baseline_source.py
           python scripts/pjm_data_center_policy_watch.py
 
       - name: Group and translate PJM source rows
