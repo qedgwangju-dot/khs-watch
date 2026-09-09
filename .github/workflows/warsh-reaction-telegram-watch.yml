@@ -23,6 +23,8 @@ on:
       - 'scripts/warsh_pce_trend_watch.py'
       - 'scripts/warsh_curve_ownership_watch.py'
       - 'scripts/warsh_credibility_pretightening_watch_v2.py'
+      - 'scripts/warsh_energy_shock_watch.py'
+      - 'scripts/warsh_ai_rotation_watch.py'
       - '.github/workflows/warsh-reaction-telegram-watch.yml'
 
 permissions:
@@ -63,6 +65,10 @@ jobs:
           WARSH_PRETIGHTEN_LOOKBACK: '5'
           WARSH_CREDIBILITY_STEEPEN_BP: '8'
           WARSH_CREDIBILITY_LONG_END_BP: '5'
+          WARSH_ENERGY_BRENT_USD: '100'
+          WARSH_ENERGY_20D_PCT: '15'
+          WARSH_ROTATION_3D_PP: '3'
+          WARSH_ROTATION_5D_PP: '5'
           PYTHONPATH: scripts
         run: |
           python - <<'PY'
@@ -80,6 +86,8 @@ jobs:
           python scripts/warsh_pce_trend_watch.py
           python scripts/warsh_curve_ownership_watch.py
           python scripts/warsh_credibility_pretightening_watch_v2.py
+          python scripts/warsh_energy_shock_watch.py
+          python scripts/warsh_ai_rotation_watch.py
 
       - name: Ignore timestamp-only state changes
         run: |
@@ -94,6 +102,8 @@ jobs:
               pathlib.Path('data/warsh_pce_trend_watch_state.json'),
               pathlib.Path('data/warsh_curve_ownership_watch_state.json'),
               pathlib.Path('data/warsh_credibility_pretightening_watch_state.json'),
+              pathlib.Path('data/warsh_energy_shock_watch_state.json'),
+              pathlib.Path('data/warsh_ai_rotation_watch_state.json'),
           ]
           for path in paths:
               if not path.exists():
@@ -112,14 +122,14 @@ jobs:
 
       - name: Persist deduplication baselines
         run: |
-          CHANGED="$(git status --porcelain -- data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json)"
+          CHANGED="$(git status --porcelain -- data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json)"
           if [ -z "$CHANGED" ]; then
             echo 'No meaningful state change to commit.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json
+          git add data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json
           git commit -m 'Update Warsh reaction watch state'
           git pull --rebase origin main
           git push
