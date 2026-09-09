@@ -1,10 +1,10 @@
 {
-  "risk_level": 2,
-  "risk_label": "엔캐리 청산 경계 강화",
-  "updated_at_kst": "2026-09-09T09:15:46+09:00",
+  "risk_level": 0,
+  "risk_label": "관찰",
+  "updated_at_kst": "2026-09-09T13:46:31+09:00",
   "signals": {
     "jgb10_3": false,
-    "jgb_curve_up": true,
+    "jgb_curve_up": false,
     "us_jp_2y_spread_narrow": false,
     "us_2y_down": false,
     "yen_surge": true,
