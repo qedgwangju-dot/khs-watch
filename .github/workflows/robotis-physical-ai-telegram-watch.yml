@@ -1,0 +1,131 @@
+name: ROBOTIS Physical AI Telegram Watch
+
+on:
+  schedule:
+    - cron: "11,41 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_summary:
+        description: "Send current high-signal summary even if already seen"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: robotis-physical-ai-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.ROBOTIS_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.DATA_CENTER_TELEGRAM_CHAT_ID }}
+      FORCE_SUMMARY: ${{ github.event_name == 'workflow_dispatch' && inputs.force_summary && '1' || '0' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate Telegram route
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+          chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+          if not token:
+              raise SystemExit("ROBOTIS_TELEGRAM_BOT_TOKEN is missing")
+          if not chat:
+              raise SystemExit("DATA_CENTER_TELEGRAM_CHAT_ID is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as r:
+              data = json.loads(r.read().decode())
+          if not data.get("ok"):
+              raise SystemExit("Telegram getMe failed")
+          username = data["result"].get("username", "")
+          expected = "khs8879008879000088790000_bot"
+          if username.lower() != expected.lower():
+              raise SystemExit(f"Wrong Telegram bot: @{username}; expected @{expected}")
+          print(f"Telegram route OK: @{username}")
+          PY
+
+      - name: Scan ROBOTIS / physical AI sources
+        run: python scripts/robotis_physical_ai_watch.py
+
+      - name: Send Telegram only on meaningful change
+        if: success()
+        run: |
+          if [ -s out/robotis_physical_ai_watch_telegram.txt ]; then
+            python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat = os.environ["TELEGRAM_CHAT_ID"].strip()
+          text = pathlib.Path("out/robotis_physical_ai_watch_telegram.txt").read_text(encoding="utf-8").strip()
+
+          # Telegram text limit is 4096 chars. Split conservatively on line boundaries.
+          chunks, cur = [], ""
+          for line in text.splitlines(True):
+              if cur and len(cur) + len(line) > 3500:
+                  chunks.append(cur.rstrip())
+                  cur = ""
+              cur += line
+          if cur.strip():
+              chunks.append(cur.rstrip())
+
+          for chunk in chunks:
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat,
+                  "text": chunk,
+                  "disable_web_page_preview": "true",
+              }).encode()
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  data = json.loads(r.read().decode())
+              if not data.get("ok"):
+                  raise SystemExit("Telegram send failed")
+              print(f"Telegram sent: message_id={data['result']['message_id']}")
+          PY
+          else
+            echo "No meaningful new ROBOTIS/physical-AI change; Telegram silent."
+          fi
+
+      - name: Save dedup state after successful route/send
+        if: success()
+        run: |
+          mkdir -p data
+          cp out/robotis_physical_ai_watch_pending_state.json data/robotis_physical_ai_watch_state.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/robotis_physical_ai_watch_state.json
+          if git diff --cached --quiet; then
+            echo "State unchanged."
+          else
+            git commit -m "Update ROBOTIS physical AI watch state [skip ci]"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Upload watcher status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: robotis-physical-ai-${{ github.run_id }}
+          path: |
+            out/robotis_physical_ai_watch_status.md
+            out/robotis_physical_ai_watch_telegram.txt
+            out/robotis_physical_ai_watch_pending_state.json
+          if-no-files-found: ignore
+          retention-days: 7
