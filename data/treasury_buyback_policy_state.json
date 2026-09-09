@@ -1,9 +1,9 @@
 {
-  "last_checked_kst": "2026-08-31T23:33:20+09:00",
-  "schedule_sha256": "0234d6382b124a19da48ddb4a34b6ce1fa7d3eb3459a272c81b467ae8b578f59",
+  "last_checked_kst": "2026-09-10T07:31:35+09:00",
+  "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
-    "10Y to 20Y": 2.0,
-    "20Y to 30Y": 2.0
+    "10Y to 20Y": 6.0,
+    "20Y to 30Y": 4.0
   },
   "seen_source_ids": [],
   "upgrade_note": "one-time resend armed for upgraded Bessent policy-boundary interpretation"
