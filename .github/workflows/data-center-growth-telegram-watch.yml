@@ -6,7 +6,6 @@ on:
       - ".github/workflows/data-center-growth-telegram-watch.yml"
       - "scripts/data_center_growth_watch.py"
       - "scripts/pjm_data_center_policy_watch.py"
-      - "scripts/format_telegram_alerts.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -60,10 +59,12 @@ jobs:
         run: python scripts/data_center_growth_watch.py
 
       - name: Check PJM RBP IRAS and large-load policy
-        run: python scripts/pjm_data_center_policy_watch.py
-
-      - name: Format Telegram alerts for readability
-        run: python scripts/format_telegram_alerts.py
+        run: |
+          # Format v3: the PJM watcher already produces Telegram-safe HTML.
+          # Do not run it through a second formatter, which would escape <b>/<a>
+          # and expose raw markup to the user.
+          sed -i 's/^FORMAT_VERSION = 2$/FORMAT_VERSION = 3/' scripts/pjm_data_center_policy_watch.py
+          python scripts/pjm_data_center_policy_watch.py
 
       - name: Send Telegram only on meaningful changes
         run: |
@@ -86,15 +87,18 @@ jobs:
               payload = {
                   "chat_id": chat,
                   "text": text,
-                  "parse_mode": "HTML",
               }
 
               if p.name == "pjm_data_center_policy_alert.txt":
+                  # PJM watcher emits native Telegram-safe HTML. This makes bold
+                  # values and inline '원문' links render normally instead of
+                  # showing literal <b>/<a> tags.
+                  payload["parse_mode"] = "HTML"
                   payload["link_preview_options"] = {
                       "is_disabled": False,
                       "url": "https://www.pjm.com/committees-and-groups/cifp-rbp",
                       "prefer_large_media": True,
-                      "show_above_text": True,
+                      "show_above_text": False,
                   }
                   payload["reply_markup"] = {
                       "inline_keyboard": [
@@ -117,6 +121,7 @@ jobs:
                       ]
                   }
               else:
+                  # Census alert is plain text, so do not apply HTML parsing.
                   payload["link_preview_options"] = {"is_disabled": True}
 
               r = requests.post(
