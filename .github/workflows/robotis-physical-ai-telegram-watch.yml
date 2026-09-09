@@ -1,6 +1,9 @@
 name: ROBOTIS Physical AI Telegram Watch
 
 on:
+  push:
+    paths:
+      - ".github/robotis-physical-ai-trigger.txt"
   schedule:
     - cron: "11,41 * * * *"
   workflow_dispatch:
@@ -25,7 +28,7 @@ jobs:
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.ROBOTIS_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.DATA_CENTER_TELEGRAM_CHAT_ID }}
-      FORCE_SUMMARY: ${{ github.event_name == 'workflow_dispatch' && inputs.force_summary && '1' || '0' }}
+      FORCE_SUMMARY: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.force_summary) && '1' || '0' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -71,7 +74,6 @@ jobs:
           chat = os.environ["TELEGRAM_CHAT_ID"].strip()
           text = pathlib.Path("out/robotis_physical_ai_watch_telegram.txt").read_text(encoding="utf-8").strip()
 
-          # Telegram text limit is 4096 chars. Split conservatively on line boundaries.
           chunks, cur = [], ""
           for line in text.splitlines(True):
               if cur and len(cur) + len(line) > 3500:
