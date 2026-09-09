@@ -61,11 +61,11 @@ jobs:
 
       - name: Check PJM RBP IRAS and large-load policy
         run: |
-          # Format v4: native Telegram HTML + grouped source presentation.
-          sed -i 's/^FORMAT_VERSION = 2$/FORMAT_VERSION = 4/' scripts/pjm_data_center_policy_watch.py
+          # Format v5: native Telegram HTML + grouped Korean clickable headlines.
+          sed -i 's/^FORMAT_VERSION = 2$/FORMAT_VERSION = 5/' scripts/pjm_data_center_policy_watch.py
           python scripts/pjm_data_center_policy_watch.py
 
-      - name: Group PJM source rows for readability
+      - name: Group and translate PJM source rows
         run: python scripts/clean_pjm_alert_html.py
 
       - name: Send Telegram only on meaningful changes
@@ -90,9 +90,6 @@ jobs:
 
               if p.name == "pjm_data_center_policy_alert.txt":
                   payload["parse_mode"] = "HTML"
-                  # Use the official PJM Inside Lines article as the representative
-                  # preview card because it has a readable title/summary and the
-                  # image/card itself is tappable to the source.
                   payload["link_preview_options"] = {
                       "is_disabled": False,
                       "url": "https://insidelines.pjm.com/pjm-reliability-backstop-proposal-outlines-steps-to-secure-new-supply-and-maintain-reliability/",
