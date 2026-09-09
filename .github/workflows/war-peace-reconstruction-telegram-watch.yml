@@ -58,12 +58,13 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch_counterstrike.py
           python -m py_compile scripts/war_peace_reconstruction_watch_barrage_energy.py
           python -m py_compile scripts/war_peace_reconstruction_watch_bodycolor.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_bodycolor_parallel.py
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch_bodycolor.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_bodycolor_parallel.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch_bodycolor.py
+            python scripts/war_peace_reconstruction_watch_bodycolor_parallel.py
           fi
       - name: Publish status summary
         if: always()
@@ -95,7 +96,7 @@ jobs:
           PY
       - name: Finalize state after confirmed delivery
         if: success() && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch_bodycolor.py --finalize
+        run: python scripts/war_peace_reconstruction_watch_bodycolor_parallel.py --finalize
       - name: Commit confirmed alert state
         if: success() && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
         run: |
