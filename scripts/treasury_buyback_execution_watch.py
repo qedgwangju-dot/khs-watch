@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from datetime import date
 
 import treasury_buyback_media_watch_v2 as watcher
 
@@ -16,9 +17,11 @@ _original_digest = watcher.digest
 _original_load_state = watcher.load_state
 
 # A format bump must not create a Telegram alert by itself in execution-only mode.
-watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 8)
+watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 9)
 BASELINE_LINK = watcher.BUYBACK_RESULTS_PAGE
 MIGRATION_KEY = "execution_results_dedupe_v1"
+SEP9_BUYBACK_REUTERS = "https://www.reuters.com/world/us-treasury-buy-up-6-billion-sept-10-buyback-operation-2026-09-09/"
+SEP9_MARKET_REUTERS = "https://www.reuters.com/world/china/global-markets-global-markets-2026-09-09/"
 
 
 def _stable_results_digest(value: str) -> str:
@@ -99,6 +102,30 @@ def _fmt_usd_krw(usd: float | None, fx: float) -> str:
     return f"${usd:,.0f}({_fmt_krw_from_usd(usd, fx)})"
 
 
+def _sep10_market_context(maximum: float | None) -> list[str]:
+    """Event-specific baseline for the first $6B 10Y-20Y operation only.
+
+    Do not recycle this market reaction into later buyback operations. The date guard
+    keeps the block tied to the Sep. 10, 2026 operation/result window.
+    """
+    if maximum is None:
+        return []
+    today = date.today()
+    if not (5_500_000_000 <= float(maximum) <= 6_500_000_000):
+        return []
+    if today < date(2026, 9, 10) or today > date(2026, 9, 12):
+        return []
+    return [
+        "",
+        "<b>발표 뒤 시장 기준선</b>",
+        "• 9월 9일 최대 60억달러 공지 뒤 10년물은 장중 4.8528%까지 상승해 2023년 11월 이후 최고치를 기록했습니다.",
+        "• 20년물은 약 5.314%, 30년물은 약 5.307%까지 올라 60억달러가 일부 시장 기대(80억~100억달러)의 하단이라는 실망이 먼저 반영됐습니다.",
+        "• 다만 같은 날 390억달러 10년물 입찰은 High Yield 4.834%, Bid-to-Cover 2.71로 강했고 이후 금리는 고점에서 일부 되돌렸습니다. 따라서 ‘바이백 발표=완전 실패’로 단정하지 않습니다.",
+        "• 실제 60억달러 운영은 9월 10일 13:40~14:00 ET(한국시간 9월 11일 02:40~03:00)입니다. <b>60억달러는 사전 상한이고, 아래 실제 매입액이 집행 결과입니다.</b>",
+        f'<a href="{SEP9_BUYBACK_REUTERS}">60억달러 바이백 공지 검증</a> · <a href="{SEP9_MARKET_REUTERS}">발표 뒤 시장 반응</a>',
+    ]
+
+
 def build_execution_alert(
     tga_item: dict | None,
     vigilante_item: dict | None,
@@ -132,7 +159,14 @@ def build_execution_alert(
     if multiple is not None:
         lines.append(f"• 초과 제시배수: {float(multiple):.2f}배")
 
+    lines.extend(_sep10_market_context(float(maximum) if maximum is not None else None))
+
     lines += [
+        "",
+        "<b>판정 기준</b>",
+        "• 상한 소진율이 높고 초과 제시배수가 높으면 장기 비지표물의 매도 수요·딜러 재고 부담이 컸다는 신호입니다.",
+        "• 반대로 상한을 크게 늘렸는데도 제시액이 약하면 유동성 지원 수요 자체가 약한 것으로 봅니다.",
+        "• 최종 효과는 집행 직후 10·20·30년 금리와 다음 20·30년 신규 입찰의 꼬리·간접낙찰·딜러 인수까지 함께 확인합니다.",
         "",
         "<b>중복 제거 규칙</b>",
         "• 바이백 확대·축소 발표와 잠정 일정 변경 → 별도 ‘정책’ 감시가 담당",
