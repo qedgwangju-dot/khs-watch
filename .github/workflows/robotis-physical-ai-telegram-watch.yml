@@ -62,7 +62,7 @@ jobs:
           PY
 
       - name: Scan physical AI / robotics supply chain sources
-        run: python scripts/physical_ai_watch_readable.py
+        run: python scripts/physical_ai_watch_expanded.py
 
       - name: Send Telegram only on meaningful change
         if: success()
@@ -74,7 +74,6 @@ jobs:
           chat = os.environ["TELEGRAM_CHAT_ID"].strip()
           text = pathlib.Path("out/robotis_physical_ai_watch_telegram.txt").read_text(encoding="utf-8").strip()
 
-          # Split only on complete line boundaries so HTML tags remain intact.
           chunks, cur = [], ""
           for line in text.splitlines(True):
               if cur and len(cur) + len(line) > 3500:
