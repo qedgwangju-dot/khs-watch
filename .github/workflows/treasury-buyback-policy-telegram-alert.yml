@@ -47,8 +47,54 @@ jobs:
         run: python scripts/treasury_buyback_policy_watch.py
 
       - name: Upgrade user-facing Treasury interpretation
+        id: treasury_interpretation
         if: always()
+        continue-on-error: true
         run: python scripts/treasury_alert_korean_guard.py
+
+      - name: Preserve Korean source title if market verifier is unavailable
+        if: always() && hashFiles('out/treasury_buyback_policy_alert.html') != ''
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import json
+          import pathlib
+          import re
+          from treasury_alert_korean_guard import translate_title
+
+          alert_path = pathlib.Path("out/treasury_buyback_policy_alert.html")
+          detail_path = pathlib.Path("out/treasury_buyback_policy_detail.json")
+          if not alert_path.exists() or not detail_path.exists():
+              raise SystemExit(0)
+
+          try:
+              detail = json.loads(detail_path.read_text(encoding="utf-8"))
+          except Exception:
+              raise SystemExit(0)
+
+          source = detail.get("source") or {}
+          original = str(source.get("title") or "").strip()
+          if not original:
+              raise SystemExit(0)
+
+          translated = translate_title(original)
+          text = alert_path.read_text(encoding="utf-8")
+          text = text.replace(
+              f"• 공식 출처: <b>{original}</b>",
+              f"• 공식 출처: <b>{translated}</b>",
+          )
+          pattern = re.compile(r"(• 공식 출처: <b>)([^<]+)(</b>)")
+          text = pattern.sub(
+              lambda match: f"{match.group(1)}{translate_title(match.group(2).strip())}{match.group(3)}",
+              text,
+              count=1,
+          )
+          alert_path.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Note market-verifier fallback
+        if: always() && steps.treasury_interpretation.outcome == 'failure'
+        run: |
+          echo "⚠️ FRED 기반 보조 금리 검증 실패 — 공식 미 재무부 정책 감시·한국어 알림·상태 갱신은 계속 진행합니다." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publish status
         if: always()
