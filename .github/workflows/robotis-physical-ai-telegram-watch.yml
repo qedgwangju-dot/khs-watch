@@ -62,7 +62,7 @@ jobs:
           PY
 
       - name: Scan physical AI / robotics supply chain sources
-        run: python scripts/physical_ai_watch_expanded_safe.py
+        run: python scripts/physical_ai_watch_ess_battery.py
 
       - name: Send Telegram only on meaningful change
         if: success()
