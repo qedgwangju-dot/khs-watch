@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import re
 
 import war_peace_reconstruction_watch_bodycolor_strict as prev
 
@@ -18,14 +19,18 @@ THEATER_TERMS = (
     '사우디','후티','예멘','홍해','바브엘만데브','바브 알만데브',
 )
 
-WAR_PEACE_ACTIONS = (
-    'ceasefire','truce','peace talks','peace agreement','peace deal','negotiations','talks resume','summit','trilateral',
+SPECIFIC_ACTIONS = (
+    'ceasefire','truce','peace talks','peace agreement','peace deal','negotiations','talks resume','summit','trilateral talks',
     'end the war','ending the war','reconstruction','rebuilding','reconstruction fund','rebuild',
-    'attack','attacks','strike','strikes','airstrike','airstrikes','missile','missiles','drone','drones','shelling',
-    'bombardment','blockade','invasion','war','fighting','clashes','killed','wounded','displaced','evacuated',
+    'airstrike','airstrikes','missile attack','missile strike','missiles launched','drone attack','drone strike','shelling',
+    'bombardment','blockade','invasion','military attack','military operation','retaliatory attack','retaliatory strike',
+    'fighting intensified','clashes','killed','wounded','displaced','evacuated',
     '휴전','정전','종전','평화협상','평화 협상','협상 재개','3자 협상','3자 회담','정상회담','재건','복구',
-    '공격','공습','폭격','포격','피격','미사일','드론','무인기','봉쇄','전면전','교전','충돌','사망','부상','피란',
+    '공습','폭격','포격','피격','미사일 공격','미사일 발사','드론 공격','무인기 공격','봉쇄','전면전','교전 격화',
+    '보복 공격','보복 공습','사망','부상','피란',
 )
+
+GENERIC_CONFLICT_WORDS = ('war','attack','attacks','strike','strikes','fighting','conflict','공격','전쟁','충돌','교전')
 
 MARKET_LINK_ACTIONS = (
     'oil prices','crude prices','brent','wti','tanker','shipping','insurance','energy infrastructure','energy facilities',
@@ -34,7 +39,8 @@ MARKET_LINK_ACTIONS = (
 
 IRRELEVANT_TECH = (
     'openai','artificial intelligence','artificial general intelligence','agi','chatgpt','anthropic','deepmind',
-    'ai race','ai safety','ai model','인공지능','오픈ai','챗gpt','ai 경쟁','ai 안전',
+    'ai race','ai safety','ai model','cyberattack','cyber attack','cybersecurity',
+    '인공지능','오픈ai','챗gpt','ai 경쟁','ai 안전','사이버공격','사이버 공격','사이버보안',
 )
 
 
@@ -44,20 +50,35 @@ def _raw_text(row):
     ]).lower()
 
 
+def _contains_word(text, word):
+    if re.fullmatch(r'[a-z ]+', word):
+        return re.search(r'(?<![a-z])' + re.escape(word) + r'(?![a-z])', text) is not None
+    return word in text
+
+
 def is_relevant(row):
     t = _raw_text(row)
-    has_theater = any(k in t for k in THEATER_TERMS)
+    has_theater = any(_contains_word(t, k) for k in THEATER_TERMS)
     if not has_theater:
         return False
 
-    has_action = any(k in t for k in WAR_PEACE_ACTIONS)
-    has_market_link = any(k in t for k in MARKET_LINK_ACTIONS)
+    has_specific_action = any(_contains_word(t, k) for k in SPECIFIC_ACTIONS)
+    has_market_link = any(_contains_word(t, k) for k in MARKET_LINK_ACTIONS)
+    tech_context = any(_contains_word(t, k) for k in IRRELEVANT_TECH)
 
-    # 기술·AI 기사는 지정학 단어가 설명에 우연히 섞여도, 실제 전쟁/휴전/재건 행동이 없으면 제외한다.
-    if any(k in t for k in IRRELEVANT_TECH) and not has_action and not has_market_link:
+    # AI·기술 기사에서는 Russia/Ukraine 같은 단어가 설명에 우연히 있어도,
+    # 실제 군사/휴전/재건 행동이나 중동 공급망 시장연결이 없으면 무조건 제외한다.
+    if tech_context and not has_specific_action and not has_market_link:
         return False
 
-    return has_action or has_market_link
+    if has_specific_action or has_market_link:
+        return True
+
+    # 일반 war/attack 같은 단어는 단어 경계로만 보되, 기술 문맥에서는 절대 통과시키지 않는다.
+    if not tech_context and any(_contains_word(t, k) for k in GENERIC_CONFLICT_WORDS):
+        return True
+
+    return False
 
 
 def score_item(row, now):
