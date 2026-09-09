@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """Extension layer for the physical-AI Telegram watcher.
 
-Adds two high-signal lanes without duplicating the base watcher:
+Adds high-signal lanes and alert-quality guards without duplicating the base watcher:
 1) Microduck / Reachy Mini sales milestones -> implied ROBOTIS actuator demand
 2) WONIK Holdings / WONIK Robotics commercialization, policy and customer expansion
+3) Cross-publisher event deduplication and repeated-label cleanup
 """
 from __future__ import annotations
 
+import hashlib
 import re
 import sys
+from difflib import SequenceMatcher
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -38,6 +41,29 @@ _orig_tag_for = base.tag_for
 _orig_meaning = base.meaning
 _orig_risk = base.risk
 _orig_verification = base.verification
+_orig_clean_title = base.clean_title
+
+
+def _norm_title(value: str) -> str:
+    value = re.sub(r"\s+-\s+[^-]+$", "", value or "")
+    value = value.lower()
+    value = re.sub(r"\[(?:단독|현장|fn마켓워치|리포트\s*브리핑)[^\]]*\]", " ", value, flags=re.I)
+    value = re.sub(r"[^0-9a-z가-힣一-龥]+", " ", value, flags=re.I)
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def key(item: dict) -> str:
+    """Source-independent key so an identical syndicated headline is one story."""
+    title = _norm_title(item.get("title", ""))
+    return hashlib.sha256(title.encode()).hexdigest()
+
+
+def clean_title(title: str, source: str) -> str:
+    """Avoid output such as '로보티즈 로보티즈 ...'."""
+    title = _orig_clean_title(title, source)
+    for label in ("로보티즈", "원익로보틱스", "배터리", "테슬라옵티머스", "촉각·로봇데이터"):
+        title = re.sub(rf"^{re.escape(label)}(?:\s+|\s*[,·:：\-–—]\s*)", "", title, count=1, flags=re.I)
+    return title.strip()
 
 
 def topic_group(text: str) -> str | None:
@@ -125,10 +151,94 @@ def verification(item: dict, group: str, text: str) -> str:
     return _orig_verification(item, group, text)
 
 
+def _event_features(text: str) -> set[str]:
+    checks = {
+        "blockdeal": r"블록딜|block deal|클럽딜",
+        "1000eok": r"1000\s*억|1,?000\s*억",
+        "solidstate": r"전고체|고체전해질|solid[- ]state|sulfide|황화물",
+        "robot_battery": r"휴머노이드.*배터리|배터리.*휴머노이드|로봇.*배터리|배터리.*로봇",
+        "2027_mass": r"2027.*양산|2027.*생산|양산.*2027",
+        "k1_sale": r"AI\s*사피엔스|AI\s*Sapiens|\bK1\b",
+        "nov_sale": r"11월.*판매|판매.*11월|초기.*완판|완판",
+        "microduck": r"Microduck|마이크로덕",
+        "15000": r"15,?000|1만\s*5000|1\.5만",
+        "wonik_policy": r"원익.*(?:정책|상용화)|(?:정책|상용화).*원익",
+        "optimus_order": r"Optimus|옵티머스|擎天柱",
+        "order": r"발주|주문|order|订单",
+    }
+    return {name for name, pat in checks.items() if re.search(pat, text, re.I)}
+
+
+def _entity_features(text: str) -> set[str]:
+    checks = {
+        "robotis": r"로보티즈|ROBOTIS|DYNAMIXEL|다이나믹셀",
+        "ecopro": r"에코프로|EcoPro",
+        "wonik": r"원익홀딩스|원익로보틱스|WONIK",
+        "tesla": r"Tesla|테슬라|特斯拉",
+        "byd": r"BYD|비야디|比亚迪|PaXini|파시니|帕西尼",
+    }
+    return {name for name, pat in checks.items() if re.search(pat, text, re.I)}
+
+
+def _same_event(a: dict, b: dict) -> bool:
+    if a.get("group") != b.get("group"):
+        return False
+
+    ta = _norm_title(a.get("title", ""))
+    tb = _norm_title(b.get("title", ""))
+    if not ta or not tb:
+        return False
+    if ta == tb:
+        return True
+    if SequenceMatcher(None, ta, tb).ratio() >= 0.72:
+        return True
+
+    text_a = f"{a.get('title','')} {a.get('description','')}"
+    text_b = f"{b.get('title','')} {b.get('description','')}"
+    entities = _entity_features(text_a) & _entity_features(text_b)
+    events = _event_features(text_a) & _event_features(text_b)
+    if entities and len(events) >= 2:
+        return True
+    return False
+
+
+def _source_rank(item: dict) -> tuple[int, int, str]:
+    source = item.get("source") or ""
+    if source in base.OFFICIAL_OR_PRIMARY:
+        tier = 3
+    elif source in base.TRUSTED:
+        tier = 2
+    else:
+        tier = 1
+    return (tier, int(item.get("score", 0)), item.get("published") or "")
+
+
+def _dedupe_events(candidates: list[dict]) -> list[dict]:
+    """Collapse syndicated/rewritten copies of one underlying event.
+
+    When copies exist, prefer official/primary, then trusted media, then the
+    highest-scoring/freshest item.
+    """
+    clusters: list[list[dict]] = []
+    for item in candidates:
+        for cluster in clusters:
+            if _same_event(item, cluster[0]):
+                cluster.append(item)
+                break
+        else:
+            clusters.append([item])
+
+    reps = [max(cluster, key=_source_rank) for cluster in clusters]
+    reps.sort(key=lambda x: (x.get("score", 0), x.get("published") or ""), reverse=True)
+    return reps
+
+
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     candidates = items if force else [x for x in items if x["key"] not in seen]
+    candidates = _dedupe_events(candidates)
     if not candidates:
         return []
+
     chosen: list[dict] = []
     used: set[str] = set()
     for group in ["tesla", "battery", "robotis", "wonik", "byd_paxini"]:
@@ -150,6 +260,8 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
 
 
 # Monkey-patch extension hooks used by base.main().
+base.key = key
+base.clean_title = clean_title
 base.topic_group = topic_group
 base.score = score
 base.category = category
