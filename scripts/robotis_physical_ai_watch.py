@@ -266,10 +266,10 @@ def category(text: str, group: str) -> str:
 
 def tag_for(group: str) -> str:
     return {
-        "robotis": "#로보티즈",
-        "battery": "#배터리",
-        "tesla": "#테슬라옵티머스",
-        "byd_paxini": "#촉각·로봇데이터",
+        "robotis": "로보티즈",
+        "battery": "배터리",
+        "tesla": "테슬라옵티머스",
+        "byd_paxini": "촉각·로봇데이터",
     }[group]
 
 
