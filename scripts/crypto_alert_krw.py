@@ -24,6 +24,7 @@ ECOS_ITEM_CODE = "0000001"
 ECOS_CYCLE = "D"
 BOK_MARKET_LIST = "https://www.bok.or.kr/portal/main/contents.do?menuNo=200366"
 YAHOO_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/KRW=X"
+FARSIDE_BTC_ETF_URL = "https://farside.co.uk/bitcoin-etf-flow-all-data/"
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 KST = ZoneInfo("Asia/Seoul")
 
@@ -248,6 +249,65 @@ def format_krw_from_usd_m(value_usd_m: float, rate: float) -> str:
     return f"약 {sign}{body}"
 
 
+def parse_table_number(text: str) -> float | None:
+    raw = (text or "").strip().replace("$", "").replace(",", "")
+    if not raw or raw in {"-", "—", "N/A", "n/a"}:
+        return None
+    negative = raw.startswith("(") and raw.endswith(")")
+    if negative:
+        raw = raw[1:-1]
+    m = re.search(r"[-+]?\d+(?:\.\d+)?", raw)
+    if not m:
+        return None
+    value = float(m.group(0))
+    return -abs(value) if negative else value
+
+
+def farside_cumulative_total_usd_m() -> float | None:
+    """Read Farside's all-period Total row and verify it against fund totals."""
+    html = fetch(FARSIDE_BTC_ETF_URL).decode("utf-8", errors="replace")
+    soup = BeautifulSoup(html, "html.parser")
+    for tr in soup.find_all("tr"):
+        cells = [" ".join(td.get_text(" ", strip=True).split()) for td in tr.find_all(["td", "th"])]
+        if len(cells) < 3 or cells[0].strip().lower() != "total":
+            continue
+        total = parse_table_number(cells[-1])
+        fund_values = [parse_table_number(x) for x in cells[1:-1]]
+        recomputed = sum(v for v in fund_values if v is not None)
+        if total is None or not fund_values:
+            return None
+        if abs(total - recomputed) > 2.0:
+            return None
+        return total
+    return None
+
+
+def format_usd_b_from_usd_m(value_usd_m: float) -> str:
+    sign = "+" if value_usd_m > 0 else "-" if value_usd_m < 0 else ""
+    return f"{sign}${abs(value_usd_m) / 1000.0:,.2f}B"
+
+
+def cumulative_flow_block(rate: float) -> str | None:
+    try:
+        cumulative = farside_cumulative_total_usd_m()
+    except Exception:
+        return None
+    if cumulative is None:
+        return None
+    try:
+        state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        state = {}
+    latest_date = str(((state.get("btc_etf") or {}).get("date") or "")).strip()
+    date_text = f" · 최신 유효일 {latest_date}" if latest_date else ""
+    direction = "누적 순유입" if cumulative >= 0 else "누적 순유출"
+    return (
+        f"<b>BTC 현물 ETF {direction}</b>\n"
+        f"<b>{format_usd_b_from_usd_m(cumulative)} · {format_krw_from_usd_m(cumulative, rate)}</b>\n"
+        f"• Farside 전체 집계기간 기준{date_text}"
+    )
+
+
 def enrich_text(text: str, fx: dict) -> str:
     rate = float(fx["rate"])
     pattern = re.compile(r"(?P<amount>[+-]?\d[\d,]*(?:\.\d+)?)백만달러(?!\s*\(약)")
@@ -258,6 +318,12 @@ def enrich_text(text: str, fx: dict) -> str:
         return f"{raw}백만달러 ({format_krw_from_usd_m(value, rate)})"
 
     enriched = pattern.sub(repl, text)
+
+    cumulative_block = cumulative_flow_block(rate)
+    treasury_marker = "\n미 국채 —"
+    if cumulative_block and treasury_marker in enriched:
+        enriched = enriched.replace(treasury_marker, f"\n\n{cumulative_block}\n{treasury_marker.lstrip()}", 1)
+
     now = dt.datetime.now(KST).isoformat(timespec="seconds")
     requested = fx.get("requested_date") or fx["date"]
     date_note = fx["date"] if fx["date"] == requested else f"{fx['date']} · 요청일 {requested} 직전 공식값"
