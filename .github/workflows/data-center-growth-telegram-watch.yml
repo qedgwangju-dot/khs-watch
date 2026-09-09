@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/data-center-growth-telegram-watch.yml"
       - "scripts/data_center_growth_watch.py"
+      - "scripts/pjm_data_center_policy_watch.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -19,7 +20,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.DATA_CENTER_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.DATA_CENTER_TELEGRAM_CHAT_ID }}
@@ -35,7 +36,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check requests openpyxl
+        run: python -m pip install --disable-pip-version-check requests openpyxl beautifulsoup4
 
       - name: Validate Telegram route
         run: |
@@ -57,39 +58,51 @@ jobs:
       - name: Check official Census data center series
         run: python scripts/data_center_growth_watch.py
 
-      - name: Send Telegram only on meaningful change
+      - name: Check PJM RBP IRAS and large-load policy
+        run: python scripts/pjm_data_center_policy_watch.py
+
+      - name: Send Telegram only on meaningful changes
         run: |
-          if [ -s out/data_center_growth_alert.txt ]; then
-            python - <<'PY'
-          import os, pathlib, requests
+          python - <<'PY'
+          import os, pathlib, requests, time
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat = os.environ["TELEGRAM_CHAT_ID"].strip()
-          text = pathlib.Path("out/data_center_growth_alert.txt").read_text(encoding="utf-8").strip()
-          r = requests.post(
-              f"https://api.telegram.org/bot{token}/sendMessage",
-              json={"chat_id": chat, "text": text, "disable_web_page_preview": True},
-              timeout=30,
-          )
-          data = r.json()
-          if not r.ok or not data.get("ok"):
-              raise SystemExit(f"Telegram send failed: HTTP {r.status_code}")
-          print(f"Telegram sent: message_id={data['result']['message_id']}")
+          files = [
+              pathlib.Path("out/data_center_growth_alert.txt"),
+              pathlib.Path("out/pjm_data_center_policy_alert.txt"),
+          ]
+          sent = 0
+          for p in files:
+              if not p.exists() or not p.read_text(encoding="utf-8").strip():
+                  continue
+              text = p.read_text(encoding="utf-8").strip()
+              r = requests.post(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  json={"chat_id": chat, "text": text, "disable_web_page_preview": True},
+                  timeout=30,
+              )
+              data = r.json()
+              if not r.ok or not data.get("ok"):
+                  raise SystemExit(f"Telegram send failed for {p.name}: HTTP {r.status_code}")
+              print(f"Telegram sent {p.name}: message_id={data['result']['message_id']}")
+              sent += 1
+              time.sleep(1)
+          if not sent:
+              print("No meaningful change; Telegram silent.")
           PY
-          else
-            echo "No meaningful change; Telegram silent."
-          fi
 
-      - name: Save latest official baseline
+      - name: Save latest official baselines
         run: |
           mkdir -p data
           cp out/data_center_growth_pending_state.json data/data_center_growth_state.json
+          cp out/pjm_data_center_policy_pending_state.json data/pjm_data_center_policy_state.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/data_center_growth_state.json
+          git add data/data_center_growth_state.json data/pjm_data_center_policy_state.json
           if git diff --cached --quiet; then
             echo "State unchanged."
           else
-            git commit -m "Update data center growth watch state [skip ci]"
+            git commit -m "Update data center watch states [skip ci]"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
@@ -103,5 +116,8 @@ jobs:
             out/data_center_growth_status.md
             out/data_center_growth_alert.txt
             out/data_center_growth_pending_state.json
+            out/pjm_data_center_policy_status.md
+            out/pjm_data_center_policy_alert.txt
+            out/pjm_data_center_policy_pending_state.json
           if-no-files-found: ignore
           retention-days: 7
