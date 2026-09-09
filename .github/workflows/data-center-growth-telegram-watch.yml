@@ -10,6 +10,7 @@ on:
       - "scripts/guard_pjm_baseline_source.py"
       - "scripts/us_data_center_time_to_power_watch.py"
       - "scripts/guard_us_time_to_power_metrics_source.py"
+      - "scripts/clean_us_time_to_power_alert_html.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -76,6 +77,9 @@ jobs:
           python scripts/guard_us_time_to_power_metrics_source.py
           python scripts/us_data_center_time_to_power_watch.py
 
+      - name: Improve US time-to-power Telegram readability
+        run: python scripts/clean_us_time_to_power_alert_html.py
+
       - name: Send Telegram only on meaningful changes
         run: |
           python - <<'PY'
@@ -118,12 +122,9 @@ jobs:
                   }
               elif p.name == "us_data_center_time_to_power_alert.txt":
                   payload["parse_mode"] = "HTML"
-                  payload["link_preview_options"] = {
-                      "is_disabled": False,
-                      "url": "https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration",
-                      "prefer_large_media": True,
-                      "show_above_text": False,
-                  }
+                  # Body headlines themselves are clickable; disable a large automatic
+                  # preview card so the execution dashboard stays visible at a glance.
+                  payload["link_preview_options"] = {"is_disabled": True}
                   payload["reply_markup"] = {
                       "inline_keyboard": [
                           [
