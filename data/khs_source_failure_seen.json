@@ -14,9 +14,9 @@
     },
     "domestic_telecom|kcc.go.kr": {
       "lane": "domestic_telecom",
-      "last_seen_kst": "2026-09-10T07:19:16+09:00",
+      "last_seen_kst": "2026-09-10T08:12:45+09:00",
       "source": "Korea Communications Commission notices",
-      "streak": 1
+      "streak": 2
     }
   },
   "seen": {
@@ -98,6 +98,14 @@
       "logical_failure_count": 1,
       "sources": [
         "Korea Policy Briefing telecom policy"
+      ]
+    },
+    "409b365cdc697b91": {
+      "failure_count": 1,
+      "first_seen_kst": "2026-09-10T08:12:45+09:00",
+      "logical_failure_count": 1,
+      "sources": [
+        "Korea Communications Commission notices"
       ]
     },
     "4fd75d9b2a351b04": {
