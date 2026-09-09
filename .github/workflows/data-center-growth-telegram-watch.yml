@@ -8,6 +8,7 @@ on:
       - "scripts/pjm_data_center_policy_watch.py"
       - "scripts/clean_pjm_alert_html.py"
       - "scripts/guard_pjm_baseline_source.py"
+      - "scripts/us_data_center_time_to_power_watch.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -22,7 +23,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.DATA_CENTER_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.DATA_CENTER_TELEGRAM_CHAT_ID }}
@@ -69,6 +70,9 @@ jobs:
       - name: Group and translate PJM source rows
         run: python scripts/clean_pjm_alert_html.py
 
+      - name: Check US data center time-to-power execution
+        run: python scripts/us_data_center_time_to_power_watch.py
+
       - name: Send Telegram only on meaningful changes
         run: |
           python - <<'PY'
@@ -79,6 +83,7 @@ jobs:
           files = [
               pathlib.Path("out/data_center_growth_alert.txt"),
               pathlib.Path("out/pjm_data_center_policy_alert.txt"),
+              pathlib.Path("out/us_data_center_time_to_power_alert.txt"),
           ]
           sent = 0
 
@@ -108,6 +113,26 @@ jobs:
                           ],
                       ]
                   }
+              elif p.name == "us_data_center_time_to_power_alert.txt":
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {
+                      "is_disabled": False,
+                      "url": "https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration",
+                      "prefer_large_media": True,
+                      "show_above_text": False,
+                  }
+                  payload["reply_markup"] = {
+                      "inline_keyboard": [
+                          [
+                              {"text": "⚡ FERC 대형부하", "url": "https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration"},
+                              {"text": "🔌 MISO 대형부하", "url": "https://www.misoenergy.org/planning/large-loads---container-page/large-load-additions/"},
+                          ],
+                          [
+                              {"text": "🔋 MISO ERAS", "url": "https://www.misoenergy.org/meet-miso/media-center/2026---news-releases/miso-accelerates-new-generation-and-storage-projects-with-fifth-eras-cycle/"},
+                              {"text": "🏗️ ERCOT Batch Zero", "url": "https://www.ercot.com/services/rq/large-load-integration"},
+                          ],
+                      ]
+                  }
               else:
                   payload["link_preview_options"] = {"is_disabled": True}
 
@@ -133,10 +158,11 @@ jobs:
           mkdir -p data
           cp out/data_center_growth_pending_state.json data/data_center_growth_state.json
           cp out/pjm_data_center_policy_pending_state.json data/pjm_data_center_policy_state.json
+          cp out/us_data_center_time_to_power_pending_state.json data/us_data_center_time_to_power_state.json
           git restore scripts/pjm_data_center_policy_watch.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/data_center_growth_state.json data/pjm_data_center_policy_state.json
+          git add data/data_center_growth_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json
           if git diff --cached --quiet; then
             echo "State unchanged."
           else
@@ -157,5 +183,8 @@ jobs:
             out/pjm_data_center_policy_status.md
             out/pjm_data_center_policy_alert.txt
             out/pjm_data_center_policy_pending_state.json
+            out/us_data_center_time_to_power_status.md
+            out/us_data_center_time_to_power_alert.txt
+            out/us_data_center_time_to_power_pending_state.json
           if-no-files-found: ignore
           retention-days: 7
