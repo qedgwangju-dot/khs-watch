@@ -61,8 +61,8 @@ jobs:
           print(f"Telegram route OK: @{username}")
           PY
 
-      - name: Scan ROBOTIS / physical AI sources
-        run: python scripts/robotis_physical_ai_watch.py
+      - name: Scan physical AI / robotics supply chain sources
+        run: python scripts/physical_ai_watch_extensions.py
 
       - name: Send Telegram only on meaningful change
         if: success()
@@ -103,7 +103,7 @@ jobs:
               print(f"Telegram sent: message_id={data['result']['message_id']}")
           PY
           else
-            echo "No meaningful new ROBOTIS/physical-AI change; Telegram silent."
+            echo "No meaningful new physical-AI/robotics change; Telegram silent."
           fi
 
       - name: Save dedup state after successful route/send
