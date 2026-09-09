@@ -5,8 +5,7 @@ on:
     paths:
       - ".github/workflows/treasury-etf-flow-telegram.yml"
       - "scripts/treasury_etf_flow_watch.py"
-      - "scripts/treasury_credit_flow_watch.py"
-      - "scripts/treasury_credit_flow_watch_resilient.py"
+      - "scripts/treasury_credit_flow_watch_ishares.py"
   schedule:
     - cron: "30 8 * * *"
       timezone: "Asia/Seoul"
@@ -45,8 +44,7 @@ jobs:
       - name: Validate watcher
         run: |
           python -m py_compile scripts/treasury_etf_flow_watch.py
-          python -m py_compile scripts/treasury_credit_flow_watch.py
-          python -m py_compile scripts/treasury_credit_flow_watch_resilient.py
+          python -m py_compile scripts/treasury_credit_flow_watch_ishares.py
 
       - name: Validate exact Telegram bot route
         run: |
@@ -71,7 +69,7 @@ jobs:
           PY
 
       - name: Run Treasury plus credit ETF monitor and send Telegram
-        run: python scripts/treasury_credit_flow_watch_resilient.py
+        run: python scripts/treasury_credit_flow_watch_ishares.py
 
       - name: Publish summary
         if: always()
