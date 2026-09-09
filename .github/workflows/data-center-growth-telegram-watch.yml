@@ -65,6 +65,7 @@ jobs:
         run: |
           python - <<'PY'
           import os, pathlib, requests, time
+
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat = os.environ["TELEGRAM_CHAT_ID"].strip()
           files = [
@@ -72,21 +73,59 @@ jobs:
               pathlib.Path("out/pjm_data_center_policy_alert.txt"),
           ]
           sent = 0
+
           for p in files:
               if not p.exists() or not p.read_text(encoding="utf-8").strip():
                   continue
+
               text = p.read_text(encoding="utf-8").strip()
+              payload = {
+                  "chat_id": chat,
+                  "text": text,
+                  "link_preview_options": {"is_disabled": True},
+              }
+
+              # PJM alerts are generated as Telegram-safe HTML. Long raw URLs are
+              # replaced by clickable '원문' labels, and the three core official
+              # sources are also exposed as large tap-friendly buttons.
+              if p.name == "pjm_data_center_policy_alert.txt":
+                  payload["parse_mode"] = "HTML"
+                  payload["reply_markup"] = {
+                      "inline_keyboard": [
+                          [
+                              {
+                                  "text": "PJM RBP 원문",
+                                  "url": "https://www.pjm.com/committees-and-groups/cifp-rbp",
+                              },
+                              {
+                                  "text": "FERC 원문",
+                                  "url": "https://www.ferc.gov/news-events/news/decisions-notices",
+                              },
+                          ],
+                          [
+                              {
+                                  "text": "PJM 기준 설명",
+                                  "url": "https://insidelines.pjm.com/pjm-reliability-backstop-proposal-outlines-steps-to-secure-new-supply-and-maintain-reliability/",
+                              }
+                          ],
+                      ]
+                  }
+
               r = requests.post(
                   f"https://api.telegram.org/bot{token}/sendMessage",
-                  json={"chat_id": chat, "text": text, "disable_web_page_preview": True},
+                  json=payload,
                   timeout=30,
               )
               data = r.json()
               if not r.ok or not data.get("ok"):
-                  raise SystemExit(f"Telegram send failed for {p.name}: HTTP {r.status_code}")
+                  desc = data.get("description", "unknown") if isinstance(data, dict) else "unknown"
+                  raise SystemExit(
+                      f"Telegram send failed for {p.name}: HTTP {r.status_code} / {desc}"
+                  )
               print(f"Telegram sent {p.name}: message_id={data['result']['message_id']}")
               sent += 1
               time.sleep(1)
+
           if not sent:
               print("No meaningful change; Telegram silent.")
           PY
