@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Memory spot/contract/HBM web watch for Telegram alerts.
+"""Memory spot/contract/DRAM-HBM capacity web watch for Telegram alerts.
 
 The watcher is intentionally conservative:
 - scans multiple Google News RSS queries in Korean and English,
 - scores only memory-supply/price/capacity items,
+- explicitly watches DRAM wafer-start, greenfield fab and ramp-up signals,
 - translates and polishes English alert titles into natural Korean,
 - preserves uncertainty such as report/likely/expected instead of overstating it,
 - keeps the full Korean alert sentence without character-level truncation,
@@ -40,11 +41,18 @@ QUERIES = [
     ("ko", 'NAND 현물 가격 공급 부족 TrendForce OR 트렌드포스'),
     ("ko", '서버 DRAM 고정가격 계약가격 ASP 삼성전자 SK하이닉스'),
     ("ko", '2028 HBM 공급확약 브로드컴 엔비디아 구글 AMD'),
+    # DRAM physical capacity / wafer-start / new-fab cycle: do not miss supply expansion.
+    ("ko", 'DRAM 생산능력 웨이퍼 투입량 월 생산량 증설 삼성전자 P4 SK하이닉스 M15X 마이크론'),
+    ("ko", '어플라이드 머티어리얼즈 Citi TMT DRAM 생산능력 웨이퍼 160만 200만 40만'),
+    ("ko", 'DRAM 신규 팹 그린필드 장비투자 웨이퍼 스타트 P4 P5 M15X Y1'),
     ("en", 'DRAM spot price shortage BofA Bank of America memory'),
     ("en", 'NAND spot price shortage TrendForce memory'),
     ("en", 'server DRAM contract price TrendForce Samsung SK hynix Micron'),
     ("en", '2028 HBM supply commitment Broadcom NVIDIA Google AMD'),
     ("en", 'HBM trade ratio Micron HBM4E DRAM capacity'),
+    ("en", 'Applied Materials Citi TMT DRAM wafer starts capacity 1.6 million 2 million 400000'),
+    ("en", 'DRAM wafer starts greenfield fab capacity expansion Samsung P4 SK hynix M15X Micron'),
+    ("en", 'DRAM capacity 300000 400000 wafer starts per month Applied Materials'),
 ]
 
 MEMORY_MARKERS = {
@@ -54,17 +62,22 @@ MEMORY_MARKERS = {
 CHANGE_MARKERS = {
     "spot", "contract", "price", "asp", "shortage", "supply", "capacity", "capa",
     "inventory", "lta", "commitment", "allocation", "raise", "increase", "forecast",
-    "outlook", "revised", "revision", "현물", "고정가", "계약가", "가격", "부족",
-    "공급", "재고", "증설", "인상", "상향", "전망", "확약", "배정", "수급",
+    "outlook", "revised", "revision", "wafer", "wafer start", "wafer starts", "wspm",
+    "greenfield", "fab", "factory", "ramp", "ramp-up", "equipment investment",
+    "현물", "고정가", "계약가", "가격", "부족", "공급", "재고", "증설", "인상",
+    "상향", "전망", "확약", "배정", "수급", "웨이퍼", "생산능력", "투입량",
+    "신규 팹", "그린필드", "램프업", "가동", "장비투자", "설비투자",
 }
 HIGH_SIGNAL = {
     "bofa", "bank of america", "trendforce", "dram exchange", "dramexchange", "omdia",
     "reuters", "bloomberg", "citi", "ubs", "micron", "samsung", "sk hynix", "sk하이닉스",
     "삼성전자", "nvidia", "엔비디아", "broadcom", "브로드컴", "google", "구글", "amd",
+    "applied materials", "amat", "어플라이드 머티어리얼즈", "citi tmt",
 }
 CRITICAL_MARKERS = {
     "sufficiency", "공급 충족", "under supply", "undersupply", "shortage", "공급부족",
     "2027", "2028", "hbm4e", "lta", "장기계약", "공급확약", "commitment",
+    "wafer starts", "greenfield", "p4", "p5", "m15x", "y1", "웨이퍼", "생산능력",
 }
 
 
@@ -80,7 +93,7 @@ def _fetch(url: str) -> bytes:
     req = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "Mozilla/5.0 (compatible; khs-memory-watch/1.2)",
+            "User-Agent": "Mozilla/5.0 (compatible; khs-memory-watch/1.3)",
             "Accept": "application/rss+xml,application/xml,text/xml,*/*",
         },
     )
@@ -143,6 +156,8 @@ def _translate_to_ko(text: str) -> str:
     lower = text.lower()
     if "spot" in lower and "price" in lower:
         return "메모리 현물가격 관련 신규 상승·수급 변화 기사 감지"
+    if "wafer" in lower or "capacity" in lower or "greenfield" in lower:
+        return "DRAM 웨이퍼 생산능력·신규 팹 증설 관련 신규 변화 기사 감지"
     if "shortage" in lower or "supply" in lower:
         return "메모리 공급부족·수급 관련 신규 변화 기사 감지"
     if "hbm" in lower:
@@ -155,18 +170,11 @@ def _translate_to_ko(text: str) -> str:
 
 
 def _polish_alert_title(raw_title: str, translated: str) -> str:
-    """Turn a literal machine translation into a complete Korean headline sentence.
-
-    This is intentionally conservative. It fixes common News/Google-Translate title
-    artifacts and uses explicit templates only when the original English wording
-    contains enough information to preserve report/likely/expected qualifiers.
-    """
+    """Turn a literal machine translation into a complete Korean headline sentence."""
     raw = _clean(raw_title)
     low = raw.lower()
     title = _clean(translated)
 
-    # High-value known pattern: do not turn "said to have" / "seen as likely" into
-    # a confirmed Apple-Kioxia contract. Keep the report and likely-partner status.
     if (
         "apple" in low
         and "nand" in low
@@ -176,18 +184,13 @@ def _polish_alert_title(raw_title: str, translated: str) -> str:
     ):
         return "Apple, NAND 장기공급계약(LTA) 체결 보도…유력 상대는 Kioxia, 폴더블 iPhone 메모리 공급망 주목"
 
-    # Strip generic article labels that add no meaning in Telegram.
     title = re.sub(r"^\s*\[(?:뉴스|속보|단독|News|NEWS)\]\s*", "", title).strip()
     title = re.sub(r"^\s*(?:뉴스|속보)\s*[:：]\s*", "", title).strip()
-
-    # Make common machine-translated semicolon/title fragments read as one headline.
     title = re.sub(r"\s*[;；]\s*", "…", title)
     title = re.sub(r"\.\s*(주목받는|주목되는|관심이 쏠리는)\s+", "…", title)
     title = re.sub(r"\s+\|\s+", "…", title)
     title = re.sub(r"\s+", " ", title).strip()
 
-    # Preserve uncertainty implied by common English headline verbs if the literal
-    # translation accidentally sounds definitive.
     if "reportedly" in low and "보도" not in title and "전해" not in title:
         title = title.rstrip(".。 ") + "…관련 보도"
     if "may " in low and not any(x in title for x in ("가능", "전망", "검토", "수 있")):
@@ -236,8 +239,10 @@ def _score(item: dict) -> int:
     score += min(critical_hits, 2) * 2
     if re.search(r"(?:\+|-)?\d+(?:\.\d+)?%", blob):
         score += 2
-    if re.search(r"\b(?:2027|2028)\b", blob):
+    if re.search(r"\b(?:2027|2028|2029|2030)\b", blob):
         score += 1
+    if re.search(r"\b(?:\d+(?:\.\d+)?\s*(?:million|k|thousand))\s*(?:wafer|wafers)", blob):
+        score += 2
     return score
 
 
@@ -306,8 +311,15 @@ def load_state() -> dict:
 
 def classify(title: str) -> str:
     t = title.lower()
-    if "hbm" in t or "2028" in t:
+    capacity_terms = (
+        "capacity", "capa", "wafer", "greenfield", "fab", "factory", "ramp",
+        "생산능력", "웨이퍼", "증설", "신규 팹", "그린필드", "램프업",
+    )
+    if "hbm" in t:
         return "HBM/CAPA"
+    if "dram" in t or "디램" in t:
+        if any(x in t for x in capacity_terms):
+            return "DRAM/CAPA"
     if "spot" in t or "현물" in t:
         return "현물가"
     if "contract" in t or "고정가" in t or "계약가" in t:
@@ -364,7 +376,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     status_lines = [
-        "# 메모리 현물·계약가·HBM 웹 감시",
+        "# 메모리 현물·계약가·DRAM/HBM CAPA 웹 감시",
         "",
         f"- 조회시각(KST): {now.isoformat(timespec='seconds')}",
         f"- 유효 후보: {len(items)}건",
@@ -404,7 +416,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             lines.append(f"  {date_text} · <a href=\"{safe_link}\">원문</a>")
         else:
             lines.append(f"  <a href=\"{safe_link}\">원문</a>")
-    lines.append("※ 가격·수급·LTA·2027~28 HBM/CAPA의 신규 변화만 알림")
+    lines.append("※ 가격·수급·LTA·DRAM/HBM CAPA·웨이퍼 생산능력의 신규 변화만 알림")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
 
