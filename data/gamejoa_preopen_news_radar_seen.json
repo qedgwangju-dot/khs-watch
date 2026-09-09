@@ -398,17 +398,6 @@
       "source": "전자신문",
       "title": "고려아연, 반도체황산 생산능력 32만톤으로 확대"
     },
-    "event:3da948c2266c5b3d62736644": {
-      "first_seen_kst": "2026-08-26T14:27:56+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:27:56+09:00",
-        "preopen": "2026-08-27T06:32:42+09:00"
-      },
-      "last_seen_kst": "2026-08-27T06:32:42+09:00",
-      "link": "https://zdnet.co.kr/view/?no=20260826094826",
-      "source": "지디넷코리아",
-      "title": "삼성·SK, HBM4 8단 출하 비중 늘린다…엔비디아 공급망 변화 예고"
-    },
     "event:3fdf76e32908852aad9fcddd": {
       "first_seen_kst": "2026-09-03T14:33:40+09:00",
       "lanes": {
@@ -1648,6 +1637,16 @@
       "source": "머니투데이",
       "title": "中 CXMT, 첨단 HBM3E 샘플 생산...삼전닉스와 기술격차 좁히나"
     },
+    "event:ace04f0c6ea7db9722d8409a": {
+      "first_seen_kst": "2026-09-09T15:03:47+09:00",
+      "lanes": {
+        "live": "2026-09-09T15:03:47+09:00"
+      },
+      "last_seen_kst": "2026-09-09T15:03:47+09:00",
+      "link": "https://www.etnews.com/20260909000304",
+      "source": "전자신문",
+      "title": "삼성·SK하이닉스, 국제물주간 첫 출격…반도체 '물 혁신' 전면에"
+    },
     "event:af1566b7d8647c28eb71983d": {
       "first_seen_kst": "2026-09-08T11:25:37+09:00",
       "lanes": {
@@ -1900,17 +1899,6 @@
       "link": "https://www.fnnews.com/news/202608290801373836",
       "source": "파이낸셜뉴스",
       "title": "[머니플로우] 조정장에 일주일새 파킹형 ETF 1.6조…커버드콜 1조 유입"
-    },
-    "event:c34651002e1ca3273cc21d7e": {
-      "first_seen_kst": "2026-08-26T14:51:06+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:51:06+09:00",
-        "preopen": "2026-08-27T06:32:42+09:00"
-      },
-      "last_seen_kst": "2026-08-27T06:32:42+09:00",
-      "link": "https://www.newsis.com/view/NISX20260826_0003764001",
-      "source": "뉴시스",
-      "title": "\"AI칩 얼마나 팔고, HBM 얼마나 살까\"…韓 반도체, 엔비디아 컨콜 메시지 '주목'"
     },
     "event:c368ca9ece89ec2e6f8d6026": {
       "first_seen_kst": "2026-08-28T02:48:53+09:00",
@@ -2269,16 +2257,6 @@
       "link": "https://zdnet.co.kr/view/?no=20260828150619",
       "source": "지디넷코리아",
       "title": "[AI 고속도로] 엔비디아, AI 클라우드 금융지원 일부 중단…고객사 통제 논란"
-    },
-    "event:e8e8a1d928b5601750093e9a": {
-      "first_seen_kst": "2026-08-26T14:51:06+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:51:06+09:00"
-      },
-      "last_seen_kst": "2026-08-26T14:51:06+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02676486645551256",
-      "source": "이데일리",
-      "title": "PLUS 글로벌HBM반도체, 해외주식형 ETF 수익률 ‘4관왕’"
     },
     "event:ea8d75089a4e70ca6618dd5b": {
       "first_seen_kst": "2026-09-01T06:13:26+09:00",
@@ -2679,6 +2657,16 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03529286645578152",
       "source": "이데일리",
       "title": "하루 400만배럴 공급 차질…겨울 디젤값 더 뛸까"
+    },
+    "link:0748cf332138d980b8d02ab8": {
+      "first_seen_kst": "2026-09-09T15:03:47+09:00",
+      "lanes": {
+        "live": "2026-09-09T15:03:47+09:00"
+      },
+      "last_seen_kst": "2026-09-09T15:03:47+09:00",
+      "link": "https://www.etnews.com/20260909000304",
+      "source": "전자신문",
+      "title": "삼성·SK하이닉스, 국제물주간 첫 출격…반도체 '물 혁신' 전면에"
     },
     "link:07bf79f7432f404e0c2bfb2e": {
       "first_seen_kst": "2026-09-02T06:28:15+09:00",
@@ -3881,16 +3869,6 @@
       "source": "연합뉴스",
       "title": "트럼프 \"베네수와 석유거래 합의…매장량 과반 통제권 확보\" | 연합뉴스"
     },
-    "link:591c1d129fcfa7bfdd2e4fc8": {
-      "first_seen_kst": "2026-08-26T14:51:06+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:51:06+09:00"
-      },
-      "last_seen_kst": "2026-08-26T14:51:06+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12136316",
-      "source": "매일경제",
-      "title": "“반도체 주주님들, 간만에 큰 거 옵니다”…내일 새벽 엔비디아 실적발표"
-    },
     "link:5a61e4eafff6a94565b14ede": {
       "first_seen_kst": "2026-09-01T08:48:52+09:00",
       "lanes": {
@@ -4061,17 +4039,6 @@
       "source": "이데일리",
       "title": "[마켓인]대신F&I, 회사채 수요예측에 1.6兆 주문 몰려"
     },
-    "link:6797b9fa469cc466793400b7": {
-      "first_seen_kst": "2026-08-26T14:27:56+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:27:56+09:00",
-        "preopen": "2026-08-27T06:32:42+09:00"
-      },
-      "last_seen_kst": "2026-08-27T06:32:42+09:00",
-      "link": "https://zdnet.co.kr/view/?no=20260826094826",
-      "source": "지디넷코리아",
-      "title": "삼성·SK, HBM4 8단 출하 비중 늘린다…엔비디아 공급망 변화 예고"
-    },
     "link:67fbe5484d8aaa4edfacd90a": {
       "first_seen_kst": "2026-09-03T15:10:42+09:00",
       "lanes": {
@@ -4101,16 +4068,6 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=03260326645552896",
       "source": "이데일리",
       "title": "포니링크, 자회사 퓨처링크 美 포니AI와 로보택시 사업 본격화"
-    },
-    "link:6ab03318c037ed15b3019f67": {
-      "first_seen_kst": "2026-08-26T14:51:06+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:51:06+09:00"
-      },
-      "last_seen_kst": "2026-08-26T14:51:06+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02676486645551256",
-      "source": "이데일리",
-      "title": "PLUS 글로벌HBM반도체, 해외주식형 ETF 수익률 ‘4관왕’"
     },
     "link:6c1a27636354d2c13622df09": {
       "first_seen_kst": "2026-09-03T15:10:42+09:00",
@@ -6737,16 +6694,6 @@
       "source": "전자신문",
       "title": "전남광주시-울산시, 자동차 생산공정 'AI 대전환' 추진…휴머노이드 도입 등 논의"
     },
-    "original:10a0062362e396bee0e2eb2c": {
-      "first_seen_kst": "2026-08-26T14:51:06+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:51:06+09:00"
-      },
-      "last_seen_kst": "2026-08-26T14:51:06+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12136316",
-      "source": "매일경제",
-      "title": "“반도체 주주님들, 간만에 큰 거 옵니다”…내일 새벽 엔비디아 실적발표"
-    },
     "original:1116573ba54cb326b3066162": {
       "first_seen_kst": "2026-08-31T18:23:36+09:00",
       "lanes": {
@@ -7665,6 +7612,16 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03844166645577824",
       "source": "이데일리",
       "title": "[마켓인]대신F&I, 회사채 수요예측에 1.6兆 주문 몰려"
+    },
+    "original:546da442826e7d3ef70e60ed": {
+      "first_seen_kst": "2026-09-09T15:03:47+09:00",
+      "lanes": {
+        "live": "2026-09-09T15:03:47+09:00"
+      },
+      "last_seen_kst": "2026-09-09T15:03:47+09:00",
+      "link": "https://www.etnews.com/20260909000304",
+      "source": "전자신문",
+      "title": "삼성·SK하이닉스, 국제물주간 첫 출격…반도체 '물 혁신' 전면에"
     },
     "original:54723d58a491da00a116bd30": {
       "first_seen_kst": "2026-09-08T19:04:07+09:00",
@@ -10133,16 +10090,6 @@
       "source": "뉴시스",
       "title": "뉴욕증시, 워시 매파 발언에 일제히 하락…S&P 0.25%↓"
     },
-    "original:e2cb7ad00ac249dc4ac18fb7": {
-      "first_seen_kst": "2026-08-26T14:51:06+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:51:06+09:00"
-      },
-      "last_seen_kst": "2026-08-26T14:51:06+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02676486645551256",
-      "source": "이데일리",
-      "title": "PLUS 글로벌HBM반도체, 해외주식형 ETF 수익률 ‘4관왕’"
-    },
     "original:e310b81b7e6b190ff100d55a": {
       "first_seen_kst": "2026-09-02T22:03:37+09:00",
       "lanes": {
@@ -10545,17 +10492,6 @@
       "source": "연합뉴스",
       "title": "삼성전자 DX 노조, 18일부터 이재용 회장 자택앞 집회 | 연합뉴스"
     },
-    "original:ff7df2a1b76bcc37f608cd04": {
-      "first_seen_kst": "2026-08-26T14:27:56+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:27:56+09:00",
-        "preopen": "2026-08-27T06:32:42+09:00"
-      },
-      "last_seen_kst": "2026-08-27T06:32:42+09:00",
-      "link": "https://zdnet.co.kr/view/?no=20260826094826",
-      "source": "지디넷코리아",
-      "title": "삼성·SK, HBM4 8단 출하 비중 늘린다…엔비디아 공급망 변화 예고"
-    },
     "original:ffc20ade9265ecf168d4dbf2": {
       "first_seen_kst": "2026-09-08T11:25:37+09:00",
       "lanes": {
@@ -10765,16 +10701,6 @@
       "link": "https://www.etnews.com/20260907000391",
       "source": "전자신문",
       "title": "전남광주시-울산시, 자동차 생산공정 'AI 대전환' 추진…휴머노이드 도입 등 논의"
-    },
-    "title:10a0062362e396bee0e2eb2c": {
-      "first_seen_kst": "2026-08-26T14:51:06+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:51:06+09:00"
-      },
-      "last_seen_kst": "2026-08-26T14:51:06+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12136316",
-      "source": "매일경제",
-      "title": "“반도체 주주님들, 간만에 큰 거 옵니다”…내일 새벽 엔비디아 실적발표"
     },
     "title:1116573ba54cb326b3066162": {
       "first_seen_kst": "2026-08-31T18:23:36+09:00",
@@ -11694,6 +11620,16 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03844166645577824",
       "source": "이데일리",
       "title": "[마켓인]대신F&I, 회사채 수요예측에 1.6兆 주문 몰려"
+    },
+    "title:546da442826e7d3ef70e60ed": {
+      "first_seen_kst": "2026-09-09T15:03:47+09:00",
+      "lanes": {
+        "live": "2026-09-09T15:03:47+09:00"
+      },
+      "last_seen_kst": "2026-09-09T15:03:47+09:00",
+      "link": "https://www.etnews.com/20260909000304",
+      "source": "전자신문",
+      "title": "삼성·SK하이닉스, 국제물주간 첫 출격…반도체 '물 혁신' 전면에"
     },
     "title:54723d58a491da00a116bd30": {
       "first_seen_kst": "2026-09-08T19:04:07+09:00",
@@ -14172,16 +14108,6 @@
       "source": "뉴시스",
       "title": "뉴욕증시, 워시 매파 발언에 일제히 하락…S&P 0.25%↓"
     },
-    "title:e2cb7ad00ac249dc4ac18fb7": {
-      "first_seen_kst": "2026-08-26T14:51:06+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:51:06+09:00"
-      },
-      "last_seen_kst": "2026-08-26T14:51:06+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02676486645551256",
-      "source": "이데일리",
-      "title": "PLUS 글로벌HBM반도체, 해외주식형 ETF 수익률 ‘4관왕’"
-    },
     "title:e310b81b7e6b190ff100d55a": {
       "first_seen_kst": "2026-09-02T22:03:37+09:00",
       "lanes": {
@@ -14584,17 +14510,6 @@
       "source": "연합뉴스",
       "title": "삼성전자 DX 노조, 18일부터 이재용 회장 자택앞 집회 | 연합뉴스"
     },
-    "title:ff7df2a1b76bcc37f608cd04": {
-      "first_seen_kst": "2026-08-26T14:27:56+09:00",
-      "lanes": {
-        "live": "2026-08-26T14:27:56+09:00",
-        "preopen": "2026-08-27T06:32:42+09:00"
-      },
-      "last_seen_kst": "2026-08-27T06:32:42+09:00",
-      "link": "https://zdnet.co.kr/view/?no=20260826094826",
-      "source": "지디넷코리아",
-      "title": "삼성·SK, HBM4 8단 출하 비중 늘린다…엔비디아 공급망 변화 예고"
-    },
     "title:ffc20ade9265ecf168d4dbf2": {
       "first_seen_kst": "2026-09-08T11:25:37+09:00",
       "lanes": {
@@ -14606,5 +14521,5 @@
       "title": "아이엘, 7300평 제조기지 띄운다…‘휴머노이드·피지컬AI’ 거점 구축"
     }
   },
-  "updated_at_kst": "2026-09-09T14:18:11+09:00"
+  "updated_at_kst": "2026-09-09T15:03:47+09:00"
 }
