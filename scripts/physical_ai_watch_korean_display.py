@@ -5,6 +5,9 @@ Raw titles/sources are kept unchanged for deduplication and evidence matching.
 Only user-visible Telegram text is normalized to Korean explanatory wording,
 while identifiers such as ROBOTIS, NVIDIA, AI Sapiens, AI Worker, Isaac,
 GR00T, Jetson, DYNAMIXEL-Q and model names remain in their original form.
+
+For readability, the clickable original-article link is rendered on the same
+line as source and timestamp instead of taking a separate line.
 """
 from __future__ import annotations
 
@@ -80,9 +83,43 @@ def esc_text_ko(value: str) -> str:
     return _orig_esc_text(_display_ko(value))
 
 
+def _inline_original_link(text: str) -> str:
+    """Move each standalone HTML '원문' link onto that article's 출처 line."""
+    if not text:
+        return text
+
+    lines = text.splitlines()
+    out: list[str] = []
+    source_idx: int | None = None
+    link_re = re.compile(r'^<a href="[^"]+"><b>원문</b></a>$')
+
+    for line in lines:
+        stripped = line.strip()
+
+        if stripped.startswith('<b>출처</b>'):
+            source_idx = len(out)
+            out.append(line)
+            continue
+
+        if link_re.fullmatch(stripped) and source_idx is not None:
+            # Keep source name + timestamp visible and make only '원문' clickable.
+            if '<b>원문</b>' not in out[source_idx]:
+                out[source_idx] = out[source_idx].rstrip() + ' · ' + stripped
+            continue
+
+        out.append(line)
+        if stripped == '──────────────────':
+            source_idx = None
+
+    return '\n'.join(out).strip()
+
+
 # Rendering-only hook. Raw item title/source/key remain untouched, so this does
 # not create duplicate alerts when display wording changes.
 base.esc_text = esc_text_ko
 
 if __name__ == '__main__':
     base.main()
+    if base.ALERT_PATH.exists():
+        rendered = base.ALERT_PATH.read_text(encoding='utf-8')
+        base.ALERT_PATH.write_text(_inline_original_link(rendered), encoding='utf-8')
