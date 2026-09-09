@@ -2,6 +2,7 @@
 """Runtime safety shim for expanded physical-AI watcher."""
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -9,6 +10,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import physical_ai_watch_expanded as expanded
 
 base = expanded.base
+ext = expanded.ext
+_orig_score = base.score
+_orig_same_event = ext._same_event
 
 NEW_MEANING = {
     '고객 파이프라인·양산 프로토타입': '삼현이 단순 샘플 협의를 넘어 양산 프로토타입 계약과 다수 글로벌 고객 파이프라인을 확보하는지 봅니다. 4건의 Award가 실제 양산 수주·납품 물량으로 전환되는지가 핵심입니다.',
@@ -42,8 +46,36 @@ def risk(cat: str) -> str:
         return NEW_RISK[raw]
     return expanded._orig_risk(cat)
 
+
+def score(item: dict) -> int:
+    text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    group = base.topic_group(text)
+    source = item.get('source') or ''
+    if group == 'lg_robotics' and source in base.LOW_QUALITY_SOURCES:
+        return -30
+    return _orig_score(item)
+
+
+def same_event(a: dict, b: dict) -> bool:
+    if _orig_same_event(a, b):
+        return True
+    if a.get('group') != b.get('group'):
+        return False
+    if a.get('group') == 'xpeng':
+        ta = f"{a.get('title','')} {a.get('description','')}"
+        tb = f"{b.get('title','')} {b.get('description','')}"
+        robot_a = re.search(r'IRON|아이언|휴머노이드|humanoid', ta, re.I)
+        robot_b = re.search(r'IRON|아이언|휴머노이드|humanoid', tb, re.I)
+        prod_a = re.search(r'생산\s*라인|production\s*line|양산|mass\s*production|80%|2026년\s*말|2027년', ta, re.I)
+        prod_b = re.search(r'생산\s*라인|production\s*line|양산|mass\s*production|80%|2026년\s*말|2027년', tb, re.I)
+        if robot_a and robot_b and prod_a and prod_b:
+            return True
+    return False
+
 base.meaning = meaning
 base.risk = risk
+base.score = score
+ext._same_event = same_event
 
 if __name__ == '__main__':
     base.main()
