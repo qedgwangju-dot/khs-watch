@@ -148,6 +148,9 @@ jobs:
           mkdir -p data
           cp out/data_center_growth_pending_state.json data/data_center_growth_state.json
           cp out/pjm_data_center_policy_pending_state.json data/pjm_data_center_policy_state.json
+          # Restore the temporary runtime-only FORMAT_VERSION edit before Git
+          # operations so the checkout remains clean and rebase/push can succeed.
+          git restore scripts/pjm_data_center_policy_watch.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/data_center_growth_state.json data/pjm_data_center_policy_state.json
