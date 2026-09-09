@@ -13,7 +13,7 @@ from pathlib import Path
 
 FED_URL = "https://www.federalreserve.gov/monetarypolicy/productivity-and-jobs-task-force.htm"
 STATE_PATH = Path("data/warsh_ai_taskforce_watch_state.json")
-UA = "Mozilla/5.0 (compatible; khs-watch/1.2; +https://github.com/qedgwangju-dot/khs-watch)"
+UA = "Mozilla/5.0 (compatible; khs-watch/1.3; +https://github.com/qedgwangju-dot/khs-watch)"
 TOKEN = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
 CHAT_ID = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
 EXPECTED_BOT = (os.getenv("EXPECTED_BOT_USERNAME") or "khs8879887988798879_bot").strip().lstrip("@")
@@ -86,6 +86,50 @@ def get_bot_username() -> str:
 
 def link(label,url):return f'<a href="{html.escape(url,quote=True)}">{html.escape(label)}</a>'
 
+
+def has_korean(text: str) -> bool:
+    return bool(re.search(r'[가-힣]', text or ''))
+
+
+def gartner_title_ko(title: str) -> str:
+    """Never expose an untranslated English Gartner headline in Telegram."""
+    raw=(title or '').strip()
+    low=raw.lower()
+    known=[
+        (r'identifies?\s+4\s+shifts?.*future of work', 'Gartner, 미래 일자리·업무 구조를 바꿀 4가지 변화 제시'),
+        (r'more jobs than it eliminates.*2028|create more jobs than.*2028', 'Gartner, 2028년부터 AI가 없애는 일자리보다 더 많은 일자리를 창출할 것으로 전망'),
+        (r'30%.*laid off.*ai.*rehir|rehir.*30%.*2029', 'Gartner, AI 대체로 감원한 직원의 최대 30%가 2029년까지 재채용될 수 있다고 전망'),
+        (r'skills strategy.*falling behind ai evolution', 'Gartner, AI 진화 속도를 따라가지 못하는 인력 기술 전략을 경고'),
+        (r'workforce costs?', 'Gartner, AI 도입에 따른 숨은 인력 비용 증가 가능성을 경고'),
+        (r'job impacts?', 'Gartner, AI가 일자리 구조에 미치는 영향 전망을 업데이트'),
+        (r'labor market|employment', 'Gartner, AI와 고용·노동시장 구조 전망을 업데이트'),
+        (r'workforce.*ai|ai.*workforce', 'Gartner, AI 도입에 따른 인력 구조 변화 전망을 업데이트'),
+    ]
+    for pat,ko in known:
+        if re.search(pat,low,re.I):
+            return ko
+    if has_korean(raw):
+        return raw
+    return 'Gartner, AI 고용·인력 구조 전망을 업데이트'
+
+
+def fed_update_ko(core: str):
+    """Summarize topic changes in Korean instead of forwarding raw English Fed text."""
+    low=(core or '').lower()
+    bullets=[]
+    if 'productiv' in low:
+        bullets.append('• 생산성과 잠재 생산능력 관련 공식 내용에 변화가 확인됐습니다.')
+    if 'job' in low or 'employment' in low:
+        bullets.append('• 고용과 직무 구조에 대한 태스크포스 관련 내용에 변화가 확인됐습니다.')
+    if 'artificial intelligence' in low or 'general-purpose technologies' in low:
+        bullets.append('• AI가 경제의 새로운 생산요소가 될 수 있는지에 관한 공식 검토 내용이 갱신됐습니다.')
+    if 'inflation' in low or 'policy judgment' in low or 'economic impact' in low:
+        bullets.append('• 생산성·고용 변화가 물가와 통화정책 판단에 미치는 영향에 관한 내용이 포함돼 있습니다.')
+    if not bullets:
+        bullets.append('• 연준의 AI 생산성·고용 태스크포스 공식 페이지에 새로운 변화가 확인됐습니다.')
+    return bullets[:4]
+
+
 def send(text: str):
     if not TOKEN or not CHAT_ID: raise RuntimeError("Telegram token/chat id missing")
     username = get_bot_username()
@@ -111,21 +155,19 @@ def save_state(state):
 
 
 def fed_message(core):
-    lines=core.splitlines()[:10]
     return '\n'.join([
-        '[연준 AI 생산성·고용 태스크포스 변화]',
-        '워시가 AI를 잠재적으로 새로운 생산요소로 본 뒤 나온 연준의 공식 업데이트입니다.','',
-        *[f"• {html.escape(x)}" for x in lines], '',
+        '[연준 AI 생산성·고용 태스크포스 변화]','',
+        *fed_update_ko(core), '',
         '<b>판정</b>',
         '• AI가 잠재성장률·생산성·고용·중립금리 판단에 실제 반영되는 단계로 넘어가는지 확인합니다.','',
-        '<b>원천</b>',link('Federal Reserve 공식자료',FED_URL)
+        '<b>원천</b>',link('미국 연방준비제도 공식자료',FED_URL)
     ])
 
 
 def gartner_message(item):
     return '\n'.join([
         '[AI 고용 구조 전망 변화] Gartner','',
-        f"• {html.escape(item['title'])}",'',
+        f"• {html.escape(gartner_title_ko(item['title']))}",'',
         '<b>왜 중요하나</b>',
         '• 워시가 던진 “AI가 노동을 대체하는가, 보완하는가”라는 질문에 직접 연결되는 구조적 고용 전망입니다.',
         '• Gartner 전망은 매월 고용지표가 아니라 중장기 직무 재설계·재채용·생산성 구조가 바뀔 때만 알립니다.',
@@ -148,6 +190,6 @@ def main():
     if FORCE_NOTIFY or (not first and g_changed):send(gartner_message(latest))
 
     save_state({'fed_fingerprint':fed_fp,'gartner_latest_key':latest_key,'gartner_latest':latest})
-    print(json.dumps({'first_run':first,'fed_changed':fed_changed,'gartner_changed':g_changed,'gartner_latest':latest['title'] if latest else None},ensure_ascii=False))
+    print(json.dumps({'first_run':first,'fed_changed':fed_changed,'gartner_changed':g_changed,'gartner_latest_ko':gartner_title_ko(latest['title']) if latest else None},ensure_ascii=False))
 
 if __name__ == "__main__": main()
