@@ -2,12 +2,12 @@
   "initialized": true,
   "format_version": 1,
   "miso_metrics": {
-    "cycle5_projects": 7,
-    "cycle5_mw": 3361.0,
-    "cycle5_gas_mw": 1506.0,
-    "cycle5_bess_mw": 1855.0,
-    "cycle5_solar_mw": 0.0,
-    "cycle5_wind_mw": 0.0,
+    "cycle5_projects": 15,
+    "cycle5_mw": 7297.5,
+    "cycle5_gas_mw": 3692.5,
+    "cycle5_bess_mw": 2905.0,
+    "cycle5_solar_mw": 400.0,
+    "cycle5_wind_mw": 300.0,
     "program_projects": 58,
     "program_gw": 29.0,
     "gia_projects": 38,
@@ -15,72 +15,43 @@
     "nearing_projects": 5,
     "nearing_gw": 3.0
   },
-  "miso_eras_projects": {
-    "Bayou Point Combined Cycle": {
-      "mw": 750.0,
-      "tech": "가스"
-    },
-    "MW of new gas generation in Louisiana Crosley Energy Storage": {
-      "mw": 400.0,
-      "tech": "BESS"
-    },
-    "new solar generation and 400 MW of new battery storage in Arkansas Little Rock Wind Project": {
-      "mw": 300.0,
-      "tech": "BESS"
-    },
-    "MW of new battery storage in Indiana Merom Energy Storage": {
-      "mw": 500.0,
-      "tech": "BESS"
-    },
-    "MW of new gas generation in Louisiana Rapides Parish Combined Cycle": {
-      "mw": 756.0,
-      "tech": "가스"
-    },
-    "MW of new battery storage in Indiana Steamboat Energy Storage": {
-      "mw": 500.0,
-      "tech": "BESS"
-    },
-    "MW of new natural gas generation in Indiana Tradewater Energy Storage": {
-      "mw": 155.0,
-      "tech": "BESS"
-    }
-  },
+  "miso_eras_projects": {},
   "seen_ids": [
-    "d679270707b32ac136ee",
-    "ad521c7e834b4ee6e44b",
-    "d96af6e10566ef324e17",
     "99b7100fe41081511d7f",
-    "9c35c323d3fd2d6a775a",
-    "64b9d6f4b5427b2eb375",
-    "d885c51dc05f2b427f06",
-    "07a3b3726e4eed7a1635",
-    "91478dff169bd3879a09",
+    "1a4c6f47b2ae1f5d461d",
+    "fc6365f2dd28fb6c9c63",
+    "6c8a4d4b8376e49a351a",
     "98da476c7d2987db0980",
     "108487a62e5ab5798145",
     "b7c89eee2a90870f8bcd",
-    "45f98fb3a3c0ad8eeae5",
-    "1a4c6f47b2ae1f5d461d",
-    "bdf211ce0ac2cca8b82a",
-    "7b1bc9c5095cf5805700",
-    "6e05f8190060814f547f",
-    "1ebb5ef37f2146931c62",
     "6f39212d8d375c9bbfb4",
-    "6c8a4d4b8376e49a351a",
-    "b66f97589e05e85702eb",
+    "45f98fb3a3c0ad8eeae5",
+    "ad521c7e834b4ee6e44b",
+    "07a3b3726e4eed7a1635",
+    "9c35c323d3fd2d6a775a",
     "f2a0bc778150cbf8a6cd",
-    "b06638e0b5bbdcbc28af",
-    "bc5ec9279c9721f248d1",
-    "fc6365f2dd28fb6c9c63",
+    "b66f97589e05e85702eb",
     "7d7a2245115f47a0129e",
     "dcfdbb24c905ebeae99e",
-    "cc406d7263925472e686",
+    "bdf211ce0ac2cca8b82a",
+    "6e05f8190060814f547f",
+    "b06638e0b5bbdcbc28af",
+    "d679270707b32ac136ee",
+    "d96af6e10566ef324e17",
+    "64b9d6f4b5427b2eb375",
+    "91478dff169bd3879a09",
     "4d06f45038ed21cfe52c",
-    "1c579ba57b976998ea00"
+    "1c579ba57b976998ea00",
+    "d885c51dc05f2b427f06",
+    "7b1bc9c5095cf5805700",
+    "bc5ec9279c9721f248d1",
+    "cc406d7263925472e686",
+    "1ebb5ef37f2146931c62"
   ],
   "last_fx_krw_per_usd": 1340.864413,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-09-09T23:30:39+00:00",
-  "updated_at_utc": "2026-09-09T23:31:19+00:00",
+  "fx_checked_utc": "2026-09-09T23:33:30+00:00",
+  "updated_at_utc": "2026-09-09T23:34:09+00:00",
   "source_errors": [
     "ABB: ReadTimeout"
   ]
