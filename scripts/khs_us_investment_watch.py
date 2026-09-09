@@ -376,7 +376,7 @@ def main() -> int:
     for idx, (row, tags) in enumerate(tagged_rows, 1):
         parts += [
             f"<b>{idx}. {html.escape(row['title'])}</b>",
-            f"• <b>구분: {' / '.join(html.escape(x) for x in tags[:3])}</b>",
+            f"• 🟧 <b>구분: {' / '.join(html.escape(x) for x in tags[:3])}</b>",
             f"• 의미: {html.escape(_meaning(tags))}",
             f"• 출처: <a href=\"{html.escape(row['link'], quote=True)}\">{html.escape(row['source'])}</a>",
             "",
