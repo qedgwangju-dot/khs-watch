@@ -1,0 +1,32 @@
+{
+  "brent": {
+    "date": "2026-09-09",
+    "value": 100.94999694824219,
+    "d20_pct": 13.541775717262606,
+    "last3": [
+      96.27999877929688,
+      97.91999816894531,
+      100.94999694824219
+    ],
+    "active": false,
+    "source": "Yahoo Finance 브렌트 선물",
+    "url": "https://finance.yahoo.com/quote/BZ=F/"
+  },
+  "macro": {
+    "core_3m_ann": 3.0477755322693367,
+    "core_6m_ann": 3.4594071030808804,
+    "core_yoy": 3.3441430040338282,
+    "employment_soft": false,
+    "payroll_change_k": 162.0,
+    "unemployment_rate": 4.1,
+    "h8": "신용 확장",
+    "sloos": "신용 완화",
+    "real_pce_3m_ann": 3.3288622136696366,
+    "real_pce_date": "2026-07-01",
+    "bei5y": 2.4,
+    "bei5y_10d_bp": 8.000000000000007,
+    "bei_date": "2026-09-08"
+  },
+  "verdict": "에너지 충격 경보 기준 미충족",
+  "updated_at_utc": "2026-09-09T13:33:01.935687+00:00"
+}
