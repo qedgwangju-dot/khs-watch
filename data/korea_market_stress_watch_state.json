@@ -1,39 +1,40 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-09T09:38:22+09:00",
+  "updated_at_kst": "2026-09-09T14:17:56+09:00",
   "seen_event_keys": [
-    "fx_1350_down:2026-09-07",
-    "foreign1d_pos:2026-09-07:final",
-    "foreign1d_neg:2026-09-02:final",
-    "policy_spread:2026-08-27:0.75",
-    "foreign3d_neg:2026-08-27",
     "capex:13cbe150930d23d8",
-    "foreign3d_neg:2026-09-02:postclose",
-    "foreign3d_neg:2026-09-02:final",
     "foreign3d_pos:2026-09-07:final",
-    "fx_daily_down:2026-09-02",
-    "foreign1d_neg:2026-09-02:postclose",
+    "fx_1350_down:2026-09-07",
     "fx_1350_down:2026-09-04",
+    "foreign3d_neg:2026-09-02:final",
+    "foreign3d_pos:2026-09-08:final",
+    "foreign1d_pos:2026-09-07:final",
+    "foreign1d_neg:2026-09-02:postclose",
+    "fx_daily_down:2026-09-02",
+    "policy_spread:2026-08-27:0.75",
+    "foreign1d_neg:2026-09-02:final",
+    "foreign3d_neg:2026-09-02:postclose",
     "foreign1d_neg:2026-08-31",
-    "foreign3d_pos:2026-09-08:final"
+    "foreign3d_neg:2026-08-27"
   ],
   "active_keys": [
-    "fx_1350_down:2026-09-09"
+    "fx_1350_down:2026-09-09",
+    "foreign3d_pos:2026-09-09"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-09T09:38:22+09:00",
+    "checked_at_kst": "2026-09-09T14:17:56+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-09",
-      "value": 1341.2,
+      "value": 1336.3,
       "prev_date": "2026-09-08",
       "prev_value": 1341.5,
-      "change_krw": -0.3,
-      "change_pct": -0.0224,
+      "change_krw": -5.2,
+      "change_pct": -0.3876,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "ecos_official": {
-        "date": "2026-09-08",
-        "value": 1342.6,
+        "date": "2026-09-09",
+        "value": 1341.1,
         "item_name": "원/미국달러(매매기준율)",
         "unit": "원",
         "stat_code": "731Y001",
@@ -60,10 +61,10 @@
     },
     "foreign_flow": {
       "date": "2026-09-09",
-      "daily_eok": -2117.0,
-      "three_day_eok": 29731.0,
-      "daily_krw": -211700000000,
-      "three_day_krw": 2973100000000,
+      "daily_eok": -695.0,
+      "three_day_eok": 31153.0,
+      "daily_krw": -69500000000,
+      "three_day_krw": 3115300000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260909&sosok=01",
       "phase": "장중 참고"
     },
