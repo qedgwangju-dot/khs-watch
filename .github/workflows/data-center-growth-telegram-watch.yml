@@ -9,6 +9,7 @@ on:
       - "scripts/clean_pjm_alert_html.py"
       - "scripts/guard_pjm_baseline_source.py"
       - "scripts/us_data_center_time_to_power_watch.py"
+      - "scripts/guard_us_time_to_power_metrics_source.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -71,7 +72,9 @@ jobs:
         run: python scripts/clean_pjm_alert_html.py
 
       - name: Check US data center time-to-power execution
-        run: python scripts/us_data_center_time_to_power_watch.py
+        run: |
+          python scripts/guard_us_time_to_power_metrics_source.py
+          python scripts/us_data_center_time_to_power_watch.py
 
       - name: Send Telegram only on meaningful changes
         run: |
@@ -160,6 +163,7 @@ jobs:
           cp out/pjm_data_center_policy_pending_state.json data/pjm_data_center_policy_state.json
           cp out/us_data_center_time_to_power_pending_state.json data/us_data_center_time_to_power_state.json
           git restore scripts/pjm_data_center_policy_watch.py
+          git restore scripts/us_data_center_time_to_power_watch.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/data_center_growth_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json
