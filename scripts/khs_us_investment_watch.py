@@ -38,14 +38,18 @@ QUERIES = [
     '"Alaska LNG" offtake OR FID OR financing when:7d',
     '"Alaska LNG" 13 MTPA OR 16 MTPA when:7d',
     '"Alaska LNG" tax OR property tax OR pipeline when:7d',
+    '"대미투자" 수익배분 OR "위험 통합" OR risk-pooling when:3d',
+    '"대미투자" "프로젝트별 손익" OR 손실분담 OR 원리금 when:3d',
+    '"대미투자" "45영업일" OR "선정 통지" OR 송금 when:3d',
+    '"대미투자" "확정된 바 없습니다" OR 설명자료 when:3d',
     '"대미투자" 관세 OR 301조 OR 232조 when:3d',
 ]
 
 TRUSTED = [
-    "산업통상", "연합뉴스", "뉴시스", "뉴스1", "이데일리", "헤럴드경제", "한국경제", "중앙일보",
-    "머니투데이", "글로벌경제신문", "GetNews", "Reuters", "Yahoo", "Inside Climate News",
-    "San Antonio Express-News", "Global Energy Monitor", "Pipeline & Gas Journal", "Bloomberg",
-    "Utility Dive", "Glenfarne", "Alaska's News Source",
+    "산업통상", "정책브리핑", "대한민국 정책브리핑", "재정경제부", "연합뉴스", "뉴시스", "뉴스1",
+    "이데일리", "헤럴드경제", "한국경제", "중앙일보", "머니투데이", "글로벌경제신문", "GetNews",
+    "Reuters", "Yahoo", "Inside Climate News", "San Antonio Express-News", "Global Energy Monitor",
+    "Pipeline & Gas Journal", "Bloomberg", "Utility Dive", "Glenfarne", "Alaska's News Source",
 ]
 
 MATERIAL = [
@@ -54,6 +58,8 @@ MATERIAL = [
     "현장발전", "데이터센터", "반도체", "원전", "LNG", "관세", "301조", "232조", "제외", "포함",
     "압박", "참여", "최종투자결정", "FID", "금융종결", "오프테이크", "구매계약", "SPA", "HOA",
     "MTPA", "세제", "재산세", "파이프라인", "Glenfarne", "POSCO", "포스코", "KOGAS", "한국가스공사",
+    "수익배분", "손실분담", "위험 통합", "risk-pooling", "프로젝트별 손익", "원리금", "상위 SPV",
+    "투자 SPV", "손실 상계", "45영업일", "선정 통지", "자금 납입", "송금", "확정된 바 없습니다",
     "gas power", "gas plant", "gas-fired", "combined-cycle", "data center", "turbine", "permit", "construction",
     "offtake", "financial close", "pipeline", "property tax", "6.3GW", "22.3 billion", "ERCOT", "behind-the-meter",
 ]
@@ -62,15 +68,33 @@ MARKET_REACTION_TERMS = [
     "강세", "급등", "상한가", "상승세", "주가", "관련주", "테마주", "株", "%↑", "% 상승",
 ]
 
+OPINION_TERMS = [
+    "[사설]", "사설]", "오피니언", "칼럼", "기고",
+]
+
 HARD_PROGRESS_TERMS = [
     "확정", "의결", "계약", "체결", "승인", "허가", "착공", "fid", "최종투자결정",
     "financial close", "금융종결", "spa", "hoa", "오프테이크", "offtake", "구매계약",
-    "투자액", "투자규모", "배정액", "지분", "사업비", "증액", "감액", "수주",
-    "epc", "강재 공급", "mtpa", "만톤", "억달러", "조원", "재산세", "세제",
+    "투자액", "투자규모", "배정액", "지분", "사업비", "증액", "감액", "수주", "수익배분",
+    "손실분담", "프로젝트별 손익", "원리금", "45영업일", "선정 통지", "자금 납입", "송금",
+    "확정된 바 없습니다", "설명자료", "epc", "강재 공급", "mtpa", "만톤", "억달러", "조원", "재산세", "세제",
 ]
 
 ALASKA_PRESSURE_TERMS = [
     "압박", "빨리", "서둘러", "참여하라", "참여 요구", "참여 촉구", "pressure", "urge", "urges",
+]
+
+OFFICIAL_SOURCE_TERMS = [
+    "정책브리핑", "산업통상", "재정경제부", "기획재정부", "대한민국 정책브리핑",
+]
+
+SAFEGUARD_TERMS = [
+    "수익배분", "손실분담", "위험 통합", "risk-pooling", "리스크 풀링", "프로젝트별 손익", "원리금",
+    "상위 spv", "투자 spv", "손실 상계", "안전판", "회수",
+]
+
+FUNDING_GUARD_TERMS = [
+    "45영업일", "선정 통지", "자금 납입", "자금납입", "capital call", "송금", "첫 집행", "첫 납입",
 ]
 
 
@@ -99,6 +123,18 @@ def _is_simple_market_reaction(title: str) -> bool:
     return market and not hard
 
 
+def _is_low_value_opinion(title: str) -> bool:
+    low = title.lower()
+    opinion = any(term.lower() in low for term in OPINION_TERMS)
+    hard = any(term.lower() in low for term in HARD_PROGRESS_TERMS)
+    return opinion and not hard
+
+
+def _is_official(row: dict) -> bool:
+    blob = f"{row.get('title', '')} {row.get('source', '')}".lower()
+    return any(term.lower() in blob for term in OFFICIAL_SOURCE_TERMS)
+
+
 def _rss(query: str) -> list[dict]:
     url = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
         {"q": query, "hl": "ko", "gl": "KR", "ceid": "KR:ko"}
@@ -122,6 +158,8 @@ def _rss(query: str) -> list[dict]:
         if not any(x.lower() in blob.lower() for x in MATERIAL):
             continue
         if _is_simple_market_reaction(title):
+            continue
+        if _is_low_value_opinion(title):
             continue
         rows.append(
             {
@@ -161,10 +199,38 @@ def _semantic_key(row: dict) -> str:
     return ""
 
 
-def _tags(title: str) -> list[str]:
+def _run_event_key(row: dict) -> str:
+    low = row["title"].lower()
+    official = _is_official(row)
+    if any(term.lower() in low for term in SAFEGUARD_TERMS):
+        return "safeguard_official" if official else "safeguard_media"
+    if any(term.lower() in low for term in FUNDING_GUARD_TERMS):
+        return "funding_official" if official else "funding_media"
+    if "웨스팅하우스" in low or "westinghouse" in low:
+        return "westinghouse"
+    if "엔시날" in low or "encinal" in low or "6.3gw" in low:
+        return "encinal"
+    if "알래스카" in low or "alaska lng" in low:
+        return "alaska"
+    if "원전" in low or "ap1000" in low or "apr1400" in low:
+        return "nuclear"
+    if "텍사스" in low or "texas" in low or "데이터센터" in low or "data center" in low:
+        return "texas_ai_power"
+    if "반도체" in low or "삼성전자" in low or "sk하이닉스" in low:
+        return "semiconductor"
+    return ""
+
+
+def _tags(title: str, source: str = "") -> list[str]:
     low = title.lower()
+    source_low = source.lower()
     out = []
+    if any(term.lower() in f"{low} {source_low}" for term in OFFICIAL_SOURCE_TERMS):
+        if "설명자료" in low or "확정된 바 없습니다" in low or "사실이 아닙니다" in low or "정부 입장" in low:
+            out.append("공식정정/정부입장")
     for tag, terms in [
+        ("수익배분/손실분담", ["수익배분", "손실분담", "위험 통합", "risk-pooling", "프로젝트별 손익", "원리금", "안전판", "회수"]),
+        ("송금절차/45영업일", ["45영업일", "선정 통지", "자금 납입", "자금납입", "capital call", "송금", "첫 집행"]),
         ("1호/엔시날", ["엔시날", "encinal", "6.3gw"]),
         ("텍사스 AI 전력", ["texas", "텍사스", "data center", "데이터센터"]),
         ("현장발전/오프그리드", ["behind-the-meter", "on-site", "현장발전", "자체발전", "off-grid"]),
@@ -187,6 +253,12 @@ def _tags(title: str) -> list[str]:
 
 
 def _meaning(tags: list[str]) -> str:
+    if "공식정정/정부입장" in tags:
+        return "언론 제목보다 정부 공식 설명자료를 우선해 확정·미확정 상태를 갱신해야 합니다."
+    if "수익배분/손실분담" in tags:
+        return "risk-pooling 유지 여부·원리금 회수·손실 상계 범위가 2,000억달러 투자의 실제 위험을 바꿉니다."
+    if "송금절차/45영업일" in tags:
+        return "선정 통지일·45영업일·연 200억달러 상한·자금요청 순서를 검산해야 실제 집행 확정 여부를 판단할 수 있습니다."
     if "1호/엔시날" in tags:
         return "6.3GW·223억달러 검토안의 정부 확정 여부와 한국 실제 투자부담이 핵심입니다."
     if "텍사스 AI 전력" in tags:
@@ -233,20 +305,50 @@ def _fixed_project_cost_block() -> list[str]:
         "└ 기당 <b>150억달러 ≈ 20조1,840억원</b>",
         "",
         "🧊 <b>알래스카 LNG</b>",
-        "• <b>670억달러 ≈ 90조1,552억원</b>",
+        "• <b>670억달러 ≈ 90조1,552억원</b> · 한국 협상 보도 기준",
         "",
-        "📦 <b>3개 프로젝트 합계</b>",
+        "📦 <b>3개 프로젝트 보도상 총사업비 단순합</b>",
         "• <b>2,093억달러 ≈ 281조6,341억원</b>",
         "",
         "<b>⚠️ 꼭 구분할 숫자</b>",
-        "• 첫 송금: <b>22억달러+α ≈ 2조9,603억원+α</b>",
+        "• 보도상 첫 송금: <b>22억달러+α ≈ 2조9,603억원+α</b>",
         "• 엔시날 총사업비 223억달러의 <b>약 9.9%</b>",
         "• 첫 송금 전액이 엔시날에 들어간다는 의미는 아님",
-        "• 3개 후보사업 총액은 전략투자 2,000억달러보다 <b>93억달러 ≈ 12조5,141억원</b> 큼",
-        "└ 총사업비와 한국 정부 실제 투자액은 다를 수 있어 미국 측·민간·PF 자금 비중 확인 필요",
+        "• 전략투자 한도: <b>총 2,000억달러 / 연 200억달러</b>",
+        "• 2,093억달러는 후보사업 총사업비 단순합이며 <b>한국 실제 투자액·한도 초과를 뜻하지 않음</b>",
+        "└ 한국 투자지분·미국 측·민간·PF 자금·보증을 분리 확인",
         "• 정부 최종발표·국회 절차·본계약 전에는 확정 수주로 간주하지 않음",
         "",
-        "원화 환산 기준: 1달러=1,345.6원 · 2026-09-08 15:30 기준값, 후속 알림에서 최신 환율로 갱신 필요",
+        "원화 환산 기준: 1달러=1,345.6원 · 2026-09-08 15:30 기준값",
+    ]
+
+
+def _safeguard_block() -> list[str]:
+    return [
+        "<b>🛡️ 대미투자 안전판·원금회수 기준선</b>",
+        "• 2025-11-14 MOU 기준: 상위 투자 SPV가 개별 프로젝트 SPV 수익을 모아 <b>한국 원금+이자를 상환하는 risk-pooling 구조</b>",
+        "• 특정 프로젝트 손실을 다른 성공 프로젝트 수익으로 보전할 수 있도록 설계",
+        "• 원리금 상환 전 수익배분 <b>한·미 5:5</b> → 상환 후 <b>한국 1 : 미국 9</b>",
+        "• <b>20년 내 전체 원리금 상환이 어려우면 수익배분 비율 조정 가능</b>",
+        "• 상환이자: 미국 국채 20년물 고정금리 + 가산금리, 가산금리 상한 존재",
+        "",
+        "<b>🚨 2026-09-10 정부 공식상태</b>",
+        "• 산업통상부·재정경제부: <b>수익배분 구조는 한미 협의 중이며 아직 확정되지 않음</b>",
+        "• 따라서 '프로젝트별 손익분배 관철·안전판 폐기'는 <b>보도 단계</b>로 관리하고 공식 합의문 전 확정으로 승격하지 않음",
+        "",
+        "<b>다음 확인</b>",
+        "1) risk-pooling 유지/폐기  2) 손실 상계 허용 범위  3) 원리금 상환 순서  4) 프로젝트별 수익배분  5) 이자율·가산금리",
+    ]
+
+
+def _funding_guard_block() -> list[str]:
+    return [
+        "<b>⏱️ 선정·송금 절차 검증 기준선</b>",
+        "• 미국의 투자처 선정 통지 후 <b>최소 45영업일 경과 뒤</b> 사업자금 납입",
+        "• 전략투자 실제 납입은 <b>연간 최대 200억달러</b>",
+        "• 사업 진척도에 따른 <b>자금요청(capital call)</b> 방식",
+        "• 외환시장 불안 우려 시 한국은 <b>납입 시기·규모 조정 요구 가능</b>",
+        "• 따라서 '첫 송금 확정' 알림은 <b>선정 통지일 → 45영업일 → 국내 심의·의결 → 자금요청 → 실제 송금</b> 순서 확인",
     ]
 
 
@@ -304,9 +406,11 @@ def _bootstrap(now: dt.datetime) -> str:
     ]
     parts += _fixed_project_cost_block()
     parts += [""] + _texas_ai_power_block()
+    parts += [""] + _safeguard_block()
+    parts += [""] + _funding_guard_block()
     parts += [
         "",
-        '<b>출처</b> · <a href="https://www.reuters.com/business/energy/south-korea-us-agree-more-than-20-billion-gas-plant-investment-texas-media-2026-09-07/">Reuters</a> · <a href="https://www.yahoo.com/news/science/articles/data-center-developers-texas-plan-120000072.html">Yahoo/Inside Climate News</a>',
+        '<b>출처</b> · <a href="https://www.reuters.com/business/energy/south-korea-us-agree-more-than-20-billion-gas-plant-investment-texas-media-2026-09-07/">Reuters</a> · <a href="https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/171196/view">산업통상부 MOU</a>',
         f"조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 정부 최종문서가 나오면 확정 단계로 갱신",
     ]
     return "\n".join(parts)
@@ -338,6 +442,7 @@ def main() -> int:
 
     rows.sort(key=lambda r: r["published"], reverse=True)
     fresh = []
+    run_events: set[str] = set()
     for row in rows:
         key = _key(row)
         if key in seen:
@@ -351,6 +456,12 @@ def main() -> int:
                 continue
             semantic_seen[semantic_key] = now.isoformat()
 
+        event_key = _run_event_key(row)
+        if event_key and event_key in run_events:
+            continue
+        if event_key:
+            run_events.add(event_key)
+
         fresh.append(row)
         if len(fresh) >= 5:
             break
@@ -362,16 +473,24 @@ def main() -> int:
 
     saw_texas = False
     saw_alaska = False
+    saw_safeguard = False
+    saw_funding_guard = False
     tagged_rows: list[tuple[dict, list[str]]] = []
     for row in fresh:
-        tags = _tags(row["title"])
+        tags = _tags(row["title"], row["source"])
         tagged_rows.append((row, tags))
         if "텍사스 AI 전력" in tags or "1호/엔시날" in tags or "가스발전 설비" in tags:
             saw_texas = True
         if any(tag.startswith("알래스카 LNG") for tag in tags):
             saw_alaska = True
+        if "수익배분/손실분담" in tags or "공식정정/정부입장" in tags:
+            saw_safeguard = True
+        if "송금절차/45영업일" in tags:
+            saw_funding_guard = True
 
-    if saw_alaska and saw_texas:
+    if saw_safeguard:
+        alert_title = "🇺🇸 대미투자·투자회수 안전판 | 최상위 중요 업데이트"
+    elif saw_alaska and saw_texas:
         alert_title = "🇺🇸 대미투자·미국 에너지 | 중요 업데이트"
     elif saw_alaska:
         alert_title = "🇺🇸 대미투자·알래스카 LNG | 중요 업데이트"
@@ -388,6 +507,14 @@ def main() -> int:
             "",
         ]
 
+    if saw_safeguard:
+        parts += _safeguard_block()
+        parts += [""]
+
+    if saw_funding_guard:
+        parts += _funding_guard_block()
+        parts += [""]
+
     if saw_texas:
         parts += _texas_ai_power_block()
         parts += [""]
@@ -399,7 +526,7 @@ def main() -> int:
     parts += _fixed_project_cost_block()
     parts += [
         "",
-        f"조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 단순 주가 반응·반복 압박 기사 제외",
+        f"조회 {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')} · 공식자료 우선 · 단순 주가 반응·사설·반복 압박·동일 사건 중복 제외",
     ]
     ALERT.write_text("\n".join(parts) + "\n", encoding="utf-8")
     print(f"new_alerts={len(fresh)}")
