@@ -2,6 +2,10 @@
 from __future__ import annotations
 
 import html
+import json
+import os
+import urllib.parse
+import urllib.request
 
 import korea_market_stress_watch_v11 as v11
 
@@ -13,6 +17,10 @@ HANARO_KBEAUTY_OFFICIAL = "https://www.hanaroetf.com/investment/insight/LeI7APPY
 TIGER_SECTOR_LIST = "https://investments.miraeasset.com/tigeretf/ko/pension/sector-country/list.do"
 AUTO_FX_NEWS = "https://www.yna.co.kr/view/AKR20260907020500008"
 AUTO_FX_SECONDARY = "https://www.fnnews.com/news/202609070837421236"
+
+TARGET_BOT_USERNAME = "khs887900887900008879_bot"
+TARGET_BOT_TOKEN_ENV = "DERIV_TELEGRAM_BOT_TOKEN"
+TARGET_CHAT_ID_ENV = "DERIV_TELEGRAM_CHAT_ID"
 
 COSMETICS_ETFS = [
     ("SOL 화장품TOP3플러스", "0008T0"),
@@ -166,10 +174,88 @@ def _append_auto_fx_timing() -> None:
     watch.ALERT_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def _send_market_alert_to_target() -> None:
+    """Send this alert only through the requested target bot, then consume the old-path file.
+
+    The workflow still contains a legacy generic sender keyed on ALERT_PATH. Removing the
+    file only after a confirmed target delivery prevents duplicate delivery to the former bot.
+    If target delivery fails, this function raises so the workflow fails before state is persisted.
+    """
+    if not watch.ALERT_PATH.exists():
+        return
+
+    token = (os.getenv(TARGET_BOT_TOKEN_ENV) or "").strip()
+    chat_id = (os.getenv(TARGET_CHAT_ID_ENV) or "").strip()
+    if not token or not chat_id:
+        raise RuntimeError(
+            f"시장 스트레스 알림 이동 실패: {TARGET_BOT_TOKEN_ENV}/{TARGET_CHAT_ID_ENV} 누락"
+        )
+
+    with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+        identity = json.loads(response.read().decode("utf-8"))
+    actual = str((identity.get("result") or {}).get("username") or "")
+    if not identity.get("ok") or actual.lower() != TARGET_BOT_USERNAME.lower():
+        raise RuntimeError(
+            f"시장 스트레스 알림 대상 봇 불일치: expected @{TARGET_BOT_USERNAME}, got @{actual or 'unknown'}"
+        )
+
+    text = watch.ALERT_PATH.read_text(encoding="utf-8").strip()
+    if not text:
+        watch.ALERT_PATH.unlink(missing_ok=True)
+        return
+
+    chunks: list[str] = []
+    while len(text) > 3800:
+        cut = text.rfind("\n\n", 0, 3800)
+        if cut < 1000:
+            cut = 3800
+        chunks.append(text[:cut].strip())
+        text = text[cut:].strip()
+    if text:
+        chunks.append(text)
+
+    message_ids: list[int | None] = []
+    for chunk in chunks:
+        payload = urllib.parse.urlencode(
+            {
+                "chat_id": chat_id,
+                "text": chunk,
+                "parse_mode": "HTML",
+                "disable_web_page_preview": "true",
+            }
+        ).encode("utf-8")
+        req = urllib.request.Request(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            data=payload,
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=30) as response:
+            result = json.loads(response.read().decode("utf-8"))
+        if not result.get("ok"):
+            raise RuntimeError(f"Telegram target rejected market stress alert: {result}")
+        message_ids.append((result.get("result") or {}).get("message_id"))
+
+    if watch.STATUS_PATH.exists():
+        status = watch.STATUS_PATH.read_text(encoding="utf-8").rstrip()
+        status += (
+            f"\n- 텔레그램 송출: @{actual} 이동 완료 · 메시지 {len(message_ids)}개"
+        )
+        watch.STATUS_PATH.write_text(status + "\n", encoding="utf-8")
+
+    print(
+        f"market_stress_target_delivery_confirmed=true bot=@{actual} "
+        f"messages={len(message_ids)} ids={message_ids}"
+    )
+
+    # Prevent the legacy workflow sender from delivering the same alert to the former bot.
+    watch.ALERT_PATH.unlink(missing_ok=True)
+
+
 def main() -> int:
     rc = v11.main()
     _append_cosmetics_fx_context()
     _append_auto_fx_timing()
+    _send_market_alert_to_target()
     return rc
 
 
