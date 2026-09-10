@@ -41,6 +41,7 @@ QUERIES = [
     '"대미투자" 수익배분 OR "위험 통합" OR risk-pooling when:3d',
     '"대미투자" "프로젝트별 손익" OR 손실분담 OR 원리금 when:3d',
     '"대미투자" "45영업일" OR "선정 통지" OR 송금 when:3d',
+    '"대미투자" "45일 안전판" OR "조기 송금" OR 조기송금 OR 조기집행 when:3d',
     '"대미투자" "확정된 바 없습니다" OR 설명자료 when:3d',
     '"대미투자" 관세 OR 301조 OR 232조 when:3d',
 ]
@@ -59,7 +60,8 @@ MATERIAL = [
     "압박", "참여", "최종투자결정", "FID", "금융종결", "오프테이크", "구매계약", "SPA", "HOA",
     "MTPA", "세제", "재산세", "파이프라인", "Glenfarne", "POSCO", "포스코", "KOGAS", "한국가스공사",
     "수익배분", "손실분담", "위험 통합", "risk-pooling", "프로젝트별 손익", "원리금", "상위 SPV",
-    "투자 SPV", "손실 상계", "45영업일", "선정 통지", "자금 납입", "송금", "확정된 바 없습니다",
+    "투자 SPV", "손실 상계", "45영업일", "45일 안전판", "선정 통지", "자금 납입", "송금", "조기 송금",
+    "조기송금", "조기 납입", "조기집행", "MOU 무시", "확정된 바 없습니다",
     "gas power", "gas plant", "gas-fired", "combined-cycle", "data center", "turbine", "permit", "construction",
     "offtake", "financial close", "pipeline", "property tax", "6.3GW", "22.3 billion", "ERCOT", "behind-the-meter",
 ]
@@ -76,7 +78,8 @@ HARD_PROGRESS_TERMS = [
     "확정", "의결", "계약", "체결", "승인", "허가", "착공", "fid", "최종투자결정",
     "financial close", "금융종결", "spa", "hoa", "오프테이크", "offtake", "구매계약",
     "투자액", "투자규모", "배정액", "지분", "사업비", "증액", "감액", "수주", "수익배분",
-    "손실분담", "프로젝트별 손익", "원리금", "45영업일", "선정 통지", "자금 납입", "송금",
+    "손실분담", "프로젝트별 손익", "원리금", "45영업일", "45일 안전판", "선정 통지", "자금 납입", "송금",
+    "조기 송금", "조기송금", "조기 납입", "조기집행", "MOU 무시",
     "확정된 바 없습니다", "설명자료", "epc", "강재 공급", "mtpa", "만톤", "억달러", "조원", "재산세", "세제",
 ]
 
@@ -90,11 +93,16 @@ OFFICIAL_SOURCE_TERMS = [
 
 SAFEGUARD_TERMS = [
     "수익배분", "손실분담", "위험 통합", "risk-pooling", "리스크 풀링", "프로젝트별 손익", "원리금",
-    "상위 spv", "투자 spv", "손실 상계", "안전판", "회수",
+    "상위 spv", "투자 spv", "손실 상계", "회수 구조", "투자회수",
 ]
 
 FUNDING_GUARD_TERMS = [
-    "45영업일", "선정 통지", "자금 납입", "자금납입", "capital call", "송금", "첫 집행", "첫 납입",
+    "45영업일", "45일 안전판", "선정 통지", "자금 납입", "자금납입", "capital call", "송금",
+    "첫 집행", "첫 납입", "조기 송금", "조기송금", "조기 납입", "조기집행", "MOU 무시", "no less than",
+]
+
+FUNDING_CONFLICT_TERMS = [
+    "45일 안전판", "45영업일", "조기 송금", "조기송금", "조기 납입", "조기집행", "MOU 무시", "no less than",
 ]
 
 
@@ -189,6 +197,9 @@ def _parse_utc(value: str) -> dt.datetime | None:
 
 def _semantic_key(row: dict) -> str:
     low = row["title"].lower()
+    if any(term.lower() in low for term in FUNDING_CONFLICT_TERMS):
+        return "funding_45day_official" if _is_official(row) else "funding_45day_media"
+
     alaska = "알래스카" in low or "alaska lng" in low
     if not alaska:
         return ""
@@ -202,10 +213,12 @@ def _semantic_key(row: dict) -> str:
 def _run_event_key(row: dict) -> str:
     low = row["title"].lower()
     official = _is_official(row)
-    if any(term.lower() in low for term in SAFEGUARD_TERMS):
-        return "safeguard_official" if official else "safeguard_media"
+    if any(term.lower() in low for term in FUNDING_CONFLICT_TERMS):
+        return "funding_45day_official" if official else "funding_45day_media"
     if any(term.lower() in low for term in FUNDING_GUARD_TERMS):
         return "funding_official" if official else "funding_media"
+    if any(term.lower() in low for term in SAFEGUARD_TERMS):
+        return "safeguard_official" if official else "safeguard_media"
     if "웨스팅하우스" in low or "westinghouse" in low:
         return "westinghouse"
     if "엔시날" in low or "encinal" in low or "6.3gw" in low:
@@ -229,8 +242,9 @@ def _tags(title: str, source: str = "") -> list[str]:
         if "설명자료" in low or "확정된 바 없습니다" in low or "사실이 아닙니다" in low or "정부 입장" in low:
             out.append("공식정정/정부입장")
     for tag, terms in [
-        ("수익배분/손실분담", ["수익배분", "손실분담", "위험 통합", "risk-pooling", "프로젝트별 손익", "원리금", "안전판", "회수"]),
-        ("송금절차/45영업일", ["45영업일", "선정 통지", "자금 납입", "자금납입", "capital call", "송금", "첫 집행"]),
+        ("수익배분/손실분담", ["수익배분", "손실분담", "위험 통합", "risk-pooling", "프로젝트별 손익", "원리금", "손실 상계", "투자회수"]),
+        ("45영업일 적용충돌", ["45일 안전판", "45영업일", "조기 송금", "조기송금", "조기 납입", "조기집행", "MOU 무시", "no less than"]),
+        ("송금절차/45영업일", ["45영업일", "45일", "선정 통지", "자금 납입", "자금납입", "capital call", "송금", "첫 집행", "첫 납입", "조기집행"]),
         ("1호/엔시날", ["엔시날", "encinal", "6.3gw"]),
         ("텍사스 AI 전력", ["texas", "텍사스", "data center", "데이터센터"]),
         ("현장발전/오프그리드", ["behind-the-meter", "on-site", "현장발전", "자체발전", "off-grid"]),
@@ -257,8 +271,10 @@ def _meaning(tags: list[str]) -> str:
         return "언론 제목보다 정부 공식 설명자료를 우선해 확정·미확정 상태를 갱신해야 합니다."
     if "수익배분/손실분담" in tags:
         return "risk-pooling 유지 여부·원리금 회수·손실 상계 범위가 2,000억달러 투자의 실제 위험을 바꿉니다."
+    if "45영업일 적용충돌" in tags:
+        return "공개 MOU에는 최소 45영업일 문구가 존재하므로, 조기송금 보도는 문구 부재가 아니라 실제 적용·별도 합의 여부를 확인해야 합니다."
     if "송금절차/45영업일" in tags:
-        return "선정 통지일·45영업일·연 200억달러 상한·자금요청 순서를 검산해야 실제 집행 확정 여부를 판단할 수 있습니다."
+        return "선정일·한국 통보일·별도 조기집행 합의·운영위 의결·실제 송금일과 금액을 순서대로 확인해야 합니다."
     if "1호/엔시날" in tags:
         return "6.3GW·223억달러 검토안의 정부 확정 여부와 한국 실제 투자부담이 핵심입니다."
     if "텍사스 AI 전력" in tags:
@@ -343,12 +359,16 @@ def _safeguard_block() -> list[str]:
 
 def _funding_guard_block() -> list[str]:
     return [
-        "<b>⏱️ 선정·송금 절차 검증 기준선</b>",
-        "• 미국의 투자처 선정 통지 후 <b>최소 45영업일 경과 뒤</b> 사업자금 납입",
-        "• 전략투자 실제 납입은 <b>연간 최대 200억달러</b>",
-        "• 사업 진척도에 따른 <b>자금요청(capital call)</b> 방식",
+        "<b>⏱️ 45영업일·조기송금 적용 검증 기준선</b>",
+        "• 📜 <b>문서상 원칙</b>: 공개 MOU에는 미국의 투자처 선정 통지 후 <b>최소 45영업일 경과 뒤</b> 사업자금 납입 문구가 존재",
+        "• ⚠️ <b>실제 적용</b>: 조기 송금 보도가 등장했으므로 45영업일을 '절대적 하드 안전판'으로 단정하지 않고 별도 합의·운영해석을 확인",
+        "• 🔎 <b>제목 검증</b>: '45일 안전판이 없었다'는 기사 제목을 <b>MOU 문구 자체가 없다는 뜻으로 저장하지 않음</b>",
+        "• 🏛 <b>최신 확인 정부 공식상태(2026-09-09)</b>: 산업통상부·재정경제부는 첫 송금 <b>규모·시기가 확정된 바 없다고 설명</b>",
+        "• 전략투자 실제 납입은 <b>연간 최대 200억달러</b>이며 사업 진척도에 따른 <b>자금요청(capital call)</b> 방식",
         "• 외환시장 불안 우려 시 한국은 <b>납입 시기·규모 조정 요구 가능</b>",
-        "• 따라서 '첫 송금 확정' 알림은 <b>선정 통지일 → 45영업일 → 국내 심의·의결 → 자금요청 → 실제 송금</b> 순서 확인",
+        "",
+        "<b>다음 확인</b>",
+        "1) 미국 대통령 사업 선정일  2) 한국 통보일  3) 조기집행 별도 합의·운영해석  4) 국내 운영위 의결  5) 실제 송금일·금액",
     ]
 
 
@@ -475,6 +495,7 @@ def main() -> int:
     saw_alaska = False
     saw_safeguard = False
     saw_funding_guard = False
+    saw_funding_conflict = False
     tagged_rows: list[tuple[dict, list[str]]] = []
     for row in fresh:
         tags = _tags(row["title"], row["source"])
@@ -485,11 +506,17 @@ def main() -> int:
             saw_alaska = True
         if "수익배분/손실분담" in tags or "공식정정/정부입장" in tags:
             saw_safeguard = True
-        if "송금절차/45영업일" in tags:
+        if "송금절차/45영업일" in tags or "45영업일 적용충돌" in tags:
             saw_funding_guard = True
+        if "45영업일 적용충돌" in tags:
+            saw_funding_conflict = True
 
-    if saw_safeguard:
+    if saw_safeguard and saw_funding_conflict:
+        alert_title = "🇺🇸 대미투자·회수·집행 안전판 | 최상위 중요 업데이트"
+    elif saw_safeguard:
         alert_title = "🇺🇸 대미투자·투자회수 안전판 | 최상위 중요 업데이트"
+    elif saw_funding_conflict:
+        alert_title = "🇺🇸 대미투자·45영업일·조기송금 | 최상위 중요 업데이트"
     elif saw_alaska and saw_texas:
         alert_title = "🇺🇸 대미투자·미국 에너지 | 중요 업데이트"
     elif saw_alaska:
