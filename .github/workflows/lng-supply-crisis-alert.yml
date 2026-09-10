@@ -26,6 +26,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v21.py"
       - "scripts/lng_supply_crisis_alert_v22.py"
       - "scripts/lng_supply_crisis_alert_v23.py"
+      - "scripts/lng_supply_crisis_alert_v24.py"
 
 permissions:
   contents: write
@@ -50,50 +51,41 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v23 monitor
+      - name: Validate v24 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py
           python - <<'PY'
           import sys, time
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v23 as v23
+          import lng_supply_crisis_alert_v24 as v24
 
-          assert core.classify_subtype("European natural gas TTF surpasses 80 euros per megawatt-hour") == "ttf_intraday_80"
-          assert core.classify_subtype("Dutch TTF jumps above 90 euros per megawatt-hour") == "ttf_intraday_90"
-          assert core.classify_subtype("TTF above 100 euros per megawatt-hour") == "ttf_intraday_100"
+          assert core.classify_subtype("정부-가스공사 LNG 화물창 국산화 KC-2 재도전") == "lng_cargo_tank_localization"
+          assert core.classify_subtype("KC-2 대형선 실증 추진") == "lng_cargo_tank_large_demo"
+          assert core.classify_subtype("LNG 화물창 국적선 발주") == "lng_cargo_tank_commercial_order"
 
           item = core.NewsItem(
-              category="europe_storage", polarity="worsening", subtype="ttf_intraday_80",
-              title="European gas TTF surpasses 80 euros per megawatt-hour",
-              source="Yonhap", link="https://example.com/ttf80",
-              published_utc="2026-09-09T12:00:00+00:00", published_epoch=time.time(),
-              official=False, event_id="fixture-base-id",
+              category="korea_supply", polarity="easing", subtype="lng_cargo_tank_localization",
+              title="정부-가스공사 LNG 화물창 국산화 재도전",
+              source="한국경제", link="https://www.hankyung.com/article/202609106199i",
+              published_utc="2026-09-10T07:00:00+00:00", published_epoch=time.time(),
+              official=False, event_id="fixture-cargo-tank",
           )
-          groups = v23.confirmed_news_groups_v23([item])
-          assert any(g.get("subtype") == "ttf_intraday_80" for g in groups)
-
-          quote = core.Quote(
-              key="ttf", symbol="TTF", label="Trading Economics EU Gas(TTF 추종 공개값)", unit="유로/MWh",
-              price=79.32, previous_close=75.80, change_pct=4.64,
-              timestamp_epoch=time.time(), timestamp_utc="2026-09-09T15:00:00+00:00", age_minutes=0,
-              source_note="fixture",
-          )
-          section = "\n".join(v23._ttf_intraday_section([
-              {"subtype":"ttf_intraday_80"}
-          ], {"ttf":quote}))
-          assert "80유로/MWh" in section
-          assert "현재 공개값은 재하회" in section
-          assert "장중 고가 ≠ 현재가/종가" in section
-          print("v23_validation=true")
+          groups = v24.confirmed_news_groups_v24([item])
+          assert any(g.get("subtype") == "lng_cargo_tank_localization" for g in groups)
+          section = "\n".join(v24._cargo_tank_section(groups))
+          assert "현재 단계" in section
+          assert "정부·가스공사 국산화 추진" in section
+          assert "정부 재추진/워킹그룹 ≠ 대형선 실증 성공 ≠ 상용 발주" in section
+          print("v24_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v23.py --setup-test
+            python scripts/lng_supply_crisis_alert_v24.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v23.py
+            python scripts/lng_supply_crisis_alert_v24.py
           fi
 
       - name: Publish status summary
@@ -179,7 +171,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v23.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v24.py --finalize
 
       - name: Upload verification artifacts
         if: always()
