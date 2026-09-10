@@ -11,10 +11,11 @@ import lng_supply_crisis_alert_v23 as v23
 # 국적 LNG선 발주/실증으로 연결되는 투자 촉매이므로 별도 축으로 감시한다.
 LNG_CARGO_TANK_QUERIES = (
     ("korea_supply", '한국 LNG 화물창 국산화 KC-2 가스공사 정부 대형선 실증 when:7d'),
-    ("korea_supply", 'LNG 화물창 국산화 국적선 발주 KC-2 삼성중공업 HD현대중공업 when:7d'),
+    ("korea_supply", 'LNG 화물창 국산화 국적선 발주 KC-2 HD현대중공업 삼성중공업 한화오션 when:7d'),
     ("korea_supply", 'Korea LNG cargo containment KC-2 commercialization KOGAS when:7d'),
     ("korea_supply", 'Korea LNG cargo tank GTT royalty localization ship order when:7d'),
     ("korea_supply", 'LNG 화물창 GTT 기술료 국산화 실증선 발주 when:14d'),
+    ("korea_supply", 'KC-2 한국선급 선급 승인 LNG 화물창 실증 when:14d'),
 )
 for item in LNG_CARGO_TANK_QUERIES:
     if item not in core.NEWS_QUERIES:
@@ -41,7 +42,7 @@ core.SUBTYPE_TERMS = (
         "국적선 발주", "실증선 발주", "commercial order", "first commercial order",
     )),
     ("lng_cargo_tank_certification", (
-        "형식승인", "설계승인", "기술인증", "type approval", "design approval", "certification",
+        "형식승인", "설계승인", "기술인증", "선급 승인", "type approval", "design approval", "certification",
     )),
     ("lng_cargo_tank_large_demo", (
         "대형선 실증", "대형 lng", "17만 4000", "174,000", "large-scale demonstration", "large lng carrier",
@@ -107,7 +108,7 @@ def _cargo_tank_stage(subtype: str) -> tuple[str, int]:
     if subtype == "lng_cargo_tank_commercial_order":
         return "국적선/실증선 실제 발주", 4
     if subtype == "lng_cargo_tank_certification":
-        return "형식·설계·기술 인증", 3
+        return "형식·설계·선급 인증", 3
     if subtype == "lng_cargo_tank_large_demo":
         return "대형 LNG선 실증", 2
     return "정부·가스공사 국산화 추진", 1
@@ -125,7 +126,7 @@ def _cargo_tank_section(groups) -> list[str]:
         "• <b>기술 기준선</b> KC-2는 소형 LNG 벙커링선 적용으로 기본 안전성 검증을 거쳤지만, 대형 LNG 운반선 상용 실적은 별도 확인이 필요",
         "• <b>정책 기준선</b> 정부·가스공사·조선업계가 대형선 최종 실증, 신규 국적선 발주, 비용·기술리스크 분담을 검토해 온 사안",
         "• <b>왜 중요한가</b> LNG 화물창은 영하 163℃ LNG를 저장하는 핵심 기자재로, 국산화 성공 시 해외 기술 의존·기술료 부담을 낮추고 조선 기자재 부가가치를 국내에 남길 수 있음",
-        "• <b>직접 확인 대상</b> 한국가스공사·KC LNG Tech·HD현대중공업·삼성중공업·국적선사·한국선급/선급 인증",
+        "• <b>직접 확인 대상</b> 한국가스공사·KC LNG Tech·국내 조선 3사(HD현대·한화오션·삼성중공업)·국적선사·한국선급/해외 선급",
         "• <b>주의</b> 정부 재추진/워킹그룹 ≠ 대형선 실증 성공 ≠ 상용 발주. 실제 발주·인증·운항 실적이 나올 때마다 단계 상향",
         "• <b>투자 연결</b> 조선사 원가·로열티 구조 개선 가능성 → 멤브레인·보냉재·극저온 기자재 국산 공급망 확대 여부 확인",
         "• <b>다음 확인</b> 실증 방식 확정 → 대상 선박/조선소 선정 → 예산·리스크 분담 → 선급 승인 → 실제 발주 → 시운전·운항 → 상용 수주",
@@ -143,7 +144,7 @@ def build_regular_alert_v24(groups, quotes, new_signals, cleared_signals):
         "stages": [
             "정부·가스공사 국산화 추진",
             "대형 LNG선 실증",
-            "형식·설계·기술 인증",
+            "형식·설계·선급 인증",
             "국적선/실증선 실제 발주",
         ],
         "rule": "policy/demo/certification/order are distinct milestones; never label policy discussion as commercial order",
