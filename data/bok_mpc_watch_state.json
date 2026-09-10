@@ -51,8 +51,8 @@
     "as_of_date": "2026-08-27"
   },
   "rate_signal_upgrade": {
-    "version": 2,
-    "updated_at_kst": "2026-09-10T13:40:16+09:00",
+    "version": 3,
+    "updated_at_kst": "2026-09-10T15:08:20+09:00",
     "risk_score": 6,
     "grade_emoji": "🟠",
     "grade_label": "인상 압력 확대",
@@ -84,15 +84,69 @@
       "housing": null,
       "oil": {
         "date": "2026-09-10",
-        "brent_usd": 101.03,
-        "change_5d_pct": 5.65,
+        "brent_usd": 100.48,
+        "change_5d_pct": 5.07,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
       }
     },
     "rhetoric_score": 0,
-    "recent_rhetoric": [],
-    "seen_rhetoric_hashes": []
+    "recent_rhetoric": [
+      {
+        "speaker": "박종우",
+        "date": "2026-09-10",
+        "flags": {
+          "hike_needed": false,
+          "neutral_upper": false,
+          "inflation_upside": false,
+          "middle_east_inflation": false,
+          "oct_hike_caution": true,
+          "rate_not_only_tool": false,
+          "macroprudential_mix": false,
+          "hike_timing_speed": false,
+          "next_meeting_hawk": false,
+          "next_meeting_caution": false,
+          "two_hikes_effect": false,
+          "demand_inflation": false,
+          "middle_east_cost": false
+        },
+        "title": "박종우 부총재보 \"금융안정, 긴 시계로 봐야…10월 인상 해석 좀 무리\" - 연합인포맥스",
+        "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9ONllIcjd5UW40OGJ6NFB2OFc1S0ZwZWR5YloxZFl1eThTdHlEU3RpV0M4eHBaNG5pT0xINTFrWHRDYU1MQUptcUV2d3hSRDRUbnNEbTdIUGNHaDR1bWY2OVRCam03Ui12YkhINXdYTjfSAXRBVV95cUxNYlYxOS14WWl5QlhvaXBzRTUzRlZrVk5nRHdxSEQyaHNVaGd0VHRMR09QOUU3RGxWZkMwck9zWWFpNy12S04tZC1FczkwVWVfSVVvOEdodmtnb0lIcXV2SzBrLW11dE1veGI0MmpUdHdYT1B5Mg?oc=5",
+        "source_name": "연합인포맥스",
+        "published_at_kst": "2026-09-10T14:00+09:00",
+        "event_hash": "5be88233156f29ad1bc2ecc1a91836e3822516286e2c5ed7f0d36c0f802c6568",
+        "score": -2
+      },
+      {
+        "speaker": "김종화",
+        "date": "2026-09-10",
+        "flags": {
+          "macroprudential_mix": false,
+          "oct_hike_caution": false,
+          "hike_timing_speed": false,
+          "next_meeting_caution": false,
+          "hike_needed": true,
+          "rate_not_only_tool": false,
+          "demand_inflation": false,
+          "middle_east_cost": false,
+          "neutral_upper": false,
+          "two_hikes_effect": false,
+          "middle_east_inflation": true,
+          "inflation_upside": false,
+          "next_meeting_hawk": false
+        },
+        "title": "김종화 금통위원 \"금리 추가 인상 시기·속도, 중동 긴장·반도체 파급 효과 등이 가를 것\" - 아시아경제",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5ER2huTFMzNjlSbzZnbGtrMWpETjRtRVhXSEg2eThJMGdKdmQ5OGt0QzBycWNycWpEZE9GQk4zaHU4eVU4ZWQyamwzaHVGRk8zbHB6ZVVIbFBuTWlsQ0ZOTm9R?oc=5",
+        "source_name": "아시아경제",
+        "published_at_kst": "2026-09-10T12:00+09:00",
+        "event_hash": "cfc9ecc85da2f4cf06e52a4322dc9c7e5764e4f4b5d5a6c343b20b7ddf0d2528",
+        "score": 2
+      }
+    ],
+    "seen_rhetoric_hashes": [
+      "5be88233156f29ad1bc2ecc1a91836e3822516286e2c5ed7f0d36c0f802c6568",
+      "cfc9ecc85da2f4cf06e52a4322dc9c7e5764e4f4b5d5a6c343b20b7ddf0d2528"
+    ]
   }
 }
