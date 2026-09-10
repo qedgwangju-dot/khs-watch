@@ -1,10 +1,10 @@
 {
   "status": "active",
-  "principle": "Carry unwind risk, structural JGB stress, capital repatriation and persistent yen weakness are separate questions. Never infer an unwind from JGB 10Y 3% alone.",
+  "principle": "Carry unwind risk, structural JGB stress, capital repatriation, predictable BOJ tightening, quiet re-leveraging and persistent yen weakness are separate questions. Never infer an unwind from JGB 10Y 3% or a scheduled BOJ hike alone.",
   "risk_colour": {
     "green": "current unwind / market-stress risk unconfirmed",
-    "yellow": "structural vulnerability / watch",
-    "orange": "active unwind warning with yen-strength plus corroborating funding or volatility pressure",
+    "yellow": "structural vulnerability / crowded quiet carry / policy-path repricing watch",
+    "orange": "active unwind warning with yen-strength plus corroborating funding, target-currency or volatility pressure",
     "red": "yen-strength shock plus funding pressure plus volatility/cross-asset deleveraging confirmation"
   },
   "fast_unwind_factors": [
@@ -15,6 +15,22 @@
     "CFTC leveraged-fund JPY positioning",
     "official intervention context"
   ],
+  "target_currency_confirmation": [
+    "MXN/JPY derived from USD/JPY and USD/MXN 5-minute data",
+    "BRL/JPY derived from USD/JPY and USD/BRL 5-minute data",
+    "ZAR/JPY derived from USD/JPY and USD/ZAR 5-minute data",
+    "at least 2 of 3 target currencies weakening materially versus JPY plus a yen shock can confirm orange-level carry-unwind spread",
+    "target-currency weakness alone can never create a red alert"
+  ],
+  "policy_path_and_releveraging": {
+    "purpose": "Distinguish a gradual, anticipated BOJ tightening path from abrupt market repricing and from low-volatility leverage rebuilding.",
+    "hawkish_repricing_proxy": "new official Japan 2Y JGB change >= +10bp or US-Japan 2Y spread change <= -15bp",
+    "quiet_volatility": "12-hour realized USD/JPY volatility ratio <= 1.10 versus the prior-block median",
+    "crowded_yen_short": "CFTC leveraged-fund net yen short >= 10% of open interest",
+    "quiet_releveraging_event": "new CFTC report shows a larger net yen short while volatility is quiet, the US-Japan 2Y spread remains above 2.0%p and no yen shock is active",
+    "risk_treatment": "quiet crowded leverage is yellow vulnerability; abrupt short-rate repricing plus a yen shock creates an orange floor; neither can create red without broader funding/volatility/deleveraging confirmation",
+    "important_limit": "thresholds are monitoring heuristics, not BOJ/BIS official thresholds"
+  },
   "structural_factors": [
     "Japan 10Y JGB 3% as a structural/fiscal boundary, not an automatic unwind trigger",
     "consecutive official JGB 10Y closes at or above 3%",
@@ -31,7 +47,8 @@
     "intraday_fx": "Yahoo query1/query2 cross-check; may be delayed"
   },
   "not_yet_scored": [
-    "BOJ OIS hike probability until a reliable automated market source is locked",
+    "BOJ OIS hike probability or economist-consensus path until a reliable automated market source is locked",
+    "FX option implied volatility until a reliable automated market source is locked",
     "bank/overseas yen funding balances until the exact BOJ/BIS official series used by market commentary is identified"
   ],
   "alert_policy": {
@@ -42,6 +59,9 @@
       "unwind level change",
       "rebuild level change",
       "new short-covering / yen-weakness divergence",
+      "new low-volatility CFTC yen-short rebuilding event",
+      "new abrupt Japan 2Y / US-Japan 2Y policy-path repricing event",
+      "carry target-currency spread confirmation entering, deepening or clearing",
       "JGB 10Y entering or leaving the 3% structural boundary",
       "JGB 10Y remaining at or above 3% for at least two official business-day closes",
       "new Japan MOF outward-flow release when risk is active or long-term-debt direction changes",
