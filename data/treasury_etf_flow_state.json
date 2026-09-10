@@ -79,7 +79,7 @@
         "shares_date": "2026-09-09",
         "nav": 81.62,
         "shares": 320300000.0,
-        "sec_yield": 4.15,
+        "sec_yield": 4.17,
         "nav_change_pct": null,
         "net_assets": 26142359380.0,
         "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
@@ -165,7 +165,7 @@
         "shares_date": "2026-09-09",
         "nav": 91.87,
         "shares": 455900000.0,
-        "sec_yield": 4.56,
+        "sec_yield": 4.59,
         "nav_change_pct": null,
         "net_assets": 41883731780.0,
         "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
@@ -251,7 +251,7 @@
         "shares_date": "2026-09-09",
         "nav": 81.71,
         "shares": 570300000.0,
-        "sec_yield": 5.19,
+        "sec_yield": 5.23,
         "nav_change_pct": null,
         "net_assets": 46598906194.0,
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
@@ -286,7 +286,7 @@
         "nav_change_pct": null,
         "net_assets": 29474001054.0,
         "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
-        "oas_bps": 85.36,
+        "oas_bps": 84.33,
         "flow_usd": -263150000.0
       }
     ],
@@ -318,22 +318,22 @@
         "nav_change_pct": null,
         "net_assets": 15268423066.0,
         "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
-        "oas_bps": 242.2,
+        "oas_bps": 245.88,
         "flow_usd": -63160000.0
       }
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-09-10T10:16:27+09:00",
+    "at_kst": "2026-09-11T07:10:18+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      113
+      136
     ],
     "overall": "혼조·추가 확인",
-    "treasury_flow": "국채 내부 혼조",
-    "credit_flow": "품질 선호·선제적 위험축소",
+    "treasury_flow": "장기채 위험 확대",
+    "credit_flow": "회사채 위험축소",
     "curve_regime": "베어 플래트닝",
-    "treasury_date": "2026-09-09",
+    "treasury_date": "2026-09-10",
     "format": "treasury-credit-ishares-oas-v1"
   }
 }
