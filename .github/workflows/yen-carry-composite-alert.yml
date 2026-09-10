@@ -14,14 +14,15 @@ on:
       - "scripts/yen_carry_risk_refine.py"
       - "scripts/yen_carry_structural_upgrade.py"
       - "scripts/yen_carry_structural_risk_floor.py"
+      - "scripts/yen_carry_policy_path_overlay.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_composite_watch.py"
       - "tests/test_yen_carry_composite_sources.py"
       - "tests/test_yen_carry_structural_upgrade.py"
       - "tests/test_yen_carry_target_currency_confirmation.py"
+      - "tests/test_yen_carry_policy_path_overlay.py"
   schedule:
-    # Structural sources are daily/weekly; 15-minute polling is sufficient.
     - cron: "6,21,36,51 * * * *"
   workflow_dispatch:
   pull_request:
@@ -35,12 +36,14 @@ on:
       - "scripts/yen_carry_risk_refine.py"
       - "scripts/yen_carry_structural_upgrade.py"
       - "scripts/yen_carry_structural_risk_floor.py"
+      - "scripts/yen_carry_policy_path_overlay.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_composite_watch.py"
       - "tests/test_yen_carry_composite_sources.py"
       - "tests/test_yen_carry_structural_upgrade.py"
       - "tests/test_yen_carry_target_currency_confirmation.py"
+      - "tests/test_yen_carry_policy_path_overlay.py"
       - "data/yen_carry_composite_design.json"
       - "data/yen_carry_composite_state.json"
       - "data/yen_carry_structural_state.json"
@@ -84,21 +87,27 @@ jobs:
           python -m py_compile scripts/yen_carry_risk_refine.py
           python -m py_compile scripts/yen_carry_structural_upgrade.py
           python -m py_compile scripts/yen_carry_structural_risk_floor.py
+          python -m py_compile scripts/yen_carry_policy_path_overlay.py
           PYTHONPATH=scripts python -m unittest \
             tests/test_yen_carry_composite_watch.py \
             tests/test_yen_carry_composite_sources.py \
             tests/test_yen_carry_structural_upgrade.py \
-            tests/test_yen_carry_target_currency_confirmation.py -v
+            tests/test_yen_carry_target_currency_confirmation.py \
+            tests/test_yen_carry_policy_path_overlay.py -v
 
       - name: Check multi-factor carry state
         run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py
 
-      - name: Check deleveraging and target-currency confirmation layers
+      - name: Check daily deleveraging confirmation layer
         if: always()
         run: python scripts/yen_carry_confirmation.py
 
+      - name: Check carry target-currency spread confirmation
+        if: always() && hashFiles('out/yen_carry_composite_pending_state.json') != ''
+        run: PYTHONPATH=scripts python scripts/yen_carry_target_currency_confirmation.py
+
       - name: Add JGB 3 percent, repatriation and auction structure
-        if: always()
+        if: always() && hashFiles('out/yen_carry_composite_pending_state.json') != ''
         run: PYTHONPATH=scripts python scripts/yen_carry_structural_upgrade.py
 
       - name: Refine current unwind risk hierarchy
@@ -108,6 +117,10 @@ jobs:
       - name: Apply yellow-only JGB structural floor
         if: hashFiles('out/yen_carry_composite_alert.md') != ''
         run: python scripts/yen_carry_structural_risk_floor.py
+
+      - name: Add predictable-tightening and quiet-releveraging overlay
+        if: always() && hashFiles('out/yen_carry_composite_pending_state.json') != ''
+        run: python scripts/yen_carry_policy_path_overlay.py
 
       - name: Require all structural sources in validation
         if: github.event_name == 'pull_request'
@@ -136,18 +149,16 @@ jobs:
           else
             echo "엔캐리 복합 수급 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
-          if [ -f out/yen_carry_confirmation.md ]; then
-            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
-            cat out/yen_carry_confirmation.md >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f out/yen_carry_target_currency_context.md ]; then
-            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
-            cat out/yen_carry_target_currency_context.md >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f out/yen_carry_structural_context.md ]; then
-            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
-            cat out/yen_carry_structural_context.md >> "$GITHUB_STEP_SUMMARY"
-          fi
+          for f in \
+            out/yen_carry_confirmation.md \
+            out/yen_carry_target_currency_context.md \
+            out/yen_carry_structural_context.md \
+            out/yen_carry_policy_path_context.md; do
+            if [ -f "$f" ]; then
+              printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+              cat "$f" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
 
       - name: Preview pull request alert without sending
         if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/yen_carry_composite_alert.md') != ''
@@ -326,6 +337,8 @@ jobs:
             out/yen_carry_structural_context.md
             out/yen_carry_structural_context.json
             out/yen_carry_structural_pending_state.json
+            out/yen_carry_policy_path_context.md
+            out/yen_carry_policy_path_context.json
             out/khs_source_failures.json
           if-no-files-found: ignore
           retention-days: 14
