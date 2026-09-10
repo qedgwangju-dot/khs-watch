@@ -1,5 +1,24 @@
 {
-  "failure_streaks": {},
+  "failure_streaks": {
+    "domestic_stablecoin|fsc.go.kr": {
+      "lane": "domestic_stablecoin",
+      "last_seen_kst": "2026-09-10T16:45:52+09:00",
+      "source": "Financial Services Commission stablecoin releases",
+      "streak": 1
+    },
+    "domestic_stablecoin|korea.kr": {
+      "lane": "domestic_stablecoin",
+      "last_seen_kst": "2026-09-10T16:45:52+09:00",
+      "source": "Korea Policy Briefing digital asset search",
+      "streak": 1
+    },
+    "domestic_telecom|korea.kr": {
+      "lane": "domestic_telecom",
+      "last_seen_kst": "2026-09-10T16:45:52+09:00",
+      "source": "Korea Policy Briefing telecom policy",
+      "streak": 1
+    }
+  },
   "seen": {
     "02e2949450e1137c": {
       "failure_count": 2,
@@ -213,6 +232,16 @@
         "Korea Policy Briefing telecom policy",
         "Financial Services Commission stablecoin releases",
         "Financial Services Commission stablecoin explanations"
+      ]
+    },
+    "7c45249422300ea1": {
+      "failure_count": 3,
+      "first_seen_kst": "2026-09-10T16:45:52+09:00",
+      "logical_failure_count": 3,
+      "sources": [
+        "Korea Policy Briefing telecom policy",
+        "Financial Services Commission stablecoin releases",
+        "Korea Policy Briefing digital asset search"
       ]
     },
     "7e1968775836893e": {
