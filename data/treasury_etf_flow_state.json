@@ -70,6 +70,20 @@
         "net_assets": 26252959454.0,
         "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
         "flow_usd": 0.0
+      },
+      {
+        "ticker": "SHY",
+        "label": "미 국채 1~3년",
+        "date": "2026-09-09",
+        "nav_date": "2026-09-09",
+        "shares_date": "2026-09-09",
+        "nav": 81.62,
+        "shares": 320300000.0,
+        "sec_yield": 4.15,
+        "nav_change_pct": null,
+        "net_assets": 26142359380.0,
+        "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
+        "flow_usd": -97944000.0
       }
     ],
     "IEF": [
@@ -142,6 +156,20 @@
         "net_assets": 41916120012.0,
         "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
         "flow_usd": 0.0
+      },
+      {
+        "ticker": "IEF",
+        "label": "미 국채 7~10년",
+        "date": "2026-09-09",
+        "nav_date": "2026-09-09",
+        "shares_date": "2026-09-09",
+        "nav": 91.87,
+        "shares": 455900000.0,
+        "sec_yield": 4.56,
+        "nav_change_pct": null,
+        "net_assets": 41883731780.0,
+        "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
+        "flow_usd": 91870000.0
       }
     ],
     "TLT": [
@@ -214,6 +242,20 @@
         "net_assets": 46862926586.0,
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
         "flow_usd": -188991000.0
+      },
+      {
+        "ticker": "TLT",
+        "label": "미 국채 20년 이상",
+        "date": "2026-09-09",
+        "nav_date": "2026-09-09",
+        "shares_date": "2026-09-09",
+        "nav": 81.71,
+        "shares": 570300000.0,
+        "sec_yield": 5.19,
+        "nav_change_pct": null,
+        "net_assets": 46598906194.0,
+        "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
+        "flow_usd": 0.0
       }
     ],
     "LQD": [
@@ -231,6 +273,21 @@
         "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
         "oas_bps": 85.64,
         "flow_usd": null
+      },
+      {
+        "ticker": "LQD",
+        "label": "미 투자등급 회사채",
+        "date": "2026-09-09",
+        "nav_date": "2026-09-09",
+        "shares_date": "2026-09-09",
+        "nav": 105.26,
+        "shares": 280000000.0,
+        "sec_yield": 5.61,
+        "nav_change_pct": null,
+        "net_assets": 29474001054.0,
+        "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
+        "oas_bps": 85.36,
+        "flow_usd": -263150000.0
       }
     ],
     "HYG": [
@@ -248,20 +305,35 @@
         "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
         "oas_bps": 240.29,
         "flow_usd": null
+      },
+      {
+        "ticker": "HYG",
+        "label": "미 고수익 회사채",
+        "date": "2026-09-09",
+        "nav_date": "2026-09-09",
+        "shares_date": "2026-09-09",
+        "nav": 78.95,
+        "shares": 193400000.0,
+        "sec_yield": 6.52,
+        "nav_change_pct": null,
+        "net_assets": 15268423066.0,
+        "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
+        "oas_bps": 242.2,
+        "flow_usd": -63160000.0
       }
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-09-09T21:24:37+09:00",
+    "at_kst": "2026-09-10T10:16:27+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      111
+      113
     ],
     "overall": "혼조·추가 확인",
     "treasury_flow": "국채 내부 혼조",
-    "credit_flow": "신용 Fund Flow 판정 대기",
-    "curve_regime": "커브 트위스트·혼조",
-    "treasury_date": "2026-09-08",
+    "credit_flow": "품질 선호·선제적 위험축소",
+    "curve_regime": "베어 플래트닝",
+    "treasury_date": "2026-09-09",
     "format": "treasury-credit-ishares-oas-v1"
   }
 }
