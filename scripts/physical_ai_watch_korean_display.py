@@ -4,7 +4,7 @@
 Raw titles/sources are kept unchanged for deduplication and evidence matching.
 Only user-visible Telegram text is normalized to Korean explanatory wording,
 while identifiers such as ROBOTIS, NVIDIA, AI Sapiens, AI Worker, Isaac,
-GR00T, Jetson, DYNAMIXEL-Q and model names remain in their original form.
+GR00T, Jetson, DYNAMIXEL-Q, MoMA, CLOiD and RFM remain identifiable.
 
 For readability, the clickable original-article link is rendered on the same
 line as source and timestamp instead of taking a separate line.
@@ -16,9 +16,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import physical_ai_watch_robotis_nvidia as nv
+import physical_ai_watch_lg_factory_loop as lg
 
-base = nv.base
+base = lg.base
 
 _orig_esc_text = base.esc_text
 
@@ -53,11 +53,23 @@ def _display_ko(value: str) -> str:
     s = re.sub(r'\bSponsored Technical Workshop\b', '공동 기술 워크숍', s, flags=re.I)
     s = re.sub(r'\bROBOTIS Docs\b', 'ROBOTIS 공식 기술문서', s, flags=re.I)
     s = re.sub(r'\bNVIDIA Developer\b', 'NVIDIA 개발자 공식자료', s, flags=re.I)
+    s = re.sub(r'\bLG Global Newsroom\b', 'LG전자 글로벌 뉴스룸', s, flags=re.I)
+    s = re.sub(r'\bLG Newsroom\b', 'LG전자 뉴스룸', s, flags=re.I)
+    s = re.sub(r'\bLG Electronics\b', 'LG전자', s, flags=re.I)
 
     # General explanatory terms: Korean first, identifiers stay unchanged.
     s = re.sub(r'라이브\s*데모|live\s*demo', '현장 시연', s, flags=re.I)
     s = re.sub(r'NVIDIA\s+스택', 'NVIDIA 소프트웨어 체계', s, flags=re.I)
     s = re.sub(r'\bsoftware stack\b', '소프트웨어 체계', s, flags=re.I)
+    s = re.sub(r'\bsmart\s*factory\b', '스마트팩토리', s, flags=re.I)
+    s = re.sub(r'\bData\s*Factory\b', '데이터팩토리', s, flags=re.I)
+    s = re.sub(r'\bdata\s*flywheel\b', '데이터 선순환', s, flags=re.I)
+    s = re.sub(r'\bRobot\s*Foundation\s*Model\b', '로봇 파운데이션 모델(RFM)', s, flags=re.I)
+    s = re.sub(r'\bmass\s*production\b', '양산', s, flags=re.I)
+    s = re.sub(r'\binitial\s*production\b', '초도 생산', s, flags=re.I)
+    s = re.sub(r'\bqualification\b', '고객 검증', s, flags=re.I)
+    s = re.sub(r'\buptime\b', '가동률', s, flags=re.I)
+    s = re.sub(r'\bhuman\s*intervention\b', '사람 개입', s, flags=re.I)
     s = re.sub(r'기술통합', '기술 통합', s)
     s = re.sub(r'레퍼런스\s*플랫폼', '참조 플랫폼', s)
     s = re.sub(r'레퍼런스\s*등재', '참조 사례 등재', s)
