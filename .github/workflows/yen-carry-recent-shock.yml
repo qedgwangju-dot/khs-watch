@@ -12,8 +12,9 @@ on:
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_recent_shock.py"
   schedule:
-    # Fast FX lane: preserve a 90-minute shock memory even after the immediate move rebounds.
-    - cron: "*/5 * * * *"
+    # Five-minute cadence, deliberately offset from minute 0 because GitHub documents
+    # that scheduled runs can be delayed or dropped during high-load periods.
+    - cron: "1,6,11,16,21,26,31,36,41,46,51,56 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -21,7 +22,9 @@ permissions:
 
 concurrency:
   group: yen-carry-recent-shock
-  cancel-in-progress: true
+  # Do not cancel an in-flight run just because the next five-minute slot arrived.
+  # The next run can recover the last six hours of FX history if one slot is delayed.
+  cancel-in-progress: false
 
 jobs:
   monitor:
