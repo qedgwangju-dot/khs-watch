@@ -11,6 +11,7 @@ import hashlib
 import json
 import urllib.parse
 import urllib.request
+import time
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -34,7 +35,7 @@ FORMAT_REVISION = 11
 # come from Fiscal Data instead.
 BUYBACK_API = (
     "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/"
-    "accounting/od/buybacks_operations?sort=-operation_date&page%5Bsize%5D=100"
+    "accounting/od/buybacks_operations?sort=-operation_date&page%5Bsize%5D=12"
 )
 BUYBACK_RESULTS_PAGE = (
     "https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/"
@@ -65,9 +66,17 @@ LONG_END_BUCKETS = {"10Y to 20Y", "20Y to 30Y"}
 
 
 def fetch_text(url: str) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 khs-watch/3.0"})
-    with urllib.request.urlopen(req, timeout=25) as response:
-        return response.read().decode("utf-8", errors="replace")
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 khs-watch/3.1"})
+    errors = []
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=15) as response:
+                return response.read().decode("utf-8", errors="replace")
+        except Exception as exc:
+            errors.append(f"{type(exc).__name__}: {exc}")
+            if attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+    raise RuntimeError(f"자료 조회 실패: {url} / {' | '.join(errors)}")
 
 
 def load_state() -> dict:
@@ -228,8 +237,6 @@ def classify_execution(
     if cap_use is None:
         return "⚪", "집행 강도 확인 불가"
 
-    # A less-than-full purchase is not automatically weak demand. If offers exceed
-    # the cap materially, a partial fill can reflect Treasury price discipline.
     if cap_use >= 95:
         return "🟢", "상한 거의 전액 집행"
     if cap_use >= 80 and offer_cap is not None and offer_cap >= 1.25:
@@ -415,8 +422,6 @@ def main() -> int:
 
     old_fingerprint = state.get("latest_long_end_fingerprint")
     is_new = old_fingerprint != fingerprint
-    # Migration rule: if the old HTML-based watcher never stored a structured
-    # fingerprint, send only the current Sep-10-or-later result, not historical rows.
     should_alert = is_new and (old_fingerprint is not None or op_date >= "2026-09-10")
 
     next_state = {
