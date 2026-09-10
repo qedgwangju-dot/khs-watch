@@ -48,6 +48,21 @@ class ClarityFormatterTest(unittest.TestCase):
         self.assertIn("공식 날짜: 2026년 5월 14일", rendered)
         self.assertNotIn("May 14, 2026", rendered)
 
+    def test_proposed_rule_with_word_adopted_in_background_is_still_proposed(self):
+        event = {
+            "source": "SEC Federal Register 제안규칙",
+            "event_type": "SEC·CFTC 제안규칙",
+            "federal_register_type": "Proposed Rule",
+            "title": "Digital Asset Proposed Framework",
+            "url": "https://www.federalregister.gov/example",
+            "date": "2026-09-10",
+            "detail": "The Commission proposes a digital asset framework. A related rule was adopted in 2010.",
+        }
+        rendered = "\n".join(MOD.build_chunks([event]))
+        self.assertIn("이 문서는 제안규칙입니다", rendered)
+        self.assertNotIn("규칙 초안이 아니라 최종 규칙이 확정", rendered)
+        self.assertIn("아직 최종 확정이 아니라", rendered)
+
     def test_schedule_change_summary_only_marks_timeline_as_changed(self):
         event = {
             "source": "상원 본회의",
