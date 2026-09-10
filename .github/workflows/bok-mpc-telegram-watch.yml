@@ -9,6 +9,7 @@ on:
       - "scripts/bok_mpc_watch_resilient.py"
       - "scripts/bok_mpc_watch_correct.py"
       - "scripts/bok_mpc_watch_final.py"
+      - "scripts/bok_rate_signal_upgrade.py"
   schedule:
     - cron: "7 * * * *"
   workflow_dispatch:
@@ -51,11 +52,12 @@ jobs:
           print(f'telegram_route_valid=true bot=@{actual}')
           PY
 
-      - name: 금통위·점도표 감시 실행
+      - name: 금통위·추가인상 위험 감시 실행
         run: |
           rm -f out/bok_mpc_alert.html out/bok_mpc_errors.log
-          python -m py_compile scripts/bok_mpc_watch_v2.py scripts/bok_mpc_watch_resilient.py scripts/bok_mpc_watch_correct.py scripts/bok_mpc_watch_final.py
+          python -m py_compile scripts/bok_mpc_watch_v2.py scripts/bok_mpc_watch_resilient.py scripts/bok_mpc_watch_correct.py scripts/bok_mpc_watch_final.py scripts/bok_rate_signal_upgrade.py
           python scripts/bok_mpc_watch_final.py
+          python scripts/bok_rate_signal_upgrade.py
           cat out/bok_mpc_status.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/bok_mpc_errors.log ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
@@ -63,7 +65,7 @@ jobs:
             cat out/bok_mpc_errors.log >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: 새 금통위 변화만 텔레그램 전송
+      - name: 새 금통위·정책조건 변화만 텔레그램 전송
         if: hashFiles('out/bok_mpc_alert.html') != ''
         run: |
           python - <<'PY'
