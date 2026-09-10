@@ -13,8 +13,8 @@ watch = v12.watch
 v10 = v12.v11.v10
 
 LS_GUIDE = "https://openapi.ls-sec.co.kr/apiservice"
-LS_DAILY_TOLERANCE_EOK = 100.0
-LS_DAILY_TOLERANCE_PCT = 0.005
+LS_DAILY_TOLERANCE_EOK = 10.0
+LS_DAILY_TOLERANCE_PCT = 0.0005
 
 _original_kospi_flow = watch.fetch_kospi_foreign_flow
 _original_kosdaq_flow = v10._fetch_kosdaq_foreign_flow
@@ -23,6 +23,7 @@ _original_market_flow_lines = v10._market_flow_lines
 _original_kosdaq_hit_keys = v10._kosdaq_hit_keys
 
 _ls_token: str | None = None
+_t1601_cache: dict[str, Any] | None = None
 _validation: dict[str, dict[str, Any]] = {}
 _ls_history_updates: dict[str, tuple[str, float]] = {}
 
@@ -34,26 +35,59 @@ def _get_token() -> str:
     return _ls_token
 
 
-def _latest_ls_foreign_eok(upcode: str, market_name: str) -> dict[str, Any]:
+def _fetch_t1601_snapshot() -> dict[str, Any]:
+    """장마감 시장별 투자자별 종합 스냅샷.
+
+    t1601 gubun1=2는 주식 금액 기준이며, 실제 2026-09-10 검증에서
+    KOSPI/KOSDAQ svolume_17이 네이버 장마감 억원 값과 정확히 일치했다.
+    block1=KOSPI, block2=KOSDAQ.
+    """
+    global _t1601_cache
+    if _t1601_cache is not None:
+        return _t1601_cache
     token = _get_token()
-    series = ls.fetch_investor_series(token, "1", upcode, count=100)
-    rows = series.get("rows") or []
-    if not rows:
-        raise RuntimeError(f"LS t1602 {market_name} 정규장 수급 행 없음")
-    latest = rows[-1]
-    value = ls.fnum(latest.get("sv_17"))
-    if value is None:
-        raise RuntimeError(f"LS t1602 {market_name} 외국인 금액(sv_17) 없음")
-    if abs(value) > 200_000:
-        raise RuntimeError(f"LS t1602 {market_name} 외국인 금액 비정상 범위: {value}")
-    return {
-        "daily_eok": float(value),
-        "daily_krw": int(round(float(value) * 100_000_000)),
-        "latest_time": str(latest.get("time") or ""),
-        "row_count": len(rows),
-        "upcode": upcode,
-        "source": LS_GUIDE,
+    body = {
+        "t1601InBlock": {
+            "gubun1": "2",
+            "gubun2": "2",
+            "gubun3": "",
+            "gubun4": "2",
+            "exchgubun": "K",
+        }
     }
+    d = ls.ls_rest(token, "stock/investor", "t1601", body)
+    out: dict[str, Any] = {}
+    for market_name, block_name in (("KOSPI", "t1601OutBlock1"), ("KOSDAQ", "t1601OutBlock2")):
+        block = d.get(block_name) if isinstance(d.get(block_name), dict) else {}
+        foreign = ls.fnum(block.get("svolume_17"))
+        foreign_buy = ls.fnum(block.get("ms_17"))
+        foreign_sell = ls.fnum(block.get("md_17"))
+        institution = ls.fnum(block.get("svolume_18"))
+        individual = ls.fnum(block.get("svolume_08"))
+        if foreign is None:
+            raise RuntimeError(f"LS t1601 {market_name} 외국인 순매수(svolume_17) 없음")
+        if abs(foreign) > 200_000:
+            raise RuntimeError(f"LS t1601 {market_name} 외국인 금액 비정상 범위: {foreign}")
+        out[market_name] = {
+            "daily_eok": float(foreign),
+            "daily_krw": int(round(float(foreign) * 100_000_000)),
+            "foreign_buy_eok": foreign_buy,
+            "foreign_sell_eok": foreign_sell,
+            "institution_eok": institution,
+            "individual_eok": individual,
+            "tr_cd": "t1601",
+            "block": block_name,
+            "source": LS_GUIDE,
+        }
+    _t1601_cache = out
+    return out
+
+
+def _latest_ls_foreign_eok(market_name: str) -> dict[str, Any]:
+    row = (_fetch_t1601_snapshot().get(market_name) or {})
+    if not row:
+        raise RuntimeError(f"LS t1601 {market_name} 장마감 스냅샷 없음")
+    return dict(row)
 
 
 def _tolerance_eok(naver_eok: float) -> float:
@@ -94,7 +128,6 @@ def _ls_three_day(market_name: str, date: str, daily_eok: float) -> tuple[float 
 def _verified_flow(
     now: dt.datetime,
     market_name: str,
-    upcode: str,
     original: Callable[[dt.datetime], dict[str, Any]],
 ) -> dict[str, Any]:
     naver: dict[str, Any] | None = None
@@ -108,7 +141,7 @@ def _verified_flow(
         naver_error = f"{type(exc).__name__}: {exc}"
 
     try:
-        ls_row = _latest_ls_foreign_eok(upcode, market_name)
+        ls_row = _latest_ls_foreign_eok(market_name)
     except Exception as exc:
         ls_error = f"{type(exc).__name__}: {exc}"
 
@@ -120,14 +153,16 @@ def _verified_flow(
         status = "matched" if abs(diff_eok) <= tolerance else "mismatch"
         naver["ls_validation"] = {
             "status": status,
+            "tr_cd": "t1601",
             "ls_daily_eok": ls_eok,
             "naver_daily_eok": naver_eok,
             "diff_eok": diff_eok,
             "tolerance_eok": tolerance,
-            "latest_time": ls_row.get("latest_time"),
+            "foreign_buy_eok": ls_row.get("foreign_buy_eok"),
+            "foreign_sell_eok": ls_row.get("foreign_sell_eok"),
             "source": LS_GUIDE,
         }
-        naver["source_label"] = "네이버 장마감 + LS증권 t1602 교차검증"
+        naver["source_label"] = "네이버 장마감 + LS증권 t1601 교차검증"
         _validation[market_name] = dict(naver["ls_validation"])
         _ls_history_updates[market_name] = (str(naver["date"]), ls_eok)
         return naver
@@ -135,10 +170,11 @@ def _verified_flow(
     if naver is not None:
         naver["ls_validation"] = {
             "status": "ls_unavailable",
+            "tr_cd": "t1601",
             "error": ls_error or "LS 조회 실패",
             "source": LS_GUIDE,
         }
-        naver["source_label"] = "네이버 장마감 수급 — LS 교차검증 일시 실패"
+        naver["source_label"] = "네이버 장마감 수급 — LS t1601 교차검증 일시 실패"
         _validation[market_name] = dict(naver["ls_validation"])
         return naver
 
@@ -154,14 +190,16 @@ def _verified_flow(
             "three_day_krw": int(round(three_eok * 100_000_000)) if three_eok is not None else 0,
             "three_day_available": three_eok is not None,
             "source": LS_GUIDE,
-            "source_label": "LS증권 t1602 대체값",
+            "source_label": "LS증권 t1601 장마감 대체값",
             "phase": "18:10 이후 LS증권 장마감 대체값",
             "ls_validation": {
                 "status": "ls_fallback",
+                "tr_cd": "t1601",
                 "ls_daily_eok": daily_eok,
-                "latest_time": ls_row.get("latest_time"),
                 "naver_error": naver_error or "네이버 조회 실패",
                 "history_count": len(history),
+                "foreign_buy_eok": ls_row.get("foreign_buy_eok"),
+                "foreign_sell_eok": ls_row.get("foreign_sell_eok"),
                 "source": LS_GUIDE,
             },
         }
@@ -174,11 +212,11 @@ def _verified_flow(
 
 
 def fetch_kospi_verified(now: dt.datetime) -> dict[str, Any]:
-    return _verified_flow(now, "KOSPI", "001", _original_kospi_flow)
+    return _verified_flow(now, "KOSPI", _original_kospi_flow)
 
 
 def fetch_kosdaq_verified(now: dt.datetime) -> dict[str, Any]:
-    return _verified_flow(now, "KOSDAQ", "301", _original_kosdaq_flow)
+    return _verified_flow(now, "KOSDAQ", _original_kosdaq_flow)
 
 
 def add_event_verified(events, key: str, text: str, source: str) -> None:
@@ -186,14 +224,6 @@ def add_event_verified(events, key: str, text: str, source: str) -> None:
         status = (_validation.get("KOSPI") or {}).get("status")
         if status == "mismatch":
             return
-        if key.startswith("foreign3d_"):
-            try:
-                pending_flow = (watch.load_state() or {}).get("snapshot", {}).get("foreign_flow", {})
-            except Exception:
-                pending_flow = {}
-            # LS fallback 첫날처럼 3일 이력이 부족하면 3일 경보를 만들지 않는다.
-            if isinstance(pending_flow, dict) and pending_flow.get("three_day_available") is False:
-                return
     _original_add_event(events, key, text, source)
 
 
@@ -241,23 +271,21 @@ def market_flow_lines_verified(
     status = validation.get("status")
     if status == "matched":
         lines.append(
-            f"• LS 교차검증  <b>일치</b> — LS {float(validation['ls_daily_eok']):+,.0f}억원 / "
+            f"• LS t1601 교차검증  <b>일치</b> — LS {float(validation['ls_daily_eok']):+,.0f}억원 / "
             f"네이버 {float(validation['naver_daily_eok']):+,.0f}억원 / 차이 {float(validation['diff_eok']):+,.0f}억원"
         )
     elif status == "mismatch":
-        lines.append(
-            f"• LS 교차검증  <b>불일치 — 수급 임계치 판정 보류</b>"
-        )
+        lines.append("• LS t1601 교차검증  <b>불일치 — 수급 임계치 판정 보류</b>")
         lines.append(
             f"  ↳ LS {float(validation['ls_daily_eok']):+,.0f}억원 / 네이버 {float(validation['naver_daily_eok']):+,.0f}억원 / "
             f"차이 {float(validation['diff_eok']):+,.0f}억원"
         )
     elif status == "ls_fallback":
         lines.append(
-            f"• LS 대체값 사용  <b>{float(validation['ls_daily_eok']):+,.0f}억원</b> — 네이버 장마감 수급 조회 실패"
+            f"• LS t1601 대체값 사용  <b>{float(validation['ls_daily_eok']):+,.0f}억원</b> — 네이버 장마감 수급 조회 실패"
         )
     elif status == "ls_unavailable":
-        lines.append("• LS 교차검증 일시 실패 — 네이버 장마감 수급값은 유지, 다음 실행에서 재검증")
+        lines.append("• LS t1601 교차검증 일시 실패 — 네이버 장마감 수급값은 유지, 다음 실행에서 재검증")
     return lines
 
 
@@ -288,8 +316,8 @@ def _persist_ls_history_and_source_note() -> None:
     pending["ls_flow_history"] = history_root
     snap = pending.setdefault("snapshot", {})
     snap["flow_source_note"] = (
-        "KOSPI·KOSDAQ 장마감 외국인 수급은 네이버 장마감값과 LS증권 OpenAPI t1602를 교차검증. "
-        "네이버 실패 시 LS 대체값 사용, 유의한 불일치 시 수급 임계치 판정 보류. KRX는 공식 원천 재확인 링크로 제공."
+        "KOSPI·KOSDAQ 장마감 외국인 수급은 네이버 장마감값과 LS증권 OpenAPI t1601 투자자별종합을 교차검증. "
+        "네이버 실패 시 LS t1601 대체값 사용, 유의한 불일치 시 수급 임계치 판정 보류. KRX는 공식 원천 재확인 링크로 제공."
     )
     snap["ls_flow_validation"] = _validation
     watch.PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -299,12 +327,16 @@ def _rewrite_source_note() -> None:
     if not watch.ALERT_PATH.exists():
         return
     text = watch.ALERT_PATH.read_text(encoding="utf-8")
-    old = "• 수급 숫자 출처: 18:10 이후 네이버 투자자별 매매동향 / KRX 링크는 공식 원천 재확인용"
+    old_notes = [
+        "• 수급 숫자 출처: 18:10 이후 네이버 투자자별 매매동향 / KRX 링크는 공식 원천 재확인용",
+        "• 수급 숫자 검증: <b>18:10 이후 네이버 장마감값 + LS증권 OpenAPI t1602 교차검증</b> / 네이버 실패 시 LS 대체 / 유의한 불일치 시 임계치 판정 보류",
+    ]
     new = (
-        "• 수급 숫자 검증: <b>18:10 이후 네이버 장마감값 + LS증권 OpenAPI t1602 교차검증</b>"
+        "• 수급 숫자 검증: <b>18:10 이후 네이버 장마감값 + LS증권 OpenAPI t1601 투자자별종합 교차검증</b>"
         " / 네이버 실패 시 LS 대체 / 유의한 불일치 시 임계치 판정 보류"
     )
-    text = text.replace(old, new)
+    for old in old_notes:
+        text = text.replace(old, new)
     ls_link = f'• <a href="{html.escape(LS_GUIDE, quote=True)}">LS증권 OpenAPI 공식 가이드</a>'
     if ls_link not in text:
         text = text.rstrip() + "\n" + ls_link + "\n"
@@ -314,7 +346,7 @@ def _rewrite_source_note() -> None:
 def _append_status() -> None:
     if not watch.STATUS_PATH.exists():
         return
-    lines = [watch.STATUS_PATH.read_text(encoding="utf-8").rstrip(), "- LS증권 수급 교차검증: 활성"]
+    lines = [watch.STATUS_PATH.read_text(encoding="utf-8").rstrip(), "- LS증권 장마감 수급 교차검증(t1601): 활성"]
     for market_name in ("KOSPI", "KOSDAQ"):
         row = _validation.get(market_name) or {}
         status = row.get("status")
@@ -331,7 +363,7 @@ def _append_status() -> None:
         elif status == "ls_fallback":
             lines.append(f"- {market_name} LS 검증: 네이버 실패 → LS {float(row['ls_daily_eok']):+,.0f}억원 대체")
         elif status == "ls_unavailable":
-            lines.append(f"- {market_name} LS 검증: LS 일시 실패 · 네이버 값 유지")
+            lines.append(f"- {market_name} LS 검증: LS t1601 일시 실패 · 네이버 값 유지")
     watch.STATUS_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
