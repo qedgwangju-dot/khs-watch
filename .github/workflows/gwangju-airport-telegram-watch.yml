@@ -148,8 +148,8 @@ jobs:
           @khs887988798879887988798879_bot 연결 정상입니다.
           - 기준선: 2026-08-28 무안군 망운면 일대 이전후보지 선정, 최종 이전부지는 미확정
           - 지원계획·주민투표·유치신청·최종 선정·지연/철회·제1전투비행단 임시배치·반도체 클러스터 일정을 감시
-          - 공식자료 우선, 비공식 보도는 신뢰언론 2곳 이상 교차 시만 알림
-          - 중복 기사와 단순 재전송은 알림하지 않음
+          - 공식자료 우선, 비공식 보도는 서로 다른 독립 발행사 2곳 이상에서 같은 사건이 확인될 때만 알림
+          - 동일 제목·동일 사건·동일 발행사 별칭은 1건으로 통합
           EOF
 
       - name: Send Telegram messages
@@ -177,12 +177,24 @@ jobs:
           def render_html(text):
               rendered = []
               for line in text.splitlines():
-                  m = re.fullmatch(r'\s*- 링크:\s*(https?://\S+)\s*', line)
-                  if m:
-                      url = html_lib.escape(m.group(1), quote=True)
-                      rendered.append(f'- 원문: <a href="{url}">[원문 보기]</a>')
-                  else:
-                      rendered.append(html_lib.escape(line))
+                  combined = re.fullmatch(
+                      r'\s*-\s*출처원문:\s*(.*?)\s*\|\s*(.*?)\s*\|\s*(https?://\S+)\s*',
+                      line,
+                  )
+                  if combined:
+                      source = html_lib.escape(combined.group(1).strip())
+                      when = html_lib.escape(combined.group(2).strip())
+                      url = html_lib.escape(combined.group(3).strip(), quote=True)
+                      rendered.append(f'- 출처·원문: {source} · {when} · <a href="{url}">원문 보기</a>')
+                      continue
+
+                  legacy = re.fullmatch(r'\s*-\s*링크:\s*(https?://\S+)\s*', line)
+                  if legacy:
+                      url = html_lib.escape(legacy.group(1), quote=True)
+                      rendered.append(f'- 원문: <a href="{url}">원문 보기</a>')
+                      continue
+
+                  rendered.append(html_lib.escape(line))
               return '\n'.join(rendered)
 
           sent = 0
@@ -192,6 +204,7 @@ jobs:
               text = path.read_text(encoding='utf-8').strip()
               if not text:
                   continue
+
               chunks = []
               while len(text) > 3600:
                   cut = text.rfind('\n\n', 0, 3600)
@@ -201,6 +214,7 @@ jobs:
                   text = text[cut:].strip()
               if text:
                   chunks.append(text)
+
               for chunk in chunks:
                   payload = urllib.parse.urlencode({
                       'chat_id': chat_id,
@@ -218,6 +232,7 @@ jobs:
                   if not result.get('ok'):
                       raise RuntimeError(result)
                   sent += 1
+
           print(f'gwangju_airport_telegram_messages_sent={sent}')
           PY
 
