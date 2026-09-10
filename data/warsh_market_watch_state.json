@@ -1,10 +1,16 @@
 {
-  "date": "2026-09-09",
-  "value": 4.43,
-  "prev_date": "2026-09-08",
-  "prev_value": 4.39,
-  "last_alert_date": "2026-08-28",
-  "pending_event": null,
+  "date": "2026-09-10",
+  "value": 4.56,
+  "prev_date": "2026-09-09",
+  "prev_value": 4.43,
+  "last_alert_date": "2026-09-10",
+  "pending_event": {
+    "event_date": "2026-09-10",
+    "base_date": "2026-09-09",
+    "base_value": 4.43,
+    "event_value": 4.56,
+    "move_bp": 12.99999999999999
+  },
   "last_followup_completed": false,
-  "updated_at_utc": "2026-09-09T21:47:32.069667+00:00"
+  "updated_at_utc": "2026-09-10T21:43:31.094963+00:00"
 }
