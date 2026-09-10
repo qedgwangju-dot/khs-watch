@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-10T09:19:39+09:00",
+  "updated_at_kst": "2026-09-10T13:55:38+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -43,17 +43,15 @@
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 1,
+  "last_unseen_raw_count": 0,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1336.2,
-    "date": "2026-09-09 일일 기준 · ECB/Frankfurter · 조회 2026-09-10 09:19 KST · 보조 API 2026-09-09 · 차이 0.35% · 일중 기준시각 차이 가능",
+    "date": "2026-09-09 일일 기준 · ECB/Frankfurter · 조회 2026-09-10 13:55 KST · 보조 API 2026-09-10 · 차이 0.21% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [
-    "핵심 사실 자동추출 실패로 발송 제외: digitimes.com | Nvidia reportedly shifts Rubin Ultra toward 8-high HBM as memory costs rise - digitimes.com"
-  ]
+  "errors": []
 }
