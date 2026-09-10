@@ -16,9 +16,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import physical_ai_watch_korea_foundry_data_demand as kd
+import physical_ai_watch_policy_parts_2027 as pol
 
-base = kd.base
+base = pol.base
 
 _orig_esc_text = base.esc_text
 
@@ -45,7 +45,6 @@ def _time_ko(match: re.Match) -> str:
 def _display_ko(value: str) -> str:
     s = value or ''
 
-    # Dates/times and recurring event labels.
     s = re.sub(r'\b9/22\b', '9월 22일', s)
     s = re.sub(r'\b(\d{1,2}):(\d{2})\s*(AM|PM)\b', _time_ko, s, flags=re.I)
     s = re.sub(r'\bHumanoids Summit Seoul\b', '서울 휴머노이드 서밋', s, flags=re.I)
@@ -67,7 +66,6 @@ def _display_ko(value: str) -> str:
     s = re.sub(r'\bNeuromeka\b', '뉴로메카', s, flags=re.I)
     s = re.sub(r'\bNewsis\b', '뉴시스', s, flags=re.I)
 
-    # General explanatory terms: Korean first, identifiers stay unchanged.
     s = re.sub(r'라이브\s*데모|live\s*demo', '현장 시연', s, flags=re.I)
     s = re.sub(r'NVIDIA\s+스택', 'NVIDIA 소프트웨어 체계', s, flags=re.I)
     s = re.sub(r'\bsoftware stack\b', '소프트웨어 체계', s, flags=re.I)
@@ -94,9 +92,12 @@ def _display_ko(value: str) -> str:
     s = re.sub(r'\bvalidation\b', '검증', s, flags=re.I)
     s = re.sub(r'\byield\b', '수율', s, flags=re.I)
     s = re.sub(r'\bactuator(?:s)?\b', '액추에이터', s, flags=re.I)
+    s = re.sub(r'\bsensor(?:s)?\b', '센서', s, flags=re.I)
     s = re.sub(r'\bgripper(?:s)?\b', '그리퍼', s, flags=re.I)
     s = re.sub(r'\bcontroller(?:s)?\b', '제어기', s, flags=re.I)
     s = re.sub(r'\bbattery\s*pack(?:s)?\b', '배터리팩', s, flags=re.I)
+    s = re.sub(r'\bgovernment\s*budget\s*proposal\b', '정부 예산안', s, flags=re.I)
+    s = re.sub(r'\bfield\s*validation\b', '현장 실증', s, flags=re.I)
     s = re.sub(r'\buptime\b', '가동률', s, flags=re.I)
     s = re.sub(r'\bhuman\s*intervention\b', '사람 개입', s, flags=re.I)
     s = re.sub(r'기술통합', '기술 통합', s)
@@ -112,10 +113,7 @@ def _display_ko(value: str) -> str:
     s = re.sub(r'\breference platform\b', '참조 플랫폼', s, flags=re.I)
     s = re.sub(r'\bcertification\b', '인증', s, flags=re.I)
 
-    # Internal fingerprints are useful for dedup, not for users.
     s = re.sub(r'\s*\[[0-9a-f]{6,12}\]\s*$', '', s, flags=re.I)
-
-    # Cosmetic spacing after transformations.
     s = re.sub(r'\s{2,}', ' ', s).strip()
     return s
 
@@ -125,38 +123,28 @@ def esc_text_ko(value: str) -> str:
 
 
 def _inline_original_link(text: str) -> str:
-    """Move each standalone HTML '원문' link onto that article's 출처 line."""
     if not text:
         return text
-
     lines = text.splitlines()
     out: list[str] = []
     source_idx: int | None = None
     link_re = re.compile(r'^<a href="[^"]+"><b>원문</b></a>$')
-
     for line in lines:
         stripped = line.strip()
-
         if stripped.startswith('<b>출처</b>'):
             source_idx = len(out)
             out.append(line)
             continue
-
         if link_re.fullmatch(stripped) and source_idx is not None:
-            # Keep source name + timestamp visible and make only '원문' clickable.
             if '<b>원문</b>' not in out[source_idx]:
                 out[source_idx] = out[source_idx].rstrip() + ' · ' + stripped
             continue
-
         out.append(line)
         if stripped == '──────────────────':
             source_idx = None
-
     return '\n'.join(out).strip()
 
 
-# Rendering-only hook. Raw item title/source/key remain untouched, so this does
-# not create duplicate alerts when display wording changes.
 base.esc_text = esc_text_ko
 
 if __name__ == '__main__':
