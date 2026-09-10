@@ -49,5 +49,30 @@
     "total": 21,
     "hash": "8715069b2cce873761db745666024bc7e552e5b1deef2bae2b0562b974dd9d3b",
     "as_of_date": "2026-08-27"
+  },
+  "rate_signal_upgrade": {
+    "version": 1,
+    "updated_at_kst": "2026-09-10T13:37:12+09:00",
+    "risk_score": 1,
+    "grade_emoji": "🟡",
+    "grade_label": "추가인상 살아있음",
+    "next_mpc_date": "2026-10-22",
+    "next_mpc_source": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?menuNo=200755&mtgSe=A",
+    "components": {
+      "inflation": null,
+      "household": null,
+      "housing": null,
+      "oil": {
+        "date": "2026-09-10",
+        "brent_usd": 101.02,
+        "change_5d_pct": 5.64,
+        "source": "Yahoo Finance BZ=F",
+        "source_tier": "시장자료",
+        "stale": false
+      }
+    },
+    "rhetoric_score": 0,
+    "recent_rhetoric": [],
+    "seen_rhetoric_hashes": []
   }
 }
