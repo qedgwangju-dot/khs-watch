@@ -4,7 +4,7 @@
 Raw titles/sources are kept unchanged for deduplication and evidence matching.
 Only user-visible Telegram text is normalized to Korean explanatory wording,
 while identifiers such as ROBOTIS, NVIDIA, AI Sapiens, AI Worker, Isaac,
-GR00T, Jetson, DYNAMIXEL-Q, MoMA, CLOiD and RFM remain identifiable.
+GR00T, Jetson, DYNAMIXEL-Q, MoMA, CLOiD, RFM, Atlas, PPAP and ISIR remain identifiable.
 
 For readability, the clickable original-article link is rendered on the same
 line as source and timestamp instead of taking a separate line.
@@ -16,9 +16,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import physical_ai_watch_lg_factory_loop as lg
+import physical_ai_watch_hyundai_mobis_atlas as hm
 
-base = lg.base
+base = hm.base
 
 _orig_esc_text = base.esc_text
 
@@ -51,11 +51,18 @@ def _display_ko(value: str) -> str:
     s = re.sub(r'\bHumanoids Summit Seoul\b', '서울 휴머노이드 서밋', s, flags=re.I)
     s = re.sub(r'\bHumanoids Summit\b', '휴머노이드 서밋', s, flags=re.I)
     s = re.sub(r'\bSponsored Technical Workshop\b', '공동 기술 워크숍', s, flags=re.I)
+    s = re.sub(r'\bR&D\s*Tech\s*Day\b', 'R&D 테크데이', s, flags=re.I)
+    s = re.sub(r'\bTech\s*Day\b', '테크데이', s, flags=re.I)
     s = re.sub(r'\bROBOTIS Docs\b', 'ROBOTIS 공식 기술문서', s, flags=re.I)
     s = re.sub(r'\bNVIDIA Developer\b', 'NVIDIA 개발자 공식자료', s, flags=re.I)
     s = re.sub(r'\bLG Global Newsroom\b', 'LG전자 글로벌 뉴스룸', s, flags=re.I)
     s = re.sub(r'\bLG Newsroom\b', 'LG전자 뉴스룸', s, flags=re.I)
     s = re.sub(r'\bLG Electronics\b', 'LG전자', s, flags=re.I)
+    s = re.sub(r'\bHyundai Mobis Newsroom\b', '현대모비스 뉴스룸', s, flags=re.I)
+    s = re.sub(r'\bMOBIS Newsroom\b', '현대모비스 뉴스룸', s, flags=re.I)
+    s = re.sub(r'\bHyundai Mobis\b', '현대모비스', s, flags=re.I)
+    s = re.sub(r'\bHyundai Motor Group\b', '현대자동차그룹', s, flags=re.I)
+    s = re.sub(r'\bBoston Dynamics\b', '보스턴다이내믹스', s, flags=re.I)
 
     # General explanatory terms: Korean first, identifiers stay unchanged.
     s = re.sub(r'라이브\s*데모|live\s*demo', '현장 시연', s, flags=re.I)
@@ -67,7 +74,16 @@ def _display_ko(value: str) -> str:
     s = re.sub(r'\bRobot\s*Foundation\s*Model\b', '로봇 파운데이션 모델(RFM)', s, flags=re.I)
     s = re.sub(r'\bmass\s*production\b', '양산', s, flags=re.I)
     s = re.sub(r'\binitial\s*production\b', '초도 생산', s, flags=re.I)
+    s = re.sub(r'\bproduction\s*line\b', '양산라인', s, flags=re.I)
+    s = re.sub(r'\bproduction\s*capacity\b', '생산능력', s, flags=re.I)
     s = re.sub(r'\bqualification\b', '고객 검증', s, flags=re.I)
+    s = re.sub(r'\breliability\b', '신뢰성', s, flags=re.I)
+    s = re.sub(r'\bvalidation\b', '검증', s, flags=re.I)
+    s = re.sub(r'\byield\b', '수율', s, flags=re.I)
+    s = re.sub(r'\bactuator(?:s)?\b', '액추에이터', s, flags=re.I)
+    s = re.sub(r'\bgripper(?:s)?\b', '그리퍼', s, flags=re.I)
+    s = re.sub(r'\bcontroller(?:s)?\b', '제어기', s, flags=re.I)
+    s = re.sub(r'\bbattery\s*pack(?:s)?\b', '배터리팩', s, flags=re.I)
     s = re.sub(r'\buptime\b', '가동률', s, flags=re.I)
     s = re.sub(r'\bhuman\s*intervention\b', '사람 개입', s, flags=re.I)
     s = re.sub(r'기술통합', '기술 통합', s)
