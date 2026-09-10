@@ -5,7 +5,9 @@ on:
     paths:
       - ".github/workflows/clarity-watch-telegram.yml"
       - "scripts/clarity_watch.py"
+      - "scripts/clarity_alert_guard.py"
       - "scripts/clarity_alert_formatter.py"
+      - "tests/test_clarity_alert_guard.py"
       - "tests/test_clarity_alert_formatter.py"
       - "data/clarity_watch_state.json"
   schedule:
@@ -40,10 +42,10 @@ jobs:
       - name: Install parser dependency
         run: python -m pip install --disable-pip-version-check beautifulsoup4
 
-      - name: Validate watcher and Korean Telegram formatter
+      - name: Validate watcher, Federal Register guard and Korean formatter
         run: |
-          python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_formatter.py
-          python -m unittest tests/test_clarity_alert_formatter.py -v
+          python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_guard.py scripts/clarity_alert_formatter.py
+          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py -v
 
       - name: Validate Telegram route without sending
         env:
@@ -74,6 +76,10 @@ jobs:
       - name: Check official CLARITY sources
         run: python scripts/clarity_watch.py
 
+      - name: Validate Federal Register document content and rule stage
+        if: hashFiles('out/clarity_watch_alert.json') != ''
+        run: python scripts/clarity_alert_guard.py
+
       - name: Build Korean interpreted Telegram alert
         if: hashFiles('out/clarity_watch_alert.json') != ''
         run: python scripts/clarity_alert_formatter.py
@@ -85,6 +91,10 @@ jobs:
             cat out/clarity_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo "CLARITY Watch 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/clarity_alert_guard_report.json ]; then
+            printf '\n---\n\nFederal Register 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/clarity_alert_guard_report.json >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/clarity_watch_alert.html ]; then
             printf '\n---\n\n한국어 Telegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -143,7 +153,7 @@ jobs:
 
           confirmed = {
               "status": "confirmed",
-              "format": "korean_html_v1",
+              "format": "korean_html_v2",
               "bot_username": username,
               "message_ids": message_ids,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
@@ -152,15 +162,15 @@ jobs:
               json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
               encoding="utf-8",
           )
-          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids} format=korean_html_v1")
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids} format=korean_html_v2")
           PY
 
-      - name: Persist baseline state
-        if: success() && hashFiles('out/clarity_watch_alert.json') == '' && (hashFiles('data/clarity_watch_state.json') == '' || hashFiles('out/clarity_watch_rebaseline.txt') != '')
+      - name: Persist baseline or rejected-only state
+        if: success() && hashFiles('out/clarity_watch_telegram_chunks.json') == '' && hashFiles('out/clarity_watch_pending_state.json') != ''
         run: cp out/clarity_watch_pending_state.json data/clarity_watch_state.json
 
       - name: Persist state only after confirmed Telegram delivery
-        if: success() && hashFiles('out/clarity_watch_alert.json') != '' && hashFiles('out/clarity_watch_telegram_confirmed.json') != ''
+        if: success() && hashFiles('out/clarity_watch_telegram_chunks.json') != '' && hashFiles('out/clarity_watch_telegram_confirmed.json') != ''
         run: |
           cp out/clarity_watch_pending_state.json data/clarity_watch_state.json
           python - <<'PY'
@@ -199,6 +209,7 @@ jobs:
             out/clarity_watch_status.md
             out/clarity_watch_alert.md
             out/clarity_watch_alert.json
+            out/clarity_alert_guard_report.json
             out/clarity_watch_alert.html
             out/clarity_watch_telegram_chunks.json
             out/clarity_watch_pending_state.json
