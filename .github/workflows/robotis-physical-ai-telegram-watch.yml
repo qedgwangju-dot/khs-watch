@@ -35,6 +35,22 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Apply push-trigger options
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          value="$(awk -F= '$1=="force_summary" {print tolower($2)}' .github/robotis-physical-ai-trigger.txt | tail -n 1 | tr -d '[:space:]')"
+          case "$value" in
+            1|true|yes|on)
+              echo "FORCE_SUMMARY=1" >> "$GITHUB_ENV"
+              echo "Push trigger force summary: ON"
+              ;;
+            *)
+              echo "FORCE_SUMMARY=0" >> "$GITHUB_ENV"
+              echo "Push trigger force summary: OFF"
+              ;;
+          esac
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
