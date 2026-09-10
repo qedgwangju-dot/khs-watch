@@ -1,25 +1,25 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-10T18:56:50+09:00",
+  "updated_at_kst": "2026-09-10T19:08:26+09:00",
   "seen_event_keys": [
-    "foreign1d_pos:2026-09-07:final",
-    "kosdaq_foreign1d_pos:2026-09-09:final",
-    "foreign3d_neg:2026-09-02:final",
-    "fx_1350_down:2026-09-07",
-    "foreign3d_pos:2026-09-07:final",
-    "foreign1d_neg:2026-09-02:final",
-    "fx_1350_down:2026-09-04",
-    "foreign1d_neg:2026-09-02:postclose",
-    "fx_daily_down:2026-09-02",
-    "foreign3d_neg:2026-09-02:postclose",
-    "policy_spread:2026-08-27:0.75",
-    "foreign1d_neg:2026-08-31",
-    "foreign3d_neg:2026-08-27",
-    "capex:13cbe150930d23d8",
-    "foreign3d_pos:2026-09-08:final",
     "foreign1d_neg:2026-09-10:final",
+    "foreign1d_neg:2026-09-02:final",
+    "foreign3d_neg:2026-08-27",
+    "kosdaq_foreign3d_neg:2026-09-10:final",
+    "foreign3d_pos:2026-09-07:final",
+    "foreign3d_pos:2026-09-08:final",
+    "capex:13cbe150930d23d8",
+    "kosdaq_foreign1d_pos:2026-09-09:final",
+    "fx_1350_down:2026-09-07",
+    "foreign1d_pos:2026-09-07:final",
+    "fx_1350_down:2026-09-04",
+    "fx_daily_down:2026-09-02",
+    "foreign1d_neg:2026-08-31",
+    "foreign1d_neg:2026-09-02:postclose",
     "kosdaq_foreign1d_neg:2026-09-10:final",
-    "kosdaq_foreign3d_neg:2026-09-10:final"
+    "policy_spread:2026-08-27:0.75",
+    "foreign3d_neg:2026-09-02:final",
+    "foreign3d_neg:2026-09-02:postclose"
   ],
   "active_keys": [
     "fx_1350_down:2026-09-10",
@@ -28,15 +28,15 @@
     "kosdaq_foreign3d_neg:2026-09-10:final"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-10T18:56:50+09:00",
+    "checked_at_kst": "2026-09-10T19:08:26+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-10",
-      "value": 1342.3,
+      "value": 1342.5,
       "prev_date": "2026-09-09",
       "prev_value": 1341.0,
-      "change_krw": 1.3,
-      "change_pct": 0.0969,
+      "change_krw": 1.5,
+      "change_pct": 0.1119,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "ecos_official": {
         "date": "2026-09-10",
@@ -73,6 +73,11 @@
       "three_day_krw": -2424900000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260910&sosok=01",
       "phase": "장마감 최종 재확인",
+      "ls_validation": {
+        "status": "ls_unavailable",
+        "error": "RuntimeError: LS t1602 KOSPI 정규장 수급 행 없음",
+        "source": "https://openapi.ls-sec.co.kr/apiservice"
+      },
       "source_label": "네이버 장마감 투자자별 매매동향"
     },
     "global_wave_news": [],
@@ -99,8 +104,26 @@
       "three_day_krw": -702400000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260910&sosok=02",
       "phase": "18:10 이후 장마감 수급 피드",
+      "ls_validation": {
+        "status": "ls_unavailable",
+        "error": "RuntimeError: LS t1602 KOSDAQ 정규장 수급 행 없음",
+        "source": "https://openapi.ls-sec.co.kr/apiservice"
+      },
       "source_label": "네이버 장마감 투자자별 매매동향"
     },
-    "flow_source_note": "KOSPI·KOSDAQ 자동 수급 숫자는 18:10 이후 네이버 장마감 투자자별 매매동향을 사용. KRX 투자자별 거래실적은 공식 원천 확인 링크로 제공하며 자동 숫자를 KRX 직접 조회값이라고 오표기하지 않는다."
-  }
+    "flow_source_note": "KOSPI·KOSDAQ 장마감 외국인 수급은 네이버 장마감값과 LS증권 OpenAPI t1602를 교차검증. 네이버 실패 시 LS 대체값 사용, 유의한 불일치 시 수급 임계치 판정 보류. KRX는 공식 원천 재확인 링크로 제공.",
+    "ls_flow_validation": {
+      "KOSPI": {
+        "status": "ls_unavailable",
+        "error": "RuntimeError: LS t1602 KOSPI 정규장 수급 행 없음",
+        "source": "https://openapi.ls-sec.co.kr/apiservice"
+      },
+      "KOSDAQ": {
+        "status": "ls_unavailable",
+        "error": "RuntimeError: LS t1602 KOSDAQ 정규장 수급 행 없음",
+        "source": "https://openapi.ls-sec.co.kr/apiservice"
+      }
+    }
+  },
+  "ls_flow_history": {}
 }
