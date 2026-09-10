@@ -16,9 +16,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import physical_ai_watch_hyundai_mobis_atlas as hm
+import physical_ai_watch_korea_foundry_data_demand as kd
 
-base = hm.base
+base = kd.base
 
 _orig_esc_text = base.esc_text
 
@@ -62,15 +62,28 @@ def _display_ko(value: str) -> str:
     s = re.sub(r'\bMOBIS Newsroom\b', '현대모비스 뉴스룸', s, flags=re.I)
     s = re.sub(r'\bHyundai Mobis\b', '현대모비스', s, flags=re.I)
     s = re.sub(r'\bHyundai Motor Group\b', '현대자동차그룹', s, flags=re.I)
+    s = re.sub(r'\bHyundai Motor\b', '현대자동차', s, flags=re.I)
     s = re.sub(r'\bBoston Dynamics\b', '보스턴다이내믹스', s, flags=re.I)
+    s = re.sub(r'\bNeuromeka\b', '뉴로메카', s, flags=re.I)
+    s = re.sub(r'\bNewsis\b', '뉴시스', s, flags=re.I)
 
     # General explanatory terms: Korean first, identifiers stay unchanged.
     s = re.sub(r'라이브\s*데모|live\s*demo', '현장 시연', s, flags=re.I)
     s = re.sub(r'NVIDIA\s+스택', 'NVIDIA 소프트웨어 체계', s, flags=re.I)
     s = re.sub(r'\bsoftware stack\b', '소프트웨어 체계', s, flags=re.I)
     s = re.sub(r'\bsmart\s*factory\b', '스마트팩토리', s, flags=re.I)
+    s = re.sub(r'\brobot\s*foundry\b', '로봇 파운드리', s, flags=re.I)
+    s = re.sub(r'\bdata\s*foundry\b', '데이터 파운드리', s, flags=re.I)
+    s = re.sub(r'\brobot\s*data\s*factory\b', '로봇 데이터 팩토리', s, flags=re.I)
     s = re.sub(r'\bData\s*Factory\b', '데이터팩토리', s, flags=re.I)
     s = re.sub(r'\bdata\s*flywheel\b', '데이터 선순환', s, flags=re.I)
+    s = re.sub(r'\bcontract\s*manufacturing\b', '위탁생산', s, flags=re.I)
+    s = re.sub(r'\bperformance\s*validation\b', '성능 검증', s, flags=re.I)
+    s = re.sub(r'\brobot\s*data\s*collection\b', '로봇 데이터 수집', s, flags=re.I)
+    s = re.sub(r'\bexcess\s*demand\b', '초과수요', s, flags=re.I)
+    s = re.sub(r'\bbacklog\b', '수주잔고', s, flags=re.I)
+    s = re.sub(r'\bmonthly\s*output\b', '월 생산량', s, flags=re.I)
+    s = re.sub(r'\blead\s*time\b', '납기', s, flags=re.I)
     s = re.sub(r'\bRobot\s*Foundation\s*Model\b', '로봇 파운데이션 모델(RFM)', s, flags=re.I)
     s = re.sub(r'\bmass\s*production\b', '양산', s, flags=re.I)
     s = re.sub(r'\binitial\s*production\b', '초도 생산', s, flags=re.I)
