@@ -105,6 +105,14 @@ def confirmed_news_groups_v23(items: list[core.NewsItem]):
     return confirmed
 
 
+def _safe_ttf_quote_text(ttf: core.Quote) -> str:
+    try:
+        return core.format_quote(ttf)
+    except Exception:
+        # 표시 포맷 메타데이터가 불완전해도 검증된 숫자 객체 자체가 있으면 최소 표기만 한다.
+        return f"{float(ttf.price):,.2f}유로/MWh"
+
+
 def _ttf_intraday_section(groups, quotes) -> list[str]:
     thresholds = sorted({
         t for g in groups
@@ -124,7 +132,7 @@ def _ttf_intraday_section(groups, quotes) -> list[str]:
             else:
                 status = "장중 돌파는 확인됐지만 현재 공개값은 재하회 · 돌파 이력은 유지"
             lines.append(
-                f"• <b>{threshold}유로/MWh</b> 장중 돌파 · {status} · 현재 {core.format_quote(ttf)}"
+                f"• <b>{threshold}유로/MWh</b> 장중 돌파 · {status} · 현재 {_safe_ttf_quote_text(ttf)}"
             )
         else:
             lines.append(
