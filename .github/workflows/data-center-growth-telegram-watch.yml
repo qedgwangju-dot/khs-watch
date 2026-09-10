@@ -11,6 +11,7 @@ on:
       - "scripts/us_data_center_time_to_power_watch.py"
       - "scripts/guard_us_time_to_power_metrics_source.py"
       - "scripts/clean_us_time_to_power_alert_html.py"
+      - "scripts/remove_telegram_italics.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -79,6 +80,9 @@ jobs:
 
       - name: Improve US time-to-power Telegram readability
         run: python scripts/clean_us_time_to_power_alert_html.py
+
+      - name: Force regular Telegram font
+        run: python scripts/remove_telegram_italics.py
 
       - name: Send Telegram only on meaningful changes
         run: |
