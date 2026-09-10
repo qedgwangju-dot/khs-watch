@@ -269,54 +269,6 @@ def main() -> int:
             pass
 
     state = load_state()
-
-    manual_id = "ecb-2026-09-10-deposit-2.50-global-tightening"
-    if state.get("manual_global_rates_alert_id") != manual_id:
-        now_kst = datetime.now(KST).isoformat(timespec="seconds")
-        title = "🔔 글로벌 동시 긴축 경보 — ECB 2.50%"
-        body = "\n".join([
-            "🔔 [글로벌 동시 긴축] ECB +0.25%p → 예금금리 2.50%",
-            "",
-            "• ECB: 2026년 두 번째 인상. 6월 2.00→2.25%, 오늘 2.25→2.50%.",
-            "• 올해 확정 인상 횟수: 호주 3회 · 한국 2회 · 유럽 2회 · 일본 1회.",
-            "• 직접 원인: 중동 에너지 충격으로 유로존 물가가 다시 3%를 웃돌았고, ECB는 2026년 물가 3.0%, 성장 0.9%를 제시.",
-            "",
-            "시장 해석",
-            "• 글로벌 유동성: 공식 공조라기보다 각국이 같은 에너지·물가 충격에 동시에 긴축하는 국면. 장기금리·할인율 상승 압력.",
-            "• 금리민감 자산: 고PER 성장주·리츠·고부채 자산은 할인율 부담 확대. 은행은 금리 수혜와 경기·신용비용 악화가 동시에 작용.",
-            "",
-            "중요 수정",
-            "• Fed가 11월까지 동결한다는 것은 확정 사실이 아님. Reuters 조사에서는 동결 전망이 우세하지만, 시장은 9월 인상 가능성을 약 60~65% 반영 중.",
-            "• BoJ 위험도 10월보다 먼저 9월 17~18일 회의가 핵심. 1.00→1.25% 인상 기대가 커지면 엔캐리 청산이 위험자산 변동성을 키울 수 있음.",
-            "",
-            "역풍·반대 시나리오",
-            "• 유가가 빠르게 안정되고 근원물가·임금이 둔화하면 추가 인상 기대가 후퇴해 주식 할인율 충격도 완화될 수 있음.",
-            "",
-            "다음 확인: Fed 9/15~16 → BoJ 9/17~18 → ECB 추가 인상 신호와 유가·장기금리.",
-            "출처: ECB 공식 통화정책 결정, Reuters 2026-09-10.",
-        ])
-        TITLE.write_text(title + "\n", encoding="utf-8")
-        ALERT.write_text(body[:4096] + "\n", encoding="utf-8")
-        DETAIL.write_text(json.dumps({
-            "type": "manual_global_rates",
-            "id": manual_id,
-            "ecb_deposit_rate": 2.50,
-            "ecb_hike_bp": 25,
-            "ytd_hikes": {"RBA": 3, "BOK": 2, "ECB": 2, "BOJ": 1},
-            "checked_at_kst": now_kst,
-        }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        state["manual_global_rates_alert_id"] = manual_id
-        state["last_checked_kst"] = now_kst
-        NEXT_STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        STATUS.write_text(
-            "# 글로벌 금리 수동 검증 알림\n\n"
-            f"- 조회시각: {now_kst}\n"
-            "- ECB 예금금리: 2.50%\n"
-            "- 알림 생성: 예\n",
-            encoding="utf-8",
-        )
-        return 0
-
     t5_text = fetch(TABLE5)
     t3_text = fetch(TABLE3)
     months, t5 = parse_table5(t5_text)
