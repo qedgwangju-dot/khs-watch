@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+import calendar
 import html
 import json
 import os
-import re
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -11,6 +11,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 STATE_PATH = Path('data/warsh_inflation_market_watch_state.json')
+BLS_API = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 PPI_URL = 'https://www.bls.gov/news.release/ppi.htm'
 CPI_URL = 'https://www.bls.gov/news.release/cpi.htm'
 TREASURY_TEXT_URL = 'https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve'
@@ -18,86 +19,88 @@ TOKEN = (os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
 CHAT_ID = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
 EXPECTED_BOT = (os.getenv('EXPECTED_BOT_USERNAME') or 'khs8879887988798879_bot').strip().lstrip('@')
 FORCE_NOTIFY = os.getenv('FORCE_NOTIFY', '0') == '1'
-UA = 'Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)'
-MONTHS = {m.lower(): i for i, m in enumerate(['January','February','March','April','May','June','July','August','September','October','November','December'], 1)}
+UA = 'Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot/khs-watch)'
+
+SERIES = {
+    'ppi_sa': 'WPSFD4',
+    'ppi_core_sa': 'WPSFD49116',
+    'ppi_nsa': 'WPUFD4',
+    'ppi_core_nsa': 'WPUFD49116',
+    'cpi_sa': 'CUSR0000SA0',
+    'cpi_core_sa': 'CUSR0000SA0L1E',
+    'cpi_nsa': 'CUUR0000SA0',
+    'cpi_core_nsa': 'CUUR0000SA0L1E',
+}
 
 
-def fetch(url: str) -> tuple[str, str]:
-    req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9'})
+def fetch(url: str) -> str:
+    req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept': 'application/xml,text/xml,*/*'})
     with urllib.request.urlopen(req, timeout=30) as r:
-        return r.read().decode('utf-8', errors='replace'), r.geturl()
+        return r.read().decode('utf-8', errors='replace')
 
 
-def clean_text(raw: str) -> str:
-    raw = re.sub(r'(?is)<script.*?>.*?</script>|<style.*?>.*?</style>', ' ', raw)
-    raw = re.sub(r'(?i)<br\s*/?>|</p>|</li>|</h[1-6]>', '\n', raw)
-    raw = re.sub(r'(?s)<[^>]+>', ' ', raw)
-    text = html.unescape(raw).replace('\xa0', ' ')
-    text = re.sub(r'[ \t]+', ' ', text)
-    text = re.sub(r'\n\s*\n+', '\n', text)
-    return text.strip()
+def post_json(url: str, payload: dict) -> dict:
+    data = json.dumps(payload).encode('utf-8')
+    req = urllib.request.Request(url, data=data, headers={'Content-Type':'application/json','User-Agent':UA}, method='POST')
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.loads(r.read().decode('utf-8'))
 
 
-def signed(direction: str, value: str) -> float:
-    v = float(value)
-    return -v if direction.lower().startswith(('fell','declin','decreas','drop','moved down')) else v
+def bls_values() -> dict[str, dict[str,float]]:
+    now = datetime.now(timezone.utc)
+    payload = {'seriesid': list(SERIES.values()), 'startyear': str(now.year-1), 'endyear': str(now.year)}
+    data = post_json(BLS_API, payload)
+    if data.get('status') != 'REQUEST_SUCCEEDED':
+        raise RuntimeError(f"BLS API failed: {data.get('message')}")
+    reverse = {v:k for k,v in SERIES.items()}
+    out = {k:{} for k in SERIES}
+    for s in data.get('Results',{}).get('series',[]):
+        key = reverse.get(s.get('seriesID'))
+        if not key: continue
+        for obs in s.get('data',[]):
+            p = str(obs.get('period') or '')
+            if not p.startswith('M') or p == 'M13': continue
+            try:
+                period = f"{int(obs['year']):04d}-{int(p[1:]):02d}"
+                out[key][period] = float(obs['value'])
+            except Exception:
+                continue
+    return out
 
 
-def period_key(month: str, year: int) -> str:
-    return f'{year}-{MONTHS[month.lower()]:02d}'
+def pct(a, b):
+    return round((a/b - 1.0) * 100.0, 1)
 
 
-def parse_release_date(text: str) -> str | None:
-    m = re.search(r'embargoed until.*?([A-Z][a-z]+\s+\d{1,2},\s+20\d{2})', text, re.I | re.S)
-    if not m:
-        return None
-    try:
-        return datetime.strptime(m.group(1), '%B %d, %Y').date().isoformat()
-    except Exception:
-        return None
+def prev_period(period: str, months: int=1) -> str:
+    y,m = map(int, period.split('-'))
+    idx = y*12 + (m-1) - months
+    return f'{idx//12:04d}-{idx%12+1:02d}'
 
 
-def parse_ppi() -> dict:
-    raw, final = fetch(PPI_URL)
-    text = clean_text(raw)
-    h = re.search(r'PRODUCER PRICE INDEX(?:ES)?\s*-\s*([A-Z]+)\s+(20\d{2})', text, re.I)
-    if not h:
-        raise RuntimeError('BLS PPI period not parsed')
-    month = h.group(1).title(); year = int(h.group(2)); pkey = period_key(month, year)
-    action = r'(increased|rose|advanced|fell|declined|decreased|dropped|moved up|moved down)'
-    hm = re.search(rf'Producer Price Index for final demand\s+{action}\s+([\d.]+)\s+percent in {month}', text, re.I)
-    hy = re.search(rf'On an unadjusted basis, the index for final demand\s+{action}\s+([\d.]+)\s+percent for the 12 months ended in {month}', text, re.I)
-    cm = re.search(rf'index for final demand less foods, energy, and trade services\s+{action}\s+([\d.]+)\s+percent in {month}', text, re.I)
-    cy = re.search(r'for the 12 months ended in [A-Za-z]+, prices for final demand less foods, energy, and trade services\s+(increased|rose|advanced|fell|declined|decreased|dropped)\s+([\d.]+)\s+percent', text, re.I)
+def snapshot(kind: str, vals: dict[str,dict[str,float]]) -> dict:
+    if kind == 'PPI':
+        sa, core_sa, nsa, core_nsa = 'ppi_sa','ppi_core_sa','ppi_nsa','ppi_core_nsa'
+        url = PPI_URL
+    else:
+        sa, core_sa, nsa, core_nsa = 'cpi_sa','cpi_core_sa','cpi_nsa','cpi_core_nsa'
+        url = CPI_URL
+    common = sorted(set(vals[sa]) & set(vals[core_sa]) & set(vals[nsa]) & set(vals[core_nsa]))
+    if not common: raise RuntimeError(f'BLS {kind} common period not found')
+    period = common[-1]
+    pm = prev_period(period,1); py = prev_period(period,12)
+    needed = [(sa,pm),(core_sa,pm),(nsa,py),(core_nsa,py)]
+    if any(p not in vals[k] for k,p in needed): raise RuntimeError(f'BLS {kind} comparison period missing')
+    m = int(period[-2:])
     return {
-        'kind': 'PPI', 'period': pkey, 'period_label': f'{MONTHS[month.lower()]}월 PPI',
-        'release_date': parse_release_date(text), 'url': final,
-        'headline_mom': signed(hm.group(1), hm.group(2)) if hm else None,
-        'headline_yoy': signed(hy.group(1), hy.group(2)) if hy else None,
-        'core_mom': signed(cm.group(1), cm.group(2)) if cm else None,
-        'core_yoy': signed(cy.group(1), cy.group(2)) if cy else None,
-    }
-
-
-def parse_cpi() -> dict:
-    raw, final = fetch(CPI_URL)
-    text = clean_text(raw)
-    h = re.search(r'CONSUMER PRICE INDEX\s*-\s*([A-Z]+)\s+(20\d{2})', text, re.I)
-    if not h:
-        raise RuntimeError('BLS CPI period not parsed')
-    month = h.group(1).title(); year = int(h.group(2)); pkey = period_key(month, year)
-    action = r'(increased|rose|advanced|fell|declined|decreased|dropped)'
-    hm = re.search(rf'Consumer Price Index for All Urban Consumers \(CPI-U\)\s+{action}\s+([\d.]+)\s+percent on a seasonally adjusted basis in {month}', text, re.I)
-    hy = re.search(r'Over the last 12 months, the all items index\s+(increased|rose|advanced|fell|declined|decreased|dropped)\s+([\d.]+)\s+percent before seasonal adjustment', text, re.I)
-    cm = re.search(rf'index for all items less food and energy\s+{action}\s+([\d.]+)\s+percent in {month}', text, re.I)
-    cy = re.search(r'(?:all items less food and energy index|index for all items less food and energy)\s+(increased|rose|advanced|fell|declined|decreased|dropped)\s+([\d.]+)\s+percent over the last 12 months', text, re.I)
-    return {
-        'kind': 'CPI', 'period': pkey, 'period_label': f'{MONTHS[month.lower()]}월 CPI',
-        'release_date': parse_release_date(text), 'url': final,
-        'headline_mom': signed(hm.group(1), hm.group(2)) if hm else None,
-        'headline_yoy': signed(hy.group(1), hy.group(2)) if hy else None,
-        'core_mom': signed(cm.group(1), cm.group(2)) if cm else None,
-        'core_yoy': signed(cy.group(1), cy.group(2)) if cy else None,
+        'kind': kind,
+        'period': period,
+        'period_label': f'{m}월 {kind}',
+        'url': url,
+        'headline_mom': pct(vals[sa][period], vals[sa][pm]),
+        'headline_yoy': pct(vals[nsa][period], vals[nsa][py]),
+        'core_mom': pct(vals[core_sa][period], vals[core_sa][pm]),
+        'core_yoy': pct(vals[core_nsa][period], vals[core_nsa][py]),
     }
 
 
@@ -108,7 +111,7 @@ def treasury_url(year: int) -> str:
 
 def treasury_rows() -> list[dict]:
     year = datetime.now(timezone.utc).year
-    raw, _ = fetch(treasury_url(year))
+    raw = fetch(treasury_url(year))
     root = ET.fromstring(raw.encode('utf-8'))
     rows=[]
     for props in root.findall('.//{*}properties'):
@@ -201,36 +204,42 @@ def build_message(event: dict, row: dict, prev: dict) -> str:
         f"• {html.escape(detail)}",
     ]
     if event['kind']=='PPI':
-        lines += ['• PPI는 연준의 2% 목표지표가 아니므로 PPI 하나만으로 물가 2% 경로를 확정하지 않습니다. CPI·PCE와 함께 봅니다.']
+        lines += ['• 생산자물가는 연준의 2% 목표지표가 아니므로 이것만으로 물가 2% 경로를 확정하지 않습니다. 소비자물가와 개인소비지출 물가지수를 함께 봅니다.']
     else:
-        lines += ['• CPI는 소비자물가 방향을 보여주지만 연준의 2% 목표 판단은 PCE와 함께 확인합니다.']
+        lines += ['• 소비자물가는 물가 방향을 보여주지만 연준의 2% 목표 판단은 개인소비지출 물가지수와 함께 확인합니다.']
     lines += ['', '<b>원천</b>', f"{link('BLS 공식 물가보고서',event['url'])} · {link('미 재무부 공식 금리',TREASURY_TEXT_URL)}", '※ 1bp = 0.01%포인트']
     return '\n'.join(lines)
 
 
+def prior_month(today):
+    y=today.year; m=today.month-1
+    if m==0: y-=1; m=12
+    return f'{y:04d}-{m:02d}'
+
+
 def main():
     state=load_state(); first=not bool(state)
-    ppi=parse_ppi(); cpi=parse_cpi(); snapshots={'PPI':ppi,'CPI':cpi}
+    vals=bls_values(); ppi=snapshot('PPI',vals); cpi=snapshot('CPI',vals); snapshots={'PPI':ppi,'CPI':cpi}
     last_seen=state.get('last_seen',{})
     pending=state.get('pending_events',[])
     processed=set(state.get('processed_events',[]))
-    today_et=datetime.now(ZoneInfo('America/New_York')).date().isoformat()
+    today_et=datetime.now(ZoneInfo('America/New_York')).date()
+    expected_ref=prior_month(today_et)
 
     known={x.get('key') for x in pending}
     for kind,snap in snapshots.items():
         key=f"{kind}:{snap['period']}"
         is_new=last_seen.get(kind) not in (None,snap['period'])
-        fresh_bootstrap=first and snap.get('release_date')==today_et
+        fresh_bootstrap=first and snap['period']==expected_ref and today_et.day<=15
         if (is_new or fresh_bootstrap) and key not in known and key not in processed:
-            pending.append({'key':key,**snap}); known.add(key)
+            pending.append({'key':key,'release_date':today_et.isoformat(),**snap}); known.add(key)
         last_seen[kind]=snap['period']
 
     rows=treasury_rows(); by_date={r['date']:i for i,r in enumerate(rows)}
     keep=[]; integrated_date=state.get('last_integrated_market_date')
     sent=[]
     for event in pending:
-        release_date=event.get('release_date')
-        idx=by_date.get(release_date)
+        idx=by_date.get(event.get('release_date'))
         if idx is None or idx==0:
             keep.append(event); continue
         row=rows[idx]; prev=rows[idx-1]
