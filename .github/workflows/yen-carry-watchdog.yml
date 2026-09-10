@@ -1,0 +1,209 @@
+name: Yen carry monitor watchdog
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/yen-carry-watchdog.yml"
+  schedule:
+    # Independent offset from both yen FX lanes.
+    - cron: "4,19,34,49 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yen-carry-watchdog
+  cancel-in-progress: false
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check yen monitor heartbeat
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import pathlib
+          from zoneinfo import ZoneInfo
+
+          KST = ZoneInfo('Asia/Seoul')
+          now = dt.datetime.now(KST)
+          source = pathlib.Path('data/yen_carry_recent_shock_state.json')
+          prior_path = pathlib.Path('data/yen_carry_watchdog_state.json')
+          pending_path = pathlib.Path('out/yen_carry_watchdog_pending_state.json')
+          alert_path = pathlib.Path('out/yen_carry_watchdog_alert.txt')
+          status_path = pathlib.Path('out/yen_carry_watchdog_status.md')
+          pending_path.parent.mkdir(parents=True, exist_ok=True)
+
+          try:
+              prior = json.loads(prior_path.read_text(encoding='utf-8'))
+          except Exception:
+              prior = {}
+
+          stale_minutes = None
+          detail = ''
+          try:
+              state = json.loads(source.read_text(encoding='utf-8'))
+              raw = str(state.get('updated_at_kst') or '')
+              updated = dt.datetime.fromisoformat(raw)
+              if updated.tzinfo is None:
+                  updated = updated.replace(tzinfo=KST)
+              stale_minutes = max(0.0, (now - updated.astimezone(KST)).total_seconds() / 60.0)
+              detail = f'마지막 정상 상태 갱신 {updated.astimezone(KST).strftime("%Y-%m-%d %H:%M:%S KST")}'
+          except Exception as exc:
+              detail = f'상태 파일 읽기 실패: {type(exc).__name__}: {exc}'
+
+          stale = stale_minutes is None or stale_minutes >= 25.0
+          prior_active = bool(prior.get('alert_active'))
+          should_alert = stale and not prior_active
+
+          pending = {
+              'alert_active': stale,
+              'checked_at_kst': now.isoformat(timespec='seconds'),
+              'stale_minutes': stale_minutes,
+              'detail': detail,
+              'last_alert_at_kst': prior.get('last_alert_at_kst'),
+          }
+          if should_alert:
+              pending['last_alert_at_kst'] = now.isoformat(timespec='seconds')
+              age = '확인 불가' if stale_minutes is None else f'{stale_minutes:.0f}분'
+              alert_path.write_text(
+                  '🚨 엔화 감시 실행 장애 경보\n\n'
+                  f'조회 시각: {now.strftime("%Y-%m-%d %H:%M:%S KST")}\n'
+                  f'감시 상태: 최근 정상 갱신 이후 {age} 경과\n'
+                  f'{detail}\n\n'
+                  '판정: USD/JPY 감시가 25분 이상 정상 상태를 갱신하지 못했습니다. '\
+                  '시장 경보가 없다는 뜻이 아니라 감시 공백 자체를 뜻합니다.\n'
+                  '조치: 다음 정상 실행은 최근 6시간 5분봉을 재검사해 공백 중 -1%급 급락을 복원합니다.\n',
+                  encoding='utf-8',
+              )
+
+          pending_path.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          status_path.write_text(
+              '# 엔화 감시 장애 감시기\n\n'
+              f'- 조회시각: {now.isoformat(timespec="seconds")}\n'
+              f'- 마지막 정상 갱신 경과: {"확인 불가" if stale_minutes is None else f"{stale_minutes:.1f}분"}\n'
+              f'- 장애 상태: {"예" if stale else "아니오"}\n'
+              f'- 신규 장애 경보: {"예" if should_alert else "아니오"}\n',
+              encoding='utf-8',
+          )
+          print(json.dumps({'stale': stale, 'stale_minutes': stale_minutes, 'should_alert': should_alert}, ensure_ascii=False))
+          PY
+
+      - name: Send watchdog alert through verified KHS Telegram route
+        if: hashFiles('out/yen_carry_watchdog_alert.txt') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import html
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
+          expected = (os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
+          if not token or not chat_id:
+              raise RuntimeError('GLOBAL_RATES_TELEGRAM_* secrets are required')
+
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as response:
+              identity = json.loads(response.read().decode('utf-8'))
+          actual = str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower() != expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+
+          text = pathlib.Path('out/yen_carry_watchdog_alert.txt').read_text(encoding='utf-8').strip()
+          payload = urllib.parse.urlencode({
+              'chat_id': chat_id,
+              'text': html.escape(text),
+              'parse_mode': 'HTML',
+              'disable_web_page_preview': 'true',
+          }).encode('utf-8')
+          request = urllib.request.Request(
+              f'https://api.telegram.org/bot{token}/sendMessage', data=payload, method='POST'
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode('utf-8'))
+          if not result.get('ok'):
+              raise RuntimeError(f'Telegram rejected watchdog alert: {result}')
+
+          confirmation = {
+              'status': 'confirmed',
+              'bot_username': actual,
+              'message_id': (result.get('result') or {}).get('message_id'),
+              'confirmed_at_kst': dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
+          }
+          pathlib.Path('out/yen_carry_watchdog_telegram_confirmed.json').write_text(
+              json.dumps(confirmation, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          print(f'watchdog_telegram_delivery_confirmed=true bot=@{actual}')
+          PY
+
+      - name: Finalize watchdog state
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib
+
+          pending = pathlib.Path('out/yen_carry_watchdog_pending_state.json')
+          alert = pathlib.Path('out/yen_carry_watchdog_alert.txt')
+          confirmed = pathlib.Path('out/yen_carry_watchdog_telegram_confirmed.json')
+          target = pathlib.Path('data/yen_carry_watchdog_state.json')
+          if not pending.exists():
+              raise RuntimeError('watchdog pending state missing')
+          if alert.exists() and not confirmed.exists():
+              print('watchdog_state_not_advanced=telegram_unconfirmed')
+          else:
+              target.write_text(pending.read_text(encoding='utf-8'), encoding='utf-8')
+              print('watchdog_state_finalized=true')
+          PY
+
+      - name: Commit watchdog state
+        if: always() && hashFiles('data/yen_carry_watchdog_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/yen_carry_watchdog_state.json
+          if git diff --cached --quiet; then
+            echo "엔화 감시 장애 상태 변경 없음"
+          else
+            git commit -m "Update yen carry watchdog state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Publish watchdog status
+        if: always()
+        run: |
+          if [ -f out/yen_carry_watchdog_status.md ]; then
+            cat out/yen_carry_watchdog_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
