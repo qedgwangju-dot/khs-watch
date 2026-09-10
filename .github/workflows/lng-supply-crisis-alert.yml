@@ -25,6 +25,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v20.py"
       - "scripts/lng_supply_crisis_alert_v21.py"
       - "scripts/lng_supply_crisis_alert_v22.py"
+      - "scripts/lng_supply_crisis_alert_v23.py"
 
 permissions:
   contents: write
@@ -49,27 +50,50 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v22 monitor
+      - name: Validate v23 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py
           python - <<'PY'
-          import sys
+          import sys, time
           sys.path.insert(0, "scripts")
-          import lng_supply_crisis_alert_v22 as v22
-          fixture = ('"";SERIES;FLAGS\nComment;updated 2026-09-07 13:00;anything\n2026-08-04;3,16;\n2026-09-04;3,34;\n2026-09-07;3,38;\n').encode('utf-8')
-          parsed = v22.parse_bundesbank_csv_v22(fixture)
-          assert dict(parsed)[v22.v20.AUG4] == 3.16
-          assert parsed[-1][1] == 3.38
-          assert all(value < 8.0 for _, value in parsed)
-          print("v22_validation=true")
+          import lng_supply_crisis_alert_v2 as core
+          import lng_supply_crisis_alert_v23 as v23
+
+          assert core.classify_subtype("European natural gas TTF surpasses 80 euros per megawatt-hour") == "ttf_intraday_80"
+          assert core.classify_subtype("Dutch TTF jumps above 90 euros per megawatt-hour") == "ttf_intraday_90"
+          assert core.classify_subtype("TTF above 100 euros per megawatt-hour") == "ttf_intraday_100"
+
+          item = core.NewsItem(
+              category="europe_storage", polarity="worsening", subtype="ttf_intraday_80",
+              title="European gas TTF surpasses 80 euros per megawatt-hour",
+              source="Yonhap", link="https://example.com/ttf80",
+              published_utc="2026-09-09T12:00:00+00:00", published_epoch=time.time(),
+              official=False, event_id="fixture-base-id",
+          )
+          groups = v23.confirmed_news_groups_v23([item])
+          assert any(g.get("subtype") == "ttf_intraday_80" for g in groups)
+
+          quote = core.Quote(
+              key="ttf", symbol="TTF", label="Trading Economics EU Gas(TTF 추종 공개값)", unit="유로/MWh",
+              price=79.32, previous_close=75.80, change_pct=4.64,
+              timestamp_epoch=time.time(), timestamp_utc="2026-09-09T15:00:00+00:00", age_minutes=0,
+              source_note="fixture",
+          )
+          section = "\n".join(v23._ttf_intraday_section([
+              {"subtype":"ttf_intraday_80"}
+          ], {"ttf":quote}))
+          assert "80유로/MWh" in section
+          assert "현재 공개값은 재하회" in section
+          assert "장중 고가 ≠ 현재가/종가" in section
+          print("v23_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v22.py --setup-test
+            python scripts/lng_supply_crisis_alert_v23.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v22.py
+            python scripts/lng_supply_crisis_alert_v23.py
           fi
 
       - name: Publish status summary
@@ -155,7 +179,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v22.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v23.py --finalize
 
       - name: Upload verification artifacts
         if: always()
