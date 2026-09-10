@@ -196,7 +196,7 @@ def meaning(cat: str) -> str:
         '액추에이터 수율·월생산·출하': '초과수요 국면의 가장 중요한 실적 연결 지표입니다. 수율 안정화와 월 생산량 상승이 확인돼야 생산능력 숫자가 매출로 전환됩니다.',
         '허깅페이스향 액추에이터 물량': 'Microduck·Reachy 계열 판매량을 대당 액추에이터 수와 평균판매단가에 연결해 실제 로보티즈 매출 민감도를 추적합니다.',
     }
-    return m.get(raw, _orig_meaning(cat))
+    return m[raw] if raw in m else _orig_meaning(cat)
 
 
 def risk(cat: str) -> str:
@@ -217,7 +217,7 @@ def risk(cat: str) -> str:
         '액추에이터 수율·월생산·출하': '수율 안정화가 지연되면 납기·품질·반품·교환 접수와 보증비용이 먼저 악화될 수 있습니다.',
         '허깅페이스향 액추에이터 물량': '로봇 판매량 전망과 실제 발주는 다릅니다. 대당 탑재량·단가·실제 주문을 확인한 뒤 매출로 환산합니다.',
     }
-    return r.get(raw, _orig_risk(cat))
+    return r[raw] if raw in r else _orig_risk(cat)
 
 
 def verification(item: dict, group: str, text: str) -> str:
