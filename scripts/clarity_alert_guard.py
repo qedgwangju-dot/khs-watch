@@ -2,6 +2,7 @@
 import json
 import pathlib
 import re
+import urllib.parse
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -21,7 +22,7 @@ def clean(value):
 
 
 def fetch_json(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "KHS-CLARITY-Watch/3.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "KHS-CLARITY-Watch/3.1"})
     with urllib.request.urlopen(req, timeout=25) as r:
         return json.loads(r.read().decode("utf-8"))
 
@@ -69,19 +70,35 @@ def classify_rule_type(meta, source):
     return "SEC·CFTC 공식 규칙·해석·집행지침"
 
 
-def best_authoritative_url(meta, docno):
-    # Prefer the readable FederalRegister.gov document page when it resolves.
-    # If it does not, fall back exactly in the user's requested order: JSON -> XML -> MODS.
-    candidates = [
-        meta.get("html_url"),
-        meta.get("json_url") or f"https://www.federalregister.gov/api/v1/documents/{docno}.json",
-        meta.get("full_text_xml_url"),
-        meta.get("mods_url"),
-    ]
-    for url in candidates:
+def source_urls(docno, publication_date, meta=None):
+    """Build the exact official source links requested by the user."""
+    meta = meta or {}
+    date = clean(publication_date)
+    json_url = ""
+    xml_url = ""
+    mods_url = ""
+    if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", date):
+        yyyy, mm, dd = date.split("-")
+        json_url = f"https://www.federalregister.gov/api/v1/documents/{docno}?publication_date={date}"
+        xml_url = f"https://www.federalregister.gov/documents/full_text/xml/{yyyy}/{mm}/{dd}/{docno}.xml"
+        mods_url = f"https://www.govinfo.gov/metadata/granule/FR-{date}/{docno}/mods.xml"
+    return {
+        "html": clean(meta.get("html_url")),
+        "json": json_url or clean(meta.get("json_url")) or f"https://www.federalregister.gov/api/v1/documents/{docno}.json",
+        "xml": xml_url or clean(meta.get("full_text_xml_url")),
+        "mods": mods_url or clean(meta.get("mods_url")),
+    }
+
+
+def best_authoritative_url(meta, docno, publication_date):
+    # Preferred reading link: HTML. If it fails, use the user's exact fallbacks:
+    # JSON -> XML -> MODS.
+    urls = source_urls(docno, publication_date, meta)
+    for key in ("html", "json", "xml", "mods"):
+        url = urls[key]
         if url and url_works(url):
-            return url
-    return candidates[1] or candidates[2] or candidates[3] or candidates[0] or ""
+            return url, key, urls
+    return urls["json"] or urls["xml"] or urls["mods"] or urls["html"] or "", "unverified", urls
 
 
 def validate_federal_register_event(event):
@@ -93,6 +110,7 @@ def validate_federal_register_event(event):
     if not docno:
         return None, "missing_document_number"
 
+    # Metadata is always re-read from Federal Register API using the document number.
     api_url = f"https://www.federalregister.gov/api/v1/documents/{docno}.json"
     try:
         meta = fetch_json(api_url)
@@ -104,21 +122,29 @@ def validate_federal_register_event(event):
     action = clean(meta.get("action"))
     context = " ".join([title, abstract, action, flatten_topics(meta)])
 
-    # Critical rule: agency=SEC/CFTC is not enough. The document itself must contain
-    # a strong crypto/CLARITY term in its official metadata/content description.
+    # Agency=SEC/CFTC is not enough. The document itself must explicitly concern
+    # crypto/digital assets/CLARITY in official metadata.
     if not STRICT_CRYPTO_RE.search(context):
         return None, f"irrelevant_federal_register_document:{docno}:{title}"
+
+    publication_date = clean(meta.get("publication_date") or event.get("date"))
+    best_url, best_kind, urls = best_authoritative_url(meta, docno, publication_date)
+
+    # Verify each exact source independently. These flags are preserved for audit.
+    source_checks = {name: bool(url and url_works(url)) for name, url in urls.items() if name != "html"}
 
     checked = dict(event)
     checked["title"] = title
     checked["detail"] = abstract or action or clean(event.get("detail"))
-    checked["date"] = clean(meta.get("publication_date") or event.get("date"))
+    checked["date"] = publication_date
     checked["event_type"] = classify_rule_type(meta, source)
-    checked["url"] = best_authoritative_url(meta, docno)
+    checked["url"] = best_url
     checked["document_number"] = docno
-    checked["source_json_url"] = clean(meta.get("json_url") or api_url)
-    checked["source_xml_url"] = clean(meta.get("full_text_xml_url"))
-    checked["source_mods_url"] = clean(meta.get("mods_url"))
+    checked["source_json_url"] = urls["json"]
+    checked["source_xml_url"] = urls["xml"]
+    checked["source_mods_url"] = urls["mods"]
+    checked["source_link_kind"] = best_kind
+    checked["source_checks"] = source_checks
     checked["federal_register_type"] = clean(meta.get("type"))
     return checked, "validated"
 
