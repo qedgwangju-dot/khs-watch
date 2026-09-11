@@ -12,6 +12,7 @@ on:
       - "scripts/bio_korean_guard_strict_v2.py"
       - "scripts/qlex_sc_conversion_watch.py"
       - "scripts/qlex_wac_ir_watch.py"
+      - "scripts/qlex_wac_ir_watch_v2.py"
       - "scripts/intismeran_qlex_watch.py"
       - "scripts/qlex_telegram_send.py"
       - "scripts/qlex_telegram_send_v2.py"
@@ -70,7 +71,7 @@ jobs:
           echo "::add-mask::$chat_id"
           export BIO_TELEGRAM_CHAT_ID="$chat_id"
 
-          python scripts/qlex_wac_ir_watch.py
+          python scripts/qlex_wac_ir_watch_v2.py
           if [ -f out/qlex_wac_ir_alert.md ]; then
             python scripts/qlex_telegram_send_v2.py out/qlex_wac_ir_alert.md | tee out/qlex_wac_ir_send.log
           else
