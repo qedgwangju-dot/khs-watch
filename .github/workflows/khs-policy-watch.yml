@@ -306,7 +306,7 @@ jobs:
               "policy": {
                   "token": (os.environ.get("KHS_POLICY_TELEGRAM_BOT_TOKEN") or "").strip(),
                   "chat_id": (os.environ.get("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip(),
-                  "expected_username": "",
+                  "expected_username": "hs8879_bot",
               },
               "westinghouse": {
                   "token": (os.environ.get("KHS887900_BOT_TOKEN") or "").strip(),
