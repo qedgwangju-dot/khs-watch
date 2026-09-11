@@ -92,6 +92,7 @@ EUROPE = re.compile(r'체코|Czech|노쇼비체|Nosovice|Nošovice|유럽|Europe
 HMGMA = re.compile(r'HMGMA|조지아|Georgia|Savannah|메타플랜트\s*아메리카|Metaplant\s*America', re.I)
 GLOBAL = re.compile(r'글로벌|해외|전\s*세계|global|worldwide|additional\s+plants?|manufacturing\s+sites?', re.I)
 PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주가|stock\s*price|shares?\s*(?:jump|rise|surge)', re.I)
+ATLAS_CATEGORY_PREFIX = '현대차그룹 · 아틀라스 '
 
 
 def _is_atlas_rollout(text: str) -> bool:
@@ -157,12 +158,14 @@ def _subcat(text: str) -> str:
 
 def category(text: str, group: str) -> str:
     if group == 'hyundai_atlas_rollout':
-        return f"현대차그룹 · 아틀라스 {_subcat(text)}"
+        return f"{ATLAS_CATEGORY_PREFIX}{_subcat(text)}"
     return _orig_category(text, group)
 
 
 def meaning(cat: str) -> str:
-    raw = cat.split('아틀라스 ', 1)[-1]
+    if not cat.startswith(ATLAS_CATEGORY_PREFIX):
+        return _orig_meaning(cat)
+    raw = cat[len(ATLAS_CATEGORY_PREFIX):]
     if raw == '유럽 생산기지 도입 논의':
         return '미국 HMGMA 이후 Atlas의 글로벌 공장 확장 경로가 특정 유럽 생산법인까지 좁혀진 신호입니다. 다만 현지 논의만으로는 주문·대수·설비투자·매출이 확정되지 않으며, 시험 시작일과 투입 공정이 다음 재평가 지점입니다.'
     if raw == '현지 시험·검증':
@@ -179,15 +182,17 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
-    raw = cat.split('아틀라스 ', 1)[-1]
+    if not cat.startswith(ATLAS_CATEGORY_PREFIX):
+        return _orig_risk(cat)
+    raw = cat[len(ATLAS_CATEGORY_PREFIX):]
     if raw == '유럽 생산기지 도입 논의':
         return '가장 현실적인 실패 경로는 현지 도입 논의가 시험 일정·예산·대수 확정으로 이어지지 않는 경우입니다. 유럽은 2027년부터 적용되는 기계류 규정과 인간-로봇 협업 안전 검증도 필요해 미국 검증 뒤 도입 시차가 길어질 수 있습니다.'
     if raw == '현지 시험·검증':
         return '시험 성공과 양산라인 상시 운영은 다릅니다. 충돌·끼임 안전, 작업속도, 배터리 교환, 고장률, 공정 사이클타임이 목표를 못 맞추면 정식 배치가 지연될 수 있습니다.'
     if raw == '미국 생산라인 배치 계획':
-        return '2028년은 계획 일정이며 실제 SOP가 아닙니다. HMGMA에서 부품 시퀀싱의 안전성·가동률·품질 개선이 확인되지 않으면 이후 글로벌 공장 배치도 순차 지연될 수 있습니다.'
+        return '2028년은 계획 일정이며 실제 양산 개시가 아닙니다. HMGMA에서 부품 시퀀싱의 안전성·가동률·품질 개선이 확인되지 않으면 이후 글로벌 공장 배치도 순차 지연될 수 있습니다.'
     if raw == '생산공정 확대':
-        return '조립 공정은 단순 시퀀싱보다 위치정밀도, 힘 제어, 공구 교환, 사람과의 협업 안전 요구가 높습니다. 검사·재작업 증가나 사이클타임 미달이 먼저 드러날 수 있습니다.'
+        return '조립 공정은 단순 시퀀싱보다 위치정밀도, 힘 제어, 공구 교환, 사람과의 협업 안전 요구가 높습니다. 검사·재작업 증가나 공정 사이클타임 미달이 먼저 드러날 수 있습니다.'
     if raw == '로봇 양산능력·투입물량':
         return '생산능력이 실제 수요보다 먼저 늘면 감가상각과 고정비 부담이 커질 수 있습니다. 공장별 실제 배치대수와 외부 주문 없이 생산능력만으로 매출을 환산하지 않습니다.'
     return '그룹 차원의 글로벌 확대 방향과 개별 공장의 확정 배치는 다릅니다. 공장명, 공정, 시험일, 배치대수, 설비투자와 상용 운영 시작일을 확인해야 합니다.'
