@@ -66,7 +66,6 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.JOBS_WAGE_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.JOBS_WAGE_TELEGRAM_CHAT_ID }}
-          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
@@ -78,12 +77,12 @@ jobs:
           from zoneinfo import ZoneInfo
 
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
-          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
               raise RuntimeError("JOBS_WAGE_TELEGRAM_BOT_TOKEN secret is missing")
           if not chat_id:
-              raise RuntimeError("Jobs Wage Telegram chat id is missing")
+              raise RuntimeError("JOBS_WAGE_TELEGRAM_CHAT_ID secret is missing")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
               identity = json.loads(r.read().decode("utf-8"))
