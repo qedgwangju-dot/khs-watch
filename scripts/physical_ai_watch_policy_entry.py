@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -15,6 +16,41 @@ import physical_ai_watch_hyundai_atlas_rollout as atlas_rollout
 
 base = atlas_rollout.base
 _orig_select_diverse = base.select_diverse
+_orig_same_event = atlas_rollout.ext._same_event
+
+_CZECH_SITE = re.compile(r'체코|Czech|노쇼비체|Nosovice|Nošovice|\bHMMC\b', re.I)
+_ATLAS = re.compile(r'아틀라스|\bAtlas\b|Boston\s*Dynamics|보스턴다이내믹스|보스턴\s*다이내믹스', re.I)
+_STRONG_CZECH_MILESTONE = re.compile(
+    r'(?:시험|테스트|실증|검증).{0,12}(?:시작|개시|완료)|'
+    r'(?:배치|투입).{0,12}(?:확정|시작|개시|완료)|'
+    r'\b\d{1,5}\s*대\b|설비\s*투자|투자액|capex|발주|본계약|공급\s*계약|'
+    r'pilot\s+(?:start|begin)|deployment\s+(?:confirmed|start)|purchase\s+order',
+    re.I,
+)
+
+
+def same_event_with_czech_rollout_dedupe(a: dict, b: dict) -> bool:
+    """Collapse syndicated Czech Atlas discussion stories without hiding new milestones."""
+    if _orig_same_event(a, b):
+        return True
+    if a.get('group') != 'hyundai_atlas_rollout' or b.get('group') != 'hyundai_atlas_rollout':
+        return False
+
+    ta = f"{a.get('title', '')} {a.get('description', '')}"
+    tb = f"{b.get('title', '')} {b.get('description', '')}"
+    title_a = a.get('title', '')
+    title_b = b.get('title', '')
+
+    # Same Czech/Nošovice rollout discussion is often rewritten as
+    # '검토', '추진', or '글로벌 확대'. Treat these as one event unless
+    # either headline contains a genuinely stronger operating milestone.
+    if _CZECH_SITE.search(ta) and _CZECH_SITE.search(tb) and _ATLAS.search(ta) and _ATLAS.search(tb):
+        if not _STRONG_CZECH_MILESTONE.search(title_a) and not _STRONG_CZECH_MILESTONE.search(title_b):
+            return True
+    return False
+
+
+atlas_rollout.ext._same_event = same_event_with_czech_rollout_dedupe
 
 
 def select_diverse_with_ess_priority(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
