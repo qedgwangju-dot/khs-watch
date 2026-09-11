@@ -3,24 +3,12 @@
     "PPI": "2026-08",
     "CPI": "2026-08"
   },
-  "pending_events": [
-    {
-      "key": "CPI:2026-08",
-      "release_date": "2026-09-11",
-      "kind": "CPI",
-      "period": "2026-08",
-      "period_label": "8월 CPI",
-      "url": "https://www.bls.gov/news.release/cpi.htm",
-      "headline_mom": 0.4,
-      "headline_yoy": 3.4,
-      "core_mom": 0.3,
-      "core_yoy": 2.4
-    }
-  ],
+  "pending_events": [],
   "processed_events": [
+    "CPI:2026-08",
     "PPI:2026-08"
   ],
-  "last_integrated_market_date": "2026-09-10",
+  "last_integrated_market_date": "2026-09-11",
   "latest_ppi": {
     "kind": "PPI",
     "period": "2026-08",
@@ -41,5 +29,5 @@
     "core_mom": 0.3,
     "core_yoy": 2.4
   },
-  "updated_at_utc": "2026-09-11T14:31:19.493414+00:00"
+  "updated_at_utc": "2026-09-11T21:48:32.496621+00:00"
 }
