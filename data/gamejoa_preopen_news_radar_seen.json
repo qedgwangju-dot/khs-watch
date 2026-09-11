@@ -368,16 +368,6 @@
       "source": "매일경제",
       "title": "“삼전닉스가 공동개발하는 격”…중국 ‘HBM 연합전선’ 무서운 까닭"
     },
-    "event:2e0b1a693280591665b922b9": {
-      "first_seen_kst": "2026-08-28T09:28:21+09:00",
-      "lanes": {
-        "live": "2026-08-28T09:28:21+09:00"
-      },
-      "last_seen_kst": "2026-08-28T09:28:21+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02620726645551912",
-      "source": "이데일리",
-      "title": "[마켓무버]엔비디아가 다시 불붙인 AI 랠리…나스닥 1.57%↑"
-    },
     "event:2fe8cfc23dcdda7fd576e235": {
       "first_seen_kst": "2026-09-04T15:50:33+09:00",
       "lanes": {
@@ -1297,6 +1287,16 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02145126645552568",
       "source": "이데일리",
       "title": "[기자수첩]‘선제적’ 금리 인상…기준금리 3% 청구서는 서민에게"
+    },
+    "event:912e33bb7afba2ce20edd42e": {
+      "first_seen_kst": "2026-09-11T09:48:54+09:00",
+      "lanes": {
+        "live": "2026-09-11T09:48:54+09:00"
+      },
+      "last_seen_kst": "2026-09-11T09:48:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260911031851002?section=economy/all",
+      "source": "연합뉴스",
+      "title": "9월 초 수출도 고공행진…반도체 1년 새 270% 급증(종합) | 연합뉴스"
     },
     "event:91b1de9a2b9e4be4b85ca99b": {
       "first_seen_kst": "2026-09-01T16:33:53+09:00",
@@ -3563,16 +3563,6 @@
       "source": "매일경제",
       "title": "다시 불붙은 AI 모델 경쟁…오픈AI ‘성능’ vs 앤트로픽 ‘가격’ vs 구글 ‘코딩’"
     },
-    "link:4d07c07c2a02d6e7bc198da9": {
-      "first_seen_kst": "2026-08-28T09:28:21+09:00",
-      "lanes": {
-        "live": "2026-08-28T09:28:21+09:00"
-      },
-      "last_seen_kst": "2026-08-28T09:28:21+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02620726645551912",
-      "source": "이데일리",
-      "title": "[마켓무버]엔비디아가 다시 불붙인 AI 랠리…나스닥 1.57%↑"
-    },
     "link:4e621740c01303743cde5650": {
       "first_seen_kst": "2026-09-02T13:18:25+09:00",
       "lanes": {
@@ -3783,6 +3773,16 @@
       "link": "https://www.yna.co.kr/view/AKR20260829018000071",
       "source": "연합뉴스",
       "title": "트럼프 \"베네수와 석유거래 합의…매장량 과반 통제권 확보\" | 연합뉴스"
+    },
+    "link:5972debe239bfc17a4113586": {
+      "first_seen_kst": "2026-09-11T09:48:54+09:00",
+      "lanes": {
+        "live": "2026-09-11T09:48:54+09:00"
+      },
+      "last_seen_kst": "2026-09-11T09:48:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260911031851002?section=economy/all",
+      "source": "연합뉴스",
+      "title": "9월 초 수출도 고공행진…반도체 1년 새 270% 급증(종합) | 연합뉴스"
     },
     "link:5a61e4eafff6a94565b14ede": {
       "first_seen_kst": "2026-09-01T08:48:52+09:00",
@@ -9650,6 +9650,16 @@
       "source": "매일경제",
       "title": "1년새 47% 오른 반도체 핵심 원자재 ‘구리’…미 관세 영향에 또 급등"
     },
+    "original:dc8ccc825101b38b0be45341": {
+      "first_seen_kst": "2026-09-11T09:48:54+09:00",
+      "lanes": {
+        "live": "2026-09-11T09:48:54+09:00"
+      },
+      "last_seen_kst": "2026-09-11T09:48:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260911031851002?section=economy/all",
+      "source": "연합뉴스",
+      "title": "9월 초 수출도 고공행진…반도체 1년 새 270% 급증(종합) | 연합뉴스"
+    },
     "original:dcae3771c72334f4be5253c8": {
       "first_seen_kst": "2026-09-05T06:29:04+09:00",
       "lanes": {
@@ -9769,16 +9779,6 @@
       "link": "https://www.etnews.com/20260909000052",
       "source": "전자신문",
       "title": "코스피, 개장 초반 7000선 공방…반도체 강세 지속"
-    },
-    "original:e10b28d2da3bd2febf8654db": {
-      "first_seen_kst": "2026-08-28T09:28:21+09:00",
-      "lanes": {
-        "live": "2026-08-28T09:28:21+09:00"
-      },
-      "last_seen_kst": "2026-08-28T09:28:21+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02620726645551912",
-      "source": "이데일리",
-      "title": "[마켓무버]엔비디아가 다시 불붙인 AI 랠리…나스닥 1.57%↑"
     },
     "original:e13d1d20c05ce4082ab30e24": {
       "first_seen_kst": "2026-09-06T06:33:39+09:00",
@@ -13587,6 +13587,16 @@
       "source": "매일경제",
       "title": "1년새 47% 오른 반도체 핵심 원자재 ‘구리’…미 관세 영향에 또 급등"
     },
+    "title:dc8ccc825101b38b0be45341": {
+      "first_seen_kst": "2026-09-11T09:48:54+09:00",
+      "lanes": {
+        "live": "2026-09-11T09:48:54+09:00"
+      },
+      "last_seen_kst": "2026-09-11T09:48:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20260911031851002?section=economy/all",
+      "source": "연합뉴스",
+      "title": "9월 초 수출도 고공행진…반도체 1년 새 270% 급증(종합) | 연합뉴스"
+    },
     "title:dcae3771c72334f4be5253c8": {
       "first_seen_kst": "2026-09-05T06:29:04+09:00",
       "lanes": {
@@ -13686,16 +13696,6 @@
       "link": "https://www.etnews.com/20260909000052",
       "source": "전자신문",
       "title": "코스피, 개장 초반 7000선 공방…반도체 강세 지속"
-    },
-    "title:e10b28d2da3bd2febf8654db": {
-      "first_seen_kst": "2026-08-28T09:28:21+09:00",
-      "lanes": {
-        "live": "2026-08-28T09:28:21+09:00"
-      },
-      "last_seen_kst": "2026-08-28T09:28:21+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02620726645551912",
-      "source": "이데일리",
-      "title": "[마켓무버]엔비디아가 다시 불붙인 AI 랠리…나스닥 1.57%↑"
     },
     "title:e13d1d20c05ce4082ab30e24": {
       "first_seen_kst": "2026-09-06T06:33:39+09:00",
@@ -14182,5 +14182,5 @@
       "title": "아이엘, 7300평 제조기지 띄운다…‘휴머노이드·피지컬AI’ 거점 구축"
     }
   },
-  "updated_at_kst": "2026-09-11T09:26:01+09:00"
+  "updated_at_kst": "2026-09-11T09:48:54+09:00"
 }
