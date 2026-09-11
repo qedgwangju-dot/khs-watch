@@ -2,6 +2,7 @@
 """Final physical-AI watcher entrypoint with Korean rendering and policy lane."""
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sys
@@ -15,6 +16,8 @@ import physical_ai_watch_humanoid_component_policy as policy
 import physical_ai_watch_hyundai_atlas_rollout as atlas_rollout
 
 base = atlas_rollout.base
+_orig_key = base.key
+_orig_load_state = base.load_state
 _orig_select_diverse = base.select_diverse
 _orig_same_event = atlas_rollout.ext._same_event
 
@@ -27,6 +30,50 @@ _STRONG_CZECH_MILESTONE = re.compile(
     r'pilot\s+(?:start|begin)|deployment\s+(?:confirmed|start)|purchase\s+order',
     re.I,
 )
+
+# One underlying Sep-2026 Czech/Nošovice discussion event was already delivered
+# before the persistent event key existed. Future publisher rewrites of that same
+# discussion should share this key, while stronger operating milestones keep their
+# original keys and can alert normally.
+_CZECH_DISCUSSION_KEY = hashlib.sha256(b'hyundai_atlas_czech_nosovice_discussion').hexdigest()
+_LEGACY_CZECH_DISCUSSION_TITLES = [
+    "현대차, 체코공장도 '아틀라스' 도입 검토…美 이어 글로벌 확대 시동",
+    "현대차 체코공장, 휴머노이드 '아틀라스' 도입 추진",
+    "현대차, 美 이어 유럽도 휴머노이드 투입…체코공장 '아틀라스' 도입 검토",
+]
+_LEGACY_CZECH_DISCUSSION_KEYS = {
+    _orig_key({'title': title}) for title in _LEGACY_CZECH_DISCUSSION_TITLES
+}
+
+
+def _is_czech_discussion_rewrite(item: dict) -> bool:
+    title = item.get('title', '')
+    text = f"{title} {item.get('description', '')} {item.get('source', '')}"
+    return bool(
+        _CZECH_SITE.search(text)
+        and _ATLAS.search(text)
+        and atlas_rollout.HMG.search(text)
+        and not _STRONG_CZECH_MILESTONE.search(title)
+    )
+
+
+def persistent_event_key(item: dict) -> str:
+    """Use one durable key for the already-reported Czech Atlas discussion event."""
+    if _is_czech_discussion_rewrite(item):
+        return _CZECH_DISCUSSION_KEY
+    return _orig_key(item)
+
+
+def load_state_with_czech_migration() -> dict:
+    """Migrate previously delivered Czech discussion rewrites to the durable key."""
+    state = _orig_load_state()
+    seen = list(state.get('seen', []))
+    seen_set = set(seen)
+    if seen_set.intersection(_LEGACY_CZECH_DISCUSSION_KEYS):
+        if _CZECH_DISCUSSION_KEY not in seen_set:
+            seen.append(_CZECH_DISCUSSION_KEY)
+        state['seen'] = seen[-3500:]
+    return state
 
 
 def same_event_with_czech_rollout_dedupe(a: dict, b: dict) -> bool:
@@ -50,6 +97,8 @@ def same_event_with_czech_rollout_dedupe(a: dict, b: dict) -> bool:
     return False
 
 
+base.key = persistent_event_key
+base.load_state = load_state_with_czech_migration
 atlas_rollout.ext._same_event = same_event_with_czech_rollout_dedupe
 
 
