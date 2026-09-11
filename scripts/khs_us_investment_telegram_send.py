@@ -46,27 +46,12 @@ def _resolve() -> tuple[str, dict]:
         except Exception:
             return None
 
-    chat = None
-    for chat_id in [
-        (os.getenv("TELEGRAM_CHAT_ID_DIRECT") or "").strip(),
-        (os.getenv("TELEGRAM_CHAT_ID_POLICY") or "").strip(),
-        (os.getenv("TELEGRAM_CHAT_ID_GENERIC") or "").strip(),
-    ]:
-        chat = get_chat(chat_id)
-        if chat:
-            break
-
-    if not chat:
-        updates = _api_json(f"https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0")
-        for update in reversed(updates.get("result") or []):
-            obj = update.get("message") or update.get("channel_post") or update.get("edited_message") or {}
-            candidate = obj.get("chat") or {}
-            if candidate.get("id") is not None:
-                chat = candidate
-                break
-
+    chat_id = (os.getenv("TELEGRAM_CHAT_ID_DIRECT") or "").strip()
+    if not chat_id:
+        raise RuntimeError("KHS887900_CHAT_ID secret is missing")
+    chat = get_chat(chat_id)
     if not chat or chat.get("id") is None:
-        raise RuntimeError(f"@{expected} valid but no reachable chat resolved")
+        raise RuntimeError(f"@{expected} valid but configured KHS887900_CHAT_ID is unreachable")
     return username, chat
 
 
@@ -77,7 +62,6 @@ def _visible_len(text: str) -> int:
 
 
 def _split_html(text: str, limit: int = 3300) -> list[str]:
-    # Every bold/link tag in the alert is line-local, so line-boundary splitting keeps HTML balanced.
     lines = text.splitlines()
     chunks: list[str] = []
     current: list[str] = []
@@ -92,7 +76,6 @@ def _split_html(text: str, limit: int = 3300) -> list[str]:
         if current and _visible_len(candidate) > limit:
             flush()
         if _visible_len(line) > limit:
-            # Extremely long lines are not expected; fail rather than silently truncate.
             raise RuntimeError(f"single Telegram line exceeds safe limit: {_visible_len(line)}")
         current.append(line)
     flush()
