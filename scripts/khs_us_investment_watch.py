@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import html
 import importlib.util
+import json
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -124,6 +125,62 @@ _ORIG_MEANING = core._meaning
 _ORIG_TEXAS_BLOCK = core._texas_ai_power_block
 _ORIG_SEMANTIC_KEY = core._semantic_key
 _ORIG_RUN_EVENT_KEY = core._run_event_key
+_ORIG_PERSIST_OFFICIAL_STATUS = base._persist_official_status
+
+
+def _is_relevant_us_investment_official_record(record: dict) -> bool:
+    if not base._is_korean_gov_record(record):
+        return False
+    norm = base._normalized_title(record.get("title_plain", ""))
+    if any(token in norm for token in ["대미투자", "한미전략투자", "한미투자", "미국투자"]):
+        return True
+    event_signal = any(
+        token in norm
+        for token in [
+            "첫투자금", "첫송금", "수익배분", "45영업일",
+            "원전투자", "원전협력", "웨스팅하우스",
+        ]
+    )
+    us_signal = any(token in norm for token in ["대미", "한미", "미국"])
+    return event_signal and us_signal
+
+
+def _scoped_persist_official_status(records: list[dict]) -> dict:
+    scoped = [
+        r for r in records
+        if not base._is_korean_gov_record(r)
+        or _is_relevant_us_investment_official_record(r)
+    ]
+    return _ORIG_PERSIST_OFFICIAL_STATUS(scoped)
+
+
+def _repair_corrupted_official_status_state() -> None:
+    state = core._load()
+    official = state.get("official_status") or {}
+    title = str(official.get("title") or "")
+    source = str(official.get("source") or "")
+    if not official:
+        return
+
+    probe = {
+        "title_plain": title,
+        "source_plain": source,
+    }
+    if _is_relevant_us_investment_official_record(probe):
+        return
+
+    # 2026-09-10 산업통상부·재정경제부 최신 공식 기준으로 복원.
+    state["official_status"] = {
+        "status": "unconfirmed",
+        "title": "대미투자 수익배분 구조 등은 아직 확정된 바 없습니다",
+        "source": "산업통상부·재정경제부",
+        "updated_at": "2026-09-10T00:00:00+09:00",
+    }
+    core.STATE.write_text(
+        json.dumps(state, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    print("official_status_repaired=true")
 
 
 def _lgcns_event_stage(row: dict) -> str:
@@ -326,6 +383,7 @@ def _format_lgcns_ai_factory_alert(text: str) -> str:
     return "\n".join(parts) + "\n"
 
 
+base._persist_official_status = _scoped_persist_official_status
 core._semantic_key = _upgraded_semantic_key
 core._run_event_key = _upgraded_run_event_key
 core._tags = _upgraded_tags
@@ -334,6 +392,7 @@ core._texas_ai_power_block = _upgraded_texas_block
 
 
 def main() -> int:
+    _repair_corrupted_official_status_state()
     result = base.main()
     if core.ALERT.exists():
         original = core.ALERT.read_text(encoding="utf-8")
