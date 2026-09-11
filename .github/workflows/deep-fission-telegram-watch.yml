@@ -34,8 +34,8 @@ jobs:
     timeout-minutes: 15
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"
-      DEEP_FISSION_TELEGRAM_BOT_TOKEN: ${{ secrets.DEEP_FISSION_TELEGRAM_BOT_TOKEN || secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-      CONFIGURED_DEEP_FISSION_TELEGRAM_CHAT_ID: ${{ secrets.DEEP_FISSION_TELEGRAM_CHAT_ID || secrets.YEN_CARRY_TELEGRAM_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      DEEP_FISSION_TELEGRAM_BOT_TOKEN: ${{ secrets.DEEP_FISSION_TELEGRAM_BOT_TOKEN }}
+      CONFIGURED_DEEP_FISSION_TELEGRAM_CHAT_ID: ${{ secrets.DEEP_FISSION_TELEGRAM_CHAT_ID }}
       DEEP_FISSION_WATCH_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-Deep-Fission-Watch contact=github-actions' }}
 
     steps:
@@ -54,36 +54,28 @@ jobs:
         shell: bash
         run: |
           if [ -z "$DEEP_FISSION_TELEGRAM_BOT_TOKEN" ]; then
-            echo "configured=false" >> "$GITHUB_OUTPUT"
-            exit 0
+            echo "DEEP_FISSION_TELEGRAM_BOT_TOKEN missing; refusing fallback" >&2
+            exit 1
+          fi
+          if [ -z "$CONFIGURED_DEEP_FISSION_TELEGRAM_CHAT_ID" ]; then
+            echo "DEEP_FISSION_TELEGRAM_CHAT_ID missing; refusing fallback" >&2
+            exit 1
           fi
           python - <<'PY'
           import json, os, pathlib, urllib.request
           token=os.environ['DEEP_FISSION_TELEGRAM_BOT_TOKEN'].strip()
           expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
-          configured_chat=(os.environ.get('CONFIGURED_DEEP_FISSION_TELEGRAM_CHAT_ID') or '').strip()
+          chat_id=(os.environ.get('CONFIGURED_DEEP_FISSION_TELEGRAM_CHAT_ID') or '').strip()
           with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
               identity=json.loads(r.read().decode('utf-8'))
           actual=str((identity.get('result') or {}).get('username') or '')
           if not identity.get('ok') or actual.lower()!=expected.lower():
               raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
-          chat_id=configured_chat
-          if not chat_id:
-              with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0', timeout=25) as r:
-                  updates=json.loads(r.read().decode('utf-8'))
-              candidates=[]
-              for upd in updates.get('result') or []:
-                  msg=upd.get('message') or upd.get('edited_message') or {}
-                  chat=msg.get('chat') or {}
-                  if str(chat.get('type') or '') == 'private' and chat.get('id') is not None:
-                      candidates.append((int(upd.get('update_id') or 0), str(chat['id'])))
-              if candidates:
-                  candidates.sort(); chat_id=candidates[-1][1]
           out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
           with out.open('a', encoding='utf-8') as f:
               f.write(f'bot_username={actual}\n')
               f.write(f'chat_id={chat_id}\n')
-              f.write(f'configured={"true" if chat_id else "false"}\n')
+              f.write('configured=true\n')
           print(f'deep_fission_bot_verified=@{actual}')
           PY
 
@@ -96,7 +88,7 @@ jobs:
       - name: Check Deep Fission official sources
         if: steps.telegram.outputs.configured == 'true'
         run: |
-          rm -f out/deep_fission_alert_v3.md out/deep_fission_connection_test.md
+          rm -f out/deep_fission_alert_v3.md out/deep_fission_connection_test.md out/deep_fission_telegram_confirmed.json
           python scripts/deep_fission_live_runner.py --mode check
           test -f out/deep_fission_status_v3.md && cat out/deep_fission_status_v3.md >> "$GITHUB_STEP_SUMMARY" || true
 
@@ -176,10 +168,22 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
+          import datetime as dt
           import html as html_lib
           import json, os, pathlib, re, urllib.parse, urllib.request
+          from zoneinfo import ZoneInfo
+
           token=os.environ['DEEP_FISSION_TELEGRAM_BOT_TOKEN'].strip()
           chat_id=os.environ['DEEP_FISSION_TELEGRAM_CHAT_ID'].strip()
+          expected=os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+
+          # Re-check the bot immediately before any send. Never substitute another bot.
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
+              identity=json.loads(r.read().decode('utf-8'))
+          actual=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot immediately before send: expected @{expected}, got @{actual or "unknown"}')
+
           files=[pathlib.Path('out/deep_fission_connection_test.md'), pathlib.Path('out/deep_fission_alert_v3.md')]
           def render_html(text):
               rendered=[]
@@ -192,6 +196,7 @@ jobs:
                       rendered.append(html_lib.escape(line))
               return '\n'.join(rendered)
           sent=0
+          message_ids=[]
           for path in files:
               if not path.exists(): continue
               text=path.read_text(encoding='utf-8').strip()
@@ -209,15 +214,26 @@ jobs:
                       result=json.loads(r.read().decode('utf-8'))
                   if not result.get('ok'): raise RuntimeError(result)
                   sent+=1
-          print(f'deep_fission_telegram_messages_sent={sent}')
+                  message_ids.append((result.get('result') or {}).get('message_id'))
+          if sent:
+              pathlib.Path('out/deep_fission_telegram_confirmed.json').write_text(
+                  json.dumps({
+                      'status':'confirmed',
+                      'bot_username':actual,
+                      'message_ids':message_ids,
+                      'confirmed_at_kst':dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
+                  }, ensure_ascii=False, indent=2)+'\n',
+                  encoding='utf-8',
+              )
+          print(f'deep_fission_telegram_messages_sent={sent} bot=@{actual}')
           PY
 
-      - name: Persist state after successful check
-        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/deep_fission_watch_v3_state_pending.json') != ''
+      - name: Persist state only after confirmed Telegram delivery
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/deep_fission_watch_v3_state_pending.json') != '' && hashFiles('out/deep_fission_telegram_confirmed.json') != ''
         run: cp out/deep_fission_watch_v3_state_pending.json data/deep_fission_watch_v3_state.json
 
       - name: Commit watch state
-        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('data/deep_fission_watch_v3_state.json') != ''
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/deep_fission_telegram_confirmed.json') != '' && hashFiles('data/deep_fission_watch_v3_state.json') != ''
         run: |
           git config user.name "deep-fission-watch[bot]"
           git config user.email "deep-fission-watch[bot]@users.noreply.github.com"
@@ -245,5 +261,6 @@ jobs:
             out/deep_fission_connection_test.md
             out/deep_fission_errors_v3.log
             out/deep_fission_watch_v3_state_pending.json
+            out/deep_fission_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
