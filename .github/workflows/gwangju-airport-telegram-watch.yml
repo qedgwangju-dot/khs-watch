@@ -116,7 +116,7 @@ jobs:
       - name: Check web sources
         if: steps.telegram.outputs.configured == 'true'
         run: |
-          rm -f out/gwangju_airport_alert.md out/gwangju_airport_connection_test.md
+          rm -f out/gwangju_airport_alert.md out/gwangju_airport_connection_test.md out/gwangju_airport_telegram_confirmed.json
           python scripts/gwangju_airport_watch.py --mode check
           test -f out/gwangju_airport_status.md && cat out/gwangju_airport_status.md >> "$GITHUB_STEP_SUMMARY" || true
 
@@ -141,6 +141,7 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
+          import datetime as dt
           import html as html_lib
           import json
           import os
@@ -148,6 +149,7 @@ jobs:
           import re
           import urllib.parse
           import urllib.request
+          from zoneinfo import ZoneInfo
 
           token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
           chat_id = os.environ['TELEGRAM_CHAT_ID'].strip()
@@ -188,6 +190,7 @@ jobs:
               return '\n'.join(rendered)
 
           sent = 0
+          message_ids = []
           for path in files:
               if not path.exists():
                   continue
@@ -222,16 +225,27 @@ jobs:
                   if not result.get('ok'):
                       raise RuntimeError(result)
                   sent += 1
+                  message_ids.append((result.get('result') or {}).get('message_id'))
 
+          if sent:
+              pathlib.Path('out/gwangju_airport_telegram_confirmed.json').write_text(
+                  json.dumps({
+                      'status': 'confirmed',
+                      'bot_username': actual,
+                      'message_ids': message_ids,
+                      'confirmed_at_kst': dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
+                  }, ensure_ascii=False, indent=2) + '\n',
+                  encoding='utf-8',
+              )
           print(f'gwangju_airport_telegram_messages_sent={sent} bot=@{actual}')
           PY
 
-      - name: Persist state after successful send/check
-        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/gwangju_airport_watch_state_pending.json') != ''
+      - name: Persist state only after confirmed Telegram delivery
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/gwangju_airport_watch_state_pending.json') != '' && hashFiles('out/gwangju_airport_telegram_confirmed.json') != ''
         run: cp out/gwangju_airport_watch_state_pending.json data/gwangju_airport_watch_state.json
 
-      - name: Commit watch state
-        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('data/gwangju_airport_watch_state.json') != ''
+      - name: Commit confirmed watch state
+        if: steps.telegram.outputs.configured == 'true' && success() && hashFiles('out/gwangju_airport_telegram_confirmed.json') != '' && hashFiles('data/gwangju_airport_watch_state.json') != ''
         run: |
           git config user.name "gwangju-airport-watch[bot]"
           git config user.email "gwangju-airport-watch[bot]@users.noreply.github.com"
@@ -259,5 +273,6 @@ jobs:
             out/gwangju_airport_connection_test.md
             out/gwangju_airport_errors.log
             out/gwangju_airport_watch_state_pending.json
+            out/gwangju_airport_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
