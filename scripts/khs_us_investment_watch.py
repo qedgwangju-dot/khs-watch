@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import html
 import importlib.util
-import json
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -38,14 +36,6 @@ _extend_unique(core.QUERIES, [
     '"GE Vernova" gas turbine backlog 116GW 125GW when:30d',
     '"Applied Digital" "Base Electron" guarantee when:30d',
     '"1,570 GW" interconnection queue data center when:30d',
-    # LG CNS 2026-09-11 유형자산취득결정과 후속 AI Factory 수익화 경로.
-    '"LG CNS" "유형자산취득결정" GPU when:14d',
-    '"LG씨엔에스" "GPU 및 인프라 설비" when:14d',
-    '"LG CNS" "3,814억원" GPU when:14d',
-    '"LG CNS" "한국휴렛팩커드" GPU when:30d',
-    '"LG CNS" "Vera Rubin" when:30d',
-    '"LG CNS" "AI Factory" DBO when:30d',
-    '"LG그룹" "AI Factory" NVIDIA when:30d',
 ])
 _extend_unique(core.TRUSTED, [
     "뉴스핌",
@@ -57,18 +47,6 @@ _extend_unique(core.TRUSTED, [
     "Lawrence Berkeley National Laboratory",
     "Berkeley Lab",
     "SEC",
-    "LG CNS",
-    "LG씨엔에스",
-    "HPE",
-    "한국휴렛팩커드",
-    "NVIDIA",
-    "엔비디아",
-    "전자신문",
-    "디지털데일리",
-    "ZDNet Korea",
-    "조선비즈",
-    "서울경제",
-    "매일경제",
 ])
 _extend_unique(core.MATERIAL, [
     "두산에너빌리티",
@@ -104,111 +82,11 @@ _extend_unique(core.MATERIAL, [
     "125GW",
     "1,570 GW",
     "1570GW",
-    "LG CNS",
-    "LG씨엔에스",
-    "유형자산취득결정",
-    "유형자산",
-    "GPU 및 인프라 설비",
-    "3,814억원",
-    "3814억원",
-    "한국휴렛팩커드",
-    "HPE",
-    "NVIDIA Vera Rubin",
-    "Vera Rubin",
-    "AI Factory",
-    "AI 팩토리",
-    "DBO",
 ])
 
 _ORIG_TAGS = core._tags
 _ORIG_MEANING = core._meaning
 _ORIG_TEXAS_BLOCK = core._texas_ai_power_block
-_ORIG_SEMANTIC_KEY = core._semantic_key
-_ORIG_RUN_EVENT_KEY = core._run_event_key
-_ORIG_PERSIST_OFFICIAL_STATUS = base._persist_official_status
-
-
-def _is_relevant_us_investment_official_record(record: dict) -> bool:
-    if not base._is_korean_gov_record(record):
-        return False
-    norm = base._normalized_title(record.get("title_plain", ""))
-    if any(token in norm for token in ["대미투자", "한미전략투자", "한미투자", "미국투자"]):
-        return True
-    event_signal = any(
-        token in norm
-        for token in [
-            "첫투자금", "첫송금", "수익배분", "45영업일",
-            "원전투자", "원전협력", "웨스팅하우스",
-        ]
-    )
-    us_signal = any(token in norm for token in ["대미", "한미", "미국"])
-    return event_signal and us_signal
-
-
-def _scoped_persist_official_status(records: list[dict]) -> dict:
-    scoped = [
-        r for r in records
-        if not base._is_korean_gov_record(r)
-        or _is_relevant_us_investment_official_record(r)
-    ]
-    return _ORIG_PERSIST_OFFICIAL_STATUS(scoped)
-
-
-def _repair_corrupted_official_status_state() -> None:
-    state = core._load()
-    official = state.get("official_status") or {}
-    title = str(official.get("title") or "")
-    source = str(official.get("source") or "")
-    if not official:
-        return
-
-    probe = {
-        "title_plain": title,
-        "source_plain": source,
-    }
-    if _is_relevant_us_investment_official_record(probe):
-        return
-
-    # 2026-09-10 산업통상부·재정경제부 최신 공식 기준으로 복원.
-    state["official_status"] = {
-        "status": "unconfirmed",
-        "title": "대미투자 수익배분 구조 등은 아직 확정된 바 없습니다",
-        "source": "산업통상부·재정경제부",
-        "updated_at": "2026-09-10T00:00:00+09:00",
-    }
-    core.STATE.write_text(
-        json.dumps(state, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
-    print("official_status_repaired=true")
-
-
-def _lgcns_event_stage(row: dict) -> str:
-    blob = f"{row.get('title', '')} {row.get('source', '')}"
-    low = blob.lower()
-    company = any(token in low for token in ["lg cns", "lg씨엔에스", "엘지씨엔에스"])
-    if not company:
-        return ""
-
-    if any(token in low for token in ["정정", "변경", "증액", "감액", "취소", "철회"]):
-        return "lgcns_ai_factory_gpu_change"
-    if any(token in low for token in ["유형자산취득", "3,814억원", "3814억원", "381.4 billion", "gpu 및 인프라 설비"]):
-        return "lgcns_ai_factory_gpu_asset"
-    if any(token in low for token in ["한국휴렛팩커드", "hpe", "vera rubin", "rubin"]):
-        return "lgcns_ai_factory_hpe_rubin"
-    if any(token in low for token in ["ai factory", "ai 팩토리", "ai팩토리", "dbo", "gpu 인프라"]):
-        return "lgcns_ai_factory_commercialization"
-    return ""
-
-
-def _upgraded_semantic_key(row: dict) -> str:
-    stage = _lgcns_event_stage(row)
-    return stage or _ORIG_SEMANTIC_KEY(row)
-
-
-def _upgraded_run_event_key(row: dict) -> str:
-    stage = _lgcns_event_stage(row)
-    return stage or _ORIG_RUN_EVENT_KEY(row)
 
 
 def _upgraded_tags(title: str, source: str = "") -> list[str]:
@@ -241,32 +119,10 @@ def _upgraded_tags(title: str, source: str = "") -> list[str]:
     if "1,570 gw" in low or "1570gw" in low:
         if "계통대기열 시점오류 방지" not in tags:
             tags.append("계통대기열 시점오류 방지")
-
-    lgcns = any(token in low for token in ["lg cns", "lg씨엔에스", "엘지씨엔에스"])
-    if lgcns and any(token in low for token in [
-        "gpu", "ai factory", "ai 팩토리", "ai팩토리", "유형자산", "3,814억원", "3814억원", "dbo",
-        "한국휴렛팩커드", "hpe", "vera rubin", "rubin",
-    ]):
-        if "LG CNS AI Factory 투자" not in tags:
-            tags.insert(0, "LG CNS AI Factory 투자")
-    if lgcns and any(token in low for token in ["유형자산", "3,814억원", "3814억원", "gpu 및 인프라 설비"]):
-        if "GPU·인프라 유형자산취득" not in tags:
-            tags.append("GPU·인프라 유형자산취득")
-    if lgcns and any(token in low for token in ["한국휴렛팩커드", "hpe", "vera rubin", "rubin"]):
-        if "한국HPE·Vera Rubin 공급망" not in tags:
-            tags.append("한국HPE·Vera Rubin 공급망")
-    if lgcns and any(token in low for token in ["ai factory", "ai 팩토리", "ai팩토리", "dbo", "데이터센터"]):
-        if "DBO·AI Factory 수익화" not in tags:
-            tags.append("DBO·AI Factory 수익화")
     return tags
 
 
 def _upgraded_meaning(tags: list[str]) -> str:
-    if "LG CNS AI Factory 투자" in tags:
-        return (
-            "3,814억원은 매출이 아니라 GPU·인프라 자산 취득을 위한 현금 유출입니다. "
-            "한국HPE를 통한 실제 장비 반입·가동률이 LG CNS의 DBO·AI Factory 구축·운영 매출로 전환되는지가 핵심입니다."
-        )
     if "보일러·증기터빈 대체전원" in tags:
         return (
             "가스터빈 슬롯이 부족할수록 데이터센터 전력 설계가 천연가스 직화 보일러+증기터빈으로 이동할 수 있습니다. "
@@ -320,87 +176,13 @@ def _upgraded_texas_block() -> list[str]:
     return original[:insert_at] + supply_chain + original[insert_at:]
 
 
-def _format_lgcns_ai_factory_alert(text: str) -> str:
-    records = base._article_records(text)
-    lg_records = [
-        r for r in records
-        if "LG CNS AI Factory 투자" in r["tags_plain"]
-        or _lgcns_event_stage({"title": r["title_plain"], "source": r["source_plain"]})
-    ]
-    if not lg_records:
-        return text
-
-    # 대미투자 첫사업·에너지 패키지가 같은 실행에서 잡히면 기존 최상위 알림을 우선한다.
-    if any("대미투자 첫사업/에너지패키지" in r["tags_plain"] for r in records):
-        return text
-
-    other_records = [r for r in records if r not in lg_records]
-    last_line = next((line for line in reversed(text.splitlines()) if line.startswith("조회 ")), "")
-
-    parts = [
-        "<b>🧠 LG CNS AI Factory·GPU 인프라 투자 | 중요 업데이트</b>",
-        "",
-        "<b>① 무엇이 바뀌었나</b>",
-        "• LG씨엔에스는 <b>GPU 및 인프라 설비(NVIDIA Vera Rubin 등) 3,814억원</b>을 유형자산으로 취득하며 AI Factory 구축에 직접 자본을 투입합니다.",
-        "• 거래상대는 <b>한국휴렛팩커드 유한회사 등</b>, 취득 예정일은 <b>2027-06-30</b>입니다.",
-        "• 기존 데이터센터 설계·구축·운영(DBO) 역량에 더해 <b>GPU 인프라 자산을 직접 확보</b>하는 단계로 올라왔다는 점이 핵심입니다.",
-        "",
-        "<b>② 돈의 흐름·현재 숫자</b>",
-        "• <b>3,814억원 = 매출이 아니라 설비투자 현금 유출</b>입니다. 장비 반입 뒤 가동률·고객 계약·운영매출로 회수되는지 따로 봅니다.",
-        "• LG CNS 2026년 상반기 AI·클라우드 매출은 <b>1조6,714억원</b>, 전체 매출의 약 <b>59%</b>입니다.",
-        "• 회사 공식 기준 삼송 데이터센터 단일 프로젝트 수주는 <b>1조원 이상</b>으로, DBO 현금창출 사업과 이번 GPU 투자의 연결 기준선입니다.",
-        "",
-        "<b>③ 한국HPE·Vera Rubin 공급망</b>",
-        "• HPE는 NVIDIA와 공동 설계한 <b>Vera Rubin NVL72 by HPE</b>와 <b>HGX Rubin NVL8 기반 HPE Compute XD700</b>을 공식 제품군으로 공개했습니다.",
-        "• 따라서 한국HPE가 거래상대라는 사실은 Rubin 계열 조달 경로와 기술적으로 맞지만, <b>이번 3,814억원의 정확한 HPE 모델·GPU 수량·랙 수·단가는 아직 별도 확인 대상</b>입니다.",
-        "",
-        "<b>④ 수익화 경로</b>",
-        "• 초기: GPU·인프라 자산 취득 → 설치·시운전 → AI Factory 가동.",
-        "• 이후: GPU 서비스·AI 인프라 구축·DBO 운영 매출로 전환되는지 확인합니다. <b>장기 운영·유지보수와 사용량 기반 반복매출은 계약 확인 전 확정매출로 잡지 않습니다.</b>",
-        "",
-        "<b>⑤ 숨은 역풍·실패모드</b>",
-        "• <b>납기</b>: Vera Rubin 장비 반입이 2027-06-30 일정에 맞지 않으면 매출 전환이 늦어집니다.",
-        "• <b>전력·냉각</b>: 고밀도 GPU는 전력·액체냉각 준비가 늦으면 설치 완료 후에도 가동률이 올라가지 못합니다.",
-        "• <b>총자산이익률</b>: 고객 가동률이 낮으면 감가상각이 먼저 늘어 총자산이익률과 현금흐름에 부담이 됩니다.",
-        "",
-        "<b>⑥ 다음 확인</b>",
-        "1) 정정공시·취득금액 변경  2) HPE 정확 모델·GPU/랙 수  3) 장비 반입·전원 인가·냉각 준비  4) 고객·가동률  5) AI·클라우드 매출·감가상각·영업현금흐름",
-        "",
-        "<b>⑦ 출처</b>",
-        '<a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260911800638">DART 유형자산취득결정</a> · <a href="https://fragrant-moon-81a2.gustnd1.workers.dev/?rcept_no=20260911800638">OpenDART 원문</a>',
-        '<a href="https://connect.lgcns.com/kr/newsroom/press/detail.ir-2607-3">LG CNS 2026년 상반기 실적</a> · <a href="https://www.hpe.com/us/en/newsroom/press-release/2026/03/hpe-unveils-next-generation-ai-factory-and-supercomputing-advancements-with-nvidia.html">HPE Vera Rubin</a>',
-        '<a href="https://blogs.nvidia.com/blog/nvidia-and-lg-group-ai-factory/">NVIDIA·LG그룹 AI Factory</a>',
-    ]
-
-    if other_records:
-        parts += ["", "<b>⑧ 같은 실행에서 포착된 기타 신규 변화</b>"]
-        for r in other_records[:2]:
-            parts.append(
-                f"• {html.escape(r['title_plain'])} · <a href=\"{html.escape(r['link'], quote=True)}\">{html.escape(r['source_plain'])}</a>"
-            )
-    if last_line:
-        parts += ["", last_line]
-    return "\n".join(parts) + "\n"
-
-
-base._persist_official_status = _scoped_persist_official_status
-core._semantic_key = _upgraded_semantic_key
-core._run_event_key = _upgraded_run_event_key
 core._tags = _upgraded_tags
 core._meaning = _upgraded_meaning
 core._texas_ai_power_block = _upgraded_texas_block
 
 
 def main() -> int:
-    _repair_corrupted_official_status_state()
-    result = base.main()
-    if core.ALERT.exists():
-        original = core.ALERT.read_text(encoding="utf-8")
-        upgraded = _format_lgcns_ai_factory_alert(original)
-        if upgraded != original:
-            core.ALERT.write_text(upgraded, encoding="utf-8")
-            print("lgcns_ai_factory_alert_formatted=true")
-    return result
+    return base.main()
 
 
 if __name__ == "__main__":
