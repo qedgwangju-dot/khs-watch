@@ -1,13 +1,13 @@
 {
   "risk_level": 0,
   "risk_label": "관찰",
-  "updated_at_kst": "2026-09-12T03:47:48+09:00",
+  "updated_at_kst": "2026-09-12T06:23:45+09:00",
   "signals": {
     "jgb10_3": false,
     "jgb_curve_up": false,
     "us_jp_2y_spread_narrow": false,
     "us_2y_down": false,
-    "yen_surge": true,
+    "yen_surge": false,
     "vix_spike": false,
     "nikkei_nasdaq_joint_weakness": false,
     "structural_event": false
