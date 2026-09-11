@@ -17,6 +17,8 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from khs_compact_text import concise_text
+from khs_policy_alert_explainer import ensure_explained
+from khs_policy_alert_router import compact_explanation_lines
 
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
@@ -263,50 +265,49 @@ def save_seen(seen: dict, now: dt.datetime) -> None:
     seen["updated_at_kst"] = now.isoformat(timespec="seconds")
     SEEN_PATH.write_text(json.dumps(seen, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-def _short_source_time(value: str) -> str:
-    try:
-        parsed = dt.datetime.fromisoformat(str(value)).astimezone(KST)
-        return parsed.strftime("%m-%d %H:%M KST")
-    except Exception:
-        return str(value or "확인 불가")
-
 def _render_direct(item: dict, idx: int, now: dt.datetime) -> list[str]:
-    ko_title = "미국, Westinghouse AP1000 원전·AI 전력 지원"
+    ko_title = "미국, Westinghouse AP1000 원전·AI 전력 정책 지원 신호"
     if "80" in " ".join(item["matched"]):
-        ko_title = "미국, Westinghouse 원전 건설 대형 지원"
+        ko_title = "미국, Westinghouse 원전 건설 대형 지원 신호"
     source_label = SOURCE_LABELS.get(item["source"], item["source"])
     evidence = ", ".join(dict.fromkeys(TERM_LABELS.get(term, term) for term in item["matched"]))
-    compact_evidence = concise_text(evidence, fallback="AP1000·AI 전력·원전 지원 신호 확인")
+    explain_item = {
+        **item, "title": ko_title, "summary": evidence, "matched": {"energy_security_policy": list(item["matched"])},
+        "impacts": ["시간표", "돈 버는 능력", "수급"],
+        "paths": ["원전 정책 타임라인", "AI 데이터센터 전력수요", "원전 밸류체인", "우라늄/원전기기 수급"],
+        "sectors": ["원전/전력기기", "전력망/데이터센터", "우라늄", "SMR/대형원전 기자재"],
+    }
+    ensure_explained(explain_item)
+    compact_evidence = concise_text(evidence, fallback="AP1000·AI 전력·원전 지원 근거를 확인했습니다.")
     return [
-        f"{idx}. [확정] {ko_title}",
-        f"📌 판정: 공식자료 기반 확정",
-        f"▶ 변화: {compact_evidence}",
-        "💰 의미: 미국 원전·AI 전력 투자 확대는 AP1000·원전기기·전력 인프라 수요에 직접 연결됩니다.",
-        "⏭ 다음: 후속 공시 · DOE/NRC 일정 · 실제 발주",
-        f"- 출처: [{source_label}]({item['link']}) · {_short_source_time(item['published_kst'])}",
-        "",
+        f"## {idx}. [상·확정] {ko_title}",
+        f"- 출처: [{source_label}]({item['link']}) · 원천시각 {item['published_kst']} · 조회 {now:%H:%M KST}",
+        f"- 확인 근거: {compact_evidence}", *compact_explanation_lines(explain_item), "- 다음 확인: 후속 공시·DOE/NRC 일정·국내 수급", "",
     ]
 
 def _render_westinghouse_stake(item: dict, idx: int, now: dt.datetime) -> list[str]:
     status = item.get("status") or "추가 확인 필요"
     unconfirmed = status not in {"계약·합의 단계", "지분 거래 확정 신호", "공식 부인·정정"}
-    verdict = "보도·검토 단계 — 공식 거래조건 미확정" if unconfirmed else status
+    verdict = "보도·검토 단계 — 공식 거래조건 확인 전" if unconfirmed else status
     return [
-        f"{idx}. [{'보도' if unconfirmed else '상태 변화'}] 한국의 Westinghouse 지분 참여",
-        f"📌 판정: {verdict}",
-        f"▶ 변화: {item['title']}",
-        "💰 의미: 지분과 실제 사업권이 함께 확보될 때 AP1000 사업개발·조달까지 역할 확대가 가능합니다.",
-        "⚠️ 미확정·병목: 지분율 · 가격 · 경영참여권 · 사업권 · CFIUS/NRC",
-        "⏭ 다음: 공식 발표 → LOI/MOU → 실사 → 지분율·가격 → 규제 승인",
-        f"- 출처: [{item['source']}]({item['link']}) · {_short_source_time(item['published_kst'])}",
-        "",
+        f"## {idx}. [상·{'보도 단계' if unconfirmed else '상태 변화'}] 한국의 Westinghouse 지분 참여 이슈",
+        f"- 출처: [{item['source']}]({item['link']}) · 원천시각 {item['published_kst']} · 조회 {now:%H:%M KST}",
+        f"- 현재 판정: {verdict}", f"- 이번에 달라진 것: {item['title']}",
+        "- 투자 의미: 지분 참여가 실제화되면 미국 AP1000 사업 참여가 기자재·시공을 넘어 사업개발·조달로 넓어질 여지가 있습니다.",
+        "- 미확정: 지분율·가격·의결권·경영참여권, AP1000 설계·조달·시공 권한, 지식재산권·입찰제한 완화는 별도 확인이 필요합니다.",
+        "- 핵심 병목: Brookfield 51%·Cameco 49% 기존 주주 합의, CFIUS/NRC 심사, 투자 재원과 실제 사업권 연결 조건.",
+        "- 다음 실제 트리거: 산업통상부·한국전력·한수원·Westinghouse·Brookfield·Cameco 공식 발표, LOI/MOU·실사·본협상, 지분율·인수가격 공개.", "",
     ]
 
 def render(alerts: list[dict], now: dt.datetime) -> str:
-    lines = [f"조회 {now:%m-%d %H:%M KST}", ""]
+    lines = [f"🚨 [원전·Westinghouse 웹감시] · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
     for idx, item in enumerate(alerts, 1):
         lines.extend(_render_westinghouse_stake(item, idx, now) if item.get("kind") == "westinghouse_stake" else _render_direct(item, idx, now))
-    return "\n".join(lines).rstrip() + "\n"
+    lines.extend([
+        "💡 워치 판단: 새 기사 수나 주가반응이 아니라 공식 입장·거래단계·지분율·가격·권한·규제 상태가 실제로 바뀔 때만 알립니다.",
+        "", "투자 조언이 아닌 참고용 원전·Westinghouse 정책 알림입니다.",
+    ])
+    return "\n".join(lines) + "\n"
 
 def clear_outputs() -> None:
     for path in (ALERT_PATH, TITLE_PATH, ALERTS_JSON_PATH):
@@ -346,7 +347,7 @@ def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     ALERT_PATH.write_text(render(alerts, now), encoding="utf-8")
     ALERTS_JSON_PATH.write_text(json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    TITLE_PATH.write_text("🚨 원전·Westinghouse 웹감시\n", encoding="utf-8")
+    TITLE_PATH.write_text("원전·Westinghouse 웹감시: 물질적 상태 변화\n", encoding="utf-8")
     save_seen(seen, now)
     print(f"nuclear_policy_alerts={len(alerts)} westinghouse_material={len(stake_items)}")
     return 0
