@@ -7,6 +7,7 @@ on:
       - "scripts/treasury_etf_flow_watch.py"
       - "scripts/treasury_credit_flow_watch_ishares.py"
       - "scripts/treasury_credit_flow_watch_readable.py"
+      - "scripts/treasury_credit_flow_watch_marketstress.py"
   schedule:
     - cron: "30 8 * * *"
       timezone: "Asia/Seoul"
@@ -47,6 +48,7 @@ jobs:
           python -m py_compile scripts/treasury_etf_flow_watch.py
           python -m py_compile scripts/treasury_credit_flow_watch_ishares.py
           python -m py_compile scripts/treasury_credit_flow_watch_readable.py
+          python -m py_compile scripts/treasury_credit_flow_watch_marketstress.py
 
       - name: Validate exact Telegram bot route
         run: |
@@ -70,8 +72,8 @@ jobs:
           print(f"telegram_route_valid=true bot=@{actual} chat_id_present=true")
           PY
 
-      - name: Run readable Treasury plus credit ETF monitor and send Telegram
-        run: python scripts/treasury_credit_flow_watch_readable.py
+      - name: Run market-stress Treasury plus credit ETF monitor and send Telegram
+        run: python scripts/treasury_credit_flow_watch_marketstress.py
 
       - name: Publish summary
         if: always()
