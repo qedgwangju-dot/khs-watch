@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo
 
 KST = ZoneInfo("Asia/Seoul")
 BOARD_URL = "https://new.kpx.or.kr/board.es?bid=0042&mid=a11201000000"
-EXPECTED_BOT = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "khs887900_bot").strip().lstrip("@")
+EXPECTED_BOT = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "khs8879008879000088790000_bot").strip().lstrip("@")
 STATE_PATH = pathlib.Path("data/kpx_ess_3rd_watch_state.json")
 STATUS_PATH = pathlib.Path("out/kpx_ess_3rd_watch_status.md")
 CONFIRM_PATH = pathlib.Path("out/kpx_ess_3rd_telegram_confirmed.json")
@@ -126,23 +126,33 @@ def load_state() -> dict:
 
 def find_telegram_route() -> tuple[str, str, str, str]:
     checked: list[str] = []
+    fallback_chat_id = (os.getenv("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip()
     for label, token_env, chat_env in ROUTES:
         token = (os.getenv(token_env) or "").strip()
-        chat_id = (os.getenv(chat_env) or "").strip()
-        if not token or not chat_id:
+        preferred_chat_id = (os.getenv(chat_env) or "").strip()
+        if not token:
             continue
-        checked.append(label)
         try:
             with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
                 result = json.loads(r.read().decode("utf-8"))
         except Exception as e:
             print(f"telegram_route_check_failed={label}: {e}", file=sys.stderr)
+            checked.append(f"{label}=@getMe_failed")
             continue
         username = str((result.get("result") or {}).get("username") or "").strip()
+        checked.append(f"{label}=@{username or 'unknown'}")
+        print(f"telegram_route_identity={label} bot=@{username or 'unknown'}")
         if result.get("ok") and username.lower() == EXPECTED_BOT.lower():
+            chat_id = preferred_chat_id or fallback_chat_id
+            if not chat_id:
+                raise RuntimeError(
+                    f"Matched @{EXPECTED_BOT} via {label}, but no Telegram chat ID is configured"
+                )
+            chat_source = chat_env if preferred_chat_id else "KHS_POLICY_TELEGRAM_CHAT_ID(fallback)"
+            print(f"telegram_route_selected={label} bot=@{username} chat_source={chat_source}")
             return label, token, chat_id, username
     raise RuntimeError(
-        f"No configured Telegram secret pair matched @{EXPECTED_BOT}; checked={checked or ['none configured']}"
+        f"No configured Telegram bot token matched @{EXPECTED_BOT}; checked={checked or ['none configured']}"
     )
 
 
