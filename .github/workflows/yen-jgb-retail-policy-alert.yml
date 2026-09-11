@@ -44,11 +44,11 @@ jobs:
             cat out/yen_jgb_retail_policy_watch.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Send Telegram only to KHS policy bot
+      - name: Send Telegram only to global-rates bot
         if: github.event_name != 'pull_request' && hashFiles('out/yen_jgb_retail_policy_alert.html') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
           EXPECTED_BOT_USERNAME: khs8879887988798879_bot
         run: |
           python - <<'PY'
@@ -58,7 +58,7 @@ jobs:
           chat_id = os.environ.get('TELEGRAM_CHAT_ID', '').strip()
           expected = os.environ['EXPECTED_BOT_USERNAME']
           if not token or not chat_id:
-              raise SystemExit('KHS Telegram secrets are missing')
+              raise SystemExit('Global-rates Telegram secrets are missing')
 
           def call(method, fields=None):
               data = None if fields is None else urllib.parse.urlencode(fields).encode()
