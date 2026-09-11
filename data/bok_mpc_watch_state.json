@@ -52,8 +52,8 @@
   },
   "rate_signal_upgrade": {
     "version": 3,
-    "updated_at_kst": "2026-09-11T20:12:53+09:00",
-    "risk_score": 6,
+    "updated_at_kst": "2026-09-12T01:24:29+09:00",
+    "risk_score": 7,
     "grade_emoji": "🟠",
     "grade_label": "인상 압력 확대",
     "next_mpc_date": "2026-10-22",
@@ -84,8 +84,8 @@
       "housing": null,
       "oil": {
         "date": "2026-09-11",
-        "brent_usd": 103.64,
-        "change_5d_pct": 8.5,
+        "brent_usd": 105.21,
+        "change_5d_pct": 10.14,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
@@ -122,19 +122,19 @@
         "speaker": "김종화",
         "date": "2026-09-10",
         "flags": {
-          "macroprudential_mix": false,
-          "two_hikes_effect": false,
-          "next_meeting_caution": false,
+          "middle_east_cost": false,
           "oct_hike_caution": false,
+          "inflation_upside": false,
           "neutral_upper": false,
           "next_meeting_hawk": false,
-          "middle_east_cost": false,
           "hike_needed": true,
-          "inflation_upside": false,
+          "two_hikes_effect": false,
+          "middle_east_inflation": true,
           "demand_inflation": false,
-          "rate_not_only_tool": false,
           "hike_timing_speed": false,
-          "middle_east_inflation": true
+          "next_meeting_caution": false,
+          "rate_not_only_tool": false,
+          "macroprudential_mix": false
         },
         "title": "김종화 금통위원 \"금리 추가 인상 시기·속도, 중동 긴장·반도체 파급 효과 등이 가를 것\" - v.daum.net",
         "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8zMUF2NDQ2OVhGaU5fMzJTTnpiZW9ONXNpS3JXbzBWclNhS3ZiRmpod0o1ODNTWkxISUNKc0hsdjRUTk5oTi1maE9veTVCSW95WmQwNQ?oc=5",
