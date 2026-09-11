@@ -11,8 +11,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 # Import display first so its rendering-only Korean hook stays active.
 import physical_ai_watch_korean_display as display
 import physical_ai_watch_humanoid_component_policy as policy
+import physical_ai_watch_hyundai_atlas_rollout as atlas_rollout
 
-base = policy.base
+base = atlas_rollout.base
 _orig_select_diverse = base.select_diverse
 
 
