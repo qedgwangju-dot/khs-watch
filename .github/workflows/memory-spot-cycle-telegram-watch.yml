@@ -65,8 +65,6 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN_PRIMARY: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
-          TELEGRAM_BOT_TOKEN_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
@@ -77,8 +75,8 @@ jobs:
           import urllib.request
           from zoneinfo import ZoneInfo
 
-          token = (os.getenv("TELEGRAM_BOT_TOKEN_PRIMARY") or os.getenv("TELEGRAM_BOT_TOKEN_FALLBACK") or "").strip()
-          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          token = (os.getenv("TELEGRAM_BOT_TOKEN_PRIMARY") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
               raise RuntimeError("Telegram bot token is missing: HBM_TELEGRAM_BOT_TOKEN")
