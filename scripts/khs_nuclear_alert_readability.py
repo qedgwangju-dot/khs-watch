@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Improve readability of nuclear / Westinghouse policy Telegram alerts.
 
-The formatter is intentionally presentation-only: it preserves source content,
-separates confirmed facts from reporting/expectations, and moves the decision
-summary to the top without changing watcher trigger logic.
+The formatter is presentation-only: it preserves source content, separates
+confirmed facts from reporting/expectations, and moves the decision summary to
+the top without changing watcher trigger logic.
 """
 
 from __future__ import annotations
@@ -97,12 +97,16 @@ def _dedupe(lines: list[str]) -> list[str]:
     return output
 
 
-def _section_for_heading(line: str) -> str | None:
-    plain = _plain(line).rstrip(":")
+def _split_section_prefix(line: str) -> tuple[str | None, str]:
+    plain = _plain(line)
     for section, aliases in SECTION_ALIASES.items():
-        if any(plain == alias or plain.startswith(alias + " ") for alias in aliases):
-            return section
-    return None
+        for alias in sorted(aliases, key=len, reverse=True):
+            if plain == alias or plain == alias + ":":
+                return section, ""
+            match = re.match(rf"^{re.escape(alias)}\s*[:：]\s*(.+)$", plain, re.I)
+            if match:
+                return section, match.group(1).strip()
+    return None, ""
 
 
 def _is_source(line: str) -> bool:
@@ -143,13 +147,7 @@ def _infer_confirmed_count(buckets: dict[str, list[str]], combined: str) -> int:
     if explicit is not None:
         return explicit
     strong = [line for line in buckets["confirmed"] if _has_any(line, CONFIRMED_HINTS)]
-    if strong:
-        return len(_dedupe(strong))
-    return 0
-
-
-def _strip_old_heading_lines(lines: list[str]) -> list[str]:
-    return [line for line in lines if _section_for_heading(line) is None]
+    return len(_dedupe(strong)) if strong else 0
 
 
 def restructure_nuclear_message(title: str, body: str) -> tuple[str, str]:
@@ -159,9 +157,10 @@ def restructure_nuclear_message(title: str, body: str) -> tuple[str, str]:
         return title, body
 
     # Idempotence: direct formatter + runtime wrapper may both call this function.
-    if all(marker in body for marker in ("현재 판정", "이번에 달라진 것", "원문 근거")):
+    if all(marker in body for marker in ("📌 현재 판정", "▶ 이번에 달라진 것", "🔗 원문 근거")):
         return title, body
 
+    title_plain = _plain(title)
     lines = [_clean_line(line) for line in str(body or "").splitlines() if _clean_line(line)]
     if not lines:
         return title, body
@@ -173,13 +172,22 @@ def restructure_nuclear_message(title: str, body: str) -> tuple[str, str]:
     current: str | None = None
 
     for line in lines:
-        heading = _section_for_heading(line)
-        if heading:
-            current = heading
+        if _plain(line) == title_plain:
             continue
         if _is_source(line):
             buckets["evidence"].append(line)
+            current = None
             continue
+
+        section, inline_value = _split_section_prefix(line)
+        if section:
+            if inline_value:
+                buckets[section].append("- " + inline_value)
+                current = None
+            else:
+                current = section
+            continue
+
         if current:
             buckets[current].append(line)
             continue
@@ -200,26 +208,31 @@ def restructure_nuclear_message(title: str, body: str) -> tuple[str, str]:
             buckets["detail"].append(line)
 
     for key in buckets:
-        buckets[key] = _strip_old_heading_lines(_dedupe(buckets[key]))
+        buckets[key] = _dedupe(buckets[key])
 
-    # If an old alert had only a title-like lead and no explicit change section,
-    # surface the first meaningful detail instead of dropping it.
     if not buckets["change"]:
         lead = buckets["detail"][:3]
         buckets["change"].extend(lead)
         buckets["detail"] = buckets["detail"][len(lead):]
 
+    # Keep the first screen compact, but never discard detail: overflow moves below.
+    if len(buckets["change"]) > 3:
+        buckets["detail"] = buckets["change"][3:] + buckets["detail"]
+        buckets["change"] = buckets["change"][:3]
+    if len(buckets["investment"]) > 2:
+        buckets["detail"] = buckets["investment"][2:] + buckets["detail"]
+        buckets["investment"] = buckets["investment"][:2]
+
     news_count = _extract_news_count(combined)
     confirmed_count = _infer_confirmed_count(buckets, combined)
     verdict = _derive_verdict(buckets, combined)
 
-    summary_lines = [f"현재 판정: {verdict}"]
+    sections: list[str] = [f"📌 현재 판정: {verdict}"]
     if news_count is not None:
-        summary_lines.append(f"신규 보도: {news_count}건 | 신규 확정 사실: {confirmed_count}건")
+        sections.append(f"📰 신규 보도: {news_count}건 | ✅ 신규 확정 사실: {confirmed_count}건")
     else:
-        summary_lines.append(f"신규 확정 사실: {confirmed_count}건")
-
-    sections: list[str] = [*summary_lines, ""]
+        sections.append(f"✅ 신규 확정 사실: {confirmed_count}건")
+    sections.append("")
 
     def add_section(name: str, values: list[str]) -> None:
         values = _dedupe(values)
@@ -227,17 +240,16 @@ def restructure_nuclear_message(title: str, body: str) -> tuple[str, str]:
             return
         sections.extend([name, *values, ""])
 
-    add_section("이번에 달라진 것", buckets["change"])
-    add_section("투자 의미", buckets["investment"])
-    add_section("확정 사실·숫자", buckets["confirmed"])
-    add_section("미확정", buckets["unconfirmed"])
-    add_section("핵심 병목", buckets["bottleneck"])
-    add_section("다음 실제 트리거", buckets["trigger"])
-    add_section("상세 근거", buckets["detail"])
-    add_section("원문 근거", buckets["evidence"])
+    add_section("▶ 이번에 달라진 것", buckets["change"])
+    add_section("💰 투자 의미", buckets["investment"])
+    add_section("✅ 확정 사실·숫자", buckets["confirmed"])
+    add_section("❓ 미확정", buckets["unconfirmed"])
+    add_section("⚠️ 핵심 병목", buckets["bottleneck"])
+    add_section("⏭ 다음 실제 트리거", buckets["trigger"])
+    add_section("📎 상세 근거", buckets["detail"])
+    add_section("🔗 원문 근거", buckets["evidence"])
 
-    result = "\n".join(sections).strip() + "\n"
-    return title, result
+    return title, "\n".join(sections).strip() + "\n"
 
 
 __all__ = ["restructure_nuclear_message"]
