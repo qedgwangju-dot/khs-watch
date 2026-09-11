@@ -12,14 +12,18 @@ import os
 
 
 def _install_policy_telegram_readability_patch() -> None:
-    delivery_step = bool(os.getenv("POLICY_TELEGRAM_BOT_TOKEN")) or os.getenv("TELEGRAM_DRY_RUN", "").lower() == "true"
+    delivery_step = any(
+        bool(os.getenv(name))
+        for name in ("POLICY_TELEGRAM_BOT_TOKEN", "KHS_POLICY_TELEGRAM_BOT_TOKEN")
+    ) or os.getenv("TELEGRAM_DRY_RUN", "").lower() == "true"
     if not delivery_step:
         return
 
     try:
         from scripts import khs_policy_telegram_formatter as formatter
         from scripts.khs_nuclear_alert_readability import restructure_nuclear_message
-    except Exception:
+    except Exception as exc:
+        print(f"policy_nuclear_readability_patch=failed error={type(exc).__name__}:{exc}")
         return
 
     original = formatter.format_policy_message
@@ -32,6 +36,7 @@ def _install_policy_telegram_readability_patch() -> None:
 
     wrapped_format_policy_message._khs_nuclear_readability_wrapped = True
     formatter.format_policy_message = wrapped_format_policy_message
+    print("policy_nuclear_readability_patch=installed")
 
 
 _install_policy_telegram_readability_patch()
