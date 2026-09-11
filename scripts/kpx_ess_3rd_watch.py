@@ -22,6 +22,7 @@ STATUS_PATH = pathlib.Path("out/kpx_ess_3rd_watch_status.md")
 CONFIRM_PATH = pathlib.Path("out/kpx_ess_3rd_telegram_confirmed.json")
 
 ROUTES = [
+    ("ROBOTIS", "ROBOTIS_TELEGRAM_BOT_TOKEN", "DATA_CENTER_TELEGRAM_CHAT_ID"),
     ("KHS887900", "KHS887900_BOT_TOKEN", "KHS887900_CHAT_ID"),
     ("KHS_POLICY", "KHS_POLICY_TELEGRAM_BOT_TOKEN", "KHS_POLICY_TELEGRAM_CHAT_ID"),
     ("GLOBAL_RATES", "GLOBAL_RATES_TELEGRAM_BOT_TOKEN", "GLOBAL_RATES_TELEGRAM_CHAT_ID"),
@@ -188,13 +189,15 @@ def main() -> int:
     candidates = extract_candidates(page)
     state = load_state()
     first_run = not bool(state)
+    previous_expected_bot = str(state.get("expected_bot_username") or "").strip().lstrip("@")
+    route_changed = bool(state) and previous_expected_bot.lower() != EXPECTED_BOT.lower()
     seen_urls = set(state.get("seen_urls") or [])
     new_items = [x for x in candidates if x["url"] not in seen_urls]
 
     route_label, token, chat_id, bot_username = find_telegram_route()
     message_ids: list[int] = []
 
-    if first_run:
+    if first_run or route_changed:
         setup_text = (
             "✅ <b>제3차 ESS 중앙계약시장 웹 감시 설정 완료</b>\n\n"
             "전력거래소 공식 공지사항을 15분 간격으로 확인합니다.\n"
@@ -206,7 +209,8 @@ def main() -> int:
         )
         message_ids.append(send_telegram(token, chat_id, setup_text))
         # 최초 기준선에서는 이미 존재하던 게시물은 경보로 보내지 않는다.
-        new_items = []
+        if first_run:
+            new_items = []
 
     for item in new_items:
         alert = (
