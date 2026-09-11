@@ -74,6 +74,7 @@ async def run(config_path: str, sample_path: str | None = None) -> int:
                     except Exception as exc:
                         db.mark_alert(finding.alert_hash, str(exc))
                         LOG.exception("alert delivery failed")
+                        raise
         if new_docs:
             # Costly model analysis is gated strictly behind new-document detection.
             analysis = analyze_if_configured(new_docs)
