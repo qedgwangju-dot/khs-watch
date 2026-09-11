@@ -3,7 +3,7 @@
   "evidence": {
     "rebuild::FX 변동성 비상승": true,
     "rebuild::USD/JPY 상승·엔화 재약세": false,
-    "rebuild::USD/JPY 완만한 상승 방향": true,
+    "rebuild::USD/JPY 완만한 상승 방향": false,
     "rebuild::레버리지 엔화 숏 축소에도 USD/JPY 상승": false,
     "rebuild::미·일 2년 금리차 여전히 넓음": true,
     "rebuild::미·일 2년 금리차 재확대": false,
@@ -32,25 +32,25 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-09-11T13:51:58+09:00"
+    "updated_at_kst": "2026-09-11T14:06:29+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-09-11T13:49:35+09:00",
+  "updated_at_kst": "2026-09-11T14:04:07+09:00",
   "values": {
     "cftc_net_short": 102188,
     "cftc_net_short_pct_oi": 24.81001840332911,
-    "fx_12h_5m_sigma_bps": 2.5562500737791773,
-    "fx_vol_ratio": 0.6300973566805775,
+    "fx_12h_5m_sigma_bps": 2.5509267058154803,
+    "fx_vol_ratio": 0.6270749260657746,
     "jgb2": 1.823,
     "mof_latest_2w_outward_trillion_yen": -1.1578,
     "mof_prior_2w_outward_trillion_yen": -0.31,
     "us_jp_2y_spread": 2.7369999999999997,
-    "usdjpy": 154.34100341796875,
-    "usdjpy_12h_drawdown_pct": -0.15784408920722903,
-    "usdjpy_15m_pct": 0.007781212475053404,
-    "usdjpy_30m_pct": 0.0006525075171831923,
-    "usdjpy_60m_pct": -0.03173519779349943,
+    "usdjpy": 154.31100463867188,
+    "usdjpy_12h_drawdown_pct": -0.17725009754825913,
+    "usdjpy_15m_pct": -0.018141802856241486,
+    "usdjpy_30m_pct": -0.011656987939120664,
+    "usdjpy_60m_pct": -0.018141802856241486,
     "ust2": 4.56
   }
 }
