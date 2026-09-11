@@ -14,12 +14,20 @@ def main() -> int:
 
     text = ALERT.read_text(encoding="utf-8")
     low = text.lower()
+
+    # 대체전원 보강은 실제 발전설비·가스터빈 병목 사건에만 붙인다.
+    # 일반 AI 데이터센터·GPU 인프라 알림에 'data center' 단어가 있다는 이유만으로
+    # 가스터빈/보일러 블록이 혼입되지 않도록 발전설비 신호를 명시적으로 요구한다.
     relevant = any(
         token in low
         for token in [
-            "encinal", "엔시날", "가스터빈", "gas turbine", "hrsg",
-            "스팀터빈", "증기터빈", "steam turbine", "보일러", "babcock",
-            "base electron", "텍사스 ai 전력", "data center",
+            "encinal", "엔시날",
+            "가스터빈", "gas turbine",
+            "hrsg",
+            "스팀터빈", "증기터빈", "steam turbine",
+            "보일러", "boiler", "babcock", "base electron",
+            "가스발전", "gas power", "gas plant", "gas-fired",
+            "복합화력", "combined-cycle",
         ]
     )
     if not relevant:
