@@ -24,10 +24,23 @@ def _telegram_text(payload: dict) -> str:
     )
 
 
+def _telegram_get_me(token: str) -> str:
+    with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
+        data = json.loads(response.read().decode("utf-8"))
+    if not data.get("ok"):
+        raise RuntimeError("Telegram getMe failed")
+    return str((data.get("result") or {}).get("username") or "")
+
+
 def notify(payload: dict) -> None:
     telegram_token = os.getenv("TELEGRAM_BOT_TOKEN")
     telegram_chat_id = os.getenv("SVIC_TELEGRAM_CHAT_ID")
     if telegram_token and telegram_chat_id:
+        expected = (os.getenv("SVIC_EXPECTED_TELEGRAM_BOT_USERNAME") or "khs8879_bot").strip().lstrip("@")
+        actual = _telegram_get_me(telegram_token)
+        if actual.lower() != expected.lower():
+            raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+
         telegram_url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
         telegram_payload = {
             "chat_id": telegram_chat_id,
