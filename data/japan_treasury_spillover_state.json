@@ -1,11 +1,11 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-11T19:09:25+09:00",
+  "updated_at_kst": "2026-09-11T23:23:41+09:00",
   "source_dates": {
     "mof_week": "2026-08-30~09-05",
     "jgb_yield": "2026/9/10",
     "h41": "September 10, 2026",
-    "market": "2026-09-09"
+    "market": "2026-09-10"
   },
   "snapshot": {
     "lt_debt_week_trillion_yen": 0.1119,
@@ -14,14 +14,14 @@
     "fima_bn_usd": 0.0,
     "fima_weekly_change_bn_usd": 0.0,
     "market": {
-      "market_date": "2026-09-09",
+      "market_date": "2026-09-10",
       "dgs10": 4.83,
       "dgs10_change_bp": 3.000000000000025,
       "dgs30": 5.28,
       "dgs30_change_bp": 3.000000000000025,
-      "sofr_iorb_date": "2026-09-09",
-      "sofr_iorb_bp": -0.9999999999999787,
-      "sofr_iorb_change_bp": 0.0,
+      "sofr_iorb_date": "2026-09-10",
+      "sofr_iorb_bp": -2.9999999999999805,
+      "sofr_iorb_change_bp": -2.0000000000000018,
       "usdjpy_date": "2026-09-04",
       "usdjpy": 156.11,
       "usdjpy_change_pct": 0.4633502799408218
