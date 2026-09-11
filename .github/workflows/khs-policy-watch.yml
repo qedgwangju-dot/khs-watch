@@ -279,16 +279,9 @@ jobs:
         env:
           KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
           KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          KHS887900_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
+          KHS887900_CHAT_ID: ${{ secrets.KHS887900_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
-          POLICY_TELEGRAM_BOT_TOKEN="$KHS_POLICY_TELEGRAM_BOT_TOKEN"
-          POLICY_TELEGRAM_CHAT_ID="$KHS_POLICY_TELEGRAM_CHAT_ID"
-
-          if { [ -z "$POLICY_TELEGRAM_BOT_TOKEN" ] || [ -z "$POLICY_TELEGRAM_CHAT_ID" ]; } && [ "$TELEGRAM_DRY_RUN" != "true" ]; then
-            echo "KHS policy Telegram: KHS_POLICY_TELEGRAM_BOT_TOKEN/KHS_POLICY_TELEGRAM_CHAT_ID missing; skip wrong-room fallback" >> "$GITHUB_STEP_SUMMARY"
-            exit 0
-          fi
-          export POLICY_TELEGRAM_BOT_TOKEN POLICY_TELEGRAM_CHAT_ID
-
           python - <<'PY'
           import os
           import pathlib
@@ -304,24 +297,34 @@ jobs:
               validate_final_policy_message,
           )
 
-          token = os.environ["POLICY_TELEGRAM_BOT_TOKEN"]
-          chat_id = os.environ["POLICY_TELEGRAM_CHAT_ID"]
           telegram_test = os.environ.get("TELEGRAM_TEST", "false").lower() == "true"
           telegram_dry_run = os.environ.get("TELEGRAM_DRY_RUN", "false").lower() == "true"
-
           dedupe_hours = int(os.environ.get("KHS_TELEGRAM_DEDUPE_HOURS", "48"))
           state_path = pathlib.Path("data/khs_telegram_delivery_seen.json")
 
+          route_config = {
+              "policy": {
+                  "token": (os.environ.get("KHS_POLICY_TELEGRAM_BOT_TOKEN") or "").strip(),
+                  "chat_id": (os.environ.get("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip(),
+                  "expected_username": "",
+              },
+              "westinghouse": {
+                  "token": (os.environ.get("KHS887900_BOT_TOKEN") or "").strip(),
+                  "chat_id": (os.environ.get("KHS887900_CHAT_ID") or "").strip(),
+                  "expected_username": "khs887900_bot",
+              },
+          }
+
           lanes = [
-              (pathlib.Path("out/khs_policy_watch_alert_title.txt"), pathlib.Path("out/khs_policy_watch_alert.md"), "KHS policy watch alert"),
-              (pathlib.Path("out/khs_korea_presidential_personnel_title.txt"), pathlib.Path("out/khs_korea_presidential_personnel_alert.md"), "KHS Korea presidential personnel alert"),
-              (pathlib.Path("out/khs_nuclear_policy_title.txt"), pathlib.Path("out/khs_nuclear_policy_alert.md"), "KHS nuclear AI power alert"),
-              (pathlib.Path("out/khs_trusted_policy_news_title.txt"), pathlib.Path("out/khs_trusted_policy_news_alert.md"), "KHS trusted policy news alert"),
-              (pathlib.Path("out/khs_policy_source_status_title.txt"), pathlib.Path("out/khs_policy_source_status_alert.md"), "KHS policy source status alert"),
+              (pathlib.Path("out/khs_policy_watch_alert_title.txt"), pathlib.Path("out/khs_policy_watch_alert.md"), "KHS policy watch alert", "policy"),
+              (pathlib.Path("out/khs_korea_presidential_personnel_title.txt"), pathlib.Path("out/khs_korea_presidential_personnel_alert.md"), "KHS Korea presidential personnel alert", "policy"),
+              (pathlib.Path("out/khs_nuclear_policy_title.txt"), pathlib.Path("out/khs_nuclear_policy_alert.md"), "KHS nuclear AI power alert", "westinghouse"),
+              (pathlib.Path("out/khs_trusted_policy_news_title.txt"), pathlib.Path("out/khs_trusted_policy_news_alert.md"), "KHS trusted policy news alert", "policy"),
+              (pathlib.Path("out/khs_policy_source_status_title.txt"), pathlib.Path("out/khs_policy_source_status_alert.md"), "KHS policy source status alert", "policy"),
           ]
 
           messages = []
-          for title_file, body_file, fallback_title in lanes:
+          for title_file, body_file, fallback_title, route in lanes:
               if not body_file.exists():
                   continue
               title = title_file.read_text(encoding="utf-8").strip() if title_file.exists() else fallback_title
@@ -329,17 +332,15 @@ jobs:
               title, body = format_policy_message(title, body)
               format_errors = validate_final_policy_message(title, body)
               if format_errors:
-                  raise RuntimeError(
-                      f"Telegram final format failed lane={body_file}: {format_errors}"
-                  )
-              messages.append((title, body))
+                  raise RuntimeError(f"Telegram final format failed lane={body_file}: {format_errors}")
+              messages.append((title, body, route))
 
           if not messages and telegram_test:
               report = pathlib.Path("out/khs_policy_watch.md")
               title = "KHS policy watch Telegram test"
               body = report.read_text(encoding="utf-8") if report.exists() else "KHS policy watch test message."
               title, body = format_policy_message(title, body)
-              messages.append((title, body))
+              messages.append((title, body, "policy"))
 
           def parse_utc(value):
               try:
@@ -375,6 +376,24 @@ jobs:
                   return re.sub(r"\s+", " ", " | ".join(semantic_parts)).strip()
               return re.sub(r"\s+", " ", text).strip()
 
+          def verify_route(route):
+              config = route_config[route]
+              token = config["token"]
+              chat_id = config["chat_id"]
+              if not token or not chat_id:
+                  raise RuntimeError(f"Telegram route missing token/chat_id: {route}")
+              expected = config.get("expected_username") or ""
+              if expected:
+                  with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as resp:
+                      identity = json.loads(resp.read().decode("utf-8"))
+                  actual = str((identity.get("result") or {}).get("username") or "")
+                  if not identity.get("ok") or actual.lower() != expected.lower():
+                      raise RuntimeError(
+                          f"Wrong Telegram bot for {route}: expected @{expected}, got @{actual or 'unknown'}"
+                      )
+                  print(f"telegram_route_valid=true route={route} bot=@{actual}")
+              return token, chat_id
+
           now_utc = dt.datetime.now(dt.timezone.utc)
           if state_path.exists():
               try:
@@ -393,18 +412,23 @@ jobs:
 
           sendable = []
           skipped = []
-          for title, body in messages:
-              digest = hashlib.sha256(canonical_message(title, body).encode("utf-8")).hexdigest()[:20]
+          for title, body, route in messages:
+              canonical = canonical_message(title, body)
+              if route == "westinghouse":
+                  canonical = f"westinghouse|{canonical}"
+              digest = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:20]
               sent_at = parse_utc(str(sent_state.get(digest, {}).get("sent_at_utc") or ""))
               if sent_at and now_utc - sent_at < dt.timedelta(hours=dedupe_hours) and not title.endswith("Telegram test"):
-                  skipped.append((title, digest, sent_at.isoformat()))
+                  skipped.append((title, digest, sent_at.isoformat(), route))
                   continue
-              sendable.append((title, body, digest))
+              sendable.append((title, body, digest, route))
 
           if telegram_dry_run:
               dry_run_path = pathlib.Path("out/khs_telegram_dry_run.md")
               dry_run_path.write_text(
-                  "\n\n---\n\n".join(f"{title}\n\n{body}" for title, body in messages) + "\n",
+                  "\n\n---\n\n".join(
+                      f"[route={route}]\n{title}\n\n{body}" for title, body, route in messages
+                  ) + "\n",
                   encoding="utf-8",
               )
               print(
@@ -412,7 +436,12 @@ jobs:
                   f"sendable={len(sendable)} skipped_duplicates={len(skipped)}"
               )
           else:
-              for title, body, digest in sendable:
+              verified_routes = {}
+              sent_by_route = {}
+              for title, body, digest, route in sendable:
+                  if route not in verified_routes:
+                      verified_routes[route] = verify_route(route)
+                  token, chat_id = verified_routes[route]
                   text = prepare_telegram_html(title, body)
                   if len(text) > 4096:
                       raise RuntimeError(f"Telegram HTML message exceeds 4096 characters: {len(text)}")
@@ -429,7 +458,9 @@ jobs:
                       "sent_at_utc": now_utc.isoformat().replace("+00:00", "Z"),
                       "title": title,
                       "preview": re.sub(r"\s+", " ", body)[:220],
+                      "route": route,
                   }
+                  sent_by_route[route] = sent_by_route.get(route, 0) + 1
 
               if sendable:
                   state_path.parent.mkdir(parents=True, exist_ok=True)
@@ -443,6 +474,7 @@ jobs:
                               "messages": len(messages),
                               "sent": len(sendable),
                               "duplicate_skipped": len(skipped),
+                              "sent_by_route": sent_by_route,
                               "confirmed_at_kst": confirmed_at.isoformat(timespec="seconds"),
                           },
                           ensure_ascii=False,
@@ -452,15 +484,15 @@ jobs:
                       encoding="utf-8",
                   )
 
-          for title, digest, sent_at in skipped:
-              print(f"telegram_duplicate_skipped digest={digest} first_sent={sent_at} title={title}")
+          for title, digest, sent_at, route in skipped:
+              print(f"telegram_duplicate_skipped route={route} digest={digest} first_sent={sent_at} title={title}")
           print(
               f"telegram_messages={0 if telegram_dry_run else len(sendable)} "
               f"skipped_duplicates={len(skipped)} dry_run={str(telegram_dry_run).lower()}"
           )
           PY
 
-          echo "KHS policy Telegram: duplicate-protected send step completed" >> "$GITHUB_STEP_SUMMARY"
+          echo "KHS policy Telegram: route-aware duplicate-protected send step completed" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload policy watch verification artifacts
         if: always()
