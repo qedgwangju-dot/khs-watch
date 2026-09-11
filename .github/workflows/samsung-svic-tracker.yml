@@ -63,10 +63,11 @@ jobs:
           ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           SVIC_TELEGRAM_CHAT_ID: ${{ secrets.SVIC_TELEGRAM_CHAT_ID }}
+          SVIC_EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879_bot"
         run: python main.py
 
       - name: Persist SQLite, raw documents, and outputs
-        if: always()
+        if: success()
         shell: bash
         run: |
           mkdir -p state-repo/samsung_svic_tracker/state state-repo/samsung_svic_tracker/outputs
