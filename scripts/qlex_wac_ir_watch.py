@@ -90,14 +90,7 @@ def parse_posts(page: str) -> list[Post]:
             text = strip_html(block)
 
         if text:
-            posts.append(
-                Post(
-                    post_id=post_id,
-                    url=f"https://t.me/alteogenIR/{post_id}",
-                    published=published,
-                    text=text,
-                )
-            )
+            posts.append(Post(post_id=post_id, url=f"https://t.me/alteogenIR/{post_id}", published=published, text=text))
     return posts
 
 
@@ -166,11 +159,7 @@ def parse_metrics(text: str) -> Metrics | None:
     elif m.share_pct is not None and m.prev_share_pct is not None:
         m.share_delta_pp = round(m.share_pct - m.prev_share_pct, 2)
 
-    cumulative = re.search(
-        r"1\s*[~\-–]\s*(\d{1,2})\s*월[^\n$]{0,120}?\$\s*([0-9,.]+)\s*(M|MN|MILLION|B|BN|BILLION)\b",
-        text,
-        re.I,
-    )
+    cumulative = re.search(r"1\s*[~\-–]\s*(\d{1,2})\s*월[^\n$]{0,120}?\$\s*([0-9,.]+)\s*(M|MN|MILLION|B|BN|BILLION)\b", text, re.I)
     if cumulative:
         m.cumulative_month = int(cumulative.group(1))
         value = number(cumulative.group(2))
@@ -188,14 +177,7 @@ def load_state() -> dict:
             return json.loads(STATE.read_text(encoding="utf-8"))
         except Exception:
             pass
-    return {
-        "initialized": False,
-        "last_post_id": 0,
-        "last_month": None,
-        "last_wac_m": None,
-        "last_share_pct": None,
-        "last_cumulative_m": None,
-    }
+    return {"initialized": False, "last_post_id": 0, "last_month": None, "last_wac_m": None, "last_share_pct": None, "last_cumulative_m": None}
 
 
 def fmt_usd_m(value: float) -> str:
@@ -214,12 +196,7 @@ def build_alert(post: Post, metrics: Metrics, state: dict) -> str:
         title_bits.append(f"피하주사(SC) 비중 {metrics.share_pct:.1f}%")
     title = " · ".join(title_bits) or "월간 처방지표 업데이트"
 
-    lines = [
-        "[바이오 감시] KEYTRUDA QLEX 월간 WAC·피하주사 비중",
-        "",
-        f"**{title_month} {title}**",
-        "",
-    ]
+    lines = ["[바이오 감시] KEYTRUDA QLEX 월간 WAC·피하주사 비중", "", f"**{title_month} {title}**", ""]
 
     if metrics.wac_m is not None:
         detail = f"- **월간 처방액:** {fmt_usd_m(metrics.wac_m)}"
@@ -251,10 +228,10 @@ def build_alert(post: Post, metrics: Metrics, state: dict) -> str:
 
     lines += [
         "",
-        "- **해석:** WAC은 도매구입가격 기준 처방액 지표로 MSD의 실제 순매출과 다릅니다. 누적값도 MSD 공식매출과 월별 WAC을 결합한 추정치로 봐야 합니다.",
+        "- **해석:** WAC은 도매구입가격 기준 처방액 지표로 Merck의 실제 순매출과 다릅니다. 누적값도 Merck 공식매출과 월별 WAC을 결합한 추정치로 봐야 합니다.",
         "- **알테오젠:** QLEX 확산 속도가 빨라질수록 판매 마일스톤·후속 로열티·ALT-B4 공급의 기반이 커지는 방향입니다.",
         "- **다음 확인:** 다음 달 WAC·피하주사 비중 → Merck 분기 QLEX 공식 매출과 실제 차이 검산",
-        "- **원문 확인:** 알테오젠 공식 IR Telegram 게시물 직접 추적",
+        "- **원문 확인:** 알테오젠 공식 IR 텔레그램 게시물 직접 추적",
         f"- 원문: {post.url}",
     ]
     return "\n".join(lines) + "\n"
@@ -294,11 +271,7 @@ def main() -> int:
         stamp = parse_iso(post.published)
         fresh = True if stamp is None else (now - stamp <= dt.timedelta(days=MAX_FRESH_DAYS))
         same_post = int(state.get("last_post_id") or 0) >= post.post_id
-        same_metrics = (
-            metrics.month == state.get("last_month")
-            and metrics.wac_m == state.get("last_wac_m")
-            and metrics.share_pct == state.get("last_share_pct")
-        )
+        same_metrics = metrics.month == state.get("last_month") and metrics.wac_m == state.get("last_wac_m") and metrics.share_pct == state.get("last_share_pct")
 
         if fresh and not same_post and not same_metrics:
             ALERT.write_text(build_alert(post, metrics, state), encoding="utf-8")
@@ -319,11 +292,7 @@ def main() -> int:
         pending.setdefault("initialized", True)
 
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    STATUS.write_text(
-        f"status=ok changed={'true' if changed else 'false'} posts={len(posts)} wac_posts={len(candidates)} "
-        f"latest_post={pending.get('last_post_id', 0)} at={pending['last_check_kst']}\n",
-        encoding="utf-8",
-    )
+    STATUS.write_text(f"status=ok changed={'true' if changed else 'false'} posts={len(posts)} wac_posts={len(candidates)} latest_post={pending.get('last_post_id', 0)} at={pending['last_check_kst']}\n", encoding="utf-8")
     return 0
 
 
