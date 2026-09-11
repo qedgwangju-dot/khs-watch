@@ -1,0 +1,92 @@
+name: Bio QLEX WAC KRW Resend Once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/bio-qlex-wac-krw-resend-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    env:
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve Telegram route
+        id: route
+        shell: bash
+        run: |
+          set -euo pipefail
+          chat_id="${BIO_TELEGRAM_CHAT_ID:-}"
+          if [ -z "$chat_id" ] && [ -f data/bio_telegram_chat_id.enc ]; then
+            chat_id=$(openssl enc -d -aes-256-cbc -a -A -pbkdf2 \
+              -pass env:BIO_TELEGRAM_BOT_TOKEN \
+              -in data/bio_telegram_chat_id.enc)
+          fi
+          test -n "$chat_id"
+          echo "::add-mask::$chat_id"
+          echo "chat_id=$chat_id" >> "$GITHUB_OUTPUT"
+
+      - name: Send corrected QLEX WAC alert
+        env:
+          CHAT_ID: ${{ steps.route.outputs.chat_id }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+
+          token=os.environ['BIO_TELEGRAM_BOT_TOKEN'].strip()
+          chat=os.environ['CHAT_ID'].strip()
+
+          req=urllib.request.Request(
+              'https://api.frankfurter.app/latest?from=USD&to=KRW',
+              headers={'User-Agent':'Mozilla/5.0 (QLEX-WAC-KRW/1.0)'},
+          )
+          with urllib.request.urlopen(req,timeout=15) as r:
+              fx=json.loads(r.read().decode())
+          rate=float(fx['rates']['KRW'])
+          day=str(fx.get('date') or '')
+
+          cumulative_m=1026.0
+          eok=cumulative_m*rate/100.0
+          jo=int(eok//10000)
+          rem=int(round(eok-jo*10000))
+          krw=f'{jo}조{rem:,}억원' if rem else f'{jo}조원'
+
+          text=f'''<b>[바이오 감시] KEYTRUDA QLEX 월간 WAC·피하주사 비중</b>\n\n<b>8월 WAC 2억3,230만달러 · 피하주사 비중 12.7%</b>\n\n- <b>월간 처방액:</b> 2억3,230만달러 · 알테오젠 IR 원문 약 3,122억원 · 전월 대비 +14.3%\n- <b>피하주사 비중:</b> 12.7% · 직전월 10.5% 대비 +2.1%p\n- <b>누적 추정:</b> 1~8월 10억2,600만달러 → 약 {krw} (USD/KRW {rate:,.2f}, {day}, ECB 기준)\n\n- <b>해석:</b> WAC은 도매구입가격 기준 처방액 지표로 MSD 실제 순매출과 다릅니다. 누적값은 MSD 상반기 공식매출과 월별 WAC을 결합한 추정치입니다.\n- <b>알테오젠:</b> QLEX 확산 속도가 빨라질수록 판매 마일스톤·후속 로열티·ALT-B4 공급 기반이 커지는 방향입니다.\n- <b>다음 확인:</b> 9월 WAC·피하주사 비중 → Merck 3분기 QLEX 공식 매출과 차이 검산\n- <a href="https://t.me/alteogenIR/305">원문 뉴스보기</a>'''
+
+          body=urllib.parse.urlencode({
+              'chat_id':chat,
+              'text':text,
+              'parse_mode':'HTML',
+              'disable_web_page_preview':'true',
+          }).encode()
+          send_req=urllib.request.Request(
+              f'https://api.telegram.org/bot{token}/sendMessage',
+              data=body,
+              method='POST',
+          )
+          with urllib.request.urlopen(send_req,timeout=25) as r:
+              result=json.loads(r.read().decode())
+          if not result.get('ok'):
+              raise RuntimeError(result)
+          mid=(result.get('result') or {}).get('message_id')
+          print(f'message_id={mid} rate={rate} krw={krw}')
+          with open('data/bio_qlex_wac_krw_resend_confirmed.json','w',encoding='utf-8') as f:
+              json.dump({'status':'confirmed','message_id':mid,'usdkrw':rate,'rate_date':day,'cumulative_krw':krw},f,ensure_ascii=False,indent=2)
+          PY
+
+      - name: Commit confirmation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/bio_qlex_wac_krw_resend_confirmed.json
+          git commit -m "Confirm QLEX WAC KRW resend"
+          git pull --rebase origin main
+          git push
