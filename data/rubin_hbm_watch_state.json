@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-11T13:51:37+09:00",
+  "updated_at_kst": "2026-09-11T18:50:30+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -18,6 +18,7 @@
     "51472fa7253bfc2a1683afa7",
     "59dea53db71c13bdf6c120ef",
     "5a97726e2e93fc7408e02754",
+    "7310bace62d2a5a4af5e422b",
     "7c4fab38f3ac9aeca880db5a",
     "817f217f23561cc348f4159b",
     "86e3b5a2a1b5f5a0a64b608e",
@@ -44,15 +45,17 @@
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1343.8,
-    "date": "2026-09-10 일일 기준 · ECB/Frankfurter · 조회 2026-09-11 13:51 KST · 보조 API 2026-09-11 · 차이 0.09% · 일중 기준시각 차이 가능",
+    "date": "2026-09-10 일일 기준 · ECB/Frankfurter · 조회 2026-09-11 18:50 KST · 보조 API 2026-09-11 · 차이 0.09% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": []
+  "errors": [
+    "핵심 사실 자동추출 실패로 발송 제외: Chosunbiz | CXMT rides DDR5 surge to lead operating margins amid HBM-driven DRAM squeeze - CHOSUNBIZ - Chosunbiz"
+  ]
 }
