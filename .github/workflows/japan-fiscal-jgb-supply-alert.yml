@@ -65,11 +65,11 @@ jobs:
           printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
           cat out/japan_fiscal_jgb_supply_alert.html >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Send fiscal JGB catalyst through KHS bot only
+      - name: Send fiscal JGB catalyst through global-rates bot only
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/japan_fiscal_jgb_supply_alert.html') != ''
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
@@ -85,9 +85,9 @@ jobs:
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
           if not token:
-              raise RuntimeError("KHS_POLICY_TELEGRAM_BOT_TOKEN missing; refusing fallback")
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_BOT_TOKEN missing; refusing fallback")
           if not chat_id:
-              raise RuntimeError("KHS_POLICY_TELEGRAM_CHAT_ID missing; refusing fallback")
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_CHAT_ID missing; refusing fallback")
 
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
               identity = json.loads(response.read().decode("utf-8"))
