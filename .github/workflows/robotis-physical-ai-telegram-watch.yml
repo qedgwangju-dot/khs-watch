@@ -5,7 +5,8 @@ on:
     paths:
       - ".github/robotis-physical-ai-trigger.txt"
   schedule:
-    - cron: "11,41 * * * *"
+    - cron: "11 * * * *"
+    - cron: "41 * * * *"
   workflow_dispatch:
     inputs:
       force_summary:
