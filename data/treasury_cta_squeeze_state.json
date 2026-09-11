@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-09-12T01:07:56+09:00",
+  "last_checked_kst": "2026-09-12T04:09:55+09:00",
   "media_id": null,
   "cftc_date": "September 1, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-12T01:07:56+09:00",
+    "checked_kst": "2026-09-12T04:09:55+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 1, 2026",
@@ -65,10 +65,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 106.265625,
-        "settlement": 106.265625,
-        "change": -0.375,
-        "pct_change": -0.3516483516483482,
+        "last": 106.125,
+        "settlement": 106.125,
+        "change": -0.515625,
+        "pct_change": -0.48351648351648846,
         "open_interest": 5276634,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 1, 2026)",
         "volume": 0,
@@ -83,10 +83,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 107.0,
-        "settlement": 107.0,
-        "change": -0.40625,
-        "pct_change": -0.378236834448642,
+        "last": 106.75,
+        "settlement": 106.75,
+        "change": -0.65625,
+        "pct_change": -0.6109979633401208,
         "open_interest": 1811513,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 1, 2026)",
         "volume": 0,
@@ -101,10 +101,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 108.53125,
-        "settlement": 108.53125,
-        "change": -0.125,
-        "pct_change": -0.11504170261720237,
+        "last": 108.25,
+        "settlement": 108.25,
+        "change": -0.40625,
+        "pct_change": -0.37388553350589104,
         "open_interest": 2398572,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 1, 2026)",
         "volume": 0,
@@ -153,8 +153,6 @@
     "repo_not_worse": true,
     "composite_confirmed": false,
     "stage": 0,
-    "oi_scope_fixes": [
-      "ZN OI 11→5,276,634로 동일 범위 교체"
-    ]
+    "oi_scope_fixes": []
   }
 }
