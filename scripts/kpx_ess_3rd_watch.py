@@ -16,12 +16,13 @@ from zoneinfo import ZoneInfo
 
 KST = ZoneInfo("Asia/Seoul")
 BOARD_URL = "https://new.kpx.or.kr/board.es?bid=0042&mid=a11201000000"
-EXPECTED_BOT = "hs8879887988798879_bot"
+EXPECTED_BOT = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "khs887900_bot").strip().lstrip("@")
 STATE_PATH = pathlib.Path("data/kpx_ess_3rd_watch_state.json")
 STATUS_PATH = pathlib.Path("out/kpx_ess_3rd_watch_status.md")
 CONFIRM_PATH = pathlib.Path("out/kpx_ess_3rd_telegram_confirmed.json")
 
 ROUTES = [
+    ("KHS887900", "KHS887900_BOT_TOKEN", "KHS887900_CHAT_ID"),
     ("KHS_POLICY", "KHS_POLICY_TELEGRAM_BOT_TOKEN", "KHS_POLICY_TELEGRAM_CHAT_ID"),
     ("GLOBAL_RATES", "GLOBAL_RATES_TELEGRAM_BOT_TOKEN", "GLOBAL_RATES_TELEGRAM_CHAT_ID"),
     ("BIO", "BIO_TELEGRAM_BOT_TOKEN", "BIO_TELEGRAM_CHAT_ID"),
