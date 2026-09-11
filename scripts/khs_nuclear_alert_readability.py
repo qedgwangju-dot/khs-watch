@@ -45,7 +45,8 @@ CONFIRMED_HINTS = (
 )
 UNCONFIRMED_HINTS = (
     "검토", "가능성", "전망", "보도", "논의", "협의", "추진", "제안", "관측",
-    "설", "미확정", "확인 필요", "교차검증", "검토 단계", "언론 보도",
+    "미확정", "확인 필요", "공식 확인 전", "교차검증", "검토 단계", "언론 보도",
+    "확보설", "인수설", "투자설", "매각설",
 )
 INVESTMENT_HINTS = (
     "투자", "수혜", "매출", "실적", "이익", "마진", "수주", "밸류체인",
@@ -135,10 +136,10 @@ def _derive_verdict(buckets: dict[str, list[str]], combined: str) -> str:
     low = _plain(combined).lower()
     if any(term in low for term in ("공식 부인", "공식 정정", "사실과 다름")):
         return "공식 부인·정정 확인"
-    if any(term in low for term in CONFIRMED_HINTS):
-        return "확정 사실 또는 거래 단계 진전 신호 확인"
     if any(term in low for term in UNCONFIRMED_HINTS):
         return "보도·검토 단계 — 공식 거래조건 확인 전"
+    if any(term in low for term in CONFIRMED_HINTS):
+        return "확정 사실 또는 거래 단계 진전 신호 확인"
     return "추가 확인 필요"
 
 
@@ -156,7 +157,6 @@ def restructure_nuclear_message(title: str, body: str) -> tuple[str, str]:
     if not any(term.lower() in combined.lower() for term in NUCLEAR_TERMS):
         return title, body
 
-    # Idempotence: direct formatter + runtime wrapper may both call this function.
     if all(marker in body for marker in ("📌 현재 판정", "▶ 이번에 달라진 것", "🔗 원문 근거")):
         return title, body
 
@@ -192,10 +192,12 @@ def restructure_nuclear_message(title: str, body: str) -> tuple[str, str]:
             buckets[current].append(line)
             continue
 
-        if _has_any(line, CONFIRMED_HINTS):
-            buckets["confirmed"].append(line)
-        elif _has_any(line, UNCONFIRMED_HINTS):
+        # Qualifiers such as "가능성/검토/공식 확인 전" override words such as
+        # "계약/지분율" so a speculative sentence cannot be promoted to confirmed.
+        if _has_any(line, UNCONFIRMED_HINTS):
             buckets["unconfirmed"].append(line)
+        elif _has_any(line, CONFIRMED_HINTS):
+            buckets["confirmed"].append(line)
         elif _has_any(line, BOTTLENECK_HINTS):
             buckets["bottleneck"].append(line)
         elif _has_any(line, INVESTMENT_HINTS):
