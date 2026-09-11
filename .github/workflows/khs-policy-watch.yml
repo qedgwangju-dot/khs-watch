@@ -280,7 +280,7 @@ jobs:
           KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
           KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
           KHS887900_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
-          KHS887900_CHAT_ID: ${{ secrets.KHS887900_CHAT_ID || secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          KHS887900_CHAT_ID: ${{ secrets.KHS887900_CHAT_ID }}
         run: |
           python - <<'PY'
           import os
@@ -416,7 +416,9 @@ jobs:
               canonical = canonical_message(title, body)
               if route == "westinghouse":
                   canonical = f"westinghouse|{canonical}"
-              digest = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:20]
+              digest = hashlib.sha256(canonical_message(title, body).encode("utf-8")).hexdigest()[:20]
+              if route == "westinghouse":
+                  digest = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:20]
               sent_at = parse_utc(str(sent_state.get(digest, {}).get("sent_at_utc") or ""))
               if sent_at and now_utc - sent_at < dt.timedelta(hours=dedupe_hours) and not title.endswith("Telegram test"):
                   skipped.append((title, digest, sent_at.isoformat(), route))
