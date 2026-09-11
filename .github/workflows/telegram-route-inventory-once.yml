@@ -19,16 +19,39 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import re
+
           for p in sorted(Path('.github/workflows').glob('*.y*ml')):
-              text=p.read_text(encoding='utf-8', errors='ignore')
+              text = p.read_text(encoding='utf-8', errors='ignore')
               if 'TELEGRAM' not in text.upper():
                   continue
-              expected=sorted(set(re.findall(r'EXPECTED(?:_TELEGRAM)?_BOT_USERNAME\s*:\s*["\']?@?([A-Za-z0-9_]+)', text)))
-              bots=sorted(set(re.findall(r'secrets\.([A-Z0-9_]*TELEGRAM[A-Z0-9_]*BOT_TOKEN)', text)))
-              chats=sorted(set(re.findall(r'secrets\.([A-Z0-9_]*TELEGRAM[A-Z0-9_]*CHAT_ID)', text)))
-              if expected or bots:
-                  print(f'FILE={p}')
-                  print(' EXPECTED=' + ','.join(expected))
-                  print(' BOT_SECRETS=' + ','.join(bots))
-                  print(' CHAT_SECRETS=' + ','.join(chats))
+
+              name_match = re.search(r'^name:\s*(.+)$', text, re.M)
+              name = name_match.group(1).strip().strip('"\'') if name_match else p.name
+              crons = re.findall(r'cron:\s*["\']([^"\']+)["\']', text)
+              timezones = re.findall(r'timezone:\s*["\']?([^\n"\']+)', text)
+              pythons = sorted(set(re.findall(r'python(?:3)?\s+(scripts/[A-Za-z0-9_./-]+\.py)', text)))
+              states = sorted(set(re.findall(r'(?:data|state)/[A-Za-z0-9_./-]+\.json', text)))
+              expected = sorted(set(re.findall(r'EXPECTED(?:_TELEGRAM)?_BOT_USERNAME\s*:\s*["\']?@?([A-Za-z0-9_]+)', text)))
+              bots = sorted(set(re.findall(r'secrets\.([A-Z0-9_]*TELEGRAM[A-Z0-9_]*BOT_TOKEN)', text)))
+              chats = sorted(set(re.findall(r'secrets\.([A-Z0-9_]*TELEGRAM[A-Z0-9_]*CHAT_ID)', text)))
+              getme_count = text.count('/getMe') + text.count('getMe') - text.count('/getMe')
+              send_count = text.count('/sendMessage') + text.count('sendMessage') - text.count('/sendMessage')
+              confirmation = any(k in text.lower() for k in ('telegram_confirmed', 'delivery_confirmed', 'confirmed.json'))
+              pending = 'pending_state' in text.lower()
+              dedupe_terms = [k for k in ('sha256', 'fingerprint', 'semantic', 'cooldown', 'seen') if k in text.lower()]
+              formatters = sorted(set(re.findall(r'python(?:3)?\s+(scripts/[A-Za-z0-9_./-]*(?:format|clean|readab|display|summary)[A-Za-z0-9_./-]*\.py)', text, re.I)))
+
+              print(f'FILE={p}')
+              print(f' NAME={name}')
+              print(' CRON=' + ' | '.join(crons))
+              print(' TIMEZONE=' + ','.join(x.strip() for x in timezones))
+              print(' PYTHON=' + ','.join(pythons))
+              print(' STATE=' + ','.join(states))
+              print(' EXPECTED=' + ','.join(expected))
+              print(' BOT_SECRETS=' + ','.join(bots))
+              print(' CHAT_SECRETS=' + ','.join(chats))
+              print(f' GETME_COUNT={getme_count} SEND_COUNT={send_count}')
+              print(f' CONFIRMATION_GATE={str(confirmation).lower()} PENDING_STATE={str(pending).lower()}')
+              print(' DEDUPE=' + ','.join(dedupe_terms))
+              print(' FORMATTERS=' + ','.join(formatters))
           PY
