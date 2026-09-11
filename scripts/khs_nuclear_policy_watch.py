@@ -382,7 +382,7 @@ def _render_direct(item: dict, idx: int, now: dt.datetime) -> list[str]:
     )
     return [
         f"## {idx}. [상·확정] {ko_title}",
-        f"- 원문/출처: [{source_label}]({item['link']}) · 원천시각 {item['published_kst']} · 조회 {now:%H:%M KST}",
+        f"- 출처: [{source_label}]({item['link']}) · 원천시각 {item['published_kst']} · 조회 {now:%H:%M KST}",
         f"- 확인 근거: {compact_evidence}",
         *compact_explanation_lines(explain_item),
         "- 다음 확인: 후속 공시·DOE/NRC 일정·국내 수급",
@@ -396,7 +396,7 @@ def _render_westinghouse_stake(item: dict, idx: int, now: dt.datetime) -> list[s
     verdict = "보도·검토 단계 — 공식 거래조건 확인 전" if unconfirmed else status
     return [
         f"## {idx}. [상·{'보도 단계' if unconfirmed else '상태 변화'}] 한국의 Westinghouse 지분 참여 이슈",
-        f"- 원문/출처: [{item['source']}]({item['link']}) · 원천시각 {item['published_kst']} · 조회 {now:%H:%M KST}",
+        f"- 출처: [{item['source']}]({item['link']}) · 원천시각 {item['published_kst']} · 조회 {now:%H:%M KST}",
         f"- 현재 판정: {verdict}",
         f"- 이번에 달라진 것: {item['title']}",
         "- 투자 의미: 지분 참여가 실제화되면 미국 AP1000 사업 참여가 기자재·시공을 넘어 사업개발·조달로 넓어질 여지가 있습니다.",
