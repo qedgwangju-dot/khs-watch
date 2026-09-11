@@ -139,23 +139,13 @@ jobs:
           print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={ids}")
           PY
 
-      - name: Persist baseline or confirmed state
-        if: always()
-        run: |
-          if [ ! -f out/memory_spot_cycle_watch_telegram.txt ] || [ -f out/memory_spot_cycle_watch_telegram_confirmed.json ]; then
-            if [ -f out/memory_spot_cycle_watch_pending_state.json ]; then
-              cp out/memory_spot_cycle_watch_pending_state.json data/memory_spot_cycle_watch_state.json
-            fi
-          else
-            echo "Telegram delivery was not confirmed; watcher state intentionally not advanced."
-          fi
+      - name: Persist state only after confirmed Telegram delivery
+        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') != '' && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('out/memory_spot_cycle_watch_pending_state.json') != ''
+        run: cp out/memory_spot_cycle_watch_pending_state.json data/memory_spot_cycle_watch_state.json
 
-      - name: Commit watcher state
-        if: always()
+      - name: Commit confirmed watcher state
+        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('data/memory_spot_cycle_watch_state.json') != ''
         run: |
-          if [ ! -f data/memory_spot_cycle_watch_state.json ]; then
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/memory_spot_cycle_watch_state.json
