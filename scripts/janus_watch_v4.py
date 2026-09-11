@@ -10,7 +10,9 @@ import janus_watch_v2 as j2
 import janus_watch_v3 as j3
 
 # 한국의 Westinghouse 지분 인수·투자·공동사업 변화까지 기존 원전·Janus 감시에 통합한다.
-# Google News RSS를 이용해 한국 언론과 영문 보도를 함께 잡고, 공식 발표가 나오면 별도 표시한다.
+# 사용자가 제공한 개별 기사는 '그 기사 자체를 계속 감시'하는 대상이 아니라,
+# 감시 범위와 이슈 판정규칙을 넓히는 사례다.
+# 새 기사 수가 늘었다는 이유만으로는 알리지 않고 거래단계·조건·공식입장이 바뀔 때만 알린다.
 KOR_QUERY = "웨스팅하우스 지분 인수 한국전력 산업통상부 한수원 브룩필드 카메코 when:14d"
 ENG_QUERY = "Westinghouse stake Korea KEPCO KHNP Brookfield Cameco when:14d"
 OFFICIAL_QUERY = "웨스팅하우스 산업통상부 한국전력 공식 발표 when:30d"
@@ -37,6 +39,24 @@ _WEC_TRANSACTION = [
     "산업통상부", "산업부", "미국 정부", "u.s. government", "ap1000", "지식재산", "입찰 제한",
 ]
 
+# 이슈 상태가 실제로 바뀌었다고 볼 수 있는 신호.
+# 단순 '검토', '가능성', '쟁점', '전망', '주가반응'은 여기에 포함하지 않는다.
+_WEC_STATE_CHANGE = [
+    "공식 발표", "공식 확인", "공식 부인", "사실과 다르", "부인",
+    "합의", "계약", "loi", "mou", "양해각서", "실사", "due diligence",
+    "협상 개시", "협상 착수", "본협상", "우선협상", "term sheet", "텀시트",
+    "취득", "매각", "지분율", "인수가격", "매각가격", "출자액", "투자금",
+    "경영권", "이사회", "의결권", "voting rights",
+    "cfius", "nrc", "승인", "인가",
+    "사업권", "설계권", "조달권", "시공권", "입찰 제한", "지식재산권",
+    "상장 신청", "ipo filing", "ipo 신청",
+]
+
+_WEC_COMMENTARY = [
+    "고차방정식", "열쇠", "주식인가", "사업인가", "전망", "분석", "진단", "수혜",
+    "들썩", "특징주", "상승세", "주목", "기대", "논란", "평가",
+]
+
 
 def _clean_rss_title(title: str):
     title = j2.base.norm(title)
@@ -44,9 +64,35 @@ def _clean_rss_title(title: str):
     return re.sub(r"\s+-\s+[^-]{2,60}$", "", title).strip()
 
 
-def _rss_relevant(title: str):
+def _rss_relevant(title: str, outlet: str = ""):
     low = title.lower()
-    return any(term in low for term in _WEC_CORE) and any(term in low for term in _WEC_TRANSACTION)
+    outlet_low = (outlet or "").lower()
+    if not (any(term in low for term in _WEC_CORE) and any(term in low for term in _WEC_TRANSACTION)):
+        return False
+
+    # 공식 당사자·정부의 직접 발표는 상태변화 후보로 통과.
+    if any(x in outlet_low for x in [
+        "산업통상부", "정책브리핑", "한국전력", "한수원", "kepco", "khnp",
+        "westinghouse", "cameco", "brookfield",
+    ]):
+        return True
+
+    # 거래단계·조건·권한·규제의 실제 변화가 제목에서 확인되는 경우만 통과.
+    if any(term in low for term in _WEC_STATE_CHANGE):
+        # 해설/평가 기사라면 더 강한 실행 신호가 함께 있어야 한다.
+        if any(term in low for term in _WEC_COMMENTARY):
+            strong = [
+                "공식", "합의", "계약", "loi", "mou", "실사", "취득", "매각",
+                "지분율", "인수가격", "출자액", "투자금", "cfius", "nrc", "승인",
+            ]
+            return any(term in low for term in strong)
+        return True
+
+    # 가격·지분율 같은 새 거래조건이 숫자로 직접 제시된 경우.
+    if re.search(r"(?:\$|달러|원|억원|조원|%|퍼센트).*?\d|\d[\d,.]*\s*(?:억달러|달러|억원|조원|%)", low):
+        return True
+
+    return False
 
 
 def _rss_items(source, page_text):
@@ -64,7 +110,7 @@ def _rss_items(source, page_text):
         source_node = item.find("source")
         outlet = j2.base.norm(source_node.text if source_node is not None and source_node.text else "")
         pub = j2.base.norm(item.findtext("pubDate") or "")
-        if not title or not link or not _rss_relevant(title):
+        if not title or not link or not _rss_relevant(title, outlet):
             continue
         try:
             dt = parsedate_to_datetime(pub)
@@ -115,11 +161,11 @@ def _status_text(event):
     official_source = any(x in source for x in ["정책브리핑", "산업통상부", "한국전력", "한수원", "westinghouse", "cameco", "brookfield"])
     if any(x in title for x in ["사실과 다름", "부인", "denies", "not true"]):
         return "공식 부인·정정" if official_source else "부인 보도"
-    if official_source and any(x in title for x in ["합의", "계약", "인수", "취득", "투자", "agreement", "acquisition", "investment"]):
+    if official_source and any(x in title for x in ["합의", "계약", "인수", "취득", "투자 확정", "agreement", "acquisition", "investment"]):
         return "공식 확인 가능성 높음 — 원문 재확인 필요"
-    if any(x in title for x in ["검토", "급물살", "제안", "추진", "논의", "consider", "proposal", "talks"]):
-        return "언론 보도·검토 단계"
-    return "확정 여부 교차검증 필요"
+    if any(x in title for x in ["실사", "협상 개시", "협상 착수", "loi", "mou", "합의", "계약"]):
+        return "거래 단계 진전 — 공식 원문·조건 확인 필요"
+    return "새 물질적 조건 확인 — 공식 확정 여부 교차검증 필요"
 
 
 def _event_category_v4(event, resolved_title):
