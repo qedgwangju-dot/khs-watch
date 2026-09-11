@@ -9,13 +9,16 @@ on:
       - "scripts/bio_single_runner_v3.py"
       - "scripts/bio_korean_guard.py"
       - "scripts/bio_korean_guard_strict.py"
+      - "scripts/bio_korean_guard_strict_v2.py"
       - "scripts/qlex_sc_conversion_watch.py"
+      - "scripts/qlex_wac_ir_watch.py"
       - "scripts/intismeran_qlex_watch.py"
       - "scripts/qlex_telegram_send.py"
       - "scripts/qlex_telegram_send_v2.py"
       - "scripts/intismeran_structured_telegram_send.py"
       - "scripts/intismeran_structured_telegram_send_v2.py"
       - "scripts/jemperli_altb4_watch.py"
+      - "scripts/jemperli_altb4_watch_v2.py"
       - "scripts/enhertu_altb4_watch.py"
       - "scripts/enhertu_altb4_watch_v2.py"
       - "scripts/halozyme_legal_watch_v2.py"
@@ -53,6 +56,28 @@ jobs:
       - name: Run Korean-guarded bio watch
         run: python scripts/bio_single_runner_v3.py
 
+      - name: Run direct Alteogen IR QLEX WAC watch
+        shell: bash
+        run: |
+          set -euo pipefail
+          chat_id="${BIO_TELEGRAM_CHAT_ID:-}"
+          if [ -z "$chat_id" ] && [ -f data/bio_telegram_chat_id.enc ]; then
+            chat_id=$(openssl enc -d -aes-256-cbc -a -A -pbkdf2 \
+              -pass env:BIO_TELEGRAM_BOT_TOKEN \
+              -in data/bio_telegram_chat_id.enc)
+          fi
+          test -n "$chat_id"
+          echo "::add-mask::$chat_id"
+          export BIO_TELEGRAM_CHAT_ID="$chat_id"
+
+          python scripts/qlex_wac_ir_watch.py
+          if [ -f out/qlex_wac_ir_alert.md ]; then
+            python scripts/qlex_telegram_send_v2.py out/qlex_wac_ir_alert.md | tee out/qlex_wac_ir_send.log
+          else
+            echo "qlex_wac_alert=false" > out/qlex_wac_ir_send.log
+          fi
+          cp out/qlex_wac_ir_watch_state_pending.json data/qlex_wac_ir_watch_state.json
+
       - name: Run Halozyme PTAB and legal watch
         run: python scripts/halozyme_legal_watch_v3.py
 
@@ -65,6 +90,10 @@ jobs:
           else
             echo "바이오 감시 heartbeat 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f out/qlex_wac_ir_status.md ]; then
+            echo "## QLEX 월간 WAC·피하주사 비중 감시" >> "$GITHUB_STEP_SUMMARY"
+            cat out/qlex_wac_ir_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
           if [ -f out/halozyme_ptab_status.md ]; then
             echo "## Halozyme 특허분쟁 감시" >> "$GITHUB_STEP_SUMMARY"
             cat out/halozyme_ptab_status.md >> "$GITHUB_STEP_SUMMARY"
@@ -75,7 +104,7 @@ jobs:
         run: |
           git config user.name "bio-watch[bot]"
           git config user.email "bio-watch[bot]@users.noreply.github.com"
-          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json data/jemperli_altb4_watch_state.json data/enhertu_altb4_watch_state.json data/halozyme_ptab_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
+          git add data/qlex_sc_conversion_watch_state.json data/qlex_wac_ir_watch_state.json data/intismeran_qlex_watch_state.json data/jemperli_altb4_watch_state.json data/enhertu_altb4_watch_state.json data/halozyme_ptab_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Bio watcher states unchanged"
           else
@@ -97,10 +126,15 @@ jobs:
           name: bio-partner-products-${{ github.run_id }}
           path: |
             data/bio_watch_heartbeat.json
+            data/qlex_wac_ir_watch_state.json
             data/halozyme_ptab_watch_state.json
             out/qlex_sc_conversion_status.md
             out/qlex_sc_conversion_alert.md
             out/qlex_sc_conversion_watch_state_pending.json
+            out/qlex_wac_ir_status.md
+            out/qlex_wac_ir_alert.md
+            out/qlex_wac_ir_send.log
+            out/qlex_wac_ir_watch_state_pending.json
             out/intismeran_qlex_status.md
             out/intismeran_qlex_alert.md
             out/intismeran_qlex_watch_state_pending.json
