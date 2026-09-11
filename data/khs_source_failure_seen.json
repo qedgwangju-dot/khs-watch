@@ -20,9 +20,9 @@
     },
     "domestic_telecom|korea.kr": {
       "lane": "domestic_telecom",
-      "last_seen_kst": "2026-09-11T07:40:17+09:00",
-      "source": "Korea Policy Briefing telecom policy",
-      "streak": 1
+      "last_seen_kst": "2026-09-11T12:48:09+09:00",
+      "source": "Korea Policy Briefing telecom search",
+      "streak": 2
     }
   },
   "seen": {
@@ -68,6 +68,14 @@
       "sources": [
         "Korea Policy Briefing telecom search",
         "Financial Services Commission digital asset releases"
+      ]
+    },
+    "1e4b2b58ec678568": {
+      "failure_count": 1,
+      "first_seen_kst": "2026-09-11T12:48:09+09:00",
+      "logical_failure_count": 1,
+      "sources": [
+        "Korea Policy Briefing telecom search"
       ]
     },
     "2965dcae3478a0ae": {
