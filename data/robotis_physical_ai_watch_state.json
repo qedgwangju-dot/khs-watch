@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-09-11T01:08:55.644161+00:00",
+  "updated_at": "2026-09-11T03:29:55.941121+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -219,12 +219,20 @@
     "f9fabd3428384f554c064d7b6a35058f81b3de5b6113fa73ba4f3964a5966c77",
     "2f666d90ec54e356826b4c66e1bb8197638bc4622a63630e69790a7662170c0b",
     "17f87577460eb03225a91b8b5755417408e2388839b15b3d3bd40b991939da42",
-    "0eeb8870e5422e5880d8fc23dfea0c57980d828e8b1281768642c7c80e5d569f"
+    "0eeb8870e5422e5880d8fc23dfea0c57980d828e8b1281768642c7c80e5d569f",
+    "4bbe29149b8c4fa68ea751585b7eac4ce8b2b6dece259b1a38ac729981f17adf",
+    "473d3f0f7addfaa0bd7c628c8a230ac943a3e07dc3a4ce9ad54661f459d0c6b0",
+    "1ddc2ad2388a024f6a69943b35b8a30bb205ef1bdd33e6553853cc8c629200cb"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "4bbe29149b8c4fa68ea751585b7eac4ce8b2b6dece259b1a38ac729981f17adf",
+    "473d3f0f7addfaa0bd7c628c8a230ac943a3e07dc3a4ce9ad54661f459d0c6b0",
+    "1ddc2ad2388a024f6a69943b35b8a30bb205ef1bdd33e6553853cc8c629200cb"
+  ],
   "groups": [
     "battery",
     "ess_battery",
+    "hyundai_atlas_rollout",
     "hyundai_mobis_atlas",
     "lg_factory_loop",
     "lg_robotics",
