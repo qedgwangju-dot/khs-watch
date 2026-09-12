@@ -1,9 +1,8 @@
 name: Yen carry rebuild news Telegram alert
 
 on:
-  schedule:
-    # Every 30 minutes. GitHub cron is UTC.
-    - cron: "0,30 * * * *"
+  # Production scheduling is owned by global-rates-telegram-watch.yml.
+  # Keep this workflow only for manual execution and pull-request validation.
   workflow_dispatch:
   pull_request:
     paths:
