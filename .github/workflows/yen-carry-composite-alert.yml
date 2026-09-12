@@ -57,7 +57,7 @@ permissions:
 
 concurrency:
   group: yen-carry-composite-alert
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
