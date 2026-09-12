@@ -1,31 +1,31 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-13T03:23:33+09:00",
+  "updated_at_kst": "2026-09-13T05:46:16+09:00",
   "seen_event_keys": [
-    "foreign1d_neg:2026-09-10:final",
-    "policy_spread:2026-08-27:0.75",
-    "kosdaq_foreign1d_neg:2026-09-11:final",
-    "foreign1d_neg:2026-09-02:final",
-    "foreign1d_neg:2026-09-11:final",
-    "foreign1d_neg:2026-09-02:postclose",
-    "capex:13cbe150930d23d8",
-    "kosdaq_foreign3d_neg:2026-09-10:final",
-    "foreign3d_pos:2026-09-07:final",
-    "foreign3d_pos:2026-09-08:final",
-    "kosdaq_foreign1d_pos:2026-09-09:final",
-    "foreign3d_neg:2026-09-02:final",
     "foreign3d_neg:2026-09-11:final",
-    "fx_1350_down:2026-09-11",
-    "kosdaq_foreign3d_neg:2026-09-11:final",
-    "kosdaq_foreign1d_neg:2026-09-10:final",
-    "foreign3d_neg:2026-09-02:postclose",
-    "foreign3d_neg:2026-08-27",
+    "fx_1350_down:2026-09-07",
+    "foreign3d_pos:2026-09-08:final",
     "foreign1d_pos:2026-09-07:final",
     "fx_daily_down:2026-09-02",
-    "ust10_up:2026-09-10",
-    "fx_1350_down:2026-09-07",
+    "foreign1d_neg:2026-09-02:final",
     "foreign1d_neg:2026-08-31",
-    "fx_1350_down:2026-09-04"
+    "foreign1d_neg:2026-09-10:final",
+    "kosdaq_foreign1d_pos:2026-09-09:final",
+    "foreign3d_pos:2026-09-07:final",
+    "kosdaq_foreign1d_neg:2026-09-11:final",
+    "foreign1d_neg:2026-09-02:postclose",
+    "fx_1350_down:2026-09-11",
+    "kosdaq_foreign1d_neg:2026-09-10:final",
+    "kosdaq_foreign3d_neg:2026-09-11:final",
+    "fx_1350_down:2026-09-04",
+    "foreign1d_neg:2026-09-11:final",
+    "capex:13cbe150930d23d8",
+    "foreign3d_neg:2026-09-02:postclose",
+    "foreign3d_neg:2026-08-27",
+    "ust10_up:2026-09-10",
+    "kosdaq_foreign3d_neg:2026-09-10:final",
+    "policy_spread:2026-08-27:0.75",
+    "foreign3d_neg:2026-09-02:final"
   ],
   "active_keys": [
     "fx_1350_down:2026-09-11",
@@ -36,7 +36,7 @@
     "kosdaq_foreign3d_neg:2026-09-11:final"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-13T03:23:33+09:00",
+    "checked_at_kst": "2026-09-13T05:46:16+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-11",
@@ -82,14 +82,9 @@
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260913&sosok=01",
       "phase": "장마감 최종 재확인",
       "ls_validation": {
-        "status": "matched",
+        "status": "ls_unavailable",
         "tr_cd": "t1601",
-        "ls_daily_eok": -22984.0,
-        "naver_daily_eok": -22984.0,
-        "diff_eok": 0.0,
-        "tolerance_eok": 11.492,
-        "foreign_buy_eok": 53732.0,
-        "foreign_sell_eok": 76717.0,
+        "error": "ConnectionError: HTTPSConnectionPool(host='openapi.ls-sec.co.kr', port=8080): Max retries exceeded with url: /oauth2/token?grant_type=client_credentials&appkey=PSmkT2lUE7OQI5fkVArV3PnJGOjx8M10VDP3&appsecretkey=7oKf0Cv1v7wk1tyGwvYEYNX831L9E6Sv&scope=oob (Caused by NewConnectionError(\"HTTPSConnection(host='openapi.ls-sec.co.kr', port=8080): Failed to establish a new connection: [Errno 111] Connection refused\"))",
         "source": "https://openapi.ls-sec.co.kr/apiservice"
       },
       "source_label": "네이버 장마감 투자자별 매매동향"
@@ -134,14 +129,9 @@
     "flow_source_note": "KOSPI·KOSDAQ 장마감 외국인 수급은 네이버 장마감값과 LS증권 OpenAPI t1601 투자자별종합을 교차검증. 네이버 실패 시 LS t1601 대체값 사용, 유의한 불일치 시 수급 임계치 판정 보류. KRX는 공식 원천 재확인 링크로 제공.",
     "ls_flow_validation": {
       "KOSPI": {
-        "status": "matched",
+        "status": "ls_unavailable",
         "tr_cd": "t1601",
-        "ls_daily_eok": -22984.0,
-        "naver_daily_eok": -22984.0,
-        "diff_eok": 0.0,
-        "tolerance_eok": 11.492,
-        "foreign_buy_eok": 53732.0,
-        "foreign_sell_eok": 76717.0,
+        "error": "ConnectionError: HTTPSConnectionPool(host='openapi.ls-sec.co.kr', port=8080): Max retries exceeded with url: /oauth2/token?grant_type=client_credentials&appkey=PSmkT2lUE7OQI5fkVArV3PnJGOjx8M10VDP3&appsecretkey=7oKf0Cv1v7wk1tyGwvYEYNX831L9E6Sv&scope=oob (Caused by NewConnectionError(\"HTTPSConnection(host='openapi.ls-sec.co.kr', port=8080): Failed to establish a new connection: [Errno 111] Connection refused\"))",
         "source": "https://openapi.ls-sec.co.kr/apiservice"
       },
       "KOSDAQ": {
