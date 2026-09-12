@@ -1,5 +1,5 @@
 name: Telegram token identity probe once
-# Manual no-send route probe refresh for current production wiring. 2026-09-12 yen-carry check
+# Manual no-send route probe refresh for current production wiring. 2026-09-12
 
 on:
   push:
@@ -17,7 +17,6 @@ jobs:
       HBM_TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
       BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
       GLOBAL_RATES_TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
-      GLOBAL_RATES_TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       BOK_ASSET_TELEGRAM_BOT_TOKEN: ${{ secrets.BOK_ASSET_TELEGRAM_BOT_TOKEN }}
       YEN_CARRY_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
       CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN: ${{ secrets.CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN }}
@@ -39,18 +38,17 @@ jobs:
       - name: Checkout current runtime customization
         uses: actions/checkout@v4
 
-      - name: Resolve bot usernames and verify selected chats without sending
+      - name: Resolve bot usernames and compare US investment chat routes without sending
         run: |
           python - <<'PY'
           import json, os, urllib.parse, urllib.request
-          import scripts
+          import scripts  # Apply the same scoped runtime route hook as production delivery.
 
           names=[
               k for k in os.environ
               if k.endswith('_TELEGRAM_BOT_TOKEN')
               or k in {'TELEGRAM_BOT_TOKEN', 'KHS887900_BOT_TOKEN'}
           ]
-          identities={}
           for name in sorted(names):
               token=(os.getenv(name) or '').strip()
               if not token:
@@ -60,22 +58,23 @@ jobs:
                   with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
                       data=json.loads(r.read().decode('utf-8'))
                   username=str((data.get('result') or {}).get('username') or '')
-                  identities[name]=username
                   print(f'{name}=@{username or "UNKNOWN"}')
               except Exception as exc:
                   print(f'{name}=ERROR:{type(exc).__name__}')
 
-          def probe_chat(label, token_env, chat_env, expected_username=None):
-              token=(os.getenv(token_env) or '').strip()
-              chat_id=(os.getenv(chat_env) or '').strip()
-              if not token:
-                  print(f'{label}=TOKEN_MISSING')
-                  return False
-              username=identities.get(token_env, '')
-              if expected_username and username.lower() != expected_username.lower():
-                  raise RuntimeError(f'{label} bot mismatch: @{username or "unknown"}')
+          token=(os.getenv('KHS887900_BOT_TOKEN') or '').strip()
+          if not token:
+              raise RuntimeError('KHS887900_BOT_TOKEN missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
+              identity=json.loads(r.read().decode('utf-8'))
+          username=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or username.lower() != 'khs887900_bot':
+              raise RuntimeError(f'US investment bot mismatch: @{username or "unknown"}')
+
+          def probe_chat(label, env_name):
+              chat_id=(os.getenv(env_name) or '').strip()
               if not chat_id:
-                  print(f'{label}=CHAT_MISSING')
+                  print(f'{label}=MISSING')
                   return False
               try:
                   query=urllib.parse.urlencode({'chat_id': chat_id})
@@ -90,12 +89,8 @@ jobs:
                   print(f'{label}=ERROR:{type(exc).__name__}')
                   return False
 
-          dedicated_ok=probe_chat('US_INVESTMENT_DEDICATED_CHAT', 'KHS887900_BOT_TOKEN', 'KHS887900_CHAT_ID', 'khs887900_bot')
-          policy_ok=probe_chat('US_INVESTMENT_POLICY_CHAT', 'KHS887900_BOT_TOKEN', 'KHS_POLICY_TELEGRAM_CHAT_ID', 'khs887900_bot')
+          dedicated_ok=probe_chat('US_INVESTMENT_DEDICATED_CHAT', 'KHS887900_CHAT_ID')
+          policy_ok=probe_chat('US_INVESTMENT_POLICY_CHAT', 'KHS_POLICY_TELEGRAM_CHAT_ID')
           if not dedicated_ok and not policy_ok:
               raise RuntimeError('No reachable US investment chat route')
-
-          yen_ok=probe_chat('YEN_CARRY_NEWS_CHAT', 'GLOBAL_RATES_TELEGRAM_BOT_TOKEN', 'GLOBAL_RATES_TELEGRAM_CHAT_ID')
-          if not yen_ok:
-              raise RuntimeError('Yen carry news Telegram chat route unavailable')
           PY
