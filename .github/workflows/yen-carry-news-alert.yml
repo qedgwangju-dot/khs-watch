@@ -5,6 +5,9 @@ on:
     # Every 30 minutes. GitHub cron is UTC.
     - cron: "7 * * * *"
     - cron: "37 * * * *"
+  push:
+    paths:
+      - ".github/workflows/yen-carry-news-alert.yml"
   workflow_dispatch:
   pull_request:
     paths:
