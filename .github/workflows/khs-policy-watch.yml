@@ -438,15 +438,13 @@ jobs:
                   f"sendable={len(sendable)} skipped_duplicates={len(skipped)}"
               )
           else:
-              verified_routes = {}
               sent_by_route = {}
               for title, body, digest, route in sendable:
-                  if route not in verified_routes:
-                      verified_routes[route] = verify_route(route)
-                  token, chat_id = verified_routes[route]
                   text = prepare_telegram_html(title, body)
                   if len(text) > 4096:
                       raise RuntimeError(f"Telegram HTML message exceeds 4096 characters: {len(text)}")
+                  # Verify the actual Telegram bot immediately before every send.
+                  token, chat_id = verify_route(route)
                   data = urllib.parse.urlencode({
                       "chat_id": chat_id,
                       "text": text,
@@ -464,17 +462,17 @@ jobs:
                   }
                   sent_by_route[route] = sent_by_route.get(route, 0) + 1
 
-              if sendable:
+              actual_sent = sum(sent_by_route.values())
+              if actual_sent:
                   state_path.parent.mkdir(parents=True, exist_ok=True)
                   state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-              if messages:
                   confirmed_at = now_utc.astimezone(dt.timezone(dt.timedelta(hours=9)))
                   pathlib.Path("out/khs_telegram_delivery_confirmed.json").write_text(
                       json.dumps(
                           {
                               "status": "confirmed",
                               "messages": len(messages),
-                              "sent": len(sendable),
+                              "sent": actual_sent,
                               "duplicate_skipped": len(skipped),
                               "sent_by_route": sent_by_route,
                               "confirmed_at_kst": confirmed_at.isoformat(timespec="seconds"),
