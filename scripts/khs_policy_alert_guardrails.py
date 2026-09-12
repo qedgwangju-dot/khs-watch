@@ -282,6 +282,23 @@ def is_low_impact_false_positive(item: dict) -> bool:
     text = haystack_for(item)
     source = str(item.get("source") or "").lower()
     title = str(item.get("title") or "").lower()
+    link = str(item.get("link") or "").lower()
+
+    if is_whitehouse(item) and title.startswith("congressional bills ") and "signed into law" in title:
+        item["guardrail_note"] = "법안 번호 묶음 서명 브리핑은 개별 법안별 시장 고충격성이 검증되지 않아 통합 고충격 알림에서 제외"
+        return True
+
+    if "federal register fcc" in source and "notice of debarment" in title and "e-rate" in title:
+        item["guardrail_note"] = "FCC E-Rate 개인 제재 공지는 광범위한 통신 규제·CAPEX 변화가 아니어서 고충격 알림에서 제외"
+        return True
+
+    if is_whitehouse(item) and (
+        "accelerates veterans" in title
+        or "veterans-access-to-benefits" in link
+    ):
+        item["guardrail_note"] = "재향군인 복지·기록공유·행정 전산 현대화 조치는 AI 언급만으로 한국장 고충격 정책으로 분류하지 않음"
+        return True
+
     is_boem_marine_mineral = (
         "boem" in source
         and has_any(text, ["mineral leasing", "mineral lease", "marine minerals", "offshore mineral"])
@@ -370,10 +387,17 @@ def mostly_ascii(value: str) -> bool:
 
 
 def korean_title_for(item: dict) -> str:
+    original = str(item.get("title") or "").strip()
+    link = str(item.get("link") or "").lower()
+    if is_whitehouse(item) and (
+        "responds to canada" in original.lower()
+        or "responds-to-canadas-retaliation" in link
+    ):
+        return "백악관, 캐나다 보복관세 대응 수입금지·관세 범위 조정"
+
     existing = str(item.get("title_ko") or "").strip()
     if existing:
         return existing
-    original = str(item.get("title") or "").strip()
     source = str(item.get("source") or "").lower()
     text = haystack_for(item)
 
