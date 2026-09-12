@@ -100,6 +100,12 @@ jobs:
           echo "중요 변화는 감지됐지만 @khs887900_bot 경로가 확인될 때까지 seen 상태를 저장하지 않습니다." >> "$GITHUB_STEP_SUMMARY"
           echo "경로가 복구되면 같은 중요 변화를 다시 송출 시도합니다." >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Fail when exact Telegram route is unavailable
+        if: github.event_name != 'push' && steps.telegram_route.outputs.ready != 'true'
+        run: |
+          echo "Telegram 경로 검증 실패: @khs887900_bot + KHS887900_CHAT_ID가 정확히 확인되지 않아 상태를 저장하지 않습니다." >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+
       - name: Persist seen state after confirmed delivery
         if: github.event_name != 'push' && success() && hashFiles('out/khs_us_investment_pending_seen.json') != '' && hashFiles('out/khs_us_investment_delivery.json') != ''
         run: cp out/khs_us_investment_pending_seen.json data/khs_us_investment_seen.json
