@@ -140,8 +140,8 @@ jobs:
           print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={ids}")
           PY
 
-      - name: 기준선 저장
-        if: steps.energy.outputs.changed != 'true' || steps.telegram.outputs.delivered == 'true'
+      - name: Telegram 송출 성공 후 상태 저장
+        if: steps.energy.outputs.changed == 'true' && steps.telegram.outputs.delivered == 'true'
         run: |
           git config user.name "korea-energy-mix-watch[bot]"
           git config user.email "korea-energy-mix-watch[bot]@users.noreply.github.com"
