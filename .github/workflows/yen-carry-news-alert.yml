@@ -2,8 +2,8 @@ name: Yen carry rebuild news Telegram alert
 
 on:
   schedule:
-    # Five-minute cadence, offset from the FX and policy-news monitors. GitHub cron is UTC.
-    - cron: "4,9,14,19,24,29,34,39,44,49,54,59 * * * *"
+    # Every 30 minutes. GitHub cron is UTC.
+    - cron: "0,30 * * * *"
   workflow_dispatch:
   pull_request:
     paths:
@@ -14,7 +14,7 @@ on:
       - "scripts/yen_policy_news_linkify.py"
       - "tests/test_yen_carry_news_alert.py"
       - "tests/test_yen_carry_news_alert_v2.py"
-      - "data/yen_carry_news_state.json"
+      - "state/yen_carry_news_alert.json"
 
 permissions:
   contents: write
@@ -188,11 +188,11 @@ jobs:
           retention-days: 7
 
       - name: Commit confirmed carry-news state
-        if: always() && github.event_name != 'pull_request' && hashFiles('data/yen_carry_news_state.json') != ''
+        if: always() && github.event_name != 'pull_request' && hashFiles('state/yen_carry_news_alert.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/yen_carry_news_state.json
+          git add state/yen_carry_news_alert.json
           if git diff --cached --quiet; then
             echo "엔화 수급 촉매 상태 변경 없음"
           else
