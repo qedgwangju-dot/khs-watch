@@ -137,7 +137,9 @@ def _has_any(text: str, *terms: str) -> bool:
 
 
 def _sentences(body: str) -> list[str]:
-    parts = re.split(r"(?<=[.!?]|다\.)\s+|\n+", body)
+    # Python look-behind alternatives must each have a fixed width. Keep the
+    # one-character punctuation and Korean "다." boundary as separate branches.
+    parts = re.split(r"(?<=[.!?])\s+|(?<=다\.)\s+|\n+", body)
     return [" ".join(x.split()) for x in parts if len(" ".join(x.split())) >= 30]
 
 
