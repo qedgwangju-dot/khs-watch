@@ -17,42 +17,6 @@
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
   "initialized": true,
-  "policy_path": {
-    "cftc_net_short": 49098.0,
-    "cftc_net_short_change": 0.0,
-    "cftc_net_short_pct_oi": 9.826773544687622,
-    "checked_at_kst": "2026-09-12T17:10:58+09:00",
-    "elevated_vol": false,
-    "fx_vol_ratio": 1.1847041192855574,
-    "gradual_absorption": true,
-    "hawkish_repricing_proxy": false,
-    "initialized": true,
-    "jgb2_change_bp": 0.0,
-    "low_or_stable_vol": false,
-    "new_cftc": false,
-    "new_jgb2": false,
-    "new_ust2": false,
-    "note": "BOJ OIS/경제전문가 컨센서스는 신뢰 가능한 자동 원천을 잠그기 전까지 점수에 넣지 않음. 일본 2년 JGB와 미·일 2년 금리차를 경로 재가격 프록시로 사용.",
-    "policy_shock_with_yen": false,
-    "quiet_crowded_vulnerability": false,
-    "quiet_releveraging_event": false,
-    "regime": "점진 긴축 흡수·캐리 유지 여지",
-    "risk_floor": 0,
-    "short_build_event": false,
-    "spread_change_bp": 0.0,
-    "thresholds": {
-      "crowded_net_short_pct_oi": 10.0,
-      "jgb2_repricing_bp": 10.0,
-      "low_vol_ratio_max": 1.1,
-      "spread_repricing_bp": -15.0,
-      "wide_spread_pct": 2.0,
-      "yen_shock_15m_pct": -0.5,
-      "yen_shock_30m_pct": -0.75,
-      "yen_shock_60m_pct": -1.0
-    },
-    "wide_spread": true,
-    "yen_shock": false
-  },
   "rebuild_label": "엔화 재약세·캐리 재구축 미확인",
   "rebuild_level": 0,
   "source_dates": {
@@ -68,11 +32,11 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-09-12T17:10:52+09:00"
+    "updated_at_kst": "2026-09-12T17:48:08+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-09-12T17:08:31+09:00",
+  "updated_at_kst": "2026-09-12T17:45:44+09:00",
   "values": {
     "cftc_net_short": 49098,
     "cftc_net_short_pct_oi": 9.826773544687622,
