@@ -1,54 +1,64 @@
 {
-  "updated_at_kst": "2026-09-08T20:14:56+09:00",
+  "updated_at_kst": "2026-09-12T14:49:26+09:00",
   "circle": {
-    "date": "2026-09-03",
-    "circulation_usd_b": 74.3,
-    "precision": "0.1B official webpage display"
+    "date": "2026-09-10",
+    "circulation_usd_b": 74.1,
+    "precision": "0.1B official webpage display",
+    "_previous_distinct": {
+      "date": "2026-09-03",
+      "circulation_usd_b": 74.3
+    }
   },
   "usdxx": {
-    "date": "2026-09-04",
-    "sec_yield_7d": 3.61,
+    "date": "2026-09-11",
+    "sec_yield_7d": 3.6,
     "fund_size_usd_m": 62317.4,
-    "fund_size_date": "2026-09-04"
+    "fund_size_date": "2026-09-11",
+    "_previous_distinct": {
+      "date": "2026-09-04",
+      "sec_yield_7d": 3.61,
+      "fund_size_usd_m": 62317.4,
+      "fund_size_date": "2026-09-04"
+    }
   },
   "sofr": {
-    "date": "2026-09-03",
-    "rate": 3.66,
-    "prev_date": "2026-09-02",
-    "prev_rate": 3.65,
-    "daily_bp": 1.0,
+    "date": "2026-09-10",
+    "rate": 3.62,
+    "prev_date": "2026-09-09",
+    "prev_rate": 3.64,
+    "daily_bp": -2.0,
     "source": "FRED 재게시·원출처 Federal Reserve Bank of New York",
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-09-04",
-    "three_month": 3.91,
-    "ten_year": 4.78,
-    "prev_date": "2026-09-03",
-    "prev_three_month": 3.89,
-    "prev_ten_year": 4.77,
-    "daily_3m_bp": 2.0,
+    "date": "2026-09-11",
+    "three_month": 4.07,
+    "ten_year": 4.96,
+    "prev_date": "2026-09-10",
+    "prev_three_month": 4.0,
+    "prev_ten_year": 4.95,
+    "daily_3m_bp": 7.0,
     "daily_10y_bp": 1.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-09-04",
-    "close": 102.05000305175781,
-    "prev_date": "2026-09-03",
-    "prev_close": 103.2300033569336,
-    "daily_pct": -1.14
+    "date": "2026-09-11",
+    "close": 90.5999984741211,
+    "prev_date": "2026-09-10",
+    "prev_close": 90.31999969482422,
+    "daily_pct": 0.31
   },
   "tbx": {
-    "date": "2026-09-04",
-    "close": 29.040000915527344,
-    "prev_date": "2026-09-03",
-    "prev_close": 28.979999542236328,
-    "daily_pct": 0.21
+    "date": "2026-09-11",
+    "close": 29.440000534057617,
+    "prev_date": "2026-09-10",
+    "prev_close": 29.360000610351562,
+    "daily_pct": 0.27
   },
   "fx": {
-    "rate": 1359.5,
-    "date": "2026-09-04",
-    "requested_date": "2026-09-04",
+    "rate": 1338.2,
+    "date": "2026-09-11",
+    "requested_date": "2026-09-11",
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
