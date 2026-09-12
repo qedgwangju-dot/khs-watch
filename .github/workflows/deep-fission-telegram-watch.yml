@@ -231,6 +231,7 @@ jobs:
           git config user.name "deep-fission-watch[bot]"
           git config user.email "deep-fission-watch[bot]@users.noreply.github.com"
           git add data/deep_fission_watch_state.json
+          git restore --worktree data/deep_fission_watch_v3_state.json || true
           if git diff --cached --quiet; then
             echo "Deep Fission watch state unchanged"
           else
