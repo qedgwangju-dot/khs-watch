@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Commit main policy-watch seen state only after a confirmed Telegram outcome."""
+"""Commit main policy-watch seen state only after a confirmed Telegram delivery."""
 
 from __future__ import annotations
 
@@ -52,6 +52,17 @@ def main() -> int:
         print("policy_seen_finalize=deferred delivery_not_confirmed")
         return 0
 
+    # A duplicate-only/no-send outcome is not a Telegram delivery.  Do not
+    # advance article seen state unless this run actually sent at least one
+    # Telegram message successfully.
+    try:
+        sent_count = int(delivery.get("sent") or 0)
+    except (TypeError, ValueError):
+        sent_count = 0
+    if sent_count <= 0:
+        print("policy_seen_finalize=deferred no_telegram_send")
+        return 0
+
     pending = load_object(PENDING_PATH, {"seen": {}})
     pending_seen = pending.get("seen") if isinstance(pending.get("seen"), dict) else {}
     surviving = surviving_fingerprints()
@@ -75,7 +86,7 @@ def main() -> int:
     )
     print(
         f"policy_seen_finalize=committed confirmed={len(confirmed)} "
-        f"dropped={len(dropped)}"
+        f"dropped={len(dropped)} sent={sent_count}"
     )
     return 0
 
