@@ -66,7 +66,7 @@ def get_bot_username():
 
 
 def source_link(url: str) -> str:
-    return f'<a href="{html.escape(url, quote=True)}">원천</a>'
+    return f'<a href="{html.escape(url, quote=True)}">미 재무부 공식 금리</a>'
 
 
 def send(text: str):
@@ -109,16 +109,22 @@ def same_direction(a: float, b: float) -> bool:
 
 def send_initial_alert(date, value, prev, day_bp, source):
     direction = '상승' if day_bp > 0 else '하락'
+    policy = '추가긴축 기대가 커지는 쪽' if day_bp > 0 else '추가긴축 기대가 약해지는 쪽'
     msg = [
-        '[Warsh 반응함수 시장 재가격 감지] 미국 2Y',
-        f'미 재무부 공식 2Y: {value:.2f}%',
-        f'직전 {prev[0]} {prev[1]:.2f}% 대비 {day_bp:+.1f}bp ({direction})',
-        '',
-        f'1차 판정: 하루 {THRESHOLD_BP:.0f}bp 이상 이동 → Fed 정책경로 재가격 신호',
-        f'다음 Treasury 공식 종가에서 최초 움직임의 {RETENTION_THRESHOLD*100:.0f}% 이상 유지되는지 재확인합니다.',
-        'Warsh의 물가 우선·추가긴축 선택지가 시장금리에 실제로 남는지 고용/CPI/PCE/FOMC와 함께 판단',
-        '',
+        '<b>[Warsh 반응함수 · 미 국채 2년물 급변]</b>',
+        f'기준일 {date}', '',
+        '<b>한눈에 보기</b>',
+        f'• <b>2년물</b> | {prev[1]:.2f}% → {value:.2f}% ({day_bp:+.1f}bp)',
+        f'• <b>경보 기준</b> | 하루 ±{THRESHOLD_BP:.0f}bp 이상 → 기준 충족',
+        f'• <b>1차 의미</b> | 시장이 연준 정책경로를 {policy}으로 크게 다시 가격하는 후보', '',
+        '<b>왜 중요한가</b>',
+        '• 2년물은 장기물보다 향후 연준 정책금리 기대에 더 민감합니다. 하루 급변만으로 확정하지 않고 다음 공식 종가까지 봅니다.',
+        f'• 다음 공식 종가에서 최초 이동의 {RETENTION_THRESHOLD*100:.0f}% 이상 남으면 “하루짜리 튐”보다 지속적 재가격 가능성을 높게 봅니다.', '',
+        '<b>다음 확인</b>',
+        '• 다음 미 재무부 공식 종가에서 얼마나 유지·반납·추가 확대되는지 확인',
+        '• 고용·CPI·PCE가 같은 방향이면 실제 정책경로 신호의 신뢰도가 더 높아집니다.', '',
         source_link(source),
+        '※ 1bp = 0.01%포인트',
     ]
     send('\n'.join(msg))
 
@@ -128,31 +134,47 @@ def send_followup_alert(current_date, current_value, event, source):
     event_value = float(event['event_value'])
     original_bp = float(event['move_bp'])
     retained_bp = (current_value - base) * 100.0
+    next_bp = (current_value - event_value) * 100.0
     ratio = abs(retained_bp) / abs(original_bp) if original_bp else 0.0
     kept_direction = same_direction(retained_bp, original_bp)
     persistent = kept_direction and ratio >= RETENTION_THRESHOLD
 
-    if persistent:
+    if persistent and ratio >= 1.0:
+        verdict = '매파 재가격이 더 강해짐' if original_bp > 0 else '완화 재가격이 더 강해짐'
+        detail = f'최초 이동을 전부 유지한 뒤 같은 방향으로 {abs(next_bp):.1f}bp 더 움직였습니다.'
+    elif persistent:
         verdict = '매파/정책경로 재가격 지속' if original_bp > 0 else '비둘기/완화 재가격 지속'
-        detail = f'최초 이동의 {ratio*100:.0f}% 유지 → 일회성 이벤트 반응보다 지속적 재가격 가능성 우세'
+        detail = f'최초 이동의 {ratio*100:.0f}%가 남아 {RETENTION_THRESHOLD*100:.0f}% 지속 기준을 충족했습니다.'
     else:
         verdict = '이벤트 당일 과잉반응/포지션 정리 가능성 증가'
         if kept_direction:
-            detail = f'최초 이동의 {ratio*100:.0f}%만 유지 → 50% 기준 미달, 상당 부분 반납'
+            detail = f'최초 이동의 {ratio*100:.0f}%만 남아 {RETENTION_THRESHOLD*100:.0f}% 지속 기준에 미달했습니다.'
         else:
-            detail = '최초 이동 방향까지 되돌림 → 당일 반응의 지속성 약함'
+            detail = '최초 이동 방향까지 되돌려 당일 반응의 지속성이 약합니다.'
+
+    if ratio >= 1.0 and kept_direction:
+        ratio_plain = f'{ratio*100:.0f}% = 최초 움직임 전부 유지 + 추가 확대'
+    else:
+        ratio_plain = f'{ratio*100:.0f}% = 최초 움직임 가운데 현재 남아 있는 비율'
 
     msg = [
-        '[Warsh 반응함수 2Y 지속성 재확인]',
-        f"이벤트일 {event['event_date']}: {event_value:.2f}% / 직전 기준 {base:.2f}% / {original_bp:+.1f}bp",
-        f'다음 공식일 {current_date}: {current_value:.2f}%',
-        f'기준점 대비 잔존 이동: {retained_bp:+.1f}bp',
-        '',
-        f'판정: {verdict}',
-        f'• {detail}',
-        '• 당일 반응보다 다음 공식 종가의 유지 여부를 우선해 정책 신호의 지속성을 판정',
-        '',
+        '<b>[Warsh 반응함수 · 미 국채 2년물 지속성 재확인]</b>',
+        f"이벤트 {event['event_date']} → 재확인 {current_date}", '',
+        '<b>한눈에 보기</b>',
+        f'• <b>첫날</b> | {base:.2f}% → {event_value:.2f}% ({original_bp:+.1f}bp)',
+        f'• <b>다음 공식일</b> | {event_value:.2f}% → {current_value:.2f}% ({next_bp:+.1f}bp)',
+        f'• <b>기준점 대비 누적</b> | {base:.2f}% → {current_value:.2f}% ({retained_bp:+.1f}bp)',
+        f'• <b>지속률</b> | {ratio_plain}', '',
+        f'<b>판정: {html.escape(verdict)}</b>',
+        f'• {html.escape(detail)}', '',
+        '<b>쉽게 말하면</b>',
+        f"• {'첫날 급등 뒤 되돌린 것이 아니라 다음 공식일에도 더 올라 매파 재가격이 이어진 것입니다.' if original_bp > 0 and persistent and ratio >= 1 else '첫날 움직임이 다음 공식일에도 남아 있어 일회성 반응으로 보기 어렵습니다.' if persistent else '첫날 움직임 상당 부분이 사라져 정책 신호로 보기에는 신뢰도가 낮아졌습니다.'}",
+        '• 2년물은 연준 정책경로 기대에 민감하므로, 다음날까지 같은 방향이 유지될수록 단순 포지션 정리보다 정책 기대 변화일 가능성이 커집니다.', '',
+        '<b>이 판정이 약해지는 조건</b>',
+        f'• 기준점 대비 이동이 최초 움직임의 {RETENTION_THRESHOLD*100:.0f}% 아래로 줄거나 방향이 반대로 바뀌는 경우',
+        '• 고용·PCE가 빠르게 식어 실제 추가긴축 근거가 약해지는 경우', '',
         source_link(source),
+        '※ 1bp = 0.01%포인트',
     ]
     send('\n'.join(msg))
     return persistent, ratio, retained_bp
@@ -164,7 +186,6 @@ def main():
     is_new_date = old.get('date') not in (None, date)
     day_bp = (value - prev[1]) * 100.0 if prev else None
 
-    # Follow up exactly once on the next official Treasury date after a large move.
     pending = old.get('pending_event')
     followup_done = False
     if pending and is_new_date and date > str(pending.get('event_date', '')):
@@ -172,7 +193,6 @@ def main():
         pending = None
         followup_done = True
 
-    # Bootstrap current large move if this logic was added after the event had already been stored.
     already_alerted = old.get('last_alert_date') == date
     large_move_now = day_bp is not None and abs(day_bp) >= THRESHOLD_BP
     bootstrap_large_move = (not is_new_date and not already_alerted and large_move_now and not old.get('pending_event'))
