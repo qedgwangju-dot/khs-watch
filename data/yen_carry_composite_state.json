@@ -17,7 +17,7 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 55019.26381802559,
+  "fx_age_seconds": 55721.7665309906,
   "fx_signal_eligible": false,
   "initialized": true,
   "policy_path": {
@@ -71,11 +71,11 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-09-12T21:14:03+09:00"
+    "updated_at_kst": "2026-09-12T21:25:44+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-09-12T21:11:20+09:00",
+  "updated_at_kst": "2026-09-12T21:23:03+09:00",
   "values": {
     "cftc_net_short": 49098,
     "cftc_net_short_pct_oi": 9.826773544687622,
