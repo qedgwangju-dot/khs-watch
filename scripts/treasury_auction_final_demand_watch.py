@@ -2,7 +2,7 @@
 """U.S. Treasury 10Y/20Y/30Y auction final-demand watcher.
 
 Purpose
-- Alert only when a NEW official 10Y, 20Y or 30Y auction result appears.
+- Alert only when a NEW official 10Y, 20Y or 30Y nominal auction result appears.
 - Separate QRA issuance plans from actual end-investor demand at auction.
 - Compare each result with the same tenor's previous auction and recent six-auction average.
 - Do not infer foreign demand from Indirect Bidders; TreasuryDirect explicitly says the
@@ -42,6 +42,7 @@ FRED_FX = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXKOUS"
 KST = ZoneInfo("Asia/Seoul")
 UA = "Mozilla/5.0 (compatible; khs-watch-treasury-auction/1.0)"
 TARGETS = {"10-Year Note": "10년물", "20-Year Bond": "20년물", "30-Year Bond": "30년물"}
+STATE_VERSION = 2
 
 
 def fetch(url: str, timeout: int = 30) -> bytes:
@@ -107,13 +108,7 @@ def money_bn(text: str) -> float | None:
 
 
 def api_money_bn(value) -> float | None:
-    """Normalize Treasury API amount fields to USD billions.
-
-    Treasury's machine-readable interfaces have historically exposed amount fields
-    either as whole dollars or as millions depending on the endpoint/version.  The
-    scale is identifiable for marketable-auction amounts, so keep the output unit
-    stable without changing the downstream report format.
-    """
+    """Normalize Treasury API amount fields to USD billions."""
     if value in (None, "", "null"):
         return None
     try:
@@ -147,6 +142,32 @@ def api_money(record: dict, *keys: str) -> float | None:
             if value is not None:
                 return value
     return None
+
+
+def truthy_flag(value) -> bool:
+    return str(value or "").strip().lower() in {"y", "yes", "true", "1", "t"}
+
+
+def has_value(value) -> bool:
+    return value not in (None, "", "null", "None")
+
+
+def is_inflation_indexed(record: dict) -> bool:
+    """Exclude TIPS that Treasury's API can classify as Note/Bond by base type."""
+    if truthy_flag(record.get("inflationIndexSecurity")) or truthy_flag(record.get("inflation_index_security")):
+        return True
+    # TIPS-specific fields provide a second guard if the flag is renamed/omitted.
+    for key in (
+        "tiinConversionFactor",
+        "TIINConversionFactor",
+        "indexRatioOnIssueDate",
+        "IndexRatioOnIssueDate",
+        "referenceCPIOnDatedDate",
+        "ReferenceCPIDated",
+    ):
+        if has_value(record.get(key)):
+            return True
+    return False
 
 
 def normalize_label(s: str) -> str:
@@ -187,7 +208,7 @@ def api_results() -> list[Auction]:
 
     parsed: list[Auction] = []
     for rec in records:
-        if not isinstance(rec, dict):
+        if not isinstance(rec, dict) or is_inflation_indexed(rec):
             continue
         security_type = str(rec.get("securityType") or rec.get("type") or "").strip().lower()
         term = str(rec.get("securityTerm") or rec.get("term") or "").strip()
@@ -389,20 +410,25 @@ def main() -> int:
         return 2
 
     new = [x for x in parsed if x.result_url not in seen]
-    # Baseline: do not spam historical results on first install.
-    if not STATE_PATH.exists():
-        state = {"seen_result_urls": [x.result_url for x in parsed][-100:], "history": history}
+    # Baseline or schema migration: never resend historical auctions.
+    if not STATE_PATH.exists() or state.get("state_version") != STATE_VERSION:
+        history = {}
+        baseline = {
+            "state_version": STATE_VERSION,
+            "seen_result_urls": [x.result_url for x in parsed][:100],
+            "history": history,
+        }
         for x in reversed(parsed):
             rec = asdict(x)
             rec.update({"indirect_pct": x.indirect_pct, "direct_pct": x.direct_pct, "dealer_pct": x.dealer_pct})
             history.setdefault(x.tenor, []).append(rec)
             history[x.tenor] = history[x.tenor][-12:]
-        state["history"] = history
-        NEXT_STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+        baseline["history"] = history
+        NEXT_STATE.write_text(json.dumps(baseline, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
         STATUS.write_text(
             f"# 미 국채 입찰 최종수요 감시\n\n"
             f"- 조회: {now.isoformat(timespec='seconds')}\n"
-            f"- 상태: 초기 기준선 생성 — 과거 결과는 발송하지 않음\n"
+            f"- 상태: 기준선 재구성 — 명목 10·20·30년물만 저장, 과거 결과는 발송하지 않음\n"
             f"- 원천: {source_name}\n",
             encoding="utf-8",
         )
@@ -473,7 +499,7 @@ def main() -> int:
     rec = asdict(cur); rec.update({"indirect_pct": cur.indirect_pct, "direct_pct": cur.direct_pct, "dealer_pct": cur.dealer_pct})
     history.setdefault(cur.tenor, []).append(rec); history[cur.tenor] = history[cur.tenor][-12:]
     seen.add(cur.result_url)
-    NEXT_STATE.write_text(json.dumps({"seen_result_urls": list(seen)[-100:], "history": history}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    NEXT_STATE.write_text(json.dumps({"state_version": STATE_VERSION, "seen_result_urls": list(seen)[-100:], "history": history}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     STATUS.write_text(
         f"# 미 국채 입찰 최종수요 감시\n\n"
         f"- 조회: {now.isoformat(timespec='seconds')}\n"
