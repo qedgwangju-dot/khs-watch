@@ -280,7 +280,7 @@ jobs:
           KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
           KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
           KHS887900_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
-          KHS887900_CHAT_ID: ${{ secrets.KHS887900_CHAT_ID }}
+          KHS887900_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import os
