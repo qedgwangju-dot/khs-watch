@@ -1,20 +1,13 @@
 #!/usr/bin/env python3
 """Add an ex-post real-policy-rate regime layer to the live yen-carry composite alert.
 
-Purpose
--------
-This is a structural overlay, not a fast FX trigger. It keeps the existing
-USD/JPY, U.S.-Japan 2Y spread, volatility and positioning logic intact and adds:
+This is a structural overlay, not a fast FX trigger. Existing USD/JPY, U.S.-Japan
+2Y spread, volatility and positioning logic remain intact. The overlay adds official
+Fed/BOJ policy rates, headline CPI, the U.S.-Japan ex-post real-policy-rate gap,
+relative policy-rate changes, and agreement/conflict with the market 2Y spread.
 
-* U.S. ex-post real policy rate = Fed target-range midpoint - headline CPI YoY
-* Japan ex-post real policy rate = BOJ policy guideline - headline CPI YoY
-* U.S.-Japan real-policy-rate gap and change from the previous official event
-* Nominal Fed-BOJ policy-rate gap and relative tightening direction
-* Agreement/conflict between the real-rate signal and the U.S.-Japan 2Y spread
-
-The overlay can create only a yellow structural alert by itself. It never
-promotes the active unwind alert to orange/red without the existing market
-confirmation layers.
+Real-rate information alone can create at most a yellow structural alert. It never
+promotes the active unwind alert to orange/red without existing market confirmation.
 """
 from __future__ import annotations
 
@@ -48,8 +41,10 @@ FED_LOWER_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARL"
 FED_SOURCE_URL = "https://fred.stlouisfed.org/graph/?id=DFEDTARU,DFEDTARL"
 BLS_CPI_API = "https://api.bls.gov/publicAPI/v2/timeseries/data/CUUR0000SA0"
 BOJ_HOME = "https://www.boj.or.jp/en/"
-JP_CPI_URL = "https://www.stat.go.jp/data/cpi/sokuhou/tsuki/index-z.htm"
-USER_AGENT = "Mozilla/5.0 khs-yen-carry-real-rate/1.2"
+JP_CPI_JP_URL = "https://www.stat.go.jp/data/cpi/sokuhou/tsuki/index-z.htm"
+JP_CPI_EN_HOME = "https://www.stat.go.jp/english/"
+JP_CPI_SOURCE_URL = "https://www.stat.go.jp/english/data/cpi/"
+USER_AGENT = "Mozilla/5.0 khs-yen-carry-real-rate/1.3"
 
 REAL_GAP_ALERT_PP = 0.25
 POLICY_GAP_ALERT_PP = 0.25
@@ -161,8 +156,7 @@ def parse_bls_cpi_api(text: str) -> tuple[str, float]:
     prior = rows.get((year - 1, month))
     if prior is None or prior <= 0:
         raise RuntimeError("BLS CPI year-ago observation missing")
-    yoy = (current / prior - 1.0) * 100.0
-    return f"{year:04d}-{month:02d}", yoy
+    return f"{year:04d}-{month:02d}", (current / prior - 1.0) * 100.0
 
 
 def parse_boj_policy_home(text: str) -> tuple[float, str | None]:
@@ -190,11 +184,25 @@ def parse_boj_policy_home(text: str) -> tuple[float, str | None]:
 
 
 def parse_japan_cpi_page(text: str) -> tuple[str, float]:
-    """Parse the latest nationwide all-items CPI summary from Statistics Bureau."""
+    """Parse latest nationwide headline CPI from an official Statistics Bureau page."""
     plain = plain_html(text)
 
-    # Exclude the "2025年基準" base-year phrase. The actual survey month is attached
-    # directly to the Gregorian year, optionally with a Reiwa-year parenthetical.
+    # English Statistics Bureau home page has a compact, UTF-8 latest-indicator block:
+    # Consumer Price Index 1.9% / July 2026 / change over the year.
+    en = re.search(
+        r"Consumer\s+Price\s+Index\s*([+-]?[0-9.]+)\s*%\s*([A-Za-z]+)\s+(20\d{2})\s*change\s+over\s+the\s+year",
+        plain,
+        flags=re.IGNORECASE,
+    )
+    if en:
+        try:
+            month = dt.datetime.strptime(en.group(2), "%B").month
+        except ValueError as exc:
+            raise RuntimeError(f"Japan CPI English month invalid: {en.group(2)}") from exc
+        return f"{int(en.group(3)):04d}-{month:02d}", float(en.group(1))
+
+    # Japanese monthly summary fallback. Exclude the 2025-base phrase and anchor the
+    # rate to point (1), the nationwide all-items index.
     period = re.search(
         r"全国\s*(20\d{2})年(?:\s*(?:（\s*令和\d+年\s*）|\(\s*令和\d+年\s*\)))?\s*(\d{1,2})月分",
         plain,
@@ -226,7 +234,6 @@ def parse_japan_cpi_page(text: str) -> tuple[str, float]:
         )
     if not yoy:
         raise RuntimeError("Japan all-items CPI YoY not found")
-
     value = float(yoy.group(1)) * (-1.0 if yoy.group(2) == "下落" else 1.0)
     return f"{int(period.group(1)):04d}-{int(period.group(2)):02d}", value
 
@@ -238,6 +245,18 @@ def _fetch(url: str, *, accept: str = "text/html,*/*") -> str:
     return text
 
 
+def fetch_japan_cpi() -> tuple[str, float]:
+    errors: list[str] = []
+    # Prefer the simple English official home page because it avoids Japanese charset
+    # variations seen through proxy/direct routes. Fall back to the detailed Japanese page.
+    for url in (JP_CPI_EN_HOME, JP_CPI_JP_URL):
+        try:
+            return parse_japan_cpi_page(_fetch(url))
+        except Exception as exc:
+            errors.append(f"{url}: {type(exc).__name__}: {exc}")
+    raise RuntimeError(" | ".join(errors))
+
+
 def fetch_inputs() -> RealRateInputs:
     upper_date, upper = parse_fred_latest_csv(_fetch(FED_UPPER_CSV, accept="text/csv,text/plain,*/*"))
     lower_date, lower = parse_fred_latest_csv(_fetch(FED_LOWER_CSV, accept="text/csv,text/plain,*/*"))
@@ -247,7 +266,7 @@ def fetch_inputs() -> RealRateInputs:
 
     us_period, us_cpi = parse_bls_cpi_api(_fetch(BLS_CPI_API, accept="application/json,*/*"))
     boj_rate, boj_effective = parse_boj_policy_home(_fetch(BOJ_HOME))
-    jp_period, jp_cpi = parse_japan_cpi_page(_fetch(JP_CPI_URL))
+    jp_period, jp_cpi = fetch_japan_cpi()
 
     return RealRateInputs(
         fed_lower=lower,
@@ -274,13 +293,12 @@ def source_fingerprint(inputs: RealRateInputs) -> dict:
     }
 
 
-def _direction(change: float | None, threshold: float, *, inverse: bool = False) -> str:
+def _direction(change: float | None, threshold: float) -> str:
     if change is None:
         return "기준값 저장 중"
-    value = -change if inverse else change
-    if value <= -threshold:
+    if change <= -threshold:
         return "엔화 강세 방향"
-    if value >= threshold:
+    if change >= threshold:
         return "엔화 약세 방향"
     return "중립"
 
@@ -313,21 +331,15 @@ def classify(previous: dict, pending: dict, inputs: RealRateInputs) -> dict:
     if prev_overlay.get("available"):
         if prev_fingerprint.get("fed_midpoint") != fingerprint["fed_midpoint"]:
             changed_sources.append("Fed 정책금리")
-        if (
-            prev_fingerprint.get("us_cpi_period") != fingerprint["us_cpi_period"]
-            or prev_fingerprint.get("us_cpi_yoy") != fingerprint["us_cpi_yoy"]
-        ):
+        if prev_fingerprint.get("us_cpi_period") != fingerprint["us_cpi_period"] or prev_fingerprint.get("us_cpi_yoy") != fingerprint["us_cpi_yoy"]:
             changed_sources.append("미국 CPI")
         if prev_fingerprint.get("boj_policy_rate") != fingerprint["boj_policy_rate"]:
             changed_sources.append("BOJ 정책금리")
-        if (
-            prev_fingerprint.get("jp_cpi_period") != fingerprint["jp_cpi_period"]
-            or prev_fingerprint.get("jp_cpi_yoy") != fingerprint["jp_cpi_yoy"]
-        ):
+        if prev_fingerprint.get("jp_cpi_period") != fingerprint["jp_cpi_period"] or prev_fingerprint.get("jp_cpi_yoy") != fingerprint["jp_cpi_yoy"]:
             changed_sources.append("일본 CPI")
 
     real_direction = _direction(real_gap_change, REAL_DIRECTION_PP)
-    market_direction = _direction(spread_change_bp, MARKET_DIRECTION_BP, inverse=False)
+    market_direction = _direction(spread_change_bp, MARKET_DIRECTION_BP)
     if real_direction.startswith("엔화") and market_direction.startswith("엔화"):
         alignment = "일치" if real_direction == market_direction else "충돌"
     else:
@@ -405,11 +417,10 @@ def alert_reasons(previous: dict, context: dict) -> list[str]:
     return out
 
 
-def fmt(value, suffix="", digits=2, signed=True) -> str:
+def fmt(value, suffix="", digits=2) -> str:
     if value is None:
         return "확인 불가"
-    sign = "+" if signed else ""
-    return f"{float(value):{sign}.{digits}f}{suffix}"
+    return f"{float(value):+.{digits}f}{suffix}"
 
 
 def context_block(context: dict) -> str:
@@ -450,11 +461,9 @@ def _reposition_blocks(body: str, real_block: str) -> str:
     if match:
         policy_block = match.group(1).strip()
         body = body[: match.start()].rstrip()
-
     combined = real_block.strip()
     if policy_block:
         combined += "\n\n" + policy_block
-
     marker = "\n\n출처\n"
     if marker in body:
         return body.replace(marker, "\n\n" + combined + marker, 1)
@@ -466,7 +475,7 @@ def source_lines() -> list[str]:
         f"- Federal Reserve target range: {FED_SOURCE_URL}",
         f"- U.S. CPI (BLS): {BLS_CPI_API}",
         f"- Bank of Japan policy guideline: {BOJ_HOME}",
-        f"- Japan CPI (Statistics Bureau): {JP_CPI_URL}",
+        f"- Japan CPI (Statistics Bureau): {JP_CPI_SOURCE_URL}",
     ]
 
 
@@ -474,49 +483,33 @@ def _ensure_sources(body: str) -> str:
     missing = [line for line in source_lines() if line not in body]
     if not missing:
         return body
-    marker = "\n\n출처\n"
-    if marker in body:
+    if "\n\n출처\n" in body:
         return body.rstrip() + "\n" + "\n".join(missing) + "\n"
     return body.rstrip() + "\n\n출처\n" + "\n".join(missing) + "\n"
 
 
 def create_yellow_alert(pending: dict, context: dict, reasons: list[str]) -> None:
     values = pending.get("values") or {}
-    title = "🟡 엔캐리 복합 수급 알림"
+    ALERT_TITLE.write_text("🟡 엔캐리 복합 수급 알림\n", encoding="utf-8")
     lines = [
-        f"조회 시각: {dt.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S KST')}",
-        "",
-        "판정",
+        f"조회 시각: {dt.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S KST')}", "", "판정",
         f"- 캐리 청산 위험: {pending.get('unwind_label') or '엔캐리 청산 미확인'}",
         f"- 엔화 재약세·캐리 재구축: {pending.get('rebuild_label') or '엔화 재약세·캐리 재구축 미확인'}",
-        "- 실질금리 구조 변화: 보조 신호만 반영 — 단독으로 🟠·🔴 승격하지 않음",
-        "",
-        "이번 변화",
-        *[f"- {item}" for item in reasons],
-        "",
-        "시장·금리",
+        "- 실질금리 구조 변화: 보조 신호만 반영 — 단독으로 🟠·🔴 승격하지 않음", "", "이번 변화",
+        *[f"- {item}" for item in reasons], "", "시장·금리",
         f"- USD/JPY {float(values.get('usdjpy') or 0):.3f}",
         f"- 일본 2년 JGB {float(values.get('jgb2') or 0):.3f}% / 미국 2년 국채 {float(values.get('ust2') or 0):.3f}% / 미·일 2년 금리차 {float(values.get('us_jp_2y_spread') or 0):.3f}%p",
-        "",
-        context_block(context),
-        "",
-        "출처",
-        *source_lines(),
+        "", context_block(context), "", "출처", *source_lines(),
     ]
-    ALERT_TITLE.write_text(title + "\n", encoding="utf-8")
     ALERT_BODY.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
-    payload = {
+    write_json(ALERT_JSON, {
         "verdict": {
-            "unwind_level": int(pending.get("unwind_level") or 0),
-            "unwind_label": pending.get("unwind_label"),
-            "rebuild_level": int(pending.get("rebuild_level") or 0),
-            "rebuild_label": pending.get("rebuild_label"),
+            "unwind_level": int(pending.get("unwind_level") or 0), "unwind_label": pending.get("unwind_label"),
+            "rebuild_level": int(pending.get("rebuild_level") or 0), "rebuild_label": pending.get("rebuild_label"),
         },
-        "reasons": reasons,
-        "real_rate_overlay": context,
+        "reasons": reasons, "real_rate_overlay": context,
         "generated_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
-    }
-    write_json(ALERT_JSON, payload)
+    })
 
 
 def main() -> int:
@@ -525,19 +518,15 @@ def main() -> int:
         print("yen carry real-rate overlay: pending composite state missing")
         return 0
     previous = load_json(STATE_PATH, {})
-
     errors: list[str] = []
     try:
-        inputs = fetch_inputs()
-        context = classify(previous, pending, inputs)
+        context = classify(previous, pending, fetch_inputs())
     except Exception as exc:
         errors.append(f"{type(exc).__name__}: {exc}")
         context = {
-            "initialized": True,
-            "available": False,
+            "initialized": True, "available": False,
             "checked_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
-            "errors": errors,
-            "note": "공식 원천 조회 실패 시 실질금리 신호를 점수에 넣지 않음.",
+            "errors": errors, "note": "공식 원천 조회 실패 시 실질금리 신호를 점수에 넣지 않음.",
         }
 
     reasons = alert_reasons(previous, context) if context.get("available") else []
@@ -549,8 +538,7 @@ def main() -> int:
     if reasons and not ALERT_BODY.exists():
         create_yellow_alert(pending, context, reasons)
     elif ALERT_BODY.exists():
-        body = ALERT_BODY.read_text(encoding="utf-8")
-        body = _add_reason_lines(body, reasons)
+        body = _add_reason_lines(ALERT_BODY.read_text(encoding="utf-8"), reasons)
         if "실질금리·정책 정상화" not in body:
             body = _reposition_blocks(body, context_block(context))
         body = _ensure_sources(body)
@@ -563,12 +551,7 @@ def main() -> int:
         payload["real_rate_overlay"] = context
         write_json(ALERT_JSON, payload)
 
-    print(json.dumps({
-        "available": context.get("available"),
-        "reasons": reasons,
-        "metrics": context.get("metrics"),
-        "errors": errors,
-    }, ensure_ascii=False))
+    print(json.dumps({"available": context.get("available"), "reasons": reasons, "metrics": context.get("metrics"), "errors": errors}, ensure_ascii=False))
     return 0
 
 
