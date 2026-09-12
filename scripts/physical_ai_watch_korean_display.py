@@ -2,9 +2,10 @@
 """Korean display normalization for the physical-AI Telegram watcher.
 
 Raw titles/sources are kept unchanged for deduplication and evidence matching.
-Only user-visible Telegram text is normalized to Korean explanatory wording,
-while identifiers such as ROBOTIS, NVIDIA, AI Sapiens, AI Worker, Isaac,
-GR00T, Jetson, DYNAMIXEL-Q, MoMA, CLOiD, RFM, Atlas, PPAP and ISIR remain identifiable.
+Only user-visible Telegram text is normalized to Korean wording. Stable company,
+brand and product names are rendered in their common Korean forms when that does
+not break identification; technical model codes such as XL330, GR00T, PPAP and
+ISIR remain unchanged.
 
 For readability, the clickable original-article link is rendered on the same
 line as source and timestamp instead of taking a separate line.
@@ -47,13 +48,35 @@ def _display_ko(value: str) -> str:
 
     s = re.sub(r'\b9/22\b', '9월 22일', s)
     s = re.sub(r'\b(\d{1,2}):(\d{2})\s*(AM|PM)\b', _time_ko, s, flags=re.I)
+
+    # User-visible proper names: use stable Korean forms first. Keep model codes
+    # and standards unchanged where translating them would make source lookup harder.
+    s = re.sub(
+        r'Matthieu\s+Lapeyre\s*\(Pollen\s+Robotics/X\)',
+        '마티외 라페르(폴렌 로보틱스 설립자·엑스)',
+        s,
+        flags=re.I,
+    )
+    s = re.sub(r'\bPollen\s+Robotics\b', '폴렌 로보틱스', s, flags=re.I)
+    s = re.sub(r'\bMicroduck\b', '마이크로덕', s, flags=re.I)
+    s = re.sub(r'\bReachy\s+Mini\b', '리치 미니', s, flags=re.I)
+    s = re.sub(r'\bPollen\b', '폴렌 로보틱스', s, flags=re.I)
+    s = re.sub(r'창업자\s+X\s+1차', '설립자 엑스(X) 1차', s, flags=re.I)
+
     s = re.sub(r'\bHumanoids Summit Seoul\b', '서울 휴머노이드 서밋', s, flags=re.I)
     s = re.sub(r'\bHumanoids Summit\b', '휴머노이드 서밋', s, flags=re.I)
     s = re.sub(r'\bSponsored Technical Workshop\b', '공동 기술 워크숍', s, flags=re.I)
     s = re.sub(r'\bR&D\s*Tech\s*Day\b', 'R&D 테크데이', s, flags=re.I)
     s = re.sub(r'\bTech\s*Day\b', '테크데이', s, flags=re.I)
-    s = re.sub(r'\bROBOTIS Docs\b', 'ROBOTIS 공식 기술문서', s, flags=re.I)
-    s = re.sub(r'\bNVIDIA Developer\b', 'NVIDIA 개발자 공식자료', s, flags=re.I)
+    s = re.sub(r'\bROBOTIS Docs\b', '로보티즈 공식 기술문서', s, flags=re.I)
+    s = re.sub(r'\bROBOTIS\b', '로보티즈', s, flags=re.I)
+    s = re.sub(r'\bDYNAMIXEL\b', '다이나믹셀', s, flags=re.I)
+    s = re.sub(r'\bNVIDIA Developer\b', '엔비디아 개발자 공식자료', s, flags=re.I)
+    s = re.sub(r'\bNVIDIA\b', '엔비디아', s, flags=re.I)
+    s = re.sub(r'\bXPENG\b', '샤오펑', s, flags=re.I)
+    s = re.sub(r'\bWONIK Robotics\b', '원익로보틱스', s, flags=re.I)
+    s = re.sub(r'\bWONIK Holdings\b', '원익홀딩스', s, flags=re.I)
+    s = re.sub(r'\bAtlas\b', '아틀라스', s, flags=re.I)
     s = re.sub(r'\bLG Global Newsroom\b', 'LG전자 글로벌 뉴스룸', s, flags=re.I)
     s = re.sub(r'\bLG Newsroom\b', 'LG전자 뉴스룸', s, flags=re.I)
     s = re.sub(r'\bLG Electronics\b', 'LG전자', s, flags=re.I)
@@ -67,7 +90,7 @@ def _display_ko(value: str) -> str:
     s = re.sub(r'\bNewsis\b', '뉴시스', s, flags=re.I)
 
     s = re.sub(r'라이브\s*데모|live\s*demo', '현장 시연', s, flags=re.I)
-    s = re.sub(r'NVIDIA\s+스택', 'NVIDIA 소프트웨어 체계', s, flags=re.I)
+    s = re.sub(r'엔비디아\s+스택', '엔비디아 소프트웨어 체계', s, flags=re.I)
     s = re.sub(r'\bsoftware stack\b', '소프트웨어 체계', s, flags=re.I)
     s = re.sub(r'\bsmart\s*factory\b', '스마트팩토리', s, flags=re.I)
     s = re.sub(r'\brobot\s*foundry\b', '로봇 파운드리', s, flags=re.I)
