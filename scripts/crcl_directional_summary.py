@@ -154,15 +154,15 @@ def build_summary(pending: dict) -> tuple[str, str]:
         else:
             stock_take = "주가와 펀더멘털·할인율 신호가 엇갈려 다른 개별 요인의 영향도 확인 필요"
 
-    if direct_score < 0 and discount_score < 0:
+    if direct_score < 0 and disc_score < 0:
         take = "실제 이익 변수와 할인율이 모두 약하게 악화. 단기금리 선행지표 반등이 일부 완충하지만 현재는 악재가 조금 우세"
-    elif direct_score > 0 and discount_score > 0:
+    elif direct_score > 0 and disc_score > 0:
         take = "실제 이익 변수와 할인율이 함께 개선돼 현재는 호재가 우세"
     elif direct_score < 0 and proxy_score > 0:
         take = "현재 준비금 수익률은 약해졌지만 단기금리 선행지표는 반등. 아직 실적 개선으로 확인된 것은 아니며 할인율까지 보면 방향은 보수적으로 판단"
-    elif direct_score > 0 and discount_score < 0:
+    elif direct_score > 0 and disc_score < 0:
         take = "본업 개선은 맞지만 장기금리 상승이 밸류에이션을 누르는 구간"
-    elif direct_score == 0 and discount_score < 0:
+    elif direct_score == 0 and disc_score < 0:
         take = "본업 변화는 제한적인데 장기금리가 올라 주가에는 소폭 불리"
     else:
         take = f"직접 실적은 {direct_label}, 선행 단기금리는 {proxy_label}, 할인율은 {disc_label} → 종합 {verdict}"
