@@ -38,6 +38,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -81,6 +83,35 @@ jobs:
       - name: Persist 13F seen state
         if: success()
         run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import subprocess
+
+          path = pathlib.Path("data/thirteenf_sector_watch_state.json")
+          if not path.exists():
+              raise SystemExit(0)
+          try:
+              previous = json.loads(subprocess.check_output(
+                  ["git", "show", "HEAD:data/thirteenf_sector_watch_state.json"],
+                  text=True,
+              ))
+              current = json.loads(path.read_text(encoding="utf-8"))
+          except Exception:
+              raise SystemExit(0)
+
+          previous_cmp = dict(previous)
+          current_cmp = dict(current)
+          previous_cmp.pop("updated_at", None)
+          current_cmp.pop("updated_at", None)
+          if previous_cmp == current_cmp:
+              subprocess.run(
+                  ["git", "checkout", "HEAD", "--", "data/thirteenf_sector_watch_state.json"],
+                  check=True,
+              )
+              print("13F substantive state unchanged; discarded timestamp-only change.")
+          PY
+
           if git diff --quiet -- data/thirteenf_sector_watch_state.json; then
             echo "13F state unchanged."
             exit 0
@@ -89,4 +120,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/thirteenf_sector_watch_state.json
           git commit -m "Update 13F sector watch state"
-          git push
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 3))
+          done
+          exit 1
