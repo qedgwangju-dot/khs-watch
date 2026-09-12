@@ -15,6 +15,7 @@ on:
       - "scripts/yen_carry_structural_upgrade.py"
       - "scripts/yen_carry_structural_risk_floor.py"
       - "scripts/yen_carry_policy_path_overlay.py"
+      - "scripts/yen_carry_real_rate_overlay.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_composite_watch.py"
@@ -22,6 +23,7 @@ on:
       - "tests/test_yen_carry_structural_upgrade.py"
       - "tests/test_yen_carry_target_currency_confirmation.py"
       - "tests/test_yen_carry_policy_path_overlay.py"
+      - "tests/test_yen_carry_real_rate_overlay.py"
   schedule:
     - cron: "6,21,36,51 * * * *"
   workflow_dispatch:
@@ -37,6 +39,7 @@ on:
       - "scripts/yen_carry_structural_upgrade.py"
       - "scripts/yen_carry_structural_risk_floor.py"
       - "scripts/yen_carry_policy_path_overlay.py"
+      - "scripts/yen_carry_real_rate_overlay.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_composite_watch.py"
@@ -44,6 +47,7 @@ on:
       - "tests/test_yen_carry_structural_upgrade.py"
       - "tests/test_yen_carry_target_currency_confirmation.py"
       - "tests/test_yen_carry_policy_path_overlay.py"
+      - "tests/test_yen_carry_real_rate_overlay.py"
       - "data/yen_carry_composite_design.json"
       - "data/yen_carry_composite_state.json"
       - "data/yen_carry_structural_state.json"
@@ -88,12 +92,14 @@ jobs:
           python -m py_compile scripts/yen_carry_structural_upgrade.py
           python -m py_compile scripts/yen_carry_structural_risk_floor.py
           python -m py_compile scripts/yen_carry_policy_path_overlay.py
+          python -m py_compile scripts/yen_carry_real_rate_overlay.py
           PYTHONPATH=scripts python -m unittest \
             tests/test_yen_carry_composite_watch.py \
             tests/test_yen_carry_composite_sources.py \
             tests/test_yen_carry_structural_upgrade.py \
             tests/test_yen_carry_target_currency_confirmation.py \
-            tests/test_yen_carry_policy_path_overlay.py -v
+            tests/test_yen_carry_policy_path_overlay.py \
+            tests/test_yen_carry_real_rate_overlay.py -v
 
       - name: Check multi-factor carry state
         run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py
@@ -122,6 +128,10 @@ jobs:
         if: always() && hashFiles('out/yen_carry_composite_pending_state.json') != ''
         run: python scripts/yen_carry_policy_path_overlay.py
 
+      - name: Add real-policy-rate normalization overlay
+        if: always() && hashFiles('out/yen_carry_composite_pending_state.json') != ''
+        run: PYTHONPATH=scripts python scripts/yen_carry_real_rate_overlay.py
+
       - name: Require all structural sources in validation
         if: github.event_name == 'pull_request'
         run: |
@@ -134,10 +144,13 @@ jobs:
           failures_path = pathlib.Path('out/khs_source_failures.json')
           failures = json.loads(failures_path.read_text(encoding='utf-8')) if failures_path.exists() else []
           current = [row for row in failures if row.get('lane') == 'yen_carry_composite']
+          real_rate = pending.get('real_rate_overlay') or {}
           if missing:
               raise SystemExit(f'missing structural sources: {missing}')
           if current:
               raise SystemExit(f'composite source failures: {current}')
+          if not real_rate.get('available'):
+              raise SystemExit(f'real-rate official sources unavailable: {real_rate.get("errors")}')
           print('yen_carry_composite_structural_sources=all_verified')
           PY
 
@@ -153,7 +166,8 @@ jobs:
             out/yen_carry_confirmation.md \
             out/yen_carry_target_currency_context.md \
             out/yen_carry_structural_context.md \
-            out/yen_carry_policy_path_context.md; do
+            out/yen_carry_policy_path_context.md \
+            out/yen_carry_real_rate_context.md; do
             if [ -f "$f" ]; then
               printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
               cat "$f" >> "$GITHUB_STEP_SUMMARY"
@@ -218,6 +232,10 @@ jobs:
               'Japan MOF 공동개입 공식발표': '일본 재무성 공동개입 공식발표',
               'Japan MOF JGB 10Y auction': '일본 재무성 10년 JGB 입찰',
               'Japan MOF JGB 30Y auction': '일본 재무성 30년 JGB 입찰',
+              'Federal Reserve target range': '연준 연방기금 목표범위',
+              'U.S. CPI (BLS)': '미국 소비자물가지수(BLS)',
+              'Bank of Japan policy guideline': '일본은행 정책금리',
+              'Japan CPI (Statistics Bureau)': '일본 소비자물가지수(총무성)',
           }
           yahoo_url = 'https://finance.yahoo.com/quote/JPY=X/'
           raw_source_re = re.compile(r'^- (.+?): (https?://\S+)$')
@@ -339,6 +357,8 @@ jobs:
             out/yen_carry_structural_pending_state.json
             out/yen_carry_policy_path_context.md
             out/yen_carry_policy_path_context.json
+            out/yen_carry_real_rate_context.md
+            out/yen_carry_real_rate_context.json
             out/khs_source_failures.json
           if-no-files-found: ignore
           retention-days: 14
