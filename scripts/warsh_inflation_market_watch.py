@@ -166,6 +166,21 @@ def fmt(v):
     return '확인 불가' if v is None else f'{v:+.1f}%'
 
 
+def annualized(mom):
+    if mom is None: return None
+    return ((1.0 + float(mom)/100.0) ** 12 - 1.0) * 100.0
+
+
+def inflation_speed_text(event: dict) -> str:
+    core=event.get('core_mom'); head=event.get('headline_mom')
+    if core is None: return '월간 물가 속도 확인 필요'
+    if core >= 0.3:
+        return f"근원 월간 {core:+.1f}%는 2% 물가목표와 맞는 속도보다 높습니다. 이 속도가 12개월 반복된다고 단순 가정하면 연율 약 {annualized(core):.1f}%입니다."
+    if core <= 0.2:
+        return f"근원 월간 {core:+.1f}%는 2% 물가목표에 가까워지는 쪽입니다. 다만 한 달 수치만으로 추세 전환을 확정하지 않습니다."
+    return f"근원 월간 {core:+.1f}%는 2% 목표와 완전히 일치한다고 보기에는 아직 애매한 구간입니다."
+
+
 def market_verdict(d2: float, d10: float, d30: float) -> tuple[str,str]:
     avg_long=(d10+d30)/2
     if d2 <= -5 and avg_long >= 0:
@@ -175,7 +190,7 @@ def market_verdict(d2: float, d10: float, d30: float) -> tuple[str,str]:
     if d2 >= 5 and avg_long >= 5 and abs(avg_long-d2) <= 3:
         return ('정책금리 기대와 장기금리 위험 동반 상승', '연준 추가긴축 기대와 장기 물가·재정 위험이 함께 커지는 패턴입니다.')
     if d2 >= 5 and d2 >= avg_long + 4:
-        return ('연준 추가긴축 기대 강화 — 2년물 재가격 주도', '장기물보다 2년물이 더 많이 올라 시장이 연준 정책경로를 우선 재가격한 패턴입니다.')
+        return ('연준 추가긴축 기대 강화 — 2년물 재가격 주도', '2년물이 장기물보다 더 많이 올라 시장이 장기 인플레이션 공포보다 연준의 정책금리 경로를 먼저 재가격한 패턴입니다.')
     if abs(d2) < 5 and avg_long >= 5:
         return ('연준 기대 변화는 제한적·장기금리 상승 압력 우세', '물가 발표보다 재정·국채 공급·유가 같은 장기 요인이 금리를 더 밀어올린 패턴입니다.')
     if abs(d2) < 5 and abs(avg_long) < 5:
@@ -188,26 +203,45 @@ def build_message(event: dict, row: dict, prev: dict) -> str:
     s210=(row['10y']-row['2y'])*100; ps210=(prev['10y']-prev['2y'])*100
     s230=(row['30y']-row['2y'])*100; ps230=(prev['30y']-prev['2y'])*100
     verdict, detail=market_verdict(d2,d10,d30)
+    curve_move=((s210-ps210)+(s230-ps230))/2
+    if d2 >= 5 and d2 > max(d10,d30)+3:
+        market_plain='단기금리인 2년물이 장기물보다 훨씬 더 올라, 시장은 “연준이 더 오래 또는 더 많이 긴축할 수 있다”는 쪽을 우선 반영했습니다.'
+    elif d2 <= -5 and d2 < min(d10,d30)-3:
+        market_plain='2년물이 장기물보다 더 크게 내려, 시장은 연준의 추가긴축 가능성을 낮추는 쪽으로 우선 반영했습니다.'
+    else:
+        market_plain='2년물과 장기물이 함께 움직여 정책금리 기대와 장기 물가·재정 위험이 섞여 있습니다.'
+
     lines=[
         f"<b>[Warsh 물가 발표 후 정책 재가격] {html.escape(event['period_label'])}</b>",
         f"공식 발표일 {event['release_date']} · 미 재무부 공식 종가 {row['date']}", '',
-        '<b>물가 발표</b>',
-        f"• 종합 전월 대비 {fmt(event.get('headline_mom'))} · 전년 대비 {fmt(event.get('headline_yoy'))}",
-        f"• 근원 전월 대비 {fmt(event.get('core_mom'))} · 전년 대비 {fmt(event.get('core_yoy'))}", '',
-        '<b>채권시장 반응</b>',
-        f"• 2년물 {prev['2y']:.2f}% → {row['2y']:.2f}% ({d2:+.1f}bp)",
-        f"• 10년물 {prev['10y']:.2f}% → {row['10y']:.2f}% ({d10:+.1f}bp)",
-        f"• 30년물 {prev['30y']:.2f}% → {row['30y']:.2f}% ({d30:+.1f}bp)",
-        f"• 2년-10년 금리차 {s210:+.0f}bp ({s210-ps210:+.1f}bp)",
-        f"• 2년-30년 금리차 {s230:+.0f}bp ({s230-ps230:+.1f}bp)", '',
-        f"<b>판정: {html.escape(verdict)}</b>",
+        '<b>한눈에 보기</b>',
+        f"• <b>물가</b> | 종합 {fmt(event.get('headline_mom'))} 전월 · 근원 {fmt(event.get('core_mom'))} 전월",
+        f"• <b>시장</b> | 2년물 {d2:+.1f}bp · 10년물 {d10:+.1f}bp · 30년물 {d30:+.1f}bp",
+        f"• <b>결론</b> | {html.escape(verdict)}", '',
+        '<b>물가를 쉽게 읽으면</b>',
+        f"• {html.escape(inflation_speed_text(event))}",
+        f"• 전년 대비는 종합 {fmt(event.get('headline_yoy'))} · 근원 {fmt(event.get('core_yoy'))}입니다.",
+    ]
+    if event['kind']=='CPI' and event.get('headline_mom') is not None:
+        lines.append(f"• 참고용 단순 연율: 종합 약 {annualized(event['headline_mom']):.1f}% · 근원 약 {annualized(event['core_mom']):.1f}% — 실제 전망이 아니라 현재 한 달 속도 비교용입니다.")
+    lines += [
+        '', '<b>채권시장이 말한 것</b>',
+        f"• {html.escape(market_plain)}",
+        f"• 2년-10년 금리차 {s210:+.0f}bp ({s210-ps210:+.1f}bp) · 2년-30년 금리차 {s230:+.0f}bp ({s230-ps230:+.1f}bp)",
+        f"• 평균 금리차 변화 {curve_move:+.1f}bp → {'장단기 금리차 축소' if curve_move < 0 else '장단기 금리차 확대'}", '',
+        '<b>Warsh 기준 해석</b>',
         f"• {html.escape(detail)}",
     ]
     if event['kind']=='PPI':
-        lines += ['• 생산자물가는 연준의 2% 목표지표가 아니므로 이것만으로 물가 2% 경로를 확정하지 않습니다. 소비자물가와 개인소비지출 물가지수를 함께 봅니다.']
+        lines += ['• 생산자물가는 연준의 2% 목표지표가 아닙니다. CPI와 PCE까지 같은 방향인지 확인해야 합니다.']
     else:
-        lines += ['• 소비자물가는 물가 방향을 보여주지만 연준의 2% 목표 판단은 개인소비지출 물가지수와 함께 확인합니다.']
-    lines += ['', '<b>원천</b>', f"{link('BLS 공식 물가보고서',event['url'])} · {link('미 재무부 공식 금리',TREASURY_TEXT_URL)}", '※ 1bp = 0.01%포인트']
+        lines += ['• CPI는 방향 확인용이고 연준의 공식 2% 목표지표는 PCE입니다. 따라서 CPI가 강해도 PCE가 식으면 최종 판단은 약해질 수 있습니다.']
+    lines += [
+        '', '<b>다음에 무엇을 보면 되나</b>',
+        '• 다음 미 재무부 공식 종가에서 2년물 상승분이 유지되는지: 유지되면 정책경로 재가격 지속, 크게 반납하면 하루짜리 반응 가능성 증가',
+        '• 다음 PCE에서 근원 월간 속도가 0.2% 안팎으로 낮아지는지와 고용이 함께 둔화하는지 확인',
+        '', '<b>원천</b>', f"{link('BLS 공식 물가보고서',event['url'])} · {link('미 재무부 공식 금리',TREASURY_TEXT_URL)}", '※ 1bp = 0.01%포인트'
+    ]
     return '\n'.join(lines)
 
 
