@@ -13,20 +13,28 @@ on:
       - "scripts/yen_carry_market_data_v2.py"
       - "scripts/yen_carry_news_alert.py"
       - "scripts/yen_policy_news_alert.py"
+      - "scripts/yen_policy_news_alert_runner.py"
+      - "scripts/yen_policy_news_linkify.py"
       - "scripts/khs_source_fetch.py"
       - "scripts/global_rates_telegram_formatter.py"
       - "scripts/global_rates_telegram_htmlify.py"
       - "tests/test_global_rates_structural_watch.py"
       - "tests/test_global_rates_freshness_guard.py"
       - "tests/test_global_rates_regime_flow_upgrade.py"
+      - "tests/test_yen_policy_news_alert.py"
+      - "tests/test_yen_policy_news_alert_runner.py"
+      - "tests/test_yen_policy_news_linkify.py"
       - "data/global_rates_watch_state.json"
       - "data/global_rates_structural_state.json"
       - "data/global_rates_regime_flow_state.json"
       - "data/global_rates_telegram_state.json"
       - "state/yen_carry_news_alert.json"
+      - "data/yen_policy_news_state.json"
+      - "data/yen_policy_news_alert_config.json"
   schedule:
     - cron: "15,45 * * * *"
     - cron: "0,30 * * * *"
+    - cron: "1,6,11,16,21,26,31,36,41,46,51,56 * * * *"
   workflow_dispatch:
     inputs:
       force_test:
@@ -39,11 +47,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: global-rates-telegram-watch
+  group: global-rates-telegram-watch-${{ github.event.schedule || github.event_name }}
   cancel-in-progress: true
 
 jobs:
   monitor:
+    if: ${{ github.event_name != 'schedule' || github.event.schedule != '1,6,11,16,21,26,31,36,41,46,51,56 * * * *' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -71,12 +80,15 @@ jobs:
           python -m py_compile scripts/yen_carry_market_data_v2.py
           python -m py_compile scripts/yen_carry_news_alert.py
           python -m py_compile scripts/yen_policy_news_alert.py
+          python -m py_compile scripts/yen_policy_news_alert_runner.py
+          python -m py_compile scripts/yen_policy_news_linkify.py
           python -m py_compile scripts/khs_source_fetch.py
           python -m py_compile scripts/global_rates_telegram_formatter.py
           python -m py_compile scripts/global_rates_telegram_htmlify.py
           PYTHONPATH=scripts python -m unittest tests/test_global_rates_structural_watch.py -v
           PYTHONPATH=scripts python -m unittest tests/test_global_rates_freshness_guard.py -v
           PYTHONPATH=scripts python -m unittest tests/test_global_rates_regime_flow_upgrade.py -v
+          PYTHONPATH=scripts python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_alert_runner.py tests/test_yen_policy_news_linkify.py -v
 
       - name: Validate Telegram routing guard
         run: |
@@ -439,3 +451,169 @@ jobs:
             out/global_rates_watch_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
+
+  yen_policy_news:
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '1,6,11,16,21,26,31,36,41,46,51,56 * * * *') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_DRY_RUN: "false"
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate policy-news monitor
+        run: |
+          python -m py_compile scripts/yen_policy_news_alert.py
+          python -m py_compile scripts/yen_policy_news_alert_runner.py
+          python -m py_compile scripts/yen_policy_news_linkify.py
+          python -m py_compile scripts/khs_source_fetch.py
+          PYTHONPATH=scripts python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_alert_runner.py tests/test_yen_policy_news_linkify.py -v
+
+      - name: Check BOJ and yen policy catalysts
+        run: PYTHONPATH=scripts python scripts/yen_policy_news_alert_runner.py
+
+      - name: Add clickable source links
+        if: hashFiles('out/yen_policy_news_alert.md') != ''
+        run: PYTHONPATH=scripts python scripts/yen_policy_news_linkify.py
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/yen_policy_news_watch.md ]; then
+            cat out/yen_policy_news_watch.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "엔화 정책 촉매 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/yen_policy_news_alert.md ]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            echo "# 엔화 정책 촉매 Telegram 전송 예정 메시지" >> "$GITHUB_STEP_SUMMARY"
+            cat out/yen_policy_news_alert_title.txt >> "$GITHUB_STEP_SUMMARY"
+            echo >> "$GITHUB_STEP_SUMMARY"
+            cat out/yen_policy_news_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send policy catalyst through global-rates bot only
+        if: hashFiles('out/yen_policy_news_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_BOT_TOKEN secret is missing; refusing fallback")
+          if not chat_id:
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_CHAT_ID secret is missing; refusing fallback")
+          if not expected:
+              raise RuntimeError("EXPECTED_TELEGRAM_BOT_USERNAME is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}")
+
+          query = urllib.parse.urlencode({"chat_id": chat_id})
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?{query}", timeout=25) as response:
+              chat = json.loads(response.read().decode("utf-8"))
+          resolved_chat = str((chat.get("result") or {}).get("id") or "")
+          if not chat.get("ok") or resolved_chat != chat_id:
+              raise RuntimeError("GLOBAL_RATES_TELEGRAM_CHAT_ID verification failed")
+
+          title = pathlib.Path("out/yen_policy_news_alert_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/yen_policy_news_alert.md").read_text(encoding="utf-8").strip()
+          text = f"{title}\n\n{body}"[:4096]
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected yen_policy_news message: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "lane": "yen_policy_news",
+              "bot_username": actual,
+              "route_secret": "GLOBAL_RATES_TELEGRAM_*",
+              "message_id": (result.get("result") or {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/yen_policy_news_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(
+              "yen_policy_news_delivery_confirmed=true "
+              f"bot=@{actual} message_id={confirmed['message_id']}"
+          )
+          PY
+
+      - name: Finalize policy-news state only after confirmed Telegram delivery
+        if: always() && hashFiles('out/yen_policy_news_telegram_confirmed.json') != ''
+        run: PYTHONPATH=scripts python scripts/yen_policy_news_alert_runner.py --finalize
+
+      - name: Commit confirmed policy-news state
+        if: always() && github.ref == 'refs/heads/main' && hashFiles('data/yen_policy_news_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/yen_policy_news_state.json
+          if git diff --cached --quiet; then
+            echo "엔화 정책 촉매 상태 변경 없음"
+          else
+            git commit -m "Update yen policy news alert state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then exit 0; fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload policy-news verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yen-policy-news-${{ github.run_id }}
+          path: |
+            out/yen_policy_news_watch.md
+            out/yen_policy_news_alert_title.txt
+            out/yen_policy_news_alert.md
+            out/yen_policy_news_alert.json
+            out/yen_policy_news_pending_state.json
+            out/yen_policy_news_telegram_confirmed.json
+            out/khs_source_failures.json
+          if-no-files-found: ignore
+          retention-days: 7
