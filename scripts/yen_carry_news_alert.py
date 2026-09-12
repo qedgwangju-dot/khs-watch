@@ -16,7 +16,7 @@ KST = ZoneInfo("Asia/Seoul")
 MAX_ITEM_AGE_HOURS = 12
 MAX_ALERT_ITEMS = 3
 
-STATE_PATH = pathlib.Path("data/yen_carry_news_state.json")
+STATE_PATH = pathlib.Path("state/yen_carry_news_alert.json")
 PENDING_PATH = pathlib.Path("out/yen_carry_news_pending_state.json")
 ALERT_TITLE_PATH = pathlib.Path("out/yen_carry_news_alert_title.txt")
 ALERT_BODY_PATH = pathlib.Path("out/yen_carry_news_alert.md")
