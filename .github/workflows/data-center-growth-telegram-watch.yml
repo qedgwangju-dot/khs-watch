@@ -68,7 +68,74 @@ jobs:
         run: |
           sed -i 's/^FORMAT_VERSION = 2$/FORMAT_VERSION = 5/' scripts/pjm_data_center_policy_watch.py
           python scripts/guard_pjm_baseline_source.py
-          python scripts/pjm_data_center_policy_watch.py
+
+          mkdir -p out
+          pjm_ok=0
+          for attempt in 1 2 3; do
+            set +e
+            python scripts/pjm_data_center_policy_watch.py > out/pjm_data_center_policy_run.log 2>&1
+            code=$?
+            set -e
+            cat out/pjm_data_center_policy_run.log
+
+            if [ "$code" -eq 0 ]; then
+              pjm_ok=1
+              break
+            fi
+
+            if grep -Eq 'insidelines\.pjm\.com|PJM_BASELINE' out/pjm_data_center_policy_run.log \
+              && grep -Eq 'ConnectTimeout|ReadTimeout|Timeout|ConnectionError|requests\.exceptions' out/pjm_data_center_policy_run.log; then
+              echo "PJM 기준 원문 연결 실패 · ${attempt}/3 재시도"
+              sleep $((attempt * 5))
+            else
+              exit "$code"
+            fi
+          done
+
+          if [ "$pjm_ok" -ne 1 ]; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+
+          state_path = Path("data/pjm_data_center_policy_state.json")
+          pending_path = Path("out/pjm_data_center_policy_pending_state.json")
+          status_path = Path("out/pjm_data_center_policy_status.md")
+
+          try:
+              state = json.loads(state_path.read_text(encoding="utf-8"))
+          except Exception as exc:
+              raise SystemExit(f"PJM live source unavailable and saved state unreadable: {exc}")
+
+          baseline = state.get("baseline") or {}
+          required = ("target_mw", "max_price_usd_mw_day", "max_years", "planned_start")
+          if not state.get("initialized") or any(baseline.get(key) is None for key in required):
+              raise SystemExit("PJM live source unavailable and no complete verified baseline is stored")
+
+          # Do not invent or advance policy numbers while the live Inside Lines source is unavailable.
+          # Preserve the last verified official baseline, keep Telegram silent for this source,
+          # and allow the independent PJM/FERC/new-source checks in later runs to resume normally.
+          pending = dict(state)
+          pending["source_errors"] = [
+              "PJM Inside Lines 기준 원문 연결시간 초과 · 직전 검증 공식 기준 유지"
+          ]
+          pending_path.write_text(
+              json.dumps(pending, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+
+          status_path.write_text(
+              "# PJM 데이터센터 전력정책 감시\n\n"
+              f"- RBP 기준 부족분: **{baseline.get('target_mw')} MW**\n"
+              f"- 최대가격: **${baseline.get('max_price_usd_mw_day')}/MW-day**\n"
+              f"- 최대 계약기간: **{baseline.get('max_years')}년**\n"
+              f"- 개시 목표: **{baseline.get('planned_start')}**\n"
+              "- 알림: **아니오**\n"
+              "- 원천 오류: **PJM Inside Lines 기준 원문 연결시간 초과 · 직전 검증 공식 기준 유지**\n",
+              encoding="utf-8",
+          )
+          print(f"pjm_policy_fallback=true baseline={baseline}")
+          PY
+          fi
 
       - name: Group and translate PJM source rows
         run: python scripts/clean_pjm_alert_html.py
@@ -126,8 +193,6 @@ jobs:
                   }
               elif p.name == "us_data_center_time_to_power_alert.txt":
                   payload["parse_mode"] = "HTML"
-                  # Body headlines themselves are clickable; disable a large automatic
-                  # preview card so the execution dashboard stays visible at a glance.
                   payload["link_preview_options"] = {"is_disabled": True}
                   payload["reply_markup"] = {
                       "inline_keyboard": [
