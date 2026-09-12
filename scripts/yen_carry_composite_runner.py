@@ -12,6 +12,11 @@ All monetary JPY amounts exposed in the Telegram body are paired with a KRW
 conversion using the latest same-date Federal Reserve H.10 USD/KRW and USD/JPY
 observations. If that conversion cannot be verified, the monetary alert is not
 allowed to advance state or send.
+
+The live composite lane also enforces two freshness rules already used by the
+main global-rates lane: the U.S.-Japan 2Y spread is calculated only from the
+same market date, and stale Yahoo five-minute USD/JPY observations are retained
+for reference but excluded from current yen-carry signal classification.
 """
 from __future__ import annotations
 
@@ -20,6 +25,8 @@ import html
 import pathlib
 import re
 import sys
+import urllib.parse
+import xml.etree.ElementTree as ET
 
 import yen_carry_composite_watch as base
 from khs_source_fetch import fetch_text
@@ -27,9 +34,148 @@ from krw_fx import FRED_USDJPY, FRED_USDKRW, JpyKrwQuote, format_krw, latest_jpy
 
 CFTC_TFF_REPORT = "https://www.cftc.gov/dea/futures/financial_lf.htm"
 KRW_FAILURE_PATH = pathlib.Path("out/yen_carry_krw_conversion_failed.txt")
+MAX_LIVE_FX_AGE_SECONDS = 12 * 60
 
 _original_parse_mof_week_csv = base.parse_mof_week_csv
 _original_build_message = base.build_message
+_original_classify = base.classify
+_original_make_state = base.make_state
+_original_fetch_move = base.fx.fetch_move
+_original_fetch_jgb = base.rates.fetch_jgb
+_original_fetch_ust_curve = base.rates.fetch_ust_curve
+_target_rate_date: str | None = None
+_last_fx_freshness = {"signal_eligible": False, "age_seconds": None, "latest_epoch": None}
+
+
+def normalize_date(value: str | None) -> str | None:
+    nums = [int(x) for x in re.findall(r"\d+", value or "")]
+    if len(nums) >= 3 and nums[0] >= 2000:
+        return f"{nums[0]:04d}-{nums[1]:02d}-{nums[2]:02d}"
+    return None
+
+
+def fetch_jgb_aligned():
+    global _target_rate_date
+    jgb2, jgb10 = _original_fetch_jgb()
+    _target_rate_date = normalize_date(jgb2.date)
+    return jgb2, jgb10
+
+
+def fetch_ust_curve_aligned(data_key: str = "daily_treasury_yield_curve"):
+    latest = _original_fetch_ust_curve(data_key)
+    target = _target_rate_date
+    if not target or normalize_date((latest.get("ust2") or base.rates.Point("", "", 0.0, "")).date) == target:
+        return latest
+
+    year = int(target[:4])
+    params = urllib.parse.urlencode({"data": data_key, "field_tdr_date_value": str(year)})
+    url = f"{base.rates.UST_XML_BASE}?{params}"
+    root = ET.fromstring(base.rates.http_get(url))
+    matched = None
+    for entry in root.iter():
+        if base.rates.localname(entry.tag) != "entry":
+            continue
+        props = next((node for node in entry.iter() if base.rates.localname(node.tag) == "properties"), None)
+        if props is None:
+            continue
+        rec = {base.rates.localname(child.tag): (child.text or "").strip() for child in list(props)}
+        raw_date = rec.get("NEW_DATE") or rec.get("QUOTE_DATE") or ""
+        if normalize_date(raw_date) == target:
+            matched = rec
+            break
+    if matched is None:
+        raise RuntimeError(f"U.S. Treasury 2Y same-date observation unavailable for JGB date {target}")
+
+    out = {}
+    for key, name in (("BC_2YEAR", "ust2"), ("BC_10YEAR", "ust10"), ("BC_30YEAR", "ust30")):
+        value = base.rates.to_float(matched.get(key))
+        if value is not None:
+            out[name] = base.rates.Point(name, target, value, url)
+    if not {"ust2", "ust10", "ust30"}.issubset(out):
+        raise RuntimeError(f"U.S. Treasury same-date curve incomplete for {target}")
+    return out
+
+
+def fetch_move_freshness():
+    global _last_fx_freshness
+    move = _original_fetch_move()
+    age = (dt.datetime.now(dt.timezone.utc).timestamp() - float(move.latest_epoch))
+    eligible = -120 <= age <= MAX_LIVE_FX_AGE_SECONDS
+    _last_fx_freshness = {
+        "signal_eligible": eligible,
+        "age_seconds": max(0.0, age),
+        "latest_epoch": float(move.latest_epoch),
+    }
+    return move
+
+
+def classify_with_freshness(*, move, fx_vol, jgb2, spread, previous_jgb2, previous_spread, cftc, mof, policy):
+    if _last_fx_freshness.get("signal_eligible"):
+        return _original_classify(
+            move=move,
+            fx_vol=fx_vol,
+            jgb2=jgb2,
+            spread=spread,
+            previous_jgb2=previous_jgb2,
+            previous_spread=previous_spread,
+            cftc=cftc,
+            mof=mof,
+            policy=policy,
+        )
+
+    jgb2_change_bp = None if previous_jgb2 is None else (jgb2 - previous_jgb2) * 100.0
+    spread_change_bp = None if previous_spread is None else (spread - previous_spread) * 100.0
+    short_rate_up = bool(jgb2_change_bp is not None and jgb2_change_bp >= base.JGB2_CHANGE_BP)
+    spread_narrow = bool(spread <= base.SPREAD_NARROW_LEVEL or (spread_change_bp is not None and spread_change_bp <= -base.SPREAD_CHANGE_BP))
+    spread_wide = bool(spread > base.SPREAD_NARROW_LEVEL and not spread_narrow)
+    spread_widening = bool(spread_change_bp is not None and spread_change_bp >= base.SPREAD_CHANGE_BP)
+    leveraged_net_short = bool(cftc is not None and cftc.net_short > 0)
+    short_covering = bool(cftc is not None and cftc.short_covering)
+    outward_buying = bool(mof is not None and mof.outward_buying)
+    outward_accelerating = bool(mof is not None and mof.outward_accelerating)
+    policy_recent = bool(policy and policy.get("recent") and policy.get("further_joint_intervention_signal"))
+
+    unwind_evidence = {
+        "일본 단기금리 상승": short_rate_up,
+        "미·일 2년 금리차 축소": spread_narrow,
+        "USD/JPY 급락·엔화 급등": False,
+        "FX 실현변동성 상승": False,
+        "레버리지 펀드 엔화 순숏": leveraged_net_short,
+        "최근 공식 공동개입·추가개입 경고": policy_recent,
+    }
+    if sum(bool(v) for v in unwind_evidence.values()) >= 3 and (spread_narrow or short_rate_up):
+        unwind_level, unwind_label = 1, "엔캐리 청산 구조적 경계"
+    else:
+        unwind_level, unwind_label = 0, "엔캐리 청산 미확인"
+
+    rebuild_evidence = {
+        "USD/JPY 상승·엔화 재약세": False,
+        "USD/JPY 완만한 상승 방향": False,
+        "미·일 2년 금리차 여전히 넓음": spread_wide,
+        "미·일 2년 금리차 재확대": spread_widening,
+        "일본 거주자 해외주식·장기채 순매수": outward_buying,
+        "최근 2주 해외매수 가속": outward_accelerating,
+        "레버리지 엔화 숏 축소에도 USD/JPY 상승": False,
+        "FX 변동성 비상승": False,
+    }
+    if outward_buying and spread_wide and outward_accelerating:
+        rebuild_level, rebuild_label = 2, "엔화 재약세·캐리 재구축 압력 강화"
+    elif sum(bool(v) for v in rebuild_evidence.values()) >= 4 and outward_buying:
+        rebuild_level, rebuild_label = 1, "엔화 재약세·캐리 재구축 경계"
+    else:
+        rebuild_level, rebuild_label = 0, "엔화 재약세·캐리 재구축 미확인"
+
+    evidence = {"unwind::" + k: v for k, v in unwind_evidence.items()}
+    evidence.update({"rebuild::" + k: v for k, v in rebuild_evidence.items()})
+    evidence["meta::USD/JPY 현재 신호 사용 가능"] = False
+    return base.CompositeVerdict(unwind_level, unwind_label, rebuild_level, rebuild_label, False, evidence)
+
+
+def make_state_with_freshness(*args, **kwargs):
+    state = _original_make_state(*args, **kwargs)
+    state["fx_signal_eligible"] = bool(_last_fx_freshness.get("signal_eligible"))
+    state["fx_age_seconds"] = _last_fx_freshness.get("age_seconds")
+    return state
 
 
 def normalize_mof_week_label(value: str) -> str:
@@ -174,24 +320,36 @@ def enrich_krw_lines(body: str, mof: base.MofOutwardFlow | None, quote: JpyKrwQu
 
 def build_message(*args, **kwargs):
     title, body, payload = _original_build_message(*args, **kwargs)
+    if not _last_fx_freshness.get("signal_eligible"):
+        age = _last_fx_freshness.get("age_seconds")
+        age_text = f"{float(age)/60:.0f}분 전" if age is not None else "시각 확인 불가"
+        lines = []
+        for line in body.splitlines():
+            if line.startswith("- USD/JPY "):
+                lines.append("- USD/JPY 최근 관측(현재 신호 제외): " + line[len("- USD/JPY "):])
+            else:
+                lines.append(line)
+        insert_at = 1 if lines else 0
+        lines[insert_at:insert_at] = [f"- USD/JPY 현재신호: 보류 ({age_text})"]
+        body = "\n".join(lines)
     mof = kwargs.get("mof")
-    if mof is None:
-        return title, body, payload
-    try:
-        quote = latest_jpy_krw()
-        body = enrich_krw_lines(body, mof, quote)
-    except Exception as exc:
-        KRW_FAILURE_PATH.parent.mkdir(parents=True, exist_ok=True)
-        KRW_FAILURE_PATH.write_text(f"{type(exc).__name__}: {exc}\n", encoding="utf-8")
-        raise
-    payload["krw_conversion"] = {
-        "required": True,
-        "date": quote.date,
-        "usdkrw": quote.usdkrw,
-        "usdjpy": quote.usdjpy,
-        "krw_per_yen": quote.krw_per_yen,
-        "method": "FRED H.10 same-date DEXKOUS / DEXJPUS",
-    }
+    if mof is not None:
+        try:
+            quote = latest_jpy_krw()
+            body = enrich_krw_lines(body, mof, quote)
+        except Exception as exc:
+            KRW_FAILURE_PATH.parent.mkdir(parents=True, exist_ok=True)
+            KRW_FAILURE_PATH.write_text(f"{type(exc).__name__}: {exc}\n", encoding="utf-8")
+            raise
+        payload["krw_conversion"] = {
+            "required": True,
+            "date": quote.date,
+            "usdkrw": quote.usdkrw,
+            "usdjpy": quote.usdjpy,
+            "krw_per_yen": quote.krw_per_yen,
+            "method": "FRED H.10 same-date DEXKOUS / DEXJPUS",
+        }
+    payload["fx_freshness"] = dict(_last_fx_freshness)
     return title, body, payload
 
 
@@ -200,6 +358,11 @@ def install() -> None:
     base.parse_mof_week_csv = parse_mof_week_csv
     base.fetch_cftc = fetch_cftc
     base.build_message = build_message
+    base.classify = classify_with_freshness
+    base.make_state = make_state_with_freshness
+    base.fx.fetch_move = fetch_move_freshness
+    base.rates.fetch_jgb = fetch_jgb_aligned
+    base.rates.fetch_ust_curve = fetch_ust_curve_aligned
 
 
 install()
