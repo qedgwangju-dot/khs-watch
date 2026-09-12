@@ -52,13 +52,17 @@ def main() -> int:
         print("policy_seen_finalize=deferred delivery_not_confirmed")
         return 0
 
-    # A duplicate-only/no-send outcome is not a Telegram delivery.  Do not
-    # advance article seen state unless this run actually sent at least one
-    # Telegram message successfully.
-    try:
-        sent_count = int(delivery.get("sent") or 0)
-    except (TypeError, ValueError):
-        sent_count = 0
+    # Current delivery records always include an explicit sent count. Keep
+    # legacy confirmed records (created before that field existed) compatible,
+    # while still refusing current duplicate-only/no-send outcomes (sent=0).
+    sent_raw = delivery.get("sent")
+    if sent_raw is None:
+        sent_count = 1
+    else:
+        try:
+            sent_count = int(sent_raw or 0)
+        except (TypeError, ValueError):
+            sent_count = 0
     if sent_count <= 0:
         print("policy_seen_finalize=deferred no_telegram_send")
         return 0
