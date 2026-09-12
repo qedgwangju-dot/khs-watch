@@ -8,14 +8,13 @@ on:
     paths:
       - ".github/workflows/japan-boj-jgb-integrated-watch.yml"
       - "scripts/japan_boj_jgb_integrated_watch.py"
-      - "data/japan_boj_jgb_integrated_state.json"
 
 permissions:
   contents: write
 
 concurrency:
   group: japan-boj-jgb-integrated-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   watch:
