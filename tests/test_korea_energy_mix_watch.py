@@ -141,3 +141,20 @@ def test_nuclear_coal_lng_article_gets_real_body_interpretation():
     assert "LNG" in result
     assert "10월 정부안" in result
     assert "임의 해석은 생략" not in result
+
+
+def test_generic_article_sentence_parser_handles_korean_and_ascii_boundaries():
+    article_body = (
+        "정부는 전력시장 제도 개선안을 검토하고 있으며 계통 투자 확대도 함께 논의한다. "
+        "송변전 설비 준공 일정은 지역별 인허가 상황에 따라 달라질 수 있다. "
+        "ESS 확충 계획은 아직 세부 용량이 확정되지 않았다."
+    )
+    result = interpret_article_body(
+        {"title": "전력시장·계통 투자 논의 확대"},
+        article_body,
+        "",
+    )
+    assert "원문에서 확인되는 핵심" in result
+    assert "전력시장" in result
+    assert "계통 투자" in result
+    assert "임의로 추가하지 않음" in result
