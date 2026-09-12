@@ -60,7 +60,7 @@ jobs:
         id: telegram_route
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID_DIRECT: ${{ secrets.KHS887900_CHAT_ID }}
+          TELEGRAM_CHAT_ID_DIRECT: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: python scripts/khs_us_investment_telegram_send.py resolve
 
       - name: Run US investment watch
@@ -91,7 +91,7 @@ jobs:
         if: github.event_name != 'push' && hashFiles('out/khs_us_investment_alert.html') != '' && steps.telegram_route.outputs.ready == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID_DIRECT: ${{ secrets.KHS887900_CHAT_ID }}
+          TELEGRAM_CHAT_ID_DIRECT: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: python scripts/khs_us_investment_telegram_send.py send
 
       - name: Hold alert until exact Telegram route is ready
