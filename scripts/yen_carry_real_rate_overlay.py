@@ -49,7 +49,7 @@ FED_SOURCE_URL = "https://fred.stlouisfed.org/graph/?id=DFEDTARU,DFEDTARL"
 BLS_CPI_API = "https://api.bls.gov/publicAPI/v2/timeseries/data/CUUR0000SA0"
 BOJ_HOME = "https://www.boj.or.jp/en/"
 JP_CPI_URL = "https://www.stat.go.jp/data/cpi/sokuhou/tsuki/index-z.htm"
-USER_AGENT = "Mozilla/5.0 khs-yen-carry-real-rate/1.0"
+USER_AGENT = "Mozilla/5.0 khs-yen-carry-real-rate/1.1"
 
 REAL_GAP_ALERT_PP = 0.25
 POLICY_GAP_ALERT_PP = 0.25
@@ -190,21 +190,41 @@ def parse_boj_policy_home(text: str) -> tuple[float, str | None]:
 
 
 def parse_japan_cpi_page(text: str) -> tuple[str, float]:
+    """Parse the latest nationwide all-items CPI summary from Statistics Bureau.
+
+    The official title currently contains a Reiwa-year parenthetical between the
+    Gregorian year and survey month, e.g. "2026年（令和8年）7月分". Keep the parser
+    tolerant of full-width/half-width parentheses and whitespace, while anchoring
+    the value to point (1), the all-items index, so Tokyo/core CPI cannot leak in.
+    """
     plain = plain_html(text)
-    period = re.search(r"(20\d{2})年（?令和\d+年）?\s*(\d{1,2})月分", plain)
-    if not period:
-        period = re.search(r"(20\d{2})年\s*(\d{1,2})月分", plain)
+
+    period = re.search(r"(20\d{2})年.*?(\d{1,2})月分", plain)
     if not period:
         raise RuntimeError("Japan CPI survey month not found")
 
-    # The first point on the official monthly summary is the all-items index.
     yoy = re.search(
-        r"\(1\).*?総合指数.*?前年同月比は\s*([0-9.]+)\s*[％%]\s*の\s*(上昇|下落)",
+        r"(?:\(\s*1\s*\)|（\s*1\s*）)\s*総合指数.*?前年同月比は\s*([0-9.]+)\s*[％%]\s*の\s*(上昇|下落)",
         plain,
         flags=re.DOTALL,
     )
     if not yoy:
+        # Official page wording is stable but punctuation/spacing can change.
+        # Fallback is still restricted to the all-items paragraph before point (2).
+        point1 = re.search(
+            r"(?:\(\s*1\s*\)|（\s*1\s*）)(.*?)(?=(?:\(\s*2\s*\)|（\s*2\s*）))",
+            plain,
+            flags=re.DOTALL,
+        )
+        segment = point1.group(1) if point1 else ""
+        yoy = re.search(
+            r"総合指数.*?前年同月比は\s*([0-9.]+)\s*[％%].*?(上昇|下落)",
+            segment,
+            flags=re.DOTALL,
+        )
+    if not yoy:
         raise RuntimeError("Japan all-items CPI YoY not found")
+
     value = float(yoy.group(1)) * (-1.0 if yoy.group(2) == "下落" else 1.0)
     return f"{int(period.group(1)):04d}-{int(period.group(2)):02d}", value
 
@@ -423,8 +443,6 @@ def _add_reason_lines(body: str, reasons: list[str]) -> str:
 
 
 def _reposition_blocks(body: str, real_block: str) -> str:
-    # Existing policy-path overlay historically appends its block after the source
-    # section. Pull it back so both structural blocks sit before sources.
     policy_block = ""
     match = re.search(r"\n\n(긴축 경로·레버리지\n.*)\Z", body, flags=re.DOTALL)
     if match:
@@ -456,7 +474,6 @@ def _ensure_sources(body: str) -> str:
         return body
     marker = "\n\n출처\n"
     if marker in body:
-        # Source section may be followed by no further section after repositioning.
         return body.rstrip() + "\n" + "\n".join(missing) + "\n"
     return body.rstrip() + "\n\n출처\n" + "\n".join(missing) + "\n"
 
