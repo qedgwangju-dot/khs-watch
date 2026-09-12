@@ -2,10 +2,7 @@ name: Japan BOJ JGB Integrated Watch
 
 on:
   schedule:
-    - cron: "7 * * * *"
-    - cron: "22 * * * *"
-    - cron: "37 * * * *"
-    - cron: "52 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
   push:
     paths:
@@ -18,7 +15,6 @@ permissions:
 concurrency:
   group: japan-boj-jgb-integrated-watch
   cancel-in-progress: false
-  queue: max
 
 jobs:
   watch:
