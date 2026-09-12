@@ -26,6 +26,7 @@ jobs:
       JOBS_WAGE_TELEGRAM_BOT_TOKEN: ${{ secrets.JOBS_WAGE_TELEGRAM_BOT_TOKEN }}
       KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
       KHS887900_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
+      KHS887900_CHAT_ID: ${{ secrets.KHS887900_CHAT_ID }}
       KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       ENERGY_MIX_TELEGRAM_BOT_TOKEN: ${{ secrets.ENERGY_MIX_TELEGRAM_BOT_TOKEN }}
       KOSPI_DERIV_TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
@@ -33,7 +34,7 @@ jobs:
       THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
     steps:
-      - name: Resolve bot usernames and US investment route without sending
+      - name: Resolve bot usernames and compare US investment chat routes without sending
         run: |
           python - <<'PY'
           import json, os, urllib.parse, urllib.request
@@ -57,20 +58,34 @@ jobs:
                   print(f'{name}=ERROR:{type(exc).__name__}')
 
           token=(os.getenv('KHS887900_BOT_TOKEN') or '').strip()
-          chat_id=(os.getenv('KHS_POLICY_TELEGRAM_CHAT_ID') or '').strip()
           if not token:
               raise RuntimeError('KHS887900_BOT_TOKEN missing')
-          if not chat_id:
-              raise RuntimeError('KHS_POLICY_TELEGRAM_CHAT_ID missing')
           with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
               identity=json.loads(r.read().decode('utf-8'))
           username=str((identity.get('result') or {}).get('username') or '')
           if not identity.get('ok') or username.lower() != 'khs887900_bot':
               raise RuntimeError(f'US investment bot mismatch: @{username or "unknown"}')
-          query=urllib.parse.urlencode({'chat_id': chat_id})
-          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getChat?{query}', timeout=20) as r:
-              chat=json.loads(r.read().decode('utf-8'))
-          if not chat.get('ok') or (chat.get('result') or {}).get('id') is None:
-              raise RuntimeError('US investment chat route unreachable')
-          print(f'US_INVESTMENT_ROUTE_OK bot=@{username} chat_type={(chat.get("result") or {}).get("type", "unknown")}')
+
+          def probe_chat(label, env_name):
+              chat_id=(os.getenv(env_name) or '').strip()
+              if not chat_id:
+                  print(f'{label}=MISSING')
+                  return False
+              try:
+                  query=urllib.parse.urlencode({'chat_id': chat_id})
+                  with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getChat?{query}', timeout=20) as r:
+                      chat=json.loads(r.read().decode('utf-8'))
+                  if not chat.get('ok') or (chat.get('result') or {}).get('id') is None:
+                      print(f'{label}=UNREACHABLE')
+                      return False
+                  print(f'{label}=OK bot=@{username} chat_type={(chat.get("result") or {}).get("type", "unknown")}')
+                  return True
+              except Exception as exc:
+                  print(f'{label}=ERROR:{type(exc).__name__}')
+                  return False
+
+          dedicated_ok=probe_chat('US_INVESTMENT_DEDICATED_CHAT', 'KHS887900_CHAT_ID')
+          policy_ok=probe_chat('US_INVESTMENT_POLICY_CHAT', 'KHS_POLICY_TELEGRAM_CHAT_ID')
+          if not dedicated_ok and not policy_ok:
+              raise RuntimeError('No reachable US investment chat route')
           PY
