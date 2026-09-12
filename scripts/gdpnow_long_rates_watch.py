@@ -120,7 +120,7 @@ def find_header_index(headers: list[str], names: list[str], contains: list[str] 
 
 def fetch_contrib_rows() -> list[GdpRow]:
     raw = http_get(GDP_XLSX, timeout=50)
-    wb = load_workbook(io.BytesIO(raw), read_only=True, data_only=True)
+    wb = load_workbook(io.BytesIO(raw), read_only=False, data_only=True)
     sheet_name = next((n for n in wb.sheetnames if "contrib" in norm(n)), None)
     if not sheet_name:
         raise RuntimeError(f"ContribHistory sheet not found; sheets={wb.sheetnames}")
