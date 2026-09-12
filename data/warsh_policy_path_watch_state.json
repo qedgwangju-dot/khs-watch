@@ -1,0 +1,45 @@
+{
+  "effr": 3.63,
+  "meetings": [
+    {
+      "date": "2026-09-16",
+      "label": "Sep 16, 2026",
+      "prob_cell": "14%86%",
+      "implied_avg": 3.73,
+      "pre_rate": 3.63,
+      "post_rate": 3.844,
+      "change_bp": 21.0,
+      "hike25_prob": 86.0,
+      "contract": "/ZQU26"
+    },
+    {
+      "date": "2026-10-28",
+      "label": "Oct 28, 2026",
+      "prob_cell": "52%48%",
+      "implied_avg": 3.86,
+      "pre_rate": 3.844,
+      "post_rate": 3.965,
+      "change_bp": 12.0,
+      "hike25_prob": 48.0,
+      "contract": "/ZQV26"
+    },
+    {
+      "date": "2026-12-09",
+      "label": "Dec 9, 2026",
+      "prob_cell": "30%70%",
+      "implied_avg": 4.085,
+      "pre_rate": 3.965,
+      "post_rate": 4.14,
+      "change_bp": 18.0,
+      "hike25_prob": 70.0,
+      "contract": "/ZQZ26"
+    }
+  ],
+  "classification": {
+    "verdict": "첫 인상 뒤 연내 추가 인상 1회 이상 반영",
+    "extra_bp": 29.59999999999998,
+    "basis": "첫 향후 회의 인상 기대를 제외한 뒤 연말까지의 추가 기대"
+  },
+  "source": "https://www.frenzycap.com/fedwatch",
+  "updated_at_utc": "2026-09-12T16:43:45.480322+00:00"
+}
