@@ -5,6 +5,10 @@ on:
     # Every 30 minutes. GitHub cron is UTC.
     - cron: "0,30 * * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/yen-carry-news-alert.yml"
   pull_request:
     paths:
       - ".github/workflows/yen-carry-news-alert.yml"
@@ -28,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      TELEGRAM_DRY_RUN: ${{ (github.event_name == 'pull_request' || github.event_name == 'push') && 'true' || 'false' }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
       KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
       KHS_SOURCE_PROXY_FIRST: "true"
