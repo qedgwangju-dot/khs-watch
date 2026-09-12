@@ -64,7 +64,8 @@ def fetch_jgb_aligned():
 def fetch_ust_curve_aligned(data_key: str = "daily_treasury_yield_curve"):
     latest = _original_fetch_ust_curve(data_key)
     target = _target_rate_date
-    if not target or normalize_date((latest.get("ust2") or base.rates.Point("", "", 0.0, "")).date) == target:
+    latest_ust2 = latest.get("ust2")
+    if not target or (latest_ust2 and normalize_date(latest_ust2.date) == target):
         return latest
 
     year = int(target[:4])
@@ -99,7 +100,7 @@ def fetch_ust_curve_aligned(data_key: str = "daily_treasury_yield_curve"):
 def fetch_move_freshness():
     global _last_fx_freshness
     move = _original_fetch_move()
-    age = (dt.datetime.now(dt.timezone.utc).timestamp() - float(move.latest_epoch))
+    age = dt.datetime.now(dt.timezone.utc).timestamp() - float(move.latest_epoch)
     eligible = -120 <= age <= MAX_LIVE_FX_AGE_SECONDS
     _last_fx_freshness = {
         "signal_eligible": eligible,
@@ -130,7 +131,6 @@ def classify_with_freshness(*, move, fx_vol, jgb2, spread, previous_jgb2, previo
     spread_wide = bool(spread > base.SPREAD_NARROW_LEVEL and not spread_narrow)
     spread_widening = bool(spread_change_bp is not None and spread_change_bp >= base.SPREAD_CHANGE_BP)
     leveraged_net_short = bool(cftc is not None and cftc.net_short > 0)
-    short_covering = bool(cftc is not None and cftc.short_covering)
     outward_buying = bool(mof is not None and mof.outward_buying)
     outward_accelerating = bool(mof is not None and mof.outward_accelerating)
     policy_recent = bool(policy and policy.get("recent") and policy.get("further_joint_intervention_signal"))
@@ -353,11 +353,14 @@ def build_message(*args, **kwargs):
     return title, body, payload
 
 
-def install() -> None:
+def install_source_overrides() -> None:
     base.CFTC_TFF_API = CFTC_TFF_REPORT
     base.parse_mof_week_csv = parse_mof_week_csv
     base.fetch_cftc = fetch_cftc
     base.build_message = build_message
+
+
+def install_live_guards() -> None:
     base.classify = classify_with_freshness
     base.make_state = make_state_with_freshness
     base.fx.fetch_move = fetch_move_freshness
@@ -365,13 +368,14 @@ def install() -> None:
     base.rates.fetch_ust_curve = fetch_ust_curve_aligned
 
 
-install()
+install_source_overrides()
 
 
 def main() -> int:
     if "--finalize" in sys.argv and KRW_FAILURE_PATH.exists():
         print("KRW conversion failed; yen-carry state intentionally not advanced")
         return 1
+    install_live_guards()
     return base.main()
 
 
