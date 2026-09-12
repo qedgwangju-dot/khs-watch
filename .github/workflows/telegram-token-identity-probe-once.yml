@@ -38,14 +38,17 @@ jobs:
       - name: Checkout current runtime customization
         uses: actions/checkout@v4
 
-      - name: Read latest khs887900 private chat id without sending
+      - name: Compare latest khs887900 private chat without sending
         run: |
           python - <<'PY'
           import json, os, urllib.request
 
           token=(os.getenv('KHS887900_BOT_TOKEN') or '').strip()
+          policy_chat=(os.getenv('KHS_POLICY_TELEGRAM_CHAT_ID') or '').strip()
           if not token:
               raise RuntimeError('KHS887900_BOT_TOKEN missing')
+          if not policy_chat:
+              raise RuntimeError('KHS_POLICY_TELEGRAM_CHAT_ID missing')
           with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0', timeout=20) as r:
               data=json.loads(r.read().decode('utf-8'))
           if not data.get('ok'):
@@ -62,8 +65,10 @@ jobs:
               raise RuntimeError('No private Telegram updates found; send /start to @khs887900_bot and rerun')
           start=[row for row in candidates if row[2].startswith('/start')]
           chosen=(start or candidates)[-1]
-          print(f'KHS887900_LATEST_PRIVATE_CHAT_ID={chosen[1]}')
           print(f'KHS887900_LATEST_TEXT_IS_START={str(chosen[2].startswith("/start")).lower()}')
+          print(f'KHS887900_LATEST_CHAT_MATCHES_POLICY_CHAT={str(chosen[1] == policy_chat).lower()}')
+          if chosen[1] != policy_chat:
+              raise RuntimeError('Latest khs887900 private chat does not match verified policy chat')
           PY
 
       - name: Resolve bot usernames and compare US investment chat routes without sending
