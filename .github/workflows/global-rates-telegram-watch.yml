@@ -25,7 +25,8 @@ on:
       - "data/global_rates_telegram_state.json"
       - "state/yen_carry_news_alert.json"
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "15,45 * * * *"
+    - cron: "0,30 * * * *"
   workflow_dispatch:
     inputs:
       force_test:
@@ -111,7 +112,7 @@ jobs:
         run: python scripts/yen_carry_confirmation.py
 
       - name: Check yen carry news catalysts
-        if: always()
+        if: ${{ github.event_name != 'schedule' || github.event.schedule == '0,30 * * * *' }}
         run: python scripts/yen_carry_news_alert.py
 
       - name: Recheck official rates immediately before report
@@ -294,7 +295,7 @@ jobs:
           PY
 
       - name: Send yen carry news alert through dedicated global-rates bot only
-        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_news_alert.md') != ''
+        if: ${{ (github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '0,30 * * * *')) && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_news_alert.md') != '' }}
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
