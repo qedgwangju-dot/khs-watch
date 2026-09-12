@@ -1,4 +1,5 @@
 name: Telegram token identity probe once
+# Manual no-send route probe refresh for current production wiring.
 
 on:
   push:
