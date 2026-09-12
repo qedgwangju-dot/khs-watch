@@ -7,6 +7,8 @@ as a material carry-rebuild catalyst without weakening the existing noise filter
 """
 from __future__ import annotations
 
+import pathlib
+
 import yen_carry_news_alert as base
 
 EXTRA_RSS_QUERIES = (
@@ -43,6 +45,7 @@ def _extend_unique(original: tuple, additions: tuple) -> tuple:
 
 
 def install() -> None:
+    base.STATE_PATH = pathlib.Path("state/yen_carry_news_alert.json")
     base.RSS_QUERIES = _extend_unique(base.RSS_QUERIES, EXTRA_RSS_QUERIES)
     base.REBUILD_MARKERS = _extend_unique(base.REBUILD_MARKERS, EXTRA_REBUILD_MARKERS)
     base.KOREAN_SOURCE_GROUPS = _extend_unique(base.KOREAN_SOURCE_GROUPS, EXTRA_SOURCE_GROUPS)
