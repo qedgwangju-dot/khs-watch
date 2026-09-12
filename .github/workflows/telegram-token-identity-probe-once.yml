@@ -17,6 +17,7 @@ jobs:
       HBM_TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
       BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
       GLOBAL_RATES_TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      GLOBAL_RATES_TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       BOK_ASSET_TELEGRAM_BOT_TOKEN: ${{ secrets.BOK_ASSET_TELEGRAM_BOT_TOKEN }}
       YEN_CARRY_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
       CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN: ${{ secrets.CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN }}
@@ -37,6 +38,30 @@ jobs:
     steps:
       - name: Checkout current runtime customization
         uses: actions/checkout@v4
+
+      - name: Verify yen carry global-rates route without sending
+        run: |
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+
+          token=(os.getenv('GLOBAL_RATES_TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id=(os.getenv('GLOBAL_RATES_TELEGRAM_CHAT_ID') or '').strip()
+          if not token:
+              raise RuntimeError('GLOBAL_RATES_TELEGRAM_BOT_TOKEN missing')
+          if not chat_id:
+              raise RuntimeError('GLOBAL_RATES_TELEGRAM_CHAT_ID missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
+              identity=json.loads(r.read().decode('utf-8'))
+          username=str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or username.lower() != 'khs8879887988798879_bot':
+              raise RuntimeError(f'Global-rates bot mismatch: @{username or "unknown"}')
+          query=urllib.parse.urlencode({'chat_id': chat_id})
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getChat?{query}', timeout=20) as r:
+              chat=json.loads(r.read().decode('utf-8'))
+          if not chat.get('ok') or (chat.get('result') or {}).get('id') is None:
+              raise RuntimeError('GLOBAL_RATES_TELEGRAM_CHAT_ID unreachable')
+          print(f'YEN_CARRY_GLOBAL_RATES_ROUTE=OK bot=@{username} chat_type={(chat.get("result") or {}).get("type", "unknown")}')
+          PY
 
       - name: Compare latest khs887900 private chat without sending
         run: |
