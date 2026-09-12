@@ -76,6 +76,7 @@ jobs:
           import json
           import pathlib
           import re
+          import time
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
@@ -117,6 +118,8 @@ jobs:
               ]
               for publisher in publishers:
                   value = re.sub(rf"\s+-\s+{re.escape(publisher)}\s*$", "", value, flags=re.I)
+              # Google News titles also append publishers not in the preferred list.
+              value = re.sub(r"\s+-\s+[A-Za-z0-9][A-Za-z0-9 .&'/-]{1,60}\.com\s*$", "", value, flags=re.I)
               return value.strip()
 
           def fetch_fx(currency: str):
@@ -220,6 +223,64 @@ jobs:
               value = re.sub(r"\$([0-9][0-9,]*(?:\.[0-9]+)?)\s*M\b", repl_m, value, flags=re.I)
               return value
 
+          def fallback_korean_title(original: str) -> str:
+              # Deterministic fallback for translation API throttling. Never leak a long English title.
+              text = strip_publisher_suffix(html.unescape(original).strip())
+              company = next((term for term in keep_terms[:8] if re.search(rf"\b{re.escape(term)}\b", text, re.I)), "")
+              fiscal = re.search(r"\bFY\s*20\d{2}\b|\bFY\s*\d{2}\b", text, re.I)
+              pct = re.search(r"\b\d+(?:\.\d+)?\s*%", text)
+              metric = ""
+              if re.search(r"revenue|sales", text, re.I):
+                  metric = "매출"
+              elif re.search(r"backlog", text, re.I):
+                  metric = "수주잔고"
+              elif re.search(r"bookings?|orders?", text, re.I):
+                  metric = "수주"
+              elif re.search(r"guidance|outlook", text, re.I):
+                  metric = "실적 전망"
+              elif re.search(r"shipments?|volume shipment", text, re.I):
+                  metric = "출하"
+              elif re.search(r"capacity|factory|plant|capex", text, re.I):
+                  metric = "생산능력·설비투자"
+              elif re.search(r"pricing|price increase", text, re.I):
+                  metric = "가격"
+
+              trend = ""
+              if pct:
+                  if re.search(r"soar|surge|jump|rise|increase|grow|up\b", text, re.I):
+                      trend = f"{pct.group(0)} 급증"
+                  elif re.search(r"fall|drop|decline|decrease|down\b", text, re.I):
+                      trend = f"{pct.group(0)} 감소"
+                  else:
+                      trend = f"{pct.group(0)} 변화"
+
+              drivers = []
+              if re.search(r"AI", text, re.I):
+                  drivers.append("AI")
+              if re.search(r"data ?center|datacenter", text, re.I):
+                  drivers.append("데이터센터")
+              if re.search(r"optical|fiber|fibre|photonics?|laser|transceiver", text, re.I):
+                  drivers.append("광통신")
+              if re.search(r"CPO|co[- ]?packaged optics?", text, re.I):
+                  drivers.append("CPO")
+              if re.search(r"1\.6\s*T", text, re.I):
+                  drivers.append("1.6T")
+              if re.search(r"3\.2\s*T", text, re.I):
+                  drivers.append("3.2T")
+              if re.search(r"PCIe|CXL|retimer|interconnect|fabric", text, re.I):
+                  drivers.append("랙 내부 인터커넥트")
+
+              subject = " ".join(x for x in [company, fiscal.group(0).upper().replace(" ", "") if fiscal else "", metric, trend] if x).strip()
+              driver_text = "·".join(dict.fromkeys(drivers))
+              if re.search(r"demand", text, re.I) and driver_text:
+                  tail = f"{driver_text} 수요가 견인"
+              elif driver_text:
+                  tail = f"{driver_text} 관련 신규 신호"
+              else:
+                  tail = "AI 네트워킹·광통신 관련 신규 신호"
+              result = f"{subject} — {tail}" if subject else tail
+              return re.sub(r"\s+", " ", result).strip()
+
           def translate_to_korean(value: str) -> str:
               original = strip_publisher_suffix(html.unescape(value).strip())
               protected = original
@@ -230,30 +291,45 @@ jobs:
                       protected = protected.replace(term, marker)
                       replacements[marker] = term
 
-              params = urllib.parse.urlencode({
-                  "client": "gtx",
-                  "sl": "auto",
-                  "tl": "ko",
-                  "dt": "t",
-                  "q": protected,
-              })
-              req = urllib.request.Request(
-                  "https://translate.googleapis.com/translate_a/single?" + params,
-                  headers={"User-Agent": "Mozilla/5.0 khs-watch/1.0"},
-              )
-              with urllib.request.urlopen(req, timeout=25) as response:
-                  payload = json.loads(response.read().decode("utf-8"))
-              translated = "".join(
-                  str(segment[0]) for segment in (payload[0] or [])
-                  if segment and segment[0]
-              ).strip()
-              for marker, term in replacements.items():
-                  translated = translated.replace(marker, term)
+              translated = ""
+              last_error = None
+              for attempt in range(3):
+                  try:
+                      params = urllib.parse.urlencode({
+                          "client": "gtx",
+                          "sl": "auto",
+                          "tl": "ko",
+                          "dt": "t",
+                          "q": protected,
+                      })
+                      req = urllib.request.Request(
+                          "https://translate.googleapis.com/translate_a/single?" + params,
+                          headers={"User-Agent": "Mozilla/5.0 khs-watch/1.0"},
+                      )
+                      with urllib.request.urlopen(req, timeout=25) as response:
+                          payload = json.loads(response.read().decode("utf-8"))
+                      translated = "".join(
+                          str(segment[0]) for segment in (payload[0] or [])
+                          if segment and segment[0]
+                      ).strip()
+                      if translated:
+                          break
+                  except Exception as exc:
+                      last_error = exc
+                      if attempt < 2:
+                          time.sleep(2 ** attempt)
 
-              translated = naturalize_dollar_tokens(translated)
-              translated = re.sub(r"\s+", " ", translated).strip()
+              if translated:
+                  for marker, term in replacements.items():
+                      translated = translated.replace(marker, term)
+                  translated = naturalize_dollar_tokens(translated)
+                  translated = re.sub(r"\s+", " ", translated).strip()
+
+              if not translated or not re.search(r"[가-힣]", translated):
+                  translated = fallback_korean_title(original)
+                  print(f"translation_fallback=local reason={type(last_error).__name__ if last_error else 'no_korean_result'}")
               if not re.search(r"[가-힣]", translated):
-                  raise RuntimeError(f"Korean translation failed; refusing to send English title: {original}")
+                  raise RuntimeError(f"Korean translation fallback failed; refusing to send English title: {original}")
               return translated
 
           output = []
