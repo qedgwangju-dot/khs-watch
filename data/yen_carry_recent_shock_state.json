@@ -1,11 +1,16 @@
 {
   "current_shock": false,
+  "fx_age_seconds": 52082.059209,
+  "fx_observed_at_kst": "2026-09-12T05:55:00+09:00",
+  "fx_signal_eligible": false,
   "history_shock": false,
   "initialized": true,
   "last_history_alert_trough_epoch": null,
   "last_history_alert_trough_price": null,
   "recent_shock": false,
-  "updated_at_kst": "2026-09-12T19:12:19+09:00",
+  "reference_latest_epoch": 1789160100.0,
+  "reference_usdjpy": 153.5540008544922,
+  "updated_at_kst": "2026-09-12T20:23:02+09:00",
   "values": {
     "change_15m_pct": -0.12033222572237298,
     "change_30m_pct": -0.07158515286791432,
