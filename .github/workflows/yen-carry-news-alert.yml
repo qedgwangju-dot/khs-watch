@@ -1,14 +1,9 @@
 name: Yen carry rebuild news Telegram alert
 
 on:
-  # Temporary self-file push probe. Push runs are forced to dry-run below.
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/yen-carry-news-alert.yml"
   schedule:
     # Every 30 minutes. GitHub cron is UTC.
-    - cron: "*/30 * * * *"
+    - cron: "0,30 * * * *"
   workflow_dispatch:
   pull_request:
     paths:
@@ -33,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      TELEGRAM_DRY_RUN: ${{ (github.event_name == 'pull_request' || github.event_name == 'push') && 'true' || 'false' }}
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
       KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
       KHS_SOURCE_PROXY_FIRST: "true"
@@ -84,7 +79,7 @@ jobs:
             echo "엔화 수급 촉매 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Preview dry-run alert without sending
+      - name: Preview pull request alert without sending
         if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/yen_carry_news_alert.md') != ''
         run: |
           printf '\n---\n\n텔레그램 미전송 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -193,7 +188,7 @@ jobs:
           retention-days: 7
 
       - name: Commit confirmed carry-news state
-        if: always() && env.TELEGRAM_DRY_RUN != 'true' && github.event_name != 'pull_request' && hashFiles('state/yen_carry_news_alert.json') != ''
+        if: always() && github.event_name != 'pull_request' && hashFiles('state/yen_carry_news_alert.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
