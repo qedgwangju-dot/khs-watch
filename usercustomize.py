@@ -28,6 +28,18 @@ def _install_policy_telegram_readability_patch() -> None:
     if not delivery_step:
         return
 
+    # Keep the dedicated @khs887900_bot token, but if its dedicated chat-id
+    # secret is not provisioned, reuse the already verified policy private chat.
+    # This changes only the destination-id fallback for the Westinghouse lane;
+    # it does not alter watcher logic, dedupe, seen state, or the bot identity.
+    if (
+        not (os.getenv("KHS887900_CHAT_ID") or "").strip()
+        and (os.getenv("KHS887900_BOT_TOKEN") or "").strip()
+        and (os.getenv("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip()
+    ):
+        os.environ["KHS887900_CHAT_ID"] = os.environ["KHS_POLICY_TELEGRAM_CHAT_ID"].strip()
+        print("policy_westinghouse_chat_route=fallback_policy_chat")
+
     try:
         from scripts import khs_policy_telegram_formatter as formatter
         from scripts.khs_nuclear_alert_readability import restructure_nuclear_message
