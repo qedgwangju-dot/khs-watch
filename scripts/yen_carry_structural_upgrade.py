@@ -175,6 +175,14 @@ def label_year(label: str) -> int | None:
     return None
 
 
+def normalize_mof_week_label(value: str) -> str:
+    nums = [int(x) for x in re.findall(r"\d+", value or "")]
+    if len(nums) >= 5 and nums[0] >= 2000:
+        year, m1, d1, m2, d2 = nums[:5]
+        return f"{year:04d}-{m1:02d}-{d1:02d}~{m2:02d}-{d2:02d}"
+    return (value or "").strip()
+
+
 def parse_mof_week_split(text: str) -> MofFlowSplit:
     """Split MOF outward flows.
 
@@ -187,7 +195,7 @@ def parse_mof_week_split(text: str) -> MofFlowSplit:
     for row in csv.reader(io.StringIO(text.lstrip("\ufeff"))):
         if len(row) < 12:
             continue
-        label = (row[0] or "").strip()
+        label = normalize_mof_week_label(row[0] or "")
         eq = number(row[3])
         lt = number(row[6])
         subtotal = number(row[7])
