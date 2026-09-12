@@ -48,10 +48,10 @@ def _resolve() -> tuple[str, dict]:
 
     chat_id = (os.getenv("TELEGRAM_CHAT_ID_DIRECT") or "").strip()
     if not chat_id:
-        raise RuntimeError("KHS887900_CHAT_ID secret is missing")
+        raise RuntimeError("Configured Telegram chat route secret is missing")
     chat = get_chat(chat_id)
     if not chat or chat.get("id") is None:
-        raise RuntimeError(f"@{expected} valid but configured KHS887900_CHAT_ID is unreachable")
+        raise RuntimeError(f"@{expected} valid but configured Telegram chat route is unreachable")
     return username, chat
 
 
