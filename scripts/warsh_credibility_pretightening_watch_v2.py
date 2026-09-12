@@ -120,8 +120,45 @@ def pre_snapshot(rows,macro):
     elif active:v='시장이 먼저 긴축한 후보 — 고용·물가 추가 확인 필요'
     else:v='시장 선긴축 기준 미충족'
     return {'date':z['date'],'base_date':a['date'],'active':active,'d2_bp':d2,'d2s10s_bp':d210,'d2s30s_bp':d230,'avg_curve_bp':av,'verdict':v}
-def pre_msg(s,m):
-    return '\n'.join(['<b>[워시 반응함수 · 시장이 먼저 긴축했는지 감지]</b>',f"기간: {s['base_date']} → {s['date']} ({LOOKBACK}거래일)",f"미 국채 2년물: {s['d2_bp']:+.1f}bp",f"2년-10년 금리차: {s['d2s10s_bp']:+.1f}bp | 2년-30년 금리차: {s['d2s30s_bp']:+.1f}bp",'',f"고용: 비농업 고용 {m['payroll_change_k']:+.0f}천명 / 실업률 {m['unemployment_rate']:.1f}%",f"근원 소비자물가: 전월 대비 {m['core_cpi_mom']:+.2f}%",'',f"판정: <b>{html.escape(s['verdict'])}</b>",'쉽게 보면: 연준이 금리를 올리기 전에 2년물 금리가 먼저 크게 오르면 시장금리 자체가 대출·투자를 억제합니다. 이후 고용과 물가까지 식으면 실제 추가 인상 필요성이 줄 수 있습니다.','※ 1bp = 0.01%포인트','',f'<a href="{TREASURY}">미 재무부 공식 금리 원천</a> · <a href="{EMP}">미 노동부 고용 원천</a> · <a href="{CPI}">미 노동부 물가 원천</a>'])
+
+def pre_msg(s,m,p):
+    market_ok=s['d2_bp']>=TWOY_BP and s['avg_curve_bp']<=-CURVE_BP
+    jobs='둔화 기준 충족' if m['employment_soft'] else '둔화 기준 미충족'
+    inflation='둔화 기준 충족' if m['inflation_cooling'] else '둔화 기준 미충족'
+    if market_ok and not m['employment_soft'] and not m['inflation_cooling']:
+        plain='시장금리가 먼저 올라 금융여건은 이미 조여졌지만, 고용과 물가가 아직 충분히 식지 않아 “Fed가 이제 안 올려도 된다”는 단계는 아닙니다.'
+    elif market_ok and m['employment_soft'] and m['inflation_cooling']:
+        plain='시장금리가 이미 먼저 조여졌고 고용·물가도 식고 있습니다. 이 경우 시장 선긴축이 실제 추가 인상 필요성을 일부 대신할 가능성이 커집니다.'
+    else:
+        plain='시장금리와 경제지표가 같은 방향으로 충분히 정렬되지 않아 실제 정책 대체 효과를 확정하기 어렵습니다.'
+    pce_bits=[]
+    if isinstance(p.get('core_yoy'),(int,float)):pce_bits.append(f"근원 전년 대비 {p['core_yoy']:.2f}%")
+    if isinstance(p.get('core_6m_ann'),(int,float)):pce_bits.append(f"6개월 연율 {p['core_6m_ann']:.2f}%")
+    pce_line=' · '.join(pce_bits) if pce_bits else html.escape(str(p.get('regime','확인 필요')))
+    return '\n'.join([
+        '<b>[Warsh 반응함수 · 시장 선긴축 여부]</b>',
+        f"기간 {s['base_date']} → {s['date']} ({LOOKBACK}거래일)", '',
+        '<b>한눈에 보기</b>',
+        f"• <b>2년물</b> | {s['d2_bp']:+.1f}bp → 기준 +{TWOY_BP:.0f}bp 이상 {'충족' if s['d2_bp']>=TWOY_BP else '미충족'}",
+        f"• <b>장단기 금리차</b> | 2년-10년 {s['d2s10s_bp']:+.1f}bp · 2년-30년 {s['d2s30s_bp']:+.1f}bp",
+        f"• <b>시장 선긴축</b> | 평균 금리차 변화 {s['avg_curve_bp']:+.1f}bp → 기준 -{CURVE_BP:.0f}bp 이하 {'충족' if s['avg_curve_bp']<=-CURVE_BP else '미충족'}", '',
+        '<b>경제지표 확인</b>',
+        f"• <b>고용</b> | 비농업 고용 {m['payroll_change_k']:+.0f}천명 · 실업률 {m['unemployment_rate']:.1f}% → {jobs}",
+        f"• <b>근원 CPI</b> | 전월 대비 {m['core_cpi_mom']:+.2f}% → {inflation}",
+        f"• <b>근원 PCE</b> | {pce_line}", '',
+        f"<b>판정: {html.escape(s['verdict'])}</b>",
+        f"• {html.escape(plain)}", '',
+        '<b>왜 중요한가</b>',
+        '• 2년물 급등과 장단기 금리차 축소는 시장이 연준보다 먼저 단기 금융여건을 조이는 패턴입니다.',
+        '• 하지만 시장금리 상승만으로 실제 정책금리 인상을 완전히 대신하지는 못합니다. 고용·물가가 함께 식어야 “추가 인상 필요성 감소” 판단이 강해집니다.', '',
+        '<b>판정이 바뀌는 조건</b>',
+        f"• 고용 둔화: 비농업 고용 +50천명 이하 또는 실업률 전월 대비 +0.2%포인트 이상",
+        f"• 물가 둔화: 근원 CPI 전월 대비 약 +0.20% 이하",
+        f"• 시장 선긴축 해제: 최근 {LOOKBACK}거래일 2년물 상승이 +{TWOY_BP:.0f}bp 아래로 내려가거나 금리차 축소가 -{CURVE_BP:.0f}bp 기준을 벗어나는 경우", '',
+        '※ 1bp = 0.01%포인트', '',
+        f'<a href="{TREASURY}">미 재무부 공식 금리</a> · <a href="{EMP}">미 노동부 고용</a> · <a href="{CPI}">미 노동부 물가</a>'
+    ])
+
 def event_rows(rows,d):
     for i,r in enumerate(rows):
         if r['date']>=d:return (rows[i-1],r) if i else (None,None)
@@ -149,7 +186,7 @@ def main():
     st=jload(STATE,{}); first=not bool(st); rows=treasury_rows(); macro=bls_macro(); pce=pce_ctx(); ss=statements(); last=ss[-1]; prev=ss[-2]
     if not last['range'] or not prev['range']:raise RuntimeError('FOMC 정책금리 범위 파싱 실패')
     ps=pre_snapshot(rows,macro); oldactive=bool(st.get('pretightening_active',False)); newdate=st.get('treasury_date') not in (None,ps['date'])
-    if FORCE or (newdate and ps['active'] and not oldactive):send(pre_msg(ps,macro))
+    if FORCE or (newdate and ps['active'] and not oldactive):send(pre_msg(ps,macro,pce))
     elif newdate and oldactive and not ps['active']:send('\n'.join(['<b>[워시 반응함수 · 시장 선긴축 경보 해제]</b>',f"기준일 {ps['date']}",f"최근 {LOOKBACK}거래일 2년물 {ps['d2_bp']:+.1f}bp / 금리차 평균 {ps['avg_curve_bp']:+.1f}bp",'판정: 2년물 급등과 장단기 금리차 축소가 기준 아래로 내려왔습니다. 시장이 연준 대신 긴축하는 압력은 약해졌습니다.','',f'<a href="{TREASURY}">미 재무부 공식 금리 원천</a>']))
     seen=st.get('last_seen_fomc_url'); pending=st.get('pending_fomc')
     if first:seen=last['url']
