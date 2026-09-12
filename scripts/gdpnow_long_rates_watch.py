@@ -126,36 +126,72 @@ def fetch_contrib_rows() -> list[GdpRow]:
         raise RuntimeError(f"ContribHistory sheet not found; sheets={wb.sheetnames}")
     ws = wb[sheet_name]
 
+    # Atlanta Fed periodically changes the visual layout of ContribHistory.  The
+    # same logical headers can therefore be split across adjacent rows or use
+    # longer labels such as "Change in private inventories" instead of CIPI.
+    # Detect columns semantically across up to three header rows rather than
+    # requiring literal Date/GDP/CIPI cells on one row.
+    col_count = min(ws.max_column, 40)
     header_row = None
+    header_end_row = None
     header_vals: list[str] = []
-    for r in range(1, min(ws.max_row, 100) + 1):
-        vals = [norm(ws.cell(r, c).value) for c in range(1, min(ws.max_column, 24) + 1)]
-        if "gdp" in vals and "cipi" in vals and any(v == "date" for v in vals):
-            header_row = r
-            header_vals = vals
-            break
-    if header_row is None:
-        raise RuntimeError("Could not locate ContribHistory header row")
 
-    idx_date = find_header_index(header_vals, ["Date"])
+    def required_indexes(headers: list[str]) -> tuple[int | None, int | None, int | None]:
+        idx_date = find_header_index(headers, ["Date", "Forecast Date", "Update Date"], contains=["date"])
+        idx_gdp = find_header_index(headers, ["GDP", "GDPNow", "Real GDP"])
+        if idx_gdp is None:
+            idx_gdp = find_header_index(headers, [], contains=["gdp"])
+        idx_cipi = find_header_index(headers, ["CIPI", "Change in private inventories"])
+        if idx_cipi is None:
+            idx_cipi = find_header_index(headers, [], contains=["cipi"])
+        if idx_cipi is None:
+            idx_cipi = find_header_index(headers, [], contains=["private", "inventor"])
+        return idx_date, idx_gdp, idx_cipi
+
+    for r in range(1, min(ws.max_row, 150) + 1):
+        for span in (1, 2, 3):
+            end = min(ws.max_row, r + span - 1)
+            vals: list[str] = []
+            for c in range(1, col_count + 1):
+                pieces = [norm(ws.cell(rr, c).value) for rr in range(r, end + 1)]
+                vals.append("".join(p for p in pieces if p))
+            idx_date, idx_gdp, idx_cipi = required_indexes(vals)
+            if idx_date is not None and idx_gdp is not None and idx_cipi is not None:
+                header_row = r
+                header_end_row = end
+                header_vals = vals
+                break
+        if header_row is not None:
+            break
+    if header_row is None or header_end_row is None:
+        preview = []
+        for r in range(1, min(ws.max_row, 20) + 1):
+            row = [norm(ws.cell(r, c).value) for c in range(1, min(col_count, 16) + 1)]
+            if any(row):
+                preview.append(row)
+        raise RuntimeError(f"Could not locate ContribHistory header row; preview={preview[:8]}")
+
+    idx_date, idx_gdp, idx_cipi = required_indexes(header_vals)
     idx_release = find_header_index(header_vals, ["Major Releases", "Major Release"], contains=["major", "release"])
-    idx_gdp = find_header_index(header_vals, ["GDP"])
     idx_pce = find_header_index(header_vals, ["PCE"])
+    if idx_pce is None:
+        idx_pce = find_header_index(header_vals, [], contains=["pce"])
     idx_eq = find_header_index(header_vals, ["Equipment"], contains=["equip"])
     idx_ipp = find_header_index(header_vals, ["Intell. prop. prod.", "Intellectual property products"], contains=["intell"])
+    if idx_ipp is None:
+        idx_ipp = find_header_index(header_vals, [], contains=["intellectual", "property"])
     idx_nonres = find_header_index(header_vals, ["Nonres. struct.", "Nonresidential structures"], contains=["nonres"])
     idx_res = find_header_index(header_vals, ["Resid. inves.", "Residential investment"], contains=["resid"])
     idx_gov = find_header_index(header_vals, ["Govt.", "Government"], contains=["gov"])
     idx_net = find_header_index(header_vals, ["Net exports"], contains=["net", "export"])
-    idx_cipi = find_header_index(header_vals, ["CIPI"])
 
     required = {"date": idx_date, "gdp": idx_gdp, "cipi": idx_cipi}
     if any(v is None for v in required.values()):
         raise RuntimeError(f"Missing required ContribHistory columns: {required}; header={header_vals}")
 
     rows: list[GdpRow] = []
-    for r in range(header_row + 1, ws.max_row + 1):
-        vals = [ws.cell(r, c).value for c in range(1, min(ws.max_column, 24) + 1)]
+    for r in range(header_end_row + 1, ws.max_row + 1):
+        vals = [ws.cell(r, c).value for c in range(1, col_count + 1)]
         gdp = fnum(vals[idx_gdp]) if idx_gdp is not None and idx_gdp < len(vals) else None
         cipi = fnum(vals[idx_cipi]) if idx_cipi is not None and idx_cipi < len(vals) else None
         date_v = vals[idx_date] if idx_date is not None and idx_date < len(vals) else None
