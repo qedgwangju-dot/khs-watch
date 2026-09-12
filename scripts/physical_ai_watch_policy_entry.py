@@ -9,6 +9,7 @@ import json
 import re
 import sys
 import urllib.request
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -41,11 +42,18 @@ _STRONG_CZECH_MILESTONE = re.compile(
 )
 
 # Direct first-party social discovery for Pollen Robotics / Microduck.
-# Google News remains the broad discovery layer, but founder posts can be material
-# before any publisher rewrites them. X's public syndication timeline is polled
-# directly so production/volume/lead-time/XL330 signals do not depend on news indexing.
+# Google News remains the broad discovery layer. Founder posts are material before
+# publisher rewrites, so the final existing watcher also tries public X syndication.
+# GitHub-hosted runners can be rate-limited by X, therefore Nitter/Twiiit and a
+# read-only mirror are discovery fallbacks. Every surfaced item links back to the
+# canonical X status and receives a durable status-id dedupe key.
 _POLLEN_X_SENTINEL = 'DIRECT_POLLEN_FOUNDER_X'
 _POLLEN_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/matth_lapeyre'
+_POLLEN_NITTER_FEEDS = [
+    'https://twiiit.com/matth_lapeyre/rss',
+    'https://nitter.ca/matth_lapeyre/rss',
+]
+_POLLEN_MIRROR_URL = 'https://www.sotwe.com/matth_lapeyre?lang=en'
 _POLLEN_X_SOURCE = 'Matthieu Lapeyre (Pollen Robotics/X)'
 _POLLEN_CORE = re.compile(r'Microduck|Reachy\s*Mini|Pollen\s*Robotics|XL330|DYNAMIXEL|ROBOTIS|로보티즈', re.I)
 _POLLEN_SIGNAL = re.compile(
@@ -61,9 +69,33 @@ _POLLEN_STRONG = re.compile(
     re.I,
 )
 
+# One-time missed-event recovery. It is age-gated and then naturally disappears;
+# it exists only so the specific high-signal post that exposed this ingestion gap
+# can be delivered once after the fix rather than being silently lost forever.
+_POLLEN_RECOVERY_POSTS = {
+    '2098466553922494771': (
+        'This is how many motors it takes to build 100 Microducks. '
+        'And we’re planning to make 20,000 Microduck by early 2027. '
+        'To all the makers out there looking for an XL330, sorry 🫂'
+    ),
+}
+
 if _POLLEN_X_SENTINEL not in base.QUERIES:
     base.QUERIES.append(_POLLEN_X_SENTINEL)
 base.OFFICIAL_OR_PRIMARY.add(_POLLEN_X_SOURCE)
+
+
+def _request_text(url: str) -> str:
+    req = urllib.request.Request(
+        url,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                          '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'application/rss+xml, application/xml, text/xml, text/html,application/xhtml+xml,*/*',
+        },
+    )
+    with urllib.request.urlopen(req, timeout=25) as response:
+        return response.read().decode('utf-8', errors='ignore')
 
 
 def _parse_x_date(value: object) -> dt.datetime | None:
@@ -83,18 +115,55 @@ def _parse_x_date(value: object) -> dt.datetime | None:
         return None
 
 
-def _fetch_pollen_founder_x() -> list[dict]:
-    req = urllib.request.Request(
-        _POLLEN_X_TIMELINE,
-        headers={
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
-                          '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml',
-        },
-    )
-    with urllib.request.urlopen(req, timeout=25) as response:
-        page = response.read().decode('utf-8', errors='ignore')
+def _tweet_time_from_id(status_id: str) -> dt.datetime | None:
+    try:
+        # X/Twitter snowflake timestamp: high bits are milliseconds since epoch.
+        ms = (int(status_id) >> 22) + 1288834974657
+        return dt.datetime.fromtimestamp(ms / 1000, tz=dt.timezone.utc)
+    except Exception:
+        return None
 
+
+def _clean_social_text(value: str) -> str:
+    value = html_lib.unescape(value or '')
+    value = re.sub(r'<br\s*/?>', ' ', value, flags=re.I)
+    value = re.sub(r'<[^>]+>', ' ', value)
+    return re.sub(r'\s+', ' ', value).strip()
+
+
+def _make_pollen_item(status_id: str, text: str, published: dt.datetime | None) -> dict | None:
+    text = _clean_social_text(text)
+    if not status_id or not text:
+        return None
+    if not (_POLLEN_CORE.search(text) and _POLLEN_SIGNAL.search(text)):
+        return None
+
+    if published is None:
+        published = _tweet_time_from_id(status_id)
+    cutoff = base.NOW - dt.timedelta(hours=48)
+    if published is None or published < cutoff or published > base.NOW + dt.timedelta(minutes=10):
+        return None
+
+    if re.search(r'20,?000|20\s*000', text, re.I) and re.search(r'XL330', text, re.I):
+        title = 'Pollen Robotics 창업자, Microduck 2027년 초 2만대 생산 계획…XL330 수요 압박'
+    elif re.search(r'lead\s*time|shortage|supply|capacity|ramp|납기|부족|공급|증설', text, re.I):
+        title = 'Pollen Robotics 창업자, Microduck 생산 확대·액추에이터 수급 신규 업데이트'
+    else:
+        title = 'Pollen Robotics 창업자, Microduck 생산·물량 계획 신규 업데이트'
+
+    return {
+        'title': title,
+        'link': f'https://x.com/matth_lapeyre/status/{status_id}',
+        'description': text,
+        'published': published.isoformat(),
+        'source': _POLLEN_X_SOURCE,
+        'x_status_id': status_id,
+        'direct_primary': True,
+    }
+
+
+def _from_x_syndication() -> list[dict]:
+    page = _request_text(_POLLEN_X_TIMELINE)
     match = re.search(
         r'<script[^>]+id=["\']__NEXT_DATA__["\'][^>]*>(.*?)</script>',
         page,
@@ -110,46 +179,84 @@ def _fetch_pollen_founder_x() -> list[dict]:
         .get('timeline', {})
         .get('entries', [])
     )
-
-    cutoff = base.NOW - dt.timedelta(hours=48)
     items: list[dict] = []
-    seen_status: set[str] = set()
     for entry in entries:
         tweet = (entry.get('content') or {}).get('tweet') or {}
         user = tweet.get('user') or {}
         if str(user.get('screen_name') or '').lower() != 'matth_lapeyre':
             continue
-
         status_id = str(tweet.get('id_str') or tweet.get('id') or '').strip()
         text = str(tweet.get('full_text') or tweet.get('text') or '').strip()
-        if not status_id or not text or status_id in seen_status:
-            continue
-        if not (_POLLEN_CORE.search(text) and _POLLEN_SIGNAL.search(text)):
-            continue
-
-        published = _parse_x_date(tweet.get('created_at'))
-        # Avoid one-time historical backfill when this direct source is first enabled.
-        if published is None or published < cutoff or published > base.NOW + dt.timedelta(minutes=10):
-            continue
-
-        seen_status.add(status_id)
-        if re.search(r'20,?000|20\s*000', text, re.I) and re.search(r'XL330', text, re.I):
-            title = 'Pollen Robotics 창업자, Microduck 2027년 초 2만대 생산 계획…XL330 수요 압박'
-        elif re.search(r'lead\s*time|shortage|supply|capacity|ramp|납기|부족|공급|증설', text, re.I):
-            title = 'Pollen Robotics 창업자, Microduck 생산 확대·액추에이터 수급 신규 업데이트'
-        else:
-            title = 'Pollen Robotics 창업자, Microduck 생산·물량 계획 신규 업데이트'
-
-        items.append({
-            'title': title,
-            'link': f'https://x.com/matth_lapeyre/status/{status_id}',
-            'description': text,
-            'published': published.isoformat(),
-            'source': _POLLEN_X_SOURCE,
-            'x_status_id': status_id,
-            'direct_primary': True,
-        })
+        item = _make_pollen_item(status_id, text, _parse_x_date(tweet.get('created_at')))
+        if item:
+            items.append(item)
     return items
+
+
+def _from_nitter_rss(url: str) -> list[dict]:
+    raw = _request_text(url)
+    root = ET.fromstring(raw)
+    items: list[dict] = []
+    for node in root.findall('.//item')[:30]:
+        link = (node.findtext('link') or '').strip()
+        guid = (node.findtext('guid') or '').strip()
+        title = node.findtext('title') or ''
+        desc = node.findtext('description') or ''
+        combined = _clean_social_text(f'{title} {desc}')
+        m = re.search(r'/matth_lapeyre/status/(\d+)', f'{link} {guid}', re.I)
+        if not m:
+            continue
+        status_id = m.group(1)
+        item = _make_pollen_item(status_id, combined, _parse_x_date(node.findtext('pubDate')))
+        if item:
+            items.append(item)
+    return items
+
+
+def _from_readonly_mirror() -> list[dict]:
+    raw = _request_text(_POLLEN_MIRROR_URL)
+    items: list[dict] = []
+    # Mirrors change markup often. Use status IDs as stable anchors and inspect a
+    # bounded surrounding text window rather than binding to one fragile CSS class.
+    matches = list(re.finditer(r'(?:matth_lapeyre|Matthieu[^"\']*)/status/(\d+)', raw, re.I))
+    for match in matches[:40]:
+        status_id = match.group(1)
+        lo = max(0, match.start() - 3000)
+        hi = min(len(raw), match.end() + 3000)
+        context = _clean_social_text(raw[lo:hi])
+        item = _make_pollen_item(status_id, context, _tweet_time_from_id(status_id))
+        if item:
+            items.append(item)
+    return items
+
+
+def _fetch_pollen_founder_x() -> list[dict]:
+    gathered: dict[str, dict] = {}
+    errors: list[str] = []
+
+    for label, fn in [
+        ('X syndication', _from_x_syndication),
+        *[(f'Nitter {url}', lambda u=url: _from_nitter_rss(u)) for url in _POLLEN_NITTER_FEEDS],
+        ('read-only mirror', _from_readonly_mirror),
+    ]:
+        try:
+            for item in fn():
+                gathered[item['x_status_id']] = item
+            if gathered:
+                break
+        except Exception as exc:
+            errors.append(f'{label}: {type(exc).__name__}: {exc}')
+
+    # Recover the specific fresh post that revealed this source gap. Snowflake time
+    # keeps it age-gated; after 48h this block produces nothing and cannot backfill history.
+    for status_id, text in _POLLEN_RECOVERY_POSTS.items():
+        item = _make_pollen_item(status_id, text, _tweet_time_from_id(status_id))
+        if item:
+            gathered.setdefault(status_id, item)
+
+    if not gathered and errors:
+        raise RuntimeError(' | '.join(errors))
+    return list(gathered.values())
 
 
 def query_news_with_pollen_x(q: str) -> list[dict]:
