@@ -3,8 +3,7 @@ name: Yen carry rebuild news Telegram alert
 on:
   schedule:
     # Every 30 minutes. GitHub cron is UTC.
-    - cron: "7 * * * *"
-    - cron: "37 * * * *"
+    - cron: "0,30 * * * *"
   workflow_dispatch:
   pull_request:
     paths:
