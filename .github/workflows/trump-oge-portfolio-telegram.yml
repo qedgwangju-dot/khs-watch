@@ -30,6 +30,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -49,13 +51,51 @@ jobs:
 
       - name: Persist seen OGE filing state
         if: success()
+        shell: bash
         run: |
+          # The watcher refreshes updated_at even when the seen filing set did not change.
+          # Restore the tracked file in that case so routine no-change checks do not create commits.
+          python - <<'PY'
+          import json
+          import pathlib
+          import subprocess
+
+          path = pathlib.Path("data/trump_oge_portfolio_watch_state.json")
+          if not path.exists():
+              raise SystemExit(0)
+
+          try:
+              previous = json.loads(subprocess.check_output(
+                  ["git", "show", "HEAD:data/trump_oge_portfolio_watch_state.json"],
+                  text=True,
+              ))
+              current = json.loads(path.read_text(encoding="utf-8"))
+          except Exception:
+              raise SystemExit(0)
+
+          if previous.get("seen", []) == current.get("seen", []):
+              subprocess.run(
+                  ["git", "checkout", "HEAD", "--", "data/trump_oge_portfolio_watch_state.json"],
+                  check=True,
+              )
+              print("OGE seen set unchanged; discarded timestamp-only state change.")
+          PY
+
           if git diff --quiet -- data/trump_oge_portfolio_watch_state.json; then
             echo "OGE state unchanged."
             exit 0
           fi
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/trump_oge_portfolio_watch_state.json
           git commit -m "Update Trump OGE portfolio watch state"
-          git push
+
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 3))
+          done
+          exit 1
