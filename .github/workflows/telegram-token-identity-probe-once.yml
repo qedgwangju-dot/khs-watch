@@ -38,6 +38,34 @@ jobs:
       - name: Checkout current runtime customization
         uses: actions/checkout@v4
 
+      - name: Read latest khs887900 private chat id without sending
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+
+          token=(os.getenv('KHS887900_BOT_TOKEN') or '').strip()
+          if not token:
+              raise RuntimeError('KHS887900_BOT_TOKEN missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0', timeout=20) as r:
+              data=json.loads(r.read().decode('utf-8'))
+          if not data.get('ok'):
+              raise RuntimeError('Telegram getUpdates failed')
+          candidates=[]
+          for update in data.get('result') or []:
+              msg=update.get('message') or update.get('edited_message') or {}
+              chat=msg.get('chat') or {}
+              if chat.get('type') != 'private' or chat.get('id') is None:
+                  continue
+              text=str(msg.get('text') or '')
+              candidates.append((int(update.get('update_id') or 0), str(chat['id']), text))
+          if not candidates:
+              raise RuntimeError('No private Telegram updates found; send /start to @khs887900_bot and rerun')
+          start=[row for row in candidates if row[2].startswith('/start')]
+          chosen=(start or candidates)[-1]
+          print(f'KHS887900_LATEST_PRIVATE_CHAT_ID={chosen[1]}')
+          print(f'KHS887900_LATEST_TEXT_IS_START={str(chosen[2].startswith("/start")).lower()}')
+          PY
+
       - name: Resolve bot usernames and compare US investment chat routes without sending
         run: |
           python - <<'PY'
