@@ -29,8 +29,8 @@ jobs:
       THIRTEENF_FORCE_TEST: ${{ github.event.inputs.force_test || 'false' }}
       THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
       THIRTEENF_TELEGRAM_CHAT_ID: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
-      KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
       KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879_bot"
 
     steps:
       - name: Checkout
@@ -45,6 +45,32 @@ jobs:
         run: |
           python -m py_compile scripts/thirteenf_sector_watch.py
           python -m py_compile scripts/thirteenf_sector_watch_entry.py
+
+      - name: Validate exact Telegram bot route without sending
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.THIRTEENF_TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("THIRTEENF_TELEGRAM_BOT_TOKEN secret is missing; refusing bot fallback")
+          if not chat_id:
+              raise RuntimeError("13F Telegram chat id is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{username}")
+          PY
 
       - name: Check SEC 13F filings and send Telegram alert
         run: python scripts/thirteenf_sector_watch_entry.py
