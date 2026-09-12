@@ -35,6 +35,9 @@ jobs:
       THIRTEENF_TELEGRAM_BOT_TOKEN: ${{ secrets.THIRTEENF_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
     steps:
+      - name: Checkout current runtime customization
+        uses: actions/checkout@v4
+
       - name: Resolve bot usernames and compare US investment chat routes without sending
         run: |
           python - <<'PY'
