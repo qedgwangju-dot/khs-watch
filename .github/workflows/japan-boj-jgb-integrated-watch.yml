@@ -18,6 +18,7 @@ permissions:
 concurrency:
   group: japan-boj-jgb-integrated-watch
   cancel-in-progress: false
+  queue: max
 
 jobs:
   watch:
