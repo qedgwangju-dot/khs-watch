@@ -8,7 +8,9 @@ Purpose
 - Do not infer foreign demand from Indirect Bidders; TreasuryDirect explicitly says the
   category includes both domestic and foreign customers.
 
-Official source: TreasuryDirect recent auction results / competitive result PDFs.
+Official sources:
+- TreasuryDirect Auctioned Securities API
+- TreasuryDirect recent auction results / competitive result PDFs (fallback)
 """
 from __future__ import annotations
 
@@ -34,6 +36,7 @@ TITLE = OUT / "treasury_auction_final_demand_title.txt"
 STATUS = OUT / "treasury_auction_final_demand_status.md"
 
 RECENT_URL = "https://www.treasurydirect.gov/auctions/results/"
+AUCTION_API = "https://www.treasurydirect.gov/TA_WS/securities/auctioned?format=json&day=400"
 BASE = "https://www.treasurydirect.gov"
 FRED_FX = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXKOUS"
 KST = ZoneInfo("Asia/Seoul")
@@ -103,6 +106,49 @@ def money_bn(text: str) -> float | None:
     return v
 
 
+def api_money_bn(value) -> float | None:
+    """Normalize Treasury API amount fields to USD billions.
+
+    Treasury's machine-readable interfaces have historically exposed amount fields
+    either as whole dollars or as millions depending on the endpoint/version.  The
+    scale is identifiable for marketable-auction amounts, so keep the output unit
+    stable without changing the downstream report format.
+    """
+    if value in (None, "", "null"):
+        return None
+    try:
+        v = float(str(value).replace("$", "").replace(",", "").strip())
+    except (TypeError, ValueError):
+        return None
+    av = abs(v)
+    if av >= 100_000_000:
+        return v / 1_000_000_000.0  # whole dollars
+    if av >= 10_000:
+        return v / 1_000.0  # millions of dollars
+    return v  # already billions
+
+
+def api_num(record: dict, *keys: str) -> float | None:
+    for key in keys:
+        value = record.get(key)
+        if value in (None, "", "null"):
+            continue
+        try:
+            return float(str(value).replace("%", "").replace(",", "").strip())
+        except (TypeError, ValueError):
+            continue
+    return None
+
+
+def api_money(record: dict, *keys: str) -> float | None:
+    for key in keys:
+        if key in record and record.get(key) not in (None, "", "null"):
+            value = api_money_bn(record.get(key))
+            if value is not None:
+                return value
+    return None
+
+
 def normalize_label(s: str) -> str:
     return re.sub(r"\s+", " ", s or "").strip().lower()
 
@@ -130,7 +176,70 @@ class Auction:
     def dealer_pct(self): return pct(self.dealer_bn, self.total_accepted_bn)
 
 
+def api_results() -> list[Auction]:
+    payload = json.loads(fetch(AUCTION_API, timeout=45).decode("utf-8", errors="replace"))
+    if isinstance(payload, list):
+        records = payload
+    elif isinstance(payload, dict):
+        records = payload.get("data") or payload.get("results") or payload.get("securities") or []
+    else:
+        records = []
+
+    parsed: list[Auction] = []
+    for rec in records:
+        if not isinstance(rec, dict):
+            continue
+        security_type = str(rec.get("securityType") or rec.get("type") or "").strip().lower()
+        term = str(rec.get("securityTerm") or rec.get("term") or "").strip()
+        term_norm = re.sub(r"[^a-z0-9]", "", term.lower())
+
+        tenor = None
+        if security_type == "note" and term_norm == "10year":
+            tenor = "10-Year Note"
+        elif security_type == "bond" and term_norm == "20year":
+            tenor = "20-Year Bond"
+        elif security_type == "bond" and term_norm == "30year":
+            tenor = "30-Year Bond"
+        if tenor is None:
+            continue
+
+        btc = api_num(rec, "bidToCoverRatio", "bid_to_cover_ratio")
+        high_yield = api_num(rec, "highYield", "high_yield")
+        competitive_accepted = api_money(rec, "competitiveAccepted", "compAccepted", "competitive_accepted")
+        total_accepted = competitive_accepted or api_money(rec, "totalAccepted", "total_accepted")
+        # Announcement rows can exist before results. Only completed results belong here.
+        if btc is None or total_accepted is None:
+            continue
+
+        auction_date = str(rec.get("auctionDate") or rec.get("auction_date") or "").strip() or None
+        cusip = str(rec.get("cusip") or rec.get("CUSIP") or "").strip()
+        identity = f"{cusip or tenor}-{auction_date or 'unknown'}"
+        # Keep the existing state field name (seen_result_urls) and a clickable official
+        # source while giving every API result a stable unique identity.
+        result_url = f"{RECENT_URL}#auction-{identity}"
+
+        parsed.append(Auction(
+            tenor=tenor,
+            tenor_ko=TARGETS[tenor],
+            auction_date=auction_date,
+            result_url=result_url,
+            offering_bn=api_money(rec, "offeringAmount", "offeringAmt", "offering_amount"),
+            high_yield=high_yield,
+            btc=btc,
+            indirect_bn=api_money(rec, "indirectBidderAccepted", "indirect_bidder_accepted"),
+            direct_bn=api_money(rec, "directBidderAccepted", "direct_bidder_accepted"),
+            dealer_bn=api_money(rec, "primaryDealerAccepted", "primary_dealer_accepted"),
+            soma_bn=api_money(rec, "somaAccepted", "soma_accepted"),
+            # Bidder shares are shares of competitive awards, not SOMA/noncompetitive awards.
+            total_accepted_bn=total_accepted,
+        ))
+
+    parsed.sort(key=lambda x: ((x.auction_date or ""), x.tenor), reverse=True)
+    return parsed
+
+
 def result_links() -> list[tuple[str, str, str]]:
+    """Legacy HTML/PDF discovery retained only as an official-source fallback."""
     html = fetch(RECENT_URL).decode("utf-8", errors="replace")
     soup = BeautifulSoup(html, "html.parser")
     found = []
@@ -139,7 +248,6 @@ def result_links() -> list[tuple[str, str, str]]:
         label = " ".join(a.get_text(" ", strip=True).split())
         if not ("R_20" in href and href.lower().endswith(".pdf")):
             continue
-        # Inspect row/context to identify term.
         ctx = label
         tr = a.find_parent("tr")
         if tr:
@@ -152,7 +260,6 @@ def result_links() -> list[tuple[str, str, str]]:
         if tenor:
             url = href if href.startswith("http") else BASE + href
             found.append((tenor, TARGETS[tenor], url))
-    # Keep order, dedupe URLs.
     out, seen = [], set()
     for x in found:
         if x[2] not in seen:
@@ -170,7 +277,6 @@ def parse_pdf_text(raw: bytes) -> str:
 def field(text: str, labels: list[str], money: bool = False) -> float | None:
     flat = " ".join(text.split())
     for lab in labels:
-        # capture a nearby numeric token, optionally prefixed by $.
         m = re.search(re.escape(lab) + r"\s*[:\-]?\s*(\$?[\d,]+(?:\.\d+)?)", flat, flags=re.I)
         if m:
             token = m.group(1)
@@ -185,8 +291,6 @@ def parse_result(tenor: str, tenor_ko: str, url: str) -> Auction:
     date_text = dm.group(1) if dm else None
 
     def alloc(label: str) -> float | None:
-        # Result PDFs normally have separate accepted/tendered columns; capture the first amount after label,
-        # then sanity-check later by percentages.
         m = re.search(re.escape(label) + r"\s+\$?([\d,]+(?:\.\d+)?)", flat, re.I)
         return money_bn(m.group(1)) if m else None
 
@@ -204,6 +308,33 @@ def parse_result(tenor: str, tenor_ko: str, url: str) -> Auction:
         soma_bn=alloc("SOMA"),
         total_accepted_bn=field(text, ["Total Accepted"], money=True),
     )
+
+
+def official_results() -> tuple[list[Auction], str]:
+    """Read the official machine-readable API first, then legacy official PDFs."""
+    api_error = None
+    try:
+        rows = api_results()
+        if rows:
+            return rows, "TreasuryDirect Auctioned Securities API"
+    except Exception as exc:
+        api_error = f"{type(exc).__name__}: {exc}"
+
+    parsed: list[Auction] = []
+    try:
+        for tenor, ko, url in result_links()[:20]:
+            try:
+                parsed.append(parse_result(tenor, ko, url))
+            except Exception:
+                continue
+    except Exception:
+        pass
+    if parsed:
+        parsed.sort(key=lambda x: ((x.auction_date or ""), x.tenor), reverse=True)
+        return parsed, "TreasuryDirect competitive-result PDFs"
+    if api_error:
+        raise RuntimeError(f"Treasury API/PDF discovery failed; API={api_error}")
+    raise RuntimeError("Treasury API/PDF discovery returned no 10Y/20Y/30Y results")
 
 
 def avg(values):
@@ -240,37 +371,51 @@ def main() -> int:
     state = load_state()
     seen = set(state.get("seen_result_urls") or [])
     history = dict(state.get("history") or {})
-    links = result_links()
-    if not links:
-        STATUS.write_text(f"# 미 국채 입찰 최종수요 감시\n\n- 조회: {now.isoformat(timespec='seconds')}\n- 상태: 공식 결과 링크 확인 불가\n", encoding="utf-8")
+
+    try:
+        parsed, source_name = official_results()
+    except Exception as exc:
+        STATUS.write_text(
+            f"# 미 국채 입찰 최종수요 감시\n\n"
+            f"- 조회: {now.isoformat(timespec='seconds')}\n"
+            f"- 상태: 공식 결과 확인 불가\n"
+            f"- 오류: {type(exc).__name__}: {exc}\n",
+            encoding="utf-8",
+        )
         return 2
 
-    parsed = []
-    for tenor, ko, url in links[:20]:
-        try:
-            parsed.append(parse_result(tenor, ko, url))
-        except Exception:
-            continue
     if not parsed:
-        STATUS.write_text(f"# 미 국채 입찰 최종수요 감시\n\n- 조회: {now.isoformat(timespec='seconds')}\n- 상태: 결과 PDF 파싱 실패\n", encoding="utf-8")
+        STATUS.write_text(f"# 미 국채 입찰 최종수요 감시\n\n- 조회: {now.isoformat(timespec='seconds')}\n- 상태: 공식 10·20·30년물 결과 없음\n", encoding="utf-8")
         return 2
 
     new = [x for x in parsed if x.result_url not in seen]
     # Baseline: do not spam historical results on first install.
     if not STATE_PATH.exists():
         state = {"seen_result_urls": [x.result_url for x in parsed][-100:], "history": history}
-        for x in parsed:
+        for x in reversed(parsed):
             rec = asdict(x)
             rec.update({"indirect_pct": x.indirect_pct, "direct_pct": x.direct_pct, "dealer_pct": x.dealer_pct})
             history.setdefault(x.tenor, []).append(rec)
             history[x.tenor] = history[x.tenor][-12:]
         state["history"] = history
         NEXT_STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
-        STATUS.write_text(f"# 미 국채 입찰 최종수요 감시\n\n- 조회: {now.isoformat(timespec='seconds')}\n- 상태: 초기 기준선 생성 — 과거 결과는 발송하지 않음\n", encoding="utf-8")
+        STATUS.write_text(
+            f"# 미 국채 입찰 최종수요 감시\n\n"
+            f"- 조회: {now.isoformat(timespec='seconds')}\n"
+            f"- 상태: 초기 기준선 생성 — 과거 결과는 발송하지 않음\n"
+            f"- 원천: {source_name}\n",
+            encoding="utf-8",
+        )
         return 0
 
     if not new:
-        STATUS.write_text(f"# 미 국채 입찰 최종수요 감시\n\n- 조회: {now.isoformat(timespec='seconds')}\n- 상태: 신규 10·20·30년물 입찰 결과 없음\n", encoding="utf-8")
+        STATUS.write_text(
+            f"# 미 국채 입찰 최종수요 감시\n\n"
+            f"- 조회: {now.isoformat(timespec='seconds')}\n"
+            f"- 상태: 신규 10·20·30년물 입찰 결과 없음\n"
+            f"- 원천: {source_name}\n",
+            encoding="utf-8",
+        )
         return 0
 
     # One alert per newest unseen long auction to keep Telegram readable.
@@ -323,13 +468,19 @@ def main() -> int:
     ]
     TITLE.write_text(f"🇺🇸 미 국채 {cur.tenor_ko} 입찰 — 신규 장기채 최종수요 판정", encoding="utf-8")
     ALERT.write_text("\n".join(body), encoding="utf-8")
-    DETAIL.write_text(json.dumps({"current": asdict(cur), "verdict": tag, "reasons": reasons}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    DETAIL.write_text(json.dumps({"current": asdict(cur), "verdict": tag, "reasons": reasons, "source": source_name}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
 
     rec = asdict(cur); rec.update({"indirect_pct": cur.indirect_pct, "direct_pct": cur.direct_pct, "dealer_pct": cur.dealer_pct})
     history.setdefault(cur.tenor, []).append(rec); history[cur.tenor] = history[cur.tenor][-12:]
     seen.add(cur.result_url)
     NEXT_STATE.write_text(json.dumps({"seen_result_urls": list(seen)[-100:], "history": history}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
-    STATUS.write_text(f"# 미 국채 입찰 최종수요 감시\n\n- 조회: {now.isoformat(timespec='seconds')}\n- 상태: 신규 {cur.tenor_ko} 결과 감지\n", encoding="utf-8")
+    STATUS.write_text(
+        f"# 미 국채 입찰 최종수요 감시\n\n"
+        f"- 조회: {now.isoformat(timespec='seconds')}\n"
+        f"- 상태: 신규 {cur.tenor_ko} 결과 감지\n"
+        f"- 원천: {source_name}\n",
+        encoding="utf-8",
+    )
     return 0
 
 
