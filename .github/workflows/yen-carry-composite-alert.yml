@@ -327,14 +327,92 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/yen_carry_composite_state.json data/yen_carry_structural_state.json 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "엔캐리 복합·구조 상태 변경 없음"
-          else
+
+          mkdir -p "$RUNNER_TEMP/yen-carry-composite-state"
+          cp data/yen_carry_composite_state.json "$RUNNER_TEMP/yen-carry-composite-state/composite.json" 2>/dev/null || true
+          cp data/yen_carry_structural_state.json "$RUNNER_TEMP/yen-carry-composite-state/structural.json" 2>/dev/null || true
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+
+          temp = pathlib.Path(os.environ["RUNNER_TEMP"]) / "yen-carry-composite-state"
+          data = pathlib.Path("data")
+
+          def load(path):
+              try:
+                  return json.loads(path.read_text(encoding="utf-8"))
+              except Exception:
+                  return {}
+
+          def stamp(value):
+              text = str(value or "").strip()
+              if not text:
+                  return None
+              try:
+                  return dt.datetime.fromisoformat(text.replace("Z", "+00:00"))
+              except Exception:
+                  return None
+
+          def newer_or_equal(local, remote):
+              local_ts = stamp(local.get("updated_at_kst"))
+              remote_ts = stamp(remote.get("updated_at_kst"))
+              if local_ts and remote_ts:
+                  return local_ts >= remote_ts
+              return bool(local_ts) or not bool(remote_ts)
+
+          def merge_file(local_name, target_name, preserve_nested_target=False):
+              local_path = temp / local_name
+              target_path = data / target_name
+              if not local_path.exists():
+                  return
+              local = load(local_path)
+              remote = load(target_path)
+              if newer_or_equal(local, remote):
+                  merged = dict(remote)
+                  merged.update(local)
+              else:
+                  merged = dict(remote)
+
+              if preserve_nested_target:
+                  local_target = local.get("target_currency") or {}
+                  remote_target = remote.get("target_currency") or {}
+                  local_target_ts = stamp(local_target.get("updated_at_kst"))
+                  remote_target_ts = stamp(remote_target.get("updated_at_kst"))
+                  if local_target and (
+                      not remote_target
+                      or (local_target_ts and (not remote_target_ts or local_target_ts >= remote_target_ts))
+                  ):
+                      merged["target_currency"] = local_target
+
+              target_path.write_text(
+                  json.dumps(merged, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+                  encoding="utf-8",
+              )
+
+          merge_file("composite.json", "yen_carry_composite_state.json", preserve_nested_target=True)
+          merge_file("structural.json", "yen_carry_structural_state.json")
+          PY
+
+            git add data/yen_carry_composite_state.json data/yen_carry_structural_state.json 2>/dev/null || true
+            if git diff --cached --quiet; then
+              echo "엔캐리 복합·구조 상태 변경 없음"
+              exit 0
+            fi
+
             git commit -m "Update yen carry composite and structural states"
-            git pull --rebase origin main
-            git push
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
