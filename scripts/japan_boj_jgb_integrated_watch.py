@@ -12,7 +12,8 @@ DATA=ROOT/'data'; OUT=ROOT/'out'; DATA.mkdir(parents=True,exist_ok=True); OUT.mk
 STATE_PATH=DATA/'japan_boj_jgb_integrated_state.json'; PENDING_PATH=OUT/'japan_boj_jgb_integrated_pending.json'; ALERT_PATH=OUT/'japan_boj_jgb_integrated_alert.html'; TITLE_PATH=OUT/'japan_boj_jgb_integrated_title.txt'; STATUS_PATH=OUT/'japan_boj_jgb_integrated_status.md'
 UA='khs-watch-japan-boj-jgb-integrated/1.0'
 MOF_YIELDS='https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv'; MOF_WHATSNEW='https://www.mof.go.jp/english/public_relations/whats_new/2026jgbs.html'; BOJ_RELEASES='https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/'; BOJ_OPINIONS='https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/index.htm'; FRED='https://fred.stlouisfed.org/graph/fredgraph.csv'
-TENORS=(20,30,40)
+TENORS=(20,30,40); MAX_LIVE_FX_AGE_SECONDS=12*60
+
 def http_get(url,timeout=30):
     req=urllib.request.Request(url,headers={'User-Agent':UA,'Cache-Control':'no-cache'})
     with urllib.request.urlopen(req,timeout=timeout) as r:return r.read()
@@ -28,6 +29,7 @@ def fnum(x):
 def norm(x):return re.sub(r'[^a-z0-9]','',(x or '').lower())
 def pct(new,old):return (new/old-1.0)*100.0
 def bp(new,old):return (new-old)*100.0
+
 def fetch_jgb_latest_two():
     rows=list(csv.reader(io.StringIO(text_get(MOF_YIELDS)))); hi=next((i for i,r in enumerate(rows[:12]) if any(norm(c)=='date' for c in r)),None)
     if hi is None: raise RuntimeError('MOF JGB CSV header not found')
@@ -47,6 +49,7 @@ def fetch_jgb_latest_two():
         if ok:good.append(item)
     if len(good)<2:raise RuntimeError('MOF JGB CSV has fewer than two complete rows')
     return good[-2],good[-1]
+
 def fetch_fred_latest_two(series):
     url=FRED+'?'+urllib.parse.urlencode({'id':series}); rows=[]
     for row in csv.DictReader(io.StringIO(text_get(url))):
@@ -54,6 +57,32 @@ def fetch_fred_latest_two(series):
         if d and v is not None:rows.append((d,v))
     if len(rows)<2:raise RuntimeError(f'FRED {series}: not enough observations')
     return rows[-2],rows[-1]
+
+def fetch_usdjpy_hybrid():
+    live_error=None; stale=None
+    try:
+        from yen_carry_alert import SYMBOLS
+        from yen_carry_market_data_v2 import fetch_quote
+        quote=fetch_quote(SYMBOLS['usd_jpy'])
+        observed=dt.datetime.fromtimestamp(float(quote.timestamp_epoch),tz=UTC)
+        age=(dt.datetime.now(UTC)-observed).total_seconds()
+        if age < -120:raise RuntimeError(f'USD/JPY quote timestamp is in the future by {-age:.0f}s')
+        stale={'date':quote.timestamp_utc,'value':float(quote.price),'change_pct':float(quote.change_pct),'source':'Yahoo query1/query2 최근 관측','signal_eligible':False,'age_seconds':max(0.0,age)}
+        if age<=MAX_LIVE_FX_AGE_SECONDS:
+            stale['source']='Yahoo query1/query2 5분 데이터 교차확인'; stale['signal_eligible']=True
+            return stale
+        live_error=f'live quote stale: age={age:.0f}s > {MAX_LIVE_FX_AGE_SECONDS}s'
+    except Exception as e:live_error=f'{type(e).__name__}: {e}'
+    try:
+        (prev_date,prev),(date,cur)=fetch_fred_latest_two('DEXJPUS')
+        return {'date':date,'value':cur,'change_pct':pct(cur,prev),'source':'FRED H.10 일일 참고값','signal_eligible':False,'age_seconds':None,'live_error':live_error,'prev_date':prev_date}
+    except Exception as e:
+        fred_error=f'{type(e).__name__}: {e}'
+        if stale is not None:
+            stale['live_error']=live_error; stale['fred_error']=fred_error
+            return stale
+        raise RuntimeError(f'live={live_error}; fred={fred_error}')
+
 def absolute(base,href):return urllib.parse.urljoin(base,href)
 def extract_pdf_text(url):
     raw=http_get(url,40); tmp=OUT/'_tmp_boj.pdf'; tmp.write_bytes(raw)
@@ -89,6 +118,7 @@ def scan_boj():
             out['hawkish_hits']=[p for p in phrases if p in low]
         except Exception as e:out['opinion_error']=f'{type(e).__name__}: {e}'
     return out
+
 @dataclass
 class Auction:
     tenor:int; date:str; url:str; bids:float; accepted:float; low_yield:float; avg_yield:float
@@ -130,12 +160,17 @@ def scan_news(state):
         t=item['title']; s=item['source'].lower(); official=any(x in s for x in ('ministry of finance','financial services agency','財務省','金融庁')); confirmed=any(x in t for x in ('税制改正','非課税','NISA','対象','tax','exempt')); jgb=any(x in t for x in ('国債','JGB','government bond'))
         if official and confirmed and jgb:events.append({'kind':'nisa',**item})
     return events
+
 def main():
     now=dt.datetime.now(KST); state=load_state(); first=not bool(state.get('initialized')); events=[]; errors=[]
     try:prev_jgb,cur_jgb=fetch_jgb_latest_two()
     except Exception as e:errors.append(f'JGB: {type(e).__name__}: {e}'); prev_jgb=cur_jgb=None
-    try:(usd_prev_date,usd_prev),(usd_date,usd_cur)=fetch_fred_latest_two('DEXJPUS')
-    except Exception as e:errors.append(f'USDJPY: {type(e).__name__}: {e}'); usd_prev_date=usd_date=''; usd_prev=usd_cur=None
+    try:
+        usd=fetch_usdjpy_hybrid(); usd_date=usd['date']; usd_cur=usd['value']; usd_change=usd['change_pct']; usd_signal_eligible=bool(usd.get('signal_eligible')); usd_source=usd.get('source') or '확인 불가'; usd_age=usd.get('age_seconds')
+        if usd.get('live_error'):errors.append(f"USDJPY live: {usd['live_error']}")
+        if usd.get('fred_error'):errors.append(f"USDJPY FRED: {usd['fred_error']}")
+    except Exception as e:
+        errors.append(f'USDJPY: {type(e).__name__}: {e}'); usd_date=''; usd_cur=usd_change=None; usd_signal_eligible=False; usd_source='확인 불가'; usd_age=None
     try:boj=scan_boj()
     except Exception as e:errors.append(f'BOJ: {type(e).__name__}: {e}'); boj={}
     auctions={}
@@ -160,12 +195,13 @@ def main():
         if cur_jgb['date']!=last_jgb_date:streak=streak+1 if cur_jgb['jgb10']>=3.0 else 0
         old_active=bool(state.get('jgb10_above3_active')); new_active=cur_jgb['jgb10']>=3.0
         if not first and streak==3 and int(state.get('jgb10_above3_streak') or 0)<3:events.append({'kind':'jgb10_persist','value':cur_jgb['jgb10'],'date':cur_jgb['date'],'url':MOF_YIELDS})
-    usd_change=pct(usd_cur,usd_prev) if None not in (usd_cur,usd_prev) else None; jgb2_change=bp(cur_jgb['jgb2'],prev_jgb['jgb2']) if cur_jgb and prev_jgb else None; combo=False
-    if usd_change is not None and jgb2_change is not None:
+    jgb2_change=bp(cur_jgb['jgb2'],prev_jgb['jgb2']) if cur_jgb and prev_jgb else None
+    combo=bool(state.get('yen_carry_combo_active')) if not usd_signal_eligible else False
+    if usd_signal_eligible and usd_change is not None and jgb2_change is not None:
         combo=usd_change<=-2.0 and jgb2_change>=5.0; was=bool(state.get('yen_carry_combo_active'))
         if not first and combo and not was:events.append({'kind':'yen_carry_combo','usdjpy':usd_cur,'usd_change':usd_change,'jgb2':cur_jgb['jgb2'],'jgb2_change':jgb2_change,'url':MOF_YIELDS})
-    critical=False
-    if latest_hike_date and cur_jgb and prev_jgb and usd_change is not None:
+    critical=bool(state.get('critical_abnormal_active')) if not usd_signal_eligible else False
+    if usd_signal_eligible and latest_hike_date and cur_jgb and prev_jgb and usd_change is not None:
         try:age=(now.date()-dt.date.fromisoformat(latest_hike_date)).days
         except Exception:age=999
         if 0<=age<=5:
@@ -174,11 +210,12 @@ def main():
     try:news_events=scan_news(state); events.extend([] if first else news_events)
     except Exception as e:errors.append(f'news: {type(e).__name__}: {e}'); news_events=[]
     seen_news=list(dict.fromkeys((state.get('news_seen') or [])+[x['link'] for x in news_events]))[-200:]
-    pending={'initialized':True,'updated_at_kst':now.isoformat(timespec='seconds'),'policy_rate':policy_rate if policy_rate is not None else old_rate,'statement_url':statement_url or old_statement,'opinion_url':opinion_url or old_opinion,'latest_hike_date':latest_hike_date,'hawkish_hits':hawkish_hits,'jgb_source_date':cur_jgb['date'] if cur_jgb else last_jgb_date,'jgb10_above3_active':bool(cur_jgb and cur_jgb['jgb10']>=3.0),'jgb10_above3_streak':streak,'yen_carry_combo_active':combo,'critical_abnormal_active':critical,'jgb':cur_jgb or state.get('jgb'),'usdjpy':{'date':usd_date,'value':usd_cur,'change_pct':usd_change} if usd_cur is not None else state.get('usdjpy'),'auctions':auctions or state.get('auctions',{}),'news_seen':seen_news}
+    usdjpy_state={'date':usd_date,'value':usd_cur,'change_pct':usd_change,'source':usd_source,'signal_eligible':usd_signal_eligible,'age_seconds':usd_age} if usd_cur is not None else state.get('usdjpy')
+    pending={'initialized':True,'updated_at_kst':now.isoformat(timespec='seconds'),'policy_rate':policy_rate if policy_rate is not None else old_rate,'statement_url':statement_url or old_statement,'opinion_url':opinion_url or old_opinion,'latest_hike_date':latest_hike_date,'hawkish_hits':hawkish_hits,'jgb_source_date':cur_jgb['date'] if cur_jgb else last_jgb_date,'jgb10_above3_active':bool(cur_jgb and cur_jgb['jgb10']>=3.0),'jgb10_above3_streak':streak,'yen_carry_combo_active':combo,'critical_abnormal_active':critical,'jgb':cur_jgb or state.get('jgb'),'usdjpy':usdjpy_state,'auctions':auctions or state.get('auctions',{}),'news_seen':seen_news}
     write_json(PENDING_PATH,pending)
     status=['# 일본 BOJ·JGB·엔캐리 통합 감시','',f'- 조회시각(KST): {now.isoformat(timespec="seconds")}',f'- 최초 기준선 설정: {"예" if first else "아니오"}',f'- 신규 경보: {len(events)}건']
     if cur_jgb:status += [f"- JGB 2Y {cur_jgb['jgb2']:.3f}% / 10Y {cur_jgb['jgb10']:.3f}% / 30Y {cur_jgb['jgb30']:.3f}% / 40Y {cur_jgb['jgb40']:.3f}% ({cur_jgb['date']})",f'- 10Y 3% 연속 일수: {streak}']
-    if usd_cur is not None:status.append(f'- USD/JPY {usd_cur:.3f} / 일간 {usd_change:+.2f}% ({usd_date})')
+    if usd_cur is not None:status.append(f'- USD/JPY {usd_cur:.3f} / 기준변화 {usd_change:+.2f}% / 신호판정 {"사용" if usd_signal_eligible else "보류"} ({usd_source}; {usd_date})')
     if policy_rate is not None:status.append(f'- BOJ 정책금리 자동 추출: {policy_rate:.2f}%')
     if errors:status += ['', '## 부분 확인 불가']+[f'- {e}' for e in errors]
     STATUS_PATH.write_text('\n'.join(status)+'\n',encoding='utf-8')
@@ -200,7 +237,7 @@ def main():
         lines.append('')
     current=[]
     if cur_jgb:current.append(f"JGB 2Y {cur_jgb['jgb2']:.3f}% / 10Y {cur_jgb['jgb10']:.3f}% / 30Y {cur_jgb['jgb30']:.3f}% / 40Y {cur_jgb['jgb40']:.3f}%")
-    if usd_cur is not None:current.append(f'USD/JPY {usd_cur:.3f} ({usd_change:+.2f}% 일간)')
+    if usd_cur is not None:current.append(f'USD/JPY {usd_cur:.3f} ({usd_change:+.2f}% 기준변화; {"현재 신호" if usd_signal_eligible else "참고값"})')
     if policy_rate is not None:current.append(f'BOJ 정책금리 {policy_rate:.2f}%')
     title=f'일본 BOJ·JGB 통합 경보 [{priority}]'; TITLE_PATH.write_text(title+'\n',encoding='utf-8'); ALERT_PATH.write_text('\n'.join(lines+['<b>현재 숫자</b>',' / '.join(current),'',f"조회: {now.strftime('%Y-%m-%d %H:%M:%S')} KST"]).strip()+'\n',encoding='utf-8'); return 0
 if __name__=='__main__':raise SystemExit(main())
