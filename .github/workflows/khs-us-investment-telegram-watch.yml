@@ -53,15 +53,42 @@ jobs:
             scripts/khs_us_investment_altpower_finalize.py \
             scripts/khs_us_investment_telegram_send.py
 
-      # Code pushes are validation-only. Live monitoring and Telegram delivery run only
-      # on the scheduled cadence or an explicit manual workflow dispatch.
+      # Every relevant code push validates the real Telegram bot/chat route.
+      # Live monitoring and Telegram delivery still run only on schedule/manual dispatch.
       - name: Validate exact Telegram route
-        if: github.event_name != 'push'
         id: telegram_route
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_DIRECT: ${{ secrets.KHS887900_CHAT_ID }}
         run: python scripts/khs_us_investment_telegram_send.py resolve
+
+      - name: Record exact Telegram route health
+        if: github.event_name == 'push' && steps.telegram_route.outputs.ready == 'true'
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          from pathlib import Path
+
+          payload = {
+              "bot": "@khs887900_bot",
+              "chat_secret": "KHS887900_CHAT_ID",
+              "ready": True,
+              "validated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+          }
+          path = Path("data/khs_us_investment_route_health.json")
+          path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/khs_us_investment_route_health.json
+          if git diff --cached --quiet; then
+            echo "route health unchanged"
+          else
+            git commit -m "Record US investment Telegram route health [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
 
       - name: Run US investment watch
         if: github.event_name != 'push'
@@ -79,7 +106,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
-            echo "대미투자 워처 코드 검증만 수행함 · 실시간 감시/Telegram 송출 없음" >> "$GITHUB_STEP_SUMMARY"
+            echo "대미투자 워처 코드·Telegram 전용 경로 검증만 수행함 · 실시간 감시/Telegram 송출 없음" >> "$GITHUB_STEP_SUMMARY"
           elif [ -f out/khs_us_investment_alert.html ]; then
             echo "대미투자 Telegram 알림 생성됨" >> "$GITHUB_STEP_SUMMARY"
             sed -E 's/<[^>]+>//g' out/khs_us_investment_alert.html >> "$GITHUB_STEP_SUMMARY"
@@ -101,7 +128,7 @@ jobs:
           echo "경로가 복구되면 같은 중요 변화를 다시 송출 시도합니다." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Fail when exact Telegram route is unavailable
-        if: github.event_name != 'push' && steps.telegram_route.outputs.ready != 'true'
+        if: steps.telegram_route.outputs.ready != 'true'
         run: |
           echo "Telegram 경로 검증 실패: @khs887900_bot + KHS887900_CHAT_ID가 정확히 확인되지 않아 상태를 저장하지 않습니다." >> "$GITHUB_STEP_SUMMARY"
           exit 1
