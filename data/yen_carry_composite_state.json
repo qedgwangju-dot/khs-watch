@@ -17,14 +17,14 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 56518.500751018524,
+  "fx_age_seconds": 57026.01766395569,
   "fx_signal_eligible": false,
   "initialized": true,
   "policy_path": {
     "cftc_net_short": 49098.0,
     "cftc_net_short_change": 0.0,
     "cftc_net_short_pct_oi": 9.826773544687622,
-    "checked_at_kst": "2026-09-12T21:39:12+09:00",
+    "checked_at_kst": "2026-09-12T21:47:33+09:00",
     "elevated_vol": false,
     "fx_vol_ratio": 1.1847041192855574,
     "gradual_absorption": true,
@@ -58,7 +58,7 @@
   },
   "real_rate_overlay": {
     "available": false,
-    "checked_at_kst": "2026-09-12T21:39:15+09:00",
+    "checked_at_kst": "2026-09-12T21:47:35+09:00",
     "errors": [
       "RuntimeError: Japan CPI survey month not found"
     ],
@@ -80,11 +80,11 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-09-12T21:39:04+09:00"
+    "updated_at_kst": "2026-09-12T21:47:28+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-09-12T21:36:20+09:00",
+  "updated_at_kst": "2026-09-12T21:44:49+09:00",
   "values": {
     "cftc_net_short": 49098,
     "cftc_net_short_pct_oi": 9.826773544687622,
