@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render transformer tariff alerts after the generic policy guardrails."""
+"""Clean known policy false positives and render transformer tariff alerts."""
 
 from __future__ import annotations
 
@@ -20,6 +20,45 @@ ALERTS_JSON_PATH = OUT_DIR / "khs_policy_watch_alerts.json"
 
 TITLE = "미국, 대형 변압기 관세 25%→15% 인하 보도·공식근거 체크"
 SECTORS = ["전력기기/변압기", "관세/수출주", "전력망/데이터센터"]
+
+
+def identity_text(item: dict) -> str:
+    return " ".join(
+        str(item.get(key) or "")
+        for key in (
+            "source",
+            "title",
+            "original_title",
+            "source_title",
+            "link",
+        )
+    ).lower()
+
+
+def known_false_positive_reason(item: dict) -> str:
+    text = identity_text(item)
+
+    # FCC E-Rate debarment notices are administrative enforcement actions against
+    # specific participants, not a new telecom policy/CAPEX catalyst.
+    if "notice of debarment" in text and "e-rate" in text:
+        return "fcc_e_rate_debarment"
+
+    # This White House item is about veterans' benefits/employment record sharing
+    # and IT modernization. Do not promote it to a broad market-policy signal.
+    if (
+        "accelerates veterans" in text
+        and "benefits" in text
+        and "employment opportunities" in text
+    ):
+        return "whitehouse_veterans_benefits"
+
+    # A batch bill-signing notice must be parsed bill-by-bill before it can be
+    # mapped to energy/land/industry sectors. The generic notice itself is not a
+    # safe high-impact alert.
+    if "congressional bills" in text and "signed into law" in text:
+        return "whitehouse_batch_bill_signing"
+
+    return ""
 
 
 def is_transformer_alert(item: dict) -> bool:
@@ -57,7 +96,32 @@ def main() -> int:
         alerts = json.loads(ALERTS_JSON_PATH.read_text(encoding="utf-8"))
     except Exception:
         return 0
-    if not isinstance(alerts, list) or not any(is_transformer_alert(item) for item in alerts):
+    if not isinstance(alerts, list):
+        return 0
+
+    filtered: list[dict] = []
+    removed = 0
+    for item in alerts:
+        reason = known_false_positive_reason(item)
+        if reason:
+            removed += 1
+            print(
+                "policy_postprocess_drop "
+                f"reason={reason} source={item.get('source')!r} title={item.get('title')!r}"
+            )
+            continue
+        filtered.append(item)
+    alerts = filtered
+
+    has_transformer = any(is_transformer_alert(item) for item in alerts)
+    if removed:
+        ALERTS_JSON_PATH.write_text(
+            json.dumps(alerts, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        print(f"policy_postprocess=cleaned removed={removed} remaining={len(alerts)}")
+
+    if not has_transformer:
         return 0
 
     for item in alerts:
