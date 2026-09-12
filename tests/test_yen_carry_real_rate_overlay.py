@@ -5,6 +5,7 @@ import pathlib
 import sys
 import unittest
 
+# Operational live-path recheck; no functional change.
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
