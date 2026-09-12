@@ -10,6 +10,8 @@ This layer answers three separate questions:
 
 The historical/recovery lane is capped at yellow. It is intended to prevent a dropped
 GitHub cron run from making a real intraday shock disappear from the alert system.
+Stale five-minute FX observations are retained as reference data only and are never
+used as a current/recent shock signal.
 """
 from __future__ import annotations
 
@@ -25,6 +27,7 @@ import yen_carry_composite_watch as composite
 import yen_carry_fx_shock as fx
 
 KST = ZoneInfo("Asia/Seoul")
+UTC = dt.timezone.utc
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 OUT = ROOT / "out"
@@ -47,6 +50,8 @@ RECENT_RESIDUAL_PCT = -0.50
 MAX_CURRENT_REBOUND_PCT = 0.20
 NEW_LOW_RE_ALERT_PCT = 0.30
 GAP_ALERT_MINUTES = 20.0
+MAX_LIVE_FX_AGE_SECONDS = 12 * 60
+MAX_FUTURE_FX_SKEW_SECONDS = 120
 
 SEVERITY = {"🟢": 0, "🟡": 1, "🟠": 2, "🔴": 3}
 EMOJI = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}
@@ -232,6 +237,51 @@ def calculate(points: list[tuple[float, float]]) -> ShockSnapshot:
     )
 
 
+def fx_freshness(snapshot: ShockSnapshot, now: dt.datetime) -> tuple[bool, float, str]:
+    observed_utc = dt.datetime.fromtimestamp(snapshot.latest_epoch, tz=UTC)
+    now_utc = now.astimezone(UTC)
+    age_seconds = (now_utc - observed_utc).total_seconds()
+    eligible = (
+        age_seconds >= -MAX_FUTURE_FX_SKEW_SECONDS
+        and age_seconds <= MAX_LIVE_FX_AGE_SECONDS
+    )
+    observed_kst = observed_utc.astimezone(KST).isoformat(timespec="seconds")
+    return eligible, max(0.0, age_seconds), observed_kst
+
+
+def stale_state(
+    snapshot: ShockSnapshot,
+    now: dt.datetime,
+    previous: dict,
+    age_seconds: float,
+    observed_kst: str,
+) -> dict:
+    if previous.get("initialized"):
+        current = dict(previous)
+    else:
+        current = {
+            "initialized": True,
+            "current_shock": False,
+            "recent_shock": False,
+            "history_shock": False,
+            "last_history_alert_trough_epoch": None,
+            "last_history_alert_trough_price": None,
+            "values": {},
+        }
+    current.update(
+        {
+            "initialized": True,
+            "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
+            "fx_signal_eligible": False,
+            "fx_age_seconds": age_seconds,
+            "fx_observed_at_kst": observed_kst,
+            "reference_usdjpy": snapshot.latest_price,
+            "reference_latest_epoch": snapshot.latest_epoch,
+        }
+    )
+    return current
+
+
 def monitor_gap_minutes(previous: dict, now: dt.datetime) -> float | None:
     if not previous.get("initialized"):
         return None
@@ -307,6 +357,14 @@ def state_from(
     current = {
         "initialized": True,
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
+        "fx_signal_eligible": True,
+        "fx_age_seconds": max(
+            0.0,
+            (now.astimezone(UTC) - dt.datetime.fromtimestamp(snapshot.latest_epoch, tz=UTC)).total_seconds(),
+        ),
+        "fx_observed_at_kst": dt.datetime.fromtimestamp(snapshot.latest_epoch, tz=UTC)
+        .astimezone(KST)
+        .isoformat(timespec="seconds"),
         "current_shock": snapshot.current_shock,
         "recent_shock": snapshot.recent_shock,
         "history_shock": snapshot.history_shock,
@@ -521,6 +579,51 @@ def main() -> int:
     points = composite.fetch_fx_points()
     snapshot = calculate(points)
     previous = load_json(STATE_PATH, {})
+    signal_eligible, fx_age_seconds, fx_observed_at_kst = fx_freshness(snapshot, now)
+    gap = monitor_gap_minutes(previous, now)
+
+    if not signal_eligible:
+        current = stale_state(
+            snapshot,
+            now,
+            previous,
+            fx_age_seconds,
+            fx_observed_at_kst,
+        )
+        PENDING_PATH.write_text(
+            json.dumps(current, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        status_lines = [
+            "# 엔캐리 환율 충격 기억층",
+            "",
+            f"- 조회시각(KST): {now.isoformat(timespec='seconds')}",
+            "- 현재·최근 6시간 충격 판정: 보류",
+            f"- USD/JPY 최근 관측: {snapshot.latest_price:.3f}",
+            f"- 환율 관측시각(KST): {fx_observed_at_kst}",
+            f"- 환율 데이터 지연: {fx_age_seconds / 60.0:.0f}분",
+            f"- 현재 신호 사용 기준: {MAX_LIVE_FX_AGE_SECONDS // 60}분 이내",
+            "- 기존 충격 상태: 보존",
+            f"- 직전 성공 상태와 실행 간격: {gap:.0f}분"
+            if gap is not None
+            else "- 직전 성공 상태와 실행 간격: 확인 불가",
+            "- 상태변화 알림: 없음 — 오래된 환율로 진입·해제·감시공백 경보를 만들지 않음",
+        ]
+        STATUS_PATH.write_text("\n".join(status_lines) + "\n", encoding="utf-8")
+        print(
+            json.dumps(
+                {
+                    "fx_signal_eligible": False,
+                    "fx_age_seconds": fx_age_seconds,
+                    "fx_observed_at_kst": fx_observed_at_kst,
+                    "reference_usdjpy": snapshot.latest_price,
+                    "monitor_gap_minutes": gap,
+                    "reasons": [],
+                },
+                ensure_ascii=False,
+            )
+        )
+        return 0
 
     history_event = detect_history_event(previous, snapshot, points)
     current = state_from(snapshot, now, previous, history_event)
@@ -529,7 +632,6 @@ def main() -> int:
     if history_event is not None:
         reasons.append(history_event.reason)
 
-    gap = monitor_gap_minutes(previous, now)
     if gap is not None and gap >= GAP_ALERT_MINUTES:
         reasons.append(
             f"감시 실행 공백 {gap:.0f}분 감지 — 최근 6시간 급락 재검사 완료"
@@ -559,6 +661,9 @@ def main() -> int:
         "# 엔캐리 환율 충격 기억층",
         "",
         f"- 조회시각(KST): {now.isoformat(timespec='seconds')}",
+        f"- 환율 관측시각(KST): {current['fx_observed_at_kst']}",
+        f"- 환율 데이터 지연: {current['fx_age_seconds'] / 60.0:.1f}분",
+        "- 현재 신호 사용: 예",
         f"- 현재 충격: {'예' if snapshot.current_shock else '아니오'}",
         f"- 최근 6시간 충격 잔존: {'예' if snapshot.recent_shock else '아니오'}",
         f"- 최근 6시간 -1%급 충격 이력: {'예' if snapshot.history_shock else '아니오'}",
@@ -578,6 +683,9 @@ def main() -> int:
         json.dumps(
             {
                 "snapshot": asdict(snapshot),
+                "fx_signal_eligible": True,
+                "fx_age_seconds": current["fx_age_seconds"],
+                "fx_observed_at_kst": current["fx_observed_at_kst"],
                 "monitor_gap_minutes": gap,
                 "history_event": asdict(history_event) if history_event else None,
                 "reasons": reasons,
