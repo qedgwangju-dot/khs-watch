@@ -347,17 +347,20 @@ def main() -> int:
     is_baseline = not prior_key
     is_new = bool(prior_key) and obs_key != prior_key
 
-    pending = {
-        "observation_key": obs_key,
-        "latest": {
-            "date": latest.date,
-            "release": latest.release,
-            "gdp": latest.gdp,
-            "cipi": latest.cipi,
-            "final_sales": final_sales,
-        },
-        "checked_at_kst": now.isoformat(timespec="seconds"),
-    }
+    if prior_key == obs_key:
+        pending = state
+    else:
+        pending = {
+            "observation_key": obs_key,
+            "latest": {
+                "date": latest.date,
+                "release": latest.release,
+                "gdp": latest.gdp,
+                "cipi": latest.cipi,
+                "final_sales": final_sales,
+            },
+            "checked_at_kst": now.isoformat(timespec="seconds"),
+        }
     (OUT / "gdpnow_long_rates_pending_state.json").write_text(
         json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
