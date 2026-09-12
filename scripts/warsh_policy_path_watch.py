@@ -76,15 +76,13 @@ def probability_from_row(prob_cell, change_bp):
 def parse_snapshot():
     raw, final=fetch(FEDWATCH_URL); text=clean_text(raw)
     m=re.search(r'Current EFFR:\s*([\d.]+)%',text,re.I)
-    if not m:raise RuntimeError('현재 EFFR 파싱 실패')
+    if not m:raise RuntimeError('현재 유효 연방기금금리 파싱 실패')
     effr=float(m.group(1)); p=TableParser(); p.feed(raw); meetings=[]
     for table in p.tables:
         for row in table:
             if len(row)<6:continue
             d=parse_date(row[0])
             if not d:continue
-            pctvals=[parse_pct(x) for x in row]
-            # Expected table columns: date, probabilities, implied avg, pre, post, change, contract.
             if len(row)>=7 and parse_pct(row[2]) is not None and parse_pct(row[3]) is not None and parse_pct(row[4]) is not None and parse_bp(row[5]) is not None:
                 change=parse_bp(row[5]); meetings.append({
                     'date':d,'label':row[0], 'prob_cell':row[1],
@@ -93,7 +91,6 @@ def parse_snapshot():
                     'contract':row[6]
                 })
     if not meetings:
-        # Server-rendered text fallback.
         pat=r'([A-Z][a-z]{2}\s+\d{1,2},\s+20\d{2})\s+([\d.%\s]+?)\s+([\d.]+)%\s+([\d.]+)%\s+([\d.]+)%\s+([+-]?\d+)\s*bp\s+/?(ZQ[A-Z]\d{2})'
         for mm in re.finditer(pat,text):
             d=parse_date(mm.group(1)); change=float(mm.group(6))
@@ -101,7 +98,7 @@ def parse_snapshot():
                 'pre_rate':float(mm.group(4)),'post_rate':float(mm.group(5)),'change_bp':change,
                 'hike25_prob':probability_from_row(mm.group(2),change),'contract':mm.group(7)})
     meetings=sorted({x['date']:x for x in meetings}.values(),key=lambda x:x['date'])
-    if not meetings:raise RuntimeError('Fed Funds 선물 회의별 경로 파싱 실패')
+    if not meetings:raise RuntimeError('연방기금금리 선물 회의별 경로 파싱 실패')
     return {'effr':effr,'meetings':meetings[:6],'url':final}
 
 def classify(snap):
@@ -120,7 +117,7 @@ def classify(snap):
         if extra < 6.25: verdict='현재부터 추가 인상 종료 쪽'
         elif extra < 18.75: verdict='현재부터 추가 인상 일부 반영'
         else: verdict='현재부터 연내 추가 인상 1회 이상 반영'
-        basis='현재 EFFR에서 연말까지의 추가 기대'
+        basis='현재 유효 연방기금금리에서 연말까지의 추가 기대'
     return {'verdict':verdict,'extra_bp':extra,'basis':basis}
 
 def load_state():
@@ -144,26 +141,33 @@ def send(msg):
         out=json.loads(r.read().decode())
         if not out.get('ok'):raise RuntimeError('Telegram 전송 실패')
 
+def ko_date(date_text):
+    try:
+        d=datetime.strptime(date_text,'%Y-%m-%d')
+        return f'{d.year}년 {d.month}월 {d.day}일'
+    except:return date_text
+
 def fmt_meeting(m):
     p=m['hike25_prob']; ch=m['change_bp']
     if 0 <= ch <= 25:
-        prob=f'25bp 인상 확률 약 {p:.0f}%'
+        prob=f'0.25%포인트 인상 확률 약 {p:.0f}%'
     elif ch > 25:
-        prob=f'최소 25bp 인상은 사실상 전부 반영 · 추가 인상 기대 포함'
+        prob='최소 0.25%포인트 인상은 사실상 전부 반영 · 추가 인상 기대 포함'
     elif -25 <= ch < 0:
-        prob=f'인상 확률 낮음 · 완화 방향 기대 포함'
+        prob='인상 확률 낮음 · 완화 방향 기대 포함'
     else:prob='비정형 경로'
-    return f"• {m['label']} | {prob} | 확률가중 기대변화 {ch:+.0f}bp | 회의 후 EFFR {m['post_rate']:.3f}%"
+    return f"• {ko_date(m['date'])} | {prob} | 확률가중 기대변화 {ch:+.0f}bp | 회의 후 유효 연방기금금리 {m['post_rate']:.3f}%"
 
 def message(snap, cls):
-    lines=['<b>[Warsh 정책금리 경로 변화]</b>',f"현재 EFFR {snap['effr']:.3f}%",'',f"<b>핵심 판정: {html.escape(cls['verdict'])}</b>",
+    lines=['<b>[Warsh 정책금리 경로 변화]</b>',f"현재 유효 연방기금금리(EFFR) {snap['effr']:.3f}%",'',f"<b>핵심 판정: {html.escape(cls['verdict'])}</b>",
            f"• {html.escape(cls['basis'])}: {cls['extra_bp']:+.0f}bp",'', '<b>선물시장 경로</b>']
     lines += [fmt_meeting(m) for m in snap['meetings'][:4]]
     lines += ['', '<b>읽는 법</b>',
-              '• “확률 %”는 특정 금리결정이 일어날 가능성이고, “bp”는 확률을 반영한 기대 금리변화입니다. 둘을 같은 숫자로 해석하지 않습니다.',
-              '• 예: 인상확률 84%와 기대변화 +21bp는 서로 다른 개념입니다.',
-              '• 이번 회의 한 번으로 끝나는지, 뒤 회의에서도 추가 인상이 가격에 남는지를 같이 봅니다.','',
-              '<b>원천</b>',f"{link('Fed Funds 선물 기반 경로',snap['url'])} · {link('CME FedWatch 방법론',CME_URL)} · {link('연준 FOMC 일정',FED_CALENDAR)}"]
+              '• “확률 %”는 특정 금리결정이 일어날 가능성이고, “bp”는 그 확률을 반영한 기대 금리변화입니다. 둘은 같은 숫자가 아닙니다.',
+              '• 예: 0.25%포인트 인상확률 84%라면 확률가중 기대변화는 약 +21bp입니다.',
+              '• 이번 회의 한 번으로 끝나는지, 뒤 회의에서도 추가 인상이 가격에 남는지를 같이 봅니다.',
+              '• 1bp = 0.01%포인트입니다.','',
+              '<b>원천</b>',f"{link('연방기금금리 선물 기반 경로',snap['url'])} · {link('CME FedWatch 방법론',CME_URL)} · {link('연준 FOMC 일정',FED_CALENDAR)}"]
     return '\n'.join(lines)
 
 def main():
