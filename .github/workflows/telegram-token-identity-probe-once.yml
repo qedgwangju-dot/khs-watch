@@ -42,6 +42,7 @@ jobs:
         run: |
           python - <<'PY'
           import json, os, urllib.parse, urllib.request
+          import scripts  # Apply the same scoped runtime route hook as production delivery.
 
           names=[
               k for k in os.environ
