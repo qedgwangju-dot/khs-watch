@@ -75,10 +75,10 @@ jobs:
 
           if not token:
               emit(configured='false', reason='missing_token', bot_username='', chat_id='')
-              raise SystemExit(0)
+              raise SystemExit(1)
           if not chat_id:
               emit(configured='false', reason='missing_chat_id', bot_username='', chat_id='')
-              raise SystemExit(0)
+              raise SystemExit(1)
 
           try:
               with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
@@ -86,13 +86,13 @@ jobs:
           except Exception as exc:
               emit(configured='false', reason='getMe_failed', bot_username='', chat_id='')
               print(f'telegram_getMe_failed={type(exc).__name__}')
-              raise SystemExit(0)
+              raise SystemExit(1)
 
           actual = str((identity.get('result') or {}).get('username') or '')
           if not identity.get('ok') or actual.lower() != expected.lower():
               emit(configured='false', reason='wrong_bot', bot_username=actual, chat_id='')
               print(f'wrong_bot expected=@{expected} actual=@{actual or "unknown"}')
-              raise SystemExit(0)
+              raise SystemExit(1)
 
           emit(configured='true', reason='ok', bot_username=actual, chat_id=chat_id)
           print(f'telegram_route_valid=true bot=@{actual}')
