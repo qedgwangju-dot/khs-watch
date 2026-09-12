@@ -61,7 +61,8 @@ class ClarityFormatterTest(unittest.TestCase):
         rendered = "\n".join(MOD.build_chunks([event]))
         self.assertIn("이 문서는 제안규칙입니다", rendered)
         self.assertNotIn("규칙 초안이 아니라 최종 규칙이 확정", rendered)
-        self.assertIn("아직 최종 확정이 아니라", rendered)
+        self.assertIn("최종 의무가 확정된 것은 아니며", rendered)
+        self.assertIn("의견수렴 뒤 내용이 바뀔 수 있습니다", rendered)
 
     def test_schedule_change_summary_only_marks_timeline_as_changed(self):
         event = {
