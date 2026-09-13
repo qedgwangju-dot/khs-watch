@@ -37,8 +37,11 @@ class ClarityPolicyPressureWatchTest(unittest.TestCase):
         self.assertNotIn("이(가)", detail)
 
     def test_bloomberg_law_is_higher_tier_than_benzinga(self):
-        self.assertEqual(MOD.source_tier("Bloomberg Law"), (1, "Bloomberg Law"))
-        self.assertEqual(MOD.source_tier("Benzinga"), (2, "Benzinga"))
+        bloomberg_tier, _ = MOD.source_tier("Bloomberg Law")
+        benzinga_tier, _ = MOD.source_tier("Benzinga")
+        self.assertEqual(bloomberg_tier, 1)
+        self.assertEqual(benzinga_tier, 2)
+        self.assertLess(bloomberg_tier, benzinga_tier)
 
 
 if __name__ == "__main__":
