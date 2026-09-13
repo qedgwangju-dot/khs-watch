@@ -75,6 +75,75 @@ INTERVENTION_SCALE_CONTEXT = (
     "외환시장 개입",
     "엔화 매수",
 )
+
+COORDINATION_TOPIC = "미·일 엔화 정책 공조·질서있는 움직임"
+COORDINATION_MARKERS = (
+    "coordination",
+    "coordinate",
+    "coordinated",
+    "continue coordination",
+    "continued coordination",
+    "共同歩調",
+    "協調",
+    "連携",
+    "공조",
+    "협조",
+    "정책 공조",
+)
+COORDINATION_ACTION_MARKERS = (
+    "agree",
+    "agreed",
+    "continue",
+    "continued",
+    "reaffirm",
+    "reaffirmed",
+    "will coordinate",
+    "keep coordinating",
+    "合意",
+    "引き続き",
+    "継続",
+    "確認した",
+    "합의",
+    "지속",
+    "계속",
+    "재확인",
+)
+ORDERLY_MARKERS = (
+    "orderly",
+    "orderly movement",
+    "market stability",
+    "stable movement",
+    "秩序ある",
+    "市場安定",
+    "安定した動き",
+    "질서 있는",
+    "시장 안정",
+    "안정적인 움직임",
+)
+COORDINATION_YEN_CONTEXT = (
+    "yen",
+    "円",
+    "usd/jpy",
+    "ドル円",
+    "foreign exchange",
+    "forex",
+    "為替",
+    "엔화",
+    "환율",
+)
+COORDINATION_US_CONTEXT = (
+    "u.s.",
+    "united states",
+    "treasury",
+    "bessent",
+    "米国",
+    "米財務省",
+    "ベッセント",
+    "미국",
+    "미 재무부",
+    "베센트",
+)
+
 MOF_MONTHLY_INDEX = "https://www.mof.go.jp/policy/international_policy/reference/feio/data/monthly/index.html"
 MOF_MONTHLY_BASE = "https://www.mof.go.jp/policy/international_policy/reference/feio/data/monthly/"
 
@@ -124,6 +193,17 @@ def _is_intervention_scale_disclosure(item: base.NewsItem) -> bool:
     return _has_money(text) and (context or reuters_style) and _contains(text, INTERVENTION_SCALE_MARKERS)
 
 
+def _is_policy_coordination_signal(item: base.NewsItem) -> bool:
+    text = item.text
+    return (
+        _contains(text, COORDINATION_YEN_CONTEXT)
+        and _contains(text, COORDINATION_US_CONTEXT)
+        and _contains(text, COORDINATION_MARKERS)
+        and _contains(text, COORDINATION_ACTION_MARKERS)
+        and (_contains(text, ORDERLY_MARKERS) or "continue coordination" in text.lower())
+    )
+
+
 def source_group(source: str, full_text: str) -> str:
     if _contains(f"{source} {full_text}", WSJ_MARKERS):
         return "Wall Street Journal"
@@ -139,6 +219,18 @@ def classify(item: base.NewsItem) -> base.ClassifiedItem | None:
             item=item,
             topic=INTERVENTION_SCALE_TOPIC,
             material_score=5,
+            source_level=level,
+            source_group=source_group(item.source, item.text),
+        )
+
+    if _is_policy_coordination_signal(item):
+        level = base.source_level(item)
+        if level == 0:
+            return None
+        return base.ClassifiedItem(
+            item=item,
+            topic=COORDINATION_TOPIC,
+            material_score=4,
             source_level=level,
             source_group=source_group(item.source, item.text),
         )
@@ -264,6 +356,8 @@ def _source_nature(topic: str, rank: int) -> str:
         if rank >= 3:
             return "일본 재무성 공식 월간 외환시장 개입 실적 공개"
         return "주요매체의 외환시장 개입 실적 보도 — 실행기간과 발표시점을 구분"
+    if topic == COORDINATION_TOPIC:
+        return "미·일 당국의 엔화 정책 공조 확인 — 실제 신규 시장개입 실행과는 구분"
     if "전망·시장 기대" in topic:
         return "시장 전망·분석 — BOJ 공식 결정이나 확정 신호 아님"
     if rank >= 3:
@@ -271,6 +365,20 @@ def _source_nature(topic: str, rank: int) -> str:
     if "기대·신호" in topic:
         return "주요매체 보도·시장 신호 — 공식 결정 여부는 별도 확인"
     return "주요매체 보도 — 사실관계와 공식 확인 여부를 분리"
+
+
+def _policy_stage(topic: str) -> str:
+    if topic == INTERVENTION_SCALE_TOPIC:
+        return "실제 집행 실적 공개 — 누적 개입액과 발표 시점을 분리"
+    if topic == COORDINATION_TOPIC:
+        return "미·일 정책 공조 확인 — 질서 있는 엔화 움직임 관리, 신규 실개입 확정 전"
+    if "공동개입" in topic or "미국의 엔화 개입" in topic:
+        return "실개입·공동개입 신호 — 엔화 숏커버와 엔캐리 청산 가능성을 가장 높게 경계"
+    if "개입 준비" in topic or "레이트체크" in topic:
+        return "개입 준비 단계 — 실제 주문 집행 전이므로 환율 반응으로 재확인"
+    if "BOJ" in topic or "인상" in topic:
+        return "통화정책 경로 변화 — 금리차 축소가 지속될 때 엔캐리 비용 상승"
+    return "정책 신호 단계 — 실제 가격 반응 확인 필요"
 
 
 def _extract_jpy_amount(text: str) -> float | None:
@@ -365,7 +473,21 @@ def build_message(selected, current):
 
         if axis_pattern.match(line) and not interpretation_label_added:
             output.append("시장 해석(원문 외 연결):")
+            if 0 <= item_index < len(selected):
+                classified, _rank, _groups = selected[item_index]
+                output.append(f"정책 단계: {_policy_stage(classified.topic)}")
             interpretation_label_added = True
+
+        if line.startswith("주의: 단일 주요매체 보도"):
+            output.extend(
+                [
+                    "주식 위험 전이 확인:",
+                    "• 선행 경로: 정책 공조·개입 신호 → USD/JPY 하락 → 엔화 숏커버·엔캐리 청산 → 일본 수출주·고베타 위험자산 수급 압력",
+                    "• 확인 원칙: 이 알림은 선행 신호입니다. 실제 USD/JPY 하락폭·지속시간과 주식 동반 약세는 기존 엔화 급변·엔캐리 경보에서 별도 확인합니다.",
+                    "• 실패 조건: 공조·개입 신호 뒤 USD/JPY가 재상승하고 위험자산 동반 약세가 없으면 시장 전이 신호로 격상하지 않습니다.",
+                    "",
+                ]
+            )
 
         output.append(line)
 
@@ -375,6 +497,7 @@ def build_message(selected, current):
         if index < len(selected):
             classified, rank, _groups = selected[index]
             item_payload["source_nature"] = _source_nature(classified.topic, rank)
+            item_payload["policy_stage"] = _policy_stage(classified.topic)
             if classified.topic == INTERVENTION_SCALE_TOPIC and money_quote is not None:
                 item_payload["krw_conversion"] = {
                     "required": True,
@@ -391,6 +514,11 @@ def build_message(selected, current):
         "full_text_rule": "do not infer article-body details when only headline/RSS summary is available",
         "money_rule": "foreign-currency money in intervention-scale alerts must include a verified KRW conversion",
     }
+    payload["market_spillover_guard"] = {
+        "sequence": "policy_or_intervention_signal -> USDJPY_down -> yen_short_cover_or_carry_unwind -> equity_risk_spillover",
+        "confirmation": "actual FX move and equity co-movement are confirmed by existing yen FX/carry alerts",
+        "failure_condition": "USDJPY rebounds and risk assets do not weaken together",
+    }
     return title, "\n".join(output), payload
 
 
@@ -399,6 +527,9 @@ def install() -> None:
         ("en", 'Japan yen intervention record amount Ministry Finance'),
         ("en", 'Japan spent record support yen past month ministry data'),
         ("ja", '財務省 外国為替平衡操作 実施状況 円 兆円'),
+        ("en", 'Japan US continue coordination yen orderly movement market stability'),
+        ("en", 'Bessent Katayama yen coordination orderly movement'),
+        ("ja", '日米 円 相場 協調 秩序ある 市場安定'),
     )
     for entry in extra_queries:
         if entry not in base.RSS_QUERIES:
