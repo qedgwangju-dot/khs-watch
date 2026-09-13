@@ -141,6 +141,11 @@ def is_political_risk(event):
     return "정치·윤리" in et or "이해충돌" in et
 
 
+def is_industry_pressure(event):
+    et = clean(event.get("event_type", ""))
+    return "핵심 사업자" in et or "업계 표결 촉구" in et or bool(clean(event.get("industry_actor", "")))
+
+
 def is_committee_commentary(event):
     source = clean(event.get("source", ""))
     if source not in {"상원 은행위원회", "상원 농업위원회"}:
@@ -171,6 +176,8 @@ def semantic_group(event):
         "markup" in title or "mark-up" in title or "advance clarity act" in title or "bipartisan vote" in title
     ):
         return ("senate_banking_committee_clarity_action", day)
+    if is_industry_pressure(event):
+        return ("industry_pressure", clean(event.get("industry_actor", "")) or title, day)
     if is_policy_pressure(event) or is_political_risk(event):
         return (clean(event.get("event_type", "")), clean(event.get("policy_actor", "")) or title, day)
     return (
@@ -197,6 +204,8 @@ def event_priority(event):
         score += 25
     if is_policy_pressure(event) or is_political_risk(event):
         score += 20
+    if is_industry_pressure(event):
+        score += 15
     return score
 
 
@@ -251,6 +260,8 @@ def fallback_korean(event):
     et = clean(event.get("event_type", ""))
     src = clean(event.get("source", ""))
     stage = rule_stage(event)
+    if is_industry_pressure(event):
+        return "Coinbase·BitGo 등 직접 규제 대상 사업자의 고위 임원이 CLARITY 법안 표결·통과를 공개적으로 촉구한 업계 압박 신호입니다. 정부의 공식 입법 조치와는 구분해 해석합니다."
     if is_policy_pressure(event):
         return "Trump 대통령·Bessent 재무장관·백악관·상원 지도부 등 핵심 당사자가 CLARITY 법안의 통과 또는 절차 진행을 공개적으로 압박한 새 정책 신호입니다."
     if is_political_risk(event):
@@ -286,10 +297,12 @@ def localize_event(event):
 def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_industry_pressure(event):
+        return "직접 수혜·규제 대상 기업이 의회에 표결을 압박하는 발언이라 이해관계가 있는 주장입니다. 그래서 ‘공식 절차 변화’로 보지는 않지만, 업계의 로비 강도와 미국 내 혁신·토큰화 사업이 규제 지연 때문에 해외에서 먼저 커질 위험을 보여주는 시간표·수급 보조신호로 봅니다. 실제 표 수나 법안 통과를 증명하는 신호는 아닙니다."
     if is_policy_pressure(event):
         return "실제 표결이나 법률 효력이 생긴 것은 아니지만, 대통령·재무장관·백악관 같은 최고위 당사자가 공개적으로 처리를 압박하면 상원 의원들의 협상 비용과 표결 시간표가 바뀔 수 있습니다. 따라서 ‘입법 절차 변화’와 별도로 통과 확률을 움직이는 정책 압력 신호로 봅니다."
     if is_political_risk(event):
-        return "윤리·이해충돌 쟁점은 기업 실적을 바로 바꾸지는 않지만, 필요한 60표 확보를 어렵게 만들거나 수정안 협상을 길게 해 법안 시간표를 지연시킬 수 있습니다."
+        return "윤리·이해충돌 논란은 법안의 경제적 내용과 별개로 60표 확보와 초당적 협상을 어렵게 만들 수 있습니다. 그래서 가격보다 먼저 표결 시간표의 역풍으로 봅니다."
     if stage == "proposed":
         return "이 문서는 제안규칙입니다. 규칙 초안을 공개해 의견을 받는 단계이므로 아직 사업자에게 최종 의무가 확정된 것은 아니며, 의견수렴 뒤 내용이 바뀔 수 있습니다."
     if stage == "final":
@@ -306,19 +319,13 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
-    if is_policy_pressure(event):
+    if is_industry_pressure(event):
+        company = clean(event.get("industry_company", "")) or "미국 암호자산 사업자"
         return [
-            "돈 버는 능력: 아직 법안 통과 전이므로 Coinbase·Circle의 현재 매출·마진이 직접 바뀐 것은 아닙니다.",
-            "할인율: 행정부의 공개 지지가 강해지면 미국 사업자의 규제 불확실성 프리미엄은 낮아지는 방향이지만 실제 표결 전에는 기대 효과입니다.",
-            "수급: COIN·CRCL 등 미국 규제권 사업자에는 입법 기대 수급이 붙을 수 있으나 BTC 자체 영향은 상대적으로 간접적입니다.",
-            "시간표: 이번 사건에서 가장 직접적으로 바뀌는 축입니다. 최고위 정책 당사자의 공개 압박은 motion to proceed·cloture·본회의 표결을 앞두고 협상 압력을 높입니다.",
-        ]
-    if is_political_risk(event):
-        return [
-            "돈 버는 능력: 윤리 논란 자체가 현재 사업자 매출을 바꾸지는 않습니다.",
-            "할인율: 법안 통과 불확실성이 커지면 미국 암호자산 사업자의 규제 위험 프리미엄이 다시 높아질 수 있습니다.",
-            "수급: 표결 부결 우려가 커지면 COIN·CRCL 기대 수급에 역풍이 될 수 있고 BTC 영향은 간접적입니다.",
-            "시간표: 60표 확보와 윤리 조항 협상을 지연시키는 핵심 실패 경로인지 확인해야 합니다.",
+            f"돈 버는 능력: {company} 경영진의 촉구 자체로 현재 매출·마진이 바뀐 것은 아닙니다. 다만 CLARITY 통과 시 거래·수탁·토큰화·기관사업의 법적 가시성이 높아져 상품 확장 경로에는 긍정적입니다.",
+            "할인율: 업계 압박 확대는 규제 불확실성 완화 기대를 키울 수 있지만 실제 표결 전까지 위험 프리미엄 하락을 확정해서는 안 됩니다.",
+            "수급: 법집행·월가·암호화폐 유권자까지 지지 연합이 넓어졌다는 주장은 입법 기대 수급에 우호적이지만, 직접 수혜자의 주장인 만큼 실제 의원 표 수와 분리합니다.",
+            "시간표: 실제 일정 변경은 아니지만 ‘이제 표결할 때’라는 압박이 커졌다는 신호입니다. 다음 확인은 토론종결·motion to proceed·최종 표결 결과입니다.",
         ]
     if "regulation crypto assets" in signal:
         return [
@@ -326,6 +333,20 @@ def investment_lines(event):
             "할인율: 규제 불확실성 축소는 미국 암호자산 사업자의 규제 위험 프리미엄을 낮추는 방향입니다.",
             "수급: 미국 기관·사업자의 미국 내 잔류 유인은 개선될 수 있으나 제안 단계라 즉시 자금 유입으로 단정하지 않습니다.",
             "시간표: CLARITY 법안 지연과 별개로 SEC 규칙 제정 절차라는 별도 시간표가 생겼습니다.",
+        ]
+    if is_policy_pressure(event):
+        return [
+            "돈 버는 능력: 공개 촉구만으로 Coinbase·Circle의 현재 실적은 바뀌지 않습니다.",
+            "할인율: 행정부의 우선순위 재확인은 규제 불확실성 완화 기대에 긍정적이지만 실제 표결 전까지 확정 효과는 아닙니다.",
+            "수급: 정책 기대 수급은 COIN·CRCL에 상대적으로 더 직접적이고 BTC에는 간접적입니다.",
+            "시간표: 이번 사건에서 가장 직접적으로 바뀐 축은 상원에 대한 정치적 압박입니다. 실제 일정·표결 결과를 다음으로 확인합니다.",
+        ]
+    if is_political_risk(event):
+        return [
+            "돈 버는 능력: 현재 사업 실적은 직접 바뀌지 않았습니다.",
+            "할인율: 이해충돌 논란이 커지면 규제 명확화 기대보다 정치 리스크가 다시 커질 수 있습니다.",
+            "수급: 단기적으로 법안 수혜 기대 수급을 약화시킬 수 있으나 실제 가격 반응은 금리·달러와 분리합니다.",
+            "시간표: 윤리조항 협상이 60표 확보를 지연시키는지가 핵심 실패 경로입니다.",
         ]
     if stage == "proposed":
         return [
@@ -373,12 +394,15 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
-    if is_policy_pressure(event):
-        return "최고위 정책 당사자의 공개 통과 촉구로 실제로 바뀐 축은 시간표와 규제 할인율이며 Coinbase·Circle에는 기대 호재, BTC에는 간접적 호재지만 아직 실제 표결·통과가 아니므로 실적 효과는 미확정이고 60표 미확보·윤리 조항 충돌·표결 연기가 최대 실패 경로입니다."
-    if is_political_risk(event):
-        return "이번 윤리·이해충돌 논란은 현재 돈 버는 능력보다 시간표와 규제 할인율의 역풍으로, 60표 확보를 어렵게 해 Coinbase·Circle의 입법 기대를 낮출 수 있으며 윤리 조항 합의 실패·표결 연기가 최대 실패 경로입니다."
+    if is_industry_pressure(event):
+        actor = clean(event.get("industry_actor", "")) or "핵심 사업자"
+        return f"{actor}의 표결 촉구는 공식 절차 변화가 아니라 업계 압박 신호로, 현재 돈 버는 능력은 그대로지만 시간표·규제 할인율 기대에는 긍정적이며, 직접 수혜자의 주장인 만큼 실제 상원 표 수가 늘었다고 볼 수 없고 표결 지연·부결·미국 밖 선행 혁신이 최대 실패 경로입니다."
     if "regulation crypto assets" in signal:
         return "SEC의 암호자산 규칙안은 Coinbase의 규제비용·상품확장 불확실성을 낮출 가능성이 있지만 아직 제안 단계라 확정 효과가 아니며, 최종 문안 변경·소송·정책 반전이 최대 실패 경로입니다."
+    if is_policy_pressure(event):
+        return "행정부·핵심 당사자의 통과 촉구로 실제 바뀐 축은 시간표와 규제 할인율 기대이며 Coinbase·Circle에는 긍정적이지만 현재 실적은 그대로이고, 상원 60표 미확보·추가 수정·일정 지연이 최대 실패 경로입니다."
+    if is_political_risk(event):
+        return "이해충돌·윤리조항 논란은 돈 버는 능력보다 시간표와 규제 할인율에 역풍이며, 60표 확보가 늦어질수록 Coinbase·Circle의 규제 명확화 수혜 시점도 뒤로 밀리는 것이 핵심입니다."
     if stage == "proposed":
         return "이번 조치는 제안규칙이므로 현재 돈 버는 능력은 아직 확정적으로 바뀌지 않았고 규제 할인율·시간표가 일부 구체화된 단계이며, 최종 문안 변경·채택 지연·소송이 최대 실패 경로입니다."
     if stage == "final":
@@ -389,22 +413,21 @@ def core_summary(event):
         return "이번 변화는 돈 버는 능력보다 시간표를 앞당기는 사건으로, 토론종결 성공 시 본회의 표결 가능성이 높아지지만 실제 통과 전까지 실적 효과는 기대 단계이고 부결·추가 수정이 최대 실패 경로입니다."
     if "schedule" in signal or "calendar" in signal or "본회의 일정" in signal:
         return "이번 변화는 실적보다 시간표만 가시화한 사건으로 실제 표결 전까지 Coinbase·Circle의 돈 버는 능력은 바뀌지 않았고, 일정 재변경·표결 연기·수정안 협상이 최대 실패 경로입니다."
-    return "이번 공식 변화가 돈 버는 능력·할인율·수급·시간표 중 어느 축을 실제로 바꿨는지와 Coinbase·Circle·BTC의 직접 영향을 구분하고, 확정 절차 전에는 기대감과 확정 효과를 섞지 않는 것이 핵심입니다."
+    return "이번 변화가 돈 버는 능력·할인율·수급·시간표 중 어느 축을 실제로 바꿨는지와 Coinbase·Circle·BTC의 직접 영향을 구분하고, 확정 절차 전에는 기대감과 확정 효과를 섞지 않는 것이 핵심입니다."
 
 
 def event_block(event, index):
     title_ko, body_ko = localize_event(event)
     meaning = easy_meaning(event, body_ko)
     url = html.escape(event.get("url", ""), quote=True)
-    source_label = "검증 출처" if "정책 발언 검증" in clean(event.get("source", "")) else "공식 출처"
     lines = [
         f"<b>{index}. {html.escape(title_ko)}</b>",
         f"사건 유형: {html.escape(clean(event.get('event_type','')))}",
-        f"{source_label}: {html.escape(clean(event.get('source','')))}",
+        f"출처: {html.escape(clean(event.get('source','')))}",
     ]
     if event.get("date"):
         formatted_date, converted_to_kst = format_event_date_korean(event.get("date", ""))
-        label = "발생·보도 시각(한국시간)" if (is_policy_pressure(event) or is_political_risk(event)) and converted_to_kst else ("공식 날짜(한국시간)" if converted_to_kst else "공식 날짜")
+        label = "확인 날짜(한국시간)" if converted_to_kst else "확인 날짜"
         lines.append(f"{label}: {html.escape(formatted_date)}")
     if body_ko:
         lines += ["", "<b>무슨 내용?</b>", html.escape(body_ko)]
@@ -417,13 +440,13 @@ def event_block(event, index):
 def build_chunks(events, limit=3900):
     if not events:
         return []
-    header = "<b>🔔 CLARITY 법안 Watch — 표결·규제·정책압력</b>"
+    header = "<b>🔔 CLARITY 법안 Watch — 표결·규제·BTC/COIN/Circle 영향</b>"
     blocks = [event_block(e, i) for i, e in enumerate(events, 1)]
     first_event = events[0]
     invest = ["<b>투자 4축</b>"] + [f"- {html.escape(x)}" for x in investment_lines(first_event)]
     tail = [
         "", "<b>원인 분리</b>",
-        "코인·주가가 움직였더라도 CLARITY/SEC 규제 변화 때문이라고 바로 단정하지 않고 미국 국채금리·달러·Nasdaq 등 같은 시간대 변수를 함께 확인합니다.",
+        "코인·주가가 움직였더라도 CLARITY 관련 발언·규제 변화 때문이라고 바로 단정하지 않고 미국 국채금리·달러·Nasdaq 등 같은 시간대 변수를 함께 확인합니다.",
         "", "<b>핵심 한 줄 요약</b>", html.escape(core_summary(first_event)),
     ]
     chunks, current = [], header
