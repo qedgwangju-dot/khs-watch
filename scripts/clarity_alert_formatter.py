@@ -427,7 +427,7 @@ def event_block(event, index):
     ]
     if event.get("date"):
         formatted_date, converted_to_kst = format_event_date_korean(event.get("date", ""))
-        label = "확인 날짜(한국시간)" if converted_to_kst else "확인 날짜"
+        label = "공식 날짜(한국시간)" if converted_to_kst else "공식 날짜"
         lines.append(f"{label}: {html.escape(formatted_date)}")
     if body_ko:
         lines += ["", "<b>무슨 내용?</b>", html.escape(body_ko)]
