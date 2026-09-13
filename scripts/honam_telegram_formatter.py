@@ -10,11 +10,19 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 IN_PATH = ROOT / "out" / "honam_semiconductor_alert.json"
 OUT_PATH = ROOT / "out" / "honam_semiconductor_telegram_chunks.json"
 
-STAGE_LABELS = {
+CORE_STAGE_LABELS = {
     "1_용역선정_현지조사": "① 용역업체 선정·현지조사",
     "2_수량수질_조사범위": "② 장록습지 수량·수질",
     "3_람사르_심사결과": "③ 람사르 등록 심사",
 }
+
+PROJECT_STAGE_LABELS = {
+    "4_정주주거_배후도시": "④ 정주·주거·배후도시",
+    "5_기반시설_생활SOC": "⑤ 전력·용수·교통·생활 인프라",
+    "6_산단투자_기업일정": "⑥ 산단·기업투자·팹 일정",
+}
+
+STAGE_LABELS = {**CORE_STAGE_LABELS, **PROJECT_STAGE_LABELS}
 
 
 def esc(value):
@@ -24,15 +32,18 @@ def esc(value):
 def clean_title(title: str, source: str) -> str:
     title = (title or "").strip()
     source = (source or "").strip()
-    if source and title.endswith(" - " + source):
-        title = title[: -(len(source) + 3)].strip()
+    # Google News 제목 끝의 매체명 중복을 제거한다.
+    for suffix in [source, source.replace("(네이버)", ""), source.replace("(다음)", "")]:
+        suffix = suffix.strip()
+        if suffix and title.endswith(" - " + suffix):
+            title = title[: -(len(suffix) + 3)].strip()
     return title
 
 
 def fmt_checked(value: str) -> str:
     try:
-        d = dt.datetime.fromisoformat(value)
-        return d.astimezone(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M KST")
+        parsed = dt.datetime.fromisoformat(value)
+        return parsed.astimezone(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M KST")
     except Exception:
         return value
 
@@ -41,25 +52,27 @@ def fmt_published(value: str) -> str:
     if not value:
         return ""
     try:
-        d = email.utils.parsedate_to_datetime(value)
-        return d.astimezone(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M KST")
+        parsed = email.utils.parsedate_to_datetime(value)
+        return parsed.astimezone(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M KST")
     except Exception:
         return value
 
 
 def impact_label(value: str) -> str:
     value = value or ""
-    if "지연" in value or "보완" in value:
-        return "지연 위험"
+    if "지연" in value or "병목" in value or "보완" in value:
+        return value
     if "진행" in value:
         return "한 단계 진행"
+    if "정주" in value or "기반시설" in value or "시간표" in value:
+        return value
     return "영향 확인 필요"
 
 
 def link_line(url: str) -> str:
     if not url:
         return ""
-    return f'<a href="{esc(url)}">원문</a>'
+    return f'<a href="{esc(url)}">원문 보기</a>'
 
 
 def build_message(data: dict) -> str:
@@ -78,12 +91,17 @@ def build_message(data: dict) -> str:
                 active[stage] = True
 
     lines = [
-        "🚨 <b>호남 반도체 국가산단 · 장록습지</b>",
+        "🚨 <b>호남 반도체 국가산단</b>",
         f"신규 변화 <b>{total}건</b> · 조회 {esc(fmt_checked(data.get('checked_at_kst', '')))}",
         "",
-        "<b>한눈에 보기</b>",
+        "<b>핵심 3단계</b>",
     ]
-    for stage, label in STAGE_LABELS.items():
+    for stage, label in CORE_STAGE_LABELS.items():
+        status = "<b>변화 감지</b>" if active[stage] else "새 변화 없음"
+        lines.append(f"• {label}: {status}")
+
+    lines += ["", "<b>추가 프로젝트 변화</b>"]
+    for stage, label in PROJECT_STAGE_LABELS.items():
         status = "<b>변화 감지</b>" if active[stage] else "새 변화 없음"
         lines.append(f"• {label}: {status}")
 
@@ -92,28 +110,38 @@ def build_message(data: dict) -> str:
         lines += [
             "",
             f"<b>{esc(label)}</b>",
-            f"• 변화: {esc(item.get('headline', '공식 핵심정보 변경'))}",
+            f"• 무엇이 달라졌나: {esc(item.get('headline', '공식 핵심정보 변경'))}",
         ]
         detail = (item.get("detail") or "").strip()
         if detail:
-            lines.append(f"• 확인: {esc(detail)}")
+            lines.append(f"• 확인 내용: {esc(detail)}")
+        reason = (item.get("reason") or "").strip()
+        if reason:
+            lines.append(f"• 왜 중요: {esc(reason)}")
         lines += [
-            f"• 일정 영향: <b>{esc(impact_label(item.get('impact', '')))}</b>",
+            f"• 현재 판정: <b>{esc(impact_label(item.get('impact', '')))}</b>",
+            f"• 확인도: {esc(item.get('source_status') or '공식자료')}",
             "• 출처: LH 공식",
         ]
         if item.get("url"):
             lines.append(link_line(item["url"]))
 
     for item in news:
-        stages = item.get("stage_labels") or [STAGE_LABELS.get(s, s) for s in item.get("stages", [])]
+        stages = item.get("stage_labels") or [STAGE_LABELS.get(stage, stage) for stage in item.get("stages", [])]
         label = " · ".join(stages) if stages else "관련 변화"
         source = item.get("source") or "웹 검색"
         title = clean_title(item.get("title", ""), source)
         lines += [
             "",
             f"<b>{esc(label)}</b>",
-            f"• 변화: {esc(title)}",
-            f"• 일정 영향: <b>{esc(impact_label(item.get('impact', '')))}</b>",
+            f"• 무엇이 달라졌나: {esc(title)}",
+        ]
+        reason = (item.get("reason") or "").strip()
+        if reason:
+            lines.append(f"• 왜 중요: {esc(reason)}")
+        lines += [
+            f"• 현재 판정: <b>{esc(impact_label(item.get('impact', '')))}</b>",
+            f"• 확인도: {esc(item.get('source_status') or '보도 단계')}",
             f"• 출처: {esc(source)}",
         ]
         published = fmt_published(item.get("published", ""))
@@ -124,8 +152,9 @@ def build_message(data: dict) -> str:
 
     lines += [
         "",
-        "<b>확인 순서</b>",
-        "① 수행업체 선정·현지조사 착수 → ② 수량·수질 조사범위 → ③ 람사르 심사 결과",
+        "<b>우선 확인 순서</b>",
+        "① 수행업체 선정·현지조사 → ② 수량·수질 조사범위 → ③ 람사르 심사 결과",
+        "정주·주거, 전력·용수·교통, 기업투자·팹 일정도 별도 중요 변화로 함께 감시",
     ]
     return "\n".join(lines).strip()
 
