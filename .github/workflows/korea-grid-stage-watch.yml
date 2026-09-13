@@ -14,7 +14,9 @@ on:
     paths:
       - ".github/workflows/korea-grid-stage-watch.yml"
       - "scripts/korea_grid_stage_watch.py"
+      - "scripts/korea_grid_stage_watch_v2.py"
       - "tests/test_korea_grid_stage_watch.py"
+      - "tests/test_korea_grid_stage_watch_v2.py"
 
 concurrency:
   group: korea-grid-stage-transition-watch
@@ -44,8 +46,8 @@ jobs:
 
       - name: 검사
         run: |
-          python -m compileall -q scripts/korea_grid_stage_watch.py
-          pytest -q tests/test_korea_grid_stage_watch.py
+          python -m compileall -q scripts/korea_grid_stage_watch.py scripts/korea_grid_stage_watch_v2.py
+          pytest -q tests/test_korea_grid_stage_watch.py tests/test_korea_grid_stage_watch_v2.py
 
       - name: 한국전력 송변전 사업단계 변화 확인
         id: stage
@@ -57,7 +59,7 @@ jobs:
           if [[ "$FORCE_INPUT" == "true" ]]; then
             EXTRA="--force-notify"
           fi
-          python scripts/korea_grid_stage_watch.py $EXTRA
+          python scripts/korea_grid_stage_watch_v2.py $EXTRA
 
       - name: 지정 전기본·전원믹스 알림 봇으로 Telegram 전송
         if: steps.stage.outputs.changed == 'true'
