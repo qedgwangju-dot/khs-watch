@@ -11,102 +11,14 @@ permissions:
 jobs:
   patch:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Patch watcher and workflow
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-
-          watcher = Path('scripts/honam_semiconductor_watch.py')
-          text = watcher.read_text(encoding='utf-8')
-
-          old_relevant = '''def relevant(item):
-              text = f"{item['title']} {item['description']}"
-              low = text.lower()
-              has_topic = any(term.lower() in low for term in TOPIC_TERMS)
-              stages = detect_stages(text)
-              if not has_topic or not stages:
-                  return False, stages
-              if not broad_material_enough(text, stages):
-                  return False, stages
-              return True, stages
-          '''
-          # Normalize the exact source block rather than relying on leading indentation in this heredoc.
-          old_relevant = old_relevant.replace('          ', '')
-          new_relevant = '''def relevant(item):
-              text = f"{item['title']} {item['description']}"
-              low = text.lower()
-              has_explicit_topic = any(term.lower() in low for term in TOPIC_TERMS)
-              local_terms = ["전남광주", "전남광주시", "광주", "광산구", "산정지구", "송정역", "상무", "군공항"]
-              has_local_semiconductor_topic = "반도체" in low and any(term in low for term in local_terms)
-              has_topic = has_explicit_topic or has_local_semiconductor_topic
-              stages = detect_stages(text)
-              if not has_topic or not stages:
-                  return False, stages
-              if not broad_material_enough(text, stages):
-                  return False, stages
-              return True, stages
-          '''.replace('          ', '')
-          if old_relevant not in text:
-              raise SystemExit('relevant() block not found')
-          text = text.replace(old_relevant, new_relevant, 1)
-
-          query_anchor = '    \'"전남광주" 반도체 주거정책 정주 수요\',\n'
-          if query_anchor in text and '    \'전남광주 반도체 주거정책 정주 주택\',\n' not in text:
-              text = text.replace(
-                  query_anchor,
-                  query_anchor + "    '전남광주 반도체 주거정책 정주 주택',\n    '광주 반도체 정주 주거 배후도시',\n",
-                  1,
-              )
-          watcher.write_text(text, encoding='utf-8')
-
-          workflow = Path('.github/workflows/honam-semiconductor-watch-telegram.yml')
-          wf = workflow.read_text(encoding='utf-8')
-          wf = wf.replace('name: Honam Semiconductor Jangrok Telegram Watch', 'name: Honam Semiconductor Project Telegram Watch', 1)
-
-          new_persist = '''      - name: Persist state
-        if: success() && (hashFiles('out/honam_semiconductor_alert.json') == '' || hashFiles('out/honam_semiconductor_telegram_confirmed.json') != '')
-        run: |
-          cp out/honam_semiconductor_pending_state.json /tmp/honam_semiconductor_watch_state.json
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          pushed=0
-          for attempt in 1 2 3 4; do
-            git fetch origin main
-            git reset --hard origin/main
-            mkdir -p data
-            cp /tmp/honam_semiconductor_watch_state.json data/honam_semiconductor_watch_state.json
-            git add data/honam_semiconductor_watch_state.json
-            if git diff --cached --quiet; then
-              echo "Honam watcher state unchanged"
-              pushed=1
-              break
-            fi
-            git commit -m "Record Honam semiconductor watch state"
-            if git push origin HEAD:main; then
-              pushed=1
-              break
-            fi
-            echo "State push raced with another commit; retrying ($attempt/4)"
-            sleep $((attempt * 2))
-          done
-          if [ "$pushed" != "1" ]; then
-            echo "Failed to persist Honam watcher state after retries"
-            exit 1
-          fi
-
-'''
-          pattern = re.compile(r'      - name: Persist state\n.*?(?=      - name: Upload verification artifacts\n)', re.S)
-          if not pattern.search(wf):
-              raise SystemExit('Persist state block not found')
-          wf = pattern.sub(new_persist, wf, count=1)
-          workflow.write_text(wf, encoding='utf-8')
-          PY
+      - name: Apply patch
+        run: python scripts/patch_honam_watch_once.py
 
       - name: Validate patched files
         run: |
@@ -114,11 +26,11 @@ jobs:
           grep -q 'has_local_semiconductor_topic' scripts/honam_semiconductor_watch.py
           grep -q 'State push raced with another commit' .github/workflows/honam-semiconductor-watch-telegram.yml
 
-      - name: Commit patch and remove maintenance workflow
+      - name: Commit patch and remove maintenance files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git rm .github/workflows/honam-maintenance-patch-once.yml
+          git rm .github/workflows/honam-maintenance-patch-once.yml scripts/patch_honam_watch_once.py
           git add scripts/honam_semiconductor_watch.py .github/workflows/honam-semiconductor-watch-telegram.yml
           git commit -m "Broaden Honam project watch coverage"
           git pull --rebase origin main
