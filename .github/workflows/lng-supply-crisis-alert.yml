@@ -202,6 +202,22 @@ jobs:
             echo "LNG 공급 위기 상태 변경 없음"
           else
             git commit -m "Update LNG supply crisis alert state"
-            git pull --rebase origin main
-            git push
+            pushed=false
+            for attempt in 1 2 3 4; do
+              echo "state push attempt ${attempt}/4"
+              if ! git pull --rebase origin main; then
+                git rebase --abort >/dev/null 2>&1 || true
+                sleep $((attempt * 3))
+                continue
+              fi
+              if git push; then
+                pushed=true
+                break
+              fi
+              sleep $((attempt * 3))
+            done
+            if [ "$pushed" != "true" ]; then
+              echo "LNG 상태 파일 push 4회 실패" >&2
+              exit 1
+            fi
           fi
