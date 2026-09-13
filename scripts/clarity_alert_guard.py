@@ -2,7 +2,6 @@
 import json
 import pathlib
 import re
-import urllib.parse
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -22,7 +21,7 @@ def clean(value):
 
 
 def fetch_json(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "KHS-CLARITY-Watch/3.1"})
+    req = urllib.request.Request(url, headers={"User-Agent": "KHS-CLARITY-Watch/3.2"})
     with urllib.request.urlopen(req, timeout=25) as r:
         return json.loads(r.read().decode("utf-8"))
 
@@ -62,16 +61,22 @@ def flatten_topics(meta):
 
 
 def classify_rule_type(meta, source):
-    raw = clean(meta.get("type") or source).lower()
-    if "proposed" in raw or "prorule" in raw or "제안규칙" in source:
+    raw_type = clean(meta.get("type")).lower()
+    if raw_type:
+        if "proposed" in raw_type or "prorule" in raw_type:
+            return "SEC·CFTC 제안규칙"
+        if raw_type == "rule" or "final rule" in raw_type:
+            return "SEC·CFTC 최종규칙"
+        return "SEC·CFTC 공식 규칙·해석·집행지침"
+    source_l = source.lower()
+    if "제안규칙" in source:
         return "SEC·CFTC 제안규칙"
-    if raw == "rule" or "final rule" in raw or "최종규칙" in source:
+    if "최종규칙" in source or "final rule" in source_l:
         return "SEC·CFTC 최종규칙"
     return "SEC·CFTC 공식 규칙·해석·집행지침"
 
 
 def source_urls(docno, publication_date, meta=None):
-    """Build the exact official source links requested by the user."""
     meta = meta or {}
     date = clean(publication_date)
     json_url = ""
@@ -91,8 +96,6 @@ def source_urls(docno, publication_date, meta=None):
 
 
 def best_authoritative_url(meta, docno, publication_date):
-    # Preferred reading link: HTML. If it fails, use the user's exact fallbacks:
-    # JSON -> XML -> MODS.
     urls = source_urls(docno, publication_date, meta)
     for key in ("html", "json", "xml", "mods"):
         url = urls[key]
@@ -110,7 +113,6 @@ def validate_federal_register_event(event):
     if not docno:
         return None, "missing_document_number"
 
-    # Metadata is always re-read from Federal Register API using the document number.
     api_url = f"https://www.federalregister.gov/api/v1/documents/{docno}.json"
     try:
         meta = fetch_json(api_url)
@@ -120,17 +122,16 @@ def validate_federal_register_event(event):
     title = clean(meta.get("title") or event.get("title"))
     abstract = clean(meta.get("abstract"))
     action = clean(meta.get("action"))
-    context = " ".join([title, abstract, action, flatten_topics(meta)])
 
-    # Agency=SEC/CFTC is not enough. The document itself must explicitly concern
-    # crypto/digital assets/CLARITY in official metadata.
-    if not STRICT_CRYPTO_RE.search(context):
+    # HARD GATE: relevance must appear in the document's own title/abstract/action.
+    # Agency names, broad topic tags, docket metadata, or surrounding search context
+    # can never make an otherwise unrelated SEC/CFTC document crypto-relevant.
+    primary_context = " ".join([title, abstract, action])
+    if not STRICT_CRYPTO_RE.search(primary_context):
         return None, f"irrelevant_federal_register_document:{docno}:{title}"
 
     publication_date = clean(meta.get("publication_date") or event.get("date"))
     best_url, best_kind, urls = best_authoritative_url(meta, docno, publication_date)
-
-    # Verify each exact source independently. These flags are preserved for audit.
     source_checks = {name: bool(url and url_works(url)) for name, url in urls.items() if name != "html"}
 
     checked = dict(event)
@@ -146,6 +147,7 @@ def validate_federal_register_event(event):
     checked["source_link_kind"] = best_kind
     checked["source_checks"] = source_checks
     checked["federal_register_type"] = clean(meta.get("type"))
+    checked["aux_metadata"] = flatten_topics(meta)
     return checked, "validated"
 
 
