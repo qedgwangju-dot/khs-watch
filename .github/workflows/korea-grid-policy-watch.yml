@@ -65,6 +65,134 @@ jobs:
           fi
           python scripts/korea_grid_policy_watch_v2.py $EXTRA
 
+      - name: 알림 가독성 정리
+        if: steps.grid.outputs.changed == 'true'
+        env:
+          REPORT_PATH: ${{ steps.grid.outputs.report_path }}
+        run: |
+          python - <<'PY'
+          import os
+          import pathlib
+          import re
+
+          path = pathlib.Path(os.environ["REPORT_PATH"])
+          text = path.read_text(encoding="utf-8").strip()
+          normal_header = "<b>전력망 정책·발주 새 공식 변화</b>"
+          if not text.startswith(normal_header):
+              print("grid_readability_format=skip_nonstandard_report")
+              raise SystemExit(0)
+
+          lines = text.splitlines()
+          item_starts = [
+              idx for idx, line in enumerate(lines)
+              if re.match(r"^<b>\d+\. ", line.strip())
+          ]
+          if not item_starts:
+              print("grid_readability_format=skip_no_items")
+              raise SystemExit(0)
+
+          def parse_sections(body):
+              sections = []
+              current_title = None
+              current_lines = []
+              for line in body:
+                  stripped = line.strip()
+                  if re.match(r"^<b>[^<]+</b>$", stripped):
+                      if current_title is not None:
+                          sections.append((current_title, current_lines))
+                      current_title = re.sub(r"^<b>|</b>$", "", stripped)
+                      current_lines = []
+                  else:
+                      if current_title is not None:
+                          current_lines.append(line)
+              if current_title is not None:
+                  sections.append((current_title, current_lines))
+              return sections
+
+          out = [
+              normal_header,
+              "<i>특정 기사 추적이 아니라 공식 정책·법령·사업 단계·발주 변화 감지</i>",
+          ]
+
+          for pos, start in enumerate(item_starts):
+              end = item_starts[pos + 1] if pos + 1 < len(item_starts) else len(lines)
+              block = lines[start:end]
+              title_line = block[0].strip()
+
+              stage = ""
+              published = ""
+              source = ""
+              content_start = 1
+              for i, line in enumerate(block[1:], start=1):
+                  s = line.strip()
+                  if s.startswith("<b>단계</b>"):
+                      stage = s.replace("<b>단계</b>", "", 1).strip()
+                  elif s.startswith("<b>발표일</b>"):
+                      published = s.replace("<b>발표일</b>", "", 1).strip()
+                  elif s.startswith("<b>출처</b>"):
+                      source = s.replace("<b>출처</b>", "", 1).strip()
+                      content_start = i + 1
+
+              body = block[content_start:]
+              sections = parse_sections(body)
+              section_map = {name: rows for name, rows in sections}
+
+              change_rows = section_map.get("핵심 변화") or section_map.get("쉽게 풀면") or []
+              investment_rows = section_map.get("투자 의미") or []
+              next_rows = section_map.get("다음 확인") or []
+
+              out.append("")
+              out.append(title_line)
+              out.append("")
+              out.append("<b>무엇이 달라졌나</b>")
+              if change_rows:
+                  out.extend(change_rows)
+              else:
+                  plain_title = re.sub(r"^<b>\d+\. |</b>$", "", title_line)
+                  out.append(f"• {plain_title}")
+
+              out.append("")
+              out.append("<b>현재 판정</b>")
+              verdict_parts = []
+              if stage:
+                  verdict_parts.append(stage)
+              if published:
+                  verdict_parts.append(published)
+              out.append("• " + " · ".join(verdict_parts) if verdict_parts else "• 공식 변화 확인")
+
+              if investment_rows:
+                  out.append("")
+                  out.append("<b>투자 의미</b>")
+                  out.extend(investment_rows)
+
+              used = {"핵심 변화", "투자 의미", "다음 확인"}
+              # 일반 항목은 '쉽게 풀면'을 상단 '무엇이 달라졌나'로 이동하고,
+              # 상세 항목은 핵심 변화와 별도로 쉬운 설명을 유지한다.
+              if "핵심 변화" not in section_map:
+                  used.add("쉽게 풀면")
+              for name, rows in sections:
+                  if name in used:
+                      continue
+                  out.append("")
+                  out.append(f"<b>{name}</b>")
+                  out.extend(rows)
+
+              if next_rows:
+                  out.append("")
+                  out.append("<b>다음 확인</b>")
+                  out.extend(next_rows)
+
+              out.append("")
+              out.append("<b>확정 정보</b>")
+              if published:
+                  out.append(f"• 발표일  {published}")
+              if source:
+                  out.append(f"• 출처  {source}")
+
+          path.write_text("\n".join(out).rstrip() + "\n", encoding="utf-8")
+          print("grid_readability_format=applied")
+          PY
+
       - name: 지정 전기본·전원믹스 알림 봇으로 Telegram 전송
         if: steps.grid.outputs.changed == 'true'
         env:
