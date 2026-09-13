@@ -65,7 +65,8 @@ jobs:
           fi
           python scripts/korea_grid_policy_watch_v2.py $EXTRA
 
-      - name: 알림 가독성 정리
+      - name: 알림 가독성·신규성 정리
+        id: readability
         if: steps.grid.outputs.changed == 'true'
         env:
           REPORT_PATH: ${{ steps.grid.outputs.report_path }}
@@ -76,9 +77,18 @@ jobs:
           import re
 
           path = pathlib.Path(os.environ["REPORT_PATH"])
+          output_path = os.environ.get("GITHUB_OUTPUT")
+
+          def set_send(value: bool):
+              if output_path:
+                  with open(output_path, "a", encoding="utf-8") as handle:
+                      handle.write(f"send={'true' if value else 'false'}\n")
+
           text = path.read_text(encoding="utf-8").strip()
           normal_header = "<b>전력망 정책·발주 새 공식 변화</b>"
           if not text.startswith(normal_header):
+              # 수동 경로시험 등 비정규 보고서는 그대로 보낸다.
+              set_send(True)
               print("grid_readability_format=skip_nonstandard_report")
               raise SystemExit(0)
 
@@ -88,6 +98,7 @@ jobs:
               if re.match(r"^<b>\d+\. ", line.strip())
           ]
           if not item_starts:
+              set_send(False)
               print("grid_readability_format=skip_no_items")
               raise SystemExit(0)
 
@@ -109,14 +120,40 @@ jobs:
                   sections.append((current_title, current_lines))
               return sections
 
+          # 검색엔진이 색인한 한전 목록/안내 페이지 자체의 갱신은 실제 정책·발주 변화가 아니므로 제외한다.
+          generic_page_markers = (
+              "송변전 건설 사업현황 | 송변전 건설 정보공개",
+              "송변전 건설 정보공개 플랫폼",
+              "계획확정 - 사업승인전 |",
+              "사업승인 - 공사착수전 |",
+              "공사착수 - 사업완료전 |",
+              "사업완료 - 준공후 1년 |",
+          )
+
+          parsed_blocks = []
+          suppressed = 0
+          for pos, start in enumerate(item_starts):
+              end = item_starts[pos + 1] if pos + 1 < len(item_starts) else len(lines)
+              block = lines[start:end]
+              title_line = block[0].strip()
+              plain_title = re.sub(r"<[^>]+>", "", title_line)
+              plain_title = re.sub(r"^\d+\.\s*", "", plain_title).strip()
+              if any(marker in plain_title for marker in generic_page_markers):
+                  suppressed += 1
+                  continue
+              parsed_blocks.append(block)
+
+          if not parsed_blocks:
+              set_send(False)
+              print(f"grid_readability_format=suppressed_landing_pages count={suppressed}")
+              raise SystemExit(0)
+
           out = [
               normal_header,
               "<i>특정 기사 추적이 아니라 공식 정책·법령·사업 단계·발주 변화 감지</i>",
           ]
 
-          for pos, start in enumerate(item_starts):
-              end = item_starts[pos + 1] if pos + 1 < len(item_starts) else len(lines)
-              block = lines[start:end]
+          for block in parsed_blocks:
               title_line = block[0].strip()
 
               stage = ""
@@ -148,7 +185,8 @@ jobs:
               if change_rows:
                   out.extend(change_rows)
               else:
-                  plain_title = re.sub(r"^<b>\d+\. |</b>$", "", title_line)
+                  plain_title = re.sub(r"<[^>]+>", "", title_line)
+                  plain_title = re.sub(r"^\d+\.\s*", "", plain_title).strip()
                   out.append(f"• {plain_title}")
 
               out.append("")
@@ -166,8 +204,6 @@ jobs:
                   out.extend(investment_rows)
 
               used = {"핵심 변화", "투자 의미", "다음 확인"}
-              # 일반 항목은 '쉽게 풀면'을 상단 '무엇이 달라졌나'로 이동하고,
-              # 상세 항목은 핵심 변화와 별도로 쉬운 설명을 유지한다.
               if "핵심 변화" not in section_map:
                   used.add("쉽게 풀면")
               for name, rows in sections:
@@ -190,11 +226,12 @@ jobs:
                   out.append(f"• 출처  {source}")
 
           path.write_text("\n".join(out).rstrip() + "\n", encoding="utf-8")
-          print("grid_readability_format=applied")
+          set_send(True)
+          print(f"grid_readability_format=applied kept={len(parsed_blocks)} suppressed={suppressed}")
           PY
 
       - name: 지정 전기본·전원믹스 알림 봇으로 Telegram 전송
-        if: steps.grid.outputs.changed == 'true'
+        if: steps.grid.outputs.changed == 'true' && steps.readability.outputs.send == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.ENERGY_MIX_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.ENERGY_MIX_TELEGRAM_CHAT_ID }}
