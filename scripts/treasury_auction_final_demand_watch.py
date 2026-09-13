@@ -2,7 +2,7 @@
 """U.S. Treasury 10Y/20Y/30Y auction final-demand watcher.
 
 Purpose
-- Alert only when a NEW official 10Y, 20Y or 30Y nominal auction result appears.
+- Alert only when a NEW official 10Y, 20Y or 30Y nominal auction result appears, including reopenings.
 - Separate QRA issuance plans from actual end-investor demand at auction.
 - Compare each result with the same tenor's previous auction and recent six-auction average.
 - Do not infer foreign demand from Indirect Bidders; TreasuryDirect explicitly says the
@@ -174,6 +174,37 @@ def normalize_label(s: str) -> str:
     return re.sub(r"\s+", " ", s or "").strip().lower()
 
 
+def normalize_term(s: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", s or "").lower()
+
+
+def classify_tenor(security_type: str, current_term: str, original_term: str = "") -> str | None:
+    """Map original issues and reopenings to the security's original nominal tenor."""
+    st = (security_type or "").strip().lower()
+    term_norm = normalize_term(original_term) or normalize_term(current_term)
+    if st == "note" and term_norm.startswith("10year"):
+        return "10-Year Note"
+    if st == "bond" and term_norm.startswith("20year"):
+        return "20-Year Bond"
+    if st == "bond" and term_norm.startswith("30year"):
+        return "30-Year Bond"
+    return None
+
+
+def auction_date_key(value: str | None) -> str:
+    """Return a YYYY-MM-DD key for API ISO dates and Treasury PDF date formats."""
+    text = str(value or "").strip()
+    m = re.match(r"(\d{4}-\d{2}-\d{2})", text)
+    if m:
+        return m.group(1)
+    for fmt in ("%B %d, %Y", "%m/%d/%Y"):
+        try:
+            return dt.datetime.strptime(text, fmt).strftime("%Y-%m-%d")
+        except ValueError:
+            pass
+    return text
+
+
 @dataclass
 class Auction:
     tenor: str
@@ -211,16 +242,9 @@ def api_results() -> list[Auction]:
         if not isinstance(rec, dict) or is_inflation_indexed(rec):
             continue
         security_type = str(rec.get("securityType") or rec.get("type") or "").strip().lower()
-        term = str(rec.get("securityTerm") or rec.get("term") or "").strip()
-        term_norm = re.sub(r"[^a-z0-9]", "", term.lower())
-
-        tenor = None
-        if security_type == "note" and term_norm == "10year":
-            tenor = "10-Year Note"
-        elif security_type == "bond" and term_norm == "20year":
-            tenor = "20-Year Bond"
-        elif security_type == "bond" and term_norm == "30year":
-            tenor = "30-Year Bond"
+        current_term = str(rec.get("securityTerm") or rec.get("term") or "").strip()
+        original_term = str(rec.get("originalSecurityTerm") or rec.get("original_security_term") or "").strip()
+        tenor = classify_tenor(security_type, current_term, original_term)
         if tenor is None:
             continue
 
@@ -255,7 +279,7 @@ def api_results() -> list[Auction]:
             total_accepted_bn=total_accepted,
         ))
 
-    parsed.sort(key=lambda x: ((x.auction_date or ""), x.tenor), reverse=True)
+    parsed.sort(key=lambda x: (auction_date_key(x.auction_date), x.tenor), reverse=True)
     return parsed
 
 
@@ -273,11 +297,16 @@ def result_links() -> list[tuple[str, str, str]]:
         tr = a.find_parent("tr")
         if tr:
             ctx = " ".join(tr.get_text(" ", strip=True).split())
+        ctx_norm = normalize_label(ctx)
+        if "tips" in ctx_norm or "inflation-protected" in ctx_norm:
+            continue
         tenor = None
-        for key in TARGETS:
-            if key.lower() in ctx.lower() or key.replace("-", " ").lower() in ctx.lower():
-                tenor = key
-                break
+        if re.search(r"\b(?:10[- ]year|9[- ]year 1[01][- ]month)\b.*\bnote\b", ctx_norm):
+            tenor = "10-Year Note"
+        elif re.search(r"\b(?:20[- ]year|19[- ]year 1[01][- ]month)\b.*\bbond\b", ctx_norm):
+            tenor = "20-Year Bond"
+        elif re.search(r"\b(?:30[- ]year|29[- ]year 1[01][- ]month)\b.*\bbond\b", ctx_norm):
+            tenor = "30-Year Bond"
         if tenor:
             url = href if href.startswith("http") else BASE + href
             found.append((tenor, TARGETS[tenor], url))
@@ -351,7 +380,7 @@ def official_results() -> tuple[list[Auction], str]:
     except Exception:
         pass
     if parsed:
-        parsed.sort(key=lambda x: ((x.auction_date or ""), x.tenor), reverse=True)
+        parsed.sort(key=lambda x: (auction_date_key(x.auction_date), x.tenor), reverse=True)
         return parsed, "TreasuryDirect competitive-result PDFs"
     if api_error:
         raise RuntimeError(f"Treasury API/PDF discovery failed; API={api_error}")
@@ -381,10 +410,10 @@ def verdict(cur: Auction, prev: dict | None, hist: list[dict]) -> tuple[str, lis
         signals.append(("딜러인수", avg_dealer - cur.dealer_pct))  # dealer lower = stronger
     score = sum(1 if d > 0.15 else -1 if d < -0.15 else 0 for _, d in signals)
     if score >= 2:
-        return "🟢 신규 장기채 최종수요 강함", [f"{n} 최근 평균 대비 개선" for n,d in signals if d > 0.15]
+        return "🟢 장기채 입찰 최종수요 강함", [f"{n} 최근 평균 대비 개선" for n,d in signals if d > 0.15]
     if score <= -2:
-        return "🔴 신규 장기채 최종수요 약함", [f"{n} 최근 평균 대비 악화" for n,d in signals if d < -0.15]
-    return "🟡 신규 장기채 최종수요 혼조", ["핵심 수요지표가 한 방향으로 모이지 않음"]
+        return "🔴 장기채 입찰 최종수요 약함", [f"{n} 최근 평균 대비 악화" for n,d in signals if d < -0.15]
+    return "🟡 장기채 입찰 최종수요 혼조", ["핵심 수요지표가 한 방향으로 모이지 않음"]
 
 
 def main() -> int:
@@ -409,7 +438,22 @@ def main() -> int:
         STATUS.write_text(f"# 미 국채 입찰 최종수요 감시\n\n- 조회: {now.isoformat(timespec='seconds')}\n- 상태: 공식 10·20·30년물 결과 없음\n", encoding="utf-8")
         return 2
 
-    new = [x for x in parsed if x.result_url not in seen]
+    latest_seen_date = {}
+    for tenor, rows in history.items():
+        dates = [auction_date_key(row.get("auction_date")) for row in rows if row.get("auction_date")]
+        if dates:
+            latest_seen_date[tenor] = max(dates)
+
+    # Only results newer than the last accepted state boundary are actionable. This avoids
+    # replaying old reopenings that were missed by the previous exact-term parser.
+    new = [
+        x for x in parsed
+        if x.result_url not in seen
+        and (
+            not latest_seen_date.get(x.tenor)
+            or auction_date_key(x.auction_date) > latest_seen_date[x.tenor]
+        )
+    ]
     # Baseline or schema migration: never resend historical auctions.
     if not STATE_PATH.exists() or state.get("state_version") != STATE_VERSION:
         history = {}
@@ -446,7 +490,18 @@ def main() -> int:
 
     # One alert per newest unseen long auction to keep Telegram readable.
     cur = new[0]
-    hist = history.get(cur.tenor, [])
+    cur_key = auction_date_key(cur.auction_date)
+    hist = []
+    for x in sorted(parsed, key=lambda row: auction_date_key(row.auction_date)):
+        if x.tenor != cur.tenor or x.result_url == cur.result_url:
+            continue
+        x_key = auction_date_key(x.auction_date)
+        if cur_key and x_key and x_key >= cur_key:
+            continue
+        rec = asdict(x)
+        rec.update({"indirect_pct": x.indirect_pct, "direct_pct": x.direct_pct, "dealer_pct": x.dealer_pct})
+        hist.append(rec)
+    hist = hist[-12:]
     prev = hist[-1] if hist else None
     tag, reasons = verdict(cur, prev, hist)
     fx_date, fx = latest_fx()
@@ -474,11 +529,11 @@ def main() -> int:
         "<b>🧭 쉽게 해석하면</b>",
     ]
     if tag.startswith("🟢"):
-        body.append("민간 최종수요가 비교적 잘 받쳐줌 → 신규 duration에 더 높은 보상을 요구하는 압력이 완화 → 10·30년 금리에는 우호적.")
+        body.append("민간 최종수요가 비교적 잘 받쳐줌 → 추가 장기물 공급에 더 높은 보상을 요구하는 압력이 완화 → 10·30년 금리에는 우호적.")
     elif tag.startswith("🔴"):
-        body.append("재무부가 기존 장기채를 바이백해도 새 장기채를 시장이 약하게 받아줌 → 신규 duration에 더 높은 금리 요구 → 기간프리미엄·장기금리 상승 압력.")
+        body.append("재무부가 기존 장기채를 바이백해도 이번 장기물 공급을 시장이 약하게 받아줌 → 더 높은 금리 요구 → 기간프리미엄·장기금리 상승 압력.")
     else:
-        body.append("응찰률·Indirect·Dealer가 엇갈려 신규 장기채 최종수요가 한 방향으로 확인되지 않음.")
+        body.append("응찰률·Indirect·Dealer가 엇갈려 장기채 입찰 최종수요가 한 방향으로 확인되지 않음.")
     body += [
         "",
         "<b>⚠️ 오해 방지</b>",
@@ -492,12 +547,12 @@ def main() -> int:
         f"환율 기준: {fx_date or '확인 불가'}, 1달러={fx:,.2f}원" if fx is not None else "환율 기준: 확인 불가 — 원화 환산 미제공",
         f'<a href="{cur.result_url}">미 재무부 공식 입찰 결과</a>',
     ]
-    TITLE.write_text(f"🇺🇸 미 국채 {cur.tenor_ko} 입찰 — 신규 장기채 최종수요 판정", encoding="utf-8")
+    TITLE.write_text(f"🇺🇸 미 국채 {cur.tenor_ko} 입찰 — 최종수요 판정", encoding="utf-8")
     ALERT.write_text("\n".join(body), encoding="utf-8")
     DETAIL.write_text(json.dumps({"current": asdict(cur), "verdict": tag, "reasons": reasons, "source": source_name}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
 
     rec = asdict(cur); rec.update({"indirect_pct": cur.indirect_pct, "direct_pct": cur.direct_pct, "dealer_pct": cur.dealer_pct})
-    history.setdefault(cur.tenor, []).append(rec); history[cur.tenor] = history[cur.tenor][-12:]
+    history[cur.tenor] = (hist + [rec])[-12:]
     seen.add(cur.result_url)
     NEXT_STATE.write_text(json.dumps({"state_version": STATE_VERSION, "seen_result_urls": list(seen)[-100:], "history": history}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     STATUS.write_text(
