@@ -166,8 +166,6 @@ def _build_rate_body(groups: list[dict[str, object]], quotes: dict[str, core.Quo
         "<b>검증</b> 동일 벤치마크·동일 기준일로 재계산한 수치만 사용 · 기사 누적상승률은 그대로 재사용하지 않음",
     ])
 
-    # 같은 실행에서 TTF 장중 milestone이나 LNG 화물창 이벤트가 함께 잡힌 경우
-    # 해당 전용 섹션은 유지하되 generic 본문 중복은 재생성하지 않는다.
     try:
         ttf_lines = v24.v23._ttf_intraday_section(groups, quotes)
     except Exception:
@@ -222,6 +220,10 @@ def build_setup_test_v25(quotes):
 
 core.build_regular_alert = build_regular_alert_v25
 core.build_setup_test = build_setup_test_v25
+
+# 현행 v25 운영 경로에 카타르→미국 LNG 장기조달 구조변화 감시를 얹는다.
+# 이 import가 v25의 builder/classifier를 감싼 뒤 core.main()이 실행된다.
+import lng_supply_crisis_qatar_us_overlay  # noqa: E402,F401
 
 if __name__ == "__main__":
     raise SystemExit(core.main())
