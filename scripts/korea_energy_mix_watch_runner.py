@@ -184,6 +184,31 @@ def _interpret_renewable(body: str) -> list[str]:
     return lines
 
 
+def _investment_readthrough(row: dict[str, Any], body: str) -> list[str]:
+    lower = body.lower()
+    category = str(row.get("category", ""))
+    if not any(term in lower for term in ("재생에너지", "원전", "원자력", "lng", "가스발전", "ess", "전력망", "계통")):
+        return []
+
+    lines = ["<b>투자 판단</b>"]
+
+    if "재생" in lower and ("220gw" in lower or "155gw" in lower):
+        lines.extend([
+            "• 재생에너지 비중이 커질수록 <b>ESS·PCS·송변전망·계통안정화 설비</b>의 정책 중요도와 설비투자 필요성이 같이 커짐",
+            "• 다만 ‘재생에너지 확대 = 추가 원전·LNG 자동 축소’로 단정하면 안 됨. <b>재생에너지·저장장치·전력망이 계획대로 실제 구축될 경우</b> 12차 전기본의 추가 원전·LNG 필요량이 낮아질 여지는 있지만, 이는 정부 확정안이 아니라 투자 해석",
+            "• 반대로 2040년 최대전력수요 전망이 크게 상향된 만큼, 재생에너지 확대와 별개로 <b>안정적인 전원·계통보강 수요가 동시에 커질 수 있음</b>",
+        ])
+
+    if category in {"재생에너지·전원믹스", "원전·전원믹스", "전력수요 전망", "전력수급기본계획"} or _has_any(lower, "원전", "원자력", "재생에너지"):
+        lines.extend([
+            "• <b>11차 전기본 확정분과 12차 전기본의 추가 선택지는 분리해서 봐야 함</b>",
+            "• 현재 확인 기준 제11차 전기본의 대형원전 2기(총 2.8GW)와 소형모듈원전 1기(0.7GW)는 기존 추진계획이며, 재생에너지 보급 전망 계산만으로 자동 취소되는 구조가 아님",
+            "• 대형원전 후보지는 <b>경북 영덕</b>, 소형모듈원전 후보지는 <b>부산 기장</b>으로 선정된 상태이므로, 투자 판단에서는 ‘기존 확정 원전 설비투자’와 ‘12차에서 새로 결정될 추가 원전·LNG’의 옵션가치를 따로 봐야 함",
+        ])
+
+    return lines
+
+
 def _interpret_nuclear_coal_lng(body: str) -> list[str]:
     lower = body.lower()
     if not (_has_any(lower, "신규 원전", "원전을 더", "원전 확대") and "석탄" in lower):
@@ -265,6 +290,9 @@ def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
     lines = ["<b>원문 본문 해석</b>"]
     if specialized:
         lines.extend(specialized)
+        investment = _investment_readthrough(row, body)
+        if investment:
+            lines.extend(["", *investment])
         return "\n".join(lines)
 
     extracted = _generic_extract(body)
