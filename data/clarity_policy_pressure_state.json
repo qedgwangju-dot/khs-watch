@@ -1,12 +1,9 @@
 {
   "initialized": true,
-  "last_checked_utc": "2026-09-13T08:26:44+00:00",
-  "seen_signatures": [],
-  "accepted_current": 0,
-  "source_errors": [
-    "\"CLARITY Act\" Trump: HTTP Error 429: Too Many Requests",
-    "\"CLARITY Act\" Bessent: HTTP Error 429: Too Many Requests",
-    "\"CLARITY Act\" \"White House\": HTTP Error 429: Too Many Requests",
-    "\"Digital Asset Market Clarity Act\" Senate: HTTP Error 429: Too Many Requests"
-  ]
+  "last_checked_utc": "2026-09-13T08:30:16+00:00",
+  "seen_signatures": [
+    "839e77ff2f236349209bb6a5b0a7ccae267c976a56383192b2e569b5ba4d857d"
+  ],
+  "accepted_current": 1,
+  "source_errors": []
 }
