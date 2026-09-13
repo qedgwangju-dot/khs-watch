@@ -36,7 +36,7 @@ TITLE = OUT / "treasury_auction_final_demand_title.txt"
 STATUS = OUT / "treasury_auction_final_demand_status.md"
 
 RECENT_URL = "https://www.treasurydirect.gov/auctions/results/"
-AUCTION_API = "https://www.treasurydirect.gov/TA_WS/securities/auctioned?format=json&day=400"
+AUCTION_API = "https://www.treasurydirect.gov/TA_WS/securities/auctioned?format=json&days=400"
 BASE = "https://www.treasurydirect.gov"
 FRED_FX = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXKOUS"
 KST = ZoneInfo("Asia/Seoul")
