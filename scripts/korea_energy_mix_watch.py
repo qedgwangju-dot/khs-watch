@@ -190,7 +190,6 @@ def event_key(row: dict[str, Any]) -> str:
     title = norm(str(row.get("title", ""))).lower()
     day = event_day(str(row.get("published", "")))
 
-    # 2026-08-26 제12차 전기본 제6차 토론회의 재생에너지 2040 보급 전망.
     if "재생" in title and any(
         term in title
         for term in ("2040", "15년 뒤", "5.6배", "6배", "220gw", "236gw", "155gw", "61gw")
@@ -323,8 +322,23 @@ def meaning(category: str) -> str:
     return "향후 발전원·전력망 투자 배분과 정책 시간표를 바꿈"
 
 
+def next_checkpoint(stage: str, category: str) -> str:
+    if stage == "확정·의결":
+        return "확정 계획의 세부 전원별 GW·준공연도·송변전·ESS 집행계획과 실제 발주"
+    if stage == "수립·공론화":
+        return "토론회·공청회 의견이 정부안 숫자와 일정에 실제 반영되는지"
+    if stage == "전망·잠정안":
+        return "잠정 수치가 정부안·최종안에서 유지·상향·하향되는지"
+    if category == "원전·전원믹스":
+        return "신규 원전 기수·용량·부지·준공연도와 계속운전 여부"
+    if category == "재생에너지·전원믹스":
+        return "원별 GW·연도별 보급량·계통 접속·ESS·해상풍력 인허가"
+    if category == "전력수요 전망":
+        return "최대전력수요·설비예비율·데이터센터·반도체 부하 반영치"
+    return "정부안·공청회·국회 보고·최종 확정으로 단계가 올라가는지"
+
+
 def renewable_220_detail(title: str) -> list[str]:
-    """2026-08-26 제12차 전기본 재생에너지 잠정안의 검증된 핵심 수치."""
     lower = norm(title).lower()
     if not any(term in lower for term in ("220gw", "155gw", "61gw", "5.6배", "6배", "15년 뒤")):
         return []
@@ -346,10 +360,10 @@ def renewable_220_detail(title: str) -> list[str]:
         "육상풍력 2 → 16GW  <b>8.0배</b>",
         "",
         "<b>핵심 해석</b>",
-        "절대 보급량 1위는 태양광, 증설 난도·배수 1위는 해상풍력",
+        "• 절대 보급량 1위는 태양광, 증설 난도·배수 1위는 해상풍력",
+        "• 발전설비 목표와 실제 전력 공급 사이의 핵심 병목은 전력계통·ESS·해상풍력 인허가·지원항만·설치선박",
         "",
         "<b>정책 단계</b>  제12차 전기본 반영 전 <b>잠정안</b>",
-        "<b>주요 병목</b>  전력계통·ESS, 해상풍력 인허가, 지원항만·설치선박 확보",
     ]
 
 
@@ -360,19 +374,26 @@ def render(rows: list[dict[str, Any]]) -> str:
         title_raw = str(row["title"])
         title = html.escape(title_raw)
         publisher = html.escape(str(row["publisher"]))
-        category = html.escape(str(row["category"]))
-        stage_text = html.escape(str(row.get("plan_stage") or plan_stage(title_raw)))
+        category_raw = str(row["category"])
+        category = html.escape(category_raw)
+        stage_raw = str(row.get("plan_stage") or plan_stage(title_raw))
+        stage_text = html.escape(stage_raw)
         url = html.escape(str(row["url"]), quote=True)
         date_text = html.escape(korean_date(str(row["published"])))
-        meaning_text = html.escape(meaning(str(row["category"])))
+        meaning_text = html.escape(meaning(category_raw))
+        checkpoint = html.escape(next_checkpoint(stage_raw, category_raw))
         link_label = "공식 원문 보기" if row["official"] else "기사 원문 보기"
+
         lines.extend(
             [
                 "",
-                f"<b>{idx}. {title}</b>",
+                "<b>한눈에 보기</b>",
+                f"• <b>현재 단계</b>  {stage_text}",
+                f"• <b>핵심 분야</b>  {category}",
+                f"• <b>지금 의미</b>  {meaning_text}",
+                f"• <b>다음 변곡점</b>  {checkpoint}",
                 "",
-                f"<b>핵심 분야</b>  {category}",
-                f"<b>전기본 단계</b>  {stage_text}",
+                f"<b>{idx}. {title}</b>",
                 f"<b>확인 상태</b>  {status}",
                 f"<b>발표일</b>  {date_text}",
                 f"<b>출처</b>  {publisher}",
@@ -384,7 +405,9 @@ def render(rows: list[dict[str, Any]]) -> str:
         lines.extend(
             [
                 "",
-                f"<b>투자 의미</b>  {meaning_text}",
+                "<b>투자 판단 포인트</b>",
+                f"• {meaning_text}",
+                "• 기사 제목 자체가 아니라 전기본의 <b>숫자·정책 단계·공식화 여부가 실제로 바뀌었는지</b>를 추적",
                 f'<a href="{url}"><b>{link_label}</b></a>',
             ]
         )
