@@ -10,10 +10,10 @@ on:
       - "scripts/clarity_alert_formatter.py"
       - "tests/test_clarity_alert_guard.py"
       - "tests/test_clarity_alert_formatter.py"
+      - "tests/test_clarity_policy_pressure_watch.py"
       - "data/clarity_watch_state.json"
       - "data/clarity_policy_pressure_state.json"
   schedule:
-    # GitHub cron is UTC. Hourly check; no new relevant change => no Telegram message.
     - cron: "17 * * * *"
   workflow_dispatch:
 
@@ -47,7 +47,7 @@ jobs:
       - name: Validate watcher, guards, policy-pressure watcher and Korean formatter
         run: |
           python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_guard.py scripts/clarity_policy_pressure_watch.py scripts/clarity_alert_formatter.py
-          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py -v
+          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py -v
 
       - name: Validate Telegram route without sending
         env:
@@ -56,10 +56,7 @@ jobs:
           TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
-          import json
-          import os
-          import urllib.request
-
+          import json, os, urllib.request
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
@@ -92,23 +89,10 @@ jobs:
       - name: Publish watcher summary
         if: always()
         run: |
-          if [ -f out/clarity_watch_status.md ]; then
-            cat out/clarity_watch_status.md >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "CLARITY Watch 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f out/clarity_alert_guard_report.json ]; then
-            printf '\n---\n\nFederal Register 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
-            cat out/clarity_alert_guard_report.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f out/clarity_policy_pressure_status.json ]; then
-            printf '\n---\n\n정책 압력 감시:\n\n' >> "$GITHUB_STEP_SUMMARY"
-            cat out/clarity_policy_pressure_status.json >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f out/clarity_watch_alert.html ]; then
-            printf '\n---\n\n한국어 Telegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
-            cat out/clarity_watch_alert.html >> "$GITHUB_STEP_SUMMARY"
-          fi
+          if [ -f out/clarity_watch_status.md ]; then cat out/clarity_watch_status.md >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f out/clarity_alert_guard_report.json ]; then printf '\n---\n\nFederal Register 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/clarity_alert_guard_report.json >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f out/clarity_policy_pressure_status.json ]; then printf '\n---\n\n정책 압력 감시:\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/clarity_policy_pressure_status.json >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f out/clarity_watch_alert.html ]; then printf '\n---\n\n한국어 Telegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/clarity_watch_alert.html >> "$GITHUB_STEP_SUMMARY"; fi
 
       - name: Send new CLARITY change to Telegram
         if: hashFiles('out/clarity_watch_telegram_chunks.json') != ''
@@ -118,14 +102,8 @@ jobs:
           TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
-          import datetime as dt
-          import json
-          import os
-          import pathlib
-          import urllib.parse
-          import urllib.request
+          import datetime as dt, json, os, pathlib, urllib.parse, urllib.request
           from zoneinfo import ZoneInfo
-
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
@@ -136,66 +114,36 @@ jobs:
           username = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or username.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
-
           chunks = json.loads(pathlib.Path("out/clarity_watch_telegram_chunks.json").read_text(encoding="utf-8"))
           if not chunks:
               raise RuntimeError("Formatted CLARITY Telegram chunks are empty")
-
           message_ids = []
           for chunk in chunks:
-              payload = urllib.parse.urlencode({
-                  "chat_id": chat_id,
-                  "text": chunk,
-                  "parse_mode": "HTML",
-                  "disable_web_page_preview": "true",
-              }).encode("utf-8")
-              request = urllib.request.Request(
-                  f"https://api.telegram.org/bot{token}/sendMessage",
-                  data=payload,
-                  method="POST",
-              )
+              payload = urllib.parse.urlencode({"chat_id": chat_id, "text": chunk, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode("utf-8")
+              request = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
               with urllib.request.urlopen(request, timeout=25) as response:
                   result = json.loads(response.read().decode("utf-8"))
               if not result.get("ok"):
                   raise RuntimeError(f"Telegram rejected message: {result}")
               message_ids.append(result.get("result", {}).get("message_id"))
-
-          confirmed = {
-              "status": "confirmed",
-              "format": "korean_html_v3",
-              "bot_username": username,
-              "message_ids": message_ids,
-              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
-          }
-          pathlib.Path("out/clarity_watch_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
-          )
+          confirmed = {"status": "confirmed", "format": "korean_html_v3", "bot_username": username, "message_ids": message_ids, "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
+          pathlib.Path("out/clarity_watch_telegram_confirmed.json").write_text(json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids} format=korean_html_v3")
           PY
 
       - name: Persist baseline or no-send states
         if: success() && hashFiles('out/clarity_watch_telegram_chunks.json') == ''
         run: |
-          if [ -f out/clarity_watch_pending_state.json ]; then
-            cp out/clarity_watch_pending_state.json data/clarity_watch_state.json
-          fi
-          if [ -f out/clarity_policy_pressure_pending_state.json ]; then
-            cp out/clarity_policy_pressure_pending_state.json data/clarity_policy_pressure_state.json
-          fi
+          if [ -f out/clarity_watch_pending_state.json ]; then cp out/clarity_watch_pending_state.json data/clarity_watch_state.json; fi
+          if [ -f out/clarity_policy_pressure_pending_state.json ]; then cp out/clarity_policy_pressure_pending_state.json data/clarity_policy_pressure_state.json; fi
 
       - name: Persist states only after confirmed Telegram delivery
         if: success() && hashFiles('out/clarity_watch_telegram_chunks.json') != '' && hashFiles('out/clarity_watch_telegram_confirmed.json') != ''
         run: |
-          if [ -f out/clarity_watch_pending_state.json ]; then
-            cp out/clarity_watch_pending_state.json data/clarity_watch_state.json
-          fi
-          if [ -f out/clarity_policy_pressure_pending_state.json ]; then
-            cp out/clarity_policy_pressure_pending_state.json data/clarity_policy_pressure_state.json
-          fi
+          if [ -f out/clarity_watch_pending_state.json ]; then cp out/clarity_watch_pending_state.json data/clarity_watch_state.json; fi
+          if [ -f out/clarity_policy_pressure_pending_state.json ]; then cp out/clarity_policy_pressure_pending_state.json data/clarity_policy_pressure_state.json; fi
           python - <<'PY'
-          import json
-          import pathlib
+          import json, pathlib
           confirmed = json.loads(pathlib.Path("out/clarity_watch_telegram_confirmed.json").read_text(encoding="utf-8"))
           state_path = pathlib.Path("data/clarity_watch_state.json")
           if state_path.exists():
@@ -213,13 +161,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/clarity_watch_state.json data/clarity_policy_pressure_state.json 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "CLARITY states unchanged"
-          else
-            git commit -m "Record CLARITY Watch state"
-            git pull --rebase origin main
-            git push
-          fi
+          if git diff --cached --quiet; then echo "CLARITY states unchanged"; else git commit -m "Record CLARITY Watch state" && git pull --rebase origin main && git push; fi
 
       - name: Upload verification artifacts
         if: always()
