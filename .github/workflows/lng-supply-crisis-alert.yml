@@ -28,6 +28,8 @@ on:
       - "scripts/lng_supply_crisis_alert_v23.py"
       - "scripts/lng_supply_crisis_alert_v24.py"
       - "scripts/lng_supply_crisis_alert_v25.py"
+      - "scripts/lng_supply_crisis_alert_v26.py"
+      - "scripts/lng_supply_crisis_qatar_us_overlay.py"
 
 permissions:
   contents: write
@@ -52,85 +54,44 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v25 monitor
+      - name: Validate v26 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_qatar_us_overlay.py
           python - <<'PY'
           import sys, time
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v24 as v24
-          import lng_supply_crisis_alert_v25 as v25
+          import lng_supply_crisis_alert_v26 as v26
 
-          assert core.classify_subtype("정부-가스공사 LNG 화물창 국산화 KC-2 재도전") == "lng_cargo_tank_localization"
-          assert core.classify_subtype("KC-2 대형선 실증 추진") == "lng_cargo_tank_large_demo"
-          assert core.classify_subtype("LNG 화물창 국적선 발주") == "lng_cargo_tank_commercial_order"
-
-          cargo_item = core.NewsItem(
-              category="korea_supply", polarity="easing", subtype="lng_cargo_tank_localization",
-              title="정부-가스공사 LNG 화물창 국산화 재도전",
-              source="한국경제", link="https://www.hankyung.com/article/202609106199i",
-              published_utc="2026-09-10T07:00:00+00:00", published_epoch=time.time(),
-              official=False, event_id="fixture-cargo-tank",
+          item = core.NewsItem(
+              category="qatar_supply", polarity="worsening", subtype="qatar_us_lng_scope",
+              title="카타르에너지 미국 LNG 장기조달 협상 범위 구체화",
+              source="Reuters", link="https://example.com/a",
+              published_utc="2026-09-13T00:00:00+00:00", published_epoch=time.time(),
+              official=False, event_id="event-a",
           )
-          cargo_groups = v24.confirmed_news_groups_v24([cargo_item])
-          assert any(g.get("subtype") == "lng_cargo_tank_localization" for g in cargo_groups)
-          cargo_section = "\n".join(v24._cargo_tank_section(cargo_groups))
-          assert "현재 단계" in cargo_section
-          assert "정부·가스공사 국산화 추진" in cargo_section
-
-          rate_item_1 = core.NewsItem(
-              category="europe_rates", polarity="worsening", subtype="europe_rates_energy_ecb",
-              title="유가 상승과 인플레이션 우려로 글로벌 채권 매도세 심화",
-              source="CNBC", link="https://example.com/cnbc",
-              published_utc="2026-09-12T00:00:00+00:00", published_epoch=time.time(),
-              official=False, event_id="fixture-rate-1",
-          )
-          rate_item_2 = core.NewsItem(
-              category="europe_rates", polarity="worsening", subtype="europe_rates_bund_selloff",
-              title="유럽 채권 수익률 수년래 최고",
-              source="Reuters", link="https://example.com/reuters",
-              published_utc="2026-09-12T00:00:00+00:00", published_epoch=time.time(),
-              official=False, event_id="fixture-rate-2",
-          )
-          rate_groups = [
-              {
-                  "category":"europe_rates", "polarity":"worsening", "subtype":"europe_rates_energy_ecb",
-                  "event_id":"fixture-rate-1", "latest_epoch":rate_item_1.published_epoch,
-                  "evidence":[rate_item_1], "verification":"신뢰 매체 2곳 교차",
-              },
-              {
-                  "category":"europe_rates", "polarity":"worsening", "subtype":"europe_rates_bund_selloff",
-                  "event_id":"fixture-rate-2", "latest_epoch":rate_item_2.published_epoch,
-                  "evidence":[rate_item_2], "verification":"유럽 금리 조기신호 · 주요 금융매체/공식기관 확인",
-              },
-          ]
-          ttf = core.Quote(
-              key="ttf", symbol="TTF", label="Trading Economics 한국 EU Gas(TTF 추종 공개값)", unit="유로/MWh",
-              price=80.21, previous_close=82.05, change_pct=-2.24,
-              timestamp_epoch=time.time(), timestamp_utc="2026-09-12T00:00:00+00:00", age_minutes=0,
-              source_note="fixture",
-          )
-          body = v25._build_rate_body(rate_groups, {"ttf": ttf})
-          assert body.count("<b>유럽 국채·ECB 재가격</b>") == 1
+          group = {
+              "category":"qatar_supply", "polarity":"worsening", "subtype":"qatar_us_lng_scope",
+              "event_id":"event-a", "latest_epoch":item.published_epoch,
+              "evidence":[item], "verification":"주요 통신/금융매체 조기신호",
+          }
+          summary = "\n".join(v26._global_summary([group], [], []))
+          assert "감시 축" in summary and "이번 변화" in summary
+          assert "카타르 미국 LNG 협상 물량·기간·후보 구체화" in summary
+          body = v26._make_event_first("<b>세부 내용</b>\n• A\n• A\n\n\n<b>다음 확인</b>\n• B", [group], [], [])
+          assert body.startswith("<b>한눈에</b>")
+          assert body.count("• A") == 1
           assert body.count("<b>다음 확인</b>") == 1
-          assert body.count("<b>핵심 한 줄</b>") == 1
-          assert "<b>현재 단계</b>" in body
-          assert "<b>시장 확인</b>" in body
-          assert "<b>돈버는능력</b>" in body
-          assert "<b>할인율</b>" in body
-          assert "<b>수급</b>" in body
-          assert "<b>시간표</b>" in body
-          assert "신뢰 매체 교차 + 주요 금융매체/공식기관 조기신호" in body
-          print("v25_validation=true")
+          assert any("Hormuz LNG transit" in q for _, q in v26.EVENT_DISCOVERY_QUERIES)
+          print("v26_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v25.py --setup-test
+            python scripts/lng_supply_crisis_alert_v26.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v25.py
+            python scripts/lng_supply_crisis_alert_v26.py
           fi
 
       - name: Publish status summary
@@ -216,7 +177,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v25.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v26.py --finalize
 
       - name: Upload verification artifacts
         if: always()
