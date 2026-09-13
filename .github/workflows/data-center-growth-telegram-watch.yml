@@ -12,6 +12,7 @@ on:
       - "scripts/guard_us_time_to_power_metrics_source.py"
       - "scripts/clean_us_time_to_power_alert_html.py"
       - "scripts/remove_telegram_italics.py"
+      - "scripts/korea_aidc_policy_watch.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -63,6 +64,9 @@ jobs:
 
       - name: Check official Census data center series
         run: python scripts/data_center_growth_watch.py
+
+      - name: Check Korea AIDC special-law power and permit policy
+        run: python scripts/korea_aidc_policy_watch.py
 
       - name: Check PJM RBP IRAS and large-load policy
         run: |
@@ -160,6 +164,7 @@ jobs:
           chat = os.environ["TELEGRAM_CHAT_ID"].strip()
           files = [
               pathlib.Path("out/data_center_growth_alert.txt"),
+              pathlib.Path("out/korea_aidc_policy_alert.txt"),
               pathlib.Path("out/pjm_data_center_policy_alert.txt"),
               pathlib.Path("out/us_data_center_time_to_power_alert.txt"),
           ]
@@ -206,6 +211,9 @@ jobs:
                           ],
                       ]
                   }
+              elif p.name == "korea_aidc_policy_alert.txt":
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {"is_disabled": True}
               else:
                   payload["link_preview_options"] = {"is_disabled": True}
 
@@ -230,13 +238,14 @@ jobs:
         run: |
           mkdir -p data
           cp out/data_center_growth_pending_state.json data/data_center_growth_state.json
+          cp out/korea_aidc_policy_pending_state.json data/korea_aidc_policy_state.json
           cp out/pjm_data_center_policy_pending_state.json data/pjm_data_center_policy_state.json
           cp out/us_data_center_time_to_power_pending_state.json data/us_data_center_time_to_power_state.json
           git restore scripts/pjm_data_center_policy_watch.py
           git restore scripts/us_data_center_time_to_power_watch.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/data_center_growth_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json
+          git add data/data_center_growth_state.json data/korea_aidc_policy_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json
           if git diff --cached --quiet; then
             echo "State unchanged."
           else
@@ -254,6 +263,9 @@ jobs:
             out/data_center_growth_status.md
             out/data_center_growth_alert.txt
             out/data_center_growth_pending_state.json
+            out/korea_aidc_policy_status.md
+            out/korea_aidc_policy_alert.txt
+            out/korea_aidc_policy_pending_state.json
             out/pjm_data_center_policy_status.md
             out/pjm_data_center_policy_alert.txt
             out/pjm_data_center_policy_pending_state.json
