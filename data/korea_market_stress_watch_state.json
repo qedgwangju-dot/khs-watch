@@ -1,31 +1,31 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-13T09:36:21+09:00",
+  "updated_at_kst": "2026-09-13T14:23:00+09:00",
   "seen_event_keys": [
-    "foreign3d_neg:2026-09-02:final",
-    "kosdaq_foreign1d_pos:2026-09-09:final",
-    "foreign1d_neg:2026-09-10:final",
-    "foreign3d_pos:2026-09-08:final",
-    "foreign1d_neg:2026-09-11:final",
-    "fx_1350_down:2026-09-07",
-    "foreign3d_pos:2026-09-07:final",
-    "kosdaq_foreign3d_neg:2026-09-10:final",
-    "foreign3d_neg:2026-08-27",
-    "kosdaq_foreign1d_neg:2026-09-10:final",
-    "foreign1d_neg:2026-08-31",
-    "foreign1d_neg:2026-09-02:postclose",
-    "fx_1350_down:2026-09-11",
-    "foreign1d_neg:2026-09-02:final",
-    "capex:13cbe150930d23d8",
-    "foreign3d_neg:2026-09-02:postclose",
-    "foreign1d_pos:2026-09-07:final",
-    "kosdaq_foreign1d_neg:2026-09-11:final",
-    "kosdaq_foreign3d_neg:2026-09-11:final",
-    "fx_1350_down:2026-09-04",
-    "ust10_up:2026-09-10",
-    "foreign3d_neg:2026-09-11:final",
     "fx_daily_down:2026-09-02",
-    "policy_spread:2026-08-27:0.75"
+    "foreign1d_neg:2026-09-11:final",
+    "ust10_up:2026-09-10",
+    "kosdaq_foreign1d_pos:2026-09-09:final",
+    "foreign3d_pos:2026-09-07:final",
+    "capex:13cbe150930d23d8",
+    "foreign1d_neg:2026-09-02:final",
+    "foreign3d_pos:2026-09-08:final",
+    "fx_1350_down:2026-09-11",
+    "kosdaq_foreign3d_neg:2026-09-11:final",
+    "foreign1d_neg:2026-08-31",
+    "kosdaq_foreign3d_neg:2026-09-10:final",
+    "policy_spread:2026-08-27:0.75",
+    "foreign3d_neg:2026-09-11:final",
+    "foreign1d_neg:2026-09-10:final",
+    "kosdaq_foreign1d_neg:2026-09-11:final",
+    "fx_1350_down:2026-09-07",
+    "foreign3d_neg:2026-09-02:postclose",
+    "foreign3d_neg:2026-09-02:final",
+    "foreign1d_pos:2026-09-07:final",
+    "kosdaq_foreign1d_neg:2026-09-10:final",
+    "foreign3d_neg:2026-08-27",
+    "fx_1350_down:2026-09-04",
+    "foreign1d_neg:2026-09-02:postclose"
   ],
   "active_keys": [
     "fx_1350_down:2026-09-11",
@@ -36,7 +36,7 @@
     "kosdaq_foreign3d_neg:2026-09-11:final"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-13T09:36:21+09:00",
+    "checked_at_kst": "2026-09-13T14:23:00+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-11",
@@ -46,16 +46,7 @@
       "change_krw": -7.2,
       "change_pct": -0.5329,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
-      "ecos_official": {
-        "date": "2026-09-11",
-        "value": 1338.2,
-        "item_name": "원/미국달러(매매기준율)",
-        "unit": "원",
-        "stat_code": "731Y001",
-        "item_code": "0000001",
-        "source": "https://ecos.bok.or.kr/api/",
-        "role": "한국은행 공식 일일 검증값(장중 경보 판정에는 사용하지 않음)"
-      }
+      "ecos_error": "ConnectTimeout: HTTPSConnectionPool(host='ecos.bok.or.kr', port=443): Max retries exceeded with url: /api/StatisticSearch/3V2UDT13NQXR1D7H8N2A/json/kr/1/100/731Y001/D/20260830/20260913/0000001 (Caused by ConnectTimeoutError(<HTTPSConnection(host='ecos.bok.or.kr', port=443) at 0x7f13f8670b60>, 'Connection to ecos.bok.or.kr timed out. (connect timeout=30)'))"
     },
     "ust10": {
       "date": "2026-09-10",
