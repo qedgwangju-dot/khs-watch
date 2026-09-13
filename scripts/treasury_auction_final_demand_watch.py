@@ -38,7 +38,6 @@ STATUS = OUT / "treasury_auction_final_demand_status.md"
 RECENT_URL = "https://www.treasurydirect.gov/auctions/results/"
 AUCTION_API = "https://www.treasurydirect.gov/TA_WS/securities/auctioned?format=json&days=400"
 BASE = "https://www.treasurydirect.gov"
-FRED_FX = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXKOUS"
 KST = ZoneInfo("Asia/Seoul")
 UA = "Mozilla/5.0 (compatible; khs-watch-treasury-auction/1.0)"
 TARGETS = {"10-Year Note": "10년물", "20-Year Bond": "20년물", "30-Year Bond": "30년물"}
@@ -107,7 +106,6 @@ def money_bn(text: str) -> float | None:
 
 
 def api_money_bn(value) -> float | None:
-    """Normalize Treasury API amount fields to USD billions."""
     if value in (None, "", "null"):
         return None
     try:
@@ -148,7 +146,6 @@ def truthy_flag(value) -> bool:
 
 
 def is_inflation_indexed(record: dict) -> bool:
-    """Exclude TIPS without treating nominal placeholder TIIN fields as positive flags."""
     security_type = str(
         record.get("securityType") or record.get("SecurityType")
         or record.get("type") or record.get("Type") or ""
@@ -168,11 +165,10 @@ def normalize_label(s: str) -> str:
 
 
 def normalize_term(s: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", s or "").lower()
+    return re.sub(r"[^a-z0-9]", "", (s or "").lower())
 
 
 def classify_tenor(security_type: str, current_term: str, original_term: str = "") -> str | None:
-    """Map original issues and reopenings to the security's original nominal tenor."""
     st = (security_type or "").strip().lower()
     original_norm = normalize_term(original_term)
     current_norm = normalize_term(current_term)
@@ -262,8 +258,6 @@ def api_results() -> list[Auction]:
             rec, "competitiveAccepted", "CompetitiveAccepted", "compAccepted", "CompAccepted", "competitive_accepted"
         )
         reported_total = api_money(rec, "totalAccepted", "TotalAccepted", "total_accepted")
-        # Bidder allocation shares use competitive awards only. Prefer the exact sum of
-        # Primary Dealer + Direct + Indirect; fall back to reported competitive/total awards.
         total_accepted = bidder_total or competitive_accepted or reported_total
         if btc is None or total_accepted is None:
             continue
@@ -315,7 +309,6 @@ def api_results() -> list[Auction]:
 
 
 def result_links() -> list[tuple[str, str, str]]:
-    """Legacy HTML/PDF discovery retained only as an official-source fallback."""
     html = fetch(RECENT_URL).decode("utf-8", errors="replace")
     soup = BeautifulSoup(html, "html.parser")
     found = []
