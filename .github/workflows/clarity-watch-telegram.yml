@@ -161,7 +161,22 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/clarity_watch_state.json data/clarity_policy_pressure_state.json 2>/dev/null || true
-          if git diff --cached --quiet; then echo "CLARITY states unchanged"; else git commit -m "Record CLARITY Watch state" && git pull --rebase origin main && git push; fi
+          if git diff --cached --quiet; then
+            echo "CLARITY states unchanged"
+            exit 0
+          fi
+          git commit -m "Record CLARITY Watch state"
+          for attempt in 1 2 3; do
+            echo "state_push_attempt=${attempt}"
+            git pull --rebase origin main || { git rebase --abort >/dev/null 2>&1 || true; sleep $((attempt * 3)); continue; }
+            if git push origin main; then
+              echo "state_push_success=true attempt=${attempt}"
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "state_push_success=false"
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
