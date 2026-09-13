@@ -52,8 +52,8 @@
   },
   "rate_signal_upgrade": {
     "version": 3,
-    "updated_at_kst": "2026-09-12T04:38:13+09:00",
-    "risk_score": 6,
+    "updated_at_kst": "2026-09-14T07:22:31+09:00",
+    "risk_score": 7,
     "grade_emoji": "🟠",
     "grade_label": "인상 압력 확대",
     "next_mpc_date": "2026-10-22",
@@ -83,9 +83,9 @@
       },
       "housing": null,
       "oil": {
-        "date": "2026-09-11",
-        "brent_usd": 104.98,
-        "change_5d_pct": 9.9,
+        "date": "2026-09-13",
+        "brent_usd": 108.2,
+        "change_5d_pct": 12.38,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
@@ -93,6 +93,31 @@
     },
     "rhetoric_score": 0,
     "recent_rhetoric": [
+      {
+        "speaker": "김종화",
+        "date": "2026-09-10",
+        "flags": {
+          "middle_east_cost": false,
+          "macroprudential_mix": false,
+          "hike_needed": true,
+          "next_meeting_caution": false,
+          "inflation_upside": false,
+          "next_meeting_hawk": false,
+          "rate_not_only_tool": false,
+          "demand_inflation": false,
+          "neutral_upper": false,
+          "middle_east_inflation": true,
+          "two_hikes_effect": false,
+          "oct_hike_caution": false,
+          "hike_timing_speed": false
+        },
+        "title": "김종화 금통위원 \"금리 추가 인상 시기·속도, 중동 긴장·반도체 파급 효과 등이 가를 것\" - v.daum.net",
+        "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8zMUF2NDQ2OVhGaU5fMzJTTnpiZW9ONXNpS3JXbzBWclNhS3ZiRmpod0o1ODNTWkxISUNKc0hsdjRUTk5oTi1maE9veTVCSW95WmQwNQ?oc=5",
+        "source_name": "v.daum.net",
+        "published_at_kst": "2026-09-10T12:02+09:00",
+        "event_hash": "cfc9ecc85da2f4cf06e52a4322dc9c7e5764e4f4b5d5a6c343b20b7ddf0d2528",
+        "score": 2
+      },
       {
         "speaker": "박종우",
         "date": "2026-09-10",
@@ -111,37 +136,12 @@
           "demand_inflation": false,
           "middle_east_cost": false
         },
-        "title": "박종우 부총재보 \"금융안정, 긴 시계로 봐야…10월 인상 해석 좀 무리\" - 연합인포맥스",
-        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1iVjE5LXhZaXlCWG9pcHNFNTNGVmtWTmdEd3FIRDJoc1VoZ3RUdExHT1A5RTdEbFZmQzByT3NZYWk3LXZLTi1kLUVzOTBVZV9JVW84R2h2a2dvSUhxdXZLMGstbXV0TW94YjQyalR0d1hPUHky0gF0QVVfeXFMTWJWMTkteFlpeUJYb2lwc0U1M0ZWa1ZOZ0R3cUhEMmhzVWhndFR0TEdPUDlFN0RsVmZDMHJPc1lhaTctdktOLWQtRXM5MFVlX0lVbzhHaHZrZ29JSHF1dksway1tdXRNb3hiNDJqVHR3WE9QeTI?oc=5",
-        "source_name": "연합인포맥스",
-        "published_at_kst": "2026-09-10T14:04+09:00",
+        "title": "박종우 부총재보 \"금융안정, 긴 시계로 봐야…10월 인상 해석 좀 무리\" - KB Think",
+        "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFB6WlRNcFVPTkJ4X3lnb2s3YjJVVEFCTlh2Y2VVaEJUNnRCWW9lR3YtQ2ZSM2xLcjhTaHUzdm1YdnpfQ054d2RVZnRWM2czbEZSOGRVSGdVcWhIdGUtUlhVMlpsR1dBS2lkNEZIb1k1bHNSQQ?oc=5",
+        "source_name": "KB Think",
+        "published_at_kst": "2026-09-10T12:00+09:00",
         "event_hash": "5be88233156f29ad1bc2ecc1a91836e3822516286e2c5ed7f0d36c0f802c6568",
         "score": -2
-      },
-      {
-        "speaker": "김종화",
-        "date": "2026-09-10",
-        "flags": {
-          "macroprudential_mix": false,
-          "neutral_upper": false,
-          "hike_timing_speed": false,
-          "two_hikes_effect": false,
-          "next_meeting_caution": false,
-          "middle_east_inflation": true,
-          "next_meeting_hawk": false,
-          "rate_not_only_tool": false,
-          "inflation_upside": false,
-          "middle_east_cost": false,
-          "hike_needed": true,
-          "oct_hike_caution": false,
-          "demand_inflation": false
-        },
-        "title": "김종화 금통위원 \"금리 추가 인상 시기·속도, 중동 긴장·반도체 파급 효과 등이 가를 것\" - v.daum.net",
-        "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8zMUF2NDQ2OVhGaU5fMzJTTnpiZW9ONXNpS3JXbzBWclNhS3ZiRmpod0o1ODNTWkxISUNKc0hsdjRUTk5oTi1maE9veTVCSW95WmQwNQ?oc=5",
-        "source_name": "v.daum.net",
-        "published_at_kst": "2026-09-10T12:02+09:00",
-        "event_hash": "cfc9ecc85da2f4cf06e52a4322dc9c7e5764e4f4b5d5a6c343b20b7ddf0d2528",
-        "score": 2
       }
     ],
     "seen_rhetoric_hashes": [
