@@ -8,10 +8,10 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT_JSON = ROOT / "out" / "clarity_watch_alert.json"
 
 STRICT_CRYPTO_RE = re.compile(
-    r"(?:\bCLARITY\b|H\.?\s*R\.?\s*3633|digital\s+asset(?:s)?|digital\s+commodit(?:y|ies)|"
-    r"crypto(?:-|\s*)asset(?:s)?|cryptocurrency|stablecoin(?:s)?|blockchain|"
-    r"tokeni[sz](?:ed|ation)|tokenized\s+securit(?:y|ies)|decentralized\s+finance|\bDeFi\b|"
-    r"virtual\s+currenc(?:y|ies)|non-security\s+crypto)",
+    r"(?:\bCLARITY\s+(?:Act|Bill|law)\b|Digital\s+Asset\s+Market\s+Clarity\s+Act|H\.?\s*R\.?\s*3633|"
+    r"digital\s+asset(?:s)?|digital\s+commodit(?:y|ies)|crypto(?:-|\s*)asset(?:s)?|cryptocurrency|"
+    r"stablecoin(?:s)?|blockchain|tokeni[sz](?:ed|ation)|tokenized\s+securit(?:y|ies)|"
+    r"decentralized\s+finance|\bDeFi\b|virtual\s+currenc(?:y|ies)|non-security\s+crypto)",
     re.I,
 )
 
@@ -21,7 +21,7 @@ def clean(value):
 
 
 def fetch_json(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "KHS-CLARITY-Watch/3.2"})
+    req = urllib.request.Request(url, headers={"User-Agent": "KHS-CLARITY-Watch/3.3"})
     with urllib.request.urlopen(req, timeout=25) as r:
         return json.loads(r.read().decode("utf-8"))
 
@@ -68,10 +68,9 @@ def classify_rule_type(meta, source):
         if raw_type == "rule" or "final rule" in raw_type:
             return "SEC·CFTC 최종규칙"
         return "SEC·CFTC 공식 규칙·해석·집행지침"
-    source_l = source.lower()
     if "제안규칙" in source:
         return "SEC·CFTC 제안규칙"
-    if "최종규칙" in source or "final rule" in source_l:
+    if "최종규칙" in source:
         return "SEC·CFTC 최종규칙"
     return "SEC·CFTC 공식 규칙·해석·집행지침"
 
@@ -122,11 +121,11 @@ def validate_federal_register_event(event):
     title = clean(meta.get("title") or event.get("title"))
     abstract = clean(meta.get("abstract"))
     action = clean(meta.get("action"))
-
-    # HARD GATE: relevance must appear in the document's own title/abstract/action.
-    # Agency names, broad topic tags, docket metadata, or surrounding search context
-    # can never make an otherwise unrelated SEC/CFTC document crypto-relevant.
     primary_context = " ".join([title, abstract, action])
+
+    # HARD GATE: only direct crypto/digital-asset/CLARITY-Act language in the document's
+    # own title, abstract, or action can qualify. Generic English words such as
+    # "clarity" never count as the CLARITY Act.
     if not STRICT_CRYPTO_RE.search(primary_context):
         return None, f"irrelevant_federal_register_document:{docno}:{title}"
 
