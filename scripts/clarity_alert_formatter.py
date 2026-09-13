@@ -131,6 +131,16 @@ def rule_stage(event):
     return ""
 
 
+def is_policy_pressure(event):
+    et = clean(event.get("event_type", ""))
+    return "통과 촉구" in et or "정책 압력" in et
+
+
+def is_political_risk(event):
+    et = clean(event.get("event_type", ""))
+    return "정치·윤리" in et or "이해충돌" in et
+
+
 def is_committee_commentary(event):
     source = clean(event.get("source", ""))
     if source not in {"상원 은행위원회", "상원 농업위원회"}:
@@ -161,6 +171,8 @@ def semantic_group(event):
         "markup" in title or "mark-up" in title or "advance clarity act" in title or "bipartisan vote" in title
     ):
         return ("senate_banking_committee_clarity_action", day)
+    if is_policy_pressure(event) or is_political_risk(event):
+        return (clean(event.get("event_type", "")), clean(event.get("policy_actor", "")) or title, day)
     return (
         clean(event.get("event_type", "")), source, day,
         re.sub(r"[^a-z0-9가-힣]+", " ", title).strip(),
@@ -183,6 +195,8 @@ def event_priority(event):
         score += 35
     elif source == "상원 은행위원회":
         score += 25
+    if is_policy_pressure(event) or is_political_risk(event):
+        score += 20
     return score
 
 
@@ -237,6 +251,10 @@ def fallback_korean(event):
     et = clean(event.get("event_type", ""))
     src = clean(event.get("source", ""))
     stage = rule_stage(event)
+    if is_policy_pressure(event):
+        return "Trump 대통령·Bessent 재무장관·백악관·상원 지도부 등 핵심 당사자가 CLARITY 법안의 통과 또는 절차 진행을 공개적으로 압박한 새 정책 신호입니다."
+    if is_political_risk(event):
+        return "CLARITY 법안의 윤리·이해충돌 조항이 상원 표 확보와 협상의 핵심 변수로 다시 부각됐습니다."
     if stage == "proposed":
         return "SEC 또는 CFTC가 암호자산 관련 제안규칙을 공개했습니다. 아직 최종 확정이 아니라 의견수렴·수정 가능성이 남아 있습니다."
     if stage == "final":
@@ -268,6 +286,10 @@ def localize_event(event):
 def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_policy_pressure(event):
+        return "실제 표결이나 법률 효력이 생긴 것은 아니지만, 대통령·재무장관·백악관 같은 최고위 당사자가 공개적으로 처리를 압박하면 상원 의원들의 협상 비용과 표결 시간표가 바뀔 수 있습니다. 따라서 ‘입법 절차 변화’와 별도로 통과 확률을 움직이는 정책 압력 신호로 봅니다."
+    if is_political_risk(event):
+        return "윤리·이해충돌 쟁점은 기업 실적을 바로 바꾸지는 않지만, 필요한 60표 확보를 어렵게 만들거나 수정안 협상을 길게 해 법안 시간표를 지연시킬 수 있습니다."
     if stage == "proposed":
         return "이 문서는 제안규칙입니다. 규칙 초안을 공개해 의견을 받는 단계이므로 아직 사업자에게 최종 의무가 확정된 것은 아니며, 의견수렴 뒤 내용이 바뀔 수 있습니다."
     if stage == "final":
@@ -284,6 +306,20 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_policy_pressure(event):
+        return [
+            "돈 버는 능력: 아직 법안 통과 전이므로 Coinbase·Circle의 현재 매출·마진이 직접 바뀐 것은 아닙니다.",
+            "할인율: 행정부의 공개 지지가 강해지면 미국 사업자의 규제 불확실성 프리미엄은 낮아지는 방향이지만 실제 표결 전에는 기대 효과입니다.",
+            "수급: COIN·CRCL 등 미국 규제권 사업자에는 입법 기대 수급이 붙을 수 있으나 BTC 자체 영향은 상대적으로 간접적입니다.",
+            "시간표: 이번 사건에서 가장 직접적으로 바뀌는 축입니다. 최고위 정책 당사자의 공개 압박은 motion to proceed·cloture·본회의 표결을 앞두고 협상 압력을 높입니다.",
+        ]
+    if is_political_risk(event):
+        return [
+            "돈 버는 능력: 윤리 논란 자체가 현재 사업자 매출을 바꾸지는 않습니다.",
+            "할인율: 법안 통과 불확실성이 커지면 미국 암호자산 사업자의 규제 위험 프리미엄이 다시 높아질 수 있습니다.",
+            "수급: 표결 부결 우려가 커지면 COIN·CRCL 기대 수급에 역풍이 될 수 있고 BTC 영향은 간접적입니다.",
+            "시간표: 60표 확보와 윤리 조항 협상을 지연시키는 핵심 실패 경로인지 확인해야 합니다.",
+        ]
     if "regulation crypto assets" in signal:
         return [
             "돈 버는 능력: Coinbase에는 규칙 명확화가 상장·중개·기관사업 확장에 긍정적일 수 있지만 새 등록·공시 의무가 비용으로 돌아올 수 있습니다. Circle은 스테이블코인 직접 적용 여부를 별도로 봐야 합니다.",
@@ -337,6 +373,10 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_policy_pressure(event):
+        return "최고위 정책 당사자의 공개 통과 촉구로 실제로 바뀐 축은 시간표와 규제 할인율이며 Coinbase·Circle에는 기대 호재, BTC에는 간접적 호재지만 아직 실제 표결·통과가 아니므로 실적 효과는 미확정이고 60표 미확보·윤리 조항 충돌·표결 연기가 최대 실패 경로입니다."
+    if is_political_risk(event):
+        return "이번 윤리·이해충돌 논란은 현재 돈 버는 능력보다 시간표와 규제 할인율의 역풍으로, 60표 확보를 어렵게 해 Coinbase·Circle의 입법 기대를 낮출 수 있으며 윤리 조항 합의 실패·표결 연기가 최대 실패 경로입니다."
     if "regulation crypto assets" in signal:
         return "SEC의 암호자산 규칙안은 Coinbase의 규제비용·상품확장 불확실성을 낮출 가능성이 있지만 아직 제안 단계라 확정 효과가 아니며, 최종 문안 변경·소송·정책 반전이 최대 실패 경로입니다."
     if stage == "proposed":
@@ -356,14 +396,15 @@ def event_block(event, index):
     title_ko, body_ko = localize_event(event)
     meaning = easy_meaning(event, body_ko)
     url = html.escape(event.get("url", ""), quote=True)
+    source_label = "검증 출처" if "정책 발언 검증" in clean(event.get("source", "")) else "공식 출처"
     lines = [
         f"<b>{index}. {html.escape(title_ko)}</b>",
         f"사건 유형: {html.escape(clean(event.get('event_type','')))}",
-        f"공식 출처: {html.escape(clean(event.get('source','')))}",
+        f"{source_label}: {html.escape(clean(event.get('source','')))}",
     ]
     if event.get("date"):
         formatted_date, converted_to_kst = format_event_date_korean(event.get("date", ""))
-        label = "공식 날짜(한국시간)" if converted_to_kst else "공식 날짜"
+        label = "발생·보도 시각(한국시간)" if (is_policy_pressure(event) or is_political_risk(event)) and converted_to_kst else ("공식 날짜(한국시간)" if converted_to_kst else "공식 날짜")
         lines.append(f"{label}: {html.escape(formatted_date)}")
     if body_ko:
         lines += ["", "<b>무슨 내용?</b>", html.escape(body_ko)]
@@ -376,7 +417,7 @@ def event_block(event, index):
 def build_chunks(events, limit=3900):
     if not events:
         return []
-    header = "<b>🔔 CLARITY 법안 공식 변화</b>"
+    header = "<b>🔔 CLARITY 법안 Watch — 표결·규제·정책압력</b>"
     blocks = [event_block(e, i) for i, e in enumerate(events, 1)]
     first_event = events[0]
     invest = ["<b>투자 4축</b>"] + [f"- {html.escape(x)}" for x in investment_lines(first_event)]
@@ -390,7 +431,7 @@ def build_chunks(events, limit=3900):
         candidate = current + "\n\n" + block
         if len(candidate) > limit and current != header:
             chunks.append(current)
-            current = "<b>CLARITY 법안 공식 변화 (계속)</b>\n\n" + block
+            current = "<b>CLARITY 법안 Watch (계속)</b>\n\n" + block
         else:
             current = candidate
     footer = "\n\n" + "\n".join(invest + tail)
@@ -398,7 +439,7 @@ def build_chunks(events, limit=3900):
         current += footer
     else:
         chunks.append(current)
-        current = "<b>CLARITY 법안 공식 변화 — 투자 해석</b>\n\n" + "\n".join(invest + tail)
+        current = "<b>CLARITY 법안 Watch — 투자 해석</b>\n\n" + "\n".join(invest + tail)
     chunks.append(current)
     return chunks
 
