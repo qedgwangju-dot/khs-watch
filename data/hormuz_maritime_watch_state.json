@@ -250,10 +250,17 @@
       "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPdGJzZjViSDJLRjE0WDJHdFVXM3FhUnpZRElnc1VVdWFuUVE1VHAzdmM3NEIyekFxeGZvS3dnOU9ySzZENW9xa0ViZF8xRHNuRl91Q3J4Tk15VlR1ZEQ2TW42SEpIdTRmNkZWQ3NxSExuX1F4UU9Kb1pfeEV3bG5WMVZUbw?oc=5",
       "published_utc": "2026-09-11T09:59:01Z",
       "first_seen_kst": "2026-09-13T14:48:53+09:00"
+    },
+    "5278c498012e6cec2c04": {
+      "source": "Anadolu Ajansı",
+      "title": "Fire breaks out on vessel after projectile strike in Strait of Hormuz: UKMTO - Anadolu Ajansı",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPWWM1dk1OZXBVMmxBOXA4U29HN3N1NTR4ZEZ1dXZXSS1rNWxQUXY1ZzMxb1lBcHdOUTA5WlkwQ21UcklPamZZYW4zZl9iUjg0bm1xMEtxMklIcHVfMHN0YlhPamJlcmduYlN2d2U4S01Tcm5xY3BVQzZXcm5wcWRfWmJpU21CT1drWUlDb3U0SUNmcFA2SmRaNnMwZ2hOX1F2ZHNJLXZuVEx4V3FHUGFCU2t2WmJXMC1LWXlteA?oc=5",
+      "published_utc": "2026-09-13T08:32:36Z",
+      "first_seen_kst": "2026-09-13T20:27:26+09:00"
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-09-13T14:48:53+09:00",
+  "last_checked_kst": "2026-09-13T20:27:26+09:00",
   "confirmed_events": {
     "news:2026-08-30:strike:hormuz:1": {
       "warning": null,
@@ -299,6 +306,17 @@
         "Arab News"
       ],
       "first_seen_kst": "2026-09-01T23:39:26+09:00"
+    },
+    "news:2026-09-13:strike:hormuz:x": {
+      "warning": null,
+      "event_kind": "strike",
+      "location": "hormuz",
+      "projectile_count": null,
+      "sources": [
+        "Reuters",
+        "Anadolu Ajansı"
+      ],
+      "first_seen_kst": "2026-09-13T20:27:26+09:00"
     }
   }
 }
