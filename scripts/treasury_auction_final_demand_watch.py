@@ -46,7 +46,7 @@ STATE_VERSION = 2
 
 
 def fetch(url: str, timeout: int = 30) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json,*/*;q=0.8"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read()
 
@@ -101,7 +101,6 @@ def money_bn(text: str) -> float | None:
         return v / 1000.0
     if "billion" in low:
         return v
-    # Treasury result PDFs usually print amounts in millions.
     if v > 1000:
         return v / 1000.0
     return v
@@ -117,10 +116,10 @@ def api_money_bn(value) -> float | None:
         return None
     av = abs(v)
     if av >= 100_000_000:
-        return v / 1_000_000_000.0  # whole dollars
+        return v / 1_000_000_000.0
     if av >= 10_000:
-        return v / 1_000.0  # millions of dollars
-    return v  # already billions
+        return v / 1_000.0
+    return v
 
 
 def api_num(record: dict, *keys: str) -> float | None:
@@ -148,33 +147,20 @@ def truthy_flag(value) -> bool:
     return str(value or "").strip().lower() in {"y", "yes", "true", "1", "t"}
 
 
-def has_value(value) -> bool:
-    return value not in (None, "", "null", "None")
-
-
 def is_inflation_indexed(record: dict) -> bool:
-    """Exclude TIPS that Treasury's API can classify as Note/Bond by base type."""
-    if (
+    """Exclude TIPS without treating nominal placeholder TIIN fields as positive flags."""
+    security_type = str(
+        record.get("securityType") or record.get("SecurityType")
+        or record.get("type") or record.get("Type") or ""
+    ).strip().lower()
+    if security_type == "tips":
+        return True
+    return (
         truthy_flag(record.get("inflationIndexSecurity"))
         or truthy_flag(record.get("inflation_index_security"))
         or truthy_flag(record.get("Tips"))
         or truthy_flag(record.get("tips"))
-    ):
-        return True
-    # TIPS-specific fields provide a second guard if the flag is renamed/omitted.
-    for key in (
-        "tiinConversionFactor",
-        "TIINConversionFactor",
-        "TiinConversionFactorPer1000",
-        "indexRatioOnIssueDate",
-        "IndexRatioOnIssueDate",
-        "referenceCPIOnDatedDate",
-        "ReferenceCPIDated",
-        "RefCpiOnDatedDate",
-    ):
-        if has_value(record.get(key)):
-            return True
-    return False
+    )
 
 
 def normalize_label(s: str) -> str:
@@ -188,18 +174,19 @@ def normalize_term(s: str) -> str:
 def classify_tenor(security_type: str, current_term: str, original_term: str = "") -> str | None:
     """Map original issues and reopenings to the security's original nominal tenor."""
     st = (security_type or "").strip().lower()
-    term_norm = normalize_term(original_term) or normalize_term(current_term)
-    if st == "note" and term_norm.startswith("10year"):
+    original_norm = normalize_term(original_term)
+    current_norm = normalize_term(current_term)
+    terms = {x for x in (original_norm, current_norm) if x}
+    if st == "note" and terms.intersection({"10year", "9year11month", "9year10month"}):
         return "10-Year Note"
-    if st == "bond" and term_norm.startswith("20year"):
+    if st == "bond" and terms.intersection({"20year", "19year11month", "19year10month"}):
         return "20-Year Bond"
-    if st == "bond" and term_norm.startswith("30year"):
+    if st == "bond" and terms.intersection({"30year", "29year11month", "29year10month"}):
         return "30-Year Bond"
     return None
 
 
 def auction_date_key(value: str | None) -> str:
-    """Return a YYYY-MM-DD key for API ISO dates and Treasury PDF date formats."""
     text = str(value or "").strip()
     m = re.match(r"(\d{4}-\d{2}-\d{2})", text)
     if m:
@@ -270,7 +257,6 @@ def api_results() -> list[Auction]:
             rec, "competitiveAccepted", "CompetitiveAccepted", "compAccepted", "competitive_accepted"
         )
         total_accepted = competitive_accepted or api_money(rec, "totalAccepted", "TotalAccepted", "total_accepted")
-        # Announcement rows can exist before results. Only completed results belong here.
         if btc is None or total_accepted is None:
             continue
 
@@ -279,8 +265,6 @@ def api_results() -> list[Auction]:
         ).strip() or None
         cusip = str(rec.get("cusip") or rec.get("Cusip") or rec.get("CUSIP") or "").strip()
         identity = f"{cusip or tenor}-{auction_date or 'unknown'}"
-        # Keep the existing state field name (seen_result_urls) and a clickable official
-        # source while giving every API result a stable unique identity.
         result_url = f"{RECENT_URL}#auction-{identity}"
 
         parsed.append(Auction(
@@ -295,9 +279,23 @@ def api_results() -> list[Auction]:
             direct_bn=api_money(rec, "directBidderAccepted", "DirectBidderAccepted", "direct_bidder_accepted"),
             dealer_bn=api_money(rec, "primaryDealerAccepted", "PrimaryDealerAccepted", "primary_dealer_accepted"),
             soma_bn=api_money(rec, "somaAccepted", "SomaAccepted", "SOMAAccepted", "soma_accepted"),
-            # Bidder shares are shares of competitive awards, not SOMA/noncompetitive awards.
             total_accepted_bn=total_accepted,
         ))
+
+    if not parsed:
+        samples = []
+        for rec in records[:5]:
+            if not isinstance(rec, dict):
+                continue
+            samples.append({
+                "securityType": rec.get("securityType") or rec.get("SecurityType") or rec.get("type") or rec.get("Type"),
+                "securityTerm": rec.get("securityTerm") or rec.get("SecurityTerm") or rec.get("term") or rec.get("Term"),
+                "originalSecurityTerm": rec.get("originalSecurityTerm") or rec.get("OriginalSecurityTerm") or rec.get("original_security_term"),
+                "auctionDate": rec.get("auctionDate") or rec.get("AuctionDate") or rec.get("auction_date"),
+                "bidToCoverRatio": rec.get("bidToCoverRatio") or rec.get("BidToCoverRatio") or rec.get("bid_to_cover_ratio"),
+                "tips": rec.get("Tips") or rec.get("tips"),
+            })
+        raise RuntimeError(f"Treasury API records={len(records)} parsed=0 samples={samples}")
 
     parsed.sort(key=lambda x: (auction_date_key(x.auction_date), x.tenor), reverse=True)
     return parsed
@@ -381,7 +379,6 @@ def parse_result(tenor: str, tenor_ko: str, url: str) -> Auction:
 
 
 def official_results() -> tuple[list[Auction], str]:
-    """Read the official machine-readable API first, then legacy official PDFs."""
     api_error = None
     try:
         rows = api_results()
@@ -427,7 +424,7 @@ def verdict(cur: Auction, prev: dict | None, hist: list[dict]) -> tuple[str, lis
     if cur.indirect_pct is not None and avg_ind is not None:
         signals.append(("간접낙찰", cur.indirect_pct - avg_ind))
     if cur.dealer_pct is not None and avg_dealer is not None:
-        signals.append(("딜러인수", avg_dealer - cur.dealer_pct))  # dealer lower = stronger
+        signals.append(("딜러인수", avg_dealer - cur.dealer_pct))
     score = sum(1 if d > 0.15 else -1 if d < -0.15 else 0 for _, d in signals)
     if score >= 2:
         return "🟢 장기채 입찰 최종수요 강함", [f"{n} 최근 평균 대비 개선" for n,d in signals if d > 0.15]
@@ -464,8 +461,6 @@ def main() -> int:
         if dates:
             latest_seen_date[tenor] = max(dates)
 
-    # Only results newer than the last accepted state boundary are actionable. This avoids
-    # replaying old reopenings that were missed by the previous exact-term parser.
     new = [
         x for x in parsed
         if x.result_url not in seen
@@ -474,7 +469,7 @@ def main() -> int:
             or auction_date_key(x.auction_date) > latest_seen_date[x.tenor]
         )
     ]
-    # Baseline or schema migration: never resend historical auctions.
+
     if not STATE_PATH.exists() or state.get("state_version") != STATE_VERSION:
         history = {}
         baseline = {
@@ -508,7 +503,6 @@ def main() -> int:
         )
         return 0
 
-    # One alert per newest unseen long auction to keep Telegram readable.
     cur = new[0]
     cur_key = auction_date_key(cur.auction_date)
     hist = []
@@ -571,7 +565,8 @@ def main() -> int:
     ALERT.write_text("\n".join(body), encoding="utf-8")
     DETAIL.write_text(json.dumps({"current": asdict(cur), "verdict": tag, "reasons": reasons, "source": source_name}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
 
-    rec = asdict(cur); rec.update({"indirect_pct": cur.indirect_pct, "direct_pct": cur.direct_pct, "dealer_pct": cur.dealer_pct})
+    rec = asdict(cur)
+    rec.update({"indirect_pct": cur.indirect_pct, "direct_pct": cur.direct_pct, "dealer_pct": cur.dealer_pct})
     history[cur.tenor] = (hist + [rec])[-12:]
     seen.add(cur.result_url)
     NEXT_STATE.write_text(json.dumps({"state_version": STATE_VERSION, "seen_result_urls": list(seen)[-100:], "history": history}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
