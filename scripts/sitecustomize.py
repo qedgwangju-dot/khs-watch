@@ -10,6 +10,11 @@ import urllib.parse as _urlparse
 _ORIGINAL_URLENCODE = _urlparse.urlencode
 
 
+def _explain_first(text: str, pattern: str, replacement: str) -> str:
+    """Explain only the first unexplained occurrence to keep alerts readable."""
+    return re.sub(pattern, replacement, text, count=1)
+
+
 def _koreanize_alert(text: str) -> str:
     replacements = [
         ("[Warsh 새 정보축] Money·Credit", "[Warsh 새 정보축] 통화·신용"),
@@ -50,6 +55,59 @@ def _koreanize_alert(text: str) -> str:
     text = text.replace("QoQ SAAR", "전분기 대비 연율")
     text = text.replace("MoM", "전월 대비")
     text = text.replace("YoY", "전년 대비")
+
+    # Beginner-friendly macro definitions. Add only at the first occurrence so
+    # the alert stays scannable while unfamiliar terms are explained in place.
+    text = _explain_first(
+        text,
+        r"근원 소비자물가(?!\s*\()",
+        "근원 소비자물가(식품·에너지 제외)",
+    )
+    text = _explain_first(
+        text,
+        r"근원 CPI(?!\s*\()",
+        "근원 CPI(식품·에너지 제외)",
+    )
+    text = _explain_first(
+        text,
+        r"근원 PCE(?!\s*\()",
+        "근원 PCE(식품·에너지 제외)",
+    )
+    text = _explain_first(
+        text,
+        r"종합 CPI(?!\s*\()",
+        "종합 CPI(식품·에너지 포함 전체 소비자물가)",
+    )
+    text = _explain_first(
+        text,
+        r"종합 PCE(?!\s*\()",
+        "종합 PCE(식품·에너지 포함 전체 개인소비지출 물가)",
+    )
+    text = _explain_first(
+        text,
+        r"\bCPI\b(?!\s*\()",
+        "CPI(소비자물가지수)",
+    )
+    text = _explain_first(
+        text,
+        r"\bPCE\b(?!\s*\()",
+        "PCE(개인소비지출 물가지수)",
+    )
+    text = _explain_first(
+        text,
+        r"장단기 금리차(?!\s*\()",
+        "장단기 금리차(장기금리와 단기금리의 차이)",
+    )
+    text = _explain_first(
+        text,
+        r"시장 선긴축(?!\s*\()",
+        "시장 선긴축(연준보다 시장금리가 먼저 올라 금융여건이 조여지는 현상)",
+    )
+    text = _explain_first(
+        text,
+        r"\bFOMC\b(?!\s*\()",
+        "FOMC(연방공개시장위원회)",
+    )
 
     text = text.replace("[AI·생산성·성장]", "[AI·생산성·성장 — 원문 문장은 식별용]")
     text = text.replace("[물가·고용·금리]", "[물가·고용·금리 — 원문 문장은 식별용]")
