@@ -5,6 +5,7 @@ on:
     paths:
       - "scripts/treasury_buyback_policy_watch.py"
       - "scripts/treasury_alert_korean_guard.py"
+      - "scripts/treasury_buyback_chain_enrich.py"
       - ".github/workflows/treasury-buyback-policy-telegram-alert.yml"
   schedule:
     # U.S. business hours during EDT. Check every 15 minutes.
@@ -42,6 +43,7 @@ jobs:
         run: |
           python -m py_compile scripts/treasury_buyback_policy_watch.py
           python -m py_compile scripts/treasury_alert_korean_guard.py
+          python -m py_compile scripts/treasury_buyback_chain_enrich.py
 
       - name: Check official Treasury buyback policy
         run: python scripts/treasury_buyback_policy_watch.py
@@ -91,16 +93,32 @@ jobs:
           alert_path.write_text(text, encoding="utf-8")
           PY
 
+      - name: Add announced cap to actual execution to rates and CTA chain
+        id: buyback_chain
+        if: always()
+        continue-on-error: true
+        run: PYTHONPATH=scripts python scripts/treasury_buyback_chain_enrich.py
+
       - name: Note market-verifier fallback
         if: always() && steps.treasury_interpretation.outcome == 'failure'
         run: |
           echo "⚠️ FRED 기반 보조 금리 검증 실패 — 공식 미 재무부 정책 감시·한국어 알림·상태 갱신은 계속 진행합니다." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Note buyback-chain fallback
+        if: always() && steps.buyback_chain.outcome == 'failure'
+        run: |
+          echo "⚠️ 바이백 실제 집행→금리→CTA 보강 실패 — 공식 정책 알림은 유지하고 보강층만 생략합니다." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publish status
         if: always()
         run: |
           if [ -f out/treasury_buyback_policy_status.md ]; then
             cat out/treasury_buyback_policy_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/treasury_buyback_policy_alert.html ]; then
+            echo >> "$GITHUB_STEP_SUMMARY"
+            echo "# Telegram 전송 예정 메시지" >> "$GITHUB_STEP_SUMMARY"
+            cat out/treasury_buyback_policy_alert.html >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Send interpreted material change
