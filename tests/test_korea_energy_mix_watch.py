@@ -62,15 +62,19 @@ def test_render_is_readable_and_ranks_2040_capacity():
     ])
     assert "#" not in body
     assert "2026년 8월 26일" in body
+    assert "<b>한눈에 보기</b>" in body
+    assert "<b>현재 단계</b>" in body
     assert "<b>핵심 분야</b>" in body
-    assert "<b>전기본 단계</b>" in body
+    assert "<b>지금 의미</b>" in body
+    assert "<b>다음 변곡점</b>" in body
     assert "<b>2040년 보급량 순위</b>" in body
     assert "1위  태양광  <b>155GW</b>" in body
     assert "2위  해상풍력  <b>45GW</b>" in body
     assert "3위  육상풍력  <b>16GW</b>" in body
     assert "자가용 태양광 포함 전체  <b>약 236GW</b>" in body
     assert "해상풍력 0.4 → 45GW  <b>112.5배</b>" in body
-    assert "<b>투자 의미</b>" in body
+    assert "<b>투자 판단 포인트</b>" in body
+    assert "기사 제목 자체가 아니라 전기본의 <b>숫자·정책 단계·공식화 여부가 실제로 바뀌었는지</b>를 추적" in body
     assert '<a href="https://example.com/story"><b>기사 원문 보기</b></a>' in body
 
 
