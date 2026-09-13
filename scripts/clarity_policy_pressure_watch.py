@@ -8,9 +8,8 @@ import pathlib
 import re
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from zoneinfo import ZoneInfo
-
-from bs4 import BeautifulSoup
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "clarity_policy_pressure_state.json"
@@ -18,40 +17,38 @@ PENDING_STATE_PATH = ROOT / "out" / "clarity_policy_pressure_pending_state.json"
 ALERT_JSON = ROOT / "out" / "clarity_watch_alert.json"
 STATUS_PATH = ROOT / "out" / "clarity_policy_pressure_status.json"
 
-GDELT_ENDPOINT = "https://api.gdeltproject.org/api/v2/doc/doc"
+NEWS_RSS = "https://news.google.com/rss/search"
 QUERIES = [
     '"CLARITY Act" Trump',
     '"CLARITY Act" Bessent',
     '"CLARITY Act" "White House"',
     '"CLARITY Act" Senate ethics',
-    '"Digital Asset Market Clarity Act" Senate',
 ]
 
-TIER1_DOMAINS = {
-    "reuters.com": "Reuters",
-    "bloomberg.com": "Bloomberg",
-    "news.bloomberglaw.com": "Bloomberg Law",
-    "news.bloombergtax.com": "Bloomberg Tax",
-    "coindesk.com": "CoinDesk",
-    "theblock.co": "The Block",
-    "semafor.com": "Semafor",
+TIER1_LABELS = {
+    "reuters": "Reuters",
+    "bloomberg": "Bloomberg",
+    "bloomberg law": "Bloomberg Law",
+    "bloomberg tax": "Bloomberg Tax",
+    "coindesk": "CoinDesk",
+    "the block": "The Block",
+    "semafor": "Semafor",
 }
-TIER2_DOMAINS = {
-    "cointelegraph.com": "Cointelegraph",
-    "cryptobriefing.com": "Crypto Briefing",
-    "bitcoinmagazine.com": "Bitcoin Magazine",
-    "benzinga.com": "Benzinga",
+TIER2_LABELS = {
+    "cointelegraph": "Cointelegraph",
+    "crypto briefing": "Crypto Briefing",
+    "bitcoin magazine": "Bitcoin Magazine",
+    "benzinga": "Benzinga",
 }
-DISCOVERY_ONLY_DOMAINS = {
-    "tokenpost.kr": "TokenPost",
-    "tokenpost.com": "TokenPost",
+DISCOVERY_ONLY_LABELS = {
+    "tokenpost": "TokenPost",
 }
 
 STRICT_TOPIC_RE = re.compile(
-    r"(?:\bCLARITY\s+(?:Act|Bill)\b|H\.?\s*R\.?\s*3633|Digital\s+Asset\s+Market\s+Clarity\s+Act|digital\s+asset\s+market\s+structure|crypto\s+market\s+structure)",
+    r"(?:\bCLARITY\s+(?:Act|Bill)\b|H\.?\s*R\.?\s*3633|Digital\s+Asset\s+Market\s+Clarity\s+Act|"
+    r"digital\s+asset\s+market\s+structure|crypto\s+market\s+structure|(?:crypto|digital\s+asset)\s+(?:bill|legislation))",
     re.I,
 )
-CRYPTO_BILL_RE = re.compile(r"\b(?:crypto|digital\s+asset)\s+(?:bill|legislation|market\s+structure)\b", re.I)
 ACTION_RE = re.compile(
     r"\b(?:urge[sd]?|call(?:s|ed)?\s+(?:on|for)|press(?:es|ed)?|push(?:es|ed)?|back(?:s|ed)?|support(?:s|ed)?|"
     r"advance[sd]?|pass(?:es|ed|age)?|motion\s+to\s+proceed|remain\s+at\s+the\s+negotiating\s+table|"
@@ -75,29 +72,15 @@ def clean(value):
     return re.sub(r"\s+", " ", html.unescape(str(value or ""))).strip()
 
 
-def fetch_json(url, timeout=12):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Policy-Watch/1.1)"})
+def fetch_bytes(url, timeout=15):
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Policy-Watch/1.2)"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read().decode("utf-8", "ignore"))
+        return r.read()
 
 
-def fetch_text(url, timeout=7):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read().decode("utf-8", "ignore"), r.geturl()
-
-
-def parse_seen_date(value):
-    value = clean(value)
-    if not value:
-        return None
-    for fmt in ("%Y%m%dT%H%M%SZ", "%Y%m%dT%H%M%S", "%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d %H:%M:%S"):
-        try:
-            return dt.datetime.strptime(value, fmt).replace(tzinfo=ZoneInfo("UTC"))
-        except ValueError:
-            pass
+def parse_date(value):
     try:
-        parsed = email.utils.parsedate_to_datetime(value)
+        parsed = email.utils.parsedate_to_datetime(clean(value))
         if parsed.tzinfo is None:
             parsed = parsed.replace(tzinfo=ZoneInfo("UTC"))
         return parsed.astimezone(ZoneInfo("UTC"))
@@ -105,14 +88,18 @@ def parse_seen_date(value):
         return None
 
 
-def domain_label(url):
-    host = urllib.parse.urlparse(url).netloc.lower().removeprefix("www.")
-    for domain, label in {**TIER1_DOMAINS, **TIER2_DOMAINS, **DISCOVERY_ONLY_DOMAINS}.items():
-        d = domain.removeprefix("www.")
-        if host == d or host.endswith("." + d):
-            tier = 1 if domain in TIER1_DOMAINS else (2 if domain in TIER2_DOMAINS else 3)
-            return tier, label
-    return 0, host
+def source_tier(label):
+    low = clean(label).lower()
+    for key, canonical in TIER1_LABELS.items():
+        if key in low:
+            return 1, canonical
+    for key, canonical in TIER2_LABELS.items():
+        if key in low:
+            return 2, canonical
+    for key, canonical in DISCOVERY_ONLY_LABELS.items():
+        if key in low:
+            return 3, canonical
+    return 0, clean(label)
 
 
 def extract_actor(text):
@@ -122,38 +109,60 @@ def extract_actor(text):
     return ""
 
 
-def article_body(url):
+def google_news_items(query):
+    params = urllib.parse.urlencode({"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"})
+    root = ET.fromstring(fetch_bytes(f"{NEWS_RSS}?{params}"))
+    items = []
+    for item in root.findall(".//item")[:60]:
+        title = clean(item.findtext("title"))
+        link = clean(item.findtext("link"))
+        pub = clean(item.findtext("pubDate"))
+        source_node = item.find("source")
+        source = clean(source_node.text if source_node is not None else "")
+        source_url = clean(source_node.attrib.get("url") if source_node is not None else "")
+        items.append({
+            "title": title,
+            "url": link,
+            "pubDate": pub,
+            "source": source,
+            "source_url": source_url,
+            "matched_query": query,
+        })
+    return items
+
+
+def resolve_original_url(news_url):
+    """Best effort only. A working Google News redirect is kept if publisher URL cannot be extracted."""
     try:
-        raw, final_url = fetch_text(url)
-        soup = BeautifulSoup(raw, "html.parser")
-        for tag in soup(["script", "style", "noscript", "svg"]):
-            tag.decompose()
-        return clean(soup.get_text(" ", strip=True))[:9000], final_url
+        req = urllib.request.Request(news_url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=8) as r:
+            final = r.geturl()
+            body = r.read(250000).decode("utf-8", "ignore")
+        if "news.google.com" not in urllib.parse.urlparse(final).netloc:
+            return final
+        # Google News pages often contain the publisher URL in canonical/amp links or JSON payloads.
+        for pattern in [
+            r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](https?://[^"\']+)',
+            r'"url"\s*:\s*"(https?:\\/\\/[^"\\]+)"',
+        ]:
+            m = re.search(pattern, body, re.I)
+            if m:
+                candidate = html.unescape(m.group(1)).replace("\\/", "/")
+                if "news.google.com" not in urllib.parse.urlparse(candidate).netloc:
+                    return candidate
     except Exception:
-        return "", url
+        pass
+    return news_url
 
 
-def gdelt_articles(query):
-    params = urllib.parse.urlencode({
-        "query": query,
-        "mode": "ArtList",
-        "maxrecords": 40,
-        "format": "json",
-        "sort": "DateDesc",
-    })
-    payload = fetch_json(f"{GDELT_ENDPOINT}?{params}")
-    return payload.get("articles") or []
-
-
-def make_signature(actor, title, event_type):
+def signature(actor, event_type, title):
     normalized = re.sub(r"[^a-z0-9가-힣]+", " ", clean(title).lower())
     normalized = re.sub(r"\b(?:today|yesterday|wednesday|thursday|friday|monday|tuesday|sunday|saturday)\b", " ", normalized)
     normalized = re.sub(r"\s+", " ", normalized).strip()
     return hashlib.sha256(f"{actor}|{event_type}|{normalized[:260]}".encode("utf-8")).hexdigest()
 
 
-def korean_event(article, actor, event_type, source_label, signal):
-    title = clean(article.get("title"))
+def korean_event(item, actor, event_type, source_label):
     if actor == "Trump 대통령":
         ko_title = "Trump 대통령, CLARITY 법안 처리·통과를 의회에 촉구"
     elif actor == "Bessent 재무장관":
@@ -166,27 +175,27 @@ def korean_event(article, actor, event_type, source_label, signal):
     if event_type == "정치·윤리 표결 변수":
         detail = (
             "CLARITY 법안 자체 조문 외에 대통령·정부 관계자의 암호자산 이해관계와 윤리 조항이 상원 표 확보의 변수로 부각됐습니다. "
-            "이는 법안의 현재 매출 효과보다 통과 확률과 시간표를 바꾸는 정치적 변수입니다."
+            "이는 현재 매출보다 통과 확률과 시간표를 바꾸는 정치적 변수입니다."
         )
     else:
         detail = (
             f"{actor or '미국 고위 정책 당사자'}가 CLARITY 법안의 통과·절차 진행을 공개적으로 압박한 새 발언이 신뢰 매체에서 확인됐습니다. "
-            "실제 표결이나 법률 효력 발생은 아니지만, 행정부가 입법 우선순위를 재확인했다는 점에서 상원 표결 시간표와 협상 압력에 영향을 줄 수 있습니다."
+            "실제 표결이나 법률 효력 발생은 아니지만 상원 표결 시간표와 협상 압력을 바꿀 수 있는 정책 신호입니다."
         )
-    if "national security" in signal.lower():
-        detail += " 특히 디지털자산 오용 대응을 국가안보 수단과 연결해 법안 처리 필요성을 강조했습니다."
+        if "national security" in item["title"].lower() or "allies" in item["title"].lower():
+            detail += " 미국의 디지털자산 주도권과 국가안보 논리까지 연결해 처리 필요성을 강조했습니다."
 
-    seen = parse_seen_date(article.get("seendate"))
-    date = seen.astimezone(ZoneInfo("America/New_York")).strftime("%a, %d %b %Y %H:%M:%S %z") if seen else ""
+    published = parse_date(item["pubDate"])
+    date = published.astimezone(ZoneInfo("America/New_York")).strftime("%a, %d %b %Y %H:%M:%S %z") if published else ""
     return {
         "source": f"{source_label} 정책 발언 검증",
         "event_type": event_type,
         "title": ko_title,
-        "url": clean(article.get("url")),
+        "url": resolve_original_url(item["url"]),
         "date": date,
         "detail": detail,
         "policy_actor": actor,
-        "reported_title": title,
+        "reported_title": item["title"],
     }
 
 
@@ -201,89 +210,63 @@ def load_state():
 
 def main():
     now = dt.datetime.now(ZoneInfo("UTC"))
-    freshness_cutoff = now - dt.timedelta(days=4)
-    by_url = {}
+    cutoff = now - dt.timedelta(days=4)
     errors = []
+    by_key = {}
     for query in QUERIES:
         try:
-            for article in gdelt_articles(query):
-                url = clean(article.get("url"))
-                if not url:
-                    continue
-                record = by_url.setdefault(url, dict(article))
-                record.setdefault("matched_queries", [])
-                record["matched_queries"].append(query)
+            for item in google_news_items(query):
+                key = (item["title"], item["source"], item["pubDate"])
+                if key not in by_key:
+                    by_key[key] = item
+                else:
+                    by_key[key]["matched_query"] += " | " + query
         except Exception as exc:
             errors.append(f"{query}: {exc}")
 
-    prelim = []
-    for article in by_url.values():
-        url = clean(article.get("url"))
-        tier, source_label = domain_label(url)
+    candidates = []
+    for item in by_key.values():
+        published = parse_date(item["pubDate"])
+        if published is None or published < cutoff or published > now + dt.timedelta(hours=2):
+            continue
+        tier, source_label = source_tier(item["source"])
         if tier == 0:
             continue
-        seen = parse_seen_date(article.get("seendate"))
-        if seen is None or seen < freshness_cutoff or seen > now + dt.timedelta(hours=2):
-            continue
-        title = clean(article.get("title"))
+        title = item["title"]
         actor = extract_actor(title)
-        if not actor or not ACTION_RE.search(title):
+        if not actor or not ACTION_RE.search(title) or not STRICT_TOPIC_RE.search(title):
             continue
-        prelim.append((seen, article, tier, source_label, actor))
+        event_type = "정치·윤리 표결 변수" if RISK_RE.search(title) else "행정부·핵심 당사자 통과 촉구"
+        candidates.append({"item": item, "actor": actor, "event_type": event_type, "tier": tier, "source_label": source_label})
 
-    # Keep network work bounded. Newest, most relevant accepted-source headlines are checked first.
-    prelim.sort(key=lambda x: x[0], reverse=True)
-    candidates = []
-    for seen, article, tier, source_label, actor in prelim[:30]:
-        title = clean(article.get("title"))
-        matched_query_text = " ".join(article.get("matched_queries") or [])
-        title_already_specific = bool(STRICT_TOPIC_RE.search(title) or CRYPTO_BILL_RE.search(title))
-        signal = title
-        if not title_already_specific:
-            body, final_url = article_body(clean(article.get("url")))
-            article["url"] = final_url or clean(article.get("url"))
-            signal = clean(f"{title} {body}")
-        # Exact CLARITY GDELT query + an explicit 'crypto bill' headline is sufficient when the outlet is accepted.
-        topic_ok = bool(STRICT_TOPIC_RE.search(signal) or (CRYPTO_BILL_RE.search(title) and "CLARITY Act" in matched_query_text))
-        if not topic_ok or not ACTION_RE.search(signal):
-            continue
-        event_type = "정치·윤리 표결 변수" if RISK_RE.search(signal) else "행정부·핵심 당사자 통과 촉구"
-        candidates.append({
-            "article": article,
-            "actor": actor,
-            "event_type": event_type,
-            "tier": tier,
-            "source_label": source_label,
-            "signal": signal,
-        })
+    groups = {}
+    for candidate in candidates:
+        groups.setdefault((candidate["actor"], candidate["event_type"]), []).append(candidate)
 
     accepted = []
-    groups = {}
-    for item in candidates:
-        groups.setdefault((item["actor"], item["event_type"]), []).append(item)
-    for group_items in groups.values():
-        tier1 = [x for x in group_items if x["tier"] == 1]
+    for group in groups.values():
+        tier1 = [x for x in group if x["tier"] == 1]
         if tier1:
-            accepted.append(sorted(tier1, key=lambda x: parse_seen_date(x["article"].get("seendate")) or dt.datetime.min.replace(tzinfo=ZoneInfo("UTC")), reverse=True)[0])
+            accepted.append(max(tier1, key=lambda x: parse_date(x["item"]["pubDate"]) or dt.datetime.min.replace(tzinfo=ZoneInfo("UTC"))))
             continue
-        tier2 = [x for x in group_items if x["tier"] == 2]
+        tier2 = [x for x in group if x["tier"] == 2]
         if len({x["source_label"] for x in tier2}) >= 2:
-            accepted.append(sorted(tier2, key=lambda x: parse_seen_date(x["article"].get("seendate")) or dt.datetime.min.replace(tzinfo=ZoneInfo("UTC")), reverse=True)[0])
+            accepted.append(max(tier2, key=lambda x: parse_date(x["item"]["pubDate"]) or dt.datetime.min.replace(tzinfo=ZoneInfo("UTC"))))
 
     state = load_state()
     baseline = not bool(state.get("initialized"))
-    seen_keys = set(state.get("seen_signatures") or [])
-    current_signatures = []
+    old_seen = set(state.get("seen_signatures") or [])
+    current = []
     new_events = []
-    for item in accepted:
-        article = item["article"]
-        sig = make_signature(item["actor"], article.get("title", ""), item["event_type"])
-        current_signatures.append(sig)
-        if baseline or sig in seen_keys:
+    for candidate in accepted:
+        item = candidate["item"]
+        sig = signature(candidate["actor"], candidate["event_type"], item["title"])
+        current.append(sig)
+        if baseline or sig in old_seen:
             continue
-        new_events.append(korean_event(article, item["actor"], item["event_type"], item["source_label"], item["signal"]))
+        new_events.append(korean_event(item, candidate["actor"], candidate["event_type"], candidate["source_label"]))
 
-    merged = list(dict.fromkeys(list(state.get("seen_signatures") or []) + current_signatures))[-500:]
+    merged = list(dict.fromkeys(list(state.get("seen_signatures") or []) + current))[-500:]
     PENDING_STATE_PATH.write_text(json.dumps({
         "initialized": True,
         "last_checked_utc": now.isoformat(timespec="seconds"),
@@ -304,8 +287,8 @@ def main():
 
     STATUS_PATH.write_text(json.dumps({
         "baseline": baseline,
-        "raw_articles": len(by_url),
-        "preliminary": len(prelim),
+        "raw_articles": len(by_key),
+        "candidates": len(candidates),
         "accepted_current": len(accepted),
         "new_events": len(new_events),
         "errors": errors,
