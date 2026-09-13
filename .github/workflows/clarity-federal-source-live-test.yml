@@ -1,0 +1,82 @@
+name: CLARITY Federal source live test
+
+on:
+  push:
+    paths:
+      - ".github/workflows/clarity-federal-source-live-test.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  live-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify exact JSON XML MODS routes and rejection
+        run: |
+          mkdir -p out data
+          python - <<'PY'
+          import json, pathlib, urllib.request
+
+          urls = {
+              "json": "https://www.federalregister.gov/api/v1/documents/2026-18424?publication_date=2026-09-10",
+              "xml": "https://www.federalregister.gov/documents/full_text/xml/2026/09/10/2026-18424.xml",
+              "mods": "https://www.govinfo.gov/metadata/granule/FR-2026-09-10/2026-18424/mods.xml",
+          }
+          out = {}
+          for name, url in urls.items():
+              req = urllib.request.Request(url, headers={"User-Agent":"Mozilla/5.0"})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  body = r.read().decode("utf-8", "ignore")
+                  out[name] = {"url": url, "status": r.status, "content_type": r.headers.get("content-type"), "bytes": len(body)}
+                  if r.status != 200:
+                      raise RuntimeError(f"{name} returned {r.status}")
+                  if name == "json":
+                      meta = json.loads(body)
+                      out[name]["title"] = meta.get("title")
+                      out[name]["type"] = meta.get("type")
+                      if "Political Contributions by Certain Investment Advisers" not in str(meta.get("title")):
+                          raise RuntimeError("unexpected JSON title")
+                      if "Proposed" not in str(meta.get("type")):
+                          raise RuntimeError("JSON did not identify Proposed Rule")
+                  elif name == "xml":
+                      if "Political Contributions by Certain Investment Advisers" not in body and "206(4)-5" not in body:
+                          raise RuntimeError("unexpected XML body")
+                  elif name == "mods":
+                      if "2026-18424" not in body and "Political Contributions by Certain Investment Advisers" not in body:
+                          raise RuntimeError("unexpected MODS body")
+
+          pathlib.Path("out/clarity_watch_alert.json").write_text(json.dumps([{
+              "source":"SEC Federal Register 제안규칙",
+              "event_type":"SEC·CFTC 공식 규칙·해석·집행지침",
+              "title":"Political Contributions by Certain Investment Advisers",
+              "url":"https://www.federalregister.gov/documents/2026/09/10/2026-18424/political-contributions-by-certain-investment-advisers",
+              "date":"2026-09-10",
+              "detail":""
+          }], ensure_ascii=False), encoding="utf-8")
+
+          import subprocess
+          subprocess.run(["python", "scripts/clarity_alert_guard.py"], check=True)
+          filtered = json.loads(pathlib.Path("out/clarity_watch_alert.json").read_text(encoding="utf-8"))
+          report = json.loads(pathlib.Path("out/clarity_alert_guard_report.json").read_text(encoding="utf-8"))
+          if filtered:
+              raise RuntimeError("unrelated 2026-18424 was not rejected")
+          out["guard"] = report
+          pathlib.Path("data/clarity_federal_source_live_test.json").write_text(json.dumps(out, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+          print(json.dumps(out, ensure_ascii=False, indent=2))
+          PY
+      - name: Commit live-test result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/clarity_federal_source_live_test.json
+          git commit -m "Record CLARITY Federal source live test"
+          git pull --rebase origin main
+          git push
