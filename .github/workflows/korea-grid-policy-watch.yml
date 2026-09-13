@@ -65,17 +65,17 @@ jobs:
           fi
           python scripts/korea_grid_policy_watch_v2.py $EXTRA
 
-      - name: 두 번째 알림 봇으로 Telegram 전송
+      - name: 지정 전기본·전원믹스 알림 봇으로 Telegram 전송
         if: steps.grid.outputs.changed == 'true'
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.ENERGY_MIX_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.ENERGY_MIX_TELEGRAM_CHAT_ID }}
           FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
-          EXPECTED_TELEGRAM_BOT_USERNAME: hs8879887988798879_bot
+          EXPECTED_TELEGRAM_BOT_USERNAME: khs887988798879887988798879_bot
           REPORT_PATH: ${{ steps.grid.outputs.report_path }}
         run: |
           if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
-            echo "YEN_CARRY_TELEGRAM_BOT_TOKEN이 없습니다." >&2
+            echo "ENERGY_MIX_TELEGRAM_BOT_TOKEN이 없습니다." >&2
             exit 1
           fi
 
@@ -104,7 +104,7 @@ jobs:
           if not me.get("ok"):
               raise RuntimeError(f"Telegram getMe 실패: {me}")
           actual = str(me.get("result", {}).get("username", ""))
-          if actual != expected:
+          if actual.lower() != expected.lower():
               raise RuntimeError(
                   f"잘못된 Telegram 봇 경로 차단: expected=@{expected}, actual=@{actual or '확인불가'}"
               )
