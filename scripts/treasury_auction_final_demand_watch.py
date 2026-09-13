@@ -154,16 +154,23 @@ def has_value(value) -> bool:
 
 def is_inflation_indexed(record: dict) -> bool:
     """Exclude TIPS that Treasury's API can classify as Note/Bond by base type."""
-    if truthy_flag(record.get("inflationIndexSecurity")) or truthy_flag(record.get("inflation_index_security")):
+    if (
+        truthy_flag(record.get("inflationIndexSecurity"))
+        or truthy_flag(record.get("inflation_index_security"))
+        or truthy_flag(record.get("Tips"))
+        or truthy_flag(record.get("tips"))
+    ):
         return True
     # TIPS-specific fields provide a second guard if the flag is renamed/omitted.
     for key in (
         "tiinConversionFactor",
         "TIINConversionFactor",
+        "TiinConversionFactorPer1000",
         "indexRatioOnIssueDate",
         "IndexRatioOnIssueDate",
         "referenceCPIOnDatedDate",
         "ReferenceCPIDated",
+        "RefCpiOnDatedDate",
     ):
         if has_value(record.get(key)):
             return True
@@ -241,23 +248,36 @@ def api_results() -> list[Auction]:
     for rec in records:
         if not isinstance(rec, dict) or is_inflation_indexed(rec):
             continue
-        security_type = str(rec.get("securityType") or rec.get("type") or "").strip().lower()
-        current_term = str(rec.get("securityTerm") or rec.get("term") or "").strip()
-        original_term = str(rec.get("originalSecurityTerm") or rec.get("original_security_term") or "").strip()
+        security_type = str(
+            rec.get("securityType") or rec.get("SecurityType")
+            or rec.get("type") or rec.get("Type") or ""
+        ).strip().lower()
+        current_term = str(
+            rec.get("securityTerm") or rec.get("SecurityTerm")
+            or rec.get("term") or rec.get("Term") or ""
+        ).strip()
+        original_term = str(
+            rec.get("originalSecurityTerm") or rec.get("OriginalSecurityTerm")
+            or rec.get("original_security_term") or ""
+        ).strip()
         tenor = classify_tenor(security_type, current_term, original_term)
         if tenor is None:
             continue
 
-        btc = api_num(rec, "bidToCoverRatio", "bid_to_cover_ratio")
-        high_yield = api_num(rec, "highYield", "high_yield")
-        competitive_accepted = api_money(rec, "competitiveAccepted", "compAccepted", "competitive_accepted")
-        total_accepted = competitive_accepted or api_money(rec, "totalAccepted", "total_accepted")
+        btc = api_num(rec, "bidToCoverRatio", "BidToCoverRatio", "bid_to_cover_ratio")
+        high_yield = api_num(rec, "highYield", "HighYield", "high_yield")
+        competitive_accepted = api_money(
+            rec, "competitiveAccepted", "CompetitiveAccepted", "compAccepted", "competitive_accepted"
+        )
+        total_accepted = competitive_accepted or api_money(rec, "totalAccepted", "TotalAccepted", "total_accepted")
         # Announcement rows can exist before results. Only completed results belong here.
         if btc is None or total_accepted is None:
             continue
 
-        auction_date = str(rec.get("auctionDate") or rec.get("auction_date") or "").strip() or None
-        cusip = str(rec.get("cusip") or rec.get("CUSIP") or "").strip()
+        auction_date = str(
+            rec.get("auctionDate") or rec.get("AuctionDate") or rec.get("auction_date") or ""
+        ).strip() or None
+        cusip = str(rec.get("cusip") or rec.get("Cusip") or rec.get("CUSIP") or "").strip()
         identity = f"{cusip or tenor}-{auction_date or 'unknown'}"
         # Keep the existing state field name (seen_result_urls) and a clickable official
         # source while giving every API result a stable unique identity.
@@ -268,13 +288,13 @@ def api_results() -> list[Auction]:
             tenor_ko=TARGETS[tenor],
             auction_date=auction_date,
             result_url=result_url,
-            offering_bn=api_money(rec, "offeringAmount", "offeringAmt", "offering_amount"),
+            offering_bn=api_money(rec, "offeringAmount", "OfferingAmount", "offeringAmt", "offering_amount"),
             high_yield=high_yield,
             btc=btc,
-            indirect_bn=api_money(rec, "indirectBidderAccepted", "indirect_bidder_accepted"),
-            direct_bn=api_money(rec, "directBidderAccepted", "direct_bidder_accepted"),
-            dealer_bn=api_money(rec, "primaryDealerAccepted", "primary_dealer_accepted"),
-            soma_bn=api_money(rec, "somaAccepted", "soma_accepted"),
+            indirect_bn=api_money(rec, "indirectBidderAccepted", "IndirectBidderAccepted", "indirect_bidder_accepted"),
+            direct_bn=api_money(rec, "directBidderAccepted", "DirectBidderAccepted", "direct_bidder_accepted"),
+            dealer_bn=api_money(rec, "primaryDealerAccepted", "PrimaryDealerAccepted", "primary_dealer_accepted"),
+            soma_bn=api_money(rec, "somaAccepted", "SomaAccepted", "SOMAAccepted", "soma_accepted"),
             # Bidder shares are shares of competitive awards, not SOMA/noncompetitive awards.
             total_accepted_bn=total_accepted,
         ))
