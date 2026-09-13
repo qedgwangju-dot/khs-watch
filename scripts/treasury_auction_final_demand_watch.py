@@ -253,10 +253,18 @@ def api_results() -> list[Auction]:
 
         btc = api_num(rec, "bidToCoverRatio", "BidToCoverRatio", "bid_to_cover_ratio")
         high_yield = api_num(rec, "highYield", "HighYield", "high_yield")
+        indirect_bn = api_money(rec, "indirectBidderAccepted", "IndirectBidderAccepted", "indirect_bidder_accepted")
+        direct_bn = api_money(rec, "directBidderAccepted", "DirectBidderAccepted", "direct_bidder_accepted")
+        dealer_bn = api_money(rec, "primaryDealerAccepted", "PrimaryDealerAccepted", "primary_dealer_accepted")
+        bidder_values = (indirect_bn, direct_bn, dealer_bn)
+        bidder_total = sum(bidder_values) if all(v is not None for v in bidder_values) else None
         competitive_accepted = api_money(
-            rec, "competitiveAccepted", "CompetitiveAccepted", "compAccepted", "competitive_accepted"
+            rec, "competitiveAccepted", "CompetitiveAccepted", "compAccepted", "CompAccepted", "competitive_accepted"
         )
-        total_accepted = competitive_accepted or api_money(rec, "totalAccepted", "TotalAccepted", "total_accepted")
+        reported_total = api_money(rec, "totalAccepted", "TotalAccepted", "total_accepted")
+        # Bidder allocation shares use competitive awards only. Prefer the exact sum of
+        # Primary Dealer + Direct + Indirect; fall back to reported competitive/total awards.
+        total_accepted = bidder_total or competitive_accepted or reported_total
         if btc is None or total_accepted is None:
             continue
 
@@ -272,12 +280,12 @@ def api_results() -> list[Auction]:
             tenor_ko=TARGETS[tenor],
             auction_date=auction_date,
             result_url=result_url,
-            offering_bn=api_money(rec, "offeringAmount", "OfferingAmount", "offeringAmt", "offering_amount"),
+            offering_bn=api_money(rec, "offeringAmount", "OfferingAmount", "offeringAmt", "OfferingAmt", "offering_amount"),
             high_yield=high_yield,
             btc=btc,
-            indirect_bn=api_money(rec, "indirectBidderAccepted", "IndirectBidderAccepted", "indirect_bidder_accepted"),
-            direct_bn=api_money(rec, "directBidderAccepted", "DirectBidderAccepted", "direct_bidder_accepted"),
-            dealer_bn=api_money(rec, "primaryDealerAccepted", "PrimaryDealerAccepted", "primary_dealer_accepted"),
+            indirect_bn=indirect_bn,
+            direct_bn=direct_bn,
+            dealer_bn=dealer_bn,
             soma_bn=api_money(rec, "somaAccepted", "SomaAccepted", "SOMAAccepted", "soma_accepted"),
             total_accepted_bn=total_accepted,
         ))
@@ -293,6 +301,11 @@ def api_results() -> list[Auction]:
                 "originalSecurityTerm": rec.get("originalSecurityTerm") or rec.get("OriginalSecurityTerm") or rec.get("original_security_term"),
                 "auctionDate": rec.get("auctionDate") or rec.get("AuctionDate") or rec.get("auction_date"),
                 "bidToCoverRatio": rec.get("bidToCoverRatio") or rec.get("BidToCoverRatio") or rec.get("bid_to_cover_ratio"),
+                "competitiveAccepted": rec.get("competitiveAccepted") or rec.get("CompetitiveAccepted") or rec.get("compAccepted") or rec.get("CompAccepted"),
+                "totalAccepted": rec.get("totalAccepted") or rec.get("TotalAccepted"),
+                "indirectAccepted": rec.get("indirectBidderAccepted") or rec.get("IndirectBidderAccepted"),
+                "directAccepted": rec.get("directBidderAccepted") or rec.get("DirectBidderAccepted"),
+                "dealerAccepted": rec.get("primaryDealerAccepted") or rec.get("PrimaryDealerAccepted"),
                 "tips": rec.get("Tips") or rec.get("tips"),
             })
         raise RuntimeError(f"Treasury API records={len(records)} parsed=0 samples={samples}")
