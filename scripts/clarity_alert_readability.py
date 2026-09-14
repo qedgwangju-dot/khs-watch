@@ -26,6 +26,11 @@ def is_ethics_breakthrough(event):
     return "윤리 합의 진전" in clean(event.get("event_type", ""))
 
 
+def is_media_text_release(event):
+    et = clean(event.get("event_type", ""))
+    return bool(event.get("text_release")) or ("문안 공개" in et and "신뢰매체" in et)
+
+
 def event_rank(event):
     et = clean(event.get("event_type", ""))
     title = clean(event.get("title", "")).lower()
@@ -35,6 +40,8 @@ def event_rank(event):
         return 190
     if "원문·핵심 조항 수정" in et or "원문 버전" in et:
         return 180
+    if is_media_text_release(event):
+        return 178
     if is_ethics_breakthrough(event):
         return 175
     if FMT.rule_stage(event) == "final":
@@ -56,6 +63,8 @@ def localized(event):
 
 def short_change(event, title_ko, body_ko):
     et = clean(event.get("event_type", ""))
+    if is_media_text_release(event):
+        return "상원 공화당의 CLARITY 최신·최종 초안 공개가 신뢰매체에서 확인됐습니다. 단순 발언이 아니라 법안 문안 자체가 바뀐 상태 변화이며, 공식 Senate/GovInfo 원문으로 조항을 재확인하는 단계입니다."
     if is_ethics_breakthrough(event):
         return "Trump 대통령이 Tillis–Gallego 윤리 절충안의 약 80%를 수용했다는 신뢰 보도가 확인됐고, 60표 확보의 핵심 정치적 장애물이 완화되는 방향으로 바뀌었습니다."
     if "표결 결과" in et:
@@ -81,6 +90,8 @@ def short_change(event, title_ko, body_ko):
 def current_status(event):
     et = clean(event.get("event_type", ""))
     verification = clean(event.get("verification_status", ""))
+    if is_media_text_release(event):
+        return "🟡 문안 변화 확인 — 신뢰매체가 새 초안 공개를 확인했지만, 공식 Senate Banking·GovInfo·Congress.gov 원문을 확보해 실제 조항을 잠그기 전까지는 ‘공식 문안 확정’으로 올리지 않습니다."
     if is_ethics_breakthrough(event):
         return "🟡 협상 진전 — 보좌관·신뢰매체 확인. 백악관 공개 확인과 개정 법안 원문은 아직 대기 중입니다."
     stage = FMT.rule_stage(event)
@@ -114,7 +125,18 @@ def ethics_investment_lines():
     ]
 
 
+def media_text_investment_lines():
+    return [
+        "돈 버는 능력 → 아직 직접 변화 없음. 새 초안이 공개돼도 법안 통과·시행 전까지 COIN·CRCL 현재 매출·마진은 그대로입니다.",
+        "할인율 ↑/△ 문안 가시성은 규제 불확실성을 줄이는 방향이지만, 공식 원문과 최종 표결 전에는 확정 효과가 아닙니다.",
+        "수급 ↑/△ 윤리·DeFi·stablecoin·SEC/CFTC 조항이 시장 기대를 바꿀 수 있어 COIN·CRCL에는 더 직접적이고 BTC에는 간접적입니다.",
+        "시간표 ↑ 최신 초안 공개는 60표 절차표결 직전 협상이 실제 문안 단계로 진입했다는 신호입니다. 다음 관문은 공식 원문 확인과 cloture 결과입니다.",
+    ]
+
+
 def investment_lines(event):
+    if is_media_text_release(event):
+        return media_text_investment_lines()
     if is_ethics_breakthrough(event):
         return ethics_investment_lines()
     return FMT.investment_lines(event)
@@ -122,6 +144,8 @@ def investment_lines(event):
 
 def impact_snapshot(event):
     et = clean(event.get("event_type", ""))
+    if is_media_text_release(event):
+        return "시간표 ↑ · 할인율 ↑/△ · 수급 ↑/△ · 돈 버는 능력 →"
     if is_ethics_breakthrough(event):
         return "시간표 ↑↑ · 할인율 ↑ · 수급 ↑/△ · 돈 버는 능력 →"
     if "표결 결과" in et or "토론종결" in et:
@@ -154,7 +178,13 @@ def pending_lines(event):
         for part in re.split(r"\s*/\s*", verification):
             if part:
                 lines.append(part)
-    if is_ethics_breakthrough(event):
+    if is_media_text_release(event):
+        lines.extend([
+            "Senate Banking·GovInfo·Congress.gov에 올라온 실제 개정 원문",
+            "윤리·State AG 집행권·DeFi·stablecoin rewards·SEC/CFTC 권한의 최종 문구",
+            "새 초안이 60표 확보에 충분한지 여부",
+        ])
+    elif is_ethics_breakthrough(event):
         lines.extend([
             "White House의 공개 확인 여부",
             "개정 CLARITY 법안 원문에 실제로 들어간 윤리 조항 문구",
@@ -171,6 +201,8 @@ def pending_lines(event):
 
 def next_check_lines(event):
     et = clean(event.get("event_type", ""))
+    if is_media_text_release(event):
+        return ["공식 개정 법안 PDF·텍스트 확보", "직전 버전과 조문별 diff", "상원 cloture·motion to proceed 60표 결과"]
     if is_ethics_breakthrough(event):
         return ["백악관 공개 확인", "개정 법안 원문 공개", "상원 cloture·motion to proceed 및 찬반 숫자"]
     if "본회의 일정" in et:
@@ -211,7 +243,16 @@ def ethics_core_summary():
     )
 
 
+def media_text_core_summary():
+    return (
+        "상원 공화당의 최신 CLARITY 초안 공개 보도는 기사 자체가 아니라 법안 문안이 바뀐 상태 변화로, 시간표·규제 할인율에는 긍정적이지만 현재 돈 버는 능력은 아직 그대로이며 "
+        "공식 원문에서 윤리·DeFi·stablecoin·SEC/CFTC 조항을 확인하고 실제 60표를 확보하지 못하면 기대 효과가 되돌려지는 것이 핵심 실패 경로입니다."
+    )
+
+
 def core_summary(event):
+    if is_media_text_release(event):
+        return media_text_core_summary()
     return ethics_core_summary() if is_ethics_breakthrough(event) else FMT.core_summary(event)
 
 
