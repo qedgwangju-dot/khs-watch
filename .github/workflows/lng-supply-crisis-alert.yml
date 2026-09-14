@@ -31,6 +31,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v26.py"
       - "scripts/lng_supply_crisis_alert_v27.py"
       - "scripts/lng_supply_crisis_alert_v28.py"
+      - "scripts/lng_supply_crisis_alert_v29.py"
       - "scripts/lng_supply_crisis_qatar_us_overlay.py"
 
 permissions:
@@ -56,15 +57,16 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v28 monitor
+      - name: Validate v29 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_alert_v28.py scripts/lng_supply_crisis_qatar_us_overlay.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_alert_v28.py scripts/lng_supply_crisis_alert_v29.py scripts/lng_supply_crisis_qatar_us_overlay.py
           python - <<'PY'
           import sys, time
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
           import lng_supply_crisis_alert_v27 as v27
           import lng_supply_crisis_alert_v28 as v28
+          import lng_supply_crisis_alert_v29 as v29
 
           titles = [
               "Saudi pipeline outage threatens loss of 4% of global oil supply",
@@ -84,18 +86,49 @@ jobs:
           )
           groups = v27.confirmed_news_groups_v27([item])
           assert any(g.get("subtype") == "hormuz_bypass_shutdown" for g in groups)
-          section = "\n".join(v27._bypass_section(groups, {}))
-          assert "700만배럴/일" in section and "5~7일" in section and "세계 원유 공급 4%" in section
           assert any('"Saudi pipeline outage"' in q for _, q in v28.BYPASS_RECALL_QUERIES)
-          print("v28_validation=true")
+
+          yahoo = core.NewsItem(
+              category="hormuz_shipping", polarity="worsening", subtype="hormuz_bypass_shutdown",
+              title="Oil and gas prices climb after Saudi Arabia closes east-west pipeline - Yahoo Finance UK",
+              source="Yahoo Finance UK", link="https://example.com/yahoo",
+              published_utc="2026-09-14T00:00:00+00:00", published_epoch=time.time(),
+              official=False, event_id="fixture-yahoo",
+          )
+          guardian = core.NewsItem(
+              category="hormuz_shipping", polarity="worsening", subtype="hormuz_bypass_shutdown",
+              title="Oil prices rise after drone attacks shut down Saudi Arabia’s East-West pipeline - The Guardian",
+              source="The Guardian", link="https://example.com/guardian",
+              published_utc="2026-09-14T00:00:00+00:00", published_epoch=time.time()-1,
+              official=False, event_id="fixture-guardian",
+          )
+          fixture_groups = [{
+              "category":"hormuz_shipping", "polarity":"worsening", "subtype":"hormuz_bypass_shutdown",
+              "event_id":"fixture", "latest_epoch":time.time(), "evidence":[yahoo, guardian],
+              "verification":"주요 매체 확인",
+          }]
+          evidence = "\n".join(v29._evidence_lines(fixture_groups))
+          assert "야후 파이낸스 영국" in evidence
+          assert "가디언" in evidence
+          assert "사우디 동서 송유관 폐쇄로 국제유가·가스가격 상승" in evidence
+          assert "드론 공격으로 사우디 동서 송유관 가동 중단…국제유가 상승" in evidence
+          assert "Oil and gas prices climb" not in evidence
+          assert "Oil prices rise after" not in evidence
+
+          body = v29._build_bypass_body(fixture_groups, {})
+          for header in ("한눈에", "공급 충격", "확인 근거", "병목 구조", "한국 영향", "투자 4축", "다음 확인", "핵심 한 줄"):
+              assert body.count(f"<b>{header}</b>") == 1, header
+          assert "Bab el-Mandeb" not in body
+          assert "Brent" not in body
+          print("v29_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v28.py --setup-test
+            python scripts/lng_supply_crisis_alert_v29.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v28.py
+            python scripts/lng_supply_crisis_alert_v29.py
           fi
 
       - name: Publish status summary
@@ -181,7 +214,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v28.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v29.py --finalize
 
       - name: Upload verification artifacts
         if: always()
