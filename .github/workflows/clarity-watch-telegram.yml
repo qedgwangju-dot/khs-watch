@@ -8,11 +8,13 @@ on:
       - "scripts/clarity_alert_guard.py"
       - "scripts/clarity_policy_pressure_watch.py"
       - "scripts/clarity_ethics_breakthrough_watch.py"
+      - "scripts/clarity_ethics_alert_enricher.py"
       - "scripts/clarity_alert_formatter.py"
       - "tests/test_clarity_alert_guard.py"
       - "tests/test_clarity_alert_formatter.py"
       - "tests/test_clarity_policy_pressure_watch.py"
       - "tests/test_clarity_ethics_breakthrough_watch.py"
+      - "tests/test_clarity_ethics_alert_enricher.py"
       - "data/clarity_watch_state.json"
       - "data/clarity_policy_pressure_state.json"
       - "data/clarity_ethics_breakthrough_state.json"
@@ -49,8 +51,8 @@ jobs:
 
       - name: Validate watcher, guards, policy-pressure watcher and Korean formatter
         run: |
-          python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_guard.py scripts/clarity_policy_pressure_watch.py scripts/clarity_ethics_breakthrough_watch.py scripts/clarity_alert_formatter.py
-          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py tests/test_clarity_ethics_breakthrough_watch.py -v
+          python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_guard.py scripts/clarity_policy_pressure_watch.py scripts/clarity_ethics_breakthrough_watch.py scripts/clarity_ethics_alert_enricher.py scripts/clarity_alert_formatter.py
+          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py tests/test_clarity_ethics_breakthrough_watch.py tests/test_clarity_ethics_alert_enricher.py -v
 
       - name: Validate Telegram route without sending
         env:
@@ -91,6 +93,10 @@ jobs:
       - name: Build Korean interpreted Telegram alert
         if: hashFiles('out/clarity_watch_alert.json') != ''
         run: python scripts/clarity_alert_formatter.py
+
+      - name: Enrich ethics breakthrough interpretation
+        if: hashFiles('out/clarity_watch_telegram_chunks.json') != ''
+        run: python scripts/clarity_ethics_alert_enricher.py
 
       - name: Publish watcher summary
         if: always()
