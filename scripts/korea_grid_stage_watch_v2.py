@@ -1,14 +1,8 @@
 from __future__ import annotations
 
-import argparse
-import os
 import re
-from datetime import datetime, timezone
-from pathlib import Path
 from typing import Any
-from urllib.parse import urljoin
 
-import requests
 from bs4 import BeautifulSoup
 
 try:
@@ -68,78 +62,15 @@ def parse_stage_rows(html_text: str, stage: str, stage_order: int, base_url: str
     return result
 
 
-def github_output(key: str, value: str) -> None:
-    path = os.getenv("GITHUB_OUTPUT")
-    if not path:
-        return
-    with open(path, "a", encoding="utf-8") as handle:
-        handle.write(f"{key}={value}\n")
-
-
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--force-notify", action="store_true")
-    args = parser.parse_args(argv)
-
-    session = requests.Session()
-    session.headers.update(
-        {
-            "User-Agent": "khs-watch-kepco-grid-stage-v2/1.0",
-            "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.5",
-        }
-    )
-
-    overview = session.get(base.KEPCO_OVERVIEW_URL, timeout=30)
-    overview.raise_for_status()
-    counts = base.parse_overview_counts(overview.text)
-    if len(counts) < 4:
-        raise RuntimeError(f"한국전력 단계별 건수 파싱 실패: {counts}")
-
-    projects: dict[str, dict[str, Any]] = {}
-    parsed_counts: dict[str, int] = {}
-    for stage, order, url in base.STAGE_PAGES:
-        response = session.get(url, timeout=30)
-        response.raise_for_status()
-        rows = parse_stage_rows(response.text, stage, order, response.url)
-        parsed_counts[stage] = len(rows)
-        for row in rows:
-            projects[row["key"]] = row
-
-    if not projects:
-        raise RuntimeError("한국전력 사업 목록 파싱 결과가 0건입니다. 상태를 덮어쓰지 않습니다.")
-
-    state = base.load_state()
-    events = base.compare_state(state.get("counts", {}), state.get("projects", {}), counts, projects)
-    initialized = bool(state.get("initialized")) and bool(state.get("projects"))
-    base.save_state(counts, projects)
-
-    print(
-        "kepco_stage_snapshot="
-        + ",".join(f"{stage}:{parsed_counts.get(stage, 0)}" for stage, _, _ in base.STAGE_PAGES)
-        + f" total_visible={len(projects)}"
-    )
-
-    if not initialized and not args.force_notify:
-        print("KEPCO 송변전 사업단계 v2 기준선 저장 완료")
-        github_output("changed", "false")
-        return 0
-
-    if args.force_notify and not events:
-        events = [{"type": "count_change", "changes": []}]
-
-    if not events:
-        print("KEPCO 송변전 사업단계 신규 변화 없음")
-        github_output("changed", "false")
-        return 0
-
-    base.OUT_DIR.mkdir(parents=True, exist_ok=True)
-    now = datetime.now(timezone.utc)
-    report_path = base.OUT_DIR / now.strftime("%Y%m%dT%H%M%SZ-korea-grid-stage.html")
-    report_path.write_text(base.render_report(events, counts), encoding="utf-8")
-    github_output("changed", "true")
-    github_output("report_path", str(report_path))
-    print(f"kepco_grid_stage_changed=true events={len(events)}")
-    return 0
+    # 운영 경로는 v2 파일을 유지하되, 전체 로직은 단일 기준 구현(base)에 모은다.
+    # KEPCO의 텍스트 노드형 목록 파싱만 v2 파서로 주입한다.
+    original_parser = base.parse_stage_rows
+    base.parse_stage_rows = parse_stage_rows
+    try:
+        return base.main(argv)
+    finally:
+        base.parse_stage_rows = original_parser
 
 
 if __name__ == "__main__":
