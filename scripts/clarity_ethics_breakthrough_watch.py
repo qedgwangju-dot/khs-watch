@@ -58,7 +58,7 @@ def clean(value):
 
 
 def fetch_bytes(url, timeout=15):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Ethics-Watch/2.0)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Ethics-Watch/2.1)"})
     with urllib.request.urlopen(req, timeout=timeout) as response:
         return response.read()
 
@@ -145,17 +145,21 @@ def event_from(item, source_label, evidence_sources=None):
     if ap_specific:
         detail = (
             "Associated Press가 고위 공화당 보좌관을 인용해 Trump 대통령이 Tillis–Gallego 양당 윤리 절충안의 약 80%를 수용했다고 보도했습니다. "
-            "수용 범위에는 그동안 백악관이 반대해온 주 검찰총장(state attorneys general)의 집행 권한도 포함된 것으로 전해졌습니다. "
-            "AP에 따르면 공개 예정인 개정안은 고위 공직자가 암호자산 발행 기업에 보유한 중대한 이해관계를 매각하거나 독립적인 블라인드 트러스트에 두도록 하고, "
-            "주 검찰총장이 법안 규정을 위반한 암호화폐 거래소를 상대로 소송할 수 있도록 하는 내용을 포함할 예정입니다. "
-            "다만 백악관의 공개 확인은 아직 없고 개정 법안 원문도 아직 공개 전이므로, 현재 단계는 ‘핵심 협상 진전’이지 최종 조항 확정은 아닙니다."
+            "기존 윤리안은 연방 선출직 공직자와 배우자, 연방 판사가 재임 중 디지털 자산을 발행하는 것을 금지하는 수준이었고, Trump 대통령과 Melania Trump에게는 신규 밈코인 발행 제한이 직접적인 의미였습니다. "
+            "이번 절충안은 그보다 강해져, 암호자산을 발행하는 기업에 대한 '중대한(significant)' 금융 이해관계를 보유한 경우 해당 이해관계를 처분하거나 독립적인 블라인드 트러스트에 두도록 하는 내용이 포함될 예정이라고 AP가 전했습니다. "
+            "또한 Trump 대통령은 그동안 백악관이 반대했던 주 법무장관(state attorneys general)의 집행 역할을 수용했고, 주 법무장관이 법안상 금지된 디지털 자산을 상장한 암호화폐 거래소를 상대로 소송할 수 있도록 하는 방안에도 동의한 것으로 전해졌습니다. "
+            "이 조항이 그대로 확정되면 World Liberty Financial 같은 기존 암호화폐 사업에 대한 대통령의 경제적 이해관계도 '중대한 이해관계' 기준에 해당하는 범위에서 처분 또는 블라인드 트러스트 대상이 될 수 있습니다. "
+            "AP 후속 보도에 따르면 Trump 대통령은 연례 재산공개에서 World Liberty Financial의 암호화폐 상품 판매 관련 수입만 5억달러 이상을 신고했습니다. 전체 암호화폐 사업 수입은 AP 기사별 집계 범위가 달라 약 12억달러 또는 14억달러 이상으로 보도된 적이 있어, 총액은 단일 고정값으로 쓰지 않고 원자료 범위를 구분해 봅니다. "
+            "공화당 협상 당사자들은 합의 진전을 공개했고 백악관 디지털자산 고문 Patrick Witt도 법안 처리를 촉구했지만, 약 80% 수용·처분 또는 blind trust의 정확한 기준·주 법무장관 권한 범위는 개정 CLARITY 원문으로 최종 확인해야 합니다. "
+            "상원 공식 일정상 다음 핵심 관문은 H.R.3633 motion to proceed에 대한 cloture로, 미국 동부시간 2026년 9월 15일 14:15, 한국시간 2026년 9월 16일 03:15이며 60표가 필요합니다."
         )
         url = AP_DIRECT_URL
     else:
         detail = (
             "Trump 대통령이 Tillis–Gallego 양당 윤리 절충안의 핵심 내용을 수용했다는 신뢰 매체 보도가 확인됐습니다. "
             "윤리 조항은 CLARITY 법안의 60표 확보를 가로막던 핵심 쟁점이었기 때문에 시간표와 통과 가능성을 재평가할 만한 변화입니다. "
-            "다만 공개된 상원 개정 법안 원문으로 조항을 다시 확인하기 전까지는 최종 합의로 단정하지 않습니다."
+            "이번 절충안은 신규 디지털자산 발행 제한을 넘어 기존의 중대한 암호자산 이해관계 처분·독립적 blind trust, 주 법무장관의 집행권까지 포함하는 방향으로 강화된 것으로 전해졌습니다. "
+            "다만 공개된 상원 개정 법안 원문으로 적용 대상·기준금액·처분기한·주 법무장관 권한을 확인하기 전까지는 최종 합의로 단정하지 않습니다."
         )
         url = clean(item.get("url", ""))
     if reported:
@@ -164,16 +168,29 @@ def event_from(item, source_label, evidence_sources=None):
         "source": f"{source_label} 윤리합의 검증",
         "event_type": "행정부·핵심 당사자 통과 촉구 — 윤리 합의 진전",
         "event_subtype": "tillis_gallego_ethics_compromise",
-        "title": "Trump 대통령, Tillis–Gallego 윤리안 핵심 조항 수용 — 공식 문안 확인 대기",
+        "title": "Trump 대통령, Tillis–Gallego 윤리안 핵심 조항 대폭 수용 — 개정 원문 확인 대기",
         "url": url,
         "date": "",
         "detail": detail,
         "policy_actor": "Trump 대통령",
-        "verification_status": "보좌관·신뢰매체 확인 / 백악관 공개 확인 및 개정 원문 대기",
+        "verification_status": (
+            "AP·공화당 협상 당사자 확인 / White House adviser의 공개 통과 촉구 확인 / "
+            "약 80% 수용 세부·significant interest 기준·State AG 권한은 개정 원문 대기 / "
+            "다음 공식 관문 2026년 9월 16일 03:15 KST cloture 60표"
+        ),
         "reported_title": clean(item.get("title", "")),
         "evidence_sources": evidence_sources,
         "evidence_count": len(evidence_sources),
         "monitoring_unit": "event_state_change",
+        "known_ethics_terms": [
+            "federally elected officials and spouses digital-asset issuance ban",
+            "federal judges digital-asset issuance ban",
+            "significant financial interest divestment or independent blind trust",
+            "state attorneys general enforcement",
+            "state attorneys general exchange litigation authority",
+        ],
+        "next_official_gate_kst": "2026-09-16 03:15 KST",
+        "next_official_gate": "H.R.3633 motion to proceed cloture; 60 votes required",
     }
 
 
