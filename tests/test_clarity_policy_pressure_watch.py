@@ -66,6 +66,38 @@ class ClarityPolicyPressureWatchTest(unittest.TestCase):
         self.assertIn("Ryan VanGrack 측은 상원에", event["detail"])
         self.assertNotIn("이(가)", event["detail"])
 
+    def test_final_draft_release_is_text_change_not_trump_ethics_risk(self):
+        title = "Senate Republicans release 'final' Clarity Act draft as Trump accepts most ethics provisions"
+        signal = title + " The revised draft incorporates most ethics provisions before the Senate vote."
+        self.assertTrue(MOD.is_text_release_state(signal))
+        event_type = "법안 문안 공개·핵심 수정 — 신뢰매체 확인"
+        self.assertEqual(MOD.event_subtype(signal, event_type), "senate_revised_draft_release")
+        item = {
+            "title": title,
+            "description": "The revised draft incorporates most ethics provisions before the Senate vote.",
+            "url": "https://news.google.com/example",
+            "pubDate": "Mon, 14 Sep 2026 04:24:37 GMT",
+            "source": "The Block",
+        }
+        with mock.patch.object(MOD, "resolve_original_url", return_value="https://example.com/source"):
+            event = MOD.korean_event(item, "상원 공화당 협상팀", event_type, "The Block", signal)
+        self.assertIn("최신 초안 공개", event["title"])
+        self.assertNotIn("Trump 대통령, CLARITY 법안 처리·통과를 의회에 촉구", event["title"])
+        self.assertTrue(event["text_release"])
+        self.assertIn("공식 원문", event["verification_status"])
+        self.assertIn("법안 문안 자체가 바뀐 상태 변화", event["detail"])
+
+    def test_reworded_draft_release_articles_share_semantic_signature(self):
+        event_type = "법안 문안 공개·핵심 수정 — 신뢰매체 확인"
+        a = "Senate Republicans release final CLARITY Act draft before vote"
+        b = "Republican senators unveil revised CLARITY Act text ahead of cloture"
+        self.assertTrue(MOD.is_text_release_state(a))
+        self.assertTrue(MOD.is_text_release_state(b))
+        self.assertEqual(
+            MOD.semantic_signature("상원 공화당 협상팀", event_type, a),
+            MOD.semantic_signature("상원 공화당 협상팀", event_type, b),
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
