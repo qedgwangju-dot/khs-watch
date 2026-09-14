@@ -9,6 +9,7 @@ runner = prev.runner
 base = prev.base
 
 NEW_IDEA_QUERIES = [
+    '__fnnews_international_rss__',
     'site:reuters.com Kyiv preparing talks resume October senior Ukrainian official when:72h',
     'site:reuters.com (Ukraine OR Kyiv OR Budanov) October (trilateral OR "three-way" OR talks) (resume OR preparing) (Russia OR US OR U.S.) when:72h',
     'site:fnnews.com (우크라 OR 우크라이나 OR 키이우 OR 부다노우) (3자협상 OR 3자 협상 OR 3자회담 OR 3자 회담) (10월 OR October) (재개 OR 준비 OR 가능성) when:72h',
@@ -172,8 +173,45 @@ def _newidea_signals(row):
     return list(dict.fromkeys(signals)), sorted(set(marks))
 
 
+def _fnnews_international_rss():
+    url = 'https://www.fnnews.com/rss/r20/fn_realnews_international.xml'
+    try:
+        root = watch.ET.fromstring(watch.req(url, 20))
+    except Exception as e:
+        return [], f'fnnews-rss: {type(e).__name__}'
+    rows = []
+    crisis_terms = (
+        '우크라','러시아','이란','호르무즈','이스라엘','가자','중동',
+        'ukraine','russia','iran','hormuz','israel','gaza',
+    )
+    event_terms = (
+        '종전','휴전','평화','협상','회담','공습','공격','전쟁','재건','제재',
+        'peace','ceasefire','talks','negotiation','summit','strike','attack','war','reconstruction','sanction',
+    )
+    for item in root.findall('./channel/item')[:120]:
+        title = watch.clean(item.findtext('title'))
+        link = watch.clean(item.findtext('link'))
+        pub = watch.clean(item.findtext('pubDate'))
+        desc = watch.clean(item.findtext('description'))
+        blob = f'{title} {desc}'.lower()
+        if not (any(k in blob for k in crisis_terms) and any(k in blob for k in event_terms)):
+            continue
+        rows.append({
+            'title': title,
+            'title_original': title,
+            'link': link,
+            'published': pub,
+            'source': '파이낸셜뉴스',
+            'description': desc,
+        })
+    return rows, None
+
+
 def newidea_google_news(query):
-    rows, err = _prev_google_news(query)
+    if query == '__fnnews_international_rss__':
+        rows, err = _fnnews_international_rss()
+    else:
+        rows, err = _prev_google_news(query)
     for row in rows:
         signals, marks = _newidea_signals(row)
         if not marks:
