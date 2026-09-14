@@ -16,6 +16,7 @@ STATE_PATH = ROOT / "data" / "clarity_ethics_breakthrough_state.json"
 PENDING_STATE_PATH = ROOT / "out" / "clarity_ethics_breakthrough_pending_state.json"
 STATUS_PATH = ROOT / "out" / "clarity_ethics_breakthrough_status.json"
 ALERT_JSON = ROOT / "out" / "clarity_watch_alert.json"
+SIGNATURE_VERSION = 2
 
 NEWS_RSS = "https://news.google.com/rss/search"
 AP_DIRECT_URL = "https://apnews.com/article/521fd5986eb107413064018f7a468c51"
@@ -47,8 +48,7 @@ AGREEMENT_RE = re.compile(r"\b(?:agree(?:s|d)?|accept(?:s|ed)?|approve(?:s|d)?|s
 ETHICS_RE = re.compile(r"\b(?:ethics?|conflict(?:s)?\s+of\s+interest|Tillis|Gallego)\b", re.I)
 CRYPTO_BILL_RE = re.compile(
     r"(?:\bCLARITY\s+(?:Act|Bill)\b|H\.?\s*R\.?\s*3633|Digital\s+Asset\s+Market\s+Clarity|"
-    r"\bcrypto(?:currency)?\s+(?:bill|legislation)|digital\s+asset\s+market\s+structure)",
-    re.I,
+    r"\bcrypto(?:currency)?\s+(?:bill|legislation)|digital\s+asset\s+market\s+structure)", re.I,
 )
 TRUMP_RE = re.compile(r"\b(?:President\s+)?Donald\s+Trump\b|\bPresident\s+Trump\b|\bTrump\b", re.I)
 
@@ -58,7 +58,7 @@ def clean(value):
 
 
 def fetch_bytes(url, timeout=15):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Ethics-Watch/1.1)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Ethics-Watch/2.0)"})
     with urllib.request.urlopen(req, timeout=timeout) as response:
         return response.read()
 
@@ -92,11 +92,6 @@ def google_news_items(query):
 
 
 def current_ap_backfill(now):
-    """Short-lived backfill for the AP ethics breakthrough reported on 2026-09-14.
-
-    This ensures the already-confirmed AP event is not missed if Google News RSS indexing lags.
-    It expires automatically through the normal freshness cutoff and is deduplicated by signature.
-    """
     if now.date() > dt.date(2026, 9, 17):
         return []
     return [{
@@ -115,12 +110,12 @@ def current_ap_backfill(now):
 
 def source_tier(label):
     low = clean(label).lower()
-    for key, canonical in TIER1.items():
+    for key in sorted(TIER1, key=len, reverse=True):
         if key in low:
-            return 1, canonical
-    for key, canonical in TIER2.items():
+            return 1, TIER1[key]
+    for key in sorted(TIER2, key=len, reverse=True):
         if key in low:
-            return 2, canonical
+            return 2, TIER2[key]
     return 0, clean(label)
 
 
@@ -129,10 +124,9 @@ def is_ethics_breakthrough(text):
     return bool(TRUMP_RE.search(text) and ETHICS_RE.search(text) and AGREEMENT_RE.search(text) and CRYPTO_BILL_RE.search(text))
 
 
-def signature(title):
-    normalized = re.sub(r"[^a-z0-9가-힣]+", " ", clean(title).lower())
-    normalized = re.sub(r"\s+", " ", normalized).strip()
-    return hashlib.sha256(("clarity_ethics_breakthrough|" + normalized[:320]).encode("utf-8")).hexdigest()
+def semantic_signature():
+    raw = f"v{SIGNATURE_VERSION}|trump|tillis-gallego|ethics-compromise|substantial-acceptance"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
 def kst_label(pub_date):
@@ -143,7 +137,8 @@ def kst_label(pub_date):
     return f"{kst.year}년 {kst.month}월 {kst.day}일 {kst:%H:%M} KST"
 
 
-def event_from(item, source_label):
+def event_from(item, source_label, evidence_sources=None):
+    evidence_sources = list(dict.fromkeys(evidence_sources or [source_label]))
     reported = "" if item.get("seeded") else kst_label(item.get("pubDate", ""))
     title_lower = clean(item.get("title", "")).lower()
     ap_specific = source_label == "Associated Press" or "new bipartisan ethics provision" in title_lower
@@ -168,6 +163,7 @@ def event_from(item, source_label):
     return {
         "source": f"{source_label} 윤리합의 검증",
         "event_type": "행정부·핵심 당사자 통과 촉구 — 윤리 합의 진전",
+        "event_subtype": "tillis_gallego_ethics_compromise",
         "title": "Trump 대통령, Tillis–Gallego 윤리안 핵심 조항 수용 — 공식 문안 확인 대기",
         "url": url,
         "date": "",
@@ -175,6 +171,9 @@ def event_from(item, source_label):
         "policy_actor": "Trump 대통령",
         "verification_status": "보좌관·신뢰매체 확인 / 백악관 공개 확인 및 개정 원문 대기",
         "reported_title": clean(item.get("title", "")),
+        "evidence_sources": evidence_sources,
+        "evidence_count": len(evidence_sources),
+        "monitoring_unit": "event_state_change",
     }
 
 
@@ -190,8 +189,7 @@ def load_state():
 def main():
     now = dt.datetime.now(ZoneInfo("UTC"))
     cutoff = now - dt.timedelta(days=3)
-    errors = []
-    by_key = {}
+    errors, by_key = [], {}
     for query in QUERIES:
         try:
             for item in google_news_items(query):
@@ -212,36 +210,43 @@ def main():
         if tier == 0:
             continue
         signal = clean(f"{item.get('title','')} {item.get('description','')} {item.get('matched_query','')}")
-        if not is_ethics_breakthrough(signal):
-            continue
-        candidates.append({"item": item, "tier": tier, "source_label": source_label})
+        if is_ethics_breakthrough(signal):
+            candidates.append({"item": item, "tier": tier, "source_label": source_label})
 
     accepted = []
     if candidates:
         tier1 = [row for row in candidates if row["tier"] == 1]
+        tier2 = [row for row in candidates if row["tier"] == 2]
+        chosen = None
         if tier1:
-            accepted.append(max(tier1, key=lambda row: parse_date(row["item"].get("pubDate", "")) or cutoff))
-        else:
-            publishers = {row["source_label"] for row in candidates if row["tier"] == 2}
-            if len(publishers) >= 2:
-                accepted.append(max(candidates, key=lambda row: parse_date(row["item"].get("pubDate", "")) or cutoff))
+            chosen = max(tier1, key=lambda row: parse_date(row["item"].get("pubDate", "")) or cutoff)
+        elif len({row["source_label"] for row in tier2}) >= 2:
+            chosen = max(tier2, key=lambda row: parse_date(row["item"].get("pubDate", "")) or cutoff)
+        if chosen:
+            chosen = dict(chosen)
+            chosen["evidence_sources"] = list(dict.fromkeys(row["source_label"] for row in sorted(candidates, key=lambda row: (row["tier"], row["source_label"]))))
+            accepted.append(chosen)
 
     state = load_state()
-    seen = set(state.get("seen_signatures") or [])
-    current = []
-    new_events = []
+    baseline = (not bool(state.get("initialized"))) or state.get("signature_version") != SIGNATURE_VERSION
+    seen = set(state.get("seen_signatures") or []) if not baseline else set()
+    current, new_events = [], []
     for row in accepted:
-        sig = signature(row["item"].get("title", ""))
+        sig = semantic_signature()
         current.append(sig)
-        if sig not in seen:
-            new_events.append(event_from(row["item"], row["source_label"]))
+        if baseline or sig in seen:
+            continue
+        new_events.append(event_from(row["item"], row["source_label"], evidence_sources=row["evidence_sources"]))
 
-    merged = list(dict.fromkeys(list(state.get("seen_signatures") or []) + current))[-200:]
+    merged = list(dict.fromkeys(([] if baseline else list(state.get("seen_signatures") or [])) + current))[-200:]
     pending = {
         "initialized": True,
+        "signature_version": SIGNATURE_VERSION,
+        "monitoring_unit": "event_state_change_not_article",
         "last_checked_utc": now.isoformat(timespec="seconds"),
         "seen_signatures": merged,
         "accepted_current": len(accepted),
+        "raw_articles": len(by_key),
         "source_errors": errors,
     }
     PENDING_STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -258,13 +263,16 @@ def main():
         ALERT_JSON.write_text(json.dumps(existing, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     STATUS_PATH.write_text(json.dumps({
+        "baseline": baseline,
+        "signature_version": SIGNATURE_VERSION,
+        "monitoring_unit": "event_state_change_not_article",
         "raw_articles": len(by_key),
         "candidates": len(candidates),
         "accepted_current": len(accepted),
         "new_events": len(new_events),
         "errors": errors,
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"clarity_ethics_breakthrough_new={len(new_events)} accepted={len(accepted)}")
+    print(f"clarity_ethics_breakthrough_new={len(new_events)} baseline={str(baseline).lower()} accepted={len(accepted)} unit=event")
 
 
 if __name__ == "__main__":
