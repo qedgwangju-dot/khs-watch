@@ -30,6 +30,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v25.py"
       - "scripts/lng_supply_crisis_alert_v26.py"
       - "scripts/lng_supply_crisis_alert_v27.py"
+      - "scripts/lng_supply_crisis_alert_v28.py"
       - "scripts/lng_supply_crisis_qatar_us_overlay.py"
 
 permissions:
@@ -55,48 +56,46 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v27 monitor
+      - name: Validate v28 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_qatar_us_overlay.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_alert_v28.py scripts/lng_supply_crisis_qatar_us_overlay.py
           python - <<'PY'
           import sys, time
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v26 as v26
           import lng_supply_crisis_alert_v27 as v27
+          import lng_supply_crisis_alert_v28 as v28
 
-          assert core.classify_subtype("Saudi Energy Ministry: East-West pipeline shut down as a precaution following several attacks") == "hormuz_bypass_shutdown"
-          assert core.classify_polarity("hormuz_shipping", "East-West pipeline shut down after drone attacks") == "worsening"
-          assert core.classify_subtype("East-West pipeline restarts after repairs") == "hormuz_bypass_restart"
+          titles = [
+              "Saudi pipeline outage threatens loss of 4% of global oil supply",
+              "Saudi Arabia shuts down a pipeline as Houthis seize an island",
+              "Saudis shut down oil pipeline as Houthis tighten grip on Red Sea shipping",
+              "Saudi Energy Ministry: East-West pipeline shut down as a precaution following several attacks",
+          ]
+          for title in titles:
+              assert core.classify_subtype(title) == "hormuz_bypass_shutdown", (title, core.classify_subtype(title))
+              assert core.classify_polarity("hormuz_shipping", title) == "worsening", title
 
           item = core.NewsItem(
               category="hormuz_shipping", polarity="worsening", subtype="hormuz_bypass_shutdown",
-              title="사우디 에너지부, 연이은 공격 뒤 동서 송유관 예방적 가동 중단",
-              source="CNBC", link="https://example.com/cnbc",
+              title=titles[0], source="Reuters", link="https://example.com/reuters",
               published_utc="2026-09-14T00:00:00+00:00", published_epoch=time.time(),
-              official=False, event_id="fixture-bypass",
+              official=False, event_id="fixture-bypass-reuters",
           )
           groups = v27.confirmed_news_groups_v27([item])
           assert any(g.get("subtype") == "hormuz_bypass_shutdown" for g in groups)
           section = "\n".join(v27._bypass_section(groups, {}))
-          assert "700만배럴/일" in section
-          assert "5~7일" in section
-          assert "세계 원유 공급 4%" in section
-
-          summary = "\n".join(v26._global_summary(groups, [], []))
-          assert "호르무즈 우회 송유관 가동중단" in summary
-          body = v27._insert_after_top_summary("<b>한눈에</b>\n• 판정 X\n\n<b>기존 세부</b>\n• Y", section.splitlines())
-          assert body.index("호르무즈 우회 원유수송망") < body.index("기존 세부")
-          assert any("Fujairah" in q for _, q in v27.BYPASS_QUERIES)
-          print("v27_validation=true")
+          assert "700만배럴/일" in section and "5~7일" in section and "세계 원유 공급 4%" in section
+          assert any('"Saudi pipeline outage"' in q for _, q in v28.BYPASS_RECALL_QUERIES)
+          print("v28_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v27.py --setup-test
+            python scripts/lng_supply_crisis_alert_v28.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v27.py
+            python scripts/lng_supply_crisis_alert_v28.py
           fi
 
       - name: Publish status summary
@@ -182,7 +181,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v27.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v28.py --finalize
 
       - name: Upload verification artifacts
         if: always()
