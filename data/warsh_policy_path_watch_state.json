@@ -26,20 +26,20 @@
     {
       "date": "2026-12-09",
       "label": "Dec 9, 2026",
-      "prob_cell": "30%70%",
-      "implied_avg": 4.08,
+      "prob_cell": "32%68%",
+      "implied_avg": 4.075,
       "pre_rate": 3.96,
-      "post_rate": 4.135,
-      "change_bp": 18.0,
-      "hike25_prob": 70.0,
+      "post_rate": 4.13,
+      "change_bp": 17.0,
+      "hike25_prob": 68.0,
       "contract": "/ZQZ26"
     }
   ],
   "classification": {
     "verdict": "첫 인상 뒤 연내 추가 인상 1회 이상 반영",
-    "extra_bp": 29.099999999999994,
+    "extra_bp": 28.6,
     "basis": "첫 향후 회의 인상 기대를 제외한 뒤 연말까지의 추가 기대"
   },
   "source": "https://www.frenzycap.com/fedwatch",
-  "updated_at_utc": "2026-09-14T01:17:55.683691+00:00"
+  "updated_at_utc": "2026-09-14T06:34:14.852691+00:00"
 }
