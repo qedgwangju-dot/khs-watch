@@ -22,7 +22,7 @@ class ClarityEthicsBreakthroughWatchTest(unittest.TestCase):
         signal = "Senators criticize the CLARITY Act ethics language and Trump crypto conflicts."
         self.assertFalse(MOD.is_ethics_breakthrough(signal))
 
-    def test_ap_event_is_cautious_specific_and_event_based(self):
+    def test_ap_event_is_cautious_specific_enriched_and_event_based(self):
         item = {
             "title": "Trump agrees to new bipartisan ethics provision in massive crypto bill, GOP aide says",
             "description": "CLARITY Act Tillis Gallego ethics compromise",
@@ -31,13 +31,25 @@ class ClarityEthicsBreakthroughWatchTest(unittest.TestCase):
             "source": "AP News",
         }
         event = MOD.event_from(item, "Associated Press", evidence_sources=["Associated Press", "Reuters"])
-        self.assertIn("약 80%", event["detail"])
-        self.assertIn("주 검찰총장", event["detail"])
-        self.assertIn("블라인드 트러스트", event["detail"])
-        self.assertIn("최종 조항 확정은 아닙니다", event["detail"])
+        detail = event["detail"]
+        self.assertIn("약 80%", detail)
+        self.assertIn("연방 선출직 공직자와 배우자, 연방 판사", detail)
+        self.assertIn("밈코인", detail)
+        self.assertIn("중대한(significant) 금융 이해관계", detail)
+        self.assertIn("블라인드 트러스트", detail)
+        self.assertIn("주 법무장관", detail)
+        self.assertIn("암호화폐 거래소", detail)
+        self.assertIn("World Liberty Financial", detail)
+        self.assertIn("5억달러 이상", detail)
+        self.assertIn("약 12억달러 또는 14억달러 이상", detail)
+        self.assertIn("개정 CLARITY 원문으로 최종 확인", detail)
+        self.assertIn("2026년 9월 16일 03:15", detail)
+        self.assertIn("60표", detail)
         self.assertEqual(event["url"], MOD.AP_DIRECT_URL)
         self.assertEqual(event["monitoring_unit"], "event_state_change")
         self.assertEqual(event["evidence_sources"], ["Associated Press", "Reuters"])
+        self.assertEqual(event["next_official_gate_kst"], "2026-09-16 03:15 KST")
+        self.assertIn("significant financial interest", " ".join(event["known_ethics_terms"]))
 
     def test_ethics_signature_is_not_article_headline_dependent(self):
         first = MOD.semantic_signature()
