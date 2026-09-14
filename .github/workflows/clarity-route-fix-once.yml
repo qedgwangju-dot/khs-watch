@@ -1,0 +1,65 @@
+name: CLARITY Route Fix Once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/clarity-route-fix-once.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: clarity-route-fix-once
+  cancel-in-progress: false
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Move CLARITY to exact target bot route
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('.github/workflows/clarity-watch-telegram.yml')
+          text = path.read_text(encoding='utf-8')
+
+          replacements = {
+              'EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"': 'EXPECTED_TELEGRAM_BOT_USERNAME: "khs88790088790000_bot"',
+              'TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}': 'TELEGRAM_BOT_TOKEN: ${{ secrets.CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN }}',
+              'TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}': 'TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.TELEGRAM_CHAT_ID }}',
+              'TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}': 'TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}',
+              'YEN_CARRY_TELEGRAM_BOT_TOKEN secret is missing': 'CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN secret is missing',
+          }
+
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'expected route fragment not found: {old}')
+              text = text.replace(old, new)
+
+          if 'hs8879887988798879_bot' in text:
+              raise SystemExit('old CLARITY bot route still present')
+          if text.count('khs88790088790000_bot') != 1:
+              raise SystemExit('target bot username must appear exactly once')
+          if text.count('secrets.CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN') != 2:
+              raise SystemExit('target bot token secret must be used in validate + send steps')
+          if text.count('secrets.TELEGRAM_CHAT_ID') != 2:
+              raise SystemExit('target primary chat secret must be used in validate + send steps')
+
+          path.write_text(text, encoding='utf-8')
+          print('clarity_route_rewritten=true target=@khs88790088790000_bot')
+          PY
+
+      - name: Commit route correction
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/clarity-watch-telegram.yml
+          git commit -m "Fix CLARITY Telegram bot route"
+          git pull --rebase origin main
+          git push origin main
