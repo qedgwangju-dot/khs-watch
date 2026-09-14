@@ -7,34 +7,67 @@
   },
   "coverage": {
     "계획확정": {
-      "complete": false,
+      "complete": true,
       "expected": 396,
-      "parsed": 399,
+      "parsed": 437,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do"
     },
     "공사착수": {
-      "complete": false,
+      "complete": true,
       "expected": 131,
-      "parsed": 139,
+      "parsed": 201,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do"
     },
     "사업승인": {
-      "complete": false,
+      "complete": true,
       "expected": 195,
       "parsed": 191,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do"
     },
     "사업완료": {
-      "complete": false,
+      "complete": true,
       "expected": 2,
-      "parsed": 0,
-      "url": ""
+      "parsed": 14,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
     }
   },
-  "full_projects_initialized": false,
+  "full_projects_initialized": true,
   "initialized": true,
-  "last_full_crawl_at": "2026-09-14T12:50:46.907540+00:00",
+  "last_full_crawl_at": "2026-09-14T12:57:18.895251+00:00",
   "projects": {
+    "150kvhvdc완도-동제주#3hvdc변환설비건설사업": {
+      "equipment": "변환",
+      "hq": "중부건설본부",
+      "key": "150kvhvdc완도-동제주#3hvdc변환설비건설사업",
+      "name": "150kV HVDC 완도-동제주 #3HVDC 변환설비 건설사업",
+      "number": 61,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=15"
+    },
+    "150kvhvdc완도-동제주#3hvdc변환설비건설사업(완도)": {
+      "equipment": "변환",
+      "hq": "중부건설본부",
+      "key": "150kvhvdc완도-동제주#3hvdc변환설비건설사업(완도)",
+      "name": "150kV HVDC 완도-동제주 #3HVDC 변환설비 건설사업 (완도)",
+      "number": 60,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=15"
+    },
+    "150kvhvdc완도-제주#3해저케이블건설사업": {
+      "equipment": "지중송전",
+      "hq": "중부건설본부",
+      "key": "150kvhvdc완도-제주#3해저케이블건설사업",
+      "name": "150kV HVDC 완도-제주#3 해저케이블 건설사업",
+      "number": 59,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=15"
+    },
     "154kv(남양주-왕숙)전력구건설사업": {
       "equipment": "전력구",
       "hq": "경인건설본부",
@@ -112,6 +145,17 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=32"
     },
+    "154kv검단(구마전)변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv검단(구마전)변전소건설사업",
+      "name": "154kV 검단(구 마전)변전소 건설사업",
+      "number": 25,
+      "office": "남서울인천건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=42"
+    },
     "154kv검암변전소건설사업": {
       "equipment": "변전",
       "hq": "경인건설본부",
@@ -122,6 +166,28 @@
       "stage": "사업승인",
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=4"
+    },
+    "154kv계림-일곡2차전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "154kv계림-일곡2차전력구건설사업",
+      "name": "154kV 계림-일곡 2차 전력구 건설사업",
+      "number": 17,
+      "office": "광주전남건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=19"
+    },
+    "154kv계림-일곡지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "중부건설본부",
+      "key": "154kv계림-일곡지중송전선로건설사업",
+      "name": "154kV 계림-일곡 지중송전선로 건설사업",
+      "number": 2,
+      "office": "광주전남건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=44"
     },
     "154kv고강-강서지중송전선로건설사업": {
       "equipment": "지중송전",
@@ -156,6 +222,17 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=11"
     },
+    "154kv고령-명곡송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "남부건설본부",
+      "key": "154kv고령-명곡송전선로건설사업",
+      "name": "154kV 고령-명곡 송전선로 건설사업",
+      "number": 3,
+      "office": "대구경북건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=44"
+    },
     "154kv고림변전소건설사업": {
       "equipment": "변전",
       "hq": "경인건설본부",
@@ -177,6 +254,17 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=13"
+    },
+    "154kv고수변전소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv고수변전소건설사업",
+      "name": "154kV 고수변전소 건설사업",
+      "number": 5,
+      "office": "전북건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=44"
     },
     "154kv고수분기송전선로건설사업": {
       "equipment": "가공송전",
@@ -210,6 +298,17 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=21"
+    },
+    "154kv고옥-득량(보성#2)송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv고옥-득량(보성#2)송전선로건설사업",
+      "name": "154kV 고옥-득량(보성#2) 송전선로 건설사업",
+      "number": 4,
+      "office": "광주전남건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=44"
     },
     "154kv고옥-득량지중송전선로건설사업": {
       "equipment": "지중송전",
@@ -343,6 +442,17 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=9"
     },
+    "154kv고흥-포두(고흥#3)송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv고흥-포두(고흥#3)송전선로건설사업",
+      "name": "154kV 고흥-포두(고흥#3) 송전선로 건설사업",
+      "number": 6,
+      "office": "광주전남건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=44"
+    },
     "154kv고흥-포두전력구건설사업": {
       "equipment": "전력구",
       "hq": "중부건설본부",
@@ -431,6 +541,28 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=9"
     },
+    "154kv광석분기전력구공사": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv광석분기전력구공사",
+      "name": "154kV 광석분기 전력구공사",
+      "number": 58,
+      "office": "남서울인천건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=15"
+    },
+    "154kv광석분기지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "경인건설본부",
+      "key": "154kv광석분기지중송전선로건설사업",
+      "name": "154kV 광석분기 지중송전선로 건설사업",
+      "number": 7,
+      "office": "남서울인천건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=44"
+    },
     "154kv광양-세풍송전선로건설사업": {
       "equipment": "가공송전",
       "hq": "중부건설본부",
@@ -485,6 +617,28 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=5"
+    },
+    "154kv교산변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv교산변전소건설사업",
+      "name": "154kV 교산변전소 건설사업",
+      "number": 8,
+      "office": "남서울인천건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=44"
+    },
+    "154kv구로#2변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv구로#2변전소건설사업",
+      "name": "154kV 구로#2변전소 건설사업",
+      "number": 9,
+      "office": "남서울인천건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=43"
     },
     "154kv구룡-군북송전선로건설사업": {
       "equipment": "가공송전",
@@ -541,6 +695,17 @@
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=2"
     },
+    "154kv군북-가야지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "남부건설본부",
+      "key": "154kv군북-가야지중송전선로건설사업",
+      "name": "154kV 군북-가야 지중송전선로 건설사업",
+      "number": 10,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=43"
+    },
     "154kv군북변전소건설사업": {
       "equipment": "변전",
       "hq": "남부건설본부",
@@ -551,6 +716,17 @@
       "stage": "사업승인",
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=13"
+    },
+    "154kv군산-함열송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv군산-함열송전선로건설사업",
+      "name": "154kV 군산-함열 송전선로 건설사업",
+      "number": 11,
+      "office": "전북건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=43"
     },
     "154kv군산-함열전력구건설사업": {
       "equipment": "전력구",
@@ -607,6 +783,17 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=12"
     },
+    "154kv금가분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv금가분기송전선로건설사업",
+      "name": "154kV 금가분기 송전선로 건설사업",
+      "number": 12,
+      "office": "충북강원건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=43"
+    },
     "154kv금남변전소건설사업": {
       "equipment": "변전",
       "hq": "남부건설본부",
@@ -629,6 +816,17 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=32"
     },
+    "154kv금왕-성본송전선로전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "154kv금왕-성본송전선로전력구건설사업",
+      "name": "154kV 금왕-성본 송전선로 전력구 건설사업",
+      "number": 1,
+      "office": "충북강원건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=21"
+    },
     "154kv금왕-성본지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "중부건설본부",
@@ -639,6 +837,17 @@
       "stage": "사업승인",
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=9"
+    },
+    "154kv기장-장안송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "남부건설본부",
+      "key": "154kv기장-장안송전선로건설사업",
+      "name": "154kV 기장-장안 송전선로 건설사업",
+      "number": 16,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=19"
     },
     "154kv기장-장안지중송전선로건설사업": {
       "equipment": "지중송전",
@@ -871,6 +1080,28 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=20"
     },
+    "154kv남해-금남(갈사)지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "남부건설본부",
+      "key": "154kv남해-금남(갈사)지중송전선로건설사업",
+      "name": "154kV 남해-금남(갈사) 지중송전선로 건설사업",
+      "number": 13,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=43"
+    },
+    "154kv남해-금남송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "남부건설본부",
+      "key": "154kv남해-금남송전선로건설사업",
+      "name": "154kV 남해-금남 송전선로 건설사업",
+      "number": 14,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=43"
+    },
     "154kv남해변전소단일계통해소관로건설사업": {
       "equipment": "전력구",
       "hq": "남부건설본부",
@@ -882,6 +1113,39 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=8"
     },
+    "154kv내곡변전소건설사업": {
+      "equipment": "변전",
+      "hq": "남부건설본부",
+      "key": "154kv내곡변전소건설사업",
+      "name": "154kV 내곡변전소 건설사업",
+      "number": 15,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=43"
+    },
+    "154kv내곡분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "남부건설본부",
+      "key": "154kv내곡분기송전선로건설사업",
+      "name": "154kV 내곡분기 송전선로 건설사업",
+      "number": 16,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=43"
+    },
+    "154kv노량진#2변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv노량진#2변전소건설사업",
+      "name": "154kV 노량진#2변전소 건설사업",
+      "number": 17,
+      "office": "남서울인천건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=43"
+    },
     "154kv녹산-녹공지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "남부건설본부",
@@ -892,6 +1156,17 @@
       "stage": "사업승인",
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=3"
+    },
+    "154kv논공-상인송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "남부건설본부",
+      "key": "154kv논공-상인송전선로건설사업",
+      "name": "154kV 논공-상인 송전선로 건설사업",
+      "number": 18,
+      "office": "대구경북건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=43"
     },
     "154kv논공-상인전력구건설사업": {
       "equipment": "전력구",
@@ -915,6 +1190,28 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=7"
     },
+    "154kv다인변전소건설사업": {
+      "equipment": "변전",
+      "hq": "남부건설본부",
+      "key": "154kv다인변전소건설사업",
+      "name": "154kV 다인변전소 건설사업",
+      "number": 19,
+      "office": "대구경북건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=42"
+    },
+    "154kv다인분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "남부건설본부",
+      "key": "154kv다인분기송전선로건설사업",
+      "name": "154kV 다인분기 송전선로 건설사업",
+      "number": 20,
+      "office": "대구경북건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=42"
+    },
     "154kv당수변전소건설사업": {
       "equipment": "변전",
       "hq": "경인건설본부",
@@ -925,6 +1222,17 @@
       "stage": "사업승인",
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=17"
+    },
+    "154kv당수분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "경인건설본부",
+      "key": "154kv당수분기송전선로건설사업",
+      "name": "154kV 당수분기 송전선로 건설사업",
+      "number": 21,
+      "office": "남서울인천건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=42"
     },
     "154kv당수분기전력구공사건설사업": {
       "equipment": "전력구",
@@ -1035,6 +1343,28 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=15"
+    },
+    "154kv대장변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv대장변전소건설사업",
+      "name": "154kV 대장변전소 건설사업",
+      "number": 22,
+      "office": "남서울인천건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=42"
+    },
+    "154kv대저-어방전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "남부건설본부",
+      "key": "154kv대저-어방전력구건설사업",
+      "name": "154kV 대저-어방 전력구 건설사업",
+      "number": 57,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=15"
     },
     "154kv델타변전소건설사업": {
       "equipment": "변전",
@@ -1157,6 +1487,17 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=17"
     },
+    "154kv동구지분기지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "남부건설본부",
+      "key": "154kv동구지분기지중송전선로건설사업",
+      "name": "154kV 동구지분기 지중송전선로 건설사업",
+      "number": 23,
+      "office": "대구경북건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=42"
+    },
     "154kv동면-동춘천송전선로전력구건설사업": {
       "equipment": "전력구",
       "hq": "중부건설본부",
@@ -1211,6 +1552,17 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=10"
+    },
+    "154kv동서울#2-강남전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv동서울#2-강남전력구건설사업",
+      "name": "154kV 동서울#2-강남 전력구 건설사업",
+      "number": 56,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=15"
     },
     "154kv동세종변전소건설사업": {
       "equipment": "변전",
@@ -1355,6 +1707,17 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=7"
     },
+    "154kv득량(보성#2)분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv득량(보성#2)분기송전선로건설사업",
+      "name": "154kV 득량(보성#2)분기 송전선로 건설사업",
+      "number": 24,
+      "office": "광주전남건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=42"
+    },
     "154kv득량변전소건설사업": {
       "equipment": "변전",
       "hq": "중부건설본부",
@@ -1476,6 +1839,28 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=31"
     },
+    "154kv번천변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv번천변전소건설사업",
+      "name": "154kV 번천변전소 건설사업",
+      "number": 26,
+      "office": "경기건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=42"
+    },
+    "154kv번천분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "경인건설본부",
+      "key": "154kv번천분기송전선로건설사업",
+      "name": "154kV 번천분기 송전선로 건설사업",
+      "number": 27,
+      "office": "경기건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=42"
+    },
     "154kv병곡변전소(영덕#2)건설사업": {
       "equipment": "변전",
       "hq": "남부건설본부",
@@ -1519,6 +1904,17 @@
       "stage": "사업승인",
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=9"
+    },
+    "154kv부북분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "남부건설본부",
+      "key": "154kv부북분기송전선로건설사업",
+      "name": "154kV 부북분기 송전선로 건설사업",
+      "number": 2,
+      "office": "직할",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do?page=2"
     },
     "154kv부산항변전소건설사업": {
       "equipment": "변전",
@@ -1586,6 +1982,17 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=13"
     },
+    "154kv북김제분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv북김제분기송전선로건설사업",
+      "name": "154kV 북김제분기 송전선로 건설사업",
+      "number": 28,
+      "office": "전북건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=42"
+    },
     "154kv북김제분기지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "중부건설본부",
@@ -1618,6 +2025,17 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=12"
+    },
+    "154kv북당진-송악지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "중부건설본부",
+      "key": "154kv북당진-송악지중송전선로건설사업",
+      "name": "154kV 북당진-송악 지중송전선로 건설사업",
+      "number": 29,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=41"
     },
     "154kv북리변전소건설사업": {
       "equipment": "변전",
@@ -1674,6 +2092,28 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=18"
     },
+    "154kv북세종변전소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv북세종변전소건설사업",
+      "name": "154kV 북세종변전소 건설사업",
+      "number": 30,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=41"
+    },
+    "154kv북세종분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv북세종분기송전선로건설사업",
+      "name": "154kV 북세종분기 송전선로 건설사업",
+      "number": 31,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=41"
+    },
     "154kv북신갈변전소건설사업": {
       "equipment": "변전",
       "hq": "경인건설본부",
@@ -1706,6 +2146,28 @@
       "stage": "사업승인",
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=12"
+    },
+    "154kv북아산변전소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv북아산변전소건설사업",
+      "name": "154kV 북아산변전소 건설사업",
+      "number": 2,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=21"
+    },
+    "154kv북아산분기전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "154kv북아산분기전력구건설사업",
+      "name": "154kV 북아산분기 전력구 건설사업",
+      "number": 14,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=19"
     },
     "154kv북아산분기지중송전선로건설사업": {
       "equipment": "지중송전",
@@ -1761,6 +2223,28 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=3"
+    },
+    "154kv북창녕변전소건설사업": {
+      "equipment": "변전",
+      "hq": "남부건설본부",
+      "key": "154kv북창녕변전소건설사업",
+      "name": "154kV 북창녕변전소 건설사업",
+      "number": 32,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=41"
+    },
+    "154kv북창녕분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "남부건설본부",
+      "key": "154kv북창녕분기송전선로건설사업",
+      "name": "154kV 북창녕분기 송전선로 건설사업",
+      "number": 33,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=41"
     },
     "154kv북천안분기송전선로건설사업": {
       "equipment": "가공송전",
@@ -1905,6 +2389,28 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=2"
     },
+    "154kv사등변전소건설사업": {
+      "equipment": "변전",
+      "hq": "남부건설본부",
+      "key": "154kv사등변전소건설사업",
+      "name": "154kV 사등변전소 건설사업",
+      "number": 36,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=41"
+    },
+    "154kv사등분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "남부건설본부",
+      "key": "154kv사등분기송전선로건설사업",
+      "name": "154kV 사등분기 송전선로 건설사업",
+      "number": 37,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=41"
+    },
     "154kv사직-율량전력구건설사업": {
       "equipment": "전력구",
       "hq": "중부건설본부",
@@ -1981,6 +2487,28 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do"
+    },
+    "154kv삼각지변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv삼각지변전소건설사업",
+      "name": "154kV 삼각지변전소 건설사업",
+      "number": 38,
+      "office": "직할",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=41"
+    },
+    "154kv삼호개폐소-화원(증)지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "중부건설본부",
+      "key": "154kv삼호개폐소-화원(증)지중송전선로건설사업",
+      "name": "154kV 삼호개폐소-화원(증) 지중송전선로 건설사업",
+      "number": 13,
+      "office": "광주전남건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=19"
     },
     "154kv상운변전소건설사업": {
       "equipment": "변전",
@@ -2146,6 +2674,17 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=40"
+    },
+    "154kv서송도변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv서송도변전소건설사업",
+      "name": "154kV 서송도변전소 건설사업",
+      "number": 55,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=15"
     },
     "154kv서영광변전소건설사업": {
       "equipment": "변전",
@@ -2334,6 +2873,17 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=8"
     },
+    "154kv석계분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "남부건설본부",
+      "key": "154kv석계분기송전선로건설사업",
+      "name": "154kV 석계분기 송전선로 건설사업",
+      "number": 1,
+      "office": "직할",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do?page=2"
+    },
     "154kv석대변전소건설사업": {
       "equipment": "변전",
       "hq": "남부건설본부",
@@ -2411,6 +2961,28 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=18"
     },
+    "154kv성본-대소송전선로전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "154kv성본-대소송전선로전력구건설사업",
+      "name": "154kV 성본-대소송전선로 전력구 건설사업",
+      "number": 3,
+      "office": "충북강원건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=20"
+    },
+    "154kv성본변전소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv성본변전소건설사업",
+      "name": "154kV 성본변전소 건설사업",
+      "number": 12,
+      "office": "충북강원건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=20"
+    },
     "154kv성포-안산(증)지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "경인건설본부",
@@ -2422,6 +2994,28 @@
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=5"
     },
+    "154kv세산분기전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "남부건설본부",
+      "key": "154kv세산분기전력구건설사업",
+      "name": "154kV 세산분기 전력구 건설사업",
+      "number": 9,
+      "office": "직할",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
+    },
+    "154kv세산분기지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "남부건설본부",
+      "key": "154kv세산분기지중송전선로건설사업",
+      "name": "154kV 세산분기 지중송전선로 건설사업",
+      "number": 7,
+      "office": "직할",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
+    },
     "154kv소룡변전소ess건설사업": {
       "equipment": "변전",
       "hq": "중부건설본부",
@@ -2432,6 +3026,17 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=16"
+    },
+    "154kv소사벌분기전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv소사벌분기전력구건설사업",
+      "name": "154kV 소사벌분기 전력구 건설사업",
+      "number": 54,
+      "office": "경기건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=15"
     },
     "154kv소사벌분기지중송전선로건설사업": {
       "equipment": "지중송전",
@@ -2454,6 +3059,28 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=22"
+    },
+    "154kv소성분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv소성분기송전선로건설사업",
+      "name": "154kV 소성분기 송전선로 건설사업",
+      "number": 53,
+      "office": "전북건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=15"
+    },
+    "154kv소정분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv소정분기송전선로건설사업",
+      "name": "154kV 소정분기 송전선로 건설사업",
+      "number": 52,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=16"
     },
     "154kv소태분기송전선로건설사업": {
       "equipment": "가공송전",
@@ -2520,6 +3147,17 @@
       "stage": "사업승인",
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=4"
+    },
+    "154kv수색에너지센터옥내화건설사업": {
+      "equipment": "지중송전",
+      "hq": "경인건설본부",
+      "key": "154kv수색에너지센터옥내화건설사업",
+      "name": "154kV 수색 에너지센터 옥내화 건설사업",
+      "number": 11,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=20"
     },
     "154kv수영-정보선종교체전력구건설사업": {
       "equipment": "전력구",
@@ -2972,6 +3610,17 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=39"
     },
+    "154kv신송도-북송도,신송도-동송도전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv신송도-북송도,신송도-동송도전력구건설사업",
+      "name": "154kV 신송도-북송도, 신송도-동송도 전력구 건설사업",
+      "number": 4,
+      "office": "남서울인천건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=20"
+    },
     "154kv신송도-북송도지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "경인건설본부",
@@ -2982,6 +3631,17 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=39"
+    },
+    "154kv신안변전소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv신안변전소건설사업",
+      "name": "154kV 신안변전소 건설사업",
+      "number": 10,
+      "office": "광주전남건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=20"
     },
     "154kv신안분기송전선로건설사업": {
       "equipment": "가공송전",
@@ -3291,6 +3951,28 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=38"
     },
+    "154kv신청주-문백송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv신청주-문백송전선로건설사업",
+      "name": "154kV 신청주-문백 송전선로 건설사업",
+      "number": 9,
+      "office": "충북강원건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=20"
+    },
+    "154kv신탕정-탕정#3전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "154kv신탕정-탕정#3전력구건설사업",
+      "name": "154kV 신탕정-탕정#3 전력구 건설사업",
+      "number": 50,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=16"
+    },
     "154kv신탕정-탕정#3지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "중부건설본부",
@@ -3522,6 +4204,17 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=18"
     },
+    "154kv아암분기전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv아암분기전력구건설사업",
+      "name": "154kV 아암분기 전력구 건설사업",
+      "number": 49,
+      "office": "남서울인천건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=16"
+    },
     "154kv아암분기지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "경인건설본부",
@@ -3598,6 +4291,17 @@
       "stage": "사업승인",
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=8"
+    },
+    "154kv안좌-읍동개폐소지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "중부건설본부",
+      "key": "154kv안좌-읍동개폐소지중송전선로건설사업",
+      "name": "154kV 안좌-읍동개폐소 지중송전선로 건설사업",
+      "number": 8,
+      "office": "광주전남건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=20"
     },
     "154kv안좌-해남#3송전선로건설사업": {
       "equipment": "가공송전",
@@ -3929,6 +4633,17 @@
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=10"
     },
+    "154kv영신변전소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv영신변전소건설사업",
+      "name": "154kV 영신변전소 건설사업",
+      "number": 48,
+      "office": "광주전남건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=16"
+    },
     "154kv영신분기송전선로건설사업": {
       "equipment": "가공송전",
       "hq": "중부건설본부",
@@ -4116,6 +4831,39 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=5"
     },
+    "154kv완산변전소건설사업": {
+      "equipment": "변전소",
+      "hq": "중부건설본부",
+      "key": "154kv완산변전소건설사업",
+      "name": "154kV 완산변전소 건설사업",
+      "number": 14,
+      "office": "전북건설지사",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
+    },
+    "154kv완산분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv완산분기송전선로건설사업",
+      "name": "154kV 완산분기 송전선로 건설사업",
+      "number": 6,
+      "office": "전북건설지사",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
+    },
+    "154kv완산분기전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "154kv완산분기전력구건설사업",
+      "name": "154kV 완산분기 전력구 건설사업",
+      "number": 5,
+      "office": "직할",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
+    },
     "154kv왕숙-진접전력구건설사업": {
       "equipment": "전력구",
       "hq": "경인건설본부",
@@ -4292,6 +5040,28 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=12"
     },
+    "154kv운남-안좌개폐소송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv운남-안좌개폐소송전선로건설사업",
+      "name": "154kV 운남-안좌개폐소 송전선로 건설사업",
+      "number": 47,
+      "office": "광주전남건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=16"
+    },
+    "154kv운남-읍동개폐소전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "154kv운남-읍동개폐소전력구건설사업",
+      "name": "154kV 운남-읍동개폐소 전력구 건설사업",
+      "number": 8,
+      "office": "광주전남건설지사",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
+    },
     "154kv운남-읍동개폐소지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "중부건설본부",
@@ -4423,6 +5193,28 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=18"
+    },
+    "154kv음성천연가스s/y건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv음성천연가스s/y건설사업",
+      "name": "154kV 음성천연가스S/Y 건설사업",
+      "number": 46,
+      "office": "충북강원건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=16"
+    },
+    "154kv읍동개폐소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv읍동개폐소건설사업",
+      "name": "154kV 읍동개폐소 건설사업",
+      "number": 7,
+      "office": "광주전남건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=20"
     },
     "154kv이리-왕궁송전선로건설사업": {
       "equipment": "가공송전",
@@ -4589,6 +5381,17 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=8"
     },
+    "154kv자인-시지지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "남부건설본부",
+      "key": "154kv자인-시지지중송전선로건설사업",
+      "name": "154kV 자인-시지 지중송전선로 건설사업",
+      "number": 6,
+      "office": "대구경북건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=20"
+    },
     "154kv장위변전소건설사업": {
       "equipment": "변전",
       "hq": "경인건설본부",
@@ -4599,6 +5402,17 @@
       "stage": "사업승인",
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=10"
+    },
+    "154kv장위분기전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv장위분기전력구건설사업",
+      "name": "154kV 장위분기 전력구 건설사업",
+      "number": 45,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=16"
     },
     "154kv장항#2변전소건설사업": {
       "equipment": "변전",
@@ -4743,6 +5557,28 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=18"
     },
+    "154kv주천변전소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv주천변전소건설사업",
+      "name": "154kV 주천변전소 건설사업",
+      "number": 44,
+      "office": "충북강원건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=16"
+    },
+    "154kv주천분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv주천분기송전선로건설사업",
+      "name": "154kV 주천분기 송전선로 건설사업",
+      "number": 43,
+      "office": "충북강원건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=16"
+    },
     "154kv죽정변전소건설사업": {
       "equipment": "변전",
       "hq": "남부건설본부",
@@ -4765,6 +5601,17 @@
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=6"
     },
+    "154kv중계-신내지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "경인건설본부",
+      "key": "154kv중계-신내지중송전선로건설사업",
+      "name": "154kV 중계-신내 지중송전선로 건설사업",
+      "number": 51,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=16"
+    },
     "154kv중동-고강,대장-고강전력구건설사업": {
       "equipment": "전력구",
       "hq": "경인건설본부",
@@ -4776,6 +5623,17 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=14"
     },
+    "154kv중동-고강전력구공사": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv중동-고강전력구공사",
+      "name": "154kV 중동-고강 전력구공사",
+      "number": 42,
+      "office": "남서울인천건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=17"
+    },
     "154kv중동-고강지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "경인건설본부",
@@ -4786,6 +5644,28 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=36"
+    },
+    "154kv중동탄변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv중동탄변전소건설사업",
+      "name": "154kV 중동탄변전소 건설사업",
+      "number": 41,
+      "office": "경기건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=17"
+    },
+    "154kv중동탄분기전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv중동탄분기전력구건설사업",
+      "name": "154kV 중동탄분기 전력구 건설사업",
+      "number": 40,
+      "office": "경기건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=17"
     },
     "154kv중동탄분기지중송전선로건설사업": {
       "equipment": "지중송전",
@@ -4841,6 +5721,17 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=11"
+    },
+    "154kv증산,수색변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv증산,수색변전소건설사업",
+      "name": "154kV 증산, 수색S/S 건설사업",
+      "number": 11,
+      "office": "직할",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
     },
     "154kv지문변전소건설사업": {
       "equipment": "변전",
@@ -5139,6 +6030,28 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=36"
     },
+    "154kv청안(사담)변전소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv청안(사담)변전소건설사업",
+      "name": "154kV 청안(사담)변전소 건설사업",
+      "number": 34,
+      "office": "충북강원건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=41"
+    },
+    "154kv청안분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "154kv청안분기송전선로건설사업",
+      "name": "154kV 청안분기 송전선로 건설사업",
+      "number": 35,
+      "office": "충북강원건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=41"
+    },
     "154kv청용-구성#1,구성#1-삼호전력구건설사업": {
       "equipment": "전력구",
       "hq": "중부건설본부",
@@ -5271,6 +6184,17 @@
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=12"
     },
+    "154kv통영-아주전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "남부건설본부",
+      "key": "154kv통영-아주전력구건설사업",
+      "name": "154kV 통영-아주 전력구 건설사업",
+      "number": 39,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=17"
+    },
     "154kv통영-아주지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "남부건설본부",
@@ -5292,6 +6216,28 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=36"
+    },
+    "154kv통진-월곶전력구공사": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv통진-월곶전력구공사",
+      "name": "154kV 통진-월곶 전력구공사",
+      "number": 38,
+      "office": "남서울인천건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=17"
+    },
+    "154kv팔달-서침산전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "남부건설본부",
+      "key": "154kv팔달-서침산전력구건설사업",
+      "name": "154kV 팔달-서침산 전력구 건설사업",
+      "number": 37,
+      "office": "대구경북건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=17"
     },
     "154kv팔탄변전소건설사업": {
       "equipment": "변전",
@@ -5579,6 +6525,17 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=25"
     },
+    "154kv호매실-남수원전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv호매실-남수원전력구건설사업",
+      "name": "154kV 호매실-남수원 전력구 건설사업",
+      "number": 36,
+      "office": "경기건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=17"
+    },
     "154kv홍천facts건설사업": {
       "equipment": "변전",
       "hq": "HVDC건설본부",
@@ -5722,6 +6679,17 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=18"
     },
+    "154kv황금개폐소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "154kv황금개폐소건설사업",
+      "name": "154kV 황금개폐소 건설사업",
+      "number": 4,
+      "office": "광주전남건설지사",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do?page=2"
+    },
     "154kv회천변전소건설사업": {
       "equipment": "변전",
       "hq": "경인건설본부",
@@ -5743,6 +6711,17 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=35"
+    },
+    "154kv회천분기전력구공사": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv회천분기전력구공사",
+      "name": "154kV 회천분기 전력구공사",
+      "number": 35,
+      "office": "남서울인천건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=17"
     },
     "154kv회천분기지중송전선로건설사업": {
       "equipment": "지중송전",
@@ -5777,6 +6756,50 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=28"
     },
+    "154kv희곡(舊안중)분기전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "154kv희곡(舊안중)분기전력구건설사업",
+      "name": "154kV 희곡(舊안중)분기 전력구 건설사업",
+      "number": 3,
+      "office": "경기건설지사",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do?page=2"
+    },
+    "154kv희곡변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154kv희곡변전소건설사업",
+      "name": "154kV 희곡변전소 건설사업",
+      "number": 12,
+      "office": "경기건설지사",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
+    },
+    "154kv희곡분기지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "경인건설본부",
+      "key": "154kv희곡분기지중송전선로건설사업",
+      "name": "154kV 희곡분기 지중T/L 건설사업",
+      "number": 13,
+      "office": "경기건설지사",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
+    },
+    "154㎸동송산변전소건설사업": {
+      "equipment": "변전",
+      "hq": "경인건설본부",
+      "key": "154㎸동송산변전소건설사업",
+      "name": "154㎸ 동송산변전소 건설사업",
+      "number": 15,
+      "office": "경기건설지사",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=19"
+    },
     "345kv갈산-신광명(2단계)전력구건설사업": {
       "equipment": "전력구",
       "hq": "경인건설본부",
@@ -5787,6 +6810,17 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=14"
+    },
+    "345kv고덕#2-서안성지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "경인건설본부",
+      "key": "345kv고덕#2-서안성지중송전선로건설사업",
+      "name": "345kV 고덕#2-서안성 지중송전선로 건설사업",
+      "number": 33,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=17"
     },
     "345kv고덕#3변전소건설사업": {
       "equipment": "변전",
@@ -5809,6 +6843,17 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=34"
+    },
+    "345kv광양-여수t/p지중화전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "345kv광양-여수t/p지중화전력구건설사업",
+      "name": "345kV 광양-여수T/P 지중화 전력구 건설사업",
+      "number": 32,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=18"
     },
     "345kv군산-신천안송전선로건설사업": {
       "equipment": "가공송전",
@@ -5919,6 +6964,17 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=8"
+    },
+    "345kv동두천cc-양주송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "경인건설본부",
+      "key": "345kv동두천cc-양주송전선로건설사업",
+      "name": "345kV 동두천CC-양주 송전선로 건설사업",
+      "number": 31,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=18"
     },
     "345kv동두천cc-양주지중송전선로건설사업": {
       "equipment": "지중송전",
@@ -6084,6 +7140,17 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=6"
+    },
+    "345kv북당진-신탕정전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "345kv북당진-신탕정전력구건설사업",
+      "name": "345kV 북당진-신탕정 전력구 건설사업",
+      "number": 30,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=18"
     },
     "345kv북천안-신기흥송전선로건설사업": {
       "equipment": "가공송전",
@@ -6315,6 +7382,17 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=11"
+    },
+    "345kv신강서분기전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "남부건설본부",
+      "key": "345kv신강서분기전력구건설사업",
+      "name": "345kV 신강서분기 전력구 건설사업",
+      "number": 29,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=18"
     },
     "345kv신강서분기전력구공사": {
       "equipment": "전력구",
@@ -6690,6 +7768,17 @@
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=35"
     },
+    "345kv신당진-북당진전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "345kv신당진-북당진전력구건설사업",
+      "name": "345kV 신당진-북당진 전력구 건설사업",
+      "number": 28,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=18"
+    },
     "345kv신당진-북당진지중송전선로건설사업": {
       "equipment": "지중송전",
       "hq": "중부건설본부",
@@ -6788,6 +7877,17 @@
       "stage": "계획확정",
       "stage_order": 1,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=17"
+    },
+    "345kv신부평#2-영서지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "경인건설본부",
+      "key": "345kv신부평#2-영서지중송전선로건설사업",
+      "name": "345kV 신부평#2-영서 지중송전선로 건설사업",
+      "number": 34,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=17"
     },
     "345kv신서원개폐소건설사업": {
       "equipment": "변전",
@@ -6964,6 +8064,28 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do"
+    },
+    "345kv신송산변전소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "345kv신송산변전소건설사업",
+      "name": "345kV 신송산변전소 건설사업",
+      "number": 27,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=18"
+    },
+    "345kv신시흥#1-신송도전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "경인건설본부",
+      "key": "345kv신시흥#1-신송도전력구건설사업",
+      "name": "345kV 신시흥#1-신송도 전력구 건설사업",
+      "number": 5,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=20"
     },
     "345kv신시흥#1-신송도지중송전선로건설사업": {
       "equipment": "지중송전",
@@ -7394,6 +8516,39 @@
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=10"
     },
+    "345kv신청주변전소건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "345kv신청주변전소건설사업",
+      "name": "345kV 신청주변전소 건설사업",
+      "number": 26,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=18"
+    },
+    "345kv신청주분기송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "345kv신청주분기송전선로건설사업",
+      "name": "345kV 신청주분기 송전선로 건설사업",
+      "number": 24,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=18"
+    },
+    "345kv신청주분기전력구건설사업": {
+      "equipment": "전력구",
+      "hq": "중부건설본부",
+      "key": "345kv신청주분기전력구건설사업",
+      "name": "345kV 신청주분기 전력구 건설사업",
+      "number": 25,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=18"
+    },
     "345kv신탕정-신판교송전선로건설사업": {
       "equipment": "가공송전",
       "hq": "중부건설본부",
@@ -7691,6 +8846,17 @@
       "stage_order": 2,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/approvetostart/boardList.do?page=19"
     },
+    "500kvhvdc고덕변환소2단계건설사업": {
+      "equipment": "변전",
+      "hq": "중부건설본부",
+      "key": "500kvhvdc고덕변환소2단계건설사업",
+      "name": "500kV HVDC 고덕변환소 2단계 건설사업",
+      "number": 22,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=19"
+    },
     "500kvhvdc동서울변환소건설사업": {
       "equipment": "변전",
       "hq": "HVDC건설본부",
@@ -7756,6 +8922,17 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=13"
+    },
+    "500kvhvdc동해안-신가평건설사업(1공구)": {
+      "equipment": "가공송전",
+      "hq": "HVDC건설본부",
+      "key": "500kvhvdc동해안-신가평건설사업(1공구)",
+      "name": "500kV HVDC 동해안-신가평 건설사업(1공구)",
+      "number": 23,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=18"
     },
     "500kvhvdc동해안-신가평건설사업(2공구)": {
       "equipment": "가공송전",
@@ -7855,6 +9032,83 @@
       "stage": "공사착수",
       "stage_order": 3,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=4"
+    },
+    "500kvhvdc북당진-고덕2단계건설사업": {
+      "equipment": "변환",
+      "hq": "중부건설본부",
+      "key": "500kvhvdc북당진-고덕2단계건설사업",
+      "name": "500kV HVDC 북당진-고덕 2단계 건설사업",
+      "number": 21,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=19"
+    },
+    "500kvhvdc북당진-고덕2단계지중송전선로건설사업": {
+      "equipment": "지중송전",
+      "hq": "중부건설본부",
+      "key": "500kvhvdc북당진-고덕2단계지중송전선로건설사업",
+      "name": "500kV HVDC 북당진-고덕 2단계 지중송전선로 건설사업",
+      "number": 20,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=19"
+    },
+    "500kvhvdc북당진변환소2단계건설사업": {
+      "equipment": "변환",
+      "hq": "중부건설본부",
+      "key": "500kvhvdc북당진변환소2단계건설사업",
+      "name": "500kV HVDC 북당진변환소 2단계 건설사업",
+      "number": 19,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=19"
+    },
+    "500kvhvdc신가평변환소건설": {
+      "equipment": "변전",
+      "hq": "HVDC건설본부",
+      "key": "500kvhvdc신가평변환소건설",
+      "name": "500kV HVDC 신가평변환소 건설",
+      "number": 18,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=19"
+    },
+    "70kv괴산-장연송전선로건설사업": {
+      "equipment": "가공송전",
+      "hq": "중부건설본부",
+      "key": "70kv괴산-장연송전선로건설사업",
+      "name": "70kV 괴산-장연 송전선로 건설사업",
+      "number": 1,
+      "office": "충북강원건설지사",
+      "stage": "계획확정",
+      "stage_order": 1,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do?page=44"
+    },
+    "765kv북경남변전소#2m.tr증설공사": {
+      "equipment": "변전",
+      "hq": "남부건설본부",
+      "key": "765kv북경남변전소#2m.tr증설공사",
+      "name": "765kV 북경남변전소 #2M.Tr 증설공사",
+      "number": 10,
+      "office": "직할",
+      "stage": "사업완료",
+      "stage_order": 4,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/completetoyear/boardList.do"
+    },
+    "765kv신태백facts건설사업": {
+      "equipment": "변전",
+      "hq": "HVDC건설본부",
+      "key": "765kv신태백facts건설사업",
+      "name": "765kV 신태백 FACTS 건설사업",
+      "number": 62,
+      "office": "직할",
+      "stage": "공사착수",
+      "stage_order": 3,
+      "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=15"
     },
     "765kv신평창(구.신강원)변전소건설사업": {
       "equipment": "변전",
@@ -8011,5 +9265,5 @@
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=4"
     }
   },
-  "updated_at": "2026-09-14T12:50:46.907648+00:00"
+  "updated_at": "2026-09-14T12:57:18.895326+00:00"
 }
