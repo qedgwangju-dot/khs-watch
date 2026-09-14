@@ -103,6 +103,7 @@ jobs:
           python scripts/warsh_sep_path_watch.py
 
       - name: Check AI hardware software rotation and notify KHS887900 Telegram
+        if: ${{ always() && !cancelled() }}
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
@@ -134,6 +135,7 @@ jobs:
           python scripts/warsh_ai_rotation_watch.py
 
       - name: Ignore timestamp-only state changes
+        if: ${{ always() && !cancelled() }}
         run: |
           python - <<'PY'
           import json, pathlib, subprocess
@@ -169,6 +171,7 @@ jobs:
           PY
 
       - name: Persist deduplication baselines
+        if: ${{ always() && !cancelled() }}
         run: |
           CHANGED="$(git status --porcelain -- data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json)"
           if [ -z "$CHANGED" ]; then
