@@ -7,6 +7,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.korea_grid_stage_watch import (
     compare_state,
+    discover_stage_pages,
     parse_overview_counts,
     parse_stage_rows,
     render_report,
@@ -26,6 +27,19 @@ def test_parse_overview_counts():
         "공사착수": 203,
         "사업완료": 14,
     }
+
+
+def test_discover_stage_pages_includes_completion_tab():
+    html = """
+    <a href="plantoapprove/boardList.do">계획확정 - 사업승인전</a>
+    <a href="approvetostart/boardList.do">사업승인 - 공사착수전</a>
+    <a href="starttocomplete/boardList.do">공사착수 - 사업완료전</a>
+    <a href="completetoyear/boardList.do">사업완료 - 준공후 1년</a>
+    """
+    pages = discover_stage_pages(html, "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/")
+    assert set(pages) == {"계획확정", "사업승인", "공사착수", "사업완료"}
+    assert pages["사업완료"][0] == 4
+    assert pages["사업완료"][1].endswith("completetoyear/boardList.do")
 
 
 def test_parse_stage_rows():
@@ -70,9 +84,35 @@ def test_compare_state_detects_stage_change_and_count_change():
     events = compare_state(old_counts, old_projects, new_counts, new_projects)
     assert any(e["type"] == "count_change" for e in events)
     assert any(e["type"] == "stage_change" for e in events)
-    report = render_report(events, new_counts)
+    report = render_report(
+        events,
+        new_counts,
+        {
+            "사업승인": {"expected": 190, "parsed": 190, "complete": True},
+            "공사착수": {"expected": 203, "parsed": 203, "complete": True},
+        },
+    )
+    assert "어떤 사업이 바뀌었나" in report
+    assert "154kV 테스트변전소 건설사업" in report
     assert "사업승인 → 공사착수" in report
+    assert "공사착수 (+1)" in report
     assert "시간표·돈 버는 능력" in report
     assert "변압기·GIS·차단기" in report
     assert "특정 기사 추적이 아니라 한국전력 송변전 사업현황의 실제 단계·물량 변화 감지" in report
     assert "<i>" not in report
+
+
+def test_render_report_calls_out_unreconciled_count_change():
+    counts = {"계획확정": 396, "사업승인": 195, "공사착수": 131, "사업완료": 2}
+    events = [
+        {"type": "count_change", "changes": [("계획확정", 393, 396)]},
+    ]
+    report = render_report(
+        events,
+        counts,
+        {"계획확정": {"expected": 396, "parsed": 10, "complete": False}},
+    )
+    assert "계획확정 (+3)" in report
+    assert "대응 사업명을 아직 확정하지 못함" in report
+    assert "전수 확인 아님" in report
+    assert "목록 갱신 시차 확인 필요" in report
