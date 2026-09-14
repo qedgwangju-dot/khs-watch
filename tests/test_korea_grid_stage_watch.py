@@ -74,3 +74,5 @@ def test_compare_state_detects_stage_change_and_count_change():
     assert "사업승인 → 공사착수" in report
     assert "시간표·돈 버는 능력" in report
     assert "변압기·GIS·차단기" in report
+    assert "특정 기사 추적이 아니라 한국전력 송변전 사업현황의 실제 단계·물량 변화 감지" in report
+    assert "<i>" not in report
