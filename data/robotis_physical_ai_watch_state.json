@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-09-14T21:02:55.232917+00:00",
+  "updated_at": "2026-09-14T23:07:12.939908+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -241,9 +241,16 @@
     "3a0e434e48e8f2ccf02a8cfbd7fc8298d01ddbf16e02b76fef5930af274c62d7",
     "55c07fa27a33d22545ac2f5ca554cab66084667caf3a41b02edeebe5a8c23909",
     "7b26371d9a226c6ca08a23def0a1f97dccb46b21dc9ebb27074131625f6af5d3",
-    "439c32ac54a7f219f1e15b51068adab4517e9e1fd6c7960f11b449235c302627"
+    "439c32ac54a7f219f1e15b51068adab4517e9e1fd6c7960f11b449235c302627",
+    "b173aef5c62bdd049c5c046c4f1923d58c5e554f03fb1925fe8f1c9f1bb4ad77",
+    "7225cfbd094ad53d0ae77e76120323b2d9fa3f2f7fbf5d70fdc09357c66ac64b",
+    "fb4977ba332093285882af7bd697c3d6f541e48dc95f05fb506adca58c8f06db"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "b173aef5c62bdd049c5c046c4f1923d58c5e554f03fb1925fe8f1c9f1bb4ad77",
+    "7225cfbd094ad53d0ae77e76120323b2d9fa3f2f7fbf5d70fdc09357c66ac64b",
+    "fb4977ba332093285882af7bd697c3d6f541e48dc95f05fb506adca58c8f06db"
+  ],
   "groups": [
     "ess_battery",
     "hyundai_atlas_rollout",
@@ -251,6 +258,7 @@
     "lg_factory_loop",
     "pohang_robot_foundry",
     "robotis",
-    "robotis_excess_demand"
+    "robotis_excess_demand",
+    "xpeng"
   ]
 }
