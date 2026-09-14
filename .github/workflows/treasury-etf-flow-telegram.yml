@@ -1,14 +1,6 @@
 name: Treasury ETF Fund Flow Telegram
 
 on:
-  push:
-    paths:
-      - ".github/workflows/treasury-etf-flow-telegram.yml"
-      - "scripts/treasury_etf_flow_watch.py"
-      - "scripts/treasury_credit_flow_watch_ishares.py"
-      - "scripts/treasury_credit_flow_watch_readable.py"
-      - "scripts/treasury_credit_flow_watch_marketstress.py"
-      - "scripts/treasury_credit_flow_watch_refinancing.py"
   schedule:
     - cron: "30 8 * * *"
       timezone: "Asia/Seoul"
@@ -74,7 +66,7 @@ jobs:
           print(f"telegram_route_valid=true bot=@{actual} chat_id_present=true")
           PY
 
-      - name: Run refinancing-aware Treasury plus credit ETF monitor and send Telegram
+      - name: Run compact Treasury plus credit ETF monitor and send Telegram
         run: python scripts/treasury_credit_flow_watch_refinancing.py
 
       - name: Publish summary
