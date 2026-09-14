@@ -25,23 +25,47 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
 
           path = Path('.github/workflows/clarity-watch-telegram.yml')
           text = path.read_text(encoding='utf-8')
 
-          replacements = {
-              'EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"': 'EXPECTED_TELEGRAM_BOT_USERNAME: "khs88790088790000_bot"',
-              'TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}': 'TELEGRAM_BOT_TOKEN: ${{ secrets.CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN }}',
-              'TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}': 'TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.TELEGRAM_CHAT_ID }}',
-              'TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}': 'TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}',
-              'YEN_CARRY_TELEGRAM_BOT_TOKEN secret is missing': 'CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN secret is missing',
-          }
+          text = text.replace(
+              'EXPECTED_TELEGRAM_BOT_USERNAME: "hs8879887988798879_bot"',
+              'EXPECTED_TELEGRAM_BOT_USERNAME: "khs88790088790000_bot"',
+          )
 
-          for old, new in replacements.items():
-              if old not in text:
-                  raise SystemExit(f'expected route fragment not found: {old}')
-              text = text.replace(old, new)
+          dollar = '$'
+          open_expr = '{{'
+          close_expr = '}}'
+          crypto_token = dollar + open_expr + ' secrets.CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN ' + close_expr
+          primary_chat = dollar + open_expr + ' secrets.TELEGRAM_CHAT_ID ' + close_expr
+          fallback_chat = dollar + open_expr + ' secrets.YEN_CARRY_TELEGRAM_CHAT_ID ' + close_expr
 
+          text, n_token = re.subn(
+              r'(?m)^(\s*TELEGRAM_BOT_TOKEN:)\s*.*YEN_CARRY_TELEGRAM_BOT_TOKEN.*$',
+              lambda m: m.group(1) + ' ' + crypto_token,
+              text,
+          )
+          text, n_primary = re.subn(
+              r'(?m)^(\s*TELEGRAM_CHAT_ID_PRIMARY:)\s*.*YEN_CARRY_TELEGRAM_CHAT_ID.*$',
+              lambda m: m.group(1) + ' ' + primary_chat,
+              text,
+          )
+          text, n_fallback = re.subn(
+              r'(?m)^(\s*TELEGRAM_CHAT_ID_FALLBACK:)\s*.*KHS_POLICY_TELEGRAM_CHAT_ID.*$',
+              lambda m: m.group(1) + ' ' + fallback_chat,
+              text,
+          )
+          text = text.replace(
+              'YEN_CARRY_TELEGRAM_BOT_TOKEN secret is missing',
+              'CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN secret is missing',
+          )
+
+          if n_token != 2 or n_primary != 2 or n_fallback != 2:
+              raise SystemExit(
+                  f'unexpected route replacement counts token={n_token} primary={n_primary} fallback={n_fallback}'
+              )
           if 'hs8879887988798879_bot' in text:
               raise SystemExit('old CLARITY bot route still present')
           if text.count('khs88790088790000_bot') != 1:
