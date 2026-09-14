@@ -89,21 +89,39 @@ jobs:
           text=pathlib.Path(os.environ["REPORT_PATH"]).read_text(encoding="utf-8").strip()
           if not text:
               raise RuntimeError("전송할 전력망 단계 알림이 비어 있습니다.")
-          response=requests.post(
-              f"https://api.telegram.org/bot{token}/sendMessage",
-              json={
-                  "chat_id":chat_id,
-                  "text":text,
-                  "parse_mode":"HTML",
-                  "disable_web_page_preview":True,
-              },
-              timeout=30,
-          )
-          response.raise_for_status()
-          result=response.json()
-          if not result.get("ok"):
-              raise RuntimeError(f"Telegram 전송 실패: {result}")
-          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={(result.get('result') or {}).get('message_id')}")
+
+          # 사업명이 많이 바뀐 달에도 내용을 잘라 버리지 않고 여러 메시지로 이어 보낸다.
+          chunks=[]
+          remaining=text
+          while remaining:
+              if len(remaining) <= 3500:
+                  chunks.append(remaining)
+                  break
+              cut=remaining.rfind("\n", 0, 3500)
+              if cut < 1800:
+                  cut=3500
+              chunks.append(remaining[:cut].rstrip())
+              remaining=remaining[cut:].lstrip()
+
+          ids=[]
+          for index, chunk in enumerate(chunks, start=1):
+              body=(f"<b>[{index}/{len(chunks)}]</b>\n" if len(chunks)>1 else "") + chunk
+              response=requests.post(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  json={
+                      "chat_id":chat_id,
+                      "text":body,
+                      "parse_mode":"HTML",
+                      "disable_web_page_preview":True,
+                  },
+                  timeout=30,
+              )
+              response.raise_for_status()
+              result=response.json()
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram 전송 실패: {result}")
+              ids.append((result.get("result") or {}).get("message_id"))
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_ids={ids}")
           PY
 
       - name: 상태 저장
