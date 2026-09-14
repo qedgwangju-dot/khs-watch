@@ -28,6 +28,8 @@ QUERIES = [
     '"CLARITY Act" "Ryan VanGrack"',
     '"CLARITY Act" "Brian Armstrong"',
     '"CLARITY Act" BitGo',
+    '"CLARITY Act" draft Senate Republicans',
+    '"CLARITY Act" revised text Senate',
 ]
 
 TIER1_LABELS = {
@@ -59,6 +61,12 @@ ACTION_RE = re.compile(
     r"advance[sd]?|pass(?:es|ed|age)?|vote|voting|motion\s+to\s+proceed|cloture|remain\s+at\s+the\s+negotiating\s+table|"
     r"stop\s+talking|start\s+voting|oppose[sd]?|block(?:s|ed)?|ethics?|conflict\s+of\s+interest|national\s+security|"
     r"leadership|negotiat(?:e|es|ed|ion|ions)?)\b",
+    re.I,
+)
+TEXT_RELEASE_RE = re.compile(
+    r"(?:\b(?:release[sd]?|unveil(?:s|ed)?|publish(?:es|ed)?|circulat(?:e|es|ed))\b.{0,100}\b(?:draft|text|version)\b|"
+    r"\b(?:final|revised|updated|new)\b.{0,40}\b(?:CLARITY\s+(?:Act|Bill)\s+)?(?:draft|text|version)\b|"
+    r"\b(?:draft|text|version)\b.{0,100}\b(?:release[sd]?|unveil(?:s|ed)?|publish(?:es|ed)?|circulat(?:e|es|ed))\b)",
     re.I,
 )
 RISK_RE = re.compile(r"\b(?:oppose[sd]?|block(?:s|ed)?|ethics?|conflict\s+of\s+interest|corruption)\b", re.I)
@@ -95,7 +103,7 @@ def clean(value):
 
 
 def fetch_bytes(url, timeout=15):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Policy-Watch/2.0)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Policy-Watch/2.1)"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read()
 
@@ -171,8 +179,14 @@ def resolve_original_url(news_url):
     return news_url
 
 
+def is_text_release_state(text):
+    return bool(TEXT_RELEASE_RE.search(clean(text)) and STRICT_TOPIC_RE.search(clean(text)))
+
+
 def event_subtype(signal, event_type):
     low = clean(signal).lower()
+    if "문안 공개" in event_type or "핵심 수정" in event_type:
+        return "senate_revised_draft_release"
     if event_type == "정치·윤리 표결 변수":
         return "ethics_conflict_risk"
     if "motion to proceed" in low:
@@ -198,7 +212,17 @@ def semantic_signature(actor, event_type, signal):
 
 def korean_event(item, actor, event_type, source_label, signal, evidence_sources=None):
     evidence_sources = list(dict.fromkeys(evidence_sources or [source_label]))
-    if event_type == "핵심 사업자·업계 표결 촉구":
+    if "문안 공개" in event_type or "핵심 수정" in event_type:
+        company, mobility = "", False
+        ko_title = "상원 공화당, CLARITY 최신 초안 공개 — 공식 원문 재확인 중"
+        reported_title = clean(item.get("title", ""))
+        detail = (
+            f"{source_label}가 상원 공화당이 CLARITY의 최신·최종 초안을 공개 또는 회람했다고 보도했습니다. "
+            "이건 단순한 Trump 발언이나 윤리 논란 재보도가 아니라 법안 문안 자체가 바뀐 상태 변화입니다. "
+            "보도 제목·요약상 Trump 대통령의 윤리 절충안 수용 내용이 새 초안에 반영된 것으로 보이지만, 어떤 조항이 실제로 들어갔는지는 Senate Banking·GovInfo·Congress.gov의 새 원문을 확보해 이전 버전과 조문 단위로 대조해야 합니다. "
+            "공식 원문이 아직 같은 시점에 확인되지 않으면 ‘신뢰매체 문안 공개 확인 / 공식 원문 대기’로 표시하고, 공식 원문이 올라오는 순간 SEC·CFTC 권한, DeFi, stablecoin rewards, 윤리·이해충돌, State AG 집행권 등 핵심 수정사항을 다시 잠급니다."
+        )
+    elif event_type == "핵심 사업자·업계 표결 촉구":
         company = INDUSTRY_ACTORS.get(actor, "미국 암호자산 사업자")
         ko_title = f"{actor}, CLARITY 법안 표결·통과 촉구"
         detail = (
@@ -230,7 +254,7 @@ def korean_event(item, actor, event_type, source_label, signal, evidence_sources
     published = parse_date(item["pubDate"])
     date = published.astimezone(ZoneInfo("America/New_York")).strftime("%a, %d %b %Y %H:%M:%S %z") if published else ""
     event = {
-        "source": f"{source_label} 발언 검증",
+        "source": f"{source_label} 발언 검증" if "문안 공개" not in event_type else f"{source_label} 문안 공개 검증",
         "event_type": event_type,
         "event_subtype": event_subtype(signal, event_type),
         "title": ko_title,
@@ -242,7 +266,11 @@ def korean_event(item, actor, event_type, source_label, signal, evidence_sources
         "evidence_count": len(evidence_sources),
         "monitoring_unit": "event_state_change",
     }
-    if event_type == "핵심 사업자·업계 표결 촉구":
+    if "문안 공개" in event_type or "핵심 수정" in event_type:
+        event["policy_actor"] = "상원 공화당 협상팀"
+        event["verification_status"] = "신뢰매체 문안 공개 확인 / Senate Banking·GovInfo·Congress.gov 공식 원문 재확인 대기"
+        event["text_release"] = True
+    elif event_type == "핵심 사업자·업계 표결 촉구":
         event["industry_actor"] = actor
         event["industry_company"] = company
         event["mobility_warning"] = mobility
@@ -284,10 +312,16 @@ def main():
         if tier == 0:
             continue
         signal = clean(f"{item['title']} {item['description']}")
-        actor = extract_actor(signal)
-        if not actor or not ACTION_RE.search(signal) or not STRICT_TOPIC_RE.search(signal):
+        if not STRICT_TOPIC_RE.search(signal):
             continue
-        event_type = "핵심 사업자·업계 표결 촉구" if actor in INDUSTRY_ACTORS else ("정치·윤리 표결 변수" if RISK_RE.search(signal) else "행정부·핵심 당사자 통과 촉구")
+        if is_text_release_state(signal):
+            actor = "상원 공화당 협상팀"
+            event_type = "법안 문안 공개·핵심 수정 — 신뢰매체 확인"
+        else:
+            actor = extract_actor(signal)
+            if not actor or not ACTION_RE.search(signal):
+                continue
+            event_type = "핵심 사업자·업계 표결 촉구" if actor in INDUSTRY_ACTORS else ("정치·윤리 표결 변수" if RISK_RE.search(signal) else "행정부·핵심 당사자 통과 촉구")
         candidates.append({
             "item": item,
             "actor": actor,
