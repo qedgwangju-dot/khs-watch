@@ -195,7 +195,7 @@ def render_report(events: list[dict[str, Any]], counts: dict[str, int]) -> str:
     now_kst = datetime.now(timezone.utc).astimezone(KST)
     lines = [
         "<b>전력망 사업단계 새 공식 변화</b>",
-        "<i>특정 기사 추적이 아니라 한국전력 송변전 사업현황의 실제 단계·물량 변화 감지</i>",
+        "특정 기사 추적이 아니라 한국전력 송변전 사업현황의 실제 단계·물량 변화 감지",
     ]
 
     count_event = next((e for e in events if e.get("type") == "count_change"), None)
