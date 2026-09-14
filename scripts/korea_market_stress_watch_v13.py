@@ -1,384 +1,123 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import datetime as dt
 import html
-import json
-from typing import Any, Callable
+import re
 
-import korea_market_stress_watch_v12 as v12
-import kospi_flow_attribution_ls as ls
+import korea_market_stress_watch_v13_core as core
 
-watch = v12.watch
-v10 = v12.v11.v10
+watch = core.watch
 
-LS_GUIDE = "https://openapi.ls-sec.co.kr/apiservice"
-LS_DAILY_TOLERANCE_EOK = 10.0
-LS_DAILY_TOLERANCE_PCT = 0.0005
+NEWS_CAPEX_PREFIX = "• 하이퍼스케일러 AI 설비투자 ±10% 이상 수치 포함 신규자료: "
+NEWS_WAVE_PREFIX = "• BofA Global Wave 방향 전환 관련 신규 공개자료: "
 
-_original_kospi_flow = watch.fetch_kospi_foreign_flow
-_original_kosdaq_flow = v10._fetch_kosdaq_foreign_flow
-_original_add_event = watch.add_event
-_original_market_flow_lines = v10._market_flow_lines
-_original_kosdaq_hit_keys = v10._kosdaq_hit_keys
-
-_ls_token: str | None = None
-_t1601_cache: dict[str, Any] | None = None
-_validation: dict[str, dict[str, Any]] = {}
-_ls_history_updates: dict[str, tuple[str, float]] = {}
+COMPANIES = (
+    ("Microsoft", "Microsoft"),
+    ("Alphabet", "Alphabet"),
+    ("Google", "Google"),
+    ("Amazon", "Amazon"),
+    ("Meta", "Meta"),
+    ("NVIDIA", "NVIDIA"),
+    ("Nvidia", "NVIDIA"),
+    ("Oracle", "Oracle"),
+)
 
 
-def _get_token() -> str:
-    global _ls_token
-    if not _ls_token:
-        _ls_token = ls.get_ls_token()
-    return _ls_token
+def _company(title: str) -> str:
+    for needle, label in COMPANIES:
+        if needle.lower() in title.lower():
+            m = re.search(rf"{re.escape(needle)}\s*\(([A-Z]{{1,6}})\)", title, re.I)
+            return f"{label}({m.group(1).upper()})" if m else label
+    m = re.search(r"\(([A-Z]{1,6})\)", title)
+    return f"해당 기업({m.group(1)})" if m else "해당 기업"
 
 
-def _fetch_t1601_snapshot() -> dict[str, Any]:
-    """장마감 시장별 투자자별 종합 스냅샷.
-
-    t1601 gubun1=2는 주식 금액 기준이며, 실제 2026-09-10 검증에서
-    KOSPI/KOSDAQ svolume_17이 네이버 장마감 억원 값과 정확히 일치했다.
-    block1=KOSPI, block2=KOSDAQ.
-    """
-    global _t1601_cache
-    if _t1601_cache is not None:
-        return _t1601_cache
-    token = _get_token()
-    body = {
-        "t1601InBlock": {
-            "gubun1": "2",
-            "gubun2": "2",
-            "gubun3": "",
-            "gubun4": "2",
-            "exchgubun": "K",
-        }
-    }
-    d = ls.ls_rest(token, "stock/investor", "t1601", body)
-    out: dict[str, Any] = {}
-    for market_name, block_name in (("KOSPI", "t1601OutBlock1"), ("KOSDAQ", "t1601OutBlock2")):
-        block = d.get(block_name) if isinstance(d.get(block_name), dict) else {}
-        foreign = ls.fnum(block.get("svolume_17"))
-        foreign_buy = ls.fnum(block.get("ms_17"))
-        foreign_sell = ls.fnum(block.get("md_17"))
-        institution = ls.fnum(block.get("svolume_18"))
-        individual = ls.fnum(block.get("svolume_08"))
-        if foreign is None:
-            raise RuntimeError(f"LS t1601 {market_name} 외국인 순매수(svolume_17) 없음")
-        if abs(foreign) > 200_000:
-            raise RuntimeError(f"LS t1601 {market_name} 외국인 금액 비정상 범위: {foreign}")
-        out[market_name] = {
-            "daily_eok": float(foreign),
-            "daily_krw": int(round(float(foreign) * 100_000_000)),
-            "foreign_buy_eok": foreign_buy,
-            "foreign_sell_eok": foreign_sell,
-            "institution_eok": institution,
-            "individual_eok": individual,
-            "tr_cd": "t1601",
-            "block": block_name,
-            "source": LS_GUIDE,
-        }
-    _t1601_cache = out
-    return out
+def _money_to_ko(raw: str) -> str:
+    m = re.fullmatch(r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*([MB])", raw.strip(), re.I)
+    if not m:
+        return raw
+    value = float(m.group(1))
+    dollars = value * (1_000_000 if m.group(2).upper() == "M" else 1_000_000_000)
+    eok = dollars / 100_000_000
+    whole = int(eok)
+    man = int(round((eok - whole) * 10_000))
+    return f"{whole:,}억{man:,}만달러" if man else f"{whole:,}억달러"
 
 
-def _latest_ls_foreign_eok(market_name: str) -> dict[str, Any]:
-    row = (_fetch_t1601_snapshot().get(market_name) or {})
-    if not row:
-        raise RuntimeError(f"LS t1601 {market_name} 장마감 스냅샷 없음")
-    return dict(row)
+def _translate_title(title: str, kind: str) -> str:
+    title = html.unescape(title).strip()
+    lower = title.lower()
+    company = _company(title)
+    pieces: list[str] = []
+
+    if any(k in lower for k in ("crash", "crashing", "plunge", "slump", "slides", "falls", "falling")):
+        pieces.append("주가 급락")
+    elif any(k in lower for k in ("surge", "surges", "jumps", "rally", "rises", "rose")):
+        pieces.append("주가 강세")
+
+    if "earnings" in lower:
+        pieces.append("실적 발표 영향")
+
+    m = re.search(r"EPS\s+(?:missed|misses)\s+([0-9]+(?:\.[0-9]+)?)%", title, re.I)
+    if m:
+        pieces.append(f"주당순이익(EPS) 예상치 {m.group(1)}% 하회")
+    m = re.search(r"EPS\s+(?:beat|beats)\s+([0-9]+(?:\.[0-9]+)?)%", title, re.I)
+    if m:
+        pieces.append(f"주당순이익(EPS) 예상치 {m.group(1)}% 상회")
+
+    m = re.search(r"FCF\s+(?:Hit|Hits|at|to)\s*(\$\s*[0-9]+(?:\.[0-9]+)?\s*[MB])", title, re.I)
+    if m:
+        pieces.append(f"잉여현금흐름(FCF) {_money_to_ko(m.group(1))}")
+
+    if "capex raised again" in lower:
+        pieces.append("설비투자 가이던스 재차 상향")
+    elif "capex raised" in lower or "raises capex" in lower or "raised capex" in lower:
+        pieces.append("설비투자 가이던스 상향")
+    elif "capex" in lower or "capital expenditure" in lower or "capital spending" in lower:
+        pieces.append("설비투자 변화")
+
+    if kind == "wave":
+        if any(k in lower for k in ("trough", "troughed", "rise", "rising", "rose", "improve", "improved", "positive signal")):
+            pieces.append("경기·이익 수정 방향 개선 신호")
+        if any(k in lower for k in ("peak", "peaked", "fall", "falling", "fell", "deteriorate", "deteriorated", "negative signal")):
+            pieces.append("경기·이익 수정 방향 악화 신호")
+
+    pcts = []
+    for p in re.findall(r"(?<!\d)(-?[0-9]+(?:\.[0-9]+)?)\s*%", title):
+        if p not in pcts:
+            pcts.append(p)
+    if pcts and not any(p + "%" in " ".join(pieces) for p in pcts):
+        pieces.append("주요 변화율 " + ", ".join(p + "%" for p in pcts[:3]))
+
+    if pieces:
+        return company + ": " + " · ".join(dict.fromkeys(pieces))
+    if kind == "capex":
+        return f"{company}: AI 인프라·설비투자 관련 신규 공개자료 — ±10% 이상 변화 수치 확인"
+    return "BofA Global Wave 방향 전환 관련 신규 공개자료 확인"
 
 
-def _tolerance_eok(naver_eok: float) -> float:
-    return max(LS_DAILY_TOLERANCE_EOK, abs(naver_eok) * LS_DAILY_TOLERANCE_PCT)
-
-
-def _load_history(market_name: str) -> list[dict[str, Any]]:
-    try:
-        state = watch.load_state() or {}
-    except Exception:
-        state = {}
-    history = ((state.get("ls_flow_history") or {}).get(market_name) or [])
-    out: list[dict[str, Any]] = []
-    for row in history:
-        if not isinstance(row, dict):
-            continue
-        try:
-            d = str(row.get("date") or "")
-            eok = float(row.get("daily_eok"))
-        except Exception:
-            continue
-        if d:
-            out.append({"date": d, "daily_eok": eok})
-    return out[-10:]
-
-
-def _ls_three_day(market_name: str, date: str, daily_eok: float) -> tuple[float | None, list[dict[str, Any]]]:
-    history = _load_history(market_name)
-    by_date = {str(row["date"]): float(row["daily_eok"]) for row in history}
-    by_date[date] = daily_eok
-    rows = [{"date": d, "daily_eok": v} for d, v in sorted(by_date.items())][-10:]
-    _ls_history_updates[market_name] = (date, daily_eok)
-    if len(rows) < 3:
-        return None, rows
-    return sum(float(row["daily_eok"]) for row in rows[-3:]), rows
-
-
-def _verified_flow(
-    now: dt.datetime,
-    market_name: str,
-    original: Callable[[dt.datetime], dict[str, Any]],
-) -> dict[str, Any]:
-    naver: dict[str, Any] | None = None
-    naver_error: str | None = None
-    ls_row: dict[str, Any] | None = None
-    ls_error: str | None = None
-
-    try:
-        naver = original(now)
-    except Exception as exc:
-        naver_error = f"{type(exc).__name__}: {exc}"
-
-    try:
-        ls_row = _latest_ls_foreign_eok(market_name)
-    except Exception as exc:
-        ls_error = f"{type(exc).__name__}: {exc}"
-
-    if naver is not None and ls_row is not None:
-        naver_eok = float(naver["daily_eok"])
-        ls_eok = float(ls_row["daily_eok"])
-        diff_eok = ls_eok - naver_eok
-        tolerance = _tolerance_eok(naver_eok)
-        status = "matched" if abs(diff_eok) <= tolerance else "mismatch"
-        naver["ls_validation"] = {
-            "status": status,
-            "tr_cd": "t1601",
-            "ls_daily_eok": ls_eok,
-            "naver_daily_eok": naver_eok,
-            "diff_eok": diff_eok,
-            "tolerance_eok": tolerance,
-            "foreign_buy_eok": ls_row.get("foreign_buy_eok"),
-            "foreign_sell_eok": ls_row.get("foreign_sell_eok"),
-            "source": LS_GUIDE,
-        }
-        naver["source_label"] = "네이버 장마감 + LS증권 t1601 교차검증"
-        _validation[market_name] = dict(naver["ls_validation"])
-        _ls_history_updates[market_name] = (str(naver["date"]), ls_eok)
-        return naver
-
-    if naver is not None:
-        naver["ls_validation"] = {
-            "status": "ls_unavailable",
-            "tr_cd": "t1601",
-            "error": ls_error or "LS 조회 실패",
-            "source": LS_GUIDE,
-        }
-        naver["source_label"] = "네이버 장마감 수급 — LS t1601 교차검증 일시 실패"
-        _validation[market_name] = dict(naver["ls_validation"])
-        return naver
-
-    if ls_row is not None:
-        date = now.date().isoformat()
-        daily_eok = float(ls_row["daily_eok"])
-        three_eok, history = _ls_three_day(market_name, date, daily_eok)
-        flow = {
-            "date": date,
-            "daily_eok": daily_eok,
-            "daily_krw": int(round(daily_eok * 100_000_000)),
-            "three_day_eok": three_eok if three_eok is not None else 0.0,
-            "three_day_krw": int(round(three_eok * 100_000_000)) if three_eok is not None else 0,
-            "three_day_available": three_eok is not None,
-            "source": LS_GUIDE,
-            "source_label": "LS증권 t1601 장마감 대체값",
-            "phase": "18:10 이후 LS증권 장마감 대체값",
-            "ls_validation": {
-                "status": "ls_fallback",
-                "tr_cd": "t1601",
-                "ls_daily_eok": daily_eok,
-                "naver_error": naver_error or "네이버 조회 실패",
-                "history_count": len(history),
-                "foreign_buy_eok": ls_row.get("foreign_buy_eok"),
-                "foreign_sell_eok": ls_row.get("foreign_sell_eok"),
-                "source": LS_GUIDE,
-            },
-        }
-        _validation[market_name] = dict(flow["ls_validation"])
-        return flow
-
-    raise RuntimeError(
-        f"{market_name} 수급 양쪽 조회 실패 — 네이버: {naver_error or '없음'} / LS: {ls_error or '없음'}"
-    )
-
-
-def fetch_kospi_verified(now: dt.datetime) -> dict[str, Any]:
-    return _verified_flow(now, "KOSPI", _original_kospi_flow)
-
-
-def fetch_kosdaq_verified(now: dt.datetime) -> dict[str, Any]:
-    return _verified_flow(now, "KOSDAQ", _original_kosdaq_flow)
-
-
-def add_event_verified(events, key: str, text: str, source: str) -> None:
-    if key.startswith("foreign1d_") or key.startswith("foreign3d_"):
-        status = (_validation.get("KOSPI") or {}).get("status")
-        if status == "mismatch":
-            return
-    _original_add_event(events, key, text, source)
-
-
-def kosdaq_hit_keys_verified(flow: dict[str, Any] | None) -> list[str]:
-    if not flow:
-        return []
-    validation = flow.get("ls_validation") if isinstance(flow, dict) else None
-    if isinstance(validation, dict) and validation.get("status") == "mismatch":
-        return []
-    keys = _original_kosdaq_hit_keys(flow)
-    if flow.get("three_day_available") is False:
-        keys = [k for k in keys if "3d" not in k]
-    return keys
-
-
-def market_flow_lines_verified(
-    market: str,
-    idx: dict[str, Any] | None,
-    flow: dict[str, Any] | None,
-    daily_threshold: int,
-    three_day_threshold: int,
-) -> list[str]:
-    lines = _original_market_flow_lines(market, idx, flow, daily_threshold, three_day_threshold)
-    if not flow:
-        return lines
-
-    if flow.get("three_day_available") is False:
-        rebuilt: list[str] = []
-        skip_next = False
-        for line in lines:
-            if skip_next:
-                skip_next = False
-                continue
-            if line.startswith("• 외국인 3거래일 누적"):
-                rebuilt.append("• 외국인 3거래일 누적  <b>LS 이력 축적 중 — 판정 보류</b>")
-                rebuilt.append("  ↳ 3거래일 LS 일별값이 3개 쌓인 뒤 자동 판정")
-                skip_next = True
-            else:
-                rebuilt.append(line)
-        lines = rebuilt
-
-    validation = flow.get("ls_validation") if isinstance(flow, dict) else None
-    if not isinstance(validation, dict):
-        return lines
-    status = validation.get("status")
-    if status == "matched":
-        lines.append(
-            f"• LS t1601 교차검증  <b>일치</b> — LS {float(validation['ls_daily_eok']):+,.0f}억원 / "
-            f"네이버 {float(validation['naver_daily_eok']):+,.0f}억원 / 차이 {float(validation['diff_eok']):+,.0f}억원"
-        )
-    elif status == "mismatch":
-        lines.append("• LS t1601 교차검증  <b>불일치 — 수급 임계치 판정 보류</b>")
-        lines.append(
-            f"  ↳ LS {float(validation['ls_daily_eok']):+,.0f}억원 / 네이버 {float(validation['naver_daily_eok']):+,.0f}억원 / "
-            f"차이 {float(validation['diff_eok']):+,.0f}억원"
-        )
-    elif status == "ls_fallback":
-        lines.append(
-            f"• LS t1601 대체값 사용  <b>{float(validation['ls_daily_eok']):+,.0f}억원</b> — 네이버 장마감 수급 조회 실패"
-        )
-    elif status == "ls_unavailable":
-        lines.append("• LS t1601 교차검증 일시 실패 — 네이버 장마감 수급값은 유지, 다음 실행에서 재검증")
-    return lines
-
-
-def _persist_ls_history_and_source_note() -> None:
-    if not watch.PENDING_PATH.exists():
-        return
-    try:
-        pending = json.loads(watch.PENDING_PATH.read_text(encoding="utf-8"))
-    except Exception:
-        return
-
-    old = watch.load_state() or {}
-    history_root = dict(old.get("ls_flow_history") or {})
-    for market_name, (date, daily_eok) in _ls_history_updates.items():
-        rows = history_root.get(market_name) or []
-        by_date: dict[str, float] = {}
-        for row in rows:
-            if not isinstance(row, dict):
-                continue
-            try:
-                by_date[str(row.get("date") or "")] = float(row.get("daily_eok"))
-            except Exception:
-                continue
-        by_date[date] = daily_eok
-        history_root[market_name] = [
-            {"date": d, "daily_eok": v} for d, v in sorted(by_date.items()) if d
-        ][-10:]
-    pending["ls_flow_history"] = history_root
-    snap = pending.setdefault("snapshot", {})
-    snap["flow_source_note"] = (
-        "KOSPI·KOSDAQ 장마감 외국인 수급은 네이버 장마감값과 LS증권 OpenAPI t1601 투자자별종합을 교차검증. "
-        "네이버 실패 시 LS t1601 대체값 사용, 유의한 불일치 시 수급 임계치 판정 보류. KRX는 공식 원천 재확인 링크로 제공."
-    )
-    snap["ls_flow_validation"] = _validation
-    watch.PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-
-def _rewrite_source_note() -> None:
+def _koreanize_alert_news() -> None:
     if not watch.ALERT_PATH.exists():
         return
-    text = watch.ALERT_PATH.read_text(encoding="utf-8")
-    old_notes = [
-        "• 수급 숫자 출처: 18:10 이후 네이버 투자자별 매매동향 / KRX 링크는 공식 원천 재확인용",
-        "• 수급 숫자 검증: <b>18:10 이후 네이버 장마감값 + LS증권 OpenAPI t1602 교차검증</b> / 네이버 실패 시 LS 대체 / 유의한 불일치 시 임계치 판정 보류",
-    ]
-    new = (
-        "• 수급 숫자 검증: <b>18:10 이후 네이버 장마감값 + LS증권 OpenAPI t1601 투자자별종합 교차검증</b>"
-        " / 네이버 실패 시 LS 대체 / 유의한 불일치 시 임계치 판정 보류"
-    )
-    for old in old_notes:
-        text = text.replace(old, new)
-    ls_link = f'• <a href="{html.escape(LS_GUIDE, quote=True)}">LS증권 OpenAPI 공식 가이드</a>'
-    if ls_link not in text:
-        text = text.rstrip() + "\n" + ls_link + "\n"
-    watch.ALERT_PATH.write_text(text, encoding="utf-8")
-
-
-def _append_status() -> None:
-    if not watch.STATUS_PATH.exists():
-        return
-    lines = [watch.STATUS_PATH.read_text(encoding="utf-8").rstrip(), "- LS증권 장마감 수급 교차검증(t1601): 활성"]
-    for market_name in ("KOSPI", "KOSDAQ"):
-        row = _validation.get(market_name) or {}
-        status = row.get("status")
-        if status == "matched":
-            lines.append(
-                f"- {market_name} LS 검증: 일치 · LS {float(row['ls_daily_eok']):+,.0f}억원 / "
-                f"네이버 {float(row['naver_daily_eok']):+,.0f}억원 / 차이 {float(row['diff_eok']):+,.0f}억원"
-            )
-        elif status == "mismatch":
-            lines.append(
-                f"- {market_name} LS 검증: 불일치 · LS {float(row['ls_daily_eok']):+,.0f}억원 / "
-                f"네이버 {float(row['naver_daily_eok']):+,.0f}억원 / 수급 경보 보류"
-            )
-        elif status == "ls_fallback":
-            lines.append(f"- {market_name} LS 검증: 네이버 실패 → LS {float(row['ls_daily_eok']):+,.0f}억원 대체")
-        elif status == "ls_unavailable":
-            lines.append(f"- {market_name} LS 검증: LS t1601 일시 실패 · 네이버 값 유지")
-    watch.STATUS_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
-
-
-watch.fetch_kospi_foreign_flow = fetch_kospi_verified
-watch.add_event = add_event_verified
-v10._fetch_kosdaq_foreign_flow = fetch_kosdaq_verified
-v10._kosdaq_hit_keys = kosdaq_hit_keys_verified
-v10._market_flow_lines = market_flow_lines_verified
+    lines = watch.ALERT_PATH.read_text(encoding="utf-8").splitlines()
+    out: list[str] = []
+    changed = False
+    for line in lines:
+        new_line = line
+        if line.startswith(NEWS_CAPEX_PREFIX):
+            new_line = NEWS_CAPEX_PREFIX + html.escape(_translate_title(line[len(NEWS_CAPEX_PREFIX):], "capex"))
+        elif line.startswith(NEWS_WAVE_PREFIX):
+            new_line = NEWS_WAVE_PREFIX + html.escape(_translate_title(line[len(NEWS_WAVE_PREFIX):], "wave"))
+        if new_line != line:
+            changed = True
+        out.append(new_line)
+    if changed:
+        watch.ALERT_PATH.write_text("\n".join(out) + "\n", encoding="utf-8")
 
 
 def main() -> int:
-    rc = v12.main()
-    _persist_ls_history_and_source_note()
-    _rewrite_source_note()
-    _append_status()
+    rc = core.main()
+    _koreanize_alert_news()
     return rc
 
 
