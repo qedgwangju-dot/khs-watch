@@ -10,11 +10,14 @@ Guardrails:
 - Production capacity is not shipment volume or booked robotics revenue.
 - IPO timing or valuation commentary is not an official filing unless the company confirms it.
 - Loss figures, ownership changes and external-customer milestones are tracked separately from factory rollout.
+- News articles are discovery sources, not the monitored object; the alert unit is the underlying state change.
 """
 from __future__ import annotations
 
 import re
 import sys
+import urllib.parse
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -23,14 +26,17 @@ import physical_ai_watch_humanoid_component_policy as policy
 base = policy.base
 ext = policy.ext
 
+BOSTON_CAPITAL_EN_SENTINEL = 'DIRECT_BOSTON_DYNAMICS_CAPITAL_EN_NEWS'
+
 base.QUERIES.extend([
     '(현대자동차 OR 현대차 OR "Hyundai Motor" OR "Hyundai Motor Group") (아틀라스 OR Atlas OR "Boston Dynamics" OR 보스턴다이내믹스) (체코 OR Czech OR 노쇼비체 OR Nosovice OR Nošovice OR 유럽 OR Europe) (도입 OR 투입 OR 배치 OR 시험 OR 테스트 OR 논의 OR 협의 OR deploy OR deployment OR testing OR trial OR discuss OR rollout)',
     '("Hyundai Motor Manufacturing Czech" OR HMMC OR 노쇼비체 OR Nosovice OR Nošovice) (아틀라스 OR Atlas) ("Boston Dynamics" OR 보스턴다이내믹스 OR 본사 OR headquarters) (논의 OR 협의 OR 테스트 OR 시험 OR 운영 OR deployment OR discuss OR test OR operation)',
     '("Hyundai Motor Group" OR 현대자동차그룹) (아틀라스 OR Atlas) (글로벌 공장 OR 글로벌 생산기지 OR 해외 공장 OR global plants OR manufacturing sites) (확대 OR 확장 OR 배치 OR 적용 OR deployment OR rollout OR scale)',
     '(HMGMA OR 조지아 OR Georgia OR Savannah) (아틀라스 OR Atlas) (2028 OR 2030 OR 시퀀싱 OR sequencing OR 조립 OR assembly OR 배치 OR deployment)',
     '("Hyundai Motor Group" OR 현대자동차그룹 OR "Hyundai Motor") (아틀라스 OR Atlas) (3만대 OR 30,000 OR 30000 OR RMAC OR "Robot Metaplant Application Center") (생산 OR 양산 OR capacity OR 확대 OR expansion OR validation)',
-    '("Boston Dynamics" OR 보스턴다이내믹스) (IPO OR "initial public offering" OR 기업공개 OR 상장 OR valuation OR 기업가치 OR 적자 OR 손실 OR loss OR losses OR profitability OR 수익성 OR 흑자 OR funding OR 자금조달 OR SoftBank OR 소프트뱅크 OR 지분 OR ownership)',
+    '("Boston Dynamics" OR 보스턴다이내믹스) (IPO OR "initial public offering" OR 기업공개 OR 상장 OR "S-1" OR SEC OR prospectus OR underwriter OR 주관사 OR 상장예비심사 OR valuation OR 기업가치 OR 적자 OR 손실 OR loss OR losses OR profitability OR 수익성 OR 흑자 OR funding OR 자금조달 OR SoftBank OR 소프트뱅크 OR 지분 OR ownership)',
     '("Boston Dynamics" OR 보스턴다이내믹스) (Atlas OR 아틀라스) (external customer OR external customers OR 외부 고객 OR customer OR 고객 OR order OR 주문 OR sales OR 판매 OR commercial OR 상용화 OR deployment OR 배치) (2027 OR 2028 OR 2029 OR 2030 OR scale OR 양산)',
+    BOSTON_CAPITAL_EN_SENTINEL,
 ])
 
 base.TRUSTED.update({
@@ -41,6 +47,7 @@ base.OFFICIAL_OR_PRIMARY.update({
     '현대자동차', 'Hyundai Motor', '현대자동차그룹', 'Hyundai Motor Group',
     'Boston Dynamics', 'Hyundai Motor Manufacturing Czech', 'HMMC',
     'AutoSAP', 'Sdružení automobilového průmyslu',
+    'U.S. Securities and Exchange Commission', 'SEC',
 })
 
 _orig_topic_group = base.topic_group
@@ -50,6 +57,7 @@ _orig_meaning = base.meaning
 _orig_risk = base.risk
 _orig_verification = base.verification
 _orig_clean_title = base.clean_title
+_orig_query_news = base.query_news
 _orig_same_event = ext._same_event
 
 HMG = re.compile(
@@ -94,7 +102,11 @@ EUROPE = re.compile(r'체코|Czech|노쇼비체|Nosovice|Nošovice|유럽|Europe
 HMGMA = re.compile(r'HMGMA|조지아|Georgia|Savannah|메타플랜트\s*아메리카|Metaplant\s*America', re.I)
 GLOBAL = re.compile(r'글로벌|해외|전\s*세계|global|worldwide|additional\s+plants?|manufacturing\s+sites?', re.I)
 PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주가|stock\s*price|shares?\s*(?:jump|rise|surge)', re.I)
-IPO = re.compile(r'\bIPO\b|initial\s+public\s+offering|기업공개|상장', re.I)
+IPO = re.compile(
+    r'\bIPO\b|initial\s+public\s+offering|기업공개|상장|\bS-1\b|registration\s+statement|'
+    r'prospectus|underwriter|주관사|상장예비심사|listing\s+application',
+    re.I,
+)
 IPO_DELAY = re.compile(r'unlikely|not\s+easy|difficult|delay|delayed|postpone|미뤄|연기|쉽지\s*않|가능성\s*낮', re.I)
 VALUATION = re.compile(r'valuation|기업\s*가치|value\s+at|valued\s+at|조\s*원|trillion', re.I)
 LOSS = re.compile(r'loss(?:es)?|손실|적자|unprofitable|profitability|수익성|흑자|break[- ]even|cash\s*burn|현금\s*소진', re.I)
@@ -106,12 +118,47 @@ EXTERNAL_CUSTOMER = re.compile(
     re.I,
 )
 CAPITAL = re.compile(
-    r'\bIPO\b|initial\s+public\s+offering|기업공개|상장|valuation|기업\s*가치|'
+    r'\bIPO\b|initial\s+public\s+offering|기업공개|상장|\bS-1\b|registration\s+statement|'
+    r'prospectus|underwriter|주관사|상장예비심사|valuation|기업\s*가치|'
     r'loss(?:es)?|손실|적자|unprofitable|profitability|수익성|흑자|funding|fundraise|'
     r'capital\s+raise|자금\s*조달|SoftBank|소프트뱅크|ownership|지분|stake|완전\s*자회사',
     re.I,
 )
 ATLAS_CATEGORY_PREFIX = '현대차그룹 · 아틀라스 '
+
+
+def _query_boston_capital_english_news() -> list[dict]:
+    """English Google News lane so same-day Reuters/global items do not depend on KR indexing."""
+    q = (
+        '"Boston Dynamics" '
+        '(IPO OR "initial public offering" OR "S-1" OR SEC OR prospectus OR underwriter '
+        'OR valuation OR loss OR profitability OR SoftBank OR funding OR "external customer" OR Atlas)'
+    )
+    params = urllib.parse.urlencode({'q': q, 'hl': 'en-US', 'gl': 'US', 'ceid': 'US:en'})
+    root = ET.fromstring(base.fetch(f'https://news.google.com/rss/search?{params}'))
+    out: list[dict] = []
+    for it in root.findall('./channel/item')[:50]:
+        title = base.norm(it.findtext('title'))
+        link = base.norm(it.findtext('link'))
+        desc = base.norm(it.findtext('description'))
+        pub = base.parse_date(it.findtext('pubDate'))
+        src_node = it.find('source')
+        src = base.norm(src_node.text if src_node is not None else '')
+        if title and link:
+            out.append({
+                'title': title,
+                'link': link,
+                'description': desc,
+                'published': pub.isoformat() if pub else None,
+                'source': src,
+            })
+    return out
+
+
+def query_news(q: str) -> list[dict]:
+    if q == BOSTON_CAPITAL_EN_SENTINEL:
+        return _query_boston_capital_english_news()
+    return _orig_query_news(q)
 
 
 def _is_atlas_rollout(text: str) -> bool:
@@ -276,6 +323,8 @@ def verification(item: dict, group: str, text: str) -> str:
         return '현대차그룹 공식자료 · 공장별 실행 단계와 기업공개 일정 별도 확인'
     if src == 'Boston Dynamics':
         return '보스턴다이내믹스 공식자료 · 현대차그룹 배치·소유구조 일정 교차확인'
+    if src in {'U.S. Securities and Exchange Commission', 'SEC'}:
+        return '미국 증권거래위원회 공식 상장서류'
     if src == 'Reuters' and BOSTON.search(text) and CAPITAL.search(text):
         return '로이터 고위 관계자 발언 보도 · 현대차그룹/보스턴다이내믹스 공식 배치·생산 계획 교차확인 · 기업공개 일정은 회사 공식 확정 전'
     if src in base.TRUSTED:
@@ -327,6 +376,7 @@ def _same_event(a: dict, b: dict) -> bool:
     return False
 
 
+base.query_news = query_news
 base.topic_group = topic_group
 base.score = score
 base.category = category
