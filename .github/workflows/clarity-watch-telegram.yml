@@ -10,11 +10,13 @@ on:
       - "scripts/clarity_ethics_breakthrough_watch.py"
       - "scripts/clarity_ethics_alert_enricher.py"
       - "scripts/clarity_alert_formatter.py"
+      - "scripts/clarity_alert_readability.py"
       - "tests/test_clarity_alert_guard.py"
       - "tests/test_clarity_alert_formatter.py"
       - "tests/test_clarity_policy_pressure_watch.py"
       - "tests/test_clarity_ethics_breakthrough_watch.py"
       - "tests/test_clarity_ethics_alert_enricher.py"
+      - "tests/test_clarity_alert_readability.py"
       - "data/clarity_watch_state.json"
       - "data/clarity_policy_pressure_state.json"
       - "data/clarity_ethics_breakthrough_state.json"
@@ -49,10 +51,10 @@ jobs:
       - name: Install parser dependency
         run: python -m pip install --disable-pip-version-check beautifulsoup4
 
-      - name: Validate watcher, guards, policy-pressure watcher and Korean formatter
+      - name: Validate watcher, guards, event dedup and readable Korean formatter
         run: |
-          python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_guard.py scripts/clarity_policy_pressure_watch.py scripts/clarity_ethics_breakthrough_watch.py scripts/clarity_ethics_alert_enricher.py scripts/clarity_alert_formatter.py
-          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py tests/test_clarity_ethics_breakthrough_watch.py tests/test_clarity_ethics_alert_enricher.py -v
+          python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_guard.py scripts/clarity_policy_pressure_watch.py scripts/clarity_ethics_breakthrough_watch.py scripts/clarity_ethics_alert_enricher.py scripts/clarity_alert_formatter.py scripts/clarity_alert_readability.py
+          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py tests/test_clarity_ethics_breakthrough_watch.py tests/test_clarity_ethics_alert_enricher.py tests/test_clarity_alert_readability.py -v
 
       - name: Validate Telegram route without sending
         env:
@@ -98,6 +100,10 @@ jobs:
         if: hashFiles('out/clarity_watch_telegram_chunks.json') != ''
         run: python scripts/clarity_ethics_alert_enricher.py
 
+      - name: Apply scan-first readability layout
+        if: hashFiles('out/clarity_watch_alert.json') != ''
+        run: python scripts/clarity_alert_readability.py
+
       - name: Publish watcher summary
         if: always()
         run: |
@@ -139,9 +145,9 @@ jobs:
               if not result.get("ok"):
                   raise RuntimeError(f"Telegram rejected message: {result}")
               message_ids.append(result.get("result", {}).get("message_id"))
-          confirmed = {"status": "confirmed", "format": "korean_html_v3", "bot_username": username, "message_ids": message_ids, "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
+          confirmed = {"status": "confirmed", "format": "korean_html_v4_scan", "bot_username": username, "message_ids": message_ids, "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
           pathlib.Path("out/clarity_watch_telegram_confirmed.json").write_text(json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids} format=korean_html_v3")
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids} format=korean_html_v4_scan")
           PY
 
       - name: Persist baseline or no-send states
