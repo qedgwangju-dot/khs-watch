@@ -68,12 +68,13 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch_aluminium_supply.py
           python -m py_compile scripts/war_peace_reconstruction_watch_gulf_diplomacy.py
           python -m py_compile scripts/war_peace_reconstruction_watch_hormuz_oman.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_energy_ceasefire.py
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch_hormuz_oman.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_energy_ceasefire.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch_hormuz_oman.py
+            python scripts/war_peace_reconstruction_watch_energy_ceasefire.py
           fi
       - name: Publish status summary
         if: always()
@@ -105,7 +106,7 @@ jobs:
           PY
       - name: Finalize state after confirmed delivery
         if: success() && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch_hormuz_oman.py --finalize
+        run: python scripts/war_peace_reconstruction_watch_energy_ceasefire.py --finalize
       - name: Commit confirmed alert state
         if: success() && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
         run: |
