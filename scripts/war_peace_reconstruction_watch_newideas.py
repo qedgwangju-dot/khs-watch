@@ -9,6 +9,10 @@ runner = prev.runner
 base = prev.base
 
 NEW_IDEA_QUERIES = [
+    'site:reuters.com Kyiv preparing talks resume October senior Ukrainian official when:72h',
+    'site:reuters.com (Ukraine OR Kyiv OR Budanov) October (trilateral OR "three-way" OR talks) (resume OR preparing) (Russia OR US OR U.S.) when:72h',
+    'site:fnnews.com (우크라 OR 우크라이나 OR 키이우 OR 부다노우) (3자협상 OR 3자 협상 OR 3자회담 OR 3자 회담) (10월 OR October) (재개 OR 준비 OR 가능성) when:72h',
+    '(Ukraine OR Kyiv OR Budanov OR 우크라이나 OR 우크라 OR 키이우 OR 부다노우) (October OR 10월) (trilateral talks OR "three-way talks" OR 3자협상 OR 3자 협상 OR 3자회담 OR 3자 회담 OR 종전 협상) (preparing OR "prepare to resume" OR resume OR 재개 OR 준비) when:72h',
     'site:reuters.com Zelenskiy ("decent ideas" OR "worthwhile ideas") (Witkoff OR Kushner OR "US envoys") "peace talks" when:24h',
     'site:reuters.com Witkoff Kushner Zelenskiy Kyiv ("new ideas" OR "new proposal" OR "new trilateral talks" OR "encouraged" OR "decent ideas" OR "worthwhile ideas") when:24h',
     'site:reuters.com (Kremlin OR Peskov) ("does not rule out" OR "not rule out" OR restart OR resume) (trilateral OR "peace talks") Ukraine US when:48h',
@@ -49,16 +53,38 @@ def _newidea_signals(row):
         'us envoy','u.s. envoy','us envoys','u.s. envoys','미국 특사','미 특사',
     ))
     kremlin = any(k in text for k in ('kremlin','크렘린궁','크렘린','peskov','페스코프'))
+    ukraine_side = any(k in text for k in (
+        'ukraine','ukrainian','kyiv','키이우','키예프','우크라이나','우크라',
+        'budanov','부다노우','head of the office of the president','대통령실 비서실장',
+    ))
     trilateral = any(k in text for k in (
-        'trilateral talks','trilateral meeting','trilateral negotiations','3자 협상','3자협상','3자 회담','3자회담','삼자 협상','삼자 회담',
+        'trilateral talks','trilateral meeting','trilateral negotiations',
+        'three-way talks','three-way meeting','three-way negotiations',
+        '3자 협상','3자협상','3자 회담','3자회담','삼자 협상','삼자 회담',
     ))
     restart = any(k in text for k in (
         'restart peace talks','restart talks','resume peace talks','resume talks','resume negotiations',
-        'does not rule out','not rule out','open to restarting','open to resuming',
+        'talks to resume','talks resume','does not rule out','not rule out','open to restarting','open to resuming',
         '협상 재개','회담 재개','재개 가능성','배제하지 않','배제 안해','열려 있',
+    ))
+    october = any(k in text for k in ('october','10월'))
+    october_prepare = any(k in text for k in (
+        'preparing for talks to resume','preparing for the resumption','preparing to resume','prepare to resume',
+        'talks to resume in october','talks resume in october','kyiv preparing for talks to resume in october',
+        '10월 재개 준비','10월 재개','10월 중 재개','재개를 준비','협상 재개를 준비','협상 준비 중',
     ))
 
     ua_context = zelensky and us_envoy
+
+    if ukraine_side and october and (restart or october_prepare) and (
+        trilateral
+        or 'kyiv preparing for talks to resume in october' in text
+        or '우크라 종전 3자 협상' in text
+        or '우크라이나 종전 3자 협상' in text
+    ):
+        signals.append('우크라이나 대통령실 측: 러시아·미국과의 3자 종전협상을 10월 재개하는 방안을 준비 중')
+        signals.append('정확한 회담 날짜·장소는 아직 확정되지 않음')
+        marks.append('10월3자재개준비')
 
     if zelensky and any(k in text for k in (
         'ready to resume negotiations','ready for negotiations','willing to resume negotiations',
@@ -168,6 +194,8 @@ def newidea_score_item(x, now):
     if marks:
         if '양측협상의사확인' in marks:
             score += 72
+        elif '10월3자재개준비' in marks:
+            score += 66
         elif '크렘린3자재개가능' in marks:
             score += 58
         elif '젤렌스키협상재개의사' in marks:
@@ -210,7 +238,7 @@ def newidea_item_id(x):
     # 제안→우크라이나 재개의사→러시아 3자협상 개방→양측 확인 순으로 단계가 높아지면 후속 알림 허용.
     important = [m for m in marks if m in (
         '합리적평화제안','새종전아이디어','젤렌스키협상재개의사','크렘린3자재개가능','양측협상의사확인',
-        '3자회담준비','회담후보지','실무의제','포로교환','트럼프후속회동','겨울방공지원','돌파구없음','조기종전신중',
+        '10월3자재개준비','3자회담준비','회담후보지','실무의제','포로교환','트럼프후속회동','겨울방공지원','돌파구없음','조기종전신중',
     )]
     key = base_id + '|newideas-v3|' + '|'.join(important)
     return hashlib.sha256(key.encode('utf-8')).hexdigest()[:20]
@@ -239,6 +267,8 @@ def _inject_newideas(text, items):
         rows.append('- <b>제안:</b> 젤렌스키가 미국 특사단의 평화회담 아이디어를 합리적·검토할 가치가 있다고 평가')
     elif '새종전아이디어' in marks:
         rows.append('- <b>제안:</b> 미국 특사단이 새 종전 아이디어를 제시')
+    if '10월3자재개준비' in marks:
+        rows.append('- <b>시간표:</b> 우크라이나 대통령실 측이 미·러·우 3자 종전협상 10월 재개를 준비 중 — 정확한 날짜·장소는 아직 미확정')
     if '3자회담준비' in marks:
         rows.append('- <b>현재 단계:</b> 후속 3자 협상 준비 가능성 — 개최 확정·합의 문안은 아직 별개')
     if '회담후보지' in marks:
