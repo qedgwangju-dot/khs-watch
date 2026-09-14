@@ -87,7 +87,44 @@ jobs:
           section = "\n".join(v27._bypass_section(groups, {}))
           assert "700만배럴/일" in section and "5~7일" in section and "세계 원유 공급 4%" in section
           assert any('"Saudi pipeline outage"' in q for _, q in v28.BYPASS_RECALL_QUERIES)
-          print("v28_validation=true")
+
+          yahoo = core.NewsItem(
+              category="hormuz_shipping", polarity="worsening", subtype="hormuz_bypass_shutdown",
+              title="Oil and gas prices climb after Saudi Arabia closes east-west pipeline - Yahoo Finance UK",
+              source="Yahoo Finance UK", link="https://example.com/yahoo",
+              published_utc="2026-09-14T10:49:00+00:00", published_epoch=time.time(),
+              official=False, event_id="fixture-bypass-yahoo",
+          )
+          guardian = core.NewsItem(
+              category="hormuz_shipping", polarity="worsening", subtype="hormuz_bypass_shutdown",
+              title="Oil prices rise after drone attacks shut down Saudi Arabia’s East-West pipeline - The Guardian",
+              source="The Guardian", link="https://example.com/guardian",
+              published_utc="2026-09-14T10:49:00+00:00", published_epoch=time.time() - 1,
+              official=False, event_id="fixture-bypass-guardian",
+          )
+          fixture_groups = [{
+              "subtype": "hormuz_bypass_shutdown",
+              "category": "hormuz_shipping",
+              "polarity": "worsening",
+              "latest_epoch": time.time(),
+              "evidence": [yahoo, guardian],
+          }]
+          evidence = "\n".join(v28._evidence_lines(fixture_groups))
+          assert "Oil and gas prices climb" not in evidence
+          assert "Oil prices rise after drone attacks" not in evidence
+          assert "야후 파이낸스" in evidence and "사우디의 동서 송유관 가동 중단 뒤 유가·가스 가격 상승" in evidence
+          assert "가디언" in evidence and "드론 공격으로 사우디 동서 송유관 가동 중단…유가 상승" in evidence
+
+          body = v28._build_bypass_body(fixture_groups, {})
+          for heading in (
+              "📌 <b>한눈에</b>", "📊 <b>핵심 숫자</b>", "🔴 <b>무엇이 바뀌었나</b>",
+              "🧭 <b>공급망 병목</b>", "🇰🇷 <b>한국 영향</b>", "💰 <b>투자 포인트</b>",
+              "⏱ <b>다음 확인</b>", "🎯 <b>핵심 한 줄</b>",
+          ):
+              assert heading in body, heading
+          assert "Aramco 공식" not in body and "Reuters 기준" not in body and "Bab el-Mandeb" not in body
+          assert "아람코 2026년 1분기 공식" in body and "로이터 기준" in body and "바브엘만데브 해협" in body
+          print("v28_validation=true korean_readability=true")
           PY
 
       - name: Check LNG supply crisis conditions
