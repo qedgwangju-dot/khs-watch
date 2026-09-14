@@ -1,9 +1,12 @@
 {
   "initialized": true,
-  "last_checked_utc": "2026-09-14T02:31:42+00:00",
+  "signature_version": 2,
+  "monitoring_unit": "event_state_change_not_article",
+  "last_checked_utc": "2026-09-14T02:39:42+00:00",
   "seen_signatures": [
-    "839e77ff2f236349209bb6a5b0a7ccae267c976a56383192b2e569b5ba4d857d"
+    "0ebf19ce31fcf604087c719bba1bd08ce6c9ae73d31f5f780ade8227c0c2eb6f"
   ],
   "accepted_current": 1,
+  "raw_articles": 333,
   "source_errors": []
 }
