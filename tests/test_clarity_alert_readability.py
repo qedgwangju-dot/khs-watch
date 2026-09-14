@@ -63,6 +63,34 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         self.assertNotIn("publisher-specific headline", rendered)
         self.assertIn("시간표 ↑", rendered)
 
+    def test_media_first_draft_release_is_clear_and_not_called_official_yet(self):
+        event = {
+            "source": "The Block 문안 공개 검증",
+            "event_type": "법안 문안 공개·핵심 수정 — 신뢰매체 확인",
+            "event_subtype": "senate_revised_draft_release",
+            "title": "상원 공화당, CLARITY 최신 초안 공개 — 공식 원문 재확인 중",
+            "url": "https://example.com/draft-report",
+            "date": "Mon, 14 Sep 2026 00:24:37 -0400",
+            "detail": (
+                "The Block가 상원 공화당이 CLARITY 최신 초안을 공개했다고 보도했습니다. "
+                "법안 문안 자체가 바뀐 상태 변화입니다. 공식 원문으로 조항을 확인해야 합니다."
+            ),
+            "verification_status": "신뢰매체 문안 공개 확인 / Senate Banking·GovInfo·Congress.gov 공식 원문 재확인 대기",
+            "evidence_sources": ["The Block"],
+            "monitoring_unit": "event_state_change",
+            "text_release": True,
+        }
+        rendered = "\n".join(MOD.build_readable([event]))
+        self.assertIn("문안 변화 확인", rendered)
+        self.assertIn("신뢰매체", rendered)
+        self.assertIn("공식 Senate Banking·GovInfo·Congress.gov 원문", rendered)
+        self.assertIn("법안 문안 자체가 바뀐 상태 변화", rendered)
+        self.assertIn("돈 버는 능력 → 아직 직접 변화 없음", rendered)
+        self.assertIn("시간표 ↑", rendered)
+        self.assertIn("공식 개정 법안 PDF·텍스트 확보", rendered)
+        self.assertNotIn("Trump 대통령, CLARITY 법안 처리·통과를 의회에 촉구", rendered)
+        self.assertLessEqual(max(map(len, MOD.build_readable([event]))), 3900)
+
 
 if __name__ == "__main__":
     unittest.main()
