@@ -25,6 +25,16 @@ ECOS_CYCLE = "D"
 BOK_MARKET_LIST = "https://www.bok.or.kr/portal/main/contents.do?menuNo=200366"
 YAHOO_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/KRW=X"
 FARSIDE_BTC_ETF_URL = "https://farside.co.uk/bitcoin-etf-flow-all-data/"
+RIVER_DEMAND_URL = "https://river.com/content/btc-840k-within-five-years"
+BLACKROCK_SIZING_URL = "https://www.blackrock.com/institutions/en-us/insights/thought-leadership/portfolio-design/sizing-bitcoin-in-portfolios"
+RIVER_SCENARIO_DATE = "2026-09-02"
+RIVER_GLOBAL_FINANCIAL_WEALTH_USD_T = 333.0
+RIVER_PORTFOLIO_ADOPTION_RANGE = "20~40%"
+RIVER_AVG_BTC_ALLOCATION_RANGE = "2~4%"
+RIVER_POTENTIAL_LOW_USD_M = 1_300_000.0
+RIVER_POTENTIAL_HIGH_USD_M = 5_300_000.0
+RIVER_ADVISOR_ALLOCATION_PCT = 0.008
+BLACKROCK_BTC_ALLOCATION_RANGE = "1~2%"
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 KST = ZoneInfo("Asia/Seoul")
 
@@ -243,7 +253,7 @@ def format_krw_from_usd_m(value_usd_m: float, rate: float) -> str:
     rounded = int(round(amount))
     jo, rem = divmod(rounded, 10000)
     if jo:
-        body = f"{jo}조{rem:,}억원" if rem else f"{jo}조원"
+        body = f"{jo:,}조{rem:,}억원" if rem else f"{jo:,}조원"
     else:
         body = f"{rounded:,}억원"
     return f"약 {sign}{body}"
@@ -273,8 +283,9 @@ def farside_cumulative_total_usd_m() -> float | None:
             continue
         total = parse_table_number(cells[-1])
         fund_values = [parse_table_number(x) for x in cells[1:-1]]
-        recomputed = sum(v for v in fund_values if v is not None)
-        if total is None or not fund_values:
+        valid_funds = [v for v in fund_values if v is not None]
+        recomputed = sum(valid_funds)
+        if total is None or len(valid_funds) < 10:
             return None
         if abs(total - recomputed) > 2.0:
             return None
@@ -287,25 +298,59 @@ def format_usd_b_from_usd_m(value_usd_m: float) -> str:
     return f"{sign}${abs(value_usd_m) / 1000.0:,.2f}B"
 
 
-def cumulative_flow_block(rate: float) -> str | None:
+def structural_krw_range(rate: float) -> str:
+    low = format_krw_from_usd_m(RIVER_POTENTIAL_LOW_USD_M, rate)
+    high = format_krw_from_usd_m(RIVER_POTENTIAL_HIGH_USD_M, rate)
+    if high.startswith("약 "):
+        high = high[2:]
+    return f"{low}~{high}"
+
+
+def capital_position_block(rate: float) -> str:
     try:
         cumulative = farside_cumulative_total_usd_m()
     except Exception:
-        return None
-    if cumulative is None:
-        return None
+        cumulative = None
+
     try:
         state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
     except Exception:
         state = {}
     latest_date = str(((state.get("btc_etf") or {}).get("date") or "")).strip()
     date_text = f" · 최신 유효일 {latest_date}" if latest_date else ""
-    direction = "누적 순유입" if cumulative >= 0 else "누적 순유출"
-    return (
-        f"<b>BTC 현물 ETF {direction}</b>\n"
-        f"<b>{format_usd_b_from_usd_m(cumulative)} · {format_krw_from_usd_m(cumulative, rate)}</b>\n"
-        f"• Farside 전체 집계기간 기준{date_text}"
-    )
+
+    lines = ["<b>BTC 자금 위치</b>"]
+    if cumulative is None:
+        lines += [
+            "• <b>미국 현물 ETF 실제 누적 · 확인 불가</b>",
+            "  Farside Total 행 재검산 실패 · 추정값 사용 안 함",
+        ]
+    else:
+        direction = "순유입" if cumulative >= 0 else "순유출"
+        lines += [
+            f"• <b>미국 현물 ETF 실제 누적 {direction} · {format_usd_b_from_usd_m(cumulative)} · {format_krw_from_usd_m(cumulative, rate)}</b>",
+            f"  Farside 전체 집계기간 기준{date_text}",
+        ]
+
+    lines += [
+        "",
+        "<b>구조적 수요 맥락</b>",
+        f"• <b>River 잠재 순유입 · $1.3T~$5.3T</b> ({structural_krw_range(rate)})",
+        (
+            f"  3~5년 · 글로벌 금융자산 ${RIVER_GLOBAL_FINANCIAL_WEALTH_USD_T:.0f}T × "
+            f"포트폴리오 채택 {RIVER_PORTFOLIO_ADOPTION_RANGE} × 평균 BTC 배분 {RIVER_AVG_BTC_ALLOCATION_RANGE}"
+        ),
+        f"• <b>현재 배분 격차</b> · River 추정 투자자문사 전체 BTC 배분 {RIVER_ADVISOR_ALLOCATION_PCT:.3f}%",
+        (
+            f"• <b>기관 배분 기준</b> · BlackRock {BLACKROCK_BTC_ALLOCATION_RANGE}를 합리적 범위로 제시"
+            " · 2% 초과 시 포트폴리오 위험기여 급증"
+        ),
+        (
+            f"※ River {RIVER_SCENARIO_DATE} 시나리오이며 미국 현물 ETF 실제 누적과 모집단이 다름"
+            " · 잠재수요 대비 진척률로 계산하지 않음"
+        ),
+    ]
+    return "\n".join(lines)
 
 
 def enrich_text(text: str, fx: dict) -> str:
@@ -319,10 +364,10 @@ def enrich_text(text: str, fx: dict) -> str:
 
     enriched = pattern.sub(repl, text)
 
-    cumulative_block = cumulative_flow_block(rate)
+    position_block = capital_position_block(rate)
     treasury_marker = "\n미 국채 —"
-    if cumulative_block and treasury_marker in enriched:
-        enriched = enriched.replace(treasury_marker, f"\n\n{cumulative_block}\n{treasury_marker.lstrip()}", 1)
+    if position_block and treasury_marker in enriched:
+        enriched = enriched.replace(treasury_marker, f"\n\n{position_block}\n{treasury_marker.lstrip()}", 1)
 
     now = dt.datetime.now(KST).isoformat(timespec="seconds")
     requested = fx.get("requested_date") or fx["date"]
@@ -331,13 +376,17 @@ def enrich_text(text: str, fx: dict) -> str:
         f"원화 환산 기준: 1달러={rate:,.2f}원 | 기준일 {date_note} | {fx['source']} | "
         f"교차검증: {fx['crosscheck']} | 조회 {now}"
     )
-    source_line = f'• 원/달러 환율: <a href="{fx["source_url"]}">원문</a>'
+    source_lines = "\n".join([
+        f'• 원/달러 환율: <a href="{fx["source_url"]}">원문</a>',
+        f'• River 구조적 수요 시나리오: <a href="{RIVER_DEMAND_URL}">원문</a>',
+        f'• BlackRock BTC 배분 기준: <a href="{BLACKROCK_SIZING_URL}">원문</a>',
+    ])
 
     marker = "\n공식·데이터 원천:\n"
     if marker in enriched:
-        enriched = enriched.replace(marker, f"\n{fx_line}\n\n공식·데이터 원천:\n{source_line}\n", 1)
+        enriched = enriched.replace(marker, f"\n{fx_line}\n\n공식·데이터 원천:\n{source_lines}\n", 1)
     else:
-        enriched = enriched.rstrip() + f"\n\n{fx_line}\n{source_line}\n"
+        enriched = enriched.rstrip() + f"\n\n{fx_line}\n{source_lines}\n"
     return enriched
 
 
