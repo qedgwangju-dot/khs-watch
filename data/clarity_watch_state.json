@@ -2,8 +2,8 @@
   "initialized": true,
   "source_version": 2,
   "bill": "H.R. 3633 — Digital Asset Market Clarity Act",
-  "last_checked_kst": "2026-09-14T15:20:56+09:00",
-  "last_checked_et": "2026-09-14T02:20:56-04:00",
+  "last_checked_kst": "2026-09-14T23:07:02+09:00",
+  "last_checked_et": "2026-09-14T10:07:02-04:00",
   "seen_event_keys": [
     "084ee027ab8ec15b4074b4fa1b60022844e2dc9f19a270999c1f2f23b0a34a53",
     "0c66c1ef94728a83e8ecbafaa4fdc5f038cba54010112b43462b09e826966d4c",
@@ -62,6 +62,19 @@
     "f92e2252b319b544d8397796264c356b691136adf78628b12140de25f1bf1808",
     "fe2906beaa0c20857bcf830328fd25f77105af8385b0204d7b2829adad3b2827"
   ],
-  "event_count": 48,
-  "source_errors": []
+  "event_count": 41,
+  "source_errors": [
+    "Senate Banking: fetch failed: https://www.banking.senate.gov/search/?q=Clarity+Act: HTTP Error 403: Forbidden",
+    "Senate Agriculture https://www.agriculture.senate.gov/newsroom: fetch failed: https://www.agriculture.senate.gov/newsroom: HTTP Error 403: Forbidden",
+    "Senate Agriculture https://www.agriculture.senate.gov/hearings: fetch failed: https://www.agriculture.senate.gov/hearings: HTTP Error 403: Forbidden",
+    "상원 본회의: fetch failed: https://www.senate.gov/floor/index.htm: HTTP Error 403: Forbidden",
+    "상원 의사기록: fetch failed: https://www.senate.gov/legislative/LIS/floor_activity/all-floor-activity-files.htm: HTTP Error 403: Forbidden",
+    "상원 표결기록: fetch failed: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.htm: HTTP Error 403: Forbidden"
+  ],
+  "last_successful_delivery_kst": "2026-09-14T23:07:17+09:00",
+  "telegram_message_ids": [
+    185
+  ],
+  "bot_username": "hs8879887988798879_bot",
+  "telegram_format": "korean_html_v5_scan"
 }
