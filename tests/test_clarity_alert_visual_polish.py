@@ -44,7 +44,11 @@ class ClarityAlertVisualPolishTest(unittest.TestCase):
         polished = MOD.polish_chunk(original)
 
         self.assertIn("<b>🔔 CLARITY 법안 Watch</b>", polished)
-        self.assertIn("<i>표결·규제·BTC/COIN/Circle 영향</i>", polished)
+        self.assertIn("표결·규제·BTC/COIN/Circle 영향", polished)
+        self.assertNotIn("<i>", polished.lower())
+        self.assertNotIn("</i>", polished.lower())
+        self.assertNotIn("<em>", polished.lower())
+        self.assertNotIn("</em>", polished.lower())
         self.assertIn("<b>👀 한눈에 보기</b>", polished)
         self.assertIn("↳ <b>4축</b> 시간표 ↑↑", polished)
         self.assertIn("• 💵 <b>돈 버는 능력</b> → 아직 변화 없음.", polished)
@@ -59,6 +63,11 @@ class ClarityAlertVisualPolishTest(unittest.TestCase):
         self.assertIn("주 법무장관 집행권이 포함됐습니다.", polished)
         self.assertIn("개정 법안 원문은 대기 중입니다.", polished)
         self.assertIn("BTC·ETH·COIN·CRCL과 금리·달러·Nasdaq을 분리합니다.", polished)
+
+    def test_upstream_italics_are_stripped_to_plain_text(self):
+        original = "<b>제목</b>\n<i>기울임 부제</i>\n<em>기울임 설명</em>"
+        polished = MOD.polish_chunk(original)
+        self.assertEqual(polished, "<b>제목</b>\n기울임 부제\n기울임 설명")
 
 
 if __name__ == "__main__":
