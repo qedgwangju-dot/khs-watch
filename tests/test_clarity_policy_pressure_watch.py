@@ -37,11 +37,34 @@ class ClarityPolicyPressureWatchTest(unittest.TestCase):
         self.assertNotIn("이(가)", detail)
 
     def test_bloomberg_law_is_higher_tier_than_benzinga(self):
-        bloomberg_tier, _ = MOD.source_tier("Bloomberg Law")
-        benzinga_tier, _ = MOD.source_tier("Benzinga")
-        self.assertEqual(bloomberg_tier, 1)
-        self.assertEqual(benzinga_tier, 2)
-        self.assertLess(bloomberg_tier, benzinga_tier)
+        self.assertEqual(MOD.source_tier("Bloomberg Law"), (1, "Bloomberg Law"))
+        self.assertEqual(MOD.source_tier("Benzinga"), (2, "Benzinga"))
+
+    def test_reworded_articles_map_to_same_policy_event(self):
+        signal_a = "Bessent urges Senate to pass CLARITY Act, warning of national security risks to allies and adversaries."
+        signal_b = "Treasury Secretary Bessent says failure on the CLARITY Act sends a troubling signal to allies; national security is at stake."
+        event_type = "행정부·핵심 당사자 통과 촉구"
+        self.assertEqual(MOD.event_subtype(signal_a, event_type), "national_security_pressure")
+        self.assertEqual(MOD.event_subtype(signal_b, event_type), "national_security_pressure")
+        self.assertEqual(
+            MOD.semantic_signature("Bessent 재무장관", event_type, signal_a),
+            MOD.semantic_signature("Bessent 재무장관", event_type, signal_b),
+        )
+
+    def test_industry_copy_uses_actor_side_not_awkward_particle(self):
+        item = {
+            "title": "Coinbase Vice Chair Ryan VanGrack says it is time to start voting on the CLARITY Act",
+            "description": "Ryan VanGrack urges the Senate to start voting on the CLARITY Act.",
+            "url": "https://news.google.com/example",
+            "pubDate": "Tue, 08 Sep 2026 14:00:00 GMT",
+            "source": "Bloomberg",
+            "matched_query": '"CLARITY Act" "Ryan VanGrack"',
+        }
+        signal = f"{item['title']} {item['description']}"
+        with mock.patch.object(MOD, "resolve_original_url", return_value="https://example.com/source"):
+            event = MOD.korean_event(item, "Coinbase 부회장 Ryan VanGrack", "핵심 사업자·업계 표결 촉구", "Bloomberg", signal)
+        self.assertIn("Ryan VanGrack 측은 상원에", event["detail"])
+        self.assertNotIn("이(가)", event["detail"])
 
 
 if __name__ == "__main__":
