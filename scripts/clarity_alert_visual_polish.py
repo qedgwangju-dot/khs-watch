@@ -11,7 +11,7 @@ OUT_CHUNKS = OUT_DIR / "clarity_watch_telegram_chunks.json"
 HEADER = "<b>🔔 CLARITY 법안 Watch — 표결·규제·BTC/COIN/Circle 영향</b>"
 POLISHED_HEADER = (
     "<b>🔔 CLARITY 법안 Watch</b>\n"
-    "<i>표결·규제·BTC/COIN/Circle 영향</i>\n"
+    "표결·규제·BTC/COIN/Circle 영향\n"
     "━━━━━━━━━━━━━━━━━━"
 )
 
@@ -23,10 +23,19 @@ AXES = (
 )
 
 
+def strip_italics(text):
+    """CLARITY Telegram alerts use only regular text and bold hierarchy, never italics."""
+    text = re.sub(r"</?(?:i|em)>", "", str(text or ""), flags=re.I)
+    return text
+
+
 def polish_chunk(text):
     text = str(text or "")
     if not text:
         return text
+
+    # User preference: no italic text anywhere in CLARITY alerts.
+    text = strip_italics(text)
 
     text = text.replace(HEADER, POLISHED_HEADER)
     text = text.replace("<b>한눈에 보기</b>", "<b>👀 한눈에 보기</b>")
@@ -73,7 +82,9 @@ def polish_chunk(text):
     text = text.replace("<b>🧭 무엇이 달라졌나</b>", "🧭 <b>무엇이 달라졌나</b>")
     text = text.replace("<b>📍 현재 판정</b>", "📍 <b>현재 판정</b>")
     text = text.replace("<b>💰 투자 의미</b>", "💰 <b>투자 의미</b>")
-    return text
+
+    # Final guard in case upstream formatting introduces italics later.
+    return strip_italics(text)
 
 
 def main():
@@ -85,7 +96,7 @@ def main():
     polished = [polish_chunk(chunk) for chunk in chunks]
     OUT_CHUNKS.write_text(json.dumps(polished, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     OUT_HTML.write_text("\n\n".join(polished) + "\n", encoding="utf-8")
-    print(f"clarity_visual_polish=true chunks={len(polished)}")
+    print(f"clarity_visual_polish=true chunks={len(polished)} italics=disabled")
 
 
 if __name__ == "__main__":
