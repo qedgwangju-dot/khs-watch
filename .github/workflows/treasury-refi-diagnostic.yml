@@ -13,7 +13,7 @@ jobs:
       - name: Inspect FiscalData MSPD rows
         run: |
           python - <<'PY'
-          import requests, datetime as dt, collections
+          import requests, datetime as dt, collections, json
           BASE='https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/debt'
           u3=BASE+'/mspd/mspd_table_3_market'
           r=requests.get(u3, params={'sort':'-record_date','page[number]':1,'page[size]':1}, timeout=30); r.raise_for_status(); latest=r.json()['data'][0]['record_date'][:10]
@@ -21,41 +21,30 @@ jobs:
           def num(v):
               try:return float(str(v).replace(',',''))
               except:return 0.0
-          # Aggregate outstanding from issue/reopening lines: issued - redeemed per CUSIP/maturity.
-          sec={}
-          for x in rows:
-              cls=str(x.get('security_class1_desc') or '')
-              if cls in ('Total Marketable','Federal Financing Bank'): continue
-              cus=str(x.get('security_class2_desc') or '')
-              mat=str(x.get('maturity_date') or '')
-              if not cus or not mat: continue
-              key=(cls,cus,mat)
-              d=sec.setdefault(key,{'issued':0.0,'redeemed':0.0,'maxout':0.0})
-              d['issued']+=num(x.get('issued_amt'))
-              d['redeemed']+=num(x.get('redeemed_amt'))
-              d['maxout']=max(d['maxout'],num(x.get('outstanding_amt')))
-          class_issue=collections.defaultdict(float); class_max=collections.defaultdict(float)
-          rd=dt.date.fromisoformat(latest); cutoff=rd+dt.timedelta(days=365)
-          next12_issue=next12_bill_issue=0.0; years_issue={2027:0.0,2028:0.0}
-          for (cls,cus,mat),d in sec.items():
-              bal=max(0.0,d['issued']-d['redeemed'])
-              class_issue[cls]+=bal; class_max[cls]+=d['maxout']
-              try: md=dt.date.fromisoformat(mat[:10])
-              except: continue
-              if rd<md<=cutoff:
-                  next12_issue+=bal
-                  if 'bill' in cls.lower(): next12_bill_issue+=bal
-              if md.year in years_issue: years_issue[md.year]+=bal
-          print('LATEST',latest,'UNIQUE_SECURITIES',len(sec))
-          for cls in sorted(class_issue):
-              print('CLASS',cls,'ISSUED_MINUS_REDEEMED_T',class_issue[cls]/1e6,'MAXOUT_T',class_max[cls]/1e6)
-          print('TOTAL_ISSUE_T',sum(class_issue.values())/1e6,'TOTAL_MAX_T',sum(class_max.values())/1e6)
-          print('NEXT12_ISSUE_T',next12_issue/1e6,'NEXT12_BILL_ISSUE_T',next12_bill_issue/1e6,'NEXT12_COUPON_ISSUE_T',(next12_issue-next12_bill_issue)/1e6)
-          print('YEARS_ISSUE_T',{k:v/1e6 for k,v in years_issue.items()})
+          bills=[x for x in rows if 'bill' in str(x.get('security_class1_desc') or '').lower()]
+          raw_c=collections.Counter(str(x.get('security_class2_desc') or '') for x in bills)
+          strip_c=collections.Counter(str(x.get('security_class2_desc') or '').strip() for x in bills)
+          print('LATEST',latest,'BILL_ROWS',len(bills),'RAW_UNIQUE',len(raw_c),'STRIP_UNIQUE',len(strip_c))
+          print('BILL_CUSIP_COUNTS_FIRST20',list(strip_c.items())[:20])
+          # Show all rows for a few repeated normalized CUSIPs.
+          for cus,n in list(strip_c.items())[:5]:
+              print('CUSIP',repr(cus),'COUNT',n)
+              for x in bills:
+                  if str(x.get('security_class2_desc') or '').strip()==cus:
+                      print('  ',json.dumps({k:x.get(k) for k in ['security_class2_desc','issue_date','maturity_date','issued_amt','redeemed_amt','outstanding_amt','src_line_nbr']},sort_keys=True))
+          # Max outstanding using normalized CUSIP only, normalized CUSIP+maturity, and sum of rows with positive outstanding.
+          by_cus={}; by_cusmat={}
+          for x in bills:
+              cus=str(x.get('security_class2_desc') or '').strip(); mat=str(x.get('maturity_date') or '').strip(); amt=num(x.get('outstanding_amt'))
+              by_cus[cus]=max(by_cus.get(cus,0),amt)
+              by_cusmat[(cus,mat)]=max(by_cusmat.get((cus,mat),0),amt)
+          print('SUM_POSITIVE_ROWS_T',sum(num(x.get('outstanding_amt')) for x in bills)/1e6)
+          print('SUM_MAX_BY_CUSIP_T',sum(by_cus.values())/1e6)
+          print('SUM_MAX_BY_CUSIP_MAT_T',sum(by_cusmat.values())/1e6)
+          # Table1 reference.
           u1=BASE+'/mspd/mspd_table_1'
           r=requests.get(u1, params={'sort':'-record_date','page[number]':1,'page[size]':30}, timeout=30); r.raise_for_status(); d=r.json()['data']; l=str(d[0]['record_date'])[:10]
           for x in d:
-              if str(x.get('record_date',''))[:10]!=l: continue
-              if x.get('security_type_desc')=='Marketable' or x.get('security_type_desc')=='Total Marketable':
-                  print('TABLE1',x.get('security_type_desc'),x.get('security_class_desc'),float(x.get('total_mil_amt'))/1e6)
+              if str(x.get('record_date',''))[:10]==l and x.get('security_class_desc')=='Bills':
+                  print('TABLE1_BILLS_T',float(x.get('total_mil_amt'))/1e6)
           PY
