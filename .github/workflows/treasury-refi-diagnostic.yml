@@ -1,0 +1,39 @@
+name: Treasury MSPD Refi Diagnostic
+
+on:
+  push:
+    paths:
+      - ".github/workflows/treasury-refi-diagnostic.yml"
+  workflow_dispatch:
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect FiscalData MSPD rows
+        run: |
+          python - <<'PY'
+          import requests, json, collections
+          BASE='https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/debt'
+          u3=BASE+'/mspd/mspd_table_3_market'
+          r=requests.get(u3, params={'sort':'-record_date','page[number]':1,'page[size]':1}, timeout=30); r.raise_for_status(); p=r.json(); latest=p['data'][0]['record_date'][:10]
+          print('LATEST', latest)
+          r=requests.get(u3, params={'filter':f'record_date:eq:{latest}','sort':'-record_date,maturity_date','page[number]':1,'page[size]':10000}, timeout=30); r.raise_for_status(); p=r.json(); rows=p['data']
+          rows=[x for x in rows if str(x.get('record_date',''))[:10]==latest]
+          print('ROWCOUNT',len(rows))
+          print('KEYS',sorted(rows[0].keys()))
+          for x in rows[:12]:
+              print('ROW', json.dumps(x, ensure_ascii=False, sort_keys=True))
+          c=collections.Counter(str(x.get('security_class1_desc') or x.get('security_class_desc') or '') for x in rows)
+          print('CLASS_COUNTS',dict(c))
+          for key in ['cusip','cusip_num','security_desc','security_class1_desc','security_class2_desc','maturity_date','outstanding_amt','yield_pct','interest_rate_pct','issue_date']:
+              vals=[x.get(key) for x in rows if x.get(key) not in (None,'')]
+              print('FIELD',key,'nonempty',len(vals),'unique',len(set(map(str,vals))),'sample',list(map(str,vals[:8])))
+          # Table 1 summary
+          u1=BASE+'/mspd/mspd_table_1'
+          r=requests.get(u1, params={'sort':'-record_date','page[number]':1,'page[size]':30}, timeout=30); r.raise_for_status(); d=r.json()['data']; l=str(d[0]['record_date'])[:10]
+          print('TABLE1_LATEST',l)
+          for x in d:
+              if str(x.get('record_date',''))[:10]==l:
+                  print('T1', json.dumps(x, ensure_ascii=False, sort_keys=True))
+          PY
