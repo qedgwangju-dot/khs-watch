@@ -63,6 +63,15 @@ def _display_ko(value: str) -> str:
     s = re.sub(r'\bPollen\b', '폴렌 로보틱스', s, flags=re.I)
     s = re.sub(r'창업자\s+X\s+1차', '설립자 엑스(X) 1차', s, flags=re.I)
 
+    s = re.sub(r'\bReuters\b', '로이터', s, flags=re.I)
+    s = re.sub(r'\bSoftBank\b', '소프트뱅크', s, flags=re.I)
+    s = re.sub(r'\binitial\s+public\s+offering\b', '기업공개', s, flags=re.I)
+    s = re.sub(r'\bIPO\b', '기업공개', s, flags=re.I)
+    s = re.sub(r'\bvaluation\b', '기업가치', s, flags=re.I)
+    s = re.sub(r'\bunprofitable\b', '적자 지속', s, flags=re.I)
+    s = re.sub(r'\bprofitability\b', '수익성', s, flags=re.I)
+    s = re.sub(r'\bexternal\s+customers?\b', '외부 고객', s, flags=re.I)
+
     s = re.sub(r'\bHumanoids Summit Seoul\b', '서울 휴머노이드 서밋', s, flags=re.I)
     s = re.sub(r'\bHumanoids Summit\b', '휴머노이드 서밋', s, flags=re.I)
     s = re.sub(r'\bSponsored Technical Workshop\b', '공동 기술 워크숍', s, flags=re.I)
