@@ -47,8 +47,11 @@ def get_refinancing_snapshot():
     if rd is None:
         raise RuntimeError("Treasury MSPD latest record_date parse failed")
 
+    # Some legacy v1 MSPD filters can return adjacent months as well; always sort newest
+    # and hard-filter record_date locally before aggregating to prevent multi-month double counting.
     rows = _get_rows({
         "filter": f"record_date:eq:{record_date}",
+        "sort": "-record_date,maturity_date",
         "page[number]": 1,
         "page[size]": 10000,
     })
@@ -59,8 +62,12 @@ def get_refinancing_snapshot():
     next12_bills_mil = 0.0
     by_year_mil = {2027: 0.0, 2028: 0.0}
     cutoff = rd + dt.timedelta(days=365)
+    matched_rows = 0
 
     for row in rows:
+        if str(row.get("record_date") or "")[:10] != record_date:
+            continue
+        matched_rows += 1
         outstanding = _num(row.get("outstanding_amt"))
         if outstanding <= 0:
             continue
@@ -79,7 +86,7 @@ def get_refinancing_snapshot():
         if md.year in by_year_mil:
             by_year_mil[md.year] += outstanding
 
-    if total_mil <= 0 or next12_mil <= 0:
+    if matched_rows <= 0 or total_mil <= 0 or next12_mil <= 0:
         raise RuntimeError("Treasury MSPD maturity aggregation failed")
 
     # MSPD table 3 amounts are in millions of dollars.
@@ -101,6 +108,7 @@ def get_refinancing_snapshot():
 
     return {
         "record_date": record_date,
+        "matched_rows": matched_rows,
         "total_t": total_t,
         "bills_t": bills_t,
         "bill_share": bill_share,
@@ -122,7 +130,7 @@ def _yield_value(text, tenor):
 def _refi_block(text):
     try:
         snap = get_refinancing_snapshot()
-    except Exception as exc:
+    except Exception:
         return (
             "차환·재정 민감도: 공식 MSPD 최신값 조회 실패 → 차환벽 판정 보류\n"
             "→ 기존 금리·ETF·OAS·G-R 판정은 계속 수행하고 차환 규모는 추정하지 않음"
