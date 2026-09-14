@@ -27,6 +27,7 @@ for item in BYPASS_RECALL_QUERIES:
 core.WORSENING_TERMS["hormuz_shipping"] = tuple(core.WORSENING_TERMS["hormuz_shipping"]) + (
     "saudi pipeline outage", "saudi pipeline attack", "shuts key oil pipeline",
     "shut key oil pipeline", "shuts down a pipeline", "shuts down oil pipeline",
+    "shut down oil pipeline", "saudis shut down oil pipeline",
     "pipeline outage threatens", "송유관 중단 장기화", "사우디 송유관 중단",
 )
 
@@ -34,7 +35,7 @@ core.SUBTYPE_TERMS = (
     ("hormuz_bypass_shutdown", (
         "saudi pipeline outage", "shuts key oil pipeline", "shut key oil pipeline",
         "shuts down key oil pipeline", "shuts down a pipeline", "shuts down oil pipeline",
-        "saudis shut down oil pipeline", "pipeline outage threatens",
+        "shut down oil pipeline", "saudis shut down oil pipeline", "pipeline outage threatens",
         "사우디 송유관 중단", "송유관 중단 장기화",
     )),
 ) + tuple(core.SUBTYPE_TERMS)
