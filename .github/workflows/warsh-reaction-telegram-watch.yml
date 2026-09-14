@@ -57,7 +57,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Check official sources and notify Telegram
+      - name: Check official sources and notify macro Telegram
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
@@ -75,8 +75,6 @@ jobs:
           WARSH_CREDIBILITY_LONG_END_BP: '5'
           WARSH_ENERGY_BRENT_USD: '100'
           WARSH_ENERGY_20D_PCT: '15'
-          WARSH_ROTATION_3D_PP: '3'
-          WARSH_ROTATION_5D_PP: '5'
           WARSH_PATH_PROB_ALERT_PP: '15'
           WARSH_PATH_EXTRA_ALERT_BP: '10'
           WARSH_BALANCE_ASSET_4W_BN: '75'
@@ -100,10 +98,40 @@ jobs:
           python scripts/warsh_curve_ownership_watch_v2.py
           python scripts/warsh_credibility_pretightening_watch_v2.py
           python scripts/warsh_energy_shock_watch.py
-          python scripts/warsh_ai_rotation_watch.py
           python scripts/warsh_policy_path_watch.py
           python scripts/warsh_balance_sheet_watch.py
           python scripts/warsh_sep_path_watch.py
+
+      - name: Check AI hardware software rotation and notify KHS887900 Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          EXPECTED_BOT_USERNAME: khs887900_bot
+          FORCE_NOTIFY: ${{ (github.event_name == 'workflow_dispatch' && inputs.force_notify) && '1' || '0' }}
+          WARSH_ROTATION_3D_PP: '3'
+          WARSH_ROTATION_5D_PP: '5'
+          PYTHONPATH: scripts
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          token = (os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
+          chat_id = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
+          expected = (os.getenv('EXPECTED_BOT_USERNAME') or '').strip().lstrip('@')
+          if not token:
+              raise RuntimeError('KHS887900_BOT_TOKEN secret is missing')
+          if not chat_id:
+              raise RuntimeError('KHS_POLICY_TELEGRAM_CHAT_ID secret is missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
+              data = json.loads(r.read().decode('utf-8'))
+          username = str((data.get('result') or {}).get('username') or '')
+          if not data.get('ok') or username.lower() != expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{username or "unknown"}')
+          print(f'ai_rotation_route_valid=true bot=@{username} chat_id_present=true')
+          PY
+          python scripts/warsh_ai_rotation_watch.py
 
       - name: Ignore timestamp-only state changes
         run: |
