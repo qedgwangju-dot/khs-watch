@@ -10,10 +10,12 @@ try:
 except ModuleNotFoundError:
     from scripts import korea_grid_stage_watch as base
 
+_BASE_PARSE_STAGE_ROWS = base.parse_stage_rows
+
 
 def parse_stage_rows(html_text: str, stage: str, stage_order: int, base_url: str) -> list[dict[str, Any]]:
     # 1차: 일반 표 구조
-    rows = base.parse_stage_rows(html_text, stage, stage_order, base_url)
+    rows = _BASE_PARSE_STAGE_ROWS(html_text, stage, stage_order, base_url)
     if rows:
         return rows
 
