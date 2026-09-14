@@ -34,8 +34,7 @@ def _date(value):
 def _get_rows(url, params):
     r = requests.get(url, params=params, headers=app.base.HEADERS, timeout=(8, 30))
     r.raise_for_status()
-    payload = r.json()
-    rows = payload.get("data") or []
+    rows = (r.json() or {}).get("data") or []
     if not rows:
         raise RuntimeError("Treasury MSPD returned no rows")
     return rows
@@ -48,8 +47,7 @@ def _get_summary(record_date):
         "page[number]": 1,
         "page[size]": 50,
     })
-    bills_mil = None
-    total_mil = None
+    bills_mil = total_mil = None
     for row in rows:
         if str(row.get("record_date") or "")[:10] != record_date:
             continue
@@ -58,21 +56,22 @@ def _get_summary(record_date):
         elif row.get("security_type_desc") == "Total Marketable":
             total_mil = _num(row.get("total_mil_amt"))
     if not bills_mil or not total_mil:
-        raise RuntimeError("Treasury MSPD table 1 summary totals missing")
+        raise RuntimeError("Treasury MSPD summary totals missing")
     return total_mil, bills_mil
 
 
 def get_refinancing_snapshot():
-    latest_row = _get_rows(MSPD_DETAIL_URL, {"sort": "-record_date", "page[number]": 1, "page[size]": 1})[0]
-    record_date = str(latest_row.get("record_date") or "")[:10]
+    latest = _get_rows(MSPD_DETAIL_URL, {
+        "sort": "-record_date",
+        "page[number]": 1,
+        "page[size]": 1,
+    })[0]
+    record_date = str(latest.get("record_date") or "")[:10]
     rd = _date(record_date)
     if rd is None:
-        raise RuntimeError("Treasury MSPD latest record_date parse failed")
+        raise RuntimeError("Treasury MSPD record date parse failed")
 
-    # Use Table I for current stock totals. Table III contains issue/reopening detail and
-    # subtotal-style rows, so summing every outstanding_amt overstates the current stock.
     total_mil, bills_mil = _get_summary(record_date)
-
     rows = _get_rows(MSPD_DETAIL_URL, {
         "filter": f"record_date:eq:{record_date}",
         "sort": "-record_date,maturity_date",
@@ -80,70 +79,77 @@ def get_refinancing_snapshot():
         "page[size]": 10000,
     })
 
-    next12_mil = 0.0
-    next12_bills_mil = 0.0
-    by_year_mil = {2027: 0.0, 2028: 0.0}
     cutoff = rd + dt.timedelta(days=365)
-    matched_rows = 0
-
-    # Only rows with an actual future maturity date and a positive outstanding balance
-    # enter the maturity schedule. This excludes Table III subtotal lines with null dates.
+    next12_mil = 0.0
+    by_year_mil = {2027: 0.0, 2028: 0.0}
     for row in rows:
         if str(row.get("record_date") or "")[:10] != record_date:
             continue
-        matched_rows += 1
         md = _date(row.get("maturity_date"))
         if md is None or md <= rd:
             continue
         outstanding = _num(row.get("outstanding_amt"))
         if outstanding <= 0:
             continue
-        cls = str(row.get("security_class1_desc") or row.get("security_class_desc") or "")
+        cls = str(row.get("security_class1_desc") or "")
         if cls in ("Total Marketable", "Federal Financing Bank"):
             continue
-        is_bill = "bill" in cls.lower()
         if md <= cutoff:
             next12_mil += outstanding
-            if is_bill:
-                next12_bills_mil += outstanding
         if md.year in by_year_mil:
             by_year_mil[md.year] += outstanding
 
-    if matched_rows <= 0 or next12_mil <= 0:
-        raise RuntimeError("Treasury MSPD maturity aggregation failed")
-
-    to_tril = lambda mil: mil / 1_000_000.0
-    total_t = to_tril(total_mil)
-    bills_t = to_tril(bills_mil)
-    next12_t = to_tril(next12_mil)
-
-    # All current Treasury bills mature within one year. Use the authoritative Table I
-    # bill stock as the bill component and derive coupon/FRN/TIPS maturities as the residual.
-    next12_bills_t = bills_t
-    next12_coupon_t = max(0.0, next12_t - next12_bills_t)
-    bill_share = bills_t / total_t * 100.0
-    next12_share = next12_t / total_t * 100.0
-
-    sensitivity_b = {
-        25: bills_t * 1_000.0 * 0.0025,
-        50: bills_t * 1_000.0 * 0.0050,
-        75: bills_t * 1_000.0 * 0.0075,
-    }
-
+    to_t = lambda mil: mil / 1_000_000.0
+    total_t = to_t(total_mil)
+    bills_t = to_t(bills_mil)
+    next12_t = to_t(next12_mil)
+    coupon_t = max(0.0, next12_t - bills_t)
     return {
         "record_date": record_date,
-        "matched_rows": matched_rows,
         "total_t": total_t,
         "bills_t": bills_t,
-        "bill_share": bill_share,
+        "bill_share": bills_t / total_t * 100.0,
         "next12_t": next12_t,
-        "next12_share": next12_share,
-        "next12_bills_t": next12_bills_t,
-        "next12_coupon_t": next12_coupon_t,
-        "y2027_t": to_tril(by_year_mil[2027]),
-        "y2028_t": to_tril(by_year_mil[2028]),
-        "sensitivity_b": sensitivity_b,
+        "next12_share": next12_t / total_t * 100.0,
+        "coupon_t": coupon_t,
+        "y2027_t": to_t(by_year_mil[2027]),
+        "y2028_t": to_t(by_year_mil[2028]),
+        "plus75_b": bills_t * 1_000.0 * 0.0075,
     }
+
+
+def _m(pattern, text, default="확인 대기"):
+    m = re.search(pattern, text, re.M)
+    return m.group(1).strip() if m else default
+
+
+def _flow(ticker, text):
+    m = re.search(
+        rf"^{ticker} \([^\n]+\) — [^\n]+\n"
+        rf"• 가격: [^\n]+\n"
+        rf"• 일간 자금: ([^\n]+)\n"
+        rf"• 최근 5회: ([^\n]+)",
+        text,
+        re.M,
+    )
+    if not m:
+        return "확인 대기", "확인 대기"
+    return m.group(1).strip(), m.group(2).strip()
+
+
+def _oas(ticker, text):
+    return _m(
+        rf"^{ticker} \([^\n]+\) — [^\n]+\n"
+        rf"• 가격: [^\n]+\n"
+        rf"• 일간 자금: [^\n]+\n"
+        rf"• 최근 5회: [^\n]+\n"
+        rf"• 포트폴리오 OAS: ([^\n]+)",
+        text,
+    )
+
+
+def _rate(tenor, text):
+    return _m(rf"^• {re.escape(tenor)}: ([^\n]+)", text)
 
 
 def _yield_value(text, tenor):
@@ -151,71 +157,138 @@ def _yield_value(text, tenor):
     return float(m.group(1)) if m else None
 
 
-def _refi_block(text):
-    try:
-        snap = get_refinancing_snapshot()
-    except Exception:
+def _inflow(s):
+    return "순유입" in s
+
+
+def _outflow(s):
+    return "순유출" in s
+
+
+def _overall_direction(flows):
+    shy, ief, tlt, lqd, hyg = [flows[x][0] for x in ("SHY", "IEF", "TLT", "LQD", "HYG")]
+    if _inflow(ief) and _inflow(tlt) and _outflow(lqd) and _outflow(hyg):
         return (
-            "차환·재정 민감도: 공식 MSPD 최신값 조회 실패 → 차환벽 판정 보류\n"
-            "→ 기존 금리·ETF·OAS·G-R 판정은 계속 수행하고 차환 규모는 추정하지 않음"
+            "회사채→중·장기 국채 이동·방어적",
+            "IEF·TLT는 유입, LQD·HYG는 유출 → 장기금리 고점 베팅은 늘지만 기업 신용위험 노출은 줄이는 흐름",
         )
+    if _inflow(shy) and _outflow(lqd) and _outflow(hyg):
+        return "단기 국채 피신·품질 선호", "회사채에서 빠진 돈이 짧은 미 국채로 이동하는 방어적 흐름"
+    if _inflow(lqd) and _inflow(hyg):
+        return "신용 위험선호 회복", "투자등급·고수익 회사채에 자금이 함께 유입"
+    return "혼조·추가 확인", "국채 만기 이동과 회사채 위험선호가 한 방향으로 완전히 정렬되지는 않음"
 
-    y10 = _yield_value(text, "10년")
-    y30 = _yield_value(text, "30년")
-    if (y10 is not None and y10 >= 5.00) or (y30 is not None and y30 >= 5.30):
-        state = "경계 — 높은 시장금리 속 대규모 차환"
-    elif snap["next12_share"] >= 30:
-        state = "주의 — 향후 12개월 만기 비중 매우 높음"
-    elif snap["next12_share"] >= 20:
-        state = "관찰 강화 — 향후 12개월 차환 비중 높음"
+
+def _credit_summary(lqd_flow, hyg_flow, lqd_oas, hyg_oas):
+    oas_widen = ("↑" in lqd_oas and "+0bp" not in lqd_oas) or ("↑" in hyg_oas and "+0bp" not in hyg_oas)
+    if _outflow(lqd_flow) and _outflow(hyg_flow) and not oas_widen:
+        return "선제 위험축소·신용경색 미확인", "LQD·HYG 자금은 빠지지만 OAS는 급확대하지 않아 아직 신용경색 단계는 아님"
+    if _outflow(hyg_flow) and oas_widen:
+        return "신용위험 경계 강화", "HYG 자금유출과 OAS 확대가 겹쳐 기업 신용위험이 실제 가격에 반영되기 시작"
+    return "혼조", "자금흐름과 신용스프레드가 같은 방향인지 추가 확인"
+
+
+def _compact_report(raw_text):
+    flows = {t: _flow(t, raw_text) for t in ("SHY", "IEF", "TLT", "LQD", "HYG")}
+    lqd_oas, hyg_oas = _oas("LQD", raw_text), _oas("HYG", raw_text)
+    overall_head, overall_reason = _overall_direction(flows)
+    credit_head, credit_reason = _credit_summary(flows["LQD"][0], flows["HYG"][0], lqd_oas, hyg_oas)
+
+    r2, r10, r30 = _rate("2년", raw_text), _rate("10년", raw_text), _rate("30년", raw_text)
+    s210 = _rate("2년-10년 금리차", raw_text)
+    s1030 = _rate("10년-30년 금리차", raw_text)
+    regime = _m(r"^• 현재 형태: ([^\n]+)", raw_text)
+    easy = _m(r"^• 쉬운 해석: ([^\n]+)", raw_text)
+    driver = _m(r"^• 오늘의 주도축: ([^\n]+)", raw_text)
+    treasury_date = _m(r"^기준: ([0-9]{4}-[0-9]{2}-[0-9]{2}) \| 직전:", raw_text)
+
+    y10, y30 = _yield_value(raw_text, "10년"), _yield_value(raw_text, "30년")
+    tech_head, tech_reason = stress._market_stress(y10, y30)
+
+    gr = readable.get_growth_cost_snapshot()
+    if gr.get("ok"):
+        gr_line = f"G-R: {gr['gap']:+.2f}%p | G {gr['g']:.2f}% vs R {gr['r']:.2f}% → {gr['state']}"
     else:
-        state = "관찰 — 차환벽 상시 점검"
+        gr_line = "G-R: 공식 최신값 조회 실패 → 판정 보류"
 
-    s = snap["sensitivity_b"]
-    return "\n".join([
-        f"차환·재정 민감도: {state}",
-        f"향후 12개월 만기: ${snap['next12_t']:.2f}T | 시장성 국채 ${snap['total_t']:.2f}T의 {snap['next12_share']:.1f}% | Bills ${snap['next12_bills_t']:.2f}T / 쿠폰물·기타 ${snap['next12_coupon_t']:.2f}T",
-        f"현재 Bills: ${snap['bills_t']:.2f}T | 시장성 국채의 {snap['bill_share']:.1f}%",
-        f"금리 민감도(Bills 단순 연율): +25bp ≈ +${s[25]:.1f}B/년 | +50bp ≈ +${s[50]:.1f}B/년 | +75bp ≈ +${s[75]:.1f}B/년",
-        f"연도별 현재 잔존 만기: 2027 ${snap['y2027_t']:.2f}T | 2028 ${snap['y2028_t']:.2f}T",
-        "→ 만기액은 신규 적자와 다름: 만기채는 대부분 재발행해 갈아타는 총차환 물량이고, 재정적자는 여기에 더해지는 순신규 조달 수요.",
-        "→ Bills는 짧게 반복 차환돼 Fed 금리 변화가 이자비용에 빨리 반영. 쿠폰물은 만기 시점에 재가격되므로 전체 국가부채가 한꺼번에 같은 금리로 바뀌는 것은 아님.",
-        "→ 민감도는 현재 Bills 잔액에 금리 변화폭을 단순 적용한 연율 추정이며 실제 현금 이자비용은 재발행 시점·만기구성·낙찰금리에 따라 달라짐.",
-        f"자료 기준: U.S. Treasury MSPD {snap['record_date']} (월말 공식 잔액·만기표)",
-    ])
+    try:
+        refi = get_refinancing_snapshot()
+        refi_line = (
+            f"차환: 12개월 ${refi['next12_t']:.2f}T ({refi['next12_share']:.1f}%) | "
+            f"Bills ${refi['bills_t']:.2f}T ({refi['bill_share']:.1f}%) | +75bp 단순 연율 +${refi['plus75_b']:.1f}B"
+        )
+        refi_date = refi["record_date"]
+    except Exception:
+        refi_line = "차환: MSPD 최신값 조회 실패 → 판정 보류"
+        refi_date = "확인 대기"
 
+    date_line = _m(r"^조회시각\(KST\): ([^\n]+)", raw_text)
+    fx_line = _m(r"^환율: ([^\n]+)", raw_text)
 
-def _insert_refi(text):
-    block = _refi_block(text)
-    marker = "\n자료 기준일:"
-    if marker in text:
-        return text.replace(marker, "\n\n" + block + marker, 1)
-    return text + "\n\n" + block
+    if credit_head.startswith("선제") and "앞단 Fed" in driver:
+        conclusion = "앞단 Fed 압박은 강해졌지만 신용스프레드는 아직 버팀 → 현재는 금리 스트레스 + 선제 위험축소 단계"
+    elif "신용위험 경계" in credit_head:
+        conclusion = "금리 압박이 회사채 신용위험으로 번지는지 경계 강화"
+    else:
+        conclusion = overall_reason
+
+    lines = [
+        "[미 국채·회사채 방향성 일일 보고]",
+        f"조회: {date_line}",
+        f"환율: {fx_line}",
+        "",
+        "[한눈에 보기]",
+        f"전체 방향: {overall_head}",
+        f"→ {overall_reason}",
+        "",
+        f"국채 자금: SHY {flows['SHY'][0]} | IEF {flows['IEF'][0]} | TLT {flows['TLT'][0]}",
+        f"회사채 자금: LQD {flows['LQD'][0]} | HYG {flows['HYG'][0]}",
+        f"신용 위험: {credit_head} | LQD OAS {lqd_oas} | HYG OAS {hyg_oas}",
+        f"→ {credit_reason}",
+        "",
+        f"금리: 2년 {r2} | 10년 {r10} | 30년 {r30}",
+        f"커브: {regime} = {easy}",
+        f"금리차: 2-10년 {s210} | 10-30년 {s1030}",
+        f"오늘의 주도축: {driver}",
+        "",
+        f"시장 기술압력: {tech_head}",
+        f"→ {tech_reason}",
+        f"{gr_line}",
+        f"{refi_line}",
+        "",
+        "[자금 상세 — 일간 / 최근 5회]",
+        f"SHY: {flows['SHY'][0]} / {flows['SHY'][1]}",
+        f"IEF: {flows['IEF'][0]} / {flows['IEF'][1]}",
+        f"TLT: {flows['TLT'][0]} / {flows['TLT'][1]}",
+        f"LQD: {flows['LQD'][0]} / {flows['LQD'][1]} | OAS {lqd_oas}",
+        f"HYG: {flows['HYG'][0]} / {flows['HYG'][1]} | OAS {hyg_oas}",
+        "",
+        "[오늘의 결론]",
+        conclusion,
+        "다음 경보: 10년물 5% 돌파·HYG OAS 재확대·R>G 전환 여부",
+        "",
+        f"기준: ETF·미 재무부 {treasury_date} | MSPD {refi_date}",
+        "출처: iShares · U.S. Treasury · Treasury FiscalData · BEA",
+    ]
+    return "\n".join(lines)
 
 
 def _format_html(chunk):
     out = []
     bold_prefixes = (
         "전체 방향:", "국채 자금:", "회사채 자금:", "신용 위험:",
-        "성장-차입비용:", "기업이익:", "위험 전환 경보:",
-        "금리:", "커브:", "2년-10년:", "10년-30년:",
-        "오늘의 주도축:", "시장 기술압력:", "차환·재정 민감도:",
-        "향후 12개월 만기:", "현재 Bills:", "금리 민감도(Bills 단순 연율):",
-        "연도별 현재 잔존 만기:", "자료 기준일:",
-        "전체 자금 방향:", "ETF 자금 방향:", "신용자금 방향:",
-        "• 현재 형태:", "• 오늘의 주도축:", "• 신용 위험:",
+        "금리:", "커브:", "오늘의 주도축:", "시장 기술압력:",
+        "G-R:", "차환:", "다음 경보:",
     )
     for line in chunk.splitlines():
         escaped = html.escape(line, quote=False)
-        bold = line in ("[한눈에 보기]", "[오늘의 결론]") or line.startswith(bold_prefixes)
+        bold = line in ("[한눈에 보기]", "[자금 상세 — 일간 / 최근 5회]", "[오늘의 결론]") or line.startswith(bold_prefixes)
         out.append(f"<b>{escaped}</b>" if bold else escaped)
     return "\n".join(out)
 
 
 def send_refinancing(raw_text):
-    text = readable.improve_overview(raw_text)
-    text = stress._insert_market_stress(text)
-    text = _insert_refi(text)
+    text = _compact_report(raw_text)
     (app.base.OUT / "treasury_etf_flow_telegram.txt").write_text(text + "\n", encoding="utf-8")
     (app.base.OUT / "treasury_etf_flow_status.md").write_text("```\n" + text + "\n```\n", encoding="utf-8")
     app.fmt_html = _format_html
