@@ -23,6 +23,8 @@ import urllib.request
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+from global_rates_freshness_guard import calculate_final_risk, classify_live_fx
+
 KST = ZoneInfo("Asia/Seoul")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / "out"
@@ -36,7 +38,7 @@ UST_URL = "https://home.treasury.gov/resource-center/data-chart-center/interest-
 FRED_USDJPY = "https://fred.stlouisfed.org/series/DEXJPUS"
 BIS_2024 = "https://www.bis.org/publ/bisbull90.htm"
 STATE_PATH = DATA / "global_rates_telegram_state.json"
-UA = "khs-watch-global-rates-telegram-formatter/1.1"
+UA = "khs-watch-global-rates-telegram-formatter/1.2"
 
 
 def load_json(path: pathlib.Path, default):
@@ -258,20 +260,22 @@ def main() -> int:
     curve_up = bool(d2 is not None and d5 is not None and d10 is not None and d2 > 0 and d5 > 0 and d10 > 0)
     spread_narrow = bool((spread is not None and spread <= 2.0) or (spread_change_bp is not None and spread_change_bp <= -10.0))
     us_rates_down = bool(ust2_change_bp is not None and ust2_change_bp <= -10.0)
-    yen_surge = bool((usdjpy is not None and usdjpy <= 155.0) or (usd_day is not None and usd_day <= -2.0))
+    fx_state = classify_live_fx(usdjpy, usd_day)
+    yen_strong_level = bool(fx_state["strong_level"])
+    yen_surge = bool(fx_state["surge"])
     vix_spike = bool(sig.get("vix_spike_20pct"))
     equity_joint = bool(confirm.get("equity_joint_weakness"))
-    leading_count = sum([jgb10_3, curve_up, spread_narrow, us_rates_down, yen_surge])
-    confirm_count = sum([vix_spike, equity_joint])
 
-    if yen_surge and spread_narrow and (vix_spike or equity_joint):
-        risk_level, risk_label, emoji = 3, "실제 엔캐리 청산 위험 높음", "🔴"
-    elif (yen_surge and (spread_narrow or curve_up)) or (jgb10_3 and curve_up and spread_narrow):
-        risk_level, risk_label, emoji = 2, "엔캐리 청산 경계 강화", "🟠"
-    elif leading_count >= 2 or (jgb10_3 and (vix_spike or equity_joint)):
-        risk_level, risk_label, emoji = 1, "구조적 경계 상승", "🟡"
-    else:
-        risk_level, risk_label, emoji = 0, "관찰", "🟢"
+    risk_signals = {
+        "jgb10_3": jgb10_3,
+        "jgb_curve_up": curve_up,
+        "us_jp_2y_spread_narrow": spread_narrow,
+        "us_2y_down": us_rates_down,
+        "yen_surge": yen_surge,
+        "vix_spike": vix_spike,
+        "nikkei_nasdaq_joint_weakness": equity_joint,
+    }
+    risk_level, risk_label, emoji, leading_count, confirm_count = calculate_final_risk(risk_signals)
 
     old_level = int(telegram_state.get("risk_level") or 0)
     primary_event = bool(base_alert.get("events"))
@@ -288,6 +292,7 @@ def main() -> int:
             "jgb_curve_up": curve_up,
             "us_jp_2y_spread_narrow": spread_narrow,
             "us_2y_down": us_rates_down,
+            "yen_strong_level": yen_strong_level,
             "yen_surge": yen_surge,
             "vix_spike": vix_spike,
             "nikkei_nasdaq_joint_weakness": equity_joint,
@@ -337,7 +342,8 @@ def main() -> int:
         ),
         f"{mark(spread_narrow)} 미·일 2Y 금리차 축소: " + (f"{spread:.3f}%p / 변화 {fmt_change(spread_change_bp,'bp')}" if spread is not None else "확인 불가"),
         f"{mark(us_rates_down)} 미국 2Y 하락 가속: " + (f"{ust2:.3f}% / 변화 {fmt_change(ust2_change_bp,'bp')}" if ust2 is not None else "확인 불가"),
-        f"{mark(yen_surge)} 엔화 급등: " + (f"USD/JPY {usdjpy:.3f} / 1일 {usd_day:+.2f}%" if usdjpy is not None and usd_day is not None else "확인 불가"),
+        f"{mark(yen_surge)} 엔화 급등: " + (f"USD/JPY {usdjpy:.3f} / 기준변화 {usd_day:+.2f}% / 현재 방향 {fx_state['direction']}" if usdjpy is not None and usd_day is not None else "확인 불가"),
+        f"• 엔화 강세 수준: {mark(yen_strong_level)} " + (f"USD/JPY {usdjpy:.3f} (155 이하 여부; 방향 신호와 분리)" if usdjpy is not None else "확인 불가"),
         "⬜ BOJ 시장 내재 인상확률: 신뢰 가능한 공개 자동 시계열 미연결. 주요매체가 숫자를 명시한 경우에만 ‘보도값’으로 별도 사용 — 임의 추정 안 함.",
         "",
         *structural_lines(structural),
@@ -353,6 +359,7 @@ def main() -> int:
         "",
         "④ 정확한 의미",
         "- JGB 10Y 3% = 엔캐리 자동 청산선 아님. 일본 FY2026 예산 금리 가정과 겹치는 재정·심리 경계선.",
+        "- USD/JPY 155 이하는 엔화가 강한 가격대라는 참고값일 뿐, 엔화 급등 신호가 아님. 엔화 급등은 USD/JPY 변화율 하락으로만 판정.",
         "- JGB 금리가 올라가도 입찰 수요가 강하면 ‘시장 스트레스’로 자동 승격하지 않음. 응찰배율·꼬리까지 같이 확인.",
         "- GPIF 국내채권 확대는 반대편 자산이 무엇인지 확인해야 환율·미국채·주식 수급 방향을 판단할 수 있음.",
         "- 실제 청산은 BOJ 긴축·일본 단기금리↑ → 미·일 2년 금리차↓ → USD/JPY 급락 → 변동성·주식 전염 순서가 핵심.",
