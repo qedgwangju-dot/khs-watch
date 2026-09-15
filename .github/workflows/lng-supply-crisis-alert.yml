@@ -34,6 +34,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v29.py"
       - "scripts/lng_supply_crisis_alert_v30.py"
       - "scripts/lng_supply_crisis_alert_v31.py"
+      - "scripts/lng_supply_crisis_alert_v32.py"
       - "scripts/lng_supply_crisis_qatar_us_overlay.py"
 
 permissions:
@@ -59,15 +60,16 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v31 monitor
+      - name: Validate v32 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_alert_v28.py scripts/lng_supply_crisis_alert_v29.py scripts/lng_supply_crisis_alert_v30.py scripts/lng_supply_crisis_alert_v31.py scripts/lng_supply_crisis_qatar_us_overlay.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_alert_v28.py scripts/lng_supply_crisis_alert_v29.py scripts/lng_supply_crisis_alert_v30.py scripts/lng_supply_crisis_alert_v31.py scripts/lng_supply_crisis_alert_v32.py scripts/lng_supply_crisis_qatar_us_overlay.py
           python - <<'PY'
           import sys, time
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
           import lng_supply_crisis_alert_v30 as v30
           import lng_supply_crisis_alert_v31 as v31
+          import lng_supply_crisis_alert_v32 as v32
 
           contract = core.NewsItem(
               category=v30.CATEGORY, polarity="easing", subtype="lng_long_term_spa_signed",
@@ -78,8 +80,8 @@ jobs:
           )
           rate = core.NewsItem(
               category="europe_rates", polarity="worsening", subtype="europe_rates_bund_selloff",
-              title="European bond yields hit multi-year highs as energy shock deepens",
-              source="Reuters", link="https://example.com/rates",
+              title="U.S. 10-Year Yield Cools After Topping 5%, German Bund Yield Hits 15-Year High - WSJ",
+              source="WSJ", link="https://example.com/rates",
               published_utc="2026-09-14T12:00:00+00:00", published_epoch=time.time()-1,
               official=False, event_id="fixture-rate",
           )
@@ -89,19 +91,25 @@ jobs:
           ]
           block = "\n".join(v31._simultaneous_change_lines(groups))
           assert "동시 감지된 다른 변화" in block
-          assert "유럽" in block or "장기채" in block or "금리" in block
-          assert "European bond yields" not in block
+          assert "U.S. 10-Year Yield" not in block
+
+          raw_body = '<b>확인 근거</b>\n• <b>WSJ</b> · U.S. 10-Year Yield Cools After Topping 5%, German Bund Yield Hits 15-Year High - WSJ · <a href="https://example.com/rates">원문</a>'
+          fixed = v32._replace_evidence_text(raw_body, [groups[1]])
+          assert "U.S. 10-Year Yield" not in fixed
+          assert "월스트리트저널" in fixed
+          assert not v32._raw_english_evidence_remaining(fixed, [groups[1]])
+
           contract_body = v30._build_contract_body(groups)
           assert "연 <b>50만톤(0.5 MTPA)</b>" in contract_body
-          print("v31_validation=true")
+          print("v32_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v31.py --setup-test
+            python scripts/lng_supply_crisis_alert_v32.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v31.py
+            python scripts/lng_supply_crisis_alert_v32.py
           fi
 
       - name: Publish status summary
@@ -187,7 +195,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v31.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v32.py --finalize
 
       - name: Upload verification artifacts
         if: always()
