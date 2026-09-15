@@ -66,7 +66,7 @@ jobs:
           PY
 
       - name: Correct initial lead-time setup message
-        if: github.event_name == 'push' && contains(github.event.head_commit.message, '[leadtime-correction]')
+        if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[leadtime-correction-v2]') }}
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
@@ -99,23 +99,25 @@ jobs:
           except Exception as exc:
               print(f"delete_message_89=not_deleted reason={type(exc).__name__}: {exc}")
 
-          text = """✅ AI 인프라 부품 납기 감시 설정 완료
-
-현재 기준선 · TrendForce 2026-09-15
-• GPU: 20–30주 / 균형 20–30주 · 수급 균형
-• DRAM: 20주 / 균형 8주 · 심각한 부족
-• NAND(eSSD): 16주 / 균형 8주 · 공급 제약
-• HDD: 50주 / 균형 16주 · 심각한 부족
-• ABF: 48–56주 / 균형 12주 · 심각한 부족
-• MLCC: 30주 / 균형 12주 · 공급 제약
-
-알림 조건
-• TrendForce 새 주간 AI 인프라 리드타임 업데이트 감지
-• 6개 품목의 현재 납기 또는 상태가 이전 기준선에서 변경
-• 동일 수치·동일 업데이트는 중복 발송하지 않음
-• 표 숫자를 안전하게 추출하지 못하면 임의 추정하지 않고 새 업데이트 감지만 알림
-
-원문: https://insights.trendforce.com/p/weekly-radar-001"""
+          text = "\n".join((
+              "✅ AI 인프라 부품 납기 감시 설정 완료",
+              "",
+              "현재 기준선 · TrendForce 2026-09-15",
+              "• GPU: 20–30주 / 균형 20–30주 · 수급 균형",
+              "• DRAM: 20주 / 균형 8주 · 심각한 부족",
+              "• NAND(eSSD): 16주 / 균형 8주 · 공급 제약",
+              "• HDD: 50주 / 균형 16주 · 심각한 부족",
+              "• ABF: 48–56주 / 균형 12주 · 심각한 부족",
+              "• MLCC: 30주 / 균형 12주 · 공급 제약",
+              "",
+              "알림 조건",
+              "• TrendForce 새 주간 AI 인프라 리드타임 업데이트 감지",
+              "• 6개 품목의 현재 납기 또는 상태가 이전 기준선에서 변경",
+              "• 동일 수치·동일 업데이트는 중복 발송하지 않음",
+              "• 표 숫자를 안전하게 추출하지 못하면 임의 추정하지 않고 새 업데이트 감지만 알림",
+              "",
+              "원문: https://insights.trendforce.com/p/weekly-radar-001",
+          ))
           sent = call(
               "sendMessage",
               {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"},
