@@ -11,6 +11,7 @@ on:
       - "scripts/us_data_center_time_to_power_watch.py"
       - "scripts/guard_us_time_to_power_metrics_source.py"
       - "scripts/clean_us_time_to_power_alert_html.py"
+      - "scripts/us_data_center_generation_buildout_watch.py"
       - "scripts/remove_telegram_italics.py"
       - "scripts/korea_aidc_policy_watch.py"
   schedule:
@@ -153,6 +154,9 @@ jobs:
       - name: Improve US time-to-power Telegram readability
         run: python scripts/clean_us_time_to_power_alert_html.py
 
+      - name: Check US data center generation buildout execution
+        run: python scripts/us_data_center_generation_buildout_watch.py
+
       - name: Force regular Telegram font
         run: python scripts/remove_telegram_italics.py
 
@@ -175,6 +179,7 @@ jobs:
               pathlib.Path("out/korea_aidc_policy_alert.txt"),
               pathlib.Path("out/pjm_data_center_policy_alert.txt"),
               pathlib.Path("out/us_data_center_time_to_power_alert.txt"),
+              pathlib.Path("out/us_data_center_generation_buildout_alert.txt"),
           ]
           sent = 0
 
@@ -240,6 +245,21 @@ jobs:
                           ],
                       ]
                   }
+              elif p.name == "us_data_center_generation_buildout_alert.txt":
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {"is_disabled": True}
+                  payload["reply_markup"] = {
+                      "inline_keyboard": [
+                          [
+                              {"text": "🔥 Moody’s 45GW 기준", "url": "https://news.bloombergtax.com/financial-accounting/us-ai-boom-needs-110-billion-of-new-power-plants-moodys-says"},
+                              {"text": "🏭 GE Vernova 공급능력", "url": "https://www.gevernova.com/news/articles/ge-vernova-releases-second-quarter-2026-financial-results"},
+                          ],
+                          [
+                              {"text": "⚡ IEA 전력수요", "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai"},
+                              {"text": "⛽ EIA 가스발전", "url": "https://www.eia.gov/todayinenergy/detail.php?id=67344"},
+                          ],
+                      ]
+                  }
               else:
                   payload["link_preview_options"] = {"is_disabled": True}
 
@@ -270,11 +290,12 @@ jobs:
           cp out/korea_aidc_policy_pending_state.json data/korea_aidc_policy_state.json
           cp out/pjm_data_center_policy_pending_state.json data/pjm_data_center_policy_state.json
           cp out/us_data_center_time_to_power_pending_state.json data/us_data_center_time_to_power_state.json
+          cp out/us_data_center_generation_buildout_pending_state.json data/us_data_center_generation_buildout_state.json
           git restore scripts/pjm_data_center_policy_watch.py
           git restore scripts/us_data_center_time_to_power_watch.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/data_center_growth_state.json data/korea_aidc_policy_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json
+          git add data/data_center_growth_state.json data/korea_aidc_policy_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json data/us_data_center_generation_buildout_state.json
           if git diff --cached --quiet; then
             echo "State unchanged."
           else
@@ -301,5 +322,8 @@ jobs:
             out/us_data_center_time_to_power_status.md
             out/us_data_center_time_to_power_alert.txt
             out/us_data_center_time_to_power_pending_state.json
+            out/us_data_center_generation_buildout_status.md
+            out/us_data_center_generation_buildout_alert.txt
+            out/us_data_center_generation_buildout_pending_state.json
           if-no-files-found: ignore
           retention-days: 7
