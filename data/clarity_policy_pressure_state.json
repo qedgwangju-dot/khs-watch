@@ -2,15 +2,16 @@
   "initialized": true,
   "signature_version": 2,
   "monitoring_unit": "event_state_change_not_article",
-  "last_checked_utc": "2026-09-15T20:56:24+00:00",
+  "last_checked_utc": "2026-09-15T21:25:46+00:00",
   "seen_signatures": [
     "0ebf19ce31fcf604087c719bba1bd08ce6c9ae73d31f5f780ade8227c0c2eb6f",
     "3686ce7521d4002ad0323b65ad6654aff709db9621e388d4e273a77484228a77",
     "354b746dc908b42fe25f598a606842bf42a8ebcb22acd5346f358db57b326ea4",
     "0721b33e105c5c65ee9cfbd0ac261dab3694e6ae32433d2b47821ec934acfe1c",
-    "2ca944e6434d22d7f6947e902441c8854d2859982f075662acf0060309edf780"
+    "2ca944e6434d22d7f6947e902441c8854d2859982f075662acf0060309edf780",
+    "31abf8c48531a3342a1c130ddf677cbafc314c91089781e0d000123e19a0d0ee"
   ],
-  "accepted_current": 4,
-  "raw_articles": 432,
+  "accepted_current": 5,
+  "raw_articles": 440,
   "source_errors": []
 }
