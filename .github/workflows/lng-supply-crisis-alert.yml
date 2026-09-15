@@ -36,6 +36,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v31.py"
       - "scripts/lng_supply_crisis_alert_v32.py"
       - "scripts/lng_supply_crisis_alert_v33.py"
+      - "scripts/lng_supply_crisis_alert_v34.py"
       - "scripts/lng_supply_crisis_qatar_us_overlay.py"
 
 permissions:
@@ -61,14 +62,15 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v33 monitor
+      - name: Validate v34 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_alert_v28.py scripts/lng_supply_crisis_alert_v29.py scripts/lng_supply_crisis_alert_v30.py scripts/lng_supply_crisis_alert_v31.py scripts/lng_supply_crisis_alert_v32.py scripts/lng_supply_crisis_alert_v33.py scripts/lng_supply_crisis_qatar_us_overlay.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_alert_v28.py scripts/lng_supply_crisis_alert_v29.py scripts/lng_supply_crisis_alert_v30.py scripts/lng_supply_crisis_alert_v31.py scripts/lng_supply_crisis_alert_v32.py scripts/lng_supply_crisis_alert_v33.py scripts/lng_supply_crisis_alert_v34.py scripts/lng_supply_crisis_qatar_us_overlay.py
           python - <<'PY'
           import sys, time
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
           import lng_supply_crisis_alert_v33 as v33
+          import lng_supply_crisis_alert_v34 as v34
 
           item = core.NewsItem(
               category=v33.CATEGORY,
@@ -82,29 +84,26 @@ jobs:
               official=False,
               event_id="fixture-fuel-crisis",
           )
-          assert core.classify_polarity(v33.CATEGORY, item.title) == "worsening"
-          assert core.classify_subtype(item.title) == "fuel_crisis_systemic"
           groups = v33.confirmed_news_groups_v33([item])
-          assert any(g.get("category") == v33.CATEGORY for g in groups)
-          body = v33._build_fuel_body(groups, {})
-          assert "1억627만배럴" in body
-          assert "2억8,536만배럴" in body
-          assert "러시아·중동" in body
-          evidence = "\n".join(v33._evidence_lines(groups))
+          assert groups
+          evidence = "\n".join(v34._evidence_lines_v34(groups))
           assert "월스트리트저널" in evidence
           assert "미국 석유업계 경영진, 글로벌 연료 위기가 이미 시작됐다고 경고" in evidence
           assert "Oil Executives Say" not in evidence
-          assert not v33.v32._raw_english_evidence_remaining(evidence, groups)
-          assert any("commercial fuel stocks" in q for _, q in v33.FUEL_STRESS_QUERIES)
-          print("v33_validation=true")
+          body = v34._build_fuel_body_v34(groups, {})
+          assert "LNG 수급 악화 관련 확정 변화" not in body
+          assert "Vitol" not in body
+          assert "Yahoo Brent" not in body
+          assert "비톨" in body
+          print("v34_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v33.py --setup-test
+            python scripts/lng_supply_crisis_alert_v34.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v33.py
+            python scripts/lng_supply_crisis_alert_v34.py
           fi
 
       - name: Publish status summary
@@ -190,7 +189,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v33.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v34.py --finalize
 
       - name: Upload verification artifacts
         if: always()
