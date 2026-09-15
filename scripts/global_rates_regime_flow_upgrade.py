@@ -6,12 +6,35 @@ supported driver is active, report a mixed regime instead of forcing one causal 
 """
 from __future__ import annotations
 
+import importlib.util
+import subprocess
+import sys
+
 import global_rates_regime_flow_core as core
 from global_rates_regime_flow_core import *  # re-export core helpers for tests
 from global_rates_weekly_flow_pdf import fetch_weekly_outward_flows as _fetch_pdf_flows
 
 
+def _ensure_pdf_crypto() -> None:
+    """Install pypdf's AES extra only when the runner does not already provide it."""
+    if importlib.util.find_spec("cryptography") is not None:
+        return
+    subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "pip",
+            "install",
+            "--disable-pip-version-check",
+            "pypdf[crypto]==6.18.1",
+        ],
+        check=True,
+        timeout=120,
+    )
+
+
 def fetch_weekly_outward_flows():
+    _ensure_pdf_crypto()
     return _fetch_pdf_flows(core.get_bytes)
 
 
