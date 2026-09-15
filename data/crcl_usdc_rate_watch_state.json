@@ -1,15 +1,21 @@
 {
-  "updated_at_kst": "2026-09-15T07:29:07+09:00",
+  "updated_at_kst": "2026-09-15T10:26:11+09:00",
   "circle": {
     "date": "2026-09-10",
     "circulation_usd_b": 74.1,
     "precision": "0.1B official webpage display"
   },
   "usdxx": {
-    "date": "2026-09-11",
+    "date": "2026-09-14",
     "sec_yield_7d": 3.6,
     "fund_size_usd_m": 62317.4,
-    "fund_size_date": "2026-09-11"
+    "fund_size_date": "2026-09-11",
+    "_previous_distinct": {
+      "date": "2026-09-11",
+      "sec_yield_7d": 3.6,
+      "fund_size_usd_m": 62317.4,
+      "fund_size_date": "2026-09-11"
+    }
   },
   "sofr": {
     "date": "2026-09-11",
@@ -32,18 +38,18 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-09-14",
-    "close": 97.41999816894531,
-    "prev_date": "2026-09-11",
-    "prev_close": 90.5999984741211,
-    "daily_pct": 7.53
+    "date": "2026-09-11",
+    "close": 90.5999984741211,
+    "prev_date": "2026-09-10",
+    "prev_close": 90.31999969482422,
+    "daily_pct": 0.31
   },
   "tbx": {
-    "date": "2026-09-14",
-    "close": 29.454999923706055,
-    "prev_date": "2026-09-11",
-    "prev_close": 29.440000534057617,
-    "daily_pct": 0.05
+    "date": "2026-09-11",
+    "close": 29.440000534057617,
+    "prev_date": "2026-09-10",
+    "prev_close": 29.360000610351562,
+    "daily_pct": 0.27
   },
   "fx": {
     "rate": 1346.4,
@@ -52,7 +58,7 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,346.99원, 차이 0.04%"
+    "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
   "errors": []
 }
