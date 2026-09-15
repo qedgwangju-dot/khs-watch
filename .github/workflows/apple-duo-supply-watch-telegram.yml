@@ -44,6 +44,44 @@ jobs:
       - name: Validate watcher
         run: python -m py_compile scripts/apple_duo_supply_watch.py
 
+      - name: Validate Telegram route without sending
+        env:
+          TELEGRAM_BOT_TOKEN_PRIMARY: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN_PRIMARY") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("Telegram bot token is missing: HBM_TELEGRAM_BOT_TOKEN")
+          if not chat_id:
+              raise RuntimeError("Telegram chat id is missing: HBM_TELEGRAM_CHAT_ID")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          query = urllib.parse.urlencode({"chat_id": chat_id})
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?{query}", timeout=25) as response:
+              chat = json.loads(response.read().decode("utf-8"))
+          result = chat.get("result") or {}
+          if not chat.get("ok") or result.get("id") is None:
+              raise RuntimeError("HBM_TELEGRAM_CHAT_ID is unreachable")
+
+          print(
+              "telegram_route_valid=true "
+              f"bot=@{username} chat_type={result.get('type', 'unknown')}"
+          )
+          PY
+
       - name: Scan Apple Duo production and supply-chain signals
         env:
           FORCE_NOTIFY: ${{ inputs.force_notify }}
