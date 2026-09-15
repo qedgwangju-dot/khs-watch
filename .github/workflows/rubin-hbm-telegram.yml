@@ -7,6 +7,7 @@ on:
       - "scripts/rubin_hbm_watch.py"
       - "scripts/rubin_hbm_pretty.py"
       - "scripts/rubin_hbm_leverage.py"
+      - "scripts/ai_component_leadtime_watch.py"
   schedule:
     # GitHub cron is UTC. Run once per hour and send only when a new relevant event appears.
     - cron: "23 * * * *"
@@ -80,6 +81,11 @@ jobs:
         run: |
           python -m py_compile scripts/rubin_hbm_leverage.py
           python scripts/rubin_hbm_leverage.py
+
+      - name: Check TrendForce AI component lead times
+        run: |
+          python -m py_compile scripts/ai_component_leadtime_watch.py
+          python scripts/ai_component_leadtime_watch.py
 
       - name: Publish watcher summary
         if: always()
