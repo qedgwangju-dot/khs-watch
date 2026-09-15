@@ -21,7 +21,7 @@ def _extend_unique(target: list[str], values: list[str]) -> None:
             target.append(value)
 
 
-# Encinal의 실제 설비 발주와 가스터빈 병목의 대체전원 경로를 직접 검색한다.
+# Encinal 설비 발주, 가스터빈 대체전원, 원전 핵연료주기 신규 사업축을 넓게 검색한다.
 _extend_unique(core.QUERIES, [
     '"대미투자" 가스터빈 두산에너빌리티 when:7d',
     '"Encinal" gas turbine Doosan 1.4GW when:7d',
@@ -36,6 +36,15 @@ _extend_unique(core.QUERIES, [
     '"GE Vernova" gas turbine backlog 116GW 125GW when:30d',
     '"Applied Digital" "Base Electron" guarantee when:30d',
     '"1,570 GW" interconnection queue data center when:30d',
+    '"파이로" 미국 투자 제안 한국 when:7d',
+    '"파이로프로세싱" 미국 투자 한국 when:14d',
+    '"사용후핵연료" 미국 투자 제안 한국 when:7d',
+    '"사용후핵연료" 대미투자 when:14d',
+    '"핵연료주기" 미국 투자 한국 when:14d',
+    '"pyroprocessing" Korea US investment proposal when:14d',
+    '"spent nuclear fuel" Korea US investment proposal when:14d',
+    '"2천억달러" 파이로 원전 when:7d',
+    '"200 billion" pyroprocessing Korea investment when:14d',
 ])
 _extend_unique(core.TRUSTED, [
     "뉴스핌",
@@ -47,6 +56,16 @@ _extend_unique(core.TRUSTED, [
     "Lawrence Berkeley National Laboratory",
     "Berkeley Lab",
     "SEC",
+    "한겨레",
+    "서울경제",
+    "매일경제",
+    "한국일보",
+    "조선비즈",
+    "전자신문",
+    "지디넷코리아",
+    "산업통상부",
+    "과학기술정보통신부",
+    "과기정통부",
 ])
 _extend_unique(core.MATERIAL, [
     "두산에너빌리티",
@@ -82,16 +101,89 @@ _extend_unique(core.MATERIAL, [
     "125GW",
     "1,570 GW",
     "1570GW",
+    "파이로",
+    "파이로프로세싱",
+    "pyroprocessing",
+    "사용후핵연료",
+    "spent nuclear fuel",
+    "핵연료주기",
+    "fuel cycle",
+    "재처리",
+    "핵연료 재활용",
+    "소듐냉각고속로",
+    "SFR",
+    "2천억달러",
+    "200 billion",
+    "투자 제안",
+    "미국 제안",
 ])
+if hasattr(core, "HARD_PROGRESS_TERMS"):
+    _extend_unique(core.HARD_PROGRESS_TERMS, [
+        "투자 제안", "미국 제안", "파이로프로세싱", "사용후핵연료", "핵연료주기",
+    ])
+if hasattr(core, "OFFICIAL_SOURCE_TERMS"):
+    _extend_unique(core.OFFICIAL_SOURCE_TERMS, [
+        "과학기술정보통신부", "과기정통부",
+    ])
 
 _ORIG_TAGS = core._tags
 _ORIG_MEANING = core._meaning
 _ORIG_TEXAS_BLOCK = core._texas_ai_power_block
+_ORIG_SEMANTIC_KEY = core._semantic_key
+_ORIG_RUN_EVENT_KEY = core._run_event_key
+
+
+def _is_pyro_row(row: dict) -> bool:
+    blob = f"{row.get('title', '')} {row.get('source', '')}".lower()
+    pyro_signal = any(token in blob for token in [
+        "파이로", "파이로프로세싱", "pyroprocessing",
+        "사용후핵연료", "spent nuclear fuel", "핵연료주기", "fuel cycle",
+        "핵연료 재활용", "재처리",
+    ])
+    investment_signal = any(token in blob for token in [
+        "투자", "제안", "대미", "미국", "한미", "2천억달러", "200 billion",
+    ])
+    return pyro_signal and investment_signal
+
+
+def _is_pyro_official(row: dict) -> bool:
+    blob = f"{row.get('title', '')} {row.get('source', '')}".lower()
+    if core._is_official(row):
+        return True
+    return any(token in blob for token in [
+        "산업통상부", "과학기술정보통신부", "과기정통부", "정책브리핑",
+        "대한민국 정책브리핑", "재정경제부", "기획재정부",
+    ])
+
+
+def _semantic_key(row: dict) -> str:
+    if _is_pyro_row(row):
+        return "nuclear_fuel_cycle_pyro_official" if _is_pyro_official(row) else "nuclear_fuel_cycle_pyro_media"
+    return _ORIG_SEMANTIC_KEY(row)
+
+
+def _run_event_key(row: dict) -> str:
+    if _is_pyro_row(row):
+        return "nuclear_fuel_cycle_pyro_official" if _is_pyro_official(row) else "nuclear_fuel_cycle_pyro_media"
+    return _ORIG_RUN_EVENT_KEY(row)
 
 
 def _upgraded_tags(title: str, source: str = "") -> list[str]:
     tags = list(_ORIG_TAGS(title, source))
     low = f"{title} {source}".lower()
+
+    if any(token in low for token in [
+        "파이로", "파이로프로세싱", "pyroprocessing",
+        "사용후핵연료", "spent nuclear fuel", "핵연료주기", "fuel cycle",
+    ]):
+        if "사용후핵연료·파이로 투자" not in tags:
+            tags.insert(0, "사용후핵연료·파이로 투자")
+    if any(token in low for token in [
+        "2천억달러", "200 billion", "투자 한도", "한도 초과", "한도 2천억",
+    ]):
+        if "전략투자 한도 압박" not in tags:
+            tags.insert(1 if tags else 0, "전략투자 한도 압박")
+
     if any(token in low for token in [
         "두산에너빌리티", "doosan enerbility", "비에이치아이", "bhi",
         "가스터빈", "gas turbine", "hrsg", "380mw", "dgt6-300h",
@@ -123,6 +215,12 @@ def _upgraded_tags(title: str, source: str = "") -> list[str]:
 
 
 def _upgraded_meaning(tags: list[str]) -> str:
+    if "사용후핵연료·파이로 투자" in tags:
+        return (
+            "사용후핵연료 파이로프로세싱은 기존 원전 건설과 별개의 핵연료주기 신규 투자축입니다. "
+            "미국 제안 보도 → 정부 검토 → 투자액·부지·사업주체 → 한미 원자력협정·비확산·인허가 → "
+            "실증·본계약 순으로 추적하고, 2,000억달러 전략투자 한도와 다른 후보사업의 배분 경쟁을 분리합니다."
+        )
     if "보일러·증기터빈 대체전원" in tags:
         return (
             "가스터빈 슬롯이 부족할수록 데이터센터 전력 설계가 천연가스 직화 보일러+증기터빈으로 이동할 수 있습니다. "
@@ -176,6 +274,8 @@ def _upgraded_texas_block() -> list[str]:
     return original[:insert_at] + supply_chain + original[insert_at:]
 
 
+core._semantic_key = _semantic_key
+core._run_event_key = _run_event_key
 core._tags = _upgraded_tags
 core._meaning = _upgraded_meaning
 core._texas_ai_power_block = _upgraded_texas_block
