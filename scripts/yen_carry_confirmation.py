@@ -22,6 +22,7 @@ import json
 import pathlib
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -32,7 +33,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / "out"
 OUT.mkdir(parents=True, exist_ok=True)
 FRED = "https://fred.stlouisfed.org/graph/fredgraph.csv"
-UA = "khs-watch-yen-carry-confirmation/1.0"
+UA = "khs-watch-yen-carry-confirmation/1.1"
 
 
 def get(series: str, n: int = 5):
@@ -62,14 +63,21 @@ def main():
     now = datetime.now(KST)
     data = {}
     errors = []
-    for s in ["DEXJPUS", "VIXCLS", "NASDAQCOM", "NIKKEI225"]:
-        try:
-            rows = get(s)
-            d0, v0 = rows[-1]
-            d1, v1 = rows[-2]
-            data[s] = {"date": d0, "value": v0, "prev_date": d1, "prev": v1, "change_pct": pct(v0, v1)}
-        except Exception as e:
-            errors.append(f"{s}: {type(e).__name__}: {e}")
+    series_list = ["DEXJPUS", "VIXCLS", "NASDAQCOM", "NIKKEI225"]
+
+    # These four series are independent. Fetch them concurrently so one slow FRED
+    # endpoint cannot serially add up to two minutes of latency on every alert run.
+    with ThreadPoolExecutor(max_workers=len(series_list)) as executor:
+        futures = {executor.submit(get, series): series for series in series_list}
+        for future in as_completed(futures):
+            s = futures[future]
+            try:
+                rows = future.result()
+                d0, v0 = rows[-1]
+                d1, v1 = rows[-2]
+                data[s] = {"date": d0, "value": v0, "prev_date": d1, "prev": v1, "change_pct": pct(v0, v1)}
+            except Exception as e:
+                errors.append(f"{s}: {type(e).__name__}: {e}")
 
     signals = {
         "yen_strength_daily_2pct": data.get("DEXJPUS", {}).get("change_pct", 0) <= -2.0,
