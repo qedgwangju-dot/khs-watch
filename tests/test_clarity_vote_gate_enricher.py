@@ -40,6 +40,22 @@ class ClarityVoteGateEnricherTest(unittest.TestCase):
         self.assertIn("Nasdaq", block)
         self.assertIn("DXY", block)
 
+    def test_24h_market_context_includes_volume_when_available(self):
+        block = MOD.build_gate_block({
+            "official_time_kst": "2026-09-16T03:15:00+09:00",
+            "votes_required": 60,
+            "market_reaction_window": "24시간",
+            "market_reaction": {
+                "COIN": {"change_pct": 4.2, "volume_change_pct": 31.0},
+                "CRCL": {"change_pct": 2.1, "volume_change_pct": 18.0},
+                "Nasdaq": {"change_pct": 0.4},
+            },
+        })
+        self.assertIn("표결 24시간 실측 시장 반응", block)
+        self.assertIn("거래량", block)
+        self.assertIn("+31.00%", block)
+        self.assertIn("+18.00%", block)
+
 
 if __name__ == "__main__":
     unittest.main()
