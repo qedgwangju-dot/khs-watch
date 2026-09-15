@@ -45,6 +45,7 @@ if hasattr(core, "HARD_PROGRESS_TERMS"):
         "stake acquisition", "minority stake", "equity stake",
     ])
 
+_ORIG_KEY = core._key
 _ORIG_SEMANTIC_KEY = core._semantic_key
 _ORIG_RUN_EVENT_KEY = core._run_event_key
 _ORIG_TAGS = core._tags
@@ -65,6 +66,15 @@ def _is_westinghouse_stake_row(row: dict) -> bool:
         "원전", "nuclear", "ap1000", "미국 원전", "미원전",
     ])
     return westinghouse and korea and stake and nuclear
+
+
+def _key(row: dict) -> str:
+    original = _ORIG_KEY(row)
+    if _is_westinghouse_stake_row(row):
+        # 기존 일반 Westinghouse 감시에서 기사 해시만 seen 처리됐더라도
+        # 새 '지분 투자' 사건축으로 최초 1회 재평가한다. 이후에는 이 키가 저장돼 중복 방지된다.
+        return f"whstake_{original}"
+    return original
 
 
 def _semantic_key(row: dict) -> str:
@@ -98,6 +108,7 @@ def _meaning(tags: list[str]) -> str:
     return _ORIG_MEANING(tags)
 
 
+core._key = _key
 core._semantic_key = _semantic_key
 core._run_event_key = _run_event_key
 core._tags = _tags
