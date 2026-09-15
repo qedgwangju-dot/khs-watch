@@ -25,35 +25,32 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import re, json
-
           path = Path('scripts/clarity_vote_window_watch.py')
           text = path.read_text(encoding='utf-8')
           pattern = re.compile(r"def official_schedule_check\(\):\n.*?\n\ndef roll_call_result\(\):", re.S)
-          replacement = '''def schedule_text_matches(text):
-              text = clean(text)
-              has_bill = bool(re.search(r"H\\.?\\s*R\\.?\\s*3633|Digital\\s+Asset\\s+Market\\s+Clarity\\s+Act", text, re.I))
-              has_cloture = bool(re.search(r"cloture", text, re.I))
-              has_date = bool(re.search(r"September\\s+15(?:\\s*th)?", text, re.I))
-              has_time = bool(re.search(r"2\\s*:\\s*15\\s*p\\.?\\s*m\\.?", text, re.I))
-              return has_bill and has_cloture and has_date and has_time
-
-
-def official_schedule_check():
-              checks = []
-              errors = []
-              for label, url in [("Senate Democrats", DEMOCRATS_SCHEDULE), ("U.S. Senate Daily Press", DAILY_PRESS)]:
-                  try:
-                      text = clean(BeautifulSoup(fetch_text(url), "html.parser").get_text(" ", strip=True))
-                      matched = schedule_text_matches(text)
-                      checks.append({"source": label, "url": url, "matched": matched})
-                  except Exception as exc:
-                      checks.append({"source": label, "url": url, "matched": False})
-                      errors.append(f"{label}: {exc}")
-              return checks, errors
-
-
-def roll_call_result():'''
-          new_text, count = pattern.subn(replacement, text, count=1)
+          replacement = (
+              "def schedule_text_matches(text):\n"
+              "    text = clean(text)\n"
+              "    has_bill = bool(re.search(r\"H\\\\.?\\\\s*R\\\\.?\\\\s*3633|Digital\\\\s+Asset\\\\s+Market\\\\s+Clarity\\\\s+Act\", text, re.I))\n"
+              "    has_cloture = bool(re.search(r\"cloture\", text, re.I))\n"
+              "    has_date = bool(re.search(r\"September\\\\s+15(?:\\\\s*th)?\", text, re.I))\n"
+              "    has_time = bool(re.search(r\"2\\\\s*:\\\\s*15\\\\s*p\\\\.?\\\\s*m\\\\.?\", text, re.I))\n"
+              "    return has_bill and has_cloture and has_date and has_time\n\n\n"
+              "def official_schedule_check():\n"
+              "    checks = []\n"
+              "    errors = []\n"
+              "    for label, url in [(\"Senate Democrats\", DEMOCRATS_SCHEDULE), (\"U.S. Senate Daily Press\", DAILY_PRESS)]:\n"
+              "        try:\n"
+              "            text = clean(BeautifulSoup(fetch_text(url), \"html.parser\").get_text(\" \", strip=True))\n"
+              "            matched = schedule_text_matches(text)\n"
+              "            checks.append({\"source\": label, \"url\": url, \"matched\": matched})\n"
+              "        except Exception as exc:\n"
+              "            checks.append({\"source\": label, \"url\": url, \"matched\": False})\n"
+              "            errors.append(f\"{label}: {exc}\")\n"
+              "    return checks, errors\n\n\n"
+              "def roll_call_result():"
+          )
+          new_text, count = pattern.subn(lambda _: replacement, text, count=1)
           if count != 1:
               raise SystemExit(f'official_schedule_check replacement count={count}')
           path.write_text(new_text, encoding='utf-8')
@@ -61,11 +58,11 @@ def roll_call_result():'''
           test = Path('tests/test_clarity_vote_window_watch.py')
           t = test.read_text(encoding='utf-8')
           marker = '    def test_lummis_risk_is_not_treated_as_actual_vote_count(self):\n'
-          addition = '''    def test_official_schedule_text_tolerates_superscript_spacing(self):
-              sample = "The cloture motion with respect to Cal. #423, H.R.3633 - Digital Asset Market Clarity Act will ripen on Tuesday, September 15 th at 2:15pm."
-              self.assertTrue(MOD.schedule_text_matches(sample))
-
-'''
+          addition = (
+              '    def test_official_schedule_text_tolerates_superscript_spacing(self):\n'
+              '        sample = "The cloture motion with respect to Cal. #423, H.R.3633 - Digital Asset Market Clarity Act will ripen on Tuesday, September 15 th at 2:15pm."\n'
+              '        self.assertTrue(MOD.schedule_text_matches(sample))\n\n'
+          )
           if addition not in t:
               if marker not in t:
                   raise SystemExit('test marker missing')
@@ -75,10 +72,7 @@ def roll_call_result():'''
           state_path = Path('data/clarity_vote_window_state.json')
           state = json.loads(state_path.read_text(encoding='utf-8')) if state_path.exists() else {}
           seen = set(state.get('seen_context_events') or [])
-          seen.update({
-              'lummis_whip_risk_post_final_draft_2026-09-14',
-              'bessent_community_bank_circuit_breaker_support_2026-09-14',
-          })
+          seen.update({'lummis_whip_risk_post_final_draft_2026-09-14','bessent_community_bank_circuit_breaker_support_2026-09-14'})
           state['seen_context_events'] = sorted(seen)
           state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           PY
