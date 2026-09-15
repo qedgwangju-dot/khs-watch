@@ -14,9 +14,9 @@
     },
     "domestic_telecom|korea.kr": {
       "lane": "domestic_telecom",
-      "last_seen_kst": "2026-09-15T07:54:24+09:00",
+      "last_seen_kst": "2026-09-15T11:58:39+09:00",
       "source": "Korea Policy Briefing telecom search",
-      "streak": 1
+      "streak": 2
     }
   },
   "seen": {
@@ -357,6 +357,14 @@
         "Financial Services Commission stablecoin explanations",
         "Financial Services Commission digital asset releases",
         "Korea FIU virtual asset notices"
+      ]
+    },
+    "be85aeb062855958": {
+      "failure_count": 1,
+      "first_seen_kst": "2026-09-15T11:58:39+09:00",
+      "logical_failure_count": 1,
+      "sources": [
+        "Korea Policy Briefing telecom search"
       ]
     },
     "c5698518120d16ab": {
