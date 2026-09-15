@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "baseline_at_utc": "2026-09-15T06:48:00+00:00",
+  "seen": [],
+  "metrics": {
+    "apple_panel_share_pct": 27.0,
+    "sdc_q2_share_pct": 66.0,
+    "h2_vs_h1_growth_pct": 53.0,
+    "h2_yoy_growth_pct": 71.0,
+    "annual_panel_growth_pct": 23.0
+  },
+  "baseline_notes": [
+    "Counterpoint 2026-09: Apple 27% of full-year foldable panel shipments, all in H2",
+    "Samsung Display Q2 supplier share 66%",
+    "H2 panel shipments +53% vs H1 and +71% YoY",
+    "Full-year foldable panel shipments +23% YoY",
+    "Panel-only changes are leading indicators, not finished-device confirmation"
+  ],
+  "last_alert": null
+}
