@@ -65,6 +65,66 @@ jobs:
           print(f"telegram_route_valid=true bot=@{username} chat_id_present=true")
           PY
 
+      - name: Correct initial lead-time setup message
+        if: github.event_name == 'push' && contains(github.event.head_commit.message, '[leadtime-correction]')
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+
+          def call(method, payload=None):
+              data = urllib.parse.urlencode(payload or {}).encode("utf-8") if payload is not None else None
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/{method}",
+                  data=data,
+                  method="POST" if data is not None else "GET",
+              )
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  return json.loads(r.read().decode("utf-8"))
+
+          me = call("getMe")
+          username = str((me.get("result") or {}).get("username") or "")
+          if not me.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          try:
+              deleted = call("deleteMessage", {"chat_id": chat_id, "message_id": 89})
+              print(f"delete_message_89={deleted.get('ok')} result={deleted.get('result')}")
+          except Exception as exc:
+              print(f"delete_message_89=not_deleted reason={type(exc).__name__}: {exc}")
+
+          text = """✅ AI 인프라 부품 납기 감시 설정 완료
+
+현재 기준선 · TrendForce 2026-09-15
+• GPU: 20–30주 / 균형 20–30주 · 수급 균형
+• DRAM: 20주 / 균형 8주 · 심각한 부족
+• NAND(eSSD): 16주 / 균형 8주 · 공급 제약
+• HDD: 50주 / 균형 16주 · 심각한 부족
+• ABF: 48–56주 / 균형 12주 · 심각한 부족
+• MLCC: 30주 / 균형 12주 · 공급 제약
+
+알림 조건
+• TrendForce 새 주간 AI 인프라 리드타임 업데이트 감지
+• 6개 품목의 현재 납기 또는 상태가 이전 기준선에서 변경
+• 동일 수치·동일 업데이트는 중복 발송하지 않음
+• 표 숫자를 안전하게 추출하지 못하면 임의 추정하지 않고 새 업데이트 감지만 알림
+
+원문: https://insights.trendforce.com/p/weekly-radar-001"""
+          sent = call(
+              "sendMessage",
+              {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"},
+          )
+          if not sent.get("ok"):
+              raise RuntimeError(f"Telegram rejected corrected baseline: {sent}")
+          print(f"corrected_baseline_sent=true bot=@{username} message_id={(sent.get('result') or {}).get('message_id')}")
+          PY
+
       - name: Check Rubin and HBM sources
         run: |
           python -m py_compile scripts/rubin_hbm_watch.py
