@@ -2,7 +2,7 @@ name: War peace reconstruction Telegram watch
 
 on:
   schedule:
-    - cron: "2,7,12,17,22,27,32,37,42,47,52,57 * * * *"
+    - cron: "3,8,13,18,23,28,33,38,43,48,53,58 * * * *"
   push:
     paths:
       - ".github/war-peace-telegram-test-trigger.txt"
@@ -69,12 +69,13 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch_gulf_diplomacy.py
           python -m py_compile scripts/war_peace_reconstruction_watch_hormuz_oman.py
           python -m py_compile scripts/war_peace_reconstruction_watch_energy_ceasefire.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_diplomacy_flash.py
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch_energy_ceasefire.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_diplomacy_flash.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch_energy_ceasefire.py
+            python scripts/war_peace_reconstruction_watch_diplomacy_flash.py
           fi
       - name: Publish status summary
         if: always()
@@ -106,7 +107,7 @@ jobs:
           PY
       - name: Finalize state after confirmed delivery
         if: success() && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch_energy_ceasefire.py --finalize
+        run: python scripts/war_peace_reconstruction_watch_diplomacy_flash.py --finalize
       - name: Commit confirmed alert state
         if: success() && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
         run: |
