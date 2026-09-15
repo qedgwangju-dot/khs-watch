@@ -4,32 +4,32 @@
     {
       "date": "2026-09-16",
       "label": "Sep 16, 2026",
-      "prob_cell": "8%92%",
-      "implied_avg": 3.737,
+      "prob_cell": "6%94%",
+      "implied_avg": 3.74,
       "pre_rate": 3.63,
-      "post_rate": 3.86,
-      "change_bp": 23.0,
-      "hike25_prob": 92.0,
+      "post_rate": 3.866,
+      "change_bp": 24.0,
+      "hike25_prob": 94.0,
       "contract": "/ZQU26"
     },
     {
       "date": "2026-10-28",
       "label": "Oct 28, 2026",
-      "prob_cell": "50%50%",
+      "prob_cell": "54%46%",
       "implied_avg": 3.875,
-      "pre_rate": 3.86,
-      "post_rate": 3.985,
-      "change_bp": 12.0,
-      "hike25_prob": 50.0,
+      "pre_rate": 3.866,
+      "post_rate": 3.98,
+      "change_bp": 11.0,
+      "hike25_prob": 46.0,
       "contract": "/ZQV26"
     },
     {
       "date": "2026-12-09",
       "label": "Dec 9, 2026",
       "prob_cell": "26%74%",
-      "implied_avg": 4.11,
-      "pre_rate": 3.985,
-      "post_rate": 4.17,
+      "implied_avg": 4.105,
+      "pre_rate": 3.98,
+      "post_rate": 4.165,
       "change_bp": 18.0,
       "hike25_prob": 74.0,
       "contract": "/ZQZ26"
@@ -37,9 +37,9 @@
   ],
   "classification": {
     "verdict": "첫 인상 뒤 연내 추가 인상 1회 이상 반영",
-    "extra_bp": 31.000000000000007,
+    "extra_bp": 29.89999999999999,
     "basis": "첫 향후 회의 인상 기대를 제외한 뒤 연말까지의 추가 기대"
   },
   "source": "https://www.frenzycap.com/fedwatch",
-  "updated_at_utc": "2026-09-15T18:20:02.111155+00:00"
+  "updated_at_utc": "2026-09-15T21:34:08.421294+00:00"
 }

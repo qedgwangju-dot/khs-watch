@@ -1,14 +1,14 @@
 {
-  "treasury_date": "2026-09-14",
+  "treasury_date": "2026-09-15",
   "pretightening_active": true,
   "pretightening": {
-    "date": "2026-09-14",
-    "base_date": "2026-09-04",
+    "date": "2026-09-15",
+    "base_date": "2026-09-08",
     "active": true,
     "d2_bp": 28.000000000000025,
-    "d2s10s_bp": -9.000000000000075,
-    "d2s30s_bp": -18.00000000000007,
-    "avg_curve_bp": -13.500000000000073,
+    "d2s10s_bp": -8.000000000000007,
+    "d2s30s_bp": -16.999999999999986,
+    "avg_curve_bp": -12.499999999999996,
     "verdict": "시장이 먼저 긴축했지만 고용·물가도 강함 — 실제 인상 논리는 아직 유지"
   },
   "macro": {
@@ -30,5 +30,5 @@
   "last_seen_fomc_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
   "pending_fomc": null,
   "last_credibility_completed": false,
-  "updated_at_utc": "2026-09-14T21:44:47.059840+00:00"
+  "updated_at_utc": "2026-09-15T21:34:07.381921+00:00"
 }
