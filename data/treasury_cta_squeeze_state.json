@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-09-16T01:34:56+09:00",
+  "last_checked_kst": "2026-09-16T04:50:42+09:00",
   "media_id": null,
   "cftc_date": "September 8, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-16T01:34:56+09:00",
+    "checked_kst": "2026-09-16T04:50:42+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 8, 2026",
@@ -65,10 +65,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 105.96875,
-        "settlement": 105.96875,
-        "change": -0.453125,
-        "pct_change": -0.42578182352077665,
+        "last": 105.921875,
+        "settlement": 105.921875,
+        "change": -0.5,
+        "pct_change": -0.469828219057411,
         "open_interest": 5225295,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 8, 2026)",
         "volume": 0,
@@ -83,10 +83,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 106.59375,
-        "settlement": 106.59375,
-        "change": -1.0,
-        "pct_change": -0.9294220156840005,
+        "last": 106.5625,
+        "settlement": 106.5625,
+        "change": -1.03125,
+        "pct_change": -0.9584664536741228,
         "open_interest": 1802308,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 8, 2026)",
         "volume": 0,
@@ -101,10 +101,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 108.09375,
-        "settlement": 108.09375,
-        "change": -1.03125,
-        "pct_change": -0.9450171821305808,
+        "last": 108.03125,
+        "settlement": 108.03125,
+        "change": -1.09375,
+        "pct_change": -1.0022909507445554,
         "open_interest": 2399505,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 8, 2026)",
         "volume": 0,
@@ -153,9 +153,6 @@
     "repo_not_worse": true,
     "composite_confirmed": false,
     "stage": 0,
-    "oi_scope_fixes": [
-      "ZN OI 11→5,225,295로 동일 범위 교체",
-      "ZB OI 11→1,802,308로 동일 범위 교체"
-    ]
+    "oi_scope_fixes": []
   }
 }
