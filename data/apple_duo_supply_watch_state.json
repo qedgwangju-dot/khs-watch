@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "baseline_at_utc": "2026-09-15T06:25:00+00:00",
+  "seen": [],
+  "metrics": {
+    "finished_units_low_m": 5.0,
+    "finished_units_high_m": 7.0,
+    "panel_units_m": 8.0,
+    "daily_output_units": 500,
+    "hinge_yield_pct": 65.0
+  },
+  "baseline_notes": [
+    "2026 finished-device public forecast baseline about 5-7 million units",
+    "Apple foldable OLED preparation baseline about 8 million panels",
+    "late-August finished-device output reported at hundreds per day",
+    "around Sep 10 hinge yield/golden-sample selection remained a bottleneck"
+  ],
+  "last_alert": null
+}
