@@ -10,6 +10,7 @@ import pathlib
 import urllib.parse
 
 from khs_source_fetch import fetch_text
+from yen_carry_policy_equity_enrich import enrich as enrich_policy_equity
 from yen_sector_reaction import process as process_sector_reaction
 
 BODY_PATH = pathlib.Path("out/yen_carry_alert.md")
@@ -228,6 +229,11 @@ def main() -> int:
     except Exception as exc:
         # Sector measurement must never suppress the primary FX alert.
         print(f"yen_sector_reaction=unavailable_{type(exc).__name__}: {exc}")
+
+    # Add policy/stock interpretation only after the existing alert and sector blocks
+    # are final. This does not create a new trigger or duplicate alert lane.
+    print(f"yen_carry_policy_equity={enrich_policy_equity(BODY_PATH)}")
+    print(f"yen_fx_policy_equity={enrich_policy_equity(FX_BODY_PATH)}")
     return 0
 
 
