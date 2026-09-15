@@ -63,7 +63,7 @@ def clean(value):
 
 
 def fetch_bytes(url, timeout=20):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Vote-Window/1.0)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Vote-Window/1.1)"})
     with urllib.request.urlopen(req, timeout=timeout) as response:
         return response.read()
 
@@ -104,19 +104,23 @@ def write_json(path, payload):
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def schedule_text_matches(text):
+    low = clean(text).lower()
+    compact = "".join(ch for ch in low if not ch.isspace()).replace(".", "")
+    has_bill = "hr3633" in compact or "digitalassetmarketclarityact" in compact
+    has_cloture = "cloture" in low
+    has_date = "september15" in compact
+    has_time = "2:15pm" in compact
+    return has_bill and has_cloture and has_date and has_time
+
+
 def official_schedule_check():
     checks = []
     errors = []
-    phrase_re = re.compile(
-        r"H\.?R\.?\s*3633.{0,300}?Digital\s+Asset\s+Market\s+Clarity\s+Act.{0,500}?Tuesday,?\s+September\s+15(?:th)?\s+at\s+2:15\s*p\.?m\.?,?",
-        re.I | re.S,
-    )
     for label, url in [("Senate Democrats", DEMOCRATS_SCHEDULE), ("U.S. Senate Daily Press", DAILY_PRESS)]:
         try:
             text = clean(BeautifulSoup(fetch_text(url), "html.parser").get_text(" ", strip=True))
-            matched = bool(phrase_re.search(text)) or (
-                "H.R.3633" in text and "Digital Asset Market Clarity Act" in text and "September 15" in text and "2:15 p.m" in text
-            )
+            matched = schedule_text_matches(text)
             checks.append({"source": label, "url": url, "matched": matched})
         except Exception as exc:
             checks.append({"source": label, "url": url, "matched": False})
@@ -223,7 +227,13 @@ def yahoo_snapshot(symbol):
             volume = None
             if latest_idx is not None and latest_idx < len(volumes) and volumes[latest_idx] is not None:
                 volume = int(volumes[latest_idx])
-            return {"price": price, "timestamp": ts, "interval_volume": volume, "source": host}
+            return {
+                "price": price,
+                "timestamp": ts,
+                "interval_volume": volume,
+                "regular_market_volume": meta.get("regularMarketVolume"),
+                "source": host,
+            }
         except Exception as exc:
             errors.append(f"{host}:{exc}")
     raise RuntimeError("; ".join(errors) or f"no data for {symbol}")
@@ -249,11 +259,17 @@ def pct_change(before, after):
 def market_reaction(pre, post):
     rows = {}
     for label in MARKET_SYMBOLS:
-        b = (pre.get(label) or {}).get("price") if isinstance(pre, dict) else None
-        a = (post.get(label) or {}).get("price") if isinstance(post, dict) else None
+        before = pre.get(label) or {} if isinstance(pre, dict) else {}
+        after = post.get(label) or {} if isinstance(post, dict) else {}
+        b = before.get("price")
+        a = after.get("price")
         if b is None or a is None:
             continue
-        rows[label] = {"before": b, "after": a, "change_pct": pct_change(b, a)}
+        row = {"before": b, "after": a, "change_pct": pct_change(b, a)}
+        if before.get("regular_market_volume") is not None and after.get("regular_market_volume") is not None:
+            row["volume_before"] = before.get("regular_market_volume")
+            row["volume_after"] = after.get("regular_market_volume")
+        rows[label] = row
     return rows
 
 
@@ -325,7 +341,7 @@ def main():
             "title": "Lummis, 대규모 양보 후에도 일부 민주당 반대 가능성 경고",
             "url": lummis["url"],
             "date": lummis["pubDate"],
-            "detail": "Cynthia Lummis 상원의원이 최종 문안에 민주당 요구를 대폭 반영하고 Trump 대통령이 핵심 윤리 요구를 수용했는데도 일부 민주당 의원들이 추가 요구를 이어갈 수 있다고 공개 경고했습니다. 이 발언은 실제 찬성표가 줄었다는 뜻은 아니며, 정확한 판정은 60표 whip count와 의원별 공개 입장·실제 roll call로 확인해야 합니다.",
+            "detail": "Cynthia Lummis 상원의원이 최종 문안에 민주당 요구를 대폭 반영하고 Trump 대통령이 핵심 윤리 요구를 수용했는데도 일부 민주당 의원들이 추가 요구를 이어갈 수 있다고 공개 경고했습니다. 이 발언은 실제 찬성표가 줄었다는 뜻은 아니며, 정확한 판정은 의원별 공개 입장과 실제 roll call로 확인해야 합니다.",
             "policy_actor": "Cynthia Lummis 상원의원",
             "verification_status": "핵심 협상자 발언 확인 / 실제 표 수 변화는 미확인",
             "monitoring_unit": "event_state_change",
@@ -349,7 +365,6 @@ def main():
         })
         seen_context.add(bessent_key)
 
-    # The first execution establishes a clean event-state baseline instead of replaying articles already discussed.
     if baseline:
         if lummis:
             seen_context.add(lummis_key)
@@ -359,12 +374,12 @@ def main():
 
     pre_vote_market = state.get("pre_vote_market") or {}
     market_errors = []
-    if SCHEDULE_ET - dt.timedelta(hours=1) <= now_utc.astimezone(ZoneInfo("America/New_York")) <= SCHEDULE_ET + dt.timedelta(minutes=5):
+    now_et = now_utc.astimezone(ZoneInfo("America/New_York"))
+    if SCHEDULE_ET - dt.timedelta(hours=1) <= now_et <= SCHEDULE_ET + dt.timedelta(minutes=5):
         snap, market_errors = market_snapshot()
-        if snap and now_utc.astimezone(ZoneInfo("America/New_York")) < SCHEDULE_ET:
+        if snap and now_et < SCHEDULE_ET:
             pre_vote_market = snap
 
-    post_vote_market = {}
     reaction = {}
     if result and pre_vote_market:
         post_vote_market, post_errors = market_snapshot()
@@ -381,7 +396,7 @@ def main():
         "official_time_kst": SCHEDULE_KST.isoformat(),
         "votes_required": VOTES_REQUIRED,
         "whip_count_status": "공식 확정표 미공개 — 정당 의석수만으로 찬반을 추정하지 않음",
-        "final_draft_context": "민주당 요구 126건 반영 보도 + Trump 윤리 절충안 상당 부분 수용 + community bank stablecoin 예금유출 방어장치",
+        "final_draft_context": "민주당 요구 126건 반영 + Tillis–Gallego 윤리안 상당 부분 반영 + Treasury의 payment-stablecoin 예금유출 방어장치",
         "main_bottlenecks": ["실제 60표 확보", "추가 윤리·State AG 집행력 논쟁", "stablecoin rewards·은행 예금유출", "illicit finance/AML", "공화당 이탈 가능성"],
         "schedule_sources": schedule_checks,
         "roll_call": result,
