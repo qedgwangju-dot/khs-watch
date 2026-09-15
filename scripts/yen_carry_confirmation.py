@@ -20,6 +20,8 @@ import csv
 import io
 import json
 import pathlib
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -33,14 +35,26 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / "out"
 OUT.mkdir(parents=True, exist_ok=True)
 FRED = "https://fred.stlouisfed.org/graph/fredgraph.csv"
-UA = "khs-watch-yen-carry-confirmation/1.1"
+UA = "khs-watch-yen-carry-confirmation/1.2"
 
 
-def get(series: str, n: int = 5):
+def get(series: str, n: int = 5, timeout: int = 20, attempts: int = 3):
     url = FRED + "?" + urllib.parse.urlencode({"id": series})
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Cache-Control": "no-cache"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        text = r.read().decode("utf-8-sig", errors="replace")
+    last_error: Exception | None = None
+    text = None
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                text = r.read().decode("utf-8-sig", errors="replace")
+            break
+        except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError) as exc:
+            last_error = exc
+            if attempt + 1 < attempts:
+                time.sleep(0.75 * (2**attempt))
+    if text is None:
+        raise RuntimeError(f"{series}: FRED fetch failed after {attempts} attempts: {last_error}")
+
     rows = []
     for row in csv.DictReader(io.StringIO(text)):
         date = (row.get("DATE") or row.get("observation_date") or "").strip()
@@ -65,9 +79,10 @@ def main():
     errors = []
     series_list = ["DEXJPUS", "VIXCLS", "NASDAQCOM", "NIKKEI225"]
 
-    # These four series are independent. Fetch them concurrently so one slow FRED
-    # endpoint cannot serially add up to two minutes of latency on every alert run.
-    with ThreadPoolExecutor(max_workers=len(series_list)) as executor:
+    # FRED can throttle or stall when all four graph CSV requests arrive together.
+    # Keep modest parallelism and retry each independent series instead of turning
+    # one transient FRED timeout into four unavailable confirmation signals.
+    with ThreadPoolExecutor(max_workers=2) as executor:
         futures = {executor.submit(get, series): series for series in series_list}
         for future in as_completed(futures):
             s = futures[future]
