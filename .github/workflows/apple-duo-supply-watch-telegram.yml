@@ -6,7 +6,9 @@ on:
     paths:
       - ".github/workflows/apple-duo-supply-watch-telegram.yml"
       - "scripts/apple_duo_supply_watch.py"
+      - "scripts/apple_duo_panel_leading_watch.py"
       - "data/apple_duo_supply_watch_state.json"
+      - "data/apple_duo_panel_leading_state.json"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -42,7 +44,9 @@ jobs:
           python-version: "3.12"
 
       - name: Validate watcher
-        run: python -m py_compile scripts/apple_duo_supply_watch.py
+        run: |
+          python -m py_compile scripts/apple_duo_supply_watch.py
+          python -m py_compile scripts/apple_duo_panel_leading_watch.py
 
       - name: Validate Telegram route without sending
         env:
@@ -87,6 +91,9 @@ jobs:
           FORCE_NOTIFY: ${{ inputs.force_notify }}
         run: python scripts/apple_duo_supply_watch.py
 
+      - name: Scan panel leading indicators
+        run: python scripts/apple_duo_panel_leading_watch.py
+
       - name: Publish watcher summary
         if: always()
         run: |
@@ -94,6 +101,10 @@ jobs:
             cat out/apple_duo_supply_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo "Apple Duo 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/apple_duo_panel_leading_status.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/apple_duo_panel_leading_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/apple_duo_supply_watch_telegram.txt ]; then
             printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -183,16 +194,24 @@ jobs:
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_duo_supply_watch_pending_state.json') != ''
         run: cp out/apple_duo_supply_watch_pending_state.json data/apple_duo_supply_watch_state.json
 
+      - name: Persist no-alert panel-leading state
+        if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_duo_panel_leading_pending_state.json') != ''
+        run: cp out/apple_duo_panel_leading_pending_state.json data/apple_duo_panel_leading_state.json
+
       - name: Persist state only after confirmed Telegram delivery
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_duo_supply_watch_pending_state.json') != ''
         run: cp out/apple_duo_supply_watch_pending_state.json data/apple_duo_supply_watch_state.json
 
+      - name: Persist panel-leading state only after confirmed Telegram delivery
+        if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_duo_panel_leading_pending_state.json') != ''
+        run: cp out/apple_duo_panel_leading_pending_state.json data/apple_duo_panel_leading_state.json
+
       - name: Commit watcher state
-        if: success() && hashFiles('data/apple_duo_supply_watch_state.json') != ''
+        if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/apple_duo_supply_watch_state.json
+          git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json
           if git diff --cached --quiet; then
             echo "Apple Duo watch state unchanged"
           else
@@ -214,8 +233,10 @@ jobs:
           name: apple-duo-supply-watch-${{ github.run_id }}
           path: |
             out/apple_duo_supply_watch_status.md
+            out/apple_duo_panel_leading_status.md
             out/apple_duo_supply_watch_telegram.txt
             out/apple_duo_supply_watch_pending_state.json
+            out/apple_duo_panel_leading_pending_state.json
             out/apple_duo_supply_watch_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
