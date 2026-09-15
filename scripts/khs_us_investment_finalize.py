@@ -87,6 +87,8 @@ def _source_time(core, title: str, source: str, link: str, lookup_time: str) -> 
 
 def _short_judgment(title: str, tags: str) -> str:
     blob = f"{title} {tags}".lower()
+    if any(x in blob for x in ["사용후핵연료", "파이로", "pyroprocessing", "핵연료주기"]):
+        return "미국의 신규 핵연료주기 투자 제안 보도. 정부 사업선정·투자금·사업주체·법규 검토 전까지 협의 단계."
     if "두산에너빌리티" in blob or "doosan" in blob:
         return "후보 수혜. Encinal 직접 수주·제조사 확정은 아직 아님."
     if "비에이치아이" in blob or "bhi" in blob:
@@ -104,9 +106,20 @@ def _short_judgment(title: str, tags: str) -> str:
     return "기사 반복이 아니라 사업 상태·금액·당사자·일정의 실제 변화만 추적."
 
 
+def _change_area(text: str) -> str:
+    marker = "<b>💰 대미투자 프로젝트 기준 사업비</b>"
+    return text.split(marker, 1)[0] if marker in text else text
+
+
 def _aggregate_flags(records: list[dict], text: str) -> dict[str, bool]:
-    blob = " ".join(f"{r['title']} {r['tags']}" for r in records).lower() + " " + text.lower()
+    current = _change_area(text)
+    blob = " ".join(f"{r['title']} {r['tags']}" for r in records).lower() + " " + current.lower()
     return {
+        "pyro": any(x in blob for x in [
+            "사용후핵연료·파이로 투자", "사용후핵연료", "파이로프로세싱", "pyroprocessing",
+            "spent nuclear fuel", "핵연료주기", "fuel cycle",
+        ]),
+        "cap": any(x in blob for x in ["전략투자 한도 압박", "2천억달러", "200 billion", "한도 초과"]),
         "supply": any(x in blob for x in ["가스터빈·hrsg 공급망", "두산에너빌리티", "비에이치아이", "hrsg"]),
         "funding": any(x in blob for x in ["송금절차", "45영업일", "첫 투자금", "송금 임박", "조기송금"]),
         "energy": any(x in blob for x in ["대미투자 첫사업", "에너지 패키지", "1천억달러", "1000억달러", "원전 최대 8기"]),
@@ -157,6 +170,12 @@ def _mandatory_project_block() -> list[str]:
 def _context_numbers(flags: dict[str, bool], records: list[dict]) -> list[str]:
     lines: list[str] = []
     titles = " ".join(r["title"].lower() for r in records)
+    if flags["pyro"]:
+        lines += [
+            "• <b>신규 사업축</b>: 사용후핵연료 파이로프로세싱 투자 제안 보도 · 기존 원전 건설과 별도 추적",
+            "• <b>전략투자 한도</b>: 총 2,000억달러 ≈ 268조4,080억원 · 연 200억달러 ≈ 26조8,408억원",
+            "• 후보사업 총사업비 단순합이 2,000억달러를 넘는 것과 <b>실제 전략투자 집행액이 한도를 넘는 것은 다름</b>",
+        ]
     if flags["supply"] or flags["encinal"]:
         lines.append("• Encinal <b>6.3GW = 1단계 1.4GW → 후속 4.9GW</b> · 가스터빈·HRSG 제조사 미확정")
     if "두산에너빌리티" in titles:
@@ -167,16 +186,23 @@ def _context_numbers(flags: dict[str, bool], records: list[dict]) -> list[str]:
         lines.append("• 2025-11-14 MOU: 선정 통지 후 <b>최소 45영업일</b> · 자금요청 방식")
     if flags["ercot"]:
         lines.append("• ERCOT <b>474GW+</b>는 계통연계 요청량 · 승인·전원 인가·실제 가동과 구분")
-    return lines[:4]
+    return lines[:5]
 
 
 def _next_checks(flags: dict[str, bool]) -> list[str]:
     checks: list[str] = []
+    if flags["pyro"]:
+        checks += [
+            "미국 제안 주체·투자액·부지·처리규모",
+            "한국 투자주체·2,000억달러 한도 내 배분 또는 별도 민간자금 여부",
+            "한미 원자력협정·미국 동의·비확산·인허가 조건",
+            "실증→상용 일정·본계약·국내기업 실명 참여",
+        ]
     if flags["supply"] or flags["encinal"]:
         checks += ["제조사 실명·구매주문(PO)·실제 기수·납기", "AI 고객 실명·PPA·4.9GW 후속 승인"]
     if flags["funding"]:
         checks += ["사업 선정일·한국 통보일·자금요청·실제 송금일/금액"]
-    if flags["nuclear"]:
+    if flags["nuclear"] and not flags["pyro"]:
         checks += ["원전 부지·노형·기수·발주주체·본계약"]
     if flags["ercot"]:
         checks += ["계통연계 승인·전원 인가·실제 가동"]
@@ -211,7 +237,9 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
         })
 
     flags = _aggregate_flags(records, text)
-    if flags["supply"] and flags["funding"]:
+    if flags["pyro"]:
+        title = "🇺🇸 대미투자 | 사용후핵연료·파이로 신규 제안"
+    elif flags["supply"] and flags["funding"]:
         title = "🇺🇸 대미투자 | 공급망·송금 변화"
     elif flags["supply"]:
         title = "🇺🇸 대미투자 | 가스터빈·HRSG 공급망"
@@ -246,7 +274,12 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
     if checks:
         parts += ["<b>다음 확인</b>"] + [f"• {html.escape(x)}" for x in checks] + [""]
 
-    if flags["funding"] or flags["energy"]:
+    if flags["pyro"]:
+        parts += [
+            '<b>공식 기준</b> · <a href="https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/171196/view">전략투자 MOU: 총 2,000억달러·연 200억달러</a> · <a href="https://www.motir.go.kr/kor/article/ATCLe0854704d/172177/view">산업통상부: 전략적 투자가 2,000억달러를 초과한다는 것은 사실이 아님</a>',
+            "",
+        ]
+    elif flags["funding"] or flags["energy"]:
         parts += [
             '<b>공식 기준</b> · <a href="https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/171196/view">2025-11-14 전략적 투자 MOU</a> · <a href="https://www.korea.kr/briefing/actuallyView.do?newsId=148971518&pWise=sub&pWiseMain=F1">첫 투자금·원전 미확정</a>',
             "",
@@ -312,7 +345,7 @@ def main() -> int:
         lines = [line for line in text.splitlines() if line.strip()]
         compact = "\n".join(lines[:18]) + "\n\n" + "\n".join(_mandatory_project_block()) + "\n"
 
-    if _visible_len(compact) > 3600:
+    if _visible_len(compact) > 3900:
         raise RuntimeError(f"compact alert still too long: {_visible_len(compact)}")
 
     ALERT.write_text(compact, encoding="utf-8")
