@@ -12,6 +12,8 @@ on:
       - "scripts/clarity_alert_formatter.py"
       - "scripts/clarity_alert_readability.py"
       - "scripts/clarity_alert_visual_polish.py"
+      - "scripts/clarity_vote_window_watch.py"
+      - "scripts/clarity_vote_gate_enricher.py"
       - "tests/test_clarity_alert_guard.py"
       - "tests/test_clarity_alert_formatter.py"
       - "tests/test_clarity_policy_pressure_watch.py"
@@ -19,11 +21,18 @@ on:
       - "tests/test_clarity_ethics_alert_enricher.py"
       - "tests/test_clarity_alert_readability.py"
       - "tests/test_clarity_alert_visual_polish.py"
+      - "tests/test_clarity_vote_window_watch.py"
+      - "tests/test_clarity_vote_gate_enricher.py"
       - "data/clarity_watch_state.json"
       - "data/clarity_policy_pressure_state.json"
       - "data/clarity_ethics_breakthrough_state.json"
+      - "data/clarity_vote_window_state.json"
   schedule:
     - cron: "17 * * * *"
+    # 2026-09-15 ET cloture window: 17:30-20:00 UTC = 2026-09-16 02:30-05:00 KST.
+    - cron: "30-55/5 17 15 9 *"
+    - cron: "*/5 18-19 15 9 *"
+    - cron: "0 20 15 9 *"
   workflow_dispatch:
 
 permissions:
@@ -36,7 +45,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 18
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs88790088790000_bot"
     steps:
@@ -53,10 +62,10 @@ jobs:
       - name: Install parser dependency
         run: python -m pip install --disable-pip-version-check beautifulsoup4
 
-      - name: Validate watcher, guards, event dedup and readable Korean formatter
+      - name: Validate watcher, guards, vote-window logic and readable Korean formatter
         run: |
-          python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_guard.py scripts/clarity_policy_pressure_watch.py scripts/clarity_ethics_breakthrough_watch.py scripts/clarity_ethics_alert_enricher.py scripts/clarity_alert_formatter.py scripts/clarity_alert_readability.py scripts/clarity_alert_visual_polish.py
-          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py tests/test_clarity_ethics_breakthrough_watch.py tests/test_clarity_ethics_alert_enricher.py tests/test_clarity_alert_readability.py tests/test_clarity_alert_visual_polish.py -v
+          python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_guard.py scripts/clarity_policy_pressure_watch.py scripts/clarity_ethics_breakthrough_watch.py scripts/clarity_ethics_alert_enricher.py scripts/clarity_alert_formatter.py scripts/clarity_alert_readability.py scripts/clarity_alert_visual_polish.py scripts/clarity_vote_window_watch.py scripts/clarity_vote_gate_enricher.py
+          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py tests/test_clarity_ethics_breakthrough_watch.py tests/test_clarity_ethics_alert_enricher.py tests/test_clarity_alert_readability.py tests/test_clarity_alert_visual_polish.py tests/test_clarity_vote_window_watch.py tests/test_clarity_vote_gate_enricher.py -v
 
       - name: Validate Telegram route without sending
         env:
@@ -94,6 +103,9 @@ jobs:
       - name: Check CLARITY ethics breakthrough
         run: python scripts/clarity_ethics_breakthrough_watch.py
 
+      - name: Check cloture window, roll call, Lummis risk and Bessent bank safeguard
+        run: python scripts/clarity_vote_window_watch.py
+
       - name: Build Korean interpreted Telegram alert
         if: hashFiles('out/clarity_watch_alert.json') != ''
         run: python scripts/clarity_alert_formatter.py
@@ -110,6 +122,10 @@ jobs:
         if: hashFiles('out/clarity_watch_telegram_chunks.json') != ''
         run: python scripts/clarity_alert_visual_polish.py
 
+      - name: Add exact vote-gate card and measured market context
+        if: hashFiles('out/clarity_watch_telegram_chunks.json') != '' && hashFiles('out/clarity_vote_gate.json') != ''
+        run: python scripts/clarity_vote_gate_enricher.py
+
       - name: Publish watcher summary
         if: always()
         run: |
@@ -117,6 +133,8 @@ jobs:
           if [ -f out/clarity_alert_guard_report.json ]; then printf '\n---\n\nFederal Register 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/clarity_alert_guard_report.json >> "$GITHUB_STEP_SUMMARY"; fi
           if [ -f out/clarity_policy_pressure_status.json ]; then printf '\n---\n\n정책 압력 감시:\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/clarity_policy_pressure_status.json >> "$GITHUB_STEP_SUMMARY"; fi
           if [ -f out/clarity_ethics_breakthrough_status.json ]; then printf '\n---\n\n윤리 합의 진전 감시:\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/clarity_ethics_breakthrough_status.json >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f out/clarity_vote_window_status.json ]; then printf '\n---\n\n표결 관문 감시:\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/clarity_vote_window_status.json >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f out/clarity_vote_gate.json ]; then printf '\n---\n\n현재 표결 관문:\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/clarity_vote_gate.json >> "$GITHUB_STEP_SUMMARY"; fi
           if [ -f out/clarity_watch_alert.html ]; then printf '\n---\n\n한국어 Telegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/clarity_watch_alert.html >> "$GITHUB_STEP_SUMMARY"; fi
 
       - name: Send new CLARITY change to Telegram
@@ -151,9 +169,9 @@ jobs:
               if not result.get("ok"):
                   raise RuntimeError(f"Telegram rejected message: {result}")
               message_ids.append(result.get("result", {}).get("message_id"))
-          confirmed = {"status": "confirmed", "format": "korean_html_v5_scan", "bot_username": username, "message_ids": message_ids, "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
+          confirmed = {"status": "confirmed", "format": "korean_html_v6_vote_gate", "bot_username": username, "message_ids": message_ids, "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
           pathlib.Path("out/clarity_watch_telegram_confirmed.json").write_text(json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids} format=korean_html_v5_scan")
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids} format=korean_html_v6_vote_gate")
           PY
 
       - name: Persist baseline or no-send states
@@ -162,6 +180,7 @@ jobs:
           if [ -f out/clarity_watch_pending_state.json ]; then cp out/clarity_watch_pending_state.json data/clarity_watch_state.json; fi
           if [ -f out/clarity_policy_pressure_pending_state.json ]; then cp out/clarity_policy_pressure_pending_state.json data/clarity_policy_pressure_state.json; fi
           if [ -f out/clarity_ethics_breakthrough_pending_state.json ]; then cp out/clarity_ethics_breakthrough_pending_state.json data/clarity_ethics_breakthrough_state.json; fi
+          if [ -f out/clarity_vote_window_pending_state.json ]; then cp out/clarity_vote_window_pending_state.json data/clarity_vote_window_state.json; fi
 
       - name: Persist states only after confirmed Telegram delivery
         if: success() && hashFiles('out/clarity_watch_telegram_chunks.json') != '' && hashFiles('out/clarity_watch_telegram_confirmed.json') != ''
@@ -169,6 +188,7 @@ jobs:
           if [ -f out/clarity_watch_pending_state.json ]; then cp out/clarity_watch_pending_state.json data/clarity_watch_state.json; fi
           if [ -f out/clarity_policy_pressure_pending_state.json ]; then cp out/clarity_policy_pressure_pending_state.json data/clarity_policy_pressure_state.json; fi
           if [ -f out/clarity_ethics_breakthrough_pending_state.json ]; then cp out/clarity_ethics_breakthrough_pending_state.json data/clarity_ethics_breakthrough_state.json; fi
+          if [ -f out/clarity_vote_window_pending_state.json ]; then cp out/clarity_vote_window_pending_state.json data/clarity_vote_window_state.json; fi
           python - <<'PY'
           import json, pathlib
           confirmed = json.loads(pathlib.Path("out/clarity_watch_telegram_confirmed.json").read_text(encoding="utf-8"))
@@ -187,7 +207,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/clarity_watch_state.json data/clarity_policy_pressure_state.json data/clarity_ethics_breakthrough_state.json 2>/dev/null || true
+          git add data/clarity_watch_state.json data/clarity_policy_pressure_state.json data/clarity_ethics_breakthrough_state.json data/clarity_vote_window_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "CLARITY states unchanged"
             exit 0
@@ -217,11 +237,14 @@ jobs:
             out/clarity_alert_guard_report.json
             out/clarity_policy_pressure_status.json
             out/clarity_ethics_breakthrough_status.json
+            out/clarity_vote_window_status.json
+            out/clarity_vote_gate.json
             out/clarity_watch_alert.html
             out/clarity_watch_telegram_chunks.json
             out/clarity_watch_pending_state.json
             out/clarity_policy_pressure_pending_state.json
             out/clarity_ethics_breakthrough_pending_state.json
+            out/clarity_vote_window_pending_state.json
             out/clarity_watch_rebaseline.txt
             out/clarity_watch_telegram_confirmed.json
           if-no-files-found: ignore
