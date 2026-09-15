@@ -47,13 +47,17 @@ def build_gate_block(gate):
 
     reaction = gate.get("market_reaction") or {}
     if reaction:
-        lines.extend(["", "<b>📊 표결창 실측 시장 반응</b>"])
+        window = str(gate.get("market_reaction_window") or "즉시")
+        heading = "📊 표결 24시간 실측 시장 반응" if "24" in window else "📊 표결창 실측 시장 반응"
+        lines.extend(["", f"<b>{heading}</b>"])
         for label in ("BTC", "ETH", "COIN", "CRCL", "Nasdaq", "S&P 500", "DXY", "US10Y"):
             row = reaction.get(label)
             if not row:
                 continue
             suffix = "" if label != "US10Y" else " (^TNX 기준)"
-            lines.append(f"• {html.escape(label)}{suffix} │ {fmt_pct(row.get('change_pct'))}")
+            lines.append(f"• {html.escape(label)}{suffix} │ 가격 {fmt_pct(row.get('change_pct'))}")
+            if row.get("volume_change_pct") is not None and label in {"BTC", "ETH", "COIN", "CRCL"}:
+                lines.append(f"  ↳ 거래량 │ {fmt_pct(row.get('volume_change_pct'))} (동일 시세원 regularMarketVolume 비교)")
         lines.append("• 원인 분리 │ 같은 시간 Nasdaq·S&P 500·DXY·미 10년물과 비교해 CLARITY 직접 효과와 거시 효과를 분리")
     return "\n".join(lines)
 
@@ -63,7 +67,6 @@ def inject_first_chunk(chunk, block):
     if not lines:
         return block
     insert_at = 0
-    # Keep the alert title/subtitle first, then show the live procedural gate.
     if lines and "CLARITY 법안 Watch" in lines[0]:
         insert_at = 1
         if len(lines) > 1 and "표결·규제" in lines[1]:
@@ -84,7 +87,6 @@ def main():
         return
     block = build_gate_block(gate)
     chunks[0] = inject_first_chunk(chunks[0], block)
-    # No italics: the entire alert stays in default Telegram typeface except bold labels.
     for tag in ("<i>", "</i>", "<em>", "</em>"):
         chunks = [x.replace(tag, "") for x in chunks]
     CHUNKS_PATH.write_text(json.dumps(chunks, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
