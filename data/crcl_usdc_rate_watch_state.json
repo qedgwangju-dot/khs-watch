@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-15T22:31:12+09:00",
+  "updated_at_kst": "2026-09-16T03:10:28+09:00",
   "circle": {
     "date": "2026-09-10",
     "circulation_usd_b": 74.1,
@@ -9,13 +9,7 @@
     "date": "2026-09-14",
     "sec_yield_7d": 3.6,
     "fund_size_usd_m": 62317.4,
-    "fund_size_date": "2026-09-14",
-    "_previous_distinct": {
-      "date": "2026-09-11",
-      "sec_yield_7d": 3.6,
-      "fund_size_usd_m": 62317.4,
-      "fund_size_date": "2026-09-11"
-    }
+    "fund_size_date": "2026-09-14"
   },
   "sofr": {
     "date": "2026-09-14",
@@ -39,17 +33,17 @@
   },
   "crcl": {
     "date": "2026-09-15",
-    "close": 92.58000183105469,
+    "close": 88.66000366210938,
     "prev_date": "2026-09-14",
     "prev_close": 97.41999816894531,
-    "daily_pct": -4.97
+    "daily_pct": -8.99
   },
   "tbx": {
-    "date": "2026-09-14",
-    "close": 29.459999084472656,
-    "prev_date": "2026-09-11",
-    "prev_close": 29.440000534057617,
-    "daily_pct": 0.07
+    "date": "2026-09-15",
+    "close": 29.559999465942383,
+    "prev_date": "2026-09-14",
+    "prev_close": 29.459999084472656,
+    "daily_pct": 0.34
   },
   "fx": {
     "rate": 1346.4,
