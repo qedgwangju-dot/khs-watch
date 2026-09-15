@@ -7,63 +7,63 @@
   ],
   "pre_vote_market": {
     "BTC": {
-      "price": 76920.359375,
-      "timestamp": 1789495023,
+      "price": 76812.3984375,
+      "timestamp": 1789496040,
       "interval_volume": 0,
-      "regular_market_volume": 32996313088,
+      "regular_market_volume": 32825436160,
       "source": "query1.finance.yahoo.com"
     },
     "ETH": {
-      "price": 2439.929931640625,
-      "timestamp": 1789495024,
+      "price": 2434.3798828125,
+      "timestamp": 1789496042,
       "interval_volume": 0,
-      "regular_market_volume": 18110150656,
+      "regular_market_volume": 18097002496,
       "source": "query1.finance.yahoo.com"
     },
     "COIN": {
-      "price": 178.83999633789062,
-      "timestamp": 1789495023,
+      "price": 177.77000427246094,
+      "timestamp": 1789496040,
       "interval_volume": 0,
-      "regular_market_volume": 7215945,
+      "regular_market_volume": 7538500,
       "source": "query1.finance.yahoo.com"
     },
     "CRCL": {
-      "price": 88.70500183105469,
-      "timestamp": 1789495014,
+      "price": 88.5999984741211,
+      "timestamp": 1789496039,
       "interval_volume": 0,
-      "regular_market_volume": 9904860,
+      "regular_market_volume": 10219881,
       "source": "query1.finance.yahoo.com"
     },
     "Nasdaq": {
-      "price": 25986.939453125,
-      "timestamp": 1789495024,
+      "price": 26005.537109375,
+      "timestamp": 1789496043,
       "interval_volume": 0,
-      "regular_market_volume": 4434748000,
+      "regular_market_volume": 4607529000,
       "source": "query1.finance.yahoo.com"
     },
     "S&P 500": {
-      "price": 7585.41015625,
-      "timestamp": 1789495026,
+      "price": 7590.35986328125,
+      "timestamp": 1789496043,
       "interval_volume": 0,
-      "regular_market_volume": 1399903000,
+      "regular_market_volume": 1469377000,
       "source": "query1.finance.yahoo.com"
     },
     "DXY": {
-      "price": 99.64099884033203,
-      "timestamp": 1789494425,
+      "price": 99.66799926757812,
+      "timestamp": 1789495442,
       "interval_volume": 0,
       "regular_market_volume": null,
       "source": "query1.finance.yahoo.com"
     },
     "US10Y": {
-      "price": 5.008000373840332,
-      "timestamp": 1789494123,
+      "price": 5.009999752044678,
+      "timestamp": 1789495143,
       "interval_volume": 0,
       "regular_market_volume": 0,
       "source": "query1.finance.yahoo.com"
     }
   },
-  "updated_at_kst": "2026-09-16T02:57:05+09:00",
+  "updated_at_kst": "2026-09-16T03:14:02+09:00",
   "monitoring_unit": "event_state_change_not_article",
   "market_24h_done": false
 }
