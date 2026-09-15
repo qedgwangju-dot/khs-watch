@@ -2,14 +2,15 @@
   "initialized": true,
   "source_version": 2,
   "bill": "H.R. 3633 — Digital Asset Market Clarity Act",
-  "last_checked_kst": "2026-09-16T03:13:56+09:00",
-  "last_checked_et": "2026-09-15T14:13:56-04:00",
+  "last_checked_kst": "2026-09-16T05:56:24+09:00",
+  "last_checked_et": "2026-09-15T16:56:24-04:00",
   "seen_event_keys": [
     "084ee027ab8ec15b4074b4fa1b60022844e2dc9f19a270999c1f2f23b0a34a53",
     "0c66c1ef94728a83e8ecbafaa4fdc5f038cba54010112b43462b09e826966d4c",
     "123448820a46616cab71fba5b47aca1af99beefe817950c3da16279e315cab10",
     "1697d0af9e995683356dd012404a4bce42bf606116a9a3e0434e09b4aa7e1f6f",
     "1a9898923f85d4233fb780b2ee1a3d06bdb9c23a6ef435b2330be9be048e7e8f",
+    "1b032a43eb14e30ce6dc095ef33197e30bbd8b0583ff81cd3f652e9724a8d854",
     "1d355762399dc654da475cdf744306118342eca92c2b059ef5f1e7aa70a44bd1",
     "256b77ca21d420ace7c45ede2f144a9b9e9190d0a7d64da9ca74b1bbe0607e04",
     "265be3ef23af9c9c8239497d2bf21c71db1af12b380ce5c386fbbcc5c879133f",
@@ -62,6 +63,12 @@
     "f92e2252b319b544d8397796264c356b691136adf78628b12140de25f1bf1808",
     "fe2906beaa0c20857bcf830328fd25f77105af8385b0204d7b2829adad3b2827"
   ],
-  "event_count": 47,
-  "source_errors": []
+  "event_count": 48,
+  "source_errors": [],
+  "last_successful_delivery_kst": "2026-09-16T05:56:38+09:00",
+  "telegram_message_ids": [
+    33
+  ],
+  "bot_username": "khs88790088790000_bot",
+  "telegram_format": "korean_html_v7_negotiation_gate"
 }
