@@ -63,7 +63,7 @@ def clean(value):
 
 
 def fetch_bytes(url, timeout=20):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Vote-Window/1.1)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (KHS-CLARITY-Vote-Window/1.2)"})
     with urllib.request.urlopen(req, timeout=timeout) as response:
         return response.read()
 
@@ -269,6 +269,7 @@ def market_reaction(pre, post):
         if before.get("regular_market_volume") is not None and after.get("regular_market_volume") is not None:
             row["volume_before"] = before.get("regular_market_volume")
             row["volume_after"] = after.get("regular_market_volume")
+            row["volume_change_pct"] = pct_change(before.get("regular_market_volume"), after.get("regular_market_volume"))
         rows[label] = row
     return rows
 
@@ -314,9 +315,11 @@ def main():
 
     result = roll_call_result()
     result_signature = ""
+    result_is_new = False
     if result:
         result_signature = f"{result.get('result')}|{result.get('yeas')}|{result.get('nays')}|{result.get('not_voting')}"
-        if result_signature != state.get("roll_call_signature"):
+        result_is_new = result_signature != state.get("roll_call_signature")
+        if result_is_new:
             outcome_ko = "통과" if str(result.get("result")).lower() in {"agreed", "passed"} and (result.get("yeas") or 0) >= VOTES_REQUIRED else "부결"
             events.append({
                 "source": "미 상원 표결기록",
@@ -381,13 +384,41 @@ def main():
             pre_vote_market = snap
 
     reaction = {}
+    reaction_window = ""
     if result and pre_vote_market:
         post_vote_market, post_errors = market_snapshot()
         market_errors.extend(post_errors)
         reaction = market_reaction(pre_vote_market, post_vote_market)
-        for event in events:
-            if event.get("event_subtype") == "motion_to_proceed_cloture_result":
-                event["market_reaction"] = reaction
+        reaction_window = "즉시"
+        if result_is_new:
+            for event in events:
+                if event.get("event_subtype") == "motion_to_proceed_cloture_result":
+                    event["market_reaction"] = reaction
+                    event["market_reaction_window"] = reaction_window
+
+    market_24h_done = bool(state.get("market_24h_done"))
+    vote_time_utc = SCHEDULE_ET.astimezone(ZoneInfo("UTC"))
+    if result and pre_vote_market and now_utc >= vote_time_utc + dt.timedelta(hours=24) and not market_24h_done:
+        followup_market, followup_errors = market_snapshot()
+        market_errors.extend(followup_errors)
+        reaction_24h = market_reaction(pre_vote_market, followup_market)
+        if reaction_24h:
+            reaction = reaction_24h
+            reaction_window = "24시간"
+            events.append({
+                "source": "동일 시세원 24시간 후속 검산",
+                "event_type": "시장 반응 후속 — 절차표결 24시간",
+                "event_subtype": "cloture_market_24h",
+                "title": "CLARITY 절차표결 24시간 시장 반응",
+                "url": result["url"],
+                "date": now_utc.isoformat(),
+                "detail": "표결 전 저장한 기준값과 약 24시간 후의 BTC·ETH·COIN·CRCL 가격 및 동일 소스 거래량을 비교했습니다. Nasdaq·S&P 500·DXY·미 10년물도 같은 기준으로 함께 비교해 CLARITY 직접 효과와 거시 효과를 분리합니다.",
+                "verification_status": "표결 전 사전 스냅샷과 24시간 후 동일 시세원 비교",
+                "monitoring_unit": "event_state_change",
+                "market_reaction": reaction_24h,
+                "market_reaction_window": reaction_window,
+            })
+            market_24h_done = True
 
     gate = {
         "status": "confirmed_two_official_sources" if schedule_confirmed else "schedule_verification_incomplete",
@@ -401,6 +432,7 @@ def main():
         "schedule_sources": schedule_checks,
         "roll_call": result,
         "market_reaction": reaction,
+        "market_reaction_window": reaction_window,
         "checked_at_kst": now_kst.isoformat(timespec="seconds"),
     }
     write_json(GATE_PATH, gate)
@@ -411,6 +443,7 @@ def main():
         "roll_call_signature": result_signature or state.get("roll_call_signature", ""),
         "seen_context_events": sorted(seen_context),
         "pre_vote_market": pre_vote_market,
+        "market_24h_done": market_24h_done,
         "updated_at_kst": now_kst.isoformat(timespec="seconds"),
         "monitoring_unit": "event_state_change_not_article",
     })
@@ -425,10 +458,11 @@ def main():
         "roll_call_found": bool(result),
         "lummis_signal_found": bool(lummis),
         "bessent_signal_found": bool(bessent),
+        "market_24h_done": market_24h_done,
         "market_errors": market_errors,
         "monitoring_unit": "event_state_change_not_article",
     })
-    print(f"clarity_vote_window_new={len(events)} schedule_confirmed={schedule_confirmed} roll_call={bool(result)} baseline={baseline}")
+    print(f"clarity_vote_window_new={len(events)} schedule_confirmed={schedule_confirmed} roll_call={bool(result)} baseline={baseline} market24h={market_24h_done}")
 
 
 if __name__ == "__main__":
