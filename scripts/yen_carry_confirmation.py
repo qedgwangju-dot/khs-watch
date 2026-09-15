@@ -17,10 +17,11 @@ Outputs out/yen_carry_confirmation.json and .md.
 from __future__ import annotations
 
 import csv
+import html
 import io
 import json
 import pathlib
-import time
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -34,28 +35,19 @@ KST = ZoneInfo("Asia/Seoul")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / "out"
 OUT.mkdir(parents=True, exist_ok=True)
-FRED = "https://fred.stlouisfed.org/graph/fredgraph.csv"
-UA = "khs-watch-yen-carry-confirmation/1.2"
+FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv"
+FRED_TABLE = "https://fred.stlouisfed.org/data/{series}"
+UA = "khs-watch-yen-carry-confirmation/1.3"
 
 
-def get(series: str, n: int = 5, timeout: int = 20, attempts: int = 3):
-    url = FRED + "?" + urllib.parse.urlencode({"id": series})
+def _request_text(url: str, timeout: int) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Cache-Control": "no-cache"})
-    last_error: Exception | None = None
-    text = None
-    for attempt in range(attempts):
-        try:
-            with urllib.request.urlopen(req, timeout=timeout) as r:
-                text = r.read().decode("utf-8-sig", errors="replace")
-            break
-        except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError) as exc:
-            last_error = exc
-            if attempt + 1 < attempts:
-                time.sleep(0.75 * (2**attempt))
-    if text is None:
-        raise RuntimeError(f"{series}: FRED fetch failed after {attempts} attempts: {last_error}")
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read().decode("utf-8-sig", errors="replace")
 
-    rows = []
+
+def _parse_csv(series: str, text: str) -> list[tuple[str, float]]:
+    rows: list[tuple[str, float]] = []
     for row in csv.DictReader(io.StringIO(text)):
         date = (row.get("DATE") or row.get("observation_date") or "").strip()
         raw = (row.get(series) or "").strip()
@@ -63,10 +55,50 @@ def get(series: str, n: int = 5, timeout: int = 20, attempts: int = 3):
             val = float(raw)
         except Exception:
             continue
-        rows.append((date, val))
-    if len(rows) < 2:
-        raise RuntimeError(f"{series}: insufficient data")
-    return rows[-n:]
+        if date:
+            rows.append((date, val))
+    return rows
+
+
+def _parse_fred_table(text: str) -> list[tuple[str, float]]:
+    # FRED's /data/<SERIES> page exposes the same official DATE/VALUE table.
+    # Strip markup and recover only strict ISO-date/value pairs so navigation text
+    # cannot be misread as an observation.
+    plain = html.unescape(re.sub(r"<[^>]+>", " ", text))
+    rows: list[tuple[str, float]] = []
+    for date, raw in re.findall(r"(\d{4}-\d{2}-\d{2})\s+(-?\d+(?:\.\d+)?)", plain):
+        try:
+            rows.append((date, float(raw)))
+        except ValueError:
+            continue
+    # Preserve order while dropping duplicate date/value renderings.
+    dedup: dict[str, float] = {}
+    for date, value in rows:
+        dedup[date] = value
+    return sorted(dedup.items())
+
+
+def get(series: str, n: int = 5):
+    errors: list[str] = []
+    csv_url = FRED_CSV + "?" + urllib.parse.urlencode({"id": series})
+    try:
+        rows = _parse_csv(series, _request_text(csv_url, timeout=8))
+        if len(rows) >= 2:
+            return rows[-n:], "FRED CSV"
+        errors.append(f"CSV insufficient data: {len(rows)}")
+    except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError) as exc:
+        errors.append(f"CSV {type(exc).__name__}: {exc}")
+
+    table_url = FRED_TABLE.format(series=urllib.parse.quote(series, safe=""))
+    try:
+        rows = _parse_fred_table(_request_text(table_url, timeout=12))
+        if len(rows) >= 2:
+            return rows[-n:], "FRED 표 데이터"
+        errors.append(f"table insufficient data: {len(rows)}")
+    except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError) as exc:
+        errors.append(f"table {type(exc).__name__}: {exc}")
+
+    raise RuntimeError(f"{series}: official FRED routes failed: {' | '.join(errors)}")
 
 
 def pct(new: float, old: float) -> float:
@@ -79,18 +111,25 @@ def main():
     errors = []
     series_list = ["DEXJPUS", "VIXCLS", "NASDAQCOM", "NIKKEI225"]
 
-    # FRED can throttle or stall when all four graph CSV requests arrive together.
-    # Keep modest parallelism and retry each independent series instead of turning
-    # one transient FRED timeout into four unavailable confirmation signals.
+    # Two workers avoid hammering FRED while preventing four slow routes from
+    # serially blocking the watcher. Each series has an independent official
+    # CSV -> FRED table fallback and never substitutes an unrelated provider.
     with ThreadPoolExecutor(max_workers=2) as executor:
         futures = {executor.submit(get, series): series for series in series_list}
         for future in as_completed(futures):
             s = futures[future]
             try:
-                rows = future.result()
+                rows, source = future.result()
                 d0, v0 = rows[-1]
                 d1, v1 = rows[-2]
-                data[s] = {"date": d0, "value": v0, "prev_date": d1, "prev": v1, "change_pct": pct(v0, v1)}
+                data[s] = {
+                    "date": d0,
+                    "value": v0,
+                    "prev_date": d1,
+                    "prev": v1,
+                    "change_pct": pct(v0, v1),
+                    "source": source,
+                }
             except Exception as e:
                 errors.append(f"{s}: {type(e).__name__}: {e}")
 
@@ -110,7 +149,7 @@ def main():
         "equity_joint_weakness": equity_joint,
         "confirmation_count": confirm_count,
         "errors": errors,
-        "note": "Daily confirmation only. BOJ OIS is not estimated without a reliable market source.",
+        "note": "FRED daily-close confirmation only. BOJ OIS is not estimated without a reliable market source.",
     }
     (OUT / "yen_carry_confirmation.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -119,7 +158,7 @@ def main():
     for s, name in names.items():
         x = data.get(s)
         if x:
-            lines.append(f"- {name}: {x['value']:.4f} ({x['change_pct']:+.2f}%, 기준일 {x['date']})")
+            lines.append(f"- {name}: {x['value']:.4f} ({x['change_pct']:+.2f}%, 기준일 {x['date']}, {x.get('source','FRED')})")
     lines += [
         "",
         f"- USD/JPY 일간 -2% 이하: {'예' if signals['yen_strength_daily_2pct'] else '아니오'}",
@@ -128,7 +167,7 @@ def main():
         f"- Nikkei -2% 이하: {'예' if signals['nikkei_down_2pct'] else '아니오'}",
         f"- Nikkei/Nasdaq 동반 약세 확인: {'예' if equity_joint else '아니오'}",
         "",
-        "※ Nikkei·Nasdaq·VIX는 엔캐리 청산의 선행조건이 아니라 실제 디레버리징이 위험자산으로 번졌는지 보는 후행 확인 신호입니다.",
+        "※ Nikkei·Nasdaq·VIX는 엔캐리 청산의 선행조건이 아니라 실제 디레버리징이 위험자산으로 번졌는지 보는 FRED 일간 후행 확인 신호입니다.",
         "※ BOJ OIS 인상확률은 신뢰 가능한 자동 시계열이 확보되기 전까지 임의 계산하지 않습니다.",
     ]
     if errors:
