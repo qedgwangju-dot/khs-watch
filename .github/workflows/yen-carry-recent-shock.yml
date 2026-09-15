@@ -14,7 +14,8 @@ on:
   schedule:
     # Five-minute cadence, deliberately offset from minute 0 because GitHub documents
     # that scheduled runs can be delayed or dropped during high-load periods.
-    - cron: "1,6,11,16,21,26,31,36,41,46,51,56 * * * *"
+    # Keep the cadence unchanged while moving the phase to refresh the active schedule.
+    - cron: "3,8,13,18,23,28,33,38,43,48,53,58 * * * *"
   workflow_dispatch:
 
 permissions:
