@@ -7,7 +7,6 @@ on:
     paths:
       - ".github/workflows/khs-us-investment-telegram-watch.yml"
       - "scripts/khs_us_investment_watch.py"
-      - "scripts/khs_us_investment_westinghouse_extension.py"
       - "scripts/khs_us_investment_watch_base.py"
       - "scripts/khs_us_investment_watch_core.py"
       - "scripts/khs_us_investment_finalize.py"
@@ -48,7 +47,6 @@ jobs:
         run: |
           python -m py_compile \
             scripts/khs_us_investment_watch.py \
-            scripts/khs_us_investment_westinghouse_extension.py \
             scripts/khs_us_investment_watch_base.py \
             scripts/khs_us_investment_watch_core.py \
             scripts/khs_us_investment_finalize.py \
@@ -94,7 +92,7 @@ jobs:
 
       - name: Run US investment watch
         if: github.event_name != 'push'
-        run: python scripts/khs_us_investment_westinghouse_extension.py
+        run: python scripts/khs_us_investment_watch.py
 
       - name: Enforce final Telegram readability
         if: github.event_name != 'push' && hashFiles('out/khs_us_investment_alert.html') != ''
