@@ -6,12 +6,15 @@ Rules:
 - Reuse the existing query1/query2 cross-checked Yahoo 5-minute USD/JPY reader for the current FX signal. FRED H.10 remains an official daily reference only.
 - Reject a live FX quote older than 12 minutes rather than silently falling back to a stale daily observation for current-signal logic.
 - Keep lagged official values as labelled reference values, not as current signals.
+- Treat a low USD/JPY level and a fresh yen surge as separate concepts: price level alone never counts as a carry-unwind trigger.
+- Reconcile the final Telegram risk label after all freshness checks so displayed signals, risk level and persisted state cannot disagree.
 """
 from __future__ import annotations
 
 import argparse
 import datetime as dt
 import json
+import os
 import pathlib
 import re
 from typing import Any
@@ -22,7 +25,12 @@ PENDING = OUT / "global_rates_watch_pending_state.json"
 ALERT = OUT / "global_rates_watch_alert.json"
 FRESHNESS = OUT / "global_rates_freshness.json"
 REPORT = OUT / "global_rates_watch_telegram.md"
+TELEGRAM_PENDING = OUT / "global_rates_telegram_pending_state.json"
+TELEGRAM_STATE = ROOT / "data" / "global_rates_telegram_state.json"
+STRUCTURAL_EVENT = OUT / "global_rates_structural_event.json"
 MAX_LIVE_FX_AGE_SECONDS = 12 * 60
+YEN_STRONG_LEVEL = 155.0
+YEN_SURGE_DAILY_PCT = -2.0
 
 
 def load(path: pathlib.Path, default: Any) -> Any:
@@ -48,6 +56,60 @@ def parse_date(value: str | None) -> dt.date | None:
         return dt.date(year, month, day)
     except Exception:
         return None
+
+
+def _float_or_none(value: Any) -> float | None:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def classify_live_fx(price: Any, change_pct: Any) -> dict[str, Any]:
+    """Separate yen price level from directional yen-surge confirmation.
+
+    USD/JPY down means yen strength; USD/JPY up means yen weakness.  A level at or
+    below 155 is retained as context only.  It does not count as a fresh yen surge.
+    """
+    p = _float_or_none(price)
+    c = _float_or_none(change_pct)
+    strong_level = bool(p is not None and p <= YEN_STRONG_LEVEL)
+    surge = bool(c is not None and c <= YEN_SURGE_DAILY_PCT)
+    if c is None:
+        direction = "확인 불가"
+    elif c < 0:
+        direction = "엔화 강세"
+    elif c > 0:
+        direction = "엔화 약세"
+    else:
+        direction = "보합"
+    return {
+        "price": p,
+        "change_pct": c,
+        "strong_level": strong_level,
+        "surge": surge,
+        "direction": direction,
+    }
+
+
+def calculate_final_risk(signals: dict[str, Any]) -> tuple[int, str, str, int, int]:
+    jgb10_3 = bool(signals.get("jgb10_3"))
+    curve_up = bool(signals.get("jgb_curve_up"))
+    spread_narrow = bool(signals.get("us_jp_2y_spread_narrow"))
+    us_rates_down = bool(signals.get("us_2y_down"))
+    yen_surge = bool(signals.get("yen_surge"))
+    vix_spike = bool(signals.get("vix_spike"))
+    equity_joint = bool(signals.get("nikkei_nasdaq_joint_weakness"))
+    leading_count = sum([jgb10_3, curve_up, spread_narrow, us_rates_down, yen_surge])
+    confirm_count = sum([vix_spike, equity_joint])
+
+    if yen_surge and spread_narrow and (vix_spike or equity_joint):
+        return 3, "실제 엔캐리 청산 위험 높음", "🔴", leading_count, confirm_count
+    if (yen_surge and (spread_narrow or curve_up)) or (jgb10_3 and curve_up and spread_narrow):
+        return 2, "엔캐리 청산 경계 강화", "🟠", leading_count, confirm_count
+    if leading_count >= 2 or (jgb10_3 and (vix_spike or equity_joint)):
+        return 1, "구조적 경계 상승", "🟡", leading_count, confirm_count
+    return 0, "관찰", "🟢", leading_count, confirm_count
 
 
 def fetch_live_usdjpy(now_utc: dt.datetime | None = None) -> dict[str, Any]:
@@ -100,8 +162,8 @@ def apply_guard(pending: dict[str, Any], alert: dict[str, Any], live_fx: dict[st
         values["usdjpy"] = float(live_fx["price"])
         values["usdjpy_daily_change_pct"] = float(live_fx.get("change_pct") or 0.0)
         dates["usdjpy"] = observed_utc.date().isoformat()
-        active["usdjpy:below:155.0"] = values["usdjpy"] <= 155.0
-        active["usdjpy:daily_change:below:-2.0"] = values["usdjpy_daily_change_pct"] <= -2.0
+        active["usdjpy:below:155.0"] = values["usdjpy"] <= YEN_STRONG_LEVEL
+        active["usdjpy:daily_change:below:-2.0"] = values["usdjpy_daily_change_pct"] <= YEN_SURGE_DAILY_PCT
     else:
         values["usdjpy"] = None
         values["usdjpy_daily_change_pct"] = None
@@ -121,6 +183,7 @@ def apply_guard(pending: dict[str, Any], alert: dict[str, Any], live_fx: dict[st
     }
     alert["events"] = events
 
+    fx_state = classify_live_fx((live_fx or {}).get("price"), (live_fx or {}).get("change_pct")) if live_ok else classify_live_fx(None, None)
     freshness = {
         "same_2y_date": same_2y_date,
         "jgb2_date": dates.get("jgb2"),
@@ -134,10 +197,13 @@ def apply_guard(pending: dict[str, Any], alert: dict[str, Any], live_fx: dict[st
         "live_fx_age_seconds": (live_fx or {}).get("age_seconds"),
         "live_fx_source": (live_fx or {}).get("source"),
         "live_fx_error": live_fx_error,
+        "yen_strong_level": fx_state["strong_level"],
+        "yen_surge": fx_state["surge"],
+        "yen_direction": fx_state["direction"],
         "fred_usdjpy_reference": fred_fx_reference,
         "fred_usdjpy_change_reference_pct": fred_fx_change_reference,
         "fred_usdjpy_date": fred_fx_date,
-        "policy": "파생금리차는 동일 기준일만 계산. USD/JPY 현재 신호는 query1/query2 5분 교차확인값만 사용하고 FRED H.10은 공식 일일 참고값으로 분리.",
+        "policy": "파생금리차는 동일 기준일만 계산. USD/JPY 155 이하는 가격 수준 참고값으로만 쓰고, 엔화 급등 신호는 현재 USD/JPY 변화율이 -2% 이하일 때만 판정. FRED H.10은 공식 일일 참고값으로 분리.",
     }
     return pending, alert, freshness
 
@@ -151,6 +217,69 @@ def live_fx_kst_label(freshness: dict[str, Any]) -> str:
         return parsed.astimezone(dt.timezone(dt.timedelta(hours=9))).strftime("%Y-%m-%d %H:%M:%S KST")
     except Exception:
         return str(raw)
+
+
+def _replace_risk_line(lines: list[str], prefix: str, replacement: str) -> None:
+    for i, line in enumerate(lines):
+        if line.startswith(prefix):
+            lines[i] = replacement
+
+
+def reconcile_final_report(report: str, freshness: dict[str, Any]) -> str | None:
+    """Make the final displayed risk and persisted risk use the same post-freshness signals."""
+    pending_state = load(TELEGRAM_PENDING, {})
+    if not pending_state:
+        return report
+
+    signals = dict(pending_state.get("signals") or {})
+    fx_state = classify_live_fx(freshness.get("live_fx_price"), freshness.get("live_fx_change_pct"))
+    signals["yen_strong_level"] = bool(freshness.get("live_fx_signal_eligible") and fx_state["strong_level"])
+    signals["yen_surge"] = bool(freshness.get("live_fx_signal_eligible") and fx_state["surge"])
+    level, label, emoji, leading_count, confirm_count = calculate_final_risk(signals)
+    pending_state["risk_level"] = level
+    pending_state["risk_label"] = label
+    pending_state["signals"] = signals
+    save(TELEGRAM_PENDING, pending_state)
+
+    previous = load(TELEGRAM_STATE, {"risk_level": 0, "risk_label": "관찰"})
+    old_level = int(previous.get("risk_level") or 0)
+    old_label = str(previous.get("risk_label") or "관찰")
+    risk_changed = level != old_level
+    primary_event = bool((load(ALERT, {}) or {}).get("events"))
+    structural_changed = bool((load(STRUCTURAL_EVENT, {}) or {}).get("events"))
+    manual_dispatch = os.getenv("GITHUB_EVENT_NAME", "") == "workflow_dispatch"
+
+    # The earlier formatter may have created a report only because the old, incorrect
+    # price-level rule promoted the risk. Suppress that false alert before Telegram.
+    if not (manual_dispatch or primary_event or structural_changed or risk_changed):
+        return None
+
+    lines = report.splitlines()
+    if lines and lines[0].startswith("[글로벌 금리·엔캐리 경보]"):
+        lines[0] = f"[글로벌 금리·엔캐리 경보] {emoji}"
+    _replace_risk_line(lines, "판정:", f"판정: {label}")
+
+    event_indices = [i for i, line in enumerate(lines) if "위험단계 변화:" in line]
+    if risk_changed:
+        replacement = f"- 위험단계 변화: {old_label} → {label}"
+        if event_indices:
+            lines[event_indices[0]] = replacement
+            for i in reversed(event_indices[1:]):
+                lines.pop(i)
+        else:
+            for i, line in enumerate(lines):
+                if line.strip() == "① 무엇이 바뀌었나":
+                    lines.insert(i + 1, replacement)
+                    break
+    else:
+        for i in reversed(event_indices):
+            lines.pop(i)
+
+    for i, line in enumerate(lines):
+        if "선행 " in line and "후행확인 " in line and ("엔캐리" in line or "구조적" in line or "관찰" in line):
+            lines[i] = f"{emoji} {label}: 선행 {leading_count}/5, 후행확인 {confirm_count}/2. 구조 신호는 실제 자금행동 확인용이며 단독으로 엔캐리 청산을 확정하지 않습니다."
+
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def annotate_report(report: str, freshness: dict[str, Any]) -> str:
@@ -168,11 +297,17 @@ def annotate_report(report: str, freshness: dict[str, Any]) -> str:
     if freshness.get("live_fx_signal_eligible"):
         price = float(freshness["live_fx_price"])
         change = float(freshness.get("live_fx_change_pct") or 0.0)
-        replacement = f"{'✅' if price <= 155.0 or change <= -2.0 else '⬜'} 엔화 급등: USD/JPY {price:.3f} / 기준변화 {change:+.2f}% / {live_fx_kst_label(freshness)}"
+        fx_state = classify_live_fx(price, change)
+        replacement = f"{'✅' if fx_state['surge'] else '⬜'} 엔화 급등: USD/JPY {price:.3f} / 기준변화 {change:+.2f}% / 현재 방향 {fx_state['direction']} / {live_fx_kst_label(freshness)}"
+        level_line = f"• 엔화 강세 수준: {'✅' if fx_state['strong_level'] else '⬜'} USD/JPY {price:.3f} ({YEN_STRONG_LEVEL:.0f} 이하 여부; 방향 신호와 분리)"
         for i, line in enumerate(lines):
             if "엔화 급등:" in line:
                 lines[i] = replacement
+                if i + 1 >= len(lines) or "엔화 강세 수준:" not in lines[i + 1]:
+                    lines.insert(i + 1, level_line)
+                break
         notes.append(f"USD/JPY 현재값: Yahoo query1/query2 5분 교차확인 / {live_fx_kst_label(freshness)} / 지연 {float(freshness.get('live_fx_age_seconds') or 0):.0f}초")
+        notes.append("USD/JPY 155 이하는 가격 수준 참고값이며, 엔화 급등은 USD/JPY 변화율 하락으로만 판정")
     else:
         value = freshness.get("fred_usdjpy_reference")
         value_text = f"{float(value):.3f}" if value is not None else "확인 불가"
@@ -195,7 +330,15 @@ def main() -> int:
     if args.annotate:
         if REPORT.exists() and FRESHNESS.exists():
             freshness = load(FRESHNESS, {})
-            REPORT.write_text(annotate_report(REPORT.read_text(encoding="utf-8"), freshness), encoding="utf-8")
+            annotated = annotate_report(REPORT.read_text(encoding="utf-8"), freshness)
+            reconciled = reconcile_final_report(annotated, freshness)
+            if reconciled is None:
+                REPORT.unlink(missing_ok=True)
+                print("final_risk_consistency=ok false_price_level_alert_suppressed=true")
+            else:
+                REPORT.write_text(reconciled, encoding="utf-8")
+                pending_state = load(TELEGRAM_PENDING, {})
+                print(f"final_risk_consistency=ok risk_level={pending_state.get('risk_level')} risk_label={pending_state.get('risk_label')}")
         return 0
 
     pending = load(PENDING, {})

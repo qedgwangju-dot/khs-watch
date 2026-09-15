@@ -1,6 +1,11 @@
 import unittest
 
-from global_rates_freshness_guard import apply_guard, annotate_report
+from global_rates_freshness_guard import (
+    annotate_report,
+    apply_guard,
+    calculate_final_risk,
+    classify_live_fx,
+)
 
 
 class GlobalRatesFreshnessGuardTest(unittest.TestCase):
@@ -44,6 +49,48 @@ class GlobalRatesFreshnessGuardTest(unittest.TestCase):
         _, _, freshness = apply_guard(pending, alert, live_fx=self.live())
         self.assertTrue(freshness["same_2y_date"])
 
+    def test_price_below_155_is_level_not_yen_surge(self):
+        fx = classify_live_fx(154.269, 0.42)
+        self.assertTrue(fx["strong_level"])
+        self.assertFalse(fx["surge"])
+        self.assertEqual(fx["direction"], "엔화 약세")
+
+    def test_directional_drop_triggers_yen_surge(self):
+        fx = classify_live_fx(154.269, -2.10)
+        self.assertTrue(fx["strong_level"])
+        self.assertTrue(fx["surge"])
+        self.assertEqual(fx["direction"], "엔화 강세")
+
+    def test_false_level_signal_cannot_promote_risk_to_orange(self):
+        level, label, emoji, leading, confirm = calculate_final_risk({
+            "jgb10_3": False,
+            "jgb_curve_up": True,
+            "us_jp_2y_spread_narrow": False,
+            "us_2y_down": False,
+            "yen_surge": False,
+            "vix_spike": False,
+            "nikkei_nasdaq_joint_weakness": False,
+        })
+        self.assertEqual(level, 0)
+        self.assertEqual(label, "관찰")
+        self.assertEqual(emoji, "🟢")
+        self.assertEqual(leading, 1)
+        self.assertEqual(confirm, 0)
+
+    def test_real_yen_surge_plus_curve_promotes_risk_to_orange(self):
+        level, label, _, leading, _ = calculate_final_risk({
+            "jgb10_3": False,
+            "jgb_curve_up": True,
+            "us_jp_2y_spread_narrow": False,
+            "us_2y_down": False,
+            "yen_surge": True,
+            "vix_spike": False,
+            "nikkei_nasdaq_joint_weakness": False,
+        })
+        self.assertEqual(level, 2)
+        self.assertEqual(label, "엔캐리 청산 경계 강화")
+        self.assertEqual(leading, 2)
+
     def test_report_explains_withheld_spread(self):
         text = "[글로벌 금리·엔캐리 경보] 🟢\n판정: 관찰\n조회: 2026-09-01 18:05:00 KST\n\n⬜ 미·일 2Y 금리차 축소: 확인 불가\n⬜ 엔화 급등: 확인 불가\n"
         freshness = {"same_2y_date": False, "jgb2_date": "2026/8/28", "ust2_date": "2026-08-31", "live_fx_signal_eligible": True, "live_fx_price": 158.25, "live_fx_change_pct": -0.60, "live_fx_timestamp_utc": "2026-09-01T09:00:00Z", "live_fx_age_seconds": 45.0}
@@ -51,6 +98,13 @@ class GlobalRatesFreshnessGuardTest(unittest.TestCase):
         self.assertIn("기준일 불일치 — 계산 보류", out)
         self.assertIn("USD/JPY 158.250", out)
         self.assertIn("query1/query2 5분 교차확인", out)
+
+    def test_report_does_not_call_positive_usdjpy_move_yen_surge(self):
+        text = "[글로벌 금리·엔캐리 경보] 🟠\n판정: 엔캐리 청산 경계 강화\n조회: 2026-09-15 07:55:32 KST\n\n✅ 엔화 급등: 확인 불가\n"
+        freshness = {"same_2y_date": True, "jgb2_date": "2026/9/14", "live_fx_signal_eligible": True, "live_fx_price": 154.269, "live_fx_change_pct": 0.42, "live_fx_timestamp_utc": "2026-09-14T22:55:24Z", "live_fx_age_seconds": 1.0}
+        out = annotate_report(text, freshness)
+        self.assertIn("⬜ 엔화 급등: USD/JPY 154.269 / 기준변화 +0.42% / 현재 방향 엔화 약세", out)
+        self.assertIn("엔화 강세 수준: ✅ USD/JPY 154.269", out)
 
 
 if __name__ == "__main__":
