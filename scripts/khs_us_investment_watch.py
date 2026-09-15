@@ -21,7 +21,7 @@ def _extend_unique(target: list[str], values: list[str]) -> None:
             target.append(value)
 
 
-# Encinal 설비 발주, 가스터빈 대체전원, 원전 핵연료주기 신규 사업축을 넓게 검색한다.
+# Encinal 설비 발주, 가스터빈 대체전원, 원전 핵연료주기 및 웨스팅하우스 지분구조 변화를 넓게 검색한다.
 _extend_unique(core.QUERIES, [
     '"대미투자" 가스터빈 두산에너빌리티 when:7d',
     '"Encinal" gas turbine Doosan 1.4GW when:7d',
@@ -45,6 +45,13 @@ _extend_unique(core.QUERIES, [
     '"spent nuclear fuel" Korea US investment proposal when:14d',
     '"2천억달러" 파이로 원전 when:7d',
     '"200 billion" pyroprocessing Korea investment when:14d',
+    '"웨스팅하우스" 지분 인수 한국 when:7d',
+    '"웨스팅하우스" 소수지분 한국 when:7d',
+    '"웨스팅하우스" 한수원 한전 지분 when:14d',
+    '"미국 원전" 웨스팅하우스 지분 한국 when:7d',
+    '"Westinghouse" Korea stake acquisition when:14d',
+    '"Westinghouse" KHNP KEPCO stake when:14d',
+    '"Westinghouse" Korea minority stake when:14d',
 ])
 _extend_unique(core.TRUSTED, [
     "뉴스핌",
@@ -116,16 +123,34 @@ _extend_unique(core.MATERIAL, [
     "200 billion",
     "투자 제안",
     "미국 제안",
+    "웨스팅하우스",
+    "Westinghouse",
+    "소수지분",
+    "지분 인수",
+    "지분인수",
+    "인수 추진",
+    "stake acquisition",
+    "minority stake",
+    "equity stake",
+    "한수원",
+    "한국수력원자력",
+    "KHNP",
+    "한전",
+    "한국전력",
+    "KEPCO",
 ])
 if hasattr(core, "HARD_PROGRESS_TERMS"):
     _extend_unique(core.HARD_PROGRESS_TERMS, [
         "투자 제안", "미국 제안", "파이로프로세싱", "사용후핵연료", "핵연료주기",
+        "소수지분", "지분 인수", "지분인수", "인수 추진",
+        "stake acquisition", "minority stake", "equity stake",
     ])
 if hasattr(core, "OFFICIAL_SOURCE_TERMS"):
     _extend_unique(core.OFFICIAL_SOURCE_TERMS, [
         "과학기술정보통신부", "과기정통부",
     ])
 
+_ORIG_KEY = core._key
 _ORIG_TAGS = core._tags
 _ORIG_MEANING = core._meaning
 _ORIG_TEXAS_BLOCK = core._texas_ai_power_block
@@ -156,13 +181,38 @@ def _is_pyro_official(row: dict) -> bool:
     ])
 
 
+def _is_westinghouse_stake_row(row: dict) -> bool:
+    blob = f"{row.get('title', '')} {row.get('source', '')}".lower()
+    westinghouse = "웨스팅하우스" in blob or "westinghouse" in blob
+    korea = any(token in blob for token in [
+        "한국", "韓", "한수원", "한국수력원자력", "khnp",
+        "한전", "한국전력", "kepco", "korea", "south korea",
+    ])
+    stake = any(token in blob for token in [
+        "지분", "소수지분", "인수", "stake", "equity", "acquisition", "acquire",
+    ])
+    return westinghouse and korea and stake
+
+
+def _key(row: dict) -> str:
+    original = _ORIG_KEY(row)
+    if _is_westinghouse_stake_row(row):
+        # 과거 일반 웨스팅하우스 감시에서 seen만 된 기사도 새 지분사건축으로 최초 1회 재평가한다.
+        return f"whstake_{original}"
+    return original
+
+
 def _semantic_key(row: dict) -> str:
+    if _is_westinghouse_stake_row(row):
+        return "westinghouse_stake_official" if core._is_official(row) else "westinghouse_stake_media"
     if _is_pyro_row(row):
         return "nuclear_fuel_cycle_pyro_official" if _is_pyro_official(row) else "nuclear_fuel_cycle_pyro_media"
     return _ORIG_SEMANTIC_KEY(row)
 
 
 def _run_event_key(row: dict) -> str:
+    if _is_westinghouse_stake_row(row):
+        return "westinghouse_stake_official" if core._is_official(row) else "westinghouse_stake_media"
     if _is_pyro_row(row):
         return "nuclear_fuel_cycle_pyro_official" if _is_pyro_official(row) else "nuclear_fuel_cycle_pyro_media"
     return _ORIG_RUN_EVENT_KEY(row)
@@ -172,6 +222,9 @@ def _upgraded_tags(title: str, source: str = "") -> list[str]:
     tags = list(_ORIG_TAGS(title, source))
     low = f"{title} {source}".lower()
 
+    if _is_westinghouse_stake_row({"title": title, "source": source}):
+        if "웨스팅하우스 지분 투자" not in tags:
+            tags.insert(0, "웨스팅하우스 지분 투자")
     if any(token in low for token in [
         "파이로", "파이로프로세싱", "pyroprocessing",
         "사용후핵연료", "spent nuclear fuel", "핵연료주기", "fuel cycle",
@@ -215,6 +268,12 @@ def _upgraded_tags(title: str, source: str = "") -> list[str]:
 
 
 def _upgraded_meaning(tags: list[str]) -> str:
+    if "웨스팅하우스 지분 투자" in tags:
+        return (
+            "웨스팅하우스 지분 인수는 단순 원전 협력 보도가 아니라 한국의 대미투자 자금 배분과 "
+            "미국 원전 사업 참여권·수익배분 구조를 동시에 바꾸는 고신호입니다. "
+            "보도 단계와 정부 공식 확정을 분리하고 지분율·인수가격·인수주체·미국 원전 발주 참여조건을 추적합니다."
+        )
     if "사용후핵연료·파이로 투자" in tags:
         return (
             "사용후핵연료 파이로프로세싱은 기존 원전 건설과 별개의 핵연료주기 신규 투자축입니다. "
@@ -274,6 +333,7 @@ def _upgraded_texas_block() -> list[str]:
     return original[:insert_at] + supply_chain + original[insert_at:]
 
 
+core._key = _key
 core._semantic_key = _semantic_key
 core._run_event_key = _run_event_key
 core._tags = _upgraded_tags
