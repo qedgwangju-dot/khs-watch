@@ -102,12 +102,12 @@ jobs:
           python scripts/warsh_balance_sheet_watch.py
           python scripts/warsh_sep_path_watch.py
 
-      - name: Check AI hardware software rotation and notify KHS887900 Telegram
+      - name: Check AI hardware software rotation and notify exact Telegram
         if: ${{ always() && !cancelled() }}
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
-          EXPECTED_BOT_USERNAME: khs887900_bot
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID || secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+          EXPECTED_BOT_USERNAME: khs887900887900008879_bot
           FORCE_NOTIFY: ${{ (github.event_name == 'workflow_dispatch' && inputs.force_notify) && '1' || '0' }}
           WARSH_ROTATION_3D_PP: '3'
           WARSH_ROTATION_5D_PP: '5'
@@ -122,9 +122,9 @@ jobs:
           chat_id = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
           expected = (os.getenv('EXPECTED_BOT_USERNAME') or '').strip().lstrip('@')
           if not token:
-              raise RuntimeError('KHS887900_BOT_TOKEN secret is missing')
+              raise RuntimeError('KOSPI_DERIV_TELEGRAM_BOT_TOKEN secret is missing')
           if not chat_id:
-              raise RuntimeError('KHS_POLICY_TELEGRAM_CHAT_ID secret is missing')
+              raise RuntimeError('KOSPI_DERIV_TELEGRAM_CHAT_ID and GLOBAL_RATES_TELEGRAM_CHAT_ID are both missing')
           with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
               data = json.loads(r.read().decode('utf-8'))
           username = str((data.get('result') or {}).get('username') or '')
