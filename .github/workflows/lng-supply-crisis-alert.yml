@@ -35,6 +35,7 @@ on:
       - "scripts/lng_supply_crisis_alert_v30.py"
       - "scripts/lng_supply_crisis_alert_v31.py"
       - "scripts/lng_supply_crisis_alert_v32.py"
+      - "scripts/lng_supply_crisis_alert_v33.py"
       - "scripts/lng_supply_crisis_qatar_us_overlay.py"
 
 permissions:
@@ -60,56 +61,50 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate v32 monitor
+      - name: Validate v33 monitor
         run: |
-          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_alert_v28.py scripts/lng_supply_crisis_alert_v29.py scripts/lng_supply_crisis_alert_v30.py scripts/lng_supply_crisis_alert_v31.py scripts/lng_supply_crisis_alert_v32.py scripts/lng_supply_crisis_qatar_us_overlay.py
+          python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_alert_v28.py scripts/lng_supply_crisis_alert_v29.py scripts/lng_supply_crisis_alert_v30.py scripts/lng_supply_crisis_alert_v31.py scripts/lng_supply_crisis_alert_v32.py scripts/lng_supply_crisis_alert_v33.py scripts/lng_supply_crisis_qatar_us_overlay.py
           python - <<'PY'
           import sys, time
           sys.path.insert(0, "scripts")
           import lng_supply_crisis_alert_v2 as core
-          import lng_supply_crisis_alert_v30 as v30
-          import lng_supply_crisis_alert_v31 as v31
-          import lng_supply_crisis_alert_v32 as v32
+          import lng_supply_crisis_alert_v33 as v33
 
-          contract = core.NewsItem(
-              category=v30.CATEGORY, polarity="easing", subtype="lng_long_term_spa_signed",
-              title="China Gas signs 20-year LNG import deal with US-based Venture Global - Reuters",
-              source="Reuters", link="https://example.com/contract",
-              published_utc="2026-09-14T12:00:00+00:00", published_epoch=time.time(),
-              official=False, event_id="fixture-contract",
+          item = core.NewsItem(
+              category=v33.CATEGORY,
+              polarity="worsening",
+              subtype="fuel_crisis_systemic",
+              title="Oil Executives Say the Great Fuel Crisis Is Here - The Wall Street Journal",
+              source="The Wall Street Journal",
+              link="https://example.com/fuel-crisis",
+              published_utc="2026-09-15T00:00:00+00:00",
+              published_epoch=time.time(),
+              official=False,
+              event_id="fixture-fuel-crisis",
           )
-          rate = core.NewsItem(
-              category="europe_rates", polarity="worsening", subtype="europe_rates_bund_selloff",
-              title="U.S. 10-Year Yield Cools After Topping 5%, German Bund Yield Hits 15-Year High - WSJ",
-              source="WSJ", link="https://example.com/rates",
-              published_utc="2026-09-14T12:00:00+00:00", published_epoch=time.time()-1,
-              official=False, event_id="fixture-rate",
-          )
-          groups = [
-              {"category":v30.CATEGORY,"polarity":"easing","subtype":"lng_long_term_spa_signed","event_id":"c1","latest_epoch":time.time(),"evidence":[contract],"verification":"구속력 있는 SPA · 주요 통신 확인"},
-              {"category":"europe_rates","polarity":"worsening","subtype":"europe_rates_bund_selloff","event_id":"r1","latest_epoch":time.time()-1,"evidence":[rate],"verification":"신뢰 매체 2곳 교차"},
-          ]
-          block = "\n".join(v31._simultaneous_change_lines(groups))
-          assert "동시 감지된 다른 변화" in block
-          assert "U.S. 10-Year Yield" not in block
-
-          raw_body = '<b>확인 근거</b>\n• <b>WSJ</b> · U.S. 10-Year Yield Cools After Topping 5%, German Bund Yield Hits 15-Year High - WSJ · <a href="https://example.com/rates">원문</a>'
-          fixed = v32._replace_evidence_text(raw_body, [groups[1]])
-          assert "U.S. 10-Year Yield" not in fixed
-          assert "월스트리트저널" in fixed
-          assert not v32._raw_english_evidence_remaining(fixed, [groups[1]])
-
-          contract_body = v30._build_contract_body(groups)
-          assert "연 <b>50만톤(0.5 MTPA)</b>" in contract_body
-          print("v32_validation=true")
+          assert core.classify_polarity(v33.CATEGORY, item.title) == "worsening"
+          assert core.classify_subtype(item.title) == "fuel_crisis_systemic"
+          groups = v33.confirmed_news_groups_v33([item])
+          assert any(g.get("category") == v33.CATEGORY for g in groups)
+          body = v33._build_fuel_body(groups, {})
+          assert "1억627만배럴" in body
+          assert "2억8,536만배럴" in body
+          assert "러시아·중동" in body
+          evidence = "\n".join(v33._evidence_lines(groups))
+          assert "월스트리트저널" in evidence
+          assert "미국 석유업계 경영진, 글로벌 연료 위기가 이미 시작됐다고 경고" in evidence
+          assert "Oil Executives Say" not in evidence
+          assert not v33.v32._raw_english_evidence_remaining(evidence, groups)
+          assert any("commercial fuel stocks" in q for _, q in v33.FUEL_STRESS_QUERIES)
+          print("v33_validation=true")
           PY
 
       - name: Check LNG supply crisis conditions
         run: |
           if [ "$LNG_SETUP_TEST" = "true" ]; then
-            python scripts/lng_supply_crisis_alert_v32.py --setup-test
+            python scripts/lng_supply_crisis_alert_v33.py --setup-test
           else
-            python scripts/lng_supply_crisis_alert_v32.py
+            python scripts/lng_supply_crisis_alert_v33.py
           fi
 
       - name: Publish status summary
@@ -195,7 +190,7 @@ jobs:
 
       - name: Finalize alert state
         if: always()
-        run: python scripts/lng_supply_crisis_alert_v32.py --finalize
+        run: python scripts/lng_supply_crisis_alert_v33.py --finalize
 
       - name: Upload verification artifacts
         if: always()
