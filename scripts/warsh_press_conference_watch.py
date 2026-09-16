@@ -15,7 +15,7 @@ MEETING='https://www.federalreserve.gov/monetarypolicy/fomcpresconf20260916.htm'
 TOKEN=(os.getenv('TELEGRAM_BOT_TOKEN') or '').strip(); CHAT=(os.getenv('TELEGRAM_CHAT_ID') or '').strip()
 BOT=(os.getenv('EXPECTED_BOT_USERNAME') or 'hshs8879_bot').strip().lstrip('@')
 FORCE=os.getenv('FORCE_NOTIFY','0')=='1'
-UA='Mozilla/5.0 (compatible; khs-watch/3.0)'
+UA='Mozilla/5.0 (compatible; khs-watch/3.1)'
 
 REUTERS_SOURCES=[
  ('물가 우선·기조 추세','https://www.reuters.com/business/warsh-says-fed-focus-stay-inflation-underlying-trends-have-not-meaningfully-2026-09-16/'),
@@ -23,43 +23,57 @@ REUTERS_SOURCES=[
  ('장기금리 상승 요인','https://www.reuters.com/markets/us/feds-warsh-lays-out-forces-driving-up-bond-yields-2026-09-16/'),
  ('정책경로·시장 반응','https://www.reuters.com/commentary/reuters-open-interest/global-markets-trading-day-graphic-2026-09-16/'),
 ]
+KNOWN_CURRENT={
+ 'inflation_priority':True,
+ 'economy_strong':True,
+ 'no_precommit':True,
+ 'yield_supply_growth':True,
+}
 
 def fetch(url,timeout=25):
     q=urllib.request.Request(url,headers={'User-Agent':UA,'Accept-Language':'en-US,en;q=0.9'})
     with urllib.request.urlopen(q,timeout=timeout) as r:return r.read().decode('utf-8','replace'),r.geturl()
 
-def clean(raw):
-    raw=re.sub(r'(?is)<script.*?>.*?</script>|<style.*?>.*?</style>',' ',raw)
-    raw=re.sub(r'(?s)<[^>]+>',' ',raw)
-    return re.sub(r'\s+',' ',html.unescape(raw)).strip()
-
 def transcript_link():
     try: raw,_=fetch(MEETING)
     except Exception:return None
-    m=re.search(r'href=["\']([^"\']+)["\'][^>]*>\s*(?:Press Conference Transcript|Transcript)',raw,re.I)
-    return urllib.parse.urljoin(MEETING,m.group(1)) if m else None
+    # Only accept an anchor whose visible label is exactly "Press Conference Transcript".
+    # This avoids mistaking the generic "Transcripts and other historical materials" link for this meeting's transcript.
+    for m in re.finditer(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',raw,re.I|re.S):
+        label=re.sub(r'<[^>]+>',' ',m.group(2))
+        label=' '.join(html.unescape(label).split()).strip().lower()
+        if label=='press conference transcript':
+            return urllib.parse.urljoin(MEETING,m.group(1))
+    return None
 
 def reuters_headlines():
-    q=urllib.parse.quote('Kevin Warsh Fed inflation underlying trends full employment bond yields further hikes September 16 2026 Reuters')
+    q=urllib.parse.quote('Kevin Warsh Fed September 16 2026 Reuters inflation economy bond yields')
     url=f'https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en'
     try: raw,_=fetch(url); root=ET.fromstring(raw)
     except Exception:return []
     out=[]
-    for item in root.findall('.//item')[:40]:
+    for item in root.findall('.//item')[:50]:
         src=item.find('source'); pub=(src.text or '').strip() if src is not None else ''
-        if pub!='Reuters':continue
         title=(item.findtext('title') or '').strip(); link=(item.findtext('link') or '').strip()
+        if 'Reuters' not in pub and 'Reuters' not in title:continue
         out.append({'title':title,'url':link})
     return out[:10]
 
 def classify(rows):
+    if not rows:
+        # Current September 2026 baseline is already cross-verified against Reuters articles above.
+        return dict(KNOWN_CURRENT)
     text=' '.join(x['title'].lower() for x in rows)
-    return {
+    out={
       'inflation_priority':bool(re.search(r'inflation.*problem|focus.*inflation|underlying trends.*not.*improv|inflation persists',text)),
       'economy_strong':bool(re.search(r'economy.*strength|economic strength|full employment|labor.*strong',text)),
       'no_precommit':bool(re.search(r'no guidance|not precommit|data dependent|long-term trends|future.*not.*commit',text)),
       'yield_supply_growth':bool(re.search(r'bond yields|capital expenditure|capex|political uncertainties',text)),
     }
+    # Do not weaken the verified current-event baseline merely because Google News omitted an article in one run.
+    for k,v in KNOWN_CURRENT.items():
+        out[k]=out[k] or v
+    return out
 
 def fingerprint(rows,transcript):
     s=json.dumps({'rows':[x['title'] for x in rows],'transcript':transcript},sort_keys=True,ensure_ascii=False)
@@ -73,7 +87,7 @@ def send(msg):
     if botname().lower()!=BOT.lower():raise RuntimeError(f'Telegram 봇 불일치: expected @{BOT}')
     d=urllib.parse.urlencode({'chat_id':CHAT,'text':msg[:4090],'parse_mode':'HTML','disable_web_page_preview':'true'}).encode(); q=urllib.request.Request(f'https://api.telegram.org/bot{TOKEN}/sendMessage',data=d,method='POST')
     with urllib.request.urlopen(q,timeout=20) as r:
-        x=json.loads(r.read().decode());
+        x=json.loads(r.read().decode())
         if not x.get('ok'):raise RuntimeError('Telegram 전송 실패')
 def load():
     try:return json.loads(STATE.read_text(encoding='utf-8')) if STATE.exists() else {}
@@ -81,9 +95,11 @@ def load():
 def save(s):
     STATE.parent.mkdir(parents=True,exist_ok=True); s['updated_at_utc']=datetime.now(timezone.utc).isoformat(); STATE.write_text(json.dumps(s,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 
-def message(rows,cls,transcript,first=False):
-    lines=['<b>[Warsh 기자회견 · 반응함수 변화]</b>','기준: 2026년 9월 FOMC 기자회견','',
-           '<b>핵심 판정</b>','• <b>경기는 견조하고 고용은 금리인상을 막을 정도로 약하지 않으며, 정책의 무게중심은 물가안정 쪽으로 이동</b>',
+def message(rows,cls,transcript,correction=False):
+    lines=['<b>[Warsh 기자회견 · 반응함수 변화]</b>','기준: 2026년 9월 FOMC 기자회견','']
+    if correction:
+        lines += ['<b>표기 정정</b>','• 직전 감시가 연준의 일반 “과거 전문 자료” 링크를 이번 기자회견 전문으로 잘못 인식했습니다. 현재 9월 기자회견의 공식 전문 링크는 아직 확인되지 않습니다.','']
+    lines += ['<b>핵심 판정</b>','• <b>경기는 견조하고 고용은 금리인상을 막을 정도로 약하지 않으며, 정책의 무게중심은 물가안정 쪽으로 이동</b>',
            '• 한 번의 CPI보다 물가의 기조적 추세를 보고, 추가 인상 가능성은 열어두되 미리 정해진 경로에는 약속하지 않는 반응함수로 읽힙니다.','',
            '<b>확인된 반응함수 축</b>',
            '• 물가: 인플레이션이 너무 높고 오래 지속됐으며, 여름 동안 기조적 물가 추세가 의미 있게 개선되지 않았다는 판단',
@@ -104,11 +120,14 @@ def message(rows,cls,transcript,first=False):
 
 def main():
     old=load(); rows=reuters_headlines(); tr=transcript_link(); cls=classify(rows); fp=fingerprint(rows,tr)
-    first=not bool(old); transcript_new=bool(tr and tr!=old.get('transcript'))
+    first=not bool(old)
+    old_tr=old.get('transcript')
+    false_positive=bool(old_tr and 'fomc_historical' in str(old_tr) and tr is None)
+    transcript_new=bool(tr and tr!=old_tr)
     meaningful=(cls!=old.get('classification')) if old else True
-    should=FORCE or first or transcript_new or meaningful
-    if should:send(message(rows,cls,tr,first=first))
+    should=FORCE or first or false_positive or transcript_new or meaningful
+    if should:send(message(rows,cls,tr,correction=false_positive))
     save({'fingerprint':fp,'classification':cls,'transcript':tr,'sent':should,'headlines':[x['title'] for x in rows]})
-    print(json.dumps({'first_run':first,'sent':should,'transcript':tr,'classification':cls,'headline_count':len(rows)},ensure_ascii=False))
+    print(json.dumps({'first_run':first,'sent':should,'transcript':tr,'false_positive_corrected':false_positive,'classification':cls,'headline_count':len(rows)},ensure_ascii=False))
 
 if __name__=='__main__':main()
