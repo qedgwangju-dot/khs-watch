@@ -1,10 +1,10 @@
 {
-  "divergence_short_covering_but_yen_weak": true,
+  "divergence_short_covering_but_yen_weak": false,
   "evidence": {
     "rebuild::FX 변동성 비상승": true,
     "rebuild::USD/JPY 상승·엔화 재약세": false,
-    "rebuild::USD/JPY 완만한 상승 방향": true,
-    "rebuild::레버리지 엔화 숏 축소에도 USD/JPY 상승": true,
+    "rebuild::USD/JPY 완만한 상승 방향": false,
+    "rebuild::레버리지 엔화 숏 축소에도 USD/JPY 상승": false,
     "rebuild::미·일 2년 금리차 여전히 넓음": true,
     "rebuild::미·일 2년 금리차 재확대": false,
     "rebuild::일본 거주자 해외주식·장기채 순매수": false,
@@ -16,16 +16,16 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 2.7889819145202637,
+  "fx_age_seconds": 7.589404106140137,
   "fx_signal_eligible": true,
   "initialized": true,
   "policy_path": {
     "cftc_net_short": 49098.0,
     "cftc_net_short_change": 0.0,
     "cftc_net_short_pct_oi": 9.826773544687622,
-    "checked_at_kst": "2026-09-17T03:29:18+09:00",
+    "checked_at_kst": "2026-09-17T06:38:39+09:00",
     "elevated_vol": false,
-    "fx_vol_ratio": 1.1891991199283394,
+    "fx_vol_ratio": 1.4493144933049407,
     "gradual_absorption": true,
     "hawkish_repricing_proxy": false,
     "initialized": true,
@@ -57,7 +57,7 @@
   },
   "real_rate_overlay": {
     "available": true,
-    "checked_at_kst": "2026-09-17T03:29:20+09:00",
+    "checked_at_kst": "2026-09-17T06:38:42+09:00",
     "initialized": true,
     "inputs": {
       "boj_effective_date": null,
@@ -102,8 +102,8 @@
       "real_gap_alert_pp": 0.25
     }
   },
-  "rebuild_label": "엔화 재약세·캐리 재구축 경계",
-  "rebuild_level": 1,
+  "rebuild_label": "엔화 재약세·캐리 재구축 미확인",
+  "rebuild_level": 0,
   "source_dates": {
     "cftc": "2026-09-08",
     "jgb2": "2026/9/15",
@@ -117,25 +117,25 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-09-17T03:29:10+09:00"
+    "updated_at_kst": "2026-09-17T06:38:33+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-09-17T03:28:42+09:00",
+  "updated_at_kst": "2026-09-17T06:37:50+09:00",
   "values": {
     "cftc_net_short": 49098,
     "cftc_net_short_pct_oi": 9.826773544687622,
-    "fx_12h_5m_sigma_bps": 2.9564285303185938,
-    "fx_vol_ratio": 1.1891991199283394,
+    "fx_12h_5m_sigma_bps": 3.7245300759509337,
+    "fx_vol_ratio": 1.4493144933049407,
     "jgb2": 1.861,
     "mof_latest_2w_outward_trillion_yen": -1.1578,
     "mof_prior_2w_outward_trillion_yen": -0.31,
     "us_jp_2y_spread": 2.809,
-    "usdjpy": 155.52499389648438,
-    "usdjpy_12h_drawdown_pct": -0.00707333815549905,
-    "usdjpy_15m_pct": 0.025721636155140427,
-    "usdjpy_30m_pct": 0.1758399228667087,
-    "usdjpy_60m_pct": 0.27400888216929403,
+    "usdjpy": 156.20599365234375,
+    "usdjpy_12h_drawdown_pct": -0.11127460355251295,
+    "usdjpy_15m_pct": 0.0012796736539127487,
+    "usdjpy_30m_pct": -0.0019243330745089067,
+    "usdjpy_60m_pct": -0.09083169804721121,
     "ust2": 4.67
   }
 }
