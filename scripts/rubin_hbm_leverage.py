@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-# Existing Rubin/HBM workflow trigger; strategic SK hynix alert logic remains in skhynix_us_memory_watch.py.
 import html
 import pathlib
 import re
