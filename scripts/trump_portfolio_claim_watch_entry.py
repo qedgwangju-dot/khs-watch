@@ -2,11 +2,13 @@
 """Readable Korean wrapper for Trump portfolio claim Telegram alerts."""
 
 import datetime as dt
+import hashlib
 import html
 import json
 import re
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 
 import trump_portfolio_claim_watch as watch
 
@@ -20,7 +22,33 @@ KNOWN_TITLE_KO = {
         "트럼프, 엔비디아 등 AI 관련주를 추가하며 포트폴리오 재편",
     "Trump's updated portfolio is basically a bet that America wins the AI race.":
         "트럼프의 업데이트된 포트폴리오는 미국이 AI 경쟁에서 승리할 것이라는 베팅에 가깝다",
+    "Trump out-traded all members of Congress combined - report":
+        "트럼프 측 증권 거래 건수, 미 의회 전체 합산치 상회 — 보도",
+    "Trump Made More Stock Trades Than Congress Combined While Pushing a Trading Ban":
+        "트럼프 측 증권 거래 건수, 의회 전체보다 많아…의원 주식거래 제한 법안과 대비",
+    "Trump Made More Trades Than All of Congress":
+        "트럼프 측 증권 거래 건수, 미 의회 전체 합산치 상회",
 }
+
+POLICY_SEED = {
+    "id": "trump-vs-congress-trades-2026-09-15",
+    "title": "Trump out-traded all members of Congress combined - report",
+    "source": "Bloomberg 분석 인용 보도",
+    "published": "2026-09-15",
+    "url": "https://www.tradingview.com/news/seekingalpha%3A0af0473d8094b%3A0-trump-out-traded-all-members-of-congress-combined-report/",
+    "kind": "congress_trade_policy",
+}
+
+POLICY_QUERIES = [
+    '"Trump out-traded" Congress',
+    'Trump 28700 trades 22200 Congress',
+    'Trump stock trades Congress trading ban',
+    'Trump "Stop Insider Trading Act" trades',
+    '트럼프 거래 의회 전체 주식거래 금지',
+]
+
+GOVINFO_HR7008 = "https://www.govinfo.gov/app/details/BILLS-119hr7008eh"
+HOUSE_HR7008 = "https://cha.house.gov/press-releases?id=1961B99D-475D-4240-864B-A42F219CF63C"
 
 
 def _needs_korean_translation(text: str) -> bool:
@@ -79,6 +107,56 @@ def _link(label, url):
     return f'<a href="{html.escape(url, quote=True)}">{html.escape(label)}</a>'
 
 
+def _discover_policy_claims():
+    out = {POLICY_SEED["id"]: dict(POLICY_SEED)}
+    for query in POLICY_QUERIES:
+        for rss_url in watch._rss_urls(query):
+            try:
+                root = ET.fromstring(watch._get(rss_url))
+            except Exception as e:
+                print(f"WARN policy RSS fetch/parse failed: {rss_url}: {e}")
+                continue
+            for item in root.findall(".//item"):
+                title = watch._strip_tags(item.findtext("title"))
+                link = (item.findtext("link") or "").strip()
+                desc = watch._strip_tags(item.findtext("description"))
+                pub = watch._strip_tags(item.findtext("pubDate"))
+                hay = f"{title} {desc}".lower()
+                if not link:
+                    continue
+                if "trump" not in hay and "트럼프" not in hay:
+                    continue
+                policy_keys = [
+                    "congress", "의회", "trading ban", "stock trading", "insider trading",
+                    "out-traded", "28,700", "28700", "22,200", "22200",
+                ]
+                if not any(k in hay for k in policy_keys):
+                    continue
+                cid = hashlib.sha256(link.encode("utf-8")).hexdigest()[:24]
+                out[cid] = {
+                    "id": cid,
+                    "title": title or "트럼프 증권거래·의회 거래제한 관련 보도",
+                    "source": "웹 검색",
+                    "published": pub or "",
+                    "url": link,
+                    "kind": "congress_trade_policy",
+                }
+    return list(out.values())
+
+
+_original_discover_claims = watch.discover_claims
+
+
+def discover_claims_extended():
+    out = {x["id"]: x for x in _original_discover_claims()}
+    for x in _discover_policy_claims():
+        out[x["id"]] = x
+    return list(out.values())
+
+
+watch.discover_claims = discover_claims_extended
+
+
 def build_seed_message_readable(c):
     return "\n".join(
         [
@@ -114,6 +192,54 @@ def build_seed_message_readable(c):
             f"{_link('원문', c['url'])}  |  {_link('OGE 공식 연례보고서', watch.OGE_ANNUAL_PAGE)}  |  {_link('OGE 거래신고', watch.OGE_JUNE_TRADES)}",
         ]
     )
+
+
+def build_congress_trade_policy_digest(claims):
+    lines = [
+        "📊 <b>트럼프 증권거래량 vs 미 의회 — 새 분석</b>",
+        "<b>판정  🟡 Bloomberg 집계 보도 + 공식 법안 교차확인</b>",
+        "",
+        "<b>한눈에 보기</b>",
+        "• Bloomberg가 공개 신고를 분석한 결과, 트럼프 또는 자산관리인의 증권 거래는 두 번째 취임 후 2026년 6월 말까지 약 <b>28,700건</b>",
+        "• 같은 기간 미 상·하원 의원 전체가 신고한 유사 거래는 약 <b>22,200건</b>",
+        "• 차이: 약 <b>6,500건</b> · 트럼프 측 집계가 의회 전체보다 약 <b>29%</b> 많음",
+        "• 중요: 28,700건과 22,200건은 <b>Bloomberg의 공개 신고 집계</b>이며 하나의 정부 공식 총계 표에서 나온 숫자는 아닙니다.",
+        "",
+        "🏛 <b>법안 상태</b>",
+        "• 법안: <b>H.R. 7008 Stop Insider Trading Act</b>",
+        "• 2026년 7월 22일 하원 통과: <b>232대 198</b>",
+        "• 2026년 8월 6일 상원 일정표에 올라간 상태",
+        "• 적용 대상: <b>연방 의원·배우자·부양 자녀</b>",
+        "• 현행 하원 통과안의 적용 대상 정의에는 <b>대통령이 포함되지 않습니다.</b>",
+        "",
+        "💼 <b>최근 OGE 거래와 연결</b>",
+        "• 6월 신고에는 <b>1,051건</b>의 거래가 포함됐습니다.",
+        "• 단일 최대 공개 범위 거래: 6월 22일 <b>VIG 500만~2,500만달러 매도</b>",
+        "• 6월 18일 BRK.B·CTAS·V·MA를 각각 <b>100만~500만달러 매수</b>",
+        "• Palantir(PLTR)은 같은 달 <b>매수와 매도가 모두 확인</b>돼 단순 ‘대량 순매수’로 표현하면 부정확합니다.",
+        "",
+        "⚖️ <b>해석 주의</b>",
+        "• 거래신고는 거래 사실과 금액 범위를 보여주지만 <b>누가 개별 주문을 결정했는지</b>까지 증명하지 않습니다.",
+        "• 백악관은 투자계좌가 독립적으로 관리되는 모델 포트폴리오라고 설명해 왔습니다.",
+        "• 거래일과 정책·시장 이벤트가 겹친다는 사실만으로 내부정보 이용이나 동기를 단정하지 않습니다.",
+        "",
+        "🗞 <b>관련 보도</b>",
+    ]
+
+    for i, c in enumerate(claims[:5], 1):
+        source, raw_title = _split_source_title(c)
+        title_ko = translate_title_ko(raw_title)
+        lines += [
+            f"<b>{i}. {_e(source)}</b>",
+            f"   {_e(title_ko)}",
+            f"   {_link('원문', c['url'])}",
+        ]
+
+    lines += [
+        "",
+        f"{_link('H.R. 7008 공식 법안', GOVINFO_HR7008)}  |  {_link('하원 위원회 설명', HOUSE_HR7008)}  |  {_link('OGE 6월 거래신고', watch.OGE_JUNE_TRADES)}",
+    ]
+    return "\n".join(lines)
 
 
 def build_generic_digest(claims):
@@ -155,7 +281,6 @@ def build_generic_digest(claims):
     return "\n".join(lines)
 
 
-# Override the single seeded-claim format with the new visual hierarchy.
 watch.build_seed_message = build_seed_message_readable
 
 
@@ -176,7 +301,8 @@ def main_readable():
         return
 
     seeded = [x for x in new if x.get("kind") == "viral_exact_weights"]
-    generic = [x for x in new if x.get("kind") != "viral_exact_weights"][:5]
+    policy = [x for x in new if x.get("kind") == "congress_trade_policy"][:5]
+    generic = [x for x in new if x.get("kind") not in {"viral_exact_weights", "congress_trade_policy"}][:5]
 
     for c in seeded:
         watch.telegram_api(
@@ -190,6 +316,20 @@ def main_readable():
             },
         )
         seen.add(c["id"])
+
+    if policy:
+        watch.telegram_api(
+            token,
+            "sendMessage",
+            {
+                "chat_id": chat_id,
+                "text": build_congress_trade_policy_digest(policy),
+                "parse_mode": "HTML",
+                "disable_web_page_preview": "true",
+            },
+        )
+        for c in policy:
+            seen.add(c["id"])
 
     if generic:
         watch.telegram_api(
@@ -205,7 +345,6 @@ def main_readable():
         for c in generic:
             seen.add(c["id"])
 
-    # On the first scan, mark old indexed results seen to avoid historical backfill spam.
     if state.get("updated_at") is None:
         for c in claims:
             seen.add(c["id"])
