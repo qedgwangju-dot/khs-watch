@@ -1,14 +1,42 @@
 #!/usr/bin/env python3
-"""Add concise Bessent-policy and stock-impact interpretation to audited CTA alerts."""
+"""Add readable equity interpretation plus scheduled CTA reports.
+
+Delivery policy:
+- keep the audited composite squeeze gate for event-driven alerts
+- always send one Monday weekly status report
+- always send one FOMC decision-eve report on the Korean calendar day before the
+  2:00 p.m. ET decision reaches Korea
+- preserve state keys only after the workflow confirms Telegram delivery
+"""
 from __future__ import annotations
 
+import json
 import re
+from datetime import date, datetime, time, timedelta
+from zoneinfo import ZoneInfo
 
 import treasury_cta_squeeze_audited_watch as audited
 
 watcher = audited.watcher
-watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 9)
+watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 10)
 _base_format = audited.format_alert
+_base_main = watcher.main
+
+NY = ZoneInfo("America/New_York")
+KST = ZoneInfo("Asia/Seoul")
+
+# Federal Reserve published meeting-end dates. On these Korean evenings the
+# 2:00 p.m. ET decision arrives in Korea early the following calendar day.
+FOMC_END_DATES = {
+    "2026-01-28", "2026-03-18", "2026-04-29", "2026-06-17",
+    "2026-07-29", "2026-09-16", "2026-10-28", "2026-12-09",
+    "2027-01-27", "2027-03-17", "2027-04-28", "2027-06-09",
+    "2027-07-28", "2027-09-15", "2027-10-28", "2027-12-08",
+}
+FOMC_SEP_END_DATES = {
+    "2026-03-18", "2026-06-17", "2026-09-16", "2026-12-09",
+    "2027-03-17", "2027-06-09", "2027-09-15", "2027-12-08",
+}
 
 
 def _equity_impact(snapshot: dict, previous: dict, reasons: list[str]) -> tuple[str, str]:
@@ -20,14 +48,14 @@ def _equity_impact(snapshot: dict, previous: dict, reasons: list[str]) -> tuple[
     prices_up = audited._price_up_count(snapshot)
     short_bias = any("CFTC 숏 축소" in r or "CFTC 주간 숏 축소" in r for r in reasons)
     if evidence and z <= -1.0 and repo_ok:
-        return "🟢 성장주 우호 강화", "금리↓가 포지션과 함께 확인 → 나스닥·반도체 할인율 우호. 경기침체형 하락은 제외."
+        return "🟢 성장주 우호 강화", "금리 하락이 포지션 청산과 함께 확인되는 단계"
     if (short_bias or prices_up >= 2) and repo_ok:
-        return "🟡 중립~약한 우호", f"숏은 완화됐지만 10Y {yld:.3f}%·z={z:+.2f}σ로 추세전환 미확인."
-    return "⚪ 중립", f"10Y {yld:.3f}%: 할인율 완화 미확인."
+        return "🟡 중립~약한 우호", f"숏 압력은 완화될 수 있지만 10Y {yld:.3f}%·z={z:+.2f}σ로 추세전환은 아직 미확인"
+    return "⚪ 중립", f"10Y {yld:.3f}%에서 할인율 완화 신호가 아직 확인되지 않음"
 
 
 def _compact_duplicates(body: str) -> str:
-    """Remove only lines duplicated by stronger audited disclosures; preserve core data."""
+    """Remove repeated caveats while preserving the raw evidence sections."""
     drops = (
         "• Goldman CTA DV01: 공개 공식 피드 없음 — 신뢰/명시적 2차 출처의 신규 인용만 감시\n",
         "• +2σ 채권가격 상승 시 대규모 환매 추정치가 새로 인용되면 별도 변화로 감지합니다.\n",
@@ -43,25 +71,165 @@ def _compact_duplicates(body: str) -> str:
     return body
 
 
+def _checked_date(snapshot: dict) -> date:
+    raw = str(snapshot.get("checked_kst") or "")
+    try:
+        return datetime.fromisoformat(raw).astimezone(KST).date()
+    except Exception:
+        return datetime.now(KST).date()
+
+
+def _fomc_times(end_day: date) -> tuple[datetime, datetime]:
+    decision_et = datetime.combine(end_day, time(14, 0), tzinfo=NY)
+    press_et = datetime.combine(end_day, time(14, 30), tzinfo=NY)
+    return decision_et.astimezone(KST), press_et.astimezone(KST)
+
+
+def _easy_read_block(snapshot: dict, previous: dict, reasons: list[str]) -> str:
+    y = snapshot.get("yield10") or {}
+    yld = float(y.get("yield") or 0.0)
+    z = float(y.get("z20") or 0.0)
+    evidence = watcher.squeeze_evidence(snapshot, previous)
+    repo_ok, repo_worse = audited._repo_not_worse(snapshot, previous)
+    prices_up = audited._price_up_count(snapshot)
+    direction, _ = audited._direction_label(snapshot, previous, reasons)
+
+    lines = [
+        "<b>👀 지금 쉽게 보면</b>",
+        f"• 현재는 <b>{direction}</b> — 10년물 {yld:.3f}% · 20일 z={z:+.2f}σ",
+        f"• 선물은 ZN/ZB/UB 중 {prices_up}개 상승 · 동일 범위 OI 감소는 {'확인' if evidence else '미확인'}",
+        f"• 자금조달은 {'안정' if repo_ok else '주의: ' + ', '.join(repo_worse)}",
+        "• 해석: 숏이 많이 쌓여 있어도 자동으로 금리가 내려가는 것은 아닙니다. 채권가격 상승과 같은 범위 OI 감소가 붙어야 ‘숏커버가 실제로 시작됐다’는 증거가 강해집니다.",
+    ]
+
+    if any("FOMC 전날 점검" in r for r in reasons):
+        d = _checked_date(snapshot)
+        decision_kst, press_kst = _fomc_times(d)
+        start = d - timedelta(days=1)
+        sep = " · 점도표·경제전망 동반" if d.isoformat() in FOMC_SEP_END_DATES else ""
+        lines.extend([
+            "",
+            "<b>⚡ 내일 FOMC — 왜 지금 보내나</b>",
+            f"• 공식 일정: 미국 {start:%m/%d}~{d:%m/%d} 회의{sep}",
+            f"• 결정문: 한국시간 {decision_kst:%m/%d %H:%M} · 기자회견: {press_kst:%H:%M}",
+            "• 발표 직후에는 10년물과 ZN/ZB/UB 가격이 먼저 반응합니다. OI·CFTC는 후행 확인이므로 금리 하락 한 번만 보고 숏 스퀴즈로 확정하지 않습니다.",
+            "• 핵심 확인 순서: 10년물 급락 → 선물 상승 → repo 비악화 → 다음 공식 OI/CFTC에서 숏 축소 확인.",
+        ])
+
+    if any("월요일 정기점검" in r for r in reasons):
+        lines.extend([
+            "",
+            "<b>📅 월요일 주간 점검</b>",
+            "• 이번 주도 4.50→4.40→4.35→4.30%와 -1σ/-2σ 진입을 단계별로 확인합니다.",
+            "• 월요일 보고는 신호가 없어도 1회 발송하고, 주중에는 복합 조건이 강화될 때만 추가 발송합니다.",
+        ])
+
+    return "\n".join(lines) + "\n\n"
+
+
 def format_alert(snapshot, previous, fx, fx_date, reasons):
     title, body = _base_format(snapshot, previous, fx, fx_date, reasons)
     body = _compact_duplicates(body)
+
+    if any("FOMC 전날 점검" in r for r in reasons):
+        title = "🚨 미 국채 CTA · FOMC 전날 점검"
+    elif any("월요일 정기점검" in r for r in reasons):
+        title = "📅 미 국채 CTA · 월요일 주간 점검"
+
+    body = _easy_read_block(snapshot, previous, reasons) + body
+
     impact, path = _equity_impact(snapshot, previous, reasons)
     block = (
-        "<b>🧭 정책·주식 해석</b>\n"
-        "• Bessent 공식선=<b>유동성·변동성 완화</b>; 4.30%·수익률통제·QE는 공식 목표 아님. CTA 숏커버는 정책 목표가 아니라 시장에서 나타날 수 있는 증폭 결과.\n"
-        "• 역할 분리: 바이백 한도·일정은 정책 알림, 총 제시액·실제 매입액은 집행 알림, 이 CTA 알림은 포지션→금리→주식시장 증폭만 판정.\n"
-        "• 매입액이 커도 그것만으로 금리관리로 판정하지 않음. 시장 기능이 정상인데 특정 금리 수준에 맞춘 매입·발행조정이 반복될 때만 🟠 사실상 금리관리 경보.\n"
-        f"• 주식: <b>{impact}</b> — {path}\n"
-        "• 10Y 4.50% 하향/-1σ+선물↑면 우호 격상; repo·신용스트레스형 또는 경기침체형 금리↓는 위험자산 호재로 보지 않음. 발언 한 건만으로 재발송하지 않음.\n\n"
+        "<b>🧭 주식시장에 무슨 뜻?</b>\n"
+        f"• 현재: <b>{impact}</b> — {path}.\n"
+        "• 10년물 하락이 실제 숏커버로 확인되면 성장주·반도체에는 할인율 측면에서 우호적입니다.\n"
+        "• 반대로 repo·신용 스트레스나 경기충격 때문에 금리가 내려가면 위험자산 호재로 보지 않습니다.\n\n"
     )
     marker = "<b>한 줄 결론</b>"
-    if "🧭 정책·주식 해석" not in body:
+    if "🧭 주식시장에 무슨 뜻?" not in body:
         body = body.replace(marker, block + marker, 1) if marker in body else body + "\n\n" + block.rstrip()
+
     return title, body
 
 
+def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, str, str]:
+    snapshot = next_state.get("snapshot") or {}
+    d = _checked_date(snapshot)
+    iso = d.isocalendar()
+    week_key = f"{iso.year}-W{iso.week:02d}"
+    date_key = d.isoformat()
+    monday_due = d.weekday() == 0 and current_state.get("last_weekly_report_key") != week_key
+    fomc_due = date_key in FOMC_END_DATES and current_state.get("last_fomc_eve_report") != date_key
+    return monday_due, fomc_due, week_key, date_key
+
+
+def scheduled_main() -> int:
+    current_state = watcher.load_state()
+    rc = _base_main()
+    if rc != 0 or not watcher.NEXT_STATE.exists():
+        return rc
+
+    next_state = json.loads(watcher.NEXT_STATE.read_text(encoding="utf-8"))
+    monday_due, fomc_due, week_key, date_key = _scheduled_due(current_state, next_state)
+    if not (monday_due or fomc_due):
+        return rc
+
+    reasons: list[str] = []
+    if watcher.DETAIL.exists():
+        try:
+            detail_existing = json.loads(watcher.DETAIL.read_text(encoding="utf-8"))
+            reasons.extend(detail_existing.get("alert_reasons") or [])
+        except Exception:
+            pass
+    if monday_due:
+        reasons.append("월요일 정기점검")
+    if fomc_due:
+        reasons.append("FOMC 전날 점검")
+
+    # Keep order while removing duplicate reason strings.
+    reasons = list(dict.fromkeys(reasons))
+    snapshot = next_state.get("snapshot") or {}
+    previous = current_state.get("snapshot") or {}
+    fx, fx_date = watcher.latest_fx()
+    title, body = format_alert(snapshot, previous, fx, fx_date, reasons)
+    if len(title) + 2 + len(body) > 4096:
+        raise RuntimeError(f"Telegram message too long: {len(title)+2+len(body)}")
+
+    watcher.TITLE.write_text(title + "\n", encoding="utf-8")
+    watcher.ALERT.write_text(body + "\n", encoding="utf-8")
+    watcher.DETAIL.write_text(
+        json.dumps(
+            {
+                **snapshot,
+                "dedupe_gate": next_state.get("last_gate") or {},
+                "alert_reasons": reasons,
+                "scheduled_delivery": {
+                    "monday_weekly": monday_due,
+                    "fomc_eve": fomc_due,
+                },
+            },
+            ensure_ascii=False,
+            indent=2,
+        ) + "\n",
+        encoding="utf-8",
+    )
+
+    if monday_due:
+        next_state["last_weekly_report_key"] = week_key
+    if fomc_due:
+        next_state["last_fomc_eve_report"] = date_key
+    watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    with watcher.STATUS.open("a", encoding="utf-8") as f:
+        if monday_due:
+            f.write("- 예약 발송: 월요일 주간 점검\n")
+        if fomc_due:
+            f.write("- 예약 발송: FOMC 전날 점검\n")
+    return rc
+
+
 audited.format_alert = format_alert
+watcher.main = scheduled_main
 
 if __name__ == "__main__":
     raise SystemExit(watcher.main())
