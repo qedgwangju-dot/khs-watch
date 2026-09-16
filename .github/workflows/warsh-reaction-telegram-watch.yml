@@ -39,6 +39,7 @@ on:
       - 'scripts/warsh_sep_path_watch.py'
       - 'scripts/warsh_ib_consensus_watch.py'
       - 'scripts/warsh_fomc_event_watch.py'
+      - 'scripts/warsh_fomc_event_watch_v2.py'
       - 'scripts/market_internal_strength_watch.py'
       - '.github/workflows/warsh-reaction-telegram-watch.yml'
 
@@ -109,7 +110,7 @@ jobs:
           python scripts/warsh_balance_sheet_watch.py
           python scripts/warsh_sep_path_watch.py
           python scripts/warsh_ib_consensus_watch.py
-          python scripts/warsh_fomc_event_watch.py
+          python scripts/warsh_fomc_event_watch_v2.py
 
       - name: Check AI rotation and US market internal strength on exact Telegram
         if: ${{ always() && !cancelled() }}
