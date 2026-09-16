@@ -1,0 +1,21 @@
+{
+  "initialized": true,
+  "format_version": 1,
+  "baseline": {
+    "phantom_load_pct": 19.0,
+    "restudy_min_months": 6,
+    "restudy_one_year_plus": true,
+    "pjm_2024_dc_transmission_projects": 130,
+    "pjm_2024_dc_transmission_usd_b": 4.3,
+    "cost_recovery_agreement": true,
+    "escalating_readiness_requirements": true
+  },
+  "seen_ids": [
+    "ba2d717d8300e61cf63b",
+    "67cbca702a8bc4ceebd5"
+  ],
+  "last_fx_krw_per_usd": 1360.361778,
+  "fx_source": "ER-API",
+  "fx_checked_utc": "2026-09-16T05:04:55+00:00",
+  "updated_at_utc": "2026-09-16T05:04:56+00:00"
+}
