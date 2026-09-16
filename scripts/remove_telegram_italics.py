@@ -6,6 +6,7 @@ FILES = (
     Path("out/pjm_data_center_policy_alert.txt"),
     Path("out/us_data_center_time_to_power_alert.txt"),
     Path("out/us_data_center_generation_buildout_alert.txt"),
+    Path("out/us_data_center_cancellation_risk_alert.txt"),
 )
 
 PJM_FORMAT_ONLY_TITLE = "PJM 데이터센터 전력정책 알림 표시방식 업그레이드 완료"
@@ -30,6 +31,11 @@ STATE_GATES = (
         Path("out/us_data_center_generation_buildout_alert.txt"),
         Path("out/us_data_center_generation_buildout_pending_state.json"),
         Path("data/us_data_center_generation_buildout_state.json"),
+    ),
+    (
+        Path("out/us_data_center_cancellation_risk_alert.txt"),
+        Path("out/us_data_center_cancellation_risk_pending_state.json"),
+        Path("data/us_data_center_cancellation_risk_state.json"),
     ),
 )
 
