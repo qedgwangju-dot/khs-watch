@@ -1,6 +1,27 @@
 {
-  "last_statement_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
+  "last_statement_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
   "current_statement": {
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+    "date": "2026-09-16",
+    "low": 3.75,
+    "high": 4.0,
+    "mid": 3.875,
+    "against": null
+  },
+  "last_sep_url": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm",
+  "current_sep": {
+    "url": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm",
+    "date": "2026-09-16",
+    "funds_2026": 4.1,
+    "funds_2027": 4.1,
+    "funds_2028": 3.9,
+    "funds_longer": 3.6,
+    "pce_2026": 3.7,
+    "core_pce_2026": 3.4,
+    "unemployment_2026": 4.1
+  },
+  "followups_sent": [],
+  "previous_statement": {
     "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
     "date": "2026-07-29",
     "low": 3.5,
@@ -8,8 +29,7 @@
     "mid": 3.625,
     "against": null
   },
-  "last_sep_url": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260617.htm",
-  "current_sep": {
+  "previous_sep": {
     "url": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260617.htm",
     "date": "2026-06-17",
     "funds_2026": 3.8,
@@ -20,5 +40,32 @@
     "core_pce_2026": 3.3,
     "unemployment_2026": 4.3
   },
-  "followups_sent": []
+  "event_detected_at_utc": "2026-09-16T20:18:14.912753+00:00",
+  "event_statement_date": "2026-09-16",
+  "decision_market": {
+    "10년물": {
+      "value": 5.00600004196167,
+      "timestamp": "2026-09-16T18:55:00+00:00"
+    },
+    "S&P 500": {
+      "value": 7551.81005859375,
+      "timestamp": "2026-09-16T20:00:00+00:00"
+    },
+    "나스닥": {
+      "value": 25978.423828125,
+      "timestamp": "2026-09-16T20:00:00+00:00"
+    },
+    "달러지수": {
+      "value": 100.26899719238281,
+      "timestamp": "2026-09-16T20:08:12+00:00"
+    },
+    "금": {
+      "value": 4309.10009765625,
+      "timestamp": "2026-09-16T20:08:05+00:00"
+    },
+    "비트코인": {
+      "value": 76237.8984375,
+      "timestamp": "2026-09-16T20:18:09+00:00"
+    }
+  }
 }
