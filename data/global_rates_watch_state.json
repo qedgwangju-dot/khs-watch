@@ -5,9 +5,9 @@
     "ust2": 4.67,
     "ust10": 5.0,
     "ust30": 5.36,
-    "usdjpy": 155.9149932861328,
+    "usdjpy": 155.82000732421875,
     "us_jp_2y_spread": 2.809,
-    "usdjpy_daily_change_pct": 0.5267547267190535
+    "usdjpy_daily_change_pct": 0.48365252116865376
   },
   "active": {
     "jgb10:above:3.0": true,
@@ -29,13 +29,13 @@
     "usdjpy": "2026-09-16"
   },
   "classification": "엔캐리 청산 경계 — 환율 확인, 금리차는 아직 미충족",
-  "updated_at_kst": "2026-09-17T03:59:23+09:00",
+  "updated_at_kst": "2026-09-17T04:06:22+09:00",
   "date_alignment": {
     "jgb2_date": "2026/9/15",
     "ust2_date": "2026-09-15",
     "same_2y_date": true,
     "latest_rate_date": "2026-09-15",
     "live_fx_signal_eligible": true,
-    "live_fx_timestamp_utc": "2026-09-16T18:59:43Z"
+    "live_fx_timestamp_utc": "2026-09-16T19:06:42Z"
   }
 }
