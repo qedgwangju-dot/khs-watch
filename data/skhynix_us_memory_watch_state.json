@@ -1,8 +1,14 @@
 {
-  "updated_at_kst": "2026-09-17T07:28:00+09:00",
-  "seen_ids": [],
-  "seen_fact_keys": [],
-  "last_event_count": 5,
-  "last_fresh_count": 5,
-  "alert_generated": false
+  "updated_at_kst": "2026-09-17T07:23:37+09:00",
+  "seen_ids": [
+    "20ff47034164e82ed7293d07",
+    "2191f4aed347a39aac0ede1c",
+    "6726727c1bf02c474d93b3dc"
+  ],
+  "seen_fact_keys": [
+    "skhynix_intel_us_memory_talks"
+  ],
+  "last_event_count": 3,
+  "last_fresh_count": 3,
+  "alert_generated": true
 }
