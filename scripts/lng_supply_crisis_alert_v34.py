@@ -275,6 +275,38 @@ def _build_alaska_body_v34(groups) -> str:
     )
 
 
+def _self_validate_alaska_body_v34() -> None:
+    fixture = core.NewsItem(
+        category=ALASKA_CATEGORY,
+        polarity="worsening",
+        subtype="alaska_lng_cost_scale",
+        title="Trump's vision of Alaska as LNG superpower confronts an $80bn test",
+        source="Financial Times",
+        link="https://example.com/alaska-lng",
+        published_utc="2026-09-15T00:00:00+00:00",
+        published_epoch=1.0,
+        official=False,
+        event_id="fixture-alaska-lng",
+    )
+    body = _build_alaska_body_v34([{
+        "category": ALASKA_CATEGORY,
+        "polarity": "worsening",
+        "subtype": "alaska_lng_cost_scale",
+        "event_id": "fixture-alaska-lng",
+        "latest_epoch": 1.0,
+        "evidence": [fixture],
+        "verification": "주요 신뢰매체 보도 단계",
+    }])
+    assert "알래스카 LNG·대체공급 프로젝트 사업성·일정 위험 확대" in body
+    assert "현재 LNG 물량이 중단됐다는 뜻이 아니라" in body
+    assert "파이낸셜타임스" in body
+    assert "카타르 생산" not in body
+    assert "호르무즈 우회" not in body
+
+
+_self_validate_alaska_body_v34()
+
+
 def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
     title, body, metadata = _BASE_BUILD(groups, quotes, new_signals, cleared_signals)
     alaska = _alaska_groups(groups)
@@ -300,6 +332,7 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
         "headline_variants": ["Alaska + LNG", "$54.5bn", "$80bn", "LNG superpower"],
         "single_major_source_mode": "보도 단계만 허용",
         "interpretation_guard": "project timetable != current LNG supply outage",
+        "self_validation": "Alaska LNG body must not reuse Qatar/Hormuz outage wording",
         "state_file_preserved": str(core.STATE_PATH),
     }
     return title, body, metadata
