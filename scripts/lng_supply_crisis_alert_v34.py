@@ -6,6 +6,7 @@ v33의 정제제품 사건축을 유지하면서 다음만 수정한다.
 - Yahoo/Vitol 같은 영문 표시를 한국어로 정리
 - 2026-09-04 EIA 주간값은 9월 16일 다음 발표 이후 자동으로 고정값 노출 차단
 - Alaska LNG·Polar LNG·AGDC·Glenfarne 및 545억달러·800억달러 규모 변화 감시
+- 사우디 동서 송유관·Yanbu 원유 전용 기사는 LNG 공급경보에서 제외
 """
 from __future__ import annotations
 
@@ -73,6 +74,34 @@ ALASKA_MAJOR_SOURCES = (
     "associated press", "ap news", "cnbc", "s&p global commodity insights", "argus media",
 )
 
+LNG_RELEVANCE_TERMS = (
+    "lng", "liquefied natural gas", "natural gas", "gas tanker", "lng tanker",
+    "qatar lng", "qatarenergy", "jkm", "ttf",
+)
+SAUDI_OIL_ONLY_TERMS = (
+    "east-west pipeline", "east west pipeline", "yanbu", "saudi pipeline",
+    "crude cargo", "crude cargoes", "oil cargo", "oil cargoes",
+    "crude shipment", "crude shipments", "oil shipment", "oil shipments",
+)
+
+
+def _group_evidence_text(group) -> str:
+    parts: list[str] = []
+    for item in list(group.get("evidence") or []):
+        parts.append(str(getattr(item, "title", "") or ""))
+    return core.normalize_text(" ".join(parts))
+
+
+def _is_saudi_oil_only_group(group) -> bool:
+    if str(group.get("category") or "") != "hormuz_shipping":
+        return False
+    text = _group_evidence_text(group)
+    if "saudi" not in text:
+        return False
+    oil_route = any(term in text for term in SAUDI_OIL_ONLY_TERMS)
+    lng_relevant = any(term in text for term in LNG_RELEVANCE_TERMS)
+    return oil_route and not lng_relevant
+
 
 def classify_polarity_v34(category: str, title: str) -> str | None:
     if category != ALASKA_CATEGORY:
@@ -100,10 +129,12 @@ def category_label_v34(category: str) -> str:
 
 
 def confirmed_news_groups_v34(items: list[core.NewsItem]):
-    base = [
+    raw_base = [
         group for group in _BASE_CONFIRMED_V34(items)
         if str(group.get("category") or "") != ALASKA_CATEGORY
     ]
+    base = [group for group in raw_base if not _is_saudi_oil_only_group(group)]
+
     alaska_items = [item for item in items if item.category == ALASKA_CATEGORY]
     buckets: dict[tuple[str, str], list[core.NewsItem]] = {}
     for item in alaska_items:
@@ -304,7 +335,56 @@ def _self_validate_alaska_body_v34() -> None:
     assert "호르무즈 우회" not in body
 
 
+def _self_validate_lng_relevance_v34() -> None:
+    oil_item = core.NewsItem(
+        category="hormuz_shipping",
+        polarity="worsening",
+        subtype="pipeline_outage",
+        title="Saudi Arabia cancels some oil cargoes after East-West pipeline shutdown at Yanbu",
+        source="Reuters",
+        link="https://example.com/saudi-oil",
+        published_utc="2026-09-15T00:00:00+00:00",
+        published_epoch=1.0,
+        official=False,
+        event_id="fixture-saudi-oil",
+    )
+    oil_group = {
+        "category": "hormuz_shipping",
+        "polarity": "worsening",
+        "subtype": "pipeline_outage",
+        "event_id": "fixture-saudi-oil",
+        "latest_epoch": 1.0,
+        "evidence": [oil_item],
+        "verification": "신뢰 매체 2곳 교차",
+    }
+    assert _is_saudi_oil_only_group(oil_group)
+
+    lng_item = core.NewsItem(
+        category="hormuz_shipping",
+        polarity="worsening",
+        subtype="reroute",
+        title="Qatar LNG tanker reroutes as Strait of Hormuz shipping disruption worsens",
+        source="Reuters",
+        link="https://example.com/hormuz-lng",
+        published_utc="2026-09-15T00:00:00+00:00",
+        published_epoch=1.0,
+        official=False,
+        event_id="fixture-hormuz-lng",
+    )
+    lng_group = {
+        "category": "hormuz_shipping",
+        "polarity": "worsening",
+        "subtype": "reroute",
+        "event_id": "fixture-hormuz-lng",
+        "latest_epoch": 1.0,
+        "evidence": [lng_item],
+        "verification": "신뢰 매체 2곳 교차",
+    }
+    assert not _is_saudi_oil_only_group(lng_group)
+
+
 _self_validate_alaska_body_v34()
+_self_validate_lng_relevance_v34()
 
 
 def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
@@ -335,6 +415,10 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
         "self_validation": "Alaska LNG body must not reuse Qatar/Hormuz outage wording",
         "state_file_preserved": str(core.STATE_PATH),
     }
+    metadata["lng_relevance_guard"] = {
+        "exclude": "Saudi East-West pipeline/Yanbu crude-oil-only news without LNG/gas evidence",
+        "keep": "actual LNG/natural-gas/tanker/shipping evidence and independent market threshold signals",
+    }
     return title, body, metadata
 
 
@@ -348,9 +432,11 @@ def build_setup_test_v34(quotes):
         "\n• Alaska+LNG 및 $54.5bn·$80bn·LNG superpower 제목 표기도 동일 사건으로 감지"
         "\n• Alaska LNG 프로젝트는 주요 신뢰매체 1곳 보도도 '보도 단계'로 감지하고 공급 정상화 확정과 구분"
         "\n• Alaska LNG 프로젝트 뉴스는 현재 공급중단과 분리해 FID·자금조달·장기구매계약·착공 시간표로 해석"
+        "\n• 사우디 동서 송유관·Yanbu 원유 전용 보도는 LNG 직접 근거가 없으면 LNG 경보에서 제외"
     )
     metadata["version"] = 34
     metadata["alaska_lng_watch"] = True
+    metadata["lng_relevance_guard"] = True
     return title, body, metadata
 
 
