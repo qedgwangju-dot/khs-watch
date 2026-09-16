@@ -1,45 +1,35 @@
 #!/usr/bin/env python3
 import re
-from datetime import datetime, timezone
 
 import warsh_new_axes_watch as base
 import warsh_new_axes_watch_v3 as v3
 
-SCHEDULE_URL = 'https://www.bls.gov/schedule/news_release/prod2.htm'
-ARCHIVE_TEMPLATE = 'https://www.bls.gov/news.release/archives/prod2_{:%m%d%Y}.htm'
+# Use the official BLS current-release endpoint. The alert is still gated inside
+# v3 so only a release explicitly identified as 'Revised' can be sent.
+OFFICIAL_CURRENT = 'https://www.bls.gov/news.release/prod2.nr0.htm'
 
 
-def latest_revised_archive():
-    raw, _ = base.fetch(SCHEDULE_URL)
-    text = base.clean_text(raw)
-    rows = []
-    pattern = re.compile(
-        r'(First|Second|Third|Fourth)\s+Quarter\s+(20\d{2})\s+\(R\)\s+'
-        r'([A-Z][a-z]{2})\.?\s+(\d{1,2}),\s+(20\d{2})',
-        re.I,
-    )
-    month_map = {
-        'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
-        'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12,
-    }
-    today = datetime.now(timezone.utc).date()
-    for m in pattern.finditer(text):
-        mon = month_map.get(m.group(3).lower()[:3])
-        if not mon:
-            continue
-        d = datetime(int(m.group(5)), mon, int(m.group(4))).date()
-        if d <= today:
-            rows.append(d)
-    if not rows:
-        raise RuntimeError('BLS revised productivity schedule not parsed')
-    latest = max(rows)
-    return ARCHIVE_TEMPLATE.format(latest)
+# v3's generic movement helper expects '(direction, value)'. One BLS sentence
+# is written as '2.6-percent increase', i.e. '(value, direction)'. Make the
+# helper accept both forms so a valid official release cannot fall through to
+# the FRED continuity fallback merely because of word order.
+def _movement_flexible(text, pattern):
+    m = re.search(pattern, text, re.I | re.S)
+    if not m:
+        return None
+    a, b = m.group(1), m.group(2)
+    try:
+        return v3._signed(a, b)
+    except (TypeError, ValueError):
+        try:
+            value = float(a)
+        except (TypeError, ValueError):
+            return None
+        direction = str(b).lower()
+        return -value if direction.startswith('decreas') or direction.startswith('declin') or direction.startswith('fell') else value
 
 
 if __name__ == '__main__':
-    # The BLS current-release alias can lag behind the revised archive. Resolve
-    # the latest completed (R) release from BLS's own schedule, then read that
-    # dated official archive so the alert never mistakes a preliminary release
-    # for the revised release.
-    base.BLS_PROD_URL = latest_revised_archive()
+    base.BLS_PROD_URL = OFFICIAL_CURRENT
+    v3._movement = _movement_flexible
     v3.main()
