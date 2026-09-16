@@ -322,7 +322,11 @@
     "stateevt_cce2e089dd40f6ed0870": "2026-09-16T11:48:03.008654+00:00",
     "stateevt_6b0bb154b260668b6d68": "2026-09-16T11:48:03.008654+00:00",
     "stateevt_8725688c97a87ea53bfd": "2026-09-16T11:48:03.008654+00:00",
-    "stateevt_a211bb3e36741f1345cc": "2026-09-16T11:48:03.008654+00:00"
+    "stateevt_a211bb3e36741f1345cc": "2026-09-16T11:48:03.008654+00:00",
+    "stateevt_5e259cd2021dbbe4550b": "2026-09-16T15:35:14.438298+00:00",
+    "stateevt_a2e4119da27632b412f4": "2026-09-16T15:35:14.438298+00:00",
+    "stateevt_257337eec01f9779af71": "2026-09-16T15:35:14.438298+00:00",
+    "stateevt_c83838571b636a674bec": "2026-09-16T15:35:14.438298+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -336,7 +340,11 @@
     "eventstate_westinghouse_stake_cce2e089dd40f6ed0870": "2026-09-16T11:48:03.008654+00:00",
     "eventstate_westinghouse_stake_6b0bb154b260668b6d68": "2026-09-16T11:48:03.008654+00:00",
     "eventstate_nuclear_fuel_cycle_pyro_8725688c97a87ea53bfd": "2026-09-16T11:48:03.008654+00:00",
-    "eventstate_funding_execution_a211bb3e36741f1345cc": "2026-09-16T11:48:03.008654+00:00"
+    "eventstate_funding_execution_a211bb3e36741f1345cc": "2026-09-16T11:48:03.008654+00:00",
+    "eventstate_nuclear_build_5e259cd2021dbbe4550b": "2026-09-16T15:35:14.438298+00:00",
+    "eventstate_alaska_lng_a2e4119da27632b412f4": "2026-09-16T15:35:14.438298+00:00",
+    "eventstate_return_safeguard_257337eec01f9779af71": "2026-09-16T15:35:14.438298+00:00",
+    "eventstate_nuclear_build_c83838571b636a674bec": "2026-09-16T15:35:14.438298+00:00"
   },
   "official_status": {
     "status": "unconfirmed",
@@ -406,12 +414,13 @@
     },
     "alaska_lng": {
       "facts": [
-        "party:posco"
+        "party:posco",
+        "usd:800억"
       ],
       "initialized_at": "2026-09-16T06:11:26.023990+00:00",
-      "updated_at": "2026-09-16T06:11:26.024230+00:00",
-      "last_title": "“485억 묶일라”…포스코인터, 알래스카 LNG 투자 촉각 - 서울경제TV",
-      "last_source": "서울경제TV"
+      "updated_at": "2026-09-16T15:35:30.352914+00:00",
+      "last_title": "이란전쟁에 다시 뜬 ‘알래스카 LNG’…800억달러 트럼프 구상 시험대 - 헤럴드경제",
+      "last_source": "헤럴드경제"
     },
     "texas_ai_power": {
       "facts": [],
@@ -423,12 +432,14 @@
     "nuclear_build": {
       "facts": [
         "party:kepco",
+        "party:westinghouse",
+        "percent:70",
         "units:474기"
       ],
       "initialized_at": "2026-09-16T06:11:26.024312+00:00",
-      "updated_at": "2026-09-16T06:11:26.024909+00:00",
-      "last_title": "대미투자 1호 유력 텍사스에 원전 474기급 전력수요 - 연합뉴스",
-      "last_source": "연합뉴스"
+      "updated_at": "2026-09-16T15:35:30.354127+00:00",
+      "last_title": "한미 '원전동맹' 업그레이드 … 대미펀드 70% 발전사업 투자 - 매일경제",
+      "last_source": "매일경제"
     },
     "ercot_large_load": {
       "facts": [
@@ -464,6 +475,15 @@
       "initialized_at": "2026-09-16T11:48:16.934333+00:00",
       "updated_at": "2026-09-16T11:48:16.934333+00:00",
       "last_title": "대미투자금, MOU 뒤집고 조기 송금…‘45일 이내’ 미 요구 수용했나 - 한겨레",
+      "last_source": "한겨레"
+    },
+    "return_safeguard": {
+      "facts": [
+        "percent:16"
+      ],
+      "initialized_at": "2026-09-16T15:35:30.353400+00:00",
+      "updated_at": "2026-09-16T15:35:30.353400+00:00",
+      "last_title": "[단독] “대미투자, 수익률 16% 넘어야 원리금 회수 가능” - 한겨레",
       "last_source": "한겨레"
     }
   },
