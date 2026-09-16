@@ -10,7 +10,6 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
-from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
 try:
@@ -25,7 +24,7 @@ OUT.mkdir(exist_ok=True)
 ALERT = OUT / "skhynix_us_memory_alert.html"
 STATUS = OUT / "skhynix_us_memory_status.md"
 
-UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
+UA = "Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 24
 
 QUERIES = [
@@ -100,6 +99,19 @@ def relevant(text: str) -> bool:
     return sk and intel and us and memory and action
 
 
+def source_rank(source: str) -> int:
+    low = (source or "").lower()
+    if "reuters" in low:
+        return 100
+    if "sk hynix" in low or "sk하이닉스" in low or "intel" in low:
+        return 90
+    if "bloomberg" in low or "financial times" in low or "wall street journal" in low or "wsj" in low:
+        return 80
+    if "yonhap" in low or "연합뉴스" in low or "the elec" in low or "thelec" in low:
+        return 70
+    return 10
+
+
 def read_events() -> list[dict]:
     rows: dict[str, dict] = {}
     for query in QUERIES:
@@ -165,32 +177,53 @@ def build_alert(event: dict, stage: str) -> str:
         "🚨 <b>SK하이닉스·Intel 미국 메모리 생산 협상</b>",
         "━━━━━━━━━━━━━━━━",
         "<b>[무엇이 달라졌나]</b>",
-        "• Reuters에 따르면 SK하이닉스와 Intel이 <b>미국 내 메모리 칩 생산</b> 방안을 협의 중입니다.",
-        "• 성사되면 SK하이닉스가 미국에서 메모리 칩을 <b>전공정 생산하는 첫 사례</b>가 될 수 있습니다.",
+        "• Reuters에 따르면 SK하이닉스와 Intel이 <b>미국 내 메모리 칩 전공정 생산</b> 방안을 협의 중입니다.",
+        "• 성사되면 SK하이닉스가 미국에서 메모리 웨이퍼를 직접 가공·생산하는 <b>첫 전공정 거점</b>이 될 수 있습니다.",
         "",
         "<b>[검토 중인 구조]</b>",
-        "① SK하이닉스가 Intel의 <b>Ohio 생산시설 일부를 임대</b>",
+        "① SK하이닉스가 Intel의 <b>Ohio One 생산시설 일부를 임대</b>",
         "② SK하이닉스·Intel·대형 클라우드사가 <b>합작법인</b>을 구성",
         "",
+        "<b>[Ohio 시설이 정확히 무엇인가]</b>",
+        "• 위치: 미국 Ohio주 <b>New Albany·Licking County</b>의 Intel <b>Ohio One</b> 캠퍼스입니다.",
+        "• 성격: 기존에 돌아가는 공장을 빌리는 것이 아니라, Intel이 <b>280억달러 이상</b>을 투입해 건설 중인 <b>첨단 웨이퍼 전공정 팹 2개(Mod 1·Mod 2)</b>입니다.",
+        "• 부지: 약 <b>1,000에이커</b> 규모이며 장기적으로 최대 <b>8개 팹</b>까지 수용하도록 설계된 대형 생산단지입니다.",
+        "• 현재 상태: 아직 양산 중인 팹이 아닙니다. Intel 공식 일정은 <b>Mod 1 건설 완료 2030년·가동 2030~2031년</b>, <b>Mod 2 건설 완료 2031년·가동 2032년</b>입니다.",
+        "• 건물 구조: 웨이퍼를 실제 가공하는 <b>클린룸</b>, 진공펌프·전력·가스·배기 계통이 있는 <b>클린 서브팹</b>, 대형 전력·용수·가스 배관을 공급하는 <b>유틸리티 층</b>을 갖추는 완전한 전공정 팹 구조입니다.",
+        "",
+        "<b>[원래 어떤 공정을 하려던 시설인가]</b>",
+        "• Ohio One은 원래 Intel의 <b>첨단 로직·파운드리 웨이퍼 생산</b>을 위한 그린필드 팹입니다.",
+        "• Intel은 과거 공식자료에서 향후 <b>Intel 14A</b> 공정을 Ohio에서 생산할 계획이라고 밝혔습니다. Intel 14A·18A는 CPU·AI·HPC용 <b>첨단 로직 공정</b> 계열입니다.",
+        "• 따라서 SK하이닉스가 시설 일부를 임대한다고 해서 <b>Intel 14A 장비를 그대로 HBM/DRAM 생산에 쓰는 것</b>으로 해석하면 안 됩니다.",
+        "• 실제 메모리 생산이 성사되면 HBM·DRAM·NAND 중 제품에 맞춰 <b>SK하이닉스 메모리 공정용 증착·식각·노광·세정·검사 장비와 공정 레시피</b>를 별도로 구축·전환해야 할 가능성이 큽니다.",
+        "• Reuters는 이번 협상의 임대 범위가 <b>건물·클린룸·유틸리티인지, 기존 장비까지 포함하는지</b>는 공개하지 않았습니다.",
+        "",
+        "<b>[Indiana와 무엇이 다른가]</b>",
+        "• Indiana: 한국에서 가공한 HBM 웨이퍼를 가져와 <b>첨단 패키징·검사</b>하는 후공정 거점",
+        "• Ohio: 실리콘 웨이퍼에 트랜지스터·배선·메모리 셀을 만드는 <b>웨이퍼 전공정 생산기지</b> 가능성",
+        "→ Ohio가 성사되면 미국 내 공급망이 <b>웨이퍼 제조 → 패키징·검사</b>까지 이어지는 구조가 될 수 있습니다.",
+        "",
         "<b>[아직 확정되지 않은 것]</b>",
-        "• 어떤 메모리를 생산할지 <b>미정</b> — HBM·DRAM·NAND 중 특정 제품은 아직 확인되지 않았습니다.",
+        "• 생산제품: <b>미정</b> — HBM·DRAM·NAND 중 어떤 제품인지 확인되지 않았습니다.",
+        "• 임대범위: Mod 1/Mod 2 중 어디인지, 클린룸·유틸리티만인지, 제조장비까지인지 <b>미확정</b>입니다.",
+        "• 공정세대: SK하이닉스의 어떤 DRAM/HBM 세대나 NAND 공정을 넣을지도 <b>미확정</b>입니다.",
+        "• 생산능력: 월 웨이퍼 투입량·장비 대수·설비투자액·가동시점도 공개되지 않았습니다.",
         "• SK하이닉스는 추가 생산기지 방안을 검토 중이지만 <b>결정된 사항은 없다고</b> Reuters에 밝혔습니다.",
-        "• Intel도 협상설에는 논평하지 않았고 Ohio 투자는 계속 진행한다고 밝혔습니다.",
         "",
         "<b>[왜 중요한가]</b>",
-        "• Indiana: HBM <b>첨단 패키징·검사</b> 거점",
-        "• Ohio 협상: 메모리 웨이퍼를 만드는 <b>전공정 생산기지</b> 가능성",
-        "→ 같은 미국 투자라도 산업적 의미가 완전히 다릅니다.",
+        "• 완성된 미국 팹 인프라를 활용하면 완전한 신규 부지보다 건설기간을 줄일 여지가 있지만, 메모리 전용 장비 설치·고객 검증·수율 안정화는 별도입니다.",
         "• HBM·첨단 DRAM처럼 국가핵심기술이 포함되면 한국 산업기술보호법상 정부 심사가 필요할 수 있습니다.",
+        "• 미국 현지 전공정이 확정되면 관세·현지조달·클라우드 고객 장기계약과 연결될 수 있지만, 미국의 높은 인건비·건설비는 원가 역풍입니다.",
         "",
         "<b>[현재 판정]</b>",
-        f"🟡 <b>{stage}</b> — 전략적으로 큰 변화지만 아직 수주·설비투자·생산능력 확정 단계는 아닙니다.",
+        f"🟡 <b>{stage}</b> — 전략적으로 큰 변화지만 아직 생산제품·임대범위·설비투자·웨이퍼 생산능력은 확정되지 않았습니다.",
         "",
         "<b>[다음 알림 조건]</b>",
-        "• 임대계약·합작법인·양해각서 체결",
-        "• HBM/DRAM/NAND 등 <b>생산 제품 확정</b>",
-        "• 투자금액·웨이퍼 생산능력·장비 반입·가동시점 공개",
-        "• 참여 클라우드 고객 실명 공개",
+        "• Mod 1/Mod 2 중 <b>실제 사용 팹 확정</b>",
+        "• 건물·클린룸·유틸리티·제조장비 중 <b>임대 범위 확정</b>",
+        "• HBM/DRAM/NAND 및 <b>공정세대 확정</b>",
+        "• 투자금액·월 웨이퍼 생산능력·장비 반입·시험생산·가동시점 공개",
+        "• 참여 클라우드 고객 실명·최소 구매 물량 약정 공개",
         "• 한국 정부 국가핵심기술 심사·승인",
         "• 미국 보조금·관세 조건과 연결",
         "",
@@ -219,7 +252,14 @@ def main() -> None:
     new_event = None
     new_fact_key = ""
     stage = ""
-    for e in reversed(fresh):
+
+    # 동일 사실이면 최신 기사보다 원출처·고신뢰 출처를 우선한다.
+    candidates = sorted(
+        fresh,
+        key=lambda e: (source_rank(e.get("source") or ""), e.get("published_at_kst") or ""),
+        reverse=True,
+    )
+    for e in candidates:
         fact_key, fact_stage = classify(e)
         if e["id"] in seen_ids or fact_key in seen_fact_keys:
             continue
@@ -228,8 +268,6 @@ def main() -> None:
         stage = fact_stage
         break
 
-    # Always record current search results. If Telegram sending fails, the workflow fails before commit,
-    # so this state is not persisted and the alert will retry next run.
     seen_ids.update(e["id"] for e in events)
     if new_fact_key:
         seen_fact_keys.add(new_fact_key)
