@@ -12,6 +12,7 @@ on:
       - "scripts/guard_us_time_to_power_metrics_source.py"
       - "scripts/clean_us_time_to_power_alert_html.py"
       - "scripts/us_data_center_generation_buildout_watch.py"
+      - "scripts/us_data_center_cancellation_risk_watch.py"
       - "scripts/remove_telegram_italics.py"
       - "scripts/korea_aidc_policy_watch.py"
   schedule:
@@ -157,6 +158,9 @@ jobs:
       - name: Check US data center generation buildout execution
         run: python scripts/us_data_center_generation_buildout_watch.py
 
+      - name: Check US data center cancellation and stranded-cost risk
+        run: python scripts/us_data_center_cancellation_risk_watch.py
+
       - name: Force regular Telegram font
         run: python scripts/remove_telegram_italics.py
 
@@ -180,6 +184,7 @@ jobs:
               pathlib.Path("out/pjm_data_center_policy_alert.txt"),
               pathlib.Path("out/us_data_center_time_to_power_alert.txt"),
               pathlib.Path("out/us_data_center_generation_buildout_alert.txt"),
+              pathlib.Path("out/us_data_center_cancellation_risk_alert.txt"),
           ]
           sent = 0
 
@@ -260,6 +265,21 @@ jobs:
                           ],
                       ]
                   }
+              elif p.name == "us_data_center_cancellation_risk_alert.txt":
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {"is_disabled": True}
+                  payload["reply_markup"] = {
+                      "inline_keyboard": [
+                          [
+                              {"text": "⚠️ 취소·지연 파급효과", "url": "https://www.datacenterknowledge.com/energy-power-supply/the-ripple-effect-of-data-center-project-cancellations-and-delays"},
+                              {"text": "📉 Phantom load", "url": "https://www.capgemini.com/insights/research-library/data-centers-and-electricity-demand/"},
+                          ],
+                          [
+                              {"text": "⚖️ FERC 대형부하 개편", "url": "https://www.ferc.gov/news-events/news/ferc-launches-aggressive-targeted-action-speed-large-load-integration"},
+                              {"text": "💰 Cost Recovery", "url": "https://www.ferc.gov/news-events/news/commissioner-rosners-remarks-large-load-show-cause-orders-e-7-e-12-june-18-2026"},
+                          ],
+                      ]
+                  }
               else:
                   payload["link_preview_options"] = {"is_disabled": True}
 
@@ -291,11 +311,12 @@ jobs:
           cp out/pjm_data_center_policy_pending_state.json data/pjm_data_center_policy_state.json
           cp out/us_data_center_time_to_power_pending_state.json data/us_data_center_time_to_power_state.json
           cp out/us_data_center_generation_buildout_pending_state.json data/us_data_center_generation_buildout_state.json
+          cp out/us_data_center_cancellation_risk_pending_state.json data/us_data_center_cancellation_risk_state.json
           git restore scripts/pjm_data_center_policy_watch.py
           git restore scripts/us_data_center_time_to_power_watch.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/data_center_growth_state.json data/korea_aidc_policy_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json data/us_data_center_generation_buildout_state.json
+          git add data/data_center_growth_state.json data/korea_aidc_policy_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json data/us_data_center_generation_buildout_state.json data/us_data_center_cancellation_risk_state.json
           if git diff --cached --quiet; then
             echo "State unchanged."
           else
@@ -325,5 +346,8 @@ jobs:
             out/us_data_center_generation_buildout_status.md
             out/us_data_center_generation_buildout_alert.txt
             out/us_data_center_generation_buildout_pending_state.json
+            out/us_data_center_cancellation_risk_status.md
+            out/us_data_center_cancellation_risk_alert.txt
+            out/us_data_center_cancellation_risk_pending_state.json
           if-no-files-found: ignore
           retention-days: 7
