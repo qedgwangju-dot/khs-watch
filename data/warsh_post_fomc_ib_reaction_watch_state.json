@@ -1,0 +1,52 @@
+{
+  "confirmed": {
+    "Morgan Stanley": {
+      "extra_hikes": 1,
+      "next": "12월",
+      "first_cut_2027": null,
+      "status": "공개 확인",
+      "source": "https://www.reuters.com/business/morgan-stanley-turns-more-hawkish-forecasts-two-fed-hikes-ecb-move-2026-09-15/"
+    },
+    "Goldman Sachs": {
+      "extra_hikes": 1,
+      "next": "12월",
+      "first_cut_2027": null,
+      "status": "공개 확인",
+      "source": "https://www.reuters.com/business/view-markets-steady-after-fed-raises-rates-points-another-hike-this-year-2026-09-16/"
+    },
+    "UBS": {
+      "extra_hikes": 1,
+      "next": "12월",
+      "first_cut_2027": null,
+      "status": "공개 확인",
+      "source": "https://www.ubs.com/us/en/wealth-management/insights/market-news/article.3754419.html"
+    }
+  },
+  "tracking": {
+    "Bank of America": {
+      "extra_hikes": 2,
+      "next": "10월·12월",
+      "first_cut_2027": null,
+      "status": "리서치 요약 기준·공개 원문 추가 확인"
+    },
+    "Citi": {
+      "extra_hikes": 0,
+      "next": "10월·12월 동결",
+      "first_cut_2027": "6월",
+      "status": "리서치 요약 기준·공개 원문 추가 확인"
+    },
+    "JPMorgan": {
+      "extra_hikes": 1,
+      "next": "12월",
+      "first_cut_2027": null,
+      "status": "리서치 요약 기준·공개 원문 추가 확인"
+    }
+  },
+  "candidate_seen": [],
+  "market": {
+    "year_end": 4.22,
+    "extra_bp": 33.79999999999996,
+    "source": "https://www.frenzycap.com/fedwatch"
+  },
+  "updated_at_utc": "2026-09-16T23:18:46.388678+00:00"
+}
