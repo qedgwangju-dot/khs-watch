@@ -3,7 +3,7 @@
 
 Current USD/JPY direction is handled by the dedicated live FX layer. This module is
 for *daily market-contagion confirmation* and therefore prefers each index publisher:
-- VIX: Cboe daily closing file
+- VIX: Cboe daily closing file, with Cboe current summary as a freshness supplement
 - Nasdaq Composite: Nasdaq Global Index Watch
 - Nikkei 225: Nikkei Indexes historical data
 FRED remains a same-series fallback where useful; missing confirmation data never
@@ -17,7 +17,6 @@ import io
 import json
 import pathlib
 import re
-import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -30,10 +29,11 @@ KST = ZoneInfo("Asia/Seoul")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / "out"
 OUT.mkdir(parents=True, exist_ok=True)
-UA = "khs-watch-yen-carry-confirmation/1.4"
+UA = "khs-watch-yen-carry-confirmation/1.5"
 
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 CBOE_VIX_CSV = "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
+CBOE_VIX_PAGE = "https://www.cboe.com/tradable-products/vix"
 NASDAQ_COMP = "https://indexes.nasdaq.com/Index/Overview/COMP"
 NIKKEI_225 = "https://indexes.nikkei.co.jp/en/nkave/archives/data"
 
@@ -52,7 +52,7 @@ def _request_text(url: str, timeout: int = 15) -> str:
 
 
 def _number(value: str) -> float:
-    return float(str(value).replace(",", "").strip())
+    return float(str(value).replace(",", "").replace("$", "").strip())
 
 
 def _iso_from_us(value: str) -> str:
@@ -62,6 +62,10 @@ def _iso_from_us(value: str) -> str:
         except ValueError:
             pass
     return value.strip()
+
+
+def _plain(text: str) -> str:
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", text))).strip()
 
 
 def _parse_cboe_vix(text: str) -> list[tuple[str, float]]:
@@ -81,26 +85,73 @@ def _parse_cboe_vix(text: str) -> list[tuple[str, float]]:
     return rows
 
 
-def _parse_nasdaq_comp(text: str) -> list[tuple[str, float]]:
-    plain = html.unescape(re.sub(r"<[^>]+>", " ", text))
-    plain = re.sub(r"\s+", " ", plain)
-    match = re.search(
-        r"DATA\s+AS\s+OF\s+(\d{1,2}/\d{1,2}/\d{4})\s+([\d,]+(?:\.\d+)?)\s+[-+]?\s*[\d,]+(?:\.\d+)?\s+[-+]?\s*\d+(?:\.\d+)?%",
+def _parse_cboe_vix_page(text: str) -> tuple[str, float, float] | None:
+    plain = _plain(text)
+    date_match = re.search(
+        r"as of\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s+(\d{4})",
         plain,
         flags=re.IGNORECASE,
     )
-    previous = re.search(r"Previous\s+Close\s+([\d,]+(?:\.\d+)?)", plain, flags=re.IGNORECASE)
-    if not match or not previous:
-        raise RuntimeError("Nasdaq COMP official summary not found")
+    price_match = re.search(r"\$\s*([\d,]+(?:\.\d+)?)\s+VIX\s+Spot\s+Price", plain, flags=re.IGNORECASE)
+    change_match = re.search(
+        r"Change\s*([+-]?\d+(?:\.\d+)?)%\s*\(([+-]?\d+(?:\.\d+)?)\)",
+        plain,
+        flags=re.IGNORECASE,
+    )
+    if not date_match or not price_match or not change_match:
+        return None
+    month_names = {name.lower(): idx for idx, name in enumerate(
+        ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], start=1
+    )}
+    month = month_names[date_match.group(1).lower()]
+    date = f"{int(date_match.group(3)):04d}-{month:02d}-{int(date_match.group(2)):02d}"
+    current = _number(price_match.group(1))
+    delta = _number(change_match.group(2))
+    previous = current - delta
+    if previous <= 0:
+        return None
+    return date, current, previous
+
+
+def _get_cboe_vix() -> list[tuple[str, float]]:
+    rows = _parse_cboe_vix(_request_text(CBOE_VIX_CSV, timeout=15))
+    try:
+        current = _parse_cboe_vix_page(_request_text(CBOE_VIX_PAGE, timeout=8))
+        if current:
+            date, value, previous = current
+            if date > rows[-1][0]:
+                rows.append((date, value))
+            elif date == rows[-1][0]:
+                rows[-1] = (date, value)
+            elif len(rows) < 2:
+                rows = [("이전 거래일", previous), (date, value)]
+    except Exception:
+        pass
+    return rows
+
+
+def _parse_nasdaq_comp(text: str) -> list[tuple[str, float]]:
+    plain = _plain(text)
+    # Read date, index value and net change from the same official headline block.
+    # This avoids hidden/stale Previous Close elements elsewhere in the page DOM.
+    match = re.search(
+        r"DATA\s+AS\s+OF\s+(\d{1,2}/\d{1,2}/\d{4})\s+([\d,]+(?:\.\d+)?)\s+([+-]?[\d,]+(?:\.\d+)?)\s+([+-]?\d+(?:\.\d+)?)%",
+        plain,
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        raise RuntimeError("Nasdaq COMP official headline not found")
     date = _iso_from_us(match.group(1))
     current = _number(match.group(2))
-    prev = _number(previous.group(1))
-    return [("이전 거래일", prev), (date, current)]
+    net_change = _number(match.group(3))
+    previous = current - net_change
+    if previous <= 0:
+        raise RuntimeError("Nasdaq COMP derived previous close invalid")
+    return [("이전 거래일", previous), (date, current)]
 
 
 def _parse_nikkei_225(text: str) -> list[tuple[str, float]]:
-    plain = html.unescape(re.sub(r"<[^>]+>", " ", text))
-    plain = re.sub(r"\s+", " ", plain)
+    plain = _plain(text)
     months = {name: idx for idx, name in enumerate(
         ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], start=1
     )}
@@ -145,19 +196,18 @@ def _fred_fallback(series: str) -> tuple[list[tuple[str, float]], str]:
 
 def get(series: str, n: int = 5) -> tuple[list[tuple[str, float]], str]:
     errors: list[str] = []
-    primary = {
-        "VIXCLS": (CBOE_VIX_CSV, _parse_cboe_vix, "Cboe 공식 일간 종가"),
-        "NASDAQCOM": (NASDAQ_COMP, _parse_nasdaq_comp, "Nasdaq 공식 지수"),
-        "NIKKEI225": (NIKKEI_225, _parse_nikkei_225, "Nikkei 공식 지수"),
-    }.get(series)
-    if primary:
-        url, parser, label = primary
-        try:
-            rows = parser(_request_text(url, timeout=15))
-            if len(rows) >= 2:
-                return rows[-n:], label
-        except Exception as exc:
-            errors.append(f"{label} {type(exc).__name__}: {exc}")
+    try:
+        if series == "VIXCLS":
+            rows = _get_cboe_vix()
+            return rows[-n:], "Cboe 공식 일간 종가"
+        if series == "NASDAQCOM":
+            rows = _parse_nasdaq_comp(_request_text(NASDAQ_COMP, timeout=15))
+            return rows[-n:], "Nasdaq 공식 지수"
+        if series == "NIKKEI225":
+            rows = _parse_nikkei_225(_request_text(NIKKEI_225, timeout=15))
+            return rows[-n:], "Nikkei 공식 지수"
+    except Exception as exc:
+        errors.append(f"공식 제공처 {type(exc).__name__}: {exc}")
 
     try:
         rows, label = _fred_fallback(series)
@@ -200,7 +250,6 @@ def main() -> None:
                 errors.append(f"{series}: {type(exc).__name__}: {exc}")
 
     signals = {
-        # Kept for compatibility; live FX modules are authoritative for yen shock.
         "yen_strength_daily_2pct": False,
         "vix_spike_20pct": data.get("VIXCLS", {}).get("change_pct", 0) >= 20.0,
         "nasdaq_down_2pct": data.get("NASDAQCOM", {}).get("change_pct", 0) <= -2.0,
@@ -216,7 +265,7 @@ def main() -> None:
         "equity_joint_weakness": equity_joint,
         "confirmation_count": confirm_count,
         "errors": errors,
-        "note": "USD/JPY 방향은 실시간 FX 층에서 판정. VIX·Nasdaq·Nikkei는 각 공식 지수 제공처 우선, 동일 계열 FRED 일간값을 대체 경로로 사용.",
+        "note": "USD/JPY 방향은 실시간 FX 층에서 판정. VIX·Nasdaq·Nikkei는 각 공식 지수 제공처 우선, 동일 지표 FRED 일간값을 대체 경로로 사용.",
     }
     (OUT / "yen_carry_confirmation.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
