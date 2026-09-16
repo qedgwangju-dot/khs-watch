@@ -1,0 +1,47 @@
+{
+  "fingerprint": "397015aae1b4318ab9479a24a04a7cc049cf1d3e59f1a4d44b796c55ba6715d4",
+  "dates": {
+    "deposit": "20260914",
+    "mmf": "20260914",
+    "cma": "20260914",
+    "credit": "20260914"
+  },
+  "values": {
+    "deposit": {
+      "date": "20260914",
+      "value": 106817908,
+      "d1": -238093,
+      "d5": 12892119
+    },
+    "mmf": {
+      "date": "20260914",
+      "value": 250658369,
+      "d1": -144129,
+      "d5": -15645329
+    },
+    "cma": {
+      "date": "20260914",
+      "value": 103057485,
+      "d1": -751367,
+      "d5": -1605145
+    },
+    "credit": {
+      "date": "20260914",
+      "value": 32623060,
+      "d1": 358172,
+      "d5": -567265
+    },
+    "receivable": {
+      "date": "20260914",
+      "value": 986142
+    },
+    "forced": {
+      "date": "20260914",
+      "value": 10865,
+      "ratio": 1.1
+    }
+  },
+  "last_event": "초기 기준 확정",
+  "source": "KOFIA FreeSIS",
+  "source_url": "https://freesis.kofia.or.kr/stat/main.do"
+}
