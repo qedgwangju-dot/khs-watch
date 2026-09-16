@@ -71,6 +71,29 @@ jobs:
           node scripts/kofia_liquidity_watch.js
           cat out/kofia_liquidity_status.md >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Add plain-language explanations
+        if: hashFiles('out/kofia_liquidity_alert.html') != ''
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('out/kofia_liquidity_alert.html')
+          text = path.read_text(encoding='utf-8')
+          replacements = [
+              ('투자자예탁금 <b>', '투자자예탁금(증권계좌에 들어와 있는 주식 매수 대기자금) <b>'),
+              ('MMF 설정원본 <b>', 'MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모) <b>'),
+              ('CMA 잔고 <b>', 'CMA 잔고(증권사 현금관리계좌에 머무는 단기자금) <b>'),
+              ('신용융자 <b>', '신용융자(증권사에서 돈을 빌려 주식을 산 잔액) <b>'),
+              ('• 미수금 ', '• 미수금(주식 매수대금 중 결제일까지 아직 내지 않은 금액) '),
+              (' | 실제 반대매매 ', ' | 실제 반대매매(미수·신용 미상환 때 증권사가 강제로 매도한 금액) '),
+              (' | 1D ', ' | 1D(전 거래일 대비) '),
+              (' | 5D ', ' | 5D(5거래일 전 대비) '),
+          ]
+          for old, new in replacements:
+              text = text.replace(old, new)
+          path.write_text(text, encoding='utf-8')
+          print('plain_language_labels_applied=true')
+          PY
+
       - name: Send Telegram update
         if: hashFiles('out/kofia_liquidity_alert.html') != ''
         run: |
