@@ -1,0 +1,141 @@
+name: KOFIA Liquidity Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/kofia-liquidity-telegram-watch.yml"
+      - "scripts/kofia_liquidity_watch.js"
+  schedule:
+    - cron: "7 23,0,1,2,3,4,9,11 * * *"
+  workflow_dispatch:
+    inputs:
+      force_send:
+        description: "Force one Telegram report even when official values are unchanged"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kofia-liquidity-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      FORCE_SEND: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_send == 'true' && 'true' || 'false' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Install browser driver
+        run: npm install --no-save playwright-core@1.48.2
+
+      - name: Verify exact Telegram route
+        run: |
+          test -n "${TELEGRAM_BOT_TOKEN:-}" || { echo "Telegram token secret missing"; exit 1; }
+          test -n "${TELEGRAM_CHAT_ID:-}" || { echo "Telegram chat id secret missing"; exit 1; }
+          python - <<'PY'
+          import json, os, urllib.request
+          token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
+          expected = os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode('utf-8'))
+          actual = str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{actual}")
+          PY
+
+      - name: Query KOFIA official liquidity data
+        run: |
+          rm -f out/kofia_liquidity_alert.html out/kofia_liquidity_status.md out/kofia_liquidity_pending_state.json
+          node --check scripts/kofia_liquidity_watch.js
+          node scripts/kofia_liquidity_watch.js
+          cat out/kofia_liquidity_status.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Send Telegram update
+        if: hashFiles('out/kofia_liquidity_alert.html') != ''
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
+          chat_id = os.environ['TELEGRAM_CHAT_ID'].strip()
+          expected = os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode('utf-8'))
+          actual = str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          text = pathlib.Path('out/kofia_liquidity_alert.html').read_text(encoding='utf-8').strip()
+          payload = urllib.parse.urlencode({
+              'chat_id': chat_id,
+              'text': text,
+              'parse_mode': 'HTML',
+              'disable_web_page_preview': 'true',
+          }).encode('utf-8')
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method='POST')
+          with urllib.request.urlopen(req, timeout=30) as response:
+              result = json.loads(response.read().decode('utf-8'))
+          if not result.get('ok'):
+              raise RuntimeError(f"Telegram rejected message: {result}")
+          mid = (result.get('result') or {}).get('message_id')
+          print(f"telegram_delivery_confirmed=true bot=@{actual} messages=1 id={mid}")
+          PY
+
+      - name: Persist state only after successful delivery
+        if: success() && hashFiles('out/kofia_liquidity_pending_state.json') != ''
+        run: cp out/kofia_liquidity_pending_state.json data/kofia_liquidity_state.json
+
+      - name: Commit watcher state
+        if: success() && hashFiles('data/kofia_liquidity_state.json') != '' && hashFiles('out/kofia_liquidity_pending_state.json') != ''
+        run: |
+          git config user.name "kofia-liquidity-watch[bot]"
+          git config user.email "kofia-liquidity-watch[bot]@users.noreply.github.com"
+          cp data/kofia_liquidity_state.json /tmp/kofia_liquidity_state.json
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp /tmp/kofia_liquidity_state.json data/kofia_liquidity_state.json
+            git add data/kofia_liquidity_state.json
+            if git diff --cached --quiet; then
+              echo "KOFIA liquidity state unchanged"
+              exit 0
+            fi
+            git commit -m "Update KOFIA liquidity watch state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kofia-liquidity-watch-${{ github.run_id }}
+          path: |
+            out/kofia_liquidity_status.md
+            out/kofia_liquidity_alert.html
+            out/kofia_liquidity_pending_state.json
+          if-no-files-found: ignore
+          retention-days: 14
