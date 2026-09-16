@@ -8,6 +8,7 @@ import warsh_fomc_event_watch_v2 as v2
 base = v2.base
 STATE_MARKER = 'fomc_v3_statement_delta_correction'
 JULY_STATEMENT = 'https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm'
+JUNE_SEP = 'https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260617.htm'
 
 _prev_decision_message = base.decision_message
 _orig_parse_statement = base.parse_statement
@@ -80,6 +81,32 @@ def decision_message_v3(old_stmt, new_stmt, sep_old, sep_new, pre, cur, news_cls
     return msg
 
 
+def migrate_state_to_v3():
+    state=base.load_state()
+    stmt_url,sep_url=base.find_latest_urls()
+    changed=False
+    if stmt_url:
+        cur_stmt=parse_statement_v3(stmt_url)
+        if state.get('current_statement') != cur_stmt:
+            state['current_statement']=cur_stmt; changed=True
+    if state.get('previous_statement',{}).get('url'):
+        prev_stmt=parse_statement_v3(state['previous_statement']['url'])
+    else:
+        prev_stmt=parse_statement_v3(JULY_STATEMENT)
+    if state.get('previous_statement') != prev_stmt:
+        state['previous_statement']=prev_stmt; changed=True
+    if sep_url:
+        cur_sep=parse_sep_v3(sep_url)
+        if cur_sep and state.get('current_sep') != cur_sep:
+            state['current_sep']=cur_sep; state['last_sep_url']=sep_url; changed=True
+    try: prev_sep=parse_sep_v3(JUNE_SEP)
+    except Exception: prev_sep=None
+    if prev_sep and state.get('previous_sep') != prev_sep:
+        state['previous_sep']=prev_sep; changed=True
+    if changed: base.save_state(state)
+    return changed
+
+
 def current_correction_message():
     raw_new_url, sep_url = base.find_latest_urls()
     if not raw_new_url or not sep_url:
@@ -87,11 +114,8 @@ def current_correction_message():
     new_stmt = parse_statement_v3(raw_new_url)
     old_stmt = parse_statement_v3(JULY_STATEMENT)
     sep_new = parse_sep_v3(sep_url)
-    try:
-        # June SEP is the immediately prior projection round.
-        sep_old = parse_sep_v3('https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260617.htm')
-    except Exception:
-        sep_old = None
+    try: sep_old = parse_sep_v3(JUNE_SEP)
+    except Exception: sep_old = None
     if new_stmt.get('date') != base.EVENT_DATE or not sep_new:
         return None, None
     rate_mid = new_stmt.get('mid')
@@ -135,6 +159,7 @@ base.decision_message = decision_message_v3
 
 if __name__ == '__main__':
     base.main()
+    migrated=migrate_state_to_v3()
     v2.persistence.main()
     sent=send_correction_once()
-    print(json.dumps({'fomc_v3_correction_sent':sent},ensure_ascii=False))
+    print(json.dumps({'fomc_v3_state_migrated':migrated,'fomc_v3_correction_sent':sent},ensure_ascii=False))
