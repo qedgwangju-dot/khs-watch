@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "baseline_at_utc": "2026-09-16T13:45:00+00:00",
+  "seen": [],
+  "metrics": {
+    "target_year": 2029,
+    "chip": "M8 Ultra",
+    "processor_min": 2,
+    "processor_max": 4,
+    "nvlink_status": "talks",
+    "hbm_procurement": "unconfirmed",
+    "server_dram_procurement": "unconfirmed",
+    "commercial_status": "reported_early_stage"
+  },
+  "baseline_notes": [
+    "The Information/Reuters: Apple is reportedly developing an enterprise AI inference server using 2 or 4 M8 Ultra processors, earliest target around 2029",
+    "NVIDIA NVLink Fusion is reported as under discussion, not a confirmed adoption",
+    "Apple HBM/NVHBM/server DRAM bulk procurement, LTA, supplier allocation, and memory architecture remain unconfirmed",
+    "NVLink Fusion does not by itself confirm any HBM purchase",
+    "Mobile DRAM pricing pressure does not by itself prove Apple is buying server DRAM/HBM in bulk"
+  ],
+  "last_alert": null
+}
