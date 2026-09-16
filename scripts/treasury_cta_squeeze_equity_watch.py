@@ -44,6 +44,16 @@ NYFED_URL = "https://markets.newyorkfed.org/api/rates/secured/sofr/last/1.json"
 FED_FOMC_URL = "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
 CTA_SECONDARY_URL = "https://a.foresightnews.pro/article/detail/99813"
 
+# CME contract face amounts. These convert CFTC contract counts into an intuitive
+# face-value notional only; they are not margin, P/L, market value or DV01.
+CONTRACT_FACE_USD = {
+    "2Y": 200_000,
+    "5Y": 100_000,
+    "10Y": 100_000,
+    "BOND": 100_000,
+    "ULTRABOND": 100_000,
+}
+
 
 def _equity_impact(snapshot: dict, previous: dict, reasons: list[str]) -> tuple[str, str]:
     y = snapshot.get("yield10") or {}
@@ -137,7 +147,28 @@ def _fmt_net(value) -> str:
         return "확인 불가"
 
 
-def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str]) -> tuple[str, str]:
+def _fmt_krw_amount(won: float) -> str:
+    if won >= 1_000_000_000_000:
+        return f"약 {won / 1_000_000_000_000:,.1f}조원"
+    if won >= 100_000_000:
+        return f"약 {won / 100_000_000:,.0f}억원"
+    return f"약 {won:,.0f}원"
+
+
+def _fmt_net_with_krw(value, tenor: str, fx) -> str:
+    """Contract count plus KRW face-value notional for readability."""
+    try:
+        contracts = int(value)
+        rate = float(fx)
+        face_usd = CONTRACT_FACE_USD[tenor]
+    except Exception:
+        return _fmt_net(value) + " (원화 환산 확인 불가)"
+    direction = "숏" if contracts < 0 else "롱" if contracts > 0 else "중립"
+    won = abs(contracts) * face_usd * rate
+    return f"{contracts:+,}계약 ({direction} 액면기준 {_fmt_krw_amount(won)})"
+
+
+def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=None, fx_date=None) -> tuple[str, str]:
     y = snapshot.get("yield10") or {}
     yld = float(y.get("yield") or 0.0)
     z = float(y.get("z20") or 0.0)
@@ -165,9 +196,11 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str]) -> tup
         f"• 가격↑+동일범위 OI↓: {'확인' if evidence else '미확인'} · repo: {'안정' if repo_ok else '주의 ' + ', '.join(repo_worse)}",
         "",
         "<b>📍 포지션은 얼마나 쌓였나</b>",
-        f"• CFTC {cftc_date}: 2Y {_fmt_net((cftc.get('2Y') or {}).get('leveraged_net'))} · 5Y {_fmt_net((cftc.get('5Y') or {}).get('leveraged_net'))}",
-        f"• 10Y {_fmt_net((cftc.get('10Y') or {}).get('leveraged_net'))} · Bond {_fmt_net((cftc.get('BOND') or {}).get('leveraged_net'))} · Ultra {_fmt_net((cftc.get('ULTRABOND') or {}).get('leveraged_net'))}",
+        f"• CFTC {cftc_date}: 2Y {_fmt_net_with_krw((cftc.get('2Y') or {}).get('leveraged_net'), '2Y', fx)} · 5Y {_fmt_net_with_krw((cftc.get('5Y') or {}).get('leveraged_net'), '5Y', fx)}",
+        f"• 10Y {_fmt_net_with_krw((cftc.get('10Y') or {}).get('leveraged_net'), '10Y', fx)} · Bond {_fmt_net_with_krw((cftc.get('BOND') or {}).get('leveraged_net'), 'BOND', fx)} · Ultra {_fmt_net_with_krw((cftc.get('ULTRABOND') or {}).get('leveraged_net'), 'ULTRABOND', fx)}",
         f"• SOFR {(repo.get('SOFR') or {}).get('rate', '확인 불가')}% · BGCR {(repo.get('BGCR') or {}).get('rate', '확인 불가')}% · TGCR {(repo.get('TGCR') or {}).get('rate', '확인 불가')}%",
+        f"• 원화는 계약수×CME 계약 액면×환율 기준 ({fx_date or '환율일 확인 불가'}, 1달러={float(fx):,.2f}원)" if fx is not None else "• 원화 환산: 환율 확인 불가",
+        "※ 2Y는 계약당 20만달러, 5Y·10Y·Bond·Ultra는 10만달러 액면 기준. 실제 투입자금·손익·DV01이 아닙니다.",
     ]
 
     if any("FOMC 전날 점검" in r for r in reasons):
@@ -249,7 +282,11 @@ def scheduled_main() -> int:
 
     snapshot = next_state.get("snapshot") or {}
     previous = current_state.get("snapshot") or {}
-    title, body = _scheduled_report(snapshot, previous, reasons)
+    try:
+        fx, fx_date = watcher.latest_fx()
+    except Exception:
+        fx, fx_date = None, None
+    title, body = _scheduled_report(snapshot, previous, reasons, fx=fx, fx_date=fx_date)
     if len(title) + 2 + len(body) > 4096:
         raise RuntimeError(f"Telegram scheduled report too long: {len(title)+2+len(body)}")
 
