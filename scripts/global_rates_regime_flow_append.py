@@ -20,6 +20,10 @@ EVENT = OUT / "global_rates_regime_flow_event.json"
 RESULT = OUT / "global_rates_regime_flow.json"
 KST = ZoneInfo("Asia/Seoul")
 
+CBOE_VIX = "https://www.cboe.com/tradable-products/vix/vix-historical-data"
+NASDAQ_COMP = "https://indexes.nasdaq.com/Index/Overview/COMP"
+NIKKEI_225 = "https://indexes.nikkei.co.jp/en/nkave/archives/data"
+
 
 def load(path: pathlib.Path, default):
     try:
@@ -40,6 +44,15 @@ def source_lines(result: dict) -> list[str]:
     auction = (load(OUT / "global_rates_structural.json", {}).get("auction") or {})
     if auction.get("url"):
         lines.append(f"- 일본 재무성 JGB 입찰 결과: {auction['url']}")
+
+    confirmation = load(OUT / "yen_carry_confirmation.json", {})
+    confirmation_data = confirmation.get("data") or {}
+    if confirmation_data.get("VIXCLS"):
+        lines.append(f"- Cboe VIX 일간 종가: {CBOE_VIX}")
+    if confirmation_data.get("NASDAQCOM"):
+        lines.append(f"- Nasdaq Composite 공식 지수: {NASDAQ_COMP}")
+    if confirmation_data.get("NIKKEI225"):
+        lines.append(f"- Nikkei 225 공식 과거값: {NIKKEI_225}")
     return lines
 
 
@@ -79,6 +92,13 @@ def inject_before_sources(text: str, blocks: list[str], sources: list[str]) -> s
     return "\n".join(before + after).strip() + "\n"
 
 
+def normalize_confirmation_label(text: str) -> str:
+    return text.replace(
+        "- VIX·Nikkei·Nasdaq은 FRED 일간 후행 확인값. 장중 실시간 값으로 오인하지 않음.",
+        "- VIX·Nikkei·Nasdaq은 각 공식 지수 제공처의 일간 후행 확인값을 우선 사용하고, 실패 시 동일 지표 FRED 일간값만 대체 사용. 장중 실시간 값으로 오인하지 않음.",
+    )
+
+
 def main() -> int:
     result = load(RESULT, {})
     events = load(EVENT, {}).get("events") or []
@@ -86,14 +106,13 @@ def main() -> int:
     policy = bessent_yen_policy_block()
 
     if REPORT.exists():
-        raw = REPORT.read_text(encoding="utf-8")
+        raw = normalize_confirmation_label(REPORT.read_text(encoding="utf-8"))
         blocks: list[str] = []
         if BLOCK.exists() and "②-2 JGB 3% 체제·실제 자금이동" not in raw:
             blocks.append(BLOCK.read_text(encoding="utf-8"))
         if "②-3 미·일 정책공조·엔캐리 시장영향" not in raw:
             blocks.append(policy)
-        if blocks:
-            REPORT.write_text(inject_before_sources(raw, blocks, sources), encoding="utf-8")
+        REPORT.write_text(inject_before_sources(raw, blocks, sources), encoding="utf-8")
         return 0
 
     # Do not create a standalone alert merely for the Bessent policy interpretation.
