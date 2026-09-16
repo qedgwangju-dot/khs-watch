@@ -122,5 +122,15 @@
       "value": 75921.3984375,
       "timestamp": "2026-09-16T21:40:38+00:00"
     }
+  },
+  "fomc_v3_statement_delta_correction": {
+    "sent": true,
+    "sent_at_utc": "2026-09-16T22:03:48.610160+00:00",
+    "meta": {
+      "date": "2026-09-16",
+      "longer": 3.2,
+      "year2029": 3.6,
+      "extra_bp": 22.499999999999964
+    }
   }
 }
