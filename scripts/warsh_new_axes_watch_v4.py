@@ -1,18 +1,13 @@
 #!/usr/bin/env python3
 import re
+import sys
 
 import warsh_new_axes_watch as base
 import warsh_new_axes_watch_v3 as v3
 
-# Use the official BLS current-release endpoint. The alert is still gated inside
-# v3 so only a release explicitly identified as 'Revised' can be sent.
 OFFICIAL_CURRENT = 'https://www.bls.gov/news.release/prod2.nr0.htm'
 
 
-# v3's generic movement helper expects '(direction, value)'. One BLS sentence
-# is written as '2.6-percent increase', i.e. '(value, direction)'. Make the
-# helper accept both forms so a valid official release cannot fall through to
-# the FRED continuity fallback merely because of word order.
 def _movement_flexible(text, pattern):
     m = re.search(pattern, text, re.I | re.S)
     if not m:
@@ -29,7 +24,16 @@ def _movement_flexible(text, pattern):
         return -value if direction.startswith('decreas') or direction.startswith('declin') or direction.startswith('fell') else value
 
 
+def _snapshot_with_diagnostic():
+    try:
+        return v3.official_bls_prod_snapshot()
+    except Exception as e:
+        print(f'BLS_PRODUCTIVITY_PARSE_FALLBACK: {type(e).__name__}: {e}', file=sys.stderr)
+        return base.prod_snapshot()
+
+
 if __name__ == '__main__':
     base.BLS_PROD_URL = OFFICIAL_CURRENT
     v3._movement = _movement_flexible
+    v3.prod_snapshot_v3 = _snapshot_with_diagnostic
     v3.main()
