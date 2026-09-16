@@ -94,7 +94,35 @@ jobs:
 
       - name: Run US investment watch
         if: github.event_name != 'push'
-        run: python scripts/khs_us_investment_watch_stateful.py
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          path = Path("scripts/khs_us_investment_watch_stateful.py")
+          spec = importlib.util.spec_from_file_location("khs_us_investment_watch_stateful_runtime", path)
+          if spec is None or spec.loader is None:
+              raise RuntimeError(f"watcher load failed: {path}")
+          watcher = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(watcher)
+
+          original_collapse = watcher._collapse_rows
+          delegated_families = {"westinghouse_stake", "nuclear_build"}
+
+          def collapse_with_single_nuclear_owner(rows):
+              collapsed = original_collapse(rows)
+              kept = []
+              for row in collapsed:
+                  family = str(row.get("_state_guard_family") or "")
+                  if family in delegated_families:
+                      print(f"delegated_nuclear_alert_suppressed={family}")
+                      continue
+                  kept.append(row)
+              return kept
+
+          watcher._collapse_rows = collapse_with_single_nuclear_owner
+          raise SystemExit(watcher.main())
+          PY
 
       - name: Enforce final Telegram readability
         if: github.event_name != 'push' && hashFiles('out/khs_us_investment_alert.html') != ''
