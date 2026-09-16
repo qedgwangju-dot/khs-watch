@@ -10,7 +10,12 @@ on:
       - "scripts/treasury_cta_squeeze_equity_watch.py"
       - ".github/workflows/treasury-cta-squeeze-telegram-alert.yml"
   schedule:
+    # Regular market-hours monitoring: 21:00~08:45 KST, every 15 minutes.
     - cron: "*/15 12-23 * * 1-5"
+    # Important-event precheck: 20:40 KST on weekdays. Python sends only on a FOMC eve.
+    - cron: "40 11 * * 1-5"
+    # Mandatory Monday weekly report: 08:10 KST Monday = 23:10 UTC Sunday.
+    - cron: "10 23 * * 0"
   workflow_dispatch:
 
 permissions:
