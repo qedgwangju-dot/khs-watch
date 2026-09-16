@@ -126,6 +126,20 @@
         "net_assets": 25935772016.0,
         "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
         "flow_usd": 40665000.0
+      },
+      {
+        "ticker": "SHY",
+        "label": "미 국채 1~3년",
+        "date": "2026-09-15",
+        "nav_date": "2026-09-15",
+        "shares_date": "2026-09-15",
+        "nav": 81.32,
+        "shares": 319700000.0,
+        "sec_yield": 4.25,
+        "nav_change_pct": null,
+        "net_assets": 25996603985.0,
+        "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
+        "flow_usd": 65055999.99999999
       }
     ],
     "IEF": [
@@ -254,6 +268,20 @@
         "net_assets": 41741256328.0,
         "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
         "flow_usd": 36368000.0
+      },
+      {
+        "ticker": "IEF",
+        "label": "미 국채 7~10년",
+        "date": "2026-09-15",
+        "nav_date": "2026-09-15",
+        "shares_date": "2026-09-15",
+        "nav": 90.81,
+        "shares": 458300000.0,
+        "sec_yield": 4.67,
+        "nav_change_pct": null,
+        "net_assets": 41619072992.0,
+        "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
+        "flow_usd": -72648000.0
       }
     ],
     "TLT": [
@@ -382,6 +410,20 @@
         "net_assets": 47711923102.0,
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
         "flow_usd": 218484000.0
+      },
+      {
+        "ticker": "TLT",
+        "label": "미 국채 20년 이상",
+        "date": "2026-09-15",
+        "nav_date": "2026-09-15",
+        "shares_date": "2026-09-15",
+        "nav": 80.68,
+        "shares": 583000000.0,
+        "sec_yield": 5.28,
+        "nav_change_pct": null,
+        "net_assets": 47037961165.0,
+        "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
+        "flow_usd": -532488000.00000006
       }
     ],
     "LQD": [
@@ -459,6 +501,21 @@
         "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
         "oas_bps": 84.34,
         "flow_usd": -490303999.99999994
+      },
+      {
+        "ticker": "LQD",
+        "label": "미 투자등급 회사채",
+        "date": "2026-09-15",
+        "nav_date": "2026-09-15",
+        "shares_date": "2026-09-15",
+        "nav": 104.26,
+        "shares": 265300000.0,
+        "sec_yield": 5.71,
+        "nav_change_pct": null,
+        "net_assets": 27659068466.0,
+        "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
+        "oas_bps": 84.58,
+        "flow_usd": 93834000.0
       }
     ],
     "HYG": [
@@ -536,20 +593,35 @@
         "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
         "oas_bps": 238.35,
         "flow_usd": -180573000.0
+      },
+      {
+        "ticker": "HYG",
+        "label": "미 고수익 회사채",
+        "date": "2026-09-15",
+        "nav_date": "2026-09-15",
+        "shares_date": "2026-09-15",
+        "nav": 78.38,
+        "shares": 184000000.0,
+        "sec_yield": 6.62,
+        "nav_change_pct": null,
+        "net_assets": 14422713820.0,
+        "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
+        "oas_bps": 245.67,
+        "flow_usd": 133245999.99999999
       }
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-09-15T10:39:42+09:00",
+    "at_kst": "2026-09-16T10:30:58+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      229
+      256
     ],
-    "overall": "방어적·품질 선호 강화",
+    "overall": "혼조·추가 확인",
     "treasury_flow": "장기채 위험 확대",
-    "credit_flow": "품질 선호·선제적 위험축소",
-    "curve_regime": "베어 플래트닝",
-    "treasury_date": "2026-09-14",
+    "credit_flow": "신용 위험선호 회복",
+    "curve_regime": "베어 스티프닝",
+    "treasury_date": "2026-09-15",
     "format": "treasury-credit-ishares-oas-v1"
   }
 }
