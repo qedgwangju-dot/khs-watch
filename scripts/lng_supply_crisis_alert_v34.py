@@ -30,6 +30,7 @@ ALASKA_LNG_QUERIES = (
     (ALASKA_CATEGORY, '"Alaska LNG" Glenfarne AGDC when:7d'),
     (ALASKA_CATEGORY, '"Polar LNG" Alaska when:7d'),
     (ALASKA_CATEGORY, '"Alaska LNG" "54.5 billion" OR "80 billion" when:14d'),
+    (ALASKA_CATEGORY, 'Alaska LNG "$54.5bn" OR "$80bn" when:14d'),
     (ALASKA_CATEGORY, '알래스카 LNG 글렌파른 AGDC 545억달러 800억달러 when:14d'),
 )
 for item in ALASKA_LNG_QUERIES:
@@ -49,6 +50,7 @@ core.WORSENING_TERMS[ALASKA_CATEGORY] = (
     "delay", "delayed", "postpone", "postponed", "hold", "stalled", "stall",
     "cost overrun", "cost increase", "financing gap", "funding gap", "tax incentive failed",
     "failed to pass", "sanction", "sanctions", "permit challenge", "lawsuit", "cancelled", "canceled",
+    "confronts", "hurdle", "obstacle", "risk",
     "지연", "연기", "중단", "보류", "비용 증가", "자금조달 난항", "제재", "허가 지연", "취소",
 )
 core.EASING_TERMS[ALASKA_CATEGORY] = (
@@ -58,7 +60,7 @@ core.EASING_TERMS[ALASKA_CATEGORY] = (
     "최종투자결정", "계약", "협약", "구매", "공급", "자금조달", "투자", "착공", "최종 설계",
 )
 core.SUBTYPE_TERMS = (
-    ("alaska_lng_cost_scale", ("54.5 billion", "80 billion", "545억달러", "800억달러")),
+    ("alaska_lng_cost_scale", ("54.5 billion", "80 billion", "54.5bn", "80bn", "545억달러", "800억달러")),
     ("polar_lng_project", ("polar lng",)),
     ("alaska_lng_project", ("alaska lng", "glenfarne", "agdc", "alaska gasline development corporation")),
 ) + tuple(core.SUBTYPE_TERMS)
@@ -77,7 +79,13 @@ def classify_polarity_v34(category: str, title: str) -> str | None:
         return "worsening"
     if any(term in normalized for term in core.EASING_TERMS[ALASKA_CATEGORY]):
         return "easing"
-    if any(term in normalized for term in ("alaska lng", "polar lng", "glenfarne", "agdc", "54.5 billion", "80 billion", "545억달러", "800억달러")):
+    if (
+        ("alaska" in normalized and "lng" in normalized)
+        or any(term in normalized for term in (
+            "alaska lng", "polar lng", "glenfarne", "agdc",
+            "54.5 billion", "80 billion", "54.5bn", "80bn", "545억달러", "800억달러",
+        ))
+    ):
         return "easing"
     return None
 
@@ -153,7 +161,7 @@ def _title_ko_v34(item: core.NewsItem) -> str:
             return "알래스카 LNG 프로젝트 지연·사업성 위험 신규 변화"
         if "polar lng" in normalized:
             return "Polar LNG 알래스카 노스슬로프 프로젝트 신규 변화"
-        if any(term in normalized for term in ("54.5 billion", "80 billion", "545억달러", "800억달러")):
+        if any(term in normalized for term in ("54.5 billion", "80 billion", "54.5bn", "80bn", "545억달러", "800억달러")):
             return "알래스카 LNG 대형 프로젝트 투자비·사업성 관련 신규 변화"
         return "Alaska LNG·Glenfarne·AGDC 대체공급 프로젝트 신규 변화"
     if "great fuel crisis is here" in normalized:
@@ -238,6 +246,7 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
     metadata["alaska_lng_watch"] = {
         "category": ALASKA_CATEGORY,
         "keywords": ["Alaska LNG", "Polar LNG", "AGDC", "Glenfarne", "545억달러", "800억달러"],
+        "headline_variants": ["Alaska + LNG", "$54.5bn", "$80bn"],
         "single_major_source_mode": "보도 단계만 허용",
         "state_file_preserved": str(core.STATE_PATH),
     }
@@ -251,6 +260,7 @@ def build_setup_test_v34(quotes):
         "\n• 야후 파이낸스·비톨 등 사용자 노출 문구도 한국어 표기로 정리"
         "\n• EIA 9/4 숫자는 다음 공식 발표 뒤 자동으로 현재값 재사용을 차단"
         "\n• Alaska LNG·Polar LNG·AGDC·Glenfarne·545억달러·800억달러 신규 변화 감시"
+        "\n• Alaska+LNG 및 $54.5bn·$80bn 제목 표기도 동일 사건으로 감지"
         "\n• Alaska LNG 프로젝트는 주요 신뢰매체 1곳 보도도 '보도 단계'로 감지하고 공급 정상화 확정과 구분"
     )
     metadata["version"] = 34
