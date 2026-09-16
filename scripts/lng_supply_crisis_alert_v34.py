@@ -31,6 +31,9 @@ ALASKA_LNG_QUERIES = (
     (ALASKA_CATEGORY, '"Polar LNG" Alaska when:7d'),
     (ALASKA_CATEGORY, '"Alaska LNG" "54.5 billion" OR "80 billion" when:14d'),
     (ALASKA_CATEGORY, 'Alaska LNG "$54.5bn" OR "$80bn" when:14d'),
+    (ALASKA_CATEGORY, 'Alaska LNG superpower 80bn when:7d'),
+    (ALASKA_CATEGORY, '"Alaska as LNG superpower" when:7d'),
+    (ALASKA_CATEGORY, '"Trump vision" Alaska LNG superpower when:7d'),
     (ALASKA_CATEGORY, '알래스카 LNG 글렌파른 AGDC 545억달러 800억달러 when:14d'),
 )
 for item in ALASKA_LNG_QUERIES:
@@ -246,7 +249,7 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
     metadata["alaska_lng_watch"] = {
         "category": ALASKA_CATEGORY,
         "keywords": ["Alaska LNG", "Polar LNG", "AGDC", "Glenfarne", "545억달러", "800억달러"],
-        "headline_variants": ["Alaska + LNG", "$54.5bn", "$80bn"],
+        "headline_variants": ["Alaska + LNG", "$54.5bn", "$80bn", "LNG superpower"],
         "single_major_source_mode": "보도 단계만 허용",
         "state_file_preserved": str(core.STATE_PATH),
     }
@@ -260,7 +263,7 @@ def build_setup_test_v34(quotes):
         "\n• 야후 파이낸스·비톨 등 사용자 노출 문구도 한국어 표기로 정리"
         "\n• EIA 9/4 숫자는 다음 공식 발표 뒤 자동으로 현재값 재사용을 차단"
         "\n• Alaska LNG·Polar LNG·AGDC·Glenfarne·545억달러·800억달러 신규 변화 감시"
-        "\n• Alaska+LNG 및 $54.5bn·$80bn 제목 표기도 동일 사건으로 감지"
+        "\n• Alaska+LNG 및 $54.5bn·$80bn·LNG superpower 제목 표기도 동일 사건으로 감지"
         "\n• Alaska LNG 프로젝트는 주요 신뢰매체 1곳 보도도 '보도 단계'로 감지하고 공급 정상화 확정과 구분"
     )
     metadata["version"] = 34
