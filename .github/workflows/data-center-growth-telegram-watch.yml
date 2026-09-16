@@ -15,6 +15,7 @@ on:
       - "scripts/us_data_center_cancellation_risk_watch.py"
       - "scripts/remove_telegram_italics.py"
       - "scripts/korea_aidc_policy_watch.py"
+      - "scripts/korea_aidc_policy_watch_v2.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -24,7 +25,7 @@ permissions:
 
 concurrency:
   group: data-center-growth-telegram-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -49,7 +50,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check requests openpyxl beautifulsoup4
+        run: python -m pip install --disable-pip-version-check requests openpyxl beautifulsoup4 googlenewsdecoder
 
       - name: Validate data-center Telegram route
         run: |
@@ -72,7 +73,7 @@ jobs:
         run: python scripts/data_center_growth_watch.py
 
       - name: Check Korea AIDC special-law power and permit policy
-        run: python scripts/korea_aidc_policy_watch.py
+        run: python scripts/korea_aidc_policy_watch_v2.py
 
       - name: Check PJM RBP IRAS and large-load policy
         run: |
@@ -303,11 +304,33 @@ jobs:
               print("No meaningful change; Telegram silent.")
           PY
 
+      - name: Persist Korea AIDC state immediately after send
+        if: success()
+        run: |
+          if [ -f out/korea_aidc_policy_pending_state.json ]; then
+            cp out/korea_aidc_policy_pending_state.json data/korea_aidc_policy_state.json
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/korea_aidc_policy_state.json
+            if ! git diff --cached --quiet; then
+              git commit -m "Update Korea AIDC watch state [skip ci]"
+              for attempt in 1 2 3; do
+                if git pull --rebase origin main && git push origin HEAD:main; then
+                  break
+                fi
+                git rebase --abort 2>/dev/null || true
+                if [ "$attempt" -eq 3 ]; then
+                  exit 1
+                fi
+                sleep $((attempt * 2))
+              done
+            fi
+          fi
+
       - name: Save latest official baselines
         run: |
           mkdir -p data
           cp out/data_center_growth_pending_state.json data/data_center_growth_state.json
-          cp out/korea_aidc_policy_pending_state.json data/korea_aidc_policy_state.json
           cp out/pjm_data_center_policy_pending_state.json data/pjm_data_center_policy_state.json
           cp out/us_data_center_time_to_power_pending_state.json data/us_data_center_time_to_power_state.json
           cp out/us_data_center_generation_buildout_pending_state.json data/us_data_center_generation_buildout_state.json
@@ -316,13 +339,21 @@ jobs:
           git restore scripts/us_data_center_time_to_power_watch.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/data_center_growth_state.json data/korea_aidc_policy_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json data/us_data_center_generation_buildout_state.json data/us_data_center_cancellation_risk_state.json
+          git add data/data_center_growth_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json data/us_data_center_generation_buildout_state.json data/us_data_center_cancellation_risk_state.json
           if git diff --cached --quiet; then
             echo "State unchanged."
           else
             git commit -m "Update data center watch states [skip ci]"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push origin HEAD:main; then
+                break
+              fi
+              git rebase --abort 2>/dev/null || true
+              if [ "$attempt" -eq 3 ]; then
+                exit 1
+              fi
+              sleep $((attempt * 2))
+            done
           fi
 
       - name: Upload watcher status
@@ -336,6 +367,7 @@ jobs:
             out/data_center_growth_pending_state.json
             out/korea_aidc_policy_status.md
             out/korea_aidc_policy_alert.txt
+            out/korea_aidc_policy_alert_meta.json
             out/korea_aidc_policy_pending_state.json
             out/pjm_data_center_policy_status.md
             out/pjm_data_center_policy_alert.txt
