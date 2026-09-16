@@ -28,6 +28,7 @@ on:
       - 'scripts/warsh_ai_taskforce_watch_v2.py'
       - 'scripts/warsh_new_axes_watch.py'
       - 'scripts/warsh_new_axes_watch_v2.py'
+      - 'scripts/warsh_new_axes_watch_v3.py'
       - 'scripts/warsh_pce_trend_watch.py'
       - 'scripts/warsh_curve_ownership_watch.py'
       - 'scripts/warsh_curve_ownership_watch_v2.py'
@@ -101,7 +102,7 @@ jobs:
           python scripts/warsh_inflation_market_watch.py
           python scripts/warsh_market_watch_v2.py
           python scripts/warsh_ai_taskforce_watch_v2.py
-          python scripts/warsh_new_axes_watch_v2.py
+          python scripts/warsh_new_axes_watch_v3.py
           python scripts/warsh_pce_trend_watch.py
           python scripts/warsh_curve_ownership_watch_v2.py
           python scripts/warsh_credibility_pretightening_watch_v2.py
