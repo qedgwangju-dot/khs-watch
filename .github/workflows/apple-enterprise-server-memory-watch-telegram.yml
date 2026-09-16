@@ -1,0 +1,174 @@
+name: Apple Enterprise AI Server Memory Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/apple-enterprise-server-memory-watch-telegram.yml"
+      - "scripts/apple_enterprise_server_memory_watch.py"
+      - "data/apple_enterprise_server_memory_watch_state.json"
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apple-enterprise-server-memory-watch-telegram
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate watcher
+        run: python -m py_compile scripts/apple_enterprise_server_memory_watch.py
+
+      - name: Validate Telegram route without sending
+        env:
+          TELEGRAM_BOT_TOKEN_PRIMARY: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+          token = (os.getenv("TELEGRAM_BOT_TOKEN_PRIMARY") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("missing HBM_TELEGRAM_BOT_TOKEN")
+          if not chat_id:
+              raise RuntimeError("missing HBM_TELEGRAM_CHAT_ID")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              me = json.loads(r.read().decode())
+          username = str((me.get("result") or {}).get("username") or "")
+          if not me.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"wrong bot: expected @{expected}, got @{username or 'unknown'}")
+          q = urllib.parse.urlencode({"chat_id": chat_id})
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?{q}", timeout=25) as r:
+              chat = json.loads(r.read().decode())
+          if not chat.get("ok") or (chat.get("result") or {}).get("id") is None:
+              raise RuntimeError("telegram chat unreachable")
+          print(f"telegram_route_valid=true bot=@{username} chat_type={(chat.get('result') or {}).get('type','unknown')}")
+          PY
+
+      - name: Scan Apple enterprise server and memory signals
+        run: python scripts/apple_enterprise_server_memory_watch.py
+
+      - name: Publish watcher summary
+        if: always()
+        run: |
+          if [ -f out/apple_enterprise_server_memory_watch_status.md ]; then
+            cat out/apple_enterprise_server_memory_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/apple_enterprise_server_memory_watch_telegram.txt ]; then
+            printf '\n---\n\nTelegram alert preview:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/apple_enterprise_server_memory_watch_telegram.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send meaningful change to Telegram
+        if: hashFiles('out/apple_enterprise_server_memory_watch_telegram.txt') != ''
+        env:
+          TELEGRAM_BOT_TOKEN_PRIMARY: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt, json, os, pathlib, urllib.parse, urllib.request
+          from zoneinfo import ZoneInfo
+          token = (os.getenv("TELEGRAM_BOT_TOKEN_PRIMARY") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              me = json.loads(r.read().decode())
+          username = str((me.get("result") or {}).get("username") or "")
+          if username.lower() != expected.lower():
+              raise RuntimeError(f"wrong bot: @{username}")
+          text = pathlib.Path("out/apple_enterprise_server_memory_watch_telegram.txt").read_text(encoding="utf-8").strip()
+          chunks, cur = [], ""
+          for line in text.splitlines():
+              cand = line if not cur else cur + "\n" + line
+              if len(cand) <= 3900:
+                  cur = cand
+              else:
+                  if cur: chunks.append(cur)
+                  cur = line
+          if cur: chunks.append(cur)
+          ids = []
+          for chunk in chunks:
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode()
+              req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  result = json.loads(r.read().decode())
+              if not result.get("ok"):
+                  raise RuntimeError(str(result))
+              ids.append((result.get("result") or {}).get("message_id"))
+          pathlib.Path("out/apple_enterprise_server_memory_watch_telegram_confirmed.json").write_text(
+              json.dumps({
+                  "status": "confirmed",
+                  "bot_username": username,
+                  "message_ids": ids,
+                  "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              }, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={ids}")
+          PY
+
+      - name: Persist no-alert state
+        if: success() && hashFiles('out/apple_enterprise_server_memory_watch_telegram.txt') == '' && hashFiles('out/apple_enterprise_server_memory_watch_pending_state.json') != ''
+        run: cp out/apple_enterprise_server_memory_watch_pending_state.json data/apple_enterprise_server_memory_watch_state.json
+
+      - name: Persist state after confirmed delivery
+        if: success() && hashFiles('out/apple_enterprise_server_memory_watch_telegram.txt') != '' && hashFiles('out/apple_enterprise_server_memory_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_enterprise_server_memory_watch_pending_state.json') != ''
+        run: cp out/apple_enterprise_server_memory_watch_pending_state.json data/apple_enterprise_server_memory_watch_state.json
+
+      - name: Commit watcher state
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/apple_enterprise_server_memory_watch_state.json
+          if git diff --cached --quiet; then
+            echo "Apple enterprise server memory state unchanged"
+          else
+            git commit -m "Update Apple enterprise server memory watch state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apple-enterprise-server-memory-watch-${{ github.run_id }}
+          path: |
+            out/apple_enterprise_server_memory_watch_status.md
+            out/apple_enterprise_server_memory_watch_telegram.txt
+            out/apple_enterprise_server_memory_watch_pending_state.json
+            out/apple_enterprise_server_memory_watch_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
