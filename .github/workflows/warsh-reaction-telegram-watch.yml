@@ -3,6 +3,10 @@ name: Warsh Reaction Function Telegram Watch
 on:
   schedule:
     - cron: '26 * * * *'
+    # 2026-09-16 FOMC event window. Scripts self-gate by event date/state.
+    - cron: '50 17 16 9 *'
+    - cron: '3,18,33,48 18 16 9 *'
+    - cron: '15,45 19 16 9 *'
   workflow_dispatch:
     inputs:
       force_notify:
@@ -33,6 +37,9 @@ on:
       - 'scripts/warsh_policy_path_watch.py'
       - 'scripts/warsh_balance_sheet_watch.py'
       - 'scripts/warsh_sep_path_watch.py'
+      - 'scripts/warsh_ib_consensus_watch.py'
+      - 'scripts/warsh_fomc_event_watch.py'
+      - 'scripts/market_internal_strength_watch.py'
       - '.github/workflows/warsh-reaction-telegram-watch.yml'
 
 permissions:
@@ -101,8 +108,10 @@ jobs:
           python scripts/warsh_policy_path_watch.py
           python scripts/warsh_balance_sheet_watch.py
           python scripts/warsh_sep_path_watch.py
+          python scripts/warsh_ib_consensus_watch.py
+          python scripts/warsh_fomc_event_watch.py
 
-      - name: Check AI hardware software rotation and notify exact Telegram
+      - name: Check AI rotation and US market internal strength on exact Telegram
         if: ${{ always() && !cancelled() }}
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
@@ -130,9 +139,10 @@ jobs:
           username = str((data.get('result') or {}).get('username') or '')
           if not data.get('ok') or username.lower() != expected.lower():
               raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{username or "unknown"}')
-          print(f'ai_rotation_route_valid=true bot=@{username} chat_id_present=true')
+          print(f'equity_route_valid=true bot=@{username} chat_id_present=true')
           PY
           python scripts/warsh_ai_rotation_watch.py
+          python scripts/market_internal_strength_watch.py
 
       - name: Ignore timestamp-only state changes
         if: ${{ always() && !cancelled() }}
@@ -154,6 +164,9 @@ jobs:
               pathlib.Path('data/warsh_policy_path_watch_state.json'),
               pathlib.Path('data/warsh_balance_sheet_watch_state.json'),
               pathlib.Path('data/warsh_sep_path_watch_state.json'),
+              pathlib.Path('data/warsh_ib_consensus_watch_state.json'),
+              pathlib.Path('data/warsh_fomc_event_watch_state.json'),
+              pathlib.Path('data/market_internal_strength_watch_state.json'),
           ]
           for path in paths:
               if not path.exists():
@@ -173,14 +186,14 @@ jobs:
       - name: Persist deduplication baselines
         if: ${{ always() && !cancelled() }}
         run: |
-          CHANGED="$(git status --porcelain -- data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json)"
+          CHANGED="$(git status --porcelain -- data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_fomc_event_watch_state.json data/market_internal_strength_watch_state.json)"
           if [ -z "$CHANGED" ]; then
             echo 'No meaningful state change to commit.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json
+          git add data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_fomc_event_watch_state.json data/market_internal_strength_watch_state.json
           git commit -m 'Update Warsh reaction watch state'
           for ATTEMPT in 1 2 3 4; do
             git pull --rebase -X theirs origin main || { git rebase --abort || true; }
