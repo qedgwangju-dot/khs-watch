@@ -2,6 +2,7 @@
 import re
 
 import warsh_fomc_event_watch as base
+import warsh_fomc_persistence_watch as persistence
 
 _original_decision_message = base.decision_message
 
@@ -61,3 +62,4 @@ base.decision_message = decision_message_v2
 
 if __name__ == '__main__':
     base.main()
+    persistence.main()
