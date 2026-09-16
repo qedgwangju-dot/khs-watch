@@ -5,6 +5,7 @@ v33의 정제제품 사건축을 유지하면서 다음만 수정한다.
 - 월스트리트저널 연료위기 제목이 LNG 일반 대체문으로 떨어지지 않도록 전용 한국어 제목 사용
 - Yahoo/Vitol 같은 영문 표시를 한국어 표기로 정리
 - 2026-09-04 EIA 주간값은 9월 16일 다음 발표 이후 자동으로 고정값 노출 차단
+- Alaska LNG·Polar LNG·AGDC·Glenfarne 및 545억달러·800억달러 규모 변화 감시
 """
 from __future__ import annotations
 
@@ -20,11 +21,82 @@ v8 = v33.v8
 
 _BASE_BUILD = core.build_regular_alert
 _BASE_SETUP = core.build_setup_test
+_BASE_POLARITY_V34 = core.classify_polarity
+_BASE_CATEGORY_LABEL_V34 = core.category_label
+
+ALASKA_CATEGORY = "alaska_lng_supply"
+ALASKA_LNG_QUERIES = (
+    (ALASKA_CATEGORY, '"Alaska LNG" Glenfarne AGDC when:7d'),
+    (ALASKA_CATEGORY, '"Polar LNG" Alaska when:7d'),
+    (ALASKA_CATEGORY, '"Alaska LNG" "54.5 billion" OR "80 billion" when:14d'),
+    (ALASKA_CATEGORY, '알래스카 LNG 글렌파른 AGDC 545억달러 800억달러 when:14d'),
+)
+for item in ALASKA_LNG_QUERIES:
+    if item not in core.NEWS_QUERIES:
+        core.NEWS_QUERIES = tuple(core.NEWS_QUERIES) + (item,)
+
+core.TRUSTED_SOURCE_ALIASES = tuple(core.TRUSTED_SOURCE_ALIASES) + (
+    "alaska gasline development corporation", "agdc", "glenfarne", "polar lng",
+    "federal energy regulatory commission", "ferc",
+)
+core.OFFICIAL_SOURCE_ALIASES = tuple(core.OFFICIAL_SOURCE_ALIASES) + (
+    "alaska gasline development corporation", "agdc", "glenfarne", "polar lng",
+    "federal energy regulatory commission", "ferc",
+)
+
+core.WORSENING_TERMS[ALASKA_CATEGORY] = (
+    "delay", "delayed", "postpone", "postponed", "hold", "stalled", "stall",
+    "cost overrun", "cost increase", "financing gap", "funding gap", "tax incentive failed",
+    "failed to pass", "sanction", "sanctions", "permit challenge", "lawsuit", "cancelled", "canceled",
+    "지연", "연기", "중단", "보류", "비용 증가", "자금조달 난항", "제재", "허가 지연", "취소",
+)
+core.EASING_TERMS[ALASKA_CATEGORY] = (
+    "final investment decision", "fid", "signed", "agreement", "offtake", "gas sales",
+    "secured", "committed", "funding", "financing", "final engineering", "feed", "construction",
+    "groundbreaking", "supply agreement", "strategic partner", "investment", "export terminal",
+    "최종투자결정", "계약", "협약", "구매", "공급", "자금조달", "투자", "착공", "최종 설계",
+)
+core.SUBTYPE_TERMS = (
+    ("alaska_lng_cost_scale", ("54.5 billion", "80 billion", "545억달러", "800억달러")),
+    ("polar_lng_project", ("polar lng",)),
+    ("alaska_lng_project", ("alaska lng", "glenfarne", "agdc", "alaska gasline development corporation")),
+) + tuple(core.SUBTYPE_TERMS)
+
+
+def classify_polarity_v34(category: str, title: str) -> str | None:
+    if category != ALASKA_CATEGORY:
+        return _BASE_POLARITY_V34(category, title)
+    normalized = core.normalize_text(title)
+    if any(term in normalized for term in core.WORSENING_TERMS[ALASKA_CATEGORY]):
+        return "worsening"
+    if any(term in normalized for term in core.EASING_TERMS[ALASKA_CATEGORY]):
+        return "easing"
+    if any(term in normalized for term in ("alaska lng", "polar lng", "glenfarne", "agdc", "54.5 billion", "80 billion", "545억달러", "800억달러")):
+        return "easing"
+    return None
+
+
+def category_label_v34(category: str) -> str:
+    if category == ALASKA_CATEGORY:
+        return "알래스카 LNG·대체공급 프로젝트"
+    return _BASE_CATEGORY_LABEL_V34(category)
+
+
+core.classify_polarity = classify_polarity_v34
+core.category_label = category_label_v34
 
 
 def _title_ko_v34(item: core.NewsItem) -> str:
     raw = str(getattr(item, "title", "") or "").strip()
     normalized = core.normalize_text(raw)
+    if item.category == ALASKA_CATEGORY:
+        if any(term in normalized for term in core.WORSENING_TERMS[ALASKA_CATEGORY]):
+            return "알래스카 LNG 프로젝트 지연·사업성 위험 신규 변화"
+        if "polar lng" in normalized:
+            return "Polar LNG 알래스카 노스슬로프 프로젝트 신규 변화"
+        if any(term in normalized for term in ("54.5 billion", "80 billion", "545억달러", "800억달러")):
+            return "알래스카 LNG 대형 프로젝트 투자비·사업성 관련 신규 변화"
+        return "Alaska LNG·Glenfarne·AGDC 대체공급 프로젝트 신규 변화"
     if "great fuel crisis is here" in normalized:
         return "미국 석유업계 경영진, 글로벌 연료 위기가 이미 시작됐다고 경고"
     if "global diesel supply to stay tight through winter" in normalized:
@@ -104,6 +176,11 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
     metadata.setdefault("refined_fuel_watch", {})["output_guard"] = (
         "fuel-specific Korean evidence + Yahoo/Vitol Korean display + stale EIA fixed-value block"
     )
+    metadata["alaska_lng_watch"] = {
+        "category": ALASKA_CATEGORY,
+        "keywords": ["Alaska LNG", "Polar LNG", "AGDC", "Glenfarne", "545억달러", "800억달러"],
+        "state_file_preserved": str(core.STATE_PATH),
+    }
     return title, body, metadata
 
 
@@ -113,8 +190,10 @@ def build_setup_test_v34(quotes):
         "\n• 정제제품 경보의 근거기사 제목을 연료 사건 전용 한국어로 표시"
         "\n• 야후 파이낸스·비톨 등 사용자 노출 문구도 한국어 표기로 정리"
         "\n• EIA 9/4 숫자는 다음 공식 발표 뒤 자동으로 현재값 재사용을 차단"
+        "\n• Alaska LNG·Polar LNG·AGDC·Glenfarne·545억달러·800억달러 신규 변화 감시"
     )
     metadata["version"] = 34
+    metadata["alaska_lng_watch"] = True
     return title, body, metadata
 
 
