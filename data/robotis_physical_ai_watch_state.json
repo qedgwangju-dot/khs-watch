@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-09-16T12:01:27.652871+00:00",
+  "updated_at": "2026-09-16T16:52:19.723020+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -266,10 +266,16 @@
     "391f5f69aba476e4cc4f483910f8f3c1b1b3e915738be226bb6ecec64a26d83b",
     "ffc7067135cf1f249a44a6d181e9be52b7098bcecfd5996f396dccabf0d44fa1",
     "21b254b940264709ee9574ad039215d00ac5000219d363306f45f255a5c19bc2",
-    "322542521bd678f266adafe3ee9615613887454c33f02b349e3d81ea5ed03b1c"
+    "322542521bd678f266adafe3ee9615613887454c33f02b349e3d81ea5ed03b1c",
+    "bf923527c0d8a3f084dcc8d004fca0965bd6ad15b9fa1815650dbcdbb6fc698a",
+    "bad8bc40f519ed143135beac26fe9ae24f372e7b0f953981643bd53c3dcc7b21"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "bf923527c0d8a3f084dcc8d004fca0965bd6ad15b9fa1815650dbcdbb6fc698a",
+    "bad8bc40f519ed143135beac26fe9ae24f372e7b0f953981643bd53c3dcc7b21"
+  ],
   "groups": [
+    "battery",
     "ess_battery",
     "hyundai_atlas_rollout",
     "lg_factory_loop",
