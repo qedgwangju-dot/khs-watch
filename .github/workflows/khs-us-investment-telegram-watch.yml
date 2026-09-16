@@ -107,7 +107,10 @@ jobs:
           spec.loader.exec_module(watcher)
 
           original_collapse = watcher._collapse_rows
-          delegated_families = {"westinghouse_stake", "nuclear_build"}
+          # Westinghouse 지분/거버넌스는 전용 원전 watcher 한 곳만 Telegram 송출한다.
+          # 최대 8기·AP1000/APR1400·발주/NRC 등 미국 원전 구성·발주 변화는
+          # 대미투자 energy/nuclear-build 상태축에서 계속 추적·송출한다.
+          delegated_families = {"westinghouse_stake"}
 
           def collapse_with_single_nuclear_owner(rows):
               collapsed = original_collapse(rows)
