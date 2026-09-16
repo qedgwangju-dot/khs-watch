@@ -317,7 +317,12 @@
     "4121374c24df29e64183": "2026-09-16T06:11:26.022367+00:00",
     "f0a11d35bf8231801184": "2026-09-16T06:11:26.022367+00:00",
     "71cc80009e8621dbf213": "2026-09-16T06:11:26.022367+00:00",
-    "e3ba2c59cbe6d521312b": "2026-09-16T06:11:26.022367+00:00"
+    "e3ba2c59cbe6d521312b": "2026-09-16T06:11:26.022367+00:00",
+    "stateevt_3b4cd6e98de7a3ffd400": "2026-09-16T11:48:03.008654+00:00",
+    "stateevt_cce2e089dd40f6ed0870": "2026-09-16T11:48:03.008654+00:00",
+    "stateevt_6b0bb154b260668b6d68": "2026-09-16T11:48:03.008654+00:00",
+    "stateevt_8725688c97a87ea53bfd": "2026-09-16T11:48:03.008654+00:00",
+    "stateevt_a211bb3e36741f1345cc": "2026-09-16T11:48:03.008654+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -326,7 +331,12 @@
     "ercot_large_load_official": "2026-09-13T10:23:18.406888+00:00",
     "nuclear_fuel_cycle_pyro_media": "2026-09-15T12:37:30.310054+00:00",
     "funding_45day_media": "2026-09-15T12:37:30.310054+00:00",
-    "westinghouse_stake_media": "2026-09-15T17:19:09.625659+00:00"
+    "westinghouse_stake_media": "2026-09-15T17:19:09.625659+00:00",
+    "eventstate_nuclear_fuel_cycle_pyro_3b4cd6e98de7a3ffd400": "2026-09-16T11:48:03.008654+00:00",
+    "eventstate_westinghouse_stake_cce2e089dd40f6ed0870": "2026-09-16T11:48:03.008654+00:00",
+    "eventstate_westinghouse_stake_6b0bb154b260668b6d68": "2026-09-16T11:48:03.008654+00:00",
+    "eventstate_nuclear_fuel_cycle_pyro_8725688c97a87ea53bfd": "2026-09-16T11:48:03.008654+00:00",
+    "eventstate_funding_execution_a211bb3e36741f1345cc": "2026-09-16T11:48:03.008654+00:00"
   },
   "official_status": {
     "status": "unconfirmed",
@@ -338,14 +348,16 @@
     "westinghouse_stake": {
       "facts": [
         "governance:board",
+        "party:kepco",
         "party:westinghouse",
+        "percent:10",
         "percent:15",
         "percent:5~10",
         "source:official"
       ],
       "initialized_at": "2026-09-16T06:11:26.023198+00:00",
-      "updated_at": "2026-09-16T06:11:26.023873+00:00",
-      "last_title": "웨스팅하우스 지분율 놓고 韓美 막판 기싸움… 이사회 참여가 관건 - 서울경제",
+      "updated_at": "2026-09-16T11:48:16.932996+00:00",
+      "last_title": "[단독] 웨스팅하우스 지분 10% 넘겨야 이사 지명권… “대금은 한전이 부담” - 서울경제",
       "last_source": "서울경제"
     },
     "power_equipment_supply": {
@@ -435,6 +447,24 @@
       "updated_at": "",
       "last_title": "",
       "last_source": ""
+    },
+    "nuclear_fuel_cycle_pyro": {
+      "facts": [
+        "usd:2천억"
+      ],
+      "initialized_at": "2026-09-16T11:48:16.932563+00:00",
+      "updated_at": "2026-09-16T11:48:16.933313+00:00",
+      "last_title": "[단독] 한도 2천억달러 이미 넘었는데…미, 사용후핵연료 처리 ‘파이로’ 투자 요구 - 한겨레",
+      "last_source": "한겨레"
+    },
+    "funding_execution": {
+      "facts": [
+        "stage:송금집행"
+      ],
+      "initialized_at": "2026-09-16T11:48:16.934333+00:00",
+      "updated_at": "2026-09-16T11:48:16.934333+00:00",
+      "last_title": "대미투자금, MOU 뒤집고 조기 송금…‘45일 이내’ 미 요구 수용했나 - 한겨레",
+      "last_source": "한겨레"
     }
   },
   "event_state_guard_version": 2,
