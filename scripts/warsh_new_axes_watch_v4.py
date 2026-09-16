@@ -36,12 +36,15 @@ REVISED_RELEASES = {
     (2026, 3): '2026-12-08',
 }
 
-# Exact labor-share percentage levels published by BLS. The API supplies the
-# official labor-share index and growth rates, not the human-readable percentage
-# level used in the news release. Future quarters without a published level here
-# are conservatively derived from the official BLS index and clearly tagged.
+# Exact labor-share percentage levels from the latest BLS historical table.
+# The standalone Q1 2026 release originally showed 53.7%, but the latest BLS
+# historical table published with Q2 data revises Q1 2026 to 53.6%.
+# The API supplies the official labor-share index and growth rates, not the
+# human-readable percentage level used in the news release. Future quarters
+# without a published level here are conservatively derived from the official
+# BLS index and clearly tagged.
 LABOR_SHARE_LEVELS = {
-    (2026, 1): 53.7,
+    (2026, 1): 53.6,
     (2026, 2): 52.8,
 }
 LABOR_SHARE_INDEX_ANCHOR = 93.446
