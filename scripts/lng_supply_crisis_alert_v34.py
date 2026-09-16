@@ -23,6 +23,7 @@ _BASE_BUILD = core.build_regular_alert
 _BASE_SETUP = core.build_setup_test
 _BASE_POLARITY_V34 = core.classify_polarity
 _BASE_CATEGORY_LABEL_V34 = core.category_label
+_BASE_CONFIRMED_V34 = core.confirmed_news_groups
 
 ALASKA_CATEGORY = "alaska_lng_supply"
 ALASKA_LNG_QUERIES = (
@@ -62,6 +63,11 @@ core.SUBTYPE_TERMS = (
     ("alaska_lng_project", ("alaska lng", "glenfarne", "agdc", "alaska gasline development corporation")),
 ) + tuple(core.SUBTYPE_TERMS)
 
+ALASKA_MAJOR_SOURCES = (
+    "reuters", "bloomberg", "financial times", "wall street journal", "wsj",
+    "associated press", "ap news", "cnbc", "s&p global commodity insights", "argus media",
+)
+
 
 def classify_polarity_v34(category: str, title: str) -> str | None:
     if category != ALASKA_CATEGORY:
@@ -82,8 +88,61 @@ def category_label_v34(category: str) -> str:
     return _BASE_CATEGORY_LABEL_V34(category)
 
 
+def confirmed_news_groups_v34(items: list[core.NewsItem]):
+    base = [
+        group for group in _BASE_CONFIRMED_V34(items)
+        if str(group.get("category") or "") != ALASKA_CATEGORY
+    ]
+    alaska_items = [item for item in items if item.category == ALASKA_CATEGORY]
+    buckets: dict[tuple[str, str], list[core.NewsItem]] = {}
+    for item in alaska_items:
+        buckets.setdefault((item.subtype, item.polarity), []).append(item)
+
+    for (_, _), group in buckets.items():
+        group.sort(key=lambda x: x.published_epoch, reverse=True)
+        latest = group[0]
+        recent = [x for x in group if latest.published_epoch - x.published_epoch <= 96 * 3600]
+        official = [x for x in recent if x.official]
+        major = [x for x in recent if core.source_matches(x.source, ALASKA_MAJOR_SOURCES)]
+        distinct = {core.normalize_text(x.source) for x in recent}
+        if not official and not major and len(distinct) < 2:
+            continue
+
+        evidence: list[core.NewsItem] = []
+        used: set[str] = set()
+        for item in (official + major + recent):
+            source_key = core.normalize_text(item.source)
+            if source_key in used:
+                continue
+            evidence.append(item)
+            used.add(source_key)
+            if len(evidence) >= 2:
+                break
+
+        if official:
+            verification = "공식 원문"
+        elif major:
+            verification = "주요 신뢰매체 보도 단계"
+        else:
+            verification = "신뢰 매체 2곳 교차"
+
+        base.append({
+            "category": ALASKA_CATEGORY,
+            "polarity": latest.polarity,
+            "subtype": latest.subtype,
+            "event_id": latest.event_id,
+            "latest_epoch": latest.published_epoch,
+            "evidence": evidence,
+            "verification": verification,
+        })
+
+    base.sort(key=lambda group: float(group.get("latest_epoch") or 0), reverse=True)
+    return base
+
+
 core.classify_polarity = classify_polarity_v34
 core.category_label = category_label_v34
+core.confirmed_news_groups = confirmed_news_groups_v34
 
 
 def _title_ko_v34(item: core.NewsItem) -> str:
@@ -179,6 +238,7 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
     metadata["alaska_lng_watch"] = {
         "category": ALASKA_CATEGORY,
         "keywords": ["Alaska LNG", "Polar LNG", "AGDC", "Glenfarne", "545억달러", "800억달러"],
+        "single_major_source_mode": "보도 단계만 허용",
         "state_file_preserved": str(core.STATE_PATH),
     }
     return title, body, metadata
@@ -191,6 +251,7 @@ def build_setup_test_v34(quotes):
         "\n• 야후 파이낸스·비톨 등 사용자 노출 문구도 한국어 표기로 정리"
         "\n• EIA 9/4 숫자는 다음 공식 발표 뒤 자동으로 현재값 재사용을 차단"
         "\n• Alaska LNG·Polar LNG·AGDC·Glenfarne·545억달러·800억달러 신규 변화 감시"
+        "\n• Alaska LNG 프로젝트는 주요 신뢰매체 1곳 보도도 '보도 단계'로 감지하고 공급 정상화 확정과 구분"
     )
     metadata["version"] = 34
     metadata["alaska_lng_watch"] = True
