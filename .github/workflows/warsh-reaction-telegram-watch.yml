@@ -70,9 +70,9 @@ jobs:
 
       - name: Check official sources and notify macro Telegram
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.WARSH_TELEGRAM_BOT_TOKEN || secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
-          EXPECTED_BOT_USERNAME: khs8879887988798879_bot
+          EXPECTED_BOT_USERNAME: ${{ secrets.WARSH_TELEGRAM_BOT_TOKEN != '' && 'hshs8879_bot' || 'khs8879887988798879_bot' }}
           FORCE_NOTIFY: ${{ (github.event_name == 'workflow_dispatch' && inputs.force_notify) && '1' || '0' }}
           STARTUP_NOTIFY: '0'
           TREASURY_2Y_ALERT_BP: '10'
@@ -93,11 +93,29 @@ jobs:
           PYTHONPATH: scripts
         run: |
           python - <<'PY'
+          import json
+          import os
           import urllib.parse
+          import urllib.request
+
           probe = urllib.parse.urlencode({'text': 'Headline PCE MoM YoY | Fed | Treasury | 2Y'})
           decoded = urllib.parse.unquote_plus(probe)
           assert '종합 PCE' in decoded and '연준(Fed)' in decoded and '미 재무부(Treasury)' in decoded and '2년물' in decoded, decoded
           print('한글 알림 표기 가드 정상')
+
+          token = (os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
+          expected = (os.getenv('EXPECTED_BOT_USERNAME') or '').strip().lstrip('@')
+          chat_id = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
+          if not token:
+              raise RuntimeError('Warsh Telegram bot token is missing')
+          if not chat_id:
+              raise RuntimeError('GLOBAL_RATES_TELEGRAM_CHAT_ID is missing')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
+              data = json.loads(r.read().decode('utf-8'))
+          username = str((data.get('result') or {}).get('username') or '')
+          if not data.get('ok') or username.lower() != expected.lower():
+              raise RuntimeError(f'Wrong Warsh Telegram bot: expected @{expected}, got @{username or "unknown"}')
+          print(f'warsh_macro_route_valid=true bot=@{username} chat_id_present=true')
           PY
           python scripts/warsh_reaction_watch_v4.py
           python scripts/warsh_speech_watch.py
