@@ -3,7 +3,7 @@
 
 v33의 정제제품 사건축을 유지하면서 다음만 수정한다.
 - 월스트리트저널 연료위기 제목이 LNG 일반 대체문으로 떨어지지 않도록 전용 한국어 제목 사용
-- Yahoo/Vitol 같은 영문 표시를 한국어 표기로 정리
+- Yahoo/Vitol 같은 영문 표시를 한국어로 정리
 - 2026-09-04 EIA 주간값은 9월 16일 다음 발표 이후 자동으로 고정값 노출 차단
 - Alaska LNG·Polar LNG·AGDC·Glenfarne 및 545억달러·800억달러 규모 변화 감시
 """
@@ -233,12 +233,60 @@ def _build_fuel_body_v34(groups, quotes) -> str:
     return body
 
 
+def _alaska_groups(groups) -> list[dict]:
+    return [group for group in groups if str(group.get("category") or "") == ALASKA_CATEGORY]
+
+
+def _build_alaska_body_v34(groups) -> str:
+    alaska = _alaska_groups(groups)
+    primary = sorted(alaska, key=lambda g: float(g.get("latest_epoch") or 0), reverse=True)[0]
+    worsening = str(primary.get("polarity") or "") == "worsening"
+    verification = html.escape(str(primary.get("verification") or "확인 단계"))
+    status = "사업성·일정 위험 확대" if worsening else "사업 추진 진전"
+    meaning = (
+        "현재 LNG 물량이 중단됐다는 뜻이 아니라, 알래스카가 중장기 비호르무즈 대체공급원이 되는 시간표가 늦어질 수 있다는 신호입니다."
+        if worsening
+        else "현재 LNG 물량이 바로 늘었다는 뜻이 아니라, 알래스카가 중장기 비호르무즈 대체공급원이 되는 시간표가 한 단계 전진했다는 신호입니다."
+    )
+    timetable = (
+        "FID·자금조달·구속력 있는 장기구매계약·세제/허가·착공 일정이 실제로 뒤로 밀리는지 확인합니다."
+        if worsening
+        else "FID·자금조달·구속력 있는 장기구매계약·세제/허가·착공으로 실제 전환되는지 확인합니다."
+    )
+    evidence = _evidence_lines_v34(alaska)
+    evidence_text = "\n".join(evidence) if evidence else "• 공개 근거 링크 확인 필요"
+    return (
+        "<b>한눈에</b>\n"
+        f"• <b>판정</b> 알래스카 LNG·대체공급 프로젝트 {status}\n"
+        f"• <b>확인 수준</b> {verification} · 현재 공급중단/공급개시 확정과는 구분\n\n"
+        "<b>무엇이 바뀌었나</b>\n"
+        f"{evidence_text}\n\n"
+        "<b>정확한 의미</b>\n"
+        f"• {meaning}\n"
+        f"• {timetable}\n\n"
+        "<b>한국 영향</b>\n"
+        "• 한국의 당장 LNG 재고가 줄었다는 신호가 아닙니다. 중동 공급 차질을 대체할 장기 조달원의 가동 시점과 계약 가능성이 바뀌는지 보는 감시축입니다.\n\n"
+        "<b>투자 포인트</b>\n"
+        "• 돈 버는 능력: 실제 장기구매계약·FID·착공이 생겨야 공급사·건설·파이프라인 매출로 연결됩니다.\n"
+        "• 시간표: Glenfarne·AGDC·Polar LNG의 공식 발표, 자금조달, 장기구매계약, FID, 착공 순으로 확인합니다.\n\n"
+        "<b>다음 확인</b>\n"
+        "• 공식 자금조달·구속력 있는 구매계약·FID·세제/허가·착공 일정 변화\n\n"
+        "<b>핵심 한 줄</b> 알래스카 LNG 뉴스는 현재 공급량 변화가 아니라 중장기 대체공급원의 사업성·가동 시간표 변화로 해석합니다."
+    )
+
+
 def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
     title, body, metadata = _BASE_BUILD(groups, quotes, new_signals, cleared_signals)
-    if v33._fuel_groups(groups):
+    alaska = _alaska_groups(groups)
+    if alaska:
+        title = "🚨 알래스카 LNG·대체공급 프로젝트 변화"
+        body = _build_alaska_body_v34(groups)
+    elif v33._fuel_groups(groups):
         title = "🚨 글로벌 연료·정제제품 공급경보"
         body = _build_fuel_body_v34(groups, quotes)
-    body = v32._replace_evidence_text(body, groups)
+        body = v32._replace_evidence_text(body, groups)
+    else:
+        body = v32._replace_evidence_text(body, groups)
     leaks = v32._raw_english_evidence_remaining(body, groups)
     if leaks:
         raise RuntimeError("영문 기사 제목 송출 차단: " + " | ".join(leaks[:3]))
@@ -251,6 +299,7 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
         "keywords": ["Alaska LNG", "Polar LNG", "AGDC", "Glenfarne", "545억달러", "800억달러"],
         "headline_variants": ["Alaska + LNG", "$54.5bn", "$80bn", "LNG superpower"],
         "single_major_source_mode": "보도 단계만 허용",
+        "interpretation_guard": "project timetable != current LNG supply outage",
         "state_file_preserved": str(core.STATE_PATH),
     }
     return title, body, metadata
@@ -265,6 +314,7 @@ def build_setup_test_v34(quotes):
         "\n• Alaska LNG·Polar LNG·AGDC·Glenfarne·545억달러·800억달러 신규 변화 감시"
         "\n• Alaska+LNG 및 $54.5bn·$80bn·LNG superpower 제목 표기도 동일 사건으로 감지"
         "\n• Alaska LNG 프로젝트는 주요 신뢰매체 1곳 보도도 '보도 단계'로 감지하고 공급 정상화 확정과 구분"
+        "\n• Alaska LNG 프로젝트 뉴스는 현재 공급중단과 분리해 FID·자금조달·장기구매계약·착공 시간표로 해석"
     )
     metadata["version"] = 34
     metadata["alaska_lng_watch"] = True
