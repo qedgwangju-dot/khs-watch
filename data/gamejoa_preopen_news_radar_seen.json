@@ -368,6 +368,16 @@
       "source": "파이낸셜뉴스",
       "title": "유가 100달러·美 국채금리 4.8%…다시 시험대 오른 '반도체 랠리'"
     },
+    "event:21ea2efd6733b8cb3b594b69": {
+      "first_seen_kst": "2026-09-16T18:24:11+09:00",
+      "lanes": {
+        "live": "2026-09-16T18:24:11+09:00"
+      },
+      "last_seen_kst": "2026-09-16T18:24:11+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12154545",
+      "source": "매일경제",
+      "title": "\"통신장비 부족해\"…대한광통신 14% 쑥"
+    },
     "event:2317d3ca299f1beea47ade53": {
       "first_seen_kst": "2026-09-09T21:48:45+09:00",
       "lanes": {
@@ -1902,16 +1912,6 @@
       "source": "전자신문",
       "title": "'AI 시장 힘주는' 日 무라타, MLCC 생산능력 확충 추진"
     },
-    "event:b933be37b3b95974d4458c9a": {
-      "first_seen_kst": "2026-09-02T18:23:12+09:00",
-      "lanes": {
-        "live": "2026-09-02T18:23:12+09:00"
-      },
-      "last_seen_kst": "2026-09-02T18:23:12+09:00",
-      "link": "https://www.fnnews.com/news/202609021808192019",
-      "source": "파이낸셜뉴스",
-      "title": "한국 주식 파는 외국인, 레버리지 ETF 쓸어담는다"
-    },
     "event:b96dca945af55b8526c1b23a": {
       "first_seen_kst": "2026-09-03T08:39:20+09:00",
       "lanes": {
@@ -3053,6 +3053,16 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01256246645580120",
       "source": "이데일리",
       "title": "고려아연 최윤범號 승기 잡았다…최종 담판은 내년 3월 주총"
+    },
+    "link:251a242879a0e59169c2e6f4": {
+      "first_seen_kst": "2026-09-16T18:24:11+09:00",
+      "lanes": {
+        "live": "2026-09-16T18:24:11+09:00"
+      },
+      "last_seen_kst": "2026-09-16T18:24:11+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12154545",
+      "source": "매일경제",
+      "title": "\"통신장비 부족해\"…대한광통신 14% 쑥"
     },
     "link:265405b6958c6b01248a4ed3": {
       "first_seen_kst": "2026-09-11T01:43:47+09:00",
@@ -5438,16 +5448,6 @@
       "link": "https://www.fnnews.com/news/202609030915257916",
       "source": "파이낸셜뉴스",
       "title": "\"일본, 공장 입지로 매력적\" SK하이닉스, 日키옥시아와 협력시 시너지는?"
-    },
-    "link:ba8e8a07771700acd972df70": {
-      "first_seen_kst": "2026-09-02T18:23:12+09:00",
-      "lanes": {
-        "live": "2026-09-02T18:23:12+09:00"
-      },
-      "last_seen_kst": "2026-09-02T18:23:12+09:00",
-      "link": "https://www.fnnews.com/news/202609021808192019",
-      "source": "파이낸셜뉴스",
-      "title": "한국 주식 파는 외국인, 레버리지 ETF 쓸어담는다"
     },
     "link:bb3fadf42ab70a9e2f79be71": {
       "first_seen_kst": "2026-09-09T01:13:58+09:00",
@@ -9870,16 +9870,6 @@
       "source": "Reuters on MSN",
       "title": "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크"
     },
-    "original:decbb16d021600d9fdb0a813": {
-      "first_seen_kst": "2026-09-02T18:23:12+09:00",
-      "lanes": {
-        "live": "2026-09-02T18:23:12+09:00"
-      },
-      "last_seen_kst": "2026-09-02T18:23:12+09:00",
-      "link": "https://www.fnnews.com/news/202609021808192019",
-      "source": "파이낸셜뉴스",
-      "title": "한국 주식 파는 외국인, 레버리지 ETF 쓸어담는다"
-    },
     "original:df39bbff7f82d50601fc6331": {
       "first_seen_kst": "2026-09-07T18:39:13+09:00",
       "lanes": {
@@ -9949,6 +9939,16 @@
       "link": "https://www.mk.co.kr/news/stock/12149036",
       "source": "매일경제",
       "title": "“오늘 오후 주식창 안볼란다”…네 마녀도 벅찬데, ETF까지 겹쳤다"
+    },
+    "original:e1a2dec8ce6ff725ec940046": {
+      "first_seen_kst": "2026-09-16T18:24:11+09:00",
+      "lanes": {
+        "live": "2026-09-16T18:24:11+09:00"
+      },
+      "last_seen_kst": "2026-09-16T18:24:11+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12154545",
+      "source": "매일경제",
+      "title": "\"통신장비 부족해\"…대한광통신 14% 쑥"
     },
     "original:e1cef4ec5aa0a84a7c512791": {
       "first_seen_kst": "2026-09-09T01:13:58+09:00",
@@ -13858,16 +13858,6 @@
       "source": "이데일리",
       "title": "국제유가 결국 100달러 뚫었다…사우디까지 번진 중동전쟁"
     },
-    "title:decbb16d021600d9fdb0a813": {
-      "first_seen_kst": "2026-09-02T18:23:12+09:00",
-      "lanes": {
-        "live": "2026-09-02T18:23:12+09:00"
-      },
-      "last_seen_kst": "2026-09-02T18:23:12+09:00",
-      "link": "https://www.fnnews.com/news/202609021808192019",
-      "source": "파이낸셜뉴스",
-      "title": "한국 주식 파는 외국인, 레버리지 ETF 쓸어담는다"
-    },
     "title:df39bbff7f82d50601fc6331": {
       "first_seen_kst": "2026-09-07T18:39:13+09:00",
       "lanes": {
@@ -13927,6 +13917,16 @@
       "link": "https://www.mk.co.kr/news/stock/12149036",
       "source": "매일경제",
       "title": "“오늘 오후 주식창 안볼란다”…네 마녀도 벅찬데, ETF까지 겹쳤다"
+    },
+    "title:e1a2dec8ce6ff725ec940046": {
+      "first_seen_kst": "2026-09-16T18:24:11+09:00",
+      "lanes": {
+        "live": "2026-09-16T18:24:11+09:00"
+      },
+      "last_seen_kst": "2026-09-16T18:24:11+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12154545",
+      "source": "매일경제",
+      "title": "\"통신장비 부족해\"…대한광통신 14% 쑥"
     },
     "title:e1cef4ec5aa0a84a7c512791": {
       "first_seen_kst": "2026-09-09T01:13:58+09:00",
@@ -14381,5 +14381,5 @@
       "title": "아이엘, 7300평 제조기지 띄운다…‘휴머노이드·피지컬AI’ 거점 구축"
     }
   },
-  "updated_at_kst": "2026-09-16T18:05:19+09:00"
+  "updated_at_kst": "2026-09-16T18:24:11+09:00"
 }
