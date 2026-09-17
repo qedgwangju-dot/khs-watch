@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/nvidia-exec-signal-telegram.yml"
       - "scripts/nvidia_exec_signal_watch.py"
+      - "scripts/nvidia_exec_signal_pretty.py"
   schedule:
     - cron: "31 * * * *"
   workflow_dispatch:
@@ -61,6 +62,13 @@ jobs:
         run: |
           python -m py_compile scripts/nvidia_exec_signal_watch.py
           python scripts/nvidia_exec_signal_watch.py
+
+      - name: Format NVIDIA executive alert for readability
+        run: |
+          python -m py_compile scripts/nvidia_exec_signal_pretty.py
+          if [ -f out/nvidia_exec_signal_alert.html ]; then
+            python scripts/nvidia_exec_signal_pretty.py
+          fi
 
       - name: Publish watcher summary
         if: always()
