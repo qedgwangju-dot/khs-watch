@@ -1,52 +1,52 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-17T14:25:21+09:00",
+  "updated_at_kst": "2026-09-17T16:39:12+09:00",
   "seen_event_keys": [
-    "capex:c77504fb6c1cca66",
-    "foreign1d_pos:2026-09-07:final",
-    "capex:8c316cbbe125ec4c",
-    "foreign3d_neg:2026-08-27",
-    "foreign1d_neg:2026-09-10:final",
-    "fx_1350_down:2026-09-11",
-    "fx_1350_down:2026-09-07",
-    "kosdaq_foreign1d_neg:2026-09-10:final",
-    "foreign3d_neg:2026-09-11:final",
-    "foreign3d_pos:2026-09-07:final",
-    "fx_daily_up:2026-09-15",
+    "foreign3d_neg:2026-09-02:final",
     "foreign3d_neg:2026-09-02:postclose",
-    "fx_daily_down:2026-09-02",
-    "kosdaq_foreign3d_neg:2026-09-10:final",
-    "foreign3d_pos:2026-09-08:final",
-    "foreign1d_neg:2026-08-31",
+    "foreign3d_neg:2026-09-11:final",
+    "foreign1d_neg:2026-09-02:postclose",
+    "foreign1d_neg:2026-09-02:final",
+    "capex:c77504fb6c1cca66",
+    "kosdaq_foreign3d_neg:2026-09-14:final",
     "fx_1350_down:2026-09-04",
     "foreign1d_neg:2026-09-11:final",
-    "foreign1d_neg:2026-09-14:final",
-    "kosdaq_foreign3d_neg:2026-09-14:final",
-    "kosdaq_foreign1d_pos:2026-09-09:final",
-    "foreign1d_neg:2026-09-02:final",
-    "policy_spread:2026-08-27:0.75",
     "capex:13cbe150930d23d8",
-    "kosdaq_foreign1d_neg:2026-09-11:final",
+    "fx_1350_down:2026-09-11",
+    "kosdaq_foreign1d_neg:2026-09-10:final",
+    "fx_1350_down:2026-09-07",
+    "foreign3d_pos:2026-09-08:final",
+    "foreign1d_pos:2026-09-07:final",
+    "foreign3d_neg:2026-08-27",
+    "foreign1d_neg:2026-08-31",
+    "foreign3d_pos:2026-09-07:final",
+    "capex:8c316cbbe125ec4c",
+    "foreign1d_neg:2026-09-14:final",
+    "fx_daily_down:2026-09-02",
+    "kosdaq_foreign1d_pos:2026-09-09:final",
     "kosdaq_foreign3d_neg:2026-09-11:final",
-    "foreign1d_neg:2026-09-02:postclose",
+    "kosdaq_foreign3d_neg:2026-09-10:final",
+    "policy_spread:2026-08-27:0.75",
     "ust10_up:2026-09-10",
     "foreign3d_neg:2026-09-14:final",
-    "foreign3d_neg:2026-09-02:final"
+    "kosdaq_foreign1d_neg:2026-09-11:final",
+    "fx_daily_up:2026-09-15",
+    "foreign1d_neg:2026-09-10:final"
   ],
   "active_keys": [
     "foreign1d_neg:2026-09-17",
     "foreign3d_neg:2026-09-17"
   ],
   "snapshot": {
-    "checked_at_kst": "2026-09-17T14:25:21+09:00",
+    "checked_at_kst": "2026-09-17T16:39:12+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-17",
-      "value": 1382.2,
+      "value": 1382.3,
       "prev_date": "2026-09-16",
-      "prev_value": 1368.6,
-      "change_krw": 13.6,
-      "change_pct": 0.9937,
+      "prev_value": 1377.5,
+      "change_krw": 4.8,
+      "change_pct": 0.3485,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "ecos_official": {
         "date": "2026-09-17",
@@ -58,11 +58,8 @@
         "source": "https://ecos.bok.or.kr/api/",
         "role": "한국은행 공식 일일 검증값(장중 경보 판정에는 사용하지 않음)"
       },
-      "naver_prev_date": "2026-09-16",
-      "naver_prev_value": 1377.5,
-      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
-      "seoul_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20260916153544235",
-      "seoul_close_title": "외국환시세(9월16일·15:30 기준가)"
+      "comparison_basis": "Naver 시계열 대체 — 서울 15:30 종가 조회 실패",
+      "seoul_close_error": "ConnectTimeout: HTTPSConnectionPool(host='ksureapi.einfomax.co.kr', port=443): Max retries exceeded with url: /v2/datafeed/ksure/fxlist?page=7 (Caused by ConnectTimeoutError(<HTTPSConnection(host='ksureapi.einfomax.co.kr', port=443) at 0x7f982e556ae0>, 'Connection to ksureapi.einfomax.co.kr timed out. (connect timeout=25)'))"
     },
     "ust10": {
       "date": "2026-09-15",
@@ -82,21 +79,21 @@
     },
     "foreign_flow": {
       "date": "2026-09-17",
-      "daily_eok": -17523.0,
-      "three_day_eok": -49707.0,
-      "daily_krw": -1752300000000,
-      "three_day_krw": -4970700000000,
+      "daily_eok": -22761.0,
+      "three_day_eok": -54945.0,
+      "daily_krw": -2276100000000,
+      "three_day_krw": -5494500000000,
       "source": "https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260917&sosok=01",
       "phase": "장중 참고",
       "ls_validation": {
-        "status": "mismatch",
+        "status": "matched",
         "tr_cd": "t1601",
-        "ls_daily_eok": -17614.0,
-        "naver_daily_eok": -17523.0,
-        "diff_eok": -91.0,
-        "tolerance_eok": 10.0,
-        "foreign_buy_eok": 32528.0,
-        "foreign_sell_eok": 50142.0,
+        "ls_daily_eok": -22761.0,
+        "naver_daily_eok": -22761.0,
+        "diff_eok": 0.0,
+        "tolerance_eok": 11.3805,
+        "foreign_buy_eok": 46575.0,
+        "foreign_sell_eok": 69336.0,
         "source": "https://openapi.ls-sec.co.kr/apiservice"
       },
       "source_label": "네이버 장마감 + LS증권 t1601 교차검증"
@@ -106,14 +103,14 @@
     "flow_source_note": "KOSPI·KOSDAQ 장마감 외국인 수급은 네이버 장마감값과 LS증권 OpenAPI t1601 투자자별종합을 교차검증. 네이버 실패 시 LS t1601 대체값 사용, 유의한 불일치 시 수급 임계치 판정 보류. KRX는 공식 원천 재확인 링크로 제공.",
     "ls_flow_validation": {
       "KOSPI": {
-        "status": "mismatch",
+        "status": "matched",
         "tr_cd": "t1601",
-        "ls_daily_eok": -17614.0,
-        "naver_daily_eok": -17523.0,
-        "diff_eok": -91.0,
-        "tolerance_eok": 10.0,
-        "foreign_buy_eok": 32528.0,
-        "foreign_sell_eok": 50142.0,
+        "ls_daily_eok": -22761.0,
+        "naver_daily_eok": -22761.0,
+        "diff_eok": 0.0,
+        "tolerance_eok": 11.3805,
+        "foreign_buy_eok": 46575.0,
+        "foreign_sell_eok": 69336.0,
         "source": "https://openapi.ls-sec.co.kr/apiservice"
       }
     }
@@ -142,7 +139,7 @@
       },
       {
         "date": "2026-09-17",
-        "daily_eok": -17614.0
+        "daily_eok": -22761.0
       }
     ],
     "KOSDAQ": [
