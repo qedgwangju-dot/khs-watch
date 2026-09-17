@@ -7,8 +7,9 @@ true progression milestones such as audit pass, supplier nomination, shipment,
 or Tesla official confirmation as independent alerts.
 
 For meaningful scale-order alerts, append a user-visible quantity x estimated
-unit-price calculation in KRW. The calculation is explicitly a finished-robot
-value reference, not the supplier purchase-order value.
+unit-price calculation in KRW. The calculation separates finished-robot target
+selling price from an older research BoM estimate; neither is presented as the
+actual supplier purchase-order value.
 """
 from __future__ import annotations
 
@@ -47,9 +48,13 @@ OLD_KEYS = {
     hashlib.sha256(b'tesla-optimus|supplier-audit').hexdigest(),
 }
 
-# Elon Musk's public long-term Optimus price target, used only as a value reference.
-# This is not treated as current supplier PO value or current manufacturing cost.
+# Elon Musk's public long-term Optimus selling-price target.
+# Value reference only; not a current supplier PO or current manufacturing cost.
 OPTIMUS_TARGET_PRICE_USD = (20_000, 25_000)
+
+# Morgan Stanley Optimus Gen 2 ex-software BoM estimate. This is an older
+# component-quote-based reference and is deliberately labelled as such.
+OPTIMUS_GEN2_BOM_USD = (50_000, 60_000)
 FX_FALLBACK_USDKRW = 1380.0
 
 
@@ -120,32 +125,79 @@ def _usdkrw() -> tuple[float, bool]:
 
 
 def _krw_eok(value: float) -> str:
-    eok = value / 100_000_000
-    return f"{eok:,.0f}억원"
+    return f"{value / 100_000_000:,.0f}억원"
+
+
+def _krw_unit(value: float) -> str:
+    # Humanoid unit values are naturally readable in 만원 units.
+    return f"{value / 10_000:,.0f}만원"
+
+
+def _usd_m(value: float) -> str:
+    if value >= 100_000_000:
+        return f"{value / 100_000_000:.2g}억달러"
+    if value >= 10_000_000:
+        return f"{value / 10_000_000:.2g}천만달러"
+    return f"{value:,.0f}달러"
 
 
 def _append_value_estimate() -> None:
-    """Insert quantity x target-price value under the matching Optimus alert only."""
+    """Insert per-unit detail first, then quantity x price totals."""
     if not base.ALERT_PATH.exists():
         return
     text = base.ALERT_PATH.read_text(encoding='utf-8')
-    if '💰 <b>물량 환산</b>' in text:
+    if '💰 <b>대당·물량 환산</b>' in text:
         return
     if not re.search(r'테슬라옵티머스.*(?:5,000|5000)대|테슬라\s*옵티머스.*(?:5,000|5000)대', text, re.I | re.S):
         return
 
     rate, fresh = _usdkrw()
     qty = 5_000
-    low_usd = qty * OPTIMUS_TARGET_PRICE_USD[0]
-    high_usd = qty * OPTIMUS_TARGET_PRICE_USD[1]
-    low_krw = low_usd * rate
-    high_krw = high_usd * rate
+
+    sell_low_usd, sell_high_usd = OPTIMUS_TARGET_PRICE_USD
+    bom_low_usd, bom_high_usd = OPTIMUS_GEN2_BOM_USD
+
+    sell_low_unit_krw = sell_low_usd * rate
+    sell_high_unit_krw = sell_high_usd * rate
+    bom_low_unit_krw = bom_low_usd * rate
+    bom_high_unit_krw = bom_high_usd * rate
+
+    sell_low_total_usd = qty * sell_low_usd
+    sell_high_total_usd = qty * sell_high_usd
+    bom_low_total_usd = qty * bom_low_usd
+    bom_high_total_usd = qty * bom_high_usd
+
+    sell_low_total_krw = sell_low_total_usd * rate
+    sell_high_total_krw = sell_high_total_usd * rate
+    bom_low_total_krw = bom_low_total_usd * rate
+    bom_high_total_krw = bom_high_total_usd * rate
+
     fx_note = f"1달러={rate:,.2f}원" if fresh else f"환율 조회 실패로 1달러={rate:,.0f}원 가정"
-    value_line = (
-        f"💰 <b>물량 환산</b>  5,000대 × 장기 목표 판매가 2만~2만5천달러 = "
-        f"1억~1억2,500만달러 → 약 {_krw_eok(low_krw)}~{_krw_eok(high_krw)} ({fx_note}). "
-        "이는 완제품 장기 목표 판매가 기준 환산이며 실제 공급업체 부품 발주액은 아닙니다."
-    )
+
+    value_lines = [
+        '💰 <b>대당·물량 환산</b>',
+        (
+            f"• <b>장기 목표 판매가</b>  대당 {sell_low_usd/1000:.0f}천~{sell_high_usd/1000:.0f}천달러 "
+            f"→ 약 {_krw_unit(sell_low_unit_krw)}~{_krw_unit(sell_high_unit_krw)}/대"
+        ),
+        (
+            f"• <b>5,000대 완제품 가치</b>  {_usd_m(sell_low_total_usd)}~{_usd_m(sell_high_total_usd)} "
+            f"→ 약 {_krw_eok(sell_low_total_krw)}~{_krw_eok(sell_high_total_krw)}"
+        ),
+        (
+            f"• <b>참고 하드웨어 원가</b>  Morgan Stanley의 Optimus Gen 2 소프트웨어 제외 BoM 추정은 "
+            f"대당 {bom_low_usd/1000:.0f}천~{bom_high_usd/1000:.0f}천달러 "
+            f"→ 약 {_krw_unit(bom_low_unit_krw)}~{_krw_unit(bom_high_unit_krw)}/대"
+        ),
+        (
+            f"• <b>이를 5,000대에 단순 적용</b>  {_usd_m(bom_low_total_usd)}~{_usd_m(bom_high_total_usd)} "
+            f"→ 약 {_krw_eok(bom_low_total_krw)}~{_krw_eok(bom_high_total_krw)}"
+        ),
+        (
+            f"• <b>환율</b>  {fx_note} · 판매가와 Gen 2 BoM은 참고 기준이며, "
+            "현재 Gen 3 실제 원가·공급업체 부품 발주액·테슬라의 5,000대 공식 확정 금액과는 다릅니다."
+        ),
+    ]
 
     lines = text.splitlines()
     out: list[str] = []
@@ -160,7 +212,7 @@ def _append_value_estimate() -> None:
             )
         out.append(line)
         if in_target and not inserted and stripped.startswith('💡 <b>핵심</b>'):
-            out.append(value_line)
+            out.extend(value_lines)
             inserted = True
         if stripped == '──────────────────':
             in_target = False
