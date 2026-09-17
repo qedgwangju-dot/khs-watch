@@ -327,7 +327,9 @@
     "stateevt_a2e4119da27632b412f4": "2026-09-16T15:35:14.438298+00:00",
     "stateevt_257337eec01f9779af71": "2026-09-16T15:35:14.438298+00:00",
     "stateevt_c83838571b636a674bec": "2026-09-16T15:35:14.438298+00:00",
-    "stateevt_ebe260c262d9343ab13c": "2026-09-16T22:05:13.492230+00:00"
+    "stateevt_ebe260c262d9343ab13c": "2026-09-16T22:05:13.492230+00:00",
+    "stateevt_b6f2f56fb1fa62fd4263": "2026-09-17T05:16:33.440627+00:00",
+    "stateevt_d05b208a3ecdbe3d1ff1": "2026-09-17T05:16:33.440627+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -346,7 +348,9 @@
     "eventstate_alaska_lng_a2e4119da27632b412f4": "2026-09-16T15:35:14.438298+00:00",
     "eventstate_return_safeguard_257337eec01f9779af71": "2026-09-16T15:35:14.438298+00:00",
     "eventstate_nuclear_build_c83838571b636a674bec": "2026-09-16T15:35:14.438298+00:00",
-    "eventstate_legacy_westinghouse_ebe260c262d9343ab13c": "2026-09-16T22:05:13.492230+00:00"
+    "eventstate_legacy_westinghouse_ebe260c262d9343ab13c": "2026-09-16T22:05:13.492230+00:00",
+    "eventstate_legacy_westinghouse_b6f2f56fb1fa62fd4263": "2026-09-17T05:16:33.440627+00:00",
+    "eventstate_return_safeguard_d05b208a3ecdbe3d1ff1": "2026-09-17T05:16:33.440627+00:00"
   },
   "official_status": {
     "status": "unconfirmed",
@@ -481,21 +485,26 @@
     },
     "return_safeguard": {
       "facts": [
-        "percent:16"
+        "percent:16",
+        "percent:5.4",
+        "schedule:20년"
       ],
       "initialized_at": "2026-09-16T15:35:30.353400+00:00",
-      "updated_at": "2026-09-16T15:35:30.353400+00:00",
-      "last_title": "[단독] “대미투자, 수익률 16% 넘어야 원리금 회수 가능” - 한겨레",
-      "last_source": "한겨레"
+      "updated_at": "2026-09-17T05:16:46.561109+00:00",
+      "last_title": "[단독]美국채 20년물 5.4%…韓 대미투자 ‘원리금 회수 문턱’ 높아진다 - 이데일리TV",
+      "last_source": "이데일리TV"
     },
     "legacy_westinghouse": {
       "facts": [
-        "party:westinghouse"
+        "party:kepco",
+        "party:khnp",
+        "party:westinghouse",
+        "percent:10"
       ],
       "initialized_at": "2026-09-16T22:05:27.186905+00:00",
-      "updated_at": "2026-09-16T22:05:27.186905+00:00",
-      "last_title": "3조 투자하고 목소리 못 낼라…웨스팅하우스 '이사 지명권' 관건 - 뉴시스",
-      "last_source": "뉴시스"
+      "updated_at": "2026-09-17T05:16:46.560384+00:00",
+      "last_title": "웨스팅하우스 10%만 사도 4.1조…한전·한수원 자금조달 ‘난감’ - 서울경제",
+      "last_source": "서울경제"
     }
   },
   "event_state_guard_version": 2,
