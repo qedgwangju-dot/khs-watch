@@ -58,7 +58,7 @@ def build_gate_block(gate):
             lines.append(f"• {html.escape(label)}{suffix} │ 가격 {fmt_pct(row.get('change_pct'))}")
             if row.get("volume_change_pct") is not None and label in {"BTC", "ETH", "COIN", "CRCL"}:
                 lines.append(f"  ↳ 거래량 │ {fmt_pct(row.get('volume_change_pct'))} (동일 시세원 regularMarketVolume 비교)")
-        lines.append("• 원인 분리 │ 같은 시간 Nasdaq·S&P 500·DXY·미 10년물과 비교해 CLARITY 직접 효과와 거시 효과를 분리")
+        lines.append("• 원인 분리 │ 같은 시간 Nasdaq·S&amp;P 500·DXY·미 10년물과 비교해 CLARITY 직접 효과와 거시 효과를 분리")
     return "\n".join(lines)
 
 
