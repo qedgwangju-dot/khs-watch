@@ -14,7 +14,6 @@ on:
   schedule:
     # Five-minute cadence, deliberately offset from minute 0 because GitHub documents
     # that scheduled runs can be delayed or dropped during high-load periods.
-    # Keep the cadence unchanged while moving the phase to refresh the active schedule.
     - cron: "3,8,13,18,23,28,33,38,43,48,53,58 * * * *"
   workflow_dispatch:
 
@@ -23,8 +22,6 @@ permissions:
 
 concurrency:
   group: yen-carry-recent-shock
-  # Do not cancel an in-flight run just because the next five-minute slot arrived.
-  # The next run can recover the last six hours of FX history if one slot is delayed.
   cancel-in-progress: false
 
 jobs:
@@ -63,6 +60,58 @@ jobs:
 
       - name: Check current and recent yen shock
         run: PYTHONPATH=scripts python scripts/yen_carry_recent_shock.py
+
+      - name: Write market-check heartbeat independently of Telegram delivery
+        if: always() && hashFiles('out/yen_carry_recent_shock_pending_state.json') != ''
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+
+          pending_path = pathlib.Path('out/yen_carry_recent_shock_pending_state.json')
+          heartbeat_path = pathlib.Path('data/yen_carry_monitor_heartbeat.json')
+          pending = json.loads(pending_path.read_text(encoding='utf-8'))
+          heartbeat = {
+              'updated_at_kst': pending.get('updated_at_kst'),
+              'fx_observed_at_kst': pending.get('fx_observed_at_kst'),
+              'fx_signal_eligible': pending.get('fx_signal_eligible'),
+              'fx_age_seconds': pending.get('fx_age_seconds'),
+              'source': 'yen-carry-recent-shock',
+          }
+          heartbeat_path.write_text(
+              json.dumps(heartbeat, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          print('yen_carry_market_heartbeat_written=true')
+          PY
+
+      - name: Suppress monitoring-gap-only market alerts
+        if: always() && hashFiles('out/yen_carry_composite_alert.json') != ''
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+
+          payload_path = pathlib.Path('out/yen_carry_composite_alert.json')
+          try:
+              payload = json.loads(payload_path.read_text(encoding='utf-8'))
+          except Exception:
+              payload = {}
+          recent = payload.get('recent_fx_shock') or {}
+          reasons = list(recent.get('reasons') or [])
+          gap_only = bool(reasons) and all('감시 실행 공백' in str(reason) for reason in reasons)
+          if gap_only:
+              for name in (
+                  'out/yen_carry_composite_alert_title.txt',
+                  'out/yen_carry_composite_alert.md',
+                  'out/yen_carry_composite_alert.json',
+              ):
+                  path = pathlib.Path(name)
+                  if path.exists():
+                      path.unlink()
+              print('gap_only_market_alert_suppressed=true')
+          else:
+              print('gap_only_market_alert_suppressed=false')
+          PY
 
       - name: Publish status
         if: always()
@@ -175,16 +224,16 @@ jobs:
         if: always() && env.TELEGRAM_DRY_RUN != 'true'
         run: PYTHONPATH=scripts python scripts/yen_carry_recent_shock.py --finalize
 
-      - name: Commit recent shock state
-        if: always() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('data/yen_carry_recent_shock_state.json') != ''
+      - name: Commit recent shock state and independent heartbeat
+        if: always() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('data/yen_carry_monitor_heartbeat.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/yen_carry_recent_shock_state.json
+          git add data/yen_carry_recent_shock_state.json data/yen_carry_monitor_heartbeat.json 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "최근 환율 충격 상태 변경 없음"
+            echo "최근 환율 충격·독립 heartbeat 상태 변경 없음"
           else
-            git commit -m "Update yen carry recent shock state"
+            git commit -m "Update yen carry market heartbeat and recent shock state"
             for attempt in 1 2 3; do
               if git pull --rebase origin main && git push; then
                 exit 0
@@ -201,6 +250,7 @@ jobs:
         with:
           name: yen-carry-recent-shock-${{ github.run_id }}
           path: |
+            data/yen_carry_monitor_heartbeat.json
             out/yen_carry_recent_shock_status.md
             out/yen_carry_recent_shock_pending_state.json
             out/yen_carry_composite_alert_title.txt
