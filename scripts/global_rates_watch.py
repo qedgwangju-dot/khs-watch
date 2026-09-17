@@ -5,11 +5,12 @@ Sources
 - Japan MOF daily constant-maturity JGB yields (official, published next business day)
 - U.S. Treasury daily par yield curve XML (official)
 - Federal Reserve Bank of St. Louis FRED DEXJPUS daily USD/JPY (Federal Reserve data)
+- Bank of England latest Bank Rate decision and MPC summary/minutes (official)
 
 The script writes:
 - out/global_rates_watch_status.md
 - out/global_rates_watch_pending_state.json
-- out/global_rates_watch_alert.md (only when a threshold newly triggers or clears)
+- out/global_rates_watch_alert.md (only when a threshold newly triggers or clears, or a new BOE decision is published)
 - out/global_rates_watch_alert.json
 
 It does NOT send Telegram itself. Delivery and state persistence are handled by the
@@ -20,6 +21,7 @@ from __future__ import annotations
 
 import csv
 import datetime as dt
+import html as html_lib
 import io
 import json
 import os
@@ -42,8 +44,10 @@ JGB_URL = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgb
 UST_XML_BASE = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml"
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 JAPAN_BUDGET_RATE_URL = "https://www.mof.go.jp/policy/budget/topics/outlook/sy2026a.htm"
+BOE_RATE_URL = "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate"
+BOE_BASE_URL = "https://www.bankofengland.co.uk"
 
-USER_AGENT = "khs-watch-global-rates/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"
+USER_AGENT = "khs-watch-global-rates/1.1 (+https://github.com/qedgwangju-dot/khs-watch)"
 
 
 @dataclass
@@ -87,9 +91,153 @@ def normalize_header(value: str) -> str:
     return re.sub(r"[^a-z0-9]", "", value.lower())
 
 
+def html_to_text(raw: bytes) -> str:
+    text = raw.decode("utf-8", errors="replace")
+    text = re.sub(r"(?is)<script\b[^>]*>.*?</script>", " ", text)
+    text = re.sub(r"(?is)<style\b[^>]*>.*?</style>", " ", text)
+    text = re.sub(r"(?s)<[^>]+>", " ", text)
+    text = html_lib.unescape(text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def parse_uk_date(value: str | None) -> str | None:
+    if not value:
+        return None
+    text = value.strip()
+    for fmt in ("%d %B %Y", "%d %b %Y"):
+        try:
+            return dt.datetime.strptime(text, fmt).date().isoformat()
+        except ValueError:
+            pass
+    return text
+
+
+def word_to_int(value: str | None) -> int | None:
+    if not value:
+        return None
+    text = value.strip().lower()
+    if text.isdigit():
+        return int(text)
+    return {
+        "one": 1,
+        "two": 2,
+        "three": 3,
+        "four": 4,
+        "five": 5,
+        "six": 6,
+        "seven": 7,
+        "eight": 8,
+        "nine": 9,
+    }.get(text)
+
+
+def fetch_boe_decision() -> dict[str, Any]:
+    raw = http_get(BOE_RATE_URL)
+    html_source = raw.decode("utf-8", errors="replace")
+    text = html_to_text(raw)
+
+    latest = re.search(
+        r"Our latest decision:\s*Bank Rate\s+(held|maintained|raised|increased|reduced|cut)\s+(?:at|to)\s+([0-9]+(?:\.[0-9]+)?)%",
+        text,
+        flags=re.I,
+    )
+    if latest:
+        action_raw = latest.group(1).lower()
+        rate = float(latest.group(2))
+    else:
+        rate_match = re.search(r"Current Bank Rate\s+([0-9]+(?:\.[0-9]+)?)%", text, flags=re.I)
+        if not rate_match:
+            raise RuntimeError("BOE current Bank Rate not found")
+        action_raw = "maintained"
+        rate = float(rate_match.group(1))
+
+    action_ko = {
+        "held": "동결",
+        "maintained": "동결",
+        "raised": "인상",
+        "increased": "인상",
+        "reduced": "인하",
+        "cut": "인하",
+    }.get(action_raw, "결정")
+
+    pub_match = re.search(r"Published on\s+([0-9]{1,2}\s+[A-Za-z]+\s+[0-9]{4})", text, flags=re.I)
+    if not pub_match:
+        pub_match = re.search(r"last updated on\s+([0-9]{1,2}\s+[A-Za-z]+\s+[0-9]{4})", text, flags=re.I)
+    if not pub_match:
+        raise RuntimeError("BOE latest decision publication date not found")
+    decision_date = parse_uk_date(pub_match.group(1))
+
+    next_match = re.search(r"Next due:\s*([0-9]{1,2}\s+[A-Za-z]+\s+[0-9]{4})", text, flags=re.I)
+    next_due = parse_uk_date(next_match.group(1)) if next_match else None
+
+    link_match = re.search(
+        r"href=[\"']([^\"']*/monetary-policy-summary-and-minutes/[0-9]{4}/[a-z]+-[0-9]{4})[\"']",
+        html_source,
+        flags=re.I,
+    )
+    if link_match:
+        summary_url = urllib.parse.urljoin(BOE_BASE_URL, link_match.group(1))
+    else:
+        day = dt.date.fromisoformat(str(decision_date))
+        summary_url = f"{BOE_BASE_URL}/monetary-policy-summary-and-minutes/{day.year}/{day.strftime('%B').lower()}-{day.year}"
+
+    vote = None
+    minority_count = None
+    minority_action_ko = None
+    minority_rate = None
+    cpi_rate = None
+    cpi_period = None
+    try:
+        summary_text = html_to_text(http_get(summary_url))
+        vote_match = re.search(
+            r"voted by a majority of\s+([0-9]+)\s*[–—-]\s*([0-9]+)\s+to\s+(maintain|increase|reduce)\s+Bank Rate",
+            summary_text,
+            flags=re.I,
+        )
+        if vote_match:
+            vote = f"{vote_match.group(1)}-{vote_match.group(2)}"
+
+        minority_match = re.search(
+            r"([A-Za-z0-9]+)\s+members?\s+voted to\s+(increase|raise|reduce|cut)\s+Bank Rate(?:\s+by\s+[^,.]+)?(?:,?\s+to)?\s+([0-9]+(?:\.[0-9]+)?)%",
+            summary_text,
+            flags=re.I,
+        )
+        if minority_match:
+            minority_count = word_to_int(minority_match.group(1))
+            minority_action_raw = minority_match.group(2).lower()
+            minority_action_ko = "인상" if minority_action_raw in {"increase", "raise"} else "인하"
+            minority_rate = float(minority_match.group(3))
+
+        cpi_match = re.search(
+            r"UK CPI inflation\s+(?:increased|rose|fell|declined)\s+to\s+([0-9]+(?:\.[0-9]+)?)%\s+in\s+([A-Za-z]+)",
+            summary_text,
+            flags=re.I,
+        )
+        if cpi_match:
+            cpi_rate = float(cpi_match.group(1))
+            cpi_period = cpi_match.group(2)
+    except Exception:
+        pass
+
+    return {
+        "decision_date": decision_date,
+        "rate": rate,
+        "action": action_ko,
+        "vote": vote,
+        "minority_count": minority_count,
+        "minority_action": minority_action_ko,
+        "minority_rate": minority_rate,
+        "cpi_rate": cpi_rate,
+        "cpi_period": cpi_period,
+        "next_due": next_due,
+        "source": summary_url,
+        "rate_page": BOE_RATE_URL,
+    }
+
+
 def load_state() -> dict[str, Any]:
     if not STATE_PATH.exists():
-        return {"last_values": {}, "active": {}, "last_source_dates": {}}
+        return {"last_values": {}, "active": {}, "last_source_dates": {}, "central_bank_decisions": {}}
     try:
         raw = json.loads(STATE_PATH.read_text(encoding="utf-8"))
         if not isinstance(raw, dict):
@@ -97,9 +245,10 @@ def load_state() -> dict[str, Any]:
         raw.setdefault("last_values", {})
         raw.setdefault("active", {})
         raw.setdefault("last_source_dates", {})
+        raw.setdefault("central_bank_decisions", {})
         return raw
     except Exception:
-        return {"last_values": {}, "active": {}, "last_source_dates": {}}
+        return {"last_values": {}, "active": {}, "last_source_dates": {}, "central_bank_decisions": {}}
 
 
 def fetch_jgb() -> tuple[Point, Point]:
@@ -258,7 +407,46 @@ def main() -> int:
     state = load_state()
     last_values = dict(state.get("last_values") or {})
     active = dict(state.get("active") or {})
+    central_bank_decisions = dict(state.get("central_bank_decisions") or {})
     events: list[dict[str, Any]] = []
+
+    boe: dict[str, Any] | None = None
+    try:
+        boe = fetch_boe_decision()
+        prior_boe = central_bank_decisions.get("boe") or {}
+        if str(prior_boe.get("decision_date") or "") != str(boe.get("decision_date") or ""):
+            details = (
+                f"영란은행(MPC) 정책결정 신규 발표 — {boe['decision_date']} 기준금리 {boe['rate']:.2f}% {boe['action']}"
+            )
+            if boe.get("vote"):
+                details += f" · 표결 {boe['vote']}"
+            if boe.get("minority_count") and boe.get("minority_rate") is not None:
+                details += (
+                    f" · 소수 {boe['minority_count']}명 {boe.get('minority_rate'):.2f}% {boe.get('minority_action') or '대안'}"
+                )
+            if boe.get("cpi_rate") is not None:
+                details += f" · 영국 CPI {boe['cpi_rate']:.1f}%"
+            if boe.get("next_due"):
+                details += f" · 다음 결정 {boe['next_due']}"
+            events.append({
+                "type": "trigger",
+                "metric": "boe_mpc_decision",
+                "label": details,
+                "value": "공식 발표",
+                "rate": boe.get("rate"),
+                "action": boe.get("action"),
+                "decision_date": boe.get("decision_date"),
+                "vote": boe.get("vote"),
+                "minority_count": boe.get("minority_count"),
+                "minority_action": boe.get("minority_action"),
+                "minority_rate": boe.get("minority_rate"),
+                "cpi_rate": boe.get("cpi_rate"),
+                "next_due": boe.get("next_due"),
+                "source": boe.get("source"),
+            })
+        central_bank_decisions["boe"] = boe
+    except Exception as e:
+        errors.append(f"Bank of England: {type(e).__name__}: {e}")
 
     def eval_above(metric: str, levels: list[float], label: str) -> None:
         value = points[metric].value
@@ -343,9 +531,14 @@ def main() -> int:
             **{k: p.value for k, p in points.items()},
             "us_jp_2y_spread": spread_2y,
             "usdjpy_daily_change_pct": usd_day_change,
+            **({"boe_bank_rate": boe["rate"]} if boe else {}),
         },
         "active": active,
-        "last_source_dates": {k: p.date for k, p in points.items()},
+        "last_source_dates": {
+            **{k: p.date for k, p in points.items()},
+            **({"boe_bank_rate": boe["decision_date"]} if boe else {}),
+        },
+        "central_bank_decisions": central_bank_decisions,
         "classification": classification,
         "updated_at_kst": now.isoformat(timespec="seconds"),
     }
@@ -365,8 +558,15 @@ def main() -> int:
         f"- 미국 2년 국채: **{points['ust2'].value:.3f}%** ({points['ust2'].date})",
         f"- 미·일 2년 금리차: **{spread_2y:.3f}%p**" + (f" ({spread_change:+.3f}%p vs 저장값)" if spread_change is not None else ""),
         f"- USD/JPY: **{points['usdjpy'].value:.3f}** ({points['usdjpy'].date})" + (f", 1일 {usd_day_change:+.2f}%" if usd_day_change is not None else ""),
-        f"- 신규/해제 이벤트: **{len(events)}건**",
     ]
+    if boe:
+        boe_status = f"- 영란은행 Bank Rate: **{boe['rate']:.2f}% {boe['action']}** ({boe['decision_date']})"
+        if boe.get("vote"):
+            boe_status += f", 표결 {boe['vote']}"
+        if boe.get("next_due"):
+            boe_status += f", 다음 {boe['next_due']}"
+        status_lines.append(boe_status)
+    status_lines.append(f"- 신규/해제 이벤트: **{len(events)}건**")
     if errors:
         status_lines += ["", "## 비필수 오류"] + [f"- {e}" for e in errors]
     (OUT / "global_rates_watch_status.md").write_text("\n".join(status_lines) + "\n", encoding="utf-8")
@@ -379,8 +579,11 @@ def main() -> int:
 
     event_lines = []
     for e in events:
-        state_ko = "돌파/진입" if e["type"] == "trigger" else "해제/이탈"
         metric = e["metric"]
+        if metric == "boe_mpc_decision":
+            event_lines.append(f"- {e['label']}")
+            continue
+        state_ko = "돌파/진입" if e["type"] == "trigger" else "해제/이탈"
         if metric == "usdjpy_daily_change":
             event_lines.append(f"- {e['label']} {state_ko}: {e['value']:+.2f}% (경계 {e['level']:+.2f}%)")
         elif metric in {"usdjpy"}:
@@ -403,16 +606,36 @@ def main() -> int:
         f"- 미국 10년 {points['ust10'].value:.3f}% / 30년 {points['ust30'].value:.3f}% / 2년 {points['ust2'].value:.3f}% (U.S. Treasury {points['ust10'].date})",
         f"- 미·일 2년 금리차 {spread_2y:.3f}%p",
         f"- USD/JPY {points['usdjpy'].value:.3f}" + (f" / 1일 {usd_day_change:+.2f}%" if usd_day_change is not None else ""),
+    ]
+    if boe:
+        alert_lines.append(
+            f"- 영란은행 Bank Rate {boe['rate']:.2f}% {boe['action']} ({boe['decision_date']})"
+            + (f" / 표결 {boe['vote']}" if boe.get("vote") else "")
+        )
+    alert_lines += [
         "",
         "정확한 의미",
         "- 일본 10년 3.0%: 엔캐리 자동 청산선이나 BOJ 공식 방어선이 아니라 FY2026 일본 정부 예산의 국채 이자비용 계산 가정금리와 겹치는 재정 경계선.",
         "- 미국 10년 4.7%: 공식 'TACO선'이 아님. 4.5%·30년 5.0% 부근은 과거 정책 후퇴 때 시장이 주목했던 경험적 고통구간으로만 취급.",
         "- 엔캐리 청산: JGB 3% 하나로 단정하지 않고 USD/JPY 급락 + 미·일 단기금리차 축소가 같이 확인될 때 위험 강화를 판정.",
+    ]
+    if boe:
+        boe_meaning = (
+            f"- 영란은행: {boe['rate']:.2f}% {boe['action']}"
+            + (f"이지만 표결 {boe['vote']}로 내부 이견이 확인됨" if boe.get("vote") else "")
+            + ". 다음 결정까지 에너지발 물가의 2차 파급과 서비스·임금 물가를 재확인."
+        )
+        alert_lines.append(boe_meaning)
+    alert_lines += [
         "",
         "시장 연결",
         "- 할인율: 미국 장기금리 상승은 Nasdaq·SOX·XBI·고PER 성장주에 부담.",
         "- 수급: 일본 금리 상승과 엔화 강세가 겹치면 일본 자금의 해외채권 환류 가능성을 점검.",
         "- 시간표: 일본 MOF JGB 금리는 15시 시장 마감값을 다음 영업일 09:30에 공식 공표하므로 실시간 시세가 아닌 공식 일일 확인치.",
+    ]
+    if boe and boe.get("next_due"):
+        alert_lines.append(f"- 영국 통화정책 다음 시간표: 영란은행 MPC {boe['next_due']}.")
+    alert_lines += [
         "",
         "공식 출처",
         f"- Japan MOF JGB: {JGB_URL}",
@@ -420,11 +643,15 @@ def main() -> int:
         f"- U.S. Treasury: {points['ust10'].source}",
         f"- Federal Reserve/FRED USDJPY: {points['usdjpy'].source}",
     ]
+    if boe:
+        alert_lines.append(f"- Bank of England MPC: {boe['source']}")
+
     text = "\n".join(alert_lines).strip() + "\n"
     (OUT / "global_rates_watch_alert.md").write_text(text, encoding="utf-8")
     (OUT / "global_rates_watch_alert.json").write_text(
         json.dumps({
             "events": events,
+            "central_bank_decisions": central_bank_decisions,
             "classification": classification,
             "values": pending["last_values"],
             "source_dates": pending["last_source_dates"],
