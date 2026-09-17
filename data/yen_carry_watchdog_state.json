@@ -1,8 +1,8 @@
 {
-  "alert_active": false,
-  "checked_at_kst": "2026-09-17T10:14:50+09:00",
-  "stale_minutes": 1.1278982333333334,
-  "repair_needed": false,
+  "alert_active": true,
+  "checked_at_kst": "2026-09-17T10:44:00+09:00",
+  "stale_minutes": 30.299649133333332,
+  "repair_needed": true,
   "detail": "마지막 정상 상태 갱신 2026-09-17 10:13:43 KST",
-  "last_alert_at_kst": "2026-09-12T15:32:55+09:00"
+  "last_alert_at_kst": "2026-09-17T10:44:00+09:00"
 }
