@@ -95,31 +95,47 @@ def _candidate_for(market: str) -> dict[str, Any]:
     if status == "matched":
         result.update({
             "value_eok": float(row.get("ls_daily_eok") or 0.0),
-            "stable": True,
-            "observations": 2,
-            "reason": "네이버 장마감값과 LS t1601이 엄격 허용오차 내 일치",
+            "stable": now.time() >= FINAL_START,
+            "observations": 2 if now.time() >= FINAL_START else 0,
+            "reason": (
+                "네이버 장마감값과 LS t1601이 엄격 허용오차 내 일치"
+                if now.time() >= FINAL_START
+                else "20:10 이전 · KRX 최종 수급 확인 전"
+            ),
         })
     elif status == "ls_fallback":
         value = float(row.get("ls_daily_eok") or 0.0)
-        observations = 1
+        observations = 0 if now.time() < FINAL_START else 1
         prev_ts = _parse_ts(old.get("checked_at"))
         same_date = str(old.get("date") or "") == now.date().isoformat()
+        prev_is_post_final = bool(prev_ts and prev_ts.time() >= FINAL_START)
         try:
             prev_value = float(old.get("value_eok"))
         except Exception:
             prev_value = None
         elapsed_min = (now - prev_ts).total_seconds() / 60.0 if prev_ts else -1.0
         same_value = prev_value is not None and abs(value - prev_value) <= FALLBACK_STABILITY_TOLERANCE_EOK
-        if same_date and same_value and elapsed_min >= FALLBACK_MIN_MINUTES:
-            observations = int(old.get("observations") or 1) + 1
+        if (
+            now.time() >= FINAL_START
+            and same_date
+            and prev_is_post_final
+            and same_value
+            and elapsed_min >= FALLBACK_MIN_MINUTES
+        ):
+            observations = max(1, int(old.get("observations") or 1)) + 1
+        stable = now.time() >= FINAL_START and observations >= FALLBACK_MIN_OBSERVATIONS
         result.update({
             "value_eok": value,
             "observations": observations,
-            "stable": observations >= FALLBACK_MIN_OBSERVATIONS,
+            "stable": stable,
             "reason": (
-                "네이버 조회 실패 · LS t1601 단독값 2회 연속 안정성 확인 완료"
-                if observations >= FALLBACK_MIN_OBSERVATIONS
-                else "네이버 조회 실패 · LS t1601 단독값 2회 연속 확인 대기"
+                "네이버 조회 실패 · 20:10 이후 LS t1601 단독값 2회 연속 안정성 확인 완료"
+                if stable
+                else (
+                    "20:10 이전 · KRX 최종 수급 확인 전"
+                    if now.time() < FINAL_START
+                    else "네이버 조회 실패 · 20:10 이후 LS t1601 2회 연속 확인 대기"
+                )
             ),
         })
     elif status == "mismatch":
@@ -129,6 +145,7 @@ def _candidate_for(market: str) -> dict[str, Any]:
 
     if now.time() < FINAL_START:
         result["stable"] = False
+        result["observations"] = 0
         result["reason"] = "20:10 이전 · KRX 최종 수급 확인 전"
 
     _candidate_cache[market] = result
@@ -179,11 +196,11 @@ def market_flow_lines_strict(
             if line.startswith("• LS t1601 대체값 사용"):
                 out.append(
                     f"• LS t1601 잠정 대체값  <b>{float((flow.get('ls_validation') or {}).get('ls_daily_eok') or 0):+,.0f}억원</b>"
-                    f" — 최종 확인 전 · 연속 확인 {int(cand.get('observations') or 0)}/{FALLBACK_MIN_OBSERVATIONS}"
+                    f" — 최종 확인 전 · 20:10 이후 연속 확인 {int(cand.get('observations') or 0)}/{FALLBACK_MIN_OBSERVATIONS}"
                 )
                 continue
             out.append(line)
-        out.append("• 확정 규칙: 20:10 이후에만 최종 수급 판정 · 네이버 실패 시 LS 단독값은 최소 10분 간격 2회 연속 동일 확인 필요")
+        out.append("• 확정 규칙: 20:10 이후에만 최종 수급 판정 · 네이버 실패 시 LS 단독값은 20:10 이후 최소 10분 간격 2회 연속 동일 확인 필요")
         return out
     if status == "ls_fallback" and cand.get("stable"):
         return [
@@ -271,7 +288,7 @@ def _persist_candidates_and_final_history() -> None:
     pending["final_flow_history"] = final_root
     snap["flow_finality_rule"] = (
         "KRX 투자자별 거래실적의 현재 공개 안내(당일 최종 매매내역 오후 8시 이후)에 맞춰 20:10 이후에만 최종 판정. "
-        "네이버+LS t1601이 1억원 이내 일치하면 확정, 네이버 실패 시 LS 단독값이 최소 10분 간격 2회 연속 동일해야 확정. "
+        "네이버+LS t1601이 1억원 이내 일치하면 확정, 네이버 실패 시 20:10 이후 LS 단독값이 최소 10분 간격 2회 연속 동일해야 확정. "
         "3거래일 누적은 final_flow_history의 확정 일별값만 합산. 기준 시장은 KRX(KOSPI/KOSDAQ)이며 KRX+NXT 합산 수치와 혼용하지 않음."
     )
     pending["snapshot"] = snap
@@ -302,7 +319,7 @@ def _postprocess_source_note() -> None:
     )
     new = (
         "• 수급 숫자 검증: <b>KRX 시장 기준 · 20:10 이후 네이버 + LS증권 t1601 엄격 교차검증</b>"
-        " / 1억원 이내 일치 시 확정 / 네이버 실패 시 LS 단독값 10분 이상 간격 2회 연속 동일 확인 후 확정"
+        " / 1억원 이내 일치 시 확정 / 네이버 실패 시 20:10 이후 LS 단독값을 10분 이상 간격으로 2회 연속 동일 확인 후 확정"
         " / 3거래일 누적은 확정 일별값만 합산 / KRX+NXT 합산 수치와 혼용하지 않음"
     )
     text = text.replace(old, new)
