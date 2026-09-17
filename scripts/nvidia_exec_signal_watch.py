@@ -26,6 +26,7 @@ STATUS = OUT / "nvidia_exec_signal_status.md"
 
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 36
+FORMAT_VERSION = 2
 
 OFFICIAL_Q2_TRANSCRIPT = (
     "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-"
@@ -259,12 +260,13 @@ def build_alert(events: list[dict], now: datetime) -> str:
 
     if demand:
         lines += [
-            "• 최신 보도에서 Jensen Huang이 <b>2027년 NVIDIA 칩 판매량이 2026년의 약 2배</b>가 될 수 있다고 언급한 것으로 전해졌습니다.",
-            "• 다만 이 문구를 <b>NVIDIA의 공식 재무 가이던스</b>와 동일하게 보면 안 됩니다.",
+            "• 9월 17일 스코틀랜드에서 Jensen Huang은 찰스 3세 AI 정상회의 전 취재진에게 <b>2027년에 올해보다 약 2배 많은 칩을 판매할 것으로 예상</b>한다고 말했습니다.",
+            "• 여기서 ‘칩’은 AI GPU만이 아니라 <b>CPU·스위치·광 네트워킹·노트북·Jetson 등 NVIDIA 전체 반도체 제품군</b>을 포함합니다.",
+            "• 따라서 이 발언을 <b>GPU 출하 2배 또는 HBM 수요 2배</b>로 바로 환산하면 안 됩니다.",
         ]
     if safety:
         lines += [
-            "• Huang은 AI 안전과 관련해 <b>제품의 기능·성능·안전에 확신이 없으면 출시하지 말고 멈춰서 바로잡아야 한다</b>는 원칙을 강조했습니다.",
+            "• 같은 스코틀랜드 회의 현장에서 Huang은 AI 안전과 관련해 <b>제품이 준비되지 않았으면 출시를 보류하고 더 개발해야 한다</b>는 원칙을 강조했습니다.",
         ]
 
     lines += [
@@ -275,19 +277,21 @@ def build_alert(events: list[dict], now: datetime) -> str:
         "• 차이는 수요가 부족해서가 아니라 <b>공급 제약</b> 때문이라고 회사가 명시했습니다.",
         "→ 따라서 ‘판매 2배’는 수요 강도의 상단 신호이고, 실제 매출은 HBM·DRAM·파운드리·첨단패키징·전력 등 공급망이 얼마나 따라오느냐에 달려 있습니다.",
         "",
-        "<b>[안전 발언의 정확한 출처 구분]</b>",
-        "• Reuters는 9월 17일 스코틀랜드 Dumfries House AI 회의에 Jensen Huang이 참석한 사실을 확인했습니다.",
-        "• 하지만 ‘안전하지 않으면 출시하지 말라’는 Huang의 구체적 발언은 9월 15일 Salesforce Dreamforce에서 나온 발언으로 확인됩니다.",
-        "• 즉 <b>스코틀랜드 참석 사실</b>과 <b>제품 출시 보류 원칙 발언</b>은 출처·장소를 분리해서 봐야 합니다.",
+        "<b>[출처·맥락 구분]</b>",
+        "• <b>칩 판매 2배</b>: 9월 17일 스코틀랜드 찰스 3세 AI 정상회의 전 취재진 발언으로 CNBC·Bloomberg가 보도했습니다.",
+        "• <b>안전 발언</b>: Reuters도 같은 스코틀랜드 회의 현장에서 Huang이 ‘준비되지 않았으면 보류하라’고 말했다고 확인했습니다.",
+        "• 두 발언 모두 스코틀랜드 행사 맥락이지만, <b>칩 판매 2배는 수량 전망</b>, <b>안전 발언은 출시 원칙</b>으로 분리해서 해석합니다.",
         "",
         "<b>[투자적으로 왜 중요한가]</b>",
-        "• <b>수요 2배 신호 + 공식 매출 +70% 가이드</b>의 차이는 공급망이 성장률을 제한하고 있다는 뜻입니다.",
+        "• <b>전체 칩 수량 2배 전망 + FY28 매출 +70% 공식 전망</b>의 차이는 제품혼합과 공급 제약을 함께 봐야 한다는 뜻입니다.",
         "• HBM·서버 DRAM·첨단패키징·파운드리 생산능력이 늘면 NVIDIA가 현재 못 받는 주문을 추가 매출로 전환할 여지가 큽니다.",
+        "• 다만 CPU·스위치·광통신·노트북용 칩까지 포함된 수량 전망이므로 <b>HBM 업체 매출을 2배로 직접 계산하지 않습니다.</b>",
         "• 반대로 안전 발언만으로 제품 출시 지연을 의미하지는 않습니다. 실제 <b>Blackwell·Rubin 일정 변경이나 고객 승인 지연</b>이 확인될 때만 실적 시간표 악화로 판정합니다.",
         "",
         "<b>[다음 알림 조건]</b>",
         "• NVIDIA가 FY28 매출 성장률을 <b>+70%에서 상향·하향</b>",
-        "• GPU·AI 가속기 <b>출하량·판매량 목표</b>를 새로 제시",
+        "• GPU·AI 가속기와 CPU·네트워킹 등 <b>제품별 출하량·판매량 목표</b>를 새로 제시",
+        "• 전체 칩 2배 전망 중 <b>AI GPU가 차지하는 비중</b>이 공개",
         "• 고객 수요가 2배인데 실제 공급 가능 비율이 <b>70%에서 변화</b>",
         "• HBM·DRAM·CoWoS·파운드리·전력 가운데 병목 순위가 구체화",
         "• Blackwell·Rubin 또는 신규 AI 제품이 <b>안전·신뢰성 이유로 실제 연기·출시 보류</b>",
@@ -319,6 +323,25 @@ def main() -> None:
     events = read_events()
     new_events = choose_new(events, seen_ids, seen_fact_keys, now)
 
+    # Format/context correction: when the alert interpretation changes materially,
+    # resend the best still-fresh demand/safety facts once even if the fact itself was already seen.
+    if not new_events and int(state.get("format_version") or 0) < FORMAT_VERSION:
+        cutoff = now - timedelta(hours=FRESH_HOURS)
+        best_by_kind: dict[str, dict] = {}
+        for e in events:
+            try:
+                dt = datetime.fromisoformat(e.get("published_at_kst") or "")
+            except Exception:
+                continue
+            if not (cutoff <= dt <= now + timedelta(minutes=10)):
+                continue
+            old = best_by_kind.get(e["kind"])
+            if old is None or e["rank"] > old["rank"] or (
+                e["rank"] == old["rank"] and e.get("published_at_kst", "") > old.get("published_at_kst", "")
+            ):
+                best_by_kind[e["kind"]] = e
+        new_events = sorted(best_by_kind.values(), key=lambda x: x.get("published_at_kst") or "")
+
     # For the first run, intentionally allow fresh current signals to be sent once.
     if new_events:
         ALERT.write_text(build_alert(new_events, now), encoding="utf-8")
@@ -334,6 +357,7 @@ def main() -> None:
         "last_event_count": len(events),
         "last_new_event_count": len(new_events),
         "alert_generated": bool(new_events),
+        "format_version": FORMAT_VERSION,
     }
     write_state(state)
 
