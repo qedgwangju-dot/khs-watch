@@ -316,8 +316,15 @@ def capital_position_block(rate: float) -> str:
         state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
     except Exception:
         state = {}
-    latest_date = str(((state.get("btc_etf") or {}).get("date") or "")).strip()
+
+    etf = state.get("btc_etf") or {}
+    latest_date = str(etf.get("date") or "").strip()
     date_text = f" · 최신 유효일 {latest_date}" if latest_date else ""
+    reported = int(etf.get("reported_funds", 0) or 0)
+    missing = int(etf.get("missing_funds", 0) or 0)
+    total_funds = reported + missing
+    is_partial = str(etf.get("status") or "") == "partial" or missing > 0
+    provisional = " · 잠정" if is_partial else ""
 
     lines = ["<b>BTC 자금 위치</b>"]
     if cumulative is None:
@@ -328,9 +335,12 @@ def capital_position_block(rate: float) -> str:
     else:
         direction = "순유입" if cumulative >= 0 else "순유출"
         lines += [
-            f"• <b>미국 현물 ETF 실제 누적 {direction} · {format_usd_b_from_usd_m(cumulative)} · {format_krw_from_usd_m(cumulative, rate)}</b>",
+            f"• <b>미국 현물 ETF 실제 누적 {direction}{provisional} · {format_usd_b_from_usd_m(cumulative)} · {format_krw_from_usd_m(cumulative, rate)}</b>",
             f"  Farside 전체 집계기간 기준{date_text}",
         ]
+        if is_partial:
+            coverage = f"{total_funds}개 중 {reported}개 반영·{missing}개 미보고" if total_funds else "일부 ETF 미보고"
+            lines += [f"  ※ 최신 일간값이 {coverage}라 누적 Total도 잠정"]
 
     lines += [
         "",
