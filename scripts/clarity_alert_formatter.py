@@ -238,6 +238,11 @@ def special_translation(event):
     title = clean(event.get("title", ""))
     detail = clean(event.get("detail", ""))
     signal = f"{title} {detail}".lower()
+    if "innovation exemption" in signal and "tokenized" in signal:
+        return (
+            "SEC, 토큰화 미국주식 온체인 거래에 5년 한시 ‘Innovation Exemption’ 시행",
+            "미 SEC는 Tokenized Securities Venue(TSV)가 일정한 토큰화 NMS 주식을 온체인에서 거래할 수 있도록 5년간 임시·조건부 면제를 부여했습니다. TSV는 거래소 정의에서, 일정 요건의 유동성 공급자는 dealer 정의에서 한시적으로 면제됩니다. 거래 대상 토큰은 기존 주식과 동일한 배당·의결권 등 권리를 제공해야 하며 합성형 토큰은 제외되고, 제3자가 토큰화한 주식은 원 발행회사가 반대하면 TSV가 거래할 수 없습니다.",
+        )
     if "sec proposes new regulation crypto assets" in signal or "regulation crypto assets" in signal:
         return (
             "SEC, 암호자산 관련 투자계약을 위한 새 규칙안 ‘Regulation Crypto Assets’ 제안",
@@ -297,6 +302,8 @@ def localize_event(event):
 def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if "innovation exemption" in signal and "tokenized" in signal:
+        return "CLARITY 법안이 상원 절차표결에서 막힌 뒤 SEC가 기존 증권법상 면제 권한을 사용해 토큰화 주식 거래의 별도 규제 통로를 즉시 열었습니다. 다만 이것은 CLARITY를 대체하는 영구 법률이 아니라 5년 한시·조건부 조치입니다. 실제 주주권이 없는 합성 토큰은 제외되고, 발행회사는 제3자 토큰화 주식의 TSV 거래에 이의를 제기할 수 있습니다."
     if is_industry_pressure(event):
         return "직접 수혜·규제 대상 기업이 의회에 표결을 압박하는 발언이라 이해관계가 있는 주장입니다. 그래서 ‘공식 절차 변화’로 보지는 않지만, 업계의 로비 강도와 미국 내 혁신·토큰화 사업이 규제 지연 때문에 해외에서 먼저 커질 위험을 보여주는 시간표·수급 보조신호로 봅니다. 실제 표 수나 법안 통과를 증명하는 신호는 아닙니다."
     if is_policy_pressure(event):
@@ -319,6 +326,13 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if "innovation exemption" in signal and "tokenized" in signal:
+        return [
+            "돈 버는 능력: Robinhood·Coinbase·Securitize처럼 토큰화 증권 거래·인프라를 준비한 사업자는 미국 내 상품 출시 경로가 바로 열려 매출 연결 가능성이 높아졌습니다. Circle은 결제·스테이블코인 인프라 측 간접 수혜로 구분합니다.",
+            "할인율: CLARITY 부결로 커진 규제 공백을 SEC가 일부 메우면서 미국 토큰화 사업의 규제 불확실성 프리미엄은 낮아지는 방향입니다. 다만 행정조치라 향후 위원회 구성·소송·영구 규칙에 따라 되돌릴 위험이 법률보다 큽니다.",
+            "수급: 발표 직후 HOOD·COIN·CRCL·SECZ 등 관련주에 매수 반응이 나타났으므로, BTC보다 토큰화 증권 플랫폼·인프라 종목의 직접 민감도가 더 높습니다.",
+            "시간표: 면제는 즉시 효력이 생기고 5년 후 만료됩니다. 이제 핵심 일정은 TSV 실제 신청·출범, 발행사 통지·이의제기, 거래량·종목 한도, SEC의 후속 영구 rulemaking입니다.",
+        ]
     if is_industry_pressure(event):
         company = clean(event.get("industry_company", "")) or "미국 암호자산 사업자"
         return [
@@ -394,6 +408,8 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if "innovation exemption" in signal and "tokenized" in signal:
+        return "SEC의 5년 한시 Innovation Exemption은 CLARITY 부결 직후 토큰화 미국주식의 온체인 거래 통로를 실제로 연 조치로, HOOD·COIN·SECZ의 상품화 시간표와 규제 할인율에는 긍정적이고 CRCL에는 간접적이며, 한시 면제·종목/거래량 제한·발행사 거부권·향후 소송 또는 정책 반전이 최대 실패 경로입니다."
     if is_industry_pressure(event):
         actor = clean(event.get("industry_actor", "")) or "핵심 사업자"
         return f"{actor}의 표결 촉구는 공식 절차 변화가 아니라 업계 압박 신호로, 현재 돈 버는 능력은 그대로지만 시간표·규제 할인율 기대에는 긍정적이며, 직접 수혜자의 주장인 만큼 실제 상원 표 수가 늘었다고 볼 수 없고 표결 지연·부결·미국 밖 선행 혁신이 최대 실패 경로입니다."
