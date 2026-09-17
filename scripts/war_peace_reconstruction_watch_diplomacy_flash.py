@@ -96,6 +96,9 @@ HORMUZ_RECOVERY_TERMS = ('reopened', 'has reopened', 'reopening completed', 'tra
 VESSEL_TERMS = ('vessel', 'vessels', 'ship', 'ships', 'tanker', 'tankers', 'vlcc', 'lng carrier', 'lng carriers', 'container ship', '유조선', '선박', '초대형 원유운반선', 'lng선')
 NEGATION_TERMS = ('not agreed', 'no agreement', 'has not agreed', 'did not agree', 'not a ceasefire', 'no ceasefire', 'not reopened', 'remains closed', 'remain closed', 'still closed', '합의하지 않', '합의가 아니', '휴전이 아니', '휴전 합의 없', '재개방되지 않', '폐쇄 유지')
 TRUSTED_CONFIRM_SOURCES = ('reuters', 'apnews', 'aljazeera', 'whitehouse.gov', 'state.gov', 'irna.ir', 'tasnim', 'mehrnews', 'presstv', 'fm.gov.om', 'omannews.gov.om')
+FALSE_POSITIVE_TITLE_TERMS = ('trade truce', 'trade ceasefire', '무역 휴전', '무역휴전')
+WAR_TITLE_ACTOR_TERMS = ('iran', 'iranian', 'tehran', '이란', '테헤란', 'ukraine', 'ukrainian', 'zelensky', '러시아', '우크라이나', '젤렌스키', 'putin', '푸틴', 'israel', 'gaza', 'hamas', '이스라엘', '가자', '하마스', 'houthi', 'yemen', '후티', '예멘', 'hormuz', '호르무즈')
+WAR_TITLE_ACTION_TERMS = ('war', 'attack', 'strike', 'missile', 'drone', 'ceasefire', 'truce', 'peace', 'talks', 'negotiation', 'deal', 'reopen', 'blockade', '전쟁', '공격', '공습', '미사일', '드론', '휴전', '종전', '평화', '협상', '회담', '합의', '재개방', '봉쇄', '전후구상')
 
 
 def _clean_html(raw: str) -> str:
@@ -146,7 +149,6 @@ def google_news(query):
         return _walter_rows()
     return _prev_google_news(query)
 
-
 watch.google_news = google_news
 
 
@@ -165,6 +167,19 @@ def _has(text, terms):
 def _trusted(row):
     src = _source_text(row)
     return any(term in src for term in TRUSTED_CONFIRM_SOURCES)
+
+
+def _title_text(row):
+    return ' '.join([row.get('title_original', ''), row.get('title_ko', '')]).lower()
+
+
+def _obvious_false_positive(row):
+    title = _title_text(row)
+    if _has(title, FALSE_POSITIVE_TITLE_TERMS):
+        return True
+    if not _has(title, WAR_TITLE_ACTOR_TERMS) and not _has(title, WAR_TITLE_ACTION_TERMS):
+        return True
+    return False
 
 
 def _iran_war_stage_marks(row):
@@ -272,6 +287,8 @@ def _signals(marks):
 def score_item(row, now):
     marks = _marks(row)
     if not marks:
+        if _obvious_false_positive(row):
+            return 0, []
         return _prev_score(row, now)
     row['diplomacy_flash_marks'] = marks
     row['title_ko'] = _korean_title(marks) or row.get('title_ko', '')
@@ -320,7 +337,6 @@ def score_item(row, now):
         score += 1
     return min(score, 100), sorted(set(tags))
 
-
 watch.score_item = score_item
 
 
@@ -337,7 +353,6 @@ def item_id(row):
         key = 'iran-china-diplomacy-2026-09-15|' + '|'.join(marks)
     return hashlib.sha256(key.encode()).hexdigest()[:20]
 
-
 watch.item_id = item_id
 
 
@@ -350,7 +365,6 @@ def topic_label(row):
     if marks:
         return '이란·중국 · 중동 외교'
     return _prev_topic_label(row)
-
 
 watch.topic_label = topic_label
 
@@ -390,10 +404,12 @@ def _verdict(items):
         lines.append('- <b>미확인 리스크:</b> 🟠 중국계 주체의 이란 위성영상 제공 보도는 중국 정부 직접 관여가 확인되지 않은 단계')
     lines.append('- <b>다음:</b> 이란 공식 응답 → 직접협상 일정·대표단 → 휴전 발효 시각 → 종전 조건 → 호르무즈 실제 통항량')
     block = '\n'.join(lines)
+    iran_stage_marks = {'미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴'}
+    if marks & iran_stage_marks:
+        return block
     if others:
         return block + '\n' + _prev_verdict(others)
     return block
-
 
 guard._verdict = _verdict
 
