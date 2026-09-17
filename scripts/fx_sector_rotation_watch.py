@@ -11,6 +11,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 import korea_market_stress_watch_v11 as v11
+import korea_market_stress_watch_v14 as fx_basis
 
 KST = ZoneInfo("Asia/Seoul")
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +22,7 @@ STATUS_PATH = ROOT / "out" / "fx_sector_rotation_status.md"
 
 FX_URL = "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
 KOSPI_URL = "https://m.stock.naver.com/api/index/KOSPI/basic"
+VALIDATION_FOOTER = "• 검증 원칙: 값의 시장·시점·산출방식을 확인한 뒤 사용하며, 서로 다른 기준값은 혼용하지 않음"
 
 START = dt.time(9, 0)
 END = dt.time(15, 35)
@@ -102,14 +104,28 @@ def fetch_fx() -> dict[str, Any]:
     value = fnum(row.get("closePrice"))
     if value is None:
         raise RuntimeError("원/달러 현재값 없음")
+
+    naver_prev = fnum(rows[1].get("closePrice")) if len(rows) > 1 else None
     prev = None
-    if len(rows) > 1:
-        prev = fnum(rows[1].get("closePrice"))
+    prev_source = None
+    basis = "서울외환시장 15:30 USD/KRW 종가"
+    basis_error = None
+    try:
+        ref = fx_basis.fetch_seoul_prev_close()
+        prev = float(ref["value"])
+        prev_source = str(ref.get("source") or "")
+    except Exception as exc:
+        basis_error = f"{type(exc).__name__}: {exc}"
+
     return {
         "value": value,
         "prev_close": prev,
+        "naver_prev_close": naver_prev,
         "date": str(row.get("localTradedAt") or row.get("localDate") or "")[:10],
         "source": FX_URL,
+        "comparison_basis": basis,
+        "prev_close_source": prev_source,
+        "basis_error": basis_error,
     }
 
 
@@ -220,7 +236,9 @@ def build_alert(
         f"• 저점 대비 <b>+{rebound_krw:,.1f}원 (+{rebound_pct:.2f}%)</b>",
     ]
     if daily_krw is not None and daily_pct is not None:
-        lines.append(f"• 전일 대비 <b>{daily_krw:+,.1f}원 ({daily_pct:+.2f}%)</b>")
+        lines.append(f"• 전일 서울 15:30 종가 대비 <b>{daily_krw:+,.1f}원 ({daily_pct:+.2f}%)</b>")
+    elif fx.get("basis_error"):
+        lines.append("• 전일 서울 15:30 종가 조회 실패 → 일간 강한 신호 판정 보류")
 
     lines += [
         "",
@@ -258,6 +276,9 @@ def build_alert(
         f'• <a href="{html.escape(TODAY_FX_SOURCE, quote=True)}">환율 반등 사례 확인</a>',
         f'• <a href="{html.escape(TODAY_SHIP_SOURCE, quote=True)}">조선주 반등 사례 확인</a>',
     ]
+    if fx.get("prev_close_source"):
+        lines.append(f'• <a href="{html.escape(str(fx["prev_close_source"]), quote=True)}">전일 서울 15:30 종가 근거</a>')
+    lines += ["", VALIDATION_FOOTER]
     return "\n".join(lines)
 
 
@@ -276,6 +297,8 @@ def build_weakening_alert(now: dt.datetime, fx: dict[str, Any], state: dict[str,
         f"• 방산 KOSPI 대비 상대강도: <b>{float(defense.get('relative') or 0):+.2f}%p</b>",
         f"• KOSPI: <b>{kospi_pct:+.2f}%</b>",
         "• 판정: 환율 반등분 50% 이상 반납 또는 조선·방산 동반 상대강도 소멸 — 직전 로테이션 신호의 설명력이 약해졌습니다.",
+        "",
+        VALIDATION_FOOTER,
     ])
 
 
@@ -308,7 +331,7 @@ def main() -> int:
 
     daily_krw = None
     daily_pct = None
-    if fx.get("prev_close"):
+    if fx.get("prev_close") is not None:
         daily_krw = float(fx["value"]) - float(fx["prev_close"])
         daily_pct = (float(fx["value"]) / float(fx["prev_close"]) - 1.0) * 100
 
