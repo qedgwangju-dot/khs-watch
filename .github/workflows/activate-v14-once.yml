@@ -1,0 +1,42 @@
+name: Activate v14 market watcher once
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/activate-v14-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Patch active market watcher to v14
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/korea-market-stress-telegram-watch.yml')
+          s=p.read_text(encoding='utf-8')
+          if 'scripts/korea_market_stress_watch_v14.py' not in s:
+              s=s.replace('      - "scripts/korea_market_stress_watch_v13.py"\n', '      - "scripts/korea_market_stress_watch_v13.py"\n      - "scripts/korea_market_stress_watch_v14.py"\n')
+          s=s.replace('Run v13 market stress watcher with ECOS and LS validation','Run v14 market stress watcher with FX industrial map, Korean news, ECOS and LS validation')
+          s=s.replace('scripts/korea_market_stress_watch_v13.py scripts/kospi_flow_attribution_ls.py','scripts/korea_market_stress_watch_v13.py scripts/korea_market_stress_watch_v14.py scripts/kospi_flow_attribution_ls.py')
+          s=s.replace('python scripts/korea_market_stress_watch_v13.py','python scripts/korea_market_stress_watch_v14.py')
+          marker='          • 환율 경보 시 국내주식 영향 지도와 대표 종목 당일 등락률 표시\n'
+          add=('          • 원/달러 반등 경보 시 조선·방산 대표 종목의 당일 등락률과 환율 민감도 지도 추가\n'
+               '          • 조선·방산 반등을 환율 단독 원인으로 단정하지 않고 수주·실적·낙폭 과대와 분리 설명\n'
+               '          • 영문 뉴스 제목·설명은 송출 전에 한국어로 변환하고 회사명·티커 등 식별자만 원문 유지\n')
+          if add not in s:
+              s=s.replace(marker, marker+add)
+          p.write_text(s,encoding='utf-8')
+          PY
+          git config user.name "market-watch-patch[bot]"
+          git config user.email "market-watch-patch[bot]@users.noreply.github.com"
+          git add .github/workflows/korea-market-stress-telegram-watch.yml
+          git commit -m "Activate v14 Korea market watcher" || exit 0
+          git push origin HEAD:main
