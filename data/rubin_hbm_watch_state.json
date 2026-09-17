@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-18T03:22:01+09:00",
+  "updated_at_kst": "2026-09-18T06:35:48+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -11,6 +11,7 @@
     "30e12d5e09347c31afe9bbbf",
     "366eb2b49378313e5a18f1ec",
     "4247585e3b18e9cad642ceec",
+    "4247b04678644c4743f6ef69",
     "4254884b8b0b799b2b6b87a7",
     "44974ccaa7ba66fe19dffd08",
     "45ba5c60ce8b21a79021bfee",
@@ -28,6 +29,7 @@
     "86e3b5a2a1b5f5a0a64b608e",
     "879690aaf1650f4535c5fa3b",
     "959562dc71d2a106144c7eab",
+    "97cd9aa32a1e0bc1defa7483",
     "9ccd14cf2278388157bd44a6",
     "a1f202951bc6ed71f25e0b03",
     "ad831c0a9b75057895ffb73a",
@@ -43,6 +45,7 @@
     "d438811610a9bd1cc60718b5",
     "d5bb9608cc828c7b4cd00446",
     "d6a7588c8d5d4c51180c5a1a",
+    "dca2bc8b55a45dd7abd304fb",
     "dff177bae16621437b065202",
     "e05c1927e16110a949b8b797",
     "e91a33b5d73da251921a7da4",
@@ -65,14 +68,14 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1382.55,
-    "date": "2026-09-17 일일 기준 · ECB/Frankfurter · 조회 2026-09-18 03:22 KST · 보조 API 2026-09-17 · 차이 0.92% · 일중 기준시각 차이 가능",
+    "date": "2026-09-17 일일 기준 · ECB/Frankfurter · 조회 2026-09-18 06:35 KST · 보조 API 2026-09-17 · 차이 0.92% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
   "errors": [
-    "교차검증 부족으로 발송 제외: tradingkey.com | 마이크론 512GB DDR5 RDIMM, AMD 및 인텔 검증 진입: HBM의 뒤를 잇는 차세대 성장 동력이 될 수 있을까? - tradingkey.com",
-    "교차검증 부족으로 발송 제외: tradingkey.com | 마이크론 주가 전망: 씨티, 2027년부터 HBM, 서버용 DDR5 및 eSSD 수요의 폭발적 성장 전망; 주가는 돌파할 것인가? - tradingkey.com",
-    "교차검증 부족으로 발송 제외: TradingKey | Micron Stock Forecast: Citi Sees Explosive Growth in HBM, Server DDR5, and eSSD Demand From 2027; Will the Stock Break Out? - TradingKey"
+    "핵심 사실 자동추출 실패로 발송 제외: tradingkey.com | Micron 512GB DDR5 RDIMM Enters AMD and Intel Validation: Can It Become the Next Growth Driver After HBM? - tradingkey.com",
+    "교차검증 부족으로 발송 제외: TradingKey | 마이크론 주가 전망: 씨티, 2027년부터 HBM, 서버용 DDR5 및 eSSD 수요의 폭발적 성장 전망; 주가는 돌파할 것인가? - TradingKey",
+    "교차검증 부족으로 발송 제외: tradingkey.com | Micron Stock Forecast: Citi Sees Explosive Growth in HBM, Server DDR5, and eSSD Demand From 2027; Will the Stock Break Out? - tradingkey.com"
   ],
   "ai_component_leadtime": {
     "as_of": "2026-09-15",
@@ -112,7 +115,7 @@
     "seen_urls": [
       "https://insights.trendforce.com/p/weekly-radar-001"
     ],
-    "last_checked_at_kst": "2026-09-18T03:22:21+09:00",
+    "last_checked_at_kst": "2026-09-18T06:36:03+09:00",
     "candidate_count": 1,
     "errors": []
   }
