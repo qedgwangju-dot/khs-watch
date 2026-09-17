@@ -331,7 +331,8 @@
     "stateevt_b6f2f56fb1fa62fd4263": "2026-09-17T05:16:33.440627+00:00",
     "stateevt_d05b208a3ecdbe3d1ff1": "2026-09-17T05:16:33.440627+00:00",
     "stateevt_38f7847a94db472c5078": "2026-09-17T10:05:57.154984+00:00",
-    "stateevt_0f1156e59d8bd815be31": "2026-09-17T10:05:57.154984+00:00"
+    "stateevt_0f1156e59d8bd815be31": "2026-09-17T10:05:57.154984+00:00",
+    "stateevt_cab5eda67982fca39e08": "2026-09-17T14:56:44.948844+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -354,7 +355,8 @@
     "eventstate_legacy_westinghouse_b6f2f56fb1fa62fd4263": "2026-09-17T05:16:33.440627+00:00",
     "eventstate_return_safeguard_d05b208a3ecdbe3d1ff1": "2026-09-17T05:16:33.440627+00:00",
     "eventstate_legacy_funding_official_38f7847a94db472c5078": "2026-09-17T10:05:57.154984+00:00",
-    "eventstate_semiconductor_investment_0f1156e59d8bd815be31": "2026-09-17T10:05:57.154984+00:00"
+    "eventstate_semiconductor_investment_0f1156e59d8bd815be31": "2026-09-17T10:05:57.154984+00:00",
+    "eventstate_nuclear_build_cab5eda67982fca39e08": "2026-09-17T14:56:44.948844+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -444,12 +446,13 @@
         "party:kepco",
         "party:westinghouse",
         "percent:70",
+        "stage:송금집행",
         "units:474기"
       ],
       "initialized_at": "2026-09-16T06:11:26.024312+00:00",
-      "updated_at": "2026-09-16T15:35:30.354127+00:00",
-      "last_title": "한미 '원전동맹' 업그레이드 … 대미펀드 70% 발전사업 투자 - 매일경제",
-      "last_source": "매일경제"
+      "updated_at": "2026-09-17T14:57:04.361976+00:00",
+      "last_title": "결국 연기된 대미투자 보고…대형 원전 이견에 100억불 송금 등 막판 ‘진통’ - 헤럴드경제",
+      "last_source": "헤럴드경제"
     },
     "ercot_large_load": {
       "facts": [
