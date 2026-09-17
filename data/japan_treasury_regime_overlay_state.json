@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-17T10:05:58+09:00",
+  "updated_at_kst": "2026-09-18T07:20:29+09:00",
   "levels": {
     "official_funding": 3,
     "structural_repatriation": 0,
@@ -17,7 +17,7 @@
     "intervention_trillion_yen": 15.3993,
     "intervention_usd_bn": 100.18411293995186,
     "funding_ratio": 0.876116955316151,
-    "fima_bn_usd": 0.0,
+    "fima_bn_usd": 0.001,
     "flow": {
       "latest_week": "2026-09-06~09-12",
       "one_week": 1.0829,
@@ -27,15 +27,15 @@
       "negative_streak": 0
     },
     "market": {
-      "observed_at_utc": "2026-09-17T01:06:02Z",
-      "usdjpy": 156.14500427246094,
-      "usdjpy_change_pct": 0.5162781336466887,
+      "observed_at_utc": "2026-09-17T22:20:28Z",
+      "usdjpy": 155.9810028076172,
+      "usdjpy_change_pct": -0.1587420340858303,
       "ust2": null,
       "ust2_change_bp": null,
-      "ust10": 5.006,
-      "ust10_change_bp": 0.9999999999999787,
-      "ust30": 5.349,
-      "ust30_change_bp": -1.499999999999968
+      "ust10": 4.947,
+      "ust10_change_bp": -5.900000000000016,
+      "ust30": 5.296,
+      "ust30_change_bp": -5.299999999999994
     }
   }
 }
