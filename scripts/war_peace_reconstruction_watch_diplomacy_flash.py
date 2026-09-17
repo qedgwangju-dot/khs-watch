@@ -2,16 +2,7 @@
 """종전·에너지 감시 최종 보강.
 
 기존 war-peace 감지·상태·텔레그램 경로는 그대로 사용한다.
-기존 Walter Bloomberg 외교/에너지 신호에 더해 이란 전쟁은
-1) 미국 측 종전·직접접촉 주장,
-2) 이란 측 직접협상 확인,
-3) 정식 휴전,
-4) 종전 합의,
-5) 호르무즈 실제 통항 정상화,
-6) 협상 후퇴
-를 서로 다른 단계로 판정한다.
-
-미국 한쪽의 주장만으로 휴전·종전으로 승격하지 않는다.
+이란 전쟁 단계와 예멘·사우디·오만·Ansar Allah 휴전중재를 서로 섞지 않고 판정한다.
 """
 from __future__ import annotations
 
@@ -23,6 +14,7 @@ import re
 from email.utils import format_datetime
 
 import war_peace_reconstruction_watch_energy_ceasefire as prev
+import war_peace_reconstruction_watch_houthi_maritime as houthi_watch
 
 watch = prev.watch
 runner = prev.runner
@@ -97,8 +89,8 @@ VESSEL_TERMS = ('vessel', 'vessels', 'ship', 'ships', 'tanker', 'tankers', 'vlcc
 NEGATION_TERMS = ('not agreed', 'no agreement', 'has not agreed', 'did not agree', 'not a ceasefire', 'no ceasefire', 'not reopened', 'remains closed', 'remain closed', 'still closed', '합의하지 않', '합의가 아니', '휴전이 아니', '휴전 합의 없', '재개방되지 않', '폐쇄 유지')
 TRUSTED_CONFIRM_SOURCES = ('reuters', 'apnews', 'aljazeera', 'whitehouse.gov', 'state.gov', 'irna.ir', 'tasnim', 'mehrnews', 'presstv', 'fm.gov.om', 'omannews.gov.om')
 FALSE_POSITIVE_TITLE_TERMS = ('trade truce', 'trade ceasefire', '무역 휴전', '무역휴전')
-WAR_TITLE_ACTOR_TERMS = ('iran', 'iranian', 'tehran', '이란', '테헤란', 'ukraine', 'ukrainian', 'zelensky', '러시아', '우크라이나', '젤렌스키', 'putin', '푸틴', 'israel', 'gaza', 'hamas', '이스라엘', '가자', '하마스', 'houthi', 'yemen', '후티', '예멘', 'hormuz', '호르무즈')
-WAR_TITLE_ACTION_TERMS = ('war', 'attack', 'strike', 'missile', 'drone', 'ceasefire', 'truce', 'peace', 'talks', 'negotiation', 'deal', 'reopen', 'blockade', '전쟁', '공격', '공습', '미사일', '드론', '휴전', '종전', '평화', '협상', '회담', '합의', '재개방', '봉쇄', '전후구상')
+WAR_TITLE_ACTOR_TERMS = ('iran', 'iranian', 'tehran', '이란', '테헤란', 'ukraine', 'ukrainian', 'zelensky', '러시아', '우크라이나', '젤렌스키', 'putin', '푸틴', 'israel', 'gaza', 'hamas', '이스라엘', '가자', '하마스', 'houthi', 'houthis', 'ansar allah', 'ansarallah', 'yemen', 'saudi', 'oman', '후티', '안사르 알라', '안사르알라', '예멘', '사우디', '오만', 'hormuz', '호르무즈')
+WAR_TITLE_ACTION_TERMS = ('war', 'attack', 'strike', 'missile', 'drone', 'ceasefire', 'truce', 'peace', 'talks', 'negotiation', 'mediation', 'deal', 'reopen', 'blockade', '전쟁', '공격', '공습', '미사일', '드론', '휴전', '종전', '평화', '협상', '회담', '중재', '합의', '재개방', '봉쇄', '전후구상')
 
 
 def _clean_html(raw: str) -> str:
@@ -153,7 +145,9 @@ watch.google_news = google_news
 
 
 def _text(row):
-    return ' '.join([row.get('title_original', ''), row.get('title_ko', ''), row.get('description', ''), row.get('article_text', ''), ' '.join(row.get('signals_ko', []))]).lower()
+    # 이전 단계가 붙인 해석 문구(signals_ko/title_ko)를 다시 사실 원문처럼 읽지 않는다.
+    # 분류 오염을 막기 위해 원제목·원설명·원문만 판정에 사용한다.
+    return ' '.join([row.get('title_original', ''), row.get('description', ''), row.get('article_text', '')]).lower()
 
 
 def _source_text(row):
@@ -170,7 +164,7 @@ def _trusted(row):
 
 
 def _title_text(row):
-    return ' '.join([row.get('title_original', ''), row.get('title_ko', '')]).lower()
+    return str(row.get('title_original', '')).lower()
 
 
 def _obvious_false_positive(row):
@@ -180,6 +174,13 @@ def _obvious_false_positive(row):
     if not _has(title, WAR_TITLE_ACTOR_TERMS) and not _has(title, WAR_TITLE_ACTION_TERMS):
         return True
     return False
+
+
+def _houthi_diplomacy_marks(row):
+    try:
+        return houthi_watch._diplomacy_marks(houthi_watch._maritime_marks(row))
+    except Exception:
+        return []
 
 
 def _iran_war_stage_marks(row):
@@ -357,6 +358,9 @@ watch.item_id = item_id
 
 
 def topic_label(row):
+    hmarks = _houthi_diplomacy_marks(row)
+    if hmarks:
+        return '예멘·사우디·오만 · Ansar Allah 휴전중재'
     marks = _marks(row)
     if any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')):
         return '이란 전쟁 · 협상·휴전·종전·호르무즈'
@@ -371,26 +375,48 @@ watch.topic_label = topic_label
 
 def _verdict(items):
     flash = [x for x in items if _marks(x)]
-    others = [x for x in items if x not in flash]
-    if not flash:
-        return _prev_verdict(items)
     marks = {m for x in flash for m in _marks(x)}
+    hitems = [x for x in items if _houthi_diplomacy_marks(x)]
+    hmarks = {m for x in hitems for m in _houthi_diplomacy_marks(x)}
+    if not marks and not hmarks:
+        return _prev_verdict(items)
+
     lines = ['<b>투자 판정</b>']
+
+    if hmarks:
+        if '후티휴전거부' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🔴 Ansar Allah가 휴전안을 거부하거나 핵심 조건 미충족을 선언 — 협상 후퇴 단계')
+        elif '후티휴전수용' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟢 Ansar Allah의 휴전 수용 확인 — 중재 제안에서 양측 합의 단계로 상승')
+        elif '2주임시휴전안' in hmarks or '주말합의발표목표' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟡 2주 임시휴전·주말 합의 발표 목표가 제시된 협상 진전 단계 — 아직 정식 합의·발효 전')
+        elif '사우디오만중재요청' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟡 사우디가 오만을 통한 Ansar Allah 중재 채널을 가동 — 공식 휴전 합의 전')
+        elif '인도적요구포괄협의' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟡 인도적 요구 전반을 휴전 협상 의제로 묶는 단계 — 세부 조건 공식 확인 필요')
+        trusted = any(houthi_watch._trusted_diplomacy(x) for x in hitems)
+        if trusted:
+            lines.append('- <b>확정 수준:</b> Reuters·AP·오만 외교부·사우디 국영통신·유엔·당사자 계열 원천에서 확인된 보도 포함')
+        else:
+            lines.append('- <b>확정 수준:</b> 2주 기간·인도적 조건·주말 발표 목표는 공식 확인 전 보도 단계 — 확정 휴전으로 표시하지 않음')
+        lines.append('- <b>시장:</b> 합의 진전 시 바브엘만데브·Yanbu 우회수출 경로의 해운·전쟁보험·원유 물류 위험프리미엄 완화 가능 / 결렬 시 반대')
+        lines.append('- <b>다음:</b> 오만·사우디 공식 확인 → Ansar Allah 수용 여부 → 2주 휴전 발효 시각 → 인도적 조건 공개 → 실제 합의 발표')
+
     if '협상후퇴' in marks:
-        lines.append('- <b>현재 판정:</b> 🔴 협상 후퇴 — 직접협상 부인·거부·결렬 신호. 종전 기대를 낮춰야 하는 변화')
+        lines.append('- <b>이란 전쟁:</b> 🔴 협상 후퇴 — 직접협상 부인·거부·결렬 신호. 종전 기대를 낮춰야 하는 변화')
     elif '호르무즈실물정상화' in marks:
-        lines.append('- <b>현재 판정:</b> 🟢 호르무즈 실물 정상화 — 재개방 문구가 아니라 유조선·LNG선 등 실제 상선 통항 회복 확인')
+        lines.append('- <b>이란 전쟁:</b> 🟢 호르무즈 실물 정상화 — 재개방 문구가 아니라 유조선·LNG선 등 실제 상선 통항 회복 확인')
     elif '종전합의' in marks:
-        lines.append('- <b>현재 판정:</b> 🟢 종전 합의 — 휴전보다 높은 단계. 평화협정·적대행위 종료의 실제 조건과 이행 일정 확인 필요')
+        lines.append('- <b>이란 전쟁:</b> 🟢 종전 합의 — 휴전보다 높은 단계. 평화협정·적대행위 종료의 실제 조건과 이행 일정 확인 필요')
     elif '정식휴전합의' in marks:
-        lines.append('- <b>현재 판정:</b> 🟢 정식 휴전 — 공격 중단 합의·발효 단계. 실제 이행과 위반 여부를 후속 확인')
+        lines.append('- <b>이란 전쟁:</b> 🟢 정식 휴전 — 공격 중단 합의·발효 단계. 실제 이행과 위반 여부 후속 확인')
     elif '이란직접협상확인' in marks:
-        lines.append('- <b>현재 판정:</b> 🟡 양측 확인 — 이란 측도 미국과 직접 협상·접촉을 확인. 아직 휴전·종전 확정은 아님')
+        lines.append('- <b>이란 전쟁:</b> 🟡 양측 확인 — 이란 측도 미국과 직접 협상·접촉을 확인. 아직 휴전·종전 확정은 아님')
     elif '미국단독종전협상신호' in marks:
-        lines.append('- <b>현재 판정:</b> ⚠️ 미국 측 종전·직접접촉 주장 단계 — 이란 공식 확인 전에는 휴전·종전으로 판정하지 않음')
+        lines.append('- <b>이란 전쟁:</b> ⚠️ 미국 측 종전·직접접촉 주장 단계 — 이란 공식 확인 전에는 휴전·종전으로 판정하지 않음')
+
     if any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '협상후퇴')):
-        lines.append('- <b>단계 추적:</b> 미국 측 협상 신호 → 이란 측 확인 → 정식 휴전 → 종전 합의 → 호르무즈 실제 정상화')
-        lines.append('- <b>시장 경로:</b> 단계가 올라갈수록 유가·LNG·해상보험·운임 위험프리미엄 완화 가능성. 후퇴 시 반대 방향')
+        lines.append('- <b>이란 단계 추적:</b> 미국 측 협상 신호 → 이란 측 확인 → 정식 휴전 → 종전 합의 → 호르무즈 실제 정상화')
     if '호르무즈실물정상화' in marks:
         lines.append('- <b>실물 확인:</b> 선박 수·유조선·LNG선 통항량이 지속 회복되는지 별도 추적')
     if '크렘린에너지휴전긍정평가' in marks:
@@ -399,17 +425,11 @@ def _verdict(items):
     if '크렘린제재해제에너지가격하락발언' in marks:
         lines.append('- <b>에너지:</b> 🟡 크렘린이 제재 해제와 세계 에너지 가격 하락을 직접 연결 — 향후 제재 협상이 유가·디젤 완화 촉매가 될 수 있음')
     if '이란외무장관중국방문' in marks:
-        lines.append('- <b>중동 외교:</b> 🟢 이란 외무장관의 중국 방문·왕이 회담 일정 — 중국 중재채널이 다시 전면에 나오는지 확인')
+        lines.append('- <b>중동 외교:</b> 🟢 이란 외무장관의 중국 방문·왕이 회담 일정 — 중국 중재채널 확대 여부 확인')
     if '중국계위성영상제공보도' in marks:
         lines.append('- <b>미확인 리스크:</b> 🟠 중국계 주체의 이란 위성영상 제공 보도는 중국 정부 직접 관여가 확인되지 않은 단계')
-    lines.append('- <b>다음:</b> 이란 공식 응답 → 직접협상 일정·대표단 → 휴전 발효 시각 → 종전 조건 → 호르무즈 실제 통항량')
-    block = '\n'.join(lines)
-    iran_stage_marks = {'미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴'}
-    if marks & iran_stage_marks:
-        return block
-    if others:
-        return block + '\n' + _prev_verdict(others)
-    return block
+
+    return '\n'.join(lines)
 
 guard._verdict = _verdict
 
@@ -420,8 +440,7 @@ def main():
     ap.add_argument('--telegram-test', action='store_true')
     args = ap.parse_args()
     if args.finalize:
-        watch.finalize()
-        return
+        watch.finalize(); return
     if args.telegram_test:
         base._write_inline_test()
     else:
