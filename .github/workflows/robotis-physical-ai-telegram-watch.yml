@@ -79,7 +79,7 @@ jobs:
           PY
 
       - name: Scan physical AI / battery / grid / ROBOTIS-NVIDIA / Figure AI / Tesla Optimus China sources
-        run: python scripts/physical_ai_watch_tesla_china_guard.py
+        run: python scripts/physical_ai_watch_tesla_order_dedupe.py
 
       - name: Send Telegram only on meaningful change
         if: success()
