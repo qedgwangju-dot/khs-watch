@@ -329,7 +329,9 @@
     "stateevt_c83838571b636a674bec": "2026-09-16T15:35:14.438298+00:00",
     "stateevt_ebe260c262d9343ab13c": "2026-09-16T22:05:13.492230+00:00",
     "stateevt_b6f2f56fb1fa62fd4263": "2026-09-17T05:16:33.440627+00:00",
-    "stateevt_d05b208a3ecdbe3d1ff1": "2026-09-17T05:16:33.440627+00:00"
+    "stateevt_d05b208a3ecdbe3d1ff1": "2026-09-17T05:16:33.440627+00:00",
+    "stateevt_38f7847a94db472c5078": "2026-09-17T10:05:57.154984+00:00",
+    "stateevt_0f1156e59d8bd815be31": "2026-09-17T10:05:57.154984+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -350,13 +352,15 @@
     "eventstate_nuclear_build_c83838571b636a674bec": "2026-09-16T15:35:14.438298+00:00",
     "eventstate_legacy_westinghouse_ebe260c262d9343ab13c": "2026-09-16T22:05:13.492230+00:00",
     "eventstate_legacy_westinghouse_b6f2f56fb1fa62fd4263": "2026-09-17T05:16:33.440627+00:00",
-    "eventstate_return_safeguard_d05b208a3ecdbe3d1ff1": "2026-09-17T05:16:33.440627+00:00"
+    "eventstate_return_safeguard_d05b208a3ecdbe3d1ff1": "2026-09-17T05:16:33.440627+00:00",
+    "eventstate_legacy_funding_official_38f7847a94db472c5078": "2026-09-17T10:05:57.154984+00:00",
+    "eventstate_semiconductor_investment_0f1156e59d8bd815be31": "2026-09-17T10:05:57.154984+00:00"
   },
   "official_status": {
-    "status": "unconfirmed",
-    "title": "대미투자 수익배분 구조 등은 아직 확정된 바 없습니다",
-    "source": "산업통상부·재정경제부",
-    "updated_at": "2026-09-10T00:00:00+09:00"
+    "status": "official_seen",
+    "title": "[상태 변화] legacy funding official — 공식자료 확인 · 송금집행",
+    "source": "대한민국 정책브리핑",
+    "updated_at": "2026-09-17T10:06:11.138687+00:00"
   },
   "event_states": {
     "westinghouse_stake": {
@@ -459,11 +463,13 @@
       "last_source": "tokenpost.kr"
     },
     "semiconductor_investment": {
-      "facts": [],
+      "facts": [
+        "usd:5500억"
+      ],
       "initialized_at": "2026-09-16T06:11:26.024713+00:00",
-      "updated_at": "",
-      "last_title": "",
-      "last_source": ""
+      "updated_at": "2026-09-17T10:06:11.133668+00:00",
+      "last_title": "美日, 5500억달러 대미투자 다음 스텝은 반도체 공장 - 뉴스핌",
+      "last_source": "뉴스핌"
     },
     "nuclear_fuel_cycle_pyro": {
       "facts": [
@@ -505,6 +511,16 @@
       "updated_at": "2026-09-17T05:16:46.560384+00:00",
       "last_title": "웨스팅하우스 10%만 사도 4.1조…한전·한수원 자금조달 ‘난감’ - 서울경제",
       "last_source": "서울경제"
+    },
+    "legacy_funding_official": {
+      "facts": [
+        "source:official",
+        "stage:송금집행"
+      ],
+      "initialized_at": "2026-09-17T10:06:11.133261+00:00",
+      "updated_at": "2026-09-17T10:06:11.133261+00:00",
+      "last_title": "(보도설명) 대미투자 관련, 송금 규모·시기, 1호 사업 발표 등은 확정된 바가 없습니다. - 대한민국 정책브리핑",
+      "last_source": "대한민국 정책브리핑"
     }
   },
   "event_state_guard_version": 2,
