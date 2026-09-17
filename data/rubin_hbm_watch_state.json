@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-17T22:37:31+09:00",
+  "updated_at_kst": "2026-09-18T03:22:01+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -8,6 +8,8 @@
     "20a5c84026d1bbe9b4f60398",
     "21e84f4d7bcbfa46a6b63dee",
     "2d27da4b09baa1d0f61ace3d",
+    "30e12d5e09347c31afe9bbbf",
+    "366eb2b49378313e5a18f1ec",
     "4247585e3b18e9cad642ceec",
     "4254884b8b0b799b2b6b87a7",
     "44974ccaa7ba66fe19dffd08",
@@ -33,6 +35,7 @@
     "b7a9ea191f0d39046caeeb6d",
     "c1d173fd17a8a8cd17f5cd5b",
     "c1ede00bdbacc4e73f3e3732",
+    "c66bcba5501ce4414506b0e6",
     "caf236d0d63266773b9b11da",
     "d059f8c3e0d742a821065a47",
     "d26bff6649e5357d756fc3fc",
@@ -56,17 +59,21 @@
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 3,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1367.8,
-    "date": "2026-09-16 일일 기준 · ECB/Frankfurter · 조회 2026-09-17 22:37 KST · 보조 API 2026-09-17 · 차이 0.15% · 일중 기준시각 차이 가능",
+    "rate": 1382.55,
+    "date": "2026-09-17 일일 기준 · ECB/Frankfurter · 조회 2026-09-18 03:22 KST · 보조 API 2026-09-17 · 차이 0.92% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "교차검증 부족으로 발송 제외: tradingkey.com | 마이크론 512GB DDR5 RDIMM, AMD 및 인텔 검증 진입: HBM의 뒤를 잇는 차세대 성장 동력이 될 수 있을까? - tradingkey.com",
+    "교차검증 부족으로 발송 제외: tradingkey.com | 마이크론 주가 전망: 씨티, 2027년부터 HBM, 서버용 DDR5 및 eSSD 수요의 폭발적 성장 전망; 주가는 돌파할 것인가? - tradingkey.com",
+    "교차검증 부족으로 발송 제외: TradingKey | Micron Stock Forecast: Citi Sees Explosive Growth in HBM, Server DDR5, and eSSD Demand From 2027; Will the Stock Break Out? - TradingKey"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-09-15",
     "source": "TrendForce 공식 X 사용자 제공 캡처",
@@ -105,7 +112,7 @@
     "seen_urls": [
       "https://insights.trendforce.com/p/weekly-radar-001"
     ],
-    "last_checked_at_kst": "2026-09-17T22:37:43+09:00",
+    "last_checked_at_kst": "2026-09-18T03:22:21+09:00",
     "candidate_count": 1,
     "errors": []
   }
