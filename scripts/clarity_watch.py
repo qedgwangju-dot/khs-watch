@@ -44,7 +44,7 @@ CRYPTO_RE = re.compile(
     re.I,
 )
 REG_ACTION_RE = re.compile(
-    r"\b(?:rule|rulemaking|propos(?:e|ed|al)|adopt(?:s|ed|ion)|final rule|interpretation|guidance|no-action|order|staff letter|framework|registration|market structure|jurisdiction|enforcement|exemptive relief)\b",
+    r"\b(?:rule|rulemaking|propos(?:e|ed|al)|adopt(?:s|ed|ion)|final rule|interpretation|guidance|no-action|order|staff letter|framework|registration|market structure|jurisdiction|enforcement|exemptive relief|exemption|exemptions|exempt(?:ed|ion)?)\b",
     re.I,
 )
 LEG_ACTION_RE = re.compile(
