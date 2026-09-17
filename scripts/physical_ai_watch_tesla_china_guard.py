@@ -45,6 +45,13 @@ AUDIT = re.compile(
     r'supplier\s*audit|factory\s*audit|site\s*audit|공급업체\s*심사|현장\s*심사|공급사\s*실사',
     re.I,
 )
+AUDIT_STARTED = re.compile(
+    r'启动(?:新一轮|新一輪)?.{0,18}(?:审厂|審廠)|开启(?:新一轮|新一輪)?.{0,18}(?:审厂|審廠)|'
+    r'开始(?:新一轮|新一輪)?.{0,18}(?:审厂|審廠)|已于.{0,24}(?:开启|啟動|启动).{0,18}(?:审厂|審廠)|'
+    r'(?:supplier|factory)\s*audit\s*(?:started|began|launched)|'
+    r'공급업체\s*심사\s*(?:시작|개시)|양산\s*심사\s*(?:시작|개시)',
+    re.I,
+)
 RAMP = re.compile(
     r'量产|量產|良率|产线|產線|周产|週產|产能|產能|批量供应|批量供應|'
     r'production|yield|production\s*line|weekly\s*production|capacity|mass\s*production|'
@@ -102,7 +109,7 @@ def _query_cn_once(query: str) -> list[dict]:
 def _query_tesla_cn_supply_chain() -> list[dict]:
     queries = [
         '特斯拉 Optimus (5000台 OR 数千台 OR 千台级 OR 批量订单 OR 量产订单 OR 供应商订单)',
-        '特斯拉 Optimus (审厂 OR 供应商审核 OR 现场审核 OR 走访供应商 OR 上海 OR 杭州 OR 宁波 OR 厦门)',
+        '特斯拉 Optimus (审厂 OR 供应商审核 OR 现场审核 OR 走访供应商 OR 启动审厂 OR 开启审厂 OR 量产审厂 OR 上海 OR 杭州 OR 宁波 OR 厦门)',
         '特斯拉 Optimus (良率 OR 周产 OR 产线 OR 量产 OR 产能) (供应商 OR 订单 OR 审厂)',
     ]
     merged: dict[str, dict] = {}
@@ -125,7 +132,10 @@ def _is_tesla_supply_text(text: str) -> bool:
 
 def _stage(text: str) -> str:
     scaled = bool(SCALE_ORDER.search(text) and ORDER.search(text))
+    audit_started = bool(AUDIT_STARTED.search(text))
     audit = bool(AUDIT.search(text))
+    if audit_started:
+        return 'supplier_audit_started'
     if scaled and audit:
         return 'scale_order_audit'
     if scaled:
@@ -148,6 +158,8 @@ def score(item: dict) -> int:
         s += 10
     if stage in {'supplier_audit', 'scale_order_audit'}:
         s += 8
+    if stage == 'supplier_audit_started':
+        s += 12
     if TRIAL.search(text):
         s += 4
     if CN_LOCATIONS.search(text):
@@ -166,6 +178,8 @@ def category(text: str, group: str) -> str:
             return 'Optimus 천 단위 발주·공급업체 심사'
         if stage == 'scale_order':
             return 'Optimus 천 단위 양산 발주'
+        if stage == 'supplier_audit_started':
+            return 'Optimus 공급업체 양산 심사 실제 개시'
         if stage == 'supplier_audit':
             return 'Optimus 공급업체 심사·양산 준비'
         if stage == 'production_ramp':
@@ -180,6 +194,9 @@ def meaning(cat: str) -> str:
     if cat == 'Optimus 천 단위 양산 발주':
         return ('수백 대 시험 물량에서 천 단위 부품 발주로 주문 규모가 한 단계 올라간 공급망 신호입니다. '
                 '실제 부품사별 발주 수량·납기·반복 주문이 확인되면 양산 매출 가시성이 높아집니다.')
+    if cat == 'Optimus 공급업체 양산 심사 실제 개시':
+        return ('공급업체 심사가 예정·방문 단계에서 실제 양산 심사 개시로 넘어간 후속 신호입니다. '
+                '심사 통과·정식 공급업체 선정·최종 발주 배정·실제 출하 순으로 다음 상태 변화를 추적합니다.')
     if cat == 'Optimus 공급업체 심사·양산 준비':
         return ('테슬라가 중국 공급업체의 현장 생산능력·품질·공정 준비를 직접 확인하는 단계로 해석되는 공급망 신호입니다. '
                 '심사 통과, 최종 공급업체 선정, 양산 발주와 실제 출하를 분리해 추적합니다.')
@@ -193,6 +210,9 @@ def risk(cat: str) -> str:
     if cat in {'Optimus 천 단위 발주·공급업체 심사', 'Optimus 천 단위 양산 발주'}:
         return ('약 5,000대 발주는 현재 중국 공급망 보도이며 테슬라 공식 공시로 확인된 수량은 아닙니다. '
                 '공급업체 심사와 주문 보도가 실제 완제품 5,000대 생산·출하를 뜻하지 않으므로 공급업체 실명·발주서·납기·출하와 테슬라 공식 생산량을 별도로 확인합니다.')
+    if cat == 'Optimus 공급업체 양산 심사 실제 개시':
+        return ('심사 실제 개시는 최종 공급업체 선정·양산 수주 확정과 다릅니다. '
+                '품질·원가·수율·납기 기준에서 탈락하거나 재심사가 발생하면 실제 출하 일정이 다시 늦어질 수 있습니다.')
     if cat == 'Optimus 공급업체 심사·양산 준비':
         return ('공급업체 심사 시작은 최종 선정이나 양산 수주 확정과 다릅니다. '
                 '품질·원가·수율·납기 기준 미달 시 공급업체 변경 또는 양산 일정 지연이 먼저 나타날 수 있습니다.')
@@ -207,6 +227,8 @@ def verification(item: dict, group: str, text: str) -> str:
             return '테슬라 공식·1차 자료'
         if _stage(text) in {'scale_order', 'scale_order_audit'}:
             return '중국 공급망 복수 보도 · 테슬라 공식 양산계획과 교차확인 · 약 5,000대 발주 수량은 테슬라 공식 확인 전'
+        if _stage(text) == 'supplier_audit_started':
+            return '중국 공급망 후속 보도 · 9월 17일 새 양산 심사 개시 보도 · 테슬라 공식 공급업체 선정 결과는 미확인'
         if _stage(text) == 'supplier_audit':
             return '중국 공급망 보도 · 공급업체 심사 진행 여부를 당사자·공식자료로 후속 확인'
     return _orig_verification(item, group, text)
@@ -220,6 +242,8 @@ def clean_title(title: str, source: str) -> str:
             return '테슬라 옵티머스, 약 5,000대 공급망 주문·중국 공급업체 심사 진행 보도'
         if stage == 'scale_order':
             return '테슬라 옵티머스, 약 5,000대 천 단위 공급망 주문 보도'
+        if stage == 'supplier_audit_started':
+            return '테슬라 옵티머스, 중국 공급업체 양산 심사 실제 개시 보도'
         if stage == 'supplier_audit':
             return '테슬라 옵티머스, 중국 공급업체 심사·현장 방문 진행 보도'
         if stage == 'production_ramp':
