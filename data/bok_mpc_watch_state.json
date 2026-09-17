@@ -52,10 +52,10 @@
   },
   "rate_signal_upgrade": {
     "version": 3,
-    "updated_at_kst": "2026-09-17T20:38:52+09:00",
-    "risk_score": 4,
-    "grade_emoji": "🟡",
-    "grade_label": "추가인상 살아있음",
+    "updated_at_kst": "2026-09-18T01:54:31+09:00",
+    "risk_score": 5,
+    "grade_emoji": "🟠",
+    "grade_label": "인상 압력 확대",
     "next_mpc_date": "2026-10-22",
     "next_mpc_source": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?menuNo=200755&mtgSe=A",
     "components": {
@@ -69,7 +69,7 @@
         "prev_core_yoy": 2.6,
         "headline_reaccelerating": true,
         "core_reaccelerating": true,
-        "stale": true
+        "stale": false
       },
       "household": {
         "period": "2026-08",
@@ -79,13 +79,13 @@
         "mortgage_reaccelerating": true,
         "source": "https://www.fsc.go.kr/no010101/87675",
         "source_tier": "공식",
-        "stale": true
+        "stale": false
       },
       "housing": null,
       "oil": {
         "date": "2026-09-17",
-        "brent_usd": 99.33,
-        "change_5d_pct": -7.71,
+        "brent_usd": 104.18,
+        "change_5d_pct": -3.21,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
