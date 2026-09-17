@@ -91,16 +91,6 @@
       "source": "매일경제",
       "title": "TrendForce, MLCC·알루미늄 콘덴서 가격 인상/쇼티지 신호"
     },
-    "event:0b8940b5afba84d32a2d2b42": {
-      "first_seen_kst": "2026-09-03T17:43:26+09:00",
-      "lanes": {
-        "live": "2026-09-03T17:43:26+09:00"
-      },
-      "last_seen_kst": "2026-09-03T17:43:26+09:00",
-      "link": "https://www.mk.co.kr/news/business/12143510",
-      "source": "매일경제",
-      "title": "“우리도 고려아연 감사위원 지지”…임시주총 앞두고 입지 좁아진 영풍·MBK"
-    },
     "event:0e7270dca19bd8ecae73d429": {
       "first_seen_kst": "2026-09-07T14:00:55+09:00",
       "lanes": {
@@ -2140,6 +2130,16 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01138166645577496",
       "source": "이데일리",
       "title": "환율, 이번주 1300원 중반대 박스권…美물가에 촉각[주간외환전망]"
+    },
+    "event:d6948148febc6f876b525203": {
+      "first_seen_kst": "2026-09-17T19:09:57+09:00",
+      "lanes": {
+        "live": "2026-09-17T19:09:57+09:00"
+      },
+      "last_seen_kst": "2026-09-17T19:09:57+09:00",
+      "link": "https://www.fnnews.com/news/202609171835520722",
+      "source": "파이낸셜뉴스",
+      "title": "SK하이닉스, 美 AI 서밋서 HBF·PIM 등 차세대 AI 메모리 설루션 공개"
     },
     "event:d765a3e2b5d41026d8c52630": {
       "first_seen_kst": "2026-09-08T12:10:31+09:00",
@@ -5053,16 +5053,6 @@
       "source": "뉴시스",
       "title": "\"김계란씨, 환율 800원 되면 해외직구 대박 나 좋다고요?…수출 기업은 다 죽어요\""
     },
-    "link:9f99430e067d01513566cae8": {
-      "first_seen_kst": "2026-09-03T17:43:26+09:00",
-      "lanes": {
-        "live": "2026-09-03T17:43:26+09:00"
-      },
-      "last_seen_kst": "2026-09-03T17:43:26+09:00",
-      "link": "https://www.mk.co.kr/news/business/12143510",
-      "source": "매일경제",
-      "title": "“우리도 고려아연 감사위원 지지”…임시주총 앞두고 입지 좁아진 영풍·MBK"
-    },
     "link:9fcae945d1e753e042e0061c": {
       "first_seen_kst": "2026-09-13T13:24:21+09:00",
       "lanes": {
@@ -5629,6 +5619,16 @@
       "link": "https://www.yna.co.kr/view/AKR20260917002400071",
       "source": "연합뉴스",
       "title": "[2보] 美연준, 기준금리 0.25%p 인상…3년2개월만의 긴축조치 | 연합뉴스"
+    },
+    "link:c49843d24be5d2026b340a7e": {
+      "first_seen_kst": "2026-09-17T19:09:57+09:00",
+      "lanes": {
+        "live": "2026-09-17T19:09:57+09:00"
+      },
+      "last_seen_kst": "2026-09-17T19:09:57+09:00",
+      "link": "https://www.fnnews.com/news/202609171835520722",
+      "source": "파이낸셜뉴스",
+      "title": "SK하이닉스, 美 AI 서밋서 HBF·PIM 등 차세대 AI 메모리 설루션 공개"
     },
     "link:c5009d6d88b6f1efc448205c": {
       "first_seen_kst": "2026-09-04T18:18:27+09:00",
@@ -6726,16 +6726,6 @@
       "link": "https://www.mk.co.kr/news/stock/12152552",
       "source": "매일경제",
       "title": "몬타나 테크놀러지스, 비트싱크 2,700만 달러 인수..AI 데이터센터 냉각시장 진출"
-    },
-    "original:204ee51b9dfa943cc56ca7ef": {
-      "first_seen_kst": "2026-09-03T17:43:26+09:00",
-      "lanes": {
-        "live": "2026-09-03T17:43:26+09:00"
-      },
-      "last_seen_kst": "2026-09-03T17:43:26+09:00",
-      "link": "https://www.mk.co.kr/news/business/12143510",
-      "source": "매일경제",
-      "title": "“우리도 고려아연 감사위원 지지”…임시주총 앞두고 입지 좁아진 영풍·MBK"
     },
     "original:231e981db1d267d7d67f8d93": {
       "first_seen_kst": "2026-09-12T06:23:58+09:00",
@@ -10134,6 +10124,16 @@
       "source": "이데일리",
       "title": "슈카 \"삼성전자, '40만원 전엔 팔지 마'…아이들에게 물려줄 것\""
     },
+    "original:f71b7cd4d3d35c272c78a267": {
+      "first_seen_kst": "2026-09-17T19:09:57+09:00",
+      "lanes": {
+        "live": "2026-09-17T19:09:57+09:00"
+      },
+      "last_seen_kst": "2026-09-17T19:09:57+09:00",
+      "link": "https://www.fnnews.com/news/202609171835520722",
+      "source": "파이낸셜뉴스",
+      "title": "SK하이닉스, 美 AI 서밋서 HBF·PIM 등 차세대 AI 메모리 설루션 공개"
+    },
     "original:f77a0bd32e8b53a66cf71678": {
       "first_seen_kst": "2026-09-03T23:22:48+09:00",
       "lanes": {
@@ -10655,16 +10655,6 @@
       "link": "https://www.msn.com/en-us/money/general/rampocalypse-samsung-micron-and-sk-hynix-accused-of-spiking-memory-prices-700-and-it-could-hit-your-wallet-hard/ar-AA2bSE13",
       "source": "Moneywise on MSN",
       "title": "메모리 반독점 소송: DRAM 가격담합 주장과 규제 리스크 체크"
-    },
-    "title:204ee51b9dfa943cc56ca7ef": {
-      "first_seen_kst": "2026-09-03T17:43:26+09:00",
-      "lanes": {
-        "live": "2026-09-03T17:43:26+09:00"
-      },
-      "last_seen_kst": "2026-09-03T17:43:26+09:00",
-      "link": "https://www.mk.co.kr/news/business/12143510",
-      "source": "매일경제",
-      "title": "“우리도 고려아연 감사위원 지지”…임시주총 앞두고 입지 좁아진 영풍·MBK"
     },
     "title:231e981db1d267d7d67f8d93": {
       "first_seen_kst": "2026-09-12T06:23:58+09:00",
@@ -14063,6 +14053,16 @@
       "source": "이데일리",
       "title": "슈카 \"삼성전자, '40만원 전엔 팔지 마'…아이들에게 물려줄 것\""
     },
+    "title:f71b7cd4d3d35c272c78a267": {
+      "first_seen_kst": "2026-09-17T19:09:57+09:00",
+      "lanes": {
+        "live": "2026-09-17T19:09:57+09:00"
+      },
+      "last_seen_kst": "2026-09-17T19:09:57+09:00",
+      "link": "https://www.fnnews.com/news/202609171835520722",
+      "source": "파이낸셜뉴스",
+      "title": "SK하이닉스, 美 AI 서밋서 HBF·PIM 등 차세대 AI 메모리 설루션 공개"
+    },
     "title:f77a0bd32e8b53a66cf71678": {
       "first_seen_kst": "2026-09-03T23:22:48+09:00",
       "lanes": {
@@ -14205,5 +14205,5 @@
       "title": "아이엘, 7300평 제조기지 띄운다…‘휴머노이드·피지컬AI’ 거점 구축"
     }
   },
-  "updated_at_kst": "2026-09-17T17:33:37+09:00"
+  "updated_at_kst": "2026-09-17T19:09:57+09:00"
 }
