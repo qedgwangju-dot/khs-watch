@@ -7,11 +7,12 @@ on:
     paths:
       - ".github/workflows/yen-carry-watchdog.yml"
   schedule:
-    # Independent offset from both yen FX lanes.
-    - cron: "4,19,34,49 * * * *"
+    # Independent five-minute heartbeat, offset from the primary yen FX lanes.
+    - cron: "4,9,14,19,24,29,34,39,44,49,54,59 * * * *"
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
 
 concurrency:
@@ -70,6 +71,7 @@ jobs:
           except Exception as exc:
               detail = f'상태 파일 읽기 실패: {type(exc).__name__}: {exc}'
 
+          repair_needed = stale_minutes is None or stale_minutes >= 10.0
           stale = stale_minutes is None or stale_minutes >= 25.0
           prior_active = bool(prior.get('alert_active'))
           should_alert = stale and not prior_active
@@ -78,6 +80,7 @@ jobs:
               'alert_active': stale,
               'checked_at_kst': now.isoformat(timespec='seconds'),
               'stale_minutes': stale_minutes,
+              'repair_needed': repair_needed,
               'detail': detail,
               'last_alert_at_kst': prior.get('last_alert_at_kst'),
           }
@@ -89,9 +92,10 @@ jobs:
                   f'조회 시각: {now.strftime("%Y-%m-%d %H:%M:%S KST")}\n'
                   f'감시 상태: 최근 정상 갱신 이후 {age} 경과\n'
                   f'{detail}\n\n'
-                  '판정: USD/JPY 감시가 25분 이상 정상 상태를 갱신하지 못했습니다. '\
+                  '판정: USD/JPY 감시가 25분 이상 정상 상태를 갱신하지 못했습니다. '
                   '시장 경보가 없다는 뜻이 아니라 감시 공백 자체를 뜻합니다.\n'
-                  '조치: 다음 정상 실행은 최근 6시간 5분봉을 재검사해 공백 중 -1%급 급락을 복원합니다.\n',
+                  '조치: 장애 감시기가 10분 경과부터 기존 엔캐리 본 감시를 재호출하며, '
+                  '복구 실행은 최근 6시간 5분봉을 재검사해 공백 중 -1%급 급락을 복원합니다.\n',
                   encoding='utf-8',
               )
 
@@ -100,12 +104,38 @@ jobs:
               '# 엔화 감시 장애 감시기\n\n'
               f'- 조회시각: {now.isoformat(timespec="seconds")}\n'
               f'- 마지막 정상 갱신 경과: {"확인 불가" if stale_minutes is None else f"{stale_minutes:.1f}분"}\n'
+              f'- 자가복구 필요: {"예" if repair_needed else "아니오"}\n'
               f'- 장애 상태: {"예" if stale else "아니오"}\n'
               f'- 신규 장애 경보: {"예" if should_alert else "아니오"}\n',
               encoding='utf-8',
           )
-          print(json.dumps({'stale': stale, 'stale_minutes': stale_minutes, 'should_alert': should_alert}, ensure_ascii=False))
+          print(json.dumps({'repair_needed': repair_needed, 'stale': stale, 'stale_minutes': stale_minutes, 'should_alert': should_alert}, ensure_ascii=False))
           PY
+
+      - name: Self-heal stale yen monitor through existing primary route
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          REPAIR_NEEDED="$(python - <<'PY'
+          import json
+          import pathlib
+          path = pathlib.Path('out/yen_carry_watchdog_pending_state.json')
+          try:
+              value = bool(json.loads(path.read_text(encoding='utf-8')).get('repair_needed'))
+          except Exception:
+              value = True
+          print('true' if value else 'false')
+          PY
+          )"
+          if [ "$REPAIR_NEEDED" = "true" ]; then
+            gh workflow run yen-carry-alert.yml \
+              --repo "${{ github.repository }}" \
+              --ref main
+            echo "자가복구: 기존 엔캐리 본 감시를 재호출했습니다. 완료 후 기존 heartbeat bridge가 최근 충격 감시를 이어서 호출합니다." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "자가복구 불필요: 최근 충격 상태가 10분 이내입니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Send watchdog alert through verified KHS Telegram route
         if: hashFiles('out/yen_carry_watchdog_alert.txt') != ''
