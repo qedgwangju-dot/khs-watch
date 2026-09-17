@@ -32,7 +32,6 @@ def esc(value):
 def clean_title(title: str, source: str) -> str:
     title = (title or "").strip()
     source = (source or "").strip()
-    # Google News 제목 끝의 매체명 중복을 제거한다.
     for suffix in [source, source.replace("(네이버)", ""), source.replace("(다음)", "")]:
         suffix = suffix.strip()
         if suffix and title.endswith(" - " + suffix):
@@ -69,10 +68,29 @@ def impact_label(value: str) -> str:
     return "영향 확인 필요"
 
 
-def link_line(url: str) -> str:
+def link_line(url: str, label: str = "근거 보기") -> str:
     if not url:
         return ""
-    return f'<a href="{esc(url)}">원문 보기</a>'
+    return f'<a href="{esc(url)}">{esc(label)}</a>'
+
+
+def evidence_lines(item: dict):
+    evidence = item.get("evidence_sources") or []
+    if not evidence:
+        url = item.get("url")
+        source = item.get("source") or "근거자료"
+        if not url:
+            return []
+        return [f"• 감지 근거: {esc(source)} · {link_line(url, '근거 보기')}"]
+    lines = [f"• 감지 근거: {len(evidence)}곳"]
+    for ev in evidence[:3]:
+        source = ev.get("source") or "근거자료"
+        url = ev.get("url") or ""
+        if url:
+            lines.append(f"  - {esc(source)} · {link_line(url, '보기')}")
+        else:
+            lines.append(f"  - {esc(source)}")
+    return lines
 
 
 def build_message(data: dict) -> str:
@@ -92,7 +110,9 @@ def build_message(data: dict) -> str:
 
     lines = [
         "🚨 <b>호남 반도체 국가산단</b>",
-        f"신규 변화 <b>{total}건</b> · 조회 {esc(fmt_checked(data.get('checked_at_kst', '')))}",
+        f"신규 상태 변화 <b>{total}건</b> · 조회 {esc(fmt_checked(data.get('checked_at_kst', '')))}",
+        "• 기준: 주제·사건·공식 상태 변화",
+        "• 기사 링크: 감지 근거·교차검증용",
         "",
         "<b>핵심 3단계</b>",
     ]
@@ -121,10 +141,8 @@ def build_message(data: dict) -> str:
         lines += [
             f"• 현재 판정: <b>{esc(impact_label(item.get('impact', '')))}</b>",
             f"• 확인도: {esc(item.get('source_status') or '공식자료')}",
-            "• 출처: LH 공식",
         ]
-        if item.get("url"):
-            lines.append(link_line(item["url"]))
+        lines += evidence_lines(item)
 
     for item in news:
         stages = item.get("stage_labels") or [STAGE_LABELS.get(stage, stage) for stage in item.get("stages", [])]
@@ -142,13 +160,11 @@ def build_message(data: dict) -> str:
         lines += [
             f"• 현재 판정: <b>{esc(impact_label(item.get('impact', '')))}</b>",
             f"• 확인도: {esc(item.get('source_status') or '보도 단계')}",
-            f"• 출처: {esc(source)}",
         ]
         published = fmt_published(item.get("published", ""))
         if published:
-            lines.append(f"• 공개: {esc(published)}")
-        if item.get("url"):
-            lines.append(link_line(item["url"]))
+            lines.append(f"• 최초 감지 근거 공개: {esc(published)}")
+        lines += evidence_lines(item)
 
     lines += [
         "",
