@@ -11,34 +11,14 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Probe KRX investor flow
+      - name: Install pykrx
+        run: python -m pip install --disable-pip-version-check --quiet pykrx
+      - name: Probe KRX investor flow via pykrx
         run: |
           python - <<'PY'
-          import json, requests
-          url='https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd'
-          headers={
-            'User-Agent':'Mozilla/5.0',
-            'Accept':'application/json, text/javascript, */*; q=0.01',
-            'Accept-Language':'ko-KR,ko;q=0.9',
-            'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
-            'Origin':'https://data.krx.co.kr',
-            'Referer':'https://data.krx.co.kr/contents/MDC/MDI/outerLoader/index.cmd?screenId=MDCSTAT022',
-            'X-Requested-With':'XMLHttpRequest',
-          }
-          for market in ['STK','KSQ','ALL']:
-            payload={
-              'bld':'dbms/MDC/STAT/standard/MDCSTAT02202',
-              'locale':'ko_KR',
-              'inqTpCd':'2',
-              'trdVolVal':'2',
-              'askBid':'3',
-              'mktId':market,
-              'strtDd':'20260915',
-              'endDd':'20260916',
-              'money':'3',
-              'csvxls_isNo':'false',
-            }
-            r=requests.post(url,headers=headers,data=payload,timeout=30)
-            print('MARKET',market,'HTTP',r.status_code,'CTYPE',r.headers.get('content-type'))
-            print(r.text[:12000])
+          from pykrx import stock
+          for market in ['KOSPI','KOSDAQ']:
+              print('MARKET', market)
+              df = stock.get_market_trading_value_by_date('20260915','20260916',market)
+              print(df.to_string())
           PY
