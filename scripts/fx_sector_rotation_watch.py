@@ -16,6 +16,7 @@ import korea_market_stress_watch_v14 as fx_basis
 KST = ZoneInfo("Asia/Seoul")
 ROOT = Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "fx_sector_rotation_state.json"
+MARKET_STATE_PATH = ROOT / "data" / "korea_market_stress_watch_state.json"
 PENDING_PATH = ROOT / "out" / "fx_sector_rotation_pending_state.json"
 ALERT_PATH = ROOT / "out" / "fx_sector_rotation_alert.html"
 STATUS_PATH = ROOT / "out" / "fx_sector_rotation_status.md"
@@ -25,7 +26,8 @@ KOSPI_URL = "https://m.stock.naver.com/api/index/KOSPI/basic"
 VALIDATION_FOOTER = "• 검증 원칙: 값의 시장·시점·산출방식을 확인한 뒤 사용하며, 서로 다른 기준값은 혼용하지 않음"
 
 START = dt.time(9, 0)
-END = dt.time(15, 35)
+MARKET_CLOSE = dt.time(15, 35)
+END = dt.time(23, 59, 59)
 
 FX_REBOUND_KRW = 10.0
 FX_REBOUND_PCT = 0.5
@@ -92,6 +94,29 @@ def save_pending(state: dict[str, Any]) -> None:
     PENDING_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def _validated_prev_close_from_market_watch(today: str) -> dict[str, Any] | None:
+    try:
+        state = json.loads(MARKET_STATE_PATH.read_text(encoding="utf-8"))
+        fx = (state.get("snapshot") or {}).get("usdkrw") or {}
+        if str(fx.get("date") or "") != today:
+            return None
+        if fx.get("comparison_valid") is not True:
+            return None
+        basis = str(fx.get("comparison_basis") or "")
+        if "서울외환시장 15:30" not in basis:
+            return None
+        prev = float(fx["prev_value"])
+        if not (900.0 <= prev <= 2500.0):
+            return None
+        return {
+            "value": prev,
+            "source": str(fx.get("seoul_close_source") or ""),
+            "basis": basis,
+        }
+    except Exception:
+        return None
+
+
 def fetch_fx() -> dict[str, Any]:
     r = requests.get(FX_URL, headers=HEADERS, timeout=20)
     r.raise_for_status()
@@ -105,27 +130,37 @@ def fetch_fx() -> dict[str, Any]:
     if value is None:
         raise RuntimeError("원/달러 현재값 없음")
 
+    today = str(row.get("localTradedAt") or row.get("localDate") or "")[:10]
     naver_prev = fnum(rows[1].get("closePrice")) if len(rows) > 1 else None
     prev = None
     prev_source = None
     basis = "서울외환시장 15:30 USD/KRW 종가"
     basis_error = None
+    basis_reused = False
     try:
         ref = fx_basis.fetch_seoul_prev_close()
         prev = float(ref["value"])
         prev_source = str(ref.get("source") or "")
     except Exception as exc:
-        basis_error = f"{type(exc).__name__}: {exc}"
+        cached = _validated_prev_close_from_market_watch(today)
+        if cached:
+            prev = float(cached["value"])
+            prev_source = str(cached.get("source") or "")
+            basis = str(cached.get("basis") or basis) + " · 시장 스트레스 감시 검증값 재사용"
+            basis_reused = True
+        else:
+            basis_error = f"{type(exc).__name__}: {exc}"
 
     return {
         "value": value,
         "prev_close": prev,
         "naver_prev_close": naver_prev,
-        "date": str(row.get("localTradedAt") or row.get("localDate") or "")[:10],
+        "date": today,
         "source": FX_URL,
         "comparison_basis": basis,
         "prev_close_source": prev_source,
         "basis_error": basis_error,
+        "basis_reused": basis_reused,
     }
 
 
@@ -210,6 +245,7 @@ def build_alert(
     counter: dict[str, Any],
     level: int,
 ) -> str:
+    after_close = now.time() > MARKET_CLOSE
     if level >= 2:
         verdict = "🔴 <b>강한 환율 민감 업종 로테이션</b> — 환율 강한 반등과 조선·방산 동반 상대강세 확인"
     elif ship.get("confirmed") and defense.get("confirmed"):
@@ -225,11 +261,19 @@ def build_alert(
         else:
             counter_note = "  ↳ 반대편 업종 상대약세는 뚜렷하지 않음 → 환율 단독 설명은 제한"
 
+    reaction_label = "당일 종가 반응" if after_close else "현재 반응"
     lines = [
         "🔄 <b>환율 민감 업종 로테이션 감지</b>",
         f"<code>{now:%Y-%m-%d %H:%M:%S} KST</code>",
         "",
         verdict,
+    ]
+    if after_close:
+        lines += [
+            "• 시점 구분: <b>주식은 정규장 종가 반응</b>, <b>환율은 장마감 후 현재값</b>",
+            "  ↳ 장마감 후 환율 추가 상승이 확인된 것이므로 당일 주가 상승을 그 이후 환율 움직임의 결과라고 역으로 단정하지 않음",
+        ]
+    lines += [
         "",
         "<b>원/달러 반등</b>",
         f"• 표본 장중 저점 <b>{session_low:,.1f}원</b> → 현재 <b>{float(fx['value']):,.1f}원</b>",
@@ -237,6 +281,8 @@ def build_alert(
     ]
     if daily_krw is not None and daily_pct is not None:
         lines.append(f"• 전일 서울 15:30 종가 대비 <b>{daily_krw:+,.1f}원 ({daily_pct:+.2f}%)</b>")
+        if fx.get("basis_reused"):
+            lines.append("  ↳ 서울 종가 원천 일시 조회 실패 → 시장 스트레스 감시에서 이미 검증한 동일 공식 기준값 재사용")
     elif fx.get("basis_error"):
         lines.append("• 전일 서울 15:30 종가 조회 실패 → 일간 강한 신호 판정 보류")
 
@@ -252,10 +298,10 @@ def build_alert(
 
     lines += [
         "",
-        "<b>조선 현재 반응</b>",
+        f"<b>조선 {reaction_label}</b>",
         *quote_lines(ship_rows),
         "",
-        "<b>방산 현재 반응</b>",
+        f"<b>방산 {reaction_label}</b>",
         *quote_lines(defense_rows),
         "",
         "<b>반대편 확인</b>",
@@ -315,7 +361,7 @@ def main() -> int:
 
     if now.weekday() >= 5 or not (START <= now.time() <= END):
         save_pending(state)
-        write_status(now, "장외 시간 — 발송 없음")
+        write_status(now, "감시 시간 외 — 평일 09:00~23:59만 감시")
         return 0
 
     fx = fetch_fx()
@@ -323,7 +369,7 @@ def main() -> int:
 
     samples = list(state.get("fx_samples") or [])
     samples.append({"ts": now.isoformat(timespec="seconds"), "value": float(fx["value"])})
-    samples = samples[-40:]
+    samples = samples[-80:]
     state["fx_samples"] = samples
     session_low = min(float(x["value"]) for x in samples)
     rebound_krw = float(fx["value"]) - session_low
@@ -373,6 +419,7 @@ def main() -> int:
             "rebound_krw": rebound_krw,
             "ship_relative": ship.get("relative"),
             "defense_relative": defense.get("relative"),
+            "after_close": now.time() > MARKET_CLOSE,
         }
         write_status(now, f"신규 로테이션 레벨 {level} 감지")
     else:
@@ -397,6 +444,7 @@ def main() -> int:
 
     state["latest"] = {
         "checked_at": now.isoformat(timespec="seconds"),
+        "market_phase": "장마감 후" if now.time() > MARKET_CLOSE else "정규장",
         "fx": fx,
         "session_low": session_low,
         "rebound_krw": rebound_krw,
