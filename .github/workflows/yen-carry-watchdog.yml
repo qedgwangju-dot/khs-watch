@@ -8,7 +8,8 @@ on:
       - ".github/workflows/yen-carry-watchdog.yml"
   schedule:
     # Independent five-minute heartbeat, offset from the primary yen FX lanes.
-    - cron: "4,9,14,19,24,29,34,39,44,49,54,59 * * * *"
+    # Same :04/:09/.../:59 cadence; compact syntax refreshes schedule registration.
+    - cron: "4-59/5 * * * *"
   workflow_dispatch:
 
 permissions:
