@@ -146,6 +146,7 @@ def treasury_curve() -> dict:
         raise RuntimeError("Treasury curve table could not be parsed")
 
     norm = [re.sub(r"\s+", " ", x.lower()).strip() for x in header]
+
     def find_col(candidates: list[str]) -> int:
         for c in candidates:
             if c in norm:
@@ -220,6 +221,66 @@ def bp(a: float, b: float) -> float:
     return round((a - b) * 100, 1)
 
 
+def parse_iso_date(value: object) -> dt.date | None:
+    try:
+        return dt.date.fromisoformat(str(value))
+    except Exception:
+        return None
+
+
+def prevent_date_regression(name: str, current: dict, previous: dict, errors: list[str]) -> dict:
+    """Never let a temporary source rollback overwrite a newer stored observation."""
+    if not current or not previous:
+        return current
+    current_date = parse_iso_date(current.get("date"))
+    previous_date = parse_iso_date(previous.get("date"))
+    if current_date and previous_date and current_date < previous_date:
+        errors.append(
+            f"{name}: source date regressed {current_date.isoformat()} < {previous_date.isoformat()}; previous snapshot kept"
+        )
+        return previous
+    return current
+
+
+def watcher_now_et(now_kst: str) -> dt.datetime:
+    try:
+        return dt.datetime.fromisoformat(now_kst).astimezone(ET)
+    except Exception:
+        return dt.datetime.now(ET)
+
+
+def snapshot_is_confirmed_close(snapshot: dict, observed_at_kst: object) -> bool:
+    """Treat a Yahoo daily bar as a close only after the US regular session has ended."""
+    qd = parse_iso_date((snapshot or {}).get("date"))
+    if not qd:
+        return False
+    try:
+        now_et = dt.datetime.fromisoformat(str(observed_at_kst)).astimezone(ET)
+    except Exception:
+        now_et = dt.datetime.now(ET)
+    if qd < now_et.date():
+        return True
+    if qd > now_et.date() or now_et.weekday() >= 5:
+        return False
+    return now_et.time().replace(tzinfo=None) >= dt.time(16, 15)
+
+
+def strictly_newer_date(new_value: object, old_value: object) -> bool:
+    new_date = parse_iso_date(new_value)
+    old_date = parse_iso_date(old_value)
+    return bool(new_date and (old_date is None or new_date > old_date))
+
+
+def inferred_last_alerted_close(old: dict) -> str | None:
+    explicit = str(old.get("crcl_last_alerted_close_date") or "").strip()
+    if explicit:
+        return explicit
+    previous = old.get("crcl") or {}
+    if snapshot_is_confirmed_close(previous, old.get("updated_at_kst")):
+        return str(previous.get("date") or "") or None
+    return None
+
+
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     ALERT_PATH.unlink(missing_ok=True)
@@ -241,6 +302,13 @@ def main() -> None:
     crcl = safe("crcl", lambda: yahoo_daily("CRCL"), old.get("crcl"))
     tbx = safe("tbx", lambda: yahoo_daily("TBX"), old.get("tbx"))
 
+    circle = prevent_date_regression("circle", circle, old.get("circle") or {}, errors)
+    usdxx = prevent_date_regression("usdxx", usdxx, old.get("usdxx") or {}, errors)
+    sofr = prevent_date_regression("sofr", sofr, old.get("sofr") or {}, errors)
+    treasury = prevent_date_regression("treasury", treasury, old.get("treasury") or {}, errors)
+    crcl = prevent_date_regression("crcl", crcl, old.get("crcl") or {}, errors)
+    tbx = prevent_date_regression("tbx", tbx, old.get("tbx") or {}, errors)
+
     if not circle or not usdxx or not treasury:
         raise RuntimeError("핵심 공식 원천(Circle/BlackRock/Treasury) 중 하나 이상 확인 실패")
 
@@ -255,10 +323,21 @@ def main() -> None:
         raise RuntimeError("USD/KRW 확인 실패")
     fx_rate = float(fx["rate"])
 
+    last_alerted_close = inferred_last_alerted_close(old)
+    confirmed_close_date = crcl.get("date") if snapshot_is_confirmed_close(crcl, now) else None
+    new_confirmed_close = bool(
+        old and confirmed_close_date and strictly_newer_date(confirmed_close_date, last_alerted_close)
+    )
+    next_alerted_close = confirmed_close_date if new_confirmed_close else last_alerted_close
+    if not old and confirmed_close_date:
+        next_alerted_close = confirmed_close_date
+
     new_state = {
         "updated_at_kst": now,
         "circle": circle, "usdxx": usdxx, "sofr": sofr, "treasury": treasury,
-        "crcl": crcl, "tbx": tbx, "fx": fx, "errors": errors,
+        "crcl": crcl, "tbx": tbx, "fx": fx,
+        "crcl_last_alerted_close_date": next_alerted_close,
+        "errors": errors,
     }
     atomic_write(PENDING_STATE, json.dumps(new_state, ensure_ascii=False, indent=2) + "\n")
 
@@ -271,7 +350,6 @@ def main() -> None:
         ou = old.get("usdxx") or {}
         os = old.get("sofr") or {}
         ot = old.get("treasury") or {}
-        op = old.get("crcl") or {}
 
         if circle.get("date") != oc.get("date") or circle.get("circulation_usd_b") != oc.get("circulation_usd_b"):
             delta_b = circle.get("circulation_usd_b", 0) - oc.get("circulation_usd_b", circle.get("circulation_usd_b", 0))
@@ -285,8 +363,7 @@ def main() -> None:
             d10 = bp(treasury["ten_year"], ot.get("ten_year", treasury["ten_year"]))
             if max(abs(d3), abs(d10)) >= 2.0:
                 changes.append(f"미 국채 금리 변화: 3M {d3:+.1f}bp / 10Y {d10:+.1f}bp")
-        # One consolidated daily snapshot when a new CRCL close appears.
-        if crcl and op and crcl.get("date") != op.get("date"):
+        if new_confirmed_close:
             changes.append(f"CRCL 새 종가: {crcl.get('daily_pct', 0):+.2f}%")
 
     if changes:
@@ -384,6 +461,7 @@ def main() -> None:
         f"- SOFR: {sofr.get('rate') if sofr else 'N/A'}% ({sofr.get('date') if sofr else 'N/A'})",
         f"- Treasury 3M/10Y: {treasury.get('three_month')}% / {treasury.get('ten_year')}% ({treasury.get('date')})",
         f"- CRCL: {crcl.get('close') if crcl else 'N/A'} ({crcl.get('date') if crcl else 'N/A'})",
+        f"- CRCL last alerted close: {next_alerted_close or 'N/A'}",
         f"- TBX: {tbx.get('close') if tbx else 'N/A'} ({tbx.get('date') if tbx else 'N/A'})",
         f"- 오류: {'; '.join(errors) if errors else '없음'}",
     ]
