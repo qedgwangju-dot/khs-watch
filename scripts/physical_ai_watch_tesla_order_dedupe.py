@@ -5,11 +5,17 @@ The same underlying ~5,000-unit procurement/audit event is often rewritten with
 some details omitted. Collapse those rewrites into one event while preserving
 true progression milestones such as audit pass, supplier nomination, shipment,
 or Tesla official confirmation as independent alerts.
+
+For meaningful scale-order alerts, append a user-visible quantity x estimated
+unit-price calculation in KRW. The calculation is explicitly a finished-robot
+value reference, not the supplier purchase-order value.
 """
 from __future__ import annotations
 
 import hashlib
+import json
 import re
+import urllib.request
 
 import physical_ai_watch_tesla_china_guard as opt
 
@@ -40,6 +46,11 @@ OLD_KEYS = {
     hashlib.sha256(b'tesla-optimus|scale-order-5000').hexdigest(),
     hashlib.sha256(b'tesla-optimus|supplier-audit').hexdigest(),
 }
+
+# Elon Musk's public long-term Optimus price target, used only as a value reference.
+# This is not treated as current supplier PO value or current manufacturing cost.
+OPTIMUS_TARGET_PRICE_USD = (20_000, 25_000)
+FX_FALLBACK_USDKRW = 1380.0
 
 
 def _is_parent_story(text: str) -> bool:
@@ -84,6 +95,80 @@ def load_state() -> dict:
     return state
 
 
+def _usdkrw() -> tuple[float, bool]:
+    """Best-effort fresh USD/KRW with safe fallback; never break the alert route."""
+    endpoints = [
+        (
+            'https://query1.finance.yahoo.com/v8/finance/chart/KRW=X?range=1d&interval=1d',
+            lambda d: float(d['chart']['result'][0]['meta']['regularMarketPrice']),
+        ),
+        (
+            'https://open.er-api.com/v6/latest/USD',
+            lambda d: float(d['rates']['KRW']),
+        ),
+    ]
+    for url, parser in endpoints:
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 khs-watch/2.0'})
+            with urllib.request.urlopen(req, timeout=6) as r:
+                rate = parser(json.loads(r.read().decode('utf-8')))
+            if 500.0 < rate < 3000.0:
+                return rate, True
+        except Exception:
+            continue
+    return FX_FALLBACK_USDKRW, False
+
+
+def _krw_eok(value: float) -> str:
+    eok = value / 100_000_000
+    return f"{eok:,.0f}억원"
+
+
+def _append_value_estimate() -> None:
+    """Insert quantity x target-price value under the matching Optimus alert only."""
+    if not base.ALERT_PATH.exists():
+        return
+    text = base.ALERT_PATH.read_text(encoding='utf-8')
+    if '💰 <b>물량 환산</b>' in text:
+        return
+    if not re.search(r'테슬라옵티머스.*(?:5,000|5000)대|테슬라\s*옵티머스.*(?:5,000|5000)대', text, re.I | re.S):
+        return
+
+    rate, fresh = _usdkrw()
+    qty = 5_000
+    low_usd = qty * OPTIMUS_TARGET_PRICE_USD[0]
+    high_usd = qty * OPTIMUS_TARGET_PRICE_USD[1]
+    low_krw = low_usd * rate
+    high_krw = high_usd * rate
+    fx_note = f"1달러={rate:,.2f}원" if fresh else f"환율 조회 실패로 1달러={rate:,.0f}원 가정"
+    value_line = (
+        f"💰 <b>물량 환산</b>  5,000대 × 장기 목표 판매가 2만~2만5천달러 = "
+        f"1억~1억2,500만달러 → 약 {_krw_eok(low_krw)}~{_krw_eok(high_krw)} ({fx_note}). "
+        "이는 완제품 장기 목표 판매가 기준 환산이며 실제 공급업체 부품 발주액은 아닙니다."
+    )
+
+    lines = text.splitlines()
+    out: list[str] = []
+    in_target = False
+    inserted = False
+    for line in lines:
+        stripped = line.strip()
+        if re.match(r'^<b>\d+\.', stripped):
+            in_target = bool(
+                re.search(r'테슬라옵티머스|테슬라\s*옵티머스', stripped, re.I)
+                and re.search(r'(?:5,000|5000)대', stripped)
+            )
+        out.append(line)
+        if in_target and not inserted and stripped.startswith('💡 <b>핵심</b>'):
+            out.append(value_line)
+            inserted = True
+        if stripped == '──────────────────':
+            in_target = False
+
+    if inserted:
+        base.ALERT_PATH.write_text('\n'.join(out).strip(), encoding='utf-8')
+
+
 base.key = key
 base.load_state = load_state
 
@@ -92,3 +177,4 @@ if __name__ == '__main__':
     base.main()
     opt.current.fig.legacy.repair_pending_seen(pre_state)
     opt._finalize_alert_text()
+    _append_value_estimate()
