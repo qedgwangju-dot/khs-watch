@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-17T23:16:21+09:00",
+  "updated_at_kst": "2026-09-18T03:24:02+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "174b747c5a23191d5a286b2f",
@@ -8,6 +8,8 @@
     "4bb738d74581c8500fc671a3",
     "71e84e2c63800afc842478ec",
     "a1dfba928af535c6107b2581",
+    "a507b5f43c1b380e7af94d39",
+    "a5b13ab42606c302733f8bf1",
     "a63193935e22731489cce976",
     "ae23eda9d8d079dc8c3c895d",
     "b315eb123f9dd4dabea9d15d",
@@ -20,9 +22,10 @@
     "fadea935dd4d4f4ffcc628d3"
   ],
   "seen_fact_keys": [
-    "nvidia_2027_chip_sales_double"
+    "nvidia_2027_chip_sales_double",
+    "nvidia_demand_b9dff9a4c6"
   ],
-  "last_event_count": 13,
-  "last_new_event_count": 0,
-  "alert_generated": false
+  "last_event_count": 15,
+  "last_new_event_count": 1,
+  "alert_generated": true
 }
