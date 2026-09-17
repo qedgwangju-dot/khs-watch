@@ -76,6 +76,8 @@ def key(item: dict) -> str:
 
     # True state transitions get new semantic keys. These are deliberately checked
     # before the umbrella 5,000-order/audit event so real progress can alert again.
+    if opt.AUDIT_STARTED.search(text):
+        return hashlib.sha256(b'tesla-optimus|2026-09-17|supplier-production-audit-started').hexdigest()
     if opt.OFFICIAL_CONFIRM.search(text) and opt.SCALE_ORDER.search(text) and opt.ORDER.search(text):
         return hashlib.sha256(b'tesla-optimus|official-confirmation|scale-order-5000').hexdigest()
     if SHIPMENT.search(text):
