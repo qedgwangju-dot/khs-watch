@@ -32,18 +32,18 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-09-15",
-    "close": 86.30000305175781,
-    "prev_date": "2026-09-14",
-    "prev_close": 97.41999816894531,
-    "daily_pct": -11.41
+    "date": "2026-09-16",
+    "close": 80.44999694824219,
+    "prev_date": "2026-09-15",
+    "prev_close": 86.30000305175781,
+    "daily_pct": -6.78
   },
   "tbx": {
-    "date": "2026-09-15",
-    "close": 29.510000228881836,
-    "prev_date": "2026-09-14",
-    "prev_close": 29.459999084472656,
-    "daily_pct": 0.17
+    "date": "2026-09-16",
+    "close": 29.54319953918457,
+    "prev_date": "2026-09-15",
+    "prev_close": 29.510000228881836,
+    "daily_pct": 0.11
   },
   "fx": {
     "rate": 1353.3,
@@ -54,5 +54,6 @@
     "official": true,
     "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
+  "crcl_last_alerted_close_date": "2026-09-16",
   "errors": []
 }
