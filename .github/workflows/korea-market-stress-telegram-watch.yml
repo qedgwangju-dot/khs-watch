@@ -11,6 +11,7 @@ on:
       - "scripts/korea_market_stress_watch_v13.py"
       - "scripts/korea_market_stress_watch_v14.py"
       - "scripts/korea_market_stress_watch_v15.py"
+      - "scripts/korea_market_stress_watch_v16.py"
       - "scripts/fx_sector_rotation_watch.py"
       - "scripts/kospi_rapid_fallback_watch.py"
       - "scripts/kospi_flow_attribution_ls.py"
@@ -91,8 +92,8 @@ jobs:
         run: |
           rm -f out/korea_market_stress_alert.html out/korea_market_stress_errors.log out/korea_market_stress_connection_test.html
           rm -f out/fx_sector_rotation_alert.html out/fx_sector_rotation_status.md out/fx_sector_rotation_pending_state.json
-          python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v9.py scripts/korea_market_stress_watch_v10.py scripts/korea_market_stress_watch_v11.py scripts/korea_market_stress_watch_v12.py scripts/korea_market_stress_watch_v13.py scripts/korea_market_stress_watch_v14.py scripts/korea_market_stress_watch_v15.py scripts/fx_sector_rotation_watch.py scripts/kospi_flow_attribution_ls.py
-          python scripts/korea_market_stress_watch_v15.py
+          python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v9.py scripts/korea_market_stress_watch_v10.py scripts/korea_market_stress_watch_v11.py scripts/korea_market_stress_watch_v12.py scripts/korea_market_stress_watch_v13.py scripts/korea_market_stress_watch_v14.py scripts/korea_market_stress_watch_v15.py scripts/korea_market_stress_watch_v16.py scripts/fx_sector_rotation_watch.py scripts/kospi_flow_attribution_ls.py
+          python scripts/korea_market_stress_watch_v16.py
           python scripts/fx_sector_rotation_watch.py
           cat out/korea_market_stress_status.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/fx_sector_rotation_status.md ]; then
@@ -113,9 +114,12 @@ jobs:
 
           • 수신 봇: @khs887900887900008879_bot
           • 확인 주기: 15분
-          • 원/달러 장중 감지: 기존 실시간 환율 피드 사용
+          • 원/달러 장중 감지: 실시간 환율 피드 사용, 전일 비교는 서울외환시장 15:30 현물환 종가
           • 한국은행 ECOS: 731Y001 / 0000001 원/미국달러(매매기준율) 공식 일일값 검증
-          • KOSPI·KOSDAQ 외국인 수급: 18:10 이후 네이버 장마감값 + LS증권 OpenAPI t1601 투자자별종합 교차검증
+          • KOSPI·KOSDAQ 외국인 수급: KRX 시장 기준, 18:10 이후 네이버 장마감값 + LS증권 OpenAPI t1601 엄격 교차검증
+          • 네이버+LS가 1억원 이내 일치하면 즉시 확정, 네이버 실패 시 LS 단독값이 최소 10분 간격 2회 연속 동일해야 확정
+          • 3거래일 누적은 확정 일별값만 합산하며 장중·잠정·0값은 누적 이력에 저장하지 않음
+          • KRX 시장 수급과 KRX+NXT 합산 수치를 혼용하지 않음
           • 영문 뉴스 제목·설명은 송출 전에 한국어로 변환하고 회사명·티커 등 식별자만 원문 유지
           • 별도 환율 민감 업종 로테이션: 장중 표본 저점 대비 +10원 또는 +0.5% 이상 반등 + 조선/방산 상대강도 확인 시 발송
           • 강한 로테이션: 일간 +20원 또는 +1% 이상 + 조선·방산 모두 KOSPI 대비 +1%p 이상 상대강도
@@ -124,7 +128,7 @@ jobs:
           • 반대편 확인: 대한항공·제주항공·한국전력·한국가스공사
           • 환율 반등분 50% 이상 반납 또는 조선·방산 상대강도 소멸 시 신호 약화 알림
           • 환율을 주가 움직임의 단독 원인으로 단정하지 않고 수주·실적·낙폭 과대·환헤지를 분리 설명
-          • 같은 기준일·같은 신호 단계는 중복 발송하지 않음
+          • 같은 기준일·같은 확정 신호는 중복 발송하지 않음
           EOF
 
       - name: Send Telegram messages
