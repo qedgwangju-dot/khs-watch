@@ -9,6 +9,8 @@ on:
       - "scripts/korea_market_stress_watch_v11.py"
       - "scripts/korea_market_stress_watch_v12.py"
       - "scripts/korea_market_stress_watch_v13.py"
+      - "scripts/korea_market_stress_watch_v14.py"
+      - "scripts/fx_sector_rotation_watch.py"
       - "scripts/kospi_rapid_fallback_watch.py"
       - "scripts/kospi_flow_attribution_ls.py"
   schedule:
@@ -84,12 +86,18 @@ jobs:
           print(f"telegram_route_valid=true bot=@{actual}")
           PY
 
-      - name: Run v13 market stress watcher with ECOS and LS validation
+      - name: Run market stress and FX sector rotation watchers
         run: |
           rm -f out/korea_market_stress_alert.html out/korea_market_stress_errors.log out/korea_market_stress_connection_test.html
-          python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v9.py scripts/korea_market_stress_watch_v10.py scripts/korea_market_stress_watch_v11.py scripts/korea_market_stress_watch_v12.py scripts/korea_market_stress_watch_v13.py scripts/kospi_flow_attribution_ls.py
-          python scripts/korea_market_stress_watch_v13.py
+          rm -f out/fx_sector_rotation_alert.html out/fx_sector_rotation_status.md out/fx_sector_rotation_pending_state.json
+          python -m py_compile scripts/global_rates_watch.py scripts/korea_market_stress_watch_v4.py scripts/korea_market_stress_watch_v5.py scripts/korea_market_stress_watch_v6.py scripts/korea_market_stress_watch_v9.py scripts/korea_market_stress_watch_v10.py scripts/korea_market_stress_watch_v11.py scripts/korea_market_stress_watch_v12.py scripts/korea_market_stress_watch_v13.py scripts/korea_market_stress_watch_v14.py scripts/fx_sector_rotation_watch.py scripts/kospi_flow_attribution_ls.py
+          python scripts/korea_market_stress_watch_v14.py
+          python scripts/fx_sector_rotation_watch.py
           cat out/korea_market_stress_status.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -s out/fx_sector_rotation_status.md ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            cat out/fx_sector_rotation_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
           if [ -s out/korea_market_stress_errors.log ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
             echo "## 부분 조회 오류" >> "$GITHUB_STEP_SUMMARY"
@@ -100,24 +108,26 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
         run: |
           cat > out/korea_market_stress_connection_test.html <<'EOF'
-          ✅ <b>한국 시장 스트레스·글로벌 사이클 감시 연결 정상</b>
+          ✅ <b>한국 시장 스트레스·환율 민감 업종 로테이션 감시 연결 정상</b>
 
           • 수신 봇: @khs887900887900008879_bot
           • 확인 주기: 15분
           • 원/달러 장중 감지: 기존 실시간 환율 피드 사용
           • 한국은행 ECOS: 731Y001 / 0000001 원/미국달러(매매기준율) 공식 일일값 검증
           • KOSPI·KOSDAQ 외국인 수급: 18:10 이후 네이버 장마감값 + LS증권 OpenAPI t1601 투자자별종합 교차검증
-          • LS t1601: KOSPI 기본출력1 / KOSDAQ 기본출력2의 외국인 순매수 금액 사용
-          • 네이버 수급 실패 시 LS증권 t1601 대체값 사용
-          • 네이버·LS 수급값이 유의하게 불일치하면 해당 수급 임계치 경보는 보류하고 다음 실행에서 재검증
-          • KOSPI 외국인 경보 기준: 1일 ±1조원 또는 최근 3거래일 누적 ±3조원
-          • KOSDAQ 외국인 경보 기준: 1일 ±2,000억원 또는 최근 3거래일 누적 ±5,000억원
-          • 환율 경보 시 국내주식 영향 지도와 대표 종목 당일 등락률 표시
-          • 같은 기준일·같은 조건은 중복 발송하지 않음
+          • 영문 뉴스 제목·설명은 송출 전에 한국어로 변환하고 회사명·티커 등 식별자만 원문 유지
+          • 별도 환율 민감 업종 로테이션: 장중 표본 저점 대비 +10원 또는 +0.5% 이상 반등 + 조선/방산 상대강도 확인 시 발송
+          • 강한 로테이션: 일간 +20원 또는 +1% 이상 + 조선·방산 모두 KOSPI 대비 +1%p 이상 상대강도
+          • 조선: HD현대중공업·삼성중공업·HD한국조선해양·한화오션
+          • 방산: 한화에어로스페이스·현대로템·LIG넥스원·한국항공우주
+          • 반대편 확인: 대한항공·제주항공·한국전력·한국가스공사
+          • 환율 반등분 50% 이상 반납 또는 조선·방산 상대강도 소멸 시 신호 약화 알림
+          • 환율을 주가 움직임의 단독 원인으로 단정하지 않고 수주·실적·낙폭 과대·환헤지를 분리 설명
+          • 같은 기준일·같은 신호 단계는 중복 발송하지 않음
           EOF
 
       - name: Send Telegram messages
-        if: hashFiles('out/korea_market_stress_connection_test.html') != '' || hashFiles('out/korea_market_stress_alert.html') != ''
+        if: hashFiles('out/korea_market_stress_connection_test.html') != '' || hashFiles('out/korea_market_stress_alert.html') != '' || hashFiles('out/fx_sector_rotation_alert.html') != ''
         run: |
           python - <<'PY'
           import json, os, pathlib, urllib.parse, urllib.request
@@ -129,7 +139,11 @@ jobs:
           actual = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or actual.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
-          files = [pathlib.Path("out/korea_market_stress_connection_test.html"), pathlib.Path("out/korea_market_stress_alert.html")]
+          files = [
+              pathlib.Path("out/korea_market_stress_connection_test.html"),
+              pathlib.Path("out/korea_market_stress_alert.html"),
+              pathlib.Path("out/fx_sector_rotation_alert.html"),
+          ]
           sent_ids = []
           for path in files:
               if not path.exists():
@@ -157,26 +171,34 @@ jobs:
           print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(sent_ids)} ids={sent_ids}")
           PY
 
-      - name: Persist state after successful check and delivery
-        if: success() && hashFiles('out/korea_market_stress_pending_state.json') != ''
-        run: cp out/korea_market_stress_pending_state.json data/korea_market_stress_watch_state.json
-
-      - name: Commit watcher state
-        if: success() && hashFiles('data/korea_market_stress_watch_state.json') != ''
+      - name: Persist watcher states after successful check and delivery
+        if: success()
         run: |
-          git config user.name "korea-market-stress-watch[bot]"
-          git config user.email "korea-market-stress-watch[bot]@users.noreply.github.com"
-          cp data/korea_market_stress_watch_state.json /tmp/korea_market_stress_watch_state.json
+          if [ -s out/korea_market_stress_pending_state.json ]; then
+            cp out/korea_market_stress_pending_state.json data/korea_market_stress_watch_state.json
+          fi
+          if [ -s out/fx_sector_rotation_pending_state.json ]; then
+            cp out/fx_sector_rotation_pending_state.json data/fx_sector_rotation_state.json
+          fi
+
+      - name: Commit watcher states
+        if: success()
+        run: |
+          git config user.name "korea-market-watch[bot]"
+          git config user.email "korea-market-watch[bot]@users.noreply.github.com"
+          [ -f data/korea_market_stress_watch_state.json ] && cp data/korea_market_stress_watch_state.json /tmp/korea_market_stress_watch_state.json || true
+          [ -f data/fx_sector_rotation_state.json ] && cp data/fx_sector_rotation_state.json /tmp/fx_sector_rotation_state.json || true
           for attempt in 1 2 3 4; do
             git fetch origin main
             git reset --hard origin/main
-            cp /tmp/korea_market_stress_watch_state.json data/korea_market_stress_watch_state.json
-            git add data/korea_market_stress_watch_state.json
+            [ -f /tmp/korea_market_stress_watch_state.json ] && cp /tmp/korea_market_stress_watch_state.json data/korea_market_stress_watch_state.json || true
+            [ -f /tmp/fx_sector_rotation_state.json ] && cp /tmp/fx_sector_rotation_state.json data/fx_sector_rotation_state.json || true
+            git add data/korea_market_stress_watch_state.json data/fx_sector_rotation_state.json 2>/dev/null || true
             if git diff --cached --quiet; then
-              echo "Market stress watch state unchanged"
+              echo "Watcher states unchanged"
               exit 0
             fi
-            git commit -m "Update Korea market stress watch state"
+            git commit -m "Update Korea market watcher states"
             if git push origin HEAD:main; then
               exit 0
             fi
@@ -229,6 +251,9 @@ jobs:
             out/korea_market_stress_alert.html
             out/korea_market_stress_connection_test.html
             out/korea_market_stress_pending_state.json
+            out/fx_sector_rotation_status.md
+            out/fx_sector_rotation_alert.html
+            out/fx_sector_rotation_pending_state.json
             out/kospi_rapid_fallback_status.md
             out/kospi_rapid_fallback_pending_state.json
           if-no-files-found: ignore
