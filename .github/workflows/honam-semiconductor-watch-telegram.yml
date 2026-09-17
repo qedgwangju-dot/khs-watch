@@ -6,10 +6,10 @@ on:
       - ".github/workflows/honam-semiconductor-watch-telegram.yml"
       - "scripts/honam_semiconductor_watch.py"
       - "scripts/honam_event_filter.py"
+      - "scripts/merge_honam_state.py"
       - "scripts/honam_telegram_formatter.py"
       - "data/honam_semiconductor_watch_state.json"
   schedule:
-    # GitHub cron is UTC. Check hourly; no meaningful new change => no Telegram message.
     - cron: "41 * * * *"
   workflow_dispatch:
 
@@ -38,7 +38,7 @@ jobs:
           python-version: "3.12"
 
       - name: Validate watcher and formatter
-        run: python -m py_compile scripts/honam_semiconductor_watch.py scripts/honam_event_filter.py scripts/honam_telegram_formatter.py
+        run: python -m py_compile scripts/honam_semiconductor_watch.py scripts/honam_event_filter.py scripts/merge_honam_state.py scripts/honam_telegram_formatter.py
 
       - name: Check Honam semiconductor and Jangrok sources
         run: python scripts/honam_semiconductor_watch.py
@@ -70,10 +70,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
-          import json
-          import os
-          import urllib.request
-
+          import json, os, urllib.request
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
           expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
@@ -96,13 +93,8 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
-          import datetime as dt
-          import json
-          import os
-          import urllib.parse
-          import urllib.request
+          import datetime as dt, json, os, urllib.parse, urllib.request
           from zoneinfo import ZoneInfo
-
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
           now = dt.datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M KST")
@@ -118,12 +110,7 @@ jobs:
               "③ 람사르습지 등록 심사 결과\n\n"
               "의미 있는 새 변화가 있을 때만 알림"
           )
-          payload = urllib.parse.urlencode({
-              "chat_id": chat_id,
-              "text": text,
-              "parse_mode": "HTML",
-              "disable_web_page_preview": "true",
-          }).encode("utf-8")
+          payload = urllib.parse.urlencode({"chat_id": chat_id, "text": text, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode("utf-8")
           req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
           with urllib.request.urlopen(req, timeout=25) as response:
               result = json.loads(response.read().decode("utf-8"))
@@ -139,60 +126,51 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
-          import datetime as dt
-          import json
-          import os
-          import pathlib
-          import urllib.parse
-          import urllib.request
+          import datetime as dt, json, os, pathlib, urllib.parse, urllib.request
           from zoneinfo import ZoneInfo
-
           token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
           chunks = json.loads(pathlib.Path("out/honam_semiconductor_telegram_chunks.json").read_text(encoding="utf-8"))
           if not chunks:
               raise RuntimeError("Telegram chunks are empty")
-
           ids = []
           for chunk in chunks:
-              payload = urllib.parse.urlencode({
-                  "chat_id": chat_id,
-                  "text": chunk,
-                  "parse_mode": "HTML",
-                  "disable_web_page_preview": "true",
-              }).encode("utf-8")
+              payload = urllib.parse.urlencode({"chat_id": chat_id, "text": chunk, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode("utf-8")
               req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
               with urllib.request.urlopen(req, timeout=25) as response:
                   result = json.loads(response.read().decode("utf-8"))
               if not result.get("ok"):
                   raise RuntimeError(f"Telegram rejected message: {result}")
               ids.append(result.get("result", {}).get("message_id"))
-
-          confirmed = {
-              "status": "confirmed",
-              "message_ids": ids,
-              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
-          }
-          pathlib.Path("out/honam_semiconductor_telegram_confirmed.json").write_text(
-              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-          )
+          confirmed = {"status": "confirmed", "message_ids": ids, "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")}
+          pathlib.Path("out/honam_semiconductor_telegram_confirmed.json").write_text(json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           print(f"telegram_delivery_confirmed=true message_ids={ids}")
           PY
 
       - name: Persist state
         if: success() && (hashFiles('out/honam_semiconductor_alert.json') == '' || hashFiles('out/honam_semiconductor_telegram_confirmed.json') != '')
         run: |
-          cp out/honam_semiconductor_pending_state.json data/honam_semiconductor_watch_state.json
+          cp out/honam_semiconductor_pending_state.json /tmp/honam_pending_state.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/honam_semiconductor_watch_state.json
-          if git diff --cached --quiet; then
-            echo "Honam watcher state unchanged"
-          else
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/merge_honam_state.py data/honam_semiconductor_watch_state.json /tmp/honam_pending_state.json data/honam_semiconductor_watch_state.json
+            git add data/honam_semiconductor_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Honam watcher state unchanged"
+              exit 0
+            fi
             git commit -m "Record Honam semiconductor watch state"
-            git pull --rebase origin main
-            git push
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "State push raced with another commit; retry $attempt/3"
+            sleep 2
+          done
+          echo "Failed to persist Honam watcher state after retries"
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
