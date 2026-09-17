@@ -11,7 +11,6 @@ watch = v15.watch
 core = v15.core
 v10 = core.v10
 
-# Strict confirmation rules for KRX-market investor flow.
 DUAL_SOURCE_TOLERANCE_EOK = 1.0
 FALLBACK_STABILITY_TOLERANCE_EOK = 1.0
 FALLBACK_MIN_OBSERVATIONS = 2
@@ -46,6 +45,32 @@ def _parse_ts(value: Any) -> dt.datetime | None:
         return None
 
 
+def _seed_old_candidate(state: dict[str, Any], market: str) -> dict[str, Any]:
+    old = ((state.get("flow_fallback_candidate") or {}).get(market) or {})
+    if old:
+        return dict(old)
+    snap = state.get("snapshot") or {}
+    key = "foreign_flow" if market == "KOSPI" else "kosdaq_foreign_flow"
+    flow = snap.get(key) or {}
+    val = flow.get("ls_validation") if isinstance(flow, dict) else None
+    if not isinstance(val, dict) or val.get("status") != "ls_fallback":
+        return {}
+    try:
+        value = float(val.get("ls_daily_eok"))
+    except Exception:
+        return {}
+    return {
+        "market": market,
+        "date": str(flow.get("date") or ""),
+        "checked_at": str(snap.get("checked_at_kst") or state.get("updated_at_kst") or ""),
+        "status": "ls_fallback",
+        "value_eok": value,
+        "observations": 1,
+        "stable": False,
+        "reason": "직전 정상 실행의 LS 단독 대체값",
+    }
+
+
 def _candidate_for(market: str) -> dict[str, Any]:
     if market in _candidate_cache:
         return _candidate_cache[market]
@@ -53,7 +78,8 @@ def _candidate_for(market: str) -> dict[str, Any]:
     now = dt.datetime.now(watch.KST)
     row = dict(core._validation.get(market) or {})
     status = str(row.get("status") or "")
-    old = ((_state().get("flow_fallback_candidate") or {}).get(market) or {})
+    state = _state()
+    old = _seed_old_candidate(state, market)
     result: dict[str, Any] = {
         "market": market,
         "date": now.date().isoformat(),
@@ -179,9 +205,6 @@ def _persist_candidates_and_final_history() -> None:
     for market in ("KOSPI", "KOSDAQ"):
         candidate_root[market] = _candidate_for(market)
     pending["flow_fallback_candidate"] = candidate_root
-
-    # The old LS history was contaminated by intraday zero snapshots. Remove it;
-    # only final_flow_history is authoritative for rolling totals from v16 onward.
     pending.pop("ls_flow_history", None)
 
     old_root = old.get("final_flow_history") or {}
@@ -215,7 +238,6 @@ def _persist_candidates_and_final_history() -> None:
         rows = [{"date": d, "daily_eok": v} for d, v in sorted(by_date.items()) if d][-10:]
         final_root[market] = rows
 
-        # Recompute the rolling 3-day figure only from confirmed final rows.
         if flow:
             if cand.get("stable") and len(rows) >= 3:
                 three = sum(float(x["daily_eok"]) for x in rows[-3:])
