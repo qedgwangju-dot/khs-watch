@@ -71,21 +71,143 @@ jobs:
           node scripts/kofia_liquidity_watch.js
           cat out/kofia_liquidity_status.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Add MMF and CMA explanations
+      - name: Build detailed current interpretation
         if: hashFiles('out/kofia_liquidity_alert.html') != ''
         run: |
           python - <<'PY'
+          import json
           from pathlib import Path
-          path = Path('out/kofia_liquidity_alert.html')
-          text = path.read_text(encoding='utf-8')
-          replacements = [
-              ('MMF 설정원본 <b>', 'MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모) <b>'),
-              ('CMA 잔고 <b>', 'CMA 잔고(증권사 현금관리계좌에 머무는 단기자금) <b>'),
+
+          alert_path = Path('out/kofia_liquidity_alert.html')
+          state_path = Path('out/kofia_liquidity_pending_state.json')
+          text = alert_path.read_text(encoding='utf-8')
+          state = json.loads(state_path.read_text(encoding='utf-8'))
+          v = state['values']
+
+          def jo(raw_million):
+              return raw_million / 1_000_000
+
+          def fmt(raw_million):
+              x = jo(raw_million)
+              return f"{x:+.2f}조"
+
+          dep1, dep5 = v['deposit']['d1'], v['deposit']['d5']
+          mmf1, mmf5 = v['mmf']['d1'], v['mmf']['d5']
+          cma1, cma5 = v['cma']['d1'], v['cma']['d5']
+          cr1, cr5 = v['credit']['d1'], v['credit']['d5']
+
+          # 1D 큰 변동 기준은 기존 감지 로직과 동일하게 유지한다.
+          thresholds = [
+              ('투자자예탁금', dep1, 2_000_000, '±2조'),
+              ('MMF', mmf1, 3_000_000, '±3조'),
+              ('CMA', cma1, 2_000_000, '±2조'),
+              ('신용융자', cr1, 500_000, '±0.5조'),
           ]
-          for old, new in replacements:
-              text = text.replace(old, new)
-          path.write_text(text, encoding='utf-8')
-          print('mmf_cma_explanations_applied=true')
+          triggered = [f"{name} {fmt(value)}(경보 기준 {label} 초과)" for name, value, threshold, label in thresholds if abs(value) >= threshold]
+          trigger_line = '• <b>큰 변동 원인</b>: ' + (' / '.join(triggered) if triggered else '1D 큰 변동 기준을 넘은 항목 없음')
+
+          # 예탁금과 MMF의 방향을 조합해 자금 흐름을 설명하되 직접 자금이동으로 단정하지 않는다.
+          if dep1 < 0 and mmf1 > 0:
+              cash_line = (
+                  f"• <b>자금 방향</b>: 예탁금 {fmt(dep1)}↓ · MMF {fmt(mmf1)}↑ → "
+                  "증권계좌의 주식 매수 대기자금은 줄고 단기금융상품 쪽 주차자금은 늘어난 방향입니다. "
+                  "다만 같은 돈이 예탁금에서 MMF로 직접 이동했다고 단정할 수는 없습니다."
+              )
+          elif dep1 > 0 and mmf1 < 0:
+              cash_line = (
+                  f"• <b>자금 방향</b>: 예탁금 {fmt(dep1)}↑ · MMF {fmt(mmf1)}↓ → "
+                  "증권계좌의 매수 대기자금이 늘고 단기금융상품에서는 자금이 빠진 방향이라 위험자산 대기자금 유입 신호가 강해졌습니다. "
+                  "다만 동일 자금의 직접 이전을 뜻하지는 않습니다."
+              )
+          elif dep1 > 0 and mmf1 > 0:
+              cash_line = (
+                  f"• <b>자금 방향</b>: 예탁금 {fmt(dep1)}↑ · MMF {fmt(mmf1)}↑ → "
+                  "증권계좌 대기자금과 단기 주차자금이 함께 늘어 유동성 총량 확대 가능성이 있으나, 주식으로의 직접 유입 신호로 단정할 수는 없습니다."
+              )
+          elif dep1 < 0 and mmf1 < 0:
+              cash_line = (
+                  f"• <b>자금 방향</b>: 예탁금 {fmt(dep1)}↓ · MMF {fmt(mmf1)}↓ → "
+                  "두 대기성 자금이 동시에 줄어 다른 자산·결제·환매 등으로 빠져나갔을 가능성을 우선 점검해야 합니다."
+              )
+          else:
+              cash_line = f"• <b>자금 방향</b>: 예탁금 {fmt(dep1)} · MMF {fmt(mmf1)} → 한쪽 방향이 뚜렷하지 않아 추가 확인이 필요합니다."
+
+          # 5거래일 방향으로 하루짜리 변동인지 지속 흐름인지 구분한다.
+          if dep1 < 0 and mmf1 > 0 and dep5 < 0 and mmf5 > 0:
+              persistence_line = (
+                  f"• <b>지속성</b>: 5D도 예탁금 {fmt(dep5)}↓ · MMF {fmt(mmf5)}↑ → "
+                  "하루짜리 흔들림만이 아니라 최근 5거래일에도 같은 방향이 이어지고 있습니다."
+              )
+          elif dep1 > 0 and mmf1 < 0 and dep5 > 0 and mmf5 < 0:
+              persistence_line = (
+                  f"• <b>지속성</b>: 5D도 예탁금 {fmt(dep5)}↑ · MMF {fmt(mmf5)}↓ → "
+                  "최근 5거래일에도 위험자산 대기자금 쪽으로 같은 방향이 이어지고 있습니다."
+              )
+          else:
+              persistence_line = (
+                  f"• <b>지속성</b>: 5D 예탁금 {fmt(dep5)} · MMF {fmt(mmf5)} → "
+                  "1D와 5D 방향이 완전히 같지 않을 수 있어 단기 반전인지 추세인지 구분해서 봐야 합니다."
+              )
+
+          cma_line = f"• <b>CMA</b>: 1D {fmt(cma1)} · 5D {fmt(cma5)} → " + (
+              "증권사 주변 단기 현금성 자금도 감소하는 흐름입니다."
+              if cma1 < 0 and cma5 < 0 else
+              "증권사 주변 단기 현금성 자금은 증가하는 흐름입니다."
+              if cma1 > 0 and cma5 > 0 else
+              "단기와 5거래일 방향이 엇갈려 추세가 아직 뚜렷하지 않습니다."
+          )
+
+          if cr5 > 0:
+              leverage_line = f"• <b>레버리지</b>: 신용융자 1D {fmt(cr1)} · 5D {fmt(cr5)} → 빚을 내서 보유한 주식 익스포저는 최근 5거래일 확대됐습니다."
+          elif cr5 < 0:
+              leverage_line = f"• <b>레버리지</b>: 신용융자 1D {fmt(cr1)} · 5D {fmt(cr5)} → 최근 5거래일은 디레버리징 방향입니다."
+          else:
+              leverage_line = f"• <b>레버리지</b>: 신용융자 1D {fmt(cr1)} · 5D {fmt(cr5)} → 레버리지 변화는 제한적입니다."
+
+          if dep5 < 0 and cma5 < 0 and cr5 > 0:
+              summary_line = (
+                  "• <b>종합</b>: 현금성 매수여력(예탁금·CMA)은 줄었는데 신용융자는 늘어나는 조합입니다. "
+                  "즉 신규 현금 유입의 질은 약해지고 레버리지 의존도는 높아져, 시장 조정 시 반대매매·강제매도 민감도가 커질 수 있습니다."
+              )
+          elif dep5 > 0 and cma5 > 0 and cr5 > 0:
+              summary_line = (
+                  "• <b>종합</b>: 현금성 대기자금과 신용융자가 함께 늘어 매수 여력과 레버리지가 동시에 확대되는 조합입니다. "
+                  "이 경우 실제 주식 순매수로 전환되는지 확인이 다음 단계입니다."
+              )
+          elif dep5 > 0 and cr5 <= 0:
+              summary_line = (
+                  "• <b>종합</b>: 현금 대기자금은 늘지만 신용융자는 확대되지 않아, 빚투보다 현금성 매수 여력 개선 쪽에 가깝습니다."
+              )
+          else:
+              summary_line = (
+                  "• <b>종합</b>: 현금성 대기자금과 레버리지 방향이 혼재돼 있어 한 방향의 위험선호로 단정하지 않습니다. "
+                  "다음 공식값에서 예탁금·MMF·CMA·신용융자가 같은 방향으로 이어지는지 확인합니다."
+              )
+
+          new_section = '\n'.join([
+              '<b>현재 판정</b>',
+              trigger_line,
+              cash_line,
+              persistence_line,
+              cma_line,
+              leverage_line,
+              summary_line,
+          ])
+
+          start_marker = '<b>현재 판정</b>'
+          end_marker = '<b>검증</b>'
+          start = text.index(start_marker)
+          end = text.index(end_marker, start)
+          text = text[:start] + new_section + '\n\n' + text[end:]
+
+          # 괄호 설명은 사용자가 요청한 MMF와 CMA에만 붙인다.
+          text = text.replace('MMF 설정원본 <b>', 'MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모) <b>')
+          text = text.replace('CMA 잔고 <b>', 'CMA 잔고(증권사 현금관리계좌에 머무는 단기자금) <b>')
+
+          alert_path.write_text(text, encoding='utf-8')
+          print('detailed_liquidity_interpretation_applied=true')
+          print(trigger_line.replace('<b>', '').replace('</b>', ''))
+          print(summary_line.replace('<b>', '').replace('</b>', ''))
           PY
 
       - name: Send Telegram update
