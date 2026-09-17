@@ -147,12 +147,20 @@ def build_summary(pending: dict) -> tuple[str, str]:
         p = float(p)
         direction = "하락" if p < 0 else "상승" if p > 0 else "보합"
         stock = f"CRCL {p:+.2f}% {phase} · {direction}"
-        if verdict in {"불리", "소폭 불리"} and p < 0:
-            stock_take = "현재 펀더멘털·할인율 판정과 주가 방향이 일치하지만, 금리만이 하락 원인이라고 단정하지 않음"
+        if disc_score < 0 and p < 0:
+            stock_take = "주가 하락은 할인율 부담과 같은 방향 · 다만 본업·단기금리까지 같은 방향이라고 단정하지 않음"
+        elif disc_score > 0 and p > 0:
+            stock_take = "주가 상승은 할인율 완화와 같은 방향 · 다만 본업·단기금리까지 같은 방향이라고 단정하지 않음"
+        elif disc_score < 0 and p > 0:
+            stock_take = "할인율은 불리하지만 주가는 상승 → 다른 본업·개별 촉매의 영향 확인 필요"
+        elif disc_score > 0 and p < 0:
+            stock_take = "할인율은 우호적이지만 주가는 하락 → 다른 본업·개별 악재의 영향 확인 필요"
+        elif verdict in {"불리", "소폭 불리"} and p < 0:
+            stock_take = "종합 판정과 주가 하락 방향이 일치하지만 단일 요인으로 원인을 단정하지 않음"
         elif verdict in {"우호적", "소폭 우호적"} and p > 0:
-            stock_take = "현재 펀더멘털·할인율 판정과 주가 방향이 일치하지만, 금리만이 상승 원인이라고 단정하지 않음"
+            stock_take = "종합 판정과 주가 상승 방향이 일치하지만 단일 요인으로 원인을 단정하지 않음"
         else:
-            stock_take = "주가와 펀더멘털·할인율 신호가 엇갈려 다른 개별 요인의 영향도 확인 필요"
+            stock_take = "주가와 본업·단기금리·할인율 신호가 혼재 → 개별 요인 확인 필요"
 
     if direct_score < 0 and disc_score < 0:
         take = "실제 이익 변수와 할인율이 모두 약하게 악화. 단기금리 선행지표 반등이 일부 완충하지만 현재는 악재가 조금 우세"
@@ -200,8 +208,25 @@ def main() -> None:
         return
 
     top, judgment = build_summary(pending)
-    text = re.sub(r"<blockquote><b>현재 결론</b>.*?</blockquote>\n*", top, text, count=1, flags=re.S)
-    text = re.sub(r"<blockquote><b>현재 결론 · .*?</blockquote>\n*", top, text, count=1, flags=re.S)
+
+    # Replace exactly one current-conclusion block. The previous two-pass replacement
+    # could replace its own output and duplicate the fixed SOFR explainer.
+    text, replaced = re.subn(
+        r"<blockquote><b>현재 결론</b>.*?</blockquote>\n*",
+        top,
+        text,
+        count=1,
+        flags=re.S,
+    )
+    if replaced == 0:
+        text = re.sub(
+            r"<blockquote><b>현재 결론 · .*?</blockquote>\n*",
+            top,
+            text,
+            count=1,
+            flags=re.S,
+        )
+
     text = re.sub(r"<blockquote><b>판단</b>.*?</blockquote>", judgment, text, count=1, flags=re.S)
     ALERT_PATH.write_text(text, encoding="utf-8")
 
