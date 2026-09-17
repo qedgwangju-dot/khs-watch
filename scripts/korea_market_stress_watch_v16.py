@@ -201,6 +201,7 @@ def _persist_candidates_and_final_history() -> None:
         return
 
     now = dt.datetime.now(watch.KST)
+    today = now.date().isoformat()
     candidate_root = dict(old.get("flow_fallback_candidate") or {})
     for market in ("KOSPI", "KOSDAQ"):
         candidate_root[market] = _candidate_for(market)
@@ -211,6 +212,7 @@ def _persist_candidates_and_final_history() -> None:
     final_root: dict[str, list[dict[str, Any]]] = {}
     snap = pending.get("snapshot") or {}
     for market in ("KOSPI", "KOSDAQ"):
+        cand = _candidate_for(market)
         by_date: dict[str, float] = dict(v15.FINAL_FLOW_SEED.get(market) or {})
         for row in old_root.get(market) or []:
             if not isinstance(row, dict):
@@ -223,9 +225,13 @@ def _persist_candidates_and_final_history() -> None:
             if d:
                 by_date[d] = val
 
+        # Never retain a current-day value from an older, less strict version
+        # unless today's value has passed v16 confirmation.
+        if not cand.get("stable"):
+            by_date.pop(today, None)
+
         key = "foreign_flow" if market == "KOSPI" else "kosdaq_foreign_flow"
         flow = snap.get(key) or {}
-        cand = _candidate_for(market)
         if now.time() >= FINAL_START and cand.get("stable"):
             try:
                 d = str(flow.get("date") or "")
@@ -239,6 +245,11 @@ def _persist_candidates_and_final_history() -> None:
         final_root[market] = rows
 
         if flow:
+            status = str((flow.get("ls_validation") or {}).get("status") or "")
+            if status == "ls_fallback":
+                flow["source_label"] = (
+                    "LS증권 t1601 확정 대체값" if cand.get("stable") else "LS증권 t1601 잠정 대체값"
+                )
             if cand.get("stable") and len(rows) >= 3:
                 three = sum(float(x["daily_eok"]) for x in rows[-3:])
                 flow["three_day_eok"] = three
@@ -249,6 +260,14 @@ def _persist_candidates_and_final_history() -> None:
                 flow["three_day_available"] = False
                 flow["finality"] = "잠정"
             snap[key] = flow
+
+    # If either market is still provisional, do not carry today's flow keys as active.
+    active = list(pending.get("active_keys") or [])
+    if not _candidate_for("KOSPI").get("stable"):
+        active = [x for x in active if not (today in str(x) and (str(x).startswith("foreign1d_") or str(x).startswith("foreign3d_")))]
+    if not _candidate_for("KOSDAQ").get("stable"):
+        active = [x for x in active if not (today in str(x) and (str(x).startswith("kosdaq_foreign1d_") or str(x).startswith("kosdaq_foreign3d_")))]
+    pending["active_keys"] = active
 
     pending["final_flow_history"] = final_root
     snap["flow_finality_rule"] = (
