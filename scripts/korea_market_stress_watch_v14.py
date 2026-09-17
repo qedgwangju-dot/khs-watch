@@ -94,28 +94,51 @@ def fetch_seoul_prev_close(now: dt.datetime | None = None) -> dict[str, Any]:
     raise RuntimeError("KSURE 서울 15:30 종가 숫자 파싱 실패")
 
 
+def _sync_fx_crossing_state(live: dict[str, Any]) -> None:
+    """Keep v11 threshold-crossing state aligned with the validated FX basis."""
+    try:
+        v11 = v13.core.v12.v11
+        v11._last_fx.clear()
+        v11._last_fx.update(live)
+    except Exception:
+        pass
+
+
 def fetch_usdkrw_seoul_basis() -> dict[str, Any]:
     live = _original_fetch_usdkrw()
     naver_prev_date = live.get("prev_date")
     naver_prev_value = live.get("prev_value")
+    live["naver_prev_date"] = naver_prev_date
+    live["naver_prev_value"] = naver_prev_value
+
     try:
         ref = fetch_seoul_prev_close()
     except Exception as exc:
-        live["comparison_basis"] = "Naver 시계열 대체 — 서울 15:30 종가 조회 실패"
+        # Fail closed. A Naver published day-row is not the same market datum as
+        # the Seoul FX spot 15:30 close, so never substitute it for threshold logic.
+        current = float(live["value"])
+        live["prev_date"] = live.get("date")
+        live["prev_value"] = current
+        live["change_krw"] = 0.0
+        live["change_pct"] = 0.0
+        live["comparison_valid"] = False
+        live["comparison_basis"] = "서울외환시장 15:30 종가 조회 실패 — 환율 일간·경계 경보 판정 보류"
         live["seoul_close_error"] = f"{type(exc).__name__}: {exc}"
+        _sync_fx_crossing_state(live)
         return live
 
     current = float(live["value"])
     prev = float(ref["value"])
-    live["naver_prev_date"] = naver_prev_date
-    live["naver_prev_value"] = naver_prev_value
     live["prev_date"] = ref["date"]
     live["prev_value"] = prev
     live["change_krw"] = round(current - prev, 4)
     live["change_pct"] = round((current / prev - 1.0) * 100.0, 4)
+    live["comparison_valid"] = True
     live["comparison_basis"] = ref["basis"]
     live["seoul_close_source"] = ref["source"]
     live["seoul_close_title"] = ref["title"]
+    live.pop("seoul_close_error", None)
+    _sync_fx_crossing_state(live)
     return live
 
 
@@ -194,13 +217,16 @@ def _append_fx_basis_note() -> None:
     text = watch.ALERT_PATH.read_text(encoding="utf-8").rstrip()
     note = ""
     if fx.get("comparison_basis"):
-        note = (
-            f"\n• 환율 일간 비교 기준: <b>{html.escape(str(fx['comparison_basis']))}</b>"
-            f" — 전일 {float(fx['prev_value']):,.1f}원 → 현재 {float(fx['value']):,.1f}원"
-        )
-        src = str(fx.get("seoul_close_source") or "")
-        if src:
-            note += f' / <a href="{html.escape(src, quote=True)}">전일 서울 종가 근거</a>'
+        if fx.get("comparison_valid") is False:
+            note = f"\n• 환율 일간 비교 기준: <b>{html.escape(str(fx['comparison_basis']))}</b>"
+        else:
+            note = (
+                f"\n• 환율 일간 비교 기준: <b>{html.escape(str(fx['comparison_basis']))}</b>"
+                f" — 전일 {float(fx['prev_value']):,.1f}원 → 현재 {float(fx['value']):,.1f}원"
+            )
+            src = str(fx.get("seoul_close_source") or "")
+            if src:
+                note += f' / <a href="{html.escape(src, quote=True)}">전일 서울 종가 근거</a>'
     footer = "\n" + VALIDATION_FOOTER
     watch.ALERT_PATH.write_text(text + note + footer + "\n", encoding="utf-8")
 
