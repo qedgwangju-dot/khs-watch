@@ -58,6 +58,7 @@ def _translate_english_alert_lines() -> None:
         prefixes = (
             "• 하이퍼스케일러 AI 설비투자 ±10% 이상 수치 포함 신규자료: ",
             "• BofA Global Wave 방향 전환 공개자료: ",
+            "• BofA Global Wave 방향 전환 관련 신규 공개자료: ",
         )
         replaced = False
         for prefix in prefixes:
@@ -72,15 +73,16 @@ def _translate_english_alert_lines() -> None:
 
 
 def main() -> int:
-    # v12 had a legacy direct Telegram sender. Suppress it here so v13 can finish
-    # LS/source post-processing and this module can translate English headlines
-    # before the existing workflow sends the final artifact.
-    original_sender = v13.v12._send_market_alert_to_target
-    v13.v12._send_market_alert_to_target = lambda: None
+    # v12 has a legacy direct Telegram sender. Suppress it here so LS/source
+    # post-processing and Korean headline translation finish before the workflow
+    # sends the final artifact through the configured target bot.
+    legacy_module = v13.core.v12
+    original_sender = legacy_module._send_market_alert_to_target
+    legacy_module._send_market_alert_to_target = lambda: None
     try:
         rc = v13.main()
     finally:
-        v13.v12._send_market_alert_to_target = original_sender
+        legacy_module._send_market_alert_to_target = original_sender
     _translate_english_alert_lines()
     return rc
 
