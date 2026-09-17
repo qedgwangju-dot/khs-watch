@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/honam-semiconductor-watch-telegram.yml"
       - "scripts/honam_semiconductor_watch.py"
+      - "scripts/honam_event_filter.py"
       - "scripts/honam_telegram_formatter.py"
       - "data/honam_semiconductor_watch_state.json"
   schedule:
@@ -37,10 +38,13 @@ jobs:
           python-version: "3.12"
 
       - name: Validate watcher and formatter
-        run: python -m py_compile scripts/honam_semiconductor_watch.py scripts/honam_telegram_formatter.py
+        run: python -m py_compile scripts/honam_semiconductor_watch.py scripts/honam_event_filter.py scripts/honam_telegram_formatter.py
 
       - name: Check Honam semiconductor and Jangrok sources
         run: python scripts/honam_semiconductor_watch.py
+
+      - name: Filter by topic event and official state change
+        run: python scripts/honam_event_filter.py
 
       - name: Build readable Telegram alert
         if: hashFiles('out/honam_semiconductor_alert.json') != ''
@@ -105,10 +109,13 @@ jobs:
           text = (
               "🚨 <b>호남 반도체 국가산단 · 장록습지</b>\n"
               "웹감시 연결 정상 · " + now + "\n\n"
+              "<b>알림 기준</b>\n"
+              "주제·사건·공식 상태 변화만 알림\n"
+              "기사 링크는 감지 근거·교차검증용\n\n"
               "<b>확인 순서</b>\n"
               "① 수행업체 선정·현지조사 착수\n"
               "② 장록습지 수량·수질 조사범위\n"
-              "③ 람사르 등록 심사 결과\n\n"
+              "③ 람사르습지 등록 심사 결과\n\n"
               "의미 있는 새 변화가 있을 때만 알림"
           )
           payload = urllib.parse.urlencode({
