@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-17T07:15:22+09:00",
+  "updated_at_kst": "2026-09-17T09:44:51+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -21,53 +21,53 @@
     "five_day_30y_bp": 7.0
   },
   "btc_etf": {
-    "date": "2026-09-15",
-    "total_usd_m": -450.4,
-    "status": "complete",
-    "reported_funds": 12,
-    "missing_funds": 0,
-    "prev_date": "2026-09-14",
-    "prev_total_usd_m": 159.9,
-    "day_change_usd_m": -610.3,
-    "day_change_pct": -381.7,
+    "date": "2026-09-16",
+    "total_usd_m": -151.8,
+    "status": "partial",
+    "reported_funds": 11,
+    "missing_funds": 1,
+    "prev_date": "2026-09-15",
+    "prev_total_usd_m": -450.4,
+    "day_change_usd_m": 298.6,
+    "day_change_pct": 66.3,
     "source_latest_date": "2026-09-16",
-    "source_latest_status": "pending",
-    "pending_date": "2026-09-16",
-    "latest_recomputed_total_usd_m": -450.4,
+    "source_latest_status": "partial",
+    "pending_date": null,
+    "latest_recomputed_total_usd_m": -151.8,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
-    "last5_usd_m": -706.6,
+    "last5_usd_m": -738.2,
     "last5_dates": [
-      "2026-09-09",
       "2026-09-10",
       "2026-09-11",
       "2026-09-14",
-      "2026-09-15"
+      "2026-09-15",
+      "2026-09-16"
     ],
     "last5_values_usd_m": [
-      -120.2,
       -282.7,
       -13.2,
       159.9,
-      -450.4
+      -450.4,
+      -151.8
     ],
-    "prev5_usd_m": 723.4,
+    "prev5_usd_m": 839.7,
     "prev5_dates": [
-      "2026-09-01",
       "2026-09-02",
       "2026-09-03",
       "2026-09-04",
-      "2026-09-08"
+      "2026-09-08",
+      "2026-09-09"
     ],
     "prev5_values_usd_m": [
-      -236.5,
       101.1,
       730.8,
       174.6,
-      -46.6
+      -46.6,
+      -120.2
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": -1430.0,
+    "five_day_change_usd_m": -1577.9,
     "five_day_change_pct": null,
     "five_day_direction": "순유입→순유출 전환"
   },
