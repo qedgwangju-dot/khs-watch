@@ -94,7 +94,7 @@ jobs:
                   f'{detail}\n\n'
                   '판정: USD/JPY 감시가 25분 이상 정상 상태를 갱신하지 못했습니다. '
                   '시장 경보가 없다는 뜻이 아니라 감시 공백 자체를 뜻합니다.\n'
-                  '조치: 장애 감시기가 10분 경과부터 기존 엔캐리 본 감시를 재호출하며, '
+                  '조치: 장애 감시기가 10분 경과부터 기존 엔캐리 본 감시와 최근 충격 감시를 직접 재호출하며, '
                   '복구 실행은 최근 6시간 5분봉을 재검사해 공백 중 -1%급 급락을 복원합니다.\n',
                   encoding='utf-8',
               )
@@ -112,7 +112,7 @@ jobs:
           print(json.dumps({'repair_needed': repair_needed, 'stale': stale, 'stale_minutes': stale_minutes, 'should_alert': should_alert}, ensure_ascii=False))
           PY
 
-      - name: Self-heal stale yen monitor through existing primary route
+      - name: Self-heal stale yen monitor through existing routes
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
@@ -132,7 +132,10 @@ jobs:
             gh workflow run yen-carry-alert.yml \
               --repo "${{ github.repository }}" \
               --ref main
-            echo "자가복구: 기존 엔캐리 본 감시를 재호출했습니다. 완료 후 기존 heartbeat bridge가 최근 충격 감시를 이어서 호출합니다." >> "$GITHUB_STEP_SUMMARY"
+            gh workflow run yen-carry-recent-shock.yml \
+              --repo "${{ github.repository }}" \
+              --ref main
+            echo "자가복구: 기존 엔캐리 본 감시와 최근 충격 감시를 직접 재호출했습니다." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "자가복구 불필요: 최근 충격 상태가 10분 이내입니다." >> "$GITHUB_STEP_SUMMARY"
           fi
