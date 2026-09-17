@@ -35,6 +35,23 @@ class ClarityFormatterTest(unittest.TestCase):
         self.assertNotIn("Tue, 18 Aug 2026 13:15:48 -0400", rendered)
         self.assertLessEqual(max(map(len, chunks)), 3900)
 
+    def test_sec_innovation_exemption_is_specific_and_not_generic(self):
+        event = {
+            "source": "SEC 보도자료",
+            "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+            "title": "SEC Issues “Innovation Exemption” to Facilitate the Trading of Tokenized NMS Stock and Request for Comment",
+            "url": "https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment",
+            "date": "Thu, 17 Sep 2026 08:55:00 -0400",
+            "detail": "The Commission issued temporary, conditional exemptive relief to Tokenized Securities Venues to trade tokenized NMS stock.",
+        }
+        rendered = "\\n".join(MOD.build_chunks([event]))
+        self.assertIn("5년 한시", rendered)
+        self.assertIn("합성형 토큰", rendered)
+        self.assertIn("Robinhood", rendered)
+        self.assertIn("Securitize", rendered)
+        self.assertIn("발행회사", rendered)
+        self.assertIn("2026년 9월 17일 21:55 KST", rendered)
+
     def test_date_only_is_shown_in_korean_calendar_format(self):
         event = {
             "source": "상원 은행위원회",
