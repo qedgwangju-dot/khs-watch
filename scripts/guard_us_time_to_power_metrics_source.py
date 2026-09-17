@@ -209,3 +209,216 @@ t = t.replace(print_old, print_new, 1)
 
 g.write_text(t, encoding="utf-8")
 print("US generation watcher power-demand + transformer/cable/power-electronics guard inserted")
+
+# Extend the existing time-to-power watcher with flexible-load / demand-response
+# signals.  This remains part of the same watcher and state file: no new alert
+# workflow or Telegram route is created.
+s = p.read_text(encoding="utf-8")
+s = s.replace("FORMAT_VERSION = 2", "FORMAT_VERSION = 3", 1)
+
+flex_const_anchor = 'ABB_800V = "https://www.abb.com/global/en/company/innovation/hybrid-ac-dc-power"\n'
+flex_const_block = flex_const_anchor + '''AEMA_HOME = "https://www.aema.ai/home"\nAEMA_ABOUT = "https://www.aema.ai/about"\nAEMA_SOLUTIONS = "https://www.aema.ai/solutions"\nGOOGLE_DEMAND_RESPONSE = "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/demand-response-data-center-milestone/"\nNVIDIA_EMERALD = "https://www.nvidia.com/en-us/case-studies/emerald-ai/"\nNVIDIA_AEMA = "https://blogs.nvidia.com/blog/ai-energy-management-alliance/"\nGRIDUNITY_AEMA = "https://www.gridunity.com/resources/gridunity-selected-as-founding-board-member-of-new-ai-energy-management-alliance"\n'''
+if flex_const_anchor not in s:
+    raise SystemExit("time-to-power flexible-load constants insertion point not found")
+s = s.replace(flex_const_anchor, flex_const_block, 1)
+
+official_old = '''    "abb.com", "nvidia.com", "eaton.com", "lguplus.com", "ls-electric.com",\n)'''
+official_new = '''    "abb.com", "nvidia.com", "eaton.com", "lguplus.com", "ls-electric.com",\n    "aema.ai", "blog.google", "gridunity.com", "epri.com", "pjm.com",\n)'''
+if official_old not in s:
+    raise SystemExit("time-to-power official domains insertion point not found")
+s = s.replace(official_old, official_new, 1)
+
+queries_old = '''    'data center onsite power gas generation BESS 500 MW ERCOT MISO PJM',\n)'''
+queries_new = '''    'data center onsite power gas generation BESS 500 MW ERCOT MISO PJM',\n    'AI data center flexible load demand response interconnection utility 100 MW',\n    'AEMA flexible AI data center accelerated interconnection demand response',\n    'NVIDIA DSX Flex Emerald Conductor grid-responsive data center utility',\n    'Google data center demand response utility contract flexible load',\n)'''
+if queries_old not in s:
+    raise SystemExit("time-to-power flexible-load query insertion point not found")
+s = s.replace(queries_old, queries_new, 1)
+
+fallback_old = '''        "발전·BESS 프로젝트": "데이터센터 연계 발전·BESS 프로젝트 관련 신규 자료",\n    }'''
+fallback_new = '''        "발전·BESS 프로젝트": "데이터센터 연계 발전·BESS 프로젝트 관련 신규 자료",\n        "유연부하·수요반응": "AI 데이터센터 유연부하·수요반응·신속 계통접속 관련 신규 자료",\n    }'''
+if fallback_old not in s:
+    raise SystemExit("time-to-power fallback label insertion point not found")
+s = s.replace(fallback_old, fallback_new, 1)
+
+source_old = '''        ("lguplus", "LG유플러스"), ("ls-electric", "LS ELECTRIC"),\n    )'''
+source_new = '''        ("lguplus", "LG유플러스"), ("ls-electric", "LS ELECTRIC"),\n        ("aema", "AEMA"), ("blog.google", "Google"), ("gridunity", "GridUnity"),\n    )'''
+if source_old not in s:
+    raise SystemExit("time-to-power source label insertion point not found")
+s = s.replace(source_old, source_new, 1)
+
+classify_old = '''def classify(text: str) -> str:\n    low = (text or "").lower()\n    if "800v" in low and any(k in low for k in ("dc", "direct current", "data center", "data centre", "rack")):\n'''
+classify_new = '''def classify(text: str) -> str:\n    low = (text or "").lower()\n    if any(k in low for k in (\n        "ai energy management alliance", "aema", "dsx flex", "emerald conductor",\n        "grid-responsive", "power-flexible", "flexible load", "flexible-load",\n        "demand response", "workload shifting", "computational flexibility",\n        "accelerated interconnection", "expedited interconnection", "flexibility commitment",\n    )):\n        return "유연부하·수요반응"\n    if "800v" in low and any(k in low for k in ("dc", "direct current", "data center", "data centre", "rack")):\n'''
+if classify_old not in s:
+    raise SystemExit("time-to-power classify insertion point not found")
+s = s.replace(classify_old, classify_new, 1)
+
+meaningful_old = '''    if item.get("official") and theme != "기타":\n        return True\n    if theme == "800V DC":\n'''
+meaningful_new = '''    if item.get("official") and theme not in {"기타", "유연부하·수요반응"}:\n        return True\n    if theme == "유연부하·수요반응":\n        execution = any(k in text for k in (\n            "contract", "agreement", "signed", "approved", "adopt", "tariff", "program",\n            "pilot", "demonstrat", "commercial", "standard", "rule", "interconnection",\n            "launch", "founding", "board member", "mw", "gw", "계약", "승인", "실증", "상업",\n        ))\n        scale_mw = [float(x.replace(",", "")) for x in re.findall(r"([0-9][0-9,]*(?:\\.[0-9]+)?)\\s*mw", text, re.I)]\n        scale_gw = [float(x.replace(",", "")) * 1000 for x in re.findall(r"([0-9]+(?:\\.[0-9]+)?)\\s*gw", text, re.I)]\n        scale = max(scale_mw + scale_gw + [0])\n        policy_step = any(k in text for k in (\n            "tariff", "rule", "approved", "adopt", "interconnection", "utility", "ferc", "pjm", "miso", "ercot",\n        ))\n        return execution and (item.get("official") or scale >= 100 or policy_step)\n    if theme == "800V DC":\n'''
+if meaningful_old not in s:
+    raise SystemExit("time-to-power meaningful insertion point not found")
+s = s.replace(meaningful_old, meaningful_new, 1)
+
+flex_func_anchor = '''def detect_metric_changes(old: dict, metrics: dict, projects: dict) -> list[str]:\n'''
+flex_func_block = r'''
+FLEX_DEFAULTS = {
+    # Current official proof points.  100 GW is AEMA's potential estimate,
+    # not contracted or energized capacity.
+    "google_demand_response_gw": 1.0,
+    "commercial_flexible_factory_mw": 100.0,
+    "emerald_max_reduction_pct": 40.0,
+    "emerald_30s_reduction_pct": 30.0,
+    "emerald_max_duration_hours": 10.0,
+    "aema_unlock_potential_gw": 100.0,
+    "interconnection_backlog_low_years": 5.0,
+    "interconnection_backlog_high_years": 10.0,
+}
+
+
+def _flex_page_text(url: str) -> str:
+    return normalize(BeautifulSoup(fetch(url, 25).text, "html.parser").get_text(" "))
+
+
+def parse_flexible_load_metrics(previous: dict | None = None) -> tuple[dict, list[str]]:
+    previous = previous or {}
+    metrics = dict(FLEX_DEFAULTS)
+    errors = []
+    for key, value in previous.items():
+        if key in metrics and value is not None:
+            metrics[key] = value
+
+    try:
+        text = _flex_page_text(GOOGLE_DEMAND_RESPONSE)
+        m = re.search(r"(?:total of\s+)?([0-9.]+)\s+gigawatt\s*\(GW\).*?demand response", text, re.I)
+        if not m:
+            m = re.search(r"signed\s+([0-9.]+)\s+GW\s+of data center demand response", text, re.I)
+        if m:
+            metrics["google_demand_response_gw"] = float(m.group(1))
+    except Exception as exc:
+        errors.append(f"Google 수요반응: {type(exc).__name__}")
+
+    try:
+        text = _flex_page_text(NVIDIA_EMERALD)
+        m = re.search(r"up to\s+([0-9.]+)%\s+power reduction", text, re.I)
+        if not m:
+            m = re.search(r"reduce power demand by up to\s+([0-9.]+)%", text, re.I)
+        if m:
+            metrics["emerald_max_reduction_pct"] = float(m.group(1))
+        m = re.search(r"shed approximately\s+([0-9.]+)%.*?within\s+30 seconds", text, re.I)
+        if m:
+            metrics["emerald_30s_reduction_pct"] = float(m.group(1))
+        m = re.search(r"for up to\s+([0-9.]+)\s+hours", text, re.I)
+        if m:
+            metrics["emerald_max_duration_hours"] = float(m.group(1))
+    except Exception as exc:
+        errors.append(f"NVIDIA·Emerald AI: {type(exc).__name__}")
+
+    try:
+        text = _flex_page_text(AEMA_SOLUTIONS)
+        m = re.search(r"([0-9,]+)\s*-?MW\s+power-flexible AI factory", text, re.I)
+        if m:
+            metrics["commercial_flexible_factory_mw"] = float(m.group(1).replace(",", ""))
+        m = re.search(r"unlock\s+([0-9,]+)\s*GW", text, re.I)
+        if m:
+            metrics["aema_unlock_potential_gw"] = float(m.group(1).replace(",", ""))
+    except Exception as exc:
+        errors.append(f"AEMA solutions: {type(exc).__name__}")
+
+    try:
+        text = _flex_page_text(AEMA_ABOUT)
+        m = re.search(r"([0-9.]+)\s*[–-]\s*([0-9.]+)\s+year interconnection backlog", text, re.I)
+        if m:
+            metrics["interconnection_backlog_low_years"] = float(m.group(1))
+            metrics["interconnection_backlog_high_years"] = float(m.group(2))
+    except Exception as exc:
+        errors.append(f"AEMA about: {type(exc).__name__}")
+
+    return metrics, errors
+
+
+def detect_flexible_load_changes(old: dict, now: dict) -> list[str]:
+    oldm = old.get("flexible_load_metrics") or {}
+    if not oldm:
+        return ["유연부하·수요반응 기준선 신규 연결"]
+    changes = []
+    checks = (
+        ("google_demand_response_gw", 0.1, "Google 상업 수요반응 계약", "GW"),
+        ("commercial_flexible_factory_mw", 50.0, "상업 규모 유연 AI 팩토리 실증", "MW"),
+        ("emerald_max_reduction_pct", 5.0, "Emerald AI 최대 부하감축", "%"),
+        ("emerald_30s_reduction_pct", 5.0, "Emerald AI 30초 감축", "%"),
+        ("emerald_max_duration_hours", 1.0, "Emerald AI 최대 감축 지속시간", "시간"),
+        ("aema_unlock_potential_gw", 10.0, "AEMA 기존 전력망 활용 잠재치", "GW"),
+        ("interconnection_backlog_high_years", 1.0, "AEMA 주요시장 계통접속 적체 상단", "년"),
+    )
+    for key, threshold, label, unit in checks:
+        ov, nv = oldm.get(key), now.get(key)
+        if ov is None or nv is None:
+            continue
+        try:
+            if abs(float(nv) - float(ov)) >= threshold:
+                changes.append(f"{label}: {float(ov):g}{unit} → {float(nv):g}{unit}")
+        except Exception:
+            pass
+    return changes
+
+
+'''
+if flex_func_anchor not in s:
+    raise SystemExit("time-to-power flexible metrics function insertion point not found")
+s = s.replace(flex_func_anchor, flex_func_block + flex_func_anchor, 1)
+
+runtime_anchor = '''items: list[dict] = []\n'''
+runtime_insert = '''flexible_load_metrics, flexible_load_errors = parse_flexible_load_metrics(old.get("flexible_load_metrics") or {})\nerrors.extend(flexible_load_errors)\n\nitems: list[dict] = []\n'''
+if runtime_anchor not in s:
+    raise SystemExit("time-to-power flexible runtime insertion point not found")
+s = s.replace(runtime_anchor, runtime_insert, 1)
+
+change_old = '''metric_changes = detect_metric_changes(old, miso_metrics, miso_projects)\nbaseline_run = not old.get("initialized")\nformat_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION\nshould_alert = baseline_run or format_upgrade or bool(new_items) or bool(metric_changes)\n'''
+change_new = '''metric_changes = detect_metric_changes(old, miso_metrics, miso_projects)\nflexible_load_changes = detect_flexible_load_changes(old, flexible_load_metrics)\nbaseline_run = not old.get("initialized")\nformat_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION\nshould_alert = baseline_run or format_upgrade or bool(new_items) or bool(metric_changes) or bool(flexible_load_changes)\n'''
+if change_old not in s:
+    raise SystemExit("time-to-power flexible change insertion point not found")
+s = s.replace(change_old, change_new, 1)
+
+pending_old2 = '''    "miso_metrics": miso_metrics,\n    "miso_eras_projects": miso_projects,\n    "seen_ids": seen,\n'''
+pending_new2 = '''    "miso_metrics": miso_metrics,\n    "miso_eras_projects": miso_projects,\n    "flexible_load_metrics": flexible_load_metrics,\n    "flexible_load_source_errors": flexible_load_errors,\n    "seen_ids": seen,\n'''
+if pending_old2 not in s:
+    raise SystemExit("time-to-power flexible pending-state insertion point not found")
+s = s.replace(pending_old2, pending_new2, 1)
+
+msg_anchor2 = '''    msg.append("• <b>800V DC</b> · 기사량이 아니라 고객 채택·양산·수주·인증·검증만 알림")\n\n    if metric_changes:\n'''
+msg_new2 = '''    msg.append("• <b>800V DC</b> · 기사량이 아니라 고객 채택·양산·수주·인증·검증만 알림")\n\n    fm = flexible_load_metrics\n    msg += ["", "<b>🧠 유연부하·수요반응 실행판</b>"]\n    msg.append(f"• <b>Google 상업 계약</b> · 미국 유틸리티 수요반응 누적 <b>{fm['google_demand_response_gw']:g}GW</b>")\n    msg.append(f"• <b>상업 규모 실증</b> · 유연 AI 팩토리 <b>{fm['commercial_flexible_factory_mw']:,.0f}MW</b>")\n    msg.append(f"• <b>부하감축 성능</b> · 최대 <b>{fm['emerald_max_reduction_pct']:g}%</b> 1분 이내 · 약 {fm['emerald_30s_reduction_pct']:g}% 30초 · 최대 {fm['emerald_max_duration_hours']:g}시간")\n    msg.append(f"• <b>AEMA 잠재치</b> · 기존 전력망 추가 활용 <b>{fm['aema_unlock_potential_gw']:g}GW</b> 주장 · 확보·전원 인가 용량과 구분")\n    msg.append(f"• <b>계통접속 적체</b> · 주요시장 현재 약 <b>{fm['interconnection_backlog_low_years']:g}~{fm['interconnection_backlog_high_years']:g}년</b> · 실제 단축 개월 수 확인 시 우선 알림")\n\n    if flexible_load_changes:\n        msg += ["", "<b>🔄 유연부하 숫자 변경</b>"]\n        for ch in flexible_load_changes[:6]:\n            msg.append(f"• <b>{h(ch)}</b>")\n\n    if metric_changes:\n'''
+if msg_anchor2 not in s:
+    raise SystemExit("time-to-power flexible message insertion point not found")
+s = s.replace(msg_anchor2, msg_new2, 1)
+
+baseline_scope_old = '''        msg.append("• 800V DC는 고객 채택·수주·양산·인증 단계 전환만 알림")\n'''
+baseline_scope_new = '''        msg.append("• 800V DC는 고객 채택·수주·양산·인증 단계 전환만 알림")\n        msg.append("• 유연부하·수요반응은 계약 MW·감축률·응답시간·지속시간·계통접속 단축을 추적")\n'''
+if baseline_scope_old not in s:
+    raise SystemExit("time-to-power flexible baseline scope insertion point not found")
+s = s.replace(baseline_scope_old, baseline_scope_new, 1)
+
+interpret_old = '''    msg.append("• 발전·BESS와 부하 위치가 다르면 변전소·송전선 비용이 다음 병목인지 함께 봅니다.")\n'''
+interpret_new = '''    msg.append("• 발전·BESS와 부하 위치가 다르면 변전소·송전선 비용이 다음 병목인지 함께 봅니다.")\n    msg.append("• 유연부하는 기술 실증보다 <b>유틸리티가 실제 접속용량·접속기간 산정에 인정하는지</b>를 최종 실행 신호로 봅니다.")\n'''
+if interpret_old not in s:
+    raise SystemExit("time-to-power flexible interpretation insertion point not found")
+s = s.replace(interpret_old, interpret_new, 1)
+
+links_old = '''    msg.append(f"• {a('ERCOT 대형부하 Batch Zero', ERCOT_LARGE_LOAD)}")\n'''
+links_new = '''    msg.append(f"• {a('ERCOT 대형부하 Batch Zero', ERCOT_LARGE_LOAD)}")\n    msg.append(f"• {a('AEMA 유연 AI 데이터센터', AEMA_SOLUTIONS)}")\n    msg.append(f"• {a('Google 1GW 수요반응 계약', GOOGLE_DEMAND_RESPONSE)}")\n    msg.append(f"• {a('NVIDIA·Emerald AI 유연부하 실증', NVIDIA_EMERALD)}")\n'''
+if links_old not in s:
+    raise SystemExit("time-to-power flexible official links insertion point not found")
+s = s.replace(links_old, links_new, 1)
+
+status_old2 = '''    f"- MISO 제5차: **{miso_metrics.get('cycle5_mw')} MW / {miso_metrics.get('cycle5_projects')}개**\\n"\n    f"- 신규 의미자료: **{len(new_items)}건**\\n"\n    f"- 숫자 변경: **{len(metric_changes)}건**\\n"\n'''
+status_new2 = '''    f"- MISO 제5차: **{miso_metrics.get('cycle5_mw')} MW / {miso_metrics.get('cycle5_projects')}개**\\n"\n    f"- Google 수요반응 계약: **{flexible_load_metrics.get('google_demand_response_gw')} GW**\\n"\n    f"- 유연 AI 팩토리 상업 규모 실증: **{flexible_load_metrics.get('commercial_flexible_factory_mw')} MW**\\n"\n    f"- 최대 부하감축: **{flexible_load_metrics.get('emerald_max_reduction_pct')}%**\\n"\n    f"- 신규 의미자료: **{len(new_items)}건**\\n"\n    f"- 기존 실행 숫자 변경: **{len(metric_changes)}건**\\n"\n    f"- 유연부하 숫자 변경: **{len(flexible_load_changes)}건**\\n"\n'''
+if status_old2 not in s:
+    raise SystemExit("time-to-power flexible status insertion point not found")
+s = s.replace(status_old2, status_new2, 1)
+
+print_old2 = '''    f"gia={miso_metrics.get('gia_gw')}GW new={len(new_items)} changes={len(metric_changes)} alert={should_alert}"\n)'''
+print_new2 = '''    f"gia={miso_metrics.get('gia_gw')}GW new={len(new_items)} changes={len(metric_changes)} "\n    f"flex_changes={len(flexible_load_changes)} alert={should_alert}"\n)'''
+if print_old2 not in s:
+    raise SystemExit("time-to-power flexible print insertion point not found")
+s = s.replace(print_old2, print_new2, 1)
+
+p.write_text(s, encoding="utf-8")
+print("US time-to-power flexible-load + demand-response guard inserted")
