@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import re
 from typing import Any
 
 import korea_market_stress_watch_v15 as v15
@@ -18,6 +19,13 @@ FALLBACK_MIN_MINUTES = 10.0
 # KRX current public page says same-day final investor trading data are provided after 20:00.
 # Use 20:10 KST as a conservative confirmation gate.
 FINAL_START = dt.time(20, 10)
+
+# USD/KRW re-alerts: first at the existing +1% / +20 won threshold, then
+# re-alert whenever severity worsens by another +0.5%p or +10 won.
+FX_STAGE_KRW_BASE = 20.0
+FX_STAGE_KRW_STEP = 10.0
+FX_STAGE_PCT_BASE = 1.0
+FX_STAGE_PCT_STEP = 0.5
 
 _ORIGINAL_ADD_EVENT = watch.add_event
 _ORIGINAL_KOSDAQ_HIT_KEYS = v10._kosdaq_hit_keys
@@ -156,10 +164,40 @@ def _flow_event_allowed(market: str) -> bool:
     return bool(_candidate_for(market).get("stable"))
 
 
+def _fx_escalation_event(key: str, text: str) -> tuple[str, str]:
+    if not (key.startswith("fx_daily_up:") or key.startswith("fx_daily_down:")):
+        return key, text
+
+    m = re.search(r"\(([+-]?[0-9,.]+)원,\s*([+-]?[0-9.]+)%\)", text)
+    if not m:
+        return key, text
+    try:
+        change_krw = abs(float(m.group(1).replace(",", "")))
+        change_pct = abs(float(m.group(2)))
+    except Exception:
+        return key, text
+
+    stage_krw = 0
+    if change_krw >= FX_STAGE_KRW_BASE:
+        stage_krw = int((change_krw - FX_STAGE_KRW_BASE) // FX_STAGE_KRW_STEP) + 1
+    stage_pct = 0
+    if change_pct >= FX_STAGE_PCT_BASE:
+        stage_pct = int((change_pct - FX_STAGE_PCT_BASE) // FX_STAGE_PCT_STEP) + 1
+    stage = max(stage_krw, stage_pct)
+    if stage <= 0:
+        return key, text
+
+    prefix, date = key.split(":", 1)
+    staged_key = f"{prefix}_stage{stage}:{date}"
+    staged_text = text + f" · <b>환율 변화 {stage}단계</b>"
+    return staged_key, staged_text
+
+
 def add_event_strict(events, key: str, text: str, source: str) -> None:
     if key.startswith("foreign1d_") or key.startswith("foreign3d_"):
         if not _flow_event_allowed("KOSPI"):
             return
+    key, text = _fx_escalation_event(key, text)
     _ORIGINAL_ADD_EVENT(events, key, text, source)
 
 
