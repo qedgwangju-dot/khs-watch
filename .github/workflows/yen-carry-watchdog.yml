@@ -6,9 +6,9 @@ on:
       - main
     paths:
       - ".github/workflows/yen-carry-watchdog.yml"
+      - ".github/workflows/yen-carry-recent-shock.yml"
   schedule:
     # Independent five-minute heartbeat, offset from the primary yen FX lanes.
-    # Same :04/:09/.../:59 cadence; compact syntax refreshes schedule registration.
     - cron: "4-59/5 * * * *"
   workflow_dispatch:
 
@@ -23,9 +23,10 @@ concurrency:
 jobs:
   watchdog:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,7 +38,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Check yen monitor heartbeat
+      - name: Evaluate independent yen market heartbeat
         run: |
           python - <<'PY'
           import datetime as dt
@@ -47,99 +48,314 @@ jobs:
 
           KST = ZoneInfo('Asia/Seoul')
           now = dt.datetime.now(KST)
-          source = pathlib.Path('data/yen_carry_recent_shock_state.json')
           prior_path = pathlib.Path('data/yen_carry_watchdog_state.json')
-          pending_path = pathlib.Path('out/yen_carry_watchdog_pending_state.json')
-          alert_path = pathlib.Path('out/yen_carry_watchdog_alert.txt')
-          status_path = pathlib.Path('out/yen_carry_watchdog_status.md')
-          pending_path.parent.mkdir(parents=True, exist_ok=True)
+          out = pathlib.Path('out')
+          out.mkdir(parents=True, exist_ok=True)
 
           try:
               prior = json.loads(prior_path.read_text(encoding='utf-8'))
           except Exception:
               prior = {}
 
-          stale_minutes = None
-          detail = ''
-          try:
-              state = json.loads(source.read_text(encoding='utf-8'))
-              raw = str(state.get('updated_at_kst') or '')
-              updated = dt.datetime.fromisoformat(raw)
-              if updated.tzinfo is None:
-                  updated = updated.replace(tzinfo=KST)
-              stale_minutes = max(0.0, (now - updated.astimezone(KST)).total_seconds() / 60.0)
-              detail = f'마지막 정상 상태 갱신 {updated.astimezone(KST).strftime("%Y-%m-%d %H:%M:%S KST")}'
-          except Exception as exc:
-              detail = f'상태 파일 읽기 실패: {type(exc).__name__}: {exc}'
+          def parse_time(value):
+              if not value:
+                  return None
+              try:
+                  parsed = dt.datetime.fromisoformat(str(value))
+                  if parsed.tzinfo is None:
+                      parsed = parsed.replace(tzinfo=KST)
+                  return parsed.astimezone(KST)
+              except Exception:
+                  return None
 
+          source_name = '독립 시장확인 heartbeat'
+          source_path = pathlib.Path('data/yen_carry_monitor_heartbeat.json')
+          fallback = pathlib.Path('data/yen_carry_recent_shock_state.json')
+          state = None
+          if source_path.exists():
+              try:
+                  state = json.loads(source_path.read_text(encoding='utf-8'))
+              except Exception:
+                  state = None
+          if not state:
+              source_name = '최근 충격 상태(heartbeat 전환기 대체)'
+              try:
+                  state = json.loads(fallback.read_text(encoding='utf-8'))
+              except Exception:
+                  state = {}
+
+          updated = parse_time((state or {}).get('updated_at_kst'))
+          stale_minutes = None if updated is None else max(0.0, (now - updated).total_seconds() / 60.0)
+          detail = (
+              '정상 갱신시각 확인 불가'
+              if updated is None
+              else f'마지막 정상 상태 갱신 {updated.strftime("%Y-%m-%d %H:%M:%S KST")}'
+          )
+
+          last_repair = parse_time(prior.get('last_repair_at_kst'))
+          repair_cooldown_minutes = 15.0
           repair_needed = stale_minutes is None or stale_minutes >= 10.0
-          stale = stale_minutes is None or stale_minutes >= 25.0
-          prior_active = bool(prior.get('alert_active'))
-          should_alert = stale and not prior_active
+          repair_allowed = repair_needed and (
+              last_repair is None or (now - last_repair).total_seconds() / 60.0 >= repair_cooldown_minutes
+          )
 
-          pending = {
-              'alert_active': stale,
+          initial = {
               'checked_at_kst': now.isoformat(timespec='seconds'),
+              'source_name': source_name,
+              'source_updated_at_kst': updated.isoformat(timespec='seconds') if updated else None,
+              'stale_minutes': stale_minutes,
+              'detail': detail,
+              'repair_needed': repair_needed,
+              'repair_allowed': repair_allowed,
+              'repair_cooldown_minutes': repair_cooldown_minutes,
+              'alert_after_minutes': 45.0,
+              'prior': prior,
+          }
+          (out / 'yen_carry_watchdog_initial.json').write_text(
+              json.dumps(initial, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          print(json.dumps({
+              'source': source_name,
               'stale_minutes': stale_minutes,
               'repair_needed': repair_needed,
-              'detail': detail,
-              'last_alert_at_kst': prior.get('last_alert_at_kst'),
-          }
-          if should_alert:
-              pending['last_alert_at_kst'] = now.isoformat(timespec='seconds')
-              age = '확인 불가' if stale_minutes is None else f'{stale_minutes:.0f}분'
-              alert_path.write_text(
-                  '🚨 엔화 감시 실행 장애 경보\n\n'
-                  f'조회 시각: {now.strftime("%Y-%m-%d %H:%M:%S KST")}\n'
-                  f'감시 상태: 최근 정상 갱신 이후 {age} 경과\n'
-                  f'{detail}\n\n'
-                  '판정: USD/JPY 감시가 25분 이상 정상 상태를 갱신하지 못했습니다. '
-                  '시장 경보가 없다는 뜻이 아니라 감시 공백 자체를 뜻합니다.\n'
-                  '조치: 장애 감시기가 10분 경과부터 기존 엔캐리 본 감시와 최근 충격 감시를 직접 재호출하며, '
-                  '복구 실행은 최근 6시간 5분봉을 재검사해 공백 중 -1%급 급락을 복원합니다.\n',
-                  encoding='utf-8',
-              )
-
-          pending_path.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-          status_path.write_text(
-              '# 엔화 감시 장애 감시기\n\n'
-              f'- 조회시각: {now.isoformat(timespec="seconds")}\n'
-              f'- 마지막 정상 갱신 경과: {"확인 불가" if stale_minutes is None else f"{stale_minutes:.1f}분"}\n'
-              f'- 자가복구 필요: {"예" if repair_needed else "아니오"}\n'
-              f'- 장애 상태: {"예" if stale else "아니오"}\n'
-              f'- 신규 장애 경보: {"예" if should_alert else "아니오"}\n',
-              encoding='utf-8',
-          )
-          print(json.dumps({'repair_needed': repair_needed, 'stale': stale, 'stale_minutes': stale_minutes, 'should_alert': should_alert}, ensure_ascii=False))
+              'repair_allowed': repair_allowed,
+          }, ensure_ascii=False))
           PY
 
-      - name: Self-heal stale yen monitor through existing routes
+      - name: Self-heal stale monitor and wait for the repair result
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          REPAIR_NEEDED="$(python - <<'PY'
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import subprocess
+          import time
+          from zoneinfo import ZoneInfo
+
+          KST = ZoneInfo('Asia/Seoul')
+          out = pathlib.Path('out')
+          initial = json.loads((out / 'yen_carry_watchdog_initial.json').read_text(encoding='utf-8'))
+          result = {
+              'attempted': False,
+              'attempted_at_kst': None,
+              'dispatch_errors': [],
+              'recovered': False,
+              'recovered_at_kst': None,
+              'final_source_updated_at_kst': initial.get('source_updated_at_kst'),
+              'final_stale_minutes': initial.get('stale_minutes'),
+              'wait_seconds': 0,
+          }
+
+          def parse_time(value):
+              if not value:
+                  return None
+              try:
+                  parsed = dt.datetime.fromisoformat(str(value))
+                  if parsed.tzinfo is None:
+                      parsed = parsed.replace(tzinfo=KST)
+                  return parsed.astimezone(KST)
+              except Exception:
+                  return None
+
+          def remote_state():
+              subprocess.run(['git', 'fetch', '-q', 'origin', 'main'], check=False)
+              for path in (
+                  'data/yen_carry_monitor_heartbeat.json',
+                  'data/yen_carry_recent_shock_state.json',
+              ):
+                  proc = subprocess.run(
+                      ['git', 'show', f'origin/main:{path}'],
+                      text=True,
+                      capture_output=True,
+                      check=False,
+                  )
+                  if proc.returncode != 0 or not proc.stdout.strip():
+                      continue
+                  try:
+                      state = json.loads(proc.stdout)
+                  except Exception:
+                      continue
+                  updated = parse_time(state.get('updated_at_kst'))
+                  if updated is None:
+                      continue
+                  now = dt.datetime.now(KST)
+                  age = max(0.0, (now - updated).total_seconds() / 60.0)
+                  return updated, age, path
+              return None, None, None
+
+          if initial.get('repair_allowed'):
+              result['attempted'] = True
+              result['attempted_at_kst'] = dt.datetime.now(KST).isoformat(timespec='seconds')
+              for workflow in ('yen-carry-alert.yml', 'yen-carry-recent-shock.yml'):
+                  proc = subprocess.run(
+                      ['gh', 'workflow', 'run', workflow, '--repo', os.environ['GITHUB_REPOSITORY'], '--ref', 'main'],
+                      text=True,
+                      capture_output=True,
+                      check=False,
+                  )
+                  if proc.returncode != 0:
+                      result['dispatch_errors'].append(
+                          f'{workflow}: {(proc.stderr or proc.stdout).strip() or "dispatch failed"}'
+                      )
+
+              # Do not declare an outage immediately after dispatching repair. The previous
+              # implementation sent the alert first and the repaired state often landed seconds later.
+              for attempt in range(12):
+                  time.sleep(10)
+                  result['wait_seconds'] = (attempt + 1) * 10
+                  updated, age, path = remote_state()
+                  if updated is not None:
+                      result['final_source_updated_at_kst'] = updated.isoformat(timespec='seconds')
+                      result['final_stale_minutes'] = age
+                  if age is not None and age < 10.0:
+                      result['recovered'] = True
+                      result['recovered_at_kst'] = dt.datetime.now(KST).isoformat(timespec='seconds')
+                      result['recovered_from'] = path
+                      break
+          else:
+              updated, age, path = remote_state()
+              if updated is not None:
+                  result['final_source_updated_at_kst'] = updated.isoformat(timespec='seconds')
+                  result['final_stale_minutes'] = age
+                  if age < 10.0 and initial.get('repair_needed'):
+                      result['recovered'] = True
+                      result['recovered_at_kst'] = dt.datetime.now(KST).isoformat(timespec='seconds')
+                      result['recovered_from'] = path
+
+          (out / 'yen_carry_watchdog_repair_result.json').write_text(
+              json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          print(json.dumps(result, ensure_ascii=False))
+          PY
+
+      - name: Recheck heartbeat and build an outage alert only if recovery failed
+        if: always()
+        run: |
+          python - <<'PY'
+          import datetime as dt
           import json
           import pathlib
-          path = pathlib.Path('out/yen_carry_watchdog_pending_state.json')
-          try:
-              value = bool(json.loads(path.read_text(encoding='utf-8')).get('repair_needed'))
-          except Exception:
-              value = True
-          print('true' if value else 'false')
+          import subprocess
+          from zoneinfo import ZoneInfo
+
+          KST = ZoneInfo('Asia/Seoul')
+          now = dt.datetime.now(KST)
+          out = pathlib.Path('out')
+          initial = json.loads((out / 'yen_carry_watchdog_initial.json').read_text(encoding='utf-8'))
+          repair = json.loads((out / 'yen_carry_watchdog_repair_result.json').read_text(encoding='utf-8'))
+          prior = initial.get('prior') or {}
+          alert_path = out / 'yen_carry_watchdog_alert.txt'
+          confirmed_path = out / 'yen_carry_watchdog_telegram_confirmed.json'
+          for path in (alert_path, confirmed_path):
+              if path.exists():
+                  path.unlink()
+
+          def parse_time(value):
+              if not value:
+                  return None
+              try:
+                  parsed = dt.datetime.fromisoformat(str(value))
+                  if parsed.tzinfo is None:
+                      parsed = parsed.replace(tzinfo=KST)
+                  return parsed.astimezone(KST)
+              except Exception:
+                  return None
+
+          def remote_state():
+              subprocess.run(['git', 'fetch', '-q', 'origin', 'main'], check=False)
+              for label, path in (
+                  ('독립 시장확인 heartbeat', 'data/yen_carry_monitor_heartbeat.json'),
+                  ('최근 충격 상태(heartbeat 전환기 대체)', 'data/yen_carry_recent_shock_state.json'),
+              ):
+                  proc = subprocess.run(
+                      ['git', 'show', f'origin/main:{path}'], text=True, capture_output=True, check=False
+                  )
+                  if proc.returncode != 0 or not proc.stdout.strip():
+                      continue
+                  try:
+                      state = json.loads(proc.stdout)
+                  except Exception:
+                      continue
+                  updated = parse_time(state.get('updated_at_kst'))
+                  if updated is not None:
+                      return label, updated
+              return initial.get('source_name') or '상태 파일', parse_time(initial.get('source_updated_at_kst'))
+
+          source_name, updated = remote_state()
+          stale_minutes = None if updated is None else max(0.0, (now - updated).total_seconds() / 60.0)
+          alert_after = float(initial.get('alert_after_minutes') or 45.0)
+          outage = stale_minutes is None or stale_minutes >= alert_after
+          prior_active = bool(prior.get('alert_active'))
+          should_alert = outage and not prior_active
+
+          last_alert = prior.get('last_alert_at_kst')
+          if should_alert:
+              last_alert = now.isoformat(timespec='seconds')
+              age = '확인 불가' if stale_minutes is None else f'{stale_minutes:.0f}분'
+              updated_text = '확인 불가' if updated is None else updated.strftime('%Y-%m-%d %H:%M:%S KST')
+              repair_text = (
+                  f"자가복구 재호출 후 {int(repair.get('wait_seconds') or 0)}초 재확인했지만 정상 갱신 미확인"
+                  if repair.get('attempted')
+                  else '자가복구 재호출 대기 중 또는 재시도 간격 내'
+              )
+              alert_path.write_text(
+                  '🚨 엔화 감시 실행 장애 경보\n\n'
+                  f'조회 시각: {now.strftime("%Y-%m-%d %H:%M:%S KST")}\n'
+                  f'감시 상태: 최근 정상 시장확인 이후 {age} 경과\n'
+                  f'마지막 정상 확인: {updated_text}\n\n'
+                  f'판정: 예약 실행·상태 갱신이 {int(alert_after)}분 이상 복구되지 않았습니다. '
+                  '시장 위험도가 올라갔다는 뜻이 아니라 감시 경로 자체의 운영 지연입니다.\n'
+                  f'조치: {repair_text}. 최근 충격 감시는 복구 실행 때 최근 6시간 5분봉을 다시 검사합니다.\n',
+                  encoding='utf-8',
+              )
+
+          last_repair = repair.get('attempted_at_kst') or prior.get('last_repair_at_kst')
+          last_recovered = prior.get('last_recovered_at_kst')
+          if repair.get('recovered'):
+              last_recovered = repair.get('recovered_at_kst') or now.isoformat(timespec='seconds')
+
+          persistent = {
+              'alert_active': outage,
+              'last_alert_at_kst': last_alert,
+              'last_repair_at_kst': last_repair,
+              'last_recovered_at_kst': last_recovered,
+              'last_failure_detail': (
+                  f'{source_name}: 마지막 정상 확인 {updated.isoformat(timespec="seconds") if updated else "확인 불가"}'
+                  if outage else None
+              ),
+          }
+          (out / 'yen_carry_watchdog_persistent_state.json').write_text(
+              json.dumps(persistent, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+
+          status = [
+              '# 엔화 감시 장애 감시기', '',
+              f'- 조회시각: {now.isoformat(timespec="seconds")}',
+              f'- 감시 기준: {source_name}',
+              f'- 마지막 정상 갱신 경과: {"확인 불가" if stale_minutes is None else f"{stale_minutes:.1f}분"}',
+              '- 자가복구 시작 기준: 10분',
+              '- 자가복구 재호출 간격: 최소 15분',
+              f'- 텔레그램 장애 경보 기준: {alert_after:.0f}분',
+              f'- 이번 자가복구 호출: {"예" if repair.get("attempted") else "아니오"}',
+              f'- 자가복구 성공: {"예" if repair.get("recovered") else "아니오"}',
+              f'- 장애 상태: {"예" if outage else "아니오"}',
+              f'- 신규 장애 경보: {"예" if should_alert else "아니오"}',
+          ]
+          if repair.get('dispatch_errors'):
+              status += ['', '## 자가복구 호출 오류'] + [f'- {x}' for x in repair['dispatch_errors']]
+          (out / 'yen_carry_watchdog_status.md').write_text('\n'.join(status) + '\n', encoding='utf-8')
+          print(json.dumps({
+              'stale_minutes': stale_minutes,
+              'outage': outage,
+              'should_alert': should_alert,
+              'repair_attempted': repair.get('attempted'),
+              'repair_recovered': repair.get('recovered'),
+          }, ensure_ascii=False))
           PY
-          )"
-          if [ "$REPAIR_NEEDED" = "true" ]; then
-            gh workflow run yen-carry-alert.yml \
-              --repo "${{ github.repository }}" \
-              --ref main
-            gh workflow run yen-carry-recent-shock.yml \
-              --repo "${{ github.repository }}" \
-              --ref main
-            echo "자가복구: 기존 엔캐리 본 감시와 최근 충격 감시를 직접 재호출했습니다." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "자가복구 불필요: 최근 충격 상태가 10분 이내입니다." >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Send watchdog alert through verified KHS Telegram route
         if: hashFiles('out/yen_carry_watchdog_alert.txt') != ''
@@ -177,12 +393,7 @@ jobs:
                       retryable = code is None or code == 429 or code >= 500
                       if not retryable or attempt >= attempts:
                           raise
-                      delay = min(2 ** attempt, 8)
-                      print(
-                          f'telegram_identity_retry={attempt}/{attempts} '
-                          f'error={type(exc).__name__} code={code} sleep={delay}s'
-                      )
-                      time.sleep(delay)
+                      time.sleep(min(2 ** attempt, 8))
               raise last_error
 
           identity = get_json_with_retry(f'https://api.telegram.org/bot{token}/getMe')
@@ -217,35 +428,35 @@ jobs:
           print(f'watchdog_telegram_delivery_confirmed=true bot=@{actual}')
           PY
 
-      - name: Finalize watchdog state
+      - name: Finalize watchdog incident state
         if: always()
         run: |
           python - <<'PY'
           import pathlib
 
-          pending = pathlib.Path('out/yen_carry_watchdog_pending_state.json')
+          persistent = pathlib.Path('out/yen_carry_watchdog_persistent_state.json')
           alert = pathlib.Path('out/yen_carry_watchdog_alert.txt')
           confirmed = pathlib.Path('out/yen_carry_watchdog_telegram_confirmed.json')
           target = pathlib.Path('data/yen_carry_watchdog_state.json')
-          if not pending.exists():
-              raise RuntimeError('watchdog pending state missing')
+          if not persistent.exists():
+              raise RuntimeError('watchdog persistent state missing')
           if alert.exists() and not confirmed.exists():
               print('watchdog_state_not_advanced=telegram_unconfirmed')
           else:
-              target.write_text(pending.read_text(encoding='utf-8'), encoding='utf-8')
+              target.write_text(persistent.read_text(encoding='utf-8'), encoding='utf-8')
               print('watchdog_state_finalized=true')
           PY
 
-      - name: Commit watchdog state
+      - name: Commit watchdog incident state only when it changes
         if: always() && hashFiles('data/yen_carry_watchdog_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/yen_carry_watchdog_state.json
           if git diff --cached --quiet; then
-            echo "엔화 감시 장애 상태 변경 없음"
+            echo "엔화 감시 장애 사건 상태 변경 없음 — 불필요한 5분 heartbeat 커밋 생략"
           else
-            git commit -m "Update yen carry watchdog state"
+            git commit -m "Update yen carry watchdog incident state"
             for attempt in 1 2 3; do
               if git pull --rebase origin main && git push; then
                 exit 0
@@ -262,3 +473,17 @@ jobs:
           if [ -f out/yen_carry_watchdog_status.md ]; then
             cat out/yen_carry_watchdog_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
+
+      - name: Upload watchdog verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yen-carry-watchdog-${{ github.run_id }}
+          path: |
+            out/yen_carry_watchdog_initial.json
+            out/yen_carry_watchdog_repair_result.json
+            out/yen_carry_watchdog_status.md
+            out/yen_carry_watchdog_alert.txt
+            out/yen_carry_watchdog_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
