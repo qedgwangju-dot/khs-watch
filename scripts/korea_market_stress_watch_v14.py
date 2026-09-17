@@ -5,7 +5,6 @@ import datetime as dt
 import html
 import re
 from typing import Any
-from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
@@ -16,19 +15,17 @@ watch = v13.watch
 
 KSURE_FX_LIST = "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxlist?page={page}"
 KSURE_FX_VIEW = "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id={id}"
+VALIDATION_FOOTER = "• 검증 원칙: 값의 시장·시점·산출방식을 확인한 뒤 사용하며, 서로 다른 기준값은 혼용하지 않음"
 _original_fetch_usdkrw = watch.fetch_usdkrw
 
 
 def _extract_krw_rate(text: str) -> float | None:
-    # Prefer explicit 1,xxx원 values in headlines such as
-    # '원/달러 환율 9.2원 오른 1,368.6원' or '달러-원 ... 1,368.60원'.
     vals = re.findall(r"(?<!\d)([12],\d{3}(?:\.\d+)?)\s*원", text)
     if vals:
         try:
             return float(vals[-1].replace(",", ""))
         except Exception:
             pass
-    # Foreign-exchange table detail: '미국 달러* | 1,368.60'.
     m = re.search(r"미국\s*달러\*?.{0,80}?([12],\d{3}(?:\.\d+)?)", text, re.S)
     if m:
         try:
@@ -39,12 +36,7 @@ def _extract_krw_rate(text: str) -> float | None:
 
 
 def fetch_seoul_prev_close(now: dt.datetime | None = None) -> dict[str, Any]:
-    """Find the latest Seoul USD/KRW 15:30 close before today.
-
-    Source is KSURE's public FX news feed, which republishes Seoul Foreign
-    Exchange Brokerage / Infomax close data. We deliberately reject 06:00
-    night-session closes and use the 15:30 Seoul session close only.
-    """
+    """Find the latest Seoul USD/KRW 15:30 close before today."""
     now = now or dt.datetime.now(watch.KST)
     today = now.date()
     candidates: list[tuple[dt.date, int, str, str]] = []
@@ -77,8 +69,6 @@ def fetch_seoul_prev_close(now: dt.datetime | None = None) -> dict[str, Any]:
             page_candidates.append((day, hhmm, item_id, title))
         if page_candidates:
             candidates.extend(page_candidates)
-            # List is reverse chronological; once a prior-day close appears,
-            # the latest valid prior session is already represented.
             break
 
     if not candidates:
@@ -87,7 +77,6 @@ def fetch_seoul_prev_close(now: dt.datetime | None = None) -> dict[str, Any]:
     for day, hhmm, item_id, title in sorted(candidates, reverse=True):
         rate = _extract_krw_rate(title)
         detail_url = KSURE_FX_VIEW.format(id=item_id)
-        detail_text = ""
         if rate is None:
             rr = requests.get(detail_url, headers=watch.HEADERS, timeout=25)
             rr.raise_for_status()
@@ -107,8 +96,6 @@ def fetch_seoul_prev_close(now: dt.datetime | None = None) -> dict[str, Any]:
 
 def fetch_usdkrw_seoul_basis() -> dict[str, Any]:
     live = _original_fetch_usdkrw()
-    # Preserve Naver's previous published value for diagnostics only; it is not
-    # the Seoul 15:30 spot close and must not drive the ±20원/±1% market alert.
     naver_prev_date = live.get("prev_date")
     naver_prev_value = live.get("prev_value")
     try:
@@ -204,27 +191,24 @@ def _append_fx_basis_note() -> None:
         fx = (pending.get("snapshot") or {}).get("usdkrw") or {}
     except Exception:
         return
-    if not fx.get("comparison_basis"):
-        return
     text = watch.ALERT_PATH.read_text(encoding="utf-8").rstrip()
-    note = (
-        f"\n• 환율 일간 비교 기준: <b>{html.escape(str(fx['comparison_basis']))}</b>"
-        f" — 전일 {float(fx['prev_value']):,.1f}원 → 현재 {float(fx['value']):,.1f}원"
-    )
-    src = str(fx.get("seoul_close_source") or "")
-    if src:
-        note += f' / <a href="{html.escape(src, quote=True)}">전일 서울 종가 근거</a>'
-    watch.ALERT_PATH.write_text(text + note + "\n", encoding="utf-8")
+    note = ""
+    if fx.get("comparison_basis"):
+        note = (
+            f"\n• 환율 일간 비교 기준: <b>{html.escape(str(fx['comparison_basis']))}</b>"
+            f" — 전일 {float(fx['prev_value']):,.1f}원 → 현재 {float(fx['value']):,.1f}원"
+        )
+        src = str(fx.get("seoul_close_source") or "")
+        if src:
+            note += f' / <a href="{html.escape(src, quote=True)}">전일 서울 종가 근거</a>'
+    footer = "\n" + VALIDATION_FOOTER
+    watch.ALERT_PATH.write_text(text + note + footer + "\n", encoding="utf-8")
 
 
 def main() -> int:
-    # Replace the old Naver day-row comparison with Seoul 15:30 spot-close basis.
     original_fx_fetcher = watch.fetch_usdkrw
     watch.fetch_usdkrw = fetch_usdkrw_seoul_basis
 
-    # v12 has a legacy direct Telegram sender. Suppress it here so LS/source
-    # post-processing and Korean headline translation finish before the workflow
-    # sends the final artifact through the configured target bot.
     legacy_module = v13.core.v12
     original_sender = legacy_module._send_market_alert_to_target
     legacy_module._send_market_alert_to_target = lambda: None
