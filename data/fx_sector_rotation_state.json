@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-17",
+  "fx_samples": [
+    {
+      "ts": "2026-09-17T11:44:35+09:00",
+      "value": 1379.8
+    }
+  ],
+  "sent_level": 0,
+  "sent_weakening": false,
+  "last_signal": null,
+  "latest": {
+    "checked_at": "2026-09-17T11:44:35+09:00",
+    "fx": {
+      "value": 1379.8,
+      "prev_close": 1377.5,
+      "date": "2026-09-17",
+      "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5"
+    },
+    "session_low": 1379.8,
+    "rebound_krw": 0.0,
+    "rebound_pct": 0.0,
+    "daily_krw": 2.2999999999999545,
+    "daily_pct": 0.16696914700544685,
+    "kospi_pct": 0.23,
+    "ship": {
+      "avg": 5.4750000000000005,
+      "positive": 4,
+      "relative": 5.245,
+      "valid": 4,
+      "confirmed": true
+    },
+    "defense": {
+      "avg": 4.595,
+      "positive": 4,
+      "relative": 4.364999999999999,
+      "valid": 4,
+      "confirmed": true
+    },
+    "counter": {
+      "avg": 0.41999999999999993,
+      "positive": 3,
+      "relative": 0.18999999999999992,
+      "valid": 4,
+      "confirmed": false
+    }
+  }
+}
