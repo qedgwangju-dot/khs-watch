@@ -15,7 +15,9 @@ DUAL_SOURCE_TOLERANCE_EOK = 1.0
 FALLBACK_STABILITY_TOLERANCE_EOK = 1.0
 FALLBACK_MIN_OBSERVATIONS = 2
 FALLBACK_MIN_MINUTES = 10.0
-FINAL_START = dt.time(18, 10)
+# KRX current public page says same-day final investor trading data are provided after 20:00.
+# Use 20:10 KST as a conservative confirmation gate.
+FINAL_START = dt.time(20, 10)
 
 _ORIGINAL_ADD_EVENT = watch.add_event
 _ORIGINAL_KOSDAQ_HIT_KEYS = v10._kosdaq_hit_keys
@@ -127,7 +129,7 @@ def _candidate_for(market: str) -> dict[str, Any]:
 
     if now.time() < FINAL_START:
         result["stable"] = False
-        result["reason"] = "18:10 이전 · 장마감 최종 수급 판정 전"
+        result["reason"] = "20:10 이전 · KRX 최종 수급 확인 전"
 
     _candidate_cache[market] = result
     return result
@@ -162,7 +164,7 @@ def market_flow_lines_strict(
         return lines
     cand = _candidate_for(market)
     status = str((flow.get("ls_validation") or {}).get("status") or "")
-    if status == "ls_fallback" and not cand.get("stable"):
+    if not cand.get("stable"):
         out: list[str] = []
         replace_next = False
         for line in lines:
@@ -177,11 +179,11 @@ def market_flow_lines_strict(
             if line.startswith("• LS t1601 대체값 사용"):
                 out.append(
                     f"• LS t1601 잠정 대체값  <b>{float((flow.get('ls_validation') or {}).get('ls_daily_eok') or 0):+,.0f}억원</b>"
-                    f" — 네이버 실패 · 연속 확인 {int(cand.get('observations') or 1)}/{FALLBACK_MIN_OBSERVATIONS}"
+                    f" — 최종 확인 전 · 연속 확인 {int(cand.get('observations') or 0)}/{FALLBACK_MIN_OBSERVATIONS}"
                 )
                 continue
             out.append(line)
-        out.append("• 확정 규칙: LS 단독 대체값은 최소 10분 간격 2회 연속 동일 확인 후에만 수급 경보·3일 누적 확정")
+        out.append("• 확정 규칙: 20:10 이후에만 최종 수급 판정 · 네이버 실패 시 LS 단독값은 최소 10분 간격 2회 연속 동일 확인 필요")
         return out
     if status == "ls_fallback" and cand.get("stable"):
         return [
@@ -225,8 +227,6 @@ def _persist_candidates_and_final_history() -> None:
             if d:
                 by_date[d] = val
 
-        # Never retain a current-day value from an older, less strict version
-        # unless today's value has passed v16 confirmation.
         if not cand.get("stable"):
             by_date.pop(today, None)
 
@@ -261,7 +261,6 @@ def _persist_candidates_and_final_history() -> None:
                 flow["finality"] = "잠정"
             snap[key] = flow
 
-    # If either market is still provisional, do not carry today's flow keys as active.
     active = list(pending.get("active_keys") or [])
     if not _candidate_for("KOSPI").get("stable"):
         active = [x for x in active if not (today in str(x) and (str(x).startswith("foreign1d_") or str(x).startswith("foreign3d_")))]
@@ -271,8 +270,8 @@ def _persist_candidates_and_final_history() -> None:
 
     pending["final_flow_history"] = final_root
     snap["flow_finality_rule"] = (
-        "KRX 투자자별 거래실적의 당일 최종 매매내역 제공 시각(오후 6시 이후)에 맞춰 18:10 이후 판정. "
-        "네이버+LS t1601이 1억원 이내 일치하면 즉시 확정, 네이버 실패 시 LS 단독값이 최소 10분 간격 2회 연속 동일해야 확정. "
+        "KRX 투자자별 거래실적의 현재 공개 안내(당일 최종 매매내역 오후 8시 이후)에 맞춰 20:10 이후에만 최종 판정. "
+        "네이버+LS t1601이 1억원 이내 일치하면 확정, 네이버 실패 시 LS 단독값이 최소 10분 간격 2회 연속 동일해야 확정. "
         "3거래일 누적은 final_flow_history의 확정 일별값만 합산. 기준 시장은 KRX(KOSPI/KOSDAQ)이며 KRX+NXT 합산 수치와 혼용하지 않음."
     )
     pending["snapshot"] = snap
@@ -293,12 +292,16 @@ def _postprocess_source_note() -> None:
     if not watch.ALERT_PATH.exists():
         return
     text = watch.ALERT_PATH.read_text(encoding="utf-8")
+    text = text.replace(
+        "• 판정 시점: 두 시장 모두 18:10 이후 장마감 수급 피드",
+        "• 판정 시점: 두 시장 모두 <b>20:10 이후 최종 수급 확인</b> — 그 전 값은 잠정",
+    )
     old = (
         "• 수급 숫자 검증: <b>18:10 이후 네이버 장마감값 + LS증권 OpenAPI t1601 투자자별종합 교차검증</b>"
         " / 네이버 실패 시 LS 대체 / 유의한 불일치 시 임계치 판정 보류"
     )
     new = (
-        "• 수급 숫자 검증: <b>KRX 시장 기준 · 18:10 이후 네이버 + LS증권 t1601 엄격 교차검증</b>"
+        "• 수급 숫자 검증: <b>KRX 시장 기준 · 20:10 이후 네이버 + LS증권 t1601 엄격 교차검증</b>"
         " / 1억원 이내 일치 시 확정 / 네이버 실패 시 LS 단독값 10분 이상 간격 2회 연속 동일 확인 후 확정"
         " / 3거래일 누적은 확정 일별값만 합산 / KRX+NXT 합산 수치와 혼용하지 않음"
     )
