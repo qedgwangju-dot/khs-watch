@@ -63,6 +63,19 @@ def _display_ko(value: str) -> str:
     s = re.sub(r'\bPollen\b', '폴렌 로보틱스', s, flags=re.I)
     s = re.sub(r'창업자\s+X\s+1차', '설립자 엑스(X) 1차', s, flags=re.I)
 
+    s = re.sub(
+        r'Brett\s+Adcock\s*\(Figure\s+AI/X\)',
+        '브렛 애드콕(피겨 AI 설립자·엑스)',
+        s,
+        flags=re.I,
+    )
+    s = re.sub(r'\bFigure\s+AI\b', '피겨 AI', s, flags=re.I)
+    s = re.sub(r'\bFigure\s+Robotics\b', '피겨 AI', s, flags=re.I)
+    s = re.sub(r'\bFigure\s+03\b', '피겨 03', s, flags=re.I)
+    s = re.sub(r'\bFigure\s+02\b', '피겨 02', s, flags=re.I)
+    s = re.sub(r'\bFigure\s+01\b', '피겨 01', s, flags=re.I)
+    s = re.sub(r'\bBrett\s+Adcock\b', '브렛 애드콕', s, flags=re.I)
+
     s = re.sub(r'\bReuters\b', '로이터', s, flags=re.I)
     s = re.sub(r'\bSoftBank\b', '소프트뱅크', s, flags=re.I)
     s = re.sub(r'\binitial\s+public\s+offering\b', '기업공개', s, flags=re.I)
