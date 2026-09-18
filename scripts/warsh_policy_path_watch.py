@@ -10,6 +10,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 STATE_PATH = Path('data/warsh_policy_path_watch_state.json')
+FOMC_STATE_PATH = Path('data/warsh_fomc_event_watch_state.json')
 FEDWATCH_URL = 'https://www.frenzycap.com/fedwatch'
 CME_URL = 'https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html'
 FED_CALENDAR = 'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'
@@ -65,12 +66,18 @@ def parse_date(s):
 
 def probability_from_row(prob_cell, change_bp):
     nums=[float(x) for x in re.findall(r'(\d+(?:\.\d+)?)\s*%',prob_cell or '')]
+    # The source probability cell is the meeting outcome distribution. When it
+    # provides explicit probabilities (for example 46% / 54%), use that
+    # distribution directly. Do not convert a cumulative bp move into a fake
+    # "100% hike probability".
+    if len(nums)>=2:
+        return max(0.0,min(100.0,nums[-1]))
     if 0 <= change_bp <= 25:
-        if len(nums)>=2:return max(0.0,min(100.0,nums[-1]))
-        return change_bp/25*100
+        return max(0.0,min(100.0,change_bp/25*100))
     if -25 <= change_bp < 0:
         return 0.0
-    if change_bp > 25:return 100.0
+    if change_bp > 25:
+        return 100.0
     return 0.0
 
 def parse_snapshot():
@@ -101,24 +108,36 @@ def parse_snapshot():
     if not meetings:raise RuntimeError('연방기금금리 선물 회의별 경로 파싱 실패')
     return {'effr':effr,'meetings':meetings[:6],'url':final}
 
+def official_policy_baseline():
+    try:
+        state=json.loads(FOMC_STATE_PATH.read_text(encoding='utf-8'))
+        cur=state.get('current_statement') or {}
+        mid=cur.get('mid'); date=cur.get('date')
+        if mid is not None and date:
+            return {'mid':float(mid),'date':str(date),'source':cur.get('url'),'kind':'연준 공식 목표범위 중간값'}
+    except Exception:
+        pass
+    return None
+
 def classify(snap):
-    ms=snap['meetings']; effr=snap['effr']; today=datetime.now(timezone.utc).date().isoformat()
+    ms=snap['meetings']; effr=snap['effr']
     y26=[m for m in ms if m['date'].startswith('2026-')]
     last26=y26[-1] if y26 else ms[-1]
-    first=ms[0]
-    if today <= first['date'] and first['change_bp'] >= 12.5:
-        extra=(last26['post_rate']-first['post_rate'])*100
-        if extra < 6.25: verdict='첫 인상 후 종료 쪽'
-        elif extra < 18.75: verdict='첫 인상 뒤 추가 인상 일부 반영'
-        else: verdict='첫 인상 뒤 연내 추가 인상 1회 이상 반영'
-        basis='첫 향후 회의 인상 기대를 제외한 뒤 연말까지의 추가 기대'
+    official=official_policy_baseline()
+    if official and official['date'] <= datetime.now(timezone.utc).date().isoformat():
+        base=float(official['mid'])
+        extra=(last26['post_rate']-base)*100
+        basis=f"{official['date']} FOMC 인상 후 공식 목표범위 중간값에서 연말까지의 누적 기대"
+        base_kind=official['kind']; base_date=official['date']; base_source=official.get('source')
     else:
-        extra=(last26['post_rate']-effr)*100
-        if extra < 6.25: verdict='현재부터 추가 인상 종료 쪽'
-        elif extra < 18.75: verdict='현재부터 추가 인상 일부 반영'
-        else: verdict='현재부터 연내 추가 인상 1회 이상 반영'
-        basis='현재 유효 연방기금금리에서 연말까지의 추가 기대'
-    return {'verdict':verdict,'extra_bp':extra,'basis':basis}
+        base=effr
+        extra=(last26['post_rate']-base)*100
+        basis='선물 소스의 현재 유효 연방기금금리에서 연말까지의 누적 기대'
+        base_kind='선물 소스 EFFR'; base_date=None; base_source=snap.get('url')
+    if extra < 6.25: verdict='현재부터 추가 인상 종료 쪽'
+    elif extra < 18.75: verdict='현재부터 추가 인상 일부 반영'
+    else: verdict='현재부터 연내 추가 인상 1회 이상 반영'
+    return {'verdict':verdict,'extra_bp':extra,'basis':basis,'baseline_rate':base,'baseline_kind':base_kind,'baseline_date':base_date,'baseline_source':base_source}
 
 def load_state():
     try:return json.loads(STATE_PATH.read_text(encoding='utf-8')) if STATE_PATH.exists() else {}
@@ -147,21 +166,18 @@ def ko_date(date_text):
         return f'{d.year}년 {d.month}월 {d.day}일'
     except:return date_text
 
-def fmt_meeting(m):
-    p=m['hike25_prob']; ch=m['change_bp']
-    if 0 <= ch <= 25:
-        prob=f'0.25%포인트 인상 확률 약 {p:.0f}%'
-    elif ch > 25:
-        prob='최소 0.25%포인트 인상은 사실상 전부 반영 · 추가 인상 기대 포함'
-    elif -25 <= ch < 0:
-        prob='인상 확률 낮음 · 완화 방향 기대 포함'
-    else:prob='비정형 경로'
-    return f"• {ko_date(m['date'])} | {prob} | 확률가중 기대변화 {ch:+.0f}bp | 회의 후 유효 연방기금금리 {m['post_rate']:.3f}%"
+def fmt_meeting(m, baseline):
+    p=m['hike25_prob']
+    cumulative=(float(m['post_rate'])-float(baseline))*100
+    prob=f'0.25%포인트 인상 확률 약 {p:.0f}%'
+    return f"• {ko_date(m['date'])} | {prob} | 현재 공식 기준 대비 누적 기대 {cumulative:+.1f}bp | 회의 후 금리 기대 {m['post_rate']:.3f}%"
 
 def message(snap, cls):
-    lines=['<b>[Warsh 정책금리 경로 변화]</b>',f"현재 유효 연방기금금리(EFFR) {snap['effr']:.3f}%",'',f"<b>핵심 판정: {html.escape(cls['verdict'])}</b>",
-           f"• {html.escape(cls['basis'])}: {cls['extra_bp']:+.0f}bp",'', '<b>선물시장 경로</b>']
-    lines += [fmt_meeting(m) for m in snap['meetings'][:4]]
+    lines=['<b>[Warsh 정책금리 경로 변화]</b>',
+           f"공식 기준금리 중심값 {cls['baseline_rate']:.3f}% ({html.escape(cls['baseline_kind'])})",'',
+           f"<b>핵심 판정: {html.escape(cls['verdict'])}</b>",
+           f"• {html.escape(cls['basis'])}: {cls['extra_bp']:+.1f}bp",'', '<b>선물시장 경로</b>']
+    lines += [fmt_meeting(m, cls['baseline_rate']) for m in snap['meetings'][:4]]
     lines += ['', '<b>읽는 법</b>',
               '• “확률 %”는 특정 금리결정이 일어날 가능성이고, “bp”는 그 확률을 반영한 기대 금리변화입니다. 둘은 같은 숫자가 아닙니다.',
               '• 예: 0.25%포인트 인상확률 84%라면 확률가중 기대변화는 약 +21bp입니다.',
