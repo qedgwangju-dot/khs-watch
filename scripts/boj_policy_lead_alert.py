@@ -1111,7 +1111,6 @@ def korean_event_title(signal: Signal) -> str:
 def next_official_check(now: dt.datetime) -> str:
     schedule = [
         (dt.datetime(2026, 9, 18, 15, 30, tzinfo=KST), "우에다 총재 기자회견 9월 18일 15:30 KST"),
-        (dt.datetime(2026, 9, 24, 8, 50, tzinfo=KST), "9월 회의 기자회견 기록 공개 9월 24일"),
         (dt.datetime(2026, 10, 1, 8, 50, tzinfo=KST), "9월 회의 주요 의견 10월 1일 08:50 JST"),
         (dt.datetime(2026, 10, 29, 0, 0, tzinfo=KST), "다음 금융정책결정회의 10월 29~30일"),
         (dt.datetime(2026, 11, 10, 8, 50, tzinfo=KST), "10월 회의 주요 의견 11월 10일 08:50 JST"),
