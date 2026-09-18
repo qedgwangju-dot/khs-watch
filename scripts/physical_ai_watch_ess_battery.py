@@ -59,6 +59,7 @@ _orig_category = base.category
 _orig_meaning = base.meaning
 _orig_risk = base.risk
 _orig_verification = base.verification
+_orig_key = base.key
 _orig_same_event = ext._same_event
 
 ESS_RE = re.compile(r'\bESS\b|\bBESS\b|energy storage|battery storage|에너지저장|에너지 저장|에너지저장장치|储能', re.I)
@@ -71,6 +72,16 @@ MLCC_CAPACITY = re.compile(r'증설|생산\s*능력|capacity|가동률|utilizati
 MLCC_RELIEF = re.compile(r'이중\s*조달|dual\s*sourcing|재고\s*조정|inventory\s*correction|공급\s*정상화|normalization|가격\s*하락|price\s*cut|lead\s*time.*shorten|납기.*단축', re.I)
 MLCC_RELIABILITY = re.compile(r'고전압|high\s*voltage|고신뢰성|high\s*reliability|고온|high\s*temperature|검사|test|수율|yield|절연|insulation', re.I)
 HUMANOID_RE = re.compile(r'휴머노이드|humanoid|로봇용 배터리|robot battery|robotics battery', re.I)
+KOREA_CONTRACT_RE = re.compile(r'계약|공급|수주|purchase|supply|contract|order', re.I)
+LFP_RE = re.compile(r'\bLFP\b|리튬인산철|磷酸铁锂', re.I)
+SKON_RE = re.compile(r'SK온|SK\s*On|에스케이온', re.I)
+LNF_RE = re.compile(r'엘앤에프|L&F|L\s*and\s*F', re.I)
+
+def _skon_lnf_lfp_contract(text: str) -> bool:
+    return bool(SKON_RE.search(text) and LNF_RE.search(text) and LFP_RE.search(text) and KOREA_CONTRACT_RE.search(text))
+
+SKON_LNF_LFP_KEY = 'ess|skon-lnf|lfp-cathode|2026-09-17|1617eok'
+
 
 
 def _is_mlcc_ess(text: str) -> bool:
@@ -247,6 +258,9 @@ def _same_event(a: dict, b: dict) -> bool:
     ta = f"{a.get('title','')} {a.get('description','')}"
     tb = f"{b.get('title','')} {b.get('description','')}"
 
+    if _skon_lnf_lfp_contract(ta) and _skon_lnf_lfp_contract(tb):
+        return True
+
     if _is_mlcc_ess(ta) and _is_mlcc_ess(tb):
         axes = [MLCC_SHORTAGE, MLCC_PRICE, MLCC_CONTRACT, MLCC_CAPACITY, MLCC_RELIEF, MLCC_RELIABILITY]
         same_axis = any(rx.search(ta) and rx.search(tb) for rx in axes)
@@ -270,12 +284,22 @@ def _same_event(a: dict, b: dict) -> bool:
     return False
 
 
+
+def key(item: dict) -> str:
+    text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if _skon_lnf_lfp_contract(text):
+        import hashlib
+        return hashlib.sha256(SKON_LNF_LFP_KEY.encode()).hexdigest()
+    return _orig_key(item)
+
+
 base.topic_group = topic_group
 base.score = score
 base.category = category
 base.meaning = meaning
 base.risk = risk
 base.verification = verification
+base.key = key
 ext._same_event = _same_event
 
 if __name__ == '__main__':
