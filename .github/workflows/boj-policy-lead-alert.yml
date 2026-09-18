@@ -4,7 +4,7 @@ on:
   schedule:
     # Dedicated BOJ policy-path lane. GitHub cron is UTC; offset from yen-carry jobs.
     # Avoid the start-of-hour high-load window documented by GitHub Actions.
-    - cron: "3,8,13,18,23,28,33,38,43,48,53,58 * * * *"
+    - cron: "3-58/5 * * * *"
   workflow_dispatch:
   push:
     paths:
