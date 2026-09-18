@@ -5,6 +5,8 @@ on:
     paths:
       - ".github/workflows/memory-spot-cycle-telegram-watch.yml"
       - "scripts/memory_spot_cycle_watch.py"
+      - "scripts/apple_memory_procurement_watch.py"
+      - "data/apple_memory_procurement_watch_state.json"
   schedule:
     - cron: "*/30 * * * *"
   workflow_dispatch:
@@ -40,12 +42,17 @@ jobs:
           python-version: "3.12"
 
       - name: Validate watcher
-        run: python -m py_compile scripts/memory_spot_cycle_watch.py
+        run: |
+          python -m py_compile scripts/memory_spot_cycle_watch.py
+          python -m py_compile scripts/apple_memory_procurement_watch.py
 
       - name: Scan memory spot, contract and HBM supply signals
         env:
           FORCE_NOTIFY: ${{ inputs.force_notify }}
         run: python scripts/memory_spot_cycle_watch.py
+
+      - name: Scan Apple memory procurement and contract-price signals
+        run: python scripts/apple_memory_procurement_watch.py
 
       - name: Publish watcher summary
         if: always()
@@ -54,6 +61,10 @@ jobs:
             cat out/memory_spot_cycle_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo "메모리 웹 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/apple_memory_procurement_watch_status.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/apple_memory_procurement_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/memory_spot_cycle_watch_telegram.txt ]; then
             printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -143,12 +154,20 @@ jobs:
         if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') != '' && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('out/memory_spot_cycle_watch_pending_state.json') != ''
         run: cp out/memory_spot_cycle_watch_pending_state.json data/memory_spot_cycle_watch_state.json
 
-      - name: Commit confirmed watcher state
-        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('data/memory_spot_cycle_watch_state.json') != ''
+      - name: Persist Apple memory state after confirmed Telegram delivery
+        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') != '' && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_memory_procurement_watch_pending_state.json') != ''
+        run: cp out/apple_memory_procurement_watch_pending_state.json data/apple_memory_procurement_watch_state.json
+
+      - name: Persist Apple memory no-alert state
+        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') == '' && hashFiles('out/apple_memory_procurement_watch_pending_state.json') != ''
+        run: cp out/apple_memory_procurement_watch_pending_state.json data/apple_memory_procurement_watch_state.json
+
+      - name: Commit watcher state
+        if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/memory_spot_cycle_watch_state.json
+          git add data/memory_spot_cycle_watch_state.json data/apple_memory_procurement_watch_state.json
           if git diff --cached --quiet; then
             echo "Memory watch state unchanged"
           else
@@ -170,6 +189,9 @@ jobs:
           name: memory-spot-cycle-watch-${{ github.run_id }}
           path: |
             out/memory_spot_cycle_watch_status.md
+            out/apple_memory_procurement_watch_status.md
+            out/apple_memory_procurement_watch_alert.html
+            out/apple_memory_procurement_watch_pending_state.json
             out/memory_spot_cycle_watch_telegram.txt
             out/memory_spot_cycle_watch_pending_state.json
             out/memory_spot_cycle_watch_telegram_confirmed.json
