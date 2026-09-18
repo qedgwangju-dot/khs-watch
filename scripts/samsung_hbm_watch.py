@@ -61,12 +61,19 @@ QUERIES = [
     '"SK hynix" HBM Bernstein export Chungbuk Icheon',
     '"SK하이닉스" HBM 충북 이천 수출 Bernstein',
     '"South Chungcheong" "North Chungcheong" Icheon HBM export',
+    '"Icheon" "SK hynix" (HBM OR memory OR semiconductor) (export OR shipment OR revenue)',
+    '"이천" "SK하이닉스" (HBM OR 메모리 OR 반도체) (수출 OR 출하 OR 매출)',
+    '"이천" 반도체 수출 한국무역협회',
+    '"이천" 반도체 수출 TRASS',
+    '"이천" HBM Bernstein',
 ]
 
 TRUSTED = (
     "samsung", "reuters", "bloomberg", "trendforce", "counterpoint", "investing.com",
     "sedaily", "seoul economic", "zdnet", "the elec", "thelec", "digitimes",
-    "yonhap", "연합뉴스", "chosunbiz", "조선비즈",
+    "yonhap", "연합뉴스", "chosunbiz", "조선비즈", "newsis", "뉴시스",
+    "kita", "한국무역협회", "k-stat", "trass", "한국무역통계진흥원",
+    "customs", "관세청", "icheon", "이천시",
 )
 
 LOW_VALUE = ("aol", "finance.biggo", "24/7 wall st", "247wallst", "cryptobriefing")
@@ -142,7 +149,7 @@ def relevant(text: str) -> bool:
     low = text.lower()
     company = (
         "samsung" in low or "삼성전자" in low or "삼성" in low
-        or "sk hynix" in low or "sk hynix" in low or "sk하이닉스" in low
+        or "sk hynix" in low or "sk하이닉스" in low
     )
     hbm = "hbm" in low
     signal = any(k in low for k in (
@@ -150,7 +157,12 @@ def relevant(text: str) -> bool:
         "market share", "revenue", "export", "mix", "allocation", "contract", "price",
         "출하", "양산", "인증", "검증", "고객", "점유율", "매출", "수출", "비중", "계약", "가격",
     ))
-    return company and hbm and signal
+    icheon_proxy = (
+        ("icheon" in low or "이천" in low)
+        and ("sk hynix" in low or "sk하이닉스" in low or "semiconductor" in low or "반도체" in low or "memory" in low or "메모리" in low)
+        and any(k in low for k in ("export", "shipment", "revenue", "production", "수출", "출하", "매출", "생산"))
+    )
+    return (company and hbm and signal) or icheon_proxy
 
 
 def read_events() -> list[dict]:
@@ -660,7 +672,11 @@ def _unit_value(amount: float | None, weight: float | None) -> float | None:
 
 def classify_event(e: dict) -> tuple[str, str]:
     text = f"{e.get('title','')} {e.get('description','')}".lower()
-    if "bernstein" in text or ("chung" in text and "export" in text) or "충남" in text or "충북" in text or "이천" in text:
+    if ("icheon" in text or "이천" in text) and "hbm" in text:
+        return "이천 HBM 정밀 보강", "이천 SK하이닉스 HBM 직접·정밀 대용지표 변화"
+    if ("icheon" in text or "이천" in text) and any(k in text for k in ("semiconductor", "memory", "반도체", "메모리")):
+        return "이천 반도체 보조지표", "이천 SK하이닉스 생산·수출 보조지표 변화"
+    if "bernstein" in text or ("chung" in text and "export" in text) or "충남" in text or "충북" in text:
         return "수출 대용지표", "충남(삼성) vs 충북·이천(SK하이닉스) HBM 수출 대용지표 변화"
     if "counterpoint" in e.get("source","").lower() and "market share" in text:
         return "점유율", "삼성·SK하이닉스 HBM 점유율 변화"
