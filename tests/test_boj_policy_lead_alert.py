@@ -393,8 +393,17 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertTrue(ok)
         self.assertEqual(reason, "BOJ 공식 성명 상세 검증상태 변화")
 
-    def test_same_key_with_new_guidance_is_re_evaluated(self):
-        base = verified_event_signals(dt.datetime(2026, 9, 18, 13, 40, tzinfo=KST))[0]
+    def test_same_key_with_new_official_guidance_is_re_evaluated(self):
+        base = classify(
+            self.mk(
+                "Statement on Monetary Policy",
+                "The Bank will continue to raise the policy interest rate. "
+                "The timing and pace will depend on economic and price risks. "
+                "Financial conditions will remain accommodative.",
+                source="Bank of Japan",
+            )
+        )
+        self.assertTrue(base.official_statement_detail_verified)
         previous = signal_signature(base)
         previous["further_hikes"] = False
         previous["conditional_pace"] = False
@@ -402,13 +411,13 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         state = {
             "last_signal_key": base.key,
             "last_alert_at_kst": "2026-09-18T13:00:00+09:00",
-            "last_published_at_kst": "2026-09-18T12:23:00+09:00",
+            "last_published_at_kst": base.published.isoformat(),
             "signature": previous,
         }
         ok, reason = should_alert(
             base,
             state,
-            dt.datetime(2026, 9, 18, 13, 40, tzinfo=KST),
+            dt.datetime(2026, 9, 18, 14, 0, tzinfo=KST),
         )
         self.assertTrue(ok)
         self.assertIn("가이던스", reason)
