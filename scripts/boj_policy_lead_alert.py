@@ -18,7 +18,7 @@ import pathlib
 import re
 import urllib.parse
 import xml.etree.ElementTree as ET
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
 
@@ -51,6 +51,8 @@ QUERIES = (
     '"Bank of Japan" neutral rate Ueda Reuters when:3d',
     '"Summary of Opinions" BOJ Reuters when:7d',
     'BOJ economic assessment vote inflation 2% Reuters when:2d',
+    'BOJ investors react 7-2 dissent yen Reuters when:1d',
+    'BOJ 50 basis point half-point internal calls Reuters when:3d',
 )
 
 LEVEL_EMOJI = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}
@@ -183,6 +185,13 @@ EXPECTED_MOVE_MARKERS = (
     "expected 25 basis-point",
     "expected 25 basis point",
 )
+HAWKISH_TAIL_50BP_MARKERS = (
+    "50 basis-point",
+    "50 basis point",
+    "50bp",
+    "half-point",
+    "half point",
+)
 
 
 @dataclass(frozen=True)
@@ -217,6 +226,7 @@ class Signal:
     assessment_vote_against: int | None
     assessment_view: str | None
     expected_move: bool
+    hawkish_tail_50bp: bool
     further_hikes: bool
     conditional_pace: bool
     accommodative: bool
@@ -447,6 +457,7 @@ def classify(item: Item) -> Signal | None:
     dissenters = extract_dissenters(text)
     assessment_vote_for, assessment_vote_against, assessment_view = extract_assessment_vote(text)
     expected_move = has_any(text, EXPECTED_MOVE_MARKERS)
+    hawkish_tail_50bp = has_any(text, HAWKISH_TAIL_50BP_MARKERS)
     further = has_any(text, FURTHER_HIKES)
     conditional = has_any(text, CONDITIONAL_PACE)
     accommodative = has_any(text, ACCOMMODATIVE)
@@ -483,7 +494,7 @@ def classify(item: Item) -> Signal | None:
     key_material = (
         f"{kind}|{source}|{normalize(item.title)}|{item.published.date()}|"
         f"{rate}|{bp}|{vote_for}-{vote_against}|{dissent_direction}|"
-        f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|{expected_move}|{level}"
+        f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|{expected_move}|{hawkish_tail_50bp}|{level}"
     )
     key = hashlib.sha256(key_material.encode()).hexdigest()[:24]
 
@@ -505,6 +516,7 @@ def classify(item: Item) -> Signal | None:
         assessment_vote_against=assessment_vote_against,
         assessment_view=assessment_view,
         expected_move=expected_move,
+        hawkish_tail_50bp=hawkish_tail_50bp,
         further_hikes=further,
         conditional_pace=conditional,
         accommodative=accommodative,
@@ -552,6 +564,97 @@ def collect(now: dt.datetime) -> list[Signal]:
     )
 
 
+def _first_not_none(values):
+    for value in values:
+        if value is not None:
+            return value
+    return None
+
+
+def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
+    """Merge same-day trusted decision context into each decision signal.
+
+    RSS headlines often split the actual decision, investor reaction, dissent
+    direction, and pre-decision tail-risk discussion across separate items.
+    Keep policy-vote/assessment facts only when a parser explicitly found them;
+    use market-path items only for expectation/tail-risk context.
+    """
+    enriched: list[Signal] = []
+    for signal in signals:
+        if signal.event_type != "decision":
+            enriched.append(signal)
+            continue
+
+        related = [
+            other
+            for other in signals
+            if other.published.date() == signal.published.date()
+            and abs((other.published - signal.published).total_seconds()) <= 12 * 3600
+            and other.source in TRUSTED
+        ]
+        decision_related = [other for other in related if other.event_type == "decision"]
+
+        rate = _first_not_none([signal.policy_rate] + [x.policy_rate for x in decision_related])
+        bp = _first_not_none([signal.hike_bp] + [x.hike_bp for x in decision_related])
+        vote_for = _first_not_none([signal.vote_for] + [x.vote_for for x in decision_related])
+        vote_against = _first_not_none([signal.vote_against] + [x.vote_against for x in decision_related])
+        dissent_direction = _first_not_none(
+            [signal.dissent_direction] + [x.dissent_direction for x in decision_related]
+        )
+
+        dissenters = []
+        for candidate in [signal] + decision_related:
+            for name in candidate.dissenters:
+                if name not in dissenters:
+                    dissenters.append(name)
+
+        assessment_candidates = [
+            x for x in related
+            if x.assessment_vote_for is not None and x.assessment_vote_against is not None
+        ]
+        assessment_vote_for = _first_not_none(
+            [signal.assessment_vote_for] + [x.assessment_vote_for for x in assessment_candidates]
+        )
+        assessment_vote_against = _first_not_none(
+            [signal.assessment_vote_against] + [x.assessment_vote_against for x in assessment_candidates]
+        )
+        assessment_view = _first_not_none(
+            [signal.assessment_view] + [x.assessment_view for x in assessment_candidates]
+        )
+
+        expected_move = signal.expected_move or any(x.expected_move for x in related)
+        hawkish_tail_50bp = signal.hawkish_tail_50bp or any(
+            x.hawkish_tail_50bp for x in related if x.event_type in {"market_path", "decision"}
+        )
+
+        merged = replace(
+            signal,
+            policy_rate=rate,
+            hike_bp=bp,
+            vote_for=vote_for,
+            vote_against=vote_against,
+            dissent_direction=dissent_direction,
+            dissenters=tuple(dissenters),
+            assessment_vote_for=assessment_vote_for,
+            assessment_vote_against=assessment_vote_against,
+            assessment_view=assessment_view,
+            expected_move=expected_move,
+            hawkish_tail_50bp=hawkish_tail_50bp,
+        )
+        key_material = (
+            f"decision-context|{merged.published.date()}|{rate}|{bp}|"
+            f"{vote_for}-{vote_against}|{dissent_direction}|{tuple(dissenters)}|"
+            f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|"
+            f"{expected_move}|{hawkish_tail_50bp}|{merged.level}"
+        )
+        merged = replace(
+            merged,
+            key=hashlib.sha256(key_material.encode()).hexdigest()[:24],
+        )
+        enriched.append(merged)
+    return enriched
+
+
 def load_state() -> dict:
     try:
         value = json.loads(STATE.read_text(encoding="utf-8"))
@@ -582,6 +685,7 @@ def signal_signature(signal: Signal) -> dict:
         "assessment_vote_against": signal.assessment_vote_against,
         "assessment_view": signal.assessment_view,
         "expected_move": signal.expected_move,
+        "hawkish_tail_50bp": signal.hawkish_tail_50bp,
         "further_hikes": signal.further_hikes,
         "conditional_pace": signal.conditional_pace,
         "accommodative": signal.accommodative,
@@ -774,10 +878,14 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         committee.append("- 경제·물가 진단 별도 표결: 공식·고신뢰 원문에서 명시적으로 확인될 때만 표시")
 
     if signal.expected_move:
-        if signal.dissent_direction == "hold":
-            expectation_text = "기본 예상 부합 / 반대표도 동결 방향이면 매파적 꼬리위험은 미실현"
+        if signal.dissent_direction == "hold" and signal.hawkish_tail_50bp:
+            expectation_text = "기본 예상 부합 / 사전 50bp 매파 꼬리위험 미실현 / 동결 요구 반대표는 상대적 완화 신호"
+        elif signal.dissent_direction == "hold":
+            expectation_text = "기본 예상 부합 / 동결 요구 반대표는 상대적 완화 신호"
         elif signal.dissent_direction == "larger_hike":
             expectation_text = "기본 인상폭은 예상 부합하나 더 큰 폭 인상 요구가 확인돼 매파적 꼬리위험 일부 현실화"
+        elif signal.hawkish_tail_50bp:
+            expectation_text = "기본 예상 부합 / 사전 50bp 매파 꼬리위험은 실제 결정에서 확인되지 않음"
         else:
             expectation_text = "기본 예상 부합"
     else:
@@ -813,6 +921,13 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         "시장 연결",
         "- BOJ 정책경로와 실제 엔캐리 청산은 별도 판정합니다.",
     ]
+    if signal.expected_move and signal.dissent_direction == "hold":
+        lines.append("- 위험자산 의미: 부담 완화 가능 — 예상된 25bp 인상에 동결 요구 반대표가 붙은 경우이며, BOJ 자체 호재로 확정하지 않습니다.")
+    elif signal.dissent_direction == "larger_hike" or signal.level >= 2:
+        lines.append("- 위험자산 의미: 부담 확대 가능 — 매파적 속도 가속 또는 대폭 인상 요구가 실제로 확인된 경우입니다.")
+    else:
+        lines.append("- 위험자산 의미: 중립·추가 확인 필요 — 정책결정만으로 주가 방향을 단정하지 않습니다.")
+    lines.append("- 확인 필요: USD/JPY · Nikkei · Nasdaq 선물 · JGB 2년물 · FX 변동성")
     if fx:
         lines.extend(
             [
@@ -833,6 +948,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
             "정확한 의미",
             "- 25bp 인상 자체를 자동으로 🟠 매파 강화로 처리하지 않습니다.",
             "- 위원회 분열은 표 수보다 반대표 방향을 우선하며, 경제·물가 진단의 별도 표결은 명시적 원문이 있을 때만 확정합니다.",
+            "- 절대 정책방향과 시장 기대 대비 서프라이즈를 분리하며, 50bp 사전 꼬리위험이 실제 표결·결정에서 현실화됐는지도 따로 봅니다.",
             "- 직전 경로보다 다음 인상 시점이 앞당겨지거나 속도가 빨라질 때 🟠로 올립니다.",
             "- 50bp급 예상 밖 인상 또는 연속 긴축을 강하게 시사할 때만 🔴로 올립니다.",
             "- 추가 긴축 시점이 뒤로 밀리거나 중단 신호가 확인되면 🟢로 낮춥니다.",
@@ -889,7 +1005,7 @@ def main() -> int:
     clear_outputs()
     OUT.mkdir(exist_ok=True)
     now = dt.datetime.now(KST)
-    signals = collect(now)
+    signals = enrich_decision_context(collect(now))
     state = load_state()
 
     if not signals:
