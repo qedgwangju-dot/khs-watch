@@ -1,6 +1,6 @@
 {
-  "last_signal_key": "4855de98245e59a78f63dfd3",
-  "last_alert_at_kst": "2026-09-18T17:17:17+09:00",
+  "last_signal_key": "4f82c9fceac53d7097ac7dd8",
+  "last_alert_at_kst": "2026-09-18T17:24:07+09:00",
   "last_published_at_kst": "2026-09-18T15:49:00+09:00",
   "last_source": "Reuters",
   "last_title": "BOJ Governor Ueda's comments at news conference - Reuters",
@@ -17,18 +17,18 @@
     "assessment_vote_against": null,
     "assessment_view": null,
     "expected_move": false,
-    "hawkish_tail_50bp": false,
+    "hawkish_tail_50bp": true,
     "inflation_spillover": false,
     "cpi_h2_clearly_above_2": false,
-    "stabilize_underlying_around_2": false,
+    "stabilize_underlying_around_2": true,
     "outlook_dissenters": [],
     "outlook_dissent_view": null,
     "official_statement_detail_verified": false,
-    "further_hikes": false,
-    "conditional_pace": false,
+    "further_hikes": true,
+    "conditional_pace": true,
     "accommodative": false,
-    "neutral_rate": false,
-    "inflation_upside": false,
+    "neutral_rate": true,
+    "inflation_upside": true,
     "risk_channels": false
   }
 }
