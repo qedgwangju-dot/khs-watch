@@ -8,6 +8,7 @@ import re
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+import requests
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
@@ -258,7 +259,7 @@ def _normalize_export_usd(value: float | None) -> float | None:
     return value * 1000.0 if 0 <= value < 100_000_000 else value
 
 
-def fetch_kcs_region_month(month: str, region: dict, hs: str = HBM_HSK10) -> tuple[dict | None, str]:
+def fetch_kcs_region_month(month: str, region: dict, hs: str = HBM_HSK10, session=None) -> tuple[dict | None, str]:
     hs_col = f"HS{len(hs)}_SGN"
     params = {
         "tradeKind": "ETS_MNK_1040000A",
@@ -277,7 +278,6 @@ def fetch_kcs_region_month(month: str, region: dict, hs: str = HBM_HSK10) -> tup
         "hsSgnWhrCol": hs_col,
         "hsSgn": hs,
     }
-    url = KCS_REGION_URL + "?" + urllib.parse.urlencode(params)
     headers = {
         "User-Agent": UA,
         "Accept": "application/json, text/javascript, */*; q=0.01",
@@ -286,11 +286,16 @@ def fetch_kcs_region_month(month: str, region: dict, hs: str = HBM_HSK10) -> tup
         "X-Requested-With": "XMLHttpRequest",
         "isAjax": "true",
     }
+    own = session is None
+    sess = session or requests.Session()
     try:
-        req = urllib.request.Request(url, headers=headers, data=b"", method="POST")
-        with urllib.request.urlopen(req, timeout=25) as r:
-            raw = r.read().decode("utf-8", errors="replace")
-        data = json.loads(raw)
+        if own:
+            sess.headers.update({"User-Agent": UA})
+            sess.get(KCS_SOURCE_PAGE, timeout=(5, 10))
+        r = sess.post(KCS_REGION_URL, headers=headers, params=params, timeout=(5, 12))
+        if r.status_code != 200:
+            return None, f"{region['name']} {month} KCS HTTP {r.status_code}"
+        data = r.json()
     except Exception as exc:
         return None, f"{region['name']} {month} KCS 조회 실패: {type(exc).__name__}: {exc}"
 
@@ -336,18 +341,23 @@ def fetch_kcs_region_month(month: str, region: dict, hs: str = HBM_HSK10) -> tup
         "source": "관세청 수출입무역통계",
     }, ""
 
-
 def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
     errors: list[str] = []
     current = _previous_month(now)
     data: dict[str, dict[str, dict]] = {}
     selected = None
+    session = requests.Session()
+    session.headers.update({"User-Agent": UA})
+    try:
+        session.get(KCS_SOURCE_PAGE, timeout=(5, 10))
+    except Exception as exc:
+        errors.append(f"관세청 세션 초기화 실패: {type(exc).__name__}: {exc}")
 
     for candidate in [current, _month_shift(current, -1), _month_shift(current, -2)]:
         rows = {}
         local_errors = []
         for key, region in REGIONS.items():
-            row, err = fetch_kcs_region_month(candidate, region)
+            row, err = fetch_kcs_region_month(candidate, region, session=session)
             if row:
                 rows[key] = row
             else:
@@ -367,7 +377,7 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
             continue
         rows = {}
         for key, region in REGIONS.items():
-            row, err = fetch_kcs_region_month(month, region)
+            row, err = fetch_kcs_region_month(month, region, session=session)
             if row:
                 rows[key] = row
             else:
