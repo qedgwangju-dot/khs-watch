@@ -593,17 +593,24 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
             and other.source in TRUSTED
         ]
         decision_related = [other for other in related if other.event_type == "decision"]
+        decision_fact_related = [
+            other
+            for other in decision_related
+            if other.vote_for is not None
+            or re.search(r"\b(?:raises|raised)\b", other.title.lower())
+            or other.source == "Bank of Japan"
+        ]
 
-        rate = _first_not_none([signal.policy_rate] + [x.policy_rate for x in decision_related])
-        bp = _first_not_none([signal.hike_bp] + [x.hike_bp for x in decision_related])
-        vote_for = _first_not_none([signal.vote_for] + [x.vote_for for x in decision_related])
-        vote_against = _first_not_none([signal.vote_against] + [x.vote_against for x in decision_related])
+        rate = _first_not_none([signal.policy_rate] + [x.policy_rate for x in decision_fact_related])
+        bp = _first_not_none([signal.hike_bp] + [x.hike_bp for x in decision_fact_related])
+        vote_for = _first_not_none([signal.vote_for] + [x.vote_for for x in decision_fact_related])
+        vote_against = _first_not_none([signal.vote_against] + [x.vote_against for x in decision_fact_related])
         dissent_direction = _first_not_none(
-            [signal.dissent_direction] + [x.dissent_direction for x in decision_related]
+            [signal.dissent_direction] + [x.dissent_direction for x in decision_fact_related]
         )
 
         dissenters = []
-        for candidate in [signal] + decision_related:
+        for candidate in [signal] + decision_fact_related:
             for name in candidate.dissenters:
                 if name not in dissenters:
                     dissenters.append(name)
