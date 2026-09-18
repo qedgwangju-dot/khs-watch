@@ -51,6 +51,7 @@ base.OFFICIAL_OR_PRIMARY.update({
     'State Taxation Administration of China',
     '삼성전기', 'Samsung Electro-Mechanics', 'Murata', '무라타',
     'Taiyo Yuden', '다이요유덴', 'TDK', 'Yageo',
+    'SK온', 'SK On', '엘앤에프', 'L&F', 'DART', '금융감독원 전자공시시스템',
 })
 
 _orig_topic_group = base.topic_group
@@ -81,6 +82,54 @@ def _skon_lnf_lfp_contract(text: str) -> bool:
     return bool(SKON_RE.search(text) and LNF_RE.search(text) and LFP_RE.search(text) and KOREA_CONTRACT_RE.search(text))
 
 SKON_LNF_LFP_KEY = 'ess|skon-lnf|lfp-cathode|2026-09-17|1617eok'
+
+ESS_COMPANIES = [
+    ('skon', re.compile(r'SK온|SK\\s*On|에스케이온', re.I)),
+    ('lnf', re.compile(r'엘앤에프|L&F|L\\s*and\\s*F', re.I)),
+    ('lges', re.compile(r'LG에너지솔루션|LG\\s*Energy\\s*Solution', re.I)),
+    ('samsungsdi', re.compile(r'삼성SDI|Samsung\\s*SDI', re.I)),
+    ('ecoprobm', re.compile(r'에코프로비엠|EcoPro\\s*BM', re.I)),
+    ('poscofuturem', re.compile(r'포스코퓨처엠|POSCO\\s*Future\\s*M', re.I)),
+]
+MATERIAL_TAGS = [
+    ('lfp-cathode', re.compile(r'\\bLFP\\b.{0,40}양극재|양극재.{0,40}\\bLFP\\b|리튬인산철.{0,20}양극재', re.I)),
+    ('lfp-cell', re.compile(r'\\bLFP\\b.{0,40}(?:셀|cell)|(?:셀|cell).{0,40}\\bLFP\\b', re.I)),
+    ('cathode', re.compile(r'양극재|cathode', re.I)),
+    ('cell', re.compile(r'배터리\\s*셀|battery\\s*cell|전지', re.I)),
+]
+
+def _company_tags(text: str) -> list[str]:
+    return sorted(name for name, rx in ESS_COMPANIES if rx.search(text))
+
+def _material_tag(text: str) -> str:
+    for name, rx in MATERIAL_TAGS:
+        if rx.search(text):
+            return name
+    return 'ess-material'
+
+def _contract_amount_bucket(text: str) -> str:
+    vals = []
+    for m in re.finditer(r'(\\d[\\d,]*(?:\\.\\d+)?)\\s*억원', text):
+        try:
+            vals.append(float(m.group(1).replace(',', '')))
+        except Exception:
+            pass
+    if not vals:
+        return 'amount-unknown'
+    v = max(vals)
+    if v >= 1000:
+        return f'{round(v / 100) * 100:.0f}eok'
+    if v >= 100:
+        return f'{round(v / 10) * 10:.0f}eok'
+    return f'{round(v):.0f}eok'
+
+def _generic_korean_supply_contract(text: str) -> bool:
+    return bool(
+        ESS_RE.search(text)
+        and KOREA_CONTRACT_RE.search(text)
+        and len(_company_tags(text)) >= 2
+        and re.search(r'양극재|cathode|\\bLFP\\b|배터리\\s*셀|battery\\s*cell', text, re.I)
+    )
 
 
 
@@ -260,6 +309,11 @@ def _same_event(a: dict, b: dict) -> bool:
 
     if _skon_lnf_lfp_contract(ta) and _skon_lnf_lfp_contract(tb):
         return True
+    if _generic_korean_supply_contract(ta) and _generic_korean_supply_contract(tb):
+        if _company_tags(ta) == _company_tags(tb) and _material_tag(ta) == _material_tag(tb):
+            aa, ab = _contract_amount_bucket(ta), _contract_amount_bucket(tb)
+            if aa == ab or 'amount-unknown' in {aa, ab}:
+                return True
 
     if _is_mlcc_ess(ta) and _is_mlcc_ess(tb):
         axes = [MLCC_SHORTAGE, MLCC_PRICE, MLCC_CONTRACT, MLCC_CAPACITY, MLCC_RELIEF, MLCC_RELIABILITY]
@@ -287,9 +341,14 @@ def _same_event(a: dict, b: dict) -> bool:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    import hashlib
     if _skon_lnf_lfp_contract(text):
-        import hashlib
         return hashlib.sha256(SKON_LNF_LFP_KEY.encode()).hexdigest()
+    if _generic_korean_supply_contract(text):
+        parties = '-'.join(_company_tags(text))
+        material = _material_tag(text)
+        amount = _contract_amount_bucket(text)
+        return hashlib.sha256(f'ess-contract|{parties}|{material}|{amount}'.encode()).hexdigest()
     return _orig_key(item)
 
 
