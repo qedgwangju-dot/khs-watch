@@ -19,6 +19,7 @@ import json
 import pathlib
 import re
 import urllib.parse
+import urllib.request
 import xml.etree.ElementTree as ET
 from dataclasses import asdict, dataclass, replace
 from email.utils import parsedate_to_datetime
@@ -41,6 +42,7 @@ CONFIRMED = OUT / "boj_policy_lead_telegram_confirmed.json"
 UA = "Mozilla/5.0 khs-boj-policy-path/2.0"
 GOOGLE = "https://news.google.com/rss/search"
 BOJ_RSS = "https://www.boj.or.jp/en/rss/whatsnew.xml"
+BOJ_STATEMENTS_2026 = "https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm"
 REUTERS_BOJ_DECISION = "https://www.reuters.com/world/asia-pacific/boj-raises-interest-rates-31-year-high-widely-expected-move-2026-09-18/"
 REUTERS_BOJ_REACTION = "https://www.reuters.com/world/asia-pacific/view-investors-react-boj-raising-interest-rates-31-year-high-2026-09-18/"
 MOF_JGB_YIELDS = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
@@ -408,6 +410,106 @@ def enrich_official_items(items: list[Item], now: dt.datetime) -> list[Item]:
             )
         )
     return enriched
+
+
+def _boj_document_date(url: str) -> dt.datetime | None:
+    match = re.search(r"/k(\d{2})(\d{2})(\d{2})[a-z]?\.(?:pdf|htm|html)$", url, re.I)
+    if not match:
+        return None
+    year = 2000 + int(match.group(1))
+    month = int(match.group(2))
+    day = int(match.group(3))
+    try:
+        return dt.datetime(year, month, day, 12, 0, tzinfo=KST)
+    except ValueError:
+        return None
+
+
+def _fetch_boj_document_text(url: str) -> tuple[str | None, str | None]:
+    if url.lower().split("?", 1)[0].endswith(".pdf"):
+        try:
+            from pypdf import PdfReader
+
+            req = urllib.request.Request(
+                url,
+                headers={"User-Agent": UA, "Accept": "application/pdf,*/*"},
+            )
+            with urllib.request.urlopen(req, timeout=30) as response:
+                raw = response.read()
+            reader = PdfReader(io.BytesIO(raw))
+            text = "\n".join((page.extract_text() or "") for page in reader.pages)
+            return clean(text), None
+        except Exception as exc:
+            return None, f"{type(exc).__name__}: {exc}"
+
+    return fetch_text(
+        url,
+        UA,
+        timeout=20,
+        attempts=2,
+        accept="text/html,application/xhtml+xml,*/*",
+    )
+
+
+def fetch_official_statement_items(now: dt.datetime) -> list[Item]:
+    index, error = fetch_text(
+        BOJ_STATEMENTS_2026,
+        UA,
+        timeout=20,
+        attempts=2,
+        accept="text/html,application/xhtml+xml,*/*",
+    )
+    if error or not index:
+        record_source_failure(
+            lane="boj_policy_path",
+            source_name="Bank of Japan statement index",
+            source_url=BOJ_STATEMENTS_2026,
+            error=error or "empty response",
+            checked_at=now,
+        )
+        return []
+
+    links: list[tuple[dt.datetime, str]] = []
+    for href, label_html in re.findall(
+        r'<a[^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+        index,
+        flags=re.I | re.S,
+    ):
+        label = clean(label_html)
+        if "statement on monetary policy" not in label.lower():
+            continue
+        url = urllib.parse.urljoin(BOJ_STATEMENTS_2026, href)
+        published = _boj_document_date(url)
+        if published is not None:
+            links.append((published, url))
+
+    if not links:
+        return []
+
+    published, url = max(links, key=lambda row: row[0])
+    if published < now - dt.timedelta(hours=MAX_AGE_HOURS):
+        return []
+
+    body, body_error = _fetch_boj_document_text(url)
+    if body_error or not body:
+        record_source_failure(
+            lane="boj_policy_path",
+            source_name="Bank of Japan statement full text",
+            source_url=url,
+            error=body_error or "empty response",
+            checked_at=now,
+        )
+        return []
+
+    return [
+        Item(
+            title="Statement on Monetary Policy — official full text",
+            source="Bank of Japan",
+            link=url,
+            published=published,
+            description=body,
+        )
+    ]
 
 
 def fetch_direct_context(now: dt.datetime) -> list[Item]:
@@ -780,6 +882,7 @@ def collect(now: dt.datetime) -> list[Signal]:
         items.extend(fetch_rss(news_url(query), "Google News", now))
     boj_items = fetch_rss(BOJ_RSS, "Bank of Japan", now)
     items.extend(enrich_official_items(boj_items, now))
+    items.extend(fetch_official_statement_items(now))
     items.extend(fetch_direct_context(now))
 
     cutoff = now - dt.timedelta(hours=MAX_AGE_HOURS)
