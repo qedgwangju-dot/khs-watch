@@ -1168,6 +1168,75 @@ def _quote_context(key: str) -> dict:
     }
 
 
+def _event_move_context(key: str, event_time: dt.datetime) -> dict:
+    from yen_carry_alert import SYMBOLS
+    from yen_carry_market_data_v2 import YAHOO_BASES, valid_points, yahoo_url
+
+    spec = SYMBOLS[key]
+    event_epoch = event_time.astimezone(UTC).timestamp()
+    routes = []
+    errors = []
+    for base in YAHOO_BASES:
+        try:
+            url = yahoo_url(base, spec.symbol)
+            text, error = fetch_text(
+                url,
+                UA,
+                timeout=18,
+                attempts=2,
+                accept="application/json",
+            )
+            if error or not text:
+                raise RuntimeError(error or "empty Yahoo response")
+            payload = json.loads(text)
+            results = ((payload.get("chart") or {}).get("result") or [])
+            if not results:
+                raise RuntimeError("Yahoo chart result missing")
+            points = valid_points(results[0])
+            if not points:
+                raise RuntimeError("Yahoo valid points missing")
+            refs = [p for p in points if p[0] <= event_epoch]
+            if not refs:
+                raise RuntimeError("pre-event reference missing")
+            ref_ts, ref_price = refs[-1]
+            latest_ts, latest_price = points[-1]
+            max_ref_gap = 45 * 60 if key == "nikkei_cash" else 20 * 60
+            if event_epoch - ref_ts > max_ref_gap:
+                raise RuntimeError(
+                    f"event reference too old: {(event_epoch-ref_ts)/60:.0f}m"
+                )
+            routes.append(
+                {
+                    "reference_price": ref_price,
+                    "reference_epoch": ref_ts,
+                    "latest_price": latest_price,
+                    "latest_epoch": latest_ts,
+                    "change_pct": (latest_price / ref_price - 1.0) * 100.0,
+                }
+            )
+        except Exception as exc:
+            errors.append(f"{base}: {type(exc).__name__}: {exc}")
+
+    if not routes:
+        raise RuntimeError(" | ".join(errors) or "event move unavailable")
+    if len(routes) >= 2:
+        a, b = routes[:2]
+        if abs(a["change_pct"] - b["change_pct"]) > 0.15:
+            raise RuntimeError(
+                f"event move provider mismatch: {a['change_pct']:.3f}% vs {b['change_pct']:.3f}%"
+            )
+        route = max(routes, key=lambda x: x["latest_epoch"])
+    else:
+        route = routes[0]
+
+    return {
+        **route,
+        "reference_time": dt.datetime.fromtimestamp(route["reference_epoch"], UTC).astimezone(KST),
+        "latest_time": dt.datetime.fromtimestamp(route["latest_epoch"], UTC).astimezone(KST),
+        "source": "Yahoo query1/query2 5분봉 교차확인" if len(routes) >= 2 else "Yahoo 단일 경로",
+    }
+
+
 def _mof_jgb2_context() -> dict:
     text, error = fetch_text(
         MOF_JGB_YIELDS,
@@ -1229,7 +1298,7 @@ def _mof_jgb2_context() -> dict:
     }
 
 
-def market_context() -> dict:
+def market_context(event_time: dt.datetime | None = None) -> dict:
     out: dict = {}
 
     try:
@@ -1269,6 +1338,18 @@ def market_context() -> dict:
         out["jgb2"] = _mof_jgb2_context()
     except Exception as exc:
         out["jgb2_error"] = f"{type(exc).__name__}: {exc}"
+
+    if event_time is not None:
+        out["event_time"] = event_time.astimezone(KST)
+        for key, out_key in (
+            ("usd_jpy", "usd_jpy_event"),
+            ("nikkei_cash", "nikkei_event"),
+            ("nasdaq_future", "nasdaq_future_event"),
+        ):
+            try:
+                out[out_key] = _event_move_context(key, event_time)
+            except Exception as exc:
+                out[out_key + "_error"] = f"{type(exc).__name__}: {exc}"
 
     return out
 
@@ -1458,6 +1539,25 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     else:
         lines.append(f"- Nasdaq 100 선물: 확인 불가 — {market.get('nasdaq_future_error', '데이터 없음')}")
 
+    event_time = market.get("event_time")
+    if event_time:
+        lines.append(f"- 결정 시점 기준 교차반응: {event_time.strftime('%H:%M KST')} → 현재")
+        for key, label in (
+            ("usd_jpy_event", "USD/JPY"),
+            ("nikkei_event", "Nikkei 225"),
+            ("nasdaq_future_event", "Nasdaq 100 선물"),
+        ):
+            item = market.get(key)
+            if item:
+                lines.append(
+                    f"  · {label}: {item['change_pct']:+.2f}% "
+                    f"({item['reference_price']:.3f} → {item['latest_price']:.3f}) · {item['source']}"
+                )
+            else:
+                lines.append(
+                    f"  · {label}: 결정 시점 대비 확인 불가 — {market.get(key + '_error', '데이터 없음')}"
+                )
+
     jgb2 = market.get("jgb2")
     if jgb2:
         lines.append(
@@ -1550,7 +1650,11 @@ def main() -> int:
     now = dt.datetime.now(KST)
     signals = enrich_decision_context(collect(now))
     state = load_state()
-    market = market_context()
+    decision_signals = [s for s in signals if s.event_type == "decision"]
+    event_time = decision_signals[0].published if decision_signals else None
+    if event_time and event_time.date() == dt.date(2026, 9, 18):
+        event_time = dt.datetime(2026, 9, 18, 12, 1, tzinfo=KST)
+    market = market_context(event_time)
     MARKET.write_text(
         json.dumps(market, ensure_ascii=False, indent=2, default=str) + "\n",
         encoding="utf-8",
