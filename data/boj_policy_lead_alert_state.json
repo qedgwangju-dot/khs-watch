@@ -1,10 +1,21 @@
 {
-  "stage": 1,
-  "route": "hike_expectation",
-  "probability_pct": null,
-  "last_signal_key": "03c0f897a1d221b289ad",
-  "last_alert_at_kst": "2026-09-16T08:43:21.143104+09:00",
-  "last_published_at_kst": "2026-09-16T00:23:00+09:00",
-  "last_source": "Nikkei Asia",
-  "last_title": "BOJ eyes rate hikes to fight inflation, but market fears impact on yields - Nikkei Asia"
+  "last_signal_key": "29186fe7843e243113f32074",
+  "last_alert_at_kst": "2026-09-18T12:21:44+09:00",
+  "last_published_at_kst": "2026-09-18T09:59:00+09:00",
+  "last_source": "Reuters",
+  "last_title": "Yen weak ahead of BOJ decision; rate hike expected - Reuters",
+  "signature": {
+    "level": 1,
+    "event_type": "market_path",
+    "policy_rate": null,
+    "hike_bp": null,
+    "vote_for": null,
+    "vote_against": null,
+    "further_hikes": false,
+    "conditional_pace": false,
+    "accommodative": false,
+    "neutral_rate": false,
+    "inflation_upside": false,
+    "risk_channels": true
+  }
 }
