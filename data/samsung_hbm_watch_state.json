@@ -17,21 +17,25 @@
     "fd774ad93defbc5c27b92607"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-18T17:30:34+09:00",
-  "last_event_count": 10,
+  "updated_at_kst": "2026-09-18T17:43:19+09:00",
+  "last_event_count": 12,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
-  "official_month": "202608",
-  "official_data_ok": true,
+  "official_month": "",
+  "official_data_ok": false,
   "official_errors": [
-    "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
+    "공공데이터포털 전국 API 실패: ConnectTimeout: HTTPSConnectionPool(host='apis.data.go.kr', port=443): Max retries exceeded with url: /1220000/Itemtrade/getItemtradeList?serviceKey=9c6b39f4f521129b675d132e60633332a453b30205fd3357fd54abb8bb839a0e&strtYymm=202607&endYymm=202607&hsSgn=8542323000 (Caused by ConnectTimeoutError(<HTTPSConnection(host='apis.data.go.kr', port=443) at 0x7f155b003a70>, 'Connection to apis.data.go.kr timed out. (connect timeout=5)')); fallback=전국 202607 KCS 조회 실패: ConnectTimeout: HTTPSConnectionPool(host='tradedata.go.kr', port=443): Max retries exceeded with url: /cts/hmpg/retrieveTrade.do (Caused by ConnectTimeoutError(<HTTPSConnection(host='tradedata.go.kr', port=443) at 0x7f155a530470>, 'Connection to tradedata.go.kr timed out. (connect timeout=5)'))",
+    "공공데이터포털 시도 API 실패: ConnectTimeout: HTTPSConnectionPool(host='apis.data.go.kr', port=443): Max retries exceeded with url: /1220000/sidoitemtrade/getSidoitemtradeList?serviceKey=9c6b39f4f521129b675d132e60633332a453b30205fd3357fd54abb8bb839a0e&strtYymm=202607&endYymm=202607&sidoCd=44&hsSgn=8542323000 (Caused by ConnectTimeoutError(<HTTPSConnection(host='apis.data.go.kr', port=443) at 0x7f155a530dd0>, 'Connection to apis.data.go.kr timed out. (connect timeout=5)')); fallback=충남 202607 KCS 조회 실패: ConnectTimeout: HTTPSConnectionPool(host='tradedata.go.kr', port=443): Max retries exceeded with url: /cts/hmpg/retrieveTradeRegion.do (Caused by ConnectTimeoutError(<HTTPSConnection(host='tradedata.go.kr', port=443) at 0x7f155b002e70>, 'Connection to tradedata.go.kr timed out. (connect timeout=5)'))",
+    "공공데이터포털 시도 API 실패: ConnectTimeout: HTTPSConnectionPool(host='apis.data.go.kr', port=443): Max retries exceeded with url: /1220000/sidoitemtrade/getSidoitemtradeList?serviceKey=9c6b39f4f521129b675d132e60633332a453b30205fd3357fd54abb8bb839a0e&strtYymm=202607&endYymm=202607&sidoCd=43&hsSgn=8542323000 (Caused by ConnectTimeoutError(<HTTPSConnection(host='apis.data.go.kr', port=443) at 0x7f155b001ca0>, 'Connection to apis.data.go.kr timed out. (connect timeout=5)')); fallback=충북 202607 KCS 조회 실패: ConnectTimeout: HTTPSConnectionPool(host='tradedata.go.kr', port=443): Max retries exceeded with url: /cts/hmpg/retrieveTradeRegion.do (Caused by ConnectTimeoutError(<HTTPSConnection(host='tradedata.go.kr', port=443) at 0x7f155b000d40>, 'Connection to tradedata.go.kr timed out. (connect timeout=5)'))",
+    "이천 202607 KCS 조회 실패: ConnectTimeout: HTTPSConnectionPool(host='tradedata.go.kr', port=443): Max retries exceeded with url: /cts/hmpg/retrieveTradeRegion.do (Caused by ConnectTimeoutError(<HTTPSConnection(host='tradedata.go.kr', port=443) at 0x7f155b000830>, 'Connection to tradedata.go.kr timed out. (connect timeout=5)'))",
+    "공공데이터포털 전국 API 실패: ConnectTimeout: HTTPSConnectionPool(host='apis.data.go.kr', port=443): Max retries exceeded with url: /1220000/Itemtrade/getItemtradeList?serviceKey=9c6b39f4f521129b675d132e60633332a453b30205fd3357fd54abb8bb839a0e&strtYymm=202606&endYymm=202606&hsSgn=8542323000 (Caused by ConnectTimeoutError(<HTTPSConnection(host='apis.data.go.kr', port=443) at 0x7f155a51caa0>, 'Connection to apis.data.go.kr timed out. (connect timeout=5)')); fallback=전국 202606 KCS 조회 실패: ConnectTimeout: HTTPSConnectionPool(host='tradedata.go.kr', port=443): Max retries exceeded with url: /cts/hmpg/retrieveTrade.do (Caused by ConnectTimeoutError(<HTTPSConnection(host='tradedata.go.kr', port=443) at 0x7f155a51db50>, 'Connection to tradedata.go.kr timed out. (connect timeout=5)'))",
+    "공공데이터포털 시도 API 실패: ConnectTimeout: HTTPSConnectionPool(host='apis.data.go.kr', port=443): Max retries exceeded with url: /1220000/sidoitemtrade/getSidoitemtradeList?serviceKey=9c6b39f4f521129b675d132e60633332a453b30205fd3357fd54abb8bb839a0e&strtYymm=202606&endYymm=202606&sidoCd=44&hsSgn=8542323000 (Caused by ConnectTimeoutError(<HTTPSConnection(host='apis.data.go.kr', port=443) at 0x7f155a530e90>, 'Connection to apis.data.go.kr timed out. (connect timeout=5)')); fallback=충남 202606 KCS 조회 실패: ConnectTimeout: HTTPSConnectionPool(host='tradedata.go.kr', port=443): Max retries exceeded with url: /cts/hmpg/retrieveTradeRegion.do (Caused by ConnectTimeoutError(<HTTPSConnection(host='tradedata.go.kr', port=443) at 0x7f155a531430>, 'Connection to tradedata.go.kr timed out. (connect timeout=5)'))",
+    "공공데이터포털 시도 API 실패: ConnectTimeout: HTTPSConnectionPool(host='apis.data.go.kr', port=443): Max retries exceeded with url: /1220000/sidoitemtrade/getSidoitemtradeList?serviceKey=9c6b39f4f521129b675d132e60633332a453b30205fd3357fd54abb8bb839a0e&strtYymm=202606&endYymm=202606&sidoCd=43&hsSgn=8542323000 (Caused by ConnectTimeoutError(<HTTPSConnection(host='apis.data.go.kr', port=443) at 0x7f155a51cc20>, 'Connection to apis.data.go.kr timed out. (connect timeout=5)')); fallback=충북 202606 KCS 조회 실패: ConnectTimeout: HTTPSConnectionPool(host='tradedata.go.kr', port=443): Max retries exceeded with url: /cts/hmpg/retrieveTradeRegion.do (Caused by ConnectTimeoutError(<HTTPSConnection(host='tradedata.go.kr', port=443) at 0x7f155a51d280>, 'Connection to tradedata.go.kr timed out. (connect timeout=5)'))",
+    "이천 202606 KCS 조회 실패: ConnectTimeout: HTTPSConnectionPool(host='tradedata.go.kr', port=443): Max retries exceeded with url: /cts/hmpg/retrieveTradeRegion.do (Caused by ConnectTimeoutError(<HTTPSConnection(host='tradedata.go.kr', port=443) at 0x7f155b0023c0>, 'Connection to tradedata.go.kr timed out. (connect timeout=5)'))"
   ],
   "last_official_alert_month": "202608",
   "official_api_key_configured": true,
-  "official_api_used": true
+  "official_api_used": false
 }
