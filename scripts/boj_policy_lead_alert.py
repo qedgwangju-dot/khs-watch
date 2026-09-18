@@ -43,6 +43,7 @@ MAX_AGE_HOURS = 72
 SAME_PATH_COOLDOWN_MINUTES = 240
 
 QUERIES = (
+    'BOJ raises interest rates 1.25 Reuters when:1d',
     '"Bank of Japan" Reuters 1.25 rate decision when:2d',
     'BOJ Ueda press conference rate path Reuters when:2d',
     '"Bank of Japan" additional rate hikes Reuters when:2d',
