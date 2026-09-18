@@ -223,7 +223,7 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             None,
         )
         self.assertIn("위험자산 의미: 부담 완화 가능", body)
-        self.assertIn("USD/JPY · Nikkei · Nasdaq 선물 · JGB 2년물 · FX 변동성", body)
+        self.assertIn("USD/JPY · Nikkei 225 · Nasdaq 100 선물 · JGB 2년물 · FX 변동성", body)
         self.assertTrue(title.startswith("🏦"))
 
     def test_rate_parser(self):
@@ -255,6 +255,17 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         )
         self.assertTrue(ok)
         self.assertEqual(reason, "새 공식 정책 이벤트")
+
+    def test_official_statement_sets_detail_verification_flag(self):
+        signal = classify(
+            self.mk(
+                "Statement on Monetary Policy",
+                "The Bank will continue to raise the policy interest rate while examining the "
+                "timing and pace. Price pressures have started to spill over into consumer prices.",
+                source="Bank of Japan",
+            )
+        )
+        self.assertTrue(signal.official_statement_detail_verified)
 
     def test_statement_tracks_inflation_regime_shift_and_outlook_dissent(self):
         signal = classify(
