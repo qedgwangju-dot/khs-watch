@@ -6,6 +6,16 @@ on:
     # Avoid the start-of-hour high-load window documented by GitHub Actions.
     - cron: "3-58/5 * * * *"
   workflow_dispatch:
+  workflow_run:
+    # Redundant trigger: the dedicated 5-minute schedule can be delayed or dropped by GitHub.
+    # Re-check BOJ policy whenever an existing macro/yen lane completes on main.
+    workflows:
+      - "Yen carry unwind Telegram alert"
+      - "Global Rates & Yen Carry Telegram Watch"
+      - "Yen carry monitor watchdog"
+      - "Japan BOJ JGB Integrated Watch"
+    types:
+      - completed
   push:
     paths:
       - ".github/workflows/boj-policy-lead-alert.yml"
@@ -26,10 +36,16 @@ permissions:
 
 concurrency:
   group: boj-policy-lead-alert
-  cancel-in-progress: true
+  # Do not cancel a run after Telegram send but before state finalization.
+  # Queued runs will read the finalized state and suppress duplicates.
+  cancel-in-progress: false
 
 jobs:
   monitor:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
