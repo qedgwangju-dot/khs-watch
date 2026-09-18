@@ -10,6 +10,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 import requests
+import time
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
@@ -278,6 +279,32 @@ def _normalize_export_usd(value: float | None) -> float | None:
 
 
 
+def _safe_error(prefix: str, exc: Exception) -> str:
+    # Never persist request URLs because they can contain the public-data service key.
+    return f"{prefix}: {type(exc).__name__}"
+
+
+def _request_with_retry(method: str, url: str, *, params=None, data=None, headers=None, attempts: int = 3):
+    last_exc = None
+    for attempt in range(1, attempts + 1):
+        try:
+            return requests.request(
+                method,
+                url,
+                params=params,
+                data=data,
+                headers=headers,
+                timeout=(8, 20),
+            )
+        except (requests.Timeout, requests.ConnectionError) as exc:
+            last_exc = exc
+            if attempt < attempts:
+                time.sleep(1.5 * attempt)
+        except Exception as exc:
+            raise
+    raise last_exc or RuntimeError("request failed")
+
+
 def _xml_text(item, *names):
     for name in names:
         val = item.findtext(name)
@@ -296,10 +323,10 @@ def fetch_data_go_item_month(month: str) -> tuple[dict | None, str]:
         "hsSgn": HBM_HSK10,
     }
     try:
-        r = requests.get(DATA_GO_ITEM_URL, params=params, timeout=(5, 15))
+        r = _request_with_retry("GET", DATA_GO_ITEM_URL, params=params)
         root = ET.fromstring(r.content)
     except Exception as exc:
-        return None, f"공공데이터포털 전국 API 실패: {type(exc).__name__}: {exc}"
+        return None, _safe_error("공공데이터포털 전국 API 실패", exc)
     code = root.findtext(".//resultCode")
     msg = root.findtext(".//resultMsg") or ""
     if code != "00":
@@ -335,10 +362,10 @@ def fetch_data_go_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str
         "hsSgn": HBM_HSK10,
     }
     try:
-        r = requests.get(DATA_GO_SIDO_ITEM_URL, params=params, timeout=(5, 15))
+        r = _request_with_retry("GET", DATA_GO_SIDO_ITEM_URL, params=params)
         root = ET.fromstring(r.content)
     except Exception as exc:
-        return None, f"공공데이터포털 시도 API 실패: {type(exc).__name__}: {exc}"
+        return None, _safe_error("공공데이터포털 시도 API 실패", exc)
     code = root.findtext(".//resultCode")
     msg = root.findtext(".//resultMsg") or ""
     if code != "00":
@@ -390,12 +417,12 @@ def fetch_kcs_item_month(month: str, session) -> tuple[dict | None, str]:
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     }
     try:
-        r = session.post(KCS_ITEM_URL, headers=headers, data=params, timeout=(5, 12))
+        r = _request_with_retry("POST", KCS_ITEM_URL, headers=headers, data=params)
         if r.status_code != 200:
             return None, f"전국 {month} KCS HTTP {r.status_code}"
         data = r.json()
     except Exception as exc:
-        return None, f"전국 {month} KCS 조회 실패: {type(exc).__name__}: {exc}"
+        return None, _safe_error(f"전국 {month} KCS 조회 실패", exc)
 
     items = data.get("items") or []
     target = None
@@ -461,12 +488,12 @@ def fetch_kcs_region_month(month: str, region: dict, session=None) -> tuple[dict
         params = dict(base)
         params["sidosggKind"] = kind
         try:
-            r = sess.post(KCS_REGION_URL, headers=headers, data=params, timeout=(5, 12))
+            r = _request_with_retry("POST", KCS_REGION_URL, headers=headers, data=params)
             if r.status_code != 200:
                 continue
             data = r.json()
         except Exception as exc:
-            return None, f"{region['name']} {month} KCS 조회 실패: {type(exc).__name__}: {exc}"
+            return None, _safe_error(f"{region['name']} {month} KCS 조회 실패", exc)
         last_preview = clean(json.dumps(data, ensure_ascii=False))[:400]
         items = data.get("items") or []
         if not items:
@@ -524,7 +551,7 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
     try:
         session.get(KCS_SOURCE_PAGE, timeout=(5, 10))
     except Exception as exc:
-        errors.append(f"관세청 세션 초기화 실패: {type(exc).__name__}: {exc}")
+        errors.append(_safe_error("관세청 세션 초기화 실패", exc))
 
     required_keys = ("national_hsk10", "samsung_chungnam", "hynix_chungbuk")
 
@@ -882,8 +909,11 @@ def main() -> None:
         "official_data_ok": bool(official),
         "official_api_key_configured": bool(DATA_GO_KEY),
         "official_api_used": bool(official and official.get("official_api_used")),
-        "official_errors": official_errors[-8:],
+        "official_errors": [re.sub(r"serviceKey=[^&\s]+", "serviceKey=<redacted>", str(x)) for x in official_errors[-8:]],
     })
+    if official:
+        state["last_successful_official_month"] = official_month
+        state["last_successful_official_at_kst"] = now.isoformat(timespec="seconds")
     save_state(state)
 
     STATUS.write_text(
