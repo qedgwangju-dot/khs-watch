@@ -308,7 +308,7 @@ jobs:
             echo "Watcher state unchanged"
           else
             git commit -m "Record HBM watch state"
-            git pull --rebase origin main
+            git pull --rebase -X theirs origin main
             git push
           fi
 
