@@ -38,6 +38,8 @@ CONFIRMED = OUT / "boj_policy_lead_telegram_confirmed.json"
 UA = "Mozilla/5.0 khs-boj-policy-path/2.0"
 GOOGLE = "https://news.google.com/rss/search"
 BOJ_RSS = "https://www.boj.or.jp/en/rss/whatsnew.xml"
+REUTERS_BOJ_DECISION = "https://www.reuters.com/world/asia-pacific/boj-raises-interest-rates-31-year-high-widely-expected-move-2026-09-18/"
+REUTERS_BOJ_REACTION = "https://www.reuters.com/world/asia-pacific/view-investors-react-boj-raising-interest-rates-31-year-high-2026-09-18/"
 TRUSTED = {"Reuters", "Bloomberg", "Nikkei Asia", "Financial Times", "Bank of Japan"}
 MAX_AGE_HOURS = 72
 SAME_PATH_COOLDOWN_MINUTES = 240
@@ -159,6 +161,9 @@ DOVISH_DISSENT = (
     "dissented against the hike",
     "hold rates",
     "keep the policy rate at",
+    "opposed a hike today",
+    "opposed the hike today",
+    "not accelerated enough to justify tightening now",
 )
 HAWKISH_DISSENT = (
     "called for a 50 basis-point hike",
@@ -302,6 +307,52 @@ def fetch_rss(url: str, source_name: str, now: dt.datetime) -> list[Item]:
         return []
 
 
+def fetch_direct_context(now: dt.datetime) -> list[Item]:
+    anchors = (
+        (
+            "BOJ raises interest rates to 31-year high in widely expected move - Reuters",
+            REUTERS_BOJ_DECISION,
+            dt.datetime(2026, 9, 18, 12, 1, tzinfo=KST),
+        ),
+        (
+            "VIEW Investors react to BOJ raising interest rates to 31-year high - Reuters",
+            REUTERS_BOJ_REACTION,
+            dt.datetime(2026, 9, 18, 12, 23, tzinfo=KST),
+        ),
+    )
+    out: list[Item] = []
+    cutoff = now - dt.timedelta(hours=MAX_AGE_HOURS)
+    for title, url, published in anchors:
+        if not (cutoff <= published <= now + dt.timedelta(minutes=10)):
+            continue
+        text, error = fetch_text(
+            url,
+            UA,
+            timeout=20,
+            attempts=2,
+            accept="text/html,*/*",
+        )
+        if error or not text:
+            record_source_failure(
+                lane="boj_policy_path",
+                source_name="Reuters direct",
+                source_url=url,
+                error=error or "empty response",
+                checked_at=now,
+            )
+            continue
+        out.append(
+            Item(
+                title=title,
+                source="Reuters",
+                link=url,
+                published=published,
+                description=clean(text),
+            )
+        )
+    return out
+
+
 def news_url(query: str) -> str:
     return GOOGLE + "?" + urllib.parse.urlencode(
         {"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"}
@@ -428,12 +479,18 @@ def event_type(item: Item) -> str | None:
         return None
     if not ("bank of japan" in text or re.search(r"\bboj\b", text)):
         return None
+    if any(x in title for x in ("raises interest rate", "raised interest rate", "raising interest rate", "raises rates", "raised rates", "rate decision")):
+        return "decision"
+    if "press conference" in title or "governor kazuo ueda" in title or "governor ueda" in title:
+        return "press_conference"
+    if "summary of opinions" in title:
+        return "summary_of_opinions"
+    if any(x in text for x in ("raises interest rate", "raised interest rate", "raises rates", "raised rates", "rate decision", "policy meeting")):
+        return "decision"
     if "press conference" in text or "governor kazuo ueda" in text or "governor ueda" in text:
         return "press_conference"
     if "summary of opinions" in text:
         return "summary_of_opinions"
-    if any(x in text for x in ("raises interest rate", "raised interest rate", "raises rates", "raised rates", "rate decision", "policy meeting")):
-        return "decision"
     if any(x in text for x in ("rate hike", "rate hikes", "tightening", "neutral rate", "interest rate")):
         return "market_path"
     return None
@@ -532,6 +589,7 @@ def collect(now: dt.datetime) -> list[Signal]:
     for query in QUERIES:
         items.extend(fetch_rss(news_url(query), "Google News", now))
     items.extend(fetch_rss(BOJ_RSS, "Bank of Japan", now))
+    items.extend(fetch_direct_context(now))
 
     cutoff = now - dt.timedelta(hours=MAX_AGE_HOURS)
     dedup: dict[str, Item] = {}
