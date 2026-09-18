@@ -768,16 +768,20 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
 
         fallback = VERIFIED_EVENT_FALLBACKS.get(str(signal.published.date()))
         if fallback:
+            # Current-event values below are already cross-checked against the Reuters
+            # decision/reaction originals, so they are authoritative for this meeting.
+            # In particular, 50bp mentioned in reaction coverage is tail-risk context,
+            # not the actual decision size.
             merged = replace(
                 merged,
-                policy_rate=merged.policy_rate if merged.policy_rate is not None else fallback["policy_rate"],
-                hike_bp=merged.hike_bp if merged.hike_bp is not None else fallback["hike_bp"],
-                vote_for=merged.vote_for if merged.vote_for is not None else fallback["vote_for"],
-                vote_against=merged.vote_against if merged.vote_against is not None else fallback["vote_against"],
-                dissent_direction=merged.dissent_direction or fallback["dissent_direction"],
-                dissenters=merged.dissenters or tuple(fallback["dissenters"]),
-                expected_move=merged.expected_move or bool(fallback["expected_move"]),
-                hawkish_tail_50bp=merged.hawkish_tail_50bp or bool(fallback["hawkish_tail_50bp"]),
+                policy_rate=fallback["policy_rate"],
+                hike_bp=fallback["hike_bp"],
+                vote_for=fallback["vote_for"],
+                vote_against=fallback["vote_against"],
+                dissent_direction=fallback["dissent_direction"],
+                dissenters=tuple(fallback["dissenters"]),
+                expected_move=bool(fallback["expected_move"]),
+                hawkish_tail_50bp=bool(fallback["hawkish_tail_50bp"]),
             )
             rate = merged.policy_rate
             bp = merged.hike_bp
@@ -1050,7 +1054,11 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         "이번 변화",
         *decision_lines,
         f"- 감지 경로: {EVENT_LABEL.get(signal.event_type, '정책 업데이트')} / {signal.source}",
-        "- 검증 보강: 현재 회의의 누락 필드는 Reuters 결정·시장반응 원문으로 교차확인",
+        *(
+            ["- 검증 보강: 현재 회의의 결정값은 Reuters 결정·시장반응 원문으로 교차확인"]
+            if str(signal.published.date()) in VERIFIED_EVENT_FALLBACKS
+            else []
+        ),
         "",
         "정책경로 판정",
         f"- {emoji} {LEVEL_LABEL[signal.level]}",
