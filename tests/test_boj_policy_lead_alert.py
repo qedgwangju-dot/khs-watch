@@ -15,6 +15,7 @@ from boj_policy_lead_alert import (
     extract_vote,
     signal_signature,
     should_alert,
+    verified_event_signals,
 )
 
 KST = ZoneInfo("Asia/Seoul")
@@ -249,6 +250,47 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         )
         self.assertTrue(ok)
         self.assertEqual(reason, "새 공식 정책 이벤트")
+
+    def test_verified_event_signal_has_complete_current_decision(self):
+        signals = verified_event_signals(dt.datetime(2026, 9, 18, 13, 40, tzinfo=KST))
+        self.assertEqual(len(signals), 1)
+        signal = signals[0]
+        self.assertAlmostEqual(signal.policy_rate, 1.25)
+        self.assertEqual(signal.hike_bp, 25)
+        self.assertEqual((signal.vote_for, signal.vote_against), (7, 2))
+        self.assertEqual(signal.dissent_direction, "hold")
+        self.assertEqual(signal.dissenters, ("아사다", "사토"))
+        self.assertTrue(signal.expected_move)
+        self.assertTrue(signal.hawkish_tail_50bp)
+
+    def test_older_market_path_cannot_roll_back_after_decision(self):
+        stale = classify(
+            Item(
+                title="BOJ set to raise interest rates to 31-year high as inflation risks loom - Reuters",
+                source="Reuters",
+                link="https://example.com/stale",
+                published=dt.datetime(2026, 9, 16, 11, 49, tzinfo=KST),
+                description="The BOJ is expected to raise rates.",
+            )
+        )
+        state = {
+            "last_signal_key": "latest-decision",
+            "last_alert_at_kst": "2026-09-18T13:00:00+09:00",
+            "last_published_at_kst": "2026-09-18T12:01:00+09:00",
+            "signature": {
+                "event_type": "decision",
+                "level": 1,
+                "policy_rate": 1.25,
+                "hike_bp": 25,
+            },
+        }
+        ok, reason = should_alert(
+            stale,
+            state,
+            dt.datetime(2026, 9, 18, 13, 40, tzinfo=KST),
+        )
+        self.assertFalse(ok)
+        self.assertIn("오래된 보도", reason)
 
     def test_same_signature_is_suppressed_inside_cooldown(self):
         signal = classify(
