@@ -49,6 +49,28 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertTrue(signal.conditional_pace)
         self.assertTrue(signal.accommodative)
 
+    def test_ueta_press_conference_keeps_50bp_as_conditional_tail(self):
+        signal = classify(
+            self.mk(
+                "BOJ Governor Ueda's comments at news conference - Reuters",
+                "On 50-bp or back-to-back rate hikes, Ueda said that depends on how price "
+                "conditions develop and various possibilities should not be ruled out. "
+                "As for the pace of future rate hikes, there is no pre-set idea and the Bank "
+                "will determine policy at each policy meeting. The neutral rate is hard to "
+                "pinpoint. Underlying inflation is approaching 2% and the Bank wants underlying "
+                "inflation to stabilise at 2%.",
+                hour=3,
+            )
+        )
+        self.assertEqual(signal.event_type, "press_conference")
+        self.assertEqual(signal.level, 1)
+        self.assertTrue(signal.hawkish_tail_50bp)
+        self.assertTrue(signal.further_hikes)
+        self.assertTrue(signal.conditional_pace)
+        self.assertTrue(signal.neutral_rate)
+        self.assertTrue(signal.stabilize_underlying_around_2)
+        self.assertIn("조건부 꼬리위험", signal.note)
+
     def test_faster_next_meeting_signal_is_orange(self):
         signal = classify(
             self.mk(
