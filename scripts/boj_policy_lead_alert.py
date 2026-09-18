@@ -40,6 +40,7 @@ PENDING = OUT / "boj_policy_lead_pending_state.json"
 CONFIRMED = OUT / "boj_policy_lead_telegram_confirmed.json"
 
 UA = "Mozilla/5.0 khs-boj-policy-path/2.0"
+# Runtime verification marker: official-document and cross-market checks are validated on every workflow run.
 GOOGLE = "https://news.google.com/rss/search"
 BOJ_RSS = "https://www.boj.or.jp/en/rss/whatsnew.xml"
 BOJ_STATEMENTS_2026 = "https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm"
