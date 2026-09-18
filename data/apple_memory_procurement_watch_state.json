@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "initial_alert_sent": false,
+  "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-15T09:00:00+09:00",
   "baseline_source": "https://www.jiemian.com/article/15094732.html",
   "baseline": {
@@ -13,11 +13,21 @@
     "unit": "Gb",
     "confirmation": "공급망 보도·Apple 공식 미확인"
   },
-  "seen_ids": [],
+  "seen_ids": [
+    "6223aa96c7711ded5a8fd75e",
+    "7fb0c236499f0cd032ae895d",
+    "8241c859f77766a65f4cde7e",
+    "8865e88df173e8f1766eecc2",
+    "b6d40a8803991e382fd5d5e6",
+    "b83fef96c138e5ac2f60e860",
+    "bba555f5c862789c317ecea4",
+    "f927019eab761079a46ff8a9"
+  ],
   "seen_fact_keys": [
     "apple_samsung_1q27_dram2.0gb_nand0.33gb_up30_40"
   ],
-  "last_scan_count": 0,
-  "last_new_signal_count": 0,
-  "alert_generated": false
+  "last_scan_count": 8,
+  "last_new_signal_count": 1,
+  "alert_generated": true,
+  "updated_at_kst": "2026-09-18T14:02:30+09:00"
 }
