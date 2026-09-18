@@ -71,20 +71,6 @@ RAMP = re.compile(
     r'양산|수율|생산라인|주간\s*생산|생산능력|대량\s*공급',
     re.I,
 )
-ACTUAL_WEEKLY_OUTPUT = re.compile(
-    r'实际(?:周产|週產|周产量|週產量)|当前(?:周产|週產|周产量|週產量)|目前(?:周产|週產|周产量|週產量)|'
-    r'(?:周产|週產|周产量|週產量).{0,18}(?:达到|達到|已达|已達|超过|超過)|'
-    r'actual\s+weekly\s+(?:production|output)|weekly\s+(?:production|output).{0,24}(?:reached|at|now)|'
-    r'실제\s*주간\s*(?:생산|생산량)|현재\s*주당\s*(?:생산|생산량)|주당\s*(?:생산|생산량).{0,18}(?:도달|달성)',
-    re.I,
-)
-SUPPLIER_CAPACITY_GUIDANCE = re.compile(
-    r'要求.{0,24}(?:供应商|供應商).{0,24}(?:1000|1,000).{0,10}(?:台/周|台每周|台每週)|'
-    r'(?:供应商|供應商).{0,24}(?:产能|產能).{0,24}(?:1000|1,000).{0,10}(?:台/周|台每周|台每週)|'
-    r'supplier.{0,24}capacity.{0,24}(?:1000|1,000).{0,12}(?:week|weekly)|'
-    r'공급업체.{0,24}주당\s*(?:1000|1,000)대.{0,18}생산능력',
-    re.I,
-)
 CN_LOCATIONS = re.compile(r'上海|杭州|宁波|寧波|厦门|廈門|상하이|항저우|닝보|샤먼', re.I)
 OFFICIAL_CONFIRM = re.compile(r'Tesla\s+(?:said|confirmed|announced)|特斯拉(?:官方|确认|確認|宣布)|테슬라(?:가|는)?\s*(?:공식|확인|발표)', re.I)
 
@@ -168,8 +154,6 @@ def _stage(text: str) -> str:
     if weekly_target:
         return 'weekly_capacity_target'
     audit = bool(AUDIT.search(text))
-    if ACTUAL_WEEKLY_OUTPUT.search(text) and not SUPPLIER_CAPACITY_GUIDANCE.search(text):
-        return 'actual_weekly_output'
     if audit_started:
         return 'supplier_audit_started'
     if scaled and audit:
@@ -196,8 +180,6 @@ def score(item: dict) -> int:
         s += 8
     if stage == 'supplier_audit_started':
         s += 12
-    if stage == 'actual_weekly_output':
-        s += 15
     if stage == 'actual_weekly_production':
         s += 15
     if stage == 'weekly_capacity_target':
@@ -224,8 +206,6 @@ def category(text: str, group: str) -> str:
             return 'Optimus 천 단위 발주·공급업체 심사'
         if stage == 'scale_order':
             return 'Optimus 천 단위 양산 발주'
-        if stage == 'actual_weekly_output':
-            return 'Optimus 실제 주간 완제품 생산량'
         if stage == 'supplier_audit_started':
             return 'Optimus 공급업체 양산 심사 실제 개시'
         if stage == 'supplier_audit':
@@ -248,13 +228,7 @@ def meaning(cat: str) -> str:
     if cat == 'Optimus 천 단위 양산 발주':
         return ('수백 대 시험 물량에서 천 단위 부품 발주로 주문 규모가 한 단계 올라간 공급망 신호입니다. '
                 '실제 부품사별 발주 수량·납기·반복 주문이 확인되면 양산 매출 가시성이 높아집니다.')
-    if cat == 'Optimus 실제 주간 완제품 생산량':
-        return ('공급업체가 준비하라는 생산능력 목표가 아니라 테슬라 완제품의 실제 주간 생산량이 확인되는 가장 강한 양산 신호입니다. '
-                '주당 생산량·수율·가동률·내부 배치·출하를 함께 추적하고 주당 500대·1,000대·2,000대 돌파를 별도 단계로 봅니다.')
-    if cat == 'Optimus 실제 주간 완제품 생산량':
-        return ('공급업체 주당 생산능력 요구치와 실제 완제품 생산량을 혼동하면 안 됩니다. '
-                '실제 생산량은 테슬라 공식자료·공장 관계자 복수 보도·출하/배치 데이터로 교차확인하고 수율 급락이나 라인 정지를 함께 봅니다.')
-    if cat == 'Optimus 공급업체 양산 심사 실제 개시':
+        if cat == 'Optimus 공급업체 양산 심사 실제 개시':
         return ('기존 약 5,000대 규모 공급망 주문의 후속으로, 공급업체 심사가 예정·방문 단계에서 실제 양산 심사 개시로 넘어간 신호입니다. '
                 '심사 통과·정식 공급업체 선정·최종 발주 배정·실제 출하 순으로 다음 상태 변화를 추적합니다.')
     if cat == 'Optimus 공급업체 심사·양산 준비':
@@ -296,8 +270,6 @@ def verification(item: dict, group: str, text: str) -> str:
             return '공급망 생산능력·목표 보도 · 실제 완제품 생산량과 분리'
         if _stage(text) in {'scale_order', 'scale_order_audit'}:
             return '중국 공급망 복수 보도 · 테슬라 공식 양산계획과 교차확인 · 약 5,000대 발주 수량은 테슬라 공식 확인 전'
-        if _stage(text) == 'actual_weekly_output':
-            return '실제 주간 생산량 보도 · 공급업체 생산능력 목표와 분리 · 테슬라 공식 생산량으로 후속 교차확인'
         if _stage(text) == 'supplier_audit_started':
             return '중국 공급망 후속 보도 · 9월 17일 새 양산 심사 개시 보도 · 테슬라 공식 공급업체 선정 결과는 미확인'
         if _stage(text) == 'supplier_audit':
@@ -317,8 +289,6 @@ def clean_title(title: str, source: str) -> str:
             return '테슬라 옵티머스, 약 5,000대 공급망 주문·중국 공급업체 심사 진행 보도'
         if stage == 'scale_order':
             return '테슬라 옵티머스, 약 5,000대 천 단위 공급망 주문 보도'
-        if stage == 'actual_weekly_output':
-            return '테슬라 옵티머스, 실제 주간 완제품 생산량 신규 확인'
         if stage == 'supplier_audit_started':
             return '테슬라 옵티머스, 기존 약 5,000대 주문 후속…중국 공급업체 양산 심사 실제 개시 보도'
         if stage == 'supplier_audit':
