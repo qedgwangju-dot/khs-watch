@@ -50,6 +50,90 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertTrue(signal.conditional_pace)
         self.assertTrue(signal.accommodative)
 
+    def test_title_only_press_conference_is_suppressed_until_policy_content_arrives(self):
+        sparse = classify(
+            self.mk(
+                "BOJ Governor Ueda's comments at news conference - Reuters",
+                "",
+                hour=3,
+            )
+        )
+        state = {
+            "last_signal_key": "decision-key",
+            "last_alert_at_kst": "2026-09-18T13:00:00+09:00",
+            "last_published_at_kst": "2026-09-18T12:23:00+09:00",
+            "signature": {
+                "event_type": "decision",
+                "level": 1,
+                "policy_rate": 1.25,
+                "hike_bp": 25,
+            },
+        }
+        ok, reason = should_alert(
+            sparse,
+            state,
+            dt.datetime(2026, 9, 18, 17, 10, tzinfo=KST),
+        )
+        self.assertFalse(ok)
+        self.assertEqual(reason, "회견 본문 정책경로 확인 전")
+
+    def test_press_conference_layout_is_scan_first_without_empty_unknown_blocks(self):
+        signal = verified_press_conference_signals(
+            dt.datetime(2026, 9, 18, 17, 20, tzinfo=KST)
+        )[0]
+        market = {
+            "event_time": dt.datetime(2026, 9, 18, 15, 30, tzinfo=KST),
+            "usd_jpy_event": {
+                "change_pct": 0.4,
+                "reference_price": 157.0,
+                "latest_price": 157.628,
+            },
+            "nikkei_event": {
+                "change_pct": 0.5,
+                "reference_price": 64800.0,
+                "latest_price": 65124.0,
+            },
+            "nasdaq_future_event": {
+                "change_pct": 0.3,
+                "reference_price": 29800.0,
+                "latest_price": 29889.4,
+            },
+            "usd_jpy": {
+                "price": 157.628,
+                "m15": 0.1,
+                "m30": 0.2,
+            },
+            "nikkei": {
+                "price": 65124.0,
+                "change_pct": 1.2,
+                "fresh": False,
+            },
+            "nasdaq_future": {
+                "price": 29889.4,
+                "change_pct": 0.5,
+                "fresh": True,
+            },
+            "jgb2": {
+                "value": 1.868,
+                "date": "2026/9/17",
+                "change_bp": 1.6,
+                "note": "장중 반응 판정에는 사용하지 않음",
+            },
+        }
+        _, body, _ = build(
+            signal,
+            "정책 가이던스 핵심 문구 변화",
+            dt.datetime(2026, 9, 18, 17, 20, tzinfo=KST),
+            market,
+        )
+        self.assertIn("【한눈에 보기】", body)
+        self.assertIn("【정책경로】", body)
+        self.assertIn("【시장 반응 | 이벤트 이후】", body)
+        self.assertIn("직전 결정: 1.00% → 1.25% (+25bp)", body)
+        self.assertIn("USD/JPY: +0.40%", body)
+        self.assertNotIn("정책 표결: 새 명시적 표결 수치 미확인", body)
+        self.assertNotIn("가이던스 체크", body)
+
     def test_verified_ueta_press_conference_signal_is_complete(self):
         signals = verified_press_conference_signals(
             dt.datetime(2026, 9, 18, 17, 20, tzinfo=KST)
