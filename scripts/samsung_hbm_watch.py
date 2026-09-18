@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import os
 import pathlib
 import re
 import urllib.parse
@@ -30,6 +31,9 @@ FRESH_HOURS = 96
 MONTHLY_DAY = 15
 COMPARE_VERSION = 4
 KCS_ITEM_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTrade.do"
+DATA_GO_ITEM_URL = "https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList"
+DATA_GO_SIDO_ITEM_URL = "https://apis.data.go.kr/1220000/sidoitemtrade/getSidoitemtradeList"
+DATA_GO_KEY = urllib.parse.unquote((os.getenv("KCS_DATA_GO_SERVICE_KEY") or "").strip())
 KCS_REGION_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTradeRegion.do"
 HBM_HSK10 = "8542323000"
 REGION_HS6 = "854232"
@@ -261,6 +265,94 @@ def _normalize_export_usd(value: float | None) -> float | None:
     return value * 1000.0 if 0 <= value < 100_000_000 else value
 
 
+
+def _xml_text(item, *names):
+    for name in names:
+        val = item.findtext(name)
+        if val not in (None, ""):
+            return val
+    return None
+
+
+def fetch_data_go_item_month(month: str) -> tuple[dict | None, str]:
+    if not DATA_GO_KEY:
+        return None, "공공데이터포털 API 키 미설정"
+    params = {
+        "serviceKey": DATA_GO_KEY,
+        "strtYymm": month,
+        "endYymm": month,
+        "hsSgn": HBM_HSK10,
+    }
+    try:
+        r = requests.get(DATA_GO_ITEM_URL, params=params, timeout=(5, 15))
+        root = ET.fromstring(r.content)
+    except Exception as exc:
+        return None, f"공공데이터포털 전국 API 실패: {type(exc).__name__}: {exc}"
+    code = root.findtext(".//resultCode")
+    msg = root.findtext(".//resultMsg") or ""
+    if code != "00":
+        return None, f"공공데이터포털 전국 API 오류 {code}: {msg}"
+
+    for item in root.findall(".//item"):
+        year = re.sub(r"[^0-9]", "", _xml_text(item, "year") or "")
+        hs = str(_xml_text(item, "hsCode", "hsCd") or "").replace(".", "")
+        if year.startswith(month) and hs == HBM_HSK10:
+            amt = _number(_xml_text(item, "expDlr"))
+            wgt = _number(_xml_text(item, "expWgt"))
+            if amt is None:
+                continue
+            return {
+                "month": month,
+                "amount_usd": amt,
+                "weight_kg": wgt,
+                "hs": HBM_HSK10,
+                "source": "공공데이터포털 관세청 품목별 수출입실적 API",
+                "api": True,
+            }, ""
+    return None, f"공공데이터포털 전국 API {month} HSK {HBM_HSK10} 데이터 없음"
+
+
+def fetch_data_go_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str]:
+    if not DATA_GO_KEY:
+        return None, "공공데이터포털 API 키 미설정"
+    params = {
+        "serviceKey": DATA_GO_KEY,
+        "strtYymm": month,
+        "endYymm": month,
+        "sidoCd": sido_cd,
+        "hsSgn": HBM_HSK10,
+    }
+    try:
+        r = requests.get(DATA_GO_SIDO_ITEM_URL, params=params, timeout=(5, 15))
+        root = ET.fromstring(r.content)
+    except Exception as exc:
+        return None, f"공공데이터포털 시도 API 실패: {type(exc).__name__}: {exc}"
+    code = root.findtext(".//resultCode")
+    msg = root.findtext(".//resultMsg") or ""
+    if code != "00":
+        return None, f"공공데이터포털 시도 API 오류 {code}: {msg}"
+
+    for item in root.findall(".//item"):
+        hs = str(_xml_text(item, "hsSgn", "hsCd", "hsCode") or "").replace(".", "")
+        period = re.sub(r"[^0-9]", "", _xml_text(item, "priodTitle", "year") or "")
+        if hs and hs != HBM_HSK10:
+            continue
+        if period and not period.startswith(month):
+            continue
+        amt = _number(_xml_text(item, "expUsdAmt", "expDlr"))
+        if amt is None:
+            continue
+        return {
+            "month": month,
+            "amount_usd": amt,
+            "weight_kg": None,
+            "hs": HBM_HSK10,
+            "source": "공공데이터포털 관세청 시도별 품목별 수출입실적 API",
+            "api": True,
+        }, ""
+    return None, f"공공데이터포털 시도 API {sido_cd} {month} HSK {HBM_HSK10} 데이터 없음"
+
+
 def fetch_kcs_item_month(month: str, session) -> tuple[dict | None, str]:
     params = {
         "tradeKind": "ETS_MNK_1020000A",
@@ -428,18 +520,33 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         rows: dict[str, dict] = {}
         local_errors: list[str] = []
 
-        national, nerr = fetch_kcs_item_month(candidate, session)
+        national, nerr = fetch_data_go_item_month(candidate)
+        if not national:
+            national, nerr2 = fetch_kcs_item_month(candidate, session)
+            if nerr2:
+                nerr = f"{nerr}; fallback={nerr2}"
         if national:
             rows["national_hsk10"] = national
         else:
             local_errors.append(nerr)
 
-        for key in ("samsung_chungnam", "hynix_chungbuk", "hynix_icheon"):
-            row, err = fetch_kcs_region_month(candidate, REGIONS[key], session=session)
+        for key in ("samsung_chungnam", "hynix_chungbuk"):
+            region = REGIONS[key]
+            row, err = fetch_data_go_sido_month(candidate, region["sido"])
+            if not row:
+                row, err2 = fetch_kcs_region_month(candidate, region, session=session)
+                if err2:
+                    err = f"{err}; fallback={err2}"
             if row:
                 rows[key] = row
             else:
                 local_errors.append(err)
+
+        row, err = fetch_kcs_region_month(candidate, REGIONS["hynix_icheon"], session=session)
+        if row:
+            rows["hynix_icheon"] = row
+        else:
+            local_errors.append(err)
 
         if all(k in rows for k in required_keys):
             selected = candidate
@@ -457,18 +564,33 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
             continue
         rows: dict[str, dict] = {}
 
-        national, nerr = fetch_kcs_item_month(month, session)
+        national, nerr = fetch_data_go_item_month(month)
+        if not national:
+            national, nerr2 = fetch_kcs_item_month(month, session)
+            if nerr2:
+                nerr = f"{nerr}; fallback={nerr2}"
         if national:
             rows["national_hsk10"] = national
         else:
             errors.append(nerr)
 
-        for key in ("samsung_chungnam", "hynix_chungbuk", "hynix_icheon"):
-            row, err = fetch_kcs_region_month(month, REGIONS[key], session=session)
+        for key in ("samsung_chungnam", "hynix_chungbuk"):
+            region = REGIONS[key]
+            row, err = fetch_data_go_sido_month(month, region["sido"])
+            if not row:
+                row, err2 = fetch_kcs_region_month(month, region, session=session)
+                if err2:
+                    err = f"{err}; fallback={err2}"
             if row:
                 rows[key] = row
             else:
                 errors.append(err)
+
+        row, err = fetch_kcs_region_month(month, REGIONS["hynix_icheon"], session=session)
+        if row:
+            rows["hynix_icheon"] = row
+        else:
+            errors.append(err)
         data[month] = rows
 
     # Newest, prior month and 3-month comparison must all have exact national
@@ -505,6 +627,8 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         "region_hs": REGION_HS6,
         "source_url": KCS_SOURCE_PAGE,
         "icheon_public_available": "hynix_icheon" in data.get(selected, {}),
+        "official_api_key_configured": bool(DATA_GO_KEY),
+        "official_api_used": bool(data.get(selected, {}).get("national_hsk10", {}).get("api")),
         "errors": errors,
     }, errors
 
