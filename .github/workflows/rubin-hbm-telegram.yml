@@ -96,6 +96,48 @@ jobs:
           python -m py_compile scripts/samsung_hbm_watch.py
           python scripts/samsung_hbm_watch.py
 
+      - name: Block customs credential leakage
+        env:
+          KCS_DATA_GO_SERVICE_KEY: ${{ secrets.KCS_DATA_GO_SERVICE_KEY }}
+        run: |
+          python - <<'PY'
+          import os
+          import pathlib
+          import re
+          import urllib.parse
+
+          key = (os.getenv("KCS_DATA_GO_SERVICE_KEY") or "").strip()
+          variants = {
+              key,
+              urllib.parse.quote(key, safe="") if key else "",
+              urllib.parse.quote_plus(key) if key else "",
+          }
+          variants.discard("")
+
+          targets = [
+              pathlib.Path("data/samsung_hbm_watch_state.json"),
+              pathlib.Path("out/samsung_hbm_status.md"),
+              pathlib.Path("out/samsung_hbm_alert.html"),
+          ]
+          leaked = []
+          for target in targets:
+              if not target.exists():
+                  continue
+              body = target.read_text(encoding="utf-8", errors="replace")
+              if any(v in body for v in variants):
+                  leaked.append(str(target))
+                  continue
+              if re.search(r"serviceKey=(?!<redacted>)[^&\\s\\\"']+", body):
+                  leaked.append(str(target))
+
+          if leaked:
+              raise RuntimeError(
+                  "Customs API credential leakage detected in generated files: "
+                  + ", ".join(sorted(set(leaked)))
+              )
+          print("customs_credential_leak_check=passed")
+          PY
+
       - name: Check TrendForce AI component lead times
         run: |
           python -m py_compile scripts/ai_component_leadtime_watch.py
