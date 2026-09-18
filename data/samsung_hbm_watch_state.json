@@ -17,8 +17,8 @@
     "fd774ad93defbc5c27b92607"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-18T20:30:35+09:00",
-  "last_event_count": 12,
+  "updated_at_kst": "2026-09-19T01:35:01+09:00",
+  "last_event_count": 13,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -26,14 +26,15 @@
   "official_month": "202608",
   "official_data_ok": true,
   "official_errors": [
-    "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
+    "관세청 세션 초기화 실패: ConnectTimeout",
+    "이천 202608 KCS 조회 실패: ConnectTimeout",
+    "이천 202607 KCS 조회 실패: ConnectTimeout",
+    "이천 202605 KCS 조회 실패: ConnectTimeout",
+    "이천 202508 KCS 조회 실패: ConnectTimeout"
   ],
   "last_official_alert_month": "202608",
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-18T20:30:35+09:00"
+  "last_successful_official_at_kst": "2026-09-19T01:35:01+09:00"
 }
