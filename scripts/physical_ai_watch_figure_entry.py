@@ -39,6 +39,8 @@ _orig_select_diverse = base.select_diverse
 _orig_same_event = ext._same_event
 
 FIGURE_X_SENTINEL = 'DIRECT_FIGURE_BRETT_X'
+FIGURE_NEWS_SENTINEL = 'DIRECT_FIGURE_OFFICIAL_NEWS'
+FIGURE_NEWS_URL = 'https://www.figure.ai/news'
 FIGURE_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/adcock_brett'
 FIGURE_NITTER_FEEDS = [
     'https://twiiit.com/adcock_brett/rss',
@@ -92,6 +94,7 @@ FIGURE_COMMERCIAL = re.compile(
 
 for q in [
     FIGURE_X_SENTINEL,
+    FIGURE_NEWS_SENTINEL,
     '("Figure AI" OR "Figure Robotics" OR "Figure 03" OR Helix OR "Brett Adcock") (breakthrough OR "AI update" OR announcement OR reveal OR tomorrow OR model OR autonomy OR VLA OR performance OR benchmark OR deployment OR customer)',
     '("Figure AI" OR "Figure 03" OR Helix) (BMW OR customer OR deployment OR production OR autonomy OR benchmark OR success rate OR generalization OR "general robotics")',
     '("Figure AI" OR Helix OR Index) ("scaling law" OR pretraining OR "zero shot" OR "unseen homes" OR "human-to-humanoid" OR "data doubling")',
@@ -214,10 +217,64 @@ def _fetch_figure_founder_x() -> list[dict]:
         raise RuntimeError(' | '.join(errors))
     return list(gathered.values())
 
+MONTHS = {
+    'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
+    'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12,
+}
+
+
+def _figure_date_from_text(text: str) -> dt.datetime | None:
+    m = re.search(r'(January|February|March|April|May|June|July|August|September|October|November|December)\\s+(\\d{1,2}),\\s+(20\\d{2})', text)
+    if not m:
+        return None
+    return dt.datetime(int(m.group(3)), MONTHS[m.group(1)], int(m.group(2)), 12, 0, tzinfo=dt.timezone.utc)
+
+
+def _fetch_figure_official_news() -> list[dict]:
+    index = legacy._request_text(FIGURE_NEWS_URL)
+    slugs: list[str] = []
+    for m in re.finditer(r'href=["\\'](/news/[A-Za-z0-9_-]+)["\\']', index, re.I):
+        path = m.group(1)
+        if path == '/news' or path in slugs:
+            continue
+        slugs.append(path)
+    out: list[dict] = []
+    cutoff = base.NOW - dt.timedelta(days=4)
+    for path in slugs[:30]:
+        try:
+            url = f'https://www.figure.ai{path}'
+            raw = legacy._request_text(url)
+            clean = legacy._clean_social_text(raw)
+            pub = _figure_date_from_text(clean)
+            if pub is None or pub < cutoff or pub > base.NOW + dt.timedelta(days=1):
+                continue
+            h1 = re.search(r'<h1[^>]*>(.*?)</h1>', raw, re.I | re.S)
+            title = legacy._clean_social_text(h1.group(1) if h1 else '')
+            if not title:
+                mt = re.search(r'<title[^>]*>(.*?)</title>', raw, re.I | re.S)
+                title = legacy._clean_social_text(mt.group(1) if mt else path.rsplit('/', 1)[-1].replace('-', ' '))
+            text = f'{title} {clean}'
+            if not _is_figure_text(text):
+                continue
+            out.append({
+                'title': title,
+                'link': url,
+                'description': clean[:7000],
+                'published': pub.isoformat(),
+                'source': 'Figure AI',
+                'direct_primary': True,
+                'figure_official_slug': path.rsplit('/', 1)[-1],
+            })
+        except Exception:
+            continue
+    return out
+
 
 def query_news(q: str) -> list[dict]:
     if q == FIGURE_X_SENTINEL:
         return _fetch_figure_founder_x()
+    if q == FIGURE_NEWS_SENTINEL:
+        return _fetch_figure_official_news()
     return _orig_query_news(q)
 
 
@@ -328,6 +385,9 @@ def clean_title(title: str, source: str) -> str:
 
 
 def key(item: dict) -> str:
+    text = f"{item.get('title','')} {item.get('description','')}"
+    if re.search(r'Helix\\s*2\\.5|30[-\\s]*home|30개.{0,40}(?:가정|주택)|9%[^\\n]{0,40}56%|human[-\\s]*to[-\\s]*humanoid.{0,40}scaling|스케일링\\s*법칙', text, re.I | re.S):
+        return hashlib.sha256(b'figure-ai|helix-2.5|human-to-humanoid-scaling-law').hexdigest()
     if _is_figure_direct(item):
         return hashlib.sha256(f"x:adcock_brett:{item['x_status_id']}".encode()).hexdigest()
     return _orig_key(item)
