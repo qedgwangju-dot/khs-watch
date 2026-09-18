@@ -1,9 +1,9 @@
 {
-  "last_signal_key": "29186fe7843e243113f32074",
-  "last_alert_at_kst": "2026-09-18T12:21:44+09:00",
-  "last_published_at_kst": "2026-09-18T09:59:00+09:00",
+  "last_signal_key": "d854b7241c011c2bfe93782d",
+  "last_alert_at_kst": "2026-09-18T12:22:37+09:00",
+  "last_published_at_kst": "2026-09-18T07:04:00+09:00",
   "last_source": "Reuters",
-  "last_title": "Yen weak ahead of BOJ decision; rate hike expected - Reuters",
+  "last_title": "Bank of Japan set to raise interest rates to 31-year high - Reuters",
   "signature": {
     "level": 1,
     "event_type": "market_path",
@@ -16,6 +16,6 @@
     "accommodative": false,
     "neutral_rate": false,
     "inflation_upside": false,
-    "risk_channels": true
+    "risk_channels": false
   }
 }
