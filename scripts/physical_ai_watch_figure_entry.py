@@ -67,8 +67,8 @@ FIGURE_SIGNAL = re.compile(
     r'breakthrough|step\s*change|critical\s+update|major\s+update|AI\s+update|'
     r'announc|reveal|release|launch|coming\s+tomorrow|tomorrow|in\s+the\s+morning|'
     r'see\s+you\s+in\s+the\s+AM|performance|benchmark|success\s+rate|latency|'
-    r'generaliz|deployment|customer|BMW|production|scale|capabilit|state\s+of\s+the\s+art|'
-    r'돌파구|중대\s*업데이트|공개|발표|내일|익일|성능|벤치마크|성공률|지연|'
+    r'generaliz|deployment|customer|BMW|production|scale|scaling\s+law|pretrain|zero[-\s]*shot|Index|capabilit|state\s+of\s+the\s+art|'
+    r'돌파구|중대\s*업데이트|공개|발표|내일|익일|성능|벤치마크|성공률|지연|스케일링\s*법칙|사전학습|제로샷|'
     r'배치|고객|양산|생산|역량|성능\s*향상',
     re.I,
 )
@@ -94,6 +94,7 @@ for q in [
     FIGURE_X_SENTINEL,
     '("Figure AI" OR "Figure Robotics" OR "Figure 03" OR Helix OR "Brett Adcock") (breakthrough OR "AI update" OR announcement OR reveal OR tomorrow OR model OR autonomy OR VLA OR performance OR benchmark OR deployment OR customer)',
     '("Figure AI" OR "Figure 03" OR Helix) (BMW OR customer OR deployment OR production OR autonomy OR benchmark OR success rate OR generalization OR "general robotics")',
+    '("Figure AI" OR Helix OR Index) ("scaling law" OR pretraining OR "zero shot" OR "unseen homes" OR "human-to-humanoid" OR "data doubling")',
 ]:
     if q not in base.QUERIES:
         base.QUERIES.append(q)
@@ -247,12 +248,16 @@ def score(item: dict) -> int:
         s += 8
     if re.search(r'benchmark|success\s+rate|latency|generaliz|hours?\s+without\s+(?:a\s+)?failure|벤치마크|성공률|지연', text, re.I):
         s += 7
+    if re.search(r'scaling\s+law|human[-\s]*to[-\s]*humanoid|Index.{0,80}(?:doubl|8x|8×)|zero[-\s]*shot.{0,80}(?:home|generaliz)|스케일링\s*법칙', text, re.I | re.S):
+        s += 12
     if FIGURE_COMMERCIAL.search(text):
         s += 6
     return s
 
 
 def _figure_subcat(text: str) -> str:
+    if re.search(r'scaling\s+law|human[-\s]*to[-\s]*humanoid|Index.{0,80}(?:doubl|8x|8×)|zero[-\s]*shot.{0,80}(?:home|generaliz)|스케일링\s*법칙', text, re.I | re.S):
+        return '인간→휴머노이드 스케일링 법칙'
     if FIGURE_PREANNOUNCE.search(text):
         return '공식 사전예고·공개 시간표'
     if FIGURE_COMMERCIAL.search(text) and re.search(r'customer|BMW|deployment|order|contract|revenue|고객|배치|수주|계약|매출', text, re.I):
@@ -270,6 +275,8 @@ def category(text: str, group: str) -> str:
 
 def meaning(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
+    if raw == '인간→휴머노이드 스케일링 법칙':
+        return '인간 행동 사전학습 데이터가 늘어날수록 다음 로봇 행동 예측 성능이 예측 가능하게 개선되는지를 보는 핵심 재평가 신호입니다. 데이터 배수·성공률·미지 환경 수·모델 크기·연산량을 함께 추적해 실제 로봇 일반화가 스케일링되는지 확인합니다.'
     if raw == '공식 사전예고·공개 시간표':
         return '피겨 AI 경영진이 공개 시점을 직접 예고한 시간표 신호입니다. 다음 공개에서 Helix 모델 변화, 작업 성공률·지연시간·일반화 범위, 실제 로봇 자율작업과 고객 배치까지 무엇이 구체화되는지 연속 추적합니다.'
     if raw == 'AI 모델·성능 돌파구':
@@ -283,6 +290,8 @@ def meaning(cat: str) -> str:
 
 def risk(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
+    if raw == '인간→휴머노이드 스케일링 법칙':
+        return '스케일링 법칙은 데이터 범위와 평가 과제에 종속될 수 있습니다. 가장 먼저 볼 실패 지표는 데이터 2배 증가에도 미지 환경 성공률이 더 이상 개선되지 않거나 모델·연산 증가 대비 성능 향상이 둔화되는지입니다.'
     if raw == '공식 사전예고·공개 시간표':
         return '사전예고는 기술 성과가 검증됐다는 뜻이 아닙니다. 가장 현실적인 실패 경로는 공개 내용이 단일 데모에 그치고 정량 성능·고객·배치 정보가 없는 경우이며, 실제 공개 후 별도 신규 사건으로 재평가합니다.'
     if raw == 'AI 모델·성능 돌파구':
@@ -307,6 +316,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if re.search(r'scaling\s+law|human[-\s]*to[-\s]*humanoid|zero[-\s]*shot.{0,50}(?:home|generaliz)', title, re.I):
+        return '피겨 AI, 인간→휴머노이드 스케일링 법칙 확인…미지 환경 일반화 개선'
     if re.search(r'Figure\s*AI|Figure\s*0?3|Helix|Brett\s*Adcock', title, re.I):
         if FIGURE_PREANNOUNCE.search(title):
             return '피겨 AI, AI 돌파구 공개 예고…익일 발표 예정'
@@ -329,6 +340,9 @@ def same_event(a: dict, b: dict) -> bool:
     # Syndicated copies of one teaser are one event. The actual next-day reveal is
     # intentionally NOT collapsed into the teaser because it changes the state.
     if FIGURE_PREANNOUNCE.search(ta) and FIGURE_PREANNOUNCE.search(tb):
+        return True
+    scaling = r'scaling\s+law|human[-\s]*to[-\s]*humanoid|Helix\s*2\.5|30[-\s]*home|Index'
+    if re.search(scaling, ta, re.I) and re.search(scaling, tb, re.I):
         return True
     return False
 
