@@ -2,10 +2,13 @@
   "seen_ids": [
     "0fbce83b73293cb0ae9a300e",
     "29917bada40fc676323de211",
+    "2fd519f3311b7a35a23b3df7",
     "45f9f31d1e6cc628a7bf680f",
     "4a052c510fe7988076a8e75d",
     "60166d645eb70db655149ec7",
     "67cf87cd7ae84be2493d0fc6",
+    "79db62328df5eefa718368f8",
+    "9046127bdbf6a9b5874f4a55",
     "a42f64d496ea3b33d8256a30",
     "aecd0190a7a845249b865cbb",
     "c4eeabbe2d4315477133e9fe",
@@ -14,17 +17,19 @@
     "fd774ad93defbc5c27b92607"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-18T17:06:31+09:00",
+  "updated_at_kst": "2026-09-18T17:09:41+09:00",
   "last_event_count": 10,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
-  "monthly_due": false,
-  "compare_version": 1,
-  "official_month": "",
-  "official_data_ok": false,
+  "monthly_due": true,
+  "compare_version": 4,
+  "official_month": "202608",
+  "official_data_ok": true,
   "official_errors": [
     "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
     "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "이천 202606 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
-  ]
+    "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
+  ],
+  "last_official_alert_month": "202608"
 }
