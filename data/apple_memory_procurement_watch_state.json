@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "initial_alert_sent": false,
+  "baseline_at_kst": "2026-09-15T09:00:00+09:00",
+  "baseline_source": "https://www.jiemian.com/article/15094732.html",
+  "baseline": {
+    "quarter": "2027Q1",
+    "supplier": "삼성전자",
+    "dram_usd_per_gb": 2.0,
+    "nand_usd_per_gb": 0.33,
+    "increase_pct_low": 30,
+    "increase_pct_high": 40,
+    "unit": "Gb",
+    "confirmation": "공급망 보도·Apple 공식 미확인"
+  },
+  "seen_ids": [],
+  "seen_fact_keys": [
+    "apple_samsung_1q27_dram2.0gb_nand0.33gb_up30_40"
+  ],
+  "last_scan_count": 0,
+  "last_new_signal_count": 0,
+  "alert_generated": false
+}
