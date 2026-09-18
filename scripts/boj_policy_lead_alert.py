@@ -1271,9 +1271,6 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     ):
         return True, "물가전망 문구 이견 변화"
 
-    if signal.official_statement_detail_verified != bool(previous.get("official_statement_detail_verified", False)):
-        return True, "BOJ 공식 성명 상세 검증상태 변화"
-
     inflation_regime_flags = (
         "inflation_spillover",
         "cpi_h2_clearly_above_2",
@@ -1762,11 +1759,29 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         fallback = VERIFIED_EVENT_FALLBACKS.get(str(signal.published.date())) or {}
         prior_decision = [
             f"- 직전 결정: {fallback.get('policy_rate', 1.25) - fallback.get('hike_bp', 25)/100:.2f}% → {fallback.get('policy_rate', 1.25):.2f}% (+{fallback.get('hike_bp', 25)}bp)",
-            f"- 정책 표결: {fallback.get('vote_for', 7)}대{fallback.get('vote_against', 2)} · 아사다·사토 = 동결 요구",
-            "- 당시 기대: +25bp 예상 부합 · 50bp 매파 꼬리위험은 결정에서 미실현",
+            f"- 표결: {fallback.get('vote_for', 7)}대{fallback.get('vote_against', 2)} · 아사다·사토 = 동결 요구",
+            "- 시장 기대: +25bp 예상 부합 · 50bp 매파 꼬리위험은 결정에서 미실현",
         ]
     else:
-        prior_decision = [*decision_lines, *committee]
+        prior_decision = []
+        if signal.policy_rate is not None and signal.hike_bp is not None:
+            previous_rate = signal.policy_rate - signal.hike_bp / 100
+            prior_decision.append(
+                f"- 금리: {previous_rate:.2f}% → {signal.policy_rate:.2f}% (+{signal.hike_bp}bp)"
+            )
+        elif signal.policy_rate is not None:
+            prior_decision.append(f"- 금리: {signal.policy_rate:.2f}%")
+        if signal.vote_for is not None and signal.vote_against is not None:
+            dissent_names = ", ".join(signal.dissenters) if signal.dissenters else "반대 위원 추가 확인"
+            prior_decision.append(
+                f"- 표결: {signal.vote_for}대{signal.vote_against} · {dissent_names} · {dissent_text}"
+            )
+        if signal.expected_move:
+            prior_decision.append(f"- 시장 기대: {expectation_text}")
+        if signal.outlook_dissenters:
+            prior_decision.append(
+                f"- 물가전망 이견: {', '.join(signal.outlook_dissenters)} · {signal.outlook_dissent_view or '방향 확인'}"
+            )
 
     # Only show material inflation/guidance facts for this event; do not fill the alert
     # with repeated "미확인" rows.
