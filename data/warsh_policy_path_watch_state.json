@@ -9,7 +9,7 @@
       "pre_rate": 3.63,
       "post_rate": 4.02,
       "change_bp": 39.0,
-      "hike25_prob": 100.0,
+      "hike25_prob": 56.0,
       "contract": "/ZQV26"
     },
     {
@@ -25,10 +25,14 @@
     }
   ],
   "classification": {
-    "verdict": "첫 인상 뒤 연내 추가 인상 1회 이상 반영",
-    "extra_bp": 19.50000000000003,
-    "basis": "첫 향후 회의 인상 기대를 제외한 뒤 연말까지의 추가 기대"
+    "verdict": "현재부터 연내 추가 인상 1회 이상 반영",
+    "extra_bp": 33.999999999999986,
+    "basis": "2026-09-16 FOMC 인상 후 공식 목표범위 중간값에서 연말까지의 누적 기대",
+    "baseline_rate": 3.875,
+    "baseline_kind": "연준 공식 목표범위 중간값",
+    "baseline_date": "2026-09-16",
+    "baseline_source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
   },
   "source": "https://www.frenzycap.com/fedwatch",
-  "updated_at_utc": "2026-09-18T03:47:54.448048+00:00"
+  "updated_at_utc": "2026-09-18T03:52:49.104798+00:00"
 }
