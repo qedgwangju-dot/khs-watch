@@ -984,10 +984,11 @@ def signal_signature(signal: Signal) -> dict:
 
 
 def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, str]:
-    if signal.key == state.get("last_signal_key"):
+    previous = state.get("signature") or {}
+    current_signature = signal_signature(signal)
+    if signal.key == state.get("last_signal_key") and current_signature == previous:
         return False, "동일 신호 중복"
 
-    previous = state.get("signature") or {}
     last = parse_state_time(state.get("last_alert_at_kst"))
     last_published = parse_state_time(state.get("last_published_at_kst"))
 
@@ -1072,7 +1073,6 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         "cpi_h2_clearly_above_2",
         "stabilize_underlying_around_2",
     )
-    current_signature = signal_signature(signal)
     if official_like and any(
         current_signature.get(key) != previous.get(key) for key in material_flags
     ):
