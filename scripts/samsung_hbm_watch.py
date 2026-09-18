@@ -864,6 +864,8 @@ def main() -> None:
         "monthly_due": monthly_due,
         "official_month": official_month,
         "official_data_ok": bool(official),
+        "official_api_key_configured": bool(DATA_GO_KEY),
+        "official_api_used": bool(official and official.get("official_api_used")),
         "official_errors": official_errors[-8:],
     })
     save_state(state)
@@ -876,6 +878,8 @@ def main() -> None:
         f"- monthly_due: {str(monthly_due).lower()}\n"
         f"- official_month: {official_month or 'none'}\n"
         f"- official_data_ok: {str(bool(official)).lower()}\n"
+        f"- official_api_key_configured: {str(bool(DATA_GO_KEY)).lower()}\n"
+        f"- official_api_used: {str(bool(official and official.get('official_api_used'))).lower()}\n"
         f"- official_errors: {len(official_errors)}\n"
         f"- alert_generated: {str(monthly_due or bool(send_events)).lower()}\n",
         encoding="utf-8",
