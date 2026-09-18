@@ -2,15 +2,15 @@
   "date": "2026-09-18",
   "samples": [
     {
-      "ts": 1789690723.8183773,
-      "price": 6868.7
-    },
-    {
       "ts": 1789701107.0301232,
       "price": 6873.13
+    },
+    {
+      "ts": 1789703404.9841237,
+      "price": 6889.34
     }
   ],
-  "session_high": 6885.7,
+  "session_high": 6889.34,
   "sent_session_high": false,
   "sent_fast": false,
   "last_alert_ts": null
