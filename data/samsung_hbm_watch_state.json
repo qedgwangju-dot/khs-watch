@@ -14,10 +14,22 @@
     "fd774ad93defbc5c27b92607"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-18T16:31:20+09:00",
-  "last_event_count": 10,
+  "updated_at_kst": "2026-09-18T17:00:57+09:00",
+  "last_event_count": 13,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
-  "monthly_due": true,
-  "compare_version": 1
+  "monthly_due": false,
+  "compare_version": 1,
+  "official_month": "",
+  "official_data_ok": false,
+  "official_errors": [
+    "충북 202608 KCS 응답에서 수출금액 행 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "이천 202608 KCS 응답에서 수출금액 행 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "충남 202607 KCS 응답에서 수출금액 행 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "충북 202607 KCS 응답에서 수출금액 행 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "이천 202607 KCS 응답에서 수출금액 행 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "충남 202606 KCS 응답에서 수출금액 행 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "충북 202606 KCS 응답에서 수출금액 행 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "이천 202606 KCS 응답에서 수출금액 행 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
+  ]
 }
