@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-09-19T06:43:20+09:00",
+  "updated_at_kst": "2026-09-19T08:38:31+09:00",
   "baseline_at_kst": "2026-09-17T09:45:00+09:00",
   "baseline_source": "https://www.fnnews.com/news/202609170939497768",
   "preorder_at_kst": "2026-10-16T21:00:00+09:00",
@@ -12,6 +12,7 @@
     "163a6dd273e5d0f8636c6437",
     "1d53f866c5b36bee4c8925fe",
     "1d7dec659b16d5d1736d5094",
+    "1da305da1e786974eaaafbb6",
     "22e66161c29b97bd5bc1184a",
     "25a1c6e98d416408612d265c",
     "25c61dea9d5c65be973e7830",
@@ -26,6 +27,8 @@
     "33cd5bd65d30eef03c876791",
     "34edc3e8783f3f4dc7871e09",
     "352e64d770d14a7d6dce00f2",
+    "3c01332c5c3862614dc07937",
+    "3c80837f320c3a9dc5caeb2f",
     "42db5f19317fbd85d144e43d",
     "48a51ef764b7ef99d8c273c6",
     "511a002b34eb001bc150267b",
@@ -53,6 +56,7 @@
     "9482a0350c2d0efa79ca4230",
     "950193f625cf07fc618a4590",
     "967345a2b4c1468034f5a849",
+    "97759b4cdb4f9845b37a84c0",
     "97e09084a4b8e28cb794e395",
     "a42e04eeadfa856ce21f6f54",
     "a51ef6198d915cd5fcc46e89",
@@ -96,11 +100,11 @@
     "fold8_256_price_krw": 2278100,
     "price_gap_krw": 1011900
   },
-  "last_scan_items": 41,
-  "last_signal_count": 0,
+  "last_scan_items": 40,
+  "last_signal_count": 1,
   "last_alert": {
-    "at_kst": "2026-09-18T20:52:47+09:00",
-    "title": "Galaxy Z Fold 8 Sales Rise 10% in Korea After Apple Foldable Debut - en.sedaily.com",
-    "source": "en.sedaily.com"
+    "at_kst": "2026-09-19T08:38:31+09:00",
+    "title": "Surprise! Galaxy Z Fold 8 sees 10% sales jump after Apple's iPhone Duo launch - notebookcheck.net",
+    "source": "notebookcheck.net"
   }
 }
