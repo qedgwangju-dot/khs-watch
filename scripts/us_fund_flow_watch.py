@@ -459,6 +459,10 @@ def parse_reuters(kind):
         }
         payload["fingerprint"] = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
         return payload
+    # Include a compact diagnostic in status logs only when no matching Reuters item can be parsed.
+    sample = [it.get("title","") for it in news_items(query)[:5]]
+    if sample:
+        raise RuntimeError("Reuters discovery sample: " + " || ".join(sample))
     return None
 
 
