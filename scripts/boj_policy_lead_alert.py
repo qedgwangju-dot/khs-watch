@@ -298,6 +298,7 @@ class Signal:
     stabilize_underlying_around_2: bool
     outlook_dissenters: tuple[str, ...]
     outlook_dissent_view: str | None
+    official_statement_detail_verified: bool
     further_hikes: bool
     conditional_pace: bool
     accommodative: bool
@@ -639,6 +640,16 @@ def classify(item: Item) -> Signal | None:
     ) or has_any(text, CPI_H2_ABOVE_2_MARKERS)
     stabilize_underlying_around_2 = has_any(text, STABILIZE_UNDERLYING_2_MARKERS)
     outlook_dissenters, outlook_dissent_view = extract_outlook_dissent(text)
+    official_statement_detail_verified = (
+        source == "Bank of Japan"
+        and kind == "decision"
+        and (
+            has_any(text, FURTHER_HIKES)
+            or inflation_spillover
+            or cpi_h2_clearly_above_2
+            or stabilize_underlying_around_2
+        )
+    )
     further = has_any(text, FURTHER_HIKES)
     conditional = has_any(text, CONDITIONAL_PACE)
     accommodative = has_any(text, ACCOMMODATIVE)
@@ -677,7 +688,7 @@ def classify(item: Item) -> Signal | None:
         f"{rate}|{bp}|{vote_for}-{vote_against}|{dissent_direction}|"
         f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|{expected_move}|{hawkish_tail_50bp}|"
         f"{inflation_spillover}|{cpi_h2_clearly_above_2}|{stabilize_underlying_around_2}|"
-        f"{outlook_dissenters}|{outlook_dissent_view}|{level}"
+        f"{outlook_dissenters}|{outlook_dissent_view}|{official_statement_detail_verified}|{level}"
     )
     key = hashlib.sha256(key_material.encode()).hexdigest()[:24]
 
@@ -705,6 +716,7 @@ def classify(item: Item) -> Signal | None:
         stabilize_underlying_around_2=stabilize_underlying_around_2,
         outlook_dissenters=outlook_dissenters,
         outlook_dissent_view=outlook_dissent_view,
+        official_statement_detail_verified=official_statement_detail_verified,
         further_hikes=further,
         conditional_pace=conditional,
         accommodative=accommodative,
@@ -749,6 +761,7 @@ def verified_event_signals(now: dt.datetime) -> list[Signal]:
             stabilize_underlying_around_2=True,
             outlook_dissenters=("다카타", "다무라"),
             outlook_dissent_view="기조적 물가가 이미 2% 목표에 대체로 도달했다는 판단에서 물가전망 문구에 반대",
+            official_statement_detail_verified=False,
             further_hikes=True,
             conditional_pace=True,
             accommodative=True,
@@ -889,6 +902,9 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
             stabilize_underlying_around_2=signal.stabilize_underlying_around_2 or any(x.stabilize_underlying_around_2 for x in related),
             outlook_dissenters=signal.outlook_dissenters or _first_not_none([x.outlook_dissenters or None for x in related]) or (),
             outlook_dissent_view=signal.outlook_dissent_view or _first_not_none([x.outlook_dissent_view for x in related]),
+            official_statement_detail_verified=signal.official_statement_detail_verified or any(
+                x.official_statement_detail_verified for x in related
+            ),
         )
 
         fallback = VERIFIED_EVENT_FALLBACKS.get(str(signal.published.date()))
@@ -912,6 +928,7 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
                 stabilize_underlying_around_2=bool(fallback["stabilize_underlying_around_2"]),
                 outlook_dissenters=tuple(fallback["outlook_dissenters"]),
                 outlook_dissent_view=fallback["outlook_dissent_view"],
+                official_statement_detail_verified=merged.official_statement_detail_verified,
                 further_hikes=bool(fallback["further_hikes"]),
                 conditional_pace=bool(fallback["conditional_pace"]),
                 accommodative=bool(fallback["accommodative"]),
@@ -932,7 +949,8 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
             f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|"
             f"{expected_move}|{hawkish_tail_50bp}|{merged.inflation_spillover}|"
             f"{merged.cpi_h2_clearly_above_2}|{merged.stabilize_underlying_around_2}|"
-            f"{merged.outlook_dissenters}|{merged.outlook_dissent_view}|{merged.level}"
+            f"{merged.outlook_dissenters}|{merged.outlook_dissent_view}|"
+            f"{merged.official_statement_detail_verified}|{merged.level}"
         )
         merged = replace(
             merged,
@@ -978,6 +996,7 @@ def signal_signature(signal: Signal) -> dict:
         "stabilize_underlying_around_2": signal.stabilize_underlying_around_2,
         "outlook_dissenters": list(signal.outlook_dissenters),
         "outlook_dissent_view": signal.outlook_dissent_view,
+        "official_statement_detail_verified": signal.official_statement_detail_verified,
         "further_hikes": signal.further_hikes,
         "conditional_pace": signal.conditional_pace,
         "accommodative": signal.accommodative,
@@ -1047,6 +1066,9 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         or signal.outlook_dissent_view != previous.get("outlook_dissent_view")
     ):
         return True, "물가전망 문구 이견 변화"
+
+    if signal.official_statement_detail_verified != bool(previous.get("official_statement_detail_verified", False)):
+        return True, "BOJ 공식 성명 상세 검증상태 변화"
 
     inflation_regime_flags = (
         "inflation_spillover",
@@ -1268,6 +1290,17 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     if not decision_lines:
         decision_lines.append(f"- 이벤트: {EVENT_LABEL.get(signal.event_type, '정책 업데이트')}")
 
+    if signal.official_statement_detail_verified:
+        source_validation = [
+            "- 결정값 검증: Reuters·BOJ 공식 원문",
+            "- 성명 상세 검증: BOJ 공식 원문 확인 완료",
+        ]
+    else:
+        source_validation = [
+            "- 결정값 검증: Reuters 고신뢰 원문",
+            "- 성명 상세 검증: 사용자 제공 BOJ 성명 요약을 보조 기준으로 사용 중 · BOJ 공식 원문 자동 재확인 대기",
+        ]
+
     if signal.dissent_direction == "hold":
         dissent_text = "동결 요구 — 완화파 반대"
     elif signal.dissent_direction == "larger_hike":
@@ -1356,6 +1389,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         "이번 변화",
         *decision_lines,
         f"- 감지 경로: {EVENT_LABEL.get(signal.event_type, '정책 업데이트')} / {signal.source}",
+        *source_validation,
         *(
             ["- 검증 보강: 현재 회의의 결정값은 Reuters 결정·시장반응 원문으로 교차확인"]
             if str(signal.published.date()) in VERIFIED_EVENT_FALLBACKS
@@ -1476,6 +1510,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         "market": market,
         "checked_at_kst": now.isoformat(timespec="seconds"),
         "next_official_check": next_official_check(now),
+        "official_statement_detail_verified": signal.official_statement_detail_verified,
     }
     return title, "\n".join(lines), payload
 
