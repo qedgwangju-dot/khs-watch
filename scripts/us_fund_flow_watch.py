@@ -165,79 +165,78 @@ def normalize_columns(t):
 def parse_ici_combined():
     page_html = browser_html(ICI_COMBINED)
     text = clean_text(page_html)
-    tables = pd.read_html(StringIO(page_html))
+    soup = BeautifulSoup(page_html, "html.parser")
 
-    target = None
-    for raw in tables:
-        t = normalize_columns(raw)
-        flat = " ".join(map(str, t.astype(str).values.flatten()))
+    target_rows = None
+    for table in soup.find_all("table"):
+        rows = []
+        for tr in table.find_all("tr"):
+            cells = [re.sub(r"\\s+", " ", td.get_text(" ", strip=True)).strip() for td in tr.find_all(["th", "td"])]
+            if cells:
+                rows.append(cells)
+        flat = " ".join(cell for row in rows for cell in row)
         if re.search(r"Domestic", flat, re.I) and re.search(r"Equity", flat, re.I):
-            target = t
+            target_rows = rows
             break
-    if target is None:
+    if not target_rows:
         raise RuntimeError("ICI combined flows table not found")
 
-    # Find category column based on cells that include Domestic/World/Equity/Bond.
-    cat_col = None
-    for c in target.columns:
-        sample = " ".join(target[c].astype(str).tolist())
-        if re.search(r"Domestic", sample, re.I) and re.search(r"Bond|World|Equity", sample, re.I):
-            cat_col = c
+    # Find a header row containing dates and map the newest date to its column position.
+    header = None
+    dates = []
+    for row in target_rows[:8]:
+        found = []
+        for idx, cell in enumerate(row):
+            m = re.search(r"(\\d{1,2}/\\d{1,2}/20\\d{2})", cell)
+            if m:
+                try:
+                    found.append((datetime.strptime(m.group(1), "%m/%d/%Y"), idx, m.group(1)))
+                except Exception:
+                    pass
+        if found:
+            header = row
+            dates = found
             break
-    if cat_col is None:
-        cat_col = target.columns[0]
+    if not dates:
+        raise RuntimeError("ICI combined date header not found")
+    dates.sort(reverse=True)
+    _, cur_idx, period = dates[0]
 
-    target[cat_col] = target[cat_col].astype(str).str.replace(r"\s+", " ", regex=True).str.strip()
+    def row_value(pattern):
+        for row in target_rows:
+            if not row:
+                continue
+            label = row[0].strip()
+            if re.fullmatch(pattern, label, flags=re.I) or re.search(pattern, label, flags=re.I):
+                if cur_idx < len(row):
+                    return parse_num(row[cur_idx])
+        return None
 
-    # Date columns may be in headers; choose newest date.
-    dated = []
-    for c in target.columns:
-        m = re.search(r"(\d{1,2}/\d{1,2}/20\d{2})", c)
-        if m:
-            try:
-                d = datetime.strptime(m.group(1), "%m/%d/%Y")
-                dated.append((d, c, m.group(1)))
-            except Exception:
-                pass
-    if not dated:
-        # If dates are rows instead of headers, flatten and fail closed rather than guess.
-        raise RuntimeError(f"ICI combined date columns not found: {list(target.columns)[:8]}")
-    dated.sort(reverse=True)
-    _, cur_col, period = dated[0]
-
-    def rowval(pattern):
-        hit = target[target[cat_col].str.fullmatch(pattern, case=False, na=False)]
-        if hit.empty:
-            hit = target[target[cat_col].str.contains(pattern, case=False, na=False, regex=True)]
-        if hit.empty:
-            return None
-        return parse_num(hit.iloc[0][cur_col])
-
-    # ICI table values are $ millions.
-    current = {
-        "equity": rowval(r"Equity"),
-        "domestic": rowval(r"Domestic"),
-        "world": rowval(r"World"),
-        "bond": rowval(r"Bond"),
-        "hybrid": rowval(r"Hybrid"),
+    raw = {
+        "equity": row_value(r"^Equity$"),
+        "domestic": row_value(r"^Domestic$"),
+        "world": row_value(r"^World$"),
+        "bond": row_value(r"^Bond$"),
+        "hybrid": row_value(r"^Hybrid$"),
     }
-    current = {k: (v / 1000.0 if v is not None else None) for k, v in current.items()}
+    current = {k: (v / 1000.0 if v is not None else None) for k, v in raw.items()}
 
+    # Four latest columns, matched by date index in the header.
     domestic_4w_vals = []
-    for _, c, _ in dated[:4]:
-        hit = target[target[cat_col].str.fullmatch(r"Domestic", case=False, na=False)]
-        if hit.empty:
-            hit = target[target[cat_col].str.contains(r"Domestic", case=False, na=False)]
-        if not hit.empty:
-            v = parse_num(hit.iloc[0][c])
-            if v is not None:
-                domestic_4w_vals.append(v / 1000.0)
+    date_positions = sorted(dates, reverse=True)[:4]
+    domestic_row = next((row for row in target_rows if row and re.fullmatch(r"Domestic", row[0].strip(), flags=re.I)), None)
+    if domestic_row:
+        for _, idx, _ in date_positions:
+            if idx < len(domestic_row):
+                v = parse_num(domestic_row[idx])
+                if v is not None:
+                    domestic_4w_vals.append(v / 1000.0)
 
     payload = {
         "source": "ICI",
         "kind": "combined",
         "period": period,
-        "published": first_date(text),
+        "published": None,
         "url": ICI_COMBINED,
         "metrics": current,
         "domestic_4w": sum(domestic_4w_vals) if domestic_4w_vals else None,
