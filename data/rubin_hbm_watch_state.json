@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-19T04:46:57+09:00",
+  "updated_at_kst": "2026-09-19T07:41:06+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -32,6 +32,7 @@
     "879690aaf1650f4535c5fa3b",
     "959562dc71d2a106144c7eab",
     "97cd9aa32a1e0bc1defa7483",
+    "9a0fac710d6f4969c12eccb0",
     "9ccd14cf2278388157bd44a6",
     "a1f202951bc6ed71f25e0b03",
     "ad831c0a9b75057895ffb73a",
@@ -64,13 +65,13 @@
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1388.1,
-    "date": "2026-09-18 일일 기준 · ECB/Frankfurter · 조회 2026-09-19 04:47 KST · 보조 API 2026-09-18 · 차이 0.55% · 일중 기준시각 차이 가능",
+    "date": "2026-09-18 일일 기준 · ECB/Frankfurter · 조회 2026-09-19 07:41 KST · 보조 API 2026-09-18 · 차이 0.55% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -114,7 +115,7 @@
       "https://insights.trendforce.com/p/weekly-radar-001",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-09-19T04:47:40+09:00",
+    "last_checked_at_kst": "2026-09-19T07:41:52+09:00",
     "candidate_count": 1,
     "errors": []
   }
