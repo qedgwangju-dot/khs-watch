@@ -251,6 +251,43 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertTrue(ok)
         self.assertEqual(reason, "새 공식 정책 이벤트")
 
+    def test_statement_tracks_inflation_regime_shift_and_outlook_dissent(self):
+        signal = classify(
+            self.mk(
+                "Statement on Monetary Policy",
+                "The Bank will continue to raise the policy interest rate. The timing and pace "
+                "will depend on the outlook. Price pressures have started to spill over into "
+                "consumer prices. CPI inflation is expected to be clearly above 2 percent in "
+                "the second half of fiscal 2026. It is important to stabilise underlying CPI "
+                "inflation at a level around 2 percent. Takata opposed the description regarding "
+                "the outlook for prices, and Tamura opposed the description regarding the outlook "
+                "for underlying inflation, considering underlying inflation had already reached "
+                "the price stability target.",
+                source="Bank of Japan",
+            )
+        )
+        self.assertTrue(signal.further_hikes)
+        self.assertTrue(signal.conditional_pace)
+        self.assertTrue(signal.inflation_spillover)
+        self.assertTrue(signal.cpi_h2_clearly_above_2)
+        self.assertTrue(signal.stabilize_underlying_around_2)
+        self.assertEqual(signal.outlook_dissenters, ("다카타", "다무라"))
+        self.assertIn("2% 목표", signal.outlook_dissent_view)
+
+    def test_outlook_wording_dissent_is_separate_from_policy_dissent(self):
+        signal = classify(
+            self.mk(
+                "Statement on Monetary Policy",
+                "Takata opposed the description regarding the outlook for prices and Tamura "
+                "opposed the description regarding the outlook for underlying inflation. "
+                "Underlying inflation had already reached the price stability target.",
+                source="Bank of Japan",
+            )
+        )
+        self.assertIsNone(signal.dissent_direction)
+        self.assertEqual(signal.dissenters, ("다카타", "다무라"))
+        self.assertEqual(signal.outlook_dissenters, ("다카타", "다무라"))
+
     def test_verified_event_signal_has_complete_current_decision(self):
         signals = verified_event_signals(dt.datetime(2026, 9, 18, 13, 40, tzinfo=KST))
         self.assertEqual(len(signals), 1)
@@ -262,6 +299,10 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertEqual(signal.dissenters, ("아사다", "사토"))
         self.assertTrue(signal.expected_move)
         self.assertTrue(signal.hawkish_tail_50bp)
+        self.assertTrue(signal.inflation_spillover)
+        self.assertTrue(signal.cpi_h2_clearly_above_2)
+        self.assertTrue(signal.stabilize_underlying_around_2)
+        self.assertEqual(signal.outlook_dissenters, ("다카타", "다무라"))
 
     def test_older_market_path_cannot_roll_back_after_decision(self):
         stale = classify(
