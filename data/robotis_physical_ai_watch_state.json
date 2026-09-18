@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-09-18T16:32:26.981421+00:00",
+  "updated_at": "2026-09-18T16:35:58.586704+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -324,10 +324,9 @@
     "97f1f231ef39060ea0392d37a0023600bc86c711b7f99d82961eb2301f31f6f1",
     "78fdd83f28acbf928b4620de303fb80aadf7d533448fef3503583b048a90d102"
   ],
-  "last_selected": [
-    "78fdd83f28acbf928b4620de303fb80aadf7d533448fef3503583b048a90d102"
-  ],
+  "last_selected": [],
   "groups": [
+    "battery",
     "ess_battery",
     "figure_ai",
     "hyundai_atlas_rollout",
