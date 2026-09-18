@@ -338,6 +338,26 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertFalse(ok)
         self.assertIn("오래된 보도", reason)
 
+    def test_same_key_with_new_guidance_is_re_evaluated(self):
+        base = verified_event_signals(dt.datetime(2026, 9, 18, 13, 40, tzinfo=KST))[0]
+        previous = signal_signature(base)
+        previous["further_hikes"] = False
+        previous["conditional_pace"] = False
+        previous["accommodative"] = False
+        state = {
+            "last_signal_key": base.key,
+            "last_alert_at_kst": "2026-09-18T13:00:00+09:00",
+            "last_published_at_kst": "2026-09-18T12:23:00+09:00",
+            "signature": previous,
+        }
+        ok, reason = should_alert(
+            base,
+            state,
+            dt.datetime(2026, 9, 18, 13, 40, tzinfo=KST),
+        )
+        self.assertTrue(ok)
+        self.assertIn("가이던스", reason)
+
     def test_same_signature_is_suppressed_inside_cooldown(self):
         signal = classify(
             self.mk(
