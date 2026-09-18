@@ -491,7 +491,7 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertFalse(ok)
         self.assertEqual(reason, "정책경로 실질 변화 없음")
 
-    def test_official_statement_verification_change_alerts(self):
+    def test_official_verification_only_does_not_repeat_alert(self):
         official = classify(
             self.mk(
                 "Statement on Monetary Policy",
@@ -513,8 +513,8 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             state,
             dt.datetime(2026, 9, 18, 14, 0, tzinfo=KST),
         )
-        self.assertTrue(ok)
-        self.assertEqual(reason, "BOJ 공식 성명 상세 검증상태 변화")
+        self.assertFalse(ok)
+        self.assertEqual(reason, "정책경로 실질 변화 없음")
 
     def test_same_key_with_new_official_guidance_is_re_evaluated(self):
         base = classify(
