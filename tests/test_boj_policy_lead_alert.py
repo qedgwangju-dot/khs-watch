@@ -8,7 +8,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from boj_policy_lead_alert import (
     Item,
+    build,
     classify,
+    enrich_decision_context,
     extract_rate,
     extract_vote,
     signal_signature,
@@ -131,6 +133,59 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         )
         self.assertIsNone(signal.assessment_vote_for)
         self.assertIsNone(signal.assessment_vote_against)
+
+    def test_decision_context_merges_actual_dissent_but_not_predecision_hawkish_tail(self):
+        base = classify(
+            self.mk(
+                "BOJ raises interest rates in widely expected move - Reuters",
+                "The quarter-point move was widely expected.",
+                hour=0,
+            )
+        )
+        actual = classify(
+            self.mk(
+                "BOJ raised interest rates to 1.25% after 7-2 vote - Reuters",
+                "Asada and Sato dissented against the hike and preferred to keep rates unchanged. "
+                "The move was 25 basis points.",
+                hour=1,
+            )
+        )
+        tail = classify(
+            self.mk(
+                "BOJ faces internal calls for a 50 basis-point hike before policy meeting - Reuters",
+                "Some hawkish voices had discussed a half-point move as an upside tail risk.",
+                hour=-1,
+            )
+        )
+        merged = [
+            x for x in enrich_decision_context([base, actual, tail])
+            if x.title == base.title
+        ][0]
+        self.assertAlmostEqual(merged.policy_rate, 1.25)
+        self.assertEqual(merged.hike_bp, 25)
+        self.assertEqual((merged.vote_for, merged.vote_against), (7, 2))
+        self.assertEqual(merged.dissent_direction, "hold")
+        self.assertEqual(merged.dissenters, ("아사다", "사토"))
+        self.assertTrue(merged.expected_move)
+        self.assertTrue(merged.hawkish_tail_50bp)
+
+    def test_risk_asset_message_is_conditional_for_expected_hike_with_hold_dissent(self):
+        signal = classify(
+            self.mk(
+                "BOJ raises interest rates to 1.25% in widely expected 25 basis-point move - Reuters",
+                "The decision passed by a 7-2 vote. Asada and Sato dissented against the hike "
+                "and preferred to keep rates unchanged.",
+            )
+        )
+        title, body, _ = build(
+            signal,
+            "test",
+            dt.datetime(2026, 9, 18, 13, 0, tzinfo=KST),
+            None,
+        )
+        self.assertIn("위험자산 의미: 부담 완화 가능", body)
+        self.assertIn("USD/JPY · Nikkei · Nasdaq 선물 · JGB 2년물 · FX 변동성", body)
+        self.assertTrue(title.startswith("🏦"))
 
     def test_rate_parser(self):
         self.assertEqual(extract_rate("The policy rate was raised to 1.25%."), 1.25)
