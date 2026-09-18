@@ -37,7 +37,7 @@ KCS_SOURCE_PAGE = "https://tradedata.go.kr/cts/index.do"
 REGIONS = {
     "samsung_chungnam": {"name": "충남", "kind": "sido", "sido": "44", "sgg": ""},
     "hynix_chungbuk": {"name": "충북", "kind": "sido", "sido": "43", "sgg": ""},
-    "hynix_icheon": {"name": "이천", "kind": "sgg", "sido": "41", "sgg": "500"},
+    "hynix_icheon": {"name": "이천", "kind": "sgg", "sido": "41", "sgg": "41500"},
 }
 
 SAMSUNG_HBM4_OFFICIAL = "https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing"
