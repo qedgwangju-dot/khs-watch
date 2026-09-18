@@ -59,7 +59,12 @@ VERIFIED_EVENT_FALLBACKS = {
         "dissenters": ("아사다", "사토"),
         "expected_move": True,
         "hawkish_tail_50bp": True,
-        "source": "Reuters",
+        "inflation_spillover": True,
+        "cpi_h2_clearly_above_2": True,
+        "stabilize_underlying_around_2": True,
+        "outlook_dissenters": ("다카타", "다무라"),
+        "outlook_dissent_view": "기조적 물가가 이미 2% 목표에 대체로 도달했다는 판단에서 물가전망 문구에 반대",
+        "source": "Reuters + 사용자 제공 BOJ 성명 요약",
         "evidence": (
             REUTERS_BOJ_DECISION,
             REUTERS_BOJ_REACTION,
@@ -220,6 +225,28 @@ HAWKISH_TAIL_50BP_MARKERS = (
     "half-point",
     "half point",
 )
+INFLATION_SPILLOVER_MARKERS = (
+    "spill over into consumer prices",
+    "spilling over into consumer prices",
+    "pass-through to consumer prices",
+    "passed on to consumer prices",
+)
+CPI_H2_ABOVE_2_MARKERS = (
+    "clearly above 2 percent",
+    "clearly above 2%",
+    "second half of fiscal 2026",
+)
+STABILIZE_UNDERLYING_2_MARKERS = (
+    "stabilizing underlying cpi inflation at a level around 2 percent",
+    "stabilising underlying cpi inflation at a level around 2 percent",
+    "stabilize underlying inflation at a level around 2 percent",
+    "stabilise underlying inflation at a level around 2 percent",
+)
+OUTLOOK_DISSENT_MARKERS = (
+    "opposed the description regarding the outlook for prices",
+    "opposed the description regarding the outlook for underlying inflation",
+    "opposed the price outlook wording",
+)
 
 
 @dataclass(frozen=True)
@@ -255,6 +282,11 @@ class Signal:
     assessment_view: str | None
     expected_move: bool
     hawkish_tail_50bp: bool
+    inflation_spillover: bool
+    cpi_h2_clearly_above_2: bool
+    stabilize_underlying_around_2: bool
+    outlook_dissenters: tuple[str, ...]
+    outlook_dissent_view: str | None
     further_hikes: bool
     conditional_pace: bool
     accommodative: bool
@@ -512,6 +544,23 @@ def extract_assessment_vote(text: str) -> tuple[int | None, int | None, str | No
     return None, None, None
 
 
+def extract_outlook_dissent(text: str) -> tuple[tuple[str, ...], str | None]:
+    lower = clean(text).lower()
+    if not any(marker in lower for marker in OUTLOOK_DISSENT_MARKERS):
+        return (), None
+    names = []
+    if "takata" in lower:
+        names.append("다카타")
+    if "tamura" in lower:
+        names.append("다무라")
+    view = None
+    if "already" in lower and ("price stability target" in lower or "2 percent" in lower or "2%" in lower):
+        view = "기조적 물가가 이미 2% 목표에 대체로 도달했다는 판단에서 물가전망 문구에 반대"
+    elif names:
+        view = "물가전망 문구에 대한 이견"
+    return tuple(names), view
+
+
 def has_any(text: str, phrases: tuple[str, ...]) -> bool:
     lower = " " + text.lower() + " "
     return any(phrase in lower for phrase in phrases)
@@ -573,6 +622,12 @@ def classify(item: Item) -> Signal | None:
     assessment_vote_for, assessment_vote_against, assessment_view = extract_assessment_vote(text)
     expected_move = has_any(text, EXPECTED_MOVE_MARKERS)
     hawkish_tail_50bp = has_any(text, HAWKISH_TAIL_50BP_MARKERS)
+    inflation_spillover = has_any(text, INFLATION_SPILLOVER_MARKERS)
+    cpi_h2_clearly_above_2 = (
+        "clearly above 2" in lower and "fiscal 2026" in lower
+    ) or has_any(text, CPI_H2_ABOVE_2_MARKERS)
+    stabilize_underlying_around_2 = has_any(text, STABILIZE_UNDERLYING_2_MARKERS)
+    outlook_dissenters, outlook_dissent_view = extract_outlook_dissent(text)
     further = has_any(text, FURTHER_HIKES)
     conditional = has_any(text, CONDITIONAL_PACE)
     accommodative = has_any(text, ACCOMMODATIVE)
@@ -609,7 +664,9 @@ def classify(item: Item) -> Signal | None:
     key_material = (
         f"{kind}|{source}|{normalize(item.title)}|{item.published.date()}|"
         f"{rate}|{bp}|{vote_for}-{vote_against}|{dissent_direction}|"
-        f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|{expected_move}|{hawkish_tail_50bp}|{level}"
+        f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|{expected_move}|{hawkish_tail_50bp}|"
+        f"{inflation_spillover}|{cpi_h2_clearly_above_2}|{stabilize_underlying_around_2}|"
+        f"{outlook_dissenters}|{outlook_dissent_view}|{level}"
     )
     key = hashlib.sha256(key_material.encode()).hexdigest()[:24]
 
@@ -632,6 +689,11 @@ def classify(item: Item) -> Signal | None:
         assessment_view=assessment_view,
         expected_move=expected_move,
         hawkish_tail_50bp=hawkish_tail_50bp,
+        inflation_spillover=inflation_spillover,
+        cpi_h2_clearly_above_2=cpi_h2_clearly_above_2,
+        stabilize_underlying_around_2=stabilize_underlying_around_2,
+        outlook_dissenters=outlook_dissenters,
+        outlook_dissent_view=outlook_dissent_view,
         further_hikes=further,
         conditional_pace=conditional,
         accommodative=accommodative,
@@ -643,13 +705,13 @@ def classify(item: Item) -> Signal | None:
 
 
 def verified_event_signals(now: dt.datetime) -> list[Signal]:
-    published = dt.datetime(2026, 9, 18, 12, 1, tzinfo=KST)
+    published = dt.datetime(2026, 9, 18, 12, 23, tzinfo=KST)
     if not (now - dt.timedelta(hours=MAX_AGE_HOURS) <= published <= now + dt.timedelta(minutes=10)):
         return []
 
     key_material = (
         "verified|2026-09-18|1.25|25|7-2|hold|asada-sato|"
-        "expected25|50bp-tail-not-realized|assessment-vote-unconfirmed"
+        "expected25|50bp-tail-not-realized|inflation-regime-upshift|outlook-dissent-takata-tamura|assessment-vote-unconfirmed"
     )
     return [
         Signal(
@@ -657,8 +719,8 @@ def verified_event_signals(now: dt.datetime) -> list[Signal]:
             level=1,
             event_type="decision",
             source="Reuters",
-            title="BOJ raises interest rates to 31-year high in widely expected move - Reuters",
-            link=REUTERS_BOJ_DECISION,
+            title="BOJ verified decision and inflation-regime context - Reuters/BOJ",
+            link=REUTERS_BOJ_REACTION,
             published=published,
             policy_rate=1.25,
             hike_bp=25,
@@ -671,6 +733,11 @@ def verified_event_signals(now: dt.datetime) -> list[Signal]:
             assessment_view=None,
             expected_move=True,
             hawkish_tail_50bp=True,
+            inflation_spillover=True,
+            cpi_h2_clearly_above_2=True,
+            stabilize_underlying_around_2=True,
+            outlook_dissenters=("다카타", "다무라"),
+            outlook_dissent_view="기조적 물가가 이미 2% 목표에 대체로 도달했다는 판단에서 물가전망 문구에 반대",
             further_hikes=True,
             conditional_pace=True,
             accommodative=True,
@@ -806,6 +873,11 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
             assessment_view=assessment_view,
             expected_move=expected_move,
             hawkish_tail_50bp=hawkish_tail_50bp,
+            inflation_spillover=signal.inflation_spillover or any(x.inflation_spillover for x in related),
+            cpi_h2_clearly_above_2=signal.cpi_h2_clearly_above_2 or any(x.cpi_h2_clearly_above_2 for x in related),
+            stabilize_underlying_around_2=signal.stabilize_underlying_around_2 or any(x.stabilize_underlying_around_2 for x in related),
+            outlook_dissenters=signal.outlook_dissenters or _first_not_none([x.outlook_dissenters or None for x in related]) or (),
+            outlook_dissent_view=signal.outlook_dissent_view or _first_not_none([x.outlook_dissent_view for x in related]),
         )
 
         fallback = VERIFIED_EVENT_FALLBACKS.get(str(signal.published.date()))
@@ -824,6 +896,11 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
                 dissenters=tuple(fallback["dissenters"]),
                 expected_move=bool(fallback["expected_move"]),
                 hawkish_tail_50bp=bool(fallback["hawkish_tail_50bp"]),
+                inflation_spillover=bool(fallback["inflation_spillover"]),
+                cpi_h2_clearly_above_2=bool(fallback["cpi_h2_clearly_above_2"]),
+                stabilize_underlying_around_2=bool(fallback["stabilize_underlying_around_2"]),
+                outlook_dissenters=tuple(fallback["outlook_dissenters"]),
+                outlook_dissent_view=fallback["outlook_dissent_view"],
             )
             rate = merged.policy_rate
             bp = merged.hike_bp
@@ -837,7 +914,9 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
             f"decision-context|{merged.published.date()}|{rate}|{bp}|"
             f"{vote_for}-{vote_against}|{dissent_direction}|{tuple(dissenters)}|"
             f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|"
-            f"{expected_move}|{hawkish_tail_50bp}|{merged.level}"
+            f"{expected_move}|{hawkish_tail_50bp}|{merged.inflation_spillover}|"
+            f"{merged.cpi_h2_clearly_above_2}|{merged.stabilize_underlying_around_2}|"
+            f"{merged.outlook_dissenters}|{merged.outlook_dissent_view}|{merged.level}"
         )
         merged = replace(
             merged,
@@ -878,6 +957,11 @@ def signal_signature(signal: Signal) -> dict:
         "assessment_view": signal.assessment_view,
         "expected_move": signal.expected_move,
         "hawkish_tail_50bp": signal.hawkish_tail_50bp,
+        "inflation_spillover": signal.inflation_spillover,
+        "cpi_h2_clearly_above_2": signal.cpi_h2_clearly_above_2,
+        "stabilize_underlying_around_2": signal.stabilize_underlying_around_2,
+        "outlook_dissenters": list(signal.outlook_dissenters),
+        "outlook_dissent_view": signal.outlook_dissent_view,
         "further_hikes": signal.further_hikes,
         "conditional_pace": signal.conditional_pace,
         "accommodative": signal.accommodative,
@@ -941,6 +1025,23 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     ):
         return True, "경제·물가 진단 표결 변화"
 
+    if signal.outlook_dissenters and (
+        list(signal.outlook_dissenters) != previous.get("outlook_dissenters")
+        or signal.outlook_dissent_view != previous.get("outlook_dissent_view")
+    ):
+        return True, "물가전망 문구 이견 변화"
+
+    inflation_regime_flags = (
+        "inflation_spillover",
+        "cpi_h2_clearly_above_2",
+        "stabilize_underlying_around_2",
+    )
+    current_signature = signal_signature(signal)
+    if signal.event_type in {"decision", "press_conference", "summary_of_opinions", "official_speech"} and any(
+        current_signature.get(key) != previous.get(key) for key in inflation_regime_flags
+    ):
+        return True, "물가 체제·전이 판단 변화"
+
     # Guidance wording changes matter for official decisions/conferences/opinion summaries,
     # but not for every market article paraphrasing the same meeting.
     official_like = signal.event_type in {
@@ -955,6 +1056,9 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         "accommodative",
         "neutral_rate",
         "inflation_upside",
+        "inflation_spillover",
+        "cpi_h2_clearly_above_2",
+        "stabilize_underlying_around_2",
     )
     current_signature = signal_signature(signal)
     if official_like and any(
@@ -1068,6 +1172,12 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         committee.append(f"- 경제·물가 진단: {signal.assessment_view}")
     else:
         committee.append("- 경제·물가 진단 별도 표결: 공식·고신뢰 원문에서 명시적으로 확인될 때만 표시")
+    if signal.outlook_dissenters:
+        committee.append(f"- 물가전망 문구 이견: {', '.join(signal.outlook_dissenters)}")
+        if signal.outlook_dissent_view:
+            committee.append(f"- 이견 방향: {signal.outlook_dissent_view}")
+    else:
+        committee.append("- 물가전망 문구 이견: 새 명시적 변화 미확인")
 
     if signal.expected_move:
         if signal.dissent_direction == "hold" and signal.hawkish_tail_50bp:
@@ -1104,6 +1214,13 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         f"- 상대 판정: {expectation_text}",
     ]
 
+    inflation_regime = [
+        f"- 기업 간 가격상승 → 소비자물가 전이: {'시작 확인' if signal.inflation_spillover else '새 명시적 변화 미확인'}",
+        f"- 2026회계연도 하반기 CPI: {'2%를 뚜렷하게 웃돌 전망' if signal.cpi_h2_clearly_above_2 else '새 명시적 변화 미확인'}",
+        f"- 기조물가 정책목표: {'2% 부근 안정 + 2% 상방이탈 억제 단계' if signal.stabilize_underlying_around_2 else '2% 접근 여부 중심'}",
+        f"- 기조물가 상방위험: {'강조' if signal.inflation_upside else '새 강한 신호 미확인'}",
+    ]
+
     guidance = [
         f"- 추가 인상 방향: {'유지' if signal.further_hikes else '명시적 확인 전'}",
         f"- 인상 시점·속도: {'조건부·점진' if signal.conditional_pace else ('가속 신호' if signal.level >= 2 else '추가 확인 필요')}",
@@ -1135,6 +1252,10 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         "위원회 분열",
         *committee,
         "※ 같은 7대2라도 '동결 요구'와 '더 큰 폭 인상 요구'는 의미가 반대이므로 방향을 따로 봅니다.",
+        "※ 정책 표결 반대와 물가전망 문구 이견은 서로 다른 층위로 분리합니다.",
+        "",
+        "물가 체제 전환",
+        *inflation_regime,
         "",
         "가이던스 체크",
         *guidance,
@@ -1170,6 +1291,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
             "- 25bp 인상 자체를 자동으로 🟠 매파 강화로 처리하지 않습니다.",
             "- 위원회 분열은 표 수보다 반대표 방향을 우선하며, 경제·물가 진단의 별도 표결은 명시적 원문이 있을 때만 확정합니다.",
             "- 절대 정책방향과 시장 기대 대비 서프라이즈를 분리하며, 50bp 사전 꼬리위험이 실제 표결·결정에서 현실화됐는지도 따로 봅니다.",
+            "- 기조물가 판단은 '2%에 도달하는가'와 '2% 위로 이탈하지 않도록 안정시키는가'를 분리해 추적합니다.",
             "- 직전 경로보다 다음 인상 시점이 앞당겨지거나 속도가 빨라질 때 🟠로 올립니다.",
             "- 50bp급 예상 밖 인상 또는 연속 긴축을 강하게 시사할 때만 🔴로 올립니다.",
             "- 추가 긴축 시점이 뒤로 밀리거나 중단 신호가 확인되면 🟢로 낮춥니다.",
