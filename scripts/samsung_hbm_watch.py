@@ -284,7 +284,23 @@ def _safe_error(prefix: str, exc: Exception) -> str:
     return f"{prefix}: {type(exc).__name__}"
 
 
-def _request_with_retry(method: str, url: str, *, params=None, data=None, headers=None, attempts: int = 3):
+def _is_transient_source_error(message: str) -> bool:
+    text = (message or "").lower()
+    return any(
+        marker in text
+        for marker in (
+            "실패",
+            "오류",
+            "http ",
+            "timeout",
+            "connection",
+            "parse",
+            "json",
+        )
+    )
+
+
+def _request_with_retry(method: str, url: str, *, params=None, data=None, headers=None, attempts: int = 2):
     last_exc = None
     for attempt in range(1, attempts + 1):
         try:
@@ -294,7 +310,7 @@ def _request_with_retry(method: str, url: str, *, params=None, data=None, header
                 params=params,
                 data=data,
                 headers=headers,
-                timeout=(8, 20),
+                timeout=(5, 12),
             )
         except (requests.Timeout, requests.ConnectionError) as exc:
             last_exc = exc
@@ -593,6 +609,12 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
             errors.extend(local_errors)
             break
         errors.extend(local_errors)
+
+        # Do not fall back to an older month when the newest candidate failed
+        # because of a network/API error. Older months are only considered when
+        # the current candidate explicitly has no published data.
+        if any(_is_transient_source_error(item) for item in local_errors):
+            return None, errors
 
     if not selected:
         return None, errors
