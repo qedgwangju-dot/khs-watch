@@ -42,14 +42,16 @@ ORDER = re.compile(
 TRIAL = re.compile(r'数百\s*台|數百\s*台|수백\s*대|试产|試產|trial\s*production|pilot\s*order|시험\s*생산', re.I)
 AUDIT = re.compile(
     r'审厂|審廠|供应商审核|供應商審核|现场审核|現場審核|走访.{0,16}供应商|走訪.{0,16}供應商|'
-    r'supplier\s*audit|factory\s*audit|site\s*audit|공급업체\s*심사|현장\s*심사|공급사\s*실사',
+    r'supplier\s*audit|factory\s*audit|site\s*audit|공급업체\s*심사|현장\s*심사|공급사\s*실사|'
+    r'생산\s*감사|생산\s*심사|양산\s*감사|生产审核|生產審核',
     re.I,
 )
 AUDIT_STARTED = re.compile(
     r'启动(?:新一轮|新一輪)?.{0,18}(?:审厂|審廠)|开启(?:新一轮|新一輪)?.{0,18}(?:审厂|審廠)|'
     r'开始(?:新一轮|新一輪)?.{0,18}(?:审厂|審廠)|已于.{0,24}(?:开启|啟動|启动).{0,18}(?:审厂|審廠)|'
     r'(?:supplier|factory)\s*audit\s*(?:started|began|launched)|'
-    r'공급업체\s*심사\s*(?:시작|개시)|양산\s*심사\s*(?:시작|개시)',
+    r'공급업체\s*심사\s*(?:시작|개시)|양산\s*심사\s*(?:시작|개시)|'
+    r'(?:생산|양산)\s*(?:감사|심사)\s*(?:착수|시작|개시)|(?:生产|生產)(?:审核|審核).{0,8}(?:启动|啟動|开始|開始)',
     re.I,
 )
 ACTUAL_WEEKLY = re.compile(
