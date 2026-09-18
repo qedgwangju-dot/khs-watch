@@ -27,7 +27,15 @@ STATUS = OUT / "samsung_hbm_status.md"
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 96
 MONTHLY_DAY = 15
-COMPARE_VERSION = 1
+COMPARE_VERSION = 2
+KCS_REGION_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTradeRegion.do"
+HBM_HSK10 = "8542323000"
+KCS_SOURCE_PAGE = "https://tradedata.go.kr/cts/index.do"
+REGIONS = {
+    "samsung_chungnam": {"name": "충남", "kind": "sido", "sido": "44", "sgg": ""},
+    "hynix_chungbuk": {"name": "충북", "kind": "sido", "sido": "43", "sgg": ""},
+    "hynix_icheon": {"name": "이천", "kind": "sgg", "sido": "41", "sgg": "500"},
+}
 
 SAMSUNG_HBM4_OFFICIAL = "https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing"
 SAMSUNG_HBM4E_OFFICIAL = "https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples"
@@ -209,6 +217,216 @@ def fx_quote() -> tuple[float | None, str]:
         return q.rate, q.basis
     except Exception as exc:
         return None, f"환율 확인 실패: {type(exc).__name__}"
+
+
+
+def _month_shift(yyyymm: str, delta: int) -> str:
+    y, m = int(yyyymm[:4]), int(yyyymm[4:])
+    idx = y * 12 + (m - 1) + delta
+    return f"{idx // 12:04d}{idx % 12 + 1:02d}"
+
+
+def _previous_month(now: datetime) -> str:
+    return _month_shift(now.strftime("%Y%m"), -1)
+
+
+def _number(value) -> float | None:
+    if value is None:
+        return None
+    s = str(value).strip().replace(",", "")
+    if not s or s in ("-", "null", "None"):
+        return None
+    try:
+        return float(s)
+    except Exception:
+        return None
+
+
+def _walk_dicts(obj):
+    if isinstance(obj, dict):
+        yield obj
+        for v in obj.values():
+            yield from _walk_dicts(v)
+    elif isinstance(obj, list):
+        for v in obj:
+            yield from _walk_dicts(v)
+
+
+def _normalize_export_usd(value: float | None) -> float | None:
+    if value is None:
+        return None
+    return value * 1000.0 if 0 <= value < 100_000_000 else value
+
+
+def fetch_kcs_region_month(month: str, region: dict, hs: str = HBM_HSK10) -> tuple[dict | None, str]:
+    hs_col = f"HS{len(hs)}_SGN"
+    params = {
+        "tradeKind": "ETS_MNK_1040000A",
+        "sidosggKind": region["kind"],
+        "priodKind": "MON",
+        "priodFr": month,
+        "priodTo": month,
+        "statsBase": "acptDd",
+        "sidoCd": region["sido"],
+        "sggCd": region.get("sgg") or "",
+        "imexTpcd": "EXP_TMPR_CD",
+        "showPagingLine": "100",
+        "sortColumn": "",
+        "sortOrder": "",
+        "hsSgnGrpCol": hs_col,
+        "hsSgnWhrCol": hs_col,
+        "hsSgn": hs,
+    }
+    url = KCS_REGION_URL + "?" + urllib.parse.urlencode(params)
+    headers = {
+        "User-Agent": UA,
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Referer": KCS_SOURCE_PAGE,
+        "Origin": "https://tradedata.go.kr",
+        "X-Requested-With": "XMLHttpRequest",
+        "isAjax": "true",
+    }
+    try:
+        req = urllib.request.Request(url, headers=headers, data=b"", method="POST")
+        with urllib.request.urlopen(req, timeout=25) as r:
+            raw = r.read().decode("utf-8", errors="replace")
+        data = json.loads(raw)
+    except Exception as exc:
+        return None, f"{region['name']} {month} KCS 조회 실패: {type(exc).__name__}: {exc}"
+
+    candidates = []
+    for row in _walk_dicts(data):
+        keys = {str(k).lower(): k for k in row.keys()}
+        amt_key = next((keys[k] for k in ("expusdamt", "expdlr", "expamt") if k in keys), None)
+        if amt_key is None:
+            continue
+        row_hs = str(row.get(keys.get("hssgn", ""), "") or "").replace(".", "")
+        period = str(row.get(keys.get("priodtitle", ""), row.get(keys.get("year", ""), "")) or "")
+        score = 0
+        if row_hs == hs:
+            score += 10
+        if month in re.sub(r"[^0-9]", "", period):
+            score += 5
+        if row_hs:
+            score += 1
+        candidates.append((score, row, keys, amt_key))
+
+    if not candidates:
+        preview = clean(json.dumps(data, ensure_ascii=False))[:500]
+        return None, f"{region['name']} {month} KCS 응답에서 수출금액 행 미검출: {preview}"
+
+    _, row, keys, amt_key = max(candidates, key=lambda x: x[0])
+    amt_raw = _number(row.get(amt_key))
+    amount_usd = _normalize_export_usd(amt_raw)
+    wgt_key = next((keys[k] for k in ("expwgt", "expwgtamt", "wgt") if k in keys), None)
+    weight_kg = _number(row.get(wgt_key)) if wgt_key else None
+    hs_returned = str(row.get(keys.get("hssgn", ""), "") or "").replace(".", "")
+    if hs_returned and hs_returned != hs:
+        return None, f"{region['name']} {month} 요청 HSK {hs}와 응답 {hs_returned} 불일치"
+    if amount_usd is None:
+        return None, f"{region['name']} {month} 수출금액 숫자 변환 실패"
+
+    return {
+        "month": month,
+        "region": region["name"],
+        "amount_usd": amount_usd,
+        "weight_kg": weight_kg,
+        "hs": hs,
+        "raw_amount": amt_raw,
+        "source": "관세청 수출입무역통계",
+    }, ""
+
+
+def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
+    errors: list[str] = []
+    current = _previous_month(now)
+    data: dict[str, dict[str, dict]] = {}
+    selected = None
+
+    for candidate in [current, _month_shift(current, -1), _month_shift(current, -2)]:
+        rows = {}
+        local_errors = []
+        for key, region in REGIONS.items():
+            row, err = fetch_kcs_region_month(candidate, region)
+            if row:
+                rows[key] = row
+            else:
+                local_errors.append(err)
+        if len(rows) == len(REGIONS):
+            selected = candidate
+            data[candidate] = rows
+            break
+        errors.extend(local_errors)
+
+    if not selected:
+        return None, errors
+
+    needed = [selected, _month_shift(selected, -1), _month_shift(selected, -3), _month_shift(selected, -12)]
+    for month in needed:
+        if month in data:
+            continue
+        rows = {}
+        for key, region in REGIONS.items():
+            row, err = fetch_kcs_region_month(month, region)
+            if row:
+                rows[key] = row
+            else:
+                errors.append(err)
+        data[month] = rows
+
+    if any(len(data.get(m, {})) != len(REGIONS) for m in needed[:3]):
+        return None, errors
+
+    def combine(month: str) -> dict:
+        rows = data[month]
+        sam = rows["samsung_chungnam"]
+        cb = rows["hynix_chungbuk"]
+        ic = rows["hynix_icheon"]
+        hynix_amount = cb["amount_usd"] + ic["amount_usd"]
+        hynix_weight = None
+        if cb.get("weight_kg") is not None and ic.get("weight_kg") is not None:
+            hynix_weight = cb["weight_kg"] + ic["weight_kg"]
+        return {
+            "samsung_amount": sam["amount_usd"],
+            "samsung_weight": sam.get("weight_kg"),
+            "hynix_amount": hynix_amount,
+            "hynix_weight": hynix_weight,
+            "chungbuk_amount": cb["amount_usd"],
+            "icheon_amount": ic["amount_usd"],
+        }
+
+    series = {m: combine(m) for m in needed if len(data.get(m, {})) == len(REGIONS)}
+    return {
+        "month": selected,
+        "series": series,
+        "hs": HBM_HSK10,
+        "source_url": KCS_SOURCE_PAGE,
+        "errors": errors,
+    }, errors
+
+
+def _pct(cur: float | None, base: float | None) -> float | None:
+    if cur is None or base in (None, 0):
+        return None
+    return (cur / base - 1.0) * 100.0
+
+
+def _fmt_pct(value: float | None) -> str:
+    return "확인 불가" if value is None else f"{value:+.1f}%"
+
+
+def _fmt_usd(value: float | None) -> str:
+    if value is None:
+        return "확인 불가"
+    if value >= 1_000_000_000:
+        return f"{value/1_000_000_000:.2f}십억달러"
+    return f"{value/1_000_000:.1f}백만달러"
+
+
+def _unit_value(amount: float | None, weight: float | None) -> float | None:
+    if amount is None or weight in (None, 0):
+        return None
+    return amount / weight
 
 
 def classify_event(e: dict) -> tuple[str, str]:
