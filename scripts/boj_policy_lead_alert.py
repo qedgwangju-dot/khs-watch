@@ -864,6 +864,52 @@ def classify(item: Item) -> Signal | None:
     )
 
 
+def verified_press_conference_signals(now: dt.datetime) -> list[Signal]:
+    published = dt.datetime(2026, 9, 18, 15, 49, tzinfo=KST)
+    if not (now - dt.timedelta(hours=MAX_AGE_HOURS) <= published <= now + dt.timedelta(minutes=10)):
+        return []
+
+    key_material = (
+        "verified-press-conference|2026-09-18|future-hikes|no-preset-cadence|"
+        "50bp-back-to-back-not-ruled-out|neutral-rate-uncertain|policy-phase-changed"
+    )
+    return [
+        Signal(
+            key=hashlib.sha256(key_material.encode()).hexdigest()[:24],
+            level=1,
+            event_type="press_conference",
+            source="Reuters",
+            title="BOJ Governor Ueda's comments at news conference - Reuters",
+            link=REUTERS_BOJ_PRESS_CONFERENCE,
+            published=published,
+            policy_rate=None,
+            hike_bp=None,
+            vote_for=None,
+            vote_against=None,
+            dissent_direction=None,
+            dissenters=(),
+            assessment_vote_for=None,
+            assessment_vote_against=None,
+            assessment_view=None,
+            expected_move=False,
+            hawkish_tail_50bp=True,
+            inflation_spillover=False,
+            cpi_h2_clearly_above_2=False,
+            stabilize_underlying_around_2=True,
+            outlook_dissenters=(),
+            outlook_dissent_view=None,
+            official_statement_detail_verified=False,
+            further_hikes=True,
+            conditional_pace=True,
+            accommodative=False,
+            neutral_rate=True,
+            inflation_upside=True,
+            risk_channels=False,
+            note="50bp·연속 인상 가능성을 배제하지 않았지만 고정된 인상 간격은 없다고 명시 — 조건부 꼬리위험, 기본경로 가속 확정 아님",
+        )
+    ]
+
+
 def verified_event_signals(now: dt.datetime) -> list[Signal]:
     published = dt.datetime(2026, 9, 18, 12, 23, tzinfo=KST)
     if not (now - dt.timedelta(hours=MAX_AGE_HOURS) <= published <= now + dt.timedelta(minutes=10)):
@@ -931,6 +977,7 @@ def collect(now: dt.datetime) -> list[Signal]:
     signals = [classify(item) for item in dedup.values()]
     signals = [signal for signal in signals if signal is not None]
     signals.extend(verified_event_signals(now))
+    signals.extend(verified_press_conference_signals(now))
     signals = list({signal.key: signal for signal in signals}.values())
 
     event_priority = {
