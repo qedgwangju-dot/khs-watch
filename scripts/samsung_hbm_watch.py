@@ -588,16 +588,21 @@ def main() -> None:
     send_events = sorted(chosen.values(), key=lambda x: x.get("published_at_kst") or "")
 
     rate, fx_basis = fx_quote()
-    monthly_due = (
-        (state.get("last_monthly_digest") != month_key and now.day >= MONTHLY_DAY)
-        or int(state.get("compare_version") or 0) < COMPARE_VERSION
+    official, official_errors = fetch_official_hbm_pack(now) if now.day >= MONTHLY_DAY else (None, [])
+    official_month = official.get("month") if official else ""
+    monthly_due = bool(
+        official
+        and (
+            state.get("last_official_alert_month") != official_month
+            or int(state.get("compare_version") or 0) < COMPARE_VERSION
+        )
     )
 
-    if monthly_due:
-        ALERT.write_text(build_monthly(now, rate, fx_basis), encoding="utf-8")
+    if monthly_due and official:
+        ALERT.write_text(build_monthly(now, rate, fx_basis, official), encoding="utf-8")
         state["last_monthly_digest"] = month_key
+        state["last_official_alert_month"] = official_month
         state["compare_version"] = COMPARE_VERSION
-        # Baseline current search results so old September articles do not immediately re-alert after catch-up.
         seen.update(e["id"] for e in events)
     elif send_events:
         ALERT.write_text(build_event_alert(send_events, now), encoding="utf-8")
@@ -612,6 +617,9 @@ def main() -> None:
         "last_fresh_new_count": len(fresh_new),
         "last_send_event_count": len(send_events),
         "monthly_due": monthly_due,
+        "official_month": official_month,
+        "official_data_ok": bool(official),
+        "official_errors": official_errors[-8:],
     })
     save_state(state)
 
@@ -621,6 +629,9 @@ def main() -> None:
         f"- events: {len(events)}\n"
         f"- fresh_new: {len(fresh_new)}\n"
         f"- monthly_due: {str(monthly_due).lower()}\n"
+        f"- official_month: {official_month or 'none'}\n"
+        f"- official_data_ok: {str(bool(official)).lower()}\n"
+        f"- official_errors: {len(official_errors)}\n"
         f"- alert_generated: {str(monthly_due or bool(send_events)).lower()}\n",
         encoding="utf-8",
     )
