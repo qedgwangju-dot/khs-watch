@@ -273,6 +273,10 @@ STABILIZE_UNDERLYING_2_MARKERS = (
     "underlying inflation stabilizes at 2 percent",
     "stabilise underlying inflation at 2%",
     "stabilize underlying inflation at 2%",
+    "underlying inflation to stabilise at 2%",
+    "underlying inflation to stabilize at 2%",
+    "underlying inflation to stabilise at 2 percent",
+    "underlying inflation to stabilize at 2 percent",
 )
 OUTLOOK_DISSENT_MARKERS = (
     "opposed the description regarding the outlook for prices",
