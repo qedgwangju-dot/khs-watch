@@ -239,6 +239,8 @@ CPI_H2_ABOVE_2_MARKERS = (
 STABILIZE_UNDERLYING_2_MARKERS = (
     "stabilizing underlying cpi inflation at a level around 2 percent",
     "stabilising underlying cpi inflation at a level around 2 percent",
+    "stabilize underlying cpi inflation at a level around 2 percent",
+    "stabilise underlying cpi inflation at a level around 2 percent",
     "stabilize underlying inflation at a level around 2 percent",
     "stabilise underlying inflation at a level around 2 percent",
 )
