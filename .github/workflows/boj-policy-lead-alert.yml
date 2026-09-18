@@ -1,8 +1,8 @@
-name: BOJ policy lead Telegram alert
+name: BOJ policy path change Telegram alert
 
 on:
   schedule:
-    # GitHub cron is UTC. Offset from the existing yen-carry job.
+    # Dedicated BOJ policy-path lane. GitHub cron is UTC; offset from yen-carry jobs.
     - cron: "1,6,11,16,21,26,31,36,41,46,51,56 * * * *"
   workflow_dispatch:
   push:
@@ -48,12 +48,12 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate BOJ policy monitor
+      - name: Validate BOJ policy path monitor
         run: |
           python -m py_compile scripts/boj_policy_lead_alert.py
           python -m unittest tests/test_boj_policy_lead_alert.py -v
 
-      - name: Check BOJ policy lead conditions
+      - name: Check BOJ policy path changes
         run: python scripts/boj_policy_lead_alert.py
 
       - name: Publish status summary
@@ -62,7 +62,7 @@ jobs:
           if [ -f out/boj_policy_lead_watch.md ]; then
             cat out/boj_policy_lead_watch.md >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "BOJ 정책 선행감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+            echo "BOJ 정책경로 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/boj_policy_lead_alert.md ]; then
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -74,7 +74,7 @@ jobs:
         run: |
           echo "텔레그램 미전송 검증 — 대상 봇 @khs8879887988798879_bot" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Send BOJ policy lead alert through khs dedicated bot only
+      - name: Send BOJ policy path alert through khs dedicated bot only
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/boj_policy_lead_alert.md') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
@@ -183,7 +183,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/boj_policy_lead_alert_state.json
           if git diff --cached --quiet; then
-            echo "BOJ 정책 선행경보 상태 변경 없음"
+            echo "BOJ 정책경로 상태 변경 없음"
           else
             git commit -m "Update BOJ policy lead alert state"
             git pull --rebase origin main
