@@ -49,6 +49,7 @@ QUERIES = (
     '"Bank of Japan" additional rate hikes Reuters when:2d',
     '"Bank of Japan" neutral rate Ueda Reuters when:3d',
     '"Summary of Opinions" BOJ Reuters when:7d',
+    'BOJ economic assessment vote inflation 2% Reuters when:2d',
 )
 
 LEVEL_EMOJI = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}
@@ -144,6 +145,36 @@ RISK_CHANNELS = (
     "global ai",
 )
 
+DOVISH_DISSENT = (
+    "preferred to keep rates unchanged",
+    "preferred to leave rates unchanged",
+    "wanted to keep rates unchanged",
+    "voted to keep rates unchanged",
+    "voted for no change",
+    "called for no change",
+    "opposed the hike",
+    "dissented against the hike",
+    "hold rates",
+    "keep the policy rate at",
+)
+HAWKISH_DISSENT = (
+    "called for a 50 basis-point hike",
+    "called for a 50 basis point hike",
+    "wanted a 50 basis-point hike",
+    "wanted a 50 basis point hike",
+    "half-point hike",
+    "larger hike",
+    "raise the rate by 50",
+    "50bp hike",
+)
+ASSESSMENT_MARKERS = (
+    "economic assessment",
+    "economic view",
+    "price assessment",
+    "inflation assessment",
+    "underlying inflation assessment",
+)
+
 
 @dataclass(frozen=True)
 class Item:
@@ -171,6 +202,11 @@ class Signal:
     hike_bp: int | None
     vote_for: int | None
     vote_against: int | None
+    dissent_direction: str | None
+    dissenters: tuple[str, ...]
+    assessment_vote_for: int | None
+    assessment_vote_against: int | None
+    assessment_view: str | None
     further_hikes: bool
     conditional_pace: bool
     accommodative: bool
@@ -293,6 +329,60 @@ def extract_vote(text: str) -> tuple[int | None, int | None]:
     return int(match.group(1)), int(match.group(2))
 
 
+def extract_dissent_direction(text: str) -> str | None:
+    lower = clean(text).lower()
+    dovish = any(marker in lower for marker in DOVISH_DISSENT)
+    hawkish = any(marker in lower for marker in HAWKISH_DISSENT)
+    if dovish and hawkish:
+        return "mixed"
+    if dovish:
+        return "hold"
+    if hawkish:
+        return "larger_hike"
+    return None
+
+
+def extract_dissenters(text: str) -> tuple[str, ...]:
+    names = (
+        ("Asada", "아사다"),
+        ("Sato", "사토"),
+        ("Takata", "다카타"),
+        ("Tamura", "다무라"),
+        ("Himino", "히미노"),
+        ("Koeda", "고에다"),
+        ("Masu", "마스"),
+        ("Uchida", "우치다"),
+    )
+    lower = clean(text).lower()
+    found = []
+    for english, korean in names:
+        if english.lower() in lower and korean not in found:
+            found.append(korean)
+    return tuple(found)
+
+
+def extract_assessment_vote(text: str) -> tuple[int | None, int | None, str | None]:
+    # Require the vote count and the economic/inflation assessment to coexist in the
+    # same sentence. This avoids copying the policy 7-2 vote into the assessment field.
+    sentences = re.split(r"(?<=[.!?;])\s+", clean(text))
+    for sentence in sentences:
+        lower = sentence.lower()
+        if not any(marker in lower for marker in ASSESSMENT_MARKERS):
+            continue
+        match = re.search(r"\b([1-9])-([0-9])\b", sentence)
+        if not match:
+            continue
+        view = None
+        if re.search(r"(?:underlying )?inflation[^.]{0,80}(?:already )?(?:above|exceed(?:ed|s)?)\s+(?:the )?2\s*%", lower):
+            view = "기조적 물가상승률이 이미 2%를 웃돈다는 진단"
+        elif "upside risk" in lower or "upside risks" in lower:
+            view = "물가 상방위험이 커졌다는 진단"
+        else:
+            view = "경제·물가 진단에서 위원 간 견해 차이"
+        return int(match.group(1)), int(match.group(2)), view
+    return None, None, None
+
+
 def has_any(text: str, phrases: tuple[str, ...]) -> bool:
     lower = " " + text.lower() + " "
     return any(phrase in lower for phrase in phrases)
@@ -343,6 +433,9 @@ def classify(item: Item) -> Signal | None:
     rate = extract_rate(text)
     bp = extract_bp(text)
     vote_for, vote_against = extract_vote(text)
+    dissent_direction = extract_dissent_direction(text)
+    dissenters = extract_dissenters(text)
+    assessment_vote_for, assessment_vote_against, assessment_view = extract_assessment_vote(text)
     further = has_any(text, FURTHER_HIKES)
     conditional = has_any(text, CONDITIONAL_PACE)
     accommodative = has_any(text, ACCOMMODATIVE)
@@ -378,7 +471,8 @@ def classify(item: Item) -> Signal | None:
     # Official source is authoritative for existence of the event, but may contain only a title in RSS.
     key_material = (
         f"{kind}|{source}|{normalize(item.title)}|{item.published.date()}|"
-        f"{rate}|{bp}|{vote_for}-{vote_against}|{level}"
+        f"{rate}|{bp}|{vote_for}-{vote_against}|{dissent_direction}|"
+        f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|{level}"
     )
     key = hashlib.sha256(key_material.encode()).hexdigest()[:24]
 
@@ -394,6 +488,11 @@ def classify(item: Item) -> Signal | None:
         hike_bp=bp,
         vote_for=vote_for,
         vote_against=vote_against,
+        dissent_direction=dissent_direction,
+        dissenters=dissenters,
+        assessment_vote_for=assessment_vote_for,
+        assessment_vote_against=assessment_vote_against,
+        assessment_view=assessment_view,
         further_hikes=further,
         conditional_pace=conditional,
         accommodative=accommodative,
@@ -465,6 +564,11 @@ def signal_signature(signal: Signal) -> dict:
         "hike_bp": signal.hike_bp,
         "vote_for": signal.vote_for,
         "vote_against": signal.vote_against,
+        "dissent_direction": signal.dissent_direction,
+        "dissenters": list(signal.dissenters),
+        "assessment_vote_for": signal.assessment_vote_for,
+        "assessment_vote_against": signal.assessment_vote_against,
+        "assessment_view": signal.assessment_view,
         "further_hikes": signal.further_hikes,
         "conditional_pace": signal.conditional_pace,
         "accommodative": signal.accommodative,
@@ -511,6 +615,26 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         != (previous.get("vote_for"), previous.get("vote_against"))
     ):
         return True, "표결구도 변화"
+    if (
+        signal.dissent_direction is not None
+        and signal.dissent_direction != previous.get("dissent_direction")
+    ):
+        return True, "반대표 방향 변화"
+    if (
+        signal.assessment_vote_for is not None
+        and signal.assessment_vote_against is not None
+        and (
+            signal.assessment_vote_for,
+            signal.assessment_vote_against,
+            signal.assessment_view,
+        )
+        != (
+            previous.get("assessment_vote_for"),
+            previous.get("assessment_vote_against"),
+            previous.get("assessment_view"),
+        )
+    ):
+        return True, "경제·물가 진단 표결 변화"
 
     # Guidance wording changes matter for official decisions/conferences/opinion summaries,
     # but not for every market article paraphrasing the same meeting.
@@ -609,6 +733,33 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
     if not decision_lines:
         decision_lines.append(f"- 이벤트: {EVENT_LABEL.get(signal.event_type, '정책 업데이트')}")
 
+    if signal.dissent_direction == "hold":
+        dissent_text = "동결 요구 — 완화파 반대"
+    elif signal.dissent_direction == "larger_hike":
+        dissent_text = "더 큰 폭 인상 요구 — 매파 반대"
+    elif signal.dissent_direction == "mixed":
+        dissent_text = "동결·대폭 인상 요구가 함께 존재 — 양방향 분열"
+    elif signal.vote_against:
+        dissent_text = "반대표 방향 공식·고신뢰 원문 추가 확인 필요"
+    else:
+        dissent_text = "유의미한 반대표 방향 변화 미확인"
+
+    committee = []
+    if signal.vote_for is not None and signal.vote_against is not None:
+        committee.append(f"- 정책 표결: {signal.vote_for}대{signal.vote_against}")
+    else:
+        committee.append("- 정책 표결: 새 명시적 표결 수치 미확인")
+    if signal.dissenters:
+        committee.append(f"- 반대 위원: {', '.join(signal.dissenters)}")
+    committee.append(f"- 반대표 방향: {dissent_text}")
+    if signal.assessment_vote_for is not None and signal.assessment_vote_against is not None:
+        committee.append(
+            f"- 경제·물가 진단 표결: {signal.assessment_vote_for}대{signal.assessment_vote_against}"
+        )
+        committee.append(f"- 경제·물가 진단: {signal.assessment_view}")
+    else:
+        committee.append("- 경제·물가 진단 별도 표결: 공식·고신뢰 원문에서 명시적으로 확인될 때만 표시")
+
     guidance = [
         f"- 추가 인상 방향: {'유지' if signal.further_hikes else '명시적 확인 전'}",
         f"- 인상 시점·속도: {'조건부·점진' if signal.conditional_pace else ('가속 신호' if signal.level >= 2 else '추가 확인 필요')}",
@@ -627,6 +778,10 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         f"- {emoji} {LEVEL_LABEL[signal.level]}",
         f"- 판단: {signal.note}",
         f"- 변화 사유: {reason}",
+        "",
+        "위원회 분열",
+        *committee,
+        "※ 같은 7대2라도 '동결 요구'와 '더 큰 폭 인상 요구'는 의미가 반대이므로 방향을 따로 봅니다.",
         "",
         "가이던스 체크",
         *guidance,
@@ -653,6 +808,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
             "",
             "정확한 의미",
             "- 25bp 인상 자체를 자동으로 🟠 매파 강화로 처리하지 않습니다.",
+            "- 위원회 분열은 표 수보다 반대표 방향을 우선하며, 경제·물가 진단의 별도 표결은 명시적 원문이 있을 때만 확정합니다.",
             "- 직전 경로보다 다음 인상 시점이 앞당겨지거나 속도가 빨라질 때 🟠로 올립니다.",
             "- 50bp급 예상 밖 인상 또는 연속 긴축을 강하게 시사할 때만 🔴로 올립니다.",
             "- 추가 긴축 시점이 뒤로 밀리거나 중단 신호가 확인되면 🟢로 낮춥니다.",
