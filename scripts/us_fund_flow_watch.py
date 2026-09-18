@@ -52,6 +52,20 @@ def parse_num(x):
 def clean_text(x):
     return re.sub(r"\s+", " ", BeautifulSoup(str(x), "html.parser").get_text(" ", strip=True)).strip()
 
+def browser_html(url):
+    import shutil
+    exe = next((p for p in ["/usr/bin/google-chrome","/usr/bin/google-chrome-stable","/usr/bin/chromium","/usr/bin/chromium-browser"] if os.path.exists(p)), None)
+    if not exe:
+        raise RuntimeError("system Chrome/Chromium not found")
+    with sync_playwright() as p:
+        b = p.chromium.launch(executable_path=exe, headless=True, args=["--no-sandbox","--disable-dev-shm-usage"])
+        page = b.new_page(user_agent=UA, locale="en-US")
+        page.goto(url, wait_until="networkidle", timeout=60000)
+        page.wait_for_timeout(900)
+        h = page.content()
+        b.close()
+        return h
+
 def fetch_fx():
     key = (os.getenv("ECOS_API_KEY") or "").strip()
     if not key: return None
@@ -96,7 +110,7 @@ def parse_ici_combined():
     pub = None
     m = re.search(r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+20\d{2}", text)
     if m: pub = m.group(0)
-    tables = pd.read_html(r.text)
+    tables = pd.read_html(StringIO(page_html))
     target = None
     for t in tables:
         flat = " ".join(map(str, t.astype(str).values.flatten()))
@@ -169,7 +183,7 @@ def parse_ici_mmf():
 
 def parse_finra():
     r=get(FINRA_MARGIN)
-    tables=pd.read_html(r.text)
+    tables=pd.read_html(StringIO(r.text))
     t=None
     for x in tables:
         if any("Debit Balances" in str(c) for c in x.columns):
@@ -242,7 +256,7 @@ def signed_flow(text, anchor_patterns):
 
 def parse_reuters(kind):
     q=REUTERS_Q_BofA if kind=="bofa" else REUTERS_Q_LIPPER
-    items=news_rss(q)
+    items=bing_news_rss(q)+news_rss(q)
     cutoff=datetime.now(timezone.utc)-timedelta(days=10)
     for it in items:
         if "Reuters" not in it["title"] and "reuters" not in it["desc"].lower(): continue
