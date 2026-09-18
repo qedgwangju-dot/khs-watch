@@ -28,9 +28,11 @@ STATUS = OUT / "samsung_hbm_status.md"
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 96
 MONTHLY_DAY = 15
-COMPARE_VERSION = 2
+COMPARE_VERSION = 3
+KCS_ITEM_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTrade.do"
 KCS_REGION_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTradeRegion.do"
 HBM_HSK10 = "8542323000"
+REGION_HS6 = "854232"
 KCS_SOURCE_PAGE = "https://tradedata.go.kr/cts/index.do"
 REGIONS = {
     "samsung_chungnam": {"name": "충남", "kind": "sido", "sido": "44", "sgg": ""},
@@ -259,11 +261,69 @@ def _normalize_export_usd(value: float | None) -> float | None:
     return value * 1000.0 if 0 <= value < 100_000_000 else value
 
 
-def fetch_kcs_region_month(month: str, region: dict, hs: str = HBM_HSK10, session=None) -> tuple[dict | None, str]:
-    hs_col = f"HS{len(hs)}_SGN"
+def fetch_kcs_item_month(month: str, session) -> tuple[dict | None, str]:
     params = {
+        "tradeKind": "ETS_MNK_1020000A",
+        "priodKind": "MON",
+        "priodFr": month + " ",
+        "priodTo": month + " ",
+        "statsBase": "acptDd",
+        "ttwgTpcd": "1",
+        "showPagingLine": "100",
+        "sortColumn": "",
+        "sortOrder": "",
+        "hsSgnGrpCol": "HS10_SGN",
+        "hsSgnWhrCol": "HS10_SGN",
+        "hsSgn": HBM_HSK10,
+    }
+    headers = {
+        "User-Agent": UA,
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Referer": KCS_SOURCE_PAGE,
+        "Origin": "https://tradedata.go.kr",
+        "X-Requested-With": "XMLHttpRequest",
+        "isAjax": "true",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    }
+    try:
+        r = session.post(KCS_ITEM_URL, headers=headers, data=params, timeout=(5, 12))
+        if r.status_code != 200:
+            return None, f"전국 {month} KCS HTTP {r.status_code}"
+        data = r.json()
+    except Exception as exc:
+        return None, f"전국 {month} KCS 조회 실패: {type(exc).__name__}: {exc}"
+
+    items = data.get("items") or []
+    target = None
+    for row in items:
+        if str(row.get("priodTitle") or "") == "총계":
+            continue
+        hs = str(row.get("hsSgn") or "").replace(".", "")
+        period = re.sub(r"[^0-9]", "", str(row.get("priodTitle") or ""))
+        if hs == HBM_HSK10 and month in period:
+            target = row
+            break
+    if target is None:
+        return None, f"전국 {month} HSK {HBM_HSK10} 미검출: count={data.get('count')} items={len(items)}"
+
+    amt = _normalize_export_usd(_number(target.get("expUsdAmt")))
+    weight = _number(target.get("expTtwg"))
+    if amt is None:
+        return None, f"전국 {month} 수출금액 숫자 변환 실패"
+    return {
+        "month": month,
+        "amount_usd": amt,
+        "weight_kg": weight,
+        "hs": HBM_HSK10,
+        "source": "관세청 수출입무역통계",
+    }, ""
+
+
+def fetch_kcs_region_month(month: str, region: dict, session=None) -> tuple[dict | None, str]:
+    hs = REGION_HS6
+    hs_col = "HS6_SGN"
+    base = {
         "tradeKind": "ETS_MNK_1040000A",
-        "sidosggKind": region["kind"],
         "priodKind": "MON",
         "priodFr": month,
         "priodTo": month,
@@ -285,61 +345,61 @@ def fetch_kcs_region_month(month: str, region: dict, hs: str = HBM_HSK10, sessio
         "Origin": "https://tradedata.go.kr",
         "X-Requested-With": "XMLHttpRequest",
         "isAjax": "true",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     }
-    own = session is None
     sess = session or requests.Session()
-    try:
-        if own:
-            sess.headers.update({"User-Agent": UA})
-            sess.get(KCS_SOURCE_PAGE, timeout=(5, 10))
-        r = sess.post(KCS_REGION_URL, headers=headers, params=params, timeout=(5, 12))
-        if r.status_code != 200:
-            return None, f"{region['name']} {month} KCS HTTP {r.status_code}"
-        data = r.json()
-    except Exception as exc:
-        return None, f"{region['name']} {month} KCS 조회 실패: {type(exc).__name__}: {exc}"
+    variants = [region["kind"]]
+    if region["kind"] == "sido":
+        variants += ["sgg"]
 
-    candidates = []
-    for row in _walk_dicts(data):
-        keys = {str(k).lower(): k for k in row.keys()}
-        amt_key = next((keys[k] for k in ("expusdamt", "expdlr", "expamt") if k in keys), None)
-        if amt_key is None:
+    last_preview = ""
+    for kind in variants:
+        params = dict(base)
+        params["sidosggKind"] = kind
+        try:
+            r = sess.post(KCS_REGION_URL, headers=headers, data=params, timeout=(5, 12))
+            if r.status_code != 200:
+                continue
+            data = r.json()
+        except Exception as exc:
+            return None, f"{region['name']} {month} KCS 조회 실패: {type(exc).__name__}: {exc}"
+        last_preview = clean(json.dumps(data, ensure_ascii=False))[:400]
+        items = data.get("items") or []
+        if not items:
             continue
-        row_hs = str(row.get(keys.get("hssgn", ""), "") or "").replace(".", "")
-        period = str(row.get(keys.get("priodtitle", ""), row.get(keys.get("year", ""), "")) or "")
-        score = 0
-        if row_hs == hs:
-            score += 10
-        if month in re.sub(r"[^0-9]", "", period):
-            score += 5
-        if row_hs:
-            score += 1
-        candidates.append((score, row, keys, amt_key))
 
-    if not candidates:
-        preview = clean(json.dumps(data, ensure_ascii=False))[:500]
-        return None, f"{region['name']} {month} KCS 응답에서 수출금액 행 미검출: {preview}"
+        target = None
+        for row in items:
+            if str(row.get("priodTitle") or "") == "총계":
+                continue
+            row_hs = str(row.get("hsSgn") or "").replace(".", "")
+            period = re.sub(r"[^0-9]", "", str(row.get("priodTitle") or ""))
+            if row_hs == hs and month in period:
+                target = row
+                break
+        if target is None:
+            target = next((row for row in items if str(row.get("priodTitle") or "") != "총계"), None)
+        if target is None:
+            continue
 
-    _, row, keys, amt_key = max(candidates, key=lambda x: x[0])
-    amt_raw = _number(row.get(amt_key))
-    amount_usd = _normalize_export_usd(amt_raw)
-    wgt_key = next((keys[k] for k in ("expwgt", "expwgtamt", "wgt") if k in keys), None)
-    weight_kg = _number(row.get(wgt_key)) if wgt_key else None
-    hs_returned = str(row.get(keys.get("hssgn", ""), "") or "").replace(".", "")
-    if hs_returned and hs_returned != hs:
-        return None, f"{region['name']} {month} 요청 HSK {hs}와 응답 {hs_returned} 불일치"
-    if amount_usd is None:
-        return None, f"{region['name']} {month} 수출금액 숫자 변환 실패"
+        amt = _normalize_export_usd(_number(target.get("expUsdAmt")))
+        weight = _number(target.get("expTtwg"))
+        if amt is None:
+            continue
+        return {
+            "month": month,
+            "region": region["name"],
+            "amount_usd": amt,
+            "weight_kg": weight,
+            "hs": hs,
+            "raw_amount": _number(target.get("expUsdAmt")),
+            "source": "관세청 수출입무역통계",
+            "scope_note": "지역 공개자료는 HS6 854232 메모리 전체로, HBM 전용 HSK10이 아님",
+        }, ""
 
-    return {
-        "month": month,
-        "region": region["name"],
-        "amount_usd": amount_usd,
-        "weight_kg": weight_kg,
-        "hs": hs,
-        "raw_amount": amt_raw,
-        "source": "관세청 수출입무역통계",
-    }, ""
+    return None, f"{region['name']} {month} HS6 {hs} 미검출: {last_preview}"
+
+
 
 def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
     errors: list[str] = []
@@ -356,14 +416,18 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
     for candidate in [current, _month_shift(current, -1), _month_shift(current, -2)]:
         rows = {}
         local_errors = []
+        national, nerr = fetch_kcs_item_month(candidate, session)
+        if not national:
+            local_errors.append(nerr)
         for key, region in REGIONS.items():
             row, err = fetch_kcs_region_month(candidate, region, session=session)
             if row:
                 rows[key] = row
             else:
                 local_errors.append(err)
-        if len(rows) == len(REGIONS):
+        if national and len(rows) == len(REGIONS):
             selected = candidate
+            rows["national_hsk10"] = national
             data[candidate] = rows
             break
         errors.extend(local_errors)
@@ -376,6 +440,11 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         if month in data:
             continue
         rows = {}
+        national, nerr = fetch_kcs_item_month(month, session)
+        if national:
+            rows["national_hsk10"] = national
+        else:
+            errors.append(nerr)
         for key, region in REGIONS.items():
             row, err = fetch_kcs_region_month(month, region, session=session)
             if row:
@@ -384,7 +453,8 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
                 errors.append(err)
         data[month] = rows
 
-    if any(len(data.get(m, {})) != len(REGIONS) for m in needed[:3]):
+    required_count = len(REGIONS) + 1
+    if any(len(data.get(m, {})) != required_count for m in needed[:3]):
         return None, errors
 
     def combine(month: str) -> dict:
@@ -396,7 +466,10 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         hynix_weight = None
         if cb.get("weight_kg") is not None and ic.get("weight_kg") is not None:
             hynix_weight = cb["weight_kg"] + ic["weight_kg"]
+        nat = rows["national_hsk10"]
         return {
+            "national_amount": nat["amount_usd"],
+            "national_weight": nat.get("weight_kg"),
             "samsung_amount": sam["amount_usd"],
             "samsung_weight": sam.get("weight_kg"),
             "hynix_amount": hynix_amount,
@@ -405,11 +478,13 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
             "icheon_amount": ic["amount_usd"],
         }
 
-    series = {m: combine(m) for m in needed if len(data.get(m, {})) == len(REGIONS)}
+    required_count = len(REGIONS) + 1
+    series = {m: combine(m) for m in needed if len(data.get(m, {})) == required_count}
     return {
         "month": selected,
         "series": series,
         "hs": HBM_HSK10,
+        "region_hs": REGION_HS6,
         "source_url": KCS_SOURCE_PAGE,
         "errors": errors,
     }, errors
