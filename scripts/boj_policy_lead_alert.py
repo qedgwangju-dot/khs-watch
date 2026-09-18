@@ -64,6 +64,11 @@ VERIFIED_EVENT_FALLBACKS = {
         "stabilize_underlying_around_2": True,
         "outlook_dissenters": ("다카타", "다무라"),
         "outlook_dissent_view": "기조적 물가가 이미 2% 목표에 대체로 도달했다는 판단에서 물가전망 문구에 반대",
+        "further_hikes": True,
+        "conditional_pace": True,
+        "accommodative": True,
+        "inflation_upside": True,
+        "risk_channels": True,
         "source": "Reuters + 사용자 제공 BOJ 성명 요약",
         "evidence": (
             REUTERS_BOJ_DECISION,
@@ -903,6 +908,11 @@ def enrich_decision_context(signals: list[Signal]) -> list[Signal]:
                 stabilize_underlying_around_2=bool(fallback["stabilize_underlying_around_2"]),
                 outlook_dissenters=tuple(fallback["outlook_dissenters"]),
                 outlook_dissent_view=fallback["outlook_dissent_view"],
+                further_hikes=bool(fallback["further_hikes"]),
+                conditional_pace=bool(fallback["conditional_pace"]),
+                accommodative=bool(fallback["accommodative"]),
+                inflation_upside=bool(fallback["inflation_upside"]),
+                risk_channels=bool(fallback["risk_channels"]),
             )
             rate = merged.policy_rate
             bp = merged.hike_bp
