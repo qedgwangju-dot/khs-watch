@@ -1,9 +1,9 @@
 {
   "last_signal_key": "300c4ac3a36484edf12779ed",
-  "last_alert_at_kst": "2026-09-18T13:55:33+09:00",
+  "last_alert_at_kst": "2026-09-18T13:58:39+09:00",
   "last_published_at_kst": "2026-09-18T12:23:00+09:00",
   "last_source": "Reuters",
-  "last_title": "VIEW Investors react to BOJ raising interest rates to 31-year high - Reuters",
+  "last_title": "Investors react to BOJ raising interest rates to 31-year high - Reuters",
   "signature": {
     "level": 1,
     "event_type": "decision",
@@ -29,11 +29,11 @@
       "다무라"
     ],
     "outlook_dissent_view": "기조적 물가가 이미 2% 목표에 대체로 도달했다는 판단에서 물가전망 문구에 반대",
-    "further_hikes": false,
-    "conditional_pace": false,
-    "accommodative": false,
+    "further_hikes": true,
+    "conditional_pace": true,
+    "accommodative": true,
     "neutral_rate": false,
-    "inflation_upside": false,
-    "risk_channels": false
+    "inflation_upside": true,
+    "risk_channels": true
   }
 }
