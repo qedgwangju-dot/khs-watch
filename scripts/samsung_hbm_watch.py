@@ -468,47 +468,76 @@ def event_summary(e: dict) -> list[str]:
     return lines
 
 
-def build_monthly(now: datetime, rate: float | None, fx_basis: str) -> str:
-    july_krw = krw_large(2_200_000_000, rate)
-    malaysia_krw = krw_large(1_300_000_000, rate)
+def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: dict) -> str:
+    month = official["month"]
+    cur = official["series"][month]
+    prev_m = _month_shift(month, -1)
+    prev_q = _month_shift(month, -3)
+    prev_y = _month_shift(month, -12)
+    prev = official["series"].get(prev_m, {})
+    qbase = official["series"].get(prev_q, {})
+    ybase = official["series"].get(prev_y, {})
+
+    sam_mom = _pct(cur["samsung_amount"], prev.get("samsung_amount"))
+    sam_q = _pct(cur["samsung_amount"], qbase.get("samsung_amount"))
+    sam_y = _pct(cur["samsung_amount"], ybase.get("samsung_amount"))
+    hyn_mom = _pct(cur["hynix_amount"], prev.get("hynix_amount"))
+    hyn_q = _pct(cur["hynix_amount"], qbase.get("hynix_amount"))
+    hyn_y = _pct(cur["hynix_amount"], ybase.get("hynix_amount"))
+
+    sam_uv = _unit_value(cur["samsung_amount"], cur.get("samsung_weight"))
+    sam_prev_uv = _unit_value(prev.get("samsung_amount"), prev.get("samsung_weight"))
+    hyn_uv = _unit_value(cur["hynix_amount"], cur.get("hynix_weight"))
+    hyn_prev_uv = _unit_value(prev.get("hynix_amount"), prev.get("hynix_weight"))
+
+    sam_krw = krw_large(cur["samsung_amount"], rate)
+    hyn_krw = krw_large(cur["hynix_amount"], rate)
+
     lines = [
         "🚨 <b>삼성·SK하이닉스 HBM 월간 비교</b>",
         "━━━━━━━━━━━━━━━━",
+        "<b>[공식 원자료 최신월]</b>",
+        f"• 관세청 HSK <b>{official['hs']}</b> 복합구조칩 집적회로 · <b>{month[:4]}년 {int(month[4:])}월</b>",
+        "• 매 실행마다 관세청 원자료에서 직접 다시 조회하며, 이전 달 값을 최신값처럼 재사용하지 않습니다.",
+        "",
         "<b>[한눈에 보기]</b>",
+        f"• <b>삼성 대용지역 · 충남</b>: {_fmt_usd(cur['samsung_amount'])} · {sam_krw} | 전월 {_fmt_pct(sam_mom)} | 3개월 전 대비 {_fmt_pct(sam_q)} | 전년동월 {_fmt_pct(sam_y)}",
+        f"• <b>SK하이닉스 대용지역 · 충북+이천</b>: {_fmt_usd(cur['hynix_amount'])} · {hyn_krw} | 전월 {_fmt_pct(hyn_mom)} | 3개월 전 대비 {_fmt_pct(hyn_q)} | 전년동월 {_fmt_pct(hyn_y)}",
+        f"  └ 충북 {_fmt_usd(cur['chungbuk_amount'])} + 이천 {_fmt_usd(cur['icheon_amount'])}",
+        "",
+        "<b>[중량당 단가]</b>",
+    ]
+
+    if sam_uv is not None:
+        lines.append(f"• 삼성 충남: <b>\${sam_uv:,.0f}/kg</b> | 전월 {_fmt_pct(_pct(sam_uv, sam_prev_uv))}")
+    else:
+        lines.append("• 삼성 충남: <b>공식 중량 확인 불가</b> — 추정하지 않음")
+    if hyn_uv is not None:
+        lines.append(f"• SK하이닉스 충북+이천: <b>\${hyn_uv:,.0f}/kg</b> | 전월 {_fmt_pct(_pct(hyn_uv, hyn_prev_uv))}")
+    else:
+        lines.append("• SK하이닉스 충북+이천: <b>공식 중량 확인 불가</b> — 시군구 중량 비공개 시 대체 추정 금지")
+
+    lines += [
+        "",
+        "<b>[해석]</b>",
+        "• 충남은 삼성 HBM, 충북+이천은 SK하이닉스 HBM 출하를 추적하는 <b>지역 대용지표</b>입니다.",
+        "• HSK 8542323000에는 HBM 외 다른 복합구조 메모리도 포함될 수 있어 <b>회사 공식 HBM 매출과 1:1 동일하지 않습니다.</b>",
+        "• 방향은 <b>수출액 + 중량당 단가 + HBM4/HBM4E 제품혼합 + 고객 인증</b>을 함께 확인합니다.",
+        "",
+        "<b>[현재 기준선]</b>",
         "• 최신 시장점유율: <b>SK하이닉스 50% · 삼성 33% · Micron 18%</b> (2026년 2분기, Counterpoint)",
-        "• 현재 검증된 지역 수출 기준선은 <b>2026년 7월</b>입니다. 8~9월 새 직접 비교값이 확인되면 즉시 갱신합니다.",
+        "• 삼성 HBM4: 공식 <b>양산·상업 출하</b> / HBM4E: <b>12단 샘플 출하</b>",
         "",
-        "<b>[수출 대용지표 — 7월 기준]</b>",
-        f"• <b>삼성 대용지역 · 충남</b>: 약 <b>22억달러 · {july_krw}</b> / 4월 대비 <b>+122%</b>",
-        "  → 중량당 단가 전월 대비 <b>+21%</b> · 고단가 HBM4 제품혼합 상승 신호",
-        "• <b>SK하이닉스 대용지역 · 충북+이천</b>: 4월 대비 약 <b>-27%</b> · 전월 대비도 약 <b>-27%</b>",
-        "  → Bernstein은 Rubin향 HBM4 출하 시점 지연 영향으로 해석 · <b>수요 붕괴로 단정하지 않음</b>",
-        "• <b>한국 전체 HBM 수출 대용지표</b>: 4월 대비 <b>+13%</b> · 전월 대비 <b>-32%</b> · 전년 대비 <b>+64%</b>",
-        f"• <b>말레이시아향 수출</b>: 약 <b>13억달러 · {malaysia_krw}</b> / 증가분은 주로 SK하이닉스 기여로 Bernstein 분석",
-        "",
-        "<b>[매출·제품혼합]</b>",
-        "• 삼성 3Q26 HBM 매출: Bernstein 추정 <b>QoQ +80%</b> · 기존 전망 대비 <b>+30%</b>",
-        "• 삼성 HBM 출하 내 HBM4 비중: LS증권 추정 <b>1Q 약 5% → 2Q 약 35%</b>",
-        "• 삼성 HBM4: 공식 <b>양산·상업 출하</b> / HBM4E: <b>12단 샘플 출하</b>·최대 <b>16Gbps</b>",
-        "",
-        "<b>[이번 달 판정]</b>",
-        "• 삼성: <b>점유율 회복 + HBM4 제품혼합 상승 + 충남 수출 급증</b>이 같은 방향입니다.",
-        "• SK하이닉스: 7월 지역 수출 약세는 <b>Rubin HBM4 출하 시점 지연</b> 성격으로, 후속 월 출하 회복 여부가 핵심입니다.",
-        "• 지역 수출은 양사 HBM의 <b>대용지표</b>이며 공식 HBM 매출과 1:1로 동일하지 않습니다.",
-        "",
-        "<b>[다음 알림에서 반드시 갱신]</b>",
-        "• <b>충남 vs 충북·이천</b> 월간 수출액·중량당 단가",
-        "• 8월·9월 분기 후반 출하 회복/지속 여부",
-        "• 삼성·SK하이닉스 HBM 실제 매출 또는 신뢰 리서치 추정",
-        "• HBM 시장점유율 · HBM4/HBM4E 제품혼합",
-        "• NVIDIA Rubin향 공급물량·고객 인증·계약가격",
+        "<b>[다음 알림]</b>",
+        "• 관세청에 새 월 HSK 8542323000 지역별 확정치가 생기는 즉시",
+        "• 충남 vs 충북+이천 수출액 방향이 반전하거나 격차가 크게 변할 때",
+        "• 중량당 단가가 급변해 HBM4/HBM4E 제품혼합 변화가 의심될 때",
+        "• 삼성·SK하이닉스 HBM 매출·점유율·NVIDIA 공급물량이 새로 확인될 때",
         "",
         f"<b>환율</b>: {html.escape(fx_basis)}",
-        f"<b>기준일</b>: {now.strftime('%Y-%m-%d %H:%M KST')}",
-        "",
-        f"Counterpoint {href(COUNTERPOINT_HBM_SHARE)} · Bernstein {href(BERNSTEIN_EXPORT)}",
-        f"Samsung HBM4 {href(SAMSUNG_HBM4_OFFICIAL)} · Samsung HBM4E {href(SAMSUNG_HBM4E_OFFICIAL)}",
-        f"LS증권 인용 {href(LS_HBM4_MIX)}",
+        f"<b>조회</b>: {now.strftime('%Y-%m-%d %H:%M KST')}",
+        f"<b>관세청 원자료</b>: {href(official['source_url'])}",
+        f"Counterpoint {href(COUNTERPOINT_HBM_SHARE)} · Bernstein 방법론 참고 {href(BERNSTEIN_EXPORT)}",
     ]
     return "\n".join(lines) + "\n"
 
