@@ -248,7 +248,8 @@ def score(item: dict) -> int:
         s += 8
     if re.search(r'benchmark|success\s+rate|latency|generaliz|hours?\s+without\s+(?:a\s+)?failure|벤치마크|성공률|지연', text, re.I):
         s += 7
-    if re.search(r'scaling\s+law|human[-\s]*to[-\s]*humanoid|Index.{0,80}(?:doubl|8x|8×)|zero[-\s]*shot.{0,80}(?:home|generaliz)|스케일링\s*법칙', text, re.I | re.S):
+    if re.search(r'scaling\s+law|human[-\s]*to[-\s]*humanoid|Index.{0,80}(?:doubl|8x|8×)|zero[-\s]*shot.{0,80}(?:home|generaliz)|'
+                 r'스케일링\s*법칙|제로샷.{0,80}(?:가정|주택|일반화)|30개.{0,40}(?:가정|주택)|9%[^\n]{0,40}56%', text, re.I | re.S):
         s += 12
     if FIGURE_COMMERCIAL.search(text):
         s += 6
@@ -256,7 +257,8 @@ def score(item: dict) -> int:
 
 
 def _figure_subcat(text: str) -> str:
-    if re.search(r'scaling\s+law|human[-\s]*to[-\s]*humanoid|Index.{0,80}(?:doubl|8x|8×)|zero[-\s]*shot.{0,80}(?:home|generaliz)|스케일링\s*법칙', text, re.I | re.S):
+    if re.search(r'scaling\s+law|human[-\s]*to[-\s]*humanoid|Index.{0,80}(?:doubl|8x|8×)|zero[-\s]*shot.{0,80}(?:home|generaliz)|'
+                 r'스케일링\s*법칙|제로샷.{0,80}(?:가정|주택|일반화)|30개.{0,40}(?:가정|주택)|9%[^\n]{0,40}56%', text, re.I | re.S):
         return '인간→휴머노이드 스케일링 법칙'
     if FIGURE_PREANNOUNCE.search(text):
         return '공식 사전예고·공개 시간표'
@@ -316,7 +318,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
-    if re.search(r'scaling\s+law|human[-\s]*to[-\s]*humanoid|zero[-\s]*shot.{0,50}(?:home|generaliz)', title, re.I):
+    if re.search(r'scaling\s+law|human[-\s]*to[-\s]*humanoid|zero[-\s]*shot.{0,50}(?:home|generaliz)|'
+                 r'제로샷.{0,50}(?:가정|주택|일반화)|Helix\s*2\.5.{0,80}30개', title, re.I):
         return '피겨 AI, 인간→휴머노이드 스케일링 법칙 확인…미지 환경 일반화 개선'
     if re.search(r'Figure\s*AI|Figure\s*0?3|Helix|Brett\s*Adcock', title, re.I):
         if FIGURE_PREANNOUNCE.search(title):
