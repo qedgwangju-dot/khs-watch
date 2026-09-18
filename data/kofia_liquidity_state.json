@@ -1,5 +1,5 @@
 {
-  "fingerprint": "294680e2905ea31095c51f243dc95e9ccb5424b691edc0b55045ceda38103ea1",
+  "fingerprint": "5e29f8918b63702a70727b912cdbbfa4844f48c0b593dd509ec3a18cbb365bff",
   "dates": {
     "deposit": "20260917",
     "mmf": "20260917",
@@ -9,9 +9,9 @@
   "values": {
     "deposit": {
       "date": "20260917",
-      "value": 97493826,
-      "d1": -2081038,
-      "d5": -10163450
+      "value": 97491073,
+      "d1": -2083791,
+      "d5": -10166203
     },
     "mmf": {
       "date": "20260917",
@@ -33,7 +33,7 @@
     },
     "receivable": {
       "date": "20260917",
-      "value": 1013560
+      "value": 1013774
     },
     "forced": {
       "date": "20260917",
@@ -41,7 +41,7 @@
       "ratio": 2.4
     }
   },
-  "last_event": "신규 공식값",
+  "last_event": "동일 기준일 수정치",
   "source": "KOFIA FreeSIS",
   "source_url": "https://freesis.kofia.or.kr/stat/main.do"
 }
