@@ -1,15 +1,21 @@
 {
-  "updated_at_kst": "2026-09-18T08:32:52+09:00",
+  "updated_at_kst": "2026-09-18T13:40:04+09:00",
   "circle": {
     "date": "2026-09-14",
     "circulation_usd_b": 74.2,
     "precision": "0.1B official webpage display"
   },
   "usdxx": {
-    "date": "2026-09-16",
-    "sec_yield_7d": 3.6,
+    "date": "2026-09-17",
+    "sec_yield_7d": 3.63,
     "fund_size_usd_m": 62317.4,
-    "fund_size_date": "2026-09-16"
+    "fund_size_date": "2026-09-17",
+    "_previous_distinct": {
+      "date": "2026-09-16",
+      "sec_yield_7d": 3.6,
+      "fund_size_usd_m": 62317.4,
+      "fund_size_date": "2026-09-16"
+    }
   },
   "sofr": {
     "date": "2026-09-16",
@@ -40,10 +46,10 @@
   },
   "tbx": {
     "date": "2026-09-17",
-    "close": 29.375,
+    "close": 29.3799991607666,
     "prev_date": "2026-09-16",
     "prev_close": 29.540000915527344,
-    "daily_pct": -0.56
+    "daily_pct": -0.54
   },
   "fx": {
     "rate": 1368.3,
@@ -52,7 +58,7 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,380.27원, 차이 0.87%"
+    "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
   "crcl_last_alerted_close_date": "2026-09-17",
   "errors": []
