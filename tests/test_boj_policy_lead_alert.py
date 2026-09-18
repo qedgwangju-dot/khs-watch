@@ -16,6 +16,7 @@ from boj_policy_lead_alert import (
     signal_signature,
     should_alert,
     verified_event_signals,
+    verified_press_conference_signals,
 )
 
 KST = ZoneInfo("Asia/Seoul")
@@ -48,6 +49,22 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertTrue(signal.further_hikes)
         self.assertTrue(signal.conditional_pace)
         self.assertTrue(signal.accommodative)
+
+    def test_verified_ueta_press_conference_signal_is_complete(self):
+        signals = verified_press_conference_signals(
+            dt.datetime(2026, 9, 18, 17, 20, tzinfo=KST)
+        )
+        self.assertEqual(len(signals), 1)
+        signal = signals[0]
+        self.assertEqual(signal.event_type, "press_conference")
+        self.assertEqual(signal.level, 1)
+        self.assertTrue(signal.hawkish_tail_50bp)
+        self.assertTrue(signal.further_hikes)
+        self.assertTrue(signal.conditional_pace)
+        self.assertTrue(signal.neutral_rate)
+        self.assertTrue(signal.inflation_upside)
+        self.assertTrue(signal.stabilize_underlying_around_2)
+        self.assertIn("조건부 꼬리위험", signal.note)
 
     def test_ueta_press_conference_keeps_50bp_as_conditional_tail(self):
         signal = classify(
