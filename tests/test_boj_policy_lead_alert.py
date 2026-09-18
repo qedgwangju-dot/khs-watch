@@ -81,6 +81,16 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertEqual(extract_vote("The decision passed by a 7-2 vote."), (7, 2))
         self.assertEqual(extract_vote("No vote count was provided."), (None, None))
 
+    def test_widely_expected_decision_marks_expected_move(self):
+        signal = classify(
+            self.mk(
+                "BOJ raises interest rates to 1.25% in widely expected 25 basis-point move - Reuters",
+                "The quarter-point increase was widely expected.",
+            )
+        )
+        self.assertTrue(signal.expected_move)
+        self.assertEqual(signal.level, 1)
+
     def test_dovish_dissent_direction_is_recorded(self):
         signal = classify(
             self.mk(
