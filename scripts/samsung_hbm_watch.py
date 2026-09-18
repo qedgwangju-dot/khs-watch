@@ -27,6 +27,7 @@ STATUS = OUT / "samsung_hbm_status.md"
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 96
 MONTHLY_DAY = 15
+COMPARE_VERSION = 1
 
 SAMSUNG_HBM4_OFFICIAL = "https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing"
 SAMSUNG_HBM4E_OFFICIAL = "https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples"
@@ -42,6 +43,9 @@ QUERIES = [
     '"Samsung" HBM Broadcom AMD NVIDIA Google custom HBM',
     '"삼성전자" HBM4 HBM4E 엔비디아 공급 출하 점유율',
     '"삼성전자" HBM 충남 수출 Bernstein',
+    '"SK hynix" HBM Bernstein export Chungbuk Icheon',
+    '"SK하이닉스" HBM 충북 이천 수출 Bernstein',
+    '"South Chungcheong" "North Chungcheong" Icheon HBM export',
 ]
 
 TRUSTED = (
@@ -121,14 +125,17 @@ def source_rank(source: str) -> int:
 
 def relevant(text: str) -> bool:
     low = text.lower()
-    samsung = "samsung" in low or "삼성전자" in low or "삼성" in low
+    company = (
+        "samsung" in low or "삼성전자" in low or "삼성" in low
+        or "sk hynix" in low or "sk hynix" in low or "sk하이닉스" in low
+    )
     hbm = "hbm" in low
     signal = any(k in low for k in (
         "shipment", "ship", "mass production", "qualification", "validation", "customer",
         "market share", "revenue", "export", "mix", "allocation", "contract", "price",
         "출하", "양산", "인증", "검증", "고객", "점유율", "매출", "수출", "비중", "계약", "가격",
     ))
-    return samsung and hbm and signal
+    return company and hbm and signal
 
 
 def read_events() -> list[dict]:
@@ -206,10 +213,10 @@ def fx_quote() -> tuple[float | None, str]:
 
 def classify_event(e: dict) -> tuple[str, str]:
     text = f"{e.get('title','')} {e.get('description','')}".lower()
+    if "bernstein" in text or ("chung" in text and "export" in text) or "충남" in text or "충북" in text or "이천" in text:
+        return "수출 대용지표", "충남(삼성) vs 충북·이천(SK하이닉스) HBM 수출 대용지표 변화"
     if "counterpoint" in e.get("source","").lower() and "market share" in text:
-        return "점유율", "삼성 HBM 점유율 변화"
-    if "bernstein" in text or ("chung" in text and "export" in text) or "충남" in text:
-        return "수출 대용지표", "충남·한국 수출 대용지표 변화"
+        return "점유율", "삼성·SK하이닉스 HBM 점유율 변화"
     if "hbm4e" in text and any(k in text for k in ("qualification", "validation", "mass production", "인증", "검증", "양산")):
         return "HBM4E 검증·양산", "HBM4E 고객 검증·양산 변화"
     if "hbm4" in text and any(k in text for k in ("shipment", "mix", "share", "출하", "비중")):
@@ -245,30 +252,38 @@ def event_summary(e: dict) -> list[str]:
 
 def build_monthly(now: datetime, rate: float | None, fx_basis: str) -> str:
     july_krw = krw_large(2_200_000_000, rate)
+    malaysia_krw = krw_large(1_300_000_000, rate)
     lines = [
-        "🚨 <b>삼성전자 HBM 월간 점검</b>",
+        "🚨 <b>삼성·SK하이닉스 HBM 월간 비교</b>",
         "━━━━━━━━━━━━━━━━",
         "<b>[한눈에 보기]</b>",
-        "• HBM 시장점유율: <b>삼성 33%</b> · SK하이닉스 50% · Micron 18% (2026년 2분기, Counterpoint)",
-        "• 삼성 내부 HBM 출하 중 HBM4 비중: <b>1Q 약 5% → 2Q 약 35%</b> (LS증권 추정)",
-        f"• 충남 7월 HBM 수출 대용지표: <b>약 22억달러 · {july_krw}</b>, 4월 대비 <b>+122%</b> (Bernstein)",
-        "• Bernstein 3Q26 삼성 HBM 매출 추정: <b>QoQ +80%</b>, 기존 전망 대비 <b>+30%</b>",
+        "• 최신 시장점유율: <b>SK하이닉스 50% · 삼성 33% · Micron 18%</b> (2026년 2분기, Counterpoint)",
+        "• 현재 검증된 지역 수출 기준선은 <b>2026년 7월</b>입니다. 8~9월 새 직접 비교값이 확인되면 즉시 갱신합니다.",
         "",
-        "<b>[현재 양산·개발]</b>",
-        "• HBM4: 삼성 공식 기준 <b>양산·상업 출하</b>, NVIDIA Vera Rubin용으로 설계",
-        "• HBM4E: <b>12단 샘플 출하</b> 시작, 최대 <b>16Gbps</b>",
-        "• 다음 강한 확인 신호: <b>HBM4E 고객 인증 완료 → 양산 → 계약물량</b>",
+        "<b>[수출 대용지표 — 7월 기준]</b>",
+        f"• <b>삼성 대용지역 · 충남</b>: 약 <b>22억달러 · {july_krw}</b> / 4월 대비 <b>+122%</b>",
+        "  → 중량당 단가 전월 대비 <b>+21%</b> · 고단가 HBM4 제품혼합 상승 신호",
+        "• <b>SK하이닉스 대용지역 · 충북+이천</b>: 4월 대비 약 <b>-27%</b> · 전월 대비도 약 <b>-27%</b>",
+        "  → Bernstein은 Rubin향 HBM4 출하 시점 지연 영향으로 해석 · <b>수요 붕괴로 단정하지 않음</b>",
+        "• <b>한국 전체 HBM 수출 대용지표</b>: 4월 대비 <b>+13%</b> · 전월 대비 <b>-32%</b> · 전년 대비 <b>+64%</b>",
+        f"• <b>말레이시아향 수출</b>: 약 <b>13억달러 · {malaysia_krw}</b> / 증가분은 주로 SK하이닉스 기여로 Bernstein 분석",
+        "",
+        "<b>[매출·제품혼합]</b>",
+        "• 삼성 3Q26 HBM 매출: Bernstein 추정 <b>QoQ +80%</b> · 기존 전망 대비 <b>+30%</b>",
+        "• 삼성 HBM 출하 내 HBM4 비중: LS증권 추정 <b>1Q 약 5% → 2Q 약 35%</b>",
+        "• 삼성 HBM4: 공식 <b>양산·상업 출하</b> / HBM4E: <b>12단 샘플 출하</b>·최대 <b>16Gbps</b>",
         "",
         "<b>[이번 달 판정]</b>",
-        "• 삼성 HBM은 <b>점유율 회복 + HBM4 믹스 상승 + 수출 대용지표 개선</b>이 동시에 확인된 상태입니다.",
-        "• 다만 충남 수출은 삼성 HBM의 <b>대용지표</b>이지 삼성전자 공식 HBM 매출과 1:1 대응하지 않습니다.",
+        "• 삼성: <b>점유율 회복 + HBM4 제품혼합 상승 + 충남 수출 급증</b>이 같은 방향입니다.",
+        "• SK하이닉스: 7월 지역 수출 약세는 <b>Rubin HBM4 출하 시점 지연</b> 성격으로, 후속 월 출하 회복 여부가 핵심입니다.",
+        "• 지역 수출은 양사 HBM의 <b>대용지표</b>이며 공식 HBM 매출과 1:1로 동일하지 않습니다.",
         "",
         "<b>[다음 알림에서 반드시 갱신]</b>",
-        "• 충남 월간 수출액·중량당 단가",
-        "• 삼성 HBM 실제 매출 또는 신뢰 리서치 추정",
-        "• HBM 시장점유율",
-        "• HBM4/HBM4E 출하 비중·고객 인증·양산",
-        "• NVIDIA·AMD·Broadcom 등 고객별 공급 변화",
+        "• <b>충남 vs 충북·이천</b> 월간 수출액·중량당 단가",
+        "• 8월·9월 분기 후반 출하 회복/지속 여부",
+        "• 삼성·SK하이닉스 HBM 실제 매출 또는 신뢰 리서치 추정",
+        "• HBM 시장점유율 · HBM4/HBM4E 제품혼합",
+        "• NVIDIA Rubin향 공급물량·고객 인증·계약가격",
         "",
         f"<b>환율</b>: {html.escape(fx_basis)}",
         f"<b>기준일</b>: {now.strftime('%Y-%m-%d %H:%M KST')}",
@@ -278,7 +293,6 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str) -> str:
         f"LS증권 인용 {href(LS_HBM4_MIX)}",
     ]
     return "\n".join(lines) + "\n"
-
 
 def build_event_alert(events: list[dict], now: datetime) -> str:
     lines = [
@@ -327,11 +341,15 @@ def main() -> None:
     send_events = sorted(chosen.values(), key=lambda x: x.get("published_at_kst") or "")
 
     rate, fx_basis = fx_quote()
-    monthly_due = state.get("last_monthly_digest") != month_key and now.day >= MONTHLY_DAY
+    monthly_due = (
+        (state.get("last_monthly_digest") != month_key and now.day >= MONTHLY_DAY)
+        or int(state.get("compare_version") or 0) < COMPARE_VERSION
+    )
 
     if monthly_due:
         ALERT.write_text(build_monthly(now, rate, fx_basis), encoding="utf-8")
         state["last_monthly_digest"] = month_key
+        state["compare_version"] = COMPARE_VERSION
         # Baseline current search results so old September articles do not immediately re-alert after catch-up.
         seen.update(e["id"] for e in events)
     elif send_events:
