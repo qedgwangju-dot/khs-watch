@@ -480,11 +480,21 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
 
     previous = state.get("signature") or {}
     last = parse_state_time(state.get("last_alert_at_kst"))
+    last_published = parse_state_time(state.get("last_published_at_kst"))
 
     if not previous:
-        # Legacy state from the old leading-indicator monitor: official decision/conference
-        # is a new regime and should alert once.
+        # Legacy state from the old leading-indicator monitor: the first material event
+        # establishes the new policy-path baseline.
         return True, "BOJ 정책경로 전용 감시로 전환 후 첫 중요 신호"
+
+    # Never walk backwards through older articles inside the same event type.
+    # This prevents several pre-decision Reuters/Nikkei stories from being sent in succession.
+    if (
+        last_published is not None
+        and signal.published <= last_published
+        and signal.event_type == previous.get("event_type")
+    ):
+        return False, "이미 반영한 정책 이벤트보다 오래된 보도"
 
     if signal.event_type != previous.get("event_type"):
         return True, "새 공식 정책 이벤트"
@@ -502,21 +512,36 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     ):
         return True, "표결구도 변화"
 
+    # Guidance wording changes matter for official decisions/conferences/opinion summaries,
+    # but not for every market article paraphrasing the same meeting.
+    official_like = signal.event_type in {
+        "decision",
+        "press_conference",
+        "summary_of_opinions",
+        "official_speech",
+    }
     material_flags = (
         "further_hikes",
         "conditional_pace",
         "accommodative",
         "neutral_rate",
         "inflation_upside",
-        "risk_channels",
     )
     current_signature = signal_signature(signal)
-    if any(current_signature.get(key) != previous.get(key) for key in material_flags):
+    if official_like and any(
+        current_signature.get(key) != previous.get(key) for key in material_flags
+    ):
         return True, "정책 가이던스 핵심 문구 변화"
 
-    if last is None or now - last >= dt.timedelta(minutes=SAME_PATH_COOLDOWN_MINUTES):
-        if signal.event_type in {"decision", "press_conference", "summary_of_opinions", "official_speech"}:
-            return True, "새 BOJ 공식·준공식 정책 업데이트"
+    # Same-path market commentary is a low-priority backup only. Do not repeat it
+    # inside the cooldown window just because wording/context differs.
+    if (
+        signal.event_type == "market_path"
+        and (last is None or now - last >= dt.timedelta(minutes=SAME_PATH_COOLDOWN_MINUTES))
+        and (last_published is None or signal.published > last_published)
+    ):
+        return True, "새 고신뢰 시장 정책경로 재가격"
+
     return False, "정책경로 실질 변화 없음"
 
 
