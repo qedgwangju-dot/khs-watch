@@ -35,6 +35,13 @@ FALLBACK_USD = {
     "xl330": 27.49,
 }
 
+ROBOT_CONTEXT_RE = re.compile(
+    r"테슬라|Tesla|옵티머스|Optimus|피겨\s*AI|Figure\s*AI|Figure\s*0?3|"
+    r"마이크로덕|Microduck|리치\s*미니|Reachy\s*Mini|아틀라스|Atlas|휴머노이드|humanoid|로봇|robot",
+    re.I,
+)
+
+
 
 def _http_text(url: str) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 khs-watch/2.0"})
@@ -199,6 +206,13 @@ def _xl330_block(block: str, rate: float, prices: dict[str, float], fresh: dict[
 
 
 def _unknown_block(block: str) -> str | None:
+    # Do not attach unrelated power/capacity units (e.g. 5 MW) to a robot event.
+    # Robot alerts may legitimately contain robot/unit counts, but MW/GW are only
+    # meaningful when the underlying event is actually infrastructure/ESS.
+    if ROBOT_CONTEXT_RE.search(block):
+        robot_units = [(n, u) for n, u in QTY_RE.findall(block) if u.lower() in {'대', '개'}]
+        if not robot_units:
+            return None
     summary = _qty_summary(block)
     if not summary:
         return None
