@@ -37,13 +37,15 @@ CONFIRM_PATH = pathlib.Path("out/yen_policy_news_telegram_confirmed.json")
 SUMMARY_PATH = pathlib.Path("out/yen_policy_news_watch.md")
 
 RSS_QUERIES = (
+    # Pure BOJ rate-path monitoring is owned by boj-policy-lead-alert.yml.
+    # This generic lane now concentrates on FX intervention / U.S.-Japan coordination
+    # so the same BOJ decision does not generate duplicate Telegram alerts.
     ("en", '"Bank of Japan" yen intervention U.S. Treasury'),
-    ("en", '"Bank of Japan" September rate hike yen'),
     ("en", 'Japan yen joint intervention U.S.'),
     ("en", 'yen rate check Japan intervention'),
-    ("ja", '日銀 9月 利上げ 円 為替介入 米国'),
-    ("ja", '日米 協調介入 円 日銀 利上げ'),
-    ("ja", '共同通信 日銀 9月 利上げ 米国 為替介入'),
+    ("ja", '日銀 円 為替介入 米国'),
+    ("ja", '日米 協調介入 円 日銀'),
+    ("ja", '共同通信 円 為替介入 米国 日銀'),
 )
 
 OFFICIAL_MARKERS = (
