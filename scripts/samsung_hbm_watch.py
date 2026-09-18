@@ -28,7 +28,7 @@ STATUS = OUT / "samsung_hbm_status.md"
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 96
 MONTHLY_DAY = 15
-COMPARE_VERSION = 3
+COMPARE_VERSION = 4
 KCS_ITEM_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTrade.do"
 KCS_REGION_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTradeRegion.do"
 HBM_HSK10 = "8542323000"
@@ -402,6 +402,15 @@ def fetch_kcs_region_month(month: str, region: dict, session=None) -> tuple[dict
 
 
 def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
+    """Fetch the newest public official HBM-related trade pack.
+
+    Exact nationwide MCP/HBM-containing series:
+      HSK10 8542323000 from Korea Customs Service.
+    Public regional direction:
+      HS6 854232 for Chungnam and Chungbuk.
+    Icheon is best-effort only because K-stat stopped public city/county HSK10
+    disclosure from 2026-09-01; city/county HS6 weight is also non-public.
+    """
     errors: list[str] = []
     current = _previous_month(now)
     data: dict[str, dict[str, dict]] = {}
@@ -413,22 +422,29 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
     except Exception as exc:
         errors.append(f"관세청 세션 초기화 실패: {type(exc).__name__}: {exc}")
 
+    required_keys = ("national_hsk10", "samsung_chungnam", "hynix_chungbuk")
+
     for candidate in [current, _month_shift(current, -1), _month_shift(current, -2)]:
-        rows = {}
-        local_errors = []
+        rows: dict[str, dict] = {}
+        local_errors: list[str] = []
+
         national, nerr = fetch_kcs_item_month(candidate, session)
-        if not national:
+        if national:
+            rows["national_hsk10"] = national
+        else:
             local_errors.append(nerr)
-        for key, region in REGIONS.items():
-            row, err = fetch_kcs_region_month(candidate, region, session=session)
+
+        for key in ("samsung_chungnam", "hynix_chungbuk", "hynix_icheon"):
+            row, err = fetch_kcs_region_month(candidate, REGIONS[key], session=session)
             if row:
                 rows[key] = row
             else:
                 local_errors.append(err)
-        if national and len(rows) == len(REGIONS):
+
+        if all(k in rows for k in required_keys):
             selected = candidate
-            rows["national_hsk10"] = national
             data[candidate] = rows
+            errors.extend(local_errors)
             break
         errors.extend(local_errors)
 
@@ -439,55 +455,59 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
     for month in needed:
         if month in data:
             continue
-        rows = {}
+        rows: dict[str, dict] = {}
+
         national, nerr = fetch_kcs_item_month(month, session)
         if national:
             rows["national_hsk10"] = national
         else:
             errors.append(nerr)
-        for key, region in REGIONS.items():
-            row, err = fetch_kcs_region_month(month, region, session=session)
+
+        for key in ("samsung_chungnam", "hynix_chungbuk", "hynix_icheon"):
+            row, err = fetch_kcs_region_month(month, REGIONS[key], session=session)
             if row:
                 rows[key] = row
             else:
                 errors.append(err)
         data[month] = rows
 
-    required_count = len(REGIONS) + 1
-    if any(len(data.get(m, {})) != required_count for m in needed[:3]):
+    # Newest, prior month and 3-month comparison must all have exact national
+    # HSK10 plus both public province series. Icheon is optional.
+    if any(not all(k in data.get(m, {}) for k in required_keys) for m in needed[:3]):
         return None, errors
 
     def combine(month: str) -> dict:
         rows = data[month]
+        nat = rows["national_hsk10"]
         sam = rows["samsung_chungnam"]
         cb = rows["hynix_chungbuk"]
-        ic = rows["hynix_icheon"]
-        hynix_amount = cb["amount_usd"] + ic["amount_usd"]
-        hynix_weight = None
-        if cb.get("weight_kg") is not None and ic.get("weight_kg") is not None:
-            hynix_weight = cb["weight_kg"] + ic["weight_kg"]
-        nat = rows["national_hsk10"]
+        ic = rows.get("hynix_icheon")
         return {
             "national_amount": nat["amount_usd"],
             "national_weight": nat.get("weight_kg"),
-            "samsung_amount": sam["amount_usd"],
-            "samsung_weight": sam.get("weight_kg"),
-            "hynix_amount": hynix_amount,
-            "hynix_weight": hynix_weight,
-            "chungbuk_amount": cb["amount_usd"],
-            "icheon_amount": ic["amount_usd"],
+            "samsung_region_amount": sam["amount_usd"],
+            "samsung_region_weight": sam.get("weight_kg"),
+            "hynix_chungbuk_amount": cb["amount_usd"],
+            "hynix_chungbuk_weight": cb.get("weight_kg"),
+            "icheon_amount": ic["amount_usd"] if ic else None,
+            "icheon_weight": ic.get("weight_kg") if ic else None,
         }
 
-    required_count = len(REGIONS) + 1
-    series = {m: combine(m) for m in needed if len(data.get(m, {})) == required_count}
+    series = {
+        m: combine(m)
+        for m in needed
+        if all(k in data.get(m, {}) for k in required_keys)
+    }
     return {
         "month": selected,
         "series": series,
         "hs": HBM_HSK10,
         "region_hs": REGION_HS6,
         "source_url": KCS_SOURCE_PAGE,
+        "icheon_public_available": "hynix_icheon" in data.get(selected, {}),
         "errors": errors,
     }, errors
+
 
 
 def _pct(cur: float | None, base: float | None) -> float | None:
@@ -563,60 +583,74 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
     qbase = official["series"].get(prev_q, {})
     ybase = official["series"].get(prev_y, {})
 
-    sam_mom = _pct(cur["samsung_amount"], prev.get("samsung_amount"))
-    sam_q = _pct(cur["samsung_amount"], qbase.get("samsung_amount"))
-    sam_y = _pct(cur["samsung_amount"], ybase.get("samsung_amount"))
-    hyn_mom = _pct(cur["hynix_amount"], prev.get("hynix_amount"))
-    hyn_q = _pct(cur["hynix_amount"], qbase.get("hynix_amount"))
-    hyn_y = _pct(cur["hynix_amount"], ybase.get("hynix_amount"))
+    nat_mom = _pct(cur["national_amount"], prev.get("national_amount"))
+    nat_q = _pct(cur["national_amount"], qbase.get("national_amount"))
+    nat_y = _pct(cur["national_amount"], ybase.get("national_amount"))
+    nat_uv = _unit_value(cur["national_amount"], cur.get("national_weight"))
+    nat_prev_uv = _unit_value(prev.get("national_amount"), prev.get("national_weight"))
 
-    sam_uv = _unit_value(cur["samsung_amount"], cur.get("samsung_weight"))
-    sam_prev_uv = _unit_value(prev.get("samsung_amount"), prev.get("samsung_weight"))
-    hyn_uv = _unit_value(cur["hynix_amount"], cur.get("hynix_weight"))
-    hyn_prev_uv = _unit_value(prev.get("hynix_amount"), prev.get("hynix_weight"))
+    sam_mom = _pct(cur["samsung_region_amount"], prev.get("samsung_region_amount"))
+    sam_q = _pct(cur["samsung_region_amount"], qbase.get("samsung_region_amount"))
+    cb_mom = _pct(cur["hynix_chungbuk_amount"], prev.get("hynix_chungbuk_amount"))
+    cb_q = _pct(cur["hynix_chungbuk_amount"], qbase.get("hynix_chungbuk_amount"))
 
-    sam_krw = krw_large(cur["samsung_amount"], rate)
-    hyn_krw = krw_large(cur["hynix_amount"], rate)
+    nat_krw = krw_large(cur["national_amount"], rate)
+    sam_krw = krw_large(cur["samsung_region_amount"], rate)
+    cb_krw = krw_large(cur["hynix_chungbuk_amount"], rate)
 
     lines = [
         "🚨 <b>삼성·SK하이닉스 HBM 월간 비교</b>",
         "━━━━━━━━━━━━━━━━",
         "<b>[공식 원자료 최신월]</b>",
-        f"• 관세청 HSK <b>{official['hs']}</b> 복합구조칩 집적회로 · <b>{month[:4]}년 {int(month[4:])}월</b>",
-        "• 매 실행마다 관세청 원자료에서 직접 다시 조회하며, 이전 달 값을 최신값처럼 재사용하지 않습니다.",
+        f"• 관세청 확정치 <b>{month[:4]}년 {int(month[4:])}월</b>을 직접 재조회했습니다.",
+        "• 과거 숫자를 최신값으로 재사용하지 않고, 새 확정월이 생긴 경우에만 월간 알림을 갱신합니다.",
         "",
-        "<b>[한눈에 보기]</b>",
-        f"• <b>삼성 대용지역 · 충남</b>: {_fmt_usd(cur['samsung_amount'])} · {sam_krw} | 전월 {_fmt_pct(sam_mom)} | 3개월 전 대비 {_fmt_pct(sam_q)} | 전년동월 {_fmt_pct(sam_y)}",
-        f"• <b>SK하이닉스 대용지역 · 충북+이천</b>: {_fmt_usd(cur['hynix_amount'])} · {hyn_krw} | 전월 {_fmt_pct(hyn_mom)} | 3개월 전 대비 {_fmt_pct(hyn_q)} | 전년동월 {_fmt_pct(hyn_y)}",
-        f"  └ 충북 {_fmt_usd(cur['chungbuk_amount'])} + 이천 {_fmt_usd(cur['icheon_amount'])}",
-        "",
-        "<b>[중량당 단가]</b>",
+        "<b>[1. 전국 HBM 포함 MCP — 정확한 HSK10]</b>",
+        f"• HSK <b>{official['hs']}</b> 복합구조칩 집적회로(HBM 포함): <b>{_fmt_usd(cur['national_amount'])} · {nat_krw}</b>",
+        f"• 변화: 전월 <b>{_fmt_pct(nat_mom)}</b> · 3개월 전 대비 <b>{_fmt_pct(nat_q)}</b> · 전년동월 <b>{_fmt_pct(nat_y)}</b>",
     ]
-
-    if sam_uv is not None:
-        lines.append(f"• 삼성 충남: <b>\${sam_uv:,.0f}/kg</b> | 전월 {_fmt_pct(_pct(sam_uv, sam_prev_uv))}")
+    if nat_uv is not None:
+        lines.append(f"• 중량당 단가: <b>\${nat_uv:,.0f}/kg</b> · 전월 <b>{_fmt_pct(_pct(nat_uv, nat_prev_uv))}</b>")
     else:
-        lines.append("• 삼성 충남: <b>공식 중량 확인 불가</b> — 추정하지 않음")
-    if hyn_uv is not None:
-        lines.append(f"• SK하이닉스 충북+이천: <b>\${hyn_uv:,.0f}/kg</b> | 전월 {_fmt_pct(_pct(hyn_uv, hyn_prev_uv))}")
-    else:
-        lines.append("• SK하이닉스 충북+이천: <b>공식 중량 확인 불가</b> — 시군구 중량 비공개 시 대체 추정 금지")
+        lines.append("• 중량당 단가: <b>관세청 중량값 확인 불가</b> — 추정하지 않음")
 
     lines += [
         "",
-        "<b>[해석]</b>",
-        "• 충남은 삼성 HBM, 충북+이천은 SK하이닉스 HBM 출하를 추적하는 <b>지역 대용지표</b>입니다.",
-        "• HSK 8542323000에는 HBM 외 다른 복합구조 메모리도 포함될 수 있어 <b>회사 공식 HBM 매출과 1:1 동일하지 않습니다.</b>",
-        "• 방향은 <b>수출액 + 중량당 단가 + HBM4/HBM4E 제품혼합 + 고객 인증</b>을 함께 확인합니다.",
+        "<b>[2. 지역 방향 — 공개 가능한 HS6]</b>",
+        f"• <b>충남</b> HS {official['region_hs']} 메모리 집적회로: <b>{_fmt_usd(cur['samsung_region_amount'])} · {sam_krw}</b> | 전월 {_fmt_pct(sam_mom)} | 3개월 전 {_fmt_pct(sam_q)}",
+        "  → 삼성 HBM 생산·출하 방향을 보는 <b>보조 지역지표</b>",
+        f"• <b>충북</b> HS {official['region_hs']} 메모리 집적회로: <b>{_fmt_usd(cur['hynix_chungbuk_amount'])} · {cb_krw}</b> | 전월 {_fmt_pct(cb_mom)} | 3개월 전 {_fmt_pct(cb_q)}",
+        "  → SK하이닉스 청주 방향을 보는 <b>보조 지역지표</b>",
+    ]
+
+    if official.get("icheon_public_available") and cur.get("icheon_amount") is not None:
+        lines += [
+            f"• <b>이천</b> HS {official['region_hs']}: {_fmt_usd(cur['icheon_amount'])}",
+            "  → 공개 원자료가 확인된 경우에만 충북과 함께 표시합니다.",
+        ]
+    else:
+        lines += [
+            "• <b>이천</b>: 현재 공개 원자료 자동조회에서 수치를 확인하지 못해 <b>0으로 처리하거나 추정하지 않습니다.</b>",
+            "  → 2026년 9월 1일부터 K-stat의 시·군·구 HSK 10단위 품목통계는 전체 비공개이며, HS 2·4·6 중량도 비공개입니다.",
+        ]
+
+    lines += [
         "",
-        "<b>[현재 기준선]</b>",
-        "• 최신 시장점유율: <b>SK하이닉스 50% · 삼성 33% · Micron 18%</b> (2026년 2분기, Counterpoint)",
-        "• 삼성 HBM4: 공식 <b>양산·상업 출하</b> / HBM4E: <b>12단 샘플 출하</b>",
+        "<b>[3. 회사별 정밀 대용지표]</b>",
+        "• 회사별 HBM 정밀 비교는 <b>충남 HSK10 vs 충북+이천 HSK10</b>을 사용한 Bernstein 등 신뢰 리서치가 새로 공개될 때 별도로 갱신합니다.",
+        "• 마지막 확인 기준선(2026년 7월): 충남은 4월 대비 <b>+122%</b>, 충북+이천은 약 <b>-27%</b>였습니다.",
+        "• 이 기준선을 8월·9월 현재값처럼 재사용하지 않습니다.",
+        "",
+        "<b>[판정]</b>",
+        "• <b>전국 HSK10</b>은 HBM 포함 MCP 업황의 가장 정밀한 공개 공식 월간축입니다.",
+        "• <b>지역 HS6</b>은 메모리 전체 범주여서 삼성·SK하이닉스 HBM 매출과 1:1 대응하지 않습니다.",
+        "• 따라서 HBM 방향 판정은 전국 HSK10 + 지역 방향 + HBM4/HBM4E 제품혼합 + 고객 인증·실제 출하를 함께 봅니다.",
         "",
         "<b>[다음 알림]</b>",
-        "• 관세청에 새 월 HSK 8542323000 지역별 확정치가 생기는 즉시",
-        "• 충남 vs 충북+이천 수출액 방향이 반전하거나 격차가 크게 변할 때",
-        "• 중량당 단가가 급변해 HBM4/HBM4E 제품혼합 변화가 의심될 때",
+        "• 관세청에 새 월 HSK 8542323000 확정치가 생기는 즉시",
+        "• 전국 HBM 포함 MCP 수출액·중량당 단가의 방향이 크게 바뀔 때",
+        "• 충남·충북 지역 메모리 방향이 반전할 때",
+        "• Bernstein 등에서 충남 vs 충북+이천 HSK10 정밀 비교가 새로 확인될 때",
         "• 삼성·SK하이닉스 HBM 매출·점유율·NVIDIA 공급물량이 새로 확인될 때",
         "",
         f"<b>환율</b>: {html.escape(fx_basis)}",
@@ -625,6 +659,8 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         f"Counterpoint {href(COUNTERPOINT_HBM_SHARE)} · Bernstein 방법론 참고 {href(BERNSTEIN_EXPORT)}",
     ]
     return "\n".join(lines) + "\n"
+
+
 
 def build_event_alert(events: list[dict], now: datetime) -> str:
     lines = [
