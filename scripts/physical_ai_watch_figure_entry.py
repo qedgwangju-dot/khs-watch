@@ -233,7 +233,7 @@ def _figure_date_from_text(text: str) -> dt.datetime | None:
 def _fetch_figure_official_news() -> list[dict]:
     index = legacy._request_text(FIGURE_NEWS_URL)
     slugs: list[str] = []
-    for m in re.finditer(r'href=["\\'](/news/[A-Za-z0-9_-]+)["\\']', index, re.I):
+    for m in re.finditer(r"href=['\\\"](/news/[A-Za-z0-9_-]+)['\\\"]", index, re.I):
         path = m.group(1)
         if path == '/news' or path in slugs:
             continue
