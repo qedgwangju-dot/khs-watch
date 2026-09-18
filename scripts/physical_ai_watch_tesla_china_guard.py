@@ -228,7 +228,7 @@ def meaning(cat: str) -> str:
     if cat == 'Optimus 천 단위 양산 발주':
         return ('수백 대 시험 물량에서 천 단위 부품 발주로 주문 규모가 한 단계 올라간 공급망 신호입니다. '
                 '실제 부품사별 발주 수량·납기·반복 주문이 확인되면 양산 매출 가시성이 높아집니다.')
-        if cat == 'Optimus 공급업체 양산 심사 실제 개시':
+    if cat == 'Optimus 공급업체 양산 심사 실제 개시':
         return ('기존 약 5,000대 규모 공급망 주문의 후속으로, 공급업체 심사가 예정·방문 단계에서 실제 양산 심사 개시로 넘어간 신호입니다. '
                 '심사 통과·정식 공급업체 선정·최종 발주 배정·실제 출하 순으로 다음 상태 변화를 추적합니다.')
     if cat == 'Optimus 공급업체 심사·양산 준비':
@@ -302,6 +302,16 @@ def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')}"
     if _is_tesla_supply_text(text):
         stage = _stage(text)
+        if stage == 'actual_weekly_production':
+            m = re.search(r'(?<!\d)(\d{2,5})(?:\s*台|\s*대|\s*(?:per\s+week|weekly))', text, re.I)
+            qty = m.group(1) if m else 'unknown'
+            return hashlib.sha256(f'tesla-optimus|actual-weekly-production|{qty}'.encode()).hexdigest()
+        if stage == 'weekly_capacity_target':
+            m = re.search(r'(?<!\d)(\d{2,5})(?:\s*台|\s*대|\s*(?:per\s+week|weekly))', text, re.I)
+            qty = m.group(1) if m else 'unknown'
+            return hashlib.sha256(f'tesla-optimus|weekly-capacity-target|{qty}'.encode()).hexdigest()
+        if stage == 'supplier_audit_started':
+            return hashlib.sha256(b'tesla-optimus|2026-09-17|supplier-production-audit-started').hexdigest()
         if stage == 'scale_order_audit':
             return hashlib.sha256(b'tesla-optimus|scale-order-5000|supplier-audit').hexdigest()
         if stage == 'scale_order':
