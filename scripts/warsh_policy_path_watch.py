@@ -82,7 +82,7 @@ def probability_from_row(prob_cell, change_bp):
 
 def parse_snapshot():
     raw, final=fetch(FEDWATCH_URL); text=clean_text(raw)
-    m=re.search(r'Current EFFR:\s*([\d.]+)%',text,re.I)
+    m=re.search(r'Current EFFR(?:\s+estimate)?\s*:\s*([\d.]+)\s*%',text,re.I)
     if not m:raise RuntimeError('현재 유효 연방기금금리 파싱 실패')
     effr=float(m.group(1)); p=TableParser(); p.feed(raw); meetings=[]
     for table in p.tables:
