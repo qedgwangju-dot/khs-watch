@@ -245,7 +245,9 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
+          import datetime as dt
           import json, os, pathlib, urllib.parse, urllib.request
+          from zoneinfo import ZoneInfo
 
           token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
           chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
@@ -272,7 +274,33 @@ jobs:
               result = json.loads(r.read().decode("utf-8"))
           if not result.get("ok"):
               raise RuntimeError(f"Telegram rejected Samsung HBM message: {result}")
-          print(f"samsung_hbm_delivery_confirmed=true bot=@{username} message_id={result.get('result',{}).get('message_id')}")
+          confirmed = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/samsung_hbm_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"samsung_hbm_delivery_confirmed=true bot=@{username} message_id={confirmed['message_id']}")
+          PY
+
+      - name: Persist Samsung HBM delivery confirmation
+        if: success() && hashFiles('out/samsung_hbm_telegram_confirmed.json') != ''
+        run: |
+          python - <<'PY'
+          import json, pathlib
+
+          state_path = pathlib.Path("data/samsung_hbm_watch_state.json")
+          confirmed_path = pathlib.Path("out/samsung_hbm_telegram_confirmed.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          confirmed = json.loads(confirmed_path.read_text(encoding="utf-8"))
+          state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
+          state["telegram_message_id"] = confirmed.get("message_id")
+          state["bot_username"] = confirmed.get("bot_username")
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
 
       - name: Persist initial baseline
@@ -327,5 +355,6 @@ jobs:
             out/skhynix_us_memory_alert.html
             out/samsung_hbm_status.md
             out/samsung_hbm_alert.html
+            out/samsung_hbm_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
