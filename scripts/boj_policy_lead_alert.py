@@ -46,6 +46,7 @@ BOJ_RSS = "https://www.boj.or.jp/en/rss/whatsnew.xml"
 BOJ_STATEMENTS_2026 = "https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm"
 REUTERS_BOJ_DECISION = "https://www.reuters.com/world/asia-pacific/boj-raises-interest-rates-31-year-high-widely-expected-move-2026-09-18/"
 REUTERS_BOJ_REACTION = "https://www.reuters.com/world/asia-pacific/view-investors-react-boj-raising-interest-rates-31-year-high-2026-09-18/"
+REUTERS_BOJ_PRESS_CONFERENCE = "https://www.reuters.com/business/finance/boj-governor-uedas-comments-news-conference-2026-09-18/"
 MOF_JGB_YIELDS = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
 CBOE_JYVIX = "https://www.cboe.com/us/indices/dashboard/JYVIX/"
 TRUSTED = {"Reuters", "Bloomberg", "Nikkei Asia", "Financial Times", "Bank of Japan"}
@@ -149,6 +150,7 @@ FURTHER_HIKES = (
     "additional rate hikes",
     "raise interest rates further",
     "keep raising",
+    "future rate hikes",
 )
 CONDITIONAL_PACE = (
     "timing and pace",
@@ -160,6 +162,11 @@ CONDITIONAL_PACE = (
     "while examining",
     "carefully monitor",
     "carefully examining",
+    "no pre-set idea",
+    "no preset idea",
+    "each policy meeting",
+    "depends on how price conditions develop",
+    "various possibilities",
 )
 ACCOMMODATIVE = (
     "accommodative financial conditions",
@@ -179,6 +186,8 @@ INFLATION_UPSIDE = (
     "upside risks",
     "inflation expectations",
     "underlying inflation",
+    "overshooting 2%",
+    "overshooting 2 percent",
 )
 RISK_CHANNELS = (
     "foreign exchange",
@@ -234,9 +243,11 @@ EXPECTED_MOVE_MARKERS = (
 HAWKISH_TAIL_50BP_MARKERS = (
     "50 basis-point",
     "50 basis point",
+    "50-bp",
     "50bp",
     "half-point",
     "half point",
+    "back-to-back rate hikes",
 )
 INFLATION_SPILLOVER_MARKERS = (
     "spill over into consumer prices",
@@ -256,6 +267,12 @@ STABILIZE_UNDERLYING_2_MARKERS = (
     "stabilise underlying cpi inflation at a level around 2 percent",
     "stabilize underlying inflation at a level around 2 percent",
     "stabilise underlying inflation at a level around 2 percent",
+    "underlying inflation stabilises at 2%",
+    "underlying inflation stabilizes at 2%",
+    "underlying inflation stabilises at 2 percent",
+    "underlying inflation stabilizes at 2 percent",
+    "stabilise underlying inflation at 2%",
+    "stabilize underlying inflation at 2%",
 )
 OUTLOOK_DISSENT_MARKERS = (
     "opposed the description regarding the outlook for prices",
@@ -525,6 +542,11 @@ def fetch_direct_context(now: dt.datetime) -> list[Item]:
             REUTERS_BOJ_REACTION,
             dt.datetime(2026, 9, 18, 12, 23, tzinfo=KST),
         ),
+        (
+            "BOJ Governor Ueda's comments at news conference - Reuters",
+            REUTERS_BOJ_PRESS_CONFERENCE,
+            dt.datetime(2026, 9, 18, 15, 49, tzinfo=KST),
+        ),
     )
     out: list[Item] = []
     cutoff = now - dt.timedelta(hours=MAX_AGE_HOURS)
@@ -785,6 +807,13 @@ def classify(item: Item) -> Signal | None:
     if kind == "decision" and bp is not None and bp <= 25 and (conditional or accommodative):
         level = 1
         note = "25bp 인상과 추가 긴축 방향은 확인됐지만 시점·속도는 조건부 — 점진 경로 유지"
+
+    # Ueda explicitly left 50bp/back-to-back hikes possible, but also said there is
+    # no preset cadence and decisions depend on inflation data. Treat that as a
+    # conditional tail, not as an accelerated base path.
+    if kind == "press_conference" and hawkish_tail_50bp and conditional:
+        level = 1
+        note = "50bp·연속 인상 가능성을 배제하지 않았지만 고정된 인상 간격은 없다고 명시 — 조건부 꼬리위험, 기본경로 가속 확정 아님"
 
     # Official source is authoritative for existence of the event, but may contain only a title in RSS.
     key_material = (
@@ -1544,7 +1573,9 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     else:
         base_expectation = "고신뢰 원문에서 기본 예상 수치 추가 확인 필요"
 
-    if signal.hawkish_tail_50bp and signal.hike_bp is not None and signal.hike_bp < 50:
+    if signal.event_type == "press_conference" and signal.hawkish_tail_50bp:
+        tail_result = "50bp·연속 인상 가능성 배제하지 않음 — 조건부, 확정 경로 아님"
+    elif signal.hawkish_tail_50bp and signal.hike_bp is not None and signal.hike_bp < 50:
         tail_result = "50bp 매파 꼬리위험 미실현"
     elif signal.dissent_direction == "larger_hike":
         tail_result = "대폭 인상 요구가 실제 위원회 분열로 확인"
@@ -1557,6 +1588,19 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         f"- 매파 꼬리위험: {tail_result}",
         f"- 상대 판정: {expectation_text}",
     ]
+
+    if signal.event_type == "press_conference":
+        context_title = "우에다 회견 정책경로"
+        context_lines = [
+            f"- 향후 인상 방향: {'추가 인상 가능성 열어둠' if signal.further_hikes else '명시적 추가 인상 경로 확인 전'}",
+            f"- 인상 간격: {'사전 고정 경로 없음 · 매 회의 데이터로 판단' if signal.conditional_pace else '추가 확인 필요'}",
+            f"- 50bp·연속 인상: {tail_result}",
+            f"- 중립·종착금리: {'정확한 수준 특정 어렵다고 언급' if signal.neutral_rate else '새 명시적 언급 미확인'}",
+            f"- 물가 정책국면: {'2% 부근 안정·상방이탈 방지 단계' if signal.stabilize_underlying_around_2 else '추가 확인 필요'}",
+        ]
+    else:
+        context_title = "시장 기대 대비 정책 서프라이즈"
+        context_lines = surprise_lines
 
     inflation_regime = [
         f"- 기업 간 가격상승 → 소비자물가 전이: {'시작 확인' if signal.inflation_spillover else '새 명시적 변화 미확인'}",
@@ -1591,8 +1635,8 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         f"- 시장 기대 대비: {expectation_text}",
         f"- 변화 사유: {reason}",
         "",
-        "시장 기대 대비 정책 서프라이즈",
-        *surprise_lines,
+        context_title,
+        *context_lines,
         "",
         "위원회 분열",
         *committee,
