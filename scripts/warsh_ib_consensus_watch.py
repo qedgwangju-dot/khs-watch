@@ -17,6 +17,7 @@ CHAT_ID = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
 EXPECTED_BOT = (os.getenv('EXPECTED_BOT_USERNAME') or 'khs8879887988798879_bot').strip().lstrip('@')
 FORCE = os.getenv('FORCE_NOTIFY', '0') == '1'
 UA = 'Mozilla/5.0 (compatible; khs-watch/3.0; +https://github.com/qedgwangju-dot/khs-watch)'
+PRE_FOMC_CUTOFF_UTC = datetime(2026, 9, 16, 18, 0, tzinfo=timezone.utc)
 
 # Baseline is the 2026-09-15 WSJ table supplied for this watch.
 BASELINE = {
@@ -224,6 +225,9 @@ def message(title, forecasts, changes, candidate=False):
 
 
 def main():
+    if datetime.now(timezone.utc) >= PRE_FOMC_CUTOFF_UTC:
+        print(json.dumps({'pre_fomc_closed': True, 'cutoff_utc': PRE_FOMC_CUTOFF_UTC.isoformat(), 'sent': []}, ensure_ascii=False))
+        return
     state=load_state()
     if not state:
         state={'baseline_date':'2026-09-15','baseline_source':'WSJ 표','forecasts':BASELINE,'candidate_seen':[]}
