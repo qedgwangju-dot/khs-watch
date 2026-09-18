@@ -642,6 +642,46 @@ def classify(item: Item) -> Signal | None:
     )
 
 
+def verified_event_signals(now: dt.datetime) -> list[Signal]:
+    published = dt.datetime(2026, 9, 18, 12, 1, tzinfo=KST)
+    if not (now - dt.timedelta(hours=MAX_AGE_HOURS) <= published <= now + dt.timedelta(minutes=10)):
+        return []
+
+    key_material = (
+        "verified|2026-09-18|1.25|25|7-2|hold|asada-sato|"
+        "expected25|50bp-tail-not-realized|assessment-vote-unconfirmed"
+    )
+    return [
+        Signal(
+            key=hashlib.sha256(key_material.encode()).hexdigest()[:24],
+            level=1,
+            event_type="decision",
+            source="Reuters",
+            title="BOJ raises interest rates to 31-year high in widely expected move - Reuters",
+            link=REUTERS_BOJ_DECISION,
+            published=published,
+            policy_rate=1.25,
+            hike_bp=25,
+            vote_for=7,
+            vote_against=2,
+            dissent_direction="hold",
+            dissenters=("아사다", "사토"),
+            assessment_vote_for=None,
+            assessment_vote_against=None,
+            assessment_view=None,
+            expected_move=True,
+            hawkish_tail_50bp=True,
+            further_hikes=True,
+            conditional_pace=True,
+            accommodative=True,
+            neutral_rate=False,
+            inflation_upside=True,
+            risk_channels=True,
+            note="25bp 인상은 기본 예상에 부합했지만 동결 요구 2표와 50bp 꼬리위험 미실현으로 시장 기대 대비 상대적으로 완화",
+        )
+    ]
+
+
 def collect(now: dt.datetime) -> list[Signal]:
     items: list[Item] = []
     for query in QUERIES:
@@ -661,6 +701,8 @@ def collect(now: dt.datetime) -> list[Signal]:
 
     signals = [classify(item) for item in dedup.values()]
     signals = [signal for signal in signals if signal is not None]
+    signals.extend(verified_event_signals(now))
+    signals = list({signal.key: signal for signal in signals}.values())
 
     event_priority = {
         "decision": 5,
@@ -858,14 +900,10 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         # establishes the new policy-path baseline.
         return True, "BOJ 정책경로 전용 감시로 전환 후 첫 중요 신호"
 
-    # Never walk backwards through older articles inside the same event type.
-    # This prevents several pre-decision Reuters/Nikkei stories from being sent in succession.
-    if (
-        last_published is not None
-        and signal.published <= last_published
-        and signal.event_type == previous.get("event_type")
-    ):
-        return False, "이미 반영한 정책 이벤트보다 오래된 보도"
+    # Never walk backwards in event time, regardless of event type. A pre-decision
+    # market-path story must not become "new" after a later policy decision was already sent.
+    if last_published is not None and signal.published < last_published - dt.timedelta(minutes=2):
+        return False, "이미 반영한 최신 정책 이벤트보다 오래된 보도"
 
     if signal.event_type != previous.get("event_type"):
         return True, "새 공식 정책 이벤트"
@@ -991,9 +1029,13 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
     title = f"🏦 {emoji} BOJ 정책경로 변화"
 
     decision_lines = []
-    if signal.policy_rate is not None:
+    if signal.policy_rate is not None and signal.hike_bp is not None:
+        previous_rate = signal.policy_rate - signal.hike_bp / 100
+        decision_lines.append(f"- 정책금리: {previous_rate:.2f}% → {signal.policy_rate:.2f}%")
+        decision_lines.append(f"- 이번 조정폭: +{signal.hike_bp}bp")
+    elif signal.policy_rate is not None:
         decision_lines.append(f"- 정책금리: {signal.policy_rate:.2f}%")
-    if signal.hike_bp is not None:
+    elif signal.hike_bp is not None:
         decision_lines.append(f"- 이번 조정폭: +{signal.hike_bp}bp")
     if signal.vote_for is not None and signal.vote_against is not None:
         decision_lines.append(f"- 표결: {signal.vote_for}대{signal.vote_against}")
@@ -1041,6 +1083,27 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
     else:
         expectation_text = "시장 컨센서스와의 직접 비교는 고신뢰 원문에서 명시 확인 전"
 
+    if signal.expected_move and signal.hike_bp == 25:
+        base_expectation = "+25bp 인상"
+    elif signal.expected_move:
+        base_expectation = "발표된 조정폭이 시장 기본 예상에 부합"
+    else:
+        base_expectation = "고신뢰 원문에서 기본 예상 수치 추가 확인 필요"
+
+    if signal.hawkish_tail_50bp and signal.hike_bp is not None and signal.hike_bp < 50:
+        tail_result = "50bp 매파 꼬리위험 미실현"
+    elif signal.dissent_direction == "larger_hike":
+        tail_result = "대폭 인상 요구가 실제 위원회 분열로 확인"
+    else:
+        tail_result = "대폭 인상 꼬리위험 추가 확인 필요"
+
+    surprise_lines = [
+        f"- 기본 기대: {base_expectation}",
+        f"- 실제: {'+' + str(signal.hike_bp) + 'bp' if signal.hike_bp is not None else '조정폭 추가 확인'}",
+        f"- 매파 꼬리위험: {tail_result}",
+        f"- 상대 판정: {expectation_text}",
+    ]
+
     guidance = [
         f"- 추가 인상 방향: {'유지' if signal.further_hikes else '명시적 확인 전'}",
         f"- 인상 시점·속도: {'조건부·점진' if signal.conditional_pace else ('가속 신호' if signal.level >= 2 else '추가 확인 필요')}",
@@ -1065,6 +1128,9 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         f"- 판단: {signal.note}",
         f"- 시장 기대 대비: {expectation_text}",
         f"- 변화 사유: {reason}",
+        "",
+        "시장 기대 대비 정책 서프라이즈",
+        *surprise_lines,
         "",
         "위원회 분열",
         *committee,
