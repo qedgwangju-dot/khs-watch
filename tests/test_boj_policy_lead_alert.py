@@ -345,7 +345,7 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             dt.datetime(2026, 9, 18, 13, 0, tzinfo=KST),
             None,
         )
-        self.assertIn("위험자산 의미: 부담 완화 가능", body)
+        self.assertIn("시장 의미 | 부담 완화 가능", body)
         self.assertIn("USD/JPY · Nikkei 225 · Nasdaq 100 선물 · JGB 2년물 · FX 변동성", body)
         self.assertTrue(title.startswith("🏦"))
 
