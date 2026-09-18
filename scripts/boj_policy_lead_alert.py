@@ -1802,6 +1802,28 @@ def main() -> int:
         else:
             market_missing.append(label)
 
+    runtime_health = {
+        "official_statement_detail_verified": bool(top.official_statement_detail_verified),
+        "top_event_type": top.event_type,
+        "top_source": top.source,
+        "policy_rate": top.policy_rate,
+        "hike_bp": top.hike_bp,
+        "vote": [top.vote_for, top.vote_against],
+        "dissent_direction": top.dissent_direction,
+        "dissenters": list(top.dissenters),
+        "outlook_dissenters": list(top.outlook_dissenters),
+        "market": {
+            "usd_jpy": market.get("usd_jpy"),
+            "nikkei": market.get("nikkei"),
+            "nasdaq_future": market.get("nasdaq_future"),
+            "jgb2": market.get("jgb2"),
+            "usd_jpy_event": market.get("usd_jpy_event"),
+            "nikkei_event": market.get("nikkei_event"),
+            "nasdaq_future_event": market.get("nasdaq_future_event"),
+        },
+    }
+    print("BOJ_RUNTIME_HEALTH=" + json.dumps(runtime_health, ensure_ascii=False, default=str))
+
     WATCH.write_text(
         (
             f"BOJ 정책경로 변화 감지: 후보 {LEVEL_EMOJI[top.level]} {LEVEL_LABEL[top.level]}\n"
