@@ -1678,10 +1678,27 @@ def main() -> int:
             break
 
     top = signals[0]
+    market_ok = []
+    market_missing = []
+    for key, label in (
+        ("usd_jpy", "USD/JPY"),
+        ("nikkei", "Nikkei"),
+        ("nasdaq_future", "Nasdaq선물"),
+        ("jgb2", "JGB2년"),
+    ):
+        if market.get(key):
+            market_ok.append(label)
+        else:
+            market_missing.append(label)
+
     WATCH.write_text(
         (
             f"BOJ 정책경로 변화 감지: 후보 {LEVEL_EMOJI[top.level]} {LEVEL_LABEL[top.level]}\n"
             f"최신 이벤트: {EVENT_LABEL.get(top.event_type, top.event_type)} / {top.source}\n"
+            f"공식 성명 상세 검증: {'완료' if top.official_statement_detail_verified else '대기'}\n"
+            f"시장 교차확인: {', '.join(market_ok) or '없음'}"
+            + (f" / 확인 불가: {', '.join(market_missing)}" if market_missing else "")
+            + "\n"
             f"판정: {'알림' if selected else '미알림'}"
             + (f" — {selected_reason}" if selected else " — 정책경로 실질 변화 없음")
             + f"\n조회: {label_time(now)}\n"
