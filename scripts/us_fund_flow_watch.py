@@ -99,6 +99,22 @@ def clean_text(x):
     return re.sub(r"\s+", " ", BeautifulSoup(str(x), "html.parser").get_text(" ", strip=True)).strip()
 
 
+def semantic_core(x):
+    """Only economically meaningful fields participate in duplicate detection."""
+    return {
+        "source": x.get("source"),
+        "kind": x.get("kind"),
+        "period": x.get("period"),
+        "metrics": x.get("metrics") or {},
+    }
+
+
+def semantic_fingerprint(x):
+    return hashlib.sha256(
+        json.dumps(semantic_core(x), sort_keys=True, ensure_ascii=False).encode()
+    ).hexdigest()
+
+
 def fetch_fx():
     key = (os.getenv("ECOS_API_KEY") or "").strip()
     if not key:
@@ -379,8 +395,8 @@ def extract_article_body(url):
                                 bodies.append(str(q["articleBody"]))
             except Exception:
                 pass
-        body = max(bodies, key=len) if bodies else clean_text(r.text)
-        return r.url, body
+        body = max(bodies, key=len) if bodies else clean_text(raw_html)
+        return final_url, body
     except Exception:
         return url, ""
 
@@ -529,8 +545,19 @@ for name, fn in [
 updates = []
 for x in results:
     key = f"{x['source']}|{x['kind']}"
-    if state.get("seen", {}).get(key) != x["fingerprint"]:
-        updates.append(x)
+    current_fp = semantic_fingerprint(x)
+    x["fingerprint"] = current_fp
+
+    # Backward-compatible migration: old state may have fingerprints that included URL/title metadata.
+    old_value = state.get("values", {}).get(key)
+    old_semantic = semantic_fingerprint(old_value) if isinstance(old_value, dict) else None
+    old_seen = state.get("seen", {}).get(key)
+
+    # A source URL/domain change, article title edit, published timestamp change, or parser metadata
+    # must NOT create a Telegram alert when period + metrics are identical.
+    if old_semantic == current_fp or old_seen == current_fp:
+        continue
+    updates.append(x)
 
 ici = next((x for x in results if x["kind"] == "combined"), None)
 ici_mmf = next((x for x in results if x["kind"] == "mmf"), None)
@@ -577,6 +604,48 @@ if ici and ici_mmf:
     if d is not None and ch is not None:
         interpret.append("ICI 조합: " + flow_direction(d, ch))
 
+def direction_word(v, up="증가", down="감소"):
+    if v is None:
+        return "확인 대기"
+    if v > 0:
+        return up
+    if v < 0:
+        return down
+    return "변화 없음"
+
+
+stock_signals = []
+if ici and ici["metrics"].get("domestic") is not None:
+    stock_signals.append(("ICI", ici["metrics"]["domestic"]))
+if bofa and bofa["metrics"].get("us_equity_bn") is not None:
+    stock_signals.append(("BofA/EPFR", bofa["metrics"]["us_equity_bn"]))
+if lipper and lipper["metrics"].get("us_equity_bn") is not None:
+    stock_signals.append(("LSEG Lipper", lipper["metrics"]["us_equity_bn"]))
+
+mmf_change = ici_mmf["metrics"].get("weekly_change_bn") if ici_mmf else None
+margin_change = finra["metrics"].get("margin_debt_mom_bn") if finra else None
+
+if cross:
+    overall_easy = (
+        "주식형 펀드 방향이 출처마다 엇갈립니다. "
+        "MMF와 마진부채는 별도 신호로 보되, '미국 증시로 돈이 일방적으로 몰린다'고 단정하지 않습니다."
+    )
+elif stock_signals and all(v > 0 for _, v in stock_signals) and mmf_change is not None and mmf_change < 0:
+    overall_easy = (
+        "확인 가능한 주식형 자금은 유입이고 MMF는 감소했습니다. "
+        "위험자산 쪽으로 기우는 신호지만 MMF 자금이 그대로 주식으로 이동했다고 보지는 않습니다."
+    )
+elif stock_signals and all(v < 0 for _, v in stock_signals) and mmf_change is not None and mmf_change > 0:
+    overall_easy = "주식형 자금은 유출이고 MMF는 증가해 위험회피·현금성 주차 강화 쪽입니다."
+elif not stock_signals and mmf_change is not None and mmf_change < 0 and margin_change is not None and margin_change > 0:
+    overall_easy = (
+        "현금성 주차자금(MMF)은 줄고 레버리지는 늘었습니다. "
+        "공격성이 높아지는 쪽이지만, 실제 주식형 펀드 유입은 아직 확인되지 않아 위험선호 확정으로 보지 않습니다."
+    )
+else:
+    overall_easy = "자금 방향이 혼재하거나 비교 가능한 최신값이 부족해 한 방향으로 단정하지 않습니다."
+
+
 status_lines = [
     "# US Fund Flow Watch",
     "",
@@ -595,9 +664,37 @@ force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
 if updates or force:
     body = [
         "🇺🇸 <b>[미국 증시 자금흐름 추적 | 신규 변화]</b>",
-        "출처별 모집단이 달라 수치를 섞지 않고 실제 방향을 각각 자동 해석합니다.",
         "",
+        "<b>한눈에 보기</b>",
     ]
+
+    if ici_mmf:
+        ch = ici_mmf["metrics"].get("weekly_change_bn")
+        body.append(
+            f"• 현금성 대기자금(MMF): {fmt_usd_bn_kr(ch, fx)} → "
+            f"{'감소' if ch is not None and ch < 0 else '증가' if ch is not None and ch > 0 else '변화 없음'}"
+        )
+    if finra:
+        md = finra["metrics"].get("margin_debt_mom_bn")
+        body.append(
+            f"• 레버리지(마진부채): {fmt_usd_bn_kr(md, fx)} 전월비 → "
+            f"{'빚투 확대' if md is not None and md > 0 else '빚투 축소' if md is not None and md < 0 else '변화 제한'}"
+        )
+    if stock_signals:
+        stock_text = " / ".join(
+            f"{name} {fmt_usd_bn_kr(value, fx)}({'유입' if value > 0 else '유출' if value < 0 else '보합'})"
+            for name, value in stock_signals
+        )
+        body.append("• 미국 주식형: " + stock_text)
+    else:
+        body.append("• 미국 주식형: 최신 비교값 자동 확인 대기")
+
+    body += [
+        f"→ <b>종합</b>: {html.escape(overall_easy)}",
+        "",
+        "<b>이번에 실제로 바뀐 값</b>",
+    ]
+
     selected = updates if updates else results
     for x in selected:
         body += [
@@ -617,11 +714,15 @@ if updates or force:
     if not cross:
         body.append("• 출처 간 미국 주식 방향 충돌은 확인되지 않았거나 동시 비교 가능한 값이 부족합니다.")
 
-    # Data quality status is part of the alert when some lanes failed.
+    # Keep technical parser errors in the workflow status only. Telegram gets simple availability labels.
     if errors:
-        body += ["", "<b>확인 제한</b>"]
-        for e in errors[:5]:
-            body.append("• " + html.escape(e))
+        body += ["", "<b>확인 대기</b>"]
+        seen_labels = set()
+        for e in errors:
+            label = e.split(":", 1)[0].strip()
+            if label and label not in seen_labels:
+                seen_labels.add(label)
+                body.append(f"• {html.escape(label)}: 최신값 자동 수집 재확인 중")
 
     body += [
         "",
@@ -630,6 +731,7 @@ if updates or force:
         "• ICI·BofA/EPFR·LSEG Lipper는 모집단이 달라 합산·평균하지 않음",
         "• FINRA 마진부채는 월간 레버리지 확인용으로 주간 펀드 흐름과 기간을 섞지 않음",
         "• MMF 유출액이 그대로 주식으로 이동했다고 단정하지 않음",
+        "• 같은 기준기간·같은 수치면 원천 URL이나 문구가 바뀌어도 중복 알림하지 않음",
     ]
     if fx:
         body.append(f"• 원화 환산: 한국은행 ECOS USD/KRW {fx['usdkrw']:,.2f} ({fx['date']})")
