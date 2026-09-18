@@ -349,6 +349,50 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertFalse(ok)
         self.assertIn("오래된 보도", reason)
 
+    def test_provisional_statement_detail_does_not_alert_before_official_verification(self):
+        signal = verified_event_signals(dt.datetime(2026, 9, 18, 14, 0, tzinfo=KST))[0]
+        previous = signal_signature(signal)
+        previous["outlook_dissenters"] = []
+        previous["outlook_dissent_view"] = None
+        state = {
+            "last_signal_key": "older-provisional-key",
+            "last_alert_at_kst": "2026-09-18T13:00:00+09:00",
+            "last_published_at_kst": "2026-09-18T12:23:00+09:00",
+            "signature": previous,
+        }
+        ok, reason = should_alert(
+            signal,
+            state,
+            dt.datetime(2026, 9, 18, 14, 0, tzinfo=KST),
+        )
+        self.assertFalse(ok)
+        self.assertEqual(reason, "정책경로 실질 변화 없음")
+
+    def test_official_statement_verification_change_alerts(self):
+        official = classify(
+            self.mk(
+                "Statement on Monetary Policy",
+                "The Bank will continue to raise the policy interest rate while examining the "
+                "timing and pace. Price pressures have started to spill over into consumer prices.",
+                source="Bank of Japan",
+            )
+        )
+        previous = signal_signature(official)
+        previous["official_statement_detail_verified"] = False
+        state = {
+            "last_signal_key": "provisional-key",
+            "last_alert_at_kst": "2026-09-18T13:00:00+09:00",
+            "last_published_at_kst": official.published.isoformat(),
+            "signature": previous,
+        }
+        ok, reason = should_alert(
+            official,
+            state,
+            dt.datetime(2026, 9, 18, 14, 0, tzinfo=KST),
+        )
+        self.assertTrue(ok)
+        self.assertEqual(reason, "BOJ 공식 성명 상세 검증상태 변화")
+
     def test_same_key_with_new_guidance_is_re_evaluated(self):
         base = verified_event_signals(dt.datetime(2026, 9, 18, 13, 40, tzinfo=KST))[0]
         previous = signal_signature(base)
