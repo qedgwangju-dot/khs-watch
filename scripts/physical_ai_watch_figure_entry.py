@@ -398,7 +398,7 @@ def clean_title(title: str, source: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')}"
-    if re.search(r'Helix\\s*2\\.5|30[-\\s]*home|30개.{0,40}(?:가정|주택)|9%[^\\n]{0,40}56%|human[-\\s]*to[-\\s]*humanoid.{0,40}scaling|스케일링\\s*법칙', text, re.I | re.S):
+    if FIGURE_ACTUAL_REVEAL.search(text):
         return hashlib.sha256(b'figure-ai|helix-2.5|human-to-humanoid-scaling-law').hexdigest()
     if _is_figure_direct(item):
         return hashlib.sha256(f"x:adcock_brett:{item['x_status_id']}".encode()).hexdigest()
