@@ -1732,13 +1732,13 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     market_summary = " · ".join(reaction_parts) if reaction_parts else "교차반응 확인 중"
 
     if signal.event_type == "decision" and signal.expected_move and signal.dissent_direction == "hold":
-        risk_asset_text = "위험자산 의미: 부담 완화 가능 — 예상된 25bp + 동결 요구 반대표, 단 BOJ 효과로 단정 금지"
+        risk_asset_text = "부담 완화 가능 — 예상된 25bp + 동결 요구 반대표, 단 BOJ 효과로 단정 금지"
     elif signal.dissent_direction == "larger_hike" or signal.level >= 2:
-        risk_asset_text = "위험자산 의미: 부담 확대 가능 — 매파적 속도 가속 여부 확인"
+        risk_asset_text = "부담 확대 가능 — 매파적 속도 가속 여부 확인"
     elif signal.event_type == "press_conference" and signal.hawkish_tail_50bp:
-        risk_asset_text = "위험자산 의미: 중립~조건부 부담 — 50bp 가능성은 열었지만 고정된 빠른 인상 경로는 아님"
+        risk_asset_text = "중립~조건부 부담 — 50bp 가능성은 열었지만 고정된 빠른 인상 경로는 아님"
     else:
-        risk_asset_text = "위험자산 의미: 중립·추가 확인 필요 — 여러 자산의 동시 반응으로 귀속 판단"
+        risk_asset_text = "중립·추가 확인 필요 — 여러 자산의 동시 반응으로 귀속 판단"
 
     latest_parts = []
     usd = market.get("usd_jpy")
