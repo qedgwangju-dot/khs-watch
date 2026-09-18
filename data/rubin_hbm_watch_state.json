@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-18T15:04:38+09:00",
+  "updated_at_kst": "2026-09-18T16:15:06+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -10,6 +10,7 @@
     "2d27da4b09baa1d0f61ace3d",
     "30e12d5e09347c31afe9bbbf",
     "366eb2b49378313e5a18f1ec",
+    "40660e881b3fe6bde98047a2",
     "4247585e3b18e9cad642ceec",
     "4247b04678644c4743f6ef69",
     "4254884b8b0b799b2b6b87a7",
@@ -62,17 +63,19 @@
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1382.55,
-    "date": "2026-09-17 일일 기준 · ECB/Frankfurter · 조회 2026-09-18 15:04 KST · 보조 API 2026-09-18 · 차이 0.15% · 일중 기준시각 차이 가능",
+    "date": "2026-09-17 일일 기준 · ECB/Frankfurter · 조회 2026-09-18 16:15 KST · 보조 API 2026-09-18 · 차이 0.15% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "핵심 사실 자동추출 실패로 발송 제외: sammyguru.com | Samsung to Outsource DDR5 Production to Free Up Capacity for HBM - sammyguru.com"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-09-15",
     "source": "TrendForce 공식 X 사용자 제공 캡처",
@@ -112,8 +115,8 @@
       "https://insights.trendforce.com/p/weekly-radar-001",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-09-18T15:04:52+09:00",
-    "candidate_count": 2,
+    "last_checked_at_kst": "2026-09-18T16:15:27+09:00",
+    "candidate_count": 1,
     "errors": []
   }
 }
