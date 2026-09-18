@@ -78,8 +78,8 @@ jobs:
           print(f"Telegram route OK: @{username}")
           PY
 
-      - name: Scan physical AI / battery / grid / ROBOTIS-NVIDIA / Figure AI / Tesla Optimus China sources
-        run: python scripts/physical_ai_watch_quantity_enrichment.py
+      - name: Scan physical AI / battery / grid / ROBOTIS-NVIDIA / Figure AI / Tesla Optimus China / AI-RAN sources
+        run: python scripts/physical_ai_watch_airan_guard.py
 
       - name: Send Telegram only on meaningful change
         if: success()
