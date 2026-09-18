@@ -34,6 +34,7 @@ TITLE = OUT / "boj_policy_lead_alert_title.txt"
 BODY = OUT / "boj_policy_lead_alert.md"
 DATA = OUT / "boj_policy_lead_alert.json"
 WATCH = OUT / "boj_policy_lead_watch.md"
+MARKET = OUT / "boj_policy_market_context.json"
 PENDING = OUT / "boj_policy_lead_pending_state.json"
 CONFIRMED = OUT / "boj_policy_lead_telegram_confirmed.json"
 
@@ -1516,7 +1517,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
 
 
 def clear_outputs() -> None:
-    for path in (TITLE, BODY, DATA, PENDING, CONFIRMED):
+    for path in (TITLE, BODY, DATA, MARKET, PENDING, CONFIRMED):
         try:
             path.unlink()
         except FileNotFoundError:
@@ -1549,6 +1550,11 @@ def main() -> int:
     now = dt.datetime.now(KST)
     signals = enrich_decision_context(collect(now))
     state = load_state()
+    market = market_context()
+    MARKET.write_text(
+        json.dumps(market, ensure_ascii=False, indent=2, default=str) + "\n",
+        encoding="utf-8",
+    )
 
     if not signals:
         WATCH.write_text(
@@ -1582,7 +1588,7 @@ def main() -> int:
         print(json.dumps({"alerted": False, "reason": "no_material_change"}, ensure_ascii=False))
         return 0
 
-    title, body, payload = build(selected, selected_reason, now, market_context())
+    title, body, payload = build(selected, selected_reason, now, market)
     TITLE.write_text(title + "\n", encoding="utf-8")
     BODY.write_text(body + "\n", encoding="utf-8")
     DATA.write_text(json.dumps(payload, ensure_ascii=False, indent=2, default=str) + "\n", encoding="utf-8")
