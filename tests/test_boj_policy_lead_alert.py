@@ -81,6 +81,47 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertEqual(extract_vote("The decision passed by a 7-2 vote."), (7, 2))
         self.assertEqual(extract_vote("No vote count was provided."), (None, None))
 
+    def test_dovish_dissent_direction_is_recorded(self):
+        signal = classify(
+            self.mk(
+                "BOJ raises interest rates to 1.25% in 25 basis-point move - Reuters",
+                "The decision passed by a 7-2 vote. Asada and Sato dissented against the hike "
+                "and preferred to keep rates unchanged.",
+            )
+        )
+        self.assertEqual(signal.dissent_direction, "hold")
+        self.assertEqual(signal.dissenters, ("아사다", "사토"))
+
+    def test_hawkish_dissent_direction_is_recorded(self):
+        signal = classify(
+            self.mk(
+                "BOJ raises interest rates to 1.25% in 25 basis-point move - Reuters",
+                "One member called for a 50 basis-point hike and dissented.",
+            )
+        )
+        self.assertEqual(signal.dissent_direction, "larger_hike")
+
+    def test_separate_economic_assessment_vote_requires_same_sentence(self):
+        signal = classify(
+            self.mk(
+                "BOJ raises interest rates to 1.25% in 25 basis-point move - Reuters",
+                "The policy decision passed 7-2. The economic assessment passed 7-2 as "
+                "members debated whether underlying inflation had already exceeded 2%.",
+            )
+        )
+        self.assertEqual((signal.assessment_vote_for, signal.assessment_vote_against), (7, 2))
+        self.assertIn("2%", signal.assessment_view)
+
+    def test_policy_vote_is_not_copied_into_economic_assessment(self):
+        signal = classify(
+            self.mk(
+                "BOJ raises interest rates to 1.25% in 25 basis-point move - Reuters",
+                "The decision passed by a 7-2 vote. Underlying inflation is close to 2%.",
+            )
+        )
+        self.assertIsNone(signal.assessment_vote_for)
+        self.assertIsNone(signal.assessment_vote_against)
+
     def test_rate_parser(self):
         self.assertEqual(extract_rate("The policy rate was raised to 1.25%."), 1.25)
 
