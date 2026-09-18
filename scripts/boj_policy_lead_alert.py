@@ -1,216 +1,759 @@
 #!/usr/bin/env python3
-"""BOJ 정책 선행경보: 정책 촉매를 USD/JPY 가격 경보보다 먼저 알린다."""
+"""BOJ 정책경로 변화 감지.
+
+역할 분리:
+- 이 감시는 BOJ의 정책결정·우에다 기자회견·주요 의견·핵심 인사 발언에서
+  '다음 금리 인상의 시점과 속도'가 달라지는지를 감시한다.
+- 실제 엔캐리 청산 여부는 별도 엔캐리 복합 수급 감시가 판단한다.
+- 금리 인상 자체를 자동으로 매파 강화로 보지 않고, 직전 경로 대비 변화만 알린다.
+"""
 from __future__ import annotations
 
-import argparse, datetime as dt, hashlib, html, json, pathlib, re, urllib.parse
+import argparse
+import datetime as dt
+import hashlib
+import html
+import json
+import pathlib
+import re
+import urllib.parse
 import xml.etree.ElementTree as ET
 from dataclasses import asdict, dataclass
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
+
 from khs_source_fetch import fetch_text, record_source_failure
 
-KST=ZoneInfo("Asia/Seoul"); UTC=dt.timezone.utc
-OUT=pathlib.Path("out"); STATE=pathlib.Path("data/boj_policy_lead_alert_state.json")
-TITLE=OUT/"boj_policy_lead_alert_title.txt"; BODY=OUT/"boj_policy_lead_alert.md"; DATA=OUT/"boj_policy_lead_alert.json"
-WATCH=OUT/"boj_policy_lead_watch.md"; PENDING=OUT/"boj_policy_lead_pending_state.json"; CONFIRMED=OUT/"boj_policy_lead_telegram_confirmed.json"
-UA="Mozilla/5.0 khs-boj-policy-lead/1.0"
-GOOGLE="https://news.google.com/rss/search"; BOJ_RSS="https://www.boj.or.jp/en/rss/whatsnew.xml"
-TRUSTED={"Reuters","Bloomberg","Nikkei Asia","Financial Times"}
-QUERIES=('"Bank of Japan" rate hike Reuters when:2d','BOJ rate hike yen Reuters when:2d','"Bank of Japan" tightening Bloomberg OR "Nikkei Asia" when:2d')
-MAX_AGE_H=48; RESET_H=72; COOLDOWN_MIN=180; PROB_STEP=10.0; HIGH_PROB=70.0
-KNOWN_RATE=1.00; KNOWN_RATE_UNTIL=dt.date(2026,9,18)
-ROUTE_LABELS={
-    "reuters_poll":"Reuters 조사",
-    "survey_expectation":"조사·전망",
-    "market_probability":"시장 인상확률",
-    "hike_bets":"금리 인상 기대",
-    "official_commentary":"BOJ 핵심 인사 발언",
-    "hike_expectation":"금리 인상 전망",
+KST = ZoneInfo("Asia/Seoul")
+UTC = dt.timezone.utc
+OUT = pathlib.Path("out")
+STATE = pathlib.Path("data/boj_policy_lead_alert_state.json")
+TITLE = OUT / "boj_policy_lead_alert_title.txt"
+BODY = OUT / "boj_policy_lead_alert.md"
+DATA = OUT / "boj_policy_lead_alert.json"
+WATCH = OUT / "boj_policy_lead_watch.md"
+PENDING = OUT / "boj_policy_lead_pending_state.json"
+CONFIRMED = OUT / "boj_policy_lead_telegram_confirmed.json"
+
+UA = "Mozilla/5.0 khs-boj-policy-path/2.0"
+GOOGLE = "https://news.google.com/rss/search"
+BOJ_RSS = "https://www.boj.or.jp/en/rss/whatsnew.xml"
+TRUSTED = {"Reuters", "Bloomberg", "Nikkei Asia", "Financial Times", "Bank of Japan"}
+MAX_AGE_HOURS = 72
+SAME_PATH_COOLDOWN_MINUTES = 240
+
+QUERIES = (
+    '"Bank of Japan" Reuters 1.25 rate decision when:2d',
+    'BOJ Ueda press conference rate path Reuters when:2d',
+    '"Bank of Japan" additional rate hikes Reuters when:2d',
+    '"Bank of Japan" neutral rate Ueda Reuters when:3d',
+    '"Summary of Opinions" BOJ Reuters when:7d',
+)
+
+LEVEL_EMOJI = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}
+LEVEL_LABEL = {
+    0: "추가 긴축 경로 후퇴",
+    1: "점진적 추가 인상 경로 유지",
+    2: "추가 인상 시점·속도 가속",
+    3: "예상 밖 대폭·연속 긴축 위험",
 }
+EVENT_LABEL = {
+    "decision": "금융정책 결정",
+    "press_conference": "우에다 총재 기자회견",
+    "summary_of_opinions": "금융정책결정회의 주요 의견",
+    "official_speech": "BOJ 핵심 인사 발언",
+    "market_path": "고신뢰 정책경로 보도",
+}
+
+ACCELERATION = (
+    "next meeting",
+    "at the next meeting",
+    "every meeting",
+    "each meeting",
+    "faster",
+    "accelerate",
+    "accelerated",
+    "speed up",
+    "front-load",
+    "front load",
+    "without delay",
+    "sooner",
+    "earlier",
+    "rapidly",
+    "quickly",
+    "swiftly",
+)
+SOFTENING = (
+    "pause",
+    "no rush",
+    "not in a hurry",
+    "wait and see",
+    "slower",
+    "slow the pace",
+    "delay further",
+    "hold rates",
+    "downside risks",
+)
+FURTHER_HIKES = (
+    "continue to raise",
+    "continue raising",
+    "further rate hikes",
+    "additional rate hikes",
+    "raise interest rates further",
+    "keep raising",
+)
+CONDITIONAL_PACE = (
+    "timing and pace",
+    "check whether",
+    "depending on",
+    "depending upon",
+    "if the outlook",
+    "if the economy and prices",
+    "while examining",
+    "carefully monitor",
+    "carefully examining",
+)
+ACCOMMODATIVE = (
+    "accommodative financial conditions",
+    "financial conditions will remain accommodative",
+    "remain accommodative",
+)
+NEUTRAL = (
+    "neutral rate",
+    "neutral interest rate",
+    "distance to neutral",
+)
+INFLATION_UPSIDE = (
+    "inflation overshoot",
+    "exceed 2%",
+    "exceed the 2%",
+    "upside risk",
+    "upside risks",
+    "inflation expectations",
+    "underlying inflation",
+)
+RISK_CHANNELS = (
+    "foreign exchange",
+    "exchange rate",
+    "yen",
+    "oil",
+    "middle east",
+    "artificial intelligence",
+    " ai ",
+    "global ai",
+)
+
 
 @dataclass(frozen=True)
 class Item:
-    title:str; source:str; link:str; published:dt.datetime; description:str
+    title: str
+    source: str
+    link: str
+    published: dt.datetime
+    description: str
+
+    @property
+    def text(self) -> str:
+        return clean(f"{self.title} {self.description}")
+
+
 @dataclass(frozen=True)
 class Signal:
-    key:str; stage:int; route:str; source:str; title:str; link:str; published:dt.datetime
-    probability:float|None; hike_bp:int|None; target_rate:float|None; note:str
+    key: str
+    level: int
+    event_type: str
+    source: str
+    title: str
+    link: str
+    published: dt.datetime
+    policy_rate: float | None
+    hike_bp: int | None
+    vote_for: int | None
+    vote_against: int | None
+    further_hikes: bool
+    conditional_pace: bool
+    accommodative: bool
+    neutral_rate: bool
+    inflation_upside: bool
+    risk_channels: bool
+    note: str
 
-def clean(s):
-    s=re.sub(r"<[^>]+>"," ",s or ""); return re.sub(r"\s+"," ",html.unescape(s)).strip()
-def pubdate(s):
-    try: d=parsedate_to_datetime(s)
-    except Exception: return None
-    if d.tzinfo is None: d=d.replace(tzinfo=UTC)
-    return d.astimezone(KST)
-def parse_rss(text,default=""):
-    out=[]; root=ET.fromstring(text)
-    for n in root.findall(".//item"):
-        d=pubdate(n.findtext("pubDate")); t=clean(n.findtext("title"))
-        src=n.find("source"); src=clean(src.text if src is not None else "") or default
-        if t and d: out.append(Item(t,src,clean(n.findtext("link")),d,clean(n.findtext("description"))))
-    return out
-def fetch_rss(url,name,now):
-    text,err=fetch_text(url,UA,timeout=20,attempts=2,accept="application/rss+xml,application/xml,text/xml,*/*")
-    if err or not text:
-        record_source_failure(lane="boj_policy_lead",source_name=name,source_url=url,error=err or "empty",checked_at=now); return []
-    try: return parse_rss(text,name)
-    except Exception as e:
-        record_source_failure(lane="boj_policy_lead",source_name=name,source_url=url,error=f"RSS parse: {e}",checked_at=now); return []
-def news_url(q): return GOOGLE+"?"+urllib.parse.urlencode({"q":q,"hl":"en-US","gl":"US","ceid":"US:en"})
-def normalize(t):
-    t=re.sub(r"\s+-\s+(reuters|bloomberg|nikkei asia|financial times)$","",t.lower()); return re.sub(r"\s+"," ",re.sub(r"[^a-z0-9%]+"," ",t)).strip()
-def key(i): return hashlib.sha256(f"{normalize(i.title)}|{i.source}|{i.published.date()}".encode()).hexdigest()[:20]
-def prob(text):
-    vals=[]; low=text.lower()
-    for m in re.finditer(r"(\d{1,3}(?:\.\d+)?)\s*%",low):
-        ctx=low[max(0,m.start()-60):min(len(low),m.end()+60)]
-        if any(x in ctx for x in ("probability","chance","odds","priced","pricing","price")):
-            v=float(m.group(1));
-            if 0<=v<=100: vals.append(v)
-    return max(vals) if vals else None
-def bp(text):
-    m=re.search(r"(\d{1,3})\s*-?\s*basis[- ]point",text.lower()) or re.search(r"(\d{1,3})\s*bp\b",text.lower())
-    return int(m.group(1)) if m and 1<=int(m.group(1))<=200 else None
-def target(text):
-    m=re.search(r"to\s+(\d{1,2}(?:\.\d+)?)\s*%",text.lower()); return float(m.group(1)) if m else None
-def classify(i):
-    src=i.source.strip(); sm=re.search(r"\s+-\s+(Reuters|Bloomberg|Nikkei Asia|Financial Times)$",i.title)
-    if src not in TRUSTED and sm: src=sm.group(1)
-    if src not in TRUSTED: return None
-    text=f"{i.title} {i.description}"; low=text.lower()
-    if not (("bank of japan" in low or re.search(r"\bboj\b",low)) and any(x in low for x in ("rate hike","raise rate","raise key rate","interest rate","tightening","hike bets"))): return None
-    p=prob(text); b=bp(text); tr=target(text); stage=0; route="hike_expectation"; note="고신뢰 보도 기반 시장 기대 — BOJ 공식 결정 아님"
-    if "poll" in low or "expected to" in low or "raise key rate" in low: stage=1; route="reuters_poll" if src=="Reuters" else "survey_expectation"
-    if any(x in low for x in ("hike bets","priced in","pricing in","probability","chance")): stage=max(stage,1); route="market_probability" if p is not None else "hike_bets"
-    actor=any(x in low for x in ("boj chief","governor ueda","deputy governor","board member","takata","himino","tamura"))
-    if actor and any(x in low for x in ("signals chance","chance of","calls for","advocated","timely rate hikes","agile rate hikes","rate hike")):
-        stage=max(stage,2); route="official_commentary"; note="BOJ 관계자 발언을 고신뢰 보도가 확인 — 결정 자체는 미확정"
-    if p is not None and p>=HIGH_PROB:
-        stage=max(stage,2); route="market_probability"; note=f"다음 회의 인상 확률 {p:.0f}% 반영 — 결정 자체는 미확정"
-    if stage==0 and any(x in low for x in ("hike","tightening")): stage=1
-    return Signal(key(i),stage,route,src,i.title,i.link,i.published,p,b,tr,note) if stage else None
 
-def route_label(route): return ROUTE_LABELS.get(route,"정책 신호")
-def korean_signal_title(s):
-    low=re.sub(r"\s+-\s+(reuters|bloomberg|nikkei asia|financial times)$","",s.title.lower()).strip()
-    if "boj chief signals chance of september rate hike" in low:
-        return "우에다 일본은행 총재, 9월 금리 인상 가능성 시사…물가 상방위험 논의"
-    if "yen jumps on boj hike bets" in low:
-        return "일본은행 금리 인상 기대에 엔화 급등…달러는 약세"
-    if "boj to speed up its tightening campaign" in low and s.target_rate is not None:
-        return f"Reuters 조사: 일본은행, 긴축 속도 높여 9월 정책금리 {s.target_rate:.2f}%로 인상 전망"
-    if s.route=="official_commentary":
-        if "takata" in low: return "다카타 일본은행 심의위원, 적시에 유연한 금리 인상 필요성 시사"
-        if "himino" in low: return "히미노 일본은행 부총재, 추가 금리 인상 필요성 시사"
-        if "tamura" in low: return "다무라 일본은행 심의위원, 추가 금리 인상 필요성 시사"
-        return "일본은행 핵심 인사, 추가 금리 인상 가능성 시사"
-    if s.route=="market_probability":
-        if s.probability is not None and s.hike_bp is not None: return f"시장, 일본은행 다음 회의 {s.hike_bp}bp 금리 인상 확률 {s.probability:.0f}% 반영"
-        if s.probability is not None: return f"시장, 일본은행 다음 회의 금리 인상 확률 {s.probability:.0f}% 반영"
-        return "시장, 일본은행 금리 인상 기대 확대"
-    if s.route=="reuters_poll":
-        if s.target_rate is not None: return f"Reuters 조사, 일본은행 정책금리 {s.target_rate:.2f}% 인상 전망"
-        return "Reuters 조사, 일본은행 금리 인상 전망 강화"
-    if s.route=="survey_expectation": return "주요 조사에서 일본은행 금리 인상 전망 강화"
-    if s.route=="hike_bets": return "시장 내 일본은행 금리 인상 기대 강화"
-    return "일본은행 추가 금리 인상 전망 관련 고신뢰 보도"
-def korean_official_title(i):
-    low=i.title.lower()
-    if "speech by board member takata" in low: return "다카타 일본은행 심의위원 연설: 일본의 경제활동·물가·통화정책"
-    if "speech by governor ueda" in low: return "우에다 일본은행 총재 연설"
-    if "speech by deputy governor himino" in low: return "히미노 일본은행 부총재 연설"
-    if "summary of opinions" in low: return "일본은행 금융정책결정회의 주요 의견 요약"
-    if "statement on monetary policy" in low: return "일본은행 금융정책 결정문"
-    if "monetary policy" in low: return "일본은행 통화정책 관련 공식 자료"
-    if "speech" in low: return "일본은행 정책위원 공식 연설"
-    return "일본은행 공식 자료·발언"
+def clean(value: str) -> str:
+    value = re.sub(r"<[^>]+>", " ", value or "")
+    return re.sub(r"\s+", " ", html.unescape(value)).strip()
 
-def load_state():
-    try: x=json.loads(STATE.read_text()); return x if isinstance(x,dict) else {}
-    except Exception: return {}
-def stime(x):
-    try: d=dt.datetime.fromisoformat(str(x)); return d.astimezone(KST) if d.tzinfo else d.replace(tzinfo=KST)
-    except Exception: return None
-def should(s,state,now):
-    if s.key==state.get("last_signal_key"): return False,"동일 기사 중복"
-    last=stime(state.get("last_alert_at_kst")); prev=int(state.get("stage",0) or 0)
-    if last and now-last>dt.timedelta(hours=RESET_H): prev=0
-    if last and s.published<=last: return False,"이전 경보보다 오래된 기사"
-    if s.stage>prev: return True,"정책 경보 단계 상승"
-    if s.route!=state.get("route"): return True,"새 정책 감지 경로"
-    oldp=state.get("probability_pct")
-    if s.probability is not None and oldp is not None and s.probability>=float(oldp)+PROB_STEP: return True,"인상 확률 +10%p 이상 상승"
-    if last is None: return True,"신규 정책 선행경보"
-    return (True,"새 고신뢰 보도") if now-last>=dt.timedelta(minutes=COOLDOWN_MIN) else (False,"같은 단계 재알림 대기")
-def latest_signals(now):
-    items=[]
-    for q in QUERIES: items+=fetch_rss(news_url(q),"Google News",now)
-    dedup={}
-    for i in items:
-        k=normalize(i.title)
-        if k not in dedup or i.published>dedup[k].published: dedup[k]=i
-    cut=now-dt.timedelta(hours=MAX_AGE_H)
-    sig=[classify(i) for i in dedup.values() if cut<=i.published<=now+dt.timedelta(minutes=10)]
-    sig=[s for s in sig if s]
-    return sorted(sig,key=lambda s:(s.stage,s.probability or -1,s.published),reverse=True)
-def confirms(signals,s): return [x for x in signals if x.key!=s.key and x.source!=s.source and abs((x.published-s.published).total_seconds())<=36*3600][:2]
-def official(now):
-    cut=now-dt.timedelta(days=7); out=[]
-    for i in fetch_rss(BOJ_RSS,"Bank of Japan",now):
-        low=(i.title+" "+i.description).lower()
-        if i.published>=cut and any(x in low for x in ("speech","monetary policy","summary of opinions","statement on monetary policy")): out.append(i)
-    return sorted(out,key=lambda i:i.published,reverse=True)
-def fx_context():
+
+def normalize(value: str) -> str:
+    value = clean(value).lower()
+    value = re.sub(r"\s+-\s+(reuters|bloomberg|nikkei asia|financial times)$", "", value)
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9%]+", " ", value)).strip()
+
+
+def pubdate(value: str) -> dt.datetime | None:
     try:
-        from yen_carry_fx_shock import fetch_move,determine_fast_stage,determine_sustained_stage
-        m=fetch_move(); return {"price":m.latest_price,"time":dt.datetime.fromtimestamp(m.latest_epoch,UTC).astimezone(KST),"m15":m.change_15m_pct,"m30":m.change_30m_pct,"draw":m.sustained_drawdown_pct,"mins":m.sustained_duration_minutes,"fast":determine_fast_stage(m),"sustained":determine_sustained_stage(m)}
-    except Exception: return None
-def label(d): return d.astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
-def meeting(now): return "2026년 9월 17~18일" if now.date()<=dt.date(2026,9,18) else "BOJ 공식 일정 재조회"
-def build(s,reason,now,cs,off,fx):
-    title=f"🚨 BOJ 정책 선행경보 {s.stage}단계 · {'주의' if s.stage==1 else '강화'}"
-    top=[]
-    if s.probability is not None: top.append(f"다음 회의 인상 확률 {s.probability:.0f}%")
-    if s.hike_bp is not None: top.append(f"+{s.hike_bp}bp 가능성")
-    if s.target_rate is not None and now.date()<=KNOWN_RATE_UNTIL: top.append(f"목표 {s.target_rate:.2f}%")
-    L=[" │ ".join(top) or "BOJ 인상 기대 강화","","핵심 상태",f"• 판정: {reason}",f"• 감지 경로: {route_label(s.route)}",f"• 다음 금융정책결정회의: {meeting(now)}",f"• 정확한 의미: {s.note}"]
-    if s.target_rate is not None and now.date()<=KNOWN_RATE_UNTIL: L.append(f"• 정책금리 경로: {KNOWN_RATE:.2f}% → {s.target_rate:.2f}% 가능성")
-    elif s.hike_bp is not None: L.append(f"• 예상 조정폭: +{s.hike_bp}bp")
-    L += ["","선행 정책 촉매",f"• {s.source} · {label(s.published)}",f"  {korean_signal_title(s)}"]
-    if cs:
-        L.append("• 교차 확인")
-        for x in cs: L.append(f"  - {x.source}: {korean_signal_title(x)}"+(f" · 인상 확률 {x.probability:.0f}%" if x.probability is not None else ""))
-    else: L.append("• 교차 확인: 추가 고신뢰 출처 확인 전 — 1차 선행신호로 취급")
-    if off:
-        x=off[0]; L += ["","BOJ 공식 확인",f"• 최근 공식 자료·발언 일정: {korean_official_title(x)}",f"• 공개: {label(x.published)}","• 공식 자료 존재와 ‘금리인상 확정’은 같은 뜻이 아님"]
-    L += ["","환율 확인"]
+        parsed = parsedate_to_datetime(value)
+    except Exception:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=UTC)
+    return parsed.astimezone(KST)
+
+
+def parse_rss(text: str, default_source: str = "") -> list[Item]:
+    root = ET.fromstring(text)
+    items: list[Item] = []
+    for node in root.findall(".//item"):
+        published = pubdate(node.findtext("pubDate") or "")
+        title = clean(node.findtext("title") or "")
+        source_node = node.find("source")
+        source = clean(source_node.text if source_node is not None else "") or default_source
+        link = clean(node.findtext("link") or "")
+        description = clean(node.findtext("description") or "")
+        if title and published:
+            items.append(Item(title, source, link, published, description))
+    return items
+
+
+def fetch_rss(url: str, source_name: str, now: dt.datetime) -> list[Item]:
+    text, error = fetch_text(
+        url,
+        UA,
+        timeout=20,
+        attempts=2,
+        accept="application/rss+xml,application/xml,text/xml,*/*",
+    )
+    if error or not text:
+        record_source_failure(
+            lane="boj_policy_path",
+            source_name=source_name,
+            source_url=url,
+            error=error or "empty response",
+            checked_at=now,
+        )
+        return []
+    try:
+        return parse_rss(text, source_name)
+    except Exception as exc:
+        record_source_failure(
+            lane="boj_policy_path",
+            source_name=source_name,
+            source_url=url,
+            error=f"RSS parse: {type(exc).__name__}: {exc}",
+            checked_at=now,
+        )
+        return []
+
+
+def news_url(query: str) -> str:
+    return GOOGLE + "?" + urllib.parse.urlencode(
+        {"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"}
+    )
+
+
+def source_name(item: Item) -> str:
+    source = item.source.strip()
+    match = re.search(r"\s+-\s+(Reuters|Bloomberg|Nikkei Asia|Financial Times)$", item.title)
+    if source not in TRUSTED and match:
+        source = match.group(1)
+    if source == "Google News" and match:
+        source = match.group(1)
+    return source
+
+
+def extract_rate(text: str) -> float | None:
+    lower = text.lower()
+    patterns = (
+        r"(?:rate|policy rate|benchmark rate|key rate).*?(?:to|at|around)\s+(\d+(?:\.\d+)?)\s*%",
+        r"(?:to|at|around)\s+(\d+(?:\.\d+)?)\s*%[^.]{0,80}(?:rate|policy)",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, lower)
+        if match:
+            value = float(match.group(1))
+            if 0 <= value <= 10:
+                return value
+    return None
+
+
+def extract_bp(text: str) -> int | None:
+    lower = text.lower()
+    match = re.search(r"(\d{1,3})\s*(?:bp|basis[- ]points?)", lower)
+    if not match:
+        return None
+    value = int(match.group(1))
+    return value if 1 <= value <= 200 else None
+
+
+def extract_vote(text: str) -> tuple[int | None, int | None]:
+    match = re.search(r"\b([1-9])-([0-9])\b", text)
+    if not match:
+        return None, None
+    return int(match.group(1)), int(match.group(2))
+
+
+def has_any(text: str, phrases: tuple[str, ...]) -> bool:
+    lower = " " + text.lower() + " "
+    return any(phrase in lower for phrase in phrases)
+
+
+def event_type(item: Item) -> str | None:
+    text = item.text.lower()
+    title = item.title.lower()
+    source = source_name(item)
+
+    if source == "Bank of Japan":
+        if "statement on monetary policy" in title:
+            return "decision"
+        if "summary of opinions" in title:
+            return "summary_of_opinions"
+        if "speech by governor ueda" in title or "governor ueda" in title:
+            return "official_speech"
+        if "speech" in title and any(x in title for x in ("board member", "deputy governor")):
+            return "official_speech"
+        return None
+
+    if source not in TRUSTED:
+        return None
+    if not ("bank of japan" in text or re.search(r"\bboj\b", text)):
+        return None
+    if "press conference" in text or "governor kazuo ueda" in text or "governor ueda" in text:
+        return "press_conference"
+    if "summary of opinions" in text:
+        return "summary_of_opinions"
+    if any(x in text for x in ("raises interest rate", "raised interest rate", "raises rates", "raised rates", "rate decision", "policy meeting")):
+        return "decision"
+    if any(x in text for x in ("rate hike", "rate hikes", "tightening", "neutral rate", "interest rate")):
+        return "market_path"
+    return None
+
+
+def classify(item: Item) -> Signal | None:
+    source = source_name(item)
+    kind = event_type(item)
+    if kind is None:
+        return None
+    if source not in TRUSTED:
+        return None
+
+    text = item.text
+    lower = text.lower()
+
+    rate = extract_rate(text)
+    bp = extract_bp(text)
+    vote_for, vote_against = extract_vote(text)
+    further = has_any(text, FURTHER_HIKES)
+    conditional = has_any(text, CONDITIONAL_PACE)
+    accommodative = has_any(text, ACCOMMODATIVE)
+    neutral = has_any(text, NEUTRAL)
+    inflation = has_any(text, INFLATION_UPSIDE)
+    risks = has_any(text, RISK_CHANNELS)
+
+    accelerating = has_any(text, ACCELERATION)
+    softening = has_any(text, SOFTENING)
+
+    # A decision of 50bp+ or explicit consecutive/urgent tightening is red.
+    if (bp is not None and bp >= 50 and kind == "decision") or any(
+        marker in lower
+        for marker in ("emergency hike", "surprise 50", "half-point hike", "consecutive hikes")
+    ):
+        level = 3
+        note = "예상 밖 대폭 또는 연속 긴축 신호"
+    elif accelerating:
+        level = 2
+        note = "다음 인상 시점 또는 속도가 기존 점진 경로보다 빨라질 가능성"
+    elif softening and not further:
+        level = 0
+        note = "추가 긴축 시점이 뒤로 밀리거나 경로가 완화되는 신호"
+    else:
+        level = 1
+        note = "추가 인상 방향은 유지되지만 속도 가속은 아직 확인되지 않음"
+
+    # Current 25bp decision plus explicitly conditional/accommodative guidance stays yellow.
+    if kind == "decision" and bp is not None and bp <= 25 and (conditional or accommodative):
+        level = 1
+        note = "25bp 인상과 추가 긴축 방향은 확인됐지만 시점·속도는 조건부 — 점진 경로 유지"
+
+    # Official source is authoritative for existence of the event, but may contain only a title in RSS.
+    key_material = (
+        f"{kind}|{source}|{normalize(item.title)}|{item.published.date()}|"
+        f"{rate}|{bp}|{vote_for}-{vote_against}|{level}"
+    )
+    key = hashlib.sha256(key_material.encode()).hexdigest()[:24]
+
+    return Signal(
+        key=key,
+        level=level,
+        event_type=kind,
+        source=source,
+        title=item.title,
+        link=item.link,
+        published=item.published,
+        policy_rate=rate,
+        hike_bp=bp,
+        vote_for=vote_for,
+        vote_against=vote_against,
+        further_hikes=further,
+        conditional_pace=conditional,
+        accommodative=accommodative,
+        neutral_rate=neutral,
+        inflation_upside=inflation,
+        risk_channels=risks,
+        note=note,
+    )
+
+
+def collect(now: dt.datetime) -> list[Signal]:
+    items: list[Item] = []
+    for query in QUERIES:
+        items.extend(fetch_rss(news_url(query), "Google News", now))
+    items.extend(fetch_rss(BOJ_RSS, "Bank of Japan", now))
+
+    cutoff = now - dt.timedelta(hours=MAX_AGE_HOURS)
+    dedup: dict[str, Item] = {}
+    for item in items:
+        if not (cutoff <= item.published <= now + dt.timedelta(minutes=10)):
+            continue
+        normalized = normalize(item.title)
+        if normalized not in dedup or item.published > dedup[normalized].published:
+            dedup[normalized] = item
+
+    signals = [classify(item) for item in dedup.values()]
+    signals = [signal for signal in signals if signal is not None]
+
+    event_priority = {
+        "decision": 5,
+        "press_conference": 4,
+        "summary_of_opinions": 3,
+        "official_speech": 2,
+        "market_path": 1,
+    }
+    source_priority = {"Bank of Japan": 3, "Reuters": 2, "Bloomberg": 1, "Nikkei Asia": 1, "Financial Times": 1}
+    return sorted(
+        signals,
+        key=lambda s: (
+            event_priority.get(s.event_type, 0),
+            source_priority.get(s.source, 0),
+            s.published,
+        ),
+        reverse=True,
+    )
+
+
+def load_state() -> dict:
+    try:
+        value = json.loads(STATE.read_text(encoding="utf-8"))
+        return value if isinstance(value, dict) else {}
+    except Exception:
+        return {}
+
+
+def parse_state_time(value) -> dt.datetime | None:
+    try:
+        parsed = dt.datetime.fromisoformat(str(value))
+        return parsed.astimezone(KST) if parsed.tzinfo else parsed.replace(tzinfo=KST)
+    except Exception:
+        return None
+
+
+def signal_signature(signal: Signal) -> dict:
+    return {
+        "level": signal.level,
+        "event_type": signal.event_type,
+        "policy_rate": signal.policy_rate,
+        "hike_bp": signal.hike_bp,
+        "vote_for": signal.vote_for,
+        "vote_against": signal.vote_against,
+        "further_hikes": signal.further_hikes,
+        "conditional_pace": signal.conditional_pace,
+        "accommodative": signal.accommodative,
+        "neutral_rate": signal.neutral_rate,
+        "inflation_upside": signal.inflation_upside,
+        "risk_channels": signal.risk_channels,
+    }
+
+
+def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, str]:
+    if signal.key == state.get("last_signal_key"):
+        return False, "동일 신호 중복"
+
+    previous = state.get("signature") or {}
+    last = parse_state_time(state.get("last_alert_at_kst"))
+
+    if not previous:
+        # Legacy state from the old leading-indicator monitor: official decision/conference
+        # is a new regime and should alert once.
+        return True, "BOJ 정책경로 전용 감시로 전환 후 첫 중요 신호"
+
+    if signal.event_type != previous.get("event_type"):
+        return True, "새 공식 정책 이벤트"
+    if signal.level != int(previous.get("level", signal.level)):
+        return True, "정책경로 단계 변화"
+    if signal.policy_rate is not None and signal.policy_rate != previous.get("policy_rate"):
+        return True, "정책금리 변화"
+    if signal.hike_bp is not None and signal.hike_bp != previous.get("hike_bp"):
+        return True, "금리 조정폭 변화"
+    if (
+        signal.vote_for is not None
+        and signal.vote_against is not None
+        and (signal.vote_for, signal.vote_against)
+        != (previous.get("vote_for"), previous.get("vote_against"))
+    ):
+        return True, "표결구도 변화"
+
+    material_flags = (
+        "further_hikes",
+        "conditional_pace",
+        "accommodative",
+        "neutral_rate",
+        "inflation_upside",
+        "risk_channels",
+    )
+    current_signature = signal_signature(signal)
+    if any(current_signature.get(key) != previous.get(key) for key in material_flags):
+        return True, "정책 가이던스 핵심 문구 변화"
+
+    if last is None or now - last >= dt.timedelta(minutes=SAME_PATH_COOLDOWN_MINUTES):
+        if signal.event_type in {"decision", "press_conference", "summary_of_opinions", "official_speech"}:
+            return True, "새 BOJ 공식·준공식 정책 업데이트"
+    return False, "정책경로 실질 변화 없음"
+
+
+def label_time(value: dt.datetime) -> str:
+    return value.astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
+
+
+def korean_event_title(signal: Signal) -> str:
+    if signal.event_type == "decision":
+        if signal.policy_rate is not None:
+            return f"일본은행, 정책금리를 {signal.policy_rate:.2f}%로 결정"
+        return "일본은행 금융정책 결정"
+    if signal.event_type == "press_conference":
+        return "우에다 일본은행 총재 기자회견·정책경로 발언"
+    if signal.event_type == "summary_of_opinions":
+        return "일본은행 금융정책결정회의 주요 의견"
+    if signal.event_type == "official_speech":
+        return "일본은행 핵심 인사 공식 발언"
+    return "일본은행 추가 금리 경로 관련 고신뢰 보도"
+
+
+def next_official_check(now: dt.datetime) -> str:
+    schedule = [
+        (dt.datetime(2026, 9, 18, 15, 30, tzinfo=KST), "우에다 총재 기자회견 9월 18일 15:30 KST"),
+        (dt.datetime(2026, 9, 24, 8, 50, tzinfo=KST), "9월 회의 기자회견 기록 공개 9월 24일"),
+        (dt.datetime(2026, 10, 1, 8, 50, tzinfo=KST), "9월 회의 주요 의견 10월 1일 08:50 JST"),
+        (dt.datetime(2026, 10, 29, 0, 0, tzinfo=KST), "다음 금융정책결정회의 10월 29~30일"),
+        (dt.datetime(2026, 11, 10, 8, 50, tzinfo=KST), "10월 회의 주요 의견 11월 10일 08:50 JST"),
+        (dt.datetime(2026, 12, 17, 0, 0, tzinfo=KST), "금융정책결정회의 12월 17~18일"),
+        (dt.datetime(2026, 12, 28, 8, 50, tzinfo=KST), "12월 회의 주요 의견 12월 28일 08:50 JST"),
+    ]
+    for when, text in schedule:
+        if now <= when:
+            return text
+    return "BOJ 공식 일정 재조회"
+
+
+def fx_context() -> dict | None:
+    try:
+        from yen_carry_fx_shock import fetch_move
+
+        move = fetch_move()
+        return {
+            "price": move.latest_price,
+            "time": dt.datetime.fromtimestamp(move.latest_epoch, UTC).astimezone(KST),
+            "m15": move.change_15m_pct,
+            "m30": move.change_30m_pct,
+            "drawdown": move.sustained_drawdown_pct,
+        }
+    except Exception:
+        return None
+
+
+def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tuple[str, str, dict]:
+    emoji = LEVEL_EMOJI[signal.level]
+    title = f"🏦 {emoji} BOJ 정책경로 변화"
+
+    decision_lines = []
+    if signal.policy_rate is not None:
+        decision_lines.append(f"- 정책금리: {signal.policy_rate:.2f}%")
+    if signal.hike_bp is not None:
+        decision_lines.append(f"- 이번 조정폭: +{signal.hike_bp}bp")
+    if signal.vote_for is not None and signal.vote_against is not None:
+        decision_lines.append(f"- 표결: {signal.vote_for}대{signal.vote_against}")
+    if not decision_lines:
+        decision_lines.append(f"- 이벤트: {EVENT_LABEL.get(signal.event_type, '정책 업데이트')}")
+
+    guidance = [
+        f"- 추가 인상 방향: {'유지' if signal.further_hikes else '명시적 확인 전'}",
+        f"- 인상 시점·속도: {'조건부·점진' if signal.conditional_pace else ('가속 신호' if signal.level >= 2 else '추가 확인 필요')}",
+        f"- 금융환경 평가: {'완화적 환경 지속' if signal.accommodative else '새 명시적 변화 미확인'}",
+        f"- 중립금리 언급: {'있음' if signal.neutral_rate else '없음·미확인'}",
+        f"- 물가 상방·기조물가 신호: {'있음' if signal.inflation_upside else '새 강한 신호 미확인'}",
+        f"- 환율·유가·AI 등 위험채널: {'강조' if signal.risk_channels else '새 강조 미확인'}",
+    ]
+
+    lines = [
+        "이번 변화",
+        *decision_lines,
+        f"- 감지 경로: {EVENT_LABEL.get(signal.event_type, '정책 업데이트')} / {signal.source}",
+        "",
+        "정책경로 판정",
+        f"- {emoji} {LEVEL_LABEL[signal.level]}",
+        f"- 판단: {signal.note}",
+        f"- 변화 사유: {reason}",
+        "",
+        "가이던스 체크",
+        *guidance,
+        "",
+        "시장 연결",
+        "- BOJ 정책경로와 실제 엔캐리 청산은 별도 판정합니다.",
+    ]
     if fx:
-        L += [f"• USD/JPY {fx['price']:.3f} · 시장 데이터 {label(fx['time'])}",f"• 15분 {fx['m15']:+.2f}% │ 30분 {fx['m30']:+.2f}% │ 고점 대비 {fx['draw']:+.2f}% · {fx['mins']:.0f}분"]
-        L.append("• 판정: 정책 촉매는 발생했지만 가격 확인은 아직 미충족" if fx['fast']==0 and fx['sustained']==0 else f"• 판정: 정책 촉매가 환율로 확인 중 — 빠른 급락 {fx['fast']}단계 / 지속 하락 {fx['sustained']}단계")
-    else: L.append("• USD/JPY 실시간 교차조회 실패 — 정책 선행경보 자체는 유지")
-    L += ["","최종 판정","• 정책 촉매를 가격 경보보다 먼저 알림","• ‘인상 전망·확률 상승’과 ‘BOJ 공식 인상 결정’을 반드시 분리","• 이후 기존 USD/JPY 경보가 가격 확인 역할","",f"조회 시각: {label(now)}"]
-    if s.link: L.append(f"원문: {s.link}")
-    payload={"stage":s.stage,"reason":reason,"signal":asdict(s),"signal_title_ko":korean_signal_title(s),"route_label_ko":route_label(s.route),"confirmation_sources":[asdict(x) for x in cs],"official_context":[asdict(x) for x in off[:2]],"fx":fx,"checked_at_kst":now.isoformat()}
-    return title,"\n".join(L),payload
-def clear():
-    for p in (TITLE,BODY,DATA,PENDING,CONFIRMED):
-        try:p.unlink()
-        except FileNotFoundError:pass
-def finalize():
-    if not PENDING.exists() or not CONFIRMED.exists(): print("BOJ policy Telegram confirmation missing; pending state not finalized."); return
-    c=json.loads(CONFIRMED.read_text())
-    if c.get("status")!="confirmed" or c.get("lane")!="boj_policy": print("BOJ policy Telegram confirmation mismatch; pending state not finalized."); return
-    STATE.parent.mkdir(exist_ok=True); STATE.write_text(PENDING.read_text()); print(f"Finalized BOJ policy state: {STATE}")
-def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--finalize",action="store_true"); a=ap.parse_args()
-    if a.finalize: finalize(); return 0
-    clear(); now=dt.datetime.now(KST); sigs=latest_signals(now); off=official(now); state=load_state(); OUT.mkdir(exist_ok=True)
-    if not sigs:
-        WATCH.write_text(f"BOJ 정책 선행감시: 새 고신뢰 인상 신호 없음 · 조회 {label(now)}\n"); print(json.dumps({"alerted":False,"reason":"no_signal"},ensure_ascii=False)); return 0
-    s=sigs[0]; ok,reason=should(s,state,now); WATCH.write_text(f"BOJ 정책 선행감시: 후보 {s.stage}단계 · {s.source} · {korean_signal_title(s)}\n판정: {'알림' if ok else '미알림'} — {reason}\n조회: {label(now)}\n")
-    if not ok: print(json.dumps({"alerted":False,"reason":reason,"stage":s.stage},ensure_ascii=False)); return 0
-    title,body,payload=build(s,reason,now,confirms(sigs,s),off,fx_context()); TITLE.write_text(title+"\n"); BODY.write_text(body+"\n"); DATA.write_text(json.dumps(payload,ensure_ascii=False,indent=2,default=str)+"\n")
-    PENDING.write_text(json.dumps({"stage":s.stage,"route":s.route,"probability_pct":s.probability,"last_signal_key":s.key,"last_alert_at_kst":now.isoformat(),"last_published_at_kst":s.published.isoformat(),"last_source":s.source,"last_title":s.title},ensure_ascii=False,indent=2)+"\n")
-    print(json.dumps({"alerted":True,"stage":s.stage,"route":s.route,"source":s.source,"probability_pct":s.probability,"reason":reason},ensure_ascii=False)); return 0
-if __name__=="__main__": raise SystemExit(main())
+        lines.extend(
+            [
+                f"- USD/JPY {fx['price']:.3f} / 15분 {fx['m15']:+.2f}% / 30분 {fx['m30']:+.2f}%",
+                f"- 최근 고점 대비 변화 {fx['drawdown']:+.2f}%",
+                "- 환율 급변·미일 단기금리차·변동성·캐리 투자통화 확산은 기존 엔캐리 복합 수급 알림에서 확인합니다.",
+            ]
+        )
+    else:
+        lines.append("- USD/JPY 실시간 교차조회 실패 — 정책경로 판정에는 사용하지 않음")
+
+    lines.extend(
+        [
+            "",
+            "다음 확인",
+            f"- {next_official_check(now)}",
+            "",
+            "정확한 의미",
+            "- 25bp 인상 자체를 자동으로 🟠 매파 강화로 처리하지 않습니다.",
+            "- 직전 경로보다 다음 인상 시점이 앞당겨지거나 속도가 빨라질 때 🟠로 올립니다.",
+            "- 50bp급 예상 밖 인상 또는 연속 긴축을 강하게 시사할 때만 🔴로 올립니다.",
+            "- 추가 긴축 시점이 뒤로 밀리거나 중단 신호가 확인되면 🟢로 낮춥니다.",
+            "",
+            f"공개: {label_time(signal.published)}",
+            f"조회: {label_time(now)}",
+        ]
+    )
+    if signal.link:
+        lines.append(f"원문: {signal.link}")
+
+    payload = {
+        "level": signal.level,
+        "level_label": LEVEL_LABEL[signal.level],
+        "reason": reason,
+        "signal": asdict(signal),
+        "signature": signal_signature(signal),
+        "fx": fx,
+        "checked_at_kst": now.isoformat(timespec="seconds"),
+        "next_official_check": next_official_check(now),
+    }
+    return title, "\n".join(lines), payload
+
+
+def clear_outputs() -> None:
+    for path in (TITLE, BODY, DATA, PENDING, CONFIRMED):
+        try:
+            path.unlink()
+        except FileNotFoundError:
+            pass
+
+
+def finalize() -> int:
+    if not PENDING.exists() or not CONFIRMED.exists():
+        print("BOJ policy Telegram confirmation missing; pending state not finalized.")
+        return 0
+    confirmation = json.loads(CONFIRMED.read_text(encoding="utf-8"))
+    if confirmation.get("status") != "confirmed" or confirmation.get("lane") != "boj_policy":
+        print("BOJ policy Telegram confirmation mismatch; pending state not finalized.")
+        return 0
+    STATE.parent.mkdir(exist_ok=True)
+    STATE.write_text(PENDING.read_text(encoding="utf-8"), encoding="utf-8")
+    print(f"Finalized BOJ policy path state: {STATE}")
+    return 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--finalize", action="store_true")
+    args = parser.parse_args()
+    if args.finalize:
+        return finalize()
+
+    clear_outputs()
+    OUT.mkdir(exist_ok=True)
+    now = dt.datetime.now(KST)
+    signals = collect(now)
+    state = load_state()
+
+    if not signals:
+        WATCH.write_text(
+            f"BOJ 정책경로 변화 감지: 새 고신뢰 신호 없음 · 조회 {label_time(now)}\n",
+            encoding="utf-8",
+        )
+        print(json.dumps({"alerted": False, "reason": "no_signal"}, ensure_ascii=False))
+        return 0
+
+    selected: Signal | None = None
+    selected_reason = ""
+    for signal in signals:
+        ok, reason = should_alert(signal, state, now)
+        if ok:
+            selected = signal
+            selected_reason = reason
+            break
+
+    top = signals[0]
+    WATCH.write_text(
+        (
+            f"BOJ 정책경로 변화 감지: 후보 {LEVEL_EMOJI[top.level]} {LEVEL_LABEL[top.level]}\n"
+            f"최신 이벤트: {EVENT_LABEL.get(top.event_type, top.event_type)} / {top.source}\n"
+            f"판정: {'알림' if selected else '미알림'}"
+            + (f" — {selected_reason}" if selected else " — 정책경로 실질 변화 없음")
+            + f"\n조회: {label_time(now)}\n"
+        ),
+        encoding="utf-8",
+    )
+    if selected is None:
+        print(json.dumps({"alerted": False, "reason": "no_material_change"}, ensure_ascii=False))
+        return 0
+
+    title, body, payload = build(selected, selected_reason, now, fx_context())
+    TITLE.write_text(title + "\n", encoding="utf-8")
+    BODY.write_text(body + "\n", encoding="utf-8")
+    DATA.write_text(json.dumps(payload, ensure_ascii=False, indent=2, default=str) + "\n", encoding="utf-8")
+
+    PENDING.write_text(
+        json.dumps(
+            {
+                "last_signal_key": selected.key,
+                "last_alert_at_kst": now.isoformat(timespec="seconds"),
+                "last_published_at_kst": selected.published.isoformat(timespec="seconds"),
+                "last_source": selected.source,
+                "last_title": selected.title,
+                "signature": signal_signature(selected),
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    print(
+        json.dumps(
+            {
+                "alerted": True,
+                "level": selected.level,
+                "event_type": selected.event_type,
+                "source": selected.source,
+                "reason": selected_reason,
+            },
+            ensure_ascii=False,
+        )
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
