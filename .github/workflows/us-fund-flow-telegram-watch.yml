@@ -7,7 +7,6 @@ on:
       - ".github/workflows/us-fund-flow-telegram-watch.yml"
       - "scripts/us_fund_flow_watch.py"
   schedule:
-    # KST 21:17, 00:17, 03:17, 06:17 on weekdays; catches ICI Wed/Thu, BofA/LSEG Fri, FINRA monthly updates.
     - cron: "17 12,15,18,21 * * 1-5"
   workflow_dispatch:
     inputs:
@@ -48,7 +47,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml playwright
 
       - name: Verify exact Telegram route
         run: |
@@ -95,9 +94,7 @@ jobs:
           if text: chunks.append(text)
           ids=[]
           for chunk in chunks:
-              data=urllib.parse.urlencode({
-                  "chat_id":chat_id,"text":chunk,"parse_mode":"HTML","disable_web_page_preview":"true"
-              }).encode()
+              data=urllib.parse.urlencode({"chat_id":chat_id,"text":chunk,"parse_mode":"HTML","disable_web_page_preview":"true"}).encode()
               req=urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage",data=data,method="POST")
               with urllib.request.urlopen(req,timeout=30) as r:
                   j=json.loads(r.read().decode())
