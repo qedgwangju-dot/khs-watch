@@ -44,6 +44,7 @@ SAME_PATH_COOLDOWN_MINUTES = 240
 
 QUERIES = (
     'BOJ raises interest rates 1.25 Reuters when:1d',
+    'BOJ 7-2 Asada Sato rate hike Reuters when:1d',
     '"Bank of Japan" Reuters 1.25 rate decision when:2d',
     'BOJ Ueda press conference rate path Reuters when:2d',
     '"Bank of Japan" additional rate hikes Reuters when:2d',
@@ -174,6 +175,14 @@ ASSESSMENT_MARKERS = (
     "inflation assessment",
     "underlying inflation assessment",
 )
+EXPECTED_MOVE_MARKERS = (
+    "widely expected",
+    "as expected",
+    "expected move",
+    "expected quarter-point",
+    "expected 25 basis-point",
+    "expected 25 basis point",
+)
 
 
 @dataclass(frozen=True)
@@ -207,6 +216,7 @@ class Signal:
     assessment_vote_for: int | None
     assessment_vote_against: int | None
     assessment_view: str | None
+    expected_move: bool
     further_hikes: bool
     conditional_pace: bool
     accommodative: bool
@@ -436,6 +446,7 @@ def classify(item: Item) -> Signal | None:
     dissent_direction = extract_dissent_direction(text)
     dissenters = extract_dissenters(text)
     assessment_vote_for, assessment_vote_against, assessment_view = extract_assessment_vote(text)
+    expected_move = has_any(text, EXPECTED_MOVE_MARKERS)
     further = has_any(text, FURTHER_HIKES)
     conditional = has_any(text, CONDITIONAL_PACE)
     accommodative = has_any(text, ACCOMMODATIVE)
@@ -472,7 +483,7 @@ def classify(item: Item) -> Signal | None:
     key_material = (
         f"{kind}|{source}|{normalize(item.title)}|{item.published.date()}|"
         f"{rate}|{bp}|{vote_for}-{vote_against}|{dissent_direction}|"
-        f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|{level}"
+        f"{assessment_vote_for}-{assessment_vote_against}|{assessment_view}|{expected_move}|{level}"
     )
     key = hashlib.sha256(key_material.encode()).hexdigest()[:24]
 
@@ -493,6 +504,7 @@ def classify(item: Item) -> Signal | None:
         assessment_vote_for=assessment_vote_for,
         assessment_vote_against=assessment_vote_against,
         assessment_view=assessment_view,
+        expected_move=expected_move,
         further_hikes=further,
         conditional_pace=conditional,
         accommodative=accommodative,
@@ -569,6 +581,7 @@ def signal_signature(signal: Signal) -> dict:
         "assessment_vote_for": signal.assessment_vote_for,
         "assessment_vote_against": signal.assessment_vote_against,
         "assessment_view": signal.assessment_view,
+        "expected_move": signal.expected_move,
         "further_hikes": signal.further_hikes,
         "conditional_pace": signal.conditional_pace,
         "accommodative": signal.accommodative,
@@ -760,6 +773,16 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
     else:
         committee.append("- 경제·물가 진단 별도 표결: 공식·고신뢰 원문에서 명시적으로 확인될 때만 표시")
 
+    if signal.expected_move:
+        if signal.dissent_direction == "hold":
+            expectation_text = "기본 예상 부합 / 반대표도 동결 방향이면 매파적 꼬리위험은 미실현"
+        elif signal.dissent_direction == "larger_hike":
+            expectation_text = "기본 인상폭은 예상 부합하나 더 큰 폭 인상 요구가 확인돼 매파적 꼬리위험 일부 현실화"
+        else:
+            expectation_text = "기본 예상 부합"
+    else:
+        expectation_text = "시장 컨센서스와의 직접 비교는 고신뢰 원문에서 명시 확인 전"
+
     guidance = [
         f"- 추가 인상 방향: {'유지' if signal.further_hikes else '명시적 확인 전'}",
         f"- 인상 시점·속도: {'조건부·점진' if signal.conditional_pace else ('가속 신호' if signal.level >= 2 else '추가 확인 필요')}",
@@ -777,6 +800,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         "정책경로 판정",
         f"- {emoji} {LEVEL_LABEL[signal.level]}",
         f"- 판단: {signal.note}",
+        f"- 시장 기대 대비: {expectation_text}",
         f"- 변화 사유: {reason}",
         "",
         "위원회 분열",
