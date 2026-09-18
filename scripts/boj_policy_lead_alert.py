@@ -1062,7 +1062,7 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     ):
         return True, "경제·물가 진단 표결 변화"
 
-    if signal.outlook_dissenters and (
+    if signal.official_statement_detail_verified and signal.outlook_dissenters and (
         list(signal.outlook_dissenters) != previous.get("outlook_dissenters")
         or signal.outlook_dissent_view != previous.get("outlook_dissent_view")
     ):
@@ -1077,7 +1077,7 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         "stabilize_underlying_around_2",
     )
     current_signature = signal_signature(signal)
-    if signal.event_type in {"decision", "press_conference", "summary_of_opinions", "official_speech"} and any(
+    if signal.official_statement_detail_verified and any(
         current_signature.get(key) != previous.get(key) for key in inflation_regime_flags
     ):
         return True, "물가 체제·전이 판단 변화"
@@ -1100,7 +1100,10 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         "cpi_h2_clearly_above_2",
         "stabilize_underlying_around_2",
     )
-    if official_like and any(
+    guidance_verified = (
+        signal.event_type != "decision" or signal.official_statement_detail_verified
+    )
+    if official_like and guidance_verified and any(
         current_signature.get(key) != previous.get(key) for key in material_flags
     ):
         return True, "정책 가이던스 핵심 문구 변화"
@@ -1492,7 +1495,11 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         "※ 같은 7대2라도 '동결 요구'와 '더 큰 폭 인상 요구'는 의미가 반대이므로 방향을 따로 봅니다.",
         "※ 정책 표결 반대와 물가전망 문구 이견은 서로 다른 층위로 분리합니다.",
         "",
-        "물가 체제 전환",
+        (
+            "물가 체제 전환"
+            if signal.official_statement_detail_verified
+            else "물가 체제 전환 — BOJ 공식 원문 재확인 대기"
+        ),
         *inflation_regime,
         "",
         "가이던스 체크",
