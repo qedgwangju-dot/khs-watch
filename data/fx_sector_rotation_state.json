@@ -12,56 +12,60 @@
     {
       "ts": "2026-09-18T12:49:29+09:00",
       "value": 1386.6
+    },
+    {
+      "ts": "2026-09-18T17:22:42+09:00",
+      "value": 1383.6
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-09-18T12:49:29+09:00",
-    "market_phase": "정규장",
+    "checked_at": "2026-09-18T17:22:42+09:00",
+    "market_phase": "장마감 후",
     "fx": {
-      "value": 1386.6,
+      "value": 1383.6,
       "prev_close": 1382.2,
       "naver_prev_close": 1382.0,
       "date": "2026-09-18",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
-      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
+      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가 · 시장 스트레스 감시 검증값 재사용",
       "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20260917153938285",
       "basis_error": null,
-      "basis_reused": false
+      "basis_reused": true
     },
     "session_low": 1381.5,
-    "rebound_krw": 5.099999999999909,
-    "rebound_pct": 0.3691639522258372,
-    "daily_krw": 4.399999999999864,
-    "daily_pct": 0.3183330921718852,
-    "kospi_pct": 2.47,
+    "rebound_krw": 2.099999999999909,
+    "rebound_pct": 0.15200868621063623,
+    "daily_krw": 1.3999999999998636,
+    "daily_pct": 0.10128780205469479,
+    "kospi_pct": 2.66,
     "ship": {
-      "avg": -1.6775,
-      "positive": 1,
-      "relative": -4.1475,
+      "avg": -1.9175,
+      "positive": 0,
+      "relative": -4.577500000000001,
       "valid": 4,
       "confirmed": false
     },
     "defense": {
-      "avg": 1.1400000000000001,
-      "positive": 3,
-      "relative": -1.33,
+      "avg": 0.9500000000000001,
+      "positive": 2,
+      "relative": -1.71,
       "valid": 4,
       "confirmed": false
     },
     "auto": {
-      "avg": 0.6125,
-      "positive": 4,
-      "relative": -1.8575000000000002,
+      "avg": 0.1425,
+      "positive": 2,
+      "relative": -2.5175,
       "valid": 4,
       "confirmed": false
     },
     "counter": {
-      "avg": -1.63,
+      "avg": -1.6600000000000001,
       "positive": 0,
-      "relative": -4.1,
+      "relative": -4.32,
       "valid": 4,
       "confirmed": false
     }
