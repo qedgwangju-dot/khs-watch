@@ -1,6 +1,6 @@
 {
   "seen": {
-    "ICI|mmf": "23f52e00541d50ba13d6477cb82c3d96802d74c637d5356bcbd0ef9f07b6d3be",
+    "ICI|mmf": "a692e13ee54a9b1da7a5378b9a9812dd14bd5e055149f356371a2fec1994361b",
     "FINRA|margin": "02a2ab607357f224a170dc07fb82cf809274840da7cbb65702171154258e69de"
   },
   "values": {
@@ -9,12 +9,12 @@
       "kind": "mmf",
       "period": "September 16",
       "published": "September 11, 2026",
-      "url": "https://www.ici.org/research/stats/mmf",
+      "url": "https://www.iciglobal.org/research/stats/mmf",
       "metrics": {
         "assets_trillion": 7.92,
         "weekly_change_bn": -51.97
       },
-      "fingerprint": "23f52e00541d50ba13d6477cb82c3d96802d74c637d5356bcbd0ef9f07b6d3be"
+      "fingerprint": "a692e13ee54a9b1da7a5378b9a9812dd14bd5e055149f356371a2fec1994361b"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -31,5 +31,5 @@
       "fingerprint": "02a2ab607357f224a170dc07fb82cf809274840da7cbb65702171154258e69de"
     }
   },
-  "updated_at_kst": "2026-09-18T20:21:34.144561+09:00"
+  "updated_at_kst": "2026-09-18T20:26:56.086690+09:00"
 }
