@@ -90,6 +90,8 @@ jobs:
           python scripts/skhynix_us_memory_watch.py
 
       - name: Check Samsung HBM monthly and strategic signals
+        env:
+          KCS_DATA_GO_SERVICE_KEY: ${{ secrets.KCS_DATA_GO_SERVICE_KEY }}
         run: |
           python -m py_compile scripts/samsung_hbm_watch.py
           python scripts/samsung_hbm_watch.py
