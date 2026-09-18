@@ -165,72 +165,49 @@ def normalize_columns(t):
 def parse_ici_combined():
     page_html = browser_html(ICI_COMBINED)
     text = clean_text(page_html)
-    soup = BeautifulSoup(page_html, "html.parser")
 
-    target_rows = None
-    for table in soup.find_all("table"):
-        rows = []
-        for tr in table.find_all("tr"):
-            cells = [re.sub(r"\\s+", " ", td.get_text(" ", strip=True)).strip() for td in tr.find_all(["th", "td"])]
-            if cells:
-                rows.append(cells)
-        flat = " ".join(cell for row in rows for cell in row)
-        if re.search(r"Domestic", flat, re.I) and re.search(r"Equity", flat, re.I):
-            target_rows = rows
-            break
-    if not target_rows:
-        raise RuntimeError("ICI combined flows table not found")
+    def signed_amount(pattern):
+        m = re.search(pattern, text, re.I)
+        if not m:
+            return None
+        direction = m.group(1).lower()
+        value = float(m.group(2).replace(",", ""))
+        return -value if "outflow" in direction else value
 
-    # Find a header row containing dates and map the newest date to its column position.
-    header = None
-    dates = []
-    for row in target_rows[:8]:
-        found = []
-        for idx, cell in enumerate(row):
-            m = re.search(r"(\\d{1,2}/\\d{1,2}/20\\d{2})", cell)
-            if m:
-                try:
-                    found.append((datetime.strptime(m.group(1), "%m/%d/%Y"), idx, m.group(1)))
-                except Exception:
-                    pass
-        if found:
-            header = row
-            dates = found
-            break
-    if not dates:
-        raise RuntimeError("ICI combined date header not found")
-    dates.sort(reverse=True)
-    _, cur_idx, period = dates[0]
+    total = signed_amount(
+        r"Total estimated (inflows|outflows).*?(?:were|was) \\$([\\d,.]+) billion"
+    )
+    domestic = signed_amount(
+        r"Domestic equity funds had estimated (inflows|outflows) of \\$([\\d,.]+) billion"
+    )
+    world = signed_amount(
+        r"world equity funds had estimated (inflows|outflows) of \\$([\\d,.]+) billion"
+    )
+    bond = signed_amount(
+        r"Bond funds.*?had estimated (inflows|outflows) of \\$([\\d,.]+) billion"
+    )
+    hybrid = signed_amount(
+        r"Hybrid funds.*?had estimated (inflows|outflows) of \\$([\\d,.]+) billion"
+    )
 
-    def row_value(pattern):
-        for row in target_rows:
-            if not row:
-                continue
-            label = row[0].strip()
-            if re.fullmatch(pattern, label, flags=re.I) or re.search(pattern, label, flags=re.I):
-                if cur_idx < len(row):
-                    return parse_num(row[cur_idx])
-        return None
+    pm = re.search(
+        r"week ended(?: Wednesday,?)?\\s+([A-Za-z]+\\s+\\d{1,2},\\s+20\\d{2})",
+        text,
+        re.I,
+    )
+    period = pm.group(1) if pm else "latest"
 
-    raw = {
-        "equity": row_value(r"^Equity$"),
-        "domestic": row_value(r"^Domestic$"),
-        "world": row_value(r"^World$"),
-        "bond": row_value(r"^Bond$"),
-        "hybrid": row_value(r"^Hybrid$"),
+    if domestic is None and total is None:
+        raise RuntimeError("ICI combined release prose values not found")
+
+    current = {
+        "equity": None,
+        "domestic": domestic,
+        "world": world,
+        "bond": bond,
+        "hybrid": hybrid,
+        "total": total,
     }
-    current = {k: (v / 1000.0 if v is not None else None) for k, v in raw.items()}
-
-    # Four latest columns, matched by date index in the header.
-    domestic_4w_vals = []
-    date_positions = sorted(dates, reverse=True)[:4]
-    domestic_row = next((row for row in target_rows if row and re.fullmatch(r"Domestic", row[0].strip(), flags=re.I)), None)
-    if domestic_row:
-        for _, idx, _ in date_positions:
-            if idx < len(domestic_row):
-                v = parse_num(domestic_row[idx])
-                if v is not None:
-                    domestic_4w_vals.append(v / 1000.0)
 
     payload = {
         "source": "ICI",
@@ -239,7 +216,7 @@ def parse_ici_combined():
         "published": None,
         "url": ICI_COMBINED,
         "metrics": current,
-        "domestic_4w": sum(domestic_4w_vals) if domestic_4w_vals else None,
+        "domestic_4w": None,
     }
     payload["fingerprint"] = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
     return payload
