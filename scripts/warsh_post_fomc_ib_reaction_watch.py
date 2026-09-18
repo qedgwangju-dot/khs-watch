@@ -183,6 +183,51 @@ def counts(paths):
     return out
 
 
+def ib_center_mid(paths):
+    mids = sorted(
+        year_end_mid(v.get('extra_hikes'))
+        for v in paths.values()
+        if v.get('extra_hikes') in (0, 1, 2)
+    )
+    if not mids:
+        return None
+    n = len(mids)
+    if n % 2:
+        return mids[n // 2]
+    return (mids[n // 2 - 1] + mids[n // 2]) / 2
+
+
+def divergence_view(paths, market):
+    center = ib_center_mid(paths)
+    year_end = market.get('year_end')
+    if center is None or year_end is None:
+        return {'ib_center': center, 'market_year_end': year_end, 'gap_bp': None, 'zone': '확인 불가'}
+    gap = (float(year_end) - float(center)) * 100
+    if gap >= 25:
+        zone = '선물시장 상방 괴리'
+    elif gap <= -25:
+        zone = '선물시장 하방 괴리'
+    else:
+        zone = '25bp 이내'
+    return {'ib_center': center, 'market_year_end': float(year_end), 'gap_bp': gap, 'zone': zone}
+
+
+def divergence_triggered(old_div, new_div):
+    new_gap = new_div.get('gap_bp')
+    if new_gap is None or abs(float(new_gap)) < 25:
+        return False
+    old_gap = old_div.get('gap_bp')
+    if old_gap is None:
+        return True
+    old_gap = float(old_gap)
+    new_gap = float(new_gap)
+    if abs(old_gap) < 25:
+        return True
+    if old_gap * new_gap < 0:
+        return True
+    return abs(new_gap - old_gap) >= 25
+
+
 def snapshot_message(confirmed, tracking, market, title='기준선'):
     cc = counts(confirmed)
     lines = ['<b>[FOMC 주요 IB 사후 정책경로]</b>', f'<b>{html.escape(title)}</b>', '',
@@ -194,6 +239,9 @@ def snapshot_message(confirmed, tracking, market, title='기준선'):
         lines.append(f"• 선물시장 2026년 말 확률가중 경로: 약 {market['year_end']:.3f}%")
     if market.get('extra_bp') is not None:
         lines.append(f"• 9월 인상 뒤 연말까지 추가 기대: 약 +{float(market['extra_bp']):.1f}bp")
+    div = divergence_view(confirmed, market)
+    if div.get('gap_bp') is not None:
+        lines.append(f"• 공개확인 IB 중심경로: 약 {div['ib_center']:.3f}% · 선물시장 괴리 {div['gap_bp']:+.1f}bp")
     lines += ['', '<b>공개 확인 경로</b>']
     for inst, v in confirmed.items():
         lines.append(f"• {html.escape(inst)}: 추가 {v['extra_hikes']}회 · 다음 {html.escape(v['next'])} · 연말 약 {year_end_mid(v['extra_hikes']):.3f}% · {link('근거', v['source'])}")
@@ -228,14 +276,30 @@ def change_message(changes, current, market):
     return '\n'.join(lines)
 
 
+def divergence_message(current, market, div):
+    direction = '선물시장이 IB 중심경로보다 더 높은 금리를 반영' if div['gap_bp'] > 0 else '선물시장이 IB 중심경로보다 더 낮은 금리를 반영'
+    lines = ['<b>[FOMC 주요 IB 사후 정책경로 · 괴리]</b>', '',
+             '<b>무엇이 달라졌나</b>',
+             f"• 공개확인 IB 중심경로: 약 {div['ib_center']:.3f}%",
+             f"• 선물시장 연말 확률가중 경로: 약 {div['market_year_end']:.3f}%",
+             f"• 괴리: {div['gap_bp']:+.1f}bp — {html.escape(direction)}", '',
+             '<b>쉽게 말하면</b>',
+             '• IB 전망과 실제 금리선물 가격이 25bp 이상 벌어진 구간입니다. 말보다 시장 가격이 한 번의 25bp 움직임 이상 다르게 보고 있다는 뜻입니다.',
+             '• 괴리가 다시 25bp 안으로 들어오면 별도 해소 알림은 보내지 않고 상태만 갱신합니다.', '',
+             '<b>원천</b>',
+             f"{link('연방기금금리 선물 기반 경로', market.get('source') or '')} · {link('연준 경제전망·점도표', FED_SEP)}"]
+    return '\n'.join(lines)
+
+
 def main():
     old = load(STATE, {})
     market = market_path()
     if not old:
-        state = {'confirmed': CONFIRMED_BASE, 'tracking': TRACKING_BASE, 'candidate_seen': [], 'market': market}
+        divergence = divergence_view(CONFIRMED_BASE, market)
+        state = {'confirmed': CONFIRMED_BASE, 'tracking': TRACKING_BASE, 'candidate_seen': [], 'market': market, 'divergence': divergence}
         send(snapshot_message(CONFIRMED_BASE, TRACKING_BASE, market, 'FOMC 사후 기준선'))
         save(state)
-        print(json.dumps({'first_run': True, 'sent': True, 'confirmed': counts(CONFIRMED_BASE), 'market': market}, ensure_ascii=False))
+        print(json.dumps({'first_run': True, 'sent': True, 'confirmed': counts(CONFIRMED_BASE), 'market': market, 'divergence': divergence}, ensure_ascii=False))
         return
 
     current = old.get('confirmed') or CONFIRMED_BASE
@@ -245,7 +309,14 @@ def main():
         for c in changes:
             new = dict(c['new']); new['status'] = '교차검증 확인'; new['source'] = c['evidence'][0]['url']
             current[c['institution']] = new
+
+    divergence = divergence_view(current, market)
+    divergence_alert = divergence_triggered(old.get('divergence') or {}, divergence)
+
+    if changes:
         send(change_message(changes, current, market)); sent = True
+    elif divergence_alert:
+        send(divergence_message(current, market, divergence)); sent = True
 
     # 단일 출처 변화는 상태에만 기록해 두고 공개 원문/두 번째 출처가 붙기 전 전체 경로에 반영하지 않습니다.
     seen = set(old.get('candidate_seen') or [])
@@ -256,8 +327,8 @@ def main():
     if FORCE and not sent:
         send(snapshot_message(current, old.get('tracking') or TRACKING_BASE, market, '수동 재확인'))
         sent = True
-    save({'confirmed': current, 'tracking': old.get('tracking') or TRACKING_BASE, 'candidate_seen': sorted(seen), 'market': market})
-    print(json.dumps({'first_run': False, 'sent': sent, 'confirmed_changes': len(changes), 'candidates': len(candidates), 'confirmed': counts(current), 'market': market}, ensure_ascii=False))
+    save({'confirmed': current, 'tracking': old.get('tracking') or TRACKING_BASE, 'candidate_seen': sorted(seen), 'market': market, 'divergence': divergence})
+    print(json.dumps({'first_run': False, 'sent': sent, 'confirmed_changes': len(changes), 'candidates': len(candidates), 'divergence_alert': divergence_alert, 'confirmed': counts(current), 'market': market, 'divergence': divergence}, ensure_ascii=False))
 
 
 if __name__ == '__main__':
