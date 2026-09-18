@@ -1191,7 +1191,26 @@ def signal_signature(signal: Signal) -> dict:
     }
 
 
+def press_conference_has_policy_content(signal: Signal) -> bool:
+    if signal.event_type != "press_conference":
+        return True
+    return (
+        signal.level != 1
+        or signal.hawkish_tail_50bp
+        or signal.further_hikes
+        or signal.conditional_pace
+        or signal.accommodative
+        or signal.neutral_rate
+        or signal.inflation_upside
+        or signal.stabilize_underlying_around_2
+        or signal.risk_channels
+    )
+
+
 def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, str]:
+    if not press_conference_has_policy_content(signal):
+        return False, "회견 본문 정책경로 확인 전"
+
     previous = state.get("signature") or {}
     current_signature = signal_signature(signal)
     if signal.key == state.get("last_signal_key") and current_signature == previous:
@@ -1559,7 +1578,17 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     if not decision_lines:
         decision_lines.append(f"- 이벤트: {EVENT_LABEL.get(signal.event_type, '정책 업데이트')}")
 
-    if signal.official_statement_detail_verified:
+    if signal.event_type == "press_conference":
+        source_validation = [
+            "- 회견 검증: Reuters 회견 원문 직접 확인",
+            "- 직전 결정 검증: Reuters 결정·시장반응 원문 교차확인",
+            (
+                "- BOJ 성명 상세: 공식 원문 확인 완료"
+                if signal.official_statement_detail_verified
+                else "- BOJ 성명 상세: 공식 원문 확인 전 · 상세 성명 문구는 확정 트리거로 사용하지 않음"
+            ),
+        ]
+    elif signal.official_statement_detail_verified:
         source_validation = [
             "- 결정값 검증: Reuters·BOJ 공식 원문",
             "- 성명 상세 검증: BOJ 공식 원문 확인 완료",
@@ -1567,7 +1596,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     else:
         source_validation = [
             "- 결정값 검증: Reuters 고신뢰 원문",
-            "- 성명 상세 검증: 사용자 제공 BOJ 성명 요약을 보조 기준으로 사용 중 · BOJ 공식 원문 자동 재확인 대기",
+            "- 성명 상세 검증: BOJ 공식 원문 확인 전 · 상세 성명 문구는 확정 트리거로 사용하지 않음",
         ]
 
     if signal.dissent_direction == "hold":
@@ -1669,85 +1698,13 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         f"- 환율·유가·AI 등 위험채널: {'강조' if signal.risk_channels else '새 강조 미확인'}",
     ]
 
-    lines = [
-        "이번 변화",
-        *decision_lines,
-        f"- 감지 경로: {EVENT_LABEL.get(signal.event_type, '정책 업데이트')} / {signal.source}",
-        *source_validation,
-        *(
-            ["- 검증 보강: 현재 회의의 결정값은 Reuters 결정·시장반응 원문으로 교차확인"]
-            if str(signal.published.date()) in VERIFIED_EVENT_FALLBACKS
-            else []
-        ),
-        "",
-        "정책경로 판정",
-        f"- {emoji} {LEVEL_LABEL[signal.level]}",
-        f"- 판단: {signal.note}",
-        f"- 시장 기대 대비: {expectation_text}",
-        f"- 변화 사유: {reason}",
-        "",
-        context_title,
-        *context_lines,
-        "",
-        "위원회 분열",
-        *committee,
-        "※ 같은 7대2라도 '동결 요구'와 '더 큰 폭 인상 요구'는 의미가 반대이므로 방향을 따로 봅니다.",
-        "※ 정책 표결 반대와 물가전망 문구 이견은 서로 다른 층위로 분리합니다.",
-        "",
-        (
-            "물가 체제 전환"
-            if signal.official_statement_detail_verified
-            else "물가 체제 전환 — BOJ 공식 원문 재확인 대기"
-        ),
-        *inflation_regime,
-        "",
-        "가이던스 체크",
-        *guidance,
-        "",
-        "시장 연결",
-        "- BOJ 정책경로와 실제 엔캐리 청산은 별도 판정합니다.",
-    ]
-    if signal.expected_move and signal.dissent_direction == "hold":
-        lines.append("- 위험자산 의미: 부담 완화 가능 — 예상된 25bp 인상에 동결 요구 반대표가 붙은 경우이며, BOJ 자체 호재로 확정하지 않습니다.")
-    elif signal.dissent_direction == "larger_hike" or signal.level >= 2:
-        lines.append("- 위험자산 의미: 부담 확대 가능 — 매파적 속도 가속 또는 대폭 인상 요구가 실제로 확인된 경우입니다.")
-    else:
-        lines.append("- 위험자산 의미: 중립·추가 확인 필요 — 정책결정만으로 주가 방향을 단정하지 않습니다.")
-    lines.append("- 확인 대상: USD/JPY · Nikkei 225 · Nasdaq 100 선물 · JGB 2년물 · FX 변동성")
-
     market = market or {}
-    usd = market.get("usd_jpy")
-    if usd:
-        lines.extend(
-            [
-                f"- USD/JPY {usd['price']:.3f} / 15분 {usd['m15']:+.2f}% / 30분 {usd['m30']:+.2f}% / 60분 {usd['m60']:+.2f}%",
-                f"- USD/JPY 최근 고점 대비 {usd['drawdown']:+.2f}% · {usd['source']}",
-            ]
-        )
-    else:
-        lines.append(f"- USD/JPY: 확인 불가 — {market.get('usd_jpy_error', '실시간 데이터 없음')}")
 
-    nikkei = market.get("nikkei")
-    if nikkei:
-        freshness = "신선" if nikkei["fresh"] else f"지연 {nikkei['age_seconds']/60:.0f}분"
-        lines.append(
-            f"- Nikkei 225 {nikkei['price']:.2f} / 전일 대비 {nikkei['change_pct']:+.2f}% / {freshness} · {nikkei['source']}"
-        )
-    else:
-        lines.append(f"- Nikkei 225: 확인 불가 — {market.get('nikkei_error', '데이터 없음')}")
-
-    nq = market.get("nasdaq_future")
-    if nq:
-        freshness = "신선" if nq["fresh"] else f"지연 {nq['age_seconds']/60:.0f}분"
-        lines.append(
-            f"- Nasdaq 100 선물 {nq['price']:.2f} / 전일 대비 {nq['change_pct']:+.2f}% / {freshness} · {nq['source']}"
-        )
-    else:
-        lines.append(f"- Nasdaq 100 선물: 확인 불가 — {market.get('nasdaq_future_error', '데이터 없음')}")
-
+    # Market reaction lines: event-window changes first, latest snapshot second.
+    reaction_lines = []
+    reaction_parts = []
     event_time = market.get("event_time")
     if event_time:
-        lines.append(f"- 결정 시점 기준 교차반응: {event_time.strftime('%H:%M KST')} → 현재")
         for key, label in (
             ("usd_jpy_event", "USD/JPY"),
             ("nikkei_event", "Nikkei 225"),
@@ -1755,56 +1712,130 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         ):
             item = market.get(key)
             if item:
-                lines.append(
-                    f"  · {label}: {item['change_pct']:+.2f}% "
-                    f"({item['reference_price']:.3f} → {item['latest_price']:.3f}) · {item['source']}"
+                suffix = ""
+                if key == "usd_jpy_event":
+                    suffix = " · 엔화 약세" if item["change_pct"] > 0 else " · 엔화 강세"
+                reaction_lines.append(
+                    f"- {label}: {item['change_pct']:+.2f}% "
+                    f"({item['reference_price']:.3f} → {item['latest_price']:.3f}){suffix}"
+                )
+                reaction_parts.append(
+                    f"{label} {item['change_pct']:+.2f}%"
+                    + ((" 엔화약세" if item["change_pct"] > 0 else " 엔화강세") if key == "usd_jpy_event" else "")
                 )
             else:
-                lines.append(
-                    f"  · {label}: 결정 시점 대비 확인 불가 — {market.get(key + '_error', '데이터 없음')}"
+                reaction_lines.append(
+                    f"- {label}: 이벤트 시점 대비 확인 불가 — {market.get(key + '_error', '데이터 없음')}"
                 )
+
+    market_summary = " · ".join(reaction_parts) if reaction_parts else "교차반응 확인 중"
+
+    latest_parts = []
+    usd = market.get("usd_jpy")
+    if usd:
+        latest_parts.append(
+            f"USD/JPY {usd['price']:.3f} (15분 {usd['m15']:+.2f}% / 30분 {usd['m30']:+.2f}%)"
+        )
+    nikkei = market.get("nikkei")
+    if nikkei:
+        freshness = "종가/지연" if not nikkei["fresh"] else "실시간"
+        latest_parts.append(
+            f"Nikkei {nikkei['price']:.2f} ({nikkei['change_pct']:+.2f}%, {freshness})"
+        )
+    nq = market.get("nasdaq_future")
+    if nq:
+        latest_parts.append(
+            f"NQ선물 {nq['price']:.2f} ({nq['change_pct']:+.2f}%)"
+        )
+
+    if signal.event_type == "press_conference":
+        fallback = VERIFIED_EVENT_FALLBACKS.get(str(signal.published.date())) or {}
+        prior_decision = [
+            f"- 직전 결정: {fallback.get('policy_rate', 1.25) - fallback.get('hike_bp', 25)/100:.2f}% → {fallback.get('policy_rate', 1.25):.2f}% (+{fallback.get('hike_bp', 25)}bp)",
+            f"- 정책 표결: {fallback.get('vote_for', 7)}대{fallback.get('vote_against', 2)} · 아사다·사토 = 동결 요구",
+            "- 당시 기대: +25bp 예상 부합 · 50bp 매파 꼬리위험은 결정에서 미실현",
+        ]
+    else:
+        prior_decision = [*decision_lines, *committee]
+
+    # Only show material inflation/guidance facts for this event; do not fill the alert
+    # with repeated "미확인" rows.
+    policy_detail = [
+        f"- 추가 인상: {'열어둠' if signal.further_hikes else '새 명시적 변화 없음'}",
+        f"- 인상 속도: {'고정 간격 없음 · 매 회의 데이터 판단' if signal.conditional_pace else ('가속 신호' if signal.level >= 2 else '새 명시적 변화 없음')}",
+    ]
+    if signal.hawkish_tail_50bp:
+        policy_detail.append(f"- 50bp·연속 인상: {tail_result}")
+    if signal.neutral_rate:
+        policy_detail.append("- 중립·종착금리: 정확한 수준 특정 어렵다고 언급")
+    if signal.stabilize_underlying_around_2:
+        policy_detail.append("- 기조물가: 2%에 올리는 단계 → 2% 부근에 안정시키는 단계로 초점 이동")
+    if signal.inflation_upside:
+        policy_detail.append("- 물가 위험: 2% 상방이탈 위험을 경계")
+    if signal.accommodative:
+        policy_detail.append("- 금융여건: 인상 후에도 완화적")
+    if signal.risk_channels:
+        policy_detail.append("- 위험채널: 환율·유가·AI 수요 등을 함께 점검")
+
+    lines = [
+        "【한눈에 보기】",
+        f"• 이벤트 | {EVENT_LABEL.get(signal.event_type, '정책 업데이트')}",
+        f"• 판정 | {emoji} {LEVEL_LABEL[signal.level]}",
+        f"• 핵심 변화 | {signal.note}",
+        f"• 시장 반응 | {market_summary}",
+        f"• 다음 확인 | {next_official_check(now)}",
+        "",
+        "【정책경로】",
+        *context_lines,
+        "",
+        "【직전 결정·위원회】",
+        *prior_decision,
+        "",
+        "【물가·가이던스】",
+        *policy_detail,
+        "",
+        "【시장 반응 | 이벤트 이후】",
+        *reaction_lines,
+    ]
+
+    if latest_parts:
+        lines += ["", "【현재 시장 스냅샷】", "- " + " | ".join(latest_parts)]
 
     jgb2 = market.get("jgb2")
     if jgb2:
-        lines.append(
-            f"- JGB 2년물 공식 종가 {jgb2['value']:.3f}% ({jgb2['date']}) / 직전 대비 {jgb2['change_bp']:+.1f}bp"
-        )
-        lines.append(f"  · {jgb2['note']} · {jgb2['source']}")
+        lines += [
+            f"- JGB 2년물 {jgb2['value']:.3f}% ({jgb2['date']}) / 직전 대비 {jgb2['change_bp']:+.1f}bp",
+            f"  · {jgb2['note']}",
+        ]
     else:
         lines.append(f"- JGB 2년물: 확인 불가 — {market.get('jgb2_error', '공식 데이터 없음')}")
 
     vol = market.get("fx_volatility_proxy")
     if vol:
-        lines.append(
-            f"- FX 변동성 프록시: USD/JPY 절대변동 15분 {vol['m15_abs']:.2f}% / 30분 {vol['m30_abs']:.2f}% / 60분 {vol['m60_abs']:.2f}%"
-        )
-        lines.append(
-            f"  · JYVIX 수치는 자동으로 채우지 않음 — Cboe 공식 대시보드에서 별도 확인: {vol['jyvix_source']}"
-        )
-    else:
-        lines.append("- FX 변동성: 확인 불가 — JYVIX를 임의 값으로 대체하지 않음")
-
-    lines.append("- 위험자산 방향은 위 자산이 같은 방향으로 확인될 때만 BOJ 영향 가능성을 높이고, 하나만 움직이면 귀속하지 않습니다.")
-
-    lines.extend(
-        [
-            "",
-            "다음 확인",
-            f"- {next_official_check(now)}",
-            "",
-            "정확한 의미",
-            "- 25bp 인상 자체를 자동으로 🟠 매파 강화로 처리하지 않습니다.",
-            "- 위원회 분열은 표 수보다 반대표 방향을 우선하며, 경제·물가 진단의 별도 표결은 명시적 원문이 있을 때만 확정합니다.",
-            "- 절대 정책방향과 시장 기대 대비 서프라이즈를 분리하며, 50bp 사전 꼬리위험이 실제 표결·결정에서 현실화됐는지도 따로 봅니다.",
-            "- 기조물가 판단은 '2%에 도달하는가'와 '2% 위로 이탈하지 않도록 안정시키는가'를 분리해 추적합니다.",
-            "- 직전 경로보다 다음 인상 시점이 앞당겨지거나 속도가 빨라질 때 🟠로 올립니다.",
-            "- 50bp급 예상 밖 인상 또는 연속 긴축을 강하게 시사할 때만 🔴로 올립니다.",
-            "- 추가 긴축 시점이 뒤로 밀리거나 중단 신호가 확인되면 🟢로 낮춥니다.",
-            "",
-            f"공개: {label_time(signal.published)}",
-            f"조회: {label_time(now)}",
+        lines += [
+            f"- FX 단기 변동 프록시: 15분 {vol['m15_abs']:.2f}% / 30분 {vol['m30_abs']:.2f}% / 60분 {vol['m60_abs']:.2f}%",
+            "- JYVIX: 자동 수치 미사용 · Cboe 공식 대시보드 별도 확인",
         ]
-    )
+
+    lines += [
+        "",
+        "【검증 상태】",
+        *source_validation,
+    ]
+    if signal.outlook_dissenters:
+        lines.append(f"- 물가전망 문구 이견: {', '.join(signal.outlook_dissenters)} · {signal.outlook_dissent_view or '방향 확인'}")
+    if signal.assessment_vote_for is None:
+        lines.append("- 경제·물가 진단 별도 표결: 정책 7대2와 혼합하지 않음 · 명시적 원문 있을 때만 표시")
+
+    lines += [
+        "",
+        "【판정 기준】",
+        "- 25bp·50bp 같은 숫자보다 시장 예상 대비 서프라이즈와 반대표 방향을 우선합니다.",
+        "- 50bp·연속 인상 가능성만 열어둔 것은 🟠가 아니라 조건부 꼬리위험입니다.",
+        "- 다음 회의 인상·고정된 빠른 간격이 구체화되면 🟠, 중단·지연 신호면 🟢로 재판정합니다.",
+        "",
+        f"공개 {label_time(signal.published)} · 조회 {label_time(now)}",
+    ]
     if signal.link:
         lines.append(f"원문: {signal.link}")
 
@@ -1856,15 +1887,6 @@ def main() -> int:
     now = dt.datetime.now(KST)
     signals = enrich_decision_context(collect(now))
     state = load_state()
-    decision_signals = [s for s in signals if s.event_type == "decision"]
-    event_time = decision_signals[0].published if decision_signals else None
-    if event_time and event_time.date() == dt.date(2026, 9, 18):
-        event_time = dt.datetime(2026, 9, 18, 12, 1, tzinfo=KST)
-    market = market_context(event_time)
-    MARKET.write_text(
-        json.dumps(market, ensure_ascii=False, indent=2, default=str) + "\n",
-        encoding="utf-8",
-    )
 
     if not signals:
         WATCH.write_text(
@@ -1884,6 +1906,19 @@ def main() -> int:
             break
 
     top = signals[0]
+    market_event = selected or top
+    event_time = market_event.published
+    if event_time.date() == dt.date(2026, 9, 18):
+        if market_event.event_type == "decision":
+            event_time = dt.datetime(2026, 9, 18, 12, 1, tzinfo=KST)
+        elif market_event.event_type == "press_conference":
+            event_time = dt.datetime(2026, 9, 18, 15, 30, tzinfo=KST)
+    market = market_context(event_time)
+    MARKET.write_text(
+        json.dumps(market, ensure_ascii=False, indent=2, default=str) + "\n",
+        encoding="utf-8",
+    )
+
     market_ok = []
     market_missing = []
     for key, label in (
