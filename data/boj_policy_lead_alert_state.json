@@ -1,12 +1,12 @@
 {
-  "last_signal_key": "3c68fa7d7a2b3326411d6d54",
-  "last_alert_at_kst": "2026-09-18T12:23:12+09:00",
-  "last_published_at_kst": "2026-09-18T12:01:00+09:00",
+  "last_signal_key": "29186fe7843e243113f32074",
+  "last_alert_at_kst": "2026-09-18T12:23:53+09:00",
+  "last_published_at_kst": "2026-09-18T09:59:00+09:00",
   "last_source": "Reuters",
-  "last_title": "BOJ raises interest rates to 31-year high in widely expected move - Reuters",
+  "last_title": "Yen weak ahead of BOJ decision; rate hike expected - Reuters",
   "signature": {
     "level": 1,
-    "event_type": "decision",
+    "event_type": "market_path",
     "policy_rate": null,
     "hike_bp": null,
     "vote_for": null,
@@ -16,6 +16,6 @@
     "accommodative": false,
     "neutral_rate": false,
     "inflation_upside": false,
-    "risk_channels": false
+    "risk_channels": true
   }
 }
