@@ -330,7 +330,8 @@ def main() -> None:
     events = _collect()
 
     alert_blocks: list[str] = []
-    if not bool(state.get("initial_alert_sent")):
+    initial_was_pending = not bool(state.get("initial_alert_sent"))
+    if initial_was_pending:
         alert_blocks.append(_initial_block())
         state["initial_alert_sent"] = True
         seen_fact_keys.add(BASELINE_FACT_KEY)
@@ -382,7 +383,7 @@ def main() -> None:
         "seen_ids": sorted(seen_ids)[-500:],
         "seen_fact_keys": sorted(seen_fact_keys)[-200:],
         "last_scan_count": len(events),
-        "last_new_signal_count": max(0, len(alert_blocks) - (0 if state.get("initial_alert_sent") else 1)),
+        "last_new_signal_count": max(0, len(alert_blocks) - (1 if initial_was_pending else 0)),
         "alert_generated": bool(alert_blocks),
     })
     _write_json(PENDING_PATH, state)
