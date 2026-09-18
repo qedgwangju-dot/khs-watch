@@ -69,8 +69,31 @@ def _is_parent_story(text: str) -> bool:
     return scaled_order or linked_audit
 
 
+def _weekly_units(text: str) -> int | None:
+    pats = [
+        r'(?:周产|週產|每周生产|每週生產)[^\d]{0,24}(\d{2,5})\s*台',
+        r'(\d{2,5})\s*台\s*/?\s*(?:周|週)',
+        r'(\d{2,5})\s*(?:units?|robots?)\s*(?:per\s+week|weekly)',
+        r'주당\s*(\d{2,5})\s*대',
+        r'주간\s*(?:완제품\s*)?(?:생산|목표)[^\d]{0,16}(\d{2,5})\s*대',
+    ]
+    for pat in pats:
+        m = re.search(pat, text, re.I)
+        if m:
+            try:
+                return int(m.group(1))
+            except Exception:
+                pass
+    return None
+
+
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    units = _weekly_units(text)
+    if opt.ACTUAL_WEEKLY.search(text):
+        return hashlib.sha256(f'tesla-optimus|actual-weekly-production|{units or "unknown"}'.encode()).hexdigest()
+    if opt.WEEKLY_TARGET.search(text):
+        return hashlib.sha256(f'tesla-optimus|weekly-capacity-target|{units or "unknown"}'.encode()).hexdigest()
     if not _is_parent_story(text):
         return _orig_key(item)
 
