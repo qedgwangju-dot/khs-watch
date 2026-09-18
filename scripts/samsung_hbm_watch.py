@@ -26,7 +26,7 @@ STATUS = OUT / "samsung_hbm_status.md"
 
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 96
-MONTHLY_DAY = 5
+MONTHLY_DAY = 15
 
 SAMSUNG_HBM4_OFFICIAL = "https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing"
 SAMSUNG_HBM4E_OFFICIAL = "https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples"
