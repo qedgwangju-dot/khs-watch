@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-18T06:35:48+09:00",
+  "updated_at_kst": "2026-09-18T09:30:03+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "09ccca98004f94ddc78adf4f",
@@ -62,21 +62,17 @@
     "hbm3e_wafer_capacity_3x_ddr5",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 3,
+  "last_unseen_raw_count": 0,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1382.55,
-    "date": "2026-09-17 일일 기준 · ECB/Frankfurter · 조회 2026-09-18 06:35 KST · 보조 API 2026-09-17 · 차이 0.92% · 일중 기준시각 차이 가능",
+    "date": "2026-09-17 일일 기준 · ECB/Frankfurter · 조회 2026-09-18 09:30 KST · 보조 API 2026-09-18 · 차이 0.15% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [
-    "핵심 사실 자동추출 실패로 발송 제외: tradingkey.com | Micron 512GB DDR5 RDIMM Enters AMD and Intel Validation: Can It Become the Next Growth Driver After HBM? - tradingkey.com",
-    "교차검증 부족으로 발송 제외: TradingKey | 마이크론 주가 전망: 씨티, 2027년부터 HBM, 서버용 DDR5 및 eSSD 수요의 폭발적 성장 전망; 주가는 돌파할 것인가? - TradingKey",
-    "교차검증 부족으로 발송 제외: tradingkey.com | Micron Stock Forecast: Citi Sees Explosive Growth in HBM, Server DDR5, and eSSD Demand From 2027; Will the Stock Break Out? - tradingkey.com"
-  ],
+  "errors": [],
   "ai_component_leadtime": {
     "as_of": "2026-09-15",
     "source": "TrendForce 공식 X 사용자 제공 캡처",
@@ -113,10 +109,11 @@
       }
     },
     "seen_urls": [
-      "https://insights.trendforce.com/p/weekly-radar-001"
+      "https://insights.trendforce.com/p/weekly-radar-001",
+      "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-09-18T06:36:03+09:00",
-    "candidate_count": 1,
+    "last_checked_at_kst": "2026-09-18T09:30:18+09:00",
+    "candidate_count": 2,
     "errors": []
   }
 }
