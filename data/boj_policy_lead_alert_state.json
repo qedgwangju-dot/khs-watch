@@ -1,6 +1,6 @@
 {
-  "last_signal_key": "9ed758ad35ffe13264ccf91d",
-  "last_alert_at_kst": "2026-09-18T13:36:21+09:00",
+  "last_signal_key": "300c4ac3a36484edf12779ed",
+  "last_alert_at_kst": "2026-09-18T13:55:33+09:00",
   "last_published_at_kst": "2026-09-18T12:23:00+09:00",
   "last_source": "Reuters",
   "last_title": "VIEW Investors react to BOJ raising interest rates to 31-year high - Reuters",
@@ -21,6 +21,14 @@
     "assessment_view": null,
     "expected_move": true,
     "hawkish_tail_50bp": true,
+    "inflation_spillover": true,
+    "cpi_h2_clearly_above_2": true,
+    "stabilize_underlying_around_2": true,
+    "outlook_dissenters": [
+      "다카타",
+      "다무라"
+    ],
+    "outlook_dissent_view": "기조적 물가가 이미 2% 목표에 대체로 도달했다는 판단에서 물가전망 문구에 반대",
     "further_hikes": false,
     "conditional_pace": false,
     "accommodative": false,
