@@ -151,6 +151,11 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertEqual(merged.dissenters, ("아사다", "사토"))
         self.assertTrue(merged.expected_move)
         self.assertTrue(merged.hawkish_tail_50bp)
+        self.assertTrue(merged.further_hikes)
+        self.assertTrue(merged.conditional_pace)
+        self.assertTrue(merged.accommodative)
+        self.assertTrue(merged.inflation_upside)
+        self.assertTrue(merged.risk_channels)
         self.assertIsNone(merged.assessment_vote_for)
         self.assertIsNone(merged.assessment_vote_against)
 
