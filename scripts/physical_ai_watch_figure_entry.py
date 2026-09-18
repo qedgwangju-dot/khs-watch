@@ -92,6 +92,14 @@ FIGURE_COMMERCIAL = re.compile(
     re.I,
 )
 
+FIGURE_ACTUAL_REVEAL = re.compile(
+    r'Helix\s*2\.5|zero[-\s]*shot|30[-\s]*home|30개.{0,30}(?:가정|주택)|'
+    r'9%[^\n]{0,50}56%|human[-\s]*to[-\s]*humanoid.{0,60}scaling|'
+    r'Index.{0,100}(?:scaling|doubl|8x|8×)|제로샷|스케일링\s*법칙',
+    re.I | re.S,
+)
+
+
 for q in [
     FIGURE_X_SENTINEL,
     FIGURE_NEWS_SENTINEL,
@@ -123,7 +131,9 @@ def _make_figure_item(status_id: str, text: str, published: dt.datetime | None) 
     if published is None or published < cutoff or published > base.NOW + dt.timedelta(minutes=10):
         return None
 
-    if FIGURE_PREANNOUNCE.search(text) and FIGURE_BREAKTHROUGH.search(text):
+    if FIGURE_ACTUAL_REVEAL.search(text):
+        title = 'Figure AI, Helix 2.5 실제 공개…휴머노이드 스케일링 법칙 확인'
+    elif FIGURE_PREANNOUNCE.search(text) and FIGURE_BREAKTHROUGH.search(text):
         title = 'Figure AI, AI 돌파구 공개 예고…익일 발표 예정'
     elif FIGURE_BREAKTHROUGH.search(text):
         title = 'Figure AI, 신규 AI 돌파구·성능 업데이트 공개'
@@ -375,6 +385,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if FIGURE_ACTUAL_REVEAL.search(title):
+        return '피겨 AI, Helix 2.5 실제 공개…인간→휴머노이드 스케일링 법칙 확인'
     if re.search(r'scaling\s+law|human[-\s]*to[-\s]*humanoid|zero[-\s]*shot.{0,50}(?:home|generaliz)|'
                  r'제로샷.{0,50}(?:가정|주택|일반화)|Helix\s*2\.5.{0,80}30개', title, re.I):
         return '피겨 AI, 인간→휴머노이드 스케일링 법칙 확인…미지 환경 일반화 개선'
