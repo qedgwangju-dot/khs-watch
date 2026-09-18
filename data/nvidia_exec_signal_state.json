@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-19T04:49:04+09:00",
+  "updated_at_kst": "2026-09-19T07:42:05+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "174b747c5a23191d5a286b2f",
@@ -9,6 +9,7 @@
     "45f22cb57e39aeef36fe8235",
     "4bb738d74581c8500fc671a3",
     "4d4b9724dfba2d02df1b92de",
+    "5f91627d0a5a84acbe78eadc",
     "6f98d5b5fcf47de75752d227",
     "71e84e2c63800afc842478ec",
     "8e1b230f2e5666de028dd59b",
@@ -35,10 +36,11 @@
     "nvidia_demand_1a1f7b602f",
     "nvidia_demand_690a5da5ab",
     "nvidia_demand_8fb66e4a61",
+    "nvidia_demand_b0db6b8218",
     "nvidia_demand_b9dff9a4c6"
   ],
   "last_event_count": 10,
-  "last_new_event_count": 0,
-  "alert_generated": false,
+  "last_new_event_count": 1,
+  "alert_generated": true,
   "format_version": 2
 }
