@@ -10,9 +10,11 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import datetime as dt
 import hashlib
 import html
+import io
 import json
 import pathlib
 import re
@@ -40,6 +42,8 @@ GOOGLE = "https://news.google.com/rss/search"
 BOJ_RSS = "https://www.boj.or.jp/en/rss/whatsnew.xml"
 REUTERS_BOJ_DECISION = "https://www.reuters.com/world/asia-pacific/boj-raises-interest-rates-31-year-high-widely-expected-move-2026-09-18/"
 REUTERS_BOJ_REACTION = "https://www.reuters.com/world/asia-pacific/view-investors-react-boj-raising-interest-rates-31-year-high-2026-09-18/"
+MOF_JGB_YIELDS = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
+CBOE_JYVIX = "https://www.cboe.com/us/indices/dashboard/JYVIX/"
 TRUSTED = {"Reuters", "Bloomberg", "Nikkei Asia", "Financial Times", "Bank of Japan"}
 MAX_AGE_HOURS = 72
 SAME_PATH_COOLDOWN_MINUTES = 240
@@ -1123,23 +1127,130 @@ def next_official_check(now: dt.datetime) -> str:
     return "BOJ 공식 일정 재조회"
 
 
-def fx_context() -> dict | None:
+def _quote_context(key: str) -> dict:
+    from yen_carry_alert import SYMBOLS
+    from yen_carry_market_data_v2 import fetch_quote
+
+    quote = fetch_quote(SYMBOLS[key])
+    observed = dt.datetime.fromtimestamp(float(quote.timestamp_epoch), UTC)
+    age_seconds = max(0.0, (dt.datetime.now(UTC) - observed).total_seconds())
+    return {
+        "label": quote.label,
+        "price": float(quote.price),
+        "change_pct": float(quote.change_pct),
+        "time": observed.astimezone(KST),
+        "age_seconds": age_seconds,
+        "fresh": age_seconds <= 20 * 60,
+        "source": "Yahoo query1/query2 교차확인",
+    }
+
+
+def _mof_jgb2_context() -> dict:
+    text, error = fetch_text(
+        MOF_JGB_YIELDS,
+        UA,
+        timeout=20,
+        attempts=2,
+        accept="text/csv,text/plain,*/*",
+    )
+    if error or not text:
+        raise RuntimeError(error or "MOF JGB CSV empty")
+
+    rows = list(csv.reader(io.StringIO(text)))
+    header_idx = next(
+        (
+            i
+            for i, row in enumerate(rows[:12])
+            if any(clean(cell).lower() == "date" for cell in row)
+        ),
+        None,
+    )
+    if header_idx is None:
+        raise RuntimeError("MOF JGB CSV header missing")
+
+    header = [clean(cell) for cell in rows[header_idx]]
+    normalized = [re.sub(r"[^a-z0-9]", "", x.lower()) for x in header]
+
+    def col(*candidates: str) -> int:
+        wanted = {re.sub(r"[^a-z0-9]", "", x.lower()) for x in candidates}
+        for i, value in enumerate(normalized):
+            if value in wanted:
+                return i
+        raise RuntimeError(f"MOF JGB 2Y column missing: {header}")
+
+    date_idx = col("Date")
+    y2_idx = col("2", "2Y", "2 year", "2-year")
+    values = []
+    for row in rows[header_idx + 1 :]:
+        if len(row) <= max(date_idx, y2_idx):
+            continue
+        date = clean(row[date_idx])
+        try:
+            value = float(clean(row[y2_idx]).replace("%", ""))
+        except Exception:
+            continue
+        if date:
+            values.append((date, value))
+    if len(values) < 2:
+        raise RuntimeError("MOF JGB 2Y observations insufficient")
+
+    (prev_date, prev), (date, value) = values[-2], values[-1]
+    return {
+        "date": date,
+        "value": value,
+        "change_bp": (value - prev) * 100,
+        "prev_date": prev_date,
+        "source": "일본 재무성 국채 금리 CSV",
+        "fresh_for_intraday": False,
+        "note": "15시 종가 기준·다음 영업일 09:30 공개이므로 BOJ 직후 반응 판정에는 사용하지 않음",
+    }
+
+
+def market_context() -> dict:
+    out: dict = {}
+
     try:
         from yen_carry_fx_shock import fetch_move
 
         move = fetch_move()
-        return {
+        out["usd_jpy"] = {
             "price": move.latest_price,
             "time": dt.datetime.fromtimestamp(move.latest_epoch, UTC).astimezone(KST),
             "m15": move.change_15m_pct,
             "m30": move.change_30m_pct,
+            "m60": move.change_60m_pct,
             "drawdown": move.sustained_drawdown_pct,
+            "source": "Yahoo query1/query2 5분 데이터 교차확인",
         }
-    except Exception:
-        return None
+        out["fx_volatility_proxy"] = {
+            "m15_abs": abs(float(move.change_15m_pct)),
+            "m30_abs": abs(float(move.change_30m_pct)),
+            "m60_abs": abs(float(move.change_60m_pct)),
+            "label": "USD/JPY 단기 실현변동 프록시",
+            "jyvix_status": "Cboe JYVIX는 자동 추출하지 않음",
+            "jyvix_source": CBOE_JYVIX,
+        }
+    except Exception as exc:
+        out["usd_jpy_error"] = f"{type(exc).__name__}: {exc}"
+
+    for key, out_key in (
+        ("nikkei_cash", "nikkei"),
+        ("nasdaq_future", "nasdaq_future"),
+    ):
+        try:
+            out[out_key] = _quote_context(key)
+        except Exception as exc:
+            out[out_key + "_error"] = f"{type(exc).__name__}: {exc}"
+
+    try:
+        out["jgb2"] = _mof_jgb2_context()
+    except Exception as exc:
+        out["jgb2_error"] = f"{type(exc).__name__}: {exc}"
+
+    return out
 
 
-def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tuple[str, str, dict]:
+def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) -> tuple[str, str, dict]:
     emoji = LEVEL_EMOJI[signal.level]
     title = f"🏦 {emoji} BOJ 정책경로 변화"
 
@@ -1280,17 +1391,59 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         lines.append("- 위험자산 의미: 부담 확대 가능 — 매파적 속도 가속 또는 대폭 인상 요구가 실제로 확인된 경우입니다.")
     else:
         lines.append("- 위험자산 의미: 중립·추가 확인 필요 — 정책결정만으로 주가 방향을 단정하지 않습니다.")
-    lines.append("- 확인 필요: USD/JPY · Nikkei · Nasdaq 선물 · JGB 2년물 · FX 변동성")
-    if fx:
+    lines.append("- 확인 대상: USD/JPY · Nikkei 225 · Nasdaq 100 선물 · JGB 2년물 · FX 변동성")
+
+    market = market or {}
+    usd = market.get("usd_jpy")
+    if usd:
         lines.extend(
             [
-                f"- USD/JPY {fx['price']:.3f} / 15분 {fx['m15']:+.2f}% / 30분 {fx['m30']:+.2f}%",
-                f"- 최근 고점 대비 변화 {fx['drawdown']:+.2f}%",
-                "- 환율 급변·미일 단기금리차·변동성·캐리 투자통화 확산은 기존 엔캐리 복합 수급 알림에서 확인합니다.",
+                f"- USD/JPY {usd['price']:.3f} / 15분 {usd['m15']:+.2f}% / 30분 {usd['m30']:+.2f}% / 60분 {usd['m60']:+.2f}%",
+                f"- USD/JPY 최근 고점 대비 {usd['drawdown']:+.2f}% · {usd['source']}",
             ]
         )
     else:
-        lines.append("- USD/JPY 실시간 교차조회 실패 — 정책경로 판정에는 사용하지 않음")
+        lines.append(f"- USD/JPY: 확인 불가 — {market.get('usd_jpy_error', '실시간 데이터 없음')}")
+
+    nikkei = market.get("nikkei")
+    if nikkei:
+        freshness = "신선" if nikkei["fresh"] else f"지연 {nikkei['age_seconds']/60:.0f}분"
+        lines.append(
+            f"- Nikkei 225 {nikkei['price']:.2f} / 전일 대비 {nikkei['change_pct']:+.2f}% / {freshness} · {nikkei['source']}"
+        )
+    else:
+        lines.append(f"- Nikkei 225: 확인 불가 — {market.get('nikkei_error', '데이터 없음')}")
+
+    nq = market.get("nasdaq_future")
+    if nq:
+        freshness = "신선" if nq["fresh"] else f"지연 {nq['age_seconds']/60:.0f}분"
+        lines.append(
+            f"- Nasdaq 100 선물 {nq['price']:.2f} / 전일 대비 {nq['change_pct']:+.2f}% / {freshness} · {nq['source']}"
+        )
+    else:
+        lines.append(f"- Nasdaq 100 선물: 확인 불가 — {market.get('nasdaq_future_error', '데이터 없음')}")
+
+    jgb2 = market.get("jgb2")
+    if jgb2:
+        lines.append(
+            f"- JGB 2년물 공식 종가 {jgb2['value']:.3f}% ({jgb2['date']}) / 직전 대비 {jgb2['change_bp']:+.1f}bp"
+        )
+        lines.append(f"  · {jgb2['note']} · {jgb2['source']}")
+    else:
+        lines.append(f"- JGB 2년물: 확인 불가 — {market.get('jgb2_error', '공식 데이터 없음')}")
+
+    vol = market.get("fx_volatility_proxy")
+    if vol:
+        lines.append(
+            f"- FX 변동성 프록시: USD/JPY 절대변동 15분 {vol['m15_abs']:.2f}% / 30분 {vol['m30_abs']:.2f}% / 60분 {vol['m60_abs']:.2f}%"
+        )
+        lines.append(
+            f"  · JYVIX 수치는 자동으로 채우지 않음 — Cboe 공식 대시보드에서 별도 확인: {vol['jyvix_source']}"
+        )
+    else:
+        lines.append("- FX 변동성: 확인 불가 — JYVIX를 임의 값으로 대체하지 않음")
+
+    lines.append("- 위험자산 방향은 위 자산이 같은 방향으로 확인될 때만 BOJ 영향 가능성을 높이고, 하나만 움직이면 귀속하지 않습니다.")
 
     lines.extend(
         [
@@ -1320,7 +1473,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, fx: dict | None) -> tup
         "reason": reason,
         "signal": asdict(signal),
         "signature": signal_signature(signal),
-        "fx": fx,
+        "market": market,
         "checked_at_kst": now.isoformat(timespec="seconds"),
         "next_official_check": next_official_check(now),
     }
@@ -1394,7 +1547,7 @@ def main() -> int:
         print(json.dumps({"alerted": False, "reason": "no_material_change"}, ensure_ascii=False))
         return 0
 
-    title, body, payload = build(selected, selected_reason, now, fx_context())
+    title, body, payload = build(selected, selected_reason, now, market_context())
     TITLE.write_text(title + "\n", encoding="utf-8")
     BODY.write_text(body + "\n", encoding="utf-8")
     DATA.write_text(json.dumps(payload, ensure_ascii=False, indent=2, default=str) + "\n", encoding="utf-8")
