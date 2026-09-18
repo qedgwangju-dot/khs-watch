@@ -35,8 +35,8 @@ S.headers.update({
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 })
 
-ICI_COMBINED = "https://www.ici.org/research/stats/combined_flows"
-ICI_MMF = "https://www.ici.org/research/stats/mmf"
+ICI_COMBINED = "https://www.iciglobal.org/research/stats/combined_flows"
+ICI_MMF = "https://www.iciglobal.org/research/stats/mmf"
 FINRA_MARGIN = "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics"
 BING_Bofa = 'BofA EPFR US stocks money market Reuters'
 BING_LIPPER = 'LSEG Lipper U.S. equity funds money market Reuters'
