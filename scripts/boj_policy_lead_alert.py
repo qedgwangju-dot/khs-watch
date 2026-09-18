@@ -1805,6 +1805,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         *policy_detail,
         "",
         "【시장 반응 | 이벤트 이후】",
+        "- 확인 대상: USD/JPY · Nikkei 225 · Nasdaq 100 선물 · JGB 2년물 · FX 변동성",
         *reaction_lines,
     ]
 
