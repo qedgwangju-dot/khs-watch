@@ -42,6 +42,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -181,13 +183,31 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/boj_policy_lead_alert_state.json
-          if git diff --cached --quiet; then
-            echo "BOJ 정책경로 상태 변경 없음"
-          else
-            git commit -m "Update BOJ policy lead alert state"
-            git pull --rebase origin main
-            git push
-          fi
+
+          snapshot="$(mktemp)"
+          cp data/boj_policy_lead_alert_state.json "$snapshot"
+
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$snapshot" data/boj_policy_lead_alert_state.json
+            git add data/boj_policy_lead_alert_state.json
+
+            if git diff --cached --quiet; then
+              echo "BOJ 정책경로 상태 변경 없음 또는 동일한 최신 상태가 이미 반영됨"
+              exit 0
+            fi
+
+            git commit -m "Update BOJ policy path alert state"
+            if git push origin HEAD:main; then
+              echo "BOJ 정책경로 상태 저장 완료"
+              exit 0
+            fi
+
+            sleep $((attempt * 3))
+          done
+
+          echo "BOJ 정책경로 상태 저장 실패 — 텔레그램 송출 확인과 상태 저장을 구분해 재시도 필요" >&2
+          exit 1
 
 # push self-test is intentionally enabled so changes to this monitor validate immediately.
