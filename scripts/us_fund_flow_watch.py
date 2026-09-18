@@ -35,7 +35,7 @@ S.headers.update({
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 })
 
-ICI_COMBINED = "https://www.iciglobal.org/research/stats/combined_flows"
+ICI_COMBINED = "https://www.ici.org/research/stats/combined_flows"
 ICI_MMF = "https://www.iciglobal.org/research/stats/mmf"
 FINRA_MARGIN = "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics"
 BING_Bofa = 'BofA EPFR US stocks money market Reuters'
@@ -357,8 +357,14 @@ def news_items(query):
 
 def extract_article_body(url):
     try:
-        r = get(url, timeout=25)
-        soup = BeautifulSoup(r.text, "html.parser")
+        try:
+            r = get(url, timeout=25)
+            raw_html = r.text
+            final_url = r.url
+        except Exception:
+            raw_html = browser_html(url)
+            final_url = url
+        soup = BeautifulSoup(raw_html, "html.parser")
         bodies = []
         for s in soup.find_all("script", attrs={"type": "application/ld+json"}):
             try:
@@ -410,7 +416,7 @@ def parse_reuters(kind):
         }],
         "lipper": [{
             "title": "Global equity fund outflows hit nine-month high on inflation fears - Reuters",
-            "link": "https://www.reuters.com/world/china/global-markets-flows-graphic-pix-2026-09-18/",
+            "link": "https://www.reuters.com/business/us-equity-funds-post-fourth-weekly-outflow-inflation-worries-rate-concerns-2026-09-18/",
             "pub": "Fri, 18 Sep 2026 00:00:00 GMT",
             "desc": "LSEG Lipper global equity fund flows Reuters",
         }],
