@@ -134,6 +134,39 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertIsNone(signal.assessment_vote_for)
         self.assertIsNone(signal.assessment_vote_against)
 
+    def test_sparse_current_decision_is_filled_from_verified_event_context(self):
+        sparse = classify(
+            self.mk(
+                "BOJ raises interest rates to 31-year high in widely expected move - Reuters",
+                "The move was widely expected.",
+                hour=0,
+            )
+        )
+        merged = enrich_decision_context([sparse])[0]
+        self.assertAlmostEqual(merged.policy_rate, 1.25)
+        self.assertEqual(merged.hike_bp, 25)
+        self.assertEqual((merged.vote_for, merged.vote_against), (7, 2))
+        self.assertEqual(merged.dissent_direction, "hold")
+        self.assertEqual(merged.dissenters, ("아사다", "사토"))
+        self.assertTrue(merged.expected_move)
+        self.assertTrue(merged.hawkish_tail_50bp)
+        self.assertIsNone(merged.assessment_vote_for)
+        self.assertIsNone(merged.assessment_vote_against)
+
+    def test_verified_event_fallback_does_not_apply_to_future_meeting(self):
+        future = Item(
+            title="BOJ raises interest rates in expected move - Reuters",
+            source="Reuters",
+            link="https://example.com/future",
+            published=dt.datetime(2026, 10, 30, 12, 0, tzinfo=KST),
+            description="The move was widely expected.",
+        )
+        signal = classify(future)
+        merged = enrich_decision_context([signal])[0]
+        self.assertIsNone(merged.policy_rate)
+        self.assertIsNone(merged.vote_for)
+        self.assertIsNone(merged.dissent_direction)
+
     def test_decision_context_merges_actual_dissent_but_not_predecision_hawkish_tail(self):
         base = classify(
             self.mk(
