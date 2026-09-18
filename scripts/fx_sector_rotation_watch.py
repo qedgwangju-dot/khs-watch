@@ -48,6 +48,12 @@ DEFENSE = [
     ("LIG넥스원", "079550"),
     ("한국항공우주", "047810"),
 ]
+AUTOMOTIVE = [
+    ("현대차", "005380"),
+    ("기아", "000270"),
+    ("현대모비스", "012330"),
+    ("HL만도", "204320"),
+]
 COUNTER = [
     ("대한항공", "003490"),
     ("제주항공", "089590"),
@@ -239,19 +245,25 @@ def build_alert(
     kospi: dict[str, Any],
     ship_rows: list[dict[str, Any]],
     defense_rows: list[dict[str, Any]],
+    auto_rows: list[dict[str, Any]],
     counter_rows: list[dict[str, Any]],
     ship: dict[str, Any],
     defense: dict[str, Any],
+    auto: dict[str, Any],
     counter: dict[str, Any],
     level: int,
 ) -> str:
     after_close = now.time() > MARKET_CLOSE
+    confirmed_labels = [
+        label for label, stats in (("조선", ship), ("방산", defense), ("자동차", auto))
+        if stats.get("confirmed")
+    ]
     if level >= 2:
-        verdict = "🔴 <b>강한 환율 민감 업종 로테이션</b> — 환율 강한 반등과 조선·방산 동반 상대강세 확인"
-    elif ship.get("confirmed") and defense.get("confirmed"):
-        verdict = "🟠 <b>환율 민감 업종 로테이션 확인</b> — 조선·방산 동반 상대강세"
+        verdict = "🔴 <b>강한 환율 민감 업종 로테이션</b> — 환율 강한 반등과 수출형 업종 2개 이상 상대강세 확인"
+    elif len(confirmed_labels) >= 2:
+        verdict = "🟠 <b>환율 민감 업종 로테이션 확인</b> — " + "·".join(confirmed_labels) + " 동반 상대강세"
     else:
-        confirmed = "조선" if ship.get("confirmed") else "방산"
+        confirmed = confirmed_labels[0] if confirmed_labels else "수출형 업종"
         verdict = f"🟡 <b>부분 로테이션</b> — {confirmed} 상대강세 우선 확인"
 
     counter_note = ""
@@ -291,6 +303,7 @@ def build_alert(
         "<b>업종 상대강도</b>",
         *fmt_stats("조선", ship, float(kospi["change_pct"])),
         *fmt_stats("방산", defense, float(kospi["change_pct"])),
+        *fmt_stats("자동차", auto, float(kospi["change_pct"])),
         *fmt_stats("달러비용 민감 업종", counter, float(kospi["change_pct"])),
     ]
     if counter_note:
@@ -304,17 +317,20 @@ def build_alert(
         f"<b>방산 {reaction_label}</b>",
         *quote_lines(defense_rows),
         "",
+        f"<b>자동차 {reaction_label}</b>",
+        *quote_lines(auto_rows),
+        "",
         "<b>반대편 확인</b>",
         *quote_lines(counter_rows),
         "",
         "<b>해석</b>",
         "• 원/달러 반등은 원화 강세로 약화됐던 수출형 산업재의 환산실적 우려를 완화하는 방향입니다.",
-        "• 다만 조선·방산 주가를 환율 하나로 설명하지 않습니다. 수주잔고·신규수주·실적 개선·낙폭 과대·정책/지정학 재료를 별도로 확인합니다.",
-        "• 조선은 외화 수주와 환헤지 구조, 방산은 계약통화·환헤지·매출 인식 시점·현지조달 비중에 따라 실제 이익 민감도가 달라집니다.",
+        "• 다만 조선·방산·자동차 주가를 환율 하나로 설명하지 않습니다. 수주잔고·신규수주·실적 개선·낙폭 과대·정책/지정학 재료를 별도로 확인합니다.",
+        "• 조선은 외화 수주와 환헤지 구조, 방산은 계약통화·환헤지·매출 인식 시점·현지조달 비중, 자동차는 해외판매·현지생산·환헤지 비중에 따라 실제 이익 민감도가 달라집니다.",
         "",
         "<b>무효화 조건</b>",
         "• 원/달러 반등폭이 이번 신호의 50% 이상 반납하거나",
-        "• 조선·방산이 모두 KOSPI 대비 상대강도 +1%p를 잃으면 환율 로테이션 신호 약화로 봅니다.",
+        "• 조선·방산·자동차가 모두 KOSPI 대비 상대강도 +1%p를 잃으면 환율 로테이션 신호 약화로 봅니다.",
         "",
         "<b>원문</b>",
         f'• <a href="{html.escape(str(fx["source"]), quote=True)}">원/달러 시세</a>',
@@ -329,7 +345,7 @@ def build_alert(
 
 
 def build_weakening_alert(now: dt.datetime, fx: dict[str, Any], state: dict[str, Any], kospi_pct: float,
-                          ship: dict[str, Any], defense: dict[str, Any]) -> str:
+                          ship: dict[str, Any], defense: dict[str, Any], auto: dict[str, Any]) -> str:
     sig = state.get("last_signal") or {}
     peak = float(sig.get("rebound_krw") or 0.0)
     low = float(sig.get("session_low") or fx["value"])
@@ -341,8 +357,9 @@ def build_weakening_alert(now: dt.datetime, fx: dict[str, Any], state: dict[str,
         f"• 직전 신호 반등폭 <b>+{peak:,.1f}원</b> → 현재 저점 대비 <b>+{cur_rebound:,.1f}원</b>",
         f"• 조선 KOSPI 대비 상대강도: <b>{float(ship.get('relative') or 0):+.2f}%p</b>",
         f"• 방산 KOSPI 대비 상대강도: <b>{float(defense.get('relative') or 0):+.2f}%p</b>",
+        f"• 자동차 KOSPI 대비 상대강도: <b>{float(auto.get('relative') or 0):+.2f}%p</b>",
         f"• KOSPI: <b>{kospi_pct:+.2f}%</b>",
-        "• 판정: 환율 반등분 50% 이상 반납 또는 조선·방산 동반 상대강도 소멸 — 직전 로테이션 신호의 설명력이 약해졌습니다.",
+        "• 판정: 환율 반등분 50% 이상 반납 또는 조선·방산·자동차 상대강도 소멸 — 직전 로테이션 신호의 설명력이 약해졌습니다.",
         "",
         VALIDATION_FOOTER,
     ])
@@ -383,10 +400,12 @@ def main() -> int:
 
     ship_rows = fetch_group(SHIPBUILDING)
     defense_rows = fetch_group(DEFENSE)
+    auto_rows = fetch_group(AUTOMOTIVE)
     counter_rows = fetch_group(COUNTER)
     benchmark = float(kospi["change_pct"])
     ship = group_stats(ship_rows, benchmark)
     defense = group_stats(defense_rows, benchmark)
+    auto = group_stats(auto_rows, benchmark)
     counter = group_stats(counter_rows, benchmark)
 
     fx_hit = rebound_krw >= FX_REBOUND_KRW or rebound_pct >= FX_REBOUND_PCT
@@ -394,7 +413,11 @@ def main() -> int:
         (daily_krw is not None and daily_krw >= FX_STRONG_KRW)
         or (daily_pct is not None and daily_pct >= FX_STRONG_PCT)
     )
-    sectors_confirmed = int(bool(ship.get("confirmed"))) + int(bool(defense.get("confirmed")))
+    sectors_confirmed = (
+        int(bool(ship.get("confirmed")))
+        + int(bool(defense.get("confirmed")))
+        + int(bool(auto.get("confirmed")))
+    )
 
     level = 0
     if fx_hit and sectors_confirmed >= 1:
@@ -406,7 +429,7 @@ def main() -> int:
     if level > sent_level:
         ALERT_PATH.write_text(
             build_alert(now, fx, session_low, rebound_krw, rebound_pct, daily_krw, daily_pct,
-                        kospi, ship_rows, defense_rows, counter_rows, ship, defense, counter, level) + "\n",
+                        kospi, ship_rows, defense_rows, auto_rows, counter_rows, ship, defense, auto, counter, level) + "\n",
             encoding="utf-8",
         )
         state["sent_level"] = level
@@ -419,6 +442,7 @@ def main() -> int:
             "rebound_krw": rebound_krw,
             "ship_relative": ship.get("relative"),
             "defense_relative": defense.get("relative"),
+            "auto_relative": auto.get("relative"),
             "after_close": now.time() > MARKET_CLOSE,
         }
         write_status(now, f"신규 로테이션 레벨 {level} 감지")
@@ -432,9 +456,10 @@ def main() -> int:
             rel_lost = (
                 float(ship.get("relative") or -999) < SECTOR_RELATIVE_PPT
                 and float(defense.get("relative") or -999) < SECTOR_RELATIVE_PPT
+                and float(auto.get("relative") or -999) < SECTOR_RELATIVE_PPT
             )
             if half_retrace or rel_lost:
-                ALERT_PATH.write_text(build_weakening_alert(now, fx, state, benchmark, ship, defense) + "\n", encoding="utf-8")
+                ALERT_PATH.write_text(build_weakening_alert(now, fx, state, benchmark, ship, defense, auto) + "\n", encoding="utf-8")
                 state["sent_weakening"] = True
                 write_status(now, "직전 로테이션 신호 약화")
             else:
@@ -454,6 +479,7 @@ def main() -> int:
         "kospi_pct": benchmark,
         "ship": ship,
         "defense": defense,
+        "auto": auto,
         "counter": counter,
     }
     save_pending(state)
