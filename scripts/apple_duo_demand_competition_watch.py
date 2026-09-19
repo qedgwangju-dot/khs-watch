@@ -213,6 +213,34 @@ def _entity_is_closest(
     return other is None or target < other
 
 
+def _nearest_direction(low: str, pos: int, max_distance: int = 90) -> int:
+    candidates: list[tuple[int, int]] = []
+    for word in UP_WORDS:
+        start = 0
+        while True:
+            idx = low.find(word, start)
+            if idx < 0:
+                break
+            dist = abs(pos - (idx + len(word) // 2))
+            if dist <= max_distance:
+                candidates.append((dist, 1))
+            start = idx + 1
+    for word in DOWN_WORDS:
+        start = 0
+        while True:
+            idx = low.find(word, start)
+            if idx < 0:
+                break
+            dist = abs(pos - (idx + len(word) // 2))
+            if dist <= max_distance:
+                candidates.append((dist, -1))
+            start = idx + 1
+    if not candidates:
+        return 0
+    candidates.sort(key=lambda x: x[0])
+    return candidates[0][1]
+
+
 def _sales_pct_for_entity(
     blob: str,
     target_markers: tuple[str, ...],
@@ -228,7 +256,7 @@ def _sales_pct_for_entity(
         if not _entity_is_closest(low, m.start(), target_markers, other_markers):
             continue
         value = abs(float(m.group(1)))
-        direction = _direction(window)
+        direction = _nearest_direction(low, m.start())
         if m.group(1).startswith("-"):
             direction = -1
         elif m.group(1).startswith("+"):
