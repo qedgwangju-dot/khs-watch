@@ -41,6 +41,15 @@ SHIPMENT = re.compile(
     re.I,
 )
 
+AUDIT_CAMPAIGN = re.compile(
+    r'(?:宁波|寧波|상하이|上海|杭州|항저우|厦门|廈門|샤먼).{0,120}'
+    r'(?:审厂|審廠|生产审核|生產審核|양산\s*심사|생산\s*심사|供应链|供應鏈|공급망)|'
+    r'(?:审厂|審廠|生产审核|生產審核|양산\s*심사|생산\s*심사).{0,120}'
+    r'(?:宁波|寧波|上海|杭州|厦门|廈門|상하이|항저우|샤먼)|'
+    r'(?:5,?000|5000)\s*(?:台|대).{0,100}(?:订单|訂單|발주|주문|审厂|審廠)',
+    re.I | re.S,
+)
+
 PARENT_KEY = hashlib.sha256(b'tesla-optimus|2026q3|scale-order-5000-and-supplier-audit').hexdigest()
 OLD_KEYS = {
     hashlib.sha256(b'tesla-optimus|scale-order-5000|supplier-audit').hexdigest(),
@@ -94,6 +103,8 @@ def key(item: dict) -> str:
         return hashlib.sha256(f'tesla-optimus|actual-weekly-production|{units or "unknown"}'.encode()).hexdigest()
     if opt.WEEKLY_TARGET.search(text):
         return hashlib.sha256(f'tesla-optimus|weekly-capacity-target|{units or "unknown"}'.encode()).hexdigest()
+    if AUDIT_CAMPAIGN.search(text):
+        return hashlib.sha256(b'tesla-optimus|2026-09|supplier-production-audit-campaign').hexdigest()
     if not _is_parent_story(text):
         return _orig_key(item)
 
