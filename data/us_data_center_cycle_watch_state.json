@@ -11,13 +11,13 @@
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
     "reported_mom_pct": 6.2,
     "reported_yoy_pct": 57.2,
-    "retrieved_at_utc": "2026-09-19T14:39:45.250422+00:00",
+    "retrieved_at_utc": "2026-09-19T18:09:43.792497+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
     "year_ago_saar_musd": 47810
   },
   "dodge": {
-    "article_sha256": "baca2da2bf43218d99d82ffefaa85abcfa58f58a7a210c7a01b3095cf5ab279e",
+    "article_sha256": "9b5e11af0da6b40d47ea05c752c5828f88990f968d475117bae5e02b8ec3be29",
     "commercial_change_pct": 70.0,
     "data_center_mention_count": 6,
     "data_center_projects": [
@@ -38,7 +38,7 @@
     "nonresidential_change_pct": 57.7,
     "office_dc_change_pct": 107.9,
     "published": "2026-08-20T21:00:03+00:00",
-    "retrieved_at_utc": "2026-09-19T14:39:45.801885+00:00",
+    "retrieved_at_utc": "2026-09-19T18:09:44.165844+00:00",
     "source": "Dodge Construction Network Total Construction Starts",
     "title": "Construction Starts Rebound July 2026",
     "total_change_pct": 25.6,
@@ -48,11 +48,11 @@
   },
   "format_version": 5,
   "fx": {
-    "basis_kst": "2026-09-18 일일 기준 · ECB/Frankfurter · 조회 2026-09-19 23:39 KST · 보조 API 2026-09-19 · 차이 0.09% · 일중 기준시각 차이 가능",
+    "basis_kst": "2026-09-18 일일 기준 · ECB/Frankfurter · 조회 2026-09-20 03:09 KST · 보조 API 2026-09-19 · 차이 0.09% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "source_type": "일일 기준환율",
     "usdkrw": 1388.1
   },
-  "updated_at_utc": "2026-09-19T14:39:44.565894+00:00",
+  "updated_at_utc": "2026-09-19T18:09:42.516752+00:00",
   "watch": "US data center construction starts vs spending"
 }
