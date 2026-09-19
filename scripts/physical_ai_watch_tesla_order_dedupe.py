@@ -103,6 +103,8 @@ def key(item: dict) -> str:
         return hashlib.sha256(f'tesla-optimus|actual-weekly-production|{units or "unknown"}'.encode()).hexdigest()
     if opt.WEEKLY_TARGET.search(text):
         return hashlib.sha256(f'tesla-optimus|weekly-capacity-target|{units or "unknown"}'.encode()).hexdigest()
+    if opt.PRODUCTION_STARTED.search(text):
+        return hashlib.sha256(b'tesla-optimus|actual-production-started').hexdigest()
     if AUDIT_CAMPAIGN.search(text):
         return hashlib.sha256(b'tesla-optimus|2026-09|supplier-production-audit-campaign').hexdigest()
     if not _is_parent_story(text):
