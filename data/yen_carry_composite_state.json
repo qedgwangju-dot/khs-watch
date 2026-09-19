@@ -17,14 +17,14 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 72649.82455706596,
+  "fx_age_seconds": 80498.31965994835,
   "fx_signal_eligible": false,
   "initialized": true,
   "policy_path": {
     "cftc_net_short": 0.0,
     "cftc_net_short_change": 0.0,
     "cftc_net_short_pct_oi": 0.0,
-    "checked_at_kst": "2026-09-20T02:11:29+09:00",
+    "checked_at_kst": "2026-09-20T04:21:51+09:00",
     "elevated_vol": false,
     "fx_vol_ratio": 1.3553551504137589,
     "gradual_absorption": true,
@@ -57,51 +57,13 @@
     "yen_shock": false
   },
   "real_rate_overlay": {
-    "available": true,
-    "checked_at_kst": "2026-09-20T02:11:35+09:00",
+    "available": false,
+    "checked_at_kst": "2026-09-20T04:22:01+09:00",
+    "errors": [
+      "RuntimeError: proxy race timeout=20s HTTPError: HTTP Error 403: Forbidden | direct race timeout=10s TimeoutError: The read operation timed out"
+    ],
     "initialized": true,
-    "inputs": {
-      "boj_effective_date": null,
-      "boj_policy_rate": 1.25,
-      "fed_lower": 3.75,
-      "fed_midpoint": 3.875,
-      "fed_observation_date": "2026-09-19",
-      "fed_upper": 4.0,
-      "jp_cpi_period": "2026-08",
-      "jp_cpi_yoy": 1.9,
-      "us_cpi_period": "2026-08",
-      "us_cpi_yoy": 3.3965478924364856
-    },
-    "metrics": {
-      "changed_sources": [],
-      "jp_real_policy_rate": -0.6499999999999999,
-      "market_rate_direction": "중립",
-      "nominal_policy_gap": 2.625,
-      "official_event_changed": false,
-      "policy_gap_change_pp": 0.0,
-      "real_gap_change_pp": 0.0,
-      "real_rate_direction": "중립",
-      "signal_alignment": "확인 대기",
-      "structural_bias": "미국 실질금리 우위 — 엔화 구조적 약세 압력",
-      "us_jp_2y_spread_change_bp": 0.0,
-      "us_jp_real_gap": 1.1284521075635143,
-      "us_real_policy_rate": 0.4784521075635144
-    },
-    "note": "사후 실질정책금리는 후행 구조지표로만 사용하며, 단독으로 🟠·🔴 엔캐리 청산 경보를 만들지 않음.",
-    "source_fingerprint": {
-      "boj_policy_rate": 1.25,
-      "fed_midpoint": 3.875,
-      "jp_cpi_period": "2026-08",
-      "jp_cpi_yoy": 1.9,
-      "us_cpi_period": "2026-08",
-      "us_cpi_yoy": 3.3965
-    },
-    "thresholds": {
-      "market_direction_bp": 10.0,
-      "policy_gap_alert_pp": 0.25,
-      "real_direction_pp": 0.1,
-      "real_gap_alert_pp": 0.25
-    }
+    "note": "공식 원천 조회 실패 시 실질금리 신호를 점수에 넣지 않음."
   },
   "rebuild_label": "엔화 재약세·캐리 재구축 압력 강화",
   "rebuild_level": 2,
@@ -118,11 +80,11 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-09-20T02:11:07+09:00"
+    "updated_at_kst": "2026-09-20T04:21:45+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-09-20T02:10:06+09:00",
+  "updated_at_kst": "2026-09-20T04:21:02+09:00",
   "values": {
     "cftc_net_short": 0,
     "cftc_net_short_pct_oi": 0.0,
