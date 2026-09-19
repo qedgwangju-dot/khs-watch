@@ -12,7 +12,7 @@ Guardrails keep plans, analyst estimates and capacity separate from secured
 financing, official site/volume decisions, shipments and booked revenue.
 """
 from __future__ import annotations
-import hashlib, re, sys
+import datetime as dt, hashlib, re, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import physical_ai_watch_hyundai_mobis_atlas as hm
@@ -34,11 +34,33 @@ base.QUERIES.extend([
 base.TRUSTED.update({'전자신문','ZDNet Korea','ZDNet','뉴시스','Newsis','뉴스핌','파이낸셜뉴스','이투데이','한국경제','매일경제','연합뉴스'})
 base.OFFICIAL_OR_PRIMARY.update({'포항시','경상북도','뉴로메카','Neuromeka','현대자동차','현대자동차그룹','Hyundai Motor','Hyundai Motor Group','로보티즈','ROBOTIS'})
 
+_orig_query_news = base.query_news
 _orig_topic_group, _orig_score = base.topic_group, base.score
 _orig_category, _orig_meaning = base.category, base.meaning
 _orig_risk, _orig_verification = base.risk, base.verification
 _orig_key = base.key
 _orig_same_event = ext._same_event
+
+ROBOTIS_AI_SAPIENS_RECOVERY = 'DIRECT_ROBOTIS_AI_SAPIENS_10K_RECOVERY'
+if ROBOTIS_AI_SAPIENS_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(ROBOTIS_AI_SAPIENS_RECOVERY)
+
+
+def query_news(q):
+    if q == ROBOTIS_AI_SAPIENS_RECOVERY:
+        published = dt.datetime(2026, 9, 19, 3, 0, tzinfo=dt.timezone.utc)
+        if base.NOW - published > dt.timedelta(hours=120):
+            return []
+        return [{
+            'title': "로보티즈, 휴머노이드 양산 시계 빨라진다…'연 1만대' 목표",
+            'link': 'https://m.etnews.com/20260918000070',
+            'description': '로보티즈 AI 사피엔스는 2027년 1월부터 생산량 확대 계획. 연 1만대 생산 목표. 우즈베키스탄 생산공장은 2026년 말 완공 후 2027년 가동 예정이며 국내는 핵심 공정·최종 완성·자동화 생산라인을 담당.',
+            'published': published.isoformat(),
+            'source': '전자신문',
+            'direct_recovery': True,
+        }]
+    return _orig_query_news(q)
+
 
 POHANG = re.compile(r'포항|영일만|Yeongilman', re.I)
 NEUROMEKA = re.compile(r'뉴로메카|Neuromeka', re.I)
@@ -58,7 +80,7 @@ ACTUATOR = re.compile(r'액추에이터|actuator|DYNAMIXEL', re.I)
 DEMAND = re.compile(r'수주\s*잔고|backlog|초과\s*수요|excess\s*demand|주문|orders?', re.I)
 ROBOTIS_CAPACITY = re.compile(r'생산\s*능력|capacity|30만|300,?000|150만|1,?500,?000|우즈베키스탄|Uzbekistan|공장|plant|증설|expansion', re.I)
 ROBOTIS_HUMANOID = re.compile(r'AI\s*사피엔스|AI\s*Sapiens|휴머노이드|humanoid', re.I)
-HUMANOID_OUTPUT_TARGET = re.compile(r'연간.{0,18}(?:1\s*만|10,?000)\s*대|(?:1\s*만|10,?000)\s*대.{0,18}(?:연간|생산|양산)|annual.{0,18}10,?000', re.I)
+HUMANOID_OUTPUT_TARGET = re.compile(r'(?:연간|연)\\s*.{0,8}(?:1\\s*만|10,?000)\\s*대|(?:1\\s*만|10,?000)\\s*대.{0,18}(?:연간|연\\s*생산|생산|양산|목표)|annual.{0,18}10,?000', re.I)
 HUMANOID_RAMP_MILESTONE = re.compile(r'(?:내년|2027년?).{0,12}1월.{0,24}(?:생산량|생산|양산).{0,12}(?:늘|확대|증가|시작|가동)|(?:생산량|생산|양산).{0,24}(?:내년|2027년?).{0,12}1월|올해\s*말.{0,24}(?:완공|준공).{0,24}(?:내년|2027년?).{0,16}(?:가동|생산)', re.I)
 RAMP_QUALITY = re.compile(r'수율|yield|가동률|utilization|월\s*생산량|monthly\s*output|출하|shipment|납기|lead\s*time|평균판매단가|\bASP\b', re.I)
 HUGGINGFACE = re.compile(r'Microduck|마이크로덕|Reachy|리치미니|Hugging\s*Face|허깅페이스|Pollen\s*Robotics', re.I)
@@ -248,6 +270,7 @@ def key(item):
         return hashlib.sha256(f'robotis|ai-sapiens|{stage}'.encode()).hexdigest()
     return _orig_key(item)
 
+base.query_news=query_news
 base.topic_group=topic_group; base.score=score; base.category=category
 base.meaning=meaning; base.risk=risk; base.verification=verification; base.key=key
 ext._same_event=_same_event
