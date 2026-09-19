@@ -37,7 +37,7 @@ S.headers.update({
 CFTC = "https://www.cftc.gov/dea/futures/financial_lf.htm"
 CBOE = "https://www.cboe.com/us/options/market_statistics/market/"
 SOX = "https://indexes.nasdaq.com/Index/History/SOX"
-SOX_FRED = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=NASDAQSOX"
+SOX_AUX = "https://indexes.nasdaq.com/Index/Weighting/SOX"
 
 
 def get(url, timeout=35):
@@ -251,43 +251,84 @@ def parse_cboe():
 
 
 def parse_sox():
-    # Nasdaq History is the authoritative page for the completed-session percentage.
-    # The Nasdaq Overview page can roll Previous Close forward and show 0.00% after the close,
-    # so we deliberately calculate the return from History-page level and Previous Close.
-    # Prefer the server-rendered History page. This avoids the client-side Overview
-    # widget that can overwrite Previous Close with the current level after the close.
-    h = get(SOX).text
-    txt = BeautifulSoup(h, "html.parser").get_text(" ", strip=True)
+    # Nasdaq's History route reliably exposes the completed-session level, but the
+    # client/server Overview state can sometimes overwrite "Previous Close" with the
+    # latest level after the close.  Therefore:
+    #   1) current level comes from Nasdaq History;
+    #   2) previous close is cross-checked from a second Nasdaq page (Weighting);
+    #   3) if those cannot be reconciled, fail closed instead of emitting 0.00%.
+    hist_html = get(SOX).text
+    hist_txt = BeautifulSoup(hist_html, "html.parser").get_text(" ", strip=True)
 
-    m = re.search(
-        r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)",
-        txt,
+    cur = re.search(
+        r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)",
+        hist_txt,
         re.I,
     )
-    prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", txt, re.I)
-    if not m or not prev_m:
-        # Browser fallback only if the static History response lacks the data.
-        h = browser_html(SOX)
-        txt = BeautifulSoup(h, "html.parser").get_text(" ", strip=True)
-        m = re.search(
-            r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)",
-            txt,
+    if not cur:
+        # Browser fallback can recover the latest level when static SSR is incomplete.
+        hist_html = browser_html(SOX)
+        hist_txt = BeautifulSoup(hist_html, "html.parser").get_text(" ", strip=True)
+        cur = re.search(
+            r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)",
+            hist_txt,
             re.I,
         )
-        prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", txt, re.I)
-    if not m or not prev_m:
-        raise RuntimeError("SOX Nasdaq History level/previous close not found")
+    if not cur:
+        raise RuntimeError("SOX Nasdaq History current level not found")
 
-    period = m.group(1)
-    latest = float(m.group(2).replace(",", ""))
-    previous_close = float(prev_m.group(1).replace(",", ""))
-    if previous_close <= 0:
-        raise RuntimeError("SOX previous close invalid")
+    period = cur.group(1)
+    latest = float(cur.group(2).replace(",", ""))
+    displayed_net_change = float(cur.group(3).replace(",", ""))
 
+    prev_candidates = []
+
+    # First candidate: same History document.
+    p = re.search(r"Previous Close\s+([\d,]+\.\d+)", hist_txt, re.I)
+    if p:
+        prev_candidates.append(("History", float(p.group(1).replace(",", ""))))
+
+    # Second official Nasdaq page is deliberately used because its previous-close
+    # field does not share the same post-close Overview-state bug.
+    try:
+        aux_html = get(SOX_AUX).text
+        aux_txt = BeautifulSoup(aux_html, "html.parser").get_text(" ", strip=True)
+        aux_date = re.search(r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})", aux_txt, re.I)
+        aux_prev = re.search(r"Previous Close\s+([\d,]+\.\d+)", aux_txt, re.I)
+        if aux_prev and (not aux_date or aux_date.group(1) == period):
+            prev_candidates.append(("Weighting", float(aux_prev.group(1).replace(",", ""))))
+    except Exception:
+        pass
+
+    # Choose a candidate that produces a plausible daily return and is not identical
+    # to the latest level when Nasdaq itself reports a material net change.
+    chosen = None
+    for source, prev in reversed(prev_candidates):
+        if prev <= 0:
+            continue
+        implied_change = latest - prev
+        if abs(displayed_net_change) > 1 and abs(implied_change) < 0.01:
+            continue
+        chosen = (source, prev)
+        break
+
+    if chosen is None:
+        raise RuntimeError(
+            f"SOX previous close could not be reconciled: latest={latest}, "
+            f"net_change_field={displayed_net_change}, candidates={prev_candidates}"
+        )
+
+    prev_source, previous_close = chosen
     d1 = (latest / previous_close - 1) * 100
+
+    # Guard against the known bad 0.00% state and obvious parse errors.
+    if abs(displayed_net_change) > 1 and abs(d1) < 0.01:
+        raise RuntimeError("SOX nonzero move resolved to 0.00%; refusing bad value")
+
     metrics = {
         "value": latest,
         "previous_close": previous_close,
+        "previous_close_source": prev_source,
         "net_change": latest - previous_close,
         "pct": d1,
         "d1_pct": d1,
