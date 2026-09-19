@@ -146,15 +146,29 @@ def krw_trillion(bn_usd, fx):
     return bn_usd * fx["usdkrw"] / 1000.0
 
 
+def fmt_krw_trillion(v, signed=False):
+    if v is None:
+        return "원화 환산 확인 불가"
+    if signed:
+        return f"약 {v:+,.2f}조원"
+    return f"약 {v:,.2f}조원"
+
+
 def fmt_usd_bn_kr(x, fx):
     if x is None:
         return "확인 불가"
     sign = "+" if x > 0 else ""
     base = f"{sign}{x:,.2f}B달러"
-    if fx:
-        kr = krw_trillion(x, fx)
-        base += f"(약 {kr:+,.2f}조원)"
-    return base
+    kr = krw_trillion(x, fx) if fx else None
+    return f"{base}({fmt_krw_trillion(kr, signed=True)})"
+
+
+def fmt_usd_trillion_kr(x, fx):
+    if x is None:
+        return "확인 불가"
+    base = f"{x:,.3f}조달러"
+    kr = x * fx["usdkrw"] if fx else None
+    return f"{base}({fmt_krw_trillion(kr, signed=False)})"
 
 
 def first_date(text):
@@ -504,13 +518,20 @@ def source_block(x, fx):
             lines.append(f"• 미국 국내주식형 최근 4주 합계 {fmt_usd_bn_kr(x['domestic_4w'], fx)}")
     elif x["kind"] == "mmf":
         ch = m["weekly_change_bn"]
-        kr = krw_trillion(ch, fx) if fx else None
-        kr_txt = f"(약 {kr:+,.2f}조원)" if kr is not None else ""
-        lines.append(f"• MMF(단기 현금 주차성 펀드) 총자산 {m['assets_trillion']:,.3f}조달러 / 주간 {ch:+,.2f}B달러 {kr_txt}")
+        lines.append(
+            f"• MMF(단기 현금 주차성 펀드) 총자산 {fmt_usd_trillion_kr(m['assets_trillion'], fx)} "
+            f"/ 주간 {fmt_usd_bn_kr(ch, fx)}"
+        )
     elif x["kind"] == "margin":
-        lines.append(f"• 마진부채(주식담보 신용거래 차입) {m['margin_debt_bn']:,.1f}B달러 / 전월 {m['margin_debt_mom_bn']:+,.1f}B달러")
+        lines.append(
+            f"• 마진부채(주식담보 신용거래 차입) {fmt_usd_bn_kr(m['margin_debt_bn'], fx)} "
+            f"/ 전월 {fmt_usd_bn_kr(m['margin_debt_mom_bn'], fx)}"
+        )
         if m.get("cash_free_bn") is not None and m.get("margin_free_bn") is not None:
-            lines.append(f"• 현금계좌 가용현금 {m['cash_free_bn']:,.1f}B달러 / 마진계좌 가용현금 {m['margin_free_bn']:,.1f}B달러")
+            lines.append(
+                f"• 현금계좌 가용현금 {fmt_usd_bn_kr(m['cash_free_bn'], fx)} "
+                f"/ 마진계좌 가용현금 {fmt_usd_bn_kr(m['margin_free_bn'], fx)}"
+            )
     else:
         lines.append(f"• 미국 주식형 {fmt_usd_bn_kr(m.get('us_equity_bn'), fx)}")
         if m.get("global_equity_bn") is not None:
@@ -595,7 +616,10 @@ if ici_mmf:
 if finra:
     md = finra["metrics"].get("margin_debt_mom_bn")
     if md is not None:
-        interpret.append(f"FINRA 월간 마진부채: {'증가 → 레버리지 확대' if md > 0 else '감소 → 레버리지 축소'} ({md:+,.1f}B달러 MoM)")
+        interpret.append(
+            f"FINRA 월간 마진부채: {'증가 → 레버리지 확대' if md > 0 else '감소 → 레버리지 축소'} "
+            f"({fmt_usd_bn_kr(md, fx)} 전월비)"
+        )
 
 # Only compare ICI equity + ICI MMF as directional pair if reference periods are plausibly same week.
 if ici and ici_mmf:
@@ -732,6 +756,7 @@ if updates or force:
         "• FINRA 마진부채는 월간 레버리지 확인용으로 주간 펀드 흐름과 기간을 섞지 않음",
         "• MMF 유출액이 그대로 주식으로 이동했다고 단정하지 않음",
         "• 같은 기준기간·같은 수치면 원천 URL이나 문구가 바뀌어도 중복 알림하지 않음",
+        "• 모든 달러 금액은 같은 문장 바로 뒤 괄호에 한국은행 ECOS 환율 기준 원화 환산액을 함께 표시",
     ]
     if fx:
         body.append(f"• 원화 환산: 한국은행 ECOS USD/KRW {fx['usdkrw']:,.2f} ({fx['date']})")
