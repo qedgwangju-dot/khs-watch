@@ -180,16 +180,52 @@ def _direction(window: str) -> int:
     return 0
 
 
-def _sales_pct(blob: str) -> float | None:
-    # Only accept percentages located near sales/order/activation wording so
-    # market-share or discount percentages are not mistaken for demand changes.
-    demand_words = (
-        "sales", "sell-through", "orders", "preorders", "pre-orders", "activations",
-        "판매", "판매량", "예약", "주문", "개통", "개통량",
-    )
+DEMAND_METRIC_WORDS = (
+    "sales", "sell-through", "orders", "preorders", "pre-orders", "activations",
+    "판매", "판매량", "예약", "주문", "개통", "개통량",
+)
+
+
+def _nearest_marker_distance(low: str, pos: int, markers: tuple[str, ...]) -> int | None:
+    distances: list[int] = []
+    for marker in markers:
+        start = 0
+        while True:
+            idx = low.find(marker, start)
+            if idx < 0:
+                break
+            distances.append(abs(pos - (idx + len(marker) // 2)))
+            start = idx + 1
+    return min(distances) if distances else None
+
+
+def _entity_is_closest(
+    low: str,
+    pos: int,
+    target_markers: tuple[str, ...],
+    other_markers: tuple[str, ...],
+    max_distance: int = 180,
+) -> bool:
+    target = _nearest_marker_distance(low, pos, target_markers)
+    other = _nearest_marker_distance(low, pos, other_markers)
+    if target is None or target > max_distance:
+        return False
+    return other is None or target < other
+
+
+def _sales_pct_for_entity(
+    blob: str,
+    target_markers: tuple[str, ...],
+    other_markers: tuple[str, ...],
+) -> float | None:
+    # Attribute each percentage to the closest named product. This prevents a
+    # Galaxy Fold8 +10% figure from also being labeled as iPhone Duo +10%.
+    low = blob.lower()
     for m in re.finditer(r"([+\-]?\d{1,3}(?:\.\d+)?)\s*%", blob):
-        window = blob[max(0, m.start() - 100): min(len(blob), m.end() + 100)]
-        if not any(word in window.lower() for word in demand_words):
+        window = blob[max(0, m.start() - 120): min(len(blob), m.end() + 120)]
+        if not any(word in window.lower() for word in DEMAND_METRIC_WORDS):
+            continue
+        if not _entity_is_closest(low, m.start(), target_markers, other_markers):
             continue
         value = abs(float(m.group(1)))
         direction = _direction(window)
@@ -216,10 +252,12 @@ def _wait_days(blob: str) -> int | None:
     return max(candidates) if candidates else None
 
 
-def _unit_millions(blob: str) -> float | None:
+def _unit_millions_for_entity(
+    blob: str,
+    target_markers: tuple[str, ...],
+    other_markers: tuple[str, ...],
+) -> float | None:
     low = blob.lower().replace(",", "")
-    if not any(x in low for x in DIRECT_DEMAND_MARKERS):
-        return None
     vals: list[float] = []
     patterns = [
         (r"(\d+(?:\.\d+)?)\s*(?:million|mn)\s*(?:units|devices|phones|orders|preorders)?", 1.0),
@@ -228,6 +266,8 @@ def _unit_millions(blob: str) -> float | None:
     ]
     for pattern, mult in patterns:
         for m in re.finditer(pattern, low):
+            if not _entity_is_closest(low, m.start(), target_markers, other_markers):
+                continue
             value = float(m.group(1)) * mult
             if 0.01 <= value <= 100:
                 vals.append(value)
@@ -301,10 +341,27 @@ def _signal(item: dict, state: dict) -> dict | None:
     direct = any(x in low for x in DIRECT_DEMAND_MARKERS)
     competitor = any(x in low for x in COMPETITOR_MARKERS)
     linkage = any(x in low for x in LINKAGE_MARKERS)
-    pct = _sales_pct(blob)
-    wait_days = _wait_days(blob)
-    units_m = _unit_millions(blob)
-    sold_out = any(x in low for x in ("sold out", "sellout", "품절"))
+    competitor_pct = _sales_pct_for_entity(blob, COMPETITOR_MARKERS, APPLE_MARKERS)
+    direct_pct = _sales_pct_for_entity(blob, APPLE_MARKERS, COMPETITOR_MARKERS)
+
+    try:
+        published_at = dt.datetime.fromisoformat(item.get("published_at_kst") or "")
+    except Exception:
+        published_at = None
+    direct_commercial_open = bool(published_at and published_at >= APPLE_PREORDER_KST)
+
+    # Before official preorder opens, sales/preorders/activations cannot be a
+    # direct iPhone Duo commercial-demand datapoint. Competitor reaction can
+    # still be monitored during this period.
+    wait_days = _wait_days(blob) if direct_commercial_open else None
+    units_m = (
+        _unit_millions_for_entity(blob, APPLE_MARKERS, COMPETITOR_MARKERS)
+        if direct_commercial_open
+        else None
+    )
+    sold_out = direct_commercial_open and any(x in low for x in ("sold out", "sellout", "품절"))
+    if not direct_commercial_open:
+        direct_pct = None
     geo = _geo(blob)
     reasons: list[str] = []
     stage = 0
@@ -312,13 +369,18 @@ def _signal(item: dict, state: dict) -> dict | None:
     metric_key = ""
     metric_value: float | int | None = None
 
-    if competitor and linkage and pct is not None and abs(pct) >= 10:
+    if competitor and linkage and competitor_pct is not None and abs(competitor_pct) >= 10:
+        pct = competitor_pct
         direction = 1 if pct > 0 else -1
         previous = None
-        if "fold8" in low and geo == "한국":
+        if "fold8" in low and geo in ("한국", "지역 미확인"):
             previous = float((state.get("metrics") or {}).get("fold8_korea_wow_pct") or 0)
-            metric_key = "fold8_korea_wow_pct"
-            metric_value = pct
+            # If geography is missing and the article merely repeats the exact
+            # +10% baseline, treat it as a syndicated baseline repeat rather
+            # than a new market datapoint.
+            if geo == "한국":
+                metric_key = "fold8_korea_wow_pct"
+                metric_value = pct
         # Suppress syndicated repeats of the +10% baseline unless the measured
         # change moves by at least 5 percentage points or reverses direction.
         if previous is not None and previous and abs(pct - previous) < 5 and (pct > 0) == (previous > 0):
@@ -326,7 +388,8 @@ def _signal(item: dict, state: dict) -> dict | None:
         reasons.append(f"{geo} 경쟁 폴더블 판매 변화 {pct:+g}%")
         stage = max(stage, 1)
 
-    if direct and pct is not None and abs(pct) >= 10:
+    if direct and direct_pct is not None and abs(direct_pct) >= 10:
+        pct = direct_pct
         direction = 1 if pct > 0 else -1
         reasons.append(f"iPhone Duo 직접 수요 지표 {pct:+g}%")
         stage = max(stage, 2 if rank >= 3 else 1)
@@ -345,8 +408,8 @@ def _signal(item: dict, state: dict) -> dict | None:
         reasons.append("품절·백오더 신호")
         stage = max(stage, 2 if rank >= 2 else 1)
 
-    if direct and any(x in low for x in ("cancellation", "cancellations", "returns", "return rate", "취소", "반품")):
-        if pct is not None or units_m is not None or rank >= 3:
+    if direct_commercial_open and direct and any(x in low for x in ("cancellation", "cancellations", "returns", "return rate", "취소", "반품")):
+        if direct_pct is not None or units_m is not None or rank >= 3:
             direction = -1
             reasons.append("취소·반품 수요 약화 신호")
             stage = max(stage, 2 if rank >= 3 else 1)
