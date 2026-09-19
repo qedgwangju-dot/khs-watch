@@ -225,9 +225,11 @@ def parse_cboe():
     )
     period = period_m.group(1) if period_m else "latest"
 
-    total = parse_cboe_section(text, "Total", "Index Options")
-    index_opt = parse_cboe_section(text, "Index Options", "Equity Options")
-    equity = parse_cboe_section(text, "Equity Options")
+    report_start = text.find("Cboe Exchange Market Statistics for")
+    report_text = text[report_start:] if report_start >= 0 else text
+    total = parse_cboe_section(report_text, "Total", "Index Options")
+    index_opt = parse_cboe_section(report_text, "Index Options", "Equity Options")
+    equity = parse_cboe_section(report_text, "Equity Options")
 
     if not total and not equity:
         raise RuntimeError("Cboe current market-statistics rows not found")
@@ -338,10 +340,15 @@ def explain(cftc, cboe, sox):
 
     if sox:
         m = sox["metrics"]
-        lines.append(
-            f"• 반도체(SOX): {m['value']:,.2f} | 1D {m['d1_pct']:+.2f}% | "
-            f"3D {m['d3_pct']:+.2f}% | 5D {m['d5_pct']:+.2f}%"
-        )
+        parts = [
+            f"• 반도체(SOX): {m['value']:,.2f}",
+            f"1D {m['d1_pct']:+.2f}%",
+        ]
+        if m.get("d3_pct") is not None:
+            parts.append(f"3D {m['d3_pct']:+.2f}%")
+        if m.get("d5_pct") is not None:
+            parts.append(f"5D {m['d5_pct']:+.2f}%")
+        lines.append(" | ".join(parts))
 
     if cftc:
         m = cftc["metrics"]
