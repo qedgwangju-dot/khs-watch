@@ -75,6 +75,11 @@ RAMP = re.compile(
 )
 CN_LOCATIONS = re.compile(r'上海|杭州|宁波|寧波|厦门|廈門|상하이|항저우|닝보|샤먼', re.I)
 OFFICIAL_CONFIRM = re.compile(r'Tesla\s+(?:said|confirmed|announced)|特斯拉(?:官方|确认|確認|宣布)|테슬라(?:가|는)?\s*(?:공식|확인|발표)', re.I)
+LOW_TRUST_COMMUNITY = re.compile(
+    r'雪球|xueqiu|CSDN|blog\\.csdn\\.net|财富号|財富號|caifuhao|东方财富号|東方財富號',
+    re.I,
+)
+
 
 SOURCE_KO = {
     '新浪财经': '시나재경', '新浪財經': '시나재경', 'finance.sina.com.cn': '시나재경',
@@ -174,6 +179,11 @@ def score(item: dict) -> int:
     s = _orig_score(item)
     if not _is_tesla_supply_text(text):
         return s
+    source = item.get('source') or ''
+    # Investor-community/aggregator posts are useful discovery leads but are not
+    # promoted to high-signal on their own. Wait for a trusted/official corroboration.
+    if LOW_TRUST_COMMUNITY.search(source):
+        return 0
     s = max(s, 18)
     stage = _stage(text)
     if stage in {'scale_order', 'scale_order_audit'}:
