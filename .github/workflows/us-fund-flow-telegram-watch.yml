@@ -6,12 +6,13 @@ on:
     paths:
       - ".github/workflows/us-fund-flow-telegram-watch.yml"
       - "scripts/us_fund_flow_watch.py"
+      - "scripts/us_positioning_options_sox_watch.py"
   schedule:
     - cron: "17 12,15,18,21 * * 1-5"
   workflow_dispatch:
     inputs:
       force_send:
-        description: "Force one report even when source fingerprints are unchanged"
+        description: "Force reports even when source fingerprints are unchanged"
         required: false
         default: "false"
         type: choice
@@ -27,7 +28,7 @@ concurrency:
 jobs:
   watch:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
@@ -72,59 +73,111 @@ jobs:
           python scripts/us_fund_flow_watch.py
           cat out/us_fund_flow_status.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Send Telegram update
-        if: hashFiles('out/us_fund_flow_alert.html') != ''
+      - name: Query positioning options and SOX
+        run: |
+          rm -f out/us_positioning_options_sox_alert.html out/us_positioning_options_sox_status.md out/us_positioning_options_sox_pending_state.json
+          python -m py_compile scripts/us_positioning_options_sox_watch.py
+          python scripts/us_positioning_options_sox_watch.py
+          cat out/us_positioning_options_sox_status.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Send Telegram updates
+        if: hashFiles('out/us_fund_flow_alert.html') != '' || hashFiles('out/us_positioning_options_sox_alert.html') != ''
         run: |
           python - <<'PY'
           import json, os, pathlib, urllib.parse, urllib.request
           token=os.environ["TELEGRAM_BOT_TOKEN"].strip()
           chat_id=os.environ["TELEGRAM_CHAT_ID"].strip()
           expected=os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+
           with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
               ident=json.loads(r.read().decode())
           actual=str((ident.get("result") or {}).get("username") or "")
           if not ident.get("ok") or actual.lower()!=expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
-          text=pathlib.Path("out/us_fund_flow_alert.html").read_text(encoding="utf-8").strip()
-          chunks=[]
-          while len(text)>3800:
-              cut=text.rfind("\n\n",0,3800)
-              if cut<1000: cut=3800
-              chunks.append(text[:cut].strip()); text=text[cut:].strip()
-          if text: chunks.append(text)
+
+          files = [
+              pathlib.Path("out/us_fund_flow_alert.html"),
+              pathlib.Path("out/us_positioning_options_sox_alert.html"),
+          ]
           ids=[]
-          for chunk in chunks:
-              data=urllib.parse.urlencode({"chat_id":chat_id,"text":chunk,"parse_mode":"HTML","disable_web_page_preview":"true"}).encode()
-              req=urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage",data=data,method="POST")
-              with urllib.request.urlopen(req,timeout=30) as r:
-                  j=json.loads(r.read().decode())
-              if not j.get("ok"): raise RuntimeError(f"Telegram rejected: {j}")
-              ids.append((j.get("result") or {}).get("message_id"))
+          for path in files:
+              if not path.exists():
+                  continue
+              text=path.read_text(encoding="utf-8").strip()
+              chunks=[]
+              while len(text)>3800:
+                  cut=text.rfind("\n\n",0,3800)
+                  if cut<1000:
+                      cut=3800
+                  chunks.append(text[:cut].strip())
+                  text=text[cut:].strip()
+              if text:
+                  chunks.append(text)
+              for chunk in chunks:
+                  data=urllib.parse.urlencode({
+                      "chat_id":chat_id,
+                      "text":chunk,
+                      "parse_mode":"HTML",
+                      "disable_web_page_preview":"true",
+                  }).encode()
+                  req=urllib.request.Request(
+                      f"https://api.telegram.org/bot{token}/sendMessage",
+                      data=data,
+                      method="POST",
+                  )
+                  with urllib.request.urlopen(req,timeout=30) as r:
+                      j=json.loads(r.read().decode())
+                  if not j.get("ok"):
+                      raise RuntimeError(f"Telegram rejected: {j}")
+                  ids.append((j.get("result") or {}).get("message_id"))
           print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(ids)} ids={ids}")
           PY
 
-      - name: Persist state after successful delivery
-        if: success() && hashFiles('out/us_fund_flow_pending_state.json') != ''
-        run: cp out/us_fund_flow_pending_state.json data/us_fund_flow_state.json
-
-      - name: Commit watcher state
-        if: success() && hashFiles('out/us_fund_flow_pending_state.json') != ''
+      - name: Persist states after successful delivery
+        if: success()
         run: |
-          git config user.name "us-fund-flow-watch[bot]"
-          git config user.email "us-fund-flow-watch[bot]@users.noreply.github.com"
-          cp data/us_fund_flow_state.json /tmp/us_fund_flow_state.json
+          if [ -f out/us_fund_flow_pending_state.json ]; then
+            cp out/us_fund_flow_pending_state.json data/us_fund_flow_state.json
+          fi
+          if [ -f out/us_positioning_options_sox_pending_state.json ]; then
+            cp out/us_positioning_options_sox_pending_state.json data/us_positioning_options_sox_state.json
+          fi
+
+      - name: Commit watcher states
+        if: success() && (hashFiles('out/us_fund_flow_pending_state.json') != '' || hashFiles('out/us_positioning_options_sox_pending_state.json') != '')
+        run: |
+          git config user.name "us-market-watch[bot]"
+          git config user.email "us-market-watch[bot]@users.noreply.github.com"
+
+          mkdir -p /tmp/us-watch-state
+          if [ -f data/us_fund_flow_state.json ]; then
+            cp data/us_fund_flow_state.json /tmp/us-watch-state/us_fund_flow_state.json
+          fi
+          if [ -f data/us_positioning_options_sox_state.json ]; then
+            cp data/us_positioning_options_sox_state.json /tmp/us-watch-state/us_positioning_options_sox_state.json
+          fi
+
           for attempt in 1 2 3 4; do
             git fetch origin main
             git reset --hard origin/main
             mkdir -p data
-            cp /tmp/us_fund_flow_state.json data/us_fund_flow_state.json
-            git add data/us_fund_flow_state.json
+
+            if [ -f /tmp/us-watch-state/us_fund_flow_state.json ]; then
+              cp /tmp/us-watch-state/us_fund_flow_state.json data/us_fund_flow_state.json
+            fi
+            if [ -f /tmp/us-watch-state/us_positioning_options_sox_state.json ]; then
+              cp /tmp/us-watch-state/us_positioning_options_sox_state.json data/us_positioning_options_sox_state.json
+            fi
+
+            git add data/us_fund_flow_state.json data/us_positioning_options_sox_state.json 2>/dev/null || true
             if git diff --cached --quiet; then
-              echo "US fund flow state unchanged"
+              echo "US market watcher states unchanged"
               exit 0
             fi
-            git commit -m "Update US fund flow watch state"
-            if git push origin HEAD:main; then exit 0; fi
+            git commit -m "Update US market watcher states"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
             sleep $((attempt * 3))
           done
           exit 1
@@ -133,10 +186,13 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: us-fund-flow-watch-${{ github.run_id }}
+          name: us-market-watch-${{ github.run_id }}
           path: |
             out/us_fund_flow_status.md
             out/us_fund_flow_alert.html
             out/us_fund_flow_pending_state.json
+            out/us_positioning_options_sox_status.md
+            out/us_positioning_options_sox_alert.html
+            out/us_positioning_options_sox_pending_state.json
           if-no-files-found: ignore
           retention-days: 14
