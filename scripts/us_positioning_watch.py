@@ -493,7 +493,61 @@ for name, fn in [("CFTC", parse_cftc), ("Cboe", parse_cboe), ("SOX", parse_sox)]
 # Never send a partial "new change" alert with missing CFTC/Cboe/SOX values.
 required_kinds = {"cot", "options", "sox"}
 present_kinds = {x.get("kind") for x in results}
-quality_gate_ok = required_kinds.issubset(present_kinds)
+quality_gate_ok = required_kinds.issubset(present_kinds) and not validation_problems
+
+def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
+    problems = []
+
+    if cftc_obj:
+        m = cftc_obj["metrics"]
+        if m["asset_net"] != m["asset_long"] - m["asset_short"]:
+            problems.append("CFTC Asset Manager 순포지션 산술 불일치")
+        if m["lev_net"] != m["lev_long"] - m["lev_short"]:
+            problems.append("CFTC Leveraged Funds 순포지션 산술 불일치")
+        if m["asset_net_wow"] != m["asset_long_wow"] - m["asset_short_wow"]:
+            problems.append("CFTC Asset Manager 주간변화 산술 불일치")
+        if m["lev_net_wow"] != m["lev_long_wow"] - m["lev_short_wow"]:
+            problems.append("CFTC Leveraged Funds 주간변화 산술 불일치")
+
+    if cboe_obj:
+        m = cboe_obj["metrics"]
+        if m.get("total_calls") and m.get("total_puts") and m.get("total_pc_ratio") is not None:
+            calc = m["total_puts"] / m["total_calls"]
+            if abs(calc - m["total_pc_ratio"]) > 0.03:
+                problems.append(
+                    f"Cboe 전체 풋/콜 검산 불일치: 계산 {calc:.3f} vs 표 {m['total_pc_ratio']:.3f}"
+                )
+        if m.get("equity_calls") and m.get("equity_puts") and m.get("equity_pc_ratio") is not None:
+            calc = m["equity_puts"] / m["equity_calls"]
+            if abs(calc - m["equity_pc_ratio"]) > 0.03:
+                problems.append(
+                    f"Cboe 주식옵션 풋/콜 검산 불일치: 계산 {calc:.3f} vs 표 {m['equity_pc_ratio']:.3f}"
+                )
+
+    if sox_obj:
+        m = sox_obj["metrics"]
+        if abs(m.get("net_change", 0)) > 1 and abs(m.get("d1_pct", 0)) < 0.01:
+            problems.append("SOX 순변동은 큰데 등락률이 0.00%로 모순")
+        prev = m.get("previous_close")
+        if prev and prev > 0:
+            calc_pct = (m["value"] / prev - 1) * 100
+            if abs(calc_pct - m["d1_pct"]) > 0.08:
+                problems.append(
+                    f"SOX 등락률 검산 불일치: 계산 {calc_pct:.2f}% vs 표 {m['d1_pct']:.2f}%"
+                )
+
+    return problems
+
+
+cftc_for_gate = next((x for x in results if x.get("kind") == "cot"), None)
+cboe_for_gate = next((x for x in results if x.get("kind") == "options"), None)
+sox_for_gate = next((x for x in results if x.get("kind") == "sox"), None)
+
+validation_problems = validate_critical_sources(
+    cftc_for_gate, cboe_for_gate, sox_for_gate
+)
+if validation_problems:
+    errors.extend("검산: " + p for p in validation_problems)
 
 updates = []
 for x in results:
