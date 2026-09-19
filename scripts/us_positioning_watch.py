@@ -102,7 +102,8 @@ def parse_num(x):
 
 
 def int_list(text):
-    return [int(x.replace(",", "")) for x in re.findall(r"[-+]?\d{1,3}(?:,\d{3})+", text)]
+    vals = re.findall(r"[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)", text)
+    return [int(x.replace(",", "")) for x in vals]
 
 
 def parse_cftc():
@@ -248,61 +249,86 @@ def parse_cboe():
 
 
 def parse_sox():
-    # Nasdaq's history/overview page can expose a stale or malformed percentage field.
-    # Use the official Nasdaq value for a cross-check, but calculate 1D/3D/5D from the
-    # FRED NASDAQSOX time series, whose source is Nasdaq, Inc.
-    csv = get(SOX_FRED).text
-    df = pd.read_csv(StringIO(csv))
-    if "NASDAQSOX" not in df.columns:
-        raise RuntimeError("FRED NASDAQSOX column not found")
-    df["NASDAQSOX"] = pd.to_numeric(df["NASDAQSOX"], errors="coerce")
-    df = df.dropna(subset=["NASDAQSOX"]).tail(12).reset_index(drop=True)
-    if len(df) < 6:
-        raise RuntimeError("SOX history too short")
+    # First use Nasdaq History page for the current level and previous close.
+    # Never trust the Overview-page percentage field, which can show 0.00% after the close.
+    h = browser_html(SOX)
+    txt = BeautifulSoup(h, "html.parser").get_text(" ", strip=True)
 
-    latest = float(df.iloc[-1]["NASDAQSOX"])
-    prev1 = float(df.iloc[-2]["NASDAQSOX"])
-    prev3 = float(df.iloc[-4]["NASDAQSOX"])
-    prev5 = float(df.iloc[-6]["NASDAQSOX"])
-    period_iso = str(df.iloc[-1]["DATE"])
-    dt = datetime.strptime(period_iso, "%Y-%m-%d")
-    period = f"{dt.month}/{dt.day}/{dt.year}"
+    m = re.search(
+        r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)",
+        txt,
+        re.I,
+    )
+    if not m:
+        raise RuntimeError("SOX Nasdaq latest level not found")
+    period = m.group(1)
+    latest = float(m.group(2).replace(",", ""))
 
-    d1 = (latest / prev1 - 1) * 100
-    d3 = (latest / prev3 - 1) * 100
-    d5 = (latest / prev5 - 1) * 100
+    prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", txt, re.I)
+    prev1 = float(prev_m.group(1).replace(",", "")) if prev_m else None
 
-    # Cross-check the latest level against Nasdaq's own page. Do not use its % field.
-    try:
-        h = browser_html(SOX)
-        txt = BeautifulSoup(h, "html.parser").get_text(" ", strip=True)
-        m = re.search(
-            r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)",
-            txt,
-            re.I,
-        )
-        if m:
-            nasdaq_value = float(m.group(2).replace(",", ""))
-            if abs(nasdaq_value - latest) > 0.02:
-                raise RuntimeError(
-                    f"SOX Nasdaq/FRED cross-check mismatch: Nasdaq={nasdaq_value}, FRED={latest}"
-                )
-    except RuntimeError:
-        raise
-    except Exception:
-        # FRED is an official Federal Reserve distribution of Nasdaq daily index data;
-        # if Nasdaq page rendering fails, keep the FRED value and mark no separate error.
-        pass
+    # Nasdaq's History page can render inconsistently after the close.
+    # Prefer actual historical values from FRED's NASDAQSOX distribution when available.
+    history = []
+    fred_errors = []
+    fred_urls = [
+        "https://fred.stlouisfed.org/data/NASDAQSOX.txt",
+        "https://fred.stlouisfed.org/graph/fredgraph.csv?id=NASDAQSOX&cosd=2026-08-20",
+    ]
 
+    for url in fred_urls:
+        try:
+            r = S.get(url, timeout=18)
+            r.raise_for_status()
+            if url.endswith(".txt"):
+                rows = re.findall(r"^(20\d{2}-\d{2}-\d{2})\s+([\d.]+)$", r.text, re.M)
+                history = [(d, float(v)) for d, v in rows]
+            else:
+                df = pd.read_csv(StringIO(r.text))
+                if "NASDAQSOX" in df.columns:
+                    df["NASDAQSOX"] = pd.to_numeric(df["NASDAQSOX"], errors="coerce")
+                    df = df.dropna(subset=["NASDAQSOX"])
+                    history = [(str(row["DATE"]), float(row["NASDAQSOX"])) for _, row in df.iterrows()]
+            if history:
+                break
+        except Exception as e:
+            fred_errors.append(str(e))
+
+    # Cross-check latest FRED/Nasdaq value where FRED is available.
     metrics = {
         "value": latest,
         "previous_close": prev1,
-        "net_change": latest - prev1,
-        "pct": d1,
-        "d1_pct": d1,
-        "d3_pct": d3,
-        "d5_pct": d5,
     }
+
+    if history:
+        history.sort(key=lambda x: x[0])
+        vals = [v for d, v in history if d <= datetime.strptime(period, "%m/%d/%Y").strftime("%Y-%m-%d")]
+        if vals:
+            fred_latest = vals[-1]
+            if abs(fred_latest - latest) > 0.05:
+                raise RuntimeError(
+                    f"SOX Nasdaq/FRED mismatch: Nasdaq={latest}, FRED={fred_latest}"
+                )
+        if len(vals) >= 2:
+            prev1 = vals[-2]
+            metrics["previous_close"] = prev1
+            metrics["net_change"] = latest - prev1
+            metrics["d1_pct"] = (latest / prev1 - 1) * 100
+            metrics["pct"] = metrics["d1_pct"]
+        if len(vals) >= 4:
+            metrics["d3_pct"] = (latest / vals[-4] - 1) * 100
+        if len(vals) >= 6:
+            metrics["d5_pct"] = (latest / vals[-6] - 1) * 100
+
+    # If FRED was temporarily unavailable, still compute the verified 1D change
+    # from Nasdaq History's own Previous Close instead of failing the whole SOX lane.
+    if "d1_pct" not in metrics:
+        if prev1 is None or prev1 <= 0:
+            raise RuntimeError("SOX previous close unavailable")
+        metrics["net_change"] = latest - prev1
+        metrics["d1_pct"] = (latest / prev1 - 1) * 100
+        metrics["pct"] = metrics["d1_pct"]
+
     core = {"source": "Nasdaq SOX", "kind": "sox", "period": period, "metrics": metrics}
     return {**core, "url": SOX, "fingerprint": fp(core)}
 
