@@ -1,0 +1,20 @@
+{
+  "seen": {
+    "Nasdaq SOX|sox": "588e99b0a828a37a7b2109fede564aa1221f4a81d0611a5a2d81a8b8337bd789"
+  },
+  "values": {
+    "Nasdaq SOX|sox": {
+      "source": "Nasdaq SOX",
+      "kind": "sox",
+      "period": "9/18/2026",
+      "metrics": {
+        "value": 11921.69,
+        "net_change": 319.22,
+        "pct": 0.0
+      },
+      "url": "https://indexes.nasdaq.com/Index/History/SOX",
+      "fingerprint": "588e99b0a828a37a7b2109fede564aa1221f4a81d0611a5a2d81a8b8337bd789"
+    }
+  },
+  "updated_at_kst": "2026-09-19T15:56:30.708862+09:00"
+}
