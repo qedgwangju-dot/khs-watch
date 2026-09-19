@@ -33,6 +33,9 @@ TESLA_CN_SENTINEL = 'DIRECT_TESLA_OPTIMUS_CN_SUPPLY_CHAIN'
 JOE_X_SENTINEL = 'DIRECT_JOE_TEGTMEYER_OPTIMUS_SITE_X'
 JOE_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/JoeTegtmeyer'
 JOE_X_SOURCE = 'Joe Tegtmeyer (X)'
+TESLA_APP_X_SENTINEL = 'DIRECT_TESLA_APP_IOS_OPTIMUS_X'
+TESLA_APP_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/tesla_app_ios'
+TESLA_APP_X_SOURCE = 'Tesla App Updates (X)'
 
 TESLA_OPT = re.compile(r'Tesla|特斯拉|테슬라', re.I)
 OPTIMUS = re.compile(r'Optimus|擎天柱|옵티머스', re.I)
@@ -88,6 +91,8 @@ PRODUCTION_STARTED = re.compile(
 FACTORY_SITE = re.compile(r'Giga(?:factory)?\\s*Texas|Giga\\s*Texas|기가\\s*텍사스|텍사스.{0,50}Optimus|Optimus.{0,50}(?:Texas|텍사스)', re.I)
 FACTORY_STRUCTURE = re.compile(r'steel\\s*(?:assembly|frame|framing)|column\\s*grids?|concrete|rebar|footing|grade[-\\s]*beam|roof\\s*truss|철골|골조|콘크리트|철근|기초|기초보|지붕|상부\\s*\\d+개?\\s*층', re.I)
 FACTORY_TOOLING = re.compile(r'tooling|equipment\\s*(?:install|installation|move[-\\s]*in)|production\\s*equipment|장비\\s*(?:반입|설치)|생산\\s*설비\\s*(?:반입|설치)|생산라인\\s*설치', re.I)
+APP_CODE_OPTIMUS = re.compile(r'optimus_charger_id|createBaseChargerId_OptimusChargerId|Optimus.{0,20}charger|charger.{0,20}Optimus|옵티머스.{0,20}충전기|충전기.{0,20}옵티머스|robot_phone_key|robot_home_data_collection', re.I)
+APP_HOME_STACK = re.compile(r'Tesla\\s*app|테슬라\\s*앱|app\\s*code|앱\\s*코드|decompil|reverse\\s*engineer|Powerwall|파워월|solar|태양광|home|가정|charger|충전|registration|등록|manage|관리', re.I)
 CN_LOCATIONS = re.compile(r'上海|杭州|宁波|寧波|厦门|廈門|상하이|항저우|닝보|샤먼', re.I)
 OFFICIAL_CONFIRM = re.compile(r'Tesla\s+(?:said|confirmed|announced)|特斯拉(?:官方|确认|確認|宣布)|테슬라(?:가|는)?\s*(?:공식|확인|발표)', re.I)
 LOW_TRUST_COMMUNITY = re.compile(
@@ -113,9 +118,14 @@ if TESLA_CN_SENTINEL not in base.QUERIES:
     base.QUERIES.append(TESLA_CN_SENTINEL)
 if JOE_X_SENTINEL not in base.QUERIES:
     base.QUERIES.append(JOE_X_SENTINEL)
+if TESLA_APP_X_SENTINEL not in base.QUERIES:
+    base.QUERIES.append(TESLA_APP_X_SENTINEL)
 _TEXAS_FACTORY_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("Giga Texas" OR "Gigafactory Texas" OR 텍사스) (construction OR factory OR steel OR concrete OR rebar OR 철골 OR 콘크리트 OR 철근 OR 장비설치 OR tooling)'
 if _TEXAS_FACTORY_QUERY not in base.QUERIES:
     base.QUERIES.append(_TEXAS_FACTORY_QUERY)
+_TESLA_APP_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("app code" OR "앱 코드" OR charger OR 충전기 OR Powerwall OR 파워월 OR "phone key" OR "home integration" OR 가정용)'
+if _TESLA_APP_QUERY not in base.QUERIES:
+    base.QUERIES.append(_TESLA_APP_QUERY)
 base.TRUSTED.update({
     '시나재경', '제몐뉴스', '21세기경제보도', '거룽후이', '차이롄서',
     '증권시보', '중국증권보', '상하이증권보', 'Tesla Telemetry',
@@ -197,17 +207,57 @@ def _query_joe_x() -> list[dict]:
         return []
 
 
+def _query_tesla_app_x() -> list[dict]:
+    """Directly watch @tesla_app_ios for concrete Optimus product/app integration code."""
+    try:
+        raw = base.fetch(TESLA_APP_X_TIMELINE).decode('utf-8', errors='ignore')
+        m = re.search(r"<script[^>]+id=['\"]__NEXT_DATA__['\"][^>]*>(.*?)</script>", raw, re.I | re.S)
+        if not m:
+            return []
+        payload = json.loads(html_lib.unescape(m.group(1)))
+        entries = payload.get('props', {}).get('pageProps', {}).get('timeline', {}).get('entries', [])
+        out = []
+        cutoff = base.NOW - dt.timedelta(hours=120)
+        for entry in entries:
+            tweet = (entry.get('content') or {}).get('tweet') or {}
+            user = tweet.get('user') or {}
+            if str(user.get('screen_name') or '').lower() != 'tesla_app_ios':
+                continue
+            status_id = str(tweet.get('id_str') or tweet.get('id') or '').strip()
+            text = base.norm(str(tweet.get('full_text') or tweet.get('text') or ''))
+            published = base.parse_date(tweet.get('created_at'))
+            if not status_id or not text or not published or published < cutoff:
+                continue
+            if not APP_CODE_OPTIMUS.search(text):
+                continue
+            out.append({
+                'title': '테슬라 앱 코드, Optimus 충전기·가정용 기기 통합 준비 정황 포착',
+                'link': f'https://x.com/tesla_app_ios/status/{status_id}',
+                'description': text,
+                'published': published.isoformat(),
+                'source': TESLA_APP_X_SOURCE,
+                'x_status_id': status_id,
+                'app_code_observation': True,
+            })
+        return out
+    except Exception:
+        return []
+
+
 def query_news(q: str) -> list[dict]:
     if q == TESLA_CN_SENTINEL:
         return _query_tesla_cn_supply_chain()
     if q == JOE_X_SENTINEL:
         return _query_joe_x()
+    if q == TESLA_APP_X_SENTINEL:
+        return _query_tesla_app_x()
     return _orig_query_news(q)
 
 
 def _is_tesla_supply_text(text: str) -> bool:
     factory = FACTORY_SITE.search(text) and (FACTORY_STRUCTURE.search(text) or FACTORY_TOOLING.search(text))
-    return bool(TESLA_OPT.search(text) and OPTIMUS.search(text) and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory))
+    app_productization = APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text)
+    return bool(TESLA_OPT.search(text) and OPTIMUS.search(text) and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory or app_productization))
 
 
 def _stage(text: str) -> str:
@@ -221,6 +271,8 @@ def _stage(text: str) -> str:
         return 'weekly_capacity_target'
     if PRODUCTION_STARTED.search(text):
         return 'production_started'
+    if APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text):
+        return 'home_app_integration'
     if FACTORY_SITE.search(text) and FACTORY_TOOLING.search(text):
         return 'factory_tooling'
     if FACTORY_SITE.search(text) and FACTORY_STRUCTURE.search(text):
@@ -263,6 +315,8 @@ def score(item: dict) -> int:
         s += 6
     if stage == 'production_started':
         s += 12
+    if stage == 'home_app_integration':
+        s += 12
     if stage == 'factory_structure':
         s += 12
     if stage == 'factory_tooling':
@@ -291,6 +345,8 @@ def category(text: str, group: str) -> str:
             return 'Optimus 주간 공급능력·생산 목표'
         if stage == 'production_started':
             return 'Optimus 실제 양산 개시'
+        if stage == 'home_app_integration':
+            return 'Optimus 가정용 앱·충전 인프라 준비'
         if stage == 'factory_structure':
             return 'Optimus Giga Texas 전용공장 구조공사 진척'
         if stage == 'factory_tooling':
@@ -318,6 +374,9 @@ def meaning(cat: str) -> str:
     if cat == 'Optimus 실제 양산 개시':
         return ('양산 예정·심사·공급망 준비가 아니라 실제 생산 개시가 확인된 단계 변화입니다. '
                 '첫 주간 생산량·수율·완성품 출하·내부 배치로 실제 램프업 속도를 확인합니다.')
+    if cat == 'Optimus 가정용 앱·충전 인프라 준비':
+        return ('앱 내부 코드에 Optimus 전용 충전·등록·가정용 기기 관리 경로가 생긴 것은 단순 로봇 데모보다 제품화에 가까운 소프트웨어 인프라 신호입니다. '
+                '실제 메뉴 활성화→충전 거치대 공개→가정용 시험사용자→소비자 판매 순으로 다음 상태 변화를 추적합니다.')
     if cat == 'Optimus Giga Texas 전용공장 구조공사 진척':
         return ('계획 발표가 아니라 전용공장의 철골·콘크리트·철근 등 물리 공정이 실제 진행되는 단계 변화입니다. '
                 '구조공사 완료→외장·유틸리티→생산설비 반입→시운전→양산 순으로 시간표를 추적합니다.')
@@ -350,6 +409,8 @@ def risk(cat: str) -> str:
         return ('공급능력 목표는 실제 생산량이 아닙니다. 수율·부품 병목·라인 안정화가 늦으면 목표치와 실제 주간 완제품 생산량의 격차가 커질 수 있습니다.')
     if cat == 'Optimus 실제 양산 개시':
         return ('생산 개시와 안정 양산은 다릅니다. 초기 직행수율·재작업률·주간 생산량이 따라오지 않으면 양산 개시 후에도 병목이 지속될 수 있습니다.')
+    if cat == 'Optimus 가정용 앱·충전 인프라 준비':
+        return ('앱 코드 존재는 소비자 출시 확정이나 실제 충전기 양산을 뜻하지 않습니다. 실험용·비활성 코드일 수 있으므로 Tesla 공식 기능 공개, 실제 앱 화면, 충전 하드웨어 인증·출시가 뒤따르는지 확인합니다.')
     if cat == 'Optimus Giga Texas 전용공장 구조공사 진척':
         return ('드론 현장 관측은 공정 진척을 보여주지만 최종 내부 배치·생산라인 구성과 가동일을 확정하지는 않습니다. 구조공사 후 장비 반입·유틸리티·시운전이 지연될 수 있습니다.')
     if cat == 'Optimus Giga Texas 생산설비 반입·설치':
@@ -378,6 +439,8 @@ def verification(item: dict, group: str, text: str) -> str:
             return '공급망 생산능력·목표 보도 · 실제 완제품 생산량과 분리'
         if _stage(text) == 'production_started':
             return '양산 실제 개시 보도 · 테슬라 공식 생산상태와 후속 교차확인'
+        if _stage(text) == 'home_app_integration':
+            return '테슬라 앱 코드 관측·역공학 단계 · Tesla 공식 소비자 기능/출시 발표 전'
         if _stage(text) == 'factory_structure':
             return '현장 드론 관측·신뢰매체 보도 · Tesla 공식 Q2 자료의 Giga Texas 건설 진행 상태와 교차확인'
         if _stage(text) == 'factory_tooling':
@@ -401,6 +464,8 @@ def clean_title(title: str, source: str) -> str:
             return '테슬라 옵티머스, 주간 공급능력·생산 목표 신규 변화'
         if stage == 'production_started':
             return '테슬라 옵티머스, 실제 양산 개시 신규 확인'
+        if stage == 'home_app_integration':
+            return '테슬라 앱 코드, Optimus 충전기·가정용 기기 통합 준비 정황 포착'
         if stage == 'factory_structure':
             return '테슬라 옵티머스, Giga Texas 전용공장 철골·콘크리트 공정 신규 진척'
         if stage == 'factory_tooling':
@@ -430,6 +495,8 @@ def key(item: dict) -> str:
             m = re.search(r'(?<!\d)(\d{2,5})(?:\s*台|\s*대|\s*(?:per\s+week|weekly))', text, re.I)
             qty = m.group(1) if m else 'unknown'
             return hashlib.sha256(f'tesla-optimus|weekly-capacity-target|{qty}'.encode()).hexdigest()
+        if stage == 'home_app_integration':
+            return hashlib.sha256(b'tesla-optimus|home-app|charger-integration').hexdigest()
         if stage == 'factory_structure':
             return hashlib.sha256(b'tesla-optimus|giga-texas|factory-structure').hexdigest()
         if stage == 'factory_tooling':
