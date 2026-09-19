@@ -254,7 +254,9 @@ def parse_sox():
     # Nasdaq's History page is the authoritative source here. The Overview route can
     # incorrectly show Previous Close == latest and 0.00% after the close, so never
     # use the Overview-state percentage for alerting.
-    hist_html = browser_html(SOX)
+    # IMPORTANT: use raw server-rendered History HTML first. Nasdaq's browser-rendered
+    # client state can overwrite Previous Close / percent with a stale 0.00% value.
+    hist_html = get(SOX).text
     hist_txt = BeautifulSoup(hist_html, "html.parser").get_text(" ", strip=True)
 
     cur = re.search(
@@ -263,12 +265,27 @@ def parse_sox():
         re.I,
     )
     if not cur:
+        hist_html = browser_html(SOX)
+        hist_txt = BeautifulSoup(hist_html, "html.parser").get_text(" ", strip=True)
+        cur = re.search(
+            r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)\s+([+-]?\d+(?:\.\d+)?)%",
+            hist_txt,
+            re.I,
+        )
+    if not cur:
         raise RuntimeError("SOX Nasdaq History headline not found")
 
     period = cur.group(1)
     latest = float(cur.group(2).replace(",", ""))
     displayed_net_change = float(cur.group(3).replace(",", ""))
     displayed_pct = float(cur.group(4))
+
+    # Hard validation: a material net change can never coexist with an effectively
+    # flat percent. If this happens, do not publish; treat the source render as stale.
+    if abs(displayed_net_change) > 1.0 and abs(displayed_pct) < 0.01:
+        raise RuntimeError(
+            f"SOX official render inconsistent: net_change={displayed_net_change}, pct={displayed_pct}"
+        )
 
     # Nasdaq's rendered History DOM can occasionally inherit the stale 0.00% Overview
     # state even though the completed-session move is nonzero. When that happens,
@@ -472,6 +489,12 @@ for name, fn in [("CFTC", parse_cftc), ("Cboe", parse_cboe), ("SOX", parse_sox)]
     except Exception as e:
         errors.append(f"{name}: {type(e).__name__}: {e}")
 
+# Fail closed: this alert is only useful when all three critical lanes are valid.
+# Never send a partial "new change" alert with missing CFTC/Cboe/SOX values.
+required_kinds = {"cot", "options", "sox"}
+present_kinds = {x.get("kind") for x in results}
+quality_gate_ok = required_kinds.issubset(present_kinds)
+
 updates = []
 for x in results:
     key = f"{x['source']}|{x['kind']}"
@@ -490,6 +513,7 @@ STATUS.write_text(
             "",
             f"- parsed sources: {len(results)}",
             f"- updates: {len(updates)}",
+            f"- quality_gate_ok: {quality_gate_ok}",
             *[
                 f"- {x['source']} {x['period']} {x['fingerprint'][:12]} metrics={json.dumps(x['metrics'], ensure_ascii=False)}"
                 for x in results
@@ -502,7 +526,7 @@ STATUS.write_text(
 )
 
 force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
-if updates or force:
+if quality_gate_ok and (updates or force):
     prior_sox = (state.get("values", {}) or {}).get("Nasdaq SOX|sox")
     prior_cftc = (state.get("values", {}) or {}).get("CFTC|cot")
     prior_cboe = (state.get("values", {}) or {}).get("Cboe|options")
@@ -594,4 +618,7 @@ if updates or force:
     )
     print(f"us_positioning_alert_ready=true event={event_label} updates={len(updates)}")
 else:
-    print("us_positioning_alert_ready=false unchanged=true")
+    if not quality_gate_ok:
+        print("us_positioning_alert_ready=false quality_gate_failed=true")
+    else:
+        print("us_positioning_alert_ready=false unchanged=true")
