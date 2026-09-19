@@ -9,229 +9,514 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
-ROOT=Path.cwd()
-OUT=ROOT/"out"; DATA=ROOT/"data"
-OUT.mkdir(exist_ok=True); DATA.mkdir(exist_ok=True)
-ALERT=OUT/"us_positioning_alert.html"
-STATUS=OUT/"us_positioning_status.md"
-PENDING=OUT/"us_positioning_pending_state.json"
-STATE=DATA/"us_positioning_state.json"
-for p in (ALERT,STATUS,PENDING):
-    try:p.unlink()
-    except FileNotFoundError:pass
+ROOT = Path.cwd()
+OUT = ROOT / "out"
+DATA = ROOT / "data"
+OUT.mkdir(exist_ok=True)
+DATA.mkdir(exist_ok=True)
 
-UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/152 Safari/537.36"
-S=requests.Session(); S.headers.update({"User-Agent":UA,"Accept-Language":"en-US,en;q=0.9"})
+ALERT = OUT / "us_positioning_alert.html"
+STATUS = OUT / "us_positioning_status.md"
+PENDING = OUT / "us_positioning_pending_state.json"
+STATE = DATA / "us_positioning_state.json"
 
-CFTC="https://www.cftc.gov/dea/futures/financial_lf.htm"
-CBOE="https://www.cboe.com/us/options/market_statistics/market/"
-SOX="https://indexes.nasdaq.com/Index/History/SOX"
+for p in (ALERT, STATUS, PENDING):
+    try:
+        p.unlink()
+    except FileNotFoundError:
+        pass
 
-def get(url,timeout=35):
-    r=S.get(url,timeout=timeout,allow_redirects=True); r.raise_for_status(); return r
+UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/152 Safari/537.36"
+S = requests.Session()
+S.headers.update({
+    "User-Agent": UA,
+    "Accept-Language": "en-US,en;q=0.9",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+})
+
+CFTC = "https://www.cftc.gov/dea/futures/financial_lf.htm"
+CBOE = "https://www.cboe.com/us/options/market_statistics/market/"
+SOX = "https://indexes.nasdaq.com/Index/History/SOX"
+SOX_FRED = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=NASDAQSOX"
+
+
+def get(url, timeout=35):
+    r = S.get(url, timeout=timeout, allow_redirects=True)
+    r.raise_for_status()
+    return r
+
 
 def browser_html(url):
-    exe=next((p for p in ["/usr/bin/google-chrome","/usr/bin/google-chrome-stable","/usr/bin/chromium","/usr/bin/chromium-browser"] if os.path.exists(p)),None)
-    if not exe: raise RuntimeError("system Chrome/Chromium not found")
+    exe = next(
+        (
+            p
+            for p in [
+                "/usr/bin/google-chrome",
+                "/usr/bin/google-chrome-stable",
+                "/usr/bin/chromium",
+                "/usr/bin/chromium-browser",
+            ]
+            if os.path.exists(p)
+        ),
+        None,
+    )
+    if not exe:
+        raise RuntimeError("system Chrome/Chromium not found")
     with sync_playwright() as pw:
-        b=pw.chromium.launch(executable_path=exe,headless=True,args=["--no-sandbox","--disable-dev-shm-usage"])
-        page=b.new_page(user_agent=UA,locale="en-US")
-        page.goto(url,wait_until="domcontentloaded",timeout=60000)
-        try: page.wait_for_load_state("networkidle",timeout=12000)
-        except Exception: pass
-        page.wait_for_timeout(1000)
-        h=page.content(); b.close(); return h
+        b = pw.chromium.launch(
+            executable_path=exe,
+            headless=True,
+            args=["--no-sandbox", "--disable-dev-shm-usage"],
+        )
+        page = b.new_page(user_agent=UA, locale="en-US")
+        page.goto(url, wait_until="domcontentloaded", timeout=60000)
+        try:
+            page.wait_for_load_state("networkidle", timeout=12000)
+        except Exception:
+            pass
+        page.wait_for_timeout(900)
+        h = page.content()
+        b.close()
+        return h
+
 
 def load_state():
-    try:return json.loads(STATE.read_text(encoding="utf-8"))
-    except Exception:return {"seen":{},"values":{}}
+    try:
+        return json.loads(STATE.read_text(encoding="utf-8"))
+    except Exception:
+        return {"seen": {}, "values": {}}
+
 
 def fp(core):
-    return hashlib.sha256(json.dumps(core,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
+    return hashlib.sha256(
+        json.dumps(core, sort_keys=True, ensure_ascii=False).encode()
+    ).hexdigest()
+
 
 def parse_num(x):
-    if x is None:return None
-    s=str(x).replace(",","").replace("%","").strip()
-    m=re.search(r"[-+]?\d+(?:\.\d+)?",s)
+    if x is None:
+        return None
+    s = str(x).replace(",", "").replace("%", "").strip()
+    m = re.search(r"[-+]?\d+(?:\.\d+)?", s)
     return float(m.group()) if m else None
 
-def fetch_fx():
-    key=(os.getenv("ECOS_API_KEY") or "").strip()
-    if not key:return None
-    now=datetime.now(timezone(timedelta(hours=9))).date()
-    st=(now-timedelta(days=12)).strftime("%Y%m%d"); en=now.strftime("%Y%m%d")
-    url=f"https://ecos.bok.or.kr/api/StatisticSearch/{key}/json/kr/1/100/731Y001/D/{st}/{en}/0000001"
-    try:
-        rows=((get(url).json().get("StatisticSearch") or {}).get("row") or [])
-        vals=[(str(r.get("TIME")),parse_num(r.get("DATA_VALUE"))) for r in rows if parse_num(r.get("DATA_VALUE")) is not None]
-        vals.sort()
-        if vals:return {"date":vals[-1][0],"usdkrw":vals[-1][1]}
-    except Exception: pass
-    return None
+
+def int_list(text):
+    return [int(x.replace(",", "")) for x in re.findall(r"[-+]?\d{1,3}(?:,\d{3})+", text)]
+
 
 def parse_cftc():
-    text=get(CFTC).text
-    plain=BeautifulSoup(text,"html.parser").get_text("\n")
-    m=re.search(r"Positions as of ([A-Za-z]+ \d{1,2}, 20\d{2})",plain)
-    period=m.group(1) if m else "latest"
-    block_m=re.search(r"NASDAQ-100 Consolidated.*?Positions\s+([\s\S]*?)Changes from:",plain,re.I)
-    if not block_m: raise RuntimeError("NASDAQ-100 CFTC block not found")
-    nums=[int(x.replace(",","")) for x in re.findall(r"\b\d{1,3}(?:,\d{3})+\b",block_m.group(1))]
-    if len(nums)<15: raise RuntimeError("NASDAQ-100 CFTC positions parse failed")
-    # after open interest, 15 position fields: dealer3, asset3, leveraged3, other3, nonreportable2
-    # identify open interest as first large integer, then take following 15.
-    oi=nums[0]; pos=nums[1:16]
-    asset_long,asset_short=pos[3],pos[4]
-    lev_long,lev_short=pos[6],pos[7]
-    asset_net=asset_long-asset_short; lev_net=lev_long-lev_short
+    raw = get(CFTC).text
+    soup = BeautifulSoup(raw, "html.parser")
 
-    ch_m=re.search(r"Changes from:.*?\n([\s\S]*?)Percent of Open Interest",plain,re.I)
-    ch=[]
-    if ch_m:
-        ch=[int(x.replace(",","")) for x in re.findall(r"[-+]?\d{1,3}(?:,\d{3})+",ch_m.group(1))]
-    metrics={"open_interest":oi,"asset_long":asset_long,"asset_short":asset_short,"asset_net":asset_net,
-             "lev_long":lev_long,"lev_short":lev_short,"lev_net":lev_net}
-    if len(ch)>=9:
-        metrics.update({"asset_long_wow":ch[3],"asset_short_wow":ch[4],"lev_long_wow":ch[6],"lev_short_wow":ch[7],
-                        "asset_net_wow":ch[3]-ch[4],"lev_net_wow":ch[6]-ch[7]})
-    core={"source":"CFTC","kind":"cot","period":period,"metrics":metrics}
-    return {**core,"url":CFTC,"fingerprint":fp(core)}
+    # CFTC report is a preformatted official table. Parse the NASDAQ-100 block directly.
+    pre = soup.find("pre")
+    plain = pre.get_text("\n") if pre else soup.get_text("\n")
+    plain = plain.replace("\xa0", " ")
+
+    report_m = re.search(
+        r"Positions as of\s+([A-Za-z]+\s+\d{1,2},\s+20\d{2})",
+        plain,
+        re.I,
+    )
+    period = report_m.group(1) if report_m else "latest"
+
+    start = plain.find("NASDAQ-100 Consolidated")
+    if start < 0:
+        raise RuntimeError("NASDAQ-100 CFTC section not found")
+    # Slice only enough of the report to cover NASDAQ-100 positions and changes.
+    block = plain[start : start + 7000]
+
+    oi_m = re.search(r"Open Interest is\s+([\d,]+)", block, re.I)
+    if not oi_m:
+        raise RuntimeError("NASDAQ-100 CFTC open interest not found")
+    open_interest = int(oi_m.group(1).replace(",", ""))
+
+    pos_m = re.search(
+        r"Positions\s+([\s\S]*?)\s+Changes from:",
+        block,
+        re.I,
+    )
+    if not pos_m:
+        raise RuntimeError("NASDAQ-100 CFTC positions row not found")
+    pos = int_list(pos_m.group(1))
+    # Exact CFTC layout has 14 position values:
+    # dealer(3), asset manager(3), leveraged funds(3), other reportable(3), nonreportable(2).
+    if len(pos) < 14:
+        raise RuntimeError(f"NASDAQ-100 CFTC positions parse failed: {len(pos)} fields")
+    pos = pos[:14]
+
+    ch_m = re.search(
+        r"Changes from:\s*([A-Za-z]+\s+\d{1,2},\s+20\d{2}).*?Total Change is:\s*[-+]?([\d,]+)\s+([\s\S]*?)\s+Percent of Open Interest",
+        block,
+        re.I,
+    )
+    if not ch_m:
+        raise RuntimeError("NASDAQ-100 CFTC weekly changes row not found")
+    prev_period = ch_m.group(1)
+    changes = int_list(ch_m.group(3))
+    if len(changes) < 14:
+        raise RuntimeError(f"NASDAQ-100 CFTC change parse failed: {len(changes)} fields")
+    changes = changes[:14]
+
+    asset_long, asset_short = pos[3], pos[4]
+    lev_long, lev_short = pos[6], pos[7]
+    asset_long_wow, asset_short_wow = changes[3], changes[4]
+    lev_long_wow, lev_short_wow = changes[6], changes[7]
+
+    metrics = {
+        "open_interest": open_interest,
+        "asset_long": asset_long,
+        "asset_short": asset_short,
+        "asset_net": asset_long - asset_short,
+        "asset_long_wow": asset_long_wow,
+        "asset_short_wow": asset_short_wow,
+        "asset_net_wow": asset_long_wow - asset_short_wow,
+        "lev_long": lev_long,
+        "lev_short": lev_short,
+        "lev_net": lev_long - lev_short,
+        "lev_long_wow": lev_long_wow,
+        "lev_short_wow": lev_short_wow,
+        "lev_net_wow": lev_long_wow - lev_short_wow,
+        "previous_period": prev_period,
+    }
+    core = {"source": "CFTC", "kind": "cot", "period": period, "metrics": metrics}
+    return {**core, "url": CFTC, "fingerprint": fp(core)}
+
+
+def parse_cboe_section(text, heading, next_heading=None):
+    start = text.find(heading)
+    if start < 0:
+        return None
+    end = text.find(next_heading, start + len(heading)) if next_heading else len(text)
+    if end < 0:
+        end = len(text)
+    block = text[start:end]
+
+    # Cboe publishes cumulative intraday rows. Take the latest row that has actual values.
+    rows = re.findall(
+        r"(\d{1,2}:\d{2}\s*[AP]M)\s+([\d,]+)\s+([\d,]+)\s+([\d,]+)\s+(\d+(?:\.\d+)?)",
+        block,
+        re.I,
+    )
+    if not rows:
+        return None
+    t, calls, puts, total, ratio = rows[-1]
+    return {
+        "time_ct": t.upper().replace("  ", " "),
+        "calls": int(calls.replace(",", "")),
+        "puts": int(puts.replace(",", "")),
+        "total": int(total.replace(",", "")),
+        "pc_ratio": float(ratio),
+    }
+
 
 def parse_cboe():
-    h=browser_html(CBOE)
-    tables=pd.read_html(StringIO(h))
-    target=None
-    for t in tables:
-        flat=" ".join(map(str,t.astype(str).values.flatten()))
-        if "P/C RATIO" in flat and "CALLS" in flat and "PUTS" in flat:
-            target=t; break
-    if target is None: raise RuntimeError("Cboe market statistics table not found")
-    # Flatten headers and use last row from Total table.
-    target.columns=[str(c[-1] if isinstance(c,tuple) else c).strip() for c in target.columns]
-    last=target.dropna(how="all").iloc[-1]
-    cols={c.upper():c for c in target.columns}
-    ratio=parse_num(last[cols.get("P/C RATIO")])
-    calls=parse_num(last[cols.get("CALLS")]); puts=parse_num(last[cols.get("PUTS")])
-    txt=BeautifulSoup(h,"html.parser").get_text(" ",strip=True)
-    dm=re.search(r"Market Statistics for ([A-Za-z]+,? [A-Za-z]+ \d{1,2}, 20\d{2})",txt)
-    period=dm.group(1) if dm else datetime.now(timezone(timedelta(hours=-5))).strftime("%Y-%m-%d")
-    metrics={"total_pc_ratio":ratio,"calls":calls,"puts":puts}
-    core={"source":"Cboe","kind":"options","period":period,"metrics":metrics}
-    return {**core,"url":CBOE,"fingerprint":fp(core)}
+    # Browser rendering is needed because the current-statistics tables are JS-backed.
+    h = browser_html(CBOE)
+    text = BeautifulSoup(h, "html.parser").get_text("\n", strip=True)
+    text = re.sub(r"[ \t]+", " ", text)
+
+    period_m = re.search(
+        r"Cboe Exchange Market Statistics for\s+([A-Za-z]+,\s+[A-Za-z]+\s+\d{1,2},\s+20\d{2})",
+        text,
+        re.I,
+    )
+    period = period_m.group(1) if period_m else "latest"
+
+    total = parse_cboe_section(text, "Total", "Index Options")
+    index_opt = parse_cboe_section(text, "Index Options", "Equity Options")
+    equity = parse_cboe_section(text, "Equity Options")
+
+    if not total and not equity:
+        raise RuntimeError("Cboe current market-statistics rows not found")
+
+    metrics = {
+        "total_pc_ratio": total["pc_ratio"] if total else None,
+        "total_calls": total["calls"] if total else None,
+        "total_puts": total["puts"] if total else None,
+        "total_time_ct": total["time_ct"] if total else None,
+        "equity_pc_ratio": equity["pc_ratio"] if equity else None,
+        "equity_calls": equity["calls"] if equity else None,
+        "equity_puts": equity["puts"] if equity else None,
+        "equity_time_ct": equity["time_ct"] if equity else None,
+        "index_pc_ratio": index_opt["pc_ratio"] if index_opt else None,
+        "index_time_ct": index_opt["time_ct"] if index_opt else None,
+    }
+    core = {"source": "Cboe", "kind": "options", "period": period, "metrics": metrics}
+    return {**core, "url": CBOE, "fingerprint": fp(core)}
+
 
 def parse_sox():
-    h=browser_html(SOX)
-    txt=BeautifulSoup(h,"html.parser").get_text(" ",strip=True)
-    m=re.search(r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)\s+([+-]?\d+(?:\.\d+)?)%",txt,re.I)
-    if not m:
-        raise RuntimeError("SOX headline parse failed")
-    period=m.group(1); value=float(m.group(2).replace(",","")); chg=float(m.group(3).replace(",","")); pct=float(m.group(4))
-    # try performance table for recent dates
-    tables=pd.read_html(StringIO(h))
-    series=[]
-    for t in tables:
-        flat=" ".join(map(str,t.astype(str).values.flatten()))
-        if "Trade Date" in flat and "Index Value" in flat:
-            tt=t.copy(); tt.columns=[str(c[-1] if isinstance(c,tuple) else c).strip() for c in tt.columns]
-            for _,r in tt.head(10).iterrows():
-                d=str(r.get("Trade Date","")).strip(); v=parse_num(r.get("Index Value"))
-                if d and v is not None: series.append((d,v))
-            if series: break
-    metrics={"value":value,"net_change":chg,"pct":pct}
-    if len(series)>=2:
-        metrics["d1_pct"]=(series[0][1]/series[1][1]-1)*100
-    if len(series)>=4:
-        metrics["d3_pct"]=(series[0][1]/series[3][1]-1)*100
-    if len(series)>=6:
-        metrics["d5_pct"]=(series[0][1]/series[5][1]-1)*100
-    core={"source":"Nasdaq SOX","kind":"sox","period":period,"metrics":metrics}
-    return {**core,"url":SOX,"fingerprint":fp(core)}
+    # Nasdaq's history/overview page can expose a stale or malformed percentage field.
+    # Use the official Nasdaq value for a cross-check, but calculate 1D/3D/5D from the
+    # FRED NASDAQSOX time series, whose source is Nasdaq, Inc.
+    csv = get(SOX_FRED).text
+    df = pd.read_csv(StringIO(csv))
+    if "NASDAQSOX" not in df.columns:
+        raise RuntimeError("FRED NASDAQSOX column not found")
+    df["NASDAQSOX"] = pd.to_numeric(df["NASDAQSOX"], errors="coerce")
+    df = df.dropna(subset=["NASDAQSOX"]).tail(12).reset_index(drop=True)
+    if len(df) < 6:
+        raise RuntimeError("SOX history too short")
 
-def pct_word(x):
-    if x is None:return "확인 대기"
-    return f"{x:+.2f}%"
+    latest = float(df.iloc[-1]["NASDAQSOX"])
+    prev1 = float(df.iloc[-2]["NASDAQSOX"])
+    prev3 = float(df.iloc[-4]["NASDAQSOX"])
+    prev5 = float(df.iloc[-6]["NASDAQSOX"])
+    period_iso = str(df.iloc[-1]["DATE"])
+    dt = datetime.strptime(period_iso, "%Y-%m-%d")
+    period = f"{dt.month}/{dt.day}/{dt.year}"
 
-def explain(cftc,cboe,sox):
-    lines=[]; summary=[]
+    d1 = (latest / prev1 - 1) * 100
+    d3 = (latest / prev3 - 1) * 100
+    d5 = (latest / prev5 - 1) * 100
+
+    # Cross-check the latest level against Nasdaq's own page. Do not use its % field.
+    try:
+        h = browser_html(SOX)
+        txt = BeautifulSoup(h, "html.parser").get_text(" ", strip=True)
+        m = re.search(
+            r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)",
+            txt,
+            re.I,
+        )
+        if m:
+            nasdaq_value = float(m.group(2).replace(",", ""))
+            if abs(nasdaq_value - latest) > 0.02:
+                raise RuntimeError(
+                    f"SOX Nasdaq/FRED cross-check mismatch: Nasdaq={nasdaq_value}, FRED={latest}"
+                )
+    except RuntimeError:
+        raise
+    except Exception:
+        # FRED is an official Federal Reserve distribution of Nasdaq daily index data;
+        # if Nasdaq page rendering fails, keep the FRED value and mark no separate error.
+        pass
+
+    metrics = {
+        "value": latest,
+        "previous_close": prev1,
+        "net_change": latest - prev1,
+        "pct": d1,
+        "d1_pct": d1,
+        "d3_pct": d3,
+        "d5_pct": d5,
+    }
+    core = {"source": "Nasdaq SOX", "kind": "sox", "period": period, "metrics": metrics}
+    return {**core, "url": SOX, "fingerprint": fp(core)}
+
+
+def explain(cftc, cboe, sox):
+    lines = []
+
     if sox:
-        m=sox["metrics"]
-        lines.append(f"• 반도체(SOX): {m['value']:,.2f} / 당일 {m['pct']:+.2f}%"
-                     + (f" / 5거래일 {m.get('d5_pct'):+.2f}%" if m.get("d5_pct") is not None else ""))
-        summary.append("SOX 강세" if m["pct"]>0 else "SOX 약세" if m["pct"]<0 else "SOX 보합")
+        m = sox["metrics"]
+        lines.append(
+            f"• 반도체(SOX): {m['value']:,.2f} | 1D {m['d1_pct']:+.2f}% | "
+            f"3D {m['d3_pct']:+.2f}% | 5D {m['d5_pct']:+.2f}%"
+        )
+
     if cftc:
-        m=cftc["metrics"]
-        aw=m.get("asset_net_wow"); lw=m.get("lev_net_wow")
-        lines.append(f"• 기관(Asset Manager) 나스닥100 순포지션 {m['asset_net']:+,}계약"
-                     + (f" / 주간 {aw:+,}" if aw is not None else ""))
-        lines.append(f"• 헤지펀드성(Leveraged Funds) 나스닥100 순포지션 {m['lev_net']:+,}계약"
-                     + (f" / 주간 {lw:+,}" if lw is not None else ""))
-        if lw is not None:
-            summary.append("헤지펀드 순포지션 개선" if lw>0 else "헤지펀드 순포지션 악화" if lw<0 else "헤지펀드 변화 제한")
+        m = cftc["metrics"]
+        lines.append(
+            f"• 기관(Asset Manager): 순포지션 {m['asset_net']:+,}계약 | "
+            f"주간 {m['asset_net_wow']:+,}계약"
+        )
+        lines.append(
+            f"• 헤지펀드성(Leveraged Funds): 순포지션 {m['lev_net']:+,}계약 | "
+            f"주간 {m['lev_net_wow']:+,}계약"
+        )
+
     if cboe:
-        r=cboe["metrics"].get("total_pc_ratio")
-        lines.append(f"• Cboe 전체 풋/콜 비율 {r:.2f}" if r is not None else "• Cboe 풋/콜 비율 확인 대기")
-        if r is not None:
-            summary.append("콜 우위 성향" if r<0.8 else "중립권" if r<=1.0 else "풋 우위 성향")
-    # Easy directional synthesis
-    sox_up=sox and sox["metrics"].get("pct",0)>0
-    lev_up=cftc and cftc["metrics"].get("lev_net_wow") is not None and cftc["metrics"]["lev_net_wow"]>0
-    pc_low=cboe and cboe["metrics"].get("total_pc_ratio") is not None and cboe["metrics"]["total_pc_ratio"]<0.8
-    if sox_up and lev_up and pc_low:
-        overall="반도체 가격·헤지펀드 포지션·옵션 수요가 모두 상방 쪽으로 맞물림 → 상방 추격 위험 확대"
-    elif sox_up and lev_up:
-        overall="SOX가 오르고 헤지펀드 나스닥100 순포지션도 개선 → 가격 상승을 포지션이 따라붙는 흐름"
-    elif sox_up and not lev_up:
-        overall="SOX는 강하지만 헤지펀드 포지션 확인이 덜 따라옴 → 아직 숏커버·만기수급 가능성 점검 필요"
-    elif not sox_up and lev_up:
-        overall="가격은 약한데 헤지펀드 포지션은 개선 → 선행 포지셔닝인지 실패 신호인지 다음 거래일 확인 필요"
+        m = cboe["metrics"]
+        if m.get("equity_pc_ratio") is not None:
+            lines.append(
+                f"• Cboe 주식옵션 풋/콜 {m['equity_pc_ratio']:.2f} "
+                f"({m.get('equity_time_ct') or '최신'} CT) | "
+                f"전체 {m['total_pc_ratio']:.2f}"
+                if m.get("total_pc_ratio") is not None
+                else f"• Cboe 주식옵션 풋/콜 {m['equity_pc_ratio']:.2f}"
+            )
+        elif m.get("total_pc_ratio") is not None:
+            lines.append(f"• Cboe 전체 풋/콜 {m['total_pc_ratio']:.2f}")
+
+    sox_up = bool(sox and sox["metrics"].get("d1_pct", 0) > 0)
+    lev_improving = bool(
+        cftc
+        and cftc["metrics"].get("lev_net_wow") is not None
+        and cftc["metrics"]["lev_net_wow"] > 0
+    )
+    asset_improving = bool(
+        cftc
+        and cftc["metrics"].get("asset_net_wow") is not None
+        and cftc["metrics"]["asset_net_wow"] > 0
+    )
+    equity_pc = cboe["metrics"].get("equity_pc_ratio") if cboe else None
+    calls_favored = bool(equity_pc is not None and equity_pc < 0.80)
+
+    if sox_up and lev_improving and calls_favored:
+        overall = (
+            "SOX 상승 + 헤지펀드 순포지션 개선 + 주식옵션 콜 우위가 동시에 확인됨 "
+            "→ 상방 추격 신호가 강해진 조합"
+        )
+    elif sox_up and lev_improving:
+        overall = (
+            "SOX가 오르고 헤지펀드 순포지션도 크게 개선 "
+            "→ 가격 상승을 숏커버·롱 추가가 따라붙는 방향"
+        )
+    elif sox_up and not lev_improving:
+        overall = (
+            "SOX는 강하지만 헤지펀드 포지션이 따라붙는 확인이 부족 "
+            "→ 만기수급·일시 반등 가능성도 남음"
+        )
+    elif (not sox_up) and lev_improving:
+        overall = (
+            "가격은 약하지만 헤지펀드 포지션은 개선 "
+            "→ 선행 포지셔닝인지 실패 신호인지 다음 거래일 확인 필요"
+        )
     else:
-        overall="가격·포지션·옵션 방향이 한쪽으로 정렬되지 않아 추세 확정 전"
-    return lines,overall
+        overall = "가격·기관 포지션·옵션 수요가 아직 한 방향으로 정렬되지 않음"
 
-state=load_state(); results=[]; errors=[]
-for name,fn in [("CFTC",parse_cftc),("Cboe",parse_cboe),("SOX",parse_sox)]:
-    try: results.append(fn())
-    except Exception as e: errors.append(f"{name}: {type(e).__name__}: {e}")
+    # Extra nuance: asset managers and leveraged funds can move in opposite directions.
+    if cftc and lev_improving and not asset_improving:
+        overall += (
+            " / 다만 Asset Manager는 순포지션을 줄여 장기기관과 헤지펀드성 자금의 방향은 엇갈림"
+        )
 
-updates=[]
+    return lines, overall
+
+
+state = load_state()
+results = []
+errors = []
+
+for name, fn in [("CFTC", parse_cftc), ("Cboe", parse_cboe), ("SOX", parse_sox)]:
+    try:
+        results.append(fn())
+    except Exception as e:
+        errors.append(f"{name}: {type(e).__name__}: {e}")
+
+updates = []
 for x in results:
-    key=f"{x['source']}|{x['kind']}"
-    if state.get("seen",{}).get(key)!=x["fingerprint"]: updates.append(x)
+    key = f"{x['source']}|{x['kind']}"
+    if state.get("seen", {}).get(key) != x["fingerprint"]:
+        updates.append(x)
 
-cftc=next((x for x in results if x["kind"]=="cot"),None)
-cboe=next((x for x in results if x["kind"]=="options"),None)
-sox=next((x for x in results if x["kind"]=="sox"),None)
-lines,overall=explain(cftc,cboe,sox)
+cftc = next((x for x in results if x["kind"] == "cot"), None)
+cboe = next((x for x in results if x["kind"] == "options"), None)
+sox = next((x for x in results if x["kind"] == "sox"), None)
+lines, overall = explain(cftc, cboe, sox)
 
-STATUS.write_text("\n".join([
-    "# US Positioning Watch","",
-    f"- parsed sources: {len(results)}",f"- updates: {len(updates)}",
-    *[f"- {x['source']} {x['period']} {x['fingerprint'][:12]}" for x in results],
-    *[f"- error: {e}" for e in errors]
-])+"\n",encoding="utf-8")
+STATUS.write_text(
+    "\n".join(
+        [
+            "# US Positioning Watch",
+            "",
+            f"- parsed sources: {len(results)}",
+            f"- updates: {len(updates)}",
+            *[
+                f"- {x['source']} {x['period']} {x['fingerprint'][:12]} metrics={json.dumps(x['metrics'], ensure_ascii=False)}"
+                for x in results
+            ],
+            *[f"- error: {e}" for e in errors],
+        ]
+    )
+    + "\n",
+    encoding="utf-8",
+)
 
-force=(os.getenv("FORCE_SEND") or "").lower() in ("1","true","yes")
+force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
 if updates or force:
-    body=["🇺🇸 <b>[미국 상방 포지셔닝 추적 | 신규 변화]</b>","",
-          "<b>한눈에 보기</b>",*lines,
-          f"→ <b>종합</b>: {html.escape(overall)}","",
-          "<b>무엇을 의미하나</b>",
-          "• SOX↑ + 헤지펀드 순포지션 개선 → 상승을 실제 포지션이 따라붙는지 확인",
-          "• 풋/콜 비율 하락 → 상대적으로 콜 수요가 강해지는 방향",
-          "• 세 지표가 동시에 상방으로 정렬될 때만 상방 추격 신호를 강하게 판정",
-          "",
-          "<b>이번에 실제로 바뀐 값</b>"]
+    prior_sox = (state.get("values", {}) or {}).get("Nasdaq SOX|sox")
+    prior_cftc = (state.get("values", {}) or {}).get("CFTC|cot")
+    prior_cboe = (state.get("values", {}) or {}).get("Cboe|options")
+    correction = bool(
+        prior_sox
+        and sox
+        and prior_sox.get("period") == sox.get("period")
+        and (
+            abs(float((prior_sox.get("metrics") or {}).get("pct", 999)) - float(sox["metrics"]["pct"])) > 0.01
+            or prior_cftc is None
+            or prior_cboe is None
+        )
+    )
+    event_label = "정정·보강" if correction else "신규 변화"
+
+    body = [
+        f"🇺🇸 <b>[미국 상방 포지셔닝 추적 | {event_label}]</b>",
+        "",
+        "<b>한눈에 보기</b>",
+        *lines,
+        f"→ <b>종합</b>: {html.escape(overall)}",
+        "",
+    ]
+
+    if sox:
+        body += [
+            "<b>SOX 확인</b>",
+            f"• 전일 {sox['metrics']['previous_close']:,.2f} → {sox['metrics']['value']:,.2f} "
+            f"({sox['metrics']['d1_pct']:+.2f}%)",
+            "• Nasdaq 최신 지수값과 FRED의 Nasdaq 일별 시계열을 교차검증해 등락률을 직접 계산",
+            "",
+        ]
+
+    if cftc:
+        m = cftc["metrics"]
+        body += [
+            "<b>CFTC 포지션 해석</b>",
+            f"• Asset Manager: 롱 {m['asset_long']:,} / 숏 {m['asset_short']:,} → 순 {m['asset_net']:+,}계약",
+            f"• 전주 대비 순포지션 {m['asset_net_wow']:+,}계약 "
+            f"→ {'기관 순롱 확대' if m['asset_net_wow'] > 0 else '기관 순롱 축소' if m['asset_net_wow'] < 0 else '변화 제한'}",
+            f"• Leveraged Funds: 롱 {m['lev_long']:,} / 숏 {m['lev_short']:,} → 순 {m['lev_net']:+,}계약",
+            f"• 전주 대비 순포지션 {m['lev_net_wow']:+,}계약 "
+            f"→ {'헤지펀드성 포지션 개선' if m['lev_net_wow'] > 0 else '헤지펀드성 포지션 악화' if m['lev_net_wow'] < 0 else '변화 제한'}",
+            "",
+        ]
+
+    if cboe:
+        m = cboe["metrics"]
+        body += ["<b>Cboe 옵션 해석</b>"]
+        if m.get("equity_pc_ratio") is not None:
+            body.append(
+                f"• 주식옵션 풋/콜 {m['equity_pc_ratio']:.2f} "
+                f"({m.get('equity_time_ct') or '최신'} CT) "
+                f"→ {'콜 우위' if m['equity_pc_ratio'] < 0.80 else '중립권' if m['equity_pc_ratio'] <= 1.0 else '풋 우위'}"
+            )
+        if m.get("index_pc_ratio") is not None:
+            body.append(f"• 지수옵션 풋/콜 {m['index_pc_ratio']:.2f}")
+        if m.get("total_pc_ratio") is not None:
+            body.append(f"• 전체 풋/콜 {m['total_pc_ratio']:.2f}")
+        body.append("")
+
+    body += [
+        "<b>이번에 실제로 바뀐 값</b>",
+    ]
     for x in (updates if updates else results):
-        body.append(f"• {html.escape(x['source'])} | {html.escape(str(x['period']))} | <a href=\"{html.escape(x['url'],quote=True)}\">원천</a>")
+        body.append(
+            f"• {html.escape(x['source'])} | {html.escape(str(x['period']))} | "
+            f"<a href=\"{html.escape(x['url'], quote=True)}\">원천</a>"
+        )
+
     if errors:
-        body+=["","<b>확인 대기</b>"]
-        for e in errors: body.append("• "+html.escape(e.split(":",1)[0])+" 최신값 자동 재확인 중")
-    ALERT.write_text("\n".join(body)+"\n",encoding="utf-8")
-    ns=state; ns.setdefault("seen",{}); ns.setdefault("values",{})
+        body += ["", "<b>확인 대기</b>"]
+        for e in errors:
+            body.append("• " + html.escape(e.split(":", 1)[0]) + " 최신값 자동 재확인 중")
+
+    ALERT.write_text("\n".join(body) + "\n", encoding="utf-8")
+
+    ns = state
+    ns.setdefault("seen", {})
+    ns.setdefault("values", {})
     for x in results:
-        key=f"{x['source']}|{x['kind']}"; ns["seen"][key]=x["fingerprint"]; ns["values"][key]=x
-    ns["updated_at_kst"]=datetime.now(timezone(timedelta(hours=9))).isoformat()
-    PENDING.write_text(json.dumps(ns,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    print(f"us_positioning_alert_ready=true updates={len(updates)}")
+        key = f"{x['source']}|{x['kind']}"
+        ns["seen"][key] = x["fingerprint"]
+        ns["values"][key] = x
+    ns["updated_at_kst"] = datetime.now(timezone(timedelta(hours=9))).isoformat()
+    PENDING.write_text(
+        json.dumps(ns, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    print(f"us_positioning_alert_ready=true event={event_label} updates={len(updates)}")
 else:
     print("us_positioning_alert_ready=false unchanged=true")
