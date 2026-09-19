@@ -251,8 +251,9 @@ def parse_cboe():
 
 
 def parse_sox():
-    # First use Nasdaq History page for the current level and previous close.
-    # Never trust the Overview-page percentage field, which can show 0.00% after the close.
+    # Nasdaq History is the authoritative page for the completed-session percentage.
+    # The Nasdaq Overview page can roll Previous Close forward and show 0.00% after the close,
+    # so we deliberately calculate the return from History-page level and Previous Close.
     h = browser_html(SOX)
     txt = BeautifulSoup(h, "html.parser").get_text(" ", strip=True)
 
@@ -261,75 +262,24 @@ def parse_sox():
         txt,
         re.I,
     )
-    if not m:
-        raise RuntimeError("SOX Nasdaq latest level not found")
+    prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", txt, re.I)
+    if not m or not prev_m:
+        raise RuntimeError("SOX Nasdaq History level/previous close not found")
+
     period = m.group(1)
     latest = float(m.group(2).replace(",", ""))
+    previous_close = float(prev_m.group(1).replace(",", ""))
+    if previous_close <= 0:
+        raise RuntimeError("SOX previous close invalid")
 
-    prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", txt, re.I)
-    prev1 = float(prev_m.group(1).replace(",", "")) if prev_m else None
-
-    # Nasdaq's History page can render inconsistently after the close.
-    # Prefer actual historical values from FRED's NASDAQSOX distribution when available.
-    history = []
-    fred_errors = []
-    fred_urls = [
-        "https://fred.stlouisfed.org/data/NASDAQSOX.txt",
-        "https://fred.stlouisfed.org/graph/fredgraph.csv?id=NASDAQSOX&cosd=2026-08-20",
-    ]
-
-    for url in fred_urls:
-        try:
-            r = S.get(url, timeout=18)
-            r.raise_for_status()
-            if url.endswith(".txt"):
-                rows = re.findall(r"^(20\d{2}-\d{2}-\d{2})\s+([\d.]+)$", r.text, re.M)
-                history = [(d, float(v)) for d, v in rows]
-            else:
-                df = pd.read_csv(StringIO(r.text))
-                if "NASDAQSOX" in df.columns:
-                    df["NASDAQSOX"] = pd.to_numeric(df["NASDAQSOX"], errors="coerce")
-                    df = df.dropna(subset=["NASDAQSOX"])
-                    history = [(str(row["DATE"]), float(row["NASDAQSOX"])) for _, row in df.iterrows()]
-            if history:
-                break
-        except Exception as e:
-            fred_errors.append(str(e))
-
-    # Cross-check latest FRED/Nasdaq value where FRED is available.
+    d1 = (latest / previous_close - 1) * 100
     metrics = {
         "value": latest,
-        "previous_close": prev1,
+        "previous_close": previous_close,
+        "net_change": latest - previous_close,
+        "pct": d1,
+        "d1_pct": d1,
     }
-
-    if history:
-        history.sort(key=lambda x: x[0])
-        vals = [v for d, v in history if d <= datetime.strptime(period, "%m/%d/%Y").strftime("%Y-%m-%d")]
-        if vals:
-            fred_latest = vals[-1]
-            if abs(fred_latest - latest) > 0.05:
-                raise RuntimeError(
-                    f"SOX Nasdaq/FRED mismatch: Nasdaq={latest}, FRED={fred_latest}"
-                )
-        if len(vals) >= 2:
-            prev1 = vals[-2]
-            metrics["previous_close"] = prev1
-            metrics["net_change"] = latest - prev1
-            metrics["d1_pct"] = (latest / prev1 - 1) * 100
-            metrics["pct"] = metrics["d1_pct"]
-        if len(vals) >= 4:
-            metrics["d3_pct"] = (latest / vals[-4] - 1) * 100
-        if len(vals) >= 6:
-            metrics["d5_pct"] = (latest / vals[-6] - 1) * 100
-
-    # If FRED was temporarily unavailable, still compute the verified 1D change
-    # from Nasdaq History's own Previous Close instead of failing the whole SOX lane.
-    if "d1_pct" not in metrics:
-        if prev1 is None or prev1 <= 0:
-            raise RuntimeError("SOX previous close unavailable")
-        metrics["net_change"] = latest - prev1
-        metrics["d1_pct"] = (latest / prev1 - 1) * 100
-        metrics["pct"] = metrics["d1_pct"]
 
     core = {"source": "Nasdaq SOX", "kind": "sox", "period": period, "metrics": metrics}
     return {**core, "url": SOX, "fingerprint": fp(core)}
