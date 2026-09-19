@@ -1,7 +1,8 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "588e99b0a828a37a7b2109fede564aa1221f4a81d0611a5a2d81a8b8337bd789",
-    "Cboe|options": "b2df1337c6904b3ae42f55e48c660e7b3c7b0d9a526918d1ddcb236b04977f70"
+    "Nasdaq SOX|sox": "33eef173ce6fe3fd0a537f89b653dd3a692076787e11ec71445ef45d4f290fc8",
+    "Cboe|options": "5ec40fda41acbeb6d465628a1394da08cbf713c38226fac973d4158b6e46c186",
+    "CFTC|cot": "3be9033e454d73e261f73275130329012d7e66f9ef17ffac2e0c1e26bdd12686"
   },
   "values": {
     "Nasdaq SOX|sox": {
@@ -10,11 +11,13 @@
       "period": "9/18/2026",
       "metrics": {
         "value": 11921.69,
-        "net_change": 319.22,
-        "pct": 0.0
+        "previous_close": 11921.69,
+        "net_change": 0.0,
+        "pct": 0.0,
+        "d1_pct": 0.0
       },
       "url": "https://indexes.nasdaq.com/Index/History/SOX",
-      "fingerprint": "588e99b0a828a37a7b2109fede564aa1221f4a81d0611a5a2d81a8b8337bd789"
+      "fingerprint": "33eef173ce6fe3fd0a537f89b653dd3a692076787e11ec71445ef45d4f290fc8"
     },
     "Cboe|options": {
       "source": "Cboe",
@@ -29,12 +32,35 @@
         "equity_calls": 4315010,
         "equity_puts": 2951195,
         "equity_time_ct": "03:15 PM",
-        "index_pc_ratio": null,
-        "index_time_ct": null
+        "index_pc_ratio": 0.98,
+        "index_time_ct": "03:15 PM"
       },
       "url": "https://www.cboe.com/us/options/market_statistics/market/",
-      "fingerprint": "b2df1337c6904b3ae42f55e48c660e7b3c7b0d9a526918d1ddcb236b04977f70"
+      "fingerprint": "5ec40fda41acbeb6d465628a1394da08cbf713c38226fac973d4158b6e46c186"
+    },
+    "CFTC|cot": {
+      "source": "CFTC",
+      "kind": "cot",
+      "period": "September 15, 2026",
+      "metrics": {
+        "open_interest": 345886,
+        "asset_long": 106173,
+        "asset_short": 38385,
+        "asset_net": 67788,
+        "asset_long_wow": -5935,
+        "asset_short_wow": 2837,
+        "asset_net_wow": -8772,
+        "lev_long": 46085,
+        "lev_short": 59137,
+        "lev_net": -13052,
+        "lev_long_wow": 4045,
+        "lev_short_wow": -19789,
+        "lev_net_wow": 23834,
+        "previous_period": "September 8, 2026"
+      },
+      "url": "https://www.cftc.gov/dea/futures/financial_lf.htm",
+      "fingerprint": "3be9033e454d73e261f73275130329012d7e66f9ef17ffac2e0c1e26bdd12686"
     }
   },
-  "updated_at_kst": "2026-09-19T18:29:38.841910+09:00"
+  "updated_at_kst": "2026-09-19T18:36:17.637275+09:00"
 }
