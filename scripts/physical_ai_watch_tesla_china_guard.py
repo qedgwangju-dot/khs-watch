@@ -301,8 +301,6 @@ def _query_tesla_app_x() -> list[dict]:
         item = _make_tesla_app_item(status_id, text, _x_time_from_id(status_id))
         if item:
             gathered.setdefault(status_id, item)
-    if gathered:
-        print(f'Tesla app Optimus code candidates: {len(gathered)}')
     return list(gathered.values())
 
 
@@ -379,7 +377,6 @@ def score(item: dict) -> int:
         s += 12
     if stage == 'home_app_integration':
         s += 12
-        print(f'Tesla app Optimus signal score={s}')
     if stage == 'factory_structure':
         s += 12
     if stage == 'factory_tooling':
