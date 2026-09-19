@@ -8,7 +8,10 @@ production/procurement milestone, not a specific article or URL.
 """
 from __future__ import annotations
 
+import datetime as dt
 import hashlib
+import html as html_lib
+import json
 import re
 import urllib.parse
 import xml.etree.ElementTree as ET
@@ -27,6 +30,9 @@ _orig_key = base.key
 _orig_clean_title = base.clean_title
 
 TESLA_CN_SENTINEL = 'DIRECT_TESLA_OPTIMUS_CN_SUPPLY_CHAIN'
+JOE_X_SENTINEL = 'DIRECT_JOE_TEGTMEYER_OPTIMUS_SITE_X'
+JOE_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/JoeTegtmeyer'
+JOE_X_SOURCE = 'Joe Tegtmeyer (X)'
 
 TESLA_OPT = re.compile(r'Tesla|特斯拉|테슬라', re.I)
 OPTIMUS = re.compile(r'Optimus|擎天柱|옵티머스', re.I)
@@ -79,6 +85,9 @@ PRODUCTION_STARTED = re.compile(
     r'양산\s*(?:시작|개시|착수)|생산\s*(?:시작|개시)|실제\s*양산\s*(?:시작|개시)',
     re.I,
 )
+FACTORY_SITE = re.compile(r'Giga(?:factory)?\\s*Texas|Giga\\s*Texas|기가\\s*텍사스|텍사스.{0,50}Optimus|Optimus.{0,50}(?:Texas|텍사스)', re.I)
+FACTORY_STRUCTURE = re.compile(r'steel\\s*(?:assembly|frame|framing)|column\\s*grids?|concrete|rebar|footing|grade[-\\s]*beam|roof\\s*truss|철골|골조|콘크리트|철근|기초|기초보|지붕|상부\\s*\\d+개?\\s*층', re.I)
+FACTORY_TOOLING = re.compile(r'tooling|equipment\\s*(?:install|installation|move[-\\s]*in)|production\\s*equipment|장비\\s*(?:반입|설치)|생산\\s*설비\\s*(?:반입|설치)|생산라인\\s*설치', re.I)
 CN_LOCATIONS = re.compile(r'上海|杭州|宁波|寧波|厦门|廈門|상하이|항저우|닝보|샤먼', re.I)
 OFFICIAL_CONFIRM = re.compile(r'Tesla\s+(?:said|confirmed|announced)|特斯拉(?:官方|确认|確認|宣布)|테슬라(?:가|는)?\s*(?:공식|확인|발표)', re.I)
 LOW_TRUST_COMMUNITY = re.compile(
@@ -102,9 +111,14 @@ SOURCE_KO = {
 
 if TESLA_CN_SENTINEL not in base.QUERIES:
     base.QUERIES.append(TESLA_CN_SENTINEL)
+if JOE_X_SENTINEL not in base.QUERIES:
+    base.QUERIES.append(JOE_X_SENTINEL)
+_TEXAS_FACTORY_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("Giga Texas" OR "Gigafactory Texas" OR 텍사스) (construction OR factory OR steel OR concrete OR rebar OR 철골 OR 콘크리트 OR 철근 OR 장비설치 OR tooling)'
+if _TEXAS_FACTORY_QUERY not in base.QUERIES:
+    base.QUERIES.append(_TEXAS_FACTORY_QUERY)
 base.TRUSTED.update({
     '시나재경', '제몐뉴스', '21세기경제보도', '거룽후이', '차이롄서',
-    '증권시보', '중국증권보', '상하이증권보',
+    '증권시보', '중국증권보', '상하이증권보', 'Tesla Telemetry',
 })
 
 
@@ -147,14 +161,53 @@ def _query_tesla_cn_supply_chain() -> list[dict]:
     return list(merged.values())
 
 
+def _query_joe_x() -> list[dict]:
+    try:
+        raw = base.fetch(JOE_X_TIMELINE).decode('utf-8', errors='ignore')
+        m = re.search(r'<script[^>]+id=["\\']__NEXT_DATA__["\\'][^>]*>(.*?)</script>', raw, re.I | re.S)
+        if not m:
+            return []
+        payload = json.loads(html_lib.unescape(m.group(1)))
+        entries = payload.get('props', {}).get('pageProps', {}).get('timeline', {}).get('entries', [])
+        out = []
+        cutoff = base.NOW - dt.timedelta(hours=96)
+        for entry in entries:
+            tweet = (entry.get('content') or {}).get('tweet') or {}
+            user = tweet.get('user') or {}
+            if str(user.get('screen_name') or '').lower() != 'joetegtmeyer':
+                continue
+            status_id = str(tweet.get('id_str') or tweet.get('id') or '').strip()
+            text = base.norm(str(tweet.get('full_text') or tweet.get('text') or ''))
+            published = base.parse_date(tweet.get('created_at'))
+            if not status_id or not text or not published or published < cutoff:
+                continue
+            if not (OPTIMUS.search(text) and FACTORY_SITE.search(text) and (FACTORY_STRUCTURE.search(text) or FACTORY_TOOLING.search(text))):
+                continue
+            out.append({
+                'title': '테슬라 옵티머스 Giga Texas 전용공장 현장 공정 신규 진척',
+                'link': f'https://x.com/JoeTegtmeyer/status/{status_id}',
+                'description': text,
+                'published': published.isoformat(),
+                'source': JOE_X_SOURCE,
+                'x_status_id': status_id,
+                'direct_site_observation': True,
+            })
+        return out
+    except Exception:
+        return []
+
+
 def query_news(q: str) -> list[dict]:
     if q == TESLA_CN_SENTINEL:
         return _query_tesla_cn_supply_chain()
+    if q == JOE_X_SENTINEL:
+        return _query_joe_x()
     return _orig_query_news(q)
 
 
 def _is_tesla_supply_text(text: str) -> bool:
-    return bool(TESLA_OPT.search(text) and OPTIMUS.search(text) and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text)))
+    factory = FACTORY_SITE.search(text) and (FACTORY_STRUCTURE.search(text) or FACTORY_TOOLING.search(text))
+    return bool(TESLA_OPT.search(text) and OPTIMUS.search(text) and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory))
 
 
 def _stage(text: str) -> str:
@@ -168,6 +221,10 @@ def _stage(text: str) -> str:
         return 'weekly_capacity_target'
     if PRODUCTION_STARTED.search(text):
         return 'production_started'
+    if FACTORY_SITE.search(text) and FACTORY_TOOLING.search(text):
+        return 'factory_tooling'
+    if FACTORY_SITE.search(text) and FACTORY_STRUCTURE.search(text):
+        return 'factory_structure'
     audit = bool(AUDIT.search(text))
     if audit_started:
         return 'supplier_audit_started'
@@ -206,6 +263,10 @@ def score(item: dict) -> int:
         s += 6
     if stage == 'production_started':
         s += 12
+    if stage == 'factory_structure':
+        s += 12
+    if stage == 'factory_tooling':
+        s += 14
     if stage == 'production_ramp':
         # "almost mass production / ramping soon" without a hard new milestone
         # is background commentary, not a new state change.
@@ -230,6 +291,10 @@ def category(text: str, group: str) -> str:
             return 'Optimus 주간 공급능력·생산 목표'
         if stage == 'production_started':
             return 'Optimus 실제 양산 개시'
+        if stage == 'factory_structure':
+            return 'Optimus Giga Texas 전용공장 구조공사 진척'
+        if stage == 'factory_tooling':
+            return 'Optimus Giga Texas 생산설비 반입·설치'
         if stage == 'scale_order_audit':
             return 'Optimus 천 단위 발주·공급업체 심사'
         if stage == 'scale_order':
@@ -253,6 +318,12 @@ def meaning(cat: str) -> str:
     if cat == 'Optimus 실제 양산 개시':
         return ('양산 예정·심사·공급망 준비가 아니라 실제 생산 개시가 확인된 단계 변화입니다. '
                 '첫 주간 생산량·수율·완성품 출하·내부 배치로 실제 램프업 속도를 확인합니다.')
+    if cat == 'Optimus Giga Texas 전용공장 구조공사 진척':
+        return ('계획 발표가 아니라 전용공장의 철골·콘크리트·철근 등 물리 공정이 실제 진행되는 단계 변화입니다. '
+                '구조공사 완료→외장·유틸리티→생산설비 반입→시운전→양산 순으로 시간표를 추적합니다.')
+    if cat == 'Optimus Giga Texas 생산설비 반입·설치':
+        return ('건물 공사에서 실제 생산설비 설치로 넘어가는 더 강한 양산 준비 신호입니다. '
+                '장비 설치 완료·전원 인가·시운전·초기 수율과 첫 완제품 생산을 다음 단계로 확인합니다.')
     if cat == 'Optimus 천 단위 발주·공급업체 심사':
         return ('수백 대 시험 생산 물량에서 약 5,000대 규모로 알려진 첫 천 단위 공급망 주문과 중국 공급업체 심사가 동시에 포착된 단계 변화입니다. '
                 '양산 가능성을 공급망에서 검증하는 신호로 보고 실제 공급업체별 배정 수량·납기·출하·생산 수율을 이어서 추적합니다.')
@@ -279,6 +350,10 @@ def risk(cat: str) -> str:
         return ('공급능력 목표는 실제 생산량이 아닙니다. 수율·부품 병목·라인 안정화가 늦으면 목표치와 실제 주간 완제품 생산량의 격차가 커질 수 있습니다.')
     if cat == 'Optimus 실제 양산 개시':
         return ('생산 개시와 안정 양산은 다릅니다. 초기 직행수율·재작업률·주간 생산량이 따라오지 않으면 양산 개시 후에도 병목이 지속될 수 있습니다.')
+    if cat == 'Optimus Giga Texas 전용공장 구조공사 진척':
+        return ('드론 현장 관측은 공정 진척을 보여주지만 최종 내부 배치·생산라인 구성과 가동일을 확정하지는 않습니다. 구조공사 후 장비 반입·유틸리티·시운전이 지연될 수 있습니다.')
+    if cat == 'Optimus Giga Texas 생산설비 반입·설치':
+        return ('설비 반입은 안정 양산과 다릅니다. 설치·캘리브레이션·공정 수율·부품 공급이 뒤따르지 않으면 가동 일정이 늦어질 수 있습니다.')
     if cat in {'Optimus 천 단위 발주·공급업체 심사', 'Optimus 천 단위 양산 발주'}:
         return ('약 5,000대 발주는 현재 중국 공급망 보도이며 테슬라 공식 공시로 확인된 수량은 아닙니다. '
                 '공급업체 심사와 주문 보도가 실제 완제품 5,000대 생산·출하를 뜻하지 않으므로 공급업체 실명·발주서·납기·출하와 테슬라 공식 생산량을 별도로 확인합니다.')
@@ -303,6 +378,10 @@ def verification(item: dict, group: str, text: str) -> str:
             return '공급망 생산능력·목표 보도 · 실제 완제품 생산량과 분리'
         if _stage(text) == 'production_started':
             return '양산 실제 개시 보도 · 테슬라 공식 생산상태와 후속 교차확인'
+        if _stage(text) == 'factory_structure':
+            return '현장 드론 관측·신뢰매체 보도 · Tesla 공식 Q2 자료의 Giga Texas 건설 진행 상태와 교차확인'
+        if _stage(text) == 'factory_tooling':
+            return '현장·보도 단계 · Tesla 공식 자료에서 설비 설치·가동 상태 후속 확인'
         if _stage(text) in {'scale_order', 'scale_order_audit'}:
             return '중국 공급망 복수 보도 · 테슬라 공식 양산계획과 교차확인 · 약 5,000대 발주 수량은 테슬라 공식 확인 전'
         if _stage(text) == 'supplier_audit_started':
@@ -322,6 +401,10 @@ def clean_title(title: str, source: str) -> str:
             return '테슬라 옵티머스, 주간 공급능력·생산 목표 신규 변화'
         if stage == 'production_started':
             return '테슬라 옵티머스, 실제 양산 개시 신규 확인'
+        if stage == 'factory_structure':
+            return '테슬라 옵티머스, Giga Texas 전용공장 철골·콘크리트 공정 신규 진척'
+        if stage == 'factory_tooling':
+            return '테슬라 옵티머스, Giga Texas 생산설비 반입·설치 단계 진입'
         if stage == 'scale_order_audit':
             return '테슬라 옵티머스, 약 5,000대 공급망 주문·중국 공급업체 심사 진행 보도'
         if stage == 'scale_order':
@@ -347,6 +430,10 @@ def key(item: dict) -> str:
             m = re.search(r'(?<!\d)(\d{2,5})(?:\s*台|\s*대|\s*(?:per\s+week|weekly))', text, re.I)
             qty = m.group(1) if m else 'unknown'
             return hashlib.sha256(f'tesla-optimus|weekly-capacity-target|{qty}'.encode()).hexdigest()
+        if stage == 'factory_structure':
+            return hashlib.sha256(b'tesla-optimus|giga-texas|factory-structure').hexdigest()
+        if stage == 'factory_tooling':
+            return hashlib.sha256(b'tesla-optimus|giga-texas|factory-tooling').hexdigest()
         if stage == 'supplier_audit_started':
             return hashlib.sha256(b'tesla-optimus|2026-09-17|supplier-production-audit-started').hexdigest()
         if stage == 'scale_order_audit':
