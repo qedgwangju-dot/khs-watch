@@ -8,6 +8,7 @@ on:
       - "scripts/apple_duo_supply_watch.py"
       - "scripts/apple_duo_panel_leading_watch.py"
       - "scripts/apple_duo_demand_competition_watch.py"
+      - "scripts/test_apple_duo_demand_competition_watch.py"
       - "data/apple_duo_supply_watch_state.json"
       - "data/apple_duo_panel_leading_state.json"
       - "data/apple_duo_demand_competition_state.json"
@@ -50,6 +51,8 @@ jobs:
           python -m py_compile scripts/apple_duo_supply_watch.py
           python -m py_compile scripts/apple_duo_panel_leading_watch.py
           python -m py_compile scripts/apple_duo_demand_competition_watch.py
+          python -m py_compile scripts/test_apple_duo_demand_competition_watch.py
+          python scripts/test_apple_duo_demand_competition_watch.py
 
       - name: Validate Telegram route without sending
         env:
