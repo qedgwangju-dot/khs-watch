@@ -210,13 +210,12 @@ def fetch_cboe_history():
         for d in dates:
             url = "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=" + d.isoformat()
             try:
-                page.goto(url, wait_until="domcontentloaded", timeout=30000)
+                page.goto(url, wait_until="domcontentloaded", timeout=20000)
                 try:
-                    page.wait_for_load_state("networkidle", timeout=5000)
+                    page.get_by_text("TOTAL PUT/CALL RATIO", exact=False).first.wait_for(timeout=4000)
                 except Exception:
-                    pass
-                page.wait_for_timeout(350)
-                text = re.sub(r"\\s+", " ", page.locator("body").inner_text(timeout=10000))
+                    page.wait_for_timeout(500)
+                text = re.sub(r"\\s+", " ", page.locator("body").inner_text(timeout=8000))
                 row = parse_cboe_text(text, d)
                 if row:
                     rows.append(row)
