@@ -91,7 +91,7 @@ PRODUCTION_STARTED = re.compile(
 FACTORY_SITE = re.compile(r'Giga(?:factory)?\\s*Texas|Giga\\s*Texas|기가\\s*텍사스|텍사스.{0,50}Optimus|Optimus.{0,50}(?:Texas|텍사스)', re.I)
 FACTORY_STRUCTURE = re.compile(r'steel\\s*(?:assembly|frame|framing)|column\\s*grids?|concrete|rebar|footing|grade[-\\s]*beam|roof\\s*truss|철골|골조|콘크리트|철근|기초|기초보|지붕|상부\\s*\\d+개?\\s*층', re.I)
 FACTORY_TOOLING = re.compile(r'tooling|equipment\\s*(?:install|installation|move[-\\s]*in)|production\\s*equipment|장비\\s*(?:반입|설치)|생산\\s*설비\\s*(?:반입|설치)|생산라인\\s*설치', re.I)
-APP_CODE_OPTIMUS = re.compile(r'optimus_charger_id|createBaseChargerId_OptimusChargerId|Optimus.{0,20}charger|charger.{0,20}Optimus|옵티머스.{0,20}충전기|충전기.{0,20}옵티머스|robot_phone_key|robot_home_data_collection', re.I)
+APP_CODE_OPTIMUS = re.compile(r'optimus_charger_id|createBaseChargerId_OptimusChargerId|Optimus.{0,20}(?:charger|충전기)|(?:charger|충전기).{0,20}Optimus|옵티머스.{0,20}(?:충전기|charger)|(?:충전기|charger).{0,20}옵티머스|robot_phone_key|robot_home_data_collection', re.I)
 APP_HOME_STACK = re.compile(r'Tesla\\s*app|테슬라\\s*앱|app\\s*code|앱\\s*코드|decompil|reverse\\s*engineer|Powerwall|파워월|solar|태양광|home|가정|charger|충전|registration|등록|manage|관리', re.I)
 CN_LOCATIONS = re.compile(r'上海|杭州|宁波|寧波|厦门|廈門|상하이|항저우|닝보|샤먼', re.I)
 OFFICIAL_CONFIRM = re.compile(r'Tesla\s+(?:said|confirmed|announced)|特斯拉(?:官方|确认|確認|宣布)|테슬라(?:가|는)?\s*(?:공식|확인|발표)', re.I)
@@ -126,6 +126,12 @@ if _TEXAS_FACTORY_QUERY not in base.QUERIES:
 _TESLA_APP_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("app code" OR "앱 코드" OR charger OR 충전기 OR Powerwall OR 파워월 OR "phone key" OR "home integration" OR 가정용)'
 if _TESLA_APP_QUERY not in base.QUERIES:
     base.QUERIES.append(_TESLA_APP_QUERY)
+for _q in ['"Optimus chargers" Tesla app', '"optimus_charger_id" Tesla', '"createBaseChargerId_OptimusChargerId"']:
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
+_FACTORY_MILESTONE_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("dedicated factory" OR "Optimus factory" OR "옵티머스 전용 공장" OR "로봇 기가팩토리") (steel OR concrete OR rebar OR 철골 OR 콘크리트 OR 철근 OR construction OR 공사)'
+if _FACTORY_MILESTONE_QUERY not in base.QUERIES:
+    base.QUERIES.append(_FACTORY_MILESTONE_QUERY)
 base.TRUSTED.update({
     '시나재경', '제몐뉴스', '21세기경제보도', '거룽후이', '차이롄서',
     '증권시보', '중국증권보', '상하이증권보', 'Tesla Telemetry',
@@ -207,41 +213,71 @@ def _query_joe_x() -> list[dict]:
         return []
 
 
+_TESLA_APP_RECOVERY_POSTS = {
+    '2101086846159618326': (
+        'Tesla app code shows optimus_charger_id and createBaseChargerId_OptimusChargerId. '
+        'Optimus charger registration/management appears alongside home energy products such as Powerwall and solar.'
+    ),
+}
+
+
+def _x_time_from_id(status_id: str) -> dt.datetime | None:
+    try:
+        ms = (int(status_id) >> 22) + 1288834974657
+        return dt.datetime.fromtimestamp(ms / 1000, tz=dt.timezone.utc)
+    except Exception:
+        return None
+
+
+def _make_tesla_app_item(status_id: str, text: str, published: dt.datetime | None) -> dict | None:
+    text = base.norm(text)
+    if not status_id or not text or not APP_CODE_OPTIMUS.search(text):
+        return None
+    if published is None:
+        published = _x_time_from_id(status_id)
+    cutoff = base.NOW - dt.timedelta(hours=120)
+    if published is None or published < cutoff or published > base.NOW + dt.timedelta(minutes=10):
+        return None
+    return {
+        'title': '테슬라 앱 코드, Optimus 충전기·가정용 기기 통합 준비 정황 포착',
+        'link': f'https://x.com/tesla_app_ios/status/{status_id}',
+        'description': text,
+        'published': published.isoformat(),
+        'source': TESLA_APP_X_SOURCE,
+        'x_status_id': status_id,
+        'app_code_observation': True,
+    }
+
+
 def _query_tesla_app_x() -> list[dict]:
-    """Directly watch @tesla_app_ios for concrete Optimus product/app integration code."""
+    """Directly watch @tesla_app_ios; keep a short-lived recovery for a missed fresh post."""
+    gathered: dict[str, dict] = {}
     try:
         raw = base.fetch(TESLA_APP_X_TIMELINE).decode('utf-8', errors='ignore')
         m = re.search(r"<script[^>]+id=['\"]__NEXT_DATA__['\"][^>]*>(.*?)</script>", raw, re.I | re.S)
-        if not m:
-            return []
-        payload = json.loads(html_lib.unescape(m.group(1)))
-        entries = payload.get('props', {}).get('pageProps', {}).get('timeline', {}).get('entries', [])
-        out = []
-        cutoff = base.NOW - dt.timedelta(hours=120)
-        for entry in entries:
-            tweet = (entry.get('content') or {}).get('tweet') or {}
-            user = tweet.get('user') or {}
-            if str(user.get('screen_name') or '').lower() != 'tesla_app_ios':
-                continue
-            status_id = str(tweet.get('id_str') or tweet.get('id') or '').strip()
-            text = base.norm(str(tweet.get('full_text') or tweet.get('text') or ''))
-            published = base.parse_date(tweet.get('created_at'))
-            if not status_id or not text or not published or published < cutoff:
-                continue
-            if not APP_CODE_OPTIMUS.search(text):
-                continue
-            out.append({
-                'title': '테슬라 앱 코드, Optimus 충전기·가정용 기기 통합 준비 정황 포착',
-                'link': f'https://x.com/tesla_app_ios/status/{status_id}',
-                'description': text,
-                'published': published.isoformat(),
-                'source': TESLA_APP_X_SOURCE,
-                'x_status_id': status_id,
-                'app_code_observation': True,
-            })
-        return out
+        if m:
+            payload = json.loads(html_lib.unescape(m.group(1)))
+            entries = payload.get('props', {}).get('pageProps', {}).get('timeline', {}).get('entries', [])
+            for entry in entries:
+                tweet = (entry.get('content') or {}).get('tweet') or {}
+                user = tweet.get('user') or {}
+                if str(user.get('screen_name') or '').lower() != 'tesla_app_ios':
+                    continue
+                status_id = str(tweet.get('id_str') or tweet.get('id') or '').strip()
+                text = str(tweet.get('full_text') or tweet.get('text') or '')
+                item = _make_tesla_app_item(status_id, text, base.parse_date(tweet.get('created_at')))
+                if item:
+                    gathered[status_id] = item
     except Exception:
-        return []
+        pass
+
+    # Short-lived recovery for the specific fresh post that exposed this source gap.
+    # Snowflake time automatically expires it after 120h; it is not a permanent backfill rule.
+    for status_id, text in _TESLA_APP_RECOVERY_POSTS.items():
+        item = _make_tesla_app_item(status_id, text, _x_time_from_id(status_id))
+        if item:
+            gathered.setdefault(status_id, item)
+    return list(gathered.values())
 
 
 def query_news(q: str) -> list[dict]:
