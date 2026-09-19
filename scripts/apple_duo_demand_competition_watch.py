@@ -199,6 +199,25 @@ def _nearest_marker_distance(low: str, pos: int, markers: tuple[str, ...]) -> in
     return min(distances) if distances else None
 
 
+def _nearest_preceding_marker_distance(
+    low: str,
+    pos: int,
+    markers: tuple[str, ...],
+) -> int | None:
+    distances: list[int] = []
+    for marker in markers:
+        start = 0
+        while True:
+            idx = low.find(marker, start)
+            if idx < 0:
+                break
+            center = idx + len(marker) // 2
+            if center <= pos:
+                distances.append(pos - center)
+            start = idx + 1
+    return min(distances) if distances else None
+
+
 def _entity_is_closest(
     low: str,
     pos: int,
@@ -206,6 +225,18 @@ def _entity_is_closest(
     other_markers: tuple[str, ...],
     max_distance: int = 180,
 ) -> bool:
+    # Demand sentences usually follow "product -> metric -> number". Prefer the
+    # closest product mentioned before the percentage. This prevents a product
+    # name appearing after the percentage ("...10% after Apple unveiled...") from
+    # stealing the metric from the actual subject.
+    target_before = _nearest_preceding_marker_distance(low, pos, target_markers)
+    other_before = _nearest_preceding_marker_distance(low, pos, other_markers)
+    if target_before is not None and target_before <= max_distance:
+        if other_before is None or target_before < other_before:
+            return True
+    if other_before is not None and other_before <= max_distance:
+        return False
+
     target = _nearest_marker_distance(low, pos, target_markers)
     other = _nearest_marker_distance(low, pos, other_markers)
     if target is None or target > max_distance:
