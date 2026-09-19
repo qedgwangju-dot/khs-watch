@@ -254,7 +254,9 @@ def parse_sox():
     # Nasdaq History is the authoritative page for the completed-session percentage.
     # The Nasdaq Overview page can roll Previous Close forward and show 0.00% after the close,
     # so we deliberately calculate the return from History-page level and Previous Close.
-    h = browser_html(SOX)
+    # Prefer the server-rendered History page. This avoids the client-side Overview
+    # widget that can overwrite Previous Close with the current level after the close.
+    h = get(SOX).text
     txt = BeautifulSoup(h, "html.parser").get_text(" ", strip=True)
 
     m = re.search(
@@ -263,6 +265,16 @@ def parse_sox():
         re.I,
     )
     prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", txt, re.I)
+    if not m or not prev_m:
+        # Browser fallback only if the static History response lacks the data.
+        h = browser_html(SOX)
+        txt = BeautifulSoup(h, "html.parser").get_text(" ", strip=True)
+        m = re.search(
+            r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)",
+            txt,
+            re.I,
+        )
+        prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", txt, re.I)
     if not m or not prev_m:
         raise RuntimeError("SOX Nasdaq History level/previous close not found")
 
