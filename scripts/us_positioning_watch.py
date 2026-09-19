@@ -270,14 +270,59 @@ def parse_sox():
     displayed_net_change = float(cur.group(3).replace(",", ""))
     displayed_pct = float(cur.group(4))
 
-    # The History route currently reports the correct completed-session percentage,
-    # while the Overview route may be stale. Prefer the History percentage when it is
-    # nonzero and plausible. If History ever returns 0.00% with a material net change,
-    # fail closed rather than sending a false flat reading.
+    # Nasdaq's rendered History DOM can occasionally inherit the stale 0.00% Overview
+    # state even though the completed-session move is nonzero. When that happens,
+    # cross-check a public historical table and only accept it if the same date and
+    # closing level match Nasdaq.
     if abs(displayed_net_change) > 1 and abs(displayed_pct) < 0.01:
-        raise RuntimeError(
-            f"SOX History inconsistent: net_change={displayed_net_change}, pct={displayed_pct}"
+        fallback_rows = []
+        for inv_url in (
+            "https://www.investing.com/indices/phlx-semiconductor-historical-data",
+            "https://ph.investing.com/indices/phlx-semiconductor-historical-data",
+        ):
+            try:
+                inv_html = get(inv_url).text
+                for t in pd.read_html(StringIO(inv_html)):
+                    tt = t.copy()
+                    tt.columns = [str(x[-1] if isinstance(x, tuple) else x).strip() for x in tt.columns]
+                    date_col = next((x for x in tt.columns if str(x).strip().lower() == "date"), None)
+                    price_col = next((x for x in tt.columns if str(x).strip().lower() in ("price","last","close")), None)
+                    change_col = next((x for x in tt.columns if "change %" in str(x).strip().lower()), None)
+                    if not date_col or not price_col or not change_col:
+                        continue
+                    for _, row in tt.head(10).iterrows():
+                        ds = str(row.get(date_col, "")).strip()
+                        val = parse_num(row.get(price_col))
+                        pct = parse_num(row.get(change_col))
+                        if ds and val is not None and pct is not None:
+                            fallback_rows.append((ds, val, pct))
+                    if fallback_rows:
+                        break
+                if fallback_rows:
+                    break
+            except Exception:
+                continue
+
+        def _norm_date(s):
+            for fmt in ("%b %d, %Y", "%m/%d/%Y", "%d/%m/%Y", "%Y-%m-%d"):
+                try:
+                    return datetime.strptime(s, fmt).strftime("%m/%d/%Y")
+                except Exception:
+                    pass
+            return s
+
+        same = next(
+            ((d, v, p) for d, v, p in fallback_rows
+             if _norm_date(d) == period and abs(v - latest) <= 1.0),
+            None,
         )
+        if same is None:
+            raise RuntimeError(
+                f"SOX History stale and fallback cross-check failed: "
+                f"net_change={displayed_net_change}, pct={displayed_pct}"
+            )
+        displayed_pct = float(same[2])
+
     if abs(displayed_pct) > 25:
         raise RuntimeError(f"SOX daily pct sanity failed: {displayed_pct}")
 
