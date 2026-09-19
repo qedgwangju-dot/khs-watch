@@ -40,6 +40,7 @@ base.QUERIES.extend([
     '(삼성전기 OR Samsung Electro-Mechanics OR Murata OR 무라타 OR Taiyo Yuden OR 다이요유덴 OR TDK OR Yageo) (ESS OR BESS OR energy storage) (MLCC OR capacitor) (장기공급계약 OR LTA OR 공급계약 OR contract OR 증설 OR capacity OR 가동률 OR utilization OR 납기 OR lead time)',
     '(ESS OR BESS OR energy storage) (MLCC OR 적층세라믹커패시터) (이중조달 OR dual sourcing OR 재고조정 OR inventory correction OR 공급 정상화 OR normalization OR 가격 하락 OR price cut)',
     '(ESS OR BESS OR energy storage) (MLCC OR 적층세라믹커패시터) (고전압 OR high voltage OR 고신뢰성 OR high reliability OR 고온 OR high temperature OR 검사 OR test OR 수율 OR yield)',
+    '(전력거래소 OR KPX) ("ESS 중앙계약시장" OR "에너지저장장치 중앙계약시장") (입찰공고 OR 공고문 OR 확정 OR 선정 OR 우선협상 OR 낙찰)',
 ])
 
 base.TRUSTED.update({
@@ -51,6 +52,7 @@ base.OFFICIAL_OR_PRIMARY.update({
     'State Taxation Administration of China',
     '삼성전기', 'Samsung Electro-Mechanics', 'Murata', '무라타',
     'Taiyo Yuden', '다이요유덴', 'TDK', 'Yageo',
+    '전력거래소', 'KPX', '한국전력거래소',
     'SK온', 'SK On', '엘앤에프', 'L&F', 'DART', '금융감독원 전자공시시스템',
 })
 
@@ -73,6 +75,40 @@ MLCC_CAPACITY = re.compile(r'증설|생산\s*능력|capacity|가동률|utilizati
 MLCC_RELIEF = re.compile(r'이중\s*조달|dual\s*sourcing|재고\s*조정|inventory\s*correction|공급\s*정상화|normalization|가격\s*하락|price\s*cut|lead\s*time.*shorten|납기.*단축', re.I)
 MLCC_RELIABILITY = re.compile(r'고전압|high\s*voltage|고신뢰성|high\s*reliability|고온|high\s*temperature|검사|test|수율|yield|절연|insulation', re.I)
 HUMANOID_RE = re.compile(r'휴머노이드|humanoid|로봇용 배터리|robot battery|robotics battery', re.I)
+ESS3_RE = re.compile(
+    r'(?:제\s*)?3차.{0,40}(?:ESS|에너지저장장치).{0,50}중앙계약시장|'
+    r'(?:ESS|에너지저장장치).{0,50}(?:제\s*)?3차.{0,40}중앙계약시장|'
+    r'3차\s*ESS.{0,30}(?:입찰|수주전|시장)',
+    re.I,
+)
+ESS3_PREVIEW = re.compile(
+    r'예상|전망|임박|앞두고|수주전|경쟁(?:\s*막)?\s*(?:올라|격화|재점화)|'
+    r'나올\s*것으로|공고\s*예정|개설\s*예정|몰두|승부|검토|가능성|관측',
+    re.I,
+)
+ESS3_ACTUAL = re.compile(
+    r'입찰\s*공고(?:문)?(?:을|가)?\s*(?:게시|발표|공고|확정)|'
+    r'공고(?:를|가)?\s*(?:냈다|게시했다|발표했다|확정했다)|'
+    r'공고\s*제\s*\d+|우선협상(?:대상자)?\s*선정|낙찰|입찰\s*마감|'
+    r'접수\s*(?:개시|시작)|물량.{0,20}확정|평가(?:기준|방식).{0,20}(?:확정|변경)',
+    re.I,
+)
+KPX_SOURCE_RE = re.compile(r'전력거래소|한국전력거래소|\bKPX\b', re.I)
+
+
+def _ess3_stage(text: str, source: str = '') -> str:
+    if not ESS3_RE.search(text):
+        return ''
+    if re.search(r'우선협상|낙찰|선정', text, re.I):
+        return 'award'
+    if re.search(r'평가(?:기준|방식).{0,20}(?:확정|변경)', text, re.I):
+        return 'rules'
+    if re.search(r'물량.{0,20}확정|(?:\d[\d,.]*)\s*(?:MW|GW).{0,30}확정', text, re.I):
+        return 'volume'
+    if ESS3_ACTUAL.search(text) and (KPX_SOURCE_RE.search(source) or not ESS3_PREVIEW.search(text)):
+        return 'notice'
+    return 'preview'
+
 KOREA_CONTRACT_RE = re.compile(r'계약|공급|수주|purchase|supply|contract|order', re.I)
 LFP_RE = re.compile(r'\bLFP\b|리튬인산철|磷酸铁锂', re.I)
 SKON_RE = re.compile(r'SK온|SK\s*On|에스케이온', re.I)
@@ -156,6 +192,13 @@ def score(item: dict) -> int:
         return _orig_score(item)
 
     source = item.get('source') or ''
+    ess3_stage = _ess3_stage(text, source)
+    # Generic "3rd ESS market is coming / competition heats up" articles are
+    # background repeats, not a new state change. Alert only when a notice,
+    # confirmed volume/rule change, or award materially advances the process.
+    if ess3_stage == 'preview':
+        return 0
+
     s = 9
     if base.NUMERIC.search(text):
         s += 3
@@ -307,6 +350,10 @@ def _same_event(a: dict, b: dict) -> bool:
     ta = f"{a.get('title','')} {a.get('description','')}"
     tb = f"{b.get('title','')} {b.get('description','')}"
 
+    sa3, sb3 = _ess3_stage(ta, a.get('source') or ''), _ess3_stage(tb, b.get('source') or '')
+    if sa3 and sb3 and sa3 == sb3:
+        return True
+
     if _skon_lnf_lfp_contract(ta) and _skon_lnf_lfp_contract(tb):
         return True
     if _generic_korean_supply_contract(ta) and _generic_korean_supply_contract(tb):
@@ -342,6 +389,9 @@ def _same_event(a: dict, b: dict) -> bool:
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     import hashlib
+    stage3 = _ess3_stage(text, item.get('source') or '')
+    if stage3:
+        return hashlib.sha256(f'ess-central-market-3|2026|{stage3}'.encode()).hexdigest()
     if _skon_lnf_lfp_contract(text):
         return hashlib.sha256(SKON_LNF_LFP_KEY.encode()).hexdigest()
     if _generic_korean_supply_contract(text):
