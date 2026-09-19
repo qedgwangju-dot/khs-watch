@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-19T16:44:23+09:00",
+  "updated_at_kst": "2026-09-19T21:04:13+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -77,7 +77,5 @@
     "treasury_rates": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve",
     "farside_btc_etf": "https://farside.co.uk/bitcoin-etf-flow-all-data/"
   },
-  "errors": [
-    "rates: <urlopen error _ssl.c:993: The handshake operation timed out>"
-  ]
+  "errors": []
 }
