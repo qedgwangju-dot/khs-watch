@@ -157,63 +157,78 @@ def fetch_cftc_contract(code):
     return cur
 
 
-def parse_cboe_for_date(d):
-    url = CBOE_DAILY + "?dt=" + d.isoformat()
-    r = S.get(url, timeout=35)
-    r.raise_for_status()
-    tables = pd.read_html(r.text)
+def parse_cboe_text(text, d):
     ratios = {}
-    for t in tables:
-        if t.shape[1] < 2:
-            continue
-        cols = [str(c).strip().upper() for c in t.columns]
-        if not any("RATIO" in c for c in cols) and "RATIOS" not in " ".join(cols):
-            flat = " ".join(map(str, t.astype(str).values.flatten()[:30])).upper()
-            if "PUT/CALL RATIO" not in flat:
-                continue
-        for _, row in t.iterrows():
-            vals = [str(v).strip() for v in row.tolist()]
-            if len(vals) < 2:
-                continue
-            label = vals[0].upper()
-            try:
-                value = float(str(vals[1]).replace(",", ""))
-            except Exception:
-                continue
-            if "TOTAL PUT/CALL RATIO" in label:
-                ratios["total"] = value
-            elif "INDEX PUT/CALL RATIO" in label and "SPX" not in label:
-                ratios["index"] = value
-            elif "EQUITY PUT/CALL RATIO" in label:
-                ratios["equity"] = value
-        if all(k in ratios for k in ("total", "index", "equity")):
-            break
-    if len(ratios) < 3:
+    pats = {
+        "total": r"TOTAL PUT/CALL RATIO\\s+([0-9]+(?:\\.[0-9]+)?)",
+        "index": r"INDEX PUT/CALL RATIO\\s+([0-9]+(?:\\.[0-9]+)?)",
+        "equity": r"EQUITY PUT/CALL RATIO\\s+([0-9]+(?:\\.[0-9]+)?)",
+    }
+    for key, pat in pats.items():
+        m = re.search(pat, text, re.I)
+        if m:
+            ratios[key] = float(m.group(1))
+    if len(ratios) != 3:
         return None
-    return {"date": d.isoformat(), **ratios, "url": url}
+    return {
+        "date": d.isoformat(),
+        **ratios,
+        "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=" + d.isoformat(),
+    }
 
 
 def fetch_cboe_history():
+    exe = next(
+        (p for p in [
+            "/usr/bin/google-chrome",
+            "/usr/bin/google-chrome-stable",
+            "/usr/bin/chromium",
+            "/usr/bin/chromium-browser",
+        ] if os.path.exists(p)),
+        None,
+    )
+    if not exe:
+        raise RuntimeError("Chrome/Chromium not found for Cboe")
+
     today_et = datetime.now(ZoneInfo("America/New_York")).date()
     dates = []
-    for back in range(0, 38):
+    for back in range(0, 42):
         d = today_et - timedelta(days=back)
         if d.weekday() < 5:
             dates.append(d)
+        if len(dates) >= 26:
+            break
 
     rows = []
-    with ThreadPoolExecutor(max_workers=8) as pool:
-        futures = {pool.submit(parse_cboe_for_date, d): d for d in dates}
-        for fut in as_completed(futures):
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch(
+            executable_path=exe,
+            headless=True,
+            args=["--no-sandbox", "--disable-dev-shm-usage", "--disable-blink-features=AutomationControlled"],
+        )
+        page = browser.new_page(user_agent=UA, locale="en-US")
+        for d in dates:
+            url = "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=" + d.isoformat()
             try:
-                row = fut.result()
+                page.goto(url, wait_until="domcontentloaded", timeout=30000)
+                try:
+                    page.wait_for_load_state("networkidle", timeout=5000)
+                except Exception:
+                    pass
+                page.wait_for_timeout(350)
+                text = re.sub(r"\\s+", " ", page.locator("body").inner_text(timeout=10000))
+                row = parse_cboe_text(text, d)
                 if row:
                     rows.append(row)
             except Exception:
-                pass
+                continue
+            if len(rows) >= 20:
+                break
+        browser.close()
 
-    if not rows:
-        raise RuntimeError("Cboe daily ratio rows unavailable")
+    if len(rows) < 5:
+        raise RuntimeError(f"Cboe daily ratio rows unavailable: {len(rows)}")
+
     rows.sort(key=lambda x: x["date"], reverse=True)
     cur = dict(rows[0])
     hist = rows[:20]
@@ -223,6 +238,7 @@ def fetch_cboe_history():
         cur[key + "_avg5"] = sum(vals5) / len(vals5)
         cur[key + "_avg20"] = sum(vals20) / len(vals20)
         cur[key + "_pctile20"] = pct_rank(vals20, cur[key])
+    cur["history_count"] = len(hist)
     return cur
 
 
