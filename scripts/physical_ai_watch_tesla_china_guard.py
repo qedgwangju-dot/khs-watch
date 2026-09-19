@@ -164,7 +164,7 @@ def _query_tesla_cn_supply_chain() -> list[dict]:
 def _query_joe_x() -> list[dict]:
     try:
         raw = base.fetch(JOE_X_TIMELINE).decode('utf-8', errors='ignore')
-        m = re.search(r'<script[^>]+id=["\\']__NEXT_DATA__["\\'][^>]*>(.*?)</script>', raw, re.I | re.S)
+        m = re.search(r"<script[^>]+id=['\"]__NEXT_DATA__['\"][^>]*>(.*?)</script>", raw, re.I | re.S)
         if not m:
             return []
         payload = json.loads(html_lib.unescape(m.group(1)))
