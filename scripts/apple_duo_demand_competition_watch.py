@@ -88,7 +88,7 @@ MID_SOURCES = (
     "매일경제", "한국경제", "서울경제", "머니투데이",
 )
 LOW_SOURCES = (
-    "wccftech", "technobezz", "note.com", "reddit",
+    "wccftech", "technobezz", "note.com", "reddit", "notebookcheck",
 )
 
 GEO_MARKERS = {
