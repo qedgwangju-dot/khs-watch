@@ -12,7 +12,7 @@ Guardrails keep plans, analyst estimates and capacity separate from secured
 financing, official site/volume decisions, shipments and booked revenue.
 """
 from __future__ import annotations
-import re, sys
+import hashlib, re, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import physical_ai_watch_hyundai_mobis_atlas as hm
@@ -29,6 +29,7 @@ base.QUERIES.extend([
     '(로보티즈 OR ROBOTIS) (액추에이터 OR actuator OR DYNAMIXEL) (수주잔고 OR backlog OR 초과수요 OR "excess demand" OR 생산능력 OR capacity OR 우즈베키스탄 OR Uzbekistan OR 공장 OR plant)',
     '(로보티즈 OR ROBOTIS) (액추에이터 OR actuator) (수율 OR yield OR 가동률 OR utilization OR 월 생산량 OR monthly output OR 출하 OR shipment OR 납기 OR lead time OR 평균판매단가 OR ASP)',
     '(로보티즈 OR ROBOTIS) (Microduck OR 마이크로덕 OR Reachy OR 리치미니 OR Hugging Face OR 허깅페이스 OR Pollen Robotics) (액추에이터 OR actuator OR 공급 OR supply OR 주문 OR order OR 판매량 OR units)',
+    '(로보티즈 OR ROBOTIS) ("AI 사피엔스" OR "AI Sapiens" OR 휴머노이드 OR humanoid) (양산 OR 생산량 OR 생산 확대 OR 연간 1만대 OR 1만대 OR 우즈베키스탄 OR Uzbekistan OR 완공 OR 가동 OR 솔루션)',
 ])
 base.TRUSTED.update({'전자신문','ZDNet Korea','ZDNet','뉴시스','Newsis','뉴스핌','파이낸셜뉴스','이투데이','한국경제','매일경제','연합뉴스'})
 base.OFFICIAL_OR_PRIMARY.update({'포항시','경상북도','뉴로메카','Neuromeka','현대자동차','현대자동차그룹','Hyundai Motor','Hyundai Motor Group','로보티즈','ROBOTIS'})
@@ -36,6 +37,7 @@ base.OFFICIAL_OR_PRIMARY.update({'포항시','경상북도','뉴로메카','Neur
 _orig_topic_group, _orig_score = base.topic_group, base.score
 _orig_category, _orig_meaning = base.category, base.meaning
 _orig_risk, _orig_verification = base.risk, base.verification
+_orig_key = base.key
 _orig_same_event = ext._same_event
 
 POHANG = re.compile(r'포항|영일만|Yeongilman', re.I)
@@ -55,6 +57,9 @@ ROBOTIS = re.compile(r'로보티즈|ROBOTIS', re.I)
 ACTUATOR = re.compile(r'액추에이터|actuator|DYNAMIXEL', re.I)
 DEMAND = re.compile(r'수주\s*잔고|backlog|초과\s*수요|excess\s*demand|주문|orders?', re.I)
 ROBOTIS_CAPACITY = re.compile(r'생산\s*능력|capacity|30만|300,?000|150만|1,?500,?000|우즈베키스탄|Uzbekistan|공장|plant|증설|expansion', re.I)
+ROBOTIS_HUMANOID = re.compile(r'AI\s*사피엔스|AI\s*Sapiens|휴머노이드|humanoid', re.I)
+HUMANOID_OUTPUT_TARGET = re.compile(r'연간.{0,18}(?:1\s*만|10,?000)\s*대|(?:1\s*만|10,?000)\s*대.{0,18}(?:연간|생산|양산)|annual.{0,18}10,?000', re.I)
+HUMANOID_RAMP_MILESTONE = re.compile(r'(?:내년|2027년?).{0,12}1월.{0,24}(?:생산량|생산|양산).{0,12}(?:늘|확대|증가|시작|가동)|(?:생산량|생산|양산).{0,24}(?:내년|2027년?).{0,12}1월|올해\s*말.{0,24}(?:완공|준공).{0,24}(?:내년|2027년?).{0,16}(?:가동|생산)', re.I)
 RAMP_QUALITY = re.compile(r'수율|yield|가동률|utilization|월\s*생산량|monthly\s*output|출하|shipment|납기|lead\s*time|평균판매단가|\bASP\b', re.I)
 HUGGINGFACE = re.compile(r'Microduck|마이크로덕|Reachy|리치미니|Hugging\s*Face|허깅페이스|Pollen\s*Robotics', re.I)
 ANALYST_ONLY = re.compile(r'증권|research|리포트|목표주가|투자의견|한국투자|analyst', re.I)
@@ -63,7 +68,22 @@ PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주�
 
 def _is_pohang_foundry(t): return bool(POHANG.search(t) and NEUROMEKA.search(t) and (ROBOT_FOUNDRY.search(t) or DATA_FOUNDRY.search(t)))
 def _is_hyundai_data_factory(t): return bool(HYUNDAI.search(t) and ROBOT_DATA_FACTORY.search(t) and re.search(r'로봇|robot|피지컬\s*AI|physical\s*AI|제조|factory', t, re.I))
-def _is_robotis_demand(t): return bool(ROBOTIS.search(t) and ACTUATOR.search(t) and (DEMAND.search(t) or ROBOTIS_CAPACITY.search(t) or RAMP_QUALITY.search(t) or HUGGINGFACE.search(t)))
+def _is_robotis_demand(t):
+    actuator_lane = ACTUATOR.search(t) and (DEMAND.search(t) or ROBOTIS_CAPACITY.search(t) or RAMP_QUALITY.search(t) or HUGGINGFACE.search(t))
+    humanoid_lane = ROBOTIS_HUMANOID.search(t) and (HUMANOID_OUTPUT_TARGET.search(t) or HUMANOID_RAMP_MILESTONE.search(t) or ROBOTIS_CAPACITY.search(t))
+    return bool(ROBOTIS.search(t) and (actuator_lane or humanoid_lane))
+
+
+def _robotis_humanoid_stage(text):
+    if not (ROBOTIS.search(text) and ROBOTIS_HUMANOID.search(text)):
+        return ''
+    if HUMANOID_OUTPUT_TARGET.search(text) and HUMANOID_RAMP_MILESTONE.search(text):
+        return '2027-01-ramp-annual-10000-target'
+    if HUMANOID_OUTPUT_TARGET.search(text):
+        return 'annual-10000-target'
+    if HUMANOID_RAMP_MILESTONE.search(text):
+        return '2027-01-ramp'
+    return ''
 
 
 def topic_group(text):
@@ -101,7 +121,10 @@ def score(item):
         if ROBOTIS_CAPACITY.search(text): s += 7
         if RAMP_QUALITY.search(text): s += 9
         if HUGGINGFACE.search(text): s += 5
-        if re.search(r'390만|3,?900,?000|22만|220,?000|150만|1,?500,?000|30만|300,?000', text, re.I): s += 4
+        if _robotis_humanoid_stage(text): s += 12
+        if HUMANOID_OUTPUT_TARGET.search(text): s += 8
+        if HUMANOID_RAMP_MILESTONE.search(text): s += 8
+        if re.search(r'390만|3,?900,?000|22만|220,?000|150만|1,?500,?000|30만|300,?000|1\s*만|10,?000', text, re.I): s += 4
     return s
 
 
@@ -118,6 +141,7 @@ def _subcat(group, text):
         if SITE_SCALE.search(text): return '데이터 팩토리 부지·로봇 대수'
         if DATA_VENDOR.search(text): return '외부 데이터 업체·계약'
         return '현대차 로봇 데이터 팩토리'
+    if _robotis_humanoid_stage(text): return 'AI 사피엔스 양산목표·생산램프'
     if RAMP_QUALITY.search(text): return '액추에이터 수율·월생산·출하'
     if ROBOTIS_CAPACITY.search(text): return '액추에이터 생산능력·신공장'
     if HUGGINGFACE.search(text): return '허깅페이스향 액추에이터 물량'
@@ -144,7 +168,8 @@ _MEANING = {
 '액추에이터 초과수요·수주잔고':'로보티즈 수요가 설치 생산능력을 넘어서는지 확인합니다. 증권사 초과수요 평가는 공식 사실과 분리하고 수주잔고·출하·납기를 숫자로 검증합니다.',
 '액추에이터 생산능력·신공장':'우즈베키스탄 신공장과 증설이 수주잔고를 실제 출하로 전환하는 문턱입니다. 명목 생산능력보다 수율·월 생산량·가동률을 우선합니다.',
 '액추에이터 수율·월생산·출하':'초과수요 국면의 핵심 실적 연결 지표입니다. 수율 안정화와 월 생산량 상승이 확인돼야 생산능력이 매출로 전환됩니다.',
-'허깅페이스향 액추에이터 물량':'Microduck·Reachy 계열 판매량을 대당 액추에이터 수와 평균판매단가에 연결해 로보티즈 매출 민감도를 추적합니다.'}
+'허깅페이스향 액추에이터 물량':'Microduck·Reachy 계열 판매량을 대당 액추에이터 수와 평균판매단가에 연결해 로보티즈 매출 민감도를 추적합니다.',
+'AI 사피엔스 양산목표·생산램프':'AI 사피엔스가 연구·레퍼런스 플랫폼에서 실제 양산 체계로 넘어가는 시간표 신호입니다. 2027년 1월 생산 확대와 연 1만대 목표를 우즈베키스탄 공장 완공·가동, 국내 핵심공정·최종조립, 실제 월 생산량과 연결해 추적합니다.'}
 _RISK = {
 '지역활성화 투자펀드·금융확정':'MOU와 펀드 신청은 자금확정이 아닙니다. 선정·손실분담·민간자금·대출약정이 늦어지면 11월 착공 목표부터 밀릴 수 있습니다.',
 '로봇 파운드리 착공·준공·가동':'인허가·장비 반입·전력 인입이 늦어지면 준공·매출이 순연되고 금융비용이 먼저 나타날 수 있습니다.',
@@ -159,7 +184,8 @@ _RISK = {
 '액추에이터 초과수요·수주잔고':'수주잔고는 매출이 아닙니다. 업종 유일 초과수요는 증권사 의견이므로 회사 공식 수주·출하와 분리합니다.',
 '액추에이터 생산능력·신공장':'생산능력 150만대가 확보돼도 초기 수율이 낮으면 출하가 따라오지 않고 고정비·재고가 먼저 늘 수 있습니다.',
 '액추에이터 수율·월생산·출하':'수율 안정화가 지연되면 납기·품질·반품·교환 접수와 보증비용이 먼저 악화될 수 있습니다.',
-'허깅페이스향 액추에이터 물량':'로봇 판매량 전망과 실제 발주는 다릅니다. 대당 탑재량·단가·실제 주문 확인 후 매출로 환산합니다.'}
+'허깅페이스향 액추에이터 물량':'로봇 판매량 전망과 실제 발주는 다릅니다. 대당 탑재량·단가·실제 주문 확인 후 매출로 환산합니다.',
+'AI 사피엔스 양산목표·생산램프':'연 1만대는 현재 대표의 생산 목표이며 실제 출하량이 아닙니다. 우즈베키스탄 공장 준공·초기 수율·월 생산량·주문이 따라오지 않으면 생산 확대 일정이 지연될 수 있습니다.'}
 
 def meaning(cat):
     raw = cat.split(' · ',1)[-1]
@@ -186,9 +212,14 @@ def _numbers(text):
     return set(re.findall(r'\d[\d,.]*\s*(?:만\s*대|만\s*개|대|개|%|억원|억)', text))
 
 def _same_event(a,b):
-    if _orig_same_event(a,b): return True
     if a.get('group') != b.get('group'): return False
     g=a.get('group'); ta=f"{a.get('title','')} {a.get('description','')}"; tb=f"{b.get('title','')} {b.get('description','')}"
+    if g == 'robotis_excess_demand':
+        ha, hb = _robotis_humanoid_stage(ta), _robotis_humanoid_stage(tb)
+        if ha or hb:
+            if ha != hb: return False
+            return _numbers(ta) == _numbers(tb)
+    if _orig_same_event(a,b): return True
     if g == 'pohang_robot_foundry':
         if re.search(r'1,?800억|1800억|MOU|양해각서',ta,re.I) and re.search(r'1,?800억|1800억|MOU|양해각서',tb,re.I): return True
         for sig in [r'지역\s*활성화\s*투자\s*펀드|지역활성화투자펀드|금융\s*약정',r'착공|groundbreaking',r'위탁\s*생산|contract\s*manufacturing|OEM']:
@@ -209,8 +240,16 @@ def _same_event(a,b):
                 if na == nb or not na or not nb: return True
     return False
 
+
+def key(item):
+    text=f"{item.get('title','')} {item.get('description','')}"
+    stage=_robotis_humanoid_stage(text)
+    if stage:
+        return hashlib.sha256(f'robotis|ai-sapiens|{stage}'.encode()).hexdigest()
+    return _orig_key(item)
+
 base.topic_group=topic_group; base.score=score; base.category=category
-base.meaning=meaning; base.risk=risk; base.verification=verification
+base.meaning=meaning; base.risk=risk; base.verification=verification; base.key=key
 ext._same_event=_same_event
 
 if __name__ == '__main__': base.main()
