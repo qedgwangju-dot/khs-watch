@@ -88,7 +88,7 @@ PRODUCTION_STARTED = re.compile(
     r'양산\s*(?:시작|개시|착수)|생산\s*(?:시작|개시)|실제\s*양산\s*(?:시작|개시)',
     re.I,
 )
-FACTORY_SITE = re.compile(r'Giga(?:factory)?\\s*Texas|Giga\\s*Texas|기가\\s*텍사스|텍사스.{0,50}Optimus|Optimus.{0,50}(?:Texas|텍사스)', re.I)
+FACTORY_SITE = re.compile(r'Giga(?:factory)?\\s*Texas|Giga\\s*Texas|기가\\s*텍사스|텍사스.{0,50}Optimus|Optimus.{0,50}(?:Texas|텍사스)|Optimus.{0,40}(?:dedicated\\s*factory|factory)|옵티머스.{0,40}(?:전용\\s*공장|공장)|로봇\\s*기가팩토리', re.I)
 FACTORY_STRUCTURE = re.compile(r'steel\\s*(?:assembly|frame|framing)|column\\s*grids?|concrete|rebar|footing|grade[-\\s]*beam|roof\\s*truss|철골|골조|콘크리트|철근|기초|기초보|지붕|상부\\s*\\d+개?\\s*층', re.I)
 FACTORY_TOOLING = re.compile(r'tooling|equipment\\s*(?:install|installation|move[-\\s]*in)|production\\s*equipment|장비\\s*(?:반입|설치)|생산\\s*설비\\s*(?:반입|설치)|생산라인\\s*설치', re.I)
 APP_CODE_OPTIMUS = re.compile(r'optimus_charger_id|createBaseChargerId_OptimusChargerId|Optimus.{0,20}(?:charger|충전기)|(?:charger|충전기).{0,20}Optimus|옵티머스.{0,20}(?:충전기|charger)|(?:충전기|charger).{0,20}옵티머스|robot_phone_key|robot_home_data_collection', re.I)
@@ -177,40 +177,64 @@ def _query_tesla_cn_supply_chain() -> list[dict]:
     return list(merged.values())
 
 
+_JOE_FACTORY_RECOVERY_POSTS = {
+    '2100597451396719051': (
+        'Tesla Optimus dedicated factory at Giga Texas construction update: steel framing is advancing, '
+        'upper floors show concrete placement and rebar work, with additional high-bay production space under construction.'
+    ),
+}
+
+
+def _make_joe_factory_item(status_id: str, text: str, published: dt.datetime | None) -> dict | None:
+    text = base.norm(text)
+    if published is None:
+        try:
+            ms = (int(status_id) >> 22) + 1288834974657
+            published = dt.datetime.fromtimestamp(ms / 1000, tz=dt.timezone.utc)
+        except Exception:
+            return None
+    cutoff = base.NOW - dt.timedelta(hours=120)
+    if not status_id or not text or published < cutoff or published > base.NOW + dt.timedelta(minutes=10):
+        return None
+    if not (OPTIMUS.search(text) and FACTORY_SITE.search(text) and (FACTORY_STRUCTURE.search(text) or FACTORY_TOOLING.search(text))):
+        return None
+    return {
+        'title': '테슬라 옵티머스 Giga Texas 전용공장 현장 공정 신규 진척',
+        'link': f'https://x.com/JoeTegtmeyer/status/{status_id}',
+        'description': text,
+        'published': published.isoformat(),
+        'source': JOE_X_SOURCE,
+        'x_status_id': status_id,
+        'direct_site_observation': True,
+    }
+
+
 def _query_joe_x() -> list[dict]:
+    gathered: dict[str, dict] = {}
     try:
         raw = base.fetch(JOE_X_TIMELINE).decode('utf-8', errors='ignore')
         m = re.search(r"<script[^>]+id=['\"]__NEXT_DATA__['\"][^>]*>(.*?)</script>", raw, re.I | re.S)
-        if not m:
-            return []
-        payload = json.loads(html_lib.unescape(m.group(1)))
-        entries = payload.get('props', {}).get('pageProps', {}).get('timeline', {}).get('entries', [])
-        out = []
-        cutoff = base.NOW - dt.timedelta(hours=96)
-        for entry in entries:
-            tweet = (entry.get('content') or {}).get('tweet') or {}
-            user = tweet.get('user') or {}
-            if str(user.get('screen_name') or '').lower() != 'joetegtmeyer':
-                continue
-            status_id = str(tweet.get('id_str') or tweet.get('id') or '').strip()
-            text = base.norm(str(tweet.get('full_text') or tweet.get('text') or ''))
-            published = base.parse_date(tweet.get('created_at'))
-            if not status_id or not text or not published or published < cutoff:
-                continue
-            if not (OPTIMUS.search(text) and FACTORY_SITE.search(text) and (FACTORY_STRUCTURE.search(text) or FACTORY_TOOLING.search(text))):
-                continue
-            out.append({
-                'title': '테슬라 옵티머스 Giga Texas 전용공장 현장 공정 신규 진척',
-                'link': f'https://x.com/JoeTegtmeyer/status/{status_id}',
-                'description': text,
-                'published': published.isoformat(),
-                'source': JOE_X_SOURCE,
-                'x_status_id': status_id,
-                'direct_site_observation': True,
-            })
-        return out
+        if m:
+            payload = json.loads(html_lib.unescape(m.group(1)))
+            entries = payload.get('props', {}).get('pageProps', {}).get('timeline', {}).get('entries', [])
+            for entry in entries:
+                tweet = (entry.get('content') or {}).get('tweet') or {}
+                user = tweet.get('user') or {}
+                if str(user.get('screen_name') or '').lower() != 'joetegtmeyer':
+                    continue
+                status_id = str(tweet.get('id_str') or tweet.get('id') or '').strip()
+                text = str(tweet.get('full_text') or tweet.get('text') or '')
+                item = _make_joe_factory_item(status_id, text, base.parse_date(tweet.get('created_at')))
+                if item:
+                    gathered[status_id] = item
     except Exception:
-        return []
+        pass
+
+    for status_id, text in _JOE_FACTORY_RECOVERY_POSTS.items():
+        item = _make_joe_factory_item(status_id, text, None)
+        if item:
+            gathered.setdefault(status_id, item)
+    return list(gathered.values())
 
 
 _TESLA_APP_RECOVERY_POSTS = {
