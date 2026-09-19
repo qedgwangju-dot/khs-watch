@@ -1,6 +1,7 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "588e99b0a828a37a7b2109fede564aa1221f4a81d0611a5a2d81a8b8337bd789"
+    "Nasdaq SOX|sox": "588e99b0a828a37a7b2109fede564aa1221f4a81d0611a5a2d81a8b8337bd789",
+    "Cboe|options": "b2df1337c6904b3ae42f55e48c660e7b3c7b0d9a526918d1ddcb236b04977f70"
   },
   "values": {
     "Nasdaq SOX|sox": {
@@ -14,7 +15,26 @@
       },
       "url": "https://indexes.nasdaq.com/Index/History/SOX",
       "fingerprint": "588e99b0a828a37a7b2109fede564aa1221f4a81d0611a5a2d81a8b8337bd789"
+    },
+    "Cboe|options": {
+      "source": "Cboe",
+      "kind": "options",
+      "period": "Friday, September 18, 2026",
+      "metrics": {
+        "total_pc_ratio": 0.81,
+        "total_calls": 7388262,
+        "total_puts": 5952785,
+        "total_time_ct": "03:15 PM",
+        "equity_pc_ratio": 0.68,
+        "equity_calls": 4315010,
+        "equity_puts": 2951195,
+        "equity_time_ct": "03:15 PM",
+        "index_pc_ratio": null,
+        "index_time_ct": null
+      },
+      "url": "https://www.cboe.com/us/options/market_statistics/market/",
+      "fingerprint": "b2df1337c6904b3ae42f55e48c660e7b3c7b0d9a526918d1ddcb236b04977f70"
     }
   },
-  "updated_at_kst": "2026-09-19T15:56:30.708862+09:00"
+  "updated_at_kst": "2026-09-19T18:29:38.841910+09:00"
 }
