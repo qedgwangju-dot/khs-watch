@@ -4,6 +4,7 @@ from pathlib import Path
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 from urllib.parse import urlencode
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import requests
 import pandas as pd
@@ -194,19 +195,23 @@ def parse_cboe_for_date(d):
 
 def fetch_cboe_history():
     today_et = datetime.now(ZoneInfo("America/New_York")).date()
-    rows = []
-    for back in range(0, 40):
+    dates = []
+    for back in range(0, 38):
         d = today_et - timedelta(days=back)
-        if d.weekday() >= 5:
-            continue
-        try:
-            row = parse_cboe_for_date(d)
-            if row:
-                rows.append(row)
-        except Exception:
-            pass
-        if len(rows) >= 20:
-            break
+        if d.weekday() < 5:
+            dates.append(d)
+
+    rows = []
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures = {pool.submit(parse_cboe_for_date, d): d for d in dates}
+        for fut in as_completed(futures):
+            try:
+                row = fut.result()
+                if row:
+                    rows.append(row)
+            except Exception:
+                pass
+
     if not rows:
         raise RuntimeError("Cboe daily ratio rows unavailable")
     rows.sort(key=lambda x: x["date"], reverse=True)
