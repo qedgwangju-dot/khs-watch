@@ -251,88 +251,82 @@ def parse_cboe():
 
 
 def parse_sox():
-    # Nasdaq's History route reliably exposes the completed-session level, but the
-    # client/server Overview state can sometimes overwrite "Previous Close" with the
-    # latest level after the close.  Therefore:
-    #   1) current level comes from Nasdaq History;
-    #   2) previous close is cross-checked from a second Nasdaq page (Weighting);
-    #   3) if those cannot be reconciled, fail closed instead of emitting 0.00%.
-    hist_html = get(SOX).text
+    # Nasdaq's History page is the authoritative source here. The Overview route can
+    # incorrectly show Previous Close == latest and 0.00% after the close, so never
+    # use the Overview-state percentage for alerting.
+    hist_html = browser_html(SOX)
     hist_txt = BeautifulSoup(hist_html, "html.parser").get_text(" ", strip=True)
 
     cur = re.search(
-        r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)",
+        r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)\s+([+-]?\d+(?:\.\d+)?)%",
         hist_txt,
         re.I,
     )
     if not cur:
-        # Browser fallback can recover the latest level when static SSR is incomplete.
-        hist_html = browser_html(SOX)
-        hist_txt = BeautifulSoup(hist_html, "html.parser").get_text(" ", strip=True)
-        cur = re.search(
-            r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)",
-            hist_txt,
-            re.I,
-        )
-    if not cur:
-        raise RuntimeError("SOX Nasdaq History current level not found")
+        raise RuntimeError("SOX Nasdaq History headline not found")
 
     period = cur.group(1)
     latest = float(cur.group(2).replace(",", ""))
     displayed_net_change = float(cur.group(3).replace(",", ""))
+    displayed_pct = float(cur.group(4))
 
-    prev_candidates = []
-
-    # First candidate: same History document.
-    p = re.search(r"Previous Close\s+([\d,]+\.\d+)", hist_txt, re.I)
-    if p:
-        prev_candidates.append(("History", float(p.group(1).replace(",", ""))))
-
-    # Second official Nasdaq page is deliberately used because its previous-close
-    # field does not share the same post-close Overview-state bug.
-    try:
-        aux_html = get(SOX_AUX).text
-        aux_txt = BeautifulSoup(aux_html, "html.parser").get_text(" ", strip=True)
-        aux_date = re.search(r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})", aux_txt, re.I)
-        aux_prev = re.search(r"Previous Close\s+([\d,]+\.\d+)", aux_txt, re.I)
-        if aux_prev and (not aux_date or aux_date.group(1) == period):
-            prev_candidates.append(("Weighting", float(aux_prev.group(1).replace(",", ""))))
-    except Exception:
-        pass
-
-    # Choose a candidate that produces a plausible daily return and is not identical
-    # to the latest level when Nasdaq itself reports a material net change.
-    chosen = None
-    for source, prev in reversed(prev_candidates):
-        if prev <= 0:
-            continue
-        implied_change = latest - prev
-        if abs(displayed_net_change) > 1 and abs(implied_change) < 0.01:
-            continue
-        chosen = (source, prev)
-        break
-
-    if chosen is None:
+    # The History route currently reports the correct completed-session percentage,
+    # while the Overview route may be stale. Prefer the History percentage when it is
+    # nonzero and plausible. If History ever returns 0.00% with a material net change,
+    # fail closed rather than sending a false flat reading.
+    if abs(displayed_net_change) > 1 and abs(displayed_pct) < 0.01:
         raise RuntimeError(
-            f"SOX previous close could not be reconciled: latest={latest}, "
-            f"net_change_field={displayed_net_change}, candidates={prev_candidates}"
+            f"SOX History inconsistent: net_change={displayed_net_change}, pct={displayed_pct}"
         )
+    if abs(displayed_pct) > 25:
+        raise RuntimeError(f"SOX daily pct sanity failed: {displayed_pct}")
 
-    prev_source, previous_close = chosen
-    d1 = (latest / previous_close - 1) * 100
+    prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", hist_txt, re.I)
+    previous_close = float(prev_m.group(1).replace(",", "")) if prev_m else None
 
-    # Guard against the known bad 0.00% state and obvious parse errors.
-    if abs(displayed_net_change) > 1 and abs(d1) < 0.01:
-        raise RuntimeError("SOX nonzero move resolved to 0.00%; refusing bad value")
+    # If Nasdaq's DOM repeats the latest level as Previous Close, reconstruct a
+    # previous-close estimate from the authoritative History percentage only for
+    # display. The alert direction/percentage still comes directly from History.
+    previous_close_source = "Nasdaq History"
+    if previous_close is None or (abs(displayed_pct) >= 0.01 and abs(previous_close - latest) < 0.01):
+        previous_close = latest / (1.0 + displayed_pct / 100.0)
+        previous_close_source = "Nasdaq History percentage-derived"
 
     metrics = {
         "value": latest,
         "previous_close": previous_close,
-        "previous_close_source": prev_source,
-        "net_change": latest - previous_close,
-        "pct": d1,
-        "d1_pct": d1,
+        "previous_close_source": previous_close_source,
+        "net_change": displayed_net_change,
+        "pct": displayed_pct,
+        "d1_pct": displayed_pct,
     }
+
+    # Pull recent daily closes from an independent public historical page only to
+    # obtain 3D/5D context. Failure here does not invalidate the official 1D signal.
+    try:
+        inv = get("https://www.investing.com/indices/phlx-semiconductor-historical-data").text
+        tables = pd.read_html(StringIO(inv))
+        hist = None
+        for t in tables:
+            flat = " ".join(map(str, t.astype(str).values.flatten()))
+            if "Date" in flat and ("Price" in flat or "Change %" in flat):
+                hist = t
+                break
+        if hist is not None:
+            hist.columns = [str(x[-1] if isinstance(x, tuple) else x).strip() for x in hist.columns]
+            pcol = next((x for x in hist.columns if x.lower() in ("price","last","close")), None)
+            if pcol:
+                vals = []
+                for _, row in hist.head(10).iterrows():
+                    v = parse_num(row.get(pcol))
+                    if v is not None:
+                        vals.append(v)
+                if len(vals) >= 4:
+                    metrics["d3_pct"] = (vals[0] / vals[3] - 1) * 100
+                if len(vals) >= 6:
+                    metrics["d5_pct"] = (vals[0] / vals[5] - 1) * 100
+    except Exception:
+        pass
 
     core = {"source": "Nasdaq SOX", "kind": "sox", "period": period, "metrics": metrics}
     return {**core, "url": SOX, "fingerprint": fp(core)}
@@ -493,7 +487,7 @@ if updates or force:
             "<b>SOX 확인</b>",
             f"• 전일 {sox['metrics']['previous_close']:,.2f} → {sox['metrics']['value']:,.2f} "
             f"({sox['metrics']['d1_pct']:+.2f}%)",
-            "• Nasdaq 최신 지수값과 FRED의 Nasdaq 일별 시계열을 교차검증해 등락률을 직접 계산",
+            "• Nasdaq History의 공식 종가·등락률을 사용하고, 3D·5D는 별도 과거 시계열로 보조 확인",
             "",
         ]
 
