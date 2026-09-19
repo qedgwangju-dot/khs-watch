@@ -72,6 +72,12 @@ jobs:
           if not identity.get("ok") or username.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
           print(f"telegram_route_valid=true bot=@{username}")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?chat_id={chat_id}", timeout=25) as response:
+              chat_info = json.loads(response.read().decode("utf-8"))
+          chat = chat_info.get("result") or {}
+          if not chat_info.get("ok"):
+              raise RuntimeError(f"Telegram target chat lookup failed: {chat_info}")
+          print(f"telegram_target_valid=true type={chat.get('type', 'unknown')} username_present={bool(chat.get('username'))}")
           PY
 
       - name: Check Treasury buybacks, long yields and BTC ETF flows
