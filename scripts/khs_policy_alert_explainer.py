@@ -297,6 +297,8 @@ def infer_korean_title(item: dict, text: str = "") -> str:
         korean = "백악관, 양자기술 혁신·국가안보 행정명령 발표"
     elif has_any(low, ["advanced cryptographic attacks", "cryptographic attack"]):
         korean = "백악관, 첨단 암호공격 대응 행정명령 발표"
+    elif has_any(low, ["ai force", "ai czar", "ai adviser", "ai advisor", "artificial intelligence adviser"]):
+        korean = "백악관, AI Force·신임 AI 차르 후속 조치 발표"
     elif has_any(low, ["advanced artificial intelligence innovation", "ai innovation and security"]):
         korean = "백악관, 첨단 AI 혁신·보안 행정명령 발표"
     elif has_any(low, ["commercial aircraft", "jet engines", "aircraft and engine parts"]):
@@ -1214,6 +1216,20 @@ def ensure_explained(item: dict) -> dict:
                 counter="품목 범위, 시행일, 예외 조항, 한국 기업 직접 노출이 확인되지 않으면 고충격 뉴스로 보기 어렵습니다.",
                 failure_signal="EU 집행위·의회·이사회·관보 문서와 한국 기업의 직접 노출, 가격·수급 반응이 없으면 제외해야 합니다.",
             )
+    elif has_any(text, ["ai force", "ai czar", "ai adviser", "ai advisor", "artificial intelligence adviser"]):
+        put(
+            item,
+            importance="상",
+            impacts=["시간표", "수급", "돈 버는 능력"],
+            paths=["정책 지휘체계", "정책 타임라인", "정부 AI 조달", "AI 인프라 CAPEX"],
+            sectors=["반도체/AI", "클라우드/보안 AI", "데이터센터 전력 인프라"],
+            policy_plain_summary="백악관 또는 공식 원문에서 AI Force·AI 차르 관련 조직·인선 후속 조치가 확인된 사안입니다. 핵심은 소속기관·법적 권한·예산·조달권이 실제로 확정되는지입니다.",
+            investment_view="인선 자체보다 조직 권한과 예산·정부 조달이 붙을 때 GPU·클라우드·보안 AI·데이터센터 전력 인프라 수요로 연결될 수 있습니다.",
+            korea_market_impact="한국장에서는 삼성전자·SK하이닉스 HBM과 AI 서버·전력 인프라 가운데 미국 정부 조달·AI CAPEX에 직접 연결되는 노출만 확인합니다.",
+            priced_in="낮음~중간. 조직 구상은 빠르게 반영될 수 있지만 예산·조달 전에는 확정 매출이 아닙니다.",
+            counter="AI Force라는 명칭이나 인선 발표만으로 독립기관·군종·신규 예산이 확정된 것은 아닙니다.",
+            failure_signal="행정명령·대통령각서, 인선, 조직도, 예산·조달 공고가 뒤따르지 않으면 정책 구상 단계에서 끝납니다.",
+        )
     elif has_any(text, ["export control", "entity list", "bis", "semiconductor", "chips", "ai chip", "수출통제"]):
         put(
             item,
