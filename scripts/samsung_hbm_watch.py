@@ -844,8 +844,11 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         "",
         f"<b>환율</b>: {html.escape(fx_basis)}",
         f"<b>조회</b>: {now.strftime('%Y-%m-%d %H:%M KST')}",
-        f"<b>관세청 원자료</b>: {href(official['source_url'])}",
-        f"Counterpoint {href(COUNTERPOINT_HBM_SHARE)} · Bernstein 방법론 참고 {href(BERNSTEIN_EXPORT)}",
+        "<b>원문</b>: "
+        + f"관세청 {href(official['source_url'])} · "
+        + f"K-stat {href('https://stat.kita.net/')} · "
+        + f"Counterpoint {href(COUNTERPOINT_HBM_SHARE)} · "
+        + f"Bernstein {href(BERNSTEIN_EXPORT)}",
     ]
     return "\n".join(lines) + "\n"
 
