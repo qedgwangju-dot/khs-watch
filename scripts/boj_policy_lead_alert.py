@@ -1231,7 +1231,7 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
         return False, "회견 본문 정책경로 확인 전"
     if signal.event_type == "market_path":
         if now - signal.published > dt.timedelta(hours=MARKET_PATH_MAX_AGE_HOURS):
-            return False, "시장 정책경로 보도 신선도 초과"
+            return False, "오래된 보도 — 시장 정책경로 보도 신선도 초과"
         if not market_path_has_policy_content(signal):
             return False, "시장 정책경로 핵심 변화 없음"
 
