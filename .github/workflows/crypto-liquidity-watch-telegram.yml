@@ -9,6 +9,7 @@ on:
       - "scripts/crypto_alert_krw.py"
       - "scripts/crypto_alert_format.py"
       - "scripts/samsung_wallet_stablecoin_watch.py"
+      - "scripts/coin_alert_korean_terms.py"
       - "data/crypto_liquidity_watch_state.json"
       - "data/samsung_wallet_stablecoin_watch_state.json"
   schedule:
@@ -50,6 +51,7 @@ jobs:
           python -m py_compile scripts/crypto_alert_krw.py
           python -m py_compile scripts/crypto_alert_format.py
           python -m py_compile scripts/samsung_wallet_stablecoin_watch.py
+          python -m py_compile scripts/coin_alert_korean_terms.py
 
       - name: Validate exact Telegram bot route without sending
         env:
@@ -131,6 +133,13 @@ jobs:
       - name: Format Telegram alert for readability
         if: hashFiles('out/crypto_liquidity_watch_telegram.txt') != ''
         run: python scripts/crypto_alert_format.py
+
+      - name: Translate visible English identifiers to Korean
+        if: hashFiles('out/crypto_liquidity_watch_telegram.txt') != '' || hashFiles('out/samsung_wallet_stablecoin_telegram.txt') != ''
+        run: |
+          python scripts/coin_alert_korean_terms.py \
+            out/crypto_liquidity_watch_telegram.txt \
+            out/samsung_wallet_stablecoin_telegram.txt
 
       - name: Publish watcher summary
         if: always()
