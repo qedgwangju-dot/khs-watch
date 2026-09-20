@@ -446,13 +446,20 @@ def _render_direct(item: dict, idx: int, now: dt.datetime) -> list[str]:
         ko_title = "미국, Westinghouse 원전 건설 대형 지원 신호"
     source_label = SOURCE_LABELS.get(item["source"], item["source"])
     evidence = ", ".join(dict.fromkeys(TERM_LABELS.get(term, term) for term in item["matched"]))
+    numeric = [
+        TERM_LABELS.get(term, term)
+        for term in item["matched"]
+        if re.search(r"\\d|\\$", str(term))
+    ]
+    numbers_text = " · ".join(dict.fromkeys(numeric)) if numeric else "신규 확정 금액·기수는 원문 추가 확인 필요"
     return [
         f"## {idx}. [확정] {ko_title}",
-        f"- 판정: 공식자료 기반 확정",
-        f"- 변화: {evidence}",
-        "- 의미: AP1000·원전기기·전력 인프라 수요 연결",
-        "- 다음: 후속 공시 · DOE/NRC 일정 · 실제 발주",
-        f"- 원문: [{source_label}]({item['link']}) · {item['published_kst']}",
+        f"- 핵심 변화: 미국 공식자료에서 {evidence} 관련 원전 정책 지원 신호가 확인됐습니다.",
+        f"- 숫자: {numbers_text}",
+        "- 한국 기업·매출 연결: 이 공식자료만으로 한국 기업의 신규 수주·매출은 확정되지 않았습니다. Westinghouse 프로젝트별 사업권·기자재 계약이 확인돼야 실제 매출로 연결됩니다.",
+        "- 병목·실패모드: DOE·NRC 일정, 프로젝트별 최종 발주, 현지조달 조건, 사업권·지식재산 조건이 늦어지면 정책 신호가 실제 수주로 전환되는 시점도 밀릴 수 있습니다.",
+        f"- 출처: [{source_label}]({item['link']}) · {item['published_kst']}",
+        "- 다음 확인: DOE/NRC 후속 일정 · 프로젝트별 발주 · 한국 공급망 계약 공시",
         "",
     ]
 
@@ -460,44 +467,55 @@ def _render_direct(item: dict, idx: int, now: dt.datetime) -> list[str]:
 def _render_westinghouse_stake(item: dict, idx: int, now: dt.datetime) -> list[str]:
     status = item.get("status") or "추가 확인 필요"
     unconfirmed = status not in {"계약·합의 단계", "지분 거래 확정 신호", "공식 부인·정정"}
-    verdict = "보도·검토 단계 — 공식 거래조건 미확정" if unconfirmed else status
+    numbers = _wec_numbers(item.get("title") or "")
+    numbers_text = " · ".join(numbers) if numbers else "지분율·가격·출자액 미확정"
     return [
         f"## {idx}. [{'보도' if unconfirmed else '확정'}] 한국의 Westinghouse 지분 참여",
-        f"- 판정: {verdict}",
-        f"- 변화: {item['title']}",
-        "- 의미: 지분+사업권 확보 시 AP1000 사업개발·조달까지 역할 확대 가능",
-        "- 미확정·병목: 지분율 · 가격 · 경영참여권 · 사업권 · CFIUS/NRC",
-        "- 다음: 공식 발표 → LOI/MOU → 실사 → 지분율·가격 → 규제 승인",
-        f"- 원문: [{item['source']}]({item['link']}) · {item['published_kst']}",
+        f"- 핵심 변화: {item['title']}",
+        f"- 숫자: {numbers_text}",
+        "- 한국 기업·매출 연결: 한국전력·한국수력원자력 등의 지분 참여가 확정되더라도 지분투자와 AP1000 설계·조달·시공·기자재 매출은 별개입니다. 사업권·조달권이 계약에 포함돼야 실적 연결이 구체화됩니다.",
+        "- 병목·실패모드: 지분율·가격·경영참여권·사업권·CFIUS/NRC 승인 조건이 남아 있습니다. 조건 협상이 지연되면 투자 집행과 후속 원전 수주 시간표도 밀릴 수 있습니다.",
+        f"- 출처: [{item['source']}]({item['link']}) · {item['published_kst']}",
+        "- 다음 확인: 공식 발표 → LOI/MOU → 실사 → 지분율·가격 → 사업권·규제 승인",
         "",
     ]
 
 
 def _render_smr_policy(item: dict, idx: int, now: dt.datetime) -> list[str]:
-    signals = set(item.get("signals") or [])
-    timeline: list[str] = []
-    if "2027" in signals or "2027년" in signals:
-        timeline.append("2027 상세설계")
-    if "2030년대" in signals:
-        timeline.append("2030년대 비경수형 건설")
-    if "2035" in signals or "2035년" in signals:
-        timeline.append("2035 경수형 상용화")
-    timeline_text = " · ".join(timeline) if timeline else "공식 기본계획·시행계획 후속 일정"
+    status = item.get("status") or "SMR 정책 상태변화"
     official = bool(item.get("official"))
+    if status == "특별법·시행령 시행":
+        change_text = "SMR 특별법·시행령 시행으로 연구개발→실증·사업화, 민관협력, 연구개발특구 지원체계가 실제 시행 단계로 이동했습니다."
+        source_label = "과학기술정보통신부·정책브리핑"
+        source_url = SMR_OFFICIAL_SOURCES[0]["url"]
+        source_time = "2026-09-11"
+    else:
+        change_text = item.get("title") or status
+        source_label = item.get("source") or "원문"
+        source_url = item.get("link") or SMR_OFFICIAL_SOURCES[0]["url"]
+        source_time = item.get("published_kst") or "확인 불가"
+
+    # Company linkage is context, not a direct award from the SMR Special Act.
+    # Official sources checked in 2026-09:
+    # - Hyundai E&C: TerraPower Natrium follow-on 8-unit EPC priority.
+    # - HD Hyundai: target capacity for 2-3 primary Natrium components per year.
+    # - Doosan Enerbility: NuScale/X-energy reactor-module forging/equipment manufacturing base.
     return [
-        f"## {idx}. [{'확정' if official else '보도'}] 국내 SMR 정책 상태변화",
-        f"- 판정: {item.get('status', 'SMR 정책 상태변화')} {'공식 확인' if official else '교차검증 필요'}",
-        f"- 변화: {item['title']}",
-        f"- 시간표: {timeline_text}",
-        "- 사업화: 민관 공동출자 회사·실증 지원·연구개발특구가 법적 지원수단으로 열림",
-        "- 병목: 실제 예산액 · 출자기업/지분 · 특구 지역 · 실증부지 · 인허가 일정은 후속 확정 필요",
-        f"- 원문: [{item['source']}]({item['link']}) · {item['published_kst']}",
+        f"## {idx}. [{'확정' if official or status == '특별법·시행령 시행' else '보도'}] 국내 SMR 정책 상태변화",
+        f"- 핵심 변화: {change_text}",
+        "- 숫자: 기본계획 5년 주기 · 2027년 상세설계 착수 · 2030년대 비경수형 SMR 건설 착수 · 2035년 경수형 SMR 상용화 목표",
+        "- 한국 기업·매출 연결: 현대건설은 TerraPower Natrium 후속 8기 EPC 우선권, HD현대는 주기기 연 2~3기 생산체계 목표, 두산에너빌리티는 NuScale·X-energy 원자로 모듈 제작 기반이 있습니다. 다만 특별법 시행 자체의 신규 수주·매출액은 아직 미확정입니다.",
+        "- 병목·실패모드: 실제 예산액, 민관 SPC 출자사·지분, 특구·실증부지, 인허가 일정이 확정되지 않으면 제도 시행이 실제 발주·수주·매출 인식으로 이어지는 시점이 늦어질 수 있습니다.",
+        f"- 출처: [{source_label}]({source_url}) · {source_time}",
+        "- 다음 확인: 제1차 기본계획 · 2027년 상세설계 예산 · SPC 출자구조 · 특구/실증부지 · 기업별 수주 공시",
         "",
     ]
 
 
 def render(alerts: list[dict], now: dt.datetime) -> str:
-    lines = [f"🚨 [원전·Westinghouse·SMR 웹감시] · {now:%Y년 %m월 %d일 %H:%M KST}", ""]
+    # The Telegram title already names this watch. Avoid repeating a second
+    # banner so the first visible lines are the event's actual decision fields.
+    lines: list[str] = []
     for idx, item in enumerate(alerts, 1):
         kind = item.get("kind")
         if kind == "westinghouse_stake":
@@ -506,6 +524,7 @@ def render(alerts: list[dict], now: dt.datetime) -> str:
             lines.extend(_render_smr_policy(item, idx, now))
         else:
             lines.extend(_render_direct(item, idx, now))
+    lines.append(f"- 조회: {now:%Y-%m-%d %H:%M KST}")
     return "\n".join(lines).rstrip() + "\n"
 
 
