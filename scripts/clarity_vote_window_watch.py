@@ -22,6 +22,7 @@ GATE_PATH = ROOT / "out" / "clarity_vote_gate.json"
 DEMOCRATS_SCHEDULE = "https://www.democrats.senate.gov/2026/08/08/schedule-for-pro-forma-sessions-and-monday-september-14-2026"
 DAILY_PRESS = "https://www.dailypress.senate.gov/thursday-september-10-2026/"
 ROLL_CALL_MENU = "https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.htm"
+FLOOR_ACTIVITY = "https://www.senate.gov/legislative/LIS/floor_activity/09_15_2026_Senate_Floor.htm"
 NEWS_RSS = "https://news.google.com/rss/search"
 
 SCHEDULE_ET = dt.datetime(2026, 9, 15, 14, 15, tzinfo=ZoneInfo("America/New_York"))
@@ -128,6 +129,42 @@ def official_schedule_check():
     return checks, errors
 
 
+def parse_vote_time(detail_text):
+    match = re.search(r"Vote Date:\\s*([A-Za-z]+ \\d{1,2}, \\d{4}, \\d{1,2}:\\d{2} [AP]M)", clean(detail_text), re.I)
+    if not match:
+        return None, None
+    try:
+        parsed = dt.datetime.strptime(match.group(1), "%B %d, %Y, %I:%M %p").replace(tzinfo=ZoneInfo("America/New_York"))
+        return parsed, parsed.astimezone(ZoneInfo("Asia/Seoul"))
+    except Exception:
+        return None, None
+
+
+def reconsideration_text_matches(text):
+    value = clean(text)
+    has_bill = bool(re.search(r"H\\.?R\\.?\\s*3633|Digital\\s+Asset\\s+Market\\s+Clarity", value, re.I))
+    has_motion = bool(re.search(r"Motion\\s+by\\s+Senator\\s+Tillis\\s+to\\s+reconsider", value, re.I))
+    has_vote = bool(re.search(r"Record\\s+Vote(?:\\s+No\\.?|\\s+Number)?[:\\s]+234", value, re.I))
+    return has_bill and has_motion and has_vote
+
+
+def reconsideration_status():
+    try:
+        text = clean(BeautifulSoup(fetch_text(FLOOR_ACTIVITY), "html.parser").get_text(" ", strip=True))
+        entered = reconsideration_text_matches(text)
+        return {
+            "entered": entered,
+            "url": FLOOR_ACTIVITY,
+            "status": "Thom Tillis 재고동의 제출 확인" if entered else "재고동의 공식 확인 안 됨",
+        }
+    except Exception as exc:
+        return {
+            "entered": None,
+            "url": FLOOR_ACTIVITY,
+            "status": f"재고동의 원문 확인 실패: {exc}",
+        }
+
+
 def roll_call_result():
     try:
         soup = BeautifulSoup(fetch_text(ROLL_CALL_MENU), "html.parser")
@@ -156,6 +193,7 @@ def roll_call_result():
             result = "Agreed" if int(yeas.group(1)) >= VOTES_REQUIRED else "Rejected"
         if not result:
             continue
+        vote_time_et, vote_time_kst = parse_vote_time(detail_text)
         return {
             "url": url,
             "text": text,
@@ -163,6 +201,8 @@ def roll_call_result():
             "yeas": int(yeas.group(1)) if yeas else None,
             "nays": int(nays.group(1)) if nays else None,
             "not_voting": int(not_voting.group(1)) if not_voting else None,
+            "vote_time_et": vote_time_et.isoformat() if vote_time_et else None,
+            "vote_time_kst": vote_time_kst.isoformat() if vote_time_kst else None,
         }
     return None
 
@@ -314,6 +354,7 @@ def main():
         })
 
     result = roll_call_result()
+    reconsideration = reconsideration_status() if result else {"entered": None, "url": FLOOR_ACTIVITY, "status": "표결 결과 확인 전"}
     result_signature = ""
     result_is_new = False
     if result:
@@ -420,8 +461,12 @@ def main():
             })
             market_24h_done = True
 
+    roll_rejected = bool(result) and str(result.get("result") or "").lower() in {"rejected", "failed"}
     gate = {
-        "status": "confirmed_two_official_sources" if schedule_confirmed else "schedule_verification_incomplete",
+        "status": "roll_call_completed" if result else ("confirmed_two_official_sources" if schedule_confirmed else "schedule_verification_incomplete"),
+        "current_stage": ("60표 미달로 본회의 심의 진입 실패 — 최종 법안 부결은 아님" if roll_rejected else ("cloture 관문 통과 — 후속 본회의 절차 확인" if result else "예정 표결 대기")),
+        "next_vote_status": "공식 새 CLARITY 표결 일정 미확인" if roll_rejected else ("후속 본회의 절차 확인 중" if result else "예정된 cloture 표결 대기"),
+        "reconsideration": reconsideration,
         "procedure": "H.R.3633 motion to proceed cloture",
         "official_time_et": SCHEDULE_ET.isoformat(),
         "official_time_kst": SCHEDULE_KST.isoformat(),
@@ -456,6 +501,7 @@ def main():
         "schedule_checks": schedule_checks,
         "schedule_errors": schedule_errors,
         "roll_call_found": bool(result),
+        "reconsideration": reconsideration,
         "lummis_signal_found": bool(lummis),
         "bessent_signal_found": bool(bessent),
         "market_24h_done": market_24h_done,
