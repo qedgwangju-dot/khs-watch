@@ -312,6 +312,55 @@ if func_anchor not in t:
 t = t.replace(func_anchor, "\n" + supplier_func + func_anchor, 1)
 
 pwc_func = r'''
+def _usd_b_label_ko(usd_b: float) -> str:
+    usd_b = float(usd_b)
+    if usd_b >= 1000:
+        jo = int(usd_b // 1000)
+        rem_eok = round((usd_b - jo * 1000) * 10)
+        if rem_eok:
+            return f"{jo:,}조{rem_eok:,}억달러"
+        return f"{jo:,}조달러"
+    return f"{usd_b * 10:,.0f}억달러"
+
+
+def _pwc_change_with_krw(text: str, fx: float) -> str:
+    def repl_t(m):
+        value = float(m.group(1).replace(",", ""))
+        return f"{m.group(0)} = {krw_from_usd_b(value * 1000, fx)}"
+
+    def repl_b(m):
+        value = float(m.group(1).replace(",", ""))
+        return f"{m.group(0)} = {krw_from_usd_b(value, fx)}"
+
+    out = re.sub(r"([0-9,.]+)\s*조달러", repl_t, text)
+    out = re.sub(r"([0-9,.]+)\s*십억달러", repl_b, out)
+    return out
+
+
+def money_suffix_from_title(title: str, fx: float) -> str:
+    low = (title or "").replace(",", "")
+    values = []
+    for pat, mult in (
+        (r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)\b", 1000.0),
+        (r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*(?:billion|bn|b)\b", 1.0),
+        (r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*(?:million|mn|m)\b", 0.001),
+        (r"([0-9]+(?:\.[0-9]+)?)\s*조달러", 1000.0),
+        (r"([0-9]+(?:\.[0-9]+)?)\s*억달러", 0.1),
+    ):
+        for m in re.finditer(pat, low, re.I):
+            try:
+                values.append(float(m.group(1)) * mult)
+            except Exception:
+                pass
+    deduped = []
+    for value in values:
+        if value not in deduped:
+            deduped.append(value)
+    if not deduped:
+        return ""
+    return " · 원화환산 " + ", ".join(krw_from_usd_b(v, fx) for v in deduped[:2])
+
+
 PWC_OUTLOOK = "https://www.pwc.com/gx/en/1/services/consulting/technology/data-centre-outlook.html"
 PWC_KEYS = (
     "pwc_total_2026_2050_usd_t",
@@ -450,8 +499,18 @@ msg_anchor = '''    if gev_changes:
 '''
 msg_new = '''    cm = pwc_metrics
     msg += ["", "<b>💻 반복 장비투자·한국 전력기기 실수주</b>"]
-    msg.append(f"• <b>PwC 누적 자본투자</b> │ 2026~2050 {cm['pwc_total_2026_2050_usd_t']:g}조달러 │ AI 가속 상단 약 {cm['pwc_upside_usd_t']:g}조달러")
-    msg.append("• <b>연간 자본투자</b> │ 2026 <b>8,000억달러</b> → 2030 <b>1조1,000억달러</b> → 2050 <b>1조8,000억달러</b>")
+    msg.append(
+        f"• <b>PwC 누적 자본투자</b> │ 2026~2050 {cm['pwc_total_2026_2050_usd_t']:g}조달러 = "
+        f"<b>{krw_from_usd_b(cm['pwc_total_2026_2050_usd_t'] * 1000, fx)}</b> │ "
+        f"AI 가속 상단 약 {cm['pwc_upside_usd_t']:g}조달러 = "
+        f"<b>{krw_from_usd_b(cm['pwc_upside_usd_t'] * 1000, fx)}</b>"
+    )
+    msg.append(
+        f"• <b>연간 자본투자</b> │ "
+        f"2026 <b>{_usd_b_label_ko(cm['pwc_annual_2026_usd_b'])}</b> = <b>{krw_from_usd_b(cm['pwc_annual_2026_usd_b'], fx)}</b> → "
+        f"2030 <b>{_usd_b_label_ko(cm['pwc_annual_2030_usd_b'])}</b> = <b>{krw_from_usd_b(cm['pwc_annual_2030_usd_b'], fx)}</b> → "
+        f"2050 <b>{_usd_b_label_ko(cm['pwc_annual_2050_usd_b'])}</b> = <b>{krw_from_usd_b(cm['pwc_annual_2050_usd_b'], fx)}</b>"
+    )
     msg.append(f"• <b>ICT 장비 비중</b> │ 2026 {cm['pwc_ict_share_2026_pct']:g}% → 2050 {cm['pwc_ict_share_2050_pct']:g}% │ GPU·서버 교체 {cm['pwc_refresh_low_years']:g}~{cm['pwc_refresh_high_years']:g}년 · 20년 자산에서 {cm['pwc_rounds_low']:g}~{cm['pwc_rounds_high']:g}회")
     msg.append(f"• <b>효성중공업</b> │ 미국 AI 데이터센터 초고압변압기 <b>{b['hyosung_dc_order_krw_eok']:,.0f}억원</b> 직접 수주")
     msg.append(f"• <b>HD현대일렉트릭</b> │ 북미 데이터센터 장기 기본계약 최대 <b>{b['hd_hyundai_dc_framework_krw_eok']:,.0f}억원</b> │ 실제 개별 발주는 분할 · {int(b['hd_hyundai_delivery_year'])}년까지 순차 납품")
@@ -460,7 +519,7 @@ msg_new = '''    cm = pwc_metrics
     if pwc_changes:
         msg += ["", "<b>🔄 PwC 자본투자 전망 변경</b>"]
         for ch in pwc_changes[:6]:
-            msg.append(f"• {h(ch)}")
+            msg.append(f"• {h(_pwc_change_with_krw(ch, fx))}")
     if pwc_source_errors:
         msg.append("• PwC 원문 연결 오류 시 직전 검증값을 유지하며, 오류 자체로는 변화 알림을 만들지 않습니다.")
 
@@ -492,6 +551,27 @@ links_new = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', G
     ALERT.write_text'''
 if links_old in t:
     t = t.replace(links_old, links_new, 1)
+
+new_item_money_old = '''            msg.append(f"{idx}. 🔗 {a(ko, x['url'])}")'''
+new_item_money_new = '''            money_note = money_suffix_from_title(x['title'], fx)
+            msg.append(f"{idx}. 🔗 {a(ko, x['url'])}{h(money_note)}")'''
+if new_item_money_old not in t:
+    raise SystemExit("generation article-money insertion point not found")
+t = t.replace(new_item_money_old, new_item_money_new, 1)
+
+baseline_money_old = '''        msg.append("• 1,100억달러 투자 프레임과 소비자 비용부담 변화")'''
+baseline_money_new = '''        msg.append(f"• 1,100억달러 = <b>{krw_from_usd_b(b['capex_usd_b'], fx)}</b> 투자 프레임과 소비자 비용부담 변화")'''
+if baseline_money_old not in t:
+    raise SystemExit("generation baseline-money insertion point not found")
+t = t.replace(baseline_money_old, baseline_money_new, 1)
+
+source_money_old = '''    msg.append(f"• {a('Moody’s 45GW·1,100억달러 분석 보도', MOODYS_BLOOMBERG)}")'''
+source_money_new = '''    msg.append(f"• {a('Moody’s 45GW·신규발전 투자 분석 보도', MOODYS_BLOOMBERG)}")'''
+if source_money_old not in t:
+    raise SystemExit("generation source-label money insertion point not found")
+t = t.replace(source_money_old, source_money_new, 1)
+
+print("generation article-money KRW guard inserted")
 
 g.write_text(t, encoding="utf-8")
 print("US generation watcher recurring-capex + Korean supplier-order guard inserted")
