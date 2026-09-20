@@ -41,7 +41,7 @@ BASE = "https://www.treasurydirect.gov"
 KST = ZoneInfo("Asia/Seoul")
 UA = "Mozilla/5.0 (compatible; khs-watch-treasury-auction/1.0)"
 TARGETS = {"10-Year Note": "10년물", "20-Year Bond": "20년물", "30-Year Bond": "30년물"}
-STATE_VERSION = 2
+STATE_VERSION = 3
 
 
 def fetch(url: str, timeout: int = 30) -> bytes:
@@ -91,6 +91,23 @@ def num(text: str) -> float | None:
         return None
 
 
+def _plain_money_value_to_bn(v: float) -> float:
+    """Normalize Treasury money fields to billions of dollars.
+
+    Treasury sources are not perfectly uniform across endpoints/eras:
+    some values are raw dollars, some historical API values are millions,
+    while already-normalized values are in billions. For this watcher,
+    long-coupon auction amounts are safely below $100bn, so values above
+    100 after raw-dollar handling are treated as millions.
+    """
+    av = abs(v)
+    if av >= 1_000_000:
+        return v / 1_000_000_000.0
+    if av > 100:
+        return v / 1_000.0
+    return v
+
+
 def money_bn(text: str) -> float | None:
     v = num(text)
     if v is None:
@@ -100,9 +117,7 @@ def money_bn(text: str) -> float | None:
         return v / 1000.0
     if "billion" in low:
         return v
-    if v > 1000:
-        return v / 1000.0
-    return v
+    return _plain_money_value_to_bn(v)
 
 
 def api_money_bn(value) -> float | None:
@@ -112,12 +127,30 @@ def api_money_bn(value) -> float | None:
         v = float(str(value).replace("$", "").replace(",", "").strip())
     except (TypeError, ValueError):
         return None
-    av = abs(v)
-    if av >= 100_000_000:
-        return v / 1_000_000_000.0
-    if av >= 10_000:
-        return v / 1_000.0
-    return v
+    return _plain_money_value_to_bn(v)
+
+
+def parser_self_check() -> None:
+    cases = [
+        ("$30,804,090,000", 30.80409),
+        ("484,800,000", 0.4848),
+        ("9,831.9", 9.8319),
+        ("39", 39.0),
+    ]
+    for raw, expected in cases:
+        got = money_bn(raw)
+        if got is None or abs(got - expected) > 1e-9:
+            raise RuntimeError(f"money parser self-check failed: {raw} -> {got}, expected {expected}")
+    api_cases = [
+        ("30804090000", 30.80409),
+        ("484800000", 0.4848),
+        ("9831.9", 9.8319),
+        ("39", 39.0),
+    ]
+    for raw, expected in api_cases:
+        got = api_money_bn(raw)
+        if got is None or abs(got - expected) > 1e-9:
+            raise RuntimeError(f"API money parser self-check failed: {raw} -> {got}, expected {expected}")
 
 
 def api_num(record: dict, *keys: str) -> float | None:
@@ -440,6 +473,7 @@ def verdict(cur: Auction, prev: dict | None, hist: list[dict]) -> tuple[str, lis
 
 
 def main() -> int:
+    parser_self_check()
     now = dt.datetime.now(KST)
     state = load_state()
     seen = set(state.get("seen_result_urls") or [])
@@ -475,6 +509,9 @@ def main() -> int:
             or auction_date_key(x.auction_date) > latest_seen_date[x.tenor]
         )
     ]
+    # Drain any backlog in chronological order so an outage cannot cause an older
+    # same-tenor auction to be skipped after a newer result is processed first.
+    new.sort(key=lambda x: (auction_date_key(x.auction_date), x.tenor))
 
     if not STATE_PATH.exists() or state.get("state_version") != STATE_VERSION:
         history = {}
@@ -575,7 +612,10 @@ def main() -> int:
     rec.update({"indirect_pct": cur.indirect_pct, "direct_pct": cur.direct_pct, "dealer_pct": cur.dealer_pct})
     history[cur.tenor] = (hist + [rec])[-12:]
     seen.add(cur.result_url)
-    NEXT_STATE.write_text(json.dumps({"state_version": STATE_VERSION, "seen_result_urls": list(seen)[-100:], "history": history}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    # Keep dedupe state deterministic and newest-first instead of slicing an
+    # unordered set, which could otherwise evict arbitrary seen auctions.
+    seen_recent = [x.result_url for x in parsed if x.result_url in seen][:100]
+    NEXT_STATE.write_text(json.dumps({"state_version": STATE_VERSION, "seen_result_urls": seen_recent, "history": history}, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     STATUS.write_text(
         f"# 미 국채 입찰 최종수요 감시\n\n"
         f"- 조회: {now.isoformat(timespec='seconds')}\n"
