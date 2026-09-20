@@ -58,7 +58,7 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         self.assertIn("레버리지·마진 거래", rendered)
         self.assertIn("사전규칙 단계", rendered)
         self.assertIn("아직 미확정", rendered)
-        self.assertIn("OIRA Pending Review 종료", rendered)
+        self.assertIn("OIRA 검토 종료", rendered)
         self.assertLessEqual(max(map(len, MOD.build_readable([event]))), 3900)
 
     def test_article_is_evidence_not_monitoring_unit(self):
