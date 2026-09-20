@@ -800,6 +800,8 @@ def _unit_value(amount: float | None, weight: float | None) -> float | None:
 
 def classify_event(e: dict) -> tuple[str, str]:
     text = f"{e.get('title','')} {e.get('description','')}".lower()
+    if any(k in text for k in ("malaysia", "말레이시아", "penang", "kulim")) and any(k in text for k in ("hbm", "emib", "packaging", "패키징")):
+        return "말레이시아·EMIB", "말레이시아 HBM·Intel EMIB 첨단패키징 변화"
     if ("icheon" in text or "이천" in text) and "hbm" in text:
         return "이천 HBM 정밀 보강", "이천 SK하이닉스 HBM 직접·정밀 대용지표 변화"
     if ("icheon" in text or "이천" in text) and any(k in text for k in ("semiconductor", "memory", "반도체", "메모리")):
@@ -861,10 +863,16 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
     sam_q = _pct(cur["samsung_region_amount"], qbase.get("samsung_region_amount"))
     cb_mom = _pct(cur["hynix_chungbuk_amount"], prev.get("hynix_chungbuk_amount"))
     cb_q = _pct(cur["hynix_chungbuk_amount"], qbase.get("hynix_chungbuk_amount"))
+    my_mom = _pct(cur.get("malaysia_amount"), prev.get("malaysia_amount"))
+    my_q = _pct(cur.get("malaysia_amount"), qbase.get("malaysia_amount"))
+    my_y = _pct(cur.get("malaysia_amount"), ybase.get("malaysia_amount"))
+    my_uv = _unit_value(cur.get("malaysia_amount"), cur.get("malaysia_weight"))
+    my_prev_uv = _unit_value(prev.get("malaysia_amount"), prev.get("malaysia_weight"))
 
     nat_krw = krw_large(cur["national_amount"], rate)
     sam_krw = krw_large(cur["samsung_region_amount"], rate)
     cb_krw = krw_large(cur["hynix_chungbuk_amount"], rate)
+    my_krw = krw_large(cur.get("malaysia_amount"), rate) if cur.get("malaysia_amount") is not None else "확인 불가"
 
     lines = [
         "🚨 <b>삼성·SK하이닉스 HBM 월간 비교</b>",
@@ -904,7 +912,31 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
 
     lines += [
         "",
-        "<b>[3. 회사별 정밀 대용지표]</b>",
+        "<b>[3. 말레이시아 HSK10 — 첨단패키징 이동 보조축]</b>",
+    ]
+    if official.get("malaysia_public_available") and cur.get("malaysia_amount") is not None:
+        lines += [
+            f"• 한국→말레이시아 HSK <b>{official['hs']}</b>: <b>{_fmt_usd(cur.get('malaysia_amount'))} · {my_krw}</b>",
+            f"• 변화: 전월 <b>{_fmt_pct(my_mom)}</b> · 3개월 전 <b>{_fmt_pct(my_q)}</b> · 전년동월 <b>{_fmt_pct(my_y)}</b>",
+        ]
+        if my_uv is not None:
+            lines.append(f"• 중량당 단가: <b>\${my_uv:,.0f}/kg</b> · 전월 <b>{_fmt_pct(_pct(my_uv, my_prev_uv))}</b>")
+        else:
+            lines.append("• 중량당 단가: <b>확인 불가</b> — 추정하지 않음")
+        lines += [
+            "• 의미: 말레이시아 첨단패키징·조립 거점으로의 HBM 포함 복합메모리 이동을 보는 <b>보조 신호</b>",
+            "• 주의: 말레이시아향 HSK 8542323000 전체가 HBM 또는 Intel EMIB용이라는 뜻은 아닙니다.",
+            f"• Intel EMIB {href(INTEL_EMIB_OFFICIAL)} · Intel Malaysia {href(INTEL_MALAYSIA_OFFICIAL)}",
+        ]
+    else:
+        lines += [
+            "• 관세청 국가별 HSK10 직접값을 확인하지 못했습니다. <b>0으로 처리하거나 추정하지 않습니다.</b>",
+            "• 이 경우 Intel Malaysia·EMIB·HBM 관련 공식자료와 신뢰 보도를 보조 감시합니다.",
+        ]
+
+    lines += [
+        "",
+        "<b>[4. 회사별 정밀 대용지표]</b>",
         "• 회사별 HBM 정밀 비교는 <b>충남 HSK10 vs 충북+이천 HSK10</b>을 사용한 Bernstein 등 신뢰 리서치가 새로 공개될 때 별도로 갱신합니다.",
         "• 마지막 확인 기준선(2026년 7월): 충남은 4월 대비 <b>+122%</b>, 충북+이천은 약 <b>-27%</b>였습니다.",
         "• 이 기준선을 8월·9월 현재값처럼 재사용하지 않습니다.",
@@ -918,6 +950,8 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         "• 관세청에 새 월 HSK 8542323000 확정치가 생기는 즉시",
         "• 전국 HBM 포함 MCP 수출액·중량당 단가의 방향이 크게 바뀔 때",
         "• 충남·충북 지역 메모리 방향이 반전할 때",
+        "• 한국→말레이시아 HSK10 수출액·중량당 단가 방향이 크게 바뀔 때",
+        "• Intel Malaysia의 EMIB·HBM 첨단패키징 생산능력·투자·양산 상태가 바뀔 때",
         "• Bernstein 등에서 충남 vs 충북+이천 HSK10 정밀 비교가 새로 확인될 때",
         "• 삼성·SK하이닉스 HBM 매출·점유율·NVIDIA 공급물량이 새로 확인될 때",
         "",
@@ -927,7 +961,8 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         + f"관세청 {href(official['source_url'])} · "
         + f"K-stat {href('https://stat.kita.net/')} · "
         + f"Counterpoint {href(COUNTERPOINT_HBM_SHARE)} · "
-        + f"Bernstein {href(BERNSTEIN_EXPORT)}",
+        + f"Bernstein {href(BERNSTEIN_EXPORT)} · "
+        + f"말레이시아 관세청 API {href(official.get('malaysia_source_url') or 'https://www.data.go.kr/data/15100475/openapi.do')}",
     ]
     return "\n".join(lines) + "\n"
 
