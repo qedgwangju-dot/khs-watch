@@ -31,6 +31,7 @@ UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot
 FRESH_HOURS = 96
 MONTHLY_DAY = 15
 COMPARE_VERSION = 4
+EVENT_STATE_VERSION = 1
 KCS_ITEM_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTrade.do"
 DATA_GO_ITEM_URL = "https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList"
 DATA_GO_SIDO_ITEM_URL = "https://apis.data.go.kr/1220000/sidoitemtrade/getSidoitemtradeList"
@@ -1133,9 +1134,9 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
 
 def build_event_alert(events: list[dict], now: datetime) -> str:
     lines = [
-        "🚨 <b>삼성전자 HBM 신규 변화</b>",
+        "🚨 <b>HBM 주제·공식 상태 변화</b>",
         "━━━━━━━━━━━━━━━━",
-        f"<b>신규 변화 {len(events)}건</b> · {now.strftime('%Y-%m-%d %H:%M KST')}",
+        f"<b>상태 변화 {len(events)}건</b> · {now.strftime('%Y-%m-%d %H:%M KST')}",
         "",
     ]
     for i, e in enumerate(events[:4], 1):
@@ -1144,7 +1145,9 @@ def build_event_alert(events: list[dict], now: datetime) -> str:
         lines.append("")
     lines += [
         "<b>판정 원칙</b>",
-        "• 기사 제목만으로 호재·악재를 정하지 않고 <b>물량·가격·고객 인증·실제 출하</b>를 같이 봅니다.",
+        "• <b>기사 자체가 알림 대상이 아닙니다.</b> 기사·공식자료는 상태 변화의 감지 근거·교차검증 자료로만 사용합니다.",
+        "• 동일 사건을 여러 매체가 반복 보도해도 상태값이 같으면 다시 알리지 않습니다.",
+        "• 물량·가격·생산능력·고객 인증·양산·실제 출하·공식 통계가 바뀐 경우에만 신규 상태로 봅니다.",
         "• 충남 수출과 증권사 추정은 <b>삼성 공식 HBM 매출과 분리</b>해서 표시합니다.",
     ]
     return "\n".join(lines).strip() + "\n"
@@ -1158,24 +1161,61 @@ def main() -> None:
 
     events = read_events()
     cutoff = now - timedelta(hours=FRESH_HOURS)
+    topic_states = dict(state.get("topic_states") or {})
+
+    # One-time migration: seed topic states only from articles that the old
+    # watcher had already consumed. From this point onward article IDs are
+    # audit metadata only and never determine whether an alert is new.
+    if int(state.get("event_state_version") or 0) < EVENT_STATE_VERSION:
+        migrated: dict[str, dict] = {}
+        for e in events:
+            if e.get("id") not in seen:
+                continue
+            topic_key, signature, readable = event_state_descriptor(e)
+            if not topic_key or not signature:
+                continue
+            old = migrated.get(topic_key)
+            if old is None or e.get("published_at_kst", "") > old.get("observed_at", ""):
+                migrated[topic_key] = {
+                    "signature": signature,
+                    "observed_at": e.get("published_at_kst") or "",
+                    "state": readable,
+                }
+        for key, value in migrated.items():
+            topic_states.setdefault(key, value)
+        state["event_state_version"] = EVENT_STATE_VERSION
+
+    # Collapse all evidence into one latest/best candidate per normalized
+    # topic. Multiple articles about the same fact therefore remain evidence,
+    # not separate alerts.
+    latest_by_topic: dict[str, dict] = {}
     fresh_new = []
     for e in events:
         try:
             dt = datetime.fromisoformat(e.get("published_at_kst") or "")
         except Exception:
             continue
-        if cutoff <= dt <= now + timedelta(minutes=10) and e["id"] not in seen:
+        if not (cutoff <= dt <= now + timedelta(minutes=10)):
+            continue
+        topic_key, signature, readable = event_state_descriptor(e)
+        if not topic_key or not signature:
+            continue
+        e["topic_key"] = topic_key
+        e["state_signature"] = signature
+        e["state_readable"] = readable
+        old = latest_by_topic.get(topic_key)
+        if old is None or e.get("published_at_kst", "") > old.get("published_at_kst", "") or (
+            e.get("published_at_kst", "") == old.get("published_at_kst", "")
+            and e.get("rank", 0) > old.get("rank", 0)
+        ):
+            latest_by_topic[topic_key] = e
+
+    for topic_key, e in latest_by_topic.items():
+        stored = topic_states.get(topic_key) or {}
+        if stored.get("signature") != e.get("state_signature"):
             fresh_new.append(e)
 
-    chosen: dict[str, dict] = {}
-    for e in fresh_new:
-        category, _ = classify_event(e)
-        old = chosen.get(category)
-        if old is None or e["rank"] > old["rank"] or (
-            e["rank"] == old["rank"] and e.get("published_at_kst","") > old.get("published_at_kst","")
-        ):
-            chosen[category] = e
-    send_events = sorted(chosen.values(), key=lambda x: x.get("published_at_kst") or "")
+    send_events = sorted(fresh_new, key=lambda x: x.get("published_at_kst") or "")
 
     rate, fx_basis = fx_quote()
     official, official_errors = fetch_official_hbm_pack(now) if now.day >= MONTHLY_DAY else (None, [])
@@ -1206,16 +1246,27 @@ def main() -> None:
         state["last_monthly_digest"] = month_key
         state["last_official_alert_month"] = official_month
         state["compare_version"] = COMPARE_VERSION
-        seen.update(e["id"] for e in events)
+        # Do not consume pending topic-state changes behind a monthly alert.
+        # They remain eligible on the next run.
     elif send_events:
         ALERT.write_text(build_event_alert(send_events, now), encoding="utf-8")
-        seen.update(e["id"] for e in events)
+        for e in send_events:
+            topic_states[e["topic_key"]] = {
+                "signature": e["state_signature"],
+                "observed_at": e.get("published_at_kst") or "",
+                "state": e.get("state_readable") or "",
+            }
     elif ALERT.exists():
         ALERT.unlink()
+
+    # Article IDs are retained only for audit/migration history.
+    seen.update(e["id"] for e in events)
 
     state.update({
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "seen_ids": sorted(seen)[-1500:],
+        "event_state_version": EVENT_STATE_VERSION,
+        "topic_states": topic_states,
         "last_event_count": len(events),
         "last_fresh_new_count": len(fresh_new),
         "last_send_event_count": len(send_events),
@@ -1239,6 +1290,8 @@ def main() -> None:
         "# Samsung HBM Watch\n"
         f"- checked_at_kst: {now.isoformat(timespec='seconds')}\n"
         f"- events: {len(events)}\n"
+        f"- event_state_version: {EVENT_STATE_VERSION}\n"
+        f"- topic_state_count: {len(topic_states)}\n"
         f"- fresh_new: {len(fresh_new)}\n"
         f"- monthly_due: {str(monthly_due).lower()}\n"
         f"- official_month: {official_month or 'none'}\n"
