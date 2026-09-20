@@ -28,30 +28,49 @@ def _pretty_kst(value, fallback="확인 불가"):
         return html.escape(raw)
 
 
+def _procedure_ko(value):
+    raw = str(value or "").strip()
+    low = raw.lower()
+    if "h.r.3633" in low and "motion to proceed" in low and "cloture" in low:
+        return "H.R.3633 본회의 심의 진행을 위한 토론종결(cloture) 표결"
+    return raw or "H.R.3633 본회의 심의 진행 절차"
+
+
+def _result_ko(value):
+    raw = str(value or "").strip()
+    mapping = {
+        "rejected": "부결",
+        "failed": "부결",
+        "agreed": "가결",
+        "passed": "가결",
+    }
+    return mapping.get(raw.lower(), raw or "확인 중")
+
+
 def build_gate_block(gate):
     roll = gate.get("roll_call") or {}
     reaction = gate.get("market_reaction") or {}
 
     if roll:
-        result = str(roll.get("result") or "확인 중")
+        result = _result_ko(roll.get("result"))
         yeas = roll.get("yeas")
         nays = roll.get("nays")
         nv = roll.get("not_voting")
-        vote_time = _pretty_kst(roll.get("vote_time_kst"), "미 상원 Roll Call 완료")
+        vote_time = _pretty_kst(roll.get("vote_time_kst"), "미 상원 공식 표결 완료")
         current_stage = str(gate.get("current_stage") or "")
         next_vote = str(gate.get("next_vote_status") or "공식 새 CLARITY 표결 일정 미확인")
         reconsideration = gate.get("reconsideration") or {}
 
         lines = [
             "<b>⏱ 현재 의회 상태</b>",
-            f"• 절차 │ {html.escape(str(gate.get('procedure') or 'H.R.3633 motion to proceed cloture'))}",
+            f"• 절차 │ {html.escape(_procedure_ko(gate.get('procedure')))}",
             f"• 완료 표결 │ {html.escape(vote_time)}",
             f"• 결과 │ {html.escape(result)} — {yeas if yeas is not None else '확인 중'} / {nays if nays is not None else '확인 중'} / {nv if nv is not None else '확인 중'}",
             f"• 필요표 │ {int(gate.get('votes_required') or 60)}표",
             f"• 현재 단계 │ {html.escape(current_stage or '공식 절차 상태 확인 중')}",
         ]
         if reconsideration.get("entered") is True:
-            lines.append("• 후속 절차 │ Thom Tillis가 부결된 cloture 표결의 재고동의(motion to reconsider)를 제출")
+            lines.append("• 후속 절차 │ Thom Tillis가 부결된 토론종결 표결의 재고동의를 제출")
         elif reconsideration.get("entered") is None:
             lines.append("• 후속 절차 │ 재고동의 원문 확인 상태를 재점검 중")
         lines.append(f"• 다음 CLARITY 표결 │ {html.escape(next_vote)}")
@@ -61,7 +80,7 @@ def build_gate_block(gate):
         pretty_kst = "2026년 9월 16일 03:15 KST" if time_kst.startswith("2026-09-16T03:15") else html.escape(time_kst)
         lines = [
             "<b>⏱ 표결 관문</b>",
-            f"• 절차 │ {html.escape(str(gate.get('procedure') or 'H.R.3633 motion to proceed cloture'))}",
+            f"• 절차 │ {html.escape(_procedure_ko(gate.get('procedure')))}",
             f"• 한국시간 │ {pretty_kst}",
             f"• 필요표 │ {int(gate.get('votes_required') or 60)}표",
             f"• 현재 확보 │ {html.escape(str(gate.get('whip_count_status') or '공식 확정표 미공개'))}",
@@ -82,7 +101,7 @@ def build_gate_block(gate):
             suffix = "" if label != "US10Y" else " (^TNX 기준)"
             lines.append(f"• {html.escape(label)}{suffix} │ 가격 {fmt_pct(row.get('change_pct'))}")
             if row.get("volume_change_pct") is not None and label in {"BTC", "ETH", "COIN", "CRCL"}:
-                lines.append(f"  ↳ 거래량 │ {fmt_pct(row.get('volume_change_pct'))} (동일 시세원 regularMarketVolume 비교)")
+                lines.append(f"  ↳ 거래량 │ {fmt_pct(row.get('volume_change_pct'))} (동일 시세원 정규장 거래량 기준)")
         lines.append("• 원인 분리 │ 같은 시간 Nasdaq·S&amp;P 500·DXY·미 10년물과 비교해 CLARITY 직접 효과와 거시 효과를 분리")
     return "\n".join(lines)
 
