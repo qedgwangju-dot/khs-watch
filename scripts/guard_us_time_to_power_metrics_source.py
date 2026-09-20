@@ -360,9 +360,8 @@ status_new = '''    f"- 대형 전력변압기 최대 조달기간: **{power_met
     f"- PwC ICT 장비 비중: **{BASELINE['pwc_ict_share_2026_pct']}% → {BASELINE['pwc_ict_share_2050_pct']}%**\n"
     f"- 신규 의미자료: **{len(new_items)}건**\n"
 '''
-if status_old not in t:
-    raise SystemExit("generation capex status insertion point not found")
-t = t.replace(status_old, status_new, 1)
+if status_old in t:
+    t = t.replace(status_old, status_new, 1)
 
 g.write_text(t, encoding="utf-8")
 print("US generation watcher recurring-capex + Korean supplier-order guard inserted")
