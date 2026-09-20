@@ -25,6 +25,9 @@ NEW_IDEA_QUERIES = [
     '(Zelenskiy OR Zelensky OR 젤렌스키) (grain OR energy infrastructure OR prisoner exchange OR 곡물 OR 에너지 인프라 OR 포로 교환) (peace talks OR 평화 회담 OR 종전 협상) when:24h',
     'site:yna.co.kr 젤렌스키 (윗코프 OR 위트코프 OR 쿠슈너) (새 아이디어 OR 합리적인 제안 OR 새로운 아이디어 OR 돌파구 OR 종전안 OR 추가 회의) when:24h',
     '(젤렌스키 OR Zelenskiy OR Zelensky) (윗코프 OR 위트코프 OR Witkoff OR 쿠슈너 OR Kushner OR 미국 특사) (새 아이디어 OR 새로운 아이디어 OR new ideas OR decent ideas OR worthwhile ideas OR 종전안 OR 돌파구 OR 추가 협상) when:24h',
+    'site:axios.com (Trump Zelensky OR Trump Zelenskiy) (Tuesday OR "UN General Assembly" OR New York) meeting when:1d',
+    'site:reuters.com (Trump Zelensky OR Trump Zelenskiy) (New York OR "UN General Assembly") (meet OR meeting OR agreed) when:1d',
+    '(Trump OR 트럼프) (Zelensky OR Zelenskiy OR 젤렌스키) (Tuesday OR 화요일 OR New York OR 뉴욕 OR "UN General Assembly" OR 유엔총회) (meet OR meeting OR 회담 OR 만나기로 OR 예정) when:1d',
 ]
 watch.QUERIES = NEW_IDEA_QUERIES + list(watch.QUERIES)
 
@@ -155,7 +158,22 @@ def _newidea_signals(row):
         signals.append('포로 교환 확대·가속도 후속 합의 가능성을 확인할 항목')
         marks.append('포로교환')
 
-    if any(k in text for k in (
+    trump = any(k in text for k in ('trump','donald trump','president trump','트럼프','도널드 트럼프'))
+    trump_meeting = any(k in text for k in (
+        'meet trump','meeting with trump','meet with president trump','trump will meet','set to meet','agreed to meet',
+        '트럼프와 회동','트럼프 회동','트럼프와 만나','트럼프와 회담','회담 예정','만나기로 합의',
+    ))
+    tuesday = any(k in text for k in ('tuesday','화요일','9월 22일','september 22','sept. 22'))
+    new_york_unga = any(k in text for k in (
+        'new york','뉴욕','un general assembly','united nations general assembly','unga','유엔총회','유엔 총회'
+    ))
+    if zelensky and trump and trump_meeting and tuesday and new_york_unga:
+        signals.append('Trump–Zelenskiy 정상회담이 화요일 뉴욕 유엔총회 계기로 일정화 — 종전 협상의 다음 고위급 촉발 요인')
+        marks.append('트럼프젤렌스키화요일회담일정')
+    elif zelensky and trump and trump_meeting and new_york_unga:
+        signals.append('Trump–Zelenskiy 뉴욕 회동 합의·예정 — 정확한 시각 확정 여부를 후속 확인')
+        marks.append('트럼프젤렌스키뉴욕회동합의')
+    elif any(k in text for k in (
         'meet trump','meeting with trump','meet with president trump','later in september','late september',
         '트럼프와 회동','트럼프 회동','9월 후반','9월 말',
     )):
@@ -250,12 +268,16 @@ def newidea_score_item(x, now):
             score += 10
         if '포로교환' in marks:
             score += 8
-        if '트럼프후속회동' in marks:
+        if '트럼프젤렌스키화요일회담일정' in marks:
+            score += 72
+        elif '트럼프젤렌스키뉴욕회동합의' in marks:
+            score += 58
+        elif '트럼프후속회동' in marks:
             score += 8
         if '돌파구없음' in marks:
             score += 8
         src = (x.get('source') or '').lower()
-        if any(k in src for k in ('reuters','president of ukraine','president.gov.ua','kremlin','크렘린','연합뉴스','yonhap','뉴스1','news1','파이낸셜뉴스','fnnews')):
+        if any(k in src for k in ('reuters','axios','president of ukraine','president.gov.ua','whitehouse','kremlin','크렘린','연합뉴스','yonhap','뉴스1','news1','파이낸셜뉴스','fnnews')):
             score += 10
         tags = sorted(set(tags + ['종전·협상','협상내용','휴전·평화']))
         x['newidea_marks'] = marks
@@ -276,7 +298,7 @@ def newidea_item_id(x):
     # 제안→우크라이나 재개의사→러시아 3자협상 개방→양측 확인 순으로 단계가 높아지면 후속 알림 허용.
     important = [m for m in marks if m in (
         '합리적평화제안','새종전아이디어','젤렌스키협상재개의사','크렘린3자재개가능','양측협상의사확인',
-        '10월3자재개준비','3자회담준비','회담후보지','실무의제','포로교환','트럼프후속회동','겨울방공지원','돌파구없음','조기종전신중',
+        '10월3자재개준비','3자회담준비','회담후보지','실무의제','포로교환','트럼프젤렌스키화요일회담일정','트럼프젤렌스키뉴욕회동합의','트럼프후속회동','겨울방공지원','돌파구없음','조기종전신중',
     )]
     key = base_id + '|newideas-v3|' + '|'.join(important)
     return hashlib.sha256(key.encode('utf-8')).hexdigest()[:20]
@@ -315,7 +337,11 @@ def _inject_newideas(text, items):
         rows.append('- <b>의제:</b> 곡물 수송·에너지 인프라 등 실무 합의 가능성 확인')
     if '포로교환' in marks:
         rows.append('- <b>인도주의:</b> 포로 교환 확대·가속 여부 확인')
-    if '트럼프후속회동' in marks:
+    if '트럼프젤렌스키화요일회담일정' in marks:
+        rows.append('- <b>정상회담:</b> Trump–Zelenskiy, 화요일 뉴욕 유엔총회 계기로 회담 예정 — 날짜가 잡힌 고위급 촉발 요인')
+    elif '트럼프젤렌스키뉴욕회동합의' in marks:
+        rows.append('- <b>정상회담:</b> Trump–Zelenskiy 뉴욕 회동 합의·예정 — 정확한 시각·의제 확정 여부 확인')
+    elif '트럼프후속회동' in marks:
         rows.append('- <b>다음:</b> 9월 후반 Zelenskiy–Trump 회동이 다음 고위급 촉발 요인')
     if '돌파구없음' in marks:
         rows.append('- <b>제약:</b> 즉각적인 종전 돌파구는 아직 확인되지 않음')
