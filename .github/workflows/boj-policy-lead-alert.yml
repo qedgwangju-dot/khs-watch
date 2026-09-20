@@ -63,7 +63,7 @@ jobs:
           fetch-depth: 0
           # workflow_run can point at the triggering workflow's older SHA.
           # Always use latest main for live monitors so the newest alert state is read.
-          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.event_name == 'push' && github.sha || 'main' }}
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
