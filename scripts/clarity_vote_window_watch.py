@@ -182,7 +182,7 @@ def next_clarity_schedule_status():
         if url in seen:
             continue
         seen.add(url)
-        m = re.search(r"/(20\\d{2})/(\\d{2})/(\\d{2})/", url)
+        m = re.search(r"/(20\d{2})/(\d{2})/(\d{2})/", url)
         if not m:
             continue
         published = dt.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
@@ -195,9 +195,9 @@ def next_clarity_schedule_status():
             page = clean(BeautifulSoup(fetch_text(url), "html.parser").get_text(" ", strip=True))
         except Exception:
             continue
-        if not re.search(r"H\\.?R\\.?\\s*3633|Digital\\s+Asset\\s+Market\\s+Clarity|CLARITY\\s+Act", page, re.I):
+        if not re.search(r"H\.?R\.?\s*3633|Digital\s+Asset\s+Market\s+Clarity|CLARITY\s+Act", page, re.I):
             continue
-        if not re.search(r"vote|cloture|motion\\s+to\\s+proceed|reconsider|consideration|calendar", page, re.I):
+        if not re.search(r"vote|cloture|motion\s+to\s+proceed|reconsider|consideration|calendar", page, re.I):
             continue
         return {
             "found": True,
