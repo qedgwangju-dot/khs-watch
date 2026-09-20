@@ -404,6 +404,27 @@ def main():
     result = roll_call_result()
     reconsideration = reconsideration_status() if result else {"entered": None, "url": FLOOR_ACTIVITY, "status": "표결 결과 확인 전"}
     next_schedule = next_clarity_schedule_status() if result else {"found": False, "status": "예정된 cloture 표결 대기"}
+    next_schedule_signature = str(state.get("next_schedule_signature") or "")
+    if next_schedule.get("found"):
+        candidate_signature = "|".join([
+            str(next_schedule.get("published") or ""),
+            str(next_schedule.get("title") or ""),
+            str(next_schedule.get("url") or ""),
+        ])
+        if candidate_signature and candidate_signature != next_schedule_signature:
+            events.append({
+                "source": "Senate Democrats 공식 일정",
+                "event_type": "상원 본회의 후속 일정",
+                "event_subtype": "post_vote_clarity_schedule",
+                "title": "CLARITY 후속 표결·절차 일정 공식 확인",
+                "url": next_schedule.get("url") or SENATE_SCHEDULE_INDEX,
+                "date": next_schedule.get("published") or now_utc.isoformat(),
+                "detail": f"H.R.3633/CLARITY 관련 새 공식 일정 문구가 확인됐습니다: {next_schedule.get('title') or '제목 확인 중'}. 완료된 9월 16일 표결과 분리해 새 일정으로 알립니다.",
+                "verification_status": "Senate Democrats 공식 Senate Schedule 직접 확인",
+                "monitoring_unit": "event_state_change",
+            })
+            next_schedule_signature = candidate_signature
+
     result_signature = ""
     result_is_new = False
     if result:
@@ -548,7 +569,7 @@ def main():
         "market_24h_done": market_24h_done,
         "market_reaction_snapshot": reaction,
         "market_reaction_window": reaction_window,
-        "next_schedule_signature": (next_schedule.get("url") if next_schedule.get("found") else state.get("next_schedule_signature", "")),
+        "next_schedule_signature": next_schedule_signature,
         "updated_at_kst": now_kst.isoformat(timespec="seconds"),
         "monitoring_unit": "event_state_change_not_article",
     })
