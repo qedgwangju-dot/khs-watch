@@ -377,7 +377,7 @@ class BojPolicyPathAlertTests(unittest.TestCase):
             dt.datetime(2026, 9, 18, 13, 5, tzinfo=KST),
         )
         self.assertTrue(ok)
-        self.assertEqual(reason, "새 공식 정책 이벤트")
+        self.assertEqual(reason, "새 고신뢰 정책 이벤트")
 
     def test_official_statement_sets_detail_verification_flag(self):
         signal = classify(
