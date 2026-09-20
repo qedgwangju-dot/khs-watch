@@ -64,6 +64,7 @@ jobs:
           PY
 
       - name: Compare latest khs887900 private chat without sending
+        continue-on-error: true
         run: |
           python - <<'PY'
           import json, os, urllib.request
