@@ -1,0 +1,179 @@
+name: Vera Rubin SOCAMM Capacity Telegram Watch
+
+on:
+  push:
+    paths:
+      - ".github/workflows/rubin-socamm-capacity-telegram.yml"
+      - "scripts/rubin_socamm_capacity_watch.py"
+  schedule:
+    - cron: "41 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rubin-socamm-capacity-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Google News original-link decoder
+        run: |
+          python -m pip install --disable-pip-version-check --no-cache-dir googlenewsdecoder==0.1.7
+
+      - name: Validate Telegram route without sending
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("HBM_TELEGRAM_BOT_TOKEN secret is missing")
+          if not chat_id:
+              raise RuntimeError("HBM_TELEGRAM_CHAT_ID secret is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{username} chat_id_present=true")
+          PY
+
+      - name: Check Vera Rubin SOCAMM capacity
+        run: |
+          python -m py_compile scripts/rubin_socamm_capacity_watch.py
+          python scripts/rubin_socamm_capacity_watch.py
+
+      - name: Publish watcher summary
+        if: always()
+        run: |
+          if [ -f out/rubin_socamm_capacity_status.md ]; then
+            cat out/rubin_socamm_capacity_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "SOCAMM 용량 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send SOCAMM capacity change to Telegram
+        if: hashFiles('out/rubin_socamm_capacity_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json, os, pathlib, urllib.parse, urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/rubin_socamm_capacity_alert.html").read_text(encoding="utf-8").strip()
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=25) as r:
+              result = json.loads(r.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected SOCAMM capacity message: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/rubin_socamm_capacity_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"socamm_delivery_confirmed=true bot=@{username} message_id={confirmed['message_id']}")
+          PY
+
+      - name: Persist initial baseline
+        if: success() && hashFiles('out/rubin_socamm_capacity_alert.html') == '' && hashFiles('out/rubin_socamm_capacity_rebaseline.txt') != ''
+        run: cp out/rubin_socamm_capacity_pending_state.json data/rubin_socamm_capacity_watch_state.json
+
+      - name: Persist state after confirmed Telegram delivery
+        if: success() && hashFiles('out/rubin_socamm_capacity_alert.html') != '' && hashFiles('out/rubin_socamm_capacity_telegram_confirmed.json') != ''
+        run: |
+          cp out/rubin_socamm_capacity_pending_state.json data/rubin_socamm_capacity_watch_state.json
+          python - <<'PY'
+          import json, pathlib
+          state_path = pathlib.Path("data/rubin_socamm_capacity_watch_state.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          confirmed = json.loads(pathlib.Path("out/rubin_socamm_capacity_telegram_confirmed.json").read_text(encoding="utf-8"))
+          state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
+          state["telegram_message_id"] = confirmed.get("message_id")
+          state["bot_username"] = confirmed.get("bot_username")
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Keep state fresh when no alert is due
+        if: success() && hashFiles('out/rubin_socamm_capacity_alert.html') == '' && hashFiles('out/rubin_socamm_capacity_rebaseline.txt') == '' && hashFiles('data/rubin_socamm_capacity_watch_state.json') != ''
+        run: cp out/rubin_socamm_capacity_pending_state.json data/rubin_socamm_capacity_watch_state.json
+
+      - name: Commit watcher state
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/rubin_socamm_capacity_watch_state.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "SOCAMM watcher state unchanged"
+          else
+            git commit -m "Record SOCAMM capacity watch state"
+            git pull --rebase -X theirs origin main
+            git push
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rubin-socamm-capacity-${{ github.run_id }}
+          path: |
+            out/rubin_socamm_capacity_status.md
+            out/rubin_socamm_capacity_alert.html
+            out/rubin_socamm_capacity_pending_state.json
+            out/rubin_socamm_capacity_rebaseline.txt
+            out/rubin_socamm_capacity_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
