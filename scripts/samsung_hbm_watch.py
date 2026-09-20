@@ -659,6 +659,12 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
             else:
                 local_errors.append(err)
 
+        malaysia, merr = fetch_data_go_country_item_month(candidate)
+        if malaysia:
+            rows["malaysia_hsk10"] = malaysia
+        elif merr:
+            local_errors.append(merr)
+
         row, err = fetch_kcs_region_month(candidate, REGIONS["hynix_icheon"], session=session)
         if row:
             rows["hynix_icheon"] = row
@@ -709,6 +715,12 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
             else:
                 errors.append(err)
 
+        malaysia, merr = fetch_data_go_country_item_month(month)
+        if malaysia:
+            rows["malaysia_hsk10"] = malaysia
+        elif merr:
+            errors.append(merr)
+
         row, err = fetch_kcs_region_month(month, REGIONS["hynix_icheon"], session=session)
         if row:
             rows["hynix_icheon"] = row
@@ -727,6 +739,7 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         sam = rows["samsung_chungnam"]
         cb = rows["hynix_chungbuk"]
         ic = rows.get("hynix_icheon")
+        my = rows.get("malaysia_hsk10")
         return {
             "national_amount": nat["amount_usd"],
             "national_weight": nat.get("weight_kg"),
@@ -736,6 +749,8 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
             "hynix_chungbuk_weight": cb.get("weight_kg"),
             "icheon_amount": ic["amount_usd"] if ic else None,
             "icheon_weight": ic.get("weight_kg") if ic else None,
+            "malaysia_amount": my["amount_usd"] if my else None,
+            "malaysia_weight": my.get("weight_kg") if my else None,
         }
 
     series = {
@@ -750,6 +765,8 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         "region_hs": REGION_HS6,
         "source_url": KCS_SOURCE_PAGE,
         "icheon_public_available": "hynix_icheon" in data.get(selected, {}),
+        "malaysia_public_available": "malaysia_hsk10" in data.get(selected, {}),
+        "malaysia_source_url": "https://www.data.go.kr/data/15100475/openapi.do",
         "official_api_key_configured": bool(DATA_GO_KEY),
         "official_api_used": bool(data.get(selected, {}).get("national_hsk10", {}).get("api")),
         "errors": errors,
