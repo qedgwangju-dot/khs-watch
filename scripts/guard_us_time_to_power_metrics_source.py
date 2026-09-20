@@ -210,6 +210,163 @@ t = t.replace(print_old, print_new, 1)
 g.write_text(t, encoding="utf-8")
 print("US generation watcher power-demand + transformer/cable/power-electronics guard inserted")
 
+# Add PwC recurring-capex structure and Korean power-equipment direct-order
+# signals to the SAME generation-buildout watcher. No new workflow/state/route.
+t = g.read_text(encoding="utf-8")
+t = t.replace("FORMAT_VERSION = 2", "FORMAT_VERSION = 3", 1)
+
+baseline_old = '''    "incremental_gas_bcf_day": 4.0,
+}'''
+baseline_new = '''    "incremental_gas_bcf_day": 4.0,
+    "pwc_total_2026_2050_usd_t": 31.6,
+    "pwc_upside_usd_t": 50.0,
+    "pwc_annual_2026_usd_b": 800.0,
+    "pwc_annual_2030_usd_b": 1100.0,
+    "pwc_annual_2050_usd_b": 1800.0,
+    "pwc_ict_share_2026_pct": 70.0,
+    "pwc_ict_share_2050_pct": 93.0,
+    "pwc_refresh_low_years": 4.0,
+    "pwc_refresh_high_years": 6.0,
+    "pwc_rounds_low": 3.0,
+    "pwc_rounds_high": 5.0,
+    "hyosung_dc_order_krw_eok": 3865.0,
+    "hd_hyundai_dc_framework_krw_eok": 11212.0,
+    "hd_hyundai_delivery_year": 2028.0,
+    "ls_bloom_dc_order_krw_eok": 3190.0,
+    "ls_apr_dc_order_krw_eok": 1703.0,
+    "ls_may_dc_order_krw_eok": 1050.0,
+}'''
+if baseline_old not in t:
+    raise SystemExit("generation capex baseline insertion point not found")
+t = t.replace(baseline_old, baseline_new, 1)
+
+trusted_old = '''    "bloombergtax.com", "advisorperspectives.com",
+)'''
+trusted_new = '''    "bloombergtax.com", "advisorperspectives.com", "pwc.com",
+    "hyosung.com", "hd-hyundaielectric.com", "hyundai-elec.co.kr", "ls-electric.com",
+)'''
+if trusted_old not in t:
+    raise SystemExit("generation trusted domains insertion point not found")
+t = t.replace(trusted_old, trusted_new, 1)
+
+query_old = '''    'data center transformer backlog gas turbine orders power electronics IEA',
+)'''
+query_new = '''    'data center transformer backlog gas turbine orders power electronics IEA',
+    'PwC data centre capex ICT equipment 4 6 years 2050',
+    'Hyosung Heavy Industries AI data center transformer order United States',
+    'HD Hyundai Electric data center transformer switchgear order North America',
+    'LS ELECTRIC data center transformer switchgear order North America',
+)'''
+if query_old not in t:
+    raise SystemExit("generation capex query insertion point not found")
+t = t.replace(query_old, query_new, 1)
+
+source_old = '''        ("advisorperspectives", "Bloomberg"),
+    ):'''
+source_new = '''        ("advisorperspectives", "Bloomberg"), ("pwc", "PwC"),
+        ("hyosung", "효성중공업"), ("hyundai", "HD현대일렉트릭"), ("ls-electric", "LS ELECTRIC"),
+    ):'''
+if source_old not in t:
+    raise SystemExit("generation source-label insertion point not found")
+t = t.replace(source_old, source_new, 1)
+
+func_anchor = "\ndef stage_of(text: str) -> str:\n"
+supplier_func = r'''
+SUPPLIER_NEWS_PAGES = (
+    ("https://www.hyosung.com/kr/newsroom", "효성중공업"),
+    ("https://hyundai-elec.co.kr/elect/ko/PR/newsList.jsp", "HD현대일렉트릭"),
+    ("https://nahpdev-web.ls-electric.com/markets/data-center", "LS ELECTRIC"),
+)
+
+
+def collect_supplier_official_updates():
+    out = []
+    for url, source in SUPPLIER_NEWS_PAGES:
+        try:
+            soup = BeautifulSoup(fetch(url, 25).text, "html.parser")
+        except Exception:
+            continue
+        for link in soup.find_all("a", href=True):
+            title = normalize(link.get_text(" "))
+            low = title.lower()
+            if not title:
+                continue
+            if not any(k in low for k in ("data center", "데이터센터", "ai data", "ai 데이터")):
+                continue
+            if not any(k in low for k in ("order", "contract", "supply", "수주", "계약", "공급", "transformer", "변압기", "switchgear", "배전")):
+                continue
+            href = urllib.parse.urljoin(url, link.get("href") or "")
+            out.append({
+                "id": sig(source, title, href),
+                "title": title,
+                "url": href,
+                "source": source,
+                "stage": stage_of(title),
+                "scale_mw": extract_scale_mw(title),
+            })
+    return list({x["id"]: x for x in out}.values())
+
+'''
+if func_anchor not in t:
+    raise SystemExit("generation supplier collector insertion point not found")
+t = t.replace(func_anchor, "\n" + supplier_func + func_anchor, 1)
+
+meaning_old = '''    if "ge vernova" in low and any(k in low for k in ("gas turbine", "slot", "data center", "data centre")):
+        return True
+    if not any(k in low for k in ("data center", "data centre", "hyperscaler", "ai campus", "ai factory")):
+'''
+meaning_new = '''    if "ge vernova" in low and any(k in low for k in ("gas turbine", "slot", "data center", "data centre")):
+        return True
+    if "pwc" in low and any(k in low for k in ("data center", "data centre")) and any(k in low for k in ("capex", "ict", "2050", "investment")):
+        return True
+    if any(k in low for k in ("hyosung", "효성중공업", "hd hyundai", "hd현대일렉트릭", "ls electric")) and any(k in low for k in ("data center", "data centre", "데이터센터")) and any(k in low for k in ("order", "contract", "supply", "수주", "계약", "공급")):
+        return True
+    if not any(k in low for k in ("data center", "data centre", "hyperscaler", "ai campus", "ai factory")):
+'''
+if meaning_old not in t:
+    raise SystemExit("generation capex meaningful insertion point not found")
+t = t.replace(meaning_old, meaning_new, 1)
+
+items_old = "items = collect_news()\n"
+items_new = "items = collect_news() + collect_supplier_official_updates()\n"
+if items_old not in t:
+    raise SystemExit("generation supplier items insertion point not found")
+t = t.replace(items_old, items_new, 1)
+
+msg_anchor = '''    if gev_changes:
+        msg += ["", "<b>🔄 공급능력 숫자 변경</b>"]
+'''
+msg_new = '''    msg += ["", "<b>💻 반복 장비투자·한국 전력기기 실수주</b>"]
+    msg.append(f"• <b>PwC 누적 자본투자</b> │ 2026~2050 {b['pwc_total_2026_2050_usd_t']:g}조달러 │ AI 가속 상단 약 {b['pwc_upside_usd_t']:g}조달러")
+    msg.append(f"• <b>연간 자본투자</b> │ 2026 {b['pwc_annual_2026_usd_b']:,.0f}십억달러 → 2030 {b['pwc_annual_2030_usd_b']:,.0f}십억달러 → 2050 {b['pwc_annual_2050_usd_b']:,.0f}십억달러")
+    msg.append(f"• <b>ICT 장비 비중</b> │ 2026 {b['pwc_ict_share_2026_pct']:g}% → 2050 {b['pwc_ict_share_2050_pct']:g}% │ GPU·서버 교체 {b['pwc_refresh_low_years']:g}~{b['pwc_refresh_high_years']:g}년 · 20년 자산에서 {b['pwc_rounds_low']:g}~{b['pwc_rounds_high']:g}회")
+    msg.append(f"• <b>효성중공업</b> │ 미국 AI 데이터센터 초고압변압기 <b>{b['hyosung_dc_order_krw_eok']:,.0f}억원</b> 직접 수주")
+    msg.append(f"• <b>HD현대일렉트릭</b> │ 북미 데이터센터 장기 기본계약 최대 <b>{b['hd_hyundai_dc_framework_krw_eok']:,.0f}억원</b> │ 실제 개별 발주는 분할 · {int(b['hd_hyundai_delivery_year'])}년까지 순차 납품")
+    msg.append(f"• <b>LS ELECTRIC</b> │ 뉴멕시코 {b['ls_bloom_dc_order_krw_eok']:,.0f}억원 · 북미 {b['ls_apr_dc_order_krw_eok']:,.0f}억원 · 미국 빅테크 {b['ls_may_dc_order_krw_eok']:,.0f}억원의 확인된 프로젝트를 각각 추적")
+    msg.append("• <b>판정:</b> PwC 전망은 시장 기준선, 기업 수주는 확정 매출 연결 후보로 분리합니다. 기본계약 상단을 실제 발주액과 동일시하지 않습니다.")
+
+    if gev_changes:
+        msg += ["", "<b>🔄 공급능력 숫자 변경</b>"]
+'''
+if msg_anchor not in t:
+    raise SystemExit("generation capex message insertion point not found")
+t = t.replace(msg_anchor, msg_new, 1)
+
+status_old = '''    f"- 대형 전력변압기 최대 조달기간: **{power_metrics['transformer_lead_max_years']}년**\n"
+    f"- 신규 의미자료: **{len(new_items)}건**\n"
+'''
+status_new = '''    f"- 대형 전력변압기 최대 조달기간: **{power_metrics['transformer_lead_max_years']}년**\n"
+    f"- PwC 2026~2050 누적 자본투자 기준: **{BASELINE['pwc_total_2026_2050_usd_t']}조달러**\n"
+    f"- PwC ICT 장비 비중: **{BASELINE['pwc_ict_share_2026_pct']}% → {BASELINE['pwc_ict_share_2050_pct']}%**\n"
+    f"- 신규 의미자료: **{len(new_items)}건**\n"
+'''
+if status_old not in t:
+    raise SystemExit("generation capex status insertion point not found")
+t = t.replace(status_old, status_new, 1)
+
+g.write_text(t, encoding="utf-8")
+print("US generation watcher recurring-capex + Korean supplier-order guard inserted")
+
 # Extend the existing time-to-power watcher with flexible-load / demand-response
 # signals.  This remains part of the same watcher and state file: no new alert
 # workflow or Telegram route is created.
