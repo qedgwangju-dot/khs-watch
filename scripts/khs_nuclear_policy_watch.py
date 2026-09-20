@@ -449,7 +449,7 @@ def _render_direct(item: dict, idx: int, now: dt.datetime) -> list[str]:
     numeric = [
         TERM_LABELS.get(term, term)
         for term in item["matched"]
-        if re.search(r"\\d|\\$", str(term))
+        if re.search(r"\d|\$", str(term))
     ]
     numbers_text = " · ".join(dict.fromkeys(numeric)) if numeric else "신규 확정 금액·기수는 원문 추가 확인 필요"
     return [
