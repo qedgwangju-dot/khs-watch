@@ -32,6 +32,10 @@ FRESH_HOURS = 96
 MONTHLY_DAY = 15
 COMPARE_VERSION = 4
 EVENT_STATE_VERSION = 2
+SHARE_TRACK_VERSION = 1
+SHARE_REVISION_THRESHOLD_PP = 3.0
+SHARE_ACTUAL_DEVIATION_THRESHOLD_PP = 5.0
+SHARE_PARITY_GAP_PP = 5.0
 KCS_ITEM_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTrade.do"
 DATA_GO_ITEM_URL = "https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList"
 DATA_GO_SIDO_ITEM_URL = "https://apis.data.go.kr/1220000/sidoitemtrade/getSidoitemtradeList"
@@ -55,6 +59,31 @@ BERNSTEIN_EXPORT = "https://www.investing.com/news/company-news/samsung-leads-hb
 LS_HBM4_MIX = "https://en.sedaily.com/finance/2026/08/31/ls-securities-cuts-sk-hynix-target-27-percent-raises"
 INTEL_EMIB_OFFICIAL = "https://www.intel.com/content/www/us/en/foundry/packaging.html"
 INTEL_MALAYSIA_OFFICIAL = "https://newsroom.intel.com/intel-foundry/updates-intel-10-largest-construction-projects"
+
+# User-provided J.P. Morgan figure: HBM market share by sales.
+# These are seeded as baselines only; adding the tracker must not itself create an alert.
+SHARE_FORECAST_BASELINES = {
+    "jpmorgan|sales|2026": {"skhynix": 46.0, "samsung": 34.0, "micron": 20.0, "source": "사용자 제공 J.P. Morgan 차트"},
+    "jpmorgan|sales|2027": {"skhynix": 41.0, "samsung": 39.0, "micron": 21.0, "source": "사용자 제공 J.P. Morgan 차트"},
+    "jpmorgan|sales|2028": {"skhynix": 42.0, "samsung": 37.0, "micron": 21.0, "source": "사용자 제공 J.P. Morgan 차트"},
+}
+
+# Counterpoint official 2Q26 actual HBM revenue-share baseline.
+SHARE_ACTUAL_BASELINES = {
+    "counterpoint|sales|2026Q2": {"skhynix": 50.0, "samsung": 33.0, "micron": 18.0, "source": "Counterpoint 2026-09-03"},
+}
+
+SHARE_INSTITUTIONS = {
+    "jpmorgan": ("j.p. morgan", "jp morgan", "jpmorgan", "jpm"),
+    "ubs": ("ubs",),
+    "morgan_stanley": ("morgan stanley", "모건스탠리"),
+    "citi": ("citi", "citigroup", "씨티"),
+    "bofa": ("bank of america", "bofa", "boa", "뱅크오브아메리카"),
+    "goldman_sachs": ("goldman sachs", "골드만삭스"),
+    "counterpoint": ("counterpoint", "카운터포인트"),
+    "trendforce": ("trendforce", "트렌드포스"),
+    "idc": ("idc",),
+}
 
 QUERIES = [
     '"Samsung" HBM4 HBM4E NVIDIA qualification shipment mass production',
@@ -80,6 +109,16 @@ QUERIES = [
     '"Intel Malaysia" EMIB HBM advanced packaging Penang Kulim',
     '"Malaysia" HBM EMIB Intel advanced packaging',
     '"말레이시아" HBM Intel EMIB 첨단 패키징 Penang Kulim',
+    '"J.P. Morgan" HBM market share Samsung SK hynix Micron',
+    '"JP Morgan" HBM share 2027 Samsung SK hynix',
+    '"UBS" HBM market share Samsung SK hynix Micron',
+    '"Morgan Stanley" HBM market share Samsung SK hynix Micron',
+    '"Citi" HBM market share Samsung SK hynix Micron',
+    '"BofA" HBM market share Samsung SK hynix Micron',
+    '"Goldman Sachs" HBM market share Samsung SK hynix Micron',
+    '"Counterpoint" HBM market share Samsung SK hynix Micron',
+    '"TrendForce" HBM market share Samsung SK hynix Micron',
+    '"HBM 점유율" 삼성전자 SK하이닉스 Micron 전망',
 ]
 
 TRUSTED = (
