@@ -48,9 +48,9 @@ class ClarityReginfoWatchTest(unittest.TestCase):
         }
         rendered = "\n".join(FORMAT.build_chunks([event]))
         self.assertIn("RIN 3038-AF80", rendered)
-        self.assertIn("검토 중(Pending Review)", rendered)
-        self.assertIn("사전규칙 단계(Prerule)", rendered)
-        self.assertIn("아직 사전규칙 단계(Prerule)이고 규칙 본문이 공개되지 않았으며", rendered)
+        self.assertIn("Pending Review(검토 중)", rendered)
+        self.assertIn("Prerule(사전규칙 단계)", rendered)
+        self.assertIn("아직 Prerule(사전규칙 단계)이고 규칙 본문이 공개되지 않았으며", rendered)
         self.assertIn("규칙 본문도 비공개", rendered)
         self.assertNotIn("이 문서는 제안규칙입니다", rendered)
         self.assertNotIn("이번 조치는 최종규칙으로", rendered)
