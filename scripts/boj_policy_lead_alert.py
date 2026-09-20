@@ -1206,7 +1206,6 @@ def signal_signature(signal: Signal) -> dict:
         "outlook_dissenters": list(signal.outlook_dissenters),
         "outlook_dissent_view": signal.outlook_dissent_view,
         "official_statement_detail_verified": signal.official_statement_detail_verified,
-        "source_link": source_link,
         "further_hikes": signal.further_hikes,
         "conditional_pace": signal.conditional_pace,
         "accommodative": signal.accommodative,
@@ -1986,6 +1985,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         "checked_at_kst": now.isoformat(timespec="seconds"),
         "next_official_check": next_official_check(now),
         "official_statement_detail_verified": signal.official_statement_detail_verified,
+        "source_link": source_link,
     }
     return title, "\n".join(lines), payload
 
