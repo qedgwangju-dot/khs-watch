@@ -538,28 +538,6 @@ _self_validate_alaska_body_v34()
 _self_validate_lng_relevance_v34()
 _self_validate_cross_source_relevance_v34()
 
-def _self_validate_asia_demand_v34() -> None:
-    item = core.NewsItem(
-        category=ASIA_DEMAND_CATEGORY,
-        polarity="worsening",
-        subtype="asia_lng_cost_shock",
-        title="A $7 Billion Gas Bill Sees Developing Asian Nations Sour on LNG",
-        source="Bloomberg",
-        link="https://example.com/asia-lng",
-        published_utc="2026-09-14T00:00:00+00:00",
-        published_epoch=1.0,
-        official=False,
-        event_id="fixture-asia-lng",
-    )
-    groups = confirmed_news_groups_v34([item])
-    assert any(str(group.get("category") or "") == ASIA_DEMAND_CATEGORY for group in groups)
-    body = _build_asia_demand_body_v34(groups)
-    assert "구조적 수요 재평가" in body
-    assert "실제 LNG 소비 감소 확정과는 구분" in body
-
-_self_validate_asia_demand_v34()
-
-
 def _asia_demand_groups(groups) -> list[dict]:
     return [group for group in groups if str(group.get("category") or "") == ASIA_DEMAND_CATEGORY]
 
@@ -586,6 +564,29 @@ def _build_asia_demand_body_v34(groups) -> str:
         "• 장기구매계약 축소·취소, LNG 발전소 취소·연기, 국가 전력계획 변경, 실제 LNG 수입량 감소\n\n"
         "<b>핵심 한 줄</b> 단기 LNG 가격 강세와 장기 LNG 수요 파괴가 동시에 나타날 수 있는 구간입니다."
     )
+
+
+def _self_validate_asia_demand_v34() -> None:
+    item = core.NewsItem(
+        category=ASIA_DEMAND_CATEGORY,
+        polarity="worsening",
+        subtype="asia_lng_cost_shock",
+        title="A $7 Billion Gas Bill Sees Developing Asian Nations Sour on LNG",
+        source="Bloomberg",
+        link="https://example.com/asia-lng",
+        published_utc="2026-09-14T00:00:00+00:00",
+        published_epoch=1.0,
+        official=False,
+        event_id="fixture-asia-lng",
+    )
+    groups = confirmed_news_groups_v34([item])
+    assert any(str(group.get("category") or "") == ASIA_DEMAND_CATEGORY for group in groups)
+    body = _build_asia_demand_body_v34(groups)
+    assert "구조적 수요 재평가" in body
+    assert "실제 LNG 소비 감소 확정과는 구분" in body
+
+
+_self_validate_asia_demand_v34()
 
 
 def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
