@@ -16,36 +16,61 @@ def fmt_pct(value):
     return f"{value:+.2f}%"
 
 
-def build_gate_block(gate):
-    time_kst = str(gate.get("official_time_kst") or "")
-    pretty_kst = "2026년 9월 16일 03:15 KST" if time_kst.startswith("2026-09-16T03:15") else html.escape(time_kst)
-    lines = [
-        "<b>⏱ 표결 관문</b>",
-        f"• 절차 │ {html.escape(str(gate.get('procedure') or 'H.R.3633 motion to proceed cloture'))}",
-        f"• 한국시간 │ {pretty_kst}",
-        f"• 필요표 │ {int(gate.get('votes_required') or 60)}표",
-        f"• 현재 확보 │ {html.escape(str(gate.get('whip_count_status') or '공식 확정표 미공개'))}",
-        f"• 최종안 │ {html.escape(str(gate.get('final_draft_context') or ''))}",
-    ]
-    bottlenecks = gate.get("main_bottlenecks") or []
-    if bottlenecks:
-        lines.append("• 최대 병목 │ " + html.escape(" · ".join(str(x) for x in bottlenecks[:5])))
+def _pretty_kst(value, fallback="확인 불가"):
+    raw = str(value or "").strip()
+    if not raw:
+        return fallback
+    try:
+        from datetime import datetime
+        parsed = datetime.fromisoformat(raw)
+        return parsed.strftime("%Y년 %m월 %d일 %H:%M KST")
+    except Exception:
+        return html.escape(raw)
 
+
+def build_gate_block(gate):
     roll = gate.get("roll_call") or {}
+    reaction = gate.get("market_reaction") or {}
+
     if roll:
         result = str(roll.get("result") or "확인 중")
         yeas = roll.get("yeas")
         nays = roll.get("nays")
         nv = roll.get("not_voting")
-        lines.extend([
-            "",
-            "<b>🗳 실제 표결 결과</b>",
-            f"• 판정 │ {html.escape(result)}",
-            f"• 찬성/반대/불참 │ {yeas if yeas is not None else '확인 중'} / {nays if nays is not None else '확인 중'} / {nv if nv is not None else '확인 중'}",
-            "• 의미 │ 최종 통과표결이 아니라 본회의 심의를 계속하기 위한 cloture 관문",
-        ])
+        vote_time = _pretty_kst(roll.get("vote_time_kst"), "미 상원 Roll Call 완료")
+        current_stage = str(gate.get("current_stage") or "")
+        next_vote = str(gate.get("next_vote_status") or "공식 새 CLARITY 표결 일정 미확인")
+        reconsideration = gate.get("reconsideration") or {}
 
-    reaction = gate.get("market_reaction") or {}
+        lines = [
+            "<b>⏱ 현재 의회 상태</b>",
+            f"• 절차 │ {html.escape(str(gate.get('procedure') or 'H.R.3633 motion to proceed cloture'))}",
+            f"• 완료 표결 │ {html.escape(vote_time)}",
+            f"• 결과 │ {html.escape(result)} — {yeas if yeas is not None else '확인 중'} / {nays if nays is not None else '확인 중'} / {nv if nv is not None else '확인 중'}",
+            f"• 필요표 │ {int(gate.get('votes_required') or 60)}표",
+            f"• 현재 단계 │ {html.escape(current_stage or '공식 절차 상태 확인 중')}",
+        ]
+        if reconsideration.get("entered") is True:
+            lines.append("• 후속 절차 │ Thom Tillis가 부결된 cloture 표결의 재고동의(motion to reconsider)를 제출")
+        elif reconsideration.get("entered") is None:
+            lines.append("• 후속 절차 │ 재고동의 원문 확인 상태를 재점검 중")
+        lines.append(f"• 다음 CLARITY 표결 │ {html.escape(next_vote)}")
+        lines.append("• 표시 원칙 │ 완료된 9월 16일 표결은 과거 결과로만 표시하고 새 공식 일정이 확인되기 전에는 예정 관문으로 재노출하지 않음")
+    else:
+        time_kst = str(gate.get("official_time_kst") or "")
+        pretty_kst = "2026년 9월 16일 03:15 KST" if time_kst.startswith("2026-09-16T03:15") else html.escape(time_kst)
+        lines = [
+            "<b>⏱ 표결 관문</b>",
+            f"• 절차 │ {html.escape(str(gate.get('procedure') or 'H.R.3633 motion to proceed cloture'))}",
+            f"• 한국시간 │ {pretty_kst}",
+            f"• 필요표 │ {int(gate.get('votes_required') or 60)}표",
+            f"• 현재 확보 │ {html.escape(str(gate.get('whip_count_status') or '공식 확정표 미공개'))}",
+            f"• 최종안 │ {html.escape(str(gate.get('final_draft_context') or ''))}",
+        ]
+        bottlenecks = gate.get("main_bottlenecks") or []
+        if bottlenecks:
+            lines.append("• 최대 병목 │ " + html.escape(" · ".join(str(x) for x in bottlenecks[:5])))
+
     if reaction:
         window = str(gate.get("market_reaction_window") or "즉시")
         heading = "📊 표결 24시간 실측 시장 반응" if "24" in window else "📊 표결창 실측 시장 반응"
