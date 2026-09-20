@@ -44,7 +44,7 @@ class ClarityVoteGateEnricherTest(unittest.TestCase):
         self.assertIn("2026년 09월 16일 03:19 KST", block)
         self.assertIn("부결 — 49 / 50 / 1", block)
         self.assertIn("재고동의", block)
-        self.assertIn("본회의 심의 진행을 위한 토론종결(cloture) 표결", block)
+        self.assertIn("motion to proceed cloture(본회의 심의 진행을 위한 토론종결) 표결", block)
         self.assertIn("공식 새 CLARITY 표결 일정 미확인", block)
         self.assertNotIn("<b>⏱ 표결 관문</b>", block)
         self.assertNotIn("현재 확보", block)
