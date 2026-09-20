@@ -27,6 +27,19 @@ _BASE_CATEGORY_LABEL_V34 = core.category_label
 _BASE_CONFIRMED_V34 = core.confirmed_news_groups
 
 ALASKA_CATEGORY = "alaska_lng_supply"
+ASIA_DEMAND_CATEGORY = "asia_lng_demand_rethink"
+ASIA_DEMAND_QUERIES = (
+    (ASIA_DEMAND_CATEGORY, '"sour on LNG" Asia when:14d'),
+    (ASIA_DEMAND_CATEGORY, '"wean themselves off LNG" Asia when:14d'),
+    (ASIA_DEMAND_CATEGORY, '"LNG demand" Asia solar coal nuclear when:14d'),
+    (ASIA_DEMAND_CATEGORY, '"$7 billion" LNG Asia Pakistan Bangladesh Thailand Vietnam when:14d'),
+    (ASIA_DEMAND_CATEGORY, '"$7.4 billion" LNG Asia when:14d'),
+    (ASIA_DEMAND_CATEGORY, '아시아 LNG 탈 LNG 비용 폭탄 현물 조달 태양광 석탄 when:14d'),
+)
+for item in ASIA_DEMAND_QUERIES:
+    if item not in core.NEWS_QUERIES:
+        core.NEWS_QUERIES = tuple(core.NEWS_QUERIES) + (item,)
+
 ALASKA_LNG_QUERIES = (
     (ALASKA_CATEGORY, '"Alaska LNG" Glenfarne AGDC when:7d'),
     (ALASKA_CATEGORY, '"Polar LNG" Alaska when:7d'),
@@ -35,7 +48,11 @@ ALASKA_LNG_QUERIES = (
     (ALASKA_CATEGORY, 'Alaska LNG superpower 80bn when:7d'),
     (ALASKA_CATEGORY, '"Alaska as LNG superpower" when:7d'),
     (ALASKA_CATEGORY, '"Trump vision" Alaska LNG superpower when:7d'),
-    (ALASKA_CATEGORY, '알래스카 LNG 글렌파른 AGDC 545억달러 800억달러 when:14d'),
+    (ALASKA_CATEGORY, '"Alaska LNG" sanctions financing when:14d'),
+    (ALASKA_CATEGORY, '"Alaska LNG" "3mn tonnes" offtake FID when:14d'),
+    (ALASKA_CATEGORY, '"Alaska LNG" tax breaks delay when:14d'),
+    (ALASKA_CATEGORY, '"Polar LNG" Novatek sanctions when:14d'),
+    (ALASKA_CATEGORY, '알래스카 LNG 글렌파른 AGDC 545억달러 800억달러 제재 자금조달 when:14d'),
 )
 for item in ALASKA_LNG_QUERIES:
     if item not in core.NEWS_QUERIES:
@@ -48,6 +65,18 @@ core.TRUSTED_SOURCE_ALIASES = tuple(core.TRUSTED_SOURCE_ALIASES) + (
 core.OFFICIAL_SOURCE_ALIASES = tuple(core.OFFICIAL_SOURCE_ALIASES) + (
     "alaska gasline development corporation", "agdc", "glenfarne", "polar lng",
     "federal energy regulatory commission", "ferc",
+)
+
+core.WORSENING_TERMS[ASIA_DEMAND_CATEGORY] = (
+    "sour on lng", "wean themselves off lng", "wean off lng", "demand destruction",
+    "shift away from lng", "move away from lng", "lng demand slows", "lng demand weakens",
+    "cancelled", "canceled", "withdrawn", "no progress", "coal", "solar", "hydropower",
+    "renewables", "nuclear", "local gas", "piped gas",
+    "탈 lng", "lng 이탈", "수요 파괴", "수요 둔화", "태양광", "석탄", "원전", "국산가스",
+)
+core.EASING_TERMS[ASIA_DEMAND_CATEGORY] = (
+    "lng demand growth", "lng demand rises", "lng demand rebounds", "new lng demand",
+    "gas-fired expansion", "lng adoption", "수요 증가", "lng 확대", "가스발전 확대",
 )
 
 core.WORSENING_TERMS[ALASKA_CATEGORY] = (
@@ -64,6 +93,8 @@ core.EASING_TERMS[ALASKA_CATEGORY] = (
     "최종투자결정", "계약", "협약", "구매", "공급", "자금조달", "투자", "착공", "최종 설계",
 )
 core.SUBTYPE_TERMS = (
+    ("asia_lng_demand_rethink", ("sour on lng", "wean themselves off lng", "wean off lng", "탈 lng", "수요 파괴")),
+    ("asia_lng_cost_shock", ("7.4 billion", "$7.4 billion", "7 billion", "$7 billion", "비용 폭탄")),
     ("alaska_lng_cost_scale", ("54.5 billion", "80 billion", "54.5bn", "80bn", "545억달러", "800억달러")),
     ("polar_lng_project", ("polar lng",)),
     ("alaska_lng_project", ("alaska lng", "glenfarne", "agdc", "alaska gasline development corporation")),
@@ -72,6 +103,10 @@ core.SUBTYPE_TERMS = (
 ALASKA_MAJOR_SOURCES = (
     "reuters", "bloomberg", "financial times", "wall street journal", "wsj",
     "associated press", "ap news", "cnbc", "s&p global commodity insights", "argus media",
+)
+ASIA_DEMAND_MAJOR_SOURCES = (
+    "bloomberg", "reuters", "financial times", "wall street journal", "wsj",
+    "s&p global commodity insights", "argus media", "nikkei asia",
 )
 
 LNG_RELEVANCE_TERMS = (
@@ -154,6 +189,8 @@ def classify_polarity_v34(category: str, title: str) -> str | None:
 def category_label_v34(category: str) -> str:
     if category == ALASKA_CATEGORY:
         return "알래스카 LNG·대체공급 프로젝트"
+    if category == ASIA_DEMAND_CATEGORY:
+        return "아시아 LNG 구조적 수요 재평가"
     return _BASE_CATEGORY_LABEL_V34(category)
 
 
@@ -208,6 +245,42 @@ def confirmed_news_groups_v34(items: list[core.NewsItem]):
             "verification": verification,
         })
 
+    asia_items = [item for item in items if item.category == ASIA_DEMAND_CATEGORY]
+    asia_buckets: dict[tuple[str, str], list[core.NewsItem]] = {}
+    for item in asia_items:
+        asia_buckets.setdefault((item.subtype, item.polarity), []).append(item)
+
+    for (_, _), group in asia_buckets.items():
+        group.sort(key=lambda x: x.published_epoch, reverse=True)
+        latest = group[0]
+        recent = [x for x in group if latest.published_epoch - x.published_epoch <= 120 * 3600]
+        major = [x for x in recent if core.source_matches(x.source, ASIA_DEMAND_MAJOR_SOURCES)]
+        distinct = {core.normalize_text(x.source) for x in recent}
+        if not major and len(distinct) < 2:
+            continue
+
+        evidence: list[core.NewsItem] = []
+        used: set[str] = set()
+        for item in (major + recent):
+            source_key = core.normalize_text(item.source)
+            if source_key in used:
+                continue
+            evidence.append(item)
+            used.add(source_key)
+            if len(evidence) >= 2:
+                break
+
+        verification = "주요 신뢰매체 분석 단계" if major else "신뢰 매체 2곳 교차"
+        base.append({
+            "category": ASIA_DEMAND_CATEGORY,
+            "polarity": latest.polarity,
+            "subtype": latest.subtype,
+            "event_id": latest.event_id,
+            "latest_epoch": latest.published_epoch,
+            "evidence": evidence,
+            "verification": verification,
+        })
+
     base.sort(key=lambda group: float(group.get("latest_epoch") or 0), reverse=True)
     return base
 
@@ -220,6 +293,10 @@ core.confirmed_news_groups = confirmed_news_groups_v34
 def _title_ko_v34(item: core.NewsItem) -> str:
     raw = str(getattr(item, "title", "") or "").strip()
     normalized = core.normalize_text(raw)
+    if item.category == ASIA_DEMAND_CATEGORY:
+        if "7.4 billion" in normalized or "$7.4 billion" in normalized or "7 billion" in normalized or "$7 billion" in normalized:
+            return "아시아 신흥국 LNG 조달비 급증·장기 수요 재평가"
+        return "아시아 LNG 수요 파괴·연료 전환 재평가 신호"
     if item.category == ALASKA_CATEGORY:
         if any(term in normalized for term in core.WORSENING_TERMS[ALASKA_CATEGORY]):
             return "알래스카 LNG 프로젝트 지연·사업성 위험 신규 변화"
@@ -461,13 +538,66 @@ _self_validate_alaska_body_v34()
 _self_validate_lng_relevance_v34()
 _self_validate_cross_source_relevance_v34()
 
+def _self_validate_asia_demand_v34() -> None:
+    item = core.NewsItem(
+        category=ASIA_DEMAND_CATEGORY,
+        polarity="worsening",
+        subtype="asia_lng_cost_shock",
+        title="A $7 Billion Gas Bill Sees Developing Asian Nations Sour on LNG",
+        source="Bloomberg",
+        link="https://example.com/asia-lng",
+        published_utc="2026-09-14T00:00:00+00:00",
+        published_epoch=1.0,
+        official=False,
+        event_id="fixture-asia-lng",
+    )
+    groups = confirmed_news_groups_v34([item])
+    assert any(str(group.get("category") or "") == ASIA_DEMAND_CATEGORY for group in groups)
+    body = _build_asia_demand_body_v34(groups)
+    assert "구조적 수요 재평가" in body
+    assert "실제 LNG 소비 감소 확정과는 구분" in body
+
+_self_validate_asia_demand_v34()
+
+
+def _asia_demand_groups(groups) -> list[dict]:
+    return [group for group in groups if str(group.get("category") or "") == ASIA_DEMAND_CATEGORY]
+
+
+def _build_asia_demand_body_v34(groups) -> str:
+    asia = _asia_demand_groups(groups)
+    primary = sorted(asia, key=lambda g: float(g.get("latest_epoch") or 0), reverse=True)[0]
+    verification = html.escape(str(primary.get("verification") or "분석 단계"))
+    evidence = _evidence_lines_v34(asia)
+    evidence_text = "\n".join(evidence) if evidence else "• 공개 근거 링크 확인 필요"
+    return (
+        "<b>한눈에</b>\n"
+        "• <b>판정</b> 아시아 LNG 구조적 수요 재평가 신호\n"
+        f"• <b>확인 수준</b> {verification} · 실제 LNG 소비 감소 확정과는 구분\n\n"
+        "<b>무엇이 바뀌었나</b>\n"
+        f"{evidence_text}\n\n"
+        "<b>정확한 의미</b>\n"
+        "• 공급 차질과 현물가격 급등이 반복되면서 아시아 신흥국이 LNG를 안정적 전환연료로 보는 전제가 흔들리는지 확인하는 신호입니다.\n"
+        "• 재생에너지·수력·석탄·원전·국산가스·배관가스 전환이 실제 정책·발전계획·설비투자로 이어져야 구조적 수요 감소로 확정합니다.\n\n"
+        "<b>투자 포인트</b>\n"
+        "• LNG 생산자: 단기 가격 상승은 유리하지만 장기 아시아 수요 가정 하향 위험이 커질 수 있습니다.\n"
+        "• 발전·전력: 국가별로 태양광·수력·석탄·원전 대체 경로가 달라 설비투자 방향을 따로 확인합니다.\n\n"
+        "<b>다음 확인</b>\n"
+        "• 장기구매계약 축소·취소, LNG 발전소 취소·연기, 국가 전력계획 변경, 실제 LNG 수입량 감소\n\n"
+        "<b>핵심 한 줄</b> 단기 LNG 가격 강세와 장기 LNG 수요 파괴가 동시에 나타날 수 있는 구간입니다."
+    )
+
 
 def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
     title, body, metadata = _BASE_BUILD(groups, quotes, new_signals, cleared_signals)
     alaska = _alaska_groups(groups)
+    asia_demand = _asia_demand_groups(groups)
     if alaska:
         title = "🚨 알래스카 LNG·대체공급 프로젝트 변화"
         body = _build_alaska_body_v34(groups)
+    elif asia_demand:
+        title = "⚠️ 아시아 LNG 구조적 수요 재평가"
+        body = _build_asia_demand_body_v34(groups)
     elif v33._fuel_groups(groups):
         title = "🚨 글로벌 연료·정제제품 공급경보"
         body = _build_fuel_body_v34(groups, quotes)
@@ -490,6 +620,11 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
         "self_validation": "Alaska LNG body must not reuse Qatar/Hormuz outage wording",
         "state_file_preserved": str(core.STATE_PATH),
     }
+    metadata["asia_lng_demand_watch"] = {
+        "category": ASIA_DEMAND_CATEGORY,
+        "signals": ["현물 조달비 급증", "LNG 장기수요 재평가", "발전원 전환", "장기계약 축소", "발전소 취소·연기"],
+        "interpretation_guard": "analysis signal != confirmed demand destruction",
+    }
     metadata["lng_relevance_guard"] = {
         "exclude": "oil/crude/refinery-only evidence cannot cross-confirm LNG/Hormuz groups",
         "keep": "direct LNG/natural-gas evidence or commodity-neutral chokepoint status; independent market threshold signals remain separate",
@@ -509,6 +644,8 @@ def build_setup_test_v34(quotes):
         "\n• Alaska LNG 프로젝트는 주요 신뢰매체 1곳 보도도 '보도 단계'로 감지하고 공급 정상화 확정과 구분"
         "\n• Alaska LNG 프로젝트 뉴스는 현재 공급중단과 분리해 FID·자금조달·장기구매계약·착공 시간표로 해석"
         "\n• 사우디 동서 송유관·Yanbu 원유 전용 보도는 LNG 직접 근거가 없으면 LNG 경보에서 제외"
+        "\n• 아시아 LNG 현물비용 급증·탈 LNG·발전원 전환은 구조적 수요 재평가 신호로 별도 감시"
+        "\n• Alaska LNG는 자금조달·제재·추가 300만톤 장기구매계약·세제혜택·FID 변화를 별도 감시"
     )
     metadata["version"] = 34
     metadata["alaska_lng_watch"] = True
