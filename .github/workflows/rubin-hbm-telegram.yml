@@ -72,6 +72,11 @@ jobs:
           python -m py_compile scripts/rubin_hbm_watch.py
           python scripts/rubin_hbm_watch.py
 
+      - name: Check Vera Rubin SOCAMM capacity and actual shipping configurations
+        run: |
+          python -m py_compile scripts/rubin_socamm_capacity_watch.py
+          python scripts/rubin_socamm_capacity_watch.py
+
       - name: Reformat Telegram alert for readability
         if: hashFiles('out/rubin_hbm_alert.md') != ''
         run: |
@@ -151,6 +156,10 @@ jobs:
           else
             echo "Rubin/HBM 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f out/rubin_socamm_capacity_status.md ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            cat out/rubin_socamm_capacity_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
           if [ -f out/skhynix_us_memory_status.md ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
             cat out/skhynix_us_memory_status.md >> "$GITHUB_STEP_SUMMARY"
@@ -159,6 +168,56 @@ jobs:
             echo "" >> "$GITHUB_STEP_SUMMARY"
             cat out/samsung_hbm_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
+
+      - name: Send Vera Rubin SOCAMM capacity update to Telegram
+        if: hashFiles('out/rubin_socamm_capacity_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json, os, pathlib, urllib.parse, urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/rubin_socamm_capacity_alert.html").read_text(encoding="utf-8").strip()
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=25) as r:
+              result = json.loads(r.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected SOCAMM capacity message: {result}")
+
+          confirmed = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_id": result.get("result", {}).get("message_id"),
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/rubin_socamm_capacity_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"rubin_socamm_capacity_delivery_confirmed=true bot=@{username} message_id={confirmed['message_id']}")
+          PY
 
       - name: Send Rubin HBM update to Telegram
         if: hashFiles('out/rubin_hbm_alert.md') != ''
@@ -345,6 +404,29 @@ jobs:
           state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
 
+      - name: Persist SOCAMM initial baseline
+        if: success() && hashFiles('out/rubin_socamm_capacity_alert.html') == '' && hashFiles('out/rubin_socamm_capacity_rebaseline.txt') != ''
+        run: cp out/rubin_socamm_capacity_pending_state.json data/rubin_socamm_capacity_watch_state.json
+
+      - name: Persist SOCAMM state after confirmed Telegram delivery
+        if: success() && hashFiles('out/rubin_socamm_capacity_alert.html') != '' && hashFiles('out/rubin_socamm_capacity_telegram_confirmed.json') != ''
+        run: |
+          cp out/rubin_socamm_capacity_pending_state.json data/rubin_socamm_capacity_watch_state.json
+          python - <<'PY'
+          import json, pathlib
+          state_path = pathlib.Path("data/rubin_socamm_capacity_watch_state.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          confirmed = json.loads(pathlib.Path("out/rubin_socamm_capacity_telegram_confirmed.json").read_text(encoding="utf-8"))
+          state["last_successful_delivery_kst"] = confirmed.get("confirmed_at_kst")
+          state["telegram_message_id"] = confirmed.get("message_id")
+          state["bot_username"] = confirmed.get("bot_username")
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Keep SOCAMM state fresh when no alert is due
+        if: success() && hashFiles('out/rubin_socamm_capacity_alert.html') == '' && hashFiles('out/rubin_socamm_capacity_rebaseline.txt') == '' && hashFiles('data/rubin_socamm_capacity_watch_state.json') != ''
+        run: cp out/rubin_socamm_capacity_pending_state.json data/rubin_socamm_capacity_watch_state.json
+
       - name: Persist initial baseline
         if: success() && hashFiles('out/rubin_hbm_alert.md') == '' && hashFiles('out/rubin_hbm_rebaseline.txt') != ''
         run: cp out/rubin_hbm_pending_state.json data/rubin_hbm_watch_state.json
@@ -373,7 +455,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/rubin_hbm_watch_state.json data/skhynix_us_memory_watch_state.json data/samsung_hbm_watch_state.json 2>/dev/null || true
+          git add data/rubin_hbm_watch_state.json data/rubin_socamm_capacity_watch_state.json data/skhynix_us_memory_watch_state.json data/samsung_hbm_watch_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Watcher state unchanged"
           else
@@ -390,6 +472,11 @@ jobs:
           path: |
             out/rubin_hbm_status.md
             out/rubin_hbm_alert.md
+            out/rubin_socamm_capacity_status.md
+            out/rubin_socamm_capacity_alert.html
+            out/rubin_socamm_capacity_pending_state.json
+            out/rubin_socamm_capacity_rebaseline.txt
+            out/rubin_socamm_capacity_telegram_confirmed.json
             out/rubin_hbm_pending_state.json
             out/rubin_hbm_rebaseline.txt
             out/rubin_hbm_telegram_confirmed.json
