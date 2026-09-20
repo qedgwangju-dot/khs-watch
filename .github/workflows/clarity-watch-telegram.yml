@@ -32,9 +32,6 @@ on:
       - "data/clarity_negotiation_state.json"
   schedule:
     - cron: "17 * * * *"
-    # Final negotiation + cloture window: 13:00-20:00 UTC = 2026-09-15 22:00 through 2026-09-16 05:00 KST.
-    - cron: "*/5 13-19 15 9 *"
-    - cron: "0 20 15 9 *"
   workflow_dispatch:
 
 permissions:
