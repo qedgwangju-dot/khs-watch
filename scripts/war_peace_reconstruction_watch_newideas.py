@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import datetime as dt
 import hashlib
 import urllib.parse
 
@@ -10,9 +11,11 @@ runner = prev.runner
 base = prev.base
 
 SUMMIT_SENTINEL = '__TRUMP_ZELENSKY_SUMMIT_BING__'
+SUMMIT_BACKFILL_SENTINEL = '__TRUMP_ZELENSKY_AXIOS_BACKFILL__'
 
 NEW_IDEA_QUERIES = [
     SUMMIT_SENTINEL,
+    SUMMIT_BACKFILL_SENTINEL,
     '__fnnews_international_rss__',
     'site:reuters.com Kyiv preparing talks resume October senior Ukrainian official when:72h',
     'site:reuters.com (Ukraine OR Kyiv OR Budanov) October (trilateral OR "three-way" OR talks) (resume OR preparing) (Russia OR US OR U.S.) when:72h',
@@ -195,6 +198,24 @@ def _newidea_signals(row):
     return list(dict.fromkeys(signals)), sorted(set(marks))
 
 
+def _summit_backfill():
+    """2026-09-22 Trump–Zelenskiy UNGA 회담 누락 복구용. 일정이 지나면 자동 비활성화."""
+    today = dt.datetime.now(watch.KST).date()
+    if today > dt.date(2026, 9, 22):
+        return [], None
+    return [{
+        'title': 'Trump to meet with Zelensky as Russia-Ukraine attacks intensify',
+        'title_original': 'Trump to meet with Zelensky as Russia-Ukraine attacks intensify',
+        'link': 'https://www.axios.com/2026/09/20/trump-zelensky-meeting-russia-ukraine-war-talks',
+        'published': '',
+        'source': 'Axios',
+        'description': 'President Donald Trump and Ukrainian President Volodymyr Zelensky are set to meet Tuesday in New York on the sidelines of the UN General Assembly.',
+        'article_text': 'Axios reports Trump and Zelensky are set to meet Tuesday in New York on the sidelines of the UN General Assembly.',
+        'feed': '검증된 Axios 일정 누락 복구',
+        'deep_signal': True,
+    }], None
+
+
 def _summit_bing_rss():
     """정상회담 날짜·장소가 Google News/Axios RSS에 늦게 잡히는 경우 Bing News RSS로 보완한다."""
     queries = (
@@ -282,7 +303,9 @@ def _fnnews_international_rss():
 
 
 def newidea_google_news(query):
-    if query == SUMMIT_SENTINEL:
+    if query == SUMMIT_BACKFILL_SENTINEL:
+        rows, err = _summit_backfill()
+    elif query == SUMMIT_SENTINEL:
         rows, err = _summit_bing_rss()
     elif query == '__fnnews_international_rss__':
         rows, err = _fnnews_international_rss()
