@@ -83,6 +83,35 @@ SAUDI_OIL_ONLY_TERMS = (
     "crude cargo", "crude cargoes", "oil cargo", "oil cargoes",
     "crude shipment", "crude shipments", "oil shipment", "oil shipments",
 )
+OIL_ONLY_TERMS = (
+    "crude", "crude oil", "oil supply", "oil sales", "oil buyer", "oil buyers",
+    "oil cargo", "oil cargoes", "oil shipment", "oil shipments", "oil exports",
+    "refinery", "refineries", "refining", "diesel", "gasoline", "jet fuel",
+    "brent", "wti", "barrel", "barrels", "aramco",
+)
+HORMUZ_ROUTE_TERMS = (
+    "strait of hormuz", "hormuz", "red sea", "bab el-mandeb", "bab el mandeb", "suez",
+)
+HORMUZ_GENERIC_STATUS_TERMS = (
+    "closed", "closure", "blocked", "blockade", "attack", "attacked", "seized",
+    "shipping halted", "traffic halted", "traffic below", "shipping disruption",
+    "traffic disruption", "war risk", "insurance withdrawn", "safe passage",
+    "reopens", "reopened", "shipping resumes", "traffic resumes", "transit",
+    "vessel", "vessels", "shipping traffic",
+)
+
+
+def _is_lng_relevant_item_v34(item: core.NewsItem) -> bool:
+    if str(getattr(item, "category", "") or "") != "hormuz_shipping":
+        return True
+    text = core.normalize_text(str(getattr(item, "title", "") or ""))
+    if any(term in text for term in LNG_RELEVANCE_TERMS):
+        return True
+    if any(term in text for term in OIL_ONLY_TERMS):
+        return False
+    route_relevant = any(term in text for term in HORMUZ_ROUTE_TERMS)
+    status_relevant = any(term in text for term in HORMUZ_GENERIC_STATUS_TERMS)
+    return route_relevant and status_relevant
 
 
 def _group_evidence_text(group) -> str:
@@ -129,8 +158,9 @@ def category_label_v34(category: str) -> str:
 
 
 def confirmed_news_groups_v34(items: list[core.NewsItem]):
+    relevant_items = [item for item in items if _is_lng_relevant_item_v34(item)]
     raw_base = [
-        group for group in _BASE_CONFIRMED_V34(items)
+        group for group in _BASE_CONFIRMED_V34(relevant_items)
         if str(group.get("category") or "") != ALASKA_CATEGORY
     ]
     base = [group for group in raw_base if not _is_saudi_oil_only_group(group)]
@@ -383,8 +413,53 @@ def _self_validate_lng_relevance_v34() -> None:
     assert not _is_saudi_oil_only_group(lng_group)
 
 
+def _self_validate_cross_source_relevance_v34() -> None:
+    lng_item = core.NewsItem(
+        category="hormuz_shipping",
+        polarity="worsening",
+        subtype="reroute",
+        title="LNG shipping disruption at Strait of Hormuz keeps Qatar LNG vessels outside the strait",
+        source="Reuters",
+        link="https://example.com/reuters-lng",
+        published_utc="2026-09-20T00:00:00+00:00",
+        published_epoch=10.0,
+        official=False,
+        event_id="fixture-reuters-lng",
+    )
+    oil_item = core.NewsItem(
+        category="hormuz_shipping",
+        polarity="worsening",
+        subtype="reroute",
+        title="European oil supply pressure rises after attacks cut Saudi sales",
+        source="Bloomberg",
+        link="https://example.com/bloomberg-oil",
+        published_utc="2026-09-20T00:00:00+00:00",
+        published_epoch=9.0,
+        official=False,
+        event_id="fixture-bloomberg-oil",
+    )
+    mixed = confirmed_news_groups_v34([lng_item, oil_item])
+    assert not any(str(group.get("category") or "") == "hormuz_shipping" for group in mixed)
+
+    lng_item_2 = core.NewsItem(
+        category="hormuz_shipping",
+        polarity="worsening",
+        subtype="reroute",
+        title="Qatar LNG tanker traffic remains disrupted through Strait of Hormuz",
+        source="S&P Global Commodity Insights",
+        link="https://example.com/spglobal-lng",
+        published_utc="2026-09-20T00:00:00+00:00",
+        published_epoch=8.0,
+        official=False,
+        event_id="fixture-spglobal-lng",
+    )
+    direct = confirmed_news_groups_v34([lng_item, lng_item_2])
+    assert any(str(group.get("category") or "") == "hormuz_shipping" for group in direct)
+
+
 _self_validate_alaska_body_v34()
 _self_validate_lng_relevance_v34()
+_self_validate_cross_source_relevance_v34()
 
 
 def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
@@ -416,8 +491,9 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
         "state_file_preserved": str(core.STATE_PATH),
     }
     metadata["lng_relevance_guard"] = {
-        "exclude": "Saudi East-West pipeline/Yanbu crude-oil-only news without LNG/gas evidence",
-        "keep": "actual LNG/natural-gas/tanker/shipping evidence and independent market threshold signals",
+        "exclude": "oil/crude/refinery-only evidence cannot cross-confirm LNG/Hormuz groups",
+        "keep": "direct LNG/natural-gas evidence or commodity-neutral chokepoint status; independent market threshold signals remain separate",
+        "cross_source_rule": "two-source confirmation counts only LNG-relevant evidence items",
     }
     return title, body, metadata
 
