@@ -338,7 +338,7 @@ msg_anchor = '''    if gev_changes:
 '''
 msg_new = '''    msg += ["", "<b>💻 반복 장비투자·한국 전력기기 실수주</b>"]
     msg.append(f"• <b>PwC 누적 자본투자</b> │ 2026~2050 {b['pwc_total_2026_2050_usd_t']:g}조달러 │ AI 가속 상단 약 {b['pwc_upside_usd_t']:g}조달러")
-    msg.append(f"• <b>연간 자본투자</b> │ 2026 {b['pwc_annual_2026_usd_b']:,.0f}십억달러 → 2030 {b['pwc_annual_2030_usd_b']:,.0f}십억달러 → 2050 {b['pwc_annual_2050_usd_b']:,.0f}십억달러")
+    msg.append("• <b>연간 자본투자</b> │ 2026 <b>8,000억달러</b> → 2030 <b>1조1,000억달러</b> → 2050 <b>1조8,000억달러</b>")
     msg.append(f"• <b>ICT 장비 비중</b> │ 2026 {b['pwc_ict_share_2026_pct']:g}% → 2050 {b['pwc_ict_share_2050_pct']:g}% │ GPU·서버 교체 {b['pwc_refresh_low_years']:g}~{b['pwc_refresh_high_years']:g}년 · 20년 자산에서 {b['pwc_rounds_low']:g}~{b['pwc_rounds_high']:g}회")
     msg.append(f"• <b>효성중공업</b> │ 미국 AI 데이터센터 초고압변압기 <b>{b['hyosung_dc_order_krw_eok']:,.0f}억원</b> 직접 수주")
     msg.append(f"• <b>HD현대일렉트릭</b> │ 북미 데이터센터 장기 기본계약 최대 <b>{b['hd_hyundai_dc_framework_krw_eok']:,.0f}억원</b> │ 실제 개별 발주는 분할 · {int(b['hd_hyundai_delivery_year'])}년까지 순차 납품")
@@ -362,6 +362,17 @@ status_new = '''    f"- 대형 전력변압기 최대 조달기간: **{power_met
 '''
 if status_old in t:
     t = t.replace(status_old, status_new, 1)
+
+links_old = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
+    ALERT.write_text'''
+links_new = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
+    msg.append(f"• {a('PwC 글로벌 데이터센터 반복투자 전망', 'https://www.pwc.com/gx/en/1/services/consulting/technology/data-centre-outlook.html')}")
+    msg.append(f"• {a('효성중공업 미국 AI 데이터센터 수주', 'https://www.hyosung.com/kr/newsroom/view/19332')}")
+    msg.append(f"• {a('HD현대일렉트릭 북미 데이터센터 공급계약', 'https://hyundai-elec.co.kr/elect/ko/PR/newsList.jsp')}")
+    msg.append(f"• {a('LS ELECTRIC 데이터센터 전력솔루션', 'https://nahpdev-web.ls-electric.com/markets/data-center')}")
+    ALERT.write_text'''
+if links_old in t:
+    t = t.replace(links_old, links_new, 1)
 
 g.write_text(t, encoding="utf-8")
 print("US generation watcher recurring-capex + Korean supplier-order guard inserted")
