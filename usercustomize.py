@@ -45,7 +45,12 @@ def _install_policy_telegram_readability_patch() -> None:
         # Westinghouse watch output is already decision-first and sectioned by its
         # source watcher. Re-bucketing it here caused headings and their content to
         # be separated (e.g. 숫자/기업·매출 연결/세부), so preserve that order.
-        if "원전·Westinghouse 웹감시" in new_title or "[원전·Westinghouse 웹감시]" in new_body:
+        if (
+            "원전·Westinghouse 웹감시" in new_title
+            or "원전·Westinghouse·SMR 웹감시" in new_title
+            or "[원전·Westinghouse 웹감시]" in new_body
+            or "[원전·Westinghouse·SMR 웹감시]" in new_body
+        ):
             return new_title, _clean_prestructured_westinghouse_body(new_body)
 
         return restructure_nuclear_message(new_title, new_body)
