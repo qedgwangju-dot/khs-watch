@@ -514,16 +514,20 @@ def _render_smr_policy(item: dict, idx: int, now: dt.datetime) -> list[str]:
 
 def render(alerts: list[dict], now: dt.datetime) -> str:
     # The Telegram title already names this watch. Avoid repeating a second
-    # banner so the first visible lines are the event's actual decision fields.
+    # banner. For the common single-event case, also drop the redundant item
+    # heading so the first five body lines are the decision fields themselves.
     lines: list[str] = []
     for idx, item in enumerate(alerts, 1):
         kind = item.get("kind")
         if kind == "westinghouse_stake":
-            lines.extend(_render_westinghouse_stake(item, idx, now))
+            block = _render_westinghouse_stake(item, idx, now)
         elif kind == "smr_policy":
-            lines.extend(_render_smr_policy(item, idx, now))
+            block = _render_smr_policy(item, idx, now)
         else:
-            lines.extend(_render_direct(item, idx, now))
+            block = _render_direct(item, idx, now)
+        if len(alerts) == 1 and block and block[0].startswith("## 1. "):
+            block = block[1:]
+        lines.extend(block)
     lines.append(f"- 조회: {now:%Y-%m-%d %H:%M KST}")
     return "\n".join(lines).rstrip() + "\n"
 
