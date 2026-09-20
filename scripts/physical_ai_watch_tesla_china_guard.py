@@ -21,6 +21,8 @@ import physical_ai_watch_figure_guard as current
 base = current.base
 
 _orig_query_news = base.query_news
+_orig_topic_group = base.topic_group
+_orig_load_state = base.load_state
 _orig_score = base.score
 _orig_category = base.category
 _orig_meaning = base.meaning
@@ -36,6 +38,9 @@ JOE_X_SOURCE = 'Joe Tegtmeyer (X)'
 TESLA_APP_X_SENTINEL = 'DIRECT_TESLA_APP_IOS_OPTIMUS_X'
 TESLA_APP_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/tesla_app_ios'
 TESLA_APP_X_SOURCE = 'Tesla App Updates (X)'
+MUSK_X_SENTINEL = 'DIRECT_ELON_MUSK_OPTIMUS_X'
+MUSK_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/elonmusk'
+MUSK_X_SOURCE = 'Elon Musk (X)'
 
 TESLA_OPT = re.compile(r'Tesla|特斯拉|테슬라', re.I)
 OPTIMUS = re.compile(r'Optimus|擎天柱|옵티머스', re.I)
@@ -120,6 +125,8 @@ if JOE_X_SENTINEL not in base.QUERIES:
     base.QUERIES.append(JOE_X_SENTINEL)
 if TESLA_APP_X_SENTINEL not in base.QUERIES:
     base.QUERIES.append(TESLA_APP_X_SENTINEL)
+if MUSK_X_SENTINEL not in base.QUERIES:
+    base.QUERIES.append(MUSK_X_SENTINEL)
 _TEXAS_FACTORY_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("Giga Texas" OR "Gigafactory Texas" OR 텍사스) (construction OR factory OR steel OR concrete OR rebar OR 철골 OR 콘크리트 OR 철근 OR 장비설치 OR tooling)'
 if _TEXAS_FACTORY_QUERY not in base.QUERIES:
     base.QUERIES.append(_TEXAS_FACTORY_QUERY)
@@ -132,10 +139,94 @@ for _q in ['"Optimus chargers" Tesla app', '"optimus_charger_id" Tesla', '"creat
 _FACTORY_MILESTONE_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("dedicated factory" OR "Optimus factory" OR "옵티머스 전용 공장" OR "로봇 기가팩토리") (steel OR concrete OR rebar OR 철골 OR 콘크리트 OR 철근 OR construction OR 공사)'
 if _FACTORY_MILESTONE_QUERY not in base.QUERIES:
     base.QUERIES.append(_FACTORY_MILESTONE_QUERY)
+for _q in [
+    '("Elon Musk" OR "일론 머스크") ("Optimus 3" OR "Optimus 4" OR 옵티머스) (production OR manufacturing OR "high volume" OR "mass production" OR design OR 생산 OR 양산 OR 대량생산 OR 디자인)',
+    '("Elon Musk" OR "일론 머스크") Optimus (podcast OR interview OR summit OR webcast OR earnings OR 팟캐스트 OR 인터뷰 OR 서밋 OR 실적발표)',
+    '(Tesla OR 테슬라) ("Optimus 3" OR "Optimus 4") (summer OR 2026 OR 2027 OR 2028 OR million OR "대량 생산" OR "생산 시작")',
+]:
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
 base.TRUSTED.update({
     '시나재경', '제몐뉴스', '21세기경제보도', '거룽후이', '차이롄서',
     '증권시보', '중국증권보', '상하이증권보', 'Tesla Telemetry',
+    'Moonshots with Peter Diamandis', 'Peter H. Diamandis', 'Dwarkesh Podcast', 'All-In Podcast',
 })
+base.OFFICIAL_OR_PRIMARY.add(MUSK_X_SOURCE)
+
+
+
+def _is_exec_guidance(text: str) -> bool:
+    if not (MUSK_EXEC_ACTOR.search(text) and OPTIMUS.search(text)):
+        return False
+    return bool(
+        EXEC_FINAL_STAGE.search(text)
+        or EXEC_PROD_START.search(text)
+        or EXEC_HIGH_VOLUME.search(text)
+        or (OPTIMUS_V4.search(text) and re.search(r'design|디자인|설계|release|출시', text, re.I))
+        or EXEC_DESIGN_CADENCE.search(text)
+        or EXEC_SCALE.search(text)
+    )
+
+
+def _exec_signature(text: str) -> str:
+    tags = []
+    tests = [
+        ('v3-final', OPTIMUS_V3.search(text) and EXEC_FINAL_STAGE.search(text)),
+        ('v3-production-start', OPTIMUS_V3.search(text) and EXEC_PROD_START.search(text)),
+        ('v3-high-volume', OPTIMUS_V3.search(text) and EXEC_HIGH_VOLUME.search(text)),
+        ('v4-design', OPTIMUS_V4.search(text) and re.search(r'design|디자인|설계|release|출시', text, re.I)),
+        ('annual-design-cadence', EXEC_DESIGN_CADENCE.search(text)),
+        ('scale-million', EXEC_SCALE.search(text)),
+    ]
+    for name, matched in tests:
+        if matched:
+            tags.append(name)
+
+    temporal_patterns = [
+        ('this-summer', r'this\s+summer|올\s*여름|이번\s*여름'),
+        ('next-summer', r'next\s+summer|내년\s*여름'),
+        ('next-year', r'next\s+year|내년'),
+        ('mid-year', r'mid(?:dle)?\s+of\s+(?:this|next)\s+year|연중|중반'),
+        ('year-2026', r'\b2026\b|2026년'),
+        ('year-2027', r'\b2027\b|2027년'),
+        ('year-2028', r'\b2028\b|2028년'),
+    ]
+    for name, pat in temporal_patterns:
+        if re.search(pat, text, re.I):
+            tags.append(name)
+
+    months = re.findall(r'\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\b|\b\d{1,2}월\b', text, re.I)
+    tags.extend(f'month-{m.lower()}' for m in months[:2])
+    return '|'.join(sorted(set(tags))) or 'generic-exec-guidance'
+
+
+def _exec_key(text: str) -> str:
+    return hashlib.sha256(f'tesla-optimus|musk-exec-guidance|{_exec_signature(text)}'.encode()).hexdigest()
+
+
+_MARCH_18_2026_MUSK_OPTIMUS_TEXT = (
+    'Elon Musk Optimus 3 final stages start production this summer very slow at first '
+    'high-volume production around summer next year Optimus 4 design next year '
+    'new improved robot design every year'
+)
+_MARCH_18_2026_MUSK_OPTIMUS_KEY = _exec_key(_MARCH_18_2026_MUSK_OPTIMUS_TEXT)
+
+
+def load_state() -> dict:
+    state = _orig_load_state()
+    seen = list(state.get('seen', []))
+    # Historical baseline: this guidance was given at the Mar. 18, 2026 Abundance Summit.
+    # Seed it so a September rewrite of the same old quote is not mislabeled as a new event.
+    if _MARCH_18_2026_MUSK_OPTIMUS_KEY not in seen:
+        seen.append(_MARCH_18_2026_MUSK_OPTIMUS_KEY)
+    state['seen'] = seen[-3500:]
+    return state
+
+
+def topic_group(text: str) -> str | None:
+    if _is_exec_guidance(text):
+        return 'tesla'
+    return _orig_topic_group(text)
 
 
 def _query_cn_once(query: str) -> list[dict]:
@@ -304,6 +395,43 @@ def _query_tesla_app_x() -> list[dict]:
     return list(gathered.values())
 
 
+
+def _query_elon_x() -> list[dict]:
+    try:
+        raw = base.fetch(MUSK_X_TIMELINE).decode('utf-8', errors='ignore')
+        m = re.search(r"<script[^>]+id=['\"]__NEXT_DATA__['\"][^>]*>(.*?)</script>", raw, re.I | re.S)
+        if not m:
+            return []
+        payload = json.loads(html_lib.unescape(m.group(1)))
+        entries = payload.get('props', {}).get('pageProps', {}).get('timeline', {}).get('entries', [])
+        out = []
+        cutoff = base.NOW - dt.timedelta(hours=120)
+        for entry in entries:
+            tweet = (entry.get('content') or {}).get('tweet') or {}
+            user = tweet.get('user') or {}
+            if str(user.get('screen_name') or '').lower() != 'elonmusk':
+                continue
+            status_id = str(tweet.get('id_str') or tweet.get('id') or '').strip()
+            text = base.norm(str(tweet.get('full_text') or tweet.get('text') or ''))
+            published = base.parse_date(tweet.get('created_at'))
+            if not status_id or not text or not published or published < cutoff:
+                continue
+            if not (OPTIMUS.search(text) and (EXEC_PROD_START.search(text) or EXEC_HIGH_VOLUME.search(text) or EXEC_DESIGN_CADENCE.search(text) or EXEC_SCALE.search(text) or EXEC_FINAL_STAGE.search(text))):
+                continue
+            out.append({
+                'title': '일론 머스크, Optimus 생산·세대 전환 시간표 신규 언급',
+                'link': f'https://x.com/elonmusk/status/{status_id}',
+                'description': f'Elon Musk {text}',
+                'published': published.isoformat(),
+                'source': MUSK_X_SOURCE,
+                'x_status_id': status_id,
+                'direct_exec_statement': True,
+            })
+        return out
+    except Exception:
+        return []
+
+
 def query_news(q: str) -> list[dict]:
     if q == TESLA_CN_SENTINEL:
         return _query_tesla_cn_supply_chain()
@@ -311,13 +439,17 @@ def query_news(q: str) -> list[dict]:
         return _query_joe_x()
     if q == TESLA_APP_X_SENTINEL:
         return _query_tesla_app_x()
+    if q == MUSK_X_SENTINEL:
+        return _query_elon_x()
     return _orig_query_news(q)
 
 
 def _is_tesla_supply_text(text: str) -> bool:
     factory = FACTORY_SITE.search(text) and (FACTORY_STRUCTURE.search(text) or FACTORY_TOOLING.search(text))
     app_productization = APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text)
-    return bool(TESLA_OPT.search(text) and OPTIMUS.search(text) and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory or app_productization))
+    exec_guidance = _is_exec_guidance(text)
+    actor = TESLA_OPT.search(text) or MUSK_EXEC_ACTOR.search(text)
+    return bool(actor and OPTIMUS.search(text) and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory or app_productization or exec_guidance))
 
 
 def _stage(text: str) -> str:
@@ -327,6 +459,8 @@ def _stage(text: str) -> str:
     audit_started = bool(AUDIT_STARTED.search(text))
     if actual_weekly:
         return 'actual_weekly_production'
+    if _is_exec_guidance(text):
+        return 'executive_production_timeline'
     if weekly_target:
         return 'weekly_capacity_target'
     if PRODUCTION_STARTED.search(text):
@@ -363,6 +497,8 @@ def score(item: dict) -> int:
         return 0
     s = max(s, 18)
     stage = _stage(text)
+    if stage == 'executive_production_timeline':
+        s += 16
     if stage in {'scale_order', 'scale_order_audit'}:
         s += 10
     if stage in {'supplier_audit', 'scale_order_audit'}:
@@ -401,6 +537,8 @@ def category(text: str, group: str) -> str:
         stage = _stage(text)
         if stage == 'actual_weekly_production':
             return 'Optimus 실제 주간 완제품 생산량'
+        if stage == 'executive_production_timeline':
+            return 'Optimus 경영진 양산 시간표·세대 전환'
         if stage == 'weekly_capacity_target':
             return 'Optimus 주간 공급능력·생산 목표'
         if stage == 'production_started':
@@ -428,6 +566,9 @@ def meaning(cat: str) -> str:
     if cat == 'Optimus 실제 주간 완제품 생산량':
         return ('옵티머스가 공급망 목표나 부품 발주가 아니라 실제 완제품 주간 생산량으로 넘어갔는지를 보는 최상위 양산 신호입니다. '
                 '주당 생산량·수율·완성품 출하·내부 배치 대수를 분리해 확인하고, 이전 목표 대비 실제 달성률을 계산합니다.')
+    if cat == 'Optimus 경영진 양산 시간표·세대 전환':
+        return ('일론 머스크가 Optimus 세대별 설계 완료·생산 시작·대량생산 시점을 직접 제시하면 양산 시간표를 바꾸는 1차 경영진 신호로 봅니다. '
+                '발언 시간표를 실제 생산라인 설치→첫 생산→주간 생산량→수율→대량생산 도달과 연결해 추적합니다.')
     if cat == 'Optimus 주간 공급능력·생산 목표':
         return ('주당 몇 대분을 공급할 수 있어야 하는지 또는 생산 목표가 얼마인지 보여주는 선행 시간표 신호입니다. '
                 '실제 완제품 생산량과 혼동하지 않고 목표→실생산 전환 시점을 별도 추적합니다.')
@@ -465,6 +606,8 @@ def risk(cat: str) -> str:
     if cat == 'Optimus 실제 주간 완제품 생산량':
         return ('공급망 기사에서 주당 수량이 언급돼도 실제 완제품 생산실적과 부품 공급능력 목표는 다를 수 있습니다. '
                 '테슬라 공식자료 또는 복수의 독립 공급망 자료에서 실제 생산·출하가 확인되지 않으면 공식 실적처럼 표기하지 않습니다.')
+    if cat == 'Optimus 경영진 양산 시간표·세대 전환':
+        return ('경영진 목표는 실제 생산실적이 아닙니다. 일정이 바뀌면 새 시간표로 다시 알리되, 기존 발언의 재인용은 같은 사건으로 묶고 생산라인·장비 반입·수율·주간 생산량으로 이행 여부를 검증합니다.')
     if cat == 'Optimus 주간 공급능력·생산 목표':
         return ('공급능력 목표는 실제 생산량이 아닙니다. 수율·부품 병목·라인 안정화가 늦으면 목표치와 실제 주간 완제품 생산량의 격차가 커질 수 있습니다.')
     if cat == 'Optimus 실제 양산 개시':
@@ -495,6 +638,13 @@ def verification(item: dict, group: str, text: str) -> str:
             return '테슬라 공식·1차 자료'
         if _stage(text) == 'actual_weekly_production':
             return '실제 주간 생산량 보도 · 테슬라 공식자료 또는 복수 공급망 자료로 교차확인 필요'
+        if _stage(text) == 'executive_production_timeline':
+            source = item.get('source') or ''
+            if source == MUSK_X_SOURCE or source == 'Tesla':
+                return '일론 머스크·Tesla 1차 자료'
+            if re.search(r'Diamandis|Moonshots|Dwarkesh|All-In', source, re.I):
+                return '일론 머스크 공개 인터뷰·팟캐스트 1차 발언'
+            return '머스크 발언 보도 · 원문 인터뷰/공식자료 교차확인'
         if _stage(text) == 'weekly_capacity_target':
             return '공급망 생산능력·목표 보도 · 실제 완제품 생산량과 분리'
         if _stage(text) == 'production_started':
@@ -520,6 +670,8 @@ def clean_title(title: str, source: str) -> str:
         stage = _stage(text)
         if stage == 'actual_weekly_production':
             return '테슬라 옵티머스, 실제 주간 완제품 생산량 신규 확인'
+        if stage == 'executive_production_timeline':
+            return '일론 머스크, Optimus 생산·대량생산·세대 전환 시간표 신규 언급'
         if stage == 'weekly_capacity_target':
             return '테슬라 옵티머스, 주간 공급능력·생산 목표 신규 변화'
         if stage == 'production_started':
@@ -573,6 +725,8 @@ def key(item: dict) -> str:
 
 
 base.query_news = query_news
+base.topic_group = topic_group
+base.load_state = load_state
 base.score = score
 base.category = category
 base.meaning = meaning
