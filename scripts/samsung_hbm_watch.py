@@ -1017,11 +1017,24 @@ def main() -> None:
     rate, fx_basis = fx_quote()
     official, official_errors = fetch_official_hbm_pack(now) if now.day >= MONTHLY_DAY else (None, [])
     official_month = official.get("month") if official else ""
+    current_malaysia_amount = (
+        official.get("series", {}).get(official_month, {}).get("malaysia_amount")
+        if official and official_month else None
+    )
+    previous_malaysia_amount = state.get("malaysia_hsk10_amount_usd")
+    malaysia_revision_due = bool(
+        official
+        and state.get("malaysia_official_month") == official_month
+        and previous_malaysia_amount not in (None, 0)
+        and current_malaysia_amount is not None
+        and abs(current_malaysia_amount / previous_malaysia_amount - 1.0) >= 0.10
+    )
     monthly_due = bool(
         official
         and (
             state.get("last_official_alert_month") != official_month
             or int(state.get("compare_version") or 0) < COMPARE_VERSION
+            or malaysia_revision_due
         )
     )
 
@@ -1048,6 +1061,10 @@ def main() -> None:
         "official_data_ok": bool(official),
         "official_api_key_configured": bool(DATA_GO_KEY),
         "official_api_used": bool(official and official.get("official_api_used")),
+        "malaysia_official_month": official_month if official else state.get("malaysia_official_month", ""),
+        "malaysia_hsk10_amount_usd": current_malaysia_amount,
+        "malaysia_public_available": bool(official and official.get("malaysia_public_available")),
+        "malaysia_revision_due": malaysia_revision_due,
         "official_errors": [re.sub(r"serviceKey=[^&\s]+", "serviceKey=<redacted>", str(x)) for x in official_errors[-8:]],
     })
     if official:
@@ -1065,6 +1082,9 @@ def main() -> None:
         f"- official_data_ok: {str(bool(official)).lower()}\n"
         f"- official_api_key_configured: {str(bool(DATA_GO_KEY)).lower()}\n"
         f"- official_api_used: {str(bool(official and official.get('official_api_used'))).lower()}\n"
+        f"- malaysia_public_available: {str(bool(official and official.get('malaysia_public_available'))).lower()}\n"
+        f"- malaysia_hsk10_amount_usd: {current_malaysia_amount if current_malaysia_amount is not None else 'none'}\n"
+        f"- malaysia_revision_due: {str(malaysia_revision_due).lower()}\n"
         f"- official_errors: {len(official_errors)}\n"
         f"- alert_generated: {str(monthly_due or bool(send_events)).lower()}\n",
         encoding="utf-8",
