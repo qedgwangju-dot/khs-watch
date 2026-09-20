@@ -689,21 +689,44 @@ def main() -> int:
             "first_seen_kst": legacy_smr.get("first_seen_kst") or now.isoformat(timespec="seconds"),
         }
 
-    # 기사 수가 아니라 사건축별 최신 상태 하나를 비교한다.
-    latest_by_family: dict[str, dict] = {}
+    # 기사 수가 아니라 사건축별 상태 연속선을 비교한다.
+    items_by_family: dict[str, list[dict]] = {}
     for item in smr_items:
         family = item.get("event_family") or _smr_event_family(item.get("title") or "")
-        if family not in latest_by_family:
-            latest_by_family[family] = item
+        if family == "other":
+            continue
+        items_by_family.setdefault(family, []).append(item)
 
-    for family, latest_smr in latest_by_family.items():
+    for family, family_items in items_by_family.items():
+        latest_smr = family_items[0]
         previous_smr = previous_states.get(family) or {}
+
+        # 저장된 상태가 아직 없는 사건축은 전환 시점 이전의 가장 최근 자료를
+        # 자동 기준선으로 삼는다. 따라서 전환 이후 새 기사가 같은 사실을 반복해도
+        # 기사 자체가 신규 알림을 만들지 않는다.
+        if not previous_smr:
+            historical_baseline = None
+            for candidate in family_items:
+                candidate_published = str(candidate.get("published_utc") or "")
+                try:
+                    candidate_dt = dt.datetime.fromisoformat(candidate_published.replace("Z", "+00:00")).astimezone(UTC)
+                except Exception:
+                    continue
+                if candidate_dt <= SMR_STATE_MODEL_CUTOFF_UTC:
+                    historical_baseline = candidate
+                    break
+            if historical_baseline:
+                previous_smr = {
+                    "state_key": historical_baseline["state_key"],
+                    "status": historical_baseline["status"],
+                    "published_utc": historical_baseline["published_utc"],
+                }
+
         previous_published = str(previous_smr.get("published_utc") or "")
         current_published = str(latest_smr.get("published_utc") or "")
         is_newer = not previous_published or current_published > previous_published
         changed = latest_smr["state_key"] != previous_smr.get("state_key")
 
-        # 모델 전환 이전 자료는 교차검증 기준선으로만 사용하고 소급 알림하지 않는다.
         if not previous_smr:
             try:
                 published_dt = dt.datetime.fromisoformat(current_published.replace("Z", "+00:00")).astimezone(UTC)
