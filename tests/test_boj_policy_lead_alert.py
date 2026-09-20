@@ -505,11 +505,11 @@ class BojPolicyPathAlertTests(unittest.TestCase):
     def test_recent_market_path_without_material_policy_change_is_suppressed(self):
         signal = classify(
             Item(
-                title="Markets digest BOJ rate hike after policy meeting - Nikkei Asia",
+                title="BOJ rate hike reverberates through yen markets - Nikkei Asia",
                 source="Nikkei Asia",
                 link="https://example.com/market-followup",
                 published=dt.datetime(2026, 9, 18, 18, 10, tzinfo=KST),
-                description="Investors continued to assess the BOJ interest rate decision and market reaction.",
+                description="Investors continued to assess the BOJ interest rate outlook and market reaction.",
             )
         )
         self.assertIsNotNone(signal)
