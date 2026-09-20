@@ -1,19 +1,33 @@
 {
-  "fresh_candidates": [
+  "updated_at_kst": "2026-09-20T17:01:36+09:00",
+  "topic_state": {
+    "topic": "Samsung Wallet stablecoin adoption",
+    "stage": 2,
+    "stage_name": "사업개발·파트너십 실행",
+    "support_plan": true,
+    "job_exists": true,
+    "stablecoin_bd_scope": true,
+    "stablecoin_partner": "",
+    "pilot_or_launch": false
+  },
+  "evidence": [
     {
+      "title": "삼성전자, 삼성월렛 '스테이블코인 결제' 사업 본격화…\"美서 인력 채용\" - 블루밍비트",
       "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE52LTlRckRVZW9IYjdhOEEyaDZoZGoyaWVIY2h0aUNqbmdSV2dHMkd5WnoyMnhSYmotY3lBaWNDZjA5aFByRWdhTVJPNTUtaE1P?oc=5",
       "published_utc": "2026-09-18T08:56:28+00:00",
-      "title": "삼성전자, 삼성월렛 '스테이블코인 결제' 사업 본격화…\"美서 인력 채용\" - 블루밍비트"
+      "source": "Google News RSS"
     },
     {
+      "title": "[단독] 삼성전자, 삼성월렛 결제 제휴에 '스테이블코인' 명시...美서 사업개발 인력 채용 - 디지털애셋",
       "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFBPQjhjVEZiUnhna2JqZ2kyT0dudVV5ejc0cV9RdFVFNG9iSTBUejJVUWxlUVFLQW1EVm5tUVF4MDNXRVIwVWozREVId2JCU0UydVFzOXNieXEyS3piSmxyMzEzbWF2dmJ2Zk1tYmRFc19FZw?oc=5",
       "published_utc": "2026-09-18T07:40:00+00:00",
-      "title": "[단독] 삼성전자, 삼성월렛 결제 제휴에 '스테이블코인' 명시...美서 사업개발 인력 채용 - 디지털애셋"
+      "source": "Google News RSS"
     },
     {
+      "title": "삼성전자 미국법인, 삼성월렛 스테이블코인 결제 담당자 채용 - 토큰포스트",
       "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAxTndKRU5GaVFCVG9UY00zY3loVm5KOHlHMjVET1JsSjEwQTVSdU50ZVdhSzFNRGZrRV93Vlk2NzNwVTc1LW1QS1dyeXNqNFRzaUk1Y3hYQTRrdXpHb1J3Sw?oc=5",
       "published_utc": "2026-09-18T15:17:00+00:00",
-      "title": "삼성전자 미국법인, 삼성월렛 스테이블코인 결제 담당자 채용 - 토큰포스트"
+      "source": "Google News RSS"
     }
   ],
   "official": {
@@ -22,28 +36,5 @@
     "job_fetch_ok": true,
     "job_stablecoin_confirmed": false,
     "samsung_support_confirmed": true
-  },
-  "seen": {
-    "2e89826fbff8fd9a9fd8": {
-      "event": "삼성전자, 삼성월렛 '스테이블코인 결제' 사업 본격화…\"美서 인력 채용\" - 블루밍비트",
-      "first_seen_kst": "2026-09-20T17:01:36+09:00",
-      "source": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE52LTlRckRVZW9IYjdhOEEyaDZoZGoyaWVIY2h0aUNqbmdSV2dHMkd5WnoyMnhSYmotY3lBaWNDZjA5aFByRWdhTVJPNTUtaE1P?oc=5"
-    },
-    "4e73ee691e33fa3dbf56": {
-      "event": "[단독] 삼성전자, 삼성월렛 결제 제휴에 '스테이블코인' 명시...美서 사업개발 인력 채용 - 디지털애셋",
-      "first_seen_kst": "2026-09-20T17:01:36+09:00",
-      "source": "https://news.google.com/rss/articles/CBMickFVX3lxTFBPQjhjVEZiUnhna2JqZ2kyT0dudVV5ejc0cV9RdFVFNG9iSTBUejJVUWxlUVFLQW1EVm5tUVF4MDNXRVIwVWozREVId2JCU0UydVFzOXNieXEyS3piSmxyMzEzbWF2dmJ2Zk1tYmRFc19FZw?oc=5"
-    },
-    "b3b9b683f836534bc15f": {
-      "event": "Samsung Wallet stablecoin payments BD job R118656",
-      "first_seen_kst": "2026-09-20T17:01:36+09:00",
-      "source": "https://www.digitalasset.works/news/articleView.html?idxno=43115"
-    },
-    "ea98e8c1ec3e8780c6eb": {
-      "event": "삼성전자 미국법인, 삼성월렛 스테이블코인 결제 담당자 채용 - 토큰포스트",
-      "first_seen_kst": "2026-09-20T17:01:36+09:00",
-      "source": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAxTndKRU5GaVFCVG9UY00zY3loVm5KOHlHMjVET1JsSjEwQTVSdU50ZVdhSzFNRGZrRV93Vlk2NzNwVTc1LW1QS1dyeXNqNFRzaUk1Y3hYQTRrdXpHb1J3Sw?oc=5"
-    }
-  },
-  "updated_at_kst": "2026-09-20T17:01:36+09:00"
+  }
 }
