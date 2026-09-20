@@ -130,7 +130,7 @@ def official_schedule_check():
 
 
 def parse_vote_time(detail_text):
-    match = re.search(r"Vote Date:\\s*([A-Za-z]+ \\d{1,2}, \\d{4}, \\d{1,2}:\\d{2} [AP]M)", clean(detail_text), re.I)
+    match = re.search(r"Vote Date:\s*([A-Za-z]+ \d{1,2}, \d{4}, \d{1,2}:\d{2} [AP]M)", clean(detail_text), re.I)
     if not match:
         return None, None
     try:
@@ -142,9 +142,9 @@ def parse_vote_time(detail_text):
 
 def reconsideration_text_matches(text):
     value = clean(text)
-    has_bill = bool(re.search(r"H\\.?R\\.?\\s*3633|Digital\\s+Asset\\s+Market\\s+Clarity", value, re.I))
-    has_motion = bool(re.search(r"Motion\\s+by\\s+Senator\\s+Tillis\\s+to\\s+reconsider", value, re.I))
-    has_vote = bool(re.search(r"Record\\s+Vote(?:\\s+No\\.?|\\s+Number)?[:\\s]+234", value, re.I))
+    has_bill = bool(re.search(r"H\.?R\.?\s*3633|Digital\s+Asset\s+Market\s+Clarity", value, re.I))
+    has_motion = bool(re.search(r"Motion\s+by\s+Senator\s+Tillis\s+to\s+reconsider", value, re.I))
+    has_vote = bool(re.search(r"Record\s+Vote(?:\s+No\.?|\s+Number)?[:\s]+234", value, re.I))
     return has_bill and has_motion and has_vote
 
 
