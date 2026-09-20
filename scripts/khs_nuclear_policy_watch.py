@@ -27,6 +27,11 @@ ALERTS_JSON_PATH = OUT_DIR / "khs_nuclear_policy_alerts.json"
 MAX_SOURCE_AGE_HOURS = int(os.getenv("KHS_NUCLEAR_MAX_AGE_HOURS", "72"))
 DIRECT_FINGERPRINT_VERSION = "ko-v2"
 
+# SMR는 새 기사 자체가 아니라 주제·사건의 구조화된 상태 변화를 감지한다.
+# 이 시각 이전 검색 결과는 새 모델 전환 시 소급 알림하지 않는다.
+SMR_STATE_MODEL_CUTOFF_UTC = dt.datetime(2026, 9, 20, 4, 55, tzinfo=UTC)
+SMR_STATE_MODEL_VERSION = 2
+
 SOURCES = [
     {"name": "Westinghouse strategic partnership", "url": "https://westinghousenuclear.com/strategic-partnership/press-releases/brookfield/"},
     {"name": "DOE Nuclear Energy", "url": "https://www.energy.gov/ne/articles/9-key-takeaways-president-trumps-executive-orders-nuclear-energy"},
@@ -88,11 +93,13 @@ SMR_CORE = ["smr", "소형모듈원자로", "소형모듈원전", "소형 모듈
 SMR_MATERIAL = [
     "특별법", "시행령", "제정", "시행", "기본계획", "시행계획", "촉진위원회", "예산", "지원금", "출자", "공동출자", "공동 출자",
     "spc", "특수목적법인", "상세설계", "실증", "사업화", "연구개발특구", "특구", "건설", "상용화", "착수", "승인", "허가",
-    "공모", "선정", "협약", "수주", "핵연료 공급망", "전문인력", "규제 개선", "비경수형", "경수형",
+    "공모", "선정", "협약", "수주", "핵연료 공급망", "핵연료 공급계약", "표준설계인가", "표준설계승인", "건설허가",
+    "주기기", "epc", "발주", "계약", "전문인력", "규제 개선", "비경수형", "경수형",
 ]
 SMR_STRONG = [
     "특별법", "시행령", "시행", "기본계획", "시행계획", "예산", "출자", "공동출자", "공동 출자", "spc", "특수목적법인",
-    "상세설계", "실증", "사업화", "연구개발특구", "특구", "건설", "상용화", "착수", "승인", "허가", "공모", "선정", "협약",
+    "상세설계", "실증", "사업화", "연구개발특구", "특구", "표준설계인가", "표준설계승인", "건설허가", "핵연료 공급계약",
+    "주기기", "epc", "발주", "계약", "건설", "상용화", "착수", "승인", "허가", "공모", "선정", "협약",
 ]
 SMR_COMMENTARY_OR_MARKET = ["전망", "분석", "진단", "수혜", "특징주", "급등", "급락", "상승", "하락", "주가", "테마", "관련주", "기대감"]
 SMR_OFFICIAL_OUTLETS = [
@@ -101,7 +108,8 @@ SMR_OFFICIAL_OUTLETS = [
 ]
 SMR_SIGNALS = [
     "특별법", "시행령", "시행", "2035", "2030년대", "2027", "상세설계", "공동출자", "공동 출자", "spc", "특수목적법인",
-    "연구개발특구", "특구", "실증", "사업화", "비경수형", "경수형", "핵연료 공급망", "촉진위원회", "기본계획", "시행계획",
+    "연구개발특구", "특구", "실증", "사업화", "비경수형", "경수형", "핵연료 공급망", "핵연료 공급계약", "촉진위원회",
+    "기본계획", "시행계획", "표준설계인가", "표준설계승인", "건설허가", "주기기", "epc", "발주", "계약",
 ]
 
 SOURCE_LABELS = {
@@ -230,6 +238,14 @@ def _self_test_material_filter() -> None:
         raise RuntimeError("SMR market-reaction filter regression")
     if not _is_material_smr("SMR 특별법·시행령 11일 시행…민관 공동출자 지원", "정책브리핑"):
         raise RuntimeError("SMR policy-state filter regression")
+    law_a = _smr_state_key("SMR 특별법 11일 시행, 정부는 2035년까지 경수형 상용화 목표", False)
+    law_b = _smr_state_key("SMR 개발·상용화 속도 낸다…SMR 특별법·시행령 오늘 시행", False)
+    if law_a != law_b:
+        raise RuntimeError("SMR same-event article dedupe regression")
+    budget_a = _smr_state_key("SMR 실증 예산 1,000억원 확정", True)
+    budget_b = _smr_state_key("SMR 실증 예산 2,000억원 확정", True)
+    if budget_a == budget_b:
+        raise RuntimeError("SMR budget-state change regression")
 
 
 def _wec_status(title: str, outlet: str = "") -> str:
@@ -326,22 +342,31 @@ def _is_material_smr(text: str, outlet: str = "") -> bool:
 
 def _smr_status(text: str) -> str:
     low = text.lower()
+    # 구체 인허가·계약 상태를 일반적인 "건설"보다 먼저 판별한다.
+    if "표준설계인가" in low or "표준설계승인" in low:
+        return "표준설계인가"
+    if "건설허가" in low:
+        return "건설허가"
+    if "핵연료 공급계약" in low or ("핵연료" in low and "계약" in low):
+        return "핵연료 공급망·계약"
+    if ("주기기" in low or "epc" in low) and any(term in low for term in ("발주", "계약", "수주", "우선협상", "선정")):
+        return "주기기·EPC 발주"
     if "특별법" in low and ("시행" in low or "시행령" in low):
         return "특별법·시행령 시행"
+    if "기본계획" in low or "시행계획" in low:
+        return "기본계획·시행계획"
     if "상세설계" in low and ("착수" in low or "2027" in low):
         return "상세설계 착수 일정"
     if "공동출자" in low or "공동 출자" in low or "spc" in low or "특수목적법인" in low:
         return "민관 공동출자·사업화 구조"
     if "연구개발특구" in low or "특구" in low:
         return "SMR 연구개발특구"
-    if "실증" in low:
-        return "실증 지원"
     if "예산" in low or "지원금" in low:
         return "예산·재정지원"
+    if "실증" in low:
+        return "실증 지원"
     if "상용화" in low or "건설" in low:
         return "상용화·건설 일정"
-    if "기본계획" in low or "시행계획" in low:
-        return "기본계획·시행계획"
     return "SMR 정책 상태변화"
 
 
@@ -352,11 +377,87 @@ def _smr_signals(text: str) -> list[str]:
     return list(dict.fromkeys(found + years))[:12]
 
 
+def _smr_event_family(text: str) -> str:
+    status = _smr_status(text)
+    return {
+        "특별법·시행령 시행": "law_decree",
+        "기본계획·시행계획": "basic_plan",
+        "상세설계 착수 일정": "detailed_design",
+        "민관 공동출자·사업화 구조": "joint_venture",
+        "SMR 연구개발특구": "special_zone",
+        "예산·재정지원": "budget",
+        "실증 지원": "demonstration",
+        "핵연료 공급망·계약": "nuclear_fuel",
+        "표준설계인가": "standard_design_approval",
+        "건설허가": "construction_permit",
+        "주기기·EPC 발주": "epc_major_equipment",
+        "상용화·건설 일정": "commercialization",
+    }.get(status, "other")
+
+
+def _smr_material_facts(text: str, family: str) -> list[str]:
+    """기사 문구가 아니라 실제 상태를 바꾸는 구조화 사실만 상태키에 넣는다."""
+    low = text.lower()
+    facts: list[str] = []
+
+    # 동일 법 시행을 기사별 목표연도·매체 표현 차이로 다시 알리지 않는다.
+    if family == "law_decree":
+        return ["effective"]
+
+    stage_terms = [
+        ("공포", "promulgated"),
+        ("시행", "effective"),
+        ("수립 착수", "planning_started"),
+        ("착수", "started"),
+        ("신청", "applied"),
+        ("접수", "filed"),
+        ("공모", "tender_open"),
+        ("우선협상", "preferred_bidder"),
+        ("선정", "selected"),
+        ("지정", "designated"),
+        ("의결", "approved"),
+        ("승인", "approved"),
+        ("인가", "approved"),
+        ("허가", "permitted"),
+        ("체결", "contracted"),
+        ("계약", "contracted"),
+        ("확정", "confirmed"),
+        ("편성", "budgeted"),
+        ("배정", "allocated"),
+    ]
+    for needle, label in stage_terms:
+        if needle in low and label not in facts:
+            facts.append(label)
+
+    money = re.findall(
+        r"\d[\d,.]*(?:\s*)?(?:조원|억원|만원|원|억\s*원|조\s*원|억달러|만달러|달러)",
+        text,
+        flags=re.I,
+    )
+    facts.extend(f"money:{re.sub(r'\s+', '', value)}" for value in dict.fromkeys(money))
+
+    quantities = re.findall(r"\d[\d,.]*(?:\s*)?(?:기|MW|GW|MWe|GWe)", text, flags=re.I)
+    facts.extend(f"qty:{re.sub(r'\s+', '', value)}" for value in dict.fromkeys(quantities))
+
+    if family in {"special_zone", "demonstration", "construction_permit", "commercialization"}:
+        regions = [
+            "부산", "기장", "경주", "울산", "대전", "세종", "충북", "충남", "전북", "전남",
+            "경북", "경남", "강원", "제주", "서울", "인천", "광주", "대구",
+        ]
+        facts.extend(f"region:{region}" for region in regions if region in text)
+
+    if family in {"basic_plan", "detailed_design", "standard_design_approval", "construction_permit", "commercialization"}:
+        years = re.findall(r"20(?:2\d|3\d)(?:년대|년)?", text)
+        facts.extend(f"year:{year}" for year in dict.fromkeys(years))
+
+    return facts or ["state_present"]
+
+
 def _smr_state_key(text: str, official: bool) -> str:
-    signals = _smr_signals(text)
-    if not signals:
-        signals = [_smr_status(text)]
-    return f"{_smr_status(text)}|{'|'.join(signals)}|{'official' if official else 'reported'}"
+    # official/reported, 기사 제목, 매체, URL은 증거 수준일 뿐 사건 상태 식별자에 넣지 않는다.
+    family = _smr_event_family(text)
+    facts = _smr_material_facts(text, family)
+    return f"{family}|{'|'.join(facts)}"
 
 
 def collect_smr_policy_items(now: dt.datetime) -> list[dict]:
@@ -381,7 +482,8 @@ def collect_smr_policy_items(now: dt.datetime) -> list[dict]:
         rows.append({
             "kind": "smr_policy", "source": source["name"], "title": title[:500], "link": source["url"],
             "published_kst": pub_utc.astimezone(KST).isoformat(timespec="seconds"), "published_utc": pub_utc.isoformat(timespec="seconds"),
-            "status": _smr_status(text), "state_key": _smr_state_key(text, True), "signals": _smr_signals(text), "official": True,
+            "status": _smr_status(text), "event_family": _smr_event_family(text),
+            "state_key": _smr_state_key(text, True), "signals": _smr_signals(text), "official": True,
         })
 
     for source_name, query in SMR_RSS_QUERIES:
@@ -415,11 +517,12 @@ def collect_smr_policy_items(now: dt.datetime) -> list[dict]:
             rows.append({
                 "kind": "smr_policy", "source": outlet or source_name, "title": title[:500], "link": link,
                 "published_kst": published.astimezone(KST).isoformat(timespec="seconds"), "published_utc": published.isoformat(timespec="seconds"),
-                "status": _smr_status(title), "state_key": _smr_state_key(title, official), "signals": _smr_signals(title), "official": official,
+                "status": _smr_status(title), "event_family": _smr_event_family(title),
+                "state_key": _smr_state_key(title, official), "signals": _smr_signals(title), "official": official,
             })
 
-    def score(item: dict) -> tuple[int, int, str]:
-        return (1 if item.get("official") else 0, len(item.get("signals") or []), item.get("published_utc", ""))
+    def score(item: dict) -> tuple[str, int, int]:
+        return (item.get("published_utc", ""), 1 if item.get("official") else 0, len(item.get("signals") or []))
 
     rows.sort(key=score, reverse=True)
     return rows[:20]
@@ -570,18 +673,57 @@ def main() -> int:
             }
 
     smr_items = collect_smr_policy_items(now)
-    latest_smr = smr_items[0] if smr_items else None
-    previous_smr = seen.get("smr_policy_state") or {}
-    if latest_smr:
+    previous_states = seen.setdefault("smr_policy_states", {})
+    seen["smr_state_model_version"] = SMR_STATE_MODEL_VERSION
+
+    # 기존 단일 상태를 새 모델의 법 시행 기준선으로 승계한다.
+    legacy_smr = seen.get("smr_policy_state") or {}
+    if "law_decree" not in previous_states and legacy_smr.get("status") == "특별법·시행령 시행":
+        previous_states["law_decree"] = {
+            "state_key": "law_decree|effective",
+            "status": "특별법·시행령 시행",
+            "published_utc": legacy_smr.get("published_utc") or "",
+            "title": legacy_smr.get("title") or "",
+            "source": legacy_smr.get("source") or "",
+            "link": legacy_smr.get("link") or "",
+            "first_seen_kst": legacy_smr.get("first_seen_kst") or now.isoformat(timespec="seconds"),
+        }
+
+    # 기사 수가 아니라 사건축별 최신 상태 하나를 비교한다.
+    latest_by_family: dict[str, dict] = {}
+    for item in smr_items:
+        family = item.get("event_family") or _smr_event_family(item.get("title") or "")
+        if family not in latest_by_family:
+            latest_by_family[family] = item
+
+    for family, latest_smr in latest_by_family.items():
+        previous_smr = previous_states.get(family) or {}
         previous_published = str(previous_smr.get("published_utc") or "")
         current_published = str(latest_smr.get("published_utc") or "")
         is_newer = not previous_published or current_published > previous_published
         changed = latest_smr["state_key"] != previous_smr.get("state_key")
+
+        # 모델 전환 이전 자료는 교차검증 기준선으로만 사용하고 소급 알림하지 않는다.
+        if not previous_smr:
+            try:
+                published_dt = dt.datetime.fromisoformat(current_published.replace("Z", "+00:00")).astimezone(UTC)
+            except Exception:
+                published_dt = now.astimezone(UTC)
+            if published_dt <= SMR_STATE_MODEL_CUTOFF_UTC:
+                continue
+
         if is_newer and changed:
+            latest_smr["trigger"] = "topic_event_state_change"
             alerts.append(latest_smr)
-            seen["smr_policy_state"] = {
-                "state_key": latest_smr["state_key"], "status": latest_smr["status"], "title": latest_smr["title"], "source": latest_smr["source"],
-                "link": latest_smr["link"], "published_utc": latest_smr["published_utc"], "first_seen_kst": now.isoformat(timespec="seconds"),
+            previous_states[family] = {
+                "state_key": latest_smr["state_key"],
+                "status": latest_smr["status"],
+                "title": latest_smr["title"],
+                "source": latest_smr["source"],
+                "link": latest_smr["link"],
+                "published_utc": latest_smr["published_utc"],
+                "official": bool(latest_smr.get("official")),
+                "first_seen_kst": now.isoformat(timespec="seconds"),
             }
 
     if not alerts:
