@@ -202,7 +202,7 @@ if status_old not in t:
 t = t.replace(status_old, status_new, 1)
 
 print_old = '''    f"gev_slots={gev['gas_contract_slot_gw']}GW new={len(new_items)} changes={len(gev_changes)} alert={should_alert}"\n)'''
-print_new = '''    f"gev_slots={gev['gas_contract_slot_gw']}GW new={len(new_items)} "\n    f"gev_changes={len(gev_changes)} power_changes={len(power_changes)} alert={should_alert}"\n)'''
+print_new = '''    f"gev_slots={gev['gas_contract_slot_gw']}GW new={len(new_items)} "\n    f"gev_changes={len(gev_changes)} power_changes={len(power_changes)} pwc_changes={len(pwc_changes)} alert={should_alert}"\n)'''
 if print_old not in t:
     raise SystemExit("generation print insertion point not found")
 t = t.replace(print_old, print_new, 1)
@@ -311,6 +311,100 @@ if func_anchor not in t:
     raise SystemExit("generation supplier collector insertion point not found")
 t = t.replace(func_anchor, "\n" + supplier_func + func_anchor, 1)
 
+pwc_func = r'''
+PWC_OUTLOOK = "https://www.pwc.com/gx/en/1/services/consulting/technology/data-centre-outlook.html"
+PWC_KEYS = (
+    "pwc_total_2026_2050_usd_t",
+    "pwc_upside_usd_t",
+    "pwc_annual_2026_usd_b",
+    "pwc_annual_2030_usd_b",
+    "pwc_annual_2050_usd_b",
+    "pwc_ict_share_2026_pct",
+    "pwc_ict_share_2050_pct",
+    "pwc_refresh_low_years",
+    "pwc_refresh_high_years",
+    "pwc_rounds_low",
+    "pwc_rounds_high",
+)
+
+
+def parse_pwc_metrics(old_state: dict):
+    oldm = old_state.get("pwc_metrics") or {}
+    oldb = old_state.get("baseline") or {}
+    metrics = {key: oldm.get(key, oldb.get(key, BASELINE.get(key))) for key in PWC_KEYS}
+    errors = []
+    try:
+        text = _page_text(PWC_OUTLOOK)
+        m = re.search(r"(?:US\$|\$)?\s*([0-9.]+)\s*trillion[^.]{0,120}(?:through|to)\s*2050", text, re.I)
+        if m:
+            metrics["pwc_total_2026_2050_usd_t"] = float(m.group(1))
+        m = re.search(r"(?:upside of|upside).*?(?:nearly|about)?\s*\$?\s*([0-9.]+)\s*trillion", text, re.I)
+        if m:
+            metrics["pwc_upside_usd_t"] = float(m.group(1))
+        m = re.search(r"(?:roughly\s*)?\$?\s*([0-9,.]+)\s*billion\s+in\s+2026", text, re.I)
+        if m:
+            metrics["pwc_annual_2026_usd_b"] = float(m.group(1).replace(",", ""))
+        m = re.search(r"\$?\s*([0-9.]+)\s*trillion\s+in\s+2030", text, re.I)
+        if m:
+            metrics["pwc_annual_2030_usd_b"] = float(m.group(1)) * 1000
+        m = re.search(r"\$?\s*([0-9.]+)\s*trillion\s+in\s+2050", text, re.I)
+        if m:
+            metrics["pwc_annual_2050_usd_b"] = float(m.group(1)) * 1000
+        m = re.search(r"ICT equipment rises from\s*([0-9.]+)%[^.]{0,100}2026[^.]{0,100}to\s*([0-9.]+)%[^.]{0,60}2050", text, re.I)
+        if m:
+            metrics["pwc_ict_share_2026_pct"] = float(m.group(1))
+            metrics["pwc_ict_share_2050_pct"] = float(m.group(2))
+        if re.search(r"(?:every|turn over every)\s+four to six years", text, re.I):
+            metrics["pwc_refresh_low_years"] = 4.0
+            metrics["pwc_refresh_high_years"] = 6.0
+        if re.search(r"three to five rounds", text, re.I):
+            metrics["pwc_rounds_low"] = 3.0
+            metrics["pwc_rounds_high"] = 5.0
+    except Exception as exc:
+        errors.append(f"PwC: {type(exc).__name__}")
+    return metrics, errors
+
+
+def detect_pwc_changes(old_state: dict, now: dict):
+    oldm = old_state.get("pwc_metrics") or {}
+    if not oldm:
+        oldb = old_state.get("baseline") or {}
+        oldm = {key: oldb.get(key) for key in PWC_KEYS if oldb.get(key) is not None}
+    changes = []
+    for key, label, unit in (
+        ("pwc_total_2026_2050_usd_t", "PwC 2026~2050 누적 자본투자", "조달러"),
+        ("pwc_upside_usd_t", "PwC AI 가속 상단", "조달러"),
+        ("pwc_annual_2026_usd_b", "PwC 2026 연간 자본투자", "십억달러"),
+        ("pwc_annual_2030_usd_b", "PwC 2030 연간 자본투자", "십억달러"),
+        ("pwc_annual_2050_usd_b", "PwC 2050 연간 자본투자", "십억달러"),
+    ):
+        ov, nv = oldm.get(key), now.get(key)
+        if ov is None or nv is None or float(ov) == 0:
+            continue
+        if abs(float(nv) - float(ov)) / abs(float(ov)) >= 0.10:
+            changes.append(f"{label}: {float(ov):g}{unit} → {float(nv):g}{unit}")
+    for key, label in (
+        ("pwc_ict_share_2026_pct", "PwC ICT 장비 비중 2026"),
+        ("pwc_ict_share_2050_pct", "PwC ICT 장비 비중 2050"),
+    ):
+        ov, nv = oldm.get(key), now.get(key)
+        if ov is not None and nv is not None and abs(float(nv) - float(ov)) >= 3.0:
+            changes.append(f"{label}: {float(ov):g}% → {float(nv):g}%")
+    for key, label in (
+        ("pwc_refresh_low_years", "PwC 장비 교체주기 하단"),
+        ("pwc_refresh_high_years", "PwC 장비 교체주기 상단"),
+        ("pwc_rounds_low", "PwC 20년 투자회차 하단"),
+        ("pwc_rounds_high", "PwC 20년 투자회차 상단"),
+    ):
+        ov, nv = oldm.get(key), now.get(key)
+        if ov is not None and nv is not None and abs(float(nv) - float(ov)) >= 1.0:
+            changes.append(f"{label}: {float(ov):g} → {float(nv):g}")
+    return changes
+'''
+if func_anchor not in t:
+    raise SystemExit("generation PwC parser insertion point not found")
+t = t.replace(func_anchor, "\n" + pwc_func + func_anchor, 1)
+
 meaning_old = '''    if "ge vernova" in low and any(k in low for k in ("gas turbine", "slot", "data center", "data centre")):
         return True
     if not any(k in low for k in ("data center", "data centre", "hyperscaler", "ai campus", "ai factory")):
@@ -328,22 +422,47 @@ if meaning_old not in t:
 t = t.replace(meaning_old, meaning_new, 1)
 
 items_old = "items = collect_news()\n"
-items_new = "items = collect_news() + collect_supplier_official_updates()\n"
+items_new = "pwc_metrics, pwc_source_errors = parse_pwc_metrics(old)\npwc_changes = detect_pwc_changes(old, pwc_metrics)\nitems = collect_news() + collect_supplier_official_updates()\n"
 if items_old not in t:
     raise SystemExit("generation supplier items insertion point not found")
 t = t.replace(items_old, items_new, 1)
 
+alert_old = "should_alert = baseline_run or format_upgrade or bool(new_items) or bool(gev_changes) or bool(power_changes)\n"
+alert_new = "should_alert = baseline_run or format_upgrade or bool(new_items) or bool(gev_changes) or bool(power_changes) or bool(pwc_changes)\n"
+if alert_old not in t:
+    raise SystemExit("generation PwC alert gate insertion point not found")
+t = t.replace(alert_old, alert_new, 1)
+
+pwc_pending_old = '''    "power_source_errors": power_errors,
+    "seen_ids": seen,
+'''
+pwc_pending_new = '''    "power_source_errors": power_errors,
+    "pwc_metrics": pwc_metrics,
+    "pwc_source_errors": pwc_source_errors,
+    "seen_ids": seen,
+'''
+if pwc_pending_old not in t:
+    raise SystemExit("generation PwC state insertion point not found")
+t = t.replace(pwc_pending_old, pwc_pending_new, 1)
+
 msg_anchor = '''    if gev_changes:
         msg += ["", "<b>🔄 공급능력 숫자 변경</b>"]
 '''
-msg_new = '''    msg += ["", "<b>💻 반복 장비투자·한국 전력기기 실수주</b>"]
-    msg.append(f"• <b>PwC 누적 자본투자</b> │ 2026~2050 {b['pwc_total_2026_2050_usd_t']:g}조달러 │ AI 가속 상단 약 {b['pwc_upside_usd_t']:g}조달러")
+msg_new = '''    cm = pwc_metrics
+    msg += ["", "<b>💻 반복 장비투자·한국 전력기기 실수주</b>"]
+    msg.append(f"• <b>PwC 누적 자본투자</b> │ 2026~2050 {cm['pwc_total_2026_2050_usd_t']:g}조달러 │ AI 가속 상단 약 {cm['pwc_upside_usd_t']:g}조달러")
     msg.append("• <b>연간 자본투자</b> │ 2026 <b>8,000억달러</b> → 2030 <b>1조1,000억달러</b> → 2050 <b>1조8,000억달러</b>")
-    msg.append(f"• <b>ICT 장비 비중</b> │ 2026 {b['pwc_ict_share_2026_pct']:g}% → 2050 {b['pwc_ict_share_2050_pct']:g}% │ GPU·서버 교체 {b['pwc_refresh_low_years']:g}~{b['pwc_refresh_high_years']:g}년 · 20년 자산에서 {b['pwc_rounds_low']:g}~{b['pwc_rounds_high']:g}회")
+    msg.append(f"• <b>ICT 장비 비중</b> │ 2026 {cm['pwc_ict_share_2026_pct']:g}% → 2050 {cm['pwc_ict_share_2050_pct']:g}% │ GPU·서버 교체 {cm['pwc_refresh_low_years']:g}~{cm['pwc_refresh_high_years']:g}년 · 20년 자산에서 {cm['pwc_rounds_low']:g}~{cm['pwc_rounds_high']:g}회")
     msg.append(f"• <b>효성중공업</b> │ 미국 AI 데이터센터 초고압변압기 <b>{b['hyosung_dc_order_krw_eok']:,.0f}억원</b> 직접 수주")
     msg.append(f"• <b>HD현대일렉트릭</b> │ 북미 데이터센터 장기 기본계약 최대 <b>{b['hd_hyundai_dc_framework_krw_eok']:,.0f}억원</b> │ 실제 개별 발주는 분할 · {int(b['hd_hyundai_delivery_year'])}년까지 순차 납품")
     msg.append(f"• <b>LS ELECTRIC</b> │ 뉴멕시코 {b['ls_bloom_dc_order_krw_eok']:,.0f}억원 · 북미 {b['ls_apr_dc_order_krw_eok']:,.0f}억원 · 미국 빅테크 {b['ls_may_dc_order_krw_eok']:,.0f}억원의 확인된 프로젝트를 각각 추적")
     msg.append("• <b>판정:</b> PwC 전망은 시장 기준선, 기업 수주는 확정 매출 연결 후보로 분리합니다. 기본계약 상단을 실제 발주액과 동일시하지 않습니다.")
+    if pwc_changes:
+        msg += ["", "<b>🔄 PwC 자본투자 전망 변경</b>"]
+        for ch in pwc_changes[:6]:
+            msg.append(f"• {h(ch)}")
+    if pwc_source_errors:
+        msg.append("• PwC 원문 연결 오류 시 직전 검증값을 유지하며, 오류 자체로는 변화 알림을 만들지 않습니다.")
 
     if gev_changes:
         msg += ["", "<b>🔄 공급능력 숫자 변경</b>"]
