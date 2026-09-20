@@ -50,7 +50,7 @@ class ClarityReginfoWatchTest(unittest.TestCase):
         self.assertIn("RIN 3038-AF80", rendered)
         self.assertIn("Pending Review", rendered)
         self.assertIn("Prerule", rendered)
-        self.assertIn("아직 정식 제안규칙이 아니고", rendered)
+        self.assertIn("아직 Prerule이고 규칙 본문이 공개되지 않았으며", rendered)
         self.assertIn("규칙 본문도 비공개", rendered)
         self.assertNotIn("이 문서는 제안규칙입니다", rendered)
         self.assertNotIn("이번 조치는 최종규칙으로", rendered)
