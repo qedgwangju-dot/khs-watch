@@ -1,5 +1,5 @@
 name: Telegram token identity probe once
-# Manual no-send route probe refresh for current production wiring. 2026-09-12
+# Manual no-send route probe refresh for current production wiring. 2026-09-20 target khs88798879_bot
 
 on:
   push:
