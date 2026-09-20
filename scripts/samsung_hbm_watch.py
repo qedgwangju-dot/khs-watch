@@ -62,6 +62,11 @@ QUERIES = [
     '"Samsung" HBM4 shipment share mix LS Securities',
     '"Samsung" HBM Broadcom AMD NVIDIA Google custom HBM',
     '"삼성전자" HBM4 HBM4E 엔비디아 공급 출하 점유율',
+    '"삼성전자" HBM4 HBM4E 생산 증산 생산능력 캐파',
+    '"삼성전자" HBM4 4E 생산 2배',
+    '"삼성전자" HBM 생산능력 증설 내년',
+    '"Samsung Electronics" HBM4 HBM4E production capacity double expand',
+    '"Samsung" HBM production capacity output ramp expansion',
     '"삼성전자" HBM 충남 수출 Bernstein',
     '"SK hynix" HBM Bernstein export Chungbuk Icheon',
     '"SK하이닉스" HBM 충북 이천 수출 Bernstein',
@@ -78,7 +83,7 @@ QUERIES = [
 
 TRUSTED = (
     "samsung", "reuters", "bloomberg", "trendforce", "counterpoint", "investing.com",
-    "sedaily", "seoul economic", "zdnet", "the elec", "thelec", "digitimes",
+    "sedaily", "seoul economic", "서울경제", "zdnet", "the elec", "thelec", "digitimes",
     "yonhap", "연합뉴스", "chosunbiz", "조선비즈", "newsis", "뉴시스",
     "kita", "한국무역협회", "k-stat", "trass", "한국무역통계진흥원",
     "customs", "관세청", "icheon", "이천시", "intel",
@@ -148,7 +153,7 @@ def source_rank(source: str) -> int:
         return 90
     if "bloomberg" in low or "digitimes" in low:
         return 85
-    if "investing.com" in low or "sedaily" in low or "seoul economic" in low:
+    if "investing.com" in low or "sedaily" in low or "seoul economic" in low or "서울경제" in low:
         return 80
     if "zdnet" in low or "thelec" in low or "the elec" in low or "yonhap" in low or "연합뉴스" in low:
         return 75
@@ -165,7 +170,10 @@ def relevant(text: str) -> bool:
     signal = any(k in low for k in (
         "shipment", "ship", "mass production", "qualification", "validation", "customer",
         "market share", "revenue", "export", "mix", "allocation", "contract", "price",
+        "production", "capacity", "output", "ramp", "expand", "expansion", "double",
+        "wafer", "investment", "capex",
         "출하", "양산", "인증", "검증", "고객", "점유율", "매출", "수출", "비중", "계약", "가격",
+        "생산", "증산", "생산능력", "캐파", "확대", "증설", "2배", "웨이퍼", "투입", "설비투자",
     ))
     icheon_proxy = (
         ("icheon" in low or "이천" in low)
@@ -802,6 +810,11 @@ def classify_event(e: dict) -> tuple[str, str]:
     text = f"{e.get('title','')} {e.get('description','')}".lower()
     if any(k in text for k in ("malaysia", "말레이시아", "penang", "kulim")) and any(k in text for k in ("hbm", "emib", "packaging", "패키징")):
         return "말레이시아·EMIB", "말레이시아 HBM·Intel EMIB 첨단패키징 변화"
+    if "hbm" in text and any(k in text for k in (
+        "production", "capacity", "output", "ramp", "expand", "expansion", "double",
+        "생산", "증산", "생산능력", "캐파", "확대", "증설", "2배", "웨이퍼",
+    )):
+        return "생산능력·증산", "삼성 HBM 생산능력·증산 계획 변화"
     if ("icheon" in text or "이천" in text) and "hbm" in text:
         return "이천 HBM 정밀 보강", "이천 SK하이닉스 HBM 직접·정밀 대용지표 변화"
     if ("icheon" in text or "이천" in text) and any(k in text for k in ("semiconductor", "memory", "반도체", "메모리")):
