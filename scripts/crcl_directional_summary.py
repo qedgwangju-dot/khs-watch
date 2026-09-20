@@ -54,39 +54,44 @@ def direct_earnings(pending: dict) -> tuple[str, str, int]:
     y_now = usdxx.get("sec_yield_7d")
     y_prev = up.get("sec_yield_7d")
 
-    c_delta = None if c_now is None or c_prev is None else float(c_now) - float(c_prev)
-    y_bp = None if y_now is None or y_prev is None else (float(y_now) - float(y_prev)) * 100.0
-
     parts: list[str] = []
-    score = 0
-    if c_delta is None:
-        parts.append(f"USDC {float(c_now):.1f}십억달러" if c_now is not None else "USDC 확인 불가")
-    elif abs(c_delta) < 0.05:
-        parts.append(f"USDC {float(c_now):.1f}십억달러 · 변화 없음")
+    if c_now is not None:
+        if c_prev is not None:
+            c_delta = float(c_now) - float(c_prev)
+            parts.append(f"USDC {float(c_prev):.1f}→{float(c_now):.1f}십억달러 ({c_delta:+.1f})")
+        else:
+            parts.append(f"USDC {float(c_now):.1f}십억달러")
     else:
-        parts.append(f"USDC {float(c_prev):.1f}→{float(c_now):.1f}십억달러 ({c_delta:+.1f})")
-        score += 1 if c_delta > 0 else -1
+        parts.append("USDC 확인 불가")
 
-    if y_bp is None:
-        parts.append(f"준비금 수익률 {float(y_now):.2f}%" if y_now is not None else "준비금 수익률 확인 불가")
+    if y_now is not None:
+        if y_prev is not None:
+            y_bp = (float(y_now) - float(y_prev)) * 100.0
+            parts.append(f"준비금 수익률 {float(y_prev):.2f}%→{float(y_now):.2f}% ({fbp(y_bp)})")
+        else:
+            parts.append(f"준비금 수익률 {float(y_now):.2f}%")
     else:
-        parts.append(f"준비금 수익률 {float(y_prev):.2f}%→{float(y_now):.2f}% ({fbp(y_bp)})")
-        if y_bp >= 1.0:
-            score += 1
-        elif y_bp <= -1.0:
-            score -= 1
+        parts.append("준비금 수익률 확인 불가")
 
-    if score >= 2:
-        label = "우호적"
-    elif score == 1:
-        label = "소폭 우호적"
-    elif score == 0:
-        label = "거의 중립"
-    elif score == -1:
-        label = "소폭 불리"
-    else:
-        label = "불리"
-    return label, " · ".join(parts), score
+    # Primary earnings test: USDC circulation × actual Circle Reserve Fund 7-day SEC yield.
+    # This follows the direct reserve-economics hierarchy instead of scoring volume and yield separately.
+    if None not in (c_now, c_prev, y_now, y_prev):
+        now_proxy = float(c_now) * float(y_now)
+        prev_proxy = float(c_prev) * float(y_prev)
+        proxy_pct = (now_proxy / prev_proxy - 1.0) * 100.0 if prev_proxy else 0.0
+        parts.append(f"USDC×실제 수익률 프록시 {proxy_pct:+.2f}%")
+        if proxy_pct >= 1.0:
+            return "우호적", " · ".join(parts), 2
+        if proxy_pct >= 0.25:
+            return "소폭 우호적", " · ".join(parts), 1
+        if proxy_pct <= -1.0:
+            return "불리", " · ".join(parts), -2
+        if proxy_pct <= -0.25:
+            return "소폭 불리", " · ".join(parts), -1
+        return "거의 중립", " · ".join(parts), 0
+
+    # If one prior official leg is unavailable, do not fabricate a combined earnings delta.
+    return "판정 보류", " · ".join(parts) + " · 직전 공식 조합 부족", 0
 
 
 def proxy_rates(pending: dict) -> tuple[str, str, int]:
