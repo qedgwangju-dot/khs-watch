@@ -472,6 +472,66 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertFalse(ok)
         self.assertIn("오래된 보도", reason)
 
+    def test_nikkei_currency_alliance_followup_is_not_new_event(self):
+        signal = classify(
+            Item(
+                title="How the BOJ's rate hike became tangled in a 'currency alliance' with the US - Nikkei Asia",
+                source="Nikkei Asia",
+                link="https://example.com/nikkei-followup",
+                published=dt.datetime(2026, 9, 19, 2, 3, tzinfo=KST),
+                description="A follow-up analysis of the BOJ rate hike and the currency relationship with the US.",
+            )
+        )
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal.event_type, "market_path")
+
+        conference = verified_press_conference_signals(
+            dt.datetime(2026, 9, 18, 17, 24, tzinfo=KST)
+        )[0]
+        state = {
+            "last_signal_key": conference.key,
+            "last_alert_at_kst": "2026-09-18T17:24:07+09:00",
+            "last_published_at_kst": "2026-09-18T15:49:00+09:00",
+            "signature": signal_signature(conference),
+        }
+        ok, reason = should_alert(
+            signal,
+            state,
+            dt.datetime(2026, 9, 20, 7, 39, tzinfo=KST),
+        )
+        self.assertFalse(ok)
+        self.assertIn("오래된 보도", reason)
+
+    def test_recent_market_path_without_material_policy_change_is_suppressed(self):
+        signal = classify(
+            Item(
+                title="Markets digest BOJ rate hike after policy meeting - Nikkei Asia",
+                source="Nikkei Asia",
+                link="https://example.com/market-followup",
+                published=dt.datetime(2026, 9, 18, 18, 10, tzinfo=KST),
+                description="Investors continued to assess the BOJ interest rate decision and market reaction.",
+            )
+        )
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal.event_type, "market_path")
+
+        conference = verified_press_conference_signals(
+            dt.datetime(2026, 9, 18, 17, 24, tzinfo=KST)
+        )[0]
+        state = {
+            "last_signal_key": conference.key,
+            "last_alert_at_kst": "2026-09-18T17:24:07+09:00",
+            "last_published_at_kst": "2026-09-18T15:49:00+09:00",
+            "signature": signal_signature(conference),
+        }
+        ok, reason = should_alert(
+            signal,
+            state,
+            dt.datetime(2026, 9, 18, 19, 0, tzinfo=KST),
+        )
+        self.assertFalse(ok)
+        self.assertEqual(reason, "시장 정책경로 핵심 변화 없음")
+
     def test_provisional_statement_detail_does_not_alert_before_official_verification(self):
         signal = verified_event_signals(dt.datetime(2026, 9, 18, 14, 0, tzinfo=KST))[0]
         previous = signal_signature(signal)
