@@ -532,6 +532,80 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertFalse(ok)
         self.assertEqual(reason, "시장 정책경로 핵심 변화 없음")
 
+    def test_financial_times_stale_decision_recap_is_suppressed(self):
+        signal = classify(
+            Item(
+                title="Yen sinks after Bank of Japan raises rates to highest level since 1995 - Financial Times",
+                source="Financial Times",
+                link="https://news.google.com/rss/articles/example",
+                published=dt.datetime(2026, 9, 19, 1, 28, 24, tzinfo=KST),
+                description="The yen weakened after the Bank of Japan rate hike.",
+            )
+        )
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal.event_type, "decision")
+
+        conference = verified_press_conference_signals(
+            dt.datetime(2026, 9, 18, 17, 24, tzinfo=KST)
+        )[0]
+        state = {
+            "last_signal_key": conference.key,
+            "last_alert_at_kst": "2026-09-18T17:24:07+09:00",
+            "last_published_at_kst": "2026-09-18T15:49:00+09:00",
+            "signature": signal_signature(conference),
+        }
+        ok, reason = should_alert(
+            signal,
+            state,
+            dt.datetime(2026, 9, 21, 1, 15, 43, tzinfo=KST),
+        )
+        self.assertFalse(ok)
+        self.assertIn("오래된 보도", reason)
+
+    def test_same_meeting_decision_recap_cannot_roll_back_press_conference(self):
+        signal = classify(
+            Item(
+                title="Yen sinks after Bank of Japan raises rates to highest level since 1995 - Financial Times",
+                source="Financial Times",
+                link="https://www.ft.com/example",
+                published=dt.datetime(2026, 9, 18, 18, 30, tzinfo=KST),
+                description=(
+                    "The Bank of Japan raised its policy rate to 1.25% in a 25 basis-point move "
+                    "approved by a 7-2 vote."
+                ),
+            )
+        )
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal.event_type, "decision")
+
+        conference = verified_press_conference_signals(
+            dt.datetime(2026, 9, 18, 17, 24, tzinfo=KST)
+        )[0]
+        state = {
+            "last_signal_key": conference.key,
+            "last_alert_at_kst": "2026-09-18T17:24:07+09:00",
+            "last_published_at_kst": "2026-09-18T15:49:00+09:00",
+            "signature": signal_signature(conference),
+        }
+        ok, reason = should_alert(
+            signal,
+            state,
+            dt.datetime(2026, 9, 18, 18, 31, tzinfo=KST),
+        )
+        self.assertFalse(ok)
+        self.assertEqual(reason, "이미 반영한 동일 회의의 후속 결정 보도")
+
+    def test_workflow_rechecks_remote_state_before_send(self):
+        workflow = (
+            Path(__file__).resolve().parents[1]
+            / ".github"
+            / "workflows"
+            / "boj-policy-lead-alert.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn("Recheck latest BOJ state before Telegram send", workflow)
+        self.assertIn("--guard-state /tmp/boj_remote_state.json", workflow)
+        self.assertIn("|| 'main' }}", workflow)
+
     def test_provisional_statement_detail_does_not_alert_before_official_verification(self):
         signal = verified_event_signals(dt.datetime(2026, 9, 18, 14, 0, tzinfo=KST))[0]
         previous = signal_signature(signal)
