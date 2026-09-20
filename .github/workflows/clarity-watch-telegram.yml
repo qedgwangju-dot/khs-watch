@@ -25,6 +25,7 @@ on:
       - "tests/test_clarity_vote_window_watch.py"
       - "tests/test_clarity_vote_gate_enricher.py"
       - "tests/test_clarity_negotiation_watch.py"
+      - "tests/test_clarity_reginfo_watch.py"
       - "data/clarity_watch_state.json"
       - "data/clarity_policy_pressure_state.json"
       - "data/clarity_ethics_breakthrough_state.json"
@@ -64,7 +65,7 @@ jobs:
       - name: Validate watcher, guards, negotiation logic and readable Korean formatter
         run: |
           python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_guard.py scripts/clarity_policy_pressure_watch.py scripts/clarity_ethics_breakthrough_watch.py scripts/clarity_ethics_alert_enricher.py scripts/clarity_alert_formatter.py scripts/clarity_alert_readability.py scripts/clarity_alert_visual_polish.py scripts/clarity_vote_window_watch.py scripts/clarity_vote_gate_enricher.py scripts/clarity_negotiation_watch.py
-          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py tests/test_clarity_ethics_breakthrough_watch.py tests/test_clarity_ethics_alert_enricher.py tests/test_clarity_alert_readability.py tests/test_clarity_alert_visual_polish.py tests/test_clarity_vote_window_watch.py tests/test_clarity_vote_gate_enricher.py tests/test_clarity_negotiation_watch.py -v
+          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py tests/test_clarity_ethics_breakthrough_watch.py tests/test_clarity_ethics_alert_enricher.py tests/test_clarity_alert_readability.py tests/test_clarity_alert_visual_polish.py tests/test_clarity_vote_window_watch.py tests/test_clarity_vote_gate_enricher.py tests/test_clarity_negotiation_watch.py tests/test_clarity_reginfo_watch.py -v
 
       - name: Validate Telegram route without sending
         env:
