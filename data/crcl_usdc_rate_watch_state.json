@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-20T10:06:01+09:00",
+  "updated_at_kst": "2026-09-20T11:50:30+09:00",
   "circle": {
     "date": "2026-09-17",
     "circulation_usd_b": 73.8,
@@ -56,6 +56,6 @@
   },
   "crcl_last_alerted_close_date": "2026-09-18",
   "errors": [
-    "usdxx: HTTP Error 404: Not Found"
+    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: HTTP Error 404: Not Found | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: HTTP Error 404: Not Found"
   ]
 }
