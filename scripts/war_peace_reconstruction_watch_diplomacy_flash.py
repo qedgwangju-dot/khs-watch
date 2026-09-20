@@ -11,6 +11,8 @@ import datetime as dt
 import hashlib
 import html as html_lib
 import re
+import urllib.parse
+import xml.etree.ElementTree as ET
 from email.utils import format_datetime
 
 import war_peace_reconstruction_watch_energy_ceasefire as prev
@@ -29,9 +31,19 @@ _prev_verdict = guard._verdict
 
 WALTER_SENTINEL = "__WALTER_BLOOMBERG_WAR_PEACE_FLASH__"
 WALTER_PUBLIC_URL = "https://t.me/s/WalterBloomberg"
+BING_EMERGENCY_SENTINEL = "__BING_MIDDLE_EAST_EMERGENCY__"
+
+BING_EMERGENCY_QUERIES = [
+    '"Code 100" Iran IRGC Army security forces',
+    '"The Hormuz Letter" "Code 100" Iran',
+    'Trump Camp David returned White House Middle East Iran Houthi',
+    '"security alert" Middle East U.S. embassy Houthi Saudi Arabia',
+    'Netanyahu cut short US trip return Israel Iran',
+]
 
 FLASH_QUERIES = [
     WALTER_SENTINEL,
+    BING_EMERGENCY_SENTINEL,
     'site:reuters.com (Araghchi OR "Iranian foreign minister") (China OR Beijing OR "Wang Yi") (visit OR meeting OR talks) when:2d',
     '(Araghchi OR "Iranian foreign minister" OR 아라치 OR 이란 외무장관) (China OR Beijing OR 중국 OR 베이징 OR "Wang Yi" OR 왕이) (visit OR meeting OR 회담 OR 방문) when:2d',
     'site:reuters.com (China OR Chinese) Iran ("satellite images" OR "satellite imagery") ("US base" OR "U.S. base") when:3d',
@@ -159,9 +171,62 @@ def _walter_rows():
     return rows, None
 
 
+def _bing_emergency_rows():
+    rows = []
+    errors = []
+    now = dt.datetime.now(dt.timezone.utc)
+    seen = set()
+    for query in BING_EMERGENCY_QUERIES:
+        try:
+            url = "https://www.bing.com/news/search?format=rss&q=" + urllib.parse.quote(query)
+            root = ET.fromstring(watch.req(url, 12))
+        except Exception as exc:
+            errors.append(f"BingEmergency:{type(exc).__name__}")
+            continue
+        for item in root.findall("./channel/item")[:20]:
+            title = html_lib.unescape((item.findtext("title") or "").strip())
+            link = (item.findtext("link") or "").strip()
+            desc = html_lib.unescape(re.sub(r"<[^>]+>", " ", item.findtext("description") or "")).strip()
+            pub = (item.findtext("pubDate") or "").strip()
+            if not title or not link:
+                continue
+            try:
+                parsed = urllib.parse.urlparse(link)
+                if "bing.com" in parsed.netloc.lower():
+                    direct = (urllib.parse.parse_qs(parsed.query).get("url") or [""])[0]
+                    if direct.startswith(("http://", "https://")):
+                        link = direct
+            except Exception:
+                pass
+            key = (title.lower(), link)
+            if key in seen:
+                continue
+            seen.add(key)
+            if pub:
+                try:
+                    stamp = dt.datetime.strptime(pub, "%a, %d %b %Y %H:%M:%S %Z").replace(tzinfo=dt.timezone.utc)
+                    if (now - stamp).total_seconds() > 48 * 3600:
+                        continue
+                except Exception:
+                    pass
+            rows.append({
+                "title": title,
+                "title_original": title,
+                "title_ko": "",
+                "link": link,
+                "published": pub,
+                "source": "Bing News",
+                "description": desc,
+                "article_text": desc,
+            })
+    return rows, "; ".join(errors) if errors else None
+
+
 def google_news(query):
     if query == WALTER_SENTINEL:
         return _walter_rows()
+    if query == BING_EMERGENCY_SENTINEL:
+        return _bing_emergency_rows()
     return _prev_google_news(query)
 
 watch.google_news = google_news
