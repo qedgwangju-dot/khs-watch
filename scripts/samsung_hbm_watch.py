@@ -836,10 +836,13 @@ def event_summary(e: dict) -> list[str]:
     category, headline = classify_event(e)
     text = clean(f"{e.get('title','')} {e.get('description','')}")
     pcts = list(dict.fromkeys(re.findall(r"[+-]?\d+(?:\.\d+)?%", text)))[:4]
+    multiples = list(dict.fromkeys(re.findall(r"\b\d+(?:\.\d+)?\s*(?:배|times?)\b", text, re.I)))[:3]
     dollars = list(dict.fromkeys(re.findall(r"\$\s*\d+(?:\.\d+)?\s*(?:billion|million|B|M)\b", text, re.I)))[:2]
     nums = []
     if pcts:
         nums.append(" / ".join(pcts))
+    if multiples:
+        nums.append(" / ".join(multiples))
     if dollars:
         nums.append(" / ".join(dollars))
     lines = [
