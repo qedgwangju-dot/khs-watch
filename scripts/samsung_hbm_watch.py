@@ -1507,12 +1507,92 @@ def main() -> None:
     cutoff = now - timedelta(hours=FRESH_HOURS)
     topic_states = dict(state.get("topic_states") or {})
 
+    share_forecasts = dict(state.get("hbm_share_forecasts") or {})
+    share_actuals = dict(state.get("hbm_share_actuals") or {})
+    if int(state.get("share_track_version") or 0) < SHARE_TRACK_VERSION:
+        for key, values in SHARE_FORECAST_BASELINES.items():
+            share_forecasts.setdefault(key, {
+                "values": {k: v for k, v in values.items() if k in ("skhynix", "samsung", "micron")},
+                "source": values.get("source") or "baseline",
+                "observed_at": "baseline",
+            })
+        for key, values in SHARE_ACTUAL_BASELINES.items():
+            share_actuals.setdefault(key, {
+                "values": {k: v for k, v in values.items() if k in ("skhynix", "samsung", "micron")},
+                "source": values.get("source") or "baseline",
+                "observed_at": "baseline",
+            })
+        state["share_track_version"] = SHARE_TRACK_VERSION
+
+    # Parse share observations before generic topic-state handling. A structured
+    # share item is removed from generic article-state logic so the same source
+    # cannot create both a forecast alert and a generic "market share" alert.
+    structured_share_event_ids = set()
+    latest_share_obs: dict[str, dict] = {}
+    for e in events:
+        try:
+            dt = datetime.fromisoformat(e.get("published_at_kst") or "")
+        except Exception:
+            continue
+        if not (cutoff <= dt <= now + timedelta(minutes=10)):
+            continue
+        observations = extract_share_observations(e)
+        if observations:
+            structured_share_event_ids.add(e.get("id") or "")
+        for obs in observations:
+            old = latest_share_obs.get(obs["key"])
+            if old is None or obs.get("published_at_kst", "") > old.get("published_at_kst", ""):
+                latest_share_obs[obs["key"]] = obs
+
+    share_alert_events: list[dict] = []
+    for key, obs in latest_share_obs.items():
+        store = share_actuals if obs["kind"] == "actual" else share_forecasts
+        old = store.get(key)
+        normalized = {
+            "values": obs["values"],
+            "source": obs.get("source") or "",
+            "observed_at": obs.get("published_at_kst") or "",
+            "title": obs.get("title") or "",
+            "direct_link": obs.get("direct_link") or "",
+        }
+
+        if old:
+            material, reasons = _share_material_change(old, obs)
+            if material:
+                share_alert_events.append(share_change_event(obs, old, reasons))
+            else:
+                store[key] = normalized
+            continue
+
+        if obs["kind"] == "actual":
+            share_alert_events.append(share_change_event(obs, None, ["새 실제 점유율 기간"]))
+            continue
+
+        # A new forecast horizon from an already-tracked institution is itself
+        # a material state expansion. A completely new institution only alerts
+        # when it materially diverges from same-basis peers or reaches parity.
+        same_house = any(
+            k.startswith(obs["institution"] + "|" + obs["basis"] + "|")
+            for k in share_forecasts
+        )
+        if same_house:
+            share_alert_events.append(share_change_event(obs, None, ["신규 전망연도·기간"]))
+            continue
+
+        material, reasons = _share_cross_source_signal(share_forecasts, obs)
+        if material:
+            share_alert_events.append(share_change_event(obs, None, reasons))
+        else:
+            share_forecasts[key] = normalized
+
     # One-time migration: seed topic states only from articles that the old
     # watcher had already consumed. From this point onward article IDs are
     # audit metadata only and never determine whether an alert is new.
     if int(state.get("event_state_version") or 0) < EVENT_STATE_VERSION:
         migrated: dict[str, dict] = {}
         for e in events:
+            if e.get("id") in structured_share_event_ids:
+                continue
             if e.get("id") not in seen:
                 continue
             topic_key, signature, readable = event_state_descriptor(e)
@@ -1535,6 +1615,8 @@ def main() -> None:
     latest_by_topic: dict[str, dict] = {}
     fresh_new = []
     for e in events:
+        if e.get("id") in structured_share_event_ids:
+            continue
         try:
             dt = datetime.fromisoformat(e.get("published_at_kst") or "")
         except Exception:
@@ -1559,7 +1641,10 @@ def main() -> None:
         if stored.get("signature") != e.get("state_signature"):
             fresh_new.append(e)
 
-    send_events = sorted(fresh_new, key=lambda x: x.get("published_at_kst") or "")
+    send_events = sorted(
+        fresh_new + share_alert_events,
+        key=lambda x: x.get("published_at_kst") or "",
+    )[:4]
 
     rate, fx_basis = fx_quote()
     official, official_errors = fetch_official_hbm_pack(now) if now.day >= MONTHLY_DAY else (None, [])
@@ -1595,6 +1680,18 @@ def main() -> None:
     elif send_events:
         ALERT.write_text(build_event_alert(send_events, now), encoding="utf-8")
         for e in send_events:
+            if e.get("share_change"):
+                obs = e.get("share_observation") or {}
+                if obs:
+                    store = share_actuals if obs.get("kind") == "actual" else share_forecasts
+                    store[obs["key"]] = {
+                        "values": obs.get("values") or {},
+                        "source": obs.get("source") or "",
+                        "observed_at": obs.get("published_at_kst") or "",
+                        "title": obs.get("title") or "",
+                        "direct_link": obs.get("direct_link") or "",
+                    }
+                continue
             topic_states[e["topic_key"]] = {
                 "signature": e["state_signature"],
                 "observed_at": e.get("published_at_kst") or "",
@@ -1611,6 +1708,11 @@ def main() -> None:
         "seen_ids": sorted(seen)[-1500:],
         "event_state_version": EVENT_STATE_VERSION,
         "topic_states": topic_states,
+        "share_track_version": SHARE_TRACK_VERSION,
+        "hbm_share_forecasts": share_forecasts,
+        "hbm_share_actuals": share_actuals,
+        "last_share_observation_count": len(latest_share_obs),
+        "last_share_alert_count": len([e for e in send_events if e.get("share_change")]),
         "last_event_count": len(events),
         "last_fresh_new_count": len(fresh_new),
         "last_send_event_count": len(send_events),
@@ -1636,6 +1738,11 @@ def main() -> None:
         f"- events: {len(events)}\n"
         f"- event_state_version: {EVENT_STATE_VERSION}\n"
         f"- topic_state_count: {len(topic_states)}\n"
+        f"- share_track_version: {SHARE_TRACK_VERSION}\n"
+        f"- share_forecast_state_count: {len(share_forecasts)}\n"
+        f"- share_actual_state_count: {len(share_actuals)}\n"
+        f"- share_observations: {len(latest_share_obs)}\n"
+        f"- share_alerts: {len([e for e in send_events if e.get('share_change')])}\n"
         f"- fresh_new: {len(fresh_new)}\n"
         f"- monthly_due: {str(monthly_due).lower()}\n"
         f"- official_month: {official_month or 'none'}\n"
