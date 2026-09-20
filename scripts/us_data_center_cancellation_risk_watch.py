@@ -8,6 +8,7 @@ import json
 import re
 import urllib.parse
 import xml.etree.ElementTree as ET
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 import requests
@@ -52,6 +53,8 @@ NEWS_QUERIES = (
 
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 FORMAT_VERSION = 1
+NEWS_ALERT_MAX_AGE_DAYS = 7
+SEEN_ID_LIMIT = 5000
 
 
 def fetch(url: str, timeout: int = 25):
@@ -284,6 +287,16 @@ def collect_news() -> list[dict]:
             title = normalize(item.findtext("title") or "")
             link = normalize(item.findtext("link") or "")
             pub = normalize(item.findtext("pubDate") or "")
+            if not pub:
+                continue
+            try:
+                published = parsedate_to_datetime(pub)
+                if published.tzinfo is None:
+                    published = published.replace(tzinfo=dt.timezone.utc)
+                if published.astimezone(dt.timezone.utc) < dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=NEWS_ALERT_MAX_AGE_DAYS):
+                    continue
+            except Exception:
+                continue
             source_el = item.find("source")
             source = normalize(source_el.text if source_el is not None else "")
             source_url = normalize(source_el.attrib.get("url", "") if source_el is not None else "")
@@ -331,13 +344,14 @@ fx_checked = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
 items = collect_news()
 items.sort(key=source_priority)
-old_ids = set(old.get("seen_ids", []))
+old_seen = list(old.get("seen_ids", []))
+old_ids = set(old_seen)
 new_items = [x for x in items if x["id"] not in old_ids]
 baseline_run = not old.get("initialized")
 format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
 should_alert = baseline_run or format_upgrade or bool(new_items)
 
-seen = list(dict.fromkeys(list(old_ids) + [x["id"] for x in items]))[-1600:]
+seen = list(dict.fromkeys(old_seen + [x["id"] for x in items]))[-SEEN_ID_LIMIT:]
 pending = {
     "initialized": True,
     "format_version": FORMAT_VERSION,
