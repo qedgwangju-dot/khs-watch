@@ -34,10 +34,12 @@ COMPARE_VERSION = 4
 KCS_ITEM_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTrade.do"
 DATA_GO_ITEM_URL = "https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList"
 DATA_GO_SIDO_ITEM_URL = "https://apis.data.go.kr/1220000/sidoitemtrade/getSidoitemtradeList"
+DATA_GO_COUNTRY_ITEM_URL = "https://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList"
 DATA_GO_KEY = urllib.parse.unquote((os.getenv("KCS_DATA_GO_SERVICE_KEY") or "").strip())
 KCS_REGION_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTradeRegion.do"
 HBM_HSK10 = "8542323000"
 REGION_HS6 = "854232"
+MALAYSIA_COUNTRY_CODE = "MY"
 KCS_SOURCE_PAGE = "https://tradedata.go.kr/cts/index.do"
 REGIONS = {
     "samsung_chungnam": {"name": "충남", "kind": "sido", "sido": "44", "sgg": ""},
@@ -50,6 +52,8 @@ SAMSUNG_HBM4E_OFFICIAL = "https://news.samsung.com/global/samsung-electronics-be
 COUNTERPOINT_HBM_SHARE = "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share"
 BERNSTEIN_EXPORT = "https://www.investing.com/news/company-news/samsung-leads-hbm4-shipments-as-korea-export-data-shows-strength--report-93CH-4871213"
 LS_HBM4_MIX = "https://en.sedaily.com/finance/2026/08/31/ls-securities-cuts-sk-hynix-target-27-percent-raises"
+INTEL_EMIB_OFFICIAL = "https://www.intel.com/content/www/us/en/foundry/packaging.html"
+INTEL_MALAYSIA_OFFICIAL = "https://newsroom.intel.com/intel-foundry/updates-intel-10-largest-construction-projects"
 
 QUERIES = [
     '"Samsung" HBM4 HBM4E NVIDIA qualification shipment mass production',
@@ -67,6 +71,9 @@ QUERIES = [
     '"이천" 반도체 수출 한국무역협회',
     '"이천" 반도체 수출 TRASS',
     '"이천" HBM Bernstein',
+    '"Intel Malaysia" EMIB HBM advanced packaging Penang Kulim',
+    '"Malaysia" HBM EMIB Intel advanced packaging',
+    '"말레이시아" HBM Intel EMIB 첨단 패키징 Penang Kulim',
 ]
 
 TRUSTED = (
@@ -74,7 +81,7 @@ TRUSTED = (
     "sedaily", "seoul economic", "zdnet", "the elec", "thelec", "digitimes",
     "yonhap", "연합뉴스", "chosunbiz", "조선비즈", "newsis", "뉴시스",
     "kita", "한국무역협회", "k-stat", "trass", "한국무역통계진흥원",
-    "customs", "관세청", "icheon", "이천시",
+    "customs", "관세청", "icheon", "이천시", "intel",
 )
 
 LOW_VALUE = ("aol", "finance.biggo", "24/7 wall st", "247wallst", "cryptobriefing")
@@ -133,6 +140,8 @@ def source_rank(source: str) -> int:
     low = (source or "").lower()
     if "samsung" in low or "삼성전자" in low:
         return 100
+    if "intel" in low:
+        return 98
     if "reuters" in low:
         return 95
     if "counterpoint" in low or "trendforce" in low:
@@ -163,7 +172,12 @@ def relevant(text: str) -> bool:
         and ("sk hynix" in low or "sk하이닉스" in low or "semiconductor" in low or "반도체" in low or "memory" in low or "메모리" in low)
         and any(k in low for k in ("export", "shipment", "revenue", "production", "수출", "출하", "매출", "생산"))
     )
-    return (company and hbm and signal) or icheon_proxy
+    malaysia_proxy = (
+        any(k in low for k in ("malaysia", "말레이시아", "penang", "kulim"))
+        and any(k in low for k in ("hbm", "emib", "advanced packaging", "첨단 패키징", "packaging"))
+        and any(k in low for k in ("shipment", "export", "production", "capacity", "investment", "expand", "ramp", "출하", "수출", "생산", "캐파", "투자", "증설", "양산"))
+    )
+    return (company and hbm and signal) or icheon_proxy or malaysia_proxy
 
 
 def read_events() -> list[dict]:
