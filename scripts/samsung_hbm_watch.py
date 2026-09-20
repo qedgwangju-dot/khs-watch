@@ -31,7 +31,7 @@ UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot
 FRESH_HOURS = 96
 MONTHLY_DAY = 15
 COMPARE_VERSION = 4
-EVENT_STATE_VERSION = 1
+EVENT_STATE_VERSION = 2
 KCS_ITEM_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTrade.do"
 DATA_GO_ITEM_URL = "https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList"
 DATA_GO_SIDO_ITEM_URL = "https://apis.data.go.kr/1220000/sidoitemtrade/getSidoitemtradeList"
@@ -960,11 +960,13 @@ def event_state_descriptor(e: dict) -> tuple[str, str, str]:
     if not stages and not direction and not primary_values:
         return "", "", ""
 
+    evidence_state = "official" if evidence_level(e) == "공식 확인" else "reported"
     signature_parts = [
         topic_key,
         "+".join(sorted(set(stages))),
         direction,
         ";".join(primary_values),
+        evidence_state,
     ]
     signature_raw = "|".join(x for x in signature_parts if x)
     signature = hashlib.sha256(signature_raw.encode()).hexdigest()[:24]
