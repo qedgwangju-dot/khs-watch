@@ -579,6 +579,23 @@ def format_policy_message(
 def validate_final_policy_message(title: str, body: str) -> list[str]:
     errors: list[str] = []
     combined = f"{title}\n{body}"
+    plain_combined = re.sub(r"<[^>]+>", "", combined)
+    if (
+        "대미투자 | 내용 변화" in plain_combined
+        and "자동 용량 계산" in plain_combined
+        and "AP1000" in plain_combined
+        and "APR1400" in plain_combined
+    ):
+        errors.append("legacy_us_investment_article_led_format")
+    if re.search(r"미분류\s*-\d+\s*기", plain_combined):
+        errors.append("negative_unclassified_reactor_count")
+    total8 = bool(re.search(r"(?:전체|총)\s*8\s*기|원전\s*(?:최대\s*)?8\s*기", plain_combined))
+    ap8 = bool(re.search(r"AP1000[^\\n]{0,80}\\b8\s*기", plain_combined, re.I))
+    apr8 = bool(re.search(r"APR1400[^\\n]{0,80}\\b8\s*기", plain_combined, re.I))
+    if total8 and ap8 and apr8:
+        errors.append("reactor_composition_double_count")
+    if re.search(r"APR1400[^\\n]{0,80}2\s*기\s*(?:→|->|에서)\s*8\s*기", plain_combined, re.I):
+        errors.append("unsupported_apr1400_2_to_8_transition")
     if re.search(r"(?mi)^(?:🚨\s*|⚠️\s*)?KHS\s+", combined):
         errors.append("khs_branding_present")
     if re.search(r"(?m)^\s*##\s+", body):
