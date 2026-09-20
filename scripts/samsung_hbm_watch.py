@@ -422,6 +422,54 @@ def fetch_data_go_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str
     return None, f"공공데이터포털 시도 API {sido_cd} {month} HSK {HBM_HSK10} 데이터 없음"
 
 
+def fetch_data_go_country_item_month(month: str, cnty_cd: str = MALAYSIA_COUNTRY_CODE) -> tuple[dict | None, str]:
+    """Official Korea Customs country-by-item export data at HSK10 level."""
+    if not DATA_GO_KEY:
+        return None, "공공데이터포털 API 키 미설정"
+    params = {
+        "serviceKey": DATA_GO_KEY,
+        "strtYymm": month,
+        "endYymm": month,
+        "hsSgn": HBM_HSK10,
+        "cntyCd": cnty_cd,
+    }
+    try:
+        r = _request_with_retry("GET", DATA_GO_COUNTRY_ITEM_URL, params=params)
+        root = ET.fromstring(r.content)
+    except Exception as exc:
+        return None, _safe_error(f"공공데이터포털 국가별 품목 API {cnty_cd} 실패", exc)
+    code = root.findtext(".//resultCode")
+    msg = root.findtext(".//resultMsg") or ""
+    if code != "00":
+        return None, f"공공데이터포털 국가별 품목 API {cnty_cd} 오류 {code}: {msg}"
+
+    for item in root.findall(".//item"):
+        period = re.sub(r"[^0-9]", "", _xml_text(item, "year") or "")
+        hs = str(_xml_text(item, "hsCd", "hsCode") or "").replace(".", "")
+        country = str(_xml_text(item, "statCd") or "").strip().upper()
+        if period and not period.startswith(month):
+            continue
+        if hs and hs != HBM_HSK10:
+            continue
+        if country and country != cnty_cd.upper():
+            continue
+        amt = _number(_xml_text(item, "expDlr"))
+        wgt = _number(_xml_text(item, "expWgt"))
+        if amt is None:
+            continue
+        return {
+            "month": month,
+            "country_code": cnty_cd.upper(),
+            "country_name": _xml_text(item, "statCdCntnKor1") or "말레이시아",
+            "amount_usd": amt,
+            "weight_kg": wgt,
+            "hs": HBM_HSK10,
+            "source": "공공데이터포털 관세청 품목별 국가별 수출입실적 API",
+            "api": True,
+        }, ""
+    return None, f"공공데이터포털 국가별 품목 API {cnty_cd} {month} HSK {HBM_HSK10} 데이터 없음"
+
+
 def fetch_kcs_item_month(month: str, session) -> tuple[dict | None, str]:
     params = {
         "tradeKind": "ETS_MNK_1020000A",
