@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import hashlib
+import urllib.parse
 
 import war_peace_reconstruction_watch_allies as prev
 
@@ -8,7 +9,10 @@ watch = prev.watch
 runner = prev.runner
 base = prev.base
 
+SUMMIT_SENTINEL = '__TRUMP_ZELENSKY_SUMMIT_BING__'
+
 NEW_IDEA_QUERIES = [
+    SUMMIT_SENTINEL,
     '__fnnews_international_rss__',
     'site:reuters.com Kyiv preparing talks resume October senior Ukrainian official when:72h',
     'site:reuters.com (Ukraine OR Kyiv OR Budanov) October (trilateral OR "three-way" OR talks) (resume OR preparing) (Russia OR US OR U.S.) when:72h',
@@ -191,6 +195,58 @@ def _newidea_signals(row):
     return list(dict.fromkeys(signals)), sorted(set(marks))
 
 
+def _summit_bing_rss():
+    """정상회담 날짜·장소가 Google News/Axios RSS에 늦게 잡히는 경우 Bing News RSS로 보완한다."""
+    queries = (
+        '"Trump" "Zelensky" Tuesday "New York" "UN General Assembly"',
+        '"Trump to meet with Zelensky" Tuesday Axios',
+        '"Zelenskiy" Trump "New York" "UN General Assembly" meet',
+        '트럼프 젤렌스키 화요일 뉴욕 유엔총회 회담',
+    )
+    rows = []
+    seen = set()
+    errors = []
+    for query in queries:
+        try:
+            url = 'https://www.bing.com/news/search?format=rss&q=' + urllib.parse.quote(query)
+            root = watch.ET.fromstring(watch.req(url, 12))
+        except Exception as e:
+            errors.append(f'summit-bing: {type(e).__name__}')
+            continue
+        for item in root.findall('./channel/item')[:20]:
+            title = watch.clean(item.findtext('title'))
+            link = watch.clean(item.findtext('link'))
+            pub = watch.clean(item.findtext('pubDate'))
+            desc = watch.clean(item.findtext('description'))
+            blob = f'{title} {desc}'.lower()
+            if not (('trump' in blob or '트럼프' in blob) and any(k in blob for k in ('zelensky','zelenskiy','젤렌스키'))):
+                continue
+            if not any(k in blob for k in ('meet','meeting','agreed to meet','set to meet','회담','만나기로','예정')):
+                continue
+            try:
+                p = urllib.parse.urlparse(link)
+                if 'bing.com' in p.netloc.lower():
+                    direct = (urllib.parse.parse_qs(p.query).get('url') or [''])[0]
+                    if direct.startswith(('http://','https://')):
+                        link = direct
+            except Exception:
+                pass
+            key = (title.lower(), link)
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append({
+                'title': title,
+                'title_original': title,
+                'link': link,
+                'published': pub,
+                'source': 'Bing News',
+                'description': desc,
+                'feed': '정상회담 Bing 보조검색',
+            })
+    return rows, '; '.join(errors) if errors else None
+
+
 def _fnnews_international_rss():
     url = 'https://www.fnnews.com/rss/r20/fn_realnews_international.xml'
     try:
@@ -226,7 +282,9 @@ def _fnnews_international_rss():
 
 
 def newidea_google_news(query):
-    if query == '__fnnews_international_rss__':
+    if query == SUMMIT_SENTINEL:
+        rows, err = _summit_bing_rss()
+    elif query == '__fnnews_international_rss__':
         rows, err = _fnnews_international_rss()
     else:
         rows, err = _prev_google_news(query)
