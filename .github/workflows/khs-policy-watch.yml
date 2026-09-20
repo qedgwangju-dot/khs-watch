@@ -279,6 +279,7 @@ jobs:
         env:
           KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
           KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          KHS_AI_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
           KHS887900_BOT_TOKEN: ${{ secrets.KHS887900_BOT_TOKEN }}
           KHS887900_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
         run: |
@@ -308,6 +309,11 @@ jobs:
                   "chat_id": (os.environ.get("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip(),
                   "expected_username": "hs8879_bot",
               },
+              "ai_force": {
+                  "token": (os.environ.get("KHS_AI_POLICY_TELEGRAM_BOT_TOKEN") or "").strip(),
+                  "chat_id": (os.environ.get("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip(),
+                  "expected_username": "khs88798879_bot",
+              },
               "westinghouse": {
                   "token": (os.environ.get("KHS887900_BOT_TOKEN") or "").strip(),
                   "chat_id": (os.environ.get("KHS887900_CHAT_ID") or "").strip(),
@@ -334,6 +340,14 @@ jobs:
               if format_errors:
                   raise RuntimeError(f"Telegram final format failed lane={body_file}: {format_errors}")
               messages.append((title, body, route))
+              if body_file.name == "khs_trusted_policy_news_alert.md":
+                  combined = f"{title}\n{body}".lower()
+                  if ("ai force" in combined or "ai 차르" in combined or "ai czar" in combined):
+                      ai_token = (os.environ.get("KHS_AI_POLICY_TELEGRAM_BOT_TOKEN") or "").strip()
+                      if ai_token:
+                          messages.append((title, body, "ai_force"))
+                      else:
+                          print("ai_force_route_not_configured=true expected_bot=@khs88798879_bot secret=KHS_AI_POLICY_TELEGRAM_BOT_TOKEN")
 
           if not messages and telegram_test:
               report = pathlib.Path("out/khs_policy_watch.md")
@@ -414,10 +428,10 @@ jobs:
           skipped = []
           for title, body, route in messages:
               canonical = canonical_message(title, body)
-              if route == "westinghouse":
-                  canonical = f"westinghouse|{canonical}"
+              if route in {"westinghouse", "ai_force"}:
+                  canonical = f"{route}|{canonical}"
               digest = hashlib.sha256(canonical_message(title, body).encode("utf-8")).hexdigest()[:20]
-              if route == "westinghouse":
+              if route in {"westinghouse", "ai_force"}:
                   digest = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:20]
               sent_at = parse_utc(str(sent_state.get(digest, {}).get("sent_at_utc") or ""))
               if sent_at and now_utc - sent_at < dt.timedelta(hours=dedupe_hours) and not title.endswith("Telegram test"):
@@ -453,12 +467,19 @@ jobs:
                   }).encode("utf-8")
                   req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
                   with urllib.request.urlopen(req, timeout=20) as resp:
-                      resp.read()
+                      telegram_response = json.loads(resp.read().decode("utf-8"))
+                  if not telegram_response.get("ok"):
+                      raise RuntimeError(f"Telegram rejected message route={route}: {telegram_response}")
+                  message_id = (telegram_response.get("result") or {}).get("message_id")
+                  if message_id is None:
+                      raise RuntimeError(f"Telegram send succeeded without message_id route={route}")
+                  print(f"telegram_send_confirmed=true route={route} message_id={message_id}")
                   sent_state[digest] = {
                       "sent_at_utc": now_utc.isoformat().replace("+00:00", "Z"),
                       "title": title,
                       "preview": re.sub(r"\s+", " ", body)[:220],
                       "route": route,
+                      "message_id": message_id,
                   }
                   sent_by_route[route] = sent_by_route.get(route, 0) + 1
 
