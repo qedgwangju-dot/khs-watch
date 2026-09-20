@@ -528,6 +528,11 @@ STORY_RULES = (
         key="trump_direct_policy_remarks_watch",
         title="트럼프 대통령 직접 발언, 시장 영향 정책 신호",
         google_queries=(
+            "site:reuters.com Trump AI force AI czar adviser White House",
+            "\"AI force\" \"AI czar\" Trump Reuters",
+            "\"new AI adviser\" Trump Reuters",
+            "Trump AI force executive order budget procurement Reuters",
+            "Trump AI czar appointment White House Reuters",
             "site:reuters.com Trump says tariffs chips AI semiconductor China",
             "site:reuters.com Trump says Iran Israel Hormuz oil",
             "site:reuters.com Trump Iran wants talks negotiations",
@@ -559,7 +564,7 @@ STORY_RULES = (
         ),
         required_groups=(
             ("trump", "president trump", "donald trump", "donald j. trump", "트럼프"),
-            ("says", "said", "remarks", "comments", "announces", "backs", "orders", "warns", "threatens", "signals", "vows", "말했다", "밝혔다", "발언", "언급"),
+            ("says", "said", "remarks", "comments", "announces", "backs", "orders", "warns", "threatens", "signals", "vows", "signs", "creates", "establishes", "appoints", "names", "말했다", "밝혔다", "발언", "언급", "임명", "창설"),
             (
                 "tariff", "tariffs", "export control", "sanctions", "fed", "rate", "dollar", "oil",
                 "china", "taiwan", "korea", "south korea", "defense", "burden sharing", "usfk",
@@ -704,7 +709,7 @@ def is_direct_trump_statement_title(title: str) -> bool:
     low = clean_story_title(title).lower()
     return bool(
         re.search(
-            r"\b(?:president\s+)?trump\s+(?:says|said|remarks|comments|announces|backs|orders|warns|threatens|signals|vows)\b",
+            r"\b(?:president\s+)?trump\s+(?:says|said|remarks|comments|announces|backs|orders|warns|threatens|signals|vows|signs|creates|establishes|appoints|names)\b",
             low,
         )
         or re.search(r"\btrump\s+on\b", low)
@@ -1237,6 +1242,59 @@ def trump_story_profile(title: str) -> dict[str, object] | None:
             "sectors": "관세 민감 수출주, 물류/공급망",
             "failure": "대상국·품목·세율·시행일과 한국 기업 노출이 확인되지 않으면 발언성 재료로 끝납니다.",
         }
+    if any(term in low for term in ("ai adviser", "ai advisor", "ai czar", "ai force")):
+        future_language = any(
+            term in low
+            for term in (
+                "will appoint", "will name", "will create", "plans to", "plan to",
+                "without providing details", "intends to",
+            )
+        )
+        appointment_language = any(
+            term in low
+            for term in ("appoints", "appointed", "names", "named")
+        ) and not future_language
+        formalization_language = any(
+            term in low
+            for term in ("executive order", "signs", "creates", "establishes", "launches")
+        ) and not future_language
+
+        if appointment_language:
+            ai_title = "트럼프, 신임 AI 차르 임명: AI 정책 지휘체계 구체화"
+            ai_core = "트럼프가 신임 AI 차르 인선을 확정했습니다."
+            ai_stage = "인선 확정 단계 — 소속기관·법적 권한·예산·조달권은 후속 공식문서로 확인해야 합니다."
+            ai_actual = "AI 정책 총괄 인선이 발표 단계에서 실제 인선 단계로 넘어간 변화입니다."
+            ai_timeline = "2026년 9월 19일 AI Force·신임 AI 차르 구상 발표 → 신임 AI 차르 인선 확정 → 조직·권한·예산 문서 확인 단계"
+        elif formalization_language:
+            ai_title = "트럼프, AI Force 공식화 후속: 조직·권한 문서 확인 단계"
+            ai_core = "AI Force 구상이 공식 정책문서 단계로 진전됐습니다."
+            ai_stage = "공식화 단계 — 문서에 적힌 소속·권한·예산·조달 범위를 원문 기준으로 확인해야 합니다."
+            ai_actual = "단순 구상 발표를 넘어 AI Force의 실제 정부 조직·집행체계가 만들어지는지 확인하는 단계입니다."
+            ai_timeline = "2026년 9월 19일 구상 발표 → 후속 공식 정책문서 → 조직·권한·예산·조달 집행 확인"
+        else:
+            ai_title = "트럼프, AI Force 창설·신임 AI 차르 임명 예고"
+            ai_core = "트럼프가 AI Force 창설과 신임 AI 차르 임명을 예고했습니다."
+            ai_stage = "대통령 발표 단계 — 공식 행정명령·조직도·예산·임명자는 아직 공개되지 않았습니다."
+            ai_actual = "미국 정부의 AI 정책을 총괄할 새 AI 차르를 두고 AI Force를 만들겠다는 구상입니다."
+            ai_timeline = "2026년 9월 19일 발표 → 2026년 9월 20일 베선트·허리펑 AI 안보·무역 협의 예정 → 2026년 9월 24일 트럼프·시진핑 정상회담 예정"
+
+        return {
+            **common,
+            "revision": "trump-ai-force-czar-ko-v2",
+            "title": ai_title,
+            "core": ai_core,
+            "stage": ai_stage,
+            "actual": ai_actual,
+            "timeline": ai_timeline,
+            "why": "사람→조직→권한→예산→정부 AI 조달로 이어질 수 있는 새로운 AI 정책 지휘체계 신호입니다.",
+            "next": "신임 AI 차르 실명·권한, AI Force 소속·법적 근거, 행정명령·대통령각서, 예산·인원·정부 AI 조달, 미중 AI 협의 결과",
+            "investment": "현재 신규 확정 매출은 없으며, 예산·조달이 붙을 때 GPU·클라우드·보안 AI·데이터센터 전력 인프라로 실제 수요가 연결될 수 있습니다.",
+            "korea": "한국장에서는 삼성전자·SK하이닉스 HBM과 AI 서버·전력 인프라 중 미국 정부 조달·하이퍼스케일러 CAPEX에 실제 연결되는 노출만 확인합니다.",
+            "impacts": "매출·마진·현금흐름, 수급, 시간표",
+            "paths": "정책 지휘체계, 정부 AI 조달, AI 인프라 CAPEX, 미중 기술경쟁",
+            "sectors": "반도체/AI, 클라우드/보안 AI, 데이터센터 전력 인프라",
+            "failure": "행정명령·대통령각서, 인선, 예산·조달 공고 중 하나도 뒤따르지 않으면 조직명 제안 수준에서 끝납니다.",
+        }
     if (
         "semiconductor" in low
         or re.search(r"\bchips?\b", low)
@@ -1560,6 +1618,23 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
     ensure_explained(explain_item)
     title = story_display_title(rule, items)
     core = compact_policy_core(compact_core(rule, items), fallback=title)
+    profile = item_story_profile(rule, items)
+    if profile and profile.get("stage"):
+        published = parse_kst_iso(str(items[0].get("published_kst") or "")) if items else None
+        published_label = (
+            f"{published.year}년 {published.month}월 {published.day}일"
+            if published
+            else "확인 불가"
+        )
+        return [
+            f"- 발표일: {published_label}",
+            f"- 현재 단계: {profile.get('stage')}",
+            f"- 핵심: {core}",
+            f"- 실제 내용: {profile.get('actual')}",
+            f"- 타임라인: {profile.get('timeline')}",
+            f"- 왜 중요한가: {profile.get('why')}",
+            f"- 다음 확인: {profile.get('next')}",
+        ]
     return [f"- 핵심: {core}"]
 
 
