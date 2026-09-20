@@ -11,6 +11,8 @@ base = prev.base
 _prev_google_news = watch.google_news
 
 AXIOS_FEED = 'https://api.axios.com/feed/'
+AXIOS_SENTINEL = '__AXIOS_DIRECT_WAR_PEACE__'
+watch.QUERIES = [AXIOS_SENTINEL] + list(watch.QUERIES)
 
 
 def _node_text(node, name):
@@ -75,10 +77,10 @@ def axios_direct_feed():
 
 
 def google_news_with_axios(query):
+    # Axios 공개 RSS를 전용 센티널에서 직접 읽어 검색엔진 색인 지연·쿼리 순서 변경에 영향받지 않게 한다.
+    if query == AXIOS_SENTINEL:
+        return axios_direct_feed(), None
     rows, err = _prev_google_news(query)
-    # 첫 Axios 검색축에서만 직접 RSS를 합쳐 중복 네트워크 호출을 막는다.
-    if query == prev.WINTER_QUERIES[0]:
-        rows = axios_direct_feed() + rows
     return rows, err
 
 
