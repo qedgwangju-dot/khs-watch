@@ -23,7 +23,7 @@ DATA = ROOT / "data" / "rubin_socamm_capacity_watch_state.json"
 OUT = ROOT / "out"
 OUT.mkdir(exist_ok=True)
 
-UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
+UA = "Mozilla/5.0 (compatible; khs-watch/2.1; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 96
 VERA_CPUS_PER_NVL72 = 36
 GB300_CPU_MEMORY_TB = 17.3
@@ -60,6 +60,33 @@ ACTION_TERMS = (
     "actual", "출하", "주문", "양산", "공급", "구성", "출시", "샘플", "채택",
     "사양", "절반", "축소", "감소", "상향", "하향", "실제",
 )
+
+ACTOR_PATTERNS = {
+    "Dell": ("dell",),
+    "HPE": ("hpe", "hewlett packard enterprise"),
+    "Lenovo": ("lenovo",),
+    "Supermicro": ("supermicro",),
+    "GIGABYTE": ("gigabyte",),
+    "QCT": ("qct", "quanta cloud technology"),
+    "Wiwynn": ("wiwynn",),
+    "Samsung": ("samsung", "삼성"),
+    "SK hynix": ("sk hynix", "sk하이닉스", "sk 하이닉스"),
+    "Micron": ("micron",),
+    "NVIDIA": ("nvidia", "엔비디아"),
+}
+
+ACTION_PATTERNS = {
+    "양산": ("mass production", "production", "양산"),
+    "출하": ("shipment", "shipping", "ship", "출하"),
+    "주문": ("order", "주문"),
+    "공급": ("supply", "공급"),
+    "실제 구성": ("configuration", "actual", "구성", "실제"),
+    "사양": ("spec", "datasheet", "사양"),
+    "샘플": ("sample", "샘플"),
+    "채택": ("adopt", "채택"),
+    "출시": ("launch", "출시"),
+    "용량 변경": ("halve", "halved", "cut", "reduce", "reduced", "increase", "increased", "절반", "축소", "감소", "상향", "하향"),
+}
 
 
 def fetch(url: str, timeout: int = 25) -> bytes:
@@ -108,12 +135,8 @@ def decode_google_news_url(link: str) -> str:
     return ""
 
 
-def event_id(title: str, link: str) -> str:
+def evidence_id(title: str, link: str) -> str:
     return hashlib.sha256(f"{title}|{link}".encode("utf-8")).hexdigest()[:24]
-
-
-def normalize_num_token(value: str) -> str:
-    return value.lower().replace(" ", "").replace(",", "")
 
 
 def extract_capacity(text: str) -> dict:
@@ -144,7 +167,6 @@ def extract_capacity(text: str) -> dict:
     for m in re.finditer(r"(?:socamm2?|socamm|modules?|slots?|모듈|슬롯)\\s*(?:x|×|:)??\\s*([48])\\b", low):
         slots.add(int(m.group(1)))
 
-    # Only infer the standard 8-module arithmetic when the text itself supplies module + CPU/rack capacity.
     if 96 in module_values and (768 in cpu_values or any(27 <= x <= 29 for x in rack_values)):
         slots.add(8)
         cpu_values.add(768)
@@ -164,6 +186,33 @@ def extract_capacity(text: str) -> dict:
 
 def capacity_signature(cap: dict) -> str:
     return json.dumps(cap, sort_keys=True, ensure_ascii=False)
+
+
+def actor_tags(text: str) -> list[str]:
+    low = text.lower()
+    found = []
+    for label, patterns in ACTOR_PATTERNS.items():
+        if any(p.lower() in low for p in patterns):
+            found.append(label)
+    return sorted(set(found))
+
+
+def action_tags(text: str) -> list[str]:
+    low = text.lower()
+    found = []
+    for label, patterns in ACTION_PATTERNS.items():
+        if any(p.lower() in low for p in patterns):
+            found.append(label)
+    return sorted(set(found))
+
+
+def topic_state_key(cap: dict, actors: list[str], actions: list[str]) -> str:
+    payload = {
+        "capacity": cap,
+        "actors": actors or ["주체 미상"],
+        "actions": actions or ["용량 상태 확인"],
+    }
+    return json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
 def source_tier(source: str, direct_link: str) -> str:
@@ -186,7 +235,6 @@ def fetch_official_nvidia() -> tuple[dict | None, list[str]]:
             if "vera" not in low or "rubin" not in low:
                 raise RuntimeError("Vera Rubin 본문 식별 실패")
             cap = extract_capacity(text)
-            # NVIDIA table currently exposes up to 54 TB rack / 1.5 TB per Vera CPU.
             if "54 tb" in low and not any(53 <= x <= 55 for x in cap["rack_tb"]):
                 cap["rack_tb"].append(54.0)
             if "1.5 tb" in low and 1536 not in cap["cpu_gb"]:
@@ -208,7 +256,7 @@ def read_news(now: datetime) -> tuple[list[dict], list[str]]:
     items = []
     errors = []
     cutoff = now - timedelta(days=10)
-    seen = set()
+    seen_evidence = set()
     for query in QUERIES:
         for lang in ("en", "ko"):
             try:
@@ -223,31 +271,41 @@ def read_news(now: datetime) -> tuple[list[dict], list[str]]:
                     d = parse_pubdate(pub)
                     if d and d < cutoff:
                         continue
+
                     text = f"{title} {desc}"
                     low = text.lower()
                     if "vera" not in low or not any(k in low for k in ("socamm", "lpddr5x")):
                         continue
+
                     cap = extract_capacity(text)
                     if not (cap["module_gb"] or cap["cpu_gb"] or cap["rack_tb"]):
                         continue
                     if not any(k in low for k in ACTION_TERMS) and not any(k in low for k in OEM_NAMES + SUPPLIER_NAMES):
                         continue
-                    eid = event_id(title, link)
-                    if eid in seen:
-                        continue
-                    seen.add(eid)
+
                     direct = decode_google_news_url(link)
                     if not direct:
                         continue
+
+                    evid = evidence_id(title, direct)
+                    if evid in seen_evidence:
+                        continue
+                    seen_evidence.add(evid)
+
+                    actors = actor_tags(text)
+                    actions = action_tags(text)
                     items.append({
-                        "id": eid,
+                        "evidence_id": evid,
                         "title": title,
                         "description": desc,
                         "source": source or "출처 미표시",
                         "published_at_kst": d.isoformat(timespec="seconds") if d else "",
                         "direct_link": direct,
                         "capacity": cap,
-                        "signature": capacity_signature(cap),
+                        "capacity_signature": capacity_signature(cap),
+                        "actors": actors,
+                        "actions": actions,
+                        "state_key": topic_state_key(cap, actors, actions),
                         "tier": source_tier(source, direct),
                         "text": text,
                     })
@@ -267,25 +325,55 @@ def is_fresh(item: dict, now: datetime) -> bool:
     return now - timedelta(hours=FRESH_HOURS) <= d <= now + timedelta(minutes=10)
 
 
-def verified_news(items: list[dict], seen_ids: set[str], now: datetime) -> list[dict]:
-    fresh = [x for x in items if x["id"] not in seen_ids and is_fresh(x, now)]
+def verified_topic_states(items: list[dict], now: datetime) -> list[dict]:
+    fresh = [x for x in items if is_fresh(x, now)]
     grouped: dict[str, list[dict]] = {}
     for x in fresh:
-        grouped.setdefault(x["signature"], []).append(x)
+        grouped.setdefault(x["state_key"], []).append(x)
 
-    out = []
-    for sig, group in grouped.items():
+    states = []
+    for state_key, group in grouped.items():
+        official = [x for x in group if x["tier"] == "공식자료"]
+        trusted = [x for x in group if x["tier"] == "신뢰 보도"]
         source_names = {x["source"].lower() for x in group if x.get("source")}
-        good = [x for x in group if x["tier"] in ("공식자료", "신뢰 보도")]
-        if good:
-            chosen = sorted(good, key=lambda x: (x["tier"] == "공식자료", x.get("published_at_kst") or ""), reverse=True)[0]
-            chosen["verification"] = chosen["tier"]
-            out.append(chosen)
+
+        if official:
+            verification = "공식자료"
+            eligible = official + trusted
+        elif trusted:
+            verification = "신뢰 보도"
+            eligible = trusted
         elif len(source_names) >= 2:
-            chosen = sorted(group, key=lambda x: x.get("published_at_kst") or "", reverse=True)[0]
-            chosen["verification"] = f"일반 보도 {len(source_names)}곳 교차확인"
-            out.append(chosen)
-    return out
+            verification = f"일반 보도 {len(source_names)}곳 교차확인"
+            eligible = group
+        else:
+            continue
+
+        chosen = sorted(
+            eligible,
+            key=lambda x: (x["tier"] == "공식자료", x["tier"] == "신뢰 보도", x.get("published_at_kst") or ""),
+            reverse=True,
+        )[0]
+        evidence = []
+        seen_links = set()
+        for x in sorted(group, key=lambda x: x.get("published_at_kst") or "", reverse=True):
+            if x["direct_link"] in seen_links:
+                continue
+            seen_links.add(x["direct_link"])
+            evidence.append({
+                "source": x["source"],
+                "url": x["direct_link"],
+                "tier": x["tier"],
+                "published_at_kst": x["published_at_kst"],
+            })
+            if len(evidence) >= 3:
+                break
+
+        state = dict(chosen)
+        state["verification"] = verification
+        state["evidence"] = evidence
+        states.append(state)
+    return states
 
 
 def fmt_cap(cap: dict) -> list[str]:
@@ -308,12 +396,12 @@ def classify_change(cap: dict) -> str:
     has_768 = 768 in cap.get("cpu_gb", []) or any(27 <= x <= 29 for x in cap.get("rack_tb", []))
     has_1536 = 1536 in cap.get("cpu_gb", []) or any(53 <= x <= 55 for x in cap.get("rack_tb", []))
     if has_768 and has_1536:
-        return "768GB와 1.5TB급 구성이 함께 언급됨 — 다중 SKU 병행 가능성 확인 필요"
+        return "768GB와 1.5TB급 구성이 함께 확인됨 — 다중 SKU 병행 상태"
     if has_768:
-        return "약 768GB/CPU·약 28TB/랙 구성 신호"
+        return "약 768GB/CPU·약 28TB/랙 구성 상태"
     if has_1536:
-        return "최대 1.5TB/CPU·54TB/랙 구성 유지·회복 신호"
-    return "SOCAMM2 용량·구성 변화 신호"
+        return "최대 1.5TB/CPU·54TB/랙 구성 상태"
+    return "SOCAMM2 용량·구성 상태"
 
 
 def investment_math(cap: dict) -> list[str]:
@@ -333,11 +421,12 @@ def investment_math(cap: dict) -> list[str]:
     return lines
 
 
-def build_alert(now: datetime, official_change: dict | None, events: list[dict]) -> str:
+def build_alert(now: datetime, official_change: dict | None, states: list[dict]) -> str:
     blocks = [
-        "<b>Vera Rubin SOCAMM 용량 변화 감시</b>",
+        "<b>Vera Rubin SOCAMM 상태 변화 감지</b>",
         "",
         f"조회시각: {now.strftime('%Y-%m-%d %H:%M:%S KST')}",
+        "감지 기준: 기사 신규 등록이 아니라 주제·사건·공식 상태의 신규 변화",
     ]
 
     if official_change:
@@ -345,22 +434,26 @@ def build_alert(now: datetime, official_change: dict | None, events: list[dict])
         blocks += [
             "",
             "<b>무엇이 달라졌나</b>",
-            f"• NVIDIA 공식 최대 사양 변화: {html.escape(' / '.join(fmt_cap(cap)))}",
+            f"• NVIDIA 공식 최대 사양 상태 변경: {html.escape(' / '.join(fmt_cap(cap)))}",
             f"• 현재 판정: {html.escape(classify_change(cap))}",
         ]
         for x in investment_math(cap):
             blocks.append(f"• {html.escape(x)}")
         blocks += [
             "• 확정 수준: NVIDIA 공식자료",
-            f'• <a href="{html.escape(official_change["url"], quote=True)}">원문</a>',
+            f'• 근거: <a href="{html.escape(official_change["url"], quote=True)}">NVIDIA 공식 원문</a>',
         ]
 
-    for e in events:
+    for e in states:
         cap = e["capacity"]
+        actors = ", ".join(e.get("actors") or ["주체 미상"])
+        actions = ", ".join(e.get("actions") or ["용량 상태 확인"])
         blocks += [
             "",
-            "<b>신규 실제 구성·공급 신호</b>",
-            f"• {html.escape(classify_change(cap))}",
+            "<b>신규 주제·사건 상태</b>",
+            f"• 현재 상태: {html.escape(classify_change(cap))}",
+            f"• 당사자: {html.escape(actors)}",
+            f"• 상태 변화 유형: {html.escape(actions)}",
             f"• 확인 숫자: {html.escape(' / '.join(fmt_cap(cap)))}",
         ]
         for x in investment_math(cap):
@@ -377,15 +470,20 @@ def build_alert(now: datetime, official_change: dict | None, events: list[dict])
         blocks += [
             f"• 확정 수준: {html.escape(e.get('verification') or e.get('tier') or '확인 중')}",
             "• 투자 의미: 삼성전자·SK하이닉스·Micron은 비트량에 민감하고, 모듈 기판 업체는 CPU당 모듈 장수와 Vera CPU 출하량을 함께 봐야 합니다.",
-            f'• <a href="{html.escape(e["direct_link"], quote=True)}">원문</a>',
         ]
+        for idx, src in enumerate(e.get("evidence") or [], start=1):
+            label = html.escape(src.get("source") or f"근거 {idx}")
+            url = html.escape(src.get("url") or "", quote=True)
+            if url:
+                blocks.append(f'• 근거 {idx}: <a href="{url}">{label}</a>')
 
     blocks += [
         "",
         "<b>현재 기준선</b>",
         "• NVIDIA 공식 페이지: NVL72당 Vera CPU 36개, CPU 메모리 최대 54TB, Vera CPU당 최대 1.5TB LPDDR5X.",
-        "• 단순히 공식 페이지의 54TB 문구가 유지되는 것만으로는 알리지 않습니다.",
-        "• 실제 출하 SKU, OEM 주문 구성, 공급사 양산·출하, 768GB↔1.5TB 변화처럼 새로운 숫자가 확인될 때만 발송합니다.",
+        "• 같은 상태를 반복 보도한 새 기사는 알림을 발생시키지 않습니다.",
+        "• 기사 링크는 상태 변화를 입증하는 근거·교차검증 자료로만 사용합니다.",
+        "• 실제 출하 SKU, OEM 주문 구성, 공급사 양산·출하, 공식 사양 등 상태 자체가 달라질 때만 발송합니다.",
     ]
     return "\n".join(blocks).strip() + "\n"
 
@@ -406,12 +504,14 @@ def write_json(path: pathlib.Path, obj: dict) -> None:
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state, first_run = load_state()
-    seen_ids = set(state.get("seen_ids") or [])
     prev_official_sig = state.get("official_signature") or ""
+    previous_topic_states = set(state.get("known_topic_states") or [])
+    needs_state_model_migration = "known_topic_states" not in state
 
     official, official_errors = fetch_official_nvidia()
     news, news_errors = read_news(now)
-    events = verified_news(news, seen_ids, now)
+    verified_states = verified_topic_states(news, now)
+    current_state_keys = {x["state_key"] for x in verified_states}
 
     official_change = None
     current_official_sig = prev_official_sig
@@ -420,37 +520,51 @@ def main() -> None:
         if prev_official_sig and current_official_sig != prev_official_sig:
             official_change = official
 
-    all_ids = seen_ids | {x["id"] for x in news}
+    new_topic_states = []
+    if not first_run and not needs_state_model_migration:
+        new_topic_states = [x for x in verified_states if x["state_key"] not in previous_topic_states]
+
+    known_topic_states = previous_topic_states | current_state_keys
+    evidence_ids = sorted({x["evidence_id"] for x in news})[-1500:]
+
     pending = {
         "updated_at_kst": now.isoformat(timespec="seconds"),
+        "monitoring_model": "topic_event_official_state_change_v2",
         "official_signature": current_official_sig,
         "official_capacity": official.get("capacity") if official else state.get("official_capacity"),
         "official_url": official.get("url") if official else state.get("official_url"),
-        "seen_ids": sorted(all_ids)[-1500:],
+        "known_topic_states": sorted(known_topic_states),
+        "evidence_ids": evidence_ids,
         "fresh_hours": FRESH_HOURS,
         "errors": (official_errors + news_errors)[-30:],
-        "new_verified_events": len(events),
+        "verified_topic_states_now": len(verified_states),
+        "new_topic_state_changes": len(new_topic_states),
     }
     write_json(OUT / "rubin_socamm_capacity_pending_state.json", pending)
 
-    if first_run:
+    baseline_only = first_run or needs_state_model_migration
+    if baseline_only:
+        reason = "initial baseline" if first_run else "migrated from article-keyed dedupe to topic-state baseline"
         (OUT / "rubin_socamm_capacity_rebaseline.txt").write_text(
-            f"Initial SOCAMM capacity baseline at {now.isoformat(timespec='seconds')}; no Telegram alert sent.\n",
+            f"{reason} at {now.isoformat(timespec='seconds')}; no Telegram alert sent.\n",
             encoding="utf-8",
         )
-    elif official_change or events:
+    elif official_change or new_topic_states:
         (OUT / "rubin_socamm_capacity_alert.html").write_text(
-            build_alert(now, official_change, events[:6]), encoding="utf-8"
+            build_alert(now, official_change, new_topic_states[:6]), encoding="utf-8"
         )
 
     status = [
         "# Vera Rubin SOCAMM Capacity Watch",
         f"- checked_at_kst: {now.isoformat(timespec='seconds')}",
+        "- monitoring_model: topic/event/official-state change, not article arrival",
         f"- first_run_baseline: {str(first_run).lower()}",
+        f"- state_model_migration: {str(needs_state_model_migration).lower()}",
         f"- official_spec_read: {str(bool(official)).lower()}",
         f"- official_changed: {str(bool(official_change)).lower()}",
-        f"- news_candidates: {len(news)}",
-        f"- verified_new_events: {len(events)}",
+        f"- evidence_articles_scanned: {len(news)}",
+        f"- verified_topic_states_now: {len(verified_states)}",
+        f"- new_topic_state_changes: {len(new_topic_states)}",
         f"- errors: {len(official_errors) + len(news_errors)}",
     ]
     for err in (official_errors + news_errors)[:12]:
