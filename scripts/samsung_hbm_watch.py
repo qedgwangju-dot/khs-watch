@@ -1168,10 +1168,12 @@ def extract_share_observations(e: dict) -> list[dict]:
         if not values:
             continue
 
-        kind = "actual" if "Q" in period and not is_forecast_context else "forecast"
-        if kind == "forecast" and "Q" in period:
-            # Quarterly estimates are allowed but remain forecast observations.
-            pass
+        window_low = window.lower()
+        window_forecast = any(k in window_low for k in (
+            "forecast", "estimate", "estimated", "outlook", "expects", "expected",
+            "전망", "예상", "추정",
+        ))
+        kind = "actual" if "Q" in period and not window_forecast else "forecast"
         key = f"{institution}|{basis}|{period}"
         if key in seen_keys:
             continue
@@ -1245,8 +1247,6 @@ def _share_cross_source_signal(states: dict, obs: dict) -> tuple[bool, list[str]
         vals = value.get("values") or value
         if isinstance(vals, dict):
             peers.append(vals)
-    if not peers:
-        return False, []
 
     reasons = []
     for vendor in ("skhynix", "samsung", "micron"):
@@ -1284,6 +1284,7 @@ def share_change_event(obs: dict, old: dict | None, reasons: list[str]) -> dict:
     }.get(obs["institution"], obs["institution"])
     return {
         "id": "share|" + obs["key"],
+        "share_observation": obs,
         "title": obs.get("title") or f"{institution_label} HBM {kind_label}",
         "description": "",
         "source": obs.get("source") or institution_label,
