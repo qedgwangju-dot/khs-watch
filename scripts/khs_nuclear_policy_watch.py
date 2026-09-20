@@ -30,7 +30,10 @@ DIRECT_FINGERPRINT_VERSION = "ko-v2"
 # SMR는 새 기사 자체가 아니라 주제·사건의 구조화된 상태 변화를 감지한다.
 # 이 시각 이전 검색 결과는 새 모델 전환 시 소급 알림하지 않는다.
 SMR_STATE_MODEL_CUTOFF_UTC = dt.datetime(2026, 9, 20, 4, 55, tzinfo=UTC)
-SMR_STATE_MODEL_VERSION = 2
+SMR_STATE_MODEL_VERSION = 3
+# 기사·보도는 증거 수집과 교차검증용이다. SMR 알림 상태 전이는 공식 출처에서
+# 동일 사건의 실제 상태 변화가 확인된 경우에만 발생시킨다.
+SMR_REQUIRE_OFFICIAL_CONFIRMATION = True
 
 SOURCES = [
     {"name": "Westinghouse strategic partnership", "url": "https://westinghousenuclear.com/strategic-partnership/press-releases/brookfield/"},
@@ -246,6 +249,18 @@ def _self_test_material_filter() -> None:
     budget_b = _smr_state_key("SMR 실증 예산 2,000억원 확정", True)
     if budget_a == budget_b:
         raise RuntimeError("SMR budget-state change regression")
+    reported_only = [
+        {"official": False, "published_utc": "2026-09-20T06:00:00+00:00", "title": "언론 보도"},
+    ]
+    if _select_smr_state_candidate(reported_only) is not None:
+        raise RuntimeError("SMR reported-only evidence must not trigger alert regression")
+    mixed_evidence = [
+        {"official": False, "published_utc": "2026-09-20T06:00:00+00:00", "title": "새 기사"},
+        {"official": True, "published_utc": "2026-09-20T05:30:00+00:00", "title": "공식 발표"},
+    ]
+    selected = _select_smr_state_candidate(mixed_evidence)
+    if not selected or not selected.get("official"):
+        raise RuntimeError("SMR official-state selection regression")
 
 
 def _wec_status(title: str, outlet: str = "") -> str:
@@ -528,6 +543,16 @@ def collect_smr_policy_items(now: dt.datetime) -> list[dict]:
     return rows[:20]
 
 
+def _select_smr_state_candidate(family_items: list[dict]) -> dict | None:
+    """기사 자체가 아니라 공식 확인된 사건 상태만 알림 후보로 선택한다."""
+    if not SMR_REQUIRE_OFFICIAL_CONFIRMATION:
+        return family_items[0] if family_items else None
+    for item in family_items:
+        if bool(item.get("official")):
+            return item
+    return None
+
+
 def load_seen() -> dict:
     if not SEEN_PATH.exists():
         return {"seen": {}, "updated_at_kst": ""}
@@ -698,7 +723,13 @@ def main() -> int:
         items_by_family.setdefault(family, []).append(item)
 
     for family, family_items in items_by_family.items():
-        latest_smr = family_items[0]
+        latest_smr = _select_smr_state_candidate(family_items)
+        if not latest_smr:
+            print(
+                f"smr_state_pending_official family={family} "
+                f"evidence_items={len(family_items)}"
+            )
+            continue
         previous_smr = previous_states.get(family) or {}
 
         # 저장된 상태가 아직 없는 사건축은 전환 시점 이전의 가장 최근 자료를
