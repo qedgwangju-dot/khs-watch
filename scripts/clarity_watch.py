@@ -393,44 +393,65 @@ def collect_reginfo_reviews(errors):
         ("SEC", "3235"),
     ]
     for agency_name, agency_code in agencies:
-        url = f"https://www.reginfo.gov/public/do/eoReviewSearch?agencyCode={agency_code}"
-        try:
-            raw = fetch(url).decode("utf-8", "ignore")
-            soup = BeautifulSoup(raw, "html.parser")
-            page_text = clean(soup.get_text(" ", strip=True))
-            rows = parse_reginfo_review_text(page_text)
-            if not rows:
-                rows = parse_reginfo_table_rows(soup)
-            for row in rows:
-                title = clean(row.get("title") or "")
-                signal = f"{title} {row.get('rin','')}"
-                if not (TOPIC_RE.search(signal) or CRYPTO_RE.search(signal)):
-                    continue
-                stage = clean(row.get("stage") or "") or "OIRA review"
-                status = clean(row.get("status") or "")
-                rin = clean(row.get("rin") or "")
-                received = clean(row.get("received_date") or "")
-                econ = clean(row.get("economically_significant") or "")
-                deadline = clean(row.get("legal_deadline") or "")
-                detail_parts = [
-                    f"RIN {rin}",
-                    f"Status: {status}",
-                    f"Stage: {stage}",
-                ]
-                if econ:
-                    detail_parts.append(f"Economically Significant: {econ}")
-                if deadline:
-                    detail_parts.append(f"Legal Deadline: {deadline}")
-                events.append(Event(
-                    f"OIRA/RegInfo — {agency_name}",
-                    f"{agency_name} OIRA 규제검토 — {stage}",
-                    title,
-                    url,
-                    date=received,
-                    detail=" | ".join(detail_parts),
-                ))
-        except Exception as exc:
-            errors.append(f"RegInfo {agency_name}: {exc}")
+        pending_url = f"https://www.reginfo.gov/public/do/eoReviewSearch?agencyCode={agency_code}"
+        search_url = (
+            "https://www.reginfo.gov/public/Forward?"
+            f"Image61.x=0&Image61.y=0&SearchTarget=RegReview&textfield={agency_code}"
+        )
+        rows_by_key = {}
+        for url in (pending_url, search_url):
+            try:
+                raw = fetch(url).decode("utf-8", "ignore")
+                soup = BeautifulSoup(raw, "html.parser")
+                page_text = clean(soup.get_text(" ", strip=True))
+                rows = parse_reginfo_review_text(page_text)
+                rows.extend(parse_reginfo_table_rows(soup))
+                for row in rows:
+                    title = clean(row.get("title") or "")
+                    signal = f"{title} {row.get('rin','')}"
+                    if not (TOPIC_RE.search(signal) or CRYPTO_RE.search(signal)):
+                        continue
+                    key = (
+                        clean(row.get("rin") or "").upper(),
+                        clean(row.get("status") or "").lower(),
+                    )
+                    if not key[0]:
+                        continue
+                    prior = rows_by_key.get(key)
+                    prior_score = 0 if prior is None else sum(bool(clean(prior.get(k) or "")) for k in ("stage", "economically_significant", "legal_deadline", "title"))
+                    row_score = sum(bool(clean(row.get(k) or "")) for k in ("stage", "economically_significant", "legal_deadline", "title"))
+                    if prior is None or row_score > prior_score:
+                        row = dict(row)
+                        row["source_url"] = url
+                        rows_by_key[key] = row
+            except Exception as exc:
+                errors.append(f"RegInfo {agency_name} {url}: {exc}")
+
+        for row in rows_by_key.values():
+            title = clean(row.get("title") or "")
+            stage = clean(row.get("stage") or "") or "OIRA review"
+            status = clean(row.get("status") or "")
+            rin = clean(row.get("rin") or "")
+            received = clean(row.get("received_date") or "")
+            econ = clean(row.get("economically_significant") or "")
+            deadline = clean(row.get("legal_deadline") or "")
+            detail_parts = [
+                f"RIN {rin}",
+                f"Status: {status}",
+                f"Stage: {stage}",
+            ]
+            if econ:
+                detail_parts.append(f"Economically Significant: {econ}")
+            if deadline:
+                detail_parts.append(f"Legal Deadline: {deadline}")
+            events.append(Event(
+                f"OIRA/RegInfo — {agency_name}",
+                f"{agency_name} OIRA 규제검토 — {stage}",
+                title,
+                clean(row.get("source_url") or pending_url),
+                date=received,
+                detail=" | ".join(detail_parts),
+            ))
     return list({e.key: e for e in events}.values())
 
 
