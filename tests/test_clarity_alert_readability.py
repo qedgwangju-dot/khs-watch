@@ -43,6 +43,24 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         self.assertNotIn("Trump agrees to new bipartisan ethics provision in massive crypto bill", rendered)
         self.assertLessEqual(max(map(len, MOD.build_readable([event]))), 3900)
 
+    def test_oira_prerule_starts_with_easy_real_world_meaning(self):
+        event = {
+            "source": "OIRA/RegInfo — CFTC",
+            "event_type": "CFTC OIRA 규제검토 — Prerule",
+            "title": "Regulation Crypto Asset Transactions and Regulation Crypto Asset Markets",
+            "url": "https://www.reginfo.gov/public/do/eoReviewSearch?agencyCode=3038",
+            "date": "09/17/2026",
+            "detail": "RIN 3038-AF80 | Status: Pending Review | Stage: Prerule | Economically Significant: No | Legal Deadline: None",
+        }
+        rendered = "\n".join(MOD.build_readable([event]))
+        self.assertIn("<b>🧩 한마디로</b>", rendered)
+        self.assertIn("CLARITY가 의회에서 막혀도 CFTC가 기다리지 않고", rendered)
+        self.assertIn("레버리지·마진 거래", rendered)
+        self.assertIn("사전규칙 단계", rendered)
+        self.assertIn("아직 미확정", rendered)
+        self.assertIn("OIRA Pending Review 종료", rendered)
+        self.assertLessEqual(max(map(len, MOD.build_readable([event]))), 3900)
+
     def test_article_is_evidence_not_monitoring_unit(self):
         event = {
             "source": "Bloomberg Law 발언 검증",
