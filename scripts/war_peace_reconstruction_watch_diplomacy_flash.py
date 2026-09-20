@@ -54,6 +54,13 @@ FLASH_QUERIES = [
     'site:reuters.com Hormuz (reopened OR "traffic resumes" OR "shipping resumes" OR tankers OR "LNG carriers") when:1d',
     'site:fm.gov.om Hormuz (reopen OR "safe navigation" OR traffic OR shipping) when:2d',
     '(Hormuz OR 호르무즈) (reopened OR "traffic resumed" OR "shipping resumed" OR 통항 재개 OR 운항 재개 OR 재개방) (tankers OR vessels OR "LNG carriers" OR 유조선 OR 선박 OR LNG선) when:1d',
+    'site:reuters.com Trump "Camp David" ("White House" OR return OR "cut short") ("Middle East" OR Iran OR Houthi) when:1d',
+    'site:apnews.com Trump "Camp David" ("White House" OR return OR "cut short") ("Middle East" OR Iran OR Houthi) when:1d',
+    '(Trump OR 트럼프) ("Camp David" OR "캠프 데이비드") ("cut short" OR "returned early" OR "return to the White House" OR "백악관 복귀" OR "일정 단축") (Iran OR Houthi OR "Middle East" OR 이란 OR 후티 OR 중동) when:1d',
+    '("State Department" OR "U.S. embassy" OR "US embassy" OR 국무부 OR "미국 대사관") ("Middle East" OR 중동) ("security alert" OR "heightened vigilance" OR "unforeseen escalation" OR "escalate rapidly" OR 보안경보 OR 확전) when:1d',
+    '(Iran OR 이란) ("Code 100" OR "Code-100" OR "코드 100" OR 코드100) (IRGC OR Army OR "armed forces" OR 군 OR 전군 OR 혁명수비대) when:1d',
+    '(Netanyahu OR 네타냐후) ("United States" OR US OR 미국 OR 방미) ("cut short" OR "return to Israel" OR "returned to Israel" OR 조기귀국 OR 귀국 OR "일정 단축") when:1d',
+    '(Houthi OR Houthis OR 후티 OR Ansarallah OR "Ansar Allah") (Riyadh OR 리야드) (missile OR missiles OR 미사일) (attack OR launched OR intercepted OR 공격 OR 발사 OR 요격) when:1d',
 ]
 watch.QUERIES = FLASH_QUERIES + list(watch.QUERIES)
 
@@ -91,6 +98,22 @@ TRUSTED_CONFIRM_SOURCES = ('reuters', 'apnews', 'aljazeera', 'whitehouse.gov', '
 FALSE_POSITIVE_TITLE_TERMS = ('trade truce', 'trade ceasefire', '무역 휴전', '무역휴전')
 WAR_TITLE_ACTOR_TERMS = ('iran', 'iranian', 'tehran', '이란', '테헤란', 'ukraine', 'ukrainian', 'zelensky', '러시아', '우크라이나', '젤렌스키', 'putin', '푸틴', 'israel', 'gaza', 'hamas', '이스라엘', '가자', '하마스', 'houthi', 'houthis', 'ansar allah', 'ansarallah', 'yemen', 'saudi', 'oman', '후티', '안사르 알라', '안사르알라', '예멘', '사우디', '오만', 'hormuz', '호르무즈')
 WAR_TITLE_ACTION_TERMS = ('war', 'attack', 'strike', 'missile', 'drone', 'ceasefire', 'truce', 'peace', 'talks', 'negotiation', 'mediation', 'deal', 'reopen', 'blockade', '전쟁', '공격', '공습', '미사일', '드론', '휴전', '종전', '평화', '협상', '회담', '중재', '합의', '재개방', '봉쇄', '전후구상')
+
+CAMP_DAVID_TERMS = ('camp david', '캠프 데이비드')
+EARLY_RETURN_TERMS = ('cut short', 'returned early', 'return early', 'returned to the white house', 'return to the white house', 'unexpectedly returned', 'day early', 'ahead of schedule', '일정을 단축', '일정 단축', '조기 복귀', '예정보다 일찍', '백악관으로 복귀', '백악관 복귀')
+STATE_ALERT_ACTOR_TERMS = ('state department', 'u.s. embassy', 'us embassy', 'u.s. embassies', 'us embassies', 'travel.gov', '국무부', '미국 대사관', '미 대사관')
+STATE_ALERT_TERMS = ('security alert', 'security alerts', 'heightened vigilance', 'potential for unforeseen escalation', 'unforeseen escalation', 'escalate rapidly', 'reconsider travel', '보안 경보', '보안경보', '경계 강화', '예상치 못한 확전', '빠르게 확전', '여행 재고')
+MIDDLE_EAST_TERMS = ('middle east', 'mideast', 'west asia', '중동', '서아시아', 'saudi', '사우디', 'iran', '이란', 'houthi', 'houthis', '후티')
+CODE100_TERMS = ('code 100', 'code-100', '코드 100', '코드100')
+ARMED_FORCE_TERMS = ('armed forces', 'irgc', 'army', 'security forces', 'revolutionary guards', 'military', '군', '전군', '혁명수비대', '육군', '보안군', '무장군')
+NETANYAHU_TERMS = ('netanyahu', 'benjamin netanyahu', '네타냐후', '베냐민 네타냐후')
+US_TRIP_TERMS = ('u.s. trip', 'us trip', 'united states trip', 'trip to the united states', 'visit to the united states', '미국 방문', '방미', '미국 일정')
+RETURN_ISRAEL_TERMS = ('return to israel', 'returned to israel', 'fly back to israel', 'cut short', 'early return', '귀국', '조기 귀국', '조기귀국', '일정 단축')
+RIYADH_TERMS = ('riyadh', '리야드')
+MISSILE_TERMS = ('missile', 'missiles', 'ballistic missile', 'ballistic missiles', '미사일', '탄도미사일', '탄도 미사일')
+MISSILE_ACTION_TERMS = ('launched', 'fired', 'attack', 'attacked', 'intercepted', 'targeted', '발사', '공격', '요격', '표적')
+HOUTHI_TERMS = ('houthi', 'houthis', 'ansarallah', 'ansar allah', '후티', '안사르알라', '안사르 알라')
+TRUSTED_EMERGENCY_SOURCES = ('reuters', 'apnews', 'associated press', 'afp', 'whitehouse.gov', 'state.gov', 'travel.state.gov', 'gov.il', 'irna.ir', 'tasnimnews', 'tasnim', 'presstv', 'saudipressagency', 'spa.gov.sa', 'arabnews')
 
 
 def _clean_html(raw: str) -> str:
@@ -183,6 +206,39 @@ def _houthi_diplomacy_marks(row):
         return []
 
 
+def _trusted_emergency(row):
+    src = _source_text(row)
+    return any(term in src for term in TRUSTED_EMERGENCY_SOURCES)
+
+
+def _emergency_marks(row):
+    text = _text(row)
+    marks = []
+
+    if _has(text, IRAN_TERMS) and _has(text, CODE100_TERMS) and _has(text, ARMED_FORCE_TERMS):
+        if _trusted_emergency(row):
+            marks.append('이란Code100확인보도')
+        else:
+            marks.append('이란Code100미확인보도')
+
+    if _has(text, TRUMP_TERMS) and _has(text, CAMP_DAVID_TERMS) and _has(text, EARLY_RETURN_TERMS):
+        marks.append('트럼프캠프데이비드조기복귀')
+
+    if _has(text, STATE_ALERT_ACTOR_TERMS) and _has(text, STATE_ALERT_TERMS) and _has(text, MIDDLE_EAST_TERMS):
+        marks.append('미국중동다중보안경보')
+
+    if _has(text, NETANYAHU_TERMS) and _has(text, RETURN_ISRAEL_TERMS) and (_has(text, US_TRIP_TERMS) or 'united states' in text or 'u.s.' in text or '미국' in text):
+        if _trusted_emergency(row):
+            marks.append('네타냐후조기귀국확인보도')
+        else:
+            marks.append('네타냐후조기귀국미확인보도')
+
+    if _has(text, HOUTHI_TERMS) and _has(text, RIYADH_TERMS) and _has(text, MISSILE_TERMS) and _has(text, MISSILE_ACTION_TERMS):
+        marks.append('후티리야드미사일위협')
+
+    return sorted(set(marks))
+
+
 def _iran_war_stage_marks(row):
     text = _text(row)
     src = _source_text(row)
@@ -223,10 +279,25 @@ def _marks(row):
     if _has(text, KREMLIN_TERMS) and _has(text, SANCTION_TERMS) and _has(text, WORLD_ENERGY_PRICE_TERMS) and _has(text, PRICE_DOWN_TERMS):
         marks.append('크렘린제재해제에너지가격하락발언')
     marks.extend(_iran_war_stage_marks(row))
+    marks.extend(_emergency_marks(row))
     return sorted(set(marks))
 
 
 def _korean_title(marks):
+    if '이란Code100확인보도' in marks:
+        return '이란 전군 최고경계 “Code 100” 확인 보도 — 중동 비상단계 급상승'
+    if '이란Code100미확인보도' in marks:
+        return '이란 전군 최고경계 “Code 100” 보도 — 공식 확인 전 고위험 신호'
+    if '미국중동다중보안경보' in marks:
+        return '미 국무부·중동 미 대사관 보안경보 확대 — “빠른 확전 가능성” 경고'
+    if '트럼프캠프데이비드조기복귀' in marks:
+        return '트럼프, Camp David 일정 단축·백악관 조기 복귀 — 중동 긴장 동시 확대'
+    if '네타냐후조기귀국확인보도' in marks:
+        return '네타냐후, 미국 일정 단축·이스라엘 조기 귀국 확인 보도'
+    if '네타냐후조기귀국미확인보도' in marks:
+        return '네타냐후 미국 일정 단축·조기 귀국 보도 — 공식 확인 대기'
+    if '후티리야드미사일위협' in marks:
+        return '후티, 리야드 탄도미사일 공격·요격 신호 — 사우디 수도권 위험 상승'
     if '협상후퇴' in marks:
         return '이란 전쟁 협상 후퇴 신호 — 직접협상 부인·거부·결렬 여부 확인'
     if '호르무즈실물정상화' in marks:
@@ -252,6 +323,20 @@ def _korean_title(marks):
 
 def _signals(marks):
     out = []
+    if '이란Code100확인보도' in marks:
+        out.append('🔴 이란 전군 최고경계 Code 100이 신뢰 원천에서 확인 보도됨 — IRGC·정규군·보안군의 실제 배치·동원 후속 확인')
+    if '이란Code100미확인보도' in marks:
+        out.append('⚠️ 이란 Code 100 최고경계 보도 — 현재 공식·주요통신 독립확인 전이지만 사실일 경우 파급이 커서 미확인 고위험 신호로 즉시 경보')
+    if '트럼프캠프데이비드조기복귀' in marks:
+        out.append('🔴 트럼프가 Camp David 주말 일정을 하루 앞당겨 백악관으로 복귀 — 일정 변경 자체는 확인, 백악관은 복귀 사유를 공식 설명하지 않음')
+    if '미국중동다중보안경보' in marks:
+        out.append('🔴 미 국무부·중동 복수 미 대사관이 보안경보를 확대 — “예상치 못한 확전”·“군사 충돌의 빠른 확대 가능성”을 경고')
+    if '네타냐후조기귀국확인보도' in marks:
+        out.append('🔴 네타냐후의 미국 일정 단축·이스라엘 조기 귀국이 신뢰 원천에서 확인 보도됨 — 안보회의·군 지시 여부 후속 확인')
+    if '네타냐후조기귀국미확인보도' in marks:
+        out.append('⚠️ 네타냐후 미국 일정 단축·조기 귀국 보도 — 공식·주요통신 확인 전 고위험 일정 신호로 추적')
+    if '후티리야드미사일위협' in marks:
+        out.append('🔴 후티의 리야드 탄도미사일 공격·요격 신호 — 사우디 수도·공항·에너지 시설 추가 표적 여부 확인')
     if '미국단독종전협상신호' in marks:
         out.append('현재 단계: ⚠️ 협상 신호 — 트럼프의 종전 낙관·이란 합의 의향·직접접촉 주장은 확인하되 이란 측 공식 확인 전에는 휴전·종전으로 승격하지 않음')
         out.append('다음 확인: 이란 외무부·최고국가안보회의의 직접협상 인정 → 공식 회담 일정·대표단 → 휴전 문서')
@@ -294,7 +379,12 @@ def score_item(row, now):
     row['diplomacy_flash_marks'] = marks
     row['title_ko'] = _korean_title(marks) or row.get('title_ko', '')
     row['signals_ko'] = list(dict.fromkeys(_signals(marks) + list(row.get('signals_ko', []))))
+    emergency_marks = _emergency_marks(row)
     tags = ['종전·협상']
+    if emergency_marks:
+        tags += ['확전', '중동비상경보']
+        if any(m in emergency_marks for m in ('이란Code100미확인보도', '네타냐후조기귀국미확인보도')):
+            tags += ['미확인고위험']
     if '미국단독종전협상신호' in marks:
         tags += ['이란전쟁', '미국측주장', '종전신호']
     if '이란직접협상확인' in marks:
@@ -316,7 +406,12 @@ def score_item(row, now):
     if '크렘린제재해제에너지가격하락발언' in marks:
         tags += ['우크라이나·러시아', '대러제재', '에너지가격']
     row['forced_tags'] = list(dict.fromkeys(list(row.get('forced_tags', [])) + tags))
-    if any(m in marks for m in ('종전합의', '정식휴전합의', '호르무즈실물정상화', '협상후퇴')):
+    if emergency_marks:
+        if any(m in emergency_marks for m in ('이란Code100확인보도', '미국중동다중보안경보', '트럼프캠프데이비드조기복귀', '네타냐후조기귀국확인보도', '후티리야드미사일위협')):
+            score = 100
+        else:
+            score = 97
+    elif any(m in marks for m in ('종전합의', '정식휴전합의', '호르무즈실물정상화', '협상후퇴')):
         score = 100
     elif '이란직접협상확인' in marks:
         score = 99
@@ -345,19 +440,34 @@ def item_id(row):
     marks = _marks(row)
     if not marks:
         return _prev_item_id(row)
-    stage_marks = [m for m in marks if m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')]
-    if stage_marks:
-        key = 'iran-war-peace-stage-2026|' + '|'.join(sorted(stage_marks))
-    elif any(m.startswith('크렘린') for m in marks):
-        key = 'kremlin-energy-diplomacy-2026-09-15|' + '|'.join(marks)
+    emergency_marks = [m for m in marks if m in (
+        '이란Code100확인보도','이란Code100미확인보도','트럼프캠프데이비드조기복귀','미국중동다중보안경보',
+        '네타냐후조기귀국확인보도','네타냐후조기귀국미확인보도','후티리야드미사일위협',
+    )]
+    if emergency_marks:
+        try:
+            pub = watch.parse_pub(row.get('published', ''))
+            day = pub.date().isoformat() if pub else dt.datetime.now(dt.timezone.utc).date().isoformat()
+        except Exception:
+            day = dt.datetime.now(dt.timezone.utc).date().isoformat()
+        key = 'middle-east-emergency|' + day + '|' + '|'.join(sorted(emergency_marks))
     else:
-        key = 'iran-china-diplomacy-2026-09-15|' + '|'.join(marks)
+        stage_marks = [m for m in marks if m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')]
+        if stage_marks:
+            key = 'iran-war-peace-stage-2026|' + '|'.join(sorted(stage_marks))
+        elif any(m.startswith('크렘린') for m in marks):
+            key = 'kremlin-energy-diplomacy-2026-09-15|' + '|'.join(marks)
+        else:
+            key = 'iran-china-diplomacy-2026-09-15|' + '|'.join(marks)
     return hashlib.sha256(key.encode()).hexdigest()[:20]
 
 watch.item_id = item_id
 
 
 def topic_label(row):
+    emarks = _emergency_marks(row)
+    if emarks:
+        return '중동 비상 · 복합확전 경보'
     hmarks = _houthi_diplomacy_marks(row)
     if hmarks:
         return '예멘·사우디·오만 · Ansar Allah 휴전중재'
@@ -376,12 +486,37 @@ watch.topic_label = topic_label
 def _verdict(items):
     flash = [x for x in items if _marks(x)]
     marks = {m for x in flash for m in _marks(x)}
+    emergency_items = [x for x in items if _emergency_marks(x)]
+    emergency_marks = {m for x in emergency_items for m in _emergency_marks(x)}
     hitems = [x for x in items if _houthi_diplomacy_marks(x)]
     hmarks = {m for x in hitems for m in _houthi_diplomacy_marks(x)}
-    if not marks and not hmarks:
+    if not marks and not hmarks and not emergency_marks:
         return _prev_verdict(items)
 
     lines = ['<b>투자 판정</b>']
+
+    if emergency_marks:
+        confirmed = [m for m in emergency_marks if m not in ('이란Code100미확인보도', '네타냐후조기귀국미확인보도')]
+        unconfirmed = [m for m in emergency_marks if m in ('이란Code100미확인보도', '네타냐후조기귀국미확인보도')]
+        if len(confirmed) >= 2:
+            lines.append('- <b>중동 비상:</b> 🔴 서로 다른 확전 신호가 동시 발생 — 단일 루머가 아니라 복합 경보 단계')
+        else:
+            lines.append('- <b>중동 비상:</b> 🔴 고위험 확전 신호 감지 — 후속 공식 확인과 실제 군사행동을 즉시 추적')
+        if '트럼프캠프데이비드조기복귀' in emergency_marks:
+            lines.append('- <b>미국 일정:</b> 트럼프 Camp David 일정 단축·백악관 조기 복귀 확인. 복귀 사유 자체는 백악관 미설명')
+        if '미국중동다중보안경보' in emergency_marks:
+            lines.append('- <b>미국 경보:</b> 국무부·복수 중동 대사관이 예상치 못한 확전·빠른 군사확대 가능성을 경고')
+        if '후티리야드미사일위협' in emergency_marks:
+            lines.append('- <b>사우디:</b> 후티의 리야드 미사일 공격·요격 신호 — 수도·공항·에너지 인프라 위험 상승')
+        if '이란Code100확인보도' in emergency_marks:
+            lines.append('- <b>이란:</b> Code 100 전군 최고경계가 신뢰 원천에서 확인 보도됨')
+        elif '이란Code100미확인보도' in emergency_marks:
+            lines.append('- <b>이란 미확인:</b> Code 100 최고경계 보도는 공식·주요통신 독립확인 전. 사실일 경우 파급이 커 고위험 신호로 유지')
+        if '네타냐후조기귀국확인보도' in emergency_marks:
+            lines.append('- <b>이스라엘:</b> 네타냐후 미국 일정 단축·조기 귀국 확인 보도')
+        elif '네타냐후조기귀국미확인보도' in emergency_marks:
+            lines.append('- <b>이스라엘 미확인:</b> 네타냐후 조기 귀국 보도는 공식·주요통신 확인 전')
+        lines.append('- <b>다음:</b> 이란 공식 군 경계 공지 → 미·이스라엘 안보회의 → 추가 미사일·공습 → 대사관 운영축소·대피 → 호르무즈·바브엘만데브 실제 통항 변화')
 
     if hmarks:
         if '후티휴전거부' in hmarks:
@@ -432,6 +567,17 @@ def _verdict(items):
     return '\n'.join(lines)
 
 guard._verdict = _verdict
+
+_prev_emergency_color = guard._enhanced_body_color
+
+def _emergency_color(row):
+    if _emergency_marks(row):
+        return 'red'
+    return _prev_emergency_color(row)
+
+guard._enhanced_body_color = _emergency_color
+guard.prev._strict_body_color = _emergency_color
+guard.prev.core._body_color = _emergency_color
 
 
 def main():
