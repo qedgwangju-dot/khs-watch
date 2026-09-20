@@ -238,7 +238,9 @@ def snapshot_message(confirmed, tracking, market, title='기준선'):
     if market.get('year_end') is not None:
         lines.append(f"• 선물시장 2026년 말 확률가중 경로: 약 {market['year_end']:.3f}%")
     if market.get('extra_bp') is not None:
-        lines.append(f"• 9월 인상 뒤 연말까지 추가 기대: 약 +{float(market['extra_bp']):.1f}bp")
+        extra=float(market['extra_bp']); eq=hike_equivalent(extra)
+        lines.append(f"• 9월 인상 뒤 연말까지 추가 기대: 약 +{extra:.1f}bp ≈ 25bp 인상 {eq:.2f}회 상당")
+        lines.append(f"  → 쉽게 말하면: {html.escape(easy_extra_read(extra))}")
     div = divergence_view(confirmed, market)
     if div.get('gap_bp') is not None:
         lines.append(f"• 공개확인 IB 중심경로: 약 {div['ib_center']:.3f}% · 선물시장 괴리 {div['gap_bp']:+.1f}bp")
@@ -251,7 +253,8 @@ def snapshot_message(confirmed, tracking, market, title='기준선'):
         lines.append(f"• {html.escape(inst)}: 추가 {v['extra_hikes']}회 · {html.escape(v['next'])} · 연말 약 {year_end_mid(v['extra_hikes']):.3f}%{extra}")
     lines += ['', '<b>쉽게 말하면</b>',
               '• 지금 핵심은 “9월에 올렸느냐”가 아니라 그 뒤 0회·1회·2회 중 어디로 수렴하느냐입니다.',
-              '• 선물시장의 +bp는 확률을 섞은 기대값입니다. 예를 들어 +34bp는 25bp 한 번이 확정되고 또 한 번이 확정됐다는 뜻이 아니라, 여러 경로의 확률가중 평균입니다.',
+              '• 선물시장의 +bp는 확률을 섞은 기대값입니다. 예를 들어 +33.8bp는 25bp 인상 약 1.35회 상당입니다.',
+              '• 여기서 1.35회는 실제로 1.35번 인상한다는 뜻이 아닙니다. 추가 0회·1회·2회 같은 가능한 경로에 확률을 곱해 평균낸 값입니다.',
               '• 가장 큰 정책경로 차이는 추가 0회와 2회 사이 50bp입니다. 이 격차가 좁혀질 때 2년물·달러·성장주 할인율도 크게 재가격될 수 있습니다.', '',
               '<b>알림 조건</b>',
               '• 주요 IB의 추가 인상 횟수 또는 첫 다음 행동 시점 변경',
@@ -272,6 +275,10 @@ def change_message(changes, current, market):
             lines.append(f"  · {link(row['publisher'], row['url'])}")
     if market.get('year_end') is not None:
         lines += ['', f"• 현재 선물시장 연말 확률가중 경로: 약 {market['year_end']:.3f}%"]
+    if market.get('extra_bp') is not None:
+        extra=float(market['extra_bp']); eq=hike_equivalent(extra)
+        lines.append(f"• 현재 추가 인상 기대값: +{extra:.1f}bp ≈ 25bp 인상 {eq:.2f}회 상당")
+        lines.append(f"  → {html.escape(easy_extra_read(extra))}")
     lines += ['', '<b>쉽게 말하면</b>', '• 월가의 추가 인상 횟수 전망이 실제로 바뀌었는지, 그리고 선물시장도 같은 방향으로 따라가는지를 확인하는 신호입니다.']
     return '\n'.join(lines)
 
@@ -296,7 +303,7 @@ def main():
     market = market_path()
     if not old:
         divergence = divergence_view(CONFIRMED_BASE, market)
-        state = {'confirmed': CONFIRMED_BASE, 'tracking': TRACKING_BASE, 'candidate_seen': [], 'market': market, 'divergence': divergence}
+        state = {'schema_version': 2, 'confirmed': CONFIRMED_BASE, 'tracking': TRACKING_BASE, 'candidate_seen': [], 'market': market, 'divergence': divergence}
         send(snapshot_message(CONFIRMED_BASE, TRACKING_BASE, market, 'FOMC 사후 기준선'))
         save(state)
         print(json.dumps({'first_run': True, 'sent': True, 'confirmed': counts(CONFIRMED_BASE), 'market': market, 'divergence': divergence}, ensure_ascii=False))
@@ -324,10 +331,14 @@ def main():
         raw = c['institution'] + '|' + json.dumps(c['new'], sort_keys=True, ensure_ascii=False)
         seen.add(hashlib.sha256(raw.encode()).hexdigest()[:20])
 
+    wording_upgrade = int(old.get('schema_version') or 1) < 2
     if FORCE and not sent:
         send(snapshot_message(current, old.get('tracking') or TRACKING_BASE, market, '수동 재확인'))
         sent = True
-    save({'confirmed': current, 'tracking': old.get('tracking') or TRACKING_BASE, 'candidate_seen': sorted(seen), 'market': market, 'divergence': divergence})
+    elif wording_upgrade and not sent:
+        send(snapshot_message(current, old.get('tracking') or TRACKING_BASE, market, '읽는 법 개선 — 현재 기준 재표시'))
+        sent = True
+    save({'schema_version': 2, 'confirmed': current, 'tracking': old.get('tracking') or TRACKING_BASE, 'candidate_seen': sorted(seen), 'market': market, 'divergence': divergence})
     print(json.dumps({'first_run': False, 'sent': sent, 'confirmed_changes': len(changes), 'candidates': len(candidates), 'divergence_alert': divergence_alert, 'confirmed': counts(current), 'market': market, 'divergence': divergence}, ensure_ascii=False))
 
 
