@@ -61,6 +61,16 @@ def localized(event):
     return FMT.localize_event(event)
 
 
+def easy_takeaway(event, body_ko):
+    meaning = clean(FMT.easy_meaning(event, body_ko))
+    if not meaning:
+        return ""
+    parts = re.split(r"(?<=[.!?。])\s+", meaning)
+    if len(parts) <= 2:
+        return meaning
+    return " ".join(parts[:2]).strip()
+
+
 def short_change(event, title_ko, body_ko):
     et = clean(event.get("event_type", ""))
     if is_media_text_release(event):
@@ -95,6 +105,8 @@ def current_status(event):
     if is_ethics_breakthrough(event):
         return "🟡 협상 진전 — 보좌관·신뢰매체 확인. 백악관 공개 확인과 개정 법안 원문은 아직 대기 중입니다."
     stage = FMT.rule_stage(event)
+    if stage == "prerule":
+        return "🟡 사전규칙 단계 — OIRA 검토에는 들어갔지만 아직 정식 제안규칙·최종규칙·시행 규정은 아닙니다."
     if stage == "proposed":
         return "🟡 제안 단계 — 공식 제안규칙이지만 아직 최종 의무는 확정되지 않았습니다."
     if stage == "final":
@@ -190,6 +202,12 @@ def pending_lines(event):
             "개정 CLARITY 법안 원문에 실제로 들어간 윤리 조항 문구",
             "60표 확보 여부와 실제 절차표결 결과",
         ])
+    elif FMT.rule_stage(event) == "prerule":
+        lines.extend([
+            "실제 규칙 본문과 적용 대상",
+            "현물·파생·레버리지·마진·거래소 등록 가운데 무엇을 규율하는지",
+            "OIRA 검토 종료 뒤 정식 제안규칙으로 넘어가는지 여부",
+        ])
     elif FMT.rule_stage(event) == "proposed":
         lines.extend(["의견수렴 후 최종 문안", "최종 채택 여부·시행일·준수기한"])
     elif FMT.is_policy_pressure(event):
@@ -209,6 +227,8 @@ def next_check_lines(event):
         return ["예정 시각 실제 개회 여부", "cloture/motion to proceed 결과", "최종 본회의 표결 일정"]
     if "표결 결과" in et:
         return ["다음 의회 절차", "수정 문안 여부", "하원 재처리·대통령 조치"]
+    if FMT.rule_stage(event) == "prerule":
+        return ["OIRA Pending Review 종료", "CFTC 공개 문안", "정식 제안규칙(NPRM) 여부"]
     if FMT.rule_stage(event) == "proposed":
         return ["의견수렴 마감", "최종규칙 채택 여부", "시행일·준수기한"]
     if FMT.rule_stage(event) == "final":
@@ -258,8 +278,17 @@ def core_summary(event):
 
 def event_block(event, index):
     title_ko, body_ko = localized(event)
+    takeaway = easy_takeaway(event, body_ko)
     lines = [
         f"<b>{index}. {html.escape(title_ko)}</b>",
+    ]
+    if takeaway:
+        lines.extend([
+            "",
+            "<b>🧩 한마디로</b>",
+            html.escape(takeaway),
+        ])
+    lines.extend([
         "",
         "<b>🧭 무엇이 달라졌나</b>",
         html.escape(short_change(event, title_ko, body_ko)),
@@ -268,7 +297,7 @@ def event_block(event, index):
         html.escape(current_status(event)),
         "",
         "<b>💰 투자 의미</b>",
-    ]
+    ])
     for line in investment_lines(event):
         lines.append("• " + html.escape(line))
 
@@ -330,7 +359,8 @@ def build_readable(events):
     overview = ["<b>한눈에 보기</b>"]
     for event in events:
         title_ko, body_ko = localized(event)
-        overview.append("• " + html.escape(short_change(event, title_ko, body_ko)))
+        takeaway = easy_takeaway(event, body_ko)
+        overview.append("• " + html.escape(takeaway or short_change(event, title_ko, body_ko)))
         overview.append("  ↳ " + html.escape(impact_snapshot(event)))
 
     blocks = [event_block(event, i) for i, event in enumerate(events, 1)]
