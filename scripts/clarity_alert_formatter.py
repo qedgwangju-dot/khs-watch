@@ -115,6 +115,11 @@ def format_event_date_korean(value):
     return f"{parsed.year}년 {parsed.month}월 {parsed.day}일", False
 
 
+def is_oira_prerule(event):
+    signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    return ("oira" in signal or "reginfo" in signal) and ("prerule" in signal or "pre-rule" in signal)
+
+
 def rule_stage(event):
     event_type = clean(event.get("event_type", "")).lower()
     source = clean(event.get("source", "")).lower()
@@ -128,6 +133,8 @@ def rule_stage(event):
         return "proposed"
     if "final rule" in title:
         return "final"
+    if is_oira_prerule(event):
+        return "prerule"
     return ""
 
 
@@ -238,6 +245,11 @@ def special_translation(event):
     title = clean(event.get("title", ""))
     detail = clean(event.get("detail", ""))
     signal = f"{title} {detail}".lower()
+    if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
+        return (
+            "CFTC, 암호자산 거래·시장 규제안 RIN 3038-AF80을 백악관 OIRA 검토에 제출",
+            "미 백악관 OIRA의 RegInfo에는 CFTC RIN 3038-AF80 ‘Regulation Crypto Asset Transactions and Regulation Crypto Asset Markets’가 2026년 9월 17일 접수돼 Pending Review로 표시돼 있습니다. 단계는 Prerule이고, Economically Significant는 No, 법정 처리기한은 None으로 표시됩니다. 공개된 규칙 본문·적용 자산·거래소 의무는 아직 없어 제안규칙이나 최종규칙으로 보면 안 됩니다.",
+        )
     if "innovation exemption" in signal and "tokenized" in signal:
         return (
             "SEC, 토큰화 미국주식 온체인 거래에 5년 한시 ‘Innovation Exemption’ 시행",
@@ -271,6 +283,8 @@ def fallback_korean(event):
         return "Trump 대통령·Bessent 재무장관·백악관·상원 지도부 등 핵심 당사자가 CLARITY 법안의 통과 또는 절차 진행을 공개적으로 압박한 새 정책 신호입니다."
     if is_political_risk(event):
         return "CLARITY 법안의 윤리·이해충돌 조항이 상원 표 확보와 협상의 핵심 변수로 다시 부각됐습니다."
+    if stage == "prerule":
+        return "SEC 또는 CFTC의 암호자산 관련 규칙 작업이 OIRA 사전검토 단계에 들어갔습니다. 아직 제안규칙·최종규칙·시행 규정은 아닙니다."
     if stage == "proposed":
         return "SEC 또는 CFTC가 암호자산 관련 제안규칙을 공개했습니다. 아직 최종 확정이 아니라 의견수렴·수정 가능성이 남아 있습니다."
     if stage == "final":
@@ -302,6 +316,8 @@ def localize_event(event):
 def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
+        return "CLARITY 절차표결이 49대50으로 막힌 이틀 뒤 CFTC가 의회 입법과 별개로 기존 법적 권한 안에서 암호자산 시장 규칙 작업을 백악관 규제검토 단계에 올린 것입니다. 다만 Prerule은 아직 정식 제안규칙이 아니고 세부 규칙문도 공개되지 않았으므로 ‘새 규제가 시행됐다’고 해석하면 안 됩니다."
     if "innovation exemption" in signal and "tokenized" in signal:
         return "CLARITY 법안이 상원 절차표결에서 막힌 뒤 SEC가 기존 증권법상 면제 권한을 사용해 토큰화 주식 거래의 별도 규제 통로를 즉시 열었습니다. 다만 이것은 CLARITY를 대체하는 영구 법률이 아니라 5년 한시·조건부 조치입니다. 실제 주주권이 없는 합성 토큰은 제외되고, 발행회사는 제3자 토큰화 주식의 TSV 거래에 이의를 제기할 수 있습니다."
     if is_industry_pressure(event):
@@ -326,6 +342,13 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
+        return [
+            "돈 버는 능력: 현재는 Prerule이라 Coinbase·Circle·거래소의 매출·비용이 바로 바뀌지 않습니다. 향후 공개되는 적용 대상이 현물·파생상품·레버리지 거래·등록 요건 중 어디까지 포함하는지가 실제 실적 연결점입니다.",
+            "할인율: CLARITY 부결 뒤에도 CFTC가 자체 규칙 경로를 실제 가동했다는 점은 규제 공백이 영구화될 위험을 낮추는 방향이지만, 본문이 비공개라 규제강도는 아직 알 수 없습니다.",
+            "수급: 규제 명확화 기대 때문에 COIN 등 관련 자산이 반응할 수 있으나 이번 OIRA 접수 하나만으로 가격 원인을 단정하지 않습니다.",
+            "시간표: OIRA Pending Review → 검토 종료 → CFTC가 공개하는 다음 공식 문서가 핵심입니다. 현재 RegInfo에는 법정 처리기한이 없고 Prerule 단계이므로 정식 제안규칙 일정도 아직 확정되지 않았습니다.",
+        ]
     if "innovation exemption" in signal and "tokenized" in signal:
         return [
             "돈 버는 능력: Robinhood·Coinbase·Securitize처럼 토큰화 증권 거래·인프라를 준비한 사업자는 미국 내 상품 출시 경로가 바로 열려 매출 연결 가능성이 높아졌습니다. Circle은 결제·스테이블코인 인프라 측 간접 수혜로 구분합니다.",
@@ -408,6 +431,8 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
+        return "CFTC RIN 3038-AF80은 CLARITY 부결 뒤 의회 입법과 별개인 행정 규칙 경로가 실제 OIRA 검토에 들어갔다는 시간표 변화지만, 현재는 Pending Review·Prerule이고 규칙 본문도 비공개라 COIN·CRCL의 돈 버는 능력이 즉시 바뀐 단계는 아니며, 다음 핵심은 OIRA 검토 종료와 CFTC의 공개 문안입니다."
     if "innovation exemption" in signal and "tokenized" in signal:
         return "SEC의 5년 한시 Innovation Exemption은 CLARITY 부결 직후 토큰화 미국주식의 온체인 거래 통로를 실제로 연 조치로, HOOD·COIN·SECZ의 상품화 시간표와 규제 할인율에는 긍정적이고 CRCL에는 간접적이며, 한시 면제·종목/거래량 제한·발행사 거부권·향후 소송 또는 정책 반전이 최대 실패 경로입니다."
     if is_industry_pressure(event):
