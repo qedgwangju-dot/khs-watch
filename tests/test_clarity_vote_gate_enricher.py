@@ -24,6 +24,31 @@ class ClarityVoteGateEnricherTest(unittest.TestCase):
         self.assertNotIn("<i>", block)
         self.assertNotIn("<em>", block)
 
+    def test_completed_vote_is_rendered_as_current_status_not_future_gate(self):
+        block = MOD.build_gate_block({
+            "procedure": "H.R.3633 motion to proceed cloture",
+            "official_time_kst": "2026-09-16T03:15:00+09:00",
+            "votes_required": 60,
+            "current_stage": "60표 미달로 본회의 심의 진입 실패 — 최종 법안 부결은 아님",
+            "next_vote_status": "공식 새 CLARITY 표결 일정 미확인",
+            "reconsideration": {"entered": True},
+            "roll_call": {
+                "result": "Rejected",
+                "yeas": 49,
+                "nays": 50,
+                "not_voting": 1,
+                "vote_time_kst": "2026-09-16T03:19:00+09:00",
+            },
+        })
+        self.assertIn("현재 의회 상태", block)
+        self.assertIn("2026년 09월 16일 03:19 KST", block)
+        self.assertIn("Rejected — 49 / 50 / 1", block)
+        self.assertIn("재고동의", block)
+        self.assertIn("공식 새 CLARITY 표결 일정 미확인", block)
+        self.assertNotIn("<b>⏱ 표결 관문</b>", block)
+        self.assertNotIn("현재 확보", block)
+        self.assertNotIn("2026년 9월 16일 03:15 KST", block)
+
     def test_market_context_shows_macro_controls(self):
         block = MOD.build_gate_block({
             "official_time_kst": "2026-09-16T03:15:00+09:00",
