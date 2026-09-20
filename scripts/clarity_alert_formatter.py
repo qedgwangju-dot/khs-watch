@@ -77,6 +77,37 @@ def translate_ko(text):
         return ""
 
 
+def koreanize_regulatory_terms(text):
+    text = clean(text)
+    if not text:
+        return text
+    replacements = [
+        (r"\bPending Review\b", "검토 중"),
+        (r"\bConcluded\b", "검토 완료"),
+        (r"\bPrerule Stage\b", "사전규칙 단계"),
+        (r"\bPrerule\b", "사전규칙 단계"),
+        (r"\bProposed Rule Stage\b", "제안규칙 단계"),
+        (r"\bProposed Rule\b", "제안규칙"),
+        (r"\bFinal Rule Stage\b", "최종규칙 단계"),
+        (r"\bInterim Final Rule\b", "잠정 최종규칙"),
+        (r"\bFinal Rule\b", "최종규칙"),
+        (r"\bEconomically Significant\b", "경제적으로 중대한 규제 여부"),
+        (r"\bLegal Deadline\b", "법정 처리기한"),
+        (r"\bReceived Date\b", "접수일"),
+        (r"\bStatus\b", "상태"),
+        (r"\bStage\b", "단계"),
+        (r"\bcrypto exchanges?\b", "암호자산 거래소"),
+        (r"\bcrypto asset markets?\b", "암호자산 시장"),
+        (r"\bonchain finance protocols?\b", "온체인 금융 프로토콜"),
+        (r"\bderivatives\b", "파생상품"),
+        (r"\bperpetuals?\b", "무기한 선물"),
+        (r"\brulemaking\b", "규칙제정"),
+    ]
+    for pattern, replacement in replacements:
+        text = re.sub(pattern, replacement, text, flags=re.I)
+    return clean(text)
+
+
 def parse_event_date(value):
     value = clean(value)
     if not value:
@@ -308,8 +339,8 @@ def localize_event(event):
     special_title, special_body = special_translation(event)
     if special_title:
         return special_title, special_body
-    title_ko = translate_ko(event.get("title", ""))
-    detail_ko = translate_ko(event.get("detail", ""))
+    title_ko = koreanize_regulatory_terms(translate_ko(event.get("title", "")))
+    detail_ko = koreanize_regulatory_terms(translate_ko(event.get("detail", "")))
     return title_ko or fallback_korean(event), detail_ko or fallback_korean(event)
 
 
@@ -468,7 +499,7 @@ def event_block(event, index):
     url = html.escape(event.get("url", ""), quote=True)
     lines = [
         f"<b>{index}. {html.escape(title_ko)}</b>",
-        f"사건 유형: {html.escape(clean(event.get('event_type','')))}",
+        f"사건 유형: {html.escape(koreanize_regulatory_terms(clean(event.get('event_type',''))))}",
         f"출처: {html.escape(clean(event.get('source','')))}",
     ]
     if event.get("date"):
