@@ -164,6 +164,8 @@ def impact_snapshot(event):
         return "시간표 ↑↑ · 할인율 ↑ · 수급 ↑/△ · 돈 버는 능력 →"
     if "본회의 일정" in et:
         return "시간표 ↑ · 할인율 △ · 수급 △ · 돈 버는 능력 →"
+    if FMT.rule_stage(event) == "prerule":
+        return "시간표 ↑ · 규제 방향 구체화 시작 · 돈 버는 능력은 아직 미확정"
     if FMT.rule_stage(event) == "proposed":
         return "할인율 ↑/△ · 시간표 ↑ · 돈 버는 능력 미확정"
     if FMT.rule_stage(event) == "final":
@@ -228,7 +230,7 @@ def next_check_lines(event):
     if "표결 결과" in et:
         return ["다음 의회 절차", "수정 문안 여부", "하원 재처리·대통령 조치"]
     if FMT.rule_stage(event) == "prerule":
-        return ["OIRA Pending Review 종료", "CFTC 공개 문안", "정식 제안규칙(NPRM) 여부"]
+        return ["OIRA 검토 종료", "CFTC 공개 문안", "정식 제안규칙(NPRM) 여부"]
     if FMT.rule_stage(event) == "proposed":
         return ["의견수렴 마감", "최종규칙 채택 여부", "시행일·준수기한"]
     if FMT.rule_stage(event) == "final":
