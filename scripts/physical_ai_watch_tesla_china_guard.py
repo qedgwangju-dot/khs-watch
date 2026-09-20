@@ -217,7 +217,7 @@ _MARCH_18_2026_MUSK_OPTIMUS_TEXT = (
     'high-volume production around summer next year Optimus 4 design next year '
     'new improved robot design every year'
 )
-_MARCH_18_2026_MUSK_OPTIMUS_KEY = _exec_key(_MARCH_18_2026_MUSK_OPTIMUS_TEXT)
+_MARCH_18_2026_MUSK_OPTIMUS_KEY = '571c83f2d14deb01adca23481291d4fb41d2c61abca1463e75e6da6edb73b330'
 
 
 def load_state() -> dict:
