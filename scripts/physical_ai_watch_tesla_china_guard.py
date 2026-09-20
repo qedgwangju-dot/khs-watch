@@ -711,6 +711,18 @@ def key(item: dict) -> str:
             m = re.search(r'(?<!\d)(\d{2,5})(?:\s*台|\s*대|\s*(?:per\s+week|weekly))', text, re.I)
             qty = m.group(1) if m else 'unknown'
             return hashlib.sha256(f'tesla-optimus|actual-weekly-production|{qty}'.encode()).hexdigest()
+        if stage == 'executive_production_timeline':
+            try:
+                pub_year = dt.datetime.fromisoformat(item.get('published') or '').year
+            except Exception:
+                pub_year = base.NOW.year
+            if pub_year == 2026 and OPTIMUS_V3.search(text) and (
+                (EXEC_PROD_START.search(text) and re.search(r'this\s+summer|올\s*여름|이번\s*여름', text, re.I))
+                or (EXEC_HIGH_VOLUME.search(text) and re.search(r'next\s+summer|내년\s*여름', text, re.I))
+                or (OPTIMUS_V4.search(text) and re.search(r'next\s+year|내년', text, re.I))
+            ):
+                return _MARCH_18_2026_MUSK_OPTIMUS_KEY
+            return _exec_key(text)
         if stage == 'weekly_capacity_target':
             m = re.search(r'(?<!\d)(\d{2,5})(?:\s*台|\s*대|\s*(?:per\s+week|weekly))', text, re.I)
             qty = m.group(1) if m else 'unknown'
