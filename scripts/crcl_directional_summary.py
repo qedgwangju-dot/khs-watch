@@ -48,6 +48,7 @@ def direct_earnings(pending: dict) -> tuple[str, str, int]:
     usdxx = pending.get("usdxx") or {}
     cp = circle.get("_previous_distinct") or {}
     up = usdxx.get("_previous_distinct") or {}
+    usdxx_failed = any(str(x).startswith("usdxx:") for x in (pending.get("errors") or []))
 
     c_now = circle.get("circulation_usd_b")
     c_prev = cp.get("circulation_usd_b")
@@ -72,6 +73,10 @@ def direct_earnings(pending: dict) -> tuple[str, str, int]:
             parts.append(f"준비금 수익률 {float(y_now):.2f}%")
     else:
         parts.append("준비금 수익률 확인 불가")
+
+    if usdxx_failed:
+        parts.append("BlackRock 공식 원문 재조회 실패 · 직전 성공값 사용")
+        return "판정 보류", " · ".join(parts), 0
 
     # Primary earnings test: USDC circulation × actual Circle Reserve Fund 7-day SEC yield.
     # This follows the direct reserve-economics hierarchy instead of scoring volume and yield separately.
