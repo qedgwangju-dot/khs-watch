@@ -271,7 +271,10 @@ def rewrite_comparisons(text: str, pending: dict, old: dict) -> str:
     )
 
     usdxx_prev = usdxx.get("_previous_distinct") or {}
-    if usdxx_prev.get("sec_yield_7d") is not None:
+    usdxx_failed = any(str(x).startswith("usdxx:") for x in (pending.get("errors") or []))
+    if usdxx_failed:
+        usdxx_suffix = "이번 조회 BlackRock 공식 원문 접근 실패 · 직전 성공 공식값 유지"
+    elif usdxx_prev.get("sec_yield_7d") is not None:
         delta_bp = (float(usdxx.get("sec_yield_7d")) - float(usdxx_prev["sec_yield_7d"])) * 100.0
         usdxx_suffix = f"직전 공식일({usdxx_prev.get('date')}) 대비 {delta_bp:+.1f}bp"
     else:
