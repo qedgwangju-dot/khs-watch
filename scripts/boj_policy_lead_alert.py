@@ -1222,7 +1222,6 @@ def market_path_has_policy_content(signal: Signal) -> bool:
         or signal.neutral_rate
         or signal.inflation_upside
         or signal.stabilize_underlying_around_2
-        or signal.risk_channels
     )
 
 
