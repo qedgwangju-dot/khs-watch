@@ -16,6 +16,7 @@ on:
       - "scripts/yen_carry_structural_risk_floor.py"
       - "scripts/yen_carry_policy_path_overlay.py"
       - "scripts/yen_carry_real_rate_overlay.py"
+      - "scripts/yen_carry_policy_reaction_watch.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_composite_watch.py"
@@ -24,6 +25,7 @@ on:
       - "tests/test_yen_carry_target_currency_confirmation.py"
       - "tests/test_yen_carry_policy_path_overlay.py"
       - "tests/test_yen_carry_real_rate_overlay.py"
+      - "tests/test_yen_carry_policy_reaction_watch.py"
   schedule:
     - cron: "6,21,36,51 * * * *"
   workflow_dispatch:
@@ -40,6 +42,7 @@ on:
       - "scripts/yen_carry_structural_risk_floor.py"
       - "scripts/yen_carry_policy_path_overlay.py"
       - "scripts/yen_carry_real_rate_overlay.py"
+      - "scripts/yen_carry_policy_reaction_watch.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_composite_watch.py"
@@ -48,9 +51,11 @@ on:
       - "tests/test_yen_carry_target_currency_confirmation.py"
       - "tests/test_yen_carry_policy_path_overlay.py"
       - "tests/test_yen_carry_real_rate_overlay.py"
+      - "tests/test_yen_carry_policy_reaction_watch.py"
       - "data/yen_carry_composite_design.json"
       - "data/yen_carry_composite_state.json"
       - "data/yen_carry_structural_state.json"
+      - "data/yen_carry_policy_reaction_state.json"
 
 permissions:
   contents: write
@@ -93,13 +98,15 @@ jobs:
           python -m py_compile scripts/yen_carry_structural_risk_floor.py
           python -m py_compile scripts/yen_carry_policy_path_overlay.py
           python -m py_compile scripts/yen_carry_real_rate_overlay.py
+          python -m py_compile scripts/yen_carry_policy_reaction_watch.py
           PYTHONPATH=scripts python -m unittest \
             tests/test_yen_carry_composite_watch.py \
             tests/test_yen_carry_composite_sources.py \
             tests/test_yen_carry_structural_upgrade.py \
             tests/test_yen_carry_target_currency_confirmation.py \
             tests/test_yen_carry_policy_path_overlay.py \
-            tests/test_yen_carry_real_rate_overlay.py -v
+            tests/test_yen_carry_real_rate_overlay.py \
+            tests/test_yen_carry_policy_reaction_watch.py -v
 
       - name: Check multi-factor carry state
         run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py
@@ -171,7 +178,8 @@ jobs:
             out/yen_carry_target_currency_context.md \
             out/yen_carry_structural_context.md \
             out/yen_carry_policy_path_context.md \
-            out/yen_carry_real_rate_context.md; do
+            out/yen_carry_real_rate_context.md \
+            out/yen_carry_policy_reaction_context.md; do
             if [ -f "$f" ]; then
               printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
               cat "$f" >> "$GITHUB_STEP_SUMMARY"
@@ -343,7 +351,6 @@ jobs:
           import json
           import os
           import pathlib
-          import re
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
@@ -362,149 +369,21 @@ jobs:
 
           title = pathlib.Path('out/yen_carry_policy_reaction_alert_title.txt').read_text(encoding='utf-8').strip()
           body = pathlib.Path('out/yen_carry_policy_reaction_alert.md').read_text(encoding='utf-8').strip()
-          text = f'{title}\n\n{body}'
-
+          lines = [title, '', *body.splitlines()]
           section_headers = {'판정', '정책 변화', 'USD/JPY 정책 반응', '실질금리·시장금리', '해석', '출처'}
-          source_labels = {
-              'BOJ 정책결정': '일본은행 정책결정',
-              'Fed FOMC': '연준 FOMC',
-              'USD/JPY 정책반응': 'USD/JPY',
-          }
-          raw_source_re = re.compile(r'^- (.+?): (https?://\\S+)        if: always() && env.TELEGRAM_DRY_RUN != 'true'
-        run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py --finalize
-
-      - name: Finalize structural state only after baseline or confirmed delivery
-        if: always() && env.TELEGRAM_DRY_RUN != 'true'
-        run: PYTHONPATH=scripts python scripts/yen_carry_structural_upgrade.py --finalize
-
-      - name: Commit confirmed or baseline state
-        if: always() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('data/yen_carry_composite_state.json') != ''
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          mkdir -p "$RUNNER_TEMP/yen-carry-composite-state"
-          cp data/yen_carry_composite_state.json "$RUNNER_TEMP/yen-carry-composite-state/composite.json" 2>/dev/null || true
-          cp data/yen_carry_structural_state.json "$RUNNER_TEMP/yen-carry-composite-state/structural.json" 2>/dev/null || true
-
-          for attempt in 1 2 3; do
-            git fetch origin main
-            git reset --hard origin/main
-
-            python - <<'PY'
-          import datetime as dt
-          import json
-          import os
-          import pathlib
-
-          temp = pathlib.Path(os.environ["RUNNER_TEMP"]) / "yen-carry-composite-state"
-          data = pathlib.Path("data")
-
-          def load(path):
-              try:
-                  return json.loads(path.read_text(encoding="utf-8"))
-              except Exception:
-                  return {}
-
-          def stamp(value):
-              text = str(value or "").strip()
-              if not text:
-                  return None
-              try:
-                  return dt.datetime.fromisoformat(text.replace("Z", "+00:00"))
-              except Exception:
-                  return None
-
-          def newer_or_equal(local, remote):
-              local_ts = stamp(local.get("updated_at_kst"))
-              remote_ts = stamp(remote.get("updated_at_kst"))
-              if local_ts and remote_ts:
-                  return local_ts >= remote_ts
-              return bool(local_ts) or not bool(remote_ts)
-
-          def merge_file(local_name, target_name, preserve_nested_target=False):
-              local_path = temp / local_name
-              target_path = data / target_name
-              if not local_path.exists():
-                  return
-              local = load(local_path)
-              remote = load(target_path)
-              if newer_or_equal(local, remote):
-                  merged = dict(remote)
-                  merged.update(local)
-              else:
-                  merged = dict(remote)
-
-              if preserve_nested_target:
-                  local_target = local.get("target_currency") or {}
-                  remote_target = remote.get("target_currency") or {}
-                  local_target_ts = stamp(local_target.get("updated_at_kst"))
-                  remote_target_ts = stamp(remote_target.get("updated_at_kst"))
-                  if local_target and (
-                      not remote_target
-                      or (local_target_ts and (not remote_target_ts or local_target_ts >= remote_target_ts))
-                  ):
-                      merged["target_currency"] = local_target
-
-              target_path.write_text(
-                  json.dumps(merged, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-                  encoding="utf-8",
-              )
-
-          merge_file("composite.json", "yen_carry_composite_state.json", preserve_nested_target=True)
-          merge_file("structural.json", "yen_carry_structural_state.json")
-          PY
-
-            git add data/yen_carry_composite_state.json data/yen_carry_structural_state.json 2>/dev/null || true
-            if git diff --cached --quiet; then
-              echo "엔캐리 복합·구조 상태 변경 없음"
-              exit 0
-            fi
-
-            git commit -m "Update yen carry composite and structural states"
-            if git push origin HEAD:main; then
-              exit 0
-            fi
-            sleep $((attempt * 3))
-          done
-          exit 1
-
-      - name: Upload verification artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: yen-carry-composite-${{ github.run_id }}
-          path: |
-            out/yen_carry_composite_watch.md
-            out/yen_carry_composite_pending_state.json
-            out/yen_carry_composite_alert_title.txt
-            out/yen_carry_composite_alert.md
-            out/yen_carry_composite_alert.json
-            out/yen_carry_composite_telegram_confirmed.json
-            out/yen_carry_confirmation.md
-            out/yen_carry_confirmation.json
-            out/yen_carry_target_currency_context.md
-            out/yen_carry_target_currency_context.json
-            out/yen_carry_structural_context.md
-            out/yen_carry_structural_context.json
-            out/yen_carry_structural_pending_state.json
-            out/yen_carry_policy_path_context.md
-            out/yen_carry_policy_path_context.json
-            out/yen_carry_real_rate_context.md
-            out/yen_carry_real_rate_context.json
-            out/khs_source_failures.json
-          if-no-files-found: ignore
-          retention-days: 14
-)
 
           rendered = []
-          for i, line in enumerate(text.splitlines()):
-              match = raw_source_re.match(line)
-              if match and match.group(1) in source_labels:
-                  label = source_labels[match.group(1)]
-                  url = match.group(2)
-                  rendered.append(f'- {html.escape(label)} — <a href="{html.escape(url, quote=True)}">원문</a>')
-              elif i == 0 or line in section_headers:
+          for index, line in enumerate(lines):
+              if line.startswith('- BOJ 정책결정: '):
+                  url = line.split(': ', 1)[1]
+                  rendered.append(f'- 일본은행 정책결정 — <a href="{html.escape(url, quote=True)}">원문</a>')
+              elif line.startswith('- Fed FOMC: '):
+                  url = line.split(': ', 1)[1]
+                  rendered.append(f'- 연준 FOMC — <a href="{html.escape(url, quote=True)}">원문</a>')
+              elif line.startswith('- USD/JPY 정책반응: '):
+                  url = line.split(': ', 1)[1]
+                  rendered.append(f'- USD/JPY — <a href="{html.escape(url, quote=True)}">원문</a>')
+              elif index == 0 or line in section_headers:
                   rendered.append(f'<b>{html.escape(line)}</b>')
               elif line.startswith(('- BOJ 정책 반응:', '- 신호 충돌:', '- 경과 ')):
                   rendered.append(f'<b>{html.escape(line)}</b>')
@@ -560,6 +439,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/yen-carry-composite-state"
           cp data/yen_carry_composite_state.json "$RUNNER_TEMP/yen-carry-composite-state/composite.json" 2>/dev/null || true
           cp data/yen_carry_structural_state.json "$RUNNER_TEMP/yen-carry-composite-state/structural.json" 2>/dev/null || true
+          cp data/yen_carry_policy_reaction_state.json "$RUNNER_TEMP/yen-carry-composite-state/policy_reaction.json" 2>/dev/null || true
 
           for attempt in 1 2 3; do
             git fetch origin main
@@ -627,9 +507,10 @@ jobs:
 
           merge_file("composite.json", "yen_carry_composite_state.json", preserve_nested_target=True)
           merge_file("structural.json", "yen_carry_structural_state.json")
+          merge_file("policy_reaction.json", "yen_carry_policy_reaction_state.json")
           PY
 
-            git add data/yen_carry_composite_state.json data/yen_carry_structural_state.json 2>/dev/null || true
+            git add data/yen_carry_composite_state.json data/yen_carry_structural_state.json data/yen_carry_policy_reaction_state.json 2>/dev/null || true
             if git diff --cached --quiet; then
               echo "엔캐리 복합·구조 상태 변경 없음"
               exit 0
@@ -666,6 +547,12 @@ jobs:
             out/yen_carry_policy_path_context.json
             out/yen_carry_real_rate_context.md
             out/yen_carry_real_rate_context.json
+            out/yen_carry_policy_reaction_context.md
+            out/yen_carry_policy_reaction_context.json
+            out/yen_carry_policy_reaction_pending_state.json
+            out/yen_carry_policy_reaction_alert_title.txt
+            out/yen_carry_policy_reaction_alert.md
+            out/yen_carry_policy_reaction_telegram_confirmed.json
             out/khs_source_failures.json
           if-no-files-found: ignore
           retention-days: 14
