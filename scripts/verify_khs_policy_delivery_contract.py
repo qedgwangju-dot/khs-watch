@@ -77,6 +77,7 @@ def main() -> int:
     assert_workflow_delivery_dedupe()
     assert_final_policy_telegram_format_and_currency_conversion()
     assert_policy_source_links_are_html_safe()
+    assert_policy_timeline_dates_are_bold_and_source_is_clickable()
     assert_domestic_telecom_title_gate_and_semantic_dedupe()
     assert_router_explains_current_fcc_documents()
     assert_runtime_patch_accepts_mofcom_watch_source()
@@ -164,6 +165,40 @@ def assert_policy_source_links_are_html_safe() -> None:
     if "정책·규제" not in telegram_html:
         raise AssertionError("Telegram HTML payload did not preserve policy text")
 
+
+
+def assert_policy_timeline_dates_are_bold_and_source_is_clickable() -> None:
+    title, body = khs_policy_telegram_formatter.format_policy_message(
+        "미국 AI 정책지휘체계 중요 변화",
+        "\n".join(
+            [
+                "트럼프, AI Force 창설·신임 AI 차르 임명 예고",
+                "- 발표일: 2026년 9월 19일",
+                "- 현재 단계: 대통령 발표 단계",
+                "- 타임라인:",
+                "  • 2026년 9월 19일: AI Force·신임 AI 차르 구상 발표",
+                "  • 2026년 9월 20일: 미중 AI 안보·무역 협의",
+                "  • 2026년 9월 24일: 정상회담",
+                "- 출처: [Reuters](https://www.reuters.com/world/us/trump-says-he-will-create-ai-force-name-ai-czar-2026-09-19/) · 조회 10:00 KST",
+            ]
+        ),
+        now=dt.datetime(2026, 9, 20, 10, 0, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    telegram_html = khs_policy_telegram_formatter.prepare_telegram_html(title, body)
+    for date in ("2026년 9월 19일", "2026년 9월 20일", "2026년 9월 24일"):
+        if f"<b>{date}</b>" not in telegram_html:
+            raise AssertionError(f"Timeline date was not bolded in Telegram HTML: {date}")
+    if "<b>2026년 9월 19일</b>" in telegram_html.split("- 발표일:", 1)[1].split("- 현재 단계:", 1)[0]:
+        raise AssertionError("Announcement date was bolded even though only timeline dates should be bold")
+    expected_anchor = (
+        '<a href="https://www.reuters.com/world/us/'
+        'trump-says-he-will-create-ai-force-name-ai-czar-2026-09-19/">원문</a>'
+    )
+    if expected_anchor not in telegram_html:
+        raise AssertionError("AI policy source was not rendered as one clickable 원문 link")
+    visible_without_anchor = telegram_html.replace(expected_anchor, "")
+    if "https://www.reuters.com/" in visible_without_anchor:
+        raise AssertionError("AI policy Telegram output still exposes the raw Reuters URL")
 
 
 def assert_foreign_first_policy_sources() -> None:
