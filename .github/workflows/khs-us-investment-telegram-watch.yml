@@ -54,6 +54,7 @@ jobs:
             scripts/khs_us_investment_finalize.py \
             scripts/khs_us_investment_altpower_finalize.py \
             scripts/khs_us_investment_telegram_send.py
+          python scripts/khs_us_investment_watch_stateful.py --self-test
 
       # Every relevant code push validates the real Telegram bot/chat route.
       # Live monitoring and Telegram delivery still run only on schedule/manual dispatch.
@@ -106,41 +107,23 @@ jobs:
           watcher = importlib.util.module_from_spec(spec)
           spec.loader.exec_module(watcher)
 
-          # 사용자가 요청한 미국·한국 최대 8기 원전/건설역량 분석축을 기존 watcher에 추가한다.
+          # 기사 고정감시가 아니라 '미국 원전 구성·대미투자 사건축'을 넓게 탐색한다.
+          # 개별 기사 제목/URL은 증거일 뿐 알림 trigger가 아니며,
+          # 실제 송출 여부는 stateful watcher의 교차검증된 사건 상태 변화가 결정한다.
           requested_queries = [
-              '"Can America Build Enough Nuclear Reactors" when:14d',
-              '"KHNP" "Westinghouse" "Eight U.S. Reactors" when:14d',
-              '"AP1000" "APR1400" Korea reactors when:14d',
+              '"미국 원전" 한국 AP1000 APR1400 한수원 웨스팅하우스 when:14d',
+              '"대미투자" 원전 기수 노형 AP1000 APR1400 when:14d',
+              '"US nuclear" Korea AP1000 APR1400 KHNP Westinghouse when:14d',
           ]
           for query in requested_queries:
               if query not in watcher.core.QUERIES:
                   watcher.core.QUERIES.append(query)
-          for source in ["The National Interest", "National Interest", "BusinessKorea"]:
+          for source in ["Reuters", "Bloomberg", "Wall Street Journal", "WSJ", "연합뉴스", "뉴스1", "한국경제", "머니투데이"]:
               if source not in watcher.core.TRUSTED:
                   watcher.core.TRUSTED.append(source)
-          for term in ["nuclear", "reactor", "AP1000", "APR1400", "eight reactors"]:
+          for term in ["nuclear", "reactor", "AP1000", "APR1400", "원전", "노형", "기수"]:
               if term not in watcher.core.MATERIAL:
                   watcher.core.MATERIAL.append(term)
-
-          original_material_facts = watcher._material_facts
-
-          def material_facts_with_capacity_bottleneck(row):
-              facts = set(original_material_facts(row))
-              title = str(row.get("title") or "")
-              source = str(row.get("source") or "")
-              low = f"{title} {source}".lower()
-              if "can america build enough nuclear reactors" in low and "national interest" in low:
-                  facts.add("units:8기")
-                  facts.add("stage:건설역량·핵연료 공급망 병목")
-              if "khnp" in low and "westinghouse" in low and (
-                  "eight u.s. reactors" in low or "eight reactors" in low
-              ):
-                  facts.add("units:8기")
-                  facts.add("party:khnp")
-                  facts.add("party:westinghouse")
-              return facts
-
-          watcher._material_facts = material_facts_with_capacity_bottleneck
 
           original_collapse = watcher._collapse_rows
           # Westinghouse 지분/거버넌스는 전용 원전 watcher 한 곳만 Telegram 송출한다.
