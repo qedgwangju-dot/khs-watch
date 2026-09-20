@@ -23,6 +23,7 @@ STATUS_PATH = OUT_DIR / "crcl_usdc_rate_watch_status.md"
 
 CIRCLE_USDC_URL = "https://www.circle.com/usdc"
 BLACKROCK_USDXX_URL = "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund"
+BLACKROCK_USDXX_ALT_URL = "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares"
 NYFED_SOFR_URL = "https://www.newyorkfed.org/markets/reference-rates/sofr"
 TREASURY_CURVE_URL = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView"
 PROSHARES_TBX_URL = "https://www.proshares.com/our-etfs/leveraged-and-inverse/tbx"
@@ -75,20 +76,42 @@ def circle_usdc() -> dict:
 
 
 def blackrock_usdxx() -> dict:
-    text = " ".join(BeautifulSoup(fetch(BLACKROCK_USDXX_URL), "html.parser").get_text(" ", strip=True).split())
-    m = re.search(r"7\s*Day\s*SEC\s*Yield\s*as\s*of\s*(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*([\d.]+)%", text, re.I)
-    if not m:
-        raise RuntimeError("BlackRock USDXX 7-Day SEC yield could not be parsed")
-    d = dt.datetime.strptime(m.group(1), "%d-%b-%Y").date()
-    y = float(m.group(2))
+    errors = []
+    for url in (BLACKROCK_USDXX_URL, BLACKROCK_USDXX_ALT_URL):
+        try:
+            req = urllib.request.Request(
+                url,
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/152 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                    "Accept-Language": "en-US,en;q=0.9",
+                },
+            )
+            with urllib.request.urlopen(req, timeout=35) as r:
+                raw = r.read()
+            text = " ".join(BeautifulSoup(raw, "html.parser").get_text(" ", strip=True).split())
+            m = re.search(r"7\s*Day\s*SEC\s*Yield\s*as\s*of\s*(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*([\d.]+)%", text, re.I)
+            if not m:
+                raise RuntimeError("7-Day SEC yield could not be parsed")
+            d = dt.datetime.strptime(m.group(1), "%d-%b-%Y").date()
+            y = float(m.group(2))
 
-    size = None
-    size_date = None
-    sm = re.search(r"Size\s+of\s+Fund\s*\(Millions\)\s*as\s*of\s*(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*\$\s*([\d,]+(?:\.\d+)?)", text, re.I)
-    if sm:
-        size_date = dt.datetime.strptime(sm.group(1), "%d-%b-%Y").date().isoformat()
-        size = float(sm.group(2).replace(",", ""))
-    return {"date": d.isoformat(), "sec_yield_7d": y, "fund_size_usd_m": size, "fund_size_date": size_date}
+            size = None
+            size_date = None
+            sm = re.search(r"Size\s+of\s+Fund\s*\(Millions\)\s*as\s*of\s*(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*\$\s*([\d,]+(?:\.\d+)?)", text, re.I)
+            if sm:
+                size_date = dt.datetime.strptime(sm.group(1), "%d-%b-%Y").date().isoformat()
+                size = float(sm.group(2).replace(",", ""))
+            return {
+                "date": d.isoformat(),
+                "sec_yield_7d": y,
+                "fund_size_usd_m": size,
+                "fund_size_date": size_date,
+                "source_url": url,
+            }
+        except Exception as e:
+            errors.append(f"{url}: {e}")
+    raise RuntimeError("BlackRock USDXX fetch failed on all official URLs: " + " | ".join(errors))
 
 
 def infer_mmdd_year(mmdd: str) -> dt.date:
