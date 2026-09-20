@@ -28,8 +28,9 @@ ENERGY_ATTACK_QUERIES = [
 
 COUNTERSTRIKE_QUERIES = [
     ENERGY_ATTACK_SENTINEL,
-    'site:reuters.com Russia (refinery OR "oil refinery") (drone OR attack OR fire OR shutdown OR processing) Ukraine when:12h',
-    'site:reuters.com Russia ("oil depot" OR "fuel depot" OR pipeline OR terminal OR port) (drone OR attack OR fire) Ukraine when:12h',
+    'site:reuters.com ("drones hit" OR "drone attack" OR "drone strike") ("oil refinery" OR refinery) Ukraine when:12h',
+    'site:reuters.com ("shuts processing" OR "halted processing" OR "stopped processing" OR shutdown) refinery drone Ukraine when:2d',
+    'site:reuters.com ("oil depot" OR "fuel depot" OR pipeline OR terminal OR port) Ukraine (drone OR attack OR fire) when:12h',
     'site:reuters.com Ukraine (power plant OR substation OR "energy infrastructure") (missile OR drone OR attack OR fire) Russia when:12h',
     'site:reuters.com Saratov drone civilian infrastructure governor Ukraine when:12h',
     'site:tass.com Saratov drone civilian infrastructure governor Ukraine when:12h',
@@ -171,22 +172,25 @@ def _facility_label(t):
 
 def _counter_signals(row):
     t = _text(row)
+    # 에너지시설 공격 분류는 기사 제목·요약의 현재 사건을 우선한다.
+    # 긴 본문에 과거 여러 국가 사례가 함께 나오는 해설기사를 신규 공격으로 오인하지 않는다.
+    h = ' '.join([row.get('title_original',''), row.get('description','')]).lower()
     signals, marks = [], []
 
-    rus = _has(t, RUSSIA_TERMS)
-    ukr = _has(t, UKRAINE_TERMS)
-    attack = _has(t, ATTACK_TERMS)
-    refinery = _has(t, REFINERY_TERMS)
-    storage = _has(t, STORAGE_TERMS)
-    pipeline = _has(t, PIPELINE_TERMS)
-    terminal = _has(t, TERMINAL_TERMS)
-    gas = _has(t, GAS_TERMS)
-    power = _has(t, POWER_TERMS)
+    rus = _has(h, RUSSIA_TERMS)
+    ukr = _has(h, UKRAINE_TERMS)
+    attack = _has(h, ATTACK_TERMS)
+    refinery = _has(h, REFINERY_TERMS)
+    storage = _has(h, STORAGE_TERMS)
+    pipeline = _has(h, PIPELINE_TERMS)
+    terminal = _has(h, TERMINAL_TERMS)
+    gas = _has(h, GAS_TERMS)
+    power = _has(h, POWER_TERMS)
 
-    # 러시아 에너지 인프라: 시설 실명이 없어도 러시아 + 자산유형 + 공격이면 잡는다.
+    # 러시아 에너지 인프라: 시설 실명이 없어도 제목·요약에서 러시아 + 자산유형 + 공격이면 잡는다.
     if rus and attack and refinery:
         marks += ['러시아정유시설공격','에너지시설공격']
-        label = _facility_label(t) or '러시아 정유시설'
+        label = _facility_label(h) or '러시아 정유시설'
         signals.append(f'{label} 공격·피격 신호 — 화재·가동중단·처리량 감소 여부 후속 확인')
     if rus and attack and storage:
         marks += ['러시아저장시설공격','에너지시설공격']
