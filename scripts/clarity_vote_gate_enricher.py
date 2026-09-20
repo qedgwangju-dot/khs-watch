@@ -32,7 +32,7 @@ def _procedure_ko(value):
     raw = str(value or "").strip()
     low = raw.lower()
     if "h.r.3633" in low and "motion to proceed" in low and "cloture" in low:
-        return "H.R.3633 본회의 심의 진행을 위한 토론종결(cloture) 표결"
+        return "H.R.3633 motion to proceed cloture(본회의 심의 진행을 위한 토론종결) 표결"
     return raw or "H.R.3633 본회의 심의 진행 절차"
 
 
@@ -70,7 +70,7 @@ def build_gate_block(gate):
             f"• 현재 단계 │ {html.escape(current_stage or '공식 절차 상태 확인 중')}",
         ]
         if reconsideration.get("entered") is True:
-            lines.append("• 후속 절차 │ Thom Tillis가 부결된 토론종결 표결의 재고동의를 제출")
+            lines.append("• 후속 절차 │ Thom Tillis가 부결된 cloture(토론종결) 표결의 motion to reconsider(재고동의)를 제출")
         elif reconsideration.get("entered") is None:
             lines.append("• 후속 절차 │ 재고동의 원문 확인 상태를 재점검 중")
         lines.append(f"• 다음 CLARITY 표결 │ {html.escape(next_vote)}")
