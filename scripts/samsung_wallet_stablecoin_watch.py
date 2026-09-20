@@ -175,6 +175,112 @@ def fingerprint(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()[:20]
 
 
+def topic_state(official: dict, candidates: list[dict]) -> dict:
+    """Derive one subject/event state. Articles are evidence, never alert objects."""
+    evidence_text = " ".join(
+        f"{item.get('title', '')} {item.get('summary', '')}" for item in candidates
+    ).lower()
+
+    support_plan = bool(official.get("samsung_support_confirmed"))
+    job_exists = bool(official.get("job_fetch_ok"))
+    stablecoin_bd_scope = bool(official.get("job_stablecoin_confirmed")) or (
+        job_exists
+        and (
+            ("stablecoin" in evidence_text or "스테이블코인" in evidence_text)
+            and ("r118656" in evidence_text or "사업개발" in evidence_text or "business development" in evidence_text)
+        )
+    )
+
+    # Do not infer a stablecoin partner merely because Galaxy Card uses Barclays/Visa.
+    stablecoin_partner = ""
+    partner_patterns = [
+        ("Circle", ("circle", "usdc")),
+        ("Tether", ("tether", "usdt")),
+        ("PayPal", ("paypal", "pyusd")),
+        ("Stripe", ("stripe",)),
+        ("Visa", ("visa",)),
+        ("Mastercard", ("mastercard",)),
+    ]
+    launch_terms = ("launch", "launched", "live", "pilot", "rollout", "출시", "상용화", "파일럿", "도입")
+    stable_terms = ("stablecoin", "stable coin", "스테이블코인")
+    for name, aliases in partner_patterns:
+        if any(alias in evidence_text for alias in aliases) and any(term in evidence_text for term in stable_terms):
+            # Partner is only promoted when the same evidence also contains an execution term.
+            if any(term in evidence_text for term in launch_terms):
+                stablecoin_partner = name
+                break
+
+    pilot_or_launch = (
+        any(term in evidence_text for term in stable_terms)
+        and any(term in evidence_text for term in launch_terms)
+        and ("samsung wallet" in evidence_text or "삼성월렛" in evidence_text)
+    )
+
+    if pilot_or_launch:
+        stage = 4
+        stage_name = "파일럿·출시 실행"
+    elif stablecoin_partner:
+        stage = 3
+        stage_name = "스테이블코인 파트너 구체화"
+    elif stablecoin_bd_scope:
+        stage = 2
+        stage_name = "사업개발·파트너십 실행"
+    elif support_plan:
+        stage = 1
+        stage_name = "지원 계획 공식화"
+    else:
+        stage = 0
+        stage_name = "확인 전"
+
+    return {
+        "topic": "Samsung Wallet stablecoin adoption",
+        "stage": stage,
+        "stage_name": stage_name,
+        "support_plan": support_plan,
+        "job_exists": job_exists,
+        "stablecoin_bd_scope": stablecoin_bd_scope,
+        "stablecoin_partner": stablecoin_partner,
+        "pilot_or_launch": pilot_or_launch,
+    }
+
+
+def state_changed(old_state: dict, new_state: dict) -> tuple[bool, list[str]]:
+    changes: list[str] = []
+    if not old_state:
+        return True, ["기준 상태 생성"]
+    if int(new_state.get("stage", 0)) > int(old_state.get("stage", 0)):
+        changes.append(
+            f"단계 상승: {old_state.get('stage_name', '확인 전')} → {new_state.get('stage_name', '확인 전')}"
+        )
+    for field, label in (
+        ("stablecoin_partner", "스테이블코인 파트너"),
+        ("pilot_or_launch", "파일럿·출시 상태"),
+        ("support_plan", "지원 계획"),
+        ("stablecoin_bd_scope", "사업개발 범위"),
+    ):
+        if new_state.get(field) != old_state.get(field):
+            changes.append(f"{label} 변경: {old_state.get(field)} → {new_state.get(field)}")
+    return bool(changes), changes
+
+
+def evidence_links(candidates: list[dict]) -> list[dict]:
+    """Keep corroborating sources for the state transition; do not create one alert per article."""
+    out: list[dict] = []
+    seen: set[str] = set()
+    for item in candidates:
+        link = str(item.get("link") or "")
+        if not link or link in seen:
+            continue
+        seen.add(link)
+        out.append({
+            "title": item.get("title") or "",
+            "link": link,
+            "published_utc": item.get("published_utc") or "",
+            "source": item.get("source") or "",
+        })
+    return out[:8]
+
+
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     DATA_DIR.mkdir(exist_ok=True)
@@ -183,113 +289,91 @@ def main() -> int:
     now_kst = dt.datetime.now(KST)
     now_utc = now_kst.astimezone(UTC)
     old = load_state()
-    seen = dict(old.get("seen") or {})
+    old_topic = old.get("topic_state") or {}
 
     official = official_context()
     candidates = rss_candidates(now_utc)
-
-    # The missed Samsung US job posting is a high-impact catch-up event. It is sent once,
-    # then future alerts are driven by fresh RSS/official changes.
-    catchup_key = fingerprint("samsung-wallet-stablecoin-business-development-R118656")
-    catchup_new = catchup_key not in seen and (
-        official["job_stablecoin_confirmed"] or official["article_confirmed"]
-    )
-
-    fresh_news: list[dict] = []
-    for item in candidates:
-        key = fingerprint((item.get("title") or "") + "|" + (item.get("link") or ""))
-        if key in seen:
-            continue
-        item["fingerprint"] = key
-        fresh_news.append(item)
-
-    alert_needed = catchup_new or bool(fresh_news)
-
-    pending_seen = dict(seen)
-    if catchup_new:
-        pending_seen[catchup_key] = {
-            "event": "Samsung Wallet stablecoin payments BD job R118656",
-            "first_seen_kst": now_kst.isoformat(timespec="seconds"),
-            "source": DIGITAL_ASSET_URL,
-        }
-    for item in fresh_news[:5]:
-        pending_seen[item["fingerprint"]] = {
-            "event": item.get("title"),
-            "first_seen_kst": now_kst.isoformat(timespec="seconds"),
-            "source": item.get("link"),
-        }
+    current = topic_state(official, candidates)
+    changed, changes = state_changed(old_topic, current)
+    evidence = evidence_links(candidates)
 
     pending = {
         "updated_at_kst": now_kst.isoformat(timespec="seconds"),
-        "seen": pending_seen,
+        "topic_state": current,
+        "evidence": evidence,
         "official": official,
-        "fresh_candidates": [
-            {
-                "title": x.get("title"),
-                "link": x.get("link"),
-                "published_utc": x.get("published_utc"),
-            }
-            for x in fresh_news[:10]
-        ],
     }
     PENDING_PATH.write_text(
         json.dumps(pending, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
 
-    if alert_needed:
+    if changed:
         support = "공식 확인" if official["samsung_support_confirmed"] else "공식 페이지 재확인 필요"
         job = (
             "Samsung Careers 원문에서 stablecoin 업무 직접 확인"
             if official["job_stablecoin_confirmed"]
-            else "Samsung Careers 원문 동적 페이지 미확인 · Digital Asset 보도로 채용공고 내용 확인"
+            else "Samsung Careers 직무 존재 확인 + 복수 보도로 stablecoin 업무 범위 교차검증"
         )
         lines = [
-            "<b>삼성월렛 스테이블코인 사업 실행 신호</b>",
+            "<b>Samsung Wallet 스테이블코인 상태 변화</b>",
             f"<code>조회 {html.escape(now_kst.isoformat(timespec='seconds'))}</code>",
             "",
             "<b>무엇이 달라졌나</b>",
-            "• 삼성전자 미국법인이 Samsung Wallet 결제 사업개발 직무에서 <b>Stablecoin</b>을 issuer·payments·fintech·BNPL과 함께 제휴 분야로 명시",
-            "• 해당 역할은 파트너 발굴, 상업조건·데이터 이용·제품 요구사항 협상, 제품팀과 신규 기능 출시까지 담당",
+        ]
+        lines += [f"• {html.escape(change)}" for change in changes]
+        lines += [
             "",
-            "<b>현재 판정</b>",
-            "• <b>계획 → 사업개발·파트너십 실행 단계로 한 단계 구체화</b>",
-            f"• Samsung Business Insights의 Wallet stablecoin 지원 계획: <b>{support}</b>",
-            f"• 채용 원문 검증: {html.escape(job)}",
+            "<b>현재 상태</b>",
+            f"• <b>{html.escape(str(current['stage_name']))}</b> · 단계 {current['stage']}",
+            f"• Samsung Wallet stablecoin 지원 계획: <b>{support}</b>",
+            f"• 결제 BD 실행 신호: {html.escape(job)}",
+        ]
+        if current.get("stablecoin_partner"):
+            lines.append(
+                f"• 스테이블코인 관련 파트너: <b>{html.escape(str(current['stablecoin_partner']))}</b>"
+            )
+        else:
+            lines.append("• 스테이블코인 발행사·체인·결제 파트너 실명: <b>아직 확정 확인 없음</b>")
+
+        lines += [
             "",
             "<b>투자 의미</b>",
-            "• Galaxy 단말의 Samsung Wallet이 스테이블코인 결제·송금 유통채널이 될 가능성을 높이는 실행 신호",
-            "• 특정 발행사(USDC·USDT 등), 체인, 출시국, 출시일, 수수료·수익배분은 아직 공식 확정되지 않아 수혜주를 단정하지 않음",
-            "• 다음 핵심 트리거: 발행사/결제망 실명, 파일럿·출시국, 앱 기능 공개, 상용화 일정, 수수료 구조",
+            "• 기사 수가 늘어난 것이 아니라 <b>Samsung Wallet의 스테이블코인 채택 단계가 실제로 변했는지</b>를 기준으로 알림",
+            "• 같은 내용을 반복 보도하는 기사만 추가되면 알림하지 않음",
+            "• 다음 상태 변화: 발행사/결제망 실명 → 파일럿 → 출시국·출시일 → Wallet 기능 공개 → 상용화·수수료 구조",
             "",
-            "<b>원문</b>",
-            f'• Samsung Careers R118656: <a href="{WORKDAY_JOB_URL}">원문</a>',
+            "<b>근거·교차검증</b>",
             f'• Samsung Business Insights: <a href="{SAMSUNG_INSIGHTS_URL}">원문</a>',
-            f'• Digital Asset 단독: <a href="{DIGITAL_ASSET_URL}">원문</a>',
+            f'• Samsung Careers R118656: <a href="{WORKDAY_JOB_URL}">원문</a>',
         ]
-        if fresh_news:
-            lines += ["", "<b>추가 최신 보도</b>"]
-            for item in fresh_news[:3]:
-                title = html.escape(str(item.get("title") or "관련 보도"))
-                link = html.escape(str(item.get("link") or ""))
-                lines.append(f'• <a href="{link}">{title}</a>')
+        if official["article_confirmed"]:
+            lines.append(f'• Digital Asset 확인 기사: <a href="{DIGITAL_ASSET_URL}">근거</a>')
+        for item in evidence[:3]:
+            title = html.escape(str(item.get("title") or "교차검증"))
+            link = html.escape(str(item.get("link") or ""))
+            lines.append(f'• <a href="{link}">{title}</a>')
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
     status = [
-        "# Samsung Wallet stablecoin adoption watch",
+        "# Samsung Wallet stablecoin adoption state watch",
         "",
         f"- 조회시각(KST): {now_kst.isoformat(timespec='seconds')}",
+        f"- current stage: {current['stage']} / {current['stage_name']}",
+        f"- state changed: {changed}",
+        f"- changes: {'; '.join(changes) if changes else 'none'}",
         f"- Samsung official support signal: {official['samsung_support_confirmed']}",
-        f"- Workday stablecoin direct parse: {official['job_stablecoin_confirmed']}",
-        f"- Digital Asset job report confirmed: {official['article_confirmed']}",
-        f"- fresh RSS candidates: {len(fresh_news)}",
-        f"- alert: {alert_needed}",
+        f"- Workday job exists: {official['job_fetch_ok']}",
+        f"- stablecoin BD scope: {current['stablecoin_bd_scope']}",
+        f"- partner: {current['stablecoin_partner'] or 'unconfirmed'}",
+        f"- pilot/live: {current['pilot_or_launch']}",
+        f"- evidence count: {len(evidence)}",
         f"- errors: {'; '.join(official['errors']) if official['errors'] else 'none'}",
     ]
     STATUS_PATH.write_text("\n".join(status) + "\n", encoding="utf-8")
     print(
-        f"samsung_wallet_stablecoin_alert={str(alert_needed).lower()} "
-        f"catchup={str(catchup_new).lower()} fresh_news={len(fresh_news)}"
+        f"samsung_wallet_stablecoin_state_changed={str(changed).lower()} "
+        f"stage={current['stage']} evidence={len(evidence)}"
     )
     return 0
 
