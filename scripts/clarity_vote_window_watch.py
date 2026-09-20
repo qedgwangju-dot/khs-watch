@@ -23,6 +23,7 @@ DEMOCRATS_SCHEDULE = "https://www.democrats.senate.gov/2026/08/08/schedule-for-p
 DAILY_PRESS = "https://www.dailypress.senate.gov/thursday-september-10-2026/"
 ROLL_CALL_MENU = "https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.htm"
 FLOOR_ACTIVITY = "https://www.senate.gov/legislative/LIS/floor_activity/09_15_2026_Senate_Floor.htm"
+SENATE_SCHEDULE_INDEX = "https://www.democrats.senate.gov/floor/senate-schedule"
 NEWS_RSS = "https://news.google.com/rss/search"
 
 SCHEDULE_ET = dt.datetime(2026, 9, 15, 14, 15, tzinfo=ZoneInfo("America/New_York"))
@@ -163,6 +164,53 @@ def reconsideration_status():
             "url": FLOOR_ACTIVITY,
             "status": f"재고동의 원문 확인 실패: {exc}",
         }
+
+
+def next_clarity_schedule_status():
+    try:
+        soup = BeautifulSoup(fetch_text(SENATE_SCHEDULE_INDEX), "html.parser")
+    except Exception as exc:
+        return {"found": False, "status": "공식 새 CLARITY 표결 일정 확인 실패", "error": str(exc)}
+
+    seen = set()
+    candidates = []
+    for link in soup.find_all("a", href=True):
+        title = clean(link.get_text(" ", strip=True))
+        if "schedule for" not in title.lower():
+            continue
+        url = urllib.parse.urljoin(SENATE_SCHEDULE_INDEX, link.get("href"))
+        if url in seen:
+            continue
+        seen.add(url)
+        m = re.search(r"/(20\\d{2})/(\\d{2})/(\\d{2})/", url)
+        if not m:
+            continue
+        published = dt.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        if published <= dt.date(2026, 9, 15):
+            continue
+        candidates.append((published, title, url))
+
+    for published, title, url in sorted(candidates, reverse=True)[:8]:
+        try:
+            page = clean(BeautifulSoup(fetch_text(url), "html.parser").get_text(" ", strip=True))
+        except Exception:
+            continue
+        if not re.search(r"H\\.?R\\.?\\s*3633|Digital\\s+Asset\\s+Market\\s+Clarity|CLARITY\\s+Act", page, re.I):
+            continue
+        if not re.search(r"vote|cloture|motion\\s+to\\s+proceed|reconsider|consideration|calendar", page, re.I):
+            continue
+        return {
+            "found": True,
+            "status": f"새 공식 일정 확인 — {title}",
+            "title": title,
+            "url": url,
+            "published": published.isoformat(),
+        }
+    return {
+        "found": False,
+        "status": "공식 새 CLARITY 표결 일정 미확인",
+        "url": SENATE_SCHEDULE_INDEX,
+    }
 
 
 def roll_call_result():
@@ -355,6 +403,7 @@ def main():
 
     result = roll_call_result()
     reconsideration = reconsideration_status() if result else {"entered": None, "url": FLOOR_ACTIVITY, "status": "표결 결과 확인 전"}
+    next_schedule = next_clarity_schedule_status() if result else {"found": False, "status": "예정된 cloture 표결 대기"}
     result_signature = ""
     result_is_new = False
     if result:
@@ -424,9 +473,16 @@ def main():
         if snap and now_et < SCHEDULE_ET:
             pre_vote_market = snap
 
-    reaction = {}
-    reaction_window = ""
-    if result and pre_vote_market:
+    reaction = state.get("market_reaction_snapshot") or {}
+    reaction_window = str(state.get("market_reaction_window") or "")
+    vote_actual_utc = None
+    if result and result.get("vote_time_et"):
+        try:
+            vote_actual_utc = dt.datetime.fromisoformat(result["vote_time_et"]).astimezone(ZoneInfo("UTC"))
+        except Exception:
+            vote_actual_utc = None
+
+    if result and pre_vote_market and not reaction and vote_actual_utc and vote_actual_utc <= now_utc <= vote_actual_utc + dt.timedelta(minutes=30):
         post_vote_market, post_errors = market_snapshot()
         market_errors.extend(post_errors)
         reaction = market_reaction(pre_vote_market, post_vote_market)
@@ -465,7 +521,8 @@ def main():
     gate = {
         "status": "roll_call_completed" if result else ("confirmed_two_official_sources" if schedule_confirmed else "schedule_verification_incomplete"),
         "current_stage": ("60표 미달로 본회의 심의 진입 실패 — 최종 법안 부결은 아님" if roll_rejected else ("cloture 관문 통과 — 후속 본회의 절차 확인" if result else "예정 표결 대기")),
-        "next_vote_status": "공식 새 CLARITY 표결 일정 미확인" if roll_rejected else ("후속 본회의 절차 확인 중" if result else "예정된 cloture 표결 대기"),
+        "next_vote_status": (next_schedule.get("status") if result else "예정된 cloture 표결 대기"),
+        "next_vote_schedule": next_schedule,
         "reconsideration": reconsideration,
         "procedure": "H.R.3633 motion to proceed cloture",
         "official_time_et": SCHEDULE_ET.isoformat(),
@@ -489,6 +546,9 @@ def main():
         "seen_context_events": sorted(seen_context),
         "pre_vote_market": pre_vote_market,
         "market_24h_done": market_24h_done,
+        "market_reaction_snapshot": reaction,
+        "market_reaction_window": reaction_window,
+        "next_schedule_signature": (next_schedule.get("url") if next_schedule.get("found") else state.get("next_schedule_signature", "")),
         "updated_at_kst": now_kst.isoformat(timespec="seconds"),
         "monitoring_unit": "event_state_change_not_article",
     })
@@ -502,6 +562,7 @@ def main():
         "schedule_errors": schedule_errors,
         "roll_call_found": bool(result),
         "reconsideration": reconsideration,
+        "next_vote_schedule": next_schedule,
         "lummis_signal_found": bool(lummis),
         "bessent_signal_found": bool(bessent),
         "market_24h_done": market_24h_done,
