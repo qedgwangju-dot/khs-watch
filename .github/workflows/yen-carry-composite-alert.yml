@@ -132,6 +132,10 @@ jobs:
         if: always() && hashFiles('out/yen_carry_composite_pending_state.json') != ''
         run: PYTHONPATH=scripts python scripts/yen_carry_real_rate_overlay.py
 
+      - name: Track BOJ policy reaction against USDJPY
+        if: always() && hashFiles('out/yen_carry_composite_pending_state.json') != ''
+        run: PYTHONPATH=scripts python scripts/yen_carry_policy_reaction_watch.py
+
       - name: Require all structural sources in validation
         if: github.event_name == 'pull_request'
         run: |
@@ -181,6 +185,14 @@ jobs:
           cat out/yen_carry_composite_alert_title.txt >> "$GITHUB_STEP_SUMMARY"
           printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
           cat out/yen_carry_composite_alert.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preview BOJ policy reaction alert without sending
+        if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/yen_carry_policy_reaction_alert.md') != ''
+        run: |
+          printf '\n---\n\nBOJ 정책반응 텔레그램 미전송 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/yen_carry_policy_reaction_alert_title.txt >> "$GITHUB_STEP_SUMMARY"
+          printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/yen_carry_policy_reaction_alert.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Send through verified KHS Telegram route only
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_composite_alert.md') != ''
@@ -313,6 +325,223 @@ jobs:
           )
           print(f'telegram_delivery_confirmed=true lane=yen_carry_composite bot=@{actual} message_ids={message_ids}')
           PY
+
+      - name: Send BOJ policy reaction through verified KHS Telegram route
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_policy_reaction_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "GLOBAL_RATES_TELEGRAM_* secrets가 없습니다. 다른 봇/채팅으로 대체하지 않습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import datetime as dt
+          import html
+          import json
+          import os
+          import pathlib
+          import re
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
+          chat_id = os.environ['TELEGRAM_CHAT_ID'].strip()
+          expected = os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+
+          with urllib.request.urlopen(
+              urllib.request.Request(f'https://api.telegram.org/bot{token}/getMe'), timeout=25
+          ) as response:
+              identity = json.loads(response.read().decode('utf-8'))
+          actual = str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower() != expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+
+          title = pathlib.Path('out/yen_carry_policy_reaction_alert_title.txt').read_text(encoding='utf-8').strip()
+          body = pathlib.Path('out/yen_carry_policy_reaction_alert.md').read_text(encoding='utf-8').strip()
+          text = f'{title}\n\n{body}'
+
+          section_headers = {'판정', '정책 변화', 'USD/JPY 정책 반응', '실질금리·시장금리', '해석', '출처'}
+          source_labels = {
+              'BOJ 정책결정': '일본은행 정책결정',
+              'Fed FOMC': '연준 FOMC',
+              'USD/JPY 정책반응': 'USD/JPY',
+          }
+          raw_source_re = re.compile(r'^- (.+?): (https?://\\S+)        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py --finalize
+
+      - name: Finalize structural state only after baseline or confirmed delivery
+        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: PYTHONPATH=scripts python scripts/yen_carry_structural_upgrade.py --finalize
+
+      - name: Commit confirmed or baseline state
+        if: always() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('data/yen_carry_composite_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          mkdir -p "$RUNNER_TEMP/yen-carry-composite-state"
+          cp data/yen_carry_composite_state.json "$RUNNER_TEMP/yen-carry-composite-state/composite.json" 2>/dev/null || true
+          cp data/yen_carry_structural_state.json "$RUNNER_TEMP/yen-carry-composite-state/structural.json" 2>/dev/null || true
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+
+          temp = pathlib.Path(os.environ["RUNNER_TEMP"]) / "yen-carry-composite-state"
+          data = pathlib.Path("data")
+
+          def load(path):
+              try:
+                  return json.loads(path.read_text(encoding="utf-8"))
+              except Exception:
+                  return {}
+
+          def stamp(value):
+              text = str(value or "").strip()
+              if not text:
+                  return None
+              try:
+                  return dt.datetime.fromisoformat(text.replace("Z", "+00:00"))
+              except Exception:
+                  return None
+
+          def newer_or_equal(local, remote):
+              local_ts = stamp(local.get("updated_at_kst"))
+              remote_ts = stamp(remote.get("updated_at_kst"))
+              if local_ts and remote_ts:
+                  return local_ts >= remote_ts
+              return bool(local_ts) or not bool(remote_ts)
+
+          def merge_file(local_name, target_name, preserve_nested_target=False):
+              local_path = temp / local_name
+              target_path = data / target_name
+              if not local_path.exists():
+                  return
+              local = load(local_path)
+              remote = load(target_path)
+              if newer_or_equal(local, remote):
+                  merged = dict(remote)
+                  merged.update(local)
+              else:
+                  merged = dict(remote)
+
+              if preserve_nested_target:
+                  local_target = local.get("target_currency") or {}
+                  remote_target = remote.get("target_currency") or {}
+                  local_target_ts = stamp(local_target.get("updated_at_kst"))
+                  remote_target_ts = stamp(remote_target.get("updated_at_kst"))
+                  if local_target and (
+                      not remote_target
+                      or (local_target_ts and (not remote_target_ts or local_target_ts >= remote_target_ts))
+                  ):
+                      merged["target_currency"] = local_target
+
+              target_path.write_text(
+                  json.dumps(merged, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+                  encoding="utf-8",
+              )
+
+          merge_file("composite.json", "yen_carry_composite_state.json", preserve_nested_target=True)
+          merge_file("structural.json", "yen_carry_structural_state.json")
+          PY
+
+            git add data/yen_carry_composite_state.json data/yen_carry_structural_state.json 2>/dev/null || true
+            if git diff --cached --quiet; then
+              echo "엔캐리 복합·구조 상태 변경 없음"
+              exit 0
+            fi
+
+            git commit -m "Update yen carry composite and structural states"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yen-carry-composite-${{ github.run_id }}
+          path: |
+            out/yen_carry_composite_watch.md
+            out/yen_carry_composite_pending_state.json
+            out/yen_carry_composite_alert_title.txt
+            out/yen_carry_composite_alert.md
+            out/yen_carry_composite_alert.json
+            out/yen_carry_composite_telegram_confirmed.json
+            out/yen_carry_confirmation.md
+            out/yen_carry_confirmation.json
+            out/yen_carry_target_currency_context.md
+            out/yen_carry_target_currency_context.json
+            out/yen_carry_structural_context.md
+            out/yen_carry_structural_context.json
+            out/yen_carry_structural_pending_state.json
+            out/yen_carry_policy_path_context.md
+            out/yen_carry_policy_path_context.json
+            out/yen_carry_real_rate_context.md
+            out/yen_carry_real_rate_context.json
+            out/khs_source_failures.json
+          if-no-files-found: ignore
+          retention-days: 14
+)
+
+          rendered = []
+          for i, line in enumerate(text.splitlines()):
+              match = raw_source_re.match(line)
+              if match and match.group(1) in source_labels:
+                  label = source_labels[match.group(1)]
+                  url = match.group(2)
+                  rendered.append(f'- {html.escape(label)} — <a href="{html.escape(url, quote=True)}">원문</a>')
+              elif i == 0 or line in section_headers:
+                  rendered.append(f'<b>{html.escape(line)}</b>')
+              elif line.startswith(('- BOJ 정책 반응:', '- 신호 충돌:', '- 경과 ')):
+                  rendered.append(f'<b>{html.escape(line)}</b>')
+              else:
+                  rendered.append(html.escape(line))
+          telegram_html = '\n'.join(rendered)
+
+          payload = urllib.parse.urlencode({
+              'chat_id': chat_id,
+              'text': telegram_html,
+              'parse_mode': 'HTML',
+              'disable_web_page_preview': 'true',
+          }).encode('utf-8')
+          request = urllib.request.Request(
+              f'https://api.telegram.org/bot{token}/sendMessage', data=payload, method='POST'
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode('utf-8'))
+          if not result.get('ok'):
+              raise RuntimeError(f'Telegram rejected yen_carry_policy_reaction: {result}')
+
+          confirmed = {
+              'status': 'confirmed',
+              'lane': 'yen_carry_policy_reaction',
+              'bot_username': actual,
+              'message_ids': [(result.get('result') or {}).get('message_id')],
+              'confirmed_at_kst': dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
+          }
+          pathlib.Path('out/yen_carry_policy_reaction_telegram_confirmed.json').write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          print(f'telegram_delivery_confirmed=true lane=yen_carry_policy_reaction bot=@{actual}')
+          PY
+
+      - name: Finalize BOJ policy reaction state only after confirmed delivery
+        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: PYTHONPATH=scripts python scripts/yen_carry_policy_reaction_watch.py --finalize
 
       - name: Finalize composite state only after baseline or confirmed delivery
         if: always() && env.TELEGRAM_DRY_RUN != 'true'
