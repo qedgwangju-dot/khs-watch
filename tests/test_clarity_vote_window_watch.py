@@ -27,6 +27,16 @@ class ClarityVoteWindowWatchTest(unittest.TestCase):
         self.assertTrue(MOD.BESSENT_RE.search(text))
         self.assertTrue(MOD.BESSENT_BANK_RE.search(text))
 
+    def test_vote_result_time_uses_actual_roll_call_time(self):
+        et, kst = MOD.parse_vote_time("Vote Date: September 15, 2026, 02:19 PM")
+        self.assertIsNotNone(et)
+        self.assertIsNotNone(kst)
+        self.assertEqual(kst.strftime("%Y-%m-%d %H:%M"), "2026-09-16 03:19")
+
+    def test_tillis_reconsideration_is_recognized_as_post_vote_status(self):
+        sample = "H.R. 3633 -- Motion by Senator Tillis to reconsider the vote by which cloture on the motion to proceed to the measure was not invoked (Record Vote No. 234) entered in Senate."
+        self.assertTrue(MOD.reconsideration_text_matches(sample))
+
     def test_market_pct_change(self):
         self.assertAlmostEqual(MOD.pct_change(100, 109), 9.0, places=6)
 
