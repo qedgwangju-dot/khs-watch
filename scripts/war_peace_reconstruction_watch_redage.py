@@ -153,9 +153,9 @@ watch.item_id = detail_item_id
 
 
 def _highlight_relative_age(text):
-    """Telegram 일반 메시지는 글자색 지정이 안 되므로 경과시간에만 빨간 표시를 붙여 강조한다."""
-    text = re.sub(r"(?<!🟥 )(<b>\d{1,5}분 전</b>)", r"🟥 \1", text)
-    text = re.sub(r"(?<!🟥 )(?<!<b>)(\d{1,5}분 전)(?!</b>)", r"🟥 <b>\1</b>", text)
+    """Telegram 일반 메시지는 글자색 지정이 안 되므로 경과시간에만 노란 표시를 붙여 강조한다."""
+    text = re.sub(r"(?<!🟨 )(<b>\d{1,5}분 전</b>)", r"🟨 \1", text)
+    text = re.sub(r"(?<!🟨 )(?<!<b>)(\d{1,5}분 전)(?!</b>)", r"🟨 <b>\1</b>", text)
     return text
 
 
