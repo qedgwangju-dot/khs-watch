@@ -19,7 +19,7 @@ STATE_PATH = Path("data/us_datacenter_execution_bottleneck_state.json")
 OUT_DIR = Path("out")
 LOOKBACK_DAYS = 45
 MAX_ALERT_AGE_HOURS = 72
-STATE_VERSION = 3
+STATE_VERSION = 4
 MIN_INDEPENDENT_SOURCES = 2
 TRANSLATE_BASE_URL = "https://translate.googleapis.com/translate_a/single"
 KOREAN_RE = re.compile(r"[가-힣]")
@@ -38,6 +38,10 @@ QUERIES = (
     'site:reuters.com US data center permit financing opposition interconnection construction 2026',
     'site:utilitydive.com data center interconnection permit utility 2026',
     'site:datacenterdynamics.com US data center permit construction financing power 2026',
+    'US data center ratepayer protection large load rate schedule grid upgrade costs community benefits agreement 2026',
+    'US data center 25 MW community benefits agreement ratepayer protection fund 2026',
+    'site:mass.gov data center 25 megawatt community benefits agreement ratepayer protection fund 2026',
+    'data center alternative compliance payment clean energy ratepayer fund large load 2026',
 )
 
 # 실행 단계 기준. 모라토리엄은 주민 반대의 원인/배경이 아니라 실제로 인허가를 멈추는 규제 조치이므로 인허가 단계로 분류한다.
@@ -47,7 +51,7 @@ STAGES = (
     (6, "실제 자금 인출", ("drawdown", "draw down", "funds drawn", "funding draw", "자금 인출", "대출 실행")),
     (5, "금융 종결", ("financial close", "financing closed", "construction loan", "credit facility", "bond sale", "financing secured", "금융 종결", "대출 약정")),
     (4, "주민 반대", ("community opposition", "resident opposition", "local opposition", "lawsuit", "referendum", "주민 반대", "소송", "주민투표")),
-    (3, "인허가", ("moratorium", "pause approvals", "halt approvals", "zoning approved", "permit approved", "planning approval", "special use permit", "rezoning", "permit denied", "zoning denied", "인허가", "허가 승인", "허가 거부", "모라토리엄", "유예")),
+    (3, "인허가", ("moratorium", "pause approvals", "halt approvals", "zoning approved", "permit approved", "planning approval", "special use permit", "rezoning", "permit denied", "zoning denied", "community benefits agreement", "community benefit agreement", "large load rate schedule", "ratepayer protection fund", "alternative compliance payment", "grid upgrade costs", "distribution grid upgrades", "25 megawatt", "twenty-five megawatts", "인허가", "허가 승인", "허가 거부", "모라토리엄", "유예", "지역사회 편익협약", "요금전가", "전력망 증설비", "보호기금")),
     (2, "계통접속", ("interconnection", "grid connection", "utility agreement", "substation", "transmission", "power agreement", "계통접속", "변전소", "송전")),
     (1, "토지", ("land purchase", "site acquired", "site control", "land deal", "parcel", "토지 매입", "부지 확보")),
 )
@@ -109,7 +113,7 @@ OFFICIAL_OR_PARTY_HINTS = (
     "city of ", "county", "planning commission", "public service commission", "public utility commission",
     "public utilities commission", "sec.gov", "securities and exchange commission", "department of energy",
     "federal energy regulatory commission", "ferc", "ercot", "pjm", "dominion energy", "duke energy",
-    "american electric power", "aep", "meta", "microsoft", "amazon", "google", "oracle", "coreweave",
+    "american electric power", "aep", "mass.gov", "massachusetts", "governor healey", "department of public utilities", "ratepayer protection fund", "meta", "microsoft", "amazon", "google", "oracle", "coreweave",
     "qts", "cyrusone", "vantage data centers", "digital realty", "equinix", "lancium", "crusoe",
 )
 REPUTABLE_HINTS = (
@@ -128,6 +132,7 @@ SUMMARY_PRIORITY_TERMS = (
     "megawatt", "gigawatt", "mw", "gw", "year", "month", "permit", "approval", "moratorium", "construction",
     "interconnection", "transmission", "substation", "financing", "loan", "bond", "drawdown", "groundbreaking",
     "energization", "electricity", "utility", "water", "environmental", "ratepayer", "cost", "billion", "million",
+    "community benefits", "large load rate", "protection fund", "grid upgrade", "alternative compliance", "25 megawatt",
 )
 
 
@@ -516,7 +521,7 @@ def meaning(stage_name: str) -> str:
     return {
         "토지": "발표 용량이 실제 부지 통제권으로 넘어갔는지 확인",
         "계통접속": "전력망·변전소 병목이 실제로 해소되는지 확인",
-        "인허가": "정부·지방당국의 허가가 실제 착공을 가능하게 하는지, 또는 모라토리엄·거부로 멈추는지 확인",
+        "인허가": "정부·지방당국의 허가뿐 아니라 25MW급 대형부하 기준, 지역사회 편익협약, 대형부하 요금·전력망 증설비 부담, 보호기금 같은 비용조건이 착공·전원 인가를 가능하게 하는지 확인",
         "주민 반대": "소송·주민투표·지역 반대가 인허가·착공·금융을 막는지 확인",
         "금융 종결": "대주단이 인허가·전력·지역 리스크를 감수하고 자금을 확정했는지 확인",
         "실제 자금 인출": "약정이 아니라 실제 건설비 집행이 시작됐는지 확인",
@@ -529,7 +534,7 @@ def next_indicator(stage_name: str) -> str:
     return {
         "토지": "계통접속 신청·전력회사 협약",
         "계통접속": "변전소·송전 증설 일정과 인허가",
-        "인허가": "허가 효력·예외 범위·금융 종결 또는 착공 허가",
+        "인허가": "허가 효력·25MW 적용범위·지역사회 편익협약·대형부하 요금표·전력망 증설비 부담·보호기금과 금융 종결 또는 착공 허가",
         "주민 반대": "소송·주민투표의 법적 효력과 인허가 일정",
         "금융 종결": "실제 대출 인출·공사비 집행",
         "실제 자금 인출": "착공·주요 기자재 발주",
