@@ -573,6 +573,56 @@ t = t.replace(source_money_old, source_money_new, 1)
 
 print("generation article-money KRW guard inserted")
 
+
+# Keep Google-News alerts fresh and preserve seen-id insertion order.  Do not
+# serialize a set: arbitrary set order can evict previously-seen IDs and make
+# old stories look new again.
+if "from email.utils import parsedate_to_datetime" not in t:
+    t = t.replace(
+        "import xml.etree.ElementTree as ET\nfrom pathlib import Path\n",
+        "import xml.etree.ElementTree as ET\nfrom email.utils import parsedate_to_datetime\nfrom pathlib import Path\n",
+        1,
+    )
+if "NEWS_ALERT_MAX_AGE_DAYS = 7" not in t:
+    t = t.replace("FORMAT_VERSION = 3\n", "FORMAT_VERSION = 3\nNEWS_ALERT_MAX_AGE_DAYS = 7\nSEEN_ID_LIMIT = 5000\n", 1)
+
+gen_news_old = '''            title = normalize(item.findtext("title") or "")
+            link = normalize(item.findtext("link") or "")
+            source_el = item.find("source")'''
+gen_news_new = '''            title = normalize(item.findtext("title") or "")
+            link = normalize(item.findtext("link") or "")
+            pub = normalize(item.findtext("pubDate") or "")
+            if not pub:
+                continue
+            try:
+                published = parsedate_to_datetime(pub)
+                if published.tzinfo is None:
+                    published = published.replace(tzinfo=dt.timezone.utc)
+                if published.astimezone(dt.timezone.utc) < dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=NEWS_ALERT_MAX_AGE_DAYS):
+                    continue
+            except Exception:
+                continue
+            source_el = item.find("source")'''
+if gen_news_old not in t:
+    raise SystemExit("generation freshness insertion point not found")
+t = t.replace(gen_news_old, gen_news_new, 1)
+
+gen_seen_old = '''old_ids = set(old.get("seen_ids", []))
+new_items = [x for x in items if x["id"] not in old_ids]'''
+gen_seen_new = '''old_seen = list(old.get("seen_ids", []))
+old_ids = set(old_seen)
+new_items = [x for x in items if x["id"] not in old_ids]'''
+if gen_seen_old not in t:
+    raise SystemExit("generation ordered-dedupe insertion point not found")
+t = t.replace(gen_seen_old, gen_seen_new, 1)
+
+gen_cap_old = '''seen = list(dict.fromkeys(list(old_ids) + [x["id"] for x in items]))[-1600:]'''
+gen_cap_new = '''seen = list(dict.fromkeys(old_seen + [x["id"] for x in items]))[-SEEN_ID_LIMIT:]'''
+if gen_cap_old not in t:
+    raise SystemExit("generation seen-limit insertion point not found")
+t = t.replace(gen_cap_old, gen_cap_new, 1)
+print("US generation watcher freshness + ordered dedupe guard inserted")
+
 g.write_text(t, encoding="utf-8")
 print("US generation watcher recurring-capex + Korean supplier-order guard inserted")
 
@@ -785,6 +835,50 @@ print_new2 = '''    f"gia={miso_metrics.get('gia_gw')}GW new={len(new_items)} ch
 if print_old2 not in s:
     raise SystemExit("time-to-power flexible print insertion point not found")
 s = s.replace(print_old2, print_new2, 1)
+
+
+if "from email.utils import parsedate_to_datetime" not in s:
+    s = s.replace(
+        "import xml.etree.ElementTree as ET\nfrom pathlib import Path\n",
+        "import xml.etree.ElementTree as ET\nfrom email.utils import parsedate_to_datetime\nfrom pathlib import Path\n",
+        1,
+    )
+if "NEWS_ALERT_MAX_AGE_DAYS = 7" not in s:
+    s = s.replace("FORMAT_VERSION = 3\n", "FORMAT_VERSION = 3\nNEWS_ALERT_MAX_AGE_DAYS = 7\nSEEN_ID_LIMIT = 5000\n", 1)
+
+ttp_news_old = '''            pub = normalize(item.findtext("pubDate") or "")
+            source_el = item.find("source")'''
+ttp_news_new = '''            pub = normalize(item.findtext("pubDate") or "")
+            if not pub:
+                continue
+            try:
+                published = parsedate_to_datetime(pub)
+                if published.tzinfo is None:
+                    published = published.replace(tzinfo=dt.timezone.utc)
+                if published.astimezone(dt.timezone.utc) < dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=NEWS_ALERT_MAX_AGE_DAYS):
+                    continue
+            except Exception:
+                continue
+            source_el = item.find("source")'''
+if ttp_news_old not in s:
+    raise SystemExit("time-to-power freshness insertion point not found")
+s = s.replace(ttp_news_old, ttp_news_new, 1)
+
+ttp_seen_old = '''old_ids = set(old.get("seen_ids", []))
+new_items = [x for x in items if x["id"] not in old_ids]'''
+ttp_seen_new = '''old_seen = list(old.get("seen_ids", []))
+old_ids = set(old_seen)
+new_items = [x for x in items if x["id"] not in old_ids]'''
+if ttp_seen_old not in s:
+    raise SystemExit("time-to-power ordered-dedupe insertion point not found")
+s = s.replace(ttp_seen_old, ttp_seen_new, 1)
+
+ttp_cap_old = '''seen = list(dict.fromkeys(list(old_ids) + [x["id"] for x in items]))[-1800:]'''
+ttp_cap_new = '''seen = list(dict.fromkeys(old_seen + [x["id"] for x in items]))[-SEEN_ID_LIMIT:]'''
+if ttp_cap_old not in s:
+    raise SystemExit("time-to-power seen-limit insertion point not found")
+s = s.replace(ttp_cap_old, ttp_cap_new, 1)
+print("US time-to-power freshness + ordered dedupe guard inserted")
 
 p.write_text(s, encoding="utf-8")
 print("US time-to-power flexible-load + demand-response guard inserted")
