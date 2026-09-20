@@ -98,9 +98,9 @@ jobs:
               "• 우주군을 언급하며 별도의 AI Force 창설 구상 제시\n"
               "• 소속기관·법적 권한·인원·예산·조달권은 아직 미공개\n\n"
               "타임라인\n"
-              "• 2026년 9월 19일: AI Force·신임 AI 차르 구상 발표\n"
-              "• 2026년 9월 20일: 베선트–허리펑 AI 안보·무역 협의 예정\n"
-              "• 2026년 9월 24일: 트럼프–시진핑 정상회담 예정\n\n"
+              "• <b>2026년 9월 19일</b>: AI Force·신임 AI 차르 구상 발표\n"
+              "• <b>2026년 9월 20일</b>: 베선트–허리펑 AI 안보·무역 협의 예정\n"
+              "• <b>2026년 9월 24일</b>: 트럼프–시진핑 정상회담 예정\n\n"
               "왜 중요한가\n"
               "• 사람→조직→권한→예산→정부 AI 조달로 이어질 수 있는 새 정책 지휘체계 신호\n"
               "• 실제 예산·조달이 붙으면 GPU·클라우드·보안 AI·데이터센터 전력 인프라 수요로 연결 가능\n\n"
@@ -110,11 +110,12 @@ jobs:
               "• 행정명령·대통령각서\n"
               "• 예산·인원·정부 AI 조달\n"
               "• 미중 AI 협의 결과\n\n"
-              "원문: https://www.reuters.com/world/us/trump-says-he-will-create-ai-force-name-ai-czar-2026-09-19/"
+              '<a href="https://www.reuters.com/world/us/trump-says-he-will-create-ai-force-name-ai-czar-2026-09-19/">원문</a>'
           )
           body=urllib.parse.urlencode({
               'chat_id': chat_id,
               'text': text,
+              'parse_mode': 'HTML',
               'disable_web_page_preview': 'true',
           }).encode('utf-8')
           req=urllib.request.Request(f'https://api.telegram.org/bot{token}/sendMessage',data=body,method='POST')
