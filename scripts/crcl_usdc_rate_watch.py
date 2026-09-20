@@ -265,6 +265,25 @@ def prevent_date_regression(name: str, current: dict, previous: dict, errors: li
     return current
 
 
+def preserve_previous_distinct(current: dict, previous: dict, fields: list[str]) -> dict:
+    """Keep the prior official observation across no-alert watcher runs."""
+    if not current:
+        return current
+    result = dict(current)
+    prior_meta = (previous or {}).get("_previous_distinct")
+    changed = bool(previous) and (
+        current.get("date") != previous.get("date")
+        or any(current.get(field) != previous.get(field) for field in fields)
+    )
+    if changed:
+        prior_meta = {"date": previous.get("date")}
+        for field in fields:
+            prior_meta[field] = previous.get(field)
+    if prior_meta:
+        result["_previous_distinct"] = prior_meta
+    return result
+
+
 def watcher_now_et(now_kst: str) -> dt.datetime:
     try:
         return dt.datetime.fromisoformat(now_kst).astimezone(ET)
@@ -331,6 +350,13 @@ def main() -> None:
     treasury = prevent_date_regression("treasury", treasury, old.get("treasury") or {}, errors)
     crcl = prevent_date_regression("crcl", crcl, old.get("crcl") or {}, errors)
     tbx = prevent_date_regression("tbx", tbx, old.get("tbx") or {}, errors)
+
+    circle = preserve_previous_distinct(circle, old.get("circle") or {}, ["circulation_usd_b"])
+    usdxx = preserve_previous_distinct(
+        usdxx,
+        old.get("usdxx") or {},
+        ["sec_yield_7d", "fund_size_usd_m", "fund_size_date"],
+    )
 
     if not circle or not usdxx or not treasury:
         raise RuntimeError("핵심 공식 원천(Circle/BlackRock/Treasury) 중 하나 이상 확인 실패")
