@@ -6,6 +6,7 @@ import hashlib
 import html
 import importlib.util
 import re
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -18,7 +19,7 @@ watch = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(watch)
 core = watch.core
 
-GUARD_VERSION = 2
+GUARD_VERSION = 3
 
 _ORIG_LOAD = core._load
 _ORIG_RSS = core._rss
@@ -138,6 +139,9 @@ def _family(row: dict) -> str:
         ]
     ):
         return "return_safeguard"
+
+    if ("ap1000" in low or "apr1400" in low) and re.search(r"\d+\s*기", low):
+        return "nuclear_build"
 
     if any(
         token in low
@@ -339,6 +343,270 @@ def _material_facts(row: dict) -> set[str]:
     return facts
 
 
+# v3 원칙: 기사/URL 자체는 절대 알림 상태가 아니다.
+# 기사와 공식자료는 아래의 정규화된 사건 상태값을 뒷받침하는 증거로만 사용한다.
+_RAW_MATERIAL_FACTS = _material_facts
+
+_NEGATION_TERMS = (
+    "확정된 바 없습니다",
+    "결정된 바 없습니다",
+    "정해진 바 없습니다",
+    "미확정",
+    "아직 확정 전",
+    "사실이 아닙니다",
+    "not confirmed",
+    "not decided",
+)
+
+def _source_key(row: dict) -> str:
+    return _norm(str(row.get("source") or "unknown"))
+
+def _published_key(row: dict) -> str:
+    return str(row.get("published") or "")
+
+def _official_status_fact(row: dict) -> str:
+    low = _norm(str(row.get("title") or ""))
+    if _is_official(row) and any(term in low for term in _NEGATION_TERMS):
+        return "official_status:unconfirmed"
+    if _is_official(row) and any(
+        term in low for term in ["공식 확정", "최종 확정", "확정 발표", "공식 발표", "approved", "signed"]
+    ):
+        return "official_status:confirmed"
+    return ""
+
+def _korean_usd_tokens(low: str) -> list[str]:
+    out: list[str] = []
+    for match in re.finditer(r"(\d+(?:\.\d+)?(?:천|백)?)\s*(억|조)\s*달러", low):
+        out.append(f"{match.group(1)}{match.group(2)}")
+    for match in re.finditer(r"\$\s*(\d+(?:\.\d+)?)\s*(billion|million|trillion)?", low):
+        out.append(f"{match.group(1)}{match.group(2) or ''}")
+    return list(dict.fromkeys(out))
+
+def _explicit_model_units(low: str, model: str) -> set[str]:
+    values: set[str] = set()
+    escaped = re.escape(model)
+    patterns = [
+        rf"{escaped}\s*(?:형|노형)?\s*(\d+)\s*기",
+        rf"(\d+)\s*기\s*(?:의\s*)?{escaped}",
+    ]
+    for pattern in patterns:
+        for match in re.finditer(pattern, low):
+            values.add(match.group(1))
+    return values
+
+def _explicit_total_nuclear_units(low: str) -> set[str]:
+    values: set[str] = set()
+    patterns = [
+        r"(?:미국\s*)?(?:대형\s*)?원전\s*(?:최대\s*)?(\d+)\s*기",
+        r"(\d+)\s*기\s*(?:의\s*)?(?:미국\s*)?(?:대형\s*)?원전",
+        r"(?:up to\s*)?(\d+)\s+(?:nuclear\s+)?reactors?",
+    ]
+    for pattern in patterns:
+        for match in re.finditer(pattern, low):
+            values.add(match.group(1))
+    return values
+
+def _money_near_anchor(low: str, anchors: tuple[str, ...]) -> set[str]:
+    out: set[str] = set()
+    for match in re.finditer(r"(\d+(?:\.\d+)?(?:천|백)?)\s*(억|조)\s*달러", low):
+        start, end = match.span()
+        window = low[max(0, start - 45): min(len(low), end + 45)]
+        if any(anchor in window for anchor in anchors):
+            if any(term in window for term in ["전체 대미투자", "총 대미투자", "총 투자약속", "전체 투자"]):
+                continue
+            out.add(f"{match.group(1)}{match.group(2)}")
+    for match in re.finditer(r"\$\s*(\d+(?:\.\d+)?)\s*(billion|million|trillion)?", low):
+        start, end = match.span()
+        window = low[max(0, start - 45): min(len(low), end + 45)]
+        if any(anchor in window for anchor in anchors):
+            out.add(f"{match.group(1)}{match.group(2) or ''}")
+    return out
+
+def _candidate_facts(row: dict, family: str) -> set[str]:
+    low = _norm(str(row.get("title") or ""))
+    raw = _RAW_MATERIAL_FACTS(row)
+    facts: set[str] = set()
+    official_status = _official_status_fact(row)
+    if official_status:
+        # 정부가 '미확정'이라고 밝힌 기사에서는 제목 속 배경 숫자를 상태값으로 승격하지 않는다.
+        facts.add(official_status)
+        if official_status.endswith("unconfirmed"):
+            return facts
+
+    parties = {x for x in raw if x.startswith("party:")}
+    stages = {x for x in raw if x.startswith("stage:") and x != "stage:공식정정"}
+
+    if family == "nuclear_build":
+        for value in _explicit_total_nuclear_units(low):
+            facts.add(f"nuclear_total_units:{value}")
+        for value in _explicit_model_units(low, "ap1000"):
+            facts.add(f"ap1000_units:{value}")
+        for value in _explicit_model_units(low, "apr1400"):
+            facts.add(f"apr1400_units:{value}")
+        facts |= parties
+        facts |= stages
+        return facts
+
+    if family == "westinghouse_stake":
+        for pattern in [
+            r"(?:지분(?:율)?|stake)\D{0,18}(\d+(?:\.\d+)?)\s*%",
+            r"(\d+(?:\.\d+)?)\s*%\D{0,18}(?:지분(?:율)?|stake)",
+        ]:
+            for match in re.finditer(pattern, low):
+                facts.add(f"stake_percent:{match.group(1)}")
+        facts |= {x for x in raw if x.startswith("governance:")}
+        facts |= parties
+        facts |= stages
+        return facts
+
+    if family == "funding_execution":
+        if "45영업일" in low:
+            facts.add("funding_wait:45영업일")
+        if any(term in low for term in ["송금", "납입", "집행", "capital call"]):
+            if any(term in low for term in ["예정", "가능성", "가능", "검토", "협의", "요구"]):
+                facts.add("stage:송금예정")
+            if any(term in low for term in ["송금 완료", "납입 완료", "집행 완료", "송금했다", "납입했다", "집행했다"]):
+                facts.add("stage:송금집행")
+            for value in _money_near_anchor(low, ("첫 송금", "첫 납입", "초기 집행", "자금 납입", "capital call")):
+                facts.add(f"funding_amount_usd:{value}")
+            for match in re.finditer(r"(20\d{2})[-./년]\s*(\d{1,2})[-./월]\s*(\d{1,2})", low):
+                window = low[max(0, match.start()-40): min(len(low), match.end()+40)]
+                if any(anchor in window for anchor in ["송금", "납입", "집행"]):
+                    facts.add(f"funding_date:{int(match.group(1)):04d}-{int(match.group(2)):02d}-{int(match.group(3)):02d}")
+        facts |= parties
+        return facts
+
+    if family == "return_safeguard":
+        if any(term in low for term in ["수익배분", "원리금", "risk-pooling", "리스크 풀링", "손실분담", "투자회수"]):
+            facts |= {x for x in raw if x.startswith("percent:")}
+            if "20년" in low:
+                facts.add("repayment_horizon:20년")
+            facts |= stages
+        return facts | parties
+
+    if family == "energy_package":
+        for value in _explicit_total_nuclear_units(low):
+            facts.add(f"package_nuclear_units:{value}")
+        if any(term in low for term in ["패키지", "대미투자", "첫 사업", "첫사업", "합의"]):
+            for value in _korean_usd_tokens(low):
+                facts.add(f"package_usd:{value}")
+        facts |= stages
+        return facts | parties
+
+    if family == "encinal":
+        if "6.3gw" in low or "엔시날" in low or "encinal" in low:
+            if "6.3gw" in low:
+                facts.add("encinal_total_gw:6.3")
+            if "1.4gw" in low:
+                facts.add("encinal_phase1_gw:1.4")
+            if "4.9gw" in low:
+                facts.add("encinal_phase2_gw:4.9")
+            if any(term in low for term in ["사업비", "투자", "project cost"]):
+                for value in _korean_usd_tokens(low):
+                    facts.add(f"encinal_project_usd:{value}")
+            facts |= stages
+        return facts | parties
+
+    if family == "alaska_lng":
+        for match in re.finditer(r"(\d+(?:\.\d+)?)\s*mtpa\b", low):
+            facts.add(f"alaska_mtpa:{match.group(1)}")
+        if any(term in low for term in ["사업비", "투자", "project cost"]):
+            for value in _korean_usd_tokens(low):
+                facts.add(f"alaska_project_usd:{value}")
+        facts |= stages
+        return facts | parties
+
+    if family == "ercot_large_load":
+        for match in re.finditer(r"(\d+(?:\.\d+)?)\s*gw\b", low):
+            facts.add(f"ercot_request_gw:{match.group(1)}")
+        facts |= stages
+        return facts | parties
+
+    if family == "power_equipment_supply":
+        facts |= parties
+        facts |= stages
+        for match in re.finditer(r"(\d+(?:\.\d+)?)\s*(gw|mw)\b", low):
+            facts.add(f"equipment_capacity_{match.group(2)}:{match.group(1)}")
+        if any(term in low for term in ["계약", "수주", "발주", "구매주문", "purchase order"]):
+            for value in _korean_usd_tokens(low):
+                facts.add(f"equipment_contract_usd:{value}")
+        return facts
+
+    if family == "semiconductor_investment":
+        if any(term in low for term in ["대미투자", "미국 투자", "반도체 투자"]):
+            for value in _korean_usd_tokens(low):
+                facts.add(f"semiconductor_investment_usd:{value}")
+        return facts | stages | parties
+
+    if family == "texas_ai_power":
+        facts |= stages
+        facts |= parties
+        for match in re.finditer(r"(\d+(?:\.\d+)?)\s*gw\b", low):
+            facts.add(f"texas_power_gw:{match.group(1)}")
+        if "20년" in low and any(term in low for term in ["ppa", "전력구매", "전력판매", "계약기간", "장기계약"]):
+            facts.add("ppa_years:20")
+        return facts
+
+    # 구형/기타 사건축도 기사 URL이 아니라 단계·당사자 변화만 상태로 사용한다.
+    return stages | parties | ({official_status} if official_status else set())
+
+def _fact_slot(family: str, fact: str) -> str:
+    fixed_prefixes = (
+        "nuclear_total_units:", "ap1000_units:", "apr1400_units:",
+        "stake_percent:", "funding_amount_usd:", "funding_date:", "funding_wait:",
+        "repayment_horizon:", "package_nuclear_units:", "package_usd:",
+        "encinal_total_gw:", "encinal_phase1_gw:", "encinal_phase2_gw:", "encinal_project_usd:",
+        "ercot_request_gw:", "semiconductor_investment_usd:", "ppa_years:",
+        "official_status:",
+    )
+    for prefix in fixed_prefixes:
+        if fact.startswith(prefix):
+            return f"{family}|{prefix[:-1]}"
+    if fact.startswith("stage:") or fact.startswith("party:") or fact.startswith("governance:"):
+        return f"{family}|{fact}"
+    # 여러 설비 용량·계약금처럼 동시에 존재할 수 있는 값은 값 자체를 슬롯으로 둔다.
+    return f"{family}|{fact}"
+
+def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], dict[str, list[dict]]]:
+    support: dict[str, list[dict]] = {}
+    for row in rows:
+        for fact in _candidate_facts(row, family):
+            support.setdefault(fact, []).append(row)
+
+    eligible: dict[str, list[dict]] = {}
+    for fact, evidence in support.items():
+        sources = {_source_key(r) for r in evidence}
+        official = any(_is_official(r) for r in evidence)
+        # 공식자료 1건 또는 서로 다른 출처 2곳 이상이 같은 상태값을 지지해야 승격한다.
+        if official or len(sources) >= 2:
+            eligible[fact] = evidence
+
+    # 한 슬롯에 상충하는 값이 여럿이면 공식성→독립 출처 수→최신성 순으로 하나만 채택한다.
+    chosen: dict[str, str] = {}
+    for fact, evidence in eligible.items():
+        slot = _fact_slot(family, fact)
+        score = (
+            1 if any(_is_official(r) for r in evidence) else 0,
+            len({_source_key(r) for r in evidence}),
+            max((_published_key(r) for r in evidence), default=""),
+            fact,
+        )
+        prev = chosen.get(slot)
+        if prev is None:
+            chosen[slot] = fact
+            continue
+        prev_evidence = eligible[prev]
+        prev_score = (
+            1 if any(_is_official(r) for r in prev_evidence) else 0,
+            len({_source_key(r) for r in prev_evidence}),
+            max((_published_key(r) for r in prev_evidence), default=""),
+            prev,
+        )
+        if score > prev_score:
+            chosen[slot] = fact
+    return set(chosen.values()), support
+
+
 _FAMILY_LABELS = {
     "westinghouse_stake": "웨스팅하우스 지분·거버넌스",
     "nuclear_fuel_cycle_pyro": "사용후핵연료·파이로 투자",
@@ -356,6 +624,54 @@ _FAMILY_LABELS = {
 
 
 def _human_fact(value: str) -> str:
+    labels = {
+        "official_status:unconfirmed": "정부 공식상태 미확정",
+        "official_status:confirmed": "정부 공식확정",
+        "funding_wait:45영업일": "선정 통지 후 최소 45영업일",
+        "repayment_horizon:20년": "원리금 회수 기준 20년",
+        "ppa_years:20": "전력계약 20년",
+    }
+    if value in labels:
+        return labels[value]
+    prefix_labels = {
+        "nuclear_total_units:": "원전 전체 ",
+        "ap1000_units:": "AP1000 ",
+        "apr1400_units:": "APR1400 ",
+        "stake_percent:": "웨스팅하우스 지분 ",
+        "funding_amount_usd:": "첫 자금 집행 ",
+        "funding_date:": "자금 집행일 ",
+        "package_nuclear_units:": "패키지 원전 ",
+        "package_usd:": "에너지 패키지 ",
+        "encinal_total_gw:": "Encinal 총 ",
+        "encinal_phase1_gw:": "Encinal 1단계 ",
+        "encinal_phase2_gw:": "Encinal 후속 ",
+        "encinal_project_usd:": "Encinal 사업비 ",
+        "ercot_request_gw:": "ERCOT 요청 ",
+        "semiconductor_investment_usd:": "반도체 대미투자 ",
+        "alaska_project_usd:": "알래스카 LNG 사업비 ",
+        "alaska_mtpa:": "알래스카 LNG ",
+        "equipment_contract_usd:": "설비 계약 ",
+        "equipment_capacity_gw:": "설비 용량 ",
+        "equipment_capacity_mw:": "설비 용량 ",
+        "texas_power_gw:": "텍사스 전력 ",
+    }
+    for prefix, label in prefix_labels.items():
+        if value.startswith(prefix):
+            raw = value.split(":", 1)[1]
+            suffix = ""
+            if prefix.endswith("_units:"):
+                suffix = "기"
+            elif prefix.endswith("_percent:"):
+                suffix = "%"
+            elif prefix.endswith("_gw:"):
+                suffix = "GW"
+            elif prefix.endswith("_mw:"):
+                suffix = "MW"
+            elif prefix.endswith("_mtpa:"):
+                suffix = "MTPA"
+            elif "_usd:" in prefix:
+                suffix = "달러"
+            return f"{label}{raw}{suffix}"
     if value.startswith("percent:"):
         return value.split(":", 1)[1] + "%"
     if value.startswith("gw:"):
@@ -366,22 +682,12 @@ def _human_fact(value: str) -> str:
         return value.split(":", 1)[1] + "MTPA"
     if value.startswith("usd:"):
         return value.split(":", 1)[1] + "달러"
-    if value.startswith("ap1000:"):
-        return "AP1000 " + value.split(":", 1)[1]
-    if value.startswith("apr1400:"):
-        return "APR1400 " + value.split(":", 1)[1]
-    if value.startswith("units:"):
-        return value.split(":", 1)[1]
     if value.startswith("stage:"):
         return value.split(":", 1)[1]
-    if value == "source:official":
-        return "공식자료 확인"
     if value == "governance:board":
         return "이사회 참여"
     if value == "governance:voting":
         return "의결권"
-    if value.startswith("schedule:"):
-        return value.split(":", 1)[1]
     party_names = {
         "party:westinghouse": "Westinghouse",
         "party:khnp": "한국수력원자력",
@@ -406,19 +712,62 @@ def _event_key(family: str, facts: set[str]) -> str:
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:20]
 
 
+def _migration_seed(state: dict) -> None:
+    # v2에서 기사 제목의 주변 숫자가 상태로 누적된 오염값을 제거하고,
+    # 현재 교차검증된 기준선만 사건 상태로 다시 잡는다.
+    buckets = state.setdefault("event_states", {})
+    buckets.clear()
+    now = dt.datetime.now(dt.timezone.utc).isoformat()
+    buckets["nuclear_build"] = {
+        "facts": [
+            "nuclear_total_units:8",
+            "ap1000_units:6",
+            "apr1400_units:2",
+            "official_status:unconfirmed",
+        ],
+        "slots": {
+            "nuclear_build|nuclear_total_units": "nuclear_total_units:8",
+            "nuclear_build|ap1000_units": "ap1000_units:6",
+            "nuclear_build|apr1400_units": "apr1400_units:2",
+            "nuclear_build|official_status": "official_status:unconfirmed",
+        },
+        "initialized_at": now,
+        "updated_at": now,
+        "last_title": "교차검증 기준선: 전체 8기·AP1000 6기·APR1400 2기 보도 / 정부 세부 미확정",
+        "last_source": "migration-v3",
+        "evidence": [],
+    }
+    buckets["funding_execution"] = {
+        "facts": ["official_status:unconfirmed"],
+        "slots": {"funding_execution|official_status": "official_status:unconfirmed"},
+        "initialized_at": now,
+        "updated_at": now,
+        "last_title": "정부 기준선: 송금 규모·시기 미확정",
+        "last_source": "migration-v3",
+        "evidence": [],
+    }
+
 def _load() -> dict:
     global _SHARED_STATE, _BOOTSTRAP_GUARD
     state = _ORIG_LOAD()
-    _BOOTSTRAP_GUARD = int(state.get("event_state_guard_version") or 0) < GUARD_VERSION
+    old_version = int(state.get("event_state_guard_version") or 0)
+    _BOOTSTRAP_GUARD = old_version < GUARD_VERSION
     state.setdefault("event_states", {})
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
-        state["event_state_guard_started_at"] = dt.datetime.now(
-            dt.timezone.utc
-        ).isoformat()
+        state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
+        # 기사/URL 기반 v2 event key와 오염된 사건 상태는 v3에서 재사용하지 않는다.
+        state["seen"] = {
+            k: v for k, v in (state.get("seen") or {}).items()
+            if not str(k).startswith("stateevt_")
+        }
+        state["semantic_seen"] = {
+            k: v for k, v in (state.get("semantic_seen") or {}).items()
+            if not str(k).startswith("eventstate_")
+        }
+        _migration_seed(state)
     _SHARED_STATE = state
     return state
-
 
 def _bucket(family: str) -> dict:
     assert _SHARED_STATE is not None
@@ -427,119 +776,207 @@ def _bucket(family: str) -> dict:
         family,
         {
             "facts": [],
+            "slots": {},
             "initialized_at": "",
             "updated_at": "",
             "last_title": "",
             "last_source": "",
+            "evidence": [],
         },
     )
     item.setdefault("facts", [])
+    item.setdefault("slots", {})
     item.setdefault("initialized_at", "")
+    item.setdefault("evidence", [])
     return item
 
-
-def _remember(family: str, row: dict, facts: set[str]) -> set[str]:
+def _apply_state(family: str, evidence_row: dict, facts: set[str], evidence_map: dict[str, list[dict]]) -> set[str]:
     bucket = _bucket(family)
-    known = set(str(x) for x in bucket.get("facts") or [])
-    new_facts = facts - known
+    slots = {str(k): str(v) for k, v in (bucket.get("slots") or {}).items()}
+    changed: set[str] = set()
     now = dt.datetime.now(dt.timezone.utc).isoformat()
     if not bucket.get("initialized_at"):
         bucket["initialized_at"] = now
-    if new_facts:
-        known.update(new_facts)
-        bucket["facts"] = sorted(known)
-        bucket["updated_at"] = now
-        bucket["last_title"] = str(row.get("title") or "")
-        bucket["last_source"] = str(row.get("source") or "")
-    return new_facts
 
+    for fact in sorted(facts):
+        slot = _fact_slot(family, fact)
+        if slots.get(slot) == fact:
+            continue
+        slots[slot] = fact
+        changed.add(fact)
+
+    if changed:
+        bucket["slots"] = dict(sorted(slots.items()))
+        bucket["facts"] = sorted(set(slots.values()))
+        bucket["updated_at"] = now
+        bucket["last_title"] = str(evidence_row.get("title") or "")
+        bucket["last_source"] = str(evidence_row.get("source") or "")
+        refs = []
+        seen_refs = set()
+        for fact in sorted(changed):
+            for row in evidence_map.get(fact, []):
+                key = (_source_key(row), str(row.get("link") or ""))
+                if key in seen_refs:
+                    continue
+                seen_refs.add(key)
+                refs.append({
+                    "source": str(row.get("source") or ""),
+                    "title": str(row.get("title") or ""),
+                    "link": str(row.get("link") or ""),
+                    "published": str(row.get("published") or ""),
+                })
+                if len(refs) >= 5:
+                    break
+            if len(refs) >= 5:
+                break
+        bucket["evidence"] = refs
+    return changed
+
+def _pick_evidence_row(changed: set[str], evidence_map: dict[str, list[dict]], fallback: list[dict]) -> dict:
+    candidates: list[dict] = []
+    seen = set()
+    for fact in changed:
+        for row in evidence_map.get(fact, []):
+            key = (str(row.get("link") or ""), str(row.get("title") or ""))
+            if key in seen:
+                continue
+            seen.add(key)
+            candidates.append(row)
+    if not candidates:
+        candidates = list(fallback)
+    candidates.sort(
+        key=lambda r: (
+            1 if _is_official(r) else 0,
+            _published_key(r),
+        ),
+        reverse=True,
+    )
+    return candidates[0] if candidates else {}
 
 def _collapse_rows(rows: list[dict]) -> list[dict]:
     assert _SHARED_STATE is not None
     now = dt.datetime.now(dt.timezone.utc)
 
-    # 여러 검색어에서 같은 기사가 반복 수집되는 것을 먼저 제거한다.
+    # URL/기사 단위 중복 제거는 수집 정리에만 사용한다. 알림 판정 key에는 쓰지 않는다.
     unique: dict[str, dict] = {}
     for row in rows:
-        raw_key = _ORIG_KEY(row)
-        unique.setdefault(raw_key, row)
-    ordered = sorted(
-        unique.values(),
-        key=lambda r: str(r.get("published") or ""),
-        reverse=True,
-    )
+        evidence_key = hashlib.sha256(
+            f"{_norm(str(row.get('title') or ''))}|{_source_key(row)}".encode("utf-8")
+        ).hexdigest()[:20]
+        unique.setdefault(evidence_key, row)
 
+    groups: dict[str, list[dict]] = {}
+    suppressed_unclassified = 0
+    for row in unique.values():
+        family = _family(row)
+        if not family:
+            suppressed_unclassified += 1
+            continue
+        groups.setdefault(family, []).append(row)
+
+    # v3 전환 첫 실행은 현재 주제·사건 상태만 기준선으로 흡수하고 과거 기사를 재발송하지 않는다.
     if _BOOTSTRAP_GUARD:
-        # 전환 첫 실행은 현재 보이는 기사들을 '현재 상태 기준선'으로만 흡수한다.
-        # 과거 기사 재전송을 하지 않고 다음 실행부터 실제 새 상태값만 알린다.
-        seen = _SHARED_STATE.setdefault("seen", {})
-        for row in ordered:
-            seen[_ORIG_KEY(row)] = now.isoformat()
-            family = _family(row)
-            if not family:
+        for family, family_rows in groups.items():
+            accepted, evidence_map = _accepted_facts_for_group(family, family_rows)
+            if not accepted:
                 continue
-            _remember(family, row, _material_facts(row))
+            evidence_row = _pick_evidence_row(accepted, evidence_map, family_rows)
+            _apply_state(family, evidence_row, accepted, evidence_map)
         _SHARED_STATE["event_state_guard_baselined_at"] = now.isoformat()
-        print(f"event_state_guard_baseline_rows={len(ordered)}")
+        print(f"event_state_guard_v3_baseline_families={len(groups)}")
         return []
 
     out: list[dict] = []
-    suppressed_unclassified = 0
-
-    for row in ordered:
-        if len(out) >= 5:
-            break
-
-        family = _family(row)
-        if not family:
-            # 사건축을 판정하지 못한 기사 자체를 알림 사유로 삼지 않는다.
-            # 검색 범위는 유지하되 다음 코드 보강 대상으로만 남긴다.
-            suppressed_unclassified += 1
+    for family, family_rows in sorted(groups.items()):
+        accepted, evidence_map = _accepted_facts_for_group(family, family_rows)
+        if not accepted:
             continue
 
-        bucket = _bucket(family)
-        initialized = bool(bucket.get("initialized_at"))
-        facts = _material_facts(row)
-
-        if not initialized:
-            new_facts = _remember(family, row, facts)
-            if not new_facts:
-                new_facts = {"event:first_seen"}
-        else:
-            new_facts = _remember(family, row, facts)
-
-        # 같은 사건·같은 수치·같은 단계는 기사 제목/URL/언론사가 달라도 재알림하지 않는다.
-        if not new_facts:
+        evidence_row = _pick_evidence_row(accepted, evidence_map, family_rows)
+        changed = _apply_state(family, evidence_row, accepted, evidence_map)
+        if not changed:
             continue
 
-        cumulative = set(str(x) for x in _bucket(family).get("facts") or [])
-        state_key = _event_key(family, cumulative | set(new_facts))
-
+        current = set(str(x) for x in _bucket(family).get("facts") or [])
+        state_key = _event_key(family, current)
         label = _FAMILY_LABELS.get(family, family.replace("_", " "))
-        visible = [
-            _human_fact(x)
-            for x in sorted(new_facts)
-            if x != "event:first_seen"
-        ]
+        visible = [_human_fact(x) for x in sorted(changed)]
 
-        synthetic = dict(row)
-        if visible:
-            synthetic["title"] = (
-                f"[상태 변화] {label} — " + " · ".join(visible[:6])
-            )
-        else:
-            synthetic["title"] = f"[신규 사건] {label}"
-
+        synthetic = dict(evidence_row)
+        synthetic["title"] = (
+            f"[상태 변화] {label} — " + " · ".join(visible[:6])
+            if visible else f"[신규 사건] {label}"
+        )
         synthetic["_state_guard_family"] = family
         synthetic["_state_guard_key"] = state_key
-        synthetic["_state_guard_delta"] = sorted(new_facts)
-        synthetic["_state_guard_evidence_title"] = str(row.get("title") or "")
+        synthetic["_state_guard_delta"] = sorted(changed)
+        synthetic["_state_guard_evidence"] = _bucket(family).get("evidence") or []
+        # 기사 제목·URL은 근거일 뿐 상태 key/변화판정에는 포함되지 않는다.
+        synthetic["_state_guard_evidence_title"] = str(evidence_row.get("title") or "")
         out.append(synthetic)
+
+        if len(out) >= 5:
+            break
 
     if suppressed_unclassified:
         print(f"event_state_guard_unclassified_suppressed={suppressed_unclassified}")
     print(f"event_state_changes={len(out)}")
     return out
+
+def _self_test() -> int:
+    nuclear_rows = [
+        {
+            "title": "미국 원전 8기 검토…AP1000 6기·APR1400 2기",
+            "source": "Reuters",
+            "link": "https://example.com/a",
+            "published": "2026-09-20T00:00:00+00:00",
+        },
+        {
+            "title": "美 원전 8기 협의, AP1000 6기 APR1400 2기 거론",
+            "source": "뉴스1",
+            "link": "https://example.com/b",
+            "published": "2026-09-20T00:05:00+00:00",
+        },
+    ]
+    accepted, _ = _accepted_facts_for_group("nuclear_build", nuclear_rows)
+    expected = {"nuclear_total_units:8", "ap1000_units:6", "apr1400_units:2"}
+    if not expected.issubset(accepted):
+        raise RuntimeError(f"nuclear state parsing failed: {accepted}")
+    if "ap1000_units:8" in accepted or "apr1400_units:8" in accepted:
+        raise RuntimeError(f"model unit double count regression: {accepted}")
+
+    official_funding = [{
+        "title": "대미투자 3,500억달러 약속…첫 송금 규모·시기는 확정된 바 없습니다",
+        "source": "대한민국 정책브리핑",
+        "link": "https://example.com/official",
+        "published": "2026-09-20T01:00:00+00:00",
+    }]
+    accepted, _ = _accepted_facts_for_group("funding_execution", official_funding)
+    if accepted != {"official_status:unconfirmed"}:
+        raise RuntimeError(f"funding background number leaked into state: {accepted}")
+
+    single_article = [{
+        "title": "텍사스 AI 전력사업 20년 장기계약 검토",
+        "source": "한국경제",
+        "link": "https://example.com/one",
+        "published": "2026-09-20T02:00:00+00:00",
+    }]
+    accepted, _ = _accepted_facts_for_group("texas_ai_power", single_article)
+    if accepted:
+        raise RuntimeError(f"single article became event state: {accepted}")
+
+    ercot = [{
+        "title": "ERCOT 데이터센터 계통연계 요청 474GW",
+        "source": "ERCOT",
+        "link": "https://example.com/ercot",
+        "published": "2026-09-20T03:00:00+00:00",
+    }]
+    accepted, _ = _accepted_facts_for_group("ercot_large_load", ercot)
+    if "ercot_request_gw:474" not in accepted or any("474기" in x for x in accepted):
+        raise RuntimeError(f"ERCOT unit contamination regression: {accepted}")
+
+    print("state_event_guard_self_test=passed")
+    return 0
 
 
 def _rss(query: str) -> list[dict]:
@@ -597,4 +1034,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    if "--self-test" in sys.argv:
+        raise SystemExit(_self_test())
     raise SystemExit(main())
