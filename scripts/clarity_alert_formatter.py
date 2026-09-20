@@ -317,7 +317,12 @@ def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
-        return "CLARITY 절차표결이 49대50으로 막힌 이틀 뒤 CFTC가 의회 입법과 별개로 기존 법적 권한 안에서 암호자산 시장 규칙 작업을 백악관 규제검토 단계에 올린 것입니다. 다만 Prerule은 아직 정식 제안규칙이 아니고 세부 규칙문도 공개되지 않았으므로 ‘새 규제가 시행됐다’고 해석하면 안 됩니다."
+        return (
+            "한마디로, CLARITY가 의회에서 막혀도 CFTC가 기다리지 않고 현재 가진 권한으로 미국 암호자산 시장 규칙을 먼저 만들기 시작했다는 뜻입니다. "
+            "CFTC가 공식적으로 밝힌 방향은 기존 등록사와 일부 비등록 crypto exchange를 CFTC 감독의 ‘crypto asset market’형 DCM으로 편입해 "
+            "암호자산의 레버리지·마진 거래를 미국 규제권 안에서 허용하고, onchain finance protocol 개발자에게도 합법적 운영 경로를 만드는 것입니다. "
+            "다만 RIN 3038-AF80 자체는 아직 Prerule이고 규칙 본문이 공개되지 않았으며, 이것만으로 CFTC가 미국 현물 암호자산 시장 전체의 포괄적 감독권을 새로 얻었다고 볼 수는 없습니다."
+        )
     if "innovation exemption" in signal and "tokenized" in signal:
         return "CLARITY 법안이 상원 절차표결에서 막힌 뒤 SEC가 기존 증권법상 면제 권한을 사용해 토큰화 주식 거래의 별도 규제 통로를 즉시 열었습니다. 다만 이것은 CLARITY를 대체하는 영구 법률이 아니라 5년 한시·조건부 조치입니다. 실제 주주권이 없는 합성 토큰은 제외되고, 발행회사는 제3자 토큰화 주식의 TSV 거래에 이의를 제기할 수 있습니다."
     if is_industry_pressure(event):
@@ -344,10 +349,10 @@ def investment_lines(event):
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return [
-            "돈 버는 능력: 현재는 Prerule이라 Coinbase·Circle·거래소의 매출·비용이 바로 바뀌지 않습니다. 향후 공개되는 적용 대상이 현물·파생상품·레버리지 거래·등록 요건 중 어디까지 포함하는지가 실제 실적 연결점입니다.",
-            "할인율: CLARITY 부결 뒤에도 CFTC가 자체 규칙 경로를 실제 가동했다는 점은 규제 공백이 영구화될 위험을 낮추는 방향이지만, 본문이 비공개라 규제강도는 아직 알 수 없습니다.",
-            "수급: 규제 명확화 기대 때문에 COIN 등 관련 자산이 반응할 수 있으나 이번 OIRA 접수 하나만으로 가격 원인을 단정하지 않습니다.",
-            "시간표: OIRA Pending Review → 검토 종료 → CFTC가 공개하는 다음 공식 문서가 핵심입니다. 현재 RegInfo에는 법정 처리기한이 없고 Prerule 단계이므로 정식 제안규칙 일정도 아직 확정되지 않았습니다.",
+            "돈 버는 능력: 지금 당장 매출이 바뀌는 단계는 아닙니다. 실제 수혜 여부는 향후 문안이 Coinbase 같은 미국 거래소의 derivatives·perpetual·레버리지·마진 거래와 등록 경로를 얼마나 넓히는지에 달려 있습니다. Circle은 USDC가 담보·결제 자산으로 명시될 때 직접 연결됩니다.",
+            "할인율: CLARITY 부결에도 CFTC가 별도 행정 규칙 경로를 가동했다는 점은 ‘아무 규칙도 없는 공백’ 위험을 낮추지만, 세부 문안이 아직 없어 규제가 완화될지 새 준수비용이 생길지는 미확정입니다.",
+            "수급: COIN·BTC·ETH·UNI 등이 반응할 수 있어도 OIRA 접수 하나만으로 가격 원인을 단정하지 않습니다. 실제 규칙 적용 범위와 같은 시간대 금리·달러·Nasdaq을 같이 봅니다.",
+            "시간표: OIRA Pending Review → 검토 종료 → CFTC 공개 문안 → 정식 제안규칙 여부 순으로 확인합니다. 현재는 Prerule이고 법정 처리기한도 없어 시행 시점은 아직 없습니다.",
         ]
     if "innovation exemption" in signal and "tokenized" in signal:
         return [
