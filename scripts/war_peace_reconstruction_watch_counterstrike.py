@@ -31,6 +31,8 @@ COUNTERSTRIKE_QUERIES = [
     'site:reuters.com ("drones hit" OR "drone attack" OR "drone strike") ("oil refinery" OR refinery) Ukraine when:12h',
     'site:reuters.com ("shuts processing" OR "halted processing" OR "stopped processing" OR shutdown) refinery drone Ukraine when:2d',
     'site:reuters.com ("oil depot" OR "fuel depot" OR pipeline OR terminal OR port) Ukraine (drone OR attack OR fire) when:12h',
+    '(Russia OR Russian OR 러시아 OR 모스크바) ("oil refinery" OR refinery OR 정유공장 OR 정유시설 OR "oil depot" OR 저유소 OR pipeline OR 송유관 OR terminal OR 터미널) (drone OR drones OR attack OR struck OR hit OR fire OR explosion OR 드론 OR 공격 OR 피격 OR 화재 OR 폭발) when:1d',
+    '(Russia OR Russian OR 러시아) ("gas facility" OR "LNG terminal" OR compressor OR 가스시설 OR LNG터미널 OR 압축기지 OR "power plant" OR substation OR 발전소 OR 변전소) (drone OR missile OR attack OR fire OR 드론 OR 미사일 OR 공격 OR 화재) when:1d',
     'site:reuters.com Ukraine (power plant OR substation OR "energy infrastructure") (missile OR drone OR attack OR fire) Russia when:12h',
     'site:reuters.com Saratov drone civilian infrastructure governor Ukraine when:12h',
     'site:tass.com Saratov drone civilian infrastructure governor Ukraine when:12h',
