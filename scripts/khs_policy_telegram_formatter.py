@@ -478,8 +478,29 @@ def normalize_source_links(body: str) -> str:
     return "\n".join(normalize_source_line(line) for line in str(body or "").splitlines())
 
 
+def _bold_timeline_dates_html(value: str) -> str:
+    """Bold Korean-formatted dates only inside the timeline section."""
+    date_re = re.compile(r"\b(\d{4}년\s+\d{1,2}월\s+\d{1,2}일)\b")
+    output: list[str] = []
+    in_timeline = False
+    for raw_line in str(value or "").splitlines():
+        stripped = raw_line.strip()
+        if stripped.startswith("- 타임라인:") or stripped == "타임라인":
+            in_timeline = True
+            raw_line = date_re.sub(r"<b>\1</b>", raw_line)
+        elif in_timeline:
+            if not stripped:
+                in_timeline = False
+            elif stripped.startswith(("•", "·")):
+                raw_line = date_re.sub(r"<b>\1</b>", raw_line)
+            else:
+                in_timeline = False
+        output.append(raw_line)
+    return "\n".join(output)
+
+
 def prepare_telegram_html(title: str, body: str) -> str:
-    """Escape message text while preserving only validated source-link anchors."""
+    """Escape message text while preserving safe source links and timeline-date bold."""
     message = f"{title}\n\n{body}".strip()
     anchors: list[str] = []
 
@@ -495,7 +516,7 @@ def prepare_telegram_html(title: str, body: str) -> str:
     escaped = html.escape(HTML_SOURCE_LINK_RE.sub(protect, message), quote=False)
     for index, anchor in enumerate(anchors):
         escaped = escaped.replace(f"@@KHS_SOURCE_LINK_{index}@@", anchor)
-    return escaped
+    return _bold_timeline_dates_html(escaped)
 
 
 
