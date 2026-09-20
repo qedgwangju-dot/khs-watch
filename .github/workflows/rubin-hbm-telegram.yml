@@ -72,11 +72,6 @@ jobs:
           python -m py_compile scripts/rubin_hbm_watch.py
           python scripts/rubin_hbm_watch.py
 
-      - name: Check Vera Rubin SOCAMM capacity and actual shipping configurations
-        run: |
-          python -m py_compile scripts/rubin_socamm_capacity_watch.py
-          python scripts/rubin_socamm_capacity_watch.py
-
       - name: Reformat Telegram alert for readability
         if: hashFiles('out/rubin_hbm_alert.md') != ''
         run: |
@@ -155,10 +150,6 @@ jobs:
             cat out/rubin_hbm_status.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo "Rubin/HBM 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -f out/rubin_socamm_capacity_status.md ]; then
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-            cat out/rubin_socamm_capacity_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/skhynix_us_memory_status.md ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
@@ -455,7 +446,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/rubin_hbm_watch_state.json data/rubin_socamm_capacity_watch_state.json data/skhynix_us_memory_watch_state.json data/samsung_hbm_watch_state.json 2>/dev/null || true
+          git add data/rubin_hbm_watch_state.json data/skhynix_us_memory_watch_state.json data/samsung_hbm_watch_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Watcher state unchanged"
           else
