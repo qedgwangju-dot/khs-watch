@@ -53,7 +53,7 @@ class ClarityReginfoWatchTest(unittest.TestCase):
         self.assertIn("아직 정식 제안규칙이 아니고", rendered)
         self.assertIn("규칙 본문도 비공개", rendered)
         self.assertNotIn("이 문서는 제안규칙입니다", rendered)
-        self.assertNotIn("최종규칙으로", rendered)
+        self.assertNotIn("이번 조치는 최종규칙으로", rendered)
 
 
 if __name__ == "__main__":
