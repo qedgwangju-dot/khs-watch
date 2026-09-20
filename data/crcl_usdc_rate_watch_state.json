@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-20T11:54:10+09:00",
+  "updated_at_kst": "2026-09-20T15:12:57+09:00",
   "circle": {
     "date": "2026-09-17",
     "circulation_usd_b": 73.8,
@@ -14,6 +14,7 @@
     "sec_yield_7d": 3.72,
     "fund_size_usd_m": 62317.4,
     "fund_size_date": "2026-09-18",
+    "source_url": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund",
     "_previous_distinct": {
       "date": "2026-09-17",
       "sec_yield_7d": 3.63,
@@ -65,7 +66,5 @@
     "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
   "crcl_last_alerted_close_date": "2026-09-18",
-  "errors": [
-    "usdxx: BlackRock USDXX fetch failed on all official URLs: https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund: HTTP Error 404: Not Found | https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund-institutional-shares: HTTP Error 404: Not Found"
-  ]
+  "errors": []
 }
