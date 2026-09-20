@@ -106,7 +106,7 @@ def current_status(event):
         return "🟡 협상 진전 — 보좌관·신뢰매체 확인. 백악관 공개 확인과 개정 법안 원문은 아직 대기 중입니다."
     stage = FMT.rule_stage(event)
     if stage == "prerule":
-        return "🟡 사전규칙 단계 — OIRA 검토에는 들어갔지만 아직 정식 제안규칙·최종규칙·시행 규정은 아닙니다."
+        return "🟡 Prerule(사전규칙 단계) — OIRA 검토에는 들어갔지만 아직 Proposed Rule(제안규칙)·Final Rule(최종규칙)·시행 규정은 아닙니다."
     if stage == "proposed":
         return "🟡 제안 단계 — 공식 제안규칙이지만 아직 최종 의무는 확정되지 않았습니다."
     if stage == "final":
@@ -208,7 +208,7 @@ def pending_lines(event):
         lines.extend([
             "실제 규칙 본문과 적용 대상",
             "현물·파생·레버리지·마진·거래소 등록 가운데 무엇을 규율하는지",
-            "OIRA 검토 종료 뒤 정식 제안규칙으로 넘어가는지 여부",
+            "OIRA 검토 종료 뒤 Proposed Rule(제안규칙) 단계로 넘어가는지 여부",
         ])
     elif FMT.rule_stage(event) == "proposed":
         lines.extend(["의견수렴 후 최종 문안", "최종 채택 여부·시행일·준수기한"])
@@ -230,7 +230,7 @@ def next_check_lines(event):
     if "표결 결과" in et:
         return ["다음 의회 절차", "수정 문안 여부", "하원 재처리·대통령 조치"]
     if FMT.rule_stage(event) == "prerule":
-        return ["OIRA 검토 종료", "CFTC 공개 문안", "정식 제안규칙(NPRM) 여부"]
+        return ["OIRA Pending Review(검토 중) 종료", "CFTC 공개 문안", "NPRM(정식 제안규칙 공고) 여부"]
     if FMT.rule_stage(event) == "proposed":
         return ["의견수렴 마감", "최종규칙 채택 여부", "시행일·준수기한"]
     if FMT.rule_stage(event) == "final":
