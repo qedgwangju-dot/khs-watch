@@ -255,12 +255,42 @@ def _self_test_material_filter() -> None:
     if _select_smr_state_candidate(reported_only) is not None:
         raise RuntimeError("SMR reported-only evidence must not trigger alert regression")
     mixed_evidence = [
-        {"official": False, "published_utc": "2026-09-20T06:00:00+00:00", "title": "새 기사"},
-        {"official": True, "published_utc": "2026-09-20T05:30:00+00:00", "title": "공식 발표"},
+        {
+            "official": False,
+            "published_utc": "2026-09-20T06:00:00+00:00",
+            "title": "새 기사",
+            "event_family": "budget",
+        },
+        {
+            "official": True,
+            "published_utc": "2026-09-20T05:30:00+00:00",
+            "title": "SMR 실증 예산안 1,000억원 정부안 확정",
+            "event_family": "budget",
+        },
     ]
     selected = _select_smr_state_candidate(mixed_evidence)
     if not selected or not selected.get("official"):
         raise RuntimeError("SMR official-state selection regression")
+    support_only = [
+        {
+            "official": True,
+            "published_utc": "2026-09-20T06:10:00+00:00",
+            "title": "SMR 특별법 시행…표준설계인가·건설허가 지원체계 마련",
+            "event_family": "standard_design_approval",
+        }
+    ]
+    if _select_smr_state_candidate(support_only) is not None:
+        raise RuntimeError("SMR support-only wording must not become approval-state alert")
+    schedule_change = [
+        {
+            "official": True,
+            "published_utc": "2026-09-20T06:20:00+00:00",
+            "title": "i-SMR 표준설계인가 2028년 신청 예정",
+            "event_family": "standard_design_approval",
+        }
+    ]
+    if _select_smr_state_candidate(schedule_change) is None:
+        raise RuntimeError("SMR official approval-schedule change must remain alertable")
 
 
 def _wec_status(title: str, outlet: str = "") -> str:
@@ -543,12 +573,104 @@ def collect_smr_policy_items(now: dt.datetime) -> list[dict]:
     return rows[:20]
 
 
+def _is_actionable_smr_state(item: dict) -> bool:
+    """단순 언급·법 설명이 아니라 실제 단계/일정/금액이 움직인 공식 상태만 통과시킨다."""
+    family = str(item.get("event_family") or "")
+    title = str(item.get("title") or "")
+    low = title.lower()
+
+    if family == "law_decree":
+        return True
+
+    # 정책·제도 문서가 인가/허가/계약을 '지원한다'고 설명한 것만으로
+    # 인가·허가·계약 완료 상태로 오인하지 않는다.
+    support_only = any(term in low for term in ("지원", "근거", "절차", "제도", "촉진", "지원체계"))
+    actual_verbs = any(
+        term in low
+        for term in (
+            "확정", "의결", "공고", "공모", "착수", "신청", "접수", "체결", "서명",
+            "선정", "지정", "설립", "출자액", "지분", "주주", "배정", "편성",
+            "획득", "발급", "취득", "완료", "가동", "착공", "수주", "발주",
+        )
+    )
+    has_schedule = bool(re.search(r"20(?:2\d|3\d)(?:년대|년)?", title)) and any(
+        term in low for term in ("일정", "목표", "예정", "계획", "착수")
+    )
+    has_money = bool(
+        re.search(r"\d[\d,.]*\s*(?:조원|억원|만원|원|억\s*원|조\s*원|억달러|만달러|달러)", title, re.I)
+    )
+
+    if family == "basic_plan":
+        return any(term in low for term in ("수립 착수", "수립에 착수", "수립 완료", "수립 확정", "기본계획 확정", "기본계획 의결")) or has_schedule
+
+    if family == "detailed_design":
+        return any(term in low for term in ("상세설계 착수", "상세설계 계약", "상세설계 용역", "사업자 선정", "공모")) or has_schedule
+
+    if family == "joint_venture":
+        return any(term in low for term in ("법인 설립", "spc 설립", "특수목적법인 설립", "출자 확정", "출자액", "지분", "주주")) or (has_money and actual_verbs)
+
+    if family == "special_zone":
+        if any(term in low for term in ("지정 추진", "지정 검토", "지정 계획", "지정 예정")) and not has_schedule:
+            return False
+        return any(term in low for term in ("특구 지정", "특구 선정", "후보지 선정", "지정 공고", "공모")) and (actual_verbs or has_schedule)
+
+    if family == "budget":
+        return has_money and any(term in low for term in ("예산안", "편성", "배정", "확정", "의결", "정부안", "국회"))
+
+    if family == "demonstration":
+        return any(term in low for term in ("실증 착수", "실증부지", "실증 부지", "사업자 선정", "공모", "협약", "계약")) and (actual_verbs or has_money or has_schedule)
+
+    if family == "nuclear_fuel":
+        return any(term in low for term in ("공급계약 체결", "공급 계약 체결", "공급사 선정", "핵연료 계약 확정", "핵연료 공급 계약")) and not any(
+            term in low for term in ("계약 검토", "계약 추진", "계약 계획")
+        )
+
+    if family == "standard_design_approval":
+        # '표준설계인가 지원/절차'는 상태 변화가 아니다. 신청·접수·획득 또는
+        # 공식 일정 변경처럼 실제 시간표가 움직였을 때만 통과한다.
+        return bool(
+            re.search(
+                r"표준설계(?:인가|승인).{0,24}(?:신청|접수|획득|발급|취득|완료|확정|받았|받음|일정|목표|예정)",
+                title,
+            )
+            or re.search(
+                r"(?:신청|접수|획득|발급|취득|완료|확정).{0,24}표준설계(?:인가|승인)",
+                title,
+            )
+        ) and (actual_verbs or has_schedule)
+
+    if family == "construction_permit":
+        return bool(
+            re.search(
+                r"건설허가.{0,24}(?:신청|접수|획득|발급|취득|완료|확정|받았|받음|일정|목표|예정)",
+                title,
+            )
+            or re.search(
+                r"(?:신청|접수|획득|발급|취득|완료|확정).{0,24}건설허가",
+                title,
+            )
+        ) and (actual_verbs or has_schedule)
+
+    if family == "epc_major_equipment":
+        return any(term in low for term in ("발주 공고", "입찰 공고", "우선협상", "사업자 선정", "수주", "계약 체결", "epc 계약", "주기기 계약")) and not any(
+            term in low for term in ("발주 검토", "발주 계획", "계약 검토", "계약 추진")
+        )
+
+    if family == "commercialization":
+        return any(term in low for term in ("착공", "건설 착수", "상용운전", "상업운전", "가동", "부지 확정", "사업자 선정", "일정 확정", "목표 변경")) or has_schedule
+
+    # 분류되지 않은 상태는 보수적으로 차단한다.
+    if support_only and not (actual_verbs or has_schedule or has_money):
+        return False
+    return actual_verbs or has_schedule or has_money
+
+
 def _select_smr_state_candidate(family_items: list[dict]) -> dict | None:
     """기사 자체가 아니라 공식 확인된 사건 상태만 알림 후보로 선택한다."""
     if not SMR_REQUIRE_OFFICIAL_CONFIRMATION:
-        return family_items[0] if family_items else None
+        return next((item for item in family_items if _is_actionable_smr_state(item)), None)
     for item in family_items:
-        if bool(item.get("official")):
+        if bool(item.get("official")) and _is_actionable_smr_state(item):
             return item
     return None
 
@@ -634,7 +756,7 @@ def _render_smr_policy(item: dict, idx: int, now: dt.datetime) -> list[str]:
         "- 숫자: 기본계획 5년 주기 · 2027년 상세설계 착수 · 2030년대 비경수형 SMR 건설 착수 · 2035년 경수형 SMR 상용화 목표",
         "- 한국 기업·매출 연결: 현대건설은 TerraPower Natrium 후속 8기 EPC 우선권, HD현대는 주기기 연 2~3기 생산체계 목표, 두산에너빌리티는 NuScale·X-energy 원자로 모듈 제작 기반이 있습니다. 다만 특별법 시행 자체의 신규 수주·매출액은 아직 미확정입니다.",
         "- 병목·실패모드: 실제 예산액, 민관 SPC 출자사·지분, 특구·실증부지, 인허가 일정이 확정되지 않으면 제도 시행이 실제 발주·수주·매출 인식으로 이어지는 시점이 늦어질 수 있습니다.",
-        f"- 출처: [{source_label}]({source_url}) · {source_time}",
+        f"- 근거·교차검증: [{source_label}]({source_url}) · {source_time}",
         "- 다음 확인: 제1차 기본계획 · 2027년 상세설계 예산 · SPC 출자구조 · 특구/실증부지 · 기업별 수주 공시",
         "",
     ]
@@ -788,7 +910,10 @@ def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     ALERT_PATH.write_text(render(alerts, now), encoding="utf-8")
     ALERTS_JSON_PATH.write_text(json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    TITLE_PATH.write_text("원전·Westinghouse·SMR 웹감시: 물질적 상태 변화\n", encoding="utf-8")
+    if all(item.get("kind") == "smr_policy" for item in alerts):
+        TITLE_PATH.write_text("한국 SMR 특별법·i-SMR 웹감시: 공식 상태 변화\n", encoding="utf-8")
+    else:
+        TITLE_PATH.write_text("원전·Westinghouse·SMR 웹감시: 물질적 상태 변화\n", encoding="utf-8")
     save_seen(seen, now)
     print(f"nuclear_policy_alerts={len(alerts)} westinghouse_material={len(stake_items)} smr_material={len(smr_items)}")
     return 0
