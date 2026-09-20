@@ -82,26 +82,26 @@ def koreanize_regulatory_terms(text):
     if not text:
         return text
     replacements = [
-        (r"\bPending Review\b", "검토 중"),
-        (r"\bConcluded\b", "검토 완료"),
-        (r"\bPrerule Stage\b", "사전규칙 단계"),
-        (r"\bPrerule\b", "사전규칙 단계"),
-        (r"\bProposed Rule Stage\b", "제안규칙 단계"),
-        (r"\bProposed Rule\b", "제안규칙"),
-        (r"\bFinal Rule Stage\b", "최종규칙 단계"),
-        (r"\bInterim Final Rule\b", "잠정 최종규칙"),
-        (r"\bFinal Rule\b", "최종규칙"),
-        (r"\bEconomically Significant\b", "경제적으로 중대한 규제 여부"),
-        (r"\bLegal Deadline\b", "법정 처리기한"),
-        (r"\bReceived Date\b", "접수일"),
-        (r"\bStatus\b", "상태"),
-        (r"\bStage\b", "단계"),
-        (r"\bcrypto exchanges?\b", "암호자산 거래소"),
-        (r"\bcrypto asset markets?\b", "암호자산 시장"),
-        (r"\bonchain finance protocols?\b", "온체인 금융 프로토콜"),
-        (r"\bderivatives\b", "파생상품"),
-        (r"\bperpetuals?\b", "무기한 선물"),
-        (r"\brulemaking\b", "규칙제정"),
+        (r"\bPending Review\b", "Pending Review(검토 중)"),
+        (r"\bConcluded\b", "Concluded(검토 완료)"),
+        (r"\bPrerule Stage\b", "Prerule Stage(사전규칙 단계)"),
+        (r"\bPrerule\b", "Prerule(사전규칙 단계)"),
+        (r"\bProposed Rule Stage\b", "Proposed Rule Stage(제안규칙 단계)"),
+        (r"\bProposed Rule\b", "Proposed Rule(제안규칙)"),
+        (r"\bFinal Rule Stage\b", "Final Rule Stage(최종규칙 단계)"),
+        (r"\bInterim Final Rule\b", "Interim Final Rule(잠정 최종규칙)"),
+        (r"\bFinal Rule\b", "Final Rule(최종규칙)"),
+        (r"\bEconomically Significant\b", "Economically Significant(경제적으로 중대한 규제 여부)"),
+        (r"\bLegal Deadline\b", "Legal Deadline(법정 처리기한)"),
+        (r"\bReceived Date\b", "Received Date(접수일)"),
+        (r"\bStatus\b", "Status(상태)"),
+        (r"\bStage\b", "Stage(단계)"),
+        (r"\bcrypto exchanges?\b", "crypto exchange(암호자산 거래소)"),
+        (r"\bcrypto asset markets?\b", "crypto asset market(암호자산 시장)"),
+        (r"\bonchain finance protocols?\b", "onchain finance protocol(온체인 금융 프로토콜)"),
+        (r"\bderivatives\b", "derivatives(파생상품)"),
+        (r"\bperpetuals?\b", "perpetual(무기한 선물)"),
+        (r"\brulemaking\b", "rulemaking(규칙제정)"),
     ]
     for pattern, replacement in replacements:
         text = re.sub(pattern, replacement, text, flags=re.I)
@@ -279,7 +279,7 @@ def special_translation(event):
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return (
             "CFTC, 암호자산 거래·시장 규제안 RIN 3038-AF80을 백악관 규제검토에 제출",
-            "미 백악관 규제정보·심사국(OIRA)의 RegInfo에는 CFTC RIN 3038-AF80 ‘암호자산 거래 및 암호자산 시장 규제’가 2026년 9월 17일 접수돼 ‘검토 중(Pending Review)’으로 표시돼 있습니다. 규칙제정 단계는 ‘사전규칙 단계(Prerule)’이고, ‘경제적으로 중대한 규제 여부’는 아니오, 법정 처리기한은 없음으로 표시됩니다. 공개된 규칙 본문·적용 자산·거래소 의무는 아직 없어 제안규칙이나 최종규칙으로 보면 안 됩니다.",
+            "미 백악관 규제정보·심사국(OIRA)의 RegInfo에는 CFTC RIN 3038-AF80 ‘Regulation Crypto Asset Transactions and Regulation Crypto Asset Markets(암호자산 거래 및 암호자산 시장 규제)’가 2026년 9월 17일 접수돼 Pending Review(검토 중)로 표시돼 있습니다. 규칙제정 단계는 Prerule(사전규칙 단계)이고, Economically Significant(경제적으로 중대한 규제 여부)는 No(아니오), Legal Deadline(법정 처리기한)은 None(없음)으로 표시됩니다. 공개된 규칙 본문·적용 자산·거래소 의무는 아직 없어 Proposed Rule(제안규칙)이나 Final Rule(최종규칙)로 보면 안 됩니다.",
         )
     if "innovation exemption" in signal and "tokenized" in signal:
         return (
@@ -352,7 +352,7 @@ def easy_meaning(event, body_ko):
             "한마디로, CLARITY가 의회에서 막혀도 CFTC가 기다리지 않고 현재 가진 권한으로 미국 암호자산 시장 규칙을 먼저 만들기 시작했다는 뜻입니다. "
             "CFTC가 공식적으로 밝힌 방향은 기존 등록사와 일부 비등록 암호자산 거래소를 CFTC 감독의 ‘암호자산 시장’형 지정계약시장(DCM)으로 편입해 "
             "암호자산의 레버리지·마진 거래를 미국 규제권 안에서 허용하고, 온체인 금융 프로토콜 개발자에게도 합법적 운영 경로를 만드는 것입니다. "
-            "다만 RIN 3038-AF80 자체는 아직 사전규칙 단계(Prerule)이고 규칙 본문이 공개되지 않았으며, 이것만으로 CFTC가 미국 현물 암호자산 시장 전체의 포괄적 감독권을 새로 얻었다고 볼 수는 없습니다."
+            "다만 RIN 3038-AF80 자체는 아직 Prerule(사전규칙 단계)이고 규칙 본문이 공개되지 않았으며, 이것만으로 CFTC가 미국 현물 암호자산 시장 전체의 포괄적 감독권을 새로 얻었다고 볼 수는 없습니다."
         )
     if "innovation exemption" in signal and "tokenized" in signal:
         return "CLARITY 법안이 상원 절차표결에서 막힌 뒤 SEC가 기존 증권법상 면제 권한을 사용해 토큰화 주식 거래의 별도 규제 통로를 즉시 열었습니다. 다만 이것은 CLARITY를 대체하는 영구 법률이 아니라 5년 한시·조건부 조치입니다. 실제 주주권이 없는 합성 토큰은 제외되고, 발행회사는 제3자 토큰화 주식의 TSV 거래에 이의를 제기할 수 있습니다."
@@ -383,7 +383,7 @@ def investment_lines(event):
             "돈 버는 능력: 지금 당장 매출이 바뀌는 단계는 아닙니다. 실제 수혜 여부는 향후 문안이 Coinbase 같은 미국 거래소의 파생상품·무기한 선물(perpetual)·레버리지·마진 거래와 등록 경로를 얼마나 넓히는지에 달려 있습니다. Circle은 USDC가 담보·결제 자산으로 명시될 때 직접 연결됩니다.",
             "할인율: CLARITY 부결에도 CFTC가 별도 행정 규칙 경로를 가동했다는 점은 ‘아무 규칙도 없는 공백’ 위험을 낮추지만, 세부 문안이 아직 없어 규제가 완화될지 새 준수비용이 생길지는 미확정입니다.",
             "수급: COIN·BTC·ETH·UNI 등이 반응할 수 있어도 OIRA 접수 하나만으로 가격 원인을 단정하지 않습니다. 실제 규칙 적용 범위와 같은 시간대 금리·달러·Nasdaq을 같이 봅니다.",
-            "시간표: OIRA 검토 중 → 검토 종료 → CFTC 공개 문안 → 정식 제안규칙 여부 순으로 확인합니다. 현재는 사전규칙 단계(Prerule)이고 법정 처리기한도 없어 시행 시점은 아직 없습니다.",
+            "시간표: OIRA Pending Review(검토 중) → 검토 종료 → CFTC 공개 문안 → Proposed Rule(제안규칙) 여부 순으로 확인합니다. 현재는 Prerule(사전규칙 단계)이고 Legal Deadline(법정 처리기한)도 없어 시행 시점은 아직 없습니다.",
         ]
     if "innovation exemption" in signal and "tokenized" in signal:
         return [
@@ -468,7 +468,7 @@ def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
-        return "CFTC RIN 3038-AF80은 CLARITY 부결 뒤 의회 입법과 별개인 행정 규칙 경로가 실제 백악관 OIRA 검토에 들어갔다는 시간표 변화지만, 현재는 ‘검토 중’·‘사전규칙 단계’이고 규칙 본문도 비공개라 COIN·CRCL의 돈 버는 능력이 즉시 바뀐 단계는 아니며, 다음 핵심은 OIRA 검토 종료와 CFTC의 공개 문안입니다."
+        return "CFTC RIN 3038-AF80은 CLARITY 부결 뒤 의회 입법과 별개인 행정 규칙 경로가 실제 백악관 OIRA 검토에 들어갔다는 시간표 변화지만, 현재는 Pending Review(검토 중)·Prerule(사전규칙 단계)이고 규칙 본문도 비공개라 COIN·CRCL의 돈 버는 능력이 즉시 바뀐 단계는 아니며, 다음 핵심은 OIRA 검토 종료와 CFTC의 공개 문안입니다."
     if "innovation exemption" in signal and "tokenized" in signal:
         return "SEC의 5년 한시 Innovation Exemption은 CLARITY 부결 직후 토큰화 미국주식의 온체인 거래 통로를 실제로 연 조치로, HOOD·COIN·SECZ의 상품화 시간표와 규제 할인율에는 긍정적이고 CRCL에는 간접적이며, 한시 면제·종목/거래량 제한·발행사 거부권·향후 소송 또는 정책 반전이 최대 실패 경로입니다."
     if is_industry_pressure(event):
