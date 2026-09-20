@@ -1003,8 +1003,7 @@ def event_summary(e: dict) -> list[str]:
         lines.append(f"• 핵심 숫자: <b>{html.escape(' · '.join(nums))}</b>")
     lines += [
         f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}",
-        f"• 근거 제목: {html.escape(e.get('title') or '')}",
-        f"• {href(e.get('direct_link') or '', '원문')}",
+        f"• 근거 제목: {html.escape(e.get('title') or '')} · {href(e.get('direct_link') or '', '원문')}",
     ]
     return lines
 
@@ -1136,7 +1135,7 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
 
 def build_event_alert(events: list[dict], now: datetime) -> str:
     lines = [
-        "🚨 <b>HBM 주제·공식 상태 변화</b>",
+        "🚨 <b>HBM 주제·사건 상태 변화</b>",
         "━━━━━━━━━━━━━━━━",
         f"<b>상태 변화 {len(events)}건</b> · {now.strftime('%Y-%m-%d %H:%M KST')}",
         "",
