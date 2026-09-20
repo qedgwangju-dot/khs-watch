@@ -1626,12 +1626,19 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
             if published
             else "확인 불가"
         )
+        timeline_parts = [
+            part.strip()
+            for part in str(profile.get("timeline") or "").split(" → ")
+            if part.strip()
+        ]
+        timeline_lines = ["- 타임라인:"]
+        timeline_lines.extend(f"  • {part}" for part in timeline_parts)
         return [
             f"- 발표일: {published_label}",
             f"- 현재 단계: {profile.get('stage')}",
             f"- 핵심: {core}",
             f"- 실제 내용: {profile.get('actual')}",
-            f"- 타임라인: {profile.get('timeline')}",
+            *timeline_lines,
             f"- 왜 중요한가: {profile.get('why')}",
             f"- 다음 확인: {profile.get('next')}",
         ]
