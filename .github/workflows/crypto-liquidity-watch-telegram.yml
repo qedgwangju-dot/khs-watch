@@ -8,7 +8,9 @@ on:
       - "scripts/crypto_liquidity_watch_runner.py"
       - "scripts/crypto_alert_krw.py"
       - "scripts/crypto_alert_format.py"
+      - "scripts/samsung_wallet_stablecoin_watch.py"
       - "data/crypto_liquidity_watch_state.json"
+      - "data/samsung_wallet_stablecoin_watch_state.json"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -47,6 +49,7 @@ jobs:
           python -m py_compile scripts/crypto_liquidity_watch_runner.py
           python -m py_compile scripts/crypto_alert_krw.py
           python -m py_compile scripts/crypto_alert_format.py
+          python -m py_compile scripts/samsung_wallet_stablecoin_watch.py
 
       - name: Validate exact Telegram bot route without sending
         env:
@@ -82,6 +85,10 @@ jobs:
 
       - name: Check Treasury buybacks, long yields and BTC ETF flows
         run: PYTHONPATH=. python scripts/crypto_liquidity_watch_runner.py
+
+      - name: Check Samsung Wallet stablecoin adoption
+        if: always()
+        run: python scripts/samsung_wallet_stablecoin_watch.py
 
       - name: Verify KRW conversion source
         env:
@@ -136,6 +143,14 @@ jobs:
           if [ -f out/crypto_liquidity_watch_telegram.txt ]; then
             printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/crypto_liquidity_watch_telegram.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/samsung_wallet_stablecoin_status.md ]; then
+            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/samsung_wallet_stablecoin_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/samsung_wallet_stablecoin_telegram.txt ]; then
+            printf '\n---\n\nSamsung Wallet stablecoin Telegram preview:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/samsung_wallet_stablecoin_telegram.txt >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Send meaningful change to exact Telegram bot
@@ -223,6 +238,68 @@ jobs:
           print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={ids}")
           PY
 
+      - name: Send Samsung Wallet stablecoin change as separate Telegram alert
+        if: hashFiles('out/samsung_wallet_stablecoin_telegram.txt') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram token/chat id is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/samsung_wallet_stablecoin_telegram.txt").read_text(encoding="utf-8").strip()
+          if not text:
+              raise RuntimeError("Samsung Wallet stablecoin alert is empty")
+          if len(text) > 3900:
+              raise RuntimeError(f"Samsung Wallet stablecoin alert too long: {len(text)}")
+
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode("utf-8")
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=25) as response:
+              result = json.loads(response.read().decode("utf-8"))
+          if not result.get("ok"):
+              raise RuntimeError(f"Telegram rejected Samsung Wallet alert: {result}")
+          message_id = (result.get("result") or {}).get("message_id")
+          confirmed = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_id": message_id,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/samsung_wallet_stablecoin_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"samsung_wallet_stablecoin_delivery_confirmed=true bot=@{username} message_id={message_id}")
+          PY
+
       - name: Persist baseline or confirmed state
         if: always()
         run: |
@@ -232,6 +309,13 @@ jobs:
             fi
           else
             echo "Telegram delivery was not confirmed; watcher state intentionally not advanced."
+          fi
+          if [ ! -f out/samsung_wallet_stablecoin_telegram.txt ] || [ -f out/samsung_wallet_stablecoin_telegram_confirmed.json ]; then
+            if [ -f out/samsung_wallet_stablecoin_watch_pending_state.json ]; then
+              cp out/samsung_wallet_stablecoin_watch_pending_state.json data/samsung_wallet_stablecoin_watch_state.json
+            fi
+          else
+            echo "Samsung Wallet Telegram delivery was not confirmed; Samsung watcher state intentionally not advanced."
           fi
 
       - name: Commit watcher state
@@ -243,6 +327,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/crypto_liquidity_watch_state.json
+          if [ -f data/samsung_wallet_stablecoin_watch_state.json ]; then
+            git add data/samsung_wallet_stablecoin_watch_state.json
+          fi
           if git diff --cached --quiet; then
             echo "Crypto liquidity state unchanged"
           else
@@ -267,5 +354,9 @@ jobs:
             out/crypto_liquidity_watch_telegram.txt
             out/crypto_liquidity_watch_pending_state.json
             out/crypto_liquidity_watch_telegram_confirmed.json
+            out/samsung_wallet_stablecoin_status.md
+            out/samsung_wallet_stablecoin_telegram.txt
+            out/samsung_wallet_stablecoin_watch_pending_state.json
+            out/samsung_wallet_stablecoin_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
