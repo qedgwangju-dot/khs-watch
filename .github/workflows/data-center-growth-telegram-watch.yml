@@ -44,6 +44,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Sync latest main state
+        run: |
+          git fetch origin main
+          git merge --ff-only origin/main
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -306,32 +311,56 @@ jobs:
 
       - name: Save latest official baselines
         run: |
-          mkdir -p data
-          cp out/data_center_growth_pending_state.json data/data_center_growth_state.json
-          cp out/korea_aidc_policy_pending_state.json data/korea_aidc_policy_state.json
-          cp out/pjm_data_center_policy_pending_state.json data/pjm_data_center_policy_state.json
-          cp out/us_data_center_time_to_power_pending_state.json data/us_data_center_time_to_power_state.json
-          cp out/us_data_center_generation_buildout_pending_state.json data/us_data_center_generation_buildout_state.json
-          cp out/us_data_center_cancellation_risk_pending_state.json data/us_data_center_cancellation_risk_state.json
-          git restore scripts/pjm_data_center_policy_watch.py
-          git restore scripts/us_data_center_time_to_power_watch.py
+          set -euo pipefail
+          tmpdir="$(mktemp -d)"
+          cp out/data_center_growth_pending_state.json "$tmpdir/data_center_growth_state.json"
+          cp out/korea_aidc_policy_pending_state.json "$tmpdir/korea_aidc_policy_state.json"
+          cp out/pjm_data_center_policy_pending_state.json "$tmpdir/pjm_data_center_policy_state.json"
+          cp out/us_data_center_time_to_power_pending_state.json "$tmpdir/us_data_center_time_to_power_state.json"
+          cp out/us_data_center_generation_buildout_pending_state.json "$tmpdir/us_data_center_generation_buildout_state.json"
+          cp out/us_data_center_cancellation_risk_pending_state.json "$tmpdir/us_data_center_cancellation_risk_state.json"
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/data_center_growth_state.json data/korea_aidc_policy_state.json data/pjm_data_center_policy_state.json data/us_data_center_time_to_power_state.json data/us_data_center_generation_buildout_state.json data/us_data_center_cancellation_risk_state.json
-          if git diff --cached --quiet; then
-            echo "State unchanged."
-          else
+
+          saved=0
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp "$tmpdir/data_center_growth_state.json" data/data_center_growth_state.json
+            cp "$tmpdir/korea_aidc_policy_state.json" data/korea_aidc_policy_state.json
+            cp "$tmpdir/pjm_data_center_policy_state.json" data/pjm_data_center_policy_state.json
+            cp "$tmpdir/us_data_center_time_to_power_state.json" data/us_data_center_time_to_power_state.json
+            cp "$tmpdir/us_data_center_generation_buildout_state.json" data/us_data_center_generation_buildout_state.json
+            cp "$tmpdir/us_data_center_cancellation_risk_state.json" data/us_data_center_cancellation_risk_state.json
+
+            git add data/data_center_growth_state.json \
+                    data/korea_aidc_policy_state.json \
+                    data/pjm_data_center_policy_state.json \
+                    data/us_data_center_time_to_power_state.json \
+                    data/us_data_center_generation_buildout_state.json \
+                    data/us_data_center_cancellation_risk_state.json
+
+            if git diff --cached --quiet; then
+              echo "State unchanged against latest main."
+              saved=1
+              break
+            fi
+
             git commit -m "Update data center watch states [skip ci]"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push origin HEAD:main; then
-                break
-              fi
-              git rebase --abort 2>/dev/null || true
-              if [ "$attempt" -eq 3 ]; then
-                exit 1
-              fi
-              sleep $((attempt * 2))
-            done
+            if git push origin HEAD:main; then
+              saved=1
+              break
+            fi
+
+            echo "State push raced with another main update · ${attempt}/3 재시도"
+            sleep $((attempt * 2))
+          done
+
+          if [ "$saved" -ne 1 ]; then
+            echo "Failed to save data-center states after 3 latest-main retries" >&2
+            exit 1
           fi
 
       - name: Upload watcher status
