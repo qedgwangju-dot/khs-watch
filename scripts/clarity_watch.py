@@ -33,6 +33,7 @@ OFFICIAL_DOMAINS = {
     "www.sec.gov",
     "www.cftc.gov",
     "www.federalregister.gov",
+    "www.reginfo.gov",
     "www.whitehouse.gov",
 }
 TOPIC_RE = re.compile(
@@ -318,6 +319,121 @@ def collect_federal_register(errors):
     return events
 
 
+
+def parse_reginfo_review_text(text):
+    text = clean(text)
+    pattern = re.compile(
+        r"AGENCY:\s*(?P<agency>.+?)\s+RIN:\s*(?P<rin>\d{4}-[A-Z]{2}\d+)\s+"
+        r"Status:\s*(?P<status>Pending Review|Concluded)\s+"
+        r"TITLE:\s*(?P<title>.+?)\s+"
+        r"STAGE:\s*(?P<stage>Prerule|Proposed Rule|Final Rule|Other)\s+"
+        r"Economically Significant:\s*(?P<econ>.+?)\s+"
+        r"(?:\*+\s*)?RECEIVED DATE:\s*(?P<received>\d{2}/\d{2}/\d{4})\s+"
+        r"LEGAL DEADLINE:\s*(?P<deadline>.*?)(?=\s+AGENCY:|$)",
+        re.I,
+    )
+    rows = []
+    for m in pattern.finditer(text):
+        econ_tokens = re.findall(r"\b(?:Yes|No)\b", m.group("econ"), re.I)
+        econ = econ_tokens[-1].title() if econ_tokens else ""
+        deadline = clean(m.group("deadline"))
+        if len(deadline) > 120:
+            deadline = deadline[:120]
+        rows.append({
+            "agency": clean(m.group("agency")),
+            "rin": clean(m.group("rin")).upper(),
+            "status": clean(m.group("status")),
+            "title": clean(m.group("title")),
+            "stage": clean(m.group("stage")),
+            "economically_significant": econ,
+            "received_date": clean(m.group("received")),
+            "legal_deadline": deadline,
+        })
+    return rows
+
+
+def parse_reginfo_table_rows(soup):
+    rows = []
+    for tr in soup.find_all("tr"):
+        cells = [clean(td.get_text(" ", strip=True)) for td in tr.find_all(["td", "th"])]
+        if not cells:
+            continue
+        joined = " | ".join(cells)
+        rin_match = re.search(r"\b(\d{4}-[A-Z]{2}\d+)\b", joined, re.I)
+        date_match = re.search(r"\b(\d{2}/\d{2}/\d{4})\b", joined)
+        status_match = re.search(r"\b(Pending Review|Concluded)\b", joined, re.I)
+        if not rin_match or not date_match or not status_match:
+            continue
+        rin = rin_match.group(1).upper()
+        title = ""
+        for cell in cells:
+            if rin in cell.upper() or re.fullmatch(r"\d{2}/\d{2}/\d{4}", cell) or "CFTC" in cell.upper() or "SEC" == cell.upper():
+                continue
+            if re.search(r"Pending Review|Concluded|Consistent", cell, re.I):
+                continue
+            if len(cell) > len(title):
+                title = cell
+        rows.append({
+            "agency": "",
+            "rin": rin,
+            "status": status_match.group(1).title(),
+            "title": title,
+            "stage": "",
+            "economically_significant": "",
+            "received_date": date_match.group(1),
+            "legal_deadline": "",
+        })
+    return rows
+
+
+def collect_reginfo_reviews(errors):
+    events = []
+    agencies = [
+        ("CFTC", "3038"),
+        ("SEC", "3235"),
+    ]
+    for agency_name, agency_code in agencies:
+        url = f"https://www.reginfo.gov/public/do/eoReviewSearch?agencyCode={agency_code}"
+        try:
+            raw = fetch(url).decode("utf-8", "ignore")
+            soup = BeautifulSoup(raw, "html.parser")
+            page_text = clean(soup.get_text(" ", strip=True))
+            rows = parse_reginfo_review_text(page_text)
+            if not rows:
+                rows = parse_reginfo_table_rows(soup)
+            for row in rows:
+                title = clean(row.get("title") or "")
+                signal = f"{title} {row.get('rin','')}"
+                if not (TOPIC_RE.search(signal) or CRYPTO_RE.search(signal)):
+                    continue
+                stage = clean(row.get("stage") or "") or "OIRA review"
+                status = clean(row.get("status") or "")
+                rin = clean(row.get("rin") or "")
+                received = clean(row.get("received_date") or "")
+                econ = clean(row.get("economically_significant") or "")
+                deadline = clean(row.get("legal_deadline") or "")
+                detail_parts = [
+                    f"RIN {rin}",
+                    f"Status: {status}",
+                    f"Stage: {stage}",
+                ]
+                if econ:
+                    detail_parts.append(f"Economically Significant: {econ}")
+                if deadline:
+                    detail_parts.append(f"Legal Deadline: {deadline}")
+                events.append(Event(
+                    f"OIRA/RegInfo — {agency_name}",
+                    f"{agency_name} OIRA 규제검토 — {stage}",
+                    title,
+                    url,
+                    date=received,
+                    detail=" | ".join(detail_parts),
+                ))
+        except Exception as exc:
+            errors.append(f"RegInfo {agency_name}: {exc}")
+    return list({e.key: e for e in events}.values())
+
+
 def collect_regulators(errors):
     events = []
     feeds = [
@@ -328,6 +444,7 @@ def collect_regulators(errors):
     for source, url in feeds:
         events.extend(parse_rss(url, source, errors))
     events.extend(collect_federal_register(errors))
+    events.extend(collect_reginfo_reviews(errors))
     return list({e.key: e for e in events}.values())
 
 
