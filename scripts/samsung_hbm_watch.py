@@ -1020,7 +1020,310 @@ def evidence_level(e: dict) -> str:
     return "신뢰 보도 단계"
 
 
+
+def _share_institution(text: str) -> str:
+    low = (text or "").lower()
+    for institution, aliases in SHARE_INSTITUTIONS.items():
+        if any(alias in low for alias in aliases):
+            return institution
+    return ""
+
+
+def _share_basis(text: str, institution: str = "") -> str:
+    low = (text or "").lower()
+    if any(k in low for k in (
+        "by sales", "sales share", "revenue share", "share by revenue",
+        "매출 기준", "매출 점유율", "금액 기준", "매출액 기준",
+    )):
+        return "sales"
+    if any(k in low for k in (
+        "bit share", "bit shipment", "bit-based", "shipment share",
+        "gigabit", "gb shipment", "비트 기준", "비트 점유율", "비트 출하",
+    )):
+        return "bit"
+    # Counterpoint's tracked HBM market-share series is revenue based.
+    if institution == "counterpoint" and "market share" in low:
+        return "sales"
+    return ""
+
+
+def _share_alias_pattern(aliases: tuple[str, ...]) -> str:
+    parts = []
+    for alias in aliases:
+        if alias.isalpha() and len(alias) <= 3:
+            parts.append(r"\b" + re.escape(alias) + r"\b")
+        else:
+            parts.append(re.escape(alias))
+    return "(?:" + "|".join(parts) + ")"
+
+
+def _extract_vendor_pct(text: str, aliases: tuple[str, ...]) -> float | None:
+    low = (text or "").lower()
+    ap = _share_alias_pattern(tuple(a.lower() for a in aliases))
+    patterns = [
+        ap + r"[^%\d]{0,55}([0-9]{1,3}(?:\.[0-9]+)?)\s*%",
+        r"([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^%\d]{0,55}" + ap,
+    ]
+    for pat in patterns:
+        m = re.search(pat, low, re.I)
+        if m:
+            # One of the alternations may add a group before the numeric group.
+            numeric = None
+            for g in m.groups():
+                if g is not None and re.fullmatch(r"[0-9]{1,3}(?:\.[0-9]+)?", str(g)):
+                    numeric = float(g)
+                    break
+            if numeric is not None and 0 <= numeric <= 100:
+                return numeric
+    return None
+
+
+def _share_values(text: str) -> dict[str, float] | None:
+    values = {
+        "skhynix": _extract_vendor_pct(text, ("sk hynix", "sk하이닉스", "하이닉스", "skh")),
+        "samsung": _extract_vendor_pct(text, ("samsung electronics", "samsung", "삼성전자", "삼성", "sec")),
+        "micron": _extract_vendor_pct(text, ("micron", "마이크론", "mu")),
+    }
+    found = {k: v for k, v in values.items() if v is not None}
+    if len(found) < 2:
+        return None
+    if len(found) == 3:
+        total = sum(found.values())
+        # HBM share reports often sum to 99~101 due to rounding.
+        if not (97.0 <= total <= 103.0):
+            return None
+    return found
+
+
+def _share_page_text(e: dict, base_text: str) -> str:
+    low = base_text.lower()
+    if not any(k in low for k in ("market share", "점유율", "hbm share", "share parity")):
+        return base_text
+    url = e.get("direct_link") or ""
+    if not url:
+        return base_text
+    try:
+        raw = fetch(url, timeout=12)
+        page = clean(raw.decode("utf-8", errors="ignore"))
+        if page:
+            return (base_text + " " + page[:20000]).strip()
+    except Exception:
+        pass
+    return base_text
+
+
+def _share_period_windows(text: str) -> list[tuple[str, str]]:
+    windows: list[tuple[str, str]] = []
+    year_hits = list(re.finditer(r"\b(20\d{2})(?:E|e)?\b", text))
+    for i, hit in enumerate(year_hits):
+        start = max(0, hit.start() - 100)
+        end = min(len(text), (year_hits[i + 1].start() + 30) if i + 1 < len(year_hits) else hit.end() + 420)
+        windows.append((hit.group(1), text[start:end]))
+
+    quarter_patterns = [
+        re.compile(r"\b([1-4])Q\s*(20\d{2})\b", re.I),
+        re.compile(r"\bQ([1-4])\s*(20\d{2})\b", re.I),
+        re.compile(r"\b(20\d{2})\s*년?\s*([1-4])\s*분기\b"),
+    ]
+    for pat in quarter_patterns:
+        for hit in pat.finditer(text):
+            groups = hit.groups()
+            if len(groups) != 2:
+                continue
+            if len(groups[0]) == 4:
+                year, q = groups[0], groups[1]
+            else:
+                q, year = groups[0], groups[1]
+            start = max(0, hit.start() - 100)
+            end = min(len(text), hit.end() + 420)
+            windows.append((f"{year}Q{q}", text[start:end]))
+    return windows
+
+
+def extract_share_observations(e: dict) -> list[dict]:
+    base = clean(f"{e.get('title','')} {e.get('description','')} {e.get('source','')}")
+    low = base.lower()
+    if "hbm" not in low or not any(k in low for k in ("share", "점유율", "market")):
+        return []
+
+    institution = _share_institution(base)
+    if not institution:
+        return []
+
+    text = _share_page_text(e, base)
+    basis = _share_basis(text, institution)
+    if not basis:
+        # Never compare an unspecified denominator with sales or bit share.
+        return []
+
+    is_forecast_context = any(k in text.lower() for k in (
+        "forecast", "estimate", "estimated", "outlook", "expects", "expected",
+        "전망", "예상", "추정", "e)", "2026e", "2027e", "2028e",
+    ))
+
+    out: list[dict] = []
+    seen_keys = set()
+    for period, window in _share_period_windows(text):
+        values = _share_values(window)
+        if not values:
+            continue
+
+        kind = "actual" if "Q" in period and not is_forecast_context else "forecast"
+        if kind == "forecast" and "Q" in period:
+            # Quarterly estimates are allowed but remain forecast observations.
+            pass
+        key = f"{institution}|{basis}|{period}"
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+        out.append({
+            "key": key,
+            "kind": kind,
+            "institution": institution,
+            "basis": basis,
+            "period": period,
+            "values": values,
+            "source": e.get("source") or "",
+            "published_at_kst": e.get("published_at_kst") or "",
+            "direct_link": e.get("direct_link") or "",
+            "title": e.get("title") or "",
+            "event_id": e.get("id") or "",
+        })
+    return out
+
+
+def _share_leader(values: dict[str, float]) -> str:
+    if not values:
+        return ""
+    return max(values, key=lambda k: values[k])
+
+
+def _share_gap(values: dict[str, float]) -> float | None:
+    if "skhynix" not in values or "samsung" not in values:
+        return None
+    return abs(values["skhynix"] - values["samsung"])
+
+
+def _share_material_change(old: dict, new: dict) -> tuple[bool, list[str]]:
+    old_values = dict(old.get("values") or old)
+    new_values = dict(new.get("values") or {})
+    reasons: list[str] = []
+
+    deltas = []
+    for vendor in ("skhynix", "samsung", "micron"):
+        if vendor in old_values and vendor in new_values:
+            delta = new_values[vendor] - old_values[vendor]
+            deltas.append(abs(delta))
+            if abs(delta) >= SHARE_REVISION_THRESHOLD_PP:
+                reasons.append(f"{vendor} {delta:+.1f}%p")
+
+    old_leader = _share_leader(old_values)
+    new_leader = _share_leader(new_values)
+    if old_leader and new_leader and old_leader != new_leader:
+        reasons.append(f"선두 {old_leader}→{new_leader}")
+
+    old_gap = _share_gap(old_values)
+    new_gap = _share_gap(new_values)
+    if old_gap is not None and new_gap is not None:
+        if (old_gap > SHARE_PARITY_GAP_PP and new_gap <= SHARE_PARITY_GAP_PP) or (
+            old_gap <= SHARE_PARITY_GAP_PP and new_gap > SHARE_PARITY_GAP_PP
+        ):
+            reasons.append(f"삼성-SK하이닉스 격차 {old_gap:.1f}%p→{new_gap:.1f}%p")
+
+    return bool(reasons), reasons
+
+
+def _share_cross_source_signal(states: dict, obs: dict) -> tuple[bool, list[str]]:
+    peers = []
+    for key, value in states.items():
+        parts = key.split("|")
+        if len(parts) != 3:
+            continue
+        inst, basis, period = parts
+        if basis != obs["basis"] or period != obs["period"] or inst == obs["institution"]:
+            continue
+        vals = value.get("values") or value
+        if isinstance(vals, dict):
+            peers.append(vals)
+    if not peers:
+        return False, []
+
+    reasons = []
+    for vendor in ("skhynix", "samsung", "micron"):
+        peer_vals = sorted(float(x[vendor]) for x in peers if vendor in x)
+        if not peer_vals or vendor not in obs["values"]:
+            continue
+        mid = peer_vals[len(peer_vals) // 2]
+        diff = obs["values"][vendor] - mid
+        if abs(diff) >= SHARE_ACTUAL_DEVIATION_THRESHOLD_PP:
+            reasons.append(f"{vendor} 기존기관 중앙값 대비 {diff:+.1f}%p")
+    gap = _share_gap(obs["values"])
+    if gap is not None and gap <= SHARE_PARITY_GAP_PP:
+        reasons.append(f"삼성-SK하이닉스 격차 {gap:.1f}%p")
+    return bool(reasons), reasons
+
+
+def _format_share_values(values: dict[str, float]) -> str:
+    labels = (("skhynix", "SK하이닉스"), ("samsung", "삼성전자"), ("micron", "Micron"))
+    return " · ".join(f"{label} {values[key]:.0f}%" for key, label in labels if key in values)
+
+
+def share_change_event(obs: dict, old: dict | None, reasons: list[str]) -> dict:
+    basis_label = "매출 기준" if obs["basis"] == "sales" else "비트 기준"
+    kind_label = "실제 점유율" if obs["kind"] == "actual" else "점유율 전망"
+    institution_label = {
+        "jpmorgan": "J.P. Morgan",
+        "ubs": "UBS",
+        "morgan_stanley": "Morgan Stanley",
+        "citi": "Citi",
+        "bofa": "BofA",
+        "goldman_sachs": "Goldman Sachs",
+        "counterpoint": "Counterpoint",
+        "trendforce": "TrendForce",
+        "idc": "IDC",
+    }.get(obs["institution"], obs["institution"])
+    return {
+        "id": "share|" + obs["key"],
+        "title": obs.get("title") or f"{institution_label} HBM {kind_label}",
+        "description": "",
+        "source": obs.get("source") or institution_label,
+        "published_at_kst": obs.get("published_at_kst") or "",
+        "direct_link": obs.get("direct_link") or "",
+        "rank": 99 if obs["kind"] == "actual" else 88,
+        "share_change": {
+            "institution": institution_label,
+            "basis": basis_label,
+            "period": obs["period"],
+            "kind": kind_label,
+            "values": obs["values"],
+            "old_values": (old.get("values") or old) if old else None,
+            "reasons": reasons,
+        },
+    }
+
+
+def share_event_summary(e: dict) -> list[str]:
+    ch = e["share_change"]
+    lines = [
+        f"<b>HBM {html.escape(ch['kind'])} 상태 변화</b>",
+        f"• 기관: <b>{html.escape(ch['institution'])}</b>",
+        f"• 기준: <b>{html.escape(ch['basis'])}</b> · 대상 <b>{html.escape(ch['period'])}</b>",
+        f"• 현재값: <b>{html.escape(_format_share_values(ch['values']))}</b>",
+    ]
+    if ch.get("old_values"):
+        lines.append(f"• 직전값: {html.escape(_format_share_values(ch['old_values']))}")
+    if ch.get("reasons"):
+        lines.append("• 변화 이유: " + html.escape(" · ".join(ch["reasons"])))
+    lines += [
+        f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}",
+        f"• 근거 제목: {html.escape(e.get('title') or '')} · {href(e.get('direct_link') or '', '원문')}",
+    ]
+    return lines
+
+
 def event_summary(e: dict) -> list[str]:
+    if e.get("share_change"):
+        return share_event_summary(e)
     category, headline = classify_event(e)
     text = clean(f"{e.get('title','')} {e.get('description','')}")
     pcts = list(dict.fromkeys(re.findall(r"[+-]?\d+(?:\.\d+)?%", text)))[:4]
