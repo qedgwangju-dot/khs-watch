@@ -27,6 +27,11 @@ from zoneinfo import ZoneInfo
 
 from khs_source_fetch import fetch_text, record_source_failure
 
+try:
+    from googlenewsdecoder import gnewsdecoder
+except Exception:
+    gnewsdecoder = None
+
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
 OUT = pathlib.Path("out")
@@ -53,6 +58,8 @@ TRUSTED = {"Reuters", "Bloomberg", "Nikkei Asia", "Financial Times", "Bank of Ja
 MAX_AGE_HOURS = 72
 SAME_PATH_COOLDOWN_MINUTES = 240
 MARKET_PATH_MAX_AGE_HOURS = 6
+MEDIA_POLICY_EVENT_MAX_AGE_HOURS = 12
+SAME_MEETING_RECAP_HOURS = 36
 
 # Time-limited first-party/high-trust fallback for the 2026-09-18 meeting.
 # It only fills fields that remain missing after live source parsing and expires
@@ -590,6 +597,22 @@ def news_url(query: str) -> str:
     return GOOGLE + "?" + urllib.parse.urlencode(
         {"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"}
     )
+
+
+def decode_google_link(link: str) -> str:
+    if "news.google.com" not in (link or ""):
+        return link
+    if gnewsdecoder is None:
+        return link
+    try:
+        result = gnewsdecoder(link, interval=0.2)
+        if isinstance(result, dict) and result.get("status"):
+            decoded = str(result.get("decoded_url") or "").strip()
+            if decoded.startswith("http") and "news.google.com" not in decoded:
+                return decoded
+    except Exception:
+        pass
+    return link
 
 
 def source_name(item: Item) -> str:
@@ -1183,6 +1206,7 @@ def signal_signature(signal: Signal) -> dict:
         "outlook_dissenters": list(signal.outlook_dissenters),
         "outlook_dissent_view": signal.outlook_dissent_view,
         "official_statement_detail_verified": signal.official_statement_detail_verified,
+        "source_link": source_link,
         "further_hikes": signal.further_hikes,
         "conditional_pace": signal.conditional_pace,
         "accommodative": signal.accommodative,
@@ -1225,6 +1249,30 @@ def market_path_has_policy_content(signal: Signal) -> bool:
     )
 
 
+def trusted_media_event_has_policy_content(signal: Signal) -> bool:
+    if signal.source == "Bank of Japan":
+        return True
+    return (
+        signal.policy_rate is not None
+        or signal.hike_bp is not None
+        or signal.vote_for is not None
+        or signal.vote_against is not None
+        or signal.dissent_direction is not None
+        or bool(signal.dissenters)
+        or signal.expected_move
+        or signal.hawkish_tail_50bp
+        or signal.inflation_spillover
+        or signal.cpi_h2_clearly_above_2
+        or signal.stabilize_underlying_around_2
+        or bool(signal.outlook_dissenters)
+        or signal.further_hikes
+        or signal.conditional_pace
+        or signal.accommodative
+        or signal.neutral_rate
+        or signal.inflation_upside
+    )
+
+
 def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, str]:
     if not press_conference_has_policy_content(signal):
         return False, "회견 본문 정책경로 확인 전"
@@ -1233,6 +1281,16 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
             return False, "오래된 보도 — 시장 정책경로 보도 신선도 초과"
         if not market_path_has_policy_content(signal):
             return False, "시장 정책경로 핵심 변화 없음"
+    elif signal.source != "Bank of Japan" and signal.event_type in {
+        "decision",
+        "press_conference",
+        "summary_of_opinions",
+        "official_speech",
+    }:
+        if now - signal.published > dt.timedelta(hours=MEDIA_POLICY_EVENT_MAX_AGE_HOURS):
+            return False, "오래된 보도 — 고신뢰 정책 이벤트 신선도 초과"
+        if not trusted_media_event_has_policy_content(signal):
+            return False, "고신뢰 보도 핵심 정책변화 없음"
 
     previous = state.get("signature") or {}
     current_signature = signal_signature(signal)
@@ -1252,8 +1310,21 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     if last_published is not None and signal.published < last_published - dt.timedelta(minutes=2):
         return False, "이미 반영한 최신 정책 이벤트보다 오래된 보도"
 
+    if (
+        previous.get("event_type") == "press_conference"
+        and signal.event_type == "decision"
+        and signal.source != "Bank of Japan"
+        and last_published is not None
+        and signal.published <= last_published + dt.timedelta(hours=SAME_MEETING_RECAP_HOURS)
+    ):
+        return False, "이미 반영한 동일 회의의 후속 결정 보도"
+
     if signal.event_type != previous.get("event_type") and signal.event_type != "market_path":
-        return True, "새 공식 정책 이벤트"
+        return True, (
+            "새 BOJ 공식 정책 이벤트"
+            if signal.source == "Bank of Japan"
+            else "새 고신뢰 정책 이벤트"
+        )
     if signal.level != int(previous.get("level", signal.level)):
         return True, "정책경로 단계 변화"
     if signal.policy_rate is not None and signal.policy_rate != previous.get("policy_rate"):
@@ -1525,6 +1596,20 @@ def _mof_jgb2_context() -> dict:
     }
 
 
+def friendly_market_error(value: str | None) -> str:
+    text = clean(value or "")
+    lower = text.lower()
+    if "event reference too old" in lower:
+        return "기준시점 시세가 너무 오래돼 직접 비교 생략"
+    if "pre-event reference missing" in lower:
+        return "이벤트 직전 기준시세 확인 불가"
+    if "provider mismatch" in lower:
+        return "복수 시세원 값 불일치"
+    if "timed out" in lower or "timeout" in lower:
+        return "시세원 응답 지연"
+    return "시계열 조회 실패"
+
+
 def market_context(event_time: dt.datetime | None = None) -> dict:
     out: dict = {}
 
@@ -1746,7 +1831,7 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
                 )
             else:
                 reaction_lines.append(
-                    f"- {label}: 이벤트 시점 대비 확인 불가 — {market.get(key + '_error', '데이터 없음')}"
+                    f"- {label}: 이벤트 시점 대비 확인 불가 — {friendly_market_error(market.get(key + '_error'))}"
                 )
 
     market_summary = " · ".join(reaction_parts) if reaction_parts else "교차반응 확인 중"
@@ -1877,6 +1962,8 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
     if signal.assessment_vote_for is None:
         lines.append("- 경제·물가 진단 별도 표결: 정책 7대2와 혼합하지 않음 · 명시적 원문 있을 때만 표시")
 
+    source_link = decode_google_link(signal.link) if signal.link else ""
+
     lines += [
         "",
         "【판정 기준】",
@@ -1886,8 +1973,8 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         "",
         f"공개 {label_time(signal.published)} · 조회 {label_time(now)}",
     ]
-    if signal.link:
-        lines.append(f"원문: {signal.link}")
+    if source_link:
+        lines.append(f"원문: {source_link}")
 
     payload = {
         "level": signal.level,
@@ -1901,6 +1988,41 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         "official_statement_detail_verified": signal.official_statement_detail_verified,
     }
     return title, "\n".join(lines), payload
+
+
+def signal_from_payload(payload: dict) -> Signal:
+    raw = dict(payload.get("signal") or {})
+    raw["published"] = dt.datetime.fromisoformat(str(raw["published"]))
+    raw["dissenters"] = tuple(raw.get("dissenters") or ())
+    raw["outlook_dissenters"] = tuple(raw.get("outlook_dissenters") or ())
+    return Signal(**raw)
+
+
+def guard_pending_against_state(state_path: pathlib.Path) -> int:
+    if not DATA.exists() or not BODY.exists():
+        print("BOJ_REMOTE_GUARD=no_pending_alert")
+        return 0
+    try:
+        payload = json.loads(DATA.read_text(encoding="utf-8"))
+        remote_state = json.loads(state_path.read_text(encoding="utf-8"))
+        signal = signal_from_payload(payload)
+    except Exception as exc:
+        raise RuntimeError(f"BOJ remote guard input error: {type(exc).__name__}: {exc}")
+
+    ok, reason = should_alert(signal, remote_state, dt.datetime.now(KST))
+    if ok:
+        print(f"BOJ_REMOTE_GUARD=allow reason={reason}")
+        return 0
+
+    for path in (TITLE, BODY, DATA, PENDING, CONFIRMED):
+        try:
+            path.unlink()
+        except FileNotFoundError:
+            pass
+    with WATCH.open("a", encoding="utf-8") as handle:
+        handle.write(f"원격 최신 상태 재검증: 중복·구형 알림 차단 — {reason}\n")
+    print(f"BOJ_REMOTE_GUARD=suppressed reason={reason}")
+    return 0
 
 
 def clear_outputs() -> None:
@@ -1928,9 +2050,12 @@ def finalize() -> int:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--finalize", action="store_true")
+    parser.add_argument("--guard-state")
     args = parser.parse_args()
     if args.finalize:
         return finalize()
+    if args.guard_state:
+        return guard_pending_against_state(pathlib.Path(args.guard_state))
 
     clear_outputs()
     OUT.mkdir(exist_ok=True)
