@@ -166,21 +166,41 @@ def ko_date(date_text):
         return f'{d.year}년 {d.month}월 {d.day}일'
     except:return date_text
 
+def hike_equivalent(bp):
+    return float(bp)/25.0
+
+def easy_extra_read(bp):
+    h=hike_equivalent(bp)
+    if h < 0.25:
+        return '추가 인상을 거의 가격에 넣지 않은 수준'
+    if h < 0.75:
+        return '추가 1회 인상 가능성을 일부만 가격에 넣은 수준'
+    if h < 1.25:
+        return '추가 1회 인상을 대체로 가격에 넣은 수준'
+    if h < 1.75:
+        return '추가 1회는 상당히 반영하고, 두 번째 인상 가능성도 일부 반영한 수준'
+    return '추가 2회 인상을 거의 가격에 넣은 수준'
+
 def fmt_meeting(m, baseline):
     p=m['hike25_prob']
     cumulative=(float(m['post_rate'])-float(baseline))*100
+    cumulative_hikes=hike_equivalent(cumulative)
     prob=f'0.25%포인트 인상 확률 약 {p:.0f}%'
-    return f"• {ko_date(m['date'])} | {prob} | 현재 공식 기준 대비 누적 기대 {cumulative:+.1f}bp | 회의 후 금리 기대 {m['post_rate']:.3f}%"
+    return f"• {ko_date(m['date'])} | {prob} | 현재 공식 기준 대비 누적 기대 {cumulative:+.1f}bp ≈ 25bp 인상 {cumulative_hikes:.2f}회 상당 | 회의 후 금리 기대 {m['post_rate']:.3f}%"
 
 def message(snap, cls):
+    eq=hike_equivalent(cls['extra_bp'])
     lines=['<b>[Warsh 정책금리 경로 변화]</b>',
            f"공식 기준금리 중심값 {cls['baseline_rate']:.3f}% ({html.escape(cls['baseline_kind'])})",'',
            f"<b>핵심 판정: {html.escape(cls['verdict'])}</b>",
-           f"• {html.escape(cls['basis'])}: {cls['extra_bp']:+.1f}bp",'', '<b>선물시장 경로</b>']
+           f"• {html.escape(cls['basis'])}: {cls['extra_bp']:+.1f}bp ≈ 25bp 인상 {eq:.2f}회 상당",
+           f"• 쉽게 말하면: {html.escape(easy_extra_read(cls['extra_bp']))}",'', '<b>선물시장 경로</b>']
     lines += [fmt_meeting(m, cls['baseline_rate']) for m in snap['meetings'][:4]]
     lines += ['', '<b>읽는 법</b>',
-              '• “확률 %”는 특정 금리결정이 일어날 가능성이고, “bp”는 그 확률을 반영한 기대 금리변화입니다. 둘은 같은 숫자가 아닙니다.',
-              '• 예: 0.25%포인트 인상확률 84%라면 확률가중 기대변화는 약 +21bp입니다.',
+              '• “+33.8bp” 같은 값은 연준이 실제로 33.8bp를 올린다는 뜻이 아니라, 여러 가능한 금리경로에 확률을 곱해 평균낸 시장 기대값입니다.',
+              '• 25bp = 0.25%포인트이므로 +33.8bp는 약 1.35회 상당입니다. 즉 추가 1회 인상은 상당히 반영하고, 두 번째 인상 가능성도 일부 가격에 들어갔다는 뜻입니다.',
+              '• “확률 %”는 특정 회의에서 인상이 일어날 가능성이고, “bp”는 그 확률을 반영한 기대 인상폭입니다. 예: 25bp 인상확률 84% → 기대 인상폭 약 +21bp입니다.',
+              '• 1.35회처럼 소수로 표시돼도 실제 FOMC가 1.35번 인상한다는 뜻은 아닙니다. 0회·1회·2회 같은 가능한 경로를 확률로 섞은 평균입니다.',
               '• 이번 회의 한 번으로 끝나는지, 뒤 회의에서도 추가 인상이 가격에 남는지를 같이 봅니다.',
               '• 1bp = 0.01%포인트입니다.','',
               '<b>원천</b>',f"{link('연방기금금리 선물 기반 경로',snap['url'])} · {link('CME FedWatch 방법론',CME_URL)} · {link('연준 FOMC 일정',FED_CALENDAR)}"]
