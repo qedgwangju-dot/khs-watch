@@ -61,6 +61,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # workflow_run can point at the triggering workflow's older SHA.
+          # Always use latest main for live monitors so the newest alert state is read.
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.event_name == 'push' && github.sha || 'main' }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -68,7 +71,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install BOJ document parser
-        run: pip install --disable-pip-version-check pypdf
+        run: pip install --disable-pip-version-check pypdf googlenewsdecoder==0.1.7
 
       - name: Validate BOJ policy path monitor
         run: |
@@ -77,6 +80,17 @@ jobs:
 
       - name: Check BOJ policy path changes
         run: python scripts/boj_policy_lead_alert.py
+
+      - name: Recheck latest BOJ state before Telegram send
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/boj_policy_lead_alert.json') != ''
+        run: |
+          git fetch origin main
+          if git show origin/main:data/boj_policy_lead_alert_state.json > /tmp/boj_remote_state.json 2>/dev/null; then
+            python scripts/boj_policy_lead_alert.py --guard-state /tmp/boj_remote_state.json
+          else
+            cp data/boj_policy_lead_alert_state.json /tmp/boj_remote_state.json
+            python scripts/boj_policy_lead_alert.py --guard-state /tmp/boj_remote_state.json
+          fi
 
       - name: Publish status summary
         if: always()
