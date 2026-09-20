@@ -832,6 +832,152 @@ def classify_event(e: dict) -> tuple[str, str]:
     return "기타", "삼성 HBM 관련 신규 변화"
 
 
+
+def _first_number(patterns: list[str], text: str) -> str:
+    for pat in patterns:
+        m = re.search(pat, text, re.I)
+        if m:
+            try:
+                return f"{float(m.group(1)):g}"
+            except Exception:
+                return m.group(1)
+    return ""
+
+
+def _event_target_year(e: dict, text: str) -> str:
+    years = re.findall(r"\b(20\d{2})\b", text)
+    if years:
+        return years[0]
+    low = text.lower()
+    if "내년" in text or "next year" in low:
+        try:
+            dt = datetime.fromisoformat(e.get("published_at_kst") or "")
+            return str(dt.year + 1)
+        except Exception:
+            return "next_year"
+    return ""
+
+
+def event_state_descriptor(e: dict) -> tuple[str, str, str]:
+    """Return topic key, state signature and a readable state label.
+
+    Article identity is deliberately excluded. Links and publisher names are
+    evidence only; alert novelty is based on the normalized topic state.
+    """
+    category, headline = classify_event(e)
+    text = clean(f"{e.get('title','')} {e.get('description','')}")
+    low = text.lower()
+
+    company = "samsung" if ("samsung" in low or "삼성" in text) else (
+        "skhynix" if ("sk hynix" in low or "sk하이닉스" in text or "하이닉스" in text) else (
+            "intel" if "intel" in low else "industry"
+        )
+    )
+    products = []
+    for name, aliases in (
+        ("hbm4e", ("hbm4e", "hbm 4e")),
+        ("hbm4", ("hbm4", "hbm 4")),
+        ("custom_hbm", ("custom hbm", "커스텀 hbm")),
+        ("hbm3e", ("hbm3e", "hbm 3e")),
+        ("emib", ("emib",)),
+    ):
+        if any(a in low for a in aliases):
+            products.append(name)
+    if not products and "hbm" in low:
+        products.append("hbm")
+
+    customer = ""
+    for name in ("nvidia", "amd", "broadcom", "google"):
+        if name in low:
+            customer = name
+            break
+
+    geography = ""
+    if any(k in low for k in ("malaysia", "말레이시아", "penang", "kulim")):
+        geography = "malaysia"
+    elif "이천" in text or "icheon" in low:
+        geography = "icheon"
+    elif "충남" in text:
+        geography = "chungnam"
+    elif "충북" in text:
+        geography = "chungbuk"
+
+    target_year = _event_target_year(e, text)
+    topic_parts = [category, company, "+".join(products), customer, geography, target_year]
+    topic_key = "|".join(x for x in topic_parts if x)
+
+    stages = []
+    stage_map = (
+        ("mass_production", ("mass production", "양산")),
+        ("shipment", ("shipment", "ship", "출하", "공급")),
+        ("sample", ("sample", "샘플")),
+        ("qualification", ("qualification", "validation", "인증", "검증")),
+        ("contract", ("contract", "계약", "수주")),
+        ("capacity", ("capacity", "production", "output", "ramp", "증산", "생산능력", "캐파", "생산")),
+        ("investment", ("capex", "investment", "증설", "설비투자", "투자")),
+        ("share", ("market share", "점유율")),
+        ("revenue", ("revenue", "매출")),
+        ("price", ("price", "가격", "단가")),
+        ("export", ("export", "수출")),
+    )
+    for label, aliases in stage_map:
+        if any(a in low for a in aliases):
+            stages.append(label)
+
+    direction = ""
+    if any(k in low for k in ("double", "2x", "increase", "expand", "rise", "growth", "증가", "확대", "증산", "2배", "늘린", "상승")):
+        direction = "up"
+    elif any(k in low for k in ("decrease", "reduce", "cut", "decline", "감소", "축소", "하향")):
+        direction = "down"
+
+    primary_values = []
+    multiple = _first_number([
+        r"(\d+(?:\.\d+)?)\s*배",
+        r"(\d+(?:\.\d+)?)\s*(?:x|times?)\b",
+    ], text)
+    if multiple:
+        primary_values.append("multiple=" + multiple)
+
+    percentages = re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", text)
+    if percentages:
+        primary_values.append("pct=" + ",".join(percentages[:3]))
+
+    if category == "생산능력·증산":
+        wafer = _first_number([
+            r"(\d[\d,]*(?:\.\d+)?)\s*(?:wafers?|wafer starts?)\s*(?:a month|per month|/month)?",
+            r"(\d[\d,]*(?:\.\d+)?)\s*(?:장|매)\s*(?:/\s*월|월간|매월)?",
+        ], text.replace(",", ""))
+        if wafer:
+            primary_values.append("wafer=" + wafer)
+
+    if category in ("HBM4E 검증·양산", "HBM4 출하", "고객"):
+        if customer:
+            primary_values.append("customer=" + customer)
+
+    # A material state must have a stage/direction/value. Pure article chatter
+    # is retained as evidence but cannot create an alert by itself.
+    if not stages and not direction and not primary_values:
+        return "", "", ""
+
+    signature_parts = [
+        topic_key,
+        "+".join(sorted(set(stages))),
+        direction,
+        ";".join(primary_values),
+    ]
+    signature_raw = "|".join(x for x in signature_parts if x)
+    signature = hashlib.sha256(signature_raw.encode()).hexdigest()[:24]
+    readable = headline
+    return topic_key, signature, readable
+
+
+def evidence_level(e: dict) -> str:
+    source = (e.get("source") or "").lower()
+    if any(k in source for k in ("samsung", "삼성전자", "intel", "관세청", "k-stat", "한국무역협회")):
+        return "공식 확인"
+    return "신뢰 보도 단계"
+
+
 def event_summary(e: dict) -> list[str]:
     category, headline = classify_event(e)
     text = clean(f"{e.get('title','')} {e.get('description','')}")
@@ -847,14 +993,15 @@ def event_summary(e: dict) -> list[str]:
         nums.append(" / ".join(dollars))
     lines = [
         f"<b>{headline}</b>",
-        f"• 구분: {category}",
-        f"• 출처: {html.escape(e.get('source') or '미표시')} · 공개 {html.escape(e.get('published_at_kst') or '확인 불가')}",
+        f"• 상태 판정: <b>{evidence_level(e)}</b>",
+        f"• 변화 구분: {category}",
     ]
     if nums:
         lines.append(f"• 핵심 숫자: <b>{html.escape(' · '.join(nums))}</b>")
     lines += [
-        f"• 제목: {html.escape(e.get('title') or '')}",
-        href(e.get("direct_link") or ""),
+        f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}",
+        f"• 근거 제목: {html.escape(e.get('title') or '')}",
+        f"• {href(e.get('direct_link') or '', '원문')}",
     ]
     return lines
 
