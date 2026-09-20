@@ -119,6 +119,32 @@ def resolve_mode() -> int:
         return 0
 
 
+def _validate_alert_contract(text: str) -> None:
+    plain = re.sub(r"<[^>]+>", "", text)
+    plain = plain.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
+
+    legacy_signature = (
+        "대미투자 | 내용 변화" in plain
+        and "자동 용량 계산" in plain
+        and "AP1000" in plain
+        and "APR1400" in plain
+    )
+    if legacy_signature:
+        raise RuntimeError("Blocked legacy article-led US-investment alert format")
+
+    if re.search(r"미분류\s*-\d+\s*기", plain):
+        raise RuntimeError("Blocked impossible negative unclassified reactor count")
+
+    total8 = bool(re.search(r"(?:전체|총)\s*8\s*기|원전\s*(?:최대\s*)?8\s*기", plain))
+    ap8 = bool(re.search(r"AP1000[^\\n]{0,80}\b8\s*기", plain, re.I))
+    apr8 = bool(re.search(r"APR1400[^\\n]{0,80}\b8\s*기", plain, re.I))
+    if total8 and ap8 and apr8:
+        raise RuntimeError("Blocked reactor composition double count: total 8 but AP1000 8 + APR1400 8")
+
+    if re.search(r"APR1400[^\\n]{0,80}2\s*기\s*(?:→|->|에서)\s*8\s*기", plain, re.I):
+        raise RuntimeError("Blocked unsupported APR1400 2-to-8 state transition")
+
+
 def send_mode() -> int:
     if not ALERT.exists() or not ALERT.read_text(encoding="utf-8").strip():
         print("telegram_alert=none")
@@ -127,6 +153,7 @@ def send_mode() -> int:
     token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
     username, chat = _resolve()
     text = ALERT.read_text(encoding="utf-8").strip()
+    _validate_alert_contract(text)
     chunks = _split_html(text)
     message_ids: list[int] = []
 
