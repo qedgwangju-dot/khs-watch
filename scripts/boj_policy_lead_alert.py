@@ -52,6 +52,7 @@ CBOE_JYVIX = "https://www.cboe.com/us/indices/dashboard/JYVIX/"
 TRUSTED = {"Reuters", "Bloomberg", "Nikkei Asia", "Financial Times", "Bank of Japan"}
 MAX_AGE_HOURS = 72
 SAME_PATH_COOLDOWN_MINUTES = 240
+MARKET_PATH_MAX_AGE_HOURS = 6
 
 # Time-limited first-party/high-trust fallback for the 2026-09-18 meeting.
 # It only fills fields that remain missing after live source parsing and expires
@@ -1207,9 +1208,32 @@ def press_conference_has_policy_content(signal: Signal) -> bool:
     )
 
 
+def market_path_has_policy_content(signal: Signal) -> bool:
+    if signal.event_type != "market_path":
+        return True
+    return (
+        signal.level != 1
+        or signal.policy_rate is not None
+        or signal.hike_bp is not None
+        or signal.hawkish_tail_50bp
+        or signal.further_hikes
+        or signal.conditional_pace
+        or signal.accommodative
+        or signal.neutral_rate
+        or signal.inflation_upside
+        or signal.stabilize_underlying_around_2
+        or signal.risk_channels
+    )
+
+
 def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, str]:
     if not press_conference_has_policy_content(signal):
         return False, "회견 본문 정책경로 확인 전"
+    if signal.event_type == "market_path":
+        if now - signal.published > dt.timedelta(hours=MARKET_PATH_MAX_AGE_HOURS):
+            return False, "시장 정책경로 보도 신선도 초과"
+        if not market_path_has_policy_content(signal):
+            return False, "시장 정책경로 핵심 변화 없음"
 
     previous = state.get("signature") or {}
     current_signature = signal_signature(signal)
@@ -1229,7 +1253,7 @@ def should_alert(signal: Signal, state: dict, now: dt.datetime) -> tuple[bool, s
     if last_published is not None and signal.published < last_published - dt.timedelta(minutes=2):
         return False, "이미 반영한 최신 정책 이벤트보다 오래된 보도"
 
-    if signal.event_type != previous.get("event_type"):
+    if signal.event_type != previous.get("event_type") and signal.event_type != "market_path":
         return True, "새 공식 정책 이벤트"
     if signal.level != int(previous.get("level", signal.level)):
         return True, "정책경로 단계 변화"
