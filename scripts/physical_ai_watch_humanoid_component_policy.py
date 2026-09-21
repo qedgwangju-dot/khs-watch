@@ -19,8 +19,11 @@ Guardrails:
 """
 from __future__ import annotations
 
+import hashlib
+import json
 import re
 import sys
+import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -35,22 +38,31 @@ base.QUERIES.extend([
     '(휴머노이드 OR humanoid) (부품 실증사업 OR 핵심 부품 실증 OR component demonstration OR 로봇산업핵심기술개발) (공고 OR 선정 OR 주관기관 OR 수행기관 OR 협약 OR 총 연구개발비)',
     '(로보티즈 OR ROBOTIS OR 삼현 OR 하이젠알앤엠 OR 에스비비테크 OR 에스피지 OR 원익로보틱스 OR 현대모비스 OR 삼성SDI OR LG에너지솔루션) (휴머노이드 OR humanoid) (국책과제 OR 정부지원 OR 실증사업 OR 과제 선정 OR 수행기관 OR 주관기관)',
     '(국회 OR 정부) (2027년 OR 2027) (휴머노이드 OR 로봇) (620억 OR 핵심부품 OR 액추에이터 OR 센서 OR 이차전지) (확정 OR 통과 OR 의결 OR 증액 OR 감액)',
+    '(humanoid OR 휴머노이드 OR 人形机器人) ("harmonic reducer" OR 하모닉감속기 OR 谐波减速器 OR "planetary roller screw" OR 롤러스크루 OR "frameless torque motor" OR 프레임리스 토크모터) (order OR backlog OR contract OR supplier OR nomination OR mass production OR capacity OR yield OR lead time OR 수주 OR 수주잔고 OR 공급 OR 고객 OR 양산 OR 생산능력 OR 수율 OR 납기)',
+    '(humanoid OR 휴머노이드 OR 人形机器人) ("torque sensor" OR "force sensor" OR "6-axis force" OR 촉각센서 OR "tactile sensor" OR encoder OR 인코더 OR IMU OR lidar OR 라이다 OR "3D camera") (customer OR qualification OR order OR contract OR mass production OR capacity OR yield OR 수주 OR 고객검증 OR 고객승인 OR 양산 OR 생산능력 OR 수율)',
+    '("Leader Harmonic Drive" OR Leaderdrive OR "Zhejiang Laifu" OR Laifual OR "Zhongda Leader" OR Inovance OR MOONS OR Orbbec OR RoboSense OR Hesai) (humanoid OR 人形机器人) (order OR backlog OR customer OR supplier OR capacity OR mass production OR yield OR 수주 OR 양산 OR 생산능력 OR 产能 OR 订单)',
+    '("LG이노텍" OR "LG Innotek" OR TDK OR 에스비비테크 OR "SBB Tech" OR 에스피지 OR SPG OR 하이젠알앤엠 OR "Higen RNM" OR 삼현 OR "SOS LAB" OR 에스오에스랩) (휴머노이드 OR humanoid) (감속기 OR actuator OR 액추에이터 OR encoder OR 인코더 OR torque sensor OR force sensor OR 촉각 OR tactile OR lidar OR 라이다) (수주 OR 공급 OR 고객 OR 양산 OR 생산능력 OR 수율 OR 검증 OR contract OR order OR mass production OR capacity OR yield OR qualification)',
+
 ])
 
 base.TRUSTED.update({
     '뉴스핌', '연합뉴스', '전자신문', '이데일리', '한국경제', '매일경제',
     '서울경제', '머니투데이', '조선비즈', '뉴시스', 'Newsis',
+    'Reuters', 'Bloomberg', 'Nikkei Asia', 'The Robot Report', '36Kr', '界面新闻', '第一财经',
 })
 base.OFFICIAL_OR_PRIMARY.update({
     '재정경제부', '기획재정부', '대한민국 정책브리핑', '산업통상자원부',
     '과학기술정보통신부', '한국로봇산업진흥원', '국회', '국회예산정책처',
     '로보티즈', 'ROBOTIS', '삼현', '하이젠알앤엠', '에스비비테크',
     '에스피지', '원익로보틱스', '현대모비스', '삼성SDI', 'LG에너지솔루션',
+    'LG이노텍', 'LG Innotek', 'TDK', 'Boston Dynamics',
 })
 
 _orig_topic_group, _orig_score = base.topic_group, base.score
 _orig_category, _orig_meaning = base.category, base.meaning
 _orig_risk, _orig_verification = base.risk, base.verification
+_orig_tag_for, _orig_key = base.tag_for, base.key
+_orig_select_diverse = base.select_diverse
 _orig_same_event = ext._same_event
 
 HUMANOID = re.compile(r'휴머노이드|humanoid|피지컬\s*AI|physical\s*AI', re.I)
