@@ -155,7 +155,10 @@ jobs:
               ('Yahoo Finance USD/KRW', '야후 파이낸스 달러/원 환율'),
               ('Yahoo Finance', '야후 파이낸스'),
               ('Federal Reserve H.10 via Frankfurter', '미국 연방준비제도 H.10·프랑크푸르터'),
+              ('ECB/Frankfurter', '유럽중앙은행·프랑크푸르터 환율'),
               ('USD/KRW', '달러/원'),
+              ('API', '보조자료'),
+              ('MW', '메가와트'),
               ('GitHub Actions', '깃허브 액션'),
               ('GitHub', '깃허브'),
               ('KST', '한국시간'),
@@ -185,7 +188,9 @@ jobs:
               # URL은 별도 링크 처리하므로 이 검사는 일반 본문에만 적용된다.
               if re.search(r'[A-Za-z]', translated):
                   translated = re.sub(r'\b[A-Za-z][A-Za-z0-9._/&+\-]*\b', '', translated)
-                  translated = re.sub(r'\s{2,}', ' ', translated).rstrip()
+              translated = re.sub(r'\s*·\s*·\s*', ' · ', translated)
+              translated = re.sub(r'\(\s*\)', '', translated)
+              translated = re.sub(r'\s{2,}', ' ', translated).rstrip()
               return translated
 
           def render_html(text: str) -> str:
