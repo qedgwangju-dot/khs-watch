@@ -98,6 +98,22 @@ def send(msg):
 def year_end_mid(extra):
     return 3.875 + 0.25 * int(extra)
 
+def hike_equivalent(bp):
+    return float(bp) / 25.0
+
+
+def easy_extra_read(bp):
+    h = hike_equivalent(bp)
+    if h < 0.25:
+        return '추가 인상을 거의 가격에 넣지 않은 수준'
+    if h < 0.75:
+        return '추가 1회 인상 가능성을 일부만 가격에 넣은 수준'
+    if h < 1.25:
+        return '추가 1회 인상을 대체로 가격에 넣은 수준'
+    if h < 1.75:
+        return '추가 1회는 상당히 반영하고, 두 번째 인상 가능성도 일부 반영한 수준'
+    return '추가 2회 인상을 거의 가격에 넣은 수준'
+
 
 def market_path():
     p = load(PATH_STATE, {})
