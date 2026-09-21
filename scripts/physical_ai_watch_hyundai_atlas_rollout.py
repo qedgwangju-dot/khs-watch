@@ -6,6 +6,7 @@ underlying business-state change, not a publisher headline.
 """
 from __future__ import annotations
 
+import datetime as dt
 import hashlib
 import re
 import sys
@@ -19,6 +20,7 @@ import physical_ai_watch_humanoid_component_policy as policy
 base = policy.base
 ext = policy.ext
 BOSTON_CAPITAL_EN_SENTINEL = 'DIRECT_BOSTON_DYNAMICS_CAPITAL_EN_NEWS'
+BOSTON_RMAC_SENTINEL = 'DIRECT_BOSTON_DYNAMICS_RMAC_20260921'
 
 base.QUERIES.extend([
     '(현대자동차 OR 현대차 OR "Hyundai Motor" OR "Hyundai Motor Group") (아틀라스 OR Atlas OR "Boston Dynamics" OR 보스턴다이내믹스) (체코 OR Czech OR 노쇼비체 OR Nosovice OR Nošovice OR 유럽 OR Europe) (도입 OR 투입 OR 배치 OR 시험 OR 테스트 OR 논의 OR 협의 OR deploy OR deployment OR testing OR trial OR discuss OR rollout)',
@@ -29,6 +31,9 @@ base.QUERIES.extend([
     '("Boston Dynamics" OR 보스턴다이내믹스) (IPO OR "initial public offering" OR 기업공개 OR 상장 OR "S-1" OR SEC OR prospectus OR underwriter OR 주관사 OR 상장예비심사 OR valuation OR 기업가치 OR 적자 OR 손실 OR loss OR losses OR profitability OR 수익성 OR 흑자 OR funding OR 자금조달 OR SoftBank OR 소프트뱅크 OR 지분 OR ownership)',
     '("Boston Dynamics" OR 보스턴다이내믹스) (Atlas OR 아틀라스) (external customer OR external customers OR 외부 고객 OR customer OR 고객 OR order OR 주문 OR sales OR 판매 OR commercial OR 상용화 OR deployment OR 배치) (2027 OR 2028 OR 2029 OR 2030 OR scale OR 양산)',
     BOSTON_CAPITAL_EN_SENTINEL,
+    '("Boston Dynamics" OR 보스턴다이내믹스) (RMAC OR "Robot Metaplant Application Center") (Atlas OR 아틀라스) (training OR 훈련 OR sequencing OR 시퀀싱 OR data OR 데이터 OR manufacturing OR 제조)',
+    '("Boston Dynamics" OR 보스턴다이내믹스 OR "Hyundai Motor Group" OR 현대차그룹) (RMAC OR "Robot Metaplant Application Center") (10배 OR tenfold OR 2027 OR 이전 OR 확장 OR expansion OR new building OR 신축)',
+    BOSTON_RMAC_SENTINEL,
 ])
 
 base.TRUSTED.update({'뉴시스','Newsis','연합뉴스','전자신문','서울경제','한국경제','매일경제','머니투데이','조선비즈','Reuters','AutoSAP'})
@@ -61,6 +66,10 @@ PROCESS = re.compile(r'부품\s*시퀀싱|시퀀싱|sequencing|부품\s*배열|c
 UNITS_CAPEX = re.compile(r'3만\s*대|30,?000|대\s*투입|대\s*배치|units?|설비\s*투자|투자액|capex|capacity|생산\s*능력', re.I)
 EUROPE = re.compile(r'체코|Czech|노쇼비체|Nosovice|Nošovice|유럽|Europe|\bHMMC\b', re.I)
 HMGMA = re.compile(r'HMGMA|조지아|Georgia|Savannah|메타플랜트\s*아메리카|Metaplant\s*America', re.I)
+RMAC = re.compile(r'RMAC|Robot\s*Metaplant\s*Application\s*Center|로봇\s*메타플랜트\s*애플리케이션\s*센터', re.I)
+RMAC_ACTIVE = re.compile(r'open(?:ed|s)?|개소|운영\s*개시|training|train|훈련|data\s*collection|데이터\s*수집|sequencing|시퀀싱|validation|검증', re.I)
+RMAC_EXPAND = re.compile(r'10\s*배|ten[- ]?fold|2027|신축|new\s*building|move|relocat|이전|확장|expansion', re.I)
+RMAC_OTHER_INDUSTRIES = re.compile(r'aerospace|항공우주|semiconductor|반도체|logistics|물류|food|beverage|식음료|life\s*science|생명과학|Spot|Stretch', re.I)
 GLOBAL = re.compile(r'글로벌|해외|전\s*세계|global|worldwide|additional\s+plants?|manufacturing\s+sites?', re.I)
 PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주가|stock\s*price|shares?\s*(?:jump|rise|surge)', re.I)
 IPO = re.compile(r'\bIPO\b|initial\s+public\s+offering|기업공개|상장|\bS-1\b|registration\s+statement|prospectus|underwriter|주관사|상장예비심사|listing\s+application', re.I)
@@ -74,6 +83,29 @@ FUNDING = re.compile(r'funding|fundraise|capital\s+raise|자금\s*조달|증자|
 EXTERNAL_CUSTOMER = re.compile(r'external\s+customers?|outside\s+customers?|외부\s*고객|고객\s*실명|customer|customers|order|orders|주문|수주|sales|판매|commercial\s+sale|상용\s*판매', re.I)
 CAPITAL = re.compile(r'\bIPO\b|initial\s+public\s+offering|기업공개|상장|\bS-1\b|registration\s+statement|prospectus|underwriter|주관사|상장예비심사|valuation|기업\s*가치|loss(?:es)?|손실|적자|unprofitable|profitability|수익성|흑자|funding|fundraise|capital\s+raise|자금\s*조달|SoftBank|소프트뱅크|ownership|지분|stake|완전\s*자회사', re.I)
 ATLAS_CATEGORY_PREFIX = '현대차그룹 · 아틀라스 '
+
+
+def _query_boston_rmac_recovery() -> list[dict]:
+    event_time = dt.datetime(2026, 9, 21, 0, 0, tzinfo=dt.timezone.utc)
+    if base.NOW - event_time > dt.timedelta(hours=120):
+        return []
+    return [{
+        'title': '보스턴다이내믹스, RMAC서 Atlas 제조 현장 훈련 본격화',
+        'link': 'https://bostondynamics.com/news/boston-dynamics-opens-robotics-metaplant-application-center-to-train-humanoid-robots-for-manufacturing-tasks/',
+        'description': (
+            'Boston Dynamics RMAC at HMGMA is training Atlas on automotive parts logistics and sequencing. '
+            'The task roadmap expands toward component assembly by 2030. Hyundai Motor Group plans more than 25,000 Atlas deployments, '
+            'with a U.S. robotics production facility targeting 30,000 units of annual capacity from 2028. '
+            'RMAC expansion and broader data collection discussions also cover existing Spot and Stretch customers in aerospace, semiconductor, logistics, food and beverage, and life sciences.'
+        ),
+        'published': None,
+        'source': 'Boston Dynamics',
+        'rmac_operational': True,
+    }]
+
+
+def _is_rmac_operational(text: str) -> bool:
+    return bool((BOSTON.search(text) or HMG.search(text)) and ATLAS.search(text) and RMAC.search(text) and RMAC_ACTIVE.search(text))
 
 
 def _query_boston_capital_english_news() -> list[dict]:
@@ -90,7 +122,11 @@ def _query_boston_capital_english_news() -> list[dict]:
 
 
 def query_news(q: str) -> list[dict]:
-    return _query_boston_capital_english_news() if q == BOSTON_CAPITAL_EN_SENTINEL else _orig_query_news(q)
+    if q == BOSTON_RMAC_SENTINEL:
+        return _query_boston_rmac_recovery()
+    if q == BOSTON_CAPITAL_EN_SENTINEL:
+        return _query_boston_capital_english_news()
+    return _orig_query_news(q)
 
 
 def _is_atlas_rollout(text: str) -> bool:
@@ -102,6 +138,7 @@ def _is_boston_capital_or_commercial(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_rmac_operational(text): return 'hyundai_atlas_rollout'
     if _is_boston_capital_or_commercial(text) or _is_atlas_rollout(text): return 'hyundai_atlas_rollout'
     return _orig_topic_group(text)
 
@@ -118,6 +155,8 @@ def _ipo_stage(text: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')}"
+    if _is_rmac_operational(text):
+        return hashlib.sha256(b'boston-dynamics|rmac|operational-training|2026-09-21').hexdigest()
     stage = _ipo_stage(text)
     if stage in {'delay','commentary'} and IPO_COMMENTARY.search(text):
         years = sorted(set(re.findall(r'20(?:27|28|29|30)', text)))
@@ -145,6 +184,9 @@ def score(item: dict) -> int:
     if PROCESS.search(text): s += 6
     if UNITS_CAPEX.search(text): s += 7
     if GLOBAL.search(text): s += 4
+    if _is_rmac_operational(text): s += 14
+    if RMAC_EXPAND.search(text): s += 5
+    if RMAC_OTHER_INDUSTRIES.search(text): s += 4
     if BOSTON.search(text) and IPO.search(text): s += 9
     if IPO_FILING.search(text): s += 8
     if IPO_DELAY.search(text): s += 5
@@ -156,6 +198,7 @@ def score(item: dict) -> int:
 
 
 def _subcat(text: str) -> str:
+    if _is_rmac_operational(text): return 'RMAC 제조현장 훈련·데이터 플라이휠'
     if BOSTON.search(text) and IPO_FILING.search(text): return '기업공개 절차 진전'
     if BOSTON.search(text) and IPO.search(text): return '기업공개·기업가치 시간표'
     if BOSTON.search(text) and OWNERSHIP.search(text): return '지분·완전자회사화'
