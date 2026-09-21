@@ -1909,12 +1909,23 @@ def main() -> None:
             prev_value = float(prev.get("value"))
             pct = (float(obs["value"]) / prev_value - 1.0) * 100.0 if prev_value else 0.0
             direction = "상승" if pct > 0 else ("하락" if pct < 0 else "보합")
+            reasons = [f"전월 {prev_period} 대비 {pct:+.1f}% · {direction}"]
+
+            if len(previous_periods) >= 2:
+                prev2_period = previous_periods[-2]
+                prev2_value = float(export_unit_prices[prev2_period].get("value"))
+                cur_value = float(obs["value"])
+                if cur_value < prev_value < prev2_value:
+                    reasons.append("2개월 연속 하락")
+                elif cur_value > prev_value > prev2_value:
+                    reasons.append("2개월 연속 상승")
+
             old_for_alert = {"value": prev_value}
             ops_alert_events.append(
                 operating_change_event(
                     obs,
                     old_for_alert,
-                    [f"전월 {prev_period} 대비 {pct:+.1f}% · {direction}"],
+                    reasons,
                 )
             )
         else:
