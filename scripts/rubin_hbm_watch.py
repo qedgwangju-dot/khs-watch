@@ -35,6 +35,8 @@ BASE_SYSTEM_GB = BASE_NVLINK_GPU * OFFICIAL_RUBIN_GB
 ULTRA_SYSTEM_GB = ULTRA_NVLINK_GPU * RUMORED_ULTRA_GB
 SYSTEM_HBM_GROWTH = ULTRA_SYSTEM_GB / BASE_SYSTEM_GB - 1
 SEND_FRESHNESS_HOURS = 72
+STRUCTURE_BASELINE_VERSION = 1
+KNOWN_STRUCTURE_FACT_KEYS = {"hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi"}
 
 QUERIES = [
     (
@@ -55,7 +57,7 @@ QUERIES = [
     ),
     (
         "memory_migration",
-        '(Rubin OR "Rubin Ultra" OR HBM) (DDR5 OR SOCAMM2 OR eSSD OR "enterprise SSD" OR "KV cache" OR offload OR pooling)',
+        '(Rubin OR "Rubin Ultra" OR HBM) (DDR5 OR SOCAMM2 OR eSSD OR "enterprise SSD" OR "KV cache" OR offload OR pooling OR "8-Hi" OR "12-Hi" OR "4-Hi" OR 8단 OR 12단 OR 4단)',
     ),
 ]
 
@@ -427,7 +429,25 @@ def make_fact(event: dict) -> dict | None:
                 if any(a in low for a in aliases):
                     stacks.append(label)
             capacities = list(dict.fromkeys(re.findall(r"\b\d+(?:\.\d+)?\s*(?:GB|TB)\b", text, re.I)))[:4]
-            key_parts = [x.replace("단", "hi") for x in stacks] + [re.sub(r"\s+", "", x).lower() for x in capacities]
+            mainstream = []
+            niche = []
+            if any(k in low for k in ("mainstream", "주류", "중심", "유지")):
+                if "8단" in stacks:
+                    mainstream.append("8hi")
+                if "12단" in stacks:
+                    mainstream.append("12hi")
+            if any(k in low for k in ("niche", "limited", "제한", "니치")) and "4단" in stacks:
+                niche.append("4hi")
+
+            if mainstream or niche:
+                key_parts = []
+                if mainstream:
+                    key_parts.append("mainstream_" + "_".join(mainstream))
+                if niche:
+                    key_parts.append("niche_" + "_".join(niche))
+            else:
+                key_parts = [x.replace("단", "hi") for x in stacks]
+            key_parts += [re.sub(r"\s+", "", x).lower() for x in capacities]
             fact_key = "hbm_capacity_kv_offload_" + ("_".join(key_parts) if key_parts else "shift")
             headline = "HBM 용량 축소·KV 캐시 오프로딩 구조 변화"
             bullets.append("• 상태 변화: GPU 내부 HBM 용량을 줄이는 방향과 KV 캐시를 외부 메모리 계층으로 넘기는 오프로딩이 함께 거론됐습니다.")
@@ -497,6 +517,22 @@ def fact_signature_from_raw(event: dict) -> str:
         ):
             if any(a in text for a in aliases):
                 stacks.append(label)
+        mainstream = []
+        niche = []
+        if any(k in text for k in ("mainstream", "주류", "중심", "유지")):
+            if "8hi" in stacks:
+                mainstream.append("8hi")
+            if "12hi" in stacks:
+                mainstream.append("12hi")
+        if any(k in text for k in ("niche", "limited", "제한", "니치")) and "4hi" in stacks:
+            niche.append("4hi")
+        if mainstream or niche:
+            parts = []
+            if mainstream:
+                parts.append("mainstream_" + "_".join(mainstream))
+            if niche:
+                parts.append("niche_" + "_".join(niche))
+            return "hbm_capacity_kv_offload_" + "_".join(parts)
         return "hbm_capacity_kv_offload_" + ("_".join(stacks) if stacks else "shift")
     if "hbm3e" in text and "ddr5" in text and ("3x" in text or "three times" in text or "3배" in text):
         return "hbm3e_wafer_capacity_3x_ddr5"
@@ -687,6 +723,9 @@ def main() -> None:
     state, first_run = load_state()
     seen_before = set(state.get("seen_ids") or [])
     seen_fact_keys = set(state.get("seen_fact_keys") or [])
+    if int(state.get("structure_baseline_version") or 0) < STRUCTURE_BASELINE_VERSION:
+        seen_fact_keys.update(KNOWN_STRUCTURE_FACT_KEYS)
+        state["structure_baseline_version"] = STRUCTURE_BASELINE_VERSION
 
     raw_events_by_id: dict[str, dict] = {}
     errors: list[str] = []
@@ -730,6 +769,7 @@ def main() -> None:
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "seen_ids": sorted((seen_before | current_ids))[-1200:],
         "seen_fact_keys": sorted(seen_fact_keys | new_fact_keys)[-500:],
+        "structure_baseline_version": STRUCTURE_BASELINE_VERSION,
         "last_unseen_raw_count": len(unseen_raw),
         "last_verified_event_count": len(verified_events),
         "last_send_event_count": len(send_events),
