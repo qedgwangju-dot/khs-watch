@@ -469,6 +469,10 @@ def main() -> None:
                 f"<b>확인</b>  {esc_text(verification(x, group, text))}",
                 "",
                 f"💡 <b>핵심</b>  {esc_text(meaning(cat))}",
+            ])
+            if x.get("component_demand_note"):
+                lines.append(f"📦 <b>부품 물량 환산</b>  {esc_text(x['component_demand_note'])}")
+            lines.extend([
                 f"⚠️ <b>체크</b>  {esc_text(risk(cat))}",
                 f"<a href=\"{esc_attr(x['link'])}\"><b>원문</b></a>",
                 "",
