@@ -54,6 +54,4 @@ jobs:
               print(f' CONFIRMATION_GATE={str(confirmation).lower()} PENDING_STATE={str(pending).lower()}')
               print(' DEDUPE=' + ','.join(dedupe_terms))
               print(' FORMATTERS=' + ','.join(formatters))
-              if 'KHS887900_BOT_TOKEN' in text or 'khs887900_bot' in text:
-                  print(' EXACT_KHS887900_ROUTE=true')
           PY
