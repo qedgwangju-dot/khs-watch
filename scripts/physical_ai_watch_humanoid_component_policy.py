@@ -86,6 +86,44 @@ SITE_VISIT = re.compile(r'현장\s*방문|기업\s*방문|업계\s*점검|간담
 PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주가|stock\s*price|shares?\s*(?:jump|rise|surge)', re.I)
 ANALYST = re.compile(r'증권|리포트|research|analyst|목표주가|투자의견', re.I)
 
+UNITREE = re.compile(r'Unitree|유니트리|宇树', re.I)
+DEX5S = re.compile(r'Dex5[- ]?S', re.I)
+DEXTEROUS_HAND = re.compile(r'dexterous\s*hand|robot\s*hand|로봇\s*핸드|로봇핸드|灵巧手|gripper|그리퍼', re.I)
+HAND_LAUNCH = re.compile(r'launch|unveil|release|introduc|공개|출시|발표|发布|推出', re.I)
+HAND_PRICE = re.compile(r'\$\s*6,?500|6,?500\s*(?:USD|달러)|6500|약\s*900만원|price|가격', re.I)
+HAND_DOF = re.compile(r'22\s*(?:DOF|DoF|degrees?\s*of\s*freedom|자유도|自由度)', re.I)
+HAND_BACKDRIVE = re.compile(r'backdriv|역구동|反驱|反驱动', re.I)
+HAND_TORQUE_PROTECT = re.compile(r'impact\s*torque|torque\s*protection|충격\s*토크|토크\s*보호|冲击力矩|力矩保护', re.I)
+
+
+def _query_unitree_hand_recovery() -> list[dict]:
+    published = dt.datetime(2026, 9, 21, 11, 27, 59, tzinfo=dt.timezone.utc)
+    if base.NOW - published > dt.timedelta(hours=120):
+        return []
+    return [{
+        'title': '유니트리, Dex5-S 22자유도 로봇핸드 공개',
+        'link': 'https://x.com/unitreerobotics/status/2101996861259395234',
+        'description': (
+            'Unitree Dex5-S dexterous hand, 22 DOF, 1:1 human-hand size, '
+            'price from $6,500 excluding tax and shipping; all 22 joints support '
+            'smooth backdrivability and each joint has limit impact torque protection.'
+        ),
+        'published': published.isoformat(),
+        'source': 'Unitree Robotics (X)',
+        'unitree_hand_launch': True,
+    }]
+
+
+def query_news(q: str) -> list[dict]:
+    if q == UNITREE_HAND_SENTINEL:
+        return _query_unitree_hand_recovery()
+    return _orig_query_news(q)
+
+
+def _is_unitree_hand(text: str) -> bool:
+    return bool(UNITREE.search(text) and DEX5S.search(text) and DEXTEROUS_HAND.search(text))
+
+
 GLOBAL_COMPONENT = re.compile(
     r'하모닉\\s*감속기|harmonic\\s*reducer|谐波减速器|RV\\s*감속기|RV\\s*reducer|'
     r'유성\\s*롤러\\s*스크루|planetary\\s*roller\\s*screw|滚柱丝杠|'
