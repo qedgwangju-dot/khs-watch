@@ -106,6 +106,14 @@ EXEC_PROD_START = re.compile(r'start\\s+(?:production|manufacturing)|production\
 EXEC_HIGH_VOLUME = re.compile(r'high[-\\s]*volume\\s+production|mass\\s+production|volume\\s+production|대량\\s*생산|대량생산|본격\\s*양산', re.I)
 EXEC_DESIGN_CADENCE = re.compile(r'new\\s+robot\\s+design\\s+every\\s+year|improved\\s+robot\\s+design\\s+every\\s+year|매년.{0,20}(?:새로운|개선된).{0,20}로봇.{0,12}(?:디자인|설계)|매년.{0,20}로봇.{0,12}(?:디자인|설계)', re.I)
 EXEC_SCALE = re.compile(r'(?:1|one)\\s*million\\s+(?:units|robots).{0,20}(?:a|per)\\s+year|10\\s*million\\s+(?:units|robots).{0,20}(?:a|per)\\s+year|연간\\s*100만\\s*대|연간\\s*1,?000만\\s*대', re.I)
+NAMED_OPTIMUS_SUPPLIERS = re.compile(r'拓普集团|Tuopu|三花智控|Sanhua|均胜电子|Joyson', re.I)
+NAMED_SUPPLIER_ORDER = re.compile(
+    r'已获.{0,16}订单|已经.{0,16}拿到.{0,16}订单|都已经拿到了.{0,20}订单|订单已.{0,12}(?:下发|下達|下达)|'
+    r'got.{0,20}(?:Optimus|humanoid).{0,20}order|received.{0,20}(?:Optimus|humanoid).{0,20}order|'
+    r'휴머노이드.{0,20}(?:수주|주문).{0,20}(?:확보|받)|수주.{0,20}(?:확보|완료)',
+    re.I,
+)
+
 CN_LOCATIONS = re.compile(r'上海|杭州|宁波|寧波|厦门|廈門|상하이|항저우|닝보|샤먼', re.I)
 OFFICIAL_CONFIRM = re.compile(r'Tesla\s+(?:said|confirmed|announced)|特斯拉(?:官方|确认|確認|宣布)|테슬라(?:가|는)?\s*(?:공식|확인|발표)', re.I)
 LOW_TRUST_COMMUNITY = re.compile(
@@ -144,6 +152,9 @@ if _TESLA_APP_QUERY not in base.QUERIES:
 for _q in ['"Optimus chargers" Tesla app', '"optimus_charger_id" Tesla', '"createBaseChargerId_OptimusChargerId"']:
     if _q not in base.QUERIES:
         base.QUERIES.append(_q)
+_NAMED_SUPPLIER_ORDER_QUERY = '(Tesla OR 特斯拉 OR 테슬라) (Optimus OR 擎天柱 OR 휴머노이드) (拓普集团 OR Tuopu OR 三花智控 OR Sanhua OR 均胜电子 OR Joyson) (订单 OR order OR 审厂 OR supplier audit OR 量产 OR mass production)'
+if _NAMED_SUPPLIER_ORDER_QUERY not in base.QUERIES:
+    base.QUERIES.append(_NAMED_SUPPLIER_ORDER_QUERY)
 _FACTORY_MILESTONE_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("dedicated factory" OR "Optimus factory" OR "옵티머스 전용 공장" OR "로봇 기가팩토리") (steel OR concrete OR rebar OR 철골 OR 콘크리트 OR 철근 OR construction OR 공사)'
 if _FACTORY_MILESTONE_QUERY not in base.QUERIES:
     base.QUERIES.append(_FACTORY_MILESTONE_QUERY)
@@ -156,7 +167,7 @@ for _q in [
         base.QUERIES.append(_q)
 base.TRUSTED.update({
     '시나재경', '제몐뉴스', '21세기경제보도', '거룽후이', '차이롄서',
-    '증권시보', '중국증권보', '상하이증권보', 'Tesla Telemetry',
+    '증권시보', '중국증권보', '상하이증권보', 'Tesla Telemetry', '第一财经', '펑파이신문', '澎湃新闻', 'The Paper',
     'Moonshots with Peter Diamandis', 'Peter H. Diamandis', 'Dwarkesh Podcast', 'All-In Podcast',
 })
 base.OFFICIAL_OR_PRIMARY.add(MUSK_X_SOURCE)
@@ -275,6 +286,28 @@ def _query_tesla_cn_supply_chain() -> list[dict]:
             merged[signature] = item
     return list(merged.values())
 
+
+_TESLA_NAMED_SUPPLIER_RECOVERY = 'DIRECT_TESLA_NAMED_SUPPLIER_ORDER_20260921'
+if _TESLA_NAMED_SUPPLIER_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(_TESLA_NAMED_SUPPLIER_RECOVERY)
+
+def _query_named_supplier_recovery() -> list[dict]:
+    published = dt.datetime(2026, 9, 21, 1, 58, tzinfo=dt.timezone.utc)
+    if base.NOW - published > dt.timedelta(hours=120):
+        return []
+    text = (
+        '特斯拉机器人团队上周已在拓普集团、三花智控、均胜电子等长三角供应链企业开启审厂。'
+        '产业链人士称，这些企业在本次审厂前都已经拿到特斯拉人形机器人订单，只是供应规模不同；'
+        '审厂将评估相关产线质量与合规，通过后将很快开始生产。'
+    )
+    return [{
+        'title': '特斯拉机器人团队在长三角审厂，多家企业已获订单',
+        'link': 'https://www.yicai.com/news/103371779.html',
+        'description': text,
+        'published': published.isoformat(),
+        'source': '第一财经',
+        'named_supplier_order_recovery': True,
+    }]
 
 _JOE_FACTORY_RECOVERY_POSTS = {
     '2100597451396719051': (
@@ -443,6 +476,8 @@ def _query_elon_x() -> list[dict]:
 def query_news(q: str) -> list[dict]:
     if q == TESLA_CN_SENTINEL:
         return _query_tesla_cn_supply_chain()
+    if q == _TESLA_NAMED_SUPPLIER_RECOVERY:
+        return _query_named_supplier_recovery()
     if q == JOE_X_SENTINEL:
         return _query_joe_x()
     if q == TESLA_APP_X_SENTINEL:
@@ -475,6 +510,8 @@ def _stage(text: str) -> str:
         return 'production_started'
     if APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text):
         return 'home_app_integration'
+    if NAMED_OPTIMUS_SUPPLIERS.search(text) and NAMED_SUPPLIER_ORDER.search(text) and AUDIT.search(text):
+        return 'named_supplier_orders_audit'
     if FACTORY_SITE.search(text) and FACTORY_TOOLING.search(text):
         return 'factory_tooling'
     if FACTORY_SITE.search(text) and FACTORY_STRUCTURE.search(text):
@@ -521,6 +558,8 @@ def score(item: dict) -> int:
         s += 12
     if stage == 'home_app_integration':
         s += 12
+    if stage == 'named_supplier_orders_audit':
+        s += 16
     if stage == 'factory_structure':
         s += 12
     if stage == 'factory_tooling':
@@ -553,6 +592,8 @@ def category(text: str, group: str) -> str:
             return 'Optimus 실제 양산 개시'
         if stage == 'home_app_integration':
             return 'Optimus 가정용 앱·충전 인프라 준비'
+        if stage == 'named_supplier_orders_audit':
+            return 'Optimus 실명 공급사 주문·양산심사'
         if stage == 'factory_structure':
             return 'Optimus Giga Texas 전용공장 구조공사 진척'
         if stage == 'factory_tooling':
@@ -586,6 +627,9 @@ def meaning(cat: str) -> str:
     if cat == 'Optimus 가정용 앱·충전 인프라 준비':
         return ('앱 내부 코드에 Optimus 전용 충전·등록·가정용 기기 관리 경로가 생긴 것은 단순 로봇 데모보다 제품화에 가까운 소프트웨어 인프라 신호입니다. '
                 '실제 메뉴 활성화→충전 거치대 공개→가정용 시험사용자→소비자 판매 순으로 다음 상태 변화를 추적합니다.')
+    if cat == 'Optimus 실명 공급사 주문·양산심사':
+        return ('기존 익명 공급망의 심사 개시 보도에서 한 단계 나아가 Tuopu·Sanhua·Joyson 등 실명 업체와 주문 보유 주장이 함께 나온 후속 신호입니다. '
+                '실명 업체별 심사 통과→생산 개시→실제 출하→수주 물량 공개 순으로 매출 연결을 추적합니다.')
     if cat == 'Optimus Giga Texas 전용공장 구조공사 진척':
         return ('계획 발표가 아니라 전용공장의 철골·콘크리트·철근 등 물리 공정이 실제 진행되는 단계 변화입니다. '
                 '구조공사 완료→외장·유틸리티→생산설비 반입→시운전→양산 순으로 시간표를 추적합니다.')
@@ -622,6 +666,8 @@ def risk(cat: str) -> str:
         return ('생산 개시와 안정 양산은 다릅니다. 초기 직행수율·재작업률·주간 생산량이 따라오지 않으면 양산 개시 후에도 병목이 지속될 수 있습니다.')
     if cat == 'Optimus 가정용 앱·충전 인프라 준비':
         return ('앱 코드 존재는 소비자 출시 확정이나 실제 충전기 양산을 뜻하지 않습니다. 실험용·비활성 코드일 수 있으므로 Tesla 공식 기능 공개, 실제 앱 화면, 충전 하드웨어 인증·출시가 뒤따르는지 확인합니다.')
+    if cat == 'Optimus 실명 공급사 주문·양산심사':
+        return ('주문 보유와 심사 진행은 현재 익명 밸류체인 관계자 보도이며 Tesla와 각 상장사의 공식 수주 공시는 아닙니다. 9월 18일 각사 답변도 심사 여부를 확인하지 않았거나 답변을 유보했으므로 공식 확인 전까지 공급규모·독점 여부를 확정하지 않습니다.')
     if cat == 'Optimus Giga Texas 전용공장 구조공사 진척':
         return ('드론 현장 관측은 공정 진척을 보여주지만 최종 내부 배치·생산라인 구성과 가동일을 확정하지는 않습니다. 구조공사 후 장비 반입·유틸리티·시운전이 지연될 수 있습니다.')
     if cat == 'Optimus Giga Texas 생산설비 반입·설치':
@@ -659,6 +705,8 @@ def verification(item: dict, group: str, text: str) -> str:
             return '양산 실제 개시 보도 · 테슬라 공식 생산상태와 후속 교차확인'
         if _stage(text) == 'home_app_integration':
             return '테슬라 앱 코드 관측·역공학 단계 · Tesla 공식 소비자 기능/출시 발표 전'
+        if _stage(text) == 'named_supplier_orders_audit':
+            return '펑파이신문 취재·第一财经 재전재의 익명 밸류체인 관계자 발언 · Tesla/각사 공식 수주 확인 전'
         if _stage(text) == 'factory_structure':
             return '현장 드론 관측·신뢰매체 보도 · Tesla 공식 Q2 자료의 Giga Texas 건설 진행 상태와 교차확인'
         if _stage(text) == 'factory_tooling':
@@ -686,6 +734,8 @@ def clean_title(title: str, source: str) -> str:
             return '테슬라 옵티머스, 실제 양산 개시 신규 확인'
         if stage == 'home_app_integration':
             return '테슬라 앱 코드, Optimus 충전기·가정용 기기 통합 준비 정황 포착'
+        if stage == 'named_supplier_orders_audit':
+            return '테슬라 Optimus, Tuopu·Sanhua·Joyson 실명 공급사 주문 보유·양산심사 보도'
         if stage == 'factory_structure':
             return '테슬라 옵티머스, Giga Texas 전용공장 철골·콘크리트 공정 신규 진척'
         if stage == 'factory_tooling':
@@ -733,6 +783,8 @@ def key(item: dict) -> str:
             return hashlib.sha256(b'tesla-optimus|giga-texas|factory-structure').hexdigest()
         if stage == 'factory_tooling':
             return hashlib.sha256(b'tesla-optimus|giga-texas|factory-tooling').hexdigest()
+        if stage == 'named_supplier_orders_audit':
+            return hashlib.sha256(b'tesla-optimus|2026-09-21|named-suppliers-orders-audit|tuopu-sanhua-joyson').hexdigest()
         if stage == 'supplier_audit_started':
             return hashlib.sha256(b'tesla-optimus|2026-09-17|supplier-production-audit-started').hexdigest()
         if stage == 'scale_order_audit':
