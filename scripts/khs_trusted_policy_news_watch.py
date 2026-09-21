@@ -40,6 +40,8 @@ OUT_DIR = ROOT / "out"
 DATA_DIR = ROOT / "data"
 SEEN_PATH = DATA_DIR / "khs_trusted_policy_news_seen.json"
 ALERT_PATH = OUT_DIR / "khs_trusted_policy_news_alert.md"
+AI_FORCE_ALERT_PATH = OUT_DIR / "khs_ai_force_policy_alert.md"
+AI_FORCE_TITLE_PATH = OUT_DIR / "khs_ai_force_policy_title.txt"
 
 DIRECT_STORY_URLS = {
     "us_fcc_chinese_optical_transceiver_ban": (
@@ -1475,6 +1477,18 @@ def story_summary_lines(rule: StoryRule, items: list[dict], limit: int = 3) -> l
     return lines
 
 
+def is_ai_force_alert(alert: dict) -> bool:
+    rule = alert.get("rule")
+    items = alert.get("items") or []
+    if not rule or not items:
+        return False
+    profile = item_story_profile(rule, items)
+    return bool(
+        profile
+        and str(profile.get("revision") or "").startswith("trump-ai-force-czar-")
+    )
+
+
 def alert_latest_kst(alert: dict) -> str:
     items = alert.get("items") or []
     return max((str(item.get("published_kst", "")) for item in items), default="")
@@ -1733,41 +1747,71 @@ def main() -> int:
             )
 
     if not alerts:
-        for path in (ALERT_PATH, TITLE_PATH, ALERTS_JSON_PATH):
+        for path in (
+            ALERT_PATH,
+            TITLE_PATH,
+            ALERTS_JSON_PATH,
+            AI_FORCE_ALERT_PATH,
+            AI_FORCE_TITLE_PATH,
+        ):
             if path.exists():
                 path.unlink()
         print("trusted_policy_news_alerts=0")
         return 0
 
     alerts.sort(key=alert_latest_kst, reverse=True)
-    selected_alerts = alerts[:3]
-    top = selected_alerts[0]
-    extra_count = max(0, len(selected_alerts) - 1)
-    title_suffix = f" 외 {extra_count}건" if extra_count else ""
-    report = render_alert_bundle(selected_alerts, now)
-    ALERT_PATH.write_text(report, encoding="utf-8")
-    TITLE_PATH.write_text(
-        f"신뢰외신 정책 워치: [상·공식 확인 전] {story_display_title(top['rule'], top['items'])}{title_suffix}\n",
-        encoding="utf-8",
-    )
-    ALERTS_JSON_PATH.write_text(
-        json.dumps(
-            [
-                {
-                    "key": alert["rule"].key,
-                    "title": alert["rule"].title,
-                    "status": "공식 확인 전",
-                    "items": alert["items"],
-                    "fingerprint": alert["fingerprint"],
-                }
-                for alert in alerts
-            ],
-            ensure_ascii=False,
-            indent=2,
+    ai_force_alerts = [alert for alert in alerts if is_ai_force_alert(alert)]
+    general_alerts = [alert for alert in alerts if not is_ai_force_alert(alert)]
+
+    if general_alerts:
+        selected_alerts = general_alerts[:3]
+        top = selected_alerts[0]
+        extra_count = max(0, len(selected_alerts) - 1)
+        title_suffix = f" 외 {extra_count}건" if extra_count else ""
+        report = render_alert_bundle(selected_alerts, now)
+        ALERT_PATH.write_text(report, encoding="utf-8")
+        TITLE_PATH.write_text(
+            f"신뢰외신 정책 워치: [상·공식 확인 전] {story_display_title(top['rule'], top['items'])}{title_suffix}\n",
+            encoding="utf-8",
         )
-        + "\n",
-        encoding="utf-8",
-    )
+        ALERTS_JSON_PATH.write_text(
+            json.dumps(
+                [
+                    {
+                        "key": alert["rule"].key,
+                        "title": alert["rule"].title,
+                        "status": "공식 확인 전",
+                        "items": alert["items"],
+                        "fingerprint": alert["fingerprint"],
+                    }
+                    for alert in general_alerts
+                ],
+                ensure_ascii=False,
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+    else:
+        for path in (ALERT_PATH, TITLE_PATH, ALERTS_JSON_PATH):
+            if path.exists():
+                path.unlink()
+
+    if ai_force_alerts:
+        selected_ai_force = ai_force_alerts[:1]
+        ai_top = selected_ai_force[0]
+        AI_FORCE_ALERT_PATH.write_text(
+            render_alert_bundle(selected_ai_force, now, limit=1),
+            encoding="utf-8",
+        )
+        AI_FORCE_TITLE_PATH.write_text(
+            f"🚨 미국 AI 정책지휘체계 중요 변화: {story_display_title(ai_top['rule'], ai_top['items'])}\n",
+            encoding="utf-8",
+        )
+    else:
+        for path in (AI_FORCE_ALERT_PATH, AI_FORCE_TITLE_PATH):
+            if path.exists():
+                path.unlink()
 
     for alert in alerts:
         seen_entry = {
@@ -1782,7 +1826,10 @@ def main() -> int:
     seen_payload["updated_at_kst"] = now.isoformat(timespec="seconds")
     SEEN_PATH.write_text(json.dumps(seen_payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-    print(f"trusted_policy_news_alerts={len(alerts)}")
+    print(
+        f"trusted_policy_news_alerts={len(alerts)} "
+        f"general={len(general_alerts)} ai_force={len(ai_force_alerts)}"
+    )
     return 0
 
 
