@@ -132,6 +132,9 @@ def _validate_alert_contract(text: str) -> None:
     if legacy_signature:
         raise RuntimeError("Blocked legacy article-led US-investment alert format")
 
+    if "미국 대형원전 3트랙 웹감시" in plain:
+        raise RuntimeError("Blocked legacy three-track nuclear recap alert format")
+
     if re.search(r"미분류\s*-\d+\s*기", plain):
         raise RuntimeError("Blocked impossible negative unclassified reactor count")
 
