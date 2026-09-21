@@ -139,6 +139,34 @@ def _official_line() -> str:
     return "🏛 <b>정부 공식확정 여부 별도 관리</b>"
 
 
+def _current_state_block(flags: dict[str, bool]) -> list[str]:
+    if not flags.get("nuclear"):
+        return []
+
+    state = _load_state()
+    nuclear = ((state.get("event_states") or {}).get("nuclear_build") or {})
+    facts = {str(x) for x in (nuclear.get("facts") or [])}
+
+    def value(prefix: str) -> str:
+        for fact in facts:
+            if fact.startswith(prefix):
+                return fact.split(":", 1)[1]
+        return "미확인"
+
+    total = value("nuclear_total_units:")
+    ap1000 = value("ap1000_units:")
+    apr1400 = value("apr1400_units:")
+    official = "미확정" if "official_status:unconfirmed" in facts else (
+        "공식확정" if "official_status:confirmed" in facts else "확인 중"
+    )
+
+    return [
+        "<b>📌 현재 기준</b>",
+        f"• 미국 원전 보도 기준: 전체 <b>{html.escape(total)}기</b> · AP1000 <b>{html.escape(ap1000)}기</b> · APR1400 <b>{html.escape(apr1400)}기</b>",
+        f"• 정부 공식상태: <b>{official}</b> · 노형별 기수는 공식 근거가 확인될 때만 변경 알림",
+    ]
+
+
 def _mandatory_project_block() -> list[str]:
     return [
         "<b>💰 대미투자 프로젝트 기준 사업비</b>",
@@ -268,7 +296,9 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
     if context:
         parts += ["<b>📌 이번 변화 핵심</b>"] + context + [""]
 
-    parts += _mandatory_project_block() + [""]
+    baseline = _current_state_block(flags)
+    if baseline:
+        parts += baseline + [""]
 
     checks = _next_checks(flags)
     if checks:
@@ -310,7 +340,9 @@ def _compact_energy_package(text: str, lookup_time: str) -> str | None:
         "• 동일 WSJ 재전달 기사는 한 사건으로 묶고 정부 공식 확정은 별도 단계로 관리",
         "",
     ]
-    parts += _mandatory_project_block() + [""]
+    baseline = _current_state_block(flags)
+    if baseline:
+        parts += baseline + [""]
     parts += [
         "<b>다음 확인</b>",
         "• 정부 공식 첫 사업 선정·투자금·지분·수익배분",
@@ -343,7 +375,7 @@ def main() -> int:
         compact = _compact_energy_package(text, lookup_time)
     if compact is None:
         lines = [line for line in text.splitlines() if line.strip()]
-        compact = "\n".join(lines[:18]) + "\n\n" + "\n".join(_mandatory_project_block()) + "\n"
+        compact = "\n".join(lines[:18]) + "\n"
 
     if _visible_len(compact) > 3900:
         raise RuntimeError(f"compact alert still too long: {_visible_len(compact)}")
