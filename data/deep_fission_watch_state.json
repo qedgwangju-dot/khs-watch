@@ -37,6 +37,8 @@
     "https://www.deepfission.com/newsroom/press-releases/detail/116/department-of-energy-approves-nuclear-safety-design-agreement-for-deep-fissions-gravity-reactor-designed-to-convert-to-commercial-operation": "Department of Energy Approves Nuclear Safety Design Agreement for Deep Fission's Gravity™ Reactor, Designed to Convert to Commercial Operation",
     "https://www.deepfission.com/newsroom/press-releases/detail/117/deep-fission-names-shawntrell-scales-as-its-first-chief-people-officer": "Deep Fission Names ShawnTrell Scales as Its First Chief People Officer",
     "https://www.deepfission.com/newsroom/press-releases/detail/118/deep-fission-installs-and-retrieves-full-scale-reactor-canister-using-off-the-shelf-drilling-equipment": "Deep Fission Installs and Retrieves Full-Scale Reactor Canister Using Off-the-Shelf Drilling Equipment",
+    "https://www.deepfission.com/newsroom/press-releases/detail/119/deep-fission-publishes-doe-approved-nuclear-safety-design-agreement-for-gravity-pilot-reactor-demonstrating-commitment-to-transparency": "Deep Fission Publishes DOE-Approved Nuclear Safety Design Agreement for Gravity™ Pilot Reactor, Demonstrating Commitment to Transparency",
+    "https://www.deepfission.com/newsroom/press-releases/detail/120/deep-fission-and-youngquist-brothers-announce-collaboration-on-deep-large-diameter-borehole-drilling-for-underground-nuclear-reactor-deployment": "Deep Fission and Youngquist Brothers Announce Collaboration on Deep, Large-Diameter Borehole Drilling for Underground Nuclear Reactor Deployment",
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/105/deep-fission-kicks-off-historic-borehole-drilling-for-first-of-a-kind-nuclear-project": "Deep Fission Kicks Off Historic Borehole Drilling for First-of-a-Kind Nuclear Project",
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/108/deep-fission-inc-confidentially-submits-draft-registration-statement-for-primary-offering": "Deep Fission, Inc. Confidentially Submits Draft Registration Statement for Primary Offering",
     "https://www.deepfission.com/pr-media-kit/press-releases/detail/109/advanced-nuclear-company-deep-fission-announces-launch-of-public-offering-of-common-stock": "Advanced Nuclear Company Deep Fission Announces Launch of Public Offering of Common Stock",
@@ -212,6 +214,12 @@
       "form": "10-Q",
       "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926089884/tmb-20260630x10q.htm"
     },
+    "0001104659-26-109201": {
+      "date": "2026-09-21",
+      "description": "FORM 8-K",
+      "form": "8-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1918102/000110465926109201/tm2625786d1_8k.htm"
+    },
     "0001213900-22-027248": {
       "date": "2022-05-16",
       "description": "QUARTERLY REPORT",
@@ -323,8 +331,9 @@
   },
   "sent_event_ids": [
     "nsda-approved:https://www.deepfission.com/newsroom/press-releases/detail/116/department-of-energy-approves-nuclear-safety-design-agreement-for-deep-fissions-gravity-reactor-designed-to-convert-to-commercial-operation",
-    "prototype-canister-on-site:https://www.deepfission.com/newsroom/press-releases/detail/114/deep-fission-prototype-reactor-canister-arrives-at-kansas-site-advancing-reactor-proof-of-concept-program"
+    "prototype-canister-on-site:https://www.deepfission.com/newsroom/press-releases/detail/114/deep-fission-prototype-reactor-canister-arrives-at-kansas-site-advancing-reactor-proof-of-concept-program",
+    "sec:0001104659-26-109201"
   ],
-  "updated_at": "2026-09-12T09:12:05+00:00",
+  "updated_at": "2026-09-21T16:59:48+00:00",
   "version": 3
 }
