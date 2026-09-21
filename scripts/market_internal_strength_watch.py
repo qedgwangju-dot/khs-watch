@@ -7,6 +7,7 @@ import urllib.request
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 STATE_PATH=Path('data/market_internal_strength_watch_state.json')
 TOKEN=(os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
@@ -37,15 +38,21 @@ def series(symbol):
     regular=((meta.get('currentTradingPeriod') or {}).get('regular') or {})
     regular_start=regular.get('start'); regular_end=regular.get('end')
     now=time.time()
+    ny_now=datetime.now(ZoneInfo('America/New_York'))
+    ny_today=ny_now.date().isoformat()
+    before_close_buffer=(ny_now.hour < 16 or (ny_now.hour == 16 and ny_now.minute < 15))
     rows=[]
     for t,v in zip(ts,q):
         if v is None:
             continue
         # Yahoo 1d chart can expose the current, still-open U.S. session as a daily bar.
         # Do not treat that partial bar as a completed daily close.
+        row_date=datetime.fromtimestamp(t,ZoneInfo('America/New_York')).date().isoformat()
+        if row_date == ny_today and before_close_buffer:
+            continue
         if regular_start and regular_end and regular_start <= t <= regular_end and now < regular_end + 900:
             continue
-        rows.append((datetime.fromtimestamp(t,timezone.utc).date().isoformat(),float(v)))
+        rows.append((row_date,float(v)))
     if len(rows)<7: raise RuntimeError(f'{symbol} completed-session history too short')
     return rows
 
@@ -53,7 +60,10 @@ def ret(rows,n): return (rows[-1][1]/rows[-1-n][1]-1)*100.0
 
 def snapshot():
     data={k:series(v) for k,v in SYMBOLS.items()}
-    out={'date':data['S&P500'][-1][0],'returns':{}}
+    latest_dates={rows[-1][0] for rows in data.values()}
+    if len(latest_dates) != 1:
+        raise RuntimeError(f'완료 종가 기준일 불일치: {sorted(latest_dates)}')
+    out={'date':next(iter(latest_dates)),'returns':{}}
     for name,rows in data.items(): out['returns'][name]={'1d':ret(rows,1),'3d':ret(rows,3),'5d':ret(rows,5)}
     spy=out['returns']['S&P500']; rsp=out['returns']['동일가중 S&P500']; iwm=out['returns']['중소형주']; hyg=out['returns']['하이일드 회사채']; vix=out['returns']['VIX']
     out['rsp_rel_5d']=rsp['5d']-spy['5d']; out['iwm_rel_5d']=iwm['5d']-spy['5d']
