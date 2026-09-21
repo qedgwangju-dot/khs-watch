@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import html
 import re
+import os
 import hashlib
 import sys
 import xml.etree.ElementTree as ET
@@ -315,6 +316,8 @@ _PREV_RENDER = j2.base.render_alert
 def _render_v9(events, fact_changes):
     smr_events = [e for e in events if e.get("kind") in SMR_POLICY_KINDS]
     rest = [e for e in events if e.get("kind") not in SMR_POLICY_KINDS]
+    if os.getenv("DELEGATE_KOREA_SMR_POLICY_TO_KHS_POLICY_WATCH", "").lower() in {"1", "true", "yes"}:
+        smr_events = []
     parts = []
     if smr_events:
         parts.append(_render_smr_policy_cluster(smr_events))
