@@ -12,10 +12,14 @@ base = prev.base
 
 SUMMIT_SENTINEL = '__TRUMP_ZELENSKY_SUMMIT_BING__'
 SUMMIT_BACKFILL_SENTINEL = '__TRUMP_ZELENSKY_AXIOS_BACKFILL__'
+UNCONDITIONAL_CEASEFIRE_SENTINEL = '__ZELENSKY_UNCONDITIONAL_CEASEFIRE__'
+UNCONDITIONAL_CEASEFIRE_BACKFILL = '__ZELENSKY_UNCONDITIONAL_CEASEFIRE_BACKFILL__'
 
 NEW_IDEA_QUERIES = [
     SUMMIT_SENTINEL,
     SUMMIT_BACKFILL_SENTINEL,
+    UNCONDITIONAL_CEASEFIRE_SENTINEL,
+    UNCONDITIONAL_CEASEFIRE_BACKFILL,
     '__fnnews_international_rss__',
     'site:reuters.com Kyiv preparing talks resume October senior Ukrainian official when:72h',
     'site:reuters.com (Ukraine OR Kyiv OR Budanov) October (trilateral OR "three-way" OR talks) (resume OR preparing) (Russia OR US OR U.S.) when:72h',
@@ -32,6 +36,9 @@ NEW_IDEA_QUERIES = [
     '(Zelenskiy OR Zelensky OR 젤렌스키) (grain OR energy infrastructure OR prisoner exchange OR 곡물 OR 에너지 인프라 OR 포로 교환) (peace talks OR 평화 회담 OR 종전 협상) when:24h',
     'site:yna.co.kr 젤렌스키 (윗코프 OR 위트코프 OR 쿠슈너) (새 아이디어 OR 합리적인 제안 OR 새로운 아이디어 OR 돌파구 OR 종전안 OR 추가 회의) when:24h',
     '(젤렌스키 OR Zelenskiy OR Zelensky) (윗코프 OR 위트코프 OR Witkoff OR 쿠슈너 OR Kushner OR 미국 특사) (새 아이디어 OR 새로운 아이디어 OR new ideas OR decent ideas OR worthwhile ideas OR 종전안 OR 돌파구 OR 추가 협상) when:24h',
+    'site:cbc.ca (Zelensky OR Zelenskiy) ("unconditional ceasefire" OR "without conditions") (diplomacy OR negotiations) when:1d',
+    'site:president.gov.ua (Zelensky OR Zelenskiy) ("unconditional ceasefire" OR "ceasefire without conditions") when:2d',
+    '(Zelensky OR Zelenskiy OR 젤렌스키) ("unconditional ceasefire" OR "without conditions" OR 무조건적 휴전 OR 조건 없는 휴전 OR 조건없이 휴전) (diplomacy OR negotiations OR 외교 OR 협상) when:1d',
     'site:axios.com (Trump Zelensky OR Trump Zelenskiy) (Tuesday OR "UN General Assembly" OR New York) meeting when:1d',
     'site:reuters.com (Trump Zelensky OR Trump Zelenskiy) (New York OR "UN General Assembly") (meet OR meeting OR agreed) when:1d',
     '(Trump OR 트럼프) (Zelensky OR Zelenskiy OR 젤렌스키) (Tuesday OR 화요일 OR New York OR 뉴욕 OR "UN General Assembly" OR 유엔총회) (meet OR meeting OR 회담 OR 만나기로 OR 예정) when:1d',
@@ -86,6 +93,24 @@ def _newidea_signals(row):
     ))
 
     ua_context = zelensky and us_envoy
+
+    unconditional = any(k in text for k in (
+        'unconditional ceasefire','ceasefire without conditions','without conditions, just a ceasefire',
+        'without conditions just a ceasefire','no conditions, just a ceasefire','no conditions just a ceasefire',
+        '무조건적 휴전','조건 없는 휴전','조건없는 휴전','조건 없이 휴전','조건없이 휴전',
+    ))
+    diplomacy_ready = any(k in text for k in (
+        'transition to diplomacy','move to diplomacy','shift to diplomacy','diplomatic track','diplomatic negotiations',
+        'ceasefire and negotiations','ceasefire and talks','외교로 전환','외교 전환','외교적 해결','외교 트랙',
+        '휴전과 협상','휴전 후 협상','협상으로 전환','외교 준비 완료',
+    ))
+    if zelensky and unconditional:
+        signals.append('젤렌스키: 러시아가 동의하면 조건 없는 휴전 수용 — 기존 협상 재개 의사보다 한 단계 높은 공개 입장')
+        marks.append('젤렌스키무조건휴전수용')
+        if diplomacy_ready:
+            signals.append('우크라이나는 휴전 뒤 외교·협상 단계로 전환할 준비가 됐다고 밝힘')
+            marks.append('젤렌스키외교전환준비')
+
 
     if ukraine_side and october and (restart or october_prepare) and (
         trilateral
@@ -198,6 +223,77 @@ def _newidea_signals(row):
     return list(dict.fromkeys(signals)), sorted(set(marks))
 
 
+def _unconditional_ceasefire_bing():
+    """CBC 직접 색인이 늦어도 젤렌스키의 무조건 휴전·외교 전환 발언을 보조 검색으로 포착한다."""
+    queries = (
+        '"Zelensky" "unconditional ceasefire" diplomacy CBC',
+        '"If the Russians are ready for a ceasefire" Zelensky',
+        '"without conditions, just a ceasefire and negotiations" Zelensky',
+        '젤렌스키 무조건적 휴전 외교 준비 CBC',
+    )
+    rows, seen, errors = [], set(), []
+    for query in queries:
+        try:
+            url = 'https://www.bing.com/news/search?format=rss&q=' + urllib.parse.quote(query)
+            root = watch.ET.fromstring(watch.req(url, 12))
+        except Exception as e:
+            errors.append(f'unconditional-bing: {type(e).__name__}')
+            continue
+        for item in root.findall('./channel/item')[:20]:
+            title = watch.clean(item.findtext('title'))
+            link = watch.clean(item.findtext('link'))
+            pub = watch.clean(item.findtext('pubDate'))
+            desc = watch.clean(item.findtext('description'))
+            blob = f'{title} {desc}'.lower()
+            if not any(k in blob for k in ('zelensky','zelenskiy','젤렌스키')):
+                continue
+            if not any(k in blob for k in (
+                'unconditional ceasefire','without conditions','ceasefire without conditions',
+                '무조건적 휴전','조건 없는 휴전','조건없이 휴전','조건 없이 휴전'
+            )):
+                continue
+            try:
+                p = urllib.parse.urlparse(link)
+                if 'bing.com' in p.netloc.lower():
+                    direct = (urllib.parse.parse_qs(p.query).get('url') or [''])[0]
+                    if direct.startswith(('http://','https://')):
+                        link = direct
+            except Exception:
+                pass
+            key=(title.lower(),link)
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append({
+                'title': title,
+                'title_original': title,
+                'link': link,
+                'published': pub,
+                'source': 'Bing News',
+                'description': desc,
+                'feed': '무조건 휴전 Bing 보조검색',
+            })
+    return rows, '; '.join(errors) if errors else None
+
+
+def _unconditional_ceasefire_backfill():
+    """2026-09-21 CBC 인터뷰 누락 복구용. 9월 23일 이후 자동 비활성화."""
+    today = dt.datetime.now(watch.KST).date()
+    if today > dt.date(2026, 9, 23):
+        return [], None
+    return [{
+        'title': 'Ukraine ready for unconditional ceasefire with Russia and transition to diplomacy – Zelenskyy',
+        'title_original': 'Ukraine ready for unconditional ceasefire with Russia and transition to diplomacy – Zelenskyy',
+        'link': 'https://censor.net/en/news/4024553/ukraine-ready-for-unconditional-ceasefire-with-russia',
+        'published': '',
+        'source': 'Censor.NET · CBC News 인용',
+        'description': 'Zelenskyy said in an interview with CBC News that if Russia is ready for a ceasefire, Ukraine is ready without conditions, just a ceasefire and negotiations, and to move the situation to the diplomatic track.',
+        'article_text': 'Ukraine is ready for an unconditional ceasefire and transition to diplomacy if Russia agrees: without conditions, just a ceasefire and negotiations.',
+        'feed': '검증된 CBC 인터뷰 누락 복구',
+        'deep_signal': True,
+    }], None
+
+
 def _summit_backfill():
     """2026-09-22 Trump–Zelenskiy UNGA 회담 누락 복구용. 일정이 지나면 자동 비활성화."""
     today = dt.datetime.now(watch.KST).date()
@@ -303,7 +399,11 @@ def _fnnews_international_rss():
 
 
 def newidea_google_news(query):
-    if query == SUMMIT_BACKFILL_SENTINEL:
+    if query == UNCONDITIONAL_CEASEFIRE_BACKFILL:
+        rows, err = _unconditional_ceasefire_backfill()
+    elif query == UNCONDITIONAL_CEASEFIRE_SENTINEL:
+        rows, err = _unconditional_ceasefire_bing()
+    elif query == SUMMIT_BACKFILL_SENTINEL:
         rows, err = _summit_backfill()
     elif query == SUMMIT_SENTINEL:
         rows, err = _summit_bing_rss()
@@ -329,7 +429,11 @@ def newidea_score_item(x, now):
     score, tags = _prev_score(x, now)
     signals, marks = _newidea_signals(x)
     if marks:
-        if '양측협상의사확인' in marks:
+        if '젤렌스키무조건휴전수용' in marks and '젤렌스키외교전환준비' in marks:
+            score += 92
+        elif '젤렌스키무조건휴전수용' in marks:
+            score += 86
+        elif '양측협상의사확인' in marks:
             score += 72
         elif '10월3자재개준비' in marks:
             score += 66
@@ -378,7 +482,7 @@ def newidea_item_id(x):
         return base_id
     # 제안→우크라이나 재개의사→러시아 3자협상 개방→양측 확인 순으로 단계가 높아지면 후속 알림 허용.
     important = [m for m in marks if m in (
-        '합리적평화제안','새종전아이디어','젤렌스키협상재개의사','크렘린3자재개가능','양측협상의사확인',
+        '합리적평화제안','새종전아이디어','젤렌스키무조건휴전수용','젤렌스키외교전환준비','젤렌스키협상재개의사','크렘린3자재개가능','양측협상의사확인',
         '10월3자재개준비','3자회담준비','회담후보지','실무의제','포로교환','트럼프젤렌스키화요일회담일정','트럼프젤렌스키뉴욕회동합의','트럼프후속회동','겨울방공지원','돌파구없음','조기종전신중',
     )]
     key = base_id + '|newideas-v3|' + '|'.join(important)
@@ -397,6 +501,10 @@ def _inject_newideas(text, items):
         return text
 
     rows = []
+    if '젤렌스키무조건휴전수용' in marks:
+        rows.append('- <b>무조건적 휴전:</b> 젤렌스키가 러시아가 동의하면 조건 없는 휴전을 수용할 준비가 됐다고 공개 확인')
+        if '젤렌스키외교전환준비' in marks:
+            rows.append('- <b>외교 전환:</b> 휴전 뒤 외교·협상 단계로 즉시 이동할 준비가 됐다고 밝힘')
     if '양측협상의사확인' in marks or ('젤렌스키협상재개의사' in marks and '크렘린3자재개가능' in marks):
         rows.append('- <b>단계 상승:</b> 우크라이나와 러시아 양측 모두 미국 중재 협상 재개 가능성을 열어둠')
     else:
