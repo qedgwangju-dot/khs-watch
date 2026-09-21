@@ -335,6 +335,44 @@ jobs:
                   continue
               title = title_file.read_text(encoding="utf-8").strip() if title_file.exists() else fallback_title
               body = body_file.read_text(encoding="utf-8")
+
+              # 단일 소유권 규칙:
+              # 대미투자 미국 원전의 기수/노형/AP1000/APR1400 구성 변화는
+              # khs-us-investment-telegram-watch.yml 한 경로만 Telegram 송출한다.
+              # 정책/Westinghouse 경로는 해당 내용을 근거로 활용할 수 있지만
+              # 별도 Telegram 알림을 만들지 않는다.
+              raw_combined = f"{title}\n{body}".lower()
+              us_investment_topic = any(
+                  marker in raw_combined
+                  for marker in (
+                      "대미투자",
+                      "대미 투자",
+                      "한미전략투자",
+                      "한미 전략투자",
+                      "u.s. investment",
+                      "us investment",
+                  )
+              )
+              reactor_mix_topic = any(
+                  marker in raw_combined
+                  for marker in (
+                      "ap1000",
+                      "apr1400",
+                      "원전 8기",
+                      "원전 6기",
+                      "원전 2기",
+                      "원전 기수",
+                      "미국 원전",
+                      "reactor mix",
+                  )
+              )
+              if route == "westinghouse" and us_investment_topic and reactor_mix_topic:
+                  print(
+                      "delegated_to_us_investment_watch=true "
+                      f"body_file={body_file.name} route={route}"
+                  )
+                  continue
+
               title, body = format_policy_message(title, body)
               format_errors = validate_final_policy_message(title, body)
               if format_errors:
