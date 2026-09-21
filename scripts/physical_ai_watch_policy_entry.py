@@ -255,7 +255,27 @@ def _fetch_pollen_founder_x() -> list[dict]:
             gathered.setdefault(status_id, item)
 
     if not gathered and errors:
-        raise RuntimeError(' | '.join(errors))
+        # Do not let third-party X mirrors create a blind spot or a failed query lane.
+        # Fall back to the existing Google News discovery path for the same primary-source topic.
+        # These fallback items are NOT labelled as direct founder posts.
+        fallback_queries = [
+            '"Microduck" ("Matthieu Lapeyre" OR "Pollen Robotics") (XL330 OR 20000 OR 20,000 OR production OR supply OR shortage)',
+            '"Pollen Robotics" Microduck (production OR capacity OR orders OR delivery OR XL330)',
+        ]
+        fallback: dict[str, dict] = {}
+        for fq in fallback_queries:
+            try:
+                for item in _orig_query_news(fq):
+                    sig = f"{item.get('title','')}|{item.get('source','')}"
+                    item['pollen_fallback_discovery'] = True
+                    fallback[sig] = item
+            except Exception:
+                continue
+        if fallback:
+            return list(fallback.values())
+        # The broad Microduck/Pollen queries elsewhere in the watcher still run.
+        # Keep this direct-source lane non-fatal so one blocked mirror cannot reduce total coverage.
+        return []
     return list(gathered.values())
 
 
