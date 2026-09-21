@@ -14,6 +14,9 @@ on:
       - "scripts/khs_us_investment_altpower_finalize.py"
       - "scripts/khs_us_investment_telegram_send.py"
       - "data/khs_us_investment_watch_config.json"
+  schedule:
+    # Temporary near-term verification; restore normal offset after one confirmed schedule run.
+    - cron: "12,27,42,57 * * * *"
   workflow_dispatch:
 
 permissions:
