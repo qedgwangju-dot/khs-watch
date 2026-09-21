@@ -1282,7 +1282,8 @@ def trump_story_profile(title: str) -> dict[str, object] | None:
 
         return {
             **common,
-            "revision": "trump-ai-force-czar-ko-v2",
+            "revision": "trump-ai-force-czar-ko-v3",
+            "event_date": "2026년 9월 19일" if not appointment_language and not formalization_language else "",
             "title": ai_title,
             "core": ai_core,
             "stage": ai_stage,
@@ -1429,7 +1430,7 @@ def trump_story_profile(title: str) -> dict[str, object] | None:
         return {
             **common,
             "title": "트럼프, 우크라이나·러시아 관련 발언: 제재·전쟁 시간표 변수",
-            "core": "트럼프의 우크라이나·러시아 관련 발언으로 제재, 휴전, 에너지·방산 리스크의 시간표가 흔들릴 수 있다는 보도입니다.",
+            "core": "트럼프의 우크라이나·러시아 발언으로 제재·휴전 시간표가 다시 변수로 부각됐습니다.",
             "investment": "제재·휴전의 실제 진전 여부는 에너지·원자재 가격과 방산 수요 기대를 바꿀 수 있습니다.",
             "korea": "방산·에너지·해운만 직접 확인하며, 공식 협상문·제재 변경 전에는 테마 확장을 제한합니다.",
             "impacts": "밸류에이션/할인율, 수급, 시간표",
@@ -1489,16 +1490,43 @@ def is_ai_force_alert(alert: dict) -> bool:
     )
 
 
+def dedupe_alerts_for_display(alerts: list[dict]) -> list[dict]:
+    """Keep only the newest alert for each rendered decision headline."""
+    output: list[dict] = []
+    seen: set[tuple[str, str]] = set()
+    for alert in alerts:
+        rule = alert.get("rule")
+        items = alert.get("items") or []
+        if not rule or not items:
+            continue
+        key = (
+            str(getattr(rule, "key", "") or ""),
+            story_display_title(rule, items).strip(),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        output.append(alert)
+    return output
+
+
 def alert_latest_kst(alert: dict) -> str:
     items = alert.get("items") or []
     return max((str(item.get("published_kst", "")) for item in items), default="")
 
 
 def source_bits(items: list[dict], limit: int = 1) -> str:
-    bits = [
-        f"[{item['source']}]({item['link']}) · 원천시각 {item['published_kst']}"
-        for item in items[:limit]
-    ]
+    bits: list[str] = []
+    for item in items[:limit]:
+        published = parse_kst_iso(str(item.get("published_kst") or ""))
+        published_label = (
+            f"{published.year}년 {published.month}월 {published.day}일 {published:%H:%M} KST"
+            if published
+            else "확인 불가"
+        )
+        bits.append(
+            f"[{item['source']}]({item['link']}) · 원천시각 {published_label}"
+        )
     return " / ".join(bits) if bits else "확인 불가"
 
 
@@ -1640,6 +1668,7 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
             if published
             else "확인 불가"
         )
+        event_date = str(profile.get("event_date") or "").strip() or published_label
         timeline_parts = [
             part.strip()
             for part in str(profile.get("timeline") or "").split(" → ")
@@ -1648,7 +1677,7 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
         timeline_lines = ["- 타임라인:"]
         timeline_lines.extend(f"  • {part}" for part in timeline_parts)
         return [
-            f"- 발표일: {published_label}",
+            f"- 발표일: {event_date}",
             f"- 현재 단계: {profile.get('stage')}",
             f"- 핵심: {core}",
             f"- 실제 내용: {profile.get('actual')}",
@@ -1697,7 +1726,7 @@ def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, i
 def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
     lines = [
         f"{now:%Y년 %m월 %d일 %H:%M KST}",
-        "공식 발표 전 정책 뉴스 1건 확인",
+        "공식 문서 확인 전 정책 뉴스 1건 확인",
         "",
         *render_alert_section(rule, items, now, index=1, source_limit=3),
         "투자 조언이 아닌 참고용 정책·규제 알림입니다.",
@@ -1709,7 +1738,7 @@ def render_alert_bundle(alerts: list[dict], now: dt.datetime, limit: int = 3) ->
     selected = alerts[:limit]
     lines = [
         f"{now:%Y년 %m월 %d일 %H:%M KST}",
-        f"공식 발표 전 정책 뉴스 {len(selected)}건 확인",
+        f"공식 문서 확인 전 정책 뉴스 {len(selected)}건 확인",
         "",
     ]
     for idx, alert in enumerate(selected, start=1):
@@ -1760,8 +1789,12 @@ def main() -> int:
         return 0
 
     alerts.sort(key=alert_latest_kst, reverse=True)
-    ai_force_alerts = [alert for alert in alerts if is_ai_force_alert(alert)]
-    general_alerts = [alert for alert in alerts if not is_ai_force_alert(alert)]
+    ai_force_alerts = dedupe_alerts_for_display(
+        [alert for alert in alerts if is_ai_force_alert(alert)]
+    )
+    general_alerts = dedupe_alerts_for_display(
+        [alert for alert in alerts if not is_ai_force_alert(alert)]
+    )
 
     if general_alerts:
         selected_alerts = general_alerts[:3]
