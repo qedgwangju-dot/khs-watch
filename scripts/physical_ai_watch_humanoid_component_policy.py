@@ -450,11 +450,24 @@ def _companies(text: str) -> set[str]:
 def _same_event(a: dict, b: dict) -> bool:
     if _orig_same_event(a, b):
         return True
-    if a.get('group') != 'humanoid_component_policy' or b.get('group') != 'humanoid_component_policy':
+    if a.get('group') != b.get('group'):
         return False
 
     ta = f"{a.get('title','')} {a.get('description','')}"
     tb = f"{b.get('title','')} {b.get('description','')}"
+
+    if a.get('group') == 'humanoid_component_global':
+        if _component_family(ta) != _component_family(tb) or _component_stage(ta) != _component_stage(tb):
+            return False
+        ca, cb = _global_companies(ta), _global_companies(tb)
+        if ca and cb and not ca.intersection(cb):
+            return False
+        nums_a = set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|개|대|개월|주|일|CNY|RMB|USD|달러|위안)', ta, re.I))
+        nums_b = set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|개|대|개월|주|일|CNY|RMB|USD|달러|위안)', tb, re.I))
+        return bool((not nums_a and not nums_b) or nums_a.intersection(nums_b))
+
+    if a.get('group') != 'humanoid_component_policy':
+        return False
 
     # Current 116 -> 620bn government-proposal story is one event across media.
     initial_a = bool(BUDGET_620.search(ta) and not (FINAL_BUDGET.search(ta) or PROGRAM_NOTICE.search(ta) or AWARD.search(ta)))
@@ -485,12 +498,44 @@ def _same_event(a: dict, b: dict) -> bool:
     return False
 
 
+def tag_for(group: str) -> str:
+    if group == 'humanoid_component_global':
+        return '휴머노이드부품'
+    return _orig_tag_for(group)
+
+
+def key(item: dict) -> str:
+    text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) != 'humanoid_component_global':
+        return _orig_key(item)
+    family = _component_family(text)
+    stage = _component_stage(text)
+    companies = ','.join(sorted(_global_companies(text))) or 'market'
+    nums = sorted(set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|개|대|개월|주|일|CNY|RMB|USD|달러|위안)', text, re.I)))
+    num_sig = '|'.join(nums[:4]) if nums else 'no-number'
+    return hashlib.sha256(f'humanoid-component|{family}|{stage}|{companies}|{num_sig}'.encode()).hexdigest()
+
+
+def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
+    chosen = _orig_select_diverse(items, seen, force, limit)
+    candidates = items if force else [x for x in items if x.get('key') not in seen]
+    component = next((x for x in candidates if x.get('group') == 'humanoid_component_global'), None)
+    if not component or any(x.get('key') == component.get('key') for x in chosen):
+        return chosen
+    if len(chosen) < limit:
+        return [component, *chosen]
+    return [component, *chosen[:-1]]
+
+
 base.topic_group = topic_group
 base.score = score
 base.category = category
 base.meaning = meaning
 base.risk = risk
 base.verification = verification
+base.tag_for = tag_for
+base.key = key
+base.select_diverse = select_diverse
 ext._same_event = _same_event
 
 if __name__ == '__main__':
