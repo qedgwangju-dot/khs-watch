@@ -11,6 +11,9 @@ from pathlib import Path
 
 STATE_PATH = Path('data/warsh_policy_path_watch_state.json')
 FOMC_STATE_PATH = Path('data/warsh_fomc_event_watch_state.json')
+SEP_STATE_PATH = Path('data/warsh_sep_path_watch_state.json')
+BALANCE_STATE_PATH = Path('data/warsh_balance_sheet_watch_state.json')
+SCHEMA_VERSION = 3
 FEDWATCH_URL = 'https://www.frenzycap.com/fedwatch'
 CME_URL = 'https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html'
 FED_CALENDAR = 'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'
@@ -20,7 +23,8 @@ EXPECTED_BOT = (os.getenv('EXPECTED_BOT_USERNAME') or 'khs8879887988798879_bot')
 FORCE = os.getenv('FORCE_NOTIFY', '0') == '1'
 PROB_ALERT_PP = float(os.getenv('WARSH_PATH_PROB_ALERT_PP') or '15')
 EXTRA_ALERT_BP = float(os.getenv('WARSH_PATH_EXTRA_ALERT_BP') or '10')
-UA = 'Mozilla/5.0 (compatible; khs-watch/2.1)'
+MARKET_SEP_GAP_ALERT_BP = float(os.getenv('WARSH_PATH_MARKET_SEP_GAP_BP') or '10')
+UA = 'Mozilla/5.0 (compatible; khs-watch/3.0)'
 
 MONTHS = {'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}
 
@@ -119,6 +123,23 @@ def official_policy_baseline():
         pass
     return None
 
+def load_json(path):
+    try:return json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
+    except:return {}
+
+def official_sep_baseline():
+    state=load_json(SEP_STATE_PATH); snap=state.get('snapshot') or {}
+    funds=snap.get('funds') or []
+    if len(funds)>=2 and funds[0] is not None and funds[1] is not None:
+        return {'date':snap.get('date'),'yearend':float(funds[0]),'nextyear':float(funds[1]),'url':snap.get('url')}
+    return None
+
+def balance_sheet_baseline():
+    state=load_json(BALANCE_STATE_PATH); impl=state.get('implementation') or {}
+    if not state:return None
+    return {'mode':impl.get('mode') or '확인 필요','regime':state.get('regime') or '확인 필요',
+            'date':impl.get('date'),'url':impl.get('url'),'h41_url':(state.get('h41') or {}).get('url')}
+
 def classify(snap):
     ms=snap['meetings']; effr=snap['effr']
     y26=[m for m in ms if m['date'].startswith('2026-')]
@@ -134,10 +155,29 @@ def classify(snap):
         extra=(last26['post_rate']-base)*100
         basis='선물 소스의 현재 유효 연방기금금리에서 연말까지의 누적 기대'
         base_kind='선물 소스 EFFR'; base_date=None; base_source=snap.get('url')
-    if extra < 6.25: verdict='현재부터 추가 인상 종료 쪽'
-    elif extra < 18.75: verdict='현재부터 추가 인상 일부 반영'
-    else: verdict='현재부터 연내 추가 인상 1회 이상 반영'
-    return {'verdict':verdict,'extra_bp':extra,'basis':basis,'baseline_rate':base,'baseline_kind':base_kind,'baseline_date':base_date,'baseline_source':base_source}
+    if extra < 6.25: verdict='이번 인상 후 종료 쪽'
+    elif extra < 31.25: verdict='추가 1회 인상 가능성 반영'
+    else: verdict='추가 1회는 상당히 반영·두 번째 인상 가능성도 일부 반영'
+    sep=official_sep_baseline(); bal=balance_sheet_baseline()
+    sep_extra=None; market_sep_gap=None; sep_read='점도표 확인 불가'
+    if sep:
+        sep_extra=(sep['yearend']-base)*100
+        market_sep_gap=(last26['post_rate']-sep['yearend'])*100
+        if market_sep_gap >= MARKET_SEP_GAP_ALERT_BP: sep_read='시장이 연준 점도표보다 더 매파적'
+        elif market_sep_gap <= -MARKET_SEP_GAP_ALERT_BP: sep_read='시장이 연준 점도표보다 덜 매파적'
+        else: sep_read='시장과 연준 점도표가 대체로 비슷한 경로'
+    mix='대차대조표 확인 필요'
+    if bal:
+        if 'QT' in bal['mode'] or '총량 축소' in bal['mode'] or '총량 축소' in bal['regime']:
+            mix='정책금리 + 대차대조표 이중긴축 신호'
+        elif '충분한 준비금' in bal['mode'] or '구성 전환' in bal['regime']:
+            mix='정책금리 중심 긴축 · 대차대조표는 충분한 준비금 유지/자산 구성 전환'
+        else:
+            mix='정책금리 긴축 · 대차대조표 방향 추가 확인'
+    return {'verdict':verdict,'extra_bp':extra,'basis':basis,'baseline_rate':base,'baseline_kind':base_kind,
+            'baseline_date':base_date,'baseline_source':base_source,'sep':sep,'sep_extra_bp':sep_extra,
+            'market_sep_gap_bp':market_sep_gap,'sep_read':sep_read,'balance':bal,'tightening_mix':mix,
+            'yearend_market_rate':last26['post_rate']}
 
 def load_state():
     try:return json.loads(STATE_PATH.read_text(encoding='utf-8')) if STATE_PATH.exists() else {}
@@ -190,11 +230,27 @@ def fmt_meeting(m, baseline):
 
 def message(snap, cls):
     eq=hike_equivalent(cls['extra_bp'])
-    lines=['<b>[Warsh 정책금리 경로 변화]</b>',
+    lines=['<b>[Warsh 추가인상 경로 · 대차대조표 종합]</b>',
            f"공식 기준금리 중심값 {cls['baseline_rate']:.3f}% ({html.escape(cls['baseline_kind'])})",'',
-           f"<b>핵심 판정: {html.escape(cls['verdict'])}</b>",
+           '<b>핵심 판정</b>',
+           f"• <b>추가 금리인상 경로</b>: {html.escape(cls['verdict'])}",
+           f"• <b>금리 vs 대차대조표</b>: {html.escape(cls['tightening_mix'])}",
            f"• {html.escape(cls['basis'])}: {cls['extra_bp']:+.1f}bp ≈ 25bp 인상 {eq:.2f}회 상당",
-           f"• 쉽게 말하면: {html.escape(easy_extra_read(cls['extra_bp']))}",'', '<b>선물시장 경로</b>']
+           f"• 쉽게 말하면: {html.escape(easy_extra_read(cls['extra_bp']))}"]
+    sep=cls.get('sep')
+    if sep:
+        lines += ['', '<b>연준 점도표와 시장 비교</b>',
+                  f"• 연준 점도표 중앙값: 2026년 말 {sep['yearend']:.3f}% · 2027년 말 {sep['nextyear']:.3f}%",
+                  f"• 현재 공식 기준 대비 연준의 2026년 말 경로: {cls['sep_extra_bp']:+.1f}bp ≈ 25bp 인상 {hike_equivalent(cls['sep_extra_bp']):.2f}회 상당",
+                  f"• 선물시장의 2026년 말 기대: {cls['yearend_market_rate']:.3f}% · 점도표보다 {cls['market_sep_gap_bp']:+.1f}bp",
+                  f"• 판정: {html.escape(cls['sep_read'])}"]
+    bal=cls.get('balance')
+    if bal:
+        lines += ['', '<b>대차대조표 확인</b>',
+                  f"• 최신 시행지침: {html.escape(bal['mode'])}",
+                  f"• H.4.1 구조 판정: {html.escape(bal['regime'])}",
+                  '• 따라서 “금리 인상 대신 QT”인지, 아니면 “금리 인상 + 충분한 준비금 유지”인지 따로 구분합니다.']
+    lines += ['', '<b>선물시장 경로</b>']
     lines += [fmt_meeting(m, cls['baseline_rate']) for m in snap['meetings'][:4]]
     lines += ['', '<b>읽는 법</b>',
               '• “+33.8bp” 같은 값은 연준이 실제로 33.8bp를 올린다는 뜻이 아니라, 여러 가능한 금리경로에 확률을 곱해 평균낸 시장 기대값입니다.',
@@ -203,12 +259,18 @@ def message(snap, cls):
               '• 1.35회처럼 소수로 표시돼도 실제 FOMC가 1.35번 인상한다는 뜻은 아닙니다. 0회·1회·2회 같은 가능한 경로를 확률로 섞은 평균입니다.',
               '• 이번 회의 한 번으로 끝나는지, 뒤 회의에서도 추가 인상이 가격에 남는지를 같이 봅니다.',
               '• 1bp = 0.01%포인트입니다.','',
-              '<b>원천</b>',f"{link('연방기금금리 선물 기반 경로',snap['url'])} · {link('CME FedWatch 방법론',CME_URL)} · {link('연준 FOMC 일정',FED_CALENDAR)}"]
+              '<b>원천</b>']
+    source_bits=[link('연방기금금리 선물 기반 경로',snap['url']),link('CME FedWatch 방법론',CME_URL),link('연준 FOMC 일정',FED_CALENDAR)]
+    if cls.get('sep') and cls['sep'].get('url'):source_bits.append(link('연준 경제전망·점도표',cls['sep']['url']))
+    if cls.get('balance') and cls['balance'].get('url'):source_bits.append(link('연준 FOMC 시행지침',cls['balance']['url']))
+    if cls.get('balance') and cls['balance'].get('h41_url'):source_bits.append(link('연준 H.4.1',cls['balance']['h41_url']))
+    lines.append(' · '.join(source_bits))
     return '\n'.join(lines)
 
 def main():
     snap=parse_snapshot(); cls=classify(snap); old=load_state(); first=not bool(old)
-    old_cls=old.get('classification',{}); changed=old_cls.get('verdict') not in (None,cls['verdict'])
+    upgrade=old.get('schema_version',1)<SCHEMA_VERSION
+    old_cls=old.get('classification',{}); changed=upgrade or old_cls.get('verdict') not in (None,cls['verdict'])
     if not changed and old_cls.get('extra_bp') is not None:
         changed=abs(float(cls['extra_bp'])-float(old_cls['extra_bp']))>=EXTRA_ALERT_BP
     old_ms={m['date']:m for m in old.get('meetings',[])}
@@ -216,8 +278,12 @@ def main():
         m=snap['meetings'][0]; om=old_ms.get(m['date'])
         if om and om.get('hike25_prob') is not None:
             changed=abs(m['hike25_prob']-float(om['hike25_prob']))>=PROB_ALERT_PP
+    if not changed and cls.get('market_sep_gap_bp') is not None and old_cls.get('market_sep_gap_bp') is not None:
+        changed=abs(float(cls['market_sep_gap_bp'])-float(old_cls['market_sep_gap_bp']))>=MARKET_SEP_GAP_ALERT_BP
+    if not changed and old_cls.get('tightening_mix') not in (None,cls.get('tightening_mix')):
+        changed=True
     if FORCE or (not first and changed):send(message(snap,cls))
-    save_state({'effr':snap['effr'],'meetings':snap['meetings'],'classification':cls,'source':snap['url']})
-    print(json.dumps({'first_run':first,'changed':changed,'effr':snap['effr'],'classification':cls,'meetings':[{'date':m['date'],'change_bp':m['change_bp'],'hike25_prob':m['hike25_prob'],'post_rate':m['post_rate']} for m in snap['meetings'][:4]]},ensure_ascii=False))
+    save_state({'schema_version':SCHEMA_VERSION,'effr':snap['effr'],'meetings':snap['meetings'],'classification':cls,'source':snap['url']})
+    print(json.dumps({'schema_version':SCHEMA_VERSION,'upgrade':upgrade,'first_run':first,'changed':changed,'effr':snap['effr'],'classification':cls,'meetings':[{'date':m['date'],'change_bp':m['change_bp'],'hike25_prob':m['hike25_prob'],'post_rate':m['post_rate']} for m in snap['meetings'][:4]]},ensure_ascii=False))
 
 if __name__=='__main__':main()
