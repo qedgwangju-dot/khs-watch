@@ -1,8 +1,8 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-22T03:54:31+09:00",
+  "updated_at_kst": "2026-09-22T07:30:22+09:00",
   "levels": {
-    "official_funding": 0,
+    "official_funding": 3,
     "structural_repatriation": 0,
     "japan_long_end_fingerprint": 0,
     "event_long_end_breakout": 0,
@@ -15,8 +15,8 @@
     "reserve_period": "August 2026",
     "securities_drop_bn_usd": -87.77300000000002,
     "intervention_trillion_yen": 15.3993,
-    "intervention_usd_bn": null,
-    "funding_ratio": null,
+    "intervention_usd_bn": 98.16599732262384,
+    "funding_ratio": 0.8941283376517116,
     "fima_bn_usd": 0.001,
     "flow": {
       "latest_week": "2026-09-06~09-12",
@@ -27,15 +27,15 @@
       "negative_streak": 0
     },
     "market": {
-      "observed_at_utc": "2026-09-21T18:54:35Z",
-      "usdjpy": 157.45399475097656,
-      "usdjpy_change_pct": 0.221501366682663,
+      "observed_at_utc": "2026-09-21T22:30:26Z",
+      "usdjpy": 157.36099243164062,
+      "usdjpy_change_pct": 0.16230418918854606,
       "ust2": null,
       "ust2_change_bp": null,
-      "ust10": 4.967,
-      "ust10_change_bp": -3.1000000000000583,
-      "ust30": 5.298,
-      "ust30_change_bp": -3.3000300000000315
+      "ust10": 4.963,
+      "ust10_change_bp": -3.500000000000014,
+      "ust30": 5.296,
+      "ust30_change_bp": -3.5000300000000095
     }
   }
 }
