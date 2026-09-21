@@ -461,6 +461,24 @@ def build_alert(state: dict, changed: list[str], first: bool, format_changed: bo
     show_census = bool(c and (first or format_changed or "census" in changed))
     show_dodge = bool(d and (first or format_changed or "dodge" in changed))
 
+    if show_dodge and not show_census:
+        lines += [
+            "",
+            "▶ 이번 변화 핵심",
+        ]
+        if d.get("office_dc_change_pct") is not None:
+            lines.append(f"- 오피스·데이터센터 착공: 전월 대비 {d['office_dc_change_pct']:+.1f}%")
+        if d.get("total_change_pct") is not None:
+            lines.append(f"- 미국 전체 건설 착공: 전월 대비 {d['total_change_pct']:+.1f}%")
+        if d.get("commercial_12m_change_pct") is not None:
+            lines.append(f"- 최근 12개월 상업용 착공: 전년 같은 기간 대비 {d['commercial_12m_change_pct']:+.1f}%")
+        if d.get("utility_ytd_change_pct") is not None:
+            lines.append(f"- 연초 이후 전력·공공설비 착공: 전년 동기 대비 +{d['utility_ytd_change_pct']:.1f}%")
+        if d.get("office_dc_change_pct") is not None and d["office_dc_change_pct"] < 0:
+            lines.append("- 판정: 7월 초대형 프로젝트 급증 뒤 월간 정상화. 한 달 하락만으로 사이클 정점으로 판단하지 않습니다.")
+        else:
+            lines.append("- 판정: 착공 증가가 실제 건설·전력·냉각 지출로 이어지는지 후행 지출을 확인합니다.")
+
     if show_census:
         current = c["data_center_saar_musd"] / 1000
         previous = c["previous_month_saar_musd"] / 1000
