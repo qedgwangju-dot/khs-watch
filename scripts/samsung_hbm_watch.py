@@ -36,6 +36,9 @@ SHARE_TRACK_VERSION = 1
 SHARE_REVISION_THRESHOLD_PP = 3.0
 SHARE_ACTUAL_DEVIATION_THRESHOLD_PP = 5.0
 SHARE_PARITY_GAP_PP = 5.0
+OPS_TRACK_VERSION = 1
+YIELD_ALERT_THRESHOLD_PP = 5.0
+EXPORT_UNIT_PRICE_REVISION_PCT = 1.0
 KCS_ITEM_URL = "https://tradedata.go.kr/cts/hmpg/retrieveTrade.do"
 DATA_GO_ITEM_URL = "https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList"
 DATA_GO_SIDO_ITEM_URL = "https://apis.data.go.kr/1220000/sidoitemtrade/getSidoitemtradeList"
@@ -71,6 +74,26 @@ SHARE_FORECAST_BASELINES = {
 # Counterpoint official 2Q26 actual HBM revenue-share baseline.
 SHARE_ACTUAL_BASELINES = {
     "counterpoint|sales|2026Q2": {"skhynix": 50.0, "samsung": 33.0, "micron": 18.0, "source": "Counterpoint 2026-09-03"},
+}
+
+# Structured operating baselines. These are seeded only to prevent a repeat
+# alert for facts already supplied/verified; future changes are compared
+# against these states.
+OPS_BASELINES = {
+    "samsung|hbm4|yield": {
+        "value": 80.0,
+        "unit": "pct",
+        "period": "2026-09",
+        "source": "서울경제 보도 기준선",
+    },
+}
+EXPORT_UNIT_PRICE_BASELINES = {
+    "2026-03": 40.68,
+    "2026-04": 53.04,
+    "2026-05": 58.21,
+    "2026-06": 69.51,
+    "2026-07": 76.14,
+    "2026-08": 73.39,
 }
 
 SHARE_INSTITUTIONS = {
