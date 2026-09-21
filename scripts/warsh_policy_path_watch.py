@@ -239,8 +239,10 @@ def fmt_meeting(m, baseline):
 def message(snap, cls):
     eq=hike_equivalent(cls['extra_bp'])
     lines=['<b>[Warsh 추가인상 경로 · 대차대조표 종합]</b>',
-           f"공식 기준금리 중심값 {cls['baseline_rate']:.3f}% ({html.escape(cls['baseline_kind'])})",'',
-           '<b>핵심 판정</b>',
+           f"공식 기준금리 중심값 {cls['baseline_rate']:.3f}% ({html.escape(cls['baseline_kind'])})"]
+    if cls.get('market_source_stale'):
+        lines += ['• 선물시장 원천이 일시적으로 응답하지 않아, 아래 선물 경로는 <b>직전 정상 조회값</b>을 사용합니다. 새 시장값으로 단정하지 않습니다.']
+    lines += ['', '<b>핵심 판정</b>',
            f"• <b>추가 금리인상 경로</b>: {html.escape(cls['verdict'])}",
            f"• <b>금리 vs 대차대조표</b>: {html.escape(cls['tightening_mix'])}",
            f"• {html.escape(cls['basis'])}: {cls['extra_bp']:+.1f}bp ≈ 25bp 인상 {eq:.2f}회 상당",
@@ -257,7 +259,7 @@ def message(snap, cls):
         lines += ['', '<b>대차대조표 확인</b>',
                   f"• 최신 시행지침: {html.escape(bal['mode'])}",
                   f"• H.4.1 구조 판정: {html.escape(bal['regime'])}",
-                  '• 따라서 “금리 인상 대신 QT”인지, 아니면 “금리 인상 + 충분한 준비금 유지”인지 따로 구분합니다.']
+                  '• 따라서 “금리 인상 대신 양적긴축(QT)”인지, 아니면 “금리 인상 + 충분한 준비금 유지”인지 따로 구분합니다.']
     lines += ['', '<b>선물시장 경로</b>']
     lines += [fmt_meeting(m, cls['baseline_rate']) for m in snap['meetings'][:4]]
     lines += ['', '<b>읽는 법</b>',
@@ -276,17 +278,19 @@ def message(snap, cls):
     return '\n'.join(lines)
 
 def main():
-    old=load_state(); first=not bool(old); source_error=None
+    old=load_state(); first=not bool(old); source_error=None; stale_fallback=False
     try:
         snap=parse_snapshot()
     except Exception as e:
-        source_error=str(e)
+        source_error=str(e); stale_fallback=True
         if not old.get('meetings'):
             raise
-        print(json.dumps({'first_run':first,'stale_fallback':True,'source_error':source_error,
-                          'message':'선물시장 원천 일시 오류 — 직전 정상 상태를 유지하고 이번 회차는 새 판정을 보내지 않음'},ensure_ascii=False))
-        return
+        snap={'effr':old.get('effr'),'meetings':old.get('meetings') or [],'url':old.get('source') or FEDWATCH_URL}
+        if not snap['meetings']:
+            raise
     cls=classify(snap)
+    cls['market_source_stale']=stale_fallback
+    cls['market_source_error']=source_error
     upgrade=old.get('schema_version',1)<SCHEMA_VERSION
     old_cls=old.get('classification',{}); changed=upgrade or old_cls.get('verdict') not in (None,cls['verdict'])
     if not changed and old_cls.get('extra_bp') is not None:
@@ -300,8 +304,15 @@ def main():
         changed=abs(float(cls['market_sep_gap_bp'])-float(old_cls['market_sep_gap_bp']))>=MARKET_SEP_GAP_ALERT_BP
     if not changed and old_cls.get('tightening_mix') not in (None,cls.get('tightening_mix')):
         changed=True
+    if stale_fallback and not upgrade and not changed and not FORCE:
+        print(json.dumps({'schema_version':SCHEMA_VERSION,'first_run':first,'stale_fallback':True,'source_error':source_error,
+                          'message':'선물시장 원천 일시 오류 — 직전 정상 상태 보존, 신규 시장 판정 발송 안 함'},ensure_ascii=False))
+        return
     if FORCE or (not first and changed):send(message(snap,cls))
-    save_state({'schema_version':SCHEMA_VERSION,'effr':snap['effr'],'meetings':snap['meetings'],'classification':cls,'source':snap['url']})
-    print(json.dumps({'schema_version':SCHEMA_VERSION,'upgrade':upgrade,'first_run':first,'changed':changed,'effr':snap['effr'],'classification':cls,'meetings':[{'date':m['date'],'change_bp':m['change_bp'],'hike25_prob':m['hike25_prob'],'post_rate':m['post_rate']} for m in snap['meetings'][:4]]},ensure_ascii=False))
+    save_state({'schema_version':SCHEMA_VERSION,'effr':snap['effr'],'meetings':snap['meetings'],'classification':cls,'source':snap['url'],
+                'source_status':'직전 정상값 사용' if stale_fallback else '실시간 조회','source_error':source_error})
+    print(json.dumps({'schema_version':SCHEMA_VERSION,'upgrade':upgrade,'first_run':first,'changed':changed,'stale_fallback':stale_fallback,
+                      'source_error':source_error,'effr':snap['effr'],'classification':cls,
+                      'meetings':[{'date':m['date'],'change_bp':m['change_bp'],'hike25_prob':m['hike25_prob'],'post_rate':m['post_rate']} for m in snap['meetings'][:4]]},ensure_ascii=False))
 
 if __name__=='__main__':main()
