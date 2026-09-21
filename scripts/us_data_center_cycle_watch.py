@@ -28,7 +28,7 @@ ALERT_PATH = OUT_DIR / "us_data_center_cycle_alert.txt"
 PENDING_PATH = OUT_DIR / "us_data_center_cycle_state_pending.json"
 STATUS_PATH = OUT_DIR / "us_data_center_cycle_status.md"
 ERROR_PATH = OUT_DIR / "us_data_center_cycle_errors.log"
-FORMAT_VERSION = 5
+FORMAT_VERSION = 6
 KST = ZoneInfo("Asia/Seoul")
 
 HEADERS = {
@@ -114,6 +114,16 @@ def date_ko(value: str | None) -> str:
 def pct(text: str, pattern: str) -> float | None:
     m = re.search(pattern, text, flags=re.I)
     return float(m.group(1)) if m else None
+
+
+def signed_pct(text: str, pattern: str) -> float | None:
+    m = re.search(pattern, text, flags=re.I)
+    if not m:
+        return None
+    verb = clean(m.group(1)).lower()
+    value = abs(float(m.group(2)))
+    negative_tokens = ("declin", "decreas", "fell", "fall", "down", "drop", "recede", "slow", "pull back")
+    return -value if any(token in verb for token in negative_tokens) else value
 
 
 def fetch_fx():
@@ -238,9 +248,21 @@ def clean_project_name(description: str, kind: str) -> str:
     name = re.sub(r"\s+in\s+[A-Z][A-Za-z .'-]+,\s*[A-Z][A-Za-z .'-]+$", "", name)
     if kind == "데이터센터":
         name = re.sub(r"^data center portion of the\s+", "", name, flags=re.I)
-        return f"{name} 데이터센터 부문"
-    if kind == "마이크로그리드":
+    elif kind == "마이크로그리드":
         name = re.sub(r"^microgrid portion of the\s+", "", name, flags=re.I)
+
+    known = {
+        "Project Jupiter Data Center and Microgrid Phase 1": "프로젝트 주피터 데이터센터 및 마이크로그리드 1단계",
+        "Amazon STACK Highway 3 Data Center": "아마존 스택 하이웨이 3 데이터센터",
+        "Amazon STACK Blanchard State Line Data Center (780 MW)": "아마존 스택 블랜처드 스테이트 라인 데이터센터(780메가와트)",
+        "Clarksville Hyperscale Data Center": "클라크스빌 하이퍼스케일 데이터센터",
+    }
+    for src, dst in known.items():
+        if name.lower() == src.lower():
+            name = dst
+            break
+
+    if kind == "마이크로그리드":
         return f"{name} 마이크로그리드 부문"
     return name
 
@@ -290,11 +312,28 @@ def parse_dodge() -> dict:
         "url": url,
         "published": published,
         "total_starts_saar_usd_bn": round(total_saar, 3) if total_saar is not None else None,
-        "total_change_pct": pct(text, r"Total construction starts.{0,100}?([0-9.]+)%\s+in\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)"),
-        "nonresidential_change_pct": pct(text, r"Nonresidential building starts.{0,50}?([0-9.]+)%"),
-        "commercial_change_pct": pct(text, r"Commercial starts were up\s+([0-9.]+)%"),
+        "total_change_pct": signed_pct(
+            text,
+            r"Total construction starts\s+(declined|decreased|fell|dropped|rose|increased|jumped|improved|rebounded|were up|were down)\s+(?:by\s+)?([0-9.]+)%\s+in\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)",
+        ),
+        "nonresidential_change_pct": signed_pct(
+            text,
+            r"Nonresidential building starts\s+(declined|decreased|fell|dropped|rose|increased|jumped|improved|rebounded)\s+(?:by\s+)?([0-9.]+)%\s+in\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)",
+        ),
+        "commercial_change_pct": signed_pct(
+            text,
+            r"Commercial starts were\s+(up|down)\s+([0-9.]+)%\s+over the month",
+        ),
+        "commercial_12m_change_pct": signed_pct(
+            text,
+            r"For the 12 months ending.{0,320}?Commercial starts were\s+(up|down)\s+([0-9.]+)%",
+        ),
         "office_dc_change_pct": pct(text, r"Offices and data centers.{0,80}?\(([+-]?[0-9.]+)%\s*m/m\)"),
-        "utility_change_pct": pct(text, r"utilities improved\s+([0-9.]+)%\s*m/m"),
+        "utility_change_pct": signed_pct(
+            text,
+            r"utilities\s+(declined by|decreased by|fell|dropped|improved|increased|rose)\s+([0-9.]+)%\s+(?:m/m|over the same period|over the month)",
+        ),
+        "utility_ytd_change_pct": pct(text, r"([0-9.]+)%\s+year-to-date growth in electric power/utilities"),
         "data_center_mention_count": text.lower().count("data center"),
         "data_center_projects": projects[:5],
         "article_sha256": hashlib.sha256(article.content).hexdigest(),
@@ -319,7 +358,7 @@ def census_changed(old: dict | None, new: dict) -> bool:
 def dodge_changed(old: dict | None, new: dict) -> bool:
     if not old:
         return True
-    keys = ["url", "title", "published", "total_starts_saar_usd_bn", "total_change_pct", "office_dc_change_pct", "utility_change_pct", "data_center_projects"]
+    keys = ["url", "title", "published", "total_starts_saar_usd_bn", "total_change_pct", "nonresidential_change_pct", "commercial_change_pct", "commercial_12m_change_pct", "office_dc_change_pct", "utility_change_pct", "utility_ytd_change_pct", "data_center_projects"]
     return any(old.get(k) != new.get(k) for k in keys)
 
 
@@ -337,7 +376,7 @@ def signal(mom: float, yoy: float) -> str:
 
 def fx_lines(fx: dict | None) -> list[str]:
     if not fx or fx.get("usdkrw") is None:
-        return ["■ 원화 환산 기준", "- USD/KRW 조회 실패로 이번 알림은 달러 원값만 표시합니다."]
+        return ["■ 원화 환산 기준", "- 달러/원 환율 조회 실패로 이번 알림은 달러 원값만 표시합니다."]
     rate = float(fx["usdkrw"])
     return [
         "■ 원화 환산 기준",
@@ -351,7 +390,7 @@ def fx_lines(fx: dict | None) -> list[str]:
 
 def dodge_lines(d: dict, fx: dict | None) -> list[str]:
     lines = [
-        "■ Dodge Construction Network 데이터센터 착공",
+        "■ 도지 컨스트럭션 네트워크 데이터센터 착공",
         f"- 공식 게시일: {date_ko(d.get('published'))}",
         f"- 데이터센터 관련 언급: {d.get('data_center_mention_count', 0)}회",
     ]
@@ -363,11 +402,15 @@ def dodge_lines(d: dict, fx: dict | None) -> list[str]:
         lines.append(f"- 비주거용 건축 착공: 전월 대비 {d['nonresidential_change_pct']:+.1f}%")
     if d.get("commercial_change_pct") is not None:
         lines.append(f"- 상업용 건축 착공: 전월 대비 {d['commercial_change_pct']:+.1f}%")
+    if d.get("commercial_12m_change_pct") is not None:
+        lines.append(f"- 최근 12개월 상업용 착공: 전년 같은 기간 대비 {d['commercial_12m_change_pct']:+.1f}%")
     if d.get("office_dc_change_pct") is not None:
         suffix = " → 두 배 이상 증가" if d["office_dc_change_pct"] >= 100 else ""
         lines.append(f"- 오피스·데이터센터 착공: 전월 대비 {d['office_dc_change_pct']:+.1f}%{suffix}")
     if d.get("utility_change_pct") is not None:
         lines.append(f"- 전력·공공설비 착공: 전월 대비 {d['utility_change_pct']:+.1f}%")
+    if d.get("utility_ytd_change_pct") is not None:
+        lines.append(f"- 연초 이후 전력·공공설비 착공: 전년 동기 대비 +{d['utility_ytd_change_pct']:.1f}%")
 
     projects = d.get("data_center_projects") or []
     if projects:
@@ -377,10 +420,25 @@ def dodge_lines(d: dict, fx: dict | None) -> list[str]:
     else:
         lines.append("- 데이터센터·직접 전력 프로젝트: 신규 구조화 항목 없음")
 
-    lines += [
-        "- 해석: 데이터센터 착공은 건설 지출보다 약 1년 선행하는 지표로 봅니다. 착공 급증이 유지되면 이후 건설·전력기기·냉각 지출로 이어질 가능성이 커집니다.",
-        f"- 원문: {d['url']}",
-    ]
+    office_dc = d.get("office_dc_change_pct")
+    commercial_12m = d.get("commercial_12m_change_pct")
+    if office_dc is not None and office_dc < 0:
+        context = (
+            f"최근 12개월 상업용 착공은 {commercial_12m:+.1f}%로 여전히 높은 수준입니다. "
+            if commercial_12m is not None else ""
+        )
+        interpretation = (
+            f"- 해석: 이번 오피스·데이터센터 착공은 전월 대비 {office_dc:+.1f}%로 조정됐습니다. "
+            "7월 초대형 프로젝트 급증 뒤 정상화 성격이 커 한 달 하락만으로 사이클 정점으로 판단하지 않습니다. "
+            + context
+            + "다음 2~3개월 착공과 미국 인구조사국 실제 건설 지출을 함께 확인합니다."
+        )
+    else:
+        interpretation = (
+            "- 해석: 데이터센터 착공은 건설 지출보다 약 1년 선행하는 지표로 봅니다. "
+            "착공 증가가 이어지면 이후 건설·전력기기·냉각 지출로 연결되는지 미국 인구조사국 실제 지출에서 확인합니다."
+        )
+    lines += [interpretation, f"- 원문: {d['url']}"]
     return lines
 
 
@@ -396,8 +454,8 @@ def build_alert(state: dict, changed: list[str], first: bool, format_changed: bo
     lines = [
         header,
         "━━━━━━━━━━━━━━━━",
-        "골드만삭스 차트의 핵심 원자료인 미국 인구조사국 데이터센터 건설 지출과 Dodge Construction Network 착공 자료를 매시간 확인합니다.",
-        "변화가 있을 때만 텔레그램 알림을 보내며, 모든 달러 금액에는 알림 시점 USD/KRW 환율을 적용한 원화 환산값을 함께 표시합니다.",
+        "골드만삭스 차트의 핵심 원자료인 미국 인구조사국 데이터센터 건설 지출과 도지 컨스트럭션 네트워크 착공 자료를 매시간 확인합니다.",
+        "변화가 있을 때만 텔레그램 알림을 보내며, 모든 달러 금액에는 알림 시점 달러/원 환율을 적용한 원화 환산값을 함께 표시합니다.",
     ]
     c = state.get("census"); d = state.get("dodge")
     show_census = bool(c and (first or format_changed or "census" in changed))
@@ -507,7 +565,7 @@ def main() -> int:
         f"- 조회 오류: {len(errors)}건",
     ]
     if state.get("fx"):
-        status.append(f"- USD/KRW: {state['fx'].get('usdkrw')}원 · {state['fx'].get('basis_kst')} · {state['fx'].get('source')}")
+        status.append(f"- 달러/원 환율: {state['fx'].get('usdkrw')}원 · {state['fx'].get('basis_kst')} · {state['fx'].get('source')}")
     if state.get("census"):
         c = state["census"]
         status.append(
@@ -516,7 +574,7 @@ def main() -> int:
             f"전월 대비 {c['reported_mom_pct']:+.1f}%, 전년 대비 {c['reported_yoy_pct']:+.1f}%"
         )
     if state.get("dodge"):
-        status.append(f"- Dodge Construction Network: 공식 게시일 {date_ko(state['dodge'].get('published'))}")
+        status.append(f"- 도지 컨스트럭션 네트워크: 공식 게시일 {date_ko(state['dodge'].get('published'))}")
     STATUS_PATH.write_text("\n".join(status) + "\n", encoding="utf-8")
 
     print(STATUS_PATH.read_text(encoding="utf-8"))
