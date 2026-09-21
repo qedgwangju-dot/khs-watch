@@ -19,7 +19,7 @@ watch = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(watch)
 core = watch.core
 
-GUARD_VERSION = 3
+GUARD_VERSION = 4
 
 _ORIG_LOAD = core._load
 _ORIG_RSS = core._rss
@@ -624,9 +624,21 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
 
     accepted = set(chosen.values())
 
-    # 원전 전체 기수보다 노형별 합계가 커지는 상태는 논리적으로 불가능하므로
-    # 노형별 수치를 상태값으로 승격하지 않는다. 전체 기수는 별도로 유지한다.
+    # 미국 대미투자 원전의 기수·노형 구성은 정부가 공식적으로
+    # "구체적인 사항은 아직 정해지지 않았다"고 밝힌 상태다.
+    # 따라서 기사 2건 이상이 같은 숫자를 반복해도 원전 기수·노형의
+    # 상태 전이로 승격하지 않는다. 공식 자료가 해당 숫자를 확정했을 때만 바꾼다.
     if family == "nuclear_build":
+        quantitative = {
+            item for item in accepted
+            if item.startswith(("nuclear_total_units:", "ap1000_units:", "apr1400_units:"))
+        }
+        for item in list(quantitative):
+            evidence = eligible.get(item, [])
+            if not any(_is_official(row) and _official_status_fact(row) == "official_status:confirmed" for row in evidence):
+                accepted.discard(item)
+                print(f"nuclear_unconfirmed_quantitative_suppressed=true fact={item}")
+
         def _unit(prefix: str) -> int | None:
             values = [
                 int(item.split(":", 1)[1])
@@ -764,21 +776,15 @@ def _migration_seed(state: dict) -> None:
     now = dt.datetime.now(dt.timezone.utc).isoformat()
     buckets["nuclear_build"] = {
         "facts": [
-            "nuclear_total_units:8",
-            "ap1000_units:6",
-            "apr1400_units:2",
             "official_status:unconfirmed",
         ],
         "slots": {
-            "nuclear_build|nuclear_total_units": "nuclear_total_units:8",
-            "nuclear_build|ap1000_units": "ap1000_units:6",
-            "nuclear_build|apr1400_units": "apr1400_units:2",
             "nuclear_build|official_status": "official_status:unconfirmed",
         },
         "initialized_at": now,
         "updated_at": now,
-        "last_title": "교차검증 기준선: 전체 8기·AP1000 6기·APR1400 2기 보도 / 정부 세부 미확정",
-        "last_source": "migration-v3",
+        "last_title": "정부 기준선: 대미투자 원전 프로젝트의 기수·노형·부지·사업자는 미확정",
+        "last_source": "migration-v4",
         "evidence": [],
     }
     buckets["funding_execution"] = {
