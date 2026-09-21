@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import html
+import os
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -397,6 +398,10 @@ j2._next_check = _next_check_v6
 def _render_split(events, fact_changes):
     wec_events = [e for e in events if e.get("kind") == "westinghouse_stake"]
     other_events = [e for e in events if e.get("kind") != "westinghouse_stake"]
+
+    if os.getenv("DELEGATE_US_NUCLEAR_BUILD_TO_KHS_US_INVESTMENT", "").lower() in {"1", "true", "yes"}:
+        delegated = {"us_nuclear_project", "us_nuclear_official"}
+        other_events = [e for e in other_events if e.get("kind") not in delegated]
 
     try:
         WEC_ALERT_PATH.unlink()
