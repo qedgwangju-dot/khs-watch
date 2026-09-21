@@ -208,20 +208,30 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/crcl_usdc_rate_watch_state.json
-          if git diff --cached --quiet; then
-            echo "CRCL watcher state unchanged"
-          else
+
+          desired_state="$(mktemp)"
+          cp data/crcl_usdc_rate_watch_state.json "$desired_state"
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp "$desired_state" data/crcl_usdc_rate_watch_state.json
+            git add data/crcl_usdc_rate_watch_state.json
+
+            if git diff --cached --quiet; then
+              echo "CRCL watcher state unchanged"
+              exit 0
+            fi
+
             git commit -m "Update CRCL USDC rate watch state"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            sleep $((attempt * 3))
+          done
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
