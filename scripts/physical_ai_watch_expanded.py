@@ -281,8 +281,7 @@ def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     if base.topic_group(text) == 'samhyun':
         stage = _samhyun_stage(text)
-        brand = 'axlon' if re.search(r'AXLON|액슬론', text, re.I) else 'samhyun-actuator'
-        return hashlib.sha256(f'samhyun|humanoid-actuator|{brand}|{stage}'.encode()).hexdigest()
+        return hashlib.sha256(f'samhyun|humanoid-actuator|{stage}'.encode()).hexdigest()
     return _orig_key(item)
 
 
