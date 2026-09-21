@@ -363,49 +363,39 @@
     },
     "westinghouse_stake": {
       "facts": [
+        "governance:board",
         "party:kepco",
         "party:westinghouse",
         "stake_percent:15"
       ],
       "slots": {
+        "westinghouse_stake|governance:board": "governance:board",
         "westinghouse_stake|party:kepco": "party:kepco",
         "westinghouse_stake|party:westinghouse": "party:westinghouse",
         "westinghouse_stake|stake_percent": "stake_percent:15"
       },
       "initialized_at": "2026-09-21T13:18:34.537072+00:00",
-      "updated_at": "2026-09-21T13:18:34.537072+00:00",
-      "last_title": "(설명자료)웨스팅하우스 지분인수 등을 포함하여 대미투자 원전 프로젝트 관련 구체적인 사항은 아직 정해진 바 없음 - 대한민국 정책브리핑",
-      "last_source": "대한민국 정책브리핑",
+      "updated_at": "2026-09-21T18:38:30.348342+00:00",
+      "last_title": "[단독] 韓 웨스팅하우스 지분 투자 '7+α' 타진 중…이사회 진입 어려울 듯 - 한국경제",
+      "last_source": "한국경제",
       "evidence": [
         {
-          "source": "Chosunbiz",
-          "title": "美 웨스팅하우스 지분 인수 ‘빚더미’ 한전이 맡나… 자금조달 방안 ‘관심’ - 조선비즈 - Chosunbiz",
-          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNczBFMmxhU3pjLS16VUF5V2xER2taY3kyWTlieUZhbFdtUkRxVE5qRTBYX1hQVXBOVW94Z01wSUtqenQtY0pyWkw2MkJNMHM0NE4yQUxqSVFIMm1QTU9KeFUxdUJCZWxlb1NNQnVCSU9qWmNwTWxnNUNpT2FGdzRsUUJMWnTSAZgBQVVfeXFMTXUzb2NtT2xFbDJqTWpKSmluY2JZTkdXWEh1ODQ1dGhJR0Y1VlBuQV81dDdsUG5PZHN4YjAzbUx0LXBYN2pReWVPaUNpdXB1OTMxM0UyQVNIdmUtZjJwR1laX0R2ZDV6ZGFQUjVBektBb0E1YzUxb0hkbnNHSkVkMFFhOU4ydEJZal9FaVR6MTNuMENNWTE3R0k?oc=5",
-          "published": "2026-09-16T08:34:00+00:00"
+          "source": "한국경제",
+          "title": "[단독] 韓 웨스팅하우스 지분 투자 '7+α' 타진 중…이사회 진입 어려울 듯 - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5tcEVPUFFNSFo4Q0ZadElTSWktMEtlemhOdTFtNklBSnlLb1BIXzc1d01uMFd5WUFGTWtKdFBXRnViQThiZXB2dXNqRXZhbzRJSkRGOVJpbHVIdw?oc=5",
+          "published": "2026-09-21T02:04:28+00:00"
         },
         {
-          "source": "Chosunbiz",
-          "title": "상장사 한전, 웨스팅하우스 지분 산다면… 배임 가를 5가지 쟁점 - 조선비즈 - Chosunbiz",
-          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPeWFaUjg2TGpLeXlZVWNjQVB0UGoyMHVndVI5OXJjeGZDTUcwT005YmpQaXZPTnBxb1VBcjl3STlzWWdGZVg0RHJJNmd1YVZCMi1jdzcwNzgxRk0zU2J5MUNRZFR3bXFxOXpsM0paWnI1OEdZUnJ0SnozWGxNb1NKNzlVb9IBlwFBVV95cUxNOWEzS2ZYYzhIc2piVnVvaDFDS3Q1TVE5SzNKbzk5RHUxalFha2pFeExSRFNRSzNab0RpWm5CdGkzLW5WNHNveTh5V2VMZnhpWWJBRGkzSERRSmJtQk56Z19Wb1o0S1d5bkItLVhvdWlxci1yd19mQ0ZZUDNyNi1RaXhIVXd0bWIzcmhQMEI3dS00TEZyZmU0?oc=5",
-          "published": "2026-09-17T21:00:00+00:00"
+          "source": "한국경제",
+          "title": "[단독] 韓 \"웨스팅하우스 지분 살테니 이사회 자리 달라\"…美는 신중 - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1FcE5sYXhIcGlBc0Z1Y05vT1NIMUpJU1FrWDRsSG1ZRTZzaDdWc216TWFzV0RBTWR6ZWNlRTZFZWZTdlp6ZkZXZUJyaGdpWmE5ekc0dHB3TzNpZw?oc=5",
+          "published": "2026-09-15T09:05:17+00:00"
         },
         {
           "source": "서울경제",
-          "title": "[단독] 웨스팅하우스 지분 10% 넘겨야 이사 지명권…“대금은 한전이 부담” - 서울경제",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5qUHNRaWdycUhqYjVtMDRpTkkwUUlYSFUtUHVfa0l5akk1VE1ZVVdNd2lHc2JUeU56SGxuYzNLT1RhTHN5R2NUT0o0eWFLZmt6RmfSAVNBVV95cUxNR3JBM3hyQnhKRkhsS05YSHAxTlM2X2hLTVo0SVFPT3NPWGMyMzRteWFPNGQzSEV4ZU9fSVNkcTN6SG9hT1hnZnlRSUcweXZSb3hGMA?oc=5",
-          "published": "2026-09-16T07:28:57+00:00"
-        },
-        {
-          "source": "한겨레",
-          "title": "부채 210조 한전, 웨스팅하우스 지분 인수?…“도시바엔 ‘상장 폐지 원인’” - 한겨레",
-          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5CX0tpRHNaVFBNclpLRE43bDZQZFdQRjd5RkV2akQwSWYtUXJEZ0UtRHoxNlBBYlJEWFBtaUsyNGhrVXpkR2FZUHZIYzNSblQ2bmRkdENhZ21RZW1mQXVGaXBvSXJBQU5OaHRjbQ?oc=5",
-          "published": "2026-09-10T07:00:00+00:00"
-        },
-        {
-          "source": "연합뉴스",
-          "title": "웨스팅하우스 지분율 등 상업적 합리성 암초…대미투자 '위태'(종합) - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5wYlpsVXdNVkpYb016Qm9WZW8wRE91d3Jjc3VQVmFSUi1sYUNXWWxRdWplX21rU0VvalBWdnFpWXkyWUJSS3FjblV3SjFRTFRPdGZzY0VGVWh5aUXSAWBBVV95cUxNelBBZk9FVUpHNEk2ZDJBMDIxM0tnMTdxS1BTaUMyM1RNbWhjTUs2QzNvbE5fWHpzUEh4c2pMUHBIdnp4TWFpYTVGOFhBME84RUlrZkFJVzlJY2R0R24xWjc?oc=5",
-          "published": "2026-09-21T10:20:53+00:00"
+          "title": "웨스팅하우스 지분율 놓고 韓美 막판 기싸움… 이사회 참여가 관건 - 서울경제",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5YZFNVbGpkMHc2MlZvbnA4eTdfQjQ1R1BoSEhLVW1BcUhWSkFuejdId3R3a2xiMWFuZldFSzVTc2p2Sk5PN1Jnczc1U1hHNXF6cVHSAVNBVV95cUxObVM4MFBKMWo4a0NDWmFBTXJJbDJUM1FsUE9XWDdDcDNGZm5WQWdMMVlwQU1VOGVBdGRHSW5FcXZXLWVvR25jczB4a25ZdkVJY2p4aw?oc=5",
+          "published": "2026-09-15T10:00:58+00:00"
         }
       ]
     },
