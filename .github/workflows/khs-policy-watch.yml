@@ -3,7 +3,7 @@ name: KHS policy watch
 on:
   schedule:
     # Run every 15 minutes, offset from crowded 00/15/30/45 slots.
-    - cron: "8,23,38,53 * * * *"
+    - cron: "13,28,43,58 * * * *"
   workflow_dispatch:
     inputs:
       telegram_test:
