@@ -155,7 +155,10 @@ def send(msg):
 def bn(v):return f'{v/1000:,.1f}십억달러'
 def summary_message(cur,impl,task,regime,four,reason):
     lines=['<b>[Warsh 연준 대차대조표 정책 변화]</b>',f"변화 사유: {html.escape(reason)}",'',
-           f"<b>정책문구 판정: {html.escape(impl['mode'])}</b>",f"• 최신 시행지침: {impl.get('date') or '확인 필요'}",'',
+           f"<b>정책문구 판정: {html.escape(impl['mode'])}</b>",f"• 최신 시행지침: {impl.get('date') or '확인 필요'}",
+           ('• 현재 공식 시행은 미 국채 원금 전액 롤오버 + 기관채 원금 단기국채 재투자 + 필요 시 단기국채·잔존 3년 이하 국채 매입으로 충분한 준비금을 유지합니다. 즉 총량 축소형 양적긴축(QT) 재개가 아닙니다.'
+            if '충분한 준비금' in impl.get('mode','') else
+            '• 시행지침에 보유자산 축소·재투자 중단 등 총량 축소 문구가 들어왔는지 확인합니다.'),'',
            '<b>H.4.1 현재 숫자</b>',f"• 총자산 {bn(cur['total_assets'])} · 주간 {cur['total_assets_weekly']/1000:+.1f}십억달러",
            f"• 미 국채 {bn(cur['treasury'])} · 단기국채 {bn(cur['bills'])} · 주택저당증권 {bn(cur['mbs'])}",
            f"• 은행 준비금 {bn(cur['reserves'])} · 주간 {cur['reserves_weekly']/1000:+.1f}십억달러",'',
