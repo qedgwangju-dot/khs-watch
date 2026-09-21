@@ -76,7 +76,36 @@ def circle_usdc() -> dict:
 
 
 def blackrock_usdxx() -> dict:
+    """Read USDXX from the official BlackRock product page with label cross-checks.
+
+    The BlackRock page can contain multiple yield fields and hidden/shared product data.
+    Never accept a 1-day yield as the 7-day SEC yield. A valid observation must have
+    both '7-day Yield' and '7-day SEC Yield' for the same date and those values must
+    agree within 5bp.
+    """
     errors = []
+    date_fmt = "%d-%b-%Y"
+    sec_pat = re.compile(
+        r"(?<!Unsubsidized )7\s*[- ]?\s*Day\s*SEC\s*Yield\s*as\s*of\s*"
+        r"(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*([\d.]+)%",
+        re.I,
+    )
+    seven_pat = re.compile(
+        r"(?<!Unsubsidized )7\s*[- ]?\s*Day\s*Yield\s*as\s*of\s*"
+        r"(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*([\d.]+)%",
+        re.I,
+    )
+    one_pat = re.compile(
+        r"(?<!Unsubsidized )1\s*[- ]?\s*Day\s*Yield\s*as\s*of\s*"
+        r"(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*([\d.]+)%",
+        re.I,
+    )
+    size_pat = re.compile(
+        r"Size\s+of\s+Fund\s*\(Millions\)\s*as\s*of\s*"
+        r"(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*\$\s*([\d,]+(?:\.\d+)?)",
+        re.I,
+    )
+
     for url in (BLACKROCK_USDXX_URL, BLACKROCK_USDXX_ALT_URL):
         try:
             req = urllib.request.Request(
@@ -90,24 +119,79 @@ def blackrock_usdxx() -> dict:
             with urllib.request.urlopen(req, timeout=35) as r:
                 raw = r.read()
             text = " ".join(BeautifulSoup(raw, "html.parser").get_text(" ", strip=True).split())
-            m = re.search(r"7\s*Day\s*SEC\s*Yield\s*as\s*of\s*(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*([\d.]+)%", text, re.I)
-            if not m:
-                raise RuntimeError("7-Day SEC yield could not be parsed")
-            d = dt.datetime.strptime(m.group(1), "%d-%b-%Y").date()
-            y = float(m.group(2))
+
+            if "Circle Reserve Fund" not in text or "09261A870" not in text:
+                raise RuntimeError("USDXX product identity/CUSIP could not be verified")
+
+            sec_matches = [
+                (dt.datetime.strptime(d, date_fmt).date(), float(v))
+                for d, v in sec_pat.findall(text)
+            ]
+            seven_matches = [
+                (dt.datetime.strptime(d, date_fmt).date(), float(v))
+                for d, v in seven_pat.findall(text)
+            ]
+            one_matches = [
+                (dt.datetime.strptime(d, date_fmt).date(), float(v))
+                for d, v in one_pat.findall(text)
+            ]
+            if not sec_matches or not seven_matches:
+                raise RuntimeError("7-day SEC / 7-day yield pair could not be parsed")
+
+            candidates = []
+            for sec_date, sec_value in sec_matches:
+                same_day = [(d, v) for d, v in seven_matches if d == sec_date]
+                for _, seven_value in same_day:
+                    gap = abs(sec_value - seven_value)
+                    if gap <= 0.05:
+                        candidates.append((sec_date, sec_value, seven_value, gap))
+            if not candidates:
+                raise RuntimeError(
+                    f"7-day SEC yield failed 7-day-yield cross-check: sec={sec_matches} seven={seven_matches}"
+                )
+
+            # Prefer the newest date, then the closest SEC-vs-7day pair.
+            candidates.sort(key=lambda x: (x[0], -x[3]))
+            d, sec_yield, seven_yield, gap = candidates[-1]
+
+            one_day = None
+            for od, ov in sorted(one_matches, key=lambda x: x[0]):
+                if od == d:
+                    one_day = ov
+
+            # A 7-day SEC yield must not silently collapse onto a materially different
+            # 1-day yield while the 7-day yield says otherwise.
+            if one_day is not None and abs(sec_yield - one_day) > 0.03 and abs(sec_yield - seven_yield) > 0.01:
+                raise RuntimeError(
+                    f"yield label ambiguity: 1d={one_day} 7d={seven_yield} 7d_sec={sec_yield}"
+                )
 
             size = None
             size_date = None
-            sm = re.search(r"Size\s+of\s+Fund\s*\(Millions\)\s*as\s*of\s*(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*\$\s*([\d,]+(?:\.\d+)?)", text, re.I)
-            if sm:
-                size_date = dt.datetime.strptime(sm.group(1), "%d-%b-%Y").date().isoformat()
-                size = float(sm.group(2).replace(",", ""))
+            sizes = [
+                (dt.datetime.strptime(sd, date_fmt).date(), float(sv.replace(",", "")))
+                for sd, sv in size_pat.findall(text)
+            ]
+            same_date_sizes = [(sd, sv) for sd, sv in sizes if sd == d and sv >= 20_000]
+            if same_date_sizes:
+                size_date, size = same_date_sizes[-1]
+            else:
+                plausible = [(sd, sv) for sd, sv in sizes if sv >= 20_000]
+                if plausible:
+                    size_date, size = sorted(plausible, key=lambda x: x[0])[-1]
+
             return {
                 "date": d.isoformat(),
-                "sec_yield_7d": y,
+                "sec_yield_7d": sec_yield,
+                "yield_7d": seven_yield,
+                "yield_1d": one_day,
+                "yield_crosscheck_gap_bp": round(gap * 100, 1),
                 "fund_size_usd_m": size,
-                "fund_size_date": size_date,
+                "fund_size_date": size_date.isoformat() if size_date else None,
                 "source_url": url,
+                "product": "Circle Reserve Fund",
+                "ticker": "USDXX",
+                "cusip": "09261A870",
             }
         except Exception as e:
             errors.append(f"{url}: {e}")
@@ -266,16 +350,20 @@ def prevent_date_regression(name: str, current: dict, previous: dict, errors: li
 
 
 def preserve_previous_distinct(current: dict, previous: dict, fields: list[str]) -> dict:
-    """Keep the prior official observation across no-alert watcher runs."""
+    """Keep the prior official-date observation across repeated watcher snapshots.
+
+    Same-date source corrections must not overwrite the prior distinct official date.
+    """
     if not current:
         return current
     result = dict(current)
     prior_meta = (previous or {}).get("_previous_distinct")
-    changed = bool(previous) and (
-        current.get("date") != previous.get("date")
-        or any(current.get(field) != previous.get(field) for field in fields)
-    )
-    if changed:
+    if (
+        previous
+        and current.get("date")
+        and previous.get("date")
+        and current.get("date") != previous.get("date")
+    ):
         prior_meta = {"date": previous.get("date")}
         for field in fields:
             prior_meta[field] = previous.get(field)
@@ -403,8 +491,21 @@ def main() -> None:
         if circle.get("date") != oc.get("date") or circle.get("circulation_usd_b") != oc.get("circulation_usd_b"):
             delta_b = circle.get("circulation_usd_b", 0) - oc.get("circulation_usd_b", circle.get("circulation_usd_b", 0))
             changes.append(f"Circle USDC 공식 유통량 갱신: {delta_b:+.1f}십억달러")
-        if usdxx.get("date") != ou.get("date") and abs(usdxx.get("sec_yield_7d", 0) - ou.get("sec_yield_7d", usdxx.get("sec_yield_7d", 0))) >= 0.01:
-            changes.append(f"Circle Reserve Fund 7일 SEC 수익률 변화: {bp(usdxx['sec_yield_7d'], ou['sec_yield_7d']):+.1f}bp")
+        usdxx_delta = abs(
+            usdxx.get("sec_yield_7d", 0)
+            - ou.get("sec_yield_7d", usdxx.get("sec_yield_7d", 0))
+        )
+        if usdxx_delta >= 0.01:
+            delta_bp = bp(usdxx["sec_yield_7d"], ou["sec_yield_7d"])
+            if usdxx.get("date") == ou.get("date"):
+                changes.append(
+                    f"Circle Reserve Fund 7일 SEC 수익률 원자료 정정: "
+                    f"{ou['sec_yield_7d']:.2f}% → {usdxx['sec_yield_7d']:.2f}% ({delta_bp:+.1f}bp)"
+                )
+            else:
+                changes.append(
+                    f"Circle Reserve Fund 7일 SEC 수익률 변화: {delta_bp:+.1f}bp"
+                )
         if sofr and os and sofr.get("date") != os.get("date") and abs(sofr.get("rate", 0) - os.get("rate", sofr.get("rate", 0))) >= 0.01:
             changes.append(f"SOFR 변화: {bp(sofr['rate'], os['rate']):+.1f}bp")
         if treasury.get("date") != ot.get("date"):
