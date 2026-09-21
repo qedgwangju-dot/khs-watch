@@ -64,7 +64,7 @@ CATEGORY_KO = {
     "hbm4e_validation": "HBM4E 고객 검증·양산",
     "rubin_shipments": "Rubin Ultra·NVL576 실제 출하",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
-    "memory_migration": "DDR5·SOCAMM2·기업용 eSSD 이동",
+    "memory_migration": "HBM 용량·KV 캐시·DDR5·eSSD 이동",
 }
 
 OFFICIAL_SOURCE_HINTS = (
@@ -409,7 +409,48 @@ def make_fact(event: dict) -> dict | None:
         verdict = "🟢 가격 상승과 계약물량 유지·증가가 동시에 확인되면 강한 호재. 가격만 오르고 물량이 줄면 별도 계산합니다."
 
     elif cat == "memory_migration":
-        if "hbm3e" in low and "ddr5" in low and ("3x" in low or "3 x" in low or "three times" in low or "3배" in low):
+        if (
+            "kv cache" in low
+            and any(k in low for k in ("offload", "offloading", "오프로드"))
+            and "hbm" in low
+            and any(k in low for k in (
+                "capacity", "reduce", "reduction", "lower", "smaller",
+                "용량", "축소", "하향", "줄", "8-hi", "8hi", "12-hi", "12hi", "4-hi", "4hi", "8단", "12단", "4단",
+            ))
+        ):
+            stacks = []
+            for label, aliases in (
+                ("4단", ("4-hi", "4hi", "4단")),
+                ("8단", ("8-hi", "8hi", "8단")),
+                ("12단", ("12-hi", "12hi", "12단")),
+            ):
+                if any(a in low for a in aliases):
+                    stacks.append(label)
+            capacities = list(dict.fromkeys(re.findall(r"\b\d+(?:\.\d+)?\s*(?:GB|TB)\b", text, re.I)))[:4]
+            key_parts = [x.replace("단", "hi") for x in stacks] + [re.sub(r"\s+", "", x).lower() for x in capacities]
+            fact_key = "hbm_capacity_kv_offload_" + ("_".join(key_parts) if key_parts else "shift")
+            headline = "HBM 용량 축소·KV 캐시 오프로딩 구조 변화"
+            bullets.append("• 상태 변화: GPU 내부 HBM 용량을 줄이는 방향과 KV 캐시를 외부 메모리 계층으로 넘기는 오프로딩이 함께 거론됐습니다.")
+            if stacks:
+                bullets.append(f"• 적층 구성: {', '.join(stacks)} HBM 구성이 언급됐습니다.")
+            if capacities:
+                bullets.append(f"• 용량 단서: {', '.join(capacities)}")
+            if any(k in low for k in ("cpu ram", "host memory", "cxl", "ssd pod", "enterprise ssd", "essd", "local ssd")):
+                tiers = []
+                for label, aliases in (
+                    ("CPU 메모리", ("cpu ram", "host memory")),
+                    ("CXL", ("cxl",)),
+                    ("기업용 eSSD", ("enterprise ssd", "essd")),
+                    ("SSD POD", ("ssd pod",)),
+                    ("로컬 SSD", ("local ssd",)),
+                ):
+                    if any(a in low for a in aliases):
+                        tiers.append(label)
+                if tiers:
+                    bullets.append(f"• 대체 계층: {', '.join(tiers)}로 KV 캐시 수요가 이동하는 신호입니다.")
+            bullets.append("• 해석: HBM 용량 감소를 HBM 수요 감소로 바로 등치하지 않습니다. 대역폭 요구, GPU 출하량, CPU 메모리·CXL·eSSD 수요 이동을 함께 봅니다.")
+            verdict = "🟡 HBM 비트 수요에는 역풍이 될 수 있지만, KV 캐시 오프로딩이 CPU 메모리·CXL·eSSD 수요를 키우는 구조적 이동 신호입니다."
+        elif "hbm3e" in low and "ddr5" in low and ("3x" in low or "3 x" in low or "three times" in low or "3배" in low):
             fact_key = "hbm3e_wafer_capacity_3x_ddr5"
             headline = "Micron: HBM3E가 DDR5보다 웨이퍼 생산능력을 약 3배 더 소모"
             bullets.append("• 확인된 사실: HBM3E는 같은 비트 생산 기준으로 DDR5보다 웨이퍼 생산능력을 약 3배 더 소모한다는 설명입니다.")
@@ -442,6 +483,21 @@ def fact_signature_from_raw(event: dict) -> str:
     cat = event.get("category") or ""
     if "hbm4e" in text and "indiana" in text and "2029" in text and "sk hynix" in text:
         return "skhynix_indiana_hbm4e_2029"
+    if (
+        "kv cache" in text
+        and any(k in text for k in ("offload", "offloading", "오프로드"))
+        and "hbm" in text
+        and any(k in text for k in ("capacity", "reduce", "reduction", "용량", "축소", "하향", "8-hi", "8hi", "12-hi", "12hi", "4-hi", "4hi", "8단", "12단", "4단"))
+    ):
+        stacks = []
+        for label, aliases in (
+            ("4hi", ("4-hi", "4hi", "4단")),
+            ("8hi", ("8-hi", "8hi", "8단")),
+            ("12hi", ("12-hi", "12hi", "12단")),
+        ):
+            if any(a in text for a in aliases):
+                stacks.append(label)
+        return "hbm_capacity_kv_offload_" + ("_".join(stacks) if stacks else "shift")
     if "hbm3e" in text and "ddr5" in text and ("3x" in text or "three times" in text or "3배" in text):
         return "hbm3e_wafer_capacity_3x_ddr5"
     if cat == "rubin_spec" and "rubin ultra" in text:
