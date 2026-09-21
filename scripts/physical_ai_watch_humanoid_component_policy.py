@@ -263,7 +263,12 @@ def _is_component_policy(text: str) -> bool:
 def topic_group(text: str) -> str | None:
     if _is_component_policy(text):
         return 'humanoid_component_policy'
-    return _orig_topic_group(text)
+    existing = _orig_topic_group(text)
+    if existing is not None:
+        return existing
+    if _is_global_component(text):
+        return 'humanoid_component_global'
+    return None
 
 
 def _stage(text: str) -> str:
@@ -283,7 +288,33 @@ def _stage(text: str) -> str:
 def score(item: dict) -> int:
     title = item.get('title', '')
     text = f"{title} {item.get('description','')} {item.get('source','')}"
-    if topic_group(text) != 'humanoid_component_policy':
+    group = topic_group(text)
+    if group == 'humanoid_component_global':
+        source = item.get('source') or ''
+        s = 18
+        if base.NUMERIC.search(text):
+            s += 3
+        if source in base.OFFICIAL_OR_PRIMARY:
+            s += 8
+        elif source in base.TRUSTED:
+            s += 3
+        stage = _component_stage(text)
+        s += {
+            '고객선정·수주·수주잔고': 12,
+            '양산·출하': 11,
+            '고객승인·신뢰성검증': 10,
+            '생산능력·증설': 9,
+            '수율·납기·가격': 8,
+            '제품화': 4,
+        }.get(stage, 0)
+        if _global_companies(text):
+            s += 4
+        note = _component_demand_note(text)
+        if note:
+            item['component_demand_note'] = note
+            s += 3
+        return s
+    if group != 'humanoid_component_policy':
         return _orig_score(item)
 
     operational = FINAL_BUDGET.search(text) or PROGRAM_NOTICE.search(text) or AWARD.search(text) or VALIDATION.search(text) or MASS_PROD.search(text) or BUDGET_620.search(text)
