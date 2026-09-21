@@ -725,6 +725,15 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    # User-facing alert titles are Korean. Preserve company/product identifiers,
+    # but do not expose untranslated Chinese headline prose.
+    if re.search(r'特斯拉机器人团队在长三角审厂.{0,30}多家企业已获订单', title):
+        return '테슬라 로봇팀, 창삼각 공급망 공장 실사…다수 기업 주문 확보 보도'
+    if re.search(r'特斯拉被曝启动新一轮机器人业务量产审厂.{0,40}多家供应链企业回应', title):
+        return '테슬라, 로봇 사업 신규 양산 공장 실사 착수 보도…다수 공급망 기업 반응'
+    if re.search(r'特斯拉.{0,30}(?:审厂|審廠).{0,40}(?:订单|訂單)', title):
+        return '테슬라 Optimus 공급망, 공장 실사·주문 관련 신규 보도'
+
     text = f'{title} {source}'
     if _is_tesla_supply_text(text):
         stage = _stage(text)
