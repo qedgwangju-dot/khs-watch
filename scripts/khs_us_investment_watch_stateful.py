@@ -359,7 +359,24 @@ _NEGATION_TERMS = (
 )
 
 def _source_key(row: dict) -> str:
-    return _norm(str(row.get("source") or "unknown"))
+    source = _norm(str(row.get("source") or "unknown"))
+    link = _norm(str(row.get("link") or ""))
+
+    # 포털 재게시본과 원매체 URL을 서로 다른 독립 출처로 이중 계산하지 않는다.
+    # 네이버 언론사 코드: 015=한국경제, 008=머니투데이, 421=뉴스1.
+    aliases = (
+        (("한국경제", "한경", "hankyung.com", "article/015/"), "한국경제"),
+        (("머니투데이", "moneytoday", "mt.co.kr", "article/008/"), "머니투데이"),
+        (("뉴스1", "news1.kr", "article/421/"), "뉴스1"),
+        (("연합뉴스", "yna.co.kr", "article/001/"), "연합뉴스"),
+        (("reuters", "reuters.com"), "reuters"),
+        (("bloomberg", "bloomberg.com"), "bloomberg"),
+    )
+    blob = f"{source} {link}"
+    for tokens, canonical in aliases:
+        if any(token in blob for token in tokens):
+            return canonical
+    return source
 
 def _published_key(row: dict) -> str:
     return str(row.get("published") or "")
@@ -604,7 +621,34 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
         )
         if score > prev_score:
             chosen[slot] = fact
-    return set(chosen.values()), support
+
+    accepted = set(chosen.values())
+
+    # 원전 전체 기수보다 노형별 합계가 커지는 상태는 논리적으로 불가능하므로
+    # 노형별 수치를 상태값으로 승격하지 않는다. 전체 기수는 별도로 유지한다.
+    if family == "nuclear_build":
+        def _unit(prefix: str) -> int | None:
+            values = [
+                int(item.split(":", 1)[1])
+                for item in accepted
+                if item.startswith(prefix) and item.split(":", 1)[1].isdigit()
+            ]
+            return values[0] if len(values) == 1 else None
+
+        total = _unit("nuclear_total_units:")
+        ap1000 = _unit("ap1000_units:")
+        apr1400 = _unit("apr1400_units:")
+        if total is not None and ap1000 is not None and apr1400 is not None and ap1000 + apr1400 > total:
+            accepted = {
+                item for item in accepted
+                if not item.startswith(("ap1000_units:", "apr1400_units:"))
+            }
+            print(
+                "nuclear_model_split_inconsistent_suppressed=true "
+                f"total={total} ap1000={ap1000} apr1400={apr1400}"
+            )
+
+    return accepted, support
 
 
 _FAMILY_LABELS = {
@@ -893,6 +937,37 @@ def _collapse_rows(rows: list[dict]) -> list[dict]:
             continue
 
         evidence_row = _pick_evidence_row(accepted, evidence_map, family_rows)
+
+        # 정부 공식상태가 '미확정'인 동안 AP1000/APR1400 노형별 기수 변경은
+        # 언론 2곳만으로 상태 전이시키지 않는다. 정부·발주처 등 공식 근거가
+        # 해당 노형별 새 기수를 직접 확인한 경우에만 기존 기준선을 바꾼다.
+        if family == "nuclear_build":
+            bucket = _bucket(family)
+            slots = {str(k): str(v) for k, v in (bucket.get("slots") or {}).items()}
+            official_unconfirmed = (
+                slots.get("nuclear_build|official_status") == "official_status:unconfirmed"
+                or "official_status:unconfirmed" in set(bucket.get("facts") or [])
+            )
+            if official_unconfirmed:
+                filtered = set(accepted)
+                for fact in list(filtered):
+                    if not fact.startswith(("ap1000_units:", "apr1400_units:")):
+                        continue
+                    slot = _fact_slot(family, fact)
+                    previous = slots.get(slot)
+                    if previous and previous != fact:
+                        evidence = evidence_map.get(fact, [])
+                        if not any(_is_official(row) for row in evidence):
+                            filtered.discard(fact)
+                            print(
+                                "nuclear_model_transition_pending_official=true "
+                                f"previous={previous} candidate={fact}"
+                            )
+                accepted = filtered
+                if not accepted:
+                    continue
+                evidence_row = _pick_evidence_row(accepted, evidence_map, family_rows)
+
         changed = _apply_state(family, evidence_row, accepted, evidence_map)
         if not changed:
             continue
@@ -944,6 +1019,64 @@ def _self_test() -> int:
         raise RuntimeError(f"nuclear state parsing failed: {accepted}")
     if "ap1000_units:8" in accepted or "apr1400_units:8" in accepted:
         raise RuntimeError(f"model unit double count regression: {accepted}")
+
+    ambiguous_total_rows = [
+        {
+            "title": "대미투자 원전 AP1000·APR1400 포함 총 8기 건설 보도",
+            "source": "한국경제",
+            "link": "https://www.hankyung.com/example",
+            "published": "2026-09-20T00:10:00+00:00",
+        },
+        {
+            "title": "미국 원전 AP1000과 APR1400 포함 전체 8기 협의",
+            "source": "머니투데이",
+            "link": "https://www.mt.co.kr/example",
+            "published": "2026-09-20T00:11:00+00:00",
+        },
+    ]
+    accepted, _ = _accepted_facts_for_group("nuclear_build", ambiguous_total_rows)
+    if "nuclear_total_units:8" not in accepted:
+        raise RuntimeError(f"ambiguous total units not retained: {accepted}")
+    if any(x.startswith(("ap1000_units:", "apr1400_units:")) for x in accepted):
+        raise RuntimeError(f"ambiguous total leaked into model split: {accepted}")
+
+    inconsistent_rows = [
+        {
+            "title": "미국 원전 8기, AP1000 6기·APR1400 8기 보도",
+            "source": "한국경제",
+            "link": "https://www.hankyung.com/bad-a",
+            "published": "2026-09-20T00:12:00+00:00",
+        },
+        {
+            "title": "원전 8기, AP1000 6기 APR1400 8기라는 보도",
+            "source": "뉴스1",
+            "link": "https://www.news1.kr/bad-b",
+            "published": "2026-09-20T00:13:00+00:00",
+        },
+    ]
+    accepted, _ = _accepted_facts_for_group("nuclear_build", inconsistent_rows)
+    if "nuclear_total_units:8" not in accepted:
+        raise RuntimeError(f"inconsistent total units lost: {accepted}")
+    if any(x.startswith(("ap1000_units:", "apr1400_units:")) for x in accepted):
+        raise RuntimeError(f"inconsistent model split survived: {accepted}")
+
+    same_publisher_rows = [
+        {
+            "title": "APR1400 8기 검토 보도",
+            "source": "한국경제",
+            "link": "https://www.hankyung.com/article/example",
+            "published": "2026-09-20T00:14:00+00:00",
+        },
+        {
+            "title": "APR1400 8기 검토 보도",
+            "source": "네이버",
+            "link": "https://n.news.naver.com/mnews/article/015/0000000000",
+            "published": "2026-09-20T00:15:00+00:00",
+        },
+    ]
+    accepted, _ = _accepted_facts_for_group("nuclear_build", same_publisher_rows)
+    if "apr1400_units:8" in accepted:
+        raise RuntimeError(f"same publisher was double-counted as independent confirmation: {accepted}")
 
     official_funding = [{
         "title": "대미투자 3,500억달러 약속…첫 송금 규모·시기는 확정된 바 없습니다",
