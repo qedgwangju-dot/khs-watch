@@ -19,6 +19,7 @@ Guardrails:
 """
 from __future__ import annotations
 
+import datetime as dt
 import hashlib
 import json
 import re
@@ -31,6 +32,8 @@ import physical_ai_watch_korea_foundry_data_demand as kd
 
 base, ext = kd.base, kd.ext
 
+UNITREE_HAND_SENTINEL = 'DIRECT_UNITREE_DEX5S_X_RECOVERY'
+
 base.QUERIES.extend([
     '(휴머노이드 OR humanoid OR 피지컬AI OR "physical AI") (센서 OR sensor OR 액추에이터 OR actuator OR 이차전지 OR 배터리 OR battery) (620억 OR 62,000,000,000 OR 116억 OR 11,600,000,000 OR 예산 OR 정부안)',
     '(휴머노이드 OR humanoid) (핵심 부품 OR 핵심부품 OR core components) (국산화 OR localization) (예산 OR R&D OR 실증 OR 신뢰성 OR reliability OR 성능 OR performance)',
@@ -42,6 +45,8 @@ base.QUERIES.extend([
     '(humanoid OR 휴머노이드 OR 人形机器人) ("torque sensor" OR "force sensor" OR "6-axis force" OR 촉각센서 OR "tactile sensor" OR encoder OR 인코더 OR IMU OR lidar OR 라이다 OR "3D camera") (customer OR qualification OR order OR contract OR mass production OR capacity OR yield OR 수주 OR 고객검증 OR 고객승인 OR 양산 OR 생산능력 OR 수율)',
     '("Leader Harmonic Drive" OR Leaderdrive OR "Zhejiang Laifu" OR Laifual OR "Zhongda Leader" OR Inovance OR MOONS OR Orbbec OR RoboSense OR Hesai) (humanoid OR 人形机器人) (order OR backlog OR customer OR supplier OR capacity OR mass production OR yield OR 수주 OR 양산 OR 생산능력 OR 产能 OR 订单)',
     '("LG이노텍" OR "LG Innotek" OR TDK OR 에스비비테크 OR "SBB Tech" OR 에스피지 OR SPG OR 하이젠알앤엠 OR "Higen RNM" OR 삼현 OR "SOS LAB" OR 에스오에스랩) (휴머노이드 OR humanoid) (감속기 OR actuator OR 액추에이터 OR encoder OR 인코더 OR torque sensor OR force sensor OR 촉각 OR tactile OR lidar OR 라이다) (수주 OR 공급 OR 고객 OR 양산 OR 생산능력 OR 수율 OR 검증 OR contract OR order OR mass production OR capacity OR yield OR qualification)',
+    '(Unitree OR 유니트리 OR 宇树) (Dex5-S OR "dexterous hand" OR 로봇핸드 OR 灵巧手) (22 DOF OR 22자유도 OR 6500 OR "$6,500" OR backdrivable OR 역구동 OR 출시 OR 공개 OR price)',
+    UNITREE_HAND_SENTINEL,
 
 ])
 
@@ -55,9 +60,11 @@ base.OFFICIAL_OR_PRIMARY.update({
     '과학기술정보통신부', '한국로봇산업진흥원', '국회', '국회예산정책처',
     '로보티즈', 'ROBOTIS', '삼현', '하이젠알앤엠', '에스비비테크',
     '에스피지', '원익로보틱스', '현대모비스', '삼성SDI', 'LG에너지솔루션',
-    'LG이노텍', 'LG Innotek', 'TDK', 'Boston Dynamics',
+    'LG이노텍', 'LG Innotek', 'TDK', 'Boston Dynamics', 'Unitree Robotics', 'Unitree Robotics (X)', '유니트리',
 })
 
+_orig_query_news = base.query_news
+_orig_clean_title = base.clean_title
 _orig_topic_group, _orig_score = base.topic_group, base.score
 _orig_category, _orig_meaning = base.category, base.meaning
 _orig_risk, _orig_verification = base.risk, base.verification
