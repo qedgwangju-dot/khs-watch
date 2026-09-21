@@ -527,6 +527,29 @@ STORY_RULES = (
         follow_up="미 국방부·CENTCOM·백악관 후속, 실제 선박 통항 감소, WTI/Brent·운임·USD/KRW·방산주 반응을 확인합니다.",
     ),
     StoryRule(
+        key="us_china_ai_safety_talks",
+        title="미·중, AI 안전 통지체계 협의: 정상회담 후속 확인",
+        google_queries=(
+            "Reuters Bessent He Lifeng AI safety notifications talks",
+            "Reuters US China artificial intelligence safety notification mechanism Bessent He",
+            "site:reuters.com Bessent China AI safety notification He Lifeng",
+        ),
+        required_groups=(
+            ("bessent", "treasury secretary", "u.s. treasury"),
+            ("he lifeng", "chinese vice premier", "vice premier"),
+            ("ai", "artificial intelligence"),
+            ("safety", "notification", "notifications", "national security", "talks", "mechanism"),
+        ),
+        core="미·중 장관급 협의에서 AI 안전 통지체계가 의제로 올라간 사안입니다.",
+        impact="반도체/AI, 클라우드/보안 AI, 미중 기술규제 | 시간표·수급·돈 버는 능력",
+        point="양국이 실제 통지체계나 공동 안전원칙을 채택하면 모델 배포·사이버안보·첨단칩 통제의 정책 경로가 달라질 수 있습니다.",
+        counter="현재는 미국 측 제안과 협의 단계로, 중국의 수용·구체 범위·법적 구속력은 확정되지 않았습니다.",
+        sectors="반도체/AI, 클라우드/보안 AI, 미중 기술규제",
+        impacts=("시간표", "수급", "돈 버는 능력"),
+        paths=("미중 AI 협의", "정책 타임라인", "수출통제", "국가안보"),
+        follow_up="2026년 9월 24일 정상회담에서 AI 안전 통지체계가 채택되는지, 적용 대상·통지 요건·수출통제와의 관계가 구체화되는지 확인합니다.",
+    ),
+    StoryRule(
         key="trump_direct_policy_remarks_watch",
         title="트럼프 대통령 직접 발언, 시장 영향 정책 신호",
         google_queries=(
@@ -1278,7 +1301,7 @@ def trump_story_profile(title: str) -> dict[str, object] | None:
             ai_core = "트럼프가 AI Force 창설과 신임 AI 차르 임명을 예고했습니다."
             ai_stage = "대통령 발표 단계 — 공식 행정명령·조직도·예산·임명자는 아직 공개되지 않았습니다."
             ai_actual = "미국 정부의 AI 정책을 총괄할 새 AI 차르를 두고 AI Force를 만들겠다는 구상입니다."
-            ai_timeline = "2026년 9월 19일 발표 → 2026년 9월 20일 베선트·허리펑 AI 안보·무역 협의 예정 → 2026년 9월 24일 트럼프·시진핑 정상회담 예정"
+            ai_timeline = "2026년 9월 19일 발표 → 2026년 9월 20일 베선트·허리펑 AI 안보·무역 회담 → 2026년 9월 24일 트럼프·시진핑 정상회담 일정"
 
         return {
             **common,
@@ -1450,6 +1473,26 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
     if not items:
         return None
     title = str(items[0].get("title", ""))
+    if rule.key == "us_china_ai_safety_talks":
+        return {
+            "revision": "us-china-ai-safety-talks-ko-v1",
+            "event_date": "2026년 9월 20일",
+            "title": "미·중, AI 안전 통지체계 협의: 정상회담 후속 확인",
+            "core": "베선트·허리펑 회담에서 AI 안전 통지체계 제안이 논의됐습니다.",
+            "stage": "장관급 협의 완료 단계 — 미국 측 제안은 확인됐지만 중국의 수용과 구체 제도는 아직 미확정입니다.",
+            "actual": "미 재무장관 스콧 베선트가 허리펑 중국 부총리와의 회담에서 AI 안전 관련 상호 통지 메커니즘을 제안했습니다.",
+            "timeline": "2026년 9월 19일 AI Force·신임 AI 차르 구상 발표 → 2026년 9월 20일 베선트·허리펑 AI·무역 회담 → 2026년 9월 24일 트럼프·시진핑 정상회담 일정",
+            "why": "미국의 국내 AI 지휘체계 구상과 미·중 AI 안전 협의가 같은 주간에 연결되며, 규제·국가안보 정책축이 실제 협상 의제로 이동한 변화입니다.",
+            "next": "9월 24일 정상회담 결과, AI 안전 통지체계 채택 여부, 적용 대상·통지 요건, 사이버안보·AI 무기화 범위, BIS 수출통제와의 관계",
+            "investment": "직접 매출은 아직 없지만, 후속 합의가 첨단칩·클라우드·모델 배포 규칙으로 이어질 경우 AI 공급망의 판매 가능 시장과 규제비용이 바뀔 수 있습니다.",
+            "korea": "한국장에서는 삼성전자·SK하이닉스 HBM과 반도체 장비·소재 중 실제 BIS 규정·라이선스 변경으로 연결되는 경우만 실적 변수로 봅니다.",
+            "impacts": "매출·마진·현금흐름, 수급, 시간표",
+            "paths": "미중 AI 협의, 정책 타임라인, 수출통제, 국가안보",
+            "sectors": "반도체/AI, 클라우드/보안 AI, 미중 기술규제",
+            "priced_in": "낮음~중간. 장관급 제안은 새 정보지만 최종 합의와 규정 반영 전에는 정책 기대 단계입니다.",
+            "counter": "중국의 명확한 수용이나 공동문서가 아직 없고, 안전 협의가 첨단칩 규제 완화로 직결된다는 근거도 없습니다.",
+            "failure": "정상회담 공동문구, 후속 실무협의, BIS·백악관 규정 변화가 없으면 외교 협의 수준에서 끝납니다.",
+        }
     if rule.key == "trump_direct_policy_remarks_watch":
         return trump_story_profile(title)
     if rule.key == "global_extreme_heat_mortality_watch":
@@ -1485,8 +1528,11 @@ def is_ai_force_alert(alert: dict) -> bool:
         return False
     profile = item_story_profile(rule, items)
     return bool(
-        profile
-        and str(profile.get("revision") or "").startswith("trump-ai-force-czar-")
+        rule.key == "us_china_ai_safety_talks"
+        or (
+            profile
+            and str(profile.get("revision") or "").startswith("trump-ai-force-czar-")
+        )
     )
 
 
