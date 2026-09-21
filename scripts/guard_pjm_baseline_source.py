@@ -10,7 +10,7 @@ POLICY_PATCHES = (
     (
         'FERC_DECISIONS = "https://www.ferc.gov/news-events/news/decisions-notices"\n',
         'FERC_DECISIONS = "https://www.ferc.gov/news-events/news/decisions-notices"\n'
-        'PJM_CAPACITY_RESULT = "https://insidelines.pjm.com/pjm-capacity-auction-procures-138318-mw-of-generation-resources-as-work-continues-to-address-growing-electricity-demand/"\n',
+        'PJM_CAPACITY_RESULT = "https://insidelines.pjm.com/pjm-capacity-auction-procures-138318-mw-of-generation-resources-as-work-continues-to-address-growing-electricity-demand/"\n'
         'HOUSE_RATEPAYER = "https://energycommerce.house.gov/posts/ratepayer-protection-act-passes-house-with-strong-bipartisan-support"\n'
         'GOVINFO_HR9340 = "https://www.govinfo.gov/app/details/BILLS-119hr9340eh"\n'
         'GOVINFO_S5028 = "https://www.govinfo.gov/app/details/BILLS-119s5028is"\n'
@@ -243,8 +243,8 @@ if scope_old not in text:
     raise SystemExit("PJM scope insertion point not found")
 text = text.replace(scope_old, scope_new, 1)
 
-official_old = '''        f"• {a('PJM RBP 원문', PJM_RBP)}",\n        f"• {a('PJM 기준 설명', PJM_BASELINE)}",\n        f"• {a('H.R.9340 하원 공식', HOUSE_RATEPAYER)}",\n        f"• {a('S.5028 GovInfo', GOVINFO_S5028)}",\n        f"• {a('S.5199 GovInfo', GOVINFO_S5199)}",\n        f"• {a('FERC RM26-4', FERC_RM26_4)}",\n        f"• {a('FERC Decisions', FERC_DECISIONS)}",\n'''
-official_new = '''        f"• {a('PJM RBP 원문', PJM_RBP)}",\n        f"• {a('PJM 용량시장 결과', PJM_CAPACITY_RESULT)}",\n        f"• {a('PJM 기준 설명', PJM_BASELINE)}",\n        f"• {a('FERC Decisions', FERC_DECISIONS)}",\n'''
+official_old = '''        f"• {a('PJM RBP 원문', PJM_RBP)}",\n        f"• {a('PJM 기준 설명', PJM_BASELINE)}",\n        f"• {a('FERC Decisions', FERC_DECISIONS)}",\n'''
+official_new = '''        f"• {a('PJM RBP 원문', PJM_RBP)}",\n        f"• {a('PJM 용량시장 결과', PJM_CAPACITY_RESULT)}",\n        f"• {a('PJM 기준 설명', PJM_BASELINE)}",\n        f"• {a('H.R.9340 하원 공식', HOUSE_RATEPAYER)}",\n        f"• {a('S.5028 GovInfo', GOVINFO_S5028)}",\n        f"• {a('S.5199 GovInfo', GOVINFO_S5199)}",\n        f"• {a('FERC RM26-4', FERC_RM26_4)}",\n        f"• {a('FERC Decisions', FERC_DECISIONS)}",\n'''
 if official_old not in text:
     raise SystemExit("PJM official-links insertion point not found")
 text = text.replace(official_old, official_new, 1)
