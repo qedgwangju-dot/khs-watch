@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-09-21T01:03:41.885086+00:00",
+  "updated_at": "2026-09-21T02:07:34.161413+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -340,14 +340,20 @@
     "8a784f311e83aaa03b9178f96ad4babcd441b1d79edba3732f93e137e534e183",
     "571c83f2d14deb01adca23481291d4fb41d2c61abca1463e75e6da6edb73b330",
     "b363fb359fe9cab49ea77496c7184c60020feb8be385c41225c901709bd0d4e6",
-    "ac7bc53af44f9ebb89801ce5e9c9f4a3a8e3e7d2fc96c8a0709f4db73a8fdc4f"
+    "ac7bc53af44f9ebb89801ce5e9c9f4a3a8e3e7d2fc96c8a0709f4db73a8fdc4f",
+    "0b73c5d4631ed64a7170228e1c1b1122e914d882c23f206bf75c47f5e4bd8fc7",
+    "0c9166aa4343b7173f90ec77c22ac37758debb0880940e36f1ae9545d3d42513",
+    "37d1c22cb492a2b6b081e5761fa9b75c6658ea94a92616a71526ad8444e0c271"
   ],
   "last_selected": [
-    "ac7bc53af44f9ebb89801ce5e9c9f4a3a8e3e7d2fc96c8a0709f4db73a8fdc4f"
+    "0b73c5d4631ed64a7170228e1c1b1122e914d882c23f206bf75c47f5e4bd8fc7",
+    "0c9166aa4343b7173f90ec77c22ac37758debb0880940e36f1ae9545d3d42513",
+    "37d1c22cb492a2b6b081e5761fa9b75c6658ea94a92616a71526ad8444e0c271"
   ],
   "groups": [
     "ess_battery",
     "figure_ai",
+    "lg_factory_loop",
     "robotis",
     "robotis_excess_demand",
     "samhyun",
