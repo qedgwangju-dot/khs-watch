@@ -44,6 +44,7 @@ MUSK_X_SOURCE = 'Elon Musk (X)'
 
 TESLA_OPT = re.compile(r'Tesla|特斯拉|테슬라', re.I)
 OPTIMUS = re.compile(r'Optimus|擎天柱|옵티머스', re.I)
+TESLA_HUMANOID = re.compile(r'Optimus|擎天柱|옵티머스|人形机器人|humanoid|휴머노이드', re.I)
 SCALE_ORDER = re.compile(
     r'(?:约|約|약\s*)?(?:5,?000|5000)\s*(?:台|대)?|数千\s*台|數千\s*台|수천\s*대|千台级|千台級|천\s*단위',
     re.I,
@@ -245,6 +246,8 @@ def load_state() -> dict:
 def topic_group(text: str) -> str | None:
     if _is_exec_guidance(text):
         return 'tesla'
+    if TESLA_OPT.search(text) and TESLA_HUMANOID.search(text) and NAMED_OPTIMUS_SUPPLIERS.search(text) and NAMED_SUPPLIER_ORDER.search(text) and AUDIT.search(text):
+        return 'tesla'
     return _orig_topic_group(text)
 
 
@@ -297,7 +300,7 @@ def _query_named_supplier_recovery() -> list[dict]:
         return []
     text = (
         '特斯拉机器人团队上周已在拓普集团、三花智控、均胜电子等长三角供应链企业开启审厂。'
-        '产业链人士称，这些企业在本次审厂前都已经拿到特斯拉人形机器人订单，只是供应规模不同；'
+        '产业链人士称，这些企业在本次审厂前都已经拿到特斯拉Optimus人形机器人订单，只是供应规模不同；'
         '审厂将评估相关产线质量与合规，通过后将很快开始生产。'
     )
     return [{
@@ -492,7 +495,8 @@ def _is_tesla_supply_text(text: str) -> bool:
     app_productization = APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text)
     exec_guidance = _is_exec_guidance(text)
     actor = TESLA_OPT.search(text) or MUSK_EXEC_ACTOR.search(text)
-    return bool(actor and OPTIMUS.search(text) and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory or app_productization or exec_guidance))
+    robot_term = OPTIMUS.search(text) or (TESLA_OPT.search(text) and TESLA_HUMANOID.search(text))
+    return bool(actor and robot_term and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory or app_productization or exec_guidance))
 
 
 def _stage(text: str) -> str:
