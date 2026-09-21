@@ -1,9 +1,15 @@
 name: KHS policy watch
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/khs-policy-watch.yml"
   schedule:
     # Run every 15 minutes, offset from crowded 00/15/30/45 slots.
-    - cron: "12,27,42,57 * * * *"
+    # Temporary cron shift re-registers the existing scheduler; it will be restored after the live verification run.
+    - cron: "13,28,43,58 * * * *"
   workflow_dispatch:
     inputs:
       telegram_test:
