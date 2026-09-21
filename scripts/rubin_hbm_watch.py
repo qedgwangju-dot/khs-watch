@@ -59,6 +59,10 @@ QUERIES = [
         "memory_migration",
         '(Rubin OR "Rubin Ultra" OR HBM) (DDR5 OR SOCAMM2 OR eSSD OR "enterprise SSD" OR "KV cache" OR offload OR pooling OR "8-Hi" OR "12-Hi" OR "4-Hi" OR 8단 OR 12단 OR 4단)',
     ),
+    (
+        "memory_migration",
+        'TrendForce HBM "KV cache" (offload OR offloading OR HBF OR "SSD POD" OR CMX OR "8-Hi" OR "12-Hi" OR "4-Hi")',
+    ),
 ]
 
 CATEGORY_KO = {
