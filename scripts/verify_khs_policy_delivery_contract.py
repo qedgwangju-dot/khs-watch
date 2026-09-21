@@ -79,6 +79,7 @@ def main() -> int:
     assert_policy_source_links_are_html_safe()
     assert_policy_timeline_dates_are_bold_and_source_is_clickable()
     assert_ai_force_has_exclusive_telegram_route()
+    assert_trusted_policy_bundle_dedupes_and_dates_are_source_faithful()
     assert_domestic_telecom_title_gate_and_semantic_dedupe()
     assert_router_explains_current_fcc_documents()
     assert_runtime_patch_accepts_mofcom_watch_source()
@@ -248,6 +249,53 @@ def assert_ai_force_has_exclusive_telegram_route() -> None:
         raise AssertionError("AI Force alert is not classified into the dedicated route")
     if khs_trusted_policy_news_watch.is_ai_force_alert(non_ai_alert):
         raise AssertionError("Non-AI Trump policy alert leaked into the AI Force route")
+
+
+def assert_trusted_policy_bundle_dedupes_and_dates_are_source_faithful() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "trump_direct_policy_remarks_watch"
+    )
+    ai_item = {
+        "title": "Trump says he will create AI Force, name AI czar",
+        "source": "Reuters",
+        "published_kst": "2026-09-20T02:25:00+09:00",
+        "link": "https://example.com/ai-force",
+    }
+    ai_profile = khs_trusted_policy_news_watch.trump_story_profile(ai_item["title"])
+    if (ai_profile or {}).get("event_date") != "2026년 9월 19일":
+        raise AssertionError("AI Force event date should use the source event date, not KST RSS publication date")
+    ai_rendered = khs_trusted_policy_news_watch.render_alert(
+        rule, [ai_item], dt.datetime(2026, 9, 21, 18, 58, tzinfo=ZoneInfo("Asia/Seoul"))
+    )
+    if "- 발표일: 2026년 9월 19일" not in ai_rendered:
+        raise AssertionError("AI Force alert rendered the wrong announcement date")
+    if "원천시각 2026년 9월 20일 02:25 KST" not in ai_rendered:
+        raise AssertionError("Trusted-policy source timestamp was not Koreanized")
+
+    ukraine_1 = {
+        "title": "Trump says Russia Ukraine talks remain difficult",
+        "source": "Reuters",
+        "published_kst": "2026-09-19T07:20:53+09:00",
+        "link": "https://example.com/ukraine-1",
+    }
+    ukraine_2 = {
+        "title": "Trump says Putin Zelenskiy meeting still possible",
+        "source": "Reuters",
+        "published_kst": "2026-09-19T05:57:00+09:00",
+        "link": "https://example.com/ukraine-2",
+    }
+    alerts = [
+        {"rule": rule, "items": [ukraine_1]},
+        {"rule": rule, "items": [ukraine_2]},
+    ]
+    deduped = khs_trusted_policy_news_watch.dedupe_alerts_for_display(alerts)
+    if len(deduped) != 1:
+        raise AssertionError(f"Duplicate rendered Trump/Ukraine alerts were not collapsed: {len(deduped)}")
+    profile = khs_trusted_policy_news_watch.trump_story_profile(ukraine_1["title"]) or {}
+    core = str(profile.get("core") or "")
+    if "의입니다" in core or len(core) > 50:
+        raise AssertionError(f"Trump/Ukraine compact core is malformed or too long: {core!r}")
 
 
 def assert_foreign_first_policy_sources() -> None:
