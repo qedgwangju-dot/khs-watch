@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import html
 import re
+import hashlib
 import sys
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -112,18 +113,19 @@ def _policy_kind(title: str, requested_kind: str) -> str:
 
     if not any(x in low for x in ["smr", "소형모듈원자로", "소형모듈원전", "혁신형"]):
         return ""
-    if any(x in low for x in ["특별법", "시행령", "법 시행", "본격 시행"]):
-        return "smr_special_law"
+    # 특별법을 다시 언급한 기사라도 실제 후속 집행 단계가 생기면 그 단계가 우선이다.
     if any(x in low for x in ["기본계획", "시행계획", "로드맵"]):
         return "smr_basic_plan"
     if any(x in low for x in ["예산", "지원금", "재원", "보조", "국비", "총사업비"]):
         return "smr_budget"
     if any(x in low for x in ["특구", "연구개발특구", "연구개발 특구"]):
         return "smr_special_zone"
-    if any(x in low for x in ["공동출자", "민관합작", "합작회사", "주주", "출자회사", "연구조합"]):
+    if any(x in low for x in ["공동출자", "공동 출자", "민관합작", "민관 합작", "합작회사", "주주", "출자회사", "연구조합"]):
         return "smr_public_private_company"
     if any(x in low for x in ["핵연료", "연료 공급망", "우라늄", "농축", "연료가공"]):
         return "smr_fuel_supply"
+    if any(x in low for x in ["특별법", "시행령", "법 시행", "본격 시행"]):
+        return "smr_special_law"
     return ""
 
 
@@ -184,6 +186,42 @@ def _extract_v9(source, page_text):
 
 
 j2.base.extract_items = _extract_v9
+
+
+_PREV_FINGERPRINT = j2.base.fingerprint
+
+
+def _semantic_smr_fingerprint_v9(source: str, title: str, url: str) -> str:
+    low = (title or "").lower()
+    if not any(x in low for x in ["smr", "소형모듈원자로", "소형모듈원전", "혁신형"]):
+        return _PREV_FINGERPRINT(source, title, url)
+
+    kind = _policy_kind(title, "ismr_license_rss") or _policy_kind(title, "smr_policy_rss")
+    if not kind:
+        return _PREV_FINGERPRINT(source, title, url)
+
+    # 2026-09-11 특별법·시행령 시행은 하나의 기준선 사건이다.
+    # 이후 다른 매체가 같은 시행 사실을 재보도해도 신규 알림으로 만들지 않는다.
+    if kind == "smr_special_law":
+        state = "2026-09-11|법률21422|대통령령36643"
+    elif kind == "smr_basic_plan":
+        state = "basic_plan|" + "|".join(x for x in ["기본계획", "시행계획", "로드맵", "2027"] if x in low)
+    elif kind == "smr_budget":
+        nums = re.findall(r"\d[\d,.]*(?:조원|억원|만원|원)", title)
+        state = "budget|" + ("|".join(nums) if nums else "amount_pending")
+    elif kind == "smr_special_zone":
+        state = "zone|" + "|".join(x for x in ["특구", "연구개발특구", "지정", "선정", "공모"] if x in low)
+    elif kind == "smr_public_private_company":
+        state = "company|" + "|".join(x for x in ["공동출자", "공동 출자", "민관합작", "민관 합작", "합작회사", "출자회사", "연구조합", "설립", "출범"] if x in low)
+    elif kind == "smr_fuel_supply":
+        state = "fuel|" + "|".join(x for x in ["핵연료", "공급계약", "우라늄", "농축", "연료가공"] if x in low)
+    else:
+        state = "licensing|" + "|".join(x for x in ["표준설계인가", "건설허가", "심사", "승인", "검증시험"] if x in low)
+
+    return hashlib.sha256(f"janus-v9-smr|{kind}|{state}".encode("utf-8")).hexdigest()
+
+
+j2.base.fingerprint = _semantic_smr_fingerprint_v9
 
 
 def _event_title_ko(event: dict) -> str:
