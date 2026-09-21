@@ -1022,13 +1022,13 @@ def _self_test() -> int:
 
     ambiguous_total_rows = [
         {
-            "title": "대미투자 원전 AP1000·APR1400 포함 총 8기 건설 보도",
+            "title": "대미투자 AP1000·APR1400 포함 원전 8기 건설 보도",
             "source": "한국경제",
             "link": "https://www.hankyung.com/example",
             "published": "2026-09-20T00:10:00+00:00",
         },
         {
-            "title": "미국 원전 AP1000과 APR1400 포함 전체 8기 협의",
+            "title": "미국 AP1000과 APR1400 포함 원전 8기 협의",
             "source": "머니투데이",
             "link": "https://www.mt.co.kr/example",
             "published": "2026-09-20T00:11:00+00:00",
