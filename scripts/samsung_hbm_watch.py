@@ -128,7 +128,8 @@ QUERIES = [
 
 TRUSTED = (
     "samsung", "reuters", "bloomberg", "trendforce", "counterpoint", "investing.com",
-    "sedaily", "seoul economic", "서울경제", "zdnet", "the elec", "thelec", "digitimes",
+    "sedaily", "seoul economic", "서울경제", "seoul newspaper", "서울신문",
+    "zdnet", "the elec", "thelec", "digitimes",
     "yonhap", "연합뉴스", "chosunbiz", "조선비즈", "newsis", "뉴시스",
     "kita", "한국무역협회", "k-stat", "trass", "한국무역통계진흥원",
     "customs", "관세청", "icheon", "이천시", "intel",
@@ -200,6 +201,8 @@ def source_rank(source: str) -> int:
         return 85
     if "investing.com" in low or "sedaily" in low or "seoul economic" in low or "서울경제" in low:
         return 80
+    if "seoul newspaper" in low or "서울신문" in low:
+        return 75
     if "zdnet" in low or "thelec" in low or "the elec" in low or "yonhap" in low or "연합뉴스" in low:
         return 75
     return 20
