@@ -458,6 +458,12 @@ def main() -> None:
 
             source = x.get("source") or "미상"
             title = clean_title(x["title"], source)
+            # Final user-facing safeguard: if a module leaves a Chinese/Japanese
+            # headline untranslated, fall back to the already-Korean event category
+            # instead of exposing foreign prose. Product/company identifiers may
+            # remain in Latin script inside Korean titles.
+            if re.search(r'[\u3400-\u9fff]', title) and not re.search(r'[가-힣]', title):
+                title = cat
             source_time = esc_text(source)
             if when:
                 source_time += f" · {esc_text(when)} KST"
