@@ -317,7 +317,8 @@
     "4121374c24df29e64183": "2026-09-16T06:11:26.022367+00:00",
     "f0a11d35bf8231801184": "2026-09-16T06:11:26.022367+00:00",
     "71cc80009e8621dbf213": "2026-09-16T06:11:26.022367+00:00",
-    "e3ba2c59cbe6d521312b": "2026-09-16T06:11:26.022367+00:00"
+    "e3ba2c59cbe6d521312b": "2026-09-16T06:11:26.022367+00:00",
+    "stateevt_3c0a53f273b73cf8dedc": "2026-09-21T13:09:37.973411+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -326,7 +327,8 @@
     "ercot_large_load_official": "2026-09-13T10:23:18.406888+00:00",
     "nuclear_fuel_cycle_pyro_media": "2026-09-15T12:37:30.310054+00:00",
     "funding_45day_media": "2026-09-15T12:37:30.310054+00:00",
-    "westinghouse_stake_media": "2026-09-15T17:19:09.625659+00:00"
+    "westinghouse_stake_media": "2026-09-15T17:19:09.625659+00:00",
+    "eventstate_power_equipment_supply_3c0a53f273b73cf8dedc": "2026-09-21T13:09:37.973411+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -369,45 +371,29 @@
     },
     "power_equipment_supply": {
       "facts": [
-        "party:doosan"
+        "party:doosan",
+        "stage:수주발주"
       ],
       "slots": {
-        "power_equipment_supply|party:doosan": "party:doosan"
+        "power_equipment_supply|party:doosan": "party:doosan",
+        "power_equipment_supply|stage:수주발주": "stage:수주발주"
       },
       "initialized_at": "2026-09-20T23:28:34.897206+00:00",
-      "updated_at": "2026-09-20T23:28:34.897206+00:00",
-      "last_title": "[K-TECH 글로벌 리더스]글로벌 에너지 선도기업 거듭나는 두산에너빌리티…가스터빈·SMR 생산 확충에 2조 투입 - v.daum.net",
-      "last_source": "v.daum.net",
+      "updated_at": "2026-09-21T13:09:56.470890+00:00",
+      "last_title": "[오늘 이 종목] AI 서버 수주부터 가스터빈까지…공급 부족 수혜주는? - 머니투데이 - 머니투데이",
+      "last_source": "머니투데이",
       "evidence": [
         {
-          "source": "v.daum.net",
-          "title": "반토막 난 '텐배거' 두산에너빌리티⋯대미투자에 다시 쏠린 눈 - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5raHZ3cl8yNTFqYUVUa2VVLUM3M1lSSlR3S0xORmtBUWNOUWxKWjFYMnpqZ0pDQ1NleXNaVE41Y1NNN2NIOWc?oc=5",
-          "published": "2026-09-18T06:18:07+00:00"
-        },
-        {
-          "source": "뉴시스",
-          "title": "韓美, 대미 투자 막판 조율…두산에너빌리티, 핵심 소재 공급 역량 '관심' - 뉴시스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA4RmR3QkVoMHBiRnBYNHA2Rl94TzA3OTh5TmVVNjYyb0VzRkdrNGk4OVhMMVNvRnE4MWNiOG5kajBUdTdUWjRWbXdzTU9rV2hpamVVY3JGeHRoanhTR1FMddIBeEFVX3lxTFAzdGdoZEJwTWk3MnYzUVFUUEJtZXFScjVwXzZlLU84TmhLbk1TSXJyeGltdXc2R3ZJbnI3eEV6VDdkdXBuY19QR0tNVDZsdUZfU3Y0VFNlZWdoblZsS3RDalR2LWNfeWpwRlpMSVBVdVlpTUlHOFBIMg?oc=5",
-          "published": "2026-09-16T05:13:44+00:00"
-        },
-        {
-          "source": "widedaily.com",
-          "title": "480조 대미 투자 눈앞…두산에너빌리티, 'LNG·원전·SMR' 수주 잭팟 정조준 - widedaily.com",
+          "source": "와이드경제",
+          "title": "480조 대미 투자 눈앞…두산에너빌리티, 'LNG·원전·SMR' 수주 잭팟 정조준 - 와이드경제",
           "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE94aFAyWHZrbEYyMXpTLWhlcFlBNWZiS0pCX1dQX0d1UjdZSHpfbXRzOEVQODE4WHZEU1QycGsydWdscDh1Vk1kWjNidC1FYzBPTkVnRlV0cHNjelU4SjloakE0Mm1QSEJXTS1Odw?oc=5",
           "published": "2026-09-16T07:21:42+00:00"
         },
         {
-          "source": "파이낸셜뉴스",
-          "title": "韓美, 대미 투자 막판 조율…두산에너빌리티, 핵심 소재 공급 역량 '관심' - 파이낸셜뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1kWVhUemxiUnZfU2t6VXpPNGpVd2lMZHBnbFJRZmRVN2w0Y29XVWxPQU1GYU1pdmhZQVZob0l2SmVHNzBDU1pZa2FoVng4RTF2T2RHRkc2SjI2UQ?oc=5",
-          "published": "2026-09-16T05:14:37+00:00"
-        },
-        {
-          "source": "ainews1.co.kr",
-          "title": "3500억달러 대미 에너지 투자…두산에너빌리티·한전기술 수혜 기대 - ainews1.co.kr",
-          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9WcDA2OGF4WmxUdzJmTFRtTWtDRFBwV0JjelF0YTN5eXJ1ZkQtRVZUaUZFVVRmd3NscHNfX3U0cGJWbk91d25QQkZvbDlOWk82YnI2OUFITzRJWVQ2N1RNalFtVXcxbUlDU0V3?oc=5",
-          "published": "2026-09-15T14:44:23+00:00"
+          "source": "머니투데이",
+          "title": "[오늘 이 종목] AI 서버 수주부터 가스터빈까지…공급 부족 수혜주는? - 머니투데이 - 머니투데이",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9aZnl2bU1lSy1zV3p0RC1fck1MdWV2NHM4SWpaYkYwbGU2dUxod2VrLUx4MlF4QXZFZHRUNnYzZXRPTjI1cmtyU19hVGJReHJwZlZsNjJZSjlNSEFVOUJfb3ZXRVNCMWJQRlI1UWln0gFuQVVfeXFMT1pmeXZtTWVLLXNXenRELV9yTUx1ZXY0czhJalpiRjBsZTZ1TGh3ZWstTHgyUXhBdkVkdFQ2djNldE9OMjVya3JTX2FUYlF4cnBmVmw2MllKOU1IQVU5Ql9vdldFU0IxYlBGUjVRaWc?oc=5",
+          "published": "2026-09-21T03:03:33+00:00"
         }
       ]
     },
