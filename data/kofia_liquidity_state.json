@@ -1,17 +1,17 @@
 {
-  "fingerprint": "5e29f8918b63702a70727b912cdbbfa4844f48c0b593dd509ec3a18cbb365bff",
+  "fingerprint": "0c41ec5b7bb2db807ff35a6a39b6fdd374e7c32eeaff1ede6a44df04e76e9c52",
   "dates": {
-    "deposit": "20260917",
+    "deposit": "20260918",
     "mmf": "20260917",
-    "cma": "20260917",
-    "credit": "20260917"
+    "cma": "20260918",
+    "credit": "20260918"
   },
   "values": {
     "deposit": {
-      "date": "20260917",
-      "value": 97491073,
-      "d1": -2083791,
-      "d5": -10166203
+      "date": "20260918",
+      "value": 98334648,
+      "d1": 843575,
+      "d5": -8721353
     },
     "mmf": {
       "date": "20260917",
@@ -20,28 +20,28 @@
       "d5": 10927877
     },
     "cma": {
-      "date": "20260917",
-      "value": 102262607,
-      "d1": -245006,
-      "d5": -4002001
+      "date": "20260918",
+      "value": 102480283,
+      "d1": 217676,
+      "d5": -1328569
     },
     "credit": {
-      "date": "20260917",
-      "value": 33073017,
-      "d1": -508,
-      "d5": 713124
+      "date": "20260918",
+      "value": 32914624,
+      "d1": -158393,
+      "d5": 649736
     },
     "receivable": {
-      "date": "20260917",
-      "value": 1013774
+      "date": "20260918",
+      "value": 890406
     },
     "forced": {
-      "date": "20260917",
-      "value": 24620,
-      "ratio": 2.4
+      "date": "20260918",
+      "value": 4637,
+      "ratio": 0.5
     }
   },
-  "last_event": "동일 기준일 수정치",
+  "last_event": "신규 공식값",
   "source": "KOFIA FreeSIS",
   "source_url": "https://freesis.kofia.or.kr/stat/main.do"
 }
