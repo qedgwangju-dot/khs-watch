@@ -11,6 +11,7 @@ Generic frontier-model launches are deliberately excluded from robot alerts.
 """
 from __future__ import annotations
 
+import hashlib
 import re
 import sys
 from pathlib import Path
@@ -24,6 +25,7 @@ base = readable.base
 base.QUERIES.extend([
     '(삼현 OR SAMHYUN) (휴머노이드 OR humanoid OR 로봇 OR robot) (액추에이터 OR actuator OR 모터 OR 감속기 OR 제어기) (20곳 OR 20개 OR 4건 OR 프로토타입 OR prototype OR 양산 OR 수주 OR 고객 OR 공급)',
     '(삼현 OR SAMHYUN) (액추에이터 OR actuator) (생산능력 OR capacity OR 50만 OR 100만 OR 150만 OR 창원 2공장 OR 5PPM)',
+    '(삼현 OR SAMHYUN) (AXLON OR 액슬론 OR 휴머노이드) (초도 양산 OR 양산 수주 OR 북미 OR 12월 OR 첫 출하 OR 후속 발주 OR 추가 수주)',
     '(XPENG OR 샤오펑 OR 小鹏) (IRON OR 휴머노이드 OR humanoid OR 人形机器人) (양산 OR mass production OR 생산라인 OR production line OR 출하 OR delivery OR 2026 OR 2027)',
     '(LG전자 OR "LG Electronics") (AXIUM OR 악시움 OR 액추에이터 OR actuator) (빅테크 OR "Big Tech" OR 수주 OR 공급 OR 고객 OR 10월 OR October OR 양산 OR mass production)',
     '(베어로보틱스 OR "Bear Robotics") (상장 OR IPO OR Nasdaq OR 나스닥 OR 프리IPO OR pre-IPO OR 투자유치 OR valuation)',
@@ -44,7 +46,43 @@ _orig_category = base.category
 _orig_meaning = base.meaning
 _orig_risk = base.risk
 _orig_verification = base.verification
+_orig_key = base.key
 _orig_same_event = ext._same_event
+
+
+SAMHYUN_INITIAL_MASS_ORDER = re.compile(
+    r'초도\s*양산.{0,30}(?:수주|물량|공급)|양산\s*물량.{0,30}수주|'
+    r'양산\s*수주|초도\s*수주|mass[-\s]*production.{0,24}(?:order|award)|'
+    r'(?:order|award).{0,24}mass[-\s]*production',
+    re.I,
+)
+SAMHYUN_FIRST_SHIPMENT = re.compile(
+    r'첫\s*출하|초도\s*출하|출하\s*(?:시작|개시|완료)|공급\s*(?:개시|완료)|'
+    r'납품\s*(?:시작|개시|완료)|first\s*shipment|shipments?\s*(?:started|began)|'
+    r'deliver(?:y|ies)\s*(?:started|began)',
+    re.I,
+)
+SAMHYUN_REPEAT_ORDER = re.compile(
+    r'후속\s*(?:발주|수주|주문)|추가\s*(?:발주|수주|주문)|반복\s*발주|'
+    r'follow[-\s]*on\s*order|repeat\s*order|additional\s*order',
+    re.I,
+)
+SAMHYUN_PROTO = re.compile(r'프로토타입|prototype|샘플\s*발주|sample\s*order|\bAward\b|Spec[-\s]*in', re.I)
+SAMHYUN_CAPA = re.compile(r'생산\s*능력|capacity|창원\s*2공장|50만|100만|150만|5\s*PPM|자동화\s*생산라인', re.I)
+
+
+def _samhyun_stage(text: str) -> str:
+    if SAMHYUN_REPEAT_ORDER.search(text):
+        return 'follow_on_order'
+    if SAMHYUN_FIRST_SHIPMENT.search(text) and not re.search(r'예정|계획|오는\s*12월|12월부터|will\s+(?:start|begin)|scheduled', text, re.I):
+        return 'first_shipment'
+    if SAMHYUN_INITIAL_MASS_ORDER.search(text):
+        return 'initial_mass_production_order'
+    if SAMHYUN_CAPA.search(text):
+        return 'capacity_ramp'
+    if SAMHYUN_PROTO.search(text):
+        return 'prototype_award'
+    return 'pipeline'
 
 
 def topic_group(text: str) -> str | None:
@@ -70,11 +108,17 @@ def score(item: dict) -> int:
 
     if group == 'samhyun':
         s = 10
+        stage = _samhyun_stage(text)
         if base.NUMERIC.search(text): s += 3
         if re.search(r'20\s*(?:곳|개|companies)|20곳\s*이상', text, re.I): s += 4
-        if re.search(r'4\s*건|글로벌\s*2건|국내\s*2건|prototype|프로토타입|Award|수주\s*성공', text, re.I): s += 5
-        if re.search(r'양산|mass production|창원\s*2공장|50만|100만|150만|5\s*PPM', text, re.I): s += 4
-        if source in base.TRUSTED: s += 2
+        if stage == 'prototype_award': s += 5
+        if stage == 'capacity_ramp': s += 6
+        if stage == 'initial_mass_production_order': s += 14
+        if stage == 'first_shipment': s += 15
+        if stage == 'follow_on_order': s += 16
+        if re.search(r'AXLON|액슬론|3[-\s]*in[-\s]*1|12종|북미|North\s*America', text, re.I): s += 4
+        if source in base.OFFICIAL_OR_PRIMARY: s += 5
+        elif source in base.TRUSTED: s += 2
         return s
 
     if group == 'xpeng':
@@ -114,7 +158,14 @@ def score(item: dict) -> int:
 
 def _raw_cat(text: str, group: str) -> str:
     if group == 'samhyun':
-        if re.search(r'생산능력|capacity|창원\s*2공장|50만|100만|150만', text, re.I):
+        stage = _samhyun_stage(text)
+        if stage == 'follow_on_order':
+            return '후속 양산 발주·물량 확대'
+        if stage == 'first_shipment':
+            return '첫 양산 출하·공급 개시'
+        if stage == 'initial_mass_production_order':
+            return '글로벌 휴머노이드 초도 양산 수주'
+        if stage == 'capacity_ramp':
             return '생산능력·양산 준비'
         return '고객 파이프라인·양산 프로토타입'
     if group == 'xpeng':
@@ -148,6 +199,9 @@ def meaning(cat: str) -> str:
     mapping = {
         '고객 파이프라인·양산 프로토타입': '삼현이 단순 샘플 협의를 넘어 양산 프로토타입 계약과 다수 글로벌 고객 파이프라인을 확보하는지 봅니다. 4건의 Award가 실제 양산 수주·납품 물량으로 전환되는지가 핵심입니다.',
         '생산능력·양산 준비': '고객 요청에 앞서 액추에이터·모터 생산능력을 선제 확대하는 단계입니다. 가동률과 수율이 동반되면 외부 휴머노이드 OEM 주문을 빠르게 매출로 전환할 수 있습니다.',
+        '글로벌 휴머노이드 초도 양산 수주': '삼현이 프로토타입·고객 검증 단계를 넘어 실제 글로벌 휴머노이드 고객사의 초도 양산 물량을 확보한 단계 변화입니다. 고객 실명·수량·단가는 NDA로 비공개이므로 12월 첫 출하와 후속 발주가 실제 매출 규모를 가르는 다음 확인점입니다.',
+        '첫 양산 출하·공급 개시': '양산 수주가 실제 출하와 매출 인식으로 넘어가는 단계입니다. 출하 수량·인식 매출·초기 수율·불량률·고객 재주문을 함께 확인합니다.',
+        '후속 양산 발주·물량 확대': '초도 공급이 반복 주문으로 전환돼 고객 검증이 상업적 확대로 이어지는 가장 강한 신호입니다. 후속 발주 규모와 납기, 생산라인 가동률을 확인합니다.',
         'IRON 생산라인·양산 전환': '샤오펑 IRON이 연구 시제품에서 실제 생산라인 제조로 넘어간 신호입니다. 2026년 말 양산과 2027년 외부 고객 인도가 물량·부품 발주로 연결되는지 봅니다.',
         'AXIUM 고객·수주 전환': 'LG전자가 AXIUM을 기술 공개 단계에서 글로벌 고객 수주 단계로 옮기는 신호입니다. 10월 빅테크 기술·생산 미팅 이후 고객 실명·계약 물량이 나오는지가 핵심입니다.',
         '베어로보틱스 가치·상장 상태': '베어로보틱스의 외부 가치평가·자금조달·상장 상태가 LG전자 로봇 자산의 시장가치 기준점으로 작용할 수 있습니다.',
@@ -161,6 +215,9 @@ def risk(cat: str) -> str:
     mapping = {
         '고객 파이프라인·양산 프로토타입': '프로토타입 계약은 대량 양산 계약과 다릅니다. 고객 실명·단가·납기·반복 발주와 실제 양산 수주 전환을 확인해야 합니다.',
         '생산능력·양산 준비': '증설이 주문보다 앞서면 가동률·감가상각 부담이 먼저 커질 수 있습니다. 생산능력보다 실제 양산 수주가 더 중요합니다.',
+        '글로벌 휴머노이드 초도 양산 수주': '수주금액·공급수량·고객명이 NDA로 비공개라 실적 민감도를 아직 계산할 수 없습니다. 가장 현실적인 실패 경로는 12월 초도 공급 이후 수율·품질 또는 고객 일정 문제로 후속 발주가 늦어지는 경우입니다.',
+        '첫 양산 출하·공급 개시': '첫 출하는 안정 양산과 다릅니다. 초기 수율·재작업·반품·교환 접수와 보증비용이 높으면 매출 증가보다 원가 부담이 먼저 나타날 수 있습니다.',
+        '후속 양산 발주·물량 확대': '반복 발주가 한 고객에 집중되면 고객 의존도가 커질 수 있습니다. 복수 고객사 양산 전환과 평균판매단가·마진 유지 여부를 같이 봅니다.',
         'IRON 생산라인·양산 전환': '생산라인 가동과 대량 판매는 다릅니다. 수율·주간 생산량·실제 인도 대수·안전성 검증이 늦어지면 상용화 일정이 밀릴 수 있습니다.',
         'AXIUM 고객·수주 전환': '현재는 수주 협의 단계이며 특정 빅테크 계약은 아직 확정되지 않았습니다. 10월 미팅 이후 고객 인증·납품 단가·수량을 확인해야 합니다.',
         '베어로보틱스 가치·상장 상태': '상장 보도와 확정 일정은 구분해야 합니다. LG전자는 해외 상장에 대해 결정된 바 없다고 공시한 만큼 실제 이사회·공시·투자조건을 우선합니다.',
@@ -172,6 +229,9 @@ def risk(cat: str) -> str:
 def verification(item: dict, group: str, text: str) -> str:
     source = item.get('source') or ''
     if group == 'samhyun':
+        stage = _samhyun_stage(text)
+        if stage in {'initial_mass_production_order','first_shipment','follow_on_order'}:
+            return '삼현 회사 발표 기반 보도 · 고객사·수주액·공급수량은 NDA 비공개 · 공식 공시/첫 출하 후속 확인'
         return 'CEO 간담회·증권사 기반 보도 · 양산 수주 전환 확인 필요'
     if group == 'xpeng':
         return 'XPENG 공식자료' if source in base.OFFICIAL_OR_PRIMARY else '공식 일정과 교차확인된 보도'
@@ -194,8 +254,14 @@ def same_event(a: dict, b: dict) -> bool:
     tb = f"{b.get('title','')} {b.get('description','')}"
     g = a.get('group')
     if g == 'samhyun':
-        if re.search(r'20\s*(?:곳|개)|4\s*건|프로토타입|prototype|양산', ta, re.I) and re.search(r'20\s*(?:곳|개)|4\s*건|프로토타입|prototype|양산', tb, re.I):
-            return True
+        sa, sb = _samhyun_stage(ta), _samhyun_stage(tb)
+        if sa != sb:
+            return False
+        nums_a = set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|대|개|건|월)', ta))
+        nums_b = set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|대|개|건|월)', tb))
+        if nums_a and nums_b:
+            return bool(nums_a.intersection(nums_b))
+        return True
     if g == 'xpeng' and re.search(r'IRON', ta, re.I) and re.search(r'IRON', tb, re.I):
         if re.search(r'생산라인|production line|양산|mass production|2026|2027', ta, re.I) and re.search(r'생산라인|production line|양산|mass production|2026|2027', tb, re.I):
             return True
@@ -209,6 +275,15 @@ def same_event(a: dict, b: dict) -> bool:
         if bear_a and bear_b:
             return True
     return False
+
+
+def key(item: dict) -> str:
+    text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if base.topic_group(text) == 'samhyun':
+        stage = _samhyun_stage(text)
+        brand = 'axlon' if re.search(r'AXLON|액슬론', text, re.I) else 'samhyun-actuator'
+        return hashlib.sha256(f'samhyun|humanoid-actuator|{brand}|{stage}'.encode()).hexdigest()
+    return _orig_key(item)
 
 
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
@@ -241,6 +316,7 @@ base.category = category
 base.meaning = meaning
 base.risk = risk
 base.verification = verification
+base.key = key
 base.select_diverse = select_diverse
 
 if __name__ == '__main__':
