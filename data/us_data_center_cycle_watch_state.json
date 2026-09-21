@@ -11,40 +11,36 @@
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
     "reported_mom_pct": 6.2,
     "reported_yoy_pct": 57.2,
-    "retrieved_at_utc": "2026-09-21T14:26:33.573041+00:00",
+    "retrieved_at_utc": "2026-09-21T19:40:38.256163+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
     "year_ago_saar_musd": 47810
   },
   "dodge": {
-    "article_sha256": "f54bb44571d37f5c5c7672c7ec017e9f3ec0b4752787b862972b01edd7590eb8",
-    "commercial_change_pct": 70.0,
-    "data_center_mention_count": 6,
+    "article_sha256": "a2ce95d3a9094251e92d3cec66bd894d7259b8f50f7ffa115aa411a88c02e3a5",
+    "commercial_change_pct": 48.6,
+    "data_center_mention_count": 4,
     "data_center_projects": [
       {
-        "amount_usd_bn": 12.8,
-        "label_ko": "Project Jupiter Data Center and Microgrid Phase 1 데이터센터 부문"
+        "amount_usd_bn": 3.5,
+        "label_ko": "Amazon STACK Blanchard State Line Data Center (780 MW) 데이터센터 부문"
       },
       {
-        "amount_usd_bn": 4.0,
-        "label_ko": "Amazon STACK Highway 3 Data Center 데이터센터 부문"
-      },
-      {
-        "amount_usd_bn": 2.3,
-        "label_ko": "Project Jupiter Data Center and Microgrid Phase 1 마이크로그리드 부문"
+        "amount_usd_bn": 3.2,
+        "label_ko": "Clarksville Hyperscale Data Center 데이터센터 부문"
       }
     ],
     "index_url": "https://www.construction.com/category/total-construction-starts/",
-    "nonresidential_change_pct": 57.7,
-    "office_dc_change_pct": 107.9,
-    "published": "2026-08-20T21:00:03+00:00",
-    "retrieved_at_utc": "2026-09-21T14:26:34.097098+00:00",
+    "nonresidential_change_pct": 32.0,
+    "office_dc_change_pct": -31.3,
+    "published": "2026-09-21T15:21:49+00:00",
+    "retrieved_at_utc": "2026-09-21T19:40:38.836880+00:00",
     "source": "Dodge Construction Network Total Construction Starts",
-    "title": "Construction Starts Rebound July 2026",
-    "total_change_pct": 25.6,
-    "total_starts_saar_usd_bn": 1790.0,
-    "url": "https://www.construction.com/construction-starts-rebound-july-2026/",
-    "utility_change_pct": 44.7
+    "title": "Construction Starts Fall Back 24 8 In August",
+    "total_change_pct": 24.8,
+    "total_starts_saar_usd_bn": 1340.0,
+    "url": "https://www.construction.com/construction-starts-fall-back-24-8-in-august/",
+    "utility_change_pct": null
   },
   "format_version": 5,
   "fx": {
@@ -53,6 +49,6 @@
     "source_type": "일일 기준환율",
     "usdkrw": 1388.1
   },
-  "updated_at_utc": "2026-09-21T14:26:32.245995+00:00",
+  "updated_at_utc": "2026-09-21T19:40:37.216843+00:00",
   "watch": "US data center construction starts vs spending"
 }
