@@ -15,6 +15,7 @@ import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from scripts.khs_source_fetch import fetch_text as shared_fetch_text
 
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
@@ -146,9 +147,15 @@ def clean_text(value: str | None) -> str:
 
 
 def fetch_text(url: str) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": "KHS-nuclear-policy-watch contact=github-actions"})
-    with urllib.request.urlopen(req, timeout=20) as resp:
-        return resp.read().decode(resp.headers.get_content_charset() or "utf-8", errors="replace")
+    text, error = shared_fetch_text(
+        url,
+        "KHS-nuclear-policy-watch contact=github-actions",
+        timeout=20,
+        attempts=2,
+    )
+    if error is not None or text is None:
+        raise RuntimeError(error or "empty response")
+    return text
 
 
 def parse_date(text: str) -> dt.datetime | None:
