@@ -131,7 +131,8 @@ GLOBAL_COMPONENT = re.compile(
     r'코어리스\\s*모터|coreless\\s*motor|인코더|encoder|'
     r'토크\\s*센서|torque\\s*sensor|힘\\s*센서|force\\s*sensor|6축\\s*힘|6[- ]axis\\s*force|'
     r'촉각\\s*센서|tactile\\s*sensor|전자피부|electronic\\s*skin|e[- ]skin|'
-    r'3D\\s*카메라|3D\\s*camera|라이다|LiDAR|IMU|관성\\s*센서|inertial\\s*sensor',
+    r'3D\\s*카메라|3D\\s*camera|라이다|LiDAR|IMU|관성\\s*센서|inertial\\s*sensor|'
+    r'로봇\\s*핸드|로봇핸드|dexterous\\s*hand|robot\\s*hand|灵巧手|gripper|그리퍼',
     re.I,
 )
 GLOBAL_COMMERCIAL = re.compile(
@@ -167,10 +168,13 @@ GLOBAL_COMPANY_PATTERNS = [
     ('Orbbec', r'Orbbec|奥比中光'),
     ('RoboSense', r'RoboSense|速腾聚创'),
     ('Hesai', r'Hesai|禾赛'),
+    ('Unitree', r'Unitree|유니트리|宇树'),
 ]
 
 
 def _component_family(text: str) -> str:
+    if DEXTEROUS_HAND.search(text):
+        return '로봇핸드·그리퍼'
     if re.search(r'하모닉|harmonic|谐波|RV\\s*감속기|RV\\s*reducer|롤러\\s*스크루|roller\\s*screw|滚柱丝杠', text, re.I):
         return '감속기·롤러스크루'
     if re.search(r'프레임리스|frameless|코어리스|coreless|인코더|encoder', text, re.I):
@@ -183,6 +187,8 @@ def _component_family(text: str) -> str:
 
 
 def _component_stage(text: str) -> str:
+    if _is_unitree_hand(text) and (HAND_LAUNCH.search(text) or HAND_PRICE.search(text)):
+        return '제품출시·가격'
     if GLOBAL_ORDER.search(text):
         return '고객선정·수주·수주잔고'
     if GLOBAL_MASS.search(text):
@@ -201,6 +207,8 @@ def _global_companies(text: str) -> set[str]:
 
 
 def _is_global_component(text: str) -> bool:
+    if _is_unitree_hand(text) and (HAND_LAUNCH.search(text) or HAND_PRICE.search(text) or HAND_DOF.search(text)):
+        return True
     return bool(HUMANOID.search(text) and GLOBAL_COMPONENT.search(text) and GLOBAL_COMMERCIAL.search(text))
 
 
@@ -308,6 +316,8 @@ def _is_component_policy(text: str) -> bool:
 def topic_group(text: str) -> str | None:
     if _is_component_policy(text):
         return 'humanoid_component_policy'
+    if _is_unitree_hand(text):
+        return 'humanoid_component_global'
     existing = _orig_topic_group(text)
     if existing is not None:
         return existing
@@ -350,6 +360,7 @@ def score(item: dict) -> int:
             '고객승인·신뢰성검증': 10,
             '생산능력·증설': 9,
             '수율·납기·가격': 8,
+            '제품출시·가격': 12,
             '제품화': 4,
         }.get(stage, 0)
         if _global_companies(text):
