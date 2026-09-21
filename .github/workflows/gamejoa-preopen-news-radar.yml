@@ -1,6 +1,11 @@
 name: GAMEJOA preopen news radar
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/gamejoa-preopen-news-radar.yml"
   # Native live fallback keeps the radar running if the Cloudflare GitHub
   # dispatch token expires. Cloudflare still owns the 06:30 preopen lane.
   schedule:
@@ -34,6 +39,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: gamejoa-preopen-news-radar
@@ -70,6 +76,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Re-enable existing KHS policy workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method PUT repos/${{ github.repository }}/actions/workflows/khs-policy-watch.yml/enable
 
       - name: Set up Python
         uses: actions/setup-python@v5
