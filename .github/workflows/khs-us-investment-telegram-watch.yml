@@ -16,7 +16,7 @@ on:
       - "data/khs_us_investment_watch_config.json"
   schedule:
     # GitHub cron is UTC. 15-minute monitoring, offset from other policy jobs.
-    - cron: "7,22,37,52 * * * *"
+    - cron: "2,17,32,47 * * * *"
   workflow_dispatch:
 
 permissions:
