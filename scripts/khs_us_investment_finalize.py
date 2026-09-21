@@ -160,10 +160,21 @@ def _current_state_block(flags: dict[str, bool]) -> list[str]:
         "공식확정" if "official_status:confirmed" in facts else "확인 중"
     )
 
+    # 정부가 세부 미확정이라고 밝힌 동안에는 기사에서 반복되는 AP1000/APR1400
+    # 숫자를 현재 기준처럼 표시하지 않는다. 전체 기수 역시 공식 확정치가 아니면
+    # 보도 기준으로만 분리한다.
+    if official == "미확정":
+        return [
+            "<b>📌 현재 기준</b>",
+            "• 대미투자 원전 프로젝트: <b>세부 미확정</b>",
+            "• 보도상 전체 8기 언급은 있으나 <b>AP1000/APR1400 노형별 기수·부지·사업자·투자금은 공식 확정 전</b>",
+            "• 새 기사 반복만으로 기수·노형 변경 알림을 만들지 않고, 정부·당사자 공식 확정 때만 상태를 변경",
+        ]
+
     return [
         "<b>📌 현재 기준</b>",
-        f"• 미국 원전 보도 기준: 전체 <b>{html.escape(total)}기</b> · AP1000 <b>{html.escape(ap1000)}기</b> · APR1400 <b>{html.escape(apr1400)}기</b>",
-        f"• 정부 공식상태: <b>{official}</b> · 노형별 기수는 공식 근거가 확인될 때만 변경 알림",
+        f"• 공식 원전 구성: 전체 <b>{html.escape(total)}기</b> · AP1000 <b>{html.escape(ap1000)}기</b> · APR1400 <b>{html.escape(apr1400)}기</b>",
+        f"• 정부 공식상태: <b>{official}</b>",
     ]
 
 
