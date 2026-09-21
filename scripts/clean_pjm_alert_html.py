@@ -14,6 +14,9 @@ HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-
 # Frequently recurring PJM headlines are translated deterministically first.
 # This avoids translation drift in the most important policy alerts.
 KNOWN_TRANSLATIONS = {
+    "H.R. 9340 Ratepayer Protection Act": "H.R.9340 데이터센터 전력비 비용배분 법안",
+    "S. 5028 Ratepayer Protection Act": "S.5028 데이터센터 전력비 비용배분 법안",
+    "S. 5199 GRID Savings Act": "S.5199 GRID Savings Act 대형부하 접속비용 법안",
     "FERC fails to shield PJM consumers from data center transmission costs: ratepayer advocates":
         "소비자단체 “FERC, PJM 데이터센터 송전비용으로부터 소비자 보호에 실패”",
     "PJM files backstop auction plan at FERC to meet capacity shortfall":
@@ -117,6 +120,8 @@ def translate_mymemory(text: str) -> str | None:
 
 def classify(text: str) -> str:
     low = text.lower()
+    if any(k in low for k in ("h.r. 9340", "hr 9340", "s. 5028", "s 5028", "s. 5199", "s 5199", "ratepayer protection act", "grid savings act")):
+        return "연방법안·비용배분"
     if any(k in low for k in ("consumer", "ratepayer", "transmission", "affordability", "cost allocation", "costs")):
         return "비용부담·송전망"
     if any(k in low for k in ("large load", "registry", "iras", "connect and manage", "connect data center", "connect data centre")):
@@ -130,6 +135,7 @@ def classify(text: str) -> str:
 
 def fallback_korean(theme: str) -> str:
     return {
+        "연방법안·비용배분": "데이터센터 연방법안·비용배분 관련 신규 자료",
         "비용부담·송전망": "데이터센터 비용부담·송전망 관련 신규 자료",
         "대형부하 접속·등록": "대형부하 접속·등록 관련 신규 자료",
         "ELCC·용량인정": "ELCC·용량인정 관련 신규 자료",
