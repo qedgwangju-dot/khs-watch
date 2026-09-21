@@ -78,6 +78,7 @@ def main() -> int:
     assert_final_policy_telegram_format_and_currency_conversion()
     assert_policy_source_links_are_html_safe()
     assert_policy_timeline_dates_are_bold_and_source_is_clickable()
+    assert_ai_force_has_exclusive_telegram_route()
     assert_domestic_telecom_title_gate_and_semantic_dedupe()
     assert_router_explains_current_fcc_documents()
     assert_runtime_patch_accepts_mofcom_watch_source()
@@ -199,6 +200,54 @@ def assert_policy_timeline_dates_are_bold_and_source_is_clickable() -> None:
     visible_without_anchor = telegram_html.replace(expected_anchor, "")
     if "https://www.reuters.com/" in visible_without_anchor:
         raise AssertionError("AI policy Telegram output still exposes the raw Reuters URL")
+
+
+def assert_ai_force_has_exclusive_telegram_route() -> None:
+    workflow = POLICY_WORKFLOW.read_text(encoding="utf-8")
+    dedicated_lane = (
+        'pathlib.Path("out/khs_ai_force_policy_title.txt"), '
+        'pathlib.Path("out/khs_ai_force_policy_alert.md"), '
+        '"미국 AI 정책지휘체계 중요 변화", "ai_force"'
+    )
+    if dedicated_lane not in workflow:
+        raise AssertionError("AI Force dedicated Telegram lane is missing")
+    if (
+        'pathlib.Path("out/khs_trusted_policy_news_title.txt"), '
+        'pathlib.Path("out/khs_trusted_policy_news_alert.md"), '
+        '"KHS trusted policy news alert", "policy"'
+    ) not in workflow:
+        raise AssertionError("General trusted-policy lane is missing")
+    if 'messages.append((title, body, "ai_force"))' in workflow:
+        raise AssertionError("AI Force alert is still duplicated from the general policy message")
+    if '"expected_username": "khs88798879_bot"' not in workflow:
+        raise AssertionError("AI Force route no longer verifies @khs88798879_bot")
+
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "trump_direct_policy_remarks_watch"
+    )
+    ai_alert = {
+        "rule": rule,
+        "items": [{
+            "title": "Trump says he will create AI Force, name AI czar",
+            "source": "Reuters",
+            "published_kst": "2026-09-20T02:25:00+09:00",
+            "link": "https://example.com/ai-force",
+        }],
+    }
+    non_ai_alert = {
+        "rule": rule,
+        "items": [{
+            "title": "Trump says Russia and Ukraine talks will continue",
+            "source": "Reuters",
+            "published_kst": "2026-09-19T07:20:53+09:00",
+            "link": "https://example.com/ukraine",
+        }],
+    }
+    if not khs_trusted_policy_news_watch.is_ai_force_alert(ai_alert):
+        raise AssertionError("AI Force alert is not classified into the dedicated route")
+    if khs_trusted_policy_news_watch.is_ai_force_alert(non_ai_alert):
+        raise AssertionError("Non-AI Trump policy alert leaked into the AI Force route")
 
 
 def assert_foreign_first_policy_sources() -> None:
