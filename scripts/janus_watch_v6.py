@@ -93,9 +93,17 @@ def _kind_for_title(title: str, requested_kind: str) -> str:
     if requested_kind == "holtec_finance_rss":
         if "holtec" not in low and "홀텍" not in low:
             return ""
-        if not any(x in low for x in ["ipo", "상장", "기업공개", "조달", "현대건설", "hyundai", "smr-300", "palisades", "팰리세이즈", "투자"]):
-            return ""
-        return "holtec_finance"
+        palisades_terms = ["palisades", "팰리세이즈", "팰리세이드"]
+        restart_terms = ["restart", "startup", "fuel loading", "fuel-loading", "fuel assembly", "mode 6", "mode 5", "nrc", "재가동", "핵연료", "연료장전", "연료 장전", "변전소", "substation"]
+        finance_terms = ["initial public offering", "ipo", "상장", "기업공개", "조달", "funding", "financing", "loan", "offering", "공모", "자금"]
+        partnership_terms = ["현대건설", "hyundai", "smr-300", "협력", "epc", "feed"]
+        if any(x in low for x in palisades_terms) and any(x in low for x in restart_terms):
+            return "palisades_restart"
+        if any(x in low for x in finance_terms):
+            return "holtec_finance"
+        if any(x in low for x in partnership_terms):
+            return "holtec_smr_partnership"
+        return ""
     return ""
 
 
@@ -140,8 +148,16 @@ def _official_title_kind(source_kind: str, title: str) -> str:
             return "us_nuclear_official"
         return ""
     if source_kind == "holtec_official_nuclear":
-        if any(x in low for x in ["initial public offering", "ipo", "hyundai", "smr-300", "palisades", "loan", "funding", "investment"]):
+        palisades_terms = ["palisades", "팰리세이즈", "팰리세이드"]
+        restart_terms = ["restart", "startup", "fuel loading", "fuel-loading", "fuel assembly", "mode 6", "mode 5", "nrc", "재가동", "핵연료", "연료장전", "연료 장전", "변전소", "substation"]
+        finance_terms = ["initial public offering", "ipo", "상장", "기업공개", "funding", "financing", "loan", "offering", "공모", "자금조달"]
+        partnership_terms = ["hyundai", "현대건설", "smr-300", "epc", "feed", "partnership", "협력"]
+        if any(x in low for x in palisades_terms) and any(x in low for x in restart_terms):
+            return "palisades_restart"
+        if any(x in low for x in finance_terms):
             return "holtec_finance"
+        if any(x in low for x in partnership_terms):
+            return "holtec_smr_partnership"
         return ""
     return ""
 
@@ -196,7 +212,11 @@ def _event_category_v6(event, resolved_title):
     if kind == "nuclear_hydrogen":
         return "원전 연계 청정수소"
     if kind == "holtec_finance":
-        return "SMR·자금조달·협력"
+        return "Holtec 자금조달·기업공개"
+    if kind == "holtec_smr_partnership":
+        return "Holtec SMR-300·현대건설 협력"
+    if kind == "palisades_restart":
+        return "Palisades 재가동·NRC"
     return _ORIGINAL_CATEGORY(event, resolved_title)
 
 
@@ -214,8 +234,18 @@ def _event_meaning_v6(event, category):
         )
     if kind == "holtec_finance":
         return (
-            "Holtec의 자금조달과 SMR-300 사업 진척은 현대건설의 미국 원전 설계·조달·시공 파이프라인에 영향을 줄 수 있습니다. "
-            "기업공개 조달금 자체와 현대건설의 확정 수주액은 별개이므로 사용처와 개별 EPC 계약을 분리해서 확인해야 합니다."
+            "Holtec의 기업공개·대출·자금조달은 회사 전체 투자여력 변화입니다. "
+            "조달금 자체를 Palisades 재가동이나 현대건설의 확정 수주액으로 연결하지 않고 실제 자금 사용처를 따로 확인합니다."
+        )
+    if kind == "holtec_smr_partnership":
+        return (
+            "Holtec SMR-300과 현대건설의 협력은 미국 신규 SMR 설계·조달·시공 파이프라인과 연결될 수 있습니다. "
+            "협력 발표와 실제 FEED·EPC 계약, 수주액, 착공 일정은 분리해 확인합니다."
+        )
+    if kind == "palisades_restart":
+        return (
+            "Palisades는 기존 원전 재가동 프로젝트입니다. 핵연료 장전·NRC 조치·계통 재접속 같은 재가동 일정 변화로 판단하며, "
+            "Holtec IPO·SMR-300·현대건설 신규 SMR 수주와는 별도 사건으로 분리합니다."
         )
     return _ORIGINAL_MEANING(event, category)
 
@@ -239,8 +269,18 @@ def _macro_highlights_v6(event):
         ]
     if kind == "holtec_finance":
         return [
-            ("핵심 연결", "Holtec 자금조달 → SMR-300/Palisades 투자여력 → 현대건설 협력 프로젝트"),
-            ("분리 확인", "Holtec 조달금과 현대건설 확정 수주액은 동일하지 않음"),
+            ("현재 단계", "기업공개·대출·자금조달 조건 변화"),
+            ("분리 확인", "조달금 ≠ Palisades 재가동비 ≠ 현대건설 확정 수주액"),
+        ]
+    if kind == "holtec_smr_partnership":
+        return [
+            ("핵심 연결", "Holtec SMR-300 → 현대건설 협력 → FEED/EPC 계약 가능성"),
+            ("분리 확인", "협력 발표와 확정 수주·수주액·착공은 별도"),
+        ]
+    if kind == "palisades_restart":
+        return [
+            ("현재 단계", "Palisades 기존 원전 재가동 진행"),
+            ("분리 확인", "Palisades 재가동 ≠ SMR-300 신규 건설 ≠ Holtec IPO"),
         ]
     return _ORIGINAL_HIGHLIGHTS(event)
 
@@ -261,9 +301,21 @@ def _bottleneck_lines_v6(event):
         ]
     if kind == "holtec_finance":
         return [
-            "기업공개 가격·최종 조달액·신주 사용처가 확정돼야 SMR 투자여력을 계산할 수 있음",
-            "SMR-300의 NRC 인허가와 첫 호기 일정 지연 시 현대건설의 EPC 매출 인식도 늦어질 수 있음",
-            "Palisades 재가동과 신규 SMR 건설은 별도 프로젝트여서 자금·허가·공정 리스크를 분리해야 함",
+            "최종 공모가·조달액·신주/차입금 사용처가 확정돼야 실제 투자여력을 계산할 수 있음",
+            "IPO 연기·축소나 차입조건 악화는 신규 프로젝트 자금조달 속도에 영향을 줄 수 있음",
+            "Palisades 재가동·SMR-300·현대건설 EPC는 각각 별도 프로젝트로 자금 사용처를 확인해야 함",
+        ]
+    if kind == "holtec_smr_partnership":
+        return [
+            "SMR-300 NRC 인허가와 첫 호기 일정이 FEED/EPC 전환 시점을 좌우",
+            "현대건설의 역할·공급범위·수주액·보증책임이 계약서에서 확정돼야 매출로 연결",
+            "부지·전력구매계약·금융·장기납기 기자재가 신규 SMR 착공의 핵심 병목",
+        ]
+    if kind == "palisades_restart":
+        return [
+            "연료집합체 처리와 NRC 검토가 완료돼야 핵연료 장전을 재개할 수 있음",
+            "장전 재개 후 Mode 5·4·3 진입, 계통동기, 상업운전까지 단계별 재가동 일정이 남아 있음",
+            "Palisades 재가동 지연을 SMR-300 신규 건설 일정이나 현대건설 EPC 매출 지연으로 자동 연결하면 안 됨",
         ]
     return _ORIGINAL_BOTTLENECKS(event)
 
@@ -275,7 +327,11 @@ def _next_check_v6(event, category):
     if kind == "nuclear_hydrogen":
         return "체코 실증 부지 · 전해조 MW · 총사업비 · CEZ/HYTEP 역할 · EU 인증 · 수소 구매계약 · 상용화 일정"
     if kind == "holtec_finance":
-        return "IPO 최종 공모가·조달액 · 자금 사용처 · SMR-300 인허가 · 현대건설 EPC 범위·수주액 · Palisades 후속 일정"
+        return "IPO/대출 최종 조건 · 조달액 · 자금 사용처 · 후속 투자계획"
+    if kind == "holtec_smr_partnership":
+        return "SMR-300 NRC 인허가 · FEED/EPC 계약 · 현대건설 공급범위·수주액 · 부지·착공 일정"
+    if kind == "palisades_restart":
+        return "연료집합체 처리 · NRC 허가변경/검토 · 핵연료 장전 재개 · Mode 5→4→3 · 계통동기·상업운전"
     return _ORIGINAL_NEXT_CHECK(event, category)
 
 
