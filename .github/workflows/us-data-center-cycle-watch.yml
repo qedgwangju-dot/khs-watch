@@ -251,22 +251,28 @@ jobs:
       - name: Commit watch state
         if: steps.telegram.outputs.configured == 'true' && success()
         run: |
+          set -euo pipefail
+          tmp_state="$(mktemp)"
+          cp data/us_data_center_cycle_watch_state.json "$tmp_state"
           git config user.name "us-data-center-cycle-watch[bot]"
           git config user.email "us-data-center-cycle-watch[bot]@users.noreply.github.com"
-          [ -f data/us_data_center_cycle_watch_state.json ] && git add data/us_data_center_cycle_watch_state.json || true
-          if git diff --cached --quiet; then
-            echo "US data center cycle watch state unchanged"
-          else
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$tmp_state" data/us_data_center_cycle_watch_state.json
+            git add data/us_data_center_cycle_watch_state.json
+            if git diff --cached --quiet; then
+              echo "State unchanged against latest main"
+              exit 0
+            fi
             git commit -m "Update US data center cycle watch state"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "State save failed after retries" >&2
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
