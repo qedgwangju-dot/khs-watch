@@ -11,44 +11,46 @@
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
     "reported_mom_pct": 6.2,
     "reported_yoy_pct": 57.2,
-    "retrieved_at_utc": "2026-09-21T22:45:43.785243+00:00",
+    "retrieved_at_utc": "2026-09-21T22:47:07.698009+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
     "year_ago_saar_musd": 47810
   },
   "dodge": {
     "article_sha256": "df2cee08da31838aad2ad685fe4037d9f6fd10b722c6241968e41a1f23189a1f",
-    "commercial_change_pct": 48.6,
+    "commercial_12m_change_pct": 48.6,
+    "commercial_change_pct": -37.6,
     "data_center_mention_count": 4,
     "data_center_projects": [
       {
         "amount_usd_bn": 3.5,
-        "label_ko": "Amazon STACK Blanchard State Line Data Center (780 MW) 데이터센터 부문"
+        "label_ko": "아마존 스택 블랜처드 스테이트 라인 데이터센터(780메가와트)"
       },
       {
         "amount_usd_bn": 3.2,
-        "label_ko": "Clarksville Hyperscale Data Center 데이터센터 부문"
+        "label_ko": "클라크스빌 하이퍼스케일 데이터센터"
       }
     ],
     "index_url": "https://www.construction.com/category/total-construction-starts/",
-    "nonresidential_change_pct": 32.0,
+    "nonresidential_change_pct": -32.0,
     "office_dc_change_pct": -31.3,
     "published": "2026-09-21T15:21:49+00:00",
-    "retrieved_at_utc": "2026-09-21T22:45:44.306351+00:00",
+    "retrieved_at_utc": "2026-09-21T22:47:08.602765+00:00",
     "source": "Dodge Construction Network Total Construction Starts",
     "title": "Construction Starts Fall Back 24 8 In August",
-    "total_change_pct": 24.8,
+    "total_change_pct": -24.8,
     "total_starts_saar_usd_bn": 1340.0,
     "url": "https://www.construction.com/construction-starts-fall-back-24-8-in-august/",
-    "utility_change_pct": null
+    "utility_change_pct": -11.4,
+    "utility_ytd_change_pct": 69.9
   },
-  "format_version": 5,
+  "format_version": 6,
   "fx": {
     "basis_kst": "2026-09-18 일일 기준 · ECB/Frankfurter · 조회 2026-09-21 15:49 KST · 보조 API 2026-09-21 · 차이 0.15% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "source_type": "일일 기준환율",
     "usdkrw": 1388.1
   },
-  "updated_at_utc": "2026-09-21T22:45:42.471294+00:00",
+  "updated_at_utc": "2026-09-21T22:47:07.309627+00:00",
   "watch": "US data center construction starts vs spending"
 }
