@@ -15,7 +15,10 @@ import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
-from scripts.khs_source_fetch import fetch_text as shared_fetch_text
+try:
+    from scripts.khs_source_fetch import fetch_text as shared_fetch_text
+except ModuleNotFoundError:
+    from khs_source_fetch import fetch_text as shared_fetch_text
 
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
