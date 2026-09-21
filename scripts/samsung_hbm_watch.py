@@ -1741,6 +1741,20 @@ def main() -> None:
 
     share_forecasts = dict(state.get("hbm_share_forecasts") or {})
     share_actuals = dict(state.get("hbm_share_actuals") or {})
+    ops_metrics = dict(state.get("hbm_ops_metrics") or {})
+    export_unit_prices = dict(state.get("hbm_export_unit_prices") or {})
+
+    if int(state.get("ops_track_version") or 0) < OPS_TRACK_VERSION:
+        for key, value in OPS_BASELINES.items():
+            ops_metrics.setdefault(key, dict(value))
+        for period, value in EXPORT_UNIT_PRICE_BASELINES.items():
+            export_unit_prices.setdefault(period, {
+                "value": value,
+                "source": "한국무역협회 인용 공개자료 기준선",
+                "observed_at": "baseline",
+            })
+        state["ops_track_version"] = OPS_TRACK_VERSION
+
     if int(state.get("share_track_version") or 0) < SHARE_TRACK_VERSION:
         for key, values in SHARE_FORECAST_BASELINES.items():
             share_forecasts.setdefault(key, {
@@ -1817,13 +1831,88 @@ def main() -> None:
         else:
             share_forecasts[key] = normalized
 
+    # Structured operating metrics: yield and HBM-related export unit price.
+    structured_ops_event_ids = set()
+    latest_ops_obs: dict[str, dict] = {}
+    for e in events:
+        try:
+            dt = datetime.fromisoformat(e.get("published_at_kst") or "")
+        except Exception:
+            continue
+        if not (cutoff <= dt <= now + timedelta(minutes=10)):
+            continue
+        observations = extract_operating_observations(e)
+        if observations:
+            structured_ops_event_ids.add(e.get("id") or "")
+        for obs in observations:
+            old = latest_ops_obs.get(obs["key"])
+            if old is None or obs.get("published_at_kst", "") > old.get("published_at_kst", ""):
+                latest_ops_obs[obs["key"]] = obs
+
+    ops_alert_events: list[dict] = []
+    for key, obs in latest_ops_obs.items():
+        if obs["metric"] == "yield":
+            old = ops_metrics.get(key)
+            if old is None:
+                ops_alert_events.append(operating_change_event(obs, None, ["신규 수율 상태"]))
+                continue
+            delta = float(obs["value"]) - float(old.get("value"))
+            if abs(delta) >= YIELD_ALERT_THRESHOLD_PP:
+                ops_alert_events.append(
+                    operating_change_event(obs, old, [f"수율 {delta:+.1f}%p"])
+                )
+            else:
+                ops_metrics[key] = {
+                    "value": obs["value"],
+                    "unit": obs["unit"],
+                    "period": obs["period"],
+                    "source": obs.get("source") or "",
+                    "observed_at": obs.get("published_at_kst") or "",
+                }
+            continue
+
+        period = obs["period"]
+        old_same = export_unit_prices.get(period)
+        if old_same:
+            old_value = float(old_same.get("value"))
+            pct = (float(obs["value"]) / old_value - 1.0) * 100.0 if old_value else 0.0
+            if abs(pct) >= EXPORT_UNIT_PRICE_REVISION_PCT:
+                ops_alert_events.append(
+                    operating_change_event(obs, old_same, [f"동일월 정정 {pct:+.1f}%"])
+                )
+            else:
+                export_unit_prices[period] = {
+                    "value": obs["value"],
+                    "source": obs.get("source") or "",
+                    "observed_at": obs.get("published_at_kst") or "",
+                }
+            continue
+
+        previous_periods = sorted(p for p in export_unit_prices if p < period)
+        if previous_periods:
+            prev_period = previous_periods[-1]
+            prev = export_unit_prices[prev_period]
+            prev_value = float(prev.get("value"))
+            pct = (float(obs["value"]) / prev_value - 1.0) * 100.0 if prev_value else 0.0
+            direction = "상승" if pct > 0 else ("하락" if pct < 0 else "보합")
+            old_for_alert = {"value": prev_value}
+            ops_alert_events.append(
+                operating_change_event(
+                    obs,
+                    old_for_alert,
+                    [f"전월 {prev_period} 대비 {pct:+.1f}% · {direction}"],
+                )
+            )
+        else:
+            ops_alert_events.append(operating_change_event(obs, None, ["신규 월간 수출단가"]))
+    
     # One-time migration: seed topic states only from articles that the old
     # watcher had already consumed. From this point onward article IDs are
     # audit metadata only and never determine whether an alert is new.
     if int(state.get("event_state_version") or 0) < EVENT_STATE_VERSION:
         migrated: dict[str, dict] = {}
         for e in events:
-            if e.get("id") in structured_share_event_ids:
+            if e.get("id") in structured_share_event_ids or e.get("id") in structured_ops_event_ids:
                 continue
             if e.get("id") not in seen:
                 continue
@@ -1847,7 +1936,7 @@ def main() -> None:
     latest_by_topic: dict[str, dict] = {}
     fresh_new = []
     for e in events:
-        if e.get("id") in structured_share_event_ids:
+        if e.get("id") in structured_share_event_ids or e.get("id") in structured_ops_event_ids:
             continue
         try:
             dt = datetime.fromisoformat(e.get("published_at_kst") or "")
@@ -1874,7 +1963,7 @@ def main() -> None:
             fresh_new.append(e)
 
     send_events = sorted(
-        fresh_new + share_alert_events,
+        fresh_new + share_alert_events + ops_alert_events,
         key=lambda x: x.get("published_at_kst") or "",
     )[:4]
 
@@ -1912,6 +2001,24 @@ def main() -> None:
     elif send_events:
         ALERT.write_text(build_event_alert(send_events, now), encoding="utf-8")
         for e in send_events:
+            if e.get("ops_change"):
+                obs = e.get("ops_observation") or {}
+                if obs:
+                    if obs.get("metric") == "yield":
+                        ops_metrics[obs["key"]] = {
+                            "value": obs.get("value"),
+                            "unit": obs.get("unit"),
+                            "period": obs.get("period"),
+                            "source": obs.get("source") or "",
+                            "observed_at": obs.get("published_at_kst") or "",
+                        }
+                    elif obs.get("metric") == "export_unit_price":
+                        export_unit_prices[obs["period"]] = {
+                            "value": obs.get("value"),
+                            "source": obs.get("source") or "",
+                            "observed_at": obs.get("published_at_kst") or "",
+                        }
+                continue
             if e.get("share_change"):
                 obs = e.get("share_observation") or {}
                 if obs:
@@ -1941,6 +2048,11 @@ def main() -> None:
         "event_state_version": EVENT_STATE_VERSION,
         "topic_states": topic_states,
         "share_track_version": SHARE_TRACK_VERSION,
+        "ops_track_version": OPS_TRACK_VERSION,
+        "hbm_ops_metrics": ops_metrics,
+        "hbm_export_unit_prices": export_unit_prices,
+        "last_ops_observation_count": len(latest_ops_obs),
+        "last_ops_alert_count": len([e for e in send_events if e.get("ops_change")]),
         "hbm_share_forecasts": share_forecasts,
         "hbm_share_actuals": share_actuals,
         "last_share_observation_count": len(latest_share_obs),
@@ -1971,6 +2083,11 @@ def main() -> None:
         f"- event_state_version: {EVENT_STATE_VERSION}\n"
         f"- topic_state_count: {len(topic_states)}\n"
         f"- share_track_version: {SHARE_TRACK_VERSION}\n"
+        f"- ops_track_version: {OPS_TRACK_VERSION}\n"
+        f"- ops_metric_state_count: {len(ops_metrics)}\n"
+        f"- export_unit_price_months: {len(export_unit_prices)}\n"
+        f"- ops_observations: {len(latest_ops_obs)}\n"
+        f"- ops_alerts: {len([e for e in send_events if e.get('ops_change')])}\n"
         f"- share_forecast_state_count: {len(share_forecasts)}\n"
         f"- share_actual_state_count: {len(share_actuals)}\n"
         f"- share_observations: {len(latest_share_obs)}\n"
