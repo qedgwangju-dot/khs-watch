@@ -1,6 +1,11 @@
 name: KHS policy watch
 
 on:
+  push:
+    paths:
+      - ".github/workflows/khs-policy-watch.yml"
+      - "scripts/khs_nuclear_policy_watch.py"
+      - "scripts/khs_source_fetch.py"
   schedule:
     # Run every 15 minutes, offset from crowded 00/15/30/45 slots.
     - cron: "12,27,42,57 * * * *"
