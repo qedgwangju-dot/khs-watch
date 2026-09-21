@@ -15,6 +15,7 @@ on:
 
 permissions:
   contents: read
+  actions: write
 
 jobs:
   verify-korean-alert:
@@ -23,6 +24,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Re-enable existing KHS policy workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method PUT repos/${{ github.repository }}/actions/workflows/khs-policy-watch.yml/enable
 
       - name: Set up Python
         uses: actions/setup-python@v5
