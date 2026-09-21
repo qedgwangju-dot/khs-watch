@@ -25,6 +25,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Cancel temporary GAMEJOA verification run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST repos/${{ github.repository }}/actions/runs/35585699776/cancel || true
+
       - name: Re-enable existing KHS policy workflow
         env:
           GH_TOKEN: ${{ github.token }}
