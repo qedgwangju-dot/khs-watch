@@ -21,6 +21,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: khs-us-investment-telegram-watch
@@ -43,6 +44,14 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Ensure existing schedule is enabled
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/khs-us-investment-telegram-watch.yml/enable"
+          echo "existing_schedule_enable=confirmed"
 
       - name: Validate watcher
         run: |
