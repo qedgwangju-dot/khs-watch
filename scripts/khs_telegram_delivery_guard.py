@@ -90,6 +90,12 @@ LANES = [
         OUT_DIR / "khs_trusted_policy_news_alert.md",
         OUT_DIR / "khs_trusted_policy_news_alerts.json",
     ),
+    Lane(
+        "ai_force_policy_news",
+        OUT_DIR / "khs_ai_force_policy_title.txt",
+        OUT_DIR / "khs_ai_force_policy_alert.md",
+        None,
+    ),
 ]
 
 LOW_IMPACT_BLOCKERS = [
@@ -598,7 +604,7 @@ def guard_lane(lane: Lane) -> None:
             delete_lane(lane, f"long_english_run:{marker}")
             return
 
-    if lane.name == "trusted_policy_news":
+    if lane.name in {"trusted_policy_news", "ai_force_policy_news"}:
         required_field_groups = TRUSTED_POLICY_REQUIRED_FIELD_GROUPS
     elif lane.name == "nuclear_policy":
         required_field_groups = NUCLEAR_POLICY_REQUIRED_FIELD_GROUPS
