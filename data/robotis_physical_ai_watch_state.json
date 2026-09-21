@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-09-21T05:23:50.491870+00:00",
+  "updated_at": "2026-09-21T06:18:59.101720+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -348,10 +348,11 @@
     "9b5eaa398e7c20e6cb009c87d6bea2aaeb9a0c211bb40c7ba456c4909c7896b8",
     "80871c01a0b09ed490a4fee949cf77aeeaa9a9ac64f6e2279fc0b3b00c70e567",
     "37c54ad048ac9287fd30e91c3fb7d214c732340ec445119f9dc77b24b19c02da",
-    "1d0593bdd5c01f28d4afe7665327c1ae2b3d8b6b4ff10184bcd03896c020356d"
+    "1d0593bdd5c01f28d4afe7665327c1ae2b3d8b6b4ff10184bcd03896c020356d",
+    "d79f06bc8a5e8e619ab1c9b2df0b92aa739c897be214350002e5470cd4536d99"
   ],
   "last_selected": [
-    "1d0593bdd5c01f28d4afe7665327c1ae2b3d8b6b4ff10184bcd03896c020356d"
+    "d79f06bc8a5e8e619ab1c9b2df0b92aa739c897be214350002e5470cd4536d99"
   ],
   "groups": [
     "ess_battery",
@@ -360,7 +361,6 @@
     "robotis",
     "robotis_excess_demand",
     "samhyun",
-    "tesla",
-    "wonik"
+    "tesla"
   ]
 }
