@@ -1374,7 +1374,187 @@ def share_event_summary(e: dict) -> list[str]:
     return lines
 
 
+
+def _ops_page_text(e: dict, base_text: str) -> str:
+    low = base_text.lower()
+    if not any(k in low for k in ("yield", "수율", "unit price", "export price", "수출단가", "평균 수출단가")):
+        return base_text
+    url = e.get("direct_link") or ""
+    if not url:
+        return base_text
+    try:
+        raw = fetch(url, timeout=12).decode("utf-8", errors="ignore")
+        page = clean(raw)
+        if page:
+            return (base_text + " " + page[:24000]).strip()
+    except Exception:
+        pass
+    return base_text
+
+
+def _ops_company_product(text: str) -> tuple[str, str]:
+    low = text.lower()
+    company = "industry"
+    if "samsung" in low or "삼성전자" in text or "삼성" in text:
+        company = "samsung"
+    elif "sk hynix" in low or "sk하이닉스" in text or "하이닉스" in text:
+        company = "skhynix"
+    elif "micron" in low or "마이크론" in text:
+        company = "micron"
+
+    product = "hbm"
+    for p, aliases in (
+        ("hbm4e", ("hbm4e", "hbm 4e")),
+        ("hbm4", ("hbm4", "hbm 4")),
+        ("hbm3e", ("hbm3e", "hbm 3e")),
+    ):
+        if any(a in low for a in aliases):
+            product = p
+            break
+    return company, product
+
+
+def _extract_current_yield(text: str) -> float | None:
+    patterns = [
+        r"(?:최근|현재|now|currently)[^%]{0,80}?(?:수율|yield)[^%]{0,30}?([0-9]{1,3}(?:\.[0-9]+)?)\s*%",
+        r"(?:수율|yield)[^%]{0,80}?(?:최근|현재|now|currently)[^%]{0,30}?([0-9]{1,3}(?:\.[0-9]+)?)\s*%",
+        r"(?:수율|yield)[^%]{0,50}?([0-9]{1,3}(?:\.[0-9]+)?)\s*%\s*(?:까지|수준|대)",
+        r"([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^%]{0,35}?(?:수율|yield)",
+    ]
+    candidates: list[float] = []
+    for pat in patterns:
+        for m in re.finditer(pat, text, re.I):
+            try:
+                value = float(m.group(1))
+                if 0 < value <= 100:
+                    candidates.append(value)
+            except Exception:
+                pass
+        if candidates:
+            break
+    if not candidates:
+        return None
+    return candidates[-1]
+
+
+def extract_operating_observations(e: dict) -> list[dict]:
+    base = clean(f"{e.get('title','')} {e.get('description','')} {e.get('source','')}")
+    low = base.lower()
+    if "hbm" not in low:
+        return []
+    text = _ops_page_text(e, base)
+    observations: list[dict] = []
+
+    if "yield" in text.lower() or "수율" in text:
+        value = _extract_current_yield(text)
+        if value is not None:
+            company, product = _ops_company_product(text)
+            if company != "industry":
+                observations.append({
+                    "key": f"{company}|{product}|yield",
+                    "metric": "yield",
+                    "company": company,
+                    "product": product,
+                    "value": value,
+                    "unit": "pct",
+                    "period": (e.get("published_at_kst") or "")[:7],
+                    "source": e.get("source") or "",
+                    "published_at_kst": e.get("published_at_kst") or "",
+                    "direct_link": e.get("direct_link") or "",
+                    "title": e.get("title") or "",
+                })
+
+    if any(k in text.lower() for k in ("수출단가", "평균 수출단가", "unit price", "export price")):
+        pub_year = ""
+        try:
+            pub_year = str(datetime.fromisoformat(e.get("published_at_kst") or "").year)
+        except Exception:
+            pub_year = str(datetime.now(ZoneInfo("Asia/Seoul")).year)
+
+        pairs: dict[str, float] = {}
+        for m in re.finditer(
+            r"(?:(20\d{2})\s*년\s*)?([1-9]|1[0-2])\s*월[^\d$]{0,35}\$?\s*([0-9]+(?:\.[0-9]+)?)\s*달러",
+            text,
+            re.I,
+        ):
+            year = m.group(1) or pub_year
+            month = int(m.group(2))
+            value = float(m.group(3))
+            if 0 < value < 10000:
+                pairs[f"{year}-{month:02d}"] = value
+
+        for period, value in sorted(pairs.items()):
+            observations.append({
+                "key": f"korea|hbm_related_export_unit_price|{period}",
+                "metric": "export_unit_price",
+                "company": "korea",
+                "product": "hbm_related_proxy",
+                "value": value,
+                "unit": "usd",
+                "period": period,
+                "source": e.get("source") or "",
+                "published_at_kst": e.get("published_at_kst") or "",
+                "direct_link": e.get("direct_link") or "",
+                "title": e.get("title") or "",
+            })
+    return observations
+
+
+def operating_change_event(obs: dict, old: dict | None, reasons: list[str]) -> dict:
+    if obs["metric"] == "yield":
+        labels = {"samsung": "삼성전자", "skhynix": "SK하이닉스", "micron": "Micron"}
+        product = obs["product"].upper()
+        title = f"{labels.get(obs['company'], obs['company'])} {product} 수율 상태 변화"
+        current = f"{obs['value']:.1f}%"
+        previous = f"{float(old.get('value')):.1f}%" if old and old.get("value") is not None else ""
+    else:
+        title = "한국 HBM 관련 평균 수출단가 상태 변화"
+        current = "${:.2f}".format(obs["value"])
+        previous = "${:.2f}".format(float(old.get("value"))) if old and old.get("value") is not None else ""
+
+    return {
+        "id": "ops|" + obs["key"],
+        "ops_observation": obs,
+        "title": obs.get("title") or title,
+        "description": "",
+        "source": obs.get("source") or "출처 미표시",
+        "published_at_kst": obs.get("published_at_kst") or "",
+        "direct_link": obs.get("direct_link") or "",
+        "rank": 96 if obs["metric"] == "yield" else 92,
+        "ops_change": {
+            "headline": title,
+            "metric": obs["metric"],
+            "period": obs["period"],
+            "current": current,
+            "previous": previous,
+            "reasons": reasons,
+        },
+    }
+
+
+def operating_event_summary(e: dict) -> list[str]:
+    ch = e["ops_change"]
+    lines = [
+        f"<b>{html.escape(ch['headline'])}</b>",
+        f"• 기준시점: <b>{html.escape(ch['period'])}</b>",
+        f"• 현재값: <b>{html.escape(ch['current'])}</b>",
+    ]
+    if ch.get("previous"):
+        lines.append(f"• 직전값: {html.escape(ch['previous'])}")
+    if ch.get("reasons"):
+        lines.append("• 변화: " + html.escape(" · ".join(ch["reasons"])))
+    if ch["metric"] == "export_unit_price":
+        lines.append("• 주의: 한국무역협회 HBM 관련 수출단가 대용지표이며 HBM 계약 평균판매단가와 1:1 동일하지 않습니다.")
+    lines += [
+        f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}",
+        f"• 근거 제목: {html.escape(e.get('title') or '')} · {href(e.get('direct_link') or '', '원문')}",
+    ]
+    return lines
+
+
 def event_summary(e: dict) -> list[str]:
+    if e.get("ops_change"):
+        return operating_event_summary(e)
     if e.get("share_change"):
         return share_event_summary(e)
     category, headline = classify_event(e)
