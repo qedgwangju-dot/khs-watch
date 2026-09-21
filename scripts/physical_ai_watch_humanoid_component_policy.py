@@ -79,6 +79,172 @@ SITE_VISIT = re.compile(r'현장\s*방문|기업\s*방문|업계\s*점검|간담
 PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주가|stock\s*price|shares?\s*(?:jump|rise|surge)', re.I)
 ANALYST = re.compile(r'증권|리포트|research|analyst|목표주가|투자의견', re.I)
 
+GLOBAL_COMPONENT = re.compile(
+    r'하모닉\\s*감속기|harmonic\\s*reducer|谐波减速器|RV\\s*감속기|RV\\s*reducer|'
+    r'유성\\s*롤러\\s*스크루|planetary\\s*roller\\s*screw|滚柱丝杠|'
+    r'프레임리스\\s*토크\\s*모터|frameless\\s*torque\\s*motor|无框力矩电机|'
+    r'코어리스\\s*모터|coreless\\s*motor|인코더|encoder|'
+    r'토크\\s*센서|torque\\s*sensor|힘\\s*센서|force\\s*sensor|6축\\s*힘|6[- ]axis\\s*force|'
+    r'촉각\\s*센서|tactile\\s*sensor|전자피부|electronic\\s*skin|e[- ]skin|'
+    r'3D\\s*카메라|3D\\s*camera|라이다|LiDAR|IMU|관성\\s*센서|inertial\\s*sensor',
+    re.I,
+)
+GLOBAL_COMMERCIAL = re.compile(
+    r'수주\\s*잔고|backlog|수주|order|계약|contract|공급\\s*계약|supply\\s*agreement|'
+    r'공급업체\\s*선정|supplier\\s*(?:selected|nominated|award)|design\\s*win|고객\\s*선정|customer\\s*award|'
+    r'양산|mass\\s*production|series\\s*production|SOP|출하|shipment|'
+    r'생산\\s*능력|capacity|증설|expansion|신규\\s*라인|new\\s*line|공장|plant|'
+    r'고객\\s*승인|customer\\s*qualification|qualification|PPAP|ISIR|신뢰성|reliability|validation|검증|'
+    r'수율|yield|납기|lead\\s*time|평균판매단가|ASP|가격\\s*(?:인상|하락)|price\\s*(?:increase|cut|hike)',
+    re.I,
+)
+GLOBAL_QUAL = re.compile(r'고객\\s*승인|customer\\s*qualification|qualification|PPAP|ISIR|신뢰성|reliability|validation|검증', re.I)
+GLOBAL_ORDER = re.compile(r'수주\\s*잔고|backlog|수주|order|계약|contract|공급\\s*계약|supply\\s*agreement|공급업체\\s*선정|supplier\\s*(?:selected|nominated|award)|design\\s*win|고객\\s*선정|customer\\s*award', re.I)
+GLOBAL_MASS = re.compile(r'양산|mass\\s*production|series\\s*production|\\bSOP\\b|출하|shipment', re.I)
+GLOBAL_CAPA = re.compile(r'생산\\s*능력|capacity|증설|expansion|신규\\s*라인|new\\s*line|공장|plant|장비\\s*반입|equipment\\s*move[- ]in', re.I)
+GLOBAL_OPS = re.compile(r'수율|yield|납기|lead\\s*time|평균판매단가|\\bASP\\b|가격\\s*(?:인상|하락)|price\\s*(?:increase|cut|hike)', re.I)
+
+GLOBAL_COMPANY_PATTERNS = [
+    ('현대모비스', r'현대모비스|Hyundai\\s*Mobis'),
+    ('로보티즈', r'로보티즈|ROBOTIS'),
+    ('LG이노텍', r'LG이노텍|LG\\s*Innotek'),
+    ('TDK', r'\\bTDK\\b'),
+    ('에스비비테크', r'에스비비테크|SBB\\s*Tech'),
+    ('에스피지', r'에스피지|\\bSPG\\b'),
+    ('하이젠알앤엠', r'하이젠알앤엠|Higen\\s*RNM'),
+    ('삼현', r'삼현|SAMHYUN'),
+    ('에스오에스랩', r'에스오에스랩|SOS\\s*LAB'),
+    ('Leaderdrive', r'Leader\\s*Harmonic\\s*Drive|Leaderdrive|绿的谐波'),
+    ('Zhejiang Laifu', r'Zhejiang\\s*Laifu|Laifual|来福谐波'),
+    ('Zhongda Leader', r'Zhongda\\s*Leader|中大力德'),
+    ('Inovance', r'Inovance|汇川技术'),
+    ('MOONS', r'MOONS|鸣志电器'),
+    ('Orbbec', r'Orbbec|奥比中光'),
+    ('RoboSense', r'RoboSense|速腾聚创'),
+    ('Hesai', r'Hesai|禾赛'),
+]
+
+
+def _component_family(text: str) -> str:
+    if re.search(r'하모닉|harmonic|谐波|RV\\s*감속기|RV\\s*reducer|롤러\\s*스크루|roller\\s*screw|滚柱丝杠', text, re.I):
+        return '감속기·롤러스크루'
+    if re.search(r'프레임리스|frameless|코어리스|coreless|인코더|encoder', text, re.I):
+        return '모터·인코더'
+    if re.search(r'토크\\s*센서|torque\\s*sensor|힘\\s*센서|force\\s*sensor|6축|6[- ]axis|촉각|tactile|전자피부|e[- ]skin', text, re.I):
+        return '힘·토크·촉각센서'
+    if re.search(r'3D\\s*카메라|3D\\s*camera|라이다|LiDAR|IMU|관성\\s*센서|inertial\\s*sensor', text, re.I):
+        return '비전·3D·라이다·관성센서'
+    return '핵심부품'
+
+
+def _component_stage(text: str) -> str:
+    if GLOBAL_ORDER.search(text):
+        return '고객선정·수주·수주잔고'
+    if GLOBAL_MASS.search(text):
+        return '양산·출하'
+    if GLOBAL_QUAL.search(text):
+        return '고객승인·신뢰성검증'
+    if GLOBAL_CAPA.search(text):
+        return '생산능력·증설'
+    if GLOBAL_OPS.search(text):
+        return '수율·납기·가격'
+    return '제품화'
+
+
+def _global_companies(text: str) -> set[str]:
+    return {name for name, pat in GLOBAL_COMPANY_PATTERNS if re.search(pat, text, re.I)}
+
+
+def _is_global_component(text: str) -> bool:
+    return bool(HUMANOID.search(text) and GLOBAL_COMPONENT.search(text) and GLOBAL_COMMERCIAL.search(text))
+
+
+_FX_CACHE: dict[str, float | None] = {}
+
+
+def _fx_krw(currency: str) -> float | None:
+    currency = currency.upper()
+    if currency == 'KRW':
+        return 1.0
+    if currency in _FX_CACHE:
+        return _FX_CACHE[currency]
+    try:
+        req = urllib.request.Request(
+            f'https://open.er-api.com/v6/latest/{currency}',
+            headers={'User-Agent': 'Mozilla/5.0 khs-watch/2.0'},
+        )
+        with urllib.request.urlopen(req, timeout=6) as r:
+            data = json.loads(r.read().decode('utf-8'))
+        rate = float(data.get('rates', {}).get('KRW'))
+        if 0 < rate < 100000:
+            _FX_CACHE[currency] = rate
+            return rate
+    except Exception:
+        pass
+    _FX_CACHE[currency] = None
+    return None
+
+
+def _component_demand_note(text: str) -> str | None:
+    robot_qty = None
+    for pat in [
+        r'(?<![\\d,])(\\d{1,3}(?:,\\d{3})+|\\d+)\\s*대',
+        r'(?<![\\d,])(\\d{1,3}(?:,\\d{3})+|\\d+)\\s*(?:robots?|humanoids?)',
+    ]:
+        m = re.search(pat, text, re.I)
+        if m:
+            robot_qty = int(m.group(1).replace(',', ''))
+            break
+
+    per_robot = None
+    for pat in [
+        r'대당\\s*(\\d{1,3})\\s*개',
+        r'(\\d{1,3})\\s*개\\s*/\\s*대',
+        r'(\\d{1,3})\\s*(?:units?|pcs?)\\s*(?:per\\s+robot|/\\s*robot)',
+    ]:
+        m = re.search(pat, text, re.I)
+        if m:
+            per_robot = int(m.group(1))
+            break
+
+    if not robot_qty or not per_robot:
+        return None
+
+    total = robot_qty * per_robot
+    note = f'{robot_qty:,}대 × {per_robot:,}개/대 = {total:,}개'
+
+    price = None
+    currency = None
+    for pat, cur, mul in [
+        (r'(?:개당|단가).{0,12}(\\d[\\d,.]*)\\s*만원', 'KRW', 10000.0),
+        (r'(?:개당|단가).{0,12}(\\d[\\d,.]*)\\s*원', 'KRW', 1.0),
+        (r'\\$\\s*(\\d[\\d,.]*)\\s*(?:/\\s*(?:개|unit|pc)|per\\s+(?:unit|pc))', 'USD', 1.0),
+        (r'(?:RMB|CNY|위안)\\s*(\\d[\\d,.]*)\\s*(?:/\\s*(?:개|unit|pc)|per\\s+(?:unit|pc))?', 'CNY', 1.0),
+        (r'(\\d[\\d,.]*)\\s*위안\\s*/\\s*(?:개|unit|pc)', 'CNY', 1.0),
+    ]:
+        m = re.search(pat, text, re.I)
+        if m:
+            price = float(m.group(1).replace(',', '')) * mul
+            currency = cur
+            break
+
+    if price is None or currency is None:
+        return note + ' · 단위단가 미공개로 매출은 미추정'
+
+    fx = _fx_krw(currency)
+    if fx is None:
+        return note + f' · 개당 {price:,.2f} {currency} · 환율 확인 실패로 원화 총액 미추정'
+
+    total_krw = total * price * fx
+    if total_krw >= 1_000_000_000_000:
+        total_str = f'{total_krw/1_000_000_000_000:,.2f}조원'
+    elif total_krw >= 100_000_000:
+        total_str = f'{total_krw/100_000_000:,.1f}억원'
+    else:
+        total_str = f'{total_krw:,.0f}원'
+    return note + f' · 개당 {price:,.2f} {currency} → 총 {total_str} 단순환산'
+
+
 COMPANY_PATTERNS = [
     '로보티즈', 'ROBOTIS', '삼현', '하이젠알앤엠', '에스비비테크', '에스피지',
     '원익로보틱스', '원익홀딩스', '현대모비스', '삼성SDI', 'LG에너지솔루션',
