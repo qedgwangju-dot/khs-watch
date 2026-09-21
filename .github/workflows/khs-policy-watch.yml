@@ -1,6 +1,13 @@
 name: KHS policy watch
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/khs-policy-watch.yml"
+      - "scripts/khs_trusted_policy_news_watch.py"
+      - "scripts/khs_telegram_delivery_guard.py"
+      - "scripts/verify_khs_policy_delivery_contract.py"
   schedule:
     # Run every 15 minutes, offset from crowded 00/15/30/45 slots.
     - cron: "13,28,43,58 * * * *"
