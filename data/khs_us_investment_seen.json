@@ -317,8 +317,7 @@
     "4121374c24df29e64183": "2026-09-16T06:11:26.022367+00:00",
     "f0a11d35bf8231801184": "2026-09-16T06:11:26.022367+00:00",
     "71cc80009e8621dbf213": "2026-09-16T06:11:26.022367+00:00",
-    "e3ba2c59cbe6d521312b": "2026-09-16T06:11:26.022367+00:00",
-    "stateevt_3c0a53f273b73cf8dedc": "2026-09-21T13:09:37.973411+00:00"
+    "e3ba2c59cbe6d521312b": "2026-09-16T06:11:26.022367+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -327,8 +326,7 @@
     "ercot_large_load_official": "2026-09-13T10:23:18.406888+00:00",
     "nuclear_fuel_cycle_pyro_media": "2026-09-15T12:37:30.310054+00:00",
     "funding_45day_media": "2026-09-15T12:37:30.310054+00:00",
-    "westinghouse_stake_media": "2026-09-15T17:19:09.625659+00:00",
-    "eventstate_power_equipment_supply_3c0a53f273b73cf8dedc": "2026-09-21T13:09:37.973411+00:00"
+    "westinghouse_stake_media": "2026-09-15T17:19:09.625659+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -339,21 +337,15 @@
   "event_states": {
     "nuclear_build": {
       "facts": [
-        "nuclear_total_units:8",
-        "ap1000_units:6",
-        "apr1400_units:2",
         "official_status:unconfirmed"
       ],
       "slots": {
-        "nuclear_build|nuclear_total_units": "nuclear_total_units:8",
-        "nuclear_build|ap1000_units": "ap1000_units:6",
-        "nuclear_build|apr1400_units": "apr1400_units:2",
         "nuclear_build|official_status": "official_status:unconfirmed"
       },
-      "initialized_at": "2026-09-20T23:28:10.733177+00:00",
-      "updated_at": "2026-09-20T23:28:10.733177+00:00",
-      "last_title": "교차검증 기준선: 전체 8기·AP1000 6기·APR1400 2기 보도 / 정부 세부 미확정",
-      "last_source": "migration-v3",
+      "initialized_at": "2026-09-21T13:18:18.976289+00:00",
+      "updated_at": "2026-09-21T13:18:18.976289+00:00",
+      "last_title": "정부 기준선: 대미투자 원전 프로젝트의 기수·노형·부지·사업자는 미확정",
+      "last_source": "migration-v4",
       "evidence": []
     },
     "funding_execution": {
@@ -363,70 +355,28 @@
       "slots": {
         "funding_execution|official_status": "official_status:unconfirmed"
       },
-      "initialized_at": "2026-09-20T23:28:10.733177+00:00",
-      "updated_at": "2026-09-20T23:28:10.733177+00:00",
+      "initialized_at": "2026-09-21T13:18:18.976289+00:00",
+      "updated_at": "2026-09-21T13:18:18.976289+00:00",
       "last_title": "정부 기준선: 송금 규모·시기 미확정",
       "last_source": "migration-v3",
       "evidence": []
     },
-    "power_equipment_supply": {
-      "facts": [
-        "party:doosan",
-        "stage:수주발주"
-      ],
-      "slots": {
-        "power_equipment_supply|party:doosan": "party:doosan",
-        "power_equipment_supply|stage:수주발주": "stage:수주발주"
-      },
-      "initialized_at": "2026-09-20T23:28:34.897206+00:00",
-      "updated_at": "2026-09-21T13:09:56.470890+00:00",
-      "last_title": "[오늘 이 종목] AI 서버 수주부터 가스터빈까지…공급 부족 수혜주는? - 머니투데이 - 머니투데이",
-      "last_source": "머니투데이",
-      "evidence": [
-        {
-          "source": "와이드경제",
-          "title": "480조 대미 투자 눈앞…두산에너빌리티, 'LNG·원전·SMR' 수주 잭팟 정조준 - 와이드경제",
-          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE94aFAyWHZrbEYyMXpTLWhlcFlBNWZiS0pCX1dQX0d1UjdZSHpfbXRzOEVQODE4WHZEU1QycGsydWdscDh1Vk1kWjNidC1FYzBPTkVnRlV0cHNjelU4SjloakE0Mm1QSEJXTS1Odw?oc=5",
-          "published": "2026-09-16T07:21:42+00:00"
-        },
-        {
-          "source": "머니투데이",
-          "title": "[오늘 이 종목] AI 서버 수주부터 가스터빈까지…공급 부족 수혜주는? - 머니투데이 - 머니투데이",
-          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9aZnl2bU1lSy1zV3p0RC1fck1MdWV2NHM4SWpaYkYwbGU2dUxod2VrLUx4MlF4QXZFZHRUNnYzZXRPTjI1cmtyU19hVGJReHJwZlZsNjJZSjlNSEFVOUJfb3ZXRVNCMWJQRlI1UWln0gFuQVVfeXFMT1pmeXZtTWVLLXNXenRELV9yTUx1ZXY0czhJalpiRjBsZTZ1TGh3ZWstTHgyUXhBdkVkdFQ2djNldE9OMjVya3JTX2FUYlF4cnBmVmw2MllKOU1IQVU5Ql9vdldFU0IxYlBGUjVRaWc?oc=5",
-          "published": "2026-09-21T03:03:33+00:00"
-        }
-      ]
-    },
     "westinghouse_stake": {
       "facts": [
-        "governance:board",
         "party:kepco",
         "party:westinghouse",
         "stake_percent:15"
       ],
       "slots": {
-        "westinghouse_stake|governance:board": "governance:board",
         "westinghouse_stake|party:kepco": "party:kepco",
         "westinghouse_stake|party:westinghouse": "party:westinghouse",
         "westinghouse_stake|stake_percent": "stake_percent:15"
       },
-      "initialized_at": "2026-09-20T23:28:34.900277+00:00",
-      "updated_at": "2026-09-20T23:28:34.900277+00:00",
+      "initialized_at": "2026-09-21T13:18:34.537072+00:00",
+      "updated_at": "2026-09-21T13:18:34.537072+00:00",
       "last_title": "(설명자료)웨스팅하우스 지분인수 등을 포함하여 대미투자 원전 프로젝트 관련 구체적인 사항은 아직 정해진 바 없음 - 대한민국 정책브리핑",
       "last_source": "대한민국 정책브리핑",
       "evidence": [
-        {
-          "source": "한국경제",
-          "title": "[단독] 韓 \"웨스팅하우스 지분 살테니 이사회 자리 달라\"…美는 신중 - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1FcE5sYXhIcGlBc0Z1Y05vT1NIMUpJU1FrWDRsSG1ZRTZzaDdWc216TWFzV0RBTWR6ZWNlRTZFZWZTdlp6ZkZXZUJyaGdpWmE5ekc0dHB3TzNpZw?oc=5",
-          "published": "2026-09-15T09:05:17+00:00"
-        },
-        {
-          "source": "서울경제",
-          "title": "웨스팅하우스 지분율 놓고 韓美 막판 기싸움… 이사회 참여가 관건 - 서울경제",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5YZFNVbGpkMHc2MlZvbnA4eTdfQjQ1R1BoSEhLVW1BcUhWSkFuejdId3R3a2xiMWFuZldFSzVTc2p2Sk5PN1Jnczc1U1hHNXF6cVHSAVNBVV95cUxObVM4MFBKMWo4a0NDWmFBTXJJbDJUM1FsUE9XWDdDcDNGZm5WQWdMMVlwQU1VOGVBdGRHSW5FcXZXLWVvR25jczB4a25ZdkVJY2p4aw?oc=5",
-          "published": "2026-09-15T10:00:58+00:00"
-        },
         {
           "source": "Chosunbiz",
           "title": "美 웨스팅하우스 지분 인수 ‘빚더미’ 한전이 맡나… 자금조달 방안 ‘관심’ - 조선비즈 - Chosunbiz",
@@ -444,6 +394,64 @@
           "title": "[단독] 웨스팅하우스 지분 10% 넘겨야 이사 지명권…“대금은 한전이 부담” - 서울경제",
           "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5qUHNRaWdycUhqYjVtMDRpTkkwUUlYSFUtUHVfa0l5akk1VE1ZVVdNd2lHc2JUeU56SGxuYzNLT1RhTHN5R2NUT0o0eWFLZmt6RmfSAVNBVV95cUxNR3JBM3hyQnhKRkhsS05YSHAxTlM2X2hLTVo0SVFPT3NPWGMyMzRteWFPNGQzSEV4ZU9fSVNkcTN6SG9hT1hnZnlRSUcweXZSb3hGMA?oc=5",
           "published": "2026-09-16T07:28:57+00:00"
+        },
+        {
+          "source": "한겨레",
+          "title": "부채 210조 한전, 웨스팅하우스 지분 인수?…“도시바엔 ‘상장 폐지 원인’” - 한겨레",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5CX0tpRHNaVFBNclpLRE43bDZQZFdQRjd5RkV2akQwSWYtUXJEZ0UtRHoxNlBBYlJEWFBtaUsyNGhrVXpkR2FZUHZIYzNSblQ2bmRkdENhZ21RZW1mQXVGaXBvSXJBQU5OaHRjbQ?oc=5",
+          "published": "2026-09-10T07:00:00+00:00"
+        },
+        {
+          "source": "연합뉴스",
+          "title": "웨스팅하우스 지분율 등 상업적 합리성 암초…대미투자 '위태'(종합) - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5wYlpsVXdNVkpYb016Qm9WZW8wRE91d3Jjc3VQVmFSUi1sYUNXWWxRdWplX21rU0VvalBWdnFpWXkyWUJSS3FjblV3SjFRTFRPdGZzY0VGVWh5aUXSAWBBVV95cUxNelBBZk9FVUpHNEk2ZDJBMDIxM0tnMTdxS1BTaUMyM1RNbWhjTUs2QzNvbE5fWHpzUEh4c2pMUHBIdnp4TWFpYTVGOFhBME84RUlrZkFJVzlJY2R0R24xWjc?oc=5",
+          "published": "2026-09-21T10:20:53+00:00"
+        }
+      ]
+    },
+    "power_equipment_supply": {
+      "facts": [
+        "party:doosan",
+        "stage:수주발주"
+      ],
+      "slots": {
+        "power_equipment_supply|party:doosan": "party:doosan",
+        "power_equipment_supply|stage:수주발주": "stage:수주발주"
+      },
+      "initialized_at": "2026-09-21T13:18:34.539905+00:00",
+      "updated_at": "2026-09-21T13:18:34.539905+00:00",
+      "last_title": "[오늘 이 종목] AI 서버 수주부터 가스터빈까지…공급 부족 수혜주는? - 머니투데이 - 머니투데이",
+      "last_source": "머니투데이",
+      "evidence": [
+        {
+          "source": "뉴시스",
+          "title": "韓美, 대미 투자 막판 조율…두산에너빌리티, 핵심 소재 공급 역량 '관심' - 뉴시스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA4RmR3QkVoMHBiRnBYNHA2Rl94TzA3OTh5TmVVNjYyb0VzRkdrNGk4OVhMMVNvRnE4MWNiOG5kajBUdTdUWjRWbXdzTU9rV2hpamVVY3JGeHRoanhTR1FMddIBeEFVX3lxTFAzdGdoZEJwTWk3MnYzUVFUUEJtZXFScjVwXzZlLU84TmhLbk1TSXJyeGltdXc2R3ZJbnI3eEV6VDdkdXBuY19QR0tNVDZsdUZfU3Y0VFNlZWdoblZsS3RDalR2LWNfeWpwRlpMSVBVdVlpTUlHOFBIMg?oc=5",
+          "published": "2026-09-16T05:13:44+00:00"
+        },
+        {
+          "source": "와이드경제",
+          "title": "480조 대미 투자 눈앞…두산에너빌리티, 'LNG·원전·SMR' 수주 잭팟 정조준 - 와이드경제",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE94aFAyWHZrbEYyMXpTLWhlcFlBNWZiS0pCX1dQX0d1UjdZSHpfbXRzOEVQODE4WHZEU1QycGsydWdscDh1Vk1kWjNidC1FYzBPTkVnRlV0cHNjelU4SjloakE0Mm1QSEJXTS1Odw?oc=5",
+          "published": "2026-09-16T07:21:42+00:00"
+        },
+        {
+          "source": "파이낸셜뉴스",
+          "title": "韓美, 대미 투자 막판 조율…두산에너빌리티, 핵심 소재 공급 역량 '관심' - 파이낸셜뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1kWVhUemxiUnZfU2t6VXpPNGpVd2lMZHBnbFJRZmRVN2w0Y29XVWxPQU1GYU1pdmhZQVZob0l2SmVHNzBDU1pZa2FoVng4RTF2T2RHRkc2SjI2UQ?oc=5",
+          "published": "2026-09-16T05:14:37+00:00"
+        },
+        {
+          "source": "v.daum.net",
+          "title": "반토막 난 '텐배거' 두산에너빌리티⋯대미투자에 다시 쏠린 눈 - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5raHZ3cl8yNTFqYUVUa2VVLUM3M1lSSlR3S0xORmtBUWNOUWxKWjFYMnpqZ0pDQ1NleXNaVE41Y1NNN2NIOWc?oc=5",
+          "published": "2026-09-18T06:18:07+00:00"
+        },
+        {
+          "source": "ainews1.co.kr",
+          "title": "3500억달러 대미 에너지 투자…두산에너빌리티·한전기술 수혜 기대 - ainews1.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9WcDA2OGF4WmxUdzJmTFRtTWtDRFBwV0JjelF0YTN5eXJ1ZkQtRVZUaUZFVVRmd3NscHNfX3U0cGJWbk91d25QQkZvbDlOWk82YnI2OUFITzRJWVQ2N1RNalFtVXcxbUlDU0V3?oc=5",
+          "published": "2026-09-15T14:44:23+00:00"
         }
       ]
     },
@@ -454,8 +462,8 @@
       "slots": {
         "legacy_westinghouse|party:westinghouse": "party:westinghouse"
       },
-      "initialized_at": "2026-09-20T23:28:34.900705+00:00",
-      "updated_at": "2026-09-20T23:28:34.900705+00:00",
+      "initialized_at": "2026-09-21T13:18:34.540758+00:00",
+      "updated_at": "2026-09-21T13:18:34.540758+00:00",
       "last_title": "[단독] 웨스팅하우스 반대에 대미투자 막판 진통…韓 경영 참여 놓고 이견 - 서울경제",
       "last_source": "서울경제",
       "evidence": [
@@ -480,7 +488,7 @@
       ]
     }
   },
-  "event_state_guard_version": 3,
-  "event_state_guard_started_at": "2026-09-20T23:28:10.733101+00:00",
-  "event_state_guard_baselined_at": "2026-09-20T23:28:34.891739+00:00"
+  "event_state_guard_version": 4,
+  "event_state_guard_started_at": "2026-09-21T13:18:18.976218+00:00",
+  "event_state_guard_baselined_at": "2026-09-21T13:18:34.529808+00:00"
 }
