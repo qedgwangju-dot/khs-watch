@@ -10,6 +10,7 @@ import json
 import os
 import urllib.parse
 import urllib.request
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -42,11 +43,18 @@ def series(symbol):
     d=json.loads(fetch(url)); result=((d.get('chart') or {}).get('result') or [None])[0]
     if not result:raise RuntimeError(f'{symbol} chart unavailable')
     ts=result.get('timestamp') or []; q=((result.get('indicators') or {}).get('quote') or [{}])[0]
-    closes=q.get('close') or []; rows=[]
+    closes=q.get('close') or []
+    meta=result.get('meta') or {}
+    regular=((meta.get('currentTradingPeriod') or {}).get('regular') or {})
+    regular_start=regular.get('start'); regular_end=regular.get('end')
+    now=time.time(); rows=[]
     for t,c in zip(ts,closes):
         if c is None:continue
+        # Ignore Yahoo's still-open current-session daily bar; this signal is close-to-close.
+        if regular_start and regular_end and regular_start <= t <= regular_end and now < regular_end + 900:
+            continue
         rows.append((datetime.fromtimestamp(t,timezone.utc).date().isoformat(),float(c)))
-    if len(rows)<7:raise RuntimeError(f'{symbol} history too short')
+    if len(rows)<7:raise RuntimeError(f'{symbol} completed-session history too short')
     return rows
 
 
@@ -115,10 +123,15 @@ def send(text):
     if not out.get('ok'):raise RuntimeError(f'Telegram send failed: {out}')
 
 
-def message(s):
+def message(s, correction=False, old_date=None):
     sw=s['returns']['소프트웨어']; semi=s['returns']['반도체']
+    title='[정정·AI 하드웨어·소프트웨어 상대강도]' if correction else '[AI 하드웨어·소프트웨어 상대강도]'
     lines=[
-        '[AI 하드웨어·소프트웨어 상대강도]',f"기준: {s['date']}",'',
+        title,f"기준: {s['date']} 미국 정규장 종가",
+    ]
+    if correction:
+        lines += ['', '<b>정정 사유</b>', f"• 직전 {old_date or '당일'} 값은 미국 정규장 진행 중의 부분 일봉이 섞인 값이어서 종가 기준 상대강도에서 제외했습니다."]
+    lines += ['',
         '<b>핵심 판정</b>',f"• <b>{html.escape(s['verdict'])}</b>",'',
         '<b>현재 숫자</b>',
         f"• 반도체(SOXX): 3거래일 {semi['3d']:+.1f}% · 5거래일 {semi['5d']:+.1f}%",
@@ -141,7 +154,8 @@ def message(s):
 def main():
     old=load_state(); s=snapshot(); first=not bool(old)
     changed=(old.get('active') not in (None,s['active']) or old.get('verdict') not in (None,s['verdict']))
-    if FORCE_NOTIFY or (not first and changed):send(message(s))
+    correction=bool(old.get('date') and old.get('date') > s['date'])
+    if FORCE_NOTIFY or correction or (not first and changed):send(message(s, correction=correction, old_date=old.get('date')))
     save_state(s)
     print(json.dumps({'first_run':first,'active':s['active'],'relative_3d':s['relative_3d'],'relative_5d':s['relative_5d'],'confirm_count':s['confirm_count'],'verdict':s['verdict']},ensure_ascii=False))
 
