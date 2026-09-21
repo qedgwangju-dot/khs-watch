@@ -85,6 +85,7 @@ OPS_BASELINES = {
         "unit": "pct",
         "period": "2026-09",
         "source": "서울경제 보도 기준선",
+        "evidence": "reported",
     },
 }
 EXPORT_UNIT_PRICE_BASELINES = {
@@ -1459,6 +1460,7 @@ def extract_operating_observations(e: dict) -> list[dict]:
                     "unit": "pct",
                     "period": (e.get("published_at_kst") or "")[:7],
                     "source": e.get("source") or "",
+                    "evidence": "official" if evidence_level(e) == "공식 확인" else "reported",
                     "published_at_kst": e.get("published_at_kst") or "",
                     "direct_link": e.get("direct_link") or "",
                     "title": e.get("title") or "",
@@ -1493,6 +1495,7 @@ def extract_operating_observations(e: dict) -> list[dict]:
                 "unit": "usd",
                 "period": period,
                 "source": e.get("source") or "",
+                "evidence": "official" if evidence_level(e) == "공식 확인" else "reported",
                 "published_at_kst": e.get("published_at_kst") or "",
                 "direct_link": e.get("direct_link") or "",
                 "title": e.get("title") or "",
@@ -1751,6 +1754,7 @@ def main() -> None:
             export_unit_prices.setdefault(period, {
                 "value": value,
                 "source": "한국무역협회 인용 공개자료 기준선",
+                "evidence": "reported",
                 "observed_at": "baseline",
             })
         state["ops_track_version"] = OPS_TRACK_VERSION
@@ -1857,16 +1861,21 @@ def main() -> None:
                 ops_alert_events.append(operating_change_event(obs, None, ["신규 수율 상태"]))
                 continue
             delta = float(obs["value"]) - float(old.get("value"))
+            evidence_upgrade = old.get("evidence") != "official" and obs.get("evidence") == "official"
+            reasons = []
             if abs(delta) >= YIELD_ALERT_THRESHOLD_PP:
-                ops_alert_events.append(
-                    operating_change_event(obs, old, [f"수율 {delta:+.1f}%p"])
-                )
+                reasons.append(f"수율 {delta:+.1f}%p")
+            if evidence_upgrade:
+                reasons.append("신뢰 보도→공식 확인")
+            if reasons:
+                ops_alert_events.append(operating_change_event(obs, old, reasons))
             else:
                 ops_metrics[key] = {
                     "value": obs["value"],
                     "unit": obs["unit"],
                     "period": obs["period"],
                     "source": obs.get("source") or "",
+                    "evidence": obs.get("evidence") or "reported",
                     "observed_at": obs.get("published_at_kst") or "",
                 }
             continue
@@ -1876,14 +1885,19 @@ def main() -> None:
         if old_same:
             old_value = float(old_same.get("value"))
             pct = (float(obs["value"]) / old_value - 1.0) * 100.0 if old_value else 0.0
+            evidence_upgrade = old_same.get("evidence") != "official" and obs.get("evidence") == "official"
+            reasons = []
             if abs(pct) >= EXPORT_UNIT_PRICE_REVISION_PCT:
-                ops_alert_events.append(
-                    operating_change_event(obs, old_same, [f"동일월 정정 {pct:+.1f}%"])
-                )
+                reasons.append(f"동일월 정정 {pct:+.1f}%")
+            if evidence_upgrade:
+                reasons.append("신뢰 보도→공식 확인")
+            if reasons:
+                ops_alert_events.append(operating_change_event(obs, old_same, reasons))
             else:
                 export_unit_prices[period] = {
                     "value": obs["value"],
                     "source": obs.get("source") or "",
+                    "evidence": obs.get("evidence") or "reported",
                     "observed_at": obs.get("published_at_kst") or "",
                 }
             continue
@@ -2010,12 +2024,14 @@ def main() -> None:
                             "unit": obs.get("unit"),
                             "period": obs.get("period"),
                             "source": obs.get("source") or "",
+                            "evidence": obs.get("evidence") or "reported",
                             "observed_at": obs.get("published_at_kst") or "",
                         }
                     elif obs.get("metric") == "export_unit_price":
                         export_unit_prices[obs["period"]] = {
                             "value": obs.get("value"),
                             "source": obs.get("source") or "",
+                            "evidence": obs.get("evidence") or "reported",
                             "observed_at": obs.get("published_at_kst") or "",
                         }
                 continue
