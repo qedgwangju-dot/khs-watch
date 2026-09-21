@@ -97,6 +97,11 @@ QUERIES = [
     '"삼성전자" HBM 생산능력 증설 내년',
     '"Samsung Electronics" HBM4 HBM4E production capacity double expand',
     '"Samsung" HBM production capacity output ramp expansion',
+    '"Samsung" HBM4 yield 80% production yield',
+    '"삼성전자" HBM4 수율 80% 황금수율',
+    '"HBM 수출단가" 한국무역협회',
+    '"HBM 평균 수출단가" 73.39 76.14',
+    '"HBM export unit price" Korea 73.39',
     '"삼성전자" HBM 충남 수출 Bernstein',
     '"SK hynix" HBM Bernstein export Chungbuk Icheon',
     '"SK하이닉스" HBM 충북 이천 수출 Bernstein',
@@ -211,9 +216,10 @@ def relevant(text: str) -> bool:
         "shipment", "ship", "mass production", "qualification", "validation", "customer",
         "market share", "revenue", "export", "mix", "allocation", "contract", "price",
         "production", "capacity", "output", "ramp", "expand", "expansion", "double",
-        "wafer", "investment", "capex",
+        "wafer", "investment", "capex", "yield", "unit price", "export price",
         "출하", "양산", "인증", "검증", "고객", "점유율", "매출", "수출", "비중", "계약", "가격",
         "생산", "증산", "생산능력", "캐파", "확대", "증설", "2배", "웨이퍼", "투입", "설비투자",
+        "수율", "수출단가", "평균 수출단가",
     ))
     icheon_proxy = (
         ("icheon" in low or "이천" in low)
@@ -225,7 +231,12 @@ def relevant(text: str) -> bool:
         and any(k in low for k in ("hbm", "emib", "advanced packaging", "첨단 패키징", "packaging"))
         and any(k in low for k in ("shipment", "export", "production", "capacity", "investment", "expand", "ramp", "출하", "수출", "생산", "캐파", "투자", "증설", "양산"))
     )
-    return (company and hbm and signal) or icheon_proxy or malaysia_proxy
+    price_proxy = (
+        "hbm" in low
+        and any(k in low for k in ("unit price", "export price", "수출단가", "평균 수출단가"))
+        and any(k in low for k in ("korea", "한국", "export", "수출", "kita", "한국무역협회"))
+    )
+    return (company and hbm and signal) or icheon_proxy or malaysia_proxy or price_proxy
 
 
 def read_events() -> list[dict]:
@@ -850,6 +861,10 @@ def classify_event(e: dict) -> tuple[str, str]:
     text = f"{e.get('title','')} {e.get('description','')}".lower()
     if any(k in text for k in ("malaysia", "말레이시아", "penang", "kulim")) and any(k in text for k in ("hbm", "emib", "packaging", "패키징")):
         return "말레이시아·EMIB", "말레이시아 HBM·Intel EMIB 첨단패키징 변화"
+    if "hbm" in text and any(k in text for k in ("yield", "수율")):
+        return "수율", "HBM 양산 수율 상태 변화"
+    if "hbm" in text and any(k in text for k in ("unit price", "export price", "수출단가", "평균 수출단가")):
+        return "수출단가·가격", "HBM 관련 수출단가 상태 변화"
     if "hbm" in text and any(k in text for k in (
         "production", "capacity", "output", "ramp", "expand", "expansion", "double",
         "생산", "증산", "생산능력", "캐파", "확대", "증설", "2배", "웨이퍼",
@@ -981,6 +996,17 @@ def event_state_descriptor(e: dict) -> tuple[str, str, str]:
     percentages = re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", text)
     if percentages:
         primary_values.append("pct=" + ",".join(percentages[:3]))
+
+    if category == "수출단가·가격":
+        price_values = re.findall(
+            r"(?:수출단가|평균\s*수출단가|unit\s*price|export\s*price)[^\d$]{0,30}\$?\s*([0-9]+(?:\.[0-9]+)?)",
+            text,
+            re.I,
+        )
+        if not price_values:
+            price_values = re.findall(r"\$?\s*([0-9]+(?:\.[0-9]+)?)\s*달러", text)
+        if price_values:
+            primary_values.append("price=" + ",".join(price_values[:3]))
 
     if category == "생산능력·증산":
         wafer = _first_number([
