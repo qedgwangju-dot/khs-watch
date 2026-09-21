@@ -357,6 +357,8 @@ def score(item: dict) -> int:
 def category(text: str, group: str) -> str:
     if group == 'humanoid_component_policy':
         return f"휴머노이드 핵심부품 정책 · {_stage(text)}"
+    if group == 'humanoid_component_global':
+        return f"글로벌 휴머노이드 부품 · {_component_family(text)} · {_component_stage(text)}"
     return _orig_category(text, group)
 
 
@@ -372,6 +374,19 @@ def meaning(cat: str) -> str:
     }
     if raw in mapping:
         return mapping[raw]
+    if cat.startswith('글로벌 휴머노이드 부품 · '):
+        parts = cat.split(' · ')
+        family = parts[1] if len(parts) > 1 else '핵심부품'
+        stage = parts[2] if len(parts) > 2 else '제품화'
+        if family == '감속기·롤러스크루':
+            return f'관절 정밀도·수명·백래시를 좌우하는 구동 핵심부품의 {stage} 변화입니다. 완성 로봇 생산대수보다 고객선정·수주잔고·수율·납기와 실제 양산 전환을 우선 추적합니다.'
+        if family == '모터·인코더':
+            return f'토크밀도와 위치정밀도를 결정하는 모터·인코더의 {stage} 변화입니다. OEM 다변화와 대당 탑재량, 평균판매단가, 생산수율이 매출 민감도를 좌우합니다.'
+        if family == '힘·토크·촉각센서':
+            return f'사람과 접촉하는 휴머노이드의 힘 제어·그립·안전성을 좌우하는 센서의 {stage} 변화입니다. 고객 승인, 드리프트·온도보상, 반복정밀도와 실제 양산 채택을 봅니다.'
+        if family == '비전·3D·라이다·관성센서':
+            return f'환경 인지·거리·자세 추정을 담당하는 센서의 {stage} 변화입니다. 고객 실명, 로봇 모델, 탑재 수량과 양산 시점을 확인해 실제 매출 연결을 판단합니다.'
+        return f'휴머노이드 핵심부품의 {stage} 변화입니다. 고객·물량·단가·수율·납기를 함께 확인합니다.'
     return _orig_meaning(cat)
 
 
@@ -387,10 +402,29 @@ def risk(cat: str) -> str:
     }
     if raw in mapping:
         return mapping[raw]
+    if cat.startswith('글로벌 휴머노이드 부품 · '):
+        parts = cat.split(' · ')
+        family = parts[1] if len(parts) > 1 else '핵심부품'
+        if family == '감속기·롤러스크루':
+            return '가장 현실적인 실패 경로는 OEM 양산 지연 전에 증설이 먼저 진행돼 가동률·총자산이익률이 악화되는 경우입니다. 수명·백래시·온도상승·소음과 고객 승인 지연을 먼저 봅니다.'
+        if family == '모터·인코더':
+            return '토크밀도·발열·인코더 정밀도·원가가 동시에 맞지 않으면 고객 채택이 지연될 수 있습니다. 생산능력보다 수율·납기·반복 주문을 우선 확인합니다.'
+        if family == '힘·토크·촉각센서':
+            return '센서 드리프트·교차간섭·온도보상·내구성 문제가 양산에서 먼저 드러날 수 있습니다. 고객 검증과 대량 교정 시간이 지연되면 평균판매단가가 높아도 매출 인식이 늦어집니다.'
+        if family == '비전·3D·라이다·관성센서':
+            return '시연 성능과 대량양산 신뢰성은 다릅니다. 가격 하락, 고객 이중조달, 교정·안전 인증 지연이 점유율과 마진을 압박할 수 있습니다.'
+        return '부품 증설과 실제 OEM 양산 사이 시차가 가장 큰 역풍입니다. 고객 승인·수율·출하·반복수주를 확인합니다.'
     return _orig_risk(cat)
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'humanoid_component_global':
+        src = item.get('source') or ''
+        if src in base.OFFICIAL_OR_PRIMARY:
+            return '기업 공식자료 · 고객/물량/단가/양산시점 직접 확인'
+        if src in base.TRUSTED:
+            return '신뢰 매체 보도 · 공급사·고객사 공식자료 교차확인'
+        return '보도 단계 · 고객선정·수주·양산·수율을 1차 자료로 추가 확인'
     if group != 'humanoid_component_policy':
         return _orig_verification(item, group, text)
     src = item.get('source') or ''
