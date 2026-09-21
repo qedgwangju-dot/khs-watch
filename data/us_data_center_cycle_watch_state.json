@@ -11,13 +11,13 @@
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
     "reported_mom_pct": 6.2,
     "reported_yoy_pct": 57.2,
-    "retrieved_at_utc": "2026-09-21T06:49:21.004159+00:00",
+    "retrieved_at_utc": "2026-09-21T14:26:33.573041+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
     "year_ago_saar_musd": 47810
   },
   "dodge": {
-    "article_sha256": "4207a3975d9e26d95f6b7d3453cd225d06c4179eaebc20c6fd126f84a957ce33",
+    "article_sha256": "f54bb44571d37f5c5c7672c7ec017e9f3ec0b4752787b862972b01edd7590eb8",
     "commercial_change_pct": 70.0,
     "data_center_mention_count": 6,
     "data_center_projects": [
@@ -38,7 +38,7 @@
     "nonresidential_change_pct": 57.7,
     "office_dc_change_pct": 107.9,
     "published": "2026-08-20T21:00:03+00:00",
-    "retrieved_at_utc": "2026-09-21T06:49:21.401418+00:00",
+    "retrieved_at_utc": "2026-09-21T14:26:34.097098+00:00",
     "source": "Dodge Construction Network Total Construction Starts",
     "title": "Construction Starts Rebound July 2026",
     "total_change_pct": 25.6,
@@ -53,6 +53,6 @@
     "source_type": "일일 기준환율",
     "usdkrw": 1388.1
   },
-  "updated_at_utc": "2026-09-21T06:49:15.295010+00:00",
+  "updated_at_utc": "2026-09-21T14:26:32.245995+00:00",
   "watch": "US data center construction starts vs spending"
 }
