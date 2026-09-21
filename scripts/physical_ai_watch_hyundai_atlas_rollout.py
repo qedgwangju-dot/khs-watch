@@ -222,6 +222,7 @@ def meaning(cat: str) -> str:
     if not cat.startswith(ATLAS_CATEGORY_PREFIX): return _orig_meaning(cat)
     raw = cat[len(ATLAS_CATEGORY_PREFIX):]
     m = {
+        'RMAC 제조현장 훈련·데이터 플라이휠':'RMAC이 실제 제조환경을 재현해 Atlas의 자동차 부품 물류·시퀀싱을 훈련하고 현장 데이터를 축적하는 단계입니다. 2028년 HMGMA 배치 전 검증센터가 실제 가동되는 것이 핵심이며, 이후 조립 공정·타 산업 고객 데이터로 확장되는지 추적합니다.',
         '기업공개 절차 진전':'시장 기대나 관계자 발언을 넘어 실제 기업공개 절차가 시작되는 신호입니다. S-1·SEC 제출, 주관사 선정, 공모 구조와 일정, 신주·구주매출을 확인합니다.',
         '기업공개·기업가치 시간표':'보스턴다이내믹스의 가치 현실화 시점이 실제 현장 배치·외부 고객·수익성 검증과 연결되는 신호입니다. 기업공개 일정만 보지 않고 2027년 외부 고객, 2028년 HMGMA 배치, 연 3만대 생산능력의 실제 출하 전환을 함께 추적합니다.',
         '지분·완전자회사화':'소프트뱅크 잔여 지분 인수와 완전자회사화 여부는 현대차그룹의 추가 자금부담과 향후 기업공개 지분구조를 바꾸는 신호입니다. 계약 체결, 거래 종결, 지분율을 구분해 확인합니다.',
@@ -242,6 +243,7 @@ def risk(cat: str) -> str:
     if not cat.startswith(ATLAS_CATEGORY_PREFIX): return _orig_risk(cat)
     raw = cat[len(ATLAS_CATEGORY_PREFIX):]
     m = {
+        'RMAC 제조현장 훈련·데이터 플라이휠':'훈련센터 개소와 실제 생산라인 상시 배치는 다릅니다. 먼저 봐야 할 실패 경로는 작업 성공률·사이클타임·안전 검증이 기준을 못 맞춰 2028년 현장 배치가 늦어지는 경우이며, RMAC 확대가 실제 배치대수와 출하로 연결되는지 확인합니다.',
         '기업공개 절차 진전':'신고서 제출이나 주관사 선정은 상장 완료가 아닙니다. 심사·시장상황·공모가 조정·철회 가능성을 분리해 보고 실제 상장일과 공모 구조를 확인해야 합니다.',
         '기업공개·기업가치 시간표':'가장 현실적인 실패 경로는 대규모 현장 배치와 외부 고객 확대가 늦어져 적자가 지속되고 기업공개가 추가 연기되는 경우입니다. 6~12개월에는 외부 고객·배치대수, 24개월에는 HMGMA 가동률·손실 축소를 먼저 확인합니다.',
         '지분·완전자회사화':'잔여 지분 인수 추진과 거래 종결은 다릅니다. 인수대금, 최종 지분율, 회계상 연결 영향과 향후 기업공개 시 신주·구주매출 구조를 확인해야 합니다.',
@@ -262,6 +264,7 @@ def verification(item: dict, group: str, text: str) -> str:
     src = item.get('source') or ''
     if src in {'Hyundai Motor Manufacturing Czech','HMMC','AutoSAP','Sdružení automobilového průmyslu'}: return '체코 생산법인 책임자 원인터뷰·산업협회 1차자료 · 현대차그룹 공식 일정 교차확인'
     if src in {'현대자동차','Hyundai Motor','현대자동차그룹','Hyundai Motor Group'}: return '현대차그룹 공식자료 · 공장별 실행 단계와 기업공개 일정 별도 확인'
+    if src == 'Boston Dynamics' and _is_rmac_operational(text): return '보스턴다이내믹스 공식자료 · RMAC 실제 훈련·검증 단계, 25,000대 배치·연 30,000대 생산능력은 현대차그룹 공식 계획과 구분'
     if src == 'Boston Dynamics': return '보스턴다이내믹스 공식자료 · 현대차그룹 배치·소유구조 일정 교차확인'
     if src in {'U.S. Securities and Exchange Commission','SEC'}: return '미국 증권거래위원회 공식 상장서류'
     if src == 'Reuters' and BOSTON.search(text) and CAPITAL.search(text): return '로이터 고위 관계자 발언 보도 · 현대차그룹/보스턴다이내믹스 공식 배치·생산 계획 교차확인 · 기업공개 일정은 회사 공식 확정 전'
@@ -273,6 +276,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 def clean_title(title: str, source: str) -> str:
     t = _orig_clean_title(title, source)
+    if RMAC.search(t) or re.search(r'Metaplant Application Center|제조 현장 훈련|manufacturing tasks', t, re.I):
+        return '보스턴다이내믹스, RMAC서 Atlas 제조 현장 훈련 본격화'
     if BOSTON.search(t):
         if IPO_FILING.search(t): return '보스턴다이내믹스 기업공개 절차 진전'
         if IPO.search(t) and re.search(r'2027', t) and IPO_DELAY.search(t): return '보스턴다이내믹스, 2027년 기업공개 가능성 낮아'
@@ -288,6 +293,7 @@ def _same_event(a: dict, b: dict) -> bool:
     if _orig_same_event(a,b): return True
     if a.get('group') != 'hyundai_atlas_rollout' or b.get('group') != 'hyundai_atlas_rollout': return False
     ta = f"{a.get('title','')} {a.get('description','')}"; tb = f"{b.get('title','')} {b.get('description','')}"
+    if _is_rmac_operational(ta) and _is_rmac_operational(tb): return True
     if BOSTON.search(ta) and BOSTON.search(tb) and IPO.search(ta) and IPO.search(tb):
         fa, fb = bool(IPO_FILING.search(ta)), bool(IPO_FILING.search(tb))
         if not fa and not fb and IPO_COMMENTARY.search(ta) and IPO_COMMENTARY.search(tb): return True
