@@ -13,6 +13,7 @@ import urllib.request
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT=Path(__file__).resolve().parents[1]
 STATE_PATH=ROOT/'data/warsh_ai_rotation_watch_state.json'
@@ -47,13 +48,20 @@ def series(symbol):
     meta=result.get('meta') or {}
     regular=((meta.get('currentTradingPeriod') or {}).get('regular') or {})
     regular_start=regular.get('start'); regular_end=regular.get('end')
-    now=time.time(); rows=[]
+    now=time.time()
+    ny_now=datetime.now(ZoneInfo('America/New_York'))
+    ny_today=ny_now.date().isoformat()
+    before_close_buffer=(ny_now.hour < 16 or (ny_now.hour == 16 and ny_now.minute < 15))
+    rows=[]
     for t,c in zip(ts,closes):
         if c is None:continue
         # Ignore Yahoo's still-open current-session daily bar; this signal is close-to-close.
+        row_date=datetime.fromtimestamp(t,ZoneInfo('America/New_York')).date().isoformat()
+        if row_date == ny_today and before_close_buffer:
+            continue
         if regular_start and regular_end and regular_start <= t <= regular_end and now < regular_end + 900:
             continue
-        rows.append((datetime.fromtimestamp(t,timezone.utc).date().isoformat(),float(c)))
+        rows.append((row_date,float(c)))
     if len(rows)<7:raise RuntimeError(f'{symbol} completed-session history too short')
     return rows
 
@@ -67,7 +75,10 @@ def avg(vals):return sum(vals)/len(vals) if vals else None
 
 def snapshot():
     data={name:series(sym) for name,sym in SYMBOLS.items()}
-    out={'date':data['반도체'][-1][0],'returns':{}}
+    latest_dates={rows[-1][0] for rows in data.values()}
+    if len(latest_dates) != 1:
+        raise RuntimeError(f'완료 종가 기준일 불일치: {sorted(latest_dates)}')
+    out={'date':next(iter(latest_dates)),'returns':{}}
     for name,rows in data.items():
         out['returns'][name]={'1d':ret(rows,1),'3d':ret(rows,3),'5d':ret(rows,5)}
     sw=out['returns']['소프트웨어']; semi=out['returns']['반도체']
