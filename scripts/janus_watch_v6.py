@@ -97,12 +97,13 @@ def _kind_for_title(title: str, requested_kind: str) -> str:
         palisades_terms = ["palisades", "팰리세이즈", "팰리세이드"]
         restart_terms = ["restart", "startup", "fuel loading", "fuel-loading", "fuel assembly", "mode 6", "mode 5", "nrc", "재가동", "핵연료", "연료장전", "연료 장전", "변전소", "substation"]
         finance_terms = ["initial public offering", "ipo", "상장", "기업공개", "조달", "funding", "financing", "loan", "offering", "공모", "자금"]
-        partnership_terms = ["현대건설", "hyundai", "smr-300", "협력", "epc", "feed"]
+        partnership_terms = ["현대건설", "hyundai", "smr-300", "협력", "partnership"]
+        engineering_stage = bool(re.search(r"\b(?:epc|feed)\b", low))
         if any(x in low for x in palisades_terms) and any(x in low for x in restart_terms):
             return "palisades_restart"
         if any(x in low for x in finance_terms):
             return "holtec_finance"
-        if any(x in low for x in partnership_terms):
+        if any(x in low for x in partnership_terms) or engineering_stage:
             return "holtec_smr_partnership"
         return ""
     return ""
@@ -152,12 +153,13 @@ def _official_title_kind(source_kind: str, title: str) -> str:
         palisades_terms = ["palisades", "팰리세이즈", "팰리세이드"]
         restart_terms = ["restart", "startup", "fuel loading", "fuel-loading", "fuel assembly", "mode 6", "mode 5", "nrc", "재가동", "핵연료", "연료장전", "연료 장전", "변전소", "substation"]
         finance_terms = ["initial public offering", "ipo", "상장", "기업공개", "funding", "financing", "loan", "offering", "공모", "자금조달"]
-        partnership_terms = ["hyundai", "현대건설", "smr-300", "epc", "feed", "partnership", "협력"]
+        partnership_terms = ["hyundai", "현대건설", "smr-300", "partnership", "협력"]
+        engineering_stage = bool(re.search(r"\b(?:epc|feed)\b", low))
         if any(x in low for x in palisades_terms) and any(x in low for x in restart_terms):
             return "palisades_restart"
         if any(x in low for x in finance_terms):
             return "holtec_finance"
-        if any(x in low for x in partnership_terms):
+        if any(x in low for x in partnership_terms) or engineering_stage:
             return "holtec_smr_partnership"
         return ""
     return ""
@@ -176,7 +178,8 @@ def _semantic_fingerprint_v6(source: str, title: str, url: str) -> str:
     palisades_terms = ["palisades", "팰리세이즈", "팰리세이드"]
     restart_terms = ["restart", "startup", "fuel loading", "fuel-loading", "fuel assembly", "mode 6", "mode 5", "nrc", "재가동", "핵연료", "연료장전", "연료 장전", "변전소", "substation"]
     finance_terms = ["initial public offering", "ipo", "상장", "기업공개", "funding", "financing", "loan", "offering", "공모", "자금조달"]
-    partnership_terms = ["hyundai", "현대건설", "smr-300", "epc", "feed", "partnership", "협력"]
+    partnership_terms = ["hyundai", "현대건설", "smr-300", "partnership", "협력"]
+    engineering_stage = bool(re.search(r"\b(?:epc|feed)\b", low))
 
     if any(x in low for x in palisades_terms) and any(x in low for x in restart_terms):
         kind = "palisades_restart"
@@ -194,7 +197,7 @@ def _semantic_fingerprint_v6(source: str, title: str, url: str) -> str:
                 "funding", "financing", "loan", "자금조달",
             ] if token in low
         ]
-    elif any(x in low for x in partnership_terms):
+    elif any(x in low for x in partnership_terms) or engineering_stage:
         kind = "holtec_smr_partnership"
         signals = [
             token for token in ["smr-300", "hyundai", "현대건설", "epc", "feed", "partnership", "협력", "contract", "계약"]
