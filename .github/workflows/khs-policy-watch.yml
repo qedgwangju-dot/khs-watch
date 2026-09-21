@@ -213,6 +213,11 @@ jobs:
             cat out/khs_trusted_policy_news_alert.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
+          if [ -f out/khs_ai_force_policy_alert.md ]; then
+            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/khs_ai_force_policy_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
           if [ -f out/khs_policy_source_status_alert.md ]; then
             printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/khs_policy_source_status_alert.md >> "$GITHUB_STEP_SUMMARY"
@@ -275,7 +280,7 @@ jobs:
           fi
 
       - name: Send Telegram alert
-        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || hashFiles('out/khs_nuclear_policy_alert.md') != '' || hashFiles('out/khs_trusted_policy_news_alert.md') != '' || hashFiles('out/khs_policy_source_status_alert.md') != '' || env.TELEGRAM_TEST == 'true' || env.TELEGRAM_DRY_RUN == 'true'
+        if: hashFiles('out/khs_policy_watch_alert.md') != '' || hashFiles('out/khs_korea_presidential_personnel_alert.md') != '' || hashFiles('out/khs_nuclear_policy_alert.md') != '' || hashFiles('out/khs_trusted_policy_news_alert.md') != '' || hashFiles('out/khs_ai_force_policy_alert.md') != '' || hashFiles('out/khs_policy_source_status_alert.md') != '' || env.TELEGRAM_TEST == 'true' || env.TELEGRAM_DRY_RUN == 'true'
         env:
           KHS_POLICY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
           KHS_POLICY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
@@ -326,6 +331,7 @@ jobs:
               (pathlib.Path("out/khs_korea_presidential_personnel_title.txt"), pathlib.Path("out/khs_korea_presidential_personnel_alert.md"), "KHS Korea presidential personnel alert", "policy"),
               (pathlib.Path("out/khs_nuclear_policy_title.txt"), pathlib.Path("out/khs_nuclear_policy_alert.md"), "KHS nuclear AI power alert", "westinghouse"),
               (pathlib.Path("out/khs_trusted_policy_news_title.txt"), pathlib.Path("out/khs_trusted_policy_news_alert.md"), "KHS trusted policy news alert", "policy"),
+              (pathlib.Path("out/khs_ai_force_policy_title.txt"), pathlib.Path("out/khs_ai_force_policy_alert.md"), "미국 AI 정책지휘체계 중요 변화", "ai_force"),
               (pathlib.Path("out/khs_policy_source_status_title.txt"), pathlib.Path("out/khs_policy_source_status_alert.md"), "KHS policy source status alert", "policy"),
           ]
 
@@ -378,14 +384,6 @@ jobs:
               if format_errors:
                   raise RuntimeError(f"Telegram final format failed lane={body_file}: {format_errors}")
               messages.append((title, body, route))
-              if body_file.name == "khs_trusted_policy_news_alert.md":
-                  combined = f"{title}\n{body}".lower()
-                  if ("ai force" in combined or "ai 차르" in combined or "ai czar" in combined):
-                      ai_token = (os.environ.get("KHS_AI_POLICY_TELEGRAM_BOT_TOKEN") or "").strip()
-                      if ai_token:
-                          messages.append((title, body, "ai_force"))
-                      else:
-                          print("ai_force_route_not_configured=true expected_bot=@khs88798879_bot secret=KHS_AI_POLICY_TELEGRAM_BOT_TOKEN")
 
           if not messages and telegram_test:
               report = pathlib.Path("out/khs_policy_watch.md")
