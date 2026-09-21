@@ -434,6 +434,8 @@ def meaning(cat: str) -> str:
         parts = cat.split(' · ')
         family = parts[1] if len(parts) > 1 else '핵심부품'
         stage = parts[2] if len(parts) > 2 else '제품화'
+        if family == '로봇핸드·그리퍼':
+            return f'22자유도 로봇핸드처럼 손 조작 자유도·역구동성·관절 보호와 공개 가격이 함께 제시되는 {stage} 변화입니다. 완성 휴머노이드의 조작 성능과 대당 부품가치를 동시에 바꾸는 신호이므로 고객 채택·출하량·반복 주문을 추적합니다.'
         if family == '감속기·롤러스크루':
             return f'관절 정밀도·수명·백래시를 좌우하는 구동 핵심부품의 {stage} 변화입니다. 완성 로봇 생산대수보다 고객선정·수주잔고·수율·납기와 실제 양산 전환을 우선 추적합니다.'
         if family == '모터·인코더':
@@ -461,6 +463,8 @@ def risk(cat: str) -> str:
     if cat.startswith('글로벌 휴머노이드 부품 · '):
         parts = cat.split(' · ')
         family = parts[1] if len(parts) > 1 else '핵심부품'
+        if family == '로봇핸드·그리퍼':
+            return '공개가는 실제 대량 OEM 단가와 다를 수 있고, 22자유도·역구동성은 내구성·촉각 정밀도·그립 성공률을 보장하지 않습니다. 관절 고장률, 충격 보호 개입 빈도, 고객 채택과 실제 출하가 먼저 확인돼야 합니다.'
         if family == '감속기·롤러스크루':
             return '가장 현실적인 실패 경로는 OEM 양산 지연 전에 증설이 먼저 진행돼 가동률·총자산이익률이 악화되는 경우입니다. 수명·백래시·온도상승·소음과 고객 승인 지연을 먼저 봅니다.'
         if family == '모터·인코더':
@@ -476,6 +480,8 @@ def risk(cat: str) -> str:
 def verification(item: dict, group: str, text: str) -> str:
     if group == 'humanoid_component_global':
         src = item.get('source') or ''
+        if item.get('unitree_hand_launch') or src == 'Unitree Robotics (X)':
+            return '유니트리 공식 X 1차 자료 · 공개가/사양 기준, 실제 고객 채택·출하량은 별도 확인'
         if src in base.OFFICIAL_OR_PRIMARY:
             return '기업 공식자료 · 고객/물량/단가/양산시점 직접 확인'
         if src in base.TRUSTED:
@@ -566,6 +572,8 @@ def key(item: dict) -> str:
         return _orig_key(item)
     family = _component_family(text)
     stage = _component_stage(text)
+    if _is_unitree_hand(text) and stage == '제품출시·가격':
+        return hashlib.sha256(b'unitree|dex5-s|launch|22dof|6500').hexdigest()
     companies = ','.join(sorted(_global_companies(text))) or 'market'
     nums = sorted(set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|개|대|개월|주|일|CNY|RMB|USD|달러|위안)', text, re.I)))
     num_sig = '|'.join(nums[:4]) if nums else 'no-number'
@@ -583,12 +591,20 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
     return [component, *chosen[:-1]]
 
 
+def clean_title(title: str, source: str) -> str:
+    if re.search(r'Unitree|Dex5[- ]?S|宇树', title, re.I) and re.search(r'hand|핸드|灵巧手|22', title, re.I):
+        return '유니트리, Dex5-S 22자유도 로봇핸드 공개…가격 6,500달러부터'
+    return _orig_clean_title(title, source)
+
+
+base.query_news = query_news
 base.topic_group = topic_group
 base.score = score
 base.category = category
 base.meaning = meaning
 base.risk = risk
 base.verification = verification
+base.clean_title = clean_title
 base.tag_for = tag_for
 base.key = key
 base.select_diverse = select_diverse
