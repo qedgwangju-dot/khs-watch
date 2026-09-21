@@ -259,6 +259,9 @@ def message(snap, cls):
         lines += ['', '<b>대차대조표 확인</b>',
                   f"• 최신 시행지침: {html.escape(bal['mode'])}",
                   f"• H.4.1 구조 판정: {html.escape(bal['regime'])}",
+                  ('• 현재 공식 조합: <b>금리 인상 + 충분한 준비금 유지/자산 구성 전환</b>입니다. “금리 대신 QT”로 읽지 않습니다.'
+                   if '충분한 준비금' in bal.get('mode','') else
+                   '• 현재 공식 조합에 총량 축소형 양적긴축(QT)이 실제 포함됐는지 별도로 판정합니다.'),
                   '• 따라서 “금리 인상 대신 양적긴축(QT)”인지, 아니면 “금리 인상 + 충분한 준비금 유지”인지 따로 구분합니다.']
     lines += ['', '<b>선물시장 경로</b>']
     lines += [fmt_meeting(m, cls['baseline_rate']) for m in snap['meetings'][:4]]
