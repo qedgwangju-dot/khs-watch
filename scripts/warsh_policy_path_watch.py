@@ -3,6 +3,7 @@ import html
 import json
 import os
 import re
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -47,8 +48,15 @@ class TableParser(HTMLParser):
             self.tables.append(self.table); self.table=None
 
 def fetch(url):
-    req=urllib.request.Request(url,headers={'User-Agent':UA,'Accept-Language':'en-US,en;q=0.9'})
-    with urllib.request.urlopen(req,timeout=30) as r:return r.read().decode('utf-8','replace'),r.geturl()
+    last=None
+    for attempt in range(3):
+        try:
+            req=urllib.request.Request(url,headers={'User-Agent':UA,'Accept-Language':'en-US,en;q=0.9'})
+            with urllib.request.urlopen(req,timeout=30) as r:return r.read().decode('utf-8','replace'),r.geturl()
+        except Exception as e:
+            last=e
+            if attempt<2:time.sleep(2*(attempt+1))
+    raise last
 
 def clean_text(raw):
     raw=re.sub(r'(?is)<script.*?>.*?</script>|<style.*?>.*?</style>',' ',raw)
@@ -268,7 +276,17 @@ def message(snap, cls):
     return '\n'.join(lines)
 
 def main():
-    snap=parse_snapshot(); cls=classify(snap); old=load_state(); first=not bool(old)
+    old=load_state(); first=not bool(old); source_error=None
+    try:
+        snap=parse_snapshot()
+    except Exception as e:
+        source_error=str(e)
+        if not old.get('meetings'):
+            raise
+        print(json.dumps({'first_run':first,'stale_fallback':True,'source_error':source_error,
+                          'message':'선물시장 원천 일시 오류 — 직전 정상 상태를 유지하고 이번 회차는 새 판정을 보내지 않음'},ensure_ascii=False))
+        return
+    cls=classify(snap)
     upgrade=old.get('schema_version',1)<SCHEMA_VERSION
     old_cls=old.get('classification',{}); changed=upgrade or old_cls.get('verdict') not in (None,cls['verdict'])
     if not changed and old_cls.get('extra_bp') is not None:
