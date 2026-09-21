@@ -1,6 +1,10 @@
 name: KHS policy watch
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/khs-policy-watch.yml"
   schedule:
     # Run every 15 minutes, offset from crowded 00/15/30/45 slots.
     - cron: "12,27,42,57 * * * *"
@@ -26,13 +30,26 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: write
 
 concurrency:
   group: khs-policy-watch
   cancel-in-progress: true
 
 jobs:
+  reactivate:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enable existing KHS policy schedule
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/khs-policy-watch.yml/enable"
+          echo "khs_policy_schedule_enable=confirmed"
+
   watch:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     env:
       CREATE_GITHUB_ISSUE: "true"
