@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
+import hashlib
 import html
 import re
 import sys
@@ -161,6 +162,54 @@ def _official_title_kind(source_kind: str, title: str) -> str:
         return ""
     return ""
 
+
+
+_ORIGINAL_FINGERPRINT = j2.base.fingerprint
+
+
+def _semantic_fingerprint_v6(source: str, title: str, url: str) -> str:
+    low = f"{source} {title}".lower()
+    holtec_context = any(x in low for x in ["holtec", "홀텍", "palisades", "팰리세이즈", "팰리세이드", "smr-300"])
+    if not holtec_context:
+        return _ORIGINAL_FINGERPRINT(source, title, url)
+
+    palisades_terms = ["palisades", "팰리세이즈", "팰리세이드"]
+    restart_terms = ["restart", "startup", "fuel loading", "fuel-loading", "fuel assembly", "mode 6", "mode 5", "nrc", "재가동", "핵연료", "연료장전", "연료 장전", "변전소", "substation"]
+    finance_terms = ["initial public offering", "ipo", "상장", "기업공개", "funding", "financing", "loan", "offering", "공모", "자금조달"]
+    partnership_terms = ["hyundai", "현대건설", "smr-300", "epc", "feed", "partnership", "협력"]
+
+    if any(x in low for x in palisades_terms) and any(x in low for x in restart_terms):
+        kind = "palisades_restart"
+        signals = [
+            token for token in [
+                "fuel loading", "fuel-loading", "fuel assembly", "핵연료", "연료장전", "paused", "pause", "중단",
+                "resume", "resumed", "재개", "mode 6", "mode 5", "nrc", "345", "substation", "변전소", "startup", "restart", "재가동",
+            ] if token in low
+        ]
+    elif any(x in low for x in finance_terms):
+        kind = "holtec_finance"
+        signals = [
+            token for token in [
+                "ipo", "initial public offering", "상장", "기업공개", "delay", "postpone", "연기", "pricing", "공모가",
+                "funding", "financing", "loan", "자금조달",
+            ] if token in low
+        ]
+    elif any(x in low for x in partnership_terms):
+        kind = "holtec_smr_partnership"
+        signals = [
+            token for token in ["smr-300", "hyundai", "현대건설", "epc", "feed", "partnership", "협력", "contract", "계약"]
+            if token in low
+        ]
+    else:
+        return _ORIGINAL_FINGERPRINT(source, title, url)
+
+    # 동일 사건을 여러 매체/URL이 재전송해도 한 상태로 묶고,
+    # 재개·중단·계약 등 실제 상태 신호가 바뀔 때만 fingerprint가 달라진다.
+    normalized = "|".join(sorted(set(signals))) or kind
+    return hashlib.sha256(f"janus-v6-semantic|{kind}|{normalized}".encode("utf-8")).hexdigest()
+
+
+j2.base.fingerprint = _semantic_fingerprint_v6
 
 def _official_items(source, page_text):
     soup = BeautifulSoup(page_text, "html.parser")
