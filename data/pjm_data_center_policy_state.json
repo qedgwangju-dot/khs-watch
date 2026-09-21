@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "format_version": 6,
+  "format_version": 7,
   "baseline": {
     "target_mw": 6831,
     "max_price_usd_mw_day": 555.0,
@@ -14,7 +14,20 @@
     "capacity_shortfall_mw": 6831.0,
     "capacity_reserve_margin_pct": 14.7,
     "capacity_peak_load_increase_mw": 2000.0,
-    "capacity_new_generation_uprates_mw": 525.0
+    "capacity_new_generation_uprates_mw": 525.0,
+    "hr9340_stage": "하원 통과·상원 절차 대기",
+    "hr9340_vote_yes": 417.0,
+    "hr9340_vote_no": 3.0,
+    "hr9340_threshold_mw": 100.0,
+    "hr9340_force": "주 공익사업위원회가 연방 비용회수 기준을 검토하는 PURPA식 구조",
+    "s5028_stage": "상원 에너지·천연자원위원회 회부·9월17일 만장일치 동의 통과 시도 이의로 불발",
+    "s5028_threshold_mw": 100.0,
+    "s5028_force": "주 규제기관의 비용회수 기준 검토 구조",
+    "s5199_stage": "상원 에너지·천연자원위원회 회부·9월17일 만장일치 동의 통과 시도 이의로 불발",
+    "s5199_threshold_mw": 150.0,
+    "s5199_force": "FERC 대형부하 접속규칙·직접 비용부담을 법률로 요구",
+    "rm26_4_stage": "ANOPR·대형부하 우선 규칙제정 절차",
+    "rm26_4_threshold_mw": 20.0
   },
   "seen_ids": [
     "89279e4b096aa3398c6c",
@@ -559,11 +572,12 @@
     "23340b1bc02780b4e0c9",
     "646d1ccb63581a2d0a13",
     "25633577e8ed702cabd2",
-    "320deacb738d5a81da0b"
+    "320deacb738d5a81da0b",
+    "f1de554a286d2a53896e"
   ],
-  "last_fx_krw_per_usd": 1386.744186,
+  "last_fx_krw_per_usd": 1386.016611,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-09-20T19:32:08+00:00",
-  "updated_at_utc": "2026-09-20T19:32:20+00:00",
+  "fx_checked_utc": "2026-09-21T03:19:32+00:00",
+  "updated_at_utc": "2026-09-21T03:19:43+00:00",
   "source_errors": []
 }
