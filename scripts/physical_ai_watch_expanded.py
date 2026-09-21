@@ -72,7 +72,7 @@ SAMHYUN_CAPA = re.compile(r'생산\s*능력|capacity|창원\s*2공장|50만|100�
 
 
 def _samhyun_stage(text: str) -> str:
-    if SAMHYUN_REPEAT_ORDER.search(text):
+    if SAMHYUN_REPEAT_ORDER.search(text) and not re.search(r'추진|기대|예상|전망|가능성|계획|예정|이어질|목표|검토|hope|expect|plan|possible|potential', text, re.I):
         return 'follow_on_order'
     if SAMHYUN_FIRST_SHIPMENT.search(text) and not re.search(r'예정|계획|오는\s*12월|12월부터|will\s+(?:start|begin)|scheduled', text, re.I):
         return 'first_shipment'
