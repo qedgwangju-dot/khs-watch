@@ -806,7 +806,7 @@ def _load() -> dict:
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
         state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
-        # 기사/URL 기반 v2 event key와 오염된 사건 상태는 v3에서 재사용하지 않는다.
+        # 기사/URL 기반 과거 event key와 오염된 원전 기수·노형 상태는 v4에서 재사용하지 않는다.
         state["seen"] = {
             k: v for k, v in (state.get("seen") or {}).items()
             if not str(k).startswith("stateevt_")
@@ -924,7 +924,7 @@ def _collapse_rows(rows: list[dict]) -> list[dict]:
             continue
         groups.setdefault(family, []).append(row)
 
-    # v3 전환 첫 실행은 현재 주제·사건 상태만 기준선으로 흡수하고 과거 기사를 재발송하지 않는다.
+    # v4 전환 첫 실행은 공식 확인 상태만 기준선으로 흡수하고 과거 기사를 재발송하지 않는다.
     if _BOOTSTRAP_GUARD:
         for family, family_rows in groups.items():
             accepted, evidence_map = _accepted_facts_for_group(family, family_rows)
@@ -933,7 +933,7 @@ def _collapse_rows(rows: list[dict]) -> list[dict]:
             evidence_row = _pick_evidence_row(accepted, evidence_map, family_rows)
             _apply_state(family, evidence_row, accepted, evidence_map)
         _SHARED_STATE["event_state_guard_baselined_at"] = now.isoformat()
-        print(f"event_state_guard_v3_baseline_families={len(groups)}")
+        print(f"event_state_guard_v4_baseline_families={len(groups)}")
         return []
 
     out: list[dict] = []
@@ -1020,11 +1020,21 @@ def _self_test() -> int:
         },
     ]
     accepted, _ = _accepted_facts_for_group("nuclear_build", nuclear_rows)
-    expected = {"nuclear_total_units:8", "ap1000_units:6", "apr1400_units:2"}
+    if accepted:
+        raise RuntimeError(f"unconfirmed nuclear numbers became state: {accepted}")
+
+    official_nuclear_rows = [
+        {
+            "title": "미국 원전 8기·AP1000 6기·APR1400 2기 공식 확정 발표",
+            "source": "산업통상부",
+            "link": "https://example.com/official-nuclear",
+            "published": "2026-09-20T00:06:00+00:00",
+        },
+    ]
+    accepted, _ = _accepted_facts_for_group("nuclear_build", official_nuclear_rows)
+    expected = {"nuclear_total_units:8", "ap1000_units:6", "apr1400_units:2", "official_status:confirmed"}
     if not expected.issubset(accepted):
-        raise RuntimeError(f"nuclear state parsing failed: {accepted}")
-    if "ap1000_units:8" in accepted or "apr1400_units:8" in accepted:
-        raise RuntimeError(f"model unit double count regression: {accepted}")
+        raise RuntimeError(f"official nuclear state parsing failed: {accepted}")
 
     ambiguous_total_rows = [
         {
@@ -1041,10 +1051,8 @@ def _self_test() -> int:
         },
     ]
     accepted, _ = _accepted_facts_for_group("nuclear_build", ambiguous_total_rows)
-    if "nuclear_total_units:8" not in accepted:
-        raise RuntimeError(f"ambiguous total units not retained: {accepted}")
-    if any(x.startswith(("ap1000_units:", "apr1400_units:")) for x in accepted):
-        raise RuntimeError(f"ambiguous total leaked into model split: {accepted}")
+    if accepted:
+        raise RuntimeError(f"ambiguous unconfirmed total became state: {accepted}")
 
     inconsistent_rows = [
         {
@@ -1061,10 +1069,8 @@ def _self_test() -> int:
         },
     ]
     accepted, _ = _accepted_facts_for_group("nuclear_build", inconsistent_rows)
-    if "nuclear_total_units:8" not in accepted:
-        raise RuntimeError(f"inconsistent total units lost: {accepted}")
-    if any(x.startswith(("ap1000_units:", "apr1400_units:")) for x in accepted):
-        raise RuntimeError(f"inconsistent model split survived: {accepted}")
+    if accepted:
+        raise RuntimeError(f"inconsistent unconfirmed nuclear numbers became state: {accepted}")
 
     same_publisher_rows = [
         {
