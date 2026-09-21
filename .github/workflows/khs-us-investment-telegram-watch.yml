@@ -15,8 +15,8 @@ on:
       - "scripts/khs_us_investment_telegram_send.py"
       - "data/khs_us_investment_watch_config.json"
   schedule:
-    # Temporary near-term verification; restore normal offset after one confirmed schedule run.
-    - cron: "17,32,47,2 * * * *"
+    # GitHub cron is UTC. 15-minute monitoring, offset from other policy jobs.
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
 
 permissions:
