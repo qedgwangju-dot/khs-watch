@@ -92,6 +92,7 @@ jobs:
           WARSH_ENERGY_20D_PCT: '15'
           WARSH_PATH_PROB_ALERT_PP: '15'
           WARSH_PATH_EXTRA_ALERT_BP: '10'
+          WARSH_PATH_MARKET_SEP_GAP_BP: '10'
           WARSH_BALANCE_ASSET_4W_BN: '75'
           WARSH_BALANCE_RESERVE_4W_BN: '100'
           PYTHONPATH: scripts
@@ -131,9 +132,9 @@ jobs:
           python scripts/warsh_curve_ownership_watch_v2.py
           python scripts/warsh_credibility_pretightening_watch_v2.py
           python scripts/warsh_energy_shock_watch.py
-          python scripts/warsh_policy_path_watch.py
           python scripts/warsh_balance_sheet_watch.py
           python scripts/warsh_sep_path_watch_v2.py
+          python scripts/warsh_policy_path_watch.py
           python scripts/warsh_ib_consensus_watch.py
           python scripts/warsh_post_fomc_ib_reaction_watch.py
           python scripts/warsh_fomc_event_watch_v3.py
