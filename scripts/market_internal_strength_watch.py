@@ -4,6 +4,7 @@ import json
 import os
 import urllib.parse
 import urllib.request
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -32,10 +33,20 @@ def series(symbol):
     r=((d.get('chart') or {}).get('result') or [None])[0]
     if not r: raise RuntimeError(f'{symbol} unavailable')
     ts=r.get('timestamp') or []; q=(((r.get('indicators') or {}).get('quote') or [{}])[0].get('close') or [])
+    meta=r.get('meta') or {}
+    regular=((meta.get('currentTradingPeriod') or {}).get('regular') or {})
+    regular_start=regular.get('start'); regular_end=regular.get('end')
+    now=time.time()
     rows=[]
     for t,v in zip(ts,q):
-        if v is not None: rows.append((datetime.fromtimestamp(t,timezone.utc).date().isoformat(),float(v)))
-    if len(rows)<7: raise RuntimeError(f'{symbol} history too short')
+        if v is None:
+            continue
+        # Yahoo 1d chart can expose the current, still-open U.S. session as a daily bar.
+        # Do not treat that partial bar as a completed daily close.
+        if regular_start and regular_end and regular_start <= t <= regular_end and now < regular_end + 900:
+            continue
+        rows.append((datetime.fromtimestamp(t,timezone.utc).date().isoformat(),float(v)))
+    if len(rows)<7: raise RuntimeError(f'{symbol} completed-session history too short')
     return rows
 
 def ret(rows,n): return (rows[-1][1]/rows[-1-n][1]-1)*100.0
@@ -94,9 +105,13 @@ def easy_read(s):
         return '지수는 버텨 보여도 동일가중과 여러 업종이 뒤처져, 소수 대형주가 지수를 받치는 장에 가깝습니다.'
     return '좋은 업종과 약한 업종이 섞여 있어, 순환매가 살아 있다고 단정하기도 전면 위험회피라고 보기도 이릅니다.'
 
-def message(s):
+def message(s, correction=False, old_date=None):
     r=s['returns']; spy=r['S&P500']; rsp=r['동일가중 S&P500']; iwm=r['중소형주']; hyg=r['하이일드 회사채']; vix=r['VIX']
-    lines=['<b>[미국 증시 내부 체력·순환매]</b>',f"기준: {s['date']}",'', '<b>한눈에 보기</b>',
+    title='[정정·미국 증시 내부 체력·순환매]' if correction else '[미국 증시 내부 체력·순환매]'
+    lines=[f'<b>{title}</b>',f"기준: {s['date']} 미국 정규장 종가"]
+    if correction:
+        lines += ['', '<b>정정 사유</b>', f"• 직전 {old_date or '당일'} 값은 정규장 진행 중의 부분 일봉이 섞인 값이어서 종가 기준 판정에서 제외했습니다."]
+    lines += ['', '<b>한눈에 보기</b>',
            f"• <b>{html.escape(s['verdict'])}</b>",
            f"• S&P 500(SPY): 5거래일 {spy['5d']:+.1f}%",
            f"• 동일가중 S&P 500(RSP): 5거래일 {rsp['5d']:+.1f}% · S&P 대비 {s['rsp_rel_5d']:+.1f}%p",
@@ -118,10 +133,11 @@ def message(s):
 def main():
     s=snapshot(); old=load_state(); first=not bool(old)
     new_day=old.get('date') not in (None,s['date']); changed=old.get('verdict') not in (None,s['verdict'])
+    correction=bool(old.get('date') and old.get('date') > s['date'])
     shock=(s['returns']['VIX']['5d']>=20 or s['returns']['하이일드 회사채']['5d']<=-2.0)
     old_shock=bool(old.get('shock'))
-    should=FORCE or (not first and (changed or (shock and not old_shock)))
-    if should: send(message(s))
+    should=FORCE or correction or (not first and (changed or (shock and not old_shock)))
+    if should: send(message(s, correction=correction, old_date=old.get('date')))
     if first or new_day or changed or shock!=old_shock:
         save_state({'date':s['date'],'verdict':s['verdict'],'shock':shock,'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],'sector_up_1d':s['sector_up_1d'],'sector_up_5d':s['sector_up_5d'],'returns':s['returns']})
     print(json.dumps({'first_run':first,'date':s['date'],'verdict':s['verdict'],'shock':shock,'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],'sector_up_5d':s['sector_up_5d'],'sent':should},ensure_ascii=False))
