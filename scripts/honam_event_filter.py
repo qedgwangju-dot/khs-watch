@@ -75,6 +75,30 @@ def _is_material_event(item):
     return strong or official or (numbers and contextual)
 
 
+
+KNOWN_BASELINE_RULES = [
+    # 2030년 6월 첫 양산 목표는 9월 22일 이전부터 공개된 기존 기준선이다.
+    (re.compile(r"2030(?:년)?(?:\s*6월)?[^\n]{0,40}양산|양산[^\n]{0,40}2030(?:년)?(?:\s*6월)?", re.I),
+     ["63만평", "208만", "2027", "2028", "2029", "3.1gw", "6.3gw", "15만", "35만", "65만", "106만",
+      "송전선로", "23㎞", "23km", "입주협약", "사전행위", "특례", "동복댐", "보성강댐", "팹 2기", "2기 완공"]),
+]
+
+
+def _is_known_baseline_only(item):
+    text = " ".join([
+        _norm(item.get("title")), _norm(item.get("description")), _norm(item.get("headline")),
+        _norm(item.get("detail")), _norm(item.get("reason")), _norm(item.get("impact"))
+    ])
+    low = text.lower()
+    for pattern, change_markers in KNOWN_BASELINE_RULES:
+        if pattern.search(text):
+            # 기존 기준선 문구만 반복한 기사면 새 상태 변화가 아니다.
+            # 다만 새 일정·물량·인프라·협약 등 구체 변화가 함께 있으면 통과시킨다.
+            if not any(marker.lower() in low for marker in change_markers):
+                return True
+    return False
+
+
 def _merge_group(items):
     first = dict(items[0])
     evidence = []
@@ -138,7 +162,7 @@ def main():
 
     pending["seen_event_keys"] = list(dict.fromkeys(all_event_keys + list(seen_event_keys)))[:3000]
     pending["alert_basis"] = "topic_event_official_state_change"
-    pending["article_role"] = "evidence_and_crosscheck_only"
+    pending["article_role"] = "evidence_and_crosscheck_only"\n    pending["baseline_guard"] = "suppress_rephrased_known_facts_without_new_schedule_quantity_or_official_status"
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if not final_news and not final_official:
