@@ -512,6 +512,11 @@ def main() -> int:
         print(f"policy_reaction_alert=true title={title}")
     else:
         print("policy_reaction_alert=false")
+
+    # Upgrade the already-generated composite alert in-place. This does not create
+    # a second Telegram event; it only adds policy-coordination and stock-impact context.
+    from yen_carry_bessent_policy_overlay import main as apply_bessent_overlay
+    apply_bessent_overlay()
     return 0
 
 
