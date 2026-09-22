@@ -215,7 +215,6 @@ def main():
     old=load_state(); first=not bool(old); cur=h41_snapshot(); impl=latest_impl_note(); task=task_snapshot()
     history=old.get('history',[]); regime,four=classify_h41(cur,history)
     reasons=[]
-    if old.get('schema_version',1)<SCHEMA_VERSION:reasons.append('가독성·정확도 형식 업그레이드')
     if old.get('implementation',{}).get('url') not in (None,impl['url']):reasons.append('새 FOMC 시행지침')
     if old.get('implementation',{}).get('mode') not in (None,impl['mode']):reasons.append('대차대조표 정책문구 판정 변경')
     if old.get('task_force',{}).get('fingerprint') not in (None,task['fingerprint']):reasons.append('대차대조표 태스크포스 공식내용 변경')
