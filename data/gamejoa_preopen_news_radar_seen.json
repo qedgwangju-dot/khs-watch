@@ -20,16 +20,6 @@
       "source": "전자신문",
       "title": "코스피, 개장 초반 7000선 공방…반도체 강세 지속"
     },
-    "event:022ce9e1417338d730c72e4c": {
-      "first_seen_kst": "2026-09-08T10:18:43+09:00",
-      "lanes": {
-        "live": "2026-09-08T10:18:43+09:00"
-      },
-      "last_seen_kst": "2026-09-08T10:18:43+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12146733",
-      "source": "매일경제",
-      "title": "특징주, 대한광통신-광통신(광케이블/광섬유 등) 테마 상승세에 6.46% ↑"
-    },
     "event:02f16e7ace1936e2a3ebe052": {
       "first_seen_kst": "2026-09-09T17:58:43+09:00",
       "lanes": {
@@ -708,16 +698,6 @@
       "source": "머니투데이",
       "title": "연준 금리 인상에도 AI주는 랠리…인텔 4%·스페이스X 5% 급등"
     },
-    "event:4a7820f690847f9e81e37deb": {
-      "first_seen_kst": "2026-09-08T09:55:28+09:00",
-      "lanes": {
-        "live": "2026-09-08T09:55:28+09:00"
-      },
-      "last_seen_kst": "2026-09-08T09:55:28+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02345206645578152",
-      "source": "이데일리",
-      "title": "구리값 역대 최고…AI가 끌고 트럼프 관세가 밀어 올려"
-    },
     "event:4aa13fe7e5d51c0930b88592": {
       "first_seen_kst": "2026-09-21T10:52:59+09:00",
       "lanes": {
@@ -830,6 +810,16 @@
       "link": "https://www.etoday.co.kr/news/view/2625347",
       "source": "이투데이",
       "title": "하락 마감한 코스피 [포토]"
+    },
+    "event:546589931273131d7222dc33": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.etnews.com/20260922000186",
+      "source": "전자신문",
+      "title": "보령, 中 이판제약과 '탁소텔' 3837억원 공급계약…역대 최대 규모"
     },
     "event:5513636efacfa5f917cc025d": {
       "first_seen_kst": "2026-09-15T06:27:19+09:00",
@@ -1834,6 +1824,16 @@
       "link": "https://www.etnews.com/20260916000118",
       "source": "전자신문",
       "title": "'AI 시장 힘주는' 日 무라타, MLCC 생산능력 확충 추진"
+    },
+    "event:b951ffa9a7b785398baf2da0": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12159007",
+      "source": "매일경제",
+      "title": "이소영 청문보고서 여야 합의 채택…“우려 있지만 역량 갖춰”"
     },
     "event:b98d7753fb34ab0771562c7c": {
       "first_seen_kst": "2026-09-09T14:18:11+09:00",
@@ -2933,6 +2933,16 @@
       "source": "연합뉴스",
       "title": "광주 반도체 클러스터 조성 설비 투자 본격 시동 | 연합뉴스"
     },
+    "link:24576684e931e5f218725575": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.etnews.com/20260922000186",
+      "source": "전자신문",
+      "title": "보령, 中 이판제약과 '탁소텔' 3837억원 공급계약…역대 최대 규모"
+    },
     "link:245b6ae94fbceb1904bb4e91": {
       "first_seen_kst": "2026-09-17T06:33:27+09:00",
       "lanes": {
@@ -3032,16 +3042,6 @@
       "link": "https://www.asiae.co.kr/article/2026092109164342016",
       "source": "아시아경제",
       "title": "삼성운용 'KODEX 미국반도체' ETF, SK하이닉스 ADR 편입"
-    },
-    "link:2a8f06299f6320165011f495": {
-      "first_seen_kst": "2026-09-08T09:55:28+09:00",
-      "lanes": {
-        "live": "2026-09-08T09:55:28+09:00"
-      },
-      "last_seen_kst": "2026-09-08T09:55:28+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02345206645578152",
-      "source": "이데일리",
-      "title": "구리값 역대 최고…AI가 끌고 트럼프 관세가 밀어 올려"
     },
     "link:2c717b5447cdff0d9386feab": {
       "first_seen_kst": "2026-09-19T06:33:14+09:00",
@@ -3752,6 +3752,16 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003795711",
       "source": "뉴시스",
       "title": "나경원 \"재판 받겠다 이 한마디면 충분했던 기자회견…나머지는 믿거나 말거나\""
+    },
+    "link:55596483089339e9558260b1": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12158947",
+      "source": "매일경제",
+      "title": "[MK시그널] 네패스아크, 대규모 설비 투자에 따른 생산능력 확대 기대감 등에 주가 상승세... MK시그널 추천 후 상승률 24.58% 기록"
     },
     "link:55647e26fcab27a28b40ace0": {
       "first_seen_kst": "2026-09-09T01:58:51+09:00",
@@ -5025,16 +5035,6 @@
       "source": "머니투데이",
       "title": "\"범용 줄이고 AI로\"…판 바뀐 MLCC, 삼성전기 웃는다"
     },
-    "link:a6398cc1b93a725337ac4fcd": {
-      "first_seen_kst": "2026-09-08T10:18:43+09:00",
-      "lanes": {
-        "live": "2026-09-08T10:18:43+09:00"
-      },
-      "last_seen_kst": "2026-09-08T10:18:43+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20260908010700009",
-      "source": "연합뉴스",
-      "title": "구리 가격 사상 최고가…美 관세 리스크·광산 붕괴 | 연합뉴스"
-    },
     "link:a6589d934b3a5f41a5d71e7a": {
       "first_seen_kst": "2026-09-21T18:52:07+09:00",
       "lanes": {
@@ -5327,6 +5327,16 @@
       "link": "https://www.mt.co.kr/index.php/world/2026/09/21/2026092019463624062",
       "source": "머니투데이",
       "title": "'AI 속도조절' 불지른 앤트로픽, 상장 한달 연기"
+    },
+    "link:bad010b3b5172f448d62e069": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12159007",
+      "source": "매일경제",
+      "title": "이소영 청문보고서 여야 합의 채택…“우려 있지만 역량 갖춰”"
     },
     "link:bb3fadf42ab70a9e2f79be71": {
       "first_seen_kst": "2026-09-09T01:13:58+09:00",
@@ -5923,16 +5933,6 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01472726645579792",
       "source": "이데일리",
       "title": "칠천피 못 믿는 개미들…하락에 3000억 태웠다가 ‘와르르’"
-    },
-    "link:de7b8fb5794ea639e2ccd6ac": {
-      "first_seen_kst": "2026-09-08T10:18:43+09:00",
-      "lanes": {
-        "live": "2026-09-08T10:18:43+09:00"
-      },
-      "last_seen_kst": "2026-09-08T10:18:43+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12146733",
-      "source": "매일경제",
-      "title": "특징주, 대한광통신-광통신(광케이블/광섬유 등) 테마 상승세에 6.46% ↑"
     },
     "link:deec9dd1689001f5b42959c7": {
       "first_seen_kst": "2026-09-18T20:16:15+09:00",
@@ -7032,16 +7032,6 @@
       "link": "https://www.mt.co.kr/stock/2026/09/18/2026091810570167529",
       "source": "머니투데이",
       "title": "키움운용, 'KIWOOM 200TR ETF' 총보수 연 0.010%로 인하"
-    },
-    "original:36e5f323779b22f5c3a48e6c": {
-      "first_seen_kst": "2026-09-08T10:18:43+09:00",
-      "lanes": {
-        "live": "2026-09-08T10:18:43+09:00"
-      },
-      "last_seen_kst": "2026-09-08T10:18:43+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12146733",
-      "source": "매일경제",
-      "title": "특징주, 대한광통신-광통신(광케이블/광섬유 등) 테마 상승세에 6.46% ↑"
     },
     "original:372352b11445e1698f3c37be": {
       "first_seen_kst": "2026-09-13T11:30:16+09:00",
@@ -8322,6 +8312,16 @@
       "source": "이데일리",
       "title": "JP모건 “ETF 헤지 줄어들면, 비트코인이 금보다 더 오른다”"
     },
+    "original:86302a19608e3a92f59be73a": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12159007",
+      "source": "매일경제",
+      "title": "이소영 청문보고서 여야 합의 채택…“우려 있지만 역량 갖춰”"
+    },
     "original:86f0f09098236c2d4eea346e": {
       "first_seen_kst": "2026-09-21T14:40:43+09:00",
       "lanes": {
@@ -8563,6 +8563,16 @@
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 광컴퓨팅 기업 라이트솔버 인수..HPC 시장 진출"
     },
+    "original:9462d661908fcb149262c203": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.etnews.com/20260922000186",
+      "source": "전자신문",
+      "title": "보령, 中 이판제약과 '탁소텔' 3837억원 공급계약…역대 최대 규모"
+    },
     "original:9466504e5eb104eb147e1986": {
       "first_seen_kst": "2026-09-17T10:23:02+09:00",
       "lanes": {
@@ -8633,16 +8643,6 @@
       "link": "https://www.yna.co.kr/view/AKR20260914123500030",
       "source": "연합뉴스",
       "title": "우리로, 136억원 규모 AI 데이터센터 광소자 공급계약 | 연합뉴스"
-    },
-    "original:9abe0c29e4aff00e0e7f0039": {
-      "first_seen_kst": "2026-09-08T09:55:28+09:00",
-      "lanes": {
-        "live": "2026-09-08T09:55:28+09:00"
-      },
-      "last_seen_kst": "2026-09-08T09:55:28+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02345206645578152",
-      "source": "이데일리",
-      "title": "구리값 역대 최고…AI가 끌고 트럼프 관세가 밀어 올려"
     },
     "original:9d2e3718c2ce1dabea0d3d21": {
       "first_seen_kst": "2026-09-11T05:58:39+09:00",
@@ -10006,6 +10006,16 @@
       "source": "매일경제",
       "title": "고려아연 감사위원 표대결…캐스팅보터는 한화그룹으로"
     },
+    "original:f58c87a3ba3eb50fbefaea76": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12158947",
+      "source": "매일경제",
+      "title": "[MK시그널] 네패스아크, 대규모 설비 투자에 따른 생산능력 확대 기대감 등에 주가 상승세... MK시그널 추천 후 상승률 24.58% 기록"
+    },
     "original:f5a59382f102dece095620a2": {
       "first_seen_kst": "2026-09-18T00:19:03+09:00",
       "lanes": {
@@ -10115,16 +10125,6 @@
       "link": "https://www.mt.co.kr/economy/2026/09/21/2026092115411646328",
       "source": "머니투데이",
       "title": "대미 투자 클수록 美 무역적자 심화?…트럼프 관세 정책의 딜레마"
-    },
-    "original:fd3a6c0cca8c3d2a6ffb2d3a": {
-      "first_seen_kst": "2026-09-08T10:18:43+09:00",
-      "lanes": {
-        "live": "2026-09-08T10:18:43+09:00"
-      },
-      "last_seen_kst": "2026-09-08T10:18:43+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20260908010700009",
-      "source": "연합뉴스",
-      "title": "구리 가격 사상 최고가…美 관세 리스크·광산 붕괴 | 연합뉴스"
     },
     "original:fd689b0b06f83a6f6bc256b7": {
       "first_seen_kst": "2026-09-09T10:03:18+09:00",
@@ -10933,16 +10933,6 @@
       "link": "https://www.mt.co.kr/stock/2026/09/18/2026091810570167529",
       "source": "머니투데이",
       "title": "키움운용, 'KIWOOM 200TR ETF' 총보수 연 0.010%로 인하"
-    },
-    "title:36e5f323779b22f5c3a48e6c": {
-      "first_seen_kst": "2026-09-08T10:18:43+09:00",
-      "lanes": {
-        "live": "2026-09-08T10:18:43+09:00"
-      },
-      "last_seen_kst": "2026-09-08T10:18:43+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12146733",
-      "source": "매일경제",
-      "title": "특징주, 대한광통신-광통신(광케이블/광섬유 등) 테마 상승세에 6.46% ↑"
     },
     "title:372352b11445e1698f3c37be": {
       "first_seen_kst": "2026-09-13T11:30:16+09:00",
@@ -12213,6 +12203,16 @@
       "source": "이데일리",
       "title": "JP모건 “ETF 헤지 줄어들면, 비트코인이 금보다 더 오른다”"
     },
+    "title:86302a19608e3a92f59be73a": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12159007",
+      "source": "매일경제",
+      "title": "이소영 청문보고서 여야 합의 채택…“우려 있지만 역량 갖춰”"
+    },
     "title:86f0f09098236c2d4eea346e": {
       "first_seen_kst": "2026-09-21T14:40:43+09:00",
       "lanes": {
@@ -12464,6 +12464,16 @@
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 광컴퓨팅 기업 라이트솔버 인수..HPC 시장 진출"
     },
+    "title:9462d661908fcb149262c203": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.etnews.com/20260922000186",
+      "source": "전자신문",
+      "title": "보령, 中 이판제약과 '탁소텔' 3837억원 공급계약…역대 최대 규모"
+    },
     "title:9466504e5eb104eb147e1986": {
       "first_seen_kst": "2026-09-17T10:23:02+09:00",
       "lanes": {
@@ -12534,16 +12544,6 @@
       "link": "https://www.yna.co.kr/view/AKR20260914123500030",
       "source": "연합뉴스",
       "title": "우리로, 136억원 규모 AI 데이터센터 광소자 공급계약 | 연합뉴스"
-    },
-    "title:9abe0c29e4aff00e0e7f0039": {
-      "first_seen_kst": "2026-09-08T09:55:28+09:00",
-      "lanes": {
-        "live": "2026-09-08T09:55:28+09:00"
-      },
-      "last_seen_kst": "2026-09-08T09:55:28+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02345206645578152",
-      "source": "이데일리",
-      "title": "구리값 역대 최고…AI가 끌고 트럼프 관세가 밀어 올려"
     },
     "title:9d2e3718c2ce1dabea0d3d21": {
       "first_seen_kst": "2026-09-11T05:58:39+09:00",
@@ -13897,6 +13897,16 @@
       "source": "매일경제",
       "title": "고려아연 감사위원 표대결…캐스팅보터는 한화그룹으로"
     },
+    "title:f58c87a3ba3eb50fbefaea76": {
+      "first_seen_kst": "2026-09-22T10:35:36+09:00",
+      "lanes": {
+        "live": "2026-09-22T10:35:36+09:00"
+      },
+      "last_seen_kst": "2026-09-22T10:35:36+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12158947",
+      "source": "매일경제",
+      "title": "[MK시그널] 네패스아크, 대규모 설비 투자에 따른 생산능력 확대 기대감 등에 주가 상승세... MK시그널 추천 후 상승률 24.58% 기록"
+    },
     "title:f5a59382f102dece095620a2": {
       "first_seen_kst": "2026-09-18T00:19:03+09:00",
       "lanes": {
@@ -14007,16 +14017,6 @@
       "source": "머니투데이",
       "title": "대미 투자 클수록 美 무역적자 심화?…트럼프 관세 정책의 딜레마"
     },
-    "title:fd3a6c0cca8c3d2a6ffb2d3a": {
-      "first_seen_kst": "2026-09-08T10:18:43+09:00",
-      "lanes": {
-        "live": "2026-09-08T10:18:43+09:00"
-      },
-      "last_seen_kst": "2026-09-08T10:18:43+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20260908010700009",
-      "source": "연합뉴스",
-      "title": "구리 가격 사상 최고가…美 관세 리스크·광산 붕괴 | 연합뉴스"
-    },
     "title:fd689b0b06f83a6f6bc256b7": {
       "first_seen_kst": "2026-09-09T10:03:18+09:00",
       "lanes": {
@@ -14069,5 +14069,5 @@
       "title": "아이엘, 7300평 제조기지 띄운다…‘휴머노이드·피지컬AI’ 거점 구축"
     }
   },
-  "updated_at_kst": "2026-09-22T09:50:21+09:00"
+  "updated_at_kst": "2026-09-22T10:35:36+09:00"
 }
