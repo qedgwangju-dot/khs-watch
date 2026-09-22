@@ -327,7 +327,7 @@ def main():
     cls['market_source_stale']=stale_fallback
     cls['market_source_error']=source_error
     upgrade=old.get('schema_version',1)<SCHEMA_VERSION
-    old_cls=old.get('classification',{}); changed=upgrade or old_cls.get('verdict') not in (None,cls['verdict'])
+    old_cls=old.get('classification',{}); changed=old_cls.get('verdict') not in (None,cls['verdict'])
     if not changed and old_cls.get('extra_bp') is not None:
         changed=abs(float(cls['extra_bp'])-float(old_cls['extra_bp']))>=EXTRA_ALERT_BP
     old_ms={m['date']:m for m in old.get('meetings',[])}
