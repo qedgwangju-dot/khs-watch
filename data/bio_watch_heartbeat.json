@@ -1,6 +1,6 @@
 {
-  "status": "degraded",
-  "checked_at_kst": "2026-09-22T10:46:33+09:00",
+  "status": "ok",
+  "checked_at_kst": "2026-09-22T16:20:48+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -8,20 +8,19 @@
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
   "qlex_alert_present": false,
-  "intismeran_alert_present": true,
+  "intismeran_alert_present": false,
   "jemperli_alert_present": false,
   "enhertu_alert_present": false,
   "qlex_send_outcome": "skipped",
-  "intismeran_send_outcome": "failure",
+  "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
   "qlex_state_persisted": true,
-  "intismeran_state_persisted": false,
+  "intismeran_state_persisted": true,
   "jemperli_state_persisted": true,
   "enhertu_state_persisted": true,
   "intismeran_retry_pending": false,
-  "last_health_notice_date": "2026-09-21",
-  "errors": [
-    "Intismeran sender rc=1: Traceback (most recent call last):\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard.py\", line 108, in translate_to_korean\n    with urllib.request.urlopen(req, timeout=10) as response:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/urllib/request.py\", line 215, in urlopen\n    return opener.open(url, data, timeout)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/urllib/request.py\", line 515, in open\n    response = self._open(req, data)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/urllib/request.py\", line 532, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/urllib/request.py\", line 492, in _call_chain\n    result = func(*args)\n             ^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/urllib/request.py\", line 1392, in https_open\n    return self.do_open(http.client.HTTPSConnection, req,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/urllib/request.py\", line 1348, in do_open\n    r = h.getresponse()\n        ^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/http/client.py\", line 1478, in getresponse\n    response.begin()\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/http/client.py\", line 343, in begin\n    version, status, reason = self._read_status()\n                              ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/http/client.py\", line 304, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/socket.py\", line 720, in readinto\n    return self._sock.recv_into(b)\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/ssl.py\", line 1251, in recv_into\n    return self.read(nbytes, buffer)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/ssl.py\", line 1103, in read\n    return self._sslobj.read(len, buffer)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTimeoutError: The read operation timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/intismeran_structured_telegram_send_v2.py\", line 17, in <module>\n    raise SystemExit(base.main())\n                     ^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/intismeran_structured_telegram_send.py\", line 265, in main\n    ids = send_message(message)\n          ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/intismeran_structured_telegram_send_v2.py\", line 10, in send_message\n    return _original_send_message(ensure_korean_text(text))\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 31, in ensure_korean_text\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 31, in <genexpr>\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 27, in strict_translate_line\n    return korean_first_regulatory_terms(base.strict_translate_line(line))\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict.py\", line 18, in strict_translate_line\n    converted = base.translate_to_korean(converted)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard.py\", line 112, in translate_to_korean\n    raise RuntimeError(f'한국어 자동번역 실패: {type(exc).__name__}') from exc\nRuntimeError: 한국어 자동번역 실패: TimeoutError"
-  ]
+  "last_health_notice_date": "2026-09-22",
+  "errors": [],
+  "health_notice_message_id": 103
 }
