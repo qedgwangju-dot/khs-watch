@@ -29,6 +29,8 @@ base.QUERIES.extend([
     '(HMGMA OR 조지아 OR Georgia OR Savannah) (아틀라스 OR Atlas) (2028 OR 2030 OR 시퀀싱 OR sequencing OR 조립 OR assembly OR 배치 OR deployment)',
     '("Hyundai Motor Group" OR 현대자동차그룹 OR "Hyundai Motor") (아틀라스 OR Atlas) (3만대 OR 30,000 OR 30000 OR RMAC OR "Robot Metaplant Application Center") (생산 OR 양산 OR capacity OR 확대 OR expansion OR validation)',
     '("Boston Dynamics" OR 보스턴다이내믹스) (IPO OR "initial public offering" OR 기업공개 OR 상장 OR "S-1" OR SEC OR prospectus OR underwriter OR 주관사 OR 상장예비심사 OR valuation OR 기업가치 OR 적자 OR 손실 OR loss OR losses OR profitability OR 수익성 OR 흑자 OR funding OR 자금조달 OR SoftBank OR 소프트뱅크 OR 지분 OR ownership)',
+    '("Boston Dynamics" OR 보스턴다이내믹스) (프리IPO OR "pre-IPO" OR "pre IPO" OR "상장 전 투자유치") (JP모건 OR JPMorgan OR "Goldman Sachs" OR 골드만삭스 OR 10억달러 OR "$1 billion" OR "1 billion")',
+    '("Boston Dynamics" OR 보스턴다이내믹스) (프리IPO OR "pre-IPO") (주관사 OR underwriter OR advisor OR 자금조달 OR fundraise OR 투자유치)',
     '("Boston Dynamics" OR 보스턴다이내믹스) (Atlas OR 아틀라스) (external customer OR external customers OR 외부 고객 OR customer OR 고객 OR order OR 주문 OR sales OR 판매 OR commercial OR 상용화 OR deployment OR 배치) (2027 OR 2028 OR 2029 OR 2030 OR scale OR 양산)',
     BOSTON_CAPITAL_EN_SENTINEL,
     '("Boston Dynamics" OR 보스턴다이내믹스) (RMAC OR "Robot Metaplant Application Center") (Atlas OR 아틀라스) (training OR 훈련 OR sequencing OR 시퀀싱 OR data OR 데이터 OR manufacturing OR 제조)',
@@ -76,6 +78,9 @@ RMAC_OTHER_INDUSTRIES = re.compile(r'aerospace|항공우주|semiconductor|반도
 GLOBAL = re.compile(r'글로벌|해외|전\s*세계|global|worldwide|additional\s+plants?|manufacturing\s+sites?', re.I)
 PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주가|stock\s*price|shares?\s*(?:jump|rise|surge)', re.I)
 IPO = re.compile(r'\bIPO\b|initial\s+public\s+offering|기업공개|상장|\bS-1\b|registration\s+statement|prospectus|underwriter|주관사|상장예비심사|listing\s+application', re.I)
+PREIPO = re.compile(r'pre[-\s]?IPO|프리\s*IPO|상장\s*전\s*투자\s*유치', re.I)
+PREIPO_UNDERWRITER = re.compile(r'(?:JP\s*Morgan|JPMorgan|JP모건|Goldman\s*Sachs|골드만삭스).{0,80}(?:underwriter|advisor|주관사|선정)|(?:underwriter|advisor|주관사|선정).{0,80}(?:JP\s*Morgan|JPMorgan|JP모건|Goldman\s*Sachs|골드만삭스)', re.I)
+PREIPO_AMOUNT = re.compile(r'\$?\s*1\s*(?:billion|bn)|10\s*억\s*달러|1조\s*4,?000억|1\.4\s*조', re.I)
 IPO_FILING = re.compile(r'\bS-1\b|registration\s+statement|prospectus|underwriter|주관사|상장예비심사|listing\s+application|filed|filing|제출|신고서', re.I)
 IPO_DELAY = re.compile(r'unlikely|not\s+easy|difficult|delay|delayed|postpone|미뤄|연기|쉽지\s*않|가능성\s*낮|no\s+(?:specific\s+)?(?:timeline|timetable)', re.I)
 IPO_COMMENTARY = re.compile(r'2027|2028|2029|2030|unlikely|not\s+easy|difficult|timeline|timetable|valuation|unprofitable|loss|가능성|일정|기업가치|손실|적자|30,?000|3만', re.I)
@@ -84,7 +89,7 @@ LOSS = re.compile(r'loss(?:es)?|손실|적자|unprofitable|profitability|수익�
 OWNERSHIP = re.compile(r'SoftBank|소프트뱅크|ownership|지분|stake|full\s+ownership|완전\s*자회사|buyout|인수', re.I)
 FUNDING = re.compile(r'funding|fundraise|capital\s+raise|자금\s*조달|증자|투자\s*유치', re.I)
 EXTERNAL_CUSTOMER = re.compile(r'external\s+customers?|outside\s+customers?|외부\s*고객|고객\s*실명|customer|customers|order|orders|주문|수주|sales|판매|commercial\s+sale|상용\s*판매', re.I)
-CAPITAL = re.compile(r'\bIPO\b|initial\s+public\s+offering|기업공개|상장|\bS-1\b|registration\s+statement|prospectus|underwriter|주관사|상장예비심사|valuation|기업\s*가치|loss(?:es)?|손실|적자|unprofitable|profitability|수익성|흑자|funding|fundraise|capital\s+raise|자금\s*조달|SoftBank|소프트뱅크|ownership|지분|stake|완전\s*자회사', re.I)
+CAPITAL = re.compile(r'\bIPO\b|pre[-\s]?IPO|프리\s*IPO|상장\s*전\s*투자\s*유치|initial\s+public\s+offering|기업공개|상장|\bS-1\b|registration\s+statement|prospectus|underwriter|주관사|상장예비심사|valuation|기업\s*가치|loss(?:es)?|손실|적자|unprofitable|profitability|수익성|흑자|funding|fundraise|capital\s+raise|자금\s*조달|SoftBank|소프트뱅크|ownership|지분|stake|완전\s*자회사', re.I)
 ATLAS_CATEGORY_PREFIX = '현대차그룹 · 아틀라스 '
 
 
@@ -158,7 +163,13 @@ def topic_group(text: str) -> str | None:
 
 
 def _ipo_stage(text: str) -> str:
-    if not (BOSTON.search(text) and IPO.search(text)): return ''
+    if not BOSTON.search(text): return ''
+    if PREIPO.search(text):
+        if PREIPO_UNDERWRITER.search(text) and PREIPO_AMOUNT.search(text): return 'preipo_underwriter_fundraise'
+        if PREIPO_UNDERWRITER.search(text): return 'preipo_underwriter'
+        if FUNDING.search(text) or PREIPO_AMOUNT.search(text): return 'preipo_fundraise'
+        return 'preipo'
+    if not IPO.search(text): return ''
     if IPO_FILING.search(text):
         if re.search(r'underwriter|주관사', text, re.I): return 'underwriter'
         if re.search(r'\bS-1\b|registration\s+statement|filed|filing|신고서|제출', text, re.I): return 'filing'
@@ -177,6 +188,8 @@ def key(item: dict) -> str:
     if rmac_stage == 'training_operational':
         return hashlib.sha256(b'boston-dynamics|rmac|operational-training|2026-09-21').hexdigest()
     stage = _ipo_stage(text)
+    if stage in {'preipo_underwriter_fundraise','preipo_underwriter','preipo_fundraise','preipo'}:
+        return hashlib.sha256(b'boston-dynamics|2026-09-22|preipo|jpmorgan-goldman|1b-plus').hexdigest()
     if stage in {'delay','commentary'} and IPO_COMMENTARY.search(text):
         years = sorted(set(re.findall(r'20(?:27|28|29|30)', text)))
         # Semantic event key: publisher rewrites of the same timing narrative collapse,
@@ -206,7 +219,9 @@ def score(item: dict) -> int:
     if _is_rmac_operational(text): s += 14
     if RMAC_EXPAND.search(text): s += 5
     if RMAC_OTHER_INDUSTRIES.search(text): s += 4
-    if BOSTON.search(text) and IPO.search(text): s += 9
+    if BOSTON.search(text) and (IPO.search(text) or PREIPO.search(text)): s += 9
+    if _ipo_stage(text) in {'preipo_underwriter_fundraise','preipo_underwriter'}: s += 12
+    if _ipo_stage(text) in {'preipo_underwriter_fundraise','preipo_fundraise'} and PREIPO_AMOUNT.search(text): s += 7
     if IPO_FILING.search(text): s += 8
     if IPO_DELAY.search(text): s += 5
     if VALUATION.search(text): s += 5
@@ -220,6 +235,9 @@ def _subcat(text: str) -> str:
     if _rmac_stage(text) == 'expansion_completed': return 'RMAC 10배 확장 완료·가동'
     if _rmac_stage(text) == 'external_industry_pilot': return 'RMAC 타 산업 고객 실증·데이터 확장'
     if _rmac_stage(text) == 'training_operational': return 'RMAC 제조현장 훈련·데이터 플라이휠'
+    if _ipo_stage(text) == 'preipo_underwriter_fundraise': return '프리IPO 주관사·10억달러+ 자금조달'
+    if _ipo_stage(text) == 'preipo_underwriter': return '프리IPO 주관사 선정'
+    if _ipo_stage(text) in {'preipo_fundraise','preipo'}: return '프리IPO 자금조달'
     if BOSTON.search(text) and IPO_FILING.search(text): return '기업공개 절차 진전'
     if BOSTON.search(text) and IPO.search(text): return '기업공개·기업가치 시간표'
     if BOSTON.search(text) and OWNERSHIP.search(text): return '지분·완전자회사화'
