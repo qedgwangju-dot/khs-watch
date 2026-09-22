@@ -20,13 +20,6 @@ PUBLISHER_DOMAINS = {
 DIRECT_ARTICLES = [
     {
         "source": "국내 신뢰매체 직접감시",
-        "publisher": "이데일리",
-        "title": "“양자컴퓨터 만든다”…SDT, 아이온큐와 손잡고 구미에 제조거점",
-        "url": "https://coinlab.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03043846645582744",
-        "published_kst": "2026-09-22T09:53:07+0900",
-    },
-    {
-        "source": "국내 신뢰매체 직접감시",
         "publisher": "국민일보",
         "title": "레버리지 규제 첫날 거래 ‘뚝’…12조원대서 3조원대로 급감",
         "url": "https://www.kmib.co.kr/article/view.asp?arcid=9000000424&cp=nv",
@@ -64,17 +57,6 @@ DIRECT_ARTICLES = [
 ]
 
 SEARCH_SOURCES = [
-    (
-        "국내 양자컴퓨팅 제조거점·글로벌 공급망",
-        (
-            "(SDT OR 에스디티 OR 아이온큐 OR IonQ) "
-            "(양자컴퓨터 OR 양자 컴퓨터 OR 양자메모리 OR 양자 메모리 OR Superion OR 슈페리온) "
-            "(구미 OR 제조거점 OR 제조 거점 OR 제조시설 OR 제조 시설 OR 시스템통합 OR 시스템 통합 OR 조립 OR 공급망) "
-            "(협력 OR 공급 OR 구축 OR 도입 OR 제조 OR 생산) "
-            "(site:edaily.co.kr OR site:etnews.com OR site:zdnet.co.kr OR site:yna.co.kr "
-            "OR site:newsis.com OR site:hankyung.com OR site:mk.co.kr)"
-        ),
-    ),
     (
         "단일종목 레버리지 규제 시행효과·거래급감",
         "(단일종목레버리지 OR 단일종목 레버리지 OR 단일레버리지 OR 기본예탁금) "
