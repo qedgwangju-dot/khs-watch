@@ -154,7 +154,7 @@ def investor_current(token: str, market: str, upcode: str) -> dict[str, Any] | N
 
 def _program_mini(token: str, gubun: str) -> dict[str, Any] | None:
     # t1640: 11=거래소 전체, 12=거래소 차익, 13=거래소 비차익.
-    d = ls_post(token, "/stock/program", "t1640", {"t1640InBlock": {"gubun": gubun}})
+    d = ls_post(token, "/stock/program", "t1640", {"t1640InBlock": {"gubun": gubun, "exchgubun": "K"}})
     row = d.get("t1640OutBlock")
     return row if isinstance(row, dict) and row else None
 
@@ -473,6 +473,7 @@ class Watch:
             try:
                 snap = await asyncio.to_thread(fetch_flow_snapshot, self.token)
                 self.flows.append(snap)
+                self.raw["last_flow_snapshot"] = snap
                 cutoff = time.time() - FLOW_LOOKBACK_SEC
                 while self.flows and float(self.flows[0].get("ts", 0)) < cutoff:
                     self.flows.popleft()
