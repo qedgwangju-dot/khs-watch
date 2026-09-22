@@ -9,7 +9,7 @@ on:
       - "scripts/us_data_center_cycle_watch.py"
   schedule:
     # GitHub cron is UTC. Hourly at an offset minute to avoid the top-of-hour queue.
-    - cron: "29 * * * *"
+    - cron: "11,41 * * * *"
   workflow_dispatch:
     inputs:
       send_test:
@@ -122,7 +122,7 @@ jobs:
           텔레그램 연결 정상입니다.
           - 미국 인구조사국 데이터센터 건설 지출 감시
           - 도지 컨스트럭션 네트워크 데이터센터 착공 자료 감시
-          - 매시간 웹 확인, 새 월간 데이터·수정치·새 착공 발표가 있을 때만 알림
+          - 30분 간격 이중 확인, 새 월간 데이터·수정치·새 착공 발표가 있을 때만 알림
           - 알림에 표시되는 설명·기관명·프로젝트명·환율 출처는 모두 한국어로 표기
           - 원문 주소는 긴 주소 대신 파란색 '원문' 링크로 표시
           - 기존 깃허브 액션 감시는 수정하지 않고 별도 워크플로로 동작
