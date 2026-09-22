@@ -27,7 +27,7 @@ TITLE = ROOT / "out" / "treasury_buyback_policy_title.txt"
 STATE = ROOT / "data" / "treasury_buyback_policy_state.json"
 NEXT_STATE = ROOT / "data" / "treasury_buyback_policy_state_next.json"
 
-BESSENT_REUTERS = "https://www.reuters.com/business/bessent-pushes-back-fears-over-us-debt-market-strains-2026-08-31/"
+BESSENT_REUTERS = "https://www.reuters.com/business/bessent-pushes-back-fears-over-us-debt-market-strains-2026-08-31/"\nBESSENT_FEVER = "https://news.bloomberglaw.com/bloomberg-government-news/bessent-says-buyback-move-aimed-at-quelling-market-fever-1"
 TREASURY_RELEASE = "https://home.treasury.gov/news/press-releases/sb0607"
 BUYBACK_FAQ = "https://www.treasurydirect.gov/help-center/faqs/buyback-faqs/"
 FRED_SERIES_PAGE = "https://fred.stlouisfed.org/series/{series}"
@@ -283,22 +283,25 @@ def policy_block(snapshot: dict) -> str:
     return "\n".join([
         "",
         "<b>정책 목적·경계선</b>",
-        "• Bessent는 Reuters 인터뷰에서 시장의 균형가격을 바꾸려는 것이 아니라, 움직임의 속도를 늦춰 시장이 무질서해지는 것을 막는 것이 재무부 역할이라고 설명했습니다.",
-        "• 따라서 현재 정책선은 <b>특정 금리·가격 통제</b>가 아니라 <b>유동성·변동성 완화</b>입니다.",
+        "• Bessent는 9월 8일 ‘시장을 균형 쪽으로 되돌리는 것이 내 일’이라면서도 <b>균형가격 자체를 바꿀 수 있다고 보지는 않는다</b>고 설명했고, 당시 장기채 시장에 ‘fever(과열)’가 쌓이고 있었다고 표현했습니다.",
+        "• 따라서 현재 공식 정책선은 <b>특정 수익률·채권가격 통제</b>가 아니라 <b>시장 기능·유동성·변동성의 과속 완화</b>입니다.",
+        "• Bessent는 이를 QE가 아니라고 선을 긋고 과거 Operation Twist와 유사한 부채관리 접근으로 설명했습니다. 재무부 바이백을 Fed의 준비금 창출형 자산매입과 동일시하지 않습니다.",
+        "• 정책 충격 뒤 CTA·모멘텀 숏커버가 자기증폭될 수는 있지만, 이는 <b>시장 결과</b>이지 Bessent가 공식적으로 선언한 CTA 스퀴즈 목표로 단정하지 않습니다.",
         "• 시장 기능이 정상인데도 특정 금리 수준에 맞춰 바이백·발행구조를 반복 조정하면 ‘유동성 지원 → 사실상 금리관리’로 정책선 이탈 경보를 올립니다.",
         "",
         causal_block(snapshot),
         "",
         "<b>실행 확인</b>",
         "• 정책 변경 효력은 9월 9일, Bessent가 밝힌 확대 운영 시작은 9월 10일입니다.",
-        "• 첫 확대 운영의 실제 매입액·총 제시액·상한 소진율과 이후 +1일·+3일·+5일 10년·30년 명목·실질금리 지속성을 확인합니다.",
-        "• CTA 숏 스퀴즈가 발생해도 시장 결과로 분리하며 Bessent의 공식 정책목표로 단정하지 않습니다.",
+        "• 실제 매입액·총 제시액·상한 소진율 → +1일·+3일·+5일 10년·30년 명목·실질금리 → CTA 숏커버 순서로 확인합니다.",
+        "• 바이백에도 장기금리가 오르면 재정·인플레이션·기간프리미엄이 유동성 지원보다 강한 것으로 판정합니다.",
     ])
 
 
 def source_links() -> str:
     return " · ".join([
         f'<a href="{BESSENT_REUTERS}">Bessent Reuters 인터뷰</a>',
+        f'<a href="{BESSENT_FEVER}">Bessent ‘market fever’ 발언</a>',
         f'<a href="{TREASURY_RELEASE}">미 재무부 공식 발표</a>',
         f'<a href="{BUYBACK_FAQ}">바이백 공식 설명</a>',
         f'<a href="{FRED_SERIES_PAGE.format(series=SERIES["brent"])}">Brent</a>',
