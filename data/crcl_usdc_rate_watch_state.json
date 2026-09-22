@@ -1,12 +1,12 @@
 {
-  "updated_at_kst": "2026-09-23T03:52:17+09:00",
+  "updated_at_kst": "2026-09-23T07:06:28+09:00",
   "circle": {
-    "date": "2026-09-17",
-    "circulation_usd_b": 73.8,
+    "date": "2026-09-21",
+    "circulation_usd_b": 74.6,
     "precision": "0.1B official webpage display",
     "_previous_distinct": {
-      "date": "2026-09-14",
-      "circulation_usd_b": 74.2
+      "date": "2026-09-17",
+      "circulation_usd_b": 73.8
     }
   },
   "usdxx": {
@@ -38,39 +38,39 @@
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-09-21",
-    "three_month": 4.17,
+    "date": "2026-09-22",
+    "three_month": 4.16,
     "ten_year": 4.96,
-    "prev_date": "2026-09-18",
-    "prev_three_month": 4.14,
-    "prev_ten_year": 5.01,
-    "daily_3m_bp": 3.0,
-    "daily_10y_bp": -5.0,
+    "prev_date": "2026-09-21",
+    "prev_three_month": 4.17,
+    "prev_ten_year": 4.96,
+    "daily_3m_bp": -1.0,
+    "daily_10y_bp": 0.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
     "date": "2026-09-22",
-    "close": 95.05999755859375,
+    "close": 94.58999633789062,
     "prev_date": "2026-09-21",
     "prev_close": 94.48999786376953,
-    "daily_pct": 0.6
+    "daily_pct": 0.11
   },
   "tbx": {
     "date": "2026-09-22",
-    "close": 29.41010093688965,
+    "close": 29.427200317382812,
     "prev_date": "2026-09-21",
     "prev_close": 29.450000762939453,
-    "daily_pct": -0.14
+    "daily_pct": -0.08
   },
   "fx": {
-    "rate": 1383.8,
-    "date": "2026-09-21",
-    "requested_date": "2026-09-21",
+    "rate": 1384.3,
+    "date": "2026-09-22",
+    "requested_date": "2026-09-22",
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 교차검증 접근 불가"
+    "crosscheck": "Yahoo Finance 1,355.20원, 차이 2.10% · 기준 차이 주의"
   },
-  "crcl_last_alerted_close_date": "2026-09-21",
+  "crcl_last_alerted_close_date": "2026-09-22",
   "errors": []
 }
