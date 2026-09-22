@@ -14,7 +14,7 @@ STATE_PATH = Path('data/warsh_policy_path_watch_state.json')
 FOMC_STATE_PATH = Path('data/warsh_fomc_event_watch_state.json')
 SEP_STATE_PATH = Path('data/warsh_sep_path_watch_state.json')
 BALANCE_STATE_PATH = Path('data/warsh_balance_sheet_watch_state.json')
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 FEDWATCH_URL = 'https://www.frenzycap.com/fedwatch'
 CME_URL = 'https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html'
 FED_CALENDAR = 'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'
@@ -126,7 +126,7 @@ def official_policy_baseline():
         cur=state.get('current_statement') or {}
         mid=cur.get('mid'); date=cur.get('date')
         if mid is not None and date:
-            return {'mid':float(mid),'date':str(date),'source':cur.get('url'),'kind':'연준 공식 목표범위 중간값'}
+            return {'mid':float(mid),'low':cur.get('low'),'high':cur.get('high'),'date':str(date),'source':cur.get('url'),'kind':'연준 공식 목표범위 중간값'}
     except Exception:
         pass
     return None
@@ -183,7 +183,7 @@ def classify(snap):
         else:
             mix='정책금리 긴축 · 대차대조표 방향 추가 확인'
     return {'verdict':verdict,'extra_bp':extra,'basis':basis,'baseline_rate':base,'baseline_kind':base_kind,
-            'baseline_date':base_date,'baseline_source':base_source,'sep':sep,'sep_extra_bp':sep_extra,
+            'baseline_date':base_date,'baseline_source':base_source,'official_policy':official,'sep':sep,'sep_extra_bp':sep_extra,
             'market_sep_gap_bp':market_sep_gap,'sep_read':sep_read,'balance':bal,'tightening_mix':mix,
             'yearend_market_rate':last26['post_rate']}
 
@@ -243,14 +243,19 @@ def message(snap, cls):
     eq=hike_equivalent(cls['extra_bp'])
     sep=cls.get('sep')
     bal=cls.get('balance')
+    official=cls.get('official_policy') or {}
+    if official.get('low') is not None and official.get('high') is not None:
+        official_rate=f"{float(official['low']):.2f}~{float(official['high']):.2f}%"
+    else:
+        official_rate=f"{cls['baseline_rate']:.3f}% 중심"
     lines=[
         '<b>[Warsh 금리경로·대차대조표 종합]</b>',
-        f"기준금리 중심값 {cls['baseline_rate']:.3f}% · {html.escape(cls['baseline_kind'])}",
+        f"기준: {html.escape(cls.get('baseline_date') or '최신 FOMC')} · 공식 목표범위 {official_rate}",
         '',
-        '<b>한눈에 보기</b>',
-        f"• <b>시장 금리경로</b>: {html.escape(cls['verdict'])}",
-        f"• <b>연말 누적 기대</b>: {cls['extra_bp']:+.1f}bp = +25bp 인상 {eq:.2f}회 상당 <i>(확률가중 평균)</i>",
-        f"• <b>대차대조표</b>: {html.escape(cls['tightening_mix'])}",
+        '<b>핵심 3줄</b>',
+        f"• <b>연준 공식</b>: 정책금리는 인상됐지만 대차대조표는 충분한 준비금 유지·재투자/구성 전환이 기본입니다.",
+        f"• <b>시장 기대</b>: 연말 {cls['yearend_market_rate']:.3f}% · 현재 공식 중심값보다 {cls['extra_bp']:+.1f}bp = +25bp 인상 {eq:.2f}회 상당 <i>(확률가중 평균)</i>",
+        f"• <b>종합 판정</b>: {html.escape(cls['verdict'])} · {html.escape(cls['tightening_mix'])}",
     ]
     if sep:
         lines += [
@@ -262,7 +267,8 @@ def message(snap, cls):
 
     lines += [
         '',
-        '<b>회의별 선물시장 경로</b>',
+        '<b>시장 기대 경로</b>',
+        '• 아래 수치는 연준 공식 전망이 아니라 연방기금금리 선물에서 계산한 시장의 확률가중 기대입니다.',
         *[fmt_meeting(m, cls['baseline_rate']) for m in snap['meetings'][:4]],
     ]
 
@@ -292,10 +298,11 @@ def message(snap, cls):
     lines += [
         '',
         '<b>숫자 읽는 법</b>',
-        '• <b>확률 %</b> = 특정 회의에서 +25bp 인상이 일어날 가능성입니다.',
+        '• <b>확률 %</b> = 특정 회의에서 +25bp 인상이 일어날 가능성입니다. <b>인상폭(bp)과 같은 숫자가 아닙니다.</b>',
         '• <b>기대변화 bp</b> = 여러 가능한 결과에 확률을 곱해 평균낸 시장 기대입니다. 확률과 인상폭을 같은 숫자로 읽지 않습니다.',
         '• 예를 들어 +25bp 인상 확률이 80%라면 그 한 회의의 확률가중 기대폭은 약 +20bp입니다.',
         '• “1.38회 상당” 같은 값은 실제로 1.38번 인상한다는 뜻이 아니라 0회·1회·2회 경로를 확률로 섞은 평균입니다.',
+        '• 이 선물시장 값은 보조 시장 데이터입니다. 연준의 공식 결정·점도표와 구분해 표시합니다.',
         '• 1bp = 0.01%포인트입니다.',
         '',
         '<b>다음 확인</b>',
