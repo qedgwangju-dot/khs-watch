@@ -20,7 +20,7 @@ FORCE=os.getenv('FORCE_NOTIFY','0')=='1'
 UA='Mozilla/5.0 (compatible; khs-watch/2.1)'
 ASSET_4W=float(os.getenv('WARSH_BALANCE_ASSET_4W_BN') or '75')
 RESERVE_4W=float(os.getenv('WARSH_BALANCE_RESERVE_4W_BN') or '100')
-SCHEMA_VERSION=2
+SCHEMA_VERSION=3
 
 class TableParser(HTMLParser):
     def __init__(self):
@@ -171,25 +171,34 @@ def summary_message(cur,impl,task,regime,four,reason):
         '<b>[Warsh 연준 대차대조표 정책 변화]</b>',
         f"기준: H.4.1 {cur.get('date') or '확인 필요'} · 시행지침 {impl.get('date') or '확인 필요'}",
         '',
-        '<b>한눈에 보기</b>',
+        '<b>핵심 3줄</b>',
         f"• <b>공식 정책</b>: {html.escape(impl['mode'])}",
-        f"• <b>실제 자산 흐름</b>: {html.escape(regime)}",
-        ('• <b>결론</b>: 현재는 정책금리 긴축과 충분한 준비금 유지가 동시에 진행 중입니다. “금리 대신 QT”로 읽지 않습니다.'
+        f"• <b>실제 흐름</b>: 총자산 주간 {usd_week_change(cur['total_assets_weekly'])} · 준비금 {usd_week_change(cur['reserves_weekly'])} · 미 국채 {usd_week_change(cur['treasury_weekly'])} · MBS {usd_week_change(cur['mbs_weekly'])}",
+        ('• <b>판정</b>: 현재는 <b>정책금리 인상 + 충분한 준비금 유지</b> 조합입니다. “금리 대신 QT” 또는 “강한 총량 축소”로 읽지 않습니다.'
          if ample else
-         '• <b>결론</b>: 총량 축소형 양적긴축(QT)이 실제로 시작됐는지 공식 시행지침과 여러 주의 H.4.1 흐름을 함께 확인합니다.'),
+         '• <b>판정</b>: 총량 축소형 양적긴축(QT)이 실제로 시작됐는지 공식 시행지침과 여러 주의 H.4.1 흐름을 함께 확인합니다.'),
         f"• <b>이번 알림 사유</b>: {html.escape(reason)}",
         '',
         '<b>현재 숫자</b>',
         f"• 연준 총자산 {usd_level(cur['total_assets'])} · 주간 {usd_week_change(cur['total_assets_weekly'])}",
-        f"• 미 국채 {usd_level(cur['treasury'])} · 단기국채 {usd_level(cur['bills'])}",
-        f"• 주택저당증권(MBS) {usd_level(cur['mbs'])}",
+        f"• 미 국채 {usd_level(cur['treasury'])} · 주간 {usd_week_change(cur['treasury_weekly'])} · 단기국채 {usd_level(cur['bills'])}",
+        f"• 주택저당증권(MBS) {usd_level(cur['mbs'])} · 주간 {usd_week_change(cur['mbs_weekly'])}",
         f"• 은행 준비금 {usd_level(cur['reserves'])} · 주간 {usd_week_change(cur['reserves_weekly'])}",
     ]
     if four:
         lines += [
             f"• 최근 4주: 총자산 {bn_change(four['total_assets'])} · 준비금 {bn_change(four['reserves'])} · 보유증권 {bn_change(four['securities'])}",
         ]
+    else:
+        lines += [
+            '• 최근 4주 판정: 동일 기준 데이터가 아직 충분히 쌓이지 않아 <b>판정 유보</b> — 주간 한 번의 변화로 QT를 단정하지 않습니다.',
+        ]
     lines += [
+        '',
+        '',
+        '<b>확정 사실과 해석 분리</b>',
+        '• <b>확정 사실</b>: FOMC 시행지침의 재투자·매입 문구와 H.4.1 실제 잔액입니다.',
+        '• <b>해석</b>: QT 여부는 공식 문구 + 총자산·보유증권·준비금의 여러 주 방향이 함께 맞을 때만 강하게 판정합니다.',
         '',
         '<b>공식 시행지침</b>',
         ( '• 미 국채 원금은 전액 재투자하고, 기관채·주택저당증권 원금은 단기국채에 재투자하며, 필요하면 단기국채·잔존 3년 이하 국채를 매입해 충분한 준비금을 유지합니다.'
