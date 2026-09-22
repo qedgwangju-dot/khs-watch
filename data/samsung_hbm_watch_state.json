@@ -60,6 +60,7 @@
     "a9a2b98d9be48dfaa7992df7",
     "aecd0190a7a845249b865cbb",
     "b10990b377e8014499d64e5a",
+    "b4818c7354b18b0d28e11aa7",
     "b6857f986779526ffa08d741",
     "bd26432b3c3bf171b67b4e34",
     "be3ea72057cda8f38d4e8424",
@@ -95,8 +96,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-22T17:19:16+09:00",
-  "last_event_count": 77,
+  "updated_at_kst": "2026-09-22T17:23:17+09:00",
+  "last_event_count": 78,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -117,7 +118,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-22T17:19:16+09:00",
+  "last_successful_official_at_kst": "2026-09-22T17:23:17+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -576,30 +577,30 @@
       "carrier_cleaning|samsung|2026": {
         "key": "carrier_cleaning|samsung|2026",
         "axis": "carrier_cleaning",
-        "value": 20000,
+        "value": 20000.0,
         "unit": "cleaning_passes/month",
         "period": "2026",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
-        "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
-        "source": "글로벌이코노믹·사용자 제공 본문",
-        "scope": "reusable_carrier_service_not_wafer_output",
-        "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
+        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
+        "source": "글로벌이코노믹",
+        "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
+        "scope": "reusable_carrier_service_not_wafer_output"
       },
       "carrier_cleaning|samsung|2027": {
         "key": "carrier_cleaning|samsung|2027",
         "axis": "carrier_cleaning",
-        "value": 50000,
+        "value": 50000.0,
         "unit": "cleaning_passes/month",
         "period": "2027",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
-        "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
-        "source": "글로벌이코노믹·사용자 제공 본문",
-        "scope": "reusable_carrier_service_not_wafer_output",
-        "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
+        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
+        "source": "글로벌이코노믹",
+        "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
+        "scope": "reusable_carrier_service_not_wafer_output"
       },
       "fab_stage|samsung|P5_Fab1": {
         "key": "fab_stage|samsung|P5_Fab1",
@@ -612,11 +613,11 @@
         "period": "2028",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
-        "source_title": "P5 Fab1 2028년 가동 목표",
-        "source": "글로벌이코노믹·사용자 제공 본문",
-        "scope": "fab_start_not_full_output",
-        "excerpt": "회사 관계자 인용 보도, 가동 목표와 본격 출하 기여는 별도"
+        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
+        "source": "글로벌이코노믹",
+        "excerpt": "삼성전자에 따르면 평택 P5 Fab1은 2028년 가동을 목표로 하고 있다.",
+        "scope": "fab_start_not_full_output"
       },
       "ddr5_chip_quote|dramexchange|16|4800/5600": {
         "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
@@ -653,10 +654,17 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-22T17:19:16+09:00",
-      "gaps": [],
-      "observations": 2,
-      "rdimm_paired_observations": 0
+      "last_checked_at_kst": "2026-09-22T17:23:17+09:00",
+      "gaps": [
+        "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
+        "bit_share: 연말 분모가 명확하지 않아 비교 보류",
+        "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
+      ],
+      "observations": 8,
+      "rdimm_paired_observations": 0,
+      "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
+      "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
+      "non_concrete_generic_evidence_suppressed": 4
     },
     "version": 1,
     "reference_capture": {
@@ -700,7 +708,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-22T17:20:52+09:00",
+    "checked_at_kst": "2026-09-22T17:25:20+09:00",
     "status": "no_message_due"
   }
 }
