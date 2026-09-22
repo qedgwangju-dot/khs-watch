@@ -162,8 +162,8 @@ RTRS_RELAY_TERMS = ('rtrs', 'reuters', '로이터')
 WITKOFF_TERMS = ('witkoff', 'steve witkoff', '위트코프', '스티브 위트코프', 'ویتکاف')
 DIRECT_MEETING_TERMS = ('met with', 'meeting with', 'held talks with', 'face-to-face', 'met', 'meeting', 'talks with', '회동', '회담', '만남', 'دیدار', 'گفتگو')
 IRIB_SOURCE_TERMS = ('irib', 'iranian state tv', 'iranian state television', '이란 국영방송', '이란 국영 tv', 'صدا و سیما')
-BLOCKADE_LIFT_TERMS = ('lift the blockade', 'lifting the blockade', 'lift its blockade', 'end the naval blockade', 'naval blockade lifted', '해상 봉쇄 해제', '봉쇄 즉각 해제', '봉쇄 해제')
-FROZEN_ASSET_TERMS = ('frozen assets', 'frozen funds', 'release frozen assets', 'release frozen funds', '동결 자산', '동결된 이란 자산', '동결자금', '동결 자금')
+BLOCKADE_LIFT_TERMS = ('lift the blockade', 'lifting the blockade', 'lifting of the blockade', 'lifting of the naval blockade', 'lift its blockade', 'end the naval blockade', 'naval blockade lifted', '해상 봉쇄 해제', '봉쇄 즉각 해제', '봉쇄 해제')
+FROZEN_ASSET_TERMS = ('frozen assets', 'frozen iranian assets', 'frozen funds', 'release frozen assets', 'release of frozen iranian assets', 'release frozen funds', '동결 자산', '동결된 이란 자산', '동결자금', '동결 자금')
 ALL_FRONTS_END_TERMS = ('end the war on all fronts', 'end war on all fronts', 'end to the war on all fronts', 'war on all fronts', '모든 전선에서의 전쟁 종식', '모든 전선 종전', '전 전선 종전')
 
 TRUSTED_EMERGENCY_SOURCES = ('reuters', 'apnews', 'associated press', 'afp', 'whitehouse.gov', 'state.gov', 'travel.state.gov', 'gov.il', 'irna.ir', 'tasnimnews', 'tasnim', 'presstv', 'saudipressagency', 'spa.gov.sa', 'arabnews')
@@ -476,12 +476,25 @@ def _iran_newyork_diplomacy_marks(row):
     frozen_assets = _has(text, FROZEN_ASSET_TERMS)
     all_fronts_end = _has(text, ALL_FRONTS_END_TERMS)
 
-    if newyork and araghchi and witkoff and direct_meeting:
+    # 두 이름과 'meeting'이 기사 안에 따로 존재하는 것만으로 직접회동으로 승격하지 않는다.
+    # 동일 문장·근접 문맥에서 Araghchi↔Witkoff가 실제 회동 동사로 연결될 때만 인정.
+    pair_patterns = (
+        r'araghchi.{0,100}(?:met with|met|meeting with|held talks with|face-to-face|sat down with).{0,100}witkoff',
+        r'witkoff.{0,100}(?:met with|met|meeting with|held talks with|face-to-face|sat down with).{0,100}araghchi',
+        r'araghchi.{0,80}witkoff.{0,80}(?:met|meeting|held talks|face-to-face)',
+        r'witkoff.{0,80}araghchi.{0,80}(?:met|meeting|held talks|face-to-face)',
+        r'(?:아라치|이란 외무장관).{0,80}(?:위트코프|스티브 위트코프).{0,80}(?:회동|회담|만났|대면)',
+        r'(?:عراقچی).{0,100}(?:ویتکاف).{0,100}(?:دیدار|گفتگو)',
+    )
+    direct_pair = any(re.search(p, text, re.I | re.S) for p in pair_patterns)
+
+    if newyork and araghchi and witkoff and direct_meeting and direct_pair:
         if irib_report and not ('reuters.com' in src or 'apnews.com' in src):
             marks.append('IRIB아라치위트코프뉴욕회동보도')
-        else:
+            marks.append('직접회동독립확인대기')
+        elif _trusted(row) or 'axios.com' in src:
             marks.append('아라치위트코프뉴욕회동확인')
-    if newyork and araghchi and witkoff and _has(text, HORMUZ_TERMS) and (blockade_lift or frozen_assets or all_fronts_end):
+    if newyork and araghchi and witkoff and direct_pair and _has(text, HORMUZ_TERMS) and (blockade_lift or frozen_assets or all_fronts_end):
         marks.append('호르무즈재개방조건직접협의')
     if blockade_lift:
         marks.append('해상봉쇄해제조건')
@@ -603,7 +616,9 @@ def _signals(marks):
     if '아라치위트코프뉴욕회동확인' in marks:
         out.append('🟢 아라치 이란 외무장관–Steve Witkoff 미국 특사의 뉴욕 직접 회동이 독립 확인됨 — 대표단 전권·중재 가능성에서 실제 대면협상 단계로 상승')
     if 'IRIB아라치위트코프뉴욕회동보도' in marks:
-        out.append('🟡 IRIB가 아라치–Witkoff 뉴욕 회동을 보도 — Reuters는 같은 날 미·이란 협상 지속을 확인했지만 공개 기사에서 두 사람의 대면 회동은 아직 독립 확인 전')
+        out.append('🟡 IRIB가 아라치–Witkoff 뉴욕 회동을 보도 — Reuters는 같은 날 미·이란 협상 지속·대표단 전권을 확인했지만 공개 기사에서 두 사람의 대면 회동은 아직 독립 확인 전')
+    if '직접회동독립확인대기' in marks:
+        out.append('확정 수준: IRIB 보도 단계 — 미국 측·Reuters·AP의 대면 회동 독립 확인 대기')
     if '호르무즈재개방조건직접협의' in marks:
         out.append('🟡 호르무즈 재개방 조건을 직접 협의했다는 보도 — 해상 봉쇄 해제·동결자산·전 전선 종전 조건의 공식 공동확인 여부 추적')
     if '해상봉쇄해제조건' in marks:
@@ -764,7 +779,7 @@ def item_id(row):
             day = dt.datetime.now(dt.timezone.utc).date().isoformat()
         key = 'middle-east-emergency|' + day + '|' + '|'.join(sorted(emergency_marks))
     else:
-        stage_marks = [m for m in marks if m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의','해상봉쇄해제조건','동결자산지급조건','전전선종전조건','이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영','RTRS중계속보','Reuters직접확인','미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')]
+        stage_marks = [m for m in marks if m in ('IRIB아라치위트코프뉴욕회동보도','직접회동독립확인대기','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의','해상봉쇄해제조건','동결자산지급조건','전전선종전조건','이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영','RTRS중계속보','Reuters직접확인','미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')]
         if stage_marks:
             key = 'iran-war-peace-stage-2026|' + '|'.join(sorted(stage_marks))
         elif any(m.startswith('크렘린') for m in marks):
@@ -859,6 +874,7 @@ def _verdict(items):
             lines.append('- <b>확정 수준:</b> 독립 신뢰원 확인 단계')
         else:
             lines.append('- <b>미·이란 뉴욕 회동:</b> 🟡 IRIB가 아라치–Witkoff 회동을 보도 — Reuters는 협상 지속·이란 대표단 전권을 확인했지만 대면 회동 자체는 공개 기사에서 독립확인 전')
+            lines.append('- <b>확정 수준:</b> IRIB 보도 단계 — 미국 측·Reuters·AP의 대면 회동 독립 확인 대기')
         conds = []
         if '해상봉쇄해제조건' in marks:
             conds.append('해상 봉쇄 해제')
