@@ -1,59 +1,57 @@
 {
   "watch_version": 4,
-  "updated_at_kst": "2026-09-22T21:28:39+09:00",
+  "updated_at_kst": "2026-09-23T01:49:43+09:00",
   "seen_event_keys": [
-    "kosdaq_foreign3d_neg:2026-09-11:final",
-    "foreign3d_pos:2026-09-07:final",
+    "fx_daily_up:2026-09-17",
     "foreign1d_neg:2026-09-10:final",
-    "fx_daily_up_stage1:2026-09-17",
-    "foreign3d_neg:2026-08-27",
+    "foreign1d_neg:2026-09-14:final",
+    "kosdaq_foreign3d_neg:2026-09-11:final",
+    "fx_daily_up:2026-09-15",
+    "foreign3d_neg:2026-09-17:final",
+    "kosdaq_foreign1d_neg:2026-09-10:final",
+    "fx_1350_down:2026-09-04",
     "capex:13cbe150930d23d8",
-    "policy_spread:2026-09-17:1.00",
-    "fx_1350_down:2026-09-11",
+    "kosdaq_foreign3d_neg:2026-09-10:final",
     "fx_daily_down:2026-09-02",
+    "foreign1d_neg:2026-08-31",
+    "foreign3d_neg:2026-09-14:final",
+    "foreign3d_pos:2026-09-07:final",
+    "ust10_up:2026-09-10",
+    "fx_daily_down_stage2:2026-09-22",
+    "foreign1d_neg:2026-09-02:postclose",
+    "fx_1350_down:2026-09-07",
+    "capex:c77504fb6c1cca66",
+    "foreign3d_neg:2026-09-02:final",
+    "foreign3d_neg:2026-08-27",
+    "foreign1d_neg:2026-09-17:final",
+    "foreign3d_neg:2026-09-18:final",
+    "fx_1350_down:2026-09-11",
+    "foreign3d_neg:2026-09-11:final",
     "foreign1d_neg:2026-09-11:final",
+    "kosdaq_foreign1d_neg:2026-09-11:final",
     "foreign1d_neg:2026-09-02:final",
     "fx_daily_down_stage1:2026-09-22",
-    "kosdaq_foreign1d_neg:2026-09-11:final",
-    "foreign3d_neg:2026-09-17:final",
-    "foreign1d_neg:2026-08-31",
-    "foreign1d_neg:2026-09-17:final",
-    "foreign3d_neg:2026-09-11:final",
-    "foreign3d_neg:2026-09-18:final",
-    "fx_1350_down:2026-09-07",
-    "kosdaq_foreign3d_neg:2026-09-10:final",
-    "fx_daily_up:2026-09-15",
-    "fx_daily_up:2026-09-17",
-    "capex:8c316cbbe125ec4c",
-    "foreign1d_neg:2026-09-14:final",
-    "foreign3d_neg:2026-09-14:final",
-    "foreign1d_pos:2026-09-07:final",
-    "capex:c77504fb6c1cca66",
+    "policy_spread:2026-09-17:1.00",
     "foreign3d_neg:2026-09-02:postclose",
-    "kosdaq_foreign1d_pos:2026-09-09:final",
-    "ust10_up:2026-09-10",
-    "policy_spread:2026-08-27:0.75",
-    "fx_daily_down_stage2:2026-09-22",
-    "fx_1350_down:2026-09-04",
-    "foreign3d_neg:2026-09-02:final",
     "foreign3d_pos:2026-09-08:final",
+    "policy_spread:2026-08-27:0.75",
+    "fx_daily_up_stage1:2026-09-17",
+    "foreign1d_pos:2026-09-07:final",
+    "capex:8c316cbbe125ec4c",
     "kosdaq_foreign3d_neg:2026-09-14:final",
-    "foreign1d_neg:2026-09-02:postclose",
-    "kosdaq_foreign1d_neg:2026-09-10:final"
+    "kosdaq_foreign1d_pos:2026-09-09:final"
   ],
-  "active_keys": [
-    "fx_daily_down:2026-09-22"
-  ],
+  "active_keys": [],
   "snapshot": {
-    "checked_at_kst": "2026-09-22T21:28:39+09:00",
+    "checked_at_kst": "2026-09-23T01:49:43+09:00",
     "watch_version": 4,
     "usdkrw": {
       "date": "2026-09-22",
-      "value": 1358.0,
-      "prev_date": "2026-09-21",
-      "prev_value": 1381.0,
-      "change_krw": -23.0,
-      "change_pct": -1.6655,
+      "value": 1359.2,
+      "prev_date": "2026-09-22",
+      "prev_value": 1350.0,
+      "change_krw": 9.2,
+      "change_pct": 0.6815,
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "ecos_official": {
         "date": "2026-09-22",
@@ -69,8 +67,8 @@
       "naver_prev_value": 1375.0,
       "comparison_valid": true,
       "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
-      "seoul_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20260921154105569",
-      "seoul_close_title": "외국환시세(9월21일·15:30 기준가)"
+      "seoul_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20260922155139381",
+      "seoul_close_title": "외국환시세(9월22일·15:30 기준가)"
     },
     "ust10": {
       "date": "2026-09-18",
@@ -89,97 +87,39 @@
       "bok_source": "https://www.bok.or.kr/portal/singl/baseRate/list.do?menuNo=200656"
     },
     "foreign_flow": {
-      "date": "2026-09-22",
+      "date": "2026-09-23",
       "daily_eok": 479.0,
       "daily_krw": 47900000000,
-      "three_day_eok": 5036.0,
-      "three_day_krw": 503600000000,
-      "three_day_available": true,
+      "three_day_eok": 1029.0,
+      "three_day_krw": 102900000000,
+      "three_day_available": false,
       "source": "https://openapi.ls-sec.co.kr/apiservice",
-      "source_label": "LS증권 t1601 확정 대체값",
+      "source_label": "LS증권 t1601 잠정 대체값",
       "phase": "18:10 이후 LS증권 장마감 대체값",
       "ls_validation": {
         "status": "ls_fallback",
         "tr_cd": "t1601",
         "ls_daily_eok": 479.0,
-        "naver_error": "RuntimeError: HTTP 조회 실패: https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260922&sosok=01: 410 Client Error: 410 for url: https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260922&sosok=01",
-        "history_count": 7,
+        "naver_error": "RuntimeError: HTTP 조회 실패: https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260923&sosok=01: 410 Client Error: 410 for url: https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260923&sosok=01",
+        "history_count": 8,
         "foreign_buy_eok": 77633.0,
         "foreign_sell_eok": 77155.0,
         "source": "https://openapi.ls-sec.co.kr/apiservice"
       },
-      "finality": "확정"
+      "finality": "잠정"
     },
     "global_wave_news": [],
-    "hyperscaler_capex_news": [
-      {
-        "title": "Why Is Meta (META) Crashing After Earnings? EPS Missed 14%, FCF Hit $784M, Capex Raised Again - TradingKey",
-        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNUVBQQnREaHBhVnByYVlfMGZjWVFzOG1TMnFiT0V4cEpObHFId0s0UHdLdV9UMzVVUnowdG5XcU90cUFLdFBTN08xZUtMcHZNcDJvZjllMVFfemdxQlN3eGlBRVZ0eFZieS1Ka3VVTkhYY3o4ZndEM2JvQjZZYjEwM2VHSGRMUUFqTHZKQ045SjJ1cGNNdE9oZHlReFZQajl0MnkyMUVGOF9JVWN4SzdKMVdjQldabVpFLXJmQktwb1I0Z1dKUC16VUNqcw?oc=5",
-        "description": "Why Is Meta (META) Crashing After Earnings? EPS Missed 14%, FCF Hit $784M, Capex Raised Again TradingKey",
-        "published": "Mon, 21 Sep 2026 01:11:15 GMT",
-        "published_dt": "2026-09-21 01:11:15+00:00",
-        "percentages": [
-          14.0,
-          14.0
-        ]
-      }
-    ],
-    "kospi_close": {
-      "date": "2026-09-22",
-      "close": 7017.91,
-      "change_pct": 0.15,
-      "source": "https://m.stock.naver.com/api/index/KOSPI/price?pageSize=5&page=1"
-    },
-    "flow_finality_note": "외국인 임계치 경보는 18:10 이후 재조회한 마감값으로만 판정. KRX는 당일 최종 투자자별 매매내역을 오후 6시 이후 제공하며, 자동화에서는 접근 가능한 KRX 기반 네이버 국내증시 데이터를 재조회해 사용.",
-    "krx_flow_info_url": "https://data.krx.co.kr/contents/MDC/MDI/outerLoader/index.cmd?screenId=MDCSTAT022",
-    "kosdaq_close": {
-      "date": "2026-09-22",
-      "close": 834.38,
-      "change_pct": -0.23,
-      "source": "https://m.stock.naver.com/api/index/KOSDAQ/price?pageSize=5&page=1"
-    },
-    "kosdaq_foreign_flow": {
-      "date": "2026-09-22",
-      "daily_eok": -566.0,
-      "daily_krw": -56600000000,
-      "three_day_eok": -2039.0,
-      "three_day_krw": -203900000000,
-      "three_day_available": true,
-      "source": "https://openapi.ls-sec.co.kr/apiservice",
-      "source_label": "LS증권 t1601 확정 대체값",
-      "phase": "18:10 이후 LS증권 장마감 대체값",
-      "ls_validation": {
-        "status": "ls_fallback",
-        "tr_cd": "t1601",
-        "ls_daily_eok": -566.0,
-        "naver_error": "HTTPError: 410 Client Error: 410 for url: https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260922&sosok=02",
-        "history_count": 7,
-        "foreign_buy_eok": 17407.0,
-        "foreign_sell_eok": 17973.0,
-        "source": "https://openapi.ls-sec.co.kr/apiservice"
-      },
-      "finality": "확정"
-    },
+    "hyperscaler_capex_news": [],
     "flow_source_note": "KOSPI·KOSDAQ 장마감 외국인 수급은 네이버 장마감값과 LS증권 OpenAPI t1601 투자자별종합을 교차검증. 네이버 실패 시 LS t1601 대체값 사용, 유의한 불일치 시 수급 임계치 판정 보류. KRX는 공식 원천 재확인 링크로 제공.",
     "ls_flow_validation": {
       "KOSPI": {
         "status": "ls_fallback",
         "tr_cd": "t1601",
         "ls_daily_eok": 479.0,
-        "naver_error": "RuntimeError: HTTP 조회 실패: https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260922&sosok=01: 410 Client Error: 410 for url: https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260922&sosok=01",
-        "history_count": 7,
+        "naver_error": "RuntimeError: HTTP 조회 실패: https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260923&sosok=01: 410 Client Error: 410 for url: https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260923&sosok=01",
+        "history_count": 8,
         "foreign_buy_eok": 77633.0,
         "foreign_sell_eok": 77155.0,
-        "source": "https://openapi.ls-sec.co.kr/apiservice"
-      },
-      "KOSDAQ": {
-        "status": "ls_fallback",
-        "tr_cd": "t1601",
-        "ls_daily_eok": -566.0,
-        "naver_error": "HTTPError: 410 Client Error: 410 for url: https://finance.naver.com/sise/investorDealTrendDay.naver?bizdate=20260922&sosok=02",
-        "history_count": 7,
-        "foreign_buy_eok": 17407.0,
-        "foreign_sell_eok": 17973.0,
         "source": "https://openapi.ls-sec.co.kr/apiservice"
       }
     },
@@ -188,23 +128,22 @@
   "flow_fallback_candidate": {
     "KOSPI": {
       "market": "KOSPI",
-      "date": "2026-09-22",
-      "checked_at": "2026-09-22T21:29:02+09:00",
+      "date": "2026-09-23",
+      "checked_at": "2026-09-23T01:50:02+09:00",
       "status": "ls_fallback",
-      "stable": true,
-      "observations": 2,
-      "reason": "네이버 조회 실패 · 20:10 이후 LS t1601 단독값 2회 연속 안정성 확인 완료",
+      "stable": false,
+      "observations": 0,
+      "reason": "20:10 이전 · KRX 최종 수급 확인 전",
       "value_eok": 479.0
     },
     "KOSDAQ": {
       "market": "KOSDAQ",
-      "date": "2026-09-22",
-      "checked_at": "2026-09-22T21:29:02+09:00",
-      "status": "ls_fallback",
-      "stable": true,
-      "observations": 2,
-      "reason": "네이버 조회 실패 · 20:10 이후 LS t1601 단독값 2회 연속 안정성 확인 완료",
-      "value_eok": -566.0
+      "date": "2026-09-23",
+      "checked_at": "2026-09-23T01:50:02+09:00",
+      "status": "",
+      "stable": false,
+      "observations": 0,
+      "reason": "20:10 이전 · KRX 최종 수급 확인 전"
     }
   },
   "final_flow_history": {
