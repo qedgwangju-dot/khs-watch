@@ -48,3 +48,29 @@ assert "개인" in att["cross_sellers"], att
 assert "현물은 외국인, 선물은 기관" in att["verdict"], att
 assert "개인" not in att["verdict"].split("가 현물·선물")[0], att
 print("attribution_regression=true spot_leader=외국인 futures_leader=기관 single_leader=false")
+
+
+# Regression: an older session high must not become the start of a later local shock.
+w3 = Watch.__new__(Watch)
+w3.idx = deque(maxlen=30000)
+base3 = time.time() - 140 * 60
+# Old session high two hours earlier.
+for i in range(20):
+    w3.idx.append((base3 + i*60, 7200.0 - i*1.0))
+# Long quieter period well below old high.
+for i in range(20, 105):
+    w3.idx.append((base3 + i*60, 7120.0 + (i-20)*0.15))
+# Local pivot, then 22-minute abrupt decline.
+local_peak_ts = base3 + 105*60
+w3.idx.append((local_peak_ts, 7133.0))
+hit3 = None
+for i in range(1, 23):
+    w3.idx.append((local_peak_ts + i*60, 7133.0 - i*3.4))
+    ok3, info3 = Watch._trigger(w3)
+    if ok3:
+        hit3 = info3
+        break
+assert hit3, "local shock regression not detected"
+assert abs(hit3["peak_ts"] - local_peak_ts) <= 5*60, hit3
+assert hit3["peak"] < 7150.0, hit3
+print(f"local_pivot_regression=true start={fmt_clock(hit3['peak_ts'])} window={hit3['window_minutes']}m")
