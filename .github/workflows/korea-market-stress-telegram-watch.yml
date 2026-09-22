@@ -101,7 +101,7 @@ jobs:
           from zoneinfo import ZoneInfo
 
           now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
-          if now.weekday() >= 5 or not (dt.time(8, 50) <= now.time() <= dt.time(15, 10)):
+          if now.weekday() >= 5 or not (dt.time(8, 50) <= now.time() <= dt.time(15, 20)):
               print("kospi_realtime_watchdog=outside_market_window")
               raise SystemExit(0)
 
@@ -125,12 +125,16 @@ jobs:
 
           if healthy:
               print(f"kospi_realtime_watchdog=alive runs={healthy}")
+              with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
+                  f.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
               raise SystemExit(0)
 
           body = json.dumps({"ref": "main", "inputs": {"mode": "production"}}).encode("utf-8")
           req = urllib.request.Request(f"{base}/dispatches", data=body, headers={**headers, "Content-Type": "application/json"}, method="POST")
           with urllib.request.urlopen(req, timeout=20) as r:
               print(f"kospi_realtime_watchdog=dispatched status={r.status}")
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
+              f.write("KOSPI_REALTIME_WATCH_ACTIVE=0\n")
           PY
 
       - name: Run market stress and FX sector rotation watchers
