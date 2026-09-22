@@ -74,3 +74,13 @@ assert hit3, "local shock regression not detected"
 assert abs(hit3["peak_ts"] - local_peak_ts) <= 5*60, hit3
 assert hit3["peak"] < 7150.0, hit3
 print(f"local_pivot_regression=true start={fmt_clock(hit3['peak_ts'])} window={hit3['window_minutes']}m")
+
+
+# Regression: production code must contain feed-staleness guards so an in-progress
+# GitHub job cannot be mistaken for a healthy market-data stream.
+import inspect
+src = inspect.getsource(Watch.run)
+assert "KOSPI realtime feed stale >75s" in src
+assert "KOSPI200 futures feed stale >90s" in src
+assert "flow snapshot stale >120s" in src
+print("feed_health_regression=true")
