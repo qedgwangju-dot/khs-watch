@@ -94,7 +94,7 @@ LOCAL_TERMS = ["전남광주", "전남광주시", "광주", "광산구", "산정
 MATERIAL_TERMS = ["계획", "정책", "조례", "수요", "공급", "검토", "착공", "준공", "양산", "지정", "선정", "계약", "낙찰", "조사", "등록", "심사", "보완", "확장", "투자", "팹", "직접 팹", "생산거점", "후보지", "클러스터", "배후기지", "소부장", "공급망", "물류", "실사", "가구", "명", "억원", "조원", "㎞", "km", "mw", "gw", "만평", "㎡", "지구", "도시", "주택", "전력", "용수", "댐", "하수재이용수", "하천수", "가뭄", "물 부족", "유입량", "유출량", "이수 안전도", "수자원"]
 POSITIVE = ["선정", "낙찰", "계약 체결", "조사 착수", "현지조사 착수", "승인", "확정", "통과", "착공", "준공", "양산", "기간 단축", "앞당", "확대", "증설"]
 NEGATIVE = ["지연", "보완", "재검토", "반려", "중단", "연기", "갈등", "우려", "영향 불가피", "재입찰", "사업기간 연장", "준공 지연", "공급 부족", "병목"]
-OFFICIAL_LH_DESIGN_BID = "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidDegree=00&bidNum=2602775"
+OFFICIAL_LH_DESIGN_BID = "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidDegree=00&bidNum=2602775"\nOFFICIAL_LH_ENV_BID = "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidDegree=00&bidNum=2603004"
 
 
 def fetch(url: str, timeout: int = 25) -> bytes:
@@ -321,14 +321,45 @@ def main():
 
     official_changes = []
     signatures = dict(state.get("official_page_signatures", {}))
+
+    # 조사설계용역(2602775)은 환경영향평가 수행업체 선정과 다른 절차다.
+    # 핵심 ①에 섞지 않고 산단 사업 추진 일정으로 분리한다.
     try:
         sig = official_signature(OFFICIAL_LH_DESIGN_BID)
         prior = signatures.get("lh_design_bid")
         signatures["lh_design_bid"] = sig
         if initialized and prior and prior != sig:
-            official_changes.append({"stage": "1_용역선정_현지조사", "stage_label": STAGE_LABELS["1_용역선정_현지조사"], "headline": "LH 전자조달 핵심 입찰·계약 정보 변경 감지", "detail": "개찰·낙찰·계약·착수 상태가 실제로 바뀌었는지 확인 필요", "impact": "절차 한 단계 진행 가능", "reason": why_it_matters(["1_용역선정_현지조사"]), "source_status": "공식자료", "url": OFFICIAL_LH_DESIGN_BID})
+            official_changes.append({
+                "stage": "6_산단투자_기업일정",
+                "stage_label": STAGE_LABELS["6_산단투자_기업일정"],
+                "headline": "LH 조사설계용역 입찰·개찰 상태 변경",
+                "detail": "조사설계용역 공고 2602775의 개찰·낙찰·계약 단계 변화. 환경영향평가 용역과는 별도 절차",
+                "impact": "산단 사업 추진 일정 변화",
+                "reason": "기본·실시설계와 조사설계 진행은 산단 조성 시간표에 직접 연결",
+                "source_status": "공식자료",
+                "url": OFFICIAL_LH_DESIGN_BID,
+            })
     except Exception as exc:
-        errors.append(f"LH 전자조달 확인 실패: {type(exc).__name__}: {exc}")
+        errors.append(f"LH 조사설계용역 확인 실패: {type(exc).__name__}: {exc}")
+
+    # 핵심 ①은 환경영향평가·기후변화영향평가 용역(2603004)만 직접 감시한다.
+    try:
+        sig = official_signature(OFFICIAL_LH_ENV_BID)
+        prior = signatures.get("lh_env_bid")
+        signatures["lh_env_bid"] = sig
+        if initialized and prior and prior != sig:
+            official_changes.append({
+                "stage": "1_용역선정_현지조사",
+                "stage_label": STAGE_LABELS["1_용역선정_현지조사"],
+                "headline": "환경영향평가·기후변화영향평가 용역 상태 변경",
+                "detail": "공고 2603004의 개찰·낙찰·계약·착수 단계가 변경됨. 수행업체 선정과 실제 현지조사 착수 여부를 이어서 확인",
+                "impact": "환경평가 절차 한 단계 진행 가능",
+                "reason": why_it_matters(["1_용역선정_현지조사"]),
+                "source_status": "공식자료",
+                "url": OFFICIAL_LH_ENV_BID,
+            })
+    except Exception as exc:
+        errors.append(f"LH 환경영향평가용역 확인 실패: {type(exc).__name__}: {exc}")
 
     send_items = [compact_news_item(i) for i in new_items] if initialized else []
     send_official = official_changes if initialized else []
