@@ -55,7 +55,7 @@ jobs:
 
       - name: Validate code and memory/delivery regression tests
         run: |
-          python -m py_compile scripts/hbm_delivery.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/skhynix_us_memory_watch.py
+          python -m py_compile scripts/hbm_delivery.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/skhynix_us_memory_watch.py scripts/ai_component_leadtime_watch.py
           python -m unittest discover -s tests -p 'test_hbm*.py' -v
 
       - name: Validate existing Telegram destination without sending
