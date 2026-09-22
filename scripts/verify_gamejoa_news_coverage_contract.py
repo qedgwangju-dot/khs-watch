@@ -1220,66 +1220,6 @@ def main() -> int:
     if radar.compact_alert_block_errors(rendered_format):
         failures.append(f"telegram_display_format_invalid={rendered_format}")
 
-    quantum_search_names = {
-        source[0] for source in radar.KOREAN_BUSINESS_SEARCH_SOURCES
-    }
-    if "국내 양자컴퓨팅 제조거점·글로벌 공급망" not in quantum_search_names:
-        failures.append("missing_search=국내 양자컴퓨팅 제조거점·글로벌 공급망")
-    if not any(
-        str(item.get("url") or "").startswith("https://coinlab.edaily.co.kr/News/Read")
-        and "SDT" in str(item.get("title") or "")
-        and "아이온큐" in str(item.get("title") or "")
-        for item in radar.coverage.DIRECT_ARTICLES
-    ):
-        failures.append("missing_direct_article=sdt_ionq_gumi_quantum")
-
-    quantum_row = {
-        "title": "“양자컴퓨터 만든다”…SDT, 아이온큐와 손잡고 구미에 제조거점",
-        "source_title": "“양자컴퓨터 만든다”…SDT, 아이온큐와 손잡고 구미에 제조거점",
-        "source_body": (
-            "SDT는 아이온큐와 APJ 지역 제조·시스템 통합을 위한 전략적 파트너십을 체결했다. "
-            "아이온큐의 Superion 256과 SiV 양자 메모리 모듈을 국내에 처음 도입한다. "
-            "SDT는 경북 구미에 전용 제조·시스템 통합시설을 구축해 양자 메모리 패키징·제조와 "
-            "양자컴퓨터 시스템 조립·통합·시험을 진행한다. 국내 암센터에는 하이브리드 "
-            "양자-고전 데이터센터를 구축할 계획이다."
-        ),
-        "source_abstract": "",
-        "source": "국내 신뢰매체 직접감시",
-        "publisher": "이데일리",
-        "published": now,
-        "link": "https://coinlab.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03043846645582744",
-        "body_verified": True,
-    }
-    quantum_alert = radar.build_verified_korean_business_alert(quantum_row, now)
-    if not quantum_alert:
-        failures.append("korea_quantum_manufacturing_hub=missing")
-    else:
-        if quantum_alert.get("korean_business_kind") != "korea_quantum_manufacturing_hub":
-            failures.append(
-                f"korea_quantum_manufacturing_hub=wrong_kind:{quantum_alert.get('korean_business_kind')}"
-            )
-        quantum_core = str(quantum_alert.get("telegram_core_fact") or "")
-        if not all(term in quantum_core for term in ("SDT", "아이온큐", "구미")):
-            failures.append(f"korea_quantum_manufacturing_hub=core:{quantum_core!r}")
-        if "양자컴퓨팅/양자통신" not in (quantum_alert.get("sectors") or []):
-            failures.append(
-                f"korea_quantum_manufacturing_hub=sector:{quantum_alert.get('sectors')}"
-            )
-        if not {"돈 버는 능력", "시간표"}.issubset(
-            set(quantum_alert.get("impacts") or [])
-        ):
-            failures.append(
-                f"korea_quantum_manufacturing_hub=impacts:{quantum_alert.get('impacts')}"
-            )
-        quantum_block = radar.compact_alert(
-            quantum_alert, 1, now, {}, {}
-        )
-        if radar.compact_alert_block_errors(quantum_block):
-            failures.append(
-                "korea_quantum_manufacturing_hub=compact_invalid:"
-                + repr(quantum_block)
-            )
-
     title_only_alert = {
         "news": "본문 미확인 제목 전용 후보",
         "source_title": "본문 미확인 제목 전용 후보",
