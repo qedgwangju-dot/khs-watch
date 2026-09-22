@@ -158,14 +158,48 @@ def parse_bucket_maxima(text: str) -> dict[str, list[float]]:
 
 
 def latest_fx():
-    from fx_api import daily_krw
-    q = daily_krw()
-    return q.rate, q.basis
+    """Return a verified KRW conversion without blocking the policy alert.
+
+    Primary path uses the repository's cross-checked daily FX helper. If its two
+    APIs disagree enough to fail validation, use the Federal Reserve DEXKOUS
+    series as an independent official fallback. If both paths fail, keep the
+    Treasury alert alive and explicitly defer only the KRW conversion.
+    """
+    errors: list[str] = []
+    try:
+        from fx_api import daily_krw
+        q = daily_krw()
+        return q.rate, q.basis
+    except Exception as exc:
+        errors.append(f"교차검증 API 실패: {type(exc).__name__}: {exc}")
+
+    try:
+        raw = fetch_bytes(FRED_FX).decode("utf-8", errors="replace")
+        rows = [line.split(",") for line in raw.splitlines()[1:] if "," in line]
+        for row in reversed(rows):
+            if len(row) >= 2 and row[1].strip() not in ("", "."):
+                rate = float(row[1].strip())
+                day = row[0].strip()
+                if rate > 0:
+                    return rate, f"{day} FRED DEXKOUS 독립 공식 fallback · 원 API 교차검증 실패"
+        errors.append("FRED DEXKOUS 유효 관측치 없음")
+    except Exception as exc:
+        errors.append(f"FRED DEXKOUS 실패: {type(exc).__name__}: {exc}")
+
+    return None, "환율 검증 실패 — 원화 환산 보류 · " + " | ".join(errors)
 
 
-def fmt_krw(usd_bn: float, fx: float) -> str:
+def fmt_krw(usd_bn: float, fx: float | None) -> str:
+    if fx is None:
+        return "원화 환산 보류"
     trillion = usd_bn * fx / 1000.0
     return f"약 {trillion:,.2f}조원" if trillion >= 1 else f"약 {trillion * 10000:,.0f}억원"
+
+
+def fx_basis_line(fx: float | None, fx_date: str) -> str:
+    if fx is None:
+        return f"환율 기준: {fx_date}"
+    return f"환율 기준: {fx_date}, 1달러={fx:,.1f}원"
 
 
 def is_long_end_buyback_change(text: str) -> bool:
@@ -393,7 +427,7 @@ def build_common_body(
             "• 10년·30년 명목금리·실질금리가 실제로 내려오는지",
             "• 다음 QRA에서 바이백 규모와 이표채 발행 가이던스가 어떻게 바뀌는지",
             "",
-            f"환율 기준: {fx_date}, 1달러={fx:,.1f}원",
+            fx_basis_line(fx, fx_date),
             (
                 f'<a href="{source_url}">미 재무부 공식 발표</a> · '
                 f'<a href="{BUYBACK_PAGE}">바이백 공지·결과</a> · '
