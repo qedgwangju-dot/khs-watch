@@ -188,7 +188,7 @@ def main():
     new_release=bool(old_url and old_url!=cur['url'])
     legacy_correction=(old_schema<2)
     format_upgrade=(old_schema<SCHEMA_VERSION)
-    should_send=FORCE or legacy_correction or format_upgrade or new_release
+    should_send=FORCE or legacy_correction or new_release
     if should_send: send(message(cur,market,correction=legacy_correction))
     save({'schema_version':SCHEMA_VERSION,'snapshot':cur,'market_2026_yearend':market,'sent_upgrade':should_send})
     print(json.dumps({'schema_version':SCHEMA_VERSION,'new_release':new_release,'legacy_correction':legacy_correction,'format_upgrade':format_upgrade,'sent':should_send,'date':cur['date'],'funds':cur['funds'],'market_2026_yearend':market},ensure_ascii=False))
