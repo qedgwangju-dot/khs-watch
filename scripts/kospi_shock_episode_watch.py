@@ -152,16 +152,31 @@ def investor_current(token: str, market: str, upcode: str) -> dict[str, Any] | N
             "외국인": fnum(row.get("sv_17")), "기관": fnum(row.get("sv_18"))}
 
 
+def _program_mini(token: str, gubun: str) -> dict[str, Any] | None:
+    # t1640: 11=거래소 전체, 12=거래소 차익, 13=거래소 비차익.
+    d = ls_post(token, "/stock/program", "t1640", {"t1640InBlock": {"gubun": gubun}})
+    row = d.get("t1640OutBlock")
+    return row if isinstance(row, dict) and row else None
+
+
 def program_current(token: str) -> dict[str, Any] | None:
-    body = {"t1632InBlock": {"gubun": "0", "gubun1": "0", "gubun2": "1",
-            "gubun3": "1", "date": "", "time": "", "exchgubun": "K"}}
-    d = ls_post(token, "/stock/program", "t1632", body)
-    row = _latest_time_row(d.get("t1632OutBlock1"))
-    if not row:
+    # t1632의 '최신 행'을 누적값처럼 차감하지 않는다.
+    # t1640 누적 스냅샷 3종을 동일 시점에 조회해 사건 시작→저점 차이를 계산한다.
+    total = _program_mini(token, "11")
+    time.sleep(1.05)
+    arb = _program_mini(token, "12")
+    time.sleep(1.05)
+    nonarb = _program_mini(token, "13")
+    if not total and not arb and not nonarb:
         return None
-    return {"time": row.get("time"), "전체": fnum(row.get("tot3")),
-            "차익": fnum(row.get("cha3")), "비차익": fnum(row.get("bcha3")),
-            "KOSPI200": fnum(row.get("k200jisu")), "베이시스": fnum(row.get("k200basis"))}
+    return {
+        "time": dt.datetime.now(KST).strftime("%H%M%S"),
+        "전체": fnum((total or {}).get("value")),
+        "차익": fnum((arb or {}).get("value")),
+        "비차익": fnum((nonarb or {}).get("value")),
+        "베이시스": fnum((total or {}).get("basis")),
+        "전체_순매수증감": fnum((total or {}).get("sunvaldiff") or (total or {}).get("sundiff")),
+    }
 
 
 def fetch_flow_snapshot(token: str) -> dict[str, Any]:
@@ -252,7 +267,7 @@ class Watch:
         self.flows: deque[dict[str, Any]] = deque(maxlen=2500)
         self.front_future = ""; self.episode: dict[str, Any] | None = None
         self.last_flow_poll = 0.0; self.flow_task: asyncio.Task | None = None
-        self.msg_ids: list[int] = []; self.raw: dict[str, Any] = {}
+        self.msg_ids: list[int] = []; self.raw: dict[str, Any] = {}\n        self.monitor_started_ts = time.time()
 
     @staticmethod
     def _nearest(buf: deque[tuple[float, float]], ts: float) -> tuple[float, float] | None:
@@ -324,26 +339,35 @@ class Watch:
         spot = _actor_delta(a.get("현물"), b.get("현물"))
         fut = _actor_delta(a.get("선물"), b.get("선물"))
         pgm = _program_delta(a.get("프로그램"), b.get("프로그램"))
-        negatives = {}
-        for actor in ("외국인", "기관", "개인"):
-            negatives[actor] = sum(1 for block in (spot, fut) if block.get(actor) is not None and float(block[actor]) < 0)
-        cross_actor = max(negatives, key=negatives.get)
+        def dominant_seller(block: dict[str, float | None]) -> tuple[str | None, float | None]:
+            sellers = [(actor, val) for actor, val in block.items() if val is not None and float(val) < 0]
+            return min(sellers, key=lambda x: float(x[1])) if sellers else (None, None)
+
+        spot_leader, spot_leader_val = dominant_seller(spot)
+        fut_leader, fut_leader_val = dominant_seller(fut)
+        cross_sellers = [actor for actor in ("외국인", "기관", "개인")
+                         if spot.get(actor) is not None and fut.get(actor) is not None
+                         and float(spot[actor]) < 0 and float(fut[actor]) < 0]
         pgm_neg = pgm.get("전체") is not None and float(pgm["전체"]) < 0
-        if negatives[cross_actor] >= 2 and pgm_neg:
-            verdict = f"{cross_actor} 매도가 현물·선물에서 동시에 확대되고 프로그램 매도도 동반"
-            confidence = "높음"
-        elif negatives[cross_actor] >= 2:
-            verdict = f"{cross_actor} 매도가 현물·선물에서 동시에 확대 — 주도 매도 가능성 높음"
+
+        # '두 시장 모두 음수'와 '두 시장을 주도'를 구분한다.
+        # 현물/선물의 최다 매도자가 같을 때만 단일 주체 주도로 올린다.
+        if spot_leader and spot_leader == fut_leader:
+            if pgm_neg:
+                verdict = f"{spot_leader}가 현물·선물 모두 최다 매도이고 프로그램 매도도 동반 — 주도 가능성 높음"
+                confidence = "높음"
+            else:
+                verdict = f"{spot_leader}가 현물·선물 모두 최다 매도 — 주도 후보지만 프로그램 동조는 약함"
+                confidence = "중간"
+        elif spot_leader and fut_leader and spot_leader != fut_leader:
+            verdict = f"현물은 {spot_leader}, 선물은 {fut_leader}가 최다 매도 — 주체 분산, 단일 주도자 확정 보류"
+            confidence = "낮음" if not pgm_neg else "중간"
+        elif fut_leader and pgm_neg:
+            verdict = f"{fut_leader} 선물 최다 매도와 프로그램 매도가 동반 — 파생발 하락 전이 가능성 확인"
             confidence = "중간"
         else:
-            fut_sellers = [(a, v) for a, v in fut.items() if v is not None and v < 0]
-            if fut_sellers and pgm_neg:
-                actor, _ = min(fut_sellers, key=lambda x: x[1])
-                verdict = f"{actor} 선물매도와 프로그램 매도가 동시 확대 — 파생에서 현물로 전이됐는지 확인"
-                confidence = "중간"
-            else:
-                verdict = "현물·선물·프로그램이 한 주체로 정렬되지 않아 단일 매도주체 확정 보류"
-                confidence = "낮음"
+            verdict = "현물·선물·프로그램이 한 주체로 정렬되지 않아 단일 매도주체 확정 보류"
+            confidence = "낮음"
         pgm_kind = "확인 불가"
         if pgm.get("전체") is not None:
             if float(pgm["전체"]) < 0:
@@ -358,6 +382,9 @@ class Watch:
                 pgm_kind = "중립"
         return {"available": True, "start_ts": a.get("ts"), "end_ts": b.get("ts"),
                 "spot": spot, "futures": fut, "program": pgm,
+                "spot_leader": spot_leader, "spot_leader_value": spot_leader_val,
+                "futures_leader": fut_leader, "futures_leader_value": fut_leader_val,
+                "cross_sellers": cross_sellers,
                 "verdict": verdict, "confidence": confidence, "program_kind": pgm_kind}
 
     def option_move(self, start_ts: float, end_ts: float) -> tuple[str, float] | None:
@@ -384,11 +411,17 @@ class Watch:
                  f"• KOSPI <b>{float(ep['start_price']):,.2f}</b> → <b>{end_price:,.2f}</b> · <b>{drop:+.2f}%</b>",
                  f"• 현재 구간 저점 <b>{float(ep['low_price']):,.2f}</b> ({fmt_clock(ep['low_ts'])})", "",
                  "<b>그 구간에서 누가 팔았나</b>"]
+        if float(ep["start_ts"]) - self.monitor_started_ts < 15 * 60:
+            lines += ["⚠️ <b>감시 시작 직후 포착</b> — 실제 급락 시작점이 이보다 앞설 수 있어 시작시각 확신도를 낮춥니다.", ""]
         if att.get("available"):
             s, f, p = att["spot"], att["futures"], att["program"]
+            cross = ", ".join(att.get("cross_sellers") or []) or "없음"
             lines += [f"• 현물: 외국인 <b>{fmt_eok(s.get('외국인'))}</b> · 기관 <b>{fmt_eok(s.get('기관'))}</b> · 개인 <b>{fmt_eok(s.get('개인'))}</b>",
                       f"• KOSPI200 선물: 외국인 <b>{fmt_eok(f.get('외국인'))}</b> · 기관 <b>{fmt_eok(f.get('기관'))}</b> · 개인 <b>{fmt_eok(f.get('개인'))}</b>",
-                      f"• 프로그램 전체 <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS 원값 변화)</i>",
+                      f"• 현물 최다매도: <b>{html.escape(str(att.get('spot_leader') or '없음'))}</b> {fmt_eok(att.get('spot_leader_value'))}",
+                      f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
+                      f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
+                      f"• 프로그램 전체 <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 누적값 변화)</i>",
                       f"• 프로그램 방향: <b>{html.escape(str(att.get('program_kind')))}</b>", "",
                       "<b>판정</b>", f"• <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
@@ -399,7 +432,7 @@ class Watch:
         lines += ["", "<b>읽는 법</b>",
                   "• 하루 누적 수급이 아니라 <b>급락 시작 직전 → 현재</b> 변화량만 비교합니다.",
                   "• 현물·선물·프로그램이 같은 방향으로 겹칠 때만 특정 주체를 급락 주도 후보로 올립니다.",
-                  "• 프로그램 수치는 LS 공개 문서의 단위 산식이 명확하지 않아 임의로 억원 환산하지 않고 원값 변화와 방향을 표시합니다.", "",
+                  "• 프로그램은 LS t1640 누적 스냅샷(전체·차익·비차익)의 사건 시작→현재 변화로 계산하며, 단위는 임의 환산하지 않습니다.", "",
                   "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"급락 뉴스"), link(LS_URL,"LS OpenAPI")])]
         return "\n".join(lines)
 
@@ -415,9 +448,13 @@ class Watch:
                  "<b>저점까지 실제 매도주체</b>"]
         if att.get("available"):
             s, f, p = att["spot"], att["futures"], att["program"]
+            cross = ", ".join(att.get("cross_sellers") or []) or "없음"
             lines += [f"• 현물: 외국인 <b>{fmt_eok(s.get('외국인'))}</b> · 기관 <b>{fmt_eok(s.get('기관'))}</b> · 개인 <b>{fmt_eok(s.get('개인'))}</b>",
                       f"• KOSPI200 선물: 외국인 <b>{fmt_eok(f.get('외국인'))}</b> · 기관 <b>{fmt_eok(f.get('기관'))}</b> · 개인 <b>{fmt_eok(f.get('개인'))}</b>",
-                      f"• 프로그램: 전체 <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS 원값 변화)</i>",
+                      f"• 현물 최다매도: <b>{html.escape(str(att.get('spot_leader') or '없음'))}</b> {fmt_eok(att.get('spot_leader_value'))}",
+                      f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
+                      f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
+                      f"• 프로그램: 전체 <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 누적값 변화)</i>",
                       f"• 최종 판정: <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += ["• 수급 스냅샷 부족 — 가격 구간만 확정"]
