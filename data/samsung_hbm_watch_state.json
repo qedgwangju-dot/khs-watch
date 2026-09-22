@@ -1,45 +1,104 @@
 {
   "seen_ids": [
+    "017d7560e3afc81111bbcb5c",
+    "02a9ff8b7b18764c64a8220e",
     "03e375cb2ac8ee053d78045a",
+    "05c27d7b30704f2bd464f146",
+    "0833d662f2bc1ef69385334d",
+    "0d9cf627a8ab402f60a42bf3",
     "0fbce83b73293cb0ae9a300e",
     "15986d5f222af3d0f829c323",
+    "1693f17cdf3a4d6ee9405a5f",
+    "17a65ab35e8d47168bb2a124",
+    "1848991f042e73d6a3c535a1",
+    "19a4ce14545ac6bd629e1c97",
+    "2215e50f5d488d5857e7aad8",
     "29917bada40fc676323de211",
+    "2f80599673dc3c01cce0a649",
     "2fd519f3311b7a35a23b3df7",
+    "2ffff13769690af770a34874",
     "3629fd9073866598dc4720b4",
     "36c5216f7a48c42802192732",
+    "38663428f7eff6456c64b3f2",
+    "3a779311d23ecb65350a81db",
+    "3a7bc653ab3e6ea8a94a6095",
     "3b7df6d213754fe17079f316",
+    "3c99470ecd962286ac0f102e",
+    "3d26d341f6dfd05a8f2bb96c",
+    "3e9686ba8b65b8379217a7dc",
+    "405463a0e2a049064d3f3acf",
+    "44a73e460d6f41603a0bea4c",
+    "45aba92a1f2d40c1164b655b",
+    "45ebc9a7d8d33f91805959c3",
     "45f9f31d1e6cc628a7bf680f",
     "4a052c510fe7988076a8e75d",
+    "56b2de8304378c3a06fa5b4c",
     "5e304c914d7ab868e24a3585",
     "60166d645eb70db655149ec7",
     "6390d90dc440f18fea5641d1",
     "649a679bcbfb0360d689f533",
     "67cf87cd7ae84be2493d0fc6",
     "6d45cf56091569c5a90afa2d",
+    "713490beb5fab08cbe13b7a1",
+    "734fe686b2cc7eecd44f25fe",
+    "760a8bec17fa609280000ff5",
     "79db62328df5eefa718368f8",
+    "7a3db0702cdb15e174f9588a",
+    "7baae91f6447b3c99800f43a",
+    "7d291d2d4e257c19bbf10f5d",
+    "7fc67a8a0b23cc8a19d76f05",
     "810b2b31f4ad1136fc603ccb",
+    "817464b05dc936124292cda3",
+    "8373adbcfc508c1a31114ac1",
+    "87a5705365eae516605d4ffd",
     "9046127bdbf6a9b5874f4a55",
+    "908dd39afd1f41cf0db839e1",
+    "914fababbb9099953512eef6",
+    "94cd0744c2c52b59a060e719",
+    "995152e9b3b528540a0fccce",
     "a42f64d496ea3b33d8256a30",
+    "a9a2b98d9be48dfaa7992df7",
     "aecd0190a7a845249b865cbb",
+    "b10990b377e8014499d64e5a",
     "b6857f986779526ffa08d741",
+    "bd26432b3c3bf171b67b4e34",
+    "be3ea72057cda8f38d4e8424",
+    "c09ac81c8b75fa07c44ec6c4",
     "c4eeabbe2d4315477133e9fe",
     "c6dbc35819f3c1e93989d93f",
+    "c79756540ecc6154f1a0a8be",
+    "d40800136258a38a2c44e380",
+    "d50b2a7ddc7e2971dc3215a3",
+    "da2e59416c300e7919ff2162",
     "dad30ad5dc81ab12af7350c6",
+    "dad35b5b5d47e9bc13e72730",
+    "ddd95cd2c576de3fc9da7859",
     "dfc471a0ed3580d0977e739c",
+    "dff50282be119de77562ca8c",
+    "e387db40ba0cf545e7fb304a",
     "e3dfd2590d975c890001eac3",
+    "e5070379d09247bfa06c7157",
     "e5cdad2fe817cc3e46678159",
     "e6299c7902b5ee31d96a5309",
+    "e9630aacbafa2aec1dbb5a74",
+    "e9f073456697904e5407e230",
     "eab351c9c3731d6a278c1974",
     "ec3cf377a6d8256cacdecb01",
     "ee7cfb5b8d2e973d5f37af8e",
     "f14e72d8efa2d3322a48ed8d",
-    "fd774ad93defbc5c27b92607"
+    "f43c28716a290ed2d07f41bd",
+    "f51eb7557fb3c26004086538",
+    "f5a164229bbed03cb0c1c3b1",
+    "f6ea3f1fc68e1e473bcd91cb",
+    "fabfb78c79fac517e54dc7b3",
+    "fd774ad93defbc5c27b92607",
+    "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-20T20:29:02+09:00",
-  "last_event_count": 27,
-  "last_fresh_new_count": 1,
-  "last_send_event_count": 1,
+  "updated_at_kst": "2026-09-22T17:16:06+09:00",
+  "last_event_count": 77,
+  "last_fresh_new_count": 2,
+  "last_send_event_count": 2,
   "monthly_due": false,
   "compare_version": 4,
   "official_month": "202608",
@@ -58,715 +117,590 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-20T20:29:02+09:00",
+  "last_successful_official_at_kst": "2026-09-22T17:16:06+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
   "malaysia_revision_due": false,
-  "last_successful_delivery_kst": "2026-09-20T20:30:21+09:00",
-  "telegram_message_id": 126,
+  "last_successful_delivery_kst": "2026-09-22T17:18:23+09:00",
+  "telegram_message_id": 138,
   "bot_username": "khs88798879887988798879_bot",
-  "_delivery": {
-    "id": "1150e2f2cdf966dc1c1326f05a01c4c58d60c782d4e50ddfaee8fb49ed4d2914",
-    "status": "partial",
-    "created_at_kst": "2026-09-22T17:18:18+09:00",
-    "chunks": [
-      "🚨 <b>HBM 주제·사건 상태 변화</b>\n━━━━━━━━━━━━━━━━\n<b>상태 변화 2건</b> · 2026-09-22 17:16 KST\n\n<b>1.</b>\n<b>삼성 HBM 생산능력·증산 계획 변화</b>\n• 상태 판정: <b>신뢰 보도 단계</b>\n• 변화 구분: 생산능력·증산\n• 감지 근거: 글로벌이코노믹 · 2026-09-21T14:05:42+09:00\n• 근거 제목: HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹 · <a href=\"https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1\">원문</a>\n\n<b>2.</b>\n<b>삼성 HBM 생산능력·증산 계획 변화</b>\n• 상태 판정: <b>신뢰 보도 단계</b>\n• 변화 구분: 생산능력·증산\n• 감지 근거: 연합뉴스 · 2026-09-22T08:53:29+09:00\n• 근거 제목: KB증권 &quot;삼성전자 HBM 증설로 범용 D램 공급 부족 장기화&quot; - 연합뉴스 · <a href=\"https://www.yna.co.kr/amp/view/AKR20260922028200008\">원문</a>\n\n<b>판정 원칙</b>\n• <b>기사 자체가 알림 대상이 아닙니다.</b> 기사·공식자료는 상태 변화의 감지 근거·교차검증 자료로만 사용합니다.\n• 동일 사건을 여러 매체가 반복 보도해도 상태값이 같으면 다시 알리지 않습니다.\n• 물량·가격·생산능력·고객 인증·양산·실제 출하·공식 통계가 바뀐 경우에만 신규 상태로 봅니다.\n• 충남 수출과 증권사 추정은 <b>삼성 공식 HBM 매출과 분리</b>해서 표시합니다.\n\n<b>HBM·서버 D램 연계 상태 변화</b>\n\n<b>DDR5 16Gb 칩 현물가격</b>\n• 현재: 57.167달러(약 78,443원)\n• 변화: 새 비교 가능한 상태\n• 대상기간: 2026-09 · 자료 기준일 2026-09-22\n• 고정거래 원값이 없으면 프리미엄을 추정하지 않으며, 16Gb 칩과 GB 모듈은 별도입니다.\n• 근거 단계: 조사기관 자료\n• 근거 제목: DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격 · <a href=\"https://www.dramexchange.com/\">원문</a>\n\n<b>서버 RDIMM 공개 현물가격</b>\n• 현재: 2,050.000달러(약 2,812,969원)\n• 변화: 새 비교 가능한 상태\n• 대상기간: 2026-09 · 자료 기준일 2026-09-14\n• 고정거래 원값이 없으면 프리미엄을 추정하지 않으며, 16Gb 칩과 GB 모듈은 별도입니다.\n• 근거 단계: 조사기관 자료\n• 근거 제목: DDR5 RDIMM 32GB 4800/5600 공개 현물가격 · <a href=\"https://www.dramexchange.com/\">원문</a>\n\n환율 기준: 2026-09-21 일일 기준 · ECB/Frankfurter · 조회 2026-09-22 17:17 KST · 보조 API 2026-09-22 · 차이 0.25% · 일중 기준시각 차이 가능"
-    ],
-    "next_chunk": 1,
+  "topic_states": {
+    "생산능력·증산|samsung|hbm4|2027": {
+      "signature": "31be525d5fc17b60f5c1da16",
+      "observed_at": "2026-09-20T16:33:51+09:00",
+      "state": "삼성 HBM 생산능력·증산 계획 변화",
+      "recovered_message_id": 133
+    },
+    "생산능력·증산|samsung|hbm": {
+      "signature": "6782cf4ec90d2ac82926839c",
+      "observed_at": "2026-09-22T08:53:29+09:00",
+      "state": "삼성 HBM 생산능력·증산 계획 변화"
+    },
+    "기타|skhynix|hbm": {
+      "signature": "30da188868fae77d2c3df43d",
+      "observed_at": "2026-04-23T16:00:00+09:00",
+      "state": "삼성 HBM 관련 신규 변화"
+    },
+    "HBM4 출하|samsung|hbm4|nvidia|2026": {
+      "signature": "fb7768974f665679afe27a7e",
+      "observed_at": "2025-11-28T17:00:00+09:00",
+      "state": "HBM4 출하·제품혼합 변화"
+    },
+    "HBM4 출하|samsung|hbm4|nvidia": {
+      "signature": "8bbff60f96775b5c47db363f",
+      "observed_at": "2026-01-26T17:00:00+09:00",
+      "state": "HBM4 출하·제품혼합 변화"
+    },
+    "HBM4 출하|samsung|hbm4": {
+      "signature": "755cba3c888a2e571fa804f3",
+      "observed_at": "2026-08-22T06:00:00+09:00",
+      "state": "HBM4 출하·제품혼합 변화"
+    },
+    "기타|samsung|hbm4": {
+      "signature": "a9950eb87098c93d4fae7337",
+      "observed_at": "2026-02-13T17:00:00+09:00",
+      "state": "삼성 HBM 관련 신규 변화"
+    },
+    "기타|samsung|hbm": {
+      "signature": "4a712eabc9b3450a268e7117",
+      "observed_at": "2026-04-21T16:00:00+09:00",
+      "state": "삼성 HBM 관련 신규 변화"
+    },
+    "기타|samsung|hbm4e+hbm4": {
+      "signature": "fa5d3b9cb3fb10b634f0edfe",
+      "observed_at": "2026-05-29T16:00:00+09:00",
+      "state": "삼성 HBM 관련 신규 변화"
+    },
+    "생산능력·증산|samsung|hbm4": {
+      "signature": "716fba593a8b41ef112ec5cb",
+      "observed_at": "2026-09-21T14:05:42+09:00",
+      "state": "삼성 HBM 생산능력·증산 계획 변화"
+    }
+  },
+  "ops_track_version": 1,
+  "share_track_version": 1,
+  "event_state_version": 2,
+  "hbm_ops_metrics": {
+    "samsung|hbm4|yield": {
+      "value": 80.0,
+      "unit": "pct",
+      "period": "2026-09",
+      "source": "서울경제 보도 기준선",
+      "evidence": "reported"
+    }
+  },
+  "hbm_export_unit_prices": {
+    "2026-03": {
+      "value": 40.68,
+      "source": "서울신문",
+      "evidence": "reported",
+      "observed_at": "2026-09-20T21:23:55+09:00"
+    },
+    "2026-04": {
+      "value": 53.04,
+      "source": "서울신문",
+      "evidence": "reported",
+      "observed_at": "2026-09-20T21:23:55+09:00"
+    },
+    "2026-05": {
+      "value": 58.21,
+      "source": "서울신문",
+      "evidence": "reported",
+      "observed_at": "2026-09-20T21:23:55+09:00"
+    },
+    "2026-06": {
+      "value": 69.51,
+      "source": "서울신문",
+      "evidence": "reported",
+      "observed_at": "2026-09-20T21:23:55+09:00"
+    },
+    "2026-07": {
+      "value": 76.14,
+      "source": "서울신문",
+      "evidence": "reported",
+      "observed_at": "2026-09-20T21:23:55+09:00"
+    },
+    "2026-08": {
+      "value": 73.39,
+      "source": "한국무역협회 인용 공개자료 기준선",
+      "evidence": "reported",
+      "observed_at": "baseline"
+    }
+  },
+  "last_ops_observation_count": 5,
+  "last_ops_alert_count": 0,
+  "hbm_share_forecasts": {
+    "jpmorgan|sales|2026": {
+      "values": {
+        "skhynix": 46.0,
+        "samsung": 34.0,
+        "micron": 20.0
+      },
+      "source": "사용자 제공 J.P. Morgan 차트",
+      "observed_at": "baseline"
+    },
+    "jpmorgan|sales|2027": {
+      "values": {
+        "skhynix": 41.0,
+        "samsung": 39.0,
+        "micron": 21.0
+      },
+      "source": "사용자 제공 J.P. Morgan 차트",
+      "observed_at": "baseline"
+    },
+    "jpmorgan|sales|2028": {
+      "values": {
+        "skhynix": 42.0,
+        "samsung": 37.0,
+        "micron": 21.0
+      },
+      "source": "사용자 제공 J.P. Morgan 차트",
+      "observed_at": "baseline"
+    }
+  },
+  "hbm_share_actuals": {
+    "counterpoint|sales|2026Q2": {
+      "values": {
+        "skhynix": 50.0,
+        "samsung": 33.0,
+        "micron": 18.0
+      },
+      "source": "Counterpoint 2026-09-03",
+      "observed_at": "baseline"
+    }
+  },
+  "last_share_observation_count": 0,
+  "last_share_alert_count": 0,
+  "memory_axes": {
+    "last_notified": {
+      "wafer_share|trendforce|industry|2026-YE": {
+        "key": "wafer_share|trendforce|industry|2026-YE",
+        "axis": "wafer_share",
+        "value": 22,
+        "unit": "pct",
+        "period": "2026-YE",
+        "as_of": "2026-06-02",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+        "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
+        "source": "TrendForce",
+        "scope": "year_end_forecast",
+        "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
+      },
+      "wafer_share|trendforce|industry|2027-YE": {
+        "key": "wafer_share|trendforce|industry|2027-YE",
+        "axis": "wafer_share",
+        "value": 30,
+        "unit": "pct",
+        "period": "2027-YE",
+        "as_of": "2026-06-02",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+        "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
+        "source": "TrendForce",
+        "scope": "year_end_forecast",
+        "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
+      },
+      "bit_share|trendforce|industry|2026-YE": {
+        "key": "bit_share|trendforce|industry|2026-YE",
+        "axis": "bit_share",
+        "value": 9,
+        "unit": "pct",
+        "period": "2026-YE",
+        "as_of": "2026-06-02",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+        "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
+        "source": "TrendForce",
+        "scope": "year_end_forecast",
+        "excerpt": "웨이퍼 투입 비중과 분모가 다름"
+      },
+      "bit_share|trendforce|industry|2027-YE": {
+        "key": "bit_share|trendforce|industry|2027-YE",
+        "axis": "bit_share",
+        "value": 13,
+        "unit": "pct",
+        "period": "2027-YE",
+        "as_of": "2026-06-02",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+        "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
+        "source": "TrendForce",
+        "scope": "year_end_forecast",
+        "excerpt": "웨이퍼 투입 비중과 분모가 다름"
+      },
+      "hbm_config|samsung|HBM4|12Hi|catalog": {
+        "key": "hbm_config|samsung|HBM4|12Hi|catalog",
+        "axis": "hbm_config",
+        "value": {
+          "die_gbit": 24,
+          "layers": 12,
+          "stack_gbyte": 36
+        },
+        "unit": "GB/stack",
+        "period": "catalog",
+        "as_of": "2026-09-21",
+        "evidence": "user_capture",
+        "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+        "source_title": "사용자 제공 HBM 구성 비교 기준선",
+        "source": "사용자 캡처·제품자료 비교",
+        "scope": "product_capability_not_customer_contract",
+        "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+      },
+      "hbm_config|samsung|HBM4E|8Hi|catalog": {
+        "key": "hbm_config|samsung|HBM4E|8Hi|catalog",
+        "axis": "hbm_config",
+        "value": {
+          "die_gbit": 32,
+          "layers": 8,
+          "stack_gbyte": 32
+        },
+        "unit": "GB/stack",
+        "period": "catalog",
+        "as_of": "2026-09-21",
+        "evidence": "user_capture",
+        "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+        "source_title": "사용자 제공 HBM 구성 비교 기준선",
+        "source": "사용자 캡처·제품자료 비교",
+        "scope": "product_capability_not_customer_contract",
+        "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+      },
+      "hbm_config|samsung|HBM4E|12Hi|catalog": {
+        "key": "hbm_config|samsung|HBM4E|12Hi|catalog",
+        "axis": "hbm_config",
+        "value": {
+          "die_gbit": 32,
+          "layers": 12,
+          "stack_gbyte": 48
+        },
+        "unit": "GB/stack",
+        "period": "catalog",
+        "as_of": "2026-09-21",
+        "evidence": "user_capture",
+        "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+        "source_title": "사용자 제공 HBM 구성 비교 기준선",
+        "source": "사용자 캡처·제품자료 비교",
+        "scope": "product_capability_not_customer_contract",
+        "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+      },
+      "carrier_cleaning|samsung|2026": {
+        "key": "carrier_cleaning|samsung|2026",
+        "axis": "carrier_cleaning",
+        "value": 20000,
+        "unit": "cleaning_passes/month",
+        "period": "2026",
+        "as_of": "2026-09-21",
+        "evidence": "reported",
+        "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
+        "source": "글로벌이코노믹·사용자 제공 본문",
+        "scope": "reusable_carrier_service_not_wafer_output",
+        "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
+      },
+      "carrier_cleaning|samsung|2027": {
+        "key": "carrier_cleaning|samsung|2027",
+        "axis": "carrier_cleaning",
+        "value": 50000,
+        "unit": "cleaning_passes/month",
+        "period": "2027",
+        "as_of": "2026-09-21",
+        "evidence": "reported",
+        "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
+        "source": "글로벌이코노믹·사용자 제공 본문",
+        "scope": "reusable_carrier_service_not_wafer_output",
+        "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
+      },
+      "fab_stage|samsung|P5_Fab1": {
+        "key": "fab_stage|samsung|P5_Fab1",
+        "axis": "fab_stage",
+        "value": {
+          "year": 2028,
+          "stage": "plan"
+        },
+        "unit": "year/stage",
+        "period": "2028",
+        "as_of": "2026-09-21",
+        "evidence": "reported",
+        "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "P5 Fab1 2028년 가동 목표",
+        "source": "글로벌이코노믹·사용자 제공 본문",
+        "scope": "fab_start_not_full_output",
+        "excerpt": "회사 관계자 인용 보도, 가동 목표와 본격 출하 기여는 별도"
+      },
+      "ddr5_chip_quote|dramexchange|16|4800/5600": {
+        "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
+        "axis": "ddr5_chip_quote",
+        "value": 57.167,
+        "unit": "USD/chip",
+        "period": "2026-09",
+        "as_of": "2026-09-22",
+        "evidence": "research",
+        "source_url": "https://www.dramexchange.com/",
+        "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
+        "source": "DRAMeXchange",
+        "excerpt": "DDR5 16Gb (2Gx8) 4800/5600: Session Average (공개 화면)",
+        "capacity_gb": null,
+        "density_gbit": 16,
+        "speed": "4800/5600"
+      },
+      "rdimm_quote|dramexchange|32|4800/5600": {
+        "key": "rdimm_quote|dramexchange|32|4800/5600",
+        "axis": "rdimm_quote",
+        "value": 2050.0,
+        "unit": "USD/module",
+        "period": "2026-09",
+        "as_of": "2026-09-14",
+        "evidence": "research",
+        "source_url": "https://www.dramexchange.com/",
+        "source_title": "DDR5 RDIMM 32GB 4800/5600 공개 현물가격",
+        "source": "DRAMeXchange",
+        "excerpt": "DDR5 RDIMM 32GB 4800/5600: Session Average (공개 화면)",
+        "capacity_gb": 32,
+        "density_gbit": null,
+        "speed": "4800/5600"
+      }
+    },
+    "latest": {
+      "wafer_share|trendforce|industry|2026-YE": {
+        "key": "wafer_share|trendforce|industry|2026-YE",
+        "axis": "wafer_share",
+        "value": 22,
+        "unit": "pct",
+        "period": "2026-YE",
+        "as_of": "2026-06-02",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+        "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
+        "source": "TrendForce",
+        "scope": "year_end_forecast",
+        "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
+      },
+      "wafer_share|trendforce|industry|2027-YE": {
+        "key": "wafer_share|trendforce|industry|2027-YE",
+        "axis": "wafer_share",
+        "value": 30,
+        "unit": "pct",
+        "period": "2027-YE",
+        "as_of": "2026-06-02",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+        "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
+        "source": "TrendForce",
+        "scope": "year_end_forecast",
+        "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
+      },
+      "bit_share|trendforce|industry|2026-YE": {
+        "key": "bit_share|trendforce|industry|2026-YE",
+        "axis": "bit_share",
+        "value": 9,
+        "unit": "pct",
+        "period": "2026-YE",
+        "as_of": "2026-06-02",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+        "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
+        "source": "TrendForce",
+        "scope": "year_end_forecast",
+        "excerpt": "웨이퍼 투입 비중과 분모가 다름"
+      },
+      "bit_share|trendforce|industry|2027-YE": {
+        "key": "bit_share|trendforce|industry|2027-YE",
+        "axis": "bit_share",
+        "value": 13,
+        "unit": "pct",
+        "period": "2027-YE",
+        "as_of": "2026-06-02",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+        "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
+        "source": "TrendForce",
+        "scope": "year_end_forecast",
+        "excerpt": "웨이퍼 투입 비중과 분모가 다름"
+      },
+      "hbm_config|samsung|HBM4|12Hi|catalog": {
+        "key": "hbm_config|samsung|HBM4|12Hi|catalog",
+        "axis": "hbm_config",
+        "value": {
+          "die_gbit": 24,
+          "layers": 12,
+          "stack_gbyte": 36
+        },
+        "unit": "GB/stack",
+        "period": "catalog",
+        "as_of": "2026-09-21",
+        "evidence": "user_capture",
+        "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+        "source_title": "사용자 제공 HBM 구성 비교 기준선",
+        "source": "사용자 캡처·제품자료 비교",
+        "scope": "product_capability_not_customer_contract",
+        "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+      },
+      "hbm_config|samsung|HBM4E|8Hi|catalog": {
+        "key": "hbm_config|samsung|HBM4E|8Hi|catalog",
+        "axis": "hbm_config",
+        "value": {
+          "die_gbit": 32,
+          "layers": 8,
+          "stack_gbyte": 32
+        },
+        "unit": "GB/stack",
+        "period": "catalog",
+        "as_of": "2026-09-21",
+        "evidence": "user_capture",
+        "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+        "source_title": "사용자 제공 HBM 구성 비교 기준선",
+        "source": "사용자 캡처·제품자료 비교",
+        "scope": "product_capability_not_customer_contract",
+        "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+      },
+      "hbm_config|samsung|HBM4E|12Hi|catalog": {
+        "key": "hbm_config|samsung|HBM4E|12Hi|catalog",
+        "axis": "hbm_config",
+        "value": {
+          "die_gbit": 32,
+          "layers": 12,
+          "stack_gbyte": 48
+        },
+        "unit": "GB/stack",
+        "period": "catalog",
+        "as_of": "2026-09-21",
+        "evidence": "user_capture",
+        "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+        "source_title": "사용자 제공 HBM 구성 비교 기준선",
+        "source": "사용자 캡처·제품자료 비교",
+        "scope": "product_capability_not_customer_contract",
+        "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+      },
+      "carrier_cleaning|samsung|2026": {
+        "key": "carrier_cleaning|samsung|2026",
+        "axis": "carrier_cleaning",
+        "value": 20000,
+        "unit": "cleaning_passes/month",
+        "period": "2026",
+        "as_of": "2026-09-21",
+        "evidence": "reported",
+        "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
+        "source": "글로벌이코노믹·사용자 제공 본문",
+        "scope": "reusable_carrier_service_not_wafer_output",
+        "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
+      },
+      "carrier_cleaning|samsung|2027": {
+        "key": "carrier_cleaning|samsung|2027",
+        "axis": "carrier_cleaning",
+        "value": 50000,
+        "unit": "cleaning_passes/month",
+        "period": "2027",
+        "as_of": "2026-09-21",
+        "evidence": "reported",
+        "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
+        "source": "글로벌이코노믹·사용자 제공 본문",
+        "scope": "reusable_carrier_service_not_wafer_output",
+        "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
+      },
+      "fab_stage|samsung|P5_Fab1": {
+        "key": "fab_stage|samsung|P5_Fab1",
+        "axis": "fab_stage",
+        "value": {
+          "year": 2028,
+          "stage": "plan"
+        },
+        "unit": "year/stage",
+        "period": "2028",
+        "as_of": "2026-09-21",
+        "evidence": "reported",
+        "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "P5 Fab1 2028년 가동 목표",
+        "source": "글로벌이코노믹·사용자 제공 본문",
+        "scope": "fab_start_not_full_output",
+        "excerpt": "회사 관계자 인용 보도, 가동 목표와 본격 출하 기여는 별도"
+      },
+      "ddr5_chip_quote|dramexchange|16|4800/5600": {
+        "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
+        "axis": "ddr5_chip_quote",
+        "value": 57.167,
+        "unit": "USD/chip",
+        "period": "2026-09",
+        "as_of": "2026-09-22",
+        "evidence": "research",
+        "source_url": "https://www.dramexchange.com/",
+        "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
+        "source": "DRAMeXchange",
+        "excerpt": "DDR5 16Gb (2Gx8) 4800/5600: Session Average (공개 화면)",
+        "capacity_gb": null,
+        "density_gbit": 16,
+        "speed": "4800/5600"
+      },
+      "rdimm_quote|dramexchange|32|4800/5600": {
+        "key": "rdimm_quote|dramexchange|32|4800/5600",
+        "axis": "rdimm_quote",
+        "value": 2050.0,
+        "unit": "USD/module",
+        "period": "2026-09",
+        "as_of": "2026-09-14",
+        "evidence": "research",
+        "source_url": "https://www.dramexchange.com/",
+        "source_title": "DDR5 RDIMM 32GB 4800/5600 공개 현물가격",
+        "source": "DRAMeXchange",
+        "excerpt": "DDR5 RDIMM 32GB 4800/5600: Session Average (공개 화면)",
+        "capacity_gb": 32,
+        "density_gbit": null,
+        "speed": "4800/5600"
+      }
+    },
+    "pending": {},
+    "coverage": {
+      "last_checked_at_kst": "2026-09-22T17:16:06+09:00",
+      "gaps": [],
+      "observations": 2,
+      "rdimm_paired_observations": 0
+    },
+    "version": 1,
+    "reference_capture": {
+      "basis": "사용자 제공 SK증권 캡처; 원시 현물·고정거래가격과 기준일 독립 확인 전",
+      "data_as_of": null,
+      "RDIMM_64GB_premium_pct": 115,
+      "RDIMM_32GB_premium_pct": 145,
+      "DDR5_chip_16Gb_premium_pct": 33,
+      "status": "reference_only_not_live",
+      "do_not_infer_prices": true,
+      "note": "16Gb 칩과 16GB 모듈은 별도. 동일 규격·속도의 현물과 고정거래 원값 및 각 기준일을 확보한 후 새 프리미엄을 계산한다."
+    },
+    "calculation_cases": [
+      {
+        "label": "36GB → 32GB; 동일 묶음 수 가정",
+        "old_stack_gb": 36,
+        "new_stack_gb": 32,
+        "capacity_change_pct": -11.11111111111111,
+        "gpu_growth_break_even_pct": 12.5
+      },
+      {
+        "label": "48GB → 32GB; 동일 묶음 수 가정",
+        "old_stack_gb": 48,
+        "new_stack_gb": 32,
+        "capacity_change_pct": -33.33333333333333,
+        "gpu_growth_break_even_pct": 50.0
+      }
+    ]
+  },
+  "memory_axes_version": 1,
+  "telegram_message_ids": [
+    138
+  ],
+  "delivery_receipt": {
+    "status": "confirmed",
+    "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
       138
     ],
-    "candidate": {
-      "seen_ids": [
-        "017d7560e3afc81111bbcb5c",
-        "02a9ff8b7b18764c64a8220e",
-        "03e375cb2ac8ee053d78045a",
-        "05c27d7b30704f2bd464f146",
-        "0833d662f2bc1ef69385334d",
-        "0d9cf627a8ab402f60a42bf3",
-        "0fbce83b73293cb0ae9a300e",
-        "15986d5f222af3d0f829c323",
-        "1693f17cdf3a4d6ee9405a5f",
-        "17a65ab35e8d47168bb2a124",
-        "1848991f042e73d6a3c535a1",
-        "19a4ce14545ac6bd629e1c97",
-        "2215e50f5d488d5857e7aad8",
-        "29917bada40fc676323de211",
-        "2f80599673dc3c01cce0a649",
-        "2fd519f3311b7a35a23b3df7",
-        "2ffff13769690af770a34874",
-        "3629fd9073866598dc4720b4",
-        "36c5216f7a48c42802192732",
-        "38663428f7eff6456c64b3f2",
-        "3a779311d23ecb65350a81db",
-        "3a7bc653ab3e6ea8a94a6095",
-        "3b7df6d213754fe17079f316",
-        "3c99470ecd962286ac0f102e",
-        "3d26d341f6dfd05a8f2bb96c",
-        "3e9686ba8b65b8379217a7dc",
-        "405463a0e2a049064d3f3acf",
-        "44a73e460d6f41603a0bea4c",
-        "45aba92a1f2d40c1164b655b",
-        "45ebc9a7d8d33f91805959c3",
-        "45f9f31d1e6cc628a7bf680f",
-        "4a052c510fe7988076a8e75d",
-        "56b2de8304378c3a06fa5b4c",
-        "5e304c914d7ab868e24a3585",
-        "60166d645eb70db655149ec7",
-        "6390d90dc440f18fea5641d1",
-        "649a679bcbfb0360d689f533",
-        "67cf87cd7ae84be2493d0fc6",
-        "6d45cf56091569c5a90afa2d",
-        "713490beb5fab08cbe13b7a1",
-        "734fe686b2cc7eecd44f25fe",
-        "760a8bec17fa609280000ff5",
-        "79db62328df5eefa718368f8",
-        "7a3db0702cdb15e174f9588a",
-        "7baae91f6447b3c99800f43a",
-        "7d291d2d4e257c19bbf10f5d",
-        "7fc67a8a0b23cc8a19d76f05",
-        "810b2b31f4ad1136fc603ccb",
-        "817464b05dc936124292cda3",
-        "8373adbcfc508c1a31114ac1",
-        "87a5705365eae516605d4ffd",
-        "9046127bdbf6a9b5874f4a55",
-        "908dd39afd1f41cf0db839e1",
-        "914fababbb9099953512eef6",
-        "94cd0744c2c52b59a060e719",
-        "995152e9b3b528540a0fccce",
-        "a42f64d496ea3b33d8256a30",
-        "a9a2b98d9be48dfaa7992df7",
-        "aecd0190a7a845249b865cbb",
-        "b10990b377e8014499d64e5a",
-        "b6857f986779526ffa08d741",
-        "bd26432b3c3bf171b67b4e34",
-        "be3ea72057cda8f38d4e8424",
-        "c09ac81c8b75fa07c44ec6c4",
-        "c4eeabbe2d4315477133e9fe",
-        "c6dbc35819f3c1e93989d93f",
-        "c79756540ecc6154f1a0a8be",
-        "d40800136258a38a2c44e380",
-        "d50b2a7ddc7e2971dc3215a3",
-        "da2e59416c300e7919ff2162",
-        "dad30ad5dc81ab12af7350c6",
-        "dad35b5b5d47e9bc13e72730",
-        "ddd95cd2c576de3fc9da7859",
-        "dfc471a0ed3580d0977e739c",
-        "dff50282be119de77562ca8c",
-        "e387db40ba0cf545e7fb304a",
-        "e3dfd2590d975c890001eac3",
-        "e5070379d09247bfa06c7157",
-        "e5cdad2fe817cc3e46678159",
-        "e6299c7902b5ee31d96a5309",
-        "e9630aacbafa2aec1dbb5a74",
-        "e9f073456697904e5407e230",
-        "eab351c9c3731d6a278c1974",
-        "ec3cf377a6d8256cacdecb01",
-        "ee7cfb5b8d2e973d5f37af8e",
-        "f14e72d8efa2d3322a48ed8d",
-        "f43c28716a290ed2d07f41bd",
-        "f51eb7557fb3c26004086538",
-        "f5a164229bbed03cb0c1c3b1",
-        "f6ea3f1fc68e1e473bcd91cb",
-        "fabfb78c79fac517e54dc7b3",
-        "fd774ad93defbc5c27b92607",
-        "ffa5760e161f37610a025582"
-      ],
-      "last_monthly_digest": "2026-09",
-      "updated_at_kst": "2026-09-22T17:16:06+09:00",
-      "last_event_count": 77,
-      "last_fresh_new_count": 2,
-      "last_send_event_count": 2,
-      "monthly_due": false,
-      "compare_version": 4,
-      "official_month": "202608",
-      "official_data_ok": true,
-      "official_errors": [
-        "공공데이터포털 국가별 품목 API MY 오류 None: ",
-        "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-        "공공데이터포털 국가별 품목 API MY 오류 None: ",
-        "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-        "공공데이터포털 국가별 품목 API MY 오류 None: ",
-        "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-        "공공데이터포털 국가별 품목 API MY 오류 None: ",
-        "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
-      ],
-      "last_official_alert_month": "202608",
-      "official_api_key_configured": true,
-      "official_api_used": true,
-      "last_successful_official_month": "202608",
-      "last_successful_official_at_kst": "2026-09-22T17:16:06+09:00",
-      "malaysia_official_month": "202608",
-      "malaysia_hsk10_amount_usd": null,
-      "malaysia_public_available": false,
-      "malaysia_revision_due": false,
-      "last_successful_delivery_kst": "2026-09-20T20:30:21+09:00",
-      "telegram_message_id": 126,
-      "bot_username": "khs88798879887988798879_bot",
-      "topic_states": {
-        "생산능력·증산|samsung|hbm4|2027": {
-          "signature": "31be525d5fc17b60f5c1da16",
-          "observed_at": "2026-09-20T16:33:51+09:00",
-          "state": "삼성 HBM 생산능력·증산 계획 변화",
-          "recovered_message_id": 133
-        },
-        "생산능력·증산|samsung|hbm": {
-          "signature": "6782cf4ec90d2ac82926839c",
-          "observed_at": "2026-09-22T08:53:29+09:00",
-          "state": "삼성 HBM 생산능력·증산 계획 변화"
-        },
-        "기타|skhynix|hbm": {
-          "signature": "30da188868fae77d2c3df43d",
-          "observed_at": "2026-04-23T16:00:00+09:00",
-          "state": "삼성 HBM 관련 신규 변화"
-        },
-        "HBM4 출하|samsung|hbm4|nvidia|2026": {
-          "signature": "fb7768974f665679afe27a7e",
-          "observed_at": "2025-11-28T17:00:00+09:00",
-          "state": "HBM4 출하·제품혼합 변화"
-        },
-        "HBM4 출하|samsung|hbm4|nvidia": {
-          "signature": "8bbff60f96775b5c47db363f",
-          "observed_at": "2026-01-26T17:00:00+09:00",
-          "state": "HBM4 출하·제품혼합 변화"
-        },
-        "HBM4 출하|samsung|hbm4": {
-          "signature": "755cba3c888a2e571fa804f3",
-          "observed_at": "2026-08-22T06:00:00+09:00",
-          "state": "HBM4 출하·제품혼합 변화"
-        },
-        "기타|samsung|hbm4": {
-          "signature": "a9950eb87098c93d4fae7337",
-          "observed_at": "2026-02-13T17:00:00+09:00",
-          "state": "삼성 HBM 관련 신규 변화"
-        },
-        "기타|samsung|hbm": {
-          "signature": "4a712eabc9b3450a268e7117",
-          "observed_at": "2026-04-21T16:00:00+09:00",
-          "state": "삼성 HBM 관련 신규 변화"
-        },
-        "기타|samsung|hbm4e+hbm4": {
-          "signature": "fa5d3b9cb3fb10b634f0edfe",
-          "observed_at": "2026-05-29T16:00:00+09:00",
-          "state": "삼성 HBM 관련 신규 변화"
-        },
-        "생산능력·증산|samsung|hbm4": {
-          "signature": "716fba593a8b41ef112ec5cb",
-          "observed_at": "2026-09-21T14:05:42+09:00",
-          "state": "삼성 HBM 생산능력·증산 계획 변화"
-        }
-      },
-      "ops_track_version": 1,
-      "share_track_version": 1,
-      "event_state_version": 2,
-      "hbm_ops_metrics": {
-        "samsung|hbm4|yield": {
-          "value": 80.0,
-          "unit": "pct",
-          "period": "2026-09",
-          "source": "서울경제 보도 기준선",
-          "evidence": "reported"
-        }
-      },
-      "hbm_export_unit_prices": {
-        "2026-03": {
-          "value": 40.68,
-          "source": "서울신문",
-          "evidence": "reported",
-          "observed_at": "2026-09-20T21:23:55+09:00"
-        },
-        "2026-04": {
-          "value": 53.04,
-          "source": "서울신문",
-          "evidence": "reported",
-          "observed_at": "2026-09-20T21:23:55+09:00"
-        },
-        "2026-05": {
-          "value": 58.21,
-          "source": "서울신문",
-          "evidence": "reported",
-          "observed_at": "2026-09-20T21:23:55+09:00"
-        },
-        "2026-06": {
-          "value": 69.51,
-          "source": "서울신문",
-          "evidence": "reported",
-          "observed_at": "2026-09-20T21:23:55+09:00"
-        },
-        "2026-07": {
-          "value": 76.14,
-          "source": "서울신문",
-          "evidence": "reported",
-          "observed_at": "2026-09-20T21:23:55+09:00"
-        },
-        "2026-08": {
-          "value": 73.39,
-          "source": "한국무역협회 인용 공개자료 기준선",
-          "evidence": "reported",
-          "observed_at": "baseline"
-        }
-      },
-      "last_ops_observation_count": 5,
-      "last_ops_alert_count": 0,
-      "hbm_share_forecasts": {
-        "jpmorgan|sales|2026": {
-          "values": {
-            "skhynix": 46.0,
-            "samsung": 34.0,
-            "micron": 20.0
-          },
-          "source": "사용자 제공 J.P. Morgan 차트",
-          "observed_at": "baseline"
-        },
-        "jpmorgan|sales|2027": {
-          "values": {
-            "skhynix": 41.0,
-            "samsung": 39.0,
-            "micron": 21.0
-          },
-          "source": "사용자 제공 J.P. Morgan 차트",
-          "observed_at": "baseline"
-        },
-        "jpmorgan|sales|2028": {
-          "values": {
-            "skhynix": 42.0,
-            "samsung": 37.0,
-            "micron": 21.0
-          },
-          "source": "사용자 제공 J.P. Morgan 차트",
-          "observed_at": "baseline"
-        }
-      },
-      "hbm_share_actuals": {
-        "counterpoint|sales|2026Q2": {
-          "values": {
-            "skhynix": 50.0,
-            "samsung": 33.0,
-            "micron": 18.0
-          },
-          "source": "Counterpoint 2026-09-03",
-          "observed_at": "baseline"
-        }
-      },
-      "last_share_observation_count": 0,
-      "last_share_alert_count": 0,
-      "memory_axes": {
-        "last_notified": {
-          "wafer_share|trendforce|industry|2026-YE": {
-            "key": "wafer_share|trendforce|industry|2026-YE",
-            "axis": "wafer_share",
-            "value": 22,
-            "unit": "pct",
-            "period": "2026-YE",
-            "as_of": "2026-06-02",
-            "evidence": "research",
-            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
-            "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
-            "source": "TrendForce",
-            "scope": "year_end_forecast",
-            "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
-          },
-          "wafer_share|trendforce|industry|2027-YE": {
-            "key": "wafer_share|trendforce|industry|2027-YE",
-            "axis": "wafer_share",
-            "value": 30,
-            "unit": "pct",
-            "period": "2027-YE",
-            "as_of": "2026-06-02",
-            "evidence": "research",
-            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
-            "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
-            "source": "TrendForce",
-            "scope": "year_end_forecast",
-            "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
-          },
-          "bit_share|trendforce|industry|2026-YE": {
-            "key": "bit_share|trendforce|industry|2026-YE",
-            "axis": "bit_share",
-            "value": 9,
-            "unit": "pct",
-            "period": "2026-YE",
-            "as_of": "2026-06-02",
-            "evidence": "research",
-            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
-            "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
-            "source": "TrendForce",
-            "scope": "year_end_forecast",
-            "excerpt": "웨이퍼 투입 비중과 분모가 다름"
-          },
-          "bit_share|trendforce|industry|2027-YE": {
-            "key": "bit_share|trendforce|industry|2027-YE",
-            "axis": "bit_share",
-            "value": 13,
-            "unit": "pct",
-            "period": "2027-YE",
-            "as_of": "2026-06-02",
-            "evidence": "research",
-            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
-            "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
-            "source": "TrendForce",
-            "scope": "year_end_forecast",
-            "excerpt": "웨이퍼 투입 비중과 분모가 다름"
-          },
-          "hbm_config|samsung|HBM4|12Hi|catalog": {
-            "key": "hbm_config|samsung|HBM4|12Hi|catalog",
-            "axis": "hbm_config",
-            "value": {
-              "die_gbit": 24,
-              "layers": 12,
-              "stack_gbyte": 36
-            },
-            "unit": "GB/stack",
-            "period": "catalog",
-            "as_of": "2026-09-21",
-            "evidence": "user_capture",
-            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
-            "source_title": "사용자 제공 HBM 구성 비교 기준선",
-            "source": "사용자 캡처·제품자료 비교",
-            "scope": "product_capability_not_customer_contract",
-            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
-          },
-          "hbm_config|samsung|HBM4E|8Hi|catalog": {
-            "key": "hbm_config|samsung|HBM4E|8Hi|catalog",
-            "axis": "hbm_config",
-            "value": {
-              "die_gbit": 32,
-              "layers": 8,
-              "stack_gbyte": 32
-            },
-            "unit": "GB/stack",
-            "period": "catalog",
-            "as_of": "2026-09-21",
-            "evidence": "user_capture",
-            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
-            "source_title": "사용자 제공 HBM 구성 비교 기준선",
-            "source": "사용자 캡처·제품자료 비교",
-            "scope": "product_capability_not_customer_contract",
-            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
-          },
-          "hbm_config|samsung|HBM4E|12Hi|catalog": {
-            "key": "hbm_config|samsung|HBM4E|12Hi|catalog",
-            "axis": "hbm_config",
-            "value": {
-              "die_gbit": 32,
-              "layers": 12,
-              "stack_gbyte": 48
-            },
-            "unit": "GB/stack",
-            "period": "catalog",
-            "as_of": "2026-09-21",
-            "evidence": "user_capture",
-            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
-            "source_title": "사용자 제공 HBM 구성 비교 기준선",
-            "source": "사용자 캡처·제품자료 비교",
-            "scope": "product_capability_not_customer_contract",
-            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
-          },
-          "carrier_cleaning|samsung|2026": {
-            "key": "carrier_cleaning|samsung|2026",
-            "axis": "carrier_cleaning",
-            "value": 20000,
-            "unit": "cleaning_passes/month",
-            "period": "2026",
-            "as_of": "2026-09-21",
-            "evidence": "reported",
-            "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
-            "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
-            "source": "글로벌이코노믹·사용자 제공 본문",
-            "scope": "reusable_carrier_service_not_wafer_output",
-            "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
-          },
-          "carrier_cleaning|samsung|2027": {
-            "key": "carrier_cleaning|samsung|2027",
-            "axis": "carrier_cleaning",
-            "value": 50000,
-            "unit": "cleaning_passes/month",
-            "period": "2027",
-            "as_of": "2026-09-21",
-            "evidence": "reported",
-            "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
-            "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
-            "source": "글로벌이코노믹·사용자 제공 본문",
-            "scope": "reusable_carrier_service_not_wafer_output",
-            "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
-          },
-          "fab_stage|samsung|P5_Fab1": {
-            "key": "fab_stage|samsung|P5_Fab1",
-            "axis": "fab_stage",
-            "value": {
-              "year": 2028,
-              "stage": "plan"
-            },
-            "unit": "year/stage",
-            "period": "2028",
-            "as_of": "2026-09-21",
-            "evidence": "reported",
-            "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
-            "source_title": "P5 Fab1 2028년 가동 목표",
-            "source": "글로벌이코노믹·사용자 제공 본문",
-            "scope": "fab_start_not_full_output",
-            "excerpt": "회사 관계자 인용 보도, 가동 목표와 본격 출하 기여는 별도"
-          },
-          "ddr5_chip_quote|dramexchange|16|4800/5600": {
-            "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
-            "axis": "ddr5_chip_quote",
-            "value": 57.167,
-            "unit": "USD/chip",
-            "period": "2026-09",
-            "as_of": "2026-09-22",
-            "evidence": "research",
-            "source_url": "https://www.dramexchange.com/",
-            "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
-            "source": "DRAMeXchange",
-            "excerpt": "DDR5 16Gb (2Gx8) 4800/5600: Session Average (공개 화면)",
-            "capacity_gb": null,
-            "density_gbit": 16,
-            "speed": "4800/5600"
-          },
-          "rdimm_quote|dramexchange|32|4800/5600": {
-            "key": "rdimm_quote|dramexchange|32|4800/5600",
-            "axis": "rdimm_quote",
-            "value": 2050.0,
-            "unit": "USD/module",
-            "period": "2026-09",
-            "as_of": "2026-09-14",
-            "evidence": "research",
-            "source_url": "https://www.dramexchange.com/",
-            "source_title": "DDR5 RDIMM 32GB 4800/5600 공개 현물가격",
-            "source": "DRAMeXchange",
-            "excerpt": "DDR5 RDIMM 32GB 4800/5600: Session Average (공개 화면)",
-            "capacity_gb": 32,
-            "density_gbit": null,
-            "speed": "4800/5600"
-          }
-        },
-        "latest": {
-          "wafer_share|trendforce|industry|2026-YE": {
-            "key": "wafer_share|trendforce|industry|2026-YE",
-            "axis": "wafer_share",
-            "value": 22,
-            "unit": "pct",
-            "period": "2026-YE",
-            "as_of": "2026-06-02",
-            "evidence": "research",
-            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
-            "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
-            "source": "TrendForce",
-            "scope": "year_end_forecast",
-            "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
-          },
-          "wafer_share|trendforce|industry|2027-YE": {
-            "key": "wafer_share|trendforce|industry|2027-YE",
-            "axis": "wafer_share",
-            "value": 30,
-            "unit": "pct",
-            "period": "2027-YE",
-            "as_of": "2026-06-02",
-            "evidence": "research",
-            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
-            "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
-            "source": "TrendForce",
-            "scope": "year_end_forecast",
-            "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
-          },
-          "bit_share|trendforce|industry|2026-YE": {
-            "key": "bit_share|trendforce|industry|2026-YE",
-            "axis": "bit_share",
-            "value": 9,
-            "unit": "pct",
-            "period": "2026-YE",
-            "as_of": "2026-06-02",
-            "evidence": "research",
-            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
-            "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
-            "source": "TrendForce",
-            "scope": "year_end_forecast",
-            "excerpt": "웨이퍼 투입 비중과 분모가 다름"
-          },
-          "bit_share|trendforce|industry|2027-YE": {
-            "key": "bit_share|trendforce|industry|2027-YE",
-            "axis": "bit_share",
-            "value": 13,
-            "unit": "pct",
-            "period": "2027-YE",
-            "as_of": "2026-06-02",
-            "evidence": "research",
-            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
-            "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
-            "source": "TrendForce",
-            "scope": "year_end_forecast",
-            "excerpt": "웨이퍼 투입 비중과 분모가 다름"
-          },
-          "hbm_config|samsung|HBM4|12Hi|catalog": {
-            "key": "hbm_config|samsung|HBM4|12Hi|catalog",
-            "axis": "hbm_config",
-            "value": {
-              "die_gbit": 24,
-              "layers": 12,
-              "stack_gbyte": 36
-            },
-            "unit": "GB/stack",
-            "period": "catalog",
-            "as_of": "2026-09-21",
-            "evidence": "user_capture",
-            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
-            "source_title": "사용자 제공 HBM 구성 비교 기준선",
-            "source": "사용자 캡처·제품자료 비교",
-            "scope": "product_capability_not_customer_contract",
-            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
-          },
-          "hbm_config|samsung|HBM4E|8Hi|catalog": {
-            "key": "hbm_config|samsung|HBM4E|8Hi|catalog",
-            "axis": "hbm_config",
-            "value": {
-              "die_gbit": 32,
-              "layers": 8,
-              "stack_gbyte": 32
-            },
-            "unit": "GB/stack",
-            "period": "catalog",
-            "as_of": "2026-09-21",
-            "evidence": "user_capture",
-            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
-            "source_title": "사용자 제공 HBM 구성 비교 기준선",
-            "source": "사용자 캡처·제품자료 비교",
-            "scope": "product_capability_not_customer_contract",
-            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
-          },
-          "hbm_config|samsung|HBM4E|12Hi|catalog": {
-            "key": "hbm_config|samsung|HBM4E|12Hi|catalog",
-            "axis": "hbm_config",
-            "value": {
-              "die_gbit": 32,
-              "layers": 12,
-              "stack_gbyte": 48
-            },
-            "unit": "GB/stack",
-            "period": "catalog",
-            "as_of": "2026-09-21",
-            "evidence": "user_capture",
-            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
-            "source_title": "사용자 제공 HBM 구성 비교 기준선",
-            "source": "사용자 캡처·제품자료 비교",
-            "scope": "product_capability_not_customer_contract",
-            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
-          },
-          "carrier_cleaning|samsung|2026": {
-            "key": "carrier_cleaning|samsung|2026",
-            "axis": "carrier_cleaning",
-            "value": 20000,
-            "unit": "cleaning_passes/month",
-            "period": "2026",
-            "as_of": "2026-09-21",
-            "evidence": "reported",
-            "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
-            "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
-            "source": "글로벌이코노믹·사용자 제공 본문",
-            "scope": "reusable_carrier_service_not_wafer_output",
-            "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
-          },
-          "carrier_cleaning|samsung|2027": {
-            "key": "carrier_cleaning|samsung|2027",
-            "axis": "carrier_cleaning",
-            "value": 50000,
-            "unit": "cleaning_passes/month",
-            "period": "2027",
-            "as_of": "2026-09-21",
-            "evidence": "reported",
-            "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
-            "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
-            "source": "글로벌이코노믹·사용자 제공 본문",
-            "scope": "reusable_carrier_service_not_wafer_output",
-            "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
-          },
-          "fab_stage|samsung|P5_Fab1": {
-            "key": "fab_stage|samsung|P5_Fab1",
-            "axis": "fab_stage",
-            "value": {
-              "year": 2028,
-              "stage": "plan"
-            },
-            "unit": "year/stage",
-            "period": "2028",
-            "as_of": "2026-09-21",
-            "evidence": "reported",
-            "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
-            "source_title": "P5 Fab1 2028년 가동 목표",
-            "source": "글로벌이코노믹·사용자 제공 본문",
-            "scope": "fab_start_not_full_output",
-            "excerpt": "회사 관계자 인용 보도, 가동 목표와 본격 출하 기여는 별도"
-          },
-          "ddr5_chip_quote|dramexchange|16|4800/5600": {
-            "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
-            "axis": "ddr5_chip_quote",
-            "value": 57.167,
-            "unit": "USD/chip",
-            "period": "2026-09",
-            "as_of": "2026-09-22",
-            "evidence": "research",
-            "source_url": "https://www.dramexchange.com/",
-            "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
-            "source": "DRAMeXchange",
-            "excerpt": "DDR5 16Gb (2Gx8) 4800/5600: Session Average (공개 화면)",
-            "capacity_gb": null,
-            "density_gbit": 16,
-            "speed": "4800/5600"
-          },
-          "rdimm_quote|dramexchange|32|4800/5600": {
-            "key": "rdimm_quote|dramexchange|32|4800/5600",
-            "axis": "rdimm_quote",
-            "value": 2050.0,
-            "unit": "USD/module",
-            "period": "2026-09",
-            "as_of": "2026-09-14",
-            "evidence": "research",
-            "source_url": "https://www.dramexchange.com/",
-            "source_title": "DDR5 RDIMM 32GB 4800/5600 공개 현물가격",
-            "source": "DRAMeXchange",
-            "excerpt": "DDR5 RDIMM 32GB 4800/5600: Session Average (공개 화면)",
-            "capacity_gb": 32,
-            "density_gbit": null,
-            "speed": "4800/5600"
-          }
-        },
-        "pending": {},
-        "coverage": {
-          "last_checked_at_kst": "2026-09-22T17:16:06+09:00",
-          "gaps": [],
-          "observations": 2,
-          "rdimm_paired_observations": 0
-        },
-        "version": 1,
-        "reference_capture": {
-          "basis": "사용자 제공 SK증권 캡처; 원시 현물·고정거래가격과 기준일 독립 확인 전",
-          "data_as_of": null,
-          "RDIMM_64GB_premium_pct": 115,
-          "RDIMM_32GB_premium_pct": 145,
-          "DDR5_chip_16Gb_premium_pct": 33,
-          "status": "reference_only_not_live",
-          "do_not_infer_prices": true,
-          "note": "16Gb 칩과 16GB 모듈은 별도. 동일 규격·속도의 현물과 고정거래 원값 및 각 기준일을 확보한 후 새 프리미엄을 계산한다."
-        },
-        "calculation_cases": [
-          {
-            "label": "36GB → 32GB; 동일 묶음 수 가정",
-            "old_stack_gb": 36,
-            "new_stack_gb": 32,
-            "capacity_change_pct": -11.11111111111111,
-            "gpu_growth_break_even_pct": 12.5
-          },
-          {
-            "label": "48GB → 32GB; 동일 묶음 수 가정",
-            "old_stack_gb": 48,
-            "new_stack_gb": 32,
-            "capacity_change_pct": -33.33333333333333,
-            "gpu_growth_break_even_pct": 50.0
-          }
-        ]
-      },
-      "memory_axes_version": 1
-    },
-    "attempt_at_kst": "2026-09-22T17:18:20+09:00"
+    "confirmed_at_kst": "2026-09-22T17:18:23+09:00",
+    "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
+  },
+  "delivery_check": {
+    "checked_at_kst": "2026-09-22T17:18:23+09:00",
+    "status": "confirmed"
   }
 }
