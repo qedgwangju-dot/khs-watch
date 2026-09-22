@@ -123,7 +123,15 @@
     ],
     "last_checked_at_kst": "2026-09-22T17:41:46+09:00",
     "candidate_count": 3,
-    "errors": []
+    "errors": [],
+    "signals": {
+      "GPU": "Rubin 사양 조정 → Blackwell보다 리드타임 장기화 가능성",
+      "DRAM": "미국 CSP의 2027년 서버 증설 대비 RDIMM 수요 증가",
+      "NAND(eSSD)": "수요 증가 → 공급사가 기업용 SSD로 생산능력 재배분, 전체 공급은 여전히 부족",
+      "HDD": "에이전틱 AI 수요 급증 → 2027년 말까지 리드타임 개선 제한",
+      "ABF": "2027년 일본 Low-CTE 유리섬유 천 증설로 소재 병목 완화 가능, 기판 생산능력은 예약 포화",
+      "MLCC": "신학기 수요 부진 → 저가 범용 유통가격 하락, 고급 소비자용 가격은 안정"
+    }
   },
   "structure_baseline_version": 1,
   "delivery_check": {
