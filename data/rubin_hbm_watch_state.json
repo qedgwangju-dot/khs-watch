@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-22T19:07:22+09:00",
+  "updated_at_kst": "2026-09-23T00:03:28+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -54,6 +54,7 @@
     "dca2bc8b55a45dd7abd304fb",
     "dff177bae16621437b065202",
     "e05c1927e16110a949b8b797",
+    "e917aed0ebcc8c2bd2d2a9bb",
     "e91a33b5d73da251921a7da4",
     "eed867761a24cbad33b1c104",
     "f07ec9c4d4039ee24a7a82d9",
@@ -70,17 +71,20 @@
     "hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1372.18,
-    "date": "2026-09-21 일일 기준 · ECB/Frankfurter · 조회 2026-09-22 19:07 KST · 보조 API 2026-09-22 · 차이 0.25% · 일중 기준시각 차이 가능",
-    "source": "ECB/Frankfurter",
-    "error": ""
+    "rate": null,
+    "date": "",
+    "source": "환율 API",
+    "error": "동일 날짜 API 환율 1% 초과 불일치—환산 보류"
   },
-  "errors": [],
+  "errors": [
+    "교차검증 부족으로 발송 제외: SammyGuru | Samsung’s HBM4 and HBM4E Production Could Double Next Year - SammyGuru",
+    "동일 날짜 API 환율 1% 초과 불일치—환산 보류"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-09-21",
     "source": "https://insights.trendforce.com/p/weekly-radar-002",
@@ -129,13 +133,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-09-22T19:07:26+09:00",
+    "last_checked_at_kst": "2026-09-23T00:03:35+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 1,
   "delivery_check": {
-    "checked_at_kst": "2026-09-22T19:08:07+09:00",
+    "checked_at_kst": "2026-09-23T00:04:30+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-09-22T17:58:13+09:00",
