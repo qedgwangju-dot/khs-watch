@@ -344,9 +344,11 @@ class Watch:
                     for m, lim in ((10, -0.20), (15, -0.30), (30, -0.45))
                 )
             elif window > 60:
+                # 몇 시간짜리 완만한 하락은 급락 사건으로 보지 않는다.
+                # 장시간 누적 낙폭에 더해 최근 15~60분 하락 가속이 확인돼야 한다.
                 active = any(
                     returns.get(m) is not None and returns[m] <= lim
-                    for m, lim in ((30, -0.30), (60, -0.50))
+                    for m, lim in ((15, -0.55), (30, -0.70), (60, -0.90))
                 )
             if not active:
                 continue
