@@ -17,7 +17,7 @@ CHAT = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
 BOT = (os.getenv('EXPECTED_BOT_USERNAME') or 'hshs8879_bot').strip().lstrip('@')
 FORCE = os.getenv('FORCE_NOTIFY','0') == '1'
 UA = 'Mozilla/5.0 (compatible; khs-watch/3.0)'
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 
 class TableParser(HTMLParser):
     def __init__(self):
@@ -113,27 +113,72 @@ def d(cur,prev,idx):
 def bp(x): return '' if x is None else f' ({x*100:+.0f}bp)'
 def pp(x): return '' if x is None else f' ({x:+.1f}%p)'
 
+def signed_delta(x, unit='%p'):
+    if x is None:return '확인 불가'
+    return f'{x:+.1f}{unit}'
+
 def message(cur,market,correction=False):
     f,fp=cur['funds'],cur['funds_prev']; g,gp=cur['gdp'],cur['gdp_prev']; u,up=cur['unemp'],cur['unemp_prev']; p,pprev=cur['pce'],cur['pce_prev']; c,cp=cur['core'],cur['core_prev']
     diff=(f[0]-float(market))*100 if market is not None else None
+    dg=d(g,gp,0); du=d(u,up,0); dp=d(p,pprev,0); dc=d(c,cp,0); df=d(f,fp,0)
     lines=['<b>[Warsh FOMC 점도표·경제전망·시장 경로]</b>',f"기준: {cur['date']}",'']
     if correction:
-        lines += ['<b>정정</b>','• 기존 알림의 “장기 3.60%”는 2029년 값을 장기값으로 잘못 읽은 표기였습니다.','• 공식 장기 정책금리 중앙값은 <b>3.20%</b>이며, 6월 3.10%에서 +10bp 상승했습니다.','']
-    lines += ['<b>핵심 판정</b>','• <b>경기는 더 강하게 · 실업률은 더 낮게 · 물가는 더 높게 · 정책금리는 더 높게</b>','• 쉽게 말하면: 연준은 “경기가 금리인상을 버틸 수 있고, 물가는 아직 끈적하다”는 쪽으로 전망을 옮겼습니다.','',
-              '<b>정책금리 점도표</b>',
-              f"• 2026년 말 {f[0]:.1f}%{bp(d(f,fp,0))} · 2027년 말 {f[1]:.1f}%{bp(d(f,fp,1))}",
-              f"• 2028년 말 {f[2]:.1f}%{bp(d(f,fp,2))} · 2029년 말 {f[3]:.1f}% · 장기 {f[4]:.1f}%{bp(d(f,fp,4))}",
-              '• 2027년 말도 4.1%라는 것은 중앙값 기준으로 연내 추가 인상 뒤 높은 금리를 다음 해 말까지 유지하는 경로입니다.','',
-              '<b>경제·고용·물가 전망</b>',
-              f"• 실질 GDP 성장률: 2026년 {g[0]:.1f}%{pp(d(g,gp,0))} · 2027년 {g[1]:.1f}%{pp(d(g,gp,1))}",
-              f"• 실업률: 2026년 {u[0]:.1f}%{pp(d(u,up,0))} · 2027년 {u[1]:.1f}%{pp(d(u,up,1))}",
-              f"• PCE(전체 개인소비지출 물가): 2026년 {p[0]:.1f}%{pp(d(p,pprev,0))}",
-              f"• 근원 PCE(식품·에너지 제외): 2026년 {c[0]:.1f}%{pp(d(c,cp,0))}",'']
+        lines += [
+            '<b>과거 표기 정정</b>',
+            f"• 2029년 말 정책금리 {f[3]:.1f}%와 장기 정책금리 {f[4]:.1f}%를 분리해 표시합니다.",
+            '• 장기값은 경기·물가 충격이 사라졌을 때 참가자들이 적절하다고 보는 장기 정책금리 중앙값이며 특정 시점의 약속이 아닙니다.',
+            '',
+        ]
+
+    lines += [
+        '<b>한눈에 보기</b>',
+        f"• 성장률 전망: {g[0]:.1f}% ({signed_delta(dg)})",
+        f"• 실업률 전망: {u[0]:.1f}% ({signed_delta(du)})",
+        f"• PCE 물가: {p[0]:.1f}% ({signed_delta(dp)}) · 근원 PCE {c[0]:.1f}% ({signed_delta(dc)})",
+        f"• 2026년 말 정책금리 중앙값: {f[0]:.1f}% ({'' if df is None else f'{df*100:+.0f}bp'})",
+    ]
+    if df is not None and df>0 and (dp or 0)>=0 and (dc or 0)>=0:
+        lines.append('• <b>판정</b>: 성장·고용은 버티는 가운데 물가와 정책금리 경로가 더 높아져 추가 긴축 여지가 커진 조합입니다.')
+    elif df is not None and df<0:
+        lines.append('• <b>판정</b>: 연준 참가자들의 적정 정책금리 경로가 이전보다 낮아진 조합입니다.')
+    else:
+        lines.append('• <b>판정</b>: 정책금리 중앙값 변화가 제한적이어서 세부 성장·물가 전망을 함께 봐야 합니다.')
+
+    lines += [
+        '',
+        '<b>정책금리 점도표</b>',
+        f"• 2026년 말 {f[0]:.1f}%{bp(d(f,fp,0))} · 2027년 말 {f[1]:.1f}%{bp(d(f,fp,1))}",
+        f"• 2028년 말 {f[2]:.1f}%{bp(d(f,fp,2))} · 2029년 말 {f[3]:.1f}% · 장기 {f[4]:.1f}%{bp(d(f,fp,4))}",
+        f"• 2027년 말 {f[1]:.1f}%는 2026년 말 {f[0]:.1f}%와 비교해 {((f[1]-f[0])*100):+.0f}bp입니다. 높은 금리가 얼마나 오래 남는지 확인하는 숫자입니다.",
+        '',
+        '<b>경제·고용·물가 전망</b>',
+        f"• 실질 GDP: 2026년 {g[0]:.1f}%{pp(d(g,gp,0))} · 2027년 {g[1]:.1f}%{pp(d(g,gp,1))}",
+        f"• 실업률: 2026년 {u[0]:.1f}%{pp(d(u,up,0))} · 2027년 {u[1]:.1f}%{pp(d(u,up,1))}",
+        f"• PCE: 2026년 {p[0]:.1f}%{pp(d(p,pprev,0))} · 근원 PCE {c[0]:.1f}%{pp(d(c,cp,0))}",
+    ]
     if market is not None:
-        lines += ['<b>시장 선물경로와 비교</b>',f"• 현재 공개 선물경로의 2026년 말 유효 연방기금금리 약 {float(market):.3f}%",f"• 연준 2026년 말 중앙값 - 시장 경로: {diff:+.0f}bp",'']
-    lines += ['<b>왜 중요한가</b>','• 이번 변화는 단순히 “한 번 더 올릴 수 있다”는 수준보다 큽니다. 성장·고용 전망은 좋아졌는데 물가와 장기 적정금리 전망도 함께 올라, 고금리를 더 오래 유지할 수 있다는 논리가 강화됐습니다.','• 장기 정책금리 3.2%는 경기·물가 충격이 사라졌을 때 참가자들이 적절하다고 보는 장기 정책금리 중앙값입니다. 실제 금리를 3.2%로 고정하겠다는 약속은 아닙니다.','',
-              '<b>다음 확인</b>','• 근원 PCE 3·6개월 연율이 실제로 내려오는지','• 실업률과 비농업 고용 3개월 평균이 약해지는지','• 2년물 금리가 추가 인상 경로를 계속 유지하는지','',
-              '<b>원천</b>',f"{link('연준 경제전망·점도표',cur['url'])} · {link('연준 FOMC 일정',FED_CAL)}"]
+        lines += [
+            '',
+            '<b>시장 선물경로와 비교</b>',
+            f"• 시장의 2026년 말 유효 연방기금금리 기대: 약 {float(market):.3f}%",
+            f"• 연준 점도표 중앙값 {f[0]:.3f}% - 시장 경로 {float(market):.3f}% = {diff:+.0f}bp",
+            '• 시장이 점도표보다 높으면 시장이 더 매파적으로, 낮으면 더 비둘기적으로 가격에 반영한 것입니다.',
+        ]
+
+    lines += [
+        '',
+        '<b>정확히 읽는 법</b>',
+        '• 점도표는 FOMC의 확정 계획이 아니라 각 참가자가 적절하다고 보는 연말 정책금리의 중앙값입니다.',
+        f"• 장기 정책금리 {f[4]:.1f}%는 장기 균형에 대한 중앙값이지 실제 금리를 그 수준에 고정한다는 뜻이 아닙니다.",
+        '',
+        '<b>다음 확인</b>',
+        '• 근원 PCE 3·6개월 연율이 실제로 내려오는지',
+        '• 실업률과 비농업 고용 3개월 평균이 약해지는지',
+        '• 2년물과 연방기금금리 선물이 연준 점도표보다 더 높은 경로를 계속 가격에 넣는지',
+        '',
+        '<b>원천</b>',
+        f"{link('연준 경제전망·점도표',cur['url'])} · {link('연준 FOMC 일정',FED_CAL)}",
+    ]
     return '\n'.join(lines)
 
 def main():
@@ -141,10 +186,11 @@ def main():
     old_schema=old.get('schema_version',1)
     old_url=(old.get('snapshot') or {}).get('url')
     new_release=bool(old_url and old_url!=cur['url'])
-    correction=(old_schema<SCHEMA_VERSION)
-    should_send=FORCE or correction or new_release
-    if should_send: send(message(cur,market,correction=correction))
+    legacy_correction=(old_schema<2)
+    format_upgrade=(old_schema<SCHEMA_VERSION)
+    should_send=FORCE or legacy_correction or format_upgrade or new_release
+    if should_send: send(message(cur,market,correction=legacy_correction))
     save({'schema_version':SCHEMA_VERSION,'snapshot':cur,'market_2026_yearend':market,'sent_upgrade':should_send})
-    print(json.dumps({'schema_version':SCHEMA_VERSION,'new_release':new_release,'correction':correction,'sent':should_send,'date':cur['date'],'funds':cur['funds'],'market_2026_yearend':market},ensure_ascii=False))
+    print(json.dumps({'schema_version':SCHEMA_VERSION,'new_release':new_release,'legacy_correction':legacy_correction,'format_upgrade':format_upgrade,'sent':should_send,'date':cur['date'],'funds':cur['funds'],'market_2026_yearend':market},ensure_ascii=False))
 
 if __name__=='__main__':main()
