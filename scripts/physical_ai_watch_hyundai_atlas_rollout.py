@@ -67,6 +67,7 @@ UNITS_CAPEX = re.compile(r'3만\s*대|30,?000|대\s*투입|대\s*배치|units?|�
 EUROPE = re.compile(r'체코|Czech|노쇼비체|Nosovice|Nošovice|유럽|Europe|\bHMMC\b', re.I)
 HMGMA = re.compile(r'HMGMA|조지아|Georgia|Savannah|메타플랜트\s*아메리카|Metaplant\s*America', re.I)
 RMAC = re.compile(r'RMAC|Robot\s*Metaplant\s*Application\s*Center|로봇\s*메타플랜트\s*애플리케이션\s*센터', re.I)
+RMAC_ALIAS = re.compile(r'로봇\s*학교|robot\s*school|제조\s*훈련|manufacturing\s*training|공장\s*투입\s*준비|현장\s*훈련|factory\s*training', re.I)
 RMAC_ACTIVE = re.compile(r'open(?:ed|s)?|개소|운영\s*개시|training|train|훈련|data\s*collection|데이터\s*수집|sequencing|시퀀싱|validation|검증', re.I)
 RMAC_EXPAND = re.compile(r'10\s*배|ten[- ]?fold|2027|신축|new\s*building|move|relocat|이전|확장|expansion', re.I)
 RMAC_EXPANSION_COMPLETE = re.compile(r'(?:10\s*배|ten[- ]?fold).{0,30}(?:확장\s*(?:완료|개소)|가동|이전\s*완료|opened|operational|completed)|(?:new\s*building|신축\s*건물).{0,30}(?:opened|operational|가동|개소|이전\s*완료)', re.I)
