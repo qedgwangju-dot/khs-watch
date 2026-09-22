@@ -44,7 +44,7 @@ SERIES = {
 }
 
 UPGRADE_MARKER = "<b>정책 목적·경계선</b>"
-UPGRADE_REVISION = 4
+UPGRADE_REVISION = 5
 UA = "Mozilla/5.0 khs-watch-treasury-bessent-verifier/3.0"
 
 EXACT_TITLES = {
@@ -144,12 +144,29 @@ def latest_two(rows: list[tuple[str, float]]) -> tuple[tuple[str, float], tuple[
 
 
 def latest_fx():
-    from fx_api import daily_krw
-    q = daily_krw()
-    return q.rate, q.basis
+    """Do not suppress the policy alert only because KRW sources disagree."""
+    errors: list[str] = []
+    try:
+        from fx_api import daily_krw
+        q = daily_krw()
+        return q.rate, q.basis
+    except Exception as exc:
+        errors.append(f"교차검증 API 실패: {type(exc).__name__}: {exc}")
+
+    try:
+        rows = fetch_series(SERIES["fx"], lookback_days=14)
+        day, rate = rows[-1]
+        if rate > 0:
+            return rate, f"{day} FRED DEXKOUS 독립 공식 fallback · 원 API 교차검증 실패"
+    except Exception as exc:
+        errors.append(f"FRED DEXKOUS 실패: {type(exc).__name__}: {exc}")
+
+    return None, "환율 검증 실패 — 원화 환산 보류 · " + " | ".join(errors)
 
 
-def fmt_krw(usd_bn: float, fx: float) -> str:
+def fmt_krw(usd_bn: float, fx: float | None) -> str:
+    if fx is None:
+        return "원화 환산 보류"
     won = usd_bn * 1_000_000_000 * fx
     jo = int(won // 1_000_000_000_000)
     eok = int(round((won - jo * 1_000_000_000_000) / 100_000_000))
@@ -161,6 +178,12 @@ def fmt_krw(usd_bn: float, fx: float) -> str:
     if jo:
         return f"약 {jo:,}조원"
     return f"약 {eok:,}억원"
+
+
+def fx_basis_line(fx: float | None, fx_date: str) -> str:
+    if fx is None:
+        return f"환율 기준: {fx_date}"
+    return f"환율 기준: {fx_date}, 1달러={fx:,.2f}원"
 
 
 def bp(new: float, old: float) -> float:
@@ -264,6 +287,13 @@ def build_causal_snapshot() -> dict:
 
 
 def causal_block(snapshot: dict) -> str:
+    if not snapshot.get("available", True):
+        return "\n".join([
+            "<b>Bessent 금리상승 원인설 자동 검증</b>",
+            "• 최신 원자료 일부가 지연·실패해 이번 실행의 원인분해 숫자는 <b>확인 보류</b>합니다.",
+            f"• 실패 사유: {snapshot.get('error') or '자료 조회 실패'}",
+            "• 정책 사실·바이백 실제 집행 감시는 계속하며, 원인분해 실패만으로 정책 알림을 막지 않습니다.",
+        ])
     v = snapshot["common_values"]
     c = snapshot["common_changes"]
     t = snapshot["term_latest"]
@@ -281,6 +311,14 @@ def causal_block(snapshot: dict) -> str:
 
 
 def stock_market_block(snapshot: dict) -> str:
+    if not snapshot.get("available", True):
+        return "\n".join([
+            "",
+            "<b>주식시장 영향</b>",
+            "• 현재 판정: <b>⚪ 자동판정 보류</b>",
+            "• 명목·실질금리 원자료가 같은 실행에서 완성되지 않아 성장주 할인율 방향을 추정하지 않습니다.",
+            "• 정책·집행 사실은 유지하고 다음 정상 원자료 실행에서 Nasdaq·AI·반도체·소프트웨어 영향을 다시 판정합니다.",
+        ])
     c = snapshot["common_changes"]
     v = snapshot["common_values"]
     nom = c["nom_bp"]
@@ -333,7 +371,6 @@ def policy_block(snapshot: dict) -> str:
 def source_links() -> str:
     return " · ".join([
         f'<a href="{BESSENT_REUTERS}">Bessent Reuters 인터뷰</a>',
-        f'<a href="{BESSENT_FEVER_BLOOMBERG}">Bessent 시장 과열 발언</a>',
         f'<a href="{BESSENT_FEVER}">Bessent ‘market fever’ 발언</a>',
         f'<a href="{TREASURY_RELEASE}">미 재무부 공식 발표</a>',
         f'<a href="{BUYBACK_FAQ}">바이백 공식 설명</a>',
@@ -358,7 +395,7 @@ def one_time_alert(fx: float, fx_date: str, snapshot: dict) -> str:
         "<b>한 줄 결론</b>",
         "공식 정책선과 시장 결과를 분리합니다. 앞으로는 ‘유가·기대인플레이션이 내려가면 장기금리도 내려가는가’와 ‘실질금리·기간프리미엄이 이를 상쇄하는가’를 실제 숫자로 판정하고, 바이백의 시장 기능 목적과 성장주 할인율 영향도 함께 표시합니다.",
         "",
-        f"환율 기준: {fx_date}, 1달러={fx:,.2f}원",
+        fx_basis_line(fx, fx_date),
         source_links(),
     ])
 
@@ -381,9 +418,13 @@ def verdict_change_alert(snapshot: dict) -> str:
 def write_next_state(snapshot: dict) -> None:
     state = load_json(NEXT_STATE) or load_json(STATE)
     state["bessent_policy_boundary_revision"] = UPGRADE_REVISION
-    state["bessent_causal_verdict_key"] = snapshot["verdict_key"]
-    state["bessent_causal_verdict"] = snapshot["verdict"]
-    state["bessent_causal_snapshot"] = snapshot
+    if snapshot.get("available", True):
+        state["bessent_causal_verdict_key"] = snapshot["verdict_key"]
+        state["bessent_causal_verdict"] = snapshot["verdict"]
+        state["bessent_causal_snapshot"] = snapshot
+        state.pop("bessent_causal_last_error", None)
+    else:
+        state["bessent_causal_last_error"] = snapshot.get("error")
     NEXT_STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
@@ -391,7 +432,16 @@ def main() -> int:
     state = load_json(STATE)
     revision = int(state.get("bessent_policy_boundary_revision", 0) or 0)
     old_verdict_key = str(state.get("bessent_causal_verdict_key") or "")
-    snapshot = build_causal_snapshot()
+    try:
+        snapshot = build_causal_snapshot()
+        snapshot["available"] = True
+    except Exception as exc:
+        snapshot = {
+            "available": False,
+            "verdict_key": "unavailable",
+            "verdict": "⚪ 원인분해 데이터 확인 보류",
+            "error": f"{type(exc).__name__}: {exc}",
+        }
 
     official_alert_exists = ALERT.exists()
 
@@ -414,7 +464,7 @@ def main() -> int:
                 "revision": UPGRADE_REVISION,
                 "causal_snapshot": snapshot,
             }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        elif old_verdict_key and snapshot["verdict_key"] != old_verdict_key:
+        elif snapshot.get("available", True) and old_verdict_key and snapshot["verdict_key"] != old_verdict_key:
             TITLE.write_text(
                 "🇺🇸 미 국채 장기금리 — Bessent 원인설 데이터 판정 변화\n",
                 encoding="utf-8",
@@ -470,8 +520,12 @@ def main() -> int:
         raise RuntimeError(f"업그레이드된 재무부 알림 본문이 너무 깁니다: {len(text)}")
 
     ALERT.write_text(text, encoding="utf-8")
-    detail["bessent_causal_snapshot"] = snapshot
-    detail["bessent_causal_verdict"] = snapshot["verdict"]
+    if snapshot.get("available", True):
+        detail["bessent_causal_snapshot"] = snapshot
+        detail["bessent_causal_verdict"] = snapshot["verdict"]
+        detail.pop("bessent_causal_error", None)
+    else:
+        detail["bessent_causal_error"] = snapshot.get("error")
     DETAIL.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     write_next_state(snapshot)
     return 0
