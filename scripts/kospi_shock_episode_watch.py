@@ -294,34 +294,73 @@ class Watch:
         candidates = [x for x in rows if x[1] == high]
         return candidates[-1]
 
+    def _window_peak(self, minutes: int, pad_minutes: int) -> tuple[float, float] | None:
+        if not self.idx:
+            return None
+        now_t = self.idx[-1][0]
+        cutoff = now_t - (minutes + pad_minutes) * 60
+        rows = [x for x in self.idx if x[0] >= cutoff]
+        if not rows:
+            return None
+        high = max(v for _, v in rows)
+        # 같은 고점이 여러 번이면 급락 직전의 마지막 고점을 사용한다.
+        return [x for x in rows if x[1] == high][-1]
+
     def _trigger(self) -> tuple[bool, dict[str, Any]]:
         if len(self.idx) < 2:
             return False, {}
-        peak = self._recent_peak()
-        if not peak:
-            return False, {}
         now_t, cur = self.idx[-1]
-        duration = max(1.0, now_t - peak[0])
-        drop = pct(peak[1], cur) or 0.0
-        mins = duration / 60
-        if mins <= 10: threshold = -0.70
-        elif mins <= 20: threshold = -0.90
-        elif mins <= 45: threshold = -1.10
-        elif mins <= 90: threshold = -1.30
-        else: threshold = -1.50
-        r5, r10, r15, r30, r60 = (self._ret(x) for x in (5, 10, 15, 30, 60))
-        active = False
-        if mins <= 15:
-            active = any(v is not None and v <= lim for v, lim in ((r5,-0.35),(r10,-0.55),(r15,-0.70)))
-        elif mins <= 60:
-            active = any(v is not None and v <= lim for v, lim in ((r10,-0.25),(r15,-0.35),(r30,-0.55)))
-        else:
-            active = any(v is not None and v <= lim for v, lim in ((r30,-0.35),(r60,-0.55)))
-        return bool(drop <= threshold and active), {
-            "peak_ts": peak[0], "peak": peak[1], "cur_ts": now_t, "cur": cur,
-            "drop": drop, "duration": duration, "threshold": threshold,
-            "r5": r5, "r10": r10, "r15": r15, "r30": r30, "r60": r60,
-        }
+        returns = {m: self._ret(m) for m in (5, 10, 15, 30, 60)}
+        # 가장 짧은 시간창부터 검사한다. 따라서 오전 세션고점이 아니라
+        # 실제 급락 직전 국소고점이 사건 시작점으로 우선 선택된다.
+        rules = [
+            (5, -0.35, 2),
+            (10, -0.55, 3),
+            (15, -0.70, 5),
+            (20, -0.90, 5),
+            (30, -1.00, 7),
+            (45, -1.10, 10),
+            (60, -1.20, 10),
+            (90, -1.30, 15),
+            (120, -1.40, 20),
+            (180, -1.50, 20),
+        ]
+        for window, threshold, pad in rules:
+            peak = self._window_peak(window, pad)
+            if not peak:
+                continue
+            duration = now_t - peak[0]
+            if duration <= 0:
+                continue
+            drop = pct(peak[1], cur)
+            if drop is None or drop > threshold:
+                continue
+
+            # 30분 이상 구간은 최근에도 하락 압력이 살아 있어야 사건으로 인정한다.
+            active = True
+            if window > 20 and window <= 60:
+                active = any(
+                    returns.get(m) is not None and returns[m] <= lim
+                    for m, lim in ((10, -0.20), (15, -0.30), (30, -0.45))
+                )
+            elif window > 60:
+                active = any(
+                    returns.get(m) is not None and returns[m] <= lim
+                    for m, lim in ((30, -0.30), (60, -0.50))
+                )
+            if not active:
+                continue
+
+            return True, {
+                "peak_ts": peak[0], "peak": peak[1],
+                "cur_ts": now_t, "cur": cur,
+                "drop": drop, "duration": duration,
+                "threshold": threshold, "window_minutes": window,
+                "r5": returns.get(5), "r10": returns.get(10),
+                "r15": returns.get(15), "r30": returns.get(30),
+                "r60": returns.get(60),
+            }
+        return False, {}
 
     def _flow_near(self, ts: float, prefer_before: bool = True) -> dict[str, Any] | None:
         rows = list(self.flows)
