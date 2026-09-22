@@ -127,9 +127,17 @@ def signed_pct(text: str, pattern: str) -> float | None:
 
 
 def fetch_fx():
-    from fx_api import daily_krw
-    q = daily_krw()
-    return {"usdkrw": q.rate, "basis_kst": q.basis, "source": q.source, "source_type": "일일 기준환율"}
+    from fx_api import daily_krw, historical_krw
+    try:
+        q = daily_krw()
+        source_type = "교차검증 일일 기준환율"
+    except RuntimeError as exc:
+        # 서로 다른 제공자의 같은 날짜 환율이 기준시각 차이로 크게 벌어질 때,
+        # 오래된 저장값을 재사용하지 않고 ECB 관측값을 현재 시점에 다시 조회한다.
+        target = datetime.now(timezone.utc).astimezone(KST).date()
+        q = historical_krw("USD", target)
+        source_type = f"ECB 일일 기준환율 · 교차검증 경고 대체 ({exc})"
+    return {"usdkrw": q.rate, "basis_kst": q.basis, "source": q.source, "source_type": source_type}
 
 
 def parse_census() -> dict:
@@ -455,7 +463,7 @@ def build_alert(state: dict, changed: list[str], first: bool, format_changed: bo
         header,
         "━━━━━━━━━━━━━━━━",
         "골드만삭스 차트의 핵심 원자료인 미국 인구조사국 데이터센터 건설 지출과 도지 컨스트럭션 네트워크 착공 자료를 매시간 확인합니다.",
-        "변화가 있을 때만 텔레그램 알림을 보내며, 모든 달러 금액에는 알림 시점 달러/원 환율을 적용한 원화 환산값을 함께 표시합니다.",
+        "변화가 있을 때만 텔레그램 알림을 보내며, 모든 달러 금액에는 알림 시점에 다시 조회한 최신 달러/원 기준환율의 원화 환산값을 함께 표시합니다.",
     ]
     c = state.get("census"); d = state.get("dodge")
     show_census = bool(c and (first or format_changed or "census" in changed))
