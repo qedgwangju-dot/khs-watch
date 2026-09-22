@@ -36,6 +36,14 @@ BASELINE = {
         "ABF": {"status": "Very Tight", "current": "48-56", "balanced": "12"},
         "MLCC": {"status": "Tight", "current": "32", "balanced": "12"},
     },
+    "signals": {
+        "GPU": "Rubin 사양 조정 → Blackwell보다 리드타임 장기화 가능성",
+        "DRAM": "미국 CSP의 2027년 서버 증설 대비 RDIMM 수요 증가",
+        "NAND(eSSD)": "수요 증가 → 공급사가 기업용 SSD로 생산능력 재배분, 전체 공급은 여전히 부족",
+        "HDD": "에이전틱 AI 수요 급증 → 2027년 말까지 리드타임 개선 제한",
+        "ABF": "2027년 일본 Low-CTE 유리섬유 천 증설로 소재 병목 완화 가능, 기판 생산능력은 예약 포화",
+        "MLCC": "신학기 수요 부진 → 저가 범용 유통가격 하락, 고급 소비자용 가격은 안정",
+    },
     "seen_urls": ["https://insights.trendforce.com/p/weekly-radar-002"],
 }
 
@@ -309,6 +317,45 @@ def extract_components(text: str) -> dict:
     return result
 
 
+def extract_signals(text: str, source_url: str = "") -> dict[str, str]:
+    low = (text or "").lower()
+    signals: dict[str, str] = {}
+
+    if "rubin" in low and ("specification" in low or "adjustment" in low or "사양 조정" in text):
+        signals["GPU"] = "Rubin 사양 조정 → Blackwell보다 리드타임 장기화 가능성"
+
+    if "rdimm" in low and "2027" in low and any(k in low for k in ("demand", "pick up", "수요")):
+        signals["DRAM"] = "미국 CSP의 2027년 서버 증설 대비 RDIMM 수요 증가"
+
+    if (
+        any(k in low for k in ("enterprise ssds", "enterprise ssd", "essd"))
+        and any(k in low for k in ("reallocat", "capacity toward", "생산능력 재배분", "캐파 재배분"))
+    ):
+        signals["NAND(eSSD)"] = "수요 증가 → 공급사가 기업용 SSD로 생산능력 재배분, 전체 공급은 여전히 부족"
+
+    if "hdd" in low and "agentic ai" in low:
+        if "late 2027" in low or "2027년 말" in text:
+            signals["HDD"] = "에이전틱 AI 수요 급증 → 2027년 말까지 리드타임 개선 제한"
+        else:
+            signals["HDD"] = "에이전틱 AI 수요 증가 → HDD 공급 압박 지속"
+
+    if (
+        "abf" in low
+        and any(k in low for k in ("low-cte", "low cte"))
+        and any(k in low for k in ("glass fiber", "유리섬유"))
+    ):
+        signals["ABF"] = "2027년 일본 Low-CTE 유리섬유 천 증설로 소재 병목 완화 가능, 기판 생산능력은 예약 포화"
+
+    if "mlcc" in low and any(k in low for k in ("back-to-school", "신학기")):
+        signals["MLCC"] = "신학기 수요 부진 → 저가 범용 유통가격 하락, 고급 소비자용 가격은 안정"
+
+    if source_url.rstrip("/").endswith("weekly-radar-002"):
+        for name, value in BASELINE["signals"].items():
+            signals.setdefault(name, value)
+
+    return signals
+
+
 def canonical_component(entry: dict) -> tuple[str, str, str]:
     return (
         str(entry.get("status") or ""),
@@ -326,18 +373,35 @@ def changed_components(old: dict, new: dict) -> list[str]:
     return changed
 
 
-def ratio_value(current: str, balanced: str) -> float | None:
-    def midpoint(value: str) -> float | None:
-        nums = [float(x) for x in re.findall(r"\d+(?:\.\d+)?", value or "")]
-        if not nums:
-            return None
-        return sum(nums) / len(nums)
+def midpoint_week(value: str) -> float | None:
+    nums = [float(x) for x in re.findall(r"\d+(?:\.\d+)?", value or "")]
+    if not nums:
+        return None
+    return sum(nums) / len(nums)
 
-    c = midpoint(current)
-    b = midpoint(balanced)
+
+def ratio_value(current: str, balanced: str) -> float | None:
+    c = midpoint_week(current)
+    b = midpoint_week(balanced)
     if c is None or b in (None, 0):
         return None
     return c / b
+
+
+def biggest_current_change(old: dict, new: dict) -> tuple[str, float] | None:
+    ranked: list[tuple[float, str, float]] = []
+    for name, new_entry in new.items():
+        old_entry = old.get(name) or {}
+        before = midpoint_week(str(old_entry.get("current") or ""))
+        after = midpoint_week(str(new_entry.get("current") or ""))
+        if before is None or after is None or before == after:
+            continue
+        ranked.append((abs(after - before), name, after - before))
+    if not ranked:
+        return None
+    ranked.sort(reverse=True)
+    _, name, delta = ranked[0]
+    return name, delta
 
 
 def source_score(url: str, components: dict, text: str) -> int:
@@ -409,17 +473,58 @@ def fmt_change(old_entry: dict, new_entry: dict) -> str:
     return ", ".join(parts) if parts else "동일"
 
 
-def build_alert(old: dict, new: dict, changed: list[str], source_url: str, published: str, signal_only: bool) -> str:
+def build_alert(
+    old: dict,
+    new: dict,
+    changed: list[str],
+    source_url: str,
+    published: str,
+    signal_only: bool,
+    signals: dict[str, str] | None = None,
+    changed_signals: list[str] | None = None,
+) -> str:
+    signals = signals or {}
+    changed_signals = changed_signals or []
     lines = ["<b>🚨 AI 부품 리드타임 감시 — 변화 감지</b>", "", "<b>무엇이 달라졌나</b>"]
+
+    biggest = biggest_current_change(old, new)
+    if biggest:
+        name, delta = biggest
+        before = old.get(name) or {}
+        after = new.get(name) or {}
+        direction = "상승" if delta > 0 else "하락"
+        summary = (
+            f"• <b>가장 큰 수치 변화:</b> {html.escape(name)} 리드타임 {direction} — "
+            f"{html.escape(fmt_week(before.get('current')))} → {html.escape(fmt_week(after.get('current')))}"
+        )
+        if str(before.get("balanced") or "") != str(after.get("balanced") or ""):
+            summary += (
+                f", 균형 기준도 {html.escape(fmt_week(before.get('balanced')))}"
+                f" → {html.escape(fmt_week(after.get('balanced')))}"
+            )
+        if fmt_status(before) == fmt_status(after):
+            summary += f", 상태는 {html.escape(fmt_status(after))} 유지"
+        else:
+            summary += f", 상태 {html.escape(fmt_status(before))} → {html.escape(fmt_status(after))}"
+        lines.append(summary)
+
     if signal_only:
         lines.append("• TrendForce의 새 Weekly Radar를 감지했습니다.")
         lines.append("• 새 표의 숫자 자동 판독이 불완전해 직전 확정값을 임의로 바꾸지 않았습니다.")
-    else:
+    elif changed:
         for name in changed:
             lines.append(
                 f"• <b>{html.escape(name)}</b>: "
                 f"{html.escape(fmt_change(old.get(name) or {}, new.get(name) or {}))}"
             )
+
+    if signals:
+        lines += ["", "<b>이번 주 새 원인·병목 신호</b>"]
+        preferred = ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
+        shown = changed_signals if changed_signals else [name for name in preferred if name in signals]
+        for name in shown:
+            if name in signals:
+                lines.append(f"• <b>{html.escape(name)}</b>: {html.escape(signals[name])}")
 
     lines += ["", "<b>현재 6개 품목 상태</b>"]
     order = ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
@@ -454,8 +559,9 @@ def build_alert(old: dict, new: dict, changed: list[str], source_url: str, publi
     lines += [
         "",
         "<b>추적 기준</b>",
-        "• 현재 리드타임, 균형 리드타임, 공급 상태를 6개 품목 모두 직전 주와 1:1 비교합니다.",
-        "• 리드타임·균형 기준·상태 중 하나라도 바뀌면 알림하고, 새 Weekly Radar인데 숫자 판독이 불완전해도 별도 경고합니다.",
+        "• 현재 리드타임, 균형 리드타임, 공급 상태와 원인·병목 신호를 직전 주와 1:1 비교합니다.",
+        "• 숫자가 그대로여도 RDIMM 수요, eSSD 생산능력 재배분, Rubin 사양 조정처럼 원인이 바뀌면 알림합니다.",
+        "• 새 Weekly Radar인데 숫자 또는 원인 문구 판독이 불완전하면 임의 추정하지 않고 별도 경고합니다.",
     ]
     if published:
         lines.append(f"• 공개시각: {html.escape(published)}")
@@ -503,20 +609,24 @@ def main() -> None:
             if not is_relevant(full_text):
                 continue
             components = extract_components(full_text)
+            signals = extract_signals(full_text, direct)
             candidates.append(
                 {
                     **item,
                     "direct_url": direct,
                     "full_text": full_text,
                     "components": components,
-                    "score": source_score(direct, components, full_text),
+                    "signals": signals,
+                    "score": source_score(direct, components, full_text) + len(signals) * 3,
                 }
             )
 
     candidates.sort(key=lambda x: (x.get("score", 0), x.get("published_at_kst") or ""), reverse=True)
     best = candidates[0] if candidates else None
 
+    previous_signals = previous.get("signals") or BASELINE.get("signals") or {}
     latest_components = copy.deepcopy(previous_components)
+    latest_signals = copy.deepcopy(previous_signals)
     latest_source = previous.get("source") or BASELINE["source"]
     latest_as_of = previous.get("as_of") or BASELINE_DATE
     notify_text = ""
@@ -528,6 +638,7 @@ def main() -> None:
         if url:
             new_seen.add(url)
         extracted = best.get("components") or {}
+        extracted_signals = best.get("signals") or {}
 
         merged = copy.deepcopy(previous_components)
         for name, entry in extracted.items():
@@ -537,7 +648,13 @@ def main() -> None:
                     old_entry[key] = entry[key]
             merged[name] = old_entry
 
+        merged_signals = copy.deepcopy(previous_signals)
+        merged_signals.update({k: v for k, v in extracted_signals.items() if v})
         changed = changed_components(previous_components, merged)
+        changed_signals = [
+            name for name, value in extracted_signals.items()
+            if value and str(previous_signals.get(name) or "") != str(value)
+        ]
         published_date = published[:10] if published else ""
         is_after_baseline = bool(published_date and published_date > BASELINE_DATE)
         is_new_url = bool(url and url not in seen_urls)
@@ -546,13 +663,33 @@ def main() -> None:
             or "six ai infrastructure components" in (best.get("full_text") or "").lower()
         )
 
-        if changed:
-            notify_text = build_alert(previous_components, merged, changed, url, published, signal_only=False)
+        if changed or changed_signals:
+            notify_text = build_alert(
+                previous_components,
+                merged,
+                changed,
+                url,
+                published,
+                signal_only=False,
+                signals=merged_signals,
+                changed_signals=changed_signals,
+            )
             latest_components = merged
+            latest_signals = merged_signals
             latest_source = url or latest_source
             latest_as_of = published_date or now.date().isoformat()
         elif is_new_url and is_after_baseline and exact_weekly_signal:
-            notify_text = build_alert(previous_components, merged, [], url, published, signal_only=True)
+            notify_text = build_alert(
+                previous_components,
+                merged,
+                [],
+                url,
+                published,
+                signal_only=True,
+                signals=extracted_signals,
+                changed_signals=[],
+            )
+            latest_signals = merged_signals
             latest_source = url or latest_source
             latest_as_of = published_date or now.date().isoformat()
 
@@ -560,6 +697,7 @@ def main() -> None:
         "as_of": latest_as_of,
         "source": latest_source,
         "components": latest_components,
+        "signals": latest_signals,
         "seen_urls": sorted(new_seen)[-120:],
         "last_checked_at_kst": now.isoformat(timespec="seconds"),
         "candidate_count": len(candidates),
