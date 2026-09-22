@@ -1,16 +1,184 @@
 {
   "schema_version": 1,
   "records": [
-    {"key":"wafer_share|trendforce|industry|2026-YE","axis":"wafer_share","value":22,"unit":"pct","period":"2026-YE","as_of":"2026-06-02","evidence":"research","source_url":"https://www.trendforce.com/presscenter/news/20260602-13074.html","source_title":"트렌드포스 HBM 웨이퍼 배분 전망","source":"TrendForce","scope":"year_end_forecast","excerpt":"주요 3사 연말 전망, 연평균·확정 생산량 아님"},
-    {"key":"wafer_share|trendforce|industry|2027-YE","axis":"wafer_share","value":30,"unit":"pct","period":"2027-YE","as_of":"2026-06-02","evidence":"research","source_url":"https://www.trendforce.com/presscenter/news/20260602-13074.html","source_title":"트렌드포스 HBM 웨이퍼 배분 전망","source":"TrendForce","scope":"year_end_forecast","excerpt":"주요 3사 연말 전망, 연평균·확정 생산량 아님"},
-    {"key":"bit_share|trendforce|industry|2026-YE","axis":"bit_share","value":9,"unit":"pct","period":"2026-YE","as_of":"2026-06-02","evidence":"research","source_url":"https://www.trendforce.com/presscenter/news/20260602-13074.html","source_title":"트렌드포스 HBM 비트 공급 비중 전망","source":"TrendForce","scope":"year_end_forecast","excerpt":"웨이퍼 투입 비중과 분모가 다름"},
-    {"key":"bit_share|trendforce|industry|2027-YE","axis":"bit_share","value":13,"unit":"pct","period":"2027-YE","as_of":"2026-06-02","evidence":"research","source_url":"https://www.trendforce.com/presscenter/news/20260602-13074.html","source_title":"트렌드포스 HBM 비트 공급 비중 전망","source":"TrendForce","scope":"year_end_forecast","excerpt":"웨이퍼 투입 비중과 분모가 다름"},
-    {"key":"hbm_config|samsung|HBM4|12Hi|catalog","axis":"hbm_config","value":{"die_gbit":24,"layers":12,"stack_gbyte":36},"unit":"GB/stack","period":"catalog","as_of":"2026-09-21","evidence":"user_capture","source_url":"https://semiconductor.samsung.com/dram/hbm/","source_title":"사용자 제공 HBM 구성 비교 기준선","source":"사용자 캡처·제품자료 비교","scope":"product_capability_not_customer_contract","excerpt":"칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"},
-    {"key":"hbm_config|samsung|HBM4E|8Hi|catalog","axis":"hbm_config","value":{"die_gbit":32,"layers":8,"stack_gbyte":32},"unit":"GB/stack","period":"catalog","as_of":"2026-09-21","evidence":"user_capture","source_url":"https://semiconductor.samsung.com/dram/hbm/","source_title":"사용자 제공 HBM 구성 비교 기준선","source":"사용자 캡처·제품자료 비교","scope":"product_capability_not_customer_contract","excerpt":"칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"},
-    {"key":"hbm_config|samsung|HBM4E|12Hi|catalog","axis":"hbm_config","value":{"die_gbit":32,"layers":12,"stack_gbyte":48},"unit":"GB/stack","period":"catalog","as_of":"2026-09-21","evidence":"user_capture","source_url":"https://semiconductor.samsung.com/dram/hbm/","source_title":"사용자 제공 HBM 구성 비교 기준선","source":"사용자 캡처·제품자료 비교","scope":"product_capability_not_customer_contract","excerpt":"칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"},
-    {"key":"carrier_cleaning|samsung|2026","axis":"carrier_cleaning","value":20000,"unit":"cleaning_passes/month","period":"2026","as_of":"2026-09-21","evidence":"reported","source_url":"https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1","source_title":"삼성 HBM 유리 지지판 외주 세정 물량 전망","source":"글로벌이코노믹·사용자 제공 본문","scope":"reusable_carrier_service_not_wafer_output","excerpt":"재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"},
-    {"key":"carrier_cleaning|samsung|2027","axis":"carrier_cleaning","value":50000,"unit":"cleaning_passes/month","period":"2027","as_of":"2026-09-21","evidence":"reported","source_url":"https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1","source_title":"삼성 HBM 유리 지지판 외주 세정 물량 전망","source":"글로벌이코노믹·사용자 제공 본문","scope":"reusable_carrier_service_not_wafer_output","excerpt":"재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"},
-    {"key":"fab_stage|samsung|P5_Fab1","axis":"fab_stage","value":{"year":2028,"stage":"plan"},"unit":"year/stage","period":"2028","as_of":"2026-09-21","evidence":"reported","source_url":"https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1","source_title":"P5 Fab1 2028년 가동 목표","source":"글로벌이코노믹·사용자 제공 본문","scope":"fab_start_not_full_output","excerpt":"회사 관계자 인용 보도, 가동 목표와 본격 출하 기여는 별도"}
+    {
+      "key": "wafer_share|trendforce|industry|2026-YE",
+      "axis": "wafer_share",
+      "value": 22,
+      "unit": "pct",
+      "period": "2026-YE",
+      "as_of": "2026-06-02",
+      "evidence": "research",
+      "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+      "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
+      "source": "TrendForce",
+      "scope": "year_end_forecast",
+      "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
+    },
+    {
+      "key": "wafer_share|trendforce|industry|2027-YE",
+      "axis": "wafer_share",
+      "value": 30,
+      "unit": "pct",
+      "period": "2027-YE",
+      "as_of": "2026-06-02",
+      "evidence": "research",
+      "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+      "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
+      "source": "TrendForce",
+      "scope": "year_end_forecast",
+      "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
+    },
+    {
+      "key": "bit_share|trendforce|industry|2026-YE",
+      "axis": "bit_share",
+      "value": 9,
+      "unit": "pct",
+      "period": "2026-YE",
+      "as_of": "2026-06-02",
+      "evidence": "research",
+      "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+      "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
+      "source": "TrendForce",
+      "scope": "year_end_forecast",
+      "excerpt": "웨이퍼 투입 비중과 분모가 다름"
+    },
+    {
+      "key": "bit_share|trendforce|industry|2027-YE",
+      "axis": "bit_share",
+      "value": 13,
+      "unit": "pct",
+      "period": "2027-YE",
+      "as_of": "2026-06-02",
+      "evidence": "research",
+      "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+      "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
+      "source": "TrendForce",
+      "scope": "year_end_forecast",
+      "excerpt": "웨이퍼 투입 비중과 분모가 다름"
+    },
+    {
+      "key": "hbm_config|samsung|HBM4|12Hi|catalog",
+      "axis": "hbm_config",
+      "value": {
+        "die_gbit": 24,
+        "layers": 12,
+        "stack_gbyte": 36
+      },
+      "unit": "GB/stack",
+      "period": "catalog",
+      "as_of": "2026-09-21",
+      "evidence": "user_capture",
+      "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+      "source_title": "사용자 제공 HBM 구성 비교 기준선",
+      "source": "사용자 캡처·제품자료 비교",
+      "scope": "product_capability_not_customer_contract",
+      "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+    },
+    {
+      "key": "hbm_config|samsung|HBM4E|8Hi|catalog",
+      "axis": "hbm_config",
+      "value": {
+        "die_gbit": 32,
+        "layers": 8,
+        "stack_gbyte": 32
+      },
+      "unit": "GB/stack",
+      "period": "catalog",
+      "as_of": "2026-09-21",
+      "evidence": "user_capture",
+      "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+      "source_title": "사용자 제공 HBM 구성 비교 기준선",
+      "source": "사용자 캡처·제품자료 비교",
+      "scope": "product_capability_not_customer_contract",
+      "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+    },
+    {
+      "key": "hbm_config|samsung|HBM4E|12Hi|catalog",
+      "axis": "hbm_config",
+      "value": {
+        "die_gbit": 32,
+        "layers": 12,
+        "stack_gbyte": 48
+      },
+      "unit": "GB/stack",
+      "period": "catalog",
+      "as_of": "2026-09-21",
+      "evidence": "user_capture",
+      "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+      "source_title": "사용자 제공 HBM 구성 비교 기준선",
+      "source": "사용자 캡처·제품자료 비교",
+      "scope": "product_capability_not_customer_contract",
+      "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+    },
+    {
+      "key": "carrier_cleaning|samsung|2026",
+      "axis": "carrier_cleaning",
+      "value": 20000,
+      "unit": "cleaning_passes/month",
+      "period": "2026",
+      "as_of": "2026-09-21",
+      "evidence": "reported",
+      "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+      "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
+      "source": "글로벌이코노믹·사용자 제공 본문",
+      "scope": "reusable_carrier_service_not_wafer_output",
+      "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
+    },
+    {
+      "key": "carrier_cleaning|samsung|2027",
+      "axis": "carrier_cleaning",
+      "value": 50000,
+      "unit": "cleaning_passes/month",
+      "period": "2027",
+      "as_of": "2026-09-21",
+      "evidence": "reported",
+      "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+      "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
+      "source": "글로벌이코노믹·사용자 제공 본문",
+      "scope": "reusable_carrier_service_not_wafer_output",
+      "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
+    },
+    {
+      "key": "fab_stage|samsung|P5_Fab1",
+      "axis": "fab_stage",
+      "value": {
+        "year": 2028,
+        "stage": "plan"
+      },
+      "unit": "year/stage",
+      "period": "2028",
+      "as_of": "2026-09-21",
+      "evidence": "reported",
+      "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+      "source_title": "P5 Fab1 2028년 가동 목표",
+      "source": "글로벌이코노믹·사용자 제공 본문",
+      "scope": "fab_start_not_full_output",
+      "excerpt": "회사 관계자 인용 보도, 가동 목표와 본격 출하 기여는 별도"
+    },
+    {
+      "key": "malaysia_hsk10_export|KR|MY|8542323000",
+      "axis": "malaysia_hsk10_export",
+      "value": {
+        "amount_usd": 1624540000,
+        "weight_kg": 3800,
+        "weight_kg_previous_yoy": 1400,
+        "yoy_pct": 466.6,
+        "taiwan_amount_usd": 3322110000,
+        "malaysia_vs_taiwan_pct": 48.9,
+        "jan_aug_amount_usd": 6314240000,
+        "weight_rounded_from_public_text": true
+      },
+      "unit": "USD/kg",
+      "period": "2026-08",
+      "as_of": "2026-09-22",
+      "evidence": "reported",
+      "source_url": "https://biz.chosun.com/it-science/ict/2026/09/22/NGJ2RJYZARGN3JSVXPUEIE6XRA/?outputType=amp",
+      "source_title": "AI 반도체 패키징 증설 몰리는 말레이시아… 韓 HBM 관련 수출 1년 새 4.7배 증가",
+      "source": "조선비즈·관세청 수출입무역통계 인용",
+      "scope": "HBM_included_multichip_IC_not_HBM_only",
+      "excerpt": "2026년 8월 말레이시아향 HSK 8542323000 수출 16억2454만달러, 전년동월 +466.6%, 중량 약 1.4t→3.8t, 대만향 33억2211만달러의 48.9%. 중량은 기사 반올림값."
+    }
   ],
   "user_capture": {
     "basis": "사용자 제공 SK증권 캡처; 원시 현물·고정거래가격과 기준일 독립 확인 전",
@@ -23,10 +191,32 @@
     "note": "16Gb 칩과 16GB 모듈은 별도. 동일 규격·속도의 현물과 고정거래 원값 및 각 기준일을 확보한 후 새 프리미엄을 계산한다."
   },
   "calculation_cases": [
-    {"label":"36GB → 32GB; 동일 묶음 수 가정","old_stack_gb":36,"new_stack_gb":32,"capacity_change_pct":-11.11111111111111,"gpu_growth_break_even_pct":12.5},
-    {"label":"48GB → 32GB; 동일 묶음 수 가정","old_stack_gb":48,"new_stack_gb":32,"capacity_change_pct":-33.33333333333333,"gpu_growth_break_even_pct":50.0}
+    {
+      "label": "36GB → 32GB; 동일 묶음 수 가정",
+      "old_stack_gb": 36,
+      "new_stack_gb": 32,
+      "capacity_change_pct": -11.11111111111111,
+      "gpu_growth_break_even_pct": 12.5
+    },
+    {
+      "label": "48GB → 32GB; 동일 묶음 수 가정",
+      "old_stack_gb": 48,
+      "new_stack_gb": 32,
+      "capacity_change_pct": -33.33333333333333,
+      "gpu_growth_break_even_pct": 50
+    }
   ],
   "recovered_deliveries": [
-    {"title":"[단독] 삼성전자, 내년 HBM4·4E 생산 2배 늘린다 - sedaily.com","description":"","source":"sedaily.com","published_at_kst":"2026-09-20T16:33:51+09:00","direct_link":"https://www.sedaily.com/article/20093074","message_id":133,"confirmed_at_kst":"2026-09-21T18:17:34+09:00","workflow_run_id":35582233557,"evidence":"다운로드한 실패 실행 산출물의 알림 본문과 Telegram 응답 일치"}
+    {
+      "title": "[단독] 삼성전자, 내년 HBM4·4E 생산 2배 늘린다 - sedaily.com",
+      "description": "",
+      "source": "sedaily.com",
+      "published_at_kst": "2026-09-20T16:33:51+09:00",
+      "direct_link": "https://www.sedaily.com/article/20093074",
+      "message_id": 133,
+      "confirmed_at_kst": "2026-09-21T18:17:34+09:00",
+      "workflow_run_id": 35582233557,
+      "evidence": "다운로드한 실패 실행 산출물의 알림 본문과 Telegram 응답 일치"
+    }
   ]
 }
