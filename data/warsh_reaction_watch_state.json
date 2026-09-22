@@ -22,8 +22,10 @@
       "key": "September 16, 2026"
     }
   },
-  "last_errors": [],
-  "updated_at_utc": "2026-09-20T01:19:34.714253+00:00",
+  "last_errors": [
+    "BLS: HTTP Error 503: Service Unavailable"
+  ],
+  "updated_at_utc": "2026-09-22T13:30:36.499959+00:00",
   "fomc_korean_translation_v1": {
     "sent": true,
     "key": "September 16, 2026",
