@@ -269,6 +269,9 @@ class Watch:
         self.last_flow_poll = 0.0; self.flow_task: asyncio.Task | None = None
         self.msg_ids: list[int] = []; self.raw: dict[str, Any] = {}
         self.monitor_started_ts = time.time()
+        self.last_idx_tick_ts: float | None = None
+        self.last_fut_tick_ts: float | None = None
+        self.last_flow_success_ts: float | None = None
 
     @staticmethod
     def _nearest(buf: deque[tuple[float, float]], ts: float) -> tuple[float, float] | None:
@@ -515,6 +518,8 @@ class Watch:
                 snap = await asyncio.to_thread(fetch_flow_snapshot, self.token)
                 self.flows.append(snap)
                 self.raw["last_flow_snapshot"] = snap
+                if snap.get("현물") is not None and snap.get("선물") is not None and snap.get("프로그램") is not None:
+                    self.last_flow_success_ts = time.time()
                 cutoff = time.time() - FLOW_LOOKBACK_SEC
                 while self.flows and float(self.flows[0].get("ts", 0)) < cutoff:
                     self.flows.popleft()
@@ -563,6 +568,7 @@ class Watch:
             j = fnum(data.get("jisu"))
             if j is not None and j > 0:
                 self.idx.append((t, j))
+                self.last_idx_tick_ts = t
                 cutoff = t - PRICE_LOOKBACK_SEC
                 while self.idx and self.idx[0][0] < cutoff:
                     self.idx.popleft()
@@ -570,6 +576,7 @@ class Watch:
             p = fnum(data.get("price"))
             if p is not None and p > 0:
                 self.fut.append((t, p))
+                self.last_fut_tick_ts = t
         elif trcode == "OC0":
             p = fnum(data.get("price"))
             if p is not None and p >= 0:
@@ -606,6 +613,17 @@ class Watch:
                 now = dt.datetime.now(KST)
                 if test_seconds is not None and time.time() - started >= test_seconds: break
                 if test_seconds is None and now.time() >= until: break
+
+                # production 장중 생존검사: 프로세스만 살아 있고 데이터가 멈춘 상태를 허용하지 않는다.
+                if test_seconds is None and dt.time(9, 2) <= now.time() < until and time.time() - started >= 180:
+                    now_ts = time.time()
+                    if self.last_idx_tick_ts is None or now_ts - self.last_idx_tick_ts > 75:
+                        raise RuntimeError("KOSPI realtime feed stale >75s")
+                    if self.last_fut_tick_ts is None or now_ts - self.last_fut_tick_ts > 90:
+                        raise RuntimeError("KOSPI200 futures feed stale >90s")
+                    if self.last_flow_success_ts is None or now_ts - self.last_flow_success_ts > 120:
+                        raise RuntimeError("LS spot/futures/program flow snapshot stale >120s")
+
                 await self.evaluate()
                 await asyncio.sleep(1)
         finally:
