@@ -140,27 +140,29 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-23T06:36:11+09:00",
-  "last_event_count": 74,
+  "updated_at_kst": "2026-09-23T07:22:03+09:00",
+  "last_event_count": 73,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
-  "official_month": "",
-  "official_data_ok": false,
+  "official_month": "202608",
+  "official_data_ok": true,
   "official_errors": [
-    "관세청 세션 초기화 실패: ConnectTimeout",
-    "공공데이터포털 전국 API 실패: ConnectTimeout; fallback=전국 202608 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 시도 API 실패: ConnectTimeout; fallback=충남 202608 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 시도 API 실패: ConnectTimeout; fallback=충북 202608 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 국가별 품목 API MY 실패: ConnectTimeout",
-    "이천 202608 KCS 조회 실패: ConnectTimeout"
+    "공공데이터포털 국가별 품목 API MY 오류 None: ",
+    "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "공공데이터포털 국가별 품목 API MY 오류 None: ",
+    "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "공공데이터포털 국가별 품목 API MY 오류 None: ",
+    "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "공공데이터포털 국가별 품목 API MY 오류 None: ",
+    "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
   ],
   "last_official_alert_month": "202608",
   "official_api_key_configured": true,
-  "official_api_used": false,
+  "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-23T04:01:13+09:00",
+  "last_successful_official_at_kst": "2026-09-23T07:22:03+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -624,7 +626,7 @@
         "period": "2026",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
         "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - g-enews.com",
         "source": "g-enews.com",
         "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
@@ -638,7 +640,7 @@
         "period": "2027",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
         "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - g-enews.com",
         "source": "g-enews.com",
         "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
@@ -655,7 +657,7 @@
         "period": "2028",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
         "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - g-enews.com",
         "source": "g-enews.com",
         "excerpt": "삼성전자에 따르면 평택 P5 Fab1은 2028년 가동을 목표로 하고 있다.",
@@ -696,7 +698,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-23T06:36:11+09:00",
+      "last_checked_at_kst": "2026-09-23T07:22:03+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -750,7 +752,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-23T06:39:50+09:00",
+    "checked_at_kst": "2026-09-23T07:24:17+09:00",
     "status": "no_message_due"
   }
 }
