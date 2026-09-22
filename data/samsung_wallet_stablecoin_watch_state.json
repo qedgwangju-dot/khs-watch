@@ -4,7 +4,7 @@
       "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE52LTlRckRVZW9IYjdhOEEyaDZoZGoyaWVIY2h0aUNqbmdSV2dHMkd5WnoyMnhSYmotY3lBaWNDZjA5aFByRWdhTVJPNTUtaE1P?oc=5",
       "published_utc": "2026-09-18T08:56:28+00:00",
       "source": "Google News RSS",
-      "title": "삼성전자, 삼성월렛 '스테이블코인 결제' 사업 본격화…\"美서 인력 채용\" - 블루밍비트"
+      "title": "삼성전자, 삼성월렛 '스테이블코인 결제' 사업 본격화…\"美서 인력 채용\" - bloomingbit.io"
     },
     {
       "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFBPQjhjVEZiUnhna2JqZ2kyT0dudVV5ejc0cV9RdFVFNG9iSTBUejJVUWxlUVFLQW1EVm5tUVF4MDNXRVIwVWozREVId2JCU0UydVFzOXNieXEyS3piSmxyMzEzbWF2dmJ2Zk1tYmRFc19FZw?oc=5",
@@ -20,8 +20,10 @@
     }
   ],
   "official": {
-    "article_confirmed": true,
-    "errors": [],
+    "article_confirmed": false,
+    "errors": [
+      "digitalasset: HTTP Error 403: Forbidden"
+    ],
     "job_fetch_ok": true,
     "job_stablecoin_confirmed": false,
     "samsung_support_confirmed": true
@@ -36,5 +38,5 @@
     "support_plan": true,
     "topic": "Samsung Wallet stablecoin adoption"
   },
-  "updated_at_kst": "2026-09-22T15:13:17+09:00"
+  "updated_at_kst": "2026-09-22T20:40:19+09:00"
 }
