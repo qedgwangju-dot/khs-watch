@@ -13,7 +13,7 @@ on:
       - "scripts/hbm_delivery.py"
       - "scripts/hbm_memory_axes.py"
       - "data/hbm_memory_baselines.json"
-      - "tests/test_hbm_integration.py"
+      - "tests/test_hbm*.py"
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -56,7 +56,7 @@ jobs:
       - name: Validate code and memory/delivery regression tests
         run: |
           python -m py_compile scripts/hbm_delivery.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/skhynix_us_memory_watch.py
-          python -m unittest discover -s tests -p test_hbm_integration.py -v
+          python -m unittest discover -s tests -p 'test_hbm*.py' -v
 
       - name: Validate existing Telegram destination without sending
         run: python scripts/hbm_delivery.py check
