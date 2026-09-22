@@ -2,7 +2,10 @@ name: KOSPI LS Realtime Derivatives Flow Watch
 
 on:
   schedule:
-    - cron: "22 0 * * 1-5"
+    - cron: "50 8 * * 1-5"
+      timezone: "Asia/Seoul"
+    - cron: "0,10,20,30,40 9 * * 1-5"
+      timezone: "Asia/Seoul"
   workflow_dispatch:
     inputs:
       mode:
@@ -29,7 +32,7 @@ concurrency:
 jobs:
   watch:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 420
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
