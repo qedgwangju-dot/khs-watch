@@ -406,11 +406,16 @@ def biggest_current_change(old: dict, new: dict) -> tuple[str, float] | None:
 def source_score(url: str, components: dict, text: str) -> int:
     host = (urlparse(url).hostname or "").lower()
     score = len(components) * 10
+    # 공식 원문이 일부 필드만 노출하더라도 2차 재인용보다 항상 우선한다.
     if "trendforce.com" in host:
-        score += 40
-    if host.endswith("x.com") and "/trendforce" in url.lower():
-        score += 35
+        score += 1000
+    elif host.endswith("x.com") and "/trendforce" in url.lower():
+        score += 900
+    elif "trendforce" in text.lower():
+        score += 100
     if "current vs balanced" in text.lower():
+        score += 20
+    if "weekly radar" in text.lower():
         score += 20
     return score
 
@@ -520,6 +525,15 @@ def fmt_change(old_entry: dict, new_entry: dict) -> str:
     return ", ".join(parts) if parts else "동일"
 
 
+def evidence_note(name: str, evidence: dict[str, set[str]] | None, field: str) -> str:
+    if evidence is None:
+        return ""
+    fields = evidence.get(name) or set()
+    if field in fields:
+        return ""
+    return " (직전 확정값 유지·이번 주 직접 판독 미확인)"
+
+
 def build_alert(
     old: dict,
     new: dict,
@@ -529,10 +543,21 @@ def build_alert(
     signal_only: bool,
     signals: dict[str, str] | None = None,
     changed_signals: list[str] | None = None,
+    evidence: dict[str, set[str]] | None = None,
 ) -> str:
     signals = signals or {}
     changed_signals = changed_signals or []
     lines = ["<b>🚨 AI 부품 리드타임 감시 — 변화 감지</b>", "", "<b>무엇이 달라졌나</b>"]
+
+    if evidence is not None:
+        missing_status = [name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
+                          if "status" not in (evidence.get(name) or set())]
+        if missing_status:
+            lines.append(
+                "• ⚠️ 이번 주 공식 공개본문에서 상태를 직접 판독하지 못한 품목: "
+                + ", ".join(html.escape(x) for x in missing_status)
+                + ". 해당 상태는 직전 확정값을 유지하며 새 상태로 추정하지 않습니다."
+            )
 
     biggest = biggest_current_change(old, new)
     if biggest:
@@ -578,11 +603,14 @@ def build_alert(
     for name in order:
         entry = new.get(name) or old.get(name) or {}
         change = fmt_change(old.get(name) or {}, entry)
+        current_text = fmt_week(entry.get("current")) + evidence_note(name, evidence, "current")
+        balanced_text = fmt_week(entry.get("balanced")) + evidence_note(name, evidence, "balanced")
+        status_text = fmt_status(entry) + evidence_note(name, evidence, "status")
         lines.append(
             f"• <b>{html.escape(name)}</b> | "
-            f"현재 {html.escape(fmt_week(entry.get('current')))} | "
-            f"균형 {html.escape(fmt_week(entry.get('balanced')))} | "
-            f"상태 {html.escape(fmt_status(entry))} | "
+            f"현재 {html.escape(current_text)} | "
+            f"균형 {html.escape(balanced_text)} | "
+            f"상태 {html.escape(status_text)} | "
             f"전주 대비 {html.escape(change)}"
         )
 
@@ -695,6 +723,7 @@ def main() -> None:
             new_seen.add(url)
         extracted = best.get("components") or {}
         extracted_signals = best.get("signals") or {}
+        evidence = {name: set(entry.keys()) for name, entry in extracted.items()}
 
         merged = copy.deepcopy(previous_components)
         for name, entry in extracted.items():
@@ -734,6 +763,7 @@ def main() -> None:
                 signals=merged_signals,
                 # 새 Weekly Radar에서는 이번 주 확인된 원인·병목 신호를 모두 보여준다.
                 changed_signals=[name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
+                evidence=evidence,
             )
             notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
             latest_components = merged
@@ -750,6 +780,7 @@ def main() -> None:
                 signal_only=True,
                 signals=extracted_signals,
                 changed_signals=[name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
+                evidence=evidence,
             )
             notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
             latest_signals = merged_signals
