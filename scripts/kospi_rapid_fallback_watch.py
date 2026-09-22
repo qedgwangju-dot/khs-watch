@@ -153,7 +153,7 @@ def build_alert(now: dt.datetime, cur: float, high: float, dd: float,
         lines += attribution_html_lines(attribution)
     else:
         lines += ["<b>누가 밀었나 · 급락구간 수급</b>",
-                  f"• LS 주체별 수급 조회 실패 — 가격 경보는 유지하고 원인 주체는 확정하지 않음{': ' + html.escape(attribution_error) if attribution_error else ''}"]
+                  f"• 가격 안전망만 발동 — 정확한 사건구간 현물·선물·프로그램이 모두 확보되지 않아 원인 주체 확정 보류{': ' + html.escape(attribution_error) if attribution_error else ''}"]
     lines += ["", "<b>읽는 법</b>",
               "• <b>급락구간 변화량</b>이 원인 판정의 우선 기준입니다. 하루 누적 순매수만 보고 '누가 밀었다'고 단정하지 않습니다.",
               "• 외국인·기관·개인의 현물 매도와 KOSPI200·선물 동조, 프로그램 매도까지 겹칠수록 원인 확신도를 높입니다.",
@@ -215,12 +215,26 @@ def main() -> int:
     msg_id = None
     attribution = None
     attribution_error = None
+    primary_alive = (os.getenv("KOSPI_REALTIME_WATCH_ACTIVE") or "").strip() == "1"
     window = 15 if fast15_hit else 30
+    if reasons and primary_alive:
+        # 주 실시간 사건구간 감시가 살아 있으면 안전망은 중복 발송하지 않는다.
+        write_status(now, "주 실시간 감시 정상 — 안전망 중복 발송 억제", {
+            "데이터 경로": data.get("source"), "KOSPI": f"{cur:,.2f}",
+            "장중 고점": f"{session_high:,.2f}", "고점 대비": f"{dd:+.2f}%",
+        })
+        save_pending(state)
+        return 0
     if reasons:
-        try:
-            attribution = fetch_attribution(window_minutes=window)
-        except Exception as exc:
-            attribution_error = f"{type(exc).__name__}: {exc}"
+        # 장중고점 대비 하락만으로는 정확한 사건 시작시각을 알 수 없으므로
+        # 임의 30분 수급을 '급락 원인'으로 붙이지 않는다.
+        if fast_hit:
+            try:
+                attribution = fetch_attribution(window_minutes=window)
+            except Exception as exc:
+                attribution_error = f"{type(exc).__name__}: {exc}"
+        else:
+            attribution_error = "장중 고점 대비 안전망 경보 — 정확한 사건구간 수급은 주 실시간 감시에서 판정"
         msg_id = telegram_send(build_alert(now, cur, session_high, dd, m15, m30,
                                            reasons, attribution, attribution_error))
         if session_hit:
