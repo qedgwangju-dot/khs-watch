@@ -2034,6 +2034,10 @@ def main() -> None:
         official.get("series", {}).get(official_month, {}).get("malaysia_amount")
         if official and official_month else None
     )
+    current_malaysia_weight = (
+        official.get("series", {}).get(official_month, {}).get("malaysia_weight")
+        if official and official_month else None
+    )
     previous_malaysia_amount = state.get("malaysia_hsk10_amount_usd")
     malaysia_revision_due = bool(
         official
@@ -2129,6 +2133,7 @@ def main() -> None:
         "official_api_used": bool(official and official.get("official_api_used")),
         "malaysia_official_month": official_month if official else state.get("malaysia_official_month", ""),
         "malaysia_hsk10_amount_usd": current_malaysia_amount,
+        "malaysia_hsk10_weight_kg": current_malaysia_weight,
         "malaysia_public_available": bool(official and official.get("malaysia_public_available")),
         "malaysia_revision_due": malaysia_revision_due,
         "official_errors": [re.sub(r"serviceKey=[^&\s]+", "serviceKey=<redacted>", str(x)) for x in official_errors[-8:]],
@@ -2162,6 +2167,7 @@ def main() -> None:
         f"- official_api_used: {str(bool(official and official.get('official_api_used'))).lower()}\n"
         f"- malaysia_public_available: {str(bool(official and official.get('malaysia_public_available'))).lower()}\n"
         f"- malaysia_hsk10_amount_usd: {current_malaysia_amount if current_malaysia_amount is not None else 'none'}\n"
+        f"- malaysia_hsk10_weight_kg: {current_malaysia_weight if current_malaysia_weight is not None else 'none'}\n"
         f"- malaysia_revision_due: {str(malaysia_revision_due).lower()}\n"
         f"- official_errors: {len(official_errors)}\n"
         f"- alert_generated: {str(monthly_due or bool(send_events)).lower()}\n",
