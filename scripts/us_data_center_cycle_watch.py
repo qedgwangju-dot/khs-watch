@@ -28,7 +28,7 @@ ALERT_PATH = OUT_DIR / "us_data_center_cycle_alert.txt"
 PENDING_PATH = OUT_DIR / "us_data_center_cycle_state_pending.json"
 STATUS_PATH = OUT_DIR / "us_data_center_cycle_status.md"
 ERROR_PATH = OUT_DIR / "us_data_center_cycle_errors.log"
-FORMAT_VERSION = 7
+FORMAT_VERSION = 6
 KST = ZoneInfo("Asia/Seoul")
 
 HEADERS = {
