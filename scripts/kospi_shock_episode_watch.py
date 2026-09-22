@@ -267,7 +267,8 @@ class Watch:
         self.flows: deque[dict[str, Any]] = deque(maxlen=2500)
         self.front_future = ""; self.episode: dict[str, Any] | None = None
         self.last_flow_poll = 0.0; self.flow_task: asyncio.Task | None = None
-        self.msg_ids: list[int] = []; self.raw: dict[str, Any] = {}\n        self.monitor_started_ts = time.time()
+        self.msg_ids: list[int] = []; self.raw: dict[str, Any] = {}
+        self.monitor_started_ts = time.time()
 
     @staticmethod
     def _nearest(buf: deque[tuple[float, float]], ts: float) -> tuple[float, float] | None:
