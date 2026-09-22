@@ -138,6 +138,10 @@ QUERIES = [
     '"Intel Malaysia" EMIB HBM advanced packaging Penang Kulim',
     '"Malaysia" HBM EMIB Intel advanced packaging',
     '"말레이시아" HBM Intel EMIB 첨단 패키징 Penang Kulim',
+    '"Malaysia" HBM advanced packaging ASE Penang expansion',
+    '"TF-AMD" Malaysia advanced packaging HBM Batu Kawan',
+    '"Malaysia Advanced Packaging Consortium" HBM4 prototype',
+    '"MAPC" HBM4 Malaysia prototype validation',
     '"J.P. Morgan" HBM market share Samsung SK hynix Micron',
     '"JP Morgan" HBM share 2027 Samsung SK hynix',
     '"UBS" HBM market share Samsung SK hynix Micron',
@@ -156,7 +160,8 @@ TRUSTED = (
     "zdnet", "the elec", "thelec", "digitimes",
     "yonhap", "연합뉴스", "chosunbiz", "조선비즈", "newsis", "뉴시스",
     "kita", "한국무역협회", "k-stat", "trass", "한국무역통계진흥원",
-    "customs", "관세청", "icheon", "이천시", "intel",
+    "customs", "관세청", "icheon", "이천시", "intel", "ase", "tf-amd", "tf amd",
+    "mapc", "mosti", "mida", "the edge malaysia",
 )
 
 LOW_VALUE = ("aol", "finance.biggo", "24/7 wall st", "247wallst", "cryptobriefing")
@@ -256,7 +261,11 @@ def relevant(text: str) -> bool:
     malaysia_proxy = (
         any(k in low for k in ("malaysia", "말레이시아", "penang", "kulim"))
         and any(k in low for k in ("hbm", "emib", "advanced packaging", "첨단 패키징", "packaging"))
-        and any(k in low for k in ("shipment", "export", "production", "capacity", "investment", "expand", "ramp", "출하", "수출", "생산", "캐파", "투자", "증설", "양산"))
+        and any(k in low for k in (
+            "shipment", "export", "production", "capacity", "investment", "expand", "ramp",
+            "prototype", "pilot", "validation", "test facility", "qualification",
+            "출하", "수출", "생산", "캐파", "투자", "증설", "양산", "프로토타입", "시제품", "실증", "검증", "테스트 시설"
+        ))
     )
     price_proxy = (
         "hbm" in low
@@ -422,11 +431,20 @@ def _request_with_retry(method: str, url: str, *, params=None, data=None, header
 
 
 def _xml_text(item, *names):
+    wanted = set(names)
     for name in names:
         val = item.findtext(name)
         if val not in (None, ""):
             return val
+    for child in item.iter():
+        tag = str(child.tag).split("}")[-1]
+        if tag in wanted and child.text not in (None, ""):
+            return child.text
     return None
+
+
+def _xml_items(root):
+    return [node for node in root.iter() if str(node.tag).split("}")[-1] == "item"]
 
 
 def fetch_data_go_item_month(month: str) -> tuple[dict | None, str]:
@@ -524,12 +542,19 @@ def fetch_data_go_country_item_month(month: str, cnty_cd: str = MALAYSIA_COUNTRY
         root = ET.fromstring(r.content)
     except Exception as exc:
         return None, _safe_error(f"공공데이터포털 국가별 품목 API {cnty_cd} 실패", exc)
-    code = root.findtext(".//resultCode")
-    msg = root.findtext(".//resultMsg") or ""
-    if code != "00":
+    code = _xml_text(root, "resultCode")
+    msg = _xml_text(root, "resultMsg", "errMsg", "returnAuthMsg") or ""
+    items = _xml_items(root)
+    # Some Data.go gateways wrap the payload with XML namespaces or omit the
+    # normal resultCode while still returning valid item rows. Prefer actual
+    # rows over a missing header, but never accept a non-00 explicit error.
+    if code not in (None, "", "00"):
         return None, f"공공데이터포털 국가별 품목 API {cnty_cd} 오류 {code}: {msg}"
+    if not items and code != "00":
+        preview = clean(r.text)[:180] if getattr(r, "text", "") else "empty"
+        return None, f"공공데이터포털 국가별 품목 API {cnty_cd} 응답형식 확인 필요: {preview}"
 
-    for item in root.findall(".//item"):
+    for item in items:
         period = re.sub(r"[^0-9]", "", _xml_text(item, "year") or "")
         hs = str(_xml_text(item, "hsCd", "hsCode") or "").replace(".", "")
         country = str(_xml_text(item, "statCd") or "").strip().upper()
@@ -952,7 +977,13 @@ def event_state_descriptor(e: dict) -> tuple[str, str, str]:
 
     company = "samsung" if ("samsung" in low or "삼성" in text) else (
         "skhynix" if ("sk hynix" in low or "sk하이닉스" in text or "하이닉스" in text) else (
-            "intel" if "intel" in low else "industry"
+            "intel" if "intel" in low else (
+                "ase" if re.search(r"\base\b", low) else (
+                    "tfamd" if ("tf-amd" in low or "tf amd" in low) else (
+                        "mapc" if ("malaysia advanced packaging consortium" in low or re.search(r"\bmapc\b", low)) else "industry"
+                    )
+                )
+            )
         )
     )
     products = []
@@ -997,6 +1028,10 @@ def event_state_descriptor(e: dict) -> tuple[str, str, str]:
         ("contract", ("contract", "계약", "수주")),
         ("capacity", ("capacity", "production", "output", "ramp", "증산", "생산능력", "캐파", "생산")),
         ("investment", ("capex", "investment", "증설", "설비투자", "투자")),
+        ("prototype", ("prototype", "프로토타입", "시제품")),
+        ("pilot", ("pilot", "실증")),
+        ("validation", ("validation", "qualification", "검증", "인증")),
+        ("test_facility", ("test facility", "테스트 시설")),
         ("share", ("market share", "점유율")),
         ("revenue", ("revenue", "매출")),
         ("price", ("price", "가격", "단가")),
