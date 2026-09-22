@@ -95,10 +95,10 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-22T17:16:06+09:00",
+  "updated_at_kst": "2026-09-22T17:19:16+09:00",
   "last_event_count": 77,
-  "last_fresh_new_count": 2,
-  "last_send_event_count": 2,
+  "last_fresh_new_count": 0,
+  "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
   "official_month": "202608",
@@ -117,7 +117,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-22T17:16:06+09:00",
+  "last_successful_official_at_kst": "2026-09-22T17:19:16+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -653,7 +653,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-22T17:16:06+09:00",
+      "last_checked_at_kst": "2026-09-22T17:19:16+09:00",
       "gaps": [],
       "observations": 2,
       "rdimm_paired_observations": 0
@@ -700,7 +700,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-22T17:18:23+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-09-22T17:20:52+09:00",
+    "status": "no_message_due"
   }
 }
