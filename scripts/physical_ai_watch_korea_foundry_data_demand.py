@@ -119,7 +119,14 @@ def score(item):
     title = item.get('title',''); text = f"{title} {item.get('description','')} {item.get('source','')}"; group = topic_group(text)
     if group not in {'pohang_robot_foundry','hyundai_robot_data_factory','robotis_excess_demand'}: return _orig_score(item)
     operational = FUNDING.search(text) or BUILD.search(text) or FOUNDRY_CUSTOMER.search(text) or SITE_SCALE.search(text) or EQUIPMENT_OPERATION.search(text) or DEMAND.search(text) or ROBOTIS_CAPACITY.search(text) or RAMP_QUALITY.search(text)
-    if PRICE_ONLY.search(title) and not operational: return -20
+    direct_title_operational = re.search(
+        r'수주|발주|주문|계약|양산|생산\\s*시작|생산\\s*능력|공장|증설|수율|월\\s*생산량|출하|납기|'
+        r'backlog|order|contract|mass\\s*production|production\\s*start|capacity|plant|factory|expansion|yield|shipment|lead\\s*time',
+        title,
+        re.I,
+    )
+    if PRICE_ONLY.search(title) and not direct_title_operational:
+        return -20
     source = item.get('source') or ''; s = 18
     if base.NUMERIC.search(text): s += 3
     if source in base.OFFICIAL_OR_PRIMARY: s += 7
