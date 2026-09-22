@@ -81,6 +81,9 @@ IPO = re.compile(r'\bIPO\b|initial\s+public\s+offering|기업공개|상장|\bS-1
 PREIPO = re.compile(r'pre[-\s]?IPO|프리\s*IPO|상장\s*전\s*투자\s*유치', re.I)
 PREIPO_UNDERWRITER = re.compile(r'(?:JP\s*Morgan|JPMorgan|JP모건|Goldman\s*Sachs|골드만삭스).{0,80}(?:underwriter|advisor|주관사|선정)|(?:underwriter|advisor|주관사|선정).{0,80}(?:JP\s*Morgan|JPMorgan|JP모건|Goldman\s*Sachs|골드만삭스)', re.I)
 PREIPO_AMOUNT = re.compile(r'\$?\s*1\s*(?:billion|bn)|10\s*억\s*달러|1조\s*4,?000억|1\.4\s*조', re.I)
+PREIPO_MARKETING = re.compile(r'investor\s*(?:marketing|outreach)|roadshow|information\s*memorandum|IM\s*(?:sent|distributed)|bookbuilding|기관\s*투자자\s*(?:모집|접촉)|투자자\s*마케팅|로드쇼|투자설명서\s*배포', re.I)
+PREIPO_COMMITMENT = re.compile(r'term\s*sheet|commitment|subscription\s*agreement|anchor\s*investor|투자\s*확약|투자\s*참여\s*(?:확정|결정)|텀시트|청약\s*계약', re.I)
+PREIPO_CLOSE = re.compile(r'funding\s*(?:closed|completed)|closing\s*(?:completed|done)|first\s*close|final\s*close|투자\s*유치\s*(?:완료|확정)|납입\s*(?:완료|종료)|자금\s*조달\s*(?:완료|확정)', re.I)
 IPO_FILING = re.compile(r'\bS-1\b|registration\s+statement|prospectus|underwriter|주관사|상장예비심사|listing\s+application|filed|filing|제출|신고서', re.I)
 IPO_DELAY = re.compile(r'unlikely|not\s+easy|difficult|delay|delayed|postpone|미뤄|연기|쉽지\s*않|가능성\s*낮|no\s+(?:specific\s+)?(?:timeline|timetable)', re.I)
 IPO_COMMENTARY = re.compile(r'2027|2028|2029|2030|unlikely|not\s+easy|difficult|timeline|timetable|valuation|unprofitable|loss|가능성|일정|기업가치|손실|적자|30,?000|3만', re.I)
@@ -165,9 +168,12 @@ def topic_group(text: str) -> str | None:
 def _ipo_stage(text: str) -> str:
     if not BOSTON.search(text): return ''
     if PREIPO.search(text):
-        if PREIPO_UNDERWRITER.search(text) and PREIPO_AMOUNT.search(text): return 'preipo_underwriter_fundraise'
+        if PREIPO_CLOSE.search(text): return 'preipo_close'
+        if PREIPO_COMMITMENT.search(text): return 'preipo_commitment'
+        if PREIPO_MARKETING.search(text): return 'preipo_marketing'
+        if PREIPO_UNDERWRITER.search(text) and PREIPO_AMOUNT.search(text): return 'preipo_underwriter_target'
         if PREIPO_UNDERWRITER.search(text): return 'preipo_underwriter'
-        if FUNDING.search(text) or PREIPO_AMOUNT.search(text): return 'preipo_fundraise'
+        if FUNDING.search(text) or PREIPO_AMOUNT.search(text): return 'preipo_fundraise_plan'
         return 'preipo'
     if not IPO.search(text): return ''
     if IPO_FILING.search(text):
@@ -188,8 +194,14 @@ def key(item: dict) -> str:
     if rmac_stage == 'training_operational':
         return hashlib.sha256(b'boston-dynamics|rmac|operational-training|2026-09-21').hexdigest()
     stage = _ipo_stage(text)
-    if stage in {'preipo_underwriter_fundraise','preipo_underwriter','preipo_fundraise','preipo'}:
+    if stage in {'preipo_underwriter_target','preipo_underwriter','preipo_fundraise_plan','preipo'}:
         return hashlib.sha256(b'boston-dynamics|2026-09-22|preipo|jpmorgan-goldman|1b-plus').hexdigest()
+    if stage == 'preipo_marketing':
+        return hashlib.sha256(b'boston-dynamics|preipo|investor-marketing-started').hexdigest()
+    if stage == 'preipo_commitment':
+        return hashlib.sha256(b'boston-dynamics|preipo|investor-commitment').hexdigest()
+    if stage == 'preipo_close':
+        return hashlib.sha256(b'boston-dynamics|preipo|funding-closed').hexdigest()
     if stage in {'delay','commentary'} and IPO_COMMENTARY.search(text):
         years = sorted(set(re.findall(r'20(?:27|28|29|30)', text)))
         # Semantic event key: publisher rewrites of the same timing narrative collapse,
@@ -220,8 +232,8 @@ def score(item: dict) -> int:
     if RMAC_EXPAND.search(text): s += 5
     if RMAC_OTHER_INDUSTRIES.search(text): s += 4
     if BOSTON.search(text) and (IPO.search(text) or PREIPO.search(text)): s += 9
-    if _ipo_stage(text) in {'preipo_underwriter_fundraise','preipo_underwriter'}: s += 12
-    if _ipo_stage(text) in {'preipo_underwriter_fundraise','preipo_fundraise'} and PREIPO_AMOUNT.search(text): s += 7
+    if _ipo_stage(text) in {'preipo_underwriter_target','preipo_underwriter'}: s += 12
+    if _ipo_stage(text) in {'preipo_underwriter_target','preipo_fundraise_plan'} and PREIPO_AMOUNT.search(text): s += 7
     if IPO_FILING.search(text): s += 8
     if IPO_DELAY.search(text): s += 5
     if VALUATION.search(text): s += 5
@@ -235,9 +247,12 @@ def _subcat(text: str) -> str:
     if _rmac_stage(text) == 'expansion_completed': return 'RMAC 10배 확장 완료·가동'
     if _rmac_stage(text) == 'external_industry_pilot': return 'RMAC 타 산업 고객 실증·데이터 확장'
     if _rmac_stage(text) == 'training_operational': return 'RMAC 제조현장 훈련·데이터 플라이휠'
-    if _ipo_stage(text) == 'preipo_underwriter_fundraise': return '프리IPO 주관사·10억달러+ 자금조달'
+    if _ipo_stage(text) == 'preipo_close': return '프리IPO 투자유치 완료·납입'
+    if _ipo_stage(text) == 'preipo_commitment': return '프리IPO 투자확약·조건 확정'
+    if _ipo_stage(text) == 'preipo_marketing': return '프리IPO 기관투자자 모집 개시'
+    if _ipo_stage(text) == 'preipo_underwriter_target': return '프리IPO 주관사·10억달러+ 조달목표'
     if _ipo_stage(text) == 'preipo_underwriter': return '프리IPO 주관사 선정'
-    if _ipo_stage(text) in {'preipo_fundraise','preipo'}: return '프리IPO 자금조달'
+    if _ipo_stage(text) in {'preipo_fundraise_plan','preipo'}: return '프리IPO 자금조달 계획'
     if BOSTON.search(text) and IPO_FILING.search(text): return '기업공개 절차 진전'
     if BOSTON.search(text) and IPO.search(text): return '기업공개·기업가치 시간표'
     if BOSTON.search(text) and OWNERSHIP.search(text): return '지분·완전자회사화'
