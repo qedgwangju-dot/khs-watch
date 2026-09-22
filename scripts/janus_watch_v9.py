@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import html
 import re
-import os
 import hashlib
 import sys
 import xml.etree.ElementTree as ET
@@ -314,13 +313,11 @@ _PREV_RENDER = j2.base.render_alert
 
 
 def _render_v9(events, fact_changes):
-    smr_events = [e for e in events if e.get("kind") in SMR_POLICY_KINDS]
+    # 한국 SMR 정책 알림의 단일 소유자는 khs_nuclear_policy_watch.py다.
+    # 이 Janus 경로의 기사/RSS는 증거 수집·교차검증용으로만 남기고,
+    # 기사 신규 여부만으로 Telegram 정책 알림을 절대 만들지 않는다.
     rest = [e for e in events if e.get("kind") not in SMR_POLICY_KINDS]
-    if os.getenv("DELEGATE_KOREA_SMR_POLICY_TO_KHS_POLICY_WATCH", "").lower() in {"1", "true", "yes"}:
-        smr_events = []
     parts = []
-    if smr_events:
-        parts.append(_render_smr_policy_cluster(smr_events))
     other = _PREV_RENDER(rest, fact_changes)
     if other:
         parts.append(other)
