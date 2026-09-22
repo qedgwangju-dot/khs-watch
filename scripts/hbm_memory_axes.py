@@ -1,5 +1,5 @@
-"""Typed memory-state extension to samsung_hbm_watch, in the existing HBM route.
-Numbers need a local product, unit, period and provenance. Missing data is not zero.
+"""Typed memory-state extension of the existing Samsung HBM collector.
+No new bot or schedule. Missing dates, denominators or raw prices are coverage gaps.
 """
 from __future__ import annotations
 import copy
@@ -25,7 +25,6 @@ EXTRA_QUERIES = [
 ]
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
-LABELS = {'samsung': '삼성전자', 'skhynix': 'SK하이닉스', 'micron': '마이크론', 'industry': '주요 3사'}
 OFFICIAL = {'news.samsung.com': 'samsung', 'semiconductor.samsung.com': 'samsung',
             'news.skhynix.com': 'skhynix', 'investors.micron.com': 'micron', 'micron.com': 'micron',
             'nvidianews.nvidia.com': 'nvidia', 'developer.nvidia.com': 'nvidia'}
@@ -54,8 +53,19 @@ def evidence(url):
     return 'reported'
 
 
+def concrete_state_evidence(event):
+    """Reject a new headline about tight supply without a changed fact or stage."""
+    text = event.get('title', '') + ' ' + event.get('description', '')
+    quantified = re.search(r'\d[\d,.]*\s*(?:%|배|만\s*장|장|Gb\b|GB\b|TB\b|달러|billion\b|million\b)', text)
+    transition = re.search(
+        r'인증\s*완료|검증\s*완료|양산\s*(?:시작|개시)|출하\s*시작|샘플\s*출하|계약\s*체결|'
+        r'착공|준공|가동\s*시작|허가\s*취득|인증\s*실패|계약\s*(?:취소|해지)|'
+        r'qualification completed|validation completed|begins? (?:shipment|mass production)|'
+        r'starts? (?:shipment|production)|contract signed|contract cancelled', text, re.I)
+    return bool(quantified or transition)
+
+
 def product_capacity(die_gb, layers, stacks=1):
-    """die_gb is gigabits; result is gigabytes, not customer adoption."""
     if not all(isinstance(x, (float, int)) and math.isfinite(x) and x > 0 for x in (die_gb, layers, stacks)):
         raise ValueError('positive numeric density/layers/stacks required')
     if int(layers) != layers or int(stacks) != stacks:
@@ -98,27 +108,28 @@ def date_only(text):
         return ''
 
 
+def resolve_relative_years(text, published):
+    if re.match(r'^20\d{2}-', published):
+        year = int(published[:4])
+        text = re.sub(r'내년|next year', str(year + 1) + '년', text, flags=re.I)
+        text = re.sub(r'올해|금년|this year', str(year) + '년', text, flags=re.I)
+    return text
+
+
 def local_period(text, published):
+    text = resolve_relative_years(text, published)
     m = re.search(r'(?<!\d)(20\d{2})\s*(?:년)?\s*(?:말|연말|year.end)', text, re.I)
     if m:
         return m[1] + '-YE'
     m = re.search(r'(?<!\d)(20\d{2})\s*년?\s*(\d{1,2})\s*월', text)
     if m:
         return f'{m[1]}-{int(m[2]):02d}'
-    m = re.search(r'\b(20\d{2})\b', text)
-    if m:
-        return m[1]
-    if not re.match(r'^20\d{2}-', published):
-        return ''
-    if re.search(r'내년|next year', text, re.I):
-        return str(int(published[:4]) + 1)
-    if re.search(r'올해|금년|this year', text, re.I):
-        return published[:4]
-    return ''
+    m = re.search(r'(?<!\d)(20\d{2})(?!\d)', text)
+    return m[1] if m else ''
 
 
 def is_axis_text(text):
-    return bool(re.search(r'RDIMM|현물.*프리미엄|spot.*premium|글라스 캐리어|glass carrier|유리 지지판|P5|HBM.*(?:웨이퍼.*비중|wafer.*input)|HBM4E?.*(?:\d+\s*Gb|\d+\s*GB|\d+\s*단)', text, re.I))
+    return bool(re.search(r'RDIMM|현물.*프리미엄|spot.*premium|글라스 캐리어|glass carrier|유리 지지판|P5|HBM.*(?:공급 부족|증산|웨이퍼|wafer|supply)|HBM4E?.*(?:\d+\s*Gb|\d+\s*GB|\d+\s*단)', text, re.I))
 
 
 def read_document(raw):
@@ -153,7 +164,8 @@ def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
-    for p in paragraphs:
+    for original in paragraphs:
+        p = resolve_relative_years(original, published)
         owners = [k for k, pat in COMPANIES.items() if re.search(pat, p, re.I)]
         owner = owners[0] if len(owners) == 1 else OFFICIAL.get(host(item.get('direct_link', '')), '')
         if not owner:
@@ -180,10 +192,10 @@ def parse_records(item, body):
                 continue
             records.append(make_record('rdimm', [host(item['direct_link']), f'DDR5_{gb}GB', speed[1]],
                 {'spot': s, 'contract': c, 'premium_pct': premium(s, c), 'contract_period': cp},
-                'USD/module', asof[:7], item, p, as_of=asof, capacity_gb=gb, speed=speed[1]))
-        config_matches = list(re.finditer(r'(?<![A-Za-z0-9])(HBM4E|HBM4|HBM3E)(?![A-Za-z0-9])', p, re.I))
-        for i, match in enumerate(config_matches):
-            part = p[match.end():config_matches[i + 1].start() if i + 1 < len(config_matches) else len(p)]
+                'USD/module', asof[:7], item, original, as_of=asof, capacity_gb=gb, speed=speed[1]))
+        matches = list(re.finditer(r'(?<![A-Za-z0-9])(HBM4E|HBM4|HBM3E)(?![A-Za-z0-9])', p, re.I))
+        for i, match in enumerate(matches):
+            part = p[match.end():matches[i + 1].start() if i + 1 < len(matches) else len(p)]
             density = re.findall(r'(?<!\d)(\d+)\s*Gb(?![A-Za-z])', part)
             layers = re.findall(r'(?<!\d)(\d+)\s*(?:단|[Hh][Ii]|-[Hh][Ii]|[Hh](?![A-Za-z]))', part)
             capacity = re.findall(r'(?<!\d)(\d+)\s*GB(?![A-Za-z])', part)
@@ -192,15 +204,18 @@ def parse_records(item, body):
                 if product_capacity(d, h) != g:
                     gaps.append('HBM 구성 산술 불일치: 발송 보류'); continue
                 product = match[1].upper()
-                period = local_period(part, published) or 'catalog'
                 records.append(make_record('hbm_config', [owner, product, str(h) + 'Hi', 'catalog'],
-                    {'die_gbit': d, 'layers': h, 'stack_gbyte': g}, 'GB/stack', period, item, p,
-                    scope='product_capability_not_customer_contract'))
-        for metric, pat in (
-            ('wafer_share', r'(?:HBM.{0,35}(?:웨이퍼|wafer).{0,35}(?:비중|share)|HBM wafer input)'),
-            ('bit_share', r'(?:HBM.{0,35}(?:비트|bit).{0,35}(?:비중|share)|HBM bit supply)'),
-        ):
-            if not re.search(pat, p, re.I): continue
+                    {'die_gbit': d, 'layers': h, 'stack_gbyte': g}, 'GB/stack', local_period(part, published) or 'catalog',
+                    item, original, scope='product_capability_not_customer_contract'))
+        metric_patterns = (
+            ('wafer_share', r'(?:HBM.{0,70}(?:웨이퍼|wafer).{0,45}(?:비중|share)|(?:웨이퍼|wafer).{0,70}HBM.{0,50}(?:비중|share)|HBM wafer input)'),
+            ('bit_share', r'(?:HBM.{0,70}(?:비트|bit).{0,45}(?:비중|share)|(?:비트|bit).{0,70}HBM.{0,50}(?:비중|share)|HBM bit supply)'),
+        )
+        metric_hits = [(metric, pat) for metric, pat in metric_patterns if re.search(pat, p, re.I)]
+        if len(metric_hits) > 1:
+            gaps.append('웨이퍼·비트 분모 혼재 문장: 값 귀속 보류')
+            metric_hits = []
+        for metric, pat in metric_hits:
             if not re.search(r'연말|년\s*말|\b(?:year[- ]end|end of|by the end)\b', p, re.I) or re.search(r'연평균|annual average', p, re.I):
                 gaps.append(metric + ': 연말 분모가 명확하지 않아 비교 보류'); continue
             authority = 'trendforce' if re.search(r'TrendForce|트렌드포스', body, re.I) else owner
@@ -211,25 +226,24 @@ def parse_records(item, body):
                 for y, v in zip(periods, values):
                     if 0 <= float(v) <= 100:
                         records.append(make_record(metric, [authority, 'industry', y + '-YE'], float(v), 'pct',
-                            y + '-YE', item, p, scope='year_end_forecast'))
+                            y + '-YE', item, original, scope='year_end_forecast'))
             else:
                 gaps.append(metric + ': 연도별 값 연결 불명확')
         if owner and re.search(r'글라스 캐리어|유리 지지판|glass carrier', p, re.I) and re.search(r'세정|clean', p, re.I):
             for y, n, tenk in re.findall(r'(20\d{2})\s*년?[^.\n]{0,12}?(?:월|monthly)\s*([\d,.]+)\s*(만)?\s*(?:장|pieces)', p, re.I):
                 value = float(n.replace(',', '')) * (10000 if tenk else 1)
                 records.append(make_record('carrier_cleaning', [owner, y], value, 'cleaning_passes/month', y,
-                    item, p, scope='reusable_carrier_service_not_wafer_output'))
+                    item, original, scope='reusable_carrier_service_not_wafer_output'))
         if owner and re.search(r'P5', p, re.I) and re.search(r'Fab\s*1', p, re.I) and re.search(r'가동|양산|production|operation', p, re.I):
             years = re.findall(r'(?<!\d)(20\d{2})(?!\d)', p)
             if len(set(years)) == 1:
                 stage = 'cancelled' if re.search(r'취소|cancel', p, re.I) else ('delayed' if re.search(r'지연|delay', p, re.I) else ('plan' if re.search(r'목표|계획|예정|target|plan|expect', p, re.I) else 'reported_operation'))
                 records.append(make_record('fab_stage', [owner, 'P5_Fab1'], {'year': int(years[0]), 'stage': stage},
-                    'year/stage', years[0], item, p, scope='fab_start_not_full_output'))
+                    'year/stage', years[0], item, original, scope='fab_start_not_full_output'))
     return records, list(dict.fromkeys(gaps))
 
 
 def public_spot_quotes(raw, checked):
-    """Visible Session Average only. No membership/private endpoints."""
     from selectolax.parser import HTMLParser
     tree = HTMLParser(raw)
     full = tree.body.text(separator=' ', strip=True) if tree.body else ''
@@ -348,8 +362,6 @@ def update_state(state, records, now, seeds=None):
             state['last_notified'][key] = r
             continue
         if not reasons:
-            # A later observation can withdraw an unsent change. Do not send
-            # an obsolete queued value after it has reverted to the baseline.
             state['pending'].pop(key, None)
             continue
         state['pending'][key] = {'record': r, 'old': old, 'reasons': reasons}
@@ -406,6 +418,14 @@ def main():
     import samsung_hbm_watch as legacy
     now = datetime.now(ZoneInfo('Asia/Seoul'))
     baseline = json.loads((ROOT / 'data/hbm_memory_baselines.json').read_text(encoding='utf-8'))
+    original_descriptor = legacy.event_state_descriptor
+    rejected_generic = []
+    def guarded_descriptor(e):
+        if not concrete_state_evidence(e):
+            rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
+            return '', '', ''
+        return original_descriptor(e)
+    legacy.event_state_descriptor = guarded_descriptor
     initial = legacy.load_state()
     for e in baseline.get('recovered_deliveries', []):
         key, signature, label = legacy.event_state_descriptor(e)
@@ -459,14 +479,16 @@ def main():
             coverage.append('공개 현물 원자료 지연: 과거 값을 현재값으로 발송하지 않음')
     except Exception as exc:
         coverage.append('DRAMeXchange 공개 조회 실패: ' + type(exc).__name__)
+    paired = sum(r['axis'] == 'rdimm' for r in observed)
+    if not paired:
+        coverage.append('RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류')
     candidate = legacy.load_state()
     state = update_state(initial.get('memory_axes'), observed, now, baseline.get('records', []))
     state['reference_capture'] = baseline.get('user_capture', {})
     state['calculation_cases'] = baseline.get('calculation_cases', [])
-    state['coverage']['last_checked_at_kst'] = now.isoformat(timespec='seconds')
-    state['coverage']['gaps'] = list(dict.fromkeys(coverage))[-40:]
-    state['coverage']['observations'] = len(observed)
-    state['coverage']['rdimm_paired_observations'] = sum(r['axis'] == 'rdimm' for r in observed)
+    state['coverage'].update({'last_checked_at_kst': now.isoformat(timespec='seconds'),
+        'gaps': list(dict.fromkeys(coverage))[-40:], 'observations': len(observed),
+        'rdimm_paired_observations': paired, 'non_concrete_generic_evidence_suppressed': len(set(rejected_generic))})
     chosen = list(state['pending'])[:3]
     existing = legacy.ALERT.read_text(encoding='utf-8') if legacy.ALERT.exists() else ''
     if chosen:
@@ -484,7 +506,8 @@ def main():
     legacy.save_state(candidate)
     dump(OUT / 'hbm_memory_axes_status.json', {
         'version': VERSION, 'observations': len(observed), 'alerts_prepared': len(chosen),
-        'pending_changes': len(state['pending']), 'rdimm_pairs': state['coverage']['rdimm_paired_observations'],
+        'pending_changes': len(state['pending']), 'rdimm_pairs': paired,
+        'non_concrete_generic_evidence_suppressed': len(set(rejected_generic)),
         'gaps': state['coverage']['gaps'], 'checked_at_kst': now.isoformat(timespec='seconds')})
     print(f'hbm_memory_axes=true observations={len(observed)} alerts_prepared={len(chosen)}')
 
