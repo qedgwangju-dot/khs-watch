@@ -43,7 +43,7 @@ SERIES = {
 }
 
 UPGRADE_MARKER = "<b>정책 목적·경계선</b>"
-UPGRADE_REVISION = 3
+UPGRADE_REVISION = 4
 UA = "Mozilla/5.0 khs-watch-treasury-bessent-verifier/3.0"
 
 EXACT_TITLES = {
@@ -279,6 +279,36 @@ def causal_block(snapshot: dict) -> str:
     ])
 
 
+def stock_market_block(snapshot: dict) -> str:
+    c = snapshot["common_changes"]
+    v = snapshot["common_values"]
+    nom = c["nom_bp"]
+    real = c["real_bp"]
+    bei = c["bei_bp"]
+
+    if nom <= -2.0 and real <= -2.0:
+        verdict = "🟢 성장주 할인율 우호 강화"
+        reason = "10년 명목·실질금리가 함께 하락해 Nasdaq·AI·반도체·소프트웨어의 할인율 부담이 실제로 완화되는 방향입니다."
+    elif nom >= 2.0 and real >= 2.0:
+        verdict = "🔴 성장주 할인율 부담 확대"
+        reason = "10년 명목·실질금리가 함께 올라 바이백의 수급 완충보다 높은 실질 할인율 부담이 더 강한 상태입니다."
+    elif nom < 0 and real >= 0 and bei < 0:
+        verdict = "🟡 물가 완화는 우호적이나 실질금리 부담 잔존"
+        reason = "기대인플레이션은 내려가도 실질금리가 버티면 성장주 밸류에이션 개선은 제한적입니다."
+    else:
+        verdict = "⚪ 주식시장 영향 혼조"
+        reason = "채권 수급 개선이 주식 할인율 개선으로 이어졌다고 보기엔 명목·실질금리 방향이 충분히 정렬되지 않았습니다."
+
+    return "\n".join([
+        "",
+        "<b>주식시장 영향</b>",
+        f"• 현재 판정: <b>{verdict}</b>",
+        f"• {reason}",
+        f"• 10년 명목 {v['nom10']:.2f}% ({nom:+.1f}bp) / 실질 {v['real10']:.2f}% ({real:+.1f}bp) / 기대인플레이션 {v['bei10']:.2f}% ({bei:+.1f}bp)",
+        "• 금리 하락이 경기침체·실적악화 때문이면 성장주 호재로 자동 판정하지 않습니다. 여기서는 바이백·수급과 실질 할인율 경로를 분리해 봅니다.",
+    ])
+
+
 def policy_block(snapshot: dict) -> str:
     return "\n".join([
         "",
@@ -290,6 +320,7 @@ def policy_block(snapshot: dict) -> str:
         "• 시장 기능이 정상인데도 특정 금리 수준에 맞춰 바이백·발행구조를 반복 조정하면 ‘유동성 지원 → 사실상 금리관리’로 정책선 이탈 경보를 올립니다.",
         "",
         causal_block(snapshot),
+        stock_market_block(snapshot),
         "",
         "<b>실행 확인</b>",
         "• 정책 변경 효력은 9월 9일, Bessent가 밝힌 확대 운영 시작은 9월 10일입니다.",
@@ -301,6 +332,7 @@ def policy_block(snapshot: dict) -> str:
 def source_links() -> str:
     return " · ".join([
         f'<a href="{BESSENT_REUTERS}">Bessent Reuters 인터뷰</a>',
+        f'<a href="{BESSENT_FEVER_BLOOMBERG}">Bessent 시장 과열 발언</a>',
         f'<a href="{BESSENT_FEVER}">Bessent ‘market fever’ 발언</a>',
         f'<a href="{TREASURY_RELEASE}">미 재무부 공식 발표</a>',
         f'<a href="{BUYBACK_FAQ}">바이백 공식 설명</a>',
@@ -323,7 +355,7 @@ def one_time_alert(fx: float, fx_date: str, snapshot: dict) -> str:
         policy_block(snapshot),
         "",
         "<b>한 줄 결론</b>",
-        "공식 정책선과 시장 결과를 분리합니다. 앞으로는 ‘유가·기대인플레이션이 내려가면 장기금리도 내려가는가’와 ‘실질금리·기간프리미엄이 이를 상쇄하는가’를 실제 숫자로 판정합니다.",
+        "공식 정책선과 시장 결과를 분리합니다. 앞으로는 ‘유가·기대인플레이션이 내려가면 장기금리도 내려가는가’와 ‘실질금리·기간프리미엄이 이를 상쇄하는가’를 실제 숫자로 판정하고, 바이백의 시장 기능 목적과 성장주 할인율 영향도 함께 표시합니다.",
         "",
         f"환율 기준: {fx_date}, 1달러={fx:,.2f}원",
         source_links(),
