@@ -250,7 +250,7 @@ def compact_news_item(item):
     stages = item.get("stages", [])
     host = (urllib.parse.urlparse(resolved_url).hostname or "").lower()
     official = any(host == h or host.endswith("." + h) for h in ["lh.or.kr", "gwangju.go.kr", "jeonnam.go.kr", "molit.go.kr", "motie.go.kr", "me.go.kr", "ramsar.org", "korea.kr"])
-    return {"title": item.get("title", ""), "source": identify_publisher(resolved_url, item.get("source", "")), "published": item.get("pubDate", ""), "url": resolved_url, "url_resolved": resolved, "source_status": "공식자료" if official else "보도 단계", "stages": stages, "stage_labels": [STAGE_LABELS.get(s, s) for s in stages], "impact": item.get("impact", "영향 확인 필요"), "reason": why_it_matters(stages)}
+    return {"title": item.get("title", ""), "description": item.get("description", ""), "source": identify_publisher(resolved_url, item.get("source", "")), "published": item.get("pubDate", ""), "url": resolved_url, "url_resolved": resolved, "source_status": "공식자료" if official else "보도 단계", "stages": stages, "stage_labels": [STAGE_LABELS.get(s, s) for s in stages], "impact": item.get("impact", "영향 확인 필요"), "reason": why_it_matters(stages)}
 
 
 def load_state():
