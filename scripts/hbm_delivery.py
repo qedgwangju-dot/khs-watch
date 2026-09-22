@@ -270,8 +270,11 @@ def finish(name):
         raise RuntimeError('collector did not produce pending state: ' + name)
     candidate = read(candidate_path)
     if name == 'rubin':
+        # ai_component_leadtime_watch.py writes the newest lead-time snapshot into
+        # the shared Rubin pending state. Preserve it. Only fall back to the
+        # committed state when an older collector did not populate the field.
         local = read(ROOT / path)
-        if 'ai_component_leadtime' in local:
+        if 'ai_component_leadtime' not in candidate and 'ai_component_leadtime' in local:
             candidate['ai_component_leadtime'] = local['ai_component_leadtime']
     write(OUT / ('hbm_candidate_' + name + '.json'), candidate)
     # Working-tree mutations from the old collector are not a committed delivery.
