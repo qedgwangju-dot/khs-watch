@@ -94,7 +94,8 @@ LOCAL_TERMS = ["전남광주", "전남광주시", "광주", "광산구", "산정
 MATERIAL_TERMS = ["계획", "정책", "조례", "수요", "공급", "검토", "착공", "준공", "양산", "지정", "선정", "계약", "낙찰", "조사", "등록", "심사", "보완", "확장", "투자", "팹", "직접 팹", "생산거점", "후보지", "클러스터", "배후기지", "소부장", "공급망", "물류", "실사", "가구", "명", "억원", "조원", "㎞", "km", "mw", "gw", "만평", "㎡", "지구", "도시", "주택", "전력", "용수", "댐", "하수재이용수", "하천수", "가뭄", "물 부족", "유입량", "유출량", "이수 안전도", "수자원"]
 POSITIVE = ["선정", "낙찰", "계약 체결", "조사 착수", "현지조사 착수", "승인", "확정", "통과", "착공", "준공", "양산", "기간 단축", "앞당", "확대", "증설"]
 NEGATIVE = ["지연", "보완", "재검토", "반려", "중단", "연기", "갈등", "우려", "영향 불가피", "재입찰", "사업기간 연장", "준공 지연", "공급 부족", "병목"]
-OFFICIAL_LH_DESIGN_BID = "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidDegree=00&bidNum=2602775"\nOFFICIAL_LH_ENV_BID = "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidDegree=00&bidNum=2603004"
+OFFICIAL_LH_DESIGN_BID = "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidDegree=00&bidNum=2602775"
+OFFICIAL_LH_ENV_BID = "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidDegree=00&bidNum=2603004"
 
 
 def fetch(url: str, timeout: int = 25) -> bytes:
