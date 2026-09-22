@@ -174,6 +174,20 @@ def failure_lines(exe: dict, causal: dict, cta: dict) -> list[str]:
     return failures[:3]
 
 
+def equity_impact(causal: dict, cta: dict) -> str:
+    nom_bp = causal.get("nom10_bp")
+    real_bp = causal.get("real10_bp")
+    if nom_bp is None:
+        return "⚪ 중립 — 장기금리 반응 확인 전"
+    if nom_bp < 0 and real_bp is not None and real_bp < 0 and cta.get("composite_confirmed"):
+        return "🟢 성장주 우호 강화 — 명목·실질금리 하락과 CTA 숏커버가 함께 확인"
+    if nom_bp < 0:
+        return "🟡 중립~약한 우호 — 금리는 내려갔지만 CTA 자기증폭 또는 실질금리 하락까지는 추가 확인"
+    if nom_bp > 0:
+        return "🔴 성장주 부담 — 바이백에도 장기금리가 올라 할인율 부담이 더 강함"
+    return "⚪ 중립 — 금리 방향성 변화가 뚜렷하지 않음"
+
+
 def build_block(exe: dict, causal: dict, cta: dict) -> str:
     max_text = fmt_usd_bn(exe.get("maximum"))
     accepted_text = fmt_usd_bn(exe.get("accepted"))
@@ -189,6 +203,7 @@ def build_block(exe: dict, causal: dict, cta: dict) -> str:
     ) or "가격 확인 불가"
 
     failures = " / ".join(failure_lines(exe, causal, cta))
+    equity = equity_impact(causal, cta)
     return "\n".join(
         [
             "",
@@ -197,8 +212,9 @@ def build_block(exe: dict, causal: dict, cta: dict) -> str:
             f"• ② 실제 집행: {accepted_text}({exe.get('accepted_krw')}) · 상한 사용 {cap_use}",
             f"• ③ 금리 반응: 10년 명목금리 {y10}{ychg} · {causal.get('verdict')}",
             f"• ④ CTA 반응: {cta.get('verdict')} · 상태 {cta.get('last_checked_kst')} · {futures_text}",
+            f"• ⑤ 주식시장: {equity}",
             f"• 실패 조건: {failures}",
-            "• 해석: 바이백은 발표 규모만 보지 않고 실제 매입액이 상한을 얼마나 채웠는지, 그 뒤 장기금리가 내려갔는지, 마지막으로 CTA 숏커버가 확인됐는지 순서대로 판정합니다.",
+            "• 해석: 바이백은 발표 규모만 보지 않고 실제 매입액 → 장기 명목·실질금리 → CTA 숏커버 순서로 판정합니다. AI·반도체·소프트웨어에는 직접 매출 호재가 아니라 할인율·자금조달비용을 통한 간접 영향으로 분리합니다.",
         ]
     )
 
@@ -212,6 +228,7 @@ def compact_block(exe: dict, causal: dict, cta: dict) -> str:
             HEADING,
             f"• 상한 {fmt_usd_bn(exe.get('maximum'))} → 실제 {fmt_usd_bn(exe.get('accepted'))} · 상한 사용 {fmt_pct(exe.get('cap_use_pct'))}",
             f"• 10년물 {ychg} · CTA: {cta.get('verdict')}",
+            f"• 주식시장: {equity_impact(causal, cta)}",
             f"• 실패 조건: {' / '.join(failure_lines(exe, causal, cta))}",
         ]
     )
