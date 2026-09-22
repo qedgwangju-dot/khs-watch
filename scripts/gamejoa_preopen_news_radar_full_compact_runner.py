@@ -2765,14 +2765,6 @@ def compact_article_facts(title: str, body: str) -> list[str]:
 
 
 KOREAN_BUSINESS_SECTOR_TERMS = [
-    (
-        "양자컴퓨팅/양자통신",
-        [
-            "양자컴퓨터", "양자 컴퓨터", "양자메모리", "양자 메모리", "양자통신",
-            "quantum computer", "quantum memory", "quantum networking", "superion",
-            "아이온큐", "ionq",
-        ],
-    ),
     ("MLCC/수동부품", ["mlcc", "적층세라믹커패시터", "수동부품"]),
     ("반도체/HBM/CXL", ["반도체", "hbm", "dram", "nand", "cxl", "테스터"]),
     ("AI/데이터센터", ["ai", "인공지능", "데이터센터", "하이퍼스케일러"]),
@@ -2805,10 +2797,6 @@ KOREAN_BUSINESS_SECTOR_TERMS = [
     ("엔터테인먼트/콘텐츠", ["엔터", "yg", "jyp", "하이브", "sm엔터", "음반", "콘텐츠"]),
 ]
 KOREAN_BUSINESS_COMPANIES = [
-    "SDT",
-    "에스디티",
-    "아이온큐",
-    "IonQ",
     "삼성전자",
     "SK하이닉스",
     "엑시콘",
@@ -2918,12 +2906,6 @@ KOREAN_BUSINESS_MATERIAL_TERMS = [
     "공장 건설",
     "해외 공장",
     "생산거점",
-    "제조거점",
-    "제조시설",
-    "시스템통합",
-    "시스템 통합",
-    "양자컴퓨터",
-    "양자메모리",
     "서버 가격",
     "메모리 품귀",
     "회사채 발행",
@@ -2988,8 +2970,7 @@ KOREAN_BUSINESS_IMPACT_TERMS = {
         "증설", "생산능력", "출하", "고객사", "점유율", "공급 부족",
         "시장 1위", "가격 인상", "데이터센터 건설", "품목허가", "상업화",
         "공장 건설", "해외 공장", "생산거점", "서버 가격", "메모리 품귀",
-        "성과급", "임단협", "파업", "제조거점", "제조시설", "시스템통합",
-        "시스템 통합", "양자컴퓨터", "양자메모리",
+        "성과급", "임단협", "파업",
     ],
     "할인율": [
         "금리", "환율", "원·달러", "달러", "규제", "관세", "수출통제", "제재",
@@ -3012,8 +2993,7 @@ KOREAN_BUSINESS_IMPACT_TERMS = {
         "추가 공격", "공격 임박", "타격 승인", "무장해제", "가자 휴전",
         "평화 협정", "국정조사", "청문회", "조사 착수", "공장 건설",
         "해외 공장", "생산거점", "핫칩스", "hot chips", "기술공개",
-        "무역협정", "임단협", "파업", "제조거점", "제조시설", "시스템통합",
-        "시스템 통합", "양자컴퓨터", "양자메모리",
+        "무역협정", "임단협", "파업",
     ],
 }
 
@@ -5100,19 +5080,6 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
         normalized_triggers = tuple(str(term).lower() for term in triggers)
         if not any(term in text for term in normalized_anchors) or not any(term in text for term in normalized_triggers):
             continue
-        if kind == "korea_quantum_manufacturing_hub" and not (
-            any(term in text for term in ("sdt", "에스디티"))
-            and any(term in text for term in ("ionq", "아이온큐"))
-            and any(term in text for term in ("구미", "gumi"))
-            and any(
-                term in text
-                for term in (
-                    "제조거점", "제조 거점", "제조시설", "제조 시설",
-                    "시스템 통합", "시스템통합", "조립", "패키징",
-                )
-            )
-        ):
-            continue
         if kind == "skhynix_2030_memory_shortage_outlook" and not (
             any(term in title.lower() for term in ("곽노정", "2030년", "공급 부족"))
             and any(term in text for term in ("2030년", "2030년말", "2030년 말"))
@@ -5428,9 +5395,7 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
         ):
             continue
         core = detailed_article_core(title, body)
-        if kind == "korea_quantum_manufacturing_hub":
-            core = "SDT·아이온큐가 구미에 양자 제조·시스템통합 거점을 구축합니다."
-        elif kind == "korea_etf_asset_flow":
+        if kind == "korea_etf_asset_flow":
             valuation_drop = (
                 "순자산" in text
                 and any(term in text for term in ("평가액", "기초자산 가격", "증발", "감소", "줄었"))
@@ -5594,29 +5559,6 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
                 "headline_override": headline_override,
             }
         )
-        if kind == "korea_quantum_manufacturing_hub":
-            alert.update(
-                {
-                    "news": "SDT·아이온큐, 구미 양자 제조·시스템통합 거점 구축",
-                    "investment_view": (
-                        "단순 수입·판매가 아니라 SiV 양자메모리 패키징·제조와 "
-                        "양자시스템 조립·통합·시운전, 지역 재판매까지 협력 범위가 넓어졌습니다."
-                    ),
-                    "korea_market_impact": (
-                        "SDT는 비상장이라 국내 상장사 직접 매출은 아직 확정되지 않았습니다. "
-                        "구미 부지·장비·극저온·RF제어·패키징·시험 공급계약이 확인되는 기업만 연결합니다."
-                    ),
-                    "priced_in": "낮음. 제조거점 계획은 구체적이지만 공장 CAPEX·착공·가동시점·양산물량은 아직 공개되지 않았습니다.",
-                    "counter": (
-                        "아이온큐 공식자료는 구미 제조·통합시설 계획을 확인하지만 "
-                        "투자금액·설비규모·완공일·고객 실명·연간 생산대수는 제시하지 않았습니다."
-                    ),
-                    "failed_signal": (
-                        "구미 시설 착공·장비발주, Superion 256 국내 배치, 암센터 고객 공개, "
-                        "SiV 메모리 상업생산 일정이 뒤따르지 않으면 제조거점 기대감으로 남습니다."
-                    ),
-                }
-            )
         return alert
     return None
 
