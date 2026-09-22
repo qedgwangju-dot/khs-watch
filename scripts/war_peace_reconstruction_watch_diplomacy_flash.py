@@ -32,6 +32,8 @@ _prev_verdict = guard._verdict
 WALTER_SENTINEL = "__WALTER_BLOOMBERG_WAR_PEACE_FLASH__"
 WALTER_PUBLIC_URL = "https://t.me/s/WalterBloomberg"
 BING_EMERGENCY_SENTINEL = "__BING_MIDDLE_EAST_EMERGENCY__"
+IRAN_DIPLO_SENTINEL = "__IRAN_NEWYORK_DIPLOMACY_WIRE__"
+IRAN_DIPLO_BACKFILL_SENTINEL = "__IRAN_NEWYORK_DIPLOMACY_BACKFILL__"
 
 BING_EMERGENCY_QUERIES = [
     '"Code 100" Iran IRGC Army security forces',
@@ -41,9 +43,19 @@ BING_EMERGENCY_QUERIES = [
     'Netanyahu cut short US trip return Israel Iran',
 ]
 
+BING_IRAN_DIPLOMACY_QUERIES = [
+    '"Iranian delegation" "New York" "full authority" diplomacy US',
+    '"Iran delegation" "New York" "full mandate" mediator United States',
+    '"end hostilities" Iran mediator New York United States',
+    '"concrete steps" Tehran "resume diplomacy" New York',
+    '"Iranian delegation" New York diplomacy mediator Reuters',
+]
+
 FLASH_QUERIES = [
     WALTER_SENTINEL,
     BING_EMERGENCY_SENTINEL,
+    IRAN_DIPLO_SENTINEL,
+    IRAN_DIPLO_BACKFILL_SENTINEL,
     'site:reuters.com (Araghchi OR "Iranian foreign minister") (China OR Beijing OR "Wang Yi") (visit OR meeting OR talks) when:2d',
     '(Araghchi OR "Iranian foreign minister" OR 아라치 OR 이란 외무장관) (China OR Beijing OR 중국 OR 베이징 OR "Wang Yi" OR 왕이) (visit OR meeting OR 회담 OR 방문) when:2d',
     'site:reuters.com (China OR Chinese) Iran ("satellite images" OR "satellite imagery") ("US base" OR "U.S. base") when:3d',
@@ -55,6 +67,10 @@ FLASH_QUERIES = [
     'site:whitehouse.gov Trump Iran (deal OR talks OR ceasefire OR peace OR war) when:2d',
     '(Trump OR 트럼프) (Iran OR 이란 OR Tehran OR 테헤란) ("wants a deal" OR "end of the war" OR "direct contact" OR "direct talks" OR 직접 접촉 OR 직접 협상 OR 종전) when:1d',
     'site:reuters.com Iran US ("direct talks" OR "direct contact" OR negotiations OR denied OR rejects OR "no direct talks") when:1d',
+    'site:reuters.com Iran delegation New York ("full authority" OR "full mandate" OR mediator OR diplomacy OR "concrete steps") when:1d',
+    '(Iran OR 이란) (delegation OR 대표단) (New York OR 뉴욕) ("full authority" OR "full mandate" OR 전권 OR 완전한 권한) (diplomacy OR 협상 OR 외교) when:1d',
+    '(Iran OR 이란) (mediator OR 중재자 OR 중재) (New York OR 뉴욕) ("end hostilities" OR 적대행위 종식 OR agreement OR 합의안) when:1d',
+    '(Iran OR Tehran OR 이란 OR 테헤란) ("concrete steps" OR 구체적 조치) (resume diplomacy OR diplomacy OR 외교 재개 OR 협상 재개) when:1d',
     'site:apnews.com Iran US ("direct talks" OR negotiations OR denied OR rejects OR ceasefire) when:1d',
     'site:irna.ir Iran US ("direct talks" OR negotiations OR ceasefire OR peace) when:2d',
     'site:tasnimnews.com Iran US ("direct talks" OR negotiations OR ceasefire OR peace) when:2d',
@@ -125,6 +141,18 @@ RIYADH_TERMS = ('riyadh', '리야드')
 MISSILE_TERMS = ('missile', 'missiles', 'ballistic missile', 'ballistic missiles', '미사일', '탄도미사일', '탄도 미사일')
 MISSILE_ACTION_TERMS = ('launched', 'fired', 'attack', 'attacked', 'intercepted', 'targeted', '발사', '공격', '요격', '표적')
 HOUTHI_TERMS = ('houthi', 'houthis', 'ansarallah', 'ansar allah', '후티', '안사르알라', '안사르 알라')
+
+NEW_YORK_TERMS = ('new york', 'nyc', '뉴욕')
+DELEGATION_TERMS = ('delegation', 'delegates', 'iranian delegation', 'iran delegation', '대표단', '협상단')
+FULL_MANDATE_TERMS = ('full authority', 'complete authority', 'full mandate', 'complete mandate', 'fully authorized', '전권', '완전한 권한', '전적인 권한')
+DIPLO_RESTART_TERMS = ('resume diplomacy', 'restart diplomacy', 'renew diplomacy', 're-engage in diplomacy', 'resume talks', 'restart talks', '외교 재개', '외교를 재개', '협상 재개')
+MEDIATOR_TERMS = ('mediator', 'mediators', 'mediation', 'through mediators', '중재자', '중재를 통해', '중재')
+HOSTILITIES_END_TERMS = ('end hostilities', 'ending hostilities', 'cessation of hostilities', 'end of hostilities', '종전', '적대행위 종식', '적대 행위 종식', '교전 종식')
+AGREEMENT_DETAIL_TERMS = ('details of an agreement', 'agreement details', 'terms of an agreement', 'deal details', '합의안 세부', '합의 세부', '협정 세부')
+CONCRETE_STEPS_TERMS = ('concrete steps', 'specific steps', 'tangible steps', '구체적인 조치', '구체적 조치', '실질적 조치')
+WELCOME_TERMS = ('welcome', 'welcomes', 'ready to welcome', 'would welcome', 'open to', '환영', '열려 있', '준비')
+RTRS_RELAY_TERMS = ('rtrs', 'reuters', '로이터')
+
 TRUSTED_EMERGENCY_SOURCES = ('reuters', 'apnews', 'associated press', 'afp', 'whitehouse.gov', 'state.gov', 'travel.state.gov', 'gov.il', 'irna.ir', 'tasnimnews', 'tasnim', 'presstv', 'saudipressagency', 'spa.gov.sa', 'arabnews')
 
 
@@ -135,6 +163,80 @@ def _clean_html(raw: str) -> str:
     raw = re.sub(r'[ \t]+', ' ', raw)
     raw = re.sub(r'\n\s*\n+', '\n', raw)
     return raw.strip()
+
+
+def _iran_diplomacy_backfill():
+    """사용자가 제공한 LiveSquawk의 RTRS 중계 속보를 즉시 복구. 2026-09-23 이후 자동 비활성화."""
+    today = dt.datetime.now(watch.KST).date()
+    if today > dt.date(2026, 9, 23):
+        return [], None
+    text = (
+        "Senior Iranian official to RTRS: Iranian delegation arrived in New York with full authority "
+        "to resume diplomacy with the United States. Details of an agreement to end hostilities "
+        "with the United States could be discussed in New York through mediators. Tehran would "
+        "welcome resumption of diplomacy if the United States takes concrete steps."
+    )
+    return [{
+        'title': 'Iranian delegation arrives in New York with full authority to resume US diplomacy — RTRS relay',
+        'title_original': 'Iranian delegation arrives in New York with full authority to resume US diplomacy — RTRS relay',
+        'title_ko': '',
+        'link': 'https://x.com/LiveSquawk/status/2102335418322837901',
+        'published': 'Tue, 22 Sep 2026 09:53:17 GMT',
+        'source': 'LiveSquawk · RTRS 중계',
+        'description': text,
+        'article_text': text,
+        'deep_signal': True,
+    }], None
+
+
+def _bing_iran_diplomacy_rows():
+    rows, seen, errors = [], set(), []
+    now = dt.datetime.now(dt.timezone.utc)
+    for query in BING_IRAN_DIPLOMACY_QUERIES:
+        try:
+            url = "https://www.bing.com/news/search?format=rss&q=" + urllib.parse.quote(query)
+            root = ET.fromstring(watch.req(url, 12))
+        except Exception as exc:
+            errors.append(f"BingIranDiplomacy:{type(exc).__name__}")
+            continue
+        for item in root.findall("./channel/item")[:20]:
+            title = html_lib.unescape((item.findtext("title") or "").strip())
+            link = (item.findtext("link") or "").strip()
+            desc = html_lib.unescape(re.sub(r"<[^>]+>", " ", item.findtext("description") or "")).strip()
+            pub = (item.findtext("pubDate") or "").strip()
+            source = html_lib.unescape((item.findtext("source") or "Bing News").strip())
+            if not title or not link:
+                continue
+            try:
+                p = urllib.parse.urlparse(link)
+                if "bing.com" in p.netloc.lower():
+                    direct = (urllib.parse.parse_qs(p.query).get("url") or [""])[0]
+                    if direct.startswith(("http://", "https://")):
+                        link = direct
+            except Exception:
+                pass
+            key = (title.lower(), link)
+            if key in seen:
+                continue
+            seen.add(key)
+            if pub:
+                try:
+                    stamp = dt.datetime.strptime(pub, "%a, %d %b %Y %H:%M:%S %Z").replace(tzinfo=dt.timezone.utc)
+                    if (now - stamp).total_seconds() > 48 * 3600:
+                        continue
+                except Exception:
+                    pass
+            rows.append({
+                'title': title,
+                'title_original': title,
+                'title_ko': '',
+                'link': link,
+                'published': pub,
+                'source': source or 'Bing News',
+                'description': desc,
+                'article_text': desc,
+            })
+    return rows, '; '.join(errors) if errors else None
 
 
 def _walter_rows():
@@ -227,6 +329,10 @@ def google_news(query):
         return _walter_rows()
     if query == BING_EMERGENCY_SENTINEL:
         return _bing_emergency_rows()
+    if query == IRAN_DIPLO_SENTINEL:
+        return _bing_iran_diplomacy_rows()
+    if query == IRAN_DIPLO_BACKFILL_SENTINEL:
+        return _iran_diplomacy_backfill()
     return _prev_google_news(query)
 
 watch.google_news = google_news
@@ -304,6 +410,38 @@ def _emergency_marks(row):
     return sorted(set(marks))
 
 
+def _iran_newyork_diplomacy_marks(row):
+    text = _text(row)
+    src = _source_text(row)
+    marks = []
+    if not _has(text, IRAN_TERMS):
+        return marks
+
+    newyork = _has(text, NEW_YORK_TERMS)
+    delegation = _has(text, DELEGATION_TERMS)
+    full_mandate = _has(text, FULL_MANDATE_TERMS)
+    diplo_restart = _has(text, DIPLO_RESTART_TERMS)
+    mediator = _has(text, MEDIATOR_TERMS)
+    end_hostilities = _has(text, HOSTILITIES_END_TERMS)
+    agreement_detail = _has(text, AGREEMENT_DETAIL_TERMS) or ('agreement' in text and ('details' in text or 'terms' in text))
+    concrete = _has(text, CONCRETE_STEPS_TERMS)
+    welcome = _has(text, WELCOME_TERMS)
+
+    if newyork and delegation and full_mandate and diplo_restart:
+        marks.append('이란뉴욕대표단외교전권')
+    if newyork and mediator and end_hostilities and agreement_detail:
+        marks.append('뉴욕중재종전합의안협의')
+    if concrete and welcome and diplo_restart and (_has(text, US_TERMS) or 'united states' in text):
+        marks.append('미구체조치시외교재개환영')
+
+    if marks:
+        if 'reuters.com' in src or (row.get('source') or '').lower() == 'reuters':
+            marks.append('Reuters직접확인')
+        elif 'livesquawk' in src or 'rtrs' in (row.get('source') or '').lower() or 'rtrs' in text:
+            marks.append('RTRS중계속보')
+    return sorted(set(marks))
+
+
 def _iran_war_stage_marks(row):
     text = _text(row)
     src = _source_text(row)
@@ -343,12 +481,19 @@ def _marks(row):
         marks.append('크렘린에너지휴전긍정평가')
     if _has(text, KREMLIN_TERMS) and _has(text, SANCTION_TERMS) and _has(text, WORLD_ENERGY_PRICE_TERMS) and _has(text, PRICE_DOWN_TERMS):
         marks.append('크렘린제재해제에너지가격하락발언')
+    marks.extend(_iran_newyork_diplomacy_marks(row))
     marks.extend(_iran_war_stage_marks(row))
     marks.extend(_emergency_marks(row))
     return sorted(set(marks))
 
 
 def _korean_title(marks):
+    if '이란뉴욕대표단외교전권' in marks and '뉴욕중재종전합의안협의' in marks:
+        return '이란 대표단, 미국과 외교 재개 전권 갖고 뉴욕 도착 — 중재 통한 적대행위 종식 합의안 협의 가능'
+    if '이란뉴욕대표단외교전권' in marks:
+        return '이란 대표단, 미국과 외교 재개 전권 갖고 뉴욕 도착'
+    if '미구체조치시외교재개환영' in marks:
+        return '이란 “미국이 구체적 조치하면 외교 재개 환영” — 뉴욕 협상 신호 강화'
     if '이란Code100확인보도' in marks:
         return '이란 전군 최고경계 “Code 100” 확인 보도 — 중동 비상단계 급상승'
     if '이란Code100미확인보도' in marks:
@@ -388,6 +533,17 @@ def _korean_title(marks):
 
 def _signals(marks):
     out = []
+    if '이란뉴욕대표단외교전권' in marks:
+        out.append('🟡 이란 대표단이 미국과 외교를 재개할 완전한 권한을 갖고 뉴욕에 도착했다는 고위 당국자 발언 — 단순 접촉 가능성보다 한 단계 상승')
+    if '뉴욕중재종전합의안협의' in marks:
+        out.append('🟡 미국과의 적대행위 종식 합의안 세부를 중재자를 통해 뉴욕에서 논의할 수 있다는 신호')
+    if '미구체조치시외교재개환영' in marks:
+        out.append('🟡 테헤란은 미국이 구체적 조치를 취하면 외교 재개를 환영한다는 조건부 재개 의사')
+    if 'RTRS중계속보' in marks:
+        out.append('확정 수준: LiveSquawk가 RTRS 발언으로 중계한 속보 — Reuters 공개 기사 원문은 후속 재확인')
+    if 'Reuters직접확인' in marks:
+        out.append('확정 수준: Reuters 직접 기사에서 확인')
+
     if '이란Code100확인보도' in marks:
         out.append('🔴 이란 전군 최고경계 Code 100이 신뢰 원천에서 확인 보도됨 — IRGC·정규군·보안군의 실제 배치·동원 후속 확인')
     if '이란Code100미확인보도' in marks:
@@ -445,7 +601,10 @@ def score_item(row, now):
     row['title_ko'] = _korean_title(marks) or row.get('title_ko', '')
     row['signals_ko'] = list(dict.fromkeys(_signals(marks) + list(row.get('signals_ko', []))))
     emergency_marks = _emergency_marks(row)
+    iran_diplomacy_marks = _iran_newyork_diplomacy_marks(row)
     tags = ['종전·협상']
+    if iran_diplomacy_marks:
+        tags += ['이란전쟁', '뉴욕외교', '외교재개', '중재']
     if emergency_marks:
         tags += ['확전', '중동비상경보']
         if any(m in emergency_marks for m in ('이란Code100미확인보도', '네타냐후조기귀국미확인보도')):
@@ -476,6 +635,8 @@ def score_item(row, now):
             score = 100
         else:
             score = 97
+    elif iran_diplomacy_marks:
+        score = 100 if 'Reuters직접확인' in iran_diplomacy_marks else 99
     elif any(m in marks for m in ('종전합의', '정식휴전합의', '호르무즈실물정상화', '협상후퇴')):
         score = 100
     elif '이란직접협상확인' in marks:
@@ -517,7 +678,7 @@ def item_id(row):
             day = dt.datetime.now(dt.timezone.utc).date().isoformat()
         key = 'middle-east-emergency|' + day + '|' + '|'.join(sorted(emergency_marks))
     else:
-        stage_marks = [m for m in marks if m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')]
+        stage_marks = [m for m in marks if m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영','RTRS중계속보','Reuters직접확인','미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')]
         if stage_marks:
             key = 'iran-war-peace-stage-2026|' + '|'.join(sorted(stage_marks))
         elif any(m.startswith('크렘린') for m in marks):
@@ -537,6 +698,8 @@ def topic_label(row):
     if hmarks:
         return '예멘·사우디·오만 · Ansar Allah 휴전중재'
     marks = _marks(row)
+    if any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
+        return '이란 전쟁 · 뉴욕 외교재개'
     if any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')):
         return '이란 전쟁 · 협상·휴전·종전·호르무즈'
     if any(m.startswith('크렘린') for m in marks):
@@ -602,7 +765,21 @@ def _verdict(items):
         lines.append('- <b>시장:</b> 합의 진전 시 바브엘만데브·Yanbu 우회수출 경로의 해운·전쟁보험·원유 물류 위험프리미엄 완화 가능 / 결렬 시 반대')
         lines.append('- <b>다음:</b> 오만·사우디 공식 확인 → Ansar Allah 수용 여부 → 2주 휴전 발효 시각 → 인도적 조건 공개 → 실제 합의 발표')
 
-    if '협상후퇴' in marks:
+    if '이란뉴욕대표단외교전권' in marks or '뉴욕중재종전합의안협의' in marks or '미구체조치시외교재개환영' in marks:
+        parts = []
+        if '이란뉴욕대표단외교전권' in marks:
+            parts.append('대표단 외교 재개 전권')
+        if '뉴욕중재종전합의안협의' in marks:
+            parts.append('중재 통한 적대행위 종식 합의안 세부 협의 가능')
+        if '미구체조치시외교재개환영' in marks:
+            parts.append('미국 구체 조치 시 외교 재개 환영')
+        lines.append('- <b>이란 뉴욕 외교:</b> 🟡 ' + ' · '.join(parts) + ' — 아직 미·이란 최종 합의나 휴전 발효는 아님')
+        if 'RTRS중계속보' in marks and 'Reuters직접확인' not in marks:
+            lines.append('- <b>확정 수준:</b> RTRS 중계 속보 단계 — Reuters 공개 본문·이란 공식 발표를 후속 재확인')
+        elif 'Reuters직접확인' in marks:
+            lines.append('- <b>확정 수준:</b> Reuters 직접 확인 단계')
+        lines.append('- <b>다음:</b> 중재자 실명·접촉 → 미국의 구체 조치 → 미·이란 회담 형식·시각 → 휴전·종전 문안 → 호르무즈 실제 정상화')
+    elif '협상후퇴' in marks:
         lines.append('- <b>이란 전쟁:</b> 🔴 협상 후퇴 — 직접협상 부인·거부·결렬 신호. 종전 기대를 낮춰야 하는 변화')
     elif '호르무즈실물정상화' in marks:
         lines.append('- <b>이란 전쟁:</b> 🟢 호르무즈 실물 정상화 — 재개방 문구가 아니라 유조선·LNG선 등 실제 상선 통항 회복 확인')
@@ -615,7 +792,9 @@ def _verdict(items):
     elif '미국단독종전협상신호' in marks:
         lines.append('- <b>이란 전쟁:</b> ⚠️ 미국 측 종전·직접접촉 주장 단계 — 이란 공식 확인 전에는 휴전·종전으로 판정하지 않음')
 
-    if any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '협상후퇴')):
+    if any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
+        lines.append('- <b>이란 단계 추적:</b> 뉴욕 대표단 전권 → 중재 합의안 협의 → 미국 구체 조치 → 회담 재개 → 정식 휴전 → 종전 합의 → 호르무즈 실제 정상화')
+    elif any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '협상후퇴')):
         lines.append('- <b>이란 단계 추적:</b> 미국 측 협상 신호 → 이란 측 확인 → 정식 휴전 → 종전 합의 → 호르무즈 실제 정상화')
     if '호르무즈실물정상화' in marks:
         lines.append('- <b>실물 확인:</b> 선박 수·유조선·LNG선 통항량이 지속 회복되는지 별도 추적')
