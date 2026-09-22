@@ -11,13 +11,13 @@
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
     "reported_mom_pct": 6.2,
     "reported_yoy_pct": 57.2,
-    "retrieved_at_utc": "2026-09-22T07:52:55.545648+00:00",
+    "retrieved_at_utc": "2026-09-22T13:35:01.493030+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
     "year_ago_saar_musd": 47810
   },
   "dodge": {
-    "article_sha256": "74935e3a3c312b86dc2f4e7d20aff398b06718370e4c9e7a54c383698a75b74b",
+    "article_sha256": "7336b4886080127af748f2fd53556f571a910157c7e20f7647bba0146b40cdcf",
     "commercial_12m_change_pct": 48.6,
     "commercial_change_pct": -37.6,
     "data_center_mention_count": 4,
@@ -35,7 +35,7 @@
     "nonresidential_change_pct": -32.0,
     "office_dc_change_pct": -31.3,
     "published": "2026-09-21T15:21:49+00:00",
-    "retrieved_at_utc": "2026-09-22T07:52:55.884198+00:00",
+    "retrieved_at_utc": "2026-09-22T13:35:02.072535+00:00",
     "source": "Dodge Construction Network Total Construction Starts",
     "title": "Construction Starts Fall Back 24 8 In August",
     "total_change_pct": -24.8,
@@ -46,11 +46,11 @@
   },
   "format_version": 6,
   "fx": {
-    "basis_kst": "2026-09-21 일일 기준 · ECB/Frankfurter · 조회 2026-09-22 16:52 KST · 보조 API 2026-09-22 · 차이 0.25% · 일중 기준시각 차이 가능",
+    "basis_kst": "2026-09-21 일일 기준 · ECB/Frankfurter · 조회 2026-09-22 22:34 KST · 보조 API 2026-09-22 · 차이 0.25% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "source_type": "일일 기준환율",
     "usdkrw": 1372.18
   },
-  "updated_at_utc": "2026-09-22T07:52:54.208686+00:00",
+  "updated_at_utc": "2026-09-22T13:34:59.544300+00:00",
   "watch": "US data center construction starts vs spending"
 }
