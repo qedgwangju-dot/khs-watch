@@ -32,6 +32,9 @@ ENTITY_TERMS = [
 
 OFFICIAL_HINTS = ["공식자료", "정부", "국회", "국토교통부", "산업통상자원부", "기후", "LH", "한국전력", "한국수자원공사"]
 
+PROPOSAL_ONLY_TERMS = ["5분 자유발언", "의원이 제안", "의원, ", "의원은", "정책 제안", "필요성 강조"]
+PROPOSAL_ADOPTION_TERMS = ["채택", "의결", "조례", "예산 반영", "수립 착수", "tf 구성", "시행", "확정"]
+
 
 def _norm(s):
     return re.sub(r"\s+", " ", str(s or "")).strip()
@@ -99,6 +102,31 @@ def _is_known_baseline_only(item):
     return False
 
 
+def _is_proposal_only(item):
+    text = " ".join([
+        _norm(item.get("title")), _norm(item.get("description")), _norm(item.get("headline")),
+        _norm(item.get("detail"))
+    ]).lower()
+    proposal = any(t.lower() in text for t in PROPOSAL_ONLY_TERMS) or ("의원" in text and "제안" in text)
+    adopted = any(t.lower() in text for t in PROPOSAL_ADOPTION_TERMS)
+    return proposal and not adopted
+
+
+def _event_family(item):
+    text = " ".join([
+        _norm(item.get("title")), _norm(item.get("description")), _norm(item.get("headline")),
+        _norm(item.get("detail"))
+    ]).lower()
+    # 같은 기자차담회/로드맵을 제목만 바꿔 쓴 보도는 한 사건으로 묶는다.
+    if "반도체" in text and "2030" in text and "양산" in text and any(
+        marker in text for marker in ["2027", "2028", "3.1gw", "6.3gw", "15만", "35만", "65만", "106만", "63만평", "208만"]
+    ):
+        return "honam_execution_roadmap"
+    if "입법조사처" in text and "용수" in text and any(marker in text for marker in ["우려", "안정성", "댐", "가뭄"]):
+        return "honam_water_supply_risk"
+    return ""
+
+
 def _merge_group(items):
     first = dict(items[0])
     evidence = []
@@ -143,7 +171,8 @@ def main():
     groups = {}
     all_event_keys = []
     for item in candidates:
-        key = _event_key(item)
+        family = _event_family(item)
+        key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28] if family else _event_key(item)
         item["event_key"] = key
         all_event_keys.append(key)
         groups.setdefault(key, []).append(item)
