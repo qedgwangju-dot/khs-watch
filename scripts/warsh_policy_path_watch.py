@@ -14,7 +14,7 @@ STATE_PATH = Path('data/warsh_policy_path_watch_state.json')
 FOMC_STATE_PATH = Path('data/warsh_fomc_event_watch_state.json')
 SEP_STATE_PATH = Path('data/warsh_sep_path_watch_state.json')
 BALANCE_STATE_PATH = Path('data/warsh_balance_sheet_watch_state.json')
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 FEDWATCH_URL = 'https://www.frenzycap.com/fedwatch'
 CME_URL = 'https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html'
 FED_CALENDAR = 'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'
@@ -230,53 +230,85 @@ def easy_extra_read(bp):
     return '추가 2회 인상을 거의 가격에 넣은 수준'
 
 def fmt_meeting(m, baseline):
-    p=m['hike25_prob']
+    p=float(m['hike25_prob'])
+    expected=float(m.get('change_bp') or 0.0)
     cumulative=(float(m['post_rate'])-float(baseline))*100
-    cumulative_hikes=hike_equivalent(cumulative)
-    prob=f'0.25%포인트 인상 확률 약 {p:.0f}%'
-    return f"• {ko_date(m['date'])} | {prob} | 현재 공식 기준 대비 누적 기대 {cumulative:+.1f}bp ≈ 25bp 인상 {cumulative_hikes:.2f}회 상당 | 회의 후 금리 기대 {m['post_rate']:.3f}%"
+    return (
+        f"• {ko_date(m['date'])} | +0.25%p 인상 확률 {p:.0f}% | "
+        f"해당 회의 기대변화 {expected:+.1f}bp | 회의 후 금리 기대 {m['post_rate']:.3f}%\n"
+        f"  ↳ 현재 공식 기준 대비 누적 기대 {cumulative:+.1f}bp"
+    )
 
 def message(snap, cls):
     eq=hike_equivalent(cls['extra_bp'])
-    lines=['<b>[Warsh 추가인상 경로 · 대차대조표 종합]</b>',
-           f"공식 기준금리 중심값 {cls['baseline_rate']:.3f}% ({html.escape(cls['baseline_kind'])})"]
-    if cls.get('market_source_stale'):
-        lines += ['• 선물시장 원천이 일시적으로 응답하지 않아, 아래 선물 경로는 <b>직전 정상 조회값</b>을 사용합니다. 새 시장값으로 단정하지 않습니다.']
-    lines += ['', '<b>핵심 판정</b>',
-           f"• <b>추가 금리인상 경로</b>: {html.escape(cls['verdict'])}",
-           f"• <b>금리 vs 대차대조표</b>: {html.escape(cls['tightening_mix'])}",
-           f"• {html.escape(cls['basis'])}: {cls['extra_bp']:+.1f}bp ≈ 25bp 인상 {eq:.2f}회 상당",
-           f"• 쉽게 말하면: {html.escape(easy_extra_read(cls['extra_bp']))}"]
     sep=cls.get('sep')
-    if sep:
-        lines += ['', '<b>연준 점도표와 시장 비교</b>',
-                  f"• 연준 점도표 중앙값: 2026년 말 {sep['yearend']:.3f}% · 2027년 말 {sep['nextyear']:.3f}%",
-                  f"• 현재 공식 기준 대비 연준의 2026년 말 경로: {cls['sep_extra_bp']:+.1f}bp ≈ 25bp 인상 {hike_equivalent(cls['sep_extra_bp']):.2f}회 상당",
-                  f"• 선물시장의 2026년 말 기대: {cls['yearend_market_rate']:.3f}% · 점도표보다 {cls['market_sep_gap_bp']:+.1f}bp",
-                  f"• 판정: {html.escape(cls['sep_read'])}"]
     bal=cls.get('balance')
+    lines=[
+        '<b>[Warsh 금리경로·대차대조표 종합]</b>',
+        f"기준금리 중심값 {cls['baseline_rate']:.3f}% · {html.escape(cls['baseline_kind'])}",
+        '',
+        '<b>한눈에 보기</b>',
+        f"• <b>시장 금리경로</b>: {html.escape(cls['verdict'])}",
+        f"• <b>연말 누적 기대</b>: {cls['extra_bp']:+.1f}bp = +25bp 인상 {eq:.2f}회 상당 <i>(확률가중 평균)</i>",
+        f"• <b>대차대조표</b>: {html.escape(cls['tightening_mix'])}",
+    ]
+    if sep:
+        lines += [
+            f"• <b>연준 점도표</b>: 2026년 말 {sep['yearend']:.3f}% · 2027년 말 {sep['nextyear']:.3f}%",
+            f"• <b>시장 vs 연준</b>: 시장 연말 {cls['yearend_market_rate']:.3f}% · 점도표보다 {cls['market_sep_gap_bp']:+.1f}bp → {html.escape(cls['sep_read'])}",
+        ]
+    if cls.get('market_source_stale'):
+        lines += ['', '⚠️ 선물시장 원천이 일시적으로 응답하지 않아 아래 값은 <b>직전 정상 조회값</b>입니다. 새 시장값으로 단정하지 않습니다.']
+
+    lines += [
+        '',
+        '<b>회의별 선물시장 경로</b>',
+        *[fmt_meeting(m, cls['baseline_rate']) for m in snap['meetings'][:4]],
+    ]
+
+    if sep:
+        lines += [
+            '',
+            '<b>연준 점도표와 비교</b>',
+            f"• 현재 공식 기준 대비 2026년 말 점도표: {cls['sep_extra_bp']:+.1f}bp = +25bp 인상 {hike_equivalent(cls['sep_extra_bp']):.2f}회 상당",
+            f"• 시장 연말 기대: {cls['yearend_market_rate']:.3f}% · 연준 중앙값 {sep['yearend']:.3f}% · 차이 {cls['market_sep_gap_bp']:+.1f}bp",
+            '• 점도표는 FOMC의 약속이 아니라 각 참가자가 적절하다고 보는 연말 정책금리의 중앙값입니다.',
+        ]
+
     if bal:
-        lines += ['', '<b>대차대조표 확인</b>',
-                  f"• 최신 시행지침: {html.escape(bal['mode'])}",
-                  f"• H.4.1 구조 판정: {html.escape(bal['regime'])}",
-                  ('• 현재 공식 조합: <b>금리 인상 + 충분한 준비금 유지/자산 구성 전환</b>입니다. “금리 대신 QT”로 읽지 않습니다.'
-                   if '충분한 준비금' in bal.get('mode','') else
-                   '• 현재 공식 조합에 총량 축소형 양적긴축(QT)이 실제 포함됐는지 별도로 판정합니다.'),
-                  '• 따라서 “금리 인상 대신 양적긴축(QT)”인지, 아니면 “금리 인상 + 충분한 준비금 유지”인지 따로 구분합니다.']
-    lines += ['', '<b>선물시장 경로</b>']
-    lines += [fmt_meeting(m, cls['baseline_rate']) for m in snap['meetings'][:4]]
-    lines += ['', '<b>읽는 법</b>',
-              '• “+33.8bp” 같은 값은 연준이 실제로 33.8bp를 올린다는 뜻이 아니라, 여러 가능한 금리경로에 확률을 곱해 평균낸 시장 기대값입니다.',
-              '• 25bp = 0.25%포인트이므로 +33.8bp는 약 1.35회 상당입니다. 즉 추가 1회 인상은 상당히 반영하고, 두 번째 인상 가능성도 일부 가격에 들어갔다는 뜻입니다.',
-              '• “확률 %”는 특정 회의에서 인상이 일어날 가능성이고, “bp”는 그 확률을 반영한 기대 인상폭입니다. 예: 25bp 인상확률 84% → 기대 인상폭 약 +21bp입니다.',
-              '• 1.35회처럼 소수로 표시돼도 실제 FOMC가 1.35번 인상한다는 뜻은 아닙니다. 0회·1회·2회 같은 가능한 경로를 확률로 섞은 평균입니다.',
-              '• 이번 회의 한 번으로 끝나는지, 뒤 회의에서도 추가 인상이 가격에 남는지를 같이 봅니다.',
-              '• 1bp = 0.01%포인트입니다.','',
-              '<b>원천</b>']
+        official_combo = (
+            '현재 공식 조합은 <b>정책금리 인상 + 충분한 준비금 유지·자산 구성 전환</b>입니다. “금리 대신 QT”가 아닙니다.'
+            if '충분한 준비금' in bal.get('mode','')
+            else '대차대조표 총량 축소형 양적긴축(QT)이 실제로 추가됐는지 공식 시행지침과 H.4.1을 따로 확인합니다.'
+        )
+        lines += [
+            '',
+            '<b>대차대조표 확인</b>',
+            f"• 시행지침: {html.escape(bal['mode'])}",
+            f"• H.4.1 구조: {html.escape(bal['regime'])}",
+            f"• {official_combo}",
+        ]
+
+    lines += [
+        '',
+        '<b>숫자 읽는 법</b>',
+        '• <b>확률 %</b> = 특정 회의에서 +25bp 인상이 일어날 가능성입니다.',
+        '• <b>기대변화 bp</b> = 여러 가능한 결과에 확률을 곱해 평균낸 시장 기대입니다. 확률과 인상폭을 같은 숫자로 읽지 않습니다.',
+        '• 예를 들어 +25bp 인상 확률이 80%라면 그 한 회의의 확률가중 기대폭은 약 +20bp입니다.',
+        '• “1.38회 상당” 같은 값은 실제로 1.38번 인상한다는 뜻이 아니라 0회·1회·2회 경로를 확률로 섞은 평균입니다.',
+        '• 1bp = 0.01%포인트입니다.',
+        '',
+        '<b>다음 확인</b>',
+        '• 첫 회의 인상 확률뿐 아니라 12월·2027년 경로가 함께 올라가는지',
+        '• 2년물이 추가 긴축 기대를 계속 유지하는지',
+        '• 대차대조표가 충분한 준비금 유지에서 실제 총량 축소형 QT로 바뀌는지',
+        '',
+        '<b>원천</b>',
+    ]
     source_bits=[link('연방기금금리 선물 기반 경로',snap['url']),link('CME FedWatch 방법론',CME_URL),link('연준 FOMC 일정',FED_CALENDAR)]
-    if cls.get('sep') and cls['sep'].get('url'):source_bits.append(link('연준 경제전망·점도표',cls['sep']['url']))
-    if cls.get('balance') and cls['balance'].get('url'):source_bits.append(link('연준 FOMC 시행지침',cls['balance']['url']))
-    if cls.get('balance') and cls['balance'].get('h41_url'):source_bits.append(link('연준 H.4.1',cls['balance']['h41_url']))
+    if sep and sep.get('url'):source_bits.append(link('연준 경제전망·점도표',sep['url']))
+    if bal and bal.get('url'):source_bits.append(link('연준 FOMC 시행지침',bal['url']))
+    if bal and bal.get('h41_url'):source_bits.append(link('연준 H.4.1',bal['h41_url']))
     lines.append(' · '.join(source_bits))
     return '\n'.join(lines)
 
