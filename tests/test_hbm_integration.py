@@ -77,6 +77,40 @@ class ParseTests(unittest.TestCase):
         r,_=m.parse_records(ITEM,'삼성전자 P5 Fab1은 2028년 가동 목표.')
         self.assertEqual(r[0]['value'],{'year':2028,'stage':'plan'})
 
+    def test_malaysia_hsk10_export_parse(self):
+        body = (
+            '22일 관세청 수출입무역통계에 따르면 HBM이 포함되는 복합구조칩 집적회로 '
+            '(HS코드 8542.32.3000)의 지난 8월 말레이시아향 수출액은 16억2454만달러로, '
+            '전년 동기 대비 466.6% 증가했다. 수출 중량도 1.4t에서 3.8t으로 증가했다. '
+            '같은 기간 대만향은 33억2211만달러였고 말레이시아향은 대만향의 48.9%까지 커졌다.'
+        )
+        item = dict(ITEM)
+        item['published_at_kst'] = '2026-09-22T10:51:00+09:00'
+        item['direct_link'] = 'https://biz.chosun.com/example'
+        r,g = m.parse_records(item, body)
+        rows = [x for x in r if x['axis'] == 'malaysia_hsk10_export']
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]['period'],'2026-08')
+        self.assertEqual(rows[0]['value']['amount_usd'],1624540000)
+        self.assertEqual(rows[0]['value']['weight_kg'],3800)
+        self.assertAlmostEqual(rows[0]['value']['yoy_pct'],466.6)
+        self.assertEqual(rows[0]['value']['taiwan_amount_usd'],3322110000)
+        self.assertAlmostEqual(rows[0]['value']['malaysia_vs_taiwan_pct'],48.9)
+
+    def test_malaysia_new_month_is_material(self):
+        base = m.make_record(
+            'malaysia_hsk10_export',['KR','MY','8542323000'],
+            {'amount_usd':1300000000,'weight_kg':None,'weight_kg_previous_yoy':None,
+             'yoy_pct':None,'taiwan_amount_usd':None,'malaysia_vs_taiwan_pct':None,
+             'jan_aug_amount_usd':None,'weight_rounded_from_public_text':False},
+            'USD/kg','2026-07',ITEM,'base',as_of='2026-08-21')
+        new = copy.deepcopy(base)
+        new['period']='2026-08'; new['as_of']='2026-09-22'
+        new['value']=dict(base['value']); new['value']['amount_usd']=1624540000
+        reasons = m.comparison(base,new)
+        self.assertTrue(any('새 월' in x for x in reasons))
+        self.assertTrue(any('수출액' in x for x in reasons))
+
 class StateTests(unittest.TestCase):
     def make(self,v=22,asof='2026-09-22',url=None):
         item=dict(ITEM)
