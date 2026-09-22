@@ -280,10 +280,12 @@ def extract_group_statuses(text: str) -> dict[str, str]:
             if any(re.search(re.escape(a), names, re.I) for a in aliases):
                 out[name] = status
 
-    # 예: "균형 상태인 품목은 GPU뿐"
+    # 예: "균형 상태인 품목은 GPU뿐"처럼 상태와 품목군이 문법적으로 직접 연결된 경우만 인정한다.
+    # 쉼표 뒤의 다음 상태군을 앞 상태가 덮어쓰지 않도록 임의 거리 매칭은 사용하지 않는다.
     for m in re.finditer(
-        r"(심각한 공급 부족|공급 제약(?: 상태)?|균형 상태|Very\s+Tight|Tight|Balanced)"
-        rf"[^.\n]{{0,50}}?(?:품목(?:은|이)?\s*)?{group}",
+        r"(심각한 공급 부족|공급 제약|균형|Very\s+Tight|Tight|Balanced)"
+        r"(?:\s+상태)?(?:인)?\s+품목(?:은|이|으로는)?\s*"
+        rf"{group}",
         text,
         re.I,
     ):
