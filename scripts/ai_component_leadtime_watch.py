@@ -253,10 +253,9 @@ def extract_labeled_narrative(text: str, alias: str) -> dict:
         if c:
             entry["current"] = normalize_week(c.group(1))
 
-        status_window = chunk[:180]
-        status = status_from_exact(status_window)
-        if status:
-            entry["status"] = status
+        # 상태는 표의 구조화 행 또는 "X는 Very Tight/Tight/Balanced"처럼
+        # 부품명과 상태가 직접 연결된 명시 문구에서만 갱신한다.
+        # "balanced lead time" 같은 벤치마크 문구를 상태로 오인하지 않는다.
 
         if len(entry) > len(best):
             best = entry
@@ -440,6 +439,54 @@ def repair_bad_initial_state(previous: dict) -> dict:
     return previous
 
 
+def repair_weekly_002_state(previous: dict) -> tuple[dict, list[str]]:
+    # Weekly Radar 002 공식 표(사용자 제공 TrendForce 원본 캡처) 기준 상태를 잠근다.
+    # 2026-09-22 배포본에서 "균형 리드타임" 문구를 공급 상태로 잘못 읽은 회귀를 복구한다.
+    if not str(previous.get("source") or "").rstrip("/").endswith("weekly-radar-002"):
+        return previous, []
+    comps = previous.get("components") or {}
+    expected = BASELINE["components"]
+    repaired = copy.deepcopy(previous)
+    repaired.setdefault("components", {})
+    changed: list[str] = []
+    for name, exp in expected.items():
+        cur = dict(repaired["components"].get(name) or {})
+        # 숫자는 Weekly Radar 002 기준값과 일치할 때만 상태를 강제 복구한다.
+        if (
+            str(cur.get("current") or "") == str(exp.get("current") or "")
+            and str(cur.get("balanced") or "") == str(exp.get("balanced") or "")
+            and str(cur.get("status") or "") != str(exp.get("status") or "")
+        ):
+            cur["status"] = exp["status"]
+            repaired["components"][name] = cur
+            changed.append(name)
+    repaired["signals"] = copy.deepcopy(BASELINE.get("signals") or repaired.get("signals") or {})
+    return repaired, changed
+
+
+def build_status_correction_alert(old: dict, corrected: dict, names: list[str], source_url: str) -> str:
+    lines = [
+        "<b>⚠️ AI 부품 리드타임 감시 — 상태 정정</b>",
+        "",
+        "직전 알림에서 균형 리드타임 문구를 공급 상태로 잘못 읽은 항목을 정정합니다.",
+    ]
+    for name in names:
+        old_status = fmt_status(old.get(name) or {})
+        new_status = fmt_status(corrected.get(name) or {})
+        lines.append(f"• <b>{html.escape(name)}</b>: {html.escape(old_status)} → {html.escape(new_status)}")
+    lines += ["", "<b>정정 후 6개 품목 상태</b>"]
+    for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC"):
+        entry = corrected.get(name) or {}
+        lines.append(
+            f"• <b>{html.escape(name)}</b> | 현재 {html.escape(fmt_week(entry.get('current')))} | "
+            f"균형 {html.escape(fmt_week(entry.get('balanced')))} | 상태 {html.escape(fmt_status(entry))}"
+        )
+    if source_url:
+        safe_url = html.escape(source_url, quote=True)
+        lines.append(f'• <a href="{safe_url}">TrendForce 원문</a>')
+    return "\n".join(lines).strip() + "\n"
+
+
 def fmt_week(value: str) -> str:
     value = str(value or "확인 불가").replace("-", "~")
     return value if value == "확인 불가" else value + "주"
@@ -575,7 +622,9 @@ def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH)
     pending = load_json(PENDING_PATH)
-    previous = repair_bad_initial_state(state.get("ai_component_leadtime") or copy.deepcopy(BASELINE))
+    raw_previous = repair_bad_initial_state(state.get("ai_component_leadtime") or copy.deepcopy(BASELINE))
+    raw_previous_components = copy.deepcopy(raw_previous.get("components") or BASELINE["components"])
+    previous, repaired_status_names = repair_weekly_002_state(raw_previous)
     previous_components = previous.get("components") or BASELINE["components"]
     seen_urls = set(previous.get("seen_urls") or [])
 
@@ -630,6 +679,13 @@ def main() -> None:
     latest_source = previous.get("source") or BASELINE["source"]
     latest_as_of = previous.get("as_of") or BASELINE_DATE
     notify_text = ""
+    if repaired_status_names:
+        notify_text = build_status_correction_alert(
+            raw_previous_components,
+            previous_components,
+            repaired_status_names,
+            str(previous.get("source") or BASELINE["source"]),
+        )
     new_seen = set(seen_urls)
 
     if best:
@@ -656,15 +712,19 @@ def main() -> None:
             if value and str(previous_signals.get(name) or "") != str(value)
         ]
         published_date = published[:10] if published else ""
-        is_after_baseline = bool(published_date and published_date > BASELINE_DATE)
+        previous_as_of = str(previous.get("as_of") or BASELINE_DATE)
         is_new_url = bool(url and url not in seen_urls)
+        is_new_release = bool(published_date and published_date > previous_as_of)
         exact_weekly_signal = (
             "current vs balanced" in (best.get("full_text") or "").lower()
             or "six ai infrastructure components" in (best.get("full_text") or "").lower()
+            or "weekly radar" in (best.get("title") or "").lower()
         )
 
-        if changed or changed_signals:
-            notify_text = build_alert(
+        # 이미 저장한 같은 주차/과거 주차 자료를 다시 파싱해 상태를 덮어쓰지 않는다.
+        # 새 주차(발행일이 직전 기준일보다 뒤)일 때만 숫자·상태·원인 신호를 승격한다.
+        if is_new_release and (changed or changed_signals):
+            fresh_alert = build_alert(
                 previous_components,
                 merged,
                 changed,
@@ -672,14 +732,16 @@ def main() -> None:
                 published,
                 signal_only=False,
                 signals=merged_signals,
-                changed_signals=changed_signals,
+                # 새 Weekly Radar에서는 이번 주 확인된 원인·병목 신호를 모두 보여준다.
+                changed_signals=[name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
             )
+            notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
             latest_components = merged
             latest_signals = merged_signals
             latest_source = url or latest_source
-            latest_as_of = published_date or now.date().isoformat()
-        elif is_new_url and is_after_baseline and exact_weekly_signal:
-            notify_text = build_alert(
+            latest_as_of = published_date
+        elif is_new_release and is_new_url and exact_weekly_signal:
+            fresh_alert = build_alert(
                 previous_components,
                 merged,
                 [],
@@ -687,11 +749,12 @@ def main() -> None:
                 published,
                 signal_only=True,
                 signals=extracted_signals,
-                changed_signals=[],
+                changed_signals=[name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
             )
+            notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
             latest_signals = merged_signals
             latest_source = url or latest_source
-            latest_as_of = published_date or now.date().isoformat()
+            latest_as_of = published_date
 
     pending["ai_component_leadtime"] = {
         "as_of": latest_as_of,
