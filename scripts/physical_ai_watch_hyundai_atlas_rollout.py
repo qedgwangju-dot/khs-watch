@@ -107,7 +107,9 @@ def _query_boston_rmac_recovery() -> list[dict]:
 
 
 def _is_rmac_operational(text: str) -> bool:
-    return bool((BOSTON.search(text) or HMG.search(text)) and ATLAS.search(text) and RMAC.search(text) and RMAC_ACTIVE.search(text))
+    center = RMAC.search(text) or RMAC_ALIAS.search(text)
+    active = RMAC_ACTIVE.search(text) or RMAC_ALIAS.search(text)
+    return bool((BOSTON.search(text) or HMG.search(text)) and ATLAS.search(text) and center and active)
 
 def _rmac_stage(text: str) -> str:
     if RMAC_EXPANSION_COMPLETE.search(text):
