@@ -22,6 +22,8 @@ EXTRA_QUERIES = [
     '(HBM OR DDR5) (wafer OR 웨이퍼) (allocation OR 비중 OR 배분)',
     'HBM ("glass carrier" OR "글라스 캐리어" OR "유리 지지판") (cleaning OR 세정)',
     '(P5 OR Fab1) (삼성 OR Samsung) (가동 OR 양산 OR production OR delay)',
+    '말레이시아 8542323000 HBM 수출 8월 16억2454만달러',
+    'Malaysia 8542323000 HBM exports Intel ASE TF-AMD MAPC advanced packaging',
 ]
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
@@ -129,7 +131,11 @@ def local_period(text, published):
 
 
 def is_axis_text(text):
-    return bool(re.search(r'RDIMM|현물.*프리미엄|spot.*premium|글라스 캐리어|glass carrier|유리 지지판|P5|HBM.*(?:공급 부족|증산|웨이퍼|wafer|supply)|HBM4E?.*(?:\d+\s*Gb|\d+\s*GB|\d+\s*단)', text, re.I))
+    return bool(re.search(
+        r'RDIMM|현물.*프리미엄|spot.*premium|글라스 캐리어|glass carrier|유리 지지판|P5|'
+        r'HBM.*(?:공급 부족|증산|웨이퍼|wafer|supply)|HBM4E?.*(?:\d+\s*Gb|\d+\s*GB|\d+\s*단)|'
+        r'말레이시아.*(?:8542[.]?32[.]?3000|HBM)|Malaysia.*(?:8542[.]?32[.]?3000|HBM)',
+        text, re.I))
 
 
 def read_document(raw):
@@ -160,9 +166,92 @@ def make_record(axis, key_parts, value, unit, period, item, excerpt, **extra):
             'excerpt': excerpt[:800], **extra}
 
 
+def _korean_dollar_amount(text):
+    m = re.search(r'([\d,.]+)\s*억\s*([\d,.]+)?\s*만?\s*달러', text)
+    if m:
+        eok = float(m[1].replace(',', ''))
+        man = float((m[2] or '0').replace(',', ''))
+        return eok * 100_000_000 + man * 10_000
+    m = re.search(r'\$\s*([\d,.]+)\s*(billion|million|B|M)\b', text, re.I)
+    if m:
+        n = float(m[1].replace(',', ''))
+        return n * (1_000_000_000 if m[2].lower() in ('billion','b') else 1_000_000)
+    return None
+
+
+def _malaysia_export_record(item, body):
+    text = re.sub(r'\s+', ' ', body)
+    if not re.search(r'(?:말레이시아|Malaysia)', text, re.I):
+        return None
+    if not re.search(r'8542[.]?32[.]?3000|8542323000', text):
+        return None
+
+    published = item.get('published_at_kst', '')
+    pub_year = int(published[:4]) if re.match(r'^20\d{2}', published) else None
+    mm = re.search(r'(?:지난\s*)?([1-9]|1[0-2])\s*월\s*말레이시아향[^.]{0,140}?(?:수출액은|exports?[^.]{0,30}?reached)\s*([^,.]+(?:억[^,.]+만달러|억달러|\$[^,.]+(?:billion|million|B|M)))', text, re.I)
+    if not mm or pub_year is None:
+        return None
+    month = int(mm[1])
+    amount = _korean_dollar_amount(mm[2])
+    if amount is None:
+        # English recaps usually place the amount immediately after the HS-code clause.
+        nearby = text[max(0, mm.start()-80):mm.end()+160]
+        amount = _korean_dollar_amount(nearby)
+    if amount is None:
+        return None
+
+    yoy = None
+    ym = re.search(r'(?:전년\s*(?:동기|동월)\s*대비|year[- ]on[- ]year|yoy)[^%]{0,30}?([\d.]+)\s*%', text, re.I)
+    if ym:
+        yoy = float(ym[1])
+
+    current_weight_kg = None
+    previous_weight_kg = None
+    wm = re.search(r'(?:수출\s*중량|export volume)[^.]{0,100}?([\d.]+)\s*(?:톤|t)\s*(?:에서|to)\s*([\d.]+)\s*(?:톤|t)', text, re.I)
+    if wm:
+        previous_weight_kg = float(wm[1]) * 1000
+        current_weight_kg = float(wm[2]) * 1000
+
+    taiwan_amount = None
+    tm = re.search(r'(?:대만향|exports? to Taiwan)[^.]{0,90}?([\d,.]+\s*억\s*[\d,.]*\s*만?\s*달러|\$\s*[\d,.]+\s*(?:billion|million|B|M))', text, re.I)
+    if tm:
+        taiwan_amount = _korean_dollar_amount(tm[1])
+
+    ratio = None
+    rm = re.search(r'(?:대만향[^.]{0,60}?)([\d.]+)\s*%\s*(?:까지|수준|of)', text, re.I)
+    if rm:
+        ratio = float(rm[1])
+    elif taiwan_amount:
+        ratio = amount / taiwan_amount * 100
+
+    jan_aug = None
+    jm = re.search(r'(?:1\s*[~-]\s*8월|Jan(?:uary)?[-– ]Aug(?:ust)?)[^.]{0,100}?([\d,.]+\s*억\s*[\d,.]*\s*만?\s*달러|\$\s*[\d,.]+\s*(?:billion|million|B|M))', text, re.I)
+    if jm:
+        jan_aug = _korean_dollar_amount(jm[1])
+
+    period = f'{pub_year}-{month:02d}'
+    value = {
+        'amount_usd': amount,
+        'weight_kg': current_weight_kg,
+        'weight_kg_previous_yoy': previous_weight_kg,
+        'yoy_pct': yoy,
+        'taiwan_amount_usd': taiwan_amount,
+        'malaysia_vs_taiwan_pct': ratio,
+        'jan_aug_amount_usd': jan_aug,
+        'weight_rounded_from_public_text': bool(current_weight_kg),
+    }
+    return make_record(
+        'malaysia_hsk10_export', ['KR','MY','8542323000'], value, 'USD/kg', period,
+        item, '말레이시아향 HSK 8542323000 월간 수출·중량·대만 대비 비중',
+        scope='HBM_included_multichip_IC_not_HBM_only')
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
+    malaysia = _malaysia_export_record(item, body)
+    if malaysia:
+        records.append(malaysia)
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
@@ -296,6 +385,19 @@ def public_spot_quotes(raw, checked):
 
 def comparison(old, new):
     a, b = old['value'], new['value']
+    if new['axis'] == 'malaysia_hsk10_export':
+        reasons = []
+        if old.get('period') != new.get('period'):
+            reasons.append(f"새 월 {old.get('period')}→{new.get('period')}")
+        if a.get('amount_usd') and b.get('amount_usd'):
+            change = (b['amount_usd'] / a['amount_usd'] - 1) * 100
+            if abs(change) >= 10 or old.get('period') != new.get('period'):
+                reasons.append(f"수출액 {change:+.1f}%")
+        if a.get('malaysia_vs_taiwan_pct') is not None and b.get('malaysia_vs_taiwan_pct') is not None:
+            dp = b['malaysia_vs_taiwan_pct'] - a['malaysia_vs_taiwan_pct']
+            if abs(dp) >= 10 or ((a['malaysia_vs_taiwan_pct'] < 50) != (b['malaysia_vs_taiwan_pct'] < 50)):
+                reasons.append(f"대만 대비 비중 {dp:+.1f}%p")
+        return reasons
     if new['axis'] in ('rdimm_quote', 'ddr5_chip_quote'):
         change = (b / a - 1) * 100
         return [f'동일 규격 현물가격 {change:+.1f}%'] if abs(change) >= 5 else []
@@ -372,7 +474,8 @@ def render(change, rate=None):
     r, old = change['record'], change.get('old')
     names = {'rdimm_quote': '서버 RDIMM 공개 현물가격', 'ddr5_chip_quote': 'DDR5 16Gb 칩 현물가격', 'rdimm': '서버 DDR5 가격·프리미엄', 'hbm_config': 'HBM 칩 용량·적층 구성',
              'wafer_share': 'HBM 웨이퍼 배분 전망', 'bit_share': 'HBM 비트 공급 비중 전망',
-             'carrier_cleaning': 'HBM 유리 지지판 세정 처리량', 'fab_stage': 'P5 Fab1 공급 일정'}
+             'carrier_cleaning': 'HBM 유리 지지판 세정 처리량', 'fab_stage': 'P5 Fab1 공급 일정',
+             'malaysia_hsk10_export': '한국→말레이시아 HBM 관련 HSK10 수출'}
     def fmt(record):
         v = record['value']
         if record['axis'] == 'rdimm':
@@ -386,6 +489,18 @@ def render(change, rate=None):
         if record['axis'] == 'fab_stage':
             labels = {'plan': '계획', 'delayed': '지연', 'cancelled': '취소', 'reported_operation': '가동 보도'}
             return f"{v['year']}년 · {labels.get(v['stage'], v['stage'])}"
+        if record['axis'] == 'malaysia_hsk10_export':
+            amount = v.get('amount_usd') or 0
+            text = f"수출 {amount/1e9:.3f}십억달러"
+            if rate:
+                text += f"(약 {amount*rate/1e12:.2f}조원)"
+            if v.get('weight_kg'):
+                text += f" / 중량 약 {v['weight_kg']/1000:.1f}t"
+            if v.get('yoy_pct') is not None:
+                text += f" / 전년동월 +{v['yoy_pct']:.1f}%"
+            if v.get('malaysia_vs_taiwan_pct') is not None:
+                text += f" / 대만 대비 {v['malaysia_vs_taiwan_pct']:.1f}%"
+            return text
         return str(v) + ('%' if record['unit'] == 'pct' else '회/월')
     lines = [f"<b>{names[r['axis']]}</b>", f"• 현재: {html.escape(fmt(r))}"]
     if old:
@@ -408,6 +523,10 @@ def render(change, rate=None):
         lines.append('• 재사용 세정 처리량이며 웨이퍼 생산·칩 출하·수주금액으로 치환하지 않습니다.')
     if r['axis'] in ('wafer_share', 'bit_share'):
         lines.append('• 연말 전망이며 연간 평균·실제 확정 생산량과 비교하지 않습니다.')
+    if r['axis'] == 'malaysia_hsk10_export':
+        lines.append('• HSK 8542323000은 HBM 포함 복합구조칩 집적회로로 HBM 전용 통계가 아닙니다.')
+        if r['value'].get('weight_rounded_from_public_text'):
+            lines.append('• 중량은 공개 보도 반올림값이면 중량당 단가를 정밀 계산하지 않습니다. 관세청 직접 원값 확인 시 갱신합니다.')
     label = {'official': '회사 공식자료', 'research': '조사기관 자료', 'reported': '보도 단계', 'user_capture': '사용자 캡처 기준선'}[r['evidence']]
     lines += [f'• 근거 단계: {label}', '• 근거 제목: ' + html.escape(r['source_title']) +
               ' · <a href="' + html.escape(r['source_url'], quote=True) + '">원문</a>']
@@ -483,6 +602,31 @@ def main():
     if not paired:
         coverage.append('RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류')
     candidate = legacy.load_state()
+    if candidate.get('malaysia_public_available') and candidate.get('malaysia_hsk10_amount_usd') is not None:
+        month = str(candidate.get('official_month') or '')
+        period = month[:4] + '-' + month[4:6] if len(month) == 6 else month
+        item = {
+            'direct_link': 'https://www.data.go.kr/data/15100475/openapi.do',
+            'source': '관세청 공공데이터포털',
+            'published_at_kst': now.isoformat(timespec='seconds'),
+            'title': '관세청 품목별 국가별 수출입실적 HSK 8542323000 말레이시아',
+        }
+        record = make_record(
+            'malaysia_hsk10_export', ['KR','MY','8542323000'],
+            {
+                'amount_usd': candidate.get('malaysia_hsk10_amount_usd'),
+                'weight_kg': candidate.get('malaysia_hsk10_weight_kg'),
+                'weight_kg_previous_yoy': None,
+                'yoy_pct': None,
+                'taiwan_amount_usd': None,
+                'malaysia_vs_taiwan_pct': None,
+                'jan_aug_amount_usd': None,
+                'weight_rounded_from_public_text': False,
+            },
+            'USD/kg', period, item, '관세청 국가별 HSK10 직접값',
+            as_of=now.date().isoformat(), scope='HBM_included_multichip_IC_not_HBM_only')
+        record['evidence'] = 'official'
+        observed.append(record)
     state = update_state(initial.get('memory_axes'), observed, now, baseline.get('records', []))
     state['reference_capture'] = baseline.get('user_capture', {})
     state['calculation_cases'] = baseline.get('calculation_cases', [])
