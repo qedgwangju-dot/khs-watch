@@ -34,6 +34,7 @@ WALTER_PUBLIC_URL = "https://t.me/s/WalterBloomberg"
 BING_EMERGENCY_SENTINEL = "__BING_MIDDLE_EAST_EMERGENCY__"
 IRAN_DIPLO_SENTINEL = "__IRAN_NEWYORK_DIPLOMACY_WIRE__"
 IRAN_DIPLO_BACKFILL_SENTINEL = "__IRAN_NEWYORK_DIPLOMACY_BACKFILL__"
+IRIB_MEETING_BACKFILL_SENTINEL = "__IRIB_ARAGHCHI_WITKOFF_NY_BACKFILL__"
 
 BING_EMERGENCY_QUERIES = [
     '"Code 100" Iran IRGC Army security forces',
@@ -56,6 +57,7 @@ FLASH_QUERIES = [
     BING_EMERGENCY_SENTINEL,
     IRAN_DIPLO_SENTINEL,
     IRAN_DIPLO_BACKFILL_SENTINEL,
+    IRIB_MEETING_BACKFILL_SENTINEL,
     'site:reuters.com (Araghchi OR "Iranian foreign minister") (China OR Beijing OR "Wang Yi") (visit OR meeting OR talks) when:2d',
     '(Araghchi OR "Iranian foreign minister" OR 아라치 OR 이란 외무장관) (China OR Beijing OR 중국 OR 베이징 OR "Wang Yi" OR 왕이) (visit OR meeting OR 회담 OR 방문) when:2d',
     'site:reuters.com (China OR Chinese) Iran ("satellite images" OR "satellite imagery") ("US base" OR "U.S. base") when:3d',
@@ -68,6 +70,11 @@ FLASH_QUERIES = [
     '(Trump OR 트럼프) (Iran OR 이란 OR Tehran OR 테헤란) ("wants a deal" OR "end of the war" OR "direct contact" OR "direct talks" OR 직접 접촉 OR 직접 협상 OR 종전) when:1d',
     'site:reuters.com Iran US ("direct talks" OR "direct contact" OR negotiations OR denied OR rejects OR "no direct talks") when:1d',
     'site:reuters.com Iran delegation New York ("full authority" OR "full mandate" OR mediator OR diplomacy OR "concrete steps") when:1d',
+    'site:iribnews.ir (Araghchi OR عراقچی) (Witkoff OR ویتکاف) (New York OR نیویورک) when:1d',
+    'site:irna.ir (Araghchi OR عراقچی) (Witkoff OR ویتکاف) (New York OR نیویورک) when:1d',
+    'site:presstv.ir Araghchi Witkoff New York Hormuz when:1d',
+    'site:tasnimnews.com Araghchi Witkoff New York Hormuz when:1d',
+    '(Araghchi OR 아라치 OR عراقچی) (Witkoff OR 위트코프 OR ویتکاف) (New York OR 뉴욕 OR نیویورک) (meeting OR met OR talks OR 회동 OR 회담 OR دیدار) when:1d',
     '(Iran OR 이란) (delegation OR 대표단) (New York OR 뉴욕) ("full authority" OR "full mandate" OR 전권 OR 완전한 권한) (diplomacy OR 협상 OR 외교) when:1d',
     '(Iran OR 이란) (mediator OR 중재자 OR 중재) (New York OR 뉴욕) ("end hostilities" OR 적대행위 종식 OR agreement OR 합의안) when:1d',
     '(Iran OR Tehran OR 이란 OR 테헤란) ("concrete steps" OR 구체적 조치) (resume diplomacy OR diplomacy OR 외교 재개 OR 협상 재개) when:1d',
@@ -152,6 +159,12 @@ AGREEMENT_DETAIL_TERMS = ('details of an agreement', 'agreement details', 'terms
 CONCRETE_STEPS_TERMS = ('concrete steps', 'specific steps', 'tangible steps', '구체적인 조치', '구체적 조치', '실질적 조치')
 WELCOME_TERMS = ('welcome', 'welcomes', 'ready to welcome', 'would welcome', 'open to', '환영', '열려 있', '준비')
 RTRS_RELAY_TERMS = ('rtrs', 'reuters', '로이터')
+WITKOFF_TERMS = ('witkoff', 'steve witkoff', '위트코프', '스티브 위트코프', 'ویتکاف')
+DIRECT_MEETING_TERMS = ('met with', 'meeting with', 'held talks with', 'face-to-face', 'met', 'meeting', 'talks with', '회동', '회담', '만남', 'دیدار', 'گفتگو')
+IRIB_SOURCE_TERMS = ('irib', 'iranian state tv', 'iranian state television', '이란 국영방송', '이란 국영 tv', 'صدا و سیما')
+BLOCKADE_LIFT_TERMS = ('lift the blockade', 'lifting the blockade', 'lift its blockade', 'end the naval blockade', 'naval blockade lifted', '해상 봉쇄 해제', '봉쇄 즉각 해제', '봉쇄 해제')
+FROZEN_ASSET_TERMS = ('frozen assets', 'frozen funds', 'release frozen assets', 'release frozen funds', '동결 자산', '동결된 이란 자산', '동결자금', '동결 자금')
+ALL_FRONTS_END_TERMS = ('end the war on all fronts', 'end war on all fronts', 'end to the war on all fronts', 'war on all fronts', '모든 전선에서의 전쟁 종식', '모든 전선 종전', '전 전선 종전')
 
 TRUSTED_EMERGENCY_SOURCES = ('reuters', 'apnews', 'associated press', 'afp', 'whitehouse.gov', 'state.gov', 'travel.state.gov', 'gov.il', 'irna.ir', 'tasnimnews', 'tasnim', 'presstv', 'saudipressagency', 'spa.gov.sa', 'arabnews')
 
@@ -183,6 +196,33 @@ def _iran_diplomacy_backfill():
         'link': 'https://x.com/LiveSquawk/status/2102335418322837901',
         'published': 'Tue, 22 Sep 2026 09:53:17 GMT',
         'source': 'LiveSquawk · RTRS 중계',
+        'description': text,
+        'article_text': text,
+        'deep_signal': True,
+    }], None
+
+
+def _irib_meeting_backfill():
+    """사용자 제공 IRIB 보도 누락 복구. 직접 회동은 IRIB 보도 단계로만 표시하며 2026-09-24 이후 자동 비활성화."""
+    today = dt.datetime.now(watch.KST).date()
+    if today > dt.date(2026, 9, 24):
+        return [], None
+    text = (
+        "IRIB reported that Iranian Foreign Minister Abbas Araghchi met U.S. envoy Steve Witkoff in New York "
+        "and accepted a meeting request to discuss conditions for reopening the Strait of Hormuz. "
+        "The reported Iranian conditions included immediate lifting of the naval blockade, immediate release "
+        "of frozen Iranian assets, and an end to the war on all fronts. "
+        "Reuters separately confirmed the same day that U.S.-Iran talks were continuing and that Iran had "
+        "authorized its New York delegation to revive diplomacy, but Reuters had not independently confirmed "
+        "the face-to-face Araghchi-Witkoff meeting in its public report."
+    )
+    return [{
+        'title': 'IRIB reports Araghchi-Witkoff New York meeting on Hormuz reopening conditions',
+        'title_original': 'IRIB reports Araghchi-Witkoff New York meeting on Hormuz reopening conditions',
+        'title_ko': '',
+        'link': 'https://www.iribnews.ir/',
+        'published': 'Tue, 22 Sep 2026 19:00:00 GMT',
+        'source': 'IRIB 보도 · 독립확인 대기',
         'description': text,
         'article_text': text,
         'deep_signal': True,
@@ -333,6 +373,8 @@ def google_news(query):
         return _bing_iran_diplomacy_rows()
     if query == IRAN_DIPLO_BACKFILL_SENTINEL:
         return _iran_diplomacy_backfill()
+    if query == IRIB_MEETING_BACKFILL_SENTINEL:
+        return _irib_meeting_backfill()
     return _prev_google_news(query)
 
 watch.google_news = google_news
@@ -426,6 +468,27 @@ def _iran_newyork_diplomacy_marks(row):
     agreement_detail = _has(text, AGREEMENT_DETAIL_TERMS) or ('agreement' in text and ('details' in text or 'terms' in text))
     concrete = _has(text, CONCRETE_STEPS_TERMS)
     welcome = _has(text, WELCOME_TERMS)
+    araghchi = _has(text, IRAN_FM_TERMS)
+    witkoff = _has(text, WITKOFF_TERMS)
+    direct_meeting = _has(text, DIRECT_MEETING_TERMS)
+    irib_report = _has(_source_text(row) + ' ' + text, IRIB_SOURCE_TERMS)
+    blockade_lift = _has(text, BLOCKADE_LIFT_TERMS)
+    frozen_assets = _has(text, FROZEN_ASSET_TERMS)
+    all_fronts_end = _has(text, ALL_FRONTS_END_TERMS)
+
+    if newyork and araghchi and witkoff and direct_meeting:
+        if irib_report and not ('reuters.com' in src or 'apnews.com' in src):
+            marks.append('IRIB아라치위트코프뉴욕회동보도')
+        else:
+            marks.append('아라치위트코프뉴욕회동확인')
+    if newyork and araghchi and witkoff and _has(text, HORMUZ_TERMS) and (blockade_lift or frozen_assets or all_fronts_end):
+        marks.append('호르무즈재개방조건직접협의')
+    if blockade_lift:
+        marks.append('해상봉쇄해제조건')
+    if frozen_assets:
+        marks.append('동결자산지급조건')
+    if all_fronts_end:
+        marks.append('전전선종전조건')
 
     if newyork and delegation and full_mandate and diplo_restart:
         marks.append('이란뉴욕대표단외교전권')
@@ -488,6 +551,10 @@ def _marks(row):
 
 
 def _korean_title(marks):
+    if '아라치위트코프뉴욕회동확인' in marks:
+        return '아라치–위트코프 뉴욕 직접 회동 확인 — 호르무즈 재개방 조건 협의 단계'
+    if 'IRIB아라치위트코프뉴욕회동보도' in marks:
+        return 'IRIB: 아라치–위트코프 뉴욕 회동 보도 — 미국·Reuters 독립확인 대기'
     if '이란뉴욕대표단외교전권' in marks and '뉴욕중재종전합의안협의' in marks:
         return '이란 대표단, 미국과 외교 재개 전권 갖고 뉴욕 도착 — 중재 통한 적대행위 종식 합의안 협의 가능'
     if '이란뉴욕대표단외교전권' in marks:
@@ -533,6 +600,18 @@ def _korean_title(marks):
 
 def _signals(marks):
     out = []
+    if '아라치위트코프뉴욕회동확인' in marks:
+        out.append('🟢 아라치 이란 외무장관–Steve Witkoff 미국 특사의 뉴욕 직접 회동이 독립 확인됨 — 대표단 전권·중재 가능성에서 실제 대면협상 단계로 상승')
+    if 'IRIB아라치위트코프뉴욕회동보도' in marks:
+        out.append('🟡 IRIB가 아라치–Witkoff 뉴욕 회동을 보도 — Reuters는 같은 날 미·이란 협상 지속을 확인했지만 공개 기사에서 두 사람의 대면 회동은 아직 독립 확인 전')
+    if '호르무즈재개방조건직접협의' in marks:
+        out.append('🟡 호르무즈 재개방 조건을 직접 협의했다는 보도 — 해상 봉쇄 해제·동결자산·전 전선 종전 조건의 공식 공동확인 여부 추적')
+    if '해상봉쇄해제조건' in marks:
+        out.append('조건: 미국의 이란 항만·해상 봉쇄 해제')
+    if '동결자산지급조건' in marks:
+        out.append('조건: 동결된 이란 자산·자금 지급/해제')
+    if '전전선종전조건' in marks:
+        out.append('조건: 모든 전선에서의 전쟁 종식')
     if '이란뉴욕대표단외교전권' in marks:
         out.append('🟡 이란 대표단이 미국과 외교를 재개할 완전한 권한을 갖고 뉴욕에 도착했다는 고위 당국자 발언 — 단순 접촉 가능성보다 한 단계 상승')
     if '뉴욕중재종전합의안협의' in marks:
@@ -605,6 +684,8 @@ def score_item(row, now):
     tags = ['종전·협상']
     if iran_diplomacy_marks:
         tags += ['이란전쟁', '뉴욕외교', '외교재개', '중재']
+        if any(m in iran_diplomacy_marks for m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의')):
+            tags += ['직접회동', '호르무즈조건']
     if emergency_marks:
         tags += ['확전', '중동비상경보']
         if any(m in emergency_marks for m in ('이란Code100미확인보도', '네타냐후조기귀국미확인보도')):
@@ -636,7 +717,12 @@ def score_item(row, now):
         else:
             score = 97
     elif iran_diplomacy_marks:
-        score = 100 if 'Reuters직접확인' in iran_diplomacy_marks else 99
+        if '아라치위트코프뉴욕회동확인' in iran_diplomacy_marks:
+            score = 100
+        elif 'IRIB아라치위트코프뉴욕회동보도' in iran_diplomacy_marks:
+            score = 99
+        else:
+            score = 100 if 'Reuters직접확인' in iran_diplomacy_marks else 99
     elif any(m in marks for m in ('종전합의', '정식휴전합의', '호르무즈실물정상화', '협상후퇴')):
         score = 100
     elif '이란직접협상확인' in marks:
@@ -678,7 +764,7 @@ def item_id(row):
             day = dt.datetime.now(dt.timezone.utc).date().isoformat()
         key = 'middle-east-emergency|' + day + '|' + '|'.join(sorted(emergency_marks))
     else:
-        stage_marks = [m for m in marks if m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영','RTRS중계속보','Reuters직접확인','미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')]
+        stage_marks = [m for m in marks if m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의','해상봉쇄해제조건','동결자산지급조건','전전선종전조건','이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영','RTRS중계속보','Reuters직접확인','미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')]
         if stage_marks:
             key = 'iran-war-peace-stage-2026|' + '|'.join(sorted(stage_marks))
         elif any(m.startswith('크렘린') for m in marks):
@@ -698,6 +784,8 @@ def topic_label(row):
     if hmarks:
         return '예멘·사우디·오만 · Ansar Allah 휴전중재'
     marks = _marks(row)
+    if any(m in marks for m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의')):
+        return '이란 전쟁 · 아라치–Witkoff 뉴욕 회동'
     if any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
         return '이란 전쟁 · 뉴욕 외교재개'
     if any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')):
@@ -765,7 +853,23 @@ def _verdict(items):
         lines.append('- <b>시장:</b> 합의 진전 시 바브엘만데브·Yanbu 우회수출 경로의 해운·전쟁보험·원유 물류 위험프리미엄 완화 가능 / 결렬 시 반대')
         lines.append('- <b>다음:</b> 오만·사우디 공식 확인 → Ansar Allah 수용 여부 → 2주 휴전 발효 시각 → 인도적 조건 공개 → 실제 합의 발표')
 
-    if '이란뉴욕대표단외교전권' in marks or '뉴욕중재종전합의안협의' in marks or '미구체조치시외교재개환영' in marks:
+    if 'IRIB아라치위트코프뉴욕회동보도' in marks or '아라치위트코프뉴욕회동확인' in marks:
+        if '아라치위트코프뉴욕회동확인' in marks:
+            lines.append('- <b>미·이란 뉴욕 회동:</b> 🟢 아라치–Witkoff 직접 회동 확인 — 외교 재개 가능성에서 실제 대면협상 단계로 상승')
+            lines.append('- <b>확정 수준:</b> 독립 신뢰원 확인 단계')
+        else:
+            lines.append('- <b>미·이란 뉴욕 회동:</b> 🟡 IRIB가 아라치–Witkoff 회동을 보도 — Reuters는 협상 지속·이란 대표단 전권을 확인했지만 대면 회동 자체는 공개 기사에서 독립확인 전')
+        conds = []
+        if '해상봉쇄해제조건' in marks:
+            conds.append('해상 봉쇄 해제')
+        if '동결자산지급조건' in marks:
+            conds.append('동결자산 지급/해제')
+        if '전전선종전조건' in marks:
+            conds.append('모든 전선 종전')
+        if conds:
+            lines.append('- <b>호르무즈 조건:</b> ' + ' · '.join(conds))
+        lines.append('- <b>다음:</b> 미국 측 회동 확인 → 공동/각자 회담 결과 → 호르무즈 재개방 조건 문서화 → 실제 통항 회복')
+    elif '이란뉴욕대표단외교전권' in marks or '뉴욕중재종전합의안협의' in marks or '미구체조치시외교재개환영' in marks:
         parts = []
         if '이란뉴욕대표단외교전권' in marks:
             parts.append('대표단 외교 재개 전권')
@@ -792,7 +896,9 @@ def _verdict(items):
     elif '미국단독종전협상신호' in marks:
         lines.append('- <b>이란 전쟁:</b> ⚠️ 미국 측 종전·직접접촉 주장 단계 — 이란 공식 확인 전에는 휴전·종전으로 판정하지 않음')
 
-    if any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
+    if any(m in marks for m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의')):
+        lines.append('- <b>이란 단계 추적:</b> 대표단 전권 → 중재 합의안 협의 → 아라치–Witkoff 회동 보도 → 미국 측/독립 확인 → 조건 문서화 → 휴전·종전 → 호르무즈 실제 정상화')
+    elif any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
         lines.append('- <b>이란 단계 추적:</b> 뉴욕 대표단 전권 → 중재 합의안 협의 → 미국 구체 조치 → 회담 재개 → 정식 휴전 → 종전 합의 → 호르무즈 실제 정상화')
     elif any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '협상후퇴')):
         lines.append('- <b>이란 단계 추적:</b> 미국 측 협상 신호 → 이란 측 확인 → 정식 휴전 → 종전 합의 → 호르무즈 실제 정상화')
