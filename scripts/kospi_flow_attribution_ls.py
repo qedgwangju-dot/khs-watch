@@ -177,23 +177,22 @@ def _top_negative(delta: dict[str, Any], labels: tuple[str, ...]) -> tuple[str |
 def classify_attribution(data: dict[str, Any]) -> dict[str, Any]:
     spot, kp200, fut, pgm = (data.get("kospi", {}), data.get("kp200", {}),
                              data.get("futures", {}), data.get("program", {}))
-    usable = [b for b in (spot, kp200, fut) if not b.get("stale") and b.get("base_time")]
-    spot_actor, spot_delta, spot_share = _top_negative(spot.get("delta") or {}, ("외국인", "기관계", "개인"))
-    kp_actor, kp_delta, kp_share = _top_negative(kp200.get("delta") or {}, ("외국인", "기관계", "개인"))
-    fut_actor, fut_delta, fut_share = _top_negative(fut.get("delta") or {}, ("외국인", "기관계", "개인"))
 
-    actor_hits = {"외국인": 0, "기관계": 0, "개인": 0}
-    for block in usable:
-        for actor in actor_hits:
-            v = fnum((block.get("delta") or {}).get(actor))
-            if v is not None and v < 0:
-                actor_hits[actor] += 1
-    cross_actor = max(actor_hits, key=actor_hits.get) if usable else None
-    cross_hits = actor_hits.get(cross_actor, 0) if cross_actor else 0
+    spot_usable = bool(not spot.get("stale") and spot.get("base_time"))
+    fut_usable = bool(not fut.get("stale") and fut.get("base_time"))
+    kp_usable = bool(not kp200.get("stale") and kp200.get("base_time"))
+    pgm_usable = bool(not pgm.get("stale") and pgm.get("base_time"))
 
-    program_total = None if pgm.get("stale") or not pgm.get("base_time") else fnum((pgm.get("delta") or {}).get("전체"))
-    arb = fnum((pgm.get("delta") or {}).get("차익"))
-    nonarb = fnum((pgm.get("delta") or {}).get("비차익"))
+    spot_actor, spot_delta, spot_share = _top_negative(
+        spot.get("delta") or {}, ("외국인", "기관계", "개인"))
+    kp_actor, kp_delta, kp_share = _top_negative(
+        kp200.get("delta") or {}, ("외국인", "기관계", "개인"))
+    fut_actor, fut_delta, fut_share = _top_negative(
+        fut.get("delta") or {}, ("외국인", "기관계", "개인"))
+
+    program_total = fnum((pgm.get("delta") or {}).get("전체")) if pgm_usable else None
+    arb = fnum((pgm.get("delta") or {}).get("차익")) if pgm_usable else None
+    nonarb = fnum((pgm.get("delta") or {}).get("비차익")) if pgm_usable else None
     program_direction = "확인 불가"
     if program_total is not None:
         if program_total < 0:
@@ -206,34 +205,49 @@ def classify_attribution(data: dict[str, Any]) -> dict[str, Any]:
         else:
             program_direction = "프로그램 중립"
 
-    # 가장 중요한 판정은 급락구간 변화량이다. 하루 누적 순매수는 보조표시만 한다.
-    if len(usable) < 2:
-        verdict = "급락구간 주체별 수급 표본이 부족해 원인 주체 확정 보류"
+    # 원인 판정의 핵심축은 KOSPI 현물 + KOSPI200 선물이다.
+    # KOSPI200 구성종목 수급은 보조 확인용이며, 현물 대신 카운트하지 않는다.
+    if not spot_usable or not fut_usable:
+        verdict = "KOSPI 현물·선물 핵심축이 모두 확보되지 않아 원인 주체 확정 보류"
         confidence = "낮음"
-    elif cross_hits >= 2 and program_total is not None and program_total < 0:
-        verdict = f"{cross_actor} 매도가 2개 이상 시장에서 동시 확대되고 프로그램 매도도 동반"
-        confidence = "높음"
-    elif cross_hits >= 2:
-        verdict = f"{cross_actor} 매도가 2개 이상 시장에서 동시 확대 — 주도 매도 가능성 높음"
-        confidence = "중간"
-    elif spot_actor and spot_delta is not None and spot_share >= 0.55:
-        verdict = f"KOSPI 현물 급락구간은 {spot_actor} 매도 비중이 가장 큼 — 파생 동조는 제한적"
-        confidence = "중간"
+    elif spot_actor and fut_actor and spot_actor == fut_actor:
+        if program_total is not None and program_total < 0:
+            verdict = f"{spot_actor}가 현물·선물 모두 최다 매도이고 프로그램 매도도 동반"
+            confidence = "높음"
+        else:
+            verdict = f"{spot_actor}가 현물·선물 모두 최다 매도 — 프로그램 동조는 확인되지 않음"
+            confidence = "중간"
+    elif spot_actor and fut_actor and spot_actor != fut_actor:
+        verdict = f"현물은 {spot_actor}, 선물은 {fut_actor}가 최다 매도 — 주체 분산, 단일 주도자 확정 보류"
+        confidence = "중간" if program_total is not None and program_total < 0 else "낮음"
     elif spot_actor:
-        verdict = "현물 매도 주체가 분산돼 단일 주체가 급락을 만들었다고 보기 어려움"
+        verdict = f"현물 최다 매도는 {spot_actor}이지만 선물 동조가 없어 단일 주도자 확정 보류"
+        confidence = "낮음"
+    elif fut_actor:
+        verdict = f"선물 최다 매도는 {fut_actor}이지만 현물 동조가 없어 단일 주도자 확정 보류"
         confidence = "낮음"
     else:
-        verdict = "급락구간에서 외국인·기관·개인 중 뚜렷한 순매도 확대 주체가 없음"
+        verdict = "현물·선물에서 뚜렷한 최다 매도 주체를 확인하지 못함"
         confidence = "낮음"
 
-    return {"verdict": verdict, "confidence": confidence,
-            "spot_leader": {"actor": spot_actor, "delta": spot_delta, "negative_share": spot_share},
-            "kp200_leader": {"actor": kp_actor, "delta": kp_delta, "negative_share": kp_share},
-            "futures_leader": {"actor": fut_actor, "delta": fut_delta, "negative_share": fut_share},
-            "cross_actor": cross_actor, "cross_hits": cross_hits,
-            "program_direction": program_direction,
-            "usable_market_blocks": len(usable)}
+    cross_sellers = []
+    if spot_usable and fut_usable:
+        for actor in ("외국인", "기관계", "개인"):
+            sv = fnum((spot.get("delta") or {}).get(actor))
+            fv = fnum((fut.get("delta") or {}).get(actor))
+            if sv is not None and fv is not None and sv < 0 and fv < 0:
+                cross_sellers.append(actor)
 
+    return {
+        "verdict": verdict, "confidence": confidence,
+        "spot_leader": {"actor": spot_actor, "delta": spot_delta, "negative_share": spot_share},
+        "kp200_leader": {"actor": kp_actor, "delta": kp_delta, "negative_share": kp_share},
+        "futures_leader": {"actor": fut_actor, "delta": fut_delta, "negative_share": fut_share},
+        "cross_sellers": cross_sellers,
+        "program_direction": program_direction,
+        "spot_usable": spot_usable, "futures_usable": fut_usable,
+        "kp200_usable": kp_usable, "program_usable": pgm_usable,
+    }
 
 def fetch_attribution(token: str | None = None, window_minutes: int = 15) -> dict[str, Any]:
     token = token or get_ls_token()
@@ -278,7 +292,7 @@ def attribution_html_lines(data: dict[str, Any]) -> list[str]:
     window = int(data.get("window_minutes") or 15)
     cls = data.get("classification") or {}
     lines = ["<b>누가 밀었나 · 급락구간 수급</b>"]
-    for key, label in (("kospi", "KOSPI 현물"), ("kp200", "KOSPI200"), ("futures", "국내선물")):
+    for key, label in (("kospi", "KOSPI 현물"), ("kp200", "KOSPI200 보조"), ("futures", "KOSPI200 선물")):
         block = data.get(key) or {}
         delta = block.get("delta") or {}
         if block.get("stale") or not block.get("base_time"):
