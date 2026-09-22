@@ -1,10 +1,11 @@
 {
-  "updated_at_kst": "2026-09-20T20:28:50+09:00",
+  "updated_at_kst": "2026-09-22T17:15:23+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
     "09ccca98004f94ddc78adf4f",
     "0a11d6e55d20a20d438eea0b",
+    "0f4c93418ab0cb5f77ee5aff",
     "1a7355b983f5d9b5a7d4a97f",
     "20a5c84026d1bbe9b4f60398",
     "21e84f4d7bcbfa46a6b63dee",
@@ -26,6 +27,7 @@
     "59dea53db71c13bdf6c120ef",
     "5a97726e2e93fc7408e02754",
     "62514606e58e299512d357d4",
+    "683bf92b23e4d4953f109996",
     "7310bace62d2a5a4af5e422b",
     "7c4fab38f3ac9aeca880db5a",
     "817f217f23561cc348f4159b",
@@ -65,19 +67,23 @@
   ],
   "seen_fact_keys": [
     "hbm3e_wafer_capacity_3x_ddr5",
+    "hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 2,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1388.1,
-    "date": "2026-09-18 일일 기준 · ECB/Frankfurter · 조회 2026-09-20 20:28 KST · 보조 API 2026-09-20 · 차이 0.10% · 일중 기준시각 차이 가능",
+    "rate": 1372.18,
+    "date": "2026-09-21 일일 기준 · ECB/Frankfurter · 조회 2026-09-22 17:15 KST · 보조 API 2026-09-22 · 차이 0.25% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "핵심 사실 자동추출 실패로 발송 제외: Tech Edition | Samsung shifts DDR5 and SSD production towards outsourcing as HBM demand grows - Tech Edition",
+    "교차검증 부족으로 발송 제외: Bitget | Samsung Electronics will double the production of HBM4 and HBM4E next year - Bitget"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-09-15",
     "source": "TrendForce 공식 X 사용자 제공 캡처",
@@ -120,5 +126,10 @@
     "last_checked_at_kst": "2026-09-20T20:29:54+09:00",
     "candidate_count": 1,
     "errors": []
+  },
+  "structure_baseline_version": 1,
+  "delivery_check": {
+    "checked_at_kst": "2026-09-22T17:15:55+09:00",
+    "status": "no_message_due"
   }
 }
