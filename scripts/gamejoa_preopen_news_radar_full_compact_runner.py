@@ -5051,15 +5051,6 @@ def build_attachment_verified_event_alert(row: dict, now, text: str) -> dict | N
     title = str(row.get("source_title") or row.get("title") or "")
     body = str(row.get("source_body") or row.get("source_abstract") or "")
     profiles = (*AUGUST30_ATTACHMENT_PROFILES, *AUGUST27_ATTACHMENT_PROFILES, *AUGUST26_ATTACHMENT_PROFILES, *AUGUST23_ATTACHMENT_PROFILES, *AUGUST13_ATTACHMENT_PROFILES, *AUGUST22_ATTACHMENT_PROFILES,
-        (
-            "korea_quantum_manufacturing_hub",
-            ("sdt", "에스디티", "ionq", "아이온큐"),
-            ("구미", "제조거점", "제조 시설", "제조시설", "superion 256", "슈페리온 256", "siv", "양자 메모리", "시스템 통합", "시스템통합"),
-            ["돈 버는 능력", "수급", "시간표"],
-            ["양자컴퓨팅/양자통신", "첨단제조/시스템통합", "AI/데이터센터"],
-            ["국내 제조거점", "양자 시스템 조립", "글로벌 공급망", "하이브리드 데이터센터"],
-            118,
-        ),
         ("korea_zinc_critical_minerals", ("고려아연",), ("핵심광물", "핵심 광물", "제련소", "통합제련소"), ["돈 버는 능력", "할인율", "시간표"], ["핵심광물", "비철금속/제련", "미국 공급망"], ["미국 정책 연결", "제련 CAPEX", "핵심광물 공급"], 111),
         ("korea_anthropic_strategic_investment", ("앤트로픽", "anthropic"), ("네이버", "naver", "삼성전자", "sk텔레콤", "skt"), ["돈 버는 능력", "수급", "시간표"], ["AI/데이터센터", "반도체/HBM/CXL", "플랫폼/클라우드"], ["AI 전략투자", "모델 협업", "데이터센터 수요"], 109),
         ("apple_cxmt_memory_supply_test", ("애플", "apple"), ("cxmt", "창신메모리", "중국 메모리", "중국 d램"), ["돈 버는 능력", "수급", "시간표"], ["반도체/HBM/CXL", "DRAM/NAND", "중국 메모리 공급"], ["고객 인증", "메모리 공급", "경쟁구도"], 112),
