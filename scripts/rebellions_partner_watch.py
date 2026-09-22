@@ -83,6 +83,9 @@ def tg_html(value):
 
 def norm_title(value):
     v = norm_text(value).lower()
+    # RSS providers may change only the publisher suffix (e.g. "- 디일렉" -> "- thelec.kr").
+    # Strip that suffix before hashing so the exact same story cannot alert twice.
+    v = re.sub(r"\s+-\s+[^-]{2,60}$", "", v)
     v = re.sub(r"\s*[-|]\s*(리벨리온|rebellions).*$", "", v)
     v = re.sub(r"[^0-9a-z가-힣]+", " ", v)
     return re.sub(r"\s+", " ", v).strip()
@@ -90,6 +93,149 @@ def norm_title(value):
 
 def key_for(title):
     return hashlib.sha256(norm_title(title).encode("utf-8")).hexdigest()[:24]
+
+
+def canonical_url(value):
+    value = norm_text(value)
+    if not value:
+        return ""
+    try:
+        p = urllib.parse.urlsplit(value)
+        # Google News repeatedly exposes the same article with cosmetic query changes.
+        query = "" if p.netloc.lower() == "news.google.com" else p.query
+        return urllib.parse.urlunsplit((p.scheme.lower(), p.netloc.lower(), p.path.rstrip("/"), query, ""))
+    except Exception:
+        return value
+
+
+def event_signature(title, summary=""):
+    """High-confidence underlying-event key used only for recent duplicate suppression."""
+    text = (norm_text(title) + " " + norm_text(summary)).lower()
+
+    partner_aliases = [
+        ("skt", ["sk텔레콤", "skt"]),
+        ("ktcloud", ["kt cloud", "kt클라우드"]),
+        ("navercloud", ["네이버클라우드"]),
+        ("nhncloud", ["nhn클라우드"]),
+        ("samsung", ["삼성전자"]),
+        ("semifive", ["세미파이브"]),
+        ("adtechnology", ["에이디테크놀로지"]),
+        ("coasisemi", ["코아시아세미"]),
+        ("qrt", ["큐알티"]),
+        ("konan", ["코난테크놀로지"]),
+        ("kolonbenit", ["코오롱베니트"]),
+        ("igloo", ["이글루코퍼레이션"]),
+        ("superbai", ["슈퍼브에이아이"]),
+        ("saltlux", ["솔트룩스"]),
+        ("standardenergy", ["스탠다드에너지"]),
+        ("elice", ["엘리스그룹"]),
+        ("innodep", ["이노뎁"]),
+        ("lunit", ["루닛"]),
+        ("wert", ["워트인텔리전스"]),
+        ("cck", ["cck솔루션"]),
+        ("ecopeace", ["에코피스"]),
+        ("vesslai", ["베슬ai", "vessl ai"]),
+        ("exem", ["엑셈"]),
+        ("sizl", ["시즐"]),
+        ("liner", ["라이너"]),
+        ("kb", ["kb금융"]),
+        ("gabia", ["가비아"]),
+        ("jdone", ["제이디원"]),
+        ("ia", ["아이에이클라우드", "아이에이그룹", "아이에이"]),
+        ("mondrian", ["몬드리안에이아이"]),
+        ("squeezebits", ["스퀴즈비츠"]),
+        ("b2en", ["비투엔"]),
+        ("moreh", ["모레"]),
+    ]
+    partner = next((name for name, aliases in partner_aliases if any(a in text for a in aliases)), None)
+    if not partner:
+        return None
+
+    if any(x in text for x in ["수주", "공급계약", "공급 계약", "납품", "발주"]):
+        action = "supply"
+    elif any(x in text for x in ["도입", "채택", "탑재", "상용", "적용", "가동", "서비스"]):
+        action = "deploy"
+    elif any(x in text for x in ["mou", "업무협약", "전략적 제휴", "파트너십", "공동개발", "공동 개발", "공동사업", "공동 사업", "협력"]):
+        action = "partner"
+    elif any(x in text for x in ["투자", "출자", "지분", "인수", "합병"]):
+        action = "capital"
+    elif any(x in text for x in ["실증", "poc", "검증", "테스트"]):
+        action = "validate"
+    else:
+        return None
+
+    if any(x in text for x in ["리벨100", "rebel100", "rebel 100"]):
+        product = "rebel100"
+    elif any(x in text for x in ["아톰맥스", "atom-max", "atom max", "아톰", " atom ", "npu"]):
+        product = "npu_atom"
+    elif any(x in text for x in ["리벨랙", "rebelrack"]):
+        product = "rebelrack"
+    elif any(x in text for x in ["리벨서버", "rebelserver", "ai 서버", "ai server"]):
+        product = "server"
+    elif "cctv" in text:
+        product = "cctv"
+    elif "클라우드" in text or "cloud" in text:
+        product = "cloud"
+    else:
+        product = "general"
+
+    return f"{partner}|{action}|{product}"
+
+
+def seen_time(entry):
+    raw = str((entry or {}).get("first_seen_kst") or "")
+    try:
+        value = dt.datetime.fromisoformat(raw)
+        if value.tzinfo is None:
+            value = value.replace(tzinfo=ZoneInfo("Asia/Seoul"))
+        return value
+    except Exception:
+        return None
+
+
+def find_duplicate_event(item, seen, now, semantic_hours=96):
+    """Return duplicate reason when this is coverage of an already-alerted event."""
+    item_url = canonical_url(item.get("url"))
+    item_title = norm_title(item.get("title"))
+    item_sig = event_signature(item.get("title"), item.get("summary", ""))
+
+    for prior in seen.values():
+        prior_url = canonical_url(prior.get("url"))
+        if item_url and prior_url and item_url == prior_url:
+            return "same_url"
+        if item_title and item_title == norm_title(prior.get("title")):
+            return "same_title"
+
+    if not item_sig:
+        return None
+
+    cutoff = now - dt.timedelta(hours=semantic_hours)
+    for prior in seen.values():
+        if not prior.get("alerted"):
+            continue
+        when = seen_time(prior)
+        if not when or when < cutoff:
+            continue
+        prior_sig = event_signature(prior.get("title"), "")
+        if prior_sig == item_sig:
+            return f"same_event:{item_sig}"
+    return None
+
+
+def resolve_original_url(value):
+    """Best effort: follow a Google News link to the publisher; safe fallback is the Google News URL."""
+    value = norm_text(value)
+    if "news.google.com/" not in value:
+        return value
+    try:
+        req = urllib.request.Request(value, headers={"User-Agent": UA, "Accept-Language": "ko,en;q=0.8"})
+        with urllib.request.urlopen(req, timeout=12) as r:
+            final = r.geturl()
+        if final and "news.google.com/" not in final:
+            return final
+    except Exception:
+        pass
+    return value
 
 
 def relevant(title, summary=""):
@@ -264,9 +410,22 @@ def main():
         last_checked = now - dt.timedelta(hours=48)
 
     fresh = []
+    duplicate_suppressed = 0
     for k, item in ordered:
         if k in seen:
             continue
+
+        duplicate_reason = find_duplicate_event(item, seen, now)
+        if duplicate_reason:
+            duplicate_suppressed += 1
+            seen[k] = {
+                "title": item["title"],
+                "url": item["url"],
+                "first_seen_kst": now.isoformat(timespec="seconds"),
+                "suppressed_duplicate": duplicate_reason,
+            }
+            continue
+
         pub = None
         if item.get("published_kst"):
             try:
@@ -297,7 +456,8 @@ def main():
             title = tg_html(item['title'])
             source = tg_html(item['source'])
             published = tg_html(item.get('published_kst') or '페이지 직접 확인')
-            link = tg_html(item['url'])
+            direct_url = resolve_original_url(item['url'])
+            link = tg_html(direct_url)
             lines.extend([
                 f"{idx}. [{category}] {title}",
                 f"- 출처: {source}" + (" · 공식" if item["official"] else ""),
@@ -308,6 +468,8 @@ def main():
             seen[k] = {
                 "title": item["title"],
                 "url": item["url"],
+                "direct_url": direct_url,
+                "event_signature": event_signature(item["title"], item.get("summary", "")),
                 "first_seen_kst": now.isoformat(timespec="seconds"),
                 "alerted": True,
             }
@@ -327,7 +489,7 @@ def main():
     }
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     STATUS.write_text(
-        f"# 리벨리온 협력 웹감시\n\n- 상태: 정상 조회\n- 후보 항목: {len(ordered)}개\n- 신규 알림: {len(fresh)}개\n- 누적 중복키: {len(seen)}개\n- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
+        f"# 리벨리온 협력 웹감시\n\n- 상태: 정상 조회\n- 후보 항목: {len(ordered)}개\n- 신규 알림: {len(fresh)}개\n- 이번 실행 중복 억제: {duplicate_suppressed}개\n- 누적 중복키: {len(seen)}개\n- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
         encoding="utf-8",
     )
 
