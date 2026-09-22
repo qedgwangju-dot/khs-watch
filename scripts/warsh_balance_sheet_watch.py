@@ -20,7 +20,7 @@ FORCE=os.getenv('FORCE_NOTIFY','0')=='1'
 UA='Mozilla/5.0 (compatible; khs-watch/2.1)'
 ASSET_4W=float(os.getenv('WARSH_BALANCE_ASSET_4W_BN') or '75')
 RESERVE_4W=float(os.getenv('WARSH_BALANCE_RESERVE_4W_BN') or '100')
-SCHEMA_VERSION=3
+SCHEMA_VERSION=4
 
 class TableParser(HTMLParser):
     def __init__(self):
@@ -74,23 +74,59 @@ def find_row(tables, label, starts=False):
                 if nums:return {'label':lab,'value':nums[0],'weekly_change':nums[1] if len(nums)>1 else None,'nums':nums}
     return None
 
+def _condition_table(tables):
+    for table in tables:
+        first_cells=' | '.join((row[0] if row else '') for row in table)
+        if 'Assets, liabilities, and capital' in first_cells and any(row and row[0].strip().lower()=='total assets' for row in table):
+            return table
+    return None
+
+def _find_in_table(table,label,starts=False):
+    if not table:return None
+    for row in table:
+        if not row:continue
+        lab=re.sub(r'\s+',' ',row[0]).strip()
+        ok=lab.lower().startswith(label.lower()) if starts else lab.lower()==label.lower()
+        if ok:
+            nums=row_nums(row)
+            if nums:return {'label':lab,'value':nums[0],'weekly_change':nums[1] if len(nums)>1 else None,'nums':nums}
+    return None
+
 def h41_snapshot():
     raw,final=fetch(H41_URL); p=TableParser(); p.feed(raw); text=clean(raw)
     d=re.search(r'Wednesday\s+([A-Z][a-z]{2})\s+(\d{1,2}),\s+(20\d{2})',text)
     date=f"{d.group(3)}-{datetime.strptime(d.group(1),'%b').month:02d}-{int(d.group(2)):02d}" if d else None
-    total=find_row(p.tables,'Total assets')
-    tsy=find_row(p.tables,'U.S. Treasury securities')
-    bills=find_row(p.tables,'Bills',starts=True)
-    mbs=find_row(p.tables,'Mortgage-backed securities',starts=True)
+
+    # Use one consistent stock basis: Wednesday levels from table 5.
+    cond=_condition_table(p.tables)
+    total=_find_in_table(cond,'Total assets')
+    tsy=_find_in_table(cond,'U.S. Treasury securities')
+    bills=_find_in_table(cond,'Bills',starts=True)
+    mbs=_find_in_table(cond,'Mortgage-backed securities',starts=True)
+    held=_find_in_table(cond,'Securities held outright',starts=True)
+
+    # Reserve balances appear in table 1; its final numeric column is the Wednesday level.
     reserves=find_row(p.tables,'Reserve balances with Federal Reserve Banks')
-    held=find_row(p.tables,'Securities held outright',starts=True)
-    if not all([total,tsy,bills,mbs,reserves,held]):
-        missing=[k for k,v in {'total':total,'treasury':tsy,'bills':bills,'mbs':mbs,'reserves':reserves,'held':held}.items() if not v]
+    reserve_value=None
+    if reserves:
+        nums=reserves.get('nums') or []
+        reserve_value=nums[-1] if len(nums)>=4 else reserves.get('value')
+
+    if not all([total,tsy,bills,mbs,held]) or reserve_value is None:
+        missing=[k for k,v in {'total':total,'treasury':tsy,'bills':bills,'mbs':mbs,'reserves':reserve_value,'held':held}.items() if v is None]
         raise RuntimeError('H.4.1 파싱 실패: '+','.join(missing))
-    return {'date':date,'total_assets':total['value'],'total_assets_weekly':total['weekly_change'],
-            'treasury':tsy['value'],'treasury_weekly':tsy['weekly_change'],'bills':bills['value'],'bills_weekly':bills['weekly_change'],
-            'mbs':mbs['value'],'mbs_weekly':mbs['weekly_change'],'reserves':reserves['value'],'reserves_weekly':reserves['weekly_change'],
-            'securities':held['value'],'securities_weekly':held['weekly_change'],'url':final}
+
+    return {
+        'date':date,
+        'measurement_basis':'수요일 잔액',
+        'total_assets':total['value'],'total_assets_weekly':total['weekly_change'],
+        'treasury':tsy['value'],'treasury_weekly':tsy['weekly_change'],
+        'bills':bills['value'],'bills_weekly':bills['weekly_change'],
+        'mbs':mbs['value'],'mbs_weekly':mbs['weekly_change'],
+        'reserves':reserve_value,'reserves_weekly':None,
+        'securities':held['value'],'securities_weekly':held['weekly_change'],
+        'url':final
+    }
 
 def latest_impl_note():
     raw,_=fetch(FOMC_CAL); found={}
@@ -160,6 +196,7 @@ def usd_level(v_mn):
     return f'{v/100:,.0f}억달러'
 
 def usd_week_change(v_mn):
+    if v_mn is None:return '확인 불가'
     return f'{float(v_mn)/100:+,.1f}억달러'
 
 def bn_change(v_bn):
@@ -169,7 +206,7 @@ def summary_message(cur,impl,task,regime,four,reason):
     ample='충분한 준비금' in impl.get('mode','')
     lines=[
         '<b>[Warsh 연준 대차대조표 정책 변화]</b>',
-        f"기준: H.4.1 {cur.get('date') or '확인 필요'} · 시행지침 {impl.get('date') or '확인 필요'}",
+        f"기준: H.4.1 {cur.get('date') or '확인 필요'} 수요일 잔액 · 시행지침 {impl.get('date') or '확인 필요'}",
         '',
         '<b>핵심 3줄</b>',
         f"• <b>공식 정책</b>: {html.escape(impl['mode'])}",
@@ -197,7 +234,7 @@ def summary_message(cur,impl,task,regime,four,reason):
         '',
         '',
         '<b>확정 사실과 해석 분리</b>',
-        '• <b>확정 사실</b>: FOMC 시행지침의 재투자·매입 문구와 H.4.1 실제 잔액입니다.',
+        '• <b>확정 사실</b>: FOMC 시행지침의 재투자·매입 문구와 H.4.1의 <b>동일한 수요일 잔액 기준</b> 실제 수치입니다.',
         '• <b>해석</b>: QT 여부는 공식 문구 + 총자산·보유증권·준비금의 여러 주 방향이 함께 맞을 때만 강하게 판정합니다.',
         '',
         '<b>공식 시행지침</b>',
@@ -221,8 +258,19 @@ def summary_message(cur,impl,task,regime,four,reason):
     return '\n'.join(lines)
 
 def main():
-    old=load_state(); first=not bool(old); cur=h41_snapshot(); impl=latest_impl_note(); task=task_snapshot()
-    history=old.get('history',[]); regime,four=classify_h41(cur,history)
+    old=load_state(); first=not bool(old); old_schema=old.get('schema_version',1)
+    cur=h41_snapshot(); impl=latest_impl_note(); task=task_snapshot()
+
+    # Schema 4 switches every stock variable to the same Wednesday-level basis.
+    # Discard pre-v4 history so weekly/4-week comparisons never mix averages and point-in-time balances.
+    history=[] if old_schema<SCHEMA_VERSION else old.get('history',[])
+    prev=history[-1] if history and history[-1].get('date')!=cur.get('date') else None
+    if prev:
+        for key in ['total_assets','treasury','bills','mbs','reserves','securities']:
+            if cur.get(key) is not None and prev.get(key) is not None:
+                cur[key+'_weekly']=cur[key]-prev[key]
+
+    regime,four=classify_h41(cur,history)
     reasons=[]
     if old.get('implementation',{}).get('url') not in (None,impl['url']):reasons.append('새 FOMC 시행지침')
     if old.get('implementation',{}).get('mode') not in (None,impl['mode']):reasons.append('대차대조표 정책문구 판정 변경')
@@ -231,7 +279,7 @@ def main():
     if '대차대조표 총량 축소/QT 명시'==impl['mode'] and old.get('implementation',{}).get('mode')!=impl['mode']:reasons.append('QT 명시 감지')
     if FORCE or (not first and reasons):send(summary_message(cur,impl,task,regime,four,' · '.join(dict.fromkeys(reasons)) or '강제 점검'))
     newhist=[h for h in history if h.get('date')!=cur.get('date')][-11:]+[cur]
-    save_state({'schema_version':SCHEMA_VERSION,'h41':cur,'history':newhist,'regime':regime,'four_week_change_bn':four,'implementation':impl,'task_force':task})
+    save_state({'schema_version':SCHEMA_VERSION,'measurement_basis':'수요일 잔액','h41':cur,'history':newhist,'regime':regime,'four_week_change_bn':four,'implementation':impl,'task_force':task})
     print(json.dumps({'first_run':first,'reasons':reasons,'h41_date':cur.get('date'),'regime':regime,'implementation_mode':impl['mode'],'implementation_date':impl.get('date')},ensure_ascii=False))
 
 if __name__=='__main__':main()
