@@ -50,6 +50,7 @@
     "526c2759fcea00d96c03da97",
     "56b2de8304378c3a06fa5b4c",
     "5a3a72fe34f95c5f38edf6f5",
+    "5d10c70a6f648f2a02de1e05",
     "5e304c914d7ab868e24a3585",
     "60166d645eb70db655149ec7",
     "6390d90dc440f18fea5641d1",
@@ -76,6 +77,7 @@
     "86390aba27173d50352a39ed",
     "863bf5e58c0b909bc1684cb9",
     "87a5705365eae516605d4ffd",
+    "8e73f51c8102b58456035bcc",
     "9046127bdbf6a9b5874f4a55",
     "908dd39afd1f41cf0db839e1",
     "914fababbb9099953512eef6",
@@ -95,6 +97,7 @@
     "b4818c7354b18b0d28e11aa7",
     "b6857f986779526ffa08d741",
     "b8b49c879b5584546caf1fba",
+    "bb8d68accda30ea0a27f488c",
     "bd26432b3c3bf171b67b4e34",
     "be3ea72057cda8f38d4e8424",
     "c0014c2ca47fea6d896c3e23",
@@ -135,13 +138,14 @@
     "f5a164229bbed03cb0c1c3b1",
     "f6ea3f1fc68e1e473bcd91cb",
     "fabfb78c79fac517e54dc7b3",
+    "fb3f11c8c71336071691a17e",
     "fc8d9ad3059f3fc4d09ac22a",
     "fd774ad93defbc5c27b92607",
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-23T07:22:03+09:00",
-  "last_event_count": 73,
+  "updated_at_kst": "2026-09-23T07:46:16+09:00",
+  "last_event_count": 84,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -149,20 +153,20 @@
   "official_month": "202608",
   "official_data_ok": true,
   "official_errors": [
-    "공공데이터포털 국가별 품목 API MY 오류 None: ",
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
     "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "공공데이터포털 국가별 품목 API MY 오류 None: ",
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
     "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "공공데이터포털 국가별 품목 API MY 오류 None: ",
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
     "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "공공데이터포털 국가별 품목 API MY 오류 None: ",
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
     "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
   ],
   "last_official_alert_month": "202608",
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-23T07:22:03+09:00",
+  "last_successful_official_at_kst": "2026-09-23T07:46:16+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -626,9 +630,9 @@
         "period": "2026",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
-        "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - g-enews.com",
-        "source": "g-enews.com",
+        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
+        "source": "글로벌이코노믹",
         "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
         "scope": "reusable_carrier_service_not_wafer_output"
       },
@@ -640,9 +644,9 @@
         "period": "2027",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
-        "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - g-enews.com",
-        "source": "g-enews.com",
+        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
+        "source": "글로벌이코노믹",
         "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
         "scope": "reusable_carrier_service_not_wafer_output"
       },
@@ -657,9 +661,9 @@
         "period": "2028",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
-        "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - g-enews.com",
-        "source": "g-enews.com",
+        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
+        "source": "글로벌이코노믹",
         "excerpt": "삼성전자에 따르면 평택 P5 Fab1은 2028년 가동을 목표로 하고 있다.",
         "scope": "fab_start_not_full_output"
       },
@@ -698,7 +702,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-23T07:22:03+09:00",
+      "last_checked_at_kst": "2026-09-23T07:46:16+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -708,7 +712,7 @@
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
-      "non_concrete_generic_evidence_suppressed": 4
+      "non_concrete_generic_evidence_suppressed": 6
     },
     "version": 1,
     "reference_capture": {
@@ -752,7 +756,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-23T07:24:17+09:00",
+    "checked_at_kst": "2026-09-23T07:48:57+09:00",
     "status": "no_message_due"
   }
 }
