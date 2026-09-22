@@ -185,6 +185,8 @@ def promote(candidate, before):
 
 
 def transact(repo, path, before, candidate, text, send=api):
+    if before.get('_delivery'):
+        raise RuntimeError('pending delivery must be recovered before a new transaction: ' + path)
     candidate = promote(candidate, before)
     if not text.strip():
         candidate['delivery_check'] = {'checked_at_kst': now(), 'status': 'no_message_due'}
@@ -207,8 +209,18 @@ def resume_one(repo, path, state, send=api):
         return {'status': 'no_pending_delivery'}
     if journal.get('status') in ('in_flight', 'uncertain'):
         raise RuntimeError('unconfirmed prior send; duplicate prevention hold: ' + path)
+    index_start = journal.get('next_chunk')
+    parts, ids = journal.get('chunks'), journal.get('message_ids')
+    if (journal.get('status') not in ('queued', 'partial')
+            or not isinstance(parts, list) or not parts
+            or not all(isinstance(part, str) and part.strip() for part in parts)
+            or type(index_start) is not int or not 0 <= index_start <= len(parts)
+            or not isinstance(ids, list) or len(ids) != index_start
+            or any(type(mid) is not int or mid <= 0 for mid in ids)
+            or not isinstance(journal.get('candidate'), dict)):
+        raise RuntimeError('invalid delivery journal; manual review required: ' + path)
     current = copy.deepcopy(state)
-    for index in range(int(journal['next_chunk']), len(journal['chunks'])):
+    for index in range(index_start, len(parts)):
         moving = copy.deepcopy(current)
         moving['_delivery']['status'] = 'in_flight'
         moving['_delivery']['attempt_at_kst'] = now()
@@ -218,8 +230,9 @@ def resume_one(repo, path, state, send=api):
             result = send('sendMessage', {
                 'chat_id': os.environ.get('TELEGRAM_CHAT_ID', ''), 'text': journal['chunks'][index],
                 'parse_mode': 'HTML', 'disable_web_page_preview': 'true'})
-            if not isinstance(result.get('message_id'), int):
-                raise RuntimeError('Telegram acknowledgement lacks message_id')
+            mid = result.get('message_id') if isinstance(result, dict) else None
+            if type(mid) is not int or mid <= 0:
+                raise RuntimeError('Telegram acknowledgement lacks a usable positive message_id')
         except Exception as exc:
             held = copy.deepcopy(current)
             held['_delivery']['status'] = 'uncertain'
@@ -246,18 +259,43 @@ def resume_one(repo, path, state, send=api):
     return receipt
 
 
+def session_id():
+    return os.getenv('GITHUB_RUN_ID', 'local') + ':' + os.getenv('GITHUB_RUN_ATTEMPT', '1')
+
+
 def begin():
+    """Recover each route separately; a held send must not stop healthy routes."""
     repo = Repository()
-    for name, (path, _, _) in ROUTES.items():
-        _, state = repo.current(path)
-        write(ROOT / path, state)
-        if state.get('_delivery'):
-            result = resume_one(repo, path, state)
-            print('resumed=' + name + ' status=' + result['status'])
+    summary = {'session_id': session_id(), 'checked_at_kst': now(), 'routes': {}}
+    for name, (path, alert, pending) in ROUTES.items():
+        baseline = OUT / ('hbm_before_' + name + '.json')
+        # Never let a previous local attempt authorize a new collection.
+        baseline.unlink(missing_ok=True)
+        (OUT / (name + '_hbm_delivery_receipt.json')).unlink(missing_ok=True)
+        (ROOT / alert).unlink(missing_ok=True)
+        if pending:
+            (ROOT / pending).unlink(missing_ok=True)
+        try:
             _, state = repo.current(path)
             write(ROOT / path, state)
-        write(OUT / ('hbm_before_' + name + '.json'), state)
-    print('hbm_transaction_baselines_ready=true')
+            recovery = {'status': 'no_pending_delivery'}
+            if state.get('_delivery'):
+                recovery = resume_one(repo, path, state)
+                print('resumed=' + name + ' status=' + recovery['status'])
+                _, state = repo.current(path)
+                write(ROOT / path, state)
+            write(baseline, state)
+            summary['routes'][name] = {
+                'status': 'ready', 'baseline_hash': digest(state), 'recovery': recovery}
+        except Exception as exc:
+            # Preserve the durable journal. No retry or state promotion is guessed.
+            baseline.unlink(missing_ok=True)
+            summary['routes'][name] = {'status': 'blocked', 'error_type': type(exc).__name__}
+            print('hbm_recovery_held route=' + name + ' error_type=' + type(exc).__name__)
+    write(OUT / 'hbm_begin_summary.json', summary)
+    ready = sum(r['status'] == 'ready' for r in summary['routes'].values())
+    print('hbm_transaction_baselines_ready=' + str(ready) + '/' + str(len(ROUTES)))
+    return summary
 
 
 def finish(name):
@@ -284,31 +322,51 @@ def finish(name):
     receipt = transact(Repository(), path, before, candidate, text)
     write(OUT / (name + '_hbm_delivery_receipt.json'), receipt)
     print(name + '_hbm_delivery_status=' + receipt['status'] + ' message_ids=' + str(receipt.get('message_ids', [])))
+    return receipt
 
 
 def run_collectors():
-    """Separate failures: one bad collector cannot prevent another's checkpoint."""
-    errors = []
+    """Separate failures in recovery, collection, delivery AND error cleanup."""
+    prepared = read(OUT / 'hbm_begin_summary.json')
+    if prepared.get('session_id') != session_id() or not isinstance(prepared.get('routes'), dict):
+        raise RuntimeError('current execution recovery manifest missing; no collector may send')
+    errors, results = [], {}
     for name, commands in (
         ('rubin', [['scripts/rubin_hbm_watch.py'], ['scripts/rubin_hbm_pretty.py'], ['scripts/rubin_hbm_leverage.py'], ['scripts/ai_component_leadtime_watch.py']]),
         ('skhynix', [['scripts/skhynix_us_memory_watch.py']]),
         ('samsung', [['scripts/hbm_memory_axes.py']]),
     ):
+        entry = prepared['routes'].get(name, {})
+        if entry.get('status') != 'ready':
+            errors.append(name + ':recovery_blocked')
+            results[name] = {'status': 'blocked', 'stage': 'recovery'}
+            continue
         try:
+            baseline_path = OUT / ('hbm_before_' + name + '.json')
+            if (not baseline_path.exists()
+                    or digest(read(baseline_path)) != entry.get('baseline_hash')
+                    or read(baseline_path).get('_delivery')):
+                raise RuntimeError('route baseline missing or changed; collection blocked')
             for args in commands:
                 if ('pretty' in args[0] or 'leverage' in args[0]) and not (OUT / 'rubin_hbm_alert.md').exists():
                     continue
                 subprocess.run(['python', *args], cwd=ROOT, check=True, timeout=440)
-            finish(name)
+            results[name] = finish(name)
         except Exception as exc:
-            # Do not include URL-bearing exception strings in state/log output.
+            # A second failure during cleanup must not cancel the next route.
             errors.append(name + ':' + type(exc).__name__)
-            path = ROUTES[name][0]
-            _, latest = Repository().current(path)
-            write(ROOT / path, latest)
-    write(OUT / 'hbm_delivery_summary.json', {'checked_at_kst': now(), 'errors': errors})
+            results[name] = {'status': 'failed', 'error_type': type(exc).__name__}
+            try:
+                _, latest = Repository().current(ROUTES[name][0])
+                write(ROOT / ROUTES[name][0], latest)
+            except Exception as refresh_exc:
+                results[name]['refresh_error_type'] = type(refresh_exc).__name__
+        results[name]['recovery'] = entry.get('recovery', {})
+    write(OUT / 'hbm_delivery_summary.json', {
+        'session_id': session_id(), 'checked_at_kst': now(), 'errors': errors, 'routes': results})
     if errors:
         raise RuntimeError('HBM routes require review: ' + ','.join(errors))
+    return results
 
 
 if __name__ == '__main__':
