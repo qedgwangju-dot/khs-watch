@@ -69,6 +69,8 @@ HMGMA = re.compile(r'HMGMA|조지아|Georgia|Savannah|메타플랜트\s*아메�
 RMAC = re.compile(r'RMAC|Robot\s*Metaplant\s*Application\s*Center|로봇\s*메타플랜트\s*애플리케이션\s*센터', re.I)
 RMAC_ACTIVE = re.compile(r'open(?:ed|s)?|개소|운영\s*개시|training|train|훈련|data\s*collection|데이터\s*수집|sequencing|시퀀싱|validation|검증', re.I)
 RMAC_EXPAND = re.compile(r'10\s*배|ten[- ]?fold|2027|신축|new\s*building|move|relocat|이전|확장|expansion', re.I)
+RMAC_EXPANSION_COMPLETE = re.compile(r'(?:10\s*배|ten[- ]?fold).{0,30}(?:확장\s*(?:완료|개소)|가동|이전\s*완료|opened|operational|completed)|(?:new\s*building|신축\s*건물).{0,30}(?:opened|operational|가동|개소|이전\s*완료)', re.I)
+RMAC_EXTERNAL_PILOT = re.compile(r'(?:aerospace|항공우주|semiconductor|반도체|logistics|물류|food|beverage|식음료|life\s*science|생명과학).{0,80}(?:pilot|trial|training|deployment|data\s*collection\s*(?:started|began)|실증|훈련\s*시작|배치\s*시작|데이터\s*수집\s*(?:시작|개시))', re.I)
 RMAC_OTHER_INDUSTRIES = re.compile(r'aerospace|항공우주|semiconductor|반도체|logistics|물류|food|beverage|식음료|life\s*science|생명과학|Spot|Stretch', re.I)
 GLOBAL = re.compile(r'글로벌|해외|전\s*세계|global|worldwide|additional\s+plants?|manufacturing\s+sites?', re.I)
 PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주가|stock\s*price|shares?\s*(?:jump|rise|surge)', re.I)
@@ -106,6 +108,15 @@ def _query_boston_rmac_recovery() -> list[dict]:
 
 def _is_rmac_operational(text: str) -> bool:
     return bool((BOSTON.search(text) or HMG.search(text)) and ATLAS.search(text) and RMAC.search(text) and RMAC_ACTIVE.search(text))
+
+def _rmac_stage(text: str) -> str:
+    if RMAC_EXPANSION_COMPLETE.search(text):
+        return 'expansion_completed'
+    if RMAC_EXTERNAL_PILOT.search(text):
+        return 'external_industry_pilot'
+    if _is_rmac_operational(text):
+        return 'training_operational'
+    return ''
 
 
 def _query_boston_capital_english_news() -> list[dict]:
@@ -155,7 +166,12 @@ def _ipo_stage(text: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')}"
-    if _is_rmac_operational(text):
+    rmac_stage = _rmac_stage(text)
+    if rmac_stage == 'expansion_completed':
+        return hashlib.sha256(b'boston-dynamics|rmac|expansion-completed|10x').hexdigest()
+    if rmac_stage == 'external_industry_pilot':
+        return hashlib.sha256(b'boston-dynamics|rmac|external-industry-pilot').hexdigest()
+    if rmac_stage == 'training_operational':
         return hashlib.sha256(b'boston-dynamics|rmac|operational-training|2026-09-21').hexdigest()
     stage = _ipo_stage(text)
     if stage in {'delay','commentary'} and IPO_COMMENTARY.search(text):
@@ -198,7 +214,9 @@ def score(item: dict) -> int:
 
 
 def _subcat(text: str) -> str:
-    if _is_rmac_operational(text): return 'RMAC 제조현장 훈련·데이터 플라이휠'
+    if _rmac_stage(text) == 'expansion_completed': return 'RMAC 10배 확장 완료·가동'
+    if _rmac_stage(text) == 'external_industry_pilot': return 'RMAC 타 산업 고객 실증·데이터 확장'
+    if _rmac_stage(text) == 'training_operational': return 'RMAC 제조현장 훈련·데이터 플라이휠'
     if BOSTON.search(text) and IPO_FILING.search(text): return '기업공개 절차 진전'
     if BOSTON.search(text) and IPO.search(text): return '기업공개·기업가치 시간표'
     if BOSTON.search(text) and OWNERSHIP.search(text): return '지분·완전자회사화'
@@ -243,6 +261,8 @@ def risk(cat: str) -> str:
     if not cat.startswith(ATLAS_CATEGORY_PREFIX): return _orig_risk(cat)
     raw = cat[len(ATLAS_CATEGORY_PREFIX):]
     m = {
+        'RMAC 10배 확장 완료·가동':'시설 면적 확대가 곧 Atlas 출하량 증가를 뜻하지는 않습니다. 훈련 슬롯·로봇 대수·작업 성공률과 HMGMA 실제 배치가 따라오지 않으면 설비 확대가 선행비용으로 남을 수 있습니다.',
+        'RMAC 타 산업 고객 실증·데이터 확장':'타 산업 데이터 수집이 상용 판매로 연결되지 않을 수 있습니다. 파일럿 반복 여부, 고객별 작업 성공률·가동률·유지보수 비용과 실제 계약을 확인합니다.',
         'RMAC 제조현장 훈련·데이터 플라이휠':'훈련센터 개소와 실제 생산라인 상시 배치는 다릅니다. 먼저 봐야 할 실패 경로는 작업 성공률·사이클타임·안전 검증이 기준을 못 맞춰 2028년 현장 배치가 늦어지는 경우이며, RMAC 확대가 실제 배치대수와 출하로 연결되는지 확인합니다.',
         '기업공개 절차 진전':'신고서 제출이나 주관사 선정은 상장 완료가 아닙니다. 심사·시장상황·공모가 조정·철회 가능성을 분리해 보고 실제 상장일과 공모 구조를 확인해야 합니다.',
         '기업공개·기업가치 시간표':'가장 현실적인 실패 경로는 대규모 현장 배치와 외부 고객 확대가 늦어져 적자가 지속되고 기업공개가 추가 연기되는 경우입니다. 6~12개월에는 외부 고객·배치대수, 24개월에는 HMGMA 가동률·손실 축소를 먼저 확인합니다.',
@@ -293,7 +313,9 @@ def _same_event(a: dict, b: dict) -> bool:
     if _orig_same_event(a,b): return True
     if a.get('group') != 'hyundai_atlas_rollout' or b.get('group') != 'hyundai_atlas_rollout': return False
     ta = f"{a.get('title','')} {a.get('description','')}"; tb = f"{b.get('title','')} {b.get('description','')}"
-    if _is_rmac_operational(ta) and _is_rmac_operational(tb): return True
+    rmac_a, rmac_b = _rmac_stage(ta), _rmac_stage(tb)
+    if rmac_a and rmac_b:
+        return rmac_a == rmac_b
     if BOSTON.search(ta) and BOSTON.search(tb) and IPO.search(ta) and IPO.search(tb):
         fa, fb = bool(IPO_FILING.search(ta)), bool(IPO_FILING.search(tb))
         if not fa and not fb and IPO_COMMENTARY.search(ta) and IPO_COMMENTARY.search(tb): return True
