@@ -39,6 +39,20 @@ SMR_STATE_MODEL_VERSION = 3
 # 동일 사건의 실제 상태 변화가 확인된 경우에만 발생시킨다.
 SMR_REQUIRE_OFFICIAL_CONFIRMATION = True
 
+# 이미 시행된 2026-09-11 특별법·시행령은 영구 기준선이다.
+# 상태 파일이 손실·초기화되더라도 새 기사 재게시를 신규 사건으로 다시 보내지 않는다.
+SMR_FIXED_EVENT_BASELINES = {
+    "law_decree": {
+        "state_key": "law_decree|effective",
+        "status": "특별법·시행령 시행",
+        "published_utc": "2026-09-11T00:00:00+00:00",
+        "title": "SMR 특별법·시행령 시행 기준선",
+        "source": "국가법령정보센터",
+        "link": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=283879",
+        "official": True,
+    }
+}
+
 SOURCES = [
     {"name": "Westinghouse strategic partnership", "url": "https://westinghousenuclear.com/strategic-partnership/press-releases/brookfield/"},
     {"name": "DOE Nuclear Energy", "url": "https://www.energy.gov/ne/articles/9-key-takeaways-president-trumps-executive-orders-nuclear-energy"},
@@ -685,6 +699,36 @@ def _select_smr_state_candidate(family_items: list[dict]) -> dict | None:
     return None
 
 
+def _self_test_smr_event_state_model() -> None:
+    repeated_law_articles = [
+        "SMR 특별법·시행령 시행…민관 합동 상용화 착수",
+        "SMR 개발·상용화 속도 낸다…SMR 특별법·시행령 오늘 시행",
+    ]
+    for title in repeated_law_articles:
+        if _smr_event_family(title) != "law_decree":
+            raise RuntimeError("SMR law/decree family regression")
+        if _smr_state_key(title, False) != "law_decree|effective":
+            raise RuntimeError("SMR repeated-law semantic dedupe regression")
+
+    # 기사 출처는 증거일 뿐이다. 비공식 재보도만으로는 상태 전이 후보가 될 수 없다.
+    reported = {
+        "event_family": "law_decree",
+        "title": repeated_law_articles[0],
+        "official": False,
+    }
+    if _select_smr_state_candidate([reported]) is not None:
+        raise RuntimeError("SMR article-only state-change gate regression")
+
+    # 반대로 공식 기본계획의 실제 착수·일정 변화는 계속 통과해야 한다.
+    official_change = {
+        "event_family": "basic_plan",
+        "title": "SMR 기본계획 수립 착수, 2027년 확정 목표",
+        "official": True,
+    }
+    if _select_smr_state_candidate([official_change]) is None:
+        raise RuntimeError("SMR official event-state gate regression")
+
+
 def load_seen() -> dict:
     if not SEEN_PATH.exists():
         return {"seen": {}, "updated_at_kst": ""}
@@ -800,6 +844,7 @@ def clear_outputs() -> None:
 
 def main() -> int:
     _self_test_material_filter()
+    _self_test_smr_event_state_model()
     now = now_kst()
     seen = load_seen()
     seen_map = seen.setdefault("seen", {})
@@ -834,17 +879,25 @@ def main() -> int:
     seen["smr_state_model_version"] = SMR_STATE_MODEL_VERSION
 
     # 기존 단일 상태를 새 모델의 법 시행 기준선으로 승계한다.
+    # 과거 상태 파일까지 사라진 경우에도 이미 시행된 법·시행령은 고정 기준선으로 복구한다.
     legacy_smr = seen.get("smr_policy_state") or {}
-    if "law_decree" not in previous_states and legacy_smr.get("status") == "특별법·시행령 시행":
-        previous_states["law_decree"] = {
-            "state_key": "law_decree|effective",
-            "status": "특별법·시행령 시행",
-            "published_utc": legacy_smr.get("published_utc") or "",
-            "title": legacy_smr.get("title") or "",
-            "source": legacy_smr.get("source") or "",
-            "link": legacy_smr.get("link") or "",
-            "first_seen_kst": legacy_smr.get("first_seen_kst") or now.isoformat(timespec="seconds"),
-        }
+    if "law_decree" not in previous_states:
+        if legacy_smr.get("status") == "특별법·시행령 시행":
+            previous_states["law_decree"] = {
+                "state_key": "law_decree|effective",
+                "status": "특별법·시행령 시행",
+                "published_utc": legacy_smr.get("published_utc") or "",
+                "title": legacy_smr.get("title") or "",
+                "source": legacy_smr.get("source") or "",
+                "link": legacy_smr.get("link") or "",
+                "first_seen_kst": legacy_smr.get("first_seen_kst") or now.isoformat(timespec="seconds"),
+                "official": True,
+            }
+        else:
+            previous_states["law_decree"] = {
+                **SMR_FIXED_EVENT_BASELINES["law_decree"],
+                "first_seen_kst": now.isoformat(timespec="seconds"),
+            }
 
     # 기사 수가 아니라 사건축별 상태 연속선을 비교한다.
     items_by_family: dict[str, list[dict]] = {}
