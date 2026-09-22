@@ -24,29 +24,33 @@ PENDING_PATH = ROOT / "out" / "rubin_hbm_pending_state.json"
 ALERT_PATH = ROOT / "out" / "rubin_hbm_alert.md"
 
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
-BASELINE_DATE = "2026-09-15"
+BASELINE_DATE = "2026-09-21"
 BASELINE = {
     "as_of": BASELINE_DATE,
-    "source": "TrendForce 공식 X 사용자 제공 캡처",
+    "source": "https://insights.trendforce.com/p/weekly-radar-002",
     "components": {
-        "GPU": {"status": "Balanced", "current": "20-30", "balanced": "20-30"},
+        "GPU": {"status": "Balanced", "current": "30-40", "balanced": "30-40"},
         "DRAM": {"status": "Very Tight", "current": "20", "balanced": "8"},
         "NAND(eSSD)": {"status": "Tight", "current": "16", "balanced": "8"},
         "HDD": {"status": "Very Tight", "current": "50", "balanced": "16"},
         "ABF": {"status": "Very Tight", "current": "48-56", "balanced": "12"},
-        "MLCC": {"status": "Tight", "current": "30", "balanced": "12"},
+        "MLCC": {"status": "Tight", "current": "32", "balanced": "12"},
     },
-    "seen_urls": [],
+    "seen_urls": ["https://insights.trendforce.com/p/weekly-radar-002"],
 }
 
 SEARCHES = [
+    ("trendforce_feed", ""),
     (
         "google_news",
-        'TrendForce ("lead time" OR "lead times") (ABF OR MLCC OR HDD OR DRAM OR NAND OR GPU) "AI infrastructure"',
+        'TrendForce ("lead time" OR "lead times" OR "리드타임") (ABF OR MLCC OR HDD OR DRAM OR NAND OR GPU) "AI infrastructure"',
     ),
+    ("bing_web", 'site:insights.trendforce.com/p/weekly-radar TrendForce "Weekly Radar"'),
     ("bing_web", 'site:x.com/trendforce "lead time" "AI infrastructure" ABF MLCC'),
     ("bing_web", 'site:trendforce.com TrendForce "lead time" ABF DRAM NAND HDD MLCC GPU'),
     ("bing_web", '"current vs balanced lead times" TrendForce'),
+    ("bing_web", '"TrendForce" GPU DRAM NAND HDD ABF MLCC 리드타임'),
+    ("bing_web", '"TrendForce" "Weekly Radar" GPU DRAM NAND HDD ABF MLCC'),
 ]
 
 ALIASES = {
@@ -59,12 +63,12 @@ ALIASES = {
 }
 
 STATUS_KO = {
-    "Very Tight": "심각한 부족",
+    "Very Tight": "심각한 공급 부족",
     "Tight": "공급 제약",
-    "Balanced": "수급 균형",
+    "Balanced": "균형",
 }
 
-WEEK = r"(\d{1,2}(?:\s*[-–—~]\s*\d{1,2})?)\s*(?:weeks?|w)\b"
+WEEK = r"(\d{1,2}(?:\s*[-–—~]\s*\d{1,2})?)\s*(?:weeks?|w|주)\b"
 
 
 def fetch(url: str, timeout: int = 20) -> bytes:
@@ -105,7 +109,12 @@ def bing_rss_url(query: str) -> str:
 
 
 def read_rss(kind: str, query: str) -> list[dict]:
-    url = google_news_url(query) if kind == "google_news" else bing_rss_url(query)
+    if kind == "trendforce_feed":
+        url = "https://insights.trendforce.com/feed"
+    elif kind == "google_news":
+        url = google_news_url(query)
+    else:
+        url = bing_rss_url(query)
     root = ET.fromstring(fetch(url))
     out: list[dict] = []
     for item in root.findall("./channel/item"):
@@ -182,11 +191,11 @@ def article_text(url: str) -> str:
 
 def status_from_exact(value: str) -> str:
     low = (value or "").lower()
-    if "very tight" in low or "severe shortage" in low:
+    if "very tight" in low or "severe shortage" in low or "심각한 공급 부족" in value or "심각한 부족" in value:
         return "Very Tight"
-    if re.search(r"\btight\b", low) or "constrained supply" in low:
+    if re.search(r"\btight\b", low) or "constrained supply" in low or "공급 제약" in value:
         return "Tight"
-    if "balanced" in low:
+    if "balanced" in low or "균형" in value:
         return "Balanced"
     return ""
 
@@ -211,31 +220,72 @@ def extract_structured_row(text: str, alias: str) -> dict:
 
 
 def extract_labeled_narrative(text: str, alias: str) -> dict:
-    # 문장형 본문에서는 반드시 'balanced'와 'current' 라벨이 숫자에 직접 연결될 때만 인정한다.
-    # 주변 문단의 다른 숫자를 해당 부품 값으로 오인하지 않도록 alias 이전 숫자는 절대 사용하지 않는다.
+    # 영문 원문과 국내 재전달 문구를 모두 읽되, 숫자는 alias 이후 문맥에서만 채택한다.
     positions = [m for m in re.finditer(re.escape(alias), text, re.I)]
     best: dict = {}
     for m in positions:
-        chunk = text[m.start() : min(len(text), m.end() + 360)]
+        chunk = text[m.start() : min(len(text), m.end() + 420)]
         entry: dict[str, str] = {}
 
-        b = re.search(rf"balanced(?:\s+market|\s+lead\s+time|\s+lead\s+times)?[^.\n]{{0,120}}?{WEEK}", chunk, re.I)
+        b = re.search(
+            rf"(?:balanced(?:\s+market|\s+lead\s+time|\s+lead\s+times)?|균형(?:\s*리드타임|\s*수준)?)"
+            rf"[^.\n]{{0,120}}?{WEEK}",
+            chunk,
+            re.I,
+        )
         if b:
             entry["balanced"] = normalize_week(b.group(1))
 
-        c = re.search(rf"current(?:\s+lead\s+time|\s+lead\s+times)?[^.\n]{{0,120}}?{WEEK}", chunk, re.I)
+        c = re.search(
+            rf"(?:current(?:\s+lead\s+time|\s+lead\s+times)?|리드타임(?:은|는|:)?|납기(?:는|:)?|현재(?:\s*리드타임)?)"
+            rf"[^.\n]{{0,80}}?{WEEK}",
+            chunk,
+            re.I,
+        )
         if c:
             entry["current"] = normalize_week(c.group(1))
 
-        # 상태도 부품명 직후에 명시된 경우에만 채택한다.
-        status_window = chunk[:120]
+        status_window = chunk[:180]
         status = status_from_exact(status_window)
-        if status and any(x.lower() in status_window.lower() for x in ("very tight", "tight", "balanced")):
+        if status:
             entry["status"] = status
 
         if len(entry) > len(best):
             best = entry
     return best
+
+
+def extract_group_statuses(text: str) -> dict[str, str]:
+    # 예: "DRAM·HDD·ABF는 심각한 공급 부족, NAND eSSD·MLCC는 공급 제약 상태"
+    token = r"(?:GPU|DRAM|NAND(?:\s*\(eSSD\)|\s+eSSD)?|eSSD|HDD|ABF|MLCC)"
+    group = rf"({token}(?:\s*[·,/＋+&]\s*{token})*)"
+    out: dict[str, str] = {}
+
+    for m in re.finditer(
+        rf"{group}\s*(?:은|는|이|가|are|remain)?\s*"
+        r"(심각한 공급 부족|심각한 부족|공급 제약(?: 상태)?|균형(?: 상태)?|Very\s+Tight|Tight|Balanced|severe shortage|constrained supply)",
+        text,
+        re.I,
+    ):
+        status = status_from_exact(m.group(2))
+        names = m.group(1)
+        for name, aliases in ALIASES.items():
+            if any(re.search(re.escape(a), names, re.I) for a in aliases):
+                out[name] = status
+
+    # 예: "균형 상태인 품목은 GPU뿐"
+    for m in re.finditer(
+        r"(심각한 공급 부족|공급 제약(?: 상태)?|균형 상태|Very\s+Tight|Tight|Balanced)"
+        rf"[^.\n]{{0,50}}?(?:품목(?:은|이)?\s*)?{group}",
+        text,
+        re.I,
+    ):
+        status = status_from_exact(m.group(1))
+        names = m.group(2)
+        for name, aliases in ALIASES.items():
+            if any(re.search(re.escape(a), names, re.I) for a in aliases):
+                out[name] = status
+    return out
 
 
 def extract_components(text: str) -> dict:
@@ -251,9 +301,11 @@ def extract_components(text: str) -> dict:
             narrative = extract_labeled_narrative(normalized, alias)
             if len(narrative) > len(best):
                 best = narrative
-        # current 또는 balanced가 명시적으로 잡힌 경우만 값 업데이트 후보로 인정한다.
-        if best.get("current") or best.get("balanced"):
+        if best.get("current") or best.get("balanced") or best.get("status"):
             result[name] = best
+
+    for name, status in extract_group_statuses(normalized).items():
+        result.setdefault(name, {})["status"] = status
     return result
 
 
@@ -324,24 +376,63 @@ def repair_bad_initial_state(previous: dict) -> dict:
     return previous
 
 
-def fmt_entry(entry: dict) -> str:
+def fmt_week(value: str) -> str:
+    value = str(value or "확인 불가").replace("-", "~")
+    return value if value == "확인 불가" else value + "주"
+
+
+def fmt_status(entry: dict) -> str:
     status = str(entry.get("status") or "")
-    current = str(entry.get("current") or "확인 불가")
-    balanced = str(entry.get("balanced") or "확인 불가")
-    status_ko = STATUS_KO.get(status, status or "상태 미확인")
-    return f"{current}주 / 균형 {balanced}주 / {status_ko}"
+    return STATUS_KO.get(status, status or "상태 미확인")
+
+
+def fmt_entry(entry: dict) -> str:
+    return f"현재 {fmt_week(entry.get('current'))} / 균형 {fmt_week(entry.get('balanced'))} / 상태 {fmt_status(entry)}"
+
+
+def fmt_change(old_entry: dict, new_entry: dict) -> str:
+    parts = []
+    old_current = str(old_entry.get("current") or "")
+    new_current = str(new_entry.get("current") or "")
+    if old_current != new_current:
+        parts.append(f"{fmt_week(old_current)} → {fmt_week(new_current)}")
+
+    old_balanced = str(old_entry.get("balanced") or "")
+    new_balanced = str(new_entry.get("balanced") or "")
+    if old_balanced != new_balanced:
+        parts.append(f"균형 {fmt_week(old_balanced)} → {fmt_week(new_balanced)}")
+
+    old_status = fmt_status(old_entry)
+    new_status = fmt_status(new_entry)
+    if old_status != new_status:
+        parts.append(f"상태 {old_status} → {new_status}")
+    return ", ".join(parts) if parts else "동일"
 
 
 def build_alert(old: dict, new: dict, changed: list[str], source_url: str, published: str, signal_only: bool) -> str:
-    lines = ["<b>🚨 AI 인프라 부품 납기 변화</b>", "", "<b>무엇이 달라졌나</b>"]
+    lines = ["<b>🚨 AI 부품 리드타임 감시 — 변화 감지</b>", "", "<b>무엇이 달라졌나</b>"]
     if signal_only:
-        lines.append("• TrendForce의 새 AI 인프라 리드타임 업데이트를 감지했습니다.")
-        lines.append("• 공개 본문에서 표 전체 수치를 안전하게 추출하지 못해 숫자는 임의 추정하지 않습니다.")
+        lines.append("• TrendForce의 새 Weekly Radar를 감지했습니다.")
+        lines.append("• 새 표의 숫자 자동 판독이 불완전해 직전 확정값을 임의로 바꾸지 않았습니다.")
     else:
         for name in changed:
-            before = fmt_entry(old.get(name) or {})
-            after = fmt_entry(new.get(name) or {})
-            lines.append(f"• {html.escape(name)}: {html.escape(before)} → {html.escape(after)}")
+            lines.append(
+                f"• <b>{html.escape(name)}</b>: "
+                f"{html.escape(fmt_change(old.get(name) or {}, new.get(name) or {}))}"
+            )
+
+    lines += ["", "<b>현재 6개 품목 상태</b>"]
+    order = ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
+    for name in order:
+        entry = new.get(name) or old.get(name) or {}
+        change = fmt_change(old.get(name) or {}, entry)
+        lines.append(
+            f"• <b>{html.escape(name)}</b> | "
+            f"현재 {html.escape(fmt_week(entry.get('current')))} | "
+            f"균형 {html.escape(fmt_week(entry.get('balanced')))} | "
+            f"상태 {html.escape(fmt_status(entry))} | "
+            f"전주 대비 {html.escape(change)}"
+        )
 
     ranked = []
     for name, entry in (new or old).items():
@@ -353,15 +444,18 @@ def build_alert(old: dict, new: dict, changed: list[str], source_url: str, publi
     lines += ["", "<b>현재 판정</b>"]
     if ranked:
         ratio, name, entry = ranked[0]
-        lines.append(f"• 가장 강한 병목: {html.escape(name)} — {html.escape(fmt_entry(entry))}, 균형 대비 약 {ratio:.1f}배")
+        lines.append(
+            f"• 가장 강한 병목: <b>{html.escape(name)}</b> — "
+            f"{html.escape(fmt_entry(entry))}, 균형 대비 약 {ratio:.1f}배"
+        )
     else:
-        lines.append("• 새 업데이트 자체는 확인했지만 표 수치 자동 추출은 불완전합니다.")
+        lines.append("• 새 업데이트 자체는 확인했지만 수치 비교는 확인 불가입니다.")
 
     lines += [
         "",
-        "<b>투자 의미</b>",
-        "• GPU 자체보다 ABF 패키지기판·DRAM·기업용 SSD·HDD·MLCC의 납기 변화가 AI 서버 실제 출하 시점을 좌우하는지 확인합니다.",
-        "• 납기 단축은 증설 효과일 수도 있고 수요 둔화일 수도 있으므로 가격·신규수주·주문출하비율과 함께 판정합니다.",
+        "<b>추적 기준</b>",
+        "• 현재 리드타임, 균형 리드타임, 공급 상태를 6개 품목 모두 직전 주와 1:1 비교합니다.",
+        "• 리드타임·균형 기준·상태 중 하나라도 바뀌면 알림하고, 새 Weekly Radar인데 숫자 판독이 불완전해도 별도 경고합니다.",
     ]
     if published:
         lines.append(f"• 공개시각: {html.escape(published)}")
