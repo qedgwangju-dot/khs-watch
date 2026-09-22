@@ -418,10 +418,17 @@
       "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOS3BveTA4WVF0U3Z3TnhRWENEc0pUZFNISE05QzNDSFpVNGt5Q21palA1NmpQZUpxR3ZkMkllTmRPclJTYVlKNmtkRmZVcTRXai1ITzF4b1hrbGZhQUFkS0NVbXVYOGZ0b3l2eXd4bXotQ050Q0VJa1U2OHQ3eGljdGYwd24tbUFMZkNNQy1EUEVCNlk3NE5XX0pnMmpVNnBjUnQ3Z0lJdDBIV3Jmbkx1c3BIUHdmaTdxd0U0eThJUEZNX1VNdURsVU14SWN2dw?oc=5",
       "published_utc": "2026-09-21T15:44:47Z",
       "first_seen_kst": "2026-09-22T07:50:37+09:00"
+    },
+    "14265fd806a949190752": {
+      "source": "Radio Free Europe/Radio Liberty",
+      "title": "Tanker Hit By 'Unknown Projectile' In Strait Of Hormuz - Radio Free Europe/Radio Liberty",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9OeTc1VE5lcEx0QzNhVlh6TnBVZUhfdi1MR0xZQnJOLWo2U3dHb09ucVhPNXctSTFXNTF6R3EwZEJXSl96SF9zS2FPUWFwcHpHeFVMaGtUckZiaGIydHc1SFMwT3U1R1h5WnMtY2RGUkdtYm1jV2VUMWFB?oc=5",
+      "published_utc": "2026-09-21T05:00:00Z",
+      "first_seen_kst": "2026-09-22T10:31:22+09:00"
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-09-22T07:50:37+09:00",
+  "last_checked_kst": "2026-09-22T10:31:22+09:00",
   "confirmed_events": {
     "news:2026-08-30:strike:hormuz:1": {
       "warning": null,
@@ -485,9 +492,9 @@
       "location": "hormuz",
       "projectile_count": 1,
       "sources": [
-        "Gulf News",
         "Anadolu Ajansı",
-        "Arab News"
+        "Arab News",
+        "Radio Free Europe/Radio Liberty"
       ],
       "first_seen_kst": "2026-09-22T04:40:12+09:00"
     }
