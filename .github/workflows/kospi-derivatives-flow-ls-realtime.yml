@@ -2,31 +2,22 @@ name: KOSPI LS Realtime Derivatives Flow Watch
 
 on:
   schedule:
-    - cron: "50 8 * * 1-5"
-      timezone: "Asia/Seoul"
-    - cron: "0,10,20,30,40 9 * * 1-5"
+    - cron: "47 8 * * 1-5"
       timezone: "Asia/Seoul"
   workflow_dispatch:
     inputs:
       mode:
-        description: "test or production"
+        description: "production"
         required: false
-        default: "test"
+        default: "production"
         type: choice
-        options: ["test", "production"]
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/kospi-derivatives-flow-ls-realtime.yml"
-      - "scripts/kospi_shock_episode_watch.py"
-      - "scripts/test_kospi_shock_episode.py"
-      - "scripts/kospi_flow_attribution_ls.py"
+        options: ["production"]
 
 permissions:
   contents: read
 
 concurrency:
-  group: kospi-derivatives-flow-ls-realtime-v2
+  group: kospi-derivatives-flow-ls-production
   cancel-in-progress: false
 
 jobs:
@@ -69,21 +60,7 @@ jobs:
           print(f'telegram_route_valid=true bot=@{actual}')
           PY
 
-      - name: Validate variable episode detector
-        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode != 'production')
-        run: |
-          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/test_kospi_shock_episode.py
-          python scripts/test_kospi_shock_episode.py
-
-      - name: Test LS realtime and flow runtime
-        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode != 'production')
-        run: |
-          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json
-          python scripts/kospi_shock_episode_watch.py --test --test-seconds 15
-          cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
-
       - name: Run market-hours variable shock episode watcher
-        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'production')
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json
           python -m py_compile scripts/kospi_shock_episode_watch.py
