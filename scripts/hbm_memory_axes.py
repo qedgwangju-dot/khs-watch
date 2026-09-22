@@ -1,7 +1,5 @@
 """Typed memory-state extension to samsung_hbm_watch, in the existing HBM route.
-
-Numbers are accepted only with a local product, unit, period and provenance.
-A missing denominator/date is a coverage gap, never zero or a guessed price.
+Numbers need a local product, unit, period and provenance. Missing data is not zero.
 """
 from __future__ import annotations
 import copy
@@ -57,7 +55,7 @@ def evidence(url):
 
 
 def product_capacity(die_gb, layers, stacks=1):
-    """die_gb is gigabits, result is gigabytes. No marketing/model inference."""
+    """die_gb is gigabits; result is gigabytes, not customer adoption."""
     if not all(isinstance(x, (float, int)) and math.isfinite(x) and x > 0 for x in (die_gb, layers, stacks)):
         raise ValueError('positive numeric density/layers/stacks required')
     if int(layers) != layers or int(stacks) != stacks:
@@ -124,7 +122,6 @@ def is_axis_text(text):
 
 
 def read_document(raw):
-    """Discard navigation/advertisements/scripts; use an article body when present."""
     from selectolax.parser import HTMLParser
     tree = HTMLParser(raw)
     pub = ''
@@ -141,8 +138,7 @@ def read_document(raw):
         if body:
             break
     body = body or tree.body
-    text = body.text(separator='\n', strip=True) if body else ''
-    return text[:60000], pub
+    return (body.text(separator='\n', strip=True)[:60000] if body else ''), pub
 
 
 def make_record(axis, key_parts, value, unit, period, item, excerpt, **extra):
@@ -154,7 +150,6 @@ def make_record(axis, key_parts, value, unit, period, item, excerpt, **extra):
 
 
 def parse_records(item, body):
-    """Strict local attribution: ambiguous clauses are retained as gaps, not facts."""
     records, gaps = [], []
     published = item.get('published_at_kst', '')
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
@@ -164,13 +159,11 @@ def parse_records(item, body):
         if not owner:
             title_owners = [k for k, pat in COMPANIES.items() if re.search(pat, item.get('title', ''), re.I)]
             owner = title_owners[0] if len(title_owners) == 1 and not owners else ''
-        # Case-sensitive units: 16Gb chip cannot become a 16GB RDIMM.
         for m in re.finditer(r'(?:DDR5\s+)?RDIMM\s+(\d+)GB|(?:DDR5\s+)?(\d+)GB\s+RDIMM', p):
             gb = int(m[1] or m[2])
             if len(re.findall(r'RDIMM', p)) > 1:
                 gaps.append('RDIMM 복수 규격 문장: 가격 귀속 보류'); continue
             speed = re.search(r'((?:\d{4}/)*\d{4})\s*(?:MT/s|Mbps)', p, re.I)
-            period = local_period(p, published)
             asof = date_only(p)
             a = re.search(r'(?:spot(?: price)?|현물(?:가격)?)\s*[:=]?\s*(?:\$|USD\s*)?([\d,]+(?:\.\d+)?)\s*(?:달러|USD|dollars)?', p, re.I)
             b = re.search(r'(?:contract(?: price)?|고정거래(?:가격)?)\s*[:=]?\s*(?:\$|USD\s*)?([\d,]+(?:\.\d+)?)\s*(?:달러|USD|dollars)?', p, re.I)
@@ -188,7 +181,6 @@ def parse_records(item, body):
             records.append(make_record('rdimm', [host(item['direct_link']), f'DDR5_{gb}GB', speed[1]],
                 {'spot': s, 'contract': c, 'premium_pct': premium(s, c), 'contract_period': cp},
                 'USD/module', asof[:7], item, p, as_of=asof, capacity_gb=gb, speed=speed[1]))
-        # Product specifications coexist. They are NOT customer adoption claims.
         config_matches = list(re.finditer(r'(?<![A-Za-z0-9])(HBM4E|HBM4|HBM3E)(?![A-Za-z0-9])', p, re.I))
         for i, match in enumerate(config_matches):
             part = p[match.end():config_matches[i + 1].start() if i + 1 < len(config_matches) else len(p)]
@@ -204,13 +196,12 @@ def parse_records(item, body):
                 records.append(make_record('hbm_config', [owner, product, str(h) + 'Hi', 'catalog'],
                     {'die_gbit': d, 'layers': h, 'stack_gbyte': g}, 'GB/stack', period, item, p,
                     scope='product_capability_not_customer_contract'))
-        # Explicit per-period wafer share and bit share, never one denominator.
         for metric, pat in (
             ('wafer_share', r'(?:HBM.{0,35}(?:웨이퍼|wafer).{0,35}(?:비중|share)|HBM wafer input)'),
             ('bit_share', r'(?:HBM.{0,35}(?:비트|bit).{0,35}(?:비중|share)|HBM bit supply)'),
         ):
             if not re.search(pat, p, re.I): continue
-            if not re.search(r'말|end', p, re.I) or re.search(r'연평균|annual average', p, re.I):
+            if not re.search(r'연말|년\s*말|\b(?:year[- ]end|end of|by the end)\b', p, re.I) or re.search(r'연평균|annual average', p, re.I):
                 gaps.append(metric + ': 연말 분모가 명확하지 않아 비교 보류'); continue
             authority = 'trendforce' if re.search(r'TrendForce|트렌드포스', body, re.I) else owner
             if not authority: continue
@@ -221,9 +212,8 @@ def parse_records(item, body):
                     if 0 <= float(v) <= 100:
                         records.append(make_record(metric, [authority, 'industry', y + '-YE'], float(v), 'pct',
                             y + '-YE', item, p, scope='year_end_forecast'))
-            elif re.search(pat, item.get('title', ''), re.I):
-                gaps.append(metric + ': 연말·연평균 또는 연도별 값 연결 불명확')
-        # Cleaning is reuse/service throughput, NEVER a physical chip shipment.
+            else:
+                gaps.append(metric + ': 연도별 값 연결 불명확')
         if owner and re.search(r'글라스 캐리어|유리 지지판|glass carrier', p, re.I) and re.search(r'세정|clean', p, re.I):
             for y, n, tenk in re.findall(r'(20\d{2})\s*년?[^.\n]{0,12}?(?:월|monthly)\s*([\d,.]+)\s*(만)?\s*(?:장|pieces)', p, re.I):
                 value = float(n.replace(',', '')) * (10000 if tenk else 1)
@@ -238,9 +228,8 @@ def parse_records(item, body):
     return records, list(dict.fromkeys(gaps))
 
 
-
 def public_spot_quotes(raw, checked):
-    """Read visible Session Average only. Never use membership/private endpoints."""
+    """Visible Session Average only. No membership/private endpoints."""
     from selectolax.parser import HTMLParser
     tree = HTMLParser(raw)
     full = tree.body.text(separator=' ', strip=True) if tree.body else ''
@@ -290,6 +279,7 @@ def public_spot_quotes(raw, checked):
             density_gbit=None if module else 16, speed=speed))
     return result
 
+
 def comparison(old, new):
     a, b = old['value'], new['value']
     if new['axis'] in ('rdimm_quote', 'ddr5_chip_quote'):
@@ -314,10 +304,8 @@ def comparison(old, new):
 
 def update_state(state, records, now, seeds=None):
     state = copy.deepcopy(state or {})
-    state.setdefault('last_notified', {})
-    state.setdefault('latest', {})
-    state.setdefault('pending', {})
-    state.setdefault('coverage', {})
+    for name in ('last_notified', 'latest', 'pending', 'coverage'):
+        state.setdefault(name, {})
     if seeds and not state.get('version'):
         for r in seeds:
             state['last_notified'].setdefault(r['key'], r)
@@ -336,18 +324,21 @@ def update_state(state, records, now, seeds=None):
         same = [x for x in rows if x['as_of'] == r['as_of'] and x['evidence'] == r['evidence']]
         if len({fingerprint(x['value']) for x in same}) > 1:
             state['coverage'][key] = '동일 기준일 원값 불일치: 발송 보류'
+            state['pending'].pop(key, None)
             continue
         previous_latest = state['latest'].get(key)
         if previous_latest and r['as_of'] < previous_latest.get('as_of', ''):
             continue
         old = state['last_notified'].get(key)
+        if old and RANK.get(r['evidence'], 0) < RANK.get(old['evidence'], 0):
+            state['coverage'][key] = '하위 증거는 기존 확정값을 덮어쓰지 않음'
+            continue
         state['latest'][key] = r
         if r['axis'] in ('rdimm', 'rdimm_quote', 'ddr5_chip_quote') and r['as_of'] < (now - timedelta(days=10)).date().isoformat():
             state['coverage'][key] = '지연 원자료: 현재 가격 알림 보류'
-            if not old: state['last_notified'][key] = r
-            continue
-        if old and RANK.get(r['evidence'], 0) < RANK.get(old['evidence'], 0):
-            state['coverage'][key] = '하위 증거는 기존 확정값을 덮어쓰지 않음'
+            if not old:
+                state['last_notified'][key] = r
+            state['pending'].pop(key, None)
             continue
         reasons = comparison(old, r) if old else ['새 비교 가능한 상태']
         if old and r['value'] == old['value'] and RANK.get(r['evidence'], 0) > RANK.get(old['evidence'], 0):
@@ -357,9 +348,11 @@ def update_state(state, records, now, seeds=None):
             state['last_notified'][key] = r
             continue
         if not reasons:
+            # A later observation can withdraw an unsent change. Do not send
+            # an obsolete queued value after it has reverted to the baseline.
+            state['pending'].pop(key, None)
             continue
-        payload = {'record': r, 'old': old, 'reasons': reasons}
-        state['pending'][key] = payload
+        state['pending'][key] = {'record': r, 'old': old, 'reasons': reasons}
     return state
 
 
@@ -403,7 +396,7 @@ def render(change, rate=None):
         lines.append('• 재사용 세정 처리량이며 웨이퍼 생산·칩 출하·수주금액으로 치환하지 않습니다.')
     if r['axis'] in ('wafer_share', 'bit_share'):
         lines.append('• 연말 전망이며 연간 평균·실제 확정 생산량과 비교하지 않습니다.')
-    label = {'official': '회사 공식자료', 'research': '조사기관 자료', 'reported': '보도 단계'}[r['evidence']]
+    label = {'official': '회사 공식자료', 'research': '조사기관 자료', 'reported': '보도 단계', 'user_capture': '사용자 캡처 기준선'}[r['evidence']]
     lines += [f'• 근거 단계: {label}', '• 근거 제목: ' + html.escape(r['source_title']) +
               ' · <a href="' + html.escape(r['source_url'], quote=True) + '">원문</a>']
     return '\n'.join(lines)
@@ -412,8 +405,7 @@ def render(change, rate=None):
 def main():
     import samsung_hbm_watch as legacy
     now = datetime.now(ZoneInfo('Asia/Seoul'))
-    baseline_path = ROOT / 'data/hbm_memory_baselines.json'
-    baseline = json.loads(baseline_path.read_text(encoding='utf-8'))
+    baseline = json.loads((ROOT / 'data/hbm_memory_baselines.json').read_text(encoding='utf-8'))
     initial = legacy.load_state()
     for e in baseline.get('recovered_deliveries', []):
         key, signature, label = legacy.event_state_descriptor(e)
@@ -426,12 +418,19 @@ def main():
     legacy.QUERIES = list(dict.fromkeys(legacy.QUERIES + EXTRA_QUERIES))
     legacy.TRUSTED += ('글로벌이코노믹', 'g-enews', 'dramexchange', 'sk하이닉스', 'micron')
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
-    observed, coverage, cached = [], [], []
+    observed, coverage = [], []
     body_cache = {}
     def gather():
         events = original_read()
         for e in events:
             if not is_axis_text(e.get('title', '') + ' ' + e.get('description', '')):
+                continue
+            try:
+                published = datetime.fromisoformat(e.get('published_at_kst') or '')
+                if published.tzinfo is None or published < now - timedelta(hours=96) or published > now + timedelta(minutes=10):
+                    continue
+            except ValueError:
+                coverage.append('자료 게시일 미확인: 원문 상태 추출 보류')
                 continue
             url = e.get('direct_link', '')
             try:
@@ -447,7 +446,6 @@ def main():
                 coverage.extend(gaps)
             except Exception as exc:
                 coverage.append('원문 확인 실패: ' + host(url) + ' / ' + type(exc).__name__)
-        cached.extend(events)
         return [e for e in events if original_relevant(e.get('title', '') + ' ' + e.get('description', ''))]
     legacy.read_events = gather
     legacy.main()
