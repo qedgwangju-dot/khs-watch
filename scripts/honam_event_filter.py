@@ -191,7 +191,8 @@ def main():
 
     pending["seen_event_keys"] = list(dict.fromkeys(all_event_keys + list(seen_event_keys)))[:3000]
     pending["alert_basis"] = "topic_event_official_state_change"
-    pending["article_role"] = "evidence_and_crosscheck_only"\n    pending["baseline_guard"] = "suppress_rephrased_known_facts_without_new_schedule_quantity_or_official_status"
+    pending["article_role"] = "evidence_and_crosscheck_only"
+    pending["baseline_guard"] = "suppress_rephrased_known_facts_without_new_schedule_quantity_or_official_status"
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if not final_news and not final_official:
