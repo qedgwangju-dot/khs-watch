@@ -60,11 +60,29 @@ def ret(rows,n): return (rows[-1][1]/rows[-1-n][1]-1)*100.0
 
 def snapshot():
     data={k:series(v) for k,v in SYMBOLS.items()}
-    latest_dates={rows[-1][0] for rows in data.values()}
-    if len(latest_dates) != 1:
-        raise RuntimeError(f'완료 종가 기준일 불일치: {sorted(latest_dates)}')
-    out={'date':next(iter(latest_dates)),'returns':{}}
-    for name,rows in data.items(): out['returns'][name]={'1d':ret(rows,1),'3d':ret(rows,3),'5d':ret(rows,5)}
+
+    # 일부 ETF/지수의 Yahoo 종가 반영이 하루 늦을 수 있다.
+    # 서로 다른 기준일을 억지로 섞지 말고, 모든 시계열에 공통으로 존재하는
+    # 가장 최근 '완료 정규장' 날짜에 맞춰 정렬한다.
+    common_dates=None
+    for rows in data.values():
+        dates={d for d,_ in rows}
+        common_dates=dates if common_dates is None else (common_dates & dates)
+    if not common_dates:
+        latest_dates=sorted({rows[-1][0] for rows in data.values()})
+        raise RuntimeError(f'공통 완료 종가 기준일 없음: {latest_dates}')
+    common_date=max(common_dates)
+
+    aligned={}
+    for name,rows in data.items():
+        trimmed=[x for x in rows if x[0] <= common_date]
+        if len(trimmed)<7:
+            raise RuntimeError(f'{name} 공통 기준일({common_date}) 이전 완료 종가 이력 부족')
+        aligned[name]=trimmed
+
+    out={'date':common_date,'returns':{}}
+    for name,rows in aligned.items():
+        out['returns'][name]={'1d':ret(rows,1),'3d':ret(rows,3),'5d':ret(rows,5)}
     spy=out['returns']['S&P500']; rsp=out['returns']['동일가중 S&P500']; iwm=out['returns']['중소형주']; hyg=out['returns']['하이일드 회사채']; vix=out['returns']['VIX']
     out['rsp_rel_5d']=rsp['5d']-spy['5d']; out['iwm_rel_5d']=iwm['5d']-spy['5d']
     out['sector_up_1d']=sum(1 for s in SECTORS if out['returns'][s]['1d']>0)
