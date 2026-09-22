@@ -261,6 +261,9 @@ def meaning(cat: str) -> str:
     if not cat.startswith(ATLAS_CATEGORY_PREFIX): return _orig_meaning(cat)
     raw = cat[len(ATLAS_CATEGORY_PREFIX):]
     m = {
+        '프리IPO 주관사·10억달러+ 자금조달':'보스턴다이내믹스가 단순 상장 기대에서 실제 프리IPO 자금조달 준비로 이동하는 신호입니다. JP모건·골드만삭스 주관사 선정 보도와 최소 10억달러 이상 조달 계획이 사실이면 Atlas 양산·연구개발 재원을 외부 기관자금으로 보강하고 시장 기반 기업가치 검증을 받는 단계입니다. 실제 투자자 모집·확정 밸류에이션·신주 발행조건·희석률을 추적합니다.',
+        '프리IPO 주관사 선정':'상장 전 자금유치 준비가 글로벌 투자은행 선정 단계로 이동하는 신호입니다. 실제 투자자 마케팅 개시, 투자확약, 밸류에이션과 신주·구주 구조를 확인합니다.',
+        '프리IPO 자금조달':'Atlas 양산·연구개발 자금을 외부 기관투자자로 조달하려는 단계입니다. 희망 조달액과 실제 납입액, 주당 가격과 지분 희석을 분리해 추적합니다.',
         'RMAC 제조현장 훈련·데이터 플라이휠':'RMAC이 실제 제조환경을 재현해 Atlas의 자동차 부품 물류·시퀀싱을 훈련하고 현장 데이터를 축적하는 단계입니다. 2028년 HMGMA 배치 전 검증센터가 실제 가동되는 것이 핵심이며, 이후 조립 공정·타 산업 고객 데이터로 확장되는지 추적합니다.',
         '기업공개 절차 진전':'시장 기대나 관계자 발언을 넘어 실제 기업공개 절차가 시작되는 신호입니다. S-1·SEC 제출, 주관사 선정, 공모 구조와 일정, 신주·구주매출을 확인합니다.',
         '기업공개·기업가치 시간표':'보스턴다이내믹스의 가치 현실화 시점이 실제 현장 배치·외부 고객·수익성 검증과 연결되는 신호입니다. 기업공개 일정만 보지 않고 2027년 외부 고객, 2028년 HMGMA 배치, 연 3만대 생산능력의 실제 출하 전환을 함께 추적합니다.',
@@ -282,6 +285,9 @@ def risk(cat: str) -> str:
     if not cat.startswith(ATLAS_CATEGORY_PREFIX): return _orig_risk(cat)
     raw = cat[len(ATLAS_CATEGORY_PREFIX):]
     m = {
+        '프리IPO 주관사·10억달러+ 자금조달':'현재 핵심 내용은 투자은행 업계 보도이며 Boston Dynamics·현대차그룹·JP모건·골드만삭스의 공식 발표가 아닙니다. 최소 10억달러는 예상 조달 규모이지 확정 납입액이 아니며, 프리IPO는 S-1 제출이나 본상장 개시와도 다릅니다. Atlas 양산·손실 개선이 늦어지면 밸류에이션이 낮아지거나 추가 자금조달이 필요할 수 있습니다.',
+        '프리IPO 주관사 선정':'주관사 선정 보도는 투자유치 완료나 본상장 주관사 최종 확정과 다릅니다. 계약 체결·투자자 모집·확정 밸류에이션을 확인해야 합니다.',
+        '프리IPO 자금조달':'희망 조달액과 실제 납입액은 다릅니다. 신주 비중이 크면 기존 주주 지분이 희석되고 대규모 적자가 지속되면 후속 증자가 필요할 수 있습니다.',
         'RMAC 10배 확장 완료·가동':'시설 면적 확대가 곧 Atlas 출하량 증가를 뜻하지는 않습니다. 훈련 슬롯·로봇 대수·작업 성공률과 HMGMA 실제 배치가 따라오지 않으면 설비 확대가 선행비용으로 남을 수 있습니다.',
         'RMAC 타 산업 고객 실증·데이터 확장':'타 산업 데이터 수집이 상용 판매로 연결되지 않을 수 있습니다. 파일럿 반복 여부, 고객별 작업 성공률·가동률·유지보수 비용과 실제 계약을 확인합니다.',
         'RMAC 제조현장 훈련·데이터 플라이휠':'훈련센터 개소와 실제 생산라인 상시 배치는 다릅니다. 먼저 봐야 할 실패 경로는 작업 성공률·사이클타임·안전 검증이 기준을 못 맞춰 2028년 현장 배치가 늦어지는 경우이며, RMAC 확대가 실제 배치대수와 출하로 연결되는지 확인합니다.',
@@ -303,6 +309,7 @@ def risk(cat: str) -> str:
 def verification(item: dict, group: str, text: str) -> str:
     if group != 'hyundai_atlas_rollout': return _orig_verification(item, group, text)
     src = item.get('source') or ''
+    if PREIPO.search(text): return '매일경제 투자은행 업계 단독 보도 단계 · Boston Dynamics/현대차그룹/JP모건/골드만삭스 공식 확인 전'
     if src in {'Hyundai Motor Manufacturing Czech','HMMC','AutoSAP','Sdružení automobilového průmyslu'}: return '체코 생산법인 책임자 원인터뷰·산업협회 1차자료 · 현대차그룹 공식 일정 교차확인'
     if src in {'현대자동차','Hyundai Motor','현대자동차그룹','Hyundai Motor Group'}: return '현대차그룹 공식자료 · 공장별 실행 단계와 기업공개 일정 별도 확인'
     if src == 'Boston Dynamics' and _is_rmac_operational(text): return '보스턴다이내믹스 공식자료 · RMAC 실제 훈련·검증 단계, 25,000대 배치·연 30,000대 생산능력은 현대차그룹 공식 계획과 구분'
@@ -317,6 +324,7 @@ def verification(item: dict, group: str, text: str) -> str:
 
 def clean_title(title: str, source: str) -> str:
     t = _orig_clean_title(title, source)
+    if PREIPO.search(t) and PREIPO_UNDERWRITER.search(t): return '보스턴다이내믹스, 프리IPO 추진…JP모건·골드만삭스 주관사 선정 보도'
     if RMAC.search(t) or re.search(r'Metaplant Application Center|제조 현장 훈련|manufacturing tasks', t, re.I):
         return '보스턴다이내믹스, RMAC서 Atlas 제조 현장 훈련 본격화'
     if BOSTON.search(t):
@@ -334,6 +342,7 @@ def _same_event(a: dict, b: dict) -> bool:
     if _orig_same_event(a,b): return True
     if a.get('group') != 'hyundai_atlas_rollout' or b.get('group') != 'hyundai_atlas_rollout': return False
     ta = f"{a.get('title','')} {a.get('description','')}"; tb = f"{b.get('title','')} {b.get('description','')}"
+    if PREIPO.search(ta) and PREIPO.search(tb): return True
     rmac_a, rmac_b = _rmac_stage(ta), _rmac_stage(tb)
     if rmac_a and rmac_b:
         return rmac_a == rmac_b
