@@ -38,6 +38,7 @@
     "479424efdf3d7193810ea2dd",
     "4a052c510fe7988076a8e75d",
     "4c5b1ea09d94ac7e5ee33663",
+    "4cebdebd7ea03a5d5b726dc2",
     "4d1b2123ef6e39f9d89b8006",
     "526c2759fcea00d96c03da97",
     "56b2de8304378c3a06fa5b4c",
@@ -62,6 +63,7 @@
     "810b2b31f4ad1136fc603ccb",
     "817464b05dc936124292cda3",
     "8373adbcfc508c1a31114ac1",
+    "86390aba27173d50352a39ed",
     "87a5705365eae516605d4ffd",
     "9046127bdbf6a9b5874f4a55",
     "908dd39afd1f41cf0db839e1",
@@ -101,6 +103,7 @@
     "e9f073456697904e5407e230",
     "eab351c9c3731d6a278c1974",
     "ec3cf377a6d8256cacdecb01",
+    "ed1c60b97398767e08f42c38",
     "ee7cfb5b8d2e973d5f37af8e",
     "ef39d6d349a69c7968cc145c",
     "f14e72d8efa2d3322a48ed8d",
@@ -114,8 +117,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-22T18:48:44+09:00",
-  "last_event_count": 73,
+  "updated_at_kst": "2026-09-22T18:54:56+09:00",
+  "last_event_count": 79,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -670,7 +673,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-22T18:48:44+09:00",
+      "last_checked_at_kst": "2026-09-22T18:54:56+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -724,7 +727,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-22T18:52:16+09:00",
+    "checked_at_kst": "2026-09-22T18:58:58+09:00",
     "status": "no_message_due"
   }
 }
