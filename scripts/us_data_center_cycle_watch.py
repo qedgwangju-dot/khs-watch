@@ -28,7 +28,7 @@ ALERT_PATH = OUT_DIR / "us_data_center_cycle_alert.txt"
 PENDING_PATH = OUT_DIR / "us_data_center_cycle_state_pending.json"
 STATUS_PATH = OUT_DIR / "us_data_center_cycle_status.md"
 ERROR_PATH = OUT_DIR / "us_data_center_cycle_errors.log"
-FORMAT_VERSION = 6
+FORMAT_VERSION = 7
 KST = ZoneInfo("Asia/Seoul")
 
 HEADERS = {
@@ -535,10 +535,12 @@ def main() -> int:
     }
     errors: list[str] = []
 
+    fx_fresh = False
     try:
         state["fx"] = fetch_fx()
+        fx_fresh = True
     except Exception as exc:
-        errors.append(f"USD/KRW 조회 실패: {type(exc).__name__}: {exc}")
+        errors.append(f"달러/원 환율 조회 실패: {type(exc).__name__}: {exc}")
         if old.get("fx"):
             state["fx"] = old["fx"]
 
@@ -570,9 +572,13 @@ def main() -> int:
     if state.get("dodge") and dodge_changed(old.get("dodge"), state["dodge"]):
         changed.append("dodge")
 
-    if first or format_changed or changed:
+    should_alert = bool(first or format_changed or changed)
+    blocked_by_fx = bool(should_alert and not fx_fresh)
+
+    PENDING_PATH.unlink(missing_ok=True)
+    if should_alert and not blocked_by_fx:
         ALERT_PATH.write_text(build_alert(state, changed, first, format_changed), encoding="utf-8")
-    PENDING_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        PENDING_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     status = [
         "# 미국 데이터센터 건설 사이클 감시", "",
@@ -580,6 +586,7 @@ def main() -> int:
         f"- 원화 환산·가독성 형식 갱신: {'예' if format_changed else '아니오'}",
         f"- 변화 감지: {', '.join(changed) if changed else '없음'}",
         f"- 텔레그램 발송 파일: {'생성' if ALERT_PATH.exists() else '없음'}",
+        f"- 환율 검증으로 송출 보류: {'예' if blocked_by_fx else '아니오'}",
         f"- 조회 오류: {len(errors)}건",
     ]
     if state.get("fx"):
