@@ -425,10 +425,17 @@
       "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9OeTc1VE5lcEx0QzNhVlh6TnBVZUhfdi1MR0xZQnJOLWo2U3dHb09ucVhPNXctSTFXNTF6R3EwZEJXSl96SF9zS2FPUWFwcHpHeFVMaGtUckZiaGIydHc1SFMwT3U1R1h5WnMtY2RGUkdtYm1jV2VUMWFB?oc=5",
       "published_utc": "2026-09-21T05:00:00Z",
       "first_seen_kst": "2026-09-22T10:31:22+09:00"
+    },
+    "84d925d269a867c36815": {
+      "source": "Anadolu Ajansı",
+      "title": "Tanker struck by unknown projectile in Strait of Hormuz, 2 crew members injured - Anadolu Ajansı",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOby1mTGFzRUdMeE1kMW1vb3V2WW1RN254eXNDVFlGM1BHcXlGTXBfZDdPRmJtTUZIaG5oYzg5SzloZDhkcjhXMkhDSlZGN19uOGNsaFNCRmZkV0FlVWRsYUgtLTBiRWc4QndPOVBETWdnQmV0RnZtbzJQUWFZM3ZyUVVtSlQxeGxyTjk2RGk0bEotWlBHS0VJSHo2Ull4Q01UMDhhcGY5V29tQnhpM2ZzVHc5bHFISks5MG5EeUNPMW8?oc=5",
+      "published_utc": "2026-09-21T10:08:50Z",
+      "first_seen_kst": "2026-09-22T15:49:10+09:00"
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-09-22T10:31:22+09:00",
+  "last_checked_kst": "2026-09-22T15:49:10+09:00",
   "confirmed_events": {
     "news:2026-08-30:strike:hormuz:1": {
       "warning": null,
@@ -492,8 +499,8 @@
       "location": "hormuz",
       "projectile_count": 1,
       "sources": [
-        "Anadolu Ajansı",
         "Arab News",
+        "Anadolu Ajansı",
         "Radio Free Europe/Radio Liberty"
       ],
       "first_seen_kst": "2026-09-22T04:40:12+09:00"
