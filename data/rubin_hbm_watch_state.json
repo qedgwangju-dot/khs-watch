@@ -126,5 +126,145 @@
   "delivery_check": {
     "checked_at_kst": "2026-09-22T17:23:07+09:00",
     "status": "no_message_due"
+  },
+  "_delivery": {
+    "id": "d37b8653e870cff240cd17f790f3afb453bef1e91f097f8861822324d95ffd67",
+    "status": "queued",
+    "created_at_kst": "2026-09-22T17:38:48+09:00",
+    "chunks": [
+      "<b>🚨 AI 부품 리드타임 감시 — 변화 감지</b>\n\n<b>무엇이 달라졌나</b>\n• <b>DRAM</b>: 상태 심각한 공급 부족 → 균형\n• <b>NAND(eSSD)</b>: 상태 공급 제약 → 심각한 공급 부족\n• <b>ABF</b>: 상태 심각한 공급 부족 → 균형\n• <b>MLCC</b>: 상태 공급 제약 → 균형\n\n<b>현재 6개 품목 상태</b>\n• <b>GPU</b> | 현재 30~40주 | 균형 30~40주 | 상태 균형 | 전주 대비 동일\n• <b>DRAM</b> | 현재 20주 | 균형 8주 | 상태 균형 | 전주 대비 상태 심각한 공급 부족 → 균형\n• <b>NAND(eSSD)</b> | 현재 16주 | 균형 8주 | 상태 심각한 공급 부족 | 전주 대비 상태 공급 제약 → 심각한 공급 부족\n• <b>HDD</b> | 현재 50주 | 균형 16주 | 상태 심각한 공급 부족 | 전주 대비 동일\n• <b>ABF</b> | 현재 48~56주 | 균형 12주 | 상태 균형 | 전주 대비 상태 심각한 공급 부족 → 균형\n• <b>MLCC</b> | 현재 32주 | 균형 12주 | 상태 균형 | 전주 대비 상태 공급 제약 → 균형\n\n<b>현재 판정</b>\n• 가장 강한 병목: <b>ABF</b> — 현재 48~56주 / 균형 12주 / 상태 균형, 균형 대비 약 4.3배\n\n<b>추적 기준</b>\n• 현재 리드타임, 균형 리드타임, 공급 상태를 6개 품목 모두 직전 주와 1:1 비교합니다.\n• 리드타임·균형 기준·상태 중 하나라도 바뀌면 알림하고, 새 Weekly Radar인데 숫자 판독이 불완전해도 별도 경고합니다.\n• 공개시각: 2026-09-21T19:01:52+09:00\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-002\">원문</a>"
+    ],
+    "next_chunk": 0,
+    "message_ids": [],
+    "candidate": {
+      "updated_at_kst": "2026-09-22T17:38:03+09:00",
+      "seen_ids": [
+        "06a59b34b1c9e4bb0d3987bd",
+        "081d98bf0cc1d36b72de1345",
+        "09ccca98004f94ddc78adf4f",
+        "0a11d6e55d20a20d438eea0b",
+        "0f4c93418ab0cb5f77ee5aff",
+        "1a7355b983f5d9b5a7d4a97f",
+        "20a5c84026d1bbe9b4f60398",
+        "21e84f4d7bcbfa46a6b63dee",
+        "2d27da4b09baa1d0f61ace3d",
+        "30e12d5e09347c31afe9bbbf",
+        "366eb2b49378313e5a18f1ec",
+        "40660e881b3fe6bde98047a2",
+        "4247585e3b18e9cad642ceec",
+        "4247b04678644c4743f6ef69",
+        "4254884b8b0b799b2b6b87a7",
+        "44974ccaa7ba66fe19dffd08",
+        "45ba5c60ce8b21a79021bfee",
+        "4a4d0cce8254b1bcb31b5074",
+        "4a94d2be7668e2271bd7f262",
+        "4d6b3e75273924248c11b1c1",
+        "5010456efcf2a9cd4b3c6336",
+        "508271da4f03e4e64f5e8e39",
+        "51472fa7253bfc2a1683afa7",
+        "59dea53db71c13bdf6c120ef",
+        "5a97726e2e93fc7408e02754",
+        "62514606e58e299512d357d4",
+        "683bf92b23e4d4953f109996",
+        "7310bace62d2a5a4af5e422b",
+        "7c4fab38f3ac9aeca880db5a",
+        "817f217f23561cc348f4159b",
+        "86e3b5a2a1b5f5a0a64b608e",
+        "879690aaf1650f4535c5fa3b",
+        "959562dc71d2a106144c7eab",
+        "97cd9aa32a1e0bc1defa7483",
+        "9a0fac710d6f4969c12eccb0",
+        "9ccd14cf2278388157bd44a6",
+        "a1f202951bc6ed71f25e0b03",
+        "ad831c0a9b75057895ffb73a",
+        "adca27d662f4cb51e531edfd",
+        "b7a9ea191f0d39046caeeb6d",
+        "c1d173fd17a8a8cd17f5cd5b",
+        "c1ede00bdbacc4e73f3e3732",
+        "c66bcba5501ce4414506b0e6",
+        "caf236d0d63266773b9b11da",
+        "d059f8c3e0d742a821065a47",
+        "d26bff6649e5357d756fc3fc",
+        "d33a5fbc0d352f5813521b17",
+        "d438811610a9bd1cc60718b5",
+        "d5bb9608cc828c7b4cd00446",
+        "d6a7588c8d5d4c51180c5a1a",
+        "dca2bc8b55a45dd7abd304fb",
+        "dff177bae16621437b065202",
+        "e05c1927e16110a949b8b797",
+        "e91a33b5d73da251921a7da4",
+        "eed867761a24cbad33b1c104",
+        "f07ec9c4d4039ee24a7a82d9",
+        "f0b052afbbfcb591daa146d8",
+        "f3e3dad3086e1067be70a1d9",
+        "f90b21bc4788937b6c57cbb1",
+        "f9c423730a2aa19b4fba6af0",
+        "fbd920db100fb7204a37af3d",
+        "fd0ab513604f145f508ff4dd",
+        "ff9744abe3535e79694d130b"
+      ],
+      "seen_fact_keys": [
+        "hbm3e_wafer_capacity_3x_ddr5",
+        "hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi",
+        "skhynix_indiana_hbm4e_2029"
+      ],
+      "last_unseen_raw_count": 0,
+      "last_verified_event_count": 0,
+      "last_send_event_count": 0,
+      "freshness_hours": 72,
+      "usdkrw": {
+        "rate": 1372.18,
+        "date": "2026-09-21 일일 기준 · ECB/Frankfurter · 조회 2026-09-22 17:38 KST · 보조 API 2026-09-22 · 차이 0.25% · 일중 기준시각 차이 가능",
+        "source": "ECB/Frankfurter",
+        "error": ""
+      },
+      "errors": [],
+      "ai_component_leadtime": {
+        "as_of": "2026-09-21",
+        "source": "https://insights.trendforce.com/p/weekly-radar-002",
+        "components": {
+          "GPU": {
+            "status": "Balanced",
+            "current": "30-40",
+            "balanced": "30-40"
+          },
+          "DRAM": {
+            "status": "Very Tight",
+            "current": "20",
+            "balanced": "8"
+          },
+          "NAND(eSSD)": {
+            "status": "Tight",
+            "current": "16",
+            "balanced": "8"
+          },
+          "HDD": {
+            "status": "Very Tight",
+            "current": "50",
+            "balanced": "16"
+          },
+          "ABF": {
+            "status": "Very Tight",
+            "current": "48-56",
+            "balanced": "12"
+          },
+          "MLCC": {
+            "status": "Tight",
+            "current": "32",
+            "balanced": "12"
+          }
+        },
+        "seen_urls": [
+          "https://insights.trendforce.com/p/weekly-radar-001",
+          "https://www.trendforce.com/news/",
+          "https://insights.trendforce.com/p/weekly-radar-002"
+        ]
+      },
+      "structure_baseline_version": 1,
+      "delivery_check": {
+        "checked_at_kst": "2026-09-22T17:23:07+09:00",
+        "status": "no_message_due"
+      }
+    }
   }
 }
