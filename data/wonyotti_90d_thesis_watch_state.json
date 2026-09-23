@@ -1,0 +1,48 @@
+{
+  "initialized": true,
+  "updated_at_kst": "2026-09-23T11:37:43+09:00",
+  "crypto": {
+    "prices": {
+      "BTC": {
+        "usd": 86542.0,
+        "change24": 0.8952537864389801,
+        "volume24": 42044967816.593925
+      },
+      "ETH": {
+        "usd": 2758.87,
+        "change24": 0.4847959444940004,
+        "volume24": 15814366994.327288
+      },
+      "SOL": {
+        "usd": 118.41,
+        "change24": 0.41978520507965844,
+        "volume24": 4430310003.829233
+      }
+    },
+    "derivatives": {},
+    "btc_etf": {
+      "date": "2026-09-22",
+      "daily_usd_m": 364.4,
+      "five_day_usd_m": 1660.0
+    },
+    "eth_etf": {
+      "date": "2026-09-22",
+      "daily_usd_m": 71.3,
+      "five_day_usd_m": 221.6
+    }
+  },
+  "rates": {
+    "nominal10y": {
+      "date": "2026-09-22",
+      "value": 4.96
+    },
+    "real10y": {
+      "date": "2026-09-22",
+      "value": 2.63
+    }
+  },
+  "nvidia_sec": {},
+  "news_seen": [
+    "adfe94608514778e4234bc71"
+  ]
+}
