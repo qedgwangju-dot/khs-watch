@@ -46,7 +46,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet beautifulsoup4 googlenewsdecoder==0.1.7
+        run: python -m pip install --disable-pip-version-check --quiet beautifulsoup4 googlenewsdecoder==0.1.7 pypdf
 
       - name: Verify exact Telegram route
         run: |
