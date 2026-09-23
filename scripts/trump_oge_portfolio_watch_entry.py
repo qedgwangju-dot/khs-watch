@@ -240,6 +240,26 @@ def _discover_fallback_news():
     return list(out.values())
 
 
+
+FALLBACK_ASSET_KEYS = [
+    "spacex", "nvidia", "apple", "microsoft", "meta", "tesla", "palantir",
+    "coinbase", "berkshire", "visa", "mastercard", "cintas", "rtx", "northrop",
+    "amazon", "alphabet", "google", "home depot", "fidelity",
+]
+
+
+def _fallback_event_key(event):
+    title = (event.get("title") or "").lower()
+    period = event.get("period") or "unknown"
+    assets = sorted({k.replace(" ", "-") for k in FALLBACK_ASSET_KEYS if k in title})
+    if event.get("id") == FALLBACK_SEED["id"]:
+        return "oge-event:2026-07:spacex"
+    if assets:
+        return "oge-event:" + period + ":" + ",".join(assets)
+    normalized = re.sub(r"[^0-9a-z가-힣]+", " ", title).strip()
+    return "oge-event:" + hashlib.sha256((period + "|" + normalized).encode("utf-8")).hexdigest()[:24]
+
+
 def _fallback_message(event, rate, basis):
     if event.get("id") == FALLBACK_SEED["id"]:
         return "\n".join([
@@ -290,6 +310,7 @@ def main_with_fallback():
     # seen_periods is informational only; it must never suppress a different filing in the same month.
     seen_periods = set(state.get("seen_periods", []))
     seen_news = set(state.get("seen_news_events", []))
+    seen_news_event_keys = set(state.get("seen_news_event_keys", []))
 
     if watch.filing_key(watch.SEED_CURRENT_URL) in seen_urls:
         seen_periods.add("2026-06")
@@ -318,19 +339,31 @@ def main_with_fallback():
         seen_urls.add(key)
         seen_periods.update(periods)
 
-    for event in _discover_fallback_news():
+    fallback_events = _discover_fallback_news()
+
+    # Migrate already-seen raw article IDs into stable event fingerprints.
+    for event in fallback_events:
+        if (event.get("id") or "") in seen_news:
+            seen_news_event_keys.add(_fallback_event_key(event))
+
+    for event in fallback_events:
         eid = event.get("id") or ""
+        ekey = _fallback_event_key(event)
         period = event.get("period") or ""
-        if eid in seen_news:
+        if ekey in seen_news_event_keys:
+            # Remember the raw URL/title ID too, but do not send the same event again.
+            seen_news.add(eid)
             continue
         watch.send_message(token, chat_id, _fallback_message(event, rate, basis))
         seen_news.add(eid)
+        seen_news_event_keys.add(ekey)
         if period:
             seen_periods.add(period)
 
     state["seen"] = sorted(seen_urls)
     state["seen_periods"] = sorted(seen_periods)
     state["seen_news_events"] = sorted(seen_news)
+    state["seen_news_event_keys"] = sorted(seen_news_event_keys)
     watch.save_state(state)
 
 
