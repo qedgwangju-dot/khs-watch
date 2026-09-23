@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-09-23T00:53:46.587408+00:00",
+  "updated_at": "2026-09-23T05:57:00.105270+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -399,9 +399,20 @@
     "7a0992d1c1009d1c754635c8016977f503eb90b59f0412086b940356dd8eb8b8",
     "3d0555d41a51b7a65f8a11d256805ed07cbfcbf2b8f763381260bf9159fe13a4",
     "209fe2163b1a31b8ef7b04eac6d2050237b369ef03dd2d324a83370f46bed0e4",
-    "20228551fdffd8a173dee1ea342b44ad043f24ac18491be3e6b7ff32baea570f"
+    "20228551fdffd8a173dee1ea342b44ad043f24ac18491be3e6b7ff32baea570f",
+    "db3e581fed73156ac32d35e53e1e506dc1952db066a9f091f4370419a1721a02",
+    "82f1a8037acc4f080975a17d5d53a28a1927b141caaf40d8a9491ef4bb8ea42e",
+    "efcb71de11fce458dbced74483700f398c9adacb88ba37a537ca608598efa782",
+    "3dd54a4bc38f34fd5f30e4b1d00e1306975142b16753da8c0f4bdf5670edb096",
+    "3867bda6dff7a17f6a6f4b9d1eb00f1b138a9198aded15cdc6a8e2b5c8ef9e53"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "db3e581fed73156ac32d35e53e1e506dc1952db066a9f091f4370419a1721a02",
+    "82f1a8037acc4f080975a17d5d53a28a1927b141caaf40d8a9491ef4bb8ea42e",
+    "efcb71de11fce458dbced74483700f398c9adacb88ba37a537ca608598efa782",
+    "3dd54a4bc38f34fd5f30e4b1d00e1306975142b16753da8c0f4bdf5670edb096",
+    "3867bda6dff7a17f6a6f4b9d1eb00f1b138a9198aded15cdc6a8e2b5c8ef9e53"
+  ],
   "groups": [
     "ess_battery",
     "figure_ai",
@@ -411,6 +422,7 @@
     "robotis",
     "robotis_excess_demand",
     "samhyun",
-    "tesla"
+    "tesla",
+    "xpeng"
   ]
 }
