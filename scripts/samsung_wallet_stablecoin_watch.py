@@ -134,26 +134,57 @@ def official_context() -> dict:
         "job_stablecoin_confirmed": False,
         "job_fetch_ok": False,
         "article_confirmed": False,
+        "explicit_reversal_confirmed": False,
         "errors": [],
     }
 
     try:
-        text = clean_text(fetch(SAMSUNG_INSIGHTS_URL)).lower()
+        raw = fetch(SAMSUNG_INSIGHTS_URL)
+        text = clean_text(raw).lower()
+        raw_text = html.unescape(raw.decode("utf-8", errors="replace")).lower()
+        combined = f"{text} {raw_text}"
         result["samsung_support_confirmed"] = (
-            "samsung wallet" in text
-            and "stablecoin" in text
-            and ("support" in text or "stablecoins" in text)
+            "samsung wallet" in combined
+            and re.search(r"stable[\s\-]?coins?", combined) is not None
+            and ("support" in combined or "stablecoins" in combined)
         )
+        reversal_terms = (
+            "will no longer support stablecoins",
+            "will not support stablecoins",
+            "stablecoin support has been cancelled",
+            "stablecoin support is cancelled",
+            "stablecoin support has been withdrawn",
+        )
+        result["explicit_reversal_confirmed"] = any(term in combined for term in reversal_terms)
     except Exception as exc:
         result["errors"].append(f"samsung_insights: {exc}")
 
     try:
-        text = clean_text(fetch(WORKDAY_JOB_URL)).lower()
+        raw = fetch(WORKDAY_JOB_URL)
+        visible = clean_text(raw).lower()
+        raw_text = html.unescape(raw.decode("utf-8", errors="replace")).lower()
+        combined = re.sub(r"\\u002d", "-", f"{visible} {raw_text}")
+        combined = re.sub(r"\\u0026", "&", combined)
         result["job_fetch_ok"] = True
-        result["job_stablecoin_confirmed"] = (
-            "stablecoin" in text
-            and "samsung wallet" in text
-            and any(x in text for x in ("business development", "payments", "partnership"))
+        stable_match = re.search(r"stable[\s\-]?coin", combined) is not None
+        samsung_wallet_match = "samsung wallet" in combined
+        bd_match = "business development" in combined
+        payment_scope_match = any(
+            x in combined
+            for x in (
+                "payment partnerships",
+                "payments",
+                "partnership agreements",
+                "go-to-market",
+            )
+        )
+        requisition_match = "r118656" in combined
+        result["job_stablecoin_confirmed"] = bool(
+            stable_match
+            and samsung_wallet_match
+            and bd_match
+            and payment_scope_match
+            and requisition_match
         )
     except Exception as exc:
         result["errors"].append(f"workday: {exc}")
@@ -175,24 +206,36 @@ def fingerprint(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()[:20]
 
 
-def topic_state(official: dict, candidates: list[dict]) -> dict:
-    """Derive one subject/event state. Articles are evidence, never alert objects."""
+def topic_state(official: dict, candidates: list[dict], previous: dict | None = None) -> dict:
+    """Derive durable subject state.
+
+    News/RSS evidence can establish or corroborate a state, but disappearing/aging
+    articles must never erase a previously confirmed business state. Downward changes
+    require an explicit official reversal, not absence of evidence.
+    """
+    previous = previous or {}
     evidence_text = " ".join(
         f"{item.get('title', '')} {item.get('summary', '')}" for item in candidates
     ).lower()
 
-    support_plan = bool(official.get("samsung_support_confirmed"))
+    support_now = bool(official.get("samsung_support_confirmed"))
+    support_plan = support_now or bool(previous.get("support_plan"))
+
     job_exists = bool(official.get("job_fetch_ok"))
-    stablecoin_bd_scope = bool(official.get("job_stablecoin_confirmed")) or (
-        job_exists
+    report_bd_scope = (
+        ("stablecoin" in evidence_text or "stable coin" in evidence_text or "스테이블코인" in evidence_text)
         and (
-            ("stablecoin" in evidence_text or "스테이블코인" in evidence_text)
-            and ("r118656" in evidence_text or "사업개발" in evidence_text or "business development" in evidence_text)
+            "r118656" in evidence_text
+            or "사업개발" in evidence_text
+            or "business development" in evidence_text
         )
     )
+    stablecoin_bd_now = bool(official.get("job_stablecoin_confirmed")) or report_bd_scope
+    stablecoin_bd_scope = stablecoin_bd_now or bool(previous.get("stablecoin_bd_scope"))
 
-    # Do not infer a stablecoin partner merely because Galaxy Card uses Barclays/Visa.
-    stablecoin_partner = ""
+    # Partner/pilot detection is allowed to move forward, but never backward simply
+    # because an article leaves the freshness window.
+    detected_partner = ""
     partner_patterns = [
         ("Circle", ("circle", "usdc")),
         ("Tether", ("tether", "usdt")),
@@ -201,20 +244,37 @@ def topic_state(official: dict, candidates: list[dict]) -> dict:
         ("Visa", ("visa",)),
         ("Mastercard", ("mastercard",)),
     ]
-    launch_terms = ("launch", "launched", "live", "pilot", "rollout", "출시", "상용화", "파일럿", "도입")
     stable_terms = ("stablecoin", "stable coin", "스테이블코인")
+    execution_terms = (
+        "pilot", "rollout", "live", "integration", "integrate",
+        "파일럿", "상용화", "통합", "제휴",
+    )
     for name, aliases in partner_patterns:
-        if any(alias in evidence_text for alias in aliases) and any(term in evidence_text for term in stable_terms):
-            # Partner is only promoted when the same evidence also contains an execution term.
-            if any(term in evidence_text for term in launch_terms):
-                stablecoin_partner = name
-                break
+        partner_hit = any(alias in evidence_text for alias in aliases)
+        if (
+            partner_hit
+            and any(term in evidence_text for term in stable_terms)
+            and any(term in evidence_text for term in execution_terms)
+        ):
+            detected_partner = name
+            break
+    stablecoin_partner = detected_partner or str(previous.get("stablecoin_partner") or "")
 
-    pilot_or_launch = (
+    detected_pilot = (
         any(term in evidence_text for term in stable_terms)
-        and any(term in evidence_text for term in launch_terms)
+        and any(
+            term in evidence_text
+            for term in ("pilot", "rollout", "go live", "launched", "파일럿", "상용화", "출시")
+        )
         and ("samsung wallet" in evidence_text or "삼성월렛" in evidence_text)
     )
+    pilot_or_launch = detected_pilot or bool(previous.get("pilot_or_launch"))
+
+    reversal = bool(official.get("explicit_reversal_confirmed"))
+    if reversal:
+        status = "공식 철회·취소 확인"
+    else:
+        status = "진행 중"
 
     if pilot_or_launch:
         stage = 4
@@ -232,15 +292,30 @@ def topic_state(official: dict, candidates: list[dict]) -> dict:
         stage = 0
         stage_name = "확인 전"
 
+    # No regression from evidence loss. Only an explicit official reversal can
+    # supersede the achieved stage, and even then we preserve achieved_stage.
+    previous_stage = int(previous.get("stage", 0) or 0)
+    if not reversal and stage < previous_stage:
+        stage = previous_stage
+        stage_name = str(previous.get("stage_name") or stage_name)
+        support_plan = bool(previous.get("support_plan")) or support_plan
+        stablecoin_bd_scope = bool(previous.get("stablecoin_bd_scope")) or stablecoin_bd_scope
+        stablecoin_partner = str(previous.get("stablecoin_partner") or stablecoin_partner)
+        pilot_or_launch = bool(previous.get("pilot_or_launch")) or pilot_or_launch
+
     return {
         "topic": "Samsung Wallet stablecoin adoption",
         "stage": stage,
         "stage_name": stage_name,
+        "achieved_stage": max(stage, int(previous.get("achieved_stage", previous_stage) or 0)),
         "support_plan": support_plan,
         "job_exists": job_exists,
         "stablecoin_bd_scope": stablecoin_bd_scope,
         "stablecoin_partner": stablecoin_partner,
         "pilot_or_launch": pilot_or_launch,
+        "explicit_reversal_confirmed": reversal,
+        "status": status,
+        "official_job_scope_now": bool(official.get("job_stablecoin_confirmed")),
     }
 
 
@@ -248,18 +323,34 @@ def state_changed(old_state: dict, new_state: dict) -> tuple[bool, list[str]]:
     changes: list[str] = []
     if not old_state:
         return True, ["기준 상태 생성"]
-    if int(new_state.get("stage", 0)) > int(old_state.get("stage", 0)):
+
+    old_stage = int(old_state.get("stage", 0) or 0)
+    new_stage = int(new_state.get("stage", 0) or 0)
+    if new_stage > old_stage:
         changes.append(
             f"단계 상승: {old_state.get('stage_name', '확인 전')} → {new_state.get('stage_name', '확인 전')}"
         )
-    for field, label in (
-        ("stablecoin_partner", "스테이블코인 파트너"),
-        ("pilot_or_launch", "파일럿·출시 상태"),
-        ("support_plan", "지원 계획"),
-        ("stablecoin_bd_scope", "사업개발 범위"),
+
+    old_partner = str(old_state.get("stablecoin_partner") or "")
+    new_partner = str(new_state.get("stablecoin_partner") or "")
+    if new_partner and new_partner != old_partner:
+        changes.append(
+            f"스테이블코인 파트너 확인: {old_partner or '미확정'} → {new_partner}"
+        )
+
+    if not bool(old_state.get("pilot_or_launch")) and bool(new_state.get("pilot_or_launch")):
+        changes.append("파일럿·출시 실행 신호 확인")
+
+    if not bool(old_state.get("support_plan")) and bool(new_state.get("support_plan")):
+        changes.append("Samsung Wallet 스테이블코인 지원 계획 공식 확인")
+
+    if (
+        not bool(old_state.get("explicit_reversal_confirmed"))
+        and bool(new_state.get("explicit_reversal_confirmed"))
     ):
-        if new_state.get(field) != old_state.get(field):
-            changes.append(f"{label} 변경: {old_state.get(field)} → {new_state.get(field)}")
+        changes.append("공식 철회·취소 신호 확인")
+
+    # Never alert on True→False caused by source aging, parser loss, or article expiry.
     return bool(changes), changes
 
 
@@ -293,8 +384,17 @@ def main() -> int:
 
     official = official_context()
     candidates = rss_candidates(now_utc)
-    current = topic_state(official, candidates)
+    current = topic_state(official, candidates, old_topic)
     changed, changes = state_changed(old_topic, current)
+
+    correction_pending = bool(old.get("correction_pending"))
+    if correction_pending:
+        changed = True
+        changes = [
+            "정정: 직전 '사업개발 범위 축소' 알림은 기사 만료에 따른 오판",
+            "Samsung Careers R118656의 스테이블코인 결제 제휴 업무가 계속 확인돼 단계 2 유지",
+        ]
+
     evidence = evidence_links(candidates)
 
     pending = {
@@ -302,6 +402,7 @@ def main() -> int:
         "topic_state": current,
         "evidence": evidence,
         "official": official,
+        "correction_pending": False,
     }
     PENDING_PATH.write_text(
         json.dumps(pending, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
@@ -310,11 +411,12 @@ def main() -> int:
 
     if changed:
         support = "공식 확인" if official["samsung_support_confirmed"] else "공식 페이지 재확인 필요"
-        job = (
-            "Samsung Careers 원문에서 stablecoin 업무 직접 확인"
-            if official["job_stablecoin_confirmed"]
-            else "Samsung Careers 직무 존재 확인 + 복수 보도로 stablecoin 업무 범위 교차검증"
-        )
+        if official["job_stablecoin_confirmed"]:
+            job = "Samsung Careers R118656 원문에서 stable coin을 결제 제휴 범위로 직접 확인"
+        elif current.get("stablecoin_bd_scope"):
+            job = "기존 공식 확인된 사업개발 범위 유지 · 현재 원문 직접 파싱은 재확인 필요"
+        else:
+            job = "사업개발 범위 미확인"
         lines = [
             "<b>Samsung Wallet 스테이블코인 상태 변화</b>",
             f"<code>조회 {html.escape(now_kst.isoformat(timespec='seconds'))}</code>",
@@ -339,8 +441,8 @@ def main() -> int:
         lines += [
             "",
             "<b>투자 의미</b>",
-            "• 기사 수가 늘어난 것이 아니라 <b>Samsung Wallet의 스테이블코인 채택 단계가 실제로 변했는지</b>를 기준으로 알림",
-            "• 같은 내용을 반복 보도하는 기사만 추가되면 알림하지 않음",
+            "• <b>기사 자체가 아니라 Samsung Wallet의 스테이블코인 사업 상태가 실제로 바뀔 때만 알림</b>",
+            "• 기사 만료·검색 누락·파서 실패만으로 기존 확인 상태를 낮추거나 알림하지 않음",
             "• 다음 상태 변화: 발행사/결제망 실명 → 파일럿 → 출시국·출시일 → Wallet 기능 공개 → 상용화·수수료 구조",
             "",
             "<b>근거·교차검증</b>",
@@ -364,7 +466,7 @@ def main() -> int:
         f"- changes: {'; '.join(changes) if changes else 'none'}",
         f"- Samsung official support signal: {official['samsung_support_confirmed']}",
         f"- Workday job exists: {official['job_fetch_ok']}",
-        f"- stablecoin BD scope: {current['stablecoin_bd_scope']}",
+        f"- stablecoin BD scope: {'확인 유지' if current['stablecoin_bd_scope'] else '미확인'}",
         f"- partner: {current['stablecoin_partner'] or 'unconfirmed'}",
         f"- pilot/live: {current['pilot_or_launch']}",
         f"- evidence count: {len(evidence)}",
