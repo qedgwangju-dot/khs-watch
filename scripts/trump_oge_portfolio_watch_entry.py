@@ -285,6 +285,9 @@ def main_with_fallback():
 
     state = watch.load_state()
     seen_urls = set(state.get("seen", []))
+    # seen_urls: exact OGE filing URLs already sent.
+    # seen_news: exact fallback news events already sent.
+    # seen_periods is informational only; it must never suppress a different filing in the same month.
     seen_periods = set(state.get("seen_periods", []))
     seen_news = set(state.get("seen_news_events", []))
 
@@ -309,9 +312,6 @@ def main_with_fallback():
             except Exception as e:
                 print(f"WARN PDF parse failed {url}: {e}")
                 txs = []
-            if periods and periods.issubset(seen_periods):
-                seen_urls.add(key)
-                continue
             msg = watch.generic_message(url, txs, rate, basis)
 
         watch.send_message(token, chat_id, msg)
@@ -322,9 +322,6 @@ def main_with_fallback():
         eid = event.get("id") or ""
         period = event.get("period") or ""
         if eid in seen_news:
-            continue
-        if period and period in seen_periods:
-            seen_news.add(eid)
             continue
         watch.send_message(token, chat_id, _fallback_message(event, rate, basis))
         seen_news.add(eid)
