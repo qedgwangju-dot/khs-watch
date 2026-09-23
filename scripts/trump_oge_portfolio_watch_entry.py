@@ -210,6 +210,8 @@ KNOWN_FALLBACK_TITLE_KO = {
         "트럼프 최신 재산공개, 7월 SpaceX 주식 매수·매도 확인",
     "Donald Trump's latest financial filing includes SpaceX surprise — report":
         "트럼프 최신 재산공개, 7월 SpaceX 주식 매수·매도 확인",
+    "Trump July disclosure: 1,156 trades, Microsoft and Amazon among largest sales":
+        "트럼프 7월 재산공개: 1,156건 거래, Microsoft·Amazon이 최대 매도 종목",
 }
 
 
@@ -293,6 +295,7 @@ SOURCE_DOMAIN_LABELS = {
     "yna.co.kr": "연합뉴스",
     "newrepublic.com": "The New Republic",
     "deadline.com": "Deadline",
+    "seekingalpha.com": "Seeking Alpha",
 }
 
 
@@ -393,6 +396,17 @@ FALLBACK_ASSET_KEYS = [
 ]
 
 
+def _detail_kind(event):
+    title = (event.get("title") or "").lower()
+    if (
+        ("1,156" in title or "1156" in title)
+        and "microsoft" in title
+        and "amazon" in title
+    ):
+        return "july-summary-1156-msft-amzn"
+    return ""
+
+
 def _fallback_event_key(event):
     title = (event.get("title") or "").lower()
     period = event.get("period") or "unknown"
@@ -415,6 +429,9 @@ def _fallback_event_key(event):
         if pub and pub.date() >= dt.date(2026, 9, 22) and pub.date() <= dt.date(2026, 9, 24):
             return "oge-event:2026-07:spacex"
 
+    detail = _detail_kind(event)
+    if detail:
+        return "oge-detail:" + (period or "unknown") + ":" + detail
     if assets:
         return "oge-event:" + period + ":" + ",".join(assets)
     normalized = re.sub(r"[^0-9a-z가-힣]+", " ", title).strip()
@@ -538,17 +555,59 @@ def main_with_fallback():
         unique_generic.append(event)
 
     if unique_generic:
-        lines = [
-            "📰 [트럼프 OGE 신규 거래 관련 보도 묶음]",
-            f"새 관련 사건: {min(len(unique_generic), 5)}건",
-            "",
-            "▶ 한눈에 보기",
-            "• 최근 72시간 안에 새로 나온 OGE·재산공개 관련 보도만 묶었습니다.",
-            "• 과거 기사 재노출은 제외하며, 공식 OGE PDF 직접 감시는 별도로 계속됩니다.",
-            "",
-            "▶ 관련 보도",
-        ]
-        for i, event in enumerate(unique_generic[:5], 1):
+        has_existing_period_detail = any(
+            (e.get("period") or "") in seen_periods for e in unique_generic
+        )
+        july_summary = next(
+            (e for e in unique_generic if _detail_kind(e) == "july-summary-1156-msft-amzn"),
+            None,
+        )
+
+        if july_summary:
+            lines = [
+                "📊 [트럼프 OGE 7월 신고 — 추가 세부사항]",
+                "판정: 기존 7월 OGE 신고의 추가 분석 · 새 신고 아님",
+                f"원화 환산 기준: 1달러={rate:,.2f}원 ({basis})",
+                "",
+                "▶ 한눈에 보기",
+                "• 7월 증권 거래: 1,156건",
+                f"• 거래 총액 범위: 7,900만~2억7,000만달러 ({watch.krw_range(79_000_000, 270_000_000, rate)})",
+                f"• 매수 하한: 4,360만달러 이상 ({_krw_at_least(43_600_000, rate)})",
+                f"• 매도 하한: 3,560만달러 이상 ({_krw_at_least(35_600_000, rate)})",
+                "",
+                "▶ 주요 거래",
+                f"• 7월 20일 Microsoft 매도: 500만~2,500만달러 ({watch.krw_range(5_000_000, 25_000_000, rate)})",
+                f"• 7월 20일 Amazon 매도: 500만~2,500만달러 ({watch.krw_range(5_000_000, 25_000_000, rate)})",
+                f"• 7월 20일 Oracle 매도: 100만~500만달러 ({watch.krw_range(1_000_000, 5_000_000, rate)})",
+                f"• 7월 20일 Nvidia 매수: 50만1~100만달러 ({watch.krw_range(500_001, 1_000_000, rate)})",
+                f"• 7월 23일 Microsoft 재매수: 10만1~25만달러 ({watch.krw_range(100_001, 250_000, rate)})",
+                f"• 7월 23일 Amazon 재매수: 1,001~1만5,000달러 ({watch.krw_range(1_001, 15_000, rate)})",
+                "",
+                "▶ 의미",
+                "• 앞서 알린 7월 SpaceX 거래와 같은 7월 OGE 신고를 더 넓게 분석한 후속 보도입니다.",
+                "• 따라서 ‘새 관련 사건’이 아니라 ‘기존 신고의 추가 세부사항’으로 분류합니다.",
+                "",
+                "▶ 관련 보도",
+            ]
+        else:
+            heading = (
+                "📰 [트럼프 OGE 기존 신고 — 추가 보도 묶음]"
+                if has_existing_period_detail
+                else "📰 [트럼프 OGE 신규 거래 관련 보도 묶음]"
+            )
+            count_label = "추가 보도" if has_existing_period_detail else "새 관련 사건"
+            lines = [
+                heading,
+                f"{count_label}: {min(len(unique_generic), 5)}건",
+                "",
+                "▶ 한눈에 보기",
+                "• 최근 72시간 안에 새로 나온 OGE·재산공개 관련 보도만 묶었습니다.",
+                "• 과거 기사 재노출은 제외하며, 공식 OGE PDF 직접 감시는 별도로 계속됩니다.",
+                "",
+                "▶ 관련 보도",
+            ]
+        display_events = [july_summary] if july_summary else unique_generic[:5]
+        for i, event in enumerate(display_events, 1):
             lines += [
                 f"{i}. {event.get('source') or '웹 검색'}",
                 f"   {_translate_title_ko(event.get('title') or '')}",
