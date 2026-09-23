@@ -4,6 +4,7 @@ from __future__ import annotations
 import datetime as dt
 import hashlib
 import html
+import io
 import json
 import pathlib
 import re
@@ -13,8 +14,10 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
+from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
+from pypdf import PdfReader
 
 try:
     from googlenewsdecoder import gnewsdecoder
@@ -46,8 +49,8 @@ TREASURY_REAL = (
     "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/"
     "TextView?field_tdr_date_value=2026&type=daily_treasury_real_yield_curve"
 )
-SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK0001045810.json"
-SEC_COMPANYFACTS = "https://data.sec.gov/api/xbrl/companyfacts/CIK0001045810.json"
+NVIDIA_HOME = "https://investor.nvidia.com/home/default.aspx"
+NVIDIA_CURRENT_10Q_FALLBACK = "https://investor.nvidia.com/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf"
 
 NEWS_QUERIES = {
     "빅테크 AI 설비투자": [
@@ -247,14 +250,22 @@ def crypto_snapshot() -> tuple[dict, list[str]]:
     deriv = {}
     for symbol in ("BTCUSDT", "ETHUSDT", "SOLUSDT"):
         try:
-            premium = fetch_json(f"https://fapi.binance.com/fapi/v1/premiumIndex?symbol={symbol}")
-            oi = fetch_json(f"https://fapi.binance.com/fapi/v1/openInterest?symbol={symbol}")
+            raw = fetch_json(
+                "https://api.bybit.com/v5/market/tickers?"
+                + urllib.parse.urlencode({"category": "linear", "symbol": symbol})
+            )
+            rows = ((raw.get("result") or {}).get("list") or [])
+            if int(raw.get("retCode") or 0) != 0 or not rows:
+                raise RuntimeError(f"Bybit 응답 오류: {raw.get('retMsg') or 'empty'}")
+            row = rows[0]
             deriv[symbol] = {
-                "funding": float(premium.get("lastFundingRate") or 0.0),
-                "open_interest": float(oi.get("openInterest") or 0.0),
+                "funding": float(row.get("fundingRate") or 0.0),
+                "open_interest": float(row.get("openInterest") or 0.0),
+                "open_interest_value": float(row.get("openInterestValue") or 0.0),
+                "turnover24h": float(row.get("turnover24h") or 0.0),
             }
         except Exception as exc:
-            errors.append(f"Binance {symbol}: {exc}")
+            errors.append(f"Bybit {symbol}: {exc}")
     result["derivatives"] = deriv
 
     for key, url in (("btc_etf", FARSIDE_BTC), ("eth_etf", FARSIDE_ETH)):
@@ -304,78 +315,117 @@ def rates_snapshot() -> tuple[dict, list[str]]:
     return out, errors
 
 
-def latest_point_fact(usgaap: dict, tag: str) -> dict | None:
-    entries = usgaap.get(tag, {}).get("units", {}).get("USD", [])
-    values = [x for x in entries if x.get("form") in {"10-Q", "10-K"} and x.get("end") and x.get("val") is not None]
-    if not values:
-        return None
-    values.sort(key=lambda x: (x.get("end", ""), x.get("filed", "")))
-    latest = values[-1]
-    target = dt.date.fromisoformat(latest["end"]) - dt.timedelta(days=365)
-    prior = None
-    for row in values:
-        try:
-            d = dt.date.fromisoformat(row["end"])
-        except Exception:
-            continue
-        if abs((d - target).days) <= 45:
-            prior = row
-    yoy = None
-    if prior and float(prior["val"]) != 0:
-        yoy = (float(latest["val"]) / float(prior["val"]) - 1.0) * 100.0
-    return {"end": latest["end"], "value": float(latest["val"]), "yoy": yoy}
-
-
-def latest_quarter_fact(usgaap: dict, tags: tuple[str, ...]) -> dict | None:
+def discover_nvidia_10q() -> str:
+    html_text = fetch(NVIDIA_HOME, 30, "text/html").decode("utf-8", errors="replace")
+    soup = BeautifulSoup(html_text, "html.parser")
     candidates = []
-    for tag in tags:
-        for row in usgaap.get(tag, {}).get("units", {}).get("USD", []):
-            frame = str(row.get("frame") or "")
-            if row.get("form") == "10-Q" and re.fullmatch(r"CY\d{4}Q[1-4]", frame) and row.get("val") is not None:
-                candidates.append((frame, tag, row))
-    if not candidates:
-        return None
-    candidates.sort(key=lambda x: x[0])
-    frame, tag, latest = candidates[-1]
-    year = int(frame[2:6])
-    prior_frame = f"CY{year-1}{frame[-2:]}"
-    prior = next((row for f, t, row in reversed(candidates) if f == prior_frame and t == tag), None)
-    yoy = None
-    if prior and float(prior["val"]) != 0:
-        yoy = (float(latest["val"]) / float(prior["val"]) - 1.0) * 100.0
-    return {"frame": frame, "value": float(latest["val"]), "yoy": yoy}
+    for anchor in soup.find_all("a", href=True):
+        label = clean(anchor.get_text(" ", strip=True))
+        href = urljoin(NVIDIA_HOME, anchor.get("href") or "")
+        if re.search(r"\b10-Q\b", label, re.I) and href:
+            candidates.append(href)
+    if candidates:
+        pdfs = [x for x in candidates if ".pdf" in x.lower()]
+        return (pdfs or candidates)[0]
+    return NVIDIA_CURRENT_10Q_FALLBACK
 
 
-def nvidia_sec_snapshot() -> tuple[dict, list[str]]:
-    out, errors = {}, []
+def _first_pair_millions(text: str, label_pattern: str) -> tuple[float | None, float | None]:
+    match = re.search(
+        label_pattern + r"\s+\$?\s*([\d,]+)\s+\$?\s*([\d,]+)",
+        text,
+        flags=re.I,
+    )
+    if not match:
+        return None, None
+    return float(match.group(1).replace(",", "")), float(match.group(2).replace(",", ""))
+
+
+def _quarter_four_values(text: str, label_pattern: str) -> tuple[float | None, float | None]:
+    match = re.search(
+        label_pattern
+        + r"\s+\$?\s*([\d,]+)\s+\$?\s*([\d,]+)\s+\$?\s*([\d,]+)\s+\$?\s*([\d,]+)",
+        text,
+        flags=re.I,
+    )
+    if not match:
+        return None, None
+    return float(match.group(1).replace(",", "")), float(match.group(2).replace(",", ""))
+
+
+def _billion(text: str, pattern: str) -> float | None:
+    match = re.search(pattern, text, flags=re.I | re.S)
+    return float(match.group(1)) if match else None
+
+
+def nvidia_ir_snapshot(old_nv: dict | None = None) -> tuple[dict, list[str]]:
+    old_nv = old_nv or {}
+    errors = []
+    out = {}
     try:
-        submissions = fetch_json(SEC_SUBMISSIONS)
-        recent = submissions.get("filings", {}).get("recent", {})
-        for form, accession, document, filed in zip(
-            recent.get("form") or [],
-            recent.get("accessionNumber") or [],
-            recent.get("primaryDocument") or [],
-            recent.get("filingDate") or [],
-        ):
-            if form in {"10-Q", "10-K"}:
-                out["latest_filing"] = {
-                    "form": form,
-                    "accession": accession,
-                    "filed": filed,
-                    "url": "https://www.sec.gov/Archives/edgar/data/1045810/" + accession.replace("-", "") + "/" + document,
-                }
-                break
-    except Exception as exc:
-        errors.append(f"SEC submissions: {exc}")
+        q10_url = discover_nvidia_10q()
+        out["q10_url"] = q10_url
+        if q10_url == old_nv.get("q10_url") and old_nv.get("parsed_ok"):
+            kept = dict(old_nv)
+            kept["checked_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
+            return kept, errors
 
-    try:
-        facts = fetch_json(SEC_COMPANYFACTS)
-        usgaap = facts.get("facts", {}).get("us-gaap", {})
-        out["accounts_receivable"] = latest_point_fact(usgaap, "AccountsReceivableNetCurrent")
-        out["revenue"] = latest_quarter_fact(usgaap, ("RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues"))
-        out["net_income"] = latest_quarter_fact(usgaap, ("NetIncomeLoss", "ProfitLoss"))
+        pdf = fetch(q10_url, 45, "application/pdf")
+        reader = PdfReader(io.BytesIO(pdf))
+        text = "\n".join((page.extract_text() or "") for page in reader.pages)
+        compact = re.sub(r"[ \t]+", " ", text)
+
+        ar, ar_prev = _first_pair_millions(compact, r"Accounts receivable, net")
+        revenue, revenue_prev = _quarter_four_values(compact, r"Revenue")
+        net_income, net_income_prev = _quarter_four_values(compact, r"Net income")
+
+        out.update({
+            "parsed_ok": True,
+            "q10_sha256": hashlib.sha256(pdf).hexdigest(),
+            "accounts_receivable_m": ar,
+            "accounts_receivable_prev_m": ar_prev,
+            "revenue_q_m": revenue,
+            "revenue_q_prev_m": revenue_prev,
+            "net_income_q_m": net_income,
+            "net_income_q_prev_m": net_income_prev,
+            "supply_commitments_b": _billion(
+                compact,
+                r"supply commitments from\s+\$?\s*[\d.]+\s+billion\s+last quarter\s+to\s+\$?\s*([\d.]+)\s+billion",
+            ),
+            "ai_cloud_commitments_b": _billion(
+                compact,
+                r"commitments[^.]{0,250}typically six years[^.]{0,250}totaled\s+\$?\s*([\d.]+)\s+billion",
+            ),
+            "ai_cloud_guarantee_b": _billion(
+                compact,
+                r"maximum gross exposure under all agreements is\s+\$?\s*([\d.]+)\s+billion",
+            ),
+            "sb_energy_guarantee_b": _billion(
+                compact,
+                r"SB Energy[^.]{0,700}?capped at a total of\s+\$?\s*([\d.]+)\s+billion",
+            ),
+            "equity_investments_b": _billion(
+                compact,
+                r"equity investments of\s+\$?\s*([\d.]+)\s+billion",
+            ),
+            "equity_commitments_b": _billion(
+                compact,
+                r"equity investment commitments of\s+\$?\s*([\d.]+)\s+billion",
+            ),
+            "customer_finance_language": bool(
+                re.search(r"extended payment terms|financial guarantees|credit support|AI cloud", compact, flags=re.I)
+            ),
+            "checked_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
+        })
+
+        if ar is None or revenue is None:
+            errors.append("NVIDIA 10-Q 핵심 재무표 파싱 일부 실패")
     except Exception as exc:
-        errors.append(f"SEC companyfacts: {exc}")
+        errors.append(f"NVIDIA IR 10-Q: {exc}")
+        if old_nv:
+            out = dict(old_nv)
+            out["stale_due_to_error"] = True
+            out["checked_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
     return out, errors
 
 
@@ -535,23 +585,50 @@ def build_signals(old: dict, new: dict, news_items: list[dict]) -> list[tuple]:
                 signals.append(("나스닥 할인율", f"{label} 하루 변동 {bp:+.1f}bp", f"{before['date']} {before['value']:.2f}% → {after['date']} {after['value']:.2f}%", "실질금리 급등은 고평가 성장주의 할인율 역풍, 급락은 반대로 재평가 여지", "Fed·물가·고용과 Nasdaq-100 선행이익 추정 변화", None))
 
     old_nv, new_nv = old.get("nvidia_sec") or {}, new.get("nvidia_sec") or {}
-    old_acc = (old_nv.get("latest_filing") or {}).get("accession")
-    new_filing = new_nv.get("latest_filing") or {}
-    if old_acc and new_filing.get("accession") and old_acc != new_filing["accession"]:
-        ar = new_nv.get("accounts_receivable") or {}
-        revenue = new_nv.get("revenue") or {}
-        detail = f"매출채권 {fmt_usd(ar.get('value'))} ({fmt_pct(ar.get('yoy'))} YoY), 분기 매출 {fmt_usd(revenue.get('value'))} ({fmt_pct(revenue.get('yoy'))} YoY)"
-        signals.append(("NVIDIA 수요의 질", f"NVIDIA 신규 {new_filing.get('form')} 제출", detail, "고객금융·매출채권·구매약정·현금회수의 질을 공식 공시로 재검증하는 게이트", "영업현금흐름·보증·클라우드 용량구매·공급능력 약정 문구", new_filing.get("url")))
+    old_q10 = old_nv.get("q10_url")
+    new_q10 = new_nv.get("q10_url")
+    if old_q10 and new_q10 and old_q10 != new_q10 and new_nv.get("parsed_ok"):
+        def chg(a, b):
+            if a is None or b in (None, 0):
+                return None
+            return (float(a) / float(b) - 1.0) * 100.0
 
-    ar, revenue = new_nv.get("accounts_receivable") or {}, new_nv.get("revenue") or {}
-    if ar.get("yoy") is not None and revenue.get("yoy") is not None:
-        gap = float(ar["yoy"]) - float(revenue["yoy"])
-        old_ar, old_revenue = old_nv.get("accounts_receivable") or {}, old_nv.get("revenue") or {}
-        old_gap = None
-        if old_ar.get("yoy") is not None and old_revenue.get("yoy") is not None:
-            old_gap = float(old_ar["yoy"]) - float(old_revenue["yoy"])
-        if gap >= 15 and (old_gap is None or old_gap < 15):
-            signals.append(("NVIDIA 수요의 질", "NVIDIA 매출채권 증가율이 분기 매출 증가율을 15%p 이상 상회", f"매출채권 {ar['yoy']:+.1f}% YoY vs 분기 매출 {revenue['yoy']:+.1f}% YoY, 격차 {gap:+.1f}%p", "현금회수 속도와 고객금융 의존도 점검 강도를 높여야 하는 신호", "영업현금흐름/순이익·DSO·고객별 매출 집중도", None))
+        ar_yoy = chg(new_nv.get("accounts_receivable_m"), new_nv.get("accounts_receivable_prev_m"))
+        rev_yoy = chg(new_nv.get("revenue_q_m"), new_nv.get("revenue_q_prev_m"))
+        pieces = [
+            f"매출채권 {fmt_usd((new_nv.get('accounts_receivable_m') or 0)*1_000_000)} ({fmt_pct(ar_yoy)} YoY)",
+            f"분기 매출 {fmt_usd((new_nv.get('revenue_q_m') or 0)*1_000_000)} ({fmt_pct(rev_yoy)} YoY)",
+        ]
+        for key, label in (
+            ("supply_commitments_b", "공급·생산능력 약정"),
+            ("ai_cloud_commitments_b", "AI cloud 약정"),
+            ("ai_cloud_guarantee_b", "AI cloud 보증"),
+            ("sb_energy_guarantee_b", "SB Energy 보증"),
+        ):
+            value = new_nv.get(key)
+            if value is not None:
+                pieces.append(f"{label} {value:,.1f}십억달러")
+        signals.append((
+            "NVIDIA 수요의 질",
+            "NVIDIA 신규 10-Q 감지 — 고객금융·매출채권·현금회수 구조 재검증",
+            " · ".join(pieces),
+            "서한의 NVIDIA 고객지원 우려를 회계 부정이 아니라 수요의 질·현금회수·보증 노출로 공식 재검증",
+            "영업현금흐름·매출채권 증가율 vs 매출 증가율·AI cloud 약정·보증 변화",
+            new_q10,
+        ))
+
+    if old_nv.get("parsed_ok") and new_nv.get("parsed_ok") and old_q10 == new_q10:
+        old_ar = old_nv.get("accounts_receivable_m")
+        new_ar = new_nv.get("accounts_receivable_m")
+        if old_ar and new_ar and old_ar != new_ar:
+            signals.append((
+                "NVIDIA 수요의 질",
+                "동일 10-Q 기준 NVIDIA 매출채권 숫자 재파싱 변화 감지",
+                f"{old_ar:,.0f} → {new_ar:,.0f}백만달러",
+                "원문 파싱 또는 원문 수정 가능성이 있어 즉시 검산 필요",
+                "NVIDIA Investor Relations 10-Q PDF와 SEC 원문 대조",
+                new_q10,
+            ))
 
     for item in news_items:
         translated = translate_to_korean(item["title"])
@@ -649,7 +726,7 @@ def main() -> None:
     errors.extend(part)
     rates, part = rates_snapshot()
     errors.extend(part)
-    nvidia_sec, part = nvidia_sec_snapshot()
+    nvidia_sec, part = nvidia_ir_snapshot(old.get("nvidia_sec") or {})
     errors.extend(part)
     news_items, seen, part = high_signal_news(set(old.get("news_seen") or []))
     errors.extend(part)
