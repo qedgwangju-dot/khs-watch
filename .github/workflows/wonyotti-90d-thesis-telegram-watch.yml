@@ -21,6 +21,8 @@ on:
 permissions:
   contents: write
 
+# production-mode verification marker
+
 concurrency:
   group: wonyotti-90d-thesis-telegram-watch
   cancel-in-progress: true
