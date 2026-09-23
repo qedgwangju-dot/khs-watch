@@ -73,7 +73,11 @@ jobs:
           except Exception:
               raise SystemExit(0)
 
-          if previous.get("seen", []) == current.get("seen", []):
+          if (
+              previous.get("seen", []) == current.get("seen", [])
+              and previous.get("seen_periods", []) == current.get("seen_periods", [])
+              and previous.get("seen_news_events", []) == current.get("seen_news_events", [])
+          ):
               subprocess.run(
                   ["git", "checkout", "HEAD", "--", "data/trump_oge_portfolio_watch_state.json"],
                   check=True,
