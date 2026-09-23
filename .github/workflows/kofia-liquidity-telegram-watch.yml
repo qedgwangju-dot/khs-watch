@@ -190,22 +190,36 @@ jobs:
           else:
               leverage_line = f"• <b>레버리지</b>: 신용융자 1D {fmt(cr1)}{arrow(cr1,'credit')} · 5D {fmt(cr5)}≈ → 레버리지 변화는 제한적입니다."
 
-          # 종합은 가장 중요한 5D 예탁금과 신용융자의 조합을 우선한다.
-          if direction(dep5,'deposit') == '감소' and direction(cr5,'credit') == '증가':
+          # 종합은 당일의 '수급의 질'과 5D 추세를 분리해서 판정한다.
+          dep1_dir = direction(dep1,'deposit')
+          mmf1_dir = direction(mmf1,'mmf')
+          cma1_dir = direction(cma1,'cma')
+          cr1_dir = direction(cr1,'credit')
+          dep5_dir = direction(dep5,'deposit')
+          cr5_dir = direction(cr5,'credit')
+
+          if dep1_dir == '증가' and cma1_dir == '증가' and mmf1_dir == '감소' and cr1_dir == '감소':
+              summary_line = (
+                  f"• <b>종합</b>: <b>당일 수급의 질은 개선</b>됐습니다. "
+                  f"투자자예탁금 {fmt(dep1)}와 CMA {fmt(cma1)}가 크게 늘고, MMF는 {fmt(mmf1)} 줄었으며 신용융자는 {fmt(cr1)} 감소했습니다. "
+                  "즉 빚을 늘리지 않고 현금성 매수여력이 커진 조합입니다. "
+                  f"다만 5D 투자자예탁금은 아직 {fmt(dep5)}라 최근 5거래일 전체 추세가 완전히 반전됐다고 보기는 이릅니다."
+              )
+          elif dep5_dir == '감소' and cr5_dir == '증가':
               summary_line = (
                   f"• <b>종합</b>: 5D 기준 투자자예탁금 {fmt(dep5)}로 크게 줄었는데 신용융자는 {fmt(cr5)} 늘었습니다. "
-                  f"MMF는 {fmt(mmf5)}, CMA는 {fmt(cma5)}로 CMA는 사실상 보합입니다. "
+                  f"MMF는 {fmt(mmf5)}, CMA는 {fmt(cma5)}입니다. "
                   "즉 현금으로 살 수 있는 주식 매수 여력은 약해진 반면 레버리지 의존도는 높아져 수급의 질이 이전보다 취약해진 조합입니다. "
                   "다만 MMF 증가분이 주식에서 빠져나간 동일 자금이라고 단정하지 않습니다."
               )
-          elif direction(dep5,'deposit') == '증가' and direction(cr5,'credit') != '증가':
+          elif dep5_dir == '증가' and cr5_dir != '증가':
               summary_line = (
                   "• <b>종합</b>: 현금성 주식 매수 대기자금이 늘고 레버리지는 크게 확대되지 않아 현금 매수 여력 개선 쪽에 가깝습니다."
               )
           else:
               summary_line = (
-                  "• <b>종합</b>: 현금 매수여력·단기 주차자금·레버리지 방향이 완전히 정렬되지 않았습니다. "
-                  "예탁금과 신용융자의 5거래일 방향을 우선하고 MMF·CMA를 보조축으로 해석합니다."
+                  "• <b>종합</b>: 당일과 5거래일의 방향이 아직 완전히 일치하지 않습니다. "
+                  "당일 현금성 매수여력 변화와 5D 예탁금 추세를 분리해 보고, 다음 공식값에서 같은 방향이 이어지는지 확인합니다."
               )
 
           new_section = '\n'.join([
