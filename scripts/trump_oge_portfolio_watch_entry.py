@@ -427,19 +427,61 @@ def main_with_fallback():
         if (event.get("id") or "") in seen_news:
             seen_news_event_keys.add(_fallback_event_key(event))
 
+    pending_fallback = []
     for event in fallback_events:
         eid = event.get("id") or ""
         ekey = _fallback_event_key(event)
-        period = event.get("period") or ""
         if ekey in seen_news_event_keys:
-            # Remember the raw URL/title ID too, but do not send the same event again.
             seen_news.add(eid)
             continue
+        pending_fallback.append(event)
+
+    curated = [e for e in pending_fallback if e.get("id") == FALLBACK_SEED["id"]]
+    generic = [e for e in pending_fallback if e.get("id") != FALLBACK_SEED["id"]]
+
+    for event in curated:
         watch.send_message(token, chat_id, _fallback_message(event, rate, basis))
-        seen_news.add(eid)
-        seen_news_event_keys.add(ekey)
-        if period:
-            seen_periods.add(period)
+        seen_news.add(event.get("id") or "")
+        seen_news_event_keys.add(_fallback_event_key(event))
+        if event.get("period"):
+            seen_periods.add(event["period"])
+
+    # Fresh supporting articles are bundled into one digest instead of one Telegram message per URL.
+    unique_generic = []
+    used_keys = set()
+    for event in generic:
+        ekey = _fallback_event_key(event)
+        if ekey in used_keys:
+            seen_news.add(event.get("id") or "")
+            continue
+        used_keys.add(ekey)
+        unique_generic.append(event)
+
+    if unique_generic:
+        lines = [
+            "📰 [트럼프 OGE 신규 거래 관련 보도 묶음]",
+            f"새 관련 사건: {min(len(unique_generic), 5)}건",
+            "",
+            "▶ 한눈에 보기",
+            "• 최근 72시간 안에 새로 나온 OGE·재산공개 관련 보도만 묶었습니다.",
+            "• 과거 기사 재노출은 제외하며, 공식 OGE PDF 직접 감시는 별도로 계속됩니다.",
+            "",
+            "▶ 관련 보도",
+        ]
+        for i, event in enumerate(unique_generic[:5], 1):
+            lines += [
+                f"{i}. {event.get('source') or '웹 검색'}",
+                f"   {_translate_title_ko(event.get('title') or '')}",
+                f"   원문: {event.get('url')}",
+            ]
+        lines += ["", f"OGE 공개목록: {OGE_PUBLIC_LIST}"]
+        watch.send_message(token, chat_id, "\n".join(lines))
+
+        for event in generic:
+            seen_news.add(event.get("id") or "")
+            seen_news_event_keys.add(_fallback_event_key(event))
+            if event.get("period"):
+                seen_periods.add(event["period"])
 
     state["seen"] = sorted(seen_urls)
     state["seen_periods"] = sorted(seen_periods)
