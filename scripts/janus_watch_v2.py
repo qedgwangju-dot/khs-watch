@@ -72,6 +72,7 @@ _RADIANT_SLUG_TITLES = {
 _SPECIAL_KO_TITLES = {
     "new york’s big new bet on nuclear energy": "뉴욕, 신규 원전 5GW 추진",
     "new york's big new bet on nuclear energy": "뉴욕, 신규 원전 5GW 추진",
+    "with federal funding windfall, x-energy advances small nuclear reactor": "X-energy, DOE 추가지원 기반 Xe-100 4기 상용화 진전",
 }
 
 _SPECIAL_MACRO_SUMMARY = {
@@ -80,6 +81,12 @@ _SPECIAL_MACRO_SUMMARY = {
         "Ontario와는 1~2개 원자로 설계 중심의 표준화·지역 공급망 구축을 추진했고, 이후 뉴잉글랜드 6개주와도 "
         "원전 협력을 확대했습니다. 최대 병목은 NYISO 경쟁 전력시장에서 장기간 건설비와 비용회수 위험을 누가 부담하느냐이며, "
         "주정부 소유 NYPA의 금융·개발 역할이 핵심입니다."
+    ),
+    "federal-funding-x-energy-small-nuclear-reactor": (
+        "X-energy의 첫 상용 Xe-100 프로젝트는 Dow의 텍사스 Seadrift에서 80MWe 원자로 4기, 총 320MWe로 추진됩니다. "
+        "Canary Media 보도 기준 DOE는 지난달 10억달러 추가 지원을 제시했고, NRC 건설허가 목표는 2027년 초, "
+        "Dow의 최종투자결정은 2028년 이후입니다. TX-1 연료공장은 2028년 상반기 가동 목표이며, "
+        "Dow·Amazon·Centrica 관련 파이프라인은 최대 144기이지만 이는 모두 확정 착공 물량으로 보면 안 됩니다."
     ),
 }
 
@@ -368,6 +375,9 @@ def _event_category(event, resolved_title: str) -> str:
 
 def _event_meaning(event, category: str) -> str:
     if event.get("kind") == "macro_nuclear":
+        slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
+        if slug == "federal-funding-x-energy-small-nuclear-reactor":
+            return "이번 변화의 핵심은 단순 정책 기대가 아니라 DOE 자금지원, NRC 허가, Dow 최종투자결정, TX-1 연료공장이 하나의 상용화 시간표로 연결됐다는 점입니다. 다만 최대 144기 파이프라인은 확정 착공·매출과 구분해야 합니다."
         return "원전 용량 목표·공공금융·입지·표준화·지역 공급망 변화는 실제 발주와 장납기 기자재 수요의 시점을 바꾸는 핵심 재평가 요인입니다."
     return base.meaning(category)
 
@@ -392,12 +402,29 @@ def _macro_highlights(event):
             ("설계 표준화", "Ontario와 1~2개 원자로 설계"),
             ("지역 협력", "뉴잉글랜드 6개주까지 확대"),
         ]
+    if slug == "federal-funding-x-energy-small-nuclear-reactor":
+        return [
+            ("DOE 추가지원", "10억달러"),
+            ("첫 상용설비", "Xe-100 4기 × 80MWe = 320MWe · Dow Seadrift"),
+            ("NRC 일정", "건설허가 목표 2027년 초"),
+            ("고객 투자결정", "Dow FID 2028년 이후"),
+            ("연료공장", "TX-1 2028년 상반기 목표"),
+            ("파이프라인", "Dow·Amazon·Centrica 합계 최대 144기 — 확정 착공과 구분"),
+        ]
     core = _macro_summary(event)
     return [("핵심 변화", core)] if core else []
 
 
 def _bottleneck_lines(event):
     if event.get("kind") == "macro_nuclear":
+        slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
+        if slug == "federal-funding-x-energy-small-nuclear-reactor":
+            return [
+                "NRC 건설허가가 아직 없으며 2027년 초 목표가 지연되면 첫 상용 일정도 연쇄 지연",
+                "Dow 최종투자결정은 2028년 이후라 정부지원 확대가 곧바로 확정 건설매출을 뜻하지 않음",
+                "Xe-100은 TRISO 연료를 사용하므로 TX-1 연료공장·연료검증 일정이 원자로 일정과 직접 연결",
+                "초도호기 비용은 2023년 추정 47.5억~57.5억달러 이후 공개 업데이트가 없어 비용초과 위험을 별도 추적",
+            ]
         return [
             "기술보다 금융·비용회수 구조가 우선 병목",
             "NYISO 경쟁 전력시장에서는 민간이 장기 건설비 위험을 감당하기 어려움",
@@ -408,6 +435,9 @@ def _bottleneck_lines(event):
 
 def _next_check(event, category: str) -> str:
     if event.get("kind") == "macro_nuclear":
+        slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
+        if slug == "federal-funding-x-energy-small-nuclear-reactor":
+            return "NRC 건설허가 · Dow FID · DOE 실제 집행액 · TX-1 가동 · TRISO 연료 검증 · 장납기 발주 · Amazon/Centrica 개별 확정계약"
         return "부지 선정 · 노형 선정 · 금융 구조 · 인허가 · 설계·조달·시공(EPC)·기자재 발주"
     return {
         "공급망·연료": "HALEU·TRISO 확보량 · 납기 · 연료 계약 · 실제 배치 일정",
