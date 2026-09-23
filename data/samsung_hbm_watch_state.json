@@ -74,6 +74,7 @@
     "7fc67a8a0b23cc8a19d76f05",
     "810b2b31f4ad1136fc603ccb",
     "817464b05dc936124292cda3",
+    "822874baa35bfd09e35b58c4",
     "8373adbcfc508c1a31114ac1",
     "86390aba27173d50352a39ed",
     "863bf5e58c0b909bc1684cb9",
@@ -147,8 +148,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-23T09:48:48+09:00",
-  "last_event_count": 84,
+  "updated_at_kst": "2026-09-23T15:09:11+09:00",
+  "last_event_count": 77,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -671,10 +672,10 @@
       "ddr5_chip_quote|dramexchange|16|4800/5600": {
         "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
         "axis": "ddr5_chip_quote",
-        "value": 57.167,
+        "value": 57.5,
         "unit": "USD/chip",
         "period": "2026-09",
-        "as_of": "2026-09-22",
+        "as_of": "2026-09-23",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
@@ -703,7 +704,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-23T09:48:48+09:00",
+      "last_checked_at_kst": "2026-09-23T15:09:11+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -713,7 +714,7 @@
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
-      "non_concrete_generic_evidence_suppressed": 6
+      "non_concrete_generic_evidence_suppressed": 5
     },
     "version": 1,
     "reference_capture": {
@@ -757,7 +758,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-23T09:52:39+09:00",
+    "checked_at_kst": "2026-09-23T15:12:38+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
