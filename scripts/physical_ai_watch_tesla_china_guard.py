@@ -38,6 +38,8 @@ JOE_X_SOURCE = 'Joe Tegtmeyer (X)'
 TESLA_APP_X_SENTINEL = 'DIRECT_TESLA_APP_IOS_OPTIMUS_X'
 TESLA_APP_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/tesla_app_ios'
 TESLA_APP_X_SOURCE = 'Tesla App Updates (X)'
+TESLA_GEN3_APK_SENTINEL = 'DIRECT_TESLA_OPTIMUS_GEN3_APK_ASSET_20260923'
+TESLA_GEN3_APK_SOURCE = 'Tesla APK 역공학 관측'
 MUSK_X_SENTINEL = 'DIRECT_ELON_MUSK_OPTIMUS_X'
 MUSK_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/elonmusk'
 MUSK_X_SOURCE = 'Elon Musk (X)'
@@ -99,6 +101,8 @@ FACTORY_STRUCTURE = re.compile(r'steel\\s*(?:assembly|frame|framing)|column\\s*g
 FACTORY_TOOLING = re.compile(r'tooling|equipment\\s*(?:install|installation|move[-\\s]*in)|production\\s*equipment|장비\\s*(?:반입|설치)|생산\\s*설비\\s*(?:반입|설치)|생산라인\\s*설치', re.I)
 APP_CODE_OPTIMUS = re.compile(r'optimus_charger_id|createBaseChargerId_OptimusChargerId|Optimus.{0,20}(?:charger|충전기)|(?:charger|충전기).{0,20}Optimus|옵티머스.{0,20}(?:충전기|charger)|(?:충전기|charger).{0,20}옵티머스|robot_phone_key|robot_home_data_collection', re.I)
 APP_HOME_STACK = re.compile(r'Tesla\\s*app|테슬라\\s*앱|app\\s*code|앱\\s*코드|decompil|reverse\\s*engineer|Powerwall|파워월|solar|태양광|home|가정|charger|충전|registration|등록|manage|관리', re.I)
+APP_GEN_ASSET = re.compile(r'Optimus\s*(?:Gen(?:eration)?\s*)?3|Optimus\s*Gen\s*2\.5|Gen\s*2\.5.{0,40}Gen\s*3|Gen\s*3.{0,40}Gen\s*2\.5|옵티머스\s*(?:Gen\s*)?3|Gen\s*3\s*(?:이미지|자산|render|asset)', re.I)
+APP_APK_CONTEXT = re.compile(r'APK|Android\s*app|안드로이드\s*앱|app\s*asset|image\s*asset|render|resource|asset\s*package|4\.60\.5[- ]4573|v4\.60\.5[- ]4573', re.I)
 MUSK_EXEC_ACTOR = re.compile(r'Elon\\s*Musk|일론\\s*머스크|머스크', re.I)
 OPTIMUS_V3 = re.compile(r'Optimus\\s*3|옵티머스\\s*3|V3\\s*Optimus|Optimus\\s*V3', re.I)
 OPTIMUS_V4 = re.compile(r'Optimus\\s*4|옵티머스\\s*4|V4\\s*Optimus|Optimus\\s*V4', re.I)
@@ -150,6 +154,11 @@ if _TEXAS_FACTORY_QUERY not in base.QUERIES:
 _TESLA_APP_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("app code" OR "앱 코드" OR charger OR 충전기 OR Powerwall OR 파워월 OR "phone key" OR "home integration" OR 가정용)'
 if _TESLA_APP_QUERY not in base.QUERIES:
     base.QUERIES.append(_TESLA_APP_QUERY)
+if TESLA_GEN3_APK_SENTINEL not in base.QUERIES:
+    base.QUERIES.append(TESLA_GEN3_APK_SENTINEL)
+_TESLA_GEN3_APK_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("Gen 3" OR "Gen 2.5") (APK OR "Android app" OR asset OR render OR image)'
+if _TESLA_GEN3_APK_QUERY not in base.QUERIES:
+    base.QUERIES.append(_TESLA_GEN3_APK_QUERY)
 for _q in ['"Optimus chargers" Tesla app', '"optimus_charger_id" Tesla', '"createBaseChargerId_OptimusChargerId"']:
     if _q not in base.QUERIES:
         base.QUERIES.append(_q)
@@ -372,6 +381,43 @@ def _query_joe_x() -> list[dict]:
     return list(gathered.values())
 
 
+_TESLA_GEN3_APK_RECOVERY_POSTS = {
+    '2102661891957162092': (
+        'Tesla Android app APK v4.60.5-4573 contains Optimus Gen 2.5 and Gen 3 image assets according to third-party reverse engineering. '
+        'The assets use Gen 3 naming and show a different silhouette/proportion, but this is not a Tesla public product announcement and does not prove the final production design.'
+    ),
+}
+
+
+def _make_gen3_apk_item(status_id: str, text: str, published: dt.datetime | None) -> dict | None:
+    text = base.norm(text)
+    if published is None:
+        published = _x_time_from_id(status_id)
+    cutoff = base.NOW - dt.timedelta(hours=120)
+    if not status_id or not text or published is None or published < cutoff or published > base.NOW + dt.timedelta(minutes=10):
+        return None
+    if not (TESLA_OPT.search(text) and OPTIMUS.search(text) and APP_GEN_ASSET.search(text) and APP_APK_CONTEXT.search(text)):
+        return None
+    return {
+        'title': '테슬라 앱 APK서 Optimus Gen 3 디자인 자산 발견',
+        'link': f'https://x.com/tslaming/status/{status_id}',
+        'description': text,
+        'published': published.isoformat(),
+        'source': TESLA_GEN3_APK_SOURCE,
+        'x_status_id': status_id,
+        'apk_asset_observation': True,
+    }
+
+
+def _query_gen3_apk_recovery() -> list[dict]:
+    out = []
+    for status_id, text in _TESLA_GEN3_APK_RECOVERY_POSTS.items():
+        item = _make_gen3_apk_item(status_id, text, None)
+        if item:
+            out.append(item)
+    return out
+
+
 _TESLA_APP_RECOVERY_POSTS = {
     '2101086846159618326': (
         'Tesla app code shows optimus_charger_id and createBaseChargerId_OptimusChargerId. '
@@ -477,6 +523,8 @@ def _query_elon_x() -> list[dict]:
 
 
 def query_news(q: str) -> list[dict]:
+    if q == TESLA_GEN3_APK_SENTINEL:
+        return _query_gen3_apk_recovery()
     if q == TESLA_CN_SENTINEL:
         return _query_tesla_cn_supply_chain()
     if q == _TESLA_NAMED_SUPPLIER_RECOVERY:
@@ -493,10 +541,11 @@ def query_news(q: str) -> list[dict]:
 def _is_tesla_supply_text(text: str) -> bool:
     factory = FACTORY_SITE.search(text) and (FACTORY_STRUCTURE.search(text) or FACTORY_TOOLING.search(text))
     app_productization = APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text)
+    gen3_asset = APP_GEN_ASSET.search(text) and APP_APK_CONTEXT.search(text)
     exec_guidance = _is_exec_guidance(text)
     actor = TESLA_OPT.search(text) or MUSK_EXEC_ACTOR.search(text)
     robot_term = OPTIMUS.search(text) or (TESLA_OPT.search(text) and TESLA_HUMANOID.search(text))
-    return bool(actor and robot_term and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory or app_productization or exec_guidance))
+    return bool(actor and robot_term and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory or app_productization or gen3_asset or exec_guidance))
 
 
 def _stage(text: str) -> str:
@@ -512,6 +561,8 @@ def _stage(text: str) -> str:
         return 'weekly_capacity_target'
     if PRODUCTION_STARTED.search(text):
         return 'production_started'
+    if APP_GEN_ASSET.search(text) and APP_APK_CONTEXT.search(text):
+        return 'app_generation_asset'
     if APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text):
         return 'home_app_integration'
     if NAMED_OPTIMUS_SUPPLIERS.search(text) and NAMED_SUPPLIER_ORDER.search(text) and AUDIT.search(text):
@@ -560,6 +611,8 @@ def score(item: dict) -> int:
         s += 6
     if stage == 'production_started':
         s += 12
+    if stage == 'app_generation_asset':
+        s += 14
     if stage == 'home_app_integration':
         s += 12
     if stage == 'named_supplier_orders_audit':
@@ -594,6 +647,8 @@ def category(text: str, group: str) -> str:
             return 'Optimus 주간 공급능력·생산 목표'
         if stage == 'production_started':
             return 'Optimus 실제 양산 개시'
+        if stage == 'app_generation_asset':
+            return 'Optimus Gen 3 앱 자산·세대 디자인 준비'
         if stage == 'home_app_integration':
             return 'Optimus 가정용 앱·충전 인프라 준비'
         if stage == 'named_supplier_orders_audit':
@@ -628,6 +683,9 @@ def meaning(cat: str) -> str:
     if cat == 'Optimus 실제 양산 개시':
         return ('양산 예정·심사·공급망 준비가 아니라 실제 생산 개시가 확인된 단계 변화입니다. '
                 '첫 주간 생산량·수율·완성품 출하·내부 배치로 실제 램프업 속도를 확인합니다.')
+    if cat == 'Optimus Gen 3 앱 자산·세대 디자인 준비':
+        return ('Tesla 서명 안드로이드 앱 패키지에서 Gen 2.5·Gen 3로 구분되는 이미지 자산이 관측됐다는 것은 공개 발표 전 소프트웨어 자산이 차세대 하드웨어 세대를 준비하는 제품화 신호입니다. '
+                '다음 단계는 최신 앱 버전에서 자산이 유지되는지→Tesla 공식 Gen 3 공개→최종 기구 설계·액추에이터 구성→생산라인 적용 순으로 추적합니다.')
     if cat == 'Optimus 가정용 앱·충전 인프라 준비':
         return ('앱 내부 코드에 Optimus 전용 충전·등록·가정용 기기 관리 경로가 생긴 것은 단순 로봇 데모보다 제품화에 가까운 소프트웨어 인프라 신호입니다. '
                 '실제 메뉴 활성화→충전 거치대 공개→가정용 시험사용자→소비자 판매 순으로 다음 상태 변화를 추적합니다.')
@@ -668,6 +726,9 @@ def risk(cat: str) -> str:
         return ('공급능력 목표는 실제 생산량이 아닙니다. 수율·부품 병목·라인 안정화가 늦으면 목표치와 실제 주간 완제품 생산량의 격차가 커질 수 있습니다.')
     if cat == 'Optimus 실제 양산 개시':
         return ('생산 개시와 안정 양산은 다릅니다. 초기 직행수율·재작업률·주간 생산량이 따라오지 않으면 양산 개시 후에도 병목이 지속될 수 있습니다.')
+    if cat == 'Optimus Gen 3 앱 자산·세대 디자인 준비':
+        return ('APK 자산명과 렌더는 Tesla의 공개 제품 발표나 최종 양산 설계가 아닙니다. 사용되지 않는 UI 자산·중간 디자인일 수 있고, 외형만으로 액추에이터·배선·내부 기구 변경을 확정할 수 없습니다. '
+                '현재 최신 공개 APK는 4.61.0-4607이므로 같은 자산의 지속 여부와 Tesla 공식 공개를 후속 확인합니다.')
     if cat == 'Optimus 가정용 앱·충전 인프라 준비':
         return ('앱 코드 존재는 소비자 출시 확정이나 실제 충전기 양산을 뜻하지 않습니다. 실험용·비활성 코드일 수 있으므로 Tesla 공식 기능 공개, 실제 앱 화면, 충전 하드웨어 인증·출시가 뒤따르는지 확인합니다.')
     if cat == 'Optimus 실명 공급사 주문·양산심사':
@@ -707,6 +768,8 @@ def verification(item: dict, group: str, text: str) -> str:
             return '공급망 생산능력·목표 보도 · 실제 완제품 생산량과 분리'
         if _stage(text) == 'production_started':
             return '양산 실제 개시 보도 · 테슬라 공식 생산상태와 후속 교차확인'
+        if _stage(text) == 'app_generation_asset':
+            return '제3자 APK 역공학 관측 · Tesla 서명 4.60.5-4573 패키지 존재 확인 · Tesla 공식 Gen 3 디자인 공개 전'
         if _stage(text) == 'home_app_integration':
             return '테슬라 앱 코드 관측·역공학 단계 · Tesla 공식 소비자 기능/출시 발표 전'
         if _stage(text) == 'named_supplier_orders_audit':
@@ -745,6 +808,8 @@ def clean_title(title: str, source: str) -> str:
             return '테슬라 옵티머스, 주간 공급능력·생산 목표 신규 변화'
         if stage == 'production_started':
             return '테슬라 옵티머스, 실제 양산 개시 신규 확인'
+        if stage == 'app_generation_asset':
+            return '테슬라 앱 APK서 Optimus Gen 3 디자인 자산 발견'
         if stage == 'home_app_integration':
             return '테슬라 앱 코드, Optimus 충전기·가정용 기기 통합 준비 정황 포착'
         if stage == 'named_supplier_orders_audit':
@@ -790,6 +855,8 @@ def key(item: dict) -> str:
             m = re.search(r'(?<!\d)(\d{2,5})(?:\s*台|\s*대|\s*(?:per\s+week|weekly))', text, re.I)
             qty = m.group(1) if m else 'unknown'
             return hashlib.sha256(f'tesla-optimus|weekly-capacity-target|{qty}'.encode()).hexdigest()
+        if stage == 'app_generation_asset':
+            return hashlib.sha256(b'tesla-optimus|gen3-apk-assets|4.60.5-4573').hexdigest()
         if stage == 'home_app_integration':
             return hashlib.sha256(b'tesla-optimus|home-app|charger-integration').hexdigest()
         if stage == 'factory_structure':
