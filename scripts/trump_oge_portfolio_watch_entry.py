@@ -3,7 +3,14 @@
 
 import datetime as dt
 import html
+import hashlib
+import json
+import os
+import pathlib
 import re
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 
 import trump_oge_portfolio_watch as watch
@@ -121,6 +128,214 @@ def send_message_html(token, chat_id, text):
 
 watch.send_message = send_message_html
 
+# OGE 공개목록 반영이 늦거나 URL 형식이 달라져도 새 거래를 놓치지 않도록
+# 신뢰보도 기반의 보조 감시를 함께 운용한다. 공식 PDF가 나중에 잡히면
+# 거래월(period) 기준으로 중복 송출을 차단한다.
+OGE_PUBLIC_LIST = "https://extapps2.oge.gov/201/Presiden.nsf/PAS%20Filings%20by%20Date?OpenView&Start=1&Count=250"
+SPACE_X_REUTERS_URL = "https://www.investing.com/news/stock-market-news/trump-bought-and-sold-shares-in-musks-spacex-in-july-financial-disclosure-shows-4911482"
+SPACE_X_CHOSUN_URL = "https://chosun.com/economy/money/2026/09/23/FPWCCWW23BCHVOE3FYO32HHBQM"
+
+FALLBACK_SEED = {
+    "id": "oge-fallback-spacex-2026-07",
+    "period": "2026-07",
+    "title": "트럼프, 7월 SpaceX 주식 최대 5만달러 매수·최대 1만5천달러 매도",
+    "source": "Reuters·국내보도 교차확인",
+    "url": SPACE_X_REUTERS_URL,
+}
+
+FALLBACK_QUERIES = [
+    '"Trump" "financial disclosure" bought sold shares',
+    '"Trump" "Office of Government Ethics" stock trades',
+    '"Trump" "278-T" transaction',
+    '트럼프 재산공개 주식 매수 매도 정부윤리청',
+    '트럼프 OGE 거래 신고 주식',
+]
+
+_MONTHS = {
+    "january": 1, "february": 2, "march": 3, "april": 4,
+    "may": 5, "june": 6, "july": 7, "august": 8,
+    "september": 9, "october": 10, "november": 11, "december": 12,
+}
+
+
+def _news_get(url, timeout=15):
+    req = urllib.request.Request(url, headers={"User-Agent": "KHS Trump OGE fallback/1.0"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
+
+def _rss_urls(query):
+    q = urllib.parse.quote_plus(query)
+    return [
+        f"https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en",
+        f"https://www.bing.com/news/search?q={q}&format=rss",
+    ]
+
+
+def _strip_tags(text):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", text or "")).strip()
+
+
+def _period_from_text(text, published=""):
+    low = (text or "").lower()
+    year_match = re.search(r"\b(20\d{2})\b", f"{text} {published}")
+    year = int(year_match.group(1)) if year_match else dt.datetime.now(dt.timezone.utc).year
+    for name, month in _MONTHS.items():
+        if re.search(rf"\b{name}\b", low):
+            return f"{year:04d}-{month:02d}"
+    for month in range(1, 13):
+        if f"{month}월" in text:
+            return f"{year:04d}-{month:02d}"
+    return ""
+
+
+def _periods_from_transactions(txs):
+    out = set()
+    for x in txs:
+        m = re.fullmatch(r"(\d{1,2})/(\d{1,2})/(20\d{2})", x.get("date") or "")
+        if m:
+            out.add(f"{int(m.group(3)):04d}-{int(m.group(1)):02d}")
+    return out
+
+
+def _discover_fallback_news():
+    out = {FALLBACK_SEED["id"]: dict(FALLBACK_SEED)}
+    for query in FALLBACK_QUERIES:
+        for rss_url in _rss_urls(query):
+            try:
+                root = ET.fromstring(_news_get(rss_url))
+            except Exception as e:
+                print(f"WARN OGE fallback RSS failed: {rss_url}: {e}")
+                continue
+            for item in root.findall(".//item"):
+                title = _strip_tags(item.findtext("title"))
+                desc = _strip_tags(item.findtext("description"))
+                link = (item.findtext("link") or "").strip()
+                pub = _strip_tags(item.findtext("pubDate"))
+                hay = f"{title} {desc}".lower()
+                if not link or ("trump" not in hay and "트럼프" not in hay):
+                    continue
+                if not any(k in hay for k in [
+                    "financial disclosure", "government ethics", "oge", "278-t",
+                    "재산공개", "정부윤리청", "거래 신고",
+                ]):
+                    continue
+                if not any(k in hay for k in [
+                    "bought", "sold", "purchase", "sale", "shares", "stock",
+                    "매수", "매도", "주식", "거래",
+                ]):
+                    continue
+                period = _period_from_text(f"{title} {desc}", pub)
+                eid = "oge-news:" + hashlib.sha256(
+                    re.sub(r"[^0-9a-z가-힣]+", " ", title.lower()).strip().encode("utf-8")
+                ).hexdigest()[:24]
+                out[eid] = {
+                    "id": eid,
+                    "period": period,
+                    "title": title or "트럼프 OGE 신규 거래 보도",
+                    "source": _strip_tags(item.findtext("source")) or "웹 검색",
+                    "url": link,
+                    "published": pub,
+                }
+    return list(out.values())
+
+
+def _fallback_message(event, rate, basis):
+    if event.get("id") == FALLBACK_SEED["id"]:
+        return "\n".join([
+            "📊 [트럼프 OGE 신규 거래 — 2026년 7월]",
+            "판정: OGE 공시 기반 보도 교차확인 · 공식 PDF 직접주소 자동 탐색 보강 중",
+            f"원화 환산 기준: 1달러={rate:,.2f}원 ({basis})",
+            "",
+            "▶ 한눈에 보기",
+            f"• 7월 10일 SpaceX 매수: 1만5,001~5만달러 ({watch.krw_range(15_001, 50_000, rate)})",
+            f"• 7월 17일 SpaceX 매도: 1,001~1만5,000달러 ({watch.krw_range(1_001, 15_000, rate)})",
+            "• 신고서 서명일: 2026년 9월 8일 · OGE 게시: 9월 22일",
+            "• 7월 전체 거래: 1,000건 이상",
+            "",
+            "▶ 이전 거래와 연결",
+            f"• 6월 23일에도 SpaceX 1만5,001~5만달러 매수 ({watch.krw_range(15_001, 50_000, rate)})",
+            "• 연방 재산공개는 정확한 거래액이 아니라 법정 범위로 신고하므로 실제 매수·매도 금액은 확정할 수 없습니다.",
+            "",
+            "▶ 출처",
+            f"Reuters 보도: {SPACE_X_REUTERS_URL}",
+            f"조선일보: {SPACE_X_CHOSUN_URL}",
+            f"OGE 공개목록: {OGE_PUBLIC_LIST}",
+        ])
+
+    return "\n".join([
+        "📊 [트럼프 OGE 신규 거래 보도 감지]",
+        f"출처: {event.get('source') or '웹 검색'}",
+        f"제목: {event.get('title') or '트럼프 OGE 거래 관련 보도'}",
+        f"거래 기준월: {event.get('period') or '자동 판정 불가'}",
+        "",
+        "• OGE 공개목록의 직접 PDF URL 탐색과 병행하는 보조 감시입니다.",
+        "• 공식 PDF가 직접 잡히기 전에는 기사 숫자를 OGE 원문 직접 추출치로 승격하지 않습니다.",
+        f"원문: {event.get('url')}",
+        f"OGE 공개목록: {OGE_PUBLIC_LIST}",
+    ])
+
+
+def main_with_fallback():
+    token = os.environ.get("THIRTEENF_TELEGRAM_BOT_TOKEN") or os.environ.get("KHS_POLICY_TELEGRAM_BOT_TOKEN") or ""
+    chat_id = os.environ.get("THIRTEENF_TELEGRAM_CHAT_ID") or os.environ.get("KHS_POLICY_TELEGRAM_CHAT_ID") or ""
+    if not token or not chat_id:
+        raise RuntimeError("Telegram secrets missing")
+    watch.verify_bot(token)
+
+    state = watch.load_state()
+    seen_urls = set(state.get("seen", []))
+    seen_periods = set(state.get("seen_periods", []))
+    seen_news = set(state.get("seen_news_events", []))
+
+    if watch.filing_key(watch.SEED_CURRENT_URL) in seen_urls:
+        seen_periods.add("2026-06")
+
+    rate, basis = watch.fx_rate()
+
+    urls = watch.discover_trump_278t_urls()
+    for url in [u for u in urls if watch.filing_key(u) not in seen_urls]:
+        key = watch.filing_key(url)
+        txs = []
+        periods = set()
+        if urllib.parse.unquote(url).lower() == urllib.parse.unquote(watch.SEED_CURRENT_URL).lower():
+            periods = {"2026-06"}
+            msg = watch.curated_seed_message(url, rate, basis)
+        else:
+            try:
+                text = watch.pdf_text(url)
+                txs = watch.extract_transactions(text)
+                periods = _periods_from_transactions(txs)
+            except Exception as e:
+                print(f"WARN PDF parse failed {url}: {e}")
+                txs = []
+            if periods and periods.issubset(seen_periods):
+                seen_urls.add(key)
+                continue
+            msg = watch.generic_message(url, txs, rate, basis)
+
+        watch.send_message(token, chat_id, msg)
+        seen_urls.add(key)
+        seen_periods.update(periods)
+
+    for event in _discover_fallback_news():
+        eid = event.get("id") or ""
+        period = event.get("period") or ""
+        if eid in seen_news:
+            continue
+        if period and period in seen_periods:
+            seen_news.add(eid)
+            continue
+        watch.send_message(token, chat_id, _fallback_message(event, rate, basis))
+        seen_news.add(eid)
+        if period:
+            seen_periods.add(period)
+
+    state["seen"] = sorted(seen_urls)
+    state["seen_periods"] = sorted(seen_periods)
+    state["seen_news_events"] = sorted(seen_news)
+    watch.save_state(state)
+
 
 if __name__ == "__main__":
-    watch.main()
+    main_with_fallback()
