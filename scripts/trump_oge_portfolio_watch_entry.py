@@ -193,11 +193,11 @@ FALLBACK_RECENCY_HOURS = 72
 
 KNOWN_FALLBACK_TITLE_KO = {
     "Trump's Latest Financial Disclosure Shows Significant Sales Of Netflix":
-        "트럼프 최신 재산공개, Netflix 증권 대규모 매도 확인",
+        "트럼프 최신 재산공개, 넷플릭스 증권 대규모 매도 확인",
     "Latest Trump Financial Disclosure Reveals Dubiously Timed Stock Sales":
         "트럼프 최신 재산공개에서 주식 매도 시점 관련 논란 제기",
     "Trump's financial disclosure reveals 18 Coupang stock trades since late last year":
-        "트럼프 재산공개, 지난해 말 이후 Coupang 주식 18건 거래 확인",
+        "트럼프 재산공개, 지난해 말 이후 쿠팡 주식 18건 거래 확인",
     "Donald Trump’s Financial Disclosure Shows Thousands Of Stock Trades In Three Months":
         "트럼프 재산공개, 3개월간 수천 건의 주식 거래 확인",
     "New Trump OGE Filings Reveal Hundreds of Additional April and May Stock Trades, Expanding Earlier Disclosure":
@@ -205,7 +205,7 @@ KNOWN_FALLBACK_TITLE_KO = {
     "Trump Files New Financial Disclosure Showing Massive Bond Trades and Corporate Debt Activity | MSFT Stock News":
         "트럼프 신규 재산공개, 대규모 채권·회사채 거래 공개",
     "Trump bought shares in Elon Musk's SpaceX in June, financial disclosure shows":
-        "트럼프 재산공개, 6월 Elon Musk의 SpaceX 주식 매수 확인",
+        "트럼프 재산공개, 6월 일론 머스크의 SpaceX 주식 매수 확인",
 }
 
 
@@ -228,6 +228,29 @@ def _is_recent_pub(pub, hours=FALLBACK_RECENCY_HOURS):
     return dt.timedelta(0) <= age <= dt.timedelta(hours=hours)
 
 
+def _machine_translate_title_ko(text):
+    """Best-effort translation fallback. Never let a raw English title reach Telegram."""
+    q = urllib.parse.urlencode({
+        "client": "gtx",
+        "sl": "auto",
+        "tl": "ko",
+        "dt": "t",
+        "q": text,
+    })
+    url = "https://translate.googleapis.com/translate_a/single?" + q
+    req = urllib.request.Request(url, headers={"User-Agent": "KHS Trump OGE translate/1.0"})
+    with urllib.request.urlopen(req, timeout=10) as r:
+        data = json.load(r)
+    parts = []
+    for row in data[0] if data and data[0] else []:
+        if isinstance(row, list) and row and row[0]:
+            parts.append(str(row[0]))
+    translated = "".join(parts).strip()
+    if translated and re.search(r"[가-힣]", translated):
+        return translated
+    return ""
+
+
 def _translate_title_ko(title):
     title = (title or "").strip()
     if not title:
@@ -235,15 +258,23 @@ def _translate_title_ko(title):
     core = title.rsplit(" - ", 1)[0].strip() if " - " in title else title
     if core in KNOWN_FALLBACK_TITLE_KO:
         return KNOWN_FALLBACK_TITLE_KO[core]
-    if re.search(r"[가-힣]", title):
-        return title
-    low = title.lower()
+    if re.search(r"[가-힣]", core):
+        return core
+
+    try:
+        translated = _machine_translate_title_ko(core)
+        if translated:
+            return translated
+    except Exception as e:
+        print(f"WARN OGE title translation failed: {e}")
+
+    low = core.lower()
     if "spacex" in low:
         return "트럼프 재산공개에서 SpaceX 주식 거래가 확인됐다는 보도"
     if "coupang" in low:
-        return "트럼프 재산공개에서 Coupang 주식 거래가 확인됐다는 보도"
+        return "트럼프 재산공개에서 쿠팡 주식 거래가 확인됐다는 보도"
     if "netflix" in low:
-        return "트럼프 재산공개에서 Netflix 증권 거래가 확인됐다는 보도"
+        return "트럼프 재산공개에서 넷플릭스 증권 거래가 확인됐다는 보도"
     if "bond" in low or "debt" in low:
         return "트럼프 재산공개에서 채권·회사채 거래가 확인됐다는 보도"
     if "thousands" in low and "trade" in low:
