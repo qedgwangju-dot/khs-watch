@@ -1,44 +1,44 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-23T11:56:05+09:00",
+  "updated_at_kst": "2026-09-23T11:58:19+09:00",
   "crypto": {
     "prices": {
       "BTC": {
-        "usd": 86466.0,
-        "change24": 0.9097764277251815,
-        "volume24": 41848824633.74841
+        "usd": 86455.0,
+        "change24": 0.8858555860489362,
+        "volume24": 41796569639.83605
       },
       "ETH": {
-        "usd": 2759.12,
-        "change24": 0.707550457995871,
-        "volume24": 15768303895.75161
+        "usd": 2758.78,
+        "change24": 0.7148406712733523,
+        "volume24": 15726113771.612421
       },
       "SOL": {
-        "usd": 118.23,
-        "change24": 1.1754172665014915,
-        "volume24": 4392860712.11906
+        "usd": 118.22,
+        "change24": 1.211102266130123,
+        "volume24": 4380433232.133413
       }
     },
     "derivatives": {
       "BTCUSDT": {
-        "funding": 4.4e-05,
-        "open_interest": 643713000.0,
-        "open_interest_value": 5564026653.885,
-        "turnover24h": 662475028553.0,
+        "funding": 4.5e-05,
+        "open_interest": 645367206.0,
+        "open_interest_value": 5578095917.94774,
+        "turnover24h": 662475236207.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": 8e-05,
-        "open_interest": 110219112.0,
-        "open_interest_value": 3039765955.5816,
-        "turnover24h": 180223813646.0,
+        "funding": 7.9e-05,
+        "open_interest": 110454714.0,
+        "open_interest_value": 3046782830.976,
+        "turnover24h": 180223924678.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
-        "funding": 6e-05,
-        "open_interest": 7081092.0,
-        "open_interest_value": 837055885.32,
-        "turnover24h": 4398867356.0,
+        "funding": 6.7e-05,
+        "open_interest": 7077528.0,
+        "open_interest_value": 836280708.48,
+        "turnover24h": 4398871327.0,
         "source": "Gate.io Futures API"
       }
     },
@@ -56,7 +56,7 @@
         "2026-09-21",
         "2026-09-22"
       ],
-      "stable_obs": 2,
+      "stable_obs": 3,
       "trigger_ready": true
     },
     "eth_etf": {
@@ -73,7 +73,7 @@
         "2026-09-21",
         "2026-09-22"
       ],
-      "stable_obs": 2,
+      "stable_obs": 3,
       "trigger_ready": true
     }
   },
@@ -90,7 +90,7 @@
   "nvidia_sec": {
     "q10_url": "https://investor.nvidia.com/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf",
     "parsed_ok": true,
-    "parser_version": 2,
+    "parser_version": 3,
     "q10_sha256": "6b5a8dc1ed21e8b2b960fd0de97103af6a2f32ccc8dd91b363f06ea192ecfebd",
     "accounts_receivable_m": 63059.0,
     "accounts_receivable_prev_m": 38466.0,
@@ -101,11 +101,11 @@
     "supply_commitments_b": 279.0,
     "ai_cloud_commitments_b": 36.0,
     "ai_cloud_guarantee_b": 3.5,
-    "sb_energy_guarantee_b": null,
+    "sb_energy_guarantee_b": 105.0,
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-09-23T11:56:55+09:00"
+    "checked_at_kst": "2026-09-23T11:59:09+09:00"
   },
   "news_seen": [
     "adfe94608514778e4234bc71"
