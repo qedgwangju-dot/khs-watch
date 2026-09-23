@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import html
+import os
 import json
 import re
 import sys
@@ -331,6 +332,8 @@ _PREV_RENDER = j2.base.render_alert
 def _render_v7(events, fact_changes):
     us_events = [e for e in events if e.get("kind") in US_TRACK_KINDS]
     rest = [e for e in events if e.get("kind") not in US_TRACK_KINDS]
+    if os.getenv("DELEGATE_US_NUCLEAR_BUILD_TO_KHS_US_INVESTMENT", "").lower() in {"1", "true", "yes"}:
+        us_events = []
     parts = []
     if us_events:
         parts.append(_render_us_cluster(us_events))
