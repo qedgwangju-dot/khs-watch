@@ -248,24 +248,24 @@ def crypto_snapshot() -> tuple[dict, list[str]]:
         errors.append(f"CoinGecko: {exc}")
 
     deriv = {}
-    for symbol in ("BTCUSDT", "ETHUSDT", "SOLUSDT"):
+    for coin in ("BTC", "ETH", "SOL"):
+        contract = f"{coin}_USDT"
         try:
-            raw = fetch_json(
-                "https://api.bybit.com/v5/market/tickers?"
-                + urllib.parse.urlencode({"category": "linear", "symbol": symbol})
+            info = fetch_json(f"https://api.gateio.ws/api/v4/futures/usdt/contracts/{contract}")
+            stats = fetch_json(
+                "https://api.gateio.ws/api/v4/futures/usdt/contract_stats?"
+                + urllib.parse.urlencode({"contract": contract, "interval": "5m", "limit": 1})
             )
-            rows = ((raw.get("result") or {}).get("list") or [])
-            if int(raw.get("retCode") or 0) != 0 or not rows:
-                raise RuntimeError(f"Bybit 응답 오류: {raw.get('retMsg') or 'empty'}")
-            row = rows[0]
-            deriv[symbol] = {
-                "funding": float(row.get("fundingRate") or 0.0),
-                "open_interest": float(row.get("openInterest") or 0.0),
-                "open_interest_value": float(row.get("openInterestValue") or 0.0),
-                "turnover24h": float(row.get("turnover24h") or 0.0),
+            stat = stats[-1] if isinstance(stats, list) and stats else {}
+            deriv[f"{coin}USDT"] = {
+                "funding": float(info.get("funding_rate") or 0.0),
+                "open_interest": float(stat.get("open_interest") or info.get("position_size") or 0.0),
+                "open_interest_value": float(stat.get("open_interest_usd") or 0.0),
+                "turnover24h": float(info.get("trade_size") or 0.0),
+                "source": "Gate.io Futures API",
             }
         except Exception as exc:
-            errors.append(f"Bybit {symbol}: {exc}")
+            errors.append(f"Gate.io {contract}: {exc}")
     result["derivatives"] = deriv
 
     for key, url in (("btc_etf", FARSIDE_BTC), ("eth_etf", FARSIDE_ETH)):
