@@ -206,6 +206,10 @@ KNOWN_FALLBACK_TITLE_KO = {
         "트럼프 신규 재산공개, 대규모 채권·회사채 거래 공개",
     "Trump bought shares in Elon Musk's SpaceX in June, financial disclosure shows":
         "트럼프 재산공개, 6월 일론 머스크의 SpaceX 주식 매수 확인",
+    "Donald Trump's Latest Financial Filing Includes SpaceX Surprise — Report":
+        "트럼프 최신 재산공개, 7월 SpaceX 주식 매수·매도 확인",
+    "Donald Trump's latest financial filing includes SpaceX surprise — report":
+        "트럼프 최신 재산공개, 7월 SpaceX 주식 매수·매도 확인",
 }
 
 
@@ -282,8 +286,37 @@ def _translate_title_ko(title):
     return "트럼프 OGE 신규 거래 관련 보도"
 
 
-def _source_name(item):
-    return _strip_tags(item.findtext("source")) or "웹 검색"
+SOURCE_DOMAIN_LABELS = {
+    "aol.com": "AOL (Reuters 재배포)",
+    "reuters.com": "Reuters",
+    "chosun.com": "조선일보",
+    "yna.co.kr": "연합뉴스",
+    "newrepublic.com": "The New Republic",
+    "deadline.com": "Deadline",
+}
+
+
+def _publisher_from_link(link):
+    try:
+        parsed = urllib.parse.urlparse(link or "")
+        host = (parsed.hostname or "").lower().removeprefix("www.")
+        qs = urllib.parse.parse_qs(parsed.query)
+        if "bing.com" in host and qs.get("url"):
+            inner = urllib.parse.unquote(qs["url"][0])
+            host = (urllib.parse.urlparse(inner).hostname or "").lower().removeprefix("www.")
+        for domain, label in SOURCE_DOMAIN_LABELS.items():
+            if host == domain or host.endswith("." + domain):
+                return label
+    except Exception:
+        pass
+    return ""
+
+
+def _source_name(item, link=""):
+    raw = _strip_tags(item.findtext("source")) or ""
+    if raw and raw.lower() not in {"web search", "웹 검색"}:
+        return raw
+    return _publisher_from_link(link) or "웹 검색"
 
 
 def _period_from_text(text, published=""):
@@ -345,7 +378,7 @@ def _discover_fallback_news():
                     "id": eid,
                     "period": period,
                     "title": title or "트럼프 OGE 신규 거래 보도",
-                    "source": _source_name(item),
+                    "source": _source_name(item, link),
                     "url": link,
                     "published": pub,
                 }
@@ -366,6 +399,22 @@ def _fallback_event_key(event):
     assets = sorted({k.replace(" ", "-") for k in FALLBACK_ASSET_KEYS if k in title})
     if event.get("id") == FALLBACK_SEED["id"]:
         return "oge-event:2026-07:spacex"
+
+    # Reuters/AOL syndications of the Sep. 22 disclosure sometimes omit "July"
+    # from the headline, which previously produced an "unknown:spacex" duplicate.
+    if "spacex" in title and any(
+        marker in title
+        for marker in [
+            "latest financial filing",
+            "financial disclosure shows",
+            "bought and sold shares",
+            "spacex surprise",
+        ]
+    ):
+        pub = _pub_dt(event.get("published") or "")
+        if pub and pub.date() >= dt.date(2026, 9, 22) and pub.date() <= dt.date(2026, 9, 24):
+            return "oge-event:2026-07:spacex"
+
     if assets:
         return "oge-event:" + period + ":" + ",".join(assets)
     normalized = re.sub(r"[^0-9a-z가-힣]+", " ", title).strip()
