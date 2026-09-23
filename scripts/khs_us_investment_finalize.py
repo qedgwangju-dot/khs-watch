@@ -340,6 +340,7 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
 def _compact_energy_package(text: str, lookup_time: str) -> str | None:
     if "대미투자 첫사업·에너지 패키지" not in text:
         return None
+    flags = _aggregate_flags([], text)
     parts = [
         "<b>🇺🇸 대미투자 | 첫사업·에너지 패키지</b>",
         "",
