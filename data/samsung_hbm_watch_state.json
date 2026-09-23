@@ -125,6 +125,7 @@
     "e6299c7902b5ee31d96a5309",
     "e9630aacbafa2aec1dbb5a74",
     "e9f073456697904e5407e230",
+    "e9f48a3fa721edd7d0113ea4",
     "eab351c9c3731d6a278c1974",
     "ec3cf377a6d8256cacdecb01",
     "ed1c60b97398767e08f42c38",
@@ -146,27 +147,25 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-23T07:50:19+09:00",
+  "updated_at_kst": "2026-09-23T09:48:48+09:00",
   "last_event_count": 84,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
-  "official_month": "202608",
-  "official_data_ok": true,
+  "official_month": "",
+  "official_data_ok": false,
   "official_errors": [
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
-    "이천 202608 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
-    "이천 202607 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
-    "이천 202605 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
-    "이천 202508 KCS 조회 실패: ConnectTimeout"
+    "관세청 세션 초기화 실패: ConnectTimeout",
+    "공공데이터포털 전국 API 실패: ConnectTimeout; fallback=전국 202608 KCS 조회 실패: ConnectTimeout",
+    "공공데이터포털 시도 API 실패: ConnectTimeout; fallback=충남 202608 KCS 조회 실패: ConnectTimeout",
+    "공공데이터포털 시도 API 실패: ConnectTimeout; fallback=충북 202608 KCS 조회 실패: ConnectTimeout",
+    "공공데이터포털 국가별 품목 API MY 실패: ConnectTimeout",
+    "이천 202608 KCS 조회 실패: ConnectTimeout"
   ],
   "last_official_alert_month": "202608",
   "official_api_key_configured": true,
-  "official_api_used": true,
+  "official_api_used": false,
   "last_successful_official_month": "202608",
   "last_successful_official_at_kst": "2026-09-23T07:50:19+09:00",
   "malaysia_official_month": "202608",
@@ -704,7 +703,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-23T07:50:19+09:00",
+      "last_checked_at_kst": "2026-09-23T09:48:48+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -758,7 +757,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-23T07:54:03+09:00",
+    "checked_at_kst": "2026-09-23T09:52:39+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
