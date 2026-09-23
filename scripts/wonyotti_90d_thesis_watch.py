@@ -215,22 +215,39 @@ def farside_flow(url: str) -> dict:
         day = parse_date(cells[0])
         if not day:
             continue
-        fund_values = [parse_number(x) for x in cells[1:-1] if x not in {"", "-", "—"}]
+
+        raw_funds = cells[1:-1]
+        numeric = [parse_number(x) for x in raw_funds if x not in {"", "-", "—"}]
+        reported = sum(v is not None for v in numeric)
+        missing = sum(x in {"", "-", "—"} for x in raw_funds)
         total = parse_number(cells[-1])
-        if not fund_values or total is None:
+        if reported == 0 or total is None:
             continue
-        recomputed = round(sum(x for x in fund_values if x is not None), 1)
+        recomputed = round(sum(x for x in numeric if x is not None), 1)
         if abs(recomputed - total) > 1.0:
             continue
-        rows.append((day, total))
+        status = "complete" if missing == 0 else "partial"
+        rows.append({
+            "date": day,
+            "total": total,
+            "status": status,
+            "reported": reported,
+            "missing": missing,
+        })
+
     if len(rows) < 5:
         raise RuntimeError("검증 가능한 ETF 행이 5개 미만")
-    rows.sort(key=lambda x: x[0])
+    rows.sort(key=lambda x: x["date"])
+    latest = rows[-1]
     last5 = rows[-5:]
     return {
-        "date": rows[-1][0].isoformat(),
-        "daily_usd_m": rows[-1][1],
-        "five_day_usd_m": round(sum(x[1] for x in last5), 1),
+        "date": latest["date"].isoformat(),
+        "daily_usd_m": latest["total"],
+        "status": latest["status"],
+        "reported_funds": latest["reported"],
+        "missing_funds": latest["missing"],
+        "five_day_usd_m": round(sum(x["total"] for x in last5), 1),
+        "five_day_dates": [x["date"].isoformat() for x in last5],
     }
 
 
@@ -390,7 +407,7 @@ def nvidia_ir_snapshot(old_nv: dict | None = None) -> tuple[dict, list[str]]:
             "net_income_q_prev_m": net_income_prev,
             "supply_commitments_b": _billion(
                 compact,
-                r"supply commitments from\s+\$?\s*[\d.]+\s+billion\s+last quarter\s+to\s+\$?\s*([\d.]+)\s+billion",
+                r"supply commitments[^.]{0,500}?to\s+\$?\s*([\d.]+)\s+billion",
             ),
             "ai_cloud_commitments_b": _billion(
                 compact,
@@ -402,7 +419,7 @@ def nvidia_ir_snapshot(old_nv: dict | None = None) -> tuple[dict, list[str]]:
             ),
             "sb_energy_guarantee_b": _billion(
                 compact,
-                r"SB Energy[^.]{0,700}?capped at a total of\s+\$?\s*([\d.]+)\s+billion",
+                r"SB Energy[^.]{0,1400}?(?:capped at a total of|capped at)\s+\$?\s*([\d.]+)\s+billion",
             ),
             "equity_investments_b": _billion(
                 compact,
@@ -488,6 +505,32 @@ def news_key(category: str, item: dict) -> str:
     return hashlib.sha256(f"{category}|{norm}|{item.get('source','').lower()}".encode()).hexdigest()[:24]
 
 
+def _event_tokens(title: str) -> set[str]:
+    text = re.sub(r"\s+-\s+[^-]{1,80}$", "", title.lower())
+    tokens = re.findall(r"[a-z0-9가-힣]+", text)
+    stop = {
+        "the", "a", "an", "of", "for", "to", "in", "on", "and", "or", "with",
+        "says", "said", "report", "reports", "news", "stock", "shares",
+        "전망", "관련", "보도", "기사", "업계", "시장",
+    }
+    return {x for x in tokens if len(x) >= 2 and x not in stop}
+
+
+def _same_event(a: dict, b: dict) -> bool:
+    if a["category"] != b["category"] or a["company"] != b["company"]:
+        return False
+    if a["direction"] != b["direction"]:
+        return False
+    ta, tb = _event_tokens(a["title"]), _event_tokens(b["title"])
+    if not ta or not tb:
+        return False
+    overlap = len(ta & tb) / max(1, len(ta | tb))
+    nums_a = set(re.findall(r"\b\d+(?:\.\d+)?%?\b", a["title"]))
+    nums_b = set(re.findall(r"\b\d+(?:\.\d+)?%?\b", b["title"]))
+    number_match = bool(nums_a & nums_b)
+    return overlap >= 0.30 or (overlap >= 0.20 and number_match)
+
+
 def high_signal_news(old_seen: set[str]) -> tuple[list[dict], set[str], list[str]]:
     now = dt.datetime.now(KST)
     cutoff = now - dt.timedelta(hours=72)
@@ -523,28 +566,39 @@ def high_signal_news(old_seen: set[str]) -> tuple[list[dict], set[str], list[str
                 })
                 candidates.append(item)
 
-    groups = {}
-    for item in candidates:
-        groups.setdefault((item["category"], item["company"], item["direction"]), []).append(item)
-
     selected = []
-    for items in groups.values():
-        sources = {x["source"].lower() for x in items if x.get("source")}
-        new_items = [x for x in items if x["key"] not in old_seen]
-        if not new_items:
+    for item in candidates:
+        if item["key"] in old_seen:
             continue
-        if not (any(x.get("officialish") for x in items) or len(sources) >= 2):
+        corroborators = [
+            other for other in candidates
+            if other["key"] != item["key"]
+            and other.get("source", "").lower() != item.get("source", "").lower()
+            and _same_event(item, other)
+        ]
+        sources = {item.get("source", "")}
+        sources.update(x.get("source", "") for x in corroborators if x.get("source"))
+        official_count = int(bool(item.get("officialish"))) + sum(int(bool(x.get("officialish"))) for x in corroborators)
+        trusted_count = len({x.lower() for x in sources if x})
+        # Variable investment information is emitted only after same-event corroboration.
+        if trusted_count < 2:
             continue
-        new_items.sort(key=lambda x: x.get("published") or "", reverse=True)
-        best = new_items[0]
-        best["cross_sources"] = sorted({x["source"] for x in items if x.get("source")})[:4]
-        selected.append(best)
+        if official_count == 0 and not any(
+            any(t in (x.get("source") or "").lower() for t in ("reuters", "bloomberg", "trendforce", "yonhap", "연합뉴스"))
+            for x in [item] + corroborators
+        ):
+            continue
+        item["cross_sources"] = sorted(sources)[:4]
+        selected.append(item)
 
-    selected.sort(key=lambda x: x.get("published") or "", reverse=True)
-    selected = selected[:8]
-    for item in selected:
+    # Same event can appear several times. Keep one highest-quality/newest representative.
+    deduped = []
+    for item in sorted(selected, key=lambda x: x.get("published") or "", reverse=True):
+        if any(_same_event(item, kept) for kept in deduped):
+            continue
         item["link"] = decode_google_news(item.get("link") or "")
-    return selected, all_seen, errors
+        deduped.append(item)
+    return deduped[:8], all_seen, errors
 
 
 def build_signals(old: dict, new: dict, news_items: list[dict]) -> list[tuple]:
@@ -562,9 +616,10 @@ def build_signals(old: dict, new: dict, news_items: list[dict]) -> list[tuple]:
         a, b = before.get("five_day_usd_m"), after.get("five_day_usd_m")
         daily = after.get("daily_usd_m")
         if a is not None and b is not None:
-            if (a * b < 0 and abs(b) >= 250) or (daily is not None and abs(daily) >= 500):
+            trigger_ready = bool(after.get("trigger_ready"))
+            if trigger_ready and ((a * b < 0 and abs(b) >= 250) or (daily is not None and abs(daily) >= 500)):
                 direction = "순유입" if b > 0 else "순유출"
-                signals.append(("암호화폐", f"{label} 현물 ETF 자금흐름이 {direction} 쪽으로 의미 있게 이동", f"5영업일 {a:+,.1f} → {b:+,.1f}백만달러, 최신 일간 {daily:+,.1f}백만달러", "가격 변화가 실제 현물 자금과 동행하는지 보는 핵심 확인 지표", f"{label} 가격·거래대금·파생 미결제약정 동행 여부", None))
+                signals.append(("암호화폐", f"{label} 현물 ETF 자금흐름이 {direction} 쪽으로 의미 있게 이동", f"5영업일 {a:+,.1f} → {b:+,.1f}백만달러, 최신 일간 {daily:+,.1f}백만달러 ({'확정' if after.get('status') == 'complete' else '부분집계·2회 안정확인'})", "가격 변화가 실제 현물 자금과 동행하는지 보는 핵심 확인 지표", f"{label} 가격·거래대금·파생 미결제약정 동행 여부", None))
 
     old_deriv, new_deriv = old_crypto.get("derivatives") or {}, new_crypto.get("derivatives") or {}
     for symbol in ("BTCUSDT", "ETHUSDT", "SOLUSDT"):
@@ -724,12 +779,43 @@ def main() -> None:
 
     crypto, part = crypto_snapshot()
     errors.extend(part)
+
+    # Farside can update a partially reported day intraday. A partial print must be
+    # identical on two consecutive 30-minute checks before it can trigger an alert.
+    old_crypto = old.get("crypto") or {}
+    for flow_key in ("btc_etf", "eth_etf"):
+        current = crypto.get(flow_key) or {}
+        previous = old_crypto.get(flow_key) or {}
+        same = (
+            current.get("date")
+            and current.get("date") == previous.get("date")
+            and current.get("daily_usd_m") is not None
+            and previous.get("daily_usd_m") is not None
+            and abs(float(current["daily_usd_m"]) - float(previous["daily_usd_m"])) <= 0.6
+        )
+        stable_obs = int(previous.get("stable_obs") or 0) + 1 if same else 1
+        current["stable_obs"] = stable_obs
+        current["trigger_ready"] = current.get("status") == "complete" or stable_obs >= 2
     rates, part = rates_snapshot()
     errors.extend(part)
     nvidia_sec, part = nvidia_ir_snapshot(old.get("nvidia_sec") or {})
     errors.extend(part)
     news_items, seen, part = high_signal_news(set(old.get("news_seen") or []))
     errors.extend(part)
+
+    health = {
+        "crypto_prices": bool((crypto.get("prices") or {}).get("BTC")),
+        "crypto_derivatives": len(crypto.get("derivatives") or {}) == 3,
+        "btc_etf": bool((crypto.get("btc_etf") or {}).get("date")),
+        "eth_etf": bool((crypto.get("eth_etf") or {}).get("date")),
+        "rates": bool((rates.get("nominal10y") or {}).get("date")) and bool((rates.get("real10y") or {}).get("date")),
+        "nvidia_10q": bool(nvidia_sec.get("parsed_ok")),
+    }
+    old_streaks = old.get("health_error_streaks") or {}
+    health_streaks = {
+        key: 0 if ok else int(old_streaks.get(key) or 0) + 1
+        for key, ok in health.items()
+    }
 
     new_state = {
         "initialized": True,
@@ -738,12 +824,35 @@ def main() -> None:
         "rates": rates,
         "nvidia_sec": nvidia_sec,
         "news_seen": sorted(seen)[-5000:],
+        "health": health,
+        "health_error_streaks": health_streaks,
     }
     write_json(PENDING, new_state)
 
     signals = []
     if old.get("initialized"):
         signals = build_signals(old, new_state, news_items)
+
+        old_health_streaks = old.get("health_error_streaks") or {}
+        for key, streak in health_streaks.items():
+            if streak == 2 and int(old_health_streaks.get(key) or 0) < 2:
+                labels = {
+                    "crypto_prices": "암호화폐 현물가격",
+                    "crypto_derivatives": "암호화폐 선물 펀딩·미결제약정",
+                    "btc_etf": "BTC 현물 ETF 자금흐름",
+                    "eth_etf": "ETH 현물 ETF 자금흐름",
+                    "rates": "미국 10년 명목·실질금리",
+                    "nvidia_10q": "NVIDIA 공식 10-Q",
+                }
+                signals.append((
+                    "감시원천 이상",
+                    f"{labels.get(key, key)} 원천이 2회 연속 조회 실패",
+                    "해당 축은 복구 전까지 투자판정 알림을 보류",
+                    "데이터 공백을 시장 변화로 오인하지 않도록 기술 경보만 송출",
+                    "다음 30분 실행에서 원천 복구 여부",
+                    None,
+                ))
+
         if signals:
             ALERT.write_text(build_alert(signals, now, new_state), encoding="utf-8")
 
@@ -754,6 +863,7 @@ def main() -> None:
         f"- 신규 고신호: {len(signals)}건",
         f"- 교차검증 뉴스 후보: {len(news_items)}건",
         f"- 부분 조회 오류: {len(errors)}건",
+        "- 원천 건강도: " + ", ".join(f"{k}={'정상' if v else '실패'}" for k, v in health.items()),
     ]
     if errors:
         status += ["", "## 부분 조회 오류"] + [f"- {x}" for x in errors[:20]]
