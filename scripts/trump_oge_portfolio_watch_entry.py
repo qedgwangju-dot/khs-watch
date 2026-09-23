@@ -165,6 +165,15 @@ MSTR_SEED = {
     "url": "https://ingress-prod.bitcointreasuries.net/news/president-trump-discloses-he-owns-strategy-stock",
 }
 
+BBC_AI_SEED = {
+    "id": "oge-detail-bbc-big-tech-ai-2026-07",
+    "period": "2026-07",
+    "title": "Trump reveals millions of dollars' worth of share deals in big tech and AI",
+    "source": "BBC 비즈니스",
+    "published": "2026-09-23",
+    "url": "https://www.bbc.co.uk/news/articles/c6p3kxpp8lezo?at_medium=RSS&at_campaign=rss",
+}
+
 FALLBACK_QUERIES = [
     '"Trump" "financial disclosure" bought sold shares',
     '"Trump" "Office of Government Ethics" stock trades',
@@ -173,6 +182,8 @@ FALLBACK_QUERIES = [
     '트럼프 OGE 거래 신고 주식',
     'Trump Strategy MSTR financial disclosure July 2026',
     'Trump MicroStrategy MSTR OGE July stock',
+    '"Trump reveals millions of dollars worth of share deals in big tech and AI"',
+    'BBC Trump Microsoft Nvidia SpaceX financial disclosure July 2026',
 ]
 
 _MONTHS = {
@@ -223,6 +234,8 @@ KNOWN_FALLBACK_TITLE_KO = {
         "트럼프 최신 재산공개, 7월 SpaceX 주식 매수·매도 확인",
     "Trump July disclosure: 1,156 trades, Microsoft and Amazon among largest sales":
         "트럼프 7월 재산공개: 1,156건 거래, Microsoft·Amazon이 최대 매도 종목",
+    "Trump reveals millions of dollars' worth of share deals in big tech and AI":
+        "트럼프 7월 재산공개, 빅테크·AI 주식 거래 내역 공개",
     "President Trump Discloses He Owns Strategy Stock":
         "트럼프 계좌, 7월 Strategy(MSTR) 주식 추가 매수 확인",
     "Trump Accounts Bought MicroStrategy Stock Before an 83% Rally":
@@ -319,6 +332,7 @@ SOURCE_DOMAIN_LABELS = {
     "finance.yahoo.com": "Yahoo Finance",
     "coindesk.com": "CoinDesk",
     "metatrader.com": "MetaTrader",
+    "bbc.co.uk": "BBC 비즈니스",
 }
 
 
@@ -371,6 +385,7 @@ def _discover_fallback_news():
     out = {
         FALLBACK_SEED["id"]: dict(FALLBACK_SEED),
         MSTR_SEED["id"]: dict(MSTR_SEED),
+        BBC_AI_SEED["id"]: dict(BBC_AI_SEED),
     }
     for query in FALLBACK_QUERIES:
         for rss_url in _rss_urls(query):
@@ -434,6 +449,10 @@ def _detail_kind(event):
     if any(k in title for k in ["strategy", "microstrategy", "mstr"]):
         if any(k in title for k in ["trump", "financial disclosure", "ethics filing", "account"]):
             return "july-mstr-trades"
+    if event.get("id") == BBC_AI_SEED["id"] or (
+        "big tech" in title and "ai" in title and "trump" in title
+    ):
+        return "july-bbc-big-tech-ai"
     return ""
 
 
@@ -596,8 +615,31 @@ def main_with_fallback():
             (e for e in unique_generic if _detail_kind(e) == "july-mstr-trades"),
             None,
         )
+        bbc_ai_detail = next(
+            (e for e in unique_generic if _detail_kind(e) == "july-bbc-big-tech-ai"),
+            None,
+        )
 
-        if mstr_detail:
+        if bbc_ai_detail:
+            lines = [
+                "🤖 [트럼프 OGE 7월 신고 — 빅테크·AI 거래 추가 분석]",
+                "판정: 기존 7월 OGE 신고의 추가 세부사항 · 새 신고 아님",
+                f"원화 환산 기준: 1달러={rate:,.2f}원 ({basis})",
+                "",
+                "▶ 한눈에 보기",
+                f"• Microsoft 매도 합산: 650만~3,100만달러 ({watch.krw_range(6_500_000, 31_000_000, rate)})",
+                f"• Microsoft 매수 합산: 16만5,000~40만달러 ({watch.krw_range(165_000, 400_000, rate)})",
+                "• Nvidia·Palantir: 7월 신고에서 매수와 매도가 모두 확인",
+                "• SpaceX·Tesla: 7월 신고에서 매수·매도 거래가 함께 확인",
+                "",
+                "▶ 해석",
+                "• BBC는 동일한 7월 OGE 신고를 빅테크·AI 종목 중심으로 재구성한 후속 보도입니다.",
+                "• 따라서 새로운 OGE 신고가 아니라 기존 7월 신고의 추가 분석으로 분류합니다.",
+                "• ‘개별 종목 시장 영향 제한적’은 기사에서 확인되는 공식 수치가 아니라 별도 시장 해석으로 구분합니다.",
+                "",
+                "▶ 관련 보도",
+            ]
+        elif mstr_detail:
             lines = [
                 "₿ [트럼프 OGE 7월 신고 — Strategy(MSTR) 추가 거래]",
                 "판정: 기존 7월 OGE 신고의 추가 세부사항 · 새 신고 아님",
@@ -659,7 +701,9 @@ def main_with_fallback():
                 "",
                 "▶ 관련 보도",
             ]
-        if mstr_detail:
+        if bbc_ai_detail:
+            display_events = [bbc_ai_detail]
+        elif mstr_detail:
             display_events = [mstr_detail]
         elif july_summary:
             display_events = [july_summary]
