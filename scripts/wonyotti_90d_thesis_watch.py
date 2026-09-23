@@ -398,7 +398,7 @@ def google_news(query: str) -> list[dict]:
         except Exception:
             pass
         if title and news_link:
-            results.append({"title": title, "link": decode_google_news(news_link), "source": source, "description": description, "published": published})
+            results.append({"title": title, "link": news_link, "source": source, "description": description, "published": published})
     return results
 
 
@@ -469,7 +469,7 @@ def high_signal_news(old_seen: set[str]) -> tuple[list[dict], set[str], list[str
                     "key": key,
                     "company": company_bucket(blob),
                     "direction": direction_bucket(category, blob),
-                    "officialish": any(x in blob for x in OFFICIALISH),
+                    "officialish": any(x in item["source"].lower() for x in OFFICIALISH),
                 })
                 candidates.append(item)
 
@@ -491,7 +491,10 @@ def high_signal_news(old_seen: set[str]) -> tuple[list[dict], set[str], list[str
         selected.append(best)
 
     selected.sort(key=lambda x: x.get("published") or "", reverse=True)
-    return selected[:8], all_seen, errors
+    selected = selected[:8]
+    for item in selected:
+        item["link"] = decode_google_news(item.get("link") or "")
+    return selected, all_seen, errors
 
 
 def build_signals(old: dict, new: dict, news_items: list[dict]) -> list[tuple]:
