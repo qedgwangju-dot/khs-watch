@@ -382,7 +382,7 @@ def nvidia_ir_snapshot(old_nv: dict | None = None) -> tuple[dict, list[str]]:
     try:
         q10_url = discover_nvidia_10q()
         out["q10_url"] = q10_url
-        if q10_url == old_nv.get("q10_url") and old_nv.get("parsed_ok") and int(old_nv.get("parser_version") or 0) >= 2:
+        if q10_url == old_nv.get("q10_url") and old_nv.get("parsed_ok") and int(old_nv.get("parser_version") or 0) >= 3:
             kept = dict(old_nv)
             kept["checked_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
             return kept, errors
@@ -398,7 +398,7 @@ def nvidia_ir_snapshot(old_nv: dict | None = None) -> tuple[dict, list[str]]:
 
         out.update({
             "parsed_ok": True,
-            "parser_version": 2,
+            "parser_version": 3,
             "q10_sha256": hashlib.sha256(pdf).hexdigest(),
             "accounts_receivable_m": ar,
             "accounts_receivable_prev_m": ar_prev,
@@ -420,7 +420,7 @@ def nvidia_ir_snapshot(old_nv: dict | None = None) -> tuple[dict, list[str]]:
             ),
             "sb_energy_guarantee_b": _billion(
                 compact,
-                r"SB Energy[^.]{0,1400}?(?:capped at a total of|capped at)\s+\$?\s*([\d.]+)\s+billion",
+                r"SB Energy.*?(?:capped at a total of|capped at)\s+\$?\s*([\d.]+)\s+billion",
             ),
             "equity_investments_b": _billion(
                 compact,
