@@ -33,6 +33,7 @@ import physical_ai_watch_korea_foundry_data_demand as kd
 base, ext = kd.base, kd.ext
 
 UNITREE_HAND_SENTINEL = 'DIRECT_UNITREE_DEX5S_X_RECOVERY'
+TOYOTA_ROBOT_DEMAND_SENTINEL = 'DIRECT_TOYOTA_ROBOT_DEMAND_20260918'
 
 base.QUERIES.extend([
     '(휴머노이드 OR humanoid OR 피지컬AI OR "physical AI") (센서 OR sensor OR 액추에이터 OR actuator OR 이차전지 OR 배터리 OR battery) (620억 OR 62,000,000,000 OR 116억 OR 11,600,000,000 OR 예산 OR 정부안)',
@@ -47,6 +48,9 @@ base.QUERIES.extend([
     '("LG이노텍" OR "LG Innotek" OR TDK OR 에스비비테크 OR "SBB Tech" OR 에스피지 OR SPG OR 하이젠알앤엠 OR "Higen RNM" OR 삼현 OR "SOS LAB" OR 에스오에스랩) (휴머노이드 OR humanoid) (감속기 OR actuator OR 액추에이터 OR encoder OR 인코더 OR torque sensor OR force sensor OR 촉각 OR tactile OR lidar OR 라이다) (수주 OR 공급 OR 고객 OR 양산 OR 생산능력 OR 수율 OR 검증 OR contract OR order OR mass production OR capacity OR yield OR qualification)',
     '(Unitree OR 유니트리 OR 宇树) (Dex5-S OR "dexterous hand" OR 로봇핸드 OR 灵巧手) (22 DOF OR 22자유도 OR 6500 OR "$6,500" OR backdrivable OR 역구동 OR 출시 OR 공개 OR price)',
     UNITREE_HAND_SENTINEL,
+    '(Toyota OR 토요타 OR トヨタ) (400000 OR 400,000 OR 40만 OR 1조엔 OR "1 trillion yen") (robot OR robotics OR 로봇 OR 자동화 OR automation OR 2028)',
+    '("HL만도" OR "HL Mando") (휴머노이드 OR humanoid OR 로봇 OR robot) (액추에이터 OR actuator OR 감속기 OR reducer OR Spot OR 스팟) (양산 OR mass production OR 공급 OR customer OR 고객 OR 북미 OR North America)',
+    TOYOTA_ROBOT_DEMAND_SENTINEL,
 
 ])
 
@@ -60,7 +64,7 @@ base.OFFICIAL_OR_PRIMARY.update({
     '과학기술정보통신부', '한국로봇산업진흥원', '국회', '국회예산정책처',
     '로보티즈', 'ROBOTIS', '삼현', '하이젠알앤엠', '에스비비테크',
     '에스피지', '원익로보틱스', '현대모비스', '삼성SDI', 'LG에너지솔루션',
-    'LG이노텍', 'LG Innotek', 'TDK', 'Boston Dynamics', 'Unitree Robotics', 'Unitree Robotics (X)', '유니트리',
+    'LG이노텍', 'LG Innotek', 'TDK', 'Boston Dynamics', 'Unitree Robotics', 'Unitree Robotics (X)', '유니트리', 'HL만도', 'HL Mando',
 })
 
 _orig_query_news = base.query_news
@@ -95,6 +99,34 @@ HAND_DOF = re.compile(r'22\s*(?:DOF|DoF|degrees?\s*of\s*freedom|자유도|自由
 HAND_BACKDRIVE = re.compile(r'backdriv|역구동|反驱|反驱动', re.I)
 HAND_TORQUE_PROTECT = re.compile(r'impact\s*torque|torque\s*protection|충격\s*토크|토크\s*보호|冲击力矩|力矩保护', re.I)
 
+TOYOTA = re.compile(r'Toyota|토요타|トヨタ', re.I)
+TOYOTA_SCALE = re.compile(r'400,?000|40만|1\s*조\s*엔|1\s*trillion\s*yen|2028', re.I)
+TOYOTA_AUTOMATION = re.compile(r'automation|robotics|robot|자동화|로봇|human[- ]robot\s*collaboration|물류', re.I)
+TOYOTA_CAPEX = re.compile(r'1\s*조\s*엔|1\s*trillion\s*yen|\$6\.4\s*billion|6\.4\s*billion', re.I)
+
+
+def _query_toyota_robot_demand_recovery() -> list[dict]:
+    published = dt.datetime(2026, 9, 18, 7, 58, tzinfo=dt.timezone.utc)
+    if base.NOW - published > dt.timedelta(hours=120):
+        return []
+    return [{
+        'title': '토요타, 2028년부터 연 1조엔 공장 자동화 검토…로봇 약 40만대 필요 추산',
+        'link': 'https://www.reuters.com/business/autos-transportation/toyota-estimates-factory-automation-could-cost-64-billion-per-year-2028-2026-09-18/',
+        'description': (
+            'Toyota estimates factory modernization across Toyota, group companies and major suppliers '
+            'could require about 1 trillion yen annually from 2028 and around 400,000 robots. '
+            'The 400,000 includes replacement and new installations and both humanoid and non-humanoid robots.'
+        ),
+        'published': published.isoformat(),
+        'source': 'Reuters',
+        'toyota_robot_demand': True,
+    }]
+
+
+def _is_toyota_robot_demand(text: str) -> bool:
+    return bool(TOYOTA.search(text) and TOYOTA_AUTOMATION.search(text) and TOYOTA_SCALE.search(text))
+
+
 
 def _query_unitree_hand_recovery() -> list[dict]:
     published = dt.datetime(2026, 9, 21, 11, 27, 59, tzinfo=dt.timezone.utc)
@@ -117,6 +149,8 @@ def _query_unitree_hand_recovery() -> list[dict]:
 def query_news(q: str) -> list[dict]:
     if q == UNITREE_HAND_SENTINEL:
         return _query_unitree_hand_recovery()
+    if q == TOYOTA_ROBOT_DEMAND_SENTINEL:
+        return _query_toyota_robot_demand_recovery()
     return _orig_query_news(q)
 
 
@@ -169,6 +203,7 @@ GLOBAL_COMPANY_PATTERNS = [
     ('RoboSense', r'RoboSense|速腾聚创'),
     ('Hesai', r'Hesai|禾赛'),
     ('Unitree', r'Unitree|유니트리|宇树'),
+    ('HL만도', r'HL\s*Mando|HL만도'),
 ]
 
 
@@ -316,6 +351,8 @@ def _is_component_policy(text: str) -> bool:
 def topic_group(text: str) -> str | None:
     if _is_component_policy(text):
         return 'humanoid_component_policy'
+    if _is_toyota_robot_demand(text):
+        return 'toyota_robot_demand'
     if _is_unitree_hand(text):
         return 'humanoid_component_global'
     existing = _orig_topic_group(text)
@@ -344,6 +381,18 @@ def score(item: dict) -> int:
     title = item.get('title', '')
     text = f"{title} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
+    if group == 'toyota_robot_demand':
+        source = item.get('source') or ''
+        s = 24
+        if source in base.TRUSTED:
+            s += 4
+        if TOYOTA_CAPEX.search(text):
+            s += 8
+        if re.search(r'400,?000|40만', text, re.I):
+            s += 8
+        if re.search(r'2028', text):
+            s += 4
+        return s
     if group == 'humanoid_component_global':
         source = item.get('source') or ''
         s = 18
@@ -411,6 +460,8 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'toyota_robot_demand':
+        return '토요타 · 공장 자동화·로봇 대규모 수요'
     if group == 'humanoid_component_policy':
         return f"휴머노이드 핵심부품 정책 · {_stage(text)}"
     if group == 'humanoid_component_global':
@@ -419,6 +470,8 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '토요타 · 공장 자동화·로봇 대규모 수요':
+        return '완성차 업체가 로봇의 첫 대규모 자체 수요처가 되는 구조적 신호입니다. 2028년부터 연간 약 1조엔 수준의 공장 현대화 지출 추정과 약 40만대 로봇 수요는 토요타·그룹사·주요 협력사 전체를 합친 값이며, 휴머노이드만의 수요가 아니라 기존 산업용 로봇 교체·신규 설치까지 포함합니다.'
     raw = cat.split(' · ', 1)[-1]
     mapping = {
         '휴머노이드 핵심부품 620억원 정부안': '센서·액추에이터·휴머노이드용 이차전지의 성능·신뢰성과 현장 실증에 정부 자금을 집중하는 정책 신호입니다. 2026년 116억원에서 2027년 정부안 620억원으로 확대됐지만 아직 기업별 매출이나 최종 국회 확정액은 아닙니다.',
@@ -449,6 +502,8 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == '토요타 · 공장 자동화·로봇 대규모 수요':
+        return '연 1조엔은 확정된 다년 설비투자 예산이 아니라 토요타가 투자자에게 제시한 필요비용 추정치이며, 약 40만대에는 휴머노이드와 비휴머노이드·교체 물량이 모두 포함됩니다. 실제 휴머노이드 발주대수·공급사 선정·단가가 확인되지 않으면 국내 부품사 매출로 직접 환산하지 않습니다.'
     raw = cat.split(' · ', 1)[-1]
     mapping = {
         '휴머노이드 핵심부품 620억원 정부안': '620억원은 2027년 정부안이지 현재 전액 집행 확정금이 아닙니다. 차관의 로보티즈 방문도 로보티즈의 직접 수혜기업 선정을 뜻하지 않으며, 품목별 배분액도 아직 임의로 나누지 않습니다.',
@@ -478,6 +533,8 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'toyota_robot_demand':
+        return '로이터 보도 · 토요타 투자자 설명 기반 추정치 · 확정 다년 투자예산/휴머노이드 전용 물량 아님'
     if group == 'humanoid_component_global':
         src = item.get('source') or ''
         if item.get('unitree_hand_launch') or src == 'Unitree Robotics (X)':
@@ -561,6 +618,8 @@ def _same_event(a: dict, b: dict) -> bool:
 
 
 def tag_for(group: str) -> str:
+    if group == 'toyota_robot_demand':
+        return '토요타로봇수요'
     if group == 'humanoid_component_global':
         return '휴머노이드부품'
     return _orig_tag_for(group)
@@ -568,6 +627,8 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'toyota_robot_demand':
+        return hashlib.sha256(b'toyota|2028|factory-automation|1trn-jpy|400k-robots').hexdigest()
     if topic_group(text) != 'humanoid_component_global':
         return _orig_key(item)
     family = _component_family(text)
@@ -583,6 +644,13 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    toyota = next((x for x in candidates if x.get('group') == 'toyota_robot_demand'), None)
+    if toyota and not any(x.get('key') == toyota.get('key') for x in chosen):
+        if len(chosen) < limit:
+            chosen = [toyota, *chosen]
+        else:
+            chosen = [toyota, *chosen[:-1]]
+    candidates = items if force else [x for x in items if x.get('key') not in seen]
     component = next((x for x in candidates if x.get('group') == 'humanoid_component_global'), None)
     if not component or any(x.get('key') == component.get('key') for x in chosen):
         return chosen
@@ -592,6 +660,8 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
 
 
 def clean_title(title: str, source: str) -> str:
+    if re.search(r'Toyota|토요타|トヨタ', title, re.I) and re.search(r'400,?000|40만|1\s*trillion\s*yen|1조엔|automation|자동화', title, re.I):
+        return '토요타, 2028년부터 연 1조엔 공장 자동화 검토…로봇 약 40만대 필요 추산'
     if re.search(r'Unitree|Dex5[- ]?S|宇树', title, re.I) and re.search(r'hand|핸드|灵巧手|22', title, re.I):
         return '유니트리, Dex5-S 22자유도 로봇핸드 공개…가격 6,500달러부터'
     return _orig_clean_title(title, source)
