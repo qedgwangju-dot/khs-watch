@@ -16,6 +16,7 @@
     "1848991f042e73d6a3c535a1",
     "1945363dfd2d1fc1c0822e12",
     "19a4ce14545ac6bd629e1c97",
+    "19ccdda257893b3515f24083",
     "1a1e13313c77e3e19502ddaa",
     "1b5520c78f80c192e8bab32b",
     "2215e50f5d488d5857e7aad8",
@@ -103,6 +104,7 @@
     "bb8d68accda30ea0a27f488c",
     "bd26432b3c3bf171b67b4e34",
     "be3ea72057cda8f38d4e8424",
+    "be85fd0abf51ad7d2a53e36f",
     "c0014c2ca47fea6d896c3e23",
     "c09ac81c8b75fa07c44ec6c4",
     "c4eeabbe2d4315477133e9fe",
@@ -149,7 +151,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-23T20:53:45+09:00",
+  "updated_at_kst": "2026-09-24T02:18:55+09:00",
   "last_event_count": 82,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -171,7 +173,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-23T20:53:45+09:00",
+  "last_successful_official_at_kst": "2026-09-24T02:18:55+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -635,7 +637,7 @@
         "period": "2026",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
+        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
         "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
         "source": "글로벌이코노믹",
         "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
@@ -649,7 +651,7 @@
         "period": "2027",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
+        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
         "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
         "source": "글로벌이코노믹",
         "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
@@ -666,7 +668,7 @@
         "period": "2028",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
+        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
         "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
         "source": "글로벌이코노믹",
         "excerpt": "삼성전자에 따르면 평택 P5 Fab1은 2028년 가동을 목표로 하고 있다.",
@@ -707,7 +709,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-23T20:53:45+09:00",
+      "last_checked_at_kst": "2026-09-24T02:18:55+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -761,7 +763,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-23T20:56:08+09:00",
+    "checked_at_kst": "2026-09-24T02:21:43+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
