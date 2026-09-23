@@ -89,14 +89,27 @@ watch.generic_message = generic_message
 
 
 def _telegram_html(text: str) -> str:
-    """Escape all report text and render only the final OGE source as a compact '원문' link."""
+    """Escape report text and render long source URLs as compact clickable labels."""
     out = []
     for line in text.splitlines():
-        m = re.fullmatch(r"OGE 원문:\s*(https?://\S+)", line.strip())
-        if m:
-            href = html.escape(m.group(1), quote=True)
-            out.append(f'<a href="{href}">원문</a>')
-        else:
+        stripped = line.strip()
+        patterns = [
+            (r"OGE 원문:\s*(https?://\S+)", "원문"),
+            (r"원문:\s*(https?://\S+)", "원문"),
+            (r"Reuters 보도:\s*(https?://\S+)", "Reuters 원문"),
+            (r"조선일보:\s*(https?://\S+)", "조선일보 원문"),
+            (r"OGE 공개목록:\s*(https?://\S+)", "OGE 공개목록"),
+        ]
+        rendered = False
+        for pattern, label in patterns:
+            m = re.fullmatch(pattern, stripped)
+            if m:
+                href = html.escape(m.group(1), quote=True)
+                indent = "   " if line.startswith("   ") else ""
+                out.append(f'{indent}<a href="{href}">{label}</a>')
+                rendered = True
+                break
+        if not rendered:
             out.append(html.escape(line))
     return "\n".join(out)
 
