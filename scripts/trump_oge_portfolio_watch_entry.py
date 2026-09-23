@@ -162,6 +162,8 @@ FALLBACK_QUERIES = [
     '"Trump" "278-T" transaction',
     '트럼프 재산공개 주식 매수 매도 정부윤리청',
     '트럼프 OGE 거래 신고 주식',
+    'Trump Strategy MSTR financial disclosure July 2026',
+    'Trump MicroStrategy MSTR OGE July stock',
 ]
 
 _MONTHS = {
@@ -212,6 +214,12 @@ KNOWN_FALLBACK_TITLE_KO = {
         "트럼프 최신 재산공개, 7월 SpaceX 주식 매수·매도 확인",
     "Trump July disclosure: 1,156 trades, Microsoft and Amazon among largest sales":
         "트럼프 7월 재산공개: 1,156건 거래, Microsoft·Amazon이 최대 매도 종목",
+    "President Trump Discloses He Owns Strategy Stock":
+        "트럼프 계좌, 7월 Strategy(MSTR) 주식 추가 매수 확인",
+    "Trump Accounts Bought MicroStrategy Stock Before an 83% Rally":
+        "트럼프 계좌, 7월 Strategy(MSTR) 주식 재매수 확인",
+    "Trump's latest financial disclosure shows he purchased shares of Strategy precisely at its annual low.":
+        "트럼프 최신 재산공개, 7월 Strategy(MSTR) 주식 매수 확인",
 }
 
 
@@ -275,6 +283,8 @@ def _translate_title_ko(title):
         print(f"WARN OGE title translation failed: {e}")
 
     low = core.lower()
+    if any(k in low for k in ["strategy", "microstrategy", "mstr"]):
+        return "트럼프 재산공개에서 Strategy(MSTR) 주식 거래가 확인됐다는 보도"
     if "spacex" in low:
         return "트럼프 재산공개에서 SpaceX 주식 거래가 확인됐다는 보도"
     if "coupang" in low:
@@ -296,6 +306,10 @@ SOURCE_DOMAIN_LABELS = {
     "newrepublic.com": "The New Republic",
     "deadline.com": "Deadline",
     "seekingalpha.com": "Seeking Alpha",
+    "bitcointreasuries.net": "Bitcoin Treasuries",
+    "finance.yahoo.com": "Yahoo Finance",
+    "coindesk.com": "CoinDesk",
+    "metatrader.com": "MetaTrader",
 }
 
 
@@ -393,6 +407,7 @@ FALLBACK_ASSET_KEYS = [
     "spacex", "nvidia", "apple", "microsoft", "meta", "tesla", "palantir",
     "coinbase", "berkshire", "visa", "mastercard", "cintas", "rtx", "northrop",
     "amazon", "alphabet", "google", "home depot", "fidelity",
+    "strategy", "microstrategy", "mstr",
 ]
 
 
@@ -404,6 +419,9 @@ def _detail_kind(event):
         and "amazon" in title
     ):
         return "july-summary-1156-msft-amzn"
+    if any(k in title for k in ["strategy", "microstrategy", "mstr"]):
+        if any(k in title for k in ["trump", "financial disclosure", "ethics filing", "account"]):
+            return "july-mstr-trades"
     return ""
 
 
@@ -562,8 +580,31 @@ def main_with_fallback():
             (e for e in unique_generic if _detail_kind(e) == "july-summary-1156-msft-amzn"),
             None,
         )
+        mstr_detail = next(
+            (e for e in unique_generic if _detail_kind(e) == "july-mstr-trades"),
+            None,
+        )
 
-        if july_summary:
+        if mstr_detail:
+            lines = [
+                "₿ [트럼프 OGE 7월 신고 — Strategy(MSTR) 추가 거래]",
+                "판정: 기존 7월 OGE 신고의 추가 세부사항 · 새 신고 아님",
+                f"원화 환산 기준: 1달러={rate:,.2f}원 ({basis})",
+                "",
+                "▶ 한눈에 보기",
+                f"• 7월 8일 Strategy(MSTR) 매도: 1,001~1만5,000달러 ({watch.krw_range(1_001, 15_000, rate)})",
+                f"• 7월 24일 Strategy(MSTR) 매수: 1,001~1만5,000달러 ({watch.krw_range(1_001, 15_000, rate)})",
+                f"• 7월 27일 Strategy(MSTR) 추가 매수: 5만1~10만달러 ({watch.krw_range(50_001, 100_000, rate)})",
+                f"• 두 매수 합산 공개범위: 5만1,002~11만5,000달러 ({watch.krw_range(51_002, 115_000, rate)})",
+                "",
+                "▶ 해석",
+                "• 최대 11만5,000달러는 실제 매수금액이 아니라 두 신고구간의 상한을 더한 값입니다.",
+                "• Strategy는 비트코인을 주된 재무준비자산으로 보유하는 상장사이므로 MSTR 매수는 비트코인 간접 노출 확대에 해당합니다.",
+                "• 트럼프 본인이 직접 주문했다는 뜻은 아니며, 공개된 거래계좌의 수익자 기준 신고입니다.",
+                "",
+                "▶ 관련 보도",
+            ]
+        elif july_summary:
             lines = [
                 "📊 [트럼프 OGE 7월 신고 — 추가 세부사항]",
                 "판정: 기존 7월 OGE 신고의 추가 분석 · 새 신고 아님",
@@ -606,7 +647,12 @@ def main_with_fallback():
                 "",
                 "▶ 관련 보도",
             ]
-        display_events = [july_summary] if july_summary else unique_generic[:5]
+        if mstr_detail:
+            display_events = [mstr_detail]
+        elif july_summary:
+            display_events = [july_summary]
+        else:
+            display_events = unique_generic[:5]
         for i, event in enumerate(display_events, 1):
             lines += [
                 f"{i}. {event.get('source') or '웹 검색'}",
