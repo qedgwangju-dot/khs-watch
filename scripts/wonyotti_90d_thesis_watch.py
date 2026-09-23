@@ -382,7 +382,7 @@ def nvidia_ir_snapshot(old_nv: dict | None = None) -> tuple[dict, list[str]]:
     try:
         q10_url = discover_nvidia_10q()
         out["q10_url"] = q10_url
-        if q10_url == old_nv.get("q10_url") and old_nv.get("parsed_ok"):
+        if q10_url == old_nv.get("q10_url") and old_nv.get("parsed_ok") and int(old_nv.get("parser_version") or 0) >= 2:
             kept = dict(old_nv)
             kept["checked_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
             return kept, errors
@@ -398,6 +398,7 @@ def nvidia_ir_snapshot(old_nv: dict | None = None) -> tuple[dict, list[str]]:
 
         out.update({
             "parsed_ok": True,
+            "parser_version": 2,
             "q10_sha256": hashlib.sha256(pdf).hexdigest(),
             "accounts_receivable_m": ar,
             "accounts_receivable_prev_m": ar_prev,
