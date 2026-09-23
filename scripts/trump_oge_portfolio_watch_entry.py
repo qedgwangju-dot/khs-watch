@@ -189,6 +189,72 @@ def _strip_tags(text):
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", text or "")).strip()
 
 
+FALLBACK_RECENCY_HOURS = 72
+
+KNOWN_FALLBACK_TITLE_KO = {
+    "Trump's Latest Financial Disclosure Shows Significant Sales Of Netflix":
+        "트럼프 최신 재산공개, Netflix 증권 대규모 매도 확인",
+    "Latest Trump Financial Disclosure Reveals Dubiously Timed Stock Sales":
+        "트럼프 최신 재산공개에서 주식 매도 시점 관련 논란 제기",
+    "Trump's financial disclosure reveals 18 Coupang stock trades since late last year":
+        "트럼프 재산공개, 지난해 말 이후 Coupang 주식 18건 거래 확인",
+    "Donald Trump’s Financial Disclosure Shows Thousands Of Stock Trades In Three Months":
+        "트럼프 재산공개, 3개월간 수천 건의 주식 거래 확인",
+    "New Trump OGE Filings Reveal Hundreds of Additional April and May Stock Trades, Expanding Earlier Disclosure":
+        "트럼프 OGE 추가 신고, 4~5월 수백 건의 추가 주식 거래 공개",
+    "Trump Files New Financial Disclosure Showing Massive Bond Trades and Corporate Debt Activity | MSFT Stock News":
+        "트럼프 신규 재산공개, 대규모 채권·회사채 거래 공개",
+    "Trump bought shares in Elon Musk's SpaceX in June, financial disclosure shows":
+        "트럼프 재산공개, 6월 Elon Musk의 SpaceX 주식 매수 확인",
+}
+
+
+def _pub_dt(pub):
+    try:
+        d = parsedate_to_datetime(pub or "")
+        if d.tzinfo is None:
+            d = d.replace(tzinfo=dt.timezone.utc)
+        return d.astimezone(dt.timezone.utc)
+    except Exception:
+        return None
+
+
+def _is_recent_pub(pub, hours=FALLBACK_RECENCY_HOURS):
+    d = _pub_dt(pub)
+    if d is None:
+        return False
+    now = dt.datetime.now(dt.timezone.utc)
+    age = now - d
+    return dt.timedelta(0) <= age <= dt.timedelta(hours=hours)
+
+
+def _translate_title_ko(title):
+    title = (title or "").strip()
+    if not title:
+        return "트럼프 OGE 거래 관련 보도"
+    core = title.rsplit(" - ", 1)[0].strip() if " - " in title else title
+    if core in KNOWN_FALLBACK_TITLE_KO:
+        return KNOWN_FALLBACK_TITLE_KO[core]
+    if re.search(r"[가-힣]", title):
+        return title
+    low = title.lower()
+    if "spacex" in low:
+        return "트럼프 재산공개에서 SpaceX 주식 거래가 확인됐다는 보도"
+    if "coupang" in low:
+        return "트럼프 재산공개에서 Coupang 주식 거래가 확인됐다는 보도"
+    if "netflix" in low:
+        return "트럼프 재산공개에서 Netflix 증권 거래가 확인됐다는 보도"
+    if "bond" in low or "debt" in low:
+        return "트럼프 재산공개에서 채권·회사채 거래가 확인됐다는 보도"
+    if "thousands" in low and "trade" in low:
+        return "트럼프 재산공개에서 수천 건의 증권 거래가 확인됐다는 보도"
+    return "트럼프 OGE 신규 거래 관련 보도"
+
+
+def _source_name(item):
+    return _strip_tags(item.findtext("source")) or "웹 검색"
+
+
 def _period_from_text(text, published=""):
     low = (text or "").lower()
     year_match = re.search(r"\b(20\d{2})\b", f"{text} {published}")
@@ -225,6 +291,8 @@ def _discover_fallback_news():
                 desc = _strip_tags(item.findtext("description"))
                 link = (item.findtext("link") or "").strip()
                 pub = _strip_tags(item.findtext("pubDate"))
+                if not _is_recent_pub(pub):
+                    continue
                 hay = f"{title} {desc}".lower()
                 if not link or ("trump" not in hay and "트럼프" not in hay):
                     continue
@@ -246,7 +314,7 @@ def _discover_fallback_news():
                     "id": eid,
                     "period": period,
                     "title": title or "트럼프 OGE 신규 거래 보도",
-                    "source": _strip_tags(item.findtext("source")) or "웹 검색",
+                    "source": _source_name(item),
                     "url": link,
                     "published": pub,
                 }
@@ -299,7 +367,7 @@ def _fallback_message(event, rate, basis):
     return "\n".join([
         "📊 [트럼프 OGE 신규 거래 보도 감지]",
         f"출처: {event.get('source') or '웹 검색'}",
-        f"제목: {event.get('title') or '트럼프 OGE 거래 관련 보도'}",
+        f"제목: {_translate_title_ko(event.get('title') or '')}",
         f"거래 기준월: {event.get('period') or '자동 판정 불가'}",
         "",
         "• OGE 공개목록의 직접 PDF URL 탐색과 병행하는 보조 감시입니다.",
