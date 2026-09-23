@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-09-24T04:45:54+09:00",
+  "last_checked_kst": "2026-09-24T07:49:06+09:00",
   "media_id": null,
   "cftc_date": "September 15, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-24T04:45:54+09:00",
+    "checked_kst": "2026-09-24T07:49:06+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 15, 2026",
@@ -65,10 +65,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 105.078125,
-        "settlement": 105.078125,
-        "change": -0.921875,
-        "pct_change": -0.869693396226412,
+        "last": 105.09375,
+        "settlement": 105.09375,
+        "change": -0.90625,
+        "pct_change": -0.8549528301886822,
         "open_interest": 5377777,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 15, 2026)",
         "volume": 0,
@@ -83,10 +83,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 105.9375,
-        "settlement": 105.9375,
-        "change": -1.5625,
-        "pct_change": -1.4534883720930258,
+        "last": 105.96875,
+        "settlement": 105.96875,
+        "change": -1.53125,
+        "pct_change": -1.4244186046511675,
         "open_interest": 1867442,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 15, 2026)",
         "volume": 0,
@@ -116,12 +116,12 @@
       }
     },
     "yield10": {
-      "date": "2026-09-22",
-      "yield": 4.96,
-      "mean20": 4.8485,
-      "sd20": 0.12264888911033804,
-      "z20": 0.9090991431621704,
-      "distance_to_4_3_bp": 66.00000000000001
+      "date": "2026-09-23",
+      "yield": 5.11,
+      "mean20": 4.872,
+      "sd20": 0.12544321424453375,
+      "z20": 1.8972728133070091,
+      "distance_to_4_3_bp": 81.00000000000006
     },
     "repo": {
       "SOFR": {
@@ -155,7 +155,8 @@
     "stage": 0,
     "oi_scope_fixes": [
       "ZN OI 10→5,377,777로 동일 범위 교체",
-      "ZB OI 10→1,867,442로 동일 범위 교체"
+      "ZB OI 10→1,867,442로 동일 범위 교체",
+      "UB OI 10→2,470,471로 동일 범위 교체"
     ]
   },
   "last_fomc_eve_report": "2026-09-16",
