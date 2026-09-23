@@ -1,0 +1,206 @@
+name: Wonyotti 90D Thesis Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/wonyotti-90d-thesis-telegram-watch.yml"
+      - "scripts/wonyotti_90d_thesis_watch.py"
+      - "data/wonyotti_90d_thesis_watch_state.json"
+  schedule:
+    - cron: "17,47 * * * *"
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "Send one Telegram route test"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wonyotti-90d-thesis-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check --quiet beautifulsoup4 googlenewsdecoder==0.1.7
+
+      - name: Verify exact Telegram route
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("Missing KOSPI_DERIV_TELEGRAM_BOT_TOKEN")
+          if not chat_id:
+              raise RuntimeError("Missing KOSPI_DERIV_TELEGRAM_CHAT_ID")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?chat_id={chat_id}", timeout=25) as r:
+              chat = json.loads(r.read().decode("utf-8"))
+          if not chat.get("ok"):
+              raise RuntimeError(f"Telegram chat lookup failed: {chat}")
+          print(f"telegram_route_valid=true bot=@{actual} chat_id_present=true")
+          PY
+
+      - name: Validate and run thesis watcher
+        run: |
+          rm -f out/wonyotti_90d_thesis_alert.html out/wonyotti_90d_thesis_status.md out/wonyotti_90d_thesis_pending_state.json
+          python -m py_compile scripts/wonyotti_90d_thesis_watch.py
+          python scripts/wonyotti_90d_thesis_watch.py
+          cat out/wonyotti_90d_thesis_status.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -s out/wonyotti_90d_thesis_alert.html ]; then
+            printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/wonyotti_90d_thesis_alert.html >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Build route test
+        if: (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[telegram-test]'))
+        run: |
+          cat > out/wonyotti_90d_thesis_connection_test.html <<'EOF'
+          ✅ <b>워뇨띠 90일 서한 변곡 웹감시 연결 정상</b>
+
+          <b>송출 경로</b>
+          • 수신 봇: <b>@khs887900887900008879_bot</b>
+          • GitHub Actions → Python 웹감시 → Telegram Bot API
+          • 확인 주기: <b>30분</b> · 매시 17분/47분
+          • 신규 의미 변화만 송출 · 무변화 무알림 · 상태 저장으로 중복 차단
+
+          <b>감시 축</b>
+          • 암호화폐: BTC·ETH·SOL 가격, BTC 85,000달러 기준선, BTC·ETH 현물 ETF 일간/5영업일 자금, 선물 펀딩·미결제약정
+          • 나스닥 할인율: 미국 10년 명목금리·실질금리, 빅테크 AI 설비투자·가이던스 변화
+          • NVIDIA 수요의 질: SEC 10-Q/10-K, 매출채권 증가율과 분기 매출 증가율, 고객금융·현금회수 위험
+          • 메모리: DRAM·HBM·NAND를 분리해 2027~2028년 가격·공급부족·증설·고객인증 변화 추적
+          • 한국: 삼성전자·SK하이닉스 주주환원 규모·실제 집행·정책 변경 추적
+
+          <b>송출 원칙</b>
+          • 단순 가격 등락이나 중복 뉴스는 보내지 않음
+          • 뉴스는 공식성 있는 출처 또는 복수 신뢰 출처가 잡힐 때만 후보 채택
+          • 영문 제목은 한국어 변환 성공 때만 표시
+          • 원문 주소를 길게 노출하지 않고 <b>원문</b> 링크로 표시
+          • NVIDIA는 회계 부정으로 단정하지 않고 고객금융·매출채권·현금회수·수요의 질로 구분
+          EOF
+
+      - name: Send Telegram alert
+        if: hashFiles('out/wonyotti_90d_thesis_connection_test.html') != '' || hashFiles('out/wonyotti_90d_thesis_alert.html') != ''
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+
+          def split_message(text, limit=3800):
+              chunks, current = [], ""
+              for line in text.splitlines():
+                  candidate = line if not current else current + "\n" + line
+                  if len(candidate) <= limit:
+                      current = candidate
+                  else:
+                      if current:
+                          chunks.append(current)
+                      current = line
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          sent = []
+          for path in (
+              pathlib.Path("out/wonyotti_90d_thesis_connection_test.html"),
+              pathlib.Path("out/wonyotti_90d_thesis_alert.html"),
+          ):
+              if not path.exists():
+                  continue
+              text = path.read_text(encoding="utf-8").strip()
+              if not text:
+                  continue
+              for chunk in split_message(text):
+                  payload = urllib.parse.urlencode({
+                      "chat_id": chat_id,
+                      "text": chunk,
+                      "parse_mode": "HTML",
+                      "disable_web_page_preview": "true",
+                  }).encode("utf-8")
+                  request = urllib.request.Request(
+                      f"https://api.telegram.org/bot{token}/sendMessage",
+                      data=payload,
+                      method="POST",
+                  )
+                  with urllib.request.urlopen(request, timeout=30) as r:
+                      result = json.loads(r.read().decode("utf-8"))
+                  if not result.get("ok"):
+                      raise RuntimeError(f"Telegram rejected message: {result}")
+                  sent.append(result["result"].get("message_id"))
+          print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(sent)} ids={sent}")
+          PY
+
+      - name: Commit watcher state after successful delivery or silent run
+        if: success() && hashFiles('out/wonyotti_90d_thesis_pending_state.json') != ''
+        run: |
+          cp out/wonyotti_90d_thesis_pending_state.json data/wonyotti_90d_thesis_watch_state.json
+          git config user.name "wonyotti-thesis-watch[bot]"
+          git config user.email "wonyotti-thesis-watch[bot]@users.noreply.github.com"
+          cp data/wonyotti_90d_thesis_watch_state.json /tmp/wonyotti_90d_thesis_watch_state.json
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/wonyotti_90d_thesis_watch_state.json data/wonyotti_90d_thesis_watch_state.json
+            git add data/wonyotti_90d_thesis_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Wonyotti thesis state unchanged"
+              exit 0
+            fi
+            git commit -m "Update Wonyotti thesis watch state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wonyotti-90d-thesis-watch-${{ github.run_id }}
+          path: |
+            out/wonyotti_90d_thesis_status.md
+            out/wonyotti_90d_thesis_alert.html
+            out/wonyotti_90d_thesis_connection_test.html
+          if-no-files-found: ignore
+          retention-days: 14
