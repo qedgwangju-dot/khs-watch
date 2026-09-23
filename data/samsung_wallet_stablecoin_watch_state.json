@@ -11,18 +11,24 @@
     "article_confirmed": true,
     "errors": [],
     "job_fetch_ok": true,
-    "job_stablecoin_confirmed": false,
-    "samsung_support_confirmed": true
+    "job_stablecoin_confirmed": true,
+    "samsung_support_confirmed": true,
+    "explicit_reversal_confirmed": false
   },
   "topic_state": {
     "job_exists": true,
     "pilot_or_launch": false,
-    "stablecoin_bd_scope": false,
+    "stablecoin_bd_scope": true,
     "stablecoin_partner": "",
-    "stage": 1,
-    "stage_name": "지원 계획 공식화",
+    "stage": 2,
+    "stage_name": "사업개발·파트너십 실행",
     "support_plan": true,
-    "topic": "Samsung Wallet stablecoin adoption"
+    "topic": "Samsung Wallet stablecoin adoption",
+    "achieved_stage": 2,
+    "explicit_reversal_confirmed": false,
+    "status": "진행 중",
+    "official_job_scope_now": true
   },
-  "updated_at_kst": "2026-09-23T18:58:45+09:00"
+  "updated_at_kst": "2026-09-23T18:58:45+09:00",
+  "correction_pending": true
 }
