@@ -156,6 +156,15 @@ FALLBACK_SEED = {
     "url": SPACE_X_REUTERS_URL,
 }
 
+MSTR_SEED = {
+    "id": "oge-detail-mstr-2026-07",
+    "period": "2026-07",
+    "title": "President Trump Discloses He Owns Strategy Stock",
+    "source": "Bitcoin Treasuries",
+    "published": "2026-09-23",
+    "url": "https://ingress-prod.bitcointreasuries.net/news/president-trump-discloses-he-owns-strategy-stock",
+}
+
 FALLBACK_QUERIES = [
     '"Trump" "financial disclosure" bought sold shares',
     '"Trump" "Office of Government Ethics" stock trades',
@@ -359,7 +368,10 @@ def _periods_from_transactions(txs):
 
 
 def _discover_fallback_news():
-    out = {FALLBACK_SEED["id"]: dict(FALLBACK_SEED)}
+    out = {
+        FALLBACK_SEED["id"]: dict(FALLBACK_SEED),
+        MSTR_SEED["id"]: dict(MSTR_SEED),
+    }
     for query in FALLBACK_QUERIES:
         for rss_url in _rss_urls(query):
             try:
