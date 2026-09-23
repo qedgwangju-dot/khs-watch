@@ -106,19 +106,23 @@ TOYOTA_CAPEX = re.compile(r'1\s*조\s*엔|1\s*trillion\s*yen|\$6\.4\s*billion|6\
 
 
 def _query_toyota_robot_demand_recovery() -> list[dict]:
-    published = dt.datetime(2026, 9, 18, 7, 58, tzinfo=dt.timezone.utc)
+    # Short-lived recovery for the current Korean synthesis article that exposed
+    # the missing Toyota/auto-OEM demand lane. It shares the durable 9/18 event key,
+    # so it verifies detection without re-alerting a known baseline.
+    published = dt.datetime(2026, 9, 23, 6, 16, tzinfo=dt.timezone.utc)
     if base.NOW - published > dt.timedelta(hours=120):
         return []
     return [{
-        'title': '토요타, 2028년부터 연 1조엔 공장 자동화 검토…로봇 약 40만대 필요 추산',
-        'link': 'https://www.reuters.com/business/autos-transportation/toyota-estimates-factory-automation-could-cost-64-billion-per-year-2028-2026-09-18/',
+        'title': '현대차·토요타·테슬라, 휴머노이드 큰손…부품사 수주전 불붙었다',
+        'link': 'https://www.mt.co.kr/industry/2026/09/23/2026092314084449540',
         'description': (
             'Toyota estimates factory modernization across Toyota, group companies and major suppliers '
             'could require about 1 trillion yen annually from 2028 and around 400,000 robots. '
-            'The 400,000 includes replacement and new installations and both humanoid and non-humanoid robots.'
+            'The 400,000 includes replacement and new installations and both humanoid and non-humanoid robots. '
+            'The article also reviews Hyundai/Boston Dynamics, Tesla supplier audits and Korean component suppliers.'
         ),
         'published': published.isoformat(),
-        'source': 'Reuters',
+        'source': '머니투데이',
         'toyota_robot_demand': True,
     }]
 
