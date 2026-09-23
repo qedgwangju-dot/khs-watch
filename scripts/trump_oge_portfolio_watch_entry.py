@@ -98,6 +98,7 @@ def _telegram_html(text: str) -> str:
             (r"원문:\s*(https?://\S+)", "원문"),
             (r"Reuters 보도:\s*(https?://\S+)", "Reuters 원문"),
             (r"조선일보:\s*(https?://\S+)", "조선일보 원문"),
+            (r"BBC 원문:\s*(https?://\S+)", "BBC 원문"),
             (r"OGE 공개목록:\s*(https?://\S+)", "OGE 공개목록"),
         ]
         rendered = False
@@ -167,6 +168,15 @@ MSTR_SEED = {
 
 BBC_AI_SEED = {
     "id": "oge-detail-bbc-big-tech-ai-2026-07",
+    "period": "2026-07",
+    "title": "Trump reveals millions of dollars' worth of share deals in big tech and AI",
+    "source": "BBC 비즈니스",
+    "published": "2026-09-23",
+    "url": "https://www.bbc.co.uk/news/articles/c6p3kxpp8lezo?at_medium=RSS&at_campaign=rss",
+}
+
+BBC_AI_CORRECTION_SEED = {
+    "id": "oge-detail-bbc-big-tech-ai-2026-07-corrected-v2",
     "period": "2026-07",
     "title": "Trump reveals millions of dollars' worth of share deals in big tech and AI",
     "source": "BBC 비즈니스",
@@ -386,6 +396,7 @@ def _discover_fallback_news():
         FALLBACK_SEED["id"]: dict(FALLBACK_SEED),
         MSTR_SEED["id"]: dict(MSTR_SEED),
         BBC_AI_SEED["id"]: dict(BBC_AI_SEED),
+        BBC_AI_CORRECTION_SEED["id"]: dict(BBC_AI_CORRECTION_SEED),
     }
     for query in FALLBACK_QUERIES:
         for rss_url in _rss_urls(query):
@@ -449,6 +460,8 @@ def _detail_kind(event):
     if any(k in title for k in ["strategy", "microstrategy", "mstr"]):
         if any(k in title for k in ["trump", "financial disclosure", "ethics filing", "account"]):
             return "july-mstr-trades"
+    if event.get("id") == BBC_AI_CORRECTION_SEED["id"]:
+        return "july-bbc-big-tech-ai-corrected-v2"
     if event.get("id") == BBC_AI_SEED["id"] or (
         "big tech" in title and "ai" in title and "trump" in title
     ):
@@ -615,12 +628,44 @@ def main_with_fallback():
             (e for e in unique_generic if _detail_kind(e) == "july-mstr-trades"),
             None,
         )
+        bbc_ai_correction = next(
+            (e for e in unique_generic if _detail_kind(e) == "july-bbc-big-tech-ai-corrected-v2"),
+            None,
+        )
         bbc_ai_detail = next(
             (e for e in unique_generic if _detail_kind(e) == "july-bbc-big-tech-ai"),
             None,
         )
 
-        if bbc_ai_detail:
+        if bbc_ai_correction:
+            lines = [
+                "🤖 [트럼프 OGE 7월 신고 — 빅테크·AI 거래 정정본]",
+                "판정: 기존 7월 OGE 신고의 추가 분석 · 새 신고 아님",
+                f"원화 환산 기준: 1달러={rate:,.2f}원 ({basis})",
+                "",
+                "▶ 한눈에 보기",
+                f"• Microsoft 매도 합산: 650만~3,100만달러 ({watch.krw_range(6_500_000, 31_000_000, rate)})",
+                f"• Microsoft 매수 합산: 16만5,000~40만달러 ({watch.krw_range(165_000, 400_000, rate)})",
+                "• Nvidia·Palantir: 7월 신고에서 매수와 매도가 모두 확인",
+                "• SpaceX·Tesla: 7월 신고에서 매수와 매도가 모두 확인",
+                "",
+                "▶ 추가 교차확인",
+                f"• SpaceX 7월 10일 매수: 1만5,001~5만달러 ({watch.krw_range(15_001, 50_000, rate)})",
+                f"• SpaceX 7월 17일 매도: 1,001~1만5,000달러 ({watch.krw_range(1_001, 15_000, rate)})",
+                "• SpaceX 금액은 Reuters의 동일 OGE 신고 분석으로 교차확인",
+                "",
+                "▶ 해석 주의",
+                "• BBC는 동일한 7월 OGE 신고를 빅테크·AI 종목 중심으로 재구성한 후속 보도입니다.",
+                "• Nvidia·Palantir·Tesla의 개별 거래금액은 BBC 본문에서 직접 제시되지 않아 임의 계산하지 않습니다.",
+                "• 백악관은 해당 주식·채권 포트폴리오가 제3자에 의해 독립적으로 운용된다는 입장입니다.",
+                "• ‘개별 종목 시장 영향 제한적’은 공식 신고 사실이 아니라 별도 시장 해석이므로 확정 사실과 분리합니다.",
+                "",
+                "▶ 출처",
+                f"BBC 원문: {BBC_AI_CORRECTION_SEED['url']}",
+                f"Reuters 보도: {SPACE_X_REUTERS_URL}",
+                f"OGE 공개목록: {OGE_PUBLIC_LIST}",
+            ]
+        elif bbc_ai_detail:
             lines = [
                 "🤖 [트럼프 OGE 7월 신고 — 빅테크·AI 거래 추가 분석]",
                 "판정: 기존 7월 OGE 신고의 추가 세부사항 · 새 신고 아님",
@@ -701,7 +746,9 @@ def main_with_fallback():
                 "",
                 "▶ 관련 보도",
             ]
-        if bbc_ai_detail:
+        if bbc_ai_correction:
+            display_events = []
+        elif bbc_ai_detail:
             display_events = [bbc_ai_detail]
         elif mstr_detail:
             display_events = [mstr_detail]
@@ -715,7 +762,8 @@ def main_with_fallback():
                 f"   {_translate_title_ko(event.get('title') or '')}",
                 f"   원문: {event.get('url')}",
             ]
-        lines += ["", f"OGE 공개목록: {OGE_PUBLIC_LIST}"]
+        if not bbc_ai_correction:
+            lines += ["", f"OGE 공개목록: {OGE_PUBLIC_LIST}"]
         watch.send_message(token, chat_id, "\n".join(lines))
 
         for event in generic:
