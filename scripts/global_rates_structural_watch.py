@@ -197,9 +197,11 @@ def auction_grade(auction: dict[str, Any]) -> str:
 
 
 def fetch_recent_auction(now: dt.datetime) -> dict[str, Any] | None:
-    # Results are normally posted on the auction day. Looking back four calendar
-    # days covers weekends without pretending that a non-auction day had a result.
-    for offset in range(0, 5):
+    # Regular coupon JGB auctions can be more than a week apart, especially
+    # around Japanese holidays. Keep the latest official result available for
+    # context by looking back 21 calendar days. The result date is retained so
+    # an older result can be displayed without being misclassified as a new event.
+    for offset in range(0, 22):
         day = now.date() - dt.timedelta(days=offset)
         url = MOF_AUCTION_EN.format(day=day.strftime("%Y%m%d"))
         try:
@@ -209,6 +211,7 @@ def fetch_recent_auction(now: dt.datetime) -> dict[str, Any] | None:
                 continue
             raise
         if parsed:
+            parsed["source_date"] = day.isoformat()
             return parsed
     return None
 
@@ -442,9 +445,16 @@ def main() -> int:
         old = previous_auctions.get(tenor) or {}
         new_date = auction["auction_date"] != old.get("auction_date")
         grade = auction["grade"]
+        source_date = str(auction.get("source_date") or "")
+        try:
+            auction_age_days = (now.date() - dt.date.fromisoformat(source_date)).days
+        except Exception:
+            auction_age_days = None
+        fresh_for_alert = auction_age_days is not None and 0 <= auction_age_days <= 2
+        auction["age_days"] = auction_age_days
         signals["jgb_auction_weak"] = grade in {"수요 약함", "수요 매우 약함"}
         auction["accepted_krw"] = yen_to_krw(float(auction["accepted_billion_yen"]) * 1e9, fx)
-        if new_date:
+        if new_date and fresh_for_alert:
             if grade in {"수요 약함", "수요 매우 약함"}:
                 events.append({
                     "type": "jgb_auction_weak",
