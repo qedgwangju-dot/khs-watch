@@ -153,6 +153,7 @@
     "f5a164229bbed03cb0c1c3b1",
     "f6c31071f5914a547fcb3fa1",
     "f6ea3f1fc68e1e473bcd91cb",
+    "f7ba633e0f7a24fe0314b575",
     "fabfb78c79fac517e54dc7b3",
     "fb3f11c8c71336071691a17e",
     "fc8d9ad3059f3fc4d09ac22a",
@@ -160,8 +161,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-24T19:15:36+09:00",
-  "last_event_count": 77,
+  "updated_at_kst": "2026-09-25T00:18:33+09:00",
+  "last_event_count": 82,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -182,7 +183,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-24T19:15:36+09:00",
+  "last_successful_official_at_kst": "2026-09-25T00:18:33+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -293,7 +294,7 @@
       "observed_at": "baseline"
     }
   },
-  "last_ops_observation_count": 5,
+  "last_ops_observation_count": 0,
   "last_ops_alert_count": 0,
   "hbm_share_forecasts": {
     "jpmorgan|sales|2026": {
@@ -844,7 +845,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-24T19:15:36+09:00",
+      "last_checked_at_kst": "2026-09-25T00:18:33+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -854,7 +855,8 @@
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
-      "non_concrete_generic_evidence_suppressed": 4
+      "non_concrete_generic_evidence_suppressed": 4,
+      "rdimm_quote|dramexchange|32|4800/5600": "지연 원자료: 현재 가격 알림 보류"
     },
     "version": 1,
     "reference_capture": {
@@ -898,7 +900,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-24T19:18:03+09:00",
+    "checked_at_kst": "2026-09-25T00:21:11+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
