@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/khs-policy-watch.yml"
+      - "scripts/khs_nuclear_policy_watch.py"
   schedule:
     # Run every 15 minutes, offset from crowded 00/15/30/45 slots.
     - cron: "2,17,32,47 * * * *"
@@ -41,6 +42,32 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate nuclear watcher regression tests
+        run: |
+          python -m py_compile scripts/khs_nuclear_policy_watch.py
+          PYTHONPATH=. python - <<'PY'
+          import scripts.khs_nuclear_policy_watch as m
+          m._self_test_material_filter()
+          m._self_test_smr_event_state_model()
+          assert not m._is_material_westinghouse(
+              "원전 투자 앞둔 정부, 미국과 웨스팅하우스 지분율 줄다리기",
+              "news.sbs.co.kr",
+          )
+          assert "stake_range:5~10" in m._wec_state_key(
+              "웨스팅하우스 지분 5~10% 인수…의결권 가능",
+              "한국경제",
+          )
+          print("nuclear_regression_tests=passed")
+          PY
+
       - name: Enable existing KHS policy schedule
         env:
           GH_TOKEN: ${{ github.token }}
