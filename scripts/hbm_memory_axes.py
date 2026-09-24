@@ -24,6 +24,9 @@ EXTRA_QUERIES = [
     '(P5 OR Fab1) (삼성 OR Samsung) (가동 OR 양산 OR production OR delay)',
     '말레이시아 8542323000 HBM 수출 8월 16억2454만달러',
     'Malaysia 8542323000 HBM exports Intel ASE TF-AMD MAPC advanced packaging',
+    'Bernstein HBM revenue estimate Samsung SK hynix 3Q26 exports regression',
+    'J.P. Morgan HBM revenue estimate Samsung SK hynix Micron quarter forecast',
+    'UBS HBM revenue estimate Samsung SK hynix Micron quarter forecast',
 ]
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
@@ -31,6 +34,15 @@ OFFICIAL = {'news.samsung.com': 'samsung', 'semiconductor.samsung.com': 'samsung
             'news.skhynix.com': 'skhynix', 'investors.micron.com': 'micron', 'micron.com': 'micron',
             'nvidianews.nvidia.com': 'nvidia', 'developer.nvidia.com': 'nvidia'}
 RANK = {'user_capture': 0, 'reported': 1, 'research': 2, 'official': 3}
+INSTITUTIONS = {
+    'bernstein': (r'Bernstein', r'번스타인'),
+    'jpmorgan': (r'J[.]?P[.]?\s*Morgan', r'JP\s*Morgan', r'제이피모건'),
+    'ubs': (r'\bUBS\b',),
+    'morgan_stanley': (r'Morgan\s+Stanley', r'모건스탠리'),
+    'citi': (r'\bCiti\b', r'Citigroup', r'씨티'),
+    'bofa': (r'BofA', r'Bank\s+of\s+America', r'뱅크오브아메리카'),
+    'goldman_sachs': (r'Goldman\s+Sachs', r'골드만삭스'),
+}
 
 
 def dump(path, value):
@@ -134,7 +146,9 @@ def is_axis_text(text):
     return bool(re.search(
         r'RDIMM|현물.*프리미엄|spot.*premium|글라스 캐리어|glass carrier|유리 지지판|P5|'
         r'HBM.*(?:공급 부족|증산|웨이퍼|wafer|supply)|HBM4E?.*(?:\d+\s*Gb|\d+\s*GB|\d+\s*단)|'
-        r'말레이시아.*(?:8542[.]?32[.]?3000|HBM)|Malaysia.*(?:8542[.]?32[.]?3000|HBM)',
+        r'말레이시아.*(?:8542[.]?32[.]?3000|HBM)|Malaysia.*(?:8542[.]?32[.]?3000|HBM)|'
+        r'HBM.*(?:매출|revenue).*(?:전망|estimate|forecast|regression)|'
+        r'(?:Bernstein|번스타인|J[.]?P[.]? Morgan|UBS).*HBM',
         text, re.I))
 
 
@@ -246,12 +260,122 @@ def _malaysia_export_record(item, body):
         scope='HBM_included_multichip_IC_not_HBM_only')
 
 
+def _institution(text):
+    for name, patterns in INSTITUTIONS.items():
+        if any(re.search(p, text, re.I) for p in patterns):
+            return name
+    return ''
+
+
+def _quarter(text, published=''):
+    patterns = (
+        r'\b([1-4])Q\s*(20\d{2})\b',
+        r'\b([1-4])Q(\d{2})\b',
+        r'\b(20\d{2})\s*년\s*([1-4])\s*분기\b',
+    )
+    for i, pat in enumerate(patterns):
+        m = re.search(pat, text, re.I)
+        if not m:
+            continue
+        if i == 0:
+            q, year = m[1], m[2]
+        elif i == 1:
+            q, yy = m[1], int(m[2]); year = str(2000 + yy)
+        else:
+            year, q = m[1], m[2]
+        return f'{year}Q{q}'
+    return ''
+
+
+def _usd_amount_near_hbm_revenue(text):
+    patterns = (
+        r'(?:HBM\s*(?:revenue|sales)|HBM\s*매출)[^$\d]{0,80}(?:US\$|\$)\s*([\d.]+)\s*(B|billion|M|million)\b',
+        r'(?:US\$|\$)\s*([\d.]+)\s*(B|billion|M|million)\b[^.]{0,90}(?:HBM\s*(?:revenue|sales)|HBM\s*매출)',
+        r'(?:HBM\s*매출)[^\d]{0,80}([\d.]+)\s*(?:십억\s*달러|billion\s*dollars?)',
+    )
+    for pat in patterns:
+        m = re.search(pat, text, re.I)
+        if not m:
+            continue
+        n = float(m[1])
+        scale = m[2].lower() if len(m.groups()) >= 2 and m[2] else 'billion'
+        return n * (1_000_000 if scale in ('m','million') else 1_000_000_000)
+    return None
+
+
+def _pct_near(text, labels):
+    for label in labels:
+        patterns = (
+            re.escape(label) + r'[^%]{0,50}?([+-]?\d+(?:\.\d+)?)\s*%',
+            r'([+-]?\d+(?:\.\d+)?)\s*%[^.]{0,50}?' + re.escape(label),
+        )
+        for pat in patterns:
+            m = re.search(pat, text, re.I)
+            if m:
+                return float(m[1])
+    return None
+
+
+def parse_hbm_revenue_estimates(item, body):
+    text = re.sub(r'\s+', ' ', body)
+    inst = _institution(item.get('title','') + ' ' + item.get('source','') + ' ' + text[:5000])
+    if not inst or not re.search(r'HBM', text, re.I):
+        return []
+
+    published = item.get('published_at_kst', '')
+    rows = []
+    paragraphs = [p.strip() for p in re.split(r'(?<=[.!?])\s+(?=[A-Z가-힣])|\n+', body) if p.strip()]
+    for company, pat in COMPANIES.items():
+        candidates = [p for p in paragraphs if re.search(pat, p, re.I) and re.search(r'HBM', p, re.I)
+                      and re.search(r'매출|revenue|sales', p, re.I)]
+        if not candidates:
+            continue
+        for p in candidates:
+            period = _quarter(p, published) or _quarter(item.get('title',''), published)
+            if not period:
+                continue
+            amount = _usd_amount_near_hbm_revenue(p)
+            if amount is None:
+                continue
+
+            low = p.lower()
+            method = 'regression_proxy' if re.search(r'regression|회귀', p, re.I) else (
+                'formal_forecast' if re.search(r'forecast|estimate|전망|추정', p, re.I) else 'reported_estimate')
+            qoq = _pct_near(p, ('QoQ','전분기','sequential'))
+            if qoq is not None and re.search(r'down|decline|감소|하락', p, re.I) and qoq > 0:
+                qoq = -qoq
+
+            prior = None
+            pm = re.search(r'(?:forecast|기존\s*전망|previous\s*forecast)[^$]{0,50}(?:US\$|\$)\s*([\d.]+)\s*(B|billion|M|million)', p, re.I)
+            if pm:
+                prior = float(pm[1]) * (1_000_000 if pm[2].lower() in ('m','million') else 1_000_000_000)
+
+            alt = None
+            am = re.search(r'(?:could\s+reach|alternative|상단|대안)[^$]{0,70}(?:US\$|\$)\s*([\d.]+)\s*(B|billion|M|million)', p, re.I)
+            if am:
+                alt = float(am[1]) * (1_000_000 if am[2].lower() in ('m','million') else 1_000_000_000)
+
+            value = {
+                'estimate_usd': amount,
+                'qoq_pct': qoq,
+                'prior_formal_forecast_usd': prior,
+                'alternative_usd': alt,
+                'method': method,
+            }
+            rows.append(make_record(
+                'hbm_revenue_estimate', [inst, company, period, method], value, 'USD/quarter', period,
+                item, p, scope='institutional_estimate_not_company_reported_revenue'))
+            break
+    return rows
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
     malaysia = _malaysia_export_record(item, body)
     if malaysia:
         records.append(malaysia)
+    records.extend(parse_hbm_revenue_estimates(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
@@ -385,6 +509,22 @@ def public_spot_quotes(raw, checked):
 
 def comparison(old, new):
     a, b = old['value'], new['value']
+    if new['axis'] == 'hbm_revenue_estimate':
+        reasons = []
+        old_est = float(a.get('estimate_usd') or 0)
+        new_est = float(b.get('estimate_usd') or 0)
+        if old_est and new_est:
+            delta_usd = new_est - old_est
+            delta_pct = (new_est / old_est - 1) * 100
+            if abs(delta_usd) >= 1_000_000_000 or abs(delta_pct) >= 10:
+                reasons.append(f"분기 HBM 매출 추정 {delta_pct:+.1f}% ({delta_usd/1e9:+.1f}십억달러)")
+        old_q = a.get('qoq_pct')
+        new_q = b.get('qoq_pct')
+        if old_q is not None and new_q is not None and abs(new_q - old_q) >= 10:
+            reasons.append(f"전분기 증감률 전망 {new_q-old_q:+.1f}%p")
+        if a.get('method') != b.get('method'):
+            reasons.append(f"추정방법 {a.get('method')}→{b.get('method')}")
+        return reasons
     if new['axis'] == 'malaysia_hsk10_export':
         reasons = []
         if old.get('period') != new.get('period'):
@@ -422,7 +562,7 @@ def update_state(state, records, now, seeds=None):
     state = copy.deepcopy(state or {})
     for name in ('last_notified', 'latest', 'pending', 'coverage'):
         state.setdefault(name, {})
-    if seeds and not state.get('version'):
+    if seeds:
         for r in seeds:
             state['last_notified'].setdefault(r['key'], r)
             state['latest'].setdefault(r['key'], r)
@@ -475,7 +615,8 @@ def render(change, rate=None):
     names = {'rdimm_quote': '서버 RDIMM 공개 현물가격', 'ddr5_chip_quote': 'DDR5 16Gb 칩 현물가격', 'rdimm': '서버 DDR5 가격·프리미엄', 'hbm_config': 'HBM 칩 용량·적층 구성',
              'wafer_share': 'HBM 웨이퍼 배분 전망', 'bit_share': 'HBM 비트 공급 비중 전망',
              'carrier_cleaning': 'HBM 유리 지지판 세정 처리량', 'fab_stage': 'P5 Fab1 공급 일정',
-             'malaysia_hsk10_export': '한국→말레이시아 HBM 관련 HSK10 수출'}
+             'malaysia_hsk10_export': '한국→말레이시아 HBM 관련 HSK10 수출',
+             'hbm_revenue_estimate': '기관 HBM 분기 매출 추정 변화'}
     def fmt(record):
         v = record['value']
         if record['axis'] == 'rdimm':
@@ -489,6 +630,18 @@ def render(change, rate=None):
         if record['axis'] == 'fab_stage':
             labels = {'plan': '계획', 'delayed': '지연', 'cancelled': '취소', 'reported_operation': '가동 보도'}
             return f"{v['year']}년 · {labels.get(v['stage'], v['stage'])}"
+        if record['axis'] == 'hbm_revenue_estimate':
+            amount = v.get('estimate_usd') or 0
+            text = f"분기 추정 {amount/1e9:.1f}십억달러"
+            if rate:
+                text += f"(약 {amount*rate/1e12:.2f}조원)"
+            if v.get('qoq_pct') is not None:
+                text += f" / 전분기 {v['qoq_pct']:+.1f}%"
+            if v.get('prior_formal_forecast_usd'):
+                text += f" / 기존 공식 전망 참조 {v['prior_formal_forecast_usd']/1e9:.1f}십억달러"
+            if v.get('alternative_usd'):
+                text += f" / 대안 시나리오 {v['alternative_usd']/1e9:.1f}십억달러"
+            return text
         if record['axis'] == 'malaysia_hsk10_export':
             amount = v.get('amount_usd') or 0
             text = f"수출 {amount/1e9:.3f}십억달러"
@@ -523,6 +676,10 @@ def render(change, rate=None):
         lines.append('• 재사용 세정 처리량이며 웨이퍼 생산·칩 출하·수주금액으로 치환하지 않습니다.')
     if r['axis'] in ('wafer_share', 'bit_share'):
         lines.append('• 연말 전망이며 연간 평균·실제 확정 생산량과 비교하지 않습니다.')
+    if r['axis'] == 'hbm_revenue_estimate':
+        method_labels = {'regression_proxy':'수출 회귀식 대용지표', 'formal_forecast':'기관 공식 전망', 'reported_estimate':'보도 추정'}
+        lines.append('• 성격: ' + method_labels.get(r['value'].get('method'), r['value'].get('method','')) + '이며 회사 확정 매출이 아닙니다.')
+        lines.append('• 회귀식 추정치와 기관의 정식 실적 전망을 같은 값으로 합치지 않습니다.')
     if r['axis'] == 'malaysia_hsk10_export':
         lines.append('• HSK 8542323000은 HBM 포함 복합구조칩 집적회로로 HBM 전용 통계가 아닙니다.')
         if r['value'].get('weight_rounded_from_public_text'):
