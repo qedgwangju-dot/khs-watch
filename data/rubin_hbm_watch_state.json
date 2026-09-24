@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-24T08:48:17+09:00",
+  "updated_at_kst": "2026-09-24T14:05:27+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -44,6 +44,7 @@
     "ad831c0a9b75057895ffb73a",
     "adca27d662f4cb51e531edfd",
     "b7a9ea191f0d39046caeeb6d",
+    "bc36972bfd79436e7ad41fd1",
     "c1d173fd17a8a8cd17f5cd5b",
     "c1ede00bdbacc4e73f3e3732",
     "c66bcba5501ce4414506b0e6",
@@ -80,12 +81,12 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1365.35,
-    "date": "2026-09-23 일일 기준 · ECB/Frankfurter · 조회 2026-09-24 08:48 KST · 보조 API 2026-09-23 · 차이 0.85% · 일중 기준시각 차이 가능",
+    "date": "2026-09-23 일일 기준 · ECB/Frankfurter · 조회 2026-09-24 14:05 KST · 보조 API 2026-09-24 · 차이 0.04% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
   "errors": [
-    "교차검증 부족으로 발송 제외: newspim.com | AI가 HBM 이어 낸드 생산라인도 바꾼다…삼성·SK, eSSD 우선 배정 - newspim.com"
+    "핵심 사실 자동추출 실패로 발송 제외: 富途牛牛 | Report: Samsung may double its HBM4/HBM4E production next year, with the product mix rising from 40% to 80% - 富途牛牛"
   ],
   "ai_component_leadtime": {
     "as_of": "2026-09-21",
@@ -135,13 +136,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-09-24T08:48:25+09:00",
+    "last_checked_at_kst": "2026-09-24T14:05:34+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 1,
   "delivery_check": {
-    "checked_at_kst": "2026-09-24T08:48:40+09:00",
+    "checked_at_kst": "2026-09-24T14:05:52+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-09-22T17:58:13+09:00",
