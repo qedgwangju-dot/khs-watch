@@ -1,11 +1,11 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-25T02:30:24+09:00",
+  "updated_at_kst": "2026-09-25T05:43:57+09:00",
   "source_ids": {
     "reserve_period": "August 2026",
     "intervention_url": "https://www.mof.go.jp/policy/international_policy/reference/feio/data/monthly/20260828.html",
     "tic_month": "2026-07",
-    "h41_release": "September 17, 2026"
+    "h41_release": "September 24, 2026"
   },
   "snapshot": {
     "official_reserve_bn": 1207.524,
@@ -15,7 +15,7 @@
     "gold_bn": 124.103,
     "intervention_trillion_yen": 15.3993,
     "tic_japan_bn": 1103.9,
-    "fima_bn": 0.001,
+    "fima_bn": 0.0,
     "foreign_custody_bn": null
   }
 }
