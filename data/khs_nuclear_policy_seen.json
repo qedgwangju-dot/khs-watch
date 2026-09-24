@@ -34,14 +34,15 @@
     }
   },
   "smr_state_model_version": 3,
-  "updated_at_kst": "2026-09-24T10:30:03+09:00",
+  "updated_at_kst": "2026-09-24T14:21:00+09:00",
   "westinghouse_issue_state": {
-    "first_seen_kst": "2026-09-24T10:30:03+09:00",
-    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1fODhJNXlHb1VVTGhtb1VydUw5YnBLVm9rNkgzYkV2dlB1N0hKYkYtMWZvSmVRazYtQ2Npbl92UnlDXzRDR09GcnVfY3ZYWHJoUkdnRW5jX0c5MExOM1BmYUh5SFdpUy1DOUE?oc=5",
-    "published_utc": "2026-09-16T05:48:37+00:00",
-    "source": "news.sbs.co.kr",
-    "state_key": "지분율·가격 등 거래조건 변화|no-number|reported",
-    "status": "지분율·가격 등 거래조건 변화",
-    "title": "원전 투자 앞둔 정부, 미국과 웨스팅하우스 지분율 줄다리기"
-  }
+    "state_key": "governance:voting_possible|stake_range:5~10",
+    "status": "5~10% 지분 협의·의결권 검토",
+    "title": "웨스팅하우스 지분 5~10% 인수·의결권 가능성 논의",
+    "source": "2026-09-22 국회 보고·복수 보도",
+    "link": "https://www.hankyung.com/article/2026092218041",
+    "published_utc": "2026-09-22T08:48:00+00:00",
+    "first_seen_kst": "2026-09-24T14:21:00+09:00"
+  },
+  "westinghouse_state_model_version": 2
 }
