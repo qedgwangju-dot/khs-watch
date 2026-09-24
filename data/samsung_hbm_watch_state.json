@@ -4,6 +4,7 @@
     "02a9ff8b7b18764c64a8220e",
     "034038a3bbe2593dcdf3aaf5",
     "03e375cb2ac8ee053d78045a",
+    "05692592093313cc05c062c2",
     "05c27d7b30704f2bd464f146",
     "0833d662f2bc1ef69385334d",
     "0c9de789f40a57b1f7452b32",
@@ -59,6 +60,7 @@
     "526c2759fcea00d96c03da97",
     "56b2de8304378c3a06fa5b4c",
     "5a3a72fe34f95c5f38edf6f5",
+    "5cdb4edd07a7b43ea88cbae8",
     "5d10c70a6f648f2a02de1e05",
     "5e304c914d7ab868e24a3585",
     "5e34c24f642a6b4391a17f12",
@@ -88,6 +90,7 @@
     "8373adbcfc508c1a31114ac1",
     "86390aba27173d50352a39ed",
     "863bf5e58c0b909bc1684cb9",
+    "8701e18d89fed22673e4303c",
     "87a5705365eae516605d4ffd",
     "8e73f51c8102b58456035bcc",
     "9046127bdbf6a9b5874f4a55",
@@ -102,6 +105,7 @@
     "a42f64d496ea3b33d8256a30",
     "a5a275fb929f37b120e7a8ed",
     "a8045c048cc6c2f3e1151eca",
+    "a845562aec371314227ee9ca",
     "a9a2b98d9be48dfaa7992df7",
     "ab946d84cf8d9b45b14ee055",
     "aecd0190a7a845249b865cbb",
@@ -112,6 +116,7 @@
     "b8b49c879b5584546caf1fba",
     "bb8d68accda30ea0a27f488c",
     "bd26432b3c3bf171b67b4e34",
+    "bd89f94d9970c70227357ae5",
     "be3ea72057cda8f38d4e8424",
     "be85fd0abf51ad7d2a53e36f",
     "bf36069b039f4887166a44a2",
@@ -145,6 +150,7 @@
     "ed1c60b97398767e08f42c38",
     "ee7cfb5b8d2e973d5f37af8e",
     "ef39d6d349a69c7968cc145c",
+    "efbea32ada40e92e9a9983e1",
     "f054bf6b15d0eaf2e5370773",
     "f14e72d8efa2d3322a48ed8d",
     "f200e58d9c12484220e2e143",
@@ -163,10 +169,10 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-25T04:20:56+09:00",
-  "last_event_count": 81,
-  "last_fresh_new_count": 1,
-  "last_send_event_count": 1,
+  "updated_at_kst": "2026-09-25T07:36:34+09:00",
+  "last_event_count": 84,
+  "last_fresh_new_count": 0,
+  "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
   "official_month": "202608",
@@ -185,7 +191,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-25T04:20:56+09:00",
+  "last_successful_official_at_kst": "2026-09-25T07:36:34+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -852,10 +858,11 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-25T04:20:56+09:00",
+      "last_checked_at_kst": "2026-09-25T07:36:34+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
+        "원문 확인 실패: biz.chosun.com / URLError",
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
       "observations": 8,
@@ -907,8 +914,8 @@
     "payload_hash": "530c48c0c3871196399dafd3e2e227a9db75485cec1621c5f619886372c1e158"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-25T04:23:24+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-09-25T07:39:46+09:00",
+    "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
 }
