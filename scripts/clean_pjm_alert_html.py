@@ -120,6 +120,8 @@ def translate_mymemory(text: str) -> str | None:
 
 def classify(text: str) -> str:
     low = text.lower()
+    if "er26-3515" in low:
+        return "대형부하 접속·등록"
     if any(k in low for k in ("h.r. 9340", "hr 9340", "s. 5028", "s 5028", "s. 5199", "s 5199", "ratepayer protection act", "grid savings act")):
         return "연방법안·비용배분"
     if any(k in low for k in ("consumer", "ratepayer", "transmission", "affordability", "cost allocation", "costs")):
@@ -145,6 +147,9 @@ def fallback_korean(theme: str) -> str:
 
 def translate_title(title: str, theme: str) -> str:
     clean = strip_source_suffix(title)
+    low = clean.lower()
+    if "er26-3515" in low:
+        return "PJM, IRAS·대형부하 등록부 수정안 수용 요청 · 2026년 10월 12일 효력 요청"
     if has_korean(clean):
         return clean
 
@@ -168,6 +173,39 @@ def translate_title(title: str, theme: str) -> str:
     # English headlines are never emitted untranslated. If both translation
     # services fail, emit a Korean topic label while preserving the clickable URL.
     return fallback_korean(theme)
+
+
+def extract_docket(text: str) -> str:
+    m = re.search(r"\b(?:ER|EL|RM)\d{2}-\d+(?:-\d+)?\b", text or "", re.I)
+    return m.group(0).upper() if m else ""
+
+
+def event_key(item: dict[str, str]) -> str:
+    docket = extract_docket(f"{item.get('title', '')} {item.get('url', '')}")
+    if docket:
+        return f"docket:{docket}"
+    url = item.get("url", "")
+    parsed = urllib.parse.urlparse(url)
+    host = parsed.netloc.lower().replace("www.", "")
+    path = parsed.path.rstrip("/") or "/"
+    if host == "pjm.com" and path == "/" and item.get("theme") == "기타 정책 변화":
+        return "generic:pjm-home"
+    return f"{item.get('theme','')}|{host}|{path}|{normalize(item.get('title','')).casefold()}"
+
+
+def row_quality(item: dict[str, str]) -> tuple[int, int, int]:
+    title = item.get("title", "")
+    low = title.lower()
+    docket = extract_docket(title)
+    action = sum(
+        1 for k in (
+            "filed", "submitted", "motion", "answer", "request", "effective",
+            "approved", "order", "accept", "reject", "registry", "large load",
+        )
+        if k in low
+    )
+    generic_penalty = 1 if item.get("theme") == "기타 정책 변화" else 0
+    return (generic_penalty, -action, -len(title))
 
 
 def main() -> None:
@@ -215,20 +253,27 @@ def main() -> None:
     if not parsed:
         return
 
-    chosen: list[dict[str, str]] = []
-    used_themes: set[str] = set()
+    # Collapse multiple representations of the same official event. PJM's
+    # homepage can expose one filing as a docket link, a body fragment and a
+    # Google-News row; those are one event, not three.
+    by_event: dict[str, dict[str, str]] = {}
+    raw_count = len(parsed)
     for item in parsed:
-        theme = item["theme"]
-        if theme in used_themes:
+        key = event_key(item)
+        if key == "generic:pjm-home":
             continue
-        used_themes.add(theme)
-        chosen.append(item)
-        if len(chosen) >= 4:
-            break
+        previous = by_event.get(key)
+        if previous is None or row_quality(item) < row_quality(previous):
+            by_event[key] = item
+
+    chosen = sorted(by_event.values(), key=row_quality)[:4]
+    official_unique = sum(1 for item in chosen if item["badge"] == "공식")
+    news_unique = len(chosen) - official_unique
 
     rebuilt = ["<b>🆕 핵심 신규 변화</b>"]
-    if summary:
-        rebuilt.append(summary)
+    rebuilt.append(
+        f"• 신규 사건 <b>{len(chosen)}건</b> · 공식 <b>{official_unique}건</b> · 신뢰보도 <b>{news_unique}건</b>"
+    )
 
     for item in chosen:
         theme = item["theme"]
@@ -239,11 +284,10 @@ def main() -> None:
         rebuilt.append(f"• <b>{html.escape(theme)}</b> · [{badge}] {html.escape(source)}")
         rebuilt.append(f"  ↳ 🔗 <a href=\"{url}\">{html.escape(title_ko)}</a>")
 
-    total_match = re.search(r"새 자료 <b>(\d+)건</b>", summary or "")
-    total = int(total_match.group(1)) if total_match else len(source_rows)
-    hidden = max(0, total - len(chosen))
-    if hidden:
-        rebuilt.append(f"• <i>나머지 {hidden}건은 중복·추적 상태에 저장해 다음 변화 판정에 반영합니다.</i>")
+    duplicate_rows = max(0, raw_count - len(chosen))
+    if duplicate_rows:
+        rebuilt.append(f"• <i>같은 사건의 중복 원문 {duplicate_rows}건은 1건으로 통합했습니다.</i>")
+    hidden = duplicate_rows
 
     # Keep a blank line before the next major section.
     new_lines = lines[:start] + rebuilt + [""] + lines[end:]
