@@ -153,7 +153,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-24T08:48:49+09:00",
+  "updated_at_kst": "2026-09-24T14:06:01+09:00",
   "last_event_count": 82,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -175,7 +175,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-24T08:48:49+09:00",
+  "last_successful_official_at_kst": "2026-09-24T14:06:01+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -639,7 +639,7 @@
         "period": "2026",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
         "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
         "source": "글로벌이코노믹",
         "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
@@ -653,7 +653,7 @@
         "period": "2027",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
         "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
         "source": "글로벌이코노믹",
         "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
@@ -670,7 +670,7 @@
         "period": "2028",
         "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "https://www.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+        "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
         "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
         "source": "글로벌이코노믹",
         "excerpt": "삼성전자에 따르면 평택 P5 Fab1은 2028년 가동을 목표로 하고 있다.",
@@ -679,10 +679,10 @@
       "ddr5_chip_quote|dramexchange|16|4800/5600": {
         "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
         "axis": "ddr5_chip_quote",
-        "value": 57.5,
+        "value": 57.667,
         "unit": "USD/chip",
         "period": "2026-09",
-        "as_of": "2026-09-23",
+        "as_of": "2026-09-24",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
@@ -711,7 +711,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-24T08:48:49+09:00",
+      "last_checked_at_kst": "2026-09-24T14:06:01+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -765,7 +765,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-24T08:51:48+09:00",
+    "checked_at_kst": "2026-09-24T14:08:39+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
