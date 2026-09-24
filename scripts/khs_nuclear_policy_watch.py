@@ -37,7 +37,7 @@ DIRECT_FINGERPRINT_VERSION = "ko-v2"
 WEC_STATE_MODEL_CUTOFF_UTC = dt.datetime(2026, 9, 24, 5, 0, tzinfo=UTC)
 WEC_STATE_MODEL_VERSION = 2
 WEC_FIXED_BASELINE = {
-    "state_key": "governance:voting_possible|stake_range:5~10",
+    "state_key": "governance:board_limited|governance:voting_possible|stake:7+alpha|stake_korea_request:20|stake_range:5~10|stake_us_offer:7",
     "status": "5~10% 지분 협의·의결권 검토",
     "published_utc": "2026-09-22T08:48:00+00:00",
     "title": "웨스팅하우스 지분 5~10% 협의·의결권 가능 기준선",
@@ -284,6 +284,10 @@ def _wec_state_facts(title: str, outlet: str = "") -> tuple[str, ...]:
     for match in re.finditer(r"(\d+(?:\.\d+)?)\s*%", scrubbed):
         facts.append(f"stake:{match.group(1)}")
 
+    # 양측 요구/제시로 역할이 명시된 숫자는 일반 지분 숫자로 이중 저장하지 않는다.
+    if any(fact.startswith(("stake_korea_request:", "stake_us_offer:")) for fact in facts):
+        facts = [fact for fact in facts if not fact.startswith("stake:")]
+
     # 지분과 직접 연결된 가격·출자액만 상태값으로 사용한다.
     for match in re.finditer(r"(\d+(?:\.\d+)?)\s*(억|조)\s*달러", low):
         facts.append(f"price:{match.group(1)}{match.group(2)}달러")
@@ -449,8 +453,10 @@ def _wec_state_key(title: str, outlet: str = "") -> str:
 
 
 def _wec_fact_slot(fact: str) -> str:
-    if fact.startswith(("stake:", "stake_range:")):
-        return "stake"
+    if fact.startswith("stake:"):
+        return "stake_current"
+    if fact.startswith("stake_range:"):
+        return "stake_range"
     if fact.startswith("stake_korea_request:"):
         return "stake_korea_request"
     if fact.startswith("stake_us_offer:"):
