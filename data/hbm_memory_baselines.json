@@ -178,6 +178,46 @@
       "source": "조선비즈·관세청 수출입무역통계 인용",
       "scope": "HBM_included_multichip_IC_not_HBM_only",
       "excerpt": "2026년 8월 말레이시아향 HSK 8542323000 수출 16억2454만달러, 전년동월 +466.6%, 중량 약 1.4t→3.8t, 대만향 33억2211만달러의 48.9%. 중량은 기사 반올림값."
+    },
+    {
+      "key": "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy",
+      "axis": "hbm_revenue_estimate",
+      "value": {
+        "estimate_usd": 11400000000,
+        "qoq_pct": 72,
+        "prior_formal_forecast_usd": 9300000000,
+        "alternative_usd": null,
+        "method": "regression_proxy"
+      },
+      "unit": "USD/quarter",
+      "period": "2026Q3",
+      "as_of": "2026-09-21",
+      "evidence": "research",
+      "source_url": "https://www.xxquant.com/en/institution/institutional-research/8b645f792185585501cbbc207b89643f",
+      "source_title": "Bernstein Korean export tracker — Samsung 3Q26 HBM revenue regression",
+      "source": "Bernstein report interpretation",
+      "scope": "institutional_estimate_not_company_reported_revenue",
+      "excerpt": "8월 수출 회귀식은 삼성 3Q26 HBM 매출 약 114억달러, 전분기 대비 +72%. Bernstein의 기존 93억달러 전망보다 23% 높은 회귀식 결과."
+    },
+    {
+      "key": "hbm_revenue_estimate|bernstein|skhynix|2026Q3|regression_proxy",
+      "axis": "hbm_revenue_estimate",
+      "value": {
+        "estimate_usd": 5900000000,
+        "qoq_pct": -14,
+        "prior_formal_forecast_usd": null,
+        "alternative_usd": 7500000000,
+        "method": "regression_proxy"
+      },
+      "unit": "USD/quarter",
+      "period": "2026Q3",
+      "as_of": "2026-09-21",
+      "evidence": "research",
+      "source_url": "https://www.xxquant.com/en/institution/institutional-research/8b645f792185585501cbbc207b89643f",
+      "source_title": "Bernstein Korean export tracker — SK hynix 3Q26 HBM revenue regression",
+      "source": "Bernstein report interpretation",
+      "scope": "institutional_estimate_not_company_reported_revenue",
+      "excerpt": "중앙 회귀식은 SK하이닉스 3Q26 HBM 매출 약 59억달러, 전분기 대비 -14%. 가장 후행 출하가 집중된 계절성 시나리오는 약 75억달러."
     }
   ],
   "user_capture": {
