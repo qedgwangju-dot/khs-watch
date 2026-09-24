@@ -40,6 +40,8 @@ TESLA_APP_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/scr
 TESLA_APP_X_SOURCE = 'Tesla App Updates (X)'
 TESLA_GEN3_APK_SENTINEL = 'DIRECT_TESLA_OPTIMUS_GEN3_APK_ASSET_20260923'
 TESLA_GEN3_APK_SOURCE = 'Tesla APK 역공학 관측'
+TESLA_KOREA_SUPPLIER_SENTINEL = 'DIRECT_TESLA_KOREA_SUPPLIER_SCOUTING_20260924'
+TESLA_KOREA_SUPPLIER_SOURCE = '한국경제'
 MUSK_X_SENTINEL = 'DIRECT_ELON_MUSK_OPTIMUS_X'
 MUSK_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/elonmusk'
 MUSK_X_SOURCE = 'Elon Musk (X)'
@@ -119,6 +121,9 @@ NAMED_SUPPLIER_ORDER = re.compile(
     re.I,
 )
 
+KOREA_LOCATIONS = re.compile(r'한국|韓|Korea|South\s*Korea|국내', re.I)
+KOREA_SUPPLIER_SCOUT = re.compile(r'공장\s*(?:방문|실사|점검)|생산시설.{0,20}(?:방문|실사|점검)|기술력.{0,20}(?:점검|검토)|공급망.{0,20}(?:점검|검토|다변화)|협의.{0,16}(?:진행|이어)|factory\s*(?:visit|inspection)|production\s*facility.{0,20}(?:visit|review|assessment)|supplier\s*(?:scouting|review|assessment)|supply\s*chain\s*diversif', re.I)
+KOREA_COMPONENT_SCOPE = re.compile(r'감속기|모터|센서|액추에이터|정밀\s*가공|reducer|motor|sensor|actuator|precision\s*machining', re.I)
 CN_LOCATIONS = re.compile(r'上海|杭州|宁波|寧波|厦门|廈門|상하이|항저우|닝보|샤먼', re.I)
 OFFICIAL_CONFIRM = re.compile(r'Tesla\s+(?:said|confirmed|announced)|特斯拉(?:官方|确认|確認|宣布)|테슬라(?:가|는)?\s*(?:공식|확인|발표)', re.I)
 LOW_TRUST_COMMUNITY = re.compile(
@@ -165,6 +170,11 @@ for _q in ['"Optimus chargers" Tesla app', '"optimus_charger_id" Tesla', '"creat
 _NAMED_SUPPLIER_ORDER_QUERY = '(Tesla OR 特斯拉 OR 테슬라) (Optimus OR 擎天柱 OR 휴머노이드) (拓普集团 OR Tuopu OR 三花智控 OR Sanhua OR 均胜电子 OR Joyson) (订单 OR order OR 审厂 OR supplier audit OR 量产 OR mass production)'
 if _NAMED_SUPPLIER_ORDER_QUERY not in base.QUERIES:
     base.QUERIES.append(_NAMED_SUPPLIER_ORDER_QUERY)
+if TESLA_KOREA_SUPPLIER_SENTINEL not in base.QUERIES:
+    base.QUERIES.append(TESLA_KOREA_SUPPLIER_SENTINEL)
+_TESLA_KOREA_SUPPLIER_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스 OR humanoid OR 휴머노이드) (한국 OR 국내 OR Korea) (공장 방문 OR 생산시설 점검 OR 공급망 OR supplier OR factory visit OR actuator OR 감속기 OR 센서)'
+if _TESLA_KOREA_SUPPLIER_QUERY not in base.QUERIES:
+    base.QUERIES.append(_TESLA_KOREA_SUPPLIER_QUERY)
 _FACTORY_MILESTONE_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("dedicated factory" OR "Optimus factory" OR "옵티머스 전용 공장" OR "로봇 기가팩토리") (steel OR concrete OR rebar OR 철골 OR 콘크리트 OR 철근 OR construction OR 공사)'
 if _FACTORY_MILESTONE_QUERY not in base.QUERIES:
     base.QUERIES.append(_FACTORY_MILESTONE_QUERY)
@@ -179,6 +189,7 @@ base.TRUSTED.update({
     '시나재경', '제몐뉴스', '21세기경제보도', '거룽후이', '차이롄서',
     '증권시보', '중국증권보', '상하이증권보', 'Tesla Telemetry', '第一财经', '펑파이신문', '澎湃新闻', 'The Paper',
     'Moonshots with Peter Diamandis', 'Peter H. Diamandis', 'Dwarkesh Podcast', 'All-In Podcast',
+    '한국경제', 'Hankyung',
 })
 base.OFFICIAL_OR_PRIMARY.add(MUSK_X_SOURCE)
 
@@ -297,6 +308,24 @@ def _query_tesla_cn_supply_chain() -> list[dict]:
             signature = f"{item.get('title','')}|{item.get('source','')}"
             merged[signature] = item
     return list(merged.values())
+
+
+def _query_korea_supplier_recovery() -> list[dict]:
+    published = dt.datetime(2026, 9, 24, 0, 30, tzinfo=dt.timezone.utc)
+    if base.NOW - published > dt.timedelta(hours=120):
+        return []
+    return [{
+        'title': '테슬라, 한국 로봇 부품 공급망 생산시설·기술력 점검 보도',
+        'link': 'https://www.hankyung.com/article/202609233829i',
+        'description': (
+            'Tesla reportedly visited several South Korean robot-component companies in the first half of 2026 to review production facilities and technical capabilities. '
+            'The search covers reducers, motors, sensors, actuators and precision-machined parts as Tesla prepares Optimus Gen 3 mass production and seeks to diversify beyond China. '
+            'No Korean company has yet been officially named as an Optimus supplier; discussions are ongoing.'
+        ),
+        'published': published.isoformat(),
+        'source': TESLA_KOREA_SUPPLIER_SOURCE,
+        'korea_supplier_scouting': True,
+    }]
 
 
 _TESLA_NAMED_SUPPLIER_RECOVERY = 'DIRECT_TESLA_NAMED_SUPPLIER_ORDER_20260921'
@@ -523,6 +552,8 @@ def _query_elon_x() -> list[dict]:
 
 
 def query_news(q: str) -> list[dict]:
+    if q == TESLA_KOREA_SUPPLIER_SENTINEL:
+        return _query_korea_supplier_recovery()
     if q == TESLA_GEN3_APK_SENTINEL:
         return _query_gen3_apk_recovery()
     if q == TESLA_CN_SENTINEL:
@@ -542,10 +573,11 @@ def _is_tesla_supply_text(text: str) -> bool:
     factory = FACTORY_SITE.search(text) and (FACTORY_STRUCTURE.search(text) or FACTORY_TOOLING.search(text))
     app_productization = APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text)
     gen3_asset = APP_GEN_ASSET.search(text) and APP_APK_CONTEXT.search(text)
+    korea_scout = KOREA_LOCATIONS.search(text) and KOREA_SUPPLIER_SCOUT.search(text) and KOREA_COMPONENT_SCOPE.search(text)
     exec_guidance = _is_exec_guidance(text)
     actor = TESLA_OPT.search(text) or MUSK_EXEC_ACTOR.search(text)
     robot_term = OPTIMUS.search(text) or (TESLA_OPT.search(text) and TESLA_HUMANOID.search(text))
-    return bool(actor and robot_term and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory or app_productization or gen3_asset or exec_guidance))
+    return bool(actor and robot_term and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory or app_productization or gen3_asset or korea_scout or exec_guidance))
 
 
 def _stage(text: str) -> str:
@@ -565,6 +597,8 @@ def _stage(text: str) -> str:
         return 'app_generation_asset'
     if APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text):
         return 'home_app_integration'
+    if KOREA_LOCATIONS.search(text) and KOREA_SUPPLIER_SCOUT.search(text) and KOREA_COMPONENT_SCOPE.search(text):
+        return 'korea_supplier_scouting'
     if NAMED_OPTIMUS_SUPPLIERS.search(text) and NAMED_SUPPLIER_ORDER.search(text) and AUDIT.search(text):
         return 'named_supplier_orders_audit'
     if FACTORY_SITE.search(text) and FACTORY_TOOLING.search(text):
@@ -615,6 +649,8 @@ def score(item: dict) -> int:
         s += 14
     if stage == 'home_app_integration':
         s += 12
+    if stage == 'korea_supplier_scouting':
+        s += 14
     if stage == 'named_supplier_orders_audit':
         s += 16
     if stage == 'factory_structure':
@@ -651,6 +687,8 @@ def category(text: str, group: str) -> str:
             return 'Optimus Gen 3 앱 자산·세대 디자인 준비'
         if stage == 'home_app_integration':
             return 'Optimus 가정용 앱·충전 인프라 준비'
+        if stage == 'korea_supplier_scouting':
+            return 'Optimus 한국 공급망 생산시설·기술 점검'
         if stage == 'named_supplier_orders_audit':
             return 'Optimus 실명 공급사 주문·양산심사'
         if stage == 'factory_structure':
@@ -689,6 +727,9 @@ def meaning(cat: str) -> str:
     if cat == 'Optimus 가정용 앱·충전 인프라 준비':
         return ('앱 내부 코드에 Optimus 전용 충전·등록·가정용 기기 관리 경로가 생긴 것은 단순 로봇 데모보다 제품화에 가까운 소프트웨어 인프라 신호입니다. '
                 '실제 메뉴 활성화→충전 거치대 공개→가정용 시험사용자→소비자 판매 순으로 다음 상태 변화를 추적합니다.')
+    if cat == 'Optimus 한국 공급망 생산시설·기술 점검':
+        return ('테슬라가 중국 중심 Optimus 부품 조달을 보완하기 위해 한국 업체들의 생산시설·기술력을 직접 점검했다는 공급망 다변화 신호입니다. '
+                '현재는 후보 발굴·기술 검토 단계이며, 다음 단계는 방문 업체 실명→샘플·공동개발→공급업체 승인→양산 발주→첫 출하 순으로 추적합니다.')
     if cat == 'Optimus 실명 공급사 주문·양산심사':
         return ('기존 익명 공급망의 심사 개시 보도에서 한 단계 나아가 Tuopu·Sanhua·Joyson 등 실명 업체와 주문 보유 주장이 함께 나온 후속 신호입니다. '
                 '실명 업체별 심사 통과→생산 개시→실제 출하→수주 물량 공개 순으로 매출 연결을 추적합니다.')
@@ -731,6 +772,9 @@ def risk(cat: str) -> str:
                 '현재 최신 공개 APK는 4.61.0-4607이므로 같은 자산의 지속 여부와 Tesla 공식 공개를 후속 확인합니다.')
     if cat == 'Optimus 가정용 앱·충전 인프라 준비':
         return ('앱 코드 존재는 소비자 출시 확정이나 실제 충전기 양산을 뜻하지 않습니다. 실험용·비활성 코드일 수 있으므로 Tesla 공식 기능 공개, 실제 앱 화면, 충전 하드웨어 인증·출시가 뒤따르는지 확인합니다.')
+    if cat == 'Optimus 한국 공급망 생산시설·기술 점검':
+        return ('한국경제의 업계 취재 단계로, Tesla가 방문한 국내 업체 실명과 공식 공급업체 선정은 확인되지 않았습니다. '
+                'HL만도·에스비비테크·로보티즈·삼현·하이젠알앤엠 등 기술 연관 기업을 방문사로 임의 치환하지 않고, Tesla/해당 기업 공식자료나 공급계약이 나올 때만 직접 공급사로 승격합니다.')
     if cat == 'Optimus 실명 공급사 주문·양산심사':
         return ('주문 보유와 심사 진행은 현재 익명 밸류체인 관계자 보도이며 Tesla와 각 상장사의 공식 수주 공시는 아닙니다. 9월 18일 각사 답변도 심사 여부를 확인하지 않았거나 답변을 유보했으므로 공식 확인 전까지 공급규모·독점 여부를 확정하지 않습니다.')
     if cat == 'Optimus Giga Texas 전용공장 구조공사 진척':
@@ -772,6 +816,8 @@ def verification(item: dict, group: str, text: str) -> str:
             return '제3자 APK 역공학 관측 · Tesla 서명 4.60.5-4573 패키지 존재 확인 · Tesla 공식 Gen 3 디자인 공개 전'
         if _stage(text) == 'home_app_integration':
             return '테슬라 앱 코드 관측·역공학 단계 · Tesla 공식 소비자 기능/출시 발표 전'
+        if _stage(text) == 'korea_supplier_scouting':
+            return '한국경제 로봇업계 취재 보도 · 방문업체 실명·Tesla 공식 공급망 편입은 미확인'
         if _stage(text) == 'named_supplier_orders_audit':
             return '펑파이신문 취재·第一财经 재전재의 익명 밸류체인 관계자 발언 · Tesla/각사 공식 수주 확인 전'
         if _stage(text) == 'factory_structure':
@@ -812,6 +858,8 @@ def clean_title(title: str, source: str) -> str:
             return '테슬라 앱 APK서 Optimus Gen 3 디자인 자산 발견'
         if stage == 'home_app_integration':
             return '테슬라 앱 코드, Optimus 충전기·가정용 기기 통합 준비 정황 포착'
+        if stage == 'korea_supplier_scouting':
+            return '테슬라, Optimus Gen 3 앞두고 한국 로봇부품 공급망 생산시설·기술력 점검 보도'
         if stage == 'named_supplier_orders_audit':
             return '테슬라 Optimus, Tuopu·Sanhua·Joyson 실명 공급사 주문 보유·양산심사 보도'
         if stage == 'factory_structure':
@@ -863,6 +911,8 @@ def key(item: dict) -> str:
             return hashlib.sha256(b'tesla-optimus|giga-texas|factory-structure').hexdigest()
         if stage == 'factory_tooling':
             return hashlib.sha256(b'tesla-optimus|giga-texas|factory-tooling').hexdigest()
+        if stage == 'korea_supplier_scouting':
+            return hashlib.sha256(b'tesla-optimus|2026-h1|korea-supplier-scouting').hexdigest()
         if stage == 'named_supplier_orders_audit':
             return hashlib.sha256(b'tesla-optimus|2026-09-21|named-suppliers-orders-audit|tuopu-sanhua-joyson').hexdigest()
         if stage == 'supplier_audit_started':
