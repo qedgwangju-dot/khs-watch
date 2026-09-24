@@ -958,6 +958,7 @@ def main() -> int:
     _self_test_smr_event_state_model()
     now = now_kst()
     seen = load_seen()
+    initial_seen_snapshot = json.dumps(seen, ensure_ascii=False, sort_keys=True)
     seen_map = seen.setdefault("seen", {})
     alerts: list[dict] = []
 
@@ -971,18 +972,73 @@ def main() -> int:
         }
 
     stake_items = collect_westinghouse_stake_items(now)
-    latest_stake = stake_items[0] if stake_items else None
     previous_state = seen.get("westinghouse_issue_state") or {}
+    previous_model_version = int(seen.get("westinghouse_state_model_version") or 0)
+
+    # 상태 파일이 손실·초기화됐거나 새 모델로 전환되는 경우,
+    # 현재까지 공개된 가장 최신 사건상태를 기준선으로 흡수하고 과거 기사를 소급 발송하지 않는다.
+    if previous_model_version < WEC_STATE_MODEL_VERSION or not previous_state:
+        historical_candidates = []
+        for candidate in stake_items:
+            try:
+                candidate_dt = dt.datetime.fromisoformat(
+                    str(candidate.get("published_utc") or "").replace("Z", "+00:00")
+                ).astimezone(UTC)
+            except Exception:
+                continue
+            if candidate_dt <= WEC_STATE_MODEL_CUTOFF_UTC:
+                historical_candidates.append(candidate)
+
+        baseline = historical_candidates[0] if historical_candidates else dict(WEC_FIXED_BASELINE)
+        seen["westinghouse_issue_state"] = {
+            "state_key": baseline.get("state_key") or WEC_FIXED_BASELINE["state_key"],
+            "status": baseline.get("status") or WEC_FIXED_BASELINE["status"],
+            "title": baseline.get("title") or WEC_FIXED_BASELINE["title"],
+            "source": baseline.get("source") or WEC_FIXED_BASELINE["source"],
+            "link": baseline.get("link") or WEC_FIXED_BASELINE["link"],
+            "published_utc": baseline.get("published_utc") or WEC_FIXED_BASELINE["published_utc"],
+            "first_seen_kst": now.isoformat(timespec="seconds"),
+        }
+        seen["westinghouse_state_model_version"] = WEC_STATE_MODEL_VERSION
+        previous_state = seen["westinghouse_issue_state"]
+        print(
+            "westinghouse_state_baselined=true "
+            f"state_key={previous_state.get('state_key')} "
+            f"published_utc={previous_state.get('published_utc')}"
+        )
+
+    # 전환 기준시각 이후의 후보만 새 이벤트 후보로 인정한다.
+    latest_stake = None
+    for candidate in stake_items:
+        try:
+            candidate_dt = dt.datetime.fromisoformat(
+                str(candidate.get("published_utc") or "").replace("Z", "+00:00")
+            ).astimezone(UTC)
+        except Exception:
+            continue
+        if candidate_dt > WEC_STATE_MODEL_CUTOFF_UTC:
+            latest_stake = candidate
+            break
+
     if latest_stake:
         previous_published = str(previous_state.get("published_utc") or "")
         current_published = str(latest_stake.get("published_utc") or "")
         is_newer = not previous_published or current_published > previous_published
-        changed = latest_stake["state_key"] != previous_state.get("state_key")
+        changed, merged_state_key = _wec_merge_state(
+            str(previous_state.get("state_key") or ""),
+            str(latest_stake.get("state_key") or ""),
+        )
         if is_newer and changed:
+            latest_stake["trigger"] = "topic_event_state_change"
             alerts.append(latest_stake)
             seen["westinghouse_issue_state"] = {
-                "state_key": latest_stake["state_key"], "status": latest_stake["status"], "title": latest_stake["title"], "source": latest_stake["source"],
-                "link": latest_stake["link"], "published_utc": latest_stake["published_utc"], "first_seen_kst": now.isoformat(timespec="seconds"),
+                "state_key": merged_state_key,
+                "status": latest_stake["status"],
+                "title": latest_stake["title"],
+                "source": latest_stake["source"],
+                "link": latest_stake["link"],
+                "published_utc": latest_stake["published_utc"],
+                "first_seen_kst": now.isoformat(timespec="seconds"),
             }
 
     smr_items = collect_smr_policy_items(now)
@@ -1077,6 +1133,11 @@ def main() -> int:
             }
 
     if not alerts:
+        # 기준선 복구·상태모델 전환 같은 내부 상태 변화는 알림이 없어도 반드시 저장한다.
+        current_seen_snapshot = json.dumps(seen, ensure_ascii=False, sort_keys=True)
+        if current_seen_snapshot != initial_seen_snapshot:
+            save_seen(seen, now)
+            print("nuclear_policy_state_persisted_without_alert=true")
         clear_outputs()
         print(f"nuclear_policy_alerts=0 direct={len(direct_items)} westinghouse_material={len(stake_items)} smr_material={len(smr_items)}")
         return 0
