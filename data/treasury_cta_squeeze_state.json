@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-09-25T01:47:04+09:00",
+  "last_checked_kst": "2026-09-25T05:17:54+09:00",
   "media_id": null,
   "cftc_date": "September 15, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-25T01:47:04+09:00",
+    "checked_kst": "2026-09-25T05:17:54+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 15, 2026",
@@ -65,10 +65,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 105.03125,
-        "settlement": 105.03125,
-        "change": 0.0,
-        "pct_change": 0.0,
+        "last": 104.59375,
+        "settlement": 104.59375,
+        "change": -0.4375,
+        "pct_change": -0.41654269562629853,
         "open_interest": 5377777,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 15, 2026)",
         "volume": 0,
@@ -83,10 +83,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 105.53125,
-        "settlement": 105.53125,
-        "change": -0.34375,
-        "pct_change": -0.32467532467532756,
+        "last": 104.59375,
+        "settlement": 104.59375,
+        "change": -1.28125,
+        "pct_change": -1.2101534828807603,
         "open_interest": 1867442,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 15, 2026)",
         "volume": 0,
@@ -101,10 +101,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 107.0,
-        "settlement": 107.0,
-        "change": -0.46875,
-        "pct_change": -0.4361733061936657,
+        "last": 106.03125,
+        "settlement": 106.03125,
+        "change": -1.4375,
+        "pct_change": -1.3375981389938896,
         "open_interest": 2470471,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 15, 2026)",
         "volume": 0,
@@ -116,12 +116,12 @@
       }
     },
     "yield10": {
-      "date": "2026-09-23",
-      "yield": 5.11,
-      "mean20": 4.872,
-      "sd20": 0.12544321424453375,
-      "z20": 1.8972728133070091,
-      "distance_to_4_3_bp": 81.00000000000006
+      "date": "2026-09-24",
+      "yield": 5.18,
+      "mean20": 4.898,
+      "sd20": 0.13249905660041505,
+      "z20": 2.1283170404031138,
+      "distance_to_4_3_bp": 87.99999999999999
     },
     "repo": {
       "SOFR": {
@@ -155,7 +155,8 @@
     "stage": 0,
     "oi_scope_fixes": [
       "ZN OI 10→5,377,777로 동일 범위 교체",
-      "ZB OI 10→1,867,442로 동일 범위 교체"
+      "ZB OI 10→1,867,442로 동일 범위 교체",
+      "UB OI 10→2,470,471로 동일 범위 교체"
     ]
   },
   "last_fomc_eve_report": "2026-09-16",
