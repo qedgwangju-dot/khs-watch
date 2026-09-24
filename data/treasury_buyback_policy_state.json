@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-09-24T07:44:28+09:00",
+  "last_checked_kst": "2026-09-25T01:37:42+09:00",
   "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -8,5 +8,5 @@
   "seen_source_ids": [],
   "upgrade_note": "one-time resend armed for upgraded Bessent policy-boundary interpretation",
   "bessent_policy_boundary_revision": 5,
-  "bessent_causal_last_error": "RuntimeError: FRED DCOILBRENTEU 조회 실패: txt: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/data/DCOILBRENTEU.txt / TimeoutError: The read operation timed out | csv: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/graph/fredgraph.csv?id=DCOILBRENTEU&cosd=2026-05-26 / TimeoutError: The read operation timed out"
+  "bessent_causal_last_error": "RuntimeError: FRED DCOILBRENTEU 조회 실패: txt: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/data/DCOILBRENTEU.txt / TimeoutError: The read operation timed out | csv: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/graph/fredgraph.csv?id=DCOILBRENTEU&cosd=2026-05-27 / TimeoutError: The read operation timed out"
 }
