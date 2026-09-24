@@ -712,7 +712,10 @@ def main():
     legacy.save_state(initial)
     original_read, original_relevant = legacy.read_events, legacy.relevant
     legacy.QUERIES = list(dict.fromkeys(legacy.QUERIES + EXTRA_QUERIES))
-    legacy.TRUSTED += ('글로벌이코노믹', 'g-enews', 'dramexchange', 'sk하이닉스', 'micron')
+    legacy.TRUSTED += (
+        '글로벌이코노믹', 'g-enews', 'dramexchange', 'sk하이닉스', 'micron',
+        'futunn', 'futu news', 'bernstein', 'hilo research', 'xxquant'
+    )
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
     observed, coverage = [], []
     body_cache = {}
