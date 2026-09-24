@@ -787,23 +787,56 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
     for key, label in (("btc_etf", "BTC ETF"), ("eth_etf", "ETH ETF")):
         flow = crypto.get(key) or {}
         if flow:
-            lines.append(f"• {label}: {flow.get('date')} 일간 {flow.get('daily_usd_m',0):+,.1f}백만달러 · 5영업일 {flow.get('five_day_usd_m',0):+,.1f}백만달러")
+            status_label = "확정" if flow.get("status") == "complete" else f"부분집계 {flow.get('reported_funds',0)}개/미보고 {flow.get('missing_funds',0)}개"
+            lines.append(f"• {label}: {flow.get('date')} 일간 {flow.get('daily_usd_m',0):+,.1f}백만달러 · 5영업일 {flow.get('five_day_usd_m',0):+,.1f}백만달러 · {status_label}")
+    deriv = crypto.get("derivatives") or {}
+    deriv_parts = []
+    for symbol, label in (("BTCUSDT", "BTC"), ("ETHUSDT", "ETH"), ("SOLUSDT", "SOL")):
+        item = deriv.get(symbol) or {}
+        if item:
+            oi_value = float(item.get("open_interest_value") or 0.0)
+            funding_pct = float(item.get("funding") or 0.0) * 100.0
+            deriv_parts.append(f"{label} 펀딩 {funding_pct:+.4f}% · 미결제약정 {fmt_usd(oi_value)}")
+    if deriv_parts:
+        lines.append("• 파생: " + " / ".join(deriv_parts))
     rates = snapshot.get("rates") or {}
     if rates.get("nominal10y"):
         lines.append(f"• 미국 10년 명목금리 {rates['nominal10y']['value']:.2f}% ({rates['nominal10y']['date']})")
     if rates.get("real10y"):
         lines.append(f"• 미국 10년 실질금리 {rates['real10y']['value']:.2f}% ({rates['real10y']['date']})")
     nv = snapshot.get("nvidia_sec") or {}
-    if nv.get("accounts_receivable"):
-        ar = nv["accounts_receivable"]
-        lines.append(f"• NVIDIA 매출채권 {fmt_usd(ar.get('value'))} · YoY {fmt_pct(ar.get('yoy'))}")
-    if nv.get("revenue"):
-        revenue = nv["revenue"]
-        lines.append(f"• NVIDIA 분기 매출 {fmt_usd(revenue.get('value'))} · YoY {fmt_pct(revenue.get('yoy'))}")
+    if nv.get("parsed_ok"):
+        ar = nv.get("accounts_receivable_m")
+        ar_prev = nv.get("accounts_receivable_prev_m")
+        rev = nv.get("revenue_q_m")
+        rev_prev = nv.get("revenue_q_prev_m")
+        ar_yoy = ((float(ar) / float(ar_prev) - 1.0) * 100.0) if ar is not None and ar_prev not in (None, 0) else None
+        rev_yoy = ((float(rev) / float(rev_prev) - 1.0) * 100.0) if rev is not None and rev_prev not in (None, 0) else None
+        lines.append(f"• NVIDIA 10-Q: 매출채권 {fmt_usd((ar or 0)*1_000_000)} ({fmt_pct(ar_yoy)} YoY) · 분기 매출 {fmt_usd((rev or 0)*1_000_000)} ({fmt_pct(rev_yoy)} YoY)")
+        commitments = []
+        for key, label in (
+            ("supply_commitments_b", "공급·생산능력 약정"),
+            ("ai_cloud_commitments_b", "AI cloud 약정"),
+            ("ai_cloud_guarantee_b", "AI cloud 보증"),
+            ("sb_energy_guarantee_b", "SB Energy 보증상한"),
+        ):
+            value = nv.get(key)
+            if value is not None:
+                commitments.append(f"{label} {float(value):,.1f}십억달러")
+        if commitments:
+            lines.append("• NVIDIA 약정·보증: " + " · ".join(commitments))
 
+    lines += ["", "<b>[현재 판정]</b>"]
+    btc_price = ((prices.get("BTC") or {}).get("usd"))
+    btc_flow = (crypto.get("btc_etf") or {}).get("five_day_usd_m")
+    if btc_price is not None and btc_flow is not None:
+        if float(btc_price) < BTC_LINE and float(btc_flow) > 0:
+            lines.append("• BTC는 85,000달러 아래지만 5영업일 ETF는 순유입 → 가격 약세와 현물자금이 엇갈려 ‘주목도 이탈’ 확정 신호는 아직 아님.")
+        elif float(btc_price) < BTC_LINE and float(btc_flow) < 0:
+            lines.append("• BTC 85,000달러 하회 + 5영업일 ETF 순유출 → 서한의 ‘주목도 이탈’ 위험이 함께 강화.")
+        elif float(btc_price) >= BTC_LINE and float(btc_flow) > 0:
+            lines.append("• BTC 85,000달러 상회 + 5영업일 ETF 순유입 → 단기 상승·주목도 논리가 함께 유지.")
     lines += [
-        "",
-        "<b>[현재 판정]</b>",
         "• 단순 가격 등락은 보내지 않고 가격·자금흐름·할인율·공식 공시·공급사슬 변화가 서한의 전제를 바꿀 때만 알립니다.",
         "• 메모리는 DRAM·HBM·NAND를 분리 판정합니다.",
         "• NVIDIA는 회계 부정으로 단정하지 않고 고객금융·매출채권·현금회수·수요의 질 위험으로 구분합니다.",
