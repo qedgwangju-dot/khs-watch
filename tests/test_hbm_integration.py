@@ -111,6 +111,40 @@ class ParseTests(unittest.TestCase):
         self.assertTrue(any('새 월' in x for x in reasons))
         self.assertTrue(any('수출액' in x for x in reasons))
 
+    def test_bernstein_hbm_revenue_estimate_parse(self):
+        item = dict(ITEM)
+        item['title'] = 'Bernstein Korean HBM export tracker'
+        item['source'] = 'Bernstein'
+        item['published_at_kst'] = '2026-09-21T09:00:00+09:00'
+        body = (
+            "Samsung's 3Q26 HBM revenue is estimated at US$11.4B by the regression, "
+            "representing 72% QoQ growth versus Bernstein's US$9.3B forecast. "
+            "SK hynix 3Q26 HBM revenue regression implies US$5.9B, down 14% QoQ. "
+            "Under the most back-end-loaded case it could reach US$7.5B."
+        )
+        rows = m.parse_hbm_revenue_estimates(item, body)
+        samsung = [x for x in rows if '|samsung|' in x['key']][0]
+        skh = [x for x in rows if '|skhynix|' in x['key']][0]
+        self.assertEqual(samsung['period'],'2026Q3')
+        self.assertEqual(samsung['value']['estimate_usd'],11400000000)
+        self.assertAlmostEqual(samsung['value']['qoq_pct'],72.0)
+        self.assertEqual(skh['value']['estimate_usd'],5900000000)
+
+    def test_hbm_revenue_estimate_large_revision_is_material(self):
+        old = m.make_record(
+            'hbm_revenue_estimate',['bernstein','samsung','2026Q3','regression_proxy'],
+            {'estimate_usd':9300000000,'qoq_pct':40.0,'prior_formal_forecast_usd':None,
+             'alternative_usd':None,'method':'regression_proxy'},
+            'USD/quarter','2026Q3',ITEM,'old',as_of='2026-08-21')
+        new = copy.deepcopy(old)
+        new['as_of']='2026-09-21'
+        new['value']=dict(old['value'])
+        new['value']['estimate_usd']=11400000000
+        new['value']['qoq_pct']=72.0
+        reasons=m.comparison(old,new)
+        self.assertTrue(any('분기 HBM 매출 추정' in x for x in reasons))
+        self.assertTrue(any('전분기 증감률 전망' in x for x in reasons))
+
 class StateTests(unittest.TestCase):
     def make(self,v=22,asof='2026-09-22',url=None):
         item=dict(ITEM)
