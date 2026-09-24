@@ -6,6 +6,7 @@
     "03e375cb2ac8ee053d78045a",
     "05c27d7b30704f2bd464f146",
     "0833d662f2bc1ef69385334d",
+    "0c9de789f40a57b1f7452b32",
     "0d9cf627a8ab402f60a42bf3",
     "0fbce83b73293cb0ae9a300e",
     "11f2804bb2777b361ad1f2c9",
@@ -41,6 +42,7 @@
     "405463a0e2a049064d3f3acf",
     "4222a83b8ad4073d8c70828e",
     "44a73e460d6f41603a0bea4c",
+    "4516da5ac62796b962b6d269",
     "45aba92a1f2d40c1164b655b",
     "45ebc9a7d8d33f91805959c3",
     "45f9f31d1e6cc628a7bf680f",
@@ -153,8 +155,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-24T14:06:01+09:00",
-  "last_event_count": 82,
+  "updated_at_kst": "2026-09-24T16:41:11+09:00",
+  "last_event_count": 77,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -175,7 +177,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-24T14:06:01+09:00",
+  "last_successful_official_at_kst": "2026-09-24T16:41:11+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -518,6 +520,29 @@
         "capacity_gb": 32,
         "density_gbit": null,
         "speed": "4800/5600"
+      },
+      "malaysia_hsk10_export|KR|MY|8542323000": {
+        "key": "malaysia_hsk10_export|KR|MY|8542323000",
+        "axis": "malaysia_hsk10_export",
+        "value": {
+          "amount_usd": 1624540000,
+          "weight_kg": 3800,
+          "weight_kg_previous_yoy": 1400,
+          "yoy_pct": 466.6,
+          "taiwan_amount_usd": 3322110000,
+          "malaysia_vs_taiwan_pct": 48.9,
+          "jan_aug_amount_usd": 6314240000,
+          "weight_rounded_from_public_text": true
+        },
+        "unit": "USD/kg",
+        "period": "2026-08",
+        "as_of": "2026-09-22",
+        "evidence": "reported",
+        "source_url": "https://biz.chosun.com/it-science/ict/2026/09/22/NGJ2RJYZARGN3JSVXPUEIE6XRA/?outputType=amp",
+        "source_title": "AI 반도체 패키징 증설 몰리는 말레이시아… 韓 HBM 관련 수출 1년 새 4.7배 증가",
+        "source": "조선비즈·관세청 수출입무역통계 인용",
+        "scope": "HBM_included_multichip_IC_not_HBM_only",
+        "excerpt": "2026년 8월 말레이시아향 HSK 8542323000 수출 16억2454만달러, 전년동월 +466.6%, 중량 약 1.4t→3.8t, 대만향 33억2211만달러의 48.9%. 중량은 기사 반올림값."
       }
     },
     "latest": {
@@ -707,11 +732,34 @@
         "capacity_gb": 32,
         "density_gbit": null,
         "speed": "4800/5600"
+      },
+      "malaysia_hsk10_export|KR|MY|8542323000": {
+        "key": "malaysia_hsk10_export|KR|MY|8542323000",
+        "axis": "malaysia_hsk10_export",
+        "value": {
+          "amount_usd": 1624540000,
+          "weight_kg": 3800,
+          "weight_kg_previous_yoy": 1400,
+          "yoy_pct": 466.6,
+          "taiwan_amount_usd": 3322110000,
+          "malaysia_vs_taiwan_pct": 48.9,
+          "jan_aug_amount_usd": 6314240000,
+          "weight_rounded_from_public_text": true
+        },
+        "unit": "USD/kg",
+        "period": "2026-08",
+        "as_of": "2026-09-22",
+        "evidence": "reported",
+        "source_url": "https://biz.chosun.com/it-science/ict/2026/09/22/NGJ2RJYZARGN3JSVXPUEIE6XRA/?outputType=amp",
+        "source_title": "AI 반도체 패키징 증설 몰리는 말레이시아… 韓 HBM 관련 수출 1년 새 4.7배 증가",
+        "source": "조선비즈·관세청 수출입무역통계 인용",
+        "scope": "HBM_included_multichip_IC_not_HBM_only",
+        "excerpt": "2026년 8월 말레이시아향 HSK 8542323000 수출 16억2454만달러, 전년동월 +466.6%, 중량 약 1.4t→3.8t, 대만향 33억2211만달러의 48.9%. 중량은 기사 반올림값."
       }
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-24T14:06:01+09:00",
+      "last_checked_at_kst": "2026-09-24T16:41:11+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -721,7 +769,7 @@
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
-      "non_concrete_generic_evidence_suppressed": 6
+      "non_concrete_generic_evidence_suppressed": 4
     },
     "version": 1,
     "reference_capture": {
@@ -765,7 +813,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-24T14:08:39+09:00",
+    "checked_at_kst": "2026-09-24T16:43:20+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
