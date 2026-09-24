@@ -155,8 +155,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-24T16:41:11+09:00",
-  "last_event_count": 77,
+  "updated_at_kst": "2026-09-24T16:44:41+09:00",
+  "last_event_count": 76,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -177,7 +177,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-24T16:41:11+09:00",
+  "last_successful_official_at_kst": "2026-09-24T16:44:41+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -543,6 +543,46 @@
         "source": "조선비즈·관세청 수출입무역통계 인용",
         "scope": "HBM_included_multichip_IC_not_HBM_only",
         "excerpt": "2026년 8월 말레이시아향 HSK 8542323000 수출 16억2454만달러, 전년동월 +466.6%, 중량 약 1.4t→3.8t, 대만향 33억2211만달러의 48.9%. 중량은 기사 반올림값."
+      },
+      "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy": {
+        "key": "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy",
+        "axis": "hbm_revenue_estimate",
+        "value": {
+          "estimate_usd": 11400000000,
+          "qoq_pct": 72,
+          "prior_formal_forecast_usd": 9300000000,
+          "alternative_usd": null,
+          "method": "regression_proxy"
+        },
+        "unit": "USD/quarter",
+        "period": "2026Q3",
+        "as_of": "2026-09-21",
+        "evidence": "research",
+        "source_url": "https://www.xxquant.com/en/institution/institutional-research/8b645f792185585501cbbc207b89643f",
+        "source_title": "Bernstein Korean export tracker — Samsung 3Q26 HBM revenue regression",
+        "source": "Bernstein report interpretation",
+        "scope": "institutional_estimate_not_company_reported_revenue",
+        "excerpt": "8월 수출 회귀식은 삼성 3Q26 HBM 매출 약 114억달러, 전분기 대비 +72%. Bernstein의 기존 93억달러 전망보다 23% 높은 회귀식 결과."
+      },
+      "hbm_revenue_estimate|bernstein|skhynix|2026Q3|regression_proxy": {
+        "key": "hbm_revenue_estimate|bernstein|skhynix|2026Q3|regression_proxy",
+        "axis": "hbm_revenue_estimate",
+        "value": {
+          "estimate_usd": 5900000000,
+          "qoq_pct": -14,
+          "prior_formal_forecast_usd": null,
+          "alternative_usd": 7500000000,
+          "method": "regression_proxy"
+        },
+        "unit": "USD/quarter",
+        "period": "2026Q3",
+        "as_of": "2026-09-21",
+        "evidence": "research",
+        "source_url": "https://www.xxquant.com/en/institution/institutional-research/8b645f792185585501cbbc207b89643f",
+        "source_title": "Bernstein Korean export tracker — SK hynix 3Q26 HBM revenue regression",
+        "source": "Bernstein report interpretation",
+        "scope": "institutional_estimate_not_company_reported_revenue",
+        "excerpt": "중앙 회귀식은 SK하이닉스 3Q26 HBM 매출 약 59억달러, 전분기 대비 -14%. 가장 후행 출하가 집중된 계절성 시나리오는 약 75억달러."
       }
     },
     "latest": {
@@ -755,11 +795,51 @@
         "source": "조선비즈·관세청 수출입무역통계 인용",
         "scope": "HBM_included_multichip_IC_not_HBM_only",
         "excerpt": "2026년 8월 말레이시아향 HSK 8542323000 수출 16억2454만달러, 전년동월 +466.6%, 중량 약 1.4t→3.8t, 대만향 33억2211만달러의 48.9%. 중량은 기사 반올림값."
+      },
+      "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy": {
+        "key": "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy",
+        "axis": "hbm_revenue_estimate",
+        "value": {
+          "estimate_usd": 11400000000,
+          "qoq_pct": 72,
+          "prior_formal_forecast_usd": 9300000000,
+          "alternative_usd": null,
+          "method": "regression_proxy"
+        },
+        "unit": "USD/quarter",
+        "period": "2026Q3",
+        "as_of": "2026-09-21",
+        "evidence": "research",
+        "source_url": "https://www.xxquant.com/en/institution/institutional-research/8b645f792185585501cbbc207b89643f",
+        "source_title": "Bernstein Korean export tracker — Samsung 3Q26 HBM revenue regression",
+        "source": "Bernstein report interpretation",
+        "scope": "institutional_estimate_not_company_reported_revenue",
+        "excerpt": "8월 수출 회귀식은 삼성 3Q26 HBM 매출 약 114억달러, 전분기 대비 +72%. Bernstein의 기존 93억달러 전망보다 23% 높은 회귀식 결과."
+      },
+      "hbm_revenue_estimate|bernstein|skhynix|2026Q3|regression_proxy": {
+        "key": "hbm_revenue_estimate|bernstein|skhynix|2026Q3|regression_proxy",
+        "axis": "hbm_revenue_estimate",
+        "value": {
+          "estimate_usd": 5900000000,
+          "qoq_pct": -14,
+          "prior_formal_forecast_usd": null,
+          "alternative_usd": 7500000000,
+          "method": "regression_proxy"
+        },
+        "unit": "USD/quarter",
+        "period": "2026Q3",
+        "as_of": "2026-09-21",
+        "evidence": "research",
+        "source_url": "https://www.xxquant.com/en/institution/institutional-research/8b645f792185585501cbbc207b89643f",
+        "source_title": "Bernstein Korean export tracker — SK hynix 3Q26 HBM revenue regression",
+        "source": "Bernstein report interpretation",
+        "scope": "institutional_estimate_not_company_reported_revenue",
+        "excerpt": "중앙 회귀식은 SK하이닉스 3Q26 HBM 매출 약 59억달러, 전분기 대비 -14%. 가장 후행 출하가 집중된 계절성 시나리오는 약 75억달러."
       }
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-24T16:41:11+09:00",
+      "last_checked_at_kst": "2026-09-24T16:44:41+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -813,7 +893,7 @@
     "payload_hash": "ff345cfbfadcaee270422dc6f179083ba7868095ed40386ef30b6530dda029a9"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-24T16:43:20+09:00",
+    "checked_at_kst": "2026-09-24T16:46:44+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
