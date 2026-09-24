@@ -270,9 +270,16 @@ def _wec_state_facts(title: str, outlet: str = "") -> tuple[str, ...]:
     for start, end in reversed(range_spans):
         scrubbed = scrubbed[:start] + " " * (end - start) + scrubbed[end:]
 
-    for match in re.finditer(r"(\d+(?:\.\d+)?)\s*%\s*\+?\s*(?:α|알파|alpha)", scrubbed):
+    for match in re.finditer(r"(\d+(?:\.\d+)?)\s*%?\s*\+\s*(?:α|알파|alpha)", scrubbed):
         facts.append(f"stake:{match.group(1)}+alpha")
         scrubbed = scrubbed.replace(match.group(0), " ")
+
+    # '한국 20% 요구, 미국 7% 고수/제시'처럼 양측 숫자가 함께 나오는 경우는
+    # 협상 양쪽의 상태값을 별도 슬롯으로 보존한다.
+    for match in re.finditer(r"(\d+(?:\.\d+)?)\s*%\s*(?:이상\s*)?(?:요구|목표|원해|희망)", scrubbed):
+        facts.append(f"stake_korea_request:{match.group(1)}")
+    for match in re.finditer(r"(?:미국(?:측)?[^\d%]{0,30})?(\d+(?:\.\d+)?)\s*%\s*(?:고수|제시|상한)", scrubbed):
+        facts.append(f"stake_us_offer:{match.group(1)}")
 
     for match in re.finditer(r"(\d+(?:\.\d+)?)\s*%", scrubbed):
         facts.append(f"stake:{match.group(1)}")
@@ -344,6 +351,12 @@ def _self_test_material_filter() -> None:
     wec_b = _wec_state_key("웨스팅하우스 지분 5∼10% 협의, 의결권 행사 가능", "뉴시스")
     if wec_a != wec_b:
         raise RuntimeError(f"Westinghouse same-event semantic dedupe regression: {wec_a} != {wec_b}")
+    alpha_state = _wec_state_key("韓 웨스팅하우스 지분 투자 7+α 타진 중…이사회 진입 어려울 듯", "한국경제")
+    if "stake:7+alpha" not in alpha_state or "governance:board_limited" not in alpha_state:
+        raise RuntimeError(f"Westinghouse alpha-stake parsing regression: {alpha_state}")
+    split_state = _wec_state_key("웨스팅하우스 지분율 20% 요구에 미국은 7% 고수", "연합뉴스")
+    if "stake_korea_request:20" not in split_state or "stake_us_offer:7" not in split_state:
+        raise RuntimeError(f"Westinghouse bilateral-stake parsing regression: {split_state}")
     if _is_material_smr("[특징주] SMR 관련주 급등", "언론사"):
         raise RuntimeError("SMR market-reaction filter regression")
     if not _is_material_smr("SMR 특별법·시행령 11일 시행…민관 공동출자 지원", "정책브리핑"):
@@ -438,6 +451,10 @@ def _wec_state_key(title: str, outlet: str = "") -> str:
 def _wec_fact_slot(fact: str) -> str:
     if fact.startswith(("stake:", "stake_range:")):
         return "stake"
+    if fact.startswith("stake_korea_request:"):
+        return "stake_korea_request"
+    if fact.startswith("stake_us_offer:"):
+        return "stake_us_offer"
     if fact.startswith("governance:board"):
         return "board"
     if fact.startswith("governance:voting"):
