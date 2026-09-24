@@ -133,17 +133,6 @@
       "source": "아이뉴스24",
       "title": "삼성도 TSMC와 손잡나…‘맞춤형 HBM’이 허문 반도체 경계"
     },
-    "event:1bbc3b122f41c3e4b3ae9fad": {
-      "first_seen_kst": "2026-09-11T06:17:11+09:00",
-      "lanes": {
-        "live": "2026-09-11T06:17:11+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12150011",
-      "source": "매일경제",
-      "title": "유가·국채금리 급등에 무너진 투심...美 3대증시 하락 [월가월부]"
-    },
     "event:1bc5b1bd6c9399cc97278114": {
       "first_seen_kst": "2026-09-14T16:38:41+09:00",
       "lanes": {
@@ -261,22 +250,13 @@
     "event:231aa24d7c1fe29e997b67fc": {
       "first_seen_kst": "2026-09-24T09:28:56+09:00",
       "lanes": {
-        "live": "2026-09-24T09:28:56+09:00"
+        "live": "2026-09-24T09:28:56+09:00",
+        "preopen": "2026-09-25T06:36:26+09:00"
       },
-      "last_seen_kst": "2026-09-24T09:28:56+09:00",
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
       "link": "https://www.mt.co.kr/stock/2026/09/24/2026092309245569145",
       "source": "머니투데이",
       "title": "\"개인투자 거의 없어\"...2.2경원 미국 ETF시장, 단종레는 '0.21%'"
-    },
-    "event:2432c5a3c57ff1467eabd2e5": {
-      "first_seen_kst": "2026-09-11T06:33:53+09:00",
-      "lanes": {
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12149560",
-      "source": "매일경제",
-      "title": "“아직 안 꺾였는데 화끈하게 인버스, 이래야 불개미지”…유가 치솟자 700억 하락 베팅"
     },
     "event:24aff8fd26e6abb4983be608": {
       "first_seen_kst": "2026-09-14T21:33:24+09:00",
@@ -760,17 +740,6 @@
       "source": "아시아경제",
       "title": "李 \"레버리지 ETF 정책 부족함 있었다\"…정책실장 인선엔 '사회정책 강화' 고심"
     },
-    "event:5768720f1399c28839e0cc29": {
-      "first_seen_kst": "2026-09-11T05:58:39+09:00",
-      "lanes": {
-        "live": "2026-09-11T05:58:39+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.yna.co.kr/view/MYH20260910018000038",
-      "source": "연합뉴스",
-      "title": "\"집값·대출에 금융불균형…여건 보며 기준금리 결정\" | 연합뉴스"
-    },
     "event:57f669c04239c1d360adf4a6": {
       "first_seen_kst": "2026-09-16T16:53:46+09:00",
       "lanes": {
@@ -988,12 +957,13 @@
     "event:738e0b5e3b474f78fbf523b0": {
       "first_seen_kst": "2026-09-24T07:18:00+09:00",
       "lanes": {
-        "live": "2026-09-24T07:18:00+09:00"
+        "live": "2026-09-24T07:18:00+09:00",
+        "preopen": "2026-09-25T06:36:26+09:00"
       },
-      "last_seen_kst": "2026-09-24T07:18:00+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01666246645583400",
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03247206645583400",
       "source": "이데일리",
-      "title": "뉴노멀 됐나…美10년물 다시 5.1%, 얼마나 더 오를까"
+      "title": "美장기금리 어디까지 오를까…'기간 프리미엄'에 달렸다"
     },
     "event:742a84f2d0be701f1dd08583": {
       "first_seen_kst": "2026-09-14T03:38:57+09:00",
@@ -1408,6 +1378,16 @@
       "link": "https://www.mt.co.kr/world/2026/09/16/2026091612447051169",
       "source": "머니투데이",
       "title": "[뉴스프레소] 브레이크 없이 치솟는 국채금리… FOMC D-1, 금리 동결이 오히려 악재?"
+    },
+    "event:998c292a0a174271b78c79b6": {
+      "first_seen_kst": "2026-09-25T06:36:26+09:00",
+      "lanes": {
+        "preopen": "2026-09-25T06:36:26+09:00"
+      },
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6301450",
+      "source": "뉴스1",
+      "title": "호르무즈 재개 협상에 유가 상승폭 축소…브렌트 3.4% ↑"
     },
     "event:99fdabdee49957d1a47dab4b": {
       "first_seen_kst": "2026-09-14T21:55:45+09:00",
@@ -2217,17 +2197,6 @@
       "source": "머니투데이",
       "title": "美금리 인상 우려·유가 급등에 환율 장중 1370원 돌파"
     },
-    "event:f975757f879429c3024415aa": {
-      "first_seen_kst": "2026-09-11T04:48:49+09:00",
-      "lanes": {
-        "live": "2026-09-11T04:48:49+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01571126645579136",
-      "source": "이데일리",
-      "title": "[美특징주]AI인프라株, 위험회피 심리에 동반 급락…버티브·코어위브 6%↓"
-    },
     "event:fbe5e4e7a4d2bceeaeb315d0": {
       "first_seen_kst": "2026-09-18T18:04:06+09:00",
       "lanes": {
@@ -2784,16 +2753,6 @@
       "source": "파이낸셜뉴스",
       "title": "서학개미 빨아들이는 SK하닉 ADR... 상장 두달 만에 美프리미엄 40% 육박"
     },
-    "link:23bb94d0e0106be4b01cd700": {
-      "first_seen_kst": "2026-09-11T04:23:40+09:00",
-      "lanes": {
-        "live": "2026-09-11T04:23:40+09:00"
-      },
-      "last_seen_kst": "2026-09-11T04:23:40+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12149893",
-      "source": "매일경제",
-      "title": "BKV, 4억 달러 전환사채 발행..2031년 만기·자사주 매입 병행"
-    },
     "link:2409084188a8bf51a273441d": {
       "first_seen_kst": "2026-09-21T17:03:55+09:00",
       "lanes": {
@@ -3145,6 +3104,16 @@
       "link": "https://www.yna.co.kr/view/MYH20260918017900038",
       "source": "연합뉴스",
       "title": "미·일 금리인상에도 코스피 급등…반도체주 강세 | 연합뉴스"
+    },
+    "link:3d0fb88ac6869798fd19c3ee": {
+      "first_seen_kst": "2026-09-25T06:36:26+09:00",
+      "lanes": {
+        "preopen": "2026-09-25T06:36:26+09:00"
+      },
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03247206645583400",
+      "source": "이데일리",
+      "title": "美장기금리 어디까지 오를까…'기간 프리미엄'에 달렸다"
     },
     "link:3d6248c69ae1041d36b2ca7a": {
       "first_seen_kst": "2026-09-12T06:23:58+09:00",
@@ -3677,9 +3646,10 @@
     "link:5dee3e09294eb99c00b9034e": {
       "first_seen_kst": "2026-09-24T09:28:56+09:00",
       "lanes": {
-        "live": "2026-09-24T09:28:56+09:00"
+        "live": "2026-09-24T09:28:56+09:00",
+        "preopen": "2026-09-25T06:36:26+09:00"
       },
-      "last_seen_kst": "2026-09-24T09:28:56+09:00",
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
       "link": "https://www.mt.co.kr/stock/2026/09/24/2026092309245569145",
       "source": "머니투데이",
       "title": "\"개인투자 거의 없어\"...2.2경원 미국 ETF시장, 단종레는 '0.21%'"
@@ -4308,17 +4278,6 @@
       "source": "이데일리",
       "title": "KRX 14일부터 저녁 8시까지 실시간 거래 열린다…ETF,ETN은 빠졌다"
     },
-    "link:8a995f8d1e9b10046fe1d744": {
-      "first_seen_kst": "2026-09-11T06:17:11+09:00",
-      "lanes": {
-        "live": "2026-09-11T06:17:11+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12150011",
-      "source": "매일경제",
-      "title": "유가·국채금리 급등에 무너진 투심...美 3대증시 하락 [월가월부]"
-    },
     "link:8b0e6089ff4866089db6383f": {
       "first_seen_kst": "2026-09-18T23:32:37+09:00",
       "lanes": {
@@ -4478,16 +4437,6 @@
       "link": "https://www.asiae.co.kr/article/2026091813313170215",
       "source": "아시아경제",
       "title": "李 \"레버리지 ETF 정책 부족함 있었다\"…정책실장 인선엔 '사회정책 강화' 고심"
-    },
-    "link:9634bbe1f7ad39b716a03bb6": {
-      "first_seen_kst": "2026-09-11T06:33:53+09:00",
-      "lanes": {
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.msn.com/en-us/news/other/iran-attacks-us-base-in-jordan-ships-near-hormuz-after-tankers-sunk/ar-AA2bQR1Y",
-      "source": "Reuters on MSN",
-      "title": "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크"
     },
     "link:9647f9e8188158571d873b4e": {
       "first_seen_kst": "2026-09-14T03:38:57+09:00",
@@ -4713,17 +4662,6 @@
       "link": "https://www.newsis.com/view/NISX20260913_0003787248",
       "source": "뉴시스",
       "title": "환율 내렸지만…서학개미, 美 주식 3개월 만에 순매도"
-    },
-    "link:a2551a78d678c7c6df295281": {
-      "first_seen_kst": "2026-09-11T04:48:49+09:00",
-      "lanes": {
-        "live": "2026-09-11T04:48:49+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01571126645579136",
-      "source": "이데일리",
-      "title": "[美특징주]AI인프라株, 위험회피 심리에 동반 급락…버티브·코어위브 6%↓"
     },
     "link:a4b6edb41010f6f5d2f907a6": {
       "first_seen_kst": "2026-09-19T17:57:47+09:00",
@@ -4966,6 +4904,16 @@
       "source": "이데일리",
       "title": "뉴노멀 됐나…美10년물 다시 5.1%, 얼마나 더 오를까"
     },
+    "link:b2eb09915910f2ddeb19abee": {
+      "first_seen_kst": "2026-09-25T06:36:26+09:00",
+      "lanes": {
+        "preopen": "2026-09-25T06:36:26+09:00"
+      },
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6301450",
+      "source": "뉴스1",
+      "title": "호르무즈 재개 협상에 유가 상승폭 축소…브렌트 3.4% ↑"
+    },
     "link:b3fa29cdbd4522aec2079cb9": {
       "first_seen_kst": "2026-09-20T07:18:13+09:00",
       "lanes": {
@@ -5026,17 +4974,6 @@
       "link": "https://www.news1.kr/industry/auto-industry/6290060",
       "source": "뉴스1",
       "title": "정의선-젠슨황 '깐부 동맹' 이유 이거였네…현대차-엔비디아 셈법은?"
-    },
-    "link:b7b64a54ea9a8a6fc521117b": {
-      "first_seen_kst": "2026-09-11T05:58:39+09:00",
-      "lanes": {
-        "live": "2026-09-11T05:58:39+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.yna.co.kr/view/MYH20260910018000038",
-      "source": "연합뉴스",
-      "title": "\"집값·대출에 금융불균형…여건 보며 기준금리 결정\" | 연합뉴스"
     },
     "link:b8239ce271ebd01d6fa67360": {
       "first_seen_kst": "2026-09-19T11:08:27+09:00",
@@ -5441,16 +5378,6 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04598566645581432",
       "source": "이데일리",
       "title": "151조원 파라마운트·워너 합병 한고비 넘었다…美 FCC 승인"
-    },
-    "link:cff9d4f99f50c4266e51b929": {
-      "first_seen_kst": "2026-09-11T06:33:53+09:00",
-      "lanes": {
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12149560",
-      "source": "매일경제",
-      "title": "“아직 안 꺾였는데 화끈하게 인버스, 이래야 불개미지”…유가 치솟자 700억 하락 베팅"
     },
     "link:d04a410687a7f3ca1b583309": {
       "first_seen_kst": "2026-09-20T05:36:33+09:00",
@@ -6067,6 +5994,16 @@
       "source": "뉴시스",
       "title": "英 찰스 국왕, AI 위험 논란 속 기업 대표들 회의 소집"
     },
+    "original:092b9799ea60de8dd5a92e91": {
+      "first_seen_kst": "2026-09-25T06:36:26+09:00",
+      "lanes": {
+        "preopen": "2026-09-25T06:36:26+09:00"
+      },
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6301450",
+      "source": "뉴스1",
+      "title": "호르무즈 재개 협상에 유가 상승폭 축소…브렌트 3.4% ↑"
+    },
     "original:0b29edeb379fe99c9bcd4383": {
       "first_seen_kst": "2026-09-16T21:21:03+09:00",
       "lanes": {
@@ -6471,16 +6408,6 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01482566645579792",
       "source": "이데일리",
       "title": "“우리가 만들지만 두렵다”…AI 기업 내부서 ‘개발 감속론’ 확산"
-    },
-    "original:275af546a630c4a14d542470": {
-      "first_seen_kst": "2026-09-11T06:33:53+09:00",
-      "lanes": {
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12149560",
-      "source": "매일경제",
-      "title": "“아직 안 꺾였는데 화끈하게 인버스, 이래야 불개미지”…유가 치솟자 700억 하락 베팅"
     },
     "original:27bea0bf48e88eec467aa3a7": {
       "first_seen_kst": "2026-09-23T05:55:25+09:00",
@@ -6999,17 +6926,6 @@
       "source": "연합뉴스",
       "title": "외국인 팔고, 기관은 사고…삼성전자 2%·하이닉스 4% 상승(종합) | 연합뉴스"
     },
-    "original:464392ae7ecee21f7e813085": {
-      "first_seen_kst": "2026-09-11T04:48:49+09:00",
-      "lanes": {
-        "live": "2026-09-11T04:48:49+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01571126645579136",
-      "source": "이데일리",
-      "title": "[美특징주]AI인프라株, 위험회피 심리에 동반 급락…버티브·코어위브 6%↓"
-    },
     "original:4681870d2a14241fcc53bab5": {
       "first_seen_kst": "2026-09-25T02:31:20+09:00",
       "lanes": {
@@ -7170,17 +7086,6 @@
       "link": "https://www.mk.co.kr/news/stock/12159387",
       "source": "매일경제",
       "title": "미 금리 인상에도 7000선 고지 회복한 국장…“변동성 줄고 기초체력 양호”"
-    },
-    "original:50ada313082c48a78c892b25": {
-      "first_seen_kst": "2026-09-11T06:17:11+09:00",
-      "lanes": {
-        "live": "2026-09-11T06:17:11+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12150011",
-      "source": "매일경제",
-      "title": "유가·국채금리 급등에 무너진 투심...美 3대증시 하락 [월가월부]"
     },
     "original:511e0f15b7a3c71146eeb66a": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
@@ -8085,16 +7990,6 @@
       "source": "뉴시스",
       "title": "금리 인상 악재에도 굳건한 증시…\"10월 반등 기회 온다\""
     },
-    "original:8d3f4d90b17da2d8f2781ebc": {
-      "first_seen_kst": "2026-09-11T04:23:40+09:00",
-      "lanes": {
-        "live": "2026-09-11T04:23:40+09:00"
-      },
-      "last_seen_kst": "2026-09-11T04:23:40+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12149893",
-      "source": "매일경제",
-      "title": "BKV, 4억 달러 전환사채 발행..2031년 만기·자사주 매입 병행"
-    },
     "original:8df21a15cc284e1485a2720f": {
       "first_seen_kst": "2026-09-21T17:23:09+09:00",
       "lanes": {
@@ -8185,6 +8080,16 @@
       "link": "https://www.newsis.com/view/NISX20260916_0003791419",
       "source": "뉴시스",
       "title": "'반도체 노조'로 전환하나…삼성전자 초기업노조, 오늘 조합원 투표 돌입"
+    },
+    "original:9167efbf51dd767a45d9b113": {
+      "first_seen_kst": "2026-09-25T06:36:26+09:00",
+      "lanes": {
+        "preopen": "2026-09-25T06:36:26+09:00"
+      },
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03247206645583400",
+      "source": "이데일리",
+      "title": "美장기금리 어디까지 오를까…'기간 프리미엄'에 달렸다"
     },
     "original:93d0f1d24d38120ee869dd62": {
       "first_seen_kst": "2026-09-19T17:57:47+09:00",
@@ -8296,17 +8201,6 @@
       "link": "https://www.yna.co.kr/view/AKR20260914123500030",
       "source": "연합뉴스",
       "title": "우리로, 136억원 규모 AI 데이터센터 광소자 공급계약 | 연합뉴스"
-    },
-    "original:9d2e3718c2ce1dabea0d3d21": {
-      "first_seen_kst": "2026-09-11T05:58:39+09:00",
-      "lanes": {
-        "live": "2026-09-11T05:58:39+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.yna.co.kr/view/MYH20260910018000038",
-      "source": "연합뉴스",
-      "title": "\"집값·대출에 금융불균형…여건 보며 기준금리 결정\" | 연합뉴스"
     },
     "original:9ed5924ecbf1d007a88f51e7": {
       "first_seen_kst": "2026-09-20T09:29:00+09:00",
@@ -8725,9 +8619,10 @@
     "original:c5d43bd53097876183e5d6a3": {
       "first_seen_kst": "2026-09-24T09:28:56+09:00",
       "lanes": {
-        "live": "2026-09-24T09:28:56+09:00"
+        "live": "2026-09-24T09:28:56+09:00",
+        "preopen": "2026-09-25T06:36:26+09:00"
       },
-      "last_seen_kst": "2026-09-24T09:28:56+09:00",
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
       "link": "https://www.mt.co.kr/stock/2026/09/24/2026092309245569145",
       "source": "머니투데이",
       "title": "\"개인투자 거의 없어\"...2.2경원 미국 ETF시장, 단종레는 '0.21%'"
@@ -9084,16 +8979,6 @@
       "link": "https://www.yna.co.kr/view/AKR20260911031851002?section=economy/all",
       "source": "연합뉴스",
       "title": "9월 초 수출도 고공행진…반도체 1년 새 270% 급증(종합) | 연합뉴스"
-    },
-    "original:de179da36fff0af28f4991d3": {
-      "first_seen_kst": "2026-09-11T06:33:53+09:00",
-      "lanes": {
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.msn.com/en-us/news/other/iran-attacks-us-base-in-jordan-ships-near-hormuz-after-tankers-sunk/ar-AA2bQR1Y",
-      "source": "Reuters on MSN",
-      "title": "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크"
     },
     "original:de21b0711a15737bc07a2bb1": {
       "first_seen_kst": "2026-09-21T18:41:01+09:00",
@@ -9740,6 +9625,16 @@
       "source": "뉴시스",
       "title": "英 찰스 국왕, AI 위험 논란 속 기업 대표들 회의 소집"
     },
+    "title:092b9799ea60de8dd5a92e91": {
+      "first_seen_kst": "2026-09-25T06:36:26+09:00",
+      "lanes": {
+        "preopen": "2026-09-25T06:36:26+09:00"
+      },
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6301450",
+      "source": "뉴스1",
+      "title": "호르무즈 재개 협상에 유가 상승폭 축소…브렌트 3.4% ↑"
+    },
     "title:0b29edeb379fe99c9bcd4383": {
       "first_seen_kst": "2026-09-16T21:21:03+09:00",
       "lanes": {
@@ -10144,16 +10039,6 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01482566645579792",
       "source": "이데일리",
       "title": "“우리가 만들지만 두렵다”…AI 기업 내부서 ‘개발 감속론’ 확산"
-    },
-    "title:275af546a630c4a14d542470": {
-      "first_seen_kst": "2026-09-11T06:33:53+09:00",
-      "lanes": {
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12149560",
-      "source": "매일경제",
-      "title": "“아직 안 꺾였는데 화끈하게 인버스, 이래야 불개미지”…유가 치솟자 700억 하락 베팅"
     },
     "title:27bea0bf48e88eec467aa3a7": {
       "first_seen_kst": "2026-09-23T05:55:25+09:00",
@@ -10661,17 +10546,6 @@
       "source": "연합뉴스",
       "title": "외국인 팔고, 기관은 사고…삼성전자 2%·하이닉스 4% 상승(종합) | 연합뉴스"
     },
-    "title:464392ae7ecee21f7e813085": {
-      "first_seen_kst": "2026-09-11T04:48:49+09:00",
-      "lanes": {
-        "live": "2026-09-11T04:48:49+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01571126645579136",
-      "source": "이데일리",
-      "title": "[美특징주]AI인프라株, 위험회피 심리에 동반 급락…버티브·코어위브 6%↓"
-    },
     "title:4681870d2a14241fcc53bab5": {
       "first_seen_kst": "2026-09-25T02:31:20+09:00",
       "lanes": {
@@ -10832,17 +10706,6 @@
       "link": "https://www.mk.co.kr/news/stock/12159387",
       "source": "매일경제",
       "title": "미 금리 인상에도 7000선 고지 회복한 국장…“변동성 줄고 기초체력 양호”"
-    },
-    "title:50ada313082c48a78c892b25": {
-      "first_seen_kst": "2026-09-11T06:17:11+09:00",
-      "lanes": {
-        "live": "2026-09-11T06:17:11+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12150011",
-      "source": "매일경제",
-      "title": "유가·국채금리 급등에 무너진 투심...美 3대증시 하락 [월가월부]"
     },
     "title:511e0f15b7a3c71146eeb66a": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
@@ -11758,16 +11621,6 @@
       "source": "뉴시스",
       "title": "금리 인상 악재에도 굳건한 증시…\"10월 반등 기회 온다\""
     },
-    "title:8d3f4d90b17da2d8f2781ebc": {
-      "first_seen_kst": "2026-09-11T04:23:40+09:00",
-      "lanes": {
-        "live": "2026-09-11T04:23:40+09:00"
-      },
-      "last_seen_kst": "2026-09-11T04:23:40+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12149893",
-      "source": "매일경제",
-      "title": "BKV, 4억 달러 전환사채 발행..2031년 만기·자사주 매입 병행"
-    },
     "title:8df21a15cc284e1485a2720f": {
       "first_seen_kst": "2026-09-21T17:23:09+09:00",
       "lanes": {
@@ -11858,6 +11711,16 @@
       "link": "https://www.newsis.com/view/NISX20260916_0003791419",
       "source": "뉴시스",
       "title": "'반도체 노조'로 전환하나…삼성전자 초기업노조, 오늘 조합원 투표 돌입"
+    },
+    "title:9167efbf51dd767a45d9b113": {
+      "first_seen_kst": "2026-09-25T06:36:26+09:00",
+      "lanes": {
+        "preopen": "2026-09-25T06:36:26+09:00"
+      },
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03247206645583400",
+      "source": "이데일리",
+      "title": "美장기금리 어디까지 오를까…'기간 프리미엄'에 달렸다"
     },
     "title:93d0f1d24d38120ee869dd62": {
       "first_seen_kst": "2026-09-19T17:57:47+09:00",
@@ -11969,17 +11832,6 @@
       "link": "https://www.yna.co.kr/view/AKR20260914123500030",
       "source": "연합뉴스",
       "title": "우리로, 136억원 규모 AI 데이터센터 광소자 공급계약 | 연합뉴스"
-    },
-    "title:9d2e3718c2ce1dabea0d3d21": {
-      "first_seen_kst": "2026-09-11T05:58:39+09:00",
-      "lanes": {
-        "live": "2026-09-11T05:58:39+09:00",
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.yna.co.kr/view/MYH20260910018000038",
-      "source": "연합뉴스",
-      "title": "\"집값·대출에 금융불균형…여건 보며 기준금리 결정\" | 연합뉴스"
     },
     "title:9ed5924ecbf1d007a88f51e7": {
       "first_seen_kst": "2026-09-20T09:29:00+09:00",
@@ -12398,9 +12250,10 @@
     "title:c5d43bd53097876183e5d6a3": {
       "first_seen_kst": "2026-09-24T09:28:56+09:00",
       "lanes": {
-        "live": "2026-09-24T09:28:56+09:00"
+        "live": "2026-09-24T09:28:56+09:00",
+        "preopen": "2026-09-25T06:36:26+09:00"
       },
-      "last_seen_kst": "2026-09-24T09:28:56+09:00",
+      "last_seen_kst": "2026-09-25T06:36:26+09:00",
       "link": "https://www.mt.co.kr/stock/2026/09/24/2026092309245569145",
       "source": "머니투데이",
       "title": "\"개인투자 거의 없어\"...2.2경원 미국 ETF시장, 단종레는 '0.21%'"
@@ -13030,16 +12883,6 @@
       "source": "뉴시스",
       "title": "국힘, 김용범·이찬진·이억원 공수처 고발…\"졸속 레버리지ETF 국민 피해 54조\""
     },
-    "title:eb6da8ce5e88263a48d97849": {
-      "first_seen_kst": "2026-09-11T06:33:53+09:00",
-      "lanes": {
-        "preopen": "2026-09-11T06:33:53+09:00"
-      },
-      "last_seen_kst": "2026-09-11T06:33:53+09:00",
-      "link": "https://www.msn.com/en-us/news/other/iran-attacks-us-base-in-jordan-ships-near-hormuz-after-tankers-sunk/ar-AA2bQR1Y",
-      "source": "Reuters on MSN",
-      "title": "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크"
-    },
     "title:eb8eea60c235df5dc114a877": {
       "first_seen_kst": "2026-09-22T17:04:40+09:00",
       "lanes": {
@@ -13323,5 +13166,5 @@
       "title": "외신 “하이닉스, 인텔과 미국내 첫 메모리 공장 건설 논의중”"
     }
   },
-  "updated_at_kst": "2026-09-25T04:05:10+09:00"
+  "updated_at_kst": "2026-09-25T06:36:26+09:00"
 }
