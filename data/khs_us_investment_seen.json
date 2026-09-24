@@ -320,7 +320,8 @@
     "e3ba2c59cbe6d521312b": "2026-09-16T06:11:26.022367+00:00",
     "stateevt_17ede0d64ecc3bdf220a": "2026-09-23T10:10:59.097546+00:00",
     "stateevt_77db53ef2d28912ab5ee": "2026-09-23T10:10:59.097546+00:00",
-    "stateevt_a28472edccc822fdca47": "2026-09-23T10:10:59.097546+00:00"
+    "stateevt_a28472edccc822fdca47": "2026-09-23T10:10:59.097546+00:00",
+    "stateevt_74b63417d6ff2ee889b6": "2026-09-24T05:19:40.631100+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -332,7 +333,8 @@
     "westinghouse_stake_media": "2026-09-15T17:19:09.625659+00:00",
     "eventstate_energy_package_17ede0d64ecc3bdf220a": "2026-09-23T10:10:59.097546+00:00",
     "eventstate_nuclear_build_77db53ef2d28912ab5ee": "2026-09-23T10:10:59.097546+00:00",
-    "eventstate_texas_ai_power_a28472edccc822fdca47": "2026-09-23T10:10:59.097546+00:00"
+    "eventstate_texas_ai_power_a28472edccc822fdca47": "2026-09-23T10:10:59.097546+00:00",
+    "eventstate_legacy_funding_media_74b63417d6ff2ee889b6": "2026-09-24T05:19:40.631100+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -601,6 +603,32 @@
           "title": "산업통상부, 대미투자 1호로 텍사스 가스발전소 선정…223억달러 규모 - 시선뉴스",
           "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBPd3dEQmw0R3BsM19tUFdEd1dEVWtMWUhUaUUzYjhsOFM4ZUFtSGU3Qi0wT1VrZV92VGpmYUVuMzhRNkFNV0JldkNLSHQ3OEwyTDJuQU55TGxkOU9pOHZpS1RER3BSTzBhY0RZRm530gFyQVVfeXFMTWJISGhaWHQ1cWVKRzlZUHBNaHVCbS1rMGo5S0FoSTdtWEhIdnZ1UVBqWnFtNktBT0ZFd29WNW9sTVk5ZG5QbkRoN194V0I4bHl1cFlqb2FjcVZ3NzlhQlpvZ1FUYXVxUkc3dE5PZlRQUjlB?oc=5",
           "published": "2026-09-22T08:53:16+00:00"
+        }
+      ]
+    },
+    "legacy_funding_media": {
+      "facts": [
+        "stage:송금집행"
+      ],
+      "slots": {
+        "legacy_funding_media|stage:송금집행": "stage:송금집행"
+      },
+      "initialized_at": "2026-09-24T05:19:55.815931+00:00",
+      "updated_at": "2026-09-24T05:19:55.815931+00:00",
+      "last_title": "[속보] 산업부, 국회에 \"최종 발표는 트럼프가…美요청시 45일내 송금\" - 연합뉴스 한민족센터",
+      "last_source": "연합뉴스 한민족센터",
+      "evidence": [
+        {
+          "source": "매일경제",
+          "title": "[단독]대미투자 송금 시점 ‘협약 45일 내’ 가닥...이달 22억弗 우선 송금 - 매일경제",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9iNE8zY1hBTmJfS1pzZDRLN1pDZmFlU3FYbHRwS0RiUng4TWJ5OE9VZWJ6ZGpZVzJxdHRSYmtBSS0xYlBUS3l1OFZ4TFMyU0pELW50dw?oc=5",
+          "published": "2026-09-22T01:57:28+00:00"
+        },
+        {
+          "source": "연합뉴스 한민족센터",
+          "title": "[속보] 산업부, 국회에 \"최종 발표는 트럼프가…美요청시 45일내 송금\" - 연합뉴스 한민족센터",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1BQWNiZGdGMHpyV2tEelY3UGVubGhjN1FCSE1mVVFjcHBLajBUZ2hhTmxjX0RrQVlSN280MG8yQ2xFY2lhWnUzQlBSb0QtSWFDazkzTVl2bWtVb3hDVUMxTTJOVFhrTzN1YWRCNk5EZndTODBh?oc=5",
+          "published": "2026-09-22T03:09:15+00:00"
         }
       ]
     }
