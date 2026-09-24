@@ -29,7 +29,21 @@ ALERT_PATH = OUT_DIR / "khs_nuclear_policy_alert.md"
 TITLE_PATH = OUT_DIR / "khs_nuclear_policy_title.txt"
 ALERTS_JSON_PATH = OUT_DIR / "khs_nuclear_policy_alerts.json"
 MAX_SOURCE_AGE_HOURS = int(os.getenv("KHS_NUCLEAR_MAX_AGE_HOURS", "72"))
+WEC_MAX_SOURCE_AGE_HOURS = int(os.getenv("KHS_WEC_MAX_AGE_HOURS", "96"))
 DIRECT_FINGERPRINT_VERSION = "ko-v2"
+
+# Westinghouse도 기사/URL 신규가 아니라 지분율·거버넌스·계약단계의 사건 상태를 감지한다.
+# 전환 이전의 기사들은 최신 상태의 기준선으로만 흡수하고 소급 재발송하지 않는다.
+WEC_STATE_MODEL_CUTOFF_UTC = dt.datetime(2026, 9, 24, 5, 0, tzinfo=UTC)
+WEC_STATE_MODEL_VERSION = 2
+WEC_FIXED_BASELINE = {
+    "state_key": "stake_range:5~10|governance:voting_possible|status:unconfirmed",
+    "status": "5~10% 지분 협의·의결권 검토",
+    "published_utc": "2026-09-22T08:48:00+00:00",
+    "title": "웨스팅하우스 지분 5~10% 협의·의결권 가능 기준선",
+    "source": "2026-09-22 국회 보고·복수 보도",
+    "link": "",
+}
 
 # SMR는 새 기사 자체가 아니라 주제·사건의 구조화된 상태 변화를 감지한다.
 # 이 시각 이전 검색 결과는 새 모델 전환 시 소급 알림하지 않는다.
@@ -66,9 +80,10 @@ SMR_OFFICIAL_SOURCES = [
 ]
 
 WEC_RSS_QUERIES = [
-    ("웨스팅하우스 지분·한국 뉴스", "웨스팅하우스 지분 인수 한국전력 산업통상부 한수원 브룩필드 카메코 when:14d"),
-    ("웨스팅하우스 지분·해외 뉴스", "Westinghouse stake Korea KEPCO KHNP Brookfield Cameco when:14d"),
-    ("웨스팅하우스 지분·공식입장 추적", "웨스팅하우스 산업통상부 한국전력 공식 발표 when:30d"),
+    ("웨스팅하우스 지분·한국 뉴스", "웨스팅하우스 지분 인수 한국전력 산업통상부 한수원 when:7d"),
+    ("웨스팅하우스 최신 지분율", "웨스팅하우스 지분율 5 10 7 20 의결권 이사회 when:7d"),
+    ("웨스팅하우스 지분·해외 뉴스", "Westinghouse stake Korea KEPCO KHNP Brookfield Cameco when:7d"),
+    ("웨스팅하우스 지분·공식입장 추적", "웨스팅하우스 산업통상부 한국전력 공식 발표 미확정 when:14d"),
 ]
 
 SMR_RSS_QUERIES = [
@@ -241,15 +256,75 @@ def _has_numeric_terms(title: str) -> bool:
     return bool(re.search(r"(?:\$|달러|원|억원|조원|%|퍼센트).*?\d|\d[\d,.]*\s*(?:억달러|달러|억원|조원|%)", title.lower()))
 
 
+def _wec_state_facts(title: str, outlet: str = "") -> tuple[str, ...]:
+    low = title.lower()
+    facts: list[str] = []
+
+    # 지분 범위는 단일 퍼센트보다 먼저 정규화한다.
+    range_spans: list[tuple[int, int]] = []
+    for match in re.finditer(r"(\d+(?:\.\d+)?)\s*(?:~|∼|–|—|-)\s*(\d+(?:\.\d+)?)\s*%", low):
+        facts.append(f"stake_range:{match.group(1)}~{match.group(2)}")
+        range_spans.append(match.span())
+
+    scrubbed = low
+    for start, end in reversed(range_spans):
+        scrubbed = scrubbed[:start] + " " * (end - start) + scrubbed[end:]
+
+    for match in re.finditer(r"(\d+(?:\.\d+)?)\s*%\s*\+?\s*(?:α|알파|alpha)", scrubbed):
+        facts.append(f"stake:{match.group(1)}+alpha")
+        scrubbed = scrubbed.replace(match.group(0), " ")
+
+    for match in re.finditer(r"(\d+(?:\.\d+)?)\s*%", scrubbed):
+        facts.append(f"stake:{match.group(1)}")
+
+    # 지분과 직접 연결된 가격·출자액만 상태값으로 사용한다.
+    for match in re.finditer(r"(\d+(?:\.\d+)?)\s*(억|조)\s*달러", low):
+        facts.append(f"price:{match.group(1)}{match.group(2)}달러")
+    if "ipo" in low and ("할인" in low or "discount" in low):
+        facts.append("pricing:ipo_discount")
+
+    if "이사회" in low or "board seat" in low or "board representation" in low:
+        if any(term in low for term in ("어려", "불가", "못해", "힘들", "difficult", "unlikely")):
+            facts.append("governance:board_limited")
+        else:
+            facts.append("governance:board")
+    if "의결권" in low or "voting right" in low:
+        facts.append("governance:voting_possible")
+
+    if any(term in low for term in ("사실과 다르", "공식 부인", "부인", "정해진 바 없", "미확정", "not confirmed", "not decided")):
+        facts.append("status:unconfirmed")
+    elif any(term in low for term in ("최종 확정", "공식 확정", "확정 발표", "signed agreement", "officially confirmed")):
+        facts.append("status:confirmed")
+
+    if any(term in low for term in ("실사", "due diligence")):
+        facts.append("stage:due_diligence")
+    elif any(term in low for term in ("loi", "mou", "양해각서", "term sheet", "텀시트")):
+        facts.append("stage:pre_contract")
+    elif any(term in low for term in ("본협상", "협상 개시", "협상 착수", "협의 중", "협의중", "negotiat")):
+        facts.append("stage:negotiation")
+    elif any(term in low for term in ("계약 체결", "합의 체결", "취득 완료", "인수 완료")):
+        facts.append("stage:contracted")
+
+    return tuple(sorted(dict.fromkeys(facts)))
+
+
 def _is_material_westinghouse(title: str, outlet: str = "") -> bool:
     low = title.lower()
     if not (any(term in low for term in WEC_CORE) and any(term in low for term in WEC_TRANSACTION)):
         return False
+
+    facts = _wec_state_facts(title, outlet)
     if _is_official_outlet(outlet):
-        return True
+        # 공식 출처는 미확정·부인·확정·계약단계처럼 실제 상태를 말할 때만 통과.
+        return bool(facts) or any(term in low for term in ("공식 발표", "공식 확인", "사실과 다르"))
+
+    # 시장반응/해설 기사도 구체적인 거래 상태값이 같이 있을 때만 증거로 사용.
     if any(term in low for term in WEC_COMMENTARY_OR_MARKET):
-        return any(term in low for term in WEC_STRONG_EXECUTION)
-    return any(term in low for term in WEC_MATERIAL) or _has_numeric_terms(title)
+        return bool(facts)
+
+    # '지분율 줄다리기', '검토', '논란'처럼 숫자·거버넌스·계약단계가 없는
+    # 일반 서술은 새로운 사건 상태가 아니다.
+    return bool(facts)
 
 
 def _self_test_material_filter() -> None:
@@ -261,6 +336,14 @@ def _self_test_material_filter() -> None:
         raise RuntimeError("Westinghouse execution-state filter regression")
     if not _is_material_westinghouse("웨스팅하우스 지분 공동인수 보도는 사실과 다르다", "산업통상부"):
         raise RuntimeError("Westinghouse official-state filter regression")
+    if _is_material_westinghouse("원전 투자 앞둔 정부, 미국과 웨스팅하우스 지분율 줄다리기", "news.sbs.co.kr"):
+        raise RuntimeError("Westinghouse generic-stake-wording regression")
+    if not _is_material_westinghouse("웨스팅하우스 지분 5~10% 인수…의결권 가능", "한국경제"):
+        raise RuntimeError("Westinghouse concrete-stake-range regression")
+    wec_a = _wec_state_key("웨스팅하우스 지분 5~10% 인수…의결권 가능", "한국경제")
+    wec_b = _wec_state_key("웨스팅하우스 지분 5∼10% 협의, 의결권 행사 가능", "뉴시스")
+    if wec_a != wec_b:
+        raise RuntimeError(f"Westinghouse same-event semantic dedupe regression: {wec_a} != {wec_b}")
     if _is_material_smr("[특징주] SMR 관련주 급등", "언론사"):
         raise RuntimeError("SMR market-reaction filter regression")
     if not _is_material_smr("SMR 특별법·시행령 11일 시행…민관 공동출자 지원", "정책브리핑"):
@@ -348,10 +431,8 @@ def _wec_numbers(title: str) -> tuple[str, ...]:
 
 
 def _wec_state_key(title: str, outlet: str = "") -> str:
-    status = _wec_status(title, outlet)
-    numbers = "|".join(_wec_numbers(title)) or "no-number"
-    official = "official" if _is_official_outlet(outlet) else "reported"
-    return f"{status}|{numbers}|{official}"
+    facts = _wec_state_facts(title, outlet)
+    return "|".join(facts) if facts else "no-concrete-state"
 
 
 def collect_westinghouse_stake_items(now: dt.datetime) -> list[dict]:
@@ -378,7 +459,7 @@ def collect_westinghouse_stake_items(now: dt.datetime) -> list[dict]:
                 published = published.astimezone(UTC)
             except Exception:
                 published = now.astimezone(UTC)
-            if (now.astimezone(UTC) - published).total_seconds() / 86400 > 30:
+            if (now.astimezone(UTC) - published).total_seconds() / 3600 > WEC_MAX_SOURCE_AGE_HOURS:
                 continue
             story_key = f"{title.lower()}|{outlet.lower()}"
             if story_key in seen_story:
