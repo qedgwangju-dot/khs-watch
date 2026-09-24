@@ -37,7 +37,7 @@ DIRECT_FINGERPRINT_VERSION = "ko-v2"
 WEC_STATE_MODEL_CUTOFF_UTC = dt.datetime(2026, 9, 24, 5, 0, tzinfo=UTC)
 WEC_STATE_MODEL_VERSION = 2
 WEC_FIXED_BASELINE = {
-    "state_key": "stake_range:5~10|governance:voting_possible|status:unconfirmed",
+    "state_key": "governance:voting_possible|stake_range:5~10",
     "status": "5~10% 지분 협의·의결권 검토",
     "published_utc": "2026-09-22T08:48:00+00:00",
     "title": "웨스팅하우스 지분 5~10% 협의·의결권 가능 기준선",
@@ -433,6 +433,36 @@ def _wec_numbers(title: str) -> tuple[str, ...]:
 def _wec_state_key(title: str, outlet: str = "") -> str:
     facts = _wec_state_facts(title, outlet)
     return "|".join(facts) if facts else "no-concrete-state"
+
+
+def _wec_fact_slot(fact: str) -> str:
+    if fact.startswith(("stake:", "stake_range:")):
+        return "stake"
+    if fact.startswith("governance:board"):
+        return "board"
+    if fact.startswith("governance:voting"):
+        return "voting"
+    if fact.startswith("status:"):
+        return "status"
+    if fact.startswith("stage:"):
+        return "stage"
+    if fact.startswith(("price:", "pricing:")):
+        return "pricing"
+    return fact
+
+
+def _wec_merge_state(previous_key: str, current_key: str) -> tuple[bool, str]:
+    previous_facts = [x for x in (previous_key or "").split("|") if x and x != "no-concrete-state"]
+    current_facts = [x for x in (current_key or "").split("|") if x and x != "no-concrete-state"]
+
+    previous_by_slot = {_wec_fact_slot(fact): fact for fact in previous_facts}
+    current_by_slot = {_wec_fact_slot(fact): fact for fact in current_facts}
+
+    changed = any(previous_by_slot.get(slot) != fact for slot, fact in current_by_slot.items())
+    merged = dict(previous_by_slot)
+    merged.update(current_by_slot)
+    merged_key = "|".join(sorted(merged.values())) if merged else "no-concrete-state"
+    return changed, merged_key
 
 
 def collect_westinghouse_stake_items(now: dt.datetime) -> list[dict]:
