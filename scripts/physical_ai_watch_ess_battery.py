@@ -41,6 +41,7 @@ base.QUERIES.extend([
     '(ESS OR BESS OR energy storage) (MLCC OR 적층세라믹커패시터) (이중조달 OR dual sourcing OR 재고조정 OR inventory correction OR 공급 정상화 OR normalization OR 가격 하락 OR price cut)',
     '(ESS OR BESS OR energy storage) (MLCC OR 적층세라믹커패시터) (고전압 OR high voltage OR 고신뢰성 OR high reliability OR 고온 OR high temperature OR 검사 OR test OR 수율 OR yield)',
     '(전력거래소 OR KPX) ("ESS 중앙계약시장" OR "에너지저장장치 중앙계약시장") (입찰공고 OR 공고문 OR 확정 OR 선정 OR 우선협상 OR 낙찰)',
+    '(전력거래소 OR KPX OR ESS) (25년 OR 15년 OR 장기계약 OR 계약기간) (잔존용량 OR 보증수명 OR 90% OR 70% OR 730회 OR 18250회 OR 1만8250회)',
 ])
 
 base.TRUSTED.update({
@@ -94,6 +95,8 @@ ESS3_ACTUAL = re.compile(
     re.I,
 )
 KPX_SOURCE_RE = re.compile(r'전력거래소|한국전력거래소|\bKPX\b', re.I)
+ESS_LONG_LIFE = re.compile(r'25\s*년|15\s*년|장기\s*계약|계약\s*기간|보증\s*수명|잔존\s*용량|730\s*회|18,?250\s*회|1만\s*8,?250\s*회|90\s*%|70\s*%', re.I)
+ESS_LIFETIME_RULE = re.compile(r'(?:25\s*년|15\s*년).{0,80}(?:계약|운전|충.?방전|보증)|(?:잔존\s*용량|보증\s*수명).{0,60}(?:90\s*%|85\s*%|80\s*%|75\s*%|70\s*%)|730\s*회|18,?250\s*회|1만\s*8,?250\s*회', re.I)
 
 
 def _ess3_stage(text: str, source: str = '') -> str:
@@ -210,6 +213,8 @@ def score(item: dict) -> int:
         s += 6
     if re.search(r'수주|계약|공급|order|contract|supply|생산능력|capacity', text, re.I):
         s += 4
+    if ESS_LIFETIME_RULE.search(text):
+        s += 10
 
     if _is_mlcc_ess(text):
         s += 8
@@ -250,6 +255,8 @@ def _raw_cat(text: str) -> str:
         return '중국 증설·승인 규제'
     if re.search(r'314\s*Ah|0\.414|0\.423|가격\s*인상|price\s*hike|提价|소비세|consumption tax|消费税', text, re.I):
         return '셀 가격·소비세'
+    if ESS_LIFETIME_RULE.search(text):
+        return '장기계약·수명보증'
     if re.search(r'LG에너지솔루션|삼성SDI|SK온|LG Energy Solution|Samsung SDI|SK On|에코프로비엠|포스코퓨처엠|엘앤에프', text, re.I):
         return '한국 공급망·수주'
     return '수급·가격 구조'
@@ -263,6 +270,8 @@ def category(text: str, group: str) -> str:
 
 def meaning(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
+    if raw == '장기계약·수명보증':
+        return 'ESS 중앙계약시장의 계약기간이 최대 25년으로 길어지고 충·방전 횟수·잔존용량 평가가 강화되면 초기 셀 가격보다 장기 열화율·배터리관리시스템·열관리·교체비용이 수주 경쟁력을 좌우합니다. 25년형의 연 730회, 총 1만8,250회 운전과 종료 시 잔존용량 평가를 실제 보증조건·시스템 설계에 연결해 추적합니다.'
     if raw == 'MLCC 공급 병목':
         return 'ESS 전력 제어에 필요한 MLCC가 부족해지면 원가 비중이 작아도 전체 ESS 출하가 지연될 수 있습니다. 가격 자체보다 공급 배정·납기·실제 생산차질을 우선 추적합니다.'
     if raw == 'MLCC 가격·납기 병목':
@@ -288,6 +297,8 @@ def meaning(cat: str) -> str:
 
 def risk(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
+    if raw == '장기계약·수명보증':
+        return '25년 계약은 배터리 셀이 25년 동안 교체 없이 동일 성능을 유지한다는 뜻이 아닙니다. 셀 편차·열관리·자연열화·보증충당금·유지보수 비용이 누적될 수 있고, 기사상 평가조건과 실제 낙찰 프로젝트별 보증·교체 책임을 구분해야 합니다.'
     if raw == 'MLCC 공급 병목':
         return 'MLCC 공급난이 곧 삼성전기 등 특정 업체의 ESS 매출 확정을 뜻하지 않습니다. 고객·규격·물량·단가가 확인되지 않으면 직접 수혜는 후보 단계로 유지합니다.'
     if raw == 'MLCC 가격·납기 병목':
@@ -315,6 +326,8 @@ def verification(item: dict, group: str, text: str) -> str:
     if group != 'ess_battery':
         return _orig_verification(item, group, text)
     source = item.get('source') or ''
+    if ESS_LIFETIME_RULE.search(text):
+        return '전력거래소 조건을 인용한 보도 · 계약기간·충방전·잔존용량 평가조건은 KPX 공고 원문으로 교차확인'
     if _is_mlcc_ess(text):
         if source in base.OFFICIAL_OR_PRIMARY:
             return '공급사 공식자료 · ESS 적용·고객·물량·단가를 별도 확인'
@@ -349,6 +362,8 @@ def _same_event(a: dict, b: dict) -> bool:
         return False
     ta = f"{a.get('title','')} {a.get('description','')}"
     tb = f"{b.get('title','')} {b.get('description','')}"
+    if ESS_LIFETIME_RULE.search(ta) and ESS_LIFETIME_RULE.search(tb):
+        return True
 
     sa3, sb3 = _ess3_stage(ta, a.get('source') or ''), _ess3_stage(tb, b.get('source') or '')
     if sa3 and sb3 and sa3 == sb3:
@@ -390,6 +405,8 @@ def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     import hashlib
     stage3 = _ess3_stage(text, item.get('source') or '')
+    if ESS_LIFETIME_RULE.search(text):
+        return hashlib.sha256(b'ess|kpx-central-market|2026|25y-lifetime-rules').hexdigest()
     if stage3:
         return hashlib.sha256(f'ess-central-market-3|2026|{stage3}'.encode()).hexdigest()
     if _skon_lnf_lfp_contract(text):
