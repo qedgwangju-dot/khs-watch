@@ -36,10 +36,10 @@
   "smr_state_model_version": 3,
   "updated_at_kst": "2026-09-24T14:21:00+09:00",
   "westinghouse_issue_state": {
-    "state_key": "governance:voting_possible|stake_range:5~10",
-    "status": "5~10% 지분 협의·의결권 검토",
-    "title": "웨스팅하우스 지분 5~10% 인수·의결권 가능성 논의",
-    "source": "2026-09-22 국회 보고·복수 보도",
+    "state_key": "governance:board_limited|governance:voting_possible|stake:7+alpha|stake_korea_request:20|stake_range:5~10|stake_us_offer:7",
+    "status": "지분 5~10% 협의·이사회 제약·의결권 검토",
+    "title": "웨스팅하우스 지분 협상 최신 기준선",
+    "source": "2026-09-21~22 국회 보고·복수 보도",
     "link": "https://www.hankyung.com/article/2026092218041",
     "published_utc": "2026-09-22T08:48:00+00:00",
     "first_seen_kst": "2026-09-24T14:21:00+09:00"
