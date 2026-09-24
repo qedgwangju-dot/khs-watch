@@ -329,9 +329,10 @@ def _is_material_westinghouse(title: str, outlet: str = "") -> bool:
         # 공식 출처는 미확정·부인·확정·계약단계처럼 실제 상태를 말할 때만 통과.
         return bool(facts) or any(term in low for term in ("공식 발표", "공식 확인", "사실과 다르"))
 
-    # 시장반응/해설 기사도 구체적인 거래 상태값이 같이 있을 때만 증거로 사용.
+    # 시장반응 기사에서 나온 6%·7% 등은 주가 등락률일 수 있으므로,
+    # 지분율·계약·실사·가격 등 강한 거래상태 표현이 같이 있을 때만 통과시킨다.
     if any(term in low for term in WEC_COMMENTARY_OR_MARKET):
-        return bool(facts)
+        return bool(facts) and any(term in low for term in WEC_STRONG_EXECUTION)
 
     # '지분율 줄다리기', '검토', '논란'처럼 숫자·거버넌스·계약단계가 없는
     # 일반 서술은 새로운 사건 상태가 아니다.
