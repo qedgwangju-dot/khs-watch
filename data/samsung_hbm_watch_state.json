@@ -906,13 +906,15 @@
   "malaysia_hsk10_weight_kg": null,
   "_delivery": {
     "id": "325aa44ca1751ebdeecdeeb6e987e9c387d752eb37a937216960987770f01c4a",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-09-25T04:23:19+09:00",
     "chunks": [
       "🚨 <b>HBM 주제·사건 상태 변화</b>\n━━━━━━━━━━━━━━━━\n<b>상태 변화 1건</b> · 2026-09-25 04:20 KST\n\n<b>1.</b>\n<b>삼성 HBM 생산능력·증산 계획 변화</b>\n• 상태 판정: <b>신뢰 보도 단계</b>\n• 변화 구분: 생산능력·증산\n• 핵심 숫자: <b>40% / 80%</b>\n• 감지 근거: news.futunn.com · 2026-09-21T17:20:50+09:00\n• 근거 제목: Report: Samsung may double its HBM4/HBM4E production next year, with the product mix rising from 40% to 80% - news.futunn.com · <a href=\"https://news.futunn.com/en/post/79538141/report-samsung-may-double-its-hbm4-hbm4e-production-next-year\">원문</a>\n\n<b>판정 원칙</b>\n• <b>기사 자체가 알림 대상이 아닙니다.</b> 기사·공식자료는 상태 변화의 감지 근거·교차검증 자료로만 사용합니다.\n• 동일 사건을 여러 매체가 반복 보도해도 상태값이 같으면 다시 알리지 않습니다.\n• 물량·가격·생산능력·고객 인증·양산·실제 출하·공식 통계가 바뀐 경우에만 신규 상태로 봅니다.\n• 충남 수출과 증권사 추정은 <b>삼성 공식 HBM 매출과 분리</b>해서 표시합니다."
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      144
+    ],
     "candidate": {
       "seen_ids": [
         "017d7560e3afc81111bbcb5c",
