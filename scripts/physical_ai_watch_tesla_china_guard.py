@@ -623,6 +623,11 @@ def score(item: dict) -> int:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     s = _orig_score(item)
     if not _is_tesla_supply_text(text):
+        # Generic Tesla/Optimus rewrites must not alert just because they contain
+        # high-signal words. If none of the explicit state classifiers match,
+        # keep the story as discovery-only and wait for a real state transition.
+        if _orig_topic_group(text) == 'tesla':
+            return 0
         return s
     source = item.get('source') or ''
     # Investor-community/aggregator posts are useful discovery leads but are not
