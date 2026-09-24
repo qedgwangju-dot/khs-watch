@@ -615,12 +615,35 @@ def build_signals(old: dict, new: dict, news_items: list[dict]) -> list[tuple]:
     for key, label in (("btc_etf", "BTC"), ("eth_etf", "ETH")):
         before, after = old_crypto.get(key) or {}, new_crypto.get(key) or {}
         a, b = before.get("five_day_usd_m"), after.get("five_day_usd_m")
-        daily = after.get("daily_usd_m")
+        before_daily, daily = before.get("daily_usd_m"), after.get("daily_usd_m")
         if a is not None and b is not None:
             trigger_ready = bool(after.get("trigger_ready"))
-            if trigger_ready and ((a * b < 0 and abs(b) >= 250) or (daily is not None and abs(daily) >= 500)):
-                direction = "순유입" if b > 0 else "순유출"
-                signals.append(("암호화폐", f"{label} 현물 ETF 자금흐름이 {direction} 쪽으로 의미 있게 이동", f"5영업일 {a:+,.1f} → {b:+,.1f}백만달러, 최신 일간 {daily:+,.1f}백만달러 ({'확정' if after.get('status') == 'complete' else '부분집계·2회 안정확인'})", "가격 변화가 실제 현물 자금과 동행하는지 보는 핵심 확인 지표", f"{label} 가격·거래대금·파생 미결제약정 동행 여부", None))
+            changed = (
+                after.get("date") != before.get("date")
+                or after.get("status") != before.get("status")
+                or before_daily is None
+                or daily is None
+                or abs(float(daily) - float(before_daily)) > 0.6
+                or abs(float(b) - float(a)) > 0.6
+            )
+            sign_flip = a * b < 0 and abs(b) >= 250
+            large_day = daily is not None and abs(float(daily)) >= 500
+            if trigger_ready and changed and (sign_flip or large_day):
+                if sign_flip:
+                    direction = "순유출→순유입" if b > 0 else "순유입→순유출"
+                    headline = f"{label} 현물 ETF 5영업일 자금흐름이 {direction} 전환"
+                else:
+                    direction = "순유입" if float(daily) > 0 else "순유출"
+                    headline = f"{label} 현물 ETF 당일 대규모 {direction} 확인"
+                status_label = "확정" if after.get("status") == "complete" else "부분집계·2회 안정확인"
+                signals.append((
+                    "암호화폐",
+                    headline,
+                    f"5영업일 {a:+,.1f} → {b:+,.1f}백만달러, 최신 일간 {float(daily):+,.1f}백만달러 ({status_label})",
+                    "가격 변화가 실제 현물 자금과 동행하는지 보는 핵심 확인 지표",
+                    f"{label} 가격·거래대금·파생 미결제약정 동행 여부",
+                    None,
+                ))
 
     old_deriv, new_deriv = old_crypto.get("derivatives") or {}, new_crypto.get("derivatives") or {}
     for symbol in ("BTCUSDT", "ETHUSDT", "SOLUSDT"):
@@ -633,12 +656,31 @@ def build_signals(old: dict, new: dict, news_items: list[dict]) -> list[tuple]:
                 signals.append(("암호화폐", f"{coin} 파생 레버리지 변화 확대", f"미결제약정 {oi_change:+.1f}%, 펀딩 {float(after['funding'])*100:+.4f}%, 24시간 가격 {fmt_pct(price_change)}", "현물 주목도 회복인지 레버리지 추격인지 구분해야 하는 구간", "현물 거래대금·ETF 자금흐름 동행 여부", None))
 
     old_rates, new_rates = old.get("rates") or {}, new.get("rates") or {}
-    for key, label in (("nominal10y", "미국 10년 명목금리"), ("real10y", "미국 10년 실질금리")):
-        before, after = old_rates.get(key) or {}, new_rates.get(key) or {}
-        if before.get("date") and after.get("date") and before["date"] != after["date"]:
-            bp = (float(after["value"]) - float(before["value"])) * 100.0
-            if abs(bp) >= 20:
-                signals.append(("나스닥 할인율", f"{label} 하루 변동 {bp:+.1f}bp", f"{before['date']} {before['value']:.2f}% → {after['date']} {after['value']:.2f}%", "실질금리 급등은 고평가 성장주의 할인율 역풍, 급락은 반대로 재평가 여지", "Fed·물가·고용과 Nasdaq-100 선행이익 추정 변화", None))
+    old_nom, new_nom = old_rates.get("nominal10y") or {}, new_rates.get("nominal10y") or {}
+    old_real, new_real = old_rates.get("real10y") or {}, new_rates.get("real10y") or {}
+    if (
+        old_nom.get("date") and new_nom.get("date")
+        and old_real.get("date") and new_real.get("date")
+        and old_nom["date"] != new_nom["date"]
+        and old_real["date"] != new_real["date"]
+    ):
+        nominal_bp = (float(new_nom["value"]) - float(old_nom["value"])) * 100.0
+        real_bp = (float(new_real["value"]) - float(old_real["value"])) * 100.0
+        material = (
+            abs(nominal_bp) >= 15
+            or abs(real_bp) >= 10
+            or (nominal_bp * real_bp > 0 and abs(nominal_bp) >= 10 and abs(real_bp) >= 10)
+        )
+        if material:
+            direction = "상승" if nominal_bp > 0 and real_bp > 0 else "하락" if nominal_bp < 0 and real_bp < 0 else "혼조"
+            signals.append((
+                "나스닥 할인율",
+                f"미국 10년 명목·실질금리 동반 {direction}",
+                f"명목 {old_nom['value']:.2f}% → {new_nom['value']:.2f}% ({nominal_bp:+.1f}bp), 실질 {old_real['value']:.2f}% → {new_real['value']:.2f}% ({real_bp:+.1f}bp)",
+                "실질금리 상승은 미래이익 현재가치를 낮추는 할인율 역풍이고, 하락은 반대로 성장주 재평가 여지",
+                "Fed·물가·고용과 빅테크 실적·AI 설비투자 가이던스",
+                None,
+            ))
 
     old_nv, new_nv = old.get("nvidia_sec") or {}, new.get("nvidia_sec") or {}
     old_q10 = old_nv.get("q10_url")
