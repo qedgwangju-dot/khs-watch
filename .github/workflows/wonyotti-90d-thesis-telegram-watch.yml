@@ -8,7 +8,7 @@ on:
       - "scripts/wonyotti_90d_thesis_watch.py"
       - "data/wonyotti_90d_thesis_watch_state.json"
   schedule:
-    - cron: "17,47 * * * *"
+    - cron: "2,17,32,47 * * * *"
   workflow_dispatch:
     inputs:
       send_test:
@@ -77,6 +77,49 @@ jobs:
         run: |
           rm -f out/wonyotti_90d_thesis_alert.html out/wonyotti_90d_thesis_status.md out/wonyotti_90d_thesis_pending_state.json
           python -m py_compile scripts/wonyotti_90d_thesis_watch.py
+          python - <<'PY'
+          from scripts.wonyotti_90d_thesis_watch import build_signals
+
+          old = {
+              "crypto": {
+                  "prices": {"BTC": {"usd": 84266.0}},
+                  "btc_etf": {
+                      "date": "2026-09-22", "five_day_usd_m": 2010.3,
+                      "daily_usd_m": 714.7, "status": "complete", "trigger_ready": True,
+                  },
+              },
+              "rates": {
+                  "nominal10y": {"date": "2026-09-22", "value": 4.96},
+                  "real10y": {"date": "2026-09-22", "value": 2.63},
+              },
+          }
+          same = {
+              "crypto": {
+                  "prices": {"BTC": {"usd": 84266.0}},
+                  "btc_etf": {
+                      "date": "2026-09-22", "five_day_usd_m": 2010.3,
+                      "daily_usd_m": 714.7, "status": "complete", "trigger_ready": True,
+                  },
+              },
+              "rates": {
+                  "nominal10y": {"date": "2026-09-22", "value": 4.96},
+                  "real10y": {"date": "2026-09-22", "value": 2.63},
+              },
+          }
+          same_signals = build_signals(old, same, [])
+          assert not any("ETF" in item[1] for item in same_signals), same_signals
+
+          changed = {
+              **same,
+              "rates": {
+                  "nominal10y": {"date": "2026-09-23", "value": 5.11},
+                  "real10y": {"date": "2026-09-23", "value": 2.76},
+              },
+          }
+          rate_signals = build_signals(old, changed, [])
+          assert any(item[0] == "나스닥 할인율" for item in rate_signals), rate_signals
+          print("wonyotti_regression_tests=pass")
+          PY
           python scripts/wonyotti_90d_thesis_watch.py
           cat out/wonyotti_90d_thesis_status.md >> "$GITHUB_STEP_SUMMARY"
           if [ -s out/wonyotti_90d_thesis_alert.html ]; then
