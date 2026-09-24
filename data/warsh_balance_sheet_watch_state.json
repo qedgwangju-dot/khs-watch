@@ -2,20 +2,20 @@
   "schema_version": 4,
   "measurement_basis": "수요일 잔액",
   "h41": {
-    "date": "2026-09-16",
+    "date": "2026-09-23",
     "measurement_basis": "수요일 잔액",
-    "total_assets": 6746548.0,
-    "total_assets_weekly": 5929.0,
-    "treasury": 4554450.0,
-    "treasury_weekly": 2113.0,
-    "bills": 550482.0,
-    "bills_weekly": 2122.0,
-    "mbs": 1913523.0,
-    "mbs_weekly": -62.0,
-    "reserves": 2921536.0,
-    "reserves_weekly": null,
-    "securities": 6470320.0,
-    "securities_weekly": 2051.0,
+    "total_assets": 6747704.0,
+    "total_assets_weekly": 1156.0,
+    "treasury": 4558332.0,
+    "treasury_weekly": 3882.0,
+    "bills": 554373.0,
+    "bills_weekly": 3891.0,
+    "mbs": 1910409.0,
+    "mbs_weekly": -3114.0,
+    "reserves": 2969922.0,
+    "reserves_weekly": 48386.0,
+    "securities": 6471088.0,
+    "securities_weekly": 768.0,
     "url": "https://www.federalreserve.gov/releases/h41/Current/"
   },
   "history": [
@@ -35,6 +35,23 @@
       "securities": 6470320.0,
       "securities_weekly": 2051.0,
       "url": "https://www.federalreserve.gov/releases/h41/Current/"
+    },
+    {
+      "date": "2026-09-23",
+      "measurement_basis": "수요일 잔액",
+      "total_assets": 6747704.0,
+      "total_assets_weekly": 1156.0,
+      "treasury": 4558332.0,
+      "treasury_weekly": 3882.0,
+      "bills": 554373.0,
+      "bills_weekly": 3891.0,
+      "mbs": 1910409.0,
+      "mbs_weekly": -3114.0,
+      "reserves": 2969922.0,
+      "reserves_weekly": 48386.0,
+      "securities": 6471088.0,
+      "securities_weekly": 768.0,
+      "url": "https://www.federalreserve.gov/releases/h41/Current/"
     }
   ],
   "regime": "충분한 준비금 유지·자산 구성 전환에 가까움",
@@ -51,5 +68,5 @@
     "fingerprint": "b4a1c99a8613f55bf3d8769c3fb1fa83273a20c784dd0eb4d9b97b7e52f64c04",
     "excerpt": "﻿ Federal Reserve Board - Balance Sheet Policy Skip to main content An official website of the United States Government Here's how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Chapters --> Overview Communications Balance Sheet Policy Data Sources Productivity and Jobs Inflation Frameworks Balance Sheet Policy This task force will examine the costs, benefits, and institutional implications of the Federal Reserve's current balance sheet regime."
   },
-  "updated_at_utc": "2026-09-22T20:31:07.678682+00:00"
+  "updated_at_utc": "2026-09-24T22:35:33.140593+00:00"
 }
