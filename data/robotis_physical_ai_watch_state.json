@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-09-25T10:24:15.637838+00:00",
+  "updated_at": "2026-09-25T12:08:37.069840+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -424,12 +424,9 @@
     "2d2b2432bc7bdc2957b5709dfe99e96c82e31efb28ffe7db98c8d73c102c9b1e",
     "fd63b293bd255db1a033c6581cad2acae821434ba6aa8ac0322d352e1adabc18"
   ],
-  "last_selected": [
-    "fd63b293bd255db1a033c6581cad2acae821434ba6aa8ac0322d352e1adabc18"
-  ],
+  "last_selected": [],
   "groups": [
     "ess_battery",
-    "humanoid_component_global",
     "humanoid_supply_bottleneck",
     "hyundai_atlas_rollout",
     "lg_factory_loop",
