@@ -617,6 +617,22 @@ def extract_cpu_snapshot(text: str, source_url: str = "") -> dict:
     return out
 
 
+def cpu_actual_validation_event(text: str, source_url: str) -> str:
+    host = (urlparse(source_url).hostname or "").lower()
+    low = (text or "").lower()
+    official = any(x in host for x in ("amd.com", "intc.com"))
+    if not official:
+        return ""
+    if not any(k in low for k in ("agentic", "epyc", "xeon", "server cpu", "data center cpu")):
+        return ""
+    if any(k in low for k in ("validating", "validation", "deploy at scale", "deployed", "production", "unit volume", "shipments", "revenue")):
+        if "amd.com" in host:
+            return "AMD 공식자료에서 Agentic AI/EPYC의 실제 검증·배치·생산 신호 확인"
+        if "intc.com" in host:
+            return "Intel 공식자료에서 서버 CPU의 실제 출하·매출·수요 검증 신호 확인"
+    return ""
+
+
 def cpu_material_changes(old: dict, new: dict) -> list[str]:
     changes: list[str] = []
     for key in ("server_cpu_tam_2030_bn", "agentic_cpu_tam_2030_bn", "ai_cpu_tam_2030_bn"):
