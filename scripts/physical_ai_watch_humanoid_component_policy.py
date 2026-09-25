@@ -34,6 +34,7 @@ base, ext = kd.base, kd.ext
 
 UNITREE_HAND_SENTINEL = 'DIRECT_UNITREE_DEX5S_X_RECOVERY'
 TOYOTA_ROBOT_DEMAND_SENTINEL = 'DIRECT_TOYOTA_ROBOT_DEMAND_20260918'
+APPTRONIK_HW_SENTINEL = 'DIRECT_APPTRONIK_US_HARDWARE_BOTTLENECK_20260924'
 
 base.QUERIES.extend([
     '(휴머노이드 OR humanoid OR 피지컬AI OR "physical AI") (센서 OR sensor OR 액추에이터 OR actuator OR 이차전지 OR 배터리 OR battery) (620억 OR 62,000,000,000 OR 116억 OR 11,600,000,000 OR 예산 OR 정부안)',
@@ -51,6 +52,10 @@ base.QUERIES.extend([
     '(Toyota OR 토요타 OR トヨタ) (400000 OR 400,000 OR 40만 OR 1조엔 OR "1 trillion yen") (robot OR robotics OR 로봇 OR 자동화 OR automation OR 2028)',
     '("HL만도" OR "HL Mando") (휴머노이드 OR humanoid OR 로봇 OR robot) (액추에이터 OR actuator OR 감속기 OR reducer OR Spot OR 스팟) (양산 OR mass production OR 공급 OR customer OR 고객 OR 북미 OR North America)',
     TOYOTA_ROBOT_DEMAND_SENTINEL,
+    '(Apptronik OR Apollo) (humanoid OR 휴머노이드) (gear OR gearbox OR gears OR 기어 OR 감속기 OR actuator OR 액추에이터 OR "rare earth" OR 희토류) (shortage OR constraint OR bottleneck OR supply base OR 부족 OR 제약 OR 병목 OR 공급망)',
+    '(FCC OR "Federal Communications Commission") ("advanced robotic devices" OR humanoid OR robotics) ("Covered List" OR conditional approval OR domestic content OR equipment authorization OR 승인 OR 규제)',
+    '(Schaeffler OR 셰플러) (humanoid OR 휴머노이드) ("strain wave gearbox" OR 감속기) (25% OR 75% OR 2027 OR mass production OR 양산)',
+    APPTRONIK_HW_SENTINEL,
 
 ])
 
@@ -58,6 +63,7 @@ base.TRUSTED.update({
     '뉴스핌', '연합뉴스', '전자신문', '이데일리', '한국경제', '매일경제',
     '서울경제', '머니투데이', '조선비즈', '뉴시스', 'Newsis',
     'Reuters', 'Bloomberg', 'Nikkei Asia', 'The Robot Report', '36Kr', '界面新闻', '第一财经',
+    'Humanoids Daily', 'Fox Business', '글로벌이코노믹', 'Sidley Austin',
 })
 base.OFFICIAL_OR_PRIMARY.update({
     '재정경제부', '기획재정부', '대한민국 정책브리핑', '산업통상자원부',
@@ -65,6 +71,7 @@ base.OFFICIAL_OR_PRIMARY.update({
     '로보티즈', 'ROBOTIS', '삼현', '하이젠알앤엠', '에스비비테크',
     '에스피지', '원익로보틱스', '현대모비스', '삼성SDI', 'LG에너지솔루션',
     'LG이노텍', 'LG Innotek', 'TDK', 'Boston Dynamics', 'Unitree Robotics', 'Unitree Robotics (X)', '유니트리', 'HL만도', 'HL Mando',
+    'Apptronik', 'FCC', 'Federal Communications Commission', 'Schaeffler',
 })
 
 _orig_query_news = base.query_news
@@ -103,6 +110,50 @@ TOYOTA = re.compile(r'Toyota|토요타|トヨタ', re.I)
 TOYOTA_SCALE = re.compile(r'400,?000|40만|1\s*조\s*엔|1\s*trillion\s*yen|2028', re.I)
 TOYOTA_AUTOMATION = re.compile(r'automation|robotics|robot|자동화|로봇|human[- ]robot\s*collaboration|물류', re.I)
 TOYOTA_CAPEX = re.compile(r'1\s*조\s*엔|1\s*trillion\s*yen|\$6\.4\s*billion|6\.4\s*billion', re.I)
+APPTRONIK = re.compile(r'Apptronik|앱트로닉|Apollo\b|아폴로', re.I)
+US_HARDWARE_BOTTLENECK = re.compile(r'gear(?:s|box)?|기어|감속기|actuator|액추에이터|rare[-\s]*earth|희토류|permanent\s*magnet|영구\s*자석', re.I)
+SUPPLY_SHORTAGE = re.compile(r'shortage|constraint|bottleneck|missing\s*(?:the\s*)?supply\s*base|lack.{0,20}supply\s*base|supply\s*base.{0,20}(?:missing|lack)|부족|제약|병목|공급\s*기반.{0,20}(?:없|부족)|수급\s*제약', re.I)
+ACTUATOR_BOM_60 = re.compile(r'(?:up\s*to\s*)?60\s*%|최대\s*60\s*%|60%|50\s*[-~]\s*70\s*%', re.I)
+DOMESTIC_LOCALIZATION = re.compile(r'Texas|텍사스|domestic\s*(?:manufacturing|production|capacity)|onshor|reshor|미국\s*내.{0,20}(?:제조|생산)|현지\s*생산|국산화', re.I)
+FCC_ROBOT = re.compile(r'FCC|Federal\s*Communications\s*Commission|Covered\s*List|advanced\s*robotic\s*devices', re.I)
+FCC_RESTRICT = re.compile(r'Covered\s*List|equipment\s*authorization|conditional\s*approval|domestic\s*end\s*product|65\s*%|75\s*%|January\s*1,?\s*2028|승인\s*제한|조건부\s*승인|국내\s*부품\s*비중', re.I)
+SCHAEFFLER = re.compile(r'Schaeffler|셰플러', re.I)
+GEAR_COST_BREAKTHROUGH = re.compile(r'25\s*%|75\s*%|forming|formed|성형|2027.{0,20}(?:mass\s*manufactur|양산)', re.I)
+
+
+def _query_apptronik_hw_recovery() -> list[dict]:
+    published = dt.datetime(2026, 9, 23, 23, 31, tzinfo=dt.timezone.utc)
+    if base.NOW - published > dt.timedelta(hours=120):
+        return []
+    return [{
+        'title': '앱트로닉 CEO, 미국 휴머노이드 기어·액추에이터 공급망 병목 경고',
+        'link': 'https://www.g-enews.com/article/Global-Biz/2026/09/2026092408055435622bd56fbc3c_1',
+        'description': (
+            'Apptronik CEO Jeff Cardenas said the U.S. has major shortages in gears because the required supply base is missing, '
+            'and also pointed to rare-earth constraints affecting electric motors. He said actuators can account for up to 60% of a humanoid robot BOM. '
+            'He argued that world-class hardware manufacturing capacity must be built in Texas and the wider United States.'
+        ),
+        'published': published.isoformat(),
+        'source': '글로벌이코노믹',
+        'apptronik_hw_bottleneck': True,
+    }]
+
+
+def _is_apptronik_hw_bottleneck(text: str) -> bool:
+    return bool(APPTRONIK.search(text) and US_HARDWARE_BOTTLENECK.search(text) and SUPPLY_SHORTAGE.search(text))
+
+def _is_fcc_robot_rule(text: str) -> bool:
+    return bool(FCC_ROBOT.search(text) and FCC_RESTRICT.search(text) and re.search(r'robot|robotic|humanoid|로봇|휴머노이드', text, re.I))
+
+def _is_schaeffler_cost_breakthrough(text: str) -> bool:
+    return bool(SCHAEFFLER.search(text) and re.search(r'gear|gearbox|감속기', text, re.I) and GEAR_COST_BREAKTHROUGH.search(text))
+
+def _bottleneck_stage(text: str) -> str:
+    if _is_fcc_robot_rule(text): return 'fcc_robot_rule'
+    if _is_schaeffler_cost_breakthrough(text): return 'gear_cost_breakthrough'
+    if _is_apptronik_hw_bottleneck(text): return 'us_hardware_bottleneck'
+    if DOMESTIC_LOCALIZATION.search(text) and US_HARDWARE_BOTTLENECK.search(text): return 'localization_capacity'
+    return ''
 
 
 def _query_toyota_robot_demand_recovery() -> list[dict]:
@@ -151,6 +202,8 @@ def _query_unitree_hand_recovery() -> list[dict]:
 
 
 def query_news(q: str) -> list[dict]:
+    if q == APPTRONIK_HW_SENTINEL:
+        return _query_apptronik_hw_recovery()
     if q == UNITREE_HAND_SENTINEL:
         return _query_unitree_hand_recovery()
     if q == TOYOTA_ROBOT_DEMAND_SENTINEL:
@@ -353,6 +406,8 @@ def _is_component_policy(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _bottleneck_stage(text):
+        return 'humanoid_supply_bottleneck'
     if _is_component_policy(text):
         return 'humanoid_component_policy'
     if _is_toyota_robot_demand(text):
@@ -385,6 +440,19 @@ def score(item: dict) -> int:
     title = item.get('title', '')
     text = f"{title} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
+    if group == 'humanoid_supply_bottleneck':
+        source = item.get('source') or ''
+        stage = _bottleneck_stage(text)
+        s = 26
+        if source in base.OFFICIAL_OR_PRIMARY: s += 9
+        elif source in base.TRUSTED: s += 4
+        if stage == 'us_hardware_bottleneck': s += 12
+        if stage == 'fcc_robot_rule': s += 14
+        if stage == 'gear_cost_breakthrough': s += 10
+        if stage == 'localization_capacity': s += 9
+        if ACTUATOR_BOM_60.search(text): s += 5
+        if DOMESTIC_LOCALIZATION.search(text): s += 4
+        return s
     if group == 'toyota_robot_demand':
         source = item.get('source') or ''
         s = 24
@@ -464,6 +532,12 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'humanoid_supply_bottleneck':
+        stage = _bottleneck_stage(text)
+        if stage == 'fcc_robot_rule': return '미국 휴머노이드 공급망 · FCC 현지생산·승인 규제'
+        if stage == 'gear_cost_breakthrough': return '글로벌 휴머노이드 공급망 · 감속기 원가·양산 혁신'
+        if stage == 'localization_capacity': return '미국 휴머노이드 공급망 · 현지 생산능력 확대'
+        return '미국 휴머노이드 공급망 · 기어·액추에이터·희토류 병목'
     if group == 'toyota_robot_demand':
         return '토요타 · 공장 자동화·로봇 대규모 수요'
     if group == 'humanoid_component_policy':
@@ -474,6 +548,14 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '미국 휴머노이드 공급망 · 기어·액추에이터·희토류 병목':
+        return 'AI 성능이 준비돼도 기어·감속기·전기모터용 희토류와 액추에이터 공급기반이 부족하면 휴머노이드 양산량이 막힐 수 있다는 직접 경영진 경고입니다. 액추에이터 BOM 비중이 최대 60%라는 Apptronik CEO 발언을 기준으로 기어·모터·영구자석·액추에이터의 납기·가격·미국 현지 생산능력을 추적합니다.'
+    if cat == '미국 휴머노이드 공급망 · FCC 현지생산·승인 규제':
+        return '외국 생산 첨단 로봇의 미국 판매·장비승인 조건이 현지 생산과 부품 원산지 비중에 직접 연결되는 규제 신호입니다. 2028년까지 미국산 부품 비중·조건부 승인·현지 설비투자 계획을 추적합니다.'
+    if cat == '글로벌 휴머노이드 공급망 · 감속기 원가·양산 혁신':
+        return '감속기 제조원가와 재료 사용량을 크게 줄이면서 양산성을 높이는 공정 혁신은 현재 기어 병목을 완화하는 공급 측 재평가 신호입니다. 실제 2027년 양산 개시·고객 수·수율·평균판매단가를 확인합니다.'
+    if cat == '미국 휴머노이드 공급망 · 현지 생산능력 확대':
+        return '공급 부족 경고가 실제 공장·라인·설비투자로 전환되는 단계입니다. 신규 생산능력과 고객 주문·수율·납기 정상화를 함께 확인합니다.'
     if cat == '토요타 · 공장 자동화·로봇 대규모 수요':
         return '완성차 업체가 로봇의 첫 대규모 자체 수요처가 되는 구조적 신호입니다. 2028년부터 연간 약 1조엔 수준의 공장 현대화 지출 추정과 약 40만대 로봇 수요는 토요타·그룹사·주요 협력사 전체를 합친 값이며, 휴머노이드만의 수요가 아니라 기존 산업용 로봇 교체·신규 설치까지 포함합니다.'
     raw = cat.split(' · ', 1)[-1]
@@ -506,6 +588,14 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == '미국 휴머노이드 공급망 · 기어·액추에이터·희토류 병목':
+        return '경영진의 공급망 경고는 실제 주문 부족량이나 리드타임을 공개한 것은 아닙니다. 최대 60% BOM 비중도 Apptronik CEO의 설명이며 모든 휴머노이드에 동일하지 않습니다. 가장 현실적인 실패 경로는 희토류·정밀기어 병목으로 액추에이터 생산이 늦어져 Apollo 양산·고객 배치가 지연되는 경우입니다.'
+    if cat == '미국 휴머노이드 공급망 · FCC 현지생산·승인 규제':
+        return 'FCC 규제는 완성 로봇 장비 승인에 적용되며 액추에이터·배터리 같은 개별 부품이 독립적으로 Covered List에 오른 것은 아닙니다. 미국산 부품 비중 계산과 조건부 승인 여부에 따라 실제 영향이 달라집니다.'
+    if cat == '글로벌 휴머노이드 공급망 · 감속기 원가·양산 혁신':
+        return '실험실·검증 단계의 원가 절감률이 실제 대량양산 수율과 판매단가로 그대로 이어진다는 보장은 없습니다. 2027년 실제 생산량과 고객 승인, 수명·백래시 데이터를 확인합니다.'
+    if cat == '미국 휴머노이드 공급망 · 현지 생산능력 확대':
+        return '현지 생산설비를 먼저 늘렸는데 휴머노이드 고객 양산이 지연되면 가동률·감가상각 부담이 먼저 커질 수 있습니다.'
     if cat == '토요타 · 공장 자동화·로봇 대규모 수요':
         return '연 1조엔은 확정된 다년 설비투자 예산이 아니라 토요타가 투자자에게 제시한 필요비용 추정치이며, 약 40만대에는 휴머노이드와 비휴머노이드·교체 물량이 모두 포함됩니다. 실제 휴머노이드 발주대수·공급사 선정·단가가 확인되지 않으면 국내 부품사 매출로 직접 환산하지 않습니다.'
     raw = cat.split(' · ', 1)[-1]
@@ -537,6 +627,12 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'humanoid_supply_bottleneck':
+        stage = _bottleneck_stage(text)
+        if stage == 'us_hardware_bottleneck': return 'Apptronik CEO Fox Business 직접 인터뷰를 Humanoids Daily·글로벌이코노믹이 인용 · 공급 부족량/납기 수치는 미공개'
+        if stage == 'fcc_robot_rule': return 'FCC 공식 Covered List/조건부 승인 자료 · Sidley Austin 법률 분석 교차확인'
+        if stage == 'gear_cost_breakthrough': return 'Schaeffler 공식자료 · 2027년 양산 목표와 원가·재료 절감 수치'
+        return '기업·규제 공식자료 후속 확인'
     if group == 'toyota_robot_demand':
         return '로이터 보도 · 토요타 투자자 설명 기반 추정치 · 확정 다년 투자예산/휴머노이드 전용 물량 아님'
     if group == 'humanoid_component_global':
@@ -578,6 +674,8 @@ def _same_event(a: dict, b: dict) -> bool:
 
     ta = f"{a.get('title','')} {a.get('description','')}"
     tb = f"{b.get('title','')} {b.get('description','')}"
+    if a.get('group') == 'humanoid_supply_bottleneck':
+        return _bottleneck_stage(ta) == _bottleneck_stage(tb)
 
     if a.get('group') == 'humanoid_component_global':
         if _component_family(ta) != _component_family(tb) or _component_stage(ta) != _component_stage(tb):
@@ -622,6 +720,8 @@ def _same_event(a: dict, b: dict) -> bool:
 
 
 def tag_for(group: str) -> str:
+    if group == 'humanoid_supply_bottleneck':
+        return '휴머노이드병목'
     if group == 'toyota_robot_demand':
         return '토요타로봇수요'
     if group == 'humanoid_component_global':
@@ -631,6 +731,12 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'humanoid_supply_bottleneck':
+        stage = _bottleneck_stage(text)
+        if stage == 'us_hardware_bottleneck': return hashlib.sha256(b'apptronik|2026-09-22|us-hardware-bottleneck|gears-rareearth-actuators').hexdigest()
+        if stage == 'fcc_robot_rule': return hashlib.sha256(b'fcc|2026-07-28|foreign-produced-advanced-robotics-covered-list').hexdigest()
+        if stage == 'gear_cost_breakthrough': return hashlib.sha256(b'schaeffler|2026-08-13|formed-strain-wave-gearbox|2027-mass-production').hexdigest()
+        return hashlib.sha256(f'humanoid-supply-bottleneck|{stage}'.encode()).hexdigest()
     if topic_group(text) == 'toyota_robot_demand':
         return hashlib.sha256(b'toyota|2028|factory-automation|1trn-jpy|400k-robots').hexdigest()
     if topic_group(text) != 'humanoid_component_global':
@@ -648,6 +754,12 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    bottleneck = next((x for x in candidates if x.get('group') == 'humanoid_supply_bottleneck'), None)
+    if bottleneck and not any(x.get('key') == bottleneck.get('key') for x in chosen):
+        if len(chosen) < limit:
+            chosen = [bottleneck, *chosen]
+        else:
+            chosen = [bottleneck, *chosen[:-1]]
     toyota = next((x for x in candidates if x.get('group') == 'toyota_robot_demand'), None)
     if toyota and not any(x.get('key') == toyota.get('key') for x in chosen):
         if len(chosen) < limit:
@@ -664,6 +776,8 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
 
 
 def clean_title(title: str, source: str) -> str:
+    if re.search(r'Apptronik|앱트로닉', title, re.I) and re.search(r'gear|기어|actuator|액추에이터|supply|공급망|rare earth|희토류', title, re.I):
+        return '앱트로닉 CEO, 미국 휴머노이드 기어·액추에이터 공급망 병목 경고'
     if re.search(r'Toyota|토요타|トヨタ', title, re.I) and re.search(r'400,?000|40만|1\s*trillion\s*yen|1조엔|automation|자동화', title, re.I):
         return '토요타, 2028년부터 연 1조엔 공장 자동화 검토…로봇 약 40만대 필요 추산'
     if re.search(r'Unitree|Dex5[- ]?S|宇树', title, re.I) and re.search(r'hand|핸드|灵巧手|22', title, re.I):
