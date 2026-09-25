@@ -258,6 +258,26 @@ class ParseTests(unittest.TestCase):
         new_stage['value'] = {'stage':'confirmed'}
         self.assertTrue(any('증설 단계' in x for x in m.comparison(old_stage,new_stage)))
 
+    def test_foundry_missing_price_field_does_not_mean_reversal(self):
+        baseline = m.make_record(
+            'foundry_pricing',['samsung','4nm','HBM4_base_die'],
+            {'new_order_price_up':True,'base_die_price_up':True,'price_change_pct':None},
+            'direction,pct','current',ITEM,'baseline',as_of='2026-09-21')
+        state = m.update_state({}, [], NOW, [baseline])
+        item = dict(ITEM)
+        item['published_at_kst'] = '2026-09-22T04:00:00+09:00'
+        item['title'] = 'HBM에 웃는 파운드리… 삼성, 4나노 증설 채비'
+        rows = m.parse_foundry_hbm_records(
+            item,
+            '삼성전자는 HBM4 베이스다이 수요 확대에 대응한다. 4나노 신규 수주 물량의 가격을 인상했다.'
+        )
+        pricing = [x for x in rows if x['axis'] == 'foundry_pricing'][0]
+        self.assertTrue(pricing['value']['new_order_price_up'])
+        self.assertIsNone(pricing['value']['base_die_price_up'])
+        updated = m.update_state(state, [pricing], NOW, [baseline])
+        self.assertFalse(updated['pending'])
+        self.assertTrue(updated['latest'][baseline['key']]['value']['base_die_price_up'])
+
 class StateTests(unittest.TestCase):
     def make(self,v=22,asof='2026-09-22',url=None):
         item=dict(ITEM)
