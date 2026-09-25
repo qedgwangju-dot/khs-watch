@@ -98,6 +98,14 @@ def _parse_cboe_vix_page(text: str) -> tuple[str, float, float] | None:
         plain,
         flags=re.IGNORECASE,
     )
+    if not change_match:
+        # Cboe's current page renders the percentage/point change before the
+        # literal "Change" label (e.g. "3.23% (0.49) Change").
+        change_match = re.search(
+            r"([+-]?\d+(?:\.\d+)?)%\s*\(([+-]?\d+(?:\.\d+)?)\)\s*Change",
+            plain,
+            flags=re.IGNORECASE,
+        )
     if not date_match or not price_match or not change_match:
         return None
     month_names = {name.lower(): idx for idx, name in enumerate(
