@@ -350,7 +350,7 @@ def htmlify(text: str) -> str:
                 continue
 
         escaped = html.escape(line, quote=False)
-        if stripped.startswith("[글로벌 금리·엔캐리 경보]"):
+        if stripped.startswith(("[글로벌 금리·엔캐리 경보]", "[글로벌 금리·엔캐리]")):
             out.append(f"<b>{escaped}</b>")
         elif stripped in {"한눈에 보기", "최신성"} or DISPLAY_SECTION_RE.match(stripped):
             out.append(f"<b>{escaped}</b>")
@@ -367,8 +367,11 @@ def main() -> int:
     if not REPORT.exists():
         return 0
     raw = REPORT.read_text(encoding="utf-8")
-    enriched = enrich_transition_context(raw)
-    readable = improve_readability(enriched)
+    # The formatter now emits the intentionally compact Telegram layout itself.
+    # Do not append the old always-on BOJ/BOP transition explainer here; it caused
+    # duplicate methodology and pushed ordinary alerts into a second Telegram.
+    # Full methodology remains in the workflow artifacts and state files.
+    readable = improve_readability(raw)
     REPORT.write_text(htmlify(readable), encoding="utf-8")
     return 0
 
