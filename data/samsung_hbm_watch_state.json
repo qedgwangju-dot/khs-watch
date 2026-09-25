@@ -85,6 +85,7 @@
     "7a52a883076d44f53608893e",
     "7baae91f6447b3c99800f43a",
     "7d291d2d4e257c19bbf10f5d",
+    "7d35c559af732e1a76ff8e2f",
     "7fc67a8a0b23cc8a19d76f05",
     "810b2b31f4ad1136fc603ccb",
     "8126ef91d8781ccab552de73",
@@ -165,6 +166,7 @@
     "f6c31071f5914a547fcb3fa1",
     "f6ea3f1fc68e1e473bcd91cb",
     "f7ba633e0f7a24fe0314b575",
+    "f9ae286ced0970280f1bfa92",
     "fabfb78c79fac517e54dc7b3",
     "fb3f11c8c71336071691a17e",
     "fc8d9ad3059f3fc4d09ac22a",
@@ -172,27 +174,25 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-25T10:40:04+09:00",
-  "last_event_count": 86,
+  "updated_at_kst": "2026-09-25T13:45:20+09:00",
+  "last_event_count": 81,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
-  "official_month": "202608",
-  "official_data_ok": true,
+  "official_month": "",
+  "official_data_ok": false,
   "official_errors": [
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
-    "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
-    "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
-    "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
-    "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
+    "관세청 세션 초기화 실패: ConnectTimeout",
+    "공공데이터포털 전국 API 실패: ConnectTimeout; fallback=전국 202608 KCS 조회 실패: ConnectTimeout",
+    "공공데이터포털 시도 API 실패: ConnectTimeout; fallback=충남 202608 KCS 조회 실패: ConnectTimeout",
+    "공공데이터포털 시도 API 실패: ConnectTimeout; fallback=충북 202608 KCS 조회 실패: ConnectTimeout",
+    "공공데이터포털 국가별 품목 API MY 실패: ConnectTimeout",
+    "이천 202608 KCS 조회 실패: ConnectTimeout"
   ],
   "last_official_alert_month": "202608",
   "official_api_key_configured": true,
-  "official_api_used": true,
+  "official_api_used": false,
   "last_successful_official_month": "202608",
   "last_successful_official_at_kst": "2026-09-25T10:40:04+09:00",
   "malaysia_official_month": "202608",
@@ -861,7 +861,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-25T10:40:04+09:00",
+      "last_checked_at_kst": "2026-09-25T13:45:20+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -916,7 +916,7 @@
     "payload_hash": "530c48c0c3871196399dafd3e2e227a9db75485cec1621c5f619886372c1e158"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-25T10:42:27+09:00",
+    "checked_at_kst": "2026-09-25T13:48:41+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
