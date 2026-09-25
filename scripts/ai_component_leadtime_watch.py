@@ -1075,6 +1075,9 @@ def main() -> None:
     previous_components = previous.get("components") or BASELINE["components"]
     seen_urls = set(previous.get("seen_urls") or [])
 
+    previous_cpu = copy.deepcopy(state.get("agentic_cpu_watch") or CPU_BASELINE)
+    cpu_seen_urls = set(previous_cpu.get("seen_urls") or CPU_BASELINE["seen_urls"])
+
     candidates: list[dict] = []
     errors: list[str] = []
     cutoff = now - timedelta(days=21)
@@ -1119,6 +1122,87 @@ def main() -> None:
 
     candidates.sort(key=lambda x: (x.get("score", 0), x.get("published_at_kst") or ""), reverse=True)
     best = candidates[0] if candidates else None
+
+    cpu_candidates: list[dict] = []
+    cpu_errors: list[str] = []
+    cpu_cutoff = now - timedelta(days=120)
+    for kind, query in CPU_SEARCHES:
+        try:
+            items = read_rss(kind, query)
+        except Exception as exc:
+            cpu_errors.append(f"{kind}: {type(exc).__name__}: {exc}")
+            continue
+        for item in items:
+            direct = candidate_url(item)
+            if not direct:
+                continue
+            published = item.get("published_at_kst") or ""
+            if published:
+                try:
+                    dt = datetime.fromisoformat(published)
+                    if dt < cpu_cutoff:
+                        continue
+                except Exception:
+                    pass
+            body = article_text(direct)
+            full_text = clean_text(f"{item.get('title','')} {item.get('description','')} {body}")
+            snapshot = extract_cpu_snapshot(full_text, direct)
+            validation_note = cpu_actual_validation_event(full_text, direct)
+            if not snapshot and not validation_note:
+                continue
+            cpu_candidates.append(
+                {
+                    **item,
+                    "direct_url": direct,
+                    "full_text": full_text,
+                    "snapshot": snapshot,
+                    "validation_note": validation_note,
+                    "score": cpu_source_score(direct, full_text) + len(snapshot) * 20 + (80 if validation_note else 0),
+                }
+            )
+    cpu_candidates.sort(key=lambda x: (x.get("score", 0), x.get("published_at_kst") or ""), reverse=True)
+    best_cpu = cpu_candidates[0] if cpu_candidates else None
+
+    latest_cpu = copy.deepcopy(previous_cpu)
+    cpu_notify_text = ""
+    new_cpu_seen = set(cpu_seen_urls)
+    if best_cpu:
+        cpu_url = best_cpu.get("direct_url") or ""
+        cpu_published = best_cpu.get("published_at_kst") or ""
+        if cpu_url:
+            new_cpu_seen.add(cpu_url)
+        cpu_snapshot = best_cpu.get("snapshot") or {}
+        cpu_validation = best_cpu.get("validation_note") or ""
+        merged_cpu = copy.deepcopy(previous_cpu)
+        for key, value in cpu_snapshot.items():
+            if key in ("source_kind", "source_url"):
+                continue
+            if value not in (None, ""):
+                merged_cpu[key] = value
+        cpu_changes = cpu_material_changes(previous_cpu, merged_cpu)
+        is_new_cpu_url = bool(cpu_url and cpu_url not in cpu_seen_urls)
+        if cpu_changes or (cpu_validation and is_new_cpu_url):
+            cpu_notify_text = build_cpu_alert(
+                previous_cpu,
+                merged_cpu,
+                cpu_changes,
+                cpu_url,
+                cpu_published,
+                validation_note=cpu_validation,
+            )
+            latest_cpu = merged_cpu
+            latest_cpu["as_of"] = cpu_published[:10] if cpu_published else now.date().isoformat()
+            latest_cpu["source"] = str(cpu_snapshot.get("source_kind") or "외부 검증")
+            latest_cpu["source_url"] = cpu_url
+        latest_cpu["seen_urls"] = sorted(new_cpu_seen)[-120:]
+        latest_cpu["last_checked_at_kst"] = now.isoformat(timespec="seconds")
+        latest_cpu["candidate_count"] = len(cpu_candidates)
+        latest_cpu["errors"] = cpu_errors[-10:]
+    else:
+        latest_cpu["seen_urls"] = sorted(new_cpu_seen)[-120:]
+        latest_cpu["last_checked_at_kst"] = now.isoformat(timespec="seconds")
+        latest_cpu["candidate_count"] = 0
+        latest_cpu["errors"] = cpu_errors[-10:]
 
     previous_signals = previous.get("signals") or BASELINE.get("signals") or {}
     latest_components = copy.deepcopy(previous_components)
@@ -1183,6 +1267,7 @@ def main() -> None:
                 # 새 Weekly Radar에서는 이번 주 확인된 원인·병목 신호를 모두 보여준다.
                 changed_signals=[name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
                 evidence=evidence,
+                cpu_state=latest_cpu,
             )
             notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
             latest_components = merged
@@ -1200,6 +1285,7 @@ def main() -> None:
                 signals=extracted_signals,
                 changed_signals=[name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
                 evidence=evidence,
+                cpu_state=latest_cpu,
             )
             notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
             latest_signals = merged_signals
@@ -1216,6 +1302,11 @@ def main() -> None:
         "candidate_count": len(candidates),
         "errors": errors[-10:],
     }
+    pending["agentic_cpu_watch"] = latest_cpu
+
+    if cpu_notify_text:
+        notify_text = (notify_text.rstrip() + "\n\n" + cpu_notify_text.strip()).strip() + "\n" if notify_text else cpu_notify_text
+
     write_json(PENDING_PATH, pending)
 
     if notify_text:
@@ -1225,8 +1316,10 @@ def main() -> None:
 
     print(
         "ai_component_leadtime_watch=true "
-        f"candidates={len(candidates)} notify={str(bool(notify_text)).lower()} "
-        f"source={best.get('direct_url') if best else 'none'}"
+        f"candidates={len(candidates)} cpu_candidates={len(cpu_candidates)} "
+        f"notify={str(bool(notify_text)).lower()} "
+        f"source={best.get('direct_url') if best else 'none'} "
+        f"cpu_source={best_cpu.get('direct_url') if best_cpu else 'none'}"
     )
 
 
