@@ -236,6 +236,149 @@
       "source": "Futunn 재인용·기존 삼성 HBM4/4E 증산 사건",
       "scope": "reported_product_mix_share_not_shipment_share",
       "excerpt": "기존 HBM4·HBM4E 생산 2배 사건의 세부 비중 40%→80%. 별도 신규 생산사건이 아니라 제품 혼합 세부 상태 기준선."
+    },
+    {
+      "key": "postprocess_capex|tsmc|2026",
+      "axis": "postprocess_capex",
+      "value": {
+        "total_capex_usd_min": 60000000000,
+        "total_capex_usd_max": 64000000000,
+        "backend_alloc_pct_min": 10,
+        "backend_alloc_pct_max": 20,
+        "tester_shortage": true
+      },
+      "unit": "USD/pct",
+      "period": "2026",
+      "as_of": "2026-07-16",
+      "evidence": "official",
+      "source_url": "https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2026-07/547d1696765e05ce3adb81c108ce1c8c1682b80c/TSMC%202Q26%20Transcript.pdf",
+      "source_title": "TSMC 2026년 2분기 실적 컨퍼런스콜",
+      "source": "TSMC",
+      "scope": "backend_bucket_includes_packaging_testing_mask_and_others",
+      "excerpt": "2026년 설비투자 600억~640억달러, 장기 후공정 묶음 10~20%, 고객 제품의 테스트 수요 증가로 tester shortage를 언급."
+    },
+    {
+      "key": "postprocess_capex|ase|2026",
+      "axis": "postprocess_capex",
+      "value": {
+        "total_capex_usd": 10500000000,
+        "prior_capex_usd": 8500000000
+      },
+      "unit": "USD/year",
+      "period": "2026",
+      "as_of": "2026-07-30",
+      "evidence": "reported",
+      "source_url": "https://www.reuters.com/world/asia-pacific/taiwans-ase-tech-raises-2026-capex-by-2-billion-strong-demand-2026-07-30/",
+      "source_title": "ASE, 2026년 설비투자 20억달러 상향",
+      "source": "Reuters",
+      "scope": "company_capex_not_all_advanced_packaging",
+      "excerpt": "ASE 2026년 설비투자 85억달러에서 약 105억달러로 상향."
+    },
+    {
+      "key": "postprocess_order|di|samsung|memory_test_equipment|2026",
+      "axis": "postprocess_order",
+      "value": {
+        "amount_krw": 142300000000,
+        "contract_count": 5,
+        "stage": "po_signed"
+      },
+      "unit": "KRW/order",
+      "period": "2026",
+      "as_of": "2026-09-02",
+      "evidence": "research",
+      "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+      "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+      "source": "한화투자증권",
+      "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+      "excerpt": "디아이 6~7월 삼성전자 5건, 1,423억원 검사장비 계약."
+    },
+    {
+      "key": "postprocess_order|digital_frontier|skhynix|hbm4_wafer_tester|2026",
+      "axis": "postprocess_order",
+      "value": {
+        "amount_krw": 232100000000,
+        "contract_count": 3,
+        "stage": "po_signed"
+      },
+      "unit": "KRW/order",
+      "period": "2026",
+      "as_of": "2026-09-02",
+      "evidence": "research",
+      "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+      "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+      "source": "한화투자증권",
+      "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+      "excerpt": "디지털프론티어 SK하이닉스 2026년 3건, 2,321억원 HBM4 Wafer Tester 계약."
+    },
+    {
+      "key": "postprocess_order|yc|samsung|memory_test_equipment|2026",
+      "axis": "postprocess_order",
+      "value": {
+        "amount_krw": 255200000000,
+        "contract_count": 2,
+        "stage": "po_signed"
+      },
+      "unit": "KRW/order",
+      "period": "2026",
+      "as_of": "2026-09-02",
+      "evidence": "research",
+      "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+      "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+      "source": "한화투자증권",
+      "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+      "excerpt": "와이씨 6~8월 삼성전자 2건, 2,552억원 검사장비 계약."
+    },
+    {
+      "key": "postprocess_order|exicon|multiple|clt_ssd_tester|2026",
+      "axis": "postprocess_order",
+      "value": {
+        "amount_krw": 101800000000,
+        "contract_count": null,
+        "stage": "po_signed"
+      },
+      "unit": "KRW/order",
+      "period": "2026",
+      "as_of": "2026-09-02",
+      "evidence": "research",
+      "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+      "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+      "source": "한화투자증권",
+      "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+      "excerpt": "엑시콘 5~7월 CLT 및 SSD 테스터 등 1,018억원 검사장비 계약."
+    },
+    {
+      "key": "postprocess_stage|intekplus|taiwan_osat|cowos",
+      "axis": "postprocess_stage",
+      "value": {
+        "stage": "po_pending"
+      },
+      "unit": "stage",
+      "period": "2026",
+      "as_of": "2026-08-14",
+      "evidence": "reported",
+      "source_url": "https://view.asiae.co.kr/article/2026081408510443534",
+      "source_title": "TSMC 첨단패키징 외주 확대, 국내 후공정 장비사 수주 훈풍",
+      "source": "아시아경제",
+      "scope": "stage_transition_requires_explicit_evidence",
+      "excerpt": "인텍플러스가 대만 OSAT CoWoS 시범장비 품질검증을 통과해 본계약을 앞둔 상태."
+    },
+    {
+      "key": "postprocess_order|pemtron|skhynix|hbm_inspection|2026",
+      "axis": "postprocess_order",
+      "value": {
+        "amount_krw": 10000000000,
+        "contract_count": null,
+        "stage": "po_signed"
+      },
+      "unit": "KRW/order",
+      "period": "2026",
+      "as_of": "2026-08-14",
+      "evidence": "reported",
+      "source_url": "https://view.asiae.co.kr/article/2026081408510443534",
+      "source_title": "TSMC 첨단패키징 외주 확대, 국내 후공정 장비사 수주 훈풍",
+      "source": "아시아경제",
+      "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+      "excerpt": "펨트론이 SK하이닉스로부터 100억원 규모 HBM 검사장비를 수주했다는 보도."
     }
   ],
   "user_capture": {
