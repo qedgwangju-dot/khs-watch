@@ -1,5 +1,6 @@
 {
   "seen": [
+    "037d12b6ba26033dba9147c17d766597fb1e58701ce48cf6838a1b7783405fa1",
     "07d6ed1dd2e90ed1a4cd70867079e0d3a52c59ecef6134cf0dca1e3926ed4a99",
     "0e6e81c584664bcea7c6cf9ca75b1d7fc9b093b45dbe2e37dd34e64bbddf2f1a",
     "12c1899922b65a72aabf354769b9bdf6734067daedbcca29c1b2ad6a34bd4ca2",
@@ -12,6 +13,7 @@
     "32af5a873adacb8d80366a45c54556416307aed9ecad880032b9c19366546158",
     "43c3cf810a54905a287ea0f3da165bb8642d47ad30e8df3abebbe67f25ac9365",
     "43f29e917867ab50be0040cf73ba387b01d6bdd9b8da71f06cd6d9e746972480",
+    "478dd76d84df9791ff0ed4830253f8dc241b7c9a604c8266ce7503a7ecb927f5",
     "49da3cf1b2bee590aee4c67357d4db78da37fd5f0d21848b06fc50d87615d156",
     "4b70c32f998a45ad46c44c7f890dafdc59b5e58fb276b6bfc9e7bd0a78d5977a",
     "4daeeeba4c51b32dd5893069244375da024fcfd76b51664ebfe566f8a45a54c7",
@@ -22,6 +24,7 @@
     "60aac30b35bc855a84cdc9c0c001aa85a81904bd698448e0f0577cbcac61732c",
     "6169da5ec619d48a35493a834f99dfa7fe83a26c1cd7f1c96a51f99fb93afbc0",
     "6e8a32de20c0cff01fd5e5dcca4c45c1f634dddfc2284e02f378982448df0d5d",
+    "745f8ed43fac2f64570055ed899ebc91c2abb0cb32a385697c4364f1940d8617",
     "779051ef2fac480f99d32e57e0077e0f8de403a9b0052f9f19fcca77bdc4926e",
     "7e78582e0802e9d071b044d934b0009638cda86c61556d930c10e6d04dbc8638",
     "7fcff8e289d8dddc11fa8a2ca0e63a386cb9ecbf2b245110e99819fa9bfad8e2",
@@ -50,6 +53,9 @@
     "fe8c8792dc7d344fbe93d1fe0d3bdee3fbcbaa346f756f77d7f1a4ebcf2d6fc5"
   ],
   "seen_events": {
+    "12th-plan|nuclear-deliberation": 3,
+    "12th-plan|nuclear-fact|69e203914c9e": 1,
+    "12th-plan|nuclear|9ba028209c633bdd": 2,
     "2026-08-26|12th-plan|renewable-2040-capacity": 1,
     "2026-08-27|12th-plan|5b25f85ea4c170f6": 1,
     "2026-08-28|12th-plan|nuclear": 1,
@@ -70,5 +76,5 @@
     "2026-09-22|12th-plan|nuclear": 3,
     "2026-09-25|12th-plan|nuclear": 1
   },
-  "updated_at": "2026-09-25T13:01:54.852147+00:00"
+  "updated_at": "2026-09-25T17:06:49.620737+00:00"
 }
