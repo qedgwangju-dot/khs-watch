@@ -16,6 +16,7 @@ from zoneinfo import ZoneInfo
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / 'out'
 VERSION = 1
+FOUNDRY_TRACK_VERSION = 1
 EXTRA_QUERIES = [
     '(HBM4 OR HBM4E) (24Gb OR 32Gb OR 36GB OR 32GB OR 48GB) (capacity OR 용량 OR 적층)',
     'DDR5 RDIMM (premium OR spot OR contract OR 현물 OR 고정거래)',
@@ -621,8 +622,10 @@ def parse_foundry_hbm_records(item, body):
             alloc_min = 50.0
 
         total_wpm = _wpm(text)
-        full = bool(re.search(r'풀가동|풀생산|full\s*(?:utilization|capacity|production)', text, re.I))
-        if alloc_min is not None or total_wpm is not None or full:
+        full = True if re.search(r'풀가동|풀생산|full\s*(?:utilization|capacity|production)', text, re.I) else None
+        if re.search(r'가동률\s*(?:하락|완화)|풀가동\s*(?:해소|종료)|utilization\s*(?:eased|fell|declined)', text, re.I):
+            full = False
+        if alloc_min is not None or total_wpm is not None or full is not None:
             rows.append(make_record(
                 'foundry_base_die_allocation', ['samsung','4nm','HBM4'],
                 {'total_capacity_wpm': total_wpm, 'allocation_pct_min': alloc_min,
@@ -649,8 +652,12 @@ def parse_foundry_hbm_records(item, body):
                 as_of=asof, scope='foundry_expansion_stage'))
 
         # Price increases are a separate state from physical capacity.
-        new_order_up = bool(re.search(r'(?:4\s*나노|4nm)[^.]{0,100}?(?:신규\s*수주|new\s*orders?)[^.]{0,80}?(?:가격(?:을|이|은|는)?\s*(?:인상|상향)|price\s*(?:increase|hike))', text, re.I))
-        base_die_up = bool(re.search(r'(?:베이스\s*다이|base\s*die)[^.]{0,80}?(?:가격\s*(?:인상|상향)|가격[^.]{0,20}?(?:올린|올렸다)|price\s*(?:increase|hike))', text, re.I))
+        new_order_up = True if re.search(r'(?:4\s*나노|4nm)[^.]{0,100}?(?:신규\s*수주|new\s*orders?)[^.]{0,80}?(?:가격(?:을|이|은|는)?\s*(?:인상|상향)|price\s*(?:increase|hike))', text, re.I) else None
+        if re.search(r'(?:4\s*나노|4nm)[^.]{0,100}?(?:신규\s*수주|new\s*orders?)[^.]{0,80}?(?:가격\s*(?:인하|하향)|price\s*(?:cut|decrease))', text, re.I):
+            new_order_up = False
+        base_die_up = True if re.search(r'(?:베이스\s*다이|base\s*die)[^.]{0,80}?(?:가격\s*(?:인상|상향)|가격[^.]{0,20}?(?:올린|올렸다)|price\s*(?:increase|hike))', text, re.I) else None
+        if re.search(r'(?:베이스\s*다이|base\s*die)[^.]{0,80}?(?:가격\s*(?:인하|하향)|price\s*(?:cut|decrease))', text, re.I):
+            base_die_up = False
         pct = None
         pm = re.search(r'(?:가격\s*인상|price\s*(?:increase|hike))[^%]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*%', text, re.I)
         if pm:
@@ -688,8 +695,8 @@ def parse_foundry_hbm_records(item, body):
                 'foundry_hbm5_2nm', ['samsung','2nm','HBM5'],
                 {'investment_stage': investment_stage or 'technology_plan',
                  'speed_uplift_target_pct': speed,
-                 'gaa': bool(re.search(r'GAA|게이트올어라운드', text, re.I)),
-                 'tsv_density_up': bool(re.search(r'TSV|실리콘\s*관통\s*전극', text, re.I))},
+                 'gaa': True if re.search(r'GAA|게이트올어라운드', text, re.I) else None,
+                 'tsv_density_up': True if re.search(r'TSV|실리콘\s*관통\s*전극', text, re.I) else None},
                 'stage,pct', 'HBM5', item,
                 '삼성 HBM5 2나노 베이스다이 기술·투자 단계',
                 as_of=asof, scope='technology_plan_and_line_investment_separated'))
@@ -967,6 +974,13 @@ def update_state(state, records, now, seeds=None):
         for r in seeds:
             state['last_notified'].setdefault(r['key'], r)
             state['latest'].setdefault(r['key'], r)
+        if int(state.get('foundry_track_version') or 0) < FOUNDRY_TRACK_VERSION:
+            for r in seeds:
+                if str(r.get('axis','')).startswith('foundry_'):
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['foundry_track_version'] = FOUNDRY_TRACK_VERSION
     state['version'] = VERSION
     grouped = {}
     for r in records:
@@ -975,8 +989,21 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
+    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
+        prior = state['latest'].get(key) or state['last_notified'].get(key)
+        if prior and rows and rows[-1].get('axis') in sparse_axes:
+            normalized = []
+            for row in rows:
+                merged = copy.deepcopy(row)
+                merged_value = copy.deepcopy(prior.get('value') or {})
+                for field, value in (row.get('value') or {}).items():
+                    if value is not None:
+                        merged_value[field] = value
+                merged['value'] = merged_value
+                normalized.append(merged)
+            rows = normalized
         r = rows[-1]
         same = [x for x in rows if x['as_of'] == r['as_of'] and x['evidence'] == r['evidence']]
         if len({fingerprint(x['value']) for x in same}) > 1:
