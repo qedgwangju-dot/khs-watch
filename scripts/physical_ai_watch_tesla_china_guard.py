@@ -98,6 +98,17 @@ PRODUCTION_STARTED = re.compile(
     r'양산\s*(?:시작|개시|착수)|생산\s*(?:시작|개시)|실제\s*양산\s*(?:시작|개시)',
     re.I,
 )
+RAMP_TENFOLD = re.compile(r'10\s*배|약\s*10\s*배|ten[- ]?fold|10x|production.{0,30}(?:10x|ten[- ]?fold)|생산.{0,30}10\s*배', re.I)
+WEEKLY_HUNDREDS = re.compile(r'주당\s*수백\s*대|주당\s*몇백\s*대|hundreds?\s*(?:of\s*)?(?:robots?|units?)?\s*(?:per|a)\s*week|hundreds?\s*per\s*week', re.I)
+YEAR_END_1000 = re.compile(r'(?:연말|year[- ]?end).{0,50}(?:주당\s*)?1,?000\s*대|1,?000\s*(?:robots?|units?)\s*(?:per|a)\s*week.{0,50}(?:year[- ]?end|연말)|주당\s*1,?000\s*대.{0,50}(?:연말|목표)', re.I)
+LONG_TERM_20000 = re.compile(r'주당\s*(?:약\s*)?2\s*만\s*대|20,?000\s*(?:robots?|units?)\s*(?:per|a)\s*week|20,?000\s*per\s*week', re.I)
+CONTINUOUS_AUTO_LINE = re.compile(r'연속\s*자동화\s*라인|continuous\s*automated\s*line|continuous\s*automation\s*line|fully\s*automated\s*line', re.I)
+HAND_ASSEMBLY_BOTTLENECK = re.compile(r'(?:hand|hands|손|forearm|팔뚝|전완).{0,120}(?:100\s*(?:개|plus|more)|100\+|screws?|나사|small\s*parts?|소형\s*부품|manual\s*assembly|수작업)|(?:100\s*(?:개|plus|more)|100\+|screws?|나사|small\s*parts?|소형\s*부품|manual\s*assembly|수작업).{0,120}(?:hand|hands|손|forearm|팔뚝|전완)', re.I)
+TACTILE_DURABILITY = re.compile(r'(?:촉각\s*센서|tactile\s*sensor|touch\s*sensor).{0,80}(?:내구성|durability|reliability|문제|issue|failure)|(?:내구성|durability|reliability).{0,80}(?:촉각\s*센서|tactile\s*sensor|touch\s*sensor)', re.I)
+SUPPLIER_CONSISTENCY = re.compile(r'(?:중국|China|Chinese).{0,80}(?:supplier|업체|공급사).{0,120}(?:품질|quality|일관성|consistency|수율|yield|규모|volume)|(?:품질|quality|일관성|consistency|수율|yield).{0,120}(?:중국|China|Chinese).{0,80}(?:supplier|업체|공급사)', re.I)
+CORE_PARTS = re.compile(r'모터|motor|정밀\s*기어|precision\s*gear|gearbox|감속기|actuator|액추에이터', re.I)
+TRAINING_500K = re.compile(r'50\s*만\s*시간|500,?000\s*hours?|500k\s*hours?', re.I)
+TRAINING_DOUBLE = re.compile(r'(?:연말|year[- ]?end).{0,50}(?:두\s*배|2\s*배|double)|(?:double|두\s*배|2\s*배).{0,50}(?:연말|year[- ]?end)', re.I)
 FACTORY_SITE = re.compile(r'Giga(?:factory)?\\s*Texas|Giga\\s*Texas|기가\\s*텍사스|텍사스.{0,50}Optimus|Optimus.{0,50}(?:Texas|텍사스)|Optimus.{0,40}(?:dedicated\\s*factory|factory)|옵티머스.{0,40}(?:전용\\s*공장|공장)|로봇\\s*기가팩토리', re.I)
 FACTORY_STRUCTURE = re.compile(r'steel\\s*(?:assembly|frame|framing)|column\\s*grids?|concrete|rebar|footing|grade[-\\s]*beam|roof\\s*truss|철골|골조|콘크리트|철근|기초|기초보|지붕|상부\\s*\\d+개?\\s*층', re.I)
 FACTORY_TOOLING = re.compile(r'tooling|equipment\\s*(?:install|installation|move[-\\s]*in)|production\\s*equipment|장비\\s*(?:반입|설치)|생산\\s*설비\\s*(?:반입|설치)|생산라인\\s*설치', re.I)
@@ -177,6 +188,12 @@ if TESLA_KOREA_SUPPLIER_SENTINEL not in base.QUERIES:
 _TESLA_KOREA_SUPPLIER_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스 OR humanoid OR 휴머노이드) (한국 OR 국내 OR Korea) (공장 방문 OR 생산시설 점검 OR 공급망 OR supplier OR factory visit OR actuator OR 감속기 OR 센서)'
 if _TESLA_KOREA_SUPPLIER_QUERY not in base.QUERIES:
     base.QUERIES.append(_TESLA_KOREA_SUPPLIER_QUERY)
+_TESLA_RAMP_BOTTLENECK_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("hundreds per week" OR "주당 수백 대" OR "10x" OR "10배" OR "1,000 per week" OR "20,000 per week" OR hand OR 손 OR forearm OR 전완 OR tactile OR 촉각) ("The Information" OR production OR 생산 OR supply chain OR 공급망)'
+if _TESLA_RAMP_BOTTLENECK_QUERY not in base.QUERIES:
+    base.QUERIES.append(_TESLA_RAMP_BOTTLENECK_QUERY)
+_TESLA_TRAINING_DATA_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("500,000 hours" OR "500k hours" OR "50만 시간" OR training data OR 학습 데이터) (year-end OR 연말 OR double OR 두배)'
+if _TESLA_TRAINING_DATA_QUERY not in base.QUERIES:
+    base.QUERIES.append(_TESLA_TRAINING_DATA_QUERY)
 _FACTORY_MILESTONE_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("dedicated factory" OR "Optimus factory" OR "옵티머스 전용 공장" OR "로봇 기가팩토리") (steel OR concrete OR rebar OR 철골 OR 콘크리트 OR 철근 OR construction OR 공사)'
 if _FACTORY_MILESTONE_QUERY not in base.QUERIES:
     base.QUERIES.append(_FACTORY_MILESTONE_QUERY)
@@ -578,6 +595,7 @@ def _is_tesla_supply_text(text: str) -> bool:
     app_productization = APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text)
     gen3_asset = APP_GEN_ASSET.search(text) and APP_APK_CONTEXT.search(text)
     korea_scout = KOREA_LOCATIONS.search(text) and KOREA_SUPPLIER_SCOUT.search(text) and KOREA_COMPONENT_SCOPE.search(text)
+    ramp_bottleneck = _is_ramp_bottleneck_event(text)
     exec_guidance = _is_exec_guidance(text)
     actor = TESLA_OPT.search(text) or MUSK_EXEC_ACTOR.search(text)
     robot_term = OPTIMUS.search(text) or (TESLA_OPT.search(text) and TESLA_HUMANOID.search(text))
@@ -594,11 +612,20 @@ def _is_tesla_supply_text(text: str) -> bool:
                     or factory
                     or app_productization
                     or gen3_asset
+                    or ramp_bottleneck
                     or exec_guidance
                 )
             )
         )
     )
+
+
+def _is_ramp_bottleneck_event(text: str) -> bool:
+    ramp = bool(RAMP_TENFOLD.search(text) or WEEKLY_HUNDREDS.search(text) or YEAR_END_1000.search(text) or LONG_TERM_20000.search(text))
+    hand = bool(HAND_ASSEMBLY_BOTTLENECK.search(text) or TACTILE_DURABILITY.search(text))
+    supply = bool(SUPPLIER_CONSISTENCY.search(text) and CORE_PARTS.search(text))
+    data = bool(TRAINING_500K.search(text) and TRAINING_DOUBLE.search(text))
+    return bool(ramp and (hand or supply or CONTINUOUS_AUTO_LINE.search(text) or data))
 
 
 def _stage(text: str) -> str:
@@ -612,6 +639,8 @@ def _stage(text: str) -> str:
         return 'executive_production_timeline'
     if weekly_target:
         return 'weekly_capacity_target'
+    if _is_ramp_bottleneck_event(text):
+        return 'production_ramp_bottleneck'
     if PRODUCTION_STARTED.search(text):
         return 'production_started'
     if APP_GEN_ASSET.search(text) and APP_APK_CONTEXT.search(text):
@@ -677,6 +706,8 @@ def score(item: dict) -> int:
         s += 15
     if stage == 'weekly_capacity_target':
         s += 6
+    if stage == 'production_ramp_bottleneck':
+        s += 18
     if stage == 'production_started':
         s += 12
     if stage == 'app_generation_asset':
@@ -715,6 +746,8 @@ def category(text: str, group: str) -> str:
             return 'Optimus 경영진 양산 시간표·세대 전환'
         if stage == 'weekly_capacity_target':
             return 'Optimus 주간 공급능력·생산 목표'
+        if stage == 'production_ramp_bottleneck':
+            return 'Optimus 주간 생산 램프·손·공급망 병목'
         if stage == 'production_started':
             return 'Optimus 실제 양산 개시'
         if stage == 'app_generation_asset':
@@ -752,6 +785,9 @@ def meaning(cat: str) -> str:
     if cat == 'Optimus 주간 공급능력·생산 목표':
         return ('주당 몇 대분을 공급할 수 있어야 하는지 또는 생산 목표가 얼마인지 보여주는 선행 시간표 신호입니다. '
                 '실제 완제품 생산량과 혼동하지 않고 목표→실생산 전환 시점을 별도 추적합니다.')
+    if cat == 'Optimus 주간 생산 램프·손·공급망 병목':
+        return ('단순 양산 예정이 아니라 실제 생산량이 주당 수백 대 수준으로 올라갔다는 보도와 동시에 손·전완 수작업, 촉각센서 내구성, 중국 핵심부품 공급사 품질 일관성 같은 병목이 함께 드러나는 신호입니다. '
+                '현재 생산량→연말 주당 1,000대 자동화라인 목표→장기 주당 2만대 계획을 분리해 추적하고, 손 조립 자동화율·촉각센서 불량률·공급사 수율·학습데이터 증가가 실제 안정 양산으로 이어지는지 확인합니다.')
     if cat == 'Optimus 실제 양산 개시':
         return ('양산 예정·심사·공급망 준비가 아니라 실제 생산 개시가 확인된 단계 변화입니다. '
                 '첫 주간 생산량·수율·완성품 출하·내부 배치로 실제 램프업 속도를 확인합니다.')
@@ -799,6 +835,9 @@ def risk(cat: str) -> str:
         return ('경영진 목표는 실제 생산실적이 아닙니다. 일정이 바뀌면 새 시간표로 다시 알리되, 기존 발언의 재인용은 같은 사건으로 묶고 생산라인·장비 반입·수율·주간 생산량으로 이행 여부를 검증합니다.')
     if cat == 'Optimus 주간 공급능력·생산 목표':
         return ('공급능력 목표는 실제 생산량이 아닙니다. 수율·부품 병목·라인 안정화가 늦으면 목표치와 실제 주간 완제품 생산량의 격차가 커질 수 있습니다.')
+    if cat == 'Optimus 주간 생산 램프·손·공급망 병목':
+        return ('The Information 소식통 보도 성격의 생산량·목표 수치는 Tesla 공식 생산실적과 다를 수 있습니다. 주당 수백 대가 실제 완제품 기준인지, 연말 주당 1,000대가 라인 설계능력인지 실생산 목표인지 구분해야 합니다. '
+                '가장 현실적인 실패 경로는 손·전완 조립 복잡도와 촉각센서 내구성, 외부 모터·정밀기어 공급사의 대량생산 품질 편차가 겹쳐 자동화라인 램프와 주간 생산량이 목표에 못 미치는 경우입니다.')
     if cat == 'Optimus 실제 양산 개시':
         return ('생산 개시와 안정 양산은 다릅니다. 초기 직행수율·재작업률·주간 생산량이 따라오지 않으면 양산 개시 후에도 병목이 지속될 수 있습니다.')
     if cat == 'Optimus Gen 3 앱 자산·세대 디자인 준비':
@@ -844,6 +883,8 @@ def verification(item: dict, group: str, text: str) -> str:
             return '머스크 발언 보도 · 원문 인터뷰/공식자료 교차확인'
         if _stage(text) == 'weekly_capacity_target':
             return '공급망 생산능력·목표 보도 · 실제 완제품 생산량과 분리'
+        if _stage(text) == 'production_ramp_bottleneck':
+            return 'The Information·공급망 소식통 보도 단계 · Tesla 공식 주간 생산량/라인 가동률/학습데이터 수치 교차확인 필요'
         if _stage(text) == 'production_started':
             return '양산 실제 개시 보도 · 테슬라 공식 생산상태와 후속 교차확인'
         if _stage(text) == 'app_generation_asset':
@@ -886,6 +927,8 @@ def clean_title(title: str, source: str) -> str:
             return '일론 머스크, Optimus 생산·대량생산·세대 전환 시간표 신규 언급'
         if stage == 'weekly_capacity_target':
             return '테슬라 옵티머스, 주간 공급능력·생산 목표 신규 변화'
+        if stage == 'production_ramp_bottleneck':
+            return '테슬라 Optimus, 주당 수백 대 생산 램프 보도…손·촉각센서·공급망 병목 지속'
         if stage == 'production_started':
             return '테슬라 옵티머스, 실제 양산 개시 신규 확인'
         if stage == 'app_generation_asset':
@@ -933,6 +976,8 @@ def key(item: dict) -> str:
             ):
                 return _MARCH_18_2026_MUSK_OPTIMUS_KEY
             return _exec_key(text)
+        if stage == 'production_ramp_bottleneck':
+            return hashlib.sha256(b'tesla-optimus|2026-09|production-ramp-bottleneck|hands-supply-data').hexdigest()
         if stage == 'weekly_capacity_target':
             m = re.search(r'(?<!\d)(\d{2,5})(?:\s*台|\s*대|\s*(?:per\s+week|weekly))', text, re.I)
             qty = m.group(1) if m else 'unknown'
