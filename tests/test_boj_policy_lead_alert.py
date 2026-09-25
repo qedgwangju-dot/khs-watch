@@ -710,5 +710,36 @@ class BojPolicyPathAlertTests(unittest.TestCase):
         self.assertEqual(signal.event_type, "decision")
 
 
+    def test_reuters_outlook_language_detects_hawkish_opposite_split(self):
+        signal = classify(
+            self.mk(
+                "Investors react to BOJ raising interest rates to 31-year high - Reuters",
+                "Asada and Sato opposed the hike and preferred to keep rates unchanged. "
+                "Takata and Tamura opposed the outlook language from the opposite direction, "
+                "arguing underlying inflation has already reached a level consistent with the 2 percent target.",
+            )
+        )
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal.dissent_direction, "hold")
+        self.assertEqual(signal.outlook_dissenters, ("다카타", "다무라"))
+        self.assertIn("2% 목표", signal.outlook_dissent_view)
+
+    def test_alert_shows_two_way_board_split_but_does_not_invent_assessment_vote(self):
+        signal = verified_event_signals(
+            dt.datetime(2026, 9, 18, 13, 0, tzinfo=KST)
+        )[0]
+        _title, body, _payload = build(
+            signal,
+            "test",
+            dt.datetime(2026, 9, 18, 13, 0, tzinfo=KST),
+            {},
+        )
+        self.assertIn("위원회 분열 구조", body)
+        self.assertIn("완화파는 '지금은 동결'", body)
+        self.assertIn("기조물가가 이미 2% 목표에 도달", body)
+        self.assertIn("경제·물가 진단 별도 표결", body)
+        self.assertIn("정책 7대2와 자동 동일시하지 않음", body)
+
+
 if __name__ == "__main__":
     unittest.main()
