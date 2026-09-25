@@ -163,6 +163,69 @@ def structural_source_lines(structural: dict) -> list[str]:
         lines.append(f"- GPIF: {gpif['url']}")
     return lines
 
+def current_carry_direction(
+    *,
+    usd_day: float | None,
+    yen_surge: bool,
+    spread_narrow: bool,
+    us_rates_down: bool,
+    jgb10_3: bool,
+    curve_up: bool,
+    vix_spike: bool,
+    equity_joint: bool,
+    risk_level: int,
+) -> tuple[str, str]:
+    """Separate the market's current direction from the structural risk level."""
+    contagion = vix_spike or equity_joint
+
+    if risk_level >= 3 and yen_surge and contagion:
+        return (
+            "🔴 엔캐리 청산 진행",
+            "엔화 급등 + 금리/금리차 부담 + 위험자산 전염이 동시 확인",
+        )
+    if yen_surge and (spread_narrow or us_rates_down or jgb10_3 or curve_up):
+        return (
+            "🟠 엔캐리 청산 압력 우세",
+            "엔화 급등에 금리·금리차 부담이 겹침",
+        )
+
+    if usd_day is not None and usd_day < 0:
+        if spread_narrow or us_rates_down:
+            return (
+                "↘ 엔캐리 청산 쪽으로 기울기",
+                "엔화 강세 + 미·일 금리차 축소/미국2Y 하락 신호",
+            )
+        if jgb10_3 or curve_up:
+            return (
+                "↔ 혼조 — 구조적 청산 부담↑",
+                "엔화는 강세지만 금리차 급축소·위험자산 전염은 아직 미확인",
+            )
+        return (
+            "↔ 엔화 강세, 청산 확인은 아직",
+            "엔화 강세 단독이며 금리차·전염 신호가 부족",
+        )
+
+    if usd_day is not None and usd_day > 0:
+        if jgb10_3 or curve_up:
+            return (
+                "↗ 캐리 유지 우세 / 구조 부담↑",
+                "엔화 약세 + 금리차 급축소·전염 없음, 다만 JGB 상승은 청산 부담",
+            )
+        return (
+            "🟢 캐리 유지·재구축 우세",
+            "엔화 약세 + 금리차 급축소·위험자산 전염 없음",
+        )
+
+    if contagion:
+        return (
+            "↔ 방향 혼조 — 위험자산 스트레스",
+            "주식·변동성 스트레스는 있으나 엔화 방향 확인 부족",
+        )
+    return (
+        "↔ 방향 확인 대기",
+        "엔화·금리차·위험자산에서 우세 방향이 아직 없음",
+    )
+
 def main() -> int:
     now = datetime.now(KST)
     pending = load_json(OUT / "global_rates_watch_pending_state.json", {})
@@ -230,6 +293,17 @@ def main() -> int:
         "nikkei_nasdaq_joint_weakness": equity_joint,
     }
     risk_level, risk_label, emoji, leading_count, confirm_count = calculate_final_risk(risk_signals)
+    direction_label, direction_reason = current_carry_direction(
+        usd_day=usd_day,
+        yen_surge=yen_surge,
+        spread_narrow=spread_narrow,
+        us_rates_down=us_rates_down,
+        jgb10_3=jgb10_3,
+        curve_up=curve_up,
+        vix_spike=vix_spike,
+        equity_joint=equity_joint,
+        risk_level=risk_level,
+    )
 
     old_level = int(telegram_state.get("risk_level") or 0)
     primary_event = bool(base_alert.get("events"))
@@ -240,6 +314,8 @@ def main() -> int:
     pending_state = {
         "risk_level": risk_level,
         "risk_label": risk_label,
+        "market_direction": direction_label,
+        "market_direction_reason": direction_reason,
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "signals": {
             "jgb10_3": jgb10_3,
@@ -289,6 +365,8 @@ def main() -> int:
 
     lines = [
         f"[글로벌 금리·엔캐리] {emoji} {risk_label}",
+        f"현재 방향 │ {direction_label}",
+        f"방향 근거 │ {direction_reason}",
         f"조회 │ {now.strftime('%Y-%m-%d %H:%M:%S')} KST",
         "",
         "① 이번 변화",
@@ -309,7 +387,8 @@ def main() -> int:
         f"• 전염 확인 │ {confirm_count}/2 · {'동반 청산 신호 있음' if confirm_count else '동반 청산 신호 없음'}",
         "",
         "④ 판정",
-        f"• {emoji} {risk_label} │ 선행 {leading_count}/5 · 후행 {confirm_count}/2",
+        f"• 현재 방향 │ {direction_label}",
+        f"• 위험단계 │ {emoji} {risk_label} · 선행 {leading_count}/5 · 후행 {confirm_count}/2",
         "• JGB 3%만으로 청산 확정하지 않음. 미·일 단기금리차 축소 + USD/JPY 급락 + VIX/주식 전염이 겹칠 때 단계 상향.",
         "",
         "⑤ 다음 확인",
