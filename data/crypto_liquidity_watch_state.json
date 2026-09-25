@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-25T19:03:26+09:00",
+  "updated_at_kst": "2026-09-26T00:14:43+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -30,9 +30,9 @@
     "prev_total_usd_m": 346.9,
     "day_change_usd_m": -156.2,
     "day_change_pct": -45.0,
-    "source_latest_date": "2026-09-24",
-    "source_latest_status": "complete",
-    "pending_date": null,
+    "source_latest_date": "2026-09-25",
+    "source_latest_status": "pending",
+    "pending_date": "2026-09-25",
     "latest_recomputed_total_usd_m": 190.7,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
