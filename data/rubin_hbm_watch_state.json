@@ -163,19 +163,21 @@
     "payload_hash": "f7e131e7f9d13f4a3ce1c61d4533071f3034aa37a77929162b8e14ba370ec995"
   },
   "agentic_cpu_demand": {
-    "as_of": "2026-06-12",
+    "as_of": "2026-08-12",
     "issuer": "Bank of America",
-    "source": "https://sg.finance.yahoo.com/news/bank-america-resets-amd-stock-110300178.html",
-    "source_kind": "BofA 전망 관련 최신 공개자료",
+    "source": "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12",
+    "source_kind": "BofA 전망의 2차 리서치 요약",
     "metrics": {
-      "server_cpu_tam_2030_usd_bn": 170.0,
+      "server_cpu_tam_2030_usd_bn": 210.6,
       "traditional_iaas_2030_usd_bn": 30.2,
-      "compute_head_2030_usd_bn": 30.0,
+      "compute_head_2030_usd_bn": 90.2,
       "agentic_2030_usd_bn": 90.2,
       "ai_cpu_2030_usd_bn": 180.4,
       "agentic_share_pct": 42.83,
       "ai_cpu_share_pct": 85.66,
+      "server_cpu_2025_usd_bn": 35,
       "server_cpu_2026_usd_bn": 61.4,
+      "server_cpu_cagr_2025_2030_pct": 43.1,
       "server_cpu_cagr_2026_2030_pct": 36.1,
       "ai_cpu_cagr_2026_2030_pct": 43.6
     },
@@ -188,12 +190,12 @@
     "revision_history": [
       {
         "date": "2026-05-20",
-        "server_cpu_tam_2030_usd_bn": 125.0,
+        "server_cpu_tam_2030_usd_bn": 125,
         "source_kind": "BofA 보도 재전달"
       },
       {
         "date": "2026-06-11",
-        "server_cpu_tam_2030_usd_bn": 170.0,
+        "server_cpu_tam_2030_usd_bn": 170,
         "source_kind": "BofA 리포트 해석 자료"
       },
       {
@@ -203,14 +205,12 @@
       }
     ],
     "seen_forecast_urls": [
-      "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12",
-      "https://sg.finance.yahoo.com/news/bank-america-resets-amd-stock-110300178.html"
+      "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12"
     ],
     "seen_validation_urls": [
-      "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
-      "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
+      "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html",
+      "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era"
     ],
-    "last_validation_cutoff": "2026-09-25",
-    "last_checked_at_kst": "2026-09-25T23:31:25+09:00"
+    "last_validation_cutoff": "2026-09-25"
   }
 }
