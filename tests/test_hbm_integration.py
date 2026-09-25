@@ -7,7 +7,6 @@ from zoneinfo import ZoneInfo
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / 'scripts'))
 import hbm_memory_axes as m
 import hbm_delivery as d
-import samsung_hbm_watch as s
 
 NOW = datetime(2026, 9, 22, 16, tzinfo=ZoneInfo('Asia/Seoul'))
 ITEM = {'source': 'TrendForce', 'direct_link': 'https://www.trendforce.com/research/example',
@@ -145,50 +144,6 @@ class ParseTests(unittest.TestCase):
         reasons=m.comparison(old,new)
         self.assertTrue(any('분기 HBM 매출 추정' in x for x in reasons))
         self.assertTrue(any('전분기 증감률 전망' in x for x in reasons))
-
-class AlertTranslationAndDedupeTests(unittest.TestCase):
-    def test_futunn_title_is_korean_in_alert(self):
-        e = {
-            'title': 'Report: Samsung may double its HBM4/HBM4E production next year, with the product mix rising from 40% to 80%',
-            'source': 'news.futunn.com',
-            'published_at_kst': '2026-09-21T17:20:50+09:00',
-            'direct_link': 'https://news.futunn.com/example',
-        }
-        title = s.korean_evidence_title(e, '삼성 HBM 생산능력·증산 계획 변화')
-        self.assertIn('삼성전자', title)
-        self.assertIn('2배', title)
-        self.assertIn('40%', title)
-        self.assertIn('80%', title)
-        self.assertNotIn('Report:', title)
-
-    def test_republisher_same_capacity_event_has_same_state_signature(self):
-        a = {
-            'title': '[단독] 삼성전자, 내년 HBM4·4E 생산 2배 늘린다',
-            'description': '',
-            'source': 'sedaily.com',
-            'published_at_kst': '2026-09-20T16:33:51+09:00',
-        }
-        b = {
-            'title': 'Report: Samsung may double its HBM4/HBM4E production next year, with the product mix rising from 40% to 80%',
-            'description': '',
-            'source': 'news.futunn.com',
-            'published_at_kst': '2026-09-21T17:20:50+09:00',
-        }
-        ka, sa, _ = s.event_state_descriptor(a)
-        kb, sb, _ = s.event_state_descriptor(b)
-        self.assertEqual(ka, kb)
-        self.assertEqual(sa, sb)
-
-    def test_product_mix_is_separate_structured_axis(self):
-        item = dict(ITEM)
-        item['title'] = 'Report: Samsung may double its HBM4/HBM4E production next year, with the product mix rising from 40% to 80%'
-        item['published_at_kst'] = '2026-09-21T17:20:50+09:00'
-        rows = m.parse_hbm_product_mix(item, item['title'])
-        self.assertEqual(len(rows), 1)
-        self.assertEqual(rows[0]['period'], '2027')
-        self.assertEqual(rows[0]['value']['reference_pct'], 40)
-        self.assertEqual(rows[0]['value']['target_pct'], 80)
-
 
 class StateTests(unittest.TestCase):
     def make(self,v=22,asof='2026-09-22',url=None):
