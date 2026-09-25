@@ -15,6 +15,7 @@ except ModuleNotFoundError:
 
 _ORIGINAL_RENDER = watch.render
 _ORIGINAL_TOPIC_MATCH = watch.topic_match
+# 정책 상태 기반 중복 방지: 기사 발행일은 새 이벤트의 근거가 아니다.
 _HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
