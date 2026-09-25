@@ -45,15 +45,15 @@
   },
   "candidate_seen": [],
   "market": {
-    "year_end": 4.25,
-    "extra_bp": 37.5,
+    "year_end": 4.245,
+    "extra_bp": 37.000000000000014,
     "source": "https://www.frenzycap.com/fedwatch"
   },
   "divergence": {
     "ib_center": 4.125,
-    "market_year_end": 4.25,
-    "gap_bp": 12.5,
+    "market_year_end": 4.245,
+    "gap_bp": 12.00000000000001,
     "zone": "25bp 이내"
   },
-  "updated_at_utc": "2026-09-25T18:46:35.840456+00:00"
+  "updated_at_utc": "2026-09-25T22:34:58.422938+00:00"
 }
