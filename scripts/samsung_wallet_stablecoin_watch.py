@@ -233,8 +233,9 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
     stablecoin_bd_now = bool(official.get("job_stablecoin_confirmed")) or report_bd_scope
     stablecoin_bd_scope = stablecoin_bd_now or bool(previous.get("stablecoin_bd_scope"))
 
-    # Partner/pilot detection is allowed to move forward, but never backward simply
-    # because an article leaves the freshness window.
+    # Partner/pilot signals require explicit semantic binding to stablecoin.
+    # Mere co-occurrence (e.g. Galaxy Card launched with Visa in the same article)
+    # must not promote the stablecoin state.
     detected_partner = ""
     partner_patterns = [
         ("Circle", ("circle", "usdc")),
@@ -244,30 +245,43 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
         ("Visa", ("visa",)),
         ("Mastercard", ("mastercard",)),
     ]
-    stable_terms = ("stablecoin", "stable coin", "스테이블코인")
-    execution_terms = (
-        "pilot", "rollout", "live", "integration", "integrate",
-        "파일럿", "상용화", "통합", "제휴",
+    relation_terms = (
+        "partner", "partnership", "integrat", "support", "settlement",
+        "제휴", "파트너", "통합", "지원", "결제망",
     )
+    stable_expr = r"(?:stable[\s\-]?coin|스테이블코인)"
     for name, aliases in partner_patterns:
-        partner_hit = any(alias in evidence_text for alias in aliases)
-        if (
-            partner_hit
-            and any(term in evidence_text for term in stable_terms)
-            and any(term in evidence_text for term in execution_terms)
-        ):
-            detected_partner = name
+        for alias in aliases:
+            alias_expr = re.escape(alias)
+            forward = re.search(
+                rf"{stable_expr}.{{0,90}}(?:{'|'.join(re.escape(x) for x in relation_terms)}).{{0,70}}{alias_expr}",
+                evidence_text,
+                re.I,
+            )
+            reverse = re.search(
+                rf"{alias_expr}.{{0,70}}(?:{'|'.join(re.escape(x) for x in relation_terms)}).{{0,90}}{stable_expr}",
+                evidence_text,
+                re.I,
+            )
+            direct_asset = alias in {"usdc", "usdt", "pyusd"} and re.search(
+                rf"(?:samsung wallet|삼성월렛).{{0,120}}(?:support|integrat|지원|통합).{{0,80}}{alias_expr}",
+                evidence_text,
+                re.I,
+            )
+            if forward or reverse or direct_asset:
+                detected_partner = name
+                break
+        if detected_partner:
             break
+
     stablecoin_partner = detected_partner or str(previous.get("stablecoin_partner") or "")
 
-    detected_pilot = (
-        any(term in evidence_text for term in stable_terms)
-        and any(
-            term in evidence_text
-            for term in ("pilot", "rollout", "go live", "launched", "파일럿", "상용화", "출시")
-        )
-        and ("samsung wallet" in evidence_text or "삼성월렛" in evidence_text)
-    )
+    launch_patterns = [
+        rf"(?:samsung wallet|삼성월렛).{{0,120}}{stable_expr}.{{0,100}}(?:pilot|rollout|go live|launch(?:ed)?|파일럿|상용화|출시)",
+        rf"{stable_expr}.{{0,100}}(?:pilot|rollout|go live|launch(?:ed)?|파일럿|상용화|출시).{{0,120}}(?:samsung wallet|삼성월렛)",
+        rf"(?:pilot|rollout|go live|launch(?:ed)?|파일럿|상용화|출시).{{0,100}}{stable_expr}.{{0,120}}(?:samsung wallet|삼성월렛)",
+    ]
+    detected_pilot = any(re.search(pattern, evidence_text, re.I) for pattern in launch_patterns)
     pilot_or_launch = detected_pilot or bool(previous.get("pilot_or_launch"))
 
     reversal = bool(official.get("explicit_reversal_confirmed"))
