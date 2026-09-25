@@ -14,6 +14,7 @@ except ModuleNotFoundError:
 
 
 _ORIGINAL_RENDER = watch.render
+_ORIGINAL_TOPIC_MATCH = watch.topic_match
 _HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -24,8 +25,52 @@ _HEADERS = {
 
 
 def headline_match(title: str) -> bool:
+    """전기본 자체 언급은 모두 추적하고, 전원믹스 핵심어도 보조로 잡는다."""
     lower = watch.norm(title).lower()
-    return any(term in lower for term in watch.ENERGY_TERMS)
+    return _ORIGINAL_TOPIC_MATCH(title) or any(term in lower for term in watch.ENERGY_TERMS)
+
+
+def semantic_event_key(row: dict[str, Any]) -> str:
+    """기사 발행일이 아니라 같은 정책·사건의 상태를 기준으로 묶는다."""
+    title = watch.norm(str(row.get("title", ""))).lower()
+
+    if any(term in title for term in ("최종 확정", "최종안", "정부안", "의결")):
+        return "12th-plan|final"
+
+    if any(term in title for term in ("원전", "원자력")):
+        if any(term in title for term in ("공론화", "숙의", "시민참여단", "공론화위", "3개월")):
+            return "12th-plan|nuclear-deliberation"
+        if any(term in title for term in ("영덕", "기장", "부지 선정", "후보지")):
+            return "12th-plan|nuclear-site"
+        nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|기|%)?", title)
+        if nums:
+            signature = watch.digest("|".join(nums))[:12]
+            return f"12th-plan|nuclear-fact|{signature}"
+        cleaned = re.sub(r"[^0-9a-z가-힣]+", " ", title)
+        return f"12th-plan|nuclear|{watch.digest(' '.join(cleaned.split()))[:16]}"
+
+    if ("재생" in title or any(term in title for term in ("태양광", "해상풍력", "육상풍력", "풍력"))):
+        if any(term in title for term in ("220gw", "236gw", "155gw", "61gw", "5.6배", "6배", "15년 뒤")):
+            return "12th-plan|renewable-2040-capacity"
+        nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|%)?", title)
+        if nums:
+            return f"12th-plan|renewable-fact|{watch.digest('|'.join(nums))[:12]}"
+
+    if "전력수요" in title:
+        nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|twh|%)?", title)
+        suffix = watch.digest("|".join(nums))[:12] if nums else "general"
+        return f"12th-plan|demand|{suffix}"
+
+    if "공청회" in title:
+        return "12th-plan|hearing"
+    if any(term in title for term in ("총괄위원회", "분과회의")):
+        return "12th-plan|committee"
+    if any(term in title for term in ("정책토론회", "토론회")):
+        return "12th-plan|forum"
+
+    cleaned = re.sub(r"\s+-\s+[^-]{1,60}$", "", title)
+    cleaned = re.sub(r"[^0-9a-z가-힣]+", " ", cleaned)
+    return f"12th-plan|fact|{watch.digest(' '.join(cleaned.split()))[:16]}"
 
 
 def resolve_article_url(url: str) -> str:
@@ -209,6 +254,33 @@ def _investment_readthrough(row: dict[str, Any], body: str) -> list[str]:
     return lines
 
 
+def _interpret_nuclear_deliberation(body: str) -> list[str]:
+    lower = body.lower()
+    if not (_has_any(lower, "원전", "원자력") and _has_any(lower, "공론화", "숙의", "시민참여단")):
+        return []
+
+    lines = [
+        "<b>원문이 말하는 핵심</b>",
+        "• 정부가 제12차 전기본 확정 전에 <b>원전의 역할을 약 3개월간 공론화</b>하고, 시민참여단 숙의토론·공개토론회·온라인 의견수렴을 거쳐 결론을 전기본에 반영하는 절차",
+        "• 핵심은 ‘신규 원전 찬반 기사’가 아니라 <b>원전 공론화 절차가 공식 개시됐고 전기본 확정 일정이 뒤로 밀렸다는 정책 상태 변화</b>",
+    ]
+    if "11명" in lower:
+        lines.append("• 공론화위원회는 <b>위원장 포함 11명 이내</b>로 구성하고 원전 직접 이해관계자는 배제하는 방향")
+    if "12월" in lower and _has_any(lower, "권고", "권고안"):
+        lines.append("• 약 3개월 숙의 후 <b>12월 권고안</b> 도출을 목표로 하며, 공론화 결과와 전력수급·계통 검토를 종합해 전기본을 확정")
+    if "10월" in lower and _has_any(lower, "미뤄", "순연", "뒤로"):
+        lines.append("• 당초 10월로 예상됐던 제12차 전기본 정부안 일정은 <b>공론화 때문에 순연</b>")
+
+    if any(x in lower for x in ("82.9%", "79.2%", "86.5%", "86.8%")):
+        lines.extend([
+            "",
+            "<b>여론조사 숫자는 별도 구분</b>",
+            "• 기사에 인용된 신규 원전·계속운전·SMR 찬성 수치는 <b>정부 공론화의 새 결정값이 아니라 별도 국민인식 조사 결과</b>",
+            "• 따라서 같은 조사 수치가 며칠 뒤 다른 기사에 다시 인용돼도 정책 상태가 바뀐 것이 아니므로 재알림 사유로 보지 않음",
+        ])
+    return lines
+
+
 def _interpret_nuclear_coal_lng(body: str) -> list[str]:
     lower = body.lower()
     if not (_has_any(lower, "신규 원전", "원전을 더", "원전 확대") and "석탄" in lower):
@@ -286,7 +358,11 @@ def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
             f"원문 본문 직접 확인 실패 — 임의 해석 생략 ({html.escape(error or '접근 제한')})",
         ])
 
-    specialized = _interpret_nuclear_coal_lng(body) or _interpret_renewable(body)
+    specialized = (
+        _interpret_nuclear_deliberation(body)
+        or _interpret_nuclear_coal_lng(body)
+        or _interpret_renewable(body)
+    )
     lines = ["<b>원문 본문 해석</b>"]
     if specialized:
         lines.extend(specialized)
@@ -328,8 +404,8 @@ def render_with_linked_source(rows: list[dict[str, Any]]) -> str:
             body = body.replace(standalone_link, "", 1)
 
         explanation = interpret_article_body(row, article_body, fetch_error)
-        marker = f"\n<b>투자 의미</b>  {html.escape(watch.meaning(str(row.get('category', ''))))}"
-        replacement = f"\n{explanation}\n\n<b>투자 의미</b>  {html.escape(watch.meaning(str(row.get('category', ''))))}"
+        marker = "\n<b>투자 판단 포인트</b>"
+        replacement = f"\n{explanation}\n\n<b>투자 판단 포인트</b>"
         body = body.replace(marker, replacement, 1)
 
     return body
@@ -337,6 +413,7 @@ def render_with_linked_source(rows: list[dict[str, Any]]) -> str:
 
 def main() -> int:
     watch.topic_match = headline_match
+    watch.event_key = semantic_event_key
     watch.render = render_with_linked_source
     return watch.main()
 
