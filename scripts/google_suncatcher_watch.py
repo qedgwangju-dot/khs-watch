@@ -31,6 +31,8 @@ PENDING = OUT / "google_suncatcher_pending_state.json"
 STATUS = OUT / "google_suncatcher_status.md"
 ERRORS = OUT / "google_suncatcher_errors.log"
 
+PARSER_VERSION = 2
+
 HEADERS = {
     "User-Agent": "Mozilla/5.0 KHS-Google-Suncatcher-Watch/1.0",
     "Accept-Language": "en-US,en;q=0.9",
@@ -319,6 +321,7 @@ def main() -> int:
         news = old.get("news", [])
 
     first = not bool(old)
+    parser_reset = bool(old) and old.get("parser_version") != PARSER_VERSION
     old_sources = old.get("sources", {})
     changed_sources = []
     metric_changes = []
@@ -354,9 +357,16 @@ def main() -> int:
         if any(term in title_low for term in LAUNCH_TERMS + METRIC_TERMS):
             meaningful_news.append(item)
 
+    if parser_reset:
+        metric_changes = []
+        launch_changes = []
+        schedule_changed = False
+        meaningful_news = []
+
     should_alert = first or bool(metric_changes or launch_changes or schedule_changed or meaningful_news)
 
     state = {
+        "parser_version": PARSER_VERSION,
         "updated_at_utc": datetime.now(timezone.utc).isoformat(),
         "sources": sources,
         "schedule": schedule,
@@ -445,6 +455,7 @@ def main() -> int:
         "# 구글 선캐처 궤도 데이터센터 감시",
         "",
         f"- 최초 실행: {'예' if first else '아니오'}",
+        f"- 파서 기준선 재설정: {'예' if parser_reset else '아니오'}",
         f"- 발사·궤도 문구 변화: {', '.join(launch_changes) if launch_changes else '없음'}",
         f"- 실측 수치 변화: {', '.join(metric_changes) if metric_changes else '없음'}",
         f"- 발사 일정 변화: {'예' if schedule_changed else '아니오'}",
