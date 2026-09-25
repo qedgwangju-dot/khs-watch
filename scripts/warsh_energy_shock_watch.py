@@ -97,55 +97,32 @@ def yahoo_series(symbol):
 
 
 def brent_snapshot():
-    source='Yahoo Finance 브렌트 선물'; url=BRENT_PAGE
-    quality_note='정상'
-    live=False
-    try:
-        rows,meta=yahoo_series('BZ=F')
-        latest_row=rows[-1]
-        latest_date=latest_row['date']
-        latest=float(latest_row['close'])
-        meta_price=meta.get('regularMarketPrice')
-        try: meta_price=float(meta_price) if meta_price is not None else None
-        except Exception: meta_price=None
+    # 이 거시 경보는 장중 틱이 아니라 '완료된 일봉 종가'만 사용합니다.
+    # 현재 뉴욕 날짜의 BZ=F 일봉은 세션 진행 중 값일 수 있으므로 판정에서 제외합니다.
+    rows,meta=yahoo_series('BZ=F')
+    ny_today=datetime.now(ZoneInfo('America/New_York')).date().isoformat()
+    completed=[r for r in rows if r['date'] < ny_today]
+    if len(completed)<21:
+        raise RuntimeError('Brent completed-session history too short')
 
-        ny_today=datetime.now(ZoneInfo('America/New_York')).date().isoformat()
-        if latest_date == ny_today and meta_price is not None:
-            live=True
-            # Yahoo chart occasionally returns a stale/wrong current-day close.
-            # Cross-check it against the quote metadata before it can flip the regime.
-            gap=abs(latest/meta_price-1)*100 if meta_price else 0.0
-            if gap>=2.0:
-                latest=meta_price
-                quality_note=f'당일 일봉 종가값과 실시간 호가가 {gap:.1f}% 불일치해 실시간 호가로 교정'
-            else:
-                latest=meta_price
-                quality_note='당일 진행 중 일봉은 실시간 호가로 통일'
+    latest_row=completed[-1]
+    latest_date=latest_row['date']
+    latest=float(latest_row['close'])
+    d20=(latest/float(completed[-21]['close'])-1)*100
+    last3=[float(x['close']) for x in completed[-3:]]
 
-        # Sanity check against current-day candle range when available.
-        lo=latest_row.get('low'); hi=latest_row.get('high')
-        if live and lo is not None and hi is not None and not (float(lo)*0.995 <= latest <= float(hi)*1.005):
-            raise RuntimeError(f'Brent live quote/candle mismatch: price={latest} range={lo}-{hi}')
+    # 완료 일봉 내부 일관성 검사. 종가가 고가/저가 범위를 벗어나면 사용하지 않습니다.
+    lo=latest_row.get('low'); hi=latest_row.get('high')
+    if lo is not None and hi is not None and not (float(lo)*0.999 <= latest <= float(hi)*1.001):
+        raise RuntimeError(f'Brent completed close outside candle range: close={latest} range={lo}-{hi}')
 
-        history=[float(x['close']) for x in rows[:-1]] if live else [float(x['close']) for x in rows]
-        if live:
-            if len(history)<20:raise RuntimeError('Brent completed history too short')
-            d20=(latest/history[-20]-1)*100
-            last3=history[-2:]+[latest]
-        else:
-            d20=(latest/float(rows[-21]['close'])-1)*100
-            last3=[float(x['close']) for x in rows[-3:]]
-    except Exception as exc:
-        fred=fred_series('DCOILBRENTEU')
-        latest_date,latest=fred[-1]
-        d20=(latest/fred[-21][1]-1)*100
-        last3=[x[1] for x in fred[-3:]]
-        source='EIA 원자료 반영 FRED 브렌트 현물'; url=FRED_BRENT
-        quality_note=f'Yahoo 검증 실패 → FRED 현물로 대체: {type(exc).__name__}'
-        live=False
     active=(all(x>=BRENT_LEVEL for x in last3) or d20>=BRENT_20D_PCT)
-    return {'date':latest_date,'value':latest,'d20_pct':d20,'last3':last3,'active':active,'source':source,'url':url,'live':live,'quality_note':quality_note}
-
+    return {
+        'date':latest_date,'value':latest,'d20_pct':d20,'last3':last3,'active':active,
+        'source':'Yahoo Finance 브렌트 선물 완료 일봉','url':BRENT_PAGE,
+        'live':False,'quality_note':'현재 진행 중 일봉 제외 · 최근 완료 거래일 종가 기준',
+        'measurement_basis':'최근 완료 거래일 종가'
+    }
 
 def macro_snapshot():
     pce=load_json(PCE_STATE); cred=load_json(CRED_STATE); credit=load_json(CREDIT_STATE)
@@ -211,8 +188,8 @@ def message(br,ma,v):
         f"기준: {br['date']}", '',
         '<b>핵심 판정</b>', f"• <b>{html.escape(v)}</b>", '',
         '<b>현재 숫자</b>',
-        f"• 브렌트유: {br['value']:.2f}달러/배럴{' · 장중 실시간' if br.get('live') else ''} · 최근 20거래일{'(현재값 포함)' if br.get('live') else ''} {br['d20_pct']:+.1f}%",
-        f"• 가격 검증: {html.escape(br.get('quality_note') or '정상')}",
+        f"• 브렌트유: {br['value']:.2f}달러/배럴 · 최근 20거래일 {br['d20_pct']:+.1f}%",
+        f"• 기준시점: {html.escape(br.get('measurement_basis') or '최근 완료 거래일 종가')} · {html.escape(br.get('quality_note') or '정상')}",
         f"• 근원 PCE 추세: 3개월 연율 {pce3} · 6개월 연율 {pce6}",
         f"• 5년 기대인플레이션: {ma['bei5y']:.2f}% · 최근 10거래일 {bei}",
         f"• 실질 개인소비: 최근 3개월 연율 {real}",
@@ -229,21 +206,51 @@ def message(br,ma,v):
 
 
 def main():
-    old=load_json(STATE_PATH); br=brent_snapshot(); ma=macro_snapshot(); v=verdict(br,ma)
-    new={'schema_version':2,'brent':br,'macro':ma,'verdict':v}; first=not bool(old)
+    old=load_json(STATE_PATH)
+    try:
+        br=brent_snapshot()
+    except Exception as exc:
+        # 선물 원자료 검증 실패 시 현물 등 다른 상품으로 치환해 판정하지 않습니다.
+        print(json.dumps({
+            'first_run':not bool(old),'sent':False,'data_valid':False,
+            'error':f'{type(exc).__name__}: {exc}',
+            'rule':'브렌트 선물 완료종가 확인 실패 → 기존 상태 유지·알림 금지'
+        },ensure_ascii=False))
+        return
+
+    ma=macro_snapshot(); v=verdict(br,ma)
+    new={'schema_version':3,'brent':br,'macro':ma,'verdict':v}; first=not bool(old)
     changed=(old.get('brent',{}).get('active') not in (None,br['active']) or old.get('verdict') not in (None,v))
+
     correction=False
     old_br=(old.get('brent') or {})
-    if old and int(old.get('schema_version') or 1)<2:
+    if old and int(old.get('schema_version') or 1)<3:
         ov=old_br.get('value')
-        if isinstance(ov,(int,float)) and abs(float(ov)-float(br['value']))>=3.0:
+        old_basis=old_br.get('measurement_basis')
+        if old_basis!='최근 완료 거래일 종가' or (isinstance(ov,(int,float)) and abs(float(ov)-float(br['value']))>=2.0):
             correction=True
+
     if FORCE_NOTIFY or correction or (not first and changed):
         if correction:
-            send('<b>[정정 · Warsh 에너지 공급충격]</b>\n직전 브렌트유 값이 Yahoo 당일 일봉 데이터 불일치로 잘못 들어간 것을 확인했습니다. 현재 호가와 일봉을 재검증해 판정을 다시 계산합니다.\n\n'+message(br,ma,v))
+            oldv=old_br.get('value')
+            oldtxt=f'{float(oldv):.2f}달러' if isinstance(oldv,(int,float)) else '이전값'
+            correction_head='\n'.join([
+                '<b>[최종 정정 · Warsh 에너지 공급충격]</b>',
+                f'• 직전 {oldtxt} 값은 동일한 브렌트 선물의 완료 종가 기준이 아니어서 폐기합니다.',
+                f"• 재검증 기준: {br['date']} 브렌트 선물 완료 종가 {br['value']:.2f}달러",
+                '• 앞으로 이 거시 경보는 현재 진행 중 일봉·현물가격으로 대체하지 않고 브렌트 선물의 완료된 거래일 종가만 사용합니다.',
+                ''
+            ])
+            send(correction_head+message(br,ma,v))
         else:
             send(message(br,ma,v))
+
     save_json(STATE_PATH,new)
-    print(json.dumps({'first_run':first,'active':br['active'],'brent':br['value'],'d20_pct':br['d20_pct'],'verdict':v},ensure_ascii=False))
+    print(json.dumps({
+        'first_run':first,'sent':bool(FORCE_NOTIFY or correction or (not first and changed)),
+        'data_valid':True,'date':br['date'],'active':br['active'],'brent':br['value'],
+        'd20_pct':br['d20_pct'],'verdict':v,'basis':br.get('measurement_basis'),
+        'correction':correction
+    },ensure_ascii=False))
 
 if __name__=='__main__':main()
