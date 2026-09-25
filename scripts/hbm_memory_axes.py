@@ -685,7 +685,10 @@ def render(change, rate=None):
         if r['value'].get('weight_rounded_from_public_text'):
             lines.append('• 중량은 공개 보도 반올림값이면 중량당 단가를 정밀 계산하지 않습니다. 관세청 직접 원값 확인 시 갱신합니다.')
     label = {'official': '회사 공식자료', 'research': '조사기관 자료', 'reported': '보도 단계', 'user_capture': '사용자 캡처 기준선'}[r['evidence']]
-    lines += [f'• 근거 단계: {label}', '• 근거 제목: ' + html.escape(r['source_title']) +
+    source_title = r.get('source_title','')
+    if not re.search(r'[가-힣]', source_title):
+        source_title = names.get(r['axis'], 'HBM 상태 변화') + ' 관련 보도'
+    lines += [f'• 근거 단계: {label}', '• 근거 제목(한국어): ' + html.escape(source_title) +
               ' · <a href="' + html.escape(r['source_url'], quote=True) + '">원문</a>']
     return '\n'.join(lines)
 
