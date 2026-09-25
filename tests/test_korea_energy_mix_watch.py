@@ -15,7 +15,7 @@ from scripts.korea_energy_mix_watch import (
     render,
     topic_match,
 )
-from scripts.korea_energy_mix_watch_runner import interpret_article_body
+from scripts.korea_energy_mix_watch_runner import interpret_article_body, semantic_event_key
 
 
 def test_topic_match_all_power_plan_mentions():
@@ -162,3 +162,39 @@ def test_generic_article_sentence_parser_handles_korean_and_ascii_boundaries():
     assert "전력시장" in result
     assert "계통 투자" in result
     assert "임의로 추가하지 않음" in result
+
+
+def test_nuclear_deliberation_is_one_policy_event_across_article_dates():
+    official = {
+        "title": "미래 전력수급에서 원전의 역할, 국민과 함께 논의한다",
+        "publisher": "기후에너지환경부",
+        "official": True,
+        "published": "Tue, 22 Sep 2026 04:00:00 GMT",
+    }
+    followup = {
+        "title": "국민 10명 중 8명 신규 원전 필요하다는데…정부는 ‘3개월 숙의’ 돌입[Pick코노미] - 서울경제",
+        "publisher": "서울경제",
+        "official": False,
+        "published": "Fri, 25 Sep 2026 03:00:00 GMT",
+    }
+    # 공식 9/22 계획과 9/25 후속 기사는 '원전 공론화'라는 같은 정책 사건이다.
+    # 후속 기사 날짜가 달라졌다는 이유만으로 새 알림이 되면 안 된다.
+    assert semantic_event_key(followup) == "12th-plan|nuclear-deliberation"
+
+
+def test_nuclear_deliberation_interpretation_separates_poll_from_policy_change():
+    article_body = """
+    정부는 원전의 역할을 두고 약 3개월간 공론화를 진행한다.
+    시민참여단 숙의토론과 공개토론회, 온라인 의견수렴을 병행하고 12월 권고안을 도출한다.
+    당초 10월로 예상됐던 제12차 전력수급기본계획 정부안 일정은 뒤로 미뤄진다.
+    별도 국민인식 조사에서는 신규 원전 반영 필요 82.9%, 신규 원전 건설 필요 79.2%, 계속운전 필요 86.5%, SMR 필요 86.8%로 조사됐다.
+    """
+    result = interpret_article_body(
+        {"title": "국민 10명 중 8명 신규 원전 필요…정부 3개월 숙의"},
+        article_body,
+        "",
+    )
+    assert "약 3개월간 공론화" in result
+    assert "10월" in result
+    assert "여론조사 숫자는 별도 구분" in result
+    assert "재알림 사유로 보지 않음" in result
