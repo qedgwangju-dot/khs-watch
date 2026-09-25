@@ -354,7 +354,7 @@ def htmlify(text: str) -> str:
             out.append(f"<b>{escaped}</b>")
         elif stripped in {"한눈에 보기", "최신성"} or DISPLAY_SECTION_RE.match(stripped):
             out.append(f"<b>{escaped}</b>")
-        elif line.startswith(("판정 │", "조회 │", "핵심 숫자 │")) and "│" in line:
+        elif line.startswith(("판정 │", "조회 │", "핵심 숫자 │", "현재 방향 │", "방향 근거 │")) and "│" in line:
             label, value = line.split("│", 1)
             out.append(f"<b>{html.escape(label.strip(), quote=False)}</b> │{html.escape(value, quote=False)}")
         else:
