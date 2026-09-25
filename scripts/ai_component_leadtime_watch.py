@@ -621,16 +621,29 @@ def build_alert(
 ) -> str:
     signals = signals or {}
     changed_signals = changed_signals or []
-    lines = ["<b>🚨 AI 부품 리드타임 감시 — 변화 감지</b>", "", "<b>무엇이 달라졌나</b>"]
+    ranked = bottleneck_ranking(new or old)
+    strongest = ranked[0] if ranked else None
+    direction, worse_count, better_count = supply_direction(old, new)
+    focus = focus_components(changed, changed_signals, new or old, limit=4)
+
+    lines = [
+        "<b>🚨 AI 부품 리드타임 감시 — 변화 감지</b>",
+        "",
+        "<b>핵심 변화</b>",
+        f"• <b>현재 방향:</b> {html.escape(direction)}"
+        + (f" — 악화 {worse_count}개 / 완화 {better_count}개" if (worse_count or better_count) else ""),
+    ]
 
     if evidence is not None:
-        missing_status = [name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
-                          if "status" not in (evidence.get(name) or set())]
+        missing_status = [
+            name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
+            if "status" not in (evidence.get(name) or set())
+        ]
         if missing_status:
             lines.append(
                 "• ⚠️ 이번 주 공식 공개본문에서 상태를 직접 판독하지 못한 품목: "
                 + ", ".join(html.escape(x) for x in missing_status)
-                + ". 해당 상태는 직전 확정값을 유지하며 새 상태로 추정하지 않습니다."
+                + ". 직전 확정값을 유지하며 새 상태로 추정하지 않습니다."
             )
 
     biggest = biggest_current_change(old, new)
@@ -638,9 +651,9 @@ def build_alert(
         name, delta = biggest
         before = old.get(name) or {}
         after = new.get(name) or {}
-        direction = "상승" if delta > 0 else "하락"
+        change_dir = "상승" if delta > 0 else "하락"
         summary = (
-            f"• <b>가장 큰 수치 변화:</b> {html.escape(name)} 리드타임 {direction} — "
+            f"• <b>가장 큰 수치 변화:</b> {html.escape(name)} 리드타임 {change_dir} — "
             f"{html.escape(fmt_week(before.get('current')))} → {html.escape(fmt_week(after.get('current')))}"
         )
         if str(before.get("balanced") or "") != str(after.get("balanced") or ""):
@@ -654,9 +667,18 @@ def build_alert(
             summary += f", 상태 {html.escape(fmt_status(before))} → {html.escape(fmt_status(after))}"
         lines.append(summary)
 
+    if strongest:
+        ratio, name, entry = strongest
+        lines.append(
+            f"• <b>가장 강한 병목:</b> {html.escape(name)} — "
+            f"현재 {html.escape(fmt_week(entry.get('current')))} / "
+            f"균형 {html.escape(fmt_week(entry.get('balanced')))} / "
+            f"{html.escape(fmt_status(entry))} / 균형 대비 약 {ratio:.1f}배"
+        )
+
     if signal_only:
-        lines.append("• TrendForce의 새 Weekly Radar를 감지했습니다.")
-        lines.append("• 새 표의 숫자 자동 판독이 불완전해 직전 확정값을 임의로 바꾸지 않았습니다.")
+        lines.append("• TrendForce의 새 Weekly Radar를 감지했지만 일부 숫자 판독이 불완전합니다.")
+        lines.append("• 확인되지 않은 값은 새 숫자로 만들지 않고 직전 확정값을 유지합니다.")
     elif changed:
         for name in changed:
             lines.append(
@@ -664,15 +686,13 @@ def build_alert(
                 f"{html.escape(fmt_change(old.get(name) or {}, new.get(name) or {}))}"
             )
 
-    if signals:
-        lines += ["", "<b>이번 주 새 원인·병목 신호</b>"]
-        preferred = ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
-        shown = changed_signals if changed_signals else [name for name in preferred if name in signals]
-        for name in shown:
-            if name in signals:
-                lines.append(f"• <b>{html.escape(name)}</b>: {html.escape(signals[name])}")
+    lines += ["", "<b>수익구조</b>"]
+    for name in focus:
+        path = REVENUE_PATHS.get(name)
+        if path:
+            lines.append(f"• <b>{html.escape(name)}</b>: {html.escape(path)}")
 
-    lines += ["", "<b>현재 6개 품목 상태</b>"]
+    lines += ["", "<b>1단계 현재 숫자 추적</b>"]
     order = ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
     for name in order:
         entry = new.get(name) or old.get(name) or {}
@@ -680,45 +700,98 @@ def build_alert(
         current_text = fmt_week(entry.get("current")) + evidence_note(name, evidence, "current")
         balanced_text = fmt_week(entry.get("balanced")) + evidence_note(name, evidence, "balanced")
         status_text = fmt_status(entry) + evidence_note(name, evidence, "status")
+        ratio = ratio_value(str(entry.get("current") or ""), str(entry.get("balanced") or ""))
+        ratio_text = f"{ratio:.1f}배" if ratio is not None else "확인 불가"
         lines.append(
             f"• <b>{html.escape(name)}</b> | "
             f"현재 {html.escape(current_text)} | "
             f"균형 {html.escape(balanced_text)} | "
+            f"격차 {html.escape(ratio_text)} | "
             f"상태 {html.escape(status_text)} | "
             f"전주 대비 {html.escape(change)}"
         )
 
-    ranked = []
-    for name, entry in (new or old).items():
-        ratio = ratio_value(str(entry.get("current") or ""), str(entry.get("balanced") or ""))
-        if ratio is not None:
-            ranked.append((ratio, name, entry))
-    ranked.sort(reverse=True)
+    lines += ["", "<b>2단계 미래 재평가 요인 발굴</b>"]
+    if signals:
+        preferred = ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
+        shown = changed_signals if changed_signals else [name for name in preferred if name in signals]
+        shown = [name for name in shown if name in signals]
+        if not shown:
+            shown = [name for name in focus if name in signals]
+        for name in shown[:6]:
+            lines.append(f"• <b>{html.escape(name)}</b>: {html.escape(signals[name])}")
+    else:
+        lines.append("• 이번 주 원인·시간표의 새로운 확인사항은 없습니다.")
 
-    lines += ["", "<b>현재 판정</b>"]
-    if ranked:
-        ratio, name, entry = ranked[0]
+    lines += ["", "<b>관련 기업 지도</b>"]
+    lines.append("• 아래는 제품 노출 기준 관찰 대상이며, 이번 알림에서 신규 계약·수주가 확정됐다는 뜻은 아닙니다.")
+    for name in focus:
+        watch = COMPANY_WATCH.get(name)
+        if watch:
+            lines.append(f"• <b>{html.escape(name)}</b>: {html.escape(watch)}")
+
+    lines += ["", "<b>공정 병목 후보</b>"]
+    for name in focus[:3]:
+        failure, indicator, risk_window = FAILURE_MODES.get(
+            name, ("공급능력·수율·고객 채택 지연", "리드타임·가격·가동률", "6~12개월")
+        )
         lines.append(
-            f"• 가장 강한 병목: <b>{html.escape(name)}</b> — "
-            f"{html.escape(fmt_entry(entry))}, 균형 대비 약 {ratio:.1f}배"
+            f"• <b>{html.escape(name)}</b> | 실패 경로: {html.escape(failure)} | "
+            f"먼저 볼 지표: {html.escape(indicator)} | 위험 구간: {html.escape(risk_window)}"
+        )
+
+    lines += ["", "<b>숨은 역풍·실패모드</b>"]
+    if strongest:
+        ratio, name, _ = strongest
+        failure, indicator, risk_window = FAILURE_MODES.get(
+            name, ("공급능력·수율·고객 채택 지연", "리드타임·가격·가동률", "6~12개월")
+        )
+        lines.append(
+            f"• 가장 현실적인 실패 경로: <b>{html.escape(name)}</b> — {html.escape(failure)}"
+        )
+        lines.append(
+            f"• 조기경보: {html.escape(indicator)} / 위험 구간 {html.escape(risk_window)}"
+        )
+        lines.append(
+            "• 리드타임이 짧아져도 가격·신규수주·가동률이 유지되면 증설 효과이고, "
+            "이 지표들이 함께 꺾이면 공급 부족 프리미엄 약화로 봅니다."
+        )
+
+    lines += ["", "<b>결론</b>"]
+    if strongest:
+        ratio, name, _ = strongest
+        lines.append(
+            f"• 현재 병목 중심은 <b>{html.escape(name)}</b>이며 균형 대비 약 {ratio:.1f}배입니다. "
+            f"{html.escape(direction)} 여부는 다음 주 리드타임과 가격·수주·가동률을 함께 봐야 합니다."
         )
     else:
-        lines.append("• 새 업데이트 자체는 확인했지만 수치 비교는 확인 불가입니다.")
+        lines.append("• 현재 공개자료만으로 병목 강도를 정량 순위화하기 어렵습니다.")
+
+    lines += ["", "<b>핵심 한 줄 요약</b>"]
+    if strongest:
+        ratio, name, entry = strongest
+        summary_signal = signals.get(name) or "공급능력·수요 변화"
+        lines.append(
+            f"• {html.escape(name)} 현재 {html.escape(fmt_week(entry.get('current')))} "
+            f"vs 균형 {html.escape(fmt_week(entry.get('balanced')))}(약 {ratio:.1f}배) → "
+            f"{html.escape(summary_signal)}가 핵심 원인·재평가 조건이며, "
+            f"다음 확인은 리드타임·가격·신규수주·가동률입니다."
+        )
 
     lines += [
         "",
         "<b>추적 기준</b>",
-        "• 현재 리드타임, 균형 리드타임, 공급 상태와 원인·병목 신호를 직전 주와 1:1 비교합니다.",
-        "• 숫자가 그대로여도 RDIMM 수요, eSSD 생산능력 재배분, Rubin 사양 조정처럼 원인이 바뀌면 알림합니다.",
-        "• 새 Weekly Radar인데 숫자 또는 원인 문구 판독이 불완전하면 임의 추정하지 않고 별도 경고합니다.",
+        "• 현재 리드타임·균형 리드타임·공급 상태·원인·시간표를 직전 주와 1:1 비교합니다.",
+        "• 숫자가 같아도 RDIMM 수요, eSSD 생산능력 재배분, Rubin 사양 조정처럼 원인이 바뀌면 알림합니다.",
+        "• 같은 주차 재파싱으로 상태를 덮어쓰지 않고, 새 Weekly Radar에서만 기준값을 승격합니다.",
+        "• 확인이 불완전하면 추정값을 보내지 않고 '직전 확정값 유지·이번 주 직접 판독 미확인'으로 표시합니다.",
     ]
     if published:
         lines.append(f"• 공개시각: {html.escape(published)}")
     if source_url:
         safe_url = html.escape(source_url, quote=True)
-        lines.append(f'• <a href="{safe_url}">원문</a>')
+        lines.append(f'• <a href="{safe_url}">TrendForce 원문</a>')
     return "\n".join(lines).strip() + "\n"
-
 
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
