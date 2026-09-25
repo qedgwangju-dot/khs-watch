@@ -633,7 +633,15 @@ def parse_foundry_hbm_records(item, body):
 
         # 4nm expansion status.
         if re.search(r'증설|생산능력\s*확대|capacity\s*expansion|expand', text, re.I):
-            stage = _foundry_stage(text) or 'mentioned'
+            stage = 'mentioned'
+            if re.search(r'(?:4\s*나노|4nm)[^.]{0,160}?(?:증설|생산능력\s*확대)[^.]{0,80}?(?:검토|review|consider)', text, re.I) or re.search(r'(?:증설|생산능력\s*확대)[^.]{0,80}?(?:검토|review|consider)[^.]{0,120}?(?:4\s*나노|4nm)', text, re.I):
+                stage = 'review'
+            elif re.search(r'(?:4\s*나노|4nm)[^.]{0,160}?(?:증설\s*확정|투자\s*확정|approved|confirmed)', text, re.I):
+                stage = 'confirmed'
+            elif re.search(r'(?:4\s*나노|4nm)[^.]{0,160}?장비\s*발주', text, re.I):
+                stage = 'equipment_order'
+            elif re.search(r'(?:4\s*나노|4nm)[^.]{0,160}?장비\s*반입', text, re.I):
+                stage = 'move_in'
             rows.append(make_record(
                 'foundry_node_expansion', ['samsung','4nm','HBM4_base_die'],
                 {'stage': stage}, 'stage', 'current', item,
@@ -642,7 +650,7 @@ def parse_foundry_hbm_records(item, body):
 
         # Price increases are a separate state from physical capacity.
         new_order_up = bool(re.search(r'(?:4\s*나노|4nm)[^.]{0,100}?(?:신규\s*수주|new\s*orders?)[^.]{0,80}?(?:가격\s*인상|price\s*(?:increase|hike))', text, re.I))
-        base_die_up = bool(re.search(r'(?:베이스\s*다이|base\s*die)[^.]{0,80}?(?:가격\s*인상|price\s*(?:increase|hike))', text, re.I))
+        base_die_up = bool(re.search(r'(?:베이스\s*다이|base\s*die)[^.]{0,80}?(?:가격\s*(?:인상|상향)|가격[^.]{0,20}?(?:올린|올렸다)|price\s*(?:increase|hike))', text, re.I))
         pct = None
         pm = re.search(r'(?:가격\s*인상|price\s*(?:increase|hike))[^%]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*%', text, re.I)
         if pm:
@@ -660,7 +668,15 @@ def parse_foundry_hbm_records(item, body):
     if re.search(r'HBM5', text, re.I) and re.search(r'(?:2\s*나노|2nm)', text, re.I):
         investment_stage = ''
         if re.search(r'신규\s*생산라인|생산라인\s*(?:구축|투자)|new\s*production\s*line|new\s*line', text, re.I):
-            investment_stage = _foundry_stage(text) or 'mentioned'
+            investment_stage = 'mentioned'
+            if re.search(r'(?:HBM5|2\s*나노|2nm)[^.]{0,180}?(?:신규\s*생산라인|생산라인)[^.]{0,80}?(?:검토|review|consider)', text, re.I) or re.search(r'(?:신규\s*생산라인|생산라인)[^.]{0,80}?(?:검토|review|consider)[^.]{0,120}?(?:HBM5|2\s*나노|2nm)', text, re.I):
+                investment_stage = 'review'
+            elif re.search(r'(?:HBM5|2\s*나노|2nm)[^.]{0,180}?(?:신규\s*생산라인|생산라인)[^.]{0,80}?(?:확정|approved|confirmed)', text, re.I):
+                investment_stage = 'confirmed'
+            elif re.search(r'(?:HBM5|2\s*나노|2nm)[^.]{0,180}?장비\s*발주', text, re.I):
+                investment_stage = 'equipment_order'
+            elif re.search(r'(?:HBM5|2\s*나노|2nm)[^.]{0,180}?장비\s*반입', text, re.I):
+                investment_stage = 'move_in'
         speed = None
         sm = re.search(r'(?:동작\s*속도|speed)[^%]{0,50}?([0-9]+(?:\.[0-9]+)?)\s*%\s*(?:이상\s*)?(?:향상|increase|faster)', text, re.I)
         if not sm:
