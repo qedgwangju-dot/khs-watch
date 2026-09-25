@@ -8,7 +8,7 @@ import yen_carry_telegram_compact as compact
 
 
 class YenCarryTelegramCompactTests(unittest.TestCase):
-    def test_compacts_long_alert_and_shows_true_cftc_net_direction(self):
+    def test_compacts_long_alert_and_makes_direction_obvious(self):
         body = """조회 시각: 2026-09-25 10:50:04 KST
 
 판정
@@ -45,22 +45,37 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             body_path = out / "yen_carry_composite_alert.md"
             detail_path = out / "yen_carry_composite_alert_detail.md"
             payload_path = out / "yen_carry_composite_alert.json"
+            title_path = out / "yen_carry_composite_alert_title.txt"
             body_path.write_text(body, encoding="utf-8")
             payload_path.write_text(json.dumps(payload), encoding="utf-8")
+            title_path.write_text("🟡 엔캐리 복합 수급 알림\n", encoding="utf-8")
 
-            with mock.patch.object(compact, "OUT", out),                  mock.patch.object(compact, "BODY", body_path),                  mock.patch.object(compact, "DETAIL", detail_path),                  mock.patch.object(compact, "PAYLOAD", payload_path):
+            with (
+                mock.patch.object(compact, "OUT", out),
+                mock.patch.object(compact, "BODY", body_path),
+                mock.patch.object(compact, "DETAIL", detail_path),
+                mock.patch.object(compact, "PAYLOAD", payload_path),
+                mock.patch.object(compact, "TITLE", title_path),
+            ):
                 self.assertEqual(compact.main(), 0)
 
             result = body_path.read_text(encoding="utf-8")
-            self.assertIn("판정", result)
-            self.assertIn("핵심 숫자", result)
-            self.assertIn("다음 경보", result)
+            title = title_path.read_text(encoding="utf-8")
+            self.assertIn("🟡 엔캐리 | ↗ 재구축 우세", title)
+            self.assertIn("▶ 현재 방향 │ ↗ 엔화 약세·캐리 재구축 우세", result)
+            self.assertIn("▶ 청산 위험 │ 🟡 구조적 취약성·경계", result)
+            self.assertIn("▶ 시장 영향 │ 🟢 위험자산 수급 단기 우호", result)
+            self.assertIn("핵심 근거", result)
+            self.assertIn("반전 조건", result)
             self.assertIn("USD/JPY 158.68", result)
-            self.assertIn("JGB 10년 3.073% → 3% 구조적 경계", result)
+            self.assertIn("미·일 2년 금리차 +4.7bp 확대 → 캐리 유지·재구축 쪽", result)
+            self.assertIn("JGB 10년 3.073% → 🟡 구조적 경계, 자동 청산선 아님", result)
             self.assertIn("해외중장기채 2주 +1.19조엔", result)
+            self.assertIn("순매수·본국회귀 압력 약함", result)
+            self.assertIn("FX 변동성 낮음·안정 → 강제청산 신호 약함", result)
             self.assertIn("엔화 순롱 +23,170계약", result)
             self.assertNotIn("CFTC 레버리지 엔화 순숏: 0계약", result)
-            self.assertLess(len(result), len(body) + 700)
+            self.assertLess(len(result), len(body) + 500)
             self.assertEqual(detail_path.read_text(encoding="utf-8").strip(), body.strip())
 
 
