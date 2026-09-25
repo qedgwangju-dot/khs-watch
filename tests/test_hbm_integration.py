@@ -145,6 +145,40 @@ class ParseTests(unittest.TestCase):
         self.assertTrue(any('분기 HBM 매출 추정' in x for x in reasons))
         self.assertTrue(any('전분기 증감률 전망' in x for x in reasons))
 
+    def test_postprocess_tsmc_capex_and_tester_shortage(self):
+        item = dict(ITEM)
+        item['title'] = 'TSMC 2Q26 call'
+        item['source'] = 'TSMC'
+        item['direct_link'] = 'https://investor.tsmc.com/example'
+        body = (
+            'TSMC raised 2026 CapEx to $60 billion to $64 billion. '
+            'Advanced packaging, testing, mask-making and others remain 10 to 20%. '
+            'Some customer products need more tester and the tester is in shortage.'
+        )
+        rows = m.parse_postprocess_records(item, body)
+        r = [x for x in rows if x['axis'] == 'postprocess_capex'][0]
+        self.assertEqual(r['value']['total_capex_usd_min'], 60000000000)
+        self.assertEqual(r['value']['total_capex_usd_max'], 64000000000)
+        self.assertEqual(r['value']['backend_alloc_pct_min'], 10)
+        self.assertTrue(r['value']['tester_shortage'])
+
+    def test_postprocess_equipment_order(self):
+        item = dict(ITEM)
+        body = '디지털 프론티어는 SK하이닉스로부터 올해 총 3건, 2,321억원 규모의 HBM4 Wafer Tester 계약을 체결했다.'
+        rows = m.parse_postprocess_records(item, body)
+        r = [x for x in rows if x['axis'] == 'postprocess_order'][0]
+        self.assertEqual(r['value']['amount_krw'], 232100000000)
+        self.assertEqual(r['value']['contract_count'], 3)
+        self.assertIn('hbm4_wafer_tester', r['key'])
+
+    def test_postprocess_validation_stage(self):
+        item = dict(ITEM)
+        body = '인텍플러스는 대만 OSAT CoWoS 생산라인 시범 장비의 품질 검증을 통과해 정식 계약을 앞두고 있다.'
+        rows = m.parse_postprocess_records(item, body)
+        r = [x for x in rows if x['axis'] == 'postprocess_stage'][0]
+        self.assertEqual(r['value']['stage'], 'po_pending')
+        self.assertIn('intekplus|taiwan_osat|cowos', r['key'])
+
 class StateTests(unittest.TestCase):
     def make(self,v=22,asof='2026-09-22',url=None):
         item=dict(ITEM)
