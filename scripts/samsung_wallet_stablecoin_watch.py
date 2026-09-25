@@ -277,9 +277,10 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
     stablecoin_partner = detected_partner or str(previous.get("stablecoin_partner") or "")
 
     launch_patterns = [
-        rf"(?:samsung wallet|삼성월렛).{{0,120}}{stable_expr}.{{0,100}}(?:pilot|rollout|go live|launch(?:ed)?|파일럿|상용화|출시)",
-        rf"{stable_expr}.{{0,100}}(?:pilot|rollout|go live|launch(?:ed)?|파일럿|상용화|출시).{{0,120}}(?:samsung wallet|삼성월렛)",
-        rf"(?:pilot|rollout|go live|launch(?:ed)?|파일럿|상용화|출시).{{0,100}}{stable_expr}.{{0,120}}(?:samsung wallet|삼성월렛)",
+        rf"(?:samsung wallet|삼성월렛).{{0,80}}{stable_expr}\s*(?:payment|payments|결제)?\s*(?:pilot|rollout|goes? live|launch(?:es|ed)?|파일럿|상용화|출시)",
+        rf"(?:samsung wallet|삼성월렛).{{0,80}}(?:launch(?:es|ed)?|rollout|pilot|goes? live|출시|상용화|파일럿)\s*.{{0,25}}{stable_expr}",
+        rf"{stable_expr}\s*(?:payment|payments|결제)?\s*(?:pilot|rollout|goes? live|launch(?:es|ed)?|파일럿|상용화|출시).{{0,80}}(?:samsung wallet|삼성월렛)",
+        rf"(?:pilot|rollout|goes? live|launch(?:es|ed)?|파일럿|상용화|출시)\s*.{{0,25}}{stable_expr}.{{0,80}}(?:samsung wallet|삼성월렛)",
     ]
     detected_pilot = any(re.search(pattern, evidence_text, re.I) for pattern in launch_patterns)
     pilot_or_launch = detected_pilot or bool(previous.get("pilot_or_launch"))
