@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-25T22:58:04+09:00",
+  "updated_at_kst": "2026-09-25T23:30:30+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -82,12 +82,14 @@
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1368.6,
-    "date": "2026-09-24 일일 기준 · ECB/Frankfurter · 조회 2026-09-25 22:58 KST · 보조 API 2026-09-25 · 차이 0.00% · 일중 기준시각 차이 가능",
-    "source": "ECB/Frankfurter",
-    "error": ""
+    "rate": null,
+    "date": "",
+    "source": "환율 API",
+    "error": "동일 날짜 API 환율 1% 초과 불일치—환산 보류"
   },
-  "errors": [],
+  "errors": [
+    "동일 날짜 API 환율 1% 초과 불일치—환산 보류"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-09-21",
     "source": "https://insights.trendforce.com/p/weekly-radar-002",
@@ -136,257 +138,79 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-09-25T22:58:09+09:00",
+    "last_checked_at_kst": "2026-09-25T23:30:35+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 1,
   "delivery_check": {
-    "checked_at_kst": "2026-09-25T22:58:27+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-09-25T23:37:11+09:00",
+    "status": "confirmed"
   },
-  "last_successful_delivery_kst": "2026-09-22T17:58:13+09:00",
+  "last_successful_delivery_kst": "2026-09-25T23:37:11+09:00",
   "telegram_message_ids": [
-    141
+    147
   ],
-  "telegram_message_id": 141,
+  "telegram_message_id": 147,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      141
-    ],
-    "confirmed_at_kst": "2026-09-22T17:58:13+09:00",
-    "payload_hash": "ef1370a91b6a43a282e790ebd30ca04c1442270c7fe6381b58d4b46f9a3d4aa5"
-  },
-  "_delivery": {
-    "id": "28eb3f3344dacb2908d927052767ed3e168c85c5d987effb176a762430fcfa82",
-    "status": "partial",
-    "created_at_kst": "2026-09-25T23:37:04+09:00",
-    "chunks": [
-      "<b>🚨 AI 부품 리드타임 감시 — CPU·에이전트형 AI 구조 변화</b>\n\n<b>CPU·에이전트형 AI 수요축</b>\n• <b>전망 변화 감지:</b>\n  - 2030 서버 CPU 시장: 210.6bn달러 → 170.0bn달러 (-19.3%)\n• BofA 2030 서버 CPU 시장: 1,700억달러(약 230.4조원)\n• 에이전트형 AI CPU: 902억달러(약 122.2조원) / 전체의 42.8%\n• AI CPU 전체(연산·헤드+에이전트): 1,804억달러(약 244.5조원) / 전체의 85.7%\n• BofA 전망 경로: 1,250억달러 → 1,700억달러 → 2,106억달러(2030년 서버 CPU 시장)\n• CPU:GPU 구조 기준: 학습기 약 1:4~1:8 → 에이전트형 약 1:1 방향. AMD 공식 자료도 1:4~8 → 1+:1 구조 이동을 설명합니다.\n\n<b>부품 병목 연결</b>\n• 에이전트형 AI 노드 증가 → 서버 CPU → 고용량 DDR5 RDIMM → 기업용 SSD·KV 캐시 저장 → ABF 기판 → 네트워크·MLCC로 수요가 연결됩니다.\n• GPU 대수만 보지 않고 CPU 노드 수 × CPU당 메모리 용량 × 기업용 SSD 용량 × 네트워크 대역폭을 같이 봅니다.\n\n<b>실제 수요 검증</b>\n• 새 공식 주문·출하·검증·증설 신호 없음. 전망치만으로 실제 매출을 확정하지 않습니다.\n\n<b>관련 기업 지도</b>\n• 직접 CPU: AMD·Intel·Arm 생태계 — 서버 CPU 출하·평균판매단가·시장점유율\n• 서버 메모리: 삼성전자·SK하이닉스·Micron — DDR5·고용량 RDIMM\n• 기업용 SSD: 삼성전자·SK하이닉스/Solidigm·Micron — eSSD/NAND\n• ABF/FC-BGA: 삼성전기·Ibiden·Unimicron·Nan Ya PCB — CPU/GPU/ASIC 대형 기판\n• 시스템·네트워크: Dell·HPE·Supermicro / Broadcom·NVIDIA — 서버·고속 연결\n\n<b>숨은 역풍·실패모드</b>\n• 가장 현실적인 실패 경로: 에이전트 사용량은 늘지만 가상화·소프트웨어 효율화가 CPU 노드 증설보다 빨라 실제 CPU 출하가 전망을 못 따라가는 경우.\n• 조기경보: AMD·Intel 서버 CPU 출하/주문, OEM 서버 주문, DDR5 RDIMM 가격·재고, eSSD 출하, CPU:GPU 실제 배치비율.\n• 위험 구간: 6~12개월은 전망→주문 검증, 12~24개월은 서버 증설·메모리·ABF 공급능력 검증.\n\n<b>알림 기준</b>\n• 2030 서버 CPU 시장·에이전트형 AI CPU·AI CPU 전체 전망이 직전 기준 대비 ±10% 이상 바뀌면 알림.\n• 에이전트형 비중·AI CPU 비중이 ±5%p 이상 바뀌면 알림.\n• CPU:GPU 구조가 1:2·1:1 등으로 바뀌거나 공식 주문·출하·고객 검증이 새로 확인되면 알림.\n• 동일 BofA 차트·재인용 기사만 반복되면 알리지 않습니다.\n• 원화 환산: 1달러=1,355.0원, 기준일 2026-09-25\n• <a href=\"https://sg.finance.yahoo.com/news/bank-america-resets-amd-stock-110300178.html\">BofA 전망 확인 경로</a>\n• <a href=\"https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html\">AMD CPU:GPU 공식 근거</a>"
-    ],
-    "next_chunk": 1,
-    "message_ids": [
       147
     ],
-    "candidate": {
-      "updated_at_kst": "2026-09-25T23:30:30+09:00",
-      "seen_ids": [
-        "06a59b34b1c9e4bb0d3987bd",
-        "081d98bf0cc1d36b72de1345",
-        "09ccca98004f94ddc78adf4f",
-        "0a11d6e55d20a20d438eea0b",
-        "0f4c93418ab0cb5f77ee5aff",
-        "11b0887a69d7d15b6128314d",
-        "1a7355b983f5d9b5a7d4a97f",
-        "1dd83b5311279ef155add2d2",
-        "20a5c84026d1bbe9b4f60398",
-        "21e84f4d7bcbfa46a6b63dee",
-        "2d27da4b09baa1d0f61ace3d",
-        "2febb8d3e788181bbf878d83",
-        "30e12d5e09347c31afe9bbbf",
-        "35d13626592549116ca7a042",
-        "366eb2b49378313e5a18f1ec",
-        "40660e881b3fe6bde98047a2",
-        "4247585e3b18e9cad642ceec",
-        "4247b04678644c4743f6ef69",
-        "4254884b8b0b799b2b6b87a7",
-        "44974ccaa7ba66fe19dffd08",
-        "45ba5c60ce8b21a79021bfee",
-        "4a4d0cce8254b1bcb31b5074",
-        "4a94d2be7668e2271bd7f262",
-        "4d6b3e75273924248c11b1c1",
-        "5010456efcf2a9cd4b3c6336",
-        "508271da4f03e4e64f5e8e39",
-        "51472fa7253bfc2a1683afa7",
-        "59dea53db71c13bdf6c120ef",
-        "5a97726e2e93fc7408e02754",
-        "62514606e58e299512d357d4",
-        "683bf92b23e4d4953f109996",
-        "6c31c0bc458f7594ee609fbe",
-        "7310bace62d2a5a4af5e422b",
-        "7c4fab38f3ac9aeca880db5a",
-        "817f217f23561cc348f4159b",
-        "86e3b5a2a1b5f5a0a64b608e",
-        "879690aaf1650f4535c5fa3b",
-        "959562dc71d2a106144c7eab",
-        "97cd9aa32a1e0bc1defa7483",
-        "9a0fac710d6f4969c12eccb0",
-        "9ccd14cf2278388157bd44a6",
-        "a1f202951bc6ed71f25e0b03",
-        "ad831c0a9b75057895ffb73a",
-        "adca27d662f4cb51e531edfd",
-        "b7a9ea191f0d39046caeeb6d",
-        "bc36972bfd79436e7ad41fd1",
-        "c1d173fd17a8a8cd17f5cd5b",
-        "c1ede00bdbacc4e73f3e3732",
-        "c66bcba5501ce4414506b0e6",
-        "caf236d0d63266773b9b11da",
-        "d059f8c3e0d742a821065a47",
-        "d26bff6649e5357d756fc3fc",
-        "d33a5fbc0d352f5813521b17",
-        "d438811610a9bd1cc60718b5",
-        "d5bb9608cc828c7b4cd00446",
-        "d6a7588c8d5d4c51180c5a1a",
-        "dca2bc8b55a45dd7abd304fb",
-        "dff177bae16621437b065202",
-        "e05c1927e16110a949b8b797",
-        "e917aed0ebcc8c2bd2d2a9bb",
-        "e91a33b5d73da251921a7da4",
-        "eed867761a24cbad33b1c104",
-        "f07ec9c4d4039ee24a7a82d9",
-        "f0b052afbbfcb591daa146d8",
-        "f3e3dad3086e1067be70a1d9",
-        "f90b21bc4788937b6c57cbb1",
-        "f9c423730a2aa19b4fba6af0",
-        "fbd920db100fb7204a37af3d",
-        "fd0ab513604f145f508ff4dd",
-        "ff9744abe3535e79694d130b"
-      ],
-      "seen_fact_keys": [
-        "hbm3e_wafer_capacity_3x_ddr5",
-        "hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi",
-        "skhynix_indiana_hbm4e_2029"
-      ],
-      "last_unseen_raw_count": 0,
-      "last_verified_event_count": 0,
-      "last_send_event_count": 0,
-      "freshness_hours": 72,
-      "usdkrw": {
-        "rate": null,
-        "date": "",
-        "source": "환율 API",
-        "error": "동일 날짜 API 환율 1% 초과 불일치—환산 보류"
-      },
-      "errors": [
-        "동일 날짜 API 환율 1% 초과 불일치—환산 보류"
-      ],
-      "ai_component_leadtime": {
-        "as_of": "2026-09-21",
-        "source": "https://insights.trendforce.com/p/weekly-radar-002",
-        "components": {
-          "GPU": {
-            "status": "Balanced",
-            "current": "30-40",
-            "balanced": "30-40"
-          },
-          "DRAM": {
-            "status": "Very Tight",
-            "current": "20",
-            "balanced": "8"
-          },
-          "NAND(eSSD)": {
-            "status": "Tight",
-            "current": "16",
-            "balanced": "8"
-          },
-          "HDD": {
-            "status": "Very Tight",
-            "current": "50",
-            "balanced": "16"
-          },
-          "ABF": {
-            "status": "Very Tight",
-            "current": "48-56",
-            "balanced": "12"
-          },
-          "MLCC": {
-            "status": "Tight",
-            "current": "32",
-            "balanced": "12"
-          }
-        },
-        "signals": {
-          "GPU": "Rubin 사양 조정 → Blackwell보다 리드타임 장기화 가능성",
-          "DRAM": "미국 CSP의 2027년 서버 증설 대비 RDIMM 수요 증가",
-          "NAND(eSSD)": "수요 증가 → 공급사가 기업용 SSD로 생산능력 재배분, 전체 공급은 여전히 부족",
-          "HDD": "에이전틱 AI 수요 급증 → 2027년 말까지 리드타임 개선 제한",
-          "ABF": "2027년 일본 Low-CTE 유리섬유 천 증설로 소재 병목 완화 가능, 기판 생산능력은 예약 포화",
-          "MLCC": "신학기 수요 부진 → 저가 범용 유통가격 하락, 고급 소비자용 가격은 안정"
-        },
-        "seen_urls": [
-          "https://insights.trendforce.com/p/weekly-radar-001",
-          "https://insights.trendforce.com/p/weekly-radar-002",
-          "https://www.trendforce.com/news/"
-        ],
-        "last_checked_at_kst": "2026-09-25T23:30:35+09:00",
-        "candidate_count": 3,
-        "errors": []
-      },
-      "structure_baseline_version": 1,
-      "delivery_check": {
-        "checked_at_kst": "2026-09-25T22:58:27+09:00",
-        "status": "no_message_due"
-      },
-      "last_successful_delivery_kst": "2026-09-22T17:58:13+09:00",
-      "telegram_message_ids": [
-        141
-      ],
-      "telegram_message_id": 141,
-      "bot_username": "khs88798879887988798879_bot",
-      "delivery_receipt": {
-        "status": "confirmed",
-        "bot_username": "khs88798879887988798879_bot",
-        "message_ids": [
-          141
-        ],
-        "confirmed_at_kst": "2026-09-22T17:58:13+09:00",
-        "payload_hash": "ef1370a91b6a43a282e790ebd30ca04c1442270c7fe6381b58d4b46f9a3d4aa5"
-      },
-      "agentic_cpu_demand": {
-        "as_of": "2026-06-12",
-        "issuer": "Bank of America",
-        "source": "https://sg.finance.yahoo.com/news/bank-america-resets-amd-stock-110300178.html",
-        "source_kind": "BofA 전망 관련 최신 공개자료",
-        "metrics": {
-          "server_cpu_tam_2030_usd_bn": 170.0,
-          "traditional_iaas_2030_usd_bn": 30.2,
-          "compute_head_2030_usd_bn": 30.0,
-          "agentic_2030_usd_bn": 90.2,
-          "ai_cpu_2030_usd_bn": 180.4,
-          "agentic_share_pct": 42.83,
-          "ai_cpu_share_pct": 85.66,
-          "server_cpu_2026_usd_bn": 61.4,
-          "server_cpu_cagr_2026_2030_pct": 36.1,
-          "ai_cpu_cagr_2026_2030_pct": 43.6
-        },
-        "cpu_gpu_ratio": {
-          "agentic": "1:1",
-          "training": "1:4-8",
-          "basic_inference": "1:2",
-          "official_support": "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
-        },
-        "revision_history": [
-          {
-            "date": "2026-05-20",
-            "server_cpu_tam_2030_usd_bn": 125.0,
-            "source_kind": "BofA 보도 재전달"
-          },
-          {
-            "date": "2026-06-11",
-            "server_cpu_tam_2030_usd_bn": 170.0,
-            "source_kind": "BofA 리포트 해석 자료"
-          },
-          {
-            "date": "2026-08-12",
-            "server_cpu_tam_2030_usd_bn": 210.6,
-            "source_kind": "BofA 전망의 2차 리서치 요약"
-          }
-        ],
-        "seen_forecast_urls": [
-          "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12",
-          "https://sg.finance.yahoo.com/news/bank-america-resets-amd-stock-110300178.html"
-        ],
-        "seen_validation_urls": [
-          "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
-          "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
-        ],
-        "last_validation_cutoff": "2026-09-25",
-        "last_checked_at_kst": "2026-09-25T23:31:25+09:00"
-      }
+    "confirmed_at_kst": "2026-09-25T23:37:11+09:00",
+    "payload_hash": "f7e131e7f9d13f4a3ce1c61d4533071f3034aa37a77929162b8e14ba370ec995"
+  },
+  "agentic_cpu_demand": {
+    "as_of": "2026-06-12",
+    "issuer": "Bank of America",
+    "source": "https://sg.finance.yahoo.com/news/bank-america-resets-amd-stock-110300178.html",
+    "source_kind": "BofA 전망 관련 최신 공개자료",
+    "metrics": {
+      "server_cpu_tam_2030_usd_bn": 170.0,
+      "traditional_iaas_2030_usd_bn": 30.2,
+      "compute_head_2030_usd_bn": 30.0,
+      "agentic_2030_usd_bn": 90.2,
+      "ai_cpu_2030_usd_bn": 180.4,
+      "agentic_share_pct": 42.83,
+      "ai_cpu_share_pct": 85.66,
+      "server_cpu_2026_usd_bn": 61.4,
+      "server_cpu_cagr_2026_2030_pct": 36.1,
+      "ai_cpu_cagr_2026_2030_pct": 43.6
     },
-    "attempt_at_kst": "2026-09-25T23:37:05+09:00"
+    "cpu_gpu_ratio": {
+      "agentic": "1:1",
+      "training": "1:4-8",
+      "basic_inference": "1:2",
+      "official_support": "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
+    },
+    "revision_history": [
+      {
+        "date": "2026-05-20",
+        "server_cpu_tam_2030_usd_bn": 125.0,
+        "source_kind": "BofA 보도 재전달"
+      },
+      {
+        "date": "2026-06-11",
+        "server_cpu_tam_2030_usd_bn": 170.0,
+        "source_kind": "BofA 리포트 해석 자료"
+      },
+      {
+        "date": "2026-08-12",
+        "server_cpu_tam_2030_usd_bn": 210.6,
+        "source_kind": "BofA 전망의 2차 리서치 요약"
+      }
+    ],
+    "seen_forecast_urls": [
+      "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12",
+      "https://sg.finance.yahoo.com/news/bank-america-resets-amd-stock-110300178.html"
+    ],
+    "seen_validation_urls": [
+      "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
+      "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
+    ],
+    "last_validation_cutoff": "2026-09-25",
+    "last_checked_at_kst": "2026-09-25T23:31:25+09:00"
   }
 }
