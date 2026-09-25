@@ -253,8 +253,8 @@
       "state": "삼성 HBM 관련 신규 변화"
     },
     "생산능력·증산|samsung|hbm4": {
-      "signature": "2c22cc7e558bc2e7bdf76455",
-      "observed_at": "2026-09-23T00:23:58+09:00",
+      "signature": "716fba593a8b41ef112ec5cb",
+      "observed_at": "2026-09-21T14:05:42+09:00",
       "state": "삼성 HBM 생산능력·증산 계획 변화"
     },
     "생산능력·증산|samsung|hbm4e+hbm4|2027": {
@@ -268,7 +268,7 @@
   "event_state_version": 2,
   "hbm_ops_metrics": {
     "samsung|hbm4|yield": {
-      "value": 80.0,
+      "value": 80,
       "unit": "pct",
       "period": "2026-09",
       "source": "서울경제 보도 기준선",
@@ -318,27 +318,27 @@
   "hbm_share_forecasts": {
     "jpmorgan|sales|2026": {
       "values": {
-        "skhynix": 46.0,
-        "samsung": 34.0,
-        "micron": 20.0
+        "skhynix": 46,
+        "samsung": 34,
+        "micron": 20
       },
       "source": "사용자 제공 J.P. Morgan 차트",
       "observed_at": "baseline"
     },
     "jpmorgan|sales|2027": {
       "values": {
-        "skhynix": 41.0,
-        "samsung": 39.0,
-        "micron": 21.0
+        "skhynix": 41,
+        "samsung": 39,
+        "micron": 21
       },
       "source": "사용자 제공 J.P. Morgan 차트",
       "observed_at": "baseline"
     },
     "jpmorgan|sales|2028": {
       "values": {
-        "skhynix": 42.0,
-        "samsung": 37.0,
-        "micron": 21.0
+        "skhynix": 42,
+        "samsung": 37,
+        "micron": 21
       },
       "source": "사용자 제공 J.P. Morgan 차트",
       "observed_at": "baseline"
@@ -347,9 +347,9 @@
   "hbm_share_actuals": {
     "counterpoint|sales|2026Q2": {
       "values": {
-        "skhynix": 50.0,
-        "samsung": 33.0,
-        "micron": 18.0
+        "skhynix": 50,
+        "samsung": 33,
+        "micron": 18
       },
       "source": "Counterpoint 2026-09-03",
       "observed_at": "baseline"
@@ -533,7 +533,7 @@
       "rdimm_quote|dramexchange|32|4800/5600": {
         "key": "rdimm_quote|dramexchange|32|4800/5600",
         "axis": "rdimm_quote",
-        "value": 2050.0,
+        "value": 2050,
         "unit": "USD/module",
         "period": "2026-09",
         "as_of": "2026-09-14",
@@ -885,7 +885,7 @@
       "carrier_cleaning|samsung|2026": {
         "key": "carrier_cleaning|samsung|2026",
         "axis": "carrier_cleaning",
-        "value": 20000.0,
+        "value": 20000,
         "unit": "cleaning_passes/month",
         "period": "2026",
         "as_of": "2026-09-21",
@@ -899,7 +899,7 @@
       "carrier_cleaning|samsung|2027": {
         "key": "carrier_cleaning|samsung|2027",
         "axis": "carrier_cleaning",
-        "value": 50000.0,
+        "value": 50000,
         "unit": "cleaning_passes/month",
         "period": "2027",
         "as_of": "2026-09-21",
@@ -946,7 +946,7 @@
       "rdimm_quote|dramexchange|32|4800/5600": {
         "key": "rdimm_quote|dramexchange|32|4800/5600",
         "axis": "rdimm_quote",
-        "value": 2050.0,
+        "value": 2050,
         "unit": "USD/module",
         "period": "2026-09",
         "as_of": "2026-09-14",
@@ -1242,5 +1242,12 @@
     "checked_at_kst": "2026-09-25T15:41:16+09:00",
     "status": "no_message_due"
   },
-  "malaysia_hsk10_weight_kg": null
+  "malaysia_hsk10_weight_kg": null,
+  "state_corrections": [
+    {
+      "at_kst": "2026-09-25T15:48:00+09:00",
+      "key": "생산능력·증산|samsung|hbm4",
+      "reason": "Bernstein/Futunn의 3Q HBM 매출 성장률 72%를 생산능력 변화로 오분류한 상태를 직전 생산능력 기준선으로 복원"
+    }
+  ]
 }
