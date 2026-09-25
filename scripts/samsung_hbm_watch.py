@@ -965,6 +965,33 @@ def _event_target_year(e: dict, text: str) -> str:
     return ""
 
 
+def korean_evidence_title(e: dict, fallback: str = "HBM 상태 변화") -> str:
+    """Render English evidence titles as Korean; the raw title stays behind the source link."""
+    title = clean(e.get("title") or "")
+    if not title:
+        return fallback
+    if re.search(r"[가-힣]", title):
+        return re.sub(r"\s+-\s+[^-]{2,80}$", "", title).strip()
+
+    low = title.lower()
+    pcts = re.findall(r"([0-9]+(?:\.[0-9]+)?)\s*%", title)
+    if "samsung" in low and "hbm4" in low and ("double" in low or "2x" in low):
+        if ("product mix" in low or "mix" in low) and len(pcts) >= 2:
+            return f"보도: 삼성전자, 내년 HBM4·HBM4E 생산을 2배로 늘리고 제품 비중을 {pcts[0]}%에서 {pcts[1]}%로 확대할 가능성"
+        return "보도: 삼성전자, 내년 HBM4·HBM4E 생산을 2배로 확대할 가능성"
+    if "samsung" in low and "hbm4" in low and any(k in low for k in ("volume production", "mass production", "production")):
+        return "삼성전자 HBM4 양산·생산 확대 관련 보도"
+    if "bernstein" in low and "hbm" in low and any(k in low for k in ("revenue", "forecast", "estimate")):
+        return "Bernstein HBM 매출 전망·추정 변화 관련 보도"
+    if "market share" in low and "hbm" in low:
+        return "HBM 시장점유율 변화 관련 보도"
+    if "yield" in low and "hbm" in low:
+        return "HBM 양산 수율 변화 관련 보도"
+    if "malaysia" in low and "hbm" in low:
+        return "말레이시아 HBM·첨단패키징 변화 관련 보도"
+    return fallback + " 관련 보도"
+
+
 def event_state_descriptor(e: dict) -> tuple[str, str, str]:
     """Return topic key, state signature and a readable state label.
 
@@ -987,9 +1014,22 @@ def event_state_descriptor(e: dict) -> tuple[str, str, str]:
         )
     )
     products = []
+    has_hbm4e = bool(
+        re.search(r"\bhbm\s*4e\b|\bhbm4e\b", low)
+        or re.search(r"hbm4\s*[·/&+,-]\s*4e\b", low)
+    )
+    has_hbm4 = bool(
+        re.search(r"\bhbm\s*4\b|\bhbm4\b(?!e)", low)
+        or re.search(r"hbm4\s*[·/&+,-]\s*4e\b", low)
+    )
+    if has_hbm4 and has_hbm4e:
+        # HBM4·HBM4E production-ramp stories are one product-family event.
+        products.append("hbm4")
+    elif has_hbm4e:
+        products.append("hbm4e")
+    elif has_hbm4:
+        products.append("hbm4")
     for name, aliases in (
-        ("hbm4e", ("hbm4e", "hbm 4e")),
-        ("hbm4", ("hbm4", "hbm 4")),
         ("custom_hbm", ("custom hbm", "커스텀 hbm")),
         ("hbm3e", ("hbm3e", "hbm 3e")),
         ("emib", ("emib",)),
@@ -1052,6 +1092,10 @@ def event_state_descriptor(e: dict) -> tuple[str, str, str]:
         r"(\d+(?:\.\d+)?)\s*배",
         r"(\d+(?:\.\d+)?)\s*(?:x|times?)\b",
     ], text)
+    if not multiple and re.search(r"\b(?:double|doubl(?:e|ed|ing))\b", low):
+        multiple = "2"
+    if not multiple and re.search(r"\b(?:triple|tripl(?:e|ed|ing))\b", low):
+        multiple = "3"
     if multiple:
         primary_values.append("multiple=" + multiple)
 
@@ -1070,6 +1114,7 @@ def event_state_descriptor(e: dict) -> tuple[str, str, str]:
         if price_values:
             primary_values.append("price=" + ",".join(price_values[:3]))
 
+    wafer = ""
     if category == "생산능력·증산":
         wafer = _first_number([
             r"(\d[\d,]*(?:\.\d+)?)\s*(?:wafers?|wafer starts?)\s*(?:a month|per month|/month)?",
@@ -1077,6 +1122,11 @@ def event_state_descriptor(e: dict) -> tuple[str, str, str]:
         ], text.replace(",", ""))
         if wafer:
             primary_values.append("wafer=" + wafer)
+        # A republisher adding product-mix percentages to the same 2x capacity
+        # story is evidence enrichment, not a second production-state change.
+        # Product-mix percentages are tracked separately by hbm_memory_axes.py.
+        if multiple or wafer:
+            primary_values = [x for x in primary_values if not x.startswith("pct=")]
 
     if category in ("HBM4E 검증·양산", "HBM4 출하", "고객"):
         if customer:
@@ -1405,7 +1455,7 @@ def share_event_summary(e: dict) -> list[str]:
         lines.append("• 변화 이유: " + html.escape(" · ".join(ch["reasons"])))
     lines += [
         f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}",
-        f"• 근거 제목: {html.escape(e.get('title') or '')} · {href(e.get('direct_link') or '', '원문')}",
+        f"• 근거 제목(한국어): {html.escape(korean_evidence_title(e, ch.get('headline') if e.get('ops_change') else ('HBM ' + ch.get('kind','') + ' 상태 변화' if e.get('share_change') else 'HBM 상태 변화')))} · {href(e.get('direct_link') or '', '원문')}",
     ]
     return lines
 
@@ -1585,7 +1635,7 @@ def operating_event_summary(e: dict) -> list[str]:
         lines.append("• 주의: 한국무역협회 HBM 관련 수출단가 대용지표이며 HBM 계약 평균판매단가와 1:1 동일하지 않습니다.")
     lines += [
         f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}",
-        f"• 근거 제목: {html.escape(e.get('title') or '')} · {href(e.get('direct_link') or '', '원문')}",
+        f"• 근거 제목(한국어): {html.escape(korean_evidence_title(e, ch.get('headline') if e.get('ops_change') else ('HBM ' + ch.get('kind','') + ' 상태 변화' if e.get('share_change') else 'HBM 상태 변화')))} · {href(e.get('direct_link') or '', '원문')}",
     ]
     return lines
 
@@ -1616,7 +1666,7 @@ def event_summary(e: dict) -> list[str]:
         lines.append(f"• 핵심 숫자: <b>{html.escape(' · '.join(nums))}</b>")
     lines += [
         f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}",
-        f"• 근거 제목: {html.escape(e.get('title') or '')} · {href(e.get('direct_link') or '', '원문')}",
+        f"• 근거 제목(한국어): {html.escape(korean_evidence_title(e, headline))} · {href(e.get('direct_link') or '', '원문')}",
     ]
     return lines
 
