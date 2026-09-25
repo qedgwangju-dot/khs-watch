@@ -71,18 +71,25 @@ def snapshot():
     if not common_dates:
         latest_dates=sorted({rows[-1][0] for rows in data.values()})
         raise RuntimeError(f'공통 완료 종가 기준일 없음: {latest_dates}')
-    common_date=max(common_dates)
+    common_dates=sorted(common_dates)
+    if len(common_dates)<6:
+        raise RuntimeError(f'공통 완료 거래일 부족: {common_dates}')
+    common_date=common_dates[-1]
+    d1,d3,d5=common_dates[-2],common_dates[-4],common_dates[-6]
 
-    aligned={}
-    for name,rows in data.items():
-        trimmed=[x for x in rows if x[0] <= common_date]
-        if len(trimmed)<7:
-            raise RuntimeError(f'{name} 공통 기준일({common_date}) 이전 완료 종가 이력 부족')
-        aligned[name]=trimmed
-
-    out={'date':common_date,'returns':{}}
-    for name,rows in aligned.items():
-        out['returns'][name]={'1d':ret(rows,1),'3d':ret(rows,3),'5d':ret(rows,5)}
+    # 모든 자산을 정확히 같은 시작일/종료일로 비교한다.
+    # 한 종목의 데이터 누락 때문에 "5거래일"의 시작일이 달라지는 것을 금지한다.
+    maps={name:{d:v for d,v in rows} for name,rows in data.items()}
+    out={'date':common_date,'window':{'1d':d1,'3d':d3,'5d':d5},'returns':{}}
+    for name,m in maps.items():
+        for d in (common_date,d1,d3,d5):
+            if d not in m:
+                raise RuntimeError(f'{name} 공통 비교일 {d} 종가 누락')
+        out['returns'][name]={
+            '1d':(m[common_date]/m[d1]-1)*100.0,
+            '3d':(m[common_date]/m[d3]-1)*100.0,
+            '5d':(m[common_date]/m[d5]-1)*100.0,
+        }
     spy=out['returns']['S&P500']; rsp=out['returns']['동일가중 S&P500']; iwm=out['returns']['중소형주']; hyg=out['returns']['하이일드 회사채']; vix=out['returns']['VIX']
     out['rsp_rel_5d']=rsp['5d']-spy['5d']; out['iwm_rel_5d']=iwm['5d']-spy['5d']
     out['sector_up_1d']=sum(1 for s in SECTORS if out['returns'][s]['1d']>0)
@@ -136,7 +143,8 @@ def easy_read(s):
 def message(s, correction=False, old_date=None):
     r=s['returns']; spy=r['S&P500']; rsp=r['동일가중 S&P500']; iwm=r['중소형주']; hyg=r['하이일드 회사채']; vix=r['VIX']
     title='[정정·미국 증시 내부 체력·순환매]' if correction else '[미국 증시 내부 체력·순환매]'
-    lines=[f'<b>{title}</b>',f"기준: {s['date']} 미국 정규장 종가"]
+    lines=[f'<b>{title}</b>',f"기준: {s['date']} 미국 정규장 종가",
+           f"5거래일 비교구간: {s.get('window',{}).get('5d','확인 불가')} → {s['date']}"]
     if correction:
         lines += ['', '<b>정정 사유</b>', f"• 직전 {old_date or '당일'} 값은 정규장 진행 중의 부분 일봉이 섞인 값이어서 종가 기준 판정에서 제외했습니다."]
     lines += ['', '<b>한눈에 보기</b>',
@@ -167,7 +175,7 @@ def main():
     should=FORCE or correction or (not first and (changed or (shock and not old_shock)))
     if should: send(message(s, correction=correction, old_date=old.get('date')))
     if first or new_day or changed or shock!=old_shock:
-        save_state({'date':s['date'],'verdict':s['verdict'],'shock':shock,'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],'sector_up_1d':s['sector_up_1d'],'sector_up_5d':s['sector_up_5d'],'returns':s['returns']})
+        save_state({'date':s['date'],'window':s.get('window'),'verdict':s['verdict'],'shock':shock,'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],'sector_up_1d':s['sector_up_1d'],'sector_up_5d':s['sector_up_5d'],'returns':s['returns']})
     print(json.dumps({'first_run':first,'date':s['date'],'verdict':s['verdict'],'shock':shock,'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],'sector_up_5d':s['sector_up_5d'],'sent':should},ensure_ascii=False))
 
 if __name__=='__main__': main()
