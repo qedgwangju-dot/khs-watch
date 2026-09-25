@@ -624,7 +624,10 @@ def _stage(text: str) -> str:
 def score(item: dict) -> int:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     title = item.get('title','')
-    if TESLA_MARKET_REACTION.search(title) and not TESLA_TITLE_DIRECT_EVENT.search(title):
+    # Price/sector reaction articles are never the alert unit. Even when they
+    # restate a real audit/order milestone, the underlying operating source must
+    # surface separately; otherwise one old event can re-alert whenever stocks move.
+    if TESLA_MARKET_REACTION.search(title):
         return 0
     s = _orig_score(item)
     if not _is_tesla_supply_text(text):
