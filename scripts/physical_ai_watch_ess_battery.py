@@ -179,7 +179,17 @@ def _is_mlcc_ess(text: str) -> bool:
 def _is_ess_battery(text: str) -> bool:
     ess = ESS_RE.search(text)
     supply_component = BATTERY_RE.search(text) or MLCC_RE.search(text)
-    return bool(ess and supply_component and not HUMANOID_RE.search(text))
+    # Official KPX market-design/lifetime rules are themselves battery-demand
+    # state changes even when the headline says only "ESS" and does not repeat
+    # a cell-maker name. Keep them in the ESS-battery lane so the primary source
+    # can outrank derivative media coverage.
+    official_lifetime_rule = bool(
+        ess and ESS_LIFETIME_RULE.search(text) and KPX_SOURCE_RE.search(text)
+    )
+    return bool(
+        (ess and supply_component and not HUMANOID_RE.search(text))
+        or official_lifetime_rule
+    )
 
 
 def topic_group(text: str) -> str | None:
