@@ -433,10 +433,10 @@ def _postprocess_stage(text):
         return 'mass_production'
     if re.search(r'장비\s*반입|equipment\s*(?:move[- ]?in|installation)', text, re.I):
         return 'equipment_move_in'
-    if re.search(r'정식\s*(?:계약|수주)|본계약|purchase\s*order|\bPO\b|contract\s*signed', text, re.I):
-        return 'po_signed'
     if re.search(r'정식\s*계약.*(?:앞두|준비)|본계약.*(?:앞두|준비)|prepar(?:e|ing)\s+for\s+(?:a\s+)?formal\s+contract', text, re.I):
         return 'po_pending'
+    if re.search(r'정식\s*(?:계약|수주)|본계약|purchase\s*order|\bPO\b|contract\s*signed', text, re.I):
+        return 'po_signed'
     if re.search(r'품질\s*검증.*통과|품질\s*테스트.*통과|pilot.*(?:passed|qualified)|qualification\s*passed', text, re.I):
         return 'pilot_passed'
     if re.search(r'파일럿|시범\s*장비|pilot', text, re.I):
