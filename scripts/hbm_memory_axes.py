@@ -33,6 +33,10 @@ EXTRA_QUERIES = [
     '인텍플러스 CoWoS 파일럿 품질검증 정식계약',
     '펨트론 HBM 검사장비 SK하이닉스 수주',
     'ISC HBM 테스트 솔루션 메모리 3사 공급',
+    '삼성 HBM4 베이스다이 4나노 풀가동 증설 가격 인상',
+    'Samsung HBM4 base die 4nm full utilization expansion price increase',
+    '삼성 HBM5 베이스다이 2나노 신규 생산라인 투자 GAA',
+    'Samsung HBM5 2nm base die production line investment GAA TSV',
 ]
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
@@ -181,7 +185,9 @@ def is_axis_text(text):
         r'HBM.*(?:매출|revenue).*(?:전망|estimate|forecast|regression)|'
         r'(?:Bernstein|번스타인|J[.]?P[.]? Morgan|UBS).*HBM|'
         r'(?:TSMC|ASE|디아이|디지털\s*프론티어|와이씨|엑시콘|인텍플러스|펨트론|ISC|고영|네오셈|넥스틴).*'
-        r'(?:CoWoS|후공정|패키징|검사|테스트|tester|수주|품질\s*검증|정식\s*계약|설비투자|capex)',
+        r'(?:CoWoS|후공정|패키징|검사|테스트|tester|수주|품질\s*검증|정식\s*계약|설비투자|capex)|'
+        r'(?:삼성|Samsung).*HBM.*(?:베이스\s*다이|base\s*die|4\s*나노|4nm|2\s*나노|2nm).*'
+        r'(?:풀가동|full\s*utilization|증설|expand|가격\s*인상|price\s*increase|생산라인|production\s*line|투자|investment)',
         text, re.I))
 
 
@@ -553,6 +559,128 @@ def parse_postprocess_records(item, body):
     return rows
 
 
+FOUNDRY_STAGE_RANK = {
+    'mentioned': 0,
+    'review': 1,
+    'confirmed': 2,
+    'equipment_order': 3,
+    'move_in': 4,
+    'trial_production': 5,
+    'mass_production': 6,
+}
+
+
+def _foundry_stage(text):
+    if re.search(r'양산\s*(?:시작|개시)|mass\s*production', text, re.I):
+        return 'mass_production'
+    if re.search(r'시험\s*생산|test\s*production|trial\s*production', text, re.I):
+        return 'trial_production'
+    if re.search(r'장비\s*반입|equipment\s*(?:move[- ]?in|installation)', text, re.I):
+        return 'move_in'
+    if re.search(r'장비\s*발주|equipment\s*order', text, re.I):
+        return 'equipment_order'
+    if re.search(r'투자\s*확정|증설\s*확정|라인\s*확정|approved|confirmed\s*(?:investment|expansion|line)', text, re.I):
+        return 'confirmed'
+    if re.search(r'검토|채비|review|consider|plan(?:ning)?', text, re.I):
+        return 'review'
+    return ''
+
+
+def _wpm(text):
+    patterns = (
+        r'월\s*([\d,.]+)\s*만\s*장',
+        r'([\d,.]+)\s*만\s*장\s*(?:/\s*월|월간|매월)?',
+        r'([\d,]+)\s*(?:wafers?|wafer starts?)\s*(?:per month|/month|monthly)',
+    )
+    for i, pat in enumerate(patterns):
+        m = re.search(pat, text, re.I)
+        if not m:
+            continue
+        n = float(m[1].replace(',', ''))
+        return n * 10000 if i < 2 else n
+    return None
+
+
+def parse_foundry_hbm_records(item, body):
+    text = re.sub(r'\s+', ' ', body)
+    if not re.search(r'(?:삼성|Samsung)', text, re.I) or not re.search(r'HBM', text, re.I):
+        return []
+    published = item.get('published_at_kst','')
+    asof = published[:10]
+    rows = []
+
+    # 4nm HBM4 base-die allocation and utilization.
+    if re.search(r'(?:4\s*나노|4nm)', text, re.I) and re.search(r'(?:베이스\s*다이|base\s*die)', text, re.I):
+        alloc_min = alloc_max = None
+        am = re.search(r'([0-9]+(?:\.[0-9]+)?)\s*[~–-]\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,80}?(?:HBM4|베이스\s*다이|base\s*die)', text, re.I)
+        if not am:
+            am = re.search(r'(?:HBM4|베이스\s*다이|base\s*die)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*[~–-]\s*([0-9]+(?:\.[0-9]+)?)\s*%', text, re.I)
+        if am:
+            alloc_min, alloc_max = float(am[1]), float(am[2])
+        elif re.search(r'(?:절반\s*이상|50\s*%\s*이상)', text):
+            alloc_min = 50.0
+
+        total_wpm = _wpm(text)
+        full = bool(re.search(r'풀가동|풀생산|full\s*(?:utilization|capacity|production)', text, re.I))
+        if alloc_min is not None or total_wpm is not None or full:
+            rows.append(make_record(
+                'foundry_base_die_allocation', ['samsung','4nm','HBM4'],
+                {'total_capacity_wpm': total_wpm, 'allocation_pct_min': alloc_min,
+                 'allocation_pct_max': alloc_max, 'full_utilization': full},
+                'wafers/month,pct', 'current', item,
+                '삼성 4나노 생산능력 중 HBM4 베이스다이 배정·가동률',
+                as_of=asof, scope='reported_foundry_capacity_not_hbm_finished_goods'))
+
+        # 4nm expansion status.
+        if re.search(r'증설|생산능력\s*확대|capacity\s*expansion|expand', text, re.I):
+            stage = _foundry_stage(text) or 'mentioned'
+            rows.append(make_record(
+                'foundry_node_expansion', ['samsung','4nm','HBM4_base_die'],
+                {'stage': stage}, 'stage', 'current', item,
+                '삼성 HBM4 베이스다이 대응 4나노 증설 단계',
+                as_of=asof, scope='foundry_expansion_stage'))
+
+        # Price increases are a separate state from physical capacity.
+        new_order_up = bool(re.search(r'(?:4\s*나노|4nm)[^.]{0,100}?(?:신규\s*수주|new\s*orders?)[^.]{0,80}?(?:가격\s*인상|price\s*(?:increase|hike))', text, re.I))
+        base_die_up = bool(re.search(r'(?:베이스\s*다이|base\s*die)[^.]{0,80}?(?:가격\s*인상|price\s*(?:increase|hike))', text, re.I))
+        pct = None
+        pm = re.search(r'(?:가격\s*인상|price\s*(?:increase|hike))[^%]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*%', text, re.I)
+        if pm:
+            pct = float(pm[1])
+        if new_order_up or base_die_up or pct is not None:
+            rows.append(make_record(
+                'foundry_pricing', ['samsung','4nm','HBM4_base_die'],
+                {'new_order_price_up': new_order_up, 'base_die_price_up': base_die_up,
+                 'price_change_pct': pct},
+                'direction,pct', 'current', item,
+                '삼성 4나노 신규수주·HBM4 베이스다이 가격 변화',
+                as_of=asof, scope='reported_foundry_pricing'))
+
+    # HBM5: distinguish the technology plan from a real 2nm production-line investment stage.
+    if re.search(r'HBM5', text, re.I) and re.search(r'(?:2\s*나노|2nm)', text, re.I):
+        investment_stage = ''
+        if re.search(r'신규\s*생산라인|생산라인\s*(?:구축|투자)|new\s*production\s*line|new\s*line', text, re.I):
+            investment_stage = _foundry_stage(text) or 'mentioned'
+        speed = None
+        sm = re.search(r'(?:동작\s*속도|speed)[^%]{0,50}?([0-9]+(?:\.[0-9]+)?)\s*%\s*(?:이상\s*)?(?:향상|increase|faster)', text, re.I)
+        if not sm:
+            sm = re.search(r'([0-9]+(?:\.[0-9]+)?)\s*%\s*(?:이상\s*)?(?:향상|increase|faster)[^.]{0,60}?(?:HBM4E|동작\s*속도|speed)', text, re.I)
+        if sm:
+            speed = float(sm[1])
+        if investment_stage or speed is not None or re.search(r'GAA|TSV', text, re.I):
+            rows.append(make_record(
+                'foundry_hbm5_2nm', ['samsung','2nm','HBM5'],
+                {'investment_stage': investment_stage or 'technology_plan',
+                 'speed_uplift_target_pct': speed,
+                 'gaa': bool(re.search(r'GAA|게이트올어라운드', text, re.I)),
+                 'tsv_density_up': bool(re.search(r'TSV|실리콘\s*관통\s*전극', text, re.I))},
+                'stage,pct', 'HBM5', item,
+                '삼성 HBM5 2나노 베이스다이 기술·투자 단계',
+                as_of=asof, scope='technology_plan_and_line_investment_separated'))
+
+    return rows
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -561,6 +689,7 @@ def parse_records(item, body):
         records.append(malaysia)
     records.extend(parse_hbm_revenue_estimates(item, body))
     records.extend(parse_postprocess_records(item, body))
+    records.extend(parse_foundry_hbm_records(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
