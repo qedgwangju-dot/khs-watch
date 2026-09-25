@@ -127,87 +127,41 @@ def format_krw(value_krw) -> str:
 def structural_lines(structural: dict) -> list[str]:
     auction = structural.get("auction") or {}
     gpif = structural.get("gpif") or {}
-    survey = structural.get("boj_survey") or {}
-    intervention = structural.get("intervention") or {}
-    fx = structural.get("fx") or {}
-    lines = ["②-1 실제 자금 수요·시장 기능"]
+    lines = ["③ 실제 자금·전염"]
 
     if auction:
         accepted_yen = fnum(auction.get("accepted_billion_yen"))
         accepted_yen = None if accepted_yen is None else accepted_yen * 1e9
         lines.append(
-            "- JGB 입찰: "
-            f"{str(auction.get('tenor','')).replace('-Year','년')} {auction.get('grade','확인 불가')} / "
-            f"응찰배율 {fnum(auction.get('bid_to_cover')):.2f}배 / "
-            f"꼬리 {fnum(auction.get('tail_bp')):.1f}bp / "
-            f"낙찰 {format_yen_trillion(accepted_yen)}({format_krw(auction.get('accepted_krw'))})."
+            "• JGB 입찰 │ "
+            f"{str(auction.get('tenor','')).replace('-Year','년')} {auction.get('grade','확인 불가')} · "
+            f"응찰 {fnum(auction.get('bid_to_cover')):.2f}배 · 꼬리 {fnum(auction.get('tail_bp')):.1f}bp · "
+            f"낙찰 {format_yen_trillion(accepted_yen)}({format_krw(auction.get('accepted_krw'))})"
         )
     else:
-        lines.append("- JGB 입찰: 최근 공식 결과 확인 불가.")
+        lines.append("• JGB 입찰 │ 최근 공식 결과 확인 불가")
 
     if gpif:
         actual = gpif.get("actual_pct") or {}
         target = gpif.get("target_pct") or {}
-        tol = gpif.get("tolerance_pp") or {}
         domestic = fnum(actual.get("domestic_bonds"))
         target_domestic = fnum(target.get("domestic_bonds"))
-        tolerance = fnum(tol.get("domestic_bonds"))
-        if None not in (domestic, target_domestic, tolerance):
-            low, high = target_domestic - tolerance, target_domestic + tolerance
+        if None not in (domestic, target_domestic):
             lines.append(
-                f"- GPIF: 국내채권 실제 {domestic:.2f}% / 목표 {target_domestic:.0f}% / 허용 {low:.0f}~{high:.0f}%. "
-                f"1%p = {fnum(gpif.get('one_pct_point_trillion_yen')):.2f}조엔({format_krw(gpif.get('one_pct_point_krw'))})."
+                f"• GPIF │ 국내채권 {domestic:.2f}% / 목표 {target_domestic:.0f}% · "
+                f"{gpif.get('zero_sum_summary','변화 확인 대기')}"
             )
-        lines.append(f"- GPIF 제로섬: {gpif.get('zero_sum_summary','첫 기준선 저장 — 다음 공식 분기와 비교')}.")
-    else:
-        lines.append("- GPIF: 공식 자산배분 확인 불가 — 추정값 사용 안 함.")
-
-    if survey:
-        lines.append(
-            f"- BOJ 채권시장 서베이: {survey.get('label','확인 불가')} / 공개일 {survey.get('posted_date','확인 불가')}. "
-            "시장 기능도·장기금리 전망은 공식 원문 수치가 확인될 때만 해석."
-        )
-    else:
-        lines.append("- BOJ 채권시장 서베이: 최신 공식 발표 확인 불가.")
-
-    if intervention:
-        amount = intervention.get("amount_yen")
-        if amount is not None:
-            lines.append(
-                f"- 외환개입: 최신 월간 총액 {format_yen_trillion(amount)}({format_krw(intervention.get('amount_krw'))}). "
-                "실시일별 금액이 없는 월간 총액으로 1조엔당 개입효율을 계산하지 않음."
-            )
-        if intervention.get("next_daily_detail_release"):
-            lines.append(f"- 개입 효율 다음 검산: {intervention['next_daily_detail_release']} 공식 일별자료 공개 후 24시간·5거래일 잔존효과 계산.")
-
-    if fx:
-        lines.append(
-            f"- 원화 환산 기준: FRED 동일 기준일 {fx.get('date')} / USD/KRW {fnum(fx.get('usdkrw')):,.2f} / "
-            f"USD/JPY {fnum(fx.get('usdjpy')):.3f} / 1엔={fnum(fx.get('yenkrw')):.4f}원."
-        )
     return lines
-
 
 def structural_source_lines(structural: dict) -> list[str]:
     lines: list[str] = []
     auction = structural.get("auction") or {}
     gpif = structural.get("gpif") or {}
-    survey = structural.get("boj_survey") or {}
-    intervention = structural.get("intervention") or {}
     if auction.get("url"):
-        lines.append(f"- 일본 재무성 JGB 입찰 결과: {auction['url']}")
+        lines.append(f"- JGB 입찰: {auction['url']}")
     if gpif.get("url"):
-        lines.append(f"- GPIF 최신 자산배분: {gpif['url']}")
-    if gpif.get("target_pct"):
-        lines.append("- GPIF 기본 포트폴리오: https://www.gpif.go.jp/gpif/portfolio.html")
-    if survey.get("url"):
-        lines.append(f"- BOJ 채권시장 서베이: {survey['url']}")
-    if intervention.get("url"):
-        lines.append(f"- 일본 재무성 외환시장 개입 실적: {intervention['url']}")
-    if intervention.get("overview_url"):
-        lines.append(f"- 일본 재무성 외환개입 공개 일정: {intervention['overview_url']}")
+        lines.append(f"- GPIF: {gpif['url']}")
     return lines
-
 
 def main() -> int:
     now = datetime.now(KST)
@@ -326,62 +280,48 @@ def main() -> int:
     nas_ch = fnum(nasdaq.get("change_pct"))
     nik_ch = fnum(nikkei.get("change_pct"))
 
+    vix_text = (
+        f"{vix.get('value')} ({vix_ch:+.2f}%, {vix.get('date')})"
+        if vix and vix_ch is not None else "확인 불가"
+    )
+    nik_text = f"{nik_ch:+.2f}%({nikkei.get('date')})" if nik_ch is not None else "확인 불가"
+    nas_text = f"{nas_ch:+.2f}%({nasdaq.get('date')})" if nas_ch is not None else "확인 불가"
+
     lines = [
-        f"[글로벌 금리·엔캐리 경보] {emoji}",
-        f"판정: {risk_label}",
-        f"조회: {now.strftime('%Y-%m-%d %H:%M:%S')} KST",
+        f"[글로벌 금리·엔캐리] {emoji} {risk_label}",
+        f"조회 │ {now.strftime('%Y-%m-%d %H:%M:%S')} KST",
         "",
-        "① 무엇이 바뀌었나",
+        "① 이번 변화",
         *event_text,
         "",
-        "② 선행 신호",
-        f"{mark(jgb10_3)} JGB 10Y 3.0% 경계: " + (f"{jgb10:.3f}%" if jgb10 is not None else "확인 불가"),
-        f"{mark(curve_up)} 일본 금리곡선 동반 상승: " + (
-            f"2Y {jgb2:.3f}%({d2:+.1f}bp) / 5Y {jgb5:.3f}%({d5:+.1f}bp) / 10Y {jgb10:.3f}%({d10:+.1f}bp)"
-            if None not in (jgb2, jgb5, jgb10, d2, d5, d10) else "5년 포함 일부 확인 불가"
+        "② 핵심 신호",
+        f"{mark(jgb10_3)} JGB10 │ " + (f"{jgb10:.3f}% · 3% 경계" if jgb10 is not None else "확인 불가"),
+        f"{mark(curve_up)} JGB 곡선 │ " + (
+            f"2Y {jgb2:.3f}({d2:+.1f}bp) · 5Y {jgb5:.3f}({d5:+.1f}bp) · 10Y {jgb10:.3f}({d10:+.1f}bp)"
+            if None not in (jgb2, jgb5, jgb10, d2, d5, d10) else "확인 불가"
         ),
-        f"{mark(spread_narrow)} 미·일 2Y 금리차 축소: " + (f"{spread:.3f}%p / 변화 {fmt_change(spread_change_bp,'bp')}" if spread is not None else "확인 불가"),
-        f"{mark(us_rates_down)} 미국 2Y 하락 가속: " + (f"{ust2:.3f}% / 변화 {fmt_change(ust2_change_bp,'bp')}" if ust2 is not None else "확인 불가"),
-        f"{mark(yen_surge)} 엔화 급등: " + (f"USD/JPY {usdjpy:.3f} / 기준변화 {usd_day:+.2f}% / 현재 방향 {fx_state['direction']}" if usdjpy is not None and usd_day is not None else "확인 불가"),
-        f"• 엔화 강세 수준: {mark(yen_strong_level)} " + (f"USD/JPY {usdjpy:.3f} (155 이하 여부; 방향 신호와 분리)" if usdjpy is not None else "확인 불가"),
-        "⬜ BOJ 시장 내재 인상확률: 신뢰 가능한 공개 자동 시계열 미연결. 주요매체가 숫자를 명시한 경우에만 ‘보도값’으로 별도 사용 — 임의 추정 안 함.",
+        f"{mark(spread_narrow)} 미·일2Y │ " + (f"{spread:.3f}%p · 변화 {fmt_change(spread_change_bp,'bp')}" if spread is not None else "계산 보류"),
+        f"{mark(yen_surge)} 엔화 급등: " + (f"USD/JPY {usdjpy:.3f} / {usd_day:+.2f}% / {fx_state['direction']}" if usdjpy is not None and usd_day is not None else "확인 불가"),
+        f"{mark(us_rates_down)} 미국2Y │ " + (f"{ust2:.3f}% · {fmt_change(ust2_change_bp,'bp')}" if ust2 is not None else "확인 불가"),
         "",
         *structural_lines(structural),
+        f"• 후행시장 │ VIX {vix_text} · Nikkei {nik_text} · Nasdaq {nas_text}",
+        f"• 전염 확인 │ {confirm_count}/2 · {'동반 청산 신호 있음' if confirm_count else '동반 청산 신호 없음'}",
         "",
-        "③ 실제 청산 전염 확인",
-        f"{mark(vix_spike)} VIX 급등: " + (f"{vix.get('value')} / 1일 {vix_ch:+.2f}% / 기준일 {vix.get('date')}" if vix else "확인 불가"),
-        f"{mark(equity_joint)} Nikkei·Nasdaq 동반 급락: " + (
-            f"Nikkei {nik_ch:+.2f}%({nikkei.get('date')}) / Nasdaq {nas_ch:+.2f}%({nasdaq.get('date')})"
-            if nik_ch is not None and nas_ch is not None else "확인 불가"
-        ),
-        "- VIX·Nikkei·Nasdaq은 FRED 일간 후행 확인값. 장중 실시간 값으로 오인하지 않음.",
-        "- FX 변동성 직접지수는 아직 미연결. 현재는 USD/JPY 자체 급변과 VIX를 보조 확인.",
+        "④ 판정",
+        f"• {emoji} {risk_label} │ 선행 {leading_count}/5 · 후행 {confirm_count}/2",
+        "• JGB 3%만으로 청산 확정하지 않음. 미·일 단기금리차 축소 + USD/JPY 급락 + VIX/주식 전염이 겹칠 때 단계 상향.",
         "",
-        "④ 정확한 의미",
-        "- JGB 10Y 3% = 엔캐리 자동 청산선 아님. 일본 FY2026 예산 금리 가정과 겹치는 재정·심리 경계선.",
-        "- USD/JPY 155 이하는 엔화가 강한 가격대라는 참고값일 뿐, 엔화 급등 신호가 아님. 엔화 급등은 USD/JPY 변화율 하락으로만 판정.",
-        "- JGB 금리가 올라가도 입찰 수요가 강하면 ‘시장 스트레스’로 자동 승격하지 않음. 응찰배율·꼬리까지 같이 확인.",
-        "- GPIF 국내채권 확대는 반대편 자산이 무엇인지 확인해야 환율·미국채·주식 수급 방향을 판단할 수 있음.",
-        "- 실제 청산은 BOJ 긴축·일본 단기금리↑ → 미·일 2년 금리차↓ → USD/JPY 급락 → 변동성·주식 전염 순서가 핵심.",
-        "- 2024년 8월 급락은 JGB 3% 때문이 아니라 BOJ 인상 + 미국 금리 하락 + 엔화 급등 + 레버리지 청산이 겹친 사례.",
-        "",
-        "⑤ 시장 영향",
-        "- 엔화: 청산 확인 시 강세 가속 가능. GPIF 해외자산 축소가 동반되면 환류 신호 강화.",
-        "- 미국채: GPIF가 국내채권을 늘리면서 외국채권을 줄이는 경우에만 직접 수급 부담을 강하게 판정.",
-        "- Nasdaq·SOX·XBI·KOSDAQ: 실질금리·레버리지 축소가 겹치면 고밸류·듀레이션 자산 부담.",
-        "- Nikkei: 엔화 급등과 디레버리징이 동시에 나오면 수출주·레버리지 포지션 부담 확대.",
-        "",
-        "⑥ 현재 한 줄",
-        f"{emoji} {risk_label}: 선행 {leading_count}/5, 후행확인 {confirm_count}/2. 구조 신호는 실제 자금행동 확인용이며 단독으로 엔캐리 청산을 확정하지 않습니다.",
+        "⑤ 다음 확인",
+        "• BOJ 정책·JGB 입찰·일본 재무성 주간 해외증권투자",
+        "• 특히 USD/JPY 급락, 미·일2Y 급축소, VIX 급등, Nikkei·Nasdaq 동반 약세 여부",
         "",
         "출처",
         f"- 일본 재무성 JGB ({jgb_date}): {JGB_URL}",
-        f"- 일본 FY2026 예산 가정: {JAPAN_BUDGET_URL}",
         f"- 미국 재무부 국채 ({data_dates.get('ust10','')}): {UST_URL}",
-        f"- Federal Reserve/FRED USD/JPY: {FRED_USDJPY}",
-        f"- BIS 2024년 8월 캐리 청산 분석: {BIS_2024}",
         *structural_source_lines(structural),
     ]
+
     if jgb_error:
         lines += ["", f"※ JGB 5년 공식값 보강 오류: {jgb_error}"]
     structural_errors = structural.get("errors") or []
