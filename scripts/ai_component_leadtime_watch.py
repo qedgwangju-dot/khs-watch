@@ -47,35 +47,6 @@ BASELINE = {
     "seen_urls": ["https://insights.trendforce.com/p/weekly-radar-002"],
 }
 
-CPU_BASELINE = {
-    "as_of": "2026-08-12",
-    "source": "BofA Global Research (2026-08-12), public recap verification",
-    "source_url": "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12",
-    "server_cpu_tam_2030_bn": 210.6,
-    "server_cpu_tam_2026_bn": 61.4,
-    "agentic_cpu_tam_2030_bn": 90.2,
-    "compute_head_cpu_tam_2030_bn": 90.2,
-    "traditional_cpu_tam_2030_bn": 30.0,
-    "ai_cpu_tam_2030_bn": 180.4,
-    "agentic_share_pct": 42.8,
-    "ai_related_share_pct": 85.7,
-    "cpu_gpu_ratio": "1:1",
-    "prior_server_cpu_tam_2030_bn": 170.0,
-    "earlier_server_cpu_tam_2030_bn": 125.0,
-    "seen_urls": [
-        "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12"
-    ],
-}
-
-CPU_SEARCHES = [
-    ("google_news", '"BofA" "server CPU" (agentic OR agents) (2030 OR TAM)'),
-    ("bing_web", '"BofA" "server CPU TAM" agentic 2030 210'),
-    ("bing_web", '"Rise of the Agents" "server CPU" BofA'),
-    ("bing_web", 'site:amd.com "agentic AI" "CPU" "GPU" "1:1"'),
-    ("bing_web", 'site:ir.amd.com "agentic AI" EPYC server CPU'),
-    ("bing_web", 'site:intc.com server CPU AI agentic data center revenue'),
-]
-
 SEARCHES = [
     ("trendforce_feed", ""),
     (
@@ -534,223 +505,6 @@ def source_score(url: str, components: dict, text: str) -> int:
     return score
 
 
-def cpu_source_score(url: str, text: str) -> int:
-    host = (urlparse(url).hostname or "").lower()
-    low = (text or "").lower()
-    score = 0
-    if "bank of america" in low or "bofa" in low:
-        score += 300
-    if "server cpu" in low:
-        score += 150
-    if "agentic" in low:
-        score += 100
-    if "amd.com" in host or "intc.com" in host:
-        score += 400
-    if "finvaulta.com" in host:
-        score += 250
-    return score
-
-
-def _context_number(text: str, phrases: tuple[str, ...], max_chars: int = 220) -> float | None:
-    low = text.lower()
-    for phrase in phrases:
-        start = 0
-        while True:
-            pos = low.find(phrase.lower(), start)
-            if pos < 0:
-                break
-            chunk = text[max(0, pos - 80): min(len(text), pos + max_chars)]
-            m = re.search(r"\$?\s*(\d{2,4}(?:\.\d+)?)\s*(?:bn|billion|b)\b", chunk, re.I)
-            if m:
-                try:
-                    return float(m.group(1))
-                except Exception:
-                    pass
-            start = pos + len(phrase)
-    return None
-
-
-def extract_cpu_snapshot(text: str, source_url: str = "") -> dict:
-    low = (text or "").lower()
-    if "server cpu" not in low and not ("agentic" in low and "cpu" in low):
-        return {}
-
-    out: dict[str, object] = {}
-    server = _context_number(text, ("server cpu tam", "server cpu market", "server cpu total addressable market", "cpu tam"))
-    if server is not None and 50 <= server <= 500:
-        out["server_cpu_tam_2030_bn"] = server
-
-    agentic = _context_number(
-        text,
-        ("agentic ai cpu racks", "agentic ai nodes", "agentic cpu", "standalone processors running ai agents", "agentic ai")
-    )
-    if agentic is not None and 10 <= agentic <= 250:
-        out["agentic_cpu_tam_2030_bn"] = agentic
-
-    ai_cpu = _context_number(text, ("ai cpu tam", "ai cpus grow", "ai cpu"))
-    if ai_cpu is not None and 50 <= ai_cpu <= 350:
-        out["ai_cpu_tam_2030_bn"] = ai_cpu
-
-    # 2030 agentic share. Only accept when the percent is near an agentic phrase.
-    for m in re.finditer(r"agentic[^.\n]{0,160}?(\d{1,2}(?:\.\d+)?)\s*%", text, re.I):
-        pct = float(m.group(1))
-        if 10 <= pct <= 90:
-            out["agentic_share_pct"] = pct
-            break
-
-    ratio = re.search(r"(?:cpu\s*(?:-|to|:)\s*gpu|cpu[- ]to[- ]gpu)[^.\n]{0,100}?\b(\d+)\s*[:to-]\s*(\d+)\b", text, re.I)
-    if not ratio:
-        ratio = re.search(r"(?:toward|towards|to|at)\s*(?:roughly|about|~)?\s*(\d+)\s*:\s*(\d+)", text, re.I)
-    if ratio:
-        out["cpu_gpu_ratio"] = f"{ratio.group(1)}:{ratio.group(2)}"
-
-    if "bofa" in low or "bank of america" in low:
-        out["source_kind"] = "BofA 전망"
-    elif "amd.com" in source_url.lower():
-        out["source_kind"] = "AMD 공식"
-    elif "intc.com" in source_url.lower():
-        out["source_kind"] = "Intel 공식"
-    else:
-        out["source_kind"] = "신뢰 보도"
-
-    out["source_url"] = source_url
-    return out
-
-
-def cpu_actual_validation_event(text: str, source_url: str) -> str:
-    host = (urlparse(source_url).hostname or "").lower()
-    low = (text or "").lower()
-    official = any(x in host for x in ("amd.com", "intc.com"))
-    if not official:
-        return ""
-    if not any(k in low for k in ("agentic", "epyc", "xeon", "server cpu", "data center cpu")):
-        return ""
-    if any(k in low for k in ("validating", "validation", "deploy at scale", "deployed", "production", "unit volume", "shipments", "revenue")):
-        if "amd.com" in host:
-            return "AMD 공식자료에서 Agentic AI/EPYC의 실제 검증·배치·생산 신호 확인"
-        if "intc.com" in host:
-            return "Intel 공식자료에서 서버 CPU의 실제 출하·매출·수요 검증 신호 확인"
-    return ""
-
-
-def cpu_material_changes(old: dict, new: dict) -> list[str]:
-    changes: list[str] = []
-    for key in ("server_cpu_tam_2030_bn", "agentic_cpu_tam_2030_bn", "ai_cpu_tam_2030_bn"):
-        ov = old.get(key)
-        nv = new.get(key)
-        if isinstance(ov, (int, float)) and isinstance(nv, (int, float)) and ov:
-            if abs(float(nv) / float(ov) - 1.0) >= 0.10:
-                changes.append(key)
-    ov = old.get("agentic_share_pct")
-    nv = new.get("agentic_share_pct")
-    if isinstance(ov, (int, float)) and isinstance(nv, (int, float)):
-        if abs(float(nv) - float(ov)) >= 5.0:
-            changes.append("agentic_share_pct")
-    if new.get("cpu_gpu_ratio") and old.get("cpu_gpu_ratio") and new.get("cpu_gpu_ratio") != old.get("cpu_gpu_ratio"):
-        changes.append("cpu_gpu_ratio")
-    return changes
-
-
-def cpu_snapshot_summary(cpu: dict) -> list[str]:
-    total = cpu.get("server_cpu_tam_2030_bn")
-    agentic = cpu.get("agentic_cpu_tam_2030_bn")
-    ai_total = cpu.get("ai_cpu_tam_2030_bn")
-    share = cpu.get("agentic_share_pct")
-    ratio = cpu.get("cpu_gpu_ratio")
-    lines: list[str] = []
-    if isinstance(total, (int, float)):
-        lines.append(f"2030 서버 CPU 시장 {float(total):.1f}십억달러")
-    if isinstance(agentic, (int, float)):
-        lines.append(f"에이전트형 AI CPU {float(agentic):.1f}십억달러")
-    if isinstance(share, (int, float)):
-        lines.append(f"에이전트형 비중 {float(share):.1f}%")
-    if isinstance(ai_total, (int, float)):
-        lines.append(f"AI CPU 전체 {float(ai_total):.1f}십억달러")
-    if ratio:
-        lines.append(f"CPU:GPU {ratio}")
-    return lines
-
-
-def build_cpu_alert(
-    old: dict,
-    new: dict,
-    changes: list[str],
-    source_url: str,
-    published: str,
-    validation_note: str = "",
-) -> str:
-    lines = [
-        "<b>🚨 AI 인프라 병목 감시 — CPU·에이전트형 AI 변화</b>",
-        "",
-        "<b>핵심 변화</b>",
-    ]
-    label_map = {
-        "server_cpu_tam_2030_bn": "2030 서버 CPU 시장",
-        "agentic_cpu_tam_2030_bn": "2030 에이전트형 AI CPU",
-        "ai_cpu_tam_2030_bn": "2030 AI CPU 전체",
-        "agentic_share_pct": "에이전트형 비중",
-        "cpu_gpu_ratio": "CPU:GPU 구조",
-    }
-    for key in changes:
-        label = label_map.get(key, key)
-        ov, nv = old.get(key), new.get(key)
-        if key.endswith("_bn"):
-            lines.append(f"• <b>{label}</b>: {ov} → {nv}십억달러")
-        elif key.endswith("_pct"):
-            lines.append(f"• <b>{label}</b>: {ov}% → {nv}%")
-        else:
-            lines.append(f"• <b>{label}</b>: {html.escape(str(ov))} → {html.escape(str(nv))}")
-
-    if validation_note:
-        lines.append(f"• <b>실제 수요 검증:</b> {html.escape(validation_note)}")
-
-    lines += [
-        "",
-        "<b>수익구조</b>",
-        "• 에이전트형 AI 확산 → 별도 CPU 연산·오케스트레이션 계층 증가 → 서버 CPU 출하·평균판매단가 → DDR5 RDIMM·기업용 SSD·네트워크·ABF 동반 수요",
-        "",
-        "<b>1단계 현재 숫자 추적</b>",
-    ]
-    for item in cpu_snapshot_summary(new):
-        lines.append("• " + html.escape(item))
-
-    lines += [
-        "",
-        "<b>2단계 미래 재평가 요인 발굴</b>",
-        "• BofA 기준선은 2030 서버 CPU 2,106억달러, 에이전트형 AI CPU 902억달러, AI CPU 전체 1,804억달러입니다.",
-        "• AMD는 Agentic AI에서 CPU:GPU가 기존 1:4~1:8에서 1:1 방향으로 이동하며 별도 CPU compute layer가 필요하다고 설명합니다.",
-        "• 따라서 실제 재평가는 전망치 자체보다 CPU 서버 주문·출하와 CPU당 RDIMM·eSSD 탑재량이 확인될 때 강화됩니다.",
-        "",
-        "<b>관련 기업 지도</b>",
-        "• CPU 직접: AMD·Intel·Arm 생태계 — 서버 CPU 출하·평균판매단가",
-        "• 서버 메모리: 삼성전자·SK하이닉스·Micron — DDR5·고용량 RDIMM",
-        "• 기업용 SSD: 삼성전자·SK하이닉스/Solidigm·Micron — eSSD·NAND",
-        "• 기판: 삼성전기·Ibiden·Unimicron·Nan Ya PCB — 서버 CPU용 FC-BGA/ABF",
-        "• 시스템·네트워크: Dell·HPE·Supermicro / Broadcom·NVIDIA — 노드·연결 수요",
-        "",
-        "<b>공정 병목 후보</b>",
-        "• CPU 공급 | 첨단공정·패키징·ABF | 먼저 볼 지표: 서버 CPU 리드타임·출하",
-        "• 메모리 | 고용량 DDR5·RDIMM | 먼저 볼 지표: 64GB·128GB RDIMM 가격·재고",
-        "• 저장장치 | KV 캐시·상태 저장 | 먼저 볼 지표: 기업용 SSD 출하·평균판매단가",
-        "",
-        "<b>숨은 역풍·실패모드</b>",
-        "• 가장 현실적인 실패 경로: 에이전트 사용량은 늘지만 가상화·통합·소프트웨어 효율화가 더 빨라 실제 CPU 노드 증설이 전망을 밑도는 경우",
-        "• 조기경보: CPU 서버 주문·출하가 전망 상향을 따라오지 않거나 RDIMM·eSSD 가격과 출하가 동반 둔화",
-        "• 위험 구간: 6~12개월은 주문 검증, 12~24개월은 실제 노드 배치·메모리·스토리지 동반 증가 확인",
-        "",
-        "<b>결론</b>",
-        "• CPU 축은 별도 테마가 아니라 기존 DRAM·eSSD·ABF·MLCC 병목의 수요 원인을 설명하는 상위 수요축으로 추적합니다.",
-        "",
-        "<b>핵심 한 줄 요약</b>",
-        "• 에이전트형 AI의 CPU 구조 전망이 materially 상향되면 서버 CPU → DDR5 RDIMM → eSSD → 네트워크·ABF로 수요가 확장되는지 실제 주문·출하로 재검증합니다.",
-    ]
-    if published:
-        lines.append(f"• 공개시각: {html.escape(published)}")
-    if source_url:
-        lines.append(f'• <a href="{html.escape(source_url, quote=True)}">근거 원문</a>')
-    return "\n".join(lines).strip() + "\n"
-
-
 def load_json(path: pathlib.Path) -> dict:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -875,10 +629,8 @@ def build_alert(
     signals: dict[str, str] | None = None,
     changed_signals: list[str] | None = None,
     evidence: dict[str, set[str]] | None = None,
-    cpu_state: dict | None = None,
 ) -> str:
     signals = signals or {}
-    cpu_state = cpu_state or CPU_BASELINE
     changed_signals = changed_signals or []
     ranked = bottleneck_ranking(new or old)
     strongest = ranked[0] if ranked else None
@@ -982,19 +734,6 @@ def build_alert(
     else:
         lines.append("• 이번 주 원인·시간표의 새로운 확인사항은 없습니다.")
 
-    lines += ["", "<b>CPU·에이전트형 AI 수요축</b>"]
-    cpu_parts = cpu_snapshot_summary(cpu_state)
-    if cpu_parts:
-        lines.append("• " + " / ".join(html.escape(x) for x in cpu_parts))
-    lines.append(
-        "• 수요 연결: 에이전트형 AI 노드 증가 → 서버 CPU 출하·평균판매단가 → "
-        "DDR5 RDIMM·기업용 SSD·네트워크·ABF·MLCC 동반 수요"
-    )
-    lines.append(
-        "• 기준선 변화 조건: 서버 CPU 시장·에이전트형 CPU 전망 ±10% 이상, "
-        "에이전트형 비중 ±5%p 이상, CPU:GPU 구조 변화, 실제 서버 주문·배치 확인"
-    )
-
     lines += ["", "<b>관련 기업 지도</b>"]
     lines.append("• 아래는 제품 노출 기준 관찰 대상이며, 이번 알림에서 신규 계약·수주가 확정됐다는 뜻은 아닙니다.")
     for name in focus:
@@ -1075,9 +814,6 @@ def main() -> None:
     previous_components = previous.get("components") or BASELINE["components"]
     seen_urls = set(previous.get("seen_urls") or [])
 
-    previous_cpu = copy.deepcopy(state.get("agentic_cpu_watch") or CPU_BASELINE)
-    cpu_seen_urls = set(previous_cpu.get("seen_urls") or CPU_BASELINE["seen_urls"])
-
     candidates: list[dict] = []
     errors: list[str] = []
     cutoff = now - timedelta(days=21)
@@ -1122,87 +858,6 @@ def main() -> None:
 
     candidates.sort(key=lambda x: (x.get("score", 0), x.get("published_at_kst") or ""), reverse=True)
     best = candidates[0] if candidates else None
-
-    cpu_candidates: list[dict] = []
-    cpu_errors: list[str] = []
-    cpu_cutoff = now - timedelta(days=120)
-    for kind, query in CPU_SEARCHES:
-        try:
-            items = read_rss(kind, query)
-        except Exception as exc:
-            cpu_errors.append(f"{kind}: {type(exc).__name__}: {exc}")
-            continue
-        for item in items:
-            direct = candidate_url(item)
-            if not direct:
-                continue
-            published = item.get("published_at_kst") or ""
-            if published:
-                try:
-                    dt = datetime.fromisoformat(published)
-                    if dt < cpu_cutoff:
-                        continue
-                except Exception:
-                    pass
-            body = article_text(direct)
-            full_text = clean_text(f"{item.get('title','')} {item.get('description','')} {body}")
-            snapshot = extract_cpu_snapshot(full_text, direct)
-            validation_note = cpu_actual_validation_event(full_text, direct)
-            if not snapshot and not validation_note:
-                continue
-            cpu_candidates.append(
-                {
-                    **item,
-                    "direct_url": direct,
-                    "full_text": full_text,
-                    "snapshot": snapshot,
-                    "validation_note": validation_note,
-                    "score": cpu_source_score(direct, full_text) + len(snapshot) * 20 + (80 if validation_note else 0),
-                }
-            )
-    cpu_candidates.sort(key=lambda x: (x.get("score", 0), x.get("published_at_kst") or ""), reverse=True)
-    best_cpu = cpu_candidates[0] if cpu_candidates else None
-
-    latest_cpu = copy.deepcopy(previous_cpu)
-    cpu_notify_text = ""
-    new_cpu_seen = set(cpu_seen_urls)
-    if best_cpu:
-        cpu_url = best_cpu.get("direct_url") or ""
-        cpu_published = best_cpu.get("published_at_kst") or ""
-        if cpu_url:
-            new_cpu_seen.add(cpu_url)
-        cpu_snapshot = best_cpu.get("snapshot") or {}
-        cpu_validation = best_cpu.get("validation_note") or ""
-        merged_cpu = copy.deepcopy(previous_cpu)
-        for key, value in cpu_snapshot.items():
-            if key in ("source_kind", "source_url"):
-                continue
-            if value not in (None, ""):
-                merged_cpu[key] = value
-        cpu_changes = cpu_material_changes(previous_cpu, merged_cpu)
-        is_new_cpu_url = bool(cpu_url and cpu_url not in cpu_seen_urls)
-        if cpu_changes or (cpu_validation and is_new_cpu_url):
-            cpu_notify_text = build_cpu_alert(
-                previous_cpu,
-                merged_cpu,
-                cpu_changes,
-                cpu_url,
-                cpu_published,
-                validation_note=cpu_validation,
-            )
-            latest_cpu = merged_cpu
-            latest_cpu["as_of"] = cpu_published[:10] if cpu_published else now.date().isoformat()
-            latest_cpu["source"] = str(cpu_snapshot.get("source_kind") or "외부 검증")
-            latest_cpu["source_url"] = cpu_url
-        latest_cpu["seen_urls"] = sorted(new_cpu_seen)[-120:]
-        latest_cpu["last_checked_at_kst"] = now.isoformat(timespec="seconds")
-        latest_cpu["candidate_count"] = len(cpu_candidates)
-        latest_cpu["errors"] = cpu_errors[-10:]
-    else:
-        latest_cpu["seen_urls"] = sorted(new_cpu_seen)[-120:]
-        latest_cpu["last_checked_at_kst"] = now.isoformat(timespec="seconds")
-        latest_cpu["candidate_count"] = 0
-        latest_cpu["errors"] = cpu_errors[-10:]
 
     previous_signals = previous.get("signals") or BASELINE.get("signals") or {}
     latest_components = copy.deepcopy(previous_components)
@@ -1267,7 +922,6 @@ def main() -> None:
                 # 새 Weekly Radar에서는 이번 주 확인된 원인·병목 신호를 모두 보여준다.
                 changed_signals=[name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
                 evidence=evidence,
-                cpu_state=latest_cpu,
             )
             notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
             latest_components = merged
@@ -1285,7 +939,6 @@ def main() -> None:
                 signals=extracted_signals,
                 changed_signals=[name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
                 evidence=evidence,
-                cpu_state=latest_cpu,
             )
             notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
             latest_signals = merged_signals
@@ -1302,11 +955,6 @@ def main() -> None:
         "candidate_count": len(candidates),
         "errors": errors[-10:],
     }
-    pending["agentic_cpu_watch"] = latest_cpu
-
-    if cpu_notify_text:
-        notify_text = (notify_text.rstrip() + "\n\n" + cpu_notify_text.strip()).strip() + "\n" if notify_text else cpu_notify_text
-
     write_json(PENDING_PATH, pending)
 
     if notify_text:
@@ -1316,10 +964,8 @@ def main() -> None:
 
     print(
         "ai_component_leadtime_watch=true "
-        f"candidates={len(candidates)} cpu_candidates={len(cpu_candidates)} "
-        f"notify={str(bool(notify_text)).lower()} "
-        f"source={best.get('direct_url') if best else 'none'} "
-        f"cpu_source={best_cpu.get('direct_url') if best_cpu else 'none'}"
+        f"candidates={len(candidates)} notify={str(bool(notify_text)).lower()} "
+        f"source={best.get('direct_url') if best else 'none'}"
     )
 
 
