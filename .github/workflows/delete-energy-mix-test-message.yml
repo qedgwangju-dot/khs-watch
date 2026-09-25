@@ -1,0 +1,44 @@
+name: Delete energy mix duplicate test message
+
+on:
+  push:
+    paths:
+      - ".github/workflows/delete-energy-mix-test-message.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete duplicate validation message
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.ENERGY_MIX_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.ENERGY_MIX_TELEGRAM_CHAT_ID }}
+          FALLBACK_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          EXPECTED_TELEGRAM_BOT_USERNAME: khs887988798879887988798879_bot
+          MESSAGE_ID: "84"
+        run: |
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip() or os.environ.get("FALLBACK_TELEGRAM_CHAT_ID", "").strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          message_id = int(os.environ["MESSAGE_ID"])
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as r:
+              me = json.load(r)
+          actual = str(me.get("result", {}).get("username", ""))
+          if not me.get("ok") or actual.lower() != expected.lower():
+              raise SystemExit(f"wrong bot: expected=@{expected} actual=@{actual or 'unknown'}")
+
+          body = urllib.parse.urlencode({"chat_id": chat_id, "message_id": message_id}).encode()
+          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/deleteMessage", data=body, method="POST")
+          with urllib.request.urlopen(req, timeout=20) as r:
+              result = json.load(r)
+          if not result.get("ok"):
+              raise SystemExit(f"delete failed: {result}")
+          print(f"telegram_delete_confirmed=true bot=@{actual} message_id={message_id}")
+          PY
