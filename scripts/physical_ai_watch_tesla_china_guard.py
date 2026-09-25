@@ -40,6 +40,8 @@ TESLA_APP_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/scr
 TESLA_APP_X_SOURCE = 'Tesla App Updates (X)'
 TESLA_GEN3_APK_SENTINEL = 'DIRECT_TESLA_OPTIMUS_GEN3_APK_ASSET_20260923'
 TESLA_GEN3_APK_SOURCE = 'Tesla APK 역공학 관측'
+TESLA_RAMP_BOTTLENECK_SENTINEL = 'DIRECT_TESLA_OPTIMUS_RAMP_BOTTLENECK_20260925'
+TESLA_RAMP_BOTTLENECK_SOURCE = 'The Information'
 TESLA_KOREA_SUPPLIER_SENTINEL = 'DIRECT_TESLA_KOREA_SUPPLIER_SCOUTING_20260924'
 TESLA_KOREA_SUPPLIER_SOURCE = '한국경제'
 MUSK_X_SENTINEL = 'DIRECT_ELON_MUSK_OPTIMUS_X'
@@ -191,6 +193,8 @@ if _TESLA_KOREA_SUPPLIER_QUERY not in base.QUERIES:
 _TESLA_RAMP_BOTTLENECK_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("hundreds per week" OR "주당 수백 대" OR "10x" OR "10배" OR "1,000 per week" OR "20,000 per week" OR hand OR 손 OR forearm OR 전완 OR tactile OR 촉각) ("The Information" OR production OR 생산 OR supply chain OR 공급망)'
 if _TESLA_RAMP_BOTTLENECK_QUERY not in base.QUERIES:
     base.QUERIES.append(_TESLA_RAMP_BOTTLENECK_QUERY)
+if TESLA_RAMP_BOTTLENECK_SENTINEL not in base.QUERIES:
+    base.QUERIES.append(TESLA_RAMP_BOTTLENECK_SENTINEL)
 _TESLA_TRAINING_DATA_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("500,000 hours" OR "500k hours" OR "50만 시간" OR training data OR 학습 데이터) (year-end OR 연말 OR double OR 두배)'
 if _TESLA_TRAINING_DATA_QUERY not in base.QUERIES:
     base.QUERIES.append(_TESLA_TRAINING_DATA_QUERY)
@@ -572,7 +576,31 @@ def _query_elon_x() -> list[dict]:
         return []
 
 
+def _query_ramp_bottleneck_recovery() -> list[dict]:
+    # Short-lived recovery for the fresh The Information report surfaced by the user.
+    # Exact weekly-output/training-data figures are source-reported and remain Tesla-unconfirmed.
+    published = dt.datetime(2026, 9, 25, 10, 0, tzinfo=dt.timezone.utc)
+    if base.NOW - published > dt.timedelta(hours=120):
+        return []
+    return [{
+        'title': '테슬라 Optimus 생산 확대…손 조립·촉각센서·공급망 병목 보도',
+        'link': 'https://www.theinformation.com/articles/elon-musk-preps-teslas-optimus-prime-time-big-hurdles-remain',
+        'description': (
+            'The Information sources report Tesla increased Optimus production about 10x in recent months to hundreds of units per week. '
+            'Tesla is targeting a continuous automated line above 1,000 units per week by year-end and has discussed a long-term target near 20,000 per week. '
+            'Hands and forearms remain a bottleneck: more than 100 screws and small parts keep assembly labor-intensive, while tactile-sensor durability remains a concern. '
+            'Motors and precision gears sourced largely from external Chinese suppliers show quality and consistency problems as volumes rise. '
+            'The report also says Tesla has accumulated more than 500,000 hours of Optimus training data and aims to roughly double it by year-end.'
+        ),
+        'published': published.isoformat(),
+        'source': TESLA_RAMP_BOTTLENECK_SOURCE,
+        'source_reported_unconfirmed': True,
+    }]
+
+
 def query_news(q: str) -> list[dict]:
+    if q == TESLA_RAMP_BOTTLENECK_SENTINEL:
+        return _query_ramp_bottleneck_recovery()
     if q == TESLA_KOREA_SUPPLIER_SENTINEL:
         return _query_korea_supplier_recovery()
     if q == TESLA_GEN3_APK_SENTINEL:
@@ -884,7 +912,7 @@ def verification(item: dict, group: str, text: str) -> str:
         if _stage(text) == 'weekly_capacity_target':
             return '공급망 생산능력·목표 보도 · 실제 완제품 생산량과 분리'
         if _stage(text) == 'production_ramp_bottleneck':
-            return 'The Information·공급망 소식통 보도 단계 · Tesla 공식 주간 생산량/라인 가동률/학습데이터 수치 교차확인 필요'
+            return 'The Information 소식통 보도 · 공개 접근부에서 손/생산 병목은 확인, 주당 생산량·연말 자동화라인·50만시간 학습데이터 세부는 Tesla 공식 확인 전'
         if _stage(text) == 'production_started':
             return '양산 실제 개시 보도 · 테슬라 공식 생산상태와 후속 교차확인'
         if _stage(text) == 'app_generation_asset':
