@@ -153,7 +153,7 @@ def send_followup_alert(current_date, current_value, event, source):
             detail = '최초 이동 방향까지 되돌려 당일 반응의 지속성이 약합니다.'
 
     if ratio >= 1.0 and kept_direction:
-        ratio_plain = f'{ratio*100:.0f}% = 최초 움직임 전부 유지 + 추가 확대'
+        ratio_plain = f'{ratio*100:.0f}% = 최초 움직임을 전부 유지하고 같은 방향으로 {abs(next_bp):.1f}bp 추가 확대'
     else:
         ratio_plain = f'{ratio*100:.0f}% = 최초 움직임 가운데 현재 남아 있는 비율'
 
@@ -164,7 +164,7 @@ def send_followup_alert(current_date, current_value, event, source):
         f'• <b>첫날</b> | {base:.2f}% → {event_value:.2f}% ({original_bp:+.1f}bp)',
         f'• <b>다음 공식일</b> | {event_value:.2f}% → {current_value:.2f}% ({next_bp:+.1f}bp)',
         f'• <b>기준점 대비 누적</b> | {base:.2f}% → {current_value:.2f}% ({retained_bp:+.1f}bp)',
-        f'• <b>지속률</b> | {ratio_plain}', '',
+        f'• <b>유지·확대율</b> | {ratio_plain}', '',
         f'<b>판정: {html.escape(verdict)}</b>',
         f'• {html.escape(detail)}', '',
         '<b>쉽게 말하면</b>',
