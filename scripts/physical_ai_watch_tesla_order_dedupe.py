@@ -98,6 +98,17 @@ def _weekly_units(text: str) -> int | None:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    stage = opt._stage(text)
+    if stage == 'app_generation_asset':
+        return hashlib.sha256(b'tesla-optimus|gen3-apk-assets|4.60.5-4573').hexdigest()
+    if stage == 'home_app_integration':
+        return hashlib.sha256(b'tesla-optimus|home-app|charger-integration').hexdigest()
+    if stage == 'korea_supplier_scouting':
+        return hashlib.sha256(b'tesla-optimus|2026-h1|korea-supplier-scouting').hexdigest()
+    if stage == 'factory_structure':
+        return hashlib.sha256(b'tesla-optimus|giga-texas|factory-structure').hexdigest()
+    if stage == 'factory_tooling':
+        return hashlib.sha256(b'tesla-optimus|giga-texas|factory-tooling').hexdigest()
     units = _weekly_units(text)
     if opt.ACTUAL_WEEKLY.search(text):
         return hashlib.sha256(f'tesla-optimus|actual-weekly-production|{units or "unknown"}'.encode()).hexdigest()
