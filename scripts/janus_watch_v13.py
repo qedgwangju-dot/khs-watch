@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import html
+import hashlib
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -54,20 +55,23 @@ for term in [
         j2._PROTECTED_TERMS.append(term)
 
 _MATERIAL_FOLLOWUP = [
-    "final investment decision", " fid ", "feed", "epc", "engineering procurement construction",
-    "binding agreement", "development agreement", "contract", "order", "purchase order",
-    "selected site", "site selected", "permit", "license", "construction",
-    "financing", "loan", "equity", "offtake", "ppa", "deployment agreement",
-    "new country", "new site", "first concrete", "groundbreaking", "commercial operation",
-    "commissioning", "supply agreement", "equipment order", "award", "selected",
+    "final investment decision", " fid ", "definitive agreement",
+    "binding development agreement", "binding epc", "epc contract", "epc award",
+    "feed contract", "feed award", "purchase order", "equipment order",
+    "financial close", "financing closed", "loan approved", "equity committed",
+    "site selected", "selected site", "permit granted", "permit approved",
+    "license granted", "license approved", "construction start", "construction begins",
+    "groundbreaking", "first concrete", "commissioning", "commercial operation",
+    "supply agreement", "deployment agreement",
 ]
+
 _BASELINE_ONLY = [
     "implementation plan", "memorandum of cooperation", "moc",
     "memorandum of understanding", "mou", "advance bwrx-300 fleet deployment",
 ]
 
 
-def _fresh(pub: str, max_days: int = 65) -> bool:
+def _fresh(pub: str, max_days: int = 7) -> bool:
     if not pub:
         return True
     try:
@@ -85,11 +89,70 @@ def _clean_title(title: str) -> str:
 
 
 def _is_followup(low: str) -> bool:
-    return any(x in f" {low} " for x in _MATERIAL_FOLLOWUP)
+    padded = f" {low} "
+    return any(x in padded for x in _MATERIAL_FOLLOWUP)
 
 
-def _rss_kind(title: str, requested: str) -> str:
+def _scope_key(low: str) -> str:
+    if any(x in low for x in ["studsvik", "nyköping", "nykoping", "målma", "malma", "valdemarsvik", "sweden", "swedish"]):
+        return "studsvik_sweden"
+    if any(x in low for x in ["poland", "polish"]):
+        return "poland"
+    if any(x in low for x in ["united kingdom", " uk ", "britain", "british"]):
+        return "uk"
+    if any(x in low for x in ["europe", "european"]):
+        return "europe"
+    return "global"
+
+
+def _material_stage(low: str) -> str:
+    patterns = [
+        ("commercial_operation", ["commercial operation", "commercial service", "enters operation"]),
+        ("commissioning", ["commissioning"]),
+        ("construction_start", ["construction start", "construction begins", "groundbreaking", "first concrete"]),
+        ("equipment_order", ["purchase order", "equipment order", "long-lead order", "long lead order"]),
+        ("license_approved", ["license granted", "license approved", "permit granted", "permit approved"]),
+        ("fid", ["final investment decision", " fid "]),
+        ("financial_close", ["financial close", "financing closed"]),
+        ("epc_contract", ["binding epc", "epc contract", "epc award"]),
+        ("feed_contract", ["feed contract", "feed award"]),
+        ("binding_development", ["definitive agreement", "binding development agreement", "deployment agreement"]),
+        ("supply_agreement", ["supply agreement"]),
+    ]
+    padded = f" {low} "
+    for stage, terms in patterns:
+        if any(term in padded for term in terms):
+            return stage
+
+    # 'selected'만으로는 파트너 선정·공급사 평가·과거 기사까지 모두 잡히므로 금지.
+    # 실제 부지 확정 표현만 별도 상태로 인정한다.
+    if any(x in padded for x in [" site selected ", " selected site "]):
+        return "site_selected"
+    if any(site in low for site in ["nyköping", "nykoping", "målma", "malma", "valdemarsvik"]) and any(
+        phrase in low for phrase in ["selected as the site", "chosen as the site", "final site"]
+    ):
+        return "site_selected"
+    return ""
+
+
+def _is_known_bwrx_baseline(low: str) -> bool:
+    # 2026-09-03 Studsvik/ReFirm 4기·1.2GW 전략 파트너 선정은 영구 기준선.
+    studsvik = any(x in low for x in ["studsvik", "refirm"]) and (
+        any(x in low for x in ["1.2-gw", "1.2 gw", "1.2gw", "four-unit", "four unit", "4-unit", "4 unit"])
+        or any(x in low for x in ["strategic partner", "strategic collaborator", "selects ge vernova hitachi", "selected ge vernova hitachi"])
+    )
+    # 2026-09-22 SGE·GE Vernova·Hitachi·Samsung C&T MOU의 14기·4.2GW/유럽 플릿도 영구 기준선.
+    sge_mou = (
+        any(x in low for x in ["sge", "synthos", "samsung c&t", "samsung"])
+        and any(x in low for x in ["4.2gw", "4.2 gw", "14 bwrx-300", "14 reactors", "fleet deployment", "fleet in europe", "target europe", "targets europe"])
+    )
+    mou_only = any(x in low for x in ["memorandum of understanding", " mou ", "advance bwrx-300 fleet deployment"])
+    return studsvik or sge_mou or mou_only
+
+
+def _global_state_key(title: str, requested: str) -> str:
     low = (title or "").lower()
+    stage = _material_stage(low)
 
     if requested == "smr_trilateral_rss":
         if not any(x in low for x in ["smr", "small modular reactor"]):
@@ -100,21 +163,34 @@ def _rss_kind(title: str, requested: str) -> str:
             return ""
         if not any(x in low for x in ["united states", "u.s.", " us "]):
             return ""
-        # 기존 MOC/Implementation Plan 재보도는 차단.
-        if any(x in low for x in _BASELINE_ONLY) and not _is_followup(low):
+        # MOC·Implementation Plan 자체는 이미 9/23 기준선. 이후 실제 계약/부지/FID 등만 통과.
+        if not stage:
             return ""
-        return "smr_trilateral_deployment"
+        return f"smr_trilateral|{_scope_key(low)}|{stage}"
 
     if requested == "bwrx300_europe_rss":
         if "bwrx-300" not in low:
             return ""
-        if not any(x in low for x in ["samsung", "sge", "synthos", "ge vernova", "hitachi"]):
+        if not any(x in low for x in ["samsung", "sge", "synthos", "ge vernova", "hitachi", "studsvik", "refirm"]):
             return ""
-        # 9/22 MOU 재기사만 있는 경우 차단.
-        if any(x in low for x in ["mou", "memorandum of understanding", "advance bwrx-300 fleet"]) and not _is_followup(low):
+        # 늦게 발견된 9/3 Studsvik 선정기사, 9/22 유럽 MOU·4.2GW 기사 재보도는 신규 상태가 아니다.
+        if _is_known_bwrx_baseline(low) and not stage:
             return ""
-        return "bwrx300_europe_fleet"
+        if not stage:
+            return ""
+        return f"bwrx300_europe|{_scope_key(low)}|{stage}"
 
+    return ""
+
+
+def _rss_kind(title: str, requested: str) -> str:
+    state_key = _global_state_key(title, requested)
+    if not state_key:
+        return ""
+    if requested == "smr_trilateral_rss":
+        return "smr_trilateral_deployment"
+    if requested == "bwrx300_europe_rss":
+        return "bwrx300_europe_fleet"
     return ""
 
 
@@ -132,8 +208,10 @@ def _rss_items(source, page_text):
         pub = j2.base.norm(item.findtext("pubDate") or "")
         src = item.find("source")
         outlet = j2.base.norm(src.text if src is not None and src.text else "")
-        kind = _rss_kind(title, source.get("kind", ""))
-        if not title or not link or not kind or not _fresh(pub):
+        requested = source.get("kind", "")
+        kind = _rss_kind(title, requested)
+        state_key = _global_state_key(title, requested)
+        if not title or not link or not kind or not state_key or not _fresh(pub):
             continue
         rows.append({
             "source": outlet or source["name"],
@@ -141,6 +219,7 @@ def _rss_items(source, page_text):
             "url": link,
             "kind": kind,
             "published": pub,
+            "global_state_key": state_key,
         })
         if len(rows) >= 6:
             break
@@ -188,6 +267,20 @@ def _extract_v13(source, page_text):
 j2.base.extract_items = _extract_v13
 
 
+_PREV_FINGERPRINT = j2.base.fingerprint
+
+
+def _semantic_global_fingerprint_v13(source: str, title: str, url: str) -> str:
+    for requested in ("smr_trilateral_rss", "bwrx300_europe_rss"):
+        state_key = _global_state_key(title, requested)
+        if state_key:
+            return hashlib.sha256(f"janus-v13-global|{state_key}".encode("utf-8")).hexdigest()
+    return _PREV_FINGERPRINT(source, title, url)
+
+
+j2.base.fingerprint = _semantic_global_fingerprint_v13
+
+
 def _krw_from_usd_billion(usd_b: float) -> tuple[str, str]:
     try:
         rate, provider, stamp = j7._usdkrw()
@@ -206,7 +299,11 @@ def _render_global_smr(events: list[dict]) -> str:
     uniq = []
     seen = set()
     for e in events:
-        key = (e.get("kind"), e.get("url"))
+        state_key = e.get("global_state_key") or _global_state_key(
+            e.get("title") or "",
+            "bwrx300_europe_rss" if e.get("kind") == "bwrx300_europe_fleet" else "smr_trilateral_rss",
+        )
+        key = (e.get("kind"), state_key or e.get("url"))
         if key in seen:
             continue
         seen.add(key)
@@ -310,15 +407,33 @@ def _self_test_v13():
         "U.S., Japan, South Korea establish Implementation Plan for SMR deployments in other countries",
         "smr_trilateral_rss",
     ) == ""
+
+    # 실제 사용자에게 중복 발송된 기준선 기사들은 모두 신규 상태가 아니어야 한다.
     assert _rss_kind(
-        "Samsung C&T and SGE sign binding EPC development agreement for BWRX-300 project in Poland",
+        "Studsvik Selects GE Vernova Hitachi, Samsung C&T for 1.2-GW Swedish BWRX-300 Project",
         "bwrx300_europe_rss",
-    ) == "bwrx300_europe_fleet"
+    ) == ""
+    assert _rss_kind(
+        "SGE, GE Vernova, Hitachi and Samsung C&T target Europe with 4.2GW BWRX-300 SMR fleet",
+        "bwrx300_europe_rss",
+    ) == ""
     assert _rss_kind(
         "SGE, GE Vernova, Hitachi and Samsung C&T sign MoU to advance BWRX-300 fleet deployment in Europe",
         "bwrx300_europe_rss",
     ) == ""
-    print("janus_v13_trilateral_bwrx_event_gate=passed")
+
+    # 실제 단계 상승만 통과.
+    binding = "Samsung C&T and SGE sign binding EPC development agreement for BWRX-300 project in Poland"
+    assert _rss_kind(binding, "bwrx300_europe_rss") == "bwrx300_europe_fleet"
+    assert _global_state_key(binding, "bwrx300_europe_rss") == "bwrx300_europe|poland|epc_contract"
+
+    fid_a = "SGE reaches final investment decision for BWRX-300 project in Poland"
+    fid_b = "Polish BWRX-300 project reaches FID with SGE and Samsung C&T"
+    assert _semantic_global_fingerprint_v13("source-a", fid_a, "https://a.example") == _semantic_global_fingerprint_v13(
+        "source-b", fid_b, "https://b.example"
+    )
+
+    print("janus_v13_trilateral_bwrx_event_gate=passed semantic_state_dedupe=passed")
 
 
 if __name__ == "__main__":
