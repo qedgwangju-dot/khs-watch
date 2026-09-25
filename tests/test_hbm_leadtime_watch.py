@@ -107,6 +107,16 @@ class LeadTimeAlertTests(unittest.TestCase):
         self.assertIn("Rubin 사양 조정", alert)
         self.assertIn("RDIMM 수요 증가", alert)
         self.assertIn("기업용 SSD로 생산능력 재배분", alert)
+        self.assertIn("<b>수익구조</b>", alert)
+        self.assertIn("<b>1단계 현재 숫자 추적</b>", alert)
+        self.assertIn("<b>2단계 미래 재평가 요인 발굴</b>", alert)
+        self.assertIn("<b>관련 기업 지도</b>", alert)
+        self.assertIn("<b>공정 병목 후보</b>", alert)
+        self.assertIn("<b>숨은 역풍·실패모드</b>", alert)
+        self.assertIn("<b>결론</b>", alert)
+        self.assertIn("<b>핵심 한 줄 요약</b>", alert)
+        self.assertIn("ABF</b> | 현재 48~56주 | 균형 12주 | 격차 4.3배", alert)
+        self.assertIn("삼성전기·Ibiden·Unimicron·Nan Ya PCB", alert)
 
     def test_unverified_status_is_labeled_not_silently_claimed(self):
         evidence = {name: {"current", "balanced"} for name in self.new}
