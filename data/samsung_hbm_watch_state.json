@@ -175,8 +175,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-25T16:07:39+09:00",
-  "last_event_count": 83,
+  "updated_at_kst": "2026-09-25T16:47:08+09:00",
+  "last_event_count": 79,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -197,7 +197,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-25T16:07:39+09:00",
+  "last_successful_official_at_kst": "2026-09-25T16:47:08+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -1186,7 +1186,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-25T16:07:39+09:00",
+      "last_checked_at_kst": "2026-09-25T16:47:08+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -1194,7 +1194,7 @@
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
-      "non_concrete_generic_evidence_suppressed": 4,
+      "non_concrete_generic_evidence_suppressed": 3,
       "rdimm_quote|dramexchange|32|4800/5600": "지연 원자료: 현재 가격 알림 보류"
     },
     "version": 1,
@@ -1239,7 +1239,7 @@
     "payload_hash": "76074b3496253f096d6d3eb7a46551b6231a5b775f49d15201ea7c46b013d8f7"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-25T16:10:11+09:00",
+    "checked_at_kst": "2026-09-25T16:49:55+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
