@@ -78,6 +78,9 @@ jobs:
           print(f"Telegram route OK: @{username}")
           PY
 
+      - name: Run alert-quality regression guards
+        run: python scripts/physical_ai_watch_regression_check.py
+
       - name: Scan physical AI / battery / grid / ROBOTIS-NVIDIA / Figure AI / Tesla Optimus China / AI-RAN sources
         run: python scripts/physical_ai_watch_airan_guard.py
 
