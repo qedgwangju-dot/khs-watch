@@ -671,7 +671,14 @@ def cpu_snapshot_summary(cpu: dict) -> list[str]:
     return lines
 
 
-def build_cpu_alert(old: dict, new: dict, changes: list[str], source_url: str, published: str) -> str:
+def build_cpu_alert(
+    old: dict,
+    new: dict,
+    changes: list[str],
+    source_url: str,
+    published: str,
+    validation_note: str = "",
+) -> str:
     lines = [
         "<b>🚨 AI 인프라 병목 감시 — CPU·에이전트형 AI 변화</b>",
         "",
@@ -693,6 +700,9 @@ def build_cpu_alert(old: dict, new: dict, changes: list[str], source_url: str, p
             lines.append(f"• <b>{label}</b>: {ov}% → {nv}%")
         else:
             lines.append(f"• <b>{label}</b>: {html.escape(str(ov))} → {html.escape(str(nv))}")
+
+    if validation_note:
+        lines.append(f"• <b>실제 수요 검증:</b> {html.escape(validation_note)}")
 
     lines += [
         "",
