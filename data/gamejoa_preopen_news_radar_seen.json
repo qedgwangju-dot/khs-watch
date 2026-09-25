@@ -280,12 +280,13 @@
     "event:222cd7f2b86920f28619230f": {
       "first_seen_kst": "2026-09-26T01:14:19+09:00",
       "lanes": {
-        "live": "2026-09-26T01:14:19+09:00"
+        "live": "2026-09-26T01:14:19+09:00",
+        "preopen": "2026-09-26T06:34:22+09:00"
       },
-      "last_seen_kst": "2026-09-26T01:14:19+09:00",
-      "link": "https://www.newsis.com/view/NISX20260925_0003803583",
+      "last_seen_kst": "2026-09-26T06:34:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20260922_0003799948",
       "source": "뉴시스",
-      "title": "[미중정상회담]주중美대사 \"트럼프, 시진핑에 '中 이란 지원 용납 못 해'\""
+      "title": "\"AI 속도 조절론 속에 숨은 의도 있다\"…서울대 교수가 본 빅테크의 셈법"
     },
     "event:231aa24d7c1fe29e997b67fc": {
       "first_seen_kst": "2026-09-24T09:28:56+09:00",
@@ -1568,12 +1569,13 @@
     "event:ad69d6ca37fccb0fcc40113f": {
       "first_seen_kst": "2026-09-25T01:40:40+09:00",
       "lanes": {
-        "live": "2026-09-25T01:40:40+09:00"
+        "live": "2026-09-25T01:40:40+09:00",
+        "preopen": "2026-09-26T06:34:22+09:00"
       },
-      "last_seen_kst": "2026-09-25T01:40:40+09:00",
-      "link": "https://www.newsis.com/view/NISX20260925_0003803224",
+      "last_seen_kst": "2026-09-26T06:34:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20260923_0003802079",
       "source": "뉴시스",
-      "title": "美국채금리 연일 상승…30년물 22년 만 최고치"
+      "title": "코스닥 중소형株 매력 커질까[추석 이후 내 돈은②]"
     },
     "event:af4899d45c786bb25d6b3bf3": {
       "first_seen_kst": "2026-09-19T01:58:52+09:00",
@@ -1584,17 +1586,6 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04598566645581432",
       "source": "이데일리",
       "title": "151조원 파라마운트·워너 합병 한고비 넘었다…美 FCC 승인"
-    },
-    "event:afbad010b3299aa671a6ecd4": {
-      "first_seen_kst": "2026-09-12T06:23:58+09:00",
-      "lanes": {
-        "live": "2026-09-12T06:23:58+09:00",
-        "preopen": "2026-09-12T06:34:23+09:00"
-      },
-      "last_seen_kst": "2026-09-12T06:34:23+09:00",
-      "link": "https://www.newsis.com/view/NISX20260911_0003786424",
-      "source": "뉴시스",
-      "title": "두 달 만에 200원 넘게 떨어진 원·달러, 전망은"
     },
     "event:b1495e0393111e527b090ddc": {
       "first_seen_kst": "2026-09-18T14:40:33+09:00",
@@ -1842,16 +1833,6 @@
       "link": "https://www.yna.co.kr/view/AKR20260918164100003",
       "source": "연합뉴스",
       "title": "삼성전기, AI용 MLCC 추가 수주 임박…올해 장기계약 4조원 눈앞 | 연합뉴스"
-    },
-    "event:cdecc75392deedaf5b66c909": {
-      "first_seen_kst": "2026-09-12T06:23:58+09:00",
-      "lanes": {
-        "live": "2026-09-12T06:23:58+09:00"
-      },
-      "last_seen_kst": "2026-09-12T06:23:58+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12150959",
-      "source": "매일경제",
-      "title": "반도체 ETF에도 급이란 게 있습니다…HBM 넘어 613% 오른 낸드株"
     },
     "event:d16b777adbef3d0339e2def6": {
       "first_seen_kst": "2026-09-23T02:38:08+09:00",
@@ -3054,6 +3035,16 @@
       "source": "머니투데이",
       "title": "하드·소프트웨어 경쟁력 통했다… K배터리 유일 'DSX 레디'"
     },
+    "link:3c6e1300ea7d5a177bfb2ed1": {
+      "first_seen_kst": "2026-09-26T06:34:22+09:00",
+      "lanes": {
+        "preopen": "2026-09-26T06:34:22+09:00"
+      },
+      "last_seen_kst": "2026-09-26T06:34:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20260922_0003799948",
+      "source": "뉴시스",
+      "title": "\"AI 속도 조절론 속에 숨은 의도 있다\"…서울대 교수가 본 빅테크의 셈법"
+    },
     "link:3ce7cebbed1b8751206f09db": {
       "first_seen_kst": "2026-09-25T15:18:56+09:00",
       "lanes": {
@@ -3083,16 +3074,6 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03247206645583400",
       "source": "이데일리",
       "title": "美장기금리 어디까지 오를까…'기간 프리미엄'에 달렸다"
-    },
-    "link:3d6248c69ae1041d36b2ca7a": {
-      "first_seen_kst": "2026-09-12T06:23:58+09:00",
-      "lanes": {
-        "live": "2026-09-12T06:23:58+09:00"
-      },
-      "last_seen_kst": "2026-09-12T06:23:58+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12150959",
-      "source": "매일경제",
-      "title": "반도체 ETF에도 급이란 게 있습니다…HBM 넘어 613% 오른 낸드株"
     },
     "link:3d840dbec9d5142755b51412": {
       "first_seen_kst": "2026-09-25T19:49:36+09:00",
@@ -3134,17 +3115,6 @@
       "link": "https://www.yna.co.kr/view/AKR20260917195851085",
       "source": "연합뉴스",
       "title": "[2보] 영국, 금리 3.75%로 동결…BOE 총재 \"금리 인상 가능성\" | 연합뉴스"
-    },
-    "link:40dc36f5d91ab65a09cb1784": {
-      "first_seen_kst": "2026-09-12T06:23:58+09:00",
-      "lanes": {
-        "live": "2026-09-12T06:23:58+09:00",
-        "preopen": "2026-09-12T06:34:23+09:00"
-      },
-      "last_seen_kst": "2026-09-12T06:34:23+09:00",
-      "link": "https://www.newsis.com/view/NISX20260911_0003786424",
-      "source": "뉴시스",
-      "title": "두 달 만에 200원 넘게 떨어진 원·달러, 전망은"
     },
     "link:412b1a972993420ddc77669e": {
       "first_seen_kst": "2026-09-22T04:23:01+09:00",
@@ -3255,6 +3225,16 @@
       "link": "https://www.mk.co.kr/news/stock/12149036",
       "source": "매일경제",
       "title": "“오늘 오후 주식창 안볼란다”…네 마녀도 벅찬데, ETF까지 겹쳤다"
+    },
+    "link:46a98c7c2aa2e95c191c7a56": {
+      "first_seen_kst": "2026-09-26T06:34:22+09:00",
+      "lanes": {
+        "preopen": "2026-09-26T06:34:22+09:00"
+      },
+      "last_seen_kst": "2026-09-26T06:34:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20260923_0003802079",
+      "source": "뉴시스",
+      "title": "코스닥 중소형株 매력 커질까[추석 이후 내 돈은②]"
     },
     "link:46c86922db36a405316b21c3": {
       "first_seen_kst": "2026-09-17T13:35:24+09:00",
@@ -6404,17 +6384,6 @@
       "source": "파이낸셜뉴스",
       "title": "[속보][뉴욕증시] 나스닥지수, 이틀 연속 사상 최고…다우지수, 0.4% 하락"
     },
-    "original:231e981db1d267d7d67f8d93": {
-      "first_seen_kst": "2026-09-12T06:23:58+09:00",
-      "lanes": {
-        "live": "2026-09-12T06:23:58+09:00",
-        "preopen": "2026-09-12T06:34:23+09:00"
-      },
-      "last_seen_kst": "2026-09-12T06:34:23+09:00",
-      "link": "https://www.newsis.com/view/NISX20260911_0003786424",
-      "source": "뉴시스",
-      "title": "두 달 만에 200원 넘게 떨어진 원·달러, 전망은"
-    },
     "original:232639b4ee18feaf47aa524b": {
       "first_seen_kst": "2026-09-16T18:44:44+09:00",
       "lanes": {
@@ -7083,6 +7052,16 @@
       "source": "연합뉴스",
       "title": "[2보] 美연준, 기준금리 0.25%p 인상…3년2개월만의 긴축조치 | 연합뉴스"
     },
+    "original:4b43c33376c3041ffa475fc6": {
+      "first_seen_kst": "2026-09-26T06:34:22+09:00",
+      "lanes": {
+        "preopen": "2026-09-26T06:34:22+09:00"
+      },
+      "last_seen_kst": "2026-09-26T06:34:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20260922_0003799948",
+      "source": "뉴시스",
+      "title": "\"AI 속도 조절론 속에 숨은 의도 있다\"…서울대 교수가 본 빅테크의 셈법"
+    },
     "original:4ceebceac2f82b80aa242197": {
       "first_seen_kst": "2026-09-14T16:25:44+09:00",
       "lanes": {
@@ -7204,16 +7183,6 @@
       "link": "https://www.mk.co.kr/news/stock/12150778",
       "source": "매일경제",
       "title": "톰슨 로이터, 미국·캐나다서 23억 달러 규모 회사채 발행"
-    },
-    "original:59de3982592d9959382d6281": {
-      "first_seen_kst": "2026-09-12T06:23:58+09:00",
-      "lanes": {
-        "live": "2026-09-12T06:23:58+09:00"
-      },
-      "last_seen_kst": "2026-09-12T06:23:58+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12150959",
-      "source": "매일경제",
-      "title": "반도체 ETF에도 급이란 게 있습니다…HBM 넘어 613% 오른 낸드株"
     },
     "original:5a58bfdc25c27e94d5dff9b6": {
       "first_seen_kst": "2026-09-22T02:48:50+09:00",
@@ -7506,6 +7475,16 @@
       "link": "https://www.mk.co.kr/news/stock/12155675",
       "source": "매일경제",
       "title": "한투 5천억 회사채 발행 잰걸음 … KDB생명 인수 실탄 마련 나서"
+    },
+    "original:6d9a10070e75ca6460d3de21": {
+      "first_seen_kst": "2026-09-26T06:34:22+09:00",
+      "lanes": {
+        "preopen": "2026-09-26T06:34:22+09:00"
+      },
+      "last_seen_kst": "2026-09-26T06:34:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20260923_0003802079",
+      "source": "뉴시스",
+      "title": "코스닥 중소형株 매력 커질까[추석 이후 내 돈은②]"
     },
     "original:6dd72a9f2a6474347c81dbdb": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
@@ -10090,17 +10069,6 @@
       "source": "파이낸셜뉴스",
       "title": "[속보][뉴욕증시] 나스닥지수, 이틀 연속 사상 최고…다우지수, 0.4% 하락"
     },
-    "title:231e981db1d267d7d67f8d93": {
-      "first_seen_kst": "2026-09-12T06:23:58+09:00",
-      "lanes": {
-        "live": "2026-09-12T06:23:58+09:00",
-        "preopen": "2026-09-12T06:34:23+09:00"
-      },
-      "last_seen_kst": "2026-09-12T06:34:23+09:00",
-      "link": "https://www.newsis.com/view/NISX20260911_0003786424",
-      "source": "뉴시스",
-      "title": "두 달 만에 200원 넘게 떨어진 원·달러, 전망은"
-    },
     "title:232639b4ee18feaf47aa524b": {
       "first_seen_kst": "2026-09-16T18:44:44+09:00",
       "lanes": {
@@ -10758,6 +10726,16 @@
       "source": "연합뉴스",
       "title": "[2보] 美연준, 기준금리 0.25%p 인상…3년2개월만의 긴축조치 | 연합뉴스"
     },
+    "title:4b43c33376c3041ffa475fc6": {
+      "first_seen_kst": "2026-09-26T06:34:22+09:00",
+      "lanes": {
+        "preopen": "2026-09-26T06:34:22+09:00"
+      },
+      "last_seen_kst": "2026-09-26T06:34:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20260922_0003799948",
+      "source": "뉴시스",
+      "title": "\"AI 속도 조절론 속에 숨은 의도 있다\"…서울대 교수가 본 빅테크의 셈법"
+    },
     "title:4ceebceac2f82b80aa242197": {
       "first_seen_kst": "2026-09-14T16:25:44+09:00",
       "lanes": {
@@ -10807,6 +10785,16 @@
       "link": "https://www.yna.co.kr/view/AKR20260922149500030",
       "source": "연합뉴스",
       "title": "KT&G, 3천600억원 규모 자사주 매입·소각 결정 | 연합뉴스"
+    },
+    "title:523ea456a30d5350655b6a5a": {
+      "first_seen_kst": "2026-09-13T06:33:28+09:00",
+      "lanes": {
+        "preopen": "2026-09-13T06:33:28+09:00"
+      },
+      "last_seen_kst": "2026-09-13T06:33:28+09:00",
+      "link": "https://www.mk.co.kr/news/business/12150400",
+      "source": "매일경제",
+      "title": "삼성·SK 낸드 1·2위…中 YMTC 점유율 ‘껑충’ [데이터로 보는 세상]- 매경ECONOMY"
     },
     "title:52c73643482b603b08133311": {
       "first_seen_kst": "2026-09-23T06:18:30+09:00",
@@ -10879,16 +10867,6 @@
       "link": "https://www.mk.co.kr/news/stock/12150778",
       "source": "매일경제",
       "title": "톰슨 로이터, 미국·캐나다서 23억 달러 규모 회사채 발행"
-    },
-    "title:59de3982592d9959382d6281": {
-      "first_seen_kst": "2026-09-12T06:23:58+09:00",
-      "lanes": {
-        "live": "2026-09-12T06:23:58+09:00"
-      },
-      "last_seen_kst": "2026-09-12T06:23:58+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12150959",
-      "source": "매일경제",
-      "title": "반도체 ETF에도 급이란 게 있습니다…HBM 넘어 613% 오른 낸드株"
     },
     "title:5a58bfdc25c27e94d5dff9b6": {
       "first_seen_kst": "2026-09-22T02:48:50+09:00",
@@ -11171,6 +11149,16 @@
       "link": "https://www.mk.co.kr/news/stock/12155675",
       "source": "매일경제",
       "title": "한투 5천억 회사채 발행 잰걸음 … KDB생명 인수 실탄 마련 나서"
+    },
+    "title:6d9a10070e75ca6460d3de21": {
+      "first_seen_kst": "2026-09-26T06:34:22+09:00",
+      "lanes": {
+        "preopen": "2026-09-26T06:34:22+09:00"
+      },
+      "last_seen_kst": "2026-09-26T06:34:22+09:00",
+      "link": "https://www.newsis.com/view/NISX20260923_0003802079",
+      "source": "뉴시스",
+      "title": "코스닥 중소형株 매력 커질까[추석 이후 내 돈은②]"
     },
     "title:6dd72a9f2a6474347c81dbdb": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
@@ -13313,5 +13301,5 @@
       "title": "외신 “하이닉스, 인텔과 미국내 첫 메모리 공장 건설 논의중”"
     }
   },
-  "updated_at_kst": "2026-09-26T05:54:52+09:00"
+  "updated_at_kst": "2026-09-26T06:34:22+09:00"
 }
