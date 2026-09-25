@@ -453,7 +453,7 @@ def parse_postprocess_records(item, body):
     rows = []
 
     # TSMC: total CapEx + backend allocation + explicit tester bottleneck.
-    if re.search(r'\bTSMC\b', text, re.I):
+    if re.search(r'(?<![A-Za-z0-9])TSMC(?![A-Za-z0-9])', text, re.I):
         total_min = total_max = None
         rm = re.search(r'(?:USD|US\$|\$)?\s*([\d.]+)\s*(?:billion|B)[^\d]{0,30}(?:to|[-~–])\s*(?:USD|US\$|\$)?\s*([\d.]+)\s*(?:billion|B)', text, re.I)
         if rm:
@@ -478,7 +478,7 @@ def parse_postprocess_records(item, body):
                 scope='backend_bucket_includes_packaging_testing_mask_and_others'))
 
     # ASE: annual CapEx revision.
-    if re.search(r'\bASE\b|Advanced Semiconductor Engineering', text, re.I) and re.search(r'capex|설비투자', text, re.I):
+    if re.search(r'(?<![A-Za-z0-9])ASE(?![A-Za-z0-9])|Advanced Semiconductor Engineering', text, re.I) and re.search(r'capex|설비투자', text, re.I):
         vals = [float(x) * 1e9 for x in re.findall(r'(?:USD|US\$|\$)?\s*([\d.]+)\s*(?:billion|B)', text, re.I)]
         vals += [float(x) * 1e8 for x in re.findall(r'([\d.]+)\s*억\s*달러', text)]
         if vals:
