@@ -54,6 +54,7 @@
     "45f9f31d1e6cc628a7bf680f",
     "479424efdf3d7193810ea2dd",
     "4a052c510fe7988076a8e75d",
+    "4c5a42276c2466edbfecbf62",
     "4c5b1ea09d94ac7e5ee33663",
     "4cebdebd7ea03a5d5b726dc2",
     "4d1b2123ef6e39f9d89b8006",
@@ -67,6 +68,7 @@
     "60166d645eb70db655149ec7",
     "6390d90dc440f18fea5641d1",
     "649a679bcbfb0360d689f533",
+    "66d753f37dd3e78939235e57",
     "67cf87cd7ae84be2493d0fc6",
     "6d45cf56091569c5a90afa2d",
     "70185fba0edbf134eaec4563",
@@ -85,6 +87,7 @@
     "7d291d2d4e257c19bbf10f5d",
     "7fc67a8a0b23cc8a19d76f05",
     "810b2b31f4ad1136fc603ccb",
+    "8126ef91d8781ccab552de73",
     "817464b05dc936124292cda3",
     "822874baa35bfd09e35b58c4",
     "8373adbcfc508c1a31114ac1",
@@ -169,8 +172,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-25T07:36:34+09:00",
-  "last_event_count": 84,
+  "updated_at_kst": "2026-09-25T10:40:04+09:00",
+  "last_event_count": 86,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -191,7 +194,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-25T07:36:34+09:00",
+  "last_successful_official_at_kst": "2026-09-25T10:40:04+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -858,11 +861,10 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-25T07:36:34+09:00",
+      "last_checked_at_kst": "2026-09-25T10:40:04+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
-        "원문 확인 실패: biz.chosun.com / URLError",
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
       "observations": 8,
@@ -914,7 +916,7 @@
     "payload_hash": "530c48c0c3871196399dafd3e2e227a9db75485cec1621c5f619886372c1e158"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-25T07:39:46+09:00",
+    "checked_at_kst": "2026-09-25T10:42:27+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
