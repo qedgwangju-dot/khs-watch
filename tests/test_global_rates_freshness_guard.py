@@ -97,14 +97,15 @@ class GlobalRatesFreshnessGuardTest(unittest.TestCase):
         out = annotate_report(text, freshness)
         self.assertIn("기준일 불일치 — 계산 보류", out)
         self.assertIn("USD/JPY 158.250", out)
-        self.assertIn("query1/query2 5분 교차확인", out)
+        self.assertIn("최신성 │ 미·일2Y 불일치", out)
+        self.assertIn("지연 45초", out)
 
     def test_report_does_not_call_positive_usdjpy_move_yen_surge(self):
         text = "[글로벌 금리·엔캐리 경보] 🟠\n판정: 엔캐리 청산 경계 강화\n조회: 2026-09-15 07:55:32 KST\n\n✅ 엔화 급등: 확인 불가\n"
         freshness = {"same_2y_date": True, "jgb2_date": "2026/9/14", "live_fx_signal_eligible": True, "live_fx_price": 154.269, "live_fx_change_pct": 0.42, "live_fx_timestamp_utc": "2026-09-14T22:55:24Z", "live_fx_age_seconds": 1.0}
         out = annotate_report(text, freshness)
-        self.assertIn("⬜ 엔화 급등: USD/JPY 154.269 / 기준변화 +0.42% / 현재 방향 엔화 약세", out)
-        self.assertIn("엔화 강세 수준: ✅ USD/JPY 154.269", out)
+        self.assertIn("⬜ 엔화 급등: USD/JPY 154.269 / +0.42% / 엔화 약세", out)
+        self.assertIn("최신성 │ 미·일2Y 동일 2026/9/14", out)
 
 
 if __name__ == "__main__":
