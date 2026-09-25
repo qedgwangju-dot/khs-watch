@@ -1,6 +1,6 @@
 {
   "parser_version": 2,
-  "updated_at_utc": "2026-09-25T17:06:41.421345+00:00",
+  "updated_at_utc": "2026-09-25T20:25:41.570755+00:00",
   "sources": {
     "구글 공식": {
       "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-project-suncatcher-facts/",
@@ -83,10 +83,10 @@
     },
     "아스테크니카": {
       "url": "https://arstechnica.com/google/2026/09/googles-first-suncatcher-orbital-data-center-test-launches-october-1/",
-      "hash": "97b1a278a1ce278de02717a2f21248387b5c994f252b6d9e2def4aa0adc2065f",
+      "hash": "8e8d99a47c3372bd0ba6e242f1869a7173dc1e29e70e9f3a3675c753e20483f8",
       "sentences": [
         "Blast off Google’s first Suncatcher orbital data center test launches October 1 Google’s experimental orbital data center will have four TPUs and only run for 15 minutes at a time.",
-        "Ryan Whitwam – Sep 24, 2026 12:16 pm | 102 Credit: Google Credit: Google Text settings Story text Size Small Standard Large Width * Standard Wide Links Standard Orange * Subscribers only Learn more Minimize to nav Google is taking its first step toward making Project Suncatcher a reality.",
+        "Ryan Whitwam – Sep 24, 2026 12:16 pm | 104 Credit: Google Credit: Google Text settings Story text Size Small Standard Large Width * Standard Wide Links Standard Orange * Subscribers only Learn more Minimize to nav Google is taking its first step toward making Project Suncatcher a reality.",
         "Announced last year, Suncatcher is Google’s “moonshot” effort to design orbital AI data centers, which AI boosters like Elon Musk and Jeff Bezos have pitched as an alternative to divisive terrestrial data centers .",
         "Google’s first experimental satellite will launch on October 1 with the aim of validating Google’s vision for a constellation of AI satellites .",
         "Inside, it has four of Google’s custom TPU AI accelerators, which are used to train AI models and run inference to generate tokens for AI workloads.",
@@ -129,18 +129,18 @@
   },
   "news": [
     {
-      "id": "CBMiqgFBVV95cUxNM1BYaU0yYTZra0M4eWktSXVydEJjbTVtM0JLZUtpTlZUNWZPb2RqUHR0V1hEdlczMkZyOU90MW83eDhCWVJMSnhXLWxvcWhJMDdiNkUtZEJLR0ExN0xnMS1YdGJOaWJyRXZmZlJGQnJNVWJKbDl5dG1uMGtsRk9VbVRCcWpKVjlnUnVfMXU2VjNJOGdhOGt4UEZpeGpyNndSTUpodXphZV9jUQ",
-      "title": "Behind Project Suncatcher, our moonshot to put AI in space - blog.google",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNM1BYaU0yYTZra0M4eWktSXVydEJjbTVtM0JLZUtpTlZUNWZPb2RqUHR0V1hEdlczMkZyOU90MW83eDhCWVJMSnhXLWxvcWhJMDdiNkUtZEJLR0ExN0xnMS1YdGJOaWJyRXZmZlJGQnJNVWJKbDl5dG1uMGtsRk9VbVRCcWpKVjlnUnVfMXU2VjNJOGdhOGt4UEZpeGpyNndSTUpodXphZV9jUQ?oc=5",
-      "source": "blog.google",
-      "published": "Thu, 24 Sep 2026 13:16:40 GMT"
-    },
-    {
       "id": "CBMikwFBVV95cUxQUEx1YzkwWVhOQ25ocmRXYkJ6SWh1Q01wRG1QY096aW9UZkVDbTdNWnoyRWJtcEIwZVVoVEJJUmNpWlhnQVRXTkpzYTg3QzR5OThOS1JXMVc0bnF2dDNXVFU1QnE5bjVpZ2pCUVZwYnZ2bjhUckwwNG02S01MbmY3ckdaRzM5c2Q1c2xmZ05LenBpVEk",
       "title": "Google Is Sending an A.I. Data Center to Outer Space - The New York Times",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQUEx1YzkwWVhOQ25ocmRXYkJ6SWh1Q01wRG1QY096aW9UZkVDbTdNWnoyRWJtcEIwZVVoVEJJUmNpWlhnQVRXTkpzYTg3QzR5OThOS1JXMVc0bnF2dDNXVFU1QnE5bjVpZ2pCUVZwYnZ2bjhUckwwNG02S01MbmY3ckdaRzM5c2Q1c2xmZ05LenBpVEk?oc=5",
       "source": "The New York Times",
       "published": "Thu, 24 Sep 2026 13:00:18 GMT"
+    },
+    {
+      "id": "CBMiqgFBVV95cUxNM1BYaU0yYTZra0M4eWktSXVydEJjbTVtM0JLZUtpTlZUNWZPb2RqUHR0V1hEdlczMkZyOU90MW83eDhCWVJMSnhXLWxvcWhJMDdiNkUtZEJLR0ExN0xnMS1YdGJOaWJyRXZmZlJGQnJNVWJKbDl5dG1uMGtsRk9VbVRCcWpKVjlnUnVfMXU2VjNJOGdhOGt4UEZpeGpyNndSTUpodXphZV9jUQ",
+      "title": "Behind Project Suncatcher, our moonshot to put AI in space - blog.google",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNM1BYaU0yYTZra0M4eWktSXVydEJjbTVtM0JLZUtpTlZUNWZPb2RqUHR0V1hEdlczMkZyOU90MW83eDhCWVJMSnhXLWxvcWhJMDdiNkUtZEJLR0ExN0xnMS1YdGJOaWJyRXZmZlJGQnJNVWJKbDl5dG1uMGtsRk9VbVRCcWpKVjlnUnVfMXU2VjNJOGdhOGt4UEZpeGpyNndSTUpodXphZV9jUQ?oc=5",
+      "source": "blog.google",
+      "published": "Thu, 24 Sep 2026 13:16:40 GMT"
     },
     {
       "id": "CBMirAFBVV95cUxPYXZ5YUZxZlpKYlJlckhWVlc3RWhrOTNTYXJhbXNETHZBQU9nd3BDU2xvZ3A4a3ZwZ0llWF90OFJfSXNSMG9BaXdxeDdZOG9Hb3RtOHBsamVxOWszTjdVRFZBcW5hcEhVS2xtWDZhekl3MFhxSXRFLXlMUjR3Vk43WG1Bcms5QnFadlJHZlRNWjE0TkNhQ3lXSXpVLUxiLUJoN0N4c2tleEZaQnRR",
@@ -151,9 +151,9 @@
     },
     {
       "id": "CBMinwFBVV95cUxNQ0xscjZHZjd2dm5hSUJscTRPa3h6cGVKYmctVEJrb1B1d3R0SjRxR0Q0YTFZWFEtTjdfRTM0YjQ0eHRIZFVVRG9iVnpzRVdnN2dJeHVPbmtlTXE4VHZKNmwtUkhCdVlFRTk2U0dDTEpzZ0xIeVJDT1k1U0VqM181UWxtdk1ZRmY1SUtxQlFRLVhGR1ZPR25ISHFyZlktajg",
-      "title": "Google’s Project Suncatcher Is Sending AI Chips Into Space Next Week - gizmodo.com",
+      "title": "Google’s Project Suncatcher Is Sending AI Chips Into Space Next Week - Gizmodo",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNQ0xscjZHZjd2dm5hSUJscTRPa3h6cGVKYmctVEJrb1B1d3R0SjRxR0Q0YTFZWFEtTjdfRTM0YjQ0eHRIZFVVRG9iVnpzRVdnN2dJeHVPbmtlTXE4VHZKNmwtUkhCdVlFRTk2U0dDTEpzZ0xIeVJDT1k1U0VqM181UWxtdk1ZRmY1SUtxQlFRLVhGR1ZPR25ISHFyZlktajg?oc=5",
-      "source": "gizmodo.com",
+      "source": "Gizmodo",
       "published": "Thu, 24 Sep 2026 22:49:46 GMT"
     },
     {
@@ -186,17 +186,10 @@
     },
     {
       "id": "CBMitAFBVV95cUxOWlBNN2VkZHh2bUNhQXlhTkRoRHh6ZGtKTDNHeWxWWDRPN255dkR5cGhFTk9HdDRneUdFWDltWFdUVTB1ZndVbzRJaTh4a0pYQmpteWlRQmRtY29vNU5IU001eFV4NHJKdzdDbEFPMVlDNk5fSmowcmNPbk41V1IycFpXVWFfVjRLc2Yza3BUamhpa3hfeEM5N3pIOHlROEVKXzlHanZpLUNUMUhnNVlDU05TdU4",
-      "title": "Google’s SunCatcher aims for datacentres in space with TPU moonshot - Electronics Weekly",
+      "title": "Google’s Suncatcher aims for datacentres in space with TPU moonshot - Electronics Weekly",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOWlBNN2VkZHh2bUNhQXlhTkRoRHh6ZGtKTDNHeWxWWDRPN255dkR5cGhFTk9HdDRneUdFWDltWFdUVTB1ZndVbzRJaTh4a0pYQmpteWlRQmRtY29vNU5IU001eFV4NHJKdzdDbEFPMVlDNk5fSmowcmNPbk41V1IycFpXVWFfVjRLc2Yza3BUamhpa3hfeEM5N3pIOHlROEVKXzlHanZpLUNUMUhnNVlDU05TdU4?oc=5",
       "source": "Electronics Weekly",
-      "published": "Fri, 25 Sep 2026 12:40:17 GMT"
-    },
-    {
-      "id": "CBMiggFBVV95cUxOQWFrNVZ6ZFlmajdNa25YaUdQSlktSVFlVHo4UU9kOHZCdzMzWGtMS1JDNnRzbk51UWttRkFOdk4yaVdCa2pBd3draU5qTEs0cTBmcnNmNm5fTi1yalJCR2hZUXRWQXdsWndQbWhiUXJWdDEtMjV4eFdsSVVuOGc0Njh3",
-      "title": "Project Suncatcher: Google Sends TPUs Into Space - StratNews Global",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOQWFrNVZ6ZFlmajdNa25YaUdQSlktSVFlVHo4UU9kOHZCdzMzWGtMS1JDNnRzbk51UWttRkFOdk4yaVdCa2pBd3draU5qTEs0cTBmcnNmNm5fTi1yalJCR2hZUXRWQXdsWndQbWhiUXJWdDEtMjV4eFdsSVVuOGc0Njh3?oc=5",
-      "source": "StratNews Global",
-      "published": "Fri, 25 Sep 2026 10:51:58 GMT"
+      "published": "Fri, 25 Sep 2026 12:43:24 GMT"
     },
     {
       "id": "CBMihgFBVV95cUxOSVRDdXRHbFFNN0MyNzZkU3ZqTWU2b1ZXM0tzS0J1YmUyVXd5SmlUaE5MazdTM0dVTDcwSlpQS2V2WlJMM1N6UWZHLVJmRzN5cWEtQ1NaU0dObkN6Q1BoSkNoOHBvSW5lRVFBMWk1SzQ4dUgwWExmdGk1dlpTcXBHN1d2bXYzUQ",
@@ -206,18 +199,32 @@
       "published": "Fri, 25 Sep 2026 08:39:17 GMT"
     },
     {
-      "id": "CBMihgFBVV95cUxNRWN3R0VadU0zN1R2dWtKUFNoTkF6VTYzeWwyS2swanA1OXZIWXdFY2ZHdHRmVmdDVDZVVUFHSlNDcE9zSzBnMm1Pc29hMkZLcTk5N281eWJHSU9JSHhkUFpaNS1OdXpkV0MzNkRiMG5PdkhoYVN2SWtNeTYzb3A4T09oOFlyUQ",
-      "title": "Google Project Suncatcher: 4 TPUs Launch to Orbit Oct 1 - tech-insider.org",
-      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNRWN3R0VadU0zN1R2dWtKUFNoTkF6VTYzeWwyS2swanA1OXZIWXdFY2ZHdHRmVmdDVDZVVUFHSlNDcE9zSzBnMm1Pc29hMkZLcTk5N281eWJHSU9JSHhkUFpaNS1OdXpkV0MzNkRiMG5PdkhoYVN2SWtNeTYzb3A4T09oOFlyUQ?oc=5",
-      "source": "tech-insider.org",
-      "published": "Thu, 24 Sep 2026 19:22:51 GMT"
+      "id": "CBMiggFBVV95cUxOQWFrNVZ6ZFlmajdNa25YaUdQSlktSVFlVHo4UU9kOHZCdzMzWGtMS1JDNnRzbk51UWttRkFOdk4yaVdCa2pBd3draU5qTEs0cTBmcnNmNm5fTi1yalJCR2hZUXRWQXdsWndQbWhiUXJWdDEtMjV4eFdsSVVuOGc0Njh3",
+      "title": "Project Suncatcher: Google Sends TPUs Into Space - StratNews Global",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOQWFrNVZ6ZFlmajdNa25YaUdQSlktSVFlVHo4UU9kOHZCdzMzWGtMS1JDNnRzbk51UWttRkFOdk4yaVdCa2pBd3draU5qTEs0cTBmcnNmNm5fTi1yalJCR2hZUXRWQXdsWndQbWhiUXJWdDEtMjV4eFdsSVVuOGc0Njh3?oc=5",
+      "source": "StratNews Global",
+      "published": "Fri, 25 Sep 2026 10:51:58 GMT"
     },
     {
-      "id": "CBMi5AFBVV95cUxQblpNWWV6dmwyTUxjVFpyLUNndExPdGswUm1jN0FfMjV5eEtmWlBEU29FMHlLUl9keV93WThCNTBsYXJTM3NVdzd1Q2syaHJmQnFNM2d1c3l4MkRjTkNjYUVzaXptQnNmcXE2Q3E0cDY0cTV4VUJoR1lidmJLcjhLYy02QXJaTFp5WjdWSk5ocmpkMGhOVXlXeDlWZ2NJZ3lTbGpUNVp1NlcwbHZpdXlMLWpNLUpyTzE3WXg1RDVtSURmRjNfU2hYM2JqNndKMUNoV1FpWUpTSjFTYzBEU2JjcnNWVHXSAeQBQVVfeXFMUG5aTVllenZsMk1MY1Raci1DZ3RMT3RrMFJtYzdBXzI1eXhLZlpQRFNvRTB5S1JfZHlfd1k4QjUwbGFyUzNzVXc3dUNrMmhyZkJxTTNndXN5eDJEY05DY2FFc2l6bUJzZnFxNkNxNHA2NHE1eFVCaEdZYnZiS3I4S2MtNkFyWkxaeVo3VkpOaHJqZDBoTlV5V3g5VmdjSWd5U2xqVDVadTZXMGx2aXV5TC1qTS1Kck8xN1l4NUQ1bUlEZkYzX1NoWDNiajZ3SjFDaFdRaVlKU0oxU2MwRFNiY3JzVlR1",
-      "title": "Google to test AI chips in space with first Suncatcher satellite mission - enterpriseai.economictimes.indiatimes.com",
-      "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQblpNWWV6dmwyTUxjVFpyLUNndExPdGswUm1jN0FfMjV5eEtmWlBEU29FMHlLUl9keV93WThCNTBsYXJTM3NVdzd1Q2syaHJmQnFNM2d1c3l4MkRjTkNjYUVzaXptQnNmcXE2Q3E0cDY0cTV4VUJoR1lidmJLcjhLYy02QXJaTFp5WjdWSk5ocmpkMGhOVXlXeDlWZ2NJZ3lTbGpUNVp1NlcwbHZpdXlMLWpNLUpyTzE3WXg1RDVtSURmRjNfU2hYM2JqNndKMUNoV1FpWUpTSjFTYzBEU2JjcnNWVHXSAeQBQVVfeXFMUG5aTVllenZsMk1MY1Raci1DZ3RMT3RrMFJtYzdBXzI1eXhLZlpQRFNvRTB5S1JfZHlfd1k4QjUwbGFyUzNzVXc3dUNrMmhyZkJxTTNndXN5eDJEY05DY2FFc2l6bUJzZnFxNkNxNHA2NHE1eFVCaEdZYnZiS3I4S2MtNkFyWkxaeVo3VkpOaHJqZDBoTlV5V3g5VmdjSWd5U2xqVDVadTZXMGx2aXV5TC1qTS1Kck8xN1l4NUQ1bUlEZkYzX1NoWDNiajZ3SjFDaFdRaVlKU0oxU2MwRFNiY3JzVlR1?oc=5",
-      "source": "enterpriseai.economictimes.indiatimes.com",
+      "id": "CBMihgFBVV95cUxQSWhSVEFhQ1RCbk1oTkgybTM4ZDNlamJFRU93bG5ha1hsTkl6ZE5ONzdtSGVyQnc2dDdMRmVJQnlycTZDb092WWxnNnNSbTNla0JQamU5R1d5aF9mR3pkRTV1OW53SU5lRmJsTkYtX3hwdWpNZnBPM2M4d2xrZ0NOOXJMZ3NnQdIBjgFBVV95cUxNZlNnLTNXeE1wb2xiVUVZLTlpQlZrSW1yT0NoLUVlM1N5Zk50cTlrUTlZQ2F2UGxmcmdXajhCQTNFRnpZNE1vYUVoa09kN2U0NmQ0eVh2R1pEQ3RLTzhUR0ZxQnA3bG1TY3JIVmZSMVRJVURIOXQwZ2pWZG1xZms3U2psemdSRXpadTN6dER3",
+      "title": "Google Prepares First In-Orbit TPU Test for Project Suncatcher - findarticles.com",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQSWhSVEFhQ1RCbk1oTkgybTM4ZDNlamJFRU93bG5ha1hsTkl6ZE5ONzdtSGVyQnc2dDdMRmVJQnlycTZDb092WWxnNnNSbTNla0JQamU5R1d5aF9mR3pkRTV1OW53SU5lRmJsTkYtX3hwdWpNZnBPM2M4d2xrZ0NOOXJMZ3NnQdIBjgFBVV95cUxNZlNnLTNXeE1wb2xiVUVZLTlpQlZrSW1yT0NoLUVlM1N5Zk50cTlrUTlZQ2F2UGxmcmdXajhCQTNFRnpZNE1vYUVoa09kN2U0NmQ0eVh2R1pEQ3RLTzhUR0ZxQnA3bG1TY3JIVmZSMVRJVURIOXQwZ2pWZG1xZms3U2psemdSRXpadTN6dER3?oc=5",
+      "source": "findarticles.com",
+      "published": "Fri, 25 Sep 2026 12:31:27 GMT"
+    },
+    {
+      "id": "CBMi3wFBVV95cUxNYzBILXNNNXBtRUlMN1FXdGp3UXU5MTFoaC1nSGUtOWc4SEpSSzdZY0J0aXU3ZTdsRF8wWFlmdDVlVWV4b2NGdklWV01VZWpGZkotU215OUY3U1k4WmlqbGYzc3lxeURrUGhKM2NKSi11T1VsMzkta19NQkdPeUJjVnZxVy1fdFFoSTI0LXV6UFJodi0xakxYT3lNUGtwUlUzX2hYMGRyaTR1WV9pRGpJUlYzZmFFUE94bnVUdzZ0Z3BBdVNqbHpITGlPVUpLc2xHSGE3b0FYLVUyVUZXR2t30gHkAUFVX3lxTFBuWk1ZZXp2bDJNTGNUWnItQ2d0TE90azBSbWM3QV8yNXl4S2ZaUERTb0UweUtSX2R5X3dZOEI1MGxhclMzc1V3N3VDazJocmZCcU0zZ3VzeXgyRGNOQ2NhRXNpem1Cc2ZxcTZDcTRwNjRxNXhVQmhHWWJ2YktyOEtjLTZBclpMWnlaN1ZKTmhyamQwaE5VeVd4OVZnY0lneVNsalQ1WnU2VzBsdml1eUwtak0tSnJPMTdZeDVENW1JRGZGM19TaFgzYmo2d0oxQ2hXUWlZSlNKMVNjMERTYmNyc1ZUdQ",
+      "title": "Google to test AI chips in space with first Suncatcher satellite mission - ET Enterprise AI",
+      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNYzBILXNNNXBtRUlMN1FXdGp3UXU5MTFoaC1nSGUtOWc4SEpSSzdZY0J0aXU3ZTdsRF8wWFlmdDVlVWV4b2NGdklWV01VZWpGZkotU215OUY3U1k4WmlqbGYzc3lxeURrUGhKM2NKSi11T1VsMzkta19NQkdPeUJjVnZxVy1fdFFoSTI0LXV6UFJodi0xakxYT3lNUGtwUlUzX2hYMGRyaTR1WV9pRGpJUlYzZmFFUE94bnVUdzZ0Z3BBdVNqbHpITGlPVUpLc2xHSGE3b0FYLVUyVUZXR2t30gHkAUFVX3lxTFBuWk1ZZXp2bDJNTGNUWnItQ2d0TE90azBSbWM3QV8yNXl4S2ZaUERTb0UweUtSX2R5X3dZOEI1MGxhclMzc1V3N3VDazJocmZCcU0zZ3VzeXgyRGNOQ2NhRXNpem1Cc2ZxcTZDcTRwNjRxNXhVQmhHWWJ2YktyOEtjLTZBclpMWnlaN1ZKTmhyamQwaE5VeVd4OVZnY0lneVNsalQ1WnU2VzBsdml1eUwtak0tSnJPMTdZeDVENW1JRGZGM19TaFgzYmo2d0oxQ2hXUWlZSlNKMVNjMERTYmNyc1ZUdQ?oc=5",
+      "source": "ET Enterprise AI",
       "published": "Fri, 25 Sep 2026 10:29:13 GMT"
+    },
+    {
+      "id": "CBMiowFBVV95cUxNckdPZUdwY244Z0Z0N1BtWDFMd1A3VkJfUzN1dFg5R2J4d2FMdVB6R01VTjdYdl9qRGhpSFR0R0tYVnRxaVVXTU13bjRnTEFzX2hOTzdsV2ZleWRqWnBFVVdCbUJuZFMwMGtfSFdWaVlybUtqdU0zcm1vOHZScER6dnlRRkdEZ3pwNG1ubkpuSzRuZDBNV2drLXNIOHpIVXFLZkJz",
+      "title": "Google Moves Project Suncatcher Toward First In-Orbit AI Chip Test - konsulteer.com",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNckdPZUdwY244Z0Z0N1BtWDFMd1A3VkJfUzN1dFg5R2J4d2FMdVB6R01VTjdYdl9qRGhpSFR0R0tYVnRxaVVXTU13bjRnTEFzX2hOTzdsV2ZleWRqWnBFVVdCbUJuZFMwMGtfSFdWaVlybUtqdU0zcm1vOHZScER6dnlRRkdEZ3pwNG1ubkpuSzRuZDBNV2drLXNIOHpIVXFLZkJz?oc=5",
+      "source": "konsulteer.com",
+      "published": "Fri, 25 Sep 2026 11:40:46 GMT"
     },
     {
       "id": "CBMimgFBVV95cUxQTjRydEd3SlFlUThpcFFhRDZYc3o0bWYzb1JZS1k4YTdBQlFocm9wRUMzcmNiQ252RXV5TjlrSExkcHFjWW5CcWowVXhWT3VZbjJNbVFvR044UU9tU0hvdmg4UEtSVkJXOXRyanJzb1VHVlJoRFc2UkFrcWNVYy02SzZfdkRyd3VSZWdvU1ZKUlVJSXViVk1xTm93",
@@ -225,6 +232,13 @@
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQTjRydEd3SlFlUThpcFFhRDZYc3o0bWYzb1JZS1k4YTdBQlFocm9wRUMzcmNiQ252RXV5TjlrSExkcHFjWW5CcWowVXhWT3VZbjJNbVFvR044UU9tU0hvdmg4UEtSVkJXOXRyanJzb1VHVlJoRFc2UkFrcWNVYy02SzZfdkRyd3VSZWdvU1ZKUlVJSXViVk1xTm93?oc=5",
       "source": "analyticsindiamag.com",
       "published": "Fri, 25 Sep 2026 10:08:04 GMT"
+    },
+    {
+      "id": "CBMihgFBVV95cUxNRWN3R0VadU0zN1R2dWtKUFNoTkF6VTYzeWwyS2swanA1OXZIWXdFY2ZHdHRmVmdDVDZVVUFHSlNDcE9zSzBnMm1Pc29hMkZLcTk5N281eWJHSU9JSHhkUFpaNS1OdXpkV0MzNkRiMG5PdkhoYVN2SWtNeTYzb3A4T09oOFlyUQ",
+      "title": "Google Project Suncatcher: 4 TPUs Launch to Orbit Oct 1 - tech-insider.org",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNRWN3R0VadU0zN1R2dWtKUFNoTkF6VTYzeWwyS2swanA1OXZIWXdFY2ZHdHRmVmdDVDZVVUFHSlNDcE9zSzBnMm1Pc29hMkZLcTk5N281eWJHSU9JSHhkUFpaNS1OdXpkV0MzNkRiMG5PdkhoYVN2SWtNeTYzb3A4T09oOFlyUQ?oc=5",
+      "source": "tech-insider.org",
+      "published": "Thu, 24 Sep 2026 19:22:51 GMT"
     },
     {
       "id": "CBMic0FVX3lxTE90ODlfNmhldUlOblJEQkVwM2FvWGE3dnBUemZVYWFIUUtkV3Q0NmZ0STBtRlV2Z0VfS29wY0JwVkJSaV8wSlRTZl9XVVVtdFNKTzhEaUptcTRVR2FxSy1TbG1iYzBadXliaWxkMUpfWDhQOGM",
@@ -249,9 +263,9 @@
     },
     {
       "id": "CBMid0FVX3lxTE14a1RYR2JWNXhKR2luRGJFSVRSaDFEdlF1WlphSmRHVnJXOWd0YUFER1kxM2tVSG9HeFFvZThYWDR2eWRJQjdMM0RMdndfbFMyRTZUOUMwY1ZlVVNBeVlTSE1oOHZzZlRpYjRlOVhqM3p2elktcy1v",
-      "title": "Google launched a satellite equipped with a dedicated AI chip (TPU) on October 1st as part of its 'Project Suncatcher' experiment to establish an AI data center in space. - gigazine.net",
+      "title": "Google launched a satellite equipped with a dedicated AI chip (TPU) on October 1st as part of its 'Project Suncatcher' experiment to establish an AI data center in space. - GIGAZINE",
       "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE14a1RYR2JWNXhKR2luRGJFSVRSaDFEdlF1WlphSmRHVnJXOWd0YUFER1kxM2tVSG9HeFFvZThYWDR2eWRJQjdMM0RMdndfbFMyRTZUOUMwY1ZlVVNBeVlTSE1oOHZzZlRpYjRlOVhqM3p2elktcy1v?oc=5",
-      "source": "gigazine.net",
+      "source": "GIGAZINE",
       "published": "Fri, 25 Sep 2026 02:08:00 GMT"
     },
     {
@@ -270,15 +284,15 @@
     },
     {
       "id": "CBMimgFBVV95cUxNY0NkdEdON0NPVjZwbEZ2UUpvZzIyYU5HRnJubEQwZ0M0S3Q1VEMyeTYxTktyX0hQQW5QaXA3RlJSSWplTzdySmplbS1JclNLVjYtWDdzUVp0cVJpa1k4a1FldTdvUFJMUkdQb2paVWJ0VjJpQjVBUGkxcTRwNzJrekxzOWJETXVjdlRMSEhVMlhlVEd0Q3FRYlp3",
-      "title": "Google to Test AI Compute in Space Through Project Suncatcher - CXO Digitalpulse",
+      "title": "Google to Test AI Compute in Space Through Project Suncatcher - cxodigitalpulse.com",
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNY0NkdEdON0NPVjZwbEZ2UUpvZzIyYU5HRnJubEQwZ0M0S3Q1VEMyeTYxTktyX0hQQW5QaXA3RlJSSWplTzdySmplbS1JclNLVjYtWDdzUVp0cVJpa1k4a1FldTdvUFJMUkdQb2paVWJ0VjJpQjVBUGkxcTRwNzJrekxzOWJETXVjdlRMSEhVMlhlVEd0Q3FRYlp3?oc=5",
-      "source": "CXO Digitalpulse",
+      "source": "cxodigitalpulse.com",
       "published": "Fri, 25 Sep 2026 07:50:26 GMT"
     }
   ],
   "seen_news_ids": [
-    "CBMiqgFBVV95cUxNM1BYaU0yYTZra0M4eWktSXVydEJjbTVtM0JLZUtpTlZUNWZPb2RqUHR0V1hEdlczMkZyOU90MW83eDhCWVJMSnhXLWxvcWhJMDdiNkUtZEJLR0ExN0xnMS1YdGJOaWJyRXZmZlJGQnJNVWJKbDl5dG1uMGtsRk9VbVRCcWpKVjlnUnVfMXU2VjNJOGdhOGt4UEZpeGpyNndSTUpodXphZV9jUQ",
     "CBMikwFBVV95cUxQUEx1YzkwWVhOQ25ocmRXYkJ6SWh1Q01wRG1QY096aW9UZkVDbTdNWnoyRWJtcEIwZVVoVEJJUmNpWlhnQVRXTkpzYTg3QzR5OThOS1JXMVc0bnF2dDNXVFU1QnE5bjVpZ2pCUVZwYnZ2bjhUckwwNG02S01MbmY3ckdaRzM5c2Q1c2xmZ05LenBpVEk",
+    "CBMiqgFBVV95cUxNM1BYaU0yYTZra0M4eWktSXVydEJjbTVtM0JLZUtpTlZUNWZPb2RqUHR0V1hEdlczMkZyOU90MW83eDhCWVJMSnhXLWxvcWhJMDdiNkUtZEJLR0ExN0xnMS1YdGJOaWJyRXZmZlJGQnJNVWJKbDl5dG1uMGtsRk9VbVRCcWpKVjlnUnVfMXU2VjNJOGdhOGt4UEZpeGpyNndSTUpodXphZV9jUQ",
     "CBMirAFBVV95cUxPYXZ5YUZxZlpKYlJlckhWVlc3RWhrOTNTYXJhbXNETHZBQU9nd3BDU2xvZ3A4a3ZwZ0llWF90OFJfSXNSMG9BaXdxeDdZOG9Hb3RtOHBsamVxOWszTjdVRFZBcW5hcEhVS2xtWDZhekl3MFhxSXRFLXlMUjR3Vk43WG1Bcms5QnFadlJHZlRNWjE0TkNhQ3lXSXpVLUxiLUJoN0N4c2tleEZaQnRR",
     "CBMinwFBVV95cUxNQ0xscjZHZjd2dm5hSUJscTRPa3h6cGVKYmctVEJrb1B1d3R0SjRxR0Q0YTFZWFEtTjdfRTM0YjQ0eHRIZFVVRG9iVnpzRVdnN2dJeHVPbmtlTXE4VHZKNmwtUkhCdVlFRTk2U0dDTEpzZ0xIeVJDT1k1U0VqM181UWxtdk1ZRmY1SUtxQlFRLVhGR1ZPR25ISHFyZlktajg",
     "CBMimAFBVV95cUxNb2JubzFZLVdFS2c4UE1YY29VQk5HamJlVm9fVlNvTlBpekhJZlEwaGxpZllIX2RiZXdDb0ZHQ1RTR0R6WjBJYllrZVU0cVVJVFZoX0RWZjRTN3dKcDl2RHpua0c0bjRSRlh5WHpWZFFJZGoyampMNkxCVm8yQUNqcE9sOTEwTzhFaUdrenoxWk80c01nTXRqdw",
@@ -286,11 +300,13 @@
     "CBMijAFBVV95cUxPV01hdmoySXFxanRueWJQXzh3Z010U3dOMi1tTlFxTHdmSnVWUVlEYzAwa3pIbVZOck9xMXhVOU1uR29XUzBNdUVGY3M1X3NlT2s4Z1NXWW5UejdJelFOTjIwb3ZPamRwZGlBN2Z0R0RlSEJ1Q0tyMDJxTjQtUjlvd1A1VjE1em1sY09hWg",
     "CBMixgFBVV95cUxNcTNSazQyUWVQNXlPRGhCXzZna3FFeVNBVTJEUWthUHFiaUotRnViZHY2Rkx6eU5xd3FYWm41MFMtZUp4a1VnTGdUVkQ3UlY1NkNWUnpGQmhTQ1lVMlltVTJVVGt0TDR4VU9rVGctTEoyNkZFZzZVVXZpalZUR2Z3TkdGeTF5QmlvaXBOM2J5VjZEeHR4ZW52SWlScU5FOWQxTHJ2eE00bjJZbDJIb2RoYmhBLUlaOFRjbTZwdlRNa2VUWXZDQWc",
     "CBMitAFBVV95cUxOWlBNN2VkZHh2bUNhQXlhTkRoRHh6ZGtKTDNHeWxWWDRPN255dkR5cGhFTk9HdDRneUdFWDltWFdUVTB1ZndVbzRJaTh4a0pYQmpteWlRQmRtY29vNU5IU001eFV4NHJKdzdDbEFPMVlDNk5fSmowcmNPbk41V1IycFpXVWFfVjRLc2Yza3BUamhpa3hfeEM5N3pIOHlROEVKXzlHanZpLUNUMUhnNVlDU05TdU4",
-    "CBMiggFBVV95cUxOQWFrNVZ6ZFlmajdNa25YaUdQSlktSVFlVHo4UU9kOHZCdzMzWGtMS1JDNnRzbk51UWttRkFOdk4yaVdCa2pBd3draU5qTEs0cTBmcnNmNm5fTi1yalJCR2hZUXRWQXdsWndQbWhiUXJWdDEtMjV4eFdsSVVuOGc0Njh3",
     "CBMihgFBVV95cUxOSVRDdXRHbFFNN0MyNzZkU3ZqTWU2b1ZXM0tzS0J1YmUyVXd5SmlUaE5MazdTM0dVTDcwSlpQS2V2WlJMM1N6UWZHLVJmRzN5cWEtQ1NaU0dObkN6Q1BoSkNoOHBvSW5lRVFBMWk1SzQ4dUgwWExmdGk1dlpTcXBHN1d2bXYzUQ",
-    "CBMihgFBVV95cUxNRWN3R0VadU0zN1R2dWtKUFNoTkF6VTYzeWwyS2swanA1OXZIWXdFY2ZHdHRmVmdDVDZVVUFHSlNDcE9zSzBnMm1Pc29hMkZLcTk5N281eWJHSU9JSHhkUFpaNS1OdXpkV0MzNkRiMG5PdkhoYVN2SWtNeTYzb3A4T09oOFlyUQ",
-    "CBMi5AFBVV95cUxQblpNWWV6dmwyTUxjVFpyLUNndExPdGswUm1jN0FfMjV5eEtmWlBEU29FMHlLUl9keV93WThCNTBsYXJTM3NVdzd1Q2syaHJmQnFNM2d1c3l4MkRjTkNjYUVzaXptQnNmcXE2Q3E0cDY0cTV4VUJoR1lidmJLcjhLYy02QXJaTFp5WjdWSk5ocmpkMGhOVXlXeDlWZ2NJZ3lTbGpUNVp1NlcwbHZpdXlMLWpNLUpyTzE3WXg1RDVtSURmRjNfU2hYM2JqNndKMUNoV1FpWUpTSjFTYzBEU2JjcnNWVHXSAeQBQVVfeXFMUG5aTVllenZsMk1MY1Raci1DZ3RMT3RrMFJtYzdBXzI1eXhLZlpQRFNvRTB5S1JfZHlfd1k4QjUwbGFyUzNzVXc3dUNrMmhyZkJxTTNndXN5eDJEY05DY2FFc2l6bUJzZnFxNkNxNHA2NHE1eFVCaEdZYnZiS3I4S2MtNkFyWkxaeVo3VkpOaHJqZDBoTlV5V3g5VmdjSWd5U2xqVDVadTZXMGx2aXV5TC1qTS1Kck8xN1l4NUQ1bUlEZkYzX1NoWDNiajZ3SjFDaFdRaVlKU0oxU2MwRFNiY3JzVlR1",
+    "CBMiggFBVV95cUxOQWFrNVZ6ZFlmajdNa25YaUdQSlktSVFlVHo4UU9kOHZCdzMzWGtMS1JDNnRzbk51UWttRkFOdk4yaVdCa2pBd3draU5qTEs0cTBmcnNmNm5fTi1yalJCR2hZUXRWQXdsWndQbWhiUXJWdDEtMjV4eFdsSVVuOGc0Njh3",
+    "CBMihgFBVV95cUxQSWhSVEFhQ1RCbk1oTkgybTM4ZDNlamJFRU93bG5ha1hsTkl6ZE5ONzdtSGVyQnc2dDdMRmVJQnlycTZDb092WWxnNnNSbTNla0JQamU5R1d5aF9mR3pkRTV1OW53SU5lRmJsTkYtX3hwdWpNZnBPM2M4d2xrZ0NOOXJMZ3NnQdIBjgFBVV95cUxNZlNnLTNXeE1wb2xiVUVZLTlpQlZrSW1yT0NoLUVlM1N5Zk50cTlrUTlZQ2F2UGxmcmdXajhCQTNFRnpZNE1vYUVoa09kN2U0NmQ0eVh2R1pEQ3RLTzhUR0ZxQnA3bG1TY3JIVmZSMVRJVURIOXQwZ2pWZG1xZms3U2psemdSRXpadTN6dER3",
+    "CBMi3wFBVV95cUxNYzBILXNNNXBtRUlMN1FXdGp3UXU5MTFoaC1nSGUtOWc4SEpSSzdZY0J0aXU3ZTdsRF8wWFlmdDVlVWV4b2NGdklWV01VZWpGZkotU215OUY3U1k4WmlqbGYzc3lxeURrUGhKM2NKSi11T1VsMzkta19NQkdPeUJjVnZxVy1fdFFoSTI0LXV6UFJodi0xakxYT3lNUGtwUlUzX2hYMGRyaTR1WV9pRGpJUlYzZmFFUE94bnVUdzZ0Z3BBdVNqbHpITGlPVUpLc2xHSGE3b0FYLVUyVUZXR2t30gHkAUFVX3lxTFBuWk1ZZXp2bDJNTGNUWnItQ2d0TE90azBSbWM3QV8yNXl4S2ZaUERTb0UweUtSX2R5X3dZOEI1MGxhclMzc1V3N3VDazJocmZCcU0zZ3VzeXgyRGNOQ2NhRXNpem1Cc2ZxcTZDcTRwNjRxNXhVQmhHWWJ2YktyOEtjLTZBclpMWnlaN1ZKTmhyamQwaE5VeVd4OVZnY0lneVNsalQ1WnU2VzBsdml1eUwtak0tSnJPMTdZeDVENW1JRGZGM19TaFgzYmo2d0oxQ2hXUWlZSlNKMVNjMERTYmNyc1ZUdQ",
+    "CBMiowFBVV95cUxNckdPZUdwY244Z0Z0N1BtWDFMd1A3VkJfUzN1dFg5R2J4d2FMdVB6R01VTjdYdl9qRGhpSFR0R0tYVnRxaVVXTU13bjRnTEFzX2hOTzdsV2ZleWRqWnBFVVdCbUJuZFMwMGtfSFdWaVlybUtqdU0zcm1vOHZScER6dnlRRkdEZ3pwNG1ubkpuSzRuZDBNV2drLXNIOHpIVXFLZkJz",
     "CBMimgFBVV95cUxQTjRydEd3SlFlUThpcFFhRDZYc3o0bWYzb1JZS1k4YTdBQlFocm9wRUMzcmNiQ252RXV5TjlrSExkcHFjWW5CcWowVXhWT3VZbjJNbVFvR044UU9tU0hvdmg4UEtSVkJXOXRyanJzb1VHVlJoRFc2UkFrcWNVYy02SzZfdkRyd3VSZWdvU1ZKUlVJSXViVk1xTm93",
+    "CBMihgFBVV95cUxNRWN3R0VadU0zN1R2dWtKUFNoTkF6VTYzeWwyS2swanA1OXZIWXdFY2ZHdHRmVmdDVDZVVUFHSlNDcE9zSzBnMm1Pc29hMkZLcTk5N281eWJHSU9JSHhkUFpaNS1OdXpkV0MzNkRiMG5PdkhoYVN2SWtNeTYzb3A4T09oOFlyUQ",
     "CBMic0FVX3lxTE90ODlfNmhldUlOblJEQkVwM2FvWGE3dnBUemZVYWFIUUtkV3Q0NmZ0STBtRlV2Z0VfS29wY0JwVkJSaV8wSlRTZl9XVVVtdFNKTzhEaUptcTRVR2FxSy1TbG1iYzBadXliaWxkMUpfWDhQOGM",
     "CBMiowJBVV95cUxPMDBEcDduWVo4WEwzbV85TWVxQzdYRVZvZnlYTDNXYTdSNktaRjNJeVNQWUxLb2dHSjFaNlpNNnItRlJXMGlROGVYT1ZVZFRMY0I0Qy1pbXN1RUVXTlp0TncxbmN4R2hTaXZ2Y3R2N0hBTUJNOTUwcF9GZjhXaVo3eVAzcXdidGRxSkRCS3VUYXRWSlJpUmFIbEFvU1p1emZoVkF4eXNaV3JsekxsckVybTVXcktETkpfZExrWjcxQnMtWUFzd3lNVDlobnNtY0RJSkJCamlBenZkd1oxLXl6RnBNZ09PZUI2bmRuQzR1MFI2Y0VQVThLRVk1TGsycDNZNGlReXYzbDJSY25fdGdoV24xcVpnbkw1QnZqbU1pcG9QTGfSAZwCQVVfeXFMTmxPRDZMczVPUWFaWDh2Q3lOdVA2QmdvcFNiQTVMMnNPLTdORHlVaS1sNkFxUkVCTDh4RWJsNzFFak9UOWxxNWdWNy1GczQxT3VxUUF2U2J4cC1wWGlJNS1IU0tNYXE5UmNnZy13bUU0VndGVGREQWdla1BvdExqWkhaeFRLUHdXTzZxdjM1QVFnX211amJxZXZodFNCOXJiaV9OX2J5QTNNd1lQenhEWjI4STJEdzZVSEI5cWtFbzFnMUw2SzhYY1FDeDVQWVh4eDVGN3ZOYzlCeWlvU0NHT3BuUE9fNjgwTTRCaUd2UzE4YXFQblkwMEphbXBkbm5tVHRXVHktRDRudlo5Q2FqUXJmemhydk4zYUc4N00",
     "CBMikwFBVV95cUxOODRsMDlKTTlTb2paQXZUR1pXSHhEenlxZ05LbGpsaU16bXR1SVd0X3JTSDJGWUZHVGdZY0kxWVlSVTlGNmJmd0UzTlA2bUg5NW9GbUZGVm83STVPemdOVXVlTDRHOEtJYUN6Y0dLN3pDVDdacGEtZmpfc2xvSkgzOGlrLVZfVFFTa3o0MnBfM0lWQjg",
