@@ -581,7 +581,24 @@ def _is_tesla_supply_text(text: str) -> bool:
     exec_guidance = _is_exec_guidance(text)
     actor = TESLA_OPT.search(text) or MUSK_EXEC_ACTOR.search(text)
     robot_term = OPTIMUS.search(text) or (TESLA_OPT.search(text) and TESLA_HUMANOID.search(text))
-    return bool(actor and robot_term and (ORDER.search(text) or AUDIT.search(text) or RAMP.search(text) or factory or app_productization or gen3_asset or korea_scout or exec_guidance))
+    return bool(
+        actor
+        and (
+            korea_scout
+            or (
+                robot_term
+                and (
+                    ORDER.search(text)
+                    or AUDIT.search(text)
+                    or RAMP.search(text)
+                    or factory
+                    or app_productization
+                    or gen3_asset
+                    or exec_guidance
+                )
+            )
+        )
+    )
 
 
 def _stage(text: str) -> str:
