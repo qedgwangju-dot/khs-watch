@@ -17,6 +17,7 @@ on:
       - "scripts/yen_carry_policy_path_overlay.py"
       - "scripts/yen_carry_real_rate_overlay.py"
       - "scripts/yen_carry_policy_reaction_watch.py"
+      - "scripts/yen_carry_telegram_compact.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_composite_watch.py"
@@ -26,6 +27,8 @@ on:
       - "tests/test_yen_carry_policy_path_overlay.py"
       - "tests/test_yen_carry_real_rate_overlay.py"
       - "tests/test_yen_carry_policy_reaction_watch.py"
+      - "tests/test_yen_carry_telegram_compact.py"
+      - "tests/test_yen_carry_telegram_compact.py"
   schedule:
     - cron: "6,21,36,51 * * * *"
   workflow_dispatch:
@@ -43,6 +46,7 @@ on:
       - "scripts/yen_carry_policy_path_overlay.py"
       - "scripts/yen_carry_real_rate_overlay.py"
       - "scripts/yen_carry_policy_reaction_watch.py"
+      - "scripts/yen_carry_telegram_compact.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_carry_composite_watch.py"
@@ -99,6 +103,7 @@ jobs:
           python -m py_compile scripts/yen_carry_policy_path_overlay.py
           python -m py_compile scripts/yen_carry_real_rate_overlay.py
           python -m py_compile scripts/yen_carry_policy_reaction_watch.py
+          python -m py_compile scripts/yen_carry_telegram_compact.py
           PYTHONPATH=scripts python -m unittest \
             tests/test_yen_carry_composite_watch.py \
             tests/test_yen_carry_composite_sources.py \
@@ -106,7 +111,8 @@ jobs:
             tests/test_yen_carry_target_currency_confirmation.py \
             tests/test_yen_carry_policy_path_overlay.py \
             tests/test_yen_carry_real_rate_overlay.py \
-            tests/test_yen_carry_policy_reaction_watch.py -v
+            tests/test_yen_carry_policy_reaction_watch.py \
+            tests/test_yen_carry_telegram_compact.py -v
 
       - name: Check multi-factor carry state
         run: PYTHONPATH=scripts python scripts/yen_carry_composite_runner.py
@@ -142,6 +148,10 @@ jobs:
       - name: Track BOJ policy reaction against USDJPY
         if: always() && hashFiles('out/yen_carry_composite_pending_state.json') != ''
         run: PYTHONPATH=scripts python scripts/yen_carry_policy_reaction_watch.py
+
+      - name: Compact Telegram body for scan-first readability
+        if: hashFiles('out/yen_carry_composite_alert.md') != ''
+        run: PYTHONPATH=scripts python scripts/yen_carry_telegram_compact.py
 
       - name: Require all structural sources in validation
         if: github.event_name == 'pull_request'
@@ -262,18 +272,23 @@ jobs:
 
           def render_html(value):
               rendered = []
+              section_headers = {'판정', '이번 변화', '핵심 숫자', '의미', '다음 경보', '출처'}
               for line in value.splitlines():
                   match = raw_source_re.match(line)
                   if match and match.group(1) in source_labels:
                       label = source_labels[match.group(1)]
                       url = match.group(2)
                       rendered.append(
-                          f'- {html.escape(label)} — <a href="{html.escape(url, quote=True)}">원문</a>'
+                          f'• {html.escape(label)} — <a href="{html.escape(url, quote=True)}">원문</a>'
                       )
                   elif line.startswith('- USD/JPY: Yahoo query1/query2'):
                       rendered.append(
-                          f'- USD/JPY·MXN/JPY·BRL/JPY·ZAR/JPY(Yahoo 5분 데이터) — <a href="{html.escape(yahoo_url, quote=True)}">원문</a>'
+                          f'• USD/JPY·MXN/JPY·BRL/JPY·ZAR/JPY(Yahoo 5분 데이터) — <a href="{html.escape(yahoo_url, quote=True)}">원문</a>'
                       )
+                  elif line.strip() in section_headers:
+                      rendered.append(f'<b>{html.escape(line.strip())}</b>')
+                  elif line.startswith(('🟢 엔캐리', '🟡 엔캐리', '🟠 엔캐리', '🔴 엔캐리')):
+                      rendered.append(f'<b>{html.escape(line)}</b>')
                   else:
                       rendered.append(html.escape(line))
               return '\n'.join(rendered)
@@ -534,6 +549,7 @@ jobs:
             out/yen_carry_composite_pending_state.json
             out/yen_carry_composite_alert_title.txt
             out/yen_carry_composite_alert.md
+            out/yen_carry_composite_alert_detail.md
             out/yen_carry_composite_alert.json
             out/yen_carry_composite_telegram_confirmed.json
             out/yen_carry_confirmation.md
