@@ -268,6 +268,8 @@ def load_state() -> dict:
 def topic_group(text: str) -> str | None:
     if _is_exec_guidance(text):
         return 'tesla'
+    if TESLA_OPT.search(text) and KOREA_LOCATIONS.search(text) and KOREA_SUPPLIER_SCOUT.search(text) and KOREA_COMPONENT_SCOPE.search(text):
+        return 'tesla'
     if TESLA_OPT.search(text) and TESLA_HUMANOID.search(text) and NAMED_OPTIMUS_SUPPLIERS.search(text) and NAMED_SUPPLIER_ORDER.search(text) and AUDIT.search(text):
         return 'tesla'
     return _orig_topic_group(text)
