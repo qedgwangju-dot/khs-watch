@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-26T03:34:14+09:00",
+  "updated_at_kst": "2026-09-26T07:17:56+09:00",
   "circle": {
     "date": "2026-09-24",
     "circulation_usd_b": 75.2,
@@ -38,39 +38,39 @@
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-09-24",
+    "date": "2026-09-25",
     "three_month": 4.24,
-    "ten_year": 5.18,
-    "prev_date": "2026-09-23",
-    "prev_three_month": 4.19,
-    "prev_ten_year": 5.11,
-    "daily_3m_bp": 5.0,
-    "daily_10y_bp": 7.0,
+    "ten_year": 5.17,
+    "prev_date": "2026-09-24",
+    "prev_three_month": 4.24,
+    "prev_ten_year": 5.18,
+    "daily_3m_bp": 0.0,
+    "daily_10y_bp": -1.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
     "date": "2026-09-25",
-    "close": 88.67009735107422,
+    "close": 89.0,
     "prev_date": "2026-09-24",
     "prev_close": 93.0,
-    "daily_pct": -4.66
+    "daily_pct": -4.3
   },
   "tbx": {
     "date": "2026-09-25",
-    "close": 29.719999313354492,
+    "close": 29.625600814819336,
     "prev_date": "2026-09-24",
     "prev_close": 29.709999084472656,
-    "daily_pct": 0.03
+    "daily_pct": -0.28
   },
   "fx": {
     "rate": 1360.0,
     "date": "2026-09-23",
-    "requested_date": "2026-09-24",
+    "requested_date": "2026-09-25",
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
     "crosscheck": "Yahoo Finance 1,362.50원, 차이 0.18%"
   },
-  "crcl_last_alerted_close_date": "2026-09-24",
+  "crcl_last_alerted_close_date": "2026-09-25",
   "errors": []
 }
