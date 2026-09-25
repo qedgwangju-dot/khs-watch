@@ -369,19 +369,53 @@ def main() -> None:
             and new_date != old_date
         )
 
+        same_day_value_changed = (
+            new_date == old_date
+            and abs(
+                etf.get("total_usd_m", 0.0)
+                - old_etf.get("total_usd_m", etf.get("total_usd_m", 0.0))
+            ) >= 0.1
+        )
+        partial_to_complete = (
+            new_date == old_date
+            and old_etf.get("status") == "partial"
+            and etf.get("status") == "complete"
+        )
+
         if new_date != old_date and not legacy_pending_zero:
             qualifier = "잠정 집계" if etf.get("status") == "partial" else "현재 전체 집계"
-            triggers.append(f"BTC 현물 ETF 새 일간 자금흐름({qualifier}): {signed_millions(etf.get('total_usd_m', 0.0))}")
-        elif new_date == old_date and abs(etf.get("total_usd_m", 0.0) - old_etf.get("total_usd_m", etf.get("total_usd_m", 0.0))) >= 0.1:
+            triggers.append(
+                f"BTC 현물 ETF 새 일간 자금흐름({qualifier}): "
+                f"{signed_millions(etf.get('total_usd_m', 0.0))}"
+            )
+        elif partial_to_complete:
+            if same_day_value_changed:
+                triggers.append(
+                    "BTC 현물 ETF 잠정치 확정: "
+                    f"{signed_millions(old_etf.get('total_usd_m', 0.0))} → "
+                    f"{signed_millions(etf.get('total_usd_m', 0.0))}"
+                )
+            else:
+                triggers.append(
+                    "BTC 현물 ETF 잠정치 확정(값 동일): "
+                    f"{signed_millions(etf.get('total_usd_m', 0.0))}"
+                )
+        elif same_day_value_changed:
             qualifier = "잠정 집계" if etf.get("status") == "partial" else "현재 집계"
             triggers.append(
-                f"BTC 현물 ETF 당일 합계 수정({qualifier}): {signed_millions(old_etf.get('total_usd_m', 0.0))} → {signed_millions(etf.get('total_usd_m', 0.0))}"
+                f"BTC 현물 ETF 당일 합계 수정({qualifier}): "
+                f"{signed_millions(old_etf.get('total_usd_m', 0.0))} → "
+                f"{signed_millions(etf.get('total_usd_m', 0.0))}"
             )
 
         old_values = dated_values(old_etf)
         new_values = dated_values(etf)
         revisions = []
         for d in sorted(set(old_values) & set(new_values)):
+            # The current trading day's partial→final update is already reported
+            # above. Only genuinely older dates belong in "과거 원자료 수정".
+            if d == new_date:
+                continue
             old_value = old_values[d]
             new_value = new_values[d]
             if abs(new_value - old_value) >= 0.1:
