@@ -179,6 +179,7 @@ def test_nuclear_deliberation_is_one_policy_event_across_article_dates():
     }
     # 공식 9/22 계획과 9/25 후속 기사는 '원전 공론화'라는 같은 정책 사건이다.
     # 후속 기사 날짜가 달라졌다는 이유만으로 새 알림이 되면 안 된다.
+    assert semantic_event_key(official) == "12th-plan|nuclear-deliberation"
     assert semantic_event_key(followup) == "12th-plan|nuclear-deliberation"
 
 
