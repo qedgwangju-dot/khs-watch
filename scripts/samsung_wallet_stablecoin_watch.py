@@ -245,30 +245,30 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
         ("Visa", ("visa",)),
         ("Mastercard", ("mastercard",)),
     ]
-    relation_terms = (
-        "partner", "partnership", "integrat", "support", "settlement",
-        "제휴", "파트너", "통합", "지원", "결제망",
-    )
     stable_expr = r"(?:stable[\s\-]?coin|스테이블코인)"
+    relation_expr = r"(?:partner(?:ship)?|integrat(?:e|ion|ed)?|support(?:s|ed)?|settlement|제휴|파트너|통합|지원|결제망)"
     for name, aliases in partner_patterns:
         for alias in aliases:
             alias_expr = re.escape(alias)
-            forward = re.search(
-                rf"{stable_expr}.{{0,90}}(?:{'|'.join(re.escape(x) for x in relation_terms)}).{{0,70}}{alias_expr}",
-                evidence_text,
-                re.I,
-            )
-            reverse = re.search(
-                rf"{alias_expr}.{{0,70}}(?:{'|'.join(re.escape(x) for x in relation_terms)}).{{0,90}}{stable_expr}",
-                evidence_text,
-                re.I,
-            )
-            direct_asset = alias in {"usdc", "usdt", "pyusd"} and re.search(
-                rf"(?:samsung wallet|삼성월렛).{{0,120}}(?:support|integrat|지원|통합).{{0,80}}{alias_expr}",
-                evidence_text,
-                re.I,
-            )
-            if forward or reverse or direct_asset:
+            explicit_patterns = [
+                rf"{stable_expr}.{{0,45}}{relation_expr}.{{0,35}}(?:with|via|using|to|for|와|과|로|통해)?\s*.{{0,15}}{alias_expr}",
+                rf"{alias_expr}.{{0,35}}{relation_expr}.{{0,45}}{stable_expr}",
+            ]
+            if alias in {"usdc", "usdt", "pyusd"}:
+                explicit_patterns.append(
+                    rf"(?:samsung wallet|삼성월렛).{{0,70}}(?:support(?:s|ed)?|integrat(?:e|ion|ed)?|지원|통합).{{0,35}}{alias_expr}"
+                )
+            if any(re.search(pattern, evidence_text, re.I) for pattern in explicit_patterns):
+                # Avoid the known false-positive shape where Visa/Barclays belong only
+                # to Galaxy Card while stablecoin support is discussed separately.
+                if name in {"Visa", "Mastercard"}:
+                    context = evidence_text
+                    if (
+                        "galaxy card" in context
+                        and re.search(rf"galaxy card.{{0,80}}{alias_expr}", context, re.I)
+                        and not re.search(rf"{stable_expr}.{{0,45}}(?:via|using|with)\s*{alias_expr}", context, re.I)
+                    ):
+                        continue
                 detected_partner = name
                 break
         if detected_partner:
