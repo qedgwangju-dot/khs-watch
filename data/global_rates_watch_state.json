@@ -1,17 +1,17 @@
 {
   "last_values": {
-    "jgb2": 1.849,
-    "jgb10": 2.981,
+    "jgb2": 1.912,
+    "jgb10": 3.073,
     "ust2": 4.87,
     "ust10": 5.18,
     "ust30": 5.47,
-    "usdjpy": 158.7969970703125,
-    "us_jp_2y_spread": null,
-    "usdjpy_daily_change_pct": 0.32410129852602354,
+    "usdjpy": 158.6959991455078,
+    "us_jp_2y_spread": 2.958,
+    "usdjpy_daily_change_pct": 0.49138866866774017,
     "boe_bank_rate": 3.75
   },
   "active": {
-    "jgb10:above:3.0": false,
+    "jgb10:above:3.0": true,
     "ust10:above:4.5": true,
     "ust10:above:4.7": true,
     "ust10:above:4.75": true,
@@ -22,12 +22,12 @@
     "us_jp_2y_spread:below:2.0": false
   },
   "last_source_dates": {
-    "jgb2": "2026/9/18",
-    "jgb10": "2026/9/18",
+    "jgb2": "2026/9/24",
+    "jgb10": "2026/9/24",
     "ust2": "2026-09-24",
     "ust10": "2026-09-24",
     "ust30": "2026-09-24",
-    "usdjpy": "2026-09-24",
+    "usdjpy": "2026-09-25",
     "boe_bank_rate": "2026-09-17"
   },
   "central_bank_decisions": {
@@ -46,14 +46,14 @@
       "rate_page": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate"
     }
   },
-  "classification": "미국 장기채 스트레스",
-  "updated_at_kst": "2026-09-25T08:46:22+09:00",
+  "classification": "미·일 장기채 동시 스트레스",
+  "updated_at_kst": "2026-09-25T10:32:47+09:00",
   "date_alignment": {
-    "jgb2_date": "2026/9/18",
+    "jgb2_date": "2026/9/24",
     "ust2_date": "2026-09-24",
-    "same_2y_date": false,
+    "same_2y_date": true,
     "latest_rate_date": "2026-09-24",
     "live_fx_signal_eligible": true,
-    "live_fx_timestamp_utc": "2026-09-24T23:46:43Z"
+    "live_fx_timestamp_utc": "2026-09-25T01:33:06Z"
   }
 }
