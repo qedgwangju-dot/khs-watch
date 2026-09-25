@@ -35,38 +35,46 @@ def load(path: pathlib.Path, default):
 def source_lines(result: dict) -> list[str]:
     src = result.get("sources") or {}
     lines = []
-    if src.get("jgb"):
-        lines.append(f"- 일본 재무성 JGB 금리: {src['jgb']}")
     if src.get("weekly_flow"):
         lines.append(f"- 일본 재무성 주간 해외증권투자: {src['weekly_flow']}")
-    if src.get("weekly_schedule"):
-        lines.append(f"- 일본 재무성 주간 수급 발표일정: {src['weekly_schedule']}")
-    auction = (load(OUT / "global_rates_structural.json", {}).get("auction") or {})
-    if auction.get("url"):
-        lines.append(f"- 일본 재무성 JGB 입찰 결과: {auction['url']}")
 
     confirmation = load(OUT / "yen_carry_confirmation.json", {})
     confirmation_data = confirmation.get("data") or {}
     if confirmation_data.get("VIXCLS"):
-        lines.append(f"- Cboe VIX 일간 종가: {CBOE_VIX}")
+        lines.append(f"- Cboe VIX: {CBOE_VIX}")
     if confirmation_data.get("NASDAQCOM"):
-        lines.append(f"- Nasdaq Composite 공식 지수: {NASDAQ_COMP}")
+        lines.append(f"- Nasdaq Composite: {NASDAQ_COMP}")
     if confirmation_data.get("NIKKEI225"):
-        lines.append(f"- Nikkei 225 공식 과거값: {NIKKEI_225}")
+        lines.append(f"- Nikkei 225: {NIKKEI_225}")
     return lines
 
 
-def bessent_yen_policy_block() -> str:
-    return "\n".join([
-        "②-3 미·일 정책공조·엔캐리 시장영향",
-        "- Bessent 발언은 우선 <b>구두개입·정책공조 신호</b>로 분류. 미·일 당국의 실제 외환거래가 공식 확인되기 전에는 새로운 ‘실개입’으로 표시하지 않음.",
-        "- BOJ 확인: 정책금리·가이던스가 실제 엔 강세 방향을 뒷받침하는지 별도 확인. 미국 측 발언만으로 BOJ 결정까지 확정하지 않음.",
-        "- 환율 방어선: 공식 선언이 없는 한 특정 USD/JPY 숫자를 미국·일본 정부의 고정 방어선으로 간주하지 않음.",
-        "- 🟢 질서 있는 엔 강세: USD/JPY 하락 + BOJ 정상화/금리차 축소 + VIX·주식 안정 → 과도한 엔 숏 축소로 보고 주식은 중립~약한 우호.",
-        "- 🔴 엔캐리 강제청산: USD/JPY 급락 + VIX 급등 + Nikkei·Nasdaq 등 위험자산 동반 약세 → 레버리지 회수·위험자산 수급 악재로 격상.",
-        "- 주식 전달경로: 질서 있는 엔 강세는 환율 정상화에 가깝지만, 급격한 엔캐리 청산이면 Nasdaq·반도체·KOSPI/KOSDAQ·고베타 자산까지 매도 압력이 번질 수 있음.",
-        "- 중복 방지: ‘I am the house now’ 같은 Bessent 발언 한 건만으로 새 Telegram을 만들지 않고, 기존 글로벌 금리·엔캐리 이벤트가 발생했을 때 해석 블록으로만 반영.",
-    ])
+def compact_regime_block(result: dict) -> str:
+    regime = result.get("regime") or {}
+    flow = result.get("flow") or {}
+    absorption = result.get("absorption") or {}
+    lines = ["③-1 원인·자금 흐름"]
+
+    label = regime.get("label")
+    if label:
+        parts = [f"• 원인 │ {label}"]
+        if regime.get("jgb10") is not None:
+            parts.append(f"JGB10 {regime.get('jgb10'):.3f}%({regime.get('d10_bp', 0):+.1f}bp)")
+        if regime.get("ust10") is not None:
+            parts.append(f"UST10 {regime.get('ust10'):.3f}%({regime.get('ust10_change_bp', 0):+.1f}bp)")
+        lines.append(" · ".join(parts))
+
+    if flow:
+        lines.append(
+            f"• 일본 해외자산 │ {flow.get('period','')} {flow.get('subtotal_display','확인 불가')} · "
+            f"{flow.get('label','')}"
+        )
+
+    if absorption.get("label") and absorption.get("label") != "해당 없음":
+        lines.append(f"• 3%대 입찰 │ {absorption.get('label')}")
+
+    lines.append("• 해석 │ 해외자산 순매수·엔화 약세가 이어지면 강제청산 확인 아님. 순매도 전환+엔화 급등+변동성 상승이 겹치면 경계 상향.")
+    return "\n".join(lines)
 
 
 def inject_before_sources(text: str, blocks: list[str], sources: list[str]) -> str:
@@ -103,38 +111,35 @@ def main() -> int:
     result = load(RESULT, {})
     events = load(EVENT, {}).get("events") or []
     sources = source_lines(result)
-    policy = bessent_yen_policy_block()
+    compact = compact_regime_block(result)
 
     if REPORT.exists():
         raw = normalize_confirmation_label(REPORT.read_text(encoding="utf-8"))
-        blocks: list[str] = []
-        if BLOCK.exists() and "②-2 JGB 3% 체제·실제 자금이동" not in raw:
-            blocks.append(BLOCK.read_text(encoding="utf-8"))
-        if "②-3 미·일 정책공조·엔캐리 시장영향" not in raw:
-            blocks.append(policy)
-        REPORT.write_text(inject_before_sources(raw, blocks, sources), encoding="utf-8")
+        if "③-1 원인·자금 흐름" not in raw:
+            marker = "\n④ 판정"
+            if marker in raw:
+                raw = raw.replace(marker, "\n" + compact + marker, 1)
+            else:
+                raw = raw.rstrip() + "\n\n" + compact + "\n"
+        REPORT.write_text(inject_before_sources(raw, [], sources), encoding="utf-8")
         return 0
 
-    # Do not create a standalone alert merely for the Bessent policy interpretation.
-    # Only an already-material JGB regime/flow event can originate a report here.
-    if not BLOCK.exists() or not events:
+    # Only a material regime/flow event may originate a standalone report.
+    if not events:
         return 0
 
-    block = BLOCK.read_text(encoding="utf-8")
     regime = result.get("regime") or {}
     label = regime.get("label") or "구조 변화"
     now = datetime.now(KST).strftime("%Y-%m-%d %H:%M:%S KST")
     text = "\n".join([
-        "[글로벌 금리·엔캐리 경보] 🟡",
-        f"판정: 구조 신호 변화 — {label}",
-        f"조회: {now}",
+        "[글로벌 금리·엔캐리] 🟡 구조 변화",
+        f"판정 │ {label}",
+        f"조회 │ {now}",
         "",
-        block.rstrip(),
+        compact,
         "",
-        policy,
-        "",
-        "정확한 의미",
-        "- 구조 신호 하나만으로 엔캐리 청산을 확정하지 않습니다. 미·일 단기금리차·USD/JPY·변동성·주식 전염이 동반되는지 기존 확인축에서 별도 검산합니다.",
+        "판정",
+        "• 구조 신호 하나만으로 엔캐리 청산을 확정하지 않음. 미·일 단기금리차·USD/JPY·VIX·주식 전염을 함께 확인.",
         "",
         "출처",
         *sources,
