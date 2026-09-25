@@ -40,7 +40,9 @@ BASELINE = {
         "ai_cpu_2030_usd_bn": 180.4,
         "agentic_share_pct": 42.83,
         "ai_cpu_share_pct": 85.66,
+        "server_cpu_2025_usd_bn": 35.0,
         "server_cpu_2026_usd_bn": 61.4,
+        "server_cpu_cagr_2025_2030_pct": 43.1,
         "server_cpu_cagr_2026_2030_pct": 36.1,
         "ai_cpu_cagr_2026_2030_pct": 43.6,
     },
@@ -285,8 +287,18 @@ def extract_ratio(text: str) -> str:
     low = text.lower()
     if "agentic" not in low:
         return ""
+    # 과거 1:4~8이 같은 문장에 있어도 에이전트형 목표 구조를 우선한다.
+    if (
+        "1:1 ratio" in low
+        or "toward ~1:1" in low
+        or "toward 1:1" in low
+        or "moving toward a 1:1" in low
+        or "1+ cpu : 1 gpu" in low
+        or "1+ cpu:1 gpu" in low
+    ):
+        return "1:1"
     patterns = [
-        r"(?:cpu[- ]to[- ]gpu ratio|cpu:gpu|cpu-to-gpu)[^.]{0,120}?(\d+\+?\s*:\s*\d+(?:\s*[-–]\s*\d+)?)",
+        r"(?:agentic[^.]{0,180}?)(\d+\+?\s*:\s*\d+(?:\s*[-–]\s*\d+)?)",
         r"(\d+\+?\s*CPU\s*:\s*\d+\s*GPU)",
     ]
     for pattern in patterns:
@@ -296,8 +308,6 @@ def extract_ratio(text: str) -> str:
             nums = re.findall(r"\d+\+?", raw)
             if len(nums) >= 2:
                 return f"{nums[0]}:{nums[1]}"
-    if "1:1 ratio" in low or "toward ~1:1" in low or "toward 1:1" in low:
-        return "1:1"
     return ""
 
 
@@ -351,7 +361,10 @@ def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[di
             if ch["mode"] == "pp":
                 lines.append(f"  - {html.escape(ch['label'])}: {ch['before']:.1f}% → {ch['after']:.1f}% ({ch['delta']:+.1f}%p)")
             else:
-                lines.append(f"  - {html.escape(ch['label'])}: {ch['before']:.1f}bn달러 → {ch['after']:.1f}bn달러 ({ch['delta']:+.1f}%)")
+                lines.append(
+                    f"  - {html.escape(ch['label'])}: {html.escape(bn_label(ch['before'], fx))} "
+                    f"→ {html.escape(bn_label(ch['after'], fx))} ({ch['delta']:+.1f}%)"
+                )
     if ratio_change:
         lines.append(f"• CPU:GPU 구조 전망: {html.escape(ratio_change[0])} → {html.escape(ratio_change[1])}")
 
@@ -361,7 +374,15 @@ def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[di
     agent_share = float(m.get("agentic_share_pct") or 0)
     ai_share = float(m.get("ai_cpu_share_pct") or 0)
     if total:
+        base_2025 = float(m.get("server_cpu_2025_usd_bn") or 0)
+        cagr_2025 = float(m.get("server_cpu_cagr_2025_2030_pct") or 0)
         lines.append(f"• BofA 2030 서버 CPU 시장: {bn_label(total, fx)}")
+        if base_2025:
+            multiple = total / base_2025
+            lines.append(
+                f"• 2025→2030: {bn_label(base_2025, fx)} → {bn_label(total, fx)}, "
+                f"약 {multiple:.1f}배 / 연평균 약 {cagr_2025:.1f}%"
+            )
     if agent:
         lines.append(f"• 에이전트형 AI CPU: {bn_label(agent, fx)} / 전체의 {agent_share:.1f}%")
     if ai_cpu:
@@ -473,9 +494,14 @@ def main() -> None:
     ratio_change: tuple[str, str] | None = None
     seen_forecast = set(previous.get("seen_forecast_urls") or [])
 
+    previous_as_of = str(previous.get("as_of") or BASELINE["as_of"])
     for candidate in forecast_candidates:
         url = candidate.get("url") or ""
         if url in seen_forecast:
+            continue
+        candidate_date = str(candidate.get("published_at_kst") or "")[:10]
+        # 과거 리포트·재인용을 새 전망 하향/상향으로 오인하지 않는다.
+        if not candidate_date or candidate_date <= previous_as_of:
             continue
         new_metrics = dict(previous.get("metrics") or {})
         new_metrics.update(candidate.get("metrics") or {})
