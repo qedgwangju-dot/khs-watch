@@ -458,6 +458,10 @@ def parse_postprocess_records(item, body):
         rm = re.search(r'(?:USD|US\$|\$)?\s*([\d.]+)\s*(?:billion|B)[^\d]{0,30}(?:to|[-~–])\s*(?:USD|US\$|\$)?\s*([\d.]+)\s*(?:billion|B)', text, re.I)
         if rm:
             total_min, total_max = float(rm[1]) * 1e9, float(rm[2]) * 1e9
+        else:
+            rm_kr = re.search(r'([\d.]+)\s*억\s*(?:~|[-–]|에서|to)\s*([\d.]+)\s*억\s*달러', text, re.I)
+            if rm_kr:
+                total_min, total_max = float(rm_kr[1]) * 1e8, float(rm_kr[2]) * 1e8
         pm = re.search(r'(?:10\s*(?:to|[-~–])\s*20|10\s*~\s*20)\s*%', text, re.I)
         tester_shortage = bool(re.search(r'tester[^.]{0,30}shortage|테스터[^.]{0,30}부족|테스트\s*장비[^.]{0,30}부족', text, re.I))
         if total_min or pm or tester_shortage:
@@ -476,6 +480,7 @@ def parse_postprocess_records(item, body):
     # ASE: annual CapEx revision.
     if re.search(r'\bASE\b|Advanced Semiconductor Engineering', text, re.I) and re.search(r'capex|설비투자', text, re.I):
         vals = [float(x) * 1e9 for x in re.findall(r'(?:USD|US\$|\$)?\s*([\d.]+)\s*(?:billion|B)', text, re.I)]
+        vals += [float(x) * 1e8 for x in re.findall(r'([\d.]+)\s*억\s*달러', text)]
         if vals:
             current = max(vals)
             prior = min(vals) if len(vals) > 1 and min(vals) != current else None
@@ -699,8 +704,12 @@ def comparison(old, new):
                 dp = (bv / av - 1) * 100
                 if abs(dp) >= 10 or abs(bv-av) >= 1_000_000_000:
                     reasons.append(f"{label} {dp:+.1f}%")
-        if a.get('tester_shortage') != b.get('tester_shortage') and b.get('tester_shortage'):
-            reasons.append('테스터 부족 공식·신뢰 근거 확인')
+        for field, label in (('backend_alloc_pct_min','후공정 배정 하단'), ('backend_alloc_pct_max','후공정 배정 상단')):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and abs(float(bv) - float(av)) >= 5:
+                reasons.append(f"{label} {float(bv)-float(av):+.1f}%p")
+        if a.get('tester_shortage') != b.get('tester_shortage'):
+            reasons.append('테스터 부족 확인' if b.get('tester_shortage') else '테스터 부족 해소·완화 확인')
         return reasons
     if new['axis'] == 'postprocess_order':
         reasons = []
