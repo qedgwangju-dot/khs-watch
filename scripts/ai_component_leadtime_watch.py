@@ -76,6 +76,35 @@ STATUS_KO = {
     "Balanced": "균형",
 }
 
+STATUS_SEVERITY = {"Balanced": 0, "Tight": 1, "Very Tight": 2}
+
+REVENUE_PATHS = {
+    "GPU": "AI 가속기 출하 → 첨단패키징·HBM·기판·전력·냉각 동반 수요 → 시스템 매출",
+    "DRAM": "서버·RDIMM 수요 → 출하량·평균판매단가·제품 혼합 개선 → 메모리 매출·마진",
+    "NAND(eSSD)": "기업용 SSD 수요 → NAND 생산능력 재배분 → eSSD 출하·평균판매단가 → 스토리지 매출",
+    "HDD": "에이전틱 AI 데이터·로그·장기보관 증가 → nearline HDD 용량·출하 → 스토리지 매출",
+    "ABF": "GPU·ASIC·CPU 대형·고다층화 → FC-BGA/ABF 유효 생산능력 소모 → 고부가 기판 출하·제품 혼합 개선",
+    "MLCC": "AI 서버·네트워크 전력밀도 상승 → 고용량·고신뢰성 MLCC 탑재량 증가 → 고부가 부품 매출",
+}
+
+COMPANY_WATCH = {
+    "GPU": "NVIDIA·AMD — AI 가속기 수요축",
+    "DRAM": "삼성전자·SK하이닉스·Micron — 서버 DRAM/RDIMM",
+    "NAND(eSSD)": "삼성전자·SK하이닉스/Solidigm·Micron — 기업용 SSD/NAND",
+    "HDD": "Seagate·Western Digital — nearline HDD",
+    "ABF": "삼성전기·Ibiden·Unimicron·Nan Ya PCB — 고성능 FC-BGA/ABF 기판",
+    "MLCC": "삼성전기·Murata·Taiyo Yuden — 고용량·고신뢰성 MLCC",
+}
+
+FAILURE_MODES = {
+    "GPU": ("사양 변경·플랫폼 전환 지연", "샘플→양산 일정·랙 출하", "6~12개월"),
+    "DRAM": ("선주문 이후 실제 서버 출하가 따라오지 않아 재고가 다시 쌓이는 경로", "RDIMM 가격·재고·출하", "6~12개월"),
+    "NAND(eSSD)": ("eSSD로 생산능력을 옮겼지만 실제 수요가 둔화돼 가격과 가동률이 동시에 꺾이는 경로", "기업용 SSD 가격·가동률·재고", "6~12개월"),
+    "HDD": ("대용량 드라이브 수율·생산능력 확대가 지연돼 납기만 길어지는 경로", "출하 EB·리드타임·고객 재고", "6~12개월"),
+    "ABF": ("T-glass·압합장비·휨·수율·고객 인증이 증설 속도를 따라오지 못하는 경로", "리드타임·SAP 가동률·수율·고객 승인", "12~24개월"),
+    "MLCC": ("범용 수요 약세가 AI용 고사양 가격 방어보다 커져 제품 혼합 효과가 약화되는 경로", "고사양/범용 가격·BB비율·가동률", "6~12개월"),
+}
+
 WEEK = r"(\d{1,2}(?:\s*[-–—~]\s*\d{1,2})?)\s*(?:weeks?|w|주)\b"
 
 
@@ -403,6 +432,49 @@ def biggest_current_change(old: dict, new: dict) -> tuple[str, float] | None:
     ranked.sort(reverse=True)
     _, name, delta = ranked[0]
     return name, delta
+
+
+def bottleneck_ranking(components: dict) -> list[tuple[float, str, dict]]:
+    ranked: list[tuple[float, str, dict]] = []
+    for name, entry in components.items():
+        ratio = ratio_value(str(entry.get("current") or ""), str(entry.get("balanced") or ""))
+        if ratio is not None:
+            ranked.append((ratio, name, entry))
+    ranked.sort(reverse=True)
+    return ranked
+
+
+def supply_direction(old: dict, new: dict) -> tuple[str, int, int]:
+    worse = 0
+    better = 0
+    for name, entry in new.items():
+        before = old.get(name) or {}
+        old_ratio = ratio_value(str(before.get("current") or ""), str(before.get("balanced") or ""))
+        new_ratio = ratio_value(str(entry.get("current") or ""), str(entry.get("balanced") or ""))
+        old_sev = STATUS_SEVERITY.get(str(before.get("status") or ""), 0)
+        new_sev = STATUS_SEVERITY.get(str(entry.get("status") or ""), 0)
+        if new_sev > old_sev or (old_ratio is not None and new_ratio is not None and new_ratio > old_ratio + 0.05):
+            worse += 1
+        elif new_sev < old_sev or (old_ratio is not None and new_ratio is not None and new_ratio < old_ratio - 0.05):
+            better += 1
+    if worse > better:
+        return "↗ 병목 확대", worse, better
+    if better > worse:
+        return "↘ 병목 완화", worse, better
+    return "→ 혼조·변화 제한", worse, better
+
+
+def focus_components(changed: list[str], signal_names: list[str], components: dict, limit: int = 4) -> list[str]:
+    out: list[str] = []
+    for name in [*changed, *signal_names]:
+        if name in components and name not in out:
+            out.append(name)
+    for _, name, _ in bottleneck_ranking(components):
+        if name not in out:
+            out.append(name)
+        if len(out) >= limit:
+            break
+    return out[:limit]
 
 
 def source_score(url: str, components: dict, text: str) -> int:
