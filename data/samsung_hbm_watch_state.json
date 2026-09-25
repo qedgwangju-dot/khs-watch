@@ -174,27 +174,29 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-25T13:45:20+09:00",
-  "last_event_count": 81,
+  "updated_at_kst": "2026-09-25T13:54:05+09:00",
+  "last_event_count": 84,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
-  "official_month": "",
-  "official_data_ok": false,
+  "official_month": "202608",
+  "official_data_ok": true,
   "official_errors": [
-    "관세청 세션 초기화 실패: ConnectTimeout",
-    "공공데이터포털 전국 API 실패: ConnectTimeout; fallback=전국 202608 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 시도 API 실패: ConnectTimeout; fallback=충남 202608 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 시도 API 실패: ConnectTimeout; fallback=충북 202608 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 국가별 품목 API MY 실패: ConnectTimeout",
-    "이천 202608 KCS 조회 실패: ConnectTimeout"
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+    "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+    "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+    "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+    "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
   ],
   "last_official_alert_month": "202608",
   "official_api_key_configured": true,
-  "official_api_used": false,
+  "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-25T10:40:04+09:00",
+  "last_successful_official_at_kst": "2026-09-25T13:54:05+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -605,6 +607,24 @@
         "source": "Bernstein report interpretation",
         "scope": "institutional_estimate_not_company_reported_revenue",
         "excerpt": "중앙 회귀식은 SK하이닉스 3Q26 HBM 매출 약 59억달러, 전분기 대비 -14%. 가장 후행 출하가 집중된 계절성 시나리오는 약 75억달러."
+      },
+      "hbm_product_mix|samsung|HBM4_family|2027": {
+        "key": "hbm_product_mix|samsung|HBM4_family|2027",
+        "axis": "hbm_product_mix",
+        "value": {
+          "reference_pct": 40,
+          "target_pct": 80,
+          "product_family": "HBM4/HBM4E"
+        },
+        "unit": "pct",
+        "period": "2027",
+        "as_of": "2026-09-21",
+        "evidence": "reported",
+        "source_url": "https://news.futunn.com/en/post/79538141/report-samsung-may-double-its-hbm4-hbm4e-production-next-year",
+        "source_title": "Report: Samsung may double its HBM4/HBM4E production next year, with the product mix rising from 40% to 80%",
+        "source": "Futunn 재인용·기존 삼성 HBM4/4E 증산 사건",
+        "scope": "reported_product_mix_share_not_shipment_share",
+        "excerpt": "기존 HBM4·HBM4E 생산 2배 사건의 세부 비중 40%→80%. 별도 신규 생산사건이 아니라 제품 혼합 세부 상태 기준선."
       }
     },
     "latest": {
@@ -857,11 +877,29 @@
         "source": "Bernstein report interpretation",
         "scope": "institutional_estimate_not_company_reported_revenue",
         "excerpt": "중앙 회귀식은 SK하이닉스 3Q26 HBM 매출 약 59억달러, 전분기 대비 -14%. 가장 후행 출하가 집중된 계절성 시나리오는 약 75억달러."
+      },
+      "hbm_product_mix|samsung|HBM4_family|2027": {
+        "key": "hbm_product_mix|samsung|HBM4_family|2027",
+        "axis": "hbm_product_mix",
+        "value": {
+          "reference_pct": 40,
+          "target_pct": 80,
+          "product_family": "HBM4/HBM4E"
+        },
+        "unit": "pct",
+        "period": "2027",
+        "as_of": "2026-09-21",
+        "evidence": "reported",
+        "source_url": "https://news.futunn.com/en/post/79538141/report-samsung-may-double-its-hbm4-hbm4e-production-next-year",
+        "source_title": "Report: Samsung may double its HBM4/HBM4E production next year, with the product mix rising from 40% to 80%",
+        "source": "Futunn 재인용·기존 삼성 HBM4/4E 증산 사건",
+        "scope": "reported_product_mix_share_not_shipment_share",
+        "excerpt": "기존 HBM4·HBM4E 생산 2배 사건의 세부 비중 40%→80%. 별도 신규 생산사건이 아니라 제품 혼합 세부 상태 기준선."
       }
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-25T13:45:20+09:00",
+      "last_checked_at_kst": "2026-09-25T13:54:05+09:00",
       "gaps": [
         "RDIMM 64GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "bit_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -916,7 +954,7 @@
     "payload_hash": "530c48c0c3871196399dafd3e2e227a9db75485cec1621c5f619886372c1e158"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-25T13:48:41+09:00",
+    "checked_at_kst": "2026-09-25T13:56:26+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null
