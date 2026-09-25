@@ -1257,5 +1257,1424 @@
       "key": "생산능력·증산|samsung|hbm4",
       "reason": "Bernstein/Futunn의 3Q HBM 매출 성장률 72%를 생산능력 변화로 오분류한 상태를 직전 생산능력 기준선으로 복원"
     }
-  ]
+  ],
+  "_delivery": {
+    "id": "008f5b896104ae087c1cb5e8ae2f9214316979cc01052d4c813eabc10b5f2d19",
+    "status": "queued",
+    "created_at_kst": "2026-09-25T17:12:56+09:00",
+    "chunks": [
+      "<b>HBM·서버 D램 연계 상태 변화</b>\n\n<b>삼성 4나노·HBM4 베이스다이 가격 변화</b>\n• 현재: 4나노 신규수주 가격 인상\n• 직전 알림 기준: 4나노 신규수주 가격 인상 / HBM4 베이스다이 가격 인상\n• 변화: HBM4 베이스다이 가격 인상 해소·철회\n• 대상기간: current · 자료 기준일 2026-09-22\n• 가격 인상 보도와 실제 평균판매단가를 구분하며 인상률이 공개되면 숫자 상태로 갱신합니다.\n• 근거 단계: 보도 단계\n• 근거 제목(한국어): HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이 · <a href=\"https://www.mt.co.kr/industry/2026/09/22/2026092119545912109\">원문</a>\n\n환율 기준: 2026-09-24 일일 기준 · ECB/Frankfurter · 조회 2026-09-25 17:12 KST · 보조 API 2026-09-25 · 차이 0.00% · 일중 기준시각 차이 가능"
+    ],
+    "next_chunk": 0,
+    "message_ids": [],
+    "candidate": {
+      "seen_ids": [
+        "017d7560e3afc81111bbcb5c",
+        "02a9ff8b7b18764c64a8220e",
+        "034038a3bbe2593dcdf3aaf5",
+        "03e375cb2ac8ee053d78045a",
+        "05692592093313cc05c062c2",
+        "05c27d7b30704f2bd464f146",
+        "0833d662f2bc1ef69385334d",
+        "0c9de789f40a57b1f7452b32",
+        "0d9cf627a8ab402f60a42bf3",
+        "0f17f32d2b4b5565c36aa544",
+        "0fbce83b73293cb0ae9a300e",
+        "11f2804bb2777b361ad1f2c9",
+        "120a11796f6b80a0cfc48ac4",
+        "13b12656de92e7797d92974d",
+        "1432e820459e286c4883b6f2",
+        "15986d5f222af3d0f829c323",
+        "1693f17cdf3a4d6ee9405a5f",
+        "17a65ab35e8d47168bb2a124",
+        "1848991f042e73d6a3c535a1",
+        "1945363dfd2d1fc1c0822e12",
+        "19a4ce14545ac6bd629e1c97",
+        "19ccdda257893b3515f24083",
+        "1a1e13313c77e3e19502ddaa",
+        "1b5520c78f80c192e8bab32b",
+        "2215e50f5d488d5857e7aad8",
+        "2592daa04362fcf21db6e5fc",
+        "26755fafa4774455ad2be17f",
+        "29917bada40fc676323de211",
+        "299eb2b621f19497d40d20f0",
+        "2dbf4f120eeb4f3951edff11",
+        "2f80599673dc3c01cce0a649",
+        "2fd519f3311b7a35a23b3df7",
+        "2ffff13769690af770a34874",
+        "33a6346ef7450946c610b951",
+        "353edb6bcb903f62008425c3",
+        "3629fb9d64289e7df5e61020",
+        "3629fd9073866598dc4720b4",
+        "36c5216f7a48c42802192732",
+        "38663428f7eff6456c64b3f2",
+        "3a779311d23ecb65350a81db",
+        "3a7bc653ab3e6ea8a94a6095",
+        "3b7df6d213754fe17079f316",
+        "3c99470ecd962286ac0f102e",
+        "3d26d341f6dfd05a8f2bb96c",
+        "3e1902adc2e9c4d1e59a7a55",
+        "3e9686ba8b65b8379217a7dc",
+        "3eb237c40279f59da0ecd9b5",
+        "405463a0e2a049064d3f3acf",
+        "4222a83b8ad4073d8c70828e",
+        "44a73e460d6f41603a0bea4c",
+        "4516da5ac62796b962b6d269",
+        "45aba92a1f2d40c1164b655b",
+        "45d8d52a912ba6f54d04b454",
+        "45ebc9a7d8d33f91805959c3",
+        "45f9f31d1e6cc628a7bf680f",
+        "479424efdf3d7193810ea2dd",
+        "4a052c510fe7988076a8e75d",
+        "4c5a42276c2466edbfecbf62",
+        "4c5b1ea09d94ac7e5ee33663",
+        "4cebdebd7ea03a5d5b726dc2",
+        "4d1b2123ef6e39f9d89b8006",
+        "526c2759fcea00d96c03da97",
+        "56b2de8304378c3a06fa5b4c",
+        "57e9d50e1c1cf25ad372b735",
+        "5a3a72fe34f95c5f38edf6f5",
+        "5cdb4edd07a7b43ea88cbae8",
+        "5d10c70a6f648f2a02de1e05",
+        "5e304c914d7ab868e24a3585",
+        "5e34c24f642a6b4391a17f12",
+        "60166d645eb70db655149ec7",
+        "6390d90dc440f18fea5641d1",
+        "649a679bcbfb0360d689f533",
+        "64d140a29a9357cf86b4bc7b",
+        "66d753f37dd3e78939235e57",
+        "67cf87cd7ae84be2493d0fc6",
+        "68cf60813c9be422ca6c4dd7",
+        "6b7493588d08d0a48e48daf1",
+        "6d45cf56091569c5a90afa2d",
+        "70185fba0edbf134eaec4563",
+        "713490beb5fab08cbe13b7a1",
+        "718dd76d6e527d14b124b019",
+        "734fe686b2cc7eecd44f25fe",
+        "7553bdd6e7e8637cb37bfa26",
+        "758a989e153679364a5a88d1",
+        "760a8bec17fa609280000ff5",
+        "7706dddd8e8d7d094d51e7ea",
+        "79aedf4e419a832eeb02e356",
+        "79db62328df5eefa718368f8",
+        "7a0bff8b5342ca682d9c8e55",
+        "7a3db0702cdb15e174f9588a",
+        "7a52a883076d44f53608893e",
+        "7baae91f6447b3c99800f43a",
+        "7d291d2d4e257c19bbf10f5d",
+        "7d35c559af732e1a76ff8e2f",
+        "7fc67a8a0b23cc8a19d76f05",
+        "810b2b31f4ad1136fc603ccb",
+        "8126ef91d8781ccab552de73",
+        "817464b05dc936124292cda3",
+        "822874baa35bfd09e35b58c4",
+        "8373adbcfc508c1a31114ac1",
+        "848922d41cf5a192d68a3a63",
+        "86390aba27173d50352a39ed",
+        "863bf5e58c0b909bc1684cb9",
+        "8701e18d89fed22673e4303c",
+        "87a5705365eae516605d4ffd",
+        "8b710efb734682b342b7e338",
+        "8e73f51c8102b58456035bcc",
+        "9046127bdbf6a9b5874f4a55",
+        "908dd39afd1f41cf0db839e1",
+        "914fababbb9099953512eef6",
+        "9348003ee0b889f4cd55f49b",
+        "94cd0744c2c52b59a060e719",
+        "98ba1745001107bfdd028fd7",
+        "995152e9b3b528540a0fccce",
+        "9b7d072c5cc6386d531f360a",
+        "9deb4a8d28a86b75f391a95d",
+        "a18a355eac4bcbbf23ab3b69",
+        "a42f64d496ea3b33d8256a30",
+        "a5a275fb929f37b120e7a8ed",
+        "a8045c048cc6c2f3e1151eca",
+        "a845562aec371314227ee9ca",
+        "a9a2b98d9be48dfaa7992df7",
+        "ab946d84cf8d9b45b14ee055",
+        "ad71f3481f090f2a3b57592d",
+        "aecd0190a7a845249b865cbb",
+        "b10990b377e8014499d64e5a",
+        "b4489259f60f13a654447938",
+        "b4818c7354b18b0d28e11aa7",
+        "b581c7a6cb5b3cd17e6288f3",
+        "b6857f986779526ffa08d741",
+        "b8b49c879b5584546caf1fba",
+        "bb8d68accda30ea0a27f488c",
+        "bd26432b3c3bf171b67b4e34",
+        "bd89f94d9970c70227357ae5",
+        "be3ea72057cda8f38d4e8424",
+        "be85fd0abf51ad7d2a53e36f",
+        "bf36069b039f4887166a44a2",
+        "c0014c2ca47fea6d896c3e23",
+        "c09ac81c8b75fa07c44ec6c4",
+        "c4eeabbe2d4315477133e9fe",
+        "c5caa424ac30e0d7227f34f9",
+        "c6dbc35819f3c1e93989d93f",
+        "c79756540ecc6154f1a0a8be",
+        "d3df70605b2ce62b978ff4ef",
+        "d40800136258a38a2c44e380",
+        "d50b2a7ddc7e2971dc3215a3",
+        "da2e59416c300e7919ff2162",
+        "dad30ad5dc81ab12af7350c6",
+        "dad35b5b5d47e9bc13e72730",
+        "ddd95cd2c576de3fc9da7859",
+        "dfc471a0ed3580d0977e739c",
+        "dff50282be119de77562ca8c",
+        "e111feb6b7a1eec811f1a42e",
+        "e1702f3566dee6c4b0c8b47d",
+        "e387db40ba0cf545e7fb304a",
+        "e3dfd2590d975c890001eac3",
+        "e5070379d09247bfa06c7157",
+        "e5cdad2fe817cc3e46678159",
+        "e6299c7902b5ee31d96a5309",
+        "e9630aacbafa2aec1dbb5a74",
+        "e9f073456697904e5407e230",
+        "e9f48a3fa721edd7d0113ea4",
+        "eab351c9c3731d6a278c1974",
+        "ec3cf377a6d8256cacdecb01",
+        "ed1c60b97398767e08f42c38",
+        "ee7cfb5b8d2e973d5f37af8e",
+        "ef39d6d349a69c7968cc145c",
+        "efbea32ada40e92e9a9983e1",
+        "f054bf6b15d0eaf2e5370773",
+        "f14e72d8efa2d3322a48ed8d",
+        "f200e58d9c12484220e2e143",
+        "f2d75affddc41df5f01d27b3",
+        "f43c28716a290ed2d07f41bd",
+        "f51eb7557fb3c26004086538",
+        "f555f56555244354f1f4aa8d",
+        "f5a164229bbed03cb0c1c3b1",
+        "f6c31071f5914a547fcb3fa1",
+        "f6ea3f1fc68e1e473bcd91cb",
+        "f7ba633e0f7a24fe0314b575",
+        "f9ae286ced0970280f1bfa92",
+        "fabfb78c79fac517e54dc7b3",
+        "fb3f11c8c71336071691a17e",
+        "fc8d9ad3059f3fc4d09ac22a",
+        "fd774ad93defbc5c27b92607",
+        "ffa5760e161f37610a025582"
+      ],
+      "last_monthly_digest": "2026-09",
+      "updated_at_kst": "2026-09-25T17:10:02+09:00",
+      "last_event_count": 86,
+      "last_fresh_new_count": 0,
+      "last_send_event_count": 0,
+      "monthly_due": false,
+      "compare_version": 4,
+      "official_month": "202608",
+      "official_data_ok": true,
+      "official_errors": [
+        "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+        "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+        "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+        "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+        "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+        "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+        "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+        "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
+      ],
+      "last_official_alert_month": "202608",
+      "official_api_key_configured": true,
+      "official_api_used": true,
+      "last_successful_official_month": "202608",
+      "last_successful_official_at_kst": "2026-09-25T17:10:02+09:00",
+      "malaysia_official_month": "202608",
+      "malaysia_hsk10_amount_usd": null,
+      "malaysia_public_available": false,
+      "malaysia_revision_due": false,
+      "last_successful_delivery_kst": "2026-09-25T15:35:39+09:00",
+      "telegram_message_id": 145,
+      "bot_username": "khs88798879887988798879_bot",
+      "topic_states": {
+        "생산능력·증산|samsung|hbm4|2027": {
+          "signature": "31be525d5fc17b60f5c1da16",
+          "observed_at": "2026-09-20T16:33:51+09:00",
+          "state": "삼성 HBM 생산능력·증산 계획 변화",
+          "recovered_message_id": 133
+        },
+        "생산능력·증산|samsung|hbm": {
+          "signature": "6782cf4ec90d2ac82926839c",
+          "observed_at": "2026-09-22T08:53:29+09:00",
+          "state": "삼성 HBM 생산능력·증산 계획 변화"
+        },
+        "기타|skhynix|hbm": {
+          "signature": "30da188868fae77d2c3df43d",
+          "observed_at": "2026-04-23T16:00:00+09:00",
+          "state": "삼성 HBM 관련 신규 변화"
+        },
+        "HBM4 출하|samsung|hbm4|nvidia|2026": {
+          "signature": "fb7768974f665679afe27a7e",
+          "observed_at": "2025-11-28T17:00:00+09:00",
+          "state": "HBM4 출하·제품혼합 변화"
+        },
+        "HBM4 출하|samsung|hbm4|nvidia": {
+          "signature": "8bbff60f96775b5c47db363f",
+          "observed_at": "2026-01-26T17:00:00+09:00",
+          "state": "HBM4 출하·제품혼합 변화"
+        },
+        "HBM4 출하|samsung|hbm4": {
+          "signature": "755cba3c888a2e571fa804f3",
+          "observed_at": "2026-08-22T06:00:00+09:00",
+          "state": "HBM4 출하·제품혼합 변화"
+        },
+        "기타|samsung|hbm4": {
+          "signature": "a9950eb87098c93d4fae7337",
+          "observed_at": "2026-02-13T17:00:00+09:00",
+          "state": "삼성 HBM 관련 신규 변화"
+        },
+        "기타|samsung|hbm": {
+          "signature": "4a712eabc9b3450a268e7117",
+          "observed_at": "2026-04-21T16:00:00+09:00",
+          "state": "삼성 HBM 관련 신규 변화"
+        },
+        "기타|samsung|hbm4e+hbm4": {
+          "signature": "fa5d3b9cb3fb10b634f0edfe",
+          "observed_at": "2026-05-29T16:00:00+09:00",
+          "state": "삼성 HBM 관련 신규 변화"
+        },
+        "생산능력·증산|samsung|hbm4": {
+          "signature": "716fba593a8b41ef112ec5cb",
+          "observed_at": "2026-09-21T14:05:42+09:00",
+          "state": "삼성 HBM 생산능력·증산 계획 변화"
+        },
+        "생산능력·증산|samsung|hbm4e+hbm4|2027": {
+          "signature": "2d0c474e5075b5d55dd98e7a",
+          "observed_at": "2026-09-21T17:20:50+09:00",
+          "state": "삼성 HBM 생산능력·증산 계획 변화"
+        }
+      },
+      "ops_track_version": 1,
+      "share_track_version": 1,
+      "event_state_version": 2,
+      "hbm_ops_metrics": {
+        "samsung|hbm4|yield": {
+          "value": 80,
+          "unit": "pct",
+          "period": "2026-09",
+          "source": "서울경제 보도 기준선",
+          "evidence": "reported"
+        }
+      },
+      "hbm_export_unit_prices": {
+        "2026-03": {
+          "value": 40.68,
+          "source": "서울신문",
+          "evidence": "reported",
+          "observed_at": "2026-09-20T21:23:55+09:00"
+        },
+        "2026-04": {
+          "value": 53.04,
+          "source": "서울신문",
+          "evidence": "reported",
+          "observed_at": "2026-09-20T21:23:55+09:00"
+        },
+        "2026-05": {
+          "value": 58.21,
+          "source": "서울신문",
+          "evidence": "reported",
+          "observed_at": "2026-09-20T21:23:55+09:00"
+        },
+        "2026-06": {
+          "value": 69.51,
+          "source": "서울신문",
+          "evidence": "reported",
+          "observed_at": "2026-09-20T21:23:55+09:00"
+        },
+        "2026-07": {
+          "value": 76.14,
+          "source": "서울신문",
+          "evidence": "reported",
+          "observed_at": "2026-09-20T21:23:55+09:00"
+        },
+        "2026-08": {
+          "value": 73.39,
+          "source": "한국무역협회 인용 공개자료 기준선",
+          "evidence": "reported",
+          "observed_at": "baseline"
+        }
+      },
+      "last_ops_observation_count": 0,
+      "last_ops_alert_count": 0,
+      "hbm_share_forecasts": {
+        "jpmorgan|sales|2026": {
+          "values": {
+            "skhynix": 46,
+            "samsung": 34,
+            "micron": 20
+          },
+          "source": "사용자 제공 J.P. Morgan 차트",
+          "observed_at": "baseline"
+        },
+        "jpmorgan|sales|2027": {
+          "values": {
+            "skhynix": 41,
+            "samsung": 39,
+            "micron": 21
+          },
+          "source": "사용자 제공 J.P. Morgan 차트",
+          "observed_at": "baseline"
+        },
+        "jpmorgan|sales|2028": {
+          "values": {
+            "skhynix": 42,
+            "samsung": 37,
+            "micron": 21
+          },
+          "source": "사용자 제공 J.P. Morgan 차트",
+          "observed_at": "baseline"
+        }
+      },
+      "hbm_share_actuals": {
+        "counterpoint|sales|2026Q2": {
+          "values": {
+            "skhynix": 50,
+            "samsung": 33,
+            "micron": 18
+          },
+          "source": "Counterpoint 2026-09-03",
+          "observed_at": "baseline"
+        }
+      },
+      "last_share_observation_count": 0,
+      "last_share_alert_count": 0,
+      "memory_axes": {
+        "last_notified": {
+          "wafer_share|trendforce|industry|2026-YE": {
+            "key": "wafer_share|trendforce|industry|2026-YE",
+            "axis": "wafer_share",
+            "value": 22,
+            "unit": "pct",
+            "period": "2026-YE",
+            "as_of": "2026-06-02",
+            "evidence": "research",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+            "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
+            "source": "TrendForce",
+            "scope": "year_end_forecast",
+            "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
+          },
+          "wafer_share|trendforce|industry|2027-YE": {
+            "key": "wafer_share|trendforce|industry|2027-YE",
+            "axis": "wafer_share",
+            "value": 30,
+            "unit": "pct",
+            "period": "2027-YE",
+            "as_of": "2026-06-02",
+            "evidence": "research",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+            "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
+            "source": "TrendForce",
+            "scope": "year_end_forecast",
+            "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
+          },
+          "bit_share|trendforce|industry|2026-YE": {
+            "key": "bit_share|trendforce|industry|2026-YE",
+            "axis": "bit_share",
+            "value": 9,
+            "unit": "pct",
+            "period": "2026-YE",
+            "as_of": "2026-06-02",
+            "evidence": "research",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+            "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
+            "source": "TrendForce",
+            "scope": "year_end_forecast",
+            "excerpt": "웨이퍼 투입 비중과 분모가 다름"
+          },
+          "bit_share|trendforce|industry|2027-YE": {
+            "key": "bit_share|trendforce|industry|2027-YE",
+            "axis": "bit_share",
+            "value": 13,
+            "unit": "pct",
+            "period": "2027-YE",
+            "as_of": "2026-06-02",
+            "evidence": "research",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+            "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
+            "source": "TrendForce",
+            "scope": "year_end_forecast",
+            "excerpt": "웨이퍼 투입 비중과 분모가 다름"
+          },
+          "hbm_config|samsung|HBM4|12Hi|catalog": {
+            "key": "hbm_config|samsung|HBM4|12Hi|catalog",
+            "axis": "hbm_config",
+            "value": {
+              "die_gbit": 24,
+              "layers": 12,
+              "stack_gbyte": 36
+            },
+            "unit": "GB/stack",
+            "period": "catalog",
+            "as_of": "2026-09-21",
+            "evidence": "user_capture",
+            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+            "source_title": "사용자 제공 HBM 구성 비교 기준선",
+            "source": "사용자 캡처·제품자료 비교",
+            "scope": "product_capability_not_customer_contract",
+            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+          },
+          "hbm_config|samsung|HBM4E|8Hi|catalog": {
+            "key": "hbm_config|samsung|HBM4E|8Hi|catalog",
+            "axis": "hbm_config",
+            "value": {
+              "die_gbit": 32,
+              "layers": 8,
+              "stack_gbyte": 32
+            },
+            "unit": "GB/stack",
+            "period": "catalog",
+            "as_of": "2026-09-21",
+            "evidence": "user_capture",
+            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+            "source_title": "사용자 제공 HBM 구성 비교 기준선",
+            "source": "사용자 캡처·제품자료 비교",
+            "scope": "product_capability_not_customer_contract",
+            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+          },
+          "hbm_config|samsung|HBM4E|12Hi|catalog": {
+            "key": "hbm_config|samsung|HBM4E|12Hi|catalog",
+            "axis": "hbm_config",
+            "value": {
+              "die_gbit": 32,
+              "layers": 12,
+              "stack_gbyte": 48
+            },
+            "unit": "GB/stack",
+            "period": "catalog",
+            "as_of": "2026-09-21",
+            "evidence": "user_capture",
+            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+            "source_title": "사용자 제공 HBM 구성 비교 기준선",
+            "source": "사용자 캡처·제품자료 비교",
+            "scope": "product_capability_not_customer_contract",
+            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+          },
+          "carrier_cleaning|samsung|2026": {
+            "key": "carrier_cleaning|samsung|2026",
+            "axis": "carrier_cleaning",
+            "value": 20000,
+            "unit": "cleaning_passes/month",
+            "period": "2026",
+            "as_of": "2026-09-21",
+            "evidence": "reported",
+            "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+            "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
+            "source": "글로벌이코노믹·사용자 제공 본문",
+            "scope": "reusable_carrier_service_not_wafer_output",
+            "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
+          },
+          "carrier_cleaning|samsung|2027": {
+            "key": "carrier_cleaning|samsung|2027",
+            "axis": "carrier_cleaning",
+            "value": 50000,
+            "unit": "cleaning_passes/month",
+            "period": "2027",
+            "as_of": "2026-09-21",
+            "evidence": "reported",
+            "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+            "source_title": "삼성 HBM 유리 지지판 외주 세정 물량 전망",
+            "source": "글로벌이코노믹·사용자 제공 본문",
+            "scope": "reusable_carrier_service_not_wafer_output",
+            "excerpt": "재사용 지지판 세정 처리량, 웨이퍼 생산·완제품 출하·확정 수주액 아님"
+          },
+          "fab_stage|samsung|P5_Fab1": {
+            "key": "fab_stage|samsung|P5_Fab1",
+            "axis": "fab_stage",
+            "value": {
+              "year": 2028,
+              "stage": "plan"
+            },
+            "unit": "year/stage",
+            "period": "2028",
+            "as_of": "2026-09-21",
+            "evidence": "reported",
+            "source_url": "https://m.g-enews.com/article/Industry/2026/09/2026092111095321043084322ec9_1",
+            "source_title": "P5 Fab1 2028년 가동 목표",
+            "source": "글로벌이코노믹·사용자 제공 본문",
+            "scope": "fab_start_not_full_output",
+            "excerpt": "회사 관계자 인용 보도, 가동 목표와 본격 출하 기여는 별도"
+          },
+          "ddr5_chip_quote|dramexchange|16|4800/5600": {
+            "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
+            "axis": "ddr5_chip_quote",
+            "value": 57.167,
+            "unit": "USD/chip",
+            "period": "2026-09",
+            "as_of": "2026-09-22",
+            "evidence": "research",
+            "source_url": "https://www.dramexchange.com/",
+            "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
+            "source": "DRAMeXchange",
+            "excerpt": "DDR5 16Gb (2Gx8) 4800/5600: Session Average (공개 화면)",
+            "capacity_gb": null,
+            "density_gbit": 16,
+            "speed": "4800/5600"
+          },
+          "rdimm_quote|dramexchange|32|4800/5600": {
+            "key": "rdimm_quote|dramexchange|32|4800/5600",
+            "axis": "rdimm_quote",
+            "value": 2050,
+            "unit": "USD/module",
+            "period": "2026-09",
+            "as_of": "2026-09-14",
+            "evidence": "research",
+            "source_url": "https://www.dramexchange.com/",
+            "source_title": "DDR5 RDIMM 32GB 4800/5600 공개 현물가격",
+            "source": "DRAMeXchange",
+            "excerpt": "DDR5 RDIMM 32GB 4800/5600: Session Average (공개 화면)",
+            "capacity_gb": 32,
+            "density_gbit": null,
+            "speed": "4800/5600"
+          },
+          "malaysia_hsk10_export|KR|MY|8542323000": {
+            "key": "malaysia_hsk10_export|KR|MY|8542323000",
+            "axis": "malaysia_hsk10_export",
+            "value": {
+              "amount_usd": 1624540000,
+              "weight_kg": 3800,
+              "weight_kg_previous_yoy": 1400,
+              "yoy_pct": 466.6,
+              "taiwan_amount_usd": 3322110000,
+              "malaysia_vs_taiwan_pct": 48.9,
+              "jan_aug_amount_usd": 6314240000,
+              "weight_rounded_from_public_text": true
+            },
+            "unit": "USD/kg",
+            "period": "2026-08",
+            "as_of": "2026-09-22",
+            "evidence": "reported",
+            "source_url": "https://biz.chosun.com/it-science/ict/2026/09/22/NGJ2RJYZARGN3JSVXPUEIE6XRA/?outputType=amp",
+            "source_title": "AI 반도체 패키징 증설 몰리는 말레이시아… 韓 HBM 관련 수출 1년 새 4.7배 증가",
+            "source": "조선비즈·관세청 수출입무역통계 인용",
+            "scope": "HBM_included_multichip_IC_not_HBM_only",
+            "excerpt": "2026년 8월 말레이시아향 HSK 8542323000 수출 16억2454만달러, 전년동월 +466.6%, 중량 약 1.4t→3.8t, 대만향 33억2211만달러의 48.9%. 중량은 기사 반올림값."
+          },
+          "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy": {
+            "key": "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy",
+            "axis": "hbm_revenue_estimate",
+            "value": {
+              "estimate_usd": 11400000000,
+              "qoq_pct": 72,
+              "prior_formal_forecast_usd": 9300000000,
+              "alternative_usd": null,
+              "method": "regression_proxy"
+            },
+            "unit": "USD/quarter",
+            "period": "2026Q3",
+            "as_of": "2026-09-21",
+            "evidence": "research",
+            "source_url": "https://www.xxquant.com/en/institution/institutional-research/8b645f792185585501cbbc207b89643f",
+            "source_title": "Bernstein Korean export tracker — Samsung 3Q26 HBM revenue regression",
+            "source": "Bernstein report interpretation",
+            "scope": "institutional_estimate_not_company_reported_revenue",
+            "excerpt": "8월 수출 회귀식은 삼성 3Q26 HBM 매출 약 114억달러, 전분기 대비 +72%. Bernstein의 기존 93억달러 전망보다 23% 높은 회귀식 결과."
+          },
+          "hbm_revenue_estimate|bernstein|skhynix|2026Q3|regression_proxy": {
+            "key": "hbm_revenue_estimate|bernstein|skhynix|2026Q3|regression_proxy",
+            "axis": "hbm_revenue_estimate",
+            "value": {
+              "estimate_usd": 5900000000,
+              "qoq_pct": -14,
+              "prior_formal_forecast_usd": null,
+              "alternative_usd": 7500000000,
+              "method": "regression_proxy"
+            },
+            "unit": "USD/quarter",
+            "period": "2026Q3",
+            "as_of": "2026-09-21",
+            "evidence": "research",
+            "source_url": "https://www.xxquant.com/en/institution/institutional-research/8b645f792185585501cbbc207b89643f",
+            "source_title": "Bernstein Korean export tracker — SK hynix 3Q26 HBM revenue regression",
+            "source": "Bernstein report interpretation",
+            "scope": "institutional_estimate_not_company_reported_revenue",
+            "excerpt": "중앙 회귀식은 SK하이닉스 3Q26 HBM 매출 약 59억달러, 전분기 대비 -14%. 가장 후행 출하가 집중된 계절성 시나리오는 약 75억달러."
+          },
+          "hbm_product_mix|samsung|HBM4_family|2027": {
+            "key": "hbm_product_mix|samsung|HBM4_family|2027",
+            "axis": "hbm_product_mix",
+            "value": {
+              "reference_pct": 40,
+              "target_pct": 80,
+              "product_family": "HBM4/HBM4E"
+            },
+            "unit": "pct",
+            "period": "2027",
+            "as_of": "2026-09-21",
+            "evidence": "reported",
+            "source_url": "https://news.futunn.com/en/post/79538141/report-samsung-may-double-its-hbm4-hbm4e-production-next-year",
+            "source_title": "Report: Samsung may double its HBM4/HBM4E production next year, with the product mix rising from 40% to 80%",
+            "source": "Futunn 재인용·기존 삼성 HBM4/4E 증산 사건",
+            "scope": "reported_product_mix_share_not_shipment_share",
+            "excerpt": "기존 HBM4·HBM4E 생산 2배 사건의 세부 비중 40%→80%. 별도 신규 생산사건이 아니라 제품 혼합 세부 상태 기준선."
+          },
+          "postprocess_capex|tsmc|2026": {
+            "key": "postprocess_capex|tsmc|2026",
+            "axis": "postprocess_capex",
+            "value": {
+              "total_capex_usd_min": 60000000000,
+              "total_capex_usd_max": 64000000000,
+              "backend_alloc_pct_min": 10,
+              "backend_alloc_pct_max": 20,
+              "tester_shortage": true
+            },
+            "unit": "USD/pct",
+            "period": "2026",
+            "as_of": "2026-07-16",
+            "evidence": "official",
+            "source_url": "https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2026-07/547d1696765e05ce3adb81c108ce1c8c1682b80c/TSMC%202Q26%20Transcript.pdf",
+            "source_title": "TSMC 2026년 2분기 실적 컨퍼런스콜",
+            "source": "TSMC",
+            "scope": "backend_bucket_includes_packaging_testing_mask_and_others",
+            "excerpt": "2026년 설비투자 600억~640억달러, 장기 후공정 묶음 10~20%, 고객 제품의 테스트 수요 증가로 tester shortage를 언급."
+          },
+          "postprocess_capex|ase|2026": {
+            "key": "postprocess_capex|ase|2026",
+            "axis": "postprocess_capex",
+            "value": {
+              "total_capex_usd": 10500000000,
+              "prior_capex_usd": 8500000000
+            },
+            "unit": "USD/year",
+            "period": "2026",
+            "as_of": "2026-07-30",
+            "evidence": "reported",
+            "source_url": "https://www.reuters.com/world/asia-pacific/taiwans-ase-tech-raises-2026-capex-by-2-billion-strong-demand-2026-07-30/",
+            "source_title": "ASE, 2026년 설비투자 20억달러 상향",
+            "source": "Reuters",
+            "scope": "company_capex_not_all_advanced_packaging",
+            "excerpt": "ASE 2026년 설비투자 85억달러에서 약 105억달러로 상향."
+          },
+          "postprocess_order|di|samsung|memory_test_equipment|2026": {
+            "key": "postprocess_order|di|samsung|memory_test_equipment|2026",
+            "axis": "postprocess_order",
+            "value": {
+              "amount_krw": 142300000000,
+              "contract_count": 5,
+              "stage": "po_signed"
+            },
+            "unit": "KRW/order",
+            "period": "2026",
+            "as_of": "2026-09-02",
+            "evidence": "research",
+            "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+            "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+            "source": "한화투자증권",
+            "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+            "excerpt": "디아이 6~7월 삼성전자 5건, 1,423억원 검사장비 계약."
+          },
+          "postprocess_order|digital_frontier|skhynix|hbm4_wafer_tester|2026": {
+            "key": "postprocess_order|digital_frontier|skhynix|hbm4_wafer_tester|2026",
+            "axis": "postprocess_order",
+            "value": {
+              "amount_krw": 232100000000,
+              "contract_count": 3,
+              "stage": "po_signed"
+            },
+            "unit": "KRW/order",
+            "period": "2026",
+            "as_of": "2026-09-02",
+            "evidence": "research",
+            "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+            "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+            "source": "한화투자증권",
+            "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+            "excerpt": "디지털프론티어 SK하이닉스 2026년 3건, 2,321억원 HBM4 Wafer Tester 계약."
+          },
+          "postprocess_order|yc|samsung|memory_test_equipment|2026": {
+            "key": "postprocess_order|yc|samsung|memory_test_equipment|2026",
+            "axis": "postprocess_order",
+            "value": {
+              "amount_krw": 255200000000,
+              "contract_count": 2,
+              "stage": "po_signed"
+            },
+            "unit": "KRW/order",
+            "period": "2026",
+            "as_of": "2026-09-02",
+            "evidence": "research",
+            "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+            "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+            "source": "한화투자증권",
+            "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+            "excerpt": "와이씨 6~8월 삼성전자 2건, 2,552억원 검사장비 계약."
+          },
+          "postprocess_order|exicon|multiple|clt_ssd_tester|2026": {
+            "key": "postprocess_order|exicon|multiple|clt_ssd_tester|2026",
+            "axis": "postprocess_order",
+            "value": {
+              "amount_krw": 101800000000,
+              "contract_count": null,
+              "stage": "po_signed"
+            },
+            "unit": "KRW/order",
+            "period": "2026",
+            "as_of": "2026-09-02",
+            "evidence": "research",
+            "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+            "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+            "source": "한화투자증권",
+            "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+            "excerpt": "엑시콘 5~7월 CLT 및 SSD 테스터 등 1,018억원 검사장비 계약."
+          },
+          "postprocess_stage|intekplus|taiwan_osat|cowos": {
+            "key": "postprocess_stage|intekplus|taiwan_osat|cowos",
+            "axis": "postprocess_stage",
+            "value": {
+              "stage": "po_pending"
+            },
+            "unit": "stage",
+            "period": "2026",
+            "as_of": "2026-08-14",
+            "evidence": "reported",
+            "source_url": "https://view.asiae.co.kr/article/2026081408510443534",
+            "source_title": "TSMC 첨단패키징 외주 확대, 국내 후공정 장비사 수주 훈풍",
+            "source": "아시아경제",
+            "scope": "stage_transition_requires_explicit_evidence",
+            "excerpt": "인텍플러스가 대만 OSAT CoWoS 시범장비 품질검증을 통과해 본계약을 앞둔 상태."
+          },
+          "postprocess_order|pemtron|skhynix|hbm_inspection|2026": {
+            "key": "postprocess_order|pemtron|skhynix|hbm_inspection|2026",
+            "axis": "postprocess_order",
+            "value": {
+              "amount_krw": 10000000000,
+              "contract_count": null,
+              "stage": "po_signed"
+            },
+            "unit": "KRW/order",
+            "period": "2026",
+            "as_of": "2026-08-14",
+            "evidence": "reported",
+            "source_url": "https://view.asiae.co.kr/article/2026081408510443534",
+            "source_title": "TSMC 첨단패키징 외주 확대, 국내 후공정 장비사 수주 훈풍",
+            "source": "아시아경제",
+            "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+            "excerpt": "펨트론이 SK하이닉스로부터 100억원 규모 HBM 검사장비를 수주했다는 보도."
+          },
+          "foundry_base_die_allocation|samsung|4nm|HBM4": {
+            "key": "foundry_base_die_allocation|samsung|4nm|HBM4",
+            "axis": "foundry_base_die_allocation",
+            "value": {
+              "total_capacity_wpm": 30000,
+              "allocation_pct_min": 50,
+              "allocation_pct_max": 60,
+              "full_utilization": true
+            },
+            "unit": "wafers/month,pct",
+            "period": "current",
+            "as_of": "2026-09-07",
+            "evidence": "reported",
+            "source_url": "https://zdnet.co.kr/view/?no=20260907110055",
+            "source_title": "삼성 파운드리, HBM4 확대 총력…4나노 캐파 절반이 베이스 다이",
+            "source": "ZDNet Korea",
+            "scope": "reported_foundry_capacity_not_hbm_finished_goods",
+            "excerpt": "4나노 생산능력 월 약 3만장, HBM4 베이스다이 배정 50~60%, 4나노 풀생산 체제."
+          },
+          "foundry_node_expansion|samsung|4nm|HBM4_base_die": {
+            "key": "foundry_node_expansion|samsung|4nm|HBM4_base_die",
+            "axis": "foundry_node_expansion",
+            "value": {
+              "stage": "review"
+            },
+            "unit": "stage",
+            "period": "current",
+            "as_of": "2026-09-21",
+            "evidence": "reported",
+            "source_url": "https://www.mt.co.kr/index.php/industry/2026/09/21/2026092114333425215",
+            "source_title": "HBM에 웃는 삼성 파운드리…첨단 공정 생산능력 확대 채비",
+            "source": "머니투데이",
+            "scope": "foundry_expansion_stage",
+            "excerpt": "HBM4 베이스다이 수요 확대에 대응해 삼성전자가 파운드리 4나노 공정 증설을 검토 중."
+          },
+          "foundry_pricing|samsung|4nm|HBM4_base_die": {
+            "key": "foundry_pricing|samsung|4nm|HBM4_base_die",
+            "axis": "foundry_pricing",
+            "value": {
+              "new_order_price_up": true,
+              "base_die_price_up": false,
+              "price_change_pct": null
+            },
+            "unit": "direction,pct",
+            "period": "current",
+            "as_of": "2026-09-22",
+            "evidence": "reported",
+            "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
+            "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
+            "source": "머니투데이",
+            "excerpt": "삼성 4나노 신규수주·HBM4 베이스다이 가격 변화",
+            "scope": "reported_foundry_pricing"
+          },
+          "foundry_hbm5_2nm|samsung|2nm|HBM5": {
+            "key": "foundry_hbm5_2nm|samsung|2nm|HBM5",
+            "axis": "foundry_hbm5_2nm",
+            "value": {
+              "investment_stage": "review",
+              "speed_uplift_target_pct": 50,
+              "gaa": true,
+              "tsv_density_up": true
+            },
+            "unit": "stage,pct",
+            "period": "HBM5",
+            "as_of": "2026-09-21",
+            "evidence": "reported",
+            "source_url": "https://www.mt.co.kr/index.php/industry/2026/09/21/2026092114333425215",
+            "source_title": "HBM에 웃는 삼성 파운드리…첨단 공정 생산능력 확대 채비",
+            "source": "머니투데이",
+            "scope": "technology_plan_and_line_investment_separated",
+            "excerpt": "HBM5 대응 2나노 신규 생산라인 구축 검토. GAA 2나노와 고집적 TSV, HBM4E 대비 동작속도 50% 이상 향상 목표."
+          }
+        },
+        "latest": {
+          "wafer_share|trendforce|industry|2026-YE": {
+            "key": "wafer_share|trendforce|industry|2026-YE",
+            "axis": "wafer_share",
+            "value": 22,
+            "unit": "pct",
+            "period": "2026-YE",
+            "as_of": "2026-06-02",
+            "evidence": "research",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+            "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
+            "source": "TrendForce",
+            "scope": "year_end_forecast",
+            "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
+          },
+          "wafer_share|trendforce|industry|2027-YE": {
+            "key": "wafer_share|trendforce|industry|2027-YE",
+            "axis": "wafer_share",
+            "value": 30,
+            "unit": "pct",
+            "period": "2027-YE",
+            "as_of": "2026-06-02",
+            "evidence": "research",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+            "source_title": "트렌드포스 HBM 웨이퍼 배분 전망",
+            "source": "TrendForce",
+            "scope": "year_end_forecast",
+            "excerpt": "주요 3사 연말 전망, 연평균·확정 생산량 아님"
+          },
+          "bit_share|trendforce|industry|2026-YE": {
+            "key": "bit_share|trendforce|industry|2026-YE",
+            "axis": "bit_share",
+            "value": 9,
+            "unit": "pct",
+            "period": "2026-YE",
+            "as_of": "2026-06-02",
+            "evidence": "research",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+            "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
+            "source": "TrendForce",
+            "scope": "year_end_forecast",
+            "excerpt": "웨이퍼 투입 비중과 분모가 다름"
+          },
+          "bit_share|trendforce|industry|2027-YE": {
+            "key": "bit_share|trendforce|industry|2027-YE",
+            "axis": "bit_share",
+            "value": 13,
+            "unit": "pct",
+            "period": "2027-YE",
+            "as_of": "2026-06-02",
+            "evidence": "research",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260602-13074.html",
+            "source_title": "트렌드포스 HBM 비트 공급 비중 전망",
+            "source": "TrendForce",
+            "scope": "year_end_forecast",
+            "excerpt": "웨이퍼 투입 비중과 분모가 다름"
+          },
+          "hbm_config|samsung|HBM4|12Hi|catalog": {
+            "key": "hbm_config|samsung|HBM4|12Hi|catalog",
+            "axis": "hbm_config",
+            "value": {
+              "die_gbit": 24,
+              "layers": 12,
+              "stack_gbyte": 36
+            },
+            "unit": "GB/stack",
+            "period": "catalog",
+            "as_of": "2026-09-21",
+            "evidence": "user_capture",
+            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+            "source_title": "사용자 제공 HBM 구성 비교 기준선",
+            "source": "사용자 캡처·제품자료 비교",
+            "scope": "product_capability_not_customer_contract",
+            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+          },
+          "hbm_config|samsung|HBM4E|8Hi|catalog": {
+            "key": "hbm_config|samsung|HBM4E|8Hi|catalog",
+            "axis": "hbm_config",
+            "value": {
+              "die_gbit": 32,
+              "layers": 8,
+              "stack_gbyte": 32
+            },
+            "unit": "GB/stack",
+            "period": "catalog",
+            "as_of": "2026-09-21",
+            "evidence": "user_capture",
+            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+            "source_title": "사용자 제공 HBM 구성 비교 기준선",
+            "source": "사용자 캡처·제품자료 비교",
+            "scope": "product_capability_not_customer_contract",
+            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+          },
+          "hbm_config|samsung|HBM4E|12Hi|catalog": {
+            "key": "hbm_config|samsung|HBM4E|12Hi|catalog",
+            "axis": "hbm_config",
+            "value": {
+              "die_gbit": 32,
+              "layers": 12,
+              "stack_gbyte": 48
+            },
+            "unit": "GB/stack",
+            "period": "catalog",
+            "as_of": "2026-09-21",
+            "evidence": "user_capture",
+            "source_url": "https://semiconductor.samsung.com/dram/hbm/",
+            "source_title": "사용자 제공 HBM 구성 비교 기준선",
+            "source": "사용자 캡처·제품자료 비교",
+            "scope": "product_capability_not_customer_contract",
+            "excerpt": "칩 용량·적층 수의 산술 비교이며 고객 최종 채택은 미확인"
+          },
+          "carrier_cleaning|samsung|2026": {
+            "key": "carrier_cleaning|samsung|2026",
+            "axis": "carrier_cleaning",
+            "value": 20000,
+            "unit": "cleaning_passes/month",
+            "period": "2026",
+            "as_of": "2026-09-21",
+            "evidence": "reported",
+            "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
+            "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
+            "source": "글로벌이코노믹",
+            "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
+            "scope": "reusable_carrier_service_not_wafer_output"
+          },
+          "carrier_cleaning|samsung|2027": {
+            "key": "carrier_cleaning|samsung|2027",
+            "axis": "carrier_cleaning",
+            "value": 50000,
+            "unit": "cleaning_passes/month",
+            "period": "2027",
+            "as_of": "2026-09-21",
+            "evidence": "reported",
+            "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
+            "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
+            "source": "글로벌이코노믹",
+            "excerpt": "21일 반도체 업계에 따르면 삼성전자의 HBM용 글라스 캐리어 외주 세정 물량은 올해 월 2만 장에서 내년 월 5만 장으로 늘어날 전망이다.",
+            "scope": "reusable_carrier_service_not_wafer_output"
+          },
+          "fab_stage|samsung|P5_Fab1": {
+            "key": "fab_stage|samsung|P5_Fab1",
+            "axis": "fab_stage",
+            "value": {
+              "year": 2028,
+              "stage": "plan"
+            },
+            "unit": "year/stage",
+            "period": "2028",
+            "as_of": "2026-09-21",
+            "evidence": "reported",
+            "source_url": "http://m.g-enews.com/view.php?ud=2026092111095321043084322ec9_1",
+            "source_title": "HBM4 키우는 삼성, 서버 D램까지 빠듯…“증산해도 공급 부족” - 글로벌이코노믹",
+            "source": "글로벌이코노믹",
+            "excerpt": "삼성전자에 따르면 평택 P5 Fab1은 2028년 가동을 목표로 하고 있다.",
+            "scope": "fab_start_not_full_output"
+          },
+          "ddr5_chip_quote|dramexchange|16|4800/5600": {
+            "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
+            "axis": "ddr5_chip_quote",
+            "value": 57.667,
+            "unit": "USD/chip",
+            "period": "2026-09",
+            "as_of": "2026-09-24",
+            "evidence": "research",
+            "source_url": "https://www.dramexchange.com/",
+            "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
+            "source": "DRAMeXchange",
+            "excerpt": "DDR5 16Gb (2Gx8) 4800/5600: Session Average (공개 화면)",
+            "capacity_gb": null,
+            "density_gbit": 16,
+            "speed": "4800/5600"
+          },
+          "rdimm_quote|dramexchange|32|4800/5600": {
+            "key": "rdimm_quote|dramexchange|32|4800/5600",
+            "axis": "rdimm_quote",
+            "value": 2050.0,
+            "unit": "USD/module",
+            "period": "2026-09",
+            "as_of": "2026-09-14",
+            "evidence": "research",
+            "source_url": "https://www.dramexchange.com/",
+            "source_title": "DDR5 RDIMM 32GB 4800/5600 공개 현물가격",
+            "source": "DRAMeXchange",
+            "excerpt": "DDR5 RDIMM 32GB 4800/5600: Session Average (공개 화면)",
+            "capacity_gb": 32,
+            "density_gbit": null,
+            "speed": "4800/5600"
+          },
+          "malaysia_hsk10_export|KR|MY|8542323000": {
+            "key": "malaysia_hsk10_export|KR|MY|8542323000",
+            "axis": "malaysia_hsk10_export",
+            "value": {
+              "amount_usd": 1624540000,
+              "weight_kg": 3800,
+              "weight_kg_previous_yoy": 1400,
+              "yoy_pct": 466.6,
+              "taiwan_amount_usd": 3322110000,
+              "malaysia_vs_taiwan_pct": 48.9,
+              "jan_aug_amount_usd": 6314240000,
+              "weight_rounded_from_public_text": true
+            },
+            "unit": "USD/kg",
+            "period": "2026-08",
+            "as_of": "2026-09-22",
+            "evidence": "reported",
+            "source_url": "https://biz.chosun.com/it-science/ict/2026/09/22/NGJ2RJYZARGN3JSVXPUEIE6XRA/?outputType=amp",
+            "source_title": "AI 반도체 패키징 증설 몰리는 말레이시아… 韓 HBM 관련 수출 1년 새 4.7배 증가",
+            "source": "조선비즈·관세청 수출입무역통계 인용",
+            "scope": "HBM_included_multichip_IC_not_HBM_only",
+            "excerpt": "2026년 8월 말레이시아향 HSK 8542323000 수출 16억2454만달러, 전년동월 +466.6%, 중량 약 1.4t→3.8t, 대만향 33억2211만달러의 48.9%. 중량은 기사 반올림값."
+          },
+          "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy": {
+            "key": "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy",
+            "axis": "hbm_revenue_estimate",
+            "value": {
+              "estimate_usd": 11400000000,
+              "qoq_pct": 72,
+              "prior_formal_forecast_usd": 9300000000,
+              "alternative_usd": null,
+              "method": "regression_proxy"
+            },
+            "unit": "USD/quarter",
+            "period": "2026Q3",
+            "as_of": "2026-09-21",
+            "evidence": "research",
+            "source_url": "https://www.xxquant.com/en/institution/institutional-research/8b645f792185585501cbbc207b89643f",
+            "source_title": "Bernstein Korean export tracker — Samsung 3Q26 HBM revenue regression",
+            "source": "Bernstein report interpretation",
+            "scope": "institutional_estimate_not_company_reported_revenue",
+            "excerpt": "8월 수출 회귀식은 삼성 3Q26 HBM 매출 약 114억달러, 전분기 대비 +72%. Bernstein의 기존 93억달러 전망보다 23% 높은 회귀식 결과."
+          },
+          "hbm_revenue_estimate|bernstein|skhynix|2026Q3|regression_proxy": {
+            "key": "hbm_revenue_estimate|bernstein|skhynix|2026Q3|regression_proxy",
+            "axis": "hbm_revenue_estimate",
+            "value": {
+              "estimate_usd": 5900000000,
+              "qoq_pct": -14,
+              "prior_formal_forecast_usd": null,
+              "alternative_usd": 7500000000,
+              "method": "regression_proxy"
+            },
+            "unit": "USD/quarter",
+            "period": "2026Q3",
+            "as_of": "2026-09-21",
+            "evidence": "research",
+            "source_url": "https://www.xxquant.com/en/institution/institutional-research/8b645f792185585501cbbc207b89643f",
+            "source_title": "Bernstein Korean export tracker — SK hynix 3Q26 HBM revenue regression",
+            "source": "Bernstein report interpretation",
+            "scope": "institutional_estimate_not_company_reported_revenue",
+            "excerpt": "중앙 회귀식은 SK하이닉스 3Q26 HBM 매출 약 59억달러, 전분기 대비 -14%. 가장 후행 출하가 집중된 계절성 시나리오는 약 75억달러."
+          },
+          "hbm_product_mix|samsung|HBM4_family|2027": {
+            "key": "hbm_product_mix|samsung|HBM4_family|2027",
+            "axis": "hbm_product_mix",
+            "value": {
+              "reference_pct": 40,
+              "target_pct": 80,
+              "product_family": "HBM4/HBM4E"
+            },
+            "unit": "pct",
+            "period": "2027",
+            "as_of": "2026-09-21",
+            "evidence": "reported",
+            "source_url": "https://news.futunn.com/en/post/79538141/report-samsung-may-double-its-hbm4-hbm4e-production-next-year",
+            "source_title": "Report: Samsung may double its HBM4/HBM4E production next year, with the product mix rising from 40% to 80%",
+            "source": "Futunn 재인용·기존 삼성 HBM4/4E 증산 사건",
+            "scope": "reported_product_mix_share_not_shipment_share",
+            "excerpt": "기존 HBM4·HBM4E 생산 2배 사건의 세부 비중 40%→80%. 별도 신규 생산사건이 아니라 제품 혼합 세부 상태 기준선."
+          },
+          "postprocess_capex|tsmc|2026": {
+            "key": "postprocess_capex|tsmc|2026",
+            "axis": "postprocess_capex",
+            "value": {
+              "total_capex_usd_min": 60000000000,
+              "total_capex_usd_max": 64000000000,
+              "backend_alloc_pct_min": 10,
+              "backend_alloc_pct_max": 20,
+              "tester_shortage": true
+            },
+            "unit": "USD/pct",
+            "period": "2026",
+            "as_of": "2026-07-16",
+            "evidence": "official",
+            "source_url": "https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2026-07/547d1696765e05ce3adb81c108ce1c8c1682b80c/TSMC%202Q26%20Transcript.pdf",
+            "source_title": "TSMC 2026년 2분기 실적 컨퍼런스콜",
+            "source": "TSMC",
+            "scope": "backend_bucket_includes_packaging_testing_mask_and_others",
+            "excerpt": "2026년 설비투자 600억~640억달러, 장기 후공정 묶음 10~20%, 고객 제품의 테스트 수요 증가로 tester shortage를 언급."
+          },
+          "postprocess_capex|ase|2026": {
+            "key": "postprocess_capex|ase|2026",
+            "axis": "postprocess_capex",
+            "value": {
+              "total_capex_usd": 10500000000,
+              "prior_capex_usd": 8500000000
+            },
+            "unit": "USD/year",
+            "period": "2026",
+            "as_of": "2026-07-30",
+            "evidence": "reported",
+            "source_url": "https://www.reuters.com/world/asia-pacific/taiwans-ase-tech-raises-2026-capex-by-2-billion-strong-demand-2026-07-30/",
+            "source_title": "ASE, 2026년 설비투자 20억달러 상향",
+            "source": "Reuters",
+            "scope": "company_capex_not_all_advanced_packaging",
+            "excerpt": "ASE 2026년 설비투자 85억달러에서 약 105억달러로 상향."
+          },
+          "postprocess_order|di|samsung|memory_test_equipment|2026": {
+            "key": "postprocess_order|di|samsung|memory_test_equipment|2026",
+            "axis": "postprocess_order",
+            "value": {
+              "amount_krw": 142300000000,
+              "contract_count": 5,
+              "stage": "po_signed"
+            },
+            "unit": "KRW/order",
+            "period": "2026",
+            "as_of": "2026-09-02",
+            "evidence": "research",
+            "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+            "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+            "source": "한화투자증권",
+            "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+            "excerpt": "디아이 6~7월 삼성전자 5건, 1,423억원 검사장비 계약."
+          },
+          "postprocess_order|digital_frontier|skhynix|hbm4_wafer_tester|2026": {
+            "key": "postprocess_order|digital_frontier|skhynix|hbm4_wafer_tester|2026",
+            "axis": "postprocess_order",
+            "value": {
+              "amount_krw": 232100000000,
+              "contract_count": 3,
+              "stage": "po_signed"
+            },
+            "unit": "KRW/order",
+            "period": "2026",
+            "as_of": "2026-09-02",
+            "evidence": "research",
+            "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+            "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+            "source": "한화투자증권",
+            "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+            "excerpt": "디지털프론티어 SK하이닉스 2026년 3건, 2,321억원 HBM4 Wafer Tester 계약."
+          },
+          "postprocess_order|yc|samsung|memory_test_equipment|2026": {
+            "key": "postprocess_order|yc|samsung|memory_test_equipment|2026",
+            "axis": "postprocess_order",
+            "value": {
+              "amount_krw": 255200000000,
+              "contract_count": 2,
+              "stage": "po_signed"
+            },
+            "unit": "KRW/order",
+            "period": "2026",
+            "as_of": "2026-09-02",
+            "evidence": "research",
+            "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+            "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+            "source": "한화투자증권",
+            "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+            "excerpt": "와이씨 6~8월 삼성전자 2건, 2,552억원 검사장비 계약."
+          },
+          "postprocess_order|exicon|multiple|clt_ssd_tester|2026": {
+            "key": "postprocess_order|exicon|multiple|clt_ssd_tester|2026",
+            "axis": "postprocess_order",
+            "value": {
+              "amount_krw": 101800000000,
+              "contract_count": null,
+              "stage": "po_signed"
+            },
+            "unit": "KRW/order",
+            "period": "2026",
+            "as_of": "2026-09-02",
+            "evidence": "research",
+            "source_url": "https://www.hanwhawm.com/main/research/main/view.cmd?depth3_id=anls2&seq=66532&templet=default",
+            "source_title": "한화투자증권 반도체 산업분석 — 테스트 장비사 발주 증가",
+            "source": "한화투자증권",
+            "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+            "excerpt": "엑시콘 5~7월 CLT 및 SSD 테스터 등 1,018억원 검사장비 계약."
+          },
+          "postprocess_stage|intekplus|taiwan_osat|cowos": {
+            "key": "postprocess_stage|intekplus|taiwan_osat|cowos",
+            "axis": "postprocess_stage",
+            "value": {
+              "stage": "po_pending"
+            },
+            "unit": "stage",
+            "period": "2026",
+            "as_of": "2026-08-14",
+            "evidence": "reported",
+            "source_url": "https://view.asiae.co.kr/article/2026081408510443534",
+            "source_title": "TSMC 첨단패키징 외주 확대, 국내 후공정 장비사 수주 훈풍",
+            "source": "아시아경제",
+            "scope": "stage_transition_requires_explicit_evidence",
+            "excerpt": "인텍플러스가 대만 OSAT CoWoS 시범장비 품질검증을 통과해 본계약을 앞둔 상태."
+          },
+          "postprocess_order|pemtron|skhynix|hbm_inspection|2026": {
+            "key": "postprocess_order|pemtron|skhynix|hbm_inspection|2026",
+            "axis": "postprocess_order",
+            "value": {
+              "amount_krw": 10000000000,
+              "contract_count": null,
+              "stage": "po_signed"
+            },
+            "unit": "KRW/order",
+            "period": "2026",
+            "as_of": "2026-08-14",
+            "evidence": "reported",
+            "source_url": "https://view.asiae.co.kr/article/2026081408510443534",
+            "source_title": "TSMC 첨단패키징 외주 확대, 국내 후공정 장비사 수주 훈풍",
+            "source": "아시아경제",
+            "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
+            "excerpt": "펨트론이 SK하이닉스로부터 100억원 규모 HBM 검사장비를 수주했다는 보도."
+          },
+          "foundry_base_die_allocation|samsung|4nm|HBM4": {
+            "key": "foundry_base_die_allocation|samsung|4nm|HBM4",
+            "axis": "foundry_base_die_allocation",
+            "value": {
+              "total_capacity_wpm": null,
+              "allocation_pct_min": 50.0,
+              "allocation_pct_max": null,
+              "full_utilization": true
+            },
+            "unit": "wafers/month,pct",
+            "period": "current",
+            "as_of": "2026-09-22",
+            "evidence": "reported",
+            "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
+            "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
+            "source": "머니투데이",
+            "excerpt": "삼성 4나노 생산능력 중 HBM4 베이스다이 배정·가동률",
+            "scope": "reported_foundry_capacity_not_hbm_finished_goods"
+          },
+          "foundry_node_expansion|samsung|4nm|HBM4_base_die": {
+            "key": "foundry_node_expansion|samsung|4nm|HBM4_base_die",
+            "axis": "foundry_node_expansion",
+            "value": {
+              "stage": "review"
+            },
+            "unit": "stage",
+            "period": "current",
+            "as_of": "2026-09-22",
+            "evidence": "reported",
+            "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
+            "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
+            "source": "머니투데이",
+            "excerpt": "삼성 HBM4 베이스다이 대응 4나노 증설 단계",
+            "scope": "foundry_expansion_stage"
+          },
+          "foundry_pricing|samsung|4nm|HBM4_base_die": {
+            "key": "foundry_pricing|samsung|4nm|HBM4_base_die",
+            "axis": "foundry_pricing",
+            "value": {
+              "new_order_price_up": true,
+              "base_die_price_up": false,
+              "price_change_pct": null
+            },
+            "unit": "direction,pct",
+            "period": "current",
+            "as_of": "2026-09-22",
+            "evidence": "reported",
+            "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
+            "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
+            "source": "머니투데이",
+            "excerpt": "삼성 4나노 신규수주·HBM4 베이스다이 가격 변화",
+            "scope": "reported_foundry_pricing"
+          },
+          "foundry_hbm5_2nm|samsung|2nm|HBM5": {
+            "key": "foundry_hbm5_2nm|samsung|2nm|HBM5",
+            "axis": "foundry_hbm5_2nm",
+            "value": {
+              "investment_stage": "review",
+              "speed_uplift_target_pct": 50.0,
+              "gaa": true,
+              "tsv_density_up": true
+            },
+            "unit": "stage,pct",
+            "period": "HBM5",
+            "as_of": "2026-09-22",
+            "evidence": "reported",
+            "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
+            "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
+            "source": "머니투데이",
+            "excerpt": "삼성 HBM5 2나노 베이스다이 기술·투자 단계",
+            "scope": "technology_plan_and_line_investment_separated"
+          }
+        },
+        "pending": {},
+        "coverage": {
+          "last_checked_at_kst": "2026-09-25T17:10:02+09:00",
+          "gaps": [
+            "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
+          ],
+          "observations": 6,
+          "rdimm_paired_observations": 0,
+          "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
+          "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
+          "non_concrete_generic_evidence_suppressed": 5,
+          "rdimm_quote|dramexchange|32|4800/5600": "지연 원자료: 현재 가격 알림 보류"
+        },
+        "version": 1,
+        "reference_capture": {
+          "basis": "사용자 제공 SK증권 캡처; 원시 현물·고정거래가격과 기준일 독립 확인 전",
+          "data_as_of": null,
+          "RDIMM_64GB_premium_pct": 115,
+          "RDIMM_32GB_premium_pct": 145,
+          "DDR5_chip_16Gb_premium_pct": 33,
+          "status": "reference_only_not_live",
+          "do_not_infer_prices": true,
+          "note": "16Gb 칩과 16GB 모듈은 별도. 동일 규격·속도의 현물과 고정거래 원값 및 각 기준일을 확보한 후 새 프리미엄을 계산한다."
+        },
+        "calculation_cases": [
+          {
+            "label": "36GB → 32GB; 동일 묶음 수 가정",
+            "old_stack_gb": 36,
+            "new_stack_gb": 32,
+            "capacity_change_pct": -11.11111111111111,
+            "gpu_growth_break_even_pct": 12.5
+          },
+          {
+            "label": "48GB → 32GB; 동일 묶음 수 가정",
+            "old_stack_gb": 48,
+            "new_stack_gb": 32,
+            "capacity_change_pct": -33.33333333333333,
+            "gpu_growth_break_even_pct": 50
+          }
+        ]
+      },
+      "memory_axes_version": 1,
+      "telegram_message_ids": [
+        145
+      ],
+      "delivery_receipt": {
+        "status": "confirmed",
+        "bot_username": "khs88798879887988798879_bot",
+        "message_ids": [
+          145
+        ],
+        "confirmed_at_kst": "2026-09-25T15:35:39+09:00",
+        "payload_hash": "76074b3496253f096d6d3eb7a46551b6231a5b775f49d15201ea7c46b013d8f7"
+      },
+      "delivery_check": {
+        "checked_at_kst": "2026-09-25T17:07:35+09:00",
+        "status": "no_message_due"
+      },
+      "malaysia_hsk10_weight_kg": null,
+      "state_corrections": [
+        {
+          "at_kst": "2026-09-25T15:48:00+09:00",
+          "key": "생산능력·증산|samsung|hbm4",
+          "reason": "Bernstein/Futunn의 3Q HBM 매출 성장률 72%를 생산능력 변화로 오분류한 상태를 직전 생산능력 기준선으로 복원"
+        }
+      ]
+    }
+  }
 }
