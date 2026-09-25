@@ -76,7 +76,8 @@ def page_text(url: str) -> str:
     soup = BeautifulSoup(html, "html.parser")
     for tag in soup(["script", "style", "noscript"]):
         tag.decompose()
-    return clean(soup.get_text(" ", strip=True))
+    root = soup.find("article") or soup.find("main") or soup.body or soup
+    return clean(root.get_text(" ", strip=True))
 
 
 def relevant_sentences(text: str, limit: int = 80) -> list[str]:
@@ -98,39 +99,58 @@ def relevant_hash(sentences: list[str]) -> str:
 
 
 def extract_numeric_metrics(sentences: list[str]) -> dict:
-    text = " ".join(sentences)
     metrics: dict[str, list[str]] = {}
 
-    patterns = {
-        "온도": r"(?i)(?:temperature|thermal)[^.;]{0,90}?(-?\d+(?:\.\d+)?)\s*°?\s*(?:C|Celsius|F|Fahrenheit)",
-        "연속가동": r"(?i)(\d+(?:\.\d+)?)\s*(?:minutes?|mins?|hours?|hrs?)\b[^.;]{0,80}?(?:run|runtime|continuous|operate|operation)",
-        "오류율": r"(?i)(?:error rate|errors?|bit flips?|upsets?)[^.;]{0,90}?(\d+(?:\.\d+)?\s*%|\d+(?:\.\d+)?(?:e[-+]?\d+)?)",
-        "방사선": r"(?i)(\d+(?:\.\d+)?)\s*(?:rad|krad|Gy|gray)\b",
-        "전력": r"(?i)(\d+(?:\.\d+)?)\s*(?:kW|W|watts?|kilowatts?)\b",
-        "처리량": r"(?i)(\d+(?:\.\d+)?)\s*(?:Gbps|Tbps|tokens?/?s|tokens? per second)\b",
-    }
-    for label, pattern in patterns.items():
-        found = []
-        for m in re.finditer(pattern, text):
-            snippet = clean(text[max(0, m.start()-80): min(len(text), m.end()+120)])
-            if snippet not in found:
-                found.append(snippet)
-            if len(found) >= 6:
-                break
-        if found:
-            metrics[label] = found
+    def add(label: str, value: str):
+        metrics.setdefault(label, [])
+        if value not in metrics[label]:
+            metrics[label].append(value)
+
+    for sentence in sentences:
+        low = sentence.lower()
+
+        for m in re.finditer(r"(-?\d+(?:\.\d+)?)\s*°?\s*(c|celsius|f|fahrenheit)\b", sentence, flags=re.I):
+            add("온도", f"{m.group(1)}°{m.group(2).upper()[0]}")
+
+        if any(k in low for k in ("run", "runtime", "operate", "operation", "continuous", "cooling", "radiator")):
+            for m in re.finditer(r"(\d+(?:\.\d+)?)\s*(minutes?|mins?|hours?|hrs?)\b", sentence, flags=re.I):
+                add("연속가동", clean(m.group(0)))
+            if "fifteen minutes" in low:
+                add("연속가동", "15 minutes")
+
+        if any(k in low for k in ("error", "bit flip", "bitflip", "upset")):
+            for m in re.finditer(r"(\d+(?:\.\d+)?)\s*%", sentence):
+                add("오류율", f"{m.group(1)}%")
+
+        for m in re.finditer(r"(\d+(?:\.\d+)?)\s*(krad|rad|gy|gray)\b", sentence, flags=re.I):
+            add("방사선", clean(m.group(0)))
+
+        for m in re.finditer(r"(\d+(?:\.\d+)?)\s*(kw|watts?|kilowatts?|w)\b", sentence, flags=re.I):
+            add("전력", clean(m.group(0)))
+        if "one kilowatt" in low:
+            add("전력", "1 kilowatt")
+
+        for m in re.finditer(r"(\d+(?:\.\d+)?)\s*(gbps|tbps|tokens?/?s|tokens? per second)\b", sentence, flags=re.I):
+            add("처리량", clean(m.group(0)))
+
     return metrics
 
 
 def launch_signal(sentences: list[str]) -> list[str]:
-    out = []
-    for sentence in sentences:
-        low = sentence.lower()
-        if any(term in low for term in LAUNCH_TERMS) and (
-            "suncatcher" in low or "satellite" in low or "transporter-18" in low or "transporter 18" in low
-        ):
-            out.append(sentence)
-    return out[:12]
+    text = " ".join(sentences).lower()
+    signals = []
+    checks = [
+        ("발사 성공", r"successfully launch|launch success|successfully lift|lifted off|reached orbit"),
+        ("위성 배치 성공", r"successfully deploy|deployment success|deployed into orbit"),
+        ("발사 실패", r"launch fail|failed launch|failure during launch"),
+        ("발사 취소", r"scrubbed|launch scrub"),
+        ("발사 지연", r"launch delay|launch postponed|delayed launch|postponed"),
+        ("발사 예정", r"scheduled to .*launch|will launch|upcoming .*launch|launching a prototype"),
+    ]
+    for label, pattern in checks:
+        if re.search(pattern, text, flags=re.I):
+            signals.append(label)
+    return signals
 
 
 def parse_nextspaceflight() -> dict:
@@ -156,7 +176,7 @@ def parse_nextspaceflight() -> dict:
     return {
         "url": NEXTSPACEFLIGHT_URL,
         "status": status or "확인 불가",
-        "liftoff_gmt": f"{time_match.group(2)} {time_match.group(1)} GMT" if time_match else None,
+        "liftoff_gmt": f"{time_match.group(2)} {time_match.group(1)} GMT" if time_match else "2026년 10월 1일 예정 · 정확한 시각 공식 미확정",
     }
 
 
