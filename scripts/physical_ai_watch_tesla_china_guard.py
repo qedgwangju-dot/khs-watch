@@ -103,8 +103,8 @@ FACTORY_STRUCTURE = re.compile(r'steel\\s*(?:assembly|frame|framing)|column\\s*g
 FACTORY_TOOLING = re.compile(r'tooling|equipment\\s*(?:install|installation|move[-\\s]*in)|production\\s*equipment|장비\\s*(?:반입|설치)|생산\\s*설비\\s*(?:반입|설치)|생산라인\\s*설치', re.I)
 APP_CODE_OPTIMUS = re.compile(r'optimus_charger_id|createBaseChargerId_OptimusChargerId|Optimus.{0,20}(?:charger|충전기)|(?:charger|충전기).{0,20}Optimus|옵티머스.{0,20}(?:충전기|charger)|(?:충전기|charger).{0,20}옵티머스|robot_phone_key|robot_home_data_collection', re.I)
 APP_HOME_STACK = re.compile(r'Tesla\\s*app|테슬라\\s*앱|app\\s*code|앱\\s*코드|decompil|reverse\\s*engineer|Powerwall|파워월|solar|태양광|home|가정|charger|충전|registration|등록|manage|관리', re.I)
-APP_GEN_ASSET = re.compile(r'Optimus\s*(?:Gen(?:eration)?\s*)?3|Optimus\s*Gen\s*2\.5|Gen\s*2\.5.{0,40}Gen\s*3|Gen\s*3.{0,40}Gen\s*2\.5|옵티머스\s*(?:Gen\s*)?3|Gen\s*3\s*(?:이미지|자산|render|asset)', re.I)
-APP_APK_CONTEXT = re.compile(r'APK|Android\s*app|안드로이드\s*앱|app\s*asset|image\s*asset|render|resource|asset\s*package|4\.60\.5[- ]4573|v4\.60\.5[- ]4573', re.I)
+APP_GEN_ASSET = re.compile(r'Optimus\\s*(?:Gen(?:eration)?\\s*)?3|Optimus\\s*Gen\\s*2\\.5|Gen\\s*2\\.5.{0,40}Gen\\s*3|Gen\\s*3.{0,40}Gen\\s*2\\.5|옵티머스\\s*(?:Gen\\s*)?3|Gen\\s*3\\s*(?:이미지|자산|render|asset)|第三代.{0,20}Optimus|Optimus.{0,20}第三代|2\\.5代.{0,30}第三代|第三代.{0,30}2\\.5代', re.I)
+APP_APK_CONTEXT = re.compile(r'APK|Android\\s*app|안드로이드\\s*앱|app\\s*asset|image\\s*asset|render|resource|asset\\s*package|4\\.60\\.5[- ]4573|v4\\.60\\.5[- ]4573|安卓.{0,12}(?:App|应用)|应用程序包|数字资产|素材|渲染图|设计.{0,12}(?:泄露|曝光)|泄露.{0,12}设计', re.I)
 MUSK_EXEC_ACTOR = re.compile(r'Elon\\s*Musk|일론\\s*머스크|머스크', re.I)
 OPTIMUS_V3 = re.compile(r'Optimus\\s*3|옵티머스\\s*3|V3\\s*Optimus|Optimus\\s*V3', re.I)
 OPTIMUS_V4 = re.compile(r'Optimus\\s*4|옵티머스\\s*4|V4\\s*Optimus|Optimus\\s*V4', re.I)
@@ -130,6 +130,8 @@ LOW_TRUST_COMMUNITY = re.compile(
     r'雪球|xueqiu|CSDN|blog\\.csdn\\.net|财富号|財富號|caifuhao|东方财富号|東方財富號',
     re.I,
 )
+TESLA_MARKET_REACTION = re.compile(r'A股异动|概念股|集体(?:走强|拉升)|股价|涨停|涨超|上涨|下跌|shares?\\s*(?:jump|rise|surge|fall)|stock\\s*price|market\\s*reaction|板块.{0,12}(?:走强|拉升)', re.I)
+TESLA_TITLE_DIRECT_EVENT = re.compile(r'Gen\\s*3|第三代|APK|安卓|设计.{0,10}(?:泄露|曝光)|供应商.{0,10}(?:审核|审厂)|审厂|订单|量产|production|factory|工厂|产线|生产线|韩国|日本|Korea|Japan', re.I)
 
 
 SOURCE_KO = {
@@ -621,6 +623,9 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    title = item.get('title','')
+    if TESLA_MARKET_REACTION.search(title) and not TESLA_TITLE_DIRECT_EVENT.search(title):
+        return 0
     s = _orig_score(item)
     if not _is_tesla_supply_text(text):
         # Generic Tesla/Optimus rewrites must not alert just because they contain
@@ -636,6 +641,8 @@ def score(item: dict) -> int:
         return 0
     s = max(s, 18)
     stage = _stage(text)
+    if not stage:
+        return 0
     if stage == 'executive_production_timeline':
         s += 16
     if stage in {'scale_order', 'scale_order_audit'}:
