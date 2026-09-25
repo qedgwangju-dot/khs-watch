@@ -503,9 +503,14 @@ def build_message(
         "포지션·자금",
     ]
     if cftc:
-        direction = "숏 축소" if cftc.short_covering else "숏 확대/유지"
+        if cftc.net > 0:
+            position = f"엔화 순롱 +{cftc.net:,}계약"
+        elif cftc.net < 0:
+            position = f"엔화 순숏 {abs(cftc.net):,}계약"
+        else:
+            position = "엔화 순포지션 0계약"
         lines.append(
-            f"- CFTC 레버리지 펀드: 엔화 순숏 {cftc.net_short:,}계약 ({cftc.net_short_pct_oi:.1f}% OI), 전주 {cftc.previous_net_short:,}계약 → {direction} ({cftc.report_date})"
+            f"- CFTC 레버리지 펀드: {position} / Long {cftc.leveraged_long:,} · Short {cftc.leveraged_short:,} ({cftc.report_date})"
         )
     else:
         lines.append("- CFTC 레버리지 펀드: 확인 불가")
