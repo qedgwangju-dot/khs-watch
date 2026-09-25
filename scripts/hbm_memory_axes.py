@@ -27,6 +27,12 @@ EXTRA_QUERIES = [
     'Bernstein HBM revenue estimate Samsung SK hynix 3Q26 exports regression',
     'J.P. Morgan HBM revenue estimate Samsung SK hynix Micron quarter forecast',
     'UBS HBM revenue estimate Samsung SK hynix Micron quarter forecast',
+    'TSMC advanced packaging testing tester shortage capex CoWoS',
+    'ASE advanced packaging testing capex 10.5 billion AI',
+    '디아이 디지털프론티어 와이씨 엑시콘 HBM 검사장비 수주',
+    '인텍플러스 CoWoS 파일럿 품질검증 정식계약',
+    '펨트론 HBM 검사장비 SK하이닉스 수주',
+    'ISC HBM 테스트 솔루션 메모리 3사 공급',
 ]
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
@@ -34,6 +40,31 @@ OFFICIAL = {'news.samsung.com': 'samsung', 'semiconductor.samsung.com': 'samsung
             'news.skhynix.com': 'skhynix', 'investors.micron.com': 'micron', 'micron.com': 'micron',
             'nvidianews.nvidia.com': 'nvidia', 'developer.nvidia.com': 'nvidia'}
 RANK = {'user_capture': 0, 'reported': 1, 'research': 2, 'official': 3}
+POSTPROCESS_ENTITIES = {
+    'tsmc': (r'\bTSMC\b', r'대만적체전로'),
+    'ase': (r'\bASE\b', r'Advanced Semiconductor Engineering'),
+    'di': (r'(?<![A-Za-z])디아이(?![A-Za-z])',),
+    'digital_frontier': (r'디지털\s*프론티어', r'Digital Frontier'),
+    'yc': (r'(?<![A-Za-z])와이씨(?![A-Za-z])',),
+    'exicon': (r'엑시콘', r'Exicon'),
+    'intekplus': (r'인텍플러스', r'Intekplus'),
+    'pemtron': (r'펨트론', r'Pemtron'),
+    'isc': (r'(?<![A-Za-z])ISC(?![A-Za-z])',),
+    'kohyoung': (r'고영', r'Koh Young'),
+    'neosem': (r'네오셈', r'Neosem'),
+    'nextein': (r'넥스틴', r'NEXTIN'),
+}
+STAGE_RANK = {
+    'mentioned': 0,
+    'development': 1,
+    'pilot': 2,
+    'pilot_passed': 3,
+    'po_pending': 4,
+    'po_signed': 5,
+    'equipment_move_in': 6,
+    'mass_production': 7,
+}
+
 INSTITUTIONS = {
     'bernstein': (r'Bernstein', r'번스타인'),
     'jpmorgan': (r'J[.]?P[.]?\s*Morgan', r'JP\s*Morgan', r'제이피모건'),
@@ -148,7 +179,9 @@ def is_axis_text(text):
         r'HBM.*(?:공급 부족|증산|웨이퍼|wafer|supply)|HBM4E?.*(?:\d+\s*Gb|\d+\s*GB|\d+\s*단)|'
         r'말레이시아.*(?:8542[.]?32[.]?3000|HBM)|Malaysia.*(?:8542[.]?32[.]?3000|HBM)|'
         r'HBM.*(?:매출|revenue).*(?:전망|estimate|forecast|regression)|'
-        r'(?:Bernstein|번스타인|J[.]?P[.]? Morgan|UBS).*HBM',
+        r'(?:Bernstein|번스타인|J[.]?P[.]? Morgan|UBS).*HBM|'
+        r'(?:TSMC|ASE|디아이|디지털\s*프론티어|와이씨|엑시콘|인텍플러스|펨트론|ISC|고영|네오셈|넥스틴).*'
+        r'(?:CoWoS|후공정|패키징|검사|테스트|tester|수주|품질\s*검증|정식\s*계약|설비투자|capex)',
         text, re.I))
 
 
@@ -369,6 +402,152 @@ def parse_hbm_revenue_estimates(item, body):
     return rows
 
 
+def _entity(text):
+    matches = []
+    for name, pats in POSTPROCESS_ENTITIES.items():
+        if any(re.search(p, text, re.I) for p in pats):
+            matches.append(name)
+    return matches[0] if len(matches) == 1 else ''
+
+
+def _krw_amount(text):
+    m = re.search(r'([\d,.]+)\s*억원', text)
+    if m:
+        return float(m[1].replace(',', '')) * 100_000_000
+    m = re.search(r'([\d,.]+)\s*조\s*([\d,.]+)?\s*억원', text)
+    if m:
+        jo = float(m[1].replace(',', ''))
+        eok = float((m[2] or '0').replace(',', ''))
+        return jo * 1_000_000_000_000 + eok * 100_000_000
+    return None
+
+
+def _usd_billion(text):
+    m = re.search(r'(?:US\$|\$)?\s*([\d.]+)\s*(?:billion|B)\b', text, re.I)
+    return float(m[1]) * 1_000_000_000 if m else None
+
+
+def _postprocess_stage(text):
+    low = text.lower()
+    if re.search(r'양산\s*(?:시작|개시)|mass\s*production', text, re.I):
+        return 'mass_production'
+    if re.search(r'장비\s*반입|equipment\s*(?:move[- ]?in|installation)', text, re.I):
+        return 'equipment_move_in'
+    if re.search(r'정식\s*(?:계약|수주)|본계약|purchase\s*order|\bPO\b|contract\s*signed', text, re.I):
+        return 'po_signed'
+    if re.search(r'정식\s*계약.*(?:앞두|준비)|본계약.*(?:앞두|준비)|prepar(?:e|ing)\s+for\s+(?:a\s+)?formal\s+contract', text, re.I):
+        return 'po_pending'
+    if re.search(r'품질\s*검증.*통과|품질\s*테스트.*통과|pilot.*(?:passed|qualified)|qualification\s*passed', text, re.I):
+        return 'pilot_passed'
+    if re.search(r'파일럿|시범\s*장비|pilot', text, re.I):
+        return 'pilot'
+    if re.search(r'개발|R&D|국책과제|development', text, re.I):
+        return 'development'
+    return ''
+
+
+def parse_postprocess_records(item, body):
+    text = re.sub(r'\s+', ' ', body)
+    published = item.get('published_at_kst', '')
+    year = published[:4] if re.match(r'^20\d{2}', published) else 'unknown'
+    rows = []
+
+    # TSMC: total CapEx + backend allocation + explicit tester bottleneck.
+    if re.search(r'\bTSMC\b', text, re.I):
+        total_min = total_max = None
+        rm = re.search(r'(?:USD|US\$|\$)?\s*([\d.]+)\s*(?:billion|B)[^\d]{0,30}(?:to|[-~–])\s*(?:USD|US\$|\$)?\s*([\d.]+)\s*(?:billion|B)', text, re.I)
+        if rm:
+            total_min, total_max = float(rm[1]) * 1e9, float(rm[2]) * 1e9
+        pm = re.search(r'(?:10\s*(?:to|[-~–])\s*20|10\s*~\s*20)\s*%', text, re.I)
+        tester_shortage = bool(re.search(r'tester[^.]{0,30}shortage|테스터[^.]{0,30}부족|테스트\s*장비[^.]{0,30}부족', text, re.I))
+        if total_min or pm or tester_shortage:
+            value = {
+                'total_capex_usd_min': total_min,
+                'total_capex_usd_max': total_max,
+                'backend_alloc_pct_min': 10.0 if pm else None,
+                'backend_alloc_pct_max': 20.0 if pm else None,
+                'tester_shortage': tester_shortage,
+            }
+            rows.append(make_record(
+                'postprocess_capex', ['tsmc', year], value, 'USD/pct', year,
+                item, 'TSMC 첨단패키징·테스트 설비투자 및 테스터 병목',
+                scope='backend_bucket_includes_packaging_testing_mask_and_others'))
+
+    # ASE: annual CapEx revision.
+    if re.search(r'\bASE\b|Advanced Semiconductor Engineering', text, re.I) and re.search(r'capex|설비투자', text, re.I):
+        vals = [float(x) * 1e9 for x in re.findall(r'(?:USD|US\$|\$)?\s*([\d.]+)\s*(?:billion|B)', text, re.I)]
+        if vals:
+            current = max(vals)
+            prior = min(vals) if len(vals) > 1 and min(vals) != current else None
+            rows.append(make_record(
+                'postprocess_capex', ['ase', year],
+                {'total_capex_usd': current, 'prior_capex_usd': prior},
+                'USD/year', year, item, 'ASE 연간 설비투자 변경',
+                scope='company_capex_not_all_advanced_packaging'))
+
+    # Korean equipment orders: only when vendor and explicit order/contract amount coexist.
+    vendor_customer = {
+        'di': ('삼성전자', 'samsung'),
+        'digital_frontier': ('SK하이닉스', 'skhynix'),
+        'yc': ('삼성전자', 'samsung'),
+        'exicon': ('', 'multiple'),
+        'pemtron': ('SK하이닉스', 'skhynix'),
+    }
+    for vendor, (customer_text, customer_key) in vendor_customer.items():
+        pats = POSTPROCESS_ENTITIES[vendor]
+        if not any(re.search(p, text, re.I) for p in pats):
+            continue
+        # Use the nearest sentence/segment to avoid assigning another vendor's amount.
+        segments = re.split(r'(?<=[.!?])\s+|\n+', body)
+        for seg in segments:
+            if not any(re.search(p, seg, re.I) for p in pats):
+                continue
+            if not re.search(r'수주|계약|order|contract', seg, re.I):
+                continue
+            amount = _krw_amount(seg)
+            if amount is None:
+                continue
+            if customer_text and customer_text not in seg:
+                # Customer can be inherited from a compact research sentence only if unique.
+                if text.count(customer_text) != 1:
+                    customer_key = 'unknown'
+            count_m = re.search(r'총?\s*(\d+)\s*건|(?:received|won)\s*(\d+)\s*orders?', seg, re.I)
+            count = int(next(x for x in count_m.groups() if x)) if count_m else None
+            product = 'hbm4_wafer_tester' if re.search(r'HBM4.*Wafer\s*Tester|HBM4.*웨이퍼\s*테스터', seg, re.I) else (
+                'hbm_inspection' if re.search(r'HBM.*검사', seg, re.I) else (
+                    'clt_ssd_tester' if re.search(r'CLT|SSD', seg, re.I) else 'memory_test_equipment'))
+            rows.append(make_record(
+                'postprocess_order', [vendor, customer_key, product, year],
+                {'amount_krw': amount, 'contract_count': count, 'stage': 'po_signed'},
+                'KRW/order', year, item, seg,
+                scope='confirmed_or_reported_equipment_order_not_industry_theme'))
+            break
+
+    # Validation / PO / move-in / mass-production stage changes.
+    for vendor in ('intekplus', 'pemtron', 'isc', 'kohyoung', 'neosem', 'nextein'):
+        pats = POSTPROCESS_ENTITIES[vendor]
+        if not any(re.search(p, text, re.I) for p in pats):
+            continue
+        segments = re.split(r'(?<=[.!?])\s+|\n+', body)
+        for seg in segments:
+            if not any(re.search(p, seg, re.I) for p in pats):
+                continue
+            stage = _postprocess_stage(seg)
+            if not stage:
+                continue
+            process = 'cowos' if re.search(r'CoWoS', seg, re.I) else (
+                'hbm_test' if re.search(r'HBM.*(?:검사|테스트|test)', seg, re.I) else 'advanced_packaging')
+            customer = 'taiwan_osat' if re.search(r'대만\s*OSAT|Taiwan(?:ese)?\s*OSAT', seg, re.I) else (
+                'global_memory_3' if re.search(r'메모리\s*3사|memory\s*3', seg, re.I) else 'undisclosed')
+            rows.append(make_record(
+                'postprocess_stage', [vendor, customer, process],
+                {'stage': stage}, 'stage', year, item, seg,
+                scope='stage_transition_requires_explicit_evidence'))
+            break
+
+    return rows
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -376,6 +555,7 @@ def parse_records(item, body):
     if malaysia:
         records.append(malaysia)
     records.extend(parse_hbm_revenue_estimates(item, body))
+    records.extend(parse_postprocess_records(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
@@ -509,6 +689,34 @@ def public_spot_quotes(raw, checked):
 
 def comparison(old, new):
     a, b = old['value'], new['value']
+    if new['axis'] == 'postprocess_capex':
+        reasons = []
+        if old.get('period') != new.get('period'):
+            reasons.append(f"새 설비투자 연도 {old.get('period')}→{new.get('period')}")
+        for field, label in (('total_capex_usd_min','설비투자 하단'), ('total_capex_usd_max','설비투자 상단'), ('total_capex_usd','설비투자')):
+            av, bv = a.get(field), b.get(field)
+            if av and bv:
+                dp = (bv / av - 1) * 100
+                if abs(dp) >= 10 or abs(bv-av) >= 1_000_000_000:
+                    reasons.append(f"{label} {dp:+.1f}%")
+        if a.get('tester_shortage') != b.get('tester_shortage') and b.get('tester_shortage'):
+            reasons.append('테스터 부족 공식·신뢰 근거 확인')
+        return reasons
+    if new['axis'] == 'postprocess_order':
+        reasons = []
+        av, bv = float(a.get('amount_krw') or 0), float(b.get('amount_krw') or 0)
+        if av and bv:
+            dp = (bv / av - 1) * 100
+            if abs(dp) >= 10 or abs(bv-av) >= 10_000_000_000:
+                reasons.append(f"수주액 {dp:+.1f}%")
+        if a.get('stage') != b.get('stage'):
+            reasons.append(f"수주 단계 {a.get('stage')}→{b.get('stage')}")
+        return reasons
+    if new['axis'] == 'postprocess_stage':
+        old_stage, new_stage = a.get('stage','mentioned'), b.get('stage','mentioned')
+        if old_stage != new_stage:
+            return [f"검증·양산 단계 {old_stage}→{new_stage}"]
+        return []
     if new['axis'] == 'hbm_revenue_estimate':
         reasons = []
         old_est = float(a.get('estimate_usd') or 0)
@@ -616,7 +824,10 @@ def render(change, rate=None):
              'wafer_share': 'HBM 웨이퍼 배분 전망', 'bit_share': 'HBM 비트 공급 비중 전망',
              'carrier_cleaning': 'HBM 유리 지지판 세정 처리량', 'fab_stage': 'P5 Fab1 공급 일정',
              'malaysia_hsk10_export': '한국→말레이시아 HBM 관련 HSK10 수출',
-             'hbm_revenue_estimate': '기관 HBM 분기 매출 추정 변화'}
+             'hbm_revenue_estimate': '기관 HBM 분기 매출 추정 변화',
+             'postprocess_capex': 'HBM 후공정 설비투자·병목 변화',
+             'postprocess_order': 'HBM 후공정 장비 수주 변화',
+             'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화'}
     def fmt(record):
         v = record['value']
         if record['axis'] == 'rdimm':
@@ -630,6 +841,32 @@ def render(change, rate=None):
         if record['axis'] == 'fab_stage':
             labels = {'plan': '계획', 'delayed': '지연', 'cancelled': '취소', 'reported_operation': '가동 보도'}
             return f"{v['year']}년 · {labels.get(v['stage'], v['stage'])}"
+        if record['axis'] == 'postprocess_capex':
+            if 'total_capex_usd_min' in v and v.get('total_capex_usd_min'):
+                text = f"설비투자 {v['total_capex_usd_min']/1e9:.1f}~{v['total_capex_usd_max']/1e9:.1f}십억달러"
+                if v.get('backend_alloc_pct_min') is not None:
+                    text += f" / 후공정 묶음 {v['backend_alloc_pct_min']:.0f}~{v['backend_alloc_pct_max']:.0f}%"
+                if v.get('tester_shortage'):
+                    text += " / 테스터 부족 확인"
+                return text
+            amount = v.get('total_capex_usd') or 0
+            text = f"설비투자 {amount/1e9:.1f}십억달러"
+            if v.get('prior_capex_usd'):
+                text += f" / 직전 {v['prior_capex_usd']/1e9:.1f}십억달러"
+            return text
+        if record['axis'] == 'postprocess_order':
+            amount = v.get('amount_krw') or 0
+            text = f"수주 {amount/1e8:,.0f}억원"
+            if v.get('contract_count'):
+                text += f" / {v['contract_count']}건"
+            return text
+        if record['axis'] == 'postprocess_stage':
+            labels = {
+                'development':'개발', 'pilot':'파일럿', 'pilot_passed':'파일럿 품질검증 통과',
+                'po_pending':'정식 발주 대기', 'po_signed':'정식 수주', 'equipment_move_in':'장비 반입',
+                'mass_production':'양산'
+            }
+            return labels.get(v.get('stage'), v.get('stage',''))
         if record['axis'] == 'hbm_revenue_estimate':
             amount = v.get('estimate_usd') or 0
             text = f"분기 추정 {amount/1e9:.1f}십억달러"
@@ -676,6 +913,12 @@ def render(change, rate=None):
         lines.append('• 재사용 세정 처리량이며 웨이퍼 생산·칩 출하·수주금액으로 치환하지 않습니다.')
     if r['axis'] in ('wafer_share', 'bit_share'):
         lines.append('• 연말 전망이며 연간 평균·실제 확정 생산량과 비교하지 않습니다.')
+    if r['axis'] == 'postprocess_capex':
+        lines.append('• 설비투자 총액과 후공정·테스트 배정액을 분리하며, TSMC 10~20% 묶음에는 패키징·테스트·마스크·기타가 함께 포함됩니다.')
+    if r['axis'] == 'postprocess_order':
+        lines.append('• 기사 관심종목이 아니라 고객·금액이 확인된 실제 수주만 상태값으로 올립니다.')
+    if r['axis'] == 'postprocess_stage':
+        lines.append('• 파일럿→품질검증→정식 발주→장비 반입→양산의 단계 상승만 신규 상태로 봅니다.')
     if r['axis'] == 'hbm_revenue_estimate':
         method_labels = {'regression_proxy':'수출 회귀식 대용지표', 'formal_forecast':'기관 공식 전망', 'reported_estimate':'보도 추정'}
         lines.append('• 성격: ' + method_labels.get(r['value'].get('method'), r['value'].get('method','')) + '이며 회사 확정 매출이 아닙니다.')
