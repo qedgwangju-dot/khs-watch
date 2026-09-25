@@ -958,7 +958,7 @@
   "malaysia_hsk10_weight_kg": null,
   "_delivery": {
     "id": "5c9525d4b53f4a4312978315dff601e9b3459f3b94106748ed21fe1a164539d0",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-09-25T15:35:30+09:00",
     "chunks": [
       "🚨 <b>HBM 주제·사건 상태 변화</b>\n━━━━━━━━━━━━━━━━\n<b>상태 변화 1건</b> · 2026-09-25 15:32 KST\n\n<b>1.</b>\n<b>삼성 HBM 생산능력·증산 계획 변화</b>\n• 상태 판정: <b>신뢰 보도 단계</b>\n• 변화 구분: 생산능력·증산\n• 핵심 숫자: <b>72%</b>\n• 감지 근거: news.futunn.com · 2026-09-23T00:23:58+09:00\n• 근거 제목(한국어): 삼성전자 HBM4 양산·생산 확대 관련 보도 · <a href=\"https://news.futunn.com/en/post/1000035630/samsung-accelerates-hbm4-volume-production-bernstein-forecasts-a-72-quarter\">원문</a>\n\n<b>판정 원칙</b>\n• <b>기사 자체가 알림 대상이 아닙니다.</b> 기사·공식자료는 상태 변화의 감지 근거·교차검증 자료로만 사용합니다.\n• 동일 사건을 여러 매체가 반복 보도해도 상태값이 같으면 다시 알리지 않습니다.\n• 물량·가격·생산능력·고객 인증·양산·실제 출하·공식 통계가 바뀐 경우에만 신규 상태로 봅니다.\n• 충남 수출과 증권사 추정은 <b>삼성 공식 HBM 매출과 분리</b>해서 표시합니다."
@@ -2210,6 +2210,7 @@
         "status": "no_message_due"
       },
       "malaysia_hsk10_weight_kg": null
-    }
+    },
+    "attempt_at_kst": "2026-09-25T15:35:32+09:00"
   }
 }
