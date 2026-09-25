@@ -43,7 +43,7 @@ def classify(item: dict):
 # 1) Stock-price/sector-reaction article that only recycles an older Tesla audit story.
 price_reaction = make(
     "A股异动丨特斯拉供应链审厂传闻发酵，人形机器人概念集体走强，均胜电子涨超4%",
-    "近日有媒体称特斯拉正在长三角推进供应链审厂，相关订单此前已经下达。",
+    "近日有媒体称特斯拉正在长三角推进Optimus人形机器人供应链审厂，相关订单此前已经下达。",
     "新浪财经",
 )
 g, s, c, k = classify(price_reaction)
