@@ -290,6 +290,10 @@ OUTLOOK_DISSENT_MARKERS = (
     "opposed the description regarding the outlook for prices",
     "opposed the description regarding the outlook for underlying inflation",
     "opposed the price outlook wording",
+    "opposed the outlook language",
+    "opposed outlook language",
+    "opposed the outlook wording",
+    "opposed the bank's outlook wording",
 )
 
 
@@ -1885,9 +1889,27 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
             )
         if signal.expected_move:
             prior_decision.append(f"- 시장 기대: {expectation_text}")
+        if signal.assessment_vote_for is not None and signal.assessment_vote_against is not None:
+            prior_decision.append(
+                f"- 경제·물가 진단 표결: {signal.assessment_vote_for}대{signal.assessment_vote_against}"
+            )
+            if signal.assessment_view:
+                prior_decision.append(f"- 경제·물가 진단 이견: {signal.assessment_view}")
+        else:
+            prior_decision.append(
+                "- 경제·물가 진단 별도 표결: 정책 7대2와 자동 동일시하지 않음 · 공식·고신뢰 원문 명시 시에만 확정"
+            )
         if signal.outlook_dissenters:
             prior_decision.append(
                 f"- 물가전망 이견: {', '.join(signal.outlook_dissenters)} · {signal.outlook_dissent_view or '방향 확인'}"
+            )
+        if (
+            signal.dissent_direction == "hold"
+            and signal.outlook_dissenters
+            and signal.outlook_dissent_view
+        ):
+            prior_decision.append(
+                "- 위원회 분열 구조: 완화파는 '지금은 동결', 반대편 매파는 '기조물가가 이미 2% 목표에 도달' 쪽 — 양방향 분열"
             )
 
     # Only show material inflation/guidance facts for this event; do not fill the alert
@@ -1967,6 +1989,8 @@ def build(signal: Signal, reason: str, now: dt.datetime, market: dict | None) ->
         "",
         "【판정 기준】",
         "- 25bp·50bp 같은 숫자보다 시장 예상 대비 서프라이즈와 반대표 방향을 우선합니다.",
+        "- 정책금리 표결과 경제·물가 진단 표결은 별개입니다. 같은 7대2라고 추정하지 않고 원문에 각각 명시될 때만 표시합니다.",
+        "- 완화파의 동결 반대와 매파의 물가전망 이견이 동시에 있으면 '양방향 분열'로 표시합니다.",
         "- 50bp·연속 인상 가능성만 열어둔 것은 🟠가 아니라 조건부 꼬리위험입니다.",
         "- 다음 회의 인상·고정된 빠른 간격이 구체화되면 🟠, 중단·지연 신호면 🟢로 재판정합니다.",
         "",
