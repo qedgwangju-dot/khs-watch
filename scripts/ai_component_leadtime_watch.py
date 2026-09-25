@@ -466,10 +466,21 @@ def supply_direction(old: dict, new: dict) -> tuple[str, int, int]:
 
 def focus_components(changed: list[str], signal_names: list[str], components: dict, limit: int = 4) -> list[str]:
     out: list[str] = []
+    ranked = bottleneck_ranking(components)
+
+    # 가장 강한 병목은 변화 여부와 무관하게 항상 투자판단 초점에 남긴다.
+    if ranked:
+        strongest_name = ranked[0][1]
+        if strongest_name in components:
+            out.append(strongest_name)
+
     for name in [*changed, *signal_names]:
         if name in components and name not in out:
             out.append(name)
-    for _, name, _ in bottleneck_ranking(components):
+        if len(out) >= limit:
+            return out[:limit]
+
+    for _, name, _ in ranked:
         if name not in out:
             out.append(name)
         if len(out) >= limit:
