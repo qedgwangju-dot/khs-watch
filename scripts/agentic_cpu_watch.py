@@ -196,19 +196,24 @@ def number_near(text: str, labels: tuple[str, ...]) -> float | None:
         # sentence's $210.6bn server-CPU TAM from being misread as the following
         # 'AI CPU TAM 180.4bn' value.
         after = text[pos: min(len(text), pos + 240)]
+        forward = []
         for pattern in patterns:
-            m = re.search(pattern, after, re.I)
-            if m:
-                return float(m.group(1))
+            forward.extend(re.finditer(pattern, after, re.I))
+        if forward:
+            # Choose the physically nearest number after the label, regardless of
+            # whether it is written as "$90bn" or "90 USD billion".
+            nearest = min(forward, key=lambda m: m.start())
+            return float(nearest.group(1))
 
         # Only if no forward value exists, allow a very short backward window for
         # constructions such as '$90.2bn for agentic AI nodes'.
         before = text[max(0, pos - 90): pos + len(label)]
-        matches = []
+        backward = []
         for pattern in patterns:
-            matches.extend(re.finditer(pattern, before, re.I))
-        if matches:
-            return float(matches[-1].group(1))
+            backward.extend(re.finditer(pattern, before, re.I))
+        if backward:
+            nearest = max(backward, key=lambda m: m.end())
+            return float(nearest.group(1))
     return None
 
 
