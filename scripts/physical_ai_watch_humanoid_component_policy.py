@@ -34,7 +34,6 @@ base, ext = kd.base, kd.ext
 
 UNITREE_HAND_SENTINEL = 'DIRECT_UNITREE_DEX5S_X_RECOVERY'
 TOYOTA_ROBOT_DEMAND_SENTINEL = 'DIRECT_TOYOTA_ROBOT_DEMAND_20260918'
-APPTRONIK_BOTTLENECK_SENTINEL = 'DIRECT_APPTRONIK_US_SUPPLY_BOTTLENECK_20260924'
 APPTRONIK_HW_SENTINEL = 'DIRECT_APPTRONIK_US_HARDWARE_BOTTLENECK_20260924'
 
 base.QUERIES.extend([
@@ -157,28 +156,6 @@ def _bottleneck_stage(text: str) -> str:
     return ''
 
 
-def _query_apptronik_bottleneck_recovery() -> list[dict]:
-    published = dt.datetime(2026, 9, 24, 23, 31, tzinfo=dt.timezone.utc)
-    if base.NOW - published > dt.timedelta(hours=120):
-        return []
-    return [{
-        'title': '앱트로닉 CEO, 미국 휴머노이드 기어·액추에이터 공급망 병목 경고',
-        'link': 'https://www.g-enews.com/article/Global-Biz/2026/09/2026092408055435622bd56fbc3c_1',
-        'description': (
-            'Apptronik CEO Jeff Cardenas warned that the U.S. lacks supply bases for key humanoid components such as gears, '
-            'with rare-earth constraints affecting electric motors. He said actuators can account for up to 60% of robot BOM cost and argued for building U.S. component manufacturing capacity around Texas. '
-            'The report also cites Schaeffler strain-wave gearbox forming technology cutting manufacturing cost by more than 25% and material use by more than 75%, with mass production targeted for 2027, and notes FCC restrictions on foreign-produced advanced robotic devices.'
-        ),
-        'published': published.isoformat(),
-        'source': '글로벌이코노믹',
-        'apptronik_supply_bottleneck': True,
-    }]
-
-
-def _is_apptronik_supply_bottleneck(text: str) -> bool:
-    return bool(APPTRONIK.search(text) and GEAR_ACTUATOR_RARE_EARTH.search(text) and OEM_SUPPLY_BOTTLENECK.search(text))
-
-
 def _query_toyota_robot_demand_recovery() -> list[dict]:
     # Short-lived recovery for the current Korean synthesis article that exposed
     # the missing Toyota/auto-OEM demand lane. It shares the durable 9/18 event key,
@@ -227,8 +204,6 @@ def _query_unitree_hand_recovery() -> list[dict]:
 def query_news(q: str) -> list[dict]:
     if q == APPTRONIK_HW_SENTINEL:
         return _query_apptronik_hw_recovery()
-    if q == APPTRONIK_BOTTLENECK_SENTINEL:
-        return _query_apptronik_bottleneck_recovery()
     if q == UNITREE_HAND_SENTINEL:
         return _query_unitree_hand_recovery()
     if q == TOYOTA_ROBOT_DEMAND_SENTINEL:
@@ -478,18 +453,6 @@ def score(item: dict) -> int:
         if ACTUATOR_BOM_60.search(text): s += 5
         if DOMESTIC_LOCALIZATION.search(text): s += 4
         return s
-    if group == 'humanoid_supply_bottleneck':
-        source = item.get('source') or ''
-        s = 26
-        if source in base.OFFICIAL_OR_PRIMARY: s += 8
-        elif source in base.TRUSTED: s += 4
-        if ACTUATOR_BOM_SHARE.search(text): s += 7
-        if DOMESTIC_LOCALIZATION.search(text): s += 6
-        if re.search(r'gear|기어|감속기', text, re.I): s += 5
-        if re.search(r'rare\s+earth|희토류', text, re.I): s += 5
-        if MANUFACTURING_BREAKTHROUGH.search(text): s += 5
-        if SUPPLY_REGULATION.search(text): s += 3
-        return s
     if group == 'toyota_robot_demand':
         source = item.get('source') or ''
         s = 24
@@ -569,8 +532,6 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
-    if group == 'humanoid_supply_bottleneck':
-        return '미국 휴머노이드 핵심부품 공급망 · 기어·액추에이터·희토류 병목'
     if group == 'humanoid_supply_bottleneck':
         stage = _bottleneck_stage(text)
         if stage == 'fcc_robot_rule': return '미국 휴머노이드 공급망 · FCC 현지생산·승인 규제'
@@ -667,8 +628,6 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     if group == 'humanoid_supply_bottleneck':
-        return 'Apptronik CEO Fox Business 공개 인터뷰 기반 보도 · Schaeffler 공식 감속기 양산자료·FCC 공식 규제자료 교차확인'
-    if group == 'humanoid_supply_bottleneck':
         stage = _bottleneck_stage(text)
         if stage == 'us_hardware_bottleneck': return 'Apptronik CEO Fox Business 직접 인터뷰를 Humanoids Daily·글로벌이코노믹이 인용 · 공급 부족량/납기 수치는 미공개'
         if stage == 'fcc_robot_rule': return 'FCC 공식 Covered List/조건부 승인 자료 · Sidley Austin 법률 분석 교차확인'
@@ -762,8 +721,6 @@ def _same_event(a: dict, b: dict) -> bool:
 
 def tag_for(group: str) -> str:
     if group == 'humanoid_supply_bottleneck':
-        return '미국로봇공급망'
-    if group == 'humanoid_supply_bottleneck':
         return '휴머노이드병목'
     if group == 'toyota_robot_demand':
         return '토요타로봇수요'
@@ -774,8 +731,6 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
-    if topic_group(text) == 'humanoid_supply_bottleneck':
-        return hashlib.sha256(b'apptronik-us-supply-bottleneck|gears-actuators-rare-earth|2026-09-22').hexdigest()
     if topic_group(text) == 'humanoid_supply_bottleneck':
         stage = _bottleneck_stage(text)
         if stage == 'us_hardware_bottleneck': return hashlib.sha256(b'apptronik|2026-09-22|us-hardware-bottleneck|gears-rareearth-actuators').hexdigest()
