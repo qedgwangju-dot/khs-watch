@@ -1179,7 +1179,13 @@ def main():
                 '수주', '품질 검증', '정식 계약', '설비투자', 'capex'
             ))
         )
-        if structured_revenue or structured_postprocess:
+        structured_foundry = (
+            ('samsung' in text or '삼성' in text)
+            and 'hbm' in text
+            and any(k in text for k in ('base die', '베이스다이', '베이스 다이', '4nm', '4나노', '2nm', '2나노'))
+            and any(k in text for k in ('full utilization', '풀가동', '증설', 'expand', 'price increase', '가격 인상', 'production line', '생산라인', 'investment', '투자'))
+        )
+        if structured_revenue or structured_postprocess or structured_foundry:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
