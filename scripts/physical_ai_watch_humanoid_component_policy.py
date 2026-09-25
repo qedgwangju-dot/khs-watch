@@ -34,6 +34,9 @@ base, ext = kd.base, kd.ext
 
 UNITREE_HAND_SENTINEL = 'DIRECT_UNITREE_DEX5S_X_RECOVERY'
 TOYOTA_ROBOT_DEMAND_SENTINEL = 'DIRECT_TOYOTA_ROBOT_DEMAND_20260918'
+    '(Apptronik OR Apollo OR "Jeff Cardenas") (actuator OR 액추에이터 OR gear OR 기어 OR reducer OR 감속기 OR rare earth OR 희토류) (shortage OR bottleneck OR shortage OR supply chain OR 공급망 OR 부족 OR 병목 OR Texas OR 미국)',
+    APPTRONIK_SUPPLY_BOTTLENECK_SENTINEL,
+APPTRONIK_SUPPLY_BOTTLENECK_SENTINEL = 'DIRECT_APPTRONIK_US_HUMANOID_SUPPLY_BOTTLENECK_20260923'
 APPTRONIK_HW_SENTINEL = 'DIRECT_APPTRONIK_US_HARDWARE_BOTTLENECK_20260924'
 
 base.QUERIES.extend([
@@ -202,6 +205,8 @@ def _query_unitree_hand_recovery() -> list[dict]:
 
 
 def query_news(q: str) -> list[dict]:
+    if q == APPTRONIK_SUPPLY_BOTTLENECK_SENTINEL:
+        return _query_apptronik_supply_bottleneck_recovery()
     if q == APPTRONIK_HW_SENTINEL:
         return _query_apptronik_hw_recovery()
     if q == UNITREE_HAND_SENTINEL:
@@ -533,6 +538,8 @@ def score(item: dict) -> int:
 
 def category(text: str, group: str) -> str:
     if group == 'humanoid_supply_bottleneck':
+        return '미국 휴머노이드 · 기어·액추에이터·희토류 공급망 병목'
+    if group == 'humanoid_supply_bottleneck':
         stage = _bottleneck_stage(text)
         if stage == 'fcc_robot_rule': return '미국 휴머노이드 공급망 · FCC 현지생산·승인 규제'
         if stage == 'gear_cost_breakthrough': return '글로벌 휴머노이드 공급망 · 감속기 원가·양산 혁신'
@@ -548,6 +555,8 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '미국 휴머노이드 · 기어·액추에이터·희토류 공급망 병목':
+        return 'AI 소프트웨어가 아니라 감속기·기어·모터용 희토류·액추에이터 제조능력이 미국 휴머노이드 양산의 실제 병목이라는 경영진 신호입니다. Apptronik의 미국·텍사스 현지 제조 확대가 공급사 선정·증설·납기 단축으로 이어지는지 추적합니다.'
     if cat == '미국 휴머노이드 공급망 · 기어·액추에이터·희토류 병목':
         return 'AI 성능이 준비돼도 기어·감속기·전기모터용 희토류와 액추에이터 공급기반이 부족하면 휴머노이드 양산량이 막힐 수 있다는 직접 경영진 경고입니다. 액추에이터 BOM 비중이 최대 60%라는 Apptronik CEO 발언을 기준으로 기어·모터·영구자석·액추에이터의 납기·가격·미국 현지 생산능력을 추적합니다.'
     if cat == '미국 휴머노이드 공급망 · FCC 현지생산·승인 규제':
@@ -588,6 +597,8 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == '미국 휴머노이드 · 기어·액추에이터·희토류 공급망 병목':
+        return '현재는 Apptronik CEO의 산업 공급망 경고이지 특정 한국·미국 부품사의 수주 확정이 아닙니다. 희토류 가격·수입규제·기어 수율·액추에이터 납기가 완화되지 않으면 현지화는 원가 상승과 양산 지연으로 먼저 나타날 수 있습니다.'
     if cat == '미국 휴머노이드 공급망 · 기어·액추에이터·희토류 병목':
         return '경영진의 공급망 경고는 실제 주문 부족량이나 리드타임을 공개한 것은 아닙니다. 최대 60% BOM 비중도 Apptronik CEO의 설명이며 모든 휴머노이드에 동일하지 않습니다. 가장 현실적인 실패 경로는 희토류·정밀기어 병목으로 액추에이터 생산이 늦어져 Apollo 양산·고객 배치가 지연되는 경우입니다.'
     if cat == '미국 휴머노이드 공급망 · FCC 현지생산·승인 규제':
@@ -627,6 +638,8 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'humanoid_supply_bottleneck':
+        return 'Apptronik CEO 공개 발언 재보도 · Apptronik 공식 채널/복수 보도 교차확인'
     if group == 'humanoid_supply_bottleneck':
         stage = _bottleneck_stage(text)
         if stage == 'us_hardware_bottleneck': return 'Apptronik CEO Fox Business 직접 인터뷰를 Humanoids Daily·글로벌이코노믹이 인용 · 공급 부족량/납기 수치는 미공개'
@@ -721,6 +734,8 @@ def _same_event(a: dict, b: dict) -> bool:
 
 def tag_for(group: str) -> str:
     if group == 'humanoid_supply_bottleneck':
+        return '미국휴머노이드공급망'
+    if group == 'humanoid_supply_bottleneck':
         return '휴머노이드병목'
     if group == 'toyota_robot_demand':
         return '토요타로봇수요'
@@ -731,6 +746,8 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'humanoid_supply_bottleneck':
+        return hashlib.sha256(b'apptronik|us-supply|gear-actuator-rare-earth-bottleneck').hexdigest()
     if topic_group(text) == 'humanoid_supply_bottleneck':
         stage = _bottleneck_stage(text)
         if stage == 'us_hardware_bottleneck': return hashlib.sha256(b'apptronik|2026-09-22|us-hardware-bottleneck|gears-rareearth-actuators').hexdigest()
