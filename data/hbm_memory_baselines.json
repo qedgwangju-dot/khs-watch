@@ -379,6 +379,78 @@
       "source": "아시아경제",
       "scope": "confirmed_or_reported_equipment_order_not_industry_theme",
       "excerpt": "펨트론이 SK하이닉스로부터 100억원 규모 HBM 검사장비를 수주했다는 보도."
+    },
+    {
+      "key": "foundry_base_die_allocation|samsung|4nm|HBM4",
+      "axis": "foundry_base_die_allocation",
+      "value": {
+        "total_capacity_wpm": 30000,
+        "allocation_pct_min": 50,
+        "allocation_pct_max": 60,
+        "full_utilization": true
+      },
+      "unit": "wafers/month,pct",
+      "period": "current",
+      "as_of": "2026-09-07",
+      "evidence": "reported",
+      "source_url": "https://zdnet.co.kr/view/?no=20260907110055",
+      "source_title": "삼성 파운드리, HBM4 확대 총력…4나노 캐파 절반이 베이스 다이",
+      "source": "ZDNet Korea",
+      "scope": "reported_foundry_capacity_not_hbm_finished_goods",
+      "excerpt": "4나노 생산능력 월 약 3만장, HBM4 베이스다이 배정 50~60%, 4나노 풀생산 체제."
+    },
+    {
+      "key": "foundry_node_expansion|samsung|4nm|HBM4_base_die",
+      "axis": "foundry_node_expansion",
+      "value": {
+        "stage": "review"
+      },
+      "unit": "stage",
+      "period": "current",
+      "as_of": "2026-09-21",
+      "evidence": "reported",
+      "source_url": "https://www.mt.co.kr/index.php/industry/2026/09/21/2026092114333425215",
+      "source_title": "HBM에 웃는 삼성 파운드리…첨단 공정 생산능력 확대 채비",
+      "source": "머니투데이",
+      "scope": "foundry_expansion_stage",
+      "excerpt": "HBM4 베이스다이 수요 확대에 대응해 삼성전자가 파운드리 4나노 공정 증설을 검토 중."
+    },
+    {
+      "key": "foundry_pricing|samsung|4nm|HBM4_base_die",
+      "axis": "foundry_pricing",
+      "value": {
+        "new_order_price_up": true,
+        "base_die_price_up": true,
+        "price_change_pct": null
+      },
+      "unit": "direction,pct",
+      "period": "current",
+      "as_of": "2026-09-21",
+      "evidence": "reported",
+      "source_url": "https://www.mt.co.kr/index.php/industry/2026/09/21/2026092114333425215",
+      "source_title": "HBM에 웃는 삼성 파운드리…첨단 공정 생산능력 확대 채비",
+      "source": "머니투데이",
+      "scope": "reported_foundry_pricing",
+      "excerpt": "4나노 신규 수주 물량 가격 인상 및 HBM4용 베이스다이 가격 인상 보도. 인상률은 미공개."
+    },
+    {
+      "key": "foundry_hbm5_2nm|samsung|2nm|HBM5",
+      "axis": "foundry_hbm5_2nm",
+      "value": {
+        "investment_stage": "review",
+        "speed_uplift_target_pct": 50,
+        "gaa": true,
+        "tsv_density_up": true
+      },
+      "unit": "stage,pct",
+      "period": "HBM5",
+      "as_of": "2026-09-21",
+      "evidence": "reported",
+      "source_url": "https://www.mt.co.kr/index.php/industry/2026/09/21/2026092114333425215",
+      "source_title": "HBM에 웃는 삼성 파운드리…첨단 공정 생산능력 확대 채비",
+      "source": "머니투데이",
+      "scope": "technology_plan_and_line_investment_separated",
+      "excerpt": "HBM5 대응 2나노 신규 생산라인 구축 검토. GAA 2나노와 고집적 TSV, HBM4E 대비 동작속도 50% 이상 향상 목표."
     }
   ],
   "user_capture": {
