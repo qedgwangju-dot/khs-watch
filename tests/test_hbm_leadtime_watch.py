@@ -133,5 +133,69 @@ class LeadTimeAlertTests(unittest.TestCase):
         self.assertIn("직전 확정값 유지·이번 주 직접 판독 미확인", alert)
 
 
+class AgenticCPUWatchTests(unittest.TestCase):
+    def test_bofa_cpu_snapshot_parse(self):
+        text = (
+            "BofA raises CY30E server CPU TAM to $210.6 billion. "
+            "AI CPU TAM reaches $180.4 billion. "
+            "Agentic AI CPU racks reach $90.2 billion, about 42.8% of the market. "
+            "CPU-to-GPU ratio moves toward 1:1."
+        )
+        snap = w.extract_cpu_snapshot(text, "https://finvaulta.com/research/example")
+        self.assertEqual(snap["server_cpu_tam_2030_bn"], 210.6)
+        self.assertEqual(snap["agentic_cpu_tam_2030_bn"], 90.2)
+        self.assertEqual(snap["ai_cpu_tam_2030_bn"], 180.4)
+        self.assertEqual(snap["agentic_share_pct"], 42.8)
+        self.assertEqual(snap["cpu_gpu_ratio"], "1:1")
+
+    def test_cpu_materiality_thresholds(self):
+        old = dict(w.CPU_BASELINE)
+        small = dict(old)
+        small["server_cpu_tam_2030_bn"] = 225.0
+        self.assertNotIn("server_cpu_tam_2030_bn", w.cpu_material_changes(old, small))
+        large = dict(old)
+        large["server_cpu_tam_2030_bn"] = 235.0
+        self.assertIn("server_cpu_tam_2030_bn", w.cpu_material_changes(old, large))
+        share = dict(old)
+        share["agentic_share_pct"] = 48.0
+        self.assertIn("agentic_share_pct", w.cpu_material_changes(old, share))
+
+    def test_component_alert_embeds_cpu_axis(self):
+        alert = w.build_alert(
+            w.BASELINE["components"],
+            w.BASELINE["components"],
+            [],
+            w.BASELINE["source"],
+            "2026-09-21T19:00:00+09:00",
+            False,
+            signals=w.BASELINE["signals"],
+            cpu_state=w.CPU_BASELINE,
+        )
+        self.assertIn("<b>CPU·에이전트형 AI 수요축</b>", alert)
+        self.assertIn("2030 서버 CPU 시장 210.6십억달러", alert)
+        self.assertIn("CPU:GPU 1:1", alert)
+        self.assertIn("DDR5 RDIMM·기업용 SSD·네트워크·ABF·MLCC", alert)
+
+    def test_cpu_alert_contains_full_investment_chain(self):
+        old = dict(w.CPU_BASELINE)
+        new = dict(old)
+        new["server_cpu_tam_2030_bn"] = 240.0
+        alert = w.build_cpu_alert(
+            old,
+            new,
+            ["server_cpu_tam_2030_bn"],
+            "https://example.com/new",
+            "2026-09-25T10:00:00+09:00",
+            validation_note="AMD 공식자료에서 실제 배치 검증",
+        )
+        self.assertIn("<b>수익구조</b>", alert)
+        self.assertIn("<b>1단계 현재 숫자 추적</b>", alert)
+        self.assertIn("<b>2단계 미래 재평가 요인 발굴</b>", alert)
+        self.assertIn("<b>관련 기업 지도</b>", alert)
+        self.assertIn("<b>공정 병목 후보</b>", alert)
+        self.assertIn("<b>숨은 역풍·실패모드</b>", alert)
+        self.assertIn("실제 수요 검증", alert)
+
+
 if __name__ == "__main__":
     unittest.main()
