@@ -38,7 +38,7 @@ def semantic_event_key(row: dict[str, Any]) -> str:
         return "12th-plan|final"
 
     if any(term in title for term in ("원전", "원자력")):
-        if any(term in title for term in ("공론화", "숙의", "시민참여단", "공론화위", "3개월")):
+        if any(term in title for term in ("공론화", "숙의", "시민참여단", "공론화위", "3개월", "국민과 함께 논의")):
             return "12th-plan|nuclear-deliberation"
         if any(term in title for term in ("영덕", "기장", "부지 선정", "후보지")):
             return "12th-plan|nuclear-site"
