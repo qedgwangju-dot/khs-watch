@@ -218,6 +218,24 @@
       "source": "Bernstein report interpretation",
       "scope": "institutional_estimate_not_company_reported_revenue",
       "excerpt": "중앙 회귀식은 SK하이닉스 3Q26 HBM 매출 약 59억달러, 전분기 대비 -14%. 가장 후행 출하가 집중된 계절성 시나리오는 약 75억달러."
+    },
+    {
+      "key": "hbm_product_mix|samsung|HBM4_family|2027",
+      "axis": "hbm_product_mix",
+      "value": {
+        "reference_pct": 40,
+        "target_pct": 80,
+        "product_family": "HBM4/HBM4E"
+      },
+      "unit": "pct",
+      "period": "2027",
+      "as_of": "2026-09-21",
+      "evidence": "reported",
+      "source_url": "https://news.futunn.com/en/post/79538141/report-samsung-may-double-its-hbm4-hbm4e-production-next-year",
+      "source_title": "Report: Samsung may double its HBM4/HBM4E production next year, with the product mix rising from 40% to 80%",
+      "source": "Futunn 재인용·기존 삼성 HBM4/4E 증산 사건",
+      "scope": "reported_product_mix_share_not_shipment_share",
+      "excerpt": "기존 HBM4·HBM4E 생산 2배 사건의 세부 비중 40%→80%. 별도 신규 생산사건이 아니라 제품 혼합 세부 상태 기준선."
     }
   ],
   "user_capture": {
