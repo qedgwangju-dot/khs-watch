@@ -18,6 +18,7 @@ import os
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -77,24 +78,73 @@ def yahoo_series(symbol):
     ts=result.get('timestamp') or []
     quote=((result.get('indicators') or {}).get('quote') or [{}])[0]
     closes=quote.get('close') or []
+    highs=quote.get('high') or []
+    lows=quote.get('low') or []
+    meta=result.get('meta') or {}
     rows=[]
-    for t,c in zip(ts,closes):
+    for i,(t,c) in enumerate(zip(ts,closes)):
         if c is None:continue
-        rows.append((datetime.fromtimestamp(t,timezone.utc).date().isoformat(),float(c)))
+        h=highs[i] if i<len(highs) else None
+        l=lows[i] if i<len(lows) else None
+        rows.append({
+            'date':datetime.fromtimestamp(t,timezone.utc).date().isoformat(),
+            'close':float(c),
+            'high':float(h) if h is not None else None,
+            'low':float(l) if l is not None else None,
+        })
     if len(rows)<21:raise RuntimeError('Brent history too short')
-    return rows
+    return rows,meta
 
 
 def brent_snapshot():
     source='Yahoo Finance 브렌트 선물'; url=BRENT_PAGE
-    try:rows=yahoo_series('BZ=F')
-    except Exception:
-        rows=fred_series('DCOILBRENTEU'); source='EIA 원자료 반영 FRED 브렌트 현물'; url=FRED_BRENT
-    latest_date,latest=rows[-1]
-    d20=(latest/rows[-21][1]-1)*100
-    last3=[x[1] for x in rows[-3:]]
+    quality_note='정상'
+    live=False
+    try:
+        rows,meta=yahoo_series('BZ=F')
+        latest_row=rows[-1]
+        latest_date=latest_row['date']
+        latest=float(latest_row['close'])
+        meta_price=meta.get('regularMarketPrice')
+        try: meta_price=float(meta_price) if meta_price is not None else None
+        except Exception: meta_price=None
+
+        ny_today=datetime.now(ZoneInfo('America/New_York')).date().isoformat()
+        if latest_date == ny_today and meta_price is not None:
+            live=True
+            # Yahoo chart occasionally returns a stale/wrong current-day close.
+            # Cross-check it against the quote metadata before it can flip the regime.
+            gap=abs(latest/meta_price-1)*100 if meta_price else 0.0
+            if gap>=2.0:
+                latest=meta_price
+                quality_note=f'당일 일봉 종가값과 실시간 호가가 {gap:.1f}% 불일치해 실시간 호가로 교정'
+            else:
+                latest=meta_price
+                quality_note='당일 진행 중 일봉은 실시간 호가로 통일'
+
+        # Sanity check against current-day candle range when available.
+        lo=latest_row.get('low'); hi=latest_row.get('high')
+        if live and lo is not None and hi is not None and not (float(lo)*0.995 <= latest <= float(hi)*1.005):
+            raise RuntimeError(f'Brent live quote/candle mismatch: price={latest} range={lo}-{hi}')
+
+        history=[float(x['close']) for x in rows[:-1]] if live else [float(x['close']) for x in rows]
+        if live:
+            if len(history)<20:raise RuntimeError('Brent completed history too short')
+            d20=(latest/history[-20]-1)*100
+            last3=history[-2:]+[latest]
+        else:
+            d20=(latest/float(rows[-21]['close'])-1)*100
+            last3=[float(x['close']) for x in rows[-3:]]
+    except Exception as exc:
+        fred=fred_series('DCOILBRENTEU')
+        latest_date,latest=fred[-1]
+        d20=(latest/fred[-21][1]-1)*100
+        last3=[x[1] for x in fred[-3:]]
+        source='EIA 원자료 반영 FRED 브렌트 현물'; url=FRED_BRENT
+        quality_note=f'Yahoo 검증 실패 → FRED 현물로 대체: {type(exc).__name__}'
+        live=False
     active=(all(x>=BRENT_LEVEL for x in last3) or d20>=BRENT_20D_PCT)
-    return {'date':latest_date,'value':latest,'d20_pct':d20,'last3':last3,'active':active,'source':source,'url':url}
+    return {'date':latest_date,'value':latest,'d20_pct':d20,'last3':last3,'active':active,'source':source,'url':url,'live':live,'quality_note':quality_note}
 
 
 def macro_snapshot():
@@ -161,7 +211,8 @@ def message(br,ma,v):
         f"기준: {br['date']}", '',
         '<b>핵심 판정</b>', f"• <b>{html.escape(v)}</b>", '',
         '<b>현재 숫자</b>',
-        f"• 브렌트유: {br['value']:.2f}달러/배럴 · 최근 20거래일 {br['d20_pct']:+.1f}%",
+        f"• 브렌트유: {br['value']:.2f}달러/배럴{' · 장중 실시간' if br.get('live') else ''} · 최근 20거래일{'(현재값 포함)' if br.get('live') else ''} {br['d20_pct']:+.1f}%",
+        f"• 가격 검증: {html.escape(br.get('quality_note') or '정상')}",
         f"• 근원 PCE 추세: 3개월 연율 {pce3} · 6개월 연율 {pce6}",
         f"• 5년 기대인플레이션: {ma['bei5y']:.2f}% · 최근 10거래일 {bei}",
         f"• 실질 개인소비: 최근 3개월 연율 {real}",
@@ -179,9 +230,19 @@ def message(br,ma,v):
 
 def main():
     old=load_json(STATE_PATH); br=brent_snapshot(); ma=macro_snapshot(); v=verdict(br,ma)
-    new={'brent':br,'macro':ma,'verdict':v}; first=not bool(old)
+    new={'schema_version':2,'brent':br,'macro':ma,'verdict':v}; first=not bool(old)
     changed=(old.get('brent',{}).get('active') not in (None,br['active']) or old.get('verdict') not in (None,v))
-    if FORCE_NOTIFY or (not first and changed):send(message(br,ma,v))
+    correction=False
+    old_br=(old.get('brent') or {})
+    if old and int(old.get('schema_version') or 1)<2:
+        ov=old_br.get('value')
+        if isinstance(ov,(int,float)) and abs(float(ov)-float(br['value']))>=3.0:
+            correction=True
+    if FORCE_NOTIFY or correction or (not first and changed):
+        if correction:
+            send('<b>[정정 · Warsh 에너지 공급충격]</b>\n직전 브렌트유 값이 Yahoo 당일 일봉 데이터 불일치로 잘못 들어간 것을 확인했습니다. 현재 호가와 일봉을 재검증해 판정을 다시 계산합니다.\n\n'+message(br,ma,v))
+        else:
+            send(message(br,ma,v))
     save_json(STATE_PATH,new)
     print(json.dumps({'first_run':first,'active':br['active'],'brent':br['value'],'d20_pct':br['d20_pct'],'verdict':v},ensure_ascii=False))
 
