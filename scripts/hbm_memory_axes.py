@@ -959,7 +959,17 @@ def main():
             and any(k in text for k in ('revenue', '매출', 'qoq', '전분기', 'forecast', 'estimate', '회귀', 'regression'))
             and not any(k in text for k in ('2배', 'double', '3배', 'triple', 'wafer', '웨이퍼', 'capacity', '생산능력', '캐파'))
         )
-        if structured_revenue:
+        structured_postprocess = (
+            any(k in text for k in (
+                'tsmc', 'ase', '디아이', '디지털 프론티어', '디지털프론티어', '와이씨',
+                '엑시콘', '인텍플러스', '펨트론', 'isc', '고영', '네오셈', '넥스틴'
+            ))
+            and any(k in text for k in (
+                'cowos', '후공정', '패키징', '검사', '테스트', 'tester',
+                '수주', '품질 검증', '정식 계약', '설비투자', 'capex'
+            ))
+        )
+        if structured_revenue or structured_postprocess:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
