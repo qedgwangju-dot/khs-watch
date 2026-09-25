@@ -649,7 +649,7 @@ def parse_foundry_hbm_records(item, body):
                 as_of=asof, scope='foundry_expansion_stage'))
 
         # Price increases are a separate state from physical capacity.
-        new_order_up = bool(re.search(r'(?:4\s*나노|4nm)[^.]{0,100}?(?:신규\s*수주|new\s*orders?)[^.]{0,80}?(?:가격\s*인상|price\s*(?:increase|hike))', text, re.I))
+        new_order_up = bool(re.search(r'(?:4\s*나노|4nm)[^.]{0,100}?(?:신규\s*수주|new\s*orders?)[^.]{0,80}?(?:가격(?:을|이|은|는)?\s*(?:인상|상향)|price\s*(?:increase|hike))', text, re.I))
         base_die_up = bool(re.search(r'(?:베이스\s*다이|base\s*die)[^.]{0,80}?(?:가격\s*(?:인상|상향)|가격[^.]{0,20}?(?:올린|올렸다)|price\s*(?:increase|hike))', text, re.I))
         pct = None
         pm = re.search(r'(?:가격\s*인상|price\s*(?:increase|hike))[^%]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*%', text, re.I)
