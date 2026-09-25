@@ -56,7 +56,8 @@ LAUNCH_TERMS = (
 )
 RELIABLE_NEWS_SOURCES = {
     "Ars Technica", "Reuters", "The Verge", "TechCrunch", "SpaceNews",
-    "Google", "Planet", "CNBC", "The New York Times", "Engadget",
+    "Google", "blog.google", "SpaceX", "Planet", "Planet Labs", "CNBC",
+    "The New York Times", "Engadget",
 }
 
 
