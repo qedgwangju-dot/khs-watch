@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-from scripts.samsung_wallet_stablecoin_watch import state_changed, topic_state
+try:
+    from scripts.samsung_wallet_stablecoin_watch import state_changed, topic_state
+except ModuleNotFoundError:
+    from samsung_wallet_stablecoin_watch import state_changed, topic_state
 
 
 def base_stage2():
