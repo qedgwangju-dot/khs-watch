@@ -47,6 +47,35 @@ BASELINE = {
     "seen_urls": ["https://insights.trendforce.com/p/weekly-radar-002"],
 }
 
+CPU_BASELINE = {
+    "as_of": "2026-08-12",
+    "source": "BofA Global Research (2026-08-12), public recap verification",
+    "source_url": "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12",
+    "server_cpu_tam_2030_bn": 210.6,
+    "server_cpu_tam_2026_bn": 61.4,
+    "agentic_cpu_tam_2030_bn": 90.2,
+    "compute_head_cpu_tam_2030_bn": 90.2,
+    "traditional_cpu_tam_2030_bn": 30.0,
+    "ai_cpu_tam_2030_bn": 180.4,
+    "agentic_share_pct": 42.8,
+    "ai_related_share_pct": 85.7,
+    "cpu_gpu_ratio": "1:1",
+    "prior_server_cpu_tam_2030_bn": 170.0,
+    "earlier_server_cpu_tam_2030_bn": 125.0,
+    "seen_urls": [
+        "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12"
+    ],
+}
+
+CPU_SEARCHES = [
+    ("google_news", '"BofA" "server CPU" (agentic OR agents) (2030 OR TAM)'),
+    ("bing_web", '"BofA" "server CPU TAM" agentic 2030 210'),
+    ("bing_web", '"Rise of the Agents" "server CPU" BofA'),
+    ("bing_web", 'site:amd.com "agentic AI" "CPU" "GPU" "1:1"'),
+    ("bing_web", 'site:ir.amd.com "agentic AI" EPYC server CPU'),
+    ("bing_web", 'site:intc.com server CPU AI agentic data center revenue'),
+]
+
 SEARCHES = [
     ("trendforce_feed", ""),
     (
