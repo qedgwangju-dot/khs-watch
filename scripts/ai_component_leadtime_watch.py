@@ -849,8 +849,10 @@ def build_alert(
     signals: dict[str, str] | None = None,
     changed_signals: list[str] | None = None,
     evidence: dict[str, set[str]] | None = None,
+    cpu_state: dict | None = None,
 ) -> str:
     signals = signals or {}
+    cpu_state = cpu_state or CPU_BASELINE
     changed_signals = changed_signals or []
     ranked = bottleneck_ranking(new or old)
     strongest = ranked[0] if ranked else None
@@ -953,6 +955,19 @@ def build_alert(
             lines.append(f"• <b>{html.escape(name)}</b>: {html.escape(signals[name])}")
     else:
         lines.append("• 이번 주 원인·시간표의 새로운 확인사항은 없습니다.")
+
+    lines += ["", "<b>CPU·에이전트형 AI 수요축</b>"]
+    cpu_parts = cpu_snapshot_summary(cpu_state)
+    if cpu_parts:
+        lines.append("• " + " / ".join(html.escape(x) for x in cpu_parts))
+    lines.append(
+        "• 수요 연결: 에이전트형 AI 노드 증가 → 서버 CPU 출하·평균판매단가 → "
+        "DDR5 RDIMM·기업용 SSD·네트워크·ABF·MLCC 동반 수요"
+    )
+    lines.append(
+        "• 기준선 변화 조건: 서버 CPU 시장·에이전트형 CPU 전망 ±10% 이상, "
+        "에이전트형 비중 ±5%p 이상, CPU:GPU 구조 변화, 실제 서버 주문·배치 확인"
+    )
 
     lines += ["", "<b>관련 기업 지도</b>"]
     lines.append("• 아래는 제품 노출 기준 관찰 대상이며, 이번 알림에서 신규 계약·수주가 확정됐다는 뜻은 아닙니다.")
