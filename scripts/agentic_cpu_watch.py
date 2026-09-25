@@ -183,19 +183,32 @@ def write_json(path: pathlib.Path, value: dict) -> None:
 
 def number_near(text: str, labels: tuple[str, ...]) -> float | None:
     low = text.lower()
+    patterns = [
+        r"\$\s*(\d+(?:\.\d+)?)\s*(?:bn|billion)",
+        r"(\d+(?:\.\d+)?)\s*(?:USD\s*)?(?:bn|billion)",
+    ]
     for label in labels:
         pos = low.find(label.lower())
         if pos < 0:
             continue
-        window = text[max(0, pos - 120): pos + 280]
-        patterns = [
-            r"\$\s*(\d+(?:\.\d+)?)\s*(?:bn|billion)",
-            r"(\d+(?:\.\d+)?)\s*(?:USD\s*)?(?:bn|billion)",
-        ]
+
+        # First prefer the number AFTER the matching label. This prevents a prior
+        # sentence's $210.6bn server-CPU TAM from being misread as the following
+        # 'AI CPU TAM 180.4bn' value.
+        after = text[pos: min(len(text), pos + 240)]
         for pattern in patterns:
-            m = re.search(pattern, window, re.I)
+            m = re.search(pattern, after, re.I)
             if m:
                 return float(m.group(1))
+
+        # Only if no forward value exists, allow a very short backward window for
+        # constructions such as '$90.2bn for agentic AI nodes'.
+        before = text[max(0, pos - 90): pos + len(label)]
+        matches = []
+        for pattern in patterns:
+            matches.extend(re.finditer(pattern, before, re.I))
+        if matches:
+            return float(matches[-1].group(1))
     return None
 
 
