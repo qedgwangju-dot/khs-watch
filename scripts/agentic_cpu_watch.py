@@ -428,9 +428,11 @@ def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[di
     return "\n".join(lines).strip() + "\n"
 
 
-def discover_forecasts(now: datetime) -> list[dict]:
+def discover_forecasts(now: datetime, cutoff: str) -> list[dict]:
     out = []
     seen = set()
+    fetch_budget = 6
+    fetched = 0
     for kind, query in FORECAST_SEARCHES:
         try:
             items = read_rss(kind, query)
@@ -442,13 +444,24 @@ def discover_forecasts(now: datetime) -> list[dict]:
                 continue
             seen.add(url)
             published = item.get("published_at_kst") or ""
+            date = published[:10] if published else ""
+            if cutoff and date and date <= cutoff:
+                continue
             try:
                 dt = datetime.fromisoformat(published) if published else None
             except Exception:
                 dt = None
             if dt and dt < now - timedelta(days=120):
                 continue
-            text = clean_text(f"{item.get('title','')} {item.get('description','')} {article_text(url)}")
+            base = clean_text(f"{item.get('title','')} {item.get('description','')}")
+            base_low = base.lower()
+            if not ("server cpu" in base_low and ("agentic" in base_low or "agents" in base_low)):
+                continue
+            if fetched >= fetch_budget:
+                continue
+            fetched += 1
+            body = article_text(url)
+            text = clean_text(f"{base} {body}")
             metrics = parse_forecast(text)
             if not metrics:
                 continue
@@ -460,6 +473,8 @@ def discover_forecasts(now: datetime) -> list[dict]:
 def discover_validation(now: datetime, cutoff: str, seen_urls: set[str]) -> list[dict]:
     out = []
     seen = set(seen_urls)
+    fetch_budget = 8
+    fetched = 0
     for kind, query in VALIDATION_SEARCHES:
         try:
             items = read_rss(kind, query)
@@ -473,10 +488,20 @@ def discover_validation(now: datetime, cutoff: str, seen_urls: set[str]) -> list
             date = published[:10] if published else ""
             if cutoff and date and date <= cutoff:
                 continue
-            text = clean_text(f"{item.get('title','')} {item.get('description','')} {article_text(url)}")
+            base = clean_text(f"{item.get('title','')} {item.get('description','')}")
+            base_low = base.lower()
+            if not any(k in base_low for k in ("cpu", "epyc", "xeon", "agentic")):
+                continue
+            if not any(k in base_low for k in VALIDATION_TERMS):
+                continue
+            if fetched >= fetch_budget:
+                continue
+            fetched += 1
+            body = article_text(url)
+            text = clean_text(f"{base} {body}")
             if not is_official_validation(url, text):
                 continue
-            out.append({**item, "url": url})
+            out.append({**item, "url": url, "ratio": extract_ratio(text)})
             seen.add(url)
     out.sort(key=lambda x: x.get("published_at_kst") or "")
     return out
@@ -489,7 +514,7 @@ def main() -> None:
     previous = committed.get("agentic_cpu_demand") or BASELINE
     latest = json.loads(json.dumps(previous))
 
-    forecast_candidates = discover_forecasts(now)
+    forecast_candidates = discover_forecasts(now, str(previous.get("as_of") or BASELINE["as_of"]))
     forecast_changes: list[dict] = []
     ratio_change: tuple[str, str] | None = None
     seen_forecast = set(previous.get("seen_forecast_urls") or [])
@@ -519,25 +544,24 @@ def main() -> None:
             seen_forecast.add(c["url"])
     latest["seen_forecast_urls"] = sorted(seen_forecast)[-120:]
 
-    # 공식 CPU:GPU 구조 변화는 AMD 공식 자료에서만 승격한다.
+    # CPU:GPU 구조는 새 공식 AMD/Intel/OEM 근거가 나왔을 때만 승격한다.
     ratio_before = str((previous.get("cpu_gpu_ratio") or {}).get("agentic") or "")
     ratio_after = ratio_before
-    for url in (AMD_RATIO_URL, AMD_AAI_URL):
-        text = article_text(url)
-        ratio = extract_ratio(text)
-        if ratio:
-            ratio_after = ratio
-            break
-    if ratio_changed(ratio_before, ratio_after):
-        latest.setdefault("cpu_gpu_ratio", dict(previous.get("cpu_gpu_ratio") or {}))
-        latest["cpu_gpu_ratio"]["agentic"] = ratio_after
-        ratio_change = (ratio_before, ratio_after)
 
     seen_validation = set(previous.get("seen_validation_urls") or [])
     validation = discover_validation(now, str(previous.get("last_validation_cutoff") or ""), seen_validation)
     for item in validation:
         if item.get("url"):
             seen_validation.add(item["url"])
+        candidate_ratio = str(item.get("ratio") or "")
+        if candidate_ratio and ratio_changed(ratio_after, candidate_ratio):
+            ratio_after = candidate_ratio
+
+    if ratio_changed(ratio_before, ratio_after):
+        latest.setdefault("cpu_gpu_ratio", dict(previous.get("cpu_gpu_ratio") or {}))
+        latest["cpu_gpu_ratio"]["agentic"] = ratio_after
+        ratio_change = (ratio_before, ratio_after)
+
     latest["seen_validation_urls"] = sorted(seen_validation)[-200:]
     latest["last_validation_cutoff"] = now.date().isoformat()
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
