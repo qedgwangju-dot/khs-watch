@@ -212,25 +212,5 @@
       "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era"
     ],
     "last_validation_cutoff": "2026-09-25"
-  },
-  "agentic_cpu_watch": {
-    "as_of": "2026-08-12",
-    "source": "BofA Global Research (2026-08-12), public recap verification",
-    "source_url": "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12",
-    "server_cpu_tam_2030_bn": 210.6,
-    "server_cpu_tam_2026_bn": 61.4,
-    "agentic_cpu_tam_2030_bn": 90.2,
-    "compute_head_cpu_tam_2030_bn": 90.2,
-    "traditional_cpu_tam_2030_bn": 30,
-    "ai_cpu_tam_2030_bn": 180.4,
-    "agentic_share_pct": 42.8,
-    "ai_related_share_pct": 85.7,
-    "cpu_gpu_ratio": "1:1",
-    "prior_server_cpu_tam_2030_bn": 170,
-    "earlier_server_cpu_tam_2030_bn": 125,
-    "seen_urls": [
-      "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12",
-      "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
-    ]
   }
 }
