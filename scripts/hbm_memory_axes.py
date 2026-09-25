@@ -823,6 +823,45 @@ def public_spot_quotes(raw, checked):
 
 def comparison(old, new):
     a, b = old['value'], new['value']
+    if new['axis'] == 'foundry_base_die_allocation':
+        reasons = []
+        aw, bw = a.get('total_capacity_wpm'), b.get('total_capacity_wpm')
+        if aw and bw:
+            dp = (float(bw) / float(aw) - 1) * 100
+            if abs(dp) >= 10 or abs(float(bw)-float(aw)) >= 5000:
+                reasons.append(f"4나노 생산능력 {dp:+.1f}%")
+        for field, label in (('allocation_pct_min','HBM4 베이스다이 배정 하단'), ('allocation_pct_max','HBM4 베이스다이 배정 상단')):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and abs(float(bv)-float(av)) >= 5:
+                reasons.append(f"{label} {float(bv)-float(av):+.1f}%p")
+        if a.get('full_utilization') != b.get('full_utilization'):
+            reasons.append('4나노 풀가동 진입' if b.get('full_utilization') else '4나노 풀가동 완화')
+        return reasons
+    if new['axis'] == 'foundry_node_expansion':
+        old_stage = a.get('stage','mentioned')
+        new_stage = b.get('stage','mentioned')
+        return [f"4나노 증설 단계 {old_stage}→{new_stage}"] if old_stage != new_stage else []
+    if new['axis'] == 'foundry_pricing':
+        reasons = []
+        for field, label in (('new_order_price_up','4나노 신규수주 가격 인상'), ('base_die_price_up','HBM4 베이스다이 가격 인상')):
+            if a.get(field) != b.get(field):
+                reasons.append(label + (' 확인' if b.get(field) else ' 해소·철회'))
+        av, bv = a.get('price_change_pct'), b.get('price_change_pct')
+        if av is not None and bv is not None and abs(float(bv)-float(av)) >= 5:
+            reasons.append(f"가격 인상률 {float(bv)-float(av):+.1f}%p")
+        elif av is None and bv is not None:
+            reasons.append(f"가격 인상률 {float(bv):.1f}% 확인")
+        return reasons
+    if new['axis'] == 'foundry_hbm5_2nm':
+        reasons = []
+        old_stage = a.get('investment_stage','technology_plan')
+        new_stage = b.get('investment_stage','technology_plan')
+        if old_stage != new_stage:
+            reasons.append(f"HBM5 2나노 투자 단계 {old_stage}→{new_stage}")
+        av, bv = a.get('speed_uplift_target_pct'), b.get('speed_uplift_target_pct')
+        if av is not None and bv is not None and abs(float(bv)-float(av)) >= 10:
+            reasons.append(f"동작속도 향상 목표 {float(bv)-float(av):+.1f}%p")
+        return reasons
     if new['axis'] == 'postprocess_capex':
         reasons = []
         if old.get('period') != new.get('period'):
@@ -965,7 +1004,11 @@ def render(change, rate=None):
              'hbm_revenue_estimate': '기관 HBM 분기 매출 추정 변화',
              'postprocess_capex': 'HBM 후공정 설비투자·병목 변화',
              'postprocess_order': 'HBM 후공정 장비 수주 변화',
-             'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화'}
+             'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화',
+             'foundry_base_die_allocation': '삼성 HBM4 베이스다이 4나노 배정·가동 변화',
+             'foundry_node_expansion': '삼성 HBM4 대응 4나노 증설 단계 변화',
+             'foundry_pricing': '삼성 4나노·HBM4 베이스다이 가격 변화',
+             'foundry_hbm5_2nm': '삼성 HBM5 2나노 베이스다이 투자 단계 변화'}
     def fmt(record):
         v = record['value']
         if record['axis'] == 'rdimm':
@@ -979,6 +1022,36 @@ def render(change, rate=None):
         if record['axis'] == 'fab_stage':
             labels = {'plan': '계획', 'delayed': '지연', 'cancelled': '취소', 'reported_operation': '가동 보도'}
             return f"{v['year']}년 · {labels.get(v['stage'], v['stage'])}"
+        if record['axis'] == 'foundry_base_die_allocation':
+            parts = []
+            if v.get('total_capacity_wpm'):
+                parts.append(f"4나노 월 {v['total_capacity_wpm']/10000:.1f}만장")
+            if v.get('allocation_pct_min') is not None:
+                if v.get('allocation_pct_max') is not None:
+                    parts.append(f"HBM4 베이스다이 {v['allocation_pct_min']:.0f}~{v['allocation_pct_max']:.0f}%")
+                else:
+                    parts.append(f"HBM4 베이스다이 {v['allocation_pct_min']:.0f}% 이상")
+            if v.get('full_utilization'):
+                parts.append("풀가동")
+            return " / ".join(parts)
+        if record['axis'] == 'foundry_node_expansion':
+            labels = {'mentioned':'언급','review':'증설 검토','confirmed':'투자·증설 확정','equipment_order':'장비 발주','move_in':'장비 반입','trial_production':'시험생산','mass_production':'양산'}
+            return labels.get(v.get('stage'), v.get('stage',''))
+        if record['axis'] == 'foundry_pricing':
+            parts = []
+            if v.get('new_order_price_up'):
+                parts.append("4나노 신규수주 가격 인상")
+            if v.get('base_die_price_up'):
+                parts.append("HBM4 베이스다이 가격 인상")
+            if v.get('price_change_pct') is not None:
+                parts.append(f"{v['price_change_pct']:.1f}%")
+            return " / ".join(parts)
+        if record['axis'] == 'foundry_hbm5_2nm':
+            labels = {'technology_plan':'2나노 기술 적용 계획','mentioned':'신규라인 언급','review':'신규라인 투자 검토','confirmed':'신규라인 투자 확정','equipment_order':'장비 발주','move_in':'장비 반입','trial_production':'시험생산','mass_production':'양산'}
+            text = labels.get(v.get('investment_stage'), v.get('investment_stage',''))
+            if v.get('speed_uplift_target_pct') is not None:
+                text += f" / 속도 +{v['speed_uplift_target_pct']:.0f}% 목표"
+            return text
         if record['axis'] == 'postprocess_capex':
             if 'total_capex_usd_min' in v and v.get('total_capex_usd_min'):
                 text = f"설비투자 {v['total_capex_usd_min']/1e9:.1f}~{v['total_capex_usd_max']/1e9:.1f}십억달러"
@@ -1051,6 +1124,14 @@ def render(change, rate=None):
         lines.append('• 재사용 세정 처리량이며 웨이퍼 생산·칩 출하·수주금액으로 치환하지 않습니다.')
     if r['axis'] in ('wafer_share', 'bit_share'):
         lines.append('• 연말 전망이며 연간 평균·실제 확정 생산량과 비교하지 않습니다.')
+    if r['axis'] == 'foundry_base_die_allocation':
+        lines.append('• 4나노 웨이퍼 배정률은 HBM 완제품 출하량과 동일하지 않으며 수율·베이스다이 크기·패키징 수율을 별도로 봅니다.')
+    if r['axis'] == 'foundry_node_expansion':
+        lines.append('• 증설 검토와 투자 확정·장비 발주·장비 반입·시험생산·양산을 각각 다른 단계로 추적합니다.')
+    if r['axis'] == 'foundry_pricing':
+        lines.append('• 가격 인상 보도와 실제 평균판매단가를 구분하며 인상률이 공개되면 숫자 상태로 갱신합니다.')
+    if r['axis'] == 'foundry_hbm5_2nm':
+        lines.append('• 2나노 기술 적용 계획과 HBM5 전용 신규 생산라인 설비투자는 서로 다른 상태입니다.')
     if r['axis'] == 'postprocess_capex':
         lines.append('• 설비투자 총액과 후공정·테스트 배정액을 분리하며, TSMC 10~20% 묶음에는 패키징·테스트·마스크·기타가 함께 포함됩니다.')
     if r['axis'] == 'postprocess_order':
