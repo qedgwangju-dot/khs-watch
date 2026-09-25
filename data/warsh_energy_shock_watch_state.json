@@ -1,19 +1,20 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "brent": {
-    "date": "2026-09-22",
-    "value": 114.89,
-    "d20_pct": 23.924064286484747,
+    "date": "2026-09-24",
+    "value": 106.5999984741211,
+    "d20_pct": 21.35701607280027,
     "last3": [
-      119.66,
-      116.15,
-      114.89
+      99.25,
+      103.08000183105469,
+      106.5999984741211
     ],
     "active": true,
-    "source": "EIA 원자료 반영 FRED 브렌트 현물",
-    "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
+    "source": "Yahoo Finance 브렌트 선물 완료 일봉",
+    "url": "https://finance.yahoo.com/quote/BZ=F/",
     "live": false,
-    "quality_note": "Yahoo 검증 실패 → FRED 현물로 대체: RuntimeError"
+    "quality_note": "현재 진행 중 일봉 제외 · 최근 완료 거래일 종가 기준",
+    "measurement_basis": "최근 완료 거래일 종가"
   },
   "macro": {
     "core_3m_ann": 3.0477755322693367,
@@ -31,5 +32,5 @@
     "bei_date": "2026-09-24"
   },
   "verdict": "2차 물가 전이 우세 — 추가긴축 논리 강화",
-  "updated_at_utc": "2026-09-25T08:48:54.461804+00:00"
+  "updated_at_utc": "2026-09-25T08:54:39.509546+00:00"
 }
