@@ -74,6 +74,7 @@ class AgenticCpuAlertTests(unittest.TestCase):
         self.assertIn("1,804억달러", block)
         self.assertIn("85.7%", block)
         self.assertIn("1,250억달러 → 1,700억달러 → 2,106억달러", block)
+        self.assertIn("약 6.0배 / 연평균 약 43.1%", block)
         self.assertIn("DDR5 RDIMM", block)
         self.assertIn("기업용 SSD", block)
         self.assertIn("ABF", block)
@@ -90,7 +91,7 @@ class AgenticCpuAlertTests(unittest.TestCase):
         )
         block = w.snapshot_block(latest, None, "", changes, None, [], standalone=True)
         self.assertIn("전망 변화 감지", block)
-        self.assertIn("210.6bn달러 → 240.0bn달러", block)
+        self.assertIn("2,106억달러 → 2,400억달러", block)
 
 
 if __name__ == "__main__":
