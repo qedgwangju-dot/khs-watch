@@ -187,8 +187,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-25T17:10:02+09:00",
-  "last_event_count": 86,
+  "updated_at_kst": "2026-09-25T17:16:06+09:00",
+  "last_event_count": 90,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -209,7 +209,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-25T17:10:02+09:00",
+  "last_successful_official_at_kst": "2026-09-25T17:16:06+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -822,18 +822,18 @@
         "axis": "foundry_pricing",
         "value": {
           "new_order_price_up": true,
-          "base_die_price_up": false,
+          "base_die_price_up": true,
           "price_change_pct": null
         },
         "unit": "direction,pct",
         "period": "current",
-        "as_of": "2026-09-22",
+        "as_of": "2026-09-21",
         "evidence": "reported",
-        "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
-        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
+        "source_url": "https://www.mt.co.kr/index.php/industry/2026/09/21/2026092114333425215",
+        "source_title": "HBM에 웃는 삼성 파운드리…첨단 공정 생산능력 확대 채비",
         "source": "머니투데이",
-        "excerpt": "삼성 4나노 신규수주·HBM4 베이스다이 가격 변화",
-        "scope": "reported_foundry_pricing"
+        "scope": "reported_foundry_pricing",
+        "excerpt": "4나노 신규 수주 물량 가격 인상 및 HBM4용 베이스다이 가격 인상 보도. 인상률은 미공개."
       },
       "foundry_hbm5_2nm|samsung|2nm|HBM5": {
         "key": "foundry_hbm5_2nm|samsung|2nm|HBM5",
@@ -1271,9 +1271,9 @@
         "key": "foundry_base_die_allocation|samsung|4nm|HBM4",
         "axis": "foundry_base_die_allocation",
         "value": {
-          "total_capacity_wpm": null,
+          "total_capacity_wpm": 30000,
           "allocation_pct_min": 50.0,
-          "allocation_pct_max": null,
+          "allocation_pct_max": 60,
           "full_utilization": true
         },
         "unit": "wafers/month,pct",
@@ -1307,7 +1307,7 @@
         "axis": "foundry_pricing",
         "value": {
           "new_order_price_up": true,
-          "base_die_price_up": false,
+          "base_die_price_up": true,
           "price_change_pct": null
         },
         "unit": "direction,pct",
@@ -1342,7 +1342,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-25T17:10:02+09:00",
+      "last_checked_at_kst": "2026-09-25T17:16:06+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -1379,7 +1379,8 @@
         "capacity_change_pct": -33.33333333333333,
         "gpu_growth_break_even_pct": 50
       }
-    ]
+    ],
+    "foundry_track_version": 1
   },
   "memory_axes_version": 1,
   "telegram_message_ids": [
@@ -1395,8 +1396,8 @@
     "payload_hash": "049a7cae87d57beb82c20a56dd98c42f107ec5fe3ee427972da099e8da8f2980"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-25T17:13:02+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-09-25T17:19:21+09:00",
+    "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
   "state_corrections": [
