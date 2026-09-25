@@ -8,6 +8,7 @@
     "05c27d7b30704f2bd464f146",
     "0833d662f2bc1ef69385334d",
     "0c9de789f40a57b1f7452b32",
+    "0d896933febce35e813e7374",
     "0d9cf627a8ab402f60a42bf3",
     "0f17f32d2b4b5565c36aa544",
     "0fbce83b73293cb0ae9a300e",
@@ -39,6 +40,7 @@
     "3629fd9073866598dc4720b4",
     "36c5216f7a48c42802192732",
     "38663428f7eff6456c64b3f2",
+    "398bfe2276cc02a6cdba26a3",
     "3a779311d23ecb65350a81db",
     "3a7bc653ab3e6ea8a94a6095",
     "3b7df6d213754fe17079f316",
@@ -65,6 +67,7 @@
     "56b2de8304378c3a06fa5b4c",
     "57e9d50e1c1cf25ad372b735",
     "5a3a72fe34f95c5f38edf6f5",
+    "5ae138f32b9b40ecf0aca2e5",
     "5cdb4edd07a7b43ea88cbae8",
     "5d10c70a6f648f2a02de1e05",
     "5e304c914d7ab868e24a3585",
@@ -188,8 +191,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-25T20:34:44+09:00",
-  "last_event_count": 86,
+  "updated_at_kst": "2026-09-25T22:58:37+09:00",
+  "last_event_count": 91,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -210,7 +213,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-25T20:34:44+09:00",
+  "last_successful_official_at_kst": "2026-09-25T22:58:37+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -1282,8 +1285,8 @@
         "as_of": "2026-09-22",
         "evidence": "reported",
         "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
-        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
-        "source": "머니투데이",
+        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - mt.co.kr",
+        "source": "mt.co.kr",
         "excerpt": "삼성 4나노 생산능력 중 HBM4 베이스다이 배정·가동률",
         "scope": "reported_foundry_capacity_not_hbm_finished_goods"
       },
@@ -1298,8 +1301,8 @@
         "as_of": "2026-09-22",
         "evidence": "reported",
         "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
-        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
-        "source": "머니투데이",
+        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - mt.co.kr",
+        "source": "mt.co.kr",
         "excerpt": "삼성 HBM4 베이스다이 대응 4나노 증설 단계",
         "scope": "foundry_expansion_stage"
       },
@@ -1316,8 +1319,8 @@
         "as_of": "2026-09-22",
         "evidence": "reported",
         "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
-        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
-        "source": "머니투데이",
+        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - mt.co.kr",
+        "source": "mt.co.kr",
         "excerpt": "삼성 4나노 신규수주·HBM4 베이스다이 가격 변화",
         "scope": "reported_foundry_pricing"
       },
@@ -1335,23 +1338,23 @@
         "as_of": "2026-09-22",
         "evidence": "reported",
         "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
-        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
-        "source": "머니투데이",
+        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - mt.co.kr",
+        "source": "mt.co.kr",
         "excerpt": "삼성 HBM5 2나노 베이스다이 기술·투자 단계",
         "scope": "technology_plan_and_line_investment_separated"
       }
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-25T20:34:44+09:00",
+      "last_checked_at_kst": "2026-09-25T22:58:37+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 6,
+      "observations": 10,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
-      "non_concrete_generic_evidence_suppressed": 4,
+      "non_concrete_generic_evidence_suppressed": 6,
       "rdimm_quote|dramexchange|32|4800/5600": "지연 원자료: 현재 가격 알림 보류"
     },
     "version": 1,
@@ -1397,7 +1400,7 @@
     "payload_hash": "049a7cae87d57beb82c20a56dd98c42f107ec5fe3ee427972da099e8da8f2980"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-25T20:36:53+09:00",
+    "checked_at_kst": "2026-09-25T23:01:49+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
