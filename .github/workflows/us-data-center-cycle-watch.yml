@@ -7,6 +7,7 @@ on:
     paths:
       - ".github/workflows/us-data-center-cycle-watch.yml"
       - "scripts/us_data_center_cycle_watch.py"
+      - "scripts/google_suncatcher_watch.py"
   schedule:
     # GitHub cron is UTC. Hourly at an offset minute to avoid the top-of-hour queue.
     - cron: "11,41 * * * *"
@@ -103,7 +104,7 @@ jobs:
       - name: Validate watcher
         if: steps.telegram.outputs.configured == 'true'
         run: |
-          python -m py_compile scripts/us_data_center_cycle_watch.py
+          python -m py_compile scripts/us_data_center_cycle_watch.py scripts/google_suncatcher_watch.py
 
       - name: Check Census and Dodge
         if: steps.telegram.outputs.configured == 'true'
@@ -111,6 +112,13 @@ jobs:
           rm -f out/us_data_center_cycle_alert.txt out/us_data_center_cycle_errors.log
           python scripts/us_data_center_cycle_watch.py
           test -f out/us_data_center_cycle_status.md && cat out/us_data_center_cycle_status.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Check Google Suncatcher orbital TPU mission
+        if: steps.telegram.outputs.configured == 'true'
+        run: |
+          rm -f out/google_suncatcher_alert.txt out/google_suncatcher_errors.log
+          python scripts/google_suncatcher_watch.py
+          test -f out/google_suncatcher_status.md && cat out/google_suncatcher_status.md >> "$GITHUB_STEP_SUMMARY" || true
 
       - name: Build manual connection test
         if: steps.telegram.outputs.configured == 'true' && github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
@@ -143,9 +151,22 @@ jobs:
           files = [
               pathlib.Path('out/us_data_center_cycle_connection_test.txt'),
               pathlib.Path('out/us_data_center_cycle_alert.txt'),
+              pathlib.Path('out/google_suncatcher_alert.txt'),
           ]
 
           REPLACEMENTS = [
+              ('Project Suncatcher', '프로젝트 선캐처'),
+              ('Suncatcher', '선캐처'),
+              ('Transporter-18', '트랜스포터-18'),
+              ('SpaceX', '스페이스X'),
+              ('Planet Labs', '플래닛 랩스'),
+              ('Planet', '플래닛'),
+              ('Ars Technica', '아스테크니카'),
+              ('Tensor Processing Unit', '텐서 처리 장치'),
+              ('TPUs', '텐서 처리 장치'),
+              ('TPU', '텐서 처리 장치'),
+              ('Gemini', '제미나이'),
+              ('MVP', '시험위성'),
               ('Project Jupiter Data Center and Microgrid Phase 1 데이터센터 부문', '프로젝트 주피터 데이터센터 및 마이크로그리드 1단계 데이터센터 부문'),
               ('Project Jupiter Data Center and Microgrid Phase 1 마이크로그리드 부문', '프로젝트 주피터 데이터센터 및 마이크로그리드 1단계 마이크로그리드 부문'),
               ('Amazon STACK Highway 3 Data Center 데이터센터 부문', '아마존 스택 하이웨이 3 데이터센터 부문'),
@@ -247,25 +268,32 @@ jobs:
           if [ -f out/us_data_center_cycle_state_pending.json ]; then
             cp out/us_data_center_cycle_state_pending.json data/us_data_center_cycle_watch_state.json
           fi
+          if [ -f out/google_suncatcher_pending_state.json ]; then
+            cp out/google_suncatcher_pending_state.json data/google_suncatcher_watch_state.json
+          fi
 
       - name: Commit watch state
         if: steps.telegram.outputs.configured == 'true' && success()
         run: |
           set -euo pipefail
-          tmp_state="$(mktemp)"
-          cp data/us_data_center_cycle_watch_state.json "$tmp_state"
+          tmpdir="$(mktemp -d)"
+          [ -f data/us_data_center_cycle_watch_state.json ] && cp data/us_data_center_cycle_watch_state.json "$tmpdir/us_data_center_cycle_watch_state.json"
+          [ -f data/google_suncatcher_watch_state.json ] && cp data/google_suncatcher_watch_state.json "$tmpdir/google_suncatcher_watch_state.json"
           git config user.name "us-data-center-cycle-watch[bot]"
           git config user.email "us-data-center-cycle-watch[bot]@users.noreply.github.com"
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
-            cp "$tmp_state" data/us_data_center_cycle_watch_state.json
-            git add data/us_data_center_cycle_watch_state.json
+            mkdir -p data
+            [ -f "$tmpdir/us_data_center_cycle_watch_state.json" ] && cp "$tmpdir/us_data_center_cycle_watch_state.json" data/us_data_center_cycle_watch_state.json
+            [ -f "$tmpdir/google_suncatcher_watch_state.json" ] && cp "$tmpdir/google_suncatcher_watch_state.json" data/google_suncatcher_watch_state.json
+            git add data/us_data_center_cycle_watch_state.json 2>/dev/null || true
+            git add data/google_suncatcher_watch_state.json 2>/dev/null || true
             if git diff --cached --quiet; then
               echo "State unchanged against latest main"
               exit 0
             fi
-            git commit -m "Update US data center cycle watch state"
+            git commit -m "Update US data center watch states"
             if git push origin HEAD:main; then
               exit 0
             fi
@@ -285,5 +313,9 @@ jobs:
             out/us_data_center_cycle_connection_test.txt
             out/us_data_center_cycle_errors.log
             out/us_data_center_cycle_state_pending.json
+            out/google_suncatcher_status.md
+            out/google_suncatcher_alert.txt
+            out/google_suncatcher_errors.log
+            out/google_suncatcher_pending_state.json
           if-no-files-found: ignore
           retention-days: 14
