@@ -34,9 +34,6 @@ base, ext = kd.base, kd.ext
 
 UNITREE_HAND_SENTINEL = 'DIRECT_UNITREE_DEX5S_X_RECOVERY'
 TOYOTA_ROBOT_DEMAND_SENTINEL = 'DIRECT_TOYOTA_ROBOT_DEMAND_20260918'
-    '(Apptronik OR Apollo OR "Jeff Cardenas") (actuator OR 액추에이터 OR gear OR 기어 OR reducer OR 감속기 OR rare earth OR 희토류) (shortage OR bottleneck OR shortage OR supply chain OR 공급망 OR 부족 OR 병목 OR Texas OR 미국)',
-    APPTRONIK_SUPPLY_BOTTLENECK_SENTINEL,
-APPTRONIK_SUPPLY_BOTTLENECK_SENTINEL = 'DIRECT_APPTRONIK_US_HUMANOID_SUPPLY_BOTTLENECK_20260923'
 APPTRONIK_HW_SENTINEL = 'DIRECT_APPTRONIK_US_HARDWARE_BOTTLENECK_20260924'
 
 base.QUERIES.extend([
@@ -205,8 +202,6 @@ def _query_unitree_hand_recovery() -> list[dict]:
 
 
 def query_news(q: str) -> list[dict]:
-    if q == APPTRONIK_SUPPLY_BOTTLENECK_SENTINEL:
-        return _query_apptronik_supply_bottleneck_recovery()
     if q == APPTRONIK_HW_SENTINEL:
         return _query_apptronik_hw_recovery()
     if q == UNITREE_HAND_SENTINEL:
