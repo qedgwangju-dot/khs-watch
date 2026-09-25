@@ -127,6 +127,7 @@
     "a845562aec371314227ee9ca",
     "a9a2b98d9be48dfaa7992df7",
     "ab946d84cf8d9b45b14ee055",
+    "ad36859415c56577b6d4b98e",
     "ad71f3481f090f2a3b57592d",
     "aecd0190a7a845249b865cbb",
     "b10990b377e8014499d64e5a",
@@ -136,6 +137,7 @@
     "b6857f986779526ffa08d741",
     "b8b49c879b5584546caf1fba",
     "bb8d68accda30ea0a27f488c",
+    "bbcd5c843fbbd5deb25712cb",
     "bd26432b3c3bf171b67b4e34",
     "bd89f94d9970c70227357ae5",
     "be3ea72057cda8f38d4e8424",
@@ -191,8 +193,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-25T22:58:37+09:00",
-  "last_event_count": 91,
+  "updated_at_kst": "2026-09-25T23:37:23+09:00",
+  "last_event_count": 96,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -213,7 +215,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-25T22:58:37+09:00",
+  "last_successful_official_at_kst": "2026-09-25T23:37:23+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -1285,8 +1287,8 @@
         "as_of": "2026-09-22",
         "evidence": "reported",
         "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
-        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - mt.co.kr",
-        "source": "mt.co.kr",
+        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
+        "source": "머니투데이",
         "excerpt": "삼성 4나노 생산능력 중 HBM4 베이스다이 배정·가동률",
         "scope": "reported_foundry_capacity_not_hbm_finished_goods"
       },
@@ -1301,8 +1303,8 @@
         "as_of": "2026-09-22",
         "evidence": "reported",
         "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
-        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - mt.co.kr",
-        "source": "mt.co.kr",
+        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
+        "source": "머니투데이",
         "excerpt": "삼성 HBM4 베이스다이 대응 4나노 증설 단계",
         "scope": "foundry_expansion_stage"
       },
@@ -1319,8 +1321,8 @@
         "as_of": "2026-09-22",
         "evidence": "reported",
         "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
-        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - mt.co.kr",
-        "source": "mt.co.kr",
+        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
+        "source": "머니투데이",
         "excerpt": "삼성 4나노 신규수주·HBM4 베이스다이 가격 변화",
         "scope": "reported_foundry_pricing"
       },
@@ -1338,23 +1340,23 @@
         "as_of": "2026-09-22",
         "evidence": "reported",
         "source_url": "https://www.mt.co.kr/industry/2026/09/22/2026092119545912109",
-        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - mt.co.kr",
-        "source": "mt.co.kr",
+        "source_title": "HBM에 웃는 파운드리… 삼성, 4나노 증설 채비 - 머니투데이 - 머니투데이",
+        "source": "머니투데이",
         "excerpt": "삼성 HBM5 2나노 베이스다이 기술·투자 단계",
         "scope": "technology_plan_and_line_investment_separated"
       }
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-25T22:58:37+09:00",
+      "last_checked_at_kst": "2026-09-25T23:37:23+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 10,
+      "observations": 6,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
-      "non_concrete_generic_evidence_suppressed": 6,
+      "non_concrete_generic_evidence_suppressed": 5,
       "rdimm_quote|dramexchange|32|4800/5600": "지연 원자료: 현재 가격 알림 보류"
     },
     "version": 1,
@@ -1400,7 +1402,7 @@
     "payload_hash": "049a7cae87d57beb82c20a56dd98c42f107ec5fe3ee427972da099e8da8f2980"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-25T23:01:49+09:00",
+    "checked_at_kst": "2026-09-25T23:41:19+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
