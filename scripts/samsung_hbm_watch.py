@@ -1649,6 +1649,12 @@ def event_summary(e: dict) -> list[str]:
     text = clean(f"{e.get('title','')} {e.get('description','')}")
     pcts = list(dict.fromkeys(re.findall(r"[+-]?\d+(?:\.\d+)?%", text)))[:4]
     multiples = list(dict.fromkeys(re.findall(r"\b\d+(?:\.\d+)?\s*(?:배|times?)\b", text, re.I)))[:3]
+    low_text = text.lower()
+    if "double" in low_text and "2배" not in multiples:
+        multiples.insert(0, "2배")
+    if "triple" in low_text and "3배" not in multiples:
+        multiples.insert(0, "3배")
+    multiples = multiples[:3]
     dollars = list(dict.fromkeys(re.findall(r"\$\s*\d+(?:\.\d+)?\s*(?:billion|million|B|M)\b", text, re.I)))[:2]
     nums = []
     if pcts:
@@ -1798,22 +1804,16 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
 
 def build_event_alert(events: list[dict], now: datetime) -> str:
     lines = [
-        "🚨 <b>HBM 주제·사건 상태 변화</b>",
+        "🚨 <b>HBM 상태 변화</b>",
         "━━━━━━━━━━━━━━━━",
-        f"<b>상태 변화 {len(events)}건</b> · {now.strftime('%Y-%m-%d %H:%M KST')}",
+        f"<b>신규 변화 {len(events)}건</b> · {now.strftime('%Y-%m-%d %H:%M KST')}",
         "",
     ]
     for i, e in enumerate(events[:4], 1):
         lines.append(f"<b>{i}.</b>")
         lines.extend(event_summary(e))
-        lines.append("")
-    lines += [
-        "<b>판정 원칙</b>",
-        "• <b>기사 자체가 알림 대상이 아닙니다.</b> 기사·공식자료는 상태 변화의 감지 근거·교차검증 자료로만 사용합니다.",
-        "• 동일 사건을 여러 매체가 반복 보도해도 상태값이 같으면 다시 알리지 않습니다.",
-        "• 물량·가격·생산능력·고객 인증·양산·실제 출하·공식 통계가 바뀐 경우에만 신규 상태로 봅니다.",
-        "• 충남 수출과 증권사 추정은 <b>삼성 공식 HBM 매출과 분리</b>해서 표시합니다.",
-    ]
+        if i < min(len(events), 4):
+            lines.append("")
     return "\n".join(lines).strip() + "\n"
 
 
