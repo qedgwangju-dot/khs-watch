@@ -1221,7 +1221,8 @@ def main():
     legacy.QUERIES = list(dict.fromkeys(legacy.QUERIES + EXTRA_QUERIES))
     legacy.TRUSTED += (
         '글로벌이코노믹', 'g-enews', 'dramexchange', 'sk하이닉스', 'micron',
-        'futunn', 'futu news', 'bernstein', 'hilo research', 'xxquant'
+        'futunn', 'futu news', 'bernstein', 'hilo research', 'xxquant',
+        '머니투데이', 'moneytoday', 'mt.co.kr'
     )
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
     observed, coverage = [], []
