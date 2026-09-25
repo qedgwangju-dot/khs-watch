@@ -284,44 +284,40 @@ def reconcile_final_report(report: str, freshness: dict[str, Any]) -> str | None
 
 def annotate_report(report: str, freshness: dict[str, Any]) -> str:
     lines = report.splitlines()
-    notes: list[str] = []
+
     if not freshness.get("same_2y_date"):
         replacement = "⬜ 미·일 2Y 금리차 축소: 기준일 불일치 — 계산 보류 " + f"(JGB {freshness.get('jgb2_date') or '확인 불가'} / UST {freshness.get('ust2_date') or '확인 불가'})"
         for i, line in enumerate(lines):
             if "미·일 2Y 금리차 축소:" in line:
                 lines[i] = replacement
-        notes.append("미·일 2년 금리차는 동일 기준일일 때만 계산·판정")
+        rate_note = f"미·일2Y 불일치(JGB {freshness.get('jgb2_date') or '확인 불가'} / UST {freshness.get('ust2_date') or '확인 불가'})"
     else:
-        notes.append(f"미·일 2년물 동일 기준일 확인: {freshness.get('jgb2_date')}")
+        rate_note = f"미·일2Y 동일 {freshness.get('jgb2_date')}"
 
     if freshness.get("live_fx_signal_eligible"):
         price = float(freshness["live_fx_price"])
         change = float(freshness.get("live_fx_change_pct") or 0.0)
         fx_state = classify_live_fx(price, change)
-        replacement = f"{'✅' if fx_state['surge'] else '⬜'} 엔화 급등: USD/JPY {price:.3f} / 기준변화 {change:+.2f}% / 현재 방향 {fx_state['direction']} / {live_fx_kst_label(freshness)}"
-        level_line = f"• 엔화 강세 수준: {'✅' if fx_state['strong_level'] else '⬜'} USD/JPY {price:.3f} ({YEN_STRONG_LEVEL:.0f} 이하 여부; 방향 신호와 분리)"
+        replacement = f"{'✅' if fx_state['surge'] else '⬜'} 엔화 급등: USD/JPY {price:.3f} / {change:+.2f}% / {fx_state['direction']}"
         for i, line in enumerate(lines):
             if "엔화 급등:" in line:
                 lines[i] = replacement
-                if i + 1 >= len(lines) or "엔화 강세 수준:" not in lines[i + 1]:
-                    lines.insert(i + 1, level_line)
                 break
-        notes.append(f"USD/JPY 현재값: Yahoo query1/query2 5분 교차확인 / {live_fx_kst_label(freshness)} / 지연 {float(freshness.get('live_fx_age_seconds') or 0):.0f}초")
-        notes.append("USD/JPY 155 이하는 가격 수준 참고값이며, 엔화 급등은 USD/JPY 변화율 하락으로만 판정")
+        fx_note = f"USD/JPY {live_fx_kst_label(freshness)} · 지연 {float(freshness.get('live_fx_age_seconds') or 0):.0f}초"
     else:
         value = freshness.get("fred_usdjpy_reference")
         value_text = f"{float(value):.3f}" if value is not None else "확인 불가"
-        replacement = f"⬜ 엔화 급등: 현재값 확인 실패 — FRED H.10 공식 최신 일일 참고값 {value_text} (기준일 {freshness.get('fred_usdjpy_date') or '확인 불가'}) / 현재 신호 판정 제외"
+        replacement = f"⬜ 엔화 급등: 현재값 확인 실패 / FRED 일일 {value_text}({freshness.get('fred_usdjpy_date') or '확인 불가'}) / 판정 제외"
         for i, line in enumerate(lines):
             if "엔화 급등:" in line:
                 lines[i] = replacement
-        notes.append("USD/JPY 현재 5분 교차확인 실패 — 과거 일일값을 현재값으로 대체하지 않고 신호 판정 보류" + (f" ({freshness.get('live_fx_error')})" if freshness.get("live_fx_error") else ""))
+        fx_note = "USD/JPY 실시간 확인 실패 · 판정 제외"
 
-    if notes:
-        insert_at = 3 if len(lines) >= 3 else len(lines)
-        lines[insert_at:insert_at] = ["데이터 최신성 검증", *[f"- {note}" for note in notes], ""]
+    # Keep freshness visible but to one scan line; detailed methodology remains
+    # in the watcher logic and source artifacts instead of repeating in Telegram.
+    insert_at = 3 if len(lines) >= 3 else len(lines)
+    lines[insert_at:insert_at] = [f"최신성 │ {rate_note} · {fx_note}", ""]
     return "\n".join(lines).rstrip() + "\n"
-
 
 def main() -> int:
     parser = argparse.ArgumentParser()
