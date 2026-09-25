@@ -202,6 +202,62 @@ class ParseTests(unittest.TestCase):
         self.assertEqual(r['value']['stage'], 'po_pending')
         self.assertIn('intekplus|taiwan_osat|cowos', r['key'])
 
+    def test_foundry_hbm4_capacity_expansion_and_pricing(self):
+        item = dict(ITEM)
+        item['published_at_kst'] = '2026-09-21T17:20:00+09:00'
+        item['title'] = 'HBM에 웃는 삼성 파운드리…첨단 공정 생산능력 확대 채비'
+        body = (
+            '삼성전자 4나노 공정은 월 3만장 내외로 풀생산 체제이며 HBM4용 베이스다이가 '
+            '50~60%대 비중을 차지한다. HBM4 베이스다이 수요 확대에 대응해 4나노 공정 증설을 검토 중이다. '
+            '4나노 신규 수주 물량의 가격을 인상했고 HBM4용 베이스다이 가격도 올렸다.'
+        )
+        rows = m.parse_foundry_hbm_records(item, body)
+        allocation = [x for x in rows if x['axis'] == 'foundry_base_die_allocation'][0]
+        expansion = [x for x in rows if x['axis'] == 'foundry_node_expansion'][0]
+        pricing = [x for x in rows if x['axis'] == 'foundry_pricing'][0]
+        self.assertEqual(allocation['value']['total_capacity_wpm'], 30000)
+        self.assertEqual(allocation['value']['allocation_pct_min'], 50)
+        self.assertEqual(allocation['value']['allocation_pct_max'], 60)
+        self.assertTrue(allocation['value']['full_utilization'])
+        self.assertEqual(expansion['value']['stage'], 'review')
+        self.assertTrue(pricing['value']['new_order_price_up'])
+        self.assertTrue(pricing['value']['base_die_price_up'])
+
+    def test_foundry_hbm5_2nm_line_review_not_confused_with_existing_mass_production(self):
+        item = dict(ITEM)
+        item['published_at_kst'] = '2026-09-21T17:20:00+09:00'
+        body = (
+            '삼성전자는 HBM5에 대응하기 위한 2나노 신규 생산라인 구축을 검토 중이다. '
+            'HBM5 베이스다이는 GAA 2나노 공정과 고집적 TSV를 적용해 HBM4E 대비 동작속도를 50% 이상 향상할 목표다. '
+            '삼성전자는 지난해 하반기 2나노 1세대 공정 양산을 시작했다.'
+        )
+        rows = m.parse_foundry_hbm_records(item, body)
+        r = [x for x in rows if x['axis'] == 'foundry_hbm5_2nm'][0]
+        self.assertEqual(r['value']['investment_stage'], 'review')
+        self.assertEqual(r['value']['speed_uplift_target_pct'], 50)
+        self.assertTrue(r['value']['gaa'])
+        self.assertTrue(r['value']['tsv_density_up'])
+
+    def test_foundry_material_change_thresholds(self):
+        old = m.make_record(
+            'foundry_base_die_allocation',['samsung','4nm','HBM4'],
+            {'total_capacity_wpm':30000,'allocation_pct_min':50,'allocation_pct_max':60,'full_utilization':True},
+            'wafers/month,pct','current',ITEM,'old',as_of='2026-09-07')
+        new = copy.deepcopy(old)
+        new['value'] = dict(old['value'])
+        new['value']['total_capacity_wpm'] = 36000
+        new['value']['allocation_pct_min'] = 60
+        reasons = m.comparison(old,new)
+        self.assertTrue(any('4나노 생산능력' in x for x in reasons))
+        self.assertTrue(any('배정 하단' in x for x in reasons))
+
+        old_stage = m.make_record(
+            'foundry_node_expansion',['samsung','4nm','HBM4_base_die'],
+            {'stage':'review'},'stage','current',ITEM,'old',as_of='2026-09-21')
+        new_stage = copy.deepcopy(old_stage)
+        new_stage['value'] = {'stage':'confirmed'}
+        self.assertTrue(any('증설 단계' in x for x in m.comparison(old_stage,new_stage)))
+
 class StateTests(unittest.TestCase):
     def make(self,v=22,asof='2026-09-22',url=None):
         item=dict(ITEM)
