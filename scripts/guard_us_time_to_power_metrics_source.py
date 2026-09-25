@@ -880,5 +880,144 @@ if ttp_cap_old not in s:
 s = s.replace(ttp_cap_old, ttp_cap_new, 1)
 print("US time-to-power freshness + ordered dedupe guard inserted")
 
+
+# ERCOT market notices need stricter treatment than generic official links:
+# 1) archive rows older than the freshness window must not become "new" again;
+# 2) the linked notice must still exist and contain the same notice ID;
+# 3) community-impact surveys/tooling updates do not equal a Time-to-Power
+#    execution step unless they change eligibility/classification/interconnection.
+ercot_helper_anchor = '''def is_meaningful(item: dict) -> bool:
+'''
+ercot_helpers = r'''
+def _ercot_notice_id(text: str) -> str:
+    m = re.search(r"\bM-[A-Z]\d{6}-\d{2}\b", text or "", re.I)
+    return m.group(0).upper() if m else ""
+
+
+def _ercot_archive_fresh(text: str) -> bool:
+    m = re.search(r"\b(\d{2}/\d{2}/\d{4})\b", text or "")
+    if not m:
+        return False
+    try:
+        published = dt.datetime.strptime(m.group(1), "%m/%d/%Y").replace(tzinfo=dt.timezone.utc)
+    except Exception:
+        return False
+    return published >= dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=NEWS_ALERT_MAX_AGE_DAYS)
+
+
+def _ercot_execution_relevant(text: str) -> bool:
+    low = (text or "").lower()
+
+    # These are information-gathering / portal-administration events, not
+    # interconnection or energization stage changes by themselves.
+    if any(k in low for k in (
+        "state and community impact rfi",
+        "community impact rfi",
+        "water sources and consumption",
+        "voluntary state and community impact",
+        "rfi tool update",
+        "restrict visibility",
+        "question reference guide",
+        "optional survey",
+    )):
+        return any(k in low for k in (
+            "excluded from batch zero",
+            "exclusion from batch zero",
+            "classification revoked",
+            "classification changed",
+            "reclassified",
+            "interconnection suspended",
+            "interconnection denied",
+            "may not advance",
+            "cannot advance",
+            "energization prohibited",
+        ))
+
+    return any(k in low for k in (
+        "batch zero verification",
+        "eligibility verification",
+        "conditional classification",
+        "final classification",
+        "reclassified",
+        "interconnection",
+        "energization",
+        "energized",
+        "byog",
+        "wlpun",
+        "large load curtail",
+        "site control",
+        "financial security",
+        "transmission study",
+        "study result",
+        "approved",
+        "approval",
+        "pause",
+        "suspend",
+    ))
+
+
+'''
+if ercot_helper_anchor not in s:
+    raise SystemExit("ERCOT execution helper insertion point not found")
+s = s.replace(ercot_helper_anchor, ercot_helpers + ercot_helper_anchor, 1)
+
+ercot_meaning_old = '''    if item.get("official") and theme not in {"기타", "유연부하·수요반응"}:
+        return True
+'''
+ercot_meaning_new = '''    if theme == "ERCOT·Batch Zero":
+        return _ercot_execution_relevant(text)
+    if item.get("official") and theme not in {"기타", "유연부하·수요반응"}:
+        return True
+'''
+if ercot_meaning_old not in s:
+    raise SystemExit("ERCOT execution meaningful gate insertion point not found")
+s = s.replace(ercot_meaning_old, ercot_meaning_new, 1)
+
+ercot_rows_old = '''    if row_mode:
+        containers = soup.find_all("tr")
+        for row in containers:
+            text = normalize(row.get_text(" "))
+            low = text.lower()
+            if not any(k in low for k in keywords):
+                continue
+            link = row.find("a", href=True)
+            href = absurl(url, link.get("href")) if link else url
+            theme = classify(text)
+            out.append({"id": sig(source, text, href), "source": source, "title": text[:420], "url": href,
+                        "official": True, "theme": theme, "summary": text[:800]})
+        return out
+'''
+ercot_rows_new = '''    if row_mode:
+        containers = soup.find_all("tr")
+        for row in containers:
+            text = normalize(row.get_text(" "))
+            low = text.lower()
+            if not any(k in low for k in keywords):
+                continue
+            if source == "ERCOT" and not _ercot_archive_fresh(text):
+                continue
+            link = row.find("a", href=True)
+            href = absurl(url, link.get("href")) if link else url
+            notice_id = _ercot_notice_id(f"{text} {href}")
+            if source == "ERCOT":
+                if not notice_id or "/services/comm/mkt_notices/" not in href:
+                    continue
+                try:
+                    detail_text = normalize(BeautifulSoup(fetch(href, 20).text, "html.parser").get_text(" "))
+                except Exception:
+                    continue
+                if notice_id.lower() not in detail_text.lower():
+                    continue
+            theme = classify(text)
+            item_id = sig(source, notice_id) if notice_id else sig(source, text, href)
+            out.append({"id": item_id, "source": source, "title": text[:420], "url": href,
+                        "official": True, "theme": theme, "summary": text[:800]})
+        return out
+'''
+if ercot_rows_old not in s:
+    raise SystemExit("ERCOT archive row gate insertion point not found")
+s = s.replace(ercot_rows_old, ercot_rows_new, 1)
+print("ERCOT archive freshness + execution-quality guard inserted")
+
 p.write_text(s, encoding="utf-8")
 print("US time-to-power flexible-load + demand-response guard inserted")
