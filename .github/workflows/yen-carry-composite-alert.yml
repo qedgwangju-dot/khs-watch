@@ -272,7 +272,7 @@ jobs:
 
           def render_html(value):
               rendered = []
-              section_headers = {'판정', '이번 변화', '핵심 숫자', '의미', '다음 경보', '출처'}
+              section_headers = {'판정', '이번 변화', '핵심 근거', '반전 조건', '핵심 숫자', '의미', '다음 경보', '출처'}
               for line in value.splitlines():
                   match = raw_source_re.match(line)
                   if match and match.group(1) in source_labels:
