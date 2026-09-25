@@ -12,6 +12,7 @@ The script performs no network requests.
 """
 from __future__ import annotations
 
+import hashlib
 import sys
 from pathlib import Path
 
@@ -50,23 +51,25 @@ g, s, c, k = classify(price_reaction)
 assert g == "tesla", (g, s, c)
 assert s < 11, ("price-reaction rewrite must stay below alert threshold", s, c)
 
-# 2) Direct APK observation and a later Chinese rewrite are the same Gen-3 event.
-gen3_direct = make(
-    "테슬라 앱 APK서 Optimus Gen 3 디자인 자산 발견",
-    "Tesla Android app APK v4.60.5-4573 contains Optimus Gen 2.5 and Gen 3 image assets.",
-    "Tesla APK 역공학 관측",
-)
+# 2) A later Chinese Gen-3 rewrite must map to the durable APK event key,
+# rather than surface as a new generic "Optimus production/supply-chain" item.
 gen3_rewrite = make(
     "特斯拉第三代Optimus设计意外泄露：更契合工厂流水线任务环境",
     "用户解锁特斯拉安卓应用程序包，发现第三代Optimus渲染图以及2.5代和第三代并排素材。",
     "财联社",
 )
-g1, s1, c1, k1 = classify(gen3_direct)
 g2, s2, c2, k2 = classify(gen3_rewrite)
-assert g1 == g2 == "tesla", (g1, g2)
-assert "Gen 3 앱 자산" in c1 and "Gen 3 앱 자산" in c2, (c1, c2)
-assert k1 == k2, ("Gen3 publisher rewrites must dedupe to the same semantic key", k1, k2)
-assert s1 >= 11 and s2 >= 11, (s1, s2)
+expected_gen3_key = hashlib.sha256(
+    b"tesla-optimus|gen3-apk-assets|4.60.5-4573"
+).hexdigest()
+assert g2 == "tesla", g2
+assert "Gen 3 앱 자산" in c2, c2
+assert k2 == expected_gen3_key, (
+    "Gen3 publisher rewrite must reuse the durable APK semantic key",
+    k2,
+    expected_gen3_key,
+)
+assert s2 >= 11, s2
 
 # 3) Generic Tesla/Optimus background with no stage must not alert.
 generic = make(
