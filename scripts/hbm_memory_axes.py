@@ -865,13 +865,10 @@ def parse_hbm_product_mix(item, body):
         return []
     if not re.search(COMPANIES['samsung'], text, re.I):
         return []
-
-    # Prefer an explicit from→to statement. Do not infer a target from two
-    # unrelated percentages in the article.
     m = re.search(
         r'(?:product\s*mix|제품\s*비중|비중)[^%]{0,80}?'
         r'(?:from\s*)?([0-9]+(?:\.[0-9]+)?)\s*%[^%]{0,40}?'
-        r'(?:to|→|에서|에서\s*약?|로|까지)[^%]{0,20}?'
+        r'(?:to|→|에서|로|까지)[^%]{0,20}?'
         r'([0-9]+(?:\.[0-9]+)?)\s*%',
         text, re.I)
     if not m:
@@ -882,11 +879,9 @@ def parse_hbm_product_mix(item, body):
             text, re.I)
     if not m:
         return []
-
     old_pct, target_pct = float(m[1]), float(m[2])
     if not (0 <= old_pct <= 100 and 0 <= target_pct <= 100) or old_pct == target_pct:
         return []
-
     published = item.get('published_at_kst','')
     resolved_title = resolve_relative_years(title, published)
     period = local_period(resolved_title, published)
