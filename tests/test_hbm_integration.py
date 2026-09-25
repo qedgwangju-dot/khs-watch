@@ -162,6 +162,29 @@ class ParseTests(unittest.TestCase):
         self.assertEqual(r['value']['backend_alloc_pct_min'], 10)
         self.assertTrue(r['value']['tester_shortage'])
 
+    def test_postprocess_tsmc_korean_capex_range(self):
+        item = dict(ITEM)
+        body = 'TSMC는 2026년 설비투자를 600억~640억달러로 제시했고 후공정 묶음은 10~20%, 테스트 장비 부족도 언급했다.'
+        rows = m.parse_postprocess_records(item, body)
+        r = [x for x in rows if x['axis'] == 'postprocess_capex'][0]
+        self.assertEqual(r['value']['total_capex_usd_min'], 60000000000)
+        self.assertEqual(r['value']['total_capex_usd_max'], 64000000000)
+        self.assertTrue(r['value']['tester_shortage'])
+
+    def test_postprocess_backend_allocation_revision_is_material(self):
+        old = m.make_record(
+            'postprocess_capex',['tsmc','2026'],
+            {'total_capex_usd_min':60000000000,'total_capex_usd_max':64000000000,
+             'backend_alloc_pct_min':10,'backend_alloc_pct_max':20,'tester_shortage':True},
+            'USD/pct','2026',ITEM,'old',as_of='2026-07-16')
+        new = copy.deepcopy(old)
+        new['as_of'] = '2026-09-25'
+        new['value'] = dict(old['value'])
+        new['value']['backend_alloc_pct_min'] = 15
+        new['value']['backend_alloc_pct_max'] = 25
+        reasons = m.comparison(old, new)
+        self.assertTrue(any('후공정 배정' in x for x in reasons))
+
     def test_postprocess_equipment_order(self):
         item = dict(ITEM)
         body = '디지털 프론티어는 SK하이닉스로부터 올해 총 3건, 2,321억원 규모의 HBM4 Wafer Tester 계약을 체결했다.'
