@@ -943,6 +943,16 @@ def main():
     original_descriptor = legacy.event_state_descriptor
     rejected_generic = []
     def guarded_descriptor(e):
+        text = (e.get('title','') + ' ' + e.get('description','')).lower()
+        structured_revenue = (
+            'hbm' in text
+            and any(k in text for k in ('bernstein', '번스타인', 'j.p. morgan', 'jp morgan', 'ubs', 'morgan stanley', 'citi', 'bofa', 'goldman sachs'))
+            and any(k in text for k in ('revenue', '매출', 'qoq', '전분기', 'forecast', 'estimate', '회귀', 'regression'))
+            and not any(k in text for k in ('2배', 'double', '3배', 'triple', 'wafer', '웨이퍼', 'capacity', '생산능력', '캐파'))
+        )
+        if structured_revenue:
+            rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
+            return '', '', ''
         if not concrete_state_evidence(e):
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
