@@ -352,7 +352,8 @@ def run_collectors():
             for args in commands:
                 if ('pretty' in args[0] or 'leverage' in args[0]) and not (OUT / 'rubin_hbm_alert.md').exists():
                     continue
-                subprocess.run(['python', *args], cwd=ROOT, check=True, timeout=440)
+                command_timeout = 720 if args[0].endswith('hbm_memory_axes.py') else 440
+                subprocess.run(['python', *args], cwd=ROOT, check=True, timeout=command_timeout)
             results[name] = finish(name)
         except Exception as exc:
             # A second failure during cleanup must not cancel the next route.
