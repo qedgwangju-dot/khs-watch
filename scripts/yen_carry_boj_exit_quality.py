@@ -654,9 +654,10 @@ def classify(previous: dict, account: dict | None, purchase: dict | None, absorp
         "weak_private_absorption": "BOJ 보유감소 대비 민간 JGB 흡수 약화",
         "joint_market_stress": "10년 JGB 3% 이상 지속과 입찰 약화 동시 확인",
     }
-    for key, label in labels.items():
-        if current[key] and not bool(old.get(key)):
-            reasons.append(label)
+    if previous.get("initialized"):
+        for key, label in labels.items():
+            if current[key] and not bool(old.get(key)):
+                reasons.append(label)
 
     anomaly_count = sum(bool(v) for v in current.values())
     if current["emergency_purchase_signal"] or current["plan_revision"]:
