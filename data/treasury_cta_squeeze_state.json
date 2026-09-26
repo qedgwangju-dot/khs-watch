@@ -1,61 +1,61 @@
 {
-  "last_checked_kst": "2026-09-25T10:45:34+09:00",
+  "last_checked_kst": "2026-09-26T10:52:03+09:00",
   "media_id": null,
-  "cftc_date": "September 15, 2026",
+  "cftc_date": "September 22, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-25T10:45:34+09:00",
+    "checked_kst": "2026-09-26T10:52:03+09:00",
     "cta_media": null,
     "cftc": {
-      "report_date": "September 15, 2026",
+      "report_date": "September 22, 2026",
       "markets": {
         "2Y": {
-          "open_interest": 4433736,
-          "leveraged_long": 660233,
-          "leveraged_short": 1954808,
-          "leveraged_spreading": 213556,
-          "leveraged_net": -1294575,
-          "short_share_oi_pct": 44.08940902209784
+          "open_interest": 4539374,
+          "leveraged_long": 725522,
+          "leveraged_short": 2076262,
+          "leveraged_spreading": 164957,
+          "leveraged_net": -1350740,
+          "short_share_oi_pct": 45.73894990807103
         },
         "5Y": {
-          "open_interest": 6364260,
-          "leveraged_long": 537093,
-          "leveraged_short": 2524021,
-          "leveraged_spreading": 297562,
-          "leveraged_net": -1986928,
-          "short_share_oi_pct": 39.659300531405066
+          "open_interest": 6599737,
+          "leveraged_long": 649403,
+          "leveraged_short": 2507465,
+          "leveraged_spreading": 357241,
+          "leveraged_net": -1858062,
+          "short_share_oi_pct": 37.993407919133745
         },
         "10Y": {
-          "open_interest": 5377777,
-          "leveraged_long": 440415,
-          "leveraged_short": 2308541,
-          "leveraged_spreading": 167805,
-          "leveraged_net": -1868126,
-          "short_share_oi_pct": 42.92742149776757
+          "open_interest": 5407726,
+          "leveraged_long": 468569,
+          "leveraged_short": 2395516,
+          "leveraged_spreading": 145167,
+          "leveraged_net": -1926947,
+          "short_share_oi_pct": 44.29802841342184
         },
         "ULTRA10Y": {
-          "open_interest": 2596996,
-          "leveraged_long": 167841,
-          "leveraged_short": 567087,
-          "leveraged_spreading": 37284,
-          "leveraged_net": -399246,
-          "short_share_oi_pct": 21.836267749353482
+          "open_interest": 2587440,
+          "leveraged_long": 162582,
+          "leveraged_short": 558260,
+          "leveraged_spreading": 36268,
+          "leveraged_net": -395678,
+          "short_share_oi_pct": 21.575766008100672
         },
         "BOND": {
-          "open_interest": 1867442,
-          "leveraged_long": 203681,
-          "leveraged_short": 415416,
-          "leveraged_spreading": 27397,
-          "leveraged_net": -211735,
-          "short_share_oi_pct": 22.245188873335824
+          "open_interest": 1887864,
+          "leveraged_long": 201034,
+          "leveraged_short": 363086,
+          "leveraged_spreading": 38491,
+          "leveraged_net": -162052,
+          "short_share_oi_pct": 19.232635401702666
         },
         "ULTRABOND": {
-          "open_interest": 2470471,
-          "leveraged_long": 94497,
-          "leveraged_short": 907923,
-          "leveraged_spreading": 12936,
-          "leveraged_net": -813426,
-          "short_share_oi_pct": 36.75100820855618
+          "open_interest": 2476197,
+          "leveraged_long": 100270,
+          "leveraged_short": 924613,
+          "leveraged_spreading": 15749,
+          "leveraged_net": -824343,
+          "short_share_oi_pct": 37.340042007966254
         }
       }
     },
@@ -65,14 +65,14 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 104.71875,
-        "settlement": 104.71875,
-        "change": -0.3125,
-        "pct_change": -0.2975304968759307,
-        "open_interest": 5377777,
-        "oi_source": "CFTC TFF 주간 전체 시장 OI (September 15, 2026)",
+        "last": 104.96875,
+        "settlement": 104.96875,
+        "change": 0.109375,
+        "pct_change": 0.10430636268812243,
+        "open_interest": 5407726,
+        "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
-        "market_time": 1790300115,
+        "market_time": 1790308800,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -83,14 +83,14 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 104.78125,
-        "settlement": 104.78125,
-        "change": -1.09375,
-        "pct_change": -1.0330578512396715,
-        "open_interest": 1867442,
-        "oi_source": "CFTC TFF 주간 전체 시장 OI (September 15, 2026)",
+        "last": 104.6875,
+        "settlement": 104.6875,
+        "change": -0.40625,
+        "pct_change": -0.38655961938744987,
+        "open_interest": 1887864,
+        "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
-        "market_time": 1790299976,
+        "market_time": 1790308800,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -101,14 +101,14 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 106.21875,
-        "settlement": 106.21875,
-        "change": -1.25,
-        "pct_change": -1.1631288165164344,
-        "open_interest": 2470471,
-        "oi_source": "CFTC TFF 주간 전체 시장 OI (September 15, 2026)",
+        "last": 105.875,
+        "settlement": 105.875,
+        "change": -0.625,
+        "pct_change": -0.5868544600938996,
+        "open_interest": 2476197,
+        "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
-        "market_time": 1790300062,
+        "market_time": 1790308800,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -116,28 +116,28 @@
       }
     },
     "yield10": {
-      "date": "2026-09-24",
-      "yield": 5.18,
-      "mean20": 4.898,
-      "sd20": 0.13249905660041505,
-      "z20": 2.1283170404031138,
-      "distance_to_4_3_bp": 87.99999999999999
+      "date": "2026-09-25",
+      "yield": 5.17,
+      "mean20": 4.923,
+      "sd20": 0.13427955912945197,
+      "z20": 1.8394460154719452,
+      "distance_to_4_3_bp": 87.00000000000001
     },
     "repo": {
       "SOFR": {
-        "date": "2026-09-23",
-        "rate": 3.87,
-        "volume_bn": 2946
+        "date": "2026-09-24",
+        "rate": 3.88,
+        "volume_bn": 2990
       },
       "BGCR": {
-        "date": "2026-09-23",
-        "rate": 3.85,
-        "volume_bn": 1227
+        "date": "2026-09-24",
+        "rate": 3.86,
+        "volume_bn": 1253
       },
       "TGCR": {
-        "date": "2026-09-23",
-        "rate": 3.85,
-        "volume_bn": 1188
+        "date": "2026-09-24",
+        "rate": 3.86,
+        "volume_bn": 1213
       }
     },
     "format_revision": 9
@@ -153,11 +153,7 @@
     "repo_not_worse": true,
     "composite_confirmed": false,
     "stage": 0,
-    "oi_scope_fixes": [
-      "ZN OI 10→5,377,777로 동일 범위 교체",
-      "ZB OI 10→1,867,442로 동일 범위 교체",
-      "UB OI 10→2,470,471로 동일 범위 교체"
-    ]
+    "oi_scope_fixes": []
   },
   "last_fomc_eve_report": "2026-09-16",
   "last_weekly_report_key": "2026-W39"
