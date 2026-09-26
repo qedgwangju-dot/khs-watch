@@ -1002,9 +1002,11 @@ SPACE_PV_PIA_BASE_TERMS = (
     "solar panels in space applications",
 )
 SPACE_PV_STAGE_CHANGE_TERMS = (
-    "awardee", "awardees", "recipient", "recipients", "selected for award",
-    "selected projects", "selection notification", "selection notifications",
-    "announces selections", "announced selections", "awarded to",
+    "awardee", "awardees", "recipient", "recipients",
+    "selected for award", "selected projects", "announces selections", "announced selections",
+    "has selected", "have selected", "selected the following", "awarded to",
+    "selection notifications issued", "selection notifications sent", "selection notifications released",
+    "awards announced",
 )
 
 
@@ -1065,6 +1067,8 @@ def semantic_policy_event_key(item: dict) -> str:
         ):
             return "polysilicon-11052-base"
     if any(term in text for term in SPACE_PV_PIA_BASE_TERMS):
+        if any(term in text for term in SPACE_PV_STAGE_CHANGE_TERMS):
+            return "doe-space-pv-pia-selections"
         return "doe-space-pv-pia-2026-08-31"
     return ""
 
@@ -1075,6 +1079,8 @@ def semantic_policy_title(item: dict) -> str:
         return "미 상무부, 폴리실리콘 사재기 차단 규칙 시행"
     if key == "polysilicon-11052-base":
         return "미국, 폴리실리콘 Section 232 최저수입가격·관세 조치"
+    if key == "doe-space-pv-pia-selections":
+        return "미 에너지부, 우주태양광 R&D 선정 결과 발표"
     if key == "doe-space-pv-pia-2026-08-31":
         return "미 에너지부, 우주태양광 R&D 지원사업 공고"
     return ""
