@@ -169,6 +169,8 @@ jobs:
               cp /tmp/us-watch-state/us_positioning_options_sox_state.json data/us_positioning_options_sox_state.json
             fi
 
+            # Stage each optional state file separately. A missing second file must not
+            # make git add fail and silently drop the first state update.
             if [ -f data/us_fund_flow_state.json ]; then
               git add data/us_fund_flow_state.json
             fi
