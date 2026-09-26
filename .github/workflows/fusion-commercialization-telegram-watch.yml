@@ -8,9 +8,11 @@ on:
     paths:
       - ".github/workflows/fusion-commercialization-telegram-watch.yml"
       - "scripts/fusion_commercialization_watch.py"
+      - "tests/test_fusion_commercialization_watch.py"
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: fusion-commercialization-telegram-watch
@@ -36,7 +38,35 @@ jobs:
           python-version: "3.12"
 
       - name: Validate watcher
-        run: python -m py_compile scripts/fusion_commercialization_watch.py
+        run: |
+          python -m py_compile scripts/fusion_commercialization_watch.py
+          PYTHONPATH=. python tests/test_fusion_commercialization_watch.py
+
+      - name: Enable existing fusion schedule
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/fusion-commercialization-telegram-watch.yml/enable"
+          echo "fusion_schedule_enable=confirmed"
+
+      - name: Verify Telegram bot identity
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_POLICY_TELEGRAM_BOT_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          expected=(os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("KHS_POLICY_TELEGRAM_BOT_TOKEN missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=25) as r:
+              data=json.loads(r.read().decode("utf-8"))
+          actual=str((data.get("result") or {}).get("username") or "")
+          if not data.get("ok") or actual.lower()!=expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          print(f"telegram_bot_verified=@{actual}")
+          PY
 
       - name: Run fusion commercialization watch
         run: python scripts/fusion_commercialization_watch.py
