@@ -2,7 +2,8 @@ name: War peace reconstruction Telegram watch
 
 on:
   schedule:
-    - cron: "3,8,13,18,23,28,33,38,43,48,53,58 * * * *"
+    - cron: "4,14,24,34,44,54 * * * *"
+    - cron: "9,19,29,39,49,59 * * * *"
   push:
     paths:
       - ".github/war-peace-telegram-test-trigger.txt"
@@ -20,7 +21,7 @@ permissions:
 
 concurrency:
   group: war-peace-reconstruction-telegram-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
