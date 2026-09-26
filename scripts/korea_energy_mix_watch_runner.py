@@ -15,6 +15,7 @@ except ModuleNotFoundError:
 
 _ORIGINAL_RENDER = watch.render
 _ORIGINAL_TOPIC_MATCH = watch.topic_match
+_ORIGINAL_EVENT_LEVEL = watch.event_level
 # 정책 상태 기반 중복 방지: 기사 발행일은 새 이벤트의 근거가 아니다.
 _HEADERS = {
     "User-Agent": (
@@ -32,33 +33,59 @@ def headline_match(title: str) -> bool:
 
 
 def semantic_event_key(row: dict[str, Any]) -> str:
-    """기사 발행일이 아니라 같은 정책·사건의 상태를 기준으로 묶는다."""
+    """기사 날짜·언론사가 아니라 정책 주제와 실제 상태를 기준으로 묶는다."""
     title = watch.norm(str(row.get("title", ""))).lower()
 
     if any(term in title for term in ("최종 확정", "최종안", "정부안", "의결")):
         return "12th-plan|final"
 
+    # LNG 기사 제목에 비교 표현으로 '원전 1기급'이 들어가도 원전 사건으로 오분류하지 않는다.
+    if ("lng" in title or "가스발전" in title) and any(term in title for term in ("용량시장", "신규 용량", "발전시장")):
+        nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|mw)?", title)
+        suffix = watch.digest("|".join(nums))[:12] if nums else "general"
+        return f"12th-plan|lng-capacity-market|{suffix}"
+
     if any(term in title for term in ("원전", "원자력")):
-        if any(term in title for term in ("공론화", "숙의", "시민참여단", "공론화위", "3개월", "국민과 함께 논의")):
+        # 여론조사·찬반 비율 자체는 정책 상태 변화가 아니다.
+        if any(term in title for term in ("여론조사", "국민인식", "10명 중", "찬성률", "필요하다는데")):
+            if any(term in title for term in ("공론화", "숙의", "시민참여단", "공론화위", "3개월")):
+                return "12th-plan|nuclear-deliberation"
+            return "12th-plan|nuclear-opinion"
+
+        if any(term in title for term in (
+            "공론화", "숙의", "시민참여단", "공론화위", "3개월",
+            "국민과 함께 논의", "원전 논의", "원전의 역할", "원전 역할",
+            "단순 찬반", "찬반 아닌",
+        )):
             return "12th-plan|nuclear-deliberation"
+
         if any(term in title for term in ("영덕", "기장", "부지 선정", "후보지")):
             return "12th-plan|nuclear-site"
-        nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|기|%)?", title)
-        if nums:
-            signature = watch.digest("|".join(nums))[:12]
-            return f"12th-plan|nuclear-fact|{signature}"
-        cleaned = re.sub(r"[^0-9a-z가-힣]+", " ", title)
-        return f"12th-plan|nuclear|{watch.digest(' '.join(cleaned.split()))[:16]}"
+
+        if any(term in title for term in ("계속운전", "수명연장", "계속 운전")):
+            nums = re.findall(r"\d+(?:\.\d+)?\s*(?:기|년|gw|%)?", title)
+            suffix = watch.digest("|".join(nums))[:12] if nums else "general"
+            return f"12th-plan|nuclear-life-extension|{suffix}"
+
+        # 실제 신규 기수·설비용량처럼 투자 판단을 바꾸는 숫자만 별도 상태로 저장.
+        material_nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|mw|기)", title)
+        if material_nums and any(term in title for term in ("신규", "추가", "건설", "확대", "반영", "도입")):
+            signature = watch.digest("|".join(material_nums))[:12]
+            return f"12th-plan|nuclear-capacity|{signature}"
+
+        # 해설·칼럼·후속 인터뷰처럼 구체적 상태값이 없는 원전 보도는 하나의 일반 주제로 묶는다.
+        return "12th-plan|nuclear-general"
 
     if ("재생" in title or any(term in title for term in ("태양광", "해상풍력", "육상풍력", "풍력"))):
         if any(term in title for term in ("220gw", "236gw", "155gw", "61gw", "5.6배", "6배", "15년 뒤")):
             return "12th-plan|renewable-2040-capacity"
-        nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|%)?", title)
-        if nums:
-            return f"12th-plan|renewable-fact|{watch.digest('|'.join(nums))[:12]}"
+        material_nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|mw)", title)
+        if material_nums:
+            return f"12th-plan|renewable-capacity|{watch.digest('|'.join(material_nums))[:12]}"
+        return "12th-plan|renewable-general"
 
     if "전력수요" in title:
-        nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|twh|%)?", title)
+        nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|twh)", title)
         suffix = watch.digest("|".join(nums))[:12] if nums else "general"
         return f"12th-plan|demand|{suffix}"
 
@@ -72,6 +99,25 @@ def semantic_event_key(row: dict[str, Any]) -> str:
     cleaned = re.sub(r"\s+-\s+[^-]{1,60}$", "", title)
     cleaned = re.sub(r"[^0-9a-z가-힣]+", " ", cleaned)
     return f"12th-plan|fact|{watch.digest(' '.join(cleaned.split()))[:16]}"
+
+
+def semantic_event_level(row: dict[str, Any]) -> int:
+    """정책 상태가 없는 기사·여론 재인용은 알림 트리거에서 제외한다."""
+    key = semantic_event_key(row)
+    title = watch.norm(str(row.get("title", ""))).lower()
+
+    if key == "12th-plan|nuclear-opinion":
+        return 0
+
+    if key in {"12th-plan|nuclear-general", "12th-plan|renewable-general"}:
+        material_markers = (
+            "확정", "의결", "정부안", "최종안", "공청회", "공론화", "숙의",
+            "입법예고", "발표", "선정", "착수", "연기", "순연", "취소", "폐지",
+        )
+        if not any(marker in title for marker in material_markers):
+            return 0
+
+    return _ORIGINAL_EVENT_LEVEL(row)
 
 
 def resolve_article_url(url: str) -> str:
@@ -415,6 +461,7 @@ def render_with_linked_source(rows: list[dict[str, Any]]) -> str:
 def main() -> int:
     watch.topic_match = headline_match
     watch.event_key = semantic_event_key
+    watch.event_level = semantic_event_level
     watch.render = render_with_linked_source
     return watch.main()
 
