@@ -46,15 +46,36 @@ def pdate(v):
     except Exception: return None
 def publisher(item):
     n=item.find("source"); return clean(n.text if n is not None else "")
+OFFICIAL_SOURCE_MARKERS=(
+    "house committee on science",
+    "science.house.gov",
+    "democrats-science.house.gov",
+    "republicans-science.house.gov",
+    "congress.gov",
+    "energy.gov",
+    "u.s. department of energy",
+    "department of energy",
+    "federal register",
+    "u.s. house of representatives",
+    "u.s. senate",
+)
+
 def publisher_matches(publisher, names):
     low=clean(publisher).lower()
     return any(low == clean(name).lower() for name in names)
 
+def official_publisher(publisher):
+    low=clean(publisher).lower()
+    return publisher_matches(publisher, OFFICIAL) or any(marker in low for marker in OFFICIAL_SOURCE_MARKERS)
+
 def allowed(p):
-    return publisher_matches(p, OFFICIAL) or publisher_matches(p, TRUSTED)
+    # Official government source names may carry a committee/domain suffix in
+    # Google News. Trusted media remain exact-name only so a publisher such as
+    # "Heatmap News" can never pass merely because it contains "AP News".
+    return official_publisher(p) or publisher_matches(p, TRUSTED)
 
 def srank(p):
-    if publisher_matches(p, OFFICIAL): return 0
+    if official_publisher(p): return 0
     if publisher_matches(p, ("Reuters","Bloomberg","AP News","Associated Press")): return 1
     return 2
 def text_of(t,s,p): return clean(f"{t} {s} {p}").lower()
