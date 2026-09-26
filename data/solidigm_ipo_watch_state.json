@@ -5,17 +5,18 @@
   "current_state": {
     "stage": "bank_bakeoff",
     "target_year": 2027,
-    "valuation_max_usd": 150000000000.0,
-    "raise_target_usd": 15000000000.0,
+    "valuation_max_usd": 150000000000,
+    "raise_target_usd": 15000000000,
     "evidence_state": "top_tier_report",
-    "source_url": "https://www.investing.com/news/stock-market-news/sk-hynixs-solidigm-eyes-2027-ipo-at-value-up-to-150-billion--reuters-432SI-4917882",
-    "source_name": "Investing.com",
-    "source_published_at_kst": "2026-09-26T07:17:05+09:00",
+    "source_url": "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/",
+    "source_name": "Reuters",
+    "source_published_at_kst": "2026-09-26T01:47:00+09:00",
     "underwriters": [],
     "primary_secondary_mix": "",
     "parent_post_ipo_stake_pct": null,
     "use_of_proceeds": [],
-    "us_fab_link": "considering"
+    "us_fab_link": "considering",
+    "pre_ipo_raise_usd": 3600000000
   },
   "last_checked_at_kst": "2026-09-26T22:47:38+09:00",
   "last_alert_at_kst": "",
@@ -46,5 +47,9 @@
     "payload_hash": "7b620754f0b7f85ed030bee5ece90ebef4ed3caeabd43a604db9388a5910429b"
   },
   "last_evidence_url": "https://www.investing.com/news/stock-market-news/sk-hynixs-solidigm-eyes-2027-ipo-at-value-up-to-150-billion--reuters-432SI-4917882",
-  "last_evidence_published_at_kst": "2026-09-26T07:17:05+09:00"
+  "last_evidence_published_at_kst": "2026-09-26T07:17:05+09:00",
+  "historical_context": {
+    "pre_ipo_raise_usd": 3600000000,
+    "note": "별도 선행 보도에서 검토된 Pre-IPO 규모. 현재 IPO 본공모 조달액과 합산하지 않음."
+  }
 }
