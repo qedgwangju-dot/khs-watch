@@ -1582,6 +1582,11 @@ def assert_fcc_chinese_optical_transceiver_ban_is_monitored() -> None:
 
 
 def assert_congress_chinese_optical_transceiver_bill_is_monitored() -> None:
+    official = khs_trusted_policy_news_watch.OFFICIAL_DIRECT_STORIES.get(
+        "us_congress_chinese_optical_transceiver_restriction", ()
+    )
+    if not any("mccormick.senate.gov" in row[0] for row in official):
+        raise AssertionError("Official Senate optical-transceiver source is missing")
     rule = next(
         rule for rule in khs_trusted_policy_news_watch.STORY_RULES
         if rule.key == "us_congress_chinese_optical_transceiver_restriction"
