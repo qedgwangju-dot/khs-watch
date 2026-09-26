@@ -36,7 +36,7 @@ S.headers.update({
 })
 
 ICI_COMBINED = "https://www.ici.org/research/stats/combined_flows"
-ICI_MMF = "https://www.iciglobal.org/research/stats/mmf"
+ICI_MMF = "https://www.ici.org/research/stats/mmf"
 FINRA_MARGIN = "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics"
 BING_Bofa = 'BofA EPFR US stocks money market Reuters'
 BING_LIPPER = 'LSEG Lipper U.S. equity funds money market Reuters'
@@ -275,11 +275,18 @@ def parse_ici_mmf():
     change_bn = direction * float(m.group(2).replace(",", ""))
     assets_trillion = float(m.group(3).replace(",", ""))
     period = m.group(4)
+    pub_m = re.search(
+        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{1,2},\\s+20\\d{2})\\s*\\|\\s*Print",
+        text,
+        re.I,
+    )
+    published = pub_m.group(1) if pub_m else first_date(text)
+
     payload = {
         "source": "ICI",
         "kind": "mmf",
         "period": period,
-        "published": first_date(text),
+        "published": published,
         "url": ICI_MMF,
         "metrics": {"assets_trillion": assets_trillion, "weekly_change_bn": change_bn},
     }
