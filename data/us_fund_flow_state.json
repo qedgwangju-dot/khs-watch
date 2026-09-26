@@ -1,7 +1,8 @@
 {
   "seen": {
     "ICI|mmf": "0fc80ab5f6b9feb7fa734023f812e89da42e92c6a92f09b303d4e07bff7a4685",
-    "FINRA|margin": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e"
+    "FINRA|margin": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e",
+    "ICI|combined": "728a130ea6b788d212c6badaee534cc42327547377e1ba57ff9d2edbdfde4a7a"
   },
   "values": {
     "ICI|mmf": {
@@ -12,7 +13,7 @@
       "url": "https://www.ici.org/research/stats/mmf",
       "metrics": {
         "assets_trillion": 7.94,
-        "weekly_change_bn": 15
+        "weekly_change_bn": 15.0
       },
       "fingerprint": "0fc80ab5f6b9feb7fa734023f812e89da42e92c6a92f09b303d4e07bff7a4685"
     },
@@ -29,7 +30,24 @@
         "margin_debt_mom_bn": 36.607
       },
       "fingerprint": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e"
+    },
+    "ICI|combined": {
+      "source": "ICI",
+      "kind": "combined",
+      "period": "September 16, 2026",
+      "published": "September 23, 2026",
+      "url": "https://www.ici.org/research/stats/combined_flows",
+      "metrics": {
+        "equity": null,
+        "domestic": -12.15,
+        "world": -1.15,
+        "bond": 3.24,
+        "hybrid": -2.17,
+        "total": -10.1
+      },
+      "domestic_4w": null,
+      "fingerprint": "728a130ea6b788d212c6badaee534cc42327547377e1ba57ff9d2edbdfde4a7a"
     }
   },
-  "updated_at_kst": "2026-09-26T06:38:59+09:00"
+  "updated_at_kst": "2026-09-26T14:50:20.319097+09:00"
 }
