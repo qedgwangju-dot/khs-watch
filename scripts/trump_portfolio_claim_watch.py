@@ -56,7 +56,7 @@ def _rss_urls(query):
     q = urllib.parse.quote_plus(query)
     return [
         f"https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en",
-        f"https://www.bing.com/news/search?q={q}&format=rss",
+        f"https://news.google.com/rss/search?q={q}&hl=ko&gl=KR&ceid=KR:ko",
     ]
 
 
