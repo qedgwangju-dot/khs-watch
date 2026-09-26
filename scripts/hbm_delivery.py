@@ -332,7 +332,7 @@ def run_collectors():
         raise RuntimeError('current execution recovery manifest missing; no collector may send')
     errors, results = [], {}
     for name, commands in (
-        ('rubin', [['scripts/rubin_hbm_watch.py'], ['scripts/rubin_hbm_pretty.py'], ['scripts/rubin_hbm_leverage.py'], ['scripts/ai_component_leadtime_watch.py'], ['scripts/agentic_cpu_watch.py']]),
+        ('rubin', [['scripts/rubin_hbm_watch.py'], ['scripts/rubin_hbm_pretty.py'], ['scripts/rubin_hbm_leverage.py'], ['scripts/ai_component_leadtime_watch.py'], ['scripts/agentic_cpu_watch.py'], ['scripts/samsung_electromechanics_cpu_watch.py']]),
         ('skhynix', [['scripts/skhynix_us_memory_watch.py']]),
         ('samsung', [['scripts/hbm_memory_axes.py']]),
     ):
