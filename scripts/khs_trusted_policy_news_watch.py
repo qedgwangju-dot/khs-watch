@@ -772,6 +772,9 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         if is_space_pv_pia_base_rehash_text(haystack):
             print(f"trusted_policy_news=historical_space_pv_rehash key={rule.key} title={title!r}")
             continue
+        if is_polysilicon_11052_base_rehash_text(haystack):
+            print(f"trusted_policy_news=historical_polysilicon_rehash key={rule.key} title={title!r}")
+            continue
         if (
             not detail.get("body_verified")
             or not published
@@ -813,6 +816,8 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 haystack_parts.append(query)
             haystack = " ".join(haystack_parts)
             if is_space_pv_pia_base_rehash_text(haystack):
+                continue
+            if is_polysilicon_11052_base_rehash_text(haystack):
                 continue
             wire_source = trusted_wire_source(haystack)
             if not title or not link or not published:
@@ -899,6 +904,25 @@ def is_space_pv_pia_base_rehash_text(value: str) -> bool:
     if not any(term in text for term in SPACE_PV_PIA_BASE_TERMS):
         return False
     return not any(term in text for term in SPACE_PV_STAGE_CHANGE_TERMS)
+
+
+def is_polysilicon_11052_base_rehash_text(value: str) -> bool:
+    text = clean_text(value).lower()
+    if not ("polysilicon" in text and "11052" in text):
+        return False
+    base_terms = (
+        "minimum import price", "minimum import prices", "mip program",
+        "15% ad valorem", "15 percent ad valorem",
+        "adjusting imports of polysilicon", "onshoring",
+    )
+    if not any(term in text for term in base_terms):
+        return False
+    stage_change_terms = (
+        "amend", "amended", "amendment", "modify", "modified", "revision", "revised",
+        "waiver", "exemption", "temporary final rule", "stockpil", "import prohibition",
+        "new rule", "new guidance", "changes to", "changed",
+    )
+    return not any(term in text for term in stage_change_terms)
 
 
 def semantic_policy_event_key(item: dict) -> str:
