@@ -7,6 +7,8 @@ on:
       - ".github/workflows/khs-policy-watch.yml"
       - "scripts/khs_policy_watch.py"
       - "scripts/khs_policy_alert_guardrails.py"
+      - "scripts/khs_policy_alert_router.py"
+      - "scripts/khs_telegram_delivery_guard.py"
       - "scripts/khs_trusted_policy_news_watch.py"
       - "scripts/khs_nuclear_policy_watch.py"
       - "tests/test_polysilicon_policy_guard.py"
