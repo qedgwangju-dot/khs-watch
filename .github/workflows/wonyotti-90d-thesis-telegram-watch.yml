@@ -9,6 +9,9 @@ on:
       - "data/wonyotti_90d_thesis_watch_state.json"
   schedule:
     - cron: "2,17,32,47 * * * *"
+  workflow_run:
+    workflows: ["GAMEJOA preopen news radar"]
+    types: [completed]
   workflow_dispatch:
     inputs:
       send_test:
