@@ -376,6 +376,9 @@ def main():
         "last_relevant_count": len(relevant_items),
         "last_stale_suppressed_count": len(stale),
         "errors": errors[-20:],
+        "alert_basis": "topic_event_official_state_change",
+        "article_role": "evidence_and_crosscheck_only",
+        "baseline_guard": "suppress_20260922_roadmap_rehash_unless_execution_or_status_changes",
     }
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
