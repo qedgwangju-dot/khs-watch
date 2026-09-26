@@ -15,7 +15,7 @@ from scripts.korea_energy_mix_watch import (
     render,
     topic_match,
 )
-from scripts.korea_energy_mix_watch_runner import interpret_article_body, semantic_event_key
+from scripts.korea_energy_mix_watch_runner import interpret_article_body, semantic_event_key, semantic_event_level
 
 
 def test_topic_match_all_power_plan_mentions():
@@ -199,3 +199,38 @@ def test_nuclear_deliberation_interpretation_separates_poll_from_policy_change()
     assert "10월" in result
     assert "여론조사 숫자는 별도 구분" in result
     assert "재알림 사유로 보지 않음" in result
+
+
+def test_article_only_nuclear_commentary_is_suppressed():
+    row = {
+        "title": "단순 찬반 아닌 전력충당 위한 원전 논의 - 헤럴드경제",
+        "publisher": "헤럴드경제",
+        "official": False,
+        "published": "Tue, 22 Sep 2026 01:00:00 GMT",
+        "plan_stage": "전기본 관련",
+    }
+    assert semantic_event_key(row) == "12th-plan|nuclear-deliberation"
+    assert semantic_event_level(row) == 1
+
+
+def test_poll_only_nuclear_article_does_not_trigger():
+    row = {
+        "title": "국민 10명 중 8명 신규 원전 필요…찬성률 79.2%",
+        "publisher": "서울경제",
+        "official": False,
+        "published": "Fri, 25 Sep 2026 01:00:00 GMT",
+        "plan_stage": "전기본 관련",
+    }
+    assert semantic_event_key(row) == "12th-plan|nuclear-opinion"
+    assert semantic_event_level(row) == 0
+
+
+def test_lng_capacity_market_not_misclassified_as_nuclear_event():
+    row = {
+        "title": "원전 1기급 LNG 용량시장 다시 연다",
+        "publisher": "매일경제",
+        "official": False,
+        "published": "Sun, 13 Sep 2026 01:00:00 GMT",
+        "plan_stage": "전기본 관련",
+    }
+    assert semantic_event_key(row).startswith("12th-plan|lng-capacity-market|")
