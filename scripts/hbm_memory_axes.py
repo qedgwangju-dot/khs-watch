@@ -18,26 +18,15 @@ OUT = ROOT / 'out'
 VERSION = 1
 FOUNDRY_TRACK_VERSION = 1
 EXTRA_QUERIES = [
-    '(HBM4 OR HBM4E) (24Gb OR 32Gb OR 36GB OR 32GB OR 48GB) (capacity OR 용량 OR 적층)',
+    '(HBM4 OR HBM4E) (24Gb OR 32Gb OR 36GB OR 48GB OR 적층 OR 용량)',
     'DDR5 RDIMM (premium OR spot OR contract OR 현물 OR 고정거래)',
-    '(HBM OR DDR5) (wafer OR 웨이퍼) (allocation OR 비중 OR 배분)',
-    'HBM ("glass carrier" OR "글라스 캐리어" OR "유리 지지판") (cleaning OR 세정)',
-    '(P5 OR Fab1) (삼성 OR Samsung) (가동 OR 양산 OR production OR delay)',
-    '말레이시아 8542323000 HBM 수출 8월 16억2454만달러',
-    'Malaysia 8542323000 HBM exports Intel ASE TF-AMD MAPC advanced packaging',
-    'Bernstein HBM revenue estimate Samsung SK hynix 3Q26 exports regression',
-    'J.P. Morgan HBM revenue estimate Samsung SK hynix Micron quarter forecast',
-    'UBS HBM revenue estimate Samsung SK hynix Micron quarter forecast',
-    'TSMC advanced packaging testing tester shortage capex CoWoS',
-    'ASE advanced packaging testing capex 10.5 billion AI',
-    '디아이 디지털프론티어 와이씨 엑시콘 HBM 검사장비 수주',
-    '인텍플러스 CoWoS 파일럿 품질검증 정식계약',
-    '펨트론 HBM 검사장비 SK하이닉스 수주',
-    'ISC HBM 테스트 솔루션 메모리 3사 공급',
-    '삼성 HBM4 베이스다이 4나노 풀가동 증설 가격 인상',
-    'Samsung HBM4 base die 4nm full utilization expansion price increase',
-    '삼성 HBM5 베이스다이 2나노 신규 생산라인 투자 GAA',
-    'Samsung HBM5 2nm base die production line investment GAA TSV',
+    '(HBM OR DDR5) (wafer OR 웨이퍼 OR "glass carrier" OR 글라스 캐리어 OR P5) (allocation OR 비중 OR 세정 OR 가동)',
+    '(Malaysia OR 말레이시아) 8542323000 HBM (Intel OR ASE OR "TF-AMD" OR MAPC OR packaging)',
+    '(Bernstein OR "J.P. Morgan" OR UBS OR Citi OR "Morgan Stanley") HBM (revenue OR 매출 OR share OR 점유율)',
+    '(TSMC OR ASE) (advanced packaging OR CoWoS OR 후공정) (testing OR tester OR capex OR 설비투자)',
+    '(디아이 OR 디지털프론티어 OR 와이씨 OR 엑시콘 OR 인텍플러스 OR 펨트론 OR ISC) HBM (검사 OR 테스트 OR 수주 OR 검증)',
+    '(Samsung OR 삼성) HBM4 (base die OR 베이스다이) (4nm OR 4나노) (풀가동 OR 증설 OR 가격 OR capacity)',
+    '(Samsung OR 삼성) HBM5 (2nm OR 2나노) (base die OR 베이스다이 OR GAA OR TSV OR 생산라인 OR 투자)',
 ]
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
@@ -1256,6 +1245,7 @@ def main():
     body_cache = {}
     def gather():
         events = original_read()
+        eligible = []
         for e in events:
             if not is_axis_text(e.get('title', '') + ' ' + e.get('description', '')):
                 continue
@@ -1266,10 +1256,16 @@ def main():
             except ValueError:
                 coverage.append('자료 게시일 미확인: 원문 상태 추출 보류')
                 continue
+            eligible.append(e)
+        eligible.sort(key=lambda e: (e.get('rank', 0), e.get('published_at_kst') or ''), reverse=True)
+        max_body_fetches = 32
+        if len(eligible) > max_body_fetches:
+            coverage.append(f'원문 조회 예산 적용: 후보 {len(eligible)}건 중 우선순위 상위 {max_body_fetches}건 정밀 확인')
+        for e in eligible[:max_body_fetches]:
             url = e.get('direct_link', '')
             try:
                 if url not in body_cache:
-                    raw = legacy.fetch(url, timeout=14).decode('utf-8', errors='replace')
+                    raw = legacy.fetch(url, timeout=8).decode('utf-8', errors='replace')
                     body_cache[url] = read_document(raw)
                 body, pub = body_cache[url]
                 source = dict(e)
