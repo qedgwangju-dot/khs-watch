@@ -86,7 +86,7 @@ STAGE_KEYWORDS = {
         "outer continental shelf", "ocs", "construction and operations plan", "cop", "record of decision",
         "environmental impact statement", "eis", "restarts", "resumes", "freeze", "pause", "허가", "승인", "동결 해제",
     ],
-    "sanctions_tariffs_export": ["sanctions", "tariff", "section 301", "export controls", "entity list", "ofac", "bis", "관세", "제재", "수출통제"],
+    "sanctions_tariffs_export": ["sanctions", "tariff", "section 301", "section 232", "export controls", "entity list", "ofac", "bis", "관세", "제재", "수출통제"],
     "china_trade_controls": [
         "export ban", "export bans", "export suspension", "suspend exports", "suspended exports",
         "export restriction", "export restrictions", "export licensing", "dual-use items",
@@ -278,6 +278,7 @@ SOURCES = [
     Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),
     Source("Federal Register chips export", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=semiconductor+export+controls+final+rule"),
     Source("Federal Register tariffs", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=tariff+section+301+final+rule"),
+    Source("Federal Register polysilicon Section 232", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=polysilicon+proclamation+11052+section+232+stockpiling+minimum+import+price"),
     Source("Federal Register Commerce national security", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=commerce+national+security+import+export+controls+tariff+semiconductor+robot+inverter"),
     Source("Federal Register DOE FERC NRC power", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=doe+ferc+nrc+power+grid+nuclear+data+center+transformer+reactor+loan"),
     Source("Federal Register DOE restrictions loans", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=department+of+energy+loan+guarantee+funding+opportunity+restriction+ban+efficiency+standard+critical+materials"),
