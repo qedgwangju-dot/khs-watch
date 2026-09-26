@@ -38,7 +38,9 @@ jobs:
           python-version: "3.12"
 
       - name: Validate watcher and formatter
-        run: python -m py_compile scripts/honam_semiconductor_watch.py scripts/honam_event_filter.py scripts/merge_honam_state.py scripts/honam_telegram_formatter.py
+        run: |
+          python -m py_compile scripts/honam_semiconductor_watch.py scripts/honam_event_filter.py scripts/merge_honam_state.py scripts/honam_telegram_formatter.py
+          python tests/test_honam_event_filter.py -q
 
       - name: Check Honam semiconductor and Jangrok sources
         run: python scripts/honam_semiconductor_watch.py
