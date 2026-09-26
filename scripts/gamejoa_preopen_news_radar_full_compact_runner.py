@@ -6645,6 +6645,32 @@ def semantic_event_theme(alert: dict) -> str:
         )
     )
     if (
+        "polysilicon" in text
+        and "11052" in text
+        and (
+            "measures to restrict stockpiling" in text
+            or ("stockpil" in text and ("temporary final rule" in text or "import prohibition" in text or "new importer" in text or "waiver" in text))
+        )
+    ):
+        return "polysilicon-11052-stockpiling-tfr"
+    if (
+        "polysilicon" in text
+        and "11052" in text
+        and any(term in text for term in (
+            "minimum import price", "minimum import prices", "mip program",
+            "15% ad valorem", "15 percent ad valorem",
+            "adjusting imports of polysilicon", "onshoring",
+        ))
+    ):
+        return "polysilicon-11052-base"
+    if any(term in text for term in (
+        "space photovoltaics research and development partnership intermediary agreement",
+        "space photovoltaics (pv) research and development partnership intermediary agreement",
+        "space-based energy generation",
+        "solar panels in space applications",
+    )):
+        return "doe-space-pv-pia-2026-08-31"
+    if (
         "레버리지" in text
         and any(term in text for term in ("etf", "etn"))
         and any(term in text for term in ("기본예탁금", "3000만원", "대용증권", "7월 31일", "31일부터"))
@@ -7183,6 +7209,27 @@ def korean_title(alert: dict) -> str:
         return "백악관, 재생농업·미국 농가 회복력 강화 행정명령 발표"
     if has_term(text, ["resilient networks", "disruptions to communications", "dirs"]):
         return "FCC, 재난 시 통신망 장애보고 시스템(DIRS) 현대화 규칙 공표"
+    if (
+        "polysilicon" in text
+        and "11052" in text
+        and (
+            "measures to restrict stockpiling" in text
+            or ("stockpil" in text and ("temporary final rule" in text or "import prohibition" in text))
+        )
+    ):
+        return "미 상무부, 폴리실리콘 사재기 차단 규칙 시행"
+    if (
+        "polysilicon" in text
+        and "11052" in text
+        and has_term(text, ["minimum import price", "15% ad valorem", "15 percent ad valorem", "adjusting imports of polysilicon"])
+    ):
+        return "미국, 폴리실리콘 Section 232 최저수입가격·관세 조치"
+    if has_term(text, [
+        "space photovoltaics research and development partnership intermediary agreement",
+        "space-based energy generation",
+        "solar panels in space applications",
+    ]):
+        return "미 에너지부, 우주태양광 R&D 지원사업 공고"
     if has_term(text, ["digital opportunity data collection", "form 477"]):
         return "FCC, 브로드밴드 데이터 수집·Form 477 현대화 문서 공표"
     if has_term(text, ["fcc", "federal communications commission"]) and has_term(text, ["national security", "covered list", "equipment authorization", "foreign equipment", "inverter", "solar inverter"]):
@@ -7529,6 +7576,32 @@ def is_low_value_market_commentary(alert: dict) -> bool:
     return not has_term(title, hard_facts)
 
 
+def is_space_pv_pia_base_rehash(alert: dict) -> bool:
+    text = base.norm(
+        " ".join(
+            str(alert.get(key) or "")
+            for key in (
+                "source_title", "original_news", "news", "source_abstract",
+                "source_body", "summary", "telegram_core_fact", "policy_plain_summary",
+            )
+        )
+    )
+    base_terms = (
+        "space photovoltaics research and development partnership intermediary agreement",
+        "space photovoltaics (pv) research and development partnership intermediary agreement",
+        "space-based energy generation",
+        "solar panels in space applications",
+    )
+    if not any(term in text for term in base_terms):
+        return False
+    stage_change_terms = (
+        "awardee", "awardees", "recipient", "recipients", "selected for award",
+        "selected projects", "selection notification", "selection notifications",
+        "announces selections", "announced selections", "awarded to",
+    )
+    return not any(term in text for term in stage_change_terms)
+
+
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
     candidates = initial + alerts
@@ -7553,6 +7626,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     selected: list[dict] = []
     seen: set[tuple[str, str]] = set()
     for alert in candidates:
+        if is_space_pv_pia_base_rehash(alert):
+            alert["_exclusion_reason"] = "historical_space_pv_pia_rehash"
+            continue
         if is_low_value_market_commentary(alert):
             alert["_exclusion_reason"] = "low_value_market_commentary"
             continue
@@ -8352,9 +8428,17 @@ def send_telegram(text: str) -> None:
         req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=body, method="POST")
         try:
             with urllib.request.urlopen(req, timeout=25) as resp:
-                resp.read()
-            write_delivery_status("sent", chat_id, len(text), "", len(message), attempt)
-            print(f"Telegram: sent chars={len(message)} entities={len(entities)} original_chars={len(text)} attempt={attempt}")
+                telegram_response = json.loads(resp.read().decode("utf-8"))
+            if not telegram_response.get("ok"):
+                raise RuntimeError(f"Telegram rejected message: {telegram_response}")
+            message_id = (telegram_response.get("result") or {}).get("message_id")
+            if message_id is None:
+                raise RuntimeError("Telegram send succeeded without message_id")
+            write_delivery_status("sent", chat_id, len(text), "", len(message), attempt, message_id)
+            print(
+                f"Telegram: sent message_id={message_id} chars={len(message)} "
+                f"entities={len(entities)} original_chars={len(text)} attempt={attempt}"
+            )
             return
         except urllib.error.HTTPError as exc:
             error_text = exc.read().decode("utf-8", "replace")[:500]
@@ -8445,6 +8529,7 @@ def write_delivery_status(
     error: str = "",
     sent_chars: int | None = None,
     attempts: int | None = None,
+    message_id: int | None = None,
 ) -> None:
     payload = {
         "status": status,
@@ -8452,6 +8537,7 @@ def write_delivery_status(
         "original_chars": original_chars,
         "sent_chars": sent_chars,
         "attempts": attempts,
+        "message_id": message_id,
         "error": error,
     }
     base.OUT.mkdir(exist_ok=True)
