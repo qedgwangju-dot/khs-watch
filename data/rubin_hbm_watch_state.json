@@ -211,5 +211,40 @@
     ],
     "last_validation_cutoff": "2026-09-26",
     "last_checked_at_kst": "2026-09-26T10:44:21+09:00"
+  },
+  "samsung_electromechanics_cpu_realization": {
+    "as_of": "2026-09-23",
+    "company": "삼성전기",
+    "source_kind": "메리츠증권 전망 + 삼성전기 공식 실적/계약 교차검증",
+    "metrics": {
+      "q3_revenue_forecast_krw_100m": 38200,
+      "q3_operating_profit_forecast_krw_100m": 6571,
+      "q3_consensus_operating_profit_krw_100m": 6010,
+      "q3_implied_opm_pct": 17.201570680628272,
+      "component_opm_floor_pct": 20,
+      "abf_opm_floor_pct": 30,
+      "cpu_abf_share_floor_pct": 45,
+      "q2_revenue_actual_krw_100m": 34572,
+      "q2_operating_profit_actual_krw_100m": 4404,
+      "q2_component_revenue_krw_100m": 16494,
+      "q2_package_revenue_krw_100m": 7716,
+      "ai_server_mlcc_contract_2027_krw_100m": 10722
+    },
+    "facts": {
+      "server_cpu_fcbga_mass_production": true,
+      "mlcc_lta_customer_count_min": 10,
+      "north_america_cpu_mlcc_lta_named_customer": false,
+      "sixth_gen_server_cpu_abf_customer_named": false,
+      "meta_venice_validation": true,
+      "meta_venice_large_scale_deployment_confirmed": false
+    },
+    "seen_urls": [
+      "https://biz.chosun.com/stock/stock_general/2026/09/23/GAZ6ULSXUJDFJB2VFLWMC4DFBY/",
+      "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
+      "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501",
+      "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
+      "https://newsroom.amd.com/news/amd-and-meta-announce-expanded-strategic-partnersh/"
+    ],
+    "last_checked_cutoff": "2026-09-23"
   }
 }
