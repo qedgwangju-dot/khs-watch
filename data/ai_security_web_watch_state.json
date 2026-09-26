@@ -2,11 +2,41 @@
   "initialized": true,
   "last_collection": {
     "errors": [],
-    "material_items": 0,
-    "new_material_items": 0,
-    "raw_items": 31
+    "material_items": 3,
+    "new_material_items": 3,
+    "raw_items": 56
   },
   "seen": {
+    "36cdbc3c7efe9983a34b0330": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-26T13:15:55.250969+00:00",
+      "published_at": "2026-09-25T22:55:00+00:00",
+      "severity": 2,
+      "source": "theguardian.com",
+      "title": "OpenAI says agents leaked 53 images from ChatGPT users in latest example of rogue activity - theguardian.com",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNd0dTclpUU0M5bk5NTkk3MlVJeF9vZXZiQVRTLW03V3pxRjZ1WHlxaDBRVUUxbUN5eVRhQlpoTnZQZUdodndHVU9ldHQyazVwamc3OUZqaUktVmxvZmd3d3Y3RHg4Y0lzakJ1bWZtSG5fbFlMbmE4WnBVei1WdS1mem1CYWJ1MFJ1ZEJZRkJwUHJQdEU?oc=5",
+      "vendor": "OpenAI"
+    },
+    "5aaae4b02ac4b5fa78e35f01": {
+      "category": "데이터·개인정보",
+      "first_seen_at": "2026-09-26T13:15:55.250969+00:00",
+      "published_at": "2026-09-25T20:37:00+00:00",
+      "severity": 2,
+      "source": "Reuters",
+      "title": "EXCLUSIVE: OpenAI works to understand full scope of agent activity as user data leak emerges - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZUEtbWlTaWtWX0dYU2dvc0dCT3c4TW8wQS1nOWFVUWp4NU1nNFVxZXMybmhIWTlLVWlUalRVVk5JUVNrdVRfQVVRTlVtNWtwTndFTWlpOEZ1WW9OZi1peUNJNFZMRHdVWXQ1VkhNNkxkS1dVNjFNWGtPenNtYjJyVkdnZzF1ZXNzUWsxbjlPbm5EcDNTVkdaYkN6ckdlTkRrTmJqWUFQOXUtVTJTWGVTYnZlUzM?oc=5",
+      "vendor": "OpenAI"
+    },
+    "8f93e17c409b9cb7748da9eb": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-26T13:15:55.250969+00:00",
+      "published_at": "2026-09-26T01:16:00+00:00",
+      "severity": 2,
+      "source": "Fortune",
+      "title": "OpenAI rogue agents leaked 53 ChatGPT user images, reportedly created nearly 1M links with encoded info - Fortune",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQcXlHQk1XOUZtdWtxUmNXYTNoSXd5LUlfMHpIQ1BXWl8zVmVvMlkweEdlc3NKeUdZUENHeDVpTDRpUnJueFgyRUdSUEZfWXBZaHhpR2YxOUxWNjZyTWNHdk1udGs2Q2tQUjBsUTUxalFkdHBScDEwTnY3dmI3ZDI2dU5pc1pnYkFpamExNGFGTWdjZVJTWmV4QlhmcEp2RkxXYnoyWjFjZFBVV1AxOXVxVXBWT0c2M1hEOGJNVg?oc=5",
+      "vendor": "OpenAI"
+    },
     "cfaea85e3eaacdbcb71e8fc1": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-26T07:42:53.888012+00:00",
@@ -18,5 +48,5 @@
       "vendor": "Meta"
     }
   },
-  "updated_at_kst": "2026-09-26T22:14:45+09:00"
+  "updated_at_kst": "2026-09-26T22:15:55+09:00"
 }
