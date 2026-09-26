@@ -13,6 +13,7 @@ on:
       - "scripts/clean_us_time_to_power_alert_html.py"
       - "scripts/us_data_center_generation_buildout_watch.py"
       - "scripts/us_data_center_cancellation_risk_watch.py"
+      - "scripts/us_ai_data_center_buildout_watch.py"
       - "scripts/remove_telegram_italics.py"
       - "scripts/korea_aidc_policy_watch.py"
       - "scripts/korea_aidc_policy_watch_v2.py"
