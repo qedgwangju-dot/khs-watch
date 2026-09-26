@@ -8,6 +8,7 @@ on:
       - "scripts/honam_event_filter.py"
       - "scripts/merge_honam_state.py"
       - "scripts/honam_telegram_formatter.py"
+      - "tests/test_honam_event_filter.py"
       - "data/honam_semiconductor_watch_state.json"
   schedule:
     - cron: "41 * * * *"
