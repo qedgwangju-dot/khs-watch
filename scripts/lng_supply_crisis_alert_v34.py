@@ -26,6 +26,8 @@ _BASE_SETUP = core.build_setup_test
 _BASE_POLARITY_V34 = core.classify_polarity
 _BASE_CATEGORY_LABEL_V34 = core.category_label
 _BASE_CONFIRMED_V34 = core.confirmed_news_groups
+_BASE_V32_STRICT_TITLE_V34 = v32._strict_title
+_BASE_V32_SOURCE_KO_V34 = v32._source_ko
 
 ALASKA_CATEGORY = "alaska_lng_supply"
 ASIA_DEMAND_CATEGORY = "asia_lng_demand_rethink"
@@ -117,7 +119,10 @@ v8.SOURCE_KO.update({
     "department of energy": "미국 에너지부",
     "state of alaska": "알래스카주 정부",
     "alaska gasline development corporation": "알래스카가스라인개발공사(AGDC)",
+    "alaska gasline development corp": "알래스카가스라인개발공사(AGDC)",
+    "alaska gasline development": "알래스카가스라인개발공사(AGDC)",
     "agdc": "알래스카가스라인개발공사(AGDC)",
+    "glenfarne alaska lng": "Glenfarne Alaska LNG",
     "glenfarne": "Glenfarne",
 })
 
@@ -375,7 +380,17 @@ def _title_ko_v34(item: core.NewsItem) -> str:
             "refinery_capacity_tight": "정유설비 여유능력 부족·가동 차질 확대",
             "fuel_buffer_rebuild": "연료재고·정제능력 회복 진전",
         }.get(subtype, "정제제품·연료 공급망의 확정 변화")
-    return v32._strict_title(item)
+    return _BASE_V32_STRICT_TITLE_V34(item)
+
+
+def _source_ko_v34(source: str) -> str:
+    mapped = _BASE_V32_SOURCE_KO_V34(source)
+    if mapped != "해외 매체":
+        return mapped
+    # 공식 기관인데 사전 매핑이 아직 없는 경우 '해외 매체'로 뭉개지 말고 식별명을 보존한다.
+    if core.source_matches(source, core.OFFICIAL_SOURCE_ALIASES):
+        return str(source or "공식 기관").strip()
+    return mapped
 
 
 def _evidence_lines_v34(groups) -> list[str]:
@@ -389,7 +404,7 @@ def _evidence_lines_v34(groups) -> list[str]:
             if key in seen:
                 continue
             seen.add(key)
-            source = v32._source_ko(str(getattr(item, "source", "주요 매체") or "주요 매체"))
+            source = _source_ko_v34(str(getattr(item, "source", "주요 매체") or "주요 매체"))
             title = _title_ko_v34(item)
             line = f"• <b>{html.escape(source)}</b> · {html.escape(title)}"
             if link:
@@ -400,9 +415,11 @@ def _evidence_lines_v34(groups) -> list[str]:
     return lines
 
 
-# v33 본문 빌더가 호출하는 근거 렌더러를 전용 한국어 버전으로 교체한다.
+# v33/v32 본문 빌더가 호출하는 근거 렌더러도 동일 규칙으로 교체한다.
 v33._title_ko = _title_ko_v34
 v33._evidence_lines = _evidence_lines_v34
+v32._strict_title = _title_ko_v34
+v32._source_ko = _source_ko_v34
 
 
 def _build_fuel_body_v34(groups, quotes) -> str:
@@ -594,6 +611,41 @@ def _self_validate_cross_source_relevance_v34() -> None:
 _self_validate_alaska_body_v34()
 _self_validate_lng_relevance_v34()
 _self_validate_cross_source_relevance_v34()
+
+
+def _self_validate_alaska_policy_render_v34() -> None:
+    item = core.NewsItem(
+        category="alaska_lng",
+        polarity="easing",
+        subtype="alaska_policy_signal",
+        title="South Korea's Lee, Trump welcome progress in US strategic investment projects",
+        source="Alaska Gasline Development Corporation",
+        link="https://example.com/alaska-policy",
+        published_utc="2026-09-23T00:00:00+00:00",
+        published_epoch=1.0,
+        official=True,
+        event_id="fixture-alaska-policy",
+    )
+    rendered = v32._replace_evidence_text(
+        '<b>Alaska Gasline Development Corporation</b> · South Korea\'s Lee, Trump welcome progress in US strategic investment projects',
+        [{
+            "category": "alaska_lng",
+            "polarity": "easing",
+            "subtype": "alaska_policy_signal",
+            "event_id": "fixture-alaska-policy",
+            "latest_epoch": 1.0,
+            "evidence": [item],
+            "verification": "공식 원문",
+        }],
+    )
+    assert "알래스카가스라인개발공사(AGDC)" in rendered
+    assert "정책 발언의 실질 변화" in rendered
+    assert "해외 매체" not in rendered
+    assert "LNG 수급 완화 관련 확정 변화" not in rendered
+
+
+_self_validate_alaska_policy_render_v34()
+
 
 def _asia_demand_groups(groups) -> list[dict]:
     return [group for group in groups if str(group.get("category") or "") == ASIA_DEMAND_CATEGORY]
