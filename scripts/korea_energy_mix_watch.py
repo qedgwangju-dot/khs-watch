@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 import requests
+import time
 
 STATE_PATH = Path("data/korea_energy_mix_state.json")
 OUT_DIR = Path("out")
@@ -420,12 +421,20 @@ def collect() -> tuple[list[dict[str, Any]], list[str]]:
     rows: list[dict[str, Any]] = []
     errors: list[str] = []
     for src in RSS_SOURCES:
-        try:
-            response = session.get(str(src["url"]), timeout=35)
-            response.raise_for_status()
-            rows.extend(parse_rss(response.text, str(src["name"]), bool(src["official"])))
-        except Exception as exc:  # noqa: BLE001
-            errors.append(f"{src['name']}: {exc}")
+        last_exc = None
+        for attempt in range(3):
+            try:
+                response = session.get(str(src["url"]), timeout=35)
+                response.raise_for_status()
+                rows.extend(parse_rss(response.text, str(src["name"]), bool(src["official"])))
+                last_exc = None
+                break
+            except Exception as exc:  # noqa: BLE001
+                last_exc = exc
+                if attempt < 2:
+                    time.sleep(2 * (attempt + 1))
+        if last_exc is not None:
+            errors.append(f"{src['name']}: {last_exc}")
 
     unique = {str(row["id"]): row for row in rows}
     now = datetime.now(timezone.utc)
@@ -447,6 +456,15 @@ def main(argv: list[str] | None = None) -> int:
     seen_ids = set(str(x) for x in state.get("seen", []))
     seen_events = {str(k): int(v) for k, v in dict(state.get("seen_events", {})).items()}
     rows, errors = collect()
+
+    # 모든 수집 경로가 실패했는데도 "신규 변화 없음"이라고 단정하지 않는다.
+    # 상태 파일도 건드리지 않아 다음 정상 실행에서 누락된 변화를 다시 잡을 수 있게 한다.
+    if not rows and errors and not args.force_notify:
+        print("한국 전기본·전원믹스 판정 보류 — 핵심 수집 경로 실패")
+        print("; ".join(errors))
+        set_output("changed", "false")
+        set_output("source_complete", "false")
+        return 0
 
     notify: list[dict[str, Any]] = []
     for row in rows:
@@ -476,9 +494,13 @@ def main(argv: list[str] | None = None) -> int:
     save_state(seen_ids, seen_events)
 
     if not notify:
-        print("한국 전기본·전원믹스 신규 변화 없음")
         if errors:
-            print("; ".join(errors))
+            print("한국 전기본·전원믹스 신규 변화 없음 — 조회 가능한 출처 기준")
+            print("일부 수집 경로 실패: " + "; ".join(errors))
+            set_output("source_complete", "false")
+        else:
+            print("한국 전기본·전원믹스 신규 변화 없음")
+            set_output("source_complete", "true")
         set_output("changed", "false")
         return 0
 
