@@ -19,6 +19,24 @@ POWER_DELTA=50.0
 PROGRESS_DELTA=5.0
 DATE_DELTA=60
 
+TRACKED_NAMES=(
+"Microsoft Fairwater Wisconsin",
+"Anthropic-Amazon New Carlisle",
+"OpenAI Stargate New Mexico",
+"Meta Hyperion",
+"Colossus 2",
+"OpenAI Stargate Shackelford",
+"QTS Cedar Rapids",
+"Meta Prometheus",
+"Goodnight",
+"OpenAI Stargate Michigan",
+"OpenAI Stargate Wisconsin",
+"Google Fort Wayne",
+"OpenAI Stargate Milam",
+"OpenAI Stargate Abilene",
+"Microsoft Fairwater Atlanta",
+)
+
 ALIASES={
 "Microsoft Fairwater Wisconsin":"MS Fairwater (WI)",
 "Anthropic-Amazon New Carlisle":"Amazon New Carlisle (IN)",
@@ -29,6 +47,7 @@ ALIASES={
 "QTS Cedar Rapids":"QTS Cedar Rapids (IA)",
 "Meta Prometheus":"Meta Prometheus (OH)",
 "Google Goodnight":"Google Goodnight (TX)",
+"Goodnight":"Google Goodnight (TX)",
 "OpenAI Stargate Michigan":"Stargate Michigan",
 "OpenAI Stargate Wisconsin":"Stargate Wisconsin",
 "Google Fort Wayne":"Google Fort Wayne (IN)",
@@ -90,7 +109,9 @@ def risky(status):
 def updated_label():
     try:
         txt=" ".join(BeautifulSoup(fetch(DOWNLOADS,25).text,"html.parser").stripped_strings)
-        m=re.search(r"AI Data Centers\s+CSV,?\s+Updated\s+([A-Z][a-z]+\.?\s+\d{1,2},\s*\d{4})",txt)
+        idx=txt.find("AI Data Centers")
+        snippet=txt[idx:idx+260] if idx>=0 else txt
+        m=re.search(r"Updated\s+([A-Z][a-z]{2}\.?\s+\d{1,2},\s*\d{4})",snippet)
         if m:return m.group(1).replace(".","")
     except Exception:pass
     return "업데이트일 확인 불가"
@@ -126,17 +147,17 @@ def snapshot(dc_text,tl_text):
             "completion_date":finish.isoformat(),"completion":qlabel(finish,progress),
             "stage":stage(cur.get("status",""),current,planned,progress),"risk":risky(cur.get("status","")),
         })
-    out.sort(key=lambda x:(-x["planned_mw"],x["name"]))
-    top=out[:TOP_N]
+    by_name={x["name"]:x for x in out}
+    top=[by_name[name] for name in TRACKED_NAMES if name in by_name]
     digest=hashlib.sha256(json.dumps(top,ensure_ascii=False,sort_keys=True,separators=(",",":")).encode()).hexdigest()
     return top,digest
 
 def changes(old,new):
     prev={x.get("name"):x for x in old.get("projects",[])}
-    if not prev:return ["Epoch AI 미국 상위 15개 프로젝트 기준선 신규 연결"]
+    if not prev:return ["Epoch AI 미국 핵심 15개 프로젝트 기준선 신규 연결"]
     out=[]; now={x["name"]:x for x in new}
-    for n in sorted(set(now)-set(prev)):out.append(f"상위15 신규 진입: {now[n]['display']} {now[n]['planned_mw']:,.0f}MW")
-    for n in sorted(set(prev)-set(now)):out.append(f"상위15 제외: {prev[n].get('display',n)}")
+    for n in sorted(set(now)-set(prev)):out.append(f"추적 목록 신규 진입: {now[n]['display']} {now[n]['planned_mw']:,.0f}MW")
+    for n in sorted(set(prev)-set(now)):out.append(f"추적 목록 제외: {prev[n].get('display',n)}")
     for n,p in now.items():
         o=prev.get(n)
         if not o:continue
@@ -158,7 +179,7 @@ def render(ps,chg,upd):
     lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",f"출처: Epoch AI · {h(upd)}","용량 = 계획 IT전력 / 진행률 = 현재 IT전력 ÷ 계획 IT전력","","<b>🔄 이번 핵심 변화</b>"]
     lines += [f"• {h(x)}" for x in chg[:6]]
     if len(chg)>6:lines.append(f"• 그 외 {len(chg)-6}건은 상태에 반영")
-    lines += ["",f"• 상위 {len(ps)}개 계획 IT전력 합계 <b>{planned/1000:.1f}GW</b>",f"• 현재 IT전력 합계 <b>{current/1000:.1f}GW</b> · 가중 진행률 <b>{pct:.1f}%</b>",""]
+    lines += ["",f"• 핵심 {len(ps)}개 계획 IT전력 합계 <b>{planned/1000:.1f}GW</b>",f"• 현재 IT전력 합계 <b>{current/1000:.1f}GW</b> · 가중 진행률 <b>{pct:.1f}%</b>",""]
     for i,p in enumerate(ps,1):
         inv=p["investors"] if p["investors"]!="미기재" else "Epoch 투자자 미기재"
         lines += [f"<b>{badge(i)} {h(p['display'])}{' ⚠️' if p['risk'] else ''}</b>",
@@ -174,7 +195,7 @@ def main():
     old=load_state(); errs=[]
     try:
         a=fetch(DC_URL); b=fetch(TL_URL); ps,digest=snapshot(a.text,b.text)
-        if len(ps)<10:raise RuntimeError(f"Epoch US projects too few: {len(ps)}")
+        if len(ps)!=len(TRACKED_NAMES):raise RuntimeError(f"Epoch tracked projects missing: {len(ps)}/{len(TRACKED_NAMES)}")
         src_hash=hashlib.sha256(a.content+b"\n"+b.content).hexdigest()
     except Exception as e:
         if not old.get("projects"):raise
