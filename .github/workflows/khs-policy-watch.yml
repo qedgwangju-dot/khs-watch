@@ -533,6 +533,7 @@ jobs:
               )
           else:
               sent_by_route = {}
+              message_ids = []
               for title, body, digest, route in sendable:
                   text = prepare_telegram_html(title, body)
                   if len(text) > 4096:
@@ -562,6 +563,7 @@ jobs:
                       "message_id": message_id,
                   }
                   sent_by_route[route] = sent_by_route.get(route, 0) + 1
+                  message_ids.append({"route": route, "message_id": message_id})
 
               actual_sent = sum(sent_by_route.values())
               if actual_sent:
@@ -576,6 +578,7 @@ jobs:
                               "sent": actual_sent,
                               "duplicate_skipped": len(skipped),
                               "sent_by_route": sent_by_route,
+                              "message_ids": message_ids,
                               "confirmed_at_kst": confirmed_at.isoformat(timespec="seconds"),
                           },
                           ensure_ascii=False,
