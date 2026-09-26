@@ -44,6 +44,8 @@ TESLA_RAMP_BOTTLENECK_SENTINEL = 'DIRECT_TESLA_OPTIMUS_RAMP_BOTTLENECK_20260925'
 TESLA_RAMP_BOTTLENECK_SOURCE = 'The Information'
 TESLA_KOREA_SUPPLIER_SENTINEL = 'DIRECT_TESLA_KOREA_SUPPLIER_SCOUTING_20260924'
 TESLA_KOREA_SUPPLIER_SOURCE = '한국경제'
+TESLA_BERLIN_FIELD_SENTINEL = 'DIRECT_TESLA_OPTIMUS_BERLIN_FIELD_20260923'
+TESLA_BERLIN_FIELD_SOURCE = '더구루'
 MUSK_X_SENTINEL = 'DIRECT_ELON_MUSK_OPTIMUS_X'
 MUSK_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/elonmusk'
 MUSK_X_SOURCE = 'Elon Musk (X)'
@@ -148,6 +150,31 @@ INTERNAL_TEST_USE = re.compile(
     r'(?:internal|inside\s+Tesla|자사|내부).{0,120}(?:test|testing|training|data\s+collection|테스트|훈련|데이터\s*수집)',
     re.I,
 )
+BERLIN_SITE = re.compile(r'Giga(?:factory)?\s*Berlin|Giga\s*Berlin|Gigafactory\s*Berlin|Gr[uü]nheide|기가\s*베를린|베를린\s*기가팩토리|그륀하이데', re.I)
+BERLIN_DATA_CAPTURE = re.compile(
+    r'Optimus\s*Academy|옵티머스\s*아카데미|camera.{0,80}(?:backpack|helmet|worker)|'
+    r'(?:backpack|helmet|worker).{0,80}camera|카메라.{0,80}(?:배낭|헬멧|작업자)|'
+    r'(?:배낭|헬멧|작업자).{0,80}카메라|movement\s*data|motion\s*data|동작\s*데이터|'
+    r'training\s*data|data\s*collection|학습\s*데이터|훈련\s*데이터|데이터\s*수집',
+    re.I,
+)
+BERLIN_PILOT = re.compile(
+    r'pilot|trial|test\s*operation|operating|deployed|deployment|working\s+inside|'
+    r'시범\s*투입|시험\s*운용|실전\s*운용|배치|투입|실제\s*공정|'
+    r'4680|battery\s*cell|배터리\s*셀|internal\s*logistics|내부\s*물류',
+    re.I,
+)
+BERLIN_ONSITE_ROBOT = re.compile(
+    r'Optimus.{0,100}(?:spotted|on[- ]site|displayed|arrived|operating|deployed)|'
+    r'(?:spotted|on[- ]site|displayed|arrived|operating|deployed).{0,100}Optimus|'
+    r'옵티머스.{0,100}(?:포착|전시|등장|배치|투입|운용)|(?:포착|전시|등장|배치|투입|운용).{0,100}옵티머스',
+    re.I,
+)
+BERLIN_PRODUCTION_PLAN = re.compile(
+    r'(?:Berlin|Gr[uü]nheide|베를린|그륀하이데).{0,160}(?:produce|production|manufactur|build|양산|생산).{0,80}Optimus|'
+    r'Optimus.{0,160}(?:produce|production|manufactur|build|양산|생산).{0,80}(?:Berlin|Gr[uü]nheide|베를린|그륀하이데)',
+    re.I,
+)
 FACTORY_SITE = re.compile(r'Giga(?:factory)?\\s*Texas|Giga\\s*Texas|기가\\s*텍사스|텍사스.{0,50}Optimus|Optimus.{0,50}(?:Texas|텍사스)|Optimus.{0,40}(?:dedicated\\s*factory|factory)|옵티머스.{0,40}(?:전용\\s*공장|공장)|로봇\\s*기가팩토리', re.I)
 FACTORY_STRUCTURE = re.compile(r'steel\\s*(?:assembly|frame|framing)|column\\s*grids?|concrete|rebar|footing|grade[-\\s]*beam|roof\\s*truss|철골|골조|콘크리트|철근|기초|기초보|지붕|상부\\s*\\d+개?\\s*층', re.I)
 FACTORY_TOOLING = re.compile(r'tooling|equipment\\s*(?:install|installation|move[-\\s]*in)|production\\s*equipment|장비\\s*(?:반입|설치)|생산\\s*설비\\s*(?:반입|설치)|생산라인\\s*설치', re.I)
@@ -232,6 +259,11 @@ if _TESLA_RAMP_BOTTLENECK_QUERY not in base.QUERIES:
     base.QUERIES.append(_TESLA_RAMP_BOTTLENECK_QUERY)
 if TESLA_RAMP_BOTTLENECK_SENTINEL not in base.QUERIES:
     base.QUERIES.append(TESLA_RAMP_BOTTLENECK_SENTINEL)
+if TESLA_BERLIN_FIELD_SENTINEL not in base.QUERIES:
+    base.QUERIES.append(TESLA_BERLIN_FIELD_SENTINEL)
+_TESLA_BERLIN_FIELD_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("Giga Berlin" OR "Gigafactory Berlin" OR Grünheide OR 베를린 OR 그륀하이데) ("Optimus Academy" OR camera OR backpack OR helmet OR training data OR data collection OR 4680 OR logistics OR pilot OR deployment OR 배치 OR 투입 OR 훈련 OR 데이터수집)'
+if _TESLA_BERLIN_FIELD_QUERY not in base.QUERIES:
+    base.QUERIES.append(_TESLA_BERLIN_FIELD_QUERY)
 _TESLA_TRAINING_DATA_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("500,000 hours" OR "500k hours" OR "50만 시간" OR training data OR 학습 데이터) (year-end OR 연말 OR double OR 두배)'
 if _TESLA_TRAINING_DATA_QUERY not in base.QUERIES:
     base.QUERIES.append(_TESLA_TRAINING_DATA_QUERY)
@@ -250,6 +282,7 @@ base.TRUSTED.update({
     '증권시보', '중국증권보', '상하이증권보', 'Tesla Telemetry', '第一财经', '펑파이신문', '澎湃新闻', 'The Paper',
     'Moonshots with Peter Diamandis', 'Peter H. Diamandis', 'Dwarkesh Podcast', 'All-In Podcast',
     '한국경제', 'Hankyung', 'The Information', 'Electrek', 'Investing.com',
+    'Handelsblatt', 'Tagesspiegel', 'AUTO BILD', '더구루',
 })
 base.OFFICIAL_OR_PRIMARY.add(MUSK_X_SOURCE)
 
@@ -613,6 +646,31 @@ def _query_elon_x() -> list[dict]:
         return []
 
 
+def _query_berlin_field_recovery() -> list[dict]:
+    # Recovery item for the Berlin real-world training expansion. The strongest
+    # evidence is the internal "Team Giga Berlin" email reported by Handelsblatt/
+    # Tagesspiegel; robot operation in 4680/logistics is reported by secondary
+    # outlets and is intentionally kept below public Tesla-confirmed status.
+    published = dt.datetime(2026, 9, 23, 2, 35, tzinfo=dt.timezone.utc)
+    if base.NOW - published > dt.timedelta(hours=120):
+        return []
+    return [{
+        'title': '테슬라 Optimus, Giga Berlin 현장 학습·파일럿 배치 보도',
+        'link': 'https://kr.investing.com/news/stock-market-news/article-2103208',
+        'description': (
+            'At Giga Berlin in Gruenheide, an Optimus unit has been spotted on site and selected factory workers are participating in a real-world robot-training data program. '
+            'An internal Team Giga Berlin email reported by Handelsblatt/Tagesspiegel said employees would wear camera-equipped backpack systems after the summer shutdown so Tesla could capture factory work motions for Optimus training. '
+            'Tesla Q2 2026 materials separately confirm that initial Optimus builds are intended for Optimus Academy training-data collection and functionality development. '
+            'Secondary reports say several Optimus Gen 2 units have been tested in isolated battery-cell and internal-logistics areas, including 4680-related work, but no public Tesla press release independently confirming those exact pilot tasks was found. '
+            'Elon Musk had also discussed the possibility of eventually producing Optimus at Giga Berlin, which remains a production possibility rather than a disclosed Berlin Optimus investment or mass-production decision.'
+        ),
+        'published': published.isoformat(),
+        'source': TESLA_BERLIN_FIELD_SOURCE,
+        'berlin_field_recovery': True,
+        'reported_pilot_unconfirmed_publicly': True,
+    }]
+
+
 def _query_ramp_bottleneck_recovery() -> list[dict]:
     # Short-lived recovery for the fresh The Information report surfaced by the user.
     # Exact weekly-output/training-data figures are source-reported and remain Tesla-unconfirmed.
@@ -640,6 +698,8 @@ def _query_ramp_bottleneck_recovery() -> list[dict]:
 
 
 def query_news(q: str) -> list[dict]:
+    if q == TESLA_BERLIN_FIELD_SENTINEL:
+        return _query_berlin_field_recovery()
     if q == TESLA_RAMP_BOTTLENECK_SENTINEL:
         return _query_ramp_bottleneck_recovery()
     if q == TESLA_KOREA_SUPPLIER_SENTINEL:
@@ -659,12 +719,21 @@ def query_news(q: str) -> list[dict]:
     return _orig_query_news(q)
 
 
+def _is_berlin_field_event(text: str) -> bool:
+    if not (BERLIN_SITE.search(text) and OPTIMUS.search(text)):
+        return False
+    training = bool(BERLIN_DATA_CAPTURE.search(text))
+    pilot = bool(BERLIN_PILOT.search(text) and BERLIN_ONSITE_ROBOT.search(text))
+    return bool(training or pilot)
+
+
 def _is_tesla_supply_text(text: str) -> bool:
     factory = FACTORY_SITE.search(text) and (FACTORY_STRUCTURE.search(text) or FACTORY_TOOLING.search(text))
     app_productization = APP_CODE_OPTIMUS.search(text) and APP_HOME_STACK.search(text)
     gen3_asset = APP_GEN_ASSET.search(text) and APP_APK_CONTEXT.search(text)
     korea_scout = KOREA_LOCATIONS.search(text) and KOREA_SUPPLIER_SCOUT.search(text) and KOREA_COMPONENT_SCOPE.search(text)
     ramp_bottleneck = _is_ramp_bottleneck_event(text)
+    berlin_field = _is_berlin_field_event(text)
     exec_guidance = _is_exec_guidance(text)
     actor = TESLA_OPT.search(text) or MUSK_EXEC_ACTOR.search(text)
     robot_term = OPTIMUS.search(text) or (TESLA_OPT.search(text) and TESLA_HUMANOID.search(text))
@@ -672,6 +741,7 @@ def _is_tesla_supply_text(text: str) -> bool:
         actor
         and (
             korea_scout
+            or berlin_field
             or (
                 robot_term
                 and (
@@ -705,6 +775,8 @@ def _stage(text: str) -> str:
     actual_weekly = bool(ACTUAL_WEEKLY.search(text))
     weekly_target = bool(WEEKLY_TARGET.search(text))
     audit_started = bool(AUDIT_STARTED.search(text))
+    if _is_berlin_field_event(text):
+        return 'berlin_field_training'
     if actual_weekly:
         return 'actual_weekly_production'
     if _is_exec_guidance(text):
@@ -766,6 +838,8 @@ def score(item: dict) -> int:
     stage = _stage(text)
     if not stage:
         return 0
+    if stage == 'berlin_field_training':
+        s += 16
     if stage == 'executive_production_timeline':
         s += 16
     if stage in {'scale_order', 'scale_order_audit'}:
@@ -812,6 +886,8 @@ def score(item: dict) -> int:
 def category(text: str, group: str) -> str:
     if group == 'tesla' and _is_tesla_supply_text(text):
         stage = _stage(text)
+        if stage == 'berlin_field_training':
+            return 'Optimus Giga Berlin · 현장 데이터 수집·파일럿 배치'
         if stage == 'actual_weekly_production':
             return 'Optimus 실제 주간 완제품 생산량'
         if stage == 'executive_production_timeline':
@@ -848,6 +924,10 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == 'Optimus Giga Berlin · 현장 데이터 수집·파일럿 배치':
+        return ('프리몬트 중심의 Optimus Academy가 유럽 공장 노동자의 실제 작업 동작 데이터까지 넓어지는 지리적 학습 확장 신호입니다. '
+                '베를린에서는 작업자 카메라 데이터 수집이 확인됐고, 로봇 자체의 4680 배터리 셀·내부 물류 파일럿 운용은 보도 단계이므로 둘을 분리해 추적합니다. '
+                '다음 단계는 실제 작업 대수·자율작업 시간·개입률·작업 성공률 공개→정규 공정 편입→베를린 생산라인 투자결정·장비 반입 순입니다.')
     if cat == 'Optimus 실제 주간 완제품 생산량':
         return ('옵티머스가 공급망 목표나 부품 발주가 아니라 실제 완제품 주간 생산량으로 넘어갔는지를 보는 최상위 양산 신호입니다. '
                 '주당 생산량·수율·완성품 출하·내부 배치 대수를 분리해 확인하고, 이전 목표 대비 실제 달성률을 계산합니다.')
@@ -901,6 +981,11 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == 'Optimus Giga Berlin · 현장 데이터 수집·파일럿 배치':
+        return ('현장에 Optimus가 전시·포착됐다는 사실과 실제 자율 생산공정 투입은 다른 단계입니다. '
+                'Handelsblatt 계열 보도로 작업자 카메라 기반 데이터 수집은 강하게 확인되지만, 4680 셀 라인·내부 물류에서 Gen 2가 실제 작업한다는 세부는 Tesla의 공개 보도자료로 독립 확인되지 않았습니다. '
+                '또 Q2 Tesla 공식자료에서 Berlin 4680은 당시 Construction 상태였으므로, 배터리셀 생산라인 실가동 여부와 로봇 작업 내용을 별도로 확인해야 합니다. '
+                '가장 현실적인 실패 경로는 데이터 수집은 확대되지만 자율작업 성공률·안전·노사/개인정보 규제로 실제 공정 편입과 유럽 현지 양산 결정이 늦어지는 경우입니다.')
     if cat == 'Optimus 실제 주간 완제품 생산량':
         return ('공급망 기사에서 주당 수량이 언급돼도 실제 완제품 생산실적과 부품 공급능력 목표는 다를 수 있습니다. '
                 '테슬라 공식자료 또는 복수의 독립 공급망 자료에서 실제 생산·출하가 확인되지 않으면 공식 실적처럼 표기하지 않습니다.')
@@ -946,6 +1031,8 @@ def verification(item: dict, group: str, text: str) -> str:
     if group == 'tesla' and _is_tesla_supply_text(text):
         if OFFICIAL_CONFIRM.search(text) or item.get('source') == 'Tesla':
             return '테슬라 공식·1차 자료'
+        if _stage(text) == 'berlin_field_training':
+            return 'Handelsblatt/Tagesspiegel의 Team Giga Berlin 내부메일로 작업자 카메라 데이터 수집 확인 · Tesla Q2 공식 Optimus Academy 전략과 교차확인 · Gen 2의 4680/내부물류 실제 작업은 2차 보도 단계, Tesla 공개 보도자료 미확인'
         if _stage(text) == 'actual_weekly_production':
             return '실제 주간 생산량 보도 · 테슬라 공식자료 또는 복수 공급망 자료로 교차확인 필요'
         if _stage(text) == 'executive_production_timeline':
@@ -995,6 +1082,8 @@ def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
     if _is_tesla_supply_text(text):
         stage = _stage(text)
+        if stage == 'berlin_field_training':
+            return '테슬라 Optimus, Giga Berlin 현장 학습 확대…실전 파일럿 운용 보도'
         if stage == 'actual_weekly_production':
             return '테슬라 옵티머스, 실제 주간 완제품 생산량 신규 확인'
         if stage == 'executive_production_timeline':
@@ -1034,6 +1123,8 @@ def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')}"
     if _is_tesla_supply_text(text):
         stage = _stage(text)
+        if stage == 'berlin_field_training':
+            return hashlib.sha256(b'tesla-optimus|giga-berlin|2026-08|field-training-data-pilot').hexdigest()
         if stage == 'actual_weekly_production':
             m = re.search(r'(?<!\d)(\d{2,5})(?:\s*台|\s*대|\s*(?:per\s+week|weekly))', text, re.I)
             qty = m.group(1) if m else 'unknown'
