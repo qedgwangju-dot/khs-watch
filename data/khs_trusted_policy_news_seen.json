@@ -2602,6 +2602,35 @@
       ],
       "status": "공식 확인 전",
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
+    },
+    "01a5fb592ede27caaaaf812a": {
+      "key": "semantic:polysilicon-11052-base",
+      "title": "미국, 폴리실리콘 Section 232 최저수입가격·관세 조치",
+      "first_seen_kst": "2026-09-25T00:00:00+09:00",
+      "status": "기존 사건",
+      "sources": [
+        "White House",
+        "Federal Register"
+      ]
+    },
+    "d7d942fd7bc1e4fecb841749": {
+      "key": "semantic:polysilicon-11052-stockpiling-tfr",
+      "title": "미 상무부, 폴리실리콘 사재기 차단 규칙 시행",
+      "first_seen_kst": "2026-09-25T00:00:00+09:00",
+      "status": "확인됨",
+      "sources": [
+        "Federal Register",
+        "BIS"
+      ]
+    },
+    "b4b1d5ad381d513a32d69973": {
+      "key": "semantic:doe-space-pv-pia-2026-08-31",
+      "title": "미 에너지부, 우주태양광 R&D 지원사업 공고",
+      "first_seen_kst": "2026-09-25T00:00:00+09:00",
+      "status": "기존 사건",
+      "sources": [
+        "DOE"
+      ]
     }
   },
   "updated_at_kst": "2026-09-26T06:25:14+09:00"
