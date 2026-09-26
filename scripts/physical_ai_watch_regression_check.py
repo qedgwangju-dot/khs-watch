@@ -135,4 +135,23 @@ assert k == expected_ramp_key, (
     expected_ramp_key,
 )
 
+# 7) Electronic-skin discovery must separate market-size noise from real commercial state changes.
+eskin_tam = make(
+    "2030年人形机器人电子皮肤市场规模预计274亿元",
+    "行业预测2030年人形机器人电子皮肤需求152.5万平方米，市场规模约274亿元。",
+    "央广网",
+)
+g, s, c, k = classify(eskin_tam)
+assert g != "humanoid_component_global", ("TAM-only e-skin story must not become commercialization alert", g, s, c)
+
+eskin_delivery = make(
+    "福莱新材触觉传感器批量交付",
+    "福莱新材向灵心巧手人形机器人采购订单累计交付超3万套触觉传感器，10万套订单兑现超三成并继续量产交付。",
+    "上海证券报",
+)
+g, s, c, k = classify(eskin_delivery)
+assert g == "humanoid_component_global", (g, s, c)
+assert c == "글로벌 휴머노이드 부품 · 힘·토크·촉각센서 · 고객선정·수주·수주잔고", c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
