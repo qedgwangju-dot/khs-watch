@@ -48,7 +48,7 @@ class BojExitQualityTests(unittest.TestCase):
         self.assertEqual(chosen["SERIES_CODE"], "FLOW")
 
     def test_exit_alert_on_actual_purchase_overshoot(self):
-        previous = {"signals": {}}
+        previous = {"initialized": True, "signals": {}}
         purchase = {
             "planned_trillion_yen": 2.5,
             "actual_trillion_yen": 3.2,
@@ -67,7 +67,7 @@ class BojExitQualityTests(unittest.TestCase):
         self.assertTrue(any("실제 매입" in reason for reason in reasons))
 
     def test_exit_alert_on_plan_revision_is_red(self):
-        previous = {"signals": {}}
+        previous = {"initialized": True, "signals": {}}
         classification, reasons = exitq.classify(
             previous,
             account=None,
@@ -82,7 +82,7 @@ class BojExitQualityTests(unittest.TestCase):
         self.assertTrue(reasons)
 
     def test_weak_private_absorption_is_yellow(self):
-        previous = {"signals": {}}
+        previous = {"initialized": True, "signals": {}}
         absorption = {
             "private_absorption_ratio": 0.35,
             "boj_change_same_quarter_trillion_yen": -10.0,
@@ -102,6 +102,7 @@ class BojExitQualityTests(unittest.TestCase):
 
     def test_no_duplicate_reason_when_signal_already_active(self):
         previous = {
+            "initialized": True,
             "signals": {
                 "plan_revision": False,
                 "emergency_purchase_signal": False,
@@ -112,6 +113,19 @@ class BojExitQualityTests(unittest.TestCase):
         }
         classification, reasons = exitq.classify(
             previous,
+            account=None,
+            purchase={"planned_trillion_yen": 2.5, "actual_trillion_yen": 3.2},
+            absorption=None,
+            plan={"newer_than_baseline": []},
+            emergency={"recent_30d": []},
+            stress={"joint_market_stress": False},
+        )
+        self.assertTrue(classification["signals"]["actual_over_plan"])
+        self.assertEqual(reasons, [])
+
+    def test_first_run_baselines_without_alert_reason(self):
+        classification, reasons = exitq.classify(
+            {},
             account=None,
             purchase={"planned_trillion_yen": 2.5, "actual_trillion_yen": 3.2},
             absorption=None,
