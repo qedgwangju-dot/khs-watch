@@ -880,6 +880,75 @@ def item_age_hours(item: dict, now: dt.datetime) -> float | None:
     return (now - published).total_seconds() / 3600
 
 
+DOE_POLICY_ACTION_TERMS = (
+    "loan guarantee", "conditional commitment", "funding opportunity", "notice of intent",
+    "grant", "award", "selected", "prohibit", "prohibition", "restriction", "ban",
+    "efficiency standard", "emergency order", "grid deployment", "transmission facilitation",
+    "critical materials", "nuclear fuel",
+)
+
+
+def is_doe_energy_security_policy_item(item: dict, haystack: str) -> bool:
+    """Require both DOE authority and a material DOE policy action."""
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "").lower()
+    authority = (
+        "energy.gov/" in link
+        or "department of energy" in source
+        or keyword_in_text(source, "doe")
+        or "department of energy" in haystack
+        or keyword_in_text(haystack, "doe")
+    )
+    action = any(keyword_in_text(haystack, term) for term in DOE_POLICY_ACTION_TERMS)
+    return authority and action
+
+
+def polysilicon_11052_event_key(item: dict, haystack: str) -> str:
+    """Stable semantic key for Proclamation 11052 base and stockpiling stages."""
+    text = " ".join(
+        [
+            haystack,
+            str(item.get("source") or "").lower(),
+            str(item.get("link") or "").lower(),
+        ]
+    )
+    if "polysilicon" not in text:
+        return ""
+    if "11052" not in text and "proclamation 11052" not in text:
+        return ""
+
+    stockpiling_rule = (
+        "measures to restrict stockpiling" in text
+        or (
+            "stockpil" in text
+            and (
+                "temporary final rule" in text
+                or "import prohibition" in text
+                or "new importer" in text
+                or "waiver" in text
+            )
+        )
+    )
+    if stockpiling_rule:
+        return "polysilicon-11052-stockpiling-tfr"
+
+    base_action = any(
+        term in text
+        for term in (
+            "adjusting imports of polysilicon",
+            "minimum import price",
+            "minimum import prices",
+            "mip program",
+            "15% ad valorem",
+            "15 percent ad valorem",
+            "onshoring",
+        )
+    )
+    if base_action:
+        return "polysilicon-11052-base"
+    return ""
+
+
 def whitehouse_story_key(item: dict) -> str:
     text = clean_text(
         " ".join(
@@ -1058,6 +1127,8 @@ def classify_item(item: dict) -> dict | None:
     if is_whitehouse_remark_or_video and not any(keyword_in_text(haystack, term) for term in TRUMP_OFFICIAL_REMARK_STRONG_TERMS):
         return None
     matched = {bucket: [kw for kw in keywords if keyword_in_text(haystack, kw)] for bucket, keywords in STAGE_KEYWORDS.items()}
+    if matched.get("energy_security_policy") and not is_doe_energy_security_policy_item(item, haystack):
+        matched["energy_security_policy"] = []
     if is_treasury_source:
         matched = {"treasury_borrowing": matched.get("treasury_borrowing", [])}
     if "fda_decision" in matched and matched["fda_decision"] and "FDA" not in item.get("source", "") and "fda" not in haystack:
@@ -1108,7 +1179,10 @@ def classify_item(item: dict) -> dict | None:
         paths.extend(["계약 가시성", "밸류체인", "프로젝트 파이낸싱"])
     if "company_filing" in matched:
         paths.append("계약 가시성")
-    if is_whitehouse_source:
+    semantic_event_key = polysilicon_11052_event_key(item, haystack)
+    if semantic_event_key:
+        fingerprint_input = f"policy-event-v1|{semantic_event_key}"
+    elif is_whitehouse_source:
         story_key = item.get("whitehouse_story_key") or whitehouse_story_key(item)
         fingerprint_input = f"whitehouse-detail-v2|{story_key}"
     else:
