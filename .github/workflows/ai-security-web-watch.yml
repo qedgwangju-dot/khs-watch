@@ -33,7 +33,7 @@ jobs:
       AI_SECURITY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
       CONFIGURED_AI_SECURITY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       EXPECTED_AI_SECURITY_BOT_USERNAMES: "khs88798879_bot,hs88798879_bot"
-      AI_SECURITY_SEND_CONNECTION_TEST_ON_PUSH: "false"
+      AI_SECURITY_SEND_CONNECTION_TEST_ON_PUSH: "true"
 
     steps:
       - name: Checkout
@@ -107,13 +107,16 @@ jobs:
         run: |
           mkdir -p out
           cat > out/ai_security_web_watch_connection_test.txt <<'EOF'
-          [AI 보안 웹감시] 텔레그램 연결 시험
+          ⚠️ <b>AI 보안 웹감시 · 표시 형식 테스트</b>
 
-          연결 정상입니다.
-          - 주요 AI 에이전트·모델·도구·커넥터 보안 이슈를 웹에서 새로 조회
-          - 데이터 유출, 가상환경·샌드박스, 원격 코드 실행, 프롬프트 주입, MCP·플러그인 권한, 인증·자격증명, 공급망 취약점 감시
-          - 실제 중요 변화가 있을 때만 알림
-          - 같은 사건 재탕 기사와 일반적인 AI 위험론은 제외
+          <b>OpenAI · 데이터·개인정보</b>
+          • ChatGPT 사용자 이미지 53건 외부 업로드
+          • <b>판정</b>: 사용자 데이터·외부 시스템 영향 범위를 추가 확인 중
+          • <b>확인</b>: 공식 원천 + 복수 신뢰보도
+
+          🔗 <a href="https://openai.com/hugging-face-incident-and-misalignment">OpenAI 원문</a>
+
+          <b>다음 확인</b>: 추가 피해 · 영향 범위 · 완화책
           EOF
 
       - name: Send Telegram alerts
@@ -152,7 +155,7 @@ jobs:
               if path == alert_path and title_path.exists():
                   text = title_path.read_text(encoding="utf-8").strip() + "\n\n" + text
               for chunk in chunks(text):
-                  data = urllib.parse.urlencode({"chat_id": chat_id, "text": chunk, "disable_web_page_preview": "true"}).encode("utf-8")
+                  data = urllib.parse.urlencode({"chat_id": chat_id, "text": chunk, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode("utf-8")
                   req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
                   last_error = None
                   result = None
