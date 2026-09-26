@@ -447,7 +447,12 @@ def _emergency_marks(row):
             marks.append('네타냐후조기귀국미확인보도')
 
     if _has(text, HOUTHI_TERMS) and _has(text, RIYADH_TERMS) and _has(text, MISSILE_TERMS) and _has(text, MISSILE_ACTION_TERMS):
-        marks.append('후티리야드미사일위협')
+        # 검색 질의에 끌려온 관련 없는 기사로 고위험 경보가 승격되지 않도록
+        # 리야드+미사일+행동이 실제 원제목에도 있어야 한다.
+        title = _title_text(row)
+        title_has_core = _has(title, RIYADH_TERMS) and _has(title, MISSILE_TERMS) and _has(title, MISSILE_ACTION_TERMS)
+        if title_has_core and (_has(title, HOUTHI_TERMS) or _trusted_emergency(row)):
+            marks.append('후티리야드미사일위협')
 
     return sorted(set(marks))
 
@@ -685,12 +690,42 @@ def _signals(marks):
     return out
 
 
+FRESH_NEWS_MAX_MINUTES = 6 * 60
+
+
+def _sanitize_inherited_tags(row, tags):
+    tags = list(tags or [])
+    if '재건' not in tags:
+        return tags
+    raw = _text(row)
+    explicit_rebuild = any(term in raw for term in (
+        'reconstruction', 'rebuilding', 'rebuild ', 'rebuilds', 'rebuilds',
+        'repair plan', 'repair work', 'restoration plan', 'recovery plan',
+        '재건', '복구 계획', '복구 작업', '재건기금',
+    ))
+    attack_shutdown = any(term in raw for term in (
+        'attack', 'strike', 'drone', 'missile', 'halted operations', 'shut down',
+        'shutdown', 'closed after', '공격', '공습', '드론', '미사일', '가동 중단', '폐쇄',
+    ))
+    if attack_shutdown and not explicit_rebuild:
+        tags = [tag for tag in tags if tag != '재건']
+    return tags
+
+
 def score_item(row, now):
+    age = watch.age_minutes(row, now)
+    # 신규 감시는 기사 재발견이 아니라 실제 새 변화가 목적이다.
+    # 일반 뉴스는 6시간을 넘기면 다시 신규/후속 알림으로 살리지 않는다.
+    # 명시적 복구 백필(deep_signal)만 예외로 둔다.
+    if age is not None and age > FRESH_NEWS_MAX_MINUTES and not row.get('deep_signal'):
+        return 0, []
+
     marks = _marks(row)
     if not marks:
         if _obvious_false_positive(row):
             return 0, []
-        return _prev_score(row, now)
+        score, tags = _prev_score(row, now)
+        return score, _sanitize_inherited_tags(row, tags)
     row['diplomacy_flash_marks'] = marks
     row['title_ko'] = _korean_title(marks) or row.get('title_ko', '')
     row['signals_ko'] = list(dict.fromkeys(_signals(marks) + list(row.get('signals_ko', []))))
@@ -763,7 +798,59 @@ def score_item(row, now):
 watch.score_item = score_item
 
 
+def _canonical_event_key(row):
+    """동일 사건의 언론사별 재인용을 하나의 사건으로 묶는다.
+
+    단계가 바뀌면 다른 키를 쓰도록 사건+행동+대상을 함께 본다.
+    """
+    text = _text(row)
+    try:
+        pub = watch.parse_pub(row.get('published', ''))
+        day = pub.date().isoformat() if pub else dt.datetime.now(watch.KST).date().isoformat()
+    except Exception:
+        day = dt.datetime.now(watch.KST).date().isoformat()
+
+    has_ukraine = any(x in text for x in ('ukraine', 'ukrainian', '우크라이나'))
+    has_russia = any(x in text for x in ('russia', 'russian', '러시아'))
+    has_iran = any(x in text for x in ('iran', 'iranian', 'tehran', '이란', '테헤란'))
+    has_hormuz = any(x in text for x in ('hormuz', '호르무즈'))
+    has_trump = any(x in text for x in ('trump', '트럼프'))
+
+    # 러·우 3자회담의 UAE 후보지/준비 단계: 매체만 바뀐 재인용은 한 사건.
+    if has_ukraine and has_russia and any(x in text for x in ('uae', 'united arab emirates', '아랍에미리트')) \
+            and any(x in text for x in ('trilateral', 'three-way', '3자', '삼자')) \
+            and any(x in text for x in ('candidate', 'possible venue', 'proposed venue', '준비', '후보지', '개최지')):
+        return 'ukraine-russia|trilateral-talks|uae-candidate'
+
+    seven_day = any(x in text for x in ('7 day', '7-day', 'within seven days', '7일', '일주일'))
+    rejected = any(x in text for x in ('reject', 'rejected', 'refuse', 'refused', '거부', '일축'))
+    truce = any(x in text for x in ('truce', 'ceasefire', 'peace plan', '휴전', '종전안', '평화안'))
+    reopen = any(x in text for x in ('reopen', 'reopening', 'open the strait', '재개방', '정상 통항', '통항 재개'))
+
+    # 이란 7일 휴전/호르무즈안 거부는 제안 자체와 별도 단계로 관리.
+    if has_trump and has_iran and seven_day and rejected and (truce or has_hormuz):
+        return 'trump-iran|reject-7day-truce-hormuz-plan'
+    if has_iran and has_hormuz and seven_day and reopen and not rejected:
+        return 'iran-hormuz|7day-reopening-proposal'
+
+    # 실제 공격은 같은 사건의 재인용만 당일 묶고, 다음 날 새 공격은 다시 감지한다.
+    if any(x in text for x in ('houthi', 'houthis', 'ansar allah', 'ansarallah', '후티', '안사르알라')) \
+            and any(x in text for x in ('riyadh', '리야드')) \
+            and any(x in text for x in ('missile', 'ballistic missile', '미사일', '탄도미사일')):
+        return f'houthi-saudi|riyadh-missile|{day}'
+
+    if any(x in text for x in ('perm refinery', 'perm oil refinery', '페름 정유')) \
+            and any(x in text for x in ('halted operations', 'shut down', 'shutdown', 'stopped operations', '가동 중단', '폐쇄')):
+        return f'russia|perm-refinery-shutdown|{day}'
+
+    return None
+
+
 def item_id(row):
+    canonical = _canonical_event_key(row)
+    if canonical:
+        return hashlib.sha256(('event|' + canonical).encode()).hexdigest()[:20]
+
     marks = _marks(row)
     if not marks:
         return _prev_item_id(row)
