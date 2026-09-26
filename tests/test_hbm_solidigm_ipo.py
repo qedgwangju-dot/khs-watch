@@ -2,6 +2,7 @@ import copy
 import pathlib
 import sys
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import solidigm_ipo_watch as w
@@ -49,6 +50,45 @@ class SolidigmIPOTests(unittest.TestCase):
         old = {"stage": "public_filing"}
         merged = w.merge_state(old, {"stage": "withdrawn"})
         self.assertEqual(merged["stage"], "withdrawn")
+
+    def test_unrelated_delay_language_is_not_solidigm_postponement(self):
+        text = (
+            "Solidigm is considering an IPO as early as 2027. "
+            "Separately, another semiconductor project was delayed by market conditions."
+        )
+        self.assertEqual(w.stage_from_text(text), "exploring")
+
+    def test_lower_tier_report_cannot_override_reuters_baseline(self):
+        old = {
+            "stage": "bank_bakeoff",
+            "evidence_state": "top_tier_report",
+            "source_url": "https://www.reuters.com/example",
+            "source_name": "Reuters",
+            "valuation_max_usd": 150_000_000_000,
+        }
+        patch = {
+            "stage": "postponed",
+            "evidence_state": "reported",
+            "source_url": "https://example.com/secondary",
+            "source_name": "Secondary",
+            "underwriters": ["UBS"],
+        }
+        merged = w.merge_state(old, patch)
+        self.assertEqual(merged["stage"], "bank_bakeoff")
+        self.assertEqual(merged["evidence_state"], "top_tier_report")
+        self.assertEqual(merged["source_name"], "Reuters")
+
+    def test_generic_ai_ssd_business_text_is_not_use_of_proceeds(self):
+        item = {
+            "title": "Solidigm weighs IPO",
+            "description": "Solidigm sells AI data-center SSDs and may raise capital.",
+            "source": "Reuters",
+            "published_at_kst": "2026-09-26T01:47:00+09:00",
+            "direct_link": "https://www.reuters.com/example",
+        }
+        with patch.object(w, "article_text", return_value="Solidigm sells enterprise SSDs for AI data centers."):
+            patch_data = w.extract_patch(item)
+        self.assertNotIn("use_of_proceeds", patch_data)
 
 
 if __name__ == "__main__":
