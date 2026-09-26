@@ -39,12 +39,67 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: global-rates-telegram-watch-${{ github.event.schedule || github.event_name }}
   cancel-in-progress: true
 
 jobs:
+  bio_watchdog:
+    if: ${{ github.event_name == 'schedule' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Dispatch bio watcher if heartbeat is stale
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import subprocess
+          from zoneinfo import ZoneInfo
+
+          p = pathlib.Path("data/bio_watch_heartbeat.json")
+          stale = True
+          age_min = None
+          status = "missing"
+          if p.exists():
+              try:
+                  x = json.loads(p.read_text(encoding="utf-8"))
+                  status = str(x.get("status") or "unknown")
+                  raw = str(x.get("checked_at_kst") or "")
+                  stamp = dt.datetime.fromisoformat(raw)
+                  if stamp.tzinfo is None:
+                      stamp = stamp.replace(tzinfo=ZoneInfo("Asia/Seoul"))
+                  now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
+                  age_min = (now - stamp.astimezone(ZoneInfo("Asia/Seoul"))).total_seconds() / 60
+                  stale = age_min > 25
+              except Exception:
+                  stale = True
+
+          print(f"bio_watchdog status={status} age_min={age_min} stale={stale}")
+          if stale:
+              subprocess.run(
+                  [
+                      "gh", "workflow", "run", "bio-qlex-intismeran-watch.yml",
+                      "--repo", os.environ["GITHUB_REPOSITORY"],
+                      "--ref", "main",
+                  ],
+                  check=True,
+              )
+              print("bio_watchdog_dispatched=true")
+          PY
+
   monitor:
     if: ${{ github.event_name != 'schedule' || github.event.schedule != '1,6,11,16,21,26,31,36,41,46,51,56 * * * *' }}
     runs-on: ubuntu-latest
