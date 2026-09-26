@@ -8,7 +8,7 @@ on:
       - "scripts/apple_memory_procurement_watch.py"
       - "data/apple_memory_procurement_watch_state.json"
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "17,47 * * * *"
   workflow_dispatch:
     inputs:
       force_notify:
