@@ -7,6 +7,7 @@ v33의 정제제품 사건축을 유지하면서 다음만 수정한다.
 - 2026-09-04 EIA 주간값은 9월 16일 다음 발표 이후 자동으로 고정값 노출 차단
 - Alaska LNG·Polar LNG·AGDC·Glenfarne 및 545억달러·800억달러 규모 변화 감시
 - 사우디 동서 송유관·Yanbu 원유 전용 기사는 LNG 공급경보에서 제외
+- TTF 기준일은 Trading Economics 동일값 상품표 행으로 재검증
 """
 from __future__ import annotations
 
