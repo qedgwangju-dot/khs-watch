@@ -55,6 +55,84 @@ ALIASES={
 "OpenAI Stargate Abilene":"Stargate Abilene (TX)",
 "Microsoft Fairwater Atlanta":"MS Fairwater Atlanta (GA)",
 }
+ENERGY_PROFILES={
+"Microsoft Fairwater Wisconsin":{
+  "site":"WE Energies 계통 + 250MW 태양광 매칭",
+  "future":"Microsoft 원전 835MW·Helion 핵융합 50MW+",
+  "quality":"부지확정+기업전략",
+},
+"Anthropic-Amazon New Carlisle":{
+  "site":"NIPSCO/GenCo 계통·신규발전(원별 미공개)",
+  "future":"Amazon 원전 1.92GW·SMR 검토",
+  "quality":"부지확정+기업전략",
+},
+"OpenAI Stargate New Mexico":{
+  "site":"Bloom 연료전지 기반(연료원 공개 미확인)",
+  "future":"Stargate 전용발전·저장",
+  "quality":"부지확정",
+},
+"Meta Hyperion":{
+  "site":"천연가스 발전 + 배터리 + 원전 증출력 + 재생에너지",
+  "future":"Meta 기존·차세대 원전 확대",
+  "quality":"부지확정",
+},
+"Colossus 2":{
+  "site":"정확한 부지전원 미공개",
+  "future":"xAI Memphis 계통 + 배터리 + 가스터빈 비상전원",
+  "quality":"기업·지역확인",
+},
+"OpenAI Stargate Shackelford":{
+  "site":"복수 계통전원 피드(원별 구성 미공개)",
+  "future":"Stargate 전용발전·저장",
+  "quality":"부지부분확인",
+},
+"QTS Cedar Rapids":{
+  "site":"Alliant Energy 계통 + 무탄소 전원(세부 원별 미공개)",
+  "future":"QTS 저탄소·무탄소 조달",
+  "quality":"부지부분확인",
+},
+"Meta Prometheus":{
+  "site":"계통전력 + 원전 공급확대(Ohio/PJM 연계)",
+  "future":"Meta Vistra·TerraPower·Oklo 등 원전",
+  "quality":"지역확정+기업전략",
+},
+"Goodnight":{
+  "site":"계통 + 풍력 265MW 협약 + 933MW 가스발전 제안",
+  "future":"Google 차세대원전 + 지열",
+  "quality":"가스는 허가·계약 미확정",
+},
+"OpenAI Stargate Michigan":{
+  "site":"DTE 기존 전원 + 신규 배터리 저장",
+  "future":"Stargate 전용발전·저장",
+  "quality":"부지확정",
+},
+"OpenAI Stargate Wisconsin":{
+  "site":"WEC 태양광 + 풍력 + 배터리 + 재생에너지 매칭",
+  "future":"Stargate 전용발전·저장",
+  "quality":"부지확정",
+},
+"Google Fort Wayne":{
+  "site":"Indiana Michigan Power 계통(원별 구성 미공개)",
+  "future":"Google 차세대원전 + 지열",
+  "quality":"부지부분확인+기업전략",
+},
+"OpenAI Stargate Milam":{
+  "site":"SB Energy 신규발전 + 저장장치(원별 미공개)",
+  "future":"Stargate 전용발전·저장",
+  "quality":"부지확정",
+},
+"OpenAI Stargate Abilene":{
+  "site":"ERCOT 계통 + 현장 천연가스 터빈",
+  "future":"Crusoe 배터리·재생에너지·원전 옵션",
+  "quality":"부지확정",
+},
+"Microsoft Fairwater Atlanta":{
+  "site":"고신뢰 계통전력·GPU 현장발전 없음",
+  "future":"Microsoft 원전 835MW·Helion 핵융합 50MW+",
+  "quality":"부지확정+기업전략",
+},
+}
+
 SHORT={"Microsoft":"MS","Amazon":"Amazon","Oracle":"Oracle","Meta":"Meta","Google":"Google","SpaceXAI":"xAI","Softbank":"SoftBank","SoftBank":"SoftBank","OpenAI":"OpenAI","Anthropic":"Anthropic","Google DeepMind":"Google DeepMind"}
 
 def fetch(url,timeout=45):
@@ -140,12 +218,14 @@ def snapshot(dc_text,tl_text):
         full=[x for x in rows if x["mw"]>=planned*0.995]
         finish=(full[0]["date"] if full else rows[-1]["date"])
         m=meta[name]
+        energy=ENERGY_PROFILES.get(name,{"site":"미확인","future":"미확인","quality":"미확인"})
         out.append({
             "name":name,"display":ALIASES.get(name,name),
             "owner":short(m["owner"]),"users":short(m["users"]),"investors":short(m["investors"]),
             "current_mw":round(current,1),"planned_mw":round(planned,1),"progress":round(progress,1),
             "completion_date":finish.isoformat(),"completion":qlabel(finish,progress),
             "stage":stage(cur.get("status",""),current,planned,progress),"risk":risky(cur.get("status","")),
+            "energy_site":energy["site"],"energy_future":energy["future"],"energy_quality":energy["quality"],
         })
     by_name={x["name"]:x for x in out}
     top=[by_name[name] for name in TRACKED_NAMES if name in by_name]
@@ -168,6 +248,7 @@ def changes(old,new):
         if od and nd and abs((nd-od).days)>=DATE_DELTA:out.append(f"{p['display']} 완료시점 {o.get('completion','')}→{p['completion']} ({'지연' if nd>od else '앞당김'})")
         if p["stage"]!=o.get("stage") and p["progress"]<99.5:out.append(f"{p['display']} 공정 {o.get('stage','')}→{p['stage']}")
         if (p["owner"],p["users"],p["investors"])!=(o.get("owner"),o.get("users"),o.get("investors")):out.append(f"{p['display']} 소유·사용·투자자 정보 변경")
+        if (p.get("energy_site"),p.get("energy_future"),p.get("energy_quality"))!=(o.get("energy_site"),o.get("energy_future"),o.get("energy_quality")):out.append(f"{p['display']} 전력원 정보 변경")
     return list(dict.fromkeys(out))
 def badge(n):
     m={"0":"0️⃣","1":"1️⃣","2":"2️⃣","3":"3️⃣","4":"4️⃣","5":"5️⃣","6":"6️⃣","7":"7️⃣","8":"8️⃣","9":"9️⃣"}
@@ -184,8 +265,9 @@ def render(ps,chg,upd):
         inv=p["investors"] if p["investors"]!="미기재" else "Epoch 투자자 미기재"
         lines += [f"<b>{badge(i)} {h(p['display'])}{' ⚠️' if p['risk'] else ''}</b>",
                   f"{h(p['owner'])} → {h(p['users'])} | {h(inv)}",
-                  f"<b>{p['planned_mw']:,.0f}MW</b> | {h(p['completion'])} | <b>{p['progress']:.0f}%</b> ({p['current_mw']:,.0f}/{p['planned_mw']:,.0f}MW) | {h(p['stage'])}"]
-    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch의 현재 IT전력 ÷ 계획 최종 IT전력으로 직접 계산","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증"]
+                  f"<b>{p['planned_mw']:,.0f}MW</b> | {h(p['completion'])} | <b>{p['progress']:.0f}%</b> ({p['current_mw']:,.0f}/{p['planned_mw']:,.0f}MW) | {h(p['stage'])}",
+                  f"⚡ 전력원 │ {h(p['energy_site'])} | 장기전원: {h(p['energy_future'])}"]
+    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch의 현재 IT전력 ÷ 계획 최종 IT전력으로 직접 계산","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시"]
     return "\n".join(lines)+"\n"
 
 def main():
