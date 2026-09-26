@@ -9,6 +9,11 @@ on:
       - "scripts/ai_security_web_watch.py"
   schedule:
     - cron: "7,22,37,52 * * * *"
+  workflow_run:
+    workflows:
+      - "Wonyotti 90D Thesis Telegram Watch"
+      - "Rubin HBM Telegram Watch"
+    types: [completed]
   workflow_dispatch:
     inputs:
       send_test:
@@ -40,6 +45,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
