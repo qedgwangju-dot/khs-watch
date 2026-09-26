@@ -221,7 +221,7 @@ def parse_ici_combined():
     )
 
     pm = re.search(
-        r"week ended(?: Wednesday,?)?\s+([A-Za-z]+\s+\\d{1,2},\s+20\d{2})",
+        r"week ended(?: Wednesday,?)?\s+([A-Za-z]+\s+\d{1,2},\s+20\d{2})",
         text,
         re.I,
     )
@@ -240,7 +240,7 @@ def parse_ici_combined():
     }
 
     pub_m = re.search(
-        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\\d{1,2},\s+20\d{2})\s*\|\s*Print",
+        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+20\d{2})\s*\|\s*Print",
         text,
         re.I,
     )
@@ -283,7 +283,7 @@ def parse_ici_mmf():
     assets_trillion = float(m.group(3).replace(",", ""))
     period = m.group(4)
     pub_m = re.search(
-        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\\d{1,2},\s+20\d{2})\s*\|\s*Print",
+        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+20\d{2})\s*\|\s*Print",
         text,
         re.I,
     )
