@@ -205,19 +205,19 @@ def parse_ici_combined():
         return -value if "outflow" in direction else value
 
     total = signed_amount(
-        r"Total estimated (inflows|outflows).*?(?:were|was) \\$([\\d,.]+) billion"
+        r"Total estimated (inflows|outflows).*?(?:were|was) \$([\\d,.]+) billion"
     )
     domestic = signed_amount(
-        r"Domestic equity funds had estimated (inflows|outflows) of \\$([\\d,.]+) billion"
+        r"Domestic equity funds had estimated (inflows|outflows) of \$([\\d,.]+) billion"
     )
     world = signed_amount(
-        r"world equity funds had estimated (inflows|outflows) of \\$([\\d,.]+) billion"
+        r"world equity funds had estimated (inflows|outflows) of \$([\\d,.]+) billion"
     )
     bond = signed_amount(
-        r"Bond funds.*?had estimated (inflows|outflows) of \\$([\\d,.]+) billion"
+        r"Bond funds.*?had estimated (inflows|outflows) of \$([\\d,.]+) billion"
     )
     hybrid = signed_amount(
-        r"Hybrid funds.*?had estimated (inflows|outflows) of \\$([\\d,.]+) billion"
+        r"Hybrid funds.*?had estimated (inflows|outflows) of \$([\\d,.]+) billion"
     )
 
     pm = re.search(
@@ -239,11 +239,18 @@ def parse_ici_combined():
         "total": total,
     }
 
+    pub_m = re.search(
+        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{1,2},\\s+20\\d{2})\\s*\\|\\s*Print",
+        text,
+        re.I,
+    )
+    published = pub_m.group(1) if pub_m else first_date(text)
+
     payload = {
         "source": "ICI",
         "kind": "combined",
         "period": period,
-        "published": None,
+        "published": published,
         "url": ICI_COMBINED,
         "metrics": current,
         "domestic_4w": None,
@@ -501,6 +508,37 @@ def parse_reuters(kind):
     return None
 
 
+def period_date(x):
+    if not x:
+        return None
+    p = str(x.get("period") or "").strip()
+    pub = str(x.get("published") or "").strip()
+    year = None
+    ym = re.search(r"(20\\d{2})", p) or re.search(r"(20\\d{2})", pub)
+    if ym:
+        year = int(ym.group(1))
+    else:
+        year = datetime.now(timezone(timedelta(hours=9))).year
+
+    for fmt in ("%B %d, %Y", "%b %d, %Y"):
+        try:
+            return datetime.strptime(p, fmt).date()
+        except Exception:
+            pass
+    for fmt in ("%B %d", "%b %d"):
+        try:
+            d = datetime.strptime(p, fmt)
+            return d.replace(year=year).date()
+        except Exception:
+            pass
+    return None
+
+
+def same_reference_week(a, b):
+    da, db = period_date(a), period_date(b)
+    return bool(da and db and da == db)
+
+
 def flow_direction(us, mmf):
     if us is None or mmf is None:
         return "주식과 MMF를 같은 출처에서 동시에 확인하지 못해 자금 회전 방향 판정 보류"
@@ -628,12 +666,18 @@ if finra:
             f"({fmt_usd_bn_kr(md, fx)} 전월비)"
         )
 
-# Only compare ICI equity + ICI MMF as directional pair if reference periods are plausibly same week.
+# ICI equity and MMF must refer to the same week before treating them as a rotation pair.
 if ici and ici_mmf:
     d = ici["metrics"].get("domestic")
     ch = ici_mmf["metrics"].get("weekly_change_bn")
     if d is not None and ch is not None:
-        interpret.append("ICI 조합: " + flow_direction(d, ch))
+        if same_reference_week(ici, ici_mmf):
+            interpret.append("ICI 조합: " + flow_direction(d, ch))
+        else:
+            interpret.append(
+                f"ICI 기간 차이: 미국 국내주식형 {ici.get('period')} / MMF {ici_mmf.get('period')} "
+                "→ 서로 다른 주간이라 직접 자금 회전 판정 보류"
+            )
 
 def direction_word(v, up="증가", down="감소"):
     if v is None:
@@ -659,22 +703,34 @@ margin_change = finra["metrics"].get("margin_debt_mom_bn") if finra else None
 if cross:
     overall_easy = (
         "주식형 펀드 방향이 출처마다 엇갈립니다. "
-        "MMF와 마진부채는 별도 신호로 보되, '미국 증시로 돈이 일방적으로 몰린다'고 단정하지 않습니다."
+        "모집단과 기준기간이 다를 수 있어 합산·평균하지 않고 각 출처를 따로 봅니다."
     )
-elif stock_signals and all(v > 0 for _, v in stock_signals) and mmf_change is not None and mmf_change < 0:
-    overall_easy = (
-        "확인 가능한 주식형 자금은 유입이고 MMF는 감소했습니다. "
-        "위험자산 쪽으로 기우는 신호지만 MMF 자금이 그대로 주식으로 이동했다고 보지는 않습니다."
+elif bofa and bofa["metrics"].get("us_equity_bn") is not None and bofa["metrics"].get("mmf_bn") is not None:
+    overall_easy = "BofA/EPFR 같은 출처 내 판정: " + flow_direction(
+        bofa["metrics"].get("us_equity_bn"), bofa["metrics"].get("mmf_bn")
     )
-elif stock_signals and all(v < 0 for _, v in stock_signals) and mmf_change is not None and mmf_change > 0:
-    overall_easy = "주식형 자금은 유출이고 MMF는 증가해 위험회피·현금성 주차 강화 쪽입니다."
-elif not stock_signals and mmf_change is not None and mmf_change < 0 and margin_change is not None and margin_change > 0:
+elif lipper and lipper["metrics"].get("us_equity_bn") is not None and lipper["metrics"].get("mmf_bn") is not None:
+    overall_easy = "LSEG Lipper 같은 출처 내 판정: " + flow_direction(
+        lipper["metrics"].get("us_equity_bn"), lipper["metrics"].get("mmf_bn")
+    )
+elif ici and ici_mmf and same_reference_week(ici, ici_mmf):
+    overall_easy = "ICI 같은 주간 판정: " + flow_direction(
+        ici["metrics"].get("domestic"), ici_mmf["metrics"].get("weekly_change_bn")
+    )
+elif stock_signals and ici_mmf and not same_reference_week(ici, ici_mmf):
     overall_easy = (
-        "현금성 주차자금(MMF)은 줄고 레버리지는 늘었습니다. "
-        "공격성이 높아지는 쪽이지만, 실제 주식형 펀드 유입은 아직 확인되지 않아 위험선호 확정으로 보지 않습니다."
+        "주식형과 MMF 최신값의 기준주간이 달라 직접 자금 회전 판정을 보류합니다. "
+        "각 수치는 별도 신호로만 봅니다."
+    )
+elif not stock_signals and mmf_change is not None and margin_change is not None:
+    overall_easy = (
+        f"MMF는 {direction_word(mmf_change)}, 마진부채는 "
+        f"{'확대' if margin_change > 0 else '축소' if margin_change < 0 else '보합'}입니다. "
+        "주간 현금성 자금과 월간 레버리지는 기간이 달라 각각 별도 신호로 봅니다."
     )
 else:
-    overall_easy = "자금 방향이 혼재하거나 비교 가능한 최신값이 부족해 한 방향으로 단정하지 않습니다."
+    overall_easy = "비교 가능한 최신값이 부족하거나 기준기간이 달라 한 방향으로 단정하지 않습니다."
+
 
 
 status_lines = [
