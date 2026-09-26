@@ -395,85 +395,101 @@ def _collect_trendforce_search(cutoff: dt.datetime) -> tuple[list[dict], list[st
     return items, errors
 
 def _collect_trendforce_research(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
-    """Directly scan TrendForce research pages, not only Google News RSS."""
+    """Directly scan TrendForce report listings and recent report pages."""
     items: list[dict] = []
     errors: list[str] = []
-    try:
-        listing_html = _fetch(TREND_RESEARCH_URL).decode("utf-8", errors="ignore")
-        hrefs: list[str] = []
-        for match in re.finditer(
-            r'href=["\']([^"\']*/research/download/RP[^"\']+)["\']',
-            listing_html,
-            flags=re.IGNORECASE,
-        ):
-            href = urllib.parse.urljoin(TREND_RESEARCH_URL, html.unescape(match.group(1)))
-            if href not in hrefs:
-                hrefs.append(href)
-            if len(hrefs) >= 18:
-                break
+    listing_urls = [
+        TREND_RESEARCH_URL,
+        "https://www.trendforce.com/research/category/Semiconductors/DRAM?page=1",
+        "https://www.trendforce.com/research/category/Semiconductors/NAND%20Flash?page=1",
+    ]
+    href_titles: dict[str, str] = {}
 
-        if not hrefs:
-            print("trendforce_listing_debug=" + re.sub(r"\\s+", " ", listing_html[:1800]))
-        for href in hrefs:
-            try:
-                detail_html = _fetch(href).decode("utf-8", errors="ignore")
-                h1 = re.search(r"<h1[^>]*>(.*?)</h1>", detail_html, flags=re.IGNORECASE | re.DOTALL)
-                title = _clean(h1.group(1)) if h1 else ""
-                if not title:
-                    title_match = re.search(
-                        r"<title[^>]*>(.*?)</title>",
-                        detail_html,
-                        flags=re.IGNORECASE | re.DOTALL,
-                    )
-                    title = _clean(title_match.group(1)) if title_match else ""
-                    title = re.sub(r"\s*\|\s*TrendForce.*$", "", title, flags=re.IGNORECASE).strip()
-
-                if not title or not re.search(
-                    r"\b(?:DRAM|NAND|HBM|Memory|SSD|eSSD|Enterprise SSD)\b",
-                    title,
-                    flags=re.IGNORECASE,
+    for listing_url in listing_urls:
+        try:
+            listing_html = _fetch(listing_url).decode("utf-8", errors="ignore")
+            for match in re.finditer(
+                r'<a[^>]+href=["\']([^"\']*/research/download/RP[^"\']+)["\'][^>]*>(.*?)</a>',
+                listing_html,
+                flags=re.IGNORECASE | re.DOTALL,
+            ):
+                href = urllib.parse.urljoin(listing_url, html.unescape(match.group(1)))
+                label = _clean(match.group(2))
+                if href not in href_titles or (
+                    label and label.lower() not in {"download report", "sign in and download report"}
                 ):
-                    if href == hrefs[0]:
-                        print(f"trendforce_first_href={href} extracted_title={title!r}")
-                    continue
+                    href_titles[href] = label
+        except Exception as exc:
+            errors.append(f"TrendForce listing {listing_url}: {type(exc).__name__}: {exc}")
 
-                detail_text = _clean(detail_html)
-                date_match = re.search(
-                    r"(?:Last Modified|Published|發佈日期|发布日期)\s*(\d{4})[-/](\d{2})[-/](\d{2})",
-                    detail_text,
-                    flags=re.IGNORECASE,
+    recent_hrefs: list[tuple[dt.datetime | None, str]] = []
+    for href in href_titles:
+        url_date = _trendforce_url_date(href)
+        if url_date and url_date < cutoff:
+            continue
+        recent_hrefs.append((url_date, href))
+    recent_hrefs.sort(
+        key=lambda pair: pair[0] or dt.datetime(2000, 1, 1, tzinfo=KST),
+        reverse=True,
+    )
+
+    for url_date, href in recent_hrefs[:50]:
+        try:
+            detail_html = _fetch(href).decode("utf-8", errors="ignore")
+            h1 = re.search(r"<h1[^>]*>(.*?)</h1>", detail_html, flags=re.IGNORECASE | re.DOTALL)
+            title = _clean(h1.group(1)) if h1 else ""
+            if not title:
+                title = href_titles.get(href, "")
+            if not title:
+                title_match = re.search(
+                    r"<title[^>]*>(.*?)</title>",
+                    detail_html,
+                    flags=re.IGNORECASE | re.DOTALL,
                 )
-                pub = None
-                if date_match:
-                    pub = dt.datetime(
-                        int(date_match.group(1)),
-                        int(date_match.group(2)),
-                        int(date_match.group(3)),
-                        9,
-                        0,
-                        tzinfo=KST,
-                    )
-                    if pub < cutoff:
-                        continue
+                title = _clean(title_match.group(1)) if title_match else ""
+                title = re.sub(r"\s*\|\s*TrendForce.*$", "", title, flags=re.IGNORECASE).strip()
 
-                item = {
-                    "title": title,
-                    "link": href,
-                    "description": detail_text[:12000],
-                    "source": "TrendForce Research",
-                    "published_kst": pub.isoformat(timespec="seconds") if pub else None,
-                    "query": "direct:trendforce-memory-storage",
-                }
-                item["score"] = _score(item)
-                # Direct TrendForce memory research is authoritative. Keep only reports
-                # that also contain a price/supply/capacity signal.
-                if item["score"] >= 8:
-                    item["fingerprint"] = _fingerprint(item)
-                    items.append(item)
-            except Exception as exc:
-                errors.append(f"TrendForce detail {href}: {type(exc).__name__}: {exc}")
-    except Exception as exc:
-        errors.append(f"TrendForce listing: {type(exc).__name__}: {exc}")
+            if not title or not re.search(
+                r"\b(?:DRAM|NAND|HBM|Memory|SSD|eSSD|Enterprise SSD)\b",
+                title,
+                flags=re.IGNORECASE,
+            ):
+                continue
+
+            detail_text = _clean(detail_html)
+            date_match = re.search(
+                r"(?:Last Modified|Published|發佈日期|发布日期)\s*(\d{4})[-/](\d{2})[-/](\d{2})",
+                detail_text,
+                flags=re.IGNORECASE,
+            )
+            pub = url_date
+            if date_match:
+                pub = dt.datetime(
+                    int(date_match.group(1)),
+                    int(date_match.group(2)),
+                    int(date_match.group(3)),
+                    9,
+                    0,
+                    tzinfo=KST,
+                )
+            if pub and pub < cutoff:
+                continue
+
+            item = {
+                "title": title,
+                "link": href,
+                "description": detail_text[:12000],
+                "source": "TrendForce Research",
+                "published_kst": pub.isoformat(timespec="seconds") if pub else None,
+                "query": "direct:trendforce-memory-storage",
+            }
+            item["score"] = _score(item)
+            if item["score"] >= 8:
+                item["fingerprint"] = _fingerprint(item)
+                items.append(item)
+        except Exception as exc:
+            errors.append(f"TrendForce detail {href}: {type(exc).__name__}: {exc}")
+
     return items, errors
 
 def load_state() -> dict:
