@@ -79,11 +79,21 @@ def _is_material_event(item):
 
 
 
-KNOWN_BASELINE_RULES = [
-    # 2030년 6월 첫 양산 목표는 9월 22일 이전부터 공개된 기존 기준선이다.
-    (re.compile(r"2030(?:년)?(?:\s*6월)?[^\n]{0,40}양산|양산[^\n]{0,40}2030(?:년)?(?:\s*6월)?", re.I),
-     ["63만평", "208만", "2027", "2028", "2029", "3.1gw", "6.3gw", "15만", "35만", "65만", "106만",
-      "송전선로", "23㎞", "23km", "입주협약", "사전행위", "특례", "동복댐", "보성강댐", "팹 2기", "2기 완공"]),
+# 2026-09-22 기자간담회까지 이미 공개된 호남 반도체 실행 로드맵.
+# 기사 발행일이나 제목이 달라져도 아래 기존 상태를 재서술한 것만으로는 새 알림을 만들지 않는다.
+KNOWN_ROADMAP_MARKERS = [
+    "250만평", "63만평", "2027년 상반기", "2027년 하반기", "2028년 12월",
+    "3.1gw", "6.3gw", "23km", "23㎞", "15만", "35만", "65만", "106만",
+    "2030년 6월", "입주 협약", "입주협약", "팹 4기", "4기 기준", "2만3천명",
+]
+
+# 계획 재서술이 아니라 실제 단계가 바뀐 경우만 기존 로드맵 차단을 해제한다.
+EXECUTION_UPGRADE_TERMS = [
+    "협약 체결", "협약을 체결", "협약식 개최", "투자 확정", "투자계약",
+    "최종 지정", "지정 고시", "착공식", "첫 삽", "공사 시작", "공사에 착수",
+    "전원 인가", "공급 개시", "공급 시작", "준공 완료", "양산 개시", "양산 시작",
+    "일정 변경", "일정이 변경", "연기 확정", "앞당기기로", "취소", "무산",
+    "축소 확정", "확대 확정", "증설 확정",
 ]
 
 
@@ -93,12 +103,26 @@ def _is_known_baseline_only(item):
         _norm(item.get("detail")), _norm(item.get("reason")), _norm(item.get("impact"))
     ])
     low = text.lower()
-    for pattern, change_markers in KNOWN_BASELINE_RULES:
-        if pattern.search(text):
-            # 기존 기준선 문구만 반복한 기사면 새 상태 변화가 아니다.
-            # 다만 새 일정·물량·인프라·협약 등 구체 변화가 함께 있으면 통과시킨다.
-            if not any(marker.lower() in low for marker in change_markers):
-                return True
+
+    # 실제 체결·착공·공급개시·일정변경처럼 실행 상태가 변했으면 반드시 통과시킨다.
+    if any(term.lower() in low for term in EXECUTION_UPGRADE_TERMS):
+        return False
+
+    # 9/22에 공개된 수치·일정을 여러 개 다시 묶어 쓴 후속기사는 같은 로드맵의 재서술이다.
+    marker_hits = {marker.lower() for marker in KNOWN_ROADMAP_MARKERS if marker.lower() in low}
+    if "반도체" in low and len(marker_hits) >= 2:
+        return True
+
+    # 250만평 + 삼성/SK 입주협약 '추진·계획' 조합도 이미 공개된 상태다.
+    if "250만평" in low and ("입주 협약" in low or "입주협약" in low) and (
+        "삼성" in low or "sk하이닉스" in low or "하이닉스" in low
+    ):
+        return True
+
+    # 2030년 6월 첫 양산 목표의 단순 재인용도 차단한다.
+    if re.search(r"2030(?:년)?(?:\s*6월)?[^\n]{0,50}양산|양산[^\n]{0,50}2030(?:년)?(?:\s*6월)?", text, re.I):
+        return True
+
     return False
 
 
@@ -165,7 +189,9 @@ def main():
     for item in alert.get("new_items", []):
         obj = dict(item)
         obj["_kind"] = "news"
-        if _is_material_event(obj):
+        # 새 기사 자체가 아니라 실제 주제·상태 변화만 통과시킨다.
+        # 기존 로드맵 재서술과 채택되지 않은 단순 제안은 알림 후보에서 제외한다.
+        if _is_material_event(obj) and not _is_known_baseline_only(obj) and not _is_proposal_only(obj):
             candidates.append(obj)
 
     groups = {}
@@ -192,7 +218,7 @@ def main():
     pending["seen_event_keys"] = list(dict.fromkeys(all_event_keys + list(seen_event_keys)))[:3000]
     pending["alert_basis"] = "topic_event_official_state_change"
     pending["article_role"] = "evidence_and_crosscheck_only"
-    pending["baseline_guard"] = "suppress_rephrased_known_facts_without_new_schedule_quantity_or_official_status"
+    pending["baseline_guard"] = "suppress_20260922_roadmap_rehash_unless_execution_or_status_changes"
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if not final_news and not final_official:
