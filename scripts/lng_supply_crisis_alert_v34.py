@@ -11,6 +11,7 @@ v33의 정제제품 사건축을 유지하면서 다음만 수정한다.
 from __future__ import annotations
 
 import datetime as dt
+import hashlib
 import html
 
 import lng_supply_crisis_alert_v2 as core
@@ -109,6 +110,30 @@ ASIA_DEMAND_MAJOR_SOURCES = (
     "s&p global commodity insights", "argus media", "nikkei asia",
 )
 
+v8.SOURCE_KO.update({
+    "the white house": "미국 백악관",
+    "white house": "미국 백악관",
+    "u.s. department of energy": "미국 에너지부",
+    "department of energy": "미국 에너지부",
+    "state of alaska": "알래스카주 정부",
+    "alaska gasline development corporation": "알래스카가스라인개발공사(AGDC)",
+    "agdc": "알래스카가스라인개발공사(AGDC)",
+    "glenfarne": "Glenfarne",
+})
+
+ALASKA_POLICY_MARKERS = (
+    ("going_to_alaska", ("going to alaska", "go to alaska", "알래스카로 간다", "load up", "build pipelines")),
+    ("strategic_progress", ("significant progress", "전략투자", "strategic investment", "progress in discussions")),
+    ("participation_review", ("possible investment", "considering", "participation", "참여 검토", "투자 검토")),
+    ("funding_claim", ("secured funds", "unprecedented funds", "funds from korea", "funds from japan")),
+)
+ALASKA_POLICY_COUNTERPARTIES = (
+    ("korea", ("south korea", "korea", "한국")),
+    ("japan", ("japan", "일본")),
+    ("trump", ("trump", "트럼프", "president")),
+    ("us", ("united states", "u.s.", "us investment", "미국")),
+)
+
 LNG_RELEVANCE_TERMS = (
     "lng", "liquefied natural gas", "natural gas", "gas tanker", "lng tanker",
     "qatar lng", "qatarenergy", "jkm", "ttf",
@@ -134,6 +159,21 @@ HORMUZ_GENERIC_STATUS_TERMS = (
     "reopens", "reopened", "shipping resumes", "traffic resumes", "transit",
     "vessel", "vessels", "shipping traffic",
 )
+
+
+def _canonical_alaska_policy_event_id_v34(group) -> str | None:
+    if str(group.get("category") or "") != "alaska_lng":
+        return None
+    if str(group.get("subtype") or "") != "alaska_policy_signal":
+        return None
+    text = _group_evidence_text(group)
+    markers = [name for name, terms in ALASKA_POLICY_MARKERS if any(term in text for term in terms)]
+    counterparties = [name for name, terms in ALASKA_POLICY_COUNTERPARTIES if any(term in text for term in terms)]
+    if not markers:
+        tokens = [token for token in text.split() if len(token) >= 4][:8]
+        markers = ["fallback:" + "_".join(tokens)]
+    basis = "alaska_lng|policy|" + ",".join(sorted(markers)) + "|" + ",".join(sorted(counterparties))
+    return hashlib.sha256(basis.encode("utf-8")).hexdigest()[:20]
 
 
 def _is_lng_relevant_item_v34(item: core.NewsItem) -> bool:
@@ -201,6 +241,11 @@ def confirmed_news_groups_v34(items: list[core.NewsItem]):
         if str(group.get("category") or "") != ALASKA_CATEGORY
     ]
     base = [group for group in raw_base if not _is_saudi_oil_only_group(group)]
+    for group in base:
+        canonical_policy_id = _canonical_alaska_policy_event_id_v34(group)
+        if canonical_policy_id:
+            group["event_id"] = canonical_policy_id
+            group["verification"] = str(group.get("verification") or "정책 발언 확인")
 
     alaska_items = [item for item in items if item.category == ALASKA_CATEGORY]
     buckets: dict[tuple[str, str], list[core.NewsItem]] = {}
@@ -297,6 +342,18 @@ def _title_ko_v34(item: core.NewsItem) -> str:
         if "7.4 billion" in normalized or "$7.4 billion" in normalized or "7 billion" in normalized or "$7 billion" in normalized:
             return "아시아 신흥국 LNG 조달비 급증·장기 수요 재평가"
         return "아시아 LNG 수요 파괴·연료 전환 재평가 신호"
+    if item.category == "alaska_lng":
+        subtype = str(item.subtype or "")
+        if subtype == "alaska_policy_signal":
+            return "Alaska LNG 관련 한국·일본 참여·정책 발언의 실질 변화 확인"
+        if subtype == "alaska_offtake":
+            return "Alaska LNG 오프테이크·장기구매계약 단계 변화"
+        if subtype == "alaska_fid":
+            return "Alaska LNG 최종투자결정(FID) 단계 변화"
+        if subtype == "alaska_epc":
+            return "Alaska LNG EPC·발주 단계 변화"
+        if subtype == "alaska_setback":
+            return "Alaska LNG 일정·사업성 후퇴 신호"
     if item.category == ALASKA_CATEGORY:
         if any(term in normalized for term in core.WORSENING_TERMS[ALASKA_CATEGORY]):
             return "알래스카 LNG 프로젝트 지연·사업성 위험 신규 변화"
@@ -621,6 +678,11 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
         "self_validation": "Alaska LNG body must not reuse Qatar/Hormuz outage wording",
         "state_file_preserved": str(core.STATE_PATH),
     }
+    metadata["alaska_policy_dedupe"] = {
+        "rule": "policy reprints use a stable material-claim fingerprint instead of a 72-hour publication bucket",
+        "stage": "alaska_policy_signal",
+        "source_display": "official sources are named explicitly; no generic overseas-media label",
+    }
     metadata["asia_lng_demand_watch"] = {
         "category": ASIA_DEMAND_CATEGORY,
         "signals": ["현물 조달비 급증", "LNG 장기수요 재평가", "발전원 전환", "장기계약 축소", "발전소 취소·연기"],
@@ -647,6 +709,8 @@ def build_setup_test_v34(quotes):
         "\n• 사우디 동서 송유관·Yanbu 원유 전용 보도는 LNG 직접 근거가 없으면 LNG 경보에서 제외"
         "\n• 아시아 LNG 현물비용 급증·탈 LNG·발전원 전환은 구조적 수요 재평가 신호로 별도 감시"
         "\n• Alaska LNG는 자금조달·제재·추가 300만톤 장기구매계약·세제혜택·FID 변화를 별도 감시"
+        "\n• Alaska LNG 정책 발언은 72시간 기사 버킷이 아니라 실질 발언 지문으로 중복방지"
+        "\n• 백악관·미 에너지부·알래스카주·AGDC 등 공식 출처는 실제 기관명으로 표시"
     )
     metadata["version"] = 34
     metadata["alaska_lng_watch"] = True
