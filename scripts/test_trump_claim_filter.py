@@ -7,6 +7,10 @@ def main():
     dinner = "Trump-Xi dinner had OpenAI, Nvidia, Meta. Anthropic was absent"
     assert not is_portfolio_claim_relevant(dinner), "Dinner/guest-list article must not trigger portfolio alert"
 
+
+    ebc = "The Trump Trade 2.0: How the US Election and Our New US Stock CFDs Can Rock Your Portfolio"
+    assert not is_portfolio_claim_relevant(ebc), "Generic Trump Trade/CFD marketing article must not trigger portfolio alert"
+
     viral = "Trump's updated portfolio is basically a bet that America wins the AI race."
     assert is_portfolio_claim_relevant(viral), "True portfolio-composition claim must remain eligible"
 
