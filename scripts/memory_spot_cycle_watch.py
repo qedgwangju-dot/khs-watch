@@ -37,6 +37,13 @@ ALERT_PATH = OUT_DIR / "memory_spot_cycle_watch_telegram.txt"
 STATUS_PATH = OUT_DIR / "memory_spot_cycle_watch_status.md"
 KST = ZoneInfo("Asia/Seoul")
 TREND_RESEARCH_URL = "https://www.trendforce.com/research/memory-storage"
+TREND_SEARCH_QUERIES = [
+    'site:trendforce.com/research/download "Memory Price Forecast" DRAM NAND',
+    'site:trendforce.com/research/download "DRAM Market Bulletin" TrendForce',
+    'site:trendforce.com/research/download "NAND Flash Market Bulletin" TrendForce',
+    'site:trendforce.com/research/download "HBM Market Bulletin" TrendForce',
+    'site:trendforce.com/research/download QLC enterprise SSD KV cache TrendForce',
+]
 
 QUERIES = [
     ("ko", 'DRAM 현물 가격 공급 부족 BofA OR 뱅크오브아메리카'),
@@ -285,8 +292,11 @@ def collect() -> tuple[list[dict], list[str]]:
             errors.append(f"{lang}:{query}: {type(exc).__name__}: {exc}")
 
     direct_items, direct_errors = _collect_trendforce_research(cutoff)
+    search_items, search_errors = _collect_trendforce_search(cutoff)
     items.extend(direct_items)
+    items.extend(search_items)
     errors.extend(direct_errors)
+    errors.extend(search_errors)
 
     by_fp: dict[str, dict] = {}
     by_title: dict[str, dict] = {}
@@ -312,6 +322,77 @@ def collect() -> tuple[list[dict], list[str]]:
     ), errors
 
 
+
+
+def _bing_rss_url(query: str) -> str:
+    return "https://www.bing.com/search?" + urllib.parse.urlencode({
+        "q": query,
+        "format": "rss",
+        "setlang": "en-US",
+    })
+
+
+def _trendforce_url_date(url: str) -> dt.datetime | None:
+    match = re.search(r"/RP(\d{2})(\d{2})(\d{2})", url, flags=re.IGNORECASE)
+    if not match:
+        return None
+    try:
+        year = 2000 + int(match.group(1))
+        month = int(match.group(2))
+        day = int(match.group(3))
+        return dt.datetime(year, month, day, 9, 0, tzinfo=KST)
+    except Exception:
+        return None
+
+
+def _collect_trendforce_search(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
+    """Use web-search RSS to catch TrendForce paid-research pages that Google News omits."""
+    items: list[dict] = []
+    errors: list[str] = []
+    seen_links: set[str] = set()
+
+    for query in TREND_SEARCH_QUERIES:
+        try:
+            root = ET.fromstring(_fetch(_bing_rss_url(query)))
+            for node in root.findall(".//item"):
+                title = _clean(node.findtext("title"))
+                link = _clean(node.findtext("link"))
+                snippet = _clean(node.findtext("description"))
+                if not title or not link:
+                    continue
+                host = urllib.parse.urlparse(link).netloc.lower()
+                if "trendforce.com" not in host or "/research/download/" not in link:
+                    continue
+                if link in seen_links:
+                    continue
+                seen_links.add(link)
+
+                pub = _trendforce_url_date(link)
+                if pub and pub < cutoff:
+                    continue
+
+                detail_text = snippet
+                try:
+                    detail_text = _clean(_fetch(link).decode("utf-8", errors="ignore"))[:12000]
+                except Exception:
+                    pass
+
+                item = {
+                    "title": re.sub(r"\s*\|\s*TrendForce.*$", "", title, flags=re.IGNORECASE).strip(),
+                    "link": link,
+                    "description": detail_text,
+                    "source": "TrendForce Research",
+                    "published_kst": pub.isoformat(timespec="seconds") if pub else None,
+                    "query": f"bing:{query}",
+                }
+                item["score"] = _score(item)
+                if item["score"] >= 8:
+                    item["fingerprint"] = _fingerprint(item)
+                    items.append(item)
+        except Exception as exc:
+            errors.append(f"TrendForce search {query}: {type(exc).__name__}: {exc}")
+
+    return items, errors
 
 def _collect_trendforce_research(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
     """Directly scan TrendForce research pages, not only Google News RSS."""
