@@ -24,6 +24,7 @@ on:
       - "scripts/enhertu_altb4_watch_v2.py"
       - "scripts/halozyme_legal_watch_v2.py"
       - "scripts/halozyme_legal_watch_v3.py"
+      - "tests/test_bio_alert_regressions.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -53,6 +54,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Run bio regression tests
+        run: PYTHONPATH=scripts python -m unittest tests/test_bio_alert_regressions.py -v
 
       - name: Run Korean-guarded bio watch
         run: python scripts/bio_single_runner_v3.py
