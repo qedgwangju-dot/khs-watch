@@ -1,20 +1,20 @@
 {
   "seen": {
-    "ICI|mmf": "a692e13ee54a9b1da7a5378b9a9812dd14bd5e055149f356371a2fec1994361b",
-    "FINRA|margin": "02a2ab607357f224a170dc07fb82cf809274840da7cbb65702171154258e69de"
+    "ICI|mmf": "0fc80ab5f6b9feb7fa734023f812e89da42e92c6a92f09b303d4e07bff7a4685",
+    "FINRA|margin": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e"
   },
   "values": {
     "ICI|mmf": {
       "source": "ICI",
       "kind": "mmf",
-      "period": "September 16",
-      "published": "September 11, 2026",
-      "url": "https://www.iciglobal.org/research/stats/mmf",
+      "period": "September 23",
+      "published": "September 24, 2026",
+      "url": "https://www.ici.org/research/stats/mmf",
       "metrics": {
-        "assets_trillion": 7.92,
-        "weekly_change_bn": -51.97
+        "assets_trillion": 7.94,
+        "weekly_change_bn": 15
       },
-      "fingerprint": "a692e13ee54a9b1da7a5378b9a9812dd14bd5e055149f356371a2fec1994361b"
+      "fingerprint": "0fc80ab5f6b9feb7fa734023f812e89da42e92c6a92f09b303d4e07bff7a4685"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -28,8 +28,8 @@
         "margin_free_bn": 217.499,
         "margin_debt_mom_bn": 36.607
       },
-      "fingerprint": "02a2ab607357f224a170dc07fb82cf809274840da7cbb65702171154258e69de"
+      "fingerprint": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e"
     }
   },
-  "updated_at_kst": "2026-09-18T20:26:56.086690+09:00"
+  "updated_at_kst": "2026-09-26T06:38:59+09:00"
 }
