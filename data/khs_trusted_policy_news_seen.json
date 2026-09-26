@@ -11,6 +11,16 @@
       "status": "공식 확인 전",
       "title": "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크"
     },
+    "01a5fb592ede27caaaaf812a": {
+      "first_seen_kst": "2026-09-25T00:00:00+09:00",
+      "key": "semantic:polysilicon-11052-base",
+      "sources": [
+        "White House",
+        "Federal Register"
+      ],
+      "status": "기존 사건",
+      "title": "미국, 폴리실리콘 Section 232 최저수입가격·관세 조치"
+    },
     "02793e02126d390f82ada2f2": {
       "first_seen_kst": "2026-09-10T04:49:35+09:00",
       "key": "trump_direct_policy_remarks_watch",
@@ -1381,6 +1391,16 @@
       "status": "공식 확인 전",
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
     },
+    "8c30857bb16d48afd8704cd4": {
+      "first_seen_kst": "2026-09-26T15:59:49+09:00",
+      "key": "us_congress_chinese_optical_transceiver_restriction",
+      "sources": [
+        "U.S. Senate (Sen. Dave McCormick)",
+        "Reuters"
+      ],
+      "status": "공식 확인 전",
+      "title": "미 의회, 중국산 광트랜시버 정부 민감 시스템 사용 제한 법안 발의"
+    },
     "8d89e748aa931e5791b2dc52": {
       "first_seen_kst": "2026-07-14T07:15:29+09:00",
       "key": "trump_direct_policy_remarks_watch",
@@ -1548,6 +1568,16 @@
       ],
       "status": "공식 확인 전",
       "title": "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크"
+    },
+    "9d78a7e8fea0475db681aeea": {
+      "first_seen_kst": "2026-09-26T15:59:49+09:00",
+      "key": "us_congress_chinese_optical_transceiver_restriction",
+      "sources": [
+        "U.S. Senate (Sen. Dave McCormick)",
+        "Reuters"
+      ],
+      "status": "공식 확인 전",
+      "title": "미 의회, 중국산 광트랜시버 정부 민감 시스템 사용 제한 법안 발의"
     },
     "9dbf35cbc0dd58a117e26e33": {
       "first_seen_kst": "2026-09-06T04:23:47+09:00",
@@ -1795,6 +1825,15 @@
       ],
       "status": "공식 확인 전",
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
+    },
+    "b4b1d5ad381d513a32d69973": {
+      "first_seen_kst": "2026-09-25T00:00:00+09:00",
+      "key": "semantic:doe-space-pv-pia-2026-08-31",
+      "sources": [
+        "DOE"
+      ],
+      "status": "기존 사건",
+      "title": "미 에너지부, 우주태양광 R&D 지원사업 공고"
     },
     "b530484cd667535f6ea07af1": {
       "first_seen_kst": "2026-09-13T21:09:32+09:00",
@@ -2207,6 +2246,16 @@
       "status": "공식 확인 전",
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
     },
+    "d7d942fd7bc1e4fecb841749": {
+      "first_seen_kst": "2026-09-25T00:00:00+09:00",
+      "key": "semantic:polysilicon-11052-stockpiling-tfr",
+      "sources": [
+        "Federal Register",
+        "BIS"
+      ],
+      "status": "확인됨",
+      "title": "미 상무부, 폴리실리콘 사재기 차단 규칙 시행"
+    },
     "d7f4eb905ba2a08313a1fbd0": {
       "first_seen_kst": "2026-07-22T10:48:44+09:00",
       "key": "trump_direct_policy_remarks_watch",
@@ -2602,36 +2651,7 @@
       ],
       "status": "공식 확인 전",
       "title": "트럼프 대통령 직접 발언, 시장 영향 정책 신호"
-    },
-    "01a5fb592ede27caaaaf812a": {
-      "key": "semantic:polysilicon-11052-base",
-      "title": "미국, 폴리실리콘 Section 232 최저수입가격·관세 조치",
-      "first_seen_kst": "2026-09-25T00:00:00+09:00",
-      "status": "기존 사건",
-      "sources": [
-        "White House",
-        "Federal Register"
-      ]
-    },
-    "d7d942fd7bc1e4fecb841749": {
-      "key": "semantic:polysilicon-11052-stockpiling-tfr",
-      "title": "미 상무부, 폴리실리콘 사재기 차단 규칙 시행",
-      "first_seen_kst": "2026-09-25T00:00:00+09:00",
-      "status": "확인됨",
-      "sources": [
-        "Federal Register",
-        "BIS"
-      ]
-    },
-    "b4b1d5ad381d513a32d69973": {
-      "key": "semantic:doe-space-pv-pia-2026-08-31",
-      "title": "미 에너지부, 우주태양광 R&D 지원사업 공고",
-      "first_seen_kst": "2026-09-25T00:00:00+09:00",
-      "status": "기존 사건",
-      "sources": [
-        "DOE"
-      ]
     }
   },
-  "updated_at_kst": "2026-09-26T06:25:14+09:00"
+  "updated_at_kst": "2026-09-26T15:59:49+09:00"
 }
