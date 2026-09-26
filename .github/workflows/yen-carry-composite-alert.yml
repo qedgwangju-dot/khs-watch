@@ -17,6 +17,7 @@ on:
       - "scripts/yen_carry_policy_path_overlay.py"
       - "scripts/yen_carry_real_rate_overlay.py"
       - "scripts/yen_carry_policy_reaction_watch.py"
+      - "scripts/yen_carry_boj_exit_quality.py"
       - "scripts/yen_carry_telegram_compact.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
@@ -27,6 +28,7 @@ on:
       - "tests/test_yen_carry_policy_path_overlay.py"
       - "tests/test_yen_carry_real_rate_overlay.py"
       - "tests/test_yen_carry_policy_reaction_watch.py"
+      - "tests/test_yen_carry_boj_exit_quality.py"
       - "tests/test_yen_carry_telegram_compact.py"
       - "tests/test_yen_carry_telegram_compact.py"
   schedule:
@@ -46,6 +48,7 @@ on:
       - "scripts/yen_carry_policy_path_overlay.py"
       - "scripts/yen_carry_real_rate_overlay.py"
       - "scripts/yen_carry_policy_reaction_watch.py"
+      - "scripts/yen_carry_boj_exit_quality.py"
       - "scripts/yen_carry_telegram_compact.py"
       - "scripts/global_rates_watch.py"
       - "scripts/khs_source_fetch.py"
@@ -56,10 +59,12 @@ on:
       - "tests/test_yen_carry_policy_path_overlay.py"
       - "tests/test_yen_carry_real_rate_overlay.py"
       - "tests/test_yen_carry_policy_reaction_watch.py"
+      - "tests/test_yen_carry_boj_exit_quality.py"
       - "data/yen_carry_composite_design.json"
       - "data/yen_carry_composite_state.json"
       - "data/yen_carry_structural_state.json"
       - "data/yen_carry_policy_reaction_state.json"
+      - "data/yen_carry_boj_exit_state.json"
 
 permissions:
   contents: write
@@ -71,7 +76,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     env:
       TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
@@ -103,6 +108,7 @@ jobs:
           python -m py_compile scripts/yen_carry_policy_path_overlay.py
           python -m py_compile scripts/yen_carry_real_rate_overlay.py
           python -m py_compile scripts/yen_carry_policy_reaction_watch.py
+          python -m py_compile scripts/yen_carry_boj_exit_quality.py
           python -m py_compile scripts/yen_carry_telegram_compact.py
           PYTHONPATH=scripts python -m unittest \
             tests/test_yen_carry_composite_watch.py \
@@ -112,6 +118,7 @@ jobs:
             tests/test_yen_carry_policy_path_overlay.py \
             tests/test_yen_carry_real_rate_overlay.py \
             tests/test_yen_carry_policy_reaction_watch.py \
+            tests/test_yen_carry_boj_exit_quality.py \
             tests/test_yen_carry_telegram_compact.py -v
 
       - name: Check multi-factor carry state
@@ -148,6 +155,10 @@ jobs:
       - name: Track BOJ policy reaction against USDJPY
         if: always() && hashFiles('out/yen_carry_composite_pending_state.json') != ''
         run: PYTHONPATH=scripts python scripts/yen_carry_policy_reaction_watch.py
+
+      - name: Add BOJ exit-strategy quality overlay
+        if: always() && hashFiles('out/yen_carry_structural_pending_state.json') != ''
+        run: PYTHONPATH=scripts python scripts/yen_carry_boj_exit_quality.py
 
       - name: Compact Telegram body for scan-first readability
         if: hashFiles('out/yen_carry_composite_alert.md') != ''
@@ -189,7 +200,8 @@ jobs:
             out/yen_carry_structural_context.md \
             out/yen_carry_policy_path_context.md \
             out/yen_carry_real_rate_context.md \
-            out/yen_carry_policy_reaction_context.md; do
+            out/yen_carry_policy_reaction_context.md \
+            out/yen_carry_boj_exit_context.md; do
             if [ -f "$f" ]; then
               printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
               cat "$f" >> "$GITHUB_STEP_SUMMARY"
@@ -211,6 +223,14 @@ jobs:
           cat out/yen_carry_policy_reaction_alert_title.txt >> "$GITHUB_STEP_SUMMARY"
           printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
           cat out/yen_carry_policy_reaction_alert.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preview BOJ exit-strategy alert without sending
+        if: env.TELEGRAM_DRY_RUN == 'true' && hashFiles('out/yen_carry_boj_exit_alert.md') != ''
+        run: |
+          printf '\n---\n\nBOJ 출구전략 텔레그램 미전송 검증:\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/yen_carry_boj_exit_alert_title.txt >> "$GITHUB_STEP_SUMMARY"
+          printf '\n\n' >> "$GITHUB_STEP_SUMMARY"
+          cat out/yen_carry_boj_exit_alert.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Send through verified KHS Telegram route only
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_composite_alert.md') != ''
@@ -349,6 +369,99 @@ jobs:
           print(f'telegram_delivery_confirmed=true lane=yen_carry_composite bot=@{actual} message_ids={message_ids}')
           PY
 
+      - name: Send BOJ exit-strategy exception through verified KHS Telegram route
+        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_boj_exit_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "GLOBAL_RATES_TELEGRAM_* secrets가 없습니다. 다른 봇/채팅으로 대체하지 않습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import datetime as dt
+          import html
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
+          chat_id = os.environ['TELEGRAM_CHAT_ID'].strip()
+          expected = os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+
+          with urllib.request.urlopen(
+              urllib.request.Request(f'https://api.telegram.org/bot{token}/getMe'), timeout=25
+          ) as response:
+              identity = json.loads(response.read().decode('utf-8'))
+          actual = str((identity.get('result') or {}).get('username') or '')
+          if not identity.get('ok') or actual.lower() != expected.lower():
+              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
+
+          title = pathlib.Path('out/yen_carry_boj_exit_alert_title.txt').read_text(encoding='utf-8').strip()
+          body = pathlib.Path('out/yen_carry_boj_exit_alert.md').read_text(encoding='utf-8').strip()
+          lines = [title, '', *body.splitlines()]
+          section_headers = {'판정', '이번 변화', 'BOJ 출구전략 품질', '다음 확인', '출처'}
+
+          rendered = []
+          for index, line in enumerate(lines):
+              if line.startswith('- BOJ Accounts: '):
+                  url = line.split(': ', 1)[1]
+                  rendered.append(f'• BOJ 대차대조표 — <a href="{html.escape(url, quote=True)}">원문</a>')
+              elif line.startswith('- BOJ Time-Series API: '):
+                  url = line.split(': ', 1)[1]
+                  rendered.append(f'• BOJ 시계열 API — <a href="{html.escape(url, quote=True)}">원문</a>')
+              elif line.startswith('- BOJ Flow of Funds: '):
+                  url = line.split(': ', 1)[1]
+                  rendered.append(f'• BOJ 자금순환표 — <a href="{html.escape(url, quote=True)}">원문</a>')
+              elif line.startswith('- BOJ JGB purchase plan: '):
+                  url = line.split(': ', 1)[1]
+                  rendered.append(f'• BOJ JGB 매입계획 — <a href="{html.escape(url, quote=True)}">원문</a>')
+              elif line.startswith('- BOJ JGB purchase operations: '):
+                  url = line.split(': ', 1)[1]
+                  rendered.append(f'• BOJ JGB 매입운영 — <a href="{html.escape(url, quote=True)}">원문</a>')
+              elif index == 0 or line in section_headers:
+                  rendered.append(f'<b>{html.escape(line)}</b>')
+              elif line.startswith(('- 판정:', '- BOJ JGS 보유:', '- 월간 JGB 매입:', '- 선택 민간부문 JGB 보유 변화:', '- 같은 분기 BOJ JGS 변화:')):
+                  rendered.append(f'<b>{html.escape(line)}</b>')
+              else:
+                  rendered.append(html.escape(line))
+          telegram_html = '\n'.join(rendered)
+
+          payload = urllib.parse.urlencode({
+              'chat_id': chat_id,
+              'text': telegram_html,
+              'parse_mode': 'HTML',
+              'disable_web_page_preview': 'true',
+          }).encode('utf-8')
+          request = urllib.request.Request(
+              f'https://api.telegram.org/bot{token}/sendMessage',
+              data=payload,
+              method='POST',
+          )
+          with urllib.request.urlopen(request, timeout=25) as response:
+              result = json.loads(response.read().decode('utf-8'))
+          if not result.get('ok'):
+              raise RuntimeError(f'Telegram rejected yen_carry_boj_exit: {result}')
+
+          confirmed = {
+              'status': 'confirmed',
+              'lane': 'yen_carry_boj_exit',
+              'bot_username': actual,
+              'message_ids': [(result.get('result') or {}).get('message_id')],
+              'confirmed_at_kst': dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds'),
+          }
+          pathlib.Path('out/yen_carry_boj_exit_telegram_confirmed.json').write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8',
+          )
+          print(f'telegram_delivery_confirmed=true lane=yen_carry_boj_exit bot=@{actual}')
+          PY
+
       - name: Send BOJ policy reaction through verified KHS Telegram route
         if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_policy_reaction_alert.md') != ''
         env:
@@ -433,6 +546,10 @@ jobs:
           print(f'telegram_delivery_confirmed=true lane=yen_carry_policy_reaction bot=@{actual}')
           PY
 
+      - name: Finalize BOJ exit-strategy state only after confirmed delivery
+        if: always() && env.TELEGRAM_DRY_RUN != 'true'
+        run: PYTHONPATH=scripts python scripts/yen_carry_boj_exit_quality.py --finalize
+
       - name: Finalize BOJ policy reaction state only after confirmed delivery
         if: always() && env.TELEGRAM_DRY_RUN != 'true'
         run: PYTHONPATH=scripts python scripts/yen_carry_policy_reaction_watch.py --finalize
@@ -455,6 +572,7 @@ jobs:
           cp data/yen_carry_composite_state.json "$RUNNER_TEMP/yen-carry-composite-state/composite.json" 2>/dev/null || true
           cp data/yen_carry_structural_state.json "$RUNNER_TEMP/yen-carry-composite-state/structural.json" 2>/dev/null || true
           cp data/yen_carry_policy_reaction_state.json "$RUNNER_TEMP/yen-carry-composite-state/policy_reaction.json" 2>/dev/null || true
+          cp data/yen_carry_boj_exit_state.json "$RUNNER_TEMP/yen-carry-composite-state/boj_exit.json" 2>/dev/null || true
 
           for attempt in 1 2 3; do
             git fetch origin main
@@ -523,9 +641,10 @@ jobs:
           merge_file("composite.json", "yen_carry_composite_state.json", preserve_nested_target=True)
           merge_file("structural.json", "yen_carry_structural_state.json")
           merge_file("policy_reaction.json", "yen_carry_policy_reaction_state.json")
+          merge_file("boj_exit.json", "yen_carry_boj_exit_state.json")
           PY
 
-            git add data/yen_carry_composite_state.json data/yen_carry_structural_state.json data/yen_carry_policy_reaction_state.json 2>/dev/null || true
+            git add data/yen_carry_composite_state.json data/yen_carry_structural_state.json data/yen_carry_policy_reaction_state.json data/yen_carry_boj_exit_state.json 2>/dev/null || true
             if git diff --cached --quiet; then
               echo "엔캐리 복합·구조 상태 변경 없음"
               exit 0
@@ -569,6 +688,13 @@ jobs:
             out/yen_carry_policy_reaction_alert_title.txt
             out/yen_carry_policy_reaction_alert.md
             out/yen_carry_policy_reaction_telegram_confirmed.json
+            out/yen_carry_boj_exit_context.md
+            out/yen_carry_boj_exit_context.json
+            out/yen_carry_boj_exit_pending_state.json
+            out/yen_carry_boj_exit_alert_title.txt
+            out/yen_carry_boj_exit_alert.md
+            out/yen_carry_boj_exit_alert.json
+            out/yen_carry_boj_exit_telegram_confirmed.json
             out/khs_source_failures.json
           if-no-files-found: ignore
           retention-days: 14
