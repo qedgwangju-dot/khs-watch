@@ -167,6 +167,9 @@ jobs:
       - name: Check US data center cancellation and stranded-cost risk
         run: python scripts/us_data_center_cancellation_risk_watch.py
 
+      - name: Check Epoch AI major US data-center buildout
+        run: python scripts/us_ai_data_center_buildout_watch.py
+
       - name: Force regular Telegram font
         run: python scripts/remove_telegram_italics.py
 
@@ -191,6 +194,7 @@ jobs:
               pathlib.Path("out/us_data_center_time_to_power_alert.txt"),
               pathlib.Path("out/us_data_center_generation_buildout_alert.txt"),
               pathlib.Path("out/us_data_center_cancellation_risk_alert.txt"),
+              pathlib.Path("out/us_ai_data_center_buildout_alert.txt"),
           ]
           sent = 0
 
@@ -291,6 +295,20 @@ jobs:
                           ],
                       ]
                   }
+              elif p.name == "us_ai_data_center_buildout_alert.txt":
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {"is_disabled": True}
+                  payload["reply_markup"] = {
+                      "inline_keyboard": [
+                          [
+                              {"text": "📊 Epoch AI 데이터", "url": "https://epoch.ai/data/ai-data-centers"},
+                              {"text": "🛰 건설 타임라인", "url": "https://epoch.ai/data/ai-data-centers/directory"},
+                          ],
+                          [
+                              {"text": "📐 Epoch 방법론", "url": "https://epoch.ai/data/data-centers-documentation/methodology"}
+                          ],
+                      ]
+                  }
               else:
                   payload["link_preview_options"] = {"is_disabled": True}
 
@@ -324,6 +342,7 @@ jobs:
           cp out/us_data_center_time_to_power_pending_state.json "$tmpdir/us_data_center_time_to_power_state.json"
           cp out/us_data_center_generation_buildout_pending_state.json "$tmpdir/us_data_center_generation_buildout_state.json"
           cp out/us_data_center_cancellation_risk_pending_state.json "$tmpdir/us_data_center_cancellation_risk_state.json"
+          cp out/us_ai_data_center_buildout_pending_state.json "$tmpdir/us_ai_data_center_buildout_state.json"
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -339,6 +358,7 @@ jobs:
             cp "$tmpdir/us_data_center_time_to_power_state.json" data/us_data_center_time_to_power_state.json
             cp "$tmpdir/us_data_center_generation_buildout_state.json" data/us_data_center_generation_buildout_state.json
             cp "$tmpdir/us_data_center_cancellation_risk_state.json" data/us_data_center_cancellation_risk_state.json
+            cp "$tmpdir/us_ai_data_center_buildout_state.json" data/us_ai_data_center_buildout_state.json
 
             git add data/data_center_growth_state.json \
                     data/korea_aidc_policy_state.json \
@@ -393,5 +413,8 @@ jobs:
             out/us_data_center_cancellation_risk_status.md
             out/us_data_center_cancellation_risk_alert.txt
             out/us_data_center_cancellation_risk_pending_state.json
+            out/us_ai_data_center_buildout_status.md
+            out/us_ai_data_center_buildout_alert.txt
+            out/us_ai_data_center_buildout_pending_state.json
           if-no-files-found: ignore
           retention-days: 7
