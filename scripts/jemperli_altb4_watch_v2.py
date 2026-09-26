@@ -64,6 +64,38 @@ def is_canada_rectal_review_story(item: base.Item) -> bool:
     return country_signal and rectal_signal and review_signal
 
 
+def _jurisdiction(item: base.Item) -> str:
+    low = item.full.lower()
+    if any(x in low for x in ('health canada', 'canada', 'canadian', 'santé canada')):
+        return 'canada'
+    if any(x in low for x in ('fda', 'united states', 'u.s.', ' us ')):
+        return 'us'
+    if any(x in low for x in ('ema', 'european commission', 'european union', ' eu ')):
+        return 'eu'
+    if any(x in low for x in ('mhra', 'united kingdom', ' uk ')):
+        return 'uk'
+    return 'global'
+
+
+def _stage(item: base.Item) -> str:
+    low = item.full.lower()
+    if any(x in low for x in ('approved', 'approval', '승인')):
+        return 'approved'
+    if 'pdufa' in low:
+        return 'pdufa'
+    if 'priority review' in low or '우선 검토' in low:
+        return 'priority_review'
+    if any(x in low for x in ('sbla', 'snds', 'submission', 'filed', 'accepted for review', 'accepted')):
+        return 'regulatory_filing'
+    if any(x in low for x in ('subcutaneous', 'alt-b4', 'hybrozyme', 'berahyaluronidase', '피하주사')):
+        return 'sc_altb4'
+    if any(x in low for x in ('azur-1', 'azur-2', 'azur-4', 'domenica', 'jade', 'phase 2', 'phase 3')):
+        return 'clinical_update'
+    if any(x in low for x in ('sales', 'revenue', '매출')):
+        return 'sales'
+    return 'material'
+
+
 def event_key(item: base.Item) -> str:
     low = item.full.lower()
 
@@ -73,25 +105,18 @@ def event_key(item: base.Item) -> str:
         return CURRENT_EVENT_KEY
 
     indication = 'rectal' if any(x in low for x in ('rectal', '직장암')) else 'other'
-    if any(x in low for x in ('approved', 'approval', '승인')) and 'fda' in low:
-        stage = 'fda_approved'
-    elif 'pdufa' in low:
-        stage = 'pdufa'
-    elif 'priority review' in low or '우선 검토' in low:
-        stage = 'priority_review'
-    elif any(x in low for x in ('sbla', 'submission', 'filed', 'accepted')):
-        stage = 'regulatory_filing'
-    elif any(x in low for x in ('subcutaneous', 'alt-b4', 'hybrozyme', 'berahyaluronidase', '피하주사')):
-        stage = 'sc_altb4'
-    elif any(x in low for x in ('azur-1', 'azur-2', 'azur-4', 'domenica', 'jade', 'phase 2', 'phase 3')):
-        stage = 'clinical_update'
-    elif any(x in low for x in ('sales', 'revenue', '매출')):
-        stage = 'sales'
-    else:
-        stage = 'material'
+    return base.digest(f'jemperli|{_jurisdiction(item)}|{indication}|{_stage(item)}')
 
-    # 매체·공식/2차 자료가 달라도 동일 사건이면 같은 키를 사용한다.
-    return base.digest(f'jemperli|{indication}|{stage}')
+
+_original_is_relevant = base.is_relevant
+
+
+def is_relevant(item: base.Item) -> bool:
+    if not _original_is_relevant(item):
+        return False
+    # 사건의 성격을 식별하지 못한 재보도는 Telegram으로 보내지 않는다.
+    # 이후 공식자료/제목에 허가·임상·매출 등 구체 신호가 붙으면 다시 포착된다.
+    return _stage(item) != 'material'
 
 
 def _enrich_with_current_gsk_release(item: base.Item, body: str, resolved: str) -> tuple[str, str, bool]:
@@ -128,7 +153,19 @@ def build_item_summary(item: base.Item) -> str:
     elif rectal and priority:
         headline = 'GSK Jemperli, 미국 직장암 적응증 우선 검토'
     else:
-        headline = 'GSK Jemperli 규제·임상 새 변화'
+        jurisdiction = {'canada':'캐나다', 'us':'미국', 'eu':'유럽', 'uk':'영국'}.get(_jurisdiction(item), '')
+        stage = _stage(item)
+        action = {
+            'approved': '승인',
+            'pdufa': '허가 결정 일정 업데이트',
+            'priority_review': '우선 검토',
+            'regulatory_filing': '허가 신청·심사 접수',
+            'sc_altb4': 'ALT-B4 피하주사 개발 업데이트',
+            'clinical_update': '임상 결과 업데이트',
+            'sales': '매출 업데이트',
+        }.get(stage, '새 변화')
+        where = f'{jurisdiction} ' if jurisdiction else ''
+        headline = f'GSK Jemperli, {where}{action}'
 
     population = (
         '이전 치료를 받지 않은 2·3기 dMMR/MSI-H 국소 진행성 직장암'
@@ -200,7 +237,7 @@ def build_item_summary(item: base.Item) -> str:
 
 def migrate_state_once() -> None:
     state = base.load_state()
-    if int(state.get('dedupe_version') or 1) >= 3:
+    if int(state.get('dedupe_version') or 1) >= 4:
         return
     seen_events = set(state.get('seen_event_keys') or [])
     # 이번 직장암 우선검토 사건은 이미 사용자에게 전달된 기존 사건이므로
@@ -208,7 +245,7 @@ def migrate_state_once() -> None:
     seen_events.add(CURRENT_EVENT_KEY)
     seen_events.add(CANADA_EVENT_KEY)
     state['seen_event_keys'] = base.cap(seen_events)
-    state['dedupe_version'] = 3
+    state['dedupe_version'] = 4
     base.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
 
@@ -231,6 +268,7 @@ def gsk_official_items() -> list[base.Item]:
 def main() -> int:
     migrate_state_once()
     base.event_key = event_key
+    base.is_relevant = is_relevant
     base.build_item_summary = build_item_summary
     base.gsk_official_items = gsk_official_items
     return base.main()
