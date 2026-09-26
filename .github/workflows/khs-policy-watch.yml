@@ -86,7 +86,7 @@ jobs:
           echo "khs_policy_schedule_enable=confirmed"
 
   watch:
-    if: github.event_name != 'push'
+    if: github.event_name != 'push' || contains(github.event.head_commit.message, '[verify-policy-watch]')
     runs-on: ubuntu-latest
     env:
       CREATE_GITHUB_ISSUE: "true"
