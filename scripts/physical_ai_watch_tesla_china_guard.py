@@ -111,6 +111,43 @@ SUPPLIER_CONSISTENCY = re.compile(r'(?:중국|China|Chinese).{0,80}(?:supplier|�
 CORE_PARTS = re.compile(r'모터|motor|정밀\s*기어|precision\s*gear|gearbox|감속기|actuator|액추에이터', re.I)
 TRAINING_500K = re.compile(r'50\s*만\s*시간|500,?000\s*hours?|500k\s*hours?', re.I)
 TRAINING_DOUBLE = re.compile(r'(?:연말|year[- ]?end).{0,50}(?:두\s*배|2\s*배|double)|(?:double|두\s*배|2\s*배).{0,50}(?:연말|year[- ]?end)', re.I)
+FIXTURE_REWORK = re.compile(
+    r'(?:fixture|jig|지그|보조기구).{0,140}(?:align|alignment|정렬).{0,120}(?:rework|재작업|line|라인)|'
+    r'(?:rework|재작업).{0,140}(?:fixture|jig|지그|alignment|정렬)|'
+    r'(?:tooling|automated\s+equipment|자동화\s*설비).{0,120}(?:fail|failure|malfunction|오작동|고장).{0,120}(?:rework|재작업|line|라인)',
+    re.I,
+)
+SENSING_GLOVE = re.compile(r'sensing\s*glove|센싱\s*글러브|센싱\s*장갑|감지\s*장갑', re.I)
+AI_GENERALIZATION = re.compile(
+    r'generaliz|general-purpose|범용화|범용\s*로봇|untrained|unseen\s+(?:task|situation|scenario)|'
+    r'미훈련\s*(?:상황|작업|태스크)|예측\s*불가|unpredictable',
+    re.I,
+)
+BASIC_TASK_DAYS = re.compile(
+    r'(?:basic|simple)\s+(?:new\s+)?task.{0,60}(?:several|multiple|few)\s+days|'
+    r'(?:several|multiple|few)\s+days.{0,60}(?:basic|simple)\s+(?:new\s+)?task|'
+    r'(?:기본|단순)\s*(?:작업|태스크).{0,50}(?:수일|며칠)|(?:수일|며칠).{0,50}(?:기본|단순)\s*(?:작업|태스크)',
+    re.I,
+)
+TRAINING_HUBS = re.compile(
+    r'(?:training\s+(?:hub|center)|훈련\s*(?:허브|센터)).{0,160}(?:Colorado|Arizona|Florida|콜로라도|애리조나|플로리다)|'
+    r'(?:Colorado|Arizona|Florida|콜로라도|애리조나|플로리다).{0,160}(?:training\s+(?:hub|center)|훈련\s*(?:허브|센터))',
+    re.I,
+)
+LEASE_COMMERCIAL = re.compile(
+    r'(?:lease|leasing|rent|리스|임대).{0,180}(?:commercial\s+customer|outside\s+customer|warehouse|factory|고객|창고|공장)|'
+    r'(?:commercial\s+customer|outside\s+customer|warehouse|factory|고객|창고|공장).{0,180}(?:lease|leasing|rent|리스|임대)',
+    re.I,
+)
+RETRIEVE_UPGRADE_DATA = re.compile(
+    r'(?:retrieve|recover|회수).{0,120}(?:upgrade|refurbish|업그레이드|개조|정비)|'
+    r'(?:customer|factory|warehouse|고객|공장|창고).{0,160}(?:data\s+collection|collect\s+data|데이터\s*수집).{0,120}(?:AI|improve|개선)',
+    re.I,
+)
+INTERNAL_TEST_USE = re.compile(
+    r'(?:internal|inside\s+Tesla|자사|내부).{0,120}(?:test|testing|training|data\s+collection|테스트|훈련|데이터\s*수집)',
+    re.I,
+)
 FACTORY_SITE = re.compile(r'Giga(?:factory)?\\s*Texas|Giga\\s*Texas|기가\\s*텍사스|텍사스.{0,50}Optimus|Optimus.{0,50}(?:Texas|텍사스)|Optimus.{0,40}(?:dedicated\\s*factory|factory)|옵티머스.{0,40}(?:전용\\s*공장|공장)|로봇\\s*기가팩토리', re.I)
 FACTORY_STRUCTURE = re.compile(r'steel\\s*(?:assembly|frame|framing)|column\\s*grids?|concrete|rebar|footing|grade[-\\s]*beam|roof\\s*truss|철골|골조|콘크리트|철근|기초|기초보|지붕|상부\\s*\\d+개?\\s*층', re.I)
 FACTORY_TOOLING = re.compile(r'tooling|equipment\\s*(?:install|installation|move[-\\s]*in)|production\\s*equipment|장비\\s*(?:반입|설치)|생산\\s*설비\\s*(?:반입|설치)|생산라인\\s*설치', re.I)
@@ -190,7 +227,7 @@ if TESLA_KOREA_SUPPLIER_SENTINEL not in base.QUERIES:
 _TESLA_KOREA_SUPPLIER_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스 OR humanoid OR 휴머노이드) (한국 OR 국내 OR Korea) (공장 방문 OR 생산시설 점검 OR 공급망 OR supplier OR factory visit OR actuator OR 감속기 OR 센서)'
 if _TESLA_KOREA_SUPPLIER_QUERY not in base.QUERIES:
     base.QUERIES.append(_TESLA_KOREA_SUPPLIER_QUERY)
-_TESLA_RAMP_BOTTLENECK_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("hundreds per week" OR "주당 수백 대" OR "10x" OR "10배" OR "1,000 per week" OR "20,000 per week" OR hand OR 손 OR forearm OR 전완 OR tactile OR 촉각) ("The Information" OR production OR 생산 OR supply chain OR 공급망)'
+_TESLA_RAMP_BOTTLENECK_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("hundreds per week" OR "주당 수백 대" OR "10x" OR "10배" OR "1,000 per week" OR "20,000 per week" OR hand OR 손 OR forearm OR 전완 OR tactile OR 촉각 OR "sensing glove" OR fixture OR jig OR rework OR 재작업 OR generalization OR "several days" OR lease OR 리스 OR "training hub" OR 훈련허브) ("The Information" OR Electrek OR production OR 생산 OR supply chain OR 공급망)'
 if _TESLA_RAMP_BOTTLENECK_QUERY not in base.QUERIES:
     base.QUERIES.append(_TESLA_RAMP_BOTTLENECK_QUERY)
 if TESLA_RAMP_BOTTLENECK_SENTINEL not in base.QUERIES:
@@ -212,7 +249,7 @@ base.TRUSTED.update({
     '시나재경', '제몐뉴스', '21세기경제보도', '거룽후이', '차이롄서',
     '증권시보', '중국증권보', '상하이증권보', 'Tesla Telemetry', '第一财经', '펑파이신문', '澎湃新闻', 'The Paper',
     'Moonshots with Peter Diamandis', 'Peter H. Diamandis', 'Dwarkesh Podcast', 'All-In Podcast',
-    '한국경제', 'Hankyung',
+    '한국경제', 'Hankyung', 'The Information', 'Electrek', 'Investing.com',
 })
 base.OFFICIAL_OR_PRIMARY.add(MUSK_X_SOURCE)
 
@@ -588,9 +625,13 @@ def _query_ramp_bottleneck_recovery() -> list[dict]:
         'description': (
             'The Information sources report Tesla increased Optimus production about 10x in recent months to hundreds of units per week. '
             'Tesla is targeting a continuous automated line above 1,000 units per week by year-end and has discussed a long-term target near 20,000 per week. '
-            'Hands and forearms remain a bottleneck: more than 100 screws and small parts keep assembly labor-intensive, while tactile-sensor durability remains a concern. '
-            'Motors and precision gears sourced largely from external Chinese suppliers show quality and consistency problems as volumes rise. '
-            'The report also says Tesla has accumulated more than 500,000 hours of Optimus training data and aims to roughly double it by year-end.'
+            'Hands and forearms remain a bottleneck: more than 100 screws and small parts keep assembly labor-intensive. '
+            'Fixtures at hand, joint and electronics-test stations can misalign tighter-tolerance parts, causing line-off rework, while some automated equipment fails at higher speed. '
+            'Touch-sensor reliability remains a concern; Tesla reportedly plans a replaceable sensing glove next year so sensors can be serviced without replacing the whole hand. '
+            'Motors and precision gears sourced largely from external Chinese suppliers show quality and consistency problems as volumes rise from prototype to mass production. '
+            'The report also says Tesla has accumulated more than 500,000 hours of Optimus training data and aims to roughly double it by year-end, with training hubs in Colorado, Arizona and Florida. '
+            'Optimus still takes several days to learn some basic tasks and can behave unpredictably in untrained situations, so most current V3 units remain inside Tesla for testing, training and data collection. '
+            'Initial external commercialization is reportedly planned as leasing to a small set of factory or warehouse customers similar to Tesla, allowing hardware retrieval, upgrades or refurbishment and continued AI data collection.'
         ),
         'published': published.isoformat(),
         'source': TESLA_RAMP_BOTTLENECK_SOURCE,
@@ -650,10 +691,13 @@ def _is_tesla_supply_text(text: str) -> bool:
 
 def _is_ramp_bottleneck_event(text: str) -> bool:
     ramp = bool(RAMP_TENFOLD.search(text) or WEEKLY_HUNDREDS.search(text) or YEAR_END_1000.search(text) or LONG_TERM_20000.search(text))
-    hand = bool(HAND_ASSEMBLY_BOTTLENECK.search(text) or TACTILE_DURABILITY.search(text))
+    hand = bool(HAND_ASSEMBLY_BOTTLENECK.search(text) or TACTILE_DURABILITY.search(text) or SENSING_GLOVE.search(text))
+    process = bool(FIXTURE_REWORK.search(text))
     supply = bool(SUPPLIER_CONSISTENCY.search(text) and CORE_PARTS.search(text))
     data = bool(TRAINING_500K.search(text) and TRAINING_DOUBLE.search(text))
-    return bool(ramp and (hand or supply or CONTINUOUS_AUTO_LINE.search(text) or data))
+    ai = bool(AI_GENERALIZATION.search(text) or BASIC_TASK_DAYS.search(text) or TRAINING_HUBS.search(text))
+    commercial = bool(LEASE_COMMERCIAL.search(text) or RETRIEVE_UPGRADE_DATA.search(text) or INTERNAL_TEST_USE.search(text))
+    return bool(ramp and (hand or process or supply or CONTINUOUS_AUTO_LINE.search(text) or data or ai or commercial))
 
 
 def _stage(text: str) -> str:
@@ -814,8 +858,9 @@ def meaning(cat: str) -> str:
         return ('주당 몇 대분을 공급할 수 있어야 하는지 또는 생산 목표가 얼마인지 보여주는 선행 시간표 신호입니다. '
                 '실제 완제품 생산량과 혼동하지 않고 목표→실생산 전환 시점을 별도 추적합니다.')
     if cat == 'Optimus 주간 생산 램프·손·공급망 병목':
-        return ('단순 양산 예정이 아니라 실제 생산량이 주당 수백 대 수준으로 올라갔다는 보도와 동시에 손·전완 수작업, 촉각센서 내구성, 중국 핵심부품 공급사 품질 일관성 같은 병목이 함께 드러나는 신호입니다. '
-                '현재 생산량→연말 주당 1,000대 자동화라인 목표→장기 주당 2만대 계획을 분리해 추적하고, 손 조립 자동화율·촉각센서 불량률·공급사 수율·학습데이터 증가가 실제 안정 양산으로 이어지는지 확인합니다.')
+        return ('단순 양산 예정이 아니라 실제 생산량이 주당 수백 대 수준으로 올라갔다는 보도와 동시에 손·전완 수작업, 지그 정렬 불량에 따른 재작업, 촉각센서 신뢰성, 중국 핵심부품 공급사 품질 일관성, AI 범용화가 함께 병목으로 드러나는 신호입니다. '
+                '현재 생산량→연말 주당 1,000대 자동화라인 목표→장기 주당 2만대 계획을 분리해 추적하고, 손 조립 자동화율·직행수율/재작업률·센싱 글로브 적용·촉각센서 불량률·공급사 수율·기본 작업 학습시간·학습데이터/훈련허브 확대가 실제 안정 양산으로 이어지는지 확인합니다. '
+                '초기 외부 상용화는 판매보다 선별 고객 대상 리스·회수·업그레이드·데이터 피드백 구조인지도 별도로 추적합니다.')
     if cat == 'Optimus 실제 양산 개시':
         return ('양산 예정·심사·공급망 준비가 아니라 실제 생산 개시가 확인된 단계 변화입니다. '
                 '첫 주간 생산량·수율·완성품 출하·내부 배치로 실제 램프업 속도를 확인합니다.')
@@ -865,7 +910,8 @@ def risk(cat: str) -> str:
         return ('공급능력 목표는 실제 생산량이 아닙니다. 수율·부품 병목·라인 안정화가 늦으면 목표치와 실제 주간 완제품 생산량의 격차가 커질 수 있습니다.')
     if cat == 'Optimus 주간 생산 램프·손·공급망 병목':
         return ('The Information 소식통 보도 성격의 생산량·목표 수치는 Tesla 공식 생산실적과 다를 수 있습니다. 주당 수백 대가 실제 완제품 기준인지, 연말 주당 1,000대가 라인 설계능력인지 실생산 목표인지 구분해야 합니다. '
-                '가장 현실적인 실패 경로는 손·전완 조립 복잡도와 촉각센서 내구성, 외부 모터·정밀기어 공급사의 대량생산 품질 편차가 겹쳐 자동화라인 램프와 주간 생산량이 목표에 못 미치는 경우입니다.')
+                '가장 현실적인 실패 경로는 손·전완 조립 복잡도와 지그 정렬 불량 재작업, 촉각센서 신뢰성, 외부 모터·정밀기어 공급사의 대량생산 품질 편차, 미훈련 상황에서의 AI 불안정성이 동시에 남아 자동화라인 램프와 고객 배치가 늦어지는 경우입니다. '
+                '먼저 볼 지표는 직행수율·재작업률, 센싱 글로브 실제 적용 시점, 기본 작업 학습시간, 50만시간→약 100만시간 데이터 확대 달성, 외부 리스 고객 실명과 실제 배치입니다.')
     if cat == 'Optimus 실제 양산 개시':
         return ('생산 개시와 안정 양산은 다릅니다. 초기 직행수율·재작업률·주간 생산량이 따라오지 않으면 양산 개시 후에도 병목이 지속될 수 있습니다.')
     if cat == 'Optimus Gen 3 앱 자산·세대 디자인 준비':
@@ -912,7 +958,7 @@ def verification(item: dict, group: str, text: str) -> str:
         if _stage(text) == 'weekly_capacity_target':
             return '공급망 생산능력·목표 보도 · 실제 완제품 생산량과 분리'
         if _stage(text) == 'production_ramp_bottleneck':
-            return 'The Information 소식통 보도 · 공개 접근부에서 손/생산 병목은 확인, 주당 생산량·연말 자동화라인·50만시간 학습데이터 세부는 Tesla 공식 확인 전'
+            return 'The Information 원문 공개 범위와 Electrek·Investing.com 후속 보도 교차확인 · 주당 수백 대·연말 1,000대·손/지그 재작업·센싱 글로브·AI 일반화·리스 전략은 보도 단계이며 Tesla 공식 생산실적·상용화 확정 전'
         if _stage(text) == 'production_started':
             return '양산 실제 개시 보도 · 테슬라 공식 생산상태와 후속 교차확인'
         if _stage(text) == 'app_generation_asset':
@@ -956,7 +1002,7 @@ def clean_title(title: str, source: str) -> str:
         if stage == 'weekly_capacity_target':
             return '테슬라 옵티머스, 주간 공급능력·생산 목표 신규 변화'
         if stage == 'production_ramp_bottleneck':
-            return '테슬라 Optimus, 주당 수백 대 생산 램프 보도…손·촉각센서·공급망 병목 지속'
+            return '테슬라 Optimus, 주당 수백 대 생산 램프…손·재작업·센서·AI·공급망 병목'
         if stage == 'production_started':
             return '테슬라 옵티머스, 실제 양산 개시 신규 확인'
         if stage == 'app_generation_asset':
