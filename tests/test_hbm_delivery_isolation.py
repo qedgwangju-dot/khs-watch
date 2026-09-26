@@ -62,7 +62,7 @@ class RecoveryIsolationTests(unittest.TestCase):
         d.begin()
         with patch.object(d.subprocess, 'run') as proc, patch.object(d, 'finish', return_value={'status': 'no_message_due'}) as done:
             with self.assertRaises(RuntimeError): d.run_collectors()
-        self.assertEqual([c.args[0] for c in done.call_args_list], ['rubin', 'skhynix'])
+        self.assertEqual([c.args[0] for c in done.call_args_list], ['rubin', 'skhynix', 'solidigm'])
         self.assertFalse(any('hbm_memory_axes.py' in c.args[0][1] for c in proc.call_args_list))
         summary = d.read(d.OUT / 'hbm_delivery_summary.json')
         self.assertEqual(summary['routes']['samsung']['stage'], 'recovery')
@@ -76,7 +76,7 @@ class RecoveryIsolationTests(unittest.TestCase):
             return {'status': 'no_message_due'}
         with patch.object(d.subprocess, 'run'), patch.object(d, 'finish', side_effect=finish) as done:
             with self.assertRaises(RuntimeError): d.run_collectors()
-        self.assertEqual([c.args[0] for c in done.call_args_list], ['rubin', 'skhynix', 'samsung'])
+        self.assertEqual([c.args[0] for c in done.call_args_list], ['rubin', 'skhynix', 'samsung', 'solidigm'])
         summary = d.read(d.OUT / 'hbm_delivery_summary.json')
         self.assertEqual(summary['routes']['rubin']['refresh_error_type'], 'RuntimeError')
         self.assertEqual(summary['routes']['samsung']['status'], 'no_message_due')
@@ -96,7 +96,7 @@ class RecoveryIsolationTests(unittest.TestCase):
         d.begin(); d.write(d.OUT / 'hbm_before_rubin.json', {'value': 999})
         with patch.object(d.subprocess, 'run'), patch.object(d, 'finish', return_value={'status': 'no_message_due'}) as done:
             with self.assertRaises(RuntimeError): d.run_collectors()
-        self.assertEqual([c.args[0] for c in done.call_args_list], ['skhynix', 'samsung'])
+        self.assertEqual([c.args[0] for c in done.call_args_list], ['skhynix', 'samsung', 'solidigm'])
 
     def test_all_healthy_results_are_recorded(self):
         d.begin()
