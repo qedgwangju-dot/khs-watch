@@ -515,6 +515,8 @@ def classify(title: str) -> str:
         "capacity", "capa", "wafer", "greenfield", "fab", "factory", "ramp",
         "생산능력", "웨이퍼", "증설", "신규 팹", "그린필드", "램프업",
     )
+    if "memory price forecast" in t or "메모리 가격 전망" in t:
+        return "DRAM/NAND"
     if "hbm" in t:
         return "HBM/CAPA"
     if "dram" in t or "디램" in t:
@@ -613,12 +615,25 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         title = _polish_alert_title(raw_title, translated)
         detail_blob = str(item.get("description") or "")
         if item.get("source") == "TrendForce Research" and "memory price forecast" in raw_title.lower():
-            essd = re.search(r"Enterprise SSD[^0-9]{0,80}(\d{1,2})\s*[-~]\s*(\d{1,2})\s*%[^A-Za-z]{0,12}(?:QoQ|qoq|季增|环比)?", detail_blob, re.IGNORECASE)
-            nand = re.search(r"(?:Overall\s+)?NAND Flash[^0-9]{0,80}(\d{1,2})\s*[-~]\s*(\d{1,2})\s*%[^A-Za-z]{0,12}(?:QoQ|qoq|季增|环比)?", detail_blob, re.IGNORECASE)
+            essd = re.search(
+                r"Enterprise SSD[^0-9]{0,120}(\d{1,2})\s*[-~–—]\s*(\d{1,2})\s*%",
+                detail_blob,
+                re.IGNORECASE,
+            )
+            nand = re.search(
+                r"(?:Overall\s+)?NAND Flash[^0-9]{0,120}(\d{1,2})\s*[-~–—]\s*(\d{1,2})\s*%",
+                detail_blob,
+                re.IGNORECASE,
+            )
             if essd and nand:
                 title = (
-                    f"TrendForce 4Q26 메모리 가격 전망: Enterprise SSD +{essd.group(1)}~{essd.group(2)}%, "
-                    f"NAND 전체 +{nand.group(1)}~{nand.group(2)}%…AI·KV Cache 수요 강세, DRAM은 LTA로 인상폭 제한"
+                    f"TrendForce 4Q26: Enterprise SSD +{essd.group(1)}~{essd.group(2)}% QoQ, "
+                    f"NAND 전체 +{nand.group(1)}~{nand.group(2)}%…서버 DRAM·HBM 우선배정으로 소비자 DRAM 공급 축소, LTA가 DRAM 인상폭 제한"
+                )
+            elif "4q26" in raw_title.lower():
+                title = (
+                    "TrendForce 4Q26 메모리 가격 전망: AI 서버·HBM 우선배정으로 소비자 DRAM 공급 축소, "
+                    "QLC Enterprise SSD는 KV Cache 수요로 강세…LTA가 DRAM 인상폭 제한"
                 )
         pub = item.get("published_kst")
         date_text = ""
