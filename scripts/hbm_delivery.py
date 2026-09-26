@@ -27,6 +27,7 @@ ROUTES = {
     'samsung': ('data/samsung_hbm_watch_state.json', 'out/samsung_hbm_alert.html', ''),
     'rubin': ('data/rubin_hbm_watch_state.json', 'out/rubin_hbm_alert.md', 'out/rubin_hbm_pending_state.json'),
     'skhynix': ('data/skhynix_us_memory_watch_state.json', 'out/skhynix_us_memory_alert.html', ''),
+    'solidigm': ('data/solidigm_ipo_watch_state.json', 'out/solidigm_ipo_alert.html', ''),
 }
 EXPECTED = 'khs88798879887988798879_bot'
 
@@ -335,6 +336,7 @@ def run_collectors():
         ('rubin', [['scripts/rubin_hbm_watch.py'], ['scripts/rubin_hbm_pretty.py'], ['scripts/rubin_hbm_leverage.py'], ['scripts/ai_component_leadtime_watch.py'], ['scripts/agentic_cpu_watch.py'], ['scripts/samsung_electromechanics_cpu_watch.py']]),
         ('skhynix', [['scripts/skhynix_us_memory_watch.py']]),
         ('samsung', [['scripts/hbm_memory_axes.py']]),
+        ('solidigm', [['scripts/solidigm_ipo_watch.py']]),
     ):
         entry = prepared['routes'].get(name, {})
         if entry.get('status') != 'ready':
