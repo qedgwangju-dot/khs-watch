@@ -9,6 +9,8 @@ TTF는 사용자가 지정한 Trading Economics 한국 페이지를 단일 기�
 
 from __future__ import annotations
 
+import re
+
 import lng_supply_crisis_alert_v2 as core
 import lng_supply_crisis_alert_v3 as strict
 import lng_supply_crisis_alert_v4 as te
@@ -16,15 +18,43 @@ import lng_supply_crisis_alert_v5 as v5
 import lng_supply_crisis_alert_v6 as v6
 
 
+TE_COMMODITIES_KO_URL = "https://ko.tradingeconomics.com/commodities"
+
+
+def parse_te_korean_row_date_v7(raw_html: str, expected_price: float) -> str:
+    text = te.visible_text(raw_html)
+    patterns = (
+        r"(?:유럽연합 가스|EU 가스)\s+(?:EUR/MWh\s+)?([0-9.,]+).*?(20\d{2}-\d{2}-\d{2})",
+        r"(?:유럽연합 가스|EU Gas)\s+([0-9.,]+).*?(20\d{2}-\d{2}-\d{2})",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.I)
+        if not match:
+            continue
+        row_price = float(match.group(1).replace(",", ""))
+        if expected_price <= 0:
+            continue
+        gap_pct = abs(row_price / expected_price - 1.0) * 100.0
+        if gap_pct <= te.TE_MAX_INTERNAL_GAP_PCT:
+            return match.group(2)
+    raise RuntimeError(
+        f"Trading Economics 상품표에서 TTF 값 {expected_price:.2f}와 같은 행의 기준일을 확인하지 못함"
+    )
+
+
 def fetch_te_ttf_quote_v7() -> core.Quote:
     raw_ko = te.fetch_te_html(te.TE_TTF_URLS[0])
     primary = te.parse_te_ttf(raw_ko)
-    source_date = v5.parse_te_korean_source_date(raw_ko)
+    price = float(primary["actual"])
+
+    # 상세 설명 문구의 날짜는 장 마감 직후 늦게 갱신될 수 있다.
+    # 같은 Trading Economics 한국 상품표에서 '현재 값과 같은 행'의 날짜를 우선 사용한다.
+    raw_table = te.fetch_te_html(TE_COMMODITIES_KO_URL)
+    source_date = parse_te_korean_row_date_v7(raw_table, price)
     v6._validate_source_date(source_date)
 
     # parse_te_ttf()가 actual/previous/페이지 내부 시세표/등락률의 상호 일치를 이미 검증한다.
     observed = core.now_utc()
-    price = float(primary["actual"])
     previous = float(primary["previous"])
     return core.Quote(
         key="ttf",
@@ -40,6 +70,7 @@ def fetch_te_ttf_quote_v7() -> core.Quote:
         source_note=(
             "사용자 지정 Trading Economics 한국 페이지 직접값; "
             "actual/previous/페이지 내부 시세표 및 계산 등락률 검증; "
+            "같은 Trading Economics 한국 상품표의 동일값 행 날짜 교차검증; "
             f"기준일={source_date}"
         ),
     )
@@ -66,6 +97,7 @@ def build_setup_test_v7(quotes: dict[str, core.Quote]):
         "\n• TTF는 사용자가 지정한 Trading Economics 한국 페이지를 최종 기준값으로 사용"
         "\n• 한국 페이지의 actual·previous·페이지 내부 시세표·직접 계산 등락률이 일치할 때만 출력"
         "\n• 타언어 페이지 캐시 지연은 참고만 하고 한국 기준값을 임의 변경하지 않음"
+        "\n• TTF 기준일은 상세 설명문이 아니라 한국 상품표의 동일값 행 날짜로 재검증"
     )
     metadata["version"] = 7
     metadata["ttf_canonical_source"] = te.TE_TTF_URLS[0]
