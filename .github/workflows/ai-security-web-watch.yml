@@ -1,0 +1,229 @@
+name: AI Security Web Watch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/ai-security-web-watch.yml"
+      - "scripts/ai_security_web_watch.py"
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "Send a Telegram connection test"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ai-security-web-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      AI_SECURITY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
+      CONFIGURED_AI_SECURITY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      EXPECTED_AI_SECURITY_BOT_USERNAMES: "khs88798879_bot,hs88798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve and verify Telegram route
+        id: telegram
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "$AI_SECURITY_TELEGRAM_BOT_TOKEN" ]; then
+            echo "AI security Telegram token is missing." >&2
+            exit 1
+          fi
+          python - <<'PY'
+          import json, os, pathlib, urllib.request
+          token = os.environ["AI_SECURITY_TELEGRAM_BOT_TOKEN"].strip()
+          configured_chat = (os.environ.get("CONFIGURED_AI_SECURITY_TELEGRAM_CHAT_ID") or "").strip()
+          expected = {x.strip().lstrip("@").lower() for x in (os.environ.get("EXPECTED_AI_SECURITY_BOT_USERNAMES") or "").split(",") if x.strip()}
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or not actual:
+              raise RuntimeError("Telegram getMe failed")
+          if expected and actual.lower() not in expected:
+              raise RuntimeError(f"Wrong Telegram bot: expected one of {sorted(expected)}, got @{actual}")
+          chat_id = configured_chat
+          route = "secret"
+          if not chat_id:
+              with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0", timeout=25) as r:
+                  updates = json.loads(r.read().decode("utf-8"))
+              candidates = []
+              for upd in updates.get("result") or []:
+                  msg = upd.get("message") or upd.get("edited_message") or {}
+                  chat = msg.get("chat") or {}
+                  if str(chat.get("type") or "") == "private" and chat.get("id") is not None:
+                      candidates.append((int(upd.get("update_id") or 0), str(chat["id"])))
+              if candidates:
+                  candidates.sort()
+                  chat_id = candidates[-1][1]
+                  route = "getUpdates"
+          if not chat_id:
+              raise RuntimeError("Telegram chat_id could not be resolved")
+          out = pathlib.Path(os.environ["GITHUB_OUTPUT"])
+          with out.open("a", encoding="utf-8") as f:
+              f.write(f"bot_username={actual}\n")
+              f.write(f"chat_id={chat_id}\n")
+              f.write(f"chat_route={route}\n")
+          print(f"ai_security_bot_verified=@{actual}")
+          print(f"ai_security_chat_resolved=true route={route}")
+          PY
+
+      - name: Validate watcher
+        run: python -m py_compile scripts/ai_security_web_watch.py
+
+      - name: Run live web security watch
+        run: |
+          rm -f out/ai_security_web_watch_alert_title.txt out/ai_security_web_watch_alert.md out/ai_security_web_watch_telegram_confirmed.json
+          python scripts/ai_security_web_watch.py
+          cat out/ai_security_web_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Build optional Telegram connection test
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        run: |
+          mkdir -p out
+          cat > out/ai_security_web_watch_connection_test.txt <<'EOF'
+          [AI 보안 웹감시] 텔레그램 연결 시험
+
+          연결 정상입니다.
+          - 주요 AI 에이전트·모델·도구·커넥터 보안 이슈를 웹에서 새로 조회
+          - 데이터 유출, 가상환경·샌드박스, 원격 코드 실행, 프롬프트 주입, MCP·플러그인 권한, 인증·자격증명, 공급망 취약점 감시
+          - 실제 중요 변화가 있을 때만 알림
+          - 같은 사건 재탕 기사와 일반적인 AI 위험론은 제외
+          EOF
+
+      - name: Send Telegram alerts
+        env:
+          AI_SECURITY_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token = os.environ["AI_SECURITY_TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["AI_SECURITY_TELEGRAM_CHAT_ID"].strip()
+          alert_path = pathlib.Path("out/ai_security_web_watch_alert.md")
+          test_path = pathlib.Path("out/ai_security_web_watch_connection_test.txt")
+
+          def chunks(text, max_len=3800):
+              text = text.strip()
+              out = []
+              while len(text) > max_len:
+                  cut = text.rfind("\n\n", 0, max_len)
+                  if cut < 900:
+                      cut = text.rfind("\n", 0, max_len)
+                  if cut < 900:
+                      cut = max_len
+                  out.append(text[:cut].strip())
+                  text = text[cut:].strip()
+              if text:
+                  out.append(text)
+              return out
+
+          files = [p for p in (test_path, alert_path) if p.exists() and p.read_text(encoding="utf-8").strip()]
+          message_ids = []
+          for path in files:
+              title_path = pathlib.Path("out/ai_security_web_watch_alert_title.txt")
+              text = path.read_text(encoding="utf-8").strip()
+              if path == alert_path and title_path.exists():
+                  text = title_path.read_text(encoding="utf-8").strip() + "\n\n" + text
+              for chunk in chunks(text):
+                  data = urllib.parse.urlencode({"chat_id": chat_id, "text": chunk, "disable_web_page_preview": "true"}).encode("utf-8")
+                  req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
+                  with urllib.request.urlopen(req, timeout=30) as resp:
+                      result = json.loads(resp.read().decode("utf-8"))
+                  if not result.get("ok"):
+                      raise RuntimeError(f"Telegram send failed: {result}")
+                  message_id = (result.get("result") or {}).get("message_id")
+                  if message_id is None:
+                      raise RuntimeError("Telegram send succeeded without message_id")
+                  message_ids.append({"file": path.name, "message_id": message_id})
+
+          if alert_path.exists():
+              if not message_ids:
+                  raise RuntimeError("Alert existed but no Telegram message was sent")
+              pathlib.Path("out/ai_security_web_watch_telegram_confirmed.json").write_text(
+                  json.dumps({"status": "confirmed", "bot_username": "${{ steps.telegram.outputs.bot_username }}", "messages": message_ids}, ensure_ascii=False, indent=2) + "\n",
+                  encoding="utf-8",
+              )
+          print(f"ai_security_telegram_messages_sent={len(message_ids)}")
+          PY
+
+      - name: Finalize state after no-alert or confirmed delivery
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f out/ai_security_web_watch_pending_state.json ]; then
+            echo "Pending state missing" >&2
+            exit 1
+          fi
+          if [ -f out/ai_security_web_watch_alert.md ] && [ ! -f out/ai_security_web_watch_telegram_confirmed.json ]; then
+            echo "Alert state not consumed because Telegram delivery is unconfirmed" >&2
+            exit 1
+          fi
+          cp out/ai_security_web_watch_pending_state.json data/ai_security_web_watch_state.json
+
+      - name: Commit watch state
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmpdir="$(mktemp -d)"
+          cp data/ai_security_web_watch_state.json "$tmpdir/ai_security_web_watch_state.json"
+          git config user.name "ai-security-web-watch[bot]"
+          git config user.email "ai-security-web-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp "$tmpdir/ai_security_web_watch_state.json" data/ai_security_web_watch_state.json
+            git add data/ai_security_web_watch_state.json
+            if git diff --cached --quiet; then
+              echo "AI security watch state unchanged"
+              exit 0
+            fi
+            git commit -m "Update AI security web watch state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "AI security watch state save failed after retries" >&2
+          exit 1
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-security-web-watch-${{ github.run_id }}
+          path: |
+            out/ai_security_web_watch_status.md
+            out/ai_security_web_watch_alert_title.txt
+            out/ai_security_web_watch_alert.md
+            out/ai_security_web_watch_pending_state.json
+            out/ai_security_web_watch_telegram_confirmed.json
+            out/ai_security_web_watch_connection_test.txt
+          if-no-files-found: ignore
+          retention-days: 14
