@@ -7602,6 +7602,26 @@ def is_space_pv_pia_base_rehash(alert: dict) -> bool:
     return not any(term in text for term in stage_change_terms)
 
 
+def is_polysilicon_11052_base_rehash(alert: dict) -> bool:
+    text = base.norm(
+        " ".join(
+            str(alert.get(key) or "")
+            for key in (
+                "source_title", "original_news", "news", "source_abstract",
+                "source_body", "summary", "telegram_core_fact", "policy_plain_summary",
+            )
+        )
+    )
+    if semantic_event_theme(alert) != "polysilicon-11052-base":
+        return False
+    stage_change_terms = (
+        "amend", "amended", "amendment", "modify", "modified", "revision", "revised",
+        "waiver", "exemption", "temporary final rule", "stockpil", "import prohibition",
+        "new rule", "new guidance", "changes to", "changed",
+    )
+    return not any(term in text for term in stage_change_terms)
+
+
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
     candidates = initial + alerts
@@ -7626,6 +7646,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     selected: list[dict] = []
     seen: set[tuple[str, str]] = set()
     for alert in candidates:
+        if is_polysilicon_11052_base_rehash(alert):
+            alert["_exclusion_reason"] = "historical_polysilicon_11052_base_rehash"
+            continue
         if is_space_pv_pia_base_rehash(alert):
             alert["_exclusion_reason"] = "historical_space_pv_pia_rehash"
             continue
