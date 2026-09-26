@@ -46,12 +46,16 @@ def pdate(v):
     except Exception: return None
 def publisher(item):
     n=item.find("source"); return clean(n.text if n is not None else "")
+def publisher_matches(publisher, names):
+    low=clean(publisher).lower()
+    return any(low == clean(name).lower() for name in names)
+
 def allowed(p):
-    low=p.lower(); return any(x.lower() in low for x in OFFICIAL+TRUSTED)
+    return publisher_matches(p, OFFICIAL) or publisher_matches(p, TRUSTED)
+
 def srank(p):
-    low=p.lower()
-    if any(x.lower() in low for x in OFFICIAL): return 0
-    if any(x in low for x in ("reuters","bloomberg","associated press","ap news")): return 1
+    if publisher_matches(p, OFFICIAL): return 0
+    if publisher_matches(p, ("Reuters","Bloomberg","AP News","Associated Press")): return 1
     return 2
 def text_of(t,s,p): return clean(f"{t} {s} {p}").lower()
 def stage(text):
@@ -62,7 +66,7 @@ def stage(text):
         if "appropriation" in text or "appropriations" in text: return "실제 예산 배정",98
         if "markup" in text or "ordered reported" in text or "reported favorably" in text: return "위원회 심사 진전",90
         if "senate" in text and ("companion" in text or "introduced" in text): return "상원 동반법안 발의",88
-        if "introduced" in text or "introduction" in text: return "법안 발의",82
+        if "introduced" in text or "introduction" in text or "introduce" in text or "introduces" in text: return "법안 발의",82
     if "office of fusion" in text and any(x in text for x in ("establish","established","codif","launch","created")): return "DOE 전담조직 제도화",92
     if any(x in text for x in ("award","awarded","selected","selection")) and any(x in text for x in ("milestone","demonstration","test facility","funding")): return "DOE 사업 선정·자금 배정",96
     if any(x in text for x in ("groundbreaking","broke ground","construction")): return "시설 착공",92
