@@ -17,14 +17,14 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 37893.617403030396,
+  "fx_age_seconds": 55452.54996609688,
   "fx_signal_eligible": false,
   "initialized": true,
   "policy_path": {
     "cftc_net_short": 0.0,
     "cftc_net_short_change": 0.0,
     "cftc_net_short_pct_oi": 0.0,
-    "checked_at_kst": "2026-09-26T16:31:45+09:00",
+    "checked_at_kst": "2026-09-26T21:24:22+09:00",
     "elevated_vol": false,
     "fx_vol_ratio": 1.4673666023401124,
     "gradual_absorption": true,
@@ -58,14 +58,14 @@
   },
   "real_rate_overlay": {
     "available": true,
-    "checked_at_kst": "2026-09-26T16:31:47+09:00",
+    "checked_at_kst": "2026-09-26T21:24:23+09:00",
     "initialized": true,
     "inputs": {
       "boj_effective_date": null,
       "boj_policy_rate": 1.25,
       "fed_lower": 3.75,
       "fed_midpoint": 3.875,
-      "fed_observation_date": "2026-09-25",
+      "fed_observation_date": "2026-09-26",
       "fed_upper": 4.0,
       "jp_cpi_period": "2026-08",
       "jp_cpi_yoy": 1.9,
@@ -118,11 +118,11 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-09-26T16:31:39+09:00"
+    "updated_at_kst": "2026-09-26T21:24:16+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-09-26T16:30:58+09:00",
+  "updated_at_kst": "2026-09-26T21:23:35+09:00",
   "values": {
     "cftc_net_short": 0,
     "cftc_net_short_pct_oi": 0.0,
