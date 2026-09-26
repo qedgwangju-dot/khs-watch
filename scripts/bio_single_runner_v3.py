@@ -12,6 +12,8 @@ def run(cmd: list[str], timeout: int = 240):
             patched.append('scripts/enhertu_altb4_watch_v2.py')
         elif part == 'scripts/jemperli_altb4_watch.py':
             patched.append('scripts/jemperli_altb4_watch_v2.py')
+        elif part == 'scripts/qlex_wac_ir_watch.py':
+            patched.append('scripts/qlex_wac_ir_watch_v2.py')
         elif part == 'scripts/qlex_telegram_send.py':
             patched.append('scripts/qlex_telegram_send_v2.py')
         elif part == 'scripts/intismeran_structured_telegram_send.py':
