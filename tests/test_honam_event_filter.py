@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
+import pathlib
+import sys
 import unittest
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from scripts.honam_event_filter import _is_known_baseline_only, _is_proposal_only
 
