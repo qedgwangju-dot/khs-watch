@@ -14,7 +14,9 @@ on:
       - "scripts/samsung_hbm_watch.py"
       - "scripts/hbm_delivery.py"
       - "scripts/hbm_memory_axes.py"
+      - "scripts/solidigm_ipo_watch.py"
       - "data/hbm_memory_baselines.json"
+      - "data/solidigm_ipo_watch_state.json"
       - "tests/test_hbm*.py"
   schedule:
     - cron: "23 * * * *"
@@ -59,7 +61,7 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p out
-          python -m py_compile scripts/hbm_delivery.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/skhynix_us_memory_watch.py scripts/ai_component_leadtime_watch.py scripts/agentic_cpu_watch.py scripts/samsung_electromechanics_cpu_watch.py
+          python -m py_compile scripts/hbm_delivery.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/skhynix_us_memory_watch.py scripts/ai_component_leadtime_watch.py scripts/agentic_cpu_watch.py scripts/samsung_electromechanics_cpu_watch.py scripts/solidigm_ipo_watch.py
           python -m unittest discover -s tests -p 'test_hbm*.py' -v 2>&1 | tee out/hbm_regression_tests.txt
 
       - name: Validate existing Telegram destination without sending
@@ -79,7 +81,7 @@ jobs:
           out = pathlib.Path('out')
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
               summary.write('## HBM 실행·저장 확인\n\n')
-              for name in ('hbm_begin_summary.json', 'hbm_delivery_summary.json', 'hbm_memory_axes_status.json', 'samsung_hbm_delivery_receipt.json', 'rubin_hbm_delivery_receipt.json', 'skhynix_hbm_delivery_receipt.json'):
+              for name in ('hbm_begin_summary.json', 'hbm_delivery_summary.json', 'hbm_memory_axes_status.json', 'samsung_hbm_delivery_receipt.json', 'rubin_hbm_delivery_receipt.json', 'skhynix_hbm_delivery_receipt.json', 'solidigm_hbm_delivery_receipt.json'):
                   p = out / name
                   if p.exists():
                       value = json.loads(p.read_text(encoding='utf-8'))
@@ -120,6 +122,7 @@ jobs:
             out/skhynix_us_memory_alert.html
             out/samsung_hbm_status.md
             out/samsung_hbm_alert.html
+            out/solidigm_ipo_alert.html
             out/hbm_memory_axes_status.json
             out/hbm_begin_summary.json
             out/hbm_regression_tests.txt
