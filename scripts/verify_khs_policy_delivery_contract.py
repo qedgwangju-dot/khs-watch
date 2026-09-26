@@ -104,6 +104,7 @@ def main() -> int:
     assert_trusted_policy_news_story_fingerprint_allows_intraday_updates()
     assert_trusted_policy_news_render_is_compact()
     assert_fcc_chinese_optical_transceiver_ban_is_monitored()
+    assert_congress_chinese_optical_transceiver_bill_is_monitored()
     assert_trusted_trump_rate_and_dollar_profiles_are_specific()
     assert_trusted_trump_current_iran_profiles_are_source_faithful()
     assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped()
@@ -1578,6 +1579,27 @@ def assert_fcc_chinese_optical_transceiver_ban_is_monitored() -> None:
     for marker in ("광트랜시버", "초안 단계", "확정 전"):
         if marker not in rule.core:
             raise AssertionError(f"Optical-transceiver core missing: {marker}")
+
+
+def assert_congress_chinese_optical_transceiver_bill_is_monitored() -> None:
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "us_congress_chinese_optical_transceiver_restriction"
+    )
+    reuters_title = "US lawmakers aim to keep China's datacenter tech out of sensitive government systems"
+    if not khs_trusted_policy_news_watch.has_required_terms(reuters_title, rule):
+        raise AssertionError("Congressional Chinese optical-transceiver bill headline was not detected")
+    senate_title = (
+        "Senators McCormick, Gallego, Cornyn, Fetterman introduce bill to keep Chinese "
+        "transceivers out of U.S. national security systems"
+    )
+    if not khs_trusted_policy_news_watch.has_required_terms(senate_title, rule):
+        raise AssertionError("Official Senate optical-transceiver bill headline was not detected")
+    for marker in ("InnoLight", "Eoptolink", "5년", "발의 단계", "시행 확정 전"):
+        if marker not in rule.core:
+            raise AssertionError(f"Congress optical-transceiver core missing: {marker}")
+    if "모든 상업용" not in rule.counter or "5년 전환기간" not in rule.counter:
+        raise AssertionError("Congress optical-transceiver scope/transition guard is missing")
 
 
 def assert_boem_arctic_drilling_is_source_faithful() -> None:
