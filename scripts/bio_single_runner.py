@@ -113,21 +113,28 @@ def main() -> int:
         "route_source": "",
         "telegram_route_ok": False,
         "qlex_collector_rc": None,
+        "qlex_wac_collector_rc": None,
         "intismeran_collector_rc": None,
         "jemperli_collector_rc": None,
         "enhertu_collector_rc": None,
+        "halozyme_collector_rc": None,
         "qlex_alert_present": False,
+        "qlex_wac_alert_present": False,
         "intismeran_alert_present": False,
         "jemperli_alert_present": False,
         "enhertu_alert_present": False,
         "qlex_send_outcome": "skipped",
+        "qlex_wac_send_outcome": "skipped",
         "intismeran_send_outcome": "skipped",
         "jemperli_send_outcome": "skipped",
         "enhertu_send_outcome": "skipped",
+        "halozyme_run_outcome": "skipped",
         "qlex_state_persisted": False,
+        "qlex_wac_state_persisted": False,
         "intismeran_state_persisted": False,
         "jemperli_state_persisted": False,
         "enhertu_state_persisted": False,
+        "halozyme_state_persisted": False,
         "intismeran_retry_pending": False,
         "last_health_notice_date": prev.get("last_health_notice_date", ""),
         "errors": [],
@@ -142,6 +149,7 @@ def main() -> int:
 
         for name in (
             "qlex_sc_conversion_alert.md",
+            "qlex_wac_ir_alert.md",
             "intismeran_qlex_alert.md",
             "intismeran_structured_send_confirmed.json",
             "jemperli_altb4_alert.md",
@@ -153,6 +161,11 @@ def main() -> int:
         hb["qlex_collector_rc"] = qlex_rc
         if qlex_rc != 0:
             hb["errors"].append(f"QLEX collector rc={qlex_rc}: {qlex_log}")
+
+        wac_rc, wac_log = run([sys.executable, "scripts/qlex_wac_ir_watch.py"])
+        hb["qlex_wac_collector_rc"] = wac_rc
+        if wac_rc != 0:
+            hb["errors"].append(f"QLEX WAC collector rc={wac_rc}: {wac_log}")
 
         int_rc, int_log = run([sys.executable, "scripts/intismeran_qlex_watch.py"])
         hb["intismeran_collector_rc"] = int_rc
@@ -169,11 +182,20 @@ def main() -> int:
         if enh_rc != 0:
             hb["errors"].append(f"Enhertu collector rc={enh_rc}: {enh_log}")
 
+        halo_rc, halo_log = run([sys.executable, "scripts/halozyme_legal_watch_v3.py"])
+        hb["halozyme_collector_rc"] = halo_rc
+        hb["halozyme_run_outcome"] = "success" if halo_rc == 0 else "failure"
+        if halo_rc != 0:
+            hb["errors"].append(f"Halozyme collector rc={halo_rc}: {halo_log}")
+        hb["halozyme_state_persisted"] = halo_rc == 0 and (DATA / "halozyme_ptab_watch_state.json").exists()
+
         qlex_alert = OUT / "qlex_sc_conversion_alert.md"
+        wac_alert = OUT / "qlex_wac_ir_alert.md"
         int_alert = OUT / "intismeran_qlex_alert.md"
         jemp_alert = OUT / "jemperli_altb4_alert.md"
         enh_alert = OUT / "enhertu_altb4_alert.md"
         hb["qlex_alert_present"] = qlex_alert.exists()
+        hb["qlex_wac_alert_present"] = wac_alert.exists()
         hb["intismeran_alert_present"] = int_alert.exists()
         hb["jemperli_alert_present"] = jemp_alert.exists()
         hb["enhertu_alert_present"] = enh_alert.exists()
@@ -190,6 +212,19 @@ def main() -> int:
         if qlex_handled and qlex_pending.exists():
             shutil.copy2(qlex_pending, DATA / "qlex_sc_conversion_watch_state.json")
             hb["qlex_state_persisted"] = True
+
+        wac_handled = wac_rc == 0
+        if wac_rc == 0 and wac_alert.exists():
+            rc, log = run([sys.executable, "scripts/qlex_telegram_send.py", str(wac_alert.relative_to(ROOT))])
+            hb["qlex_wac_send_outcome"] = "success" if rc == 0 else "failure"
+            wac_handled = rc == 0
+            if rc != 0:
+                hb["errors"].append(f"QLEX WAC sender rc={rc}: {log}")
+
+        wac_pending = OUT / "qlex_wac_ir_watch_state_pending.json"
+        if wac_handled and wac_pending.exists():
+            shutil.copy2(wac_pending, DATA / "qlex_wac_ir_watch_state.json")
+            hb["qlex_wac_state_persisted"] = True
 
         int_handled = int_rc == 0
         if int_rc == 0 and int_alert.exists():
@@ -239,17 +274,23 @@ def main() -> int:
         operational = (
             hb["telegram_route_ok"]
             and qlex_rc == 0
+            and wac_rc == 0
             and int_rc == 0
             and jemp_rc == 0
             and enh_rc == 0
+            and halo_rc == 0
             and hb["qlex_state_persisted"]
+            and hb["qlex_wac_state_persisted"]
             and (hb["intismeran_state_persisted"] or hb["intismeran_retry_pending"])
             and hb["jemperli_state_persisted"]
             and hb["enhertu_state_persisted"]
+            and hb["halozyme_state_persisted"]
             and hb["qlex_send_outcome"] != "failure"
+            and hb["qlex_wac_send_outcome"] != "failure"
             and hb["intismeran_send_outcome"] != "failure"
             and hb["jemperli_send_outcome"] != "failure"
             and hb["enhertu_send_outcome"] != "failure"
+            and hb["halozyme_run_outcome"] != "failure"
         )
         hb["status"] = "ok" if operational else "degraded"
 
@@ -260,7 +301,7 @@ def main() -> int:
                 chat_id,
                 "[바이오 감시] 정상 작동 확인\n\n"
                 f"- 마지막 확인: {now_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
-                "- QLEX·Intismeran·Jemperli·Enhertu 감시: 정상\n"
+                "- QLEX 전환율·월간 WAC·Intismeran·Jemperli·Enhertu·Halozyme 특허분쟁 감시: 정상\n"
                 f"- Telegram 경로: {route_source}\n"
                 "- 새 데이터가 없으면 별도 본 알림은 보내지 않습니다.",
             )
@@ -277,7 +318,7 @@ def main() -> int:
                     chat_id,
                     "[바이오 감시] 실행 오류\n\n"
                     f"- 시각: {now_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
-                    "- QLEX·Intismeran·Jemperli·Enhertu 감시 실행 중 오류가 발생했습니다.\n"
+                    "- QLEX 전환율·월간 WAC·Intismeran·Jemperli·Enhertu·Halozyme 특허분쟁 감시 실행 중 오류가 발생했습니다.\n"
                     "- 다음 15분 실행에서 다시 확인합니다.",
                 )
             except Exception:
