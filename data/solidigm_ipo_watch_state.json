@@ -27,7 +27,7 @@
   },
   "_delivery": {
     "id": "ce73260a2afe9b3720c554da0d4e801404cbcf213ca206a39e8d083795b98b02",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-09-26T22:26:28+09:00",
     "chunks": [
       "🚨 <b>Solidigm IPO 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 현재 단계: <b>상장 연기</b>\n• 확인 수준: <b>신뢰 보도 단계</b>\n• 목표 시점: <b>이르면 2027년</b>\n• 거론 기업가치: <b>최대 150십억달러 · 약 203조2,575억원</b>\n• 조달 가능 규모: <b>15십억달러 · 약 20조3,258억원</b>\n• Pre-IPO 별도 검토액: 3.6십억달러 · 약 4조8,782억원\n• 주관사: UBS\n• 조달자금 용도: AI·기업용 SSD 성장투자\n• 이번 변화: <b>상장 단계 주관사 선정 경쟁(피치 미팅)→상장 연기 · 대표주관사·주관단 확인 · 조달자금 용도 확인</b>\n• 다음 확인: 대표주관사 선정 · SEC 비공개/공개 신고 · 공모가 밴드 · 신주/구주 비중 · SK하이닉스 잔여지분 · 자금용도\n• 근거: Benzinga · <a href=\"https://www.benzinga.com/markets/ipos/26/09/62010641/solidigm-ipo-sk-hynix-150-billion-valuation\">원문</a>\n• 주의: 기업가치·조달액·일정은 현재 확정값이 아니라 보도 단계이며 시장 상황에 따라 변경될 수 있습니다.\n• 환율: 2026-09-25 일일 기준 · ECB/Frankfurter · 조회 2026-09-26 22:26 KST · 보조 API 2026-09-26 · 차이 0.17% · 일중 기준시각 차이 가능\n• 조회: 2026-09-26 22:23 KST"
@@ -71,6 +71,7 @@
       },
       "last_evidence_url": "https://www.benzinga.com/markets/ipos/26/09/62010641/solidigm-ipo-sk-hynix-150-billion-valuation",
       "last_evidence_published_at_kst": "2026-09-26T16:51:04+09:00"
-    }
+    },
+    "attempt_at_kst": "2026-09-26T22:26:29+09:00"
   }
 }
