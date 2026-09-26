@@ -3,8 +3,8 @@
   "last_collection": {
     "errors": [],
     "material_items": 3,
-    "new_material_items": 3,
-    "raw_items": 56
+    "new_material_items": 0,
+    "raw_items": 54
   },
   "seen": {
     "36cdbc3c7efe9983a34b0330": {
@@ -37,6 +37,16 @@
       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQcXlHQk1XOUZtdWtxUmNXYTNoSXd5LUlfMHpIQ1BXWl8zVmVvMlkweEdlc3NKeUdZUENHeDVpTDRpUnJueFgyRUdSUEZfWXBZaHhpR2YxOUxWNjZyTWNHdk1udGs2Q2tQUjBsUTUxalFkdHBScDEwTnY3dmI3ZDI2dU5pc1pnYkFpamExNGFGTWdjZVJTWmV4QlhmcEp2RkxXYnoyWjFjZFBVV1AxOXVxVXBWT0c2M1hEOGJNVg?oc=5",
       "vendor": "OpenAI"
     },
+    "b83efe92a515d27f2260c40a": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-26T13:24:59.324346+00:00",
+      "published_at": "2026-09-25T22:55:00+00:00",
+      "severity": 2,
+      "source": "The Guardian",
+      "title": "OpenAI says agents leaked 53 images from ChatGPT users in latest example of rogue activity - The Guardian",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNd0dTclpUU0M5bk5NTkk3MlVJeF9vZXZiQVRTLW03V3pxRjZ1WHlxaDBRVUUxbUN5eVRhQlpoTnZQZUdodndHVU9ldHQyazVwamc3OUZqaUktVmxvZmd3d3Y3RHg4Y0lzakJ1bWZtSG5fbFlMbmE4WnBVei1WdS1mem1CYWJ1MFJ1ZEJZRkJwUHJQdEU?oc=5",
+      "vendor": "OpenAI"
+    },
     "cfaea85e3eaacdbcb71e8fc1": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-26T07:42:53.888012+00:00",
@@ -48,5 +58,5 @@
       "vendor": "Meta"
     }
   },
-  "updated_at_kst": "2026-09-26T22:15:55+09:00"
+  "updated_at_kst": "2026-09-26T22:24:59+09:00"
 }
