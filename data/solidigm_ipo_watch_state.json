@@ -3,38 +3,33 @@
   "topic": "Solidigm IPO",
   "baseline_as_of": "2026-09-25",
   "current_state": {
-    "stage": "postponed",
+    "stage": "bank_bakeoff",
     "target_year": 2027,
-    "valuation_max_usd": 150000000000.0,
-    "raise_target_usd": 15000000000.0,
-    "pre_ipo_raise_usd": 3600000000.0,
-    "evidence_state": "reported",
-    "source_url": "https://www.benzinga.com/markets/ipos/26/09/62010641/solidigm-ipo-sk-hynix-150-billion-valuation",
-    "source_name": "Benzinga",
-    "source_published_at_kst": "2026-09-26T16:51:04+09:00",
-    "underwriters": [
-      "UBS"
-    ],
+    "valuation_max_usd": 150000000000,
+    "raise_target_usd": 15000000000,
+    "evidence_state": "top_tier_report",
+    "source_url": "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/",
+    "source_name": "Reuters",
+    "source_published_at_kst": "2026-09-26T01:47:00+09:00",
+    "underwriters": [],
     "primary_secondary_mix": "",
     "parent_post_ipo_stake_pct": null,
-    "use_of_proceeds": [
-      "AI·기업용 SSD 성장투자"
-    ],
+    "use_of_proceeds": [],
     "us_fab_link": "considering"
   },
   "last_checked_at_kst": "2026-09-26T22:23:38+09:00",
-  "last_alert_at_kst": "2026-09-26T22:23:38+09:00",
-  "last_alert_reasons": [
-    "상장 단계 주관사 선정 경쟁(피치 미팅)→상장 연기",
-    "대표주관사·주관단 확인",
-    "조달자금 용도 확인"
-  ],
+  "last_alert_at_kst": "",
+  "last_alert_reasons": [],
   "delivery_check": {
     "checked_at_kst": "2026-09-26T22:26:34+09:00",
-    "status": "confirmed"
+    "status": "corrected_false_positive"
   },
-  "last_evidence_url": "https://www.benzinga.com/markets/ipos/26/09/62010641/solidigm-ipo-sk-hynix-150-billion-valuation",
-  "last_evidence_published_at_kst": "2026-09-26T16:51:04+09:00",
+  "false_positive_audit": {
+    "message_id": 149,
+    "observed_stage": "postponed",
+    "cause": "secondary-page text contamination and lower-tier evidence overwrite",
+    "corrected": true
+  },
   "last_successful_delivery_kst": "2026-09-26T22:26:34+09:00",
   "telegram_message_ids": [
     149
