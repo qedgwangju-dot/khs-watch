@@ -25,7 +25,8 @@ GOOGLE_QUERIES=[
 OFFICIAL=("House Committee on Science, Space and Technology","U.S. Department of Energy","Department of Energy","Federal Register","Congress.gov","U.S. House of Representatives","U.S. Senate")
 TRUSTED=("Reuters","Bloomberg","AP News","Associated Press","CNBC","Financial Times","The Wall Street Journal","AIP","Physics Today")
 TOPIC=("fusion","핵융합","american leadership in fusion act","hts","rebco","high temperature superconductor","tritium","blanket","p-b11","hydrogen boron","helong-2","helong 2","pulsed power","z-pinch")
-HARD=("introduced","introduce","markup","ordered reported","reported favorably","passed","approved","senate","companion bill","appropriation","appropriations","funding","award","awarded","selected","selection","contract","procurement","construction","groundbreaking","broke ground","first plasma","demonstration","prototype","commercial","deployment","grid","factory","capacity","qualified","qualification","signed into law","enacted","office of fusion")
+HARD=("introduced","introduce","introduction","advances","advance","markup","ordered reported","reported favorably","committee vote","passed","approved","senate","companion bill","appropriation","appropriations","funding","award","awarded","selected","selection","contract","procurement","construction","groundbreaking","broke ground","first plasma","demonstration","prototype","commercial","deployment","grid","factory","capacity","qualified","qualification","signed into law","enacted","office of fusion")
+HOUSE_FUSION_NEWS_URL="https://democrats-science.house.gov/news/press-releases/table/"
 
 def now_kst(): return dt.datetime.now(KST)
 def clean(v):
@@ -85,7 +86,7 @@ def stage(text):
         if "senate" in text and ("passed" in text or "approved" in text): return "상원 통과",95
         if ("house" in text or "house of representatives" in text) and ("passed" in text or "approved" in text): return "하원 통과",94
         if "appropriation" in text or "appropriations" in text: return "실제 예산 배정",98
-        if "markup" in text or "ordered reported" in text or "reported favorably" in text: return "위원회 심사 진전",90
+        if "markup" in text or "ordered reported" in text or "reported favorably" in text or "advances" in text or "committee vote" in text: return "위원회 심사 진전",90
         if "senate" in text and ("companion" in text or "introduced" in text): return "상원 동반법안 발의",88
         if "introduced" in text or "introduction" in text or "introduce" in text or "introduces" in text: return "법안 발의",82
     if "office of fusion" in text and any(x in text for x in ("establish","established","codif","launch","created")): return "DOE 전담조직 제도화",92
@@ -106,8 +107,56 @@ def event_key(t,s,p):
     nt=re.sub(r"\s+-\s+[^-]{2,60}$","",clean(t).lower())
     nt=re.sub(r"[^0-9a-z가-힣]+"," ",nt)
     return f"{'+'.join(bucket) or 'fusion'}:{st}:{hashlib.sha256(nt.encode()).hexdigest()[:16]}"
+def collect_house_fusion_news(now):
+    rows=[]
+    try:
+        raw=fetch(HOUSE_FUSION_NEWS_URL)
+    except Exception as e:
+        return [], f"하원 과학위원회 직접 조회 실패: {type(e).__name__}: {e}"
+    anchor_re=re.compile(r'<a[^>]+href=["\\\'](?P<href>[^"\\\']+)["\\\'][^>]*>(?P<label>.*?)</a>',re.I|re.S)
+    seen=set()
+    for m in anchor_re.finditer(raw):
+        title=clean(m.group("label"))
+        low=title.lower()
+        if "fusion" not in low:
+            continue
+        href=urllib.parse.urljoin(HOUSE_FUSION_NEWS_URL,html.unescape(m.group("href")))
+        if not href or href in seen:
+            continue
+        before=raw[max(0,m.start()-700):m.start()]
+        dates=re.findall(r'\\b(\\d{2}/\\d{2}/\\d{2})\\b',before)
+        if not dates:
+            continue
+        try:
+            published=dt.datetime.strptime(dates[-1],"%m/%d/%y").replace(tzinfo=KST)
+        except Exception:
+            continue
+        age=(now-published).total_seconds()/3600
+        if age < -24 or age > MAX_AGE_HOURS:
+            continue
+        txt=text_of(title,title,"House Committee on Science, Space and Technology")
+        if not any(x in txt for x in HARD):
+            continue
+        st,score=stage(txt)
+        rows.append({
+            "title":title,
+            "link":href,
+            "summary":title,
+            "publisher":"House Committee on Science, Space and Technology",
+            "published_kst":published.isoformat(timespec="seconds"),
+            "stage":st,
+            "score":score+12,
+            "event_key":event_key(title,title,"House Committee on Science, Space and Technology"),
+        })
+        seen.add(href)
+    return rows, f"하원 과학위원회 직접 조회: {len(rows)}건"
+
 def collect(now):
     rows=[]; notes=[]; urls=set()
+    official_rows, official_note=collect_house_fusion_news(now)
+    rows.extend(official_rows)
+    urls.update(row["link"] for row in official_rows)
+    notes.append(official_note)
     for q in GOOGLE_QUERIES:
         try: root=ET.fromstring(fetch(gnews(q)))
         except Exception as e:
