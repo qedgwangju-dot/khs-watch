@@ -56,6 +56,8 @@ base.QUERIES.extend([
     '(FCC OR "Federal Communications Commission") ("advanced robotic devices" OR humanoid OR robotics) ("Covered List" OR conditional approval OR domestic content OR equipment authorization OR 승인 OR 규제)',
     '(Schaeffler OR 셰플러) (humanoid OR 휴머노이드) ("strain wave gearbox" OR 감속기) (25% OR 75% OR 2027 OR mass production OR 양산)',
     APPTRONIK_HW_SENTINEL,
+    '(人形机器人 OR 具身智能 OR humanoid OR 휴머노이드) (电子皮肤 OR 触觉传感器 OR 柔性触觉 OR "electronic skin" OR "e-skin" OR "tactile sensor" OR 전자피부 OR 촉각센서) (订单 OR 采购 OR 交付 OR 量产 OR 产能 OR 客户 OR 验证 OR order OR delivery OR mass production OR capacity OR customer OR qualification OR 수주 OR 납품 OR 양산 OR 생산능력 OR 고객)',
+    '(福莱新材 OR Fulai OR 汉威科技 OR 苏州能斯达 OR Nengsida OR 能斯达 OR 江苏金龙科技 OR 金龙科技 OR 慈星股份 OR Cixing OR 兴业科技 OR 유니켐 OR Unichem OR Loomia) (电子皮肤 OR 触觉传感器 OR 柔性传感 OR 机器人皮肤 OR robot skin OR tactile OR electronic skin OR e-skin OR 전자피부 OR 촉각센서) (订单 OR 交付 OR 量产 OR 产能 OR 客户 OR 合作 OR order OR delivery OR mass production OR capacity OR customer OR partnership OR 수주 OR 납품 OR 양산 OR 생산능력 OR 고객 OR 협력)',
 
 ])
 
@@ -74,6 +76,9 @@ base.OFFICIAL_OR_PRIMARY.update({
     'Apptronik', 'FCC', 'Federal Communications Commission', 'Schaeffler',
 })
 
+base.TRUSTED.update({'央视财经', '央广网', '上海证券报', '证券时报', '中国证券报'})
+base.OFFICIAL_OR_PRIMARY.update({'福莱新材', 'Fulai New Material', '汉威科技', 'Hanwei Technology', '苏州能斯达', 'Nengsida'})
+
 _orig_query_news = base.query_news
 _orig_clean_title = base.clean_title
 _orig_topic_group, _orig_score = base.topic_group, base.score
@@ -83,8 +88,8 @@ _orig_tag_for, _orig_key = base.tag_for, base.key
 _orig_select_diverse = base.select_diverse
 _orig_same_event = ext._same_event
 
-HUMANOID = re.compile(r'휴머노이드|humanoid|피지컬\s*AI|physical\s*AI', re.I)
-COMPONENT = re.compile(r'센서|sensor|액추에이터|actuator|이차전지|배터리|battery|감속기|reducer|로봇\s*핸드|robot\s*hand|그리퍼|gripper', re.I)
+HUMANOID = re.compile(r'휴머노이드|humanoid|人形机器人|具身智能|피지컬\\s*AI|physical\\s*AI', re.I)
+COMPONENT = re.compile(r'센서|sensor|电子皮肤|触觉传感器|柔性传感器|액추에이터|actuator|이차전지|배터리|battery|감속기|reducer|로봇\\s*핸드|robot\\s*hand|그리퍼|gripper', re.I)
 POLICY = re.compile(r'정부|재정경제부|기획재정부|산업통상자원부|과학기술정보통신부|국회|예산|정부안|국비|국책|정책|초혁신경제|경제성장전략|지원사업|실증사업|공고|과제', re.I)
 BUDGET_620 = re.compile(r'620\s*억|62\s*0{8,}|62,?000,?000,?000|116\s*억|11,?600,?000,?000', re.I)
 BUDGET_PROPOSAL = re.compile(r'정부\s*안|예산\s*안|내년\s*예산|2027년\s*예산|예산을?.*(?:확대|편성)|국회\s*제출', re.I)
@@ -241,6 +246,14 @@ GLOBAL_MASS = re.compile(r'양산|mass\\s*production|series\\s*production|\\bSOP
 GLOBAL_CAPA = re.compile(r'생산\\s*능력|capacity|증설|expansion|신규\\s*라인|new\\s*line|공장|plant|장비\\s*반입|equipment\\s*move[- ]in', re.I)
 GLOBAL_OPS = re.compile(r'수율|yield|납기|lead\\s*time|평균판매단가|\\bASP\\b|가격\\s*(?:인상|하락)|price\\s*(?:increase|cut|hike)', re.I)
 
+GLOBAL_COMPONENT_ZH = re.compile(r'电子皮肤|触觉传感器|柔性触觉|柔性传感器|机器人皮肤', re.I)
+GLOBAL_COMMERCIAL_ZH = re.compile(r'订单|采购|交付|量产|产能|扩产|产线|客户|验证|认证|良率|交期|价格|签约|合作', re.I)
+GLOBAL_ORDER_ZH = re.compile(r'订单|采购|签约|供应', re.I)
+GLOBAL_MASS_ZH = re.compile(r'量产|交付|出货', re.I)
+GLOBAL_QUAL_ZH = re.compile(r'验证|认证|客户验证|客户认证', re.I)
+GLOBAL_CAPA_ZH = re.compile(r'产能|扩产|产线', re.I)
+GLOBAL_OPS_ZH = re.compile(r'良率|交期|价格', re.I)
+
 GLOBAL_COMPANY_PATTERNS = [
     ('현대모비스', r'현대모비스|Hyundai\\s*Mobis'),
     ('로보티즈', r'로보티즈|ROBOTIS'),
@@ -261,10 +274,20 @@ GLOBAL_COMPANY_PATTERNS = [
     ('Hesai', r'Hesai|禾赛'),
     ('Unitree', r'Unitree|유니트리|宇树'),
     ('HL만도', r'HL\s*Mando|HL만도'),
+    ('福莱新材', r'福莱新材|Fulai(?:\\s+New\\s+Material)?'),
+    ('汉威科技', r'汉威科技|Hanwei(?:\\s+Technology)?'),
+    ('苏州能斯达', r'苏州能斯达|能斯达|Nengsida|Leanstar'),
+    ('江苏金龙科技', r'江苏金龙科技|金龙科技|Jiangsu\\s+Jinlong'),
+    ('慈星股份', r'慈星股份|Cixing'),
+    ('兴业科技', r'兴业科技|Xingye\\s+Technology'),
+    ('유니켐', r'유니켐|Unichem'),
+    ('Loomia', r'\\bLoomia\\b'),
 ]
 
 
 def _component_family(text: str) -> str:
+    if GLOBAL_COMPONENT_ZH.search(text):
+        return '힘·토크·촉각센서'
     if DEXTEROUS_HAND.search(text):
         return '로봇핸드·그리퍼'
     if re.search(r'하모닉|harmonic|谐波|RV\\s*감속기|RV\\s*reducer|롤러\\s*스크루|roller\\s*screw|滚柱丝杠', text, re.I):
@@ -279,6 +302,16 @@ def _component_family(text: str) -> str:
 
 
 def _component_stage(text: str) -> str:
+    if GLOBAL_ORDER_ZH.search(text):
+        return '고객선정·수주·수주잔고'
+    if GLOBAL_MASS_ZH.search(text):
+        return '양산·출하'
+    if GLOBAL_QUAL_ZH.search(text):
+        return '고객승인·신뢰성검증'
+    if GLOBAL_CAPA_ZH.search(text):
+        return '생산능력·증설'
+    if GLOBAL_OPS_ZH.search(text):
+        return '수율·납기·가격'
     if _is_unitree_hand(text) and (HAND_LAUNCH.search(text) or HAND_PRICE.search(text)):
         return '제품출시·가격'
     if GLOBAL_ORDER.search(text):
@@ -301,7 +334,9 @@ def _global_companies(text: str) -> set[str]:
 def _is_global_component(text: str) -> bool:
     if _is_unitree_hand(text) and (HAND_LAUNCH.search(text) or HAND_PRICE.search(text) or HAND_DOF.search(text)):
         return True
-    return bool(HUMANOID.search(text) and GLOBAL_COMPONENT.search(text) and GLOBAL_COMMERCIAL.search(text))
+    component_hit = GLOBAL_COMPONENT.search(text) or GLOBAL_COMPONENT_ZH.search(text)
+    commercial_hit = GLOBAL_COMMERCIAL.search(text) or GLOBAL_COMMERCIAL_ZH.search(text)
+    return bool(HUMANOID.search(text) and component_hit and commercial_hit)
 
 
 _FX_CACHE: dict[str, float | None] = {}
