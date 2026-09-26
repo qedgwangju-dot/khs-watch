@@ -433,6 +433,8 @@ def _collect_trendforce_research(cutoff: dt.datetime) -> tuple[list[dict], list[
                     title,
                     flags=re.IGNORECASE,
                 ):
+                    if href == hrefs[0]:
+                        print(f"trendforce_first_href={href} extracted_title={title!r}")
                     continue
 
                 detail_text = _clean(detail_html)
