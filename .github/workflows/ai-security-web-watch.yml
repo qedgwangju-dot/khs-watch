@@ -8,7 +8,7 @@ on:
       - ".github/workflows/ai-security-web-watch.yml"
       - "scripts/ai_security_web_watch.py"
   schedule:
-    - cron: "7,37 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
     inputs:
       send_test:
@@ -33,6 +33,7 @@ jobs:
       AI_SECURITY_TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
       CONFIGURED_AI_SECURITY_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
       EXPECTED_AI_SECURITY_BOT_USERNAMES: "khs88798879_bot,hs88798879_bot"
+      AI_SECURITY_SEND_CONNECTION_TEST_ON_PUSH: "true"
 
     steps:
       - name: Checkout
@@ -102,7 +103,7 @@ jobs:
           cat out/ai_security_web_watch_status.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Build optional Telegram connection test
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        if: (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true') || (github.event_name == 'push' && env.AI_SECURITY_SEND_CONNECTION_TEST_ON_PUSH == 'true')
         run: |
           mkdir -p out
           cat > out/ai_security_web_watch_connection_test.txt <<'EOF'
