@@ -41,6 +41,8 @@ TRUSTED = (
     "서울경제", "sk hynix", "sk하이닉스", "solidigm", "sec",
 )
 
+EVIDENCE_RANK = {"reported": 1, "top_tier_report": 2, "official": 3}
+
 STAGE_RANK = {
     "exploring": 1,
     "bank_bakeoff": 2,
@@ -161,11 +163,12 @@ def read_events():
                     continue
                 if not any(k in text for k in ("ipo", "initial public offering", "상장", "공모", "pre-ipo", "underwriter", "주관사", "s-1", "sec")):
                     continue
-                if source and not any(x in source.lower() for x in TRUSTED):
-                    if not any(x in text for x in ("reuters", "sk hynix", "sk하이닉스", "solidigm")):
-                        continue
                 direct = decode_google(link)
                 if not direct:
+                    continue
+                source_host = urllib.parse.urlparse(direct).hostname or ""
+                trust_text = (source + " " + source_host).lower()
+                if not any(x in trust_text for x in TRUSTED):
                     continue
                 key = hashlib.sha256((title + "|" + source).encode()).hexdigest()[:24]
                 rows[key] = {
@@ -197,9 +200,13 @@ def usd_amount(text, context_pattern):
 
 def stage_from_text(text):
     low = text.lower()
-    if re.search(r"withdrawn|withdraws|cancelled|canceled|철회|취소", text, re.I):
+    solidigm_ipo_context = (
+        r"(?:Solidigm[^.]{0,180}?(?:IPO|initial public offering|listing|상장)|"
+        r"(?:IPO|initial public offering|listing|상장)[^.]{0,180}?Solidigm)"
+    )
+    if re.search(solidigm_ipo_context + r"[^.]{0,120}?(?:withdrawn|withdraws|cancelled|canceled|철회|취소)", text, re.I) or re.search(r"(?:withdrawn|withdraws|cancelled|canceled|철회|취소)[^.]{0,120}?" + solidigm_ipo_context, text, re.I):
         return "withdrawn"
-    if re.search(r"postponed|delayed|연기|미뤘", text, re.I):
+    if re.search(solidigm_ipo_context + r"[^.]{0,120}?(?:postponed|delayed|연기|미뤘)", text, re.I) or re.search(r"(?:postponed|delayed|연기|미뤘)[^.]{0,120}?" + solidigm_ipo_context, text, re.I):
         return "postponed"
     if re.search(r"began trading|begins trading|listed on|상장\s*(?:완료|첫날|거래)", text, re.I):
         return "listed"
@@ -267,11 +274,16 @@ def extract_patch(event):
         patch["underwriters"] = sorted(set(underwriters))
 
     use = []
-    if re.search(r"u\.s\.?\s+(?:fab|factory|plant|manufacturing)|미국[^.]{0,40}?(?:공장|생산시설)", text, re.I):
+    proceeds_sentences = [
+        s for s in re.split(r"(?<=[.!?])\s+|\n+", text)
+        if re.search(r"proceeds|use of proceeds|funds? will be used|조달자금|공모자금", s, re.I)
+    ]
+    proceeds_text = " ".join(proceeds_sentences)
+    if re.search(r"u\.s\.?\s+(?:fab|factory|plant|manufacturing)|미국[^.]{0,40}?(?:공장|생산시설)", proceeds_text, re.I):
         use.append("미국 NAND 생산거점")
-    if re.search(r"ai[^.]{0,60}?(?:storage|ssd|data center)|기업용\s*ssd|ai\s*스토리지", text, re.I):
+    if re.search(r"ai[^.]{0,60}?(?:storage|ssd|data center)|기업용\s*ssd|ai\s*스토리지", proceeds_text, re.I):
         use.append("AI·기업용 SSD 성장투자")
-    if use and re.search(r"proceeds|fund|finance|조달자금|자금", text, re.I):
+    if use:
         patch["use_of_proceeds"] = sorted(set(use))
 
     patch["evidence_state"] = evidence_state(event.get("source"), event.get("direct_link"))
@@ -284,18 +296,30 @@ def merge_state(current, patch):
     out = dict(current or {})
     old_stage = out.get("stage")
     new_stage = patch.get("stage")
+    old_evidence = out.get("evidence_state", "reported")
+    new_evidence = patch.get("evidence_state", "reported")
+    can_replace_source = EVIDENCE_RANK.get(new_evidence, 0) >= EVIDENCE_RANK.get(old_evidence, 0)
+
     for k, v in patch.items():
-        if k == "stage":
+        if k in ("stage", "evidence_state", "source_url", "source_name", "source_published_at_kst"):
             continue
         if v not in (None, "", []):
             out[k] = v
+
     if new_stage:
         if new_stage in ("postponed", "withdrawn"):
-            out["stage"] = new_stage
+            if can_replace_source:
+                out["stage"] = new_stage
         elif old_stage in ("postponed", "withdrawn") and new_stage not in ("listed",):
             pass
         elif not old_stage or STAGE_RANK.get(new_stage, 0) >= STAGE_RANK.get(old_stage, 0):
             out["stage"] = new_stage
+
+    if can_replace_source:
+        out["evidence_state"] = new_evidence
+        for k in ("source_url", "source_name", "source_published_at_kst"):
+            if patch.get(k):
+                out[k] = patch[k]
     return out
 
 def material_changes(old, new):
