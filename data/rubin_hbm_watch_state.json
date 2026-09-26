@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-26T16:52:31+09:00",
+  "updated_at_kst": "2026-09-26T21:52:37+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -83,11 +83,24 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1355.05,
-    "date": "2026-09-25 일일 기준 · ECB/Frankfurter · 조회 2026-09-26 16:52 KST · 보조 API 2026-09-26 · 차이 0.17% · 일중 기준시각 차이 가능",
+    "date": "2026-09-25 일일 기준 · ECB/Frankfurter · 조회 2026-09-26 21:54 KST · 보조 API 2026-09-26 · 차이 0.17% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "rubin_spec/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_spec/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm4e_validation/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm4e_validation/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_shipments/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_shipments/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm_2027_contract/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm_2027_contract/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "memory_migration/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "memory_migration/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "memory_migration/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "memory_migration/ko: HTTPError: HTTP Error 503: Service Unavailable"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-09-21",
     "source": "https://insights.trendforce.com/p/weekly-radar-002",
@@ -136,13 +149,15 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-09-26T16:52:36+09:00",
-    "candidate_count": 3,
-    "errors": []
+    "last_checked_at_kst": "2026-09-26T21:54:12+09:00",
+    "candidate_count": 2,
+    "errors": [
+      "google_news: HTTPError: HTTP Error 503: Service Unavailable"
+    ]
   },
   "structure_baseline_version": 1,
   "delivery_check": {
-    "checked_at_kst": "2026-09-26T16:56:59+09:00",
+    "checked_at_kst": "2026-09-26T21:55:59+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-09-25T23:37:11+09:00",
@@ -210,7 +225,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-09-26",
-    "last_checked_at_kst": "2026-09-26T16:53:18+09:00"
+    "last_checked_at_kst": "2026-09-26T21:54:50+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -246,7 +261,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-09-26",
-    "last_checked_at_kst": "2026-09-26T16:56:35+09:00",
+    "last_checked_at_kst": "2026-09-26T21:55:20+09:00",
     "candidate_count": 0
   }
 }
