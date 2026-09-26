@@ -337,6 +337,17 @@ def krw_large(usd, rate):
         return f"약 {jo:,}조{rem:,}억원" if rem else f"약 {jo:,}조원"
     return f"약 {eok:,}억원"
 
+def usd_display(usd, rate):
+    if usd is None:
+        return "확인 불가"
+    hundred_million = float(usd) / 100_000_000
+    if abs(hundred_million - round(hundred_million)) < 1e-9:
+        foreign = f"{int(round(hundred_million)):,}억달러"
+    else:
+        foreign = f"{hundred_million:,.1f}억달러"
+    return f"{foreign}({krw_large(usd, rate)})"
+
+
 def fx_quote():
     try:
         from fx_api import daily_krw
@@ -364,11 +375,11 @@ def alert_text(old, new, reasons, checked):
     if new.get("target_year"):
         lines.append(f"• 목표 시점: <b>이르면 {new['target_year']}년</b>")
     if new.get("valuation_max_usd"):
-        lines.append(f"• 거론 기업가치: <b>최대 {new['valuation_max_usd']/1e9:,.0f}십억달러 · {krw_large(new['valuation_max_usd'], rate)}</b>")
+        lines.append(f"• 거론 기업가치: <b>최대 {usd_display(new['valuation_max_usd'], rate)}</b>")
     if new.get("raise_target_usd"):
-        lines.append(f"• 조달 가능 규모: <b>{new['raise_target_usd']/1e9:,.0f}십억달러 · {krw_large(new['raise_target_usd'], rate)}</b>")
+        lines.append(f"• 조달 가능 규모: <b>{usd_display(new['raise_target_usd'], rate)}</b>")
     if new.get("pre_ipo_raise_usd"):
-        lines.append(f"• Pre-IPO 별도 검토액: {new['pre_ipo_raise_usd']/1e9:,.1f}십억달러 · {krw_large(new['pre_ipo_raise_usd'], rate)}")
+        lines.append(f"• Pre-IPO 별도 검토액: {usd_display(new['pre_ipo_raise_usd'], rate)}")
     if new.get("underwriters"):
         lines.append("• 주관사: " + html.escape(", ".join(new["underwriters"])))
     if new.get("primary_secondary_mix"):
