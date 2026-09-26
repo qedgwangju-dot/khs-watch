@@ -154,4 +154,33 @@ assert g == "humanoid_component_global", (g, s, c)
 assert c == "글로벌 휴머노이드 부품 · 힘·토크·촉각센서 · 고객선정·수주·수주잔고", c
 assert s >= 11, s
 
+# 8) Giga Berlin real-world worker-data collection is a new operating-stage signal.
+# A static showroom/display sighting alone must not be enough.
+berlin_static = make(
+    "Tesla Optimus spotted behind frosted glass at Giga Berlin",
+    "An Optimus robot is displayed on site with a Work in progress sign.",
+    "Basenor",
+)
+g, s, c, k = classify(berlin_static)
+assert s < 11, ("static Berlin display alone must stay silent", g, s, c)
+
+berlin_training = make(
+    "Tesla Optimus, Giga Berlin field training expands",
+    (
+        "At Giga Berlin in Gruenheide selected factory workers will wear camera-equipped backpacks and helmets "
+        "to collect movement data for Optimus training. Tesla Q2 materials say initial Optimus builds are used in "
+        "Optimus Academy for training data collection and functionality development. Secondary reports also describe "
+        "an Optimus pilot in internal logistics and 4680-related battery-cell areas."
+    ),
+    "Handelsblatt",
+)
+g, s, c, k = classify(berlin_training)
+expected_berlin_key = hashlib.sha256(
+    b"tesla-optimus|giga-berlin|2026-08|field-training-data-pilot"
+).hexdigest()
+assert g == "tesla", (g, s, c)
+assert c == "Optimus Giga Berlin · 현장 데이터 수집·파일럿 배치", c
+assert s >= 11, s
+assert k == expected_berlin_key, (k, expected_berlin_key)
+
 print("Physical-AI watcher regression guards: PASS")
