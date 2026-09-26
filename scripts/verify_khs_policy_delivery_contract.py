@@ -1605,6 +1605,13 @@ def assert_congress_chinese_optical_transceiver_bill_is_monitored() -> None:
             raise AssertionError(f"Congress optical-transceiver core missing: {marker}")
     if "모든 상업용" not in rule.counter or "5년 전환기간" not in rule.counter:
         raise AssertionError("Congress optical-transceiver scope/transition guard is missing")
+    official_item = {
+        "source": "U.S. Senate (Sen. Dave McCormick)",
+        "link": "https://www.mccormick.senate.gov/news/press-releases/example/",
+    }
+    status, detail = khs_trusted_policy_news_watch.alert_confirmation_status(rule, [official_item])
+    if status != "공식 확인" or "공식 보도자료" not in detail:
+        raise AssertionError("Official Senate optical-transceiver source was not upgraded to 공식 확인")
 
 
 def assert_boem_arctic_drilling_is_source_faithful() -> None:
