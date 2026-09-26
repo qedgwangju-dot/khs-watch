@@ -3,7 +3,7 @@
   "version": 1,
   "dataset_updated": "Sep 24, 2026",
   "source_hash": "be8e1b09d09ddce21eed49815aee926bcaaf1e539386b0b620c5ac57d3dba0a0",
-  "snapshot_hash": "51702bad996719f61be7caf5904f5fb1551c1df9c741be7203a860e53c1ac5a8",
+  "snapshot_hash": "ad5c4c4d0d9ca858f92d24afb2f8b17fde52defffbfac5ddab4f0d47db978b79",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -17,7 +17,10 @@
       "completion_date": "2028-05-13",
       "completion": "2028.2Q",
       "stage": "부분 가동·지붕·외피 공사",
-      "risk": false
+      "risk": false,
+      "energy_site": "WE Energies 계통 + 250MW 태양광 매칭",
+      "energy_future": "Microsoft 원전 835MW·Helion 핵융합 50MW+",
+      "energy_quality": "부지확정+기업전략"
     },
     {
       "name": "Anthropic-Amazon New Carlisle",
@@ -31,7 +34,10 @@
       "completion_date": "2028-03-17",
       "completion": "2028.1Q",
       "stage": "부분 가동·냉각설비 설치",
-      "risk": false
+      "risk": false,
+      "energy_site": "NIPSCO/GenCo 계통·신규발전(원별 미공개)",
+      "energy_future": "Amazon 원전 1.92GW·SMR 검토",
+      "energy_quality": "부지확정+기업전략"
     },
     {
       "name": "OpenAI Stargate New Mexico",
@@ -45,7 +51,10 @@
       "completion_date": "2028-12-31",
       "completion": "2028.4Q",
       "stage": "냉각설비 설치",
-      "risk": false
+      "risk": false,
+      "energy_site": "Bloom 연료전지 기반(연료원 공개 미확인)",
+      "energy_future": "Stargate 전용발전·저장",
+      "energy_quality": "부지확정"
     },
     {
       "name": "Meta Hyperion",
@@ -59,7 +68,10 @@
       "completion_date": "2028-01-01",
       "completion": "2028.1Q",
       "stage": "냉각설비 설치",
-      "risk": false
+      "risk": false,
+      "energy_site": "천연가스 발전 + 배터리 + 원전 증출력 + 재생에너지",
+      "energy_future": "Meta 기존·차세대 원전 확대",
+      "energy_quality": "부지확정"
     },
     {
       "name": "Colossus 2",
@@ -73,7 +85,10 @@
       "completion_date": "2027-02-25",
       "completion": "2027.1Q",
       "stage": "부분 가동·냉각설비 설치",
-      "risk": false
+      "risk": false,
+      "energy_site": "정확한 부지전원 미공개",
+      "energy_future": "xAI Memphis 계통 + 배터리 + 가스터빈 비상전원",
+      "energy_quality": "기업·지역확인"
     },
     {
       "name": "OpenAI Stargate Shackelford",
@@ -87,7 +102,10 @@
       "completion_date": "2028-11-11",
       "completion": "2028.4Q",
       "stage": "냉각설비 설치",
-      "risk": false
+      "risk": false,
+      "energy_site": "복수 계통전원 피드(원별 구성 미공개)",
+      "energy_future": "Stargate 전용발전·저장",
+      "energy_quality": "부지부분확인"
     },
     {
       "name": "QTS Cedar Rapids",
@@ -101,7 +119,10 @@
       "completion_date": "2027-11-15",
       "completion": "2027.4Q",
       "stage": "지붕·외피 공사",
-      "risk": false
+      "risk": false,
+      "energy_site": "Alliant Energy 계통 + 무탄소 전원(세부 원별 미공개)",
+      "energy_future": "QTS 저탄소·무탄소 조달",
+      "energy_quality": "부지부분확인"
     },
     {
       "name": "Meta Prometheus",
@@ -115,7 +136,10 @@
       "completion_date": "2028-07-01",
       "completion": "2028.3Q",
       "stage": "부분 가동·가동 확대",
-      "risk": false
+      "risk": false,
+      "energy_site": "계통전력 + 원전 공급확대(Ohio/PJM 연계)",
+      "energy_future": "Meta Vistra·TerraPower·Oklo 등 원전",
+      "energy_quality": "지역확정+기업전략"
     },
     {
       "name": "Goodnight",
@@ -129,7 +153,10 @@
       "completion_date": "2027-10-01",
       "completion": "2027.4Q",
       "stage": "냉각설비 설치",
-      "risk": false
+      "risk": false,
+      "energy_site": "계통 + 풍력 265MW 협약 + 933MW 가스발전 제안",
+      "energy_future": "Google 차세대원전 + 지열",
+      "energy_quality": "가스는 허가·계약 미확정"
     },
     {
       "name": "OpenAI Stargate Michigan",
@@ -143,7 +170,10 @@
       "completion_date": "2028-12-31",
       "completion": "2028.4Q",
       "stage": "기초·토공",
-      "risk": false
+      "risk": false,
+      "energy_site": "DTE 기존 전원 + 신규 배터리 저장",
+      "energy_future": "Stargate 전용발전·저장",
+      "energy_quality": "부지확정"
     },
     {
       "name": "OpenAI Stargate Wisconsin",
@@ -157,7 +187,10 @@
       "completion_date": "2028-12-31",
       "completion": "2028.4Q",
       "stage": "지붕·외피 공사",
-      "risk": false
+      "risk": false,
+      "energy_site": "WEC 태양광 + 풍력 + 배터리 + 재생에너지 매칭",
+      "energy_future": "Stargate 전용발전·저장",
+      "energy_quality": "부지확정"
     },
     {
       "name": "Google Fort Wayne",
@@ -171,7 +204,10 @@
       "completion_date": "2028-06-23",
       "completion": "2028.2Q",
       "stage": "시운전·내부설비",
-      "risk": false
+      "risk": false,
+      "energy_site": "Indiana Michigan Power 계통(원별 구성 미공개)",
+      "energy_future": "Google 차세대원전 + 지열",
+      "energy_quality": "부지부분확인+기업전략"
     },
     {
       "name": "OpenAI Stargate Milam",
@@ -185,7 +221,10 @@
       "completion_date": "2028-12-31",
       "completion": "2028.4Q",
       "stage": "지붕·외피 공사",
-      "risk": false
+      "risk": false,
+      "energy_site": "SB Energy 신규발전 + 저장장치(원별 미공개)",
+      "energy_future": "Stargate 전용발전·저장",
+      "energy_quality": "부지확정"
     },
     {
       "name": "OpenAI Stargate Abilene",
@@ -199,7 +238,10 @@
       "completion_date": "2026-11-01",
       "completion": "2026.4Q",
       "stage": "부분 가동·시운전·내부설비",
-      "risk": false
+      "risk": false,
+      "energy_site": "ERCOT 계통 + 현장 천연가스 터빈",
+      "energy_future": "Crusoe 배터리·재생에너지·원전 옵션",
+      "energy_quality": "부지확정"
     },
     {
       "name": "Microsoft Fairwater Atlanta",
@@ -213,10 +255,29 @@
       "completion_date": "2026-06-14",
       "completion": "완료",
       "stage": "가동 완료",
-      "risk": false
+      "risk": false,
+      "energy_site": "고신뢰 계통전력·GPU 현장발전 없음",
+      "energy_future": "Microsoft 원전 835MW·Helion 핵융합 50MW+",
+      "energy_quality": "부지확정+기업전략"
     }
   ],
-  "last_changes": [],
+  "last_changes": [
+    "MS Fairwater (WI) 전력원 정보 변경",
+    "Amazon New Carlisle (IN) 전력원 정보 변경",
+    "Stargate Jupiter (NM) 전력원 정보 변경",
+    "Meta Hyperion (LA) 전력원 정보 변경",
+    "xAI Colossus 2 (TN) 전력원 정보 변경",
+    "Stargate Shackelford (TX) 전력원 정보 변경",
+    "QTS Cedar Rapids (IA) 전력원 정보 변경",
+    "Meta Prometheus (OH) 전력원 정보 변경",
+    "Google Goodnight (TX) 전력원 정보 변경",
+    "Stargate Michigan 전력원 정보 변경",
+    "Stargate Wisconsin 전력원 정보 변경",
+    "Google Fort Wayne (IN) 전력원 정보 변경",
+    "Stargate Milam (TX) 전력원 정보 변경",
+    "Stargate Abilene (TX) 전력원 정보 변경",
+    "MS Fairwater Atlanta (GA) 전력원 정보 변경"
+  ],
   "source_errors": [],
-  "updated_at_utc": "2026-09-26T10:24:34+00:00"
+  "updated_at_utc": "2026-09-26T10:42:32+00:00"
 }
