@@ -98,6 +98,8 @@ def main() -> int:
             errors.append("runtime Telegram sent status missing sent_chars")
         if not isinstance(delivery.get("attempts"), int) or delivery.get("attempts", 0) <= 0:
             errors.append("runtime Telegram sent status missing attempts")
+        if not isinstance(delivery.get("message_id"), int) or delivery.get("message_id", 0) <= 0:
+            errors.append("runtime Telegram sent status missing message_id")
 
     if errors:
         return fail(errors)
