@@ -65,6 +65,14 @@ def main() -> None:
         "link": base["link"],
         "source": base["source"],
     }) == "polysilicon-11052-base"
+    assert trusted.is_polysilicon_11052_base_rehash_text(base_text)
+    assert not trusted.is_polysilicon_11052_base_rehash_text(
+        base_text + " BIS amended the rule and changed the waiver conditions."
+    )
+    assert any(
+        source.name == "Federal Register polysilicon Section 232"
+        for source in watch.SOURCES
+    )
 
     space_pv = (
         "DOE Space Photovoltaics Research and Development Partnership Intermediary Agreement "
