@@ -1,9 +1,9 @@
 {
   "initialized": true,
   "version": 1,
-  "dataset_updated": "업데이트일 확인 불가",
+  "dataset_updated": "Sep 24, 2026",
   "source_hash": "be8e1b09d09ddce21eed49815aee926bcaaf1e539386b0b620c5ac57d3dba0a0",
-  "snapshot_hash": "5a43e1246150b1e2cb144ed897f1da68b18d09d5503a1bd1a2c849cc23add6e8",
+  "snapshot_hash": "51702bad996719f61be7caf5904f5fb1551c1df9c741be7203a860e53c1ac5a8",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -119,7 +119,7 @@
     },
     {
       "name": "Goodnight",
-      "display": "Goodnight",
+      "display": "Google Goodnight (TX)",
       "owner": "Google",
       "users": "Google DeepMind",
       "investors": "미기재",
@@ -202,23 +202,24 @@
       "risk": false
     },
     {
-      "name": "Amazon Ridgeland",
-      "display": "Amazon Ridgeland",
-      "owner": "Amazon",
-      "users": "Anthropic",
+      "name": "Microsoft Fairwater Atlanta",
+      "display": "MS Fairwater Atlanta (GA)",
+      "owner": "MS",
+      "users": "OpenAI·MS",
       "investors": "미기재",
-      "current_mw": 228.0,
-      "planned_mw": 840.0,
-      "progress": 27.1,
-      "completion_date": "2028-09-29",
-      "completion": "2028.3Q",
-      "stage": "부분 가동·냉각설비 설치",
+      "current_mw": 636.0,
+      "planned_mw": 636.0,
+      "progress": 100.0,
+      "completion_date": "2026-06-14",
+      "completion": "완료",
+      "stage": "가동 완료",
       "risk": false
     }
   ],
   "last_changes": [
-    "Epoch AI 미국 상위 15개 프로젝트 기준선 신규 연결"
+    "추적 목록 신규 진입: MS Fairwater Atlanta (GA) 636MW",
+    "추적 목록 제외: Amazon Ridgeland"
   ],
   "source_errors": [],
-  "updated_at_utc": "2026-09-26T10:18:15+00:00"
+  "updated_at_utc": "2026-09-26T10:22:18+00:00"
 }
