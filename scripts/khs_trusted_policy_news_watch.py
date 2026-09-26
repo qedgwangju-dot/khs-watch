@@ -815,16 +815,41 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         title = clean_text(detail.get("title"))
         description = clean_text(f"{detail.get('abstract') or ''} {detail.get('body') or ''}")
         published = parse_pub_date(detail.get("published_kst"))
+        verified = bool(detail.get("body_verified"))
+
+        # Some Senate press-release pages do not expose article metadata in the
+        # generic parser even though the full first-party page is available.
+        # Fall back only when the exact expected title and the rule's required
+        # terms are present in the fetched official HTML.
+        if not verified:
+            raw_plain = clean_text(raw)
+            expected_plain = clean_text(expected_title)
+            if expected_plain and expected_plain.lower() in raw_plain.lower():
+                title = expected_plain
+                description = raw_plain[:50000]
+                date_match = re.search(
+                    r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
+                    r"(\d{1,2}),\s+(20\d{2})\b",
+                    raw_plain,
+                    flags=re.I,
+                )
+                if date_match:
+                    try:
+                        published = dt.datetime.strptime(date_match.group(0), "%B %d, %Y").replace(tzinfo=KST)
+                    except ValueError:
+                        published = None
+                verified = True
+
         haystack = f"{title} {source_label} {description}"
         if (
-            not detail.get("body_verified")
+            not verified
             or not published
             or (now - published).total_seconds() / 3600 > MAX_AGE_HOURS
             or not has_required_terms(haystack, rule)
         ):
             print(
                 f"trusted_policy_news=official_direct_rejected key={rule.key} "
-                f"verified={detail.get('body_verified')!r} published={published!r}"
+                f"verified={verified!r} published={published!r}"
             )
             continue
         seen_links.add(fetch_url)
