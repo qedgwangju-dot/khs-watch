@@ -412,6 +412,8 @@ def _collect_trendforce_research(cutoff: dt.datetime) -> tuple[list[dict], list[
             if len(hrefs) >= 18:
                 break
 
+        if not hrefs:
+            print("trendforce_listing_debug=" + re.sub(r"\\s+", " ", listing_html[:1800]))
         for href in hrefs:
             try:
                 detail_html = _fetch(href).decode("utf-8", errors="ignore")
