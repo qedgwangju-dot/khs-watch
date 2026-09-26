@@ -904,6 +904,37 @@ def is_doe_energy_security_policy_item(item: dict, haystack: str) -> bool:
     return authority and action
 
 
+SPACE_PV_PIA_BASE_TERMS = (
+    "space photovoltaics research and development partnership intermediary agreement",
+    "space photovoltaics (pv) research and development partnership intermediary agreement",
+    "space-based energy generation",
+    "solar panels in space applications",
+)
+SPACE_PV_STAGE_CHANGE_TERMS = (
+    "awardee", "awardees", "recipient", "recipients",
+    "selected for award", "selected projects", "announces selections", "announced selections",
+    "has selected", "have selected", "selected the following", "awarded to",
+    "selection notifications issued", "selection notifications sent", "selection notifications released",
+    "awards announced",
+)
+
+
+def is_space_pv_pia_base_rehash_item(item: dict, haystack: str) -> bool:
+    """Suppress the Aug. 31 Space-PV PIA base notice even if a feed republishes it with a fresh timestamp."""
+    text = clean_text(
+        " ".join(
+            [
+                haystack,
+                str(item.get("source") or ""),
+                str(item.get("link") or ""),
+            ]
+        )
+    ).lower()
+    if not any(term in text for term in SPACE_PV_PIA_BASE_TERMS):
+        return False
+    return not any(term in text for term in SPACE_PV_STAGE_CHANGE_TERMS)
+
+
 def polysilicon_11052_event_key(item: dict, haystack: str) -> str:
     """Stable semantic key for Proclamation 11052 base and stockpiling stages."""
     text = " ".join(
@@ -1126,6 +1157,8 @@ def classify_item(item: dict) -> dict | None:
         or "whitehouse.gov/videos/" in link_lower
     )
     if is_whitehouse_remark_or_video and not any(keyword_in_text(haystack, term) for term in TRUMP_OFFICIAL_REMARK_STRONG_TERMS):
+        return None
+    if is_space_pv_pia_base_rehash_item(item, haystack):
         return None
     matched = {bucket: [kw for kw in keywords if keyword_in_text(haystack, kw)] for bucket, keywords in STAGE_KEYWORDS.items()}
     if matched.get("energy_security_policy") and not is_doe_energy_security_policy_item(item, haystack):
