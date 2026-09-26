@@ -43,6 +43,16 @@ ALERT_PATH = OUT_DIR / "khs_trusted_policy_news_alert.md"
 AI_FORCE_ALERT_PATH = OUT_DIR / "khs_ai_force_policy_alert.md"
 AI_FORCE_TITLE_PATH = OUT_DIR / "khs_ai_force_policy_title.txt"
 
+OFFICIAL_DIRECT_STORIES = {
+    "us_congress_chinese_optical_transceiver_restriction": (
+        (
+            "https://www.mccormick.senate.gov/news/press-releases/senators-mccormick-gallego-cornyn-fetterman-introduce-bill-to-keep-chinese-transceivers-out-of-u-s-national-security-systems/",
+            "SENATORS MCCORMICK, GALLEGO, CORNYN, FETTERMAN INTRODUCE BILL TO KEEP CHINESE TRANSCEIVERS OUT OF U.S. NATIONAL SECURITY SYSTEMS",
+            "U.S. Senate (Sen. Dave McCormick)",
+        ),
+    ),
+}
+
 DIRECT_STORY_URLS = {
     "us_fcc_chinese_optical_transceiver_ban": (
         (
@@ -264,6 +274,7 @@ STORY_RULES = (
             "법안번호·위원회 회부·의회 통과 여부, 상무부·국방부의 추가 지정, 면제 사용, 연방 조달 변경을 추적합니다. "
             "동시에 Coherent·Lumentum·Applied Optoelectronics 등 대체 공급사의 실제 생산능력·증설·납기를 확인해야 합니다."
         ),
+        trusted_sources=("Dave McCormick", "Senator Dave McCormick", "U.S. Senate"),
     ),
     StoryRule(
         key="us_fcc_security_import_restriction",
@@ -791,6 +802,41 @@ def load_seen() -> dict:
 def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
+
+    # Official first-party pages are fetched directly so a material policy step
+    # cannot be missed just because a wire headline uses different agency words.
+    for fetch_url, expected_title, source_label in OFFICIAL_DIRECT_STORIES.get(rule.key, ()):
+        try:
+            raw = fetch_text(fetch_url)
+            detail = extract_article_detail(raw, expected_title)
+        except Exception as exc:
+            print(f"trusted_policy_news=official_direct_failed key={rule.key} error={type(exc).__name__}: {exc}")
+            continue
+        title = clean_text(detail.get("title"))
+        description = clean_text(f"{detail.get('abstract') or ''} {detail.get('body') or ''}")
+        published = parse_pub_date(detail.get("published_kst"))
+        haystack = f"{title} {source_label} {description}"
+        if (
+            not detail.get("body_verified")
+            or not published
+            or (now - published).total_seconds() / 3600 > MAX_AGE_HOURS
+            or not has_required_terms(haystack, rule)
+        ):
+            print(
+                f"trusted_policy_news=official_direct_rejected key={rule.key} "
+                f"verified={detail.get('body_verified')!r} published={published!r}"
+            )
+            continue
+        seen_links.add(fetch_url)
+        items.append({
+            "title": title,
+            "description": description,
+            "link": fetch_url,
+            "source": source_label,
+            "published_kst": published.isoformat(timespec="seconds"),
+            "priority": 0,
+        })
+        print(f"trusted_policy_news=official_direct_verified key={rule.key} title={title!r}")
     for fetch_url, canonical_url in DIRECT_STORY_URLS.get(rule.key, ()):
         try:
             raw = fetch_text(fetch_url)
