@@ -117,6 +117,7 @@
     "822874baa35bfd09e35b58c4",
     "8373adbcfc508c1a31114ac1",
     "848922d41cf5a192d68a3a63",
+    "859cf06fe2cf8d099d850ecf",
     "86390aba27173d50352a39ed",
     "863bf5e58c0b909bc1684cb9",
     "8701e18d89fed22673e4303c",
@@ -162,6 +163,7 @@
     "bf36069b039f4887166a44a2",
     "c0014c2ca47fea6d896c3e23",
     "c09ac81c8b75fa07c44ec6c4",
+    "c20c45a9eb638548b8deb379",
     "c4eeabbe2d4315477133e9fe",
     "c5caa424ac30e0d7227f34f9",
     "c6dbc35819f3c1e93989d93f",
@@ -217,8 +219,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-26T22:31:55+09:00",
-  "last_event_count": 92,
+  "updated_at_kst": "2026-09-26T22:44:13+09:00",
+  "last_event_count": 95,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -239,7 +241,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-26T22:31:55+09:00",
+  "last_successful_official_at_kst": "2026-09-26T22:44:13+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -1372,7 +1374,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-26T22:31:55+09:00",
+      "last_checked_at_kst": "2026-09-26T22:44:13+09:00",
       "gaps": [
         "원문 확인 실패: investing.com / HTTPError",
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
@@ -1427,7 +1429,7 @@
     "payload_hash": "049a7cae87d57beb82c20a56dd98c42f107ec5fe3ee427972da099e8da8f2980"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-26T22:35:10+09:00",
+    "checked_at_kst": "2026-09-26T22:47:36+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
