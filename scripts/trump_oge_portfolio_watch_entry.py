@@ -343,6 +343,8 @@ SOURCE_DOMAIN_LABELS = {
     "coindesk.com": "CoinDesk",
     "metatrader.com": "MetaTrader",
     "bbc.co.uk": "BBC 비즈니스",
+    "zdnet.co.kr": "ZDNet Korea",
+    "msn.com": "MSN",
 }
 
 
@@ -457,8 +459,8 @@ def _detail_kind(event):
         and "amazon" in title
     ):
         return "july-summary-1156-msft-amzn"
-    if any(k in title for k in ["strategy", "microstrategy", "mstr"]):
-        if any(k in title for k in ["trump", "financial disclosure", "ethics filing", "account"]):
+    if any(k in title for k in ["strategy", "microstrategy", "mstr", "스트래티지", "마이크로스트래티지"]):
+        if any(k in title for k in ["trump", "트럼프", "financial disclosure", "ethics filing", "account", "재산공개", "정부윤리청"]):
             return "july-mstr-trades"
     if event.get("id") == BBC_AI_CORRECTION_SEED["id"]:
         return "july-bbc-big-tech-ai-corrected-v2"
@@ -493,7 +495,15 @@ def _fallback_event_key(event):
 
     detail = _detail_kind(event)
     if detail:
-        return "oge-detail:" + (period or "unknown") + ":" + detail
+        # Known July disclosure details keep one stable key even when a republisher
+        # omits "July" from its headline/RSS description.
+        fixed_period = {
+            "july-mstr-trades": "2026-07",
+            "july-summary-1156-msft-amzn": "2026-07",
+            "july-bbc-big-tech-ai": "2026-07",
+            "july-bbc-big-tech-ai-corrected-v2": "2026-07",
+        }.get(detail, period or "unknown")
+        return "oge-detail:" + fixed_period + ":" + detail
     if assets:
         return "oge-event:" + period + ":" + ",".join(assets)
     normalized = re.sub(r"[^0-9a-z가-힣]+", " ", title).strip()
