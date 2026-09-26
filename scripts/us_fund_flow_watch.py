@@ -205,23 +205,23 @@ def parse_ici_combined():
         return -value if "outflow" in direction else value
 
     total = signed_amount(
-        r"Total estimated (inflows|outflows).*?(?:were|was) \$([\\d,.]+) billion"
+        r"Total estimated (inflows|outflows).*?(?:were|was) \$([\d,.]+) billion"
     )
     domestic = signed_amount(
-        r"Domestic equity funds had estimated (inflows|outflows) of \$([\\d,.]+) billion"
+        r"Domestic equity funds had estimated (inflows|outflows) of \$([\d,.]+) billion"
     )
     world = signed_amount(
-        r"world equity funds had estimated (inflows|outflows) of \$([\\d,.]+) billion"
+        r"world equity funds had estimated (inflows|outflows) of \$([\d,.]+) billion"
     )
     bond = signed_amount(
-        r"Bond funds.*?had estimated (inflows|outflows) of \$([\\d,.]+) billion"
+        r"Bond funds.*?had estimated (inflows|outflows) of \$([\d,.]+) billion"
     )
     hybrid = signed_amount(
-        r"Hybrid funds.*?had estimated (inflows|outflows) of \$([\\d,.]+) billion"
+        r"Hybrid funds.*?had estimated (inflows|outflows) of \$([\d,.]+) billion"
     )
 
     pm = re.search(
-        r"week ended(?: Wednesday,?)?\\s+([A-Za-z]+\\s+\\d{1,2},\\s+20\\d{2})",
+        r"week ended(?: Wednesday,?)?\s+([A-Za-z]+\s+\\d{1,2},\s+20\d{2})",
         text,
         re.I,
     )
@@ -240,7 +240,7 @@ def parse_ici_combined():
     }
 
     pub_m = re.search(
-        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{1,2},\\s+20\\d{2})\\s*\\|\\s*Print",
+        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\\d{1,2},\s+20\d{2})\s*\|\s*Print",
         text,
         re.I,
     )
@@ -283,7 +283,7 @@ def parse_ici_mmf():
     assets_trillion = float(m.group(3).replace(",", ""))
     period = m.group(4)
     pub_m = re.search(
-        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{1,2},\\s+20\\d{2})\\s*\\|\\s*Print",
+        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\\d{1,2},\s+20\d{2})\s*\|\s*Print",
         text,
         re.I,
     )
@@ -514,7 +514,7 @@ def period_date(x):
     p = str(x.get("period") or "").strip()
     pub = str(x.get("published") or "").strip()
     year = None
-    ym = re.search(r"(20\\d{2})", p) or re.search(r"(20\\d{2})", pub)
+    ym = re.search(r"(20\d{2})", p) or re.search(r"(20\d{2})", pub)
     if ym:
         year = int(ym.group(1))
     else:
