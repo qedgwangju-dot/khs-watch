@@ -64,6 +64,40 @@ def _strip_tags(s):
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", s or "")).strip()
 
 
+def is_portfolio_claim_relevant(title, desc=""):
+    """True only for portfolio-composition/weight claims, not OGE trades or event news."""
+    hay = f"{title or ''} {desc or ''}".lower()
+    if "trump" not in hay and "트럼프" not in hay:
+        return False
+
+    oge_trade_terms = [
+        "financial disclosure", "government ethics", "oge", "278-t",
+        "periodic transaction", "stock trades", "securities transactions",
+        "bought shares", "sold shares", "재산공개", "정부윤리청",
+        "거래 신고", "주식 거래", "증권 거래",
+    ]
+    if any(k in hay for k in oge_trade_terms):
+        return False
+
+    portfolio_terms = [
+        "portfolio", "포트폴리오", "holdings", "holding",
+        "allocation", "weighting", "portfolio weight", "top holding",
+        "largest position", "asset mix", "보유 비중", "보유종목",
+        "자산 배분", "자산배분", "최대 보유",
+    ]
+    if not any(k in hay for k in portfolio_terms):
+        return False
+
+    non_portfolio_event_terms = [
+        "state dinner", "dinner", "summit", "meeting", "guest list",
+        "guests", "attended", "absent", "banquet",
+        "만찬", "회담", "정상회담", "참석자", "참석", "불참", "초청",
+    ]
+    if any(k in hay for k in non_portfolio_event_terms):
+        return False
+    return True
+
+
 def discover_claims():
     out = {x["id"]: dict(x) for x in SEED_CLAIMS}
     for query in QUERIES:
@@ -81,36 +115,7 @@ def discover_claims():
                 hay = f"{title} {desc}".lower()
                 if not link:
                     continue
-                if "trump" not in hay and "트럼프" not in hay:
-                    continue
-
-                # This watcher is only for portfolio composition/weight claims.
-                # Official transaction/disclosure stories belong to the OGE watcher.
-                oge_trade_terms = [
-                    "financial disclosure", "government ethics", "oge", "278-t",
-                    "periodic transaction", "stock trades", "securities transactions",
-                    "bought shares", "sold shares", "재산공개", "정부윤리청",
-                    "거래 신고", "주식 거래", "증권 거래",
-                ]
-                if any(k in hay for k in oge_trade_terms):
-                    continue
-
-                portfolio_terms = [
-                    "portfolio", "포트폴리오", "holdings", "holding",
-                    "allocation", "weighting", "portfolio weight", "top holding",
-                    "largest position", "asset mix", "보유 비중", "보유종목",
-                    "자산 배분", "자산배분", "최대 보유",
-                ]
-                if not any(k in hay for k in portfolio_terms):
-                    continue
-
-                # Reject event/guest-list stories that merely mention Trump and tech companies.
-                non_portfolio_event_terms = [
-                    "state dinner", "dinner", "summit", "meeting", "guest list",
-                    "guests", "attended", "absent", "banquet",
-                    "만찬", "회담", "정상회담", "참석자", "참석", "불참", "초청",
-                ]
-                if any(k in hay for k in non_portfolio_event_terms):
+                if not is_portfolio_claim_relevant(title, desc):
                     continue
                 cid = hashlib.sha256(link.encode("utf-8")).hexdigest()[:24]
                 out[cid] = {
