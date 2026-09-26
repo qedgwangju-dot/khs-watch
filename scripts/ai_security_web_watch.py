@@ -444,58 +444,195 @@ def previously_similar(item: dict, seen: dict, now: dt.datetime) -> bool:
     return False
 
 
-def cluster_evidence(items: list[dict]) -> dict[tuple[str, str], set[str]]:
-    groups: dict[tuple[str, str], set[str]] = defaultdict(set)
-    for item in items:
-        groups[(item["vendor"], item["category"])].add(item.get("source") or "unknown")
-    return groups
+def event_token_set(text: str) -> set[str]:
+    words = re.findall(r"[a-z0-9][a-z0-9+._-]{2,}", text.lower())
+    normalized = set()
+    replacements = {
+        "agents": "agent", "users": "user", "images": "image",
+        "leaked": "leak", "leaks": "leak", "leaking": "leak",
+        "activities": "activity", "impacts": "impact",
+        "vulnerabilities": "vulnerability", "patches": "patch",
+    }
+    drop = STOPWORDS | {
+        "openai", "anthropic", "google", "meta", "microsoft", "amazon",
+        "agent", "agents", "security", "latest", "exclusive", "reportedly",
+        "report", "reports", "says", "said",
+    }
+    for word in words:
+        word = replacements.get(word, word)
+        if word not in drop and not word.isdigit():
+            normalized.add(word)
+    return normalized
 
 
-def clean_snippet(text: str, limit: int = 320) -> str:
-    value = strip_html(text)
-    value = re.sub(r"\s+", " ", value).strip()
-    if len(value) > limit:
-        return value[: limit - 1].rstrip() + "…"
-    return value
+def same_event(a: dict, b: dict) -> bool:
+    if a.get("vendor") != b.get("vendor"):
+        return False
+    aa = event_token_set(f"{a.get('title','')} {a.get('description','')}")
+    bb = event_token_set(f"{b.get('title','')} {b.get('description','')}")
+    if not aa or not bb:
+        return False
+    overlap = aa & bb
+    score = len(overlap) / len(aa | bb)
+    if score >= 0.20:
+        return True
+    strong = {"leak", "image", "activity", "misalignment", "rogue", "medicare",
+              "sandbox", "credential", "prompt", "injection", "hugging", "face"}
+    return len(overlap & strong) >= 2
 
 
-def build_alert(items: list[dict], all_current: list[dict], now: dt.datetime) -> tuple[str, str]:
-    groups = cluster_evidence(all_current)
-    highest = max(i["severity"] for i in items)
+def cluster_alert_events(items: list[dict]) -> list[list[dict]]:
+    ordered = sorted(
+        items,
+        key=lambda x: (x.get("severity", 0), bool(x.get("official")), x.get("published_at") or ""),
+        reverse=True,
+    )
+    clusters: list[list[dict]] = []
+    for item in ordered:
+        placed = False
+        for cluster in clusters:
+            if any(same_event(item, existing) for existing in cluster):
+                cluster.append(item)
+                placed = True
+                break
+        if not placed:
+            clusters.append([item])
+    return clusters[:MAX_ALERT_ITEMS]
+
+
+def source_label(source: str) -> str:
+    low = source.lower()
+    mapping = (
+        ("reuters", "Reuters"),
+        ("fortune", "Fortune"),
+        ("guardian", "Guardian"),
+        ("the verge", "The Verge"),
+        ("wired", "WIRED"),
+        ("ars technica", "Ars Technica"),
+        ("techcrunch", "TechCrunch"),
+        ("bleepingcomputer", "BleepingComputer"),
+        ("securityweek", "SecurityWeek"),
+        ("cisa", "CISA"),
+        ("openai", "OpenAI"),
+        ("anthropic", "Anthropic"),
+        ("microsoft", "Microsoft"),
+        ("google", "Google"),
+        ("meta", "Meta"),
+        ("github", "GitHub"),
+    )
+    for needle, label in mapping:
+        if needle in low:
+            return label
+    value = re.sub(r"^www\.", "", source.strip())
+    return value[:26] or "원문"
+
+
+def incident_fact(item: dict) -> str | None:
+    text = f" {item.get('title','')} {item.get('description','')} ".lower()
+    if "53" in text and "image" in text:
+        return "ChatGPT 사용자 이미지 53건 외부 업로드"
+    if ("1m" in text or "million" in text) and ("link" in text or "url" in text):
+        return "단축 URL 약 100만 개 활용 정황"
+    if "medicare" in text:
+        return "호주 Medicare 시스템 비인가 접근"
+    if "hugging face" in text and ("misalign" in text or "rogue" in text or "incident" in text):
+        return "Hugging Face 사고 관련 에이전트 비정렬 활동"
+    if "user data leak" in text or ("data leak" in text and "user" in text):
+        return "사용자 데이터 유출 사례 확인"
+    if "sandbox escape" in text:
+        return "가상환경·샌드박스 격리 우회"
+    if "remote code execution" in text or " rce" in text:
+        return "원격 코드 실행 가능성"
+    if "prompt injection" in text:
+        return "프롬프트 주입을 통한 도구·권한 오용 위험"
+    if "credential" in text and ("steal" in text or "theft" in text or "leak" in text):
+        return "자격증명 탈취·노출 위험"
+    if "bypassed security controls" in text or "bypass security controls" in text:
+        return "보안 통제 우회 행동 확인"
+    if "misalignment" in text or "misaligned" in text or "rogue agent" in text:
+        return "비정렬 에이전트의 의도하지 않은 외부 행동 확인"
+    return None
+
+
+def event_heading(cluster: list[dict]) -> str:
+    rep = cluster[0]
+    categories = []
+    for item in cluster:
+        cat = item.get("category") or "중요 보안 변화"
+        if cat not in categories:
+            categories.append(cat)
+    cat_text = " · ".join(categories[:2])
+    return f"{rep['vendor']} · {cat_text}"
+
+
+def event_impact(cluster: list[dict]) -> str:
+    cats = " ".join(item.get("category", "") for item in cluster)
+    if "데이터·개인정보" in cats:
+        return "사용자 데이터와 외부 시스템 접근 범위 확대 여부가 핵심입니다."
+    if "에이전트 비정렬" in cats:
+        return "목표 달성을 위해 보안통제를 우회하는 자율 행동이 핵심 위험입니다."
+    if "가상환경·샌드박스" in cats:
+        return "격리 실패가 실제 외부 시스템 접근으로 이어지는지 확인이 필요합니다."
+    if "프롬프트 주입·도구권한" in cats:
+        return "에이전트가 연결된 도구·계정 권한을 오용할 가능성이 핵심입니다."
+    if "인증·자격증명" in cats:
+        return "계정·토큰·API 키의 권한 확대로 이어지는지 확인이 필요합니다."
+    return "실제 악용·영향 범위·패치 여부가 다음 핵심 확인 지점입니다."
+
+
+def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str, str]:
+    highest = max(item["severity"] for cluster in events for item in cluster)
     icon = {3: "🚨", 2: "⚠️", 1: "🔎"}[highest]
-    title = f"{icon} AI 보안 웹감시 — 신규 중요 변화 {len(items)}건"
+    title = f"{icon} <b>AI 보안 웹감시</b> · 신규 중요 변화 {len(events)}건"
 
-    lines = [
-        f"조회: {now.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')}",
-        "",
-        "무엇이 달라졌나",
-    ]
-    for idx, item in enumerate(items, 1):
-        sources = groups[(item["vendor"], item["category"])]
-        if item["official"]:
+    lines = [f"<i>{now.astimezone(KST).strftime('%m/%d %H:%M KST')}</i>"]
+    for idx, cluster in enumerate(events, 1):
+        rep = cluster[0]
+        severity_label = rep["severity_label"]
+        lines += ["", f"<b>{idx}. [{html.escape(severity_label)}] {html.escape(event_heading(cluster))}</b>"]
+
+        facts: list[str] = []
+        for item in cluster:
+            fact = incident_fact(item)
+            if fact and fact not in facts:
+                facts.append(fact)
+        if not facts:
+            headline = clean_snippet(rep.get("title", ""), limit=110)
+            if headline:
+                facts.append(headline)
+        for fact in facts[:3]:
+            lines.append(f"• {html.escape(fact)}")
+
+        unique_sources = []
+        official = False
+        for item in cluster:
+            label = source_label(item.get("source", ""))
+            if label not in [x[0] for x in unique_sources]:
+                unique_sources.append((label, item.get("url", "")))
+            official = official or bool(item.get("official"))
+
+        if official:
             evidence = "공식 원천 포함"
-        elif len(sources) >= 2:
-            evidence = f"복수 출처 {len(sources)}곳"
+        elif len(unique_sources) >= 2:
+            evidence = f"복수 출처 {len(unique_sources)}곳"
         else:
-            evidence = "신뢰보도 1건·추가 확인 대기"
-        lines.append(
-            f"{idx}) [{item['severity_label']}] {item['vendor']} · {item['category']}"
-        )
-        lines.append(f"   - {item['title']}")
-        snippet = clean_snippet(item.get("description", ""))
-        if snippet and snippet.lower() not in item["title"].lower():
-            lines.append(f"   - 확인 내용: {snippet}")
-        lines.append(f"   - 확인 수준: {evidence} · 출처 {item['source']}")
-        lines.append(f"   - 원문: {item['url']}")
+            evidence = "신뢰보도 1건·추가 확인 필요"
+
+        lines.append(f"• <b>판정</b>: {html.escape(event_impact(cluster))}")
+        lines.append(f"• <b>확인</b>: {html.escape(evidence)}")
+
+        links = []
+        for label, url in unique_sources[:4]:
+            if url:
+                links.append(
+                    f'<a href="{html.escape(url, quote=True)}">{html.escape(label)}</a>'
+                )
+        if links:
+            lines.append("🔗 " + " · ".join(links))
 
     lines += [
         "",
-        "현재 판정",
-        "- 실제 데이터·권한·가상환경·도구 경계뿐 아니라 비정렬 에이전트의 보안통제 우회·제3자 서비스 영향·비인가 외부행동도 알림 대상으로 분류했습니다.",
-        "- 단순 AI 위험론, 일반적인 jailbreak 논쟁, 같은 기사 재전송은 제외합니다.",
-        "",
-        "다음 확인",
-        "- 실제 악용 확인 여부, 영향 사용자·버전 범위, 패치·완화책, CVE/CISA 등재, 공급사 공식 공지를 계속 추적합니다.",
+        "<b>다음 확인</b>: 실제 악용 · 영향 범위 · 추가 피해 · 패치/완화책",
     ]
     return title, "\n".join(lines)
 
@@ -590,14 +727,10 @@ def main() -> int:
     }
     save_json(PENDING_PATH, pending)
 
-    alert_items = sorted(
-        new_items,
-        key=lambda x: (x.get("severity", 0), bool(x.get("official")), x.get("published_at") or ""),
-        reverse=True,
-    )[:MAX_ALERT_ITEMS]
+    alert_events = cluster_alert_events(new_items)
 
-    if alert_items:
-        title, body = build_alert(alert_items, current, now)
+    if alert_events:
+        title, body = build_alert(alert_events, now)
         ALERT_TITLE.write_text(title + "\n", encoding="utf-8")
         ALERT_BODY.write_text(body.rstrip() + "\n", encoding="utf-8")
 
@@ -608,7 +741,8 @@ def main() -> int:
         f"- 최초 기준선 생성: {'예' if baseline else '아니오'}",
         f"- 웹 수집 원문: {len(raw_items)}건",
         f"- 중요 필터 통과: {len(current)}건",
-        f"- 신규 중요 변화: {len(alert_items)}건",
+        f"- 신규 중요 기사: {len(new_items)}건",
+        f"- 신규 중요 사건: {len(alert_events)}건",
         f"- 수집 오류: {len(errors)}건",
     ]
     if errors:
@@ -617,7 +751,7 @@ def main() -> int:
 
     print(
         f"ai_security_baseline={str(baseline).lower()} "
-        f"material={len(current)} new_alerts={len(alert_items)} errors={len(errors)}"
+        f"material={len(current)} new_articles={len(new_items)} new_events={len(alert_events)} errors={len(errors)}"
     )
     return 0
 
