@@ -6669,6 +6669,14 @@ def semantic_event_theme(alert: dict) -> str:
         "space-based energy generation",
         "solar panels in space applications",
     )):
+        if any(term in text for term in (
+            "awardee", "awardees", "recipient", "recipients",
+            "selected for award", "selected projects", "announces selections", "announced selections",
+            "has selected", "have selected", "selected the following", "awarded to",
+            "selection notifications issued", "selection notifications sent", "selection notifications released",
+            "awards announced",
+        )):
+            return "doe-space-pv-pia-selections"
         return "doe-space-pv-pia-2026-08-31"
     if (
         "레버리지" in text
@@ -7228,6 +7236,18 @@ def korean_title(alert: dict) -> str:
         "space photovoltaics research and development partnership intermediary agreement",
         "space-based energy generation",
         "solar panels in space applications",
+    ]) and has_term(text, [
+        "awardee", "awardees", "recipient", "recipients",
+        "selected for award", "selected projects", "announces selections", "announced selections",
+        "has selected", "have selected", "selected the following", "awarded to",
+        "selection notifications issued", "selection notifications sent", "selection notifications released",
+        "awards announced",
+    ]):
+        return "미 에너지부, 우주태양광 R&D 선정 결과 발표"
+    if has_term(text, [
+        "space photovoltaics research and development partnership intermediary agreement",
+        "space-based energy generation",
+        "solar panels in space applications",
     ]):
         return "미 에너지부, 우주태양광 R&D 지원사업 공고"
     if has_term(text, ["digital opportunity data collection", "form 477"]):
@@ -7595,9 +7615,11 @@ def is_space_pv_pia_base_rehash(alert: dict) -> bool:
     if not any(term in text for term in base_terms):
         return False
     stage_change_terms = (
-        "awardee", "awardees", "recipient", "recipients", "selected for award",
-        "selected projects", "selection notification", "selection notifications",
-        "announces selections", "announced selections", "awarded to",
+        "awardee", "awardees", "recipient", "recipients",
+        "selected for award", "selected projects", "announces selections", "announced selections",
+        "has selected", "have selected", "selected the following", "awarded to",
+        "selection notifications issued", "selection notifications sent", "selection notifications released",
+        "awards announced",
     )
     return not any(term in text for term in stage_change_terms)
 
