@@ -169,7 +169,12 @@ jobs:
               cp /tmp/us-watch-state/us_positioning_options_sox_state.json data/us_positioning_options_sox_state.json
             fi
 
-            git add data/us_fund_flow_state.json data/us_positioning_options_sox_state.json 2>/dev/null || true
+            if [ -f data/us_fund_flow_state.json ]; then
+              git add data/us_fund_flow_state.json
+            fi
+            if [ -f data/us_positioning_options_sox_state.json ]; then
+              git add data/us_positioning_options_sox_state.json
+            fi
             if git diff --cached --quiet; then
               echo "US market watcher states unchanged"
               exit 0
