@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-26T22:38:03+09:00",
+  "updated_at_kst": "2026-09-26T23:13:27+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -83,7 +83,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1355.05,
-    "date": "2026-09-25 일일 기준 · ECB/Frankfurter · 조회 2026-09-26 22:38 KST · 보조 API 2026-09-26 · 차이 0.17% · 일중 기준시각 차이 가능",
+    "date": "2026-09-25 일일 기준 · ECB/Frankfurter · 조회 2026-09-26 23:13 KST · 보조 API 2026-09-26 · 차이 0.17% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -136,13 +136,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-09-26T22:38:09+09:00",
+    "last_checked_at_kst": "2026-09-26T23:13:33+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 1,
   "delivery_check": {
-    "checked_at_kst": "2026-09-26T22:44:01+09:00",
+    "checked_at_kst": "2026-09-26T23:19:25+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-09-25T23:37:11+09:00",
@@ -210,7 +210,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-09-26",
-    "last_checked_at_kst": "2026-09-26T22:38:52+09:00"
+    "last_checked_at_kst": "2026-09-26T23:14:13+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -246,7 +246,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-09-26",
-    "last_checked_at_kst": "2026-09-26T22:43:33+09:00",
+    "last_checked_at_kst": "2026-09-26T23:18:54+09:00",
     "candidate_count": 0
   }
 }
