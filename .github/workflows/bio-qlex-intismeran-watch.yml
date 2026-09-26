@@ -33,7 +33,7 @@ permissions:
 
 concurrency:
   group: bio-qlex-intismeran-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -57,30 +57,6 @@ jobs:
       - name: Run Korean-guarded bio watch
         run: python scripts/bio_single_runner_v3.py
 
-      - name: Run direct Alteogen IR QLEX WAC watch
-        shell: bash
-        run: |
-          set -euo pipefail
-          chat_id="${BIO_TELEGRAM_CHAT_ID:-}"
-          if [ -z "$chat_id" ] && [ -f data/bio_telegram_chat_id.enc ]; then
-            chat_id=$(openssl enc -d -aes-256-cbc -a -A -pbkdf2 \
-              -pass env:BIO_TELEGRAM_BOT_TOKEN \
-              -in data/bio_telegram_chat_id.enc)
-          fi
-          test -n "$chat_id"
-          echo "::add-mask::$chat_id"
-          export BIO_TELEGRAM_CHAT_ID="$chat_id"
-
-          python scripts/qlex_wac_ir_watch_v2.py
-          if [ -f out/qlex_wac_ir_alert.md ]; then
-            python scripts/qlex_telegram_send_v2.py out/qlex_wac_ir_alert.md | tee out/qlex_wac_ir_send.log
-          else
-            echo "qlex_wac_alert=false" > out/qlex_wac_ir_send.log
-          fi
-          cp out/qlex_wac_ir_watch_state_pending.json data/qlex_wac_ir_watch_state.json
-
-      - name: Run Halozyme PTAB and legal watch
-        run: python scripts/halozyme_legal_watch_v3.py
 
       - name: Publish bio watch status
         if: always()
