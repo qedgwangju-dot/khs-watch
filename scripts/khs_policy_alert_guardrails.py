@@ -72,6 +72,10 @@ SECTOR_RULES: list[tuple[str, list[str]]] = [
         "tariff", "tariffs", "section 301", "ustr", "customs enforcement",
         "import duty", "export control", "export controls", "entity list",
     ]),
+    ("태양광/폴리실리콘", [
+        "polysilicon", "solar cell", "solar cells", "solar module", "solar modules",
+        "photovoltaic", "photovoltaics", "minimum import price", "proclamation 11052",
+    ]),
     ("통신/FCC/위성", [
         "fcc", "federal communications commission", "spectrum", "broadband",
         "wireless", "wireline", "satellite", "space bureau", "telecommunications",
@@ -405,6 +409,23 @@ def korean_title_for(item: dict) -> str:
         return "정부, 통신비 인하·요금제 개편 정책 압박 확인"
     if is_domestic_stablecoin_policy(item):
         return "국내 디지털자산 정책: 원화 스테이블코인 법안·결제 표준 체크"
+    if (
+        "polysilicon" in text
+        and "11052" in text
+        and (
+            "measures to restrict stockpiling" in text
+            or ("stockpil" in text and ("temporary final rule" in text or "import prohibition" in text))
+        )
+    ):
+        return "미 상무부, 폴리실리콘 사재기 차단 규칙 시행"
+    if (
+        "polysilicon" in text
+        and "11052" in text
+        and has_any(text, ["minimum import price", "15% ad valorem", "15 percent ad valorem", "adjusting imports of polysilicon"])
+    ):
+        return "미국, 폴리실리콘 Section 232 최저수입가격·관세 조치"
+    if has_any(text, ["space photovoltaics research and development partnership intermediary agreement", "space-based pv", "solar panels in space applications"]):
+        return "미 에너지부, 우주태양광 R&D 지원사업 공고"
     if is_fcc_resilient_networks_policy(item):
         return "FCC, 재난 시 통신망 장애보고 시스템(DIRS) 현대화 최종규칙 공표"
     if "export control" in text or "entity list" in text:
