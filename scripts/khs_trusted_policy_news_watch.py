@@ -1983,6 +1983,20 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
     return [f"- 핵심: {core}"]
 
 
+def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
+    """Return a conservative status, upgrading only first-party verified events."""
+    if (
+        rule.key == "us_congress_chinese_optical_transceiver_restriction"
+        and any(
+            "mccormick.senate.gov" in str(item.get("link") or "").lower()
+            or "u.s. senate" in str(item.get("source") or "").lower()
+            for item in items
+        )
+    ):
+        return "공식 확인", "미 상원의원 공식 보도자료 확인 완료"
+    return "공식 확인 전", "공식 원문/후속 문서 확인 전"
+
+
 def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, index: int, source_limit: int = 1) -> list[str]:
     display_title = story_display_title(rule, items)
     sources = source_bits(items, source_limit)
@@ -1990,11 +2004,12 @@ def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, i
     matched = {rule.key: ["EU", "Korea", "policy"] if rule.key.startswith("eu_korea_") else ["trusted policy news"]}
     if rule.key == "us_japan_korea_smr_moc_state_watch":
         matched["state_smr_moc_policy"] = ["moc", "smr", "samsung c&t", "bwrx-300"]
+    status_label, status_detail = alert_confirmation_status(rule, items)
     explain_item = {
         "title": rule.title,
         "source": source_names,
         "summary": f"{rule.core} {rule.point}",
-        "status": "공식 확인 전",
+        "status": status_label,
         "policy_plain_summary": rule.core,
         "investment_view": rule.point,
         "counter": rule.counter,
@@ -2010,8 +2025,8 @@ def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, i
     ensure_explained(explain_item)
 
     return [
-        f"{index}. [상·공식 확인 전] {display_title}",
-        f"- 확인 상태: 공식 원문/후속 문서 확인 전. 신뢰 소스 확인: {source_names or '확인 불가'}.",
+        f"{index}. [상·{status_label}] {display_title}",
+        f"- 확인 상태: {status_detail}. 확인 소스: {source_names or '확인 불가'}.",
         *compact_explanation_lines(rule, items, explain_item),
         f"- 출처: {sources} · 조회 {now:%H:%M KST}",
         "",
@@ -2019,9 +2034,11 @@ def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, i
 
 
 def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
+    status_label, _ = alert_confirmation_status(rule, items)
+    header = "공식 확인 정책 뉴스 1건 확인" if status_label == "공식 확인" else "공식 문서 확인 전 정책 뉴스 1건 확인"
     lines = [
         f"{now:%Y년 %m월 %d일 %H:%M KST}",
-        "공식 문서 확인 전 정책 뉴스 1건 확인",
+        header,
         "",
         *render_alert_section(rule, items, now, index=1, source_limit=3),
         "투자 조언이 아닌 참고용 정책·규제 알림입니다.",
@@ -2031,9 +2048,16 @@ def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
 
 def render_alert_bundle(alerts: list[dict], now: dt.datetime, limit: int = 3) -> str:
     selected = alerts[:limit]
+    statuses = [alert_confirmation_status(alert["rule"], alert["items"])[0] for alert in selected]
+    if selected and all(status == "공식 확인" for status in statuses):
+        header = f"공식 확인 정책 뉴스 {len(selected)}건 확인"
+    elif "공식 확인" in statuses:
+        header = f"공식 확인·확인 전 혼합 정책 뉴스 {len(selected)}건 확인"
+    else:
+        header = f"공식 문서 확인 전 정책 뉴스 {len(selected)}건 확인"
     lines = [
         f"{now:%Y년 %m월 %d일 %H:%M KST}",
-        f"공식 문서 확인 전 정책 뉴스 {len(selected)}건 확인",
+        header,
         "",
     ]
     for idx, alert in enumerate(selected, start=1):
@@ -2098,8 +2122,9 @@ def main() -> int:
         title_suffix = f" 외 {extra_count}건" if extra_count else ""
         report = render_alert_bundle(selected_alerts, now)
         ALERT_PATH.write_text(report, encoding="utf-8")
+        top_status, _ = alert_confirmation_status(top["rule"], top["items"])
         TITLE_PATH.write_text(
-            f"신뢰외신 정책 워치: [상·공식 확인 전] {story_display_title(top['rule'], top['items'])}{title_suffix}\n",
+            f"신뢰외신 정책 워치: [상·{top_status}] {story_display_title(top['rule'], top['items'])}{title_suffix}\n",
             encoding="utf-8",
         )
         ALERTS_JSON_PATH.write_text(
@@ -2108,7 +2133,7 @@ def main() -> int:
                     {
                         "key": alert["rule"].key,
                         "title": alert["rule"].title,
-                        "status": "공식 확인 전",
+                        "status": alert_confirmation_status(alert["rule"], alert["items"])[0],
                         "items": alert["items"],
                         "fingerprint": alert["fingerprint"],
                     }
@@ -2146,7 +2171,7 @@ def main() -> int:
             "key": alert["rule"].key,
             "title": alert["rule"].title,
             "first_seen_kst": now.isoformat(timespec="seconds"),
-            "status": "공식 확인 전",
+            "status": alert_confirmation_status(alert["rule"], alert["items"])[0],
             "sources": [item["source"] for item in alert["items"][:3]],
         }
         seen[alert["fingerprint"]] = seen_entry
