@@ -422,6 +422,7 @@ def _collect_trendforce_research(cutoff: dt.datetime) -> tuple[list[dict], list[
         except Exception as exc:
             errors.append(f"TrendForce listing {listing_url}: {type(exc).__name__}: {exc}")
 
+    print("trendforce_href_samples=" + repr(list(href_titles.items())[:20]))
     recent_hrefs: list[tuple[dt.datetime | None, str]] = []
     for href in href_titles:
         url_date = _trendforce_url_date(href)
