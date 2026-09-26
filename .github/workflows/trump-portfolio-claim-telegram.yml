@@ -9,6 +9,7 @@ on:
       - ".github/workflows/trump-portfolio-claim-telegram.yml"
       - "scripts/trump_portfolio_claim_watch.py"
       - "scripts/trump_portfolio_claim_watch_entry.py"
+      - "scripts/test_trump_claim_filter.py"
       - "data/trump_portfolio_claim_watch_state.json"
 
 permissions:
@@ -40,6 +41,8 @@ jobs:
         run: |
           python -m py_compile scripts/trump_portfolio_claim_watch.py
           python -m py_compile scripts/trump_portfolio_claim_watch_entry.py
+          python -m py_compile scripts/test_trump_claim_filter.py
+          python scripts/test_trump_claim_filter.py
 
       - name: Check web-indexed Trump portfolio claims and send Korean Telegram alert
         run: python scripts/trump_portfolio_claim_watch_entry.py
