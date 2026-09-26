@@ -109,4 +109,30 @@ assert g == "tesla", (g, s, c)
 assert c == "Optimus 한국 공급망 생산시설·기술 점검", c
 assert s >= 11, s
 
+# 6) Detailed Optimus ramp rewrites that focus on tooling rework, sensing glove,
+# AI generalization or lease-first commercialization must still map to the same
+# production-ramp bottleneck event instead of being dropped or re-alerted.
+rich_ramp = make(
+    "Tesla Optimus output rises 10x to hundreds per week",
+    (
+        "Fixtures and jigs at hand, joint and electronics-test stations cannot align tiny tight-tolerance parts consistently, causing rework. "
+        "Tesla plans a replaceable sensing glove next year. Optimus can be unpredictable in untrained situations and takes several days to learn a basic task. "
+        "Training hubs are being set up in Colorado, Arizona and Florida. Early external commercial robots are planned to be leased to warehouse or factory customers, "
+        "so Tesla can retrieve, upgrade or refurbish the hardware and collect customer-site data."
+    ),
+    "Electrek",
+)
+g, s, c, k = classify(rich_ramp)
+expected_ramp_key = hashlib.sha256(
+    b"tesla-optimus|2026-09|production-ramp-bottleneck|hands-supply-data"
+).hexdigest()
+assert g == "tesla", (g, s, c)
+assert c == "Optimus 주간 생산 램프·손·공급망 병목", c
+assert s >= 11, s
+assert k == expected_ramp_key, (
+    "detailed ramp rewrite must dedupe to the existing September ramp event",
+    k,
+    expected_ramp_key,
+)
+
 print("Physical-AI watcher regression guards: PASS")
