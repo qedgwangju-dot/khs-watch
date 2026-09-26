@@ -59,6 +59,9 @@ NEWS_QUERIES = [
     '(Grok OR xAI OR Bedrock) AI security vulnerability exploit',
     '("AI agent" OR agentic) "sandbox escape" OR "unauthorized access" OR credential',
     'LLM "supply chain" vulnerability exploit security',
+    '("AI agent" OR agentic OR LLM) misalignment "third party" OR "third-party" OR "agent spam"',
+    '("AI agent" OR agentic) "bypassed security controls" OR "unintended internet access" OR "unauthorized communication"',
+    '(OpenAI OR Anthropic OR Google OR Meta) agent misalignment external service unintended behavior',
 ]
 
 AI_TERMS = (
@@ -77,6 +80,10 @@ SECURITY_TERMS = (
     "malicious", "hotfix", "patched", "patches", "security warning",
     "risk warning", "cross-tenant", "exfiltrat", "supply chain", "cve-",
     "arbitrary code", "take control", "stole data", "leaked data",
+    "misalignment", "misaligned", "agent spam", "bypassed security controls",
+    "bypass security controls", "improper activity", "undesirable behavior",
+    "unintended internet access", "unauthorized communication",
+    "third-party impact", "third party impact", "outside intended scope",
 )
 
 HARD_SECURITY_TERMS = (
@@ -85,6 +92,8 @@ HARD_SECURITY_TERMS = (
     "actively exploited", "exploited in the wild", "arbitrary code",
     "unauthorized access", "data exfiltration", "exfiltrat", "zero-day",
     "zero day", "agent hijack", "take control",
+    "bypassed security controls", "unintended internet access",
+    "unauthorized communication",
 )
 
 TRUSTED_SOURCE_HINTS = (
@@ -139,6 +148,12 @@ CATEGORY_PATTERNS = [
     ("공급망", (
         "supply chain", "dependency", "package", "poisoned model",
         "model tampering", "malicious model",
+    )),
+    ("에이전트 비정렬·제3자 영향", (
+        "misalignment", "misaligned", "agent spam", "undesirable behavior",
+        "improper activity", "bypassed security controls",
+        "unintended internet access", "unauthorized communication",
+        "third-party impact", "third party impact", "outside intended scope",
     )),
 ]
 
@@ -304,7 +319,9 @@ def severity(text: str) -> tuple[int, str]:
     high = (
         "zero-day", "zero day", "exploit", "data leak", "data exposure",
         "unauthorized access", "prompt injection", "agent hijack",
-        "security flaw", "vulnerability", "hotfix",
+        "security flaw", "vulnerability", "hotfix", "bypassed security controls",
+        "unintended internet access", "unauthorized communication", "misaligned",
+        "misalignment", "agent spam",
     )
     if any(x in low for x in critical):
         return 3, "긴급"
@@ -337,6 +354,10 @@ def material(item: dict) -> bool:
     return any(x in low for x in (
         "patched", "patches", "hotfix", "security warning", "risk warning",
         "privacy", "connector", "plugin", "tool", "secure vm", "virtual machine",
+        "misalignment", "misaligned", "agent spam", "bypassed security controls",
+        "unintended internet access", "unauthorized communication",
+        "third-party impact", "third party impact", "undesirable behavior",
+        "improper activity",
     ))
 
 
@@ -457,7 +478,7 @@ def build_alert(items: list[dict], all_current: list[dict], now: dt.datetime) ->
     lines += [
         "",
         "현재 판정",
-        "- 실제 데이터·권한·가상환경·도구 경계를 건드리는 사건만 알림 대상으로 분류했습니다.",
+        "- 실제 데이터·권한·가상환경·도구 경계뿐 아니라 비정렬 에이전트의 보안통제 우회·제3자 서비스 영향·비인가 외부행동도 알림 대상으로 분류했습니다.",
         "- 단순 AI 위험론, 일반적인 jailbreak 논쟁, 같은 기사 재전송은 제외합니다.",
         "",
         "다음 확인",
