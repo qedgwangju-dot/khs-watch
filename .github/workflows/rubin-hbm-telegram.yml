@@ -13,6 +13,7 @@ on:
       - "scripts/skhynix_us_memory_watch.py"
       - "scripts/samsung_hbm_watch.py"
       - "scripts/hbm_delivery.py"
+      - "scripts/currency_krw_guard.py"
       - "scripts/hbm_memory_axes.py"
       - "scripts/solidigm_ipo_watch.py"
       - "data/hbm_memory_baselines.json"
@@ -61,7 +62,7 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p out
-          python -m py_compile scripts/hbm_delivery.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/skhynix_us_memory_watch.py scripts/ai_component_leadtime_watch.py scripts/agentic_cpu_watch.py scripts/samsung_electromechanics_cpu_watch.py scripts/solidigm_ipo_watch.py
+          python -m py_compile scripts/hbm_delivery.py scripts/currency_krw_guard.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/skhynix_us_memory_watch.py scripts/ai_component_leadtime_watch.py scripts/agentic_cpu_watch.py scripts/samsung_electromechanics_cpu_watch.py scripts/solidigm_ipo_watch.py
           python -m unittest discover -s tests -p 'test_hbm*.py' -v 2>&1 | tee out/hbm_regression_tests.txt
 
       - name: Validate existing Telegram destination without sending
