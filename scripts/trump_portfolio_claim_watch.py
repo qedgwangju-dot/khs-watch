@@ -65,11 +65,14 @@ def _strip_tags(s):
 
 
 def is_portfolio_claim_relevant(title, desc=""):
-    """True only for portfolio-composition/weight claims, not OGE trades or event news."""
-    hay = f"{title or ''} {desc or ''}".lower()
+    """Only Trump's own portfolio/holdings claims; exclude market themes, OGE trades, and event news."""
+    title_text = (title or "").strip()
+    title_low = title_text.lower()
+    hay = f"{title_text} {desc or ''}".lower()
     if "trump" not in hay and "트럼프" not in hay:
         return False
 
+    # OGE/transaction stories belong to the dedicated OGE watcher.
     oge_trade_terms = [
         "financial disclosure", "government ethics", "oge", "278-t",
         "periodic transaction", "stock trades", "securities transactions",
@@ -79,13 +82,14 @@ def is_portfolio_claim_relevant(title, desc=""):
     if any(k in hay for k in oge_trade_terms):
         return False
 
-    portfolio_terms = [
-        "portfolio", "포트폴리오", "holdings", "holding",
-        "allocation", "weighting", "portfolio weight", "top holding",
-        "largest position", "asset mix", "보유 비중", "보유종목",
-        "자산 배분", "자산배분", "최대 보유",
+    # General Trump-market strategy / broker / CFD content is not Trump's personal portfolio.
+    market_content_terms = [
+        "trump trade", "trade 2.0", "your portfolio", "our new",
+        "stock cfd", "stock cfds", "cfds", "broker", "traders",
+        "election", "market volatility", "trading strategy",
+        "트럼프 트레이드", "당신의 포트폴리오", "CFD",
     ]
-    if not any(k in hay for k in portfolio_terms):
+    if any(k.lower() in hay for k in market_content_terms):
         return False
 
     non_portfolio_event_terms = [
@@ -95,7 +99,23 @@ def is_portfolio_claim_relevant(title, desc=""):
     ]
     if any(k in hay for k in non_portfolio_event_terms):
         return False
-    return True
+
+    # Require an explicit ownership/composition relationship in the headline itself.
+    # This blocks articles that merely discuss how Trump policies could affect "your portfolio".
+    english_patterns = [
+        r"\btrump(?:'s|’s)?\b.{0,80}\b(portfolio|holdings?|allocation|asset mix|portfolio weight|top holding|largest position)\b",
+        r"\b(portfolio|holdings?|allocation|asset mix|portfolio weight|top holding|largest position)\b.{0,80}\btrump(?:'s|’s)?\b",
+        r"\bdonald trump(?:'s|’s)?\b.{0,80}\b(portfolio|holdings?|allocation)\b",
+    ]
+    korean_patterns = [
+        r"트럼프.{0,50}(포트폴리오|보유종목|보유 비중|자산배분|자산 배분|최대 보유)",
+        r"(포트폴리오|보유종목|보유 비중|자산배분|자산 배분).{0,50}트럼프",
+    ]
+    if any(re.search(p, title_low, re.I) for p in english_patterns):
+        return True
+    if any(re.search(p, title_text, re.I) for p in korean_patterns):
+        return True
+    return False
 
 
 def discover_claims():
