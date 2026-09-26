@@ -228,6 +228,44 @@ STORY_RULES = (
         ),
     ),
     StoryRule(
+        key="us_congress_chinese_optical_transceiver_restriction",
+        title="미 의회, 중국산 광트랜시버 정부 민감 시스템 사용 제한 법안 발의",
+        google_queries=(
+            '"US lawmakers aim to keep China\'s datacenter tech out of sensitive government systems" Reuters',
+            '"Securing National Security Systems from Chinese Optical Transceivers Act"',
+            '"McCormick" "Gallego" "Cornyn" "Fetterman" optical transceivers Reuters',
+            '"InnoLight" "Eoptolink" federal government optical transceivers bill Reuters',
+            '"Chinese transceivers" lawmakers "national security systems" Reuters',
+        ),
+        required_groups=(
+            ("china", "chinese", "innolight", "eoptolink"),
+            ("lawmakers", "senators", "legislation", "bill", "act", "congress", "federal government"),
+            ("data center", "datacenter", "government systems", "national security systems", "sensitive government systems", "transceiver"),
+            ("keep", "bar", "prohibit", "restrict", "restriction", "sensitive", "national security"),
+        ),
+        core=(
+            "미 상원의원들이 중국산 광트랜시버를 연방정부의 민감한 국가안보 시스템에서 배제하는 "
+            "초당적 법안을 발의했습니다. InnoLight·Eoptolink와 자회사·계열사가 우선 대상이며, "
+            "법안이 통과되면 5년 전환기간 뒤 조달 금지가 적용됩니다. 현재는 발의 단계로 시행 확정 전입니다."
+        ),
+        impact="광통신/광트랜시버, AI 데이터센터 네트워크, 미국 연방조달, 중국 대체 공급망 | 돈 버는 능력·수급·시간표",
+        point=(
+            "기존 FCC의 수입규제 검토보다 한 단계 구체화된 입법 신호입니다. 특정 중국 업체를 명시하고 "
+            "연방 국가안보 시스템 조달 제한·5년 전환기간·추가 지정 권한을 제안해 비중국 공급사의 장기 증설 신호를 강화합니다."
+        ),
+        counter=(
+            "적용 범위는 현재 법안 문구상 연방정부의 민감한 국가안보 시스템이며 미국의 모든 상업용·하이퍼스케일러 "
+            "데이터센터를 즉시 금지하는 조치는 아닙니다. 5년 전환기간과 제한적 갱신형 면제도 있어 단기 물량 이전을 과대평가하면 안 됩니다."
+        ),
+        sectors="광트랜시버/광통신, AI 데이터센터 네트워크, 미국 연방조달, 중국 대체 공급망",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("입법 타임라인", "연방조달", "공급망", "생산능력"),
+        follow_up=(
+            "법안번호·위원회 회부·의회 통과 여부, 상무부·국방부의 추가 지정, 면제 사용, 연방 조달 변경을 추적합니다. "
+            "동시에 Coherent·Lumentum·Applied Optoelectronics 등 대체 공급사의 실제 생산능력·증설·납기를 확인해야 합니다."
+        ),
+    ),
+    StoryRule(
         key="us_fcc_security_import_restriction",
         title="미국 FCC, 국가안보형 장비 수입제한·금지 정책 보도",
         google_queries=(
