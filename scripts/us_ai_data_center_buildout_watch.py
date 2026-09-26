@@ -131,6 +131,7 @@ ENERGY_PROFILES={
   "future":"Microsoft 기업 장기전원: Crane 원전 835MW PPA + Helion 핵융합 50MW+ PPA(부지 직접 아님)",
   "quality":"Microsoft 공식 부지확정+기업전략",
 },
+}
 
 SHORT={"Microsoft":"MS","Amazon":"Amazon","Oracle":"Oracle","Meta":"Meta","Google":"Google","SpaceXAI":"xAI","Softbank":"SoftBank","SoftBank":"SoftBank","OpenAI":"OpenAI","Anthropic":"Anthropic","Google DeepMind":"Google DeepMind"}
 
