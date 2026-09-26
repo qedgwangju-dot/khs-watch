@@ -33,7 +33,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
       TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
