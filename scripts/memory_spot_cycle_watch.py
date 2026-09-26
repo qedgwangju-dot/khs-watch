@@ -37,6 +37,12 @@ ALERT_PATH = OUT_DIR / "memory_spot_cycle_watch_telegram.txt"
 STATUS_PATH = OUT_DIR / "memory_spot_cycle_watch_status.md"
 KST = ZoneInfo("Asia/Seoul")
 TREND_RESEARCH_URL = "https://www.trendforce.com/research/memory-storage"
+TREND_PINNED_REPORT_URLS = [
+    # Seed the latest quarterly forecast explicitly; it is removed naturally by the
+    # rolling cutoff once stale, but guarantees paid-research summaries are not missed
+    # when TrendForce listing HTML/search indexing changes.
+    "https://www.trendforce.com/research/download/RP260924PL",
+]
 TREND_SEARCH_QUERIES = [
     'site:trendforce.com/research/download "Memory Price Forecast" DRAM NAND',
     'site:trendforce.com/research/download "DRAM Market Bulletin" TrendForce',
@@ -48,6 +54,7 @@ TREND_SEARCH_QUERIES = [
 QUERIES = [
     ("ko", 'DRAM 현물 가격 공급 부족 BofA OR 뱅크오브아메리카'),
     ("ko", 'NAND 현물 가격 공급 부족 TrendForce OR 트렌드포스'),
+    ("ko", 'TrendForce 4Q26 메모리 가격 전망 Enterprise SSD QLC KV 캐시 23 28 NAND 15 20'),
     ("ko", '서버 DRAM 고정가격 계약가격 ASP 삼성전자 SK하이닉스'),
     ("ko", '2028 HBM 공급확약 브로드컴 엔비디아 구글 AMD'),
     # DRAM physical capacity / wafer-start / new-fab cycle: do not miss supply expansion.
@@ -56,6 +63,7 @@ QUERIES = [
     ("ko", 'DRAM 신규 팹 그린필드 장비투자 웨이퍼 스타트 P4 P5 M15X Y1'),
     ("en", 'DRAM spot price shortage BofA Bank of America memory'),
     ("en", 'NAND spot price shortage TrendForce memory'),
+    ("en", 'TrendForce 4Q26 Memory Price Forecast enterprise SSD QLC KV cache 23 28 NAND 15 20'),
     ("en", 'server DRAM contract price TrendForce Samsung SK hynix Micron'),
     ("en", '2028 HBM supply commitment Broadcom NVIDIA Google AMD'),
     ("en", 'HBM trade ratio Micron HBM4E DRAM capacity'),
@@ -403,11 +411,12 @@ def _collect_trendforce_research(cutoff: dt.datetime) -> tuple[list[dict], list[
         "https://www.trendforce.com/research/category/Semiconductors/DRAM?page=1",
         "https://www.trendforce.com/research/category/Semiconductors/NAND%20Flash?page=1",
     ]
-    href_titles: dict[str, str] = {}
+    href_titles: dict[str, str] = {url: "" for url in TREND_PINNED_REPORT_URLS}
 
     for listing_url in listing_urls:
         try:
             listing_html = _fetch(listing_url).decode("utf-8", errors="ignore")
+            # First capture normal anchor tags with their labels.
             for match in re.finditer(
                 r'<a[^>]+href=["\']([^"\']*/research/download/RP[^"\']+)["\'][^>]*>(.*?)</a>',
                 listing_html,
@@ -419,6 +428,17 @@ def _collect_trendforce_research(cutoff: dt.datetime) -> tuple[list[dict], list[
                     label and label.lower() not in {"download report", "sign in and download report"}
                 ):
                     href_titles[href] = label
+
+            # TrendForce occasionally changes card markup or renders labels separately.
+            # Capture raw report URLs too, so a layout change cannot hide a new report.
+            loose_html = html.unescape(listing_html).replace("\\/", "/")
+            for match in re.finditer(
+                r'(?:"|\')([^"\']*/research/download/RP[0-9A-Za-z_-]+)(?:"|\')',
+                loose_html,
+                flags=re.IGNORECASE,
+            ):
+                href = urllib.parse.urljoin(listing_url, match.group(1))
+                href_titles.setdefault(href, "")
         except Exception as exc:
             errors.append(f"TrendForce listing {listing_url}: {type(exc).__name__}: {exc}")
 
