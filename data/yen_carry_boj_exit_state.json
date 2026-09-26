@@ -1,0 +1,143 @@
+{
+  "account": {
+    "change_1m_trillion_yen": 0.7787014309999449,
+    "change_3m_trillion_yen": -13.534258805000036,
+    "latest": {
+      "date": "2026-09-20",
+      "jgs_trillion_yen": 520.30256229,
+      "total_assets_trillion_yen": 641.281336654,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260920.htm"
+    },
+    "one_month": {
+      "date": "2026-08-20",
+      "jgs_trillion_yen": 519.523860859,
+      "total_assets_trillion_yen": 644.333296849,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260820.htm"
+    },
+    "three_month": {
+      "date": "2026-06-20",
+      "jgs_trillion_yen": 533.836821095,
+      "total_assets_trillion_yen": 655.077773576,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260620.htm"
+    }
+  },
+  "classification": {
+    "active_count": 0,
+    "label": "질서 있는 출구 진행 여부 정상 감시",
+    "level": 0,
+    "signals": {
+      "actual_over_plan": false,
+      "emergency_purchase_signal": false,
+      "joint_market_stress": false,
+      "plan_revision": false,
+      "weak_private_absorption": false
+    }
+  },
+  "emergency_operations": {
+    "hits": [
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations of the Cheapest-to-Deliver Issue for Consecutive Days [PDF 183KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2023/mpr230831e.pdf"
+      },
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations of the Cheapest-to-Deliver Issue for Consecutive Days [PDF 185KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2023/mpr230530d.pdf"
+      },
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations of the Cheapest-to-Deliver Issue for Consecutive Days [PDF 184KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2023/mpr230228d.pdf"
+      },
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations of the Cheapest-to-Deliver Issue for Consecutive Days [PDF 186KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2022/rel221129f.pdf"
+      },
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations of the Cheapest-to-Deliver Issue for Consecutive Days [PDF 185KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2022/rel220831g.pdf"
+      },
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations of the Cheapest-to-Deliver Issue for Consecutive Days [PDF 197KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2022/rel220617d.pdf"
+      },
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations of the Cheapest-to-Deliver Issue for Consecutive Days [PDF 198KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2022/rel220615a.pdf"
+      },
+      {
+        "date": null,
+        "title": "Statement on Fixed-Rate Purchase Operations for Consecutive Days [PDF 186KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2022/rel220428e.pdf"
+      },
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations for Consecutive Days [PDF 200KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2022/rel220426b.pdf"
+      },
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations for Consecutive Days [PDF 198KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2022/rel220420d.pdf"
+      },
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations for Consecutive Days [PDF 200KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2022/rel220328d.pdf"
+      },
+      {
+        "date": null,
+        "title": "Announcement on the Conduct of Fixed-Rate Purchase Operations [PDF 194KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2022/rel220210d.pdf"
+      },
+      {
+        "date": null,
+        "title": "Additional Auction Schedule of Outright Purchases of Japanese Government Bonds [PDF 196KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2020/rel200316i.pdf"
+      }
+    ],
+    "recent_30d": []
+  },
+  "errors": [
+    "월간 JGB 매입: RuntimeError: MD09 JGB purchase series ambiguous: ['Flow Table/Japanese Government Bonds (JGBs)/Outright Purchases(b)', '(Discontinued) Flow Table/Japanese Government Bonds (JGBs)/Outright Purchases (excluding the Asset Purchase Program)(Nov. 2010-Mar. 2013)(P)', 'Stock Table/Japanese Government Bonds (JGBs)/Outright Purchases(b)', '(Discontinued) Stock Table/Japanese Government Bonds (JGBs)/Outright Purchases (excluding the Asset Purchase Program)(Nov. 2010-Mar. 2013)(P)']",
+    "민간 JGB 흡수: RuntimeError: FOF private JGB series insufficient: found=[]"
+  ],
+  "initialized": true,
+  "market_stress": {
+    "jgb10": 3.073,
+    "jgb10_days_ge_3": 1,
+    "joint_market_stress": false,
+    "weak_auction_10y": false,
+    "weak_auction_30y": false
+  },
+  "policy_plan": {
+    "items": [
+      {
+        "date": "2026-06-16",
+        "title": "(Reference) Plan for the Outright Purchases of JGBs (June 2026 MPM) [PDF 130KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260616d.pdf"
+      },
+      {
+        "date": "2026-06-16",
+        "title": "Plan for the Outright Purchases of Japanese Government Bonds [PDF 109KB]",
+        "url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260616b.pdf"
+      }
+    ],
+    "newer_than_baseline": []
+  },
+  "private_absorption": null,
+  "purchase": null,
+  "signals": {
+    "actual_over_plan": false,
+    "emergency_purchase_signal": false,
+    "joint_market_stress": false,
+    "plan_revision": false,
+    "weak_private_absorption": false
+  },
+  "updated_at_kst": "2026-09-26T16:10:20+09:00"
+}
