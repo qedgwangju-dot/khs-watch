@@ -422,7 +422,6 @@ def _collect_trendforce_research(cutoff: dt.datetime) -> tuple[list[dict], list[
         except Exception as exc:
             errors.append(f"TrendForce listing {listing_url}: {type(exc).__name__}: {exc}")
 
-    print("trendforce_href_samples=" + repr(list(href_titles.items())[:20]))
     recent_hrefs: list[tuple[dt.datetime | None, str]] = []
     for href in href_titles:
         url_date = _trendforce_url_date(href)
@@ -439,8 +438,13 @@ def _collect_trendforce_research(cutoff: dt.datetime) -> tuple[list[dict], list[
             detail_html = _fetch(href).decode("utf-8", errors="ignore")
             h1 = re.search(r"<h1[^>]*>(.*?)</h1>", detail_html, flags=re.IGNORECASE | re.DOTALL)
             title = _clean(h1.group(1)) if h1 else ""
-            if not title:
-                title = href_titles.get(href, "")
+            listing_title = href_titles.get(href, "")
+            if (
+                not title
+                or title.lower() in {"research reports", "global hi-tech industry research report"}
+                or not re.search(r"\b(?:DRAM|NAND|HBM|Memory|SSD|eSSD|Enterprise SSD)\b", title, flags=re.IGNORECASE)
+            ):
+                title = listing_title or title
             if not title:
                 title_match = re.search(
                     r"<title[^>]*>(.*?)</title>",
