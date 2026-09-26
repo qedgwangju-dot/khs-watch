@@ -76,12 +76,37 @@ def main() -> None:
 
     space_pv = (
         "DOE Space Photovoltaics Research and Development Partnership Intermediary Agreement "
-        "announced a funding opportunity for solar panels in space applications."
+        "announced a funding opportunity for solar panels in space applications. "
+        "Expected Timeframe for Selection Notifications: December 2026."
     )
+    # The Aug. 31 base notice itself mentions future "Selection Notifications".
+    # That schedule wording must not be mistaken for a new selection result.
     assert trusted.is_space_pv_pia_base_rehash_text(space_pv)
-    assert not trusted.is_space_pv_pia_base_rehash_text(
-        space_pv + " DOE announces selections and selected projects for award."
+    assert watch.is_space_pv_pia_base_rehash_item(
+        {
+            "source": "DOE news",
+            "title": "Space Photovoltaics Research and Development Partnership Intermediary Agreement",
+            "link": "https://www.energy.gov/cmei/systems/space-photovoltaics-research-and-development-partnership-intermediary-agreement",
+        },
+        space_pv.lower(),
     )
+    stale_space_pv_item = {
+        "source": "DOE news",
+        "title": "Space Photovoltaics Research and Development Partnership Intermediary Agreement",
+        "link": "https://www.energy.gov/cmei/systems/space-photovoltaics-research-and-development-partnership-intermediary-agreement",
+        "summary": space_pv,
+        "published_kst": "2026-09-25T12:00:00+09:00",
+    }
+    assert watch.classify_item(stale_space_pv_item) is None
+
+    selection_update = space_pv + " DOE announces selections and selected projects for award."
+    assert not trusted.is_space_pv_pia_base_rehash_text(selection_update)
+    assert trusted.semantic_policy_event_key({
+        "title": "DOE announces selections for Space Photovoltaics R&D PIA",
+        "description": selection_update,
+        "link": "https://www.energy.gov/example-space-pv-selections",
+        "source": "DOE",
+    }) == "doe-space-pv-pia-selections"
 
     print("polysilicon_policy_guard=passed")
 
