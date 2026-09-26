@@ -313,21 +313,61 @@ jobs:
               else:
                   payload["link_preview_options"] = {"is_disabled": True}
 
-              r = requests.post(
-                  f"https://api.telegram.org/bot{token}/sendMessage",
-                  json=payload,
-                  timeout=30,
-              )
-              data = r.json()
-              if not r.ok or not data.get("ok"):
-                  desc = data.get("description", "unknown") if isinstance(data, dict) else "unknown"
-                  raise SystemExit(f"Telegram send failed for {p.name}: HTTP {r.status_code} / {desc}")
+              # Telegram sendMessage has a 4,096-character limit. Keep
+              # complete HTML lines together and split long reports into safe
+              # chunks. This is especially important for the 15-project Epoch
+              # AI buildout report, where every project now includes energy
+              # source evidence.
+              chunks = []
+              current = []
+              current_len = 0
+              chunk_limit = 3400
+              for line in text.splitlines():
+                  line_len = len(line) + 1
+                  if line_len > chunk_limit:
+                      raise SystemExit(
+                          f"Telegram line too long for safe HTML split: {p.name} / {len(line)} chars"
+                      )
+                  if current and current_len + line_len > chunk_limit:
+                      chunks.append("\n".join(current).strip())
+                      current = [line]
+                      current_len = line_len
+                  else:
+                      current.append(line)
+                      current_len += line_len
+              if current:
+                  chunks.append("\n".join(current).strip())
+              if not chunks:
+                  continue
+
+              message_ids = []
+              for chunk_index, chunk in enumerate(chunks, 1):
+                  send_payload = dict(payload)
+                  send_payload["text"] = (
+                      f"[{chunk_index}/{len(chunks)}]\n" if len(chunks) > 1 else ""
+                  ) + chunk
+                  if chunk_index > 1:
+                      send_payload.pop("reply_markup", None)
+
+                  r = requests.post(
+                      f"https://api.telegram.org/bot{token}/sendMessage",
+                      json=send_payload,
+                      timeout=30,
+                  )
+                  data = r.json()
+                  if not r.ok or not data.get("ok"):
+                      desc = data.get("description", "unknown") if isinstance(data, dict) else "unknown"
+                      raise SystemExit(
+                          f"Telegram send failed for {p.name}: HTTP {r.status_code} / {desc}"
+                      )
+                  message_ids.append(data["result"]["message_id"])
+                  time.sleep(1)
+
               print(
                   f"Telegram sent {p.name}: route={route_label} "
-                  f"message_id={data['result']['message_id']}"
+                  f"messages={len(message_ids)} message_ids={message_ids}"
               )
-              sent += 1
-              time.sleep(1)
+              sent += len(message_ids)
 
           if not sent:
               print("No meaningful change; Telegram silent.")
