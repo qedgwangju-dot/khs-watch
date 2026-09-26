@@ -69,7 +69,7 @@ SECTOR_RULES: list[tuple[str, list[str]]] = [
         "fda", "clinical", "drug", "complete response letter", "crl",
     ]),
     ("관세/수출주", [
-        "tariff", "tariffs", "section 301", "ustr", "customs enforcement",
+        "tariff", "tariffs", "section 301", "section 232", "ustr", "customs enforcement",
         "import duty", "export control", "export controls", "entity list",
     ]),
     ("태양광/폴리실리콘", [
