@@ -21,6 +21,8 @@ import urllib.request
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+import currency_krw_guard
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / 'out'
 ROUTES = {
@@ -354,6 +356,8 @@ def run_collectors():
                     continue
                 command_timeout = 720 if args[0].endswith('hbm_memory_axes.py') else 440
                 subprocess.run(['python', *args], cwd=ROOT, check=True, timeout=command_timeout)
+            alert_path = ROOT / ROUTES[name][1]
+            currency_krw_guard.enforce_file(alert_path)
             results[name] = finish(name)
         except Exception as exc:
             # A second failure during cleanup must not cancel the next route.
