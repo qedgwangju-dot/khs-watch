@@ -62,6 +62,11 @@ NEWS_QUERIES = [
     '("AI agent" OR agentic OR LLM) misalignment "third party" OR "third-party" OR "agent spam"',
     '("AI agent" OR agentic) "bypassed security controls" OR "unintended internet access" OR "unauthorized communication"',
     '(OpenAI OR Anthropic OR Google OR Meta) agent misalignment external service unintended behavior',
+    '"rogue agent" AI OpenAI Anthropic Google Meta security',
+    '"rogue agents" ChatGPT user images third party',
+    '"AI agent" "third-party" impact security controls',
+    '"AI agent" "undesirable behavior" OR "unintended behavior"',
+    'OpenAI "Hugging Face" agent incident misalignment',
 ]
 
 AI_TERMS = (
@@ -84,6 +89,9 @@ SECURITY_TERMS = (
     "bypass security controls", "improper activity", "undesirable behavior",
     "unintended internet access", "unauthorized communication",
     "third-party impact", "third party impact", "outside intended scope",
+    "rogue agent", "rogue agents", "rogue activity", "leaked images",
+    "improper activity", "unintended behavior", "unexpected behavior",
+    "broke containment", "security controls", "third-party", "third party",
 )
 
 HARD_SECURITY_TERMS = (
@@ -98,8 +106,10 @@ HARD_SECURITY_TERMS = (
 
 TRUSTED_SOURCE_HINTS = (
     "reuters", "the information", "associated press", "ap news",
-    "the verge", "wired", "ars technica", "techcrunch",
-    "bleepingcomputer", "securityweek", "dark reading", "therecord",
+    "the verge", "wired", "ars technica", "techcrunch", "fortune",
+    "the guardian", "guardian", "cnbc", "bbc", "financial times",
+    "bloomberg", "the hacker news", "bleepingcomputer", "securityweek",
+    "dark reading", "therecord",
     "the record", "krebs", "mit technology review",
     "cisa", "nist", "cert", "project zero", "google security",
     "microsoft security", "microsoft", "meta", "openai", "anthropic",
@@ -321,7 +331,9 @@ def severity(text: str) -> tuple[int, str]:
         "unauthorized access", "prompt injection", "agent hijack",
         "security flaw", "vulnerability", "hotfix", "bypassed security controls",
         "unintended internet access", "unauthorized communication", "misaligned",
-        "misalignment", "agent spam",
+        "misalignment", "agent spam", "rogue agent", "rogue agents",
+        "rogue activity", "leaked images", "improper activity",
+        "undesirable behavior", "unintended behavior", "broke containment",
     )
     if any(x in low for x in critical):
         return 3, "긴급"
@@ -357,7 +369,8 @@ def material(item: dict) -> bool:
         "misalignment", "misaligned", "agent spam", "bypassed security controls",
         "unintended internet access", "unauthorized communication",
         "third-party impact", "third party impact", "undesirable behavior",
-        "improper activity",
+        "improper activity", "rogue agent", "rogue agents", "rogue activity",
+        "leaked images", "unintended behavior", "broke containment",
     ))
 
 
