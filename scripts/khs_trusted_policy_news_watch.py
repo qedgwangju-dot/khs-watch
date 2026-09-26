@@ -769,6 +769,9 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         description = clean_text(f"{detail.get('abstract') or ''} {detail.get('body') or ''}")
         published = parse_pub_date(detail.get("published_kst"))
         haystack = f"{title} Devdiscourse Reuters {description}"
+        if is_space_pv_pia_base_rehash_text(haystack):
+            print(f"trusted_policy_news=historical_space_pv_rehash key={rule.key} title={title!r}")
+            continue
         if (
             not detail.get("body_verified")
             or not published
@@ -809,6 +812,8 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             if rule_source_ok and rule.key == "us_japan_korea_smr_moc_state_watch":
                 haystack_parts.append(query)
             haystack = " ".join(haystack_parts)
+            if is_space_pv_pia_base_rehash_text(haystack):
+                continue
             wire_source = trusted_wire_source(haystack)
             if not title or not link or not published:
                 continue
@@ -876,6 +881,72 @@ def clean_story_title(title: str) -> str:
     return title
 
 
+SPACE_PV_PIA_BASE_TERMS = (
+    "space photovoltaics research and development partnership intermediary agreement",
+    "space photovoltaics (pv) research and development partnership intermediary agreement",
+    "space-based energy generation",
+    "solar panels in space applications",
+)
+SPACE_PV_STAGE_CHANGE_TERMS = (
+    "awardee", "awardees", "recipient", "recipients", "selected for award",
+    "selected projects", "selection notification", "selection notifications",
+    "announces selections", "announced selections", "awarded to",
+)
+
+
+def is_space_pv_pia_base_rehash_text(value: str) -> bool:
+    text = clean_text(value).lower()
+    if not any(term in text for term in SPACE_PV_PIA_BASE_TERMS):
+        return False
+    return not any(term in text for term in SPACE_PV_STAGE_CHANGE_TERMS)
+
+
+def semantic_policy_event_key(item: dict) -> str:
+    text = clean_text(
+        " ".join(
+            str(item.get(key) or "")
+            for key in ("title", "description", "link", "source")
+        )
+    ).lower()
+    if "polysilicon" in text and "11052" in text:
+        if (
+            "measures to restrict stockpiling" in text
+            or (
+                "stockpil" in text
+                and (
+                    "temporary final rule" in text
+                    or "import prohibition" in text
+                    or "new importer" in text
+                    or "waiver" in text
+                )
+            )
+        ):
+            return "polysilicon-11052-stockpiling-tfr"
+        if any(
+            term in text
+            for term in (
+                "minimum import price", "minimum import prices", "mip program",
+                "15% ad valorem", "15 percent ad valorem",
+                "adjusting imports of polysilicon", "onshoring",
+            )
+        ):
+            return "polysilicon-11052-base"
+    if any(term in text for term in SPACE_PV_PIA_BASE_TERMS):
+        return "doe-space-pv-pia-2026-08-31"
+    return ""
+
+
+def semantic_policy_title(item: dict) -> str:
+    key = semantic_policy_event_key(item)
+    if key == "polysilicon-11052-stockpiling-tfr":
+        return "미 상무부, 폴리실리콘 사재기 차단 규칙 시행"
+    if key == "polysilicon-11052-base":
+        return "미국, 폴리실리콘 Section 232 최저수입가격·관세 조치"
+    if key == "doe-space-pv-pia-2026-08-31":
+        return "미 에너지부, 우주태양광 R&D 지원사업 공고"
+    return ""
+
+
 def story_identity(item: dict) -> str:
     title = re.sub(r"\s+", " ", clean_story_title(str(item.get("title") or "")).lower()).strip()
     source = source_key(str(item.get("source") or ""))
@@ -890,7 +961,11 @@ def fingerprint(rule: StoryRule, items: list[dict]) -> str:
 
 
 def story_event_fingerprint(rule: StoryRule, items: list[dict]) -> str:
-    """Deduplicate the same wire headline when only its update timestamp moves."""
+    """Deduplicate the same policy event even when publisher/title/timestamp changes."""
+    semantic_key = semantic_policy_event_key(items[0]) if items else ""
+    if semantic_key:
+        raw = f"{FORMAT_VERSION}:semantic-policy-event-v1:{semantic_key}"
+        return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
     if not items:
         identity = ""
     else:
@@ -1473,6 +1548,47 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
     if not items:
         return None
     title = str(items[0].get("title", ""))
+    semantic_key = semantic_policy_event_key(items[0])
+    if semantic_key == "polysilicon-11052-stockpiling-tfr":
+        return {
+            "revision": "polysilicon-11052-stockpiling-ko-v1",
+            "event_date": "2026년 9월 22일",
+            "title": "미 상무부, 폴리실리콘 사재기 차단 규칙 시행",
+            "core": "미 상무부 BIS가 Proclamation 11052의 12월 4일 시행 전 폴리실리콘·파생제품 재고 사재기를 막는 임시 최종규칙을 시행했습니다.",
+            "stage": "시행 중 — 2026년 9월 22일부터 12월 3일까지 적용되는 별도 집행 단계입니다.",
+            "actual": "기존 수입자의 비정상 재고 축적을 감시하고 신규 수입자 물량을 제한하며 필요시 수입금지와 면제 절차를 적용하는 규칙입니다.",
+            "timeline": "8월 6일 Proclamation 11052 발표 → 9월 22일 사재기 차단 규칙 발효 → 12월 4일 최저수입가격·관세 조치 시행",
+            "why": "8월 6일 정책의 재보도가 아니라 시행 전 우회 재고축적을 차단하는 새 집행 규칙이라는 점이 핵심입니다.",
+            "next": "BIS 수입금지·면제 결정, CBP 집행 변화, 12월 4일 본 조치 시행",
+            "investment": "직접 기업 매출보다 미국향 폴리실리콘·잉곳·웨이퍼·셀·모듈 수입가격과 공급시점에 영향을 주는 통상 집행 변수입니다.",
+            "korea": "한국 기업은 미국향 태양광 공급망 노출과 실제 수입·판매 계약이 확인되는 경우에만 실적 영향으로 연결합니다.",
+            "impacts": "매출·마진·현금흐름, 수급, 시간표",
+            "paths": "Section 232, 수입규제, 재고, 정책 타임라인",
+            "sectors": "태양광/폴리실리콘, 관세/수출주",
+            "priced_in": "중간. 8월 기본 조치는 알려졌지만 9월 22일 사재기 차단 집행 규칙은 별도 신규 단계입니다.",
+            "counter": "개별 기업의 실제 수입금지나 매출 영향은 아직 별도 확인이 필요합니다.",
+            "failure": "BIS·CBP의 실제 집행 변화와 수입량·가격 변화가 없으면 기업 실적 영향은 제한됩니다.",
+        }
+    if semantic_key == "polysilicon-11052-base":
+        return {
+            "revision": "polysilicon-11052-base-ko-v1",
+            "event_date": "2026년 8월 6일",
+            "title": "미국, 폴리실리콘 Section 232 최저수입가격·관세 조치",
+            "core": "Proclamation 11052는 폴리실리콘과 파생 태양광 제품에 최저수입가격과 추가 관세를 도입하는 8월 6일 발표 정책입니다.",
+            "stage": "기존 발표 재확인 단계 — 새 기사 URL만으로 신규 변화로 보지 않습니다.",
+            "actual": "12월 4일 시행 예정인 기존 정책의 기본 조치입니다.",
+            "timeline": "8월 6일 발표 → 12월 4일 시행",
+            "why": "새 기사나 재인용 보도는 신규 정책 변화가 아니라 기존 Proclamation의 재노출일 수 있습니다.",
+            "next": "세부 집행규칙, 면제·수입금지, CBP 집행 변화처럼 실제 조건이 바뀌는 경우만 신규 알림",
+            "investment": "기존 발표 자체는 중복 알림하지 않고 실제 집행조건 변화만 추적합니다.",
+            "korea": "미국향 태양광 공급망 노출 기업의 실제 계약·가격 변화가 확인될 때만 실적 연결합니다.",
+            "impacts": "매출·마진·현금흐름, 시간표",
+            "paths": "Section 232, 관세, 정책 타임라인",
+            "sectors": "태양광/폴리실리콘, 관세/수출주",
+            "priced_in": "높음. 8월 6일 공개된 기본 정책입니다.",
+            "counter": "새 URL·새 해설기사만으로 정책이 바뀌었다고 볼 수 없습니다.",
+            "failure": "기존 조건과 달라진 공식 집행 문구가 없으면 신규 알림에서 제외합니다.",
+        }
     if rule.key == "us_china_ai_safety_talks":
         return {
             "revision": "us-china-ai-safety-talks-ko-v1",
