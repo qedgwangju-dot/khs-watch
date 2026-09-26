@@ -3,6 +3,7 @@
 
 The watcher is intentionally conservative:
 - scans multiple Google News RSS queries in Korean and English,
+- directly scans TrendForce Memory & Storage research pages so paid research summaries are not missed,
 - scores only memory-supply/price/capacity items,
 - explicitly watches DRAM wafer-start, greenfield fab and ramp-up signals,
 - translates and polishes English alert titles into natural Korean,
@@ -35,6 +36,7 @@ PENDING_PATH = OUT_DIR / "memory_spot_cycle_watch_pending_state.json"
 ALERT_PATH = OUT_DIR / "memory_spot_cycle_watch_telegram.txt"
 STATUS_PATH = OUT_DIR / "memory_spot_cycle_watch_status.md"
 KST = ZoneInfo("Asia/Seoul")
+TREND_RESEARCH_URL = "https://www.trendforce.com/research/memory-storage"
 
 QUERIES = [
     ("ko", 'DRAM 현물 가격 공급 부족 BofA OR 뱅크오브아메리카'),
@@ -282,8 +284,21 @@ def collect() -> tuple[list[dict], list[str]]:
         except Exception as exc:
             errors.append(f"{lang}:{query}: {type(exc).__name__}: {exc}")
 
+    direct_items, direct_errors = _collect_trendforce_research(cutoff)
+    items.extend(direct_items)
+    errors.extend(direct_errors)
+
     by_fp: dict[str, dict] = {}
+    by_title: dict[str, dict] = {}
     for item in items:
+        normalized_title = _normalize_title(item["title"])
+        prev_title = by_title.get(normalized_title)
+        if prev_title is None or (item["score"], item.get("published_kst") or "") > (
+            prev_title["score"], prev_title.get("published_kst") or ""
+        ):
+            by_title[normalized_title] = item
+
+    for item in by_title.values():
         fp = item["fingerprint"]
         prev = by_fp.get(fp)
         if prev is None or (item["score"], item.get("published_kst") or "") > (
@@ -296,6 +311,85 @@ def collect() -> tuple[list[dict], list[str]]:
         reverse=True,
     ), errors
 
+
+
+def _collect_trendforce_research(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
+    """Directly scan TrendForce research pages, not only Google News RSS."""
+    items: list[dict] = []
+    errors: list[str] = []
+    try:
+        listing_html = _fetch(TREND_RESEARCH_URL).decode("utf-8", errors="ignore")
+        hrefs: list[str] = []
+        for match in re.finditer(
+            r'href=["\']([^"\']*/research/download/RP[^"\']+)["\']',
+            listing_html,
+            flags=re.IGNORECASE,
+        ):
+            href = urllib.parse.urljoin(TREND_RESEARCH_URL, html.unescape(match.group(1)))
+            if href not in hrefs:
+                hrefs.append(href)
+            if len(hrefs) >= 18:
+                break
+
+        for href in hrefs:
+            try:
+                detail_html = _fetch(href).decode("utf-8", errors="ignore")
+                h1 = re.search(r"<h1[^>]*>(.*?)</h1>", detail_html, flags=re.IGNORECASE | re.DOTALL)
+                title = _clean(h1.group(1)) if h1 else ""
+                if not title:
+                    title_match = re.search(
+                        r"<title[^>]*>(.*?)</title>",
+                        detail_html,
+                        flags=re.IGNORECASE | re.DOTALL,
+                    )
+                    title = _clean(title_match.group(1)) if title_match else ""
+                    title = re.sub(r"\s*\|\s*TrendForce.*$", "", title, flags=re.IGNORECASE).strip()
+
+                if not title or not re.search(
+                    r"\b(?:DRAM|NAND|HBM|Memory|SSD|eSSD|Enterprise SSD)\b",
+                    title,
+                    flags=re.IGNORECASE,
+                ):
+                    continue
+
+                detail_text = _clean(detail_html)
+                date_match = re.search(
+                    r"(?:Last Modified|Published|發佈日期|发布日期)\s*(\d{4})[-/](\d{2})[-/](\d{2})",
+                    detail_text,
+                    flags=re.IGNORECASE,
+                )
+                pub = None
+                if date_match:
+                    pub = dt.datetime(
+                        int(date_match.group(1)),
+                        int(date_match.group(2)),
+                        int(date_match.group(3)),
+                        9,
+                        0,
+                        tzinfo=KST,
+                    )
+                    if pub < cutoff:
+                        continue
+
+                item = {
+                    "title": title,
+                    "link": href,
+                    "description": detail_text[:12000],
+                    "source": "TrendForce Research",
+                    "published_kst": pub.isoformat(timespec="seconds") if pub else None,
+                    "query": "direct:trendforce-memory-storage",
+                }
+                item["score"] = _score(item)
+                # Direct TrendForce memory research is authoritative. Keep only reports
+                # that also contain a price/supply/capacity signal.
+                if item["score"] >= 8:
+                    item["fingerprint"] = _fingerprint(item)
+                    items.append(item)
+            except Exception as exc:
+                errors.append(f"TrendForce detail {href}: {type(exc).__name__}: {exc}")
+    except Exception as exc:
+        errors.append(f"TrendForce listing: {type(exc).__name__}: {exc}")
+    return items, errors
 
 def load_state() -> dict:
     if not STATE_PATH.exists():
@@ -345,7 +439,16 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     now = dt.datetime.now(KST)
     initialized = bool(state.get("initialized"))
 
-    new_items = [x for x in items if x["fingerprint"] not in seen]
+    seen_titles = {
+        _normalize_title(str(meta.get("title") or ""))
+        for meta in seen.values()
+        if isinstance(meta, dict)
+    }
+    new_items = [
+        x for x in items
+        if x["fingerprint"] not in seen
+        and _normalize_title(x["title"]) not in seen_titles
+    ]
     force_notify = os.getenv("FORCE_NOTIFY", "").strip().lower() in {"1", "true", "yes"}
     if force_notify:
         report_items = items[:5]
@@ -402,6 +505,15 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         raw_title = compact_title(item["title"], item.get("source", ""))
         translated = _translate_to_ko(raw_title)
         title = _polish_alert_title(raw_title, translated)
+        detail_blob = str(item.get("description") or "")
+        if item.get("source") == "TrendForce Research" and "memory price forecast" in raw_title.lower():
+            essd = re.search(r"Enterprise SSD[^0-9]{0,80}(\d{1,2})\s*[-~]\s*(\d{1,2})\s*%[^A-Za-z]{0,12}(?:QoQ|qoq|季增|环比)?", detail_blob, re.IGNORECASE)
+            nand = re.search(r"(?:Overall\s+)?NAND Flash[^0-9]{0,80}(\d{1,2})\s*[-~]\s*(\d{1,2})\s*%[^A-Za-z]{0,12}(?:QoQ|qoq|季增|环比)?", detail_blob, re.IGNORECASE)
+            if essd and nand:
+                title = (
+                    f"TrendForce 4Q26 메모리 가격 전망: Enterprise SSD +{essd.group(1)}~{essd.group(2)}%, "
+                    f"NAND 전체 +{nand.group(1)}~{nand.group(2)}%…AI·KV Cache 수요 강세, DRAM은 LTA로 인상폭 제한"
+                )
         pub = item.get("published_kst")
         date_text = ""
         if pub:
