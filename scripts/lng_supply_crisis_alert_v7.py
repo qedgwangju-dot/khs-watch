@@ -42,6 +42,18 @@ def parse_te_korean_row_date_v7(raw_html: str, expected_price: float) -> str:
     )
 
 
+def _self_validate_te_row_date_v7() -> None:
+    fixture = """
+    <html><body>
+    유럽연합 가스 EUR/MWh 70.46 -4.48 -5.98% 2026-09-25
+    </body></html>
+    """
+    assert parse_te_korean_row_date_v7(fixture, 70.46) == "2026-09-25"
+
+
+_self_validate_te_row_date_v7()
+
+
 def fetch_te_ttf_quote_v7() -> core.Quote:
     raw_ko = te.fetch_te_html(te.TE_TTF_URLS[0])
     primary = te.parse_te_ttf(raw_ko)
