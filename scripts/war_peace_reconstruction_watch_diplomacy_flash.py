@@ -90,6 +90,8 @@ FLASH_QUERIES = [
     'site:reuters.com Hormuz (reopened OR "traffic resumes" OR "shipping resumes" OR tankers OR "LNG carriers") when:1d',
     'site:fm.gov.om Hormuz (reopen OR "safe navigation" OR traffic OR shipping) when:2d',
     '(Hormuz OR 호르무즈) (reopened OR "traffic resumed" OR "shipping resumed" OR 통항 재개 OR 운항 재개 OR 재개방) (tankers OR vessels OR "LNG carriers" OR 유조선 OR 선박 OR LNG선) when:1d',
+    '(Hormuz OR 호르무즈 OR "Gulf of Oman" OR 오만만) (oil OR crude OR liquids OR 원유 OR 석유) (flow OR exports OR shipments OR STS OR 물동량 OR 수출 OR 선적) (record OR "highest since" OR surge OR recovery OR 기록 OR 급증 OR 회복) when:1d',
+    '(Saudi OR 사우디) (crude OR oil OR 원유 OR 석유) (exports OR shipments OR 수출 OR 선적) (Hormuz OR 호르무즈 OR Gulf OR 걸프) ("highest since" OR surge OR recovery OR 최고 OR 급증 OR 회복) when:1d',
     'site:reuters.com Trump "Camp David" ("White House" OR return OR "cut short") ("Middle East" OR Iran OR Houthi) when:1d',
     'site:apnews.com Trump "Camp David" ("White House" OR return OR "cut short") ("Middle East" OR Iran OR Houthi) when:1d',
     '(Trump OR 트럼프) ("Camp David" OR "캠프 데이비드") ("cut short" OR "returned early" OR "return to the White House" OR "백악관 복귀" OR "일정 단축") (Iran OR Houthi OR "Middle East" OR 이란 OR 후티 OR 중동) when:1d',
@@ -129,6 +131,16 @@ PROPOSAL_ONLY_TERMS = ('proposal', 'proposed', 'calls for', 'called for', 'urged
 HORMUZ_TERMS = ('hormuz', 'strait of hormuz', '호르무즈')
 HORMUZ_RECOVERY_TERMS = ('reopened', 'has reopened', 'reopening completed', 'traffic resumes', 'traffic resumed', 'shipping resumes', 'shipping resumed', 'navigation resumes', 'navigation resumed', 'commercial traffic resumed', 'vessels resumed', '통항 재개', '운항 재개', '항행 재개', '선박 통항 재개', '재개방 완료')
 VESSEL_TERMS = ('vessel', 'vessels', 'ship', 'ships', 'tanker', 'tankers', 'vlcc', 'lng carrier', 'lng carriers', 'container ship', '유조선', '선박', '초대형 원유운반선', 'lng선')
+PHYSICAL_FLOW_SOURCES = ('reuters', 'bloomberg', 'kpler', 'intellinews', 'walterbloomberg', 'whitehouse.gov')
+GULF_OMAN_TERMS = ('gulf of oman', 'oman gulf', '오만만')
+STS_TERMS = ('ship-to-ship', 'ship to ship', 'sts', 'lightering', '선박 간 이송', '선박간 이송', '환적')
+OIL_FLOW_TERMS = ('oil', 'crude', 'crude oil', 'liquids', '원유', '석유', '액체류')
+FLOW_ACTION_TERMS = ('flow', 'flows', 'export', 'exports', 'shipment', 'shipments', 'loadings', 'throughput', '물동량', '수출', '선적', '통과량')
+FLOW_SURGE_TERMS = ('record', 'record amount', 'record level', 'record levels', 'highest since', 'surged', 'surge', 'ramped up', 'recovered', 'recovery', '기록적', '기록적인', '최고', '급증', '회복')
+SAUDI_TERMS = ('saudi', 'saudi arabia', 'aramco', '사우디', '사우디아라비아', '아람코')
+GULF_REGION_TERMS = ('gulf', 'persian gulf', 'mideast gulf', 'middle east gulf', '걸프', '페르시아만')
+SEVEN_DAY_TERMS = ('7-day average', '7 day average', 'seven-day average', '7일 평균', '7일 이동평균')
+TWENTY_MBD_TERMS = ('20 mbd', '20 mb/d', '20 million barrels a day', '20 million barrels per day', '20 million bpd', '2천만 배럴', '2000만 배럴')
 NEGATION_TERMS = ('not agreed', 'no agreement', 'has not agreed', 'did not agree', 'not a ceasefire', 'no ceasefire', 'not reopened', 'remains closed', 'remain closed', 'still closed', '합의하지 않', '합의가 아니', '휴전이 아니', '휴전 합의 없', '재개방되지 않', '폐쇄 유지')
 TRUSTED_CONFIRM_SOURCES = ('reuters', 'apnews', 'aljazeera', 'whitehouse.gov', 'state.gov', 'irna.ir', 'tasnim', 'mehrnews', 'presstv', 'fm.gov.om', 'omannews.gov.om')
 FALSE_POSITIVE_TITLE_TERMS = ('trade truce', 'trade ceasefire', '무역 휴전', '무역휴전')
@@ -551,6 +563,25 @@ def _iran_war_stage_marks(row):
     return sorted(set(marks))
 
 
+def _physical_flow_marks(row):
+    text = _text(row)
+    src = _source_text(row)
+    marks = []
+    trusted = any(x in src for x in PHYSICAL_FLOW_SOURCES) or any(
+        x in text for x in ('according to kpler', 'kpler data', 'compiled by bloomberg', 'bloomberg ship-tracking', 'bloomberg tanker-tracking')
+    )
+    if _has(text, HORMUZ_TERMS) and _has(text, OIL_FLOW_TERMS) and _has(text, FLOW_ACTION_TERMS) and _has(text, FLOW_SURGE_TERMS):
+        if trusted:
+            marks.append('호르무즈기록물량회복')
+    if trusted and _has(text, GULF_OMAN_TERMS) and _has(text, STS_TERMS) and _has(text, FLOW_SURGE_TERMS):
+        marks.append('오만만STS기록급증')
+    if trusted and _has(text, SAUDI_TERMS) and _has(text, OIL_FLOW_TERMS) and _has(text, FLOW_ACTION_TERMS) and _has(text, FLOW_SURGE_TERMS):
+        marks.append('사우디원유수출회복')
+    if trusted and _has(text, GULF_REGION_TERMS) and _has(text, FLOW_ACTION_TERMS) and _has(text, SEVEN_DAY_TERMS) and _has(text, TWENTY_MBD_TERMS):
+        marks.append('걸프7일평균2천만배럴')
+    return sorted(set(marks))
+
+
 def _marks(row):
     text = _text(row)
     marks = []
@@ -565,6 +596,7 @@ def _marks(row):
         marks.append('크렘린제재해제에너지가격하락발언')
     marks.extend(_iran_newyork_diplomacy_marks(row))
     marks.extend(_iran_war_stage_marks(row))
+    marks.extend(_physical_flow_marks(row))
     marks.extend(_emergency_marks(row))
     return sorted(set(marks))
 
@@ -596,6 +628,14 @@ def _korean_title(marks):
         return '후티, 리야드 탄도미사일 공격·요격 신호 — 사우디 수도권 위험 상승'
     if '협상후퇴' in marks:
         return '이란 전쟁 협상 후퇴 신호 — 직접협상 부인·거부·결렬 여부 확인'
+    if '걸프7일평균2천만배럴' in marks:
+        return '걸프 원유·액체류 수출 7일 평균 2천만 배럴/일 상회 — 실물 공급 회복'
+    if '오만만STS기록급증' in marks:
+        return '오만만 선박 간 이송(STS) 기록적 급증 — 우회 물류 확대'
+    if '사우디원유수출회복' in marks:
+        return '사우디 원유 수출 급증·회복 — 호르무즈 물동량 확대'
+    if '호르무즈기록물량회복' in marks:
+        return '호르무즈 석유 물동량 기록·회복 신호 — 전쟁 위험과 별도 실물 추적'
     if '호르무즈실물정상화' in marks:
         return '호르무즈 실제 통항 정상화 신호 — 유조선·LNG선 등 상선 운항 재개'
     if '종전합의' in marks:
@@ -824,6 +864,8 @@ def score_item(row, now):
         tags += ['이란전쟁', '종전', '평화협정']
     if '호르무즈실물정상화' in marks:
         tags += ['호르무즈', '실물정상화', '에너지위험완화']
+    if any(m in marks for m in ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')):
+        tags += ['호르무즈', '실물물동량', '원유공급회복']
     if '협상후퇴' in marks:
         tags += ['이란전쟁', '협상후퇴', '확전위험']
     if '이란외무장관중국방문' in marks:
@@ -849,6 +891,8 @@ def score_item(row, now):
             score = 100 if 'Reuters직접확인' in iran_diplomacy_marks else 99
     elif any(m in marks for m in ('종전합의', '정식휴전합의', '호르무즈실물정상화', '협상후퇴')):
         score = 100
+    elif any(m in marks for m in ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')):
+        score = 100
     elif '이란직접협상확인' in marks:
         score = 99
     elif '미국단독종전협상신호' in marks:
@@ -862,7 +906,7 @@ def score_item(row, now):
     if len(marks) >= 2:
         score += 2
     src = _source_text(row)
-    if any(x in src for x in ('reuters', 'apnews', 'aljazeera', 'whitehouse.gov', 'state.gov', 'irna.ir', 'tasnim', 'fm.gov.om', 'tass', 'kremlin.ru', 'fmprc.gov.cn', 'walterbloomberg')):
+    if any(x in src for x in ('reuters', 'bloomberg', 'kpler', 'intellinews', 'apnews', 'aljazeera', 'whitehouse.gov', 'state.gov', 'irna.ir', 'tasnim', 'fm.gov.om', 'tass', 'kremlin.ru', 'fmprc.gov.cn', 'walterbloomberg')):
         score += 2
     age = watch.age_minutes(row, now)
     if age is not None and age <= 30:
