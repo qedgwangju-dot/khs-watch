@@ -72,6 +72,19 @@ CURRENT_CONFIRMED_UNPATENTABLE = {
     "PGR2025-00039",
 }
 
+CASE_TIMELINES = {
+    "PGR2025-00033": (
+        ("2025-03-07", "PGR 청구"),
+        ("2025-10-01", "심판 개시"),
+        ("2026-09-25", "최종서면결정"),
+    ),
+    "PGR2025-00039": (
+        ("2025-03-28", "PGR 청구"),
+        ("2025-10-01", "심판 개시"),
+        ("2026-09-25", "최종서면결정"),
+    ),
+}
+
 FINAL_DECISION_TERMS = (
     "final written decision",
     "status final written decision",
@@ -103,12 +116,45 @@ def classify(text: str, case: str) -> str:
     return ""
 
 
+def timeline_line(case: str, kind: str, item: dict) -> str:
+    known = CASE_TIMELINES.get(case)
+    if known:
+        return " → ".join(f"{day} {label}" for day, label in known)
+
+    published = str(item.get("published") or "").strip()
+    event_label = {
+        "final_unpatentable": "최종서면결정",
+        "final_decision": "최종서면결정 공개",
+        "director_review": "국장 재검토",
+        "rehearing": "PTAB 재심",
+        "appeal": "연방순회항소법원 항소",
+        "institution": "심판 개시 결정",
+        "termination": "종결·합의",
+        "district_order": "연방법원 절차 변화",
+    }.get(kind, "새 절차 변화")
+    if published:
+        try:
+            from email.utils import parsedate_to_datetime
+            stamp = parsedate_to_datetime(published)
+            return f"{stamp.date().isoformat()} {event_label}"
+        except Exception:
+            pass
+    return f"날짜 확인 필요 · {event_label}"
+
+
 _original_alert = base.alert
 
 
 def alert(case: str, patent: str, kind: str, item: dict) -> str:
     if kind != "final_decision":
-        return _original_alert(case, patent, kind, item)
+        message = _original_alert(case, patent, kind, item)
+        timeline = html.escape(timeline_line(case, kind, item))
+        lines = message.splitlines()
+        for idx, line in enumerate(lines):
+            if "<b>사건:</b>" in line:
+                lines.insert(idx + 1, f"- <b>타임라인:</b> {timeline}")
+                break
+        return "\n".join(lines)
 
     import html
     title = f"PTAB 최종서면결정 공개 — {case}, Halozyme 특허 {patent or '관련 특허'}"
@@ -120,6 +166,7 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
         f"- <b>사건:</b> {html.escape(case)}"
         + (f" · 미국 특허 {html.escape(patent)}" if patent else "")
         + "\n"
+        f"- <b>타임라인:</b> {html.escape(timeline_line(case, kind, item))}\n"
         "- <b>결정:</b> PTAB 최종서면결정이 공개됐습니다. 청구항별 특허성 판단은 원문 결과를 추가 교차확인합니다.\n"
         "- <b>알테오젠:</b> Halozyme 변형 PH20 특허 장벽과 MSD·알테오젠의 미국 피하주사 사업 리스크에 직접 연결되는 사건입니다.\n"
         "- <b>다음 확인:</b> 청구항별 특허성 결과 → 국장 재검토·재심 → 연방순회항소법원 항소\n"
