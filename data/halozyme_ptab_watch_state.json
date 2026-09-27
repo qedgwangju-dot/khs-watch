@@ -5,15 +5,20 @@
     "11f48eb8a2b96c1b3845fd02",
     "1f3df1ee0ac6a5946bcc3248",
     "45b9cab6011a827c780922af",
+    "4fee83ae2ca90b01db9bb45b",
     "96bda5ef87c6602628dfaca6",
+    "9d8f26ec4a37c98bb9d7275e",
     "c2c4fb7ed2c04ac4f11c1e4f",
     "e31d5765026f8260f0f76578",
     "ec2b004cd91a18e18feeeb55",
     "ee71c800bbbfc903a324c27f",
     "fe820a4eae44b8edc69d3618"
   ],
-  "seen_urls": [],
-  "last_check_kst": "2026-09-27T20:59:06+09:00",
+  "seen_urls": [
+    "http://the-biz.co.kr/news/articleView.html?idxno=728392",
+    "http://the-biz.co.kr/news/articleView.html?idxno=728392#pgr2025-00039"
+  ],
+  "last_check_kst": "2026-09-27T21:04:30+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -56,7 +61,9 @@
     "IPR2026-00314": "11,066,656"
   },
   "discovered_cases": {
-    "PGR2025-00003": "11,952,600"
+    "PGR2025-00003": "11,952,600",
+    "PGR2025-00033": "12,049,652",
+    "PGR2025-00039": "12,104,185"
   },
   "district_case": "2:25-cv-03179",
   "legal_v3_initialized": true,
@@ -67,6 +74,9 @@
   ],
   "legal_v4_initialized": true,
   "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹",
-  "last_sent_message_ids": [],
+  "last_sent_message_ids": [
+    110,
+    111
+  ],
   "final_decision_classification_version": 2
 }
