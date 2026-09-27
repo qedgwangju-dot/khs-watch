@@ -56,6 +56,7 @@ CONFIRMED = OUT / "yen_carry_boj_exit_telegram_confirmed.json"
 COMPOSITE_ALERT_BODY = OUT / "yen_carry_composite_alert.md"
 COMPOSITE_ALERT_JSON = OUT / "yen_carry_composite_alert.json"
 STRUCTURAL_PENDING = OUT / "yen_carry_structural_pending_state.json"
+STRUCTURAL_STATE = DATA / "yen_carry_structural_state.json"
 
 BOJ_ACCOUNTS_INDEX = "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/{year}/index.htm"
 BOJ_POLICY_INDEX = "https://www.boj.or.jp/en/mopo/mpmdeci/state_{year}/index.htm"
@@ -646,6 +647,8 @@ def scan_emergency_operations(now: dt.datetime) -> dict:
 
 def stress_from_structural() -> dict:
     state = load_json(STRUCTURAL_PENDING, {})
+    if not state:
+        state = load_json(STRUCTURAL_STATE, {})
     values = state.get("values") or {}
     jgb = number(values.get("jgb10"))
     days = int(values.get("jgb10_consecutive_days_ge_3") or 0)
@@ -730,6 +733,14 @@ def fmt(value, suffix="", digits=2):
     return f"{float(value):+.{digits}f}{suffix}"
 
 
+def fmt_quarter_period(value: str) -> str:
+    parsed = normalize_period(value)
+    if not parsed:
+        return str(value)
+    year, quarter = parsed
+    return f"{year}년 {quarter}분기"
+
+
 def build_context(classification: dict, account, purchase, absorption, stress, errors: list[str]) -> str:
     lines = [
         "BOJ 출구전략 품질",
@@ -758,7 +769,7 @@ def build_context(classification: dict, account, purchase, absorption, stress, e
         ratio = absorption.get("private_absorption_ratio")
         ratio_text = "계산 대상 아님" if ratio is None else f"{ratio * 100:.0f}%"
         lines += [
-            f"- 선택 민간부문 중앙정부증권·FILP 보유 변화: {fmt(absorption.get('private_change_trillion_yen'), '조엔')} ({absorption['prior_period']}→{absorption['current_period']})",
+            f"- 선택 민간부문 중앙정부증권·FILP 보유 변화: {fmt(absorption.get('private_change_trillion_yen'), '조엔')} ({fmt_quarter_period(absorption['prior_period'])}→{fmt_quarter_period(absorption['current_period'])})",
             f"- 같은 분기 BOJ JGS 변화: {fmt(absorption.get('boj_change_same_quarter_trillion_yen'), '조엔')} / 민간 흡수 프록시 {ratio_text}",
             "※ 민간 흡수 프록시는 은행·보험/연금·가계 중 공식 시계열이 명확한 '중앙정부증권·FILP 채권'의 합계와 BOJ JGS 감소를 비교합니다. 자산범위가 완전히 같지 않고 신규발행도 있어 100%를 넘을 수 있습니다.",
         ]
