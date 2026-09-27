@@ -67,6 +67,10 @@ NEWS_QUERIES = [
     '"AI agent" "third-party" impact security controls',
     '"AI agent" "undesirable behavior" OR "unintended behavior"',
     'OpenAI "Hugging Face" agent incident misalignment',
+    '(OpenAI OR Anthropic OR Google OR Meta) "Critical cybersecurity capability" OR "critical cyber capability"',
+    '(OpenAI OR Anthropic OR Google OR Meta) "Preparedness Framework" cybersecurity threshold',
+    '("AI model" OR "frontier model") cybersecurity capability threshold zero-day sandbox exploit',
+    '(OpenAI OR Anthropic OR Google OR Meta) system card cybersecurity "High" "Critical"',
 ]
 
 AI_TERMS = (
@@ -92,6 +96,9 @@ SECURITY_TERMS = (
     "rogue agent", "rogue agents", "rogue activity", "leaked images",
     "improper activity", "unintended behavior", "unexpected behavior",
     "broke containment", "security controls", "third-party", "third party",
+    "critical cybersecurity capability", "critical cyber capability",
+    "preparedness framework", "cybersecurity capability threshold",
+    "critical threshold", "high threshold", "system card",
 )
 
 HARD_SECURITY_TERMS = (
@@ -101,7 +108,8 @@ HARD_SECURITY_TERMS = (
     "unauthorized access", "data exfiltration", "exfiltrat", "zero-day",
     "zero day", "agent hijack", "take control",
     "bypassed security controls", "unintended internet access",
-    "unauthorized communication",
+    "unauthorized communication", "critical cybersecurity capability",
+    "critical cyber capability", "critical threshold",
 )
 
 TRUSTED_SOURCE_HINTS = (
@@ -138,6 +146,11 @@ VENDOR_PATTERNS = [
 ]
 
 CATEGORY_PATTERNS = [
+    ("모델 사이버 능력 임계치", (
+        "critical cybersecurity capability", "critical cyber capability",
+        "cybersecurity capability threshold", "preparedness framework",
+        "critical threshold", "high threshold", "system card",
+    )),
     ("가상환경·샌드박스", (
         "sandbox escape", "sandbox", "virtual machine", "secure vm", "vm escape",
         "remote code execution", "arbitrary code", "code execution",
@@ -322,12 +335,14 @@ def detect_category(text: str) -> str:
 def severity(text: str) -> tuple[int, str]:
     low = f" {text.lower()} "
     critical = (
+        "critical cybersecurity capability", "critical cyber capability",
         "actively exploited", "exploited in the wild", "sandbox escape",
         "remote code execution", "arbitrary code", "cross-tenant",
         "data exfiltration", "credential theft", "take control",
     )
     high = (
-        "zero-day", "zero day", "exploit", "data leak", "data exposure",
+        "cybersecurity capability threshold", "preparedness framework",
+        "critical threshold", "high threshold", "zero-day", "zero day", "exploit", "data leak", "data exposure",
         "unauthorized access", "prompt injection", "agent hijack",
         "security flaw", "vulnerability", "hotfix", "bypassed security controls",
         "unintended internet access", "unauthorized communication", "misaligned",
@@ -567,6 +582,8 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "모델 사이버 능력 임계치" in cats:
+        return "사고 여부와 별개로 모델 자체 공격 역량이 새로운 위험 임계치에 진입했는지가 핵심입니다."
     if "데이터·개인정보" in cats:
         return "사용자 데이터와 외부 시스템 접근 범위 확대 여부가 핵심입니다."
     if "에이전트 비정렬" in cats:
