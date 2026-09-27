@@ -87,11 +87,12 @@ jobs:
 
           keep_terms = [
               "NVIDIA", "Broadcom", "Arista Networks", "Marvell", "Lumentum",
-              "Coherent", "Astera Labs", "Corning", "Spectrum-X", "NVLink",
-              "BlueField", "Tomahawk", "Thor", "CPO", "DSP", "PCIe", "CXL",
-              "GPU", "XPU", "AI", "1.6T", "3.2T", "800G", "FY25", "FY26",
+              "Coherent", "Astera Labs", "Corning", "Samsung Electronics", "Samsung Foundry",
+              "PhotonLink", "Spectrum-X", "NVLink", "BlueField", "Tomahawk", "Thor",
+              "CPO", "NPO", "SiPh", "InP", "PIC", "FAU", "ELS", "DSP", "PCIe", "CXL",
+              "GPU", "XPU", "AI", "1.6T", "3.2T", "800G", "100Tbps", "FY25", "FY26",
               "FY27", "FY28", "AVGO", "NVDA", "ANET", "MRVL", "LITE",
-              "COHR", "ALAB", "GLW",
+              "COHR", "ALAB", "GLW", "005930.KS",
           ]
 
           FX_SYMBOLS = {
@@ -261,8 +262,20 @@ jobs:
                   drivers.append("데이터센터")
               if re.search(r"optical|fiber|fibre|photonics?|laser|transceiver", text, re.I):
                   drivers.append("광통신")
+              if re.search(r"PhotonLink|integrated optics?|complete optical solutions?|vertical integration|one[- ]stop", text, re.I):
+                  drivers.append("광 링크 통합")
               if re.search(r"CPO|co[- ]?packaged optics?", text, re.I):
                   drivers.append("CPO")
+              if re.search(r"\bNPO\b", text, re.I):
+                  drivers.append("NPO")
+              if re.search(r"silicon photonics|\bSiPh\b|PIC", text, re.I):
+                  drivers.append("실리콘포토닉스")
+              if re.search(r"specialty fiber|polarization[- ]maintaining|mode[- ]matching|multicore fiber", text, re.I):
+                  drivers.append("특수광섬유")
+              if re.search(r"chip[- ]to[- ]chip", text, re.I):
+                  drivers.append("칩 간 광연결")
+              if re.search(r"customer engagement|long[- ]term agreement|anchor customer", text, re.I):
+                  drivers.append("고객·장기계약")
               if re.search(r"1\.6\s*T", text, re.I):
                   drivers.append("1.6T")
               if re.search(r"3\.2\s*T", text, re.I):
