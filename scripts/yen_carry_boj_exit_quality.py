@@ -14,10 +14,11 @@ Official sources only:
 - BOJ JGB-purchase plan / official release indexes: plan changes and emergency
   fixed-rate/additional purchase language.
 
-The private-absorption ratio is a heuristic:
-selected private-sector increase / absolute BOJ JGS decrease over the same
-quarter. It is not a matched-flow identity and can exceed 100% because net
-issuance and other holders also move.
+The private-absorption ratio is a heuristic proxy:
+selected private-sector increase in "central government securities and FILP
+bonds" / absolute BOJ JGS decrease over the same quarter. The numerator and
+denominator are not identical security universes, so this is not a matched-flow
+identity and can exceed 100% because net issuance and other holders also move.
 """
 from __future__ import annotations
 
@@ -572,7 +573,7 @@ def fetch_private_absorption(now: dt.datetime) -> dict:
         "private_change_trillion_yen": current_total - prior_total,
         "boj_change_same_quarter_trillion_yen": boj_change,
         "private_absorption_ratio": ratio,
-        "note": "선택된 민간부문 JGB 보유증가 ÷ 같은 분기 BOJ JGS 보유감소. 신규발행·기타 보유주체가 있어 100% 초과 가능.",
+        "note": "선택된 민간부문의 중앙정부증권·FILP 채권 보유증가 ÷ 같은 분기 BOJ JGS 보유감소. 자산범위가 완전히 같지 않은 프록시이며 신규발행·기타 보유주체 때문에 100% 초과 가능.",
     }
 
 
@@ -684,7 +685,7 @@ def classify(previous: dict, account: dict | None, purchase: dict | None, absorp
         "plan_revision": "BOJ JGB 매입축소 계획 공식 변경 감지",
         "emergency_purchase_signal": "BOJ 고정금리·추가 JGB 매입 신호 감지",
         "actual_over_plan": "월간 JGB 실제 매입이 공식 계획을 크게 상회",
-        "weak_private_absorption": "BOJ 보유감소 대비 민간 JGB 흡수 약화",
+        "weak_private_absorption": "BOJ 보유감소 대비 민간 중앙정부증권·FILP 흡수 프록시 약화",
         "joint_market_stress": "10년 JGB 3% 이상 지속과 입찰 약화 동시 확인",
     }
     if previous.get("initialized"):
@@ -743,9 +744,9 @@ def build_context(classification: dict, account, purchase, absorption, stress, e
         ratio = absorption.get("private_absorption_ratio")
         ratio_text = "계산 대상 아님" if ratio is None else f"{ratio * 100:.0f}%"
         lines += [
-            f"- 선택 민간부문 JGB 보유 변화: {fmt(absorption.get('private_change_trillion_yen'), '조엔')} ({absorption['prior_period']}→{absorption['current_period']})",
-            f"- 같은 분기 BOJ JGS 변화: {fmt(absorption.get('boj_change_same_quarter_trillion_yen'), '조엔')} / 민간 흡수비율 {ratio_text}",
-            "※ 민간 흡수비율은 은행·보험/연금·가계 중 공식 시계열이 명확히 확인된 부문의 합계이며, 신규발행 때문에 100%를 넘을 수 있습니다.",
+            f"- 선택 민간부문 중앙정부증권·FILP 보유 변화: {fmt(absorption.get('private_change_trillion_yen'), '조엔')} ({absorption['prior_period']}→{absorption['current_period']})",
+            f"- 같은 분기 BOJ JGS 변화: {fmt(absorption.get('boj_change_same_quarter_trillion_yen'), '조엔')} / 민간 흡수 프록시 {ratio_text}",
+            "※ 민간 흡수 프록시는 은행·보험/연금·가계 중 공식 시계열이 명확한 '중앙정부증권·FILP 채권'의 합계와 BOJ JGS 감소를 비교합니다. 자산범위가 완전히 같지 않고 신규발행도 있어 100%를 넘을 수 있습니다.",
         ]
     else:
         lines.append("- 분기 민간 JGB 흡수비율: 공식 시계열 자동 식별 지연")
@@ -798,7 +799,7 @@ def build_alert(classification: dict, reasons: list[str], context: str, sources:
         "다음 확인",
         "- BOJ 계획 매입액 수정·추가매입·고정금리 매입 여부",
         "- 10년·30년 JGB 입찰배율과 꼬리, 10년 금리 3% 이상 지속 여부",
-        "- BOJ 보유 JGS 1·3개월 변화와 분기별 민간 JGB 흡수",
+        "- BOJ 보유 JGS 1·3개월 변화와 분기별 민간 중앙정부증권·FILP 흡수 프록시",
         "",
         "출처",
         f"- BOJ Accounts: {sources['accounts']}",
