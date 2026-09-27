@@ -1178,23 +1178,7 @@ def _alert_quality_issues(text):
     lines = [re.sub(r'<[^>]+>', '', x).strip() for x in head.splitlines()]
     for i, line in enumerate(lines):
         if re.match(r'^(?:🔴 |🟢 )?\[(?:속보|신규|후속)\] \d+\.', line) and i + 1 < len(lines):
-            title = re.sub(r'\s+-\s+[^-]{2,40}
-    ap = argparse.ArgumentParser()
-    ap.add_argument('--finalize', action='store_true')
-    ap.add_argument('--telegram-test', action='store_true')
-    args = ap.parse_args()
-    if args.finalize:
-        watch.finalize(); return
-    if args.telegram_test:
-        base._write_inline_test()
-    else:
-        watch.run(test=False)
-    runner.verify_alert(test_mode=False)
-
-
-if __name__ == '__main__':
-    main()
-, '', lines[i + 1]).strip().lower()
+            title = re.sub(r'\s+-\s+[^-]{2,40}\Z', '', lines[i + 1]).strip().lower()
             if title:
                 titles.append(title)
     if len(titles) != len(set(titles)):
