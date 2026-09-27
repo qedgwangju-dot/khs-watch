@@ -182,7 +182,7 @@ def main() -> int:
         if enh_rc != 0:
             hb["errors"].append(f"Enhertu collector rc={enh_rc}: {enh_log}")
 
-        halo_rc, halo_log = run([sys.executable, "scripts/halozyme_legal_watch_v3.py"])
+        halo_rc, halo_log = run([sys.executable, "scripts/halozyme_legal_watch_v4.py"])
         hb["halozyme_collector_rc"] = halo_rc
         hb["halozyme_run_outcome"] = "success" if halo_rc == 0 else "failure"
         if halo_rc != 0:
