@@ -1,10 +1,12 @@
 {
+  "direct_official_initialized": true,
   "initialized": true,
   "last_collection": {
+    "direct_official_items": 17,
     "errors": [],
     "material_items": 3,
     "new_material_items": 0,
-    "raw_items": 55
+    "raw_items": 90
   },
   "seen": {
     "36cdbc3c7efe9983a34b0330": {
@@ -78,5 +80,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-09-28T07:42:24+09:00"
+  "updated_at_kst": "2026-09-28T08:03:44+09:00"
 }
