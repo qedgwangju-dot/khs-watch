@@ -1,14 +1,19 @@
 {
   "initialized": true,
   "seen_events": [
+    "0ee5b69fd526297010d7ee4d",
     "11f48eb8a2b96c1b3845fd02",
     "1f3df1ee0ac6a5946bcc3248",
     "45b9cab6011a827c780922af",
+    "96bda5ef87c6602628dfaca6",
     "c2c4fb7ed2c04ac4f11c1e4f",
-    "ec2b004cd91a18e18feeeb55"
+    "e31d5765026f8260f0f76578",
+    "ec2b004cd91a18e18feeeb55",
+    "ee71c800bbbfc903a324c27f",
+    "fe820a4eae44b8edc69d3618"
   ],
   "seen_urls": [],
-  "last_check_kst": "2026-09-27T20:56:47+09:00",
+  "last_check_kst": "2026-09-27T20:59:06+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -29,15 +34,7 @@
     "IPR2026-00313": "11,041,149",
     "IPR2026-00314": "11,066,656"
   },
-  "errors_last_run": [
-    "Google 뉴스:RecursionError",
-    "Google 뉴스:RecursionError",
-    "Google 뉴스:RecursionError",
-    "Google 뉴스:RecursionError",
-    "Google 뉴스:RecursionError",
-    "Google 뉴스:RecursionError",
-    "Google 뉴스:RecursionError"
-  ],
+  "errors_last_run": [],
   "tracked_known_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
