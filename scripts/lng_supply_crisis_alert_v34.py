@@ -37,6 +37,8 @@ _BASE_SIGNAL_LABEL_V34 = core.signal_label
 _BASE_V32_STRICT_TITLE_V34 = v32._strict_title
 _BASE_V32_SOURCE_KO_V34 = v32._source_ko
 
+PRICE_INTEGRITY_VERSION_V34 = 2
+
 ALASKA_CATEGORY = "alaska_lng_supply"
 ASIA_DEMAND_CATEGORY = "asia_lng_demand_rethink"
 ASIA_DEMAND_QUERIES = (
