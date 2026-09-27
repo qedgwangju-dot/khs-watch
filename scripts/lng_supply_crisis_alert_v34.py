@@ -328,7 +328,7 @@ def _fetch_te_commodity_quote_v34(key: str) -> core.Quote:
             raw = core.fetch_bytes(f"{url}?v={cache_bust}").decode("utf-8", errors="replace")
             parsed_rows.append(_parse_te_commodity_row_v34(_visible_text_v34(raw), key))
         except Exception as exc:
-            errors.append(f"{url}:{type(exc).__name__}")
+            errors.append(f"{url}:{type(exc).__name__}:{str(exc)[:700]}")
 
     if not parsed_rows:
         raise RuntimeError(f"Trading Economics commodities validation failed for {key}: {';'.join(errors)}")
