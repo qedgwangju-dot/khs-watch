@@ -2,10 +2,8 @@
   "correction_pending": false,
   "evidence": [],
   "official": {
-    "article_confirmed": false,
-    "errors": [
-      "digitalasset: HTTP Error 403: Forbidden"
-    ],
+    "article_confirmed": true,
+    "errors": [],
     "explicit_reversal_confirmed": false,
     "job_fetch_ok": true,
     "job_stablecoin_confirmed": true,
@@ -25,5 +23,5 @@
     "support_plan": true,
     "topic": "Samsung Wallet stablecoin adoption"
   },
-  "updated_at_kst": "2026-09-27T10:48:31+09:00"
+  "updated_at_kst": "2026-09-27T16:29:47+09:00"
 }
