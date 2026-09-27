@@ -45,7 +45,7 @@ def number(value: str) -> float:
     return float(value.replace(",", "").strip())
 
 
-def parse_te_ttf(raw_html: str) -> dict[str, float]:
+def parse_te_ttf(raw_html: str) -> dict[str, object]:
     text = visible_text(raw_html)
 
     stats_patterns = (
@@ -60,6 +60,23 @@ def parse_te_ttf(raw_html: str) -> dict[str, float]:
             break
     if actual is None or previous is None or previous <= 0:
         raise RuntimeError("Trading Economics actual/previous table not found")
+
+    source_date = None
+    date_patterns = (
+        r"(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일\s+(?:EU\s*가스|유럽연합\s*가스|유럽의\s*천연가스)",
+        r"(\d{4})-(\d{1,2})-(\d{1,2})\s+(?:EU\s*Natural\s*Gas|European\s*Union\s*Gas)",
+    )
+    for pattern in date_patterns:
+        match = re.search(pattern, text, flags=re.I)
+        if match:
+            source_date = dt.date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
+            break
+    if source_date is None:
+        raise RuntimeError("Trading Economics TTF source date not found")
+    today_kst = core.now_utc().astimezone(core.KST).date()
+    age_days = (today_kst - source_date).days
+    if age_days < 0 or age_days > 5:
+        raise RuntimeError(f"Trading Economics TTF stale source date={source_date} age={age_days}d")
 
     row_patterns = (
         r"(?:유럽연합 가스|유럽의 천연가스|EU 가스)\s+([0-9.,]+)\s+([+-]?[0-9.,]+)\s+([+-]?[0-9.,]+)%",
@@ -88,20 +105,24 @@ def parse_te_ttf(raw_html: str) -> dict[str, float]:
         "previous": previous,
         "change_pct": calculated_pct,
         "row_price_median": statistics.median(price for price, _ in coherent_rows),
+        "source_date": source_date.isoformat(),
     }
 
 
 def fetch_te_ttf_quote() -> core.Quote:
-    snapshots: list[dict[str, float]] = []
+    snapshots: list[dict[str, object]] = []
     for url in TE_TTF_URLS:
         snapshots.append(parse_te_ttf(fetch_te_html(url)))
 
-    actuals = [item["actual"] for item in snapshots]
-    previous_values = [item["previous"] for item in snapshots]
+    actuals = [float(item["actual"]) for item in snapshots]
+    previous_values = [float(item["previous"]) for item in snapshots]
+    source_dates = [str(item["source_date"]) for item in snapshots]
     if (max(actuals) / min(actuals) - 1.0) * 100.0 > TE_MAX_CROSS_PAGE_GAP_PCT:
         raise RuntimeError(f"Trading Economics Korean/English page mismatch: {actuals}")
     if (max(previous_values) / min(previous_values) - 1.0) * 100.0 > 0.05:
         raise RuntimeError(f"Trading Economics previous-value mismatch: {previous_values}")
+    if len(set(source_dates)) != 1:
+        raise RuntimeError(f"Trading Economics source-date mismatch: {source_dates}")
 
     price = statistics.median(actuals)
     previous = statistics.median(previous_values)
@@ -117,7 +138,10 @@ def fetch_te_ttf_quote() -> core.Quote:
         timestamp_epoch=observed.timestamp(),
         timestamp_utc=observed.isoformat(timespec="seconds"),
         age_minutes=0,
-        source_note="Trading Economics 한글·영문 페이지 actual/previous 및 내부 시세표 대조",
+        source_note=(
+            "Trading Economics 한글·영문 페이지 actual/previous/원자료 날짜/내부 시세표 대조; "
+            f"기준일={source_dates[0]}"
+        ),
     )
 
 
@@ -137,10 +161,22 @@ def fetch_market_quotes_v4() -> tuple[dict[str, core.Quote], list[str]]:
 
 def format_quote_v4(quote: core.Quote) -> str:
     observed_kst = dt.datetime.fromtimestamp(quote.timestamp_epoch, core.UTC).astimezone(core.KST)
-    basis = "이전값" if quote.key == "ttf" else "Yahoo 이전 종가"
+    if quote.key == "ttf":
+        match = re.search(r"기준일=(\d{4}-\d{2}-\d{2})", quote.source_note)
+        if not match:
+            raise RuntimeError("TTF 기준일 누락")
+        return (
+            f"{quote.label} {quote.price:,.2f}{quote.unit} "
+            f"(이전값 {quote.previous_close:,.2f} 대비 {quote.change_pct:+.2f}%, "
+            f"기준일 {match.group(1)}, 조회 {observed_kst:%Y-%m-%d %H:%M KST})"
+        )
+    prev_date = "미확인"
+    match = re.search(r"previous_session_date=(\d{4}-\d{2}-\d{2})", quote.source_note)
+    if match:
+        prev_date = match.group(1)
     return (
         f"{quote.label} {quote.price:,.2f}{quote.unit} "
-        f"({basis} {quote.previous_close:,.2f} 대비 {quote.change_pct:+.2f}%, "
+        f"(직전 거래일 {prev_date} 종가 {quote.previous_close:,.2f} 대비 {quote.change_pct:+.2f}%, "
         f"조회 {observed_kst:%Y-%m-%d %H:%M KST})"
     )
 
@@ -163,8 +199,8 @@ def build_setup_test_v4(quotes: dict[str, core.Quote]):
     title, body, metadata = strict.build_setup_test_v3(quotes)
     title = "✅ LNG·천연가스 감시 정확도 규칙 v4 적용"
     body += (
-        "\n• TTF는 지정 페이지 Trading Economics EU Gas 값을 최우선 사용"
-        "\n• 한글·영문 페이지의 실제값·이전값과 내부 시세표가 허용오차 안에서 일치할 때만 반영"
+        "\n• TTF는 지정 페이지 Trading Economics EU Gas 값을 최우선 사용하고 원자료 기준일을 반드시 함께 검증"
+        "\n• 한글·영문 페이지의 실제값·이전값·원자료 기준일·내부 시세표가 모두 일치할 때만 반영"
         "\n• 페이지 내부 값이 어긋나면 숫자를 보내지 않고 '검증 실패'로 보류"
         "\n• 표기는 ICE 공식 실시간 TTF가 아니라 Trading Economics TTF 추종 공개값으로 명시"
     )
