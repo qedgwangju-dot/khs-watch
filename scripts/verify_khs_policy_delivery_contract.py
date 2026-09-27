@@ -1617,6 +1617,10 @@ def assert_korea_trade_remedy_final_rate_change_is_monitored() -> None:
     for key, value in expected.items():
         if classified.get(key) != value:
             raise AssertionError(f"Korea trade-remedy {key} mismatch: {classified.get(key)!r}")
+    if khs_policy_alert_guardrails.korean_title_for(classified) != expected["title_ko"]:
+        raise AssertionError("Korea trade-remedy Korean title was not preserved")
+    if khs_policy_alert_router.display_source("Federal Register Korea trade remedies") != "미 연방관보 한국 무역구제":
+        raise AssertionError("Korea trade-remedy source label was not Koreanized")
 
     summary = str(classified.get("policy_plain_summary") or "")
     for marker in ("동아스틸", "하이스틸", "국제강재", "35.11%", "0.00%", "2026년 9월 21일"):
