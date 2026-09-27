@@ -271,7 +271,7 @@ def _parse_te_commodity_row_v34(text: str, key: str) -> dict[str, object]:
     pattern = (
         label_expr + unit_expr
         + r"\s+([0-9.,]+)\s+([+-]?[0-9.,]+)\s+([+-]?[0-9.,]+)%"
-        + r"\s+([+-]?[0-9.,]+)%\s+(20\d{2}-\d{2}-\d{2})"
+        + r"(?:\s+[+-]?[0-9.,]+%)?\s+(20\d{2}-\d{2}-\d{2})"
     )
     matches = list(re.finditer(pattern, text, flags=re.I))
     if not matches:
@@ -282,7 +282,7 @@ def _parse_te_commodity_row_v34(text: str, key: str) -> dict[str, object]:
         actual = _num_v34(match.group(1))
         abs_move = abs(_num_v34(match.group(2)))
         pct = _num_v34(match.group(3))
-        source_date = dt.date.fromisoformat(match.group(5))
+        source_date = dt.date.fromisoformat(match.group(4))
         if actual <= 0 or pct <= -99.0:
             continue
         previous = actual / (1.0 + pct / 100.0)
@@ -558,12 +558,14 @@ def fetch_market_quotes_v34():
     for key in ("ttf", "jkm"):
         try:
             quotes[key] = _fetch_te_commodity_quote_v34(key)
+            errors = [error for error in errors if not str(error).lower().startswith(f"{key}:")]
         except Exception as exc:
             quotes.pop(key, None)
             errors.append(f"{key}: v34 aligned-date validation failed: {type(exc).__name__}: {exc}")
     try:
         te_brent = _fetch_te_commodity_quote_v34("brent")
         quotes["brent"] = _crosscheck_te_brent_with_yahoo_v34(te_brent)
+        errors = [error for error in errors if not str(error).lower().startswith("brent:")]
     except Exception as exc:
         quotes.pop("brent", None)
         errors.append(f"brent: v34 TE/Yahoo same-date validation failed: {type(exc).__name__}: {exc}")
@@ -605,7 +607,7 @@ def signal_label_v34(signal: str, cleared: bool = False) -> str:
 
 def _self_validate_price_alignment_v34() -> None:
     te_fixture = (
-        "EU 가스 EUR/MWh 70.46 4.48 -5.98% 7.11% 2026-09-25 "
+        "EU 가스 EUR/MWh 70.46 -4.48 -5.98% 2026-09-25 "
         "LNG JKM USD/MMBTU 25.82 0.57 -2.14% 12.51% 2026-09-25 "
         "브렌트 USD/Bbl 104.620 1.980 -1.86% 20.34% 2026-09-25"
     )
