@@ -1389,7 +1389,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
             age = item_age_hours(item, now)
             if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html", "state_html", "mofcom_html", "treasury_html"} and age is None:
                 continue
-            max_age = 168 if source.name == "Federal Register Korea trade remedies" else (WHITEHOUSE_MAX_AGE_HOURS if source.kind == "whitehouse_html" else MAX_SOURCE_AGE_HOURS)
+            max_age = 336 if source.name == "Federal Register Korea trade remedies" else (WHITEHOUSE_MAX_AGE_HOURS if source.kind == "whitehouse_html" else MAX_SOURCE_AGE_HOURS)
             if age is not None and age > max_age:
                 continue
             classified = classify_item(item)
