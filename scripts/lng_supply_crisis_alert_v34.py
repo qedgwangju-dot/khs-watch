@@ -37,7 +37,7 @@ _BASE_SIGNAL_LABEL_V34 = core.signal_label
 _BASE_V32_STRICT_TITLE_V34 = v32._strict_title
 _BASE_V32_SOURCE_KO_V34 = v32._source_ko
 
-PRICE_INTEGRITY_VERSION_V34 = 2
+PRICE_INTEGRITY_VERSION_V34 = 3
 
 ALASKA_CATEGORY = "alaska_lng_supply"
 ASIA_DEMAND_CATEGORY = "asia_lng_demand_rethink"
@@ -1439,7 +1439,58 @@ def _self_validate_asia_demand_v34() -> None:
 _self_validate_asia_demand_v34()
 
 
+def _enforce_runtime_integrity_v34(groups, quotes) -> None:
+    today_kst = core.now_utc().astimezone(core.KST).date()
+
+    for key in ("ttf", "jkm"):
+        quote = quotes.get(key)
+        if quote is None:
+            continue
+        match = re.search(r"기준일=(\d{4}-\d{2}-\d{2})", str(quote.source_note or ""))
+        if not match:
+            raise RuntimeError(f"{key}: 원자료 기준일 누락으로 송출 차단")
+        source_date = dt.date.fromisoformat(match.group(1))
+        age_days = (today_kst - source_date).days
+        if age_days < 0 or age_days > TE_MAX_AGE_DAYS_V34:
+            raise RuntimeError(f"{key}: 원자료 기준일 비정상 source_date={source_date} age={age_days}d")
+
+    brent = quotes.get("brent")
+    if brent is not None:
+        note = str(brent.source_note or "")
+        basis = re.search(r"기준일=(\d{4}-\d{2}-\d{2})", note)
+        previous = re.search(r"직전거래일=(\d{4}-\d{2}-\d{2})", note)
+        if not basis or not previous:
+            raise RuntimeError("brent: 기준일/직전거래일 누락으로 송출 차단")
+        if "chartPreviousClose 미사용" not in note:
+            raise RuntimeError("brent: chartPreviousClose 사용 가능성 감지로 송출 차단")
+        basis_date = dt.date.fromisoformat(basis.group(1))
+        previous_date = dt.date.fromisoformat(previous.group(1))
+        if previous_date >= basis_date:
+            raise RuntimeError(
+                f"brent: 직전거래일 역전 previous={previous_date} basis={basis_date}"
+            )
+
+    for group in groups:
+        category = str(group.get("category") or "")
+        if category not in ("alaska_lng", ALASKA_CATEGORY):
+            continue
+        verification = str(group.get("verification") or "")
+        if verification == "공식 원문":
+            raise RuntimeError("Alaska LNG: 출처 주체 없는 '공식 원문' 표기 차단")
+        if "한국 측 공식 원문" in verification or "한·미/프로젝트 양측 공식 원문" in verification:
+            sources = [
+                str(getattr(item, "source", "") or "")
+                for item in list(group.get("evidence") or [])
+            ]
+            if not any(
+                _source_matches_any_v34(source, KOREA_OFFICIAL_SOURCE_ALIASES_V34)
+                for source in sources
+            ):
+                raise RuntimeError("Alaska LNG: 한국 측 공식 원문 표기와 실제 출처 불일치")
+
+
 def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
+    _enforce_runtime_integrity_v34(groups, quotes)
     title, body, metadata = _BASE_BUILD(groups, quotes, new_signals, cleared_signals)
     alaska = _alaska_groups(groups)
     asia_demand = _asia_demand_groups(groups)
@@ -1481,6 +1532,12 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
         "signals": ["현물 조달비 급증", "LNG 장기수요 재평가", "발전원 전환", "장기계약 축소", "발전소 취소·연기"],
         "interpretation_guard": "analysis signal != confirmed demand destruction",
     }
+    metadata["runtime_fail_closed_v34"] = {
+        "price_basis_date_required": True,
+        "brent_prior_session_required": True,
+        "generic_alaska_official_label_forbidden": True,
+        "korea_official_claim_requires_korea_official_source": True,
+    }
     metadata["price_integrity_v34"] = {
         "ttf_jkm": "Trading Economics Korean detail page actual/previous/internal-row arithmetic + dated narrative; no cross-page stale date override",
         "brent": "Yahoo query1/query2 latest common daily close and immediately prior common session; top quote/chartPreviousClose are never used",
@@ -1513,6 +1570,7 @@ def build_setup_test_v34(quotes):
         "\n• Alaska LNG는 자금조달·제재·추가 300만톤 장기구매계약·세제혜택·FID 변화를 별도 감시"
         "\n• Alaska LNG 정책 발언은 72시간 기사 버킷이 아니라 실질 발언 지문으로 중복방지"
         "\n• 백악관·미 에너지부·알래스카주·AGDC 등 공식 출처는 실제 기관명으로 표시"
+        "\n• 가격 기준일·Brent 직전거래일·Alaska 공식출처 주체가 하나라도 불일치하면 Telegram 송출 자체를 차단"
     )
     metadata["version"] = 34
     metadata["alaska_lng_watch"] = True
