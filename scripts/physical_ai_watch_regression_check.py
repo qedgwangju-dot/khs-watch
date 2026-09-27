@@ -205,7 +205,7 @@ assert c.endswith("삼성SDI SolidStack · 휴머노이드 샘플 공급"), c
 assert s >= 11, s
 sdi_asb_sample_rewrite = make(
     "Samsung SDI starts SolidStack samples for Figure humanoid qualification",
-    "Figure AI began receiving Samsung SDI SolidStack all-solid-state battery samples for humanoid customer qualification.",
+    "Samsung SDI started delivering SolidStack all-solid-state battery samples to Figure AI for humanoid customer qualification.",
     "Reuters",
 )
 g2, s2, c2, k2 = classify(sdi_asb_sample_rewrite)
