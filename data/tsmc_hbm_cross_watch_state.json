@@ -1,0 +1,22 @@
+{
+  "watch_version": 1,
+  "baseline_seeded_at_kst": "2026-09-27T18:02:00+09:00",
+  "baseline_note": "HBM 교차 기준선. 嘉義 총 10개·추가 5개 및 부지 의견수렴은 현재값으로 잠그되, 부지·의향만으로는 HBM 교차 알림하지 않음. 실제 CoWoS/SoIC 월 생산능력 변화, 장비 반입·양산 진입, 테스터·기판·HBM·CoWoS 병목 변화만 신규 교차 알림.",
+  "current_state": {
+    "chiayi_total_fabs": 10,
+    "chiayi_additional_fabs": 5,
+    "chiayi_phase3_status": "public_comment",
+    "fab_count_evidence_state": "supply_chain_report",
+    "phase3_evidence_state": "official",
+    "last_evidence_state": "supply_chain_report",
+    "last_source_url": "https://ec.ltn.com.tw/article/breakingnews/5586843",
+    "last_source_name": "LTN",
+    "last_event_title": "獨家》一共10座！嘉科三期起跑 台積電再加碼5座先進封裝廠",
+    "official_source_url": "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
+  },
+  "baseline_sources": [
+    "https://ec.ltn.com.tw/article/breakingnews/5586843",
+    "https://stock.ltn.com.tw/article/gqpj9vhyk1ku",
+    "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
+  ]
+}

@@ -30,6 +30,8 @@ ROUTES = {
     'rubin': ('data/rubin_hbm_watch_state.json', 'out/rubin_hbm_alert.md', 'out/rubin_hbm_pending_state.json'),
     'skhynix': ('data/skhynix_us_memory_watch_state.json', 'out/skhynix_us_memory_alert.html', ''),
     'solidigm': ('data/solidigm_ipo_watch_state.json', 'out/solidigm_ipo_alert.html', ''),
+    'tsmc_package': ('data/tsmc_advanced_packaging_watch_state.json', 'out/tsmc_advanced_packaging_alert.html', ''),
+    'tsmc_cross': ('data/tsmc_hbm_cross_watch_state.json', 'out/tsmc_hbm_cross_alert.html', ''),
 }
 EXPECTED = 'khs88798879887988798879_bot'
 
@@ -339,6 +341,8 @@ def run_collectors():
         ('skhynix', [['scripts/skhynix_us_memory_watch.py']]),
         ('samsung', [['scripts/hbm_memory_axes.py']]),
         ('solidigm', [['scripts/solidigm_ipo_watch.py']]),
+        ('tsmc_package', [['scripts/tsmc_advanced_packaging_watch.py', '--mode', 'package']]),
+        ('tsmc_cross', [['scripts/tsmc_advanced_packaging_watch.py', '--mode', 'hbm']]),
     ):
         entry = prepared['routes'].get(name, {})
         if entry.get('status') != 'ready':

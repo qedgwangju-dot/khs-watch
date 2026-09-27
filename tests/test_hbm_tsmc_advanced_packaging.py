@@ -1,0 +1,70 @@
+import copy
+import pathlib
+import sys
+import unittest
+from unittest.mock import patch
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
+import tsmc_advanced_packaging_watch as w
+
+
+def event(title, desc="", source="LTN", url=w.LTN_CANONICAL_URL):
+    return {
+        "title": title,
+        "description": desc,
+        "source": source,
+        "published_at_kst": "2026-09-27T03:41:00+09:00",
+        "direct_link": url,
+    }
+
+
+class TSMCAdvancedPackagingTests(unittest.TestCase):
+    def test_current_ltn_report_locks_ten_total_and_five_additional(self):
+        item = event("獨家》一共10座！嘉科三期起跑 台積電再加碼5座先進封裝廠")
+        with patch.object(w, "article_text", return_value=""):
+            p = w.extract_patch(item)
+        self.assertEqual(p["chiayi_total_fabs"], 10)
+        self.assertEqual(p["chiayi_additional_fabs"], 5)
+        self.assertEqual(p["fab_count_evidence_state"], "supply_chain_report")
+
+    def test_public_comment_plan_is_not_hbm_cross_trigger(self):
+        old = {"chiayi_total_fabs": 10, "chiayi_additional_fabs": 5, "chiayi_phase3_status": "reported_intent"}
+        new = copy.deepcopy(old)
+        new["chiayi_phase3_status"] = "public_comment"
+        self.assertEqual(w.hbm_cross_reasons(old, new), [])
+
+    def test_tool_move_in_is_hbm_cross_trigger(self):
+        old = {"fabs": {"P3": {"status": "construction", "evidence_state": "official"}}}
+        new = {"fabs": {"P3": {"status": "tool_move_in", "evidence_state": "official"}}}
+        reasons = w.hbm_cross_reasons(old, new)
+        self.assertTrue(any("P3" in r and "장비 반입" in r for r in reasons))
+
+    def test_cowos_capacity_change_is_hbm_cross_trigger(self):
+        old = {"cowos_capacity_wpm": 120000}
+        new = {"cowos_capacity_wpm": 140000}
+        reasons = w.hbm_cross_reasons(old, new)
+        self.assertTrue(any("120,000→140,000" in r for r in reasons))
+
+    def test_future_guidance_does_not_promote_fab_to_current_mass_production(self):
+        text = "台積電嘉義 P2 廠預計明年量產，工程目前依計畫進行。"
+        fabs = w.parse_fab_statuses(text, "top_tier_report", "https://example.com")
+        self.assertNotIn("P2", fabs)
+
+    def test_official_same_count_upgrade_is_package_material_but_not_hbm_cross(self):
+        old = {"chiayi_total_fabs": 10, "fab_count_evidence_state": "supply_chain_report"}
+        new = {"chiayi_total_fabs": 10, "fab_count_evidence_state": "official"}
+        self.assertTrue(any("공식 확인" in r for r in w.material_changes(old, new)))
+        self.assertEqual(w.hbm_cross_reasons(old, new), [])
+
+    def test_lower_evidence_cannot_overwrite_official_phase(self):
+        old = {"chiayi_phase3_status": "approved", "phase3_evidence_state": "official"}
+        merged = w.merge_state(old, {
+            "chiayi_phase3_status": "construction",
+            "phase3_evidence_state": "reported",
+            "last_evidence_state": "reported",
+        })
+        self.assertEqual(merged["chiayi_phase3_status"], "approved")
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,0 +1,22 @@
+{
+  "watch_version": 1,
+  "baseline_seeded_at_kst": "2026-09-27T18:02:00+09:00",
+  "baseline_note": "2026-09-27 LTN 공급망 보도의 嘉義 총 10개·추가 5개를 현재값으로 잠금. 같은 보도의 재배포는 최초 알림으로 역송출하지 않음. 2026-09-24 NSTC의 嘉義園區擴建計畫(二期擴大) 의견수렴은 공식 단계로 별도 잠금.",
+  "current_state": {
+    "chiayi_total_fabs": 10,
+    "chiayi_additional_fabs": 5,
+    "chiayi_phase3_status": "public_comment",
+    "fab_count_evidence_state": "supply_chain_report",
+    "phase3_evidence_state": "official",
+    "last_evidence_state": "supply_chain_report",
+    "last_source_url": "https://ec.ltn.com.tw/article/breakingnews/5586843",
+    "last_source_name": "LTN",
+    "last_event_title": "獨家》一共10座！嘉科三期起跑 台積電再加碼5座先進封裝廠",
+    "official_source_url": "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
+  },
+  "baseline_sources": [
+    "https://ec.ltn.com.tw/article/breakingnews/5586843",
+    "https://stock.ltn.com.tw/article/gqpj9vhyk1ku",
+    "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
+  ]
+}
