@@ -116,7 +116,28 @@ ACTION_PATTERNS = [
 NOISE_PATTERNS = [
     r"stock price", r"price target", r"analyst rating", r"upgrade[s]? .* stock",
     r"downgrade[s]? .* stock", r"options activity", r"insider sells?", r"dividend",
+    r"investment story", r"investment case", r"why .* stock", r"simply wall st",
+    r"futu niu niu", r"stockstory", r"seeking alpha quant",
 ]
+
+SOURCE_PRIORITY = {
+    "Coherent": 100, "NVIDIA Blog": 100, "NVIDIA Newsroom": 100,
+    "Broadcom": 100, "Arista Networks": 100, "Marvell": 100,
+    "Lumentum": 100, "Astera Labs": 100, "Corning": 100,
+    "Samsung Electronics": 100, "Samsung Global Newsroom": 100,
+    "Reuters": 95, "Bloomberg": 94, "Financial Times": 93,
+    "The Wall Street Journal": 93, "CNBC": 88, "DigiTimes": 85, "DIGITIMES": 85,
+    "GlobeNewswire": 84, "PR Newswire": 82,
+    "HPCwire": 70, "Compound Semiconductor": 70, "Investing.com": 65,
+}
+
+STORY_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "has",
+    "how", "in", "into", "is", "it", "its", "of", "on", "or", "the", "to",
+    "with", "will", "new", "next", "generation", "corp", "corporation",
+    "launch", "launches", "launched", "unveil", "unveils", "unveiled",
+    "platform", "supports", "support", "enable", "enables", "enabling",
+}
 
 
 def fetch(url: str, timeout: int = 25) -> bytes:
@@ -152,6 +173,77 @@ def normalize_text(value: str) -> str:
 def event_key(company: str, title: str, source: str) -> str:
     normalized = f"{company}|{title.lower()}|{source.lower()}"
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
+
+def story_tokens(title: str) -> set[str]:
+    value = html.unescape(title or "").lower()
+    value = re.sub(r"\s+-\s+[^-]{2,80}$", " ", value)
+    value = re.sub(r"[^a-z0-9.]+", " ", value)
+    tokens = {
+        token for token in value.split()
+        if len(token) >= 3 and token not in STORY_STOPWORDS
+    }
+    return tokens
+
+
+def canonical_story_key(company: str, title: str) -> str | None:
+    text = html.unescape(title or "").lower()
+    if company == "Coherent" and "photonlink" in text:
+        if re.search(r"customer engagements?|long[- ]term agreements?|anchor customers?|design win", text, re.I):
+            return "coherent|photonlink|customer-contract"
+        if re.search(r"content opportunity|content per|100\s*tbps|15,?000", text, re.I):
+            return "coherent|photonlink|content-value"
+        if re.search(r"chip[- ]to[- ]chip", text, re.I):
+            return "coherent|photonlink|chip-to-chip"
+        if re.search(r"specialty fibers?|polarization[- ]maintaining|mode[- ]matching|multicore fibers?", text, re.I):
+            return "coherent|photonlink|specialty-fiber"
+        if re.search(r"\binp\b.*(?:capacity|expand)|(?:capacity|expand).*\binp\b", text, re.I):
+            return "coherent|photonlink|inp-capacity"
+        if re.search(r"revenue|guidance|mass production|volume production|shipments?|production ramp|ramp(?:ing)?", text, re.I):
+            return "coherent|photonlink|commercial-ramp"
+        return "coherent|photonlink|launch"
+    return None
+
+
+def source_priority(source: str) -> int:
+    source = normalize_text(source)
+    for name, priority in SOURCE_PRIORITY.items():
+        if source.lower() == name.lower():
+            return priority
+    if re.search(r"simply wall|futu|stockstory", source, re.I):
+        return 5
+    return 50
+
+
+def same_underlying_story(a: dict, b: dict) -> bool:
+    if a.get("company") != b.get("company"):
+        return False
+    a_key = canonical_story_key(a.get("company", ""), a.get("title", ""))
+    b_key = canonical_story_key(b.get("company", ""), b.get("title", ""))
+    if a_key and b_key:
+        return a_key == b_key
+    if a.get("category") != b.get("category"):
+        return False
+    ta = story_tokens(a.get("title", ""))
+    tb = story_tokens(b.get("title", ""))
+    if not ta or not tb:
+        return False
+    overlap = len(ta & tb)
+    union = len(ta | tb)
+    smaller = min(len(ta), len(tb))
+    jaccard = overlap / union if union else 0.0
+    containment = overlap / smaller if smaller else 0.0
+    return jaccard >= 0.48 or containment >= 0.72
+
+
+def prefer_story_item(candidate: dict, current: dict) -> bool:
+    c_rank = source_priority(candidate.get("source") or "")
+    o_rank = source_priority(current.get("source") or "")
+    if c_rank != o_rank:
+        return c_rank > o_rank
+    if candidate.get("score", 0) != current.get("score", 0):
+        return candidate.get("score", 0) > current.get("score", 0)
+    return (candidate.get("published") or "") > (current.get("published") or "")
 
 
 def query_google_news(query: str) -> list[dict]:
@@ -376,30 +468,58 @@ def main() -> None:
         return (published, item.get("score", 0))
 
     all_relevant.sort(key=sort_key, reverse=True)
-    # De-duplicate feed mirrors with same normalized headline.
-    deduped: list[dict] = []
-    titles_seen: set[str] = set()
-    for item in all_relevant:
-        normalized_title = re.sub(r"\W+", " ", item["title"].lower()).strip()
-        if normalized_title in titles_seen:
-            continue
-        titles_seen.add(normalized_title)
-        deduped.append(item)
 
-    new_items = [item for item in deduped if item["key"] not in seen]
+    # Collapse syndicated/mirrored articles about the same underlying event.
+    # Prefer the company release or higher-quality reporting instead of counting
+    # each headline/source as a separate "new change".
+    deduped: list[dict] = []
+    for item in all_relevant:
+        matched_index = next(
+            (idx for idx, existing in enumerate(deduped) if same_underlying_story(item, existing)),
+            None,
+        )
+        if matched_index is None:
+            deduped.append(item)
+            continue
+        if prefer_story_item(item, deduped[matched_index]):
+            deduped[matched_index] = item
+
     initialized = bool(state.get("initialized"))
+    dedupe_version = int(state.get("dedupe_version") or 0)
+    seen_story_keys = set(state.get("seen_story_keys") or [])
+
+    for item in deduped:
+        item["story_key"] = canonical_story_key(item["company"], item["title"])
+
+    def already_seen(item: dict) -> bool:
+        if item["key"] in seen:
+            return True
+        story_key = item.get("story_key")
+        return bool(story_key and story_key in seen_story_keys)
+
+    new_items = [item for item in deduped if not already_seen(item)]
 
     updated_seen = list(dict.fromkeys([item["key"] for item in deduped] + list(seen)))[:1500]
+    updated_story_keys = list(dict.fromkeys(
+        [item["story_key"] for item in deduped if item.get("story_key")] + list(seen_story_keys)
+    ))[:500]
     pending = {
         "initialized": True,
+        "dedupe_version": 2,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
+        "seen_story_keys": updated_story_keys,
         "relevant_item_count": len(deduped),
         "source_errors": errors,
     }
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    alert_items = new_items[:8] if initialized else []
+    # One-time migration: establish the semantic/event baseline silently so the
+    # dedupe upgrade itself cannot resend already reported stories.
+    if dedupe_version < 2:
+        alert_items = []
+    else:
+        alert_items = new_items[:8] if initialized else []
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
 
@@ -440,9 +560,10 @@ def main() -> None:
         "",
         f"- 조회시각(KST): {dt.datetime.now(KST).isoformat(timespec='seconds')}",
         f"- 기준선 초기화 여부: {'예' if initialized else '아니오 — 이번 실행은 기준선만 저장'}",
-        f"- 관련 신규 후보: {len(new_items)}건",
-        f"- Telegram 발송 후보: {len(alert_items)}건",
-        f"- 현재 관련 기사 기준선: {len(deduped)}건",
+        f"- 관련 신규 사건 후보: {len(new_items)}건",
+        f"- Telegram 발송 사건: {len(alert_items)}건",
+        f"- 중복 기사 통합 후 사건 기준선: {len(deduped)}건",
+        f"- 중복 제거 방식: 동일 사건 의미 클러스터 + PhotonLink 사건키 v2",
         f"- 소스 오류: {len(errors)}건",
     ]
     if errors:
