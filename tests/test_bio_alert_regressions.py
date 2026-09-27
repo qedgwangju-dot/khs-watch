@@ -98,6 +98,22 @@ class BioAlertRegressionTests(unittest.TestCase):
             "2025-03-28 PGR 청구 → 2025-10-01 심판 개시 → 2026-09-25 최종서면결정",
         )
 
+    def test_halozyme_final_unpatentable_alert_renders_timeline(self):
+        item = {
+            "published": "Fri, 25 Sep 2026 12:00:00 GMT",
+            "url": "https://example.com/source",
+            "title": "PGR2025-00033 Final Written Decision",
+        }
+        rendered = halo.alert(
+            "PGR2025-00033",
+            "12,049,652",
+            "final_unpatentable",
+            item,
+        )
+        self.assertIn("<b>타임라인:</b>", rendered)
+        self.assertIn("2025-03-07 PGR 청구", rendered)
+        self.assertIn("2026-09-25 최종서면결정", rendered)
+
     def test_single_runner_health_schema_covers_all_bio_lanes(self):
         source = (ROOT / "scripts" / "bio_single_runner.py").read_text(encoding="utf-8")
         required = (
