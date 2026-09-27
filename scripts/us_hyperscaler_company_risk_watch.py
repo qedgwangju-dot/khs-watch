@@ -22,7 +22,7 @@ PENDING = OUT / "us_hyperscaler_company_risk_pending_state.json"
 ALERT = OUT / "us_hyperscaler_company_risk_alert.txt"
 STATUS = OUT / "us_hyperscaler_company_risk_status.md"
 
-FORMAT_VERSION = 2
+FORMAT_VERSION = 3
 LOOKBACK_DAYS = 10
 MAX_ALERT_AGE_DAYS = 7
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
@@ -282,7 +282,17 @@ def cluster_company(company: str, rows: list[dict]) -> list[dict]:
 
 def canonical_event_key(event: dict) -> str:
     blob = " ".join(event.get("titles", []) + [event.get("title", "")]).lower()
-    if "vineland" in blob and any(k in blob for k in ("generator", "fine", "penalty", "unpermitted", "without permit")):
+    dataone_signal = (
+        ("vineland" in blob)
+        or ("$1.07" in blob)
+        or ("$1.1m" in blob)
+        or ("$1 million" in blob and "new jersey" in blob)
+    )
+    generator_enforcement = (
+        ("generator" in blob)
+        and any(k in blob for k in ("fine", "fined", "penalty", "unpermitted", "without permit"))
+    )
+    if dataone_signal and generator_enforcement:
         return "dataone-vineland-generator-enforcement-20260922"
     return event.get("fp") or sha(blob)
 
