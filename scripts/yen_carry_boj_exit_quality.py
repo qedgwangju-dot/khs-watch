@@ -440,10 +440,13 @@ def normalize_period(value: str) -> tuple[int, int] | None:
 
 
 def fof_candidate(rows: list[dict], aliases: tuple[str, ...]) -> dict | None:
-    candidates: list[tuple[int, dict]] = []
+    candidates: list[tuple[int, str, dict]] = []
+    wanted = {alias.lower() for alias in aliases}
     for row in rows:
         name = str(row.get("NAME_OF_TIME_SERIES") or "")
         low = name.lower()
+        category = str(row.get("CATEGORY") or "").lower()
+        notes = str(row.get("NOTES") or "").lower()
         freq = str(row.get("FREQUENCY") or "").strip().lower()
         if freq and not ("quarter" in freq or freq == "q"):
             continue
@@ -453,22 +456,33 @@ def fof_candidate(rows: list[dict], aliases: tuple[str, ...]) -> dict | None:
             continue
         parts = [part.strip().lower() for part in name.split("/")]
         sector = parts[-2] if len(parts) >= 2 else ""
-        if sector not in {alias.lower() for alias in aliases}:
+        if sector not in wanted:
             continue
+        if "discontinued" in low or "discontinued" in category or "discontinued" in notes:
+            continue
+
         score = 0
-        if "assets" in low:
-            score += 4
-        if "financial assets" in low:
+        if low.startswith("assets/") or "/assets/" in low:
+            score += 8
+        if "2008 sna" in category:
+            score += 6
+        if "flow of funds" in category:
             score += 2
         if low.endswith("/stock") or "/stock" in low:
             score += 1
-        candidates.append((score, row))
+        last_update = str(row.get("LAST_UPDATE") or "")
+        candidates.append((score, last_update, row))
+
     if not candidates:
         return None
-    candidates.sort(key=lambda item: item[0], reverse=True)
-    if len(candidates) > 1 and candidates[0][0] == candidates[1][0]:
+    candidates.sort(key=lambda item: (item[0], item[1]), reverse=True)
+    top_score, top_update, top_row = candidates[0]
+    tied = [item for item in candidates if item[0] == top_score and item[1] == top_update]
+    if len(tied) > 1:
+        # Same concept can exist in historical classifications. Fail closed
+        # unless the current 2008-SNA/latest-update preference resolves it.
         return None
-    return candidates[0][1]
+    return top_row
 
 
 def quarter_end_account(account_links: list[tuple[dt.date, str]], year: int, quarter: int) -> AccountPoint | None:
