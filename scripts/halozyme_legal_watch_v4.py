@@ -37,6 +37,11 @@ FINAL_UNPATENTABLE_TERMS = (
     "특허 받을 수 없음",
 )
 
+CURRENT_CONFIRMED_UNPATENTABLE = {
+    "PGR2025-00033",
+    "PGR2025-00039",
+}
+
 FINAL_DECISION_TERMS = (
     "final written decision",
     "status final written decision",
@@ -55,6 +60,8 @@ def classify(text: str, case: str) -> str:
         return "final_unpatentable"
 
     if any(term in low for term in FINAL_DECISION_TERMS):
+        if case in CURRENT_CONFIRMED_UNPATENTABLE:
+            return "final_unpatentable"
         return "final_decision"
 
     # 최종결정 외 절차는 기존 분류 규칙을 유지한다.
@@ -130,6 +137,18 @@ base.send = tracked_send
 
 
 def main() -> int:
+    # 이미 과거에 최종 무효 알림이 끝난 사건은 "최종서면결정 공개"로
+    # 다시 중복 송출되지 않도록 동일 단계 키를 기준선에 추가한다.
+    try:
+        state0 = json.loads(base.STATE.read_text(encoding="utf-8"))
+    except Exception:
+        state0 = {}
+    seen0 = set(state0.get("seen_events") or [])
+    for case in ("PGR2025-00003", "PGR2025-00004", "PGR2025-00006", "PGR2025-00009", "PGR2025-00017"):
+        seen0.add(base.digest(f"{case}|final_decision"))
+    state0["seen_events"] = sorted(seen0)[-5000:]
+    base.STATE.write_text(json.dumps(state0, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
     rc = base.main()
     try:
         state = json.loads(base.STATE.read_text(encoding="utf-8"))
