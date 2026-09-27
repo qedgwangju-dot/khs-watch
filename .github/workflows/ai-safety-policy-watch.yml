@@ -1,0 +1,252 @@
+name: AI Safety Standards Policy Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/ai-safety-policy-watch.yml"
+      - "scripts/ai_safety_policy_watch.py"
+  schedule:
+    - cron: "14,44 * * * *"
+  workflow_run:
+    workflows:
+      - "AI Security Web Watch"
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "Send one Telegram formatting/route test"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ai-safety-standards-policy-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAMES: "khs88798879_bot,hs88798879_bot"
+      POLICY_SEND_CONNECTION_TEST_ON_PUSH: "true"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve and verify Telegram route
+        id: telegram
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, pathlib, urllib.request
+          token=(os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+          configured=(os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+          expected={x.strip().lstrip("@").lower() for x in (os.environ.get("EXPECTED_TELEGRAM_BOT_USERNAMES") or "").split(",") if x.strip()}
+          if not token:
+              raise RuntimeError("Missing Telegram bot token")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=25) as r:
+              ident=json.loads(r.read().decode("utf-8"))
+          actual=str((ident.get("result") or {}).get("username") or "")
+          if not ident.get("ok") or not actual:
+              raise RuntimeError("Telegram getMe failed")
+          if expected and actual.lower() not in expected:
+              raise RuntimeError(f"Wrong Telegram bot: @{actual}")
+          chat_id=configured
+          route="secret"
+          if not chat_id:
+              with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0",timeout=25) as r:
+                  updates=json.loads(r.read().decode("utf-8"))
+              candidates=[]
+              for upd in updates.get("result") or []:
+                  msg=upd.get("message") or upd.get("edited_message") or {}
+                  chat=msg.get("chat") or {}
+                  if str(chat.get("type") or "")=="private" and chat.get("id") is not None:
+                      candidates.append((int(upd.get("update_id") or 0),str(chat["id"])))
+              if candidates:
+                  candidates.sort()
+                  chat_id=candidates[-1][1]
+                  route="getUpdates"
+          if not chat_id:
+              raise RuntimeError("Telegram chat_id unresolved")
+          out=pathlib.Path(os.environ["GITHUB_OUTPUT"])
+          with out.open("a",encoding="utf-8") as f:
+              f.write(f"bot_username={actual}\n")
+              f.write(f"chat_id={chat_id}\n")
+              f.write(f"route={route}\n")
+          print(f"ai_policy_bot_verified=@{actual}")
+          print(f"ai_policy_chat_resolved=true route={route}")
+          PY
+
+      - name: Validate watcher
+        run: python -m py_compile scripts/ai_safety_policy_watch.py
+
+      - name: Run live policy watch
+        run: |
+          rm -f out/ai_safety_policy_watch_alert_title.txt out/ai_safety_policy_watch_alert.html out/ai_safety_policy_watch_telegram_confirmed.json
+          python scripts/ai_safety_policy_watch.py
+          cat out/ai_safety_policy_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Build one-shot Telegram test
+        if: (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true') || (github.event_name == 'push' && env.POLICY_SEND_CONNECTION_TEST_ON_PUSH == 'true')
+        run: |
+          mkdir -p out
+          cat > out/ai_safety_policy_watch_connection_test.html <<'EOF'
+          📌 <b>AI 안전표준·보안산업 정책 Watch</b>
+
+          <b>분리 알림 설정 완료</b>
+          • 표준·법규·사고보고 기준
+          • 예산·GPU·국책사업
+          • 중간평가·실증·조달
+          • 유료계약·상용화·컨소시엄 변경
+
+          🔗 <a href="https://nipa.kr/home/bsnsAll/00/detail?bsnsDtlsIemNo=909">NIPA 사업 원문</a>
+
+          단순 발언·반복 기사는 보내지 않습니다.
+          EOF
+
+      - name: Send Telegram
+        env:
+          RESOLVED_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, pathlib, time, urllib.parse, urllib.request
+          token=os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id=os.environ["RESOLVED_CHAT_ID"].strip()
+          test=pathlib.Path("out/ai_safety_policy_watch_connection_test.html")
+          alert=pathlib.Path("out/ai_safety_policy_watch_alert.html")
+          title=pathlib.Path("out/ai_safety_policy_watch_alert_title.txt")
+
+          files=[]
+          if test.exists() and test.read_text(encoding="utf-8").strip():
+              files.append(("test",test.read_text(encoding="utf-8").strip()))
+          if alert.exists() and alert.read_text(encoding="utf-8").strip():
+              body=alert.read_text(encoding="utf-8").strip()
+              if title.exists():
+                  body=title.read_text(encoding="utf-8").strip()+"\n\n"+body
+              files.append(("alert",body))
+
+          def chunks(text,max_len=3800):
+              text=text.strip()
+              out=[]
+              while len(text)>max_len:
+                  cut=text.rfind("\n\n",0,max_len)
+                  if cut<900: cut=text.rfind("\n",0,max_len)
+                  if cut<900: cut=max_len
+                  out.append(text[:cut].strip())
+                  text=text[cut:].strip()
+              if text: out.append(text)
+              return out
+
+          ids=[]
+          for kind,text in files:
+              for chunk in chunks(text):
+                  payload=urllib.parse.urlencode({
+                      "chat_id":chat_id,
+                      "text":chunk,
+                      "parse_mode":"HTML",
+                      "disable_web_page_preview":"true",
+                  }).encode("utf-8")
+                  req=urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage",data=payload,method="POST")
+                  result=None
+                  last=None
+                  for attempt in range(1,4):
+                      try:
+                          with urllib.request.urlopen(req,timeout=30) as r:
+                              result=json.loads(r.read().decode("utf-8"))
+                          if result.get("ok"): break
+                          last=RuntimeError(str(result))
+                      except Exception as exc:
+                          last=exc
+                      if attempt<3: time.sleep(attempt*3)
+                  if not result or not result.get("ok"):
+                      raise RuntimeError(f"Telegram send failed after 3 attempts: {last}")
+                  mid=(result.get("result") or {}).get("message_id")
+                  if mid is None:
+                      raise RuntimeError("Telegram success without message_id")
+                  ids.append({"kind":kind,"message_id":mid})
+
+          if alert.exists():
+              alert_ids=[x for x in ids if x["kind"]=="alert"]
+              if not alert_ids:
+                  raise RuntimeError("Alert existed but delivery unconfirmed")
+              pathlib.Path("out/ai_safety_policy_watch_telegram_confirmed.json").write_text(
+                  json.dumps({"status":"confirmed","bot_username":"${{ steps.telegram.outputs.bot_username }}","messages":alert_ids},ensure_ascii=False,indent=2)+"\n",
+                  encoding="utf-8"
+              )
+          print(f"ai_policy_telegram_messages_sent={len(ids)}")
+          PY
+
+      - name: Finalize state after no-alert or confirmed delivery
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f out/ai_safety_policy_watch_pending_state.json ]; then
+            echo "Pending state missing" >&2
+            exit 1
+          fi
+          if [ -f out/ai_safety_policy_watch_alert.html ] && [ ! -f out/ai_safety_policy_watch_telegram_confirmed.json ]; then
+            echo "Alert not checkpointed because Telegram delivery is unconfirmed" >&2
+            exit 1
+          fi
+          cp out/ai_safety_policy_watch_pending_state.json data/ai_safety_policy_watch_state.json
+
+      - name: Commit watch state
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          cp data/ai_safety_policy_watch_state.json "$tmp/state.json"
+          git config user.name "ai-safety-policy-watch[bot]"
+          git config user.email "ai-safety-policy-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp "$tmp/state.json" data/ai_safety_policy_watch_state.json
+            git add data/ai_safety_policy_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Policy watch state unchanged"
+              exit 0
+            fi
+            git commit -m "Update AI safety policy watch state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep 3
+          done
+          exit 1
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-safety-policy-watch-${{ github.run_id }}
+          path: |
+            out/ai_safety_policy_watch_status.md
+            out/ai_safety_policy_watch_alert_title.txt
+            out/ai_safety_policy_watch_alert.html
+            out/ai_safety_policy_watch_pending_state.json
+            out/ai_safety_policy_watch_telegram_confirmed.json
+            out/ai_safety_policy_watch_connection_test.html
+          if-no-files-found: ignore
+          retention-days: 14
