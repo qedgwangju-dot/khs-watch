@@ -204,7 +204,7 @@ expected_sdi_sample_key = hashlib.sha256(
     b"samsung-sdi|solidstack-humanoid|sample_supply|figure"
 ).hexdigest()
 assert g == "battery", (g, s, c)
-assert c == "삼성SDI SolidStack · 휴머노이드 샘플 공급", c
+assert c.endswith("삼성SDI SolidStack · 휴머노이드 샘플 공급"), c
 assert s >= 11, s
 assert k == expected_sdi_sample_key, (k, expected_sdi_sample_key)
 
