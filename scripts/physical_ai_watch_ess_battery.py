@@ -182,10 +182,7 @@ def _us_ess_stage(text: str, source: str = '') -> str:
     source_text = f'{text} {source}'
     if not (US_STORAGE_RE.search(source_text) and US_MARKET_RE.search(source_text)):
         return ''
-    official_install = bool(
-        re.search(r'SEIA|Solar\s+Energy\s+Industries\s+Association|Benchmark\s+Mineral', source_text, re.I)
-    )
-    if official_install and US_INSTALL_ACTUAL.search(text) and US_PERIOD.search(text) and US_GWH.search(text):
+    if US_INSTALL_ACTUAL.search(text) and US_PERIOD.search(text) and US_GWH.search(text):
         if US_INSTALL_BASELINE_Q2_2026.search(text) or US_H1_BASELINE_2026.search(text):
             return 'us_install_baseline'
         return 'us_install_actual'
@@ -349,24 +346,14 @@ def score(item: dict) -> int:
 
     source = item.get('source') or ''
     us_stage = _us_ess_stage(text, source)
-    if us_stage == 'us_install_actual':
-        if source in base.OFFICIAL_OR_PRIMARY:
-            return 'SEIA 등 공식 원자료 · 분기/누적 GWh 실제 설치량과 기준기간 확인'
-        return 'SEIA·Benchmark 원자료를 인용한 보도 · 실제 설치 GWh를 공식자료로 교차확인'
-    if us_stage == 'us_target_revision':
-        return 'U.S. Energy Storage Coalition 공식 목표 · 225GW/1TWh/2032 기준선 대비 변경 확인'
-    if us_stage == 'us_forecast_revision':
-        return 'SEIA·Benchmark 등 공식/신뢰 전망자료 · 수정 전후 GWh·기준연도 비교'
-    if us_stage == 'us_policy_change':
-        return '미국 공식 정책·규정 원문 우선 · FEOC/세액공제/관세/계통접속/화재안전 시행조건 교차확인'
-    if us_stage in {'us_install_baseline', 'us_target_baseline'}:
-        return '기준선 등록 · 새 단계 변화 아님'
     sdi_stage = _sdi_ess_stage(text, source)
-    us_stage = _us_ess_stage(text, source)
     if sdi_stage in {'earnings_forecast', 'earnings_unconfirmed', 'synergy_baseline'}:
         return 0
     if us_stage in {'us_install_baseline', 'us_target_baseline'}:
         return 0
+    if us_stage and source not in base.OFFICIAL_OR_PRIMARY and source not in base.TRUSTED:
+        if not re.search(r'SEIA|Solar\s+Energy\s+Industries\s+Association|Benchmark\s+Mineral|U\.S\.\s+Energy\s+Storage\s+Coalition|Energy\s+Storage\s+Coalition', text, re.I):
+            return 0
     ess3_stage = _ess3_stage(text, source)
     # Generic "3rd ESS market is coming / competition heats up" articles are
     # background repeats, not a new state change. Alert only when a notice,
@@ -558,6 +545,19 @@ def verification(item: dict, group: str, text: str) -> str:
     if group != 'ess_battery':
         return _orig_verification(item, group, text)
     source = item.get('source') or ''
+    us_stage = _us_ess_stage(text, source)
+    if us_stage == 'us_install_actual':
+        if source in base.OFFICIAL_OR_PRIMARY:
+            return 'SEIA 등 공식 원자료 · 분기/누적 GWh 실제 설치량과 기준기간 확인'
+        return 'SEIA·Benchmark 원자료를 인용한 보도 · 실제 설치 GWh를 공식자료로 교차확인'
+    if us_stage == 'us_target_revision':
+        return 'U.S. Energy Storage Coalition 공식 목표 · 225GW/1TWh/2032 기준선 대비 변경 확인'
+    if us_stage == 'us_forecast_revision':
+        return 'SEIA·Benchmark 등 공식/신뢰 전망자료 · 수정 전후 GWh·기준연도 비교'
+    if us_stage == 'us_policy_change':
+        return '미국 공식 정책·규정 원문 우선 · FEOC/세액공제/관세/계통접속/화재안전 시행조건 교차확인'
+    if us_stage in {'us_install_baseline', 'us_target_baseline'}:
+        return '기준선 등록 · 새 단계 변화 아님'
     sdi_stage = _sdi_ess_stage(text, source)
     if sdi_stage == 'earnings_actual':
         if source in base.OFFICIAL_OR_PRIMARY:
