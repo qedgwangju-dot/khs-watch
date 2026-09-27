@@ -6,6 +6,7 @@ import re
 import halozyme_legal_watch_v3 as v3
 
 base = v3.base
+_original_get_case = base.get_case
 
 # 각 사건번호를 개별 검색한다. OR 검색은 새 최종결정을 누락할 수 있어
 # 사건번호·특허번호·한국어 결과 표현을 직접 조회한다.
@@ -99,7 +100,7 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
 
 
 def get_case(text: str) -> tuple[str, str]:
-    case, patent = base.get_case(text)
+    case, patent = _original_get_case(text)
     if case:
         return case, patent
 
