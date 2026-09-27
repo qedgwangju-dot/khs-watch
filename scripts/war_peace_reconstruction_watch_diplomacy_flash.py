@@ -901,8 +901,14 @@ def _canonical_event_key(row):
     truce = any(x in title for x in ('truce', 'ceasefire', 'peace plan', '휴전', '종전안', '평화안'))
     reopen = any(x in title for x in ('reopen', 'reopening', 'open the strait', '재개방', '정상 통항', '통항 재개'))
 
-    # 이란 7일 휴전/호르무즈안 거부는 제안 자체와 별도 단계로 관리.
-    if has_trump and has_iran and rejected and (truce or has_hormuz):
+    # 이란 휴전/호르무즈안 거부와 '선거 후 공습 재개' 재가공 기사는
+    # 같은 협상 후퇴 사건으로 묶는다. 매체별 제목 차이로 신규화하지 않는다.
+    resume_strike = any(x in title for x in (
+        'airstrike resume', 'airstrikes resume', 'resume airstrikes', 'resume strikes',
+        'strikes could resume', 'bombing could resume', 'after the midterms', 'after midterms',
+        '공습 재개', '폭격 재개', '선거 후 공습', '중간선거 후 공습', '11월 선거 후 공습',
+    ))
+    if has_trump and has_iran and (rejected or resume_strike) and (truce or has_hormuz):
         iso = dt.datetime.now(watch.KST).isocalendar()
         return f'trump-iran|reject-current-ceasefire-hormuz-plan|{iso.year}-W{iso.week:02d}'
     if has_iran and has_hormuz and seven_day and reopen and not rejected:
