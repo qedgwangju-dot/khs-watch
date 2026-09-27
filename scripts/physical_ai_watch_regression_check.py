@@ -200,13 +200,17 @@ sdi_asb_sample = make(
     "삼성SDI",
 )
 g, s, c, k = classify(sdi_asb_sample)
-expected_sdi_sample_key = hashlib.sha256(
-    b"samsung-sdi|solidstack-humanoid|sample_supply|figure"
-).hexdigest()
 assert g == "battery", (g, s, c)
 assert c.endswith("삼성SDI SolidStack · 휴머노이드 샘플 공급"), c
 assert s >= 11, s
-assert k == expected_sdi_sample_key, (k, expected_sdi_sample_key)
+sdi_asb_sample_rewrite = make(
+    "Samsung SDI starts SolidStack samples for Figure humanoid qualification",
+    "Figure AI began receiving Samsung SDI SolidStack all-solid-state battery samples for humanoid customer qualification.",
+    "Reuters",
+)
+g2, s2, c2, k2 = classify(sdi_asb_sample_rewrite)
+assert g2 == "battery", (g2, s2, c2)
+assert k2 == k, ("SolidStack sample rewrites must share one semantic event key", k, k2)
 
 # 10) Analyst ESS mix/margin estimates stay silent; official realized figures alert.
 sdi_ess_forecast = make(
