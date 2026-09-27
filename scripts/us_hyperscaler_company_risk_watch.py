@@ -22,10 +22,12 @@ PENDING = OUT / "us_hyperscaler_company_risk_pending_state.json"
 ALERT = OUT / "us_hyperscaler_company_risk_alert.txt"
 STATUS = OUT / "us_hyperscaler_company_risk_status.md"
 
-FORMAT_VERSION = 1
+FORMAT_VERSION = 2
 LOOKBACK_DAYS = 10
 MAX_ALERT_AGE_DAYS = 7
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
+NJDEP_DATAONE = "https://dep.nj.gov/newsrel/26_0044/"
+NEBIUS_MICROSOFT = "https://nebius.com/newsroom/nebius-announces-multi-billion-dollar-agreement-with-microsoft-for-ai-infrastructure"
 
 TRACKED = {
     "Amazon/AWS": ("amazon", "aws"),
@@ -278,6 +280,61 @@ def cluster_company(company: str, rows: list[dict]) -> list[dict]:
         })
     return out
 
+def canonical_event_key(event: dict) -> str:
+    blob = " ".join(event.get("titles", []) + [event.get("title", "")]).lower()
+    if "vineland" in blob and any(k in blob for k in ("generator", "fine", "penalty", "unpermitted", "without permit")):
+        return "dataone-vineland-generator-enforcement-20260922"
+    return event.get("fp") or sha(blob)
+
+
+def merge_cross_company(events: list[dict]) -> list[dict]:
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for event in events:
+        grouped[canonical_event_key(event)].append(event)
+
+    merged = []
+    for key, group in grouped.items():
+        companies = sorted({x["company"] for x in group})
+        sources, titles = [], []
+        for x in group:
+            sources.extend(x.get("sources", []))
+            titles.extend(x.get("titles", []))
+        sources = list(dict.fromkeys(sources))
+        titles = list(dict.fromkeys(titles))
+
+        if key == "dataone-vineland-generator-enforcement-20260922":
+            companies = ["Microsoft", "Nebius"]
+            sources = list(dict.fromkeys(["New Jersey Department of Environmental Protection"] + sources))
+            titles = list(dict.fromkeys([
+                "NJDEP fined DataOne Vineland $1.07 million for installing and operating 62 1,982-kW natural-gas generators without required permits"
+            ] + titles))
+            title = "NJDEP, DataOne Vineland에 무허가 천연가스 발전기 62기 운영으로 107만달러 벌금"
+            url = NJDEP_DATAONE
+            published = "2026-09-22T00:00:00+00:00"
+        else:
+            best = sorted(
+                group,
+                key=lambda x: (
+                    0 if source_class(x.get("source", "")) == "공식" else 1 if source_class(x.get("source", "")) == "신뢰보도" else 2,
+                    -len(x.get("title", "")),
+                ),
+            )[0]
+            title, url = best["title"], best["url"]
+            published = max(x.get("published", "") for x in group)
+
+        merged.append({
+            "event_key": key,
+            "companies": companies,
+            "company": "·".join(companies),
+            "title": title,
+            "url": url,
+            "published": published,
+            "sources": sources[:8],
+            "titles": titles[:12],
+        })
+    return sorted(merged, key=lambda x: x["published"], reverse=True)
+
+
 def classify_event(event: dict) -> tuple[str, str]:
     blob = " ".join(event["titles"]).lower()
     if any(k in blob for k in ("fine", "fined", "penalty", "violation", "unpermitted", "without permit", "enforcement")):
@@ -291,10 +348,11 @@ def classify_event(event: dict) -> tuple[str, str]:
     else:
         cat = "허가·운영"
 
-    direct = "직접"
-    if event["company"] == "Microsoft" and any(k in blob for k in ("dataone", "nebius", "vineland")):
-        direct = "간접연결(DataOne → Nebius → Microsoft)"
-    return cat, direct
+    if event.get("event_key") == "dataone-vineland-generator-enforcement-20260922":
+        relation = "직접 위반: DataOne / 연결: Nebius 인프라 → Microsoft GPU 용량 고객"
+    else:
+        relation = "해당 기업 직접 언급 · 직접 책임 여부는 원문 기준"
+    return cat, relation
 
 def extract_facts(event: dict, fx: float | None) -> list[str]:
     blob = " ".join(event["titles"])
@@ -325,16 +383,17 @@ def render(events: list[dict], fx: float | None, fx_source: str) -> str:
         cat, direct = classify_event(event)
         facts = extract_facts(event, fx)
         lines.append(f"<b>{html.escape(event['company'])}</b> · {html.escape(cat)}")
-        lines.append(f"• 연결 수준: <b>{html.escape(direct)}</b>")
+        lines.append(f"• 당사자 구분: <b>{html.escape(direct)}</b>")
         lines.append(f"• {html.escape(event['title'])}")
         if facts:
             lines.append("• " + " · ".join(html.escape(x) for x in facts))
         lines.append(f"• 교차검증: {len(event['sources'])}개 출처 · " + ", ".join(html.escape(x) for x in event["sources"][:3]))
         lines.append(f'• <a href="{html.escape(event["url"], quote=True)}">원문</a>')
-        if event["company"] == "Microsoft" and "간접연결" in direct:
+        if event.get("event_key") == "dataone-vineland-generator-enforcement-20260922":
             ms_usd = 17.4e9
             ms_krw = f" = {krw(ms_usd, fx)}" if fx else ""
-            lines.append(f"• 연결고리: Nebius Vineland 전용 GPU 계약 약 $17.4B{ms_krw} · 위반 주체는 Microsoft가 아니라 DataOne")
+            lines.append(f"• 계약 연결: Nebius가 Vineland에서 Microsoft에 전용 GPU 용량 공급 · 기본 계약가 약 $17.4B{ms_krw}")
+            lines.append("• 책임 구분: NJDEP 벌금 대상은 DataOne이며 Microsoft나 Nebius에 부과된 벌금이 아닙니다.")
         lines.append("")
 
     lines += [
@@ -370,15 +429,16 @@ def main() -> int:
         unique = {(x["title"], x["source"], x["link"]): x for x in rows}
         events.extend(cluster_company(company, list(unique.values())))
 
-    events.sort(key=lambda x: x["published"], reverse=True)
+    events = merge_cross_company(events)
     seen = set(old.get("seen_events", []))
     baseline = not old.get("initialized")
-    new_events = [x for x in events if x["fp"] not in seen]
-    if baseline:
+    format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
+    new_events = [x for x in events if x["event_key"] not in seen]
+    if baseline or format_upgrade:
         # Send current verified incidents once so the upgraded company layer is visible.
         new_events = events[:8]
 
-    all_seen = list(dict.fromkeys(old.get("seen_events", []) + [x["fp"] for x in events]))[-3000:]
+    all_seen = list(dict.fromkeys(old.get("seen_events", []) + [x["event_key"] for x in events]))[-3000:]
     pending = {
         "initialized": True,
         "format_version": FORMAT_VERSION,
