@@ -34,6 +34,9 @@ base.QUERIES.extend([
     '(CATL OR 宁德时代 OR EVE Energy OR 亿纬锂能 OR 이브에너지) (ESS OR BESS OR storage OR 储能) (314Ah OR 0.414 OR 0.423 OR 가격 인상 OR price hike OR 提价 OR 소비세 OR consumption tax)',
     '(중국 OR China OR 中国) (배터리 OR battery OR 电池) (소비세 OR consumption tax OR 消费税) (2% OR 4% OR 2026 OR 2027) (ESS OR BESS OR 에너지저장 OR 储能)',
     '(LG에너지솔루션 OR 삼성SDI OR SK온 OR "LG Energy Solution" OR "Samsung SDI" OR "SK On") (ESS OR BESS OR 에너지저장) (수주 OR 계약 OR 공급 OR 생산능력 OR 가격 OR LFP OR 미국 OR 북미)',
+    '(삼성SDI OR "Samsung SDI") (ESS OR UPS OR BBU OR "energy storage") (매출비중 OR "매출 비중" OR 영업이익률 OR margin OR AMPC OR 관세환급 OR "관세 환급" OR "tariff refund" OR 본업 OR 실적 OR earnings) (3분기 OR 3Q OR Q3 OR 확정 OR actual OR results OR 발표 OR 전망 OR 추정 OR 컨센서스)',
+    '(삼성SDI OR "Samsung SDI") (SynergyCells OR "Synergy Cells" OR 시너지셀즈 OR "New Carlisle" OR 뉴칼라일 OR 인디애나) (ESS OR LFP OR "energy storage") (준공 OR completion OR 장비 OR equipment OR 반입 OR 설치 OR 시험생산 OR trial OR SOP OR 양산 OR capacity OR 생산능력 OR GWh OR 가동률 OR utilization OR 고객 OR customer OR 수주 OR contract)',
+    '(삼성SDI OR "Samsung SDI") (ESS OR LFP OR "energy storage") (미국 OR 북미 OR "StarPlus Energy" OR SynergyCells) (신규수주 OR 공급계약 OR 장기계약 OR 고객 OR GWh OR 생산능력 OR 가동률 OR 양산 OR SOP)',
     '(에코프로비엠 OR 포스코퓨처엠 OR 엘앤에프 OR EcoPro BM OR POSCO Future M) (ESS OR BESS OR 에너지저장) (LFP OR 양극재 OR 공급 OR 수주 OR 가격)',
     '(ESS OR BESS OR 에너지저장장치 OR energy storage) (MLCC OR 적층세라믹커패시터 OR multilayer ceramic capacitor) (공급난 OR 부족 OR shortage OR allocation OR 납기 OR lead time OR 생산 차질 OR bottleneck)',
     '(ESS OR BESS OR 에너지저장장치 OR energy storage) (MLCC OR 적층세라믹커패시터) (가격 인상 OR price hike OR 가격 상승 OR 두 배 OR 2배 OR average selling price OR ASP)',
@@ -76,6 +79,20 @@ MLCC_CAPACITY = re.compile(r'증설|생산\s*능력|capacity|가동률|utilizati
 MLCC_RELIEF = re.compile(r'이중\s*조달|dual\s*sourcing|재고\s*조정|inventory\s*correction|공급\s*정상화|normalization|가격\s*하락|price\s*cut|lead\s*time.*shorten|납기.*단축', re.I)
 MLCC_RELIABILITY = re.compile(r'고전압|high\s*voltage|고신뢰성|high\s*reliability|고온|high\s*temperature|검사|test|수율|yield|절연|insulation', re.I)
 HUMANOID_RE = re.compile(r'휴머노이드|humanoid|로봇용 배터리|robot battery|robotics battery', re.I)
+SDI_RE = re.compile(r'삼성SDI|Samsung\s*SDI', re.I)
+SDI_STORAGE_RE = re.compile(r'\bESS\b|\bBESS\b|energy\s*storage|에너지저장|\bUPS\b|\bBBU\b|무정전전원장치|배터리백업유닛', re.I)
+SDI_ESS_MIX_MARGIN = re.compile(r'매출\s*비중|revenue\s*mix|sales\s*mix|영업이익률|operating\s*margin|margin|AMPC|관세\s*환급|tariff\s*refund|본업\s*(?:흑자|이익)', re.I)
+SDI_FORECAST = re.compile(r'증권가|전망|예상|추정|컨센서스|forecast|estimate|expected|projected', re.I)
+SDI_ACTUAL_EARNINGS = re.compile(r'실적\s*(?:발표|확정)|분기\s*실적|earnings\s*(?:results|release)|results\s*for|actual|확정치|reported', re.I)
+SYNERGYCELLS_RE = re.compile(r'SynergyCells|Synergy\s*Cells|시너지셀즈|New\s*Carlisle|뉴\s*칼라일|인디애나', re.I)
+SYNERGY_COMPLETE = re.compile(r'준공|공장\s*완공|construction\s*(?:completed|complete)|plant\s*(?:completed|complete)', re.I)
+SYNERGY_EQUIPMENT = re.compile(r'장비\s*(?:발주|반입|설치)|equipment\s*(?:order|move[-\s]*in|install)|생산\s*설비\s*(?:반입|설치)', re.I)
+SYNERGY_TRIAL = re.compile(r'시험\s*생산|시생산|trial\s*production|pilot\s*production|qualification\s*run', re.I)
+SYNERGY_SOP = re.compile(r'양산\s*(?:개시|시작|돌입)|SOP\s*(?:개시|시작)|mass\s*production\s*(?:started|began|commenced)|commercial\s*production\s*(?:started|began)', re.I)
+SYNERGY_CAPACITY = re.compile(r'(?:생산\s*능력|capacity).{0,50}\d[\d,.]*\s*(?:GWh|MWh)|\d[\d,.]*\s*(?:GWh|MWh).{0,80}(?:SynergyCells|New\s*Carlisle|시너지셀즈|뉴\s*칼라일)', re.I)
+SYNERGY_UTILIZATION = re.compile(r'가동률|utilization|ramp[-\s]*rate|run[-\s]*rate', re.I)
+SYNERGY_CONTRACT = re.compile(r'신규\s*수주|공급\s*계약|장기\s*계약|고객\s*확정|customer\s*(?:award|named|selected)|contract|order', re.I)
+SYNERGY_BASELINE = re.compile(r'49\.99\s*%|지분\s*전량\s*인수|wholly[-\s]*owned|단독\s*법인|under\s*construction|건설\s*중', re.I)
 ESS3_RE = re.compile(
     r'(?:제\s*)?3차.{0,40}(?:ESS|에너지저장장치).{0,50}중앙계약시장|'
     r'(?:ESS|에너지저장장치).{0,50}(?:제\s*)?3차.{0,40}중앙계약시장|'
@@ -176,9 +193,40 @@ def _is_mlcc_ess(text: str) -> bool:
     return bool(ESS_RE.search(text) and MLCC_RE.search(text) and not HUMANOID_RE.search(text))
 
 
+def _sdi_ess_stage(text: str, source: str = '') -> str:
+    if not SDI_RE.search(text):
+        return ''
+    if SYNERGYCELLS_RE.search(text):
+        if SYNERGY_CONTRACT.search(text):
+            return 'synergy_contract'
+        if SYNERGY_SOP.search(text):
+            return 'synergy_sop'
+        if SYNERGY_TRIAL.search(text):
+            return 'synergy_trial'
+        if SYNERGY_EQUIPMENT.search(text):
+            return 'synergy_equipment'
+        if SYNERGY_COMPLETE.search(text):
+            return 'synergy_complete'
+        if SYNERGY_CAPACITY.search(text):
+            return 'synergy_capacity'
+        if SYNERGY_UTILIZATION.search(text):
+            return 'synergy_utilization'
+        if SYNERGY_BASELINE.search(text):
+            return 'synergy_baseline'
+    if SDI_STORAGE_RE.search(text) and SDI_ESS_MIX_MARGIN.search(text):
+        official = source in base.OFFICIAL_OR_PRIMARY
+        if SDI_FORECAST.search(text) and not (official and SDI_ACTUAL_EARNINGS.search(text)):
+            return 'earnings_forecast'
+        if official or SDI_ACTUAL_EARNINGS.search(text):
+            return 'earnings_actual'
+        return 'earnings_unconfirmed'
+    return ''
+
+
 def _is_ess_battery(text: str) -> bool:
     ess = ESS_RE.search(text)
     supply_component = BATTERY_RE.search(text) or MLCC_RE.search(text)
+    sdi_storage = bool(SDI_RE.search(text) and SDI_STORAGE_RE.search(text))
     # Official KPX market-design/lifetime rules are themselves battery-demand
     # state changes even when the headline says only "ESS" and does not repeat
     # a cell-maker name. Keep them in the ESS-battery lane so the primary source
@@ -188,6 +236,7 @@ def _is_ess_battery(text: str) -> bool:
     )
     return bool(
         (ess and supply_component and not HUMANOID_RE.search(text))
+        or sdi_storage
         or official_lifetime_rule
     )
 
@@ -205,6 +254,9 @@ def score(item: dict) -> int:
         return _orig_score(item)
 
     source = item.get('source') or ''
+    sdi_stage = _sdi_ess_stage(text, source)
+    if sdi_stage in {'earnings_forecast', 'earnings_unconfirmed', 'synergy_baseline'}:
+        return 0
     ess3_stage = _ess3_stage(text, source)
     # Generic "3rd ESS market is coming / competition heats up" articles are
     # background repeats, not a new state change. Alert only when a notice,
@@ -213,6 +265,18 @@ def score(item: dict) -> int:
         return 0
 
     s = 9
+    if sdi_stage:
+        s = 19
+        s += {
+            'earnings_actual': 12,
+            'synergy_complete': 10,
+            'synergy_equipment': 11,
+            'synergy_trial': 13,
+            'synergy_sop': 16,
+            'synergy_capacity': 11,
+            'synergy_utilization': 10,
+            'synergy_contract': 15,
+        }.get(sdi_stage, 0)
     if base.NUMERIC.search(text):
         s += 3
     if re.search(r'승인\s*(?:중단|보류)|pause.*approval|approval.*pause|신규\s*공장|greenfield|미착공|产能|审批', text, re.I):
@@ -249,6 +313,11 @@ def score(item: dict) -> int:
 
 
 def _raw_cat(text: str) -> str:
+    sdi_stage = _sdi_ess_stage(text)
+    if sdi_stage == 'earnings_actual':
+        return '삼성SDI 실적 질·본업 수익성'
+    if sdi_stage in {'synergy_complete', 'synergy_equipment', 'synergy_trial', 'synergy_sop', 'synergy_capacity', 'synergy_utilization', 'synergy_contract'}:
+        return '삼성SDI SynergyCells 가동 전환'
     if _is_mlcc_ess(text):
         if MLCC_RELIEF.search(text):
             return 'MLCC 공급완화·재고조정'
@@ -280,6 +349,10 @@ def category(text: str, group: str) -> str:
 
 def meaning(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
+    if raw == '삼성SDI 실적 질·본업 수익성':
+        return '증권가의 ESS 매출비중·마진 전망이 아니라 회사 분기 실적에서 실제 ESS/UPS/BBU 비중과 수익성이 확인되는 단계입니다. AMPC·관세환급 등 일회성/정책성 이익을 분리해 반복 가능한 본업 영업이익과 현금창출력을 추적합니다.'
+    if raw == '삼성SDI SynergyCells 가동 전환':
+        return 'GM 지분 인수와 건설 중이라는 기준선을 넘어 New Carlisle SynergyCells가 준공→장비 반입→시험생산→SOP→GWh 생산능력·가동률→고객 수주로 전환되는 단계입니다. 각 단계가 북미 ESS 매출과 감가상각·총자산이익률에 실제로 연결되는지 봅니다.'
     if raw == '장기계약·수명보증':
         return 'ESS 중앙계약시장의 계약기간이 최대 25년으로 길어지고 충·방전 횟수·잔존용량 평가가 강화되면 초기 셀 가격보다 장기 열화율·배터리관리시스템·열관리·교체비용이 수주 경쟁력을 좌우합니다. 25년형의 연 730회, 총 1만8,250회 운전과 종료 시 잔존용량 평가를 실제 보증조건·시스템 설계에 연결해 추적합니다.'
     if raw == 'MLCC 공급 병목':
@@ -307,6 +380,10 @@ def meaning(cat: str) -> str:
 
 def risk(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
+    if raw == '삼성SDI 실적 질·본업 수익성':
+        return 'AMPC를 뺐다고 곧바로 순수 본업 이익이 되는 것은 아닙니다. 관세환급·환율·평가손익·일회성 비용을 추가 분리하고, ESS 매출비중이 올라가도 실제 영업이익률·가동률·운전자본·영업현금흐름이 동반 개선되는지 확인합니다.'
+    if raw == '삼성SDI SynergyCells 가동 전환':
+        return '공장 준공이나 명목 GWh 생산능력만으로 매출을 확정할 수 없습니다. 고객 수주·시험생산 수율·가동률이 늦으면 감가상각과 운전자본 부담이 먼저 커져 총자산이익률이 악화될 수 있습니다.'
     if raw == '장기계약·수명보증':
         return '25년 계약은 배터리 셀이 25년 동안 교체 없이 동일 성능을 유지한다는 뜻이 아닙니다. 셀 편차·열관리·자연열화·보증충당금·유지보수 비용이 누적될 수 있고, 기사상 평가조건과 실제 낙찰 프로젝트별 보증·교체 책임을 구분해야 합니다.'
     if raw == 'MLCC 공급 병목':
@@ -336,6 +413,17 @@ def verification(item: dict, group: str, text: str) -> str:
     if group != 'ess_battery':
         return _orig_verification(item, group, text)
     source = item.get('source') or ''
+    sdi_stage = _sdi_ess_stage(text, source)
+    if sdi_stage == 'earnings_actual':
+        if source in base.OFFICIAL_OR_PRIMARY:
+            return '삼성SDI 공식 실적·IR · ESS/UPS/BBU 실제 비중과 AMPC·관세환급·본업 이익을 분리 확인'
+        return '실적 보도 단계 · 삼성SDI 공식 분기실적/IR로 실제 비중·마진·일회성 항목 교차확인'
+    if sdi_stage in {'synergy_complete', 'synergy_equipment', 'synergy_trial', 'synergy_sop', 'synergy_capacity', 'synergy_utilization', 'synergy_contract'}:
+        if source in base.OFFICIAL_OR_PRIMARY:
+            return '삼성SDI 공식자료 · SynergyCells 준공/장비/시험생산/SOP/생산능력/가동률/수주 단계 확인'
+        return '보도 단계 · 삼성SDI·고객사 공식자료로 SynergyCells 단계 변화 교차확인'
+    if sdi_stage in {'earnings_forecast', 'earnings_unconfirmed', 'synergy_baseline'}:
+        return '기준선·추정 단계 · 새 확정 실적/가동 단계 아님'
     if ESS_LIFETIME_RULE.search(text):
         return '전력거래소 조건을 인용한 보도 · 계약기간·충방전·잔존용량 평가조건은 KPX 공고 원문으로 교차확인'
     if _is_mlcc_ess(text):
@@ -379,6 +467,13 @@ def _same_event(a: dict, b: dict) -> bool:
     if sa3 and sb3 and sa3 == sb3:
         return True
 
+    sda, sdb = _sdi_ess_stage(ta, a.get('source') or ''), _sdi_ess_stage(tb, b.get('source') or '')
+    if sda and sdb and sda == sdb:
+        nums_a, nums_b = _numbers(ta), _numbers(tb)
+        if nums_a and nums_b:
+            return bool(nums_a & nums_b)
+        return True
+
     if _skon_lnf_lfp_contract(ta) and _skon_lnf_lfp_contract(tb):
         return True
     if _generic_korean_supply_contract(ta) and _generic_korean_supply_contract(tb):
@@ -414,7 +509,13 @@ def _same_event(a: dict, b: dict) -> bool:
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     import hashlib
-    stage3 = _ess3_stage(text, item.get('source') or '')
+    source = item.get('source') or ''
+    sdi_stage = _sdi_ess_stage(text, source)
+    stage3 = _ess3_stage(text, source)
+    if sdi_stage:
+        nums = sorted(_numbers(text))
+        suffix = '|'.join(nums[:3]) if nums else 'no-number'
+        return hashlib.sha256(f'samsung-sdi|ess|{sdi_stage}|{suffix}'.encode()).hexdigest()
     if ESS_LIFETIME_RULE.search(text):
         return hashlib.sha256(b'ess|kpx-central-market|2026|25y-lifetime-rules').hexdigest()
     if stage3:
