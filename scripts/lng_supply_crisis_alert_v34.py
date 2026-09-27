@@ -14,6 +14,10 @@ from __future__ import annotations
 import datetime as dt
 import hashlib
 import html
+import json
+import re
+import urllib.parse
+from zoneinfo import ZoneInfo
 
 import lng_supply_crisis_alert_v2 as core
 import lng_supply_crisis_alert_v33 as v33
@@ -27,6 +31,9 @@ _BASE_SETUP = core.build_setup_test
 _BASE_POLARITY_V34 = core.classify_polarity
 _BASE_CATEGORY_LABEL_V34 = core.category_label
 _BASE_CONFIRMED_V34 = core.confirmed_news_groups
+_BASE_FETCH_MARKET_QUOTES_V34 = core.fetch_market_quotes
+_BASE_FORMAT_QUOTE_V34 = core.format_quote
+_BASE_SIGNAL_LABEL_V34 = core.signal_label
 _BASE_V32_STRICT_TITLE_V34 = v32._strict_title
 _BASE_V32_SOURCE_KO_V34 = v32._source_ko
 
@@ -66,8 +73,11 @@ core.TRUSTED_SOURCE_ALIASES = tuple(core.TRUSTED_SOURCE_ALIASES) + (
     "alaska gasline development corporation", "agdc", "glenfarne", "polar lng",
     "federal energy regulatory commission", "ferc",
 )
-core.OFFICIAL_SOURCE_ALIASES = tuple(core.OFFICIAL_SOURCE_ALIASES) + (
-    "alaska gasline development corporation", "agdc", "glenfarne", "polar lng",
+core.OFFICIAL_SOURCE_ALIASES = tuple(
+    alias for alias in core.OFFICIAL_SOURCE_ALIASES
+    if alias not in ("glenfarne", "polar lng")
+) + (
+    "alaska gasline development corporation", "agdc",
     "federal energy regulatory commission", "ferc",
 )
 
@@ -167,6 +177,390 @@ HORMUZ_GENERIC_STATUS_TERMS = (
 )
 
 
+
+KOREA_OFFICIAL_SOURCE_ALIASES_V34 = (
+    "대한민국 대통령실", "대통령실", "office of the president", "presidential office",
+    "ministry of trade, industry and energy", "motie", "산업통상자원부", "산업부",
+    "korea gas corporation", "kogas", "한국가스공사",
+)
+US_GOV_OFFICIAL_SOURCE_ALIASES_V34 = (
+    "the white house", "white house", "u.s. department of energy", "department of energy",
+    "state of alaska", "federal energy regulatory commission", "ferc",
+)
+ALASKA_PROJECT_OFFICIAL_SOURCE_ALIASES_V34 = (
+    "alaska gasline development corporation", "alaska gasline development corp", "agdc",
+)
+ALASKA_DEVELOPER_SOURCE_ALIASES_V34 = ("glenfarne", "polar lng")
+
+TE_COMMODITY_URLS_V34 = (
+    "https://ko.tradingeconomics.com/commodities",
+    "https://tradingeconomics.com/commodities",
+)
+TE_MAX_AGE_DAYS_V34 = 5
+TE_CROSS_PAGE_TOL_PCT_V34 = 0.35
+
+
+def _source_matches_any_v34(source: str, aliases: tuple[str, ...]) -> bool:
+    normalized = core.normalize_text(source)
+    return any(alias in normalized for alias in aliases)
+
+
+def _alaska_policy_verification_v34(group) -> str:
+    items = list(group.get("evidence") or [])
+    sources = [str(getattr(item, "source", "") or "") for item in items]
+    has_korea = any(_source_matches_any_v34(src, KOREA_OFFICIAL_SOURCE_ALIASES_V34) for src in sources)
+    has_usgov = any(_source_matches_any_v34(src, US_GOV_OFFICIAL_SOURCE_ALIASES_V34) for src in sources)
+    has_project = any(_source_matches_any_v34(src, ALASKA_PROJECT_OFFICIAL_SOURCE_ALIASES_V34) for src in sources)
+    has_developer = any(_source_matches_any_v34(src, ALASKA_DEVELOPER_SOURCE_ALIASES_V34) for src in sources)
+
+    if has_korea and (has_usgov or has_project):
+        return "한·미/프로젝트 양측 공식 원문"
+    if has_korea:
+        return "한국 측 공식 원문"
+    if has_usgov:
+        return "미국 정부 공식 원문 · 한국 측 참여 미확인"
+    if has_project:
+        return "알래스카 프로젝트 측 공식 원문 · 한국 측 참여 미확인"
+    if has_developer:
+        return "사업주 원문 · 한국 측 참여 미확인"
+
+    previous = str(group.get("verification") or "")
+    if previous == "공식 원문":
+        return "출처 단계 재분류 · 한국 측 참여 미확인"
+    return previous or "신뢰매체 보도 단계 · 한국 측 참여 미확인"
+
+
+def _alaska_project_verification_v34(items: list[core.NewsItem]) -> str:
+    sources = [str(getattr(item, "source", "") or "") for item in items]
+    if any(_source_matches_any_v34(src, US_GOV_OFFICIAL_SOURCE_ALIASES_V34) for src in sources):
+        return "미국 정부 공식 원문"
+    if any(_source_matches_any_v34(src, ALASKA_PROJECT_OFFICIAL_SOURCE_ALIASES_V34) for src in sources):
+        return "알래스카 프로젝트 측 공식 원문"
+    if any(_source_matches_any_v34(src, ALASKA_DEVELOPER_SOURCE_ALIASES_V34) for src in sources):
+        return "사업주 원문"
+    return "주요 신뢰매체 보도 단계"
+
+
+def _visible_text_v34(raw_html: str) -> str:
+    text = re.sub(r"(?is)<script\b.*?</script>|<style\b.*?</style>", " ", raw_html)
+    text = re.sub(r"(?s)<[^>]+>", " ", text)
+    return re.sub(r"\s+", " ", html.unescape(text)).strip()
+
+
+def _num_v34(value: str) -> float:
+    return float(str(value).replace(",", "").strip())
+
+
+def _parse_te_commodity_row_v34(text: str, key: str) -> dict[str, object]:
+    if key == "ttf":
+        labels = (
+            r"EU\s*가스", r"유럽(?:연합)?\s*가스", r"EU\s*Gas",
+            r"EU\s*Natural\s*Gas", r"European\s*Union\s*Gas",
+        )
+    elif key == "jkm":
+        labels = (
+            r"LNG\s*JKM", r"Liquefied\s*Natural\s*Gas\s*Japan\s*Korea",
+        )
+    else:
+        raise ValueError(f"unsupported TE key: {key}")
+
+    label_expr = "(?:" + "|".join(labels) + ")"
+    pattern = (
+        label_expr
+        + r"\s+([0-9.,]+)\s+([+-]?[0-9.,]+)\s+([+-]?[0-9.,]+)%"
+        + r"\s+([+-]?[0-9.,]+)%\s+(20\d{2}-\d{2}-\d{2})"
+    )
+    matches = list(re.finditer(pattern, text, flags=re.I))
+    if not matches:
+        raise RuntimeError(f"Trading Economics commodities row not found: {key}")
+
+    rows: list[dict[str, object]] = []
+    for match in matches:
+        actual = _num_v34(match.group(1))
+        abs_move = abs(_num_v34(match.group(2)))
+        pct = _num_v34(match.group(3))
+        source_date = dt.date.fromisoformat(match.group(5))
+        if actual <= 0 or pct <= -99.0:
+            continue
+        previous = actual / (1.0 + pct / 100.0)
+        implied_abs = abs(actual - previous)
+        tolerance = max(0.03, abs_move * 0.08)
+        if abs(implied_abs - abs_move) > tolerance:
+            continue
+        rows.append({
+            "actual": actual,
+            "previous": previous,
+            "change_pct": pct,
+            "source_date": source_date,
+            "abs_move": abs_move,
+        })
+    if not rows:
+        raise RuntimeError(f"Trading Economics row failed arithmetic validation: {key}")
+    rows.sort(key=lambda row: row["source_date"], reverse=True)
+    return rows[0]
+
+
+def _fetch_te_commodity_quote_v34(key: str) -> core.Quote:
+    parsed_rows: list[dict[str, object]] = []
+    errors: list[str] = []
+    for url in TE_COMMODITY_URLS_V34:
+        cache_bust = int(core.now_utc().timestamp())
+        try:
+            raw = core.fetch_bytes(f"{url}?v={cache_bust}").decode("utf-8", errors="replace")
+            parsed_rows.append(_parse_te_commodity_row_v34(_visible_text_v34(raw), key))
+        except Exception as exc:
+            errors.append(f"{url}:{type(exc).__name__}")
+
+    if not parsed_rows:
+        raise RuntimeError(f"Trading Economics commodities validation failed for {key}: {';'.join(errors)}")
+
+    latest_date = max(row["source_date"] for row in parsed_rows)
+    current_rows = [row for row in parsed_rows if row["source_date"] == latest_date]
+    actuals = [float(row["actual"]) for row in current_rows]
+    previous_values = [float(row["previous"]) for row in current_rows]
+    if len(actuals) >= 2:
+        gap = (max(actuals) / min(actuals) - 1.0) * 100.0 if min(actuals) else 999.0
+        if gap > TE_CROSS_PAGE_TOL_PCT_V34:
+            raise RuntimeError(f"Trading Economics locale mismatch for {key}: {actuals}")
+
+    today_kst = core.now_utc().astimezone(core.KST).date()
+    age_days = (today_kst - latest_date).days
+    if age_days < 0 or age_days > TE_MAX_AGE_DAYS_V34:
+        raise RuntimeError(f"Trading Economics stale row for {key}: {latest_date} age={age_days}d")
+
+    price = sum(actuals) / len(actuals)
+    previous = sum(previous_values) / len(previous_values)
+    pct = (price / previous - 1.0) * 100.0
+    observed = core.now_utc()
+    if key == "ttf":
+        label = "Trading Economics 한국 EU Gas(TTF 추종 공개값)"
+        unit = "유로/MWh"
+        symbol = "TE:EU-GAS"
+        suffix = ""
+    else:
+        label = "Trading Economics 한국 LNG JKM 추종 공개값"
+        unit = "달러/MMBtu"
+        symbol = "TE:LNG-JKM"
+        suffix = "; Platts 공식 평가값 아님"
+
+    return core.Quote(
+        key=key,
+        symbol=symbol,
+        label=label,
+        unit=unit,
+        price=price,
+        previous_close=previous,
+        change_pct=pct,
+        timestamp_epoch=observed.timestamp(),
+        timestamp_utc=observed.isoformat(timespec="seconds"),
+        age_minutes=0,
+        source_note=(
+            "Trading Economics commodities table price/daily/%chg/date aligned; "
+            f"기준일={latest_date.isoformat()}; locale_checks={len(current_rows)}{suffix}"
+        ),
+    )
+
+
+def _parse_yahoo_brent_payload_v34(payload: dict[str, object]) -> dict[str, object]:
+    results = payload.get("chart", {}).get("result") if isinstance(payload.get("chart"), dict) else None
+    if not results:
+        raise RuntimeError("Yahoo Brent chart result missing")
+    result = results[0]
+    meta = result.get("meta") or {}
+    price = core.finite_number(meta.get("regularMarketPrice"))
+    market_ts = core.finite_number(meta.get("regularMarketTime"))
+    timestamps = list(result.get("timestamp") or [])
+    indicators = result.get("indicators") or {}
+    quote_blocks = indicators.get("quote") or []
+    closes = list((quote_blocks[0] if quote_blocks else {}).get("close") or [])
+    if price is None or market_ts is None or not timestamps or not closes:
+        raise RuntimeError("Yahoo Brent daily series incomplete")
+
+    tz_name = str(meta.get("exchangeTimezoneName") or "UTC")
+    try:
+        exchange_tz = ZoneInfo(tz_name)
+    except Exception:
+        exchange_tz = core.UTC
+    current_date = dt.datetime.fromtimestamp(market_ts, core.UTC).astimezone(exchange_tz).date()
+
+    sessions: dict[dt.date, float] = {}
+    for raw_ts, raw_close in zip(timestamps, closes):
+        ts = core.finite_number(raw_ts)
+        close = core.finite_number(raw_close)
+        if ts is None or close is None or close <= 0:
+            continue
+        session_date = dt.datetime.fromtimestamp(ts, core.UTC).astimezone(exchange_tz).date()
+        sessions[session_date] = close
+
+    prior_dates = sorted(date for date in sessions if date < current_date)
+    if not prior_dates:
+        raise RuntimeError(f"Yahoo Brent prior trading session missing before {current_date}")
+    previous_date = prior_dates[-1]
+    previous = sessions[previous_date]
+    return {
+        "price": price,
+        "previous": previous,
+        "market_ts": market_ts,
+        "previous_date": previous_date,
+        "current_date": current_date,
+    }
+
+
+def _fetch_yahoo_brent_quote_v34() -> core.Quote:
+    symbol = str(core.PRICE_SPECS["brent"]["symbol"])
+    encoded = urllib.parse.quote(symbol, safe="")
+    params = urllib.parse.urlencode({"interval": "1d", "range": "10d", "includePrePost": "false"})
+    parsed: list[dict[str, object]] = []
+    for base in core.YAHOO_BASES:
+        payload = json.loads(core.fetch_bytes(f"{base}/{encoded}?{params}").decode("utf-8"))
+        parsed.append(_parse_yahoo_brent_payload_v34(payload))
+
+    first, second = parsed
+    price_gap = abs(float(first["price"]) / float(second["price"]) - 1.0) * 100.0
+    previous_gap = abs(float(first["previous"]) / float(second["previous"]) - 1.0) * 100.0
+    time_gap = abs(float(first["market_ts"]) - float(second["market_ts"]))
+    if (
+        price_gap > 0.05
+        or previous_gap > 0.05
+        or time_gap > 300
+        or first["previous_date"] != second["previous_date"]
+    ):
+        raise RuntimeError(
+            "Yahoo Brent endpoint mismatch "
+            f"price={price_gap:.3f}% previous={previous_gap:.3f}% time={time_gap:.0f}s"
+        )
+
+    observed = dt.datetime.fromtimestamp(float(first["market_ts"]), core.UTC)
+    age = core.now_utc() - observed
+    max_age = core.quote_max_age() if hasattr(core, "quote_max_age") else dt.timedelta(hours=4)
+    if age < dt.timedelta(0) or age > max_age:
+        raise RuntimeError(f"Yahoo Brent stale quote age={int(age.total_seconds() // 60)}m")
+
+    price = float(first["price"])
+    previous = float(first["previous"])
+    previous_date = first["previous_date"]
+    return core.Quote(
+        key="brent",
+        symbol=symbol,
+        label="Yahoo Brent 선물",
+        unit="달러/배럴",
+        price=price,
+        previous_close=previous,
+        change_pct=(price / previous - 1.0) * 100.0,
+        timestamp_epoch=float(first["market_ts"]),
+        timestamp_utc=observed.isoformat(timespec="seconds"),
+        age_minutes=max(0, int(age.total_seconds() // 60)),
+        source_note=(
+            "Yahoo Finance 10일 일봉 직접 시계열·query1/query2 대조; "
+            f"직전거래일={previous_date.isoformat()}"
+        ),
+    )
+
+
+def fetch_market_quotes_v34():
+    quotes, errors = _BASE_FETCH_MARKET_QUOTES_V34()
+    for key in ("ttf", "jkm"):
+        try:
+            quotes[key] = _fetch_te_commodity_quote_v34(key)
+        except Exception as exc:
+            quotes.pop(key, None)
+            errors.append(f"{key}: v34 aligned-date validation failed: {type(exc).__name__}: {exc}")
+    try:
+        quotes["brent"] = _fetch_yahoo_brent_quote_v34()
+    except Exception as exc:
+        quotes.pop("brent", None)
+        errors.append(f"brent: v34 direct-daily-close validation failed: {type(exc).__name__}: {exc}")
+    return quotes, errors
+
+
+def format_quote_v34(quote: core.Quote) -> str:
+    observed_kst = dt.datetime.fromtimestamp(quote.timestamp_epoch, core.UTC).astimezone(core.KST)
+    if quote.key in ("ttf", "jkm"):
+        match = re.search(r"기준일=(\d{4}-\d{2}-\d{2})", quote.source_note)
+        if not match:
+            raise RuntimeError(f"{quote.key}: aligned source date missing")
+        suffix = "; Platts 공식 평가값 아님" if quote.key == "jkm" else ""
+        return (
+            f"{quote.label} {quote.price:,.2f}{quote.unit} "
+            f"(이전값 {quote.previous_close:,.2f} 대비 {quote.change_pct:+.2f}%, "
+            f"기준일 {match.group(1)}, 조회 {observed_kst:%Y-%m-%d %H:%M KST}{suffix})"
+        )
+    if quote.key == "brent":
+        match = re.search(r"직전거래일=(\d{4}-\d{2}-\d{2})", quote.source_note)
+        if not match:
+            raise RuntimeError("Brent prior trading date missing")
+        return (
+            f"{quote.label} {quote.price:,.2f}{quote.unit} "
+            f"(직전 거래일 {match.group(1)} 종가 {quote.previous_close:,.2f} 대비 "
+            f"{quote.change_pct:+.2f}%, 기준 {observed_kst:%Y-%m-%d %H:%M KST})"
+        )
+    return _BASE_FORMAT_QUOTE_V34(quote)
+
+
+def signal_label_v34(signal: str, cleared: bool = False) -> str:
+    label = _BASE_SIGNAL_LABEL_V34(signal, cleared)
+    return label.replace("Brent 이전 종가", "Brent 직전 거래일 종가").replace(
+        "Yahoo 이전 종가", "직전 거래일 종가"
+    )
+
+
+def _self_validate_price_alignment_v34() -> None:
+    te_fixture = (
+        "EU 가스 70.46 4.48 -5.98% 7.11% 2026-09-25 "
+        "LNG JKM 25.82 0.57 -2.14% 12.51% 2026-09-25"
+    )
+    ttf = _parse_te_commodity_row_v34(te_fixture, "ttf")
+    jkm = _parse_te_commodity_row_v34(te_fixture, "jkm")
+    assert str(ttf["source_date"]) == "2026-09-25"
+    assert abs(float(ttf["previous"]) - 74.94) < 0.06
+    assert str(jkm["source_date"]) == "2026-09-25"
+    assert abs(float(jkm["previous"]) - 26.38) < 0.06
+
+    yahoo_fixture = {
+        "chart": {
+            "result": [{
+                "meta": {
+                    "regularMarketPrice": 97.84,
+                    "regularMarketTime": 1790366400,
+                    "exchangeTimezoneName": "Europe/London",
+                },
+                "timestamp": [1790074800, 1790161200, 1790247600, 1790334000],
+                "indicators": {"quote": [{"close": [100.34, 99.70, 98.60, 97.84]}]},
+            }]
+        }
+    }
+    parsed = _parse_yahoo_brent_payload_v34(yahoo_fixture)
+    assert float(parsed["previous"]) != 100.34
+    assert float(parsed["previous"]) > 0
+
+
+def _self_validate_policy_provenance_v34() -> None:
+    agdc_item = core.NewsItem(
+        category="alaska_lng",
+        polarity="easing",
+        subtype="alaska_policy_signal",
+        title="South Korea and Alaska LNG discussions progress",
+        source="Alaska Gasline Development Corporation",
+        link="https://example.com/agdc",
+        published_utc="2026-09-26T00:00:00+00:00",
+        published_epoch=1.0,
+        official=True,
+        event_id="fixture-agdc-policy",
+    )
+    group = {
+        "category": "alaska_lng",
+        "polarity": "easing",
+        "subtype": "alaska_policy_signal",
+        "event_id": "fixture",
+        "latest_epoch": 1.0,
+        "evidence": [agdc_item],
+        "verification": "공식 원문",
+    }
+    label = _alaska_policy_verification_v34(group)
+    assert label == "알래스카 프로젝트 측 공식 원문 · 한국 측 참여 미확인"
+    assert label != "공식 원문"
+
+
 def _canonical_alaska_policy_event_id_v34(group) -> str | None:
     if str(group.get("category") or "") != "alaska_lng":
         return None
@@ -251,7 +645,7 @@ def confirmed_news_groups_v34(items: list[core.NewsItem]):
         canonical_policy_id = _canonical_alaska_policy_event_id_v34(group)
         if canonical_policy_id:
             group["event_id"] = canonical_policy_id
-            group["verification"] = str(group.get("verification") or "정책 발언 확인")
+            group["verification"] = _alaska_policy_verification_v34(group)
 
     alaska_items = [item for item in items if item.category == ALASKA_CATEGORY]
     buckets: dict[tuple[str, str], list[core.NewsItem]] = {}
@@ -280,7 +674,7 @@ def confirmed_news_groups_v34(items: list[core.NewsItem]):
                 break
 
         if official:
-            verification = "공식 원문"
+            verification = _alaska_project_verification_v34(evidence)
         elif major:
             verification = "주요 신뢰매체 보도 단계"
         else:
@@ -636,7 +1030,7 @@ def _self_validate_alaska_policy_render_v34() -> None:
             "event_id": "fixture-alaska-policy",
             "latest_epoch": 1.0,
             "evidence": [item],
-            "verification": "공식 원문",
+            "verification": "알래스카 프로젝트 측 공식 원문 · 한국 측 참여 미확인",
         }],
     )
     assert "알래스카가스라인개발공사(AGDC)" in rendered
@@ -646,6 +1040,8 @@ def _self_validate_alaska_policy_render_v34() -> None:
 
 
 _self_validate_alaska_policy_render_v34()
+_self_validate_price_alignment_v34()
+_self_validate_policy_provenance_v34()
 
 
 def _asia_demand_groups(groups) -> list[dict]:
@@ -741,6 +1137,15 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
         "signals": ["현물 조달비 급증", "LNG 장기수요 재평가", "발전원 전환", "장기계약 축소", "발전소 취소·연기"],
         "interpretation_guard": "analysis signal != confirmed demand destruction",
     }
+    metadata["price_integrity_v34"] = {
+        "ttf_jkm": "Trading Economics commodities-table value/change/date aligned; stale detail-page date cannot override",
+        "brent": "Yahoo 10-day daily series; previous close is the immediately prior trading session, never chartPreviousClose",
+        "fail_closed": True,
+    }
+    metadata["official_source_integrity_v34"] = {
+        "policy_rule": "US/project-side source cannot confirm Korean participation",
+        "generic_official_label": "forbidden for Alaska policy signals",
+    }
     metadata["lng_relevance_guard"] = {
         "exclude": "oil/crude/refinery-only evidence cannot cross-confirm LNG/Hormuz groups",
         "keep": "direct LNG/natural-gas evidence or commodity-neutral chokepoint status; independent market threshold signals remain separate",
@@ -771,6 +1176,9 @@ def build_setup_test_v34(quotes):
     return title, body, metadata
 
 
+core.fetch_market_quotes = fetch_market_quotes_v34
+core.format_quote = format_quote_v34
+core.signal_label = signal_label_v34
 core.build_regular_alert = build_regular_alert_v34
 core.build_setup_test = build_setup_test_v34
 
