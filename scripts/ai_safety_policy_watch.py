@@ -71,7 +71,7 @@ OFFICIAL_SOURCE_HINTS = (
 )
 
 TRUSTED_SOURCE_HINTS = (
-    "reuters", "yonhap", "연합뉴스", "financial times", "bloomberg",
+    "reuters", "axios", "the information", "yonhap", "연합뉴스", "financial times", "bloomberg",
     "the information", "zdnet", "전자신문", "etnews", "파이낸셜뉴스",
     "매일경제", "한국경제", "머니투데이", "이데일리", "조선비즈",
     "서울경제", "디지털데일리", "디지털타임스", "the verge",
