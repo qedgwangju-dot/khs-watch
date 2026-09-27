@@ -261,12 +261,15 @@ def _parse_te_commodity_row_v34(text: str, key: str) -> dict[str, object]:
         labels = (
             r"LNG\s*JKM", r"Liquefied\s*Natural\s*Gas\s*Japan\s*Korea",
         )
+    elif key == "brent":
+        labels = (r"브렌트", r"Brent")
     else:
         raise ValueError(f"unsupported TE key: {key}")
 
     label_expr = "(?:" + "|".join(labels) + ")"
+    unit_expr = r"(?:\s+(?:EUR/MWh|USD/MMBtu|USD/MMBTU|USD/Bbl|USD/BBL))?"
     pattern = (
-        label_expr
+        label_expr + unit_expr
         + r"\s+([0-9.,]+)\s+([+-]?[0-9.,]+)\s+([+-]?[0-9.,]+)%"
         + r"\s+([+-]?[0-9.,]+)%\s+(20\d{2}-\d{2}-\d{2})"
     )
@@ -337,11 +340,16 @@ def _fetch_te_commodity_quote_v34(key: str) -> core.Quote:
         unit = "유로/MWh"
         symbol = "TE:EU-GAS"
         suffix = ""
-    else:
+    elif key == "jkm":
         label = "Trading Economics 한국 LNG JKM 추종 공개값"
         unit = "달러/MMBtu"
         symbol = "TE:LNG-JKM"
         suffix = "; Platts 공식 평가값 아님"
+    else:
+        label = "Trading Economics Brent 추종 공개값"
+        unit = "달러/배럴"
+        symbol = "TE:BRENT"
+        suffix = ""
 
     return core.Quote(
         key=key,
@@ -357,6 +365,94 @@ def _fetch_te_commodity_quote_v34(key: str) -> core.Quote:
         source_note=(
             "Trading Economics commodities table price/daily/%chg/date aligned; "
             f"기준일={latest_date.isoformat()}; locale_checks={len(current_rows)}{suffix}"
+        ),
+    )
+
+
+
+def _parse_yahoo_daily_sessions_v34(payload: dict[str, object]) -> dict[dt.date, float]:
+    results = payload.get("chart", {}).get("result") if isinstance(payload.get("chart"), dict) else None
+    if not results:
+        raise RuntimeError("Yahoo daily chart result missing")
+    result = results[0]
+    meta = result.get("meta") or {}
+    tz_name = str(meta.get("exchangeTimezoneName") or "UTC")
+    try:
+        exchange_tz = ZoneInfo(tz_name)
+    except Exception:
+        exchange_tz = core.UTC
+    timestamps = list(result.get("timestamp") or [])
+    indicators = result.get("indicators") or {}
+    quote_blocks = indicators.get("quote") or []
+    closes = list((quote_blocks[0] if quote_blocks else {}).get("close") or [])
+    sessions: dict[dt.date, float] = {}
+    for raw_ts, raw_close in zip(timestamps, closes):
+        ts = core.finite_number(raw_ts)
+        close = core.finite_number(raw_close)
+        if ts is None or close is None or close <= 0:
+            continue
+        session_date = dt.datetime.fromtimestamp(ts, core.UTC).astimezone(exchange_tz).date()
+        sessions[session_date] = close
+    if not sessions:
+        raise RuntimeError("Yahoo daily sessions empty")
+    return sessions
+
+
+def _crosscheck_te_brent_with_yahoo_v34(te_quote: core.Quote) -> core.Quote:
+    date_match = re.search(r"기준일=(\d{4}-\d{2}-\d{2})", te_quote.source_note)
+    if not date_match:
+        raise RuntimeError("TE Brent source date missing")
+    source_date = dt.date.fromisoformat(date_match.group(1))
+
+    symbol = str(core.PRICE_SPECS["brent"]["symbol"])
+    encoded = urllib.parse.quote(symbol, safe="")
+    params = urllib.parse.urlencode({"interval": "1d", "range": "10d", "includePrePost": "false"})
+    session_sets: list[dict[dt.date, float]] = []
+    for base in core.YAHOO_BASES:
+        payload = json.loads(core.fetch_bytes(f"{base}/{encoded}?{params}").decode("utf-8"))
+        session_sets.append(_parse_yahoo_daily_sessions_v34(payload))
+
+    checks: list[tuple[float, float, dt.date]] = []
+    for sessions in session_sets:
+        if source_date not in sessions:
+            raise RuntimeError(f"Yahoo Brent missing TE source date {source_date}")
+        prior_dates = sorted(d for d in sessions if d < source_date)
+        if not prior_dates:
+            raise RuntimeError(f"Yahoo Brent missing prior session before {source_date}")
+        previous_date = prior_dates[-1]
+        checks.append((sessions[source_date], sessions[previous_date], previous_date))
+
+    first, second = checks
+    if first[2] != second[2]:
+        raise RuntimeError(f"Yahoo Brent prior-date mismatch: {first[2]} vs {second[2]}")
+    yahoo_current_gap = abs(first[0] / second[0] - 1.0) * 100.0
+    yahoo_previous_gap = abs(first[1] / second[1] - 1.0) * 100.0
+    te_current_gap = abs(float(te_quote.price) / ((first[0] + second[0]) / 2.0) - 1.0) * 100.0
+    te_previous_gap = abs(float(te_quote.previous_close) / ((first[1] + second[1]) / 2.0) - 1.0) * 100.0
+    if yahoo_current_gap > 0.20 or yahoo_previous_gap > 0.20:
+        raise RuntimeError(
+            f"Yahoo Brent endpoint daily mismatch current={yahoo_current_gap:.2f}% previous={yahoo_previous_gap:.2f}%"
+        )
+    if te_current_gap > 0.75 or te_previous_gap > 0.75:
+        raise RuntimeError(
+            f"TE/Yahoo Brent daily mismatch current={te_current_gap:.2f}% previous={te_previous_gap:.2f}%"
+        )
+
+    previous_date = first[2]
+    return core.Quote(
+        key="brent",
+        symbol="TE:BRENT",
+        label="Trading Economics Brent 추종 공개값",
+        unit="달러/배럴",
+        price=float(te_quote.price),
+        previous_close=float(te_quote.previous_close),
+        change_pct=float(te_quote.change_pct),
+        timestamp_epoch=float(te_quote.timestamp_epoch),
+        timestamp_utc=str(te_quote.timestamp_utc),
+        age_minutes=int(te_quote.age_minutes),
+        source_note=(
+            te_quote.source_note
+            + f"; Yahoo 일봉 동일 기준일 교차검증; 직전거래일={previous_date.isoformat()}"
         ),
     )
 
@@ -466,10 +562,11 @@ def fetch_market_quotes_v34():
             quotes.pop(key, None)
             errors.append(f"{key}: v34 aligned-date validation failed: {type(exc).__name__}: {exc}")
     try:
-        quotes["brent"] = _fetch_yahoo_brent_quote_v34()
+        te_brent = _fetch_te_commodity_quote_v34("brent")
+        quotes["brent"] = _crosscheck_te_brent_with_yahoo_v34(te_brent)
     except Exception as exc:
         quotes.pop("brent", None)
-        errors.append(f"brent: v34 direct-daily-close validation failed: {type(exc).__name__}: {exc}")
+        errors.append(f"brent: v34 TE/Yahoo same-date validation failed: {type(exc).__name__}: {exc}")
     return quotes, errors
 
 
@@ -486,13 +583,15 @@ def format_quote_v34(quote: core.Quote) -> str:
             f"기준일 {match.group(1)}, 조회 {observed_kst:%Y-%m-%d %H:%M KST}{suffix})"
         )
     if quote.key == "brent":
-        match = re.search(r"직전거래일=(\d{4}-\d{2}-\d{2})", quote.source_note)
-        if not match:
-            raise RuntimeError("Brent prior trading date missing")
+        prior_match = re.search(r"직전거래일=(\d{4}-\d{2}-\d{2})", quote.source_note)
+        date_match = re.search(r"기준일=(\d{4}-\d{2}-\d{2})", quote.source_note)
+        if not prior_match or not date_match:
+            raise RuntimeError("Brent aligned source/prior date missing")
         return (
             f"{quote.label} {quote.price:,.2f}{quote.unit} "
-            f"(직전 거래일 {match.group(1)} 종가 {quote.previous_close:,.2f} 대비 "
-            f"{quote.change_pct:+.2f}%, 기준 {observed_kst:%Y-%m-%d %H:%M KST})"
+            f"(직전 거래일 {prior_match.group(1)} 종가 {quote.previous_close:,.2f} 대비 "
+            f"{quote.change_pct:+.2f}%, 기준일 {date_match.group(1)}, "
+            f"조회 {observed_kst:%Y-%m-%d %H:%M KST})"
         )
     return _BASE_FORMAT_QUOTE_V34(quote)
 
@@ -506,15 +605,19 @@ def signal_label_v34(signal: str, cleared: bool = False) -> str:
 
 def _self_validate_price_alignment_v34() -> None:
     te_fixture = (
-        "EU 가스 70.46 4.48 -5.98% 7.11% 2026-09-25 "
-        "LNG JKM 25.82 0.57 -2.14% 12.51% 2026-09-25"
+        "EU 가스 EUR/MWh 70.46 4.48 -5.98% 7.11% 2026-09-25 "
+        "LNG JKM USD/MMBTU 25.82 0.57 -2.14% 12.51% 2026-09-25 "
+        "브렌트 USD/Bbl 104.620 1.980 -1.86% 20.34% 2026-09-25"
     )
     ttf = _parse_te_commodity_row_v34(te_fixture, "ttf")
     jkm = _parse_te_commodity_row_v34(te_fixture, "jkm")
+    brent = _parse_te_commodity_row_v34(te_fixture, "brent")
     assert str(ttf["source_date"]) == "2026-09-25"
     assert abs(float(ttf["previous"]) - 74.94) < 0.06
     assert str(jkm["source_date"]) == "2026-09-25"
     assert abs(float(jkm["previous"]) - 26.38) < 0.06
+    assert str(brent["source_date"]) == "2026-09-25"
+    assert abs(float(brent["previous"]) - 106.60) < 0.10
 
     yahoo_fixture = {
         "chart": {
@@ -1139,7 +1242,7 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
     }
     metadata["price_integrity_v34"] = {
         "ttf_jkm": "Trading Economics commodities-table value/change/date aligned; stale detail-page date cannot override",
-        "brent": "Yahoo 10-day daily series; previous close is the immediately prior trading session, never chartPreviousClose",
+        "brent": "Trading Economics dated commodity row is primary; Yahoo daily history must match the same date and prior session; Yahoo top quote/chartPreviousClose are never used",
         "fail_closed": True,
     }
     metadata["official_source_integrity_v34"] = {
