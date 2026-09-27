@@ -128,6 +128,29 @@ saudi_flow = row(
 marks = mod._physical_flow_marks(saudi_flow)
 check("saudi-crude-recovery-detected", "사우디원유수출회복" in marks)
 
+# 11) 'record amount ... out of Hormuz'처럼 flow라는 단어가 없는 속보도 물량 경보로 잡는다.
+record_amount = row(
+    "Last night we took a record amount of oil out of the Hormuz Strait, more than before the war",
+    source="Walter Bloomberg",
+)
+marks = mod._physical_flow_marks(record_amount)
+check("hormuz-record-amount-wording", "호르무즈기록물량회복" in marks)
+
+# 12) 7일 평균 2천만 배럴/일과 STS 10배 증가 표현을 직접 감지한다.
+regional_20m = row(
+    "Mideast Gulf & Gulf of Oman regional exports 7-day average exceeds 20 million barrels a day",
+    source="Kpler",
+)
+marks = mod._physical_flow_marks(regional_20m)
+check("gulf-20mbd-seven-day", "걸프7일평균2천만배럴" in marks)
+
+sts_10x = row(
+    "Gulf of Oman STS volumes increased 10x versus February",
+    source="Kpler",
+)
+marks = mod._physical_flow_marks(sts_10x)
+check("oman-sts-10x", "오만만STS기록급증" in marks)
+
 print("WAR_PEACE_REGRESSION_OK")
 
 
