@@ -217,20 +217,27 @@ def strong_current_status(text):
 
 def phase3_status(text):
     low = text.lower()
-    phase_tokens = list(re.finditer(r"(?:嘉科)?三期|third phase|二期擴大|二期扩大", low, re.I))
-    if not phase_tokens:
-        return ""
-    best = ""
-    for token in phase_tokens:
-        window = low[max(0, token.start() - 120): min(len(low), token.end() + 180)]
-        if re.search(r"徵求意見|征求意见|意見徵集|意见征集|public comment|provide opinions", window, re.I):
-            best = max((best, "public_comment"), key=lambda x: PHASE_RANK.get(x, 0))
-        if re.search(r"環評|环评|環境影響|环境影响|environmental (?:impact|review)", window, re.I):
-            best = max((best, "environmental_review"), key=lambda x: PHASE_RANK.get(x, 0))
-        current = strong_current_status(window)
-        if current:
-            best = max((best, current), key=lambda x: PHASE_RANK.get(x, 0))
-    return best
+    phase = r"(?:嘉科)?三期|third phase|二期擴大|二期扩大"
+    status_patterns = (
+        ("mass_production", r"(?:正式|已|開始|开始|began|started)[^。.;]{0,35}(?:量產|量产|mass production)"),
+        ("pilot_production", r"(?:正式|已|開始|开始|began|started)[^。.;]{0,35}(?:試產|试产|pilot production|trial production)"),
+        ("tool_move_in", r"(?:正式|已|開始|开始|啟動|启动|began|started)[^。.;]{0,35}(?:進機|进机|設備進駐|设备进驻|tool move[- ]?in|equipment move[- ]?in)"),
+        ("construction", r"(?:正式|已|開始|开始|動工|动工|開工|开工|groundbreaking|construction (?:has )?(?:begun|started))"),
+        ("approved", r"(?:正式)?(?:核定|批准|通過|通过|approved|investment decision)"),
+        ("environmental_review", r"(?:環評|环评|環境影響|环境影响|environmental (?:impact|review))"),
+        ("public_comment", r"(?:徵求意見|征求意见|意見徵集|意见征集|public comment|provide opinions)"),
+    )
+    hits = []
+    for m in re.finditer(phase, low, re.I):
+        left = low[max(0, m.start() - 55):m.start()]
+        right = low[m.end():min(len(low), m.end() + 55)]
+        # A nearby P3/P4/P5 sentence is an individual fab milestone, not "phase 3" itself.
+        for status, pat in status_patterns:
+            if re.search(pat, right, re.I) and not re.search(r"\bP[1-9]\b", right, re.I):
+                hits.append(status)
+            if re.search(pat, left, re.I) and not re.search(r"\bP[1-9]\b", left, re.I):
+                hits.append(status)
+    return max(hits, key=lambda x: PHASE_RANK.get(x, 0)) if hits else ""
 
 
 def parse_fab_statuses(text, ev_state, source_url):
@@ -395,10 +402,9 @@ def merge_state(current, patch):
         old_ev = out.get("phase3_evidence_state", "reported")
         if (
             not old
-            or PHASE_RANK.get(new, 0) > PHASE_RANK.get(old, 0)
             or (
-                PHASE_RANK.get(new, 0) == PHASE_RANK.get(old, 0)
-                and EVIDENCE_RANK.get(new_ev, 0) >= EVIDENCE_RANK.get(old_ev, 0)
+                EVIDENCE_RANK.get(new_ev, 0) >= EVIDENCE_RANK.get(old_ev, 0)
+                and PHASE_RANK.get(new, 0) >= PHASE_RANK.get(old, 0)
             )
         ):
             out["chiayi_phase3_status"] = new
@@ -409,10 +415,9 @@ def merge_state(current, patch):
         old = fabs.get(fab) or {}
         if (
             not old
-            or PHASE_RANK.get(item.get("status"), 0) > PHASE_RANK.get(old.get("status"), 0)
             or (
-                PHASE_RANK.get(item.get("status"), 0) == PHASE_RANK.get(old.get("status"), 0)
-                and EVIDENCE_RANK.get(item.get("evidence_state"), 0) >= EVIDENCE_RANK.get(old.get("evidence_state"), 0)
+                EVIDENCE_RANK.get(item.get("evidence_state"), 0) >= EVIDENCE_RANK.get(old.get("evidence_state"), 0)
+                and PHASE_RANK.get(item.get("status"), 0) >= PHASE_RANK.get(old.get("status"), 0)
             )
         ):
             fabs[fab] = item
