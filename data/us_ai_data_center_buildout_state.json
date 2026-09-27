@@ -3,7 +3,7 @@
   "version": 1,
   "dataset_updated": "Sep 24, 2026",
   "source_hash": "be8e1b09d09ddce21eed49815aee926bcaaf1e539386b0b620c5ac57d3dba0a0",
-  "snapshot_hash": "19cc1bf8af0acc4329ce57e18ed8ca8bf565cb13d11571219c8f78691b8d253f",
+  "snapshot_hash": "2000cf77d0054fe6e895edc8514fce7928245740d06d4926e252453663ccbe14",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -23,17 +23,16 @@
       "energy_quality": "부지·기업 공식, 직접공급과 장기계약 분리",
       "company_issues": [
         {
-          "fingerprint": "189db5390dc85e791523acb4f638217eb697c4555feed73ec1387c03adaf4da6",
+          "fingerprint": "dataone-vineland-generator-enforcement-20260922",
           "company": "Microsoft",
-          "label": "벌금·허가·환경",
+          "label": "규제·환경 위반",
           "relationship": "파트너·고객 연계",
-          "summary": "DataOne Vineland(NJ), 62대×1,982kW 천연가스 발전기 무허가 설치·운영으로 NJDEP 107만달러 벌금·45일 내 허가 취득 또는 가동중단 명령. Microsoft는 직접 벌금 대상이 아니라 Nebius의 약 170억달러 AI 인프라 계약을 통한 연계.",
-          "published": "2026-09-25T16:05:00+00:00",
-          "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPNjROcVFvRDBuQk5SNDNZYzJkaENaUHZhMUVnTzRqZ3V5XzRzOXo1YUdfSVU1ZkRMcHBKaXVUbDZlRTF5dWdrNmRBRG5aRFFiRG9leEZkSm9kbnFkQVZQWEd5ODJFY01MWWtFWElCYUdPUl9OZ0pPVlhPOG50TE9zX3g2bFYxY2tmQ1Q1UDJtZmNhT1lMbUtfSWhnUEFJeXFQUklidTdjaDh0WDBldTRHMDdqU2M2eTJmWXdicmxKVDJUU1lVakdKZElFdDJrTFVOSGprTG1HanphRG9fU0p0Zl91REw1VnUyUkhfNw?oc=5",
+          "summary": "DataOne Vineland(NJ), 62대×1,982kW 천연가스 발전기 무허가 설치·운영으로 NJDEP 107만달러 벌금·45일 내 허가 취득 또는 가동중단 명령. Microsoft는 직접 벌금 대상이 아니라 Nebius의 Vineland 전용 GPU 용량 고객.",
+          "published": "2026-09-22T00:00:00+00:00",
+          "url": "https://dep.nj.gov/newsrel/26_0044/",
           "sources": [
-            "techradar.com",
-            "The Guardian",
-            "New Jersey Monitor"
+            "New Jersey Department of Environmental Protection",
+            "Nebius"
           ]
         }
       ]
@@ -290,17 +289,16 @@
       "energy_quality": "Microsoft 공식 부지확정+기업전략",
       "company_issues": [
         {
-          "fingerprint": "189db5390dc85e791523acb4f638217eb697c4555feed73ec1387c03adaf4da6",
+          "fingerprint": "dataone-vineland-generator-enforcement-20260922",
           "company": "Microsoft",
-          "label": "벌금·허가·환경",
+          "label": "규제·환경 위반",
           "relationship": "파트너·고객 연계",
-          "summary": "DataOne Vineland(NJ), 62대×1,982kW 천연가스 발전기 무허가 설치·운영으로 NJDEP 107만달러 벌금·45일 내 허가 취득 또는 가동중단 명령. Microsoft는 직접 벌금 대상이 아니라 Nebius의 약 170억달러 AI 인프라 계약을 통한 연계.",
-          "published": "2026-09-25T16:05:00+00:00",
-          "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPNjROcVFvRDBuQk5SNDNZYzJkaENaUHZhMUVnTzRqZ3V5XzRzOXo1YUdfSVU1ZkRMcHBKaXVUbDZlRTF5dWdrNmRBRG5aRFFiRG9leEZkSm9kbnFkQVZQWEd5ODJFY01MWWtFWElCYUdPUl9OZ0pPVlhPOG50TE9zX3g2bFYxY2tmQ1Q1UDJtZmNhT1lMbUtfSWhnUEFJeXFQUklidTdjaDh0WDBldTRHMDdqU2M2eTJmWXdicmxKVDJUU1lVakdKZElFdDJrTFVOSGprTG1HanphRG9fU0p0Zl91REw1VnUyUkhfNw?oc=5",
+          "summary": "DataOne Vineland(NJ), 62대×1,982kW 천연가스 발전기 무허가 설치·운영으로 NJDEP 107만달러 벌금·45일 내 허가 취득 또는 가동중단 명령. Microsoft는 직접 벌금 대상이 아니라 Nebius의 Vineland 전용 GPU 용량 고객.",
+          "published": "2026-09-22T00:00:00+00:00",
+          "url": "https://dep.nj.gov/newsrel/26_0044/",
           "sources": [
-            "techradar.com",
-            "The Guardian",
-            "New Jersey Monitor"
+            "New Jersey Department of Environmental Protection",
+            "Nebius"
           ]
         }
       ]
@@ -311,5 +309,5 @@
     "MS Fairwater Atlanta (GA) 기업별 규제·법적 이슈 변경"
   ],
   "source_errors": [],
-  "updated_at_utc": "2026-09-27T10:19:37+00:00"
+  "updated_at_utc": "2026-09-27T10:21:24+00:00"
 }
