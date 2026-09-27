@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# Baseline-dedupe smoke trigger
 import importlib.util
 import pathlib
 import sys
