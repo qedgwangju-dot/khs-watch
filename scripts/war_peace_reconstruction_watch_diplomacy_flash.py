@@ -863,11 +863,12 @@ def _canonical_event_key(row):
     except Exception:
         day = dt.datetime.now(watch.KST).date().isoformat()
 
-    has_ukraine = any(x in text for x in ('ukraine', 'ukrainian', '우크라이나'))
-    has_russia = any(x in text for x in ('russia', 'russian', '러시아'))
-    has_iran = any(x in text for x in ('iran', 'iranian', 'tehran', '이란', '테헤란'))
-    has_hormuz = any(x in text for x in ('hormuz', '호르무즈'))
-    has_trump = any(x in text for x in ('trump', '트럼프'))
+    title = _title_text(row)
+    has_ukraine = any(x in title for x in ('ukraine', 'ukrainian', '우크라이나'))
+    has_russia = any(x in title for x in ('russia', 'russian', '러시아'))
+    has_iran = any(x in title for x in ('iran', 'iranian', 'tehran', '이란', '테헤란'))
+    has_hormuz = any(x in title for x in ('hormuz', '호르무즈'))
+    has_trump = any(x in title for x in ('trump', '트럼프'))
 
     # 러·우 3자회담의 UAE 후보지/준비 단계: 매체만 바뀐 재인용은 한 사건.
     if has_ukraine and has_russia and any(x in text for x in ('uae', 'united arab emirates', '아랍에미리트')) \
@@ -875,10 +876,10 @@ def _canonical_event_key(row):
             and any(x in text for x in ('candidate', 'possible venue', 'proposed venue', '준비', '후보지', '개최지')):
         return 'ukraine-russia|trilateral-talks|uae-candidate'
 
-    seven_day = any(x in text for x in ('7 day', '7-day', 'within seven days', '7일', '일주일'))
-    rejected = any(x in text for x in ('reject', 'rejected', 'refuse', 'refused', '거부', '일축'))
-    truce = any(x in text for x in ('truce', 'ceasefire', 'peace plan', '휴전', '종전안', '평화안'))
-    reopen = any(x in text for x in ('reopen', 'reopening', 'open the strait', '재개방', '정상 통항', '통항 재개'))
+    seven_day = any(x in title for x in ('7 day', '7-day', 'within seven days', '7일', '일주일'))
+    rejected = any(x in title for x in ('reject', 'rejected', 'refuse', 'refused', '거부', '거절', '일축'))
+    truce = any(x in title for x in ('truce', 'ceasefire', 'peace plan', '휴전', '종전안', '평화안'))
+    reopen = any(x in title for x in ('reopen', 'reopening', 'open the strait', '재개방', '정상 통항', '통항 재개'))
 
     # 이란 7일 휴전/호르무즈안 거부는 제안 자체와 별도 단계로 관리.
     if has_trump and has_iran and rejected and (truce or has_hormuz):
@@ -886,6 +887,16 @@ def _canonical_event_key(row):
         return f'trump-iran|reject-current-ceasefire-hormuz-plan|{iso.year}-W{iso.week:02d}'
     if has_iran and has_hormuz and seven_day and reopen and not rejected:
         return 'iran-hormuz|7day-reopening-proposal'
+
+    # 후티 공격 여파로 리야드 학교가 원격수업/등교중단으로 전환된 같은 사건은
+    # 매체·도메인 표기가 달라도 한 번만 알린다.
+    houthi_title = any(x in title for x in ('houthi', 'houthis', 'ansar allah', 'ansarallah', '후티', '안사르알라'))
+    riyadh_saudi_title = any(x in title for x in ('riyadh', '리야드', 'saudi', '사우디'))
+    school_impact = any(x in title for x in ('school', 'schools', '학교', '등교'))
+    remote_or_suspend = any(x in title for x in ('remote learning', 'online classes', 'suspend classes', '원격수업', '등교 중단', '등교중단'))
+    if houthi_title and riyadh_saudi_title and school_impact and remote_or_suspend:
+        iso = dt.datetime.now(watch.KST).isocalendar()
+        return f'houthi-saudi|riyadh-school-disruption|{iso.year}-W{iso.week:02d}'
 
     # 실제 공격은 같은 사건의 재인용만 당일 묶고, 다음 날 새 공격은 다시 감지한다.
     if any(x in text for x in ('houthi', 'houthis', 'ansar allah', 'ansarallah', '후티', '안사르알라')) \
@@ -907,6 +918,16 @@ def item_id(row):
 
     marks = _marks(row)
     if not marks:
+        # Google News/재게시가 같은 제목 뒤에 매체명만 다르게 붙이는 경우를 동일 기사로 묶는다.
+        title = (row.get('title_original') or '').strip()
+        source = (row.get('source') or '').strip()
+        if source:
+            suffix = ' - ' + source
+            if title.lower().endswith(suffix.lower()):
+                title = title[:-len(suffix)].rstrip()
+        key = re.sub(r"\W+", " ", title.lower()).strip()
+        if key:
+            return hashlib.sha256(key.encode()).hexdigest()[:20]
         return _prev_item_id(row)
     emergency_marks = [m for m in marks if m in (
         '이란Code100확인보도','이란Code100미확인보도','트럼프캠프데이비드조기복귀','미국중동다중보안경보',
@@ -936,6 +957,14 @@ def topic_label(row):
     emarks = _emergency_marks(row)
     if emarks:
         return '중동 비상 · 복합확전 경보'
+    if _active_attack_signal(row):
+        title = _title_text(row)
+        if _has(title, HOUTHI_TERMS) or _has(title, ('saudi','riyadh','사우디','리야드')):
+            return '사우디·후티'
+        if _has(title, UKRAINE_TERMS) or _has(title, ('russia','russian','러시아')):
+            return '우크라이나·러시아'
+        if _has(title, IRAN_TERMS) or _has(title, HORMUZ_TERMS):
+            return '이란·호르무즈'
     hmarks = _houthi_diplomacy_marks(row)
     if hmarks:
         return '예멘·사우디·오만 · Ansar Allah 휴전중재'
