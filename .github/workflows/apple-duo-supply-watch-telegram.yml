@@ -9,6 +9,8 @@ on:
       - "scripts/apple_duo_panel_leading_watch.py"
       - "scripts/apple_duo_demand_competition_watch.py"
       - "scripts/test_apple_duo_demand_competition_watch.py"
+      - "scripts/apple_kparts_margin_watch.py"
+      - "scripts/test_apple_kparts_margin_watch.py"
       - "data/apple_duo_supply_watch_state.json"
       - "data/apple_duo_panel_leading_state.json"
       - "data/apple_duo_demand_competition_state.json"
@@ -53,6 +55,9 @@ jobs:
           python -m py_compile scripts/apple_duo_demand_competition_watch.py
           python -m py_compile scripts/test_apple_duo_demand_competition_watch.py
           python scripts/test_apple_duo_demand_competition_watch.py
+          python -m py_compile scripts/apple_kparts_margin_watch.py
+          python -m py_compile scripts/test_apple_kparts_margin_watch.py
+          python scripts/test_apple_kparts_margin_watch.py
 
       - name: Validate Telegram route without sending
         env:
@@ -103,6 +108,9 @@ jobs:
       - name: Scan demand and competitor leading indicators
         run: python scripts/apple_duo_demand_competition_watch.py
 
+      - name: Scan Apple K-parts margin pressure
+        run: python scripts/apple_kparts_margin_watch.py
+
       - name: Publish watcher summary
         if: always()
         run: |
@@ -118,6 +126,10 @@ jobs:
           if [ -f out/apple_duo_demand_competition_status.md ]; then
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/apple_duo_demand_competition_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/apple_kparts_margin_watch_status.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/apple_kparts_margin_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/apple_duo_supply_watch_telegram.txt ]; then
             printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -215,6 +227,10 @@ jobs:
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_duo_demand_competition_pending_state.json') != ''
         run: cp out/apple_duo_demand_competition_pending_state.json data/apple_duo_demand_competition_state.json
 
+      - name: Persist no-alert K-parts margin state
+        if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_kparts_margin_watch_pending_state.json') != ''
+        run: cp out/apple_kparts_margin_watch_pending_state.json data/apple_kparts_margin_watch_state.json
+
       - name: Persist state only after confirmed Telegram delivery
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_duo_supply_watch_pending_state.json') != ''
         run: cp out/apple_duo_supply_watch_pending_state.json data/apple_duo_supply_watch_state.json
@@ -227,12 +243,16 @@ jobs:
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_duo_demand_competition_pending_state.json') != ''
         run: cp out/apple_duo_demand_competition_pending_state.json data/apple_duo_demand_competition_state.json
 
+      - name: Persist K-parts margin state only after confirmed Telegram delivery
+        if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_kparts_margin_watch_pending_state.json') != ''
+        run: cp out/apple_kparts_margin_watch_pending_state.json data/apple_kparts_margin_watch_state.json
+
       - name: Commit watcher state
         if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json data/apple_duo_demand_competition_state.json
+          git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json data/apple_duo_demand_competition_state.json data/apple_kparts_margin_watch_state.json
           if git diff --cached --quiet; then
             echo "Apple Duo watch state unchanged"
           else
@@ -257,6 +277,9 @@ jobs:
             out/apple_duo_panel_leading_status.md
             out/apple_duo_demand_competition_status.md
             out/apple_duo_demand_competition_alert.html
+            out/apple_kparts_margin_watch_status.md
+            out/apple_kparts_margin_watch_alert.html
+            out/apple_kparts_margin_watch_pending_state.json
             out/apple_duo_supply_watch_telegram.txt
             out/apple_duo_supply_watch_pending_state.json
             out/apple_duo_panel_leading_pending_state.json
