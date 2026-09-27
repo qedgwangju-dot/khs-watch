@@ -70,9 +70,10 @@ check("old-news-never-revives", score == 0 and tags == [])
 reject_a = row("트럼프, 이란 '7일 휴전안' 거부…중간선거 뒤 공습 재개 시사")
 reject_b = row("트럼프 \"이란 휴전안 거절\"…11월 선거 후 공습 재개 검토")
 reject_c = row("트럼프, 이란의 호르무즈 개방 조건에 회의적…11월 선거 후 공습 재개 검토")
-keys = {mod._canonical_event_key(x) for x in (reject_a, reject_b, reject_c)}
+reject_d = row("이란 제안 거부한 트럼프, 중간선거 이후 폭격 가능성 - 부산일보")
+keys = {mod._canonical_event_key(x) for x in (reject_a, reject_b, reject_c, reject_d)}
 check("iran-truce-rejection-one-event", len(keys) == 1 and None not in keys)
-ids = {mod.item_id(x) for x in (reject_a, reject_b, reject_c)}
+ids = {mod.item_id(x) for x in (reject_a, reject_b, reject_c, reject_d)}
 check("iran-truce-rejection-one-id", len(ids) == 1)
 
 # 5) 검색 질의 문맥에 리야드가 섞여도 원제목이 리야드 미사일 공격이 아니면 고위험 경보 승격 금지.
@@ -100,3 +101,38 @@ dc_verdict = mod.guard._verdict([dc_attack])
 check("critical-infrastructure-red", "공격·확전" in dc_verdict or "군사행동·확전" in dc_verdict)
 
 print("WAR_PEACE_REGRESSION_OK")
+
+
+# 8) 송출 직전 품질 게이트: 3시간 초과·초록/공격 모순·TASS 정례 전황은 실제 전송 전에 막는다.
+stale_alert = """<b>전쟁·종전·재건 웹감시</b>
+🟢 <b>재건·휴전</b>
+<b>핵심 변화</b>
+[후속] <b>1. 우크라이나·러시아</b>
+후속 3자 협상 후보지 UAE
+00:00 KST · 🟨 <b>1272분 전</b> · 종전·협상
+<b>투자 판정</b>
+"""
+issues = mod._alert_quality_issues(stale_alert)
+check("quality-gate-stale", any("노후 기사" in x for x in issues))
+
+green_attack_alert = """<b>전쟁·종전·재건 웹감시</b>
+🟢 <b>재건·휴전</b>
+<b>핵심 변화</b>
+[신규] <b>1. 사우디·후티</b>
+친이란 후티 공격 이어지는 사우디…리야드 학교들, 등교 중단
+<b>투자 판정</b>
+"""
+issues = mod._alert_quality_issues(green_attack_alert)
+check("quality-gate-green-attack", any("초록 헤더" in x for x in issues))
+
+tass_alert = """<b>전쟁·종전·재건 웹감시</b>
+<b>핵심 변화</b>
+[신규] <b>1. 우크라이나·러시아</b>
+키예프는 이번 주 Battlegroup East 지역에서 1,900명 이상의 병력을 잃었습니다.
+TASS 원문
+<b>투자 판정</b>
+"""
+issues = mod._alert_quality_issues(tass_alert)
+check("quality-gate-tass-routine", any("TASS 정례" in x for x in issues))
+
+print("WAR_PEACE_QUALITY_GATE_OK")
