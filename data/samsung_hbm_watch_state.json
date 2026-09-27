@@ -127,6 +127,7 @@
     "8b710efb734682b342b7e338",
     "8d027b7febee782fc0c90fd7",
     "8e73f51c8102b58456035bcc",
+    "8eb6aff14d49bfe139ccca87",
     "9046127bdbf6a9b5874f4a55",
     "908dd39afd1f41cf0db839e1",
     "914fababbb9099953512eef6",
@@ -222,8 +223,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-27T08:05:43+09:00",
-  "last_event_count": 93,
+  "updated_at_kst": "2026-09-27T10:38:55+09:00",
+  "last_event_count": 90,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -244,7 +245,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-27T08:05:43+09:00",
+  "last_successful_official_at_kst": "2026-09-27T10:38:55+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -1377,7 +1378,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-27T08:05:43+09:00",
+      "last_checked_at_kst": "2026-09-27T10:38:55+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -1431,7 +1432,7 @@
     "payload_hash": "049a7cae87d57beb82c20a56dd98c42f107ec5fe3ee427972da099e8da8f2980"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-27T08:10:11+09:00",
+    "checked_at_kst": "2026-09-27T10:41:58+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
