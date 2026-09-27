@@ -131,6 +131,7 @@ SOURCE_LABELS = {
     "federal register fcc": "미 연방관보 FCC",
     "federal register presidential documents": "미 연방관보 대통령문서",
     "federal register tariffs": "미 연방관보 관세",
+    "federal register korea trade remedies": "미 연방관보 한국 무역구제",
     "federal register polysilicon section 232": "미 연방관보 폴리실리콘 Section 232",
     "federal register chips export": "미 연방관보 반도체·수출통제",
     "federal register energy": "미 연방관보 에너지",
