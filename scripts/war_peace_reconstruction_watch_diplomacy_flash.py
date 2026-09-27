@@ -28,6 +28,7 @@ _prev_score = watch.score_item
 _prev_item_id = watch.item_id
 _prev_topic_label = watch.topic_label
 _prev_verdict = guard._verdict
+_prev_verify_alert = runner.verify_alert
 
 WALTER_SENTINEL = "__WALTER_BLOOMBERG_WAR_PEACE_FLASH__"
 WALTER_PUBLIC_URL = "https://t.me/s/WalterBloomberg"
@@ -1144,6 +1145,75 @@ def _emergency_color(row):
 guard._enhanced_body_color = _emergency_color
 guard.prev._strict_body_color = _emergency_color
 guard.prev.core._body_color = _emergency_color
+
+
+def _alert_quality_issues(text):
+    """Telegram 송출 직전 최종 품질 게이트."""
+    issues = []
+    head = text.split('<b>투자 판정</b>', 1)[0]
+
+    # 신규/후속 알림에서 3시간을 넘은 기사 재등장 금지.
+    for m in re.finditer(r'<b>(\d+)분 전</b>', head):
+        if int(m.group(1)) > FRESH_NEWS_MAX_MINUTES:
+            issues.append(f'노후 기사 재등장:{m.group(1)}분')
+
+    # 초록 헤더인데 실제 공격·피격 제목이 포함되는 방향성 모순 금지.
+    if '🟢 <b>재건·휴전</b>' in head:
+        cleaned = head
+        for stop in ('공격 중단', '공습 중단', '공격을 중단', '휴전', '정전'):
+            cleaned = cleaned.replace(stop, '')
+        hard = (
+            '미사일 공격', '드론 공격', '공습', '피격', '공격 이어', '공격했습니다',
+            '공격으로', '공격받', '폭격', '포격',
+        )
+        if any(term in cleaned for term in hard):
+            issues.append('초록 헤더와 실제 공격 제목 충돌')
+
+    # 정례 전황성 TASS 병력손실 숫자를 핵심 변화로 송출하지 않는다.
+    if 'TASS 원문' in head and any(term in head for term in ('병력을 잃', '병력 손실', 'lost more than', 'troops lost')):
+        issues.append('TASS 정례 병력손실 노이즈')
+
+    # 동일 제목이 한 알림 안에서 중복되는 경우 차단.
+    titles = []
+    lines = [re.sub(r'<[^>]+>', '', x).strip() for x in head.splitlines()]
+    for i, line in enumerate(lines):
+        if re.match(r'^(?:🔴 |🟢 )?\[(?:속보|신규|후속)\] \d+\.', line) and i + 1 < len(lines):
+            title = re.sub(r'\s+-\s+[^-]{2,40}
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--finalize', action='store_true')
+    ap.add_argument('--telegram-test', action='store_true')
+    args = ap.parse_args()
+    if args.finalize:
+        watch.finalize(); return
+    if args.telegram_test:
+        base._write_inline_test()
+    else:
+        watch.run(test=False)
+    runner.verify_alert(test_mode=False)
+
+
+if __name__ == '__main__':
+    main()
+, '', lines[i + 1]).strip().lower()
+            if title:
+                titles.append(title)
+    if len(titles) != len(set(titles)):
+        issues.append('동일 제목 중복')
+
+    return issues
+
+
+def _strict_verify_alert(test_mode=False):
+    _prev_verify_alert(test_mode=test_mode)
+    if not watch.ALERT.exists():
+        return
+    text = watch.ALERT.read_text(encoding='utf-8')
+    issues = _alert_quality_issues(text)
+    if issues:
+        raise RuntimeError('WAR_ALERT_QUALITY_GATE: ' + ' | '.join(issues))
+
+
+runner.verify_alert = _strict_verify_alert
 
 
 def main():
