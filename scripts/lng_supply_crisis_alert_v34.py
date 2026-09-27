@@ -195,6 +195,9 @@ ALASKA_DEVELOPER_SOURCE_ALIASES_V34 = ("glenfarne", "polar lng")
 TE_COMMODITY_URLS_V34 = (
     "https://ko.tradingeconomics.com/commodities",
     "https://tradingeconomics.com/commodities",
+    "https://de.tradingeconomics.com/commodities",
+    "https://tr.tradingeconomics.com/commodities",
+    "https://jp.tradingeconomics.com/commodities",
 )
 TE_MAX_AGE_DAYS_V34 = 5
 TE_CROSS_PAGE_TOL_PCT_V34 = 0.35
@@ -256,13 +259,14 @@ def _parse_te_commodity_row_v34(text: str, key: str) -> dict[str, object]:
         labels = (
             r"EU\s*가스", r"유럽(?:연합)?\s*가스", r"EU\s*Gas",
             r"EU\s*Natural\s*Gas", r"European\s*Union\s*Gas",
+            r"EU-Gas", r"AB\s*Doğal\s*Gaz", r"EUガス",
         )
     elif key == "jkm":
         labels = (
             r"LNG\s*JKM", r"Liquefied\s*Natural\s*Gas\s*Japan\s*Korea",
         )
     elif key == "brent":
-        labels = (r"브렌트", r"Brent")
+        labels = (r"브렌트", r"Brent", r"ブレント")
     else:
         raise ValueError(f"unsupported TE key: {key}")
 
@@ -275,7 +279,19 @@ def _parse_te_commodity_row_v34(text: str, key: str) -> dict[str, object]:
     )
     matches = list(re.finditer(pattern, text, flags=re.I))
     if not matches:
-        raise RuntimeError(f"Trading Economics commodities row not found: {key}")
+        needles = {
+            "ttf": ("EU Gas", "유럽연합 가스", "EU-Gas", "AB Doğal Gaz", "EUガス"),
+            "jkm": ("LNG JKM",),
+            "brent": ("Brent", "브렌트", "ブレント"),
+        }[key]
+        preview = ""
+        lowered = text.lower()
+        for needle in needles:
+            idx = lowered.find(needle.lower())
+            if idx >= 0:
+                preview = text[max(0, idx - 120): idx + 420]
+                break
+        raise RuntimeError(f"Trading Economics commodities row not found: {key}; preview={preview[:520]!r}")
 
     rows: list[dict[str, object]] = []
     for match in matches:
@@ -318,21 +334,38 @@ def _fetch_te_commodity_quote_v34(key: str) -> core.Quote:
         raise RuntimeError(f"Trading Economics commodities validation failed for {key}: {';'.join(errors)}")
 
     latest_date = max(row["source_date"] for row in parsed_rows)
-    current_rows = [row for row in parsed_rows if row["source_date"] == latest_date]
-    actuals = [float(row["actual"]) for row in current_rows]
-    previous_values = [float(row["previous"]) for row in current_rows]
-    if len(actuals) >= 2:
-        gap = (max(actuals) / min(actuals) - 1.0) * 100.0 if min(actuals) else 999.0
-        if gap > TE_CROSS_PAGE_TOL_PCT_V34:
-            raise RuntimeError(f"Trading Economics locale mismatch for {key}: {actuals}")
+    dated_rows = [row for row in parsed_rows if row["source_date"] == latest_date]
+
+    clusters: list[list[dict[str, object]]] = []
+    for row in dated_rows:
+        actual = float(row["actual"])
+        placed = False
+        for cluster in clusters:
+            center = sum(float(x["actual"]) for x in cluster) / len(cluster)
+            gap = abs(actual / center - 1.0) * 100.0 if center else 999.0
+            if gap <= TE_CROSS_PAGE_TOL_PCT_V34:
+                cluster.append(row)
+                placed = True
+                break
+        if not placed:
+            clusters.append([row])
+    clusters.sort(key=lambda c: (len(c), -max(float(x["actual"]) for x in c)), reverse=True)
+    current_rows = clusters[0] if clusters else []
+    if len(parsed_rows) >= 2 and len(current_rows) < 2:
+        raise RuntimeError(
+            f"Trading Economics locale consensus missing for {key}: "
+            + ",".join(f"{row['actual']}@{row['source_date']}" for row in dated_rows)
+        )
+    actuals = sorted(float(row["actual"]) for row in current_rows)
+    previous_values = sorted(float(row["previous"]) for row in current_rows)
 
     today_kst = core.now_utc().astimezone(core.KST).date()
     age_days = (today_kst - latest_date).days
     if age_days < 0 or age_days > TE_MAX_AGE_DAYS_V34:
         raise RuntimeError(f"Trading Economics stale row for {key}: {latest_date} age={age_days}d")
 
-    price = sum(actuals) / len(actuals)
-    previous = sum(previous_values) / len(previous_values)
+    price = actuals[len(actuals) // 2] if len(actuals) % 2 else (actuals[len(actuals)//2 - 1] + actuals[len(actuals)//2]) / 2.0
+    previous = previous_values[len(previous_values) // 2] if len(previous_values) % 2 else (previous_values[len(previous_values)//2 - 1] + previous_values[len(previous_values)//2]) / 2.0
     pct = (price / previous - 1.0) * 100.0
     observed = core.now_utc()
     if key == "ttf":
