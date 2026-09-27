@@ -22,7 +22,9 @@ issuance and other holders also move.
 from __future__ import annotations
 
 import argparse
+import csv
 import datetime as dt
+import io
 import html
 import json
 import math
@@ -327,28 +329,28 @@ def choose_md09_purchase_series(rows: list[dict]) -> dict:
 
 
 def series_observations(db: str, row: dict, start: str) -> list[tuple[str, float]]:
+    """Read BOJ getDataCode in CSV format.
+
+    BOJ's 2026 API manual documents SURVEY_DATES and VALUES as row fields in the
+    CSV output. Using CSV here avoids depending on the JSON container shape,
+    which may wrap the output section differently by database.
+    """
     code = str(row["SERIES_CODE"])
-    payload = api_json(
-        "/getDataCode",
-        {"format": "json", "lang": "en", "db": db, "startDate": start, "code": code},
+    url = BOJ_TS_API + "/getDataCode?" + urllib.parse.urlencode(
+        {"format": "csv", "lang": "en", "db": db, "startDate": start, "code": code}
     )
-    target = None
-    for raw in walk_dicts(payload):
-        item = keymap(raw)
-        if str(item.get("SERIES_CODE") or "") == code and "VALUES" in item:
-            target = item
-            break
-    if target is None:
-        raise RuntimeError(f"BOJ API data not found: {db} {code}")
-    dates = target.get("SURVEY_DATES")
-    values = target.get("VALUES")
-    if not isinstance(dates, list) or not isinstance(values, list):
-        raise RuntimeError(f"BOJ API data shape unexpected: {db} {code}")
+    text = fetch(url, accept="text/csv,text/plain,*/*")
+    reader = csv.DictReader(io.StringIO(text.lstrip("\ufeff")))
     out: list[tuple[str, float]] = []
-    for d, v in zip(dates, values):
-        n = number(v)
-        if n is not None:
-            out.append((str(d), n))
+    for raw in reader:
+        item = {str(k or "").strip().upper(): v for k, v in raw.items()}
+        row_code = str(item.get("SERIES_CODE") or "").strip()
+        if row_code and row_code != code:
+            continue
+        period = str(item.get("SURVEY_DATES") or "").strip()
+        value = number(item.get("VALUES"))
+        if period and value is not None:
+            out.append((period, value))
     if not out:
         raise RuntimeError(f"BOJ API series has no numeric observations: {db} {code}")
     return out
@@ -429,8 +431,8 @@ def fof_candidate(rows: list[dict], aliases: tuple[str, ...]) -> dict | None:
     for row in rows:
         name = str(row.get("NAME_OF_TIME_SERIES") or "")
         low = name.lower()
-        freq = str(row.get("FREQUENCY") or "").lower()
-        if freq and "quarter" not in freq:
+        freq = str(row.get("FREQUENCY") or "").strip().lower()
+        if freq and not ("quarter" in freq or freq == "q"):
             continue
         if "central government securities" not in low:
             continue
