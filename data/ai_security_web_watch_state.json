@@ -1,29 +1,10 @@
 {
   "initialized": true,
   "last_collection": {
-    "errors": [
-      "Google News RSS 실패: \"AI agent\" security vulnerability exploit \"data leak\" \"… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: \"Meta Muse\" security vulnerability exploit privacy patc… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR ChatGPT OR Codex) security vulnerability exp… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (Anthropic OR Claude) security vulnerability exploit \"p… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (Gemini OR \"Google AI\") security vulnerability exploit … / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (Copilot OR \"Microsoft AI\") security vulnerability expl… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (\"Model Context Protocol\" OR MCP) security vulnerabilit… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (Grok OR xAI OR Bedrock) AI security vulnerability expl… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (\"AI agent\" OR agentic) \"sandbox escape\" OR \"unauthoriz… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: LLM \"supply chain\" vulnerability exploit security… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (\"AI agent\" OR agentic OR LLM) misalignment \"third part… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (\"AI agent\" OR agentic) \"bypassed security controls\" OR… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) agent misalignm… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: \"rogue agent\" AI OpenAI Anthropic Google Meta security… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: \"rogue agents\" ChatGPT user images third party… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: \"AI agent\" \"third-party\" impact security controls… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: \"AI agent\" \"undesirable behavior\" OR \"unintended behavi… / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News RSS 실패: OpenAI \"Hugging Face\" agent incident misalignment… / HTTPError: HTTP Error 503: Service Unavailable"
-    ],
-    "material_items": 0,
+    "errors": [],
+    "material_items": 3,
     "new_material_items": 0,
-    "raw_items": 0
+    "raw_items": 56
   },
   "seen": {
     "36cdbc3c7efe9983a34b0330": {
@@ -87,5 +68,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-09-27T09:46:39+09:00"
+  "updated_at_kst": "2026-09-27T09:51:44+09:00"
 }
