@@ -21,13 +21,15 @@
   ],
   "_delivery": {
     "id": "2422ce8dd6d30826ef663a5beb6170edeefb4e66e38d9668b36dddd84c12211b",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-09-27T18:47:47+09:00",
     "chunks": [
       "🚨 <b>TSMC 첨단패키징·嘉義 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 이번 변화: <b>CoWoS 병목 미확인→easing · HBM 병목 미확인→easing · 기판 병목 미확인→easing</b>\n• 嘉義 공장 수: <b>총 10개 · 추가 5개</b>\n• 공장 수 확인 수준: 공급망·업계 보도\n• 嘉科 확대 단계: <b>부지 확대 의견수렴</b>\n• 확대 단계 확인 수준: 공식자료\n• 다음 확인: TSMC 공식 투자결정·환경영향평가·착공·장비 발주/반입·시험생산·양산·실제 월 생산능력\n• 중복 방지: 같은 기사 재배포·제목 변경만으로는 다시 알리지 않습니다.\n• 근거: LTN · <a href=\"https://ec.ltn.com.tw/article/breakingnews/5586843\">원문</a>\n• 조회: 2026-09-27 18:44 KST"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      151
+    ],
     "candidate": {
       "watch_version": 1,
       "baseline_seeded_at_kst": "2026-09-27T18:02:00+09:00",
