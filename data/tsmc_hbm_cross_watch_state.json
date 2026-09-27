@@ -18,5 +18,64 @@
     "https://ec.ltn.com.tw/article/breakingnews/5586843",
     "https://stock.ltn.com.tw/article/gqpj9vhyk1ku",
     "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
-  ]
+  ],
+  "_delivery": {
+    "id": "8f5f6d5b29a5be52638e59403c5d694a66dce7b477d27b280eeea8d5836d3300",
+    "status": "queued",
+    "created_at_kst": "2026-09-27T18:51:29+09:00",
+    "chunks": [
+      "🚨 <b>HBM 교차 알림 | TSMC 첨단패키징 병목 변화</b>\n━━━━━━━━━━━━━━━━\n• HBM 알림 사유: <b>기판 병목 미확인→easing · HBM 병목 미확인→easing · CoWoS 병목 미확인→easing</b>\n• 전파 경로: CoWoS·SoIC 실제 처리능력/병목 → GPU·ASIC 패키지 출하 → HBM 탑재·출하 가능량\n• 알림 기준: 실제 생산능력 숫자 변화, 장비 반입·양산 진입, 테스터·기판·HBM·CoWoS 병목 변화만 교차 알림합니다.\n• 제외: 부지 검토·공장 의향·같은 기사 재배포만으로는 HBM 알림을 울리지 않습니다.\n• 근거: LTN · <a href=\"https://ec.ltn.com.tw/article/breakingnews/5586843\">원문</a>\n• 조회: 2026-09-27 18:47 KST"
+    ],
+    "next_chunk": 0,
+    "message_ids": [],
+    "candidate": {
+      "watch_version": 1,
+      "baseline_seeded_at_kst": "2026-09-27T18:02:00+09:00",
+      "baseline_note": "HBM 교차 기준선. 嘉義 총 10개·추가 5개 및 부지 의견수렴은 현재값으로 잠그되, 부지·의향만으로는 HBM 교차 알림하지 않음. 실제 CoWoS/SoIC 월 생산능력 변화, 장비 반입·양산 진입, 테스터·기판·HBM·CoWoS 병목 변화만 신규 교차 알림.",
+      "current_state": {
+        "chiayi_total_fabs": 10,
+        "chiayi_additional_fabs": 5,
+        "chiayi_phase3_status": "public_comment",
+        "fab_count_evidence_state": "supply_chain_report",
+        "phase3_evidence_state": "official",
+        "last_evidence_state": "supply_chain_report",
+        "last_source_url": "https://ec.ltn.com.tw/article/breakingnews/5586843",
+        "last_source_name": "LTN",
+        "last_event_title": "獨家》一共10座！嘉科三期起跑 台積電再加碼5座先進封裝廠 - 自由財經",
+        "official_source_url": "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch",
+        "last_source_published_at_kst": "2026-09-27T08:00:00+09:00",
+        "bottlenecks": {
+          "hbm": {
+            "status": "easing",
+            "evidence_state": "supply_chain_report",
+            "source_url": "https://www.trendforce.com/news/2026/09/21/news-tsmc-plans-mini-loop-at-kaohsiung-to-speed-cowos-tool-validation-reportedly-eyes-auo-site-for-copos/"
+          },
+          "cowos": {
+            "status": "easing",
+            "evidence_state": "supply_chain_report",
+            "source_url": "https://www.trendforce.com/news/2026/09/21/news-tsmc-plans-mini-loop-at-kaohsiung-to-speed-cowos-tool-validation-reportedly-eyes-auo-site-for-copos/"
+          },
+          "substrate": {
+            "status": "easing",
+            "evidence_state": "supply_chain_report",
+            "source_url": "https://www.trendforce.com/news/2026/09/21/news-tsmc-plans-mini-loop-at-kaohsiung-to-speed-cowos-tool-validation-reportedly-eyes-auo-site-for-copos/"
+          }
+        }
+      },
+      "baseline_sources": [
+        "https://ec.ltn.com.tw/article/breakingnews/5586843",
+        "https://stock.ltn.com.tw/article/gqpj9vhyk1ku",
+        "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
+      ],
+      "last_checked_at_kst": "2026-09-27T18:47:52+09:00",
+      "last_evidence_url": "https://ec.ltn.com.tw/article/breakingnews/5586843",
+      "last_evidence_published_at_kst": "2026-09-27T08:00:00+09:00",
+      "last_alert_reasons": [
+        "기판 병목 미확인→easing",
+        "HBM 병목 미확인→easing",
+        "CoWoS 병목 미확인→easing"
+      ],
+      "last_alert_at_kst": "2026-09-27T18:47:52+09:00"
+    }
+  }
 }
