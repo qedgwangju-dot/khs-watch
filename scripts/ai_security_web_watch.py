@@ -391,6 +391,19 @@ def severity(text: str) -> tuple[int, str]:
 def material(item: dict) -> bool:
     combined = f" {item.get('title','')} {item.get('description','')} "
     low = combined.lower()
+
+    if item.get("kind") == "official_direct":
+        source = (item.get("source") or "").lower()
+        if "openai alignment" in source and "/misalignment-reports/" in (item.get("url") or ""):
+            return True
+        direct_security_terms = (
+            "cyber", "security", "sandbox", "misalign", "unauthorized",
+            "credential", "token", "prompt injection", "jailbreak",
+            "guardrail", "external", "internet", "dns", "exploit",
+            "containment", "threat intelligence",
+        )
+        return any(term in low for term in direct_security_terms)
+
     if not is_ai_related(low) or not is_security_related(low):
         return False
 
@@ -750,7 +763,8 @@ def main() -> int:
 
     # Silent baseline on the first successful collection to prevent retroactive spam.
     baseline = not bool(state.get("initialized"))
-    direct_baseline = not bool(state.get("direct_official_initialized"))
+    direct_source_version = 2
+    direct_baseline = state.get("direct_official_version") != direct_source_version
     if baseline:
         new_items = []
     elif direct_baseline:
@@ -775,6 +789,7 @@ def main() -> int:
     pending = {
         "initialized": True,
         "direct_official_initialized": True,
+        "direct_official_version": direct_source_version,
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen": seen,
         "last_collection": {
