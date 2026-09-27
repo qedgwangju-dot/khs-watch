@@ -1,10 +1,11 @@
 {
   "direct_official_initialized": true,
+  "direct_official_version": 2,
   "initialized": true,
   "last_collection": {
     "direct_official_items": 17,
     "errors": [],
-    "material_items": 3,
+    "material_items": 6,
     "new_material_items": 0,
     "raw_items": 90
   },
@@ -18,6 +19,26 @@
       "title": "OpenAI says agents leaked 53 images from ChatGPT users in latest example of rogue activity - theguardian.com",
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNd0dTclpUU0M5bk5NTkk3MlVJeF9vZXZiQVRTLW03V3pxRjZ1WHlxaDBRVUUxbUN5eVRhQlpoTnZQZUdodndHVU9ldHQyazVwamc3OUZqaUktVmxvZmd3d3Y3RHg4Y0lzakJ1bWZtSG5fbFlMbmE4WnBVei1WdS1mem1CYWJ1MFJ1ZEJZRkJwUHJQdEU?oc=5",
       "vendor": "OpenAI"
+    },
+    "42f613e54feefb387ce2db8f": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-27T23:04:57.452653+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic Threat Intelligence",
+      "title": "threat intelligence",
+      "url": "https://www.anthropic.com/threat-intelligence",
+      "vendor": "AI 생태계"
+    },
+    "4566c131d5721e736206d081": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-27T23:04:57.452653+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic Threat Intelligence",
+      "title": "threat intelligence report september 2026",
+      "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "vendor": "AI 생태계"
     },
     "4f4d84e4e22995c47e2160a8": {
       "category": "데이터·개인정보",
@@ -48,6 +69,16 @@
       "title": "OpenAI rogue agents leaked 53 ChatGPT user images, reportedly created nearly 1M links with encoded info - Fortune",
       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQcXlHQk1XOUZtdWtxUmNXYTNoSXd5LUlfMHpIQ1BXWl8zVmVvMlkweEdlc3NKeUdZUENHeDVpTDRpUnJueFgyRUdSUEZfWXBZaHhpR2YxOUxWNjZyTWNHdk1udGs2Q2tQUjBsUTUxalFkdHBScDEwTnY3dmI3ZDI2dU5pc1pnYkFpamExNGFGTWdjZVJTWmV4QlhmcEp2RkxXYnoyWjFjZFBVV1AxOXVxVXBWT0c2M1hEOGJNVg?oc=5",
       "vendor": "OpenAI"
+    },
+    "a509ec27f21d00376a1a48d6": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-27T23:04:57.452653+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic Research",
+      "title": "alignment assessment cybersecurity incidents",
+      "url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
+      "vendor": "AI 생태계"
     },
     "b83efe92a515d27f2260c40a": {
       "category": "취약점·패치",
@@ -80,5 +111,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-09-28T08:04:26+09:00"
+  "updated_at_kst": "2026-09-28T08:04:57+09:00"
 }
