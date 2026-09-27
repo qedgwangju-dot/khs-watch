@@ -248,5 +248,42 @@
     "last_checked_cutoff": "2026-09-27",
     "last_checked_at_kst": "2026-09-27T17:48:58+09:00",
     "candidate_count": 0
+  },
+  "abf_cpu_monetization": {
+    "as_of": "2026-09-27",
+    "official": {
+      "ibiden_ai_server_demand_exceeds_capacity": true,
+      "ibiden_sap_capacity_fy2027_multiple_min": 2,
+      "ibiden_capex_fy2026_2028_jpy_bn": 500,
+      "ibiden_gama_capex_jpy_bn": 220,
+      "ibiden_gama_mass_production_start_fy": 2027,
+      "ibiden_asic_share_fy2026_floor_pct": 10,
+      "ibiden_major_cpu_customer_demand_strong": true,
+      "ibiden_pricing_stance": "현 판매가격 유지 + 원재료비 고객 전가",
+      "ibiden_customer_sales_fy2024_jpy_bn": {
+        "Intel": 76.709,
+        "AMD": 40.707,
+        "NVIDIA": 75.077
+      }
+    },
+    "research": {
+      "macquarie_intel_abf_share_pct": 30,
+      "macquarie_amd_abf_share_pct": 15,
+      "macquarie_nvidia_cpu_substrate_shipping": true,
+      "macquarie_note": "사용자 제공 Macquarie 발췌; Ibiden 공식 확인 전"
+    },
+    "facts": {
+      "official_nvidia_cpu_substrate_confirmed": false,
+      "official_intel_abf_share_confirmed": false,
+      "official_amd_abf_share_confirmed": false,
+      "official_abf_price_increase_confirmed": false
+    },
+    "seen_urls": [
+      "https://www.ibiden.com/company/2026/02/notice-regarding-capital-investment-plan-for-high-performance-ic-package-substrates.html",
+      "https://www.ibiden.com/ir/items/en_QY20251st.pdf",
+      "https://www.ibiden.com/ir/items/en_QA_FY25Q4.pdf",
+      "https://www.ibiden.com/ir/items/FinancialReview2025.pdf",
+      "https://www.ibiden.com/ir/items/en_kessannsetsumeiFY2025.pdf"
+    ]
   }
 }
