@@ -319,6 +319,187 @@ def _parse_te_commodity_row_v34(text: str, key: str) -> dict[str, object]:
     return rows[0]
 
 
+
+TE_TTF_KO_DETAIL_V34 = "https://ko.tradingeconomics.com/commodity/eu-natural-gas"
+TE_JKM_KO_DETAIL_V34 = "https://ko.tradingeconomics.com/commodity/liquefied-natural-gas-japan-korea"
+
+
+def _parse_te_korean_detail_v34(raw_html: str, key: str) -> dict[str, object]:
+    text = _visible_text_v34(raw_html)
+    if key == "ttf":
+        stats = re.search(
+            r"실제\s+이전\s+최고\s+최저\s+날짜\s+단위\s+업데이트\s*주기\s+([0-9.,]+)\s+([0-9.,]+)",
+            text,
+            flags=re.I,
+        )
+        if not stats:
+            raise RuntimeError("TE Korean TTF actual/previous not found")
+        actual = _num_v34(stats.group(1))
+        previous = _num_v34(stats.group(2))
+        date_patterns = (
+            r"(20\d{2})년\s*(\d{1,2})월\s*(\d{1,2})일\s+EU\s*가스",
+            r"(20\d{2})년\s*(\d{1,2})월\s*(\d{1,2})일\s+유럽(?:연합)?\s*가스",
+        )
+        row_patterns = (
+            r"(?:유럽연합 가스|유럽의 천연가스|EU 가스)\s+([0-9.,]+)\s+([+-]?[0-9.,]+)\s+([+-]?[0-9.,]+)%",
+        )
+    elif key == "jkm":
+        stats = re.search(
+            r"실제\s+이전\s+최고\s+최저\s+날짜\s+단위\s+업데이트\s*주기\s+([0-9.,]+)\s+([0-9.,]+)",
+            text,
+            flags=re.I,
+        )
+        if not stats:
+            raise RuntimeError("TE Korean JKM actual/previous not found")
+        actual = _num_v34(stats.group(1))
+        previous = _num_v34(stats.group(2))
+        date_patterns = (
+            r"(20\d{2})년\s*(\d{1,2})월\s*(\d{1,2})일\s+LNG\s*JKM",
+            r"(20\d{2})년\s*(\d{1,2})월\s*(\d{1,2})일.{0,80}LNG\s*JKM",
+        )
+        row_patterns = (
+            r"LNG\s+JKM\s+([0-9.,]+)\s+([+-]?[0-9.,]+)\s+([+-]?[0-9.,]+)%",
+        )
+    else:
+        raise ValueError(key)
+
+    if previous <= 0:
+        raise RuntimeError(f"TE Korean {key} previous invalid")
+    calculated_pct = (actual / previous - 1.0) * 100.0
+
+    coherent = False
+    for row_pattern in row_patterns:
+        for match in re.finditer(row_pattern, text, flags=re.I):
+            row_price = _num_v34(match.group(1))
+            row_pct = _num_v34(match.group(3))
+            if (
+                abs(row_price / actual - 1.0) * 100.0 <= 0.25
+                and abs(row_pct - calculated_pct) <= 0.30
+            ):
+                coherent = True
+                break
+        if coherent:
+            break
+    if not coherent:
+        raise RuntimeError(
+            f"TE Korean {key} page internal values disagree actual={actual} previous={previous} pct={calculated_pct:.2f}"
+        )
+
+    source_date = None
+    for pattern in date_patterns:
+        match = re.search(pattern, text, flags=re.I)
+        if match:
+            source_date = dt.date(*(int(match.group(i)) for i in (1, 2, 3)))
+            break
+    if source_date is None:
+        iso_dates = [
+            dt.date.fromisoformat(value)
+            for value in re.findall(r"\b(20\d{2}-\d{2}-\d{2})\b", text)
+        ]
+        today_kst = core.now_utc().astimezone(core.KST).date()
+        candidates = [value for value in iso_dates if value <= today_kst]
+        if candidates:
+            source_date = max(candidates)
+    if source_date is None:
+        raise RuntimeError(f"TE Korean {key} source date not found")
+
+    today_kst = core.now_utc().astimezone(core.KST).date()
+    age_days = (today_kst - source_date).days
+    if age_days < 0 or age_days > TE_MAX_AGE_DAYS_V34:
+        raise RuntimeError(f"TE Korean {key} stale source date={source_date} age={age_days}d")
+
+    return {
+        "actual": actual,
+        "previous": previous,
+        "change_pct": calculated_pct,
+        "source_date": source_date,
+    }
+
+
+def _fetch_te_korean_detail_quote_v34(key: str) -> core.Quote:
+    url = TE_TTF_KO_DETAIL_V34 if key == "ttf" else TE_JKM_KO_DETAIL_V34
+    cache_bust = int(core.now_utc().timestamp())
+    raw = core.fetch_bytes(f"{url}?v={cache_bust}").decode("utf-8", errors="replace")
+    parsed = _parse_te_korean_detail_v34(raw, key)
+    observed = core.now_utc()
+    if key == "ttf":
+        label = "Trading Economics 한국 EU Gas(TTF 추종 공개값)"
+        unit = "유로/MWh"
+        symbol = "TE-KO:EU-GAS"
+        suffix = ""
+    else:
+        label = "Trading Economics 한국 LNG JKM 추종 공개값"
+        unit = "달러/MMBtu"
+        symbol = "TE-KO:LNG-JKM"
+        suffix = "; Platts 공식 평가값 아님"
+    return core.Quote(
+        key=key,
+        symbol=symbol,
+        label=label,
+        unit=unit,
+        price=float(parsed["actual"]),
+        previous_close=float(parsed["previous"]),
+        change_pct=float(parsed["change_pct"]),
+        timestamp_epoch=observed.timestamp(),
+        timestamp_utc=observed.isoformat(timespec="seconds"),
+        age_minutes=0,
+        source_note=(
+            "Trading Economics 한국 상세페이지 actual/previous/내부 시세표 검증; "
+            f"기준일={parsed['source_date'].isoformat()}{suffix}"
+        ),
+    )
+
+
+def _fetch_yahoo_brent_daily_close_v34() -> core.Quote:
+    symbol = str(core.PRICE_SPECS["brent"]["symbol"])
+    encoded = urllib.parse.quote(symbol, safe="")
+    params = urllib.parse.urlencode({"interval": "1d", "range": "10d", "includePrePost": "false"})
+    session_sets: list[dict[dt.date, float]] = []
+    for base in core.YAHOO_BASES:
+        payload = json.loads(core.fetch_bytes(f"{base}/{encoded}?{params}").decode("utf-8"))
+        session_sets.append(_parse_yahoo_daily_sessions_v34(payload))
+
+    common_dates = sorted(set(session_sets[0]).intersection(session_sets[1]))
+    if len(common_dates) < 2:
+        raise RuntimeError("Yahoo Brent common daily sessions < 2")
+    source_date = common_dates[-1]
+    previous_date = common_dates[-2]
+    current_values = [sessions[source_date] for sessions in session_sets]
+    previous_values = [sessions[previous_date] for sessions in session_sets]
+    current_gap = abs(current_values[0] / current_values[1] - 1.0) * 100.0
+    previous_gap = abs(previous_values[0] / previous_values[1] - 1.0) * 100.0
+    if current_gap > 0.20 or previous_gap > 0.20:
+        raise RuntimeError(
+            f"Yahoo Brent daily endpoint mismatch current={current_gap:.2f}% previous={previous_gap:.2f}%"
+        )
+
+    today_kst = core.now_utc().astimezone(core.KST).date()
+    age_days = (today_kst - source_date).days
+    if age_days < 0 or age_days > 5:
+        raise RuntimeError(f"Yahoo Brent daily stale source_date={source_date} age={age_days}d")
+
+    price = sum(current_values) / len(current_values)
+    previous = sum(previous_values) / len(previous_values)
+    observed = core.now_utc()
+    return core.Quote(
+        key="brent",
+        symbol=symbol,
+        label="Yahoo Brent 일봉 종가",
+        unit="달러/배럴",
+        price=price,
+        previous_close=previous,
+        change_pct=(price / previous - 1.0) * 100.0,
+        timestamp_epoch=observed.timestamp(),
+        timestamp_utc=observed.isoformat(timespec="seconds"),
+        age_minutes=0,
+        source_note=(
+            "Yahoo Finance query1/query2 10일 일봉의 최신 공통 확정 종가; "
+            f"기준일={source_date.isoformat()}; 직전거래일={previous_date.isoformat()}; "
+            "상단 실시간값/chartPreviousClose 미사용"
+        ),
+    )
+
+
 def _fetch_te_commodity_quote_v34(key: str) -> core.Quote:
     parsed_rows: list[dict[str, object]] = []
     errors: list[str] = []
@@ -589,19 +770,18 @@ def _fetch_yahoo_brent_quote_v34() -> core.Quote:
 def fetch_market_quotes_v34():
     quotes, errors = _BASE_FETCH_MARKET_QUOTES_V34()
     for key in ("ttf", "jkm"):
+        errors = [error for error in errors if not str(error).lower().startswith(f"{key}:")]
         try:
-            quotes[key] = _fetch_te_commodity_quote_v34(key)
-            errors = [error for error in errors if not str(error).lower().startswith(f"{key}:")]
+            quotes[key] = _fetch_te_korean_detail_quote_v34(key)
         except Exception as exc:
             quotes.pop(key, None)
-            errors.append(f"{key}: v34 aligned-date validation failed: {type(exc).__name__}: {exc}")
+            errors.append(f"{key}: v34 canonical-detail validation failed: {type(exc).__name__}: {exc}")
+    errors = [error for error in errors if not str(error).lower().startswith("brent:")]
     try:
-        te_brent = _fetch_te_commodity_quote_v34("brent")
-        quotes["brent"] = _crosscheck_te_brent_with_yahoo_v34(te_brent)
-        errors = [error for error in errors if not str(error).lower().startswith("brent:")]
+        quotes["brent"] = _fetch_yahoo_brent_daily_close_v34()
     except Exception as exc:
         quotes.pop("brent", None)
-        errors.append(f"brent: v34 TE/Yahoo same-date validation failed: {type(exc).__name__}: {exc}")
+        errors.append(f"brent: v34 Yahoo daily-close validation failed: {type(exc).__name__}: {exc}")
     return quotes, errors
 
 
@@ -670,6 +850,29 @@ def _self_validate_price_alignment_v34() -> None:
     parsed = _parse_yahoo_brent_payload_v34(yahoo_fixture)
     assert float(parsed["previous"]) != 100.34
     assert float(parsed["previous"]) > 0
+
+
+
+def _self_validate_canonical_price_parsers_v34() -> None:
+    ttf_html = """
+    실제 이전 최고 최저 날짜 단위 업데이트 주기 71.89 74.94 345 3.37
+    유럽연합 가스 71.89 -3.05 -4.07%
+    2026년 9월 25일 EU 가스는
+    """
+    ttf = _parse_te_korean_detail_v34(ttf_html, "ttf")
+    assert str(ttf["source_date"]) == "2026-09-25"
+    assert abs(float(ttf["actual"]) - 71.89) < 0.001
+    assert abs(float(ttf["change_pct"]) + 4.07) < 0.05
+
+    jkm_html = """
+    실제 이전 최고 최저 날짜 단위 업데이트 주기 25.82 26.385 69.96 2.00
+    LNG JKM 25.82 -0.57 -2.14%
+    2026년 9월 25일 LNG JKM
+    """
+    jkm = _parse_te_korean_detail_v34(jkm_html, "jkm")
+    assert str(jkm["source_date"]) == "2026-09-25"
+    assert abs(float(jkm["actual"]) - 25.82) < 0.001
+    assert abs(float(jkm["change_pct"]) + 2.14) < 0.05
 
 
 def _self_validate_policy_provenance_v34() -> None:
@@ -1179,6 +1382,7 @@ def _self_validate_alaska_policy_render_v34() -> None:
 
 _self_validate_alaska_policy_render_v34()
 _self_validate_price_alignment_v34()
+_self_validate_canonical_price_parsers_v34()
 _self_validate_policy_provenance_v34()
 
 
@@ -1276,8 +1480,8 @@ def build_regular_alert_v34(groups, quotes, new_signals, cleared_signals):
         "interpretation_guard": "analysis signal != confirmed demand destruction",
     }
     metadata["price_integrity_v34"] = {
-        "ttf_jkm": "Trading Economics commodities-table value/change/date aligned; stale detail-page date cannot override",
-        "brent": "Trading Economics dated commodity row is primary; Yahoo daily history must match the same date and prior session; Yahoo top quote/chartPreviousClose are never used",
+        "ttf_jkm": "Trading Economics Korean detail page actual/previous/internal-row arithmetic + dated narrative; no cross-page stale date override",
+        "brent": "Yahoo query1/query2 latest common daily close and immediately prior common session; top quote/chartPreviousClose are never used",
         "fail_closed": True,
     }
     metadata["official_source_integrity_v34"] = {
