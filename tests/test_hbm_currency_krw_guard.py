@@ -77,5 +77,12 @@ class CurrencyKRWGuardTests(unittest.TestCase):
         self.assertIn("€2 billion(", out)
         self.assertIn("£1 billion(", out)
 
+    def test_extended_currency_words_are_supported(self):
+        with patch.object(g, "_rate", side_effect=self.fake_rate):
+            out = g.enforce_text("20억위안 / 10억홍콩달러 / 3억싱가포르달러")
+        self.assertIn("20억위안(", out)
+        self.assertIn("10억홍콩달러(", out)
+        self.assertIn("3억싱가포르달러(", out)
+
 if __name__ == "__main__":
     unittest.main()
