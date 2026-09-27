@@ -250,14 +250,16 @@ def parse_official_update(text: str, url: str) -> dict:
         elif "maintaining current selling prices" in low or "maintain current selling prices" in low:
             out["pricing_stance"] = "현 판매가격 유지 + 원재료비 고객 전가"
 
-        nvidia_cpu = re.search(
-            r"(?:NVIDIA[^.]{0,140}?CPU|CPU[^.]{0,140}?NVIDIA)[^.]{0,140}?"
-            r"(?:mass production|shipment|shipping|supply|started shipments|began shipments)",
-            text,
-            re.I,
-        )
-        if nvidia_cpu:
-            out["official_nvidia_cpu_substrate_confirmed"] = True
+        for sentence in re.split(r"(?<=[.!?])\s+", text):
+            s = sentence.lower()
+            if (
+                "nvidia" in s
+                and "cpu" in s
+                and any(k in s for k in ("mass production", "shipment", "shipping", "supply", "started shipments", "began shipments"))
+                and any(k in s for k in ("substrate", "package", "abf", "ic package"))
+            ):
+                out["official_nvidia_cpu_substrate_confirmed"] = True
+                break
 
         # Official major-customer revenue values. These are company sales to the customer,
         # not "ABF revenue share"; keep the distinction explicit.
