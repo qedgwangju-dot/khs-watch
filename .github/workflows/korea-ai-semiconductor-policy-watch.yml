@@ -1,0 +1,181 @@
+name: Korea AI Semiconductor Policy Demand Watch
+
+on:
+  schedule:
+    # GitHub cron is UTC. Hourly, separated from the Rebellions company watcher.
+    - cron: "23 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/korea-ai-semiconductor-policy-watch.yml"
+      - "scripts/korea_ai_semiconductor_policy_watch.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: korea-ai-semiconductor-policy-demand-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate watcher
+        run: python -m py_compile scripts/korea_ai_semiconductor_policy_watch.py
+
+      - name: Verify Telegram route
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("HBM_TELEGRAM_BOT_TOKEN secret is missing")
+          if not chat_id:
+              raise RuntimeError("HBM_TELEGRAM_CHAT_ID secret is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{username}")
+          PY
+
+      - name: Check policy demand and overseas orders
+        run: python scripts/korea_ai_semiconductor_policy_watch.py
+
+      - name: Publish status
+        if: always()
+        run: |
+          if [ -f out/korea_ai_semiconductor_policy_watch_status.md ]; then
+            cat out/korea_ai_semiconductor_policy_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send new material change to Telegram
+        if: hashFiles('out/korea_ai_semiconductor_policy_watch_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram route secret is missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/korea_ai_semiconductor_policy_watch_alert.html").read_text(encoding="utf-8").strip()
+
+          def chunks(value, limit=3900):
+              out, current = [], ""
+              for paragraph in value.split("\n\n"):
+                  candidate = paragraph if not current else current + "\n\n" + paragraph
+                  if len(candidate) <= limit:
+                      current = candidate
+                      continue
+                  if current:
+                      out.append(current)
+                  current = paragraph
+              if current:
+                  out.append(current)
+              return out
+
+          message_ids = []
+          for idx, chunk in enumerate(chunks(text), start=1):
+              if idx > 1:
+                  chunk = f"<b>국산 AI반도체 정책·초기수요·해외수주 (계속 {idx})</b>\n\n{chunk}"
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
+              message_ids.append(result.get("result", {}).get("message_id"))
+
+          pathlib.Path("out/korea_ai_semiconductor_policy_watch_telegram_confirmed.json").write_text(
+              json.dumps({
+                  "status": "confirmed",
+                  "bot_username": username,
+                  "message_ids": message_ids,
+                  "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              }, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={message_ids}")
+          PY
+
+      - name: Persist confirmed state
+        if: success() && hashFiles('out/korea_ai_semiconductor_policy_watch_pending_state.json') != '' && (hashFiles('out/korea_ai_semiconductor_policy_watch_alert.html') == '' || hashFiles('out/korea_ai_semiconductor_policy_watch_telegram_confirmed.json') != '')
+        run: |
+          cp out/korea_ai_semiconductor_policy_watch_pending_state.json data/korea_ai_semiconductor_policy_watch_state.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/korea_ai_semiconductor_policy_watch_state.json
+          if git diff --cached --quiet; then
+            echo "AI semiconductor policy watch state unchanged"
+          else
+            git commit -m "Update Korea AI semiconductor policy watch state [skip ci]"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korea-ai-semiconductor-policy-watch-${{ github.run_id }}
+          path: |
+            out/korea_ai_semiconductor_policy_watch_status.md
+            out/korea_ai_semiconductor_policy_watch_alert.html
+            out/korea_ai_semiconductor_policy_watch_telegram_confirmed.json
+            out/korea_ai_semiconductor_policy_watch_pending_state.json
+          if-no-files-found: ignore
+          retention-days: 14
