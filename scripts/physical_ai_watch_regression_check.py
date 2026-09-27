@@ -261,7 +261,9 @@ us_q2_baseline = make(
     "SEIA",
 )
 g, s, c, k = classify(us_q2_baseline)
+print("US_ESS_BASELINE_DEBUG", g, repr(s), c)
 assert g == "ess_battery", (g, s, c)
+assert isinstance(s, (int, float)), ("score type", type(s).__name__, repr(s), c)
 assert s < 11, ("Q2 2026 20.2GWh / H1 30.8GWh baseline must stay silent", s, c)
 
 us_target_baseline = make(
