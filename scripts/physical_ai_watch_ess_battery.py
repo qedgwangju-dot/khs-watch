@@ -45,11 +45,16 @@ base.QUERIES.extend([
     '(ESS OR BESS OR energy storage) (MLCC OR 적층세라믹커패시터) (고전압 OR high voltage OR 고신뢰성 OR high reliability OR 고온 OR high temperature OR 검사 OR test OR 수율 OR yield)',
     '(전력거래소 OR KPX) ("ESS 중앙계약시장" OR "에너지저장장치 중앙계약시장") (입찰공고 OR 공고문 OR 확정 OR 선정 OR 우선협상 OR 낙찰)',
     '(전력거래소 OR KPX OR ESS) (25년 OR 15년 OR 장기계약 OR 계약기간) (잔존용량 OR 보증수명 OR 90% OR 70% OR 730회 OR 18250회 OR 1만8250회)',
+    '("Solar Energy Industries Association" OR SEIA) ("energy storage" OR ESS OR BESS) (Q1 OR Q2 OR Q3 OR Q4 OR quarter OR quarterly OR 상반기 OR 하반기) (installed OR installations OR "new capacity" OR 신규설치 OR 신규 설치 OR GWh)',
+    '("U.S. Energy Storage Coalition" OR "US Energy Storage Coalition" OR "Energy Storage Coalition" OR ESC) ("energy storage" OR ESS) (225 GW OR 1 TWh OR 2032 OR terawatt-hour) (target OR goal OR pace OR revised OR raised OR lowered OR 목표 OR 상향 OR 하향 OR 연기)',
+    '(미국 OR "United States" OR "U.S.") (ESS OR "energy storage" OR BESS) (forecast OR outlook OR 전망) (revised OR raised OR lowered OR upgraded OR downgraded OR 상향 OR 하향 OR 수정) (GWh OR TWh OR GW)',
+    '(미국 OR "United States" OR "U.S.") (ESS OR "energy storage" OR BESS) (FEOC OR "tax credit" OR 세액공제 OR tariff OR 관세 OR interconnection OR 계통접속 OR "fire code" OR 화재규정 OR permitting OR 인허가) (final rule OR rule change OR enacted OR effective OR 승인 OR 확정 OR 시행 OR 변경)',
 ])
 
 base.TRUSTED.update({
     'Energy-Storage.News', 'ESS News', 'Benchmark Mineral Intelligence',
     'Reuters', 'Caixin', '전자신문', '이데일리', '연합뉴스', '한국경제',
+    'Wood Mackenzie', 'Utility Dive', 'Canary Media',
 })
 base.OFFICIAL_OR_PRIMARY.update({
     '국가세무총국', '중국 재정부', 'Ministry of Finance of China',
@@ -57,6 +62,9 @@ base.OFFICIAL_OR_PRIMARY.update({
     '삼성전기', 'Samsung Electro-Mechanics', 'Murata', '무라타',
     'Taiyo Yuden', '다이요유덴', 'TDK', 'Yageo',
     '전력거래소', 'KPX', '한국전력거래소',
+    'SEIA', 'Solar Energy Industries Association',
+    'U.S. Energy Storage Coalition', 'US Energy Storage Coalition', 'Energy Storage Coalition',
+    'American Clean Power Association', 'ACP',
     'SK온', 'SK On', '엘앤에프', 'L&F', 'DART', '금융감독원 전자공시시스템',
 })
 
@@ -114,6 +122,90 @@ ESS3_ACTUAL = re.compile(
 KPX_SOURCE_RE = re.compile(r'전력거래소|한국전력거래소|\bKPX\b', re.I)
 ESS_LONG_LIFE = re.compile(r'25\s*년|15\s*년|장기\s*계약|계약\s*기간|보증\s*수명|잔존\s*용량|730\s*회|18,?250\s*회|1만\s*8,?250\s*회|90\s*%|70\s*%', re.I)
 ESS_LIFETIME_RULE = re.compile(r'(?:25\s*년|15\s*년).{0,80}(?:계약|운전|충.?방전|보증)|(?:잔존\s*용량|보증\s*수명).{0,60}(?:90\s*%|85\s*%|80\s*%|75\s*%|70\s*%)|730\s*회|18,?250\s*회|1만\s*8,?250\s*회', re.I)
+
+US_MARKET_RE = re.compile(r'미국|United\s+States|U\.S\.|\bUS\b|American', re.I)
+US_STORAGE_RE = re.compile(r'\bESS\b|\bBESS\b|energy\s+storage|battery\s+storage|에너지저장|에너지\s*저장', re.I)
+US_INSTALL_ACTUAL = re.compile(
+    r'installed|installations?|added|adds|new\s+capacity|deployment|deployed|'
+    r'신규\s*설치|설치\s*규모|새로\s*설치|신규\s*용량|배치',
+    re.I,
+)
+US_PERIOD = re.compile(r'\bQ[1-4]\b|[1-4](?:st|nd|rd|th)\s+quarter|분기|상반기|하반기|first\s+half|second\s+half', re.I)
+US_GWH = re.compile(r'\d[\d,.]*\s*GWh', re.I)
+US_RECORD = re.compile(r'record|largest\s+quarter|all[-\s]*time\s+high|역대\s*최대|사상\s*최대|신기록', re.I)
+US_INSTALL_BASELINE_Q2_2026 = re.compile(
+    r'(?:Q2|2분기|second\s+quarter).{0,120}(?:20(?:\.2)?\s*GWh)|'
+    r'(?:20(?:\.2)?\s*GWh).{0,120}(?:Q2|2분기|second\s+quarter)',
+    re.I,
+)
+US_H1_BASELINE_2026 = re.compile(
+    r'(?:상반기|first\s+half|H1).{0,120}30\.8\s*GWh|30\.8\s*GWh.{0,120}(?:상반기|first\s+half|H1)',
+    re.I,
+)
+US_TARGET_CONTEXT = re.compile(r'target|goal|on\s+pace|deploy|deployment|목표|달성|구축|확대', re.I)
+US_TARGET_BASELINE = re.compile(
+    r'(?:225\s*GW.{0,120}1\s*TWh|1\s*TWh.{0,120}225\s*GW|'
+    r'1\s*terawatt[-\s]*hour|1\s*TWh).{0,160}2032|'
+    r'2032.{0,160}(?:225\s*GW|1\s*TWh|1\s*terawatt[-\s]*hour)',
+    re.I,
+)
+US_TARGET_REVISION_WORDS = re.compile(r'revis|raise|lower|increase|decrease|accelerat|delay|push\s+back|extend|상향|하향|수정|변경|앞당|연기|늦춰', re.I)
+US_FORECAST = re.compile(r'forecast|outlook|projection|전망|예측', re.I)
+US_FORECAST_CHANGE = re.compile(r'revis|raise|lower|upgrade|downgrade|increase|decrease|상향|하향|수정|변경', re.I)
+US_POLICY = re.compile(r'FEOC|foreign\s+entity|tax\s+credit|세액공제|tariff|관세|interconnection|계통\s*접속|fire\s+code|화재\s*규정|permitting|인허가|domestic\s+content|현지\s*조달', re.I)
+US_POLICY_CHANGE = re.compile(r'final\s+rule|rule\s+change|effective|enacted|adopted|approved|확정|시행|발효|개정|변경|승인', re.I)
+
+
+def _extract_us_target(text: str) -> tuple[float | None, float | None, int | None]:
+    twh = None
+    gw = None
+    year = None
+    m = re.search(r'(\d+(?:\.\d+)?)\s*TWh|([0-9]+(?:\.[0-9]+)?)\s*terawatt[-\s]*hours?', text, re.I)
+    if m:
+        try:
+            twh = float(m.group(1) or m.group(2))
+        except Exception:
+            pass
+    m = re.search(r'(\d+(?:\.\d+)?)\s*GW', text, re.I)
+    if m:
+        try:
+            gw = float(m.group(1))
+        except Exception:
+            pass
+    years = [int(x) for x in re.findall(r'\b20(?:2[6-9]|3\d)\b', text)]
+    if years:
+        year = max(years)
+    return twh, gw, year
+
+
+def _us_ess_stage(text: str, source: str = '') -> str:
+    source_text = f'{text} {source}'
+    if not (US_STORAGE_RE.search(source_text) and US_MARKET_RE.search(source_text)):
+        return ''
+    official_install = bool(
+        re.search(r'SEIA|Solar\s+Energy\s+Industries\s+Association|Benchmark\s+Mineral', source_text, re.I)
+    )
+    if official_install and US_INSTALL_ACTUAL.search(text) and US_PERIOD.search(text) and US_GWH.search(text):
+        if US_INSTALL_BASELINE_Q2_2026.search(text) or US_H1_BASELINE_2026.search(text):
+            return 'us_install_baseline'
+        return 'us_install_actual'
+    target_source = bool(
+        re.search(r'U\.S\.\s+Energy\s+Storage\s+Coalition|US\s+Energy\s+Storage\s+Coalition|Energy\s+Storage\s+Coalition|\bESC\b', source_text, re.I)
+    )
+    if target_source and US_TARGET_CONTEXT.search(text) and re.search(r'203\d|TWh|terawatt[-\s]*hour|\b\d+\s*GW\b', text, re.I):
+        twh, gw, year = _extract_us_target(text)
+        changed = US_TARGET_REVISION_WORDS.search(text)
+        if (twh is not None and abs(twh - 1.0) > 1e-9) or (gw is not None and abs(gw - 225.0) > 1e-9) or (year is not None and year != 2032):
+            changed = True
+        if changed:
+            return 'us_target_revision'
+        if US_TARGET_BASELINE.search(text):
+            return 'us_target_baseline'
+    if US_FORECAST.search(text) and US_FORECAST_CHANGE.search(text) and re.search(r'\d[\d,.]*\s*(?:GWh|TWh|GW)', text, re.I):
+        return 'us_forecast_revision'
+    if US_POLICY.search(text) and US_POLICY_CHANGE.search(text):
+        return 'us_policy_change'
+    return ''
 
 
 def _ess3_stage(text: str, source: str = '') -> str:
@@ -227,6 +319,7 @@ def _is_ess_battery(text: str) -> bool:
     ess = ESS_RE.search(text)
     supply_component = BATTERY_RE.search(text) or MLCC_RE.search(text)
     sdi_storage = bool(SDI_RE.search(text) and SDI_STORAGE_RE.search(text))
+    us_market = bool(_us_ess_stage(text))
     # Official KPX market-design/lifetime rules are themselves battery-demand
     # state changes even when the headline says only "ESS" and does not repeat
     # a cell-maker name. Keep them in the ESS-battery lane so the primary source
@@ -237,6 +330,7 @@ def _is_ess_battery(text: str) -> bool:
     return bool(
         (ess and supply_component and not HUMANOID_RE.search(text))
         or sdi_storage
+        or us_market
         or official_lifetime_rule
     )
 
@@ -254,8 +348,24 @@ def score(item: dict) -> int:
         return _orig_score(item)
 
     source = item.get('source') or ''
+    us_stage = _us_ess_stage(text, source)
+    if us_stage == 'us_install_actual':
+        if source in base.OFFICIAL_OR_PRIMARY:
+            return 'SEIA 등 공식 원자료 · 분기/누적 GWh 실제 설치량과 기준기간 확인'
+        return 'SEIA·Benchmark 원자료를 인용한 보도 · 실제 설치 GWh를 공식자료로 교차확인'
+    if us_stage == 'us_target_revision':
+        return 'U.S. Energy Storage Coalition 공식 목표 · 225GW/1TWh/2032 기준선 대비 변경 확인'
+    if us_stage == 'us_forecast_revision':
+        return 'SEIA·Benchmark 등 공식/신뢰 전망자료 · 수정 전후 GWh·기준연도 비교'
+    if us_stage == 'us_policy_change':
+        return '미국 공식 정책·규정 원문 우선 · FEOC/세액공제/관세/계통접속/화재안전 시행조건 교차확인'
+    if us_stage in {'us_install_baseline', 'us_target_baseline'}:
+        return '기준선 등록 · 새 단계 변화 아님'
     sdi_stage = _sdi_ess_stage(text, source)
+    us_stage = _us_ess_stage(text, source)
     if sdi_stage in {'earnings_forecast', 'earnings_unconfirmed', 'synergy_baseline'}:
+        return 0
+    if us_stage in {'us_install_baseline', 'us_target_baseline'}:
         return 0
     ess3_stage = _ess3_stage(text, source)
     # Generic "3rd ESS market is coming / competition heats up" articles are
@@ -265,8 +375,18 @@ def score(item: dict) -> int:
         return 0
 
     s = 9
+    if us_stage:
+        s = 21
+        s += {
+            'us_install_actual': 13,
+            'us_target_revision': 12,
+            'us_forecast_revision': 11,
+            'us_policy_change': 13,
+        }.get(us_stage, 0)
+        if US_RECORD.search(text):
+            s += 4
     if sdi_stage:
-        s = 19
+        s = max(s, 19)
         s += {
             'earnings_actual': 12,
             'synergy_complete': 10,
@@ -313,6 +433,15 @@ def score(item: dict) -> int:
 
 
 def _raw_cat(text: str) -> str:
+    us_stage = _us_ess_stage(text)
+    if us_stage == 'us_install_actual':
+        return '미국 실설치·수요'
+    if us_stage == 'us_target_revision':
+        return '미국 2032 목표 변경'
+    if us_stage == 'us_forecast_revision':
+        return '미국 설치 전망 변경'
+    if us_stage == 'us_policy_change':
+        return '미국 정책·계통·안전 조건 변경'
     sdi_stage = _sdi_ess_stage(text)
     if sdi_stage == 'earnings_actual':
         return '삼성SDI 실적 질·본업 수익성'
@@ -349,6 +478,14 @@ def category(text: str, group: str) -> str:
 
 def meaning(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
+    if raw == '미국 실설치·수요':
+        return '미국 ESS의 실제 분기 신규 설치 GWh와 누적 설치량이 바뀌는 수요 확인 신호입니다. 업계 목표나 증권사 전망보다 실제 설치량을 우선하고, 전년동기 성장률·분기 신기록 여부를 한국 배터리 3사의 북미 생산능력·수주·가동률과 연결해 추적합니다.'
+    if raw == '미국 2032 목표 변경':
+        return 'U.S. Energy Storage Coalition의 225GW·1TWh·2032 기준선이 상향·하향되거나 일정이 바뀌는 구조적 수요 신호입니다. 목표 변경 폭과 필요한 연평균 성장률, 미국 현지 셀·시스템 생산능력의 격차를 함께 봅니다.'
+    if raw == '미국 설치 전망 변경':
+        return 'SEIA·Benchmark 등 신뢰 가능한 원천의 미국 ESS 설치 전망이 공식적으로 상향·하향되는 신호입니다. 전망 반복이 아니라 기준 연도·GWh가 실제로 수정됐을 때만 알립니다.'
+    if raw == '미국 정책·계통·안전 조건 변경':
+        return 'FEOC·세액공제·관세·계통접속·화재안전·인허가 규칙이 실제 ESS 설치 속도와 현지생산 경쟁력을 바꾸는 신호입니다. 정책 발표가 프로젝트 지연·원가·한국 3사 수주에 연결되는지를 확인합니다.'
     if raw == '삼성SDI 실적 질·본업 수익성':
         return '증권가의 ESS 매출비중·마진 전망이 아니라 회사 분기 실적에서 실제 ESS/UPS/BBU 비중과 수익성이 확인되는 단계입니다. AMPC·관세환급 등 일회성/정책성 이익을 분리해 반복 가능한 본업 영업이익과 현금창출력을 추적합니다.'
     if raw == '삼성SDI SynergyCells 가동 전환':
@@ -380,6 +517,14 @@ def meaning(cat: str) -> str:
 
 def risk(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
+    if raw == '미국 실설치·수요':
+        return '분기 설치량 신기록이 곧 한국 배터리 3사의 매출을 뜻하지 않습니다. 중국산·미국산 공급 비중, 프로젝트 지연, 셀 가격, 고객별 계약과 실제 가동률을 분리해야 합니다. 먼저 볼 지표는 다음 분기 GWh, 전년동기 성장률, 북미 공장 가동률입니다.'
+    if raw == '미국 2032 목표 변경':
+        return '1TWh는 산업계 목표이지 연방정부의 의무 설치량이 아닙니다. 계통접속·인허가·화재보험·정책 불확실성으로 실제 설치가 목표에 못 미칠 수 있습니다.'
+    if raw == '미국 설치 전망 변경':
+        return '전망치 상향은 실제 설치가 아닙니다. 프로젝트 취소·접속 지연·금리·셀 가격 변화로 전망이 다시 하향될 수 있으므로 이후 분기 실설치량으로 검증합니다.'
+    if raw == '미국 정책·계통·안전 조건 변경':
+        return '정책이 한국 업체에 유리해 보여도 현지조달 비용과 인증·보험 비용이 함께 상승할 수 있습니다. 규정 시행일·과도기·예외조항과 실제 프로젝트 착공 지연을 확인합니다.'
     if raw == '삼성SDI 실적 질·본업 수익성':
         return 'AMPC를 뺐다고 곧바로 순수 본업 이익이 되는 것은 아닙니다. 관세환급·환율·평가손익·일회성 비용을 추가 분리하고, ESS 매출비중이 올라가도 실제 영업이익률·가동률·운전자본·영업현금흐름이 동반 개선되는지 확인합니다.'
     if raw == '삼성SDI SynergyCells 가동 전환':
@@ -467,6 +612,13 @@ def _same_event(a: dict, b: dict) -> bool:
     if sa3 and sb3 and sa3 == sb3:
         return True
 
+    usa, usb = _us_ess_stage(ta, a.get('source') or ''), _us_ess_stage(tb, b.get('source') or '')
+    if usa and usb and usa == usb:
+        na, nb = _numbers(ta), _numbers(tb)
+        if na and nb:
+            return bool(na & nb)
+        return True
+
     sda, sdb = _sdi_ess_stage(ta, a.get('source') or ''), _sdi_ess_stage(tb, b.get('source') or '')
     if sda and sdb and sda == sdb:
         nums_a, nums_b = _numbers(ta), _numbers(tb)
@@ -510,8 +662,15 @@ def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     import hashlib
     source = item.get('source') or ''
+    us_stage = _us_ess_stage(text, source)
     sdi_stage = _sdi_ess_stage(text, source)
     stage3 = _ess3_stage(text, source)
+    if us_stage:
+        nums = sorted(_numbers(text))
+        q = re.search(r'\bQ[1-4]\b|[1-4]분기|상반기|하반기|first\s+half|second\s+half', text, re.I)
+        period = re.sub(r'\s+', '-', q.group(0).lower()) if q else 'no-period'
+        suffix = '|'.join(nums[:4]) if nums else 'no-number'
+        return hashlib.sha256(f'us-ess|{us_stage}|{period}|{suffix}'.encode()).hexdigest()
     if sdi_stage:
         nums = sorted(_numbers(text))
         suffix = '|'.join(nums[:3]) if nums else 'no-number'
