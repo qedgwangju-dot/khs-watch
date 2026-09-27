@@ -84,5 +84,17 @@ class CurrencyKRWGuardTests(unittest.TestCase):
         self.assertIn("10억홍콩달러(", out)
         self.assertIn("3억싱가포르달러(", out)
 
+    def test_iso_currency_amounts_get_immediate_krw_parentheses(self):
+        with patch.object(g, "_rate", side_effect=self.fake_rate):
+            out = g.enforce_text("리포트 가격 USD 30,000 / 비용 EUR 2 million")
+        self.assertIn("USD 30,000(", out)
+        self.assertIn("EUR 2 million(", out)
+        g.validate_text(out)
+
+    def test_validator_rejects_unpaired_iso_currency_amount(self):
+        with self.assertRaises(RuntimeError):
+            g.validate_text("가격 USD 30,000")
+        g.validate_text("가격 USD 30,000(약 4,050만원)")
+
 if __name__ == "__main__":
     unittest.main()
