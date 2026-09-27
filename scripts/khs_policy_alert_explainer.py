@@ -847,6 +847,8 @@ def ensure_explained(item: dict) -> dict:
 
     if item.get("source") == "U.S. Treasury press releases" and item.get("policy_plain_summary"):
         return item
+    if item.get("source") == "Federal Register Korea trade remedies" and item.get("policy_plain_summary"):
+        return item
 
     if is_boem_arctic_drilling_rule(text, item):
         put(
