@@ -22,9 +22,7 @@ issuance and other holders also move.
 from __future__ import annotations
 
 import argparse
-import csv
 import datetime as dt
-import io
 import html
 import json
 import math
@@ -329,33 +327,44 @@ def choose_md09_purchase_series(rows: list[dict]) -> dict:
 
 
 def series_observations(db: str, row: dict, start: str) -> list[tuple[str, float]]:
-    """Read BOJ getDataCode in CSV format.
+    """Read BOJ getDataCode using the documented 2026 JSON structure.
 
-    BOJ's 2026 API manual documents SURVEY_DATES and VALUES as row fields in the
-    CSV output. Using CSV here avoids depending on the JSON container shape,
-    which may wrap the output section differently by database.
+    The BOJ API places SURVEY_DATES and VALUES inside a nested VALUES object
+    within each series record.
     """
     code = str(row["SERIES_CODE"])
-    url = BOJ_TS_API + "/getDataCode?" + urllib.parse.urlencode(
-        {"format": "csv", "lang": "en", "db": db, "startDate": start, "code": code}
+    payload = api_json(
+        "/getDataCode",
+        {"format": "json", "lang": "en", "db": db, "startDate": start, "code": code},
     )
-    text = fetch(url, accept="text/csv,text/plain,*/*")
-    reader = csv.DictReader(io.StringIO(text.lstrip("\ufeff")))
+    target = None
+    for raw in walk_dicts(payload):
+        item = keymap(raw)
+        if str(item.get("SERIES_CODE") or "").strip() == code:
+            target = item
+            break
+    if target is None:
+        raise RuntimeError(f"BOJ API data not found: {db} {code}")
+
+    values_block = target.get("VALUES")
+    if isinstance(values_block, dict):
+        nested = keymap(values_block)
+        dates = nested.get("SURVEY_DATES")
+        values = nested.get("VALUES")
+    else:
+        dates = target.get("SURVEY_DATES")
+        values = values_block
+
+    if not isinstance(dates, list) or not isinstance(values, list):
+        raise RuntimeError(f"BOJ API data shape unexpected: {db} {code}")
+
     out: list[tuple[str, float]] = []
-    for raw in reader:
-        item = {str(k or "").strip().upper(): v for k, v in raw.items()}
-        row_code = str(item.get("SERIES_CODE") or "").strip()
-        if row_code and row_code != code:
-            continue
-        period = str(item.get("SURVEY_DATES") or "").strip()
-        value = number(item.get("VALUES"))
-        if period and value is not None:
-            out.append((period, value))
+    for period, raw_value in zip(dates, values):
+        value = number(raw_value)
+        if value is not None:
+            out.append((str(period), value))
     if not out:
-        preview = " | ".join(line[:220] for line in text.splitlines()[:4])
-        raise RuntimeError(
-            f"BOJ API series has no numeric observations: {db} {code}; preview={preview}"
-        )
+        raise RuntimeError(f"BOJ API series has no numeric observations: {db} {code}")
     return out
 
 
@@ -441,7 +450,9 @@ def fof_candidate(rows: list[dict], aliases: tuple[str, ...]) -> dict | None:
             continue
         if "stock" not in low:
             continue
-        if not any(alias.lower() in low for alias in aliases):
+        parts = [part.strip().lower() for part in name.split("/")]
+        sector = parts[-2] if len(parts) >= 2 else ""
+        if sector not in {alias.lower() for alias in aliases}:
             continue
         score = 0
         if "assets" in low:
@@ -474,8 +485,10 @@ def quarter_end_account(account_links: list[tuple[dt.date, str]], year: int, qua
 def fetch_private_absorption(now: dt.datetime) -> dict:
     rows = metadata_rows("FF")
     groups = {
-        "banks": ("banks", "depository corporations"),
-        "insurance_pensions": ("insurance and pension funds", "insurance corporations", "pension funds"),
+        # Use non-overlapping aggregate sectors where available. Do not mix the
+        # aggregate "Depository corporations" with its "Banks" sub-sector.
+        "depository_corporations": ("depository corporations",),
+        "insurance_pensions": ("insurance and pension funds",),
         "households": ("households",),
     }
     chosen: dict[str, dict] = {}
