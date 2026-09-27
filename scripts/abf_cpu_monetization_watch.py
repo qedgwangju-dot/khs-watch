@@ -52,6 +52,7 @@ BASELINE = {
         "official_intel_abf_share_confirmed": False,
         "official_amd_abf_share_confirmed": False,
         "official_abf_price_increase_confirmed": False,
+        "samsung_server_cpu_fcbga_confirmed": True,
     },
     "seen_urls": [
         "https://www.ibiden.com/company/2026/02/notice-regarding-capital-investment-plan-for-high-performance-ic-package-substrates.html",
@@ -249,16 +250,29 @@ def parse_official_update(text: str, url: str) -> dict:
         elif "maintaining current selling prices" in low or "maintain current selling prices" in low:
             out["pricing_stance"] = "현 판매가격 유지 + 원재료비 고객 전가"
 
-        if "nvidia" in low and "cpu" in low and any(k in low for k in ("mass production", "shipment", "shipping", "supply")):
+        nvidia_cpu = re.search(
+            r"(?:NVIDIA[^.]{0,140}?CPU|CPU[^.]{0,140}?NVIDIA)[^.]{0,140}?"
+            r"(?:mass production|shipment|shipping|supply|started shipments|began shipments)",
+            text,
+            re.I,
+        )
+        if nvidia_cpu:
             out["official_nvidia_cpu_substrate_confirmed"] = True
 
         # Official major-customer revenue values. These are company sales to the customer,
         # not "ABF revenue share"; keep the distinction explicit.
-        for name in ("Intel", "AMD", "NVIDIA"):
-            pat = rf"{name}[^0-9]{{0,80}}(?:JPY|¥)?\s*([0-9,]{{4,9}})\s*(?:million|millions)"
-            m = re.search(pat, text, re.I)
-            if m:
-                out.setdefault("customer_sales_jpy_bn", {})[name] = float(m.group(1).replace(",", "")) / 1000.0
+        customer_aliases = {
+            "Intel": ("Intel", "Intel Corp."),
+            "AMD": ("AMD", "Advanced Micro Devices"),
+            "NVIDIA": ("NVIDIA", "NVIDIA Corp."),
+        }
+        for name, aliases in customer_aliases.items():
+            for alias in aliases:
+                pat = rf"{re.escape(alias)}[^0-9]{{0,80}}(?:JPY|¥)?\s*([0-9,]{{4,9}})\s*(?:million|millions)"
+                m = re.search(pat, text, re.I)
+                if m:
+                    out.setdefault("customer_sales_jpy_bn", {})[name] = float(m.group(1).replace(",", "")) / 1000.0
+                    break
 
         # Only accept explicit official share language.
         for name, key in (("Intel", "official_intel_abf_share_pct"), ("AMD", "official_amd_abf_share_pct")):
@@ -293,8 +307,12 @@ def parse_research_update(text: str, url: str) -> dict:
     out: dict[str, object] = {"kind": "research_update"}
 
     if "ibiden" in low:
-        intel = re.search(r"Intel[^.]{0,100}?(\d+(?:\.\d+)?)\s*%", text, re.I)
-        amd = re.search(r"AMD[^.]{0,100}?(\d+(?:\.\d+)?)\s*%", text, re.I)
+        intel = re.search(r"Intel[^.]{0,120}?(\d+(?:\.\d+)?)\s*%[^.]{0,100}?(?:ABF|substrate)", text, re.I)
+        if not intel:
+            intel = re.search(r"(?:ABF|substrate)[^.]{0,100}?Intel[^.]{0,100}?(\d+(?:\.\d+)?)\s*%", text, re.I)
+        amd = re.search(r"AMD[^.]{0,120}?(\d+(?:\.\d+)?)\s*%[^.]{0,100}?(?:ABF|substrate)", text, re.I)
+        if not amd:
+            amd = re.search(r"(?:ABF|substrate)[^.]{0,100}?AMD[^.]{0,100}?(\d+(?:\.\d+)?)\s*%", text, re.I)
         if intel:
             out["macquarie_intel_abf_share_pct"] = float(intel.group(1))
         if amd:
