@@ -1,0 +1,42 @@
+{
+  "as_of": "2026-09-27",
+  "metrics": {
+    "dc_electricity_2024_twh": 192.0,
+    "dc_electricity_2030_twh": 649.0,
+    "dc_electricity_2030_low_twh": 521.0,
+    "dc_electricity_2030_high_twh": 843.0,
+    "dc_share_2030_pct": 11.8,
+    "transformer_avg_lead_weeks": 120.0,
+    "large_transformer_low_weeks": 80.0,
+    "large_transformer_high_weeks": 210.0,
+    "queue_projects": 8200.0,
+    "queue_gw": 2060.0,
+    "transmission_345kv_plus_miles_2024": 888.0,
+    "bushing_lead_low_weeks_secondary": 135.0,
+    "bushing_lead_high_weeks_secondary": 145.0
+  },
+  "sources": {
+    "dc_demand": {
+      "url": "https://escholarship.org/uc/item/33m6w3x0",
+      "kind": "Lawrence Berkeley National Laboratory 공식 보고서"
+    },
+    "queue": {
+      "url": "https://emp.lbl.gov/queues",
+      "kind": "Lawrence Berkeley National Laboratory 공식"
+    },
+    "transformer": {
+      "url": "https://www.nerc.com/globalassets/programs/rapa/ra/nerc_sra_2025.pdf",
+      "kind": "NERC 2025 Summer Reliability Assessment"
+    },
+    "transmission": {
+      "url": "https://www.cleanenergygrid.org/new-report-reveals-u-s-transmission-buildout-lagging-far-behind-national-needs/",
+      "kind": "ACEG/Grid Strategies 공개자료"
+    },
+    "bushing": {
+      "url": "",
+      "kind": "사용자 제공 2차 기준선·공식 원천 확인 전"
+    }
+  },
+  "seen_urls": [],
+  "last_checked_at_kst": ""
+}
