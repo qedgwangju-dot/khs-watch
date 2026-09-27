@@ -30,6 +30,20 @@ SYMBOL_CURRENCIES = {
     "A$": "AUD",
     "C$": "CAD",
 }
+ISO_CURRENCIES = {
+    "USD": "USD",
+    "EUR": "EUR",
+    "JPY": "JPY",
+    "MYR": "MYR",
+    "CNY": "CNY",
+    "HKD": "HKD",
+    "GBP": "GBP",
+    "SGD": "SGD",
+    "TWD": "TWD",
+    "AUD": "AUD",
+    "CAD": "CAD",
+    "CHF": "CHF",
+}
 SCALE = {
     "조": 1_000_000_000_000,
     "억": 100_000_000,
@@ -144,6 +158,29 @@ def enforce_text(text: str) -> str:
         return f"{m.group(0)}({_krw_text(value, currency, per)})"
     text = symbol_pat.sub(repl_symbol, text)
 
+    # ISO-code amounts such as USD 30,000, EUR 2 billion, JPY 500 million.
+    iso_pat = re.compile(
+        r"(?P<code>USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s*"
+        r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*"
+        r"(?P<unit>billion|million|B|M)?\b(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?",
+        re.I,
+    )
+    def repl_iso(m):
+        tail = text[m.end():]
+        if _already_parenthesized(tail):
+            return m.group(0)
+        code = m.group("code").upper()
+        currency = ISO_CURRENCIES[code]
+        unit = (m.group("unit") or "").lower()
+        value = _number(m.group("num"))
+        if unit in ("billion", "b"):
+            value *= 1_000_000_000
+        elif unit in ("million", "m"):
+            value *= 1_000_000
+        per = m.group("per") or ""
+        return f"{m.group(0)}({_krw_text(value, currency, per)})"
+    text = iso_pat.sub(repl_iso, text)
+
     # Plain symbol amounts such as $73.39/kg, €12, HK$500.
     symbol_plain = re.compile(
         r"(?P<prefix>US\$|HK\$|NT\$|S\$|A\$|C\$|\$|€|£)\s*"
@@ -196,7 +233,12 @@ def _money_candidates(text: str):
         r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:billion|million|B|M))?"
         r"(?:/(?:kg|GB|Gb|TB|주|개|module|chip))?"
     )
-    for m in re.finditer(word + "|" + symbol, text, re.I):
+    iso = (
+        r"(?:USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s*"
+        r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:billion|million|B|M))?"
+        r"(?:/(?:kg|GB|Gb|TB|주|개|module|chip))?"
+    )
+    for m in re.finditer(word + "|" + symbol + "|" + iso, text, re.I):
         yield m
 
 
