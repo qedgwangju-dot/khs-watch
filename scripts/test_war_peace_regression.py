@@ -100,6 +100,34 @@ check("critical-infrastructure-active-attack", mod._active_attack_signal(dc_atta
 dc_verdict = mod.guard._verdict([dc_attack])
 check("critical-infrastructure-red", "공격·확전" in dc_verdict or "군사행동·확전" in dc_verdict)
 
+# 8) 호르무즈 실물 물동량 회복은 정식 재개방 문구가 없어도 고우선 경보로 분류한다.
+hormuz_flow = row(
+    "Hormuz oil flows surge to a record amount compared with before the war",
+    source="Reuters",
+)
+marks = mod._physical_flow_marks(hormuz_flow)
+check("hormuz-record-flow-detected", "호르무즈기록물량회복" in marks)
+score, tags = mod.score_item(hormuz_flow, dt.datetime.now(mod.watch.KST))
+check("hormuz-record-flow-priority", score == 100 and "실물물동량" in tags)
+
+# 9) 오만만 STS 기록 급증은 우회 물류 회복 경보로 분류한다.
+oman_sts = row(
+    "Gulf of Oman ship-to-ship STS activity surges to record levels",
+    source="Kpler",
+)
+marks = mod._physical_flow_marks(oman_sts)
+check("oman-sts-record-detected", "오만만STS기록급증" in marks)
+check("oman-sts-topic", mod.topic_label(oman_sts) == "호르무즈·걸프 · 원유 물동량 회복")
+
+# 10) 사우디 원유 수출 회복도 별도 물량 경보로 분류한다.
+saudi_flow = row(
+    "Saudi crude shipments surge to highest level since the war began",
+    source="Bloomberg",
+    description="Exports through the Gulf recovered sharply.",
+)
+marks = mod._physical_flow_marks(saudi_flow)
+check("saudi-crude-recovery-detected", "사우디원유수출회복" in marks)
+
 print("WAR_PEACE_REGRESSION_OK")
 
 
