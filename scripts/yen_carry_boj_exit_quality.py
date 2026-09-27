@@ -352,7 +352,10 @@ def series_observations(db: str, row: dict, start: str) -> list[tuple[str, float
         if period and value is not None:
             out.append((period, value))
     if not out:
-        raise RuntimeError(f"BOJ API series has no numeric observations: {db} {code}")
+        preview = " | ".join(line[:220] for line in text.splitlines()[:4])
+        raise RuntimeError(
+            f"BOJ API series has no numeric observations: {db} {code}; preview={preview}"
+        )
     return out
 
 
@@ -486,7 +489,9 @@ def fetch_private_absorption(now: dt.datetime) -> dict:
             name = str(row.get("NAME_OF_TIME_SERIES") or "")
             low = name.lower()
             if ("government" in low or "public" in low) and ("stock" in low or "assets" in low):
-                diagnostic.append(name)
+                diagnostic.append(
+                    f"{name} [code={row.get('SERIES_CODE')} freq={row.get('FREQUENCY')} unit={row.get('UNIT')}]"
+                )
             if len(diagnostic) >= 20:
                 break
         raise RuntimeError(
