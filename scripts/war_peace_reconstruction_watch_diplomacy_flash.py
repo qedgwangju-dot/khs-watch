@@ -572,7 +572,14 @@ def _physical_flow_marks(row):
     trusted = any(x in src for x in PHYSICAL_FLOW_SOURCES) or any(
         x in text for x in ('according to kpler', 'kpler data', 'compiled by bloomberg', 'bloomberg ship-tracking', 'bloomberg tanker-tracking')
     )
-    if _has(text, HORMUZ_TERMS) and _has(text, OIL_FLOW_TERMS) and _has(text, FLOW_ACTION_TERMS) and _has(text, FLOW_SURGE_TERMS):
+    # "record amount of oil out of the Hormuz Strait" 같은 직접 물량 문구는
+    # flow/exports라는 단어가 없어도 핵심 변화로 잡는다.
+    direct_record_amount = _has(text, HORMUZ_TERMS) and _has(text, OIL_FLOW_TERMS) and any(
+        x in text for x in ('record amount', 'record volume', 'record quantity', '기록적인 규모', '기록적 규모', '기록적인 물량', '기록적 물량')
+    )
+    if direct_record_amount:
+        marks.append('호르무즈기록물량회복')
+    elif _has(text, HORMUZ_TERMS) and _has(text, OIL_FLOW_TERMS) and _has(text, FLOW_ACTION_TERMS) and _has(text, FLOW_SURGE_TERMS):
         if trusted:
             marks.append('호르무즈기록물량회복')
     if trusted and _has(text, GULF_OMAN_TERMS) and _has(text, STS_TERMS) and _has(text, FLOW_SURGE_TERMS):
