@@ -29,6 +29,7 @@ jobs:
     timeout-minutes: 12
     env:
       TELEGRAM_TEST: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'Test') && 'true' || (github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false') }}
+      DRY_RUN: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[dry-run]') && 'true' || 'false' }}
     steps:
       - name: Checkout latest main
         uses: actions/checkout@v4
@@ -93,7 +94,7 @@ jobs:
           if [ -f out/war_peace_reconstruction_watch.md ]; then cat out/war_peace_reconstruction_watch.md >> "$GITHUB_STEP_SUMMARY"; fi
           if [ -f out/war_peace_reconstruction_alert.txt ]; then printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"; cat out/war_peace_reconstruction_alert.txt >> "$GITHUB_STEP_SUMMARY"; fi
       - name: Send Telegram alert
-        if: hashFiles('out/war_peace_reconstruction_alert.txt') != ''
+        if: env.DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.WAR_PEACE_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.WAR_PEACE_TELEGRAM_CHAT_ID }}
@@ -116,10 +117,10 @@ jobs:
           print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={result.get('result',{}).get('message_id')}")
           PY
       - name: Finalize state after confirmed delivery
-        if: success() && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
+        if: success() && env.DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
         run: python scripts/war_peace_reconstruction_watch_diplomacy_flash.py --finalize
       - name: Commit confirmed alert state
-        if: success() && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
+        if: success() && env.DRY_RUN != 'true' && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
