@@ -713,6 +713,15 @@ def _signals(marks):
     if '호르무즈실물정상화' in marks:
         out.append('현재 단계: 🟢 실물 정상화 — 호르무즈 재개방 문구뿐 아니라 유조선·LNG선 등 실제 상선 통항 재개까지 확인')
         out.append('시장 경로: 원유·LNG 운송 차질 및 해상보험 위험프리미엄 완화 여부를 통항량으로 후속 확인')
+    if '호르무즈기록물량회복' in marks:
+        out.append('🟢 호르무즈 석유 물동량의 기록·급증·회복 신호 — 정식 재개방 여부와 별도로 실제 공급 흐름을 즉시 추적')
+    if '오만만STS기록급증' in marks:
+        out.append('🟢 오만만 선박 간 이송(STS) 기록 급증 — 셔틀선과 대형선 간 환적으로 수출 차질을 우회')
+        out.append('병목: STS 처리능력·VLCC 가용성·전쟁보험·Fujairah/Sohar 보조서비스를 후속 확인')
+    if '사우디원유수출회복' in marks:
+        out.append('🟢 사우디 원유 수출·선적 급증 또는 전쟁 후 고점 회복 신호 — Persian Gulf 비중과 Red Sea 비중을 분리 확인')
+    if '걸프7일평균2천만배럴' in marks:
+        out.append('🟢 걸프 원유·액체류 수출 7일 평균 2천만 배럴/일 상회 신호 — 호르무즈 단독 원유 통과량과 동일 지표가 아님')
     if '협상후퇴' in marks:
         out.append('현재 단계: 🔴 협상 후퇴 — 이란 측 직접협상 부인·협상 거부·결렬 신호')
         out.append('다음 확인: 공격 재개·호르무즈 폐쇄 강화·중재국 회담 취소 여부')
@@ -1015,8 +1024,16 @@ def item_id(row):
             day = dt.datetime.now(dt.timezone.utc).date().isoformat()
         key = 'middle-east-emergency|' + day + '|' + '|'.join(sorted(emergency_marks))
     else:
+        flow_marks = [m for m in marks if m in ('호르무즈기록물량회복','오만만STS기록급증','사우디원유수출회복','걸프7일평균2천만배럴')]
         stage_marks = [m for m in marks if m in ('IRIB아라치위트코프뉴욕회동보도','직접회동독립확인대기','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의','해상봉쇄해제조건','동결자산지급조건','전전선종전조건','이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영','RTRS중계속보','Reuters직접확인','미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')]
-        if stage_marks:
+        if flow_marks:
+            try:
+                pub = watch.parse_pub(row.get('published', ''))
+                day = pub.date().isoformat() if pub else dt.datetime.now(dt.timezone.utc).date().isoformat()
+            except Exception:
+                day = dt.datetime.now(dt.timezone.utc).date().isoformat()
+            key = 'hormuz-physical-flow|' + day + '|' + '|'.join(sorted(flow_marks))
+        elif stage_marks:
             key = 'iran-war-peace-stage-2026|' + '|'.join(sorted(stage_marks))
         elif any(m.startswith('크렘린') for m in marks):
             key = 'kremlin-energy-diplomacy-2026-09-15|' + '|'.join(marks)
@@ -1047,6 +1064,8 @@ def topic_label(row):
         return '이란 전쟁 · 아라치–Witkoff 뉴욕 회동'
     if any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
         return '이란 전쟁 · 뉴욕 외교재개'
+    if any(m in marks for m in ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')):
+        return '호르무즈·걸프 · 원유 물동량 회복'
     if any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')):
         return '이란 전쟁 · 협상·휴전·종전·호르무즈'
     if any(m.startswith('크렘린') for m in marks):
@@ -1151,6 +1170,18 @@ def _verdict(items):
         lines.append('- <b>이란 전쟁:</b> 🔴 협상 후퇴 — 직접협상 부인·거부·결렬 신호. 종전 기대를 낮춰야 하는 변화')
     elif '호르무즈실물정상화' in marks:
         lines.append('- <b>이란 전쟁:</b> 🟢 호르무즈 실물 정상화 — 재개방 문구가 아니라 유조선·LNG선 등 실제 상선 통항 회복 확인')
+    elif any(m in marks for m in ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')):
+        lines.append('- <b>호르무즈·걸프 실물 물동량:</b> 🟢 공급 경로 회복 신호 — 외교 합의나 완전 정상화와 별도로 물량 변화 자체를 즉시 경보')
+        if '걸프7일평균2천만배럴' in marks:
+            lines.append('- <b>걸프 전체:</b> 7일 평균 2천만 배럴/일 상회 신호. 전체 액체류·지역 수출과 호르무즈 단독 원유 통과량을 혼동하지 않음')
+        if '오만만STS기록급증' in marks:
+            lines.append('- <b>오만만 STS:</b> 기록적 환적 증가 — 우회 물류가 공급을 살리지만 처리능력·VLCC·보험 비용이 병목')
+        if '사우디원유수출회복' in marks:
+            lines.append('- <b>사우디:</b> 원유 수출·선적 회복 신호 — Gulf와 Red Sea 경로를 분리 추적')
+        if '호르무즈기록물량회복' in marks:
+            lines.append('- <b>호르무즈:</b> 기록·급증·회복 물동량 보도 — 공식 재개방 선언 없이도 실물 흐름이 먼저 개선될 수 있음')
+        lines.append('- <b>시장:</b> 공급 회복은 유가 위험프리미엄 하방 요인 / STS 포화·운임·보험·재공격 위험은 잔존')
+        lines.append('- <b>다음:</b> 7일 평균 지속성 → GoO STS 처리능력 → Saudi Gulf loadings → VLCC 운임·보험 → 실제 선박 통항 안전성')
     elif '종전합의' in marks:
         lines.append('- <b>이란 전쟁:</b> 🟢 종전 합의 — 휴전보다 높은 단계. 평화협정·적대행위 종료의 실제 조건과 이행 일정 확인 필요')
     elif '정식휴전합의' in marks:
