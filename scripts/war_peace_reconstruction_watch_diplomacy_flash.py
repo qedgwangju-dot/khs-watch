@@ -92,6 +92,8 @@ FLASH_QUERIES = [
     '(Hormuz OR 호르무즈) (reopened OR "traffic resumed" OR "shipping resumed" OR 통항 재개 OR 운항 재개 OR 재개방) (tankers OR vessels OR "LNG carriers" OR 유조선 OR 선박 OR LNG선) when:1d',
     '(Hormuz OR 호르무즈 OR "Gulf of Oman" OR 오만만) (oil OR crude OR liquids OR 원유 OR 석유) (flow OR exports OR shipments OR STS OR 물동량 OR 수출 OR 선적) (record OR "highest since" OR surge OR recovery OR 기록 OR 급증 OR 회복) when:1d',
     '(Saudi OR 사우디) (crude OR oil OR 원유 OR 석유) (exports OR shipments OR 수출 OR 선적) (Hormuz OR 호르무즈 OR Gulf OR 걸프) ("highest since" OR surge OR recovery OR 최고 OR 급증 OR 회복) when:1d',
+    '(Gulf OR 걸프 OR "Gulf of Oman" OR 오만만) ("7-day average" OR "7 day average" OR "7일 평균") (exports OR flows OR 수출 OR 물동량) ("20 million" OR "20 mbd" OR "2천만" OR "2000만") when:1d',
+    '("Gulf of Oman" OR 오만만) (STS OR "ship-to-ship" OR "선박 간 이송") (record OR surge OR "10 times" OR "10x" OR "10배" OR 급증) when:1d',
     'site:reuters.com Trump "Camp David" ("White House" OR return OR "cut short") ("Middle East" OR Iran OR Houthi) when:1d',
     'site:apnews.com Trump "Camp David" ("White House" OR return OR "cut short") ("Middle East" OR Iran OR Houthi) when:1d',
     '(Trump OR 트럼프) ("Camp David" OR "캠프 데이비드") ("cut short" OR "returned early" OR "return to the White House" OR "백악관 복귀" OR "일정 단축") (Iran OR Houthi OR "Middle East" OR 이란 OR 후티 OR 중동) when:1d',
@@ -135,8 +137,8 @@ PHYSICAL_FLOW_SOURCES = ('reuters', 'bloomberg', 'kpler', 'intellinews', 'walter
 GULF_OMAN_TERMS = ('gulf of oman', 'oman gulf', '오만만')
 STS_TERMS = ('ship-to-ship', 'ship to ship', 'sts', 'lightering', '선박 간 이송', '선박간 이송', '환적')
 OIL_FLOW_TERMS = ('oil', 'crude', 'crude oil', 'liquids', '원유', '석유', '액체류')
-FLOW_ACTION_TERMS = ('flow', 'flows', 'export', 'exports', 'shipment', 'shipments', 'loadings', 'throughput', '물동량', '수출', '선적', '통과량')
-FLOW_SURGE_TERMS = ('record', 'record amount', 'record level', 'record levels', 'highest since', 'surged', 'surge', 'ramped up', 'recovered', 'recovery', '기록적', '기록적인', '최고', '급증', '회복')
+FLOW_ACTION_TERMS = ('flow', 'flows', 'export', 'exports', 'shipment', 'shipments', 'loadings', 'throughput', 'took out', 'moved', 'moved through', 'transited', 'passed through', '물동량', '수출', '선적', '통과량', '이동', '통과', '빼냈')
+FLOW_SURGE_TERMS = ('record', 'record amount', 'record level', 'record levels', 'highest since', 'surged', 'surge', 'ramped up', 'recovered', 'recovery', 'increased', '10 times', '10x', '기록적', '기록적인', '최고', '급증', '회복', '증가', '10배')
 SAUDI_TERMS = ('saudi', 'saudi arabia', 'aramco', '사우디', '사우디아라비아', '아람코')
 GULF_REGION_TERMS = ('gulf', 'persian gulf', 'mideast gulf', 'middle east gulf', '걸프', '페르시아만')
 SEVEN_DAY_TERMS = ('7-day average', '7 day average', 'seven-day average', '7일 평균', '7일 이동평균')
