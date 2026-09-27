@@ -183,4 +183,70 @@ assert c == "Optimus Giga Berlin · 현장 데이터 수집·파일럿 배치", 
 assert s >= 11, s
 assert k == expected_berlin_key, (k, expected_berlin_key)
 
+# 9) Samsung SDI SolidStack baseline guidance must stay silent until a real
+# sample/customer/line/SOP milestone changes.
+sdi_asb_baseline = make(
+    "삼성SDI SolidStack 휴머노이드 전고체 배터리 개발",
+    "삼성SDI는 휴머노이드용 SolidStack 전고체 배터리를 개발 중이며 2027년 하반기 양산을 목표로 한다. 첫 상용화 프로젝트가 휴머노이드가 될 가능성이 높아 고객들과 협의를 진행 중이다.",
+    "삼성SDI",
+)
+g, s, c, k = classify(sdi_asb_baseline)
+assert g == "battery", (g, s, c)
+assert s < 11, ("repeated SolidStack 2027H2 guidance must stay silent", s, c)
+
+sdi_asb_sample = make(
+    "삼성SDI, Figure AI에 SolidStack 휴머노이드 전고체 샘플 공급 개시",
+    "Samsung SDI has started delivering SolidStack all-solid-state battery samples to Figure AI for humanoid customer qualification.",
+    "삼성SDI",
+)
+g, s, c, k = classify(sdi_asb_sample)
+expected_sdi_sample_key = hashlib.sha256(
+    b"samsung-sdi|solidstack-humanoid|sample_supply|figure"
+).hexdigest()
+assert g == "battery", (g, s, c)
+assert c == "삼성SDI SolidStack · 휴머노이드 샘플 공급", c
+assert s >= 11, s
+assert k == expected_sdi_sample_key, (k, expected_sdi_sample_key)
+
+# 10) Analyst ESS mix/margin estimates stay silent; official realized figures alert.
+sdi_ess_forecast = make(
+    "삼성SDI 3분기 ESS 매출 비중 31%, 영업이익률 13% 전망",
+    "증권가는 AI 데이터센터 UPS·BBU 수요로 삼성SDI ESS 매출 비중이 31%, 영업이익률이 13%에 이를 것으로 추정했다.",
+    "글로벌이코노믹",
+)
+g, s, c, k = classify(sdi_ess_forecast)
+assert g == "ess_battery", (g, s, c)
+assert s < 11, ("analyst ESS mix/margin forecast must stay silent", s, c)
+
+sdi_ess_actual = make(
+    "삼성SDI 3분기 실적 발표, ESS 매출 비중 31% 확인",
+    "Samsung SDI reported Q3 earnings results with ESS, UPS and BBU sales mix at 31% and operating margin at 13%. AMPC benefits and tariff refund effects were separately disclosed.",
+    "삼성SDI",
+)
+g, s, c, k = classify(sdi_ess_actual)
+assert g == "ess_battery", (g, s, c)
+assert c == "ESS 배터리 · 삼성SDI 실적 질·본업 수익성", c
+assert s >= 11, s
+
+# 11) SynergyCells ownership/construction baseline is not a new alert; equipment,
+# trial production, SOP, capacity/utilization and customer awards are.
+synergy_baseline = make(
+    "삼성SDI, GM 49.99% 지분 인수해 SynergyCells 단독법인 전환",
+    "New Carlisle Indiana SynergyCells plant is under construction and Samsung SDI plans to use it for ESS batteries.",
+    "삼성SDI",
+)
+g, s, c, k = classify(synergy_baseline)
+assert g == "ess_battery", (g, s, c)
+assert s < 11, ("SynergyCells acquisition/construction baseline must stay silent", s, c)
+
+synergy_sop = make(
+    "삼성SDI SynergyCells ESS LFP 양산 시작",
+    "Samsung SDI started mass production of ESS LFP batteries at the New Carlisle SynergyCells plant with 20 GWh production capacity.",
+    "삼성SDI",
+)
+g, s, c, k = classify(synergy_sop)
+assert g == "ess_battery", (g, s, c)
+assert c == "ESS 배터리 · 삼성SDI SynergyCells 가동 전환", c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
