@@ -65,6 +65,35 @@ class TSMCAdvancedPackagingTests(unittest.TestCase):
         })
         self.assertEqual(merged["chiayi_phase3_status"], "approved")
 
+    def test_package_alert_translates_hanja_to_korean(self):
+        state = {
+            "chiayi_total_fabs": 10,
+            "chiayi_additional_fabs": 5,
+            "chiayi_phase3_status": "public_comment",
+            "fab_count_evidence_state": "supply_chain_report",
+            "phase3_evidence_state": "official",
+            "last_source_name": "自由時報",
+            "last_source_url": "https://example.com/嘉義",
+        }
+        reasons = ["자이 첨단패키징 공장 총계 5→10개", "자이 과학단지 확대 단계 공급망 투자 의향 보도→부지 확대 의견수렴"]
+        text = w.package_alert_text(state, reasons, w.now_kst())
+        self.assertNotRegex(text, w.HAN_RE)
+        self.assertIn("TSMC 첨단패키징·자이 상태 변화", text)
+        self.assertIn("자이 과학단지 확대 단계", text)
+        self.assertIn("LTN", text)
+
+    def test_hanja_guard_blocks_unknown_untranslated_text(self):
+        with self.assertRaises(ValueError):
+            w.koreanize_alert_text("알림 본문 未翻譯")
+
+    def test_material_change_reasons_are_korean(self):
+        old = {"chiayi_total_fabs": 5, "chiayi_phase3_status": "reported_intent"}
+        new = {"chiayi_total_fabs": 10, "chiayi_phase3_status": "public_comment"}
+        reasons = w.material_changes(old, new)
+        self.assertTrue(any("자이 첨단패키징" in x for x in reasons))
+        self.assertTrue(any("자이 과학단지 확대 단계" in x for x in reasons))
+        self.assertFalse(any(w.HAN_RE.search(x) for x in reasons))
+
 
 if __name__ == "__main__":
     unittest.main()
