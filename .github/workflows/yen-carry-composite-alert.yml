@@ -157,7 +157,7 @@ jobs:
         run: PYTHONPATH=scripts python scripts/yen_carry_policy_reaction_watch.py
 
       - name: Add BOJ exit-strategy quality overlay
-        if: always() && hashFiles('out/yen_carry_structural_pending_state.json') != ''
+        if: always()
         run: PYTHONPATH=scripts python scripts/yen_carry_boj_exit_quality.py
 
       - name: Compact Telegram body for scan-first readability
