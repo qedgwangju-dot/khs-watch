@@ -13,6 +13,7 @@ on:
       - "scripts/clean_us_time_to_power_alert_html.py"
       - "scripts/us_data_center_generation_buildout_watch.py"
       - "scripts/us_data_center_cancellation_risk_watch.py"
+      - "scripts/us_hyperscaler_company_issue_watch.py"
       - "scripts/us_ai_data_center_buildout_watch.py"
       - "scripts/us_hyperscaler_company_risk_watch.py"
       - "scripts/remove_telegram_italics.py"
@@ -169,6 +170,9 @@ jobs:
       - name: Check US data center cancellation and stranded-cost risk
         run: python scripts/us_data_center_cancellation_risk_watch.py
 
+      - name: Check hyperscaler company-level data-center risks
+        run: python scripts/us_hyperscaler_company_issue_watch.py
+
       - name: Check Epoch AI major US data-center buildout
         run: python scripts/us_ai_data_center_buildout_watch.py
 
@@ -199,6 +203,7 @@ jobs:
               pathlib.Path("out/us_data_center_time_to_power_alert.txt"),
               pathlib.Path("out/us_data_center_generation_buildout_alert.txt"),
               pathlib.Path("out/us_data_center_cancellation_risk_alert.txt"),
+              pathlib.Path("out/us_hyperscaler_company_issue_alert.txt"),
               pathlib.Path("out/us_ai_data_center_buildout_alert.txt"),
               pathlib.Path("out/us_hyperscaler_company_risk_alert.txt"),
           ]
@@ -301,6 +306,9 @@ jobs:
                           ],
                       ]
                   }
+              elif p.name == "us_hyperscaler_company_issue_alert.txt":
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {"is_disabled": True}
               elif p.name == "us_ai_data_center_buildout_alert.txt":
                   payload["parse_mode"] = "HTML"
                   payload["link_preview_options"] = {"is_disabled": True}
@@ -399,6 +407,7 @@ jobs:
           cp out/us_data_center_time_to_power_pending_state.json "$tmpdir/us_data_center_time_to_power_state.json"
           cp out/us_data_center_generation_buildout_pending_state.json "$tmpdir/us_data_center_generation_buildout_state.json"
           cp out/us_data_center_cancellation_risk_pending_state.json "$tmpdir/us_data_center_cancellation_risk_state.json"
+          cp out/us_hyperscaler_company_issue_pending_state.json "$tmpdir/us_hyperscaler_company_issue_state.json"
           cp out/us_ai_data_center_buildout_pending_state.json "$tmpdir/us_ai_data_center_buildout_state.json"
           cp out/us_hyperscaler_company_risk_pending_state.json "$tmpdir/us_hyperscaler_company_risk_state.json"
 
@@ -416,6 +425,7 @@ jobs:
             cp "$tmpdir/us_data_center_time_to_power_state.json" data/us_data_center_time_to_power_state.json
             cp "$tmpdir/us_data_center_generation_buildout_state.json" data/us_data_center_generation_buildout_state.json
             cp "$tmpdir/us_data_center_cancellation_risk_state.json" data/us_data_center_cancellation_risk_state.json
+            cp "$tmpdir/us_hyperscaler_company_issue_state.json" data/us_hyperscaler_company_issue_state.json
             cp "$tmpdir/us_ai_data_center_buildout_state.json" data/us_ai_data_center_buildout_state.json
             cp "$tmpdir/us_hyperscaler_company_risk_state.json" data/us_hyperscaler_company_risk_state.json
 
@@ -474,6 +484,9 @@ jobs:
             out/us_data_center_cancellation_risk_status.md
             out/us_data_center_cancellation_risk_alert.txt
             out/us_data_center_cancellation_risk_pending_state.json
+            out/us_hyperscaler_company_issue_status.md
+            out/us_hyperscaler_company_issue_alert.txt
+            out/us_hyperscaler_company_issue_pending_state.json
             out/us_ai_data_center_buildout_status.md
             out/us_ai_data_center_buildout_alert.txt
             out/us_ai_data_center_buildout_pending_state.json
