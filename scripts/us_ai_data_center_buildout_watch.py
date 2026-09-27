@@ -10,6 +10,8 @@ STATE=Path("data/us_ai_data_center_buildout_state.json")
 PENDING=OUT/"us_ai_data_center_buildout_pending_state.json"
 ALERT=OUT/"us_ai_data_center_buildout_alert.txt"
 STATUS=OUT/"us_ai_data_center_buildout_status.md"
+COMPANY_ISSUE_PENDING=OUT/"us_hyperscaler_company_issue_pending_state.json"
+COMPANY_ISSUE_STATE=Path("data/us_hyperscaler_company_issue_state.json")
 DC_URL="https://epoch.ai/data/data_centers/data_centers.csv"
 TL_URL="https://epoch.ai/data/data_centers/data_center_timelines.csv"
 DOWNLOADS="https://epoch.ai/data/data-centers-documentation/downloads"
@@ -36,6 +38,24 @@ TRACKED_NAMES=(
 "OpenAI Stargate Abilene",
 "Microsoft Fairwater Atlanta",
 )
+
+PROJECT_COMPANIES={
+"Microsoft Fairwater Wisconsin":("Microsoft",),
+"Anthropic-Amazon New Carlisle":("Amazon/AWS",),
+"OpenAI Stargate New Mexico":("Oracle","OpenAI/Stargate"),
+"Meta Hyperion":("Meta",),
+"Colossus 2":("xAI",),
+"OpenAI Stargate Shackelford":("Oracle","OpenAI/Stargate"),
+"QTS Cedar Rapids":("QTS",),
+"Meta Prometheus":("Meta",),
+"Goodnight":("Google",),
+"OpenAI Stargate Michigan":("Oracle","OpenAI/Stargate"),
+"OpenAI Stargate Wisconsin":("Oracle","OpenAI/Stargate"),
+"Google Fort Wayne":("Google",),
+"OpenAI Stargate Milam":("OpenAI/Stargate",),
+"OpenAI Stargate Abilene":("Oracle","OpenAI/Stargate"),
+"Microsoft Fairwater Atlanta":("Microsoft",),
+}
 
 ALIASES={
 "Microsoft Fairwater Wisconsin":"MS Fairwater (WI)",
@@ -137,6 +157,16 @@ SHORT={"Microsoft":"MS","Amazon":"Amazon","Oracle":"Oracle","Meta":"Meta","Googl
 
 def fetch(url,timeout=45):
     r=requests.get(url,headers=HEADERS,timeout=timeout); r.raise_for_status(); return r
+def load_company_issues() -> dict:
+    for path in (COMPANY_ISSUE_PENDING, COMPANY_ISSUE_STATE):
+        try:
+            data=json.loads(path.read_text(encoding="utf-8"))
+            if data:
+                return data.get("active_issues_by_company",{}) or {}
+        except Exception:
+            pass
+    return {}
+
 def load_state():
     try:return json.loads(STATE.read_text(encoding="utf-8"))
     except Exception:return {}
@@ -219,6 +249,10 @@ def snapshot(dc_text,tl_text):
         finish=(full[0]["date"] if full else rows[-1]["date"])
         m=meta[name]
         energy=ENERGY_PROFILES.get(name,{"site":"미확인","future":"미확인","quality":"미확인"})
+        issue_map=load_company_issues()
+        company_issues=[]
+        for company in PROJECT_COMPANIES.get(name,()):
+            company_issues.extend(issue_map.get(company,[])[:2])
         out.append({
             "name":name,"display":ALIASES.get(name,name),
             "owner":short(m["owner"]),"users":short(m["users"]),"investors":short(m["investors"]),
@@ -226,6 +260,7 @@ def snapshot(dc_text,tl_text):
             "completion_date":finish.isoformat(),"completion":qlabel(finish,progress),
             "stage":stage(cur.get("status",""),current,planned,progress),"risk":risky(cur.get("status","")),
             "energy_site":energy["site"],"energy_future":energy["future"],"energy_quality":energy["quality"],
+            "company_issues":company_issues,
         })
     by_name={x["name"]:x for x in out}
     top=[by_name[name] for name in TRACKED_NAMES if name in by_name]
@@ -249,6 +284,9 @@ def changes(old,new):
         if p["stage"]!=o.get("stage") and p["progress"]<99.5:out.append(f"{p['display']} 공정 {o.get('stage','')}→{p['stage']}")
         if (p["owner"],p["users"],p["investors"])!=(o.get("owner"),o.get("users"),o.get("investors")):out.append(f"{p['display']} 소유·사용·투자자 정보 변경")
         if (p.get("energy_site"),p.get("energy_future"),p.get("energy_quality"))!=(o.get("energy_site"),o.get("energy_future"),o.get("energy_quality")):out.append(f"{p['display']} 전력원 정보 변경")
+        old_issue_fps=[x.get("fingerprint") for x in o.get("company_issues",[])]
+        new_issue_fps=[x.get("fingerprint") for x in p.get("company_issues",[])]
+        if old_issue_fps!=new_issue_fps:out.append(f"{p['display']} 기업별 규제·법적 이슈 변경")
     return list(dict.fromkeys(out))
 def badge(n):
     m={"0":"0️⃣","1":"1️⃣","2":"2️⃣","3":"3️⃣","4":"4️⃣","5":"5️⃣","6":"6️⃣","7":"7️⃣","8":"8️⃣","9":"9️⃣"}
@@ -267,7 +305,12 @@ def render(ps,chg,upd):
                   f"{h(p['owner'])} → {h(p['users'])} | {h(inv)}",
                   f"<b>{p['planned_mw']:,.0f}MW</b> | {h(p['completion'])} | <b>{p['progress']:.0f}%</b> ({p['current_mw']:,.0f}/{p['planned_mw']:,.0f}MW) | {h(p['stage'])}",
                   f"⚡ 전력원 │ [{h(p['energy_quality'])}] {h(p['energy_site'])} | 장기전원: {h(p['energy_future'])}"]
-    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch의 현재 IT전력 ÷ 계획 최종 IT전력으로 직접 계산","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기"]
+        for issue in p.get("company_issues",[])[:2]:
+            lines.append(
+                f"🚨 기업 이슈 │ [{h(issue.get('relationship','기업 연관'))}] "
+                f"{h(issue.get('label','규제·운영'))} · {h(issue.get('summary',''))}"
+            )
+    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch의 현재 IT전력 ÷ 계획 최종 IT전력으로 직접 계산","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 기업별 벌금·허가위반·환경·소송·주민반대 이슈는 직접 위반과 파트너·고객 연계를 구분해 해당 기업 줄에 표시"]
     return "\n".join(lines)+"\n"
 
 def main():
