@@ -22,6 +22,7 @@ STATE = ROOT / "data" / "solidigm_ipo_watch_state.json"
 ALERT = ROOT / "out" / "solidigm_ipo_alert.html"
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
 WATCH_VERSION = 1
+CANONICAL_REUTERS_URL = "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/"
 
 QUERIES = [
     '"Solidigm" IPO',
@@ -287,8 +288,25 @@ def extract_patch(event):
         patch["use_of_proceeds"] = sorted(set(use))
 
     patch["evidence_state"] = evidence_state(event.get("source"), event.get("direct_link"))
-    patch["source_url"] = event.get("direct_link") or ""
-    patch["source_name"] = event.get("source") or ""
+    source_url = event.get("direct_link") or ""
+    source_name = event.get("source") or ""
+    # Reuters syndication pages can be the accessible evidence copy. Keep Reuters
+    # as the canonical attribution/link for this baseline instead of silently
+    # downgrading the displayed source to the republisher.
+    reuters_syndication = (
+        patch["evidence_state"] == "top_tier_report"
+        and "reuters.com" not in source_url.lower()
+        and (
+            "reuters" in (event.get("title") or "").lower()
+            or "reuters" in (event.get("description") or "").lower()
+            or "reuters" in source_url.lower()
+        )
+    )
+    if reuters_syndication:
+        source_url = CANONICAL_REUTERS_URL
+        source_name = "Reuters"
+    patch["source_url"] = source_url
+    patch["source_name"] = source_name
     patch["source_published_at_kst"] = event.get("published_at_kst") or ""
     return patch
 
