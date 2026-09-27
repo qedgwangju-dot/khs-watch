@@ -80,6 +80,24 @@ PHASE_KO = {
     "mass_production": "양산",
 }
 
+HAN_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]")
+ALERT_KO_REPLACEMENTS = (
+    ("嘉義科學園區", "자이 과학단지"),
+    ("嘉義園區", "자이 과학단지"),
+    ("南部科學園區", "남부과학단지"),
+    ("嘉科", "자이 과학단지"),
+    ("嘉義", "자이"),
+    ("台積電", "TSMC"),
+    ("先進封裝", "첨단패키징"),
+)
+SOURCE_KO = {
+    "自由時報": "LTN",
+    "自由財經": "LTN",
+    "中央社": "대만 중앙통신사(CNA)",
+    "經濟日報": "경제일보",
+    "聯合報": "연합보",
+}
+
 
 def now_kst():
     return datetime.now(ZoneInfo("Asia/Seoul"))
@@ -88,6 +106,28 @@ def now_kst():
 def clean(value):
     value = html.unescape(re.sub(r"<[^>]+>", " ", str(value or "")))
     return re.sub(r"\s+", " ", value).strip()
+
+
+def source_name_ko(name, url=""):
+    raw = clean(name)
+    for original, translated in SOURCE_KO.items():
+        if original in raw:
+            return translated
+    for original, translated in ALERT_KO_REPLACEMENTS:
+        raw = raw.replace(original, translated)
+    if HAN_RE.search(raw):
+        host = urllib.parse.urlparse(url or "").hostname or ""
+        return host or "출처"
+    return raw or (urllib.parse.urlparse(url or "").hostname or "출처")
+
+
+def koreanize_alert_text(value):
+    text = str(value or "")
+    for original, translated in ALERT_KO_REPLACEMENTS:
+        text = text.replace(original, translated)
+    if HAN_RE.search(text):
+        raise ValueError("번역되지 않은 한자·중문이 Telegram 알림에 남아 있어 전송을 차단했습니다")
+    return text
 
 
 def fetch(url, timeout=20):
@@ -445,12 +485,12 @@ def merge_state(current, patch):
 def material_changes(old, new):
     reasons = []
     if old.get("chiayi_total_fabs") != new.get("chiayi_total_fabs") and new.get("chiayi_total_fabs") is not None:
-        reasons.append(f"嘉義 첨단패키징 공장 총계 {old.get('chiayi_total_fabs','미확인')}→{new['chiayi_total_fabs']}개")
+        reasons.append(f"자이 첨단패키징 공장 총계 {old.get('chiayi_total_fabs','미확인')}→{new['chiayi_total_fabs']}개")
     if old.get("chiayi_additional_fabs") != new.get("chiayi_additional_fabs") and new.get("chiayi_additional_fabs") is not None:
         reasons.append(f"추가 공장 {old.get('chiayi_additional_fabs','미확인')}→{new['chiayi_additional_fabs']}개")
     if old.get("chiayi_phase3_status") != new.get("chiayi_phase3_status") and new.get("chiayi_phase3_status"):
         reasons.append(
-            "嘉科 확대 단계 "
+            "자이 과학단지 확대 단계 "
             + PHASE_KO.get(old.get("chiayi_phase3_status"), old.get("chiayi_phase3_status", "미확인"))
             + "→"
             + PHASE_KO.get(new.get("chiayi_phase3_status"), new.get("chiayi_phase3_status"))
@@ -480,7 +520,7 @@ def material_changes(old, new):
         and new.get("fab_count_evidence_state") == "official"
         and new.get("chiayi_total_fabs")
     ):
-        reasons.append("嘉義 총 공장 수가 공급망 보도→공식 확인으로 승격")
+        reasons.append("자이 총 공장 수가 공급망 보도→공식 확인으로 승격")
     return reasons
 
 
@@ -522,7 +562,8 @@ def save_state(path, obj):
 
 
 def href(url, label="원문"):
-    return f'<a href="{html.escape(url, quote=True)}">{html.escape(label)}</a>'
+    safe_url = urllib.parse.quote(str(url or ""), safe=":/?&=%#@+;,-._~")
+    return f'<a href="{html.escape(safe_url, quote=True)}">{html.escape(label)}</a>'
 
 
 def evidence_ko(state):
@@ -536,16 +577,16 @@ def evidence_ko(state):
 
 def package_alert_text(new, reasons, checked):
     lines = [
-        "🚨 <b>TSMC 첨단패키징·嘉義 상태 변화</b>",
+        "🚨 <b>TSMC 첨단패키징·자이 상태 변화</b>",
         "━━━━━━━━━━━━━━━━",
         "• 이번 변화: <b>" + html.escape(" · ".join(reasons)) + "</b>",
     ]
     if new.get("chiayi_total_fabs") is not None:
         extra = f" · 추가 {new.get('chiayi_additional_fabs')}개" if new.get("chiayi_additional_fabs") is not None else ""
-        lines.append(f"• 嘉義 공장 수: <b>총 {new['chiayi_total_fabs']}개{extra}</b>")
+        lines.append(f"• 자이 공장 수: <b>총 {new['chiayi_total_fabs']}개{extra}</b>")
         lines.append("• 공장 수 확인 수준: " + evidence_ko(new.get("fab_count_evidence_state")))
     if new.get("chiayi_phase3_status"):
-        lines.append("• 嘉科 확대 단계: <b>" + html.escape(PHASE_KO.get(new["chiayi_phase3_status"], new["chiayi_phase3_status"])) + "</b>")
+        lines.append("• 자이 과학단지 확대 단계: <b>" + html.escape(PHASE_KO.get(new["chiayi_phase3_status"], new["chiayi_phase3_status"])) + "</b>")
         lines.append("• 확대 단계 확인 수준: " + evidence_ko(new.get("phase3_evidence_state")))
     if new.get("cowos_capacity_wpm"):
         lines.append(f"• CoWoS 월 생산능력: {int(new['cowos_capacity_wpm']):,}장")
@@ -557,9 +598,9 @@ def package_alert_text(new, reasons, checked):
     lines.append("• 다음 확인: TSMC 공식 투자결정·환경영향평가·착공·장비 발주/반입·시험생산·양산·실제 월 생산능력")
     lines.append("• 중복 방지: 같은 기사 재배포·제목 변경만으로는 다시 알리지 않습니다.")
     if new.get("last_source_url"):
-        lines.append("• 근거: " + html.escape(new.get("last_source_name") or "출처") + " · " + href(new["last_source_url"]))
+        lines.append("• 근거: " + html.escape(source_name_ko(new.get("last_source_name"), new.get("last_source_url"))) + " · " + href(new["last_source_url"]))
     lines.append("• 조회: " + checked.strftime("%Y-%m-%d %H:%M KST"))
-    return "\n".join(lines) + "\n"
+    return koreanize_alert_text("\n".join(lines) + "\n")
 
 
 def hbm_alert_text(new, reasons, checked):
@@ -576,9 +617,9 @@ def hbm_alert_text(new, reasons, checked):
     if new.get("soic_capacity_wpm"):
         lines.append(f"• SoIC 월 생산능력: {int(new['soic_capacity_wpm']):,}장")
     if new.get("last_source_url"):
-        lines.append("• 근거: " + html.escape(new.get("last_source_name") or "출처") + " · " + href(new["last_source_url"]))
+        lines.append("• 근거: " + html.escape(source_name_ko(new.get("last_source_name"), new.get("last_source_url"))) + " · " + href(new["last_source_url"]))
     lines.append("• 조회: " + checked.strftime("%Y-%m-%d %H:%M KST"))
-    return "\n".join(lines) + "\n"
+    return koreanize_alert_text("\n".join(lines) + "\n")
 
 
 def run(mode):
