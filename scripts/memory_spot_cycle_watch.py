@@ -29,6 +29,8 @@ import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
 
+import currency_krw_guard
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "memory_spot_cycle_watch_state.json"
 OUT_DIR = ROOT / "out"
@@ -560,6 +562,76 @@ def compact_title(title: str, source: str) -> str:
     return title.strip()
 
 
+def _pct_range(blob: str, patterns: tuple[str, ...]) -> tuple[str, str] | None:
+    for pattern in patterns:
+        match = re.search(pattern, blob, re.IGNORECASE | re.DOTALL)
+        if match:
+            return match.group(1), match.group(2)
+    return None
+
+
+def _price_change_details(raw_title: str, detail_blob: str) -> list[str]:
+    """Return user-facing price changes, not just a report title.
+
+    Use only numbers visible in the public report page. If TrendForce says an
+    outlook was raised but the public summary withholds the exact band, say so
+    instead of inventing a number from a paid table.
+    """
+    low = raw_title.lower()
+    blob = _clean(detail_blob)
+    details: list[str] = []
+
+    if "memory price forecast" in low or "메모리 가격 전망" in low:
+        essd = _pct_range(blob, (
+            r"Enterprise\s+SSD[^0-9%]{0,180}(\d{1,3})\s*[-~–—]\s*(\d{1,3})\s*%\s*(?:QoQ|quarter[- ]over[- ]quarter)?",
+            r"enterprise\s+ssd[^0-9%]{0,180}(\d{1,3})\s*(?:to|~|[-–—])\s*(\d{1,3})\s*%",
+        ))
+        nand = _pct_range(blob, (
+            r"(?:Overall\s+)?NAND\s+Flash[^0-9%]{0,180}(\d{1,3})\s*[-~–—]\s*(\d{1,3})\s*%\s*(?:QoQ|quarter[- ]over[- ]quarter)?",
+            r"overall\s+nand[^0-9%]{0,180}(\d{1,3})\s*(?:to|~|[-–—])\s*(\d{1,3})\s*%",
+        ))
+        if essd:
+            details.append(f"기업용 SSD 계약가: 4Q26 +{essd[0]}~{essd[1]}% QoQ")
+        if nand:
+            details.append(f"NAND Flash 전체 계약가: 4Q26 +{nand[0]}~{nand[1]}% QoQ")
+        if re.search(r"DRAM", blob, re.IGNORECASE):
+            details.append("DRAM 계약가: 4Q26 상승 전망·상향 유지(공개 요약에 세부 등락률 미제시)")
+        return details
+
+    if "dram market bulletin" in low:
+        if re.search(r"(?:lifts?|raises?|upgrade)[^。.!]{0,100}4Q26[^。.!]{0,80}(?:contract )?price", blob, re.IGNORECASE) or (
+            "4q26" in blob.lower() and "contract price outlook" in blob.lower()
+        ):
+            details.append("DRAM 계약가: 4Q26 전망 상향(공개 요약에 세부 등락률 미제시)")
+        if re.search(r"PC and server lead gains|PC[^。.!]{0,50}server[^。.!]{0,50}(?:gain|rise)", blob, re.IGNORECASE):
+            details.append("제품별 방향: PC·서버 DRAM 상승폭 우위, 모바일·소비자용은 높은 가격 부담으로 상승폭 둔화")
+        return details
+
+    if "nand flash market bulletin" in low:
+        if re.search(r"contract prices?[^。.!]{0,100}(?:up|rise|raise|higher)", blob, re.IGNORECASE) or re.search(
+            r"(?:raise|raising)[^。.!]{0,80}contract prices?", blob, re.IGNORECASE
+        ):
+            details.append("NAND Flash 계약가: 전 제품군 상승 방향(공개 요약에 세부 등락률 미제시)")
+        if re.search(r"enterprise SSD", blob, re.IGNORECASE):
+            details.append("가격 주도 품목: 기업용 SSD·고성능 저장장치, AI 주문 증가로 공급 부족")
+        return details
+
+    if "hbm market bulletin" in low:
+        if "2027" in blob and re.search(r"price[^。.!]{0,100}(?:forecast|outlook)", blob, re.IGNORECASE):
+            details.append("HBM 가격: 2027년 전망 상향(이번 공개 요약에 새 등락률·단가 범위 미제시)")
+        if re.search(r"8[- ]?Hi", blob, re.IGNORECASE) and re.search(r"premium", blob, re.IGNORECASE):
+            details.append("제품별 가격 구조: 8단 HBM은 12단 대비 Gb당 프리미엄 전망")
+        return details
+
+    # Generic spot/contract items: expose the price type even when a precise
+    # forecast range is not available in the public text.
+    if "spot" in low or "현물" in low:
+        details.append("가격 유형: 현물가")
+    elif "contract" in low or "고정가" in low or "계약가" in low:
+        details.append("가격 유형: 계약가")
+    return details
+
+
 def write_outputs(items: list[dict], errors: list[str]) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     state = load_state()
@@ -634,27 +706,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         translated = _translate_to_ko(raw_title)
         title = _polish_alert_title(raw_title, translated)
         detail_blob = str(item.get("description") or "")
+        price_details = _price_change_details(raw_title, detail_blob)
         if item.get("source") == "TrendForce Research" and "memory price forecast" in raw_title.lower():
-            essd = re.search(
-                r"Enterprise SSD[^0-9]{0,120}(\d{1,2})\s*[-~–—]\s*(\d{1,2})\s*%",
-                detail_blob,
-                re.IGNORECASE,
+            title = (
+                "TrendForce 4Q26 메모리 가격 전망: AI 서버·HBM 우선배정으로 소비자 DRAM 공급 축소, "
+                "QLC 기업용 SSD는 KV 캐시 수요로 강세…LTA가 DRAM 인상폭 제한"
             )
-            nand = re.search(
-                r"(?:Overall\s+)?NAND Flash[^0-9]{0,120}(\d{1,2})\s*[-~–—]\s*(\d{1,2})\s*%",
-                detail_blob,
-                re.IGNORECASE,
-            )
-            if essd and nand:
-                title = (
-                    f"TrendForce 4Q26: Enterprise SSD +{essd.group(1)}~{essd.group(2)}% QoQ, "
-                    f"NAND 전체 +{nand.group(1)}~{nand.group(2)}%…서버 DRAM·HBM 우선배정으로 소비자 DRAM 공급 축소, LTA가 DRAM 인상폭 제한"
-                )
-            elif "4q26" in raw_title.lower():
-                title = (
-                    "TrendForce 4Q26 메모리 가격 전망: AI 서버·HBM 우선배정으로 소비자 DRAM 공급 축소, "
-                    "QLC Enterprise SSD는 KV Cache 수요로 강세…LTA가 DRAM 인상폭 제한"
-                )
         pub = item.get("published_kst")
         date_text = ""
         if pub:
@@ -665,6 +722,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         safe_title = html.escape(title)
         safe_link = html.escape(item["link"], quote=True)
         lines.append(f"• <b>{label}</b> | {safe_title}")
+        for detail in price_details:
+            lines.append("  가격 변화: " + html.escape(detail))
         if date_text:
             lines.append(f"  {date_text} · <a href=\"{safe_link}\">원문</a>")
         else:
@@ -676,6 +735,10 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 def main() -> int:
     items, errors = collect()
     write_outputs(items, errors)
+    # Hard gate: every foreign-currency amount that reaches Telegram must have
+    # an immediately adjacent KRW conversion. If fresh FX cannot be verified,
+    # stop this run rather than send an unconverted or stale amount.
+    currency_krw_guard.enforce_file(ALERT_PATH)
     print(f"memory_watch_candidates={len(items)} errors={len(errors)}")
     return 0
 
