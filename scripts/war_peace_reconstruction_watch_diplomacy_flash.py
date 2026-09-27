@@ -690,7 +690,7 @@ def _signals(marks):
     return out
 
 
-FRESH_NEWS_MAX_MINUTES = 6 * 60
+FRESH_NEWS_MAX_MINUTES = 3 * 60
 
 
 def _sanitize_inherited_tags(row, tags):
@@ -712,12 +712,57 @@ def _sanitize_inherited_tags(row, tags):
     return tags
 
 
+def _active_attack_signal(row):
+    """현재 실제 공격·피격·공습을 제목 중심으로 판정한다."""
+    title = ' '.join([
+        row.get('title_original', ''),
+        row.get('title_ko', ''),
+    ]).lower()
+    if not title:
+        return False
+    stop_terms = (
+        'attack stopped', 'attacks stopped', 'halt attacks', 'stop attacks',
+        'ceasefire', 'truce', '공격 중단', '공습 중단', '공격을 중단', '휴전', '정전',
+    )
+    if any(term in title for term in stop_terms):
+        return False
+    active_terms = (
+        'missile attack', 'drone attack', 'airstrike', 'air strike', 'attacked ',
+        'attacks ', 'attack on ', 'strike on ', 'struck ', 'hit by missile',
+        'shelling', 'bombardment',
+        '미사일 공격', '드론 공격', '공습', '피격', '공격 이어', '공격했다',
+        '공격했습니다', '공격해', '공격으로', '공격받', '폭격', '포격',
+    )
+    return any(term in title for term in active_terms)
+
+
+def _low_value_tass_battlefield_claim(row):
+    """TASS의 정례 전황·병력손실 주장만 있는 기사는 핵심 변화에서 제외한다."""
+    src = _source_text(row)
+    if 'tass' not in src:
+        return False
+    title = _title_text(row)
+    routine_terms = (
+        'battlegroup', 'military operation in ukraine', 'special military operation',
+        'lost more than', 'troops lost', 'casualties this week',
+        '군사 작전', '병력을 잃', '병력 손실', '이번 주',
+    )
+    critical_terms = (
+        'refinery', 'pipeline', 'power plant', 'substation', 'data center', 'datacenter',
+        'port', 'airport', 'bridge', 'hospital', 'school', 'nuclear',
+        '정유', '송유관', '발전소', '변전소', '데이터 센터', '항만', '공항', '교량', '병원', '학교', '원전',
+    )
+    return any(term in title for term in routine_terms) and not any(term in title for term in critical_terms)
+
+
 def score_item(row, now):
     age = watch.age_minutes(row, now)
     # 신규 감시는 기사 재발견이 아니라 실제 새 변화가 목적이다.
-    # 일반 뉴스는 6시간을 넘기면 다시 신규/후속 알림으로 살리지 않는다.
-    # 명시적 복구 백필(deep_signal)만 예외로 둔다.
-    if age is not None and age > FRESH_NEWS_MAX_MINUTES and not row.get('deep_signal'):
+    # 일반 뉴스는 3시간을 넘기면 다시 신규/후속 알림으로 살리지 않는다.
+    # 오래된 기사 재발견은 deep_signal 여부와 무관하게 차단한다.
+    if age is not None and age > FRESH_NEWS_MAX_MINUTES:
+        return 0, []
+    if _low_value_tass_battlefield_claim(row):
         return 0, []
 
     marks = _marks(row)
@@ -725,7 +770,15 @@ def score_item(row, now):
         if _obvious_false_positive(row):
             return 0, []
         score, tags = _prev_score(row, now)
-        return score, _sanitize_inherited_tags(row, tags)
+        tags = _sanitize_inherited_tags(row, tags)
+        if _active_attack_signal(row):
+            title = _title_text(row)
+            peace_in_title = _has(title, ('ceasefire','truce','peace talks','negotiations','휴전','정전','평화협상','협상'))
+            if not peace_in_title:
+                tags = [tag for tag in tags if tag not in ('종전·협상', '휴전·평화', '재건')]
+            tags.append('확전')
+            score = max(score, 10)
+        return score, sorted(set(tags))
     row['diplomacy_flash_marks'] = marks
     row['title_ko'] = _korean_title(marks) or row.get('title_ko', '')
     row['signals_ko'] = list(dict.fromkeys(_signals(marks) + list(row.get('signals_ko', []))))
@@ -828,8 +881,9 @@ def _canonical_event_key(row):
     reopen = any(x in text for x in ('reopen', 'reopening', 'open the strait', '재개방', '정상 통항', '통항 재개'))
 
     # 이란 7일 휴전/호르무즈안 거부는 제안 자체와 별도 단계로 관리.
-    if has_trump and has_iran and seven_day and rejected and (truce or has_hormuz):
-        return 'trump-iran|reject-7day-truce-hormuz-plan'
+    if has_trump and has_iran and rejected and (truce or has_hormuz):
+        iso = dt.datetime.now(watch.KST).isocalendar()
+        return f'trump-iran|reject-current-ceasefire-hormuz-plan|{iso.year}-W{iso.week:02d}'
     if has_iran and has_hormuz and seven_day and reopen and not rejected:
         return 'iran-hormuz|7day-reopening-proposal'
 
@@ -902,6 +956,10 @@ watch.topic_label = topic_label
 
 
 def _verdict(items):
+    # 실제 공격이 하나라도 있으면 외교 문구 때문에 전체를 초록으로 만들지 않는다.
+    if any(_active_attack_signal(x) for x in items):
+        return _prev_verdict(items)
+
     flash = [x for x in items if _marks(x)]
     marks = {m for x in flash for m in _marks(x)}
     emergency_items = [x for x in items if _emergency_marks(x)]
@@ -1024,7 +1082,7 @@ guard._verdict = _verdict
 _prev_emergency_color = guard._enhanced_body_color
 
 def _emergency_color(row):
-    if _emergency_marks(row):
+    if _emergency_marks(row) or _active_attack_signal(row):
         return 'red'
     return _prev_emergency_color(row)
 
