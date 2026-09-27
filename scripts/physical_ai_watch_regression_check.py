@@ -253,4 +253,54 @@ assert g == "ess_battery", (g, s, c)
 assert c == "ESS 배터리 · 삼성SDI SynergyCells 가동 전환", c
 assert s >= 11, s
 
+# 12) U.S. ESS baseline numbers from September 2026 are registered but must
+# not re-alert from syndicated articles. New actual quarters or revisions do alert.
+us_q2_baseline = make(
+    "REPORT: U.S. Adds 20 GWh of Energy Storage Capacity in Q2, Largest Quarter on Record",
+    "The U.S. energy storage industry installed a record 20.2 GWh in Q2 2026, bringing first-half installations to 30.8 GWh.",
+    "SEIA",
+)
+g, s, c, k = classify(us_q2_baseline)
+assert g == "ess_battery", (g, s, c)
+assert s < 11, ("Q2 2026 20.2GWh / H1 30.8GWh baseline must stay silent", s, c)
+
+us_target_baseline = make(
+    "Energy storage industry targets 225 GW / 1 TWh by end-2032",
+    "The U.S. Energy Storage Coalition says the U.S. energy storage industry is targeting 225 GW and 1 TWh of deployment by the end of 2032.",
+    "U.S. Energy Storage Coalition",
+)
+g, s, c, k = classify(us_target_baseline)
+assert g == "ess_battery", (g, s, c)
+assert s < 11, ("225GW / 1TWh / 2032 target baseline must stay silent", s, c)
+
+us_q3_actual = make(
+    "U.S. installs record 27.4 GWh of energy storage in Q3 2026",
+    "SEIA reported the United States installed 27.4 GWh of new energy storage capacity in Q3, a new quarterly record.",
+    "SEIA",
+)
+g, s, c, k = classify(us_q3_actual)
+assert g == "ess_battery", (g, s, c)
+assert c == "ESS 배터리 · 미국 실설치·수요", c
+assert s >= 11, s
+
+us_target_revision = make(
+    "U.S. Energy Storage Coalition raises 2032 storage target to 1.2 TWh",
+    "The U.S. Energy Storage Coalition revised its goal to 250 GW / 1.2 TWh of energy storage deployment by 2032.",
+    "U.S. Energy Storage Coalition",
+)
+g, s, c, k = classify(us_target_revision)
+assert g == "ess_battery", (g, s, c)
+assert c == "ESS 배터리 · 미국 2032 목표 변경", c
+assert s >= 11, s
+
+us_forecast_revision = make(
+    "U.S. energy storage forecast raised to 115 GWh for 2027",
+    "SEIA and Benchmark Mineral Intelligence revised the United States energy storage outlook upward to 115 GWh for 2027.",
+    "SEIA",
+)
+g, s, c, k = classify(us_forecast_revision)
+assert g == "ess_battery", (g, s, c)
+assert c == "ESS 배터리 · 미국 설치 전망 변경", c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
