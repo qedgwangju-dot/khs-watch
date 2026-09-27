@@ -21,7 +21,7 @@
   ],
   "_delivery": {
     "id": "8f5f6d5b29a5be52638e59403c5d694a66dce7b477d27b280eeea8d5836d3300",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-09-27T18:51:29+09:00",
     "chunks": [
       "🚨 <b>HBM 교차 알림 | TSMC 첨단패키징 병목 변화</b>\n━━━━━━━━━━━━━━━━\n• HBM 알림 사유: <b>기판 병목 미확인→easing · HBM 병목 미확인→easing · CoWoS 병목 미확인→easing</b>\n• 전파 경로: CoWoS·SoIC 실제 처리능력/병목 → GPU·ASIC 패키지 출하 → HBM 탑재·출하 가능량\n• 알림 기준: 실제 생산능력 숫자 변화, 장비 반입·양산 진입, 테스터·기판·HBM·CoWoS 병목 변화만 교차 알림합니다.\n• 제외: 부지 검토·공장 의향·같은 기사 재배포만으로는 HBM 알림을 울리지 않습니다.\n• 근거: LTN · <a href=\"https://ec.ltn.com.tw/article/breakingnews/5586843\">원문</a>\n• 조회: 2026-09-27 18:47 KST"
@@ -76,6 +76,7 @@
         "CoWoS 병목 미확인→easing"
       ],
       "last_alert_at_kst": "2026-09-27T18:47:52+09:00"
-    }
+    },
+    "attempt_at_kst": "2026-09-27T18:51:30+09:00"
   }
 }
