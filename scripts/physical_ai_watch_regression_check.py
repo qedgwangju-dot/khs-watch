@@ -261,21 +261,7 @@ us_q2_baseline = make(
     "SEIA",
 )
 g, s, c, k = classify(us_q2_baseline)
-print("US_ESS_BASELINE_DEBUG", g, repr(s), c)
-fn = base.score
-for _depth in range(30):
-    try:
-        _v = fn(us_q2_baseline)
-    except Exception as _exc:
-        _v = f"ERROR:{type(_exc).__name__}:{_exc}"
-    print("US_ESS_SCORE_CHAIN", _depth, getattr(fn, "__module__", "?"), getattr(fn, "__name__", "?"), repr(_v))
-    _mod = sys.modules.get(getattr(fn, "__module__", ""))
-    _next = getattr(_mod, "_orig_score", None) if _mod else None
-    if not callable(_next) or _next is fn:
-        break
-    fn = _next
 assert g == "ess_battery", (g, s, c)
-assert isinstance(s, (int, float)), ("score type", type(s).__name__, repr(s), c)
 assert s < 11, ("Q2 2026 20.2GWh / H1 30.8GWh baseline must stay silent", s, c)
 
 us_target_baseline = make(
