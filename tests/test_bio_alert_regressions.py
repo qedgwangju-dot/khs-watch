@@ -11,6 +11,7 @@ import bio_korean_guard_strict_v2 as guard
 import jemperli_altb4_watch as jem_base
 import jemperli_altb4_watch_v2 as jem
 import qlex_wac_ir_watch_v2 as wac
+import halozyme_legal_watch_v4 as halo
 
 
 class BioAlertRegressionTests(unittest.TestCase):
@@ -62,6 +63,26 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertEqual(
             wac.format_krw_from_usd_m(1026.0, 1343.8),
             "약 1조3,787억원",
+        )
+
+    def test_halozyme_two_patent_article_without_case_number_is_not_dropped(self):
+        text = "알테오젠 파트너 MSD, 할로자임 PH20 특허 2건 청구항 특허성 없음"
+        case, patent = halo.get_case(text)
+        self.assertEqual(case, "PGR2025-00033")
+        self.assertEqual(patent, "12,049,652")
+        self.assertEqual(halo.classify(text, case), "final_unpatentable")
+
+    def test_halozyme_current_fwd_cases_upgrade_to_unpatentable(self):
+        for case in ("PGR2025-00033", "PGR2025-00039"):
+            self.assertEqual(
+                halo.classify("Status Final Written Decision", case),
+                "final_unpatentable",
+            )
+
+    def test_halozyme_unknown_fwd_does_not_assume_invalidity(self):
+        self.assertEqual(
+            halo.classify("Status Final Written Decision", "PGR2025-00042"),
+            "final_decision",
         )
 
     def test_single_runner_health_schema_covers_all_bio_lanes(self):
