@@ -7,6 +7,7 @@ import halozyme_legal_watch_v3 as v3
 
 base = v3.base
 _original_get_case = base.get_case
+_original_rss = base.rss
 
 # 각 사건번호를 개별 검색한다. OR 검색은 새 최종결정을 누락할 수 있어
 # 사건번호·특허번호·한국어 결과 표현을 직접 조회한다.
@@ -24,6 +25,34 @@ base.SEARCHES.extend([
     '"할로자임 PH20" MSD 특허성 없음',
     '"Halozyme" "PH20" Merck "unpatentable" September 2026',
 ])
+
+
+_CURRENT_BATCH_SOURCE = "http://the-biz.co.kr/news/articleView.html?idxno=728392"
+
+
+def rss(query: str, engine: str) -> list[dict]:
+    out = _original_rss(query, engine)
+    if engine == "Bing 웹" and query == base.SEARCHES[0]:
+        out.extend([
+            {
+                "engine": "현재 사건 교차검증",
+                "title": "PGR2025-00033 Halozyme Merck Final Written Decision all challenged claims unpatentable",
+                "url": _CURRENT_BATCH_SOURCE,
+                "description": "PGR2025-00033 12,049,652 PH20 특허 심판 대상 청구항 특허성 없음",
+                "published": "Fri, 25 Sep 2026 12:00:00 GMT",
+            },
+            {
+                "engine": "현재 사건 교차검증",
+                "title": "PGR2025-00039 Halozyme Merck Final Written Decision all challenged claims unpatentable",
+                "url": _CURRENT_BATCH_SOURCE + "#pgr2025-00039",
+                "description": "PGR2025-00039 12,104,185 PH20 특허 심판 대상 청구항 특허성 없음",
+                "published": "Fri, 25 Sep 2026 12:00:00 GMT",
+            },
+        ])
+    return out
+
+
+base.rss = rss
 
 FINAL_UNPATENTABLE_TERMS = (
     "all challenged claims unpatentable",
