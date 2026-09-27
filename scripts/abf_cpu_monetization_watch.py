@@ -60,6 +60,10 @@ BASELINE = {
         "https://www.ibiden.com/ir/items/en_QA_FY25Q4.pdf",
         "https://www.ibiden.com/ir/items/FinancialReview2025.pdf",
         "https://www.ibiden.com/ir/items/en_kessannsetsumeiFY2025.pdf",
+        "https://www.pcbshop.org/en/articles/detail.asp?serno=371",
+        "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82",
+        "https://www.xxquant.com/en/institution/institutional-research/312ff73397896d147f13d89219902ad7",
+        "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
     ],
 }
 
