@@ -278,6 +278,7 @@ SOURCES = [
     Source("Federal Register energy", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=energy+permit+final+rule"),
     Source("Federal Register chips export", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=semiconductor+export+controls+final+rule"),
     Source("Federal Register tariffs", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=tariff+section+301+final+rule"),
+    Source("Federal Register Korea trade remedies", "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=Republic+of+Korea+antidumping+countervailing+final+results+administrative+review&order=newest&per_page=20", "federal_register_json"),
     Source("Federal Register polysilicon Section 232", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=polysilicon+proclamation+11052+section+232+stockpiling+minimum+import+price"),
     Source("Federal Register Commerce national security", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=commerce+national+security+import+export+controls+tariff+semiconductor+robot+inverter"),
     Source("Federal Register DOE FERC NRC power", "https://www.federalregister.gov/documents/search.rss?conditions%5Bterm%5D=doe+ferc+nrc+power+grid+nuclear+data+center+transformer+reactor+loan"),
@@ -438,8 +439,107 @@ def parse_federal_register_json(text: str, source: Source) -> list[dict]:
         abstract = clean_text(str(row.get("abstract") or row.get("excerpt") or ""))
         meta = "; ".join(part for part in (doc_type, pres_type, doc_number) if part)
         summary = clean_text(f"{meta}. {abstract}") or "Federal Register presidential document"
-        items.append({"source": source.name, "title": title, "link": link, "summary": summary, "published_kst": published.isoformat() if published else ""})
+        items.append({"source": source.name, "title": title, "link": link, "summary": summary, "published_kst": published.isoformat() if published else "", "document_number": doc_number})
     return items
+
+
+def enrich_korea_trade_remedy_items(items: list[dict]) -> list[dict]:
+    """Fetch the official Federal Register body for Korean AD/CVD review notices."""
+    enriched: list[dict] = []
+    for item in items:
+        title = str(item.get("title") or "")
+        low = title.lower()
+        if (
+            ("republic of korea" not in low and "from korea" not in low)
+            or not any(term in low for term in ("antidumping", "countervailing"))
+        ):
+            enriched.append(item)
+            continue
+        detail_html, error = fetch_text(str(item.get("link") or ""), timeout=12)
+        if error or not detail_html:
+            enriched.append(item)
+            continue
+        detail = extract_article_detail(detail_html, title)
+        if not detail.get("body_verified"):
+            enriched.append(item)
+            continue
+        updated = dict(item)
+        updated.update(
+            {
+                "source_title": detail.get("title") or title,
+                "source_abstract": detail.get("abstract") or item.get("summary") or "",
+                "source_body": detail.get("body") or "",
+                "body_verified": True,
+            }
+        )
+        enriched.append(updated)
+    return enriched
+
+
+def apply_korea_trade_remedy_profile(item: dict, text: str) -> None:
+    source = str(item.get("source") or "").lower()
+    if source != "federal register korea trade remedies":
+        return
+    low = text.lower()
+    if (
+        ("republic of korea" not in low and "from korea" not in low)
+        or not any(term in low for term in ("antidumping", "countervailing"))
+        or not any(term in low for term in ("final results", "preliminary results", "administrative review", "sunset review", "circumvention"))
+    ):
+        return
+
+    item["importance"] = "상"
+    item["impacts"] = ["매출·마진·현금흐름", "수급", "시간표"]
+    item["paths"] = ["무역구제", "현금예치율", "수출가격", "정책 타임라인"]
+    if any(term in low for term in ("steel", "pipe", "tube", "철강", "강관")):
+        item["sectors"] = ["철강/강관", "관세/수출주"]
+        item["korea_value_chain"] = ["철강/강관", "미국향 수출주"]
+    else:
+        item["sectors"] = ["관세/수출주", "미국향 수출기업"]
+        item["korea_value_chain"] = ["미국향 수출주", "무역구제 대상 품목"]
+
+    doc_number = str(item.get("document_number") or "")
+    is_hwr_2023_2024 = (
+        doc_number == "2026-19272"
+        or (
+            "a-580-880" in low
+            and "2023-2024" in low
+            and "heavy walled rectangular welded" in low
+            and "final results" in low
+        )
+    )
+    if is_hwr_2023_2024:
+        item["title_ko"] = "미 상무부, 한국 후육 사각강관 반덤핑 최종마진 3개사 0.00% 확정"
+        item["policy_plain_summary"] = (
+            "미 상무부 최종결정에서 동아스틸·하이스틸·국제강재의 가중평균 덤핑마진이 모두 0.00%로 확정됐습니다. "
+            "예비결과에서 국제강재는 35.11%였으나 최종 0.00%로 변경됐고, 2026년 9월 21일부터 세 회사의 현금예치율도 0.00%가 적용됩니다."
+        )
+        item["investment_view"] = (
+            "핵심은 국제강재의 35.11%→0.00% 급변과 세 회사의 현금예치 부담 제거입니다. "
+            "대미 수출 운전자금·가격경쟁력에는 직접적인 개선 요인이지만 판매량·평균판매단가가 따라오는지 확인해야 합니다."
+        )
+        item["korea_market_impact"] = (
+            "직접 당사자는 동아스틸·하이스틸·국제강재입니다. 기타 생산자·수출자의 all-others 현금예치율 3.24%는 유지되므로 한국 철강 전체의 일괄 관세 철폐로 해석하면 안 됩니다."
+        )
+        item["priced_in"] = "낮음~중간. 최종 관보 확정은 실적 추정의 현금예치·수출가격 가정을 바꿀 수 있지만 실제 수출물량 증가 확인이 남았습니다."
+        item["counter"] = (
+            "이번 결정은 A-580-880 반덤핑 행정재심 결과입니다. 미국의 별도 Section 232 철강 조치와 다른 제도이고, "
+            "향후 행정재심에서 덤핑마진이 다시 바뀔 수 있습니다."
+        )
+        item["failure_signal"] = (
+            "다음 행정재심에서 마진이 재상승하거나 미국향 출하량·평균판매단가가 늘지 않으면 0.00% 판정의 실적 효과가 제한됩니다."
+        )
+    else:
+        stage = "최종결정" if "final results" in low else "예비결정"
+        item["title_ko"] = f"미 상무부, 한국산 제품 반덤핑·상계관세 {stage} 공표"
+        item["policy_plain_summary"] = (
+            f"미 상무부가 한국산 제품의 반덤핑·상계관세 {stage}을 연방관보에 공표했습니다. "
+            "회사별 마진·현금예치율·정산지시가 실제 미국향 수출 채산성을 바꿀 수 있는 공식 무역구제 이벤트입니다."
+        )
+        item["investment_view"] = "회사별 세율의 전기 대비 변화와 현금예치율, 적용일, CBP 정산지시를 우선 확인해야 합니다."
+        item["korea_market_impact"] = "한국장에서는 원문에 직접 이름이 나온 생산자·수출자와 해당 품목의 미국향 매출 노출이 확인되는 기업만 연결합니다."
+        item["counter"] = "반덤핑·상계관세는 Section 232·Section 301 등 별도 무역조치와 구분해야 하며, 다른 관세가 자동으로 사라지는 것은 아닙니다."
+        item["failure_signal"] = "후속 행정재심에서 세율이 재상승하거나 미국향 물량·가격이 개선되지 않으면 실적 효과가 약해집니다."
 
 
 def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
@@ -1223,6 +1323,7 @@ def classify_item(item: dict) -> dict | None:
         fingerprint_input = f"{item.get('source')}|{item.get('title')}|{item.get('link')}"
     fingerprint = hashlib.sha256(fingerprint_input.encode("utf-8")).hexdigest()[:16]
     result = {**item, "fingerprint": fingerprint, "matched": matched, "importance": importance, "status": "예비" if item["source"].startswith(("CourtListener", "KRX KIND")) else "확정", "impacts": list(dict.fromkeys(impacts)) or ["의사결정 영향 제한적"], "paths": list(dict.fromkeys(paths)) or ["정책 타임라인"], "sectors": sectors}
+    apply_korea_trade_remedy_profile(result, haystack)
     apply_treasury_borrowing_profile(result, haystack)
     return result
 
@@ -1258,6 +1359,8 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
             items = parse_kind_html(text or "", source, now)
         elif source.kind == "federal_register_json":
             items = parse_federal_register_json(text or "", source)
+            if source.name == "Federal Register Korea trade remedies":
+                items = enrich_korea_trade_remedy_items(items)
         elif source.kind == "whitehouse_html":
             items = parse_whitehouse_html(text or "", source)
         elif source.kind == "fcc_html":
@@ -1286,7 +1389,7 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
             age = item_age_hours(item, now)
             if source.kind in {"rss", "courtlistener", "kind_html", "federal_register_json", "whitehouse_html", "fcc_html", "state_html", "mofcom_html", "treasury_html"} and age is None:
                 continue
-            max_age = WHITEHOUSE_MAX_AGE_HOURS if source.kind == "whitehouse_html" else MAX_SOURCE_AGE_HOURS
+            max_age = 168 if source.name == "Federal Register Korea trade remedies" else (WHITEHOUSE_MAX_AGE_HOURS if source.kind == "whitehouse_html" else MAX_SOURCE_AGE_HOURS)
             if age is not None and age > max_age:
                 continue
             classified = classify_item(item)
