@@ -104,6 +104,7 @@ def main() -> int:
     assert_trusted_policy_news_story_fingerprint_allows_intraday_updates()
     assert_trusted_policy_news_render_is_compact()
     assert_fcc_chinese_optical_transceiver_ban_is_monitored()
+    assert_korea_trade_remedy_final_rate_change_is_monitored()
     assert_congress_chinese_optical_transceiver_bill_is_monitored()
     assert_trusted_trump_rate_and_dollar_profiles_are_specific()
     assert_trusted_trump_current_iran_profiles_are_source_faithful()
@@ -1579,6 +1580,52 @@ def assert_fcc_chinese_optical_transceiver_ban_is_monitored() -> None:
     for marker in ("광트랜시버", "초안 단계", "확정 전"):
         if marker not in rule.core:
             raise AssertionError(f"Optical-transceiver core missing: {marker}")
+
+
+def assert_korea_trade_remedy_final_rate_change_is_monitored() -> None:
+    source = next(
+        source for source in khs_policy_watch.SOURCES
+        if source.name == "Federal Register Korea trade remedies"
+    )
+    if "Republic+of+Korea" not in source.url or "antidumping" not in source.url:
+        raise AssertionError("Korea AD/CVD Federal Register source query is incomplete")
+
+    item = {
+        "source": "Federal Register Korea trade remedies",
+        "title": (
+            "Heavy Walled Rectangular Welded Carbon Steel Pipes and Tubes From the Republic of Korea: "
+            "Final Results of the Antidumping Duty Administrative Review; 2023-2024"
+        ),
+        "summary": (
+            "Notice; 2026-19272. A-580-880. Commerce determines that heavy walled rectangular welded "
+            "carbon steel pipes and tubes from the Republic of Korea were not sold at less than normal value."
+        ),
+        "document_number": "2026-19272",
+        "published_kst": "2026-09-21T09:00:00+09:00",
+        "link": "https://www.federalregister.gov/documents/2026/09/21/2026-19272/example",
+    }
+    classified = khs_policy_watch.classify_item(item)
+    if not classified:
+        raise AssertionError("Korea AD/CVD final result was not classified")
+    khs_policy_alert_explainer.ensure_explained(classified)
+
+    expected = {
+        "title_ko": "미 상무부, 한국 후육 사각강관 반덤핑 최종마진 3개사 0.00% 확정",
+        "importance": "상",
+        "status": "확정",
+    }
+    for key, value in expected.items():
+        if classified.get(key) != value:
+            raise AssertionError(f"Korea trade-remedy {key} mismatch: {classified.get(key)!r}")
+
+    summary = str(classified.get("policy_plain_summary") or "")
+    for marker in ("동아스틸", "하이스틸", "국제강재", "35.11%", "0.00%", "2026년 9월 21일"):
+        if marker not in summary:
+            raise AssertionError(f"Korea trade-remedy summary missing: {marker}")
+    counter = str(classified.get("counter") or "")
+    for marker in ("Section 232", "3.24%"):
+        if marker not in (counter + " " + str(classified.get("korea_market_impact") or "")):
+            raise AssertionError(f"Korea trade-remedy guard missing: {marker}")
 
 
 def assert_congress_chinese_optical_transceiver_bill_is_monitored() -> None:
