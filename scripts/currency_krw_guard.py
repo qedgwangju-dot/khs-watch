@@ -10,6 +10,25 @@ CURRENCY_WORDS = {
     "유로": "EUR",
     "엔": "JPY",
     "링깃": "MYR",
+    "위안": "CNY",
+    "홍콩달러": "HKD",
+    "파운드": "GBP",
+    "싱가포르달러": "SGD",
+    "대만달러": "TWD",
+    "호주달러": "AUD",
+    "캐나다달러": "CAD",
+    "스위스프랑": "CHF",
+}
+SYMBOL_CURRENCIES = {
+    "US$": "USD",
+    "$": "USD",
+    "€": "EUR",
+    "£": "GBP",
+    "HK$": "HKD",
+    "S$": "SGD",
+    "NT$": "TWD",
+    "A$": "AUD",
+    "C$": "CAD",
 }
 SCALE = {
     "조": 1_000_000_000_000,
@@ -34,9 +53,9 @@ def _rate(currency: str) -> tuple[float | None, str]:
 
 
 def _krw_text(value: float, currency: str, per_unit: str = "") -> str:
-    rate, _ = _rate(currency)
+    rate, basis = _rate(currency)
     if rate is None:
-        return "원화 환산 확인 불가" + per_unit
+        raise RuntimeError(f"{currency} 원화 환율 확인 실패—외화 금액 알림 발송 보류")
     won = value * rate
     if per_unit:
         return f"약 {won:,.0f}원{per_unit}"
@@ -60,7 +79,7 @@ def _already_parenthesized(tail: str) -> bool:
 def _normalize_existing_separate_krw(text: str) -> str:
     # "150십억달러 · 약 203조원" -> "150십억달러(약 203조원)"
     pat = re.compile(
-        r"(?P<fx>\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만)?(?:달러|유로|엔|링깃))"
+        r"(?P<fx>\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만)?(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드))"
         r"\s*(?:·|=)\s*(?P<krw>약\s*[\d,]+(?:조[\d,]*억|조|억)?원)"
     )
     return pat.sub(lambda m: f"{m.group('fx')}({m.group('krw')})", text)
@@ -74,7 +93,7 @@ def enforce_text(text: str) -> str:
         r"(?P<a>\d[\d,.]*(?:\.\d+)?)\s*(?P<ua>조|십억|억|백만|천만)"
         r"\s*(?P<sep>[~～–—-])\s*"
         r"(?P<b>\d[\d,.]*(?:\.\d+)?)\s*(?P<ub>조|십억|억|백만|천만)?"
-        r"(?P<word>달러|유로|엔|링깃)"
+        r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
     )
     def repl_range(m):
         tail = text[m.end():]
@@ -91,7 +110,7 @@ def enforce_text(text: str) -> str:
     # Korean large-unit currency amounts.
     large_pat = re.compile(
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<unit>조|십억|억|백만|천만)"
-        r"(?P<word>달러|유로|엔|링깃)(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?",
+        r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?",
         re.I,
     )
     def repl_large(m):
@@ -104,9 +123,10 @@ def enforce_text(text: str) -> str:
         return f"{m.group(0)}({_krw_text(value, currency, per)})"
     text = large_pat.sub(repl_large, text)
 
-    # $11.4B / US$15 billion.
+    # Symbol amounts such as $11.4B, €2 billion, HK$500 million.
     symbol_pat = re.compile(
-        r"(?P<prefix>US\$|\$)\s*(?P<num>\d[\d,.]*(?:\.\d+)?)\s*"
+        r"(?P<prefix>US\$|HK\$|NT\$|S\$|A\$|C\$|\$|€|£)\s*"
+        r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*"
         r"(?P<unit>billion|million|B|M)\b(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?",
         re.I,
     )
@@ -117,28 +137,36 @@ def enforce_text(text: str) -> str:
         unit = m.group("unit").lower()
         value = _number(m.group("num")) * (1_000_000_000 if unit in ("billion", "b") else 1_000_000)
         per = m.group("per") or ""
-        return f"{m.group(0)}({_krw_text(value, 'USD', per)})"
+        prefix = m.group("prefix")
+        currency = SYMBOL_CURRENCIES.get(prefix.upper() if prefix.upper() in SYMBOL_CURRENCIES else prefix, SYMBOL_CURRENCIES.get(prefix))
+        if not currency:
+            currency = "USD" if "$" in prefix else ("EUR" if prefix == "€" else "GBP")
+        return f"{m.group(0)}({_krw_text(value, currency, per)})"
     text = symbol_pat.sub(repl_symbol, text)
 
-    # Plain amounts such as $73.39/kg or 73.39달러/kg.
-    usd_plain = re.compile(
-        r"(?P<prefix>US\$|\$)\s*(?P<num>\d[\d,.]*(?:\.\d+)?)"
+    # Plain symbol amounts such as $73.39/kg, €12, HK$500.
+    symbol_plain = re.compile(
+        r"(?P<prefix>US\$|HK\$|NT\$|S\$|A\$|C\$|\$|€|£)\s*"
+        r"(?P<num>\d[\d,.]*(?:\.\d+)?)"
         r"(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?",
         re.I,
     )
-    def repl_usd_plain(m):
-        # Do not re-process a symbol amount that was already expanded above.
+    def repl_symbol_plain(m):
         tail = text[m.end():]
         if _already_parenthesized(tail):
             return m.group(0)
         if re.match(r"\s*(?:billion|million|B|M)\b", tail, re.I):
             return m.group(0)
+        prefix = m.group("prefix")
+        currency = SYMBOL_CURRENCIES.get(prefix.upper() if prefix.upper() in SYMBOL_CURRENCIES else prefix, SYMBOL_CURRENCIES.get(prefix))
+        if not currency:
+            currency = "USD" if "$" in prefix else ("EUR" if prefix == "€" else "GBP")
         per = m.group("per") or ""
-        return f"{m.group(0)}({_krw_text(_number(m.group('num')), 'USD', per)})"
-    text = usd_plain.sub(repl_usd_plain, text)
+        return f"{m.group(0)}({_krw_text(_number(m.group('num')), currency, per)})"
+    text = symbol_plain.sub(repl_symbol_plain, text)
 
     word_plain = re.compile(
-        r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<word>달러|유로|엔|링깃)"
+        r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
         r"(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?"
     )
     def repl_word_plain(m):
@@ -153,7 +181,39 @@ def enforce_text(text: str) -> str:
         per = m.group("per") or ""
         return f"{m.group(0)}({_krw_text(_number(m.group('num')), currency, per)})"
     text = word_plain.sub(repl_word_plain, text)
+    validate_text(text)
     return text
+
+
+def _money_candidates(text: str):
+    word = (
+        r"\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만)?"
+        r"(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
+        r"(?:/(?:kg|GB|Gb|TB|주|개|module|chip))?"
+    )
+    symbol = (
+        r"(?:US\$|HK\$|NT\$|S\$|A\$|C\$|\$|€|£)\s*"
+        r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:billion|million|B|M))?"
+        r"(?:/(?:kg|GB|Gb|TB|주|개|module|chip))?"
+    )
+    for m in re.finditer(word + "|" + symbol, text, re.I):
+        yield m
+
+
+def validate_text(text: str) -> None:
+    unpaired = []
+    for m in _money_candidates(text):
+        token = m.group(0)
+        tail = text[m.end():]
+        # Exchange-rate basis lines such as 1달러=1,350원 are not monetary
+        # values requiring a second KRW conversion.
+        if re.match(r"\s*=", tail):
+            continue
+        if not _already_parenthesized(tail):
+            unpaired.append(token)
+    if unpaired:
+        sample = ", ".join(unpaired[:3])
+        raise RuntimeError("외화 금액 뒤 원화 괄호 누락—알림 발송 보류: " + sample)
 
 
 def enforce_file(path: str | pathlib.Path) -> bool:
