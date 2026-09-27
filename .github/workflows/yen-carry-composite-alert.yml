@@ -370,7 +370,7 @@ jobs:
           PY
 
       - name: Send BOJ exit-strategy exception through verified KHS Telegram route
-        if: env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_boj_exit_alert.md') != ''
+        if: always() && env.TELEGRAM_DRY_RUN != 'true' && hashFiles('out/yen_carry_boj_exit_alert.md') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
