@@ -49,12 +49,13 @@ OFFICIAL_MARKERS = (
     "과학기술정보통신부", "산업통상자원부", "금융위원회", "조달청", "기획재정부",
     "정보통신산업진흥원", "nipa", "한국수출입은행", "해외경제연구소", "수출입은행",
     "한국무역보험공사", "무역보험공사", "k-sure", "kotra", "대한무역투자진흥공사",
-    "정책브리핑", "대통령실", "산업은행", "한국산업은행",
+    "정책브리핑", "대통령실", "산업은행", "한국산업은행", "국회도서관", "국가전략포털",
 )
 TRUSTED_NEWS_MARKERS = (
     "연합뉴스", "뉴시스", "전자신문", "지디넷코리아", "zdnet", "디지털데일리",
     "디일렉", "thelec", "서울경제", "한국경제", "매일경제", "머니투데이", "이데일리",
     "조선비즈", "아시아경제", "파이낸셜뉴스", "뉴스핌", "블로터", "아이뉴스24",
+    "이투데이", "아주경제", "비즈워치", "서울경제tv", "더벨",
 )
 
 QUERY_SPECS = [
@@ -68,6 +69,7 @@ QUERY_SPECS = [
     ("공식-조달청", 'site:pps.go.kr ("AI 반도체" OR "NPU") (혁신제품 OR 시범구매 OR 조달 OR 구매) when:120d'),
     ("공식-NIPA", 'site:nipa.kr ("AI 반도체" OR "NPU") (해외실증 OR 지원사업 OR 공모 OR 선정) when:120d'),
     ("공식-수은", '(site:koreaexim.go.kr OR site:keri.koreaexim.go.kr) ("AI 반도체" OR "NPU") when:180d'),
+    ("공식-국가전략포털", 'site:nsp.nanet.go.kr ("AI반도체" OR "AI 반도체" OR "NPU") (한국수출입은행 OR 정부 OR 정책 OR 지원) when:180d'),
     ("공식-KOTRA", 'site:kotra.or.kr ("AI 반도체" OR "NPU") (중동 OR 사우디 OR UAE OR 해외진출) when:180d'),
     ("공식-무보", 'site:ksure.or.kr ("AI 반도체" OR "NPU") (수출 OR 보증 OR 금융 OR 중동) when:180d'),
 ]
@@ -420,7 +422,19 @@ def main() -> None:
             }
             continue
 
-        # Stage 2 policy research is useful only from official sources.
+        # Telegram should prioritize verified policy/business changes, not theme/news noise.
+        if item["quality"] == "기타보도":
+            seen[key] = {
+                "title": item["title"],
+                "url": item["url"],
+                "event_signature": event_signature(item),
+                "stage": item["stage"],
+                "category": item["category"],
+                "first_seen_kst": now.isoformat(timespec="seconds"),
+                "suppressed_low_quality": True,
+            }
+            continue
+        # Stage 2 policy research is useful only from official/public research sources.
         if item["stage"] == 2 and item["quality"] != "공식":
             continue
         fresh.append((key, item))
