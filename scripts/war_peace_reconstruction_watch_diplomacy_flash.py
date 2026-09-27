@@ -755,6 +755,24 @@ def _low_value_tass_battlefield_claim(row):
     return any(term in title for term in routine_terms) and not any(term in title for term in critical_terms)
 
 
+def _analysis_or_explainer(row):
+    """새 사건 없이 기존 사건을 해설·재가공하는 기사만 차단한다."""
+    title = _title_text(row)
+    src = _source_text(row)
+    explainer_terms = (
+        '?', '？', '왜 ', '왜?', '어떻게 ', '무슨 뜻', '분석', '해설', '전망',
+        'why ', 'what does', 'what happened', 'explainer', 'analysis:',
+    )
+    if not any(term in title for term in explainer_terms):
+        return False
+    # Reuters/AP/공식 원천의 직접 속보는 질문형 제목이어도 보존한다.
+    if any(term in src for term in ('reuters', 'apnews', 'whitehouse.gov', 'state.gov', 'president.gov.ua', 'kremlin.ru')):
+        return False
+    if _active_attack_signal(row) or _emergency_marks(row):
+        return False
+    return True
+
+
 def score_item(row, now):
     age = watch.age_minutes(row, now)
     # 신규 감시는 기사 재발견이 아니라 실제 새 변화가 목적이다.
@@ -763,6 +781,8 @@ def score_item(row, now):
     if age is not None and age > FRESH_NEWS_MAX_MINUTES:
         return 0, []
     if _low_value_tass_battlefield_claim(row):
+        return 0, []
+    if _analysis_or_explainer(row):
         return 0, []
 
     marks = _marks(row)
