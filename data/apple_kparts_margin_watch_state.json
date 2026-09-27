@@ -1,11 +1,55 @@
 {
   "schema_version": 1,
-  "initial_alert_sent": false,
+  "updated_at_kst": "2026-09-28T07:38:15+09:00",
+  "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
-  "seen": [],
-  "last_fx_bucket": null,
-  "last_fx": {},
-  "last_scan_items": 0,
+  "baseline": {
+    "lg_display_op_est_eok": 2572,
+    "lg_display_consensus_eok": 4291,
+    "lg_display_revision_pct": -40.1,
+    "lg_innotek_op_est_eok": 1501,
+    "lg_innotek_consensus_eok": 3112,
+    "lg_innotek_revision_pct": -51.8,
+    "semco_op_est_eok": 6500,
+    "semco_consensus_comment": "시장 컨센서스·기존 추정치 약 9% 상회 보도"
+  },
+  "seen": [
+    "147971abb3ed6ed2afd59ade",
+    "174af52ad3e91e661e4b7eb6",
+    "31fd881fa49b72b08b5c89e4",
+    "381d4fdd01614df2e6a99b9c",
+    "445c089ffb0a6fabe3e52090",
+    "44bace3ac8a0ef5b4159c3ae",
+    "47350594004b70d107688654",
+    "57c1b3b4c19bbe37ec07b3fa",
+    "65fedeaf41999852f19d141d",
+    "746457879a54a968e81ef560",
+    "7752b307b0421e0db6d8c1dc",
+    "a43045657c209d0ad8bc333d",
+    "ac060b05ffd97d440adbd2ad",
+    "ad3fad7a44a18aabadaa0f27",
+    "b46686ecb3490b1e8715f39f",
+    "bff88584b86d23d8a138158e",
+    "cd5f398c24ab65680e5dfff7",
+    "d05709320f5fd5f6652edaa3",
+    "d40cd953930c5e0af1cc1035",
+    "f4b70fa369507f8fae2f1ffd"
+  ],
+  "last_fx_bucket": "orange",
+  "last_fx": {
+    "latest_rate": 1355.05,
+    "latest_date": "2026-09-25",
+    "latest_source": "ECB/Frankfurter",
+    "q2_avg": 1500.48,
+    "q3_avg": 1425.1,
+    "qoq_pct": -5.02,
+    "bucket": "orange",
+    "average_source": "Fed H.10/FRED"
+  },
+  "last_scan_items": 20,
   "last_signal_count": 0,
-  "last_alert": null
+  "last_alert": {
+    "at_kst": "2026-09-28T07:38:15+09:00",
+    "count": 1
+  }
 }
