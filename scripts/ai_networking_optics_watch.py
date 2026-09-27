@@ -58,7 +58,7 @@ COMPANIES = {
     "Coherent": {
         "ticker": "COHR",
         "aliases": ["Coherent"],
-        "query": 'Coherent (AI datacenter OR data center OR optical OR laser OR CPO OR 800G OR 1.6T OR 3.2T OR transceiver)',
+        "query": 'Coherent (PhotonLink OR "integrated optics" OR "complete optical solution" OR "end-to-end" OR "vertical integration" OR CPO OR NPO OR "chip-to-chip" OR "silicon photonics" OR SiPh OR InP OR "specialty fiber" OR "polarization-maintaining fiber" OR "mode-matching fiber" OR "multicore fiber" OR "customer engagement" OR "long-term agreement" OR "content opportunity" OR 800G OR 1.6T OR 3.2T)',
     },
     "Astera Labs": {
         "ticker": "ALAB",
@@ -69,6 +69,11 @@ COMPANIES = {
         "ticker": "GLW",
         "aliases": ["Corning"],
         "query": 'Corning (AI data center OR datacenter OR optical communications OR fiber OR fibre OR cable OR connector OR CPO OR "co-packaged optics" OR photonics OR "glass substrate" OR advanced packaging)',
+    },
+    "Samsung Electronics": {
+        "ticker": "005930.KS",
+        "aliases": ["Samsung Electronics", "Samsung Foundry"],
+        "query": '"Samsung Foundry" ("silicon photonics" OR SiPh OR PIC OR "optical module" OR "optical engine" OR CPO OR NPO OR "photonics foundry" OR "design win" OR "mass production")',
     },
 }
 
@@ -90,6 +95,12 @@ HIGH_SIGNAL_PATTERNS = [
     r"shortage", r"constraint", r"bottleneck", r"supply tight", r"pricing", r"price increase",
     r"copper", r"optical", r"fiber", r"fibre", r"transceiver", r"laser",
     r"data movement", r"interconnect", r"fabric", r"retimer", r"PCIe", r"CXL",
+    r"PhotonLink", r"integrated optics?", r"complete optical solutions?", r"end[- ]to[- ]end",
+    r"vertical integration", r"one[- ]stop", r"\bNPO\b", r"chip[- ]to[- ]chip",
+    r"customer engagements?", r"long[- ]term agreements?", r"anchor customers?",
+    r"content opportunity", r"content per", r"100\s*Tbps", r"specialty fibers?",
+    r"polarization[- ]maintaining", r"mode[- ]matching", r"multicore fibers?",
+    r"\bInP\b", r"\bSiPh\b", r"photonics foundry", r"design win",
 ]
 
 ACTION_PATTERNS = [
@@ -97,6 +108,9 @@ ACTION_PATTERNS = [
     r"certified", r"adopt", r"deploy", r"ramp", r"backlog", r"booking", r"order",
     r"guidance", r"revenue", r"capacity", r"factory", r"plant", r"shortage",
     r"constraint", r"bottleneck", r"price", r"pricing", r"launch", r"introduc",
+    r"engagement", r"agreement", r"anchor customer", r"content opportunity",
+    r"integrated optics", r"vertical integration", r"one[- ]stop", r"chip[- ]to[- ]chip",
+    r"specialty fiber", r"silicon photonics", r"photonics foundry", r"design win",
 ]
 
 NOISE_PATTERNS = [
@@ -183,6 +197,18 @@ def signal_score(title: str, source: str) -> int:
         score += 5
     if re.search(r"co[- ]?packaged optics?|\bCPO\b|silicon photonics?", text, re.I):
         score += 5
+    if re.search(r"PhotonLink|integrated optics?|complete optical solutions?|end[- ]to[- ]end|vertical integration|one[- ]stop", text, re.I):
+        score += 7
+    if re.search(r"\bNPO\b|chip[- ]to[- ]chip", text, re.I):
+        score += 5
+    if re.search(r"customer engagements?|long[- ]term agreements?|anchor customers?", text, re.I):
+        score += 5
+    if re.search(r"content opportunity|content per|100\s*Tbps", text, re.I):
+        score += 5
+    if re.search(r"specialty fibers?|polarization[- ]maintaining|mode[- ]matching|multicore fibers?", text, re.I):
+        score += 4
+    if re.search(r"\bInP\b|\bSiPh\b|photonics foundry|design win", text, re.I):
+        score += 4
     if re.search(r"mass production|volume production|customer qualification|customer certification|qualified|certified", text, re.I):
         score += 5
     if re.search(r"adopt|deploy|ramp|shipment", text, re.I):
@@ -203,6 +229,10 @@ def signal_score(title: str, source: str) -> int:
 
 
 def stage_for(title: str) -> str:
+    if re.search(r"long[- ]term agreement|anchor customer", title, re.I):
+        return "장기계약·고객 확정"
+    if re.search(r"customer engagements?|design win|qualified|certified|adopt|deploy", title, re.I):
+        return "고객 검증·채택"
     if re.search(r"revenue|guidance|backlog|bookings?|orders?", title, re.I):
         return "실적·수주 확인"
     if re.search(r"mass production|volume production|shipment|ramp", title, re.I):
@@ -217,6 +247,18 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == "Coherent" and re.search(r"PhotonLink|integrated optics?|complete optical solutions?|end[- ]to[- ]end|vertical integration|one[- ]stop", title, re.I):
+        return "광 링크 통합·수직계열화"
+    if re.search(r"customer engagements?|long[- ]term agreements?|anchor customers?", title, re.I):
+        return "고객·장기계약"
+    if re.search(r"content opportunity|content per|100\s*Tbps", title, re.I):
+        return "광학 콘텐츠 가치"
+    if re.search(r"chip[- ]to[- ]chip", title, re.I):
+        return "칩 간 광연결"
+    if re.search(r"specialty fibers?|polarization[- ]maintaining|mode[- ]matching|multicore fibers?", title, re.I):
+        return "특수광섬유"
+    if company == "Samsung Electronics" and re.search(r"silicon photonics|\bSiPh\b|PIC|photonics foundry|optical module|optical engine|design win", title, re.I):
+        return "SiPh 파운드리"
     if re.search(r"\b3\.2\s*[Tt]\b", title, re.I):
         return "3.2T 전환"
     if re.search(r"co[- ]?packaged optics?|\bCPO\b|silicon photonics?", title, re.I):
@@ -247,6 +289,12 @@ def meaning_for(category: str) -> str:
         "광통신": "GPU 수 증가로 랙·데이터센터 사이 데이터 이동량이 커지면서 구리 대신 광 연결 비중이 상승하는 구조적 수혜 신호입니다.",
         "랙 내부 인터커넥트": "GPU·CPU·메모리 사이 데이터 이동 지연을 줄여 비싼 가속기의 실제 이용률을 높이는 부품 수요와 연결됩니다.",
         "AI 네트워킹": "AI 성능 병목이 단일 GPU 연산력에서 데이터 이동·네트워크 전체로 넓어지는 흐름을 확인하는 신호입니다.",
+        "광 링크 통합·수직계열화": "레이저·정밀광학·실리콘포토닉스·특수광섬유·수신부를 한 회사가 통합 공급하면 AI 광학의 가치가 개별 부품에서 전체 링크 설계·조립·테스트로 이동하는 신호입니다.",
+        "고객·장기계약": "고객 협업이 장기계약과 앵커 고객으로 전환되면 기술 기대가 반복 가능한 양산 매출로 넘어가는 강한 검증 신호입니다.",
+        "광학 콘텐츠 가치": "스위치·xPU당 광학 콘텐츠 금액이 높아지면 같은 AI 설비투자 안에서도 광학 부품·어셈블리의 매출 몫이 커지는 신호입니다.",
+        "칩 간 광연결": "광 연결이 랙·패키지 경계를 넘어 칩 간 연결로 들어가면 2029~2030년 이후 메모리·가속기 패키징 구조까지 바꿀 수 있는 장기 재평가 신호입니다.",
+        "특수광섬유": "범용 광섬유가 아니라 편광유지·모드매칭·멀티코어 같은 고부가 특수광섬유의 증설·양산이 확인되면 CPO·NPO 내부 콘텐츠 확대와 직접 연결됩니다.",
+        "SiPh 파운드리": "대형 광모듈사의 실리콘포토닉스 설계가 외부 파운드리 양산으로 연결되면 삼성전자 등 파운드리의 신규 AI 매출 경로가 열리는 신호입니다.",
     }
     return mapping[category]
 
@@ -262,6 +310,12 @@ def risk_for(category: str) -> str:
         "광통신": "전력·열·레이저 공급 및 고객 설계 전환 일정이 광부품 출하 시점을 늦출 수 있습니다.",
         "랙 내부 인터커넥트": "PCIe/CXL 세대 전환 지연이나 고객 자체 설계가 범용 부품 시장을 축소할 수 있습니다.",
         "AI 네트워킹": "GPU 설비투자가 둔화하거나 하이퍼스케일러가 네트워크 투자를 뒤로 미루면 수혜 시점이 지연될 수 있습니다.",
+        "광 링크 통합·수직계열화": "통합 공급사가 부품을 내재화할수록 독립 레이저·렌즈·아이솔레이터·특수광섬유 업체의 외부 공급 기회가 줄어들 수 있습니다.",
+        "고객·장기계약": "협업 고객 수가 늘어도 실제 양산 발주와 반복매출로 전환되지 않으면 매출 가시성이 과대평가될 수 있습니다.",
+        "광학 콘텐츠 가치": "최대 콘텐츠 기회와 실제 평균판매단가는 다르므로 고객 믹스·수율·가격 인하로 실현 금액이 낮아질 수 있습니다.",
+        "칩 간 광연결": "패키지 내 광연결은 수율·열·정렬 정밀도·신뢰성 검증이 어려워 2029~2030년 일정이 지연될 수 있습니다.",
+        "특수광섬유": "특수광섬유 증설이 실제 CPO·NPO 채택보다 빠르면 가동률과 가격이 먼저 압박받을 수 있습니다.",
+        "SiPh 파운드리": "고객 실명이 공개되지 않거나 시험생산 물량에 그치면 대형 양산 수주로 보기 어렵고 기존 선발 파운드리와의 경쟁도 남습니다.",
     }
     return mapping[category]
 
@@ -377,7 +431,7 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / NVIDIA CPO 실제 배치 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·백로그 / Corning 광통신·유리기판 신규 AI 매출 경로",
+            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / NVIDIA CPO 실제 배치 / Coherent PhotonLink 고객·장기계약·양산·콘텐츠 가치 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·백로그 / Corning 광통신·유리기판 신규 AI 매출 경로",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
