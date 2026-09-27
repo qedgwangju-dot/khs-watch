@@ -197,11 +197,35 @@ def parse_official_update(text: str, url: str) -> dict:
     out: dict[str, object] = {"kind": "official_update"}
 
     if "ibiden.com" in host_of(url):
-        capex = number_near(text, ("capital investment", "investment plan"), "jpy_bn")
+        capex = None
+        capex_patterns = [
+            r"(?:FY|fiscal year)\s*2026[^.]{0,180}?(?:FY|fiscal year)\s*2028[^.]{0,180}?(?:JPY|¥)?\s*(\d+(?:\.\d+)?)\s*(?:billion|bn)",
+            r"(?:invest|investment)[^.]{0,120}?(?:JPY|¥)?\s*(\d+(?:\.\d+)?)\s*(?:billion|bn)[^.]{0,120}?(?:FY|fiscal year)\s*2026[^.]{0,120}?(?:FY|fiscal year)\s*2028",
+        ]
+        for pat in capex_patterns:
+            m = re.search(pat, text, re.I)
+            if m:
+                capex = float(m.group(1))
+                break
         if capex is not None and 100 <= capex <= 1000:
             out["ibiden_capex_fy2026_2028_jpy_bn"] = capex
 
-        gama = number_near(text, ("gama plant", "gama"), "jpy_bn")
+        gama = None
+        for label in ("gama plant", "gama"):
+            pos = low.find(label)
+            if pos < 0:
+                continue
+            after = text[pos: min(len(text), pos + 260)]
+            vals = []
+            for pat in (
+                r"(?:JPY|¥)\s*(\d+(?:\.\d+)?)\s*(?:billion|bn)",
+                r"(\d+(?:\.\d+)?)\s*(?:billion|bn)\s*(?:yen|JPY)",
+            ):
+                vals.extend(re.finditer(pat, after, re.I))
+            if vals:
+                nearest = min(vals, key=lambda x: x.start())
+                gama = float(nearest.group(1))
+                break
         if gama is not None and 100 <= gama <= 500:
             out["ibiden_gama_capex_jpy_bn"] = gama
 
