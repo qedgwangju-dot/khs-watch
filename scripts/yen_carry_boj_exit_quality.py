@@ -306,6 +306,8 @@ def choose_md09_purchase_series(rows: list[dict]) -> dict:
         freq = str(row.get("FREQUENCY") or "").lower()
         if "japanese government bonds" not in name or "outright purchases" not in name:
             continue
+        if "discontinued" in name or "discontinued" in category:
+            continue
         if freq and "month" not in freq:
             continue
         score = 0
@@ -477,7 +479,18 @@ def fetch_private_absorption(now: dt.datetime) -> dict:
         if row:
             chosen[key] = row
     if len(chosen) < 2:
-        raise RuntimeError(f"FOF private JGB series insufficient: found={list(chosen)}")
+        diagnostic = []
+        for row in rows:
+            name = str(row.get("NAME_OF_TIME_SERIES") or "")
+            low = name.lower()
+            if ("government" in low or "public" in low) and ("stock" in low or "assets" in low):
+                diagnostic.append(name)
+            if len(diagnostic) >= 20:
+                break
+        raise RuntimeError(
+            f"FOF private JGB series insufficient: found={list(chosen)}; "
+            f"diagnostic={diagnostic}"
+        )
 
     series_data: dict[str, list[tuple[str, float]]] = {}
     for key, row in chosen.items():
