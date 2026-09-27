@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/khs-policy-watch.yml"
       - "scripts/khs_policy_watch.py"
+      - "scripts/khs_policy_alert_explainer.py"
       - "scripts/khs_policy_alert_guardrails.py"
       - "scripts/khs_policy_alert_router.py"
       - "scripts/khs_telegram_delivery_guard.py"
@@ -60,6 +61,7 @@ jobs:
       - name: Validate policy regression tests
         run: |
           python -m py_compile scripts/khs_policy_watch.py
+          python -m py_compile scripts/khs_policy_alert_explainer.py
           python -m py_compile scripts/khs_policy_alert_guardrails.py
           python -m py_compile scripts/khs_trusted_policy_news_watch.py
           python -m py_compile scripts/gamejoa_preopen_news_radar_full_compact_runner.py
