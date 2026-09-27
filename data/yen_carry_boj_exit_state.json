@@ -104,13 +104,13 @@
     "recent_30d": []
   },
   "errors": [
-    "월간 JGB 매입: RuntimeError: MD09 JGB purchase series ambiguous: ['Flow Table/Japanese Government Bonds (JGBs)/Outright Purchases(b)', '(Discontinued) Flow Table/Japanese Government Bonds (JGBs)/Outright Purchases (excluding the Asset Purchase Program)(Nov. 2010-Mar. 2013)(P)', 'Stock Table/Japanese Government Bonds (JGBs)/Outright Purchases(b)', '(Discontinued) Stock Table/Japanese Government Bonds (JGBs)/Outright Purchases (excluding the Asset Purchase Program)(Nov. 2010-Mar. 2013)(P)']",
-    "민간 JGB 흡수: RuntimeError: FOF private JGB series insufficient: found=[]"
+    "월간 JGB 매입: RuntimeError: BOJ API data shape unexpected: MD09 MA030210341F",
+    "민간 JGB 흡수: RuntimeError: FOF private JGB series insufficient: found=[]; diagnostic=['Assets/--Loans to companies and governments/Financial institutions/Stock', 'Assets/-Loans by public financial institutions/Financial institutions/Stock', 'Assets/-Central government securities and FILP bonds/Financial institutions/Stock', 'Assets/-Local government securities/Financial institutions/Stock', 'Assets/-Public corporation securities/Financial institutions/Stock', 'Liabilities/-Government deposits/Financial institutions/Stock', 'Liabilities/--Loans to companies and governments/Financial institutions/Stock', 'Liabilities/-Loans by public financial institutions/Financial institutions/Stock', 'Liabilities/-Central government securities and FILP bonds/Financial institutions/Stock', 'Liabilities/-Public corporation securities/Financial institutions/Stock', 'Assets/-Central government securities and FILP bonds/Central bank/Stock', 'Liabilities/-Government deposits/Central bank/Stock', 'Assets/--Loans to companies and governments/Depository corporations/Stock', 'Assets/-Loans by public financial institutions/Depository corporations/Stock', 'Assets/-Central government securities and FILP bonds/Depository corporations/Stock', 'Assets/-Local government securities/Depository corporations/Stock', 'Assets/-Public corporation securities/Depository corporations/Stock', 'Liabilities/--Loans to companies and governments/Depository corporations/Stock', 'Liabilities/-Loans by public financial institutions/Depository corporations/Stock', 'Assets/--Loans to companies and governments/Banks/Stock']"
   ],
   "initialized": true,
   "market_stress": {
-    "jgb10": 3.073,
-    "jgb10_days_ge_3": 1,
+    "jgb10": null,
+    "jgb10_days_ge_3": 0,
     "joint_market_stress": false,
     "weak_auction_10y": false,
     "weak_auction_30y": false
@@ -139,5 +139,5 @@
     "plan_revision": false,
     "weak_private_absorption": false
   },
-  "updated_at_kst": "2026-09-28T07:58:38+09:00"
+  "updated_at_kst": "2026-09-28T08:35:39+09:00"
 }
