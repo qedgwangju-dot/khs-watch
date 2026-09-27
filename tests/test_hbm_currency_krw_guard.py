@@ -14,6 +14,14 @@ class CurrencyKRWGuardTests(unittest.TestCase):
             "EUR": (1600.0, "test"),
             "JPY": (9.0, "test"),
             "MYR": (330.0, "test"),
+            "CNY": (190.0, "test"),
+            "HKD": (173.0, "test"),
+            "GBP": (1810.0, "test"),
+            "SGD": (1050.0, "test"),
+            "TWD": (44.0, "test"),
+            "AUD": (900.0, "test"),
+            "CAD": (990.0, "test"),
+            "CHF": (1700.0, "test"),
         }[currency]
 
     def test_korean_usd_amount_gets_immediate_krw_parentheses(self):
@@ -51,6 +59,23 @@ class CurrencyKRWGuardTests(unittest.TestCase):
         self.assertIn("100억엔(", out)
         self.assertIn("50억링깃(", out)
 
+
+    def test_fx_failure_blocks_alert_instead_of_sending_unconverted_amount(self):
+        with patch.object(g, "_rate", return_value=(None, "failed")):
+            with self.assertRaises(RuntimeError):
+                g.enforce_text("기업가치 1,500억달러")
+
+    def test_validator_rejects_unpaired_foreign_amount(self):
+        with self.assertRaises(RuntimeError):
+            g.validate_text("조달액 150억달러")
+        g.validate_text("조달액 150억달러(약 20조원)")
+
+    def test_extended_currency_symbols_are_supported(self):
+        with patch.object(g, "_rate", side_effect=self.fake_rate):
+            out = g.enforce_text("HK$500 million / €2 billion / £1 billion")
+        self.assertIn("HK$500 million(", out)
+        self.assertIn("€2 billion(", out)
+        self.assertIn("£1 billion(", out)
 
 if __name__ == "__main__":
     unittest.main()
