@@ -1,0 +1,173 @@
+name: US AI Grid Bottleneck Telegram Watch
+
+on:
+  schedule:
+    - cron: "37 */2 * * *"
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "현재 기준선으로 Telegram 연결 시험"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+  push:
+    paths:
+      - ".github/workflows/us-ai-grid-bottleneck-telegram-watch.yml"
+      - "scripts/us_ai_grid_bottleneck_watch.py"
+      - "tests/test_us_ai_grid_bottleneck_watch.py"
+      - "data/us_ai_grid_bottleneck_state.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: us-ai-grid-bottleneck-telegram-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88790088790000887900_bot"
+      DATA_CENTER_TELEGRAM_BOT_TOKEN: \${{ secrets.DATA_CENTER_TELEGRAM_BOT_TOKEN }}
+      DATA_CENTER_TELEGRAM_CHAT_ID: \${{ secrets.DATA_CENTER_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync main
+        run: |
+          git fetch origin main
+          git merge --ff-only origin/main
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests googlenewsdecoder
+
+      - name: Validate watcher
+        run: |
+          python -m py_compile scripts/us_ai_grid_bottleneck_watch.py
+          python -m unittest tests.test_us_ai_grid_bottleneck_watch -v
+
+      - name: Validate Telegram route
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token = os.environ["DATA_CENTER_TELEGRAM_BOT_TOKEN"].strip()
+          chat = os.environ["DATA_CENTER_TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          if not token or not chat:
+              raise SystemExit("DATA_CENTER_TELEGRAM_BOT_TOKEN or DATA_CENTER_TELEGRAM_CHAT_ID missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as r:
+              data = json.loads(r.read().decode("utf-8"))
+          actual = str((data.get("result") or {}).get("username") or "")
+          if not data.get("ok") or actual.lower() != expected.lower():
+              raise SystemExit(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{actual}")
+          PY
+
+      - name: Run grid bottleneck watch
+        run: |
+          rm -f out/us_ai_grid_bottleneck_alert.txt
+          python scripts/us_ai_grid_bottleneck_watch.py
+          cat out/us_ai_grid_bottleneck_status.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Build manual connection test
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        run: |
+          cat > out/us_ai_grid_bottleneck_alert.txt <<'EOF'
+          <b>⚡ 미국 AI 전력망 병목 감시 — 연결 시험</b>
+
+          별도 감시가 정상 연결됐습니다.
+          • 데이터센터 전력수요
+          • 대형변압기·GSU·부싱 납기
+          • 345kV+ 송전선 준공
+          • 계통연결 대기 프로젝트·GW
+          • 변전소·전원 인가
+          • 신공장 생산개시·고객 인증
+          EOF
+
+      - name: Send Telegram if material change
+        if: hashFiles('out/us_ai_grid_bottleneck_alert.txt') != ''
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.parse, urllib.request
+          token = os.environ["DATA_CENTER_TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["DATA_CENTER_TELEGRAM_CHAT_ID"].strip()
+          text = pathlib.Path("out/us_ai_grid_bottleneck_alert.txt").read_text(encoding="utf-8").strip()
+          if not text:
+              raise SystemExit(0)
+
+          chunks = []
+          current = []
+          size = 0
+          for line in text.splitlines():
+              n = len(line) + 1
+              if current and size + n > 3400:
+                  chunks.append("\n".join(current).strip())
+                  current, size = [line], n
+              else:
+                  current.append(line)
+                  size += n
+          if current:
+              chunks.append("\n".join(current).strip())
+
+          ids = []
+          for chunk in chunks:
+              data = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=data,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  result = json.loads(r.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(str(result))
+              ids.append(result["result"]["message_id"])
+
+          pathlib.Path("out/us_ai_grid_bottleneck_telegram_confirmed.json").write_text(
+              json.dumps({"status": "confirmed", "message_ids": ids}, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_delivery_confirmed=true messages={len(ids)}")
+          PY
+
+      - name: Promote state after successful send/check
+        if: success()
+        run: |
+          if [ -f out/us_ai_grid_bottleneck_pending_state.json ]; then
+            cp out/us_ai_grid_bottleneck_pending_state.json data/us_ai_grid_bottleneck_state.json
+          fi
+
+      - name: Commit state
+        if: success()
+        run: |
+          git config user.name "us-ai-grid-bottleneck-watch[bot]"
+          git config user.email "us-ai-grid-bottleneck-watch[bot]@users.noreply.github.com"
+          git add data/us_ai_grid_bottleneck_state.json out/us_ai_grid_bottleneck_status.md out/us_ai_grid_bottleneck_telegram_confirmed.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update US AI grid bottleneck state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
