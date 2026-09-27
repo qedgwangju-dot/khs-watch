@@ -71,6 +71,8 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic OR Google OR Meta) "Preparedness Framework" cybersecurity threshold',
     '("AI model" OR "frontier model") cybersecurity capability threshold zero-day sandbox exploit',
     '(OpenAI OR Anthropic OR Google OR Meta) system card cybersecurity "High" "Critical"',
+    '(OpenAI OR Anthropic) "tens of thousands" security incidents agent sandbox',
+    '(OpenAI OR Anthropic) model behavior guardrail sandbox monitoring unusual problematic',
 ]
 
 AI_TERMS = (
@@ -113,7 +115,8 @@ HARD_SECURITY_TERMS = (
 )
 
 TRUSTED_SOURCE_HINTS = (
-    "reuters", "the information", "associated press", "ap news",
+    "reuters", "the information", "axios", "associated press", "ap news",
+    "yonhap", "연합뉴스", "chosunbiz", "조선비즈",
     "the verge", "wired", "ars technica", "techcrunch", "fortune",
     "the guardian", "guardian", "cnbc", "bbc", "financial times",
     "bloomberg", "the hacker news", "bleepingcomputer", "securityweek",
@@ -131,6 +134,12 @@ OFFICIAL_SOURCE_HINTS = (
     "microsoft", "amazon web services", "aws", "apple", "github",
     "project zero", "google security", "microsoft security",
 )
+
+DIRECT_OFFICIAL_PAGES = [
+    ("OpenAI Alignment", "https://alignment.openai.com/", r'href=["\\\']([^"\\\']*/misalignment-reports/[^"\\\']+)["\\\']'),
+    ("Anthropic Research", "https://www.anthropic.com/research", r'href=["\\\']([^"\\\']*/research/[^"\\\']+)["\\\']'),
+    ("Anthropic Threat Intelligence", "https://www.anthropic.com/threat-intelligence", r'href=["\\\']([^"\\\']*/threat-intelligence[^"\\\']*)["\\\']'),
+]
 
 VENDOR_PATTERNS = [
     ("Meta", ("meta muse", "muse ai", " meta ")),
@@ -291,6 +300,28 @@ def parse_cisa_kev(now: dt.datetime) -> list[dict]:
     return out
 
 
+def parse_direct_official_pages() -> list[dict]:
+    out: list[dict] = []
+    for source, index_url, pattern in DIRECT_OFFICIAL_PAGES:
+        raw = fetch_bytes(index_url).decode("utf-8", "ignore")
+        for href in sorted(set(re.findall(pattern, raw, flags=re.I))):
+            url = urllib.parse.urljoin(index_url, html.unescape(href))
+            title = urllib.parse.unquote(url.rstrip("/").split("/")[-1]).replace("-", " ")
+            title = re.sub(r"\\s+", " ", title).strip()
+            if not title:
+                continue
+            out.append({
+                "kind": "official_direct",
+                "query": "direct official page",
+                "title": title,
+                "description": title,
+                "source": source,
+                "url": url,
+                "published_at": None,
+            })
+    return out
+
+
 def is_ai_related(text: str) -> bool:
     low = f" {text.lower()} "
     return any(term in low for term in AI_TERMS)
@@ -369,7 +400,7 @@ def material(item: dict) -> bool:
             return False
 
     sev, _ = severity(low)
-    if item.get("kind") == "official":
+    if item.get("kind") in ("official", "official_direct"):
         return True
     if not source_trusted(item.get("source", "")):
         return False
@@ -438,7 +469,7 @@ def normalize_item(item: dict) -> dict:
     out["category"] = detect_category(combined)
     out["severity"] = sev_num
     out["severity_label"] = sev_label
-    out["official"] = source_official(item.get("source", "")) or item.get("kind") == "official"
+    out["official"] = source_official(item.get("source", "")) or item.get("kind") in ("official", "official_direct")
     return out
 
 
@@ -688,6 +719,13 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"CISA KEV 실패: {type(exc).__name__}: {exc}")
 
+    direct_items: list[dict] = []
+    try:
+        direct_items = parse_direct_official_pages()
+        raw_items.extend(direct_items)
+    except Exception as exc:
+        errors.append(f"공식 연구페이지 직접 감시 실패: {type(exc).__name__}: {exc}")
+
     dedup: dict[str, dict] = {}
     for raw in raw_items:
         item = normalize_item(raw)
@@ -712,8 +750,11 @@ def main() -> int:
 
     # Silent baseline on the first successful collection to prevent retroactive spam.
     baseline = not bool(state.get("initialized"))
+    direct_baseline = not bool(state.get("direct_official_initialized"))
     if baseline:
         new_items = []
+    elif direct_baseline:
+        new_items = [i for i in new_items if i.get("kind") != "official_direct"]
 
     # Add all material current items to the pending seen set. This state is only
     # committed by the workflow after a successful/no-alert outcome.
@@ -733,10 +774,12 @@ def main() -> int:
 
     pending = {
         "initialized": True,
+        "direct_official_initialized": True,
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen": seen,
         "last_collection": {
             "raw_items": len(raw_items),
+            "direct_official_items": len(direct_items),
             "material_items": len(current),
             "new_material_items": len(new_items),
             "errors": errors,
@@ -757,6 +800,7 @@ def main() -> int:
         f"- 조회시각: {now.astimezone(KST).strftime('%Y-%m-%d %H:%M:%S KST')}",
         f"- 최초 기준선 생성: {'예' if baseline else '아니오'}",
         f"- 웹 수집 원문: {len(raw_items)}건",
+        f"- 공식 연구페이지 직접 항목: {len(direct_items)}건",
         f"- 중요 필터 통과: {len(current)}건",
         f"- 신규 중요 기사: {len(new_items)}건",
         f"- 신규 중요 사건: {len(alert_events)}건",
