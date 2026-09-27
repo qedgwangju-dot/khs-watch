@@ -19,7 +19,12 @@
     "aidc|fact|9348308bdee3f1d1": 40,
     "aidc|fact|3322b04740aa93bd": 20
   },
-  "updated_at": "2026-09-27T09:50:57.925741+00:00",
-  "source_errors": [],
+  "updated_at": "2026-09-27T09:53:10.148051+00:00",
+  "source_errors": [
+    "과학기술정보통신부: HTTPError",
+    "대한민국 정책브리핑: HTTPError",
+    "국가법령정보센터: HTTPError",
+    "국내 주요 언론: HTTPError"
+  ],
   "dedupe_version": 2
 }
