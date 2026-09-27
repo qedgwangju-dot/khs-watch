@@ -156,7 +156,6 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
                 break
         return "\n".join(lines)
 
-    import html
     title = f"PTAB 최종서면결정 공개 — {case}, Halozyme 특허 {patent or '관련 특허'}"
     src = "USPTO/PTAB·법원 공식자료" if base.official(item["url"]) else "2차 자료 — 공식 결정문 결과 교차확인 대상"
     url = html.escape(item["url"], quote=True)
@@ -239,10 +238,18 @@ def main() -> int:
         json.dumps(state, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
+
+    errors = list(state.get("errors_last_run") or [])
+    critical_names = ("RecursionError", "NameError", "UnboundLocalError", "TypeError", "SyntaxError", "AttributeError")
+    critical = [err for err in errors if any(name in err for name in critical_names)]
     print(json.dumps({
-        "halozyme_legal_v4": "ok",
+        "halozyme_legal_v4": "ok" if not critical else "failed",
         "sent_message_ids": _sent_ids,
+        "errors": errors[-10:],
+        "critical_errors": critical,
     }, ensure_ascii=False))
+    if critical:
+        return 2
     return rc
 
 
