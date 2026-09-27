@@ -55,13 +55,14 @@
     "75de2f2befaf2f90a09c"
   ],
   "active_market_signals": [
+    "brent_above_100",
     "brent_above_90",
-    "brent_down_5",
     "jkm_above_20",
     "jkm_above_25",
     "ttf_above_50",
     "ttf_above_60",
-    "ttf_above_70",
-    "ttf_down_5"
-  ]
+    "ttf_above_70"
+  ],
+  "price_integrity_rebased_on": "2026-09-27",
+  "price_integrity_rebase_reason": "Removed Sep-26 false -5% states and restored Brent>100 using Sep-25 dated closes after source-integrity correction"
 }
