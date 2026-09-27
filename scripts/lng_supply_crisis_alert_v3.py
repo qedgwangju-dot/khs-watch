@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import datetime as dt
+import json
+import urllib.parse
 
 import lng_supply_crisis_alert_v2 as core
 
@@ -13,9 +15,65 @@ MAX_ENDPOINT_TIME_GAP_SECONDS = 60
 MAX_ENDPOINT_VALUE_GAP = 0.0005  # 0.05%
 
 
+def _parse_yahoo_quote_strict(key: str, base: str) -> core.Quote:
+    spec = core.PRICE_SPECS[key]
+    symbol = str(spec["symbol"])
+    encoded = urllib.parse.quote(symbol, safe="")
+    params = urllib.parse.urlencode({"interval": "1d", "range": "10d", "includePrePost": "false"})
+    payload = json.loads(core.fetch_bytes(f"{base}/{encoded}?{params}").decode("utf-8"))
+    result = payload.get("chart", {}).get("result")
+    if not result:
+        raise RuntimeError(f"{symbol}: no chart result")
+    node = result[0]
+    meta = node.get("meta", {})
+    price = core.finite_number(meta.get("regularMarketPrice"))
+    previous_close = core.finite_number(meta.get("regularMarketPreviousClose"))
+    timestamp = core.finite_number(meta.get("regularMarketTime"))
+    if price is None or previous_close is None or previous_close <= 0 or timestamp is None:
+        raise RuntimeError(f"{symbol}: regularMarketPrice/regularMarketPreviousClose/time missing")
+
+    timestamps = list(node.get("timestamp") or [])
+    closes = list(((node.get("indicators") or {}).get("quote") or [{}])[0].get("close") or [])
+    candidates: list[tuple[float, float]] = []
+    for ts, close in zip(timestamps, closes):
+        val = core.finite_number(close)
+        tsv = core.finite_number(ts)
+        if val is None or tsv is None:
+            continue
+        if abs(val / previous_close - 1.0) <= 0.005:
+            candidates.append((tsv, val))
+    if not candidates:
+        raise RuntimeError(
+            f"{symbol}: regularMarketPreviousClose={previous_close} not found in recent daily closes"
+        )
+    previous_ts, previous_series_close = max(candidates, key=lambda pair: pair[0])
+    if abs(previous_series_close / previous_close - 1.0) > 0.005:
+        raise RuntimeError(f"{symbol}: previous close series mismatch")
+
+    observed = dt.datetime.fromtimestamp(timestamp, core.UTC)
+    previous_kst = dt.datetime.fromtimestamp(previous_ts, core.UTC).astimezone(core.KST)
+    age_minutes = max(0, int((core.now_utc() - observed).total_seconds() // 60))
+    return core.Quote(
+        key=key,
+        symbol=symbol,
+        label=str(spec["label"]),
+        unit=str(spec["unit"]),
+        price=price,
+        previous_close=previous_close,
+        change_pct=(price / previous_close - 1.0) * 100.0,
+        timestamp_epoch=timestamp,
+        timestamp_utc=observed.isoformat(timespec="seconds"),
+        age_minutes=age_minutes,
+        source_note=(
+            "Yahoo regularMarketPreviousClose + recent 1d series verified; "
+            f"previous_session_date={previous_kst:%Y-%m-%d}"
+        ),
+    )
+
+
 def fetch_verified_quote_strict(key: str) -> core.Quote:
-    """같은 제공사의 두 엔드포인트가 가격·이전 종가·시각 모두 일치할 때만 채택한다."""
-    first, second = [core.parse_yahoo_quote(key, base) for base in core.YAHOO_BASES]
+    """현재가와 실제 직전 거래일 종가를 두 Yahoo 엔드포인트+1일 시계열로 검증한다."""
+    first, second = [_parse_yahoo_quote_strict(key, base) for base in core.YAHOO_BASES]
 
     price_gap = abs(first.price - second.price) / max(
         abs(first.price), abs(second.price), 1e-9
@@ -62,7 +120,7 @@ def build_setup_test_v3(
         "Yahoo query1/query2의 가격·이전 종가·시각이 모두 일치할 때만 사용",
     )
     body += (
-        "\n• 가격에는 반드시 상품명·값·이전 종가·등락률·KST 기준시각·경과시간을 표시"
+        "\n• 가격에는 반드시 상품명·값·실제 직전 거래일 종가·등락률·KST 기준시각·경과시간을 표시"
         "\n• JKM은 무료 실시간 직접값이 검증되지 않으므로 숫자를 추정하지 않고 확정 보도만 표시"
     )
     metadata["version"] = 3
