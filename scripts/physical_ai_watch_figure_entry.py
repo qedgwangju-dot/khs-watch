@@ -289,9 +289,15 @@ def query_news(q: str) -> list[dict]:
 
 
 def topic_group(text: str) -> str | None:
+    # A named Figure AI customer in a Samsung SDI SolidStack supply/validation
+    # story is still a battery-commercialization event. Do not let the customer
+    # token steal the event into the generic Figure AI lane.
+    upstream = _orig_topic_group(text)
+    if upstream == 'battery' and re.search(r'삼성SDI|Samsung\s*SDI', text, re.I) and re.search(r'SolidStack|전고체|all[-\s]*solid[-\s]*state|ASB', text, re.I):
+        return upstream
     if _is_figure_text(text):
         return 'figure_ai'
-    return _orig_topic_group(text)
+    return upstream
 
 
 def _is_figure_direct(item: dict) -> bool:
