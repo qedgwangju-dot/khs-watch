@@ -51,6 +51,8 @@ QUERIES = [
     # Korean battery -> humanoid / physical AI supply chain
     '(휴머노이드 OR humanoid OR 피지컬AI OR "physical AI") (배터리 OR battery OR 하이니켈 OR "high nickel" OR 전고체 OR "solid-state") (에코프로 OR EcoPro OR LG에너지솔루션 OR "LG Energy Solution" OR 삼성SDI OR "Samsung SDI" OR SK온 OR "SK On" OR 포스코퓨처엠 OR "POSCO Future M" OR 엘앤에프 OR L&F)',
     '(EcoPro OR 에코프로) (humanoid OR 휴머노이드 OR robot OR 로봇) (battery OR 배터리 OR high-nickel OR 하이니켈 OR sulfide OR 황화물 OR solid-state OR 전고체)',
+    '(삼성SDI OR "Samsung SDI") (SolidStack OR 전고체 OR "all-solid-state") (휴머노이드 OR humanoid OR "physical AI" OR 피지컬AI OR 로봇) (샘플 OR sample OR 검증 OR qualification OR 승인 OR "design win" OR 수주 OR 공급계약 OR 양산 OR "mass production" OR SOP OR 수율 OR yield OR 지연 OR delay)',
+    '(삼성SDI OR "Samsung SDI") (SolidStack OR 전고체 OR "all-solid-state") (울산 OR Ulsan OR "S-line" OR S라인) (신규시설투자 OR 설비투자 OR 장비 OR equipment OR 반입 OR 설치 OR 시운전 OR commissioning OR 생산능력 OR capacity OR GWh)',
     '"Korean Battery Sector" humanoid robots EcoPro',
 
     # Tesla Optimus production / supplier orders / yield
@@ -65,7 +67,7 @@ QUERIES = [
 
 OFFICIAL_OR_PRIMARY = {
     "ROBOTIS", "CJ대한통운", "Pollen Robotics", "Hugging Face", "EcoPro",
-    "에코프로", "BYD", "比亚迪", "Tesla",
+    "에코프로", "삼성SDI", "Samsung SDI", "BYD", "比亚迪", "Tesla",
 }
 
 TRUSTED = {
@@ -112,6 +114,62 @@ DIRECT_EVENT = re.compile(
     r"수율|yield|생산능력|capacity|공장|factory|지분|stake|블록딜|block deal|"
     r"완판|sold out|예약|preorder|订单|量产|良率|合作", re.I
 )
+
+SAMSUNG_SDI_RE = re.compile(r"삼성SDI|Samsung\s*SDI", re.I)
+SOLIDSTACK_RE = re.compile(r"SolidStack|전고체|all[-\s]*solid[-\s]*state|ASB", re.I)
+ROBOT_BATTERY_RE = re.compile(r"휴머노이드|humanoid|physical\s*AI|피지컬\s*AI|robotics?|로봇", re.I)
+SDI_ASB_SAMPLE = re.compile(
+    r"(?:SolidStack|전고체|all[-\s]*solid[-\s]*state).{0,100}(?:샘플|sample).{0,60}(?:공급\s*(?:개시|시작|완료)|출하|전달|ship|deliver)|"
+    r"(?:샘플|sample).{0,60}(?:공급\s*(?:개시|시작|완료)|출하|전달|ship|deliver).{0,100}(?:SolidStack|전고체|all[-\s]*solid[-\s]*state)",
+    re.I,
+)
+SDI_ASB_QUAL = re.compile(
+    r"(?:SolidStack|전고체|all[-\s]*solid[-\s]*state).{0,120}(?:고객\s*(?:검증|승인)|qualification|validation|인증).{0,40}(?:통과|완료|승인|pass|complete|approved)|"
+    r"(?:고객\s*(?:검증|승인)|qualification|validation).{0,40}(?:통과|완료|승인|pass|complete|approved).{0,120}(?:SolidStack|전고체|all[-\s]*solid[-\s]*state)",
+    re.I,
+)
+SDI_ASB_ORDER = re.compile(
+    r"(?:SolidStack|전고체|all[-\s]*solid[-\s]*state).{0,140}(?:공급\s*계약|본계약|수주|발주|design\s*win|supplier\s*(?:selected|nominated)|고객\s*선정)|"
+    r"(?:공급\s*계약|본계약|수주|발주|design\s*win|supplier\s*(?:selected|nominated)|고객\s*선정).{0,140}(?:SolidStack|전고체|all[-\s]*solid[-\s]*state)",
+    re.I,
+)
+SDI_ASB_SOP = re.compile(
+    r"(?:SolidStack|전고체|all[-\s]*solid[-\s]*state).{0,120}(?:양산\s*(?:개시|시작|돌입)|SOP\s*(?:개시|시작)|mass\s*production\s*(?:started|began|commenced))|"
+    r"(?:양산\s*(?:개시|시작|돌입)|SOP\s*(?:개시|시작)|mass\s*production\s*(?:started|began|commenced)).{0,120}(?:SolidStack|전고체|all[-\s]*solid[-\s]*state)",
+    re.I,
+)
+SDI_ASB_EQUIPMENT = re.compile(
+    r"(?:울산|Ulsan|S[-\s]*라인|S[-\s]*line).{0,140}(?:전고체|SolidStack|all[-\s]*solid[-\s]*state).{0,120}(?:장비\s*(?:발주|반입|설치)|equipment\s*(?:order|move[-\s]*in|install)|시운전|commissioning|신규시설투자\s*(?:결정|공시))|"
+    r"(?:전고체|SolidStack|all[-\s]*solid[-\s]*state).{0,120}(?:울산|Ulsan|S[-\s]*라인|S[-\s]*line).{0,120}(?:장비\s*(?:발주|반입|설치)|equipment\s*(?:order|move[-\s]*in|install)|시운전|commissioning|신규시설투자\s*(?:결정|공시))",
+    re.I,
+)
+SDI_ASB_CAPACITY = re.compile(
+    r"(?:SolidStack|전고체|all[-\s]*solid[-\s]*state).{0,120}(?:생산\s*능력|capacity).{0,60}\d[\d,.]*\s*(?:GWh|MWh)|"
+    r"\d[\d,.]*\s*(?:GWh|MWh).{0,80}(?:SolidStack|전고체|all[-\s]*solid[-\s]*state)",
+    re.I,
+)
+SDI_ASB_DELAY = re.compile(
+    r"(?:SolidStack|전고체|all[-\s]*solid[-\s]*state).{0,120}(?:양산|샘플|검증|공급).{0,80}(?:지연|연기|미뤄|delay|postpon|push[-\s]*out)|"
+    r"(?:지연|연기|미뤄|delay|postpon|push[-\s]*out).{0,100}(?:SolidStack|전고체|all[-\s]*solid[-\s]*state)",
+    re.I,
+)
+SDI_ASB_BASELINE = re.compile(
+    r"2027.{0,40}(?:하반기|second\s*half).{0,60}(?:양산|mass\s*production)|"
+    r"(?:양산|mass\s*production).{0,60}2027.{0,40}(?:하반기|second\s*half)|"
+    r"(?:첫\s*상용화|first\s*commercial).{0,80}(?:휴머노이드|humanoid).{0,80}(?:가능성|candidate|협의|discussion)|"
+    r"(?:고객|customers?).{0,80}(?:협의|논의|discussion).{0,80}(?:SolidStack|전고체|humanoid|휴머노이드)",
+    re.I,
+)
+SDI_ROBOT_CUSTOMERS = [
+    ("tesla", re.compile(r"Tesla|테슬라", re.I)),
+    ("figure", re.compile(r"Figure\s*AI|Figure\s*0?\d|피겨\s*AI", re.I)),
+    ("apptronik", re.compile(r"Apptronik|Apollo", re.I)),
+    ("boston-dynamics", re.compile(r"Boston\s*Dynamics|보스턴\s*다이내믹스", re.I)),
+    ("agility", re.compile(r"Agility\s*Robotics|Digit", re.I)),
+    ("hyundai", re.compile(r"Hyundai|현대차|현대자동차|현대모비스", re.I)),
+    ("mercedes", re.compile(r"Mercedes|메르세데스|벤츠", re.I)),
+    ("bmw", re.compile(r"\bBMW\b", re.I)),
+]
 
 
 def fetch(url: str, timeout: int = 25) -> bytes:
@@ -164,9 +222,47 @@ def query_news(q: str) -> list[dict]:
 
 
 def key(item: dict) -> str:
+    text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if _is_sdi_solidstack_robot(text):
+        stage = _sdi_solidstack_stage(text)
+        context = _sdi_solidstack_context(text)
+        return hashlib.sha256(f"samsung-sdi|solidstack-humanoid|{stage}|{context}".encode()).hexdigest()
     title = re.sub(r"\s+-\s+[^-]+$", "", item["title"].lower()).strip()
     base = f"{title}|{item.get('source','').lower()}"
     return hashlib.sha256(base.encode()).hexdigest()
+
+
+def _is_sdi_solidstack_robot(text: str) -> bool:
+    return bool(SAMSUNG_SDI_RE.search(text) and SOLIDSTACK_RE.search(text) and ROBOT_BATTERY_RE.search(text))
+
+
+def _sdi_solidstack_stage(text: str) -> str:
+    if not _is_sdi_solidstack_robot(text):
+        return ""
+    if SDI_ASB_DELAY.search(text):
+        return "delay"
+    if SDI_ASB_SOP.search(text):
+        return "mass_production"
+    if SDI_ASB_ORDER.search(text):
+        return "customer_order"
+    if SDI_ASB_QUAL.search(text):
+        return "customer_qualification"
+    if SDI_ASB_SAMPLE.search(text):
+        return "sample_supply"
+    if SDI_ASB_EQUIPMENT.search(text):
+        return "equipment_movein"
+    if SDI_ASB_CAPACITY.search(text):
+        return "capacity"
+    if SDI_ASB_BASELINE.search(text):
+        return "baseline"
+    return "development"
+
+
+def _sdi_solidstack_context(text: str) -> str:
+    customers = [name for name, rx in SDI_ROBOT_CUSTOMERS if rx.search(text)]
+    specs = re.findall(r"\d[\d,.]*\s*(?:GWh|MWh|kWh|Wh|Ah)", text, re.I)
+    parts = customers + [re.sub(r"\s+", "", x.lower()) for x in specs[:2]]
+    return "-".join(parts) if parts else "unnamed"
 
 
 def topic_group(text: str) -> str | None:
@@ -228,7 +324,21 @@ def score(item: dict) -> int:
 
     if group == "tesla" and re.search(r"5000|5,000|수천|千台|订单|batch|발주|주문", text, re.I):
         s += 5
-    if group == "battery" and re.search(r"상업 생산|commercial production|40톤|하이니켈|high[- ]nickel|전고체|solid[- ]state", text, re.I):
+    if group == "battery" and _is_sdi_solidstack_robot(text):
+        stage = _sdi_solidstack_stage(text)
+        if stage in {"baseline", "development"}:
+            return 0
+        s = max(s, 18)
+        s += {
+            "sample_supply": 10,
+            "customer_qualification": 12,
+            "customer_order": 16,
+            "equipment_movein": 10,
+            "capacity": 10,
+            "mass_production": 18,
+            "delay": 14,
+        }.get(stage, 0)
+    elif group == "battery" and re.search(r"상업 생산|commercial production|40톤|하이니켈|high[- ]nickel|전고체|solid[- ]state", text, re.I):
         s += 4
     if group == "byd_paxini" and re.search(r"공장|factory|工厂|데이터|data|数据|촉각|tactile|触觉|지분|stake", text, re.I):
         s += 4
@@ -238,6 +348,17 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == "battery" and _is_sdi_solidstack_robot(text):
+        stage = _sdi_solidstack_stage(text)
+        return {
+            "sample_supply": "삼성SDI SolidStack · 휴머노이드 샘플 공급",
+            "customer_qualification": "삼성SDI SolidStack · 휴머노이드 고객 검증",
+            "customer_order": "삼성SDI SolidStack · 휴머노이드 고객 수주·선정",
+            "equipment_movein": "삼성SDI SolidStack · 울산 양산설비 반입·설치",
+            "capacity": "삼성SDI SolidStack · 양산 생산능력 확정",
+            "mass_production": "삼성SDI SolidStack · 휴머노이드 양산 개시",
+            "delay": "삼성SDI SolidStack · 양산·고객검증 일정 지연",
+        }.get(stage, "휴머노이드 배터리 공급망")
     if group == "battery":
         return "휴머노이드 배터리 공급망"
     if group == "tesla":
@@ -276,6 +397,13 @@ def tag_for(group: str) -> str:
 def meaning(cat: str) -> str:
     mapping = {
         "휴머노이드 배터리 공급망": "EV 외 수요처가 휴머노이드로 넓어지는 신호입니다. 고에너지 밀도·경량화 요구가 하이니켈·전고체 소재의 신규 매출 경로로 이어지는지 봅니다.",
+        "삼성SDI SolidStack · 휴머노이드 샘플 공급": "2027년 하반기 양산 목표라는 반복 가이던스에서 실제 고객용 샘플 출하로 한 단계 전진한 신호입니다. 고객 실명·셀 규격·샘플 수량·검증기간을 추적합니다.",
+        "삼성SDI SolidStack · 휴머노이드 고객 검증": "샘플 공급을 넘어 고객 성능·안전·수명 검증을 통과하는 단계입니다. 검증 완료가 디자인윈·공급계약·양산 물량으로 이어지는지 확인합니다.",
+        "삼성SDI SolidStack · 휴머노이드 고객 수주·선정": "휴머노이드가 첫 상용화 후보라는 기대가 실제 고객선정·공급계약으로 바뀌는 가장 강한 매출 전환 신호입니다. 로봇 대수×배터리 용량×평균판매단가로 잠재매출을 추적합니다.",
+        "삼성SDI SolidStack · 울산 양산설비 반입·설치": "울산 전고체 계획이 실제 장비 발주·반입·설치·시운전으로 넘어가는 자본집행 신호입니다. 투자액·감가상각·시험생산·수율 램프를 함께 봅니다.",
+        "삼성SDI SolidStack · 양산 생산능력 확정": "전고체 생산능력이 GWh 단위로 구체화되는 신호입니다. 고객 물량과 가동률이 뒤따르는지 확인해 과잉설비와 실제 매출 가능성을 구분합니다.",
+        "삼성SDI SolidStack · 휴머노이드 양산 개시": "개발·샘플·고객검증을 넘어 실제 SOP에 들어간 단계입니다. 초기 수율·출하량·고객 배치와 반복수주를 확인합니다.",
+        "삼성SDI SolidStack · 양산·고객검증 일정 지연": "2027년 하반기 목표나 고객 검증 일정이 뒤로 밀리는 역방향 시간표 신호입니다. 장비·수율·고객 승인 중 지연 원인을 분리해 봅니다.",
         "Optimus 양산·발주": "샘플·시험물량에서 배치 단위 발주로 넘어가는 신호입니다. 공급업체 생산능력 확대와 실제 부품 매출의 시간표를 앞당길 수 있습니다.",
         "Optimus 생산·공급망": "Fremont 생산라인 수율·주간 생산량·내부 출하가 공급망 주문으로 연결되는지 확인하는 신호입니다.",
         "촉각·로봇 데이터": "BYD 공장이 PaXini의 실제 산업 검증·데이터 수집장으로 바뀌는 구조입니다. 촉각센서·로봇손뿐 아니라 현장 데이터 자체가 자산화되는지 봅니다.",
@@ -294,6 +422,13 @@ def meaning(cat: str) -> str:
 def risk(cat: str) -> str:
     mapping = {
         "휴머노이드 배터리 공급망": "아직 휴머노이드 대량 양산이 초기 단계라 소재 채택·셀 규격·고객 실명이 확정되지 않으면 실제 매출까지 시간이 걸릴 수 있습니다.",
+        "삼성SDI SolidStack · 휴머노이드 샘플 공급": "샘플 출하는 양산 승인이나 매출 계약이 아닙니다. 고에너지밀도뿐 아니라 충방전 수명·출력·저온·충격·안전 검증이 실패하면 고객 채택이 지연될 수 있습니다.",
+        "삼성SDI SolidStack · 휴머노이드 고객 검증": "고객 검증 통과 전까지 수율·수명·고출력 발열·팩 설계 문제가 남습니다. 검증 완료와 실제 발주를 별도 단계로 봅니다.",
+        "삼성SDI SolidStack · 휴머노이드 고객 수주·선정": "고객 선정 뒤에도 로봇 자체 양산이 지연되면 셀 출하량이 작을 수 있습니다. 계약 물량·납기·로봇 1대당 용량과 반복발주를 확인합니다.",
+        "삼성SDI SolidStack · 울산 양산설비 반입·설치": "장비 투입이 고객 수요보다 앞서면 감가상각과 총자산이익률 부담이 먼저 커질 수 있습니다. 시험생산 수율과 실제 고객 승인 시차가 핵심입니다.",
+        "삼성SDI SolidStack · 양산 생산능력 확정": "명목 생산능력과 양품 생산량은 다릅니다. 전고체는 계면·압력·수율·검사시간 병목 때문에 초기 실효 생산능력이 낮을 수 있습니다.",
+        "삼성SDI SolidStack · 휴머노이드 양산 개시": "SOP 시작과 안정 양산은 다릅니다. 초기 수율·불량률·보증·고객 로봇 양산속도가 예상보다 낮으면 매출 램프가 느려질 수 있습니다.",
+        "삼성SDI SolidStack · 양산·고객검증 일정 지연": "일정 지연이 장비 문제인지 셀 수율인지 고객 로봇 일정인지 구분해야 합니다. 같은 2027년 목표 반복보다 실제 새 일정과 원인을 우선합니다.",
         "Optimus 양산·발주": "공급망 보도는 Tesla 공식 발주 공시와 다릅니다. 공급업체 실명·수량·납기·실제 출하를 추가 확인해야 합니다.",
         "Optimus 생산·공급망": "생산 수율이 계획보다 늦게 오르면 부품 발주와 공급업체 증설이 함께 지연될 수 있습니다.",
         "촉각·로봇 데이터": "전략협력과 대규모 상용매출은 다릅니다. 실제 로봇 배치 대수·데이터 유료화·촉각센서 반복수주를 확인해야 합니다.",
@@ -311,6 +446,13 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     source = item.get("source") or ""
+    if group == "battery" and _is_sdi_solidstack_robot(text):
+        stage = _sdi_solidstack_stage(text)
+        if stage in {"baseline", "development"}:
+            return "삼성SDI 공식 2027년 하반기 양산 목표·휴머노이드 적용 개발은 기준선 · 새 샘플/검증/수주/설비/양산 변화 아님"
+        if source in OFFICIAL_OR_PRIMARY:
+            return "삼성SDI 공식·1차 자료 · 샘플/고객검증/수주/설비/양산 단계 확인"
+        return "보도 단계 · 삼성SDI·고객사 공식자료로 단계 변화 교차확인"
     if group == "tesla" and re.search(r"5000|5,000|수천|订单|order|발주|주문", text, re.I):
         return "공급망 보도 · Tesla 공식 확인 전"
     if source in OFFICIAL_OR_PRIMARY:
