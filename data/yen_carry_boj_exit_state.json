@@ -104,7 +104,6 @@
     "recent_30d": []
   },
   "errors": [
-    "월간 JGB 매입: RuntimeError: BOJ API series has no numeric observations: MD09 MA030210341F; preview=STATUS,200 | MESSAGEID,M181000I | MESSAGE,Successfully completed | DATE,2026-09-28T08:39:09.308+09:00",
     "민간 JGB 흡수: RuntimeError: FOF private JGB series insufficient: found=[]; diagnostic=['Assets/--Loans to companies and governments/Financial institutions/Stock [code=FOF_FFAS100A243 freq=QUARTERLY unit=100 million yen]', 'Assets/-Loans by public financial institutions/Financial institutions/Stock [code=FOF_FFAS100A250 freq=QUARTERLY unit=100 million yen]', 'Assets/-Central government securities and FILP bonds/Financial institutions/Stock [code=FOF_FFAS100A311 freq=QUARTERLY unit=100 million yen]', 'Assets/-Local government securities/Financial institutions/Stock [code=FOF_FFAS100A312 freq=QUARTERLY unit=100 million yen]', 'Assets/-Public corporation securities/Financial institutions/Stock [code=FOF_FFAS100A313 freq=QUARTERLY unit=100 million yen]', 'Liabilities/-Government deposits/Financial institutions/Stock [code=FOF_FFAS100L130 freq=QUARTERLY unit=100 million yen]', 'Liabilities/--Loans to companies and governments/Financial institutions/Stock [code=FOF_FFAS100L243 freq=QUARTERLY unit=100 million yen]', 'Liabilities/-Loans by public financial institutions/Financial institutions/Stock [code=FOF_FFAS100L250 freq=QUARTERLY unit=100 million yen]', 'Liabilities/-Central government securities and FILP bonds/Financial institutions/Stock [code=FOF_FFAS100L311 freq=QUARTERLY unit=100 million yen]', 'Liabilities/-Public corporation securities/Financial institutions/Stock [code=FOF_FFAS100L313 freq=QUARTERLY unit=100 million yen]', 'Assets/-Central government securities and FILP bonds/Central bank/Stock [code=FOF_FFAS110A311 freq=QUARTERLY unit=100 million yen]', 'Liabilities/-Government deposits/Central bank/Stock [code=FOF_FFAS110L130 freq=QUARTERLY unit=100 million yen]', 'Assets/--Loans to companies and governments/Depository corporations/Stock [code=FOF_FFAS120A243 freq=QUARTERLY unit=100 million yen]', 'Assets/-Loans by public financial institutions/Depository corporations/Stock [code=FOF_FFAS120A250 freq=QUARTERLY unit=100 million yen]', 'Assets/-Central government securities and FILP bonds/Depository corporations/Stock [code=FOF_FFAS120A311 freq=QUARTERLY unit=100 million yen]', 'Assets/-Local government securities/Depository corporations/Stock [code=FOF_FFAS120A312 freq=QUARTERLY unit=100 million yen]', 'Assets/-Public corporation securities/Depository corporations/Stock [code=FOF_FFAS120A313 freq=QUARTERLY unit=100 million yen]', 'Liabilities/--Loans to companies and governments/Depository corporations/Stock [code=FOF_FFAS120L243 freq=QUARTERLY unit=100 million yen]', 'Liabilities/-Loans by public financial institutions/Depository corporations/Stock [code=FOF_FFAS120L250 freq=QUARTERLY unit=100 million yen]', 'Assets/--Loans to companies and governments/Banks/Stock [code=FOF_FFAS121A243 freq=QUARTERLY unit=100 million yen]']"
   ],
   "initialized": true,
@@ -131,7 +130,16 @@
     "newer_than_baseline": []
   },
   "private_absorption": null,
-  "purchase": null,
+  "purchase": {
+    "actual_plan_ratio": 0.9284800000000001,
+    "actual_trillion_yen": 2.3212,
+    "deviation_trillion_yen": -0.17879999999999985,
+    "period": "202608",
+    "planned_trillion_yen": 2.5,
+    "series_code": "MA030210341F",
+    "series_name": "Flow Table/Japanese Government Bonds (JGBs)/Outright Purchases(b)",
+    "unit": "100 million yen"
+  },
   "signals": {
     "actual_over_plan": false,
     "emergency_purchase_signal": false,
@@ -139,5 +147,5 @@
     "plan_revision": false,
     "weak_private_absorption": false
   },
-  "updated_at_kst": "2026-09-28T08:39:06+09:00"
+  "updated_at_kst": "2026-09-28T08:40:58+09:00"
 }
