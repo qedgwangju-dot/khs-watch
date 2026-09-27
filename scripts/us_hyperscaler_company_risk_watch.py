@@ -163,8 +163,12 @@ def krw(usd: float, fx: float) -> str:
     return f"약 {rem:,}억원"
 
 def google_news(query: str) -> list[dict]:
-    q = urllib.parse.quote_plus(query + f" when:{LOOKBACK_DAYS}d")
-    url = f"https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en"
+    url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({
+        "q": query + f" when:{LOOKBACK_DAYS}d",
+        "hl": "en-US",
+        "gl": "US",
+        "ceid": "US:en",
+    })
     r = requests.get(url, headers=HEADERS, timeout=30)
     r.raise_for_status()
     root = ET.fromstring(r.content)
@@ -345,6 +349,63 @@ def merge_cross_company(events: list[dict]) -> list[dict]:
     return sorted(merged, key=lambda x: x["published"], reverse=True)
 
 
+def authoritative_seed_events() -> list[dict]:
+    # Official enforcement + official commercial link. This is deliberately
+    # separate from news search so a Google RSS outage cannot hide a material
+    # regulator action.
+    return [{
+        "event_key": "dataone-vineland-generator-enforcement-20260922",
+        "companies": ["Microsoft", "Nebius"],
+        "company": "Microsoft·Nebius",
+        "title": "NJDEP, DataOne Vineland에 무허가 천연가스 발전기 62기 운영으로 107만달러 벌금",
+        "url": NJDEP_DATAONE,
+        "published": "2026-09-22T00:00:00+00:00",
+        "sources": [
+            "New Jersey Department of Environmental Protection",
+            "Nebius",
+        ],
+        "titles": [
+            "NJDEP fined DataOne Vineland $1.07 million for installing and operating 62 1,982-kW natural-gas generators without required permits",
+            "Nebius provides dedicated AI infrastructure capacity to Microsoft from its Vineland New Jersey data center under a five-year agreement",
+        ],
+    }]
+
+
+def active_issue_payload(event: dict, company: str) -> dict:
+    cat, relation = classify_event(event)
+    if event.get("event_key") == "dataone-vineland-generator-enforcement-20260922":
+        if company == "Microsoft":
+            relationship = "파트너·고객 연계"
+            summary = (
+                "DataOne Vineland(NJ), 62대×1,982kW 천연가스 발전기 무허가 설치·운영으로 "
+                "NJDEP 107만달러 벌금·45일 내 허가 취득 또는 가동중단 명령. "
+                "Microsoft는 직접 벌금 대상이 아니라 Nebius의 Vineland 전용 GPU 용량 고객."
+            )
+        elif company == "Nebius":
+            relationship = "사업·운영 연계"
+            summary = (
+                "DataOne이 건설·운영하는 Nebius Vineland 시설에서 62대 천연가스 발전기 "
+                "무허가 설치·운영이 적발돼 NJDEP가 107만달러 벌금과 시정명령을 부과."
+            )
+        else:
+            relationship = "기업 연관"
+            summary = event["title"]
+    else:
+        relationship = "직접 여부 원문 확인"
+        summary = event["title"]
+
+    return {
+        "fingerprint": event["event_key"],
+        "company": company,
+        "label": cat,
+        "relationship": relationship,
+        "summary": summary,
+        "published": event["published"],
+        "url": event["url"],
+        "sources": event.get("sources", [])[:5],
+    }
+
+
 def classify_event(event: dict) -> tuple[str, str]:
     blob = " ".join(event["titles"]).lower()
     if any(k in blob for k in ("fine", "fined", "penalty", "violation", "unpermitted", "without permit", "enforcement")):
@@ -440,6 +501,11 @@ def main() -> int:
         events.extend(cluster_company(company, list(unique.values())))
 
     events = merge_cross_company(events)
+    by_key = {x["event_key"]: x for x in events}
+    for seed in authoritative_seed_events():
+        by_key[seed["event_key"]] = seed
+    events = sorted(by_key.values(), key=lambda x: x["published"], reverse=True)
+
     seen = set(old.get("seen_events", []))
     baseline = not old.get("initialized")
     format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
@@ -449,10 +515,23 @@ def main() -> int:
         new_events = events[:8]
 
     all_seen = list(dict.fromkeys(old.get("seen_events", []) + [x["event_key"] for x in events]))[-3000:]
+    active_cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=30)
+    active_issues_by_company = defaultdict(list)
+    for event in events:
+        try:
+            published = dt.datetime.fromisoformat(event["published"])
+        except Exception:
+            continue
+        if published < active_cutoff:
+            continue
+        for company in event.get("companies", []):
+            active_issues_by_company[company].append(active_issue_payload(event, company))
+
     pending = {
         "initialized": True,
         "format_version": FORMAT_VERSION,
         "seen_events": all_seen,
+        "active_issues_by_company": dict(active_issues_by_company),
         "last_fx_krw_per_usd": fx,
         "fx_source": fx_source,
         "last_event_count": len(events),
