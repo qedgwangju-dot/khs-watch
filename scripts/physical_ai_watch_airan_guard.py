@@ -171,6 +171,12 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    # Final semantic-key guard for Samsung SDI SolidStack humanoid milestones.
+    # Later Figure/other wrappers may otherwise fall back to publisher/title keys.
+    if getattr(base, '_is_sdi_solidstack_robot', lambda _t: False)(text):
+        stage = base._sdi_solidstack_stage(text)
+        context = base._sdi_solidstack_context(text)
+        return hashlib.sha256(f"samsung-sdi|solidstack-humanoid|{stage}|{context}".encode()).hexdigest()
     if topic_group(text) != 'airan':
         return _orig_key(item)
     try:
