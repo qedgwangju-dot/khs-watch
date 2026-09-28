@@ -105,6 +105,19 @@ COMPANIES = {
     },
 }
 
+DISPLAY_NAMES_KO = {
+    "NVIDIA": "엔비디아",
+    "Broadcom": "브로드컴",
+    "Arista Networks": "아리스타 네트웍스",
+    "Marvell": "마벨",
+    "Lumentum": "루멘텀",
+    "Coherent": "코히런트",
+    "Astera Labs": "아스테라 랩스",
+    "Corning": "코닝",
+    "Samsung Electronics": "삼성전자",
+    "CPO Equipment Supply Chain": "CPO 장비 공급망",
+}
+
 TRUSTED_SOURCES = {
     "Reuters", "Bloomberg", "Financial Times", "The Wall Street Journal", "CNBC",
     "DigiTimes", "DIGITIMES", "Investing.com", "Barron's", "MarketWatch",
@@ -701,7 +714,7 @@ def main() -> None:
                     pub = item["published"]
             category = item["category"]
             lines.extend([
-                f"<b>{idx}) {html.escape(item['company'])} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
+                f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
                 f"• 단계: {html.escape(item['stage'])}",
                 f"• 원문 제목: {html.escape(item['title'])}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
@@ -712,7 +725,7 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / NVIDIA CPO 실제 배치 / Coherent PhotonLink 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027Q2 가시성·CAPA 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·백로그 / Corning 광통신·유리기판 신규 AI 매출 경로",
+            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
