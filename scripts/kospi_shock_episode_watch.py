@@ -458,8 +458,8 @@ class Watch:
             return None
         if prefer_before:
             prior = [x for x in rows if float(x.get("ts", 0)) <= ts]
-            if prior:
-                return max(prior, key=lambda x: float(x.get("ts", 0)))
+            # 사건 시작 이전 스냅샷이 없으면 이후 값을 시작값으로 대체하지 않는다.
+            return max(prior, key=lambda x: float(x.get("ts", 0))) if prior else None
         return min(rows, key=lambda x: abs(float(x.get("ts", 0)) - ts))
 
     def attribution(self, start_ts: float, end_ts: float) -> dict[str, Any]:
@@ -621,6 +621,22 @@ class Watch:
             hit, info = self._trigger()
             if not hit:
                 return
+
+            start_flow = self._flow_near(float(info["peak_ts"]), True)
+            if not start_flow:
+                # 재기동 전에 시작된 사건은 정확한 시작 수급이 없으므로 원인 알림을 소급 생성하지 않는다.
+                self.raw["suppressed_historical_trigger"] = {
+                    "peak_ts": info["peak_ts"], "peak": info["peak"],
+                    "cur_ts": info["cur_ts"], "cur": info["cur"],
+                    "drop": info["drop"], "reason": "no flow snapshot at/before event start",
+                }
+                return
+            if any(start_flow.get(k) is None for k in ("현물", "선물", "프로그램")):
+                self.raw["suppressed_incomplete_flow_trigger"] = {
+                    "peak_ts": info["peak_ts"], "reason": "incomplete start flow snapshot",
+                }
+                return
+
             self.episode = {"start_ts": info["peak_ts"], "start_price": info["peak"],
                             "low_ts": now_t, "low_price": cur, "sent_drop": abs(float(info["drop"])),
                             "alerted": True, "trigger": info}
