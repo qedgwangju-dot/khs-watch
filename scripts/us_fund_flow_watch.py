@@ -3,7 +3,7 @@ import os, re, json, hashlib, html
 from io import StringIO
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
-from urllib.parse import quote
+from urllib.parse import quote, urljoin
 
 import requests
 import pandas as pd
@@ -40,6 +40,17 @@ ICI_MMF = "https://www.ici.org/research/stats/mmf"
 FINRA_MARGIN = "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics"
 BING_Bofa = 'BofA EPFR US stocks money market Reuters'
 BING_LIPPER = 'LSEG Lipper U.S. equity funds money market Reuters'
+JPM_ALL_TOPICS = "https://www.jpmorganchase.com/institute/all-topics"
+JPM_HOUSEHOLD = "https://www.jpmorganchase.com/institute/all-topics/household-financial-health/drawing-on-investment-wealth-full-report"
+FED_Z1 = "https://www.federalreserve.gov/releases/z1/default.htm"
+FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
+FRED_SP500 = "https://fred.stlouisfed.org/series/SP500"
+FRED_SERIES = {
+    "household_equities": "BOGZ1LM153064475Q",
+    "household_financial_assets": "TFAABSHNO",
+    "household_total_assets": "TABSHNO",
+    "household_net_worth": "TNWBSHNO",
+}
 
 
 def get(url, timeout=35):
@@ -190,6 +201,199 @@ def normalize_columns(t):
             cols.append(str(c).strip())
     out.columns = cols
     return out
+
+
+def fred_series_rows(series_id):
+    url = FRED_CSV.format(series=quote(series_id))
+    r = get(url, timeout=35)
+    t = pd.read_csv(StringIO(r.text))
+    if t.empty or len(t.columns) < 2:
+        raise RuntimeError(f"FRED {series_id} data empty")
+    date_col = t.columns[0]
+    value_col = series_id if series_id in t.columns else t.columns[-1]
+    t = t[[date_col, value_col]].copy()
+    t.columns = ["date", "value"]
+    t["date"] = pd.to_datetime(t["date"], errors="coerce")
+    t["value"] = pd.to_numeric(t["value"], errors="coerce")
+    t = t.dropna().sort_values("date")
+    if t.empty:
+        raise RuntimeError(f"FRED {series_id} numeric rows not found")
+    return t
+
+
+def latest_fred(series_id):
+    t = fred_series_rows(series_id)
+    latest = t.iloc[-1]
+    prev = t.iloc[-2] if len(t) >= 2 else None
+    return {
+        "date": latest["date"].date(),
+        "value": float(latest["value"]),
+        "prev_date": prev["date"].date() if prev is not None else None,
+        "prev_value": float(prev["value"]) if prev is not None else None,
+        "rows": t,
+    }
+
+
+def quarter_label(d):
+    return f"{d.year}:Q{((d.month - 1) // 3) + 1}"
+
+
+def _jpm_candidate_urls():
+    urls = [JPM_HOUSEHOLD]
+    try:
+        page_html = browser_html(JPM_ALL_TOPICS)
+        soup = BeautifulSoup(page_html, "html.parser")
+        candidates = []
+        for a in soup.find_all("a", href=True):
+            label = clean_text(a.get_text(" ", strip=True))
+            href = urljoin(JPM_ALL_TOPICS, a.get("href"))
+            if "/institute/all-topics/household-financial-health/" not in href:
+                continue
+            if not re.search(r"invest|wealth|spend|financial market", label + " " + href, re.I):
+                continue
+            candidates.append(href)
+        expanded = []
+        for u in candidates[:8]:
+            expanded.append(u)
+            try:
+                raw = get(u, timeout=25).text
+                ss = BeautifulSoup(raw, "html.parser")
+                for a in ss.find_all("a", href=True):
+                    href = urljoin(u, a.get("href"))
+                    label = clean_text(a.get_text(" ", strip=True))
+                    if "full-report" in href or re.search(r"full report", label, re.I):
+                        expanded.append(href)
+            except Exception:
+                pass
+        urls = expanded + urls
+    except Exception:
+        pass
+    out = []
+    seen = set()
+    for u in urls:
+        u = u.split("#", 1)[0]
+        if u not in seen:
+            seen.add(u)
+            out.append(u)
+    return out
+
+
+def parse_jpm_household():
+    last_error = None
+    for url in _jpm_candidate_urls():
+        try:
+            try:
+                raw = get(url, timeout=35).text
+                text = clean_text(raw)
+            except Exception:
+                text = clean_text(browser_html(url))
+
+            # Require the same concepts used in the Institute's withdrawal/spending study.
+            if not re.search(r"net withdrawals|withdrew money from investments|investment accounts", text, re.I):
+                continue
+            if not re.search(r"spending", text, re.I):
+                continue
+
+            m_all = re.search(
+                r"By this measure,\s*([\d.]+)\s*percent of people withdrew money from investments.*?"
+                r"over\s+([A-Za-z]+[–—-][A-Za-z]+\s+20\d{2})",
+                text, re.I | re.S,
+            )
+            if not m_all:
+                m_all = re.search(
+                    r"([\d.]+)\s*percent of people withdrew money from investments.*?"
+                    r"over\s+([A-Za-z]+[–—-][A-Za-z]+\s+20\d{2})",
+                    text, re.I | re.S,
+                )
+            m_top = re.search(
+                r"top income segment rose from\s*[\d.]+\s*percent.*?to\s*([\d.]+)\s*percent",
+                text, re.I | re.S,
+            )
+            m_low = re.search(
+                r"compared with a rise from\s*[\d.]+\s*percent to\s*([\d.]+)\s*percent among those below the median",
+                text, re.I | re.S,
+            )
+            m_spend = re.search(
+                r"reaching\s*([\d.]+)\s*percent in\s+([A-Za-z]+\s+20\d{2})",
+                text, re.I,
+            )
+            if not (m_all and m_top and m_low and m_spend):
+                continue
+
+            period = m_all.group(2).replace("–", "-").replace("—", "-")
+            payload = {
+                "source": "JPMorganChase Institute",
+                "kind": "household_withdrawals",
+                "period": period,
+                "published": first_date(text),
+                "url": url,
+                "metrics": {
+                    "withdrawers_all_pct": float(m_all.group(1)),
+                    "withdrawers_top10_pct": float(m_top.group(1)),
+                    "withdrawers_below_median_pct": float(m_low.group(1)),
+                    "spending_funded_pct": float(m_spend.group(1)),
+                },
+            }
+            payload["fingerprint"] = semantic_fingerprint(payload)
+            return payload
+        except Exception as e:
+            last_error = e
+    raise RuntimeError(f"JPMorgan household withdrawal metrics not found: {last_error or 'no matching official report'}")
+
+
+def parse_fed_household_balance_sheet():
+    eq = latest_fred(FRED_SERIES["household_equities"])
+    fa = latest_fred(FRED_SERIES["household_financial_assets"])
+    ta = latest_fred(FRED_SERIES["household_total_assets"])
+    nw = latest_fred(FRED_SERIES["household_net_worth"])
+    dates = {eq["date"], fa["date"], ta["date"], nw["date"]}
+    if len(dates) != 1:
+        raise RuntimeError(
+            "Federal Reserve household series latest quarters differ: "
+            + ", ".join(sorted(d.isoformat() for d in dates))
+        )
+    period_date = eq["date"]
+    metrics = {
+        "equities_trillion": round(eq["value"] / 1_000_000.0, 6),
+        "financial_assets_trillion": round(fa["value"] / 1_000_000.0, 6),
+        "total_assets_trillion": round(ta["value"] / 1_000_000.0, 6),
+        "net_worth_trillion": round(nw["value"] / 1_000_000.0, 6),
+        "equities_share_total_assets_pct": round(eq["value"] / ta["value"] * 100.0, 2),
+        "equities_share_financial_assets_pct": round(eq["value"] / fa["value"] * 100.0, 2),
+    }
+    payload = {
+        "source": "Federal Reserve Z.1",
+        "kind": "household_balance_sheet",
+        "period": quarter_label(period_date),
+        "published": None,
+        "url": FED_Z1,
+        "metrics": metrics,
+    }
+    payload["fingerprint"] = semantic_fingerprint(payload)
+    return payload
+
+
+def fetch_sp500_context():
+    t = fred_series_rows("SP500")
+    latest = t.iloc[-1]
+    # FRED provides a 10-year daily history. Five years is enough to anchor a cyclical peak
+    # without allowing a stale peak from a prior regime to dominate the alert.
+    cutoff = latest["date"] - pd.Timedelta(days=365 * 5)
+    recent = t[t["date"] >= cutoff].copy()
+    peak_i = recent["value"].idxmax()
+    peak = recent.loc[peak_i]
+    last_value = float(latest["value"])
+    peak_value = float(peak["value"])
+    drawdown_pct = (last_value / peak_value - 1.0) * 100.0
+    return {
+        "last_date": latest["date"].date().isoformat(),
+        "last_value": last_value,
+        "peak_date": peak["date"].date().isoformat(),
+        "peak_value": peak_value,
+        "drawdown_pct": round(drawdown_pct, 2),
+        "band": "stress" if drawdown_pct <= -15.0 else "normal",
+        "url": FRED_SP500,
+    }
 
 
 def parse_ici_combined():
@@ -577,6 +781,24 @@ def source_block(x, fx):
                 f"• 현금계좌 가용현금 {fmt_usd_bn_kr(m['cash_free_bn'], fx)} "
                 f"/ 마진계좌 가용현금 {fmt_usd_bn_kr(m['margin_free_bn'], fx)}"
             )
+    elif x["kind"] == "household_withdrawals":
+        lines.append(
+            f"• 투자계좌→예금계좌 순인출 개인 비중 {m['withdrawers_all_pct']:.1f}% "
+            f"/ 상위 10% {m['withdrawers_top10_pct']:.1f}% "
+            f"/ 중위소득 미만 {m['withdrawers_below_median_pct']:.1f}%"
+        )
+        lines.append(
+            f"• 투자자산 인출로 충당되는 소비 비중 {m['spending_funded_pct']:.1f}%"
+        )
+    elif x["kind"] == "household_balance_sheet":
+        lines.append(
+            f"• 가계·비영리 직접+간접 기업주식 {fmt_usd_trillion_kr(m['equities_trillion'], fx)} "
+            f"/ 총자산 대비 {m['equities_share_total_assets_pct']:.2f}%"
+        )
+        lines.append(
+            f"• 총 금융자산 {fmt_usd_trillion_kr(m['financial_assets_trillion'], fx)} "
+            f"/ 순자산 {fmt_usd_trillion_kr(m['net_worth_trillion'], fx)}"
+        )
     else:
         lines.append(f"• 미국 주식형 {fmt_usd_bn_kr(m.get('us_equity_bn'), fx)}")
         if m.get("global_equity_bn") is not None:
@@ -596,6 +818,8 @@ for name, fn in [
     ("ICI 장기펀드+ETF", parse_ici_combined),
     ("ICI MMF", parse_ici_mmf),
     ("FINRA 마진", parse_finra),
+    ("JPMorganChase 가계 투자자산 인출", parse_jpm_household),
+    ("Federal Reserve Z.1 가계 대차대조표", parse_fed_household_balance_sheet),
     ("BofA/EPFR Reuters", lambda: parse_reuters("bofa")),
     ("LSEG Lipper Reuters", lambda: parse_reuters("lipper")),
 ]:
@@ -630,6 +854,30 @@ ici_mmf = next((x for x in results if x["kind"] == "mmf"), None)
 finra = next((x for x in results if x["kind"] == "margin"), None)
 bofa = next((x for x in results if x["kind"] == "bofa"), None)
 lipper = next((x for x in results if x["kind"] == "lipper"), None)
+jpm_household = next((x for x in results if x["kind"] == "household_withdrawals"), None)
+fed_household = next((x for x in results if x["kind"] == "household_balance_sheet"), None)
+
+sp500 = None
+try:
+    sp500 = fetch_sp500_context()
+except Exception as e:
+    errors.append(f"S&P 500 FRED: {type(e).__name__}: {e}")
+
+old_jpm = (state.get("values") or {}).get("JPMorganChase Institute|household_withdrawals")
+jpm_updated = any(x.get("kind") == "household_withdrawals" for x in updates)
+
+def metric_delta(current, previous, key):
+    try:
+        return float(current["metrics"][key]) - float(previous["metrics"][key])
+    except Exception:
+        return None
+
+jpm_withdrawal_delta = metric_delta(jpm_household, old_jpm, "withdrawers_all_pct") if jpm_household else None
+jpm_spending_delta = metric_delta(jpm_household, old_jpm, "spending_funded_pct") if jpm_household else None
+
+old_band = (state.get("derived") or {}).get("sp500_drawdown_band")
+current_band = sp500.get("band") if sp500 else None
+drawdown_transition = bool(old_band and current_band and old_band != current_band)
 
 cross = []
 pairs = [
@@ -664,6 +912,59 @@ if finra:
         interpret.append(
             f"FINRA 월간 마진부채: {'증가 → 레버리지 확대' if md > 0 else '감소 → 레버리지 축소'} "
             f"({fmt_usd_bn_kr(md, fx)} 전월비)"
+        )
+if jpm_household:
+    jm = jpm_household["metrics"]
+    interpret.append(
+        f"JPMorganChase 가계 구조: 순인출자 {jm['withdrawers_all_pct']:.1f}% / "
+        f"상위 10% {jm['withdrawers_top10_pct']:.1f}% / "
+        f"투자자산으로 충당되는 소비 {jm['spending_funded_pct']:.1f}%"
+    )
+if fed_household:
+    fm = fed_household["metrics"]
+    interpret.append(
+        f"연준 Z.1 가계 주식 노출: 직접+간접 기업주식 {fm['equities_trillion']:.2f}조달러 / "
+        f"총자산 대비 {fm['equities_share_total_assets_pct']:.2f}%"
+    )
+if sp500:
+    interpret.append(
+        f"S&P 500: {sp500['last_value']:,.2f} ({sp500['last_date']}) / "
+        f"5년 내 고점 {sp500['peak_value']:,.2f} ({sp500['peak_date']}) 대비 "
+        f"{sp500['drawdown_pct']:.2f}%"
+    )
+    if sp500["drawdown_pct"] <= -15.0:
+        if jpm_updated and jpm_withdrawal_delta is not None and jpm_withdrawal_delta > 0:
+            interpret.append(
+                f"🚨 가계 자산현금화 경보: S&P 500이 고점 대비 15% 이상 하락한 상태에서 "
+                f"JPMorgan 순인출자 비중이 직전 공식값보다 {jpm_withdrawal_delta:+.1f}%p 상승 "
+                "→ 2020·2022·2025 하락기의 인출 둔화 패턴과 다른 방향"
+            )
+        elif jpm_updated and jpm_withdrawal_delta is not None and jpm_withdrawal_delta <= 0:
+            interpret.append(
+                "S&P 500이 고점 대비 15% 이상 하락했지만 JPMorgan 순인출자 비중은 상승하지 않음 "
+                "→ 과거 급락기와 유사한 방향"
+            )
+        elif ici_mmf and ici_mmf["metrics"].get("weekly_change_bn", 0) > 0:
+            interpret.append(
+                "S&P 500 15% 이상 하락 + ICI MMF 증가 → 위험회피 신호 강화. "
+                "다만 JPMorgan의 새 가계 인출 자료가 나오기 전에는 강제매도 악순환으로 단정하지 않음"
+            )
+    elif ici_mmf and ici_mmf["metrics"].get("weekly_change_bn", 0) > 0:
+        interpret.append(
+            "MMF가 증가해도 S&P 500의 고점 대비 낙폭이 15% 미만이면 "
+            "차익실현·현금대기와 위험회피를 구분해 해석"
+        )
+
+if jpm_updated and jpm_withdrawal_delta is not None and jpm_spending_delta is not None:
+    if jpm_withdrawal_delta > 0 and jpm_spending_delta > 0:
+        interpret.append(
+            f"JPMorgan 구조 변화: 순인출자 {jpm_withdrawal_delta:+.1f}%p, "
+            f"투자자산 충당 소비 {jpm_spending_delta:+.1f}%p → 소비의 금융자산 의존도 상승"
+        )
+    elif jpm_withdrawal_delta < 0 and jpm_spending_delta < 0:
+        interpret.append(
+            f"JPMorgan 구조 변화: 순인출자 {jpm_withdrawal_delta:+.1f}%p, "
+            f"투자자산 충당 소비 {jpm_spending_delta:+.1f}%p → 금융자산 의존도 완화"
         )
 
 # ICI equity and MMF must refer to the same week before treating them as a rotation pair.
@@ -743,12 +1044,24 @@ for x in results:
     status_lines.append(f"- {x['source']} {x['kind']} | {x['period']} | {x['fingerprint'][:12]}")
 for e in errors:
     status_lines.append(f"- error: {e}")
+if sp500:
+    status_lines.append(
+        f"- S&P500 context: {sp500['last_date']} {sp500['last_value']:.2f} | "
+        f"peak {sp500['peak_date']} {sp500['peak_value']:.2f} | "
+        f"drawdown {sp500['drawdown_pct']:.2f}% | band={sp500['band']}"
+    )
+    status_lines.append(f"- S&P500 band transition: {old_band or 'none'} -> {current_band or 'none'} | changed={str(drawdown_transition).lower()}")
+if jpm_updated:
+    status_lines.append(
+        f"- JPM household delta: withdrawers={jpm_withdrawal_delta}pp | spending-funded={jpm_spending_delta}pp"
+    )
 if fx:
     status_lines.append(f"- USD/KRW: {fx['usdkrw']} ({fx['date']})")
 STATUS.write_text("\n".join(status_lines) + "\n", encoding="utf-8")
 
 force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
-if updates or force:
+should_alert = bool(updates or force or drawdown_transition)
+if should_alert:
     body = [
         "🇺🇸 <b>[미국 증시 자금흐름 추적 | 신규 변화]</b>",
         "",
@@ -775,6 +1088,20 @@ if updates or force:
         body.append("• 미국 주식형: " + stock_text)
     else:
         body.append("• 미국 주식형: 최신 비교값 자동 확인 대기")
+    if sp500:
+        body.append(
+            f"• S&P 500: {sp500['last_value']:,.2f} / 5년 내 고점 대비 {sp500['drawdown_pct']:.2f}% "
+            f"→ {'15% 급락 구간' if sp500['band']=='stress' else '15% 급락 기준 미충족'}"
+        )
+    if jpm_household and fed_household:
+        jm = jpm_household["metrics"]
+        fm = fed_household["metrics"]
+        body.append(
+            f"• 가계 구조: 투자계좌 순인출자 {jm['withdrawers_all_pct']:.1f}% "
+            f"(상위 10% {jm['withdrawers_top10_pct']:.1f}%) / "
+            f"투자자산 충당 소비 {jm['spending_funded_pct']:.1f}% / "
+            f"가계 기업주식·펀드 총자산 비중 {fm['equities_share_total_assets_pct']:.2f}%"
+        )
 
     body += [
         f"→ <b>종합</b>: {html.escape(overall_easy)}",
@@ -782,7 +1109,14 @@ if updates or force:
         "<b>이번에 실제로 바뀐 값</b>",
     ]
 
-    selected = updates if updates else results
+    selected = results if force else updates
+    if drawdown_transition:
+        body += [
+            f"<b>S&P 500 15% 낙폭 체계 변화</b>",
+            f"• {html.escape(str(old_band))} → {html.escape(str(current_band))} "
+            f"/ 현재 낙폭 {sp500['drawdown_pct']:.2f}%" if sp500 else "• S&P 500 상태 확인 불가",
+            "",
+        ]
     for x in selected:
         body += [
             f"<b>{html.escape(x['source'])} | {html.escape(str(x.get('period') or ''))}</b>",
@@ -817,6 +1151,10 @@ if updates or force:
         "• 같은 출처 안에서만 미국주식↔MMF 방향을 조합해 자금 회전을 해석",
         "• ICI·BofA/EPFR·LSEG Lipper는 모집단이 달라 합산·평균하지 않음",
         "• FINRA 마진부채는 월간 레버리지 확인용으로 주간 펀드 흐름과 기간을 섞지 않음",
+        "• JPMorganChase Institute 가계 인출은 저빈도 구조지표로 사용하며 새 공식 수치가 있을 때만 변화로 처리",
+        "• Federal Reserve Z.1 가계 자산은 분기 구조지표로 사용하며 새 분기 값이 있을 때만 변화로 처리",
+        "• S&P 500은 FRED 종가 기준 5년 내 고점 대비 낙폭을 계산하고 15% 선 진입·이탈 때만 별도 경보",
+        "• S&P 500 15% 이상 하락 중 JPMorgan 순인출자 비중까지 상승할 때만 과거 패턴 이탈 경보로 격상",
         "• MMF 유출액이 그대로 주식으로 이동했다고 단정하지 않음",
         "• 같은 기준기간·같은 수치면 원천 URL이나 문구가 바뀌어도 중복 알림하지 않음",
         "• 모든 달러 금액은 같은 문장 바로 뒤 괄호에 한국은행 ECOS 환율 기준 원화 환산액을 함께 표시",
@@ -833,8 +1171,21 @@ if updates or force:
         key = f"{x['source']}|{x['kind']}"
         newstate["seen"][key] = x["fingerprint"]
         newstate["values"][key] = x
+    if sp500:
+        newstate.setdefault("derived", {})
+        newstate["derived"].update({
+            "sp500_drawdown_band": sp500["band"],
+            "sp500_last_date": sp500["last_date"],
+            "sp500_last_value": sp500["last_value"],
+            "sp500_peak_date": sp500["peak_date"],
+            "sp500_peak_value": sp500["peak_value"],
+            "sp500_drawdown_pct": sp500["drawdown_pct"],
+        })
     newstate["updated_at_kst"] = datetime.now(timezone(timedelta(hours=9))).isoformat()
     PENDING.write_text(json.dumps(newstate, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"us_fund_flow_alert_ready=true updates={len(updates)}")
+    print(
+        f"us_fund_flow_alert_ready=true updates={len(updates)} "
+        f"drawdown_transition={str(drawdown_transition).lower()}"
+    )
 else:
     print("us_fund_flow_alert_ready=false unchanged=true")
