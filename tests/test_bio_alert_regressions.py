@@ -129,6 +129,30 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertIn("2025-03-07 PGR 청구", rendered)
         self.assertIn("2026-09-25 최종서면결정", rendered)
 
+    def test_halozyme_portfolio_ir_update_is_distinct_event(self):
+        text = (
+            "MSD가 제기해 심리가 개시된 PGR 14건 가운데 7건에서 "
+            "심판 대상 청구항의 특허성이 부정됐습니다."
+        )
+        case, patent = halo.get_case(text)
+        self.assertEqual(case, "HALOZYME-PGR-PORTFOLIO-7OF14")
+        self.assertEqual(patent, "")
+        self.assertEqual(halo.classify(text, case), "portfolio_update")
+        rendered = halo.alert(
+            case,
+            patent,
+            "portfolio_update",
+            {
+                "url": "https://www.alteogen.com/kr/sub/ir/information.php?bid=2&idx=374&mode=view&page=1",
+                "published": "",
+                "title": "알테오젠 파트너 MSD, 할로자임 MDASE 여섯 번째, 일곱 번째 특허 무효화 판정",
+            },
+        )
+        self.assertIn("누적 판세 업데이트", rendered)
+        self.assertIn("14건 중 7건", rendered)
+        self.assertIn("잔여 7건", rendered)
+        self.assertIn("2026-09-28 알테오젠 공식 IR", rendered)
+
     def test_single_runner_health_schema_covers_all_bio_lanes(self):
         source = (ROOT / "scripts" / "bio_single_runner.py").read_text(encoding="utf-8")
         required = (
