@@ -144,6 +144,41 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("[다음 체크]", body)
         self.assertNotIn("Kpler Gulf of Oman STS record 7.2 Mbd as of", body)
 
+    def test_east_west_pipeline_recovery_is_classified(self):
+        title = "Saudi East-West Pipeline transport hits 3.5 million barrels per day - Reuters"
+        self.assertEqual(MODULE.classify_event(title), "east_west_pipeline_recovery")
+
+    def test_pipeline_event_id_uses_material_rate_bands(self):
+        now = dt.datetime(2026, 9, 28, 12, 0, tzinfo=dt.timezone.utc)
+        a = [MODULE.NewsItem(
+            "Saudi East-West Pipeline transport hits 3.5 million barrels per day",
+            "Reuters", "a", now.isoformat(), now.timestamp(), "east_west_pipeline_recovery"
+        )]
+        b = [MODULE.NewsItem(
+            "East-West Pipeline flow reaches 3.6 million bpd",
+            "Bloomberg", "b", (now + dt.timedelta(hours=2)).isoformat(),
+            (now + dt.timedelta(hours=2)).timestamp(), "east_west_pipeline_recovery"
+        )]
+        c = [MODULE.NewsItem(
+            "East-West Pipeline flow reaches 4.0 million bpd",
+            "Reuters", "c", (now + dt.timedelta(hours=4)).isoformat(),
+            (now + dt.timedelta(hours=4)).timestamp(), "east_west_pipeline_recovery"
+        )]
+        self.assertEqual(MODULE.event_id("east_west_pipeline_recovery", a), MODULE.event_id("east_west_pipeline_recovery", b))
+        self.assertNotEqual(MODULE.event_id("east_west_pipeline_recovery", a), MODULE.event_id("east_west_pipeline_recovery", c))
+
+    def test_pipeline_body_separates_flow_from_yanbu_exports(self):
+        current = dt.datetime(2026, 9, 28, 12, 0, tzinfo=dt.timezone.utc)
+        news = [MODULE.NewsItem(
+            "Saudi East-West Pipeline transport hits 3.5 million barrels per day",
+            "Reuters", "a", current.isoformat(), current.timestamp(), "east_west_pipeline_recovery"
+        )]
+        body = MODULE.build_physical_flow_alert_body("east_west_pipeline_recovery", news, None, current)
+        self.assertIn("East-West     3.5 Mbd", body)
+        self.assertIn("vs 4Mbd      약 88% 회복", body)
+        self.assertIn("Yanbu 수출     실제 선적 별도 확인 필요", body)
+        self.assertIn("선적 재개 확인 전 수출 정상화로 단정하지 않습니다", body)
+
     def test_alert_body_contains_required_market_values(self):
         current = dt.datetime(2026, 8, 2, 12, 0, tzinfo=dt.timezone.utc)
         news = [
