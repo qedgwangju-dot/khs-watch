@@ -95,6 +95,11 @@ XPENG_SUPPLIER_NOMINATION = re.compile(
     r'core\s+component\s+supplier.{0,40}(?:selected|nominated)|핵심\s*부품.{0,30}공급사\s*선정|공급사\s*선정',
     re.I,
 )
+XPENG_SUPPLIER_20260922_BASELINE = re.compile(
+    r'首届机器人供应链合作伙伴大会|first\s+robot(?:ics)?\s+supply\s+chain\s+partner\s+conference|'
+    r'已完成供应链审厂及核心零部件定点|완료.{0,30}공급망\s*심사.{0,30}핵심\s*부품\s*공급사\s*선정',
+    re.I,
+)
 XPENG_ACTUAL_SOP = re.compile(
     r'(?:开始|正式|启动).{0,12}(?:量产|批量生产)|(?:量产|mass\s*production).{0,30}(?:开始|正式|启动|started|began|commenced)|'
     r'SOP.{0,20}(?:started|began|개시|시작)|양산.{0,20}(?:개시|시작|돌입)',
@@ -190,6 +195,8 @@ def _xpeng_stage(text: str) -> str:
         return ''
     if XPENG_DELAY.search(text):
         return 'schedule_delay'
+    if XPENG_SUPPLIER_20260922_BASELINE.search(text):
+        return 'supplier_20260922_baseline'
     if XPENG_GLOBAL_DELIVERY.search(text):
         return 'global_delivery'
     if XPENG_CHINA_DELIVERY.search(text):
@@ -287,7 +294,7 @@ def score(item: dict) -> int:
 
     if group == 'xpeng':
         stage = _xpeng_stage(text)
-        if stage in {'line_commissioned_baseline', 'schedule_baseline', 'background'}:
+        if stage in {'line_commissioned_baseline', 'supplier_20260922_baseline', 'schedule_baseline', 'background'}:
             return 0
         s = 18
         if base.NUMERIC.search(text): s += 3
