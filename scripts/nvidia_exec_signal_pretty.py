@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import pathlib
-import re
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT = ROOT / "out" / "nvidia_exec_signal_alert.html"
@@ -12,6 +11,10 @@ def first_line(text: str, prefix: str) -> str:
         if line.startswith(prefix):
             return line
     return ""
+
+
+def _strip_prefix(line: str, prefix: str) -> str:
+    return line[len(prefix):].strip() if line.startswith(prefix) else line.strip()
 
 
 def main() -> None:
@@ -33,108 +36,78 @@ def main() -> None:
     capital_add = first_line(raw, "• 추가 승인:")
     capital_remaining = first_line(raw, "• 총 잔여 승인한도:")
     capital_horizon = first_line(raw, "• 실행 계획:")
-    capital_warning = first_line(raw, "• <b>중요:</b>")
     capital_baseline = first_line(raw, "• 직전 공식 기준(")
 
-    lines: list[str] = [
-        "🚨 <b>NVIDIA 경영진 신호</b>",
-        "━━━━━━━━━━━━━━━━",
-        "<b>[한눈에 보기]</b>",
-    ]
+    kinds = sum((has_capital, has_demand, has_safety))
+    if kinds == 1 and has_capital:
+        title = "🚨 <b>NVIDIA 자본환원</b>"
+    elif kinds == 1 and has_demand:
+        title = "🚨 <b>NVIDIA 수요 변화</b>"
+    elif kinds == 1 and has_safety:
+        title = "🚨 <b>NVIDIA 안전·출시 신호</b>"
+    else:
+        title = "🚨 <b>NVIDIA 주요 변화</b>"
+
+    lines: list[str] = [title, "━━━━━━━━━━━━━━━━", "<b>[핵심]</b>"]
 
     if has_capital:
-        lines += [
-            "💰 <b>자본환원</b> NVIDIA 자사주 매입 승인 확대",
-        ]
-        for x in (capital_add, capital_remaining, capital_horizon):
+        for x in (capital_add, capital_remaining):
             if x:
                 lines.append(x)
-        lines.append("→ <b>승인한도 ≠ 실제 매입액</b> — 실제 집행은 이후 10-Q·10-K에서 별도 확인")
+        if capital_horizon:
+            lines.append("• 실행: " + _strip_prefix(capital_horizon, "• 실행 계획:"))
+        if capital_baseline:
+            lines.append("• 직전 공식: " + _strip_prefix(capital_baseline, "• 직전 공식 기준(2026-07-26):"))
     if has_demand:
         lines += [
-            "📈 <b>수량</b> 2027년 NVIDIA 전체 칩 판매량 <b>약 2배</b> 전망",
-            "🏢 <b>공식 기준</b> FY28 매출 성장 전망 <b>약 +70%</b>",
-            "→ <b>핵심: 전체 칩 2배 ≠ AI GPU·HBM 2배</b>",
+            "• 2027년 NVIDIA 전체 칩 판매량: <b>약 2배</b> 전망",
+            "• FY28 공식 매출 성장 전망: <b>약 +70%</b>",
         ]
     if has_safety:
-        lines += [
-            "🛡️ <b>안전</b> 준비되지 않은 제품은 <b>출시 보류 후 추가 개발</b>",
-            "→ Reuters가 <b>같은 스코틀랜드 회의 현장</b> 발언으로 확인",
-            "→ 원칙적 발언이며 <b>Blackwell·Rubin 실제 지연 신호는 아직 아님</b>",
-        ]
+        lines.append("• 준비되지 않은 제품은 <b>출시 보류 후 추가 개발</b> 원칙")
 
-    lines += ["", "<b>[투자 연결]</b>"]
+    lines += ["", "<b>[해석]</b>"]
     if has_capital:
         lines += [
-            "• 자사주 매입 승인 확대는 <b>현금창출력과 자본배분 의지</b>를 보여주지만 승인 즉시 전액 매수되는 것은 아닙니다.",
-            "• 실제 주당가치 효과는 <b>실제 집행액·평균매입가·주식보상 희석·잉여현금흐름</b>을 함께 봅니다.",
+            "• <b>승인한도 ≠ 실제 매입액</b> — 실제 집행 속도가 핵심",
+            "• 주당가치 효과: <b>실제 매입액·평균매입가·주식보상 희석·잉여현금흐름</b> 확인",
         ]
     if has_demand:
         lines += [
-            "• 병목: <b>HBM·서버 DRAM·파운드리·첨단패키징·전력</b>",
-            "• 제품믹스: GPU 외 <b>CPU·스위치·광 네트워킹·노트북·Jetson</b> 포함",
-            "• 따라서 전체 칩 수량 2배를 <b>HBM 수요 2배로 직접 환산 금지</b>",
-            "• 병목 완화 → 현재 못 받는 주문이 <b>추가 매출</b>로 전환될 여지",
+            "• <b>전체 칩 2배 ≠ AI GPU·HBM 2배</b>",
+            "• 실제 매출 전환은 HBM·DRAM·파운드리·첨단패키징·전력 병목에 좌우",
         ]
     if has_safety:
-        lines.append("• 안전 원칙 발언만으로 Blackwell·Rubin 일정 지연으로 판정하지 않습니다.")
+        lines.append("• 원칙적 발언이며 <b>Blackwell·Rubin 실제 일정 지연 신호는 아직 아님</b>")
 
-    if has_demand or has_safety:
-        lines += ["", "<b>[출처·맥락]</b>"]
-        if has_demand:
-            lines.append("• 판매 2배: <b>9월 17일 스코틀랜드 찰스 3세 AI 정상회의 전 취재진 발언</b>")
-        if has_safety:
-            lines.append("• 안전: Reuters가 같은 회의 현장에서 <b>‘준비되지 않았으면 보류’</b> 발언 확인")
-        if has_demand and has_safety:
-            lines.append("• 같은 행사 맥락이지만 <b>수량 전망</b>과 <b>안전 원칙</b>은 분리해서 판단")
-
-    lines += ["", "<b>[다음 알림]</b>"]
+    lines += ["", "<b>[다음 확인]</b>"]
     if has_capital:
         lines += [
-            "• 자사주 매입 <b>추가 승인·총 잔여한도·실행기한</b> 변경",
-            "• 10-Q·10-K의 <b>실제 분기 매입액·매입주식수·평균매입가</b> 신규 확정",
-            "• 배당금·배당성향 또는 <b>주주환원 정책</b> 변경",
+            "• 10-Q·10-K: <b>실제 매입액·매입주식수·평균매입가</b>",
+            "• 추가 승인·잔여한도·배당정책 변경",
         ]
     if has_demand:
         lines += [
-            "• FY28 매출 성장률 <b>+70% 상향·하향</b>",
-            "• GPU·CPU·네트워킹 등 <b>제품별 출하량·판매량 목표</b> 신규 제시",
-            "• 전체 칩 2배 중 <b>AI GPU 비중</b> 공개",
-            "• 수요 2배 대비 <b>실제 공급 가능 비율</b> 변화",
-            "• HBM·DRAM·CoWoS·파운드리·전력 <b>병목 순위 구체화</b>",
+            "• 제품별 출하량·AI GPU 비중·공급 가능 비율",
+            "• HBM·CoWoS·파운드리·전력 병목 순위",
         ]
     if has_safety:
-        lines += [
-            "• Blackwell·Rubin이 <b>안전·신뢰성 때문에 실제 연기·출시 보류</b>",
-            "• AI 규제·안전 기준이 <b>제품 출시·데이터센터 도입 일정</b>에 직접 영향",
-        ]
+        lines.append("• Blackwell·Rubin 실제 연기·출시 보류 여부")
 
-    details = ["<b>상세 판단 기준</b>"]
+    refs: list[str] = []
     if has_capital:
-        details.append("• 자사주 매입 ‘승인’은 이사회가 사용할 수 있는 한도를 뜻하며 실제 매입 완료액과 구분합니다.")
-        for x in (capital_warning, capital_baseline):
-            if x:
-                details.append(x)
-    if has_demand:
-        details += [
-            "• FY27 2분기 실적발표에서 NVIDIA는 고객 수요 전망상 다음 해 성장 잠재력이 약 2배라고 설명했습니다.",
-            "• 회사의 FY28 공식 매출 성장 전망은 약 +70%였고, 그 차이는 수요 부족이 아니라 공급 제약 때문이라고 설명했습니다.",
-            "• 9월 17일 Huang의 ‘칩 판매 2배’는 스코틀랜드 찰스 3세 AI 정상회의 전 취재진에게 직접 밝힌 수량 전망입니다.",
-            "• 다만 NVIDIA가 총 칩 판매대수를 공개하지 않고, GPU 외 CPU·스위치·광 네트워킹·노트북·Jetson 등을 함께 판매하므로 AI GPU 2배와 동일하지 않습니다.",
-        ]
-    if has_safety:
-        details.append("• Reuters가 확인한 안전 발언은 원칙적 기준이며 Blackwell·Rubin 실제 일정 연기를 뜻하지는 않습니다.")
-    lines += ["", "<blockquote expandable>" + "\n".join(details) + "</blockquote>"]
-
-    refs = [query_line] if query_line else []
+        refs += [x for x in (capital_source, capital_official) if x]
     if has_demand:
         refs += [x for x in (official_line, demand_source) if x]
     if has_safety:
         refs += [x for x in (scotland_line, safety_source) if x]
-    if has_capital:
-        refs += [x for x in (capital_source, capital_official) if x]
+    if query_line:
+        refs.append(query_line)
+
     if refs:
-        lines += ["", "<b>[근거]</b>"] + refs
+        lines += ["", "<b>[근거]</b>"]
+        for ref in refs:
+            lines.append(ref)
 
     ALERT.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
