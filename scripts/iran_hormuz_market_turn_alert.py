@@ -684,54 +684,141 @@ def fmt_quote_line(quote: Quote) -> str:
     )
 
 
+def _extract_kpler_sts_metrics(news_rows: list[NewsItem]) -> dict[str, object] | None:
+    for row in news_rows:
+        if "kpler" not in normalize_text(row.source):
+            continue
+        title = str(row.title or "")
+        match = re.search(
+            r"STS record\s+([0-9.]+)\s+Mbd\s+as of\s+(\d{4}-\d{2}-\d{2});\s*"
+            r"since-war average\s+([0-9.]+)\s+Mbd;\s*"
+            r"2025 average\s+([0-9.]+)\s+Mbd"
+            r"(?:;\s*Saudi\s+([0-9.]+)\s+Mbd\s+requires\s+(\d+)-(\d+)\s+additional VLCCs)?",
+            title,
+            flags=re.I,
+        )
+        if not match:
+            continue
+        current = float(match.group(1))
+        since_war = float(match.group(3))
+        baseline_2025 = float(match.group(4))
+        return {
+            "current_mbd": current,
+            "source_date": match.group(2),
+            "since_war_mbd": since_war,
+            "baseline_2025_mbd": baseline_2025,
+            "vs_war_avg": current / since_war if since_war else None,
+            "vs_2025_avg": current / baseline_2025 if baseline_2025 else None,
+            "saudi_increment_mbd": float(match.group(5)) if match.group(5) else None,
+            "vlcc_low": int(match.group(6)) if match.group(6) else None,
+            "vlcc_high": int(match.group(7)) if match.group(7) else None,
+            "link": row.link,
+        }
+    return None
+
+
 def build_physical_flow_alert_body(
     kind: str,
     news_rows: list[NewsItem],
     oil: Quote | None,
     current: dt.datetime,
 ) -> str:
+    metrics = _extract_kpler_sts_metrics(news_rows)
     lines = [
         current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
         "",
-        f"확정 변화: {EVENT_LABELS[kind]}",
-        "근거:",
+        "[한눈에]",
     ]
-    for row in news_rows[:3]:
-        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
-        lines.append(f"- {row.source} · {published:%m-%d %H:%M KST} · {row.title}")
 
+    if kind == "sts_reroute_expansion" and metrics:
+        lines.append("원유 공급     회복 ↑")
+        lines.append("물류 효율     병목 심화 ↓")
+        lines.append(
+            f"GoO STS       {float(metrics['current_mbd']):.1f} Mbd · "
+            f"전쟁 후 평균 {float(metrics['since_war_mbd']):.1f} · "
+            f"2025 평균 {float(metrics['baseline_2025_mbd']):.2f}"
+        )
+        if metrics.get("vs_war_avg") is not None and metrics.get("vs_2025_avg") is not None:
+            lines.append(
+                f"현재 강도     전쟁 후 평균의 {float(metrics['vs_war_avg']):.1f}배 · "
+                f"2025 평균의 {float(metrics['vs_2025_avg']):.0f}배"
+            )
+        if metrics.get("vlcc_low") is not None:
+            lines.append(
+                f"VLCC 수요     Saudi +{float(metrics['saudi_increment_mbd']):.0f} Mbd 처리 시 "
+                f"+{int(metrics['vlcc_low'])}~{int(metrics['vlcc_high'])}척"
+            )
+        lines.append(f"기준일        {metrics['source_date']} · Kpler")
+    else:
+        lines.append(f"변화          {EVENT_LABELS[kind]}")
+
+    if oil is not None:
+        direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
+        lines.append(
+            f"Brent         USD {oil.price:.2f}/배럴 · {oil.change_pct:+.2f}% {direction}"
+        )
+
+    lines.extend(["", "[핵심 의미]"])
     if kind == "oil_flow_recovery":
         lines.extend([
-            "",
-            "정확한 의미:",
-            "- 중동 원유가 시장에 다시 나오고 있다는 신호지만, 호르무즈가 전쟁 이전처럼 정상화됐다는 뜻은 아닙니다.",
-            "- 사우디 Persian Gulf 선적, Red Sea/Yanbu 선적, 호르무즈 실제 통과량을 분리해 봅니다.",
-            "- 걸프 전체 지역 수출(all liquids)은 Fujairah·Oman 적재까지 포함할 수 있어 호르무즈 통과량과 동일하지 않습니다.",
+            "원유는 다시 시장에 나오고 있습니다.",
+            "다만 호르무즈가 전쟁 이전처럼 정상화됐다는 뜻은 아닙니다.",
+            "→ 공급량 회복은 유가 하방, 우회 물류 지속은 운임 상방 요인입니다.",
         ])
     else:
         lines.extend([
-            "",
-            "정확한 의미:",
-            "- Gulf of Oman 선박 간 이송(STS)이 원유 수출의 우회 통로로 급증한 신호입니다.",
-            "- STS는 같은 배럴이 여러 번 이송될 수 있어 STS 물량을 해협 순수 통과량과 합산하지 않습니다.",
-            "- Fujairah·Sohar 지원능력과 VLCC 회전율이 새로운 병목이 될 수 있습니다.",
+            "원유는 다시 나오지만 정상 항로 회복이 아니라 GoO STS 우회로 빼내는 중입니다.",
+            "→ 유가에는 하방 압력, VLCC 운임·물류비에는 상방 압력이 동시에 생길 수 있습니다.",
+            "→ '수출 회복'과 '물류 정상화'를 같은 의미로 보면 안 됩니다.",
         ])
-    if oil is not None:
-        lines.extend(["", "시장 확인:", fmt_quote_line(oil)])
+
+    lines.extend(["", "[병목]"])
+    if kind == "sts_reroute_expansion":
+        lines.extend([
+            "1) Fujairah·Sohar 육상 지원능력 한계",
+            "2) STS 작업 슬롯·예인선·파일럿·검사 처리능력",
+            "3) VLCC 회전율 저하",
+            "4) 한계 초과 시 서인도 → 말레이시아로 이송거리 확대",
+            "Kpler 시나리오: 말레이시아까지 밀리면 최대 58척 수준의 VLCC가 필요할 수 있음",
+        ])
+    else:
+        lines.extend([
+            "1) 호르무즈 실제 통과량",
+            "2) Ras Tanura 선적 지속 여부",
+            "3) Yanbu·East-West Pipeline 복구 속도",
+            "4) 보험·VLCC 운임",
+        ])
+
+    lines.extend(["", "[다음 체크]"])
     lines.extend([
-        "",
-        "투자 포인트:",
-        "- 돈 버는 능력: 원유 공급 회복은 정제 투입원가·유가 위험프리미엄 완화 요인이지만 STS·장거리 우회는 VLCC 운임과 물류비를 높일 수 있습니다.",
-        "- 수급: 실제 물량 회복과 물류비 정상화는 별개입니다. 수출량↑·운임↑가 동시에 나타날 수 있습니다.",
-        "- 시간표: 호르무즈 통과량 → Saudi Gulf/Red Sea 선적 → GoO STS → Fujairah/Sohar 병목 → VLCC 운임 순으로 확인합니다.",
-        "",
-        "정책 발언 처리:",
-        "- 대통령·정부 발언은 맥락으로만 표시하며 Kpler·Reuters·Bloomberg·CENTCOM 등 물량/통항 데이터 없이 정상화 확정 트리거로 사용하지 않습니다.",
-        "",
-        "실패 경로:",
-        "- Houthi/이란 공격 재확대, Yanbu 재차 중단, STS 지원능력 포화, 보험·VLCC 운임 급등이면 수출량 회복에도 실효 공급비용이 다시 악화될 수 있습니다.",
+        "호르무즈 실제 통과량",
+        "Saudi Gulf / Red Sea 선적량",
+        "GoO STS 7일 평균과 신규 최고치",
+        "Fujairah·Sohar 병목",
+        "VLCC 운임·가용선복",
+        "Brent",
     ])
+
+    lines.extend(["", "[근거]"])
+    for row in news_rows[:3]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        if "kpler" in normalize_text(row.source) and metrics:
+            lines.append(
+                f"Kpler · STS {float(metrics['current_mbd']):.1f} Mbd 기록 · "
+                f"전쟁 후 평균 {float(metrics['since_war_mbd']):.1f} · "
+                f"2025 평균 {float(metrics['baseline_2025_mbd']):.2f}"
+            )
+        else:
+            lines.append(f"{row.source} · {published:%m-%d %H:%M KST} · {row.title}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+
+    lines.extend(["", "[주의]"])
+    lines.append("STS 물량은 같은 배럴이 여러 번 이송될 수 있어 호르무즈 통과량·중동 전체 수출량과 합산하지 않습니다.")
+    lines.append("대통령·정부 발언은 참고만 하고, 실물 물량·통항 데이터 없이 '정상화'로 판정하지 않습니다.")
+
     return "\n".join(lines).strip() + "\n"
+
 
 
 def build_alert_body(
