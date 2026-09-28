@@ -9,6 +9,7 @@ on:
       - "scripts/currency_krw_guard.py"
       - "scripts/fx_api.py"
       - "tests/test_nvidia_exec_signal_watch.py"
+      - "tests/test_nvidia_exec_signal_pretty.py"
   schedule:
     - cron: "31 * * * *"
   workflow_dispatch:
@@ -64,7 +65,7 @@ jobs:
       - name: Check NVIDIA executive demand safety and capital-return signals
         run: |
           python -m py_compile scripts/nvidia_exec_signal_watch.py scripts/currency_krw_guard.py scripts/fx_api.py
-          python -m unittest discover -s tests -p 'test_nvidia_exec_signal_watch.py' -v
+          python -m unittest discover -s tests -p 'test_nvidia_exec_signal*.py' -v
           python scripts/nvidia_exec_signal_watch.py
 
       - name: Format NVIDIA executive alert for readability
