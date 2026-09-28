@@ -316,10 +316,19 @@ assert s < 11, ("XPENG line-commissioned baseline must stay silent", s, c)
 
 xpeng_supplier = make(
     "小鹏机器人完成供应链审厂及核心零部件定点",
-    "小鹏 IRON 已完成供应链审厂及核心零部件定点，执行器、灵巧手、传感器、AI芯片核心供应商进入量产准备。",
+    "9月22日小鹏集团举行首届机器人供应链合作伙伴大会，小鹏 IRON 已完成供应链审厂及核心零部件定点，执行器、灵巧手、传感器、AI芯片核心供应商进入量产准备。",
     "第一财经",
 )
 g, s, c, k = classify(xpeng_supplier)
+assert g == "xpeng", (g, s, c)
+assert s < 11, ("known Sep-22 XPENG supplier event must stay silent", s, c)
+
+xpeng_supplier_new = make(
+    "小鹏机器人启动第二轮量产审厂并新增核心供应商定点",
+    "XPENG IRON started a second-round supplier audit and nominated a new core component supplier for mass-production allocation.",
+    "第一财经",
+)
+g, s, c, k = classify(xpeng_supplier_new)
 assert g == "xpeng", (g, s, c)
 assert c.endswith("IRON 핵심부품 공급사 선정"), c
 assert s >= 11, s
@@ -333,7 +342,7 @@ g, s, c, k = classify(xpeng_sop)
 assert g == "xpeng", (g, s, c)
 assert c.endswith("IRON 실제 양산 개시"), c
 assert s >= 11, s
-assert k != classify(xpeng_supplier)[3], ("supplier nomination and SOP must remain separate events", k)
+assert k != classify(xpeng_supplier_new)[3], ("new supplier nomination and SOP must remain separate events", k)
 
 # 14) RFM: generic industry explainers and the existing NC AI-POSCO DX MOU stay
 # silent. New quantitative cross-embodiment results and multi-robot field use alert.
