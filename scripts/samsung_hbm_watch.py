@@ -182,6 +182,7 @@ TRUSTED = (
     "kita", "한국무역협회", "k-stat", "trass", "한국무역통계진흥원",
     "customs", "관세청", "icheon", "이천시", "intel", "ase", "tf-amd", "tf amd",
     "mapc", "mosti", "mida", "the edge malaysia",
+    "j.p. morgan", "jp morgan", "jpmorgan", "ubs", "morgan stanley", "citi", "bofa", "goldman sachs",
 )
 
 LOW_VALUE = ("aol", "finance.biggo", "24/7 wall st", "247wallst", "cryptobriefing")
@@ -244,6 +245,8 @@ def source_rank(source: str) -> int:
         return 98
     if "reuters" in low:
         return 95
+    if any(x in low for x in ("j.p. morgan", "jp morgan", "jpmorgan", "ubs", "morgan stanley", "citi", "bofa", "goldman sachs")):
+        return 92
     if "counterpoint" in low or "trendforce" in low:
         return 90
     if "bloomberg" in low or "digitimes" in low:
