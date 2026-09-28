@@ -26,7 +26,8 @@ STATUS = OUT / "nvidia_exec_signal_status.md"
 
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 36
-FORMAT_VERSION = 2
+FORMAT_VERSION = 3
+CAPITAL_RETURN_TRACK_VERSION = 1
 
 OFFICIAL_Q2_TRANSCRIPT = (
     "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-"
@@ -35,6 +36,22 @@ OFFICIAL_Q2_TRANSCRIPT = (
 REUTERS_SCOTLAND = (
     "https://www.reuters.com/world/uk/king-charles-urge-ai-leaders-protect-humanity-scottish-meeting-2026-09-17/"
 )
+OFFICIAL_Q2_10Q = (
+    "https://investor.nvidia.com/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf"
+)
+OFFICIAL_PRESS_RELEASES = "https://investor.nvidia.com/news-and-events/press-releases/default.aspx"
+OFFICIAL_BUYBACK_CANDIDATES = [
+    "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-a-150-Billion-Share-Repurchase-Authorization-Increase/default.aspx",
+    "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-a-150-Billion-Share-Repurchase-Authorization-Increase/",
+]
+
+CAPITAL_RETURN_BASELINE = {
+    "remaining_authorization_usd_b": 99.3,
+    "actual_q2_repurchase_usd_b": 19.7,
+    "actual_h1_repurchase_usd_b": 39.8,
+    "as_of": "2026-07-26",
+    "source_url": OFFICIAL_Q2_10Q,
+}
 
 QUERIES = [
     '"Jensen Huang" Nvidia (double OR doubling OR twice) chip sales 2027',
@@ -44,6 +61,11 @@ QUERIES = [
     '"Jensen Huang" safety engineering problem unsafe products',
     '"젠슨 황" 엔비디아 내년 칩 판매 두 배',
     '"젠슨 황" AI 안전 제품 출시 보류',
+    '"NVIDIA" "share repurchase" authorization',
+    '"NVIDIA" buyback authorization 150 billion 235 billion',
+    '"NVIDIA" capital return repurchase dividend',
+    '"엔비디아" 자사주 매입 승인',
+    '"엔비디아" 자사주 매입 1500억 달러',
 ]
 
 TRUSTED = (
@@ -142,7 +164,13 @@ def classify(text: str) -> str:
         "safety", "unsafe", "don't release", "do not release", "pause", "engineering problem",
         "안전", "출시 보류", "출시하지", "보류",
     )
+    capital_terms = (
+        "share repurchase", "repurchase authorization", "stock repurchase", "buyback",
+        "capital return", "return capital", "자사주", "주식 매입", "주주환원", "주주 환원",
+    )
 
+    if any(k in low for k in capital_terms):
+        return "capital_return"
     if any(k in low for k in demand_terms):
         return "demand"
     if jensen and any(k in low for k in safety_terms):
@@ -150,8 +178,70 @@ def classify(text: str) -> str:
     return ""
 
 
+def _money_billion(text: str, label_patterns: tuple[str, ...]) -> float | None:
+    for label in label_patterns:
+        patterns = [
+            label + r"[^$0-9]{0,100}\$\s*([0-9]+(?:\.[0-9]+)?)\s*(?:billion|bn|b)\b",
+            r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*(?:billion|bn|b)\b[^.]{0,100}" + label,
+            label + r"[^0-9]{0,100}([0-9]+(?:\.[0-9]+)?)\s*(?:십억|billion)\s*달러",
+            label + r"[^0-9]{0,100}([0-9]+(?:\.[0-9]+)?)\s*억\s*달러",
+        ]
+        for pat in patterns:
+            m = re.search(pat, text, re.I)
+            if not m:
+                continue
+            value = float(m.group(1))
+            if "억" in pat:
+                value /= 10.0
+            if 0 < value < 5000:
+                return value
+    return None
+
+
+def extract_capital_return(text: str) -> dict:
+    low = text.lower()
+    additional = _money_billion(text, (
+        r"(?:additional|increase(?:d)?(?:\s+by)?|authorization increase|추가(?:로)?|증액)",
+        r"(?:authorized|approved|승인)[^.]{0,60}(?:additional|추가)",
+    ))
+    remaining = _money_billion(text, (
+        r"(?:total remaining|remaining total|remaining amount|total authorization|total remaining amount|잔여|남은|총 승인)",
+        r"(?:increase(?:s|d)?|raising|bringing)[^.]{0,70}(?:to|총)",
+    ))
+    fy = None
+    for pat in (
+        r"(?:through|by)\s+(?:fiscal\s+year|fiscal|FY)\s*'?20?([0-9]{2,4})",
+        r"(?:회계연도|FY)\s*20?([0-9]{2,4})[^.]{0,40}(?:까지|through)",
+    ):
+        m = re.search(pat, text, re.I)
+        if m:
+            raw = m.group(1)
+            fy = int(raw) + 2000 if len(raw) == 2 else int(raw)
+            break
+    actual = None
+    m = re.search(r"(?:repurchased|bought back|실제 매입)[^$]{0,60}\$\s*([0-9]+(?:\.[0-9]+)?)\s*(?:billion|bn|b)\b", text, re.I)
+    if m:
+        actual = float(m.group(1))
+    return {
+        "additional_authorization_usd_b": additional,
+        "remaining_authorization_usd_b": remaining,
+        "execution_through_fy": fy,
+        "actual_repurchase_usd_b": actual,
+    }
+
+
 def fact_key(kind: str, text: str) -> str:
     low = text.lower()
+    if kind == "capital_return":
+        cap = extract_capital_return(text)
+        parts = [
+            cap.get("additional_authorization_usd_b"),
+            cap.get("remaining_authorization_usd_b"),
+            cap.get("execution_through_fy"),
+            cap.get("actual_repurchase_usd_b"),
+        ]
+        sig = "_".join("na" if x is None else str(x).replace(".", "_") for x in parts)
+        return "nvidia_capital_return_" + sig
     if kind == "demand":
         if any(k in low for k in ("double", "doubling", "twice", "두 배")) and "2027" in low:
             return "nvidia_2027_chip_sales_double"
@@ -164,6 +254,62 @@ def fact_key(kind: str, text: str) -> str:
             return "nvidia_safety_do_not_release_unsafe"
         return "nvidia_safety_" + hashlib.sha1(text.encode()).hexdigest()[:10]
     return hashlib.sha1(text.encode()).hexdigest()[:12]
+
+
+def _official_press_release_events() -> list[dict]:
+    urls = list(OFFICIAL_BUYBACK_CANDIDATES)
+    try:
+        listing = fetch(OFFICIAL_PRESS_RELEASES, timeout=20).decode("utf-8", errors="ignore")
+        for m in re.finditer(r'href=["\']([^"\']+/news/press-release-details/2026/[^"\']+)["\']', listing, re.I):
+            url = urllib.parse.urljoin(OFFICIAL_PRESS_RELEASES, html.unescape(m.group(1)))
+            if url not in urls:
+                urls.append(url)
+    except Exception:
+        pass
+
+    rows = []
+    for url in urls[:30]:
+        try:
+            raw = fetch(url, timeout=16).decode("utf-8", errors="ignore")
+        except Exception:
+            continue
+        text = clean(raw)
+        if "nvidia" not in text.lower():
+            continue
+        kind = classify(text)
+        if kind != "capital_return":
+            continue
+        title_m = re.search(r"<title[^>]*>(.*?)</title>", raw, re.I | re.S)
+        title = clean(title_m.group(1)) if title_m else "NVIDIA 자본환원 발표"
+        pub = ""
+        for pat in (
+            r"(?:Sept\.?|September)\s+([0-9]{1,2}),\s*(20[0-9]{2})",
+            r"(20[0-9]{2})[-/]([0-9]{2})[-/]([0-9]{2})",
+        ):
+            m = re.search(pat, text, re.I)
+            if not m:
+                continue
+            try:
+                if len(m.group(1)) == 4:
+                    y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
+                else:
+                    y, mo, d = int(m.group(2)), 9, int(m.group(1))
+                pub = datetime(y, mo, d, 9, 0, tzinfo=ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")
+                break
+            except Exception:
+                pass
+        rows.append({
+            "id": event_id(title, "NVIDIA Investor Relations"),
+            "kind": "capital_return",
+            "fact_key": fact_key("capital_return", text),
+            "title": title,
+            "description": text[:20000],
+            "source": "NVIDIA Investor Relations",
+            "published_at_kst": pub,
+            "direct_link": url,
+            "rank": 100,
+        })
+    return rows
 
 
 def read_events() -> list[dict]:
@@ -204,6 +350,8 @@ def read_events() -> list[dict]:
                     "direct_link": direct,
                     "rank": source_rank(source, title),
                 }
+    for e in _official_press_release_events():
+        rows[e["id"]] = e
     return sorted(rows.values(), key=lambda x: x.get("published_at_kst") or "")
 
 
@@ -251,6 +399,7 @@ def choose_new(events: list[dict], seen_ids: set[str], seen_fact_keys: set[str],
 def build_alert(events: list[dict], now: datetime) -> str:
     demand = next((e for e in reversed(events) if e["kind"] == "demand"), None)
     safety = next((e for e in reversed(events) if e["kind"] == "safety"), None)
+    capital = next((e for e in reversed(events) if e["kind"] == "capital_return"), None)
 
     lines = [
         "🚨 <b>NVIDIA 경영진·AI 수요·안전 전략 변화</b>",
@@ -258,6 +407,24 @@ def build_alert(events: list[dict], now: datetime) -> str:
         "<b>[무엇이 달라졌나]</b>",
     ]
 
+    if capital:
+        cap = extract_capital_return(clean(f"{capital.get('title','')} {capital.get('description','')}"))
+        add = cap.get("additional_authorization_usd_b")
+        rem = cap.get("remaining_authorization_usd_b")
+        fy = cap.get("execution_through_fy")
+        lines += [
+            "• <b>자본환원</b>: NVIDIA 이사회가 자사주 매입 승인 규모를 대폭 확대했습니다.",
+        ]
+        if add is not None:
+            lines.append(f"• 추가 승인: <b>${add:g} billion</b>")
+        if rem is not None:
+            lines.append(f"• 총 잔여 승인한도: <b>${rem:g} billion</b>")
+        if fy is not None:
+            lines.append(f"• 실행 계획: <b>FY{str(fy)[2:]}</b>까지")
+        lines += [
+            "• <b>중요:</b> 승인한도는 실제 매입 완료액이 아닙니다. 실제 집행액은 이후 10-Q·10-K의 매입 주식수·평균매입가와 별도로 추적합니다.",
+            f"• 직전 공식 기준(2026-07-26): 잔여 승인한도 <b>${CAPITAL_RETURN_BASELINE['remaining_authorization_usd_b']:g} billion</b> · Q2 실제 매입 <b>${CAPITAL_RETURN_BASELINE['actual_q2_repurchase_usd_b']:g} billion</b> · FY27 상반기 실제 매입 <b>${CAPITAL_RETURN_BASELINE['actual_h1_repurchase_usd_b']:g} billion</b>",
+        ]
     if demand:
         lines += [
             "• 9월 17일 스코틀랜드에서 Jensen Huang은 찰스 3세 AI 정상회의 전 취재진에게 <b>2027년에 올해보다 약 2배 많은 칩을 판매할 것으로 예상</b>한다고 말했습니다.",
@@ -283,12 +450,17 @@ def build_alert(events: list[dict], now: datetime) -> str:
         "• 두 발언 모두 스코틀랜드 행사 맥락이지만, <b>칩 판매 2배는 수량 전망</b>, <b>안전 발언은 출시 원칙</b>으로 분리해서 해석합니다.",
         "",
         "<b>[투자적으로 왜 중요한가]</b>",
+        "• 자사주 매입 <b>승인 확대</b>는 현금창출력과 자본배분 의지를 보여주지만, 승인 즉시 같은 금액이 시장에서 매수되는 것은 아닙니다.",
+        "• 실제 주당가치 효과는 <b>실제 집행액·평균 매입가격·주식보상으로 인한 희석·잉여현금흐름</b>을 함께 봐야 합니다.",
         "• <b>전체 칩 수량 2배 전망 + FY28 매출 +70% 공식 전망</b>의 차이는 제품혼합과 공급 제약을 함께 봐야 한다는 뜻입니다.",
         "• HBM·서버 DRAM·첨단패키징·파운드리 생산능력이 늘면 NVIDIA가 현재 못 받는 주문을 추가 매출로 전환할 여지가 큽니다.",
         "• 다만 CPU·스위치·광통신·노트북용 칩까지 포함된 수량 전망이므로 <b>HBM 업체 매출을 2배로 직접 계산하지 않습니다.</b>",
         "• 반대로 안전 발언만으로 제품 출시 지연을 의미하지는 않습니다. 실제 <b>Blackwell·Rubin 일정 변경이나 고객 승인 지연</b>이 확인될 때만 실적 시간표 악화로 판정합니다.",
         "",
         "<b>[다음 알림 조건]</b>",
+        "• 자사주 매입 <b>추가 승인·총 잔여한도·실행기한</b>이 변경",
+        "• 10-Q·10-K에서 <b>실제 분기 매입액·매입주식수·평균매입가</b> 신규 확정",
+        "• 배당금·배당성향 또는 주주환원 정책 변경",
         "• NVIDIA가 FY28 매출 성장률을 <b>+70%에서 상향·하향</b>",
         "• GPU·AI 가속기와 CPU·네트워킹 등 <b>제품별 출하량·판매량 목표</b>를 새로 제시",
         "• 전체 칩 2배 전망 중 <b>AI GPU가 차지하는 비중</b>이 공개",
@@ -310,6 +482,13 @@ def build_alert(events: list[dict], now: datetime) -> str:
         lines.append(
             f"<b>안전 발언 출처</b>: {html.escape(safety['source'])} · {link(safety['direct_link'])}"
         )
+    if capital:
+        lines.append(
+            f"<b>자본환원 출처</b>: {html.escape(capital['source'])} · {link(capital['direct_link'])}"
+        )
+        lines.append(
+            f"<b>직전 공식 자사주 기준</b>: {link(OFFICIAL_Q2_10Q, 'NVIDIA FY27 2Q 10-Q')}"
+        )
 
     return "\n".join(lines) + "\n"
 
@@ -319,6 +498,10 @@ def main() -> None:
     state = load_state()
     seen_ids = set(state.get("seen_ids") or [])
     seen_fact_keys = set(state.get("seen_fact_keys") or [])
+    capital_state = dict(state.get("capital_return_state") or {})
+    if int(state.get("capital_return_track_version") or 0) < CAPITAL_RETURN_TRACK_VERSION:
+        capital_state = dict(CAPITAL_RETURN_BASELINE)
+        state["capital_return_track_version"] = CAPITAL_RETURN_TRACK_VERSION
 
     events = read_events()
     new_events = choose_new(events, seen_ids, seen_fact_keys, now)
@@ -350,6 +533,16 @@ def main() -> None:
 
     seen_ids.update(e["id"] for e in events)
     seen_fact_keys.update(e["fact_key"] for e in new_events)
+    for e in new_events:
+        if e.get("kind") != "capital_return":
+            continue
+        cap = extract_capital_return(clean(f"{e.get('title','')} {e.get('description','')}"))
+        for key in ("additional_authorization_usd_b", "remaining_authorization_usd_b", "execution_through_fy", "actual_repurchase_usd_b"):
+            if cap.get(key) is not None:
+                capital_state[key] = cap[key]
+        capital_state["observed_at_kst"] = e.get("published_at_kst") or now.isoformat(timespec="seconds")
+        capital_state["source"] = e.get("source") or ""
+        capital_state["source_url"] = e.get("direct_link") or ""
     state = {
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "seen_ids": sorted(seen_ids)[-1000:],
@@ -358,6 +551,8 @@ def main() -> None:
         "last_new_event_count": len(new_events),
         "alert_generated": bool(new_events),
         "format_version": FORMAT_VERSION,
+        "capital_return_track_version": CAPITAL_RETURN_TRACK_VERSION,
+        "capital_return_state": capital_state,
     }
     write_state(state)
 
