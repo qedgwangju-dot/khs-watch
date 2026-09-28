@@ -96,5 +96,27 @@ class CurrencyKRWGuardTests(unittest.TestCase):
             g.validate_text("가격 USD 30,000")
         g.validate_text("가격 USD 30,000(약 4,050만원)")
 
+
+    def test_usd_per_mw_gets_immediate_krw_parentheses(self):
+        with patch.object(g, "_rate", side_effect=self.fake_rate):
+            out = g.enforce_text("MW당 연환산 매출 $40 million/MW")
+        self.assertIn("$40 million/MW(", out)
+        self.assertIn("원/MW)", out)
+        g.validate_text(out)
+
+    def test_korean_currency_per_mwh_gets_immediate_krw_parentheses(self):
+        with patch.object(g, "_rate", side_effect=self.fake_rate):
+            out = g.enforce_text("전력비 2백만달러/MWh")
+        self.assertIn("2백만달러/MWh(", out)
+        self.assertIn("원/MWh)", out)
+        g.validate_text(out)
+
+    def test_iso_currency_per_gpu_gets_immediate_krw_parentheses(self):
+        with patch.object(g, "_rate", side_effect=self.fake_rate):
+            out = g.enforce_text("가격 USD 30,000/GPU")
+        self.assertIn("USD 30,000/GPU(", out)
+        self.assertIn("원/GPU)", out)
+        g.validate_text(out)
+
 if __name__ == "__main__":
     unittest.main()
