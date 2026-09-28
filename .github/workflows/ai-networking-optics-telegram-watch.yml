@@ -83,6 +83,40 @@ jobs:
           assert not watch.same_underlying_story(representative, contract), (
               "A genuinely new PhotonLink customer-contract event was incorrectly suppressed."
           )
+
+          equipment_a = {
+              "company": "CPO Equipment Supply Chain",
+              "title": "Chieftek GMT TOYO see CPO equipment orders surge with visibility through Q2 2027",
+              "category": "CPO 장비 수주·가시성",
+              "source": "test",
+              "score": 12,
+              "published": "2026-09-28T03:00:00+00:00",
+          }
+          equipment_b = {
+              "company": "CPO Equipment Supply Chain",
+              "title": "Taiwan CPO alignment equipment suppliers report 2027 Q2 order visibility as demand accelerates",
+              "category": "CPO 장비 수주·가시성",
+              "source": "test mirror",
+              "score": 11,
+              "published": "2026-09-28T04:00:00+00:00",
+          }
+          equipment_capacity = {
+              "company": "CPO Equipment Supply Chain",
+              "title": "GMT doubles CPO assembly capacity with new factory line",
+              "category": "CPO 장비 증설·가동률",
+              "source": "test",
+              "score": 10,
+              "published": "2026-10-05T03:00:00+00:00",
+          }
+          assert watch.same_underlying_story(equipment_a, equipment_b), (
+              "Mirrored CPO-equipment order story was not deduplicated."
+          )
+          assert not watch.same_underlying_story(equipment_a, equipment_capacity), (
+              "A new CPO-equipment capacity event was incorrectly suppressed as an old order story."
+          )
+          assert not watch.same_underlying_story(representative, equipment_a), (
+              "PhotonLink product news and CPO manufacturing-equipment news must remain separate."
+          )
           print("dedupe_regression_test=passed")
           PY
 
@@ -135,8 +169,11 @@ jobs:
           keep_terms = [
               "NVIDIA", "Broadcom", "Arista Networks", "Marvell", "Lumentum",
               "Coherent", "Astera Labs", "Corning", "Samsung Electronics", "Samsung Foundry",
+              "Chieftek", "Chieftek Precision", "GMT Global", "GMT GLOBAL",
+              "TOYO Automation", "ficonTEC", "Suruga Seiki", "Allring Tech", "FitTech",
               "PhotonLink", "Spectrum-X", "NVLink", "BlueField", "Tomahawk", "Thor",
-              "CPO", "NPO", "SiPh", "InP", "PIC", "FAU", "ELS", "DSP", "PCIe", "CXL",
+              "CPO", "NPO", "SiPh", "InP", "PIC", "FAU", "ELS", "OSAT", "CAPA",
+              "DSP", "PCIe", "CXL",
               "GPU", "XPU", "AI", "1.6T", "3.2T", "800G", "100Tbps", "FY25", "FY26",
               "FY27", "FY28", "AVGO", "NVDA", "ANET", "MRVL", "LITE",
               "COHR", "ALAB", "GLW", "005930.KS",
@@ -329,6 +366,14 @@ jobs:
                   drivers.append("3.2T")
               if re.search(r"PCIe|CXL|retimer|interconnect|fabric", text, re.I):
                   drivers.append("랙 내부 인터커넥트")
+              if re.search(r"optical coupling|active alignment|alignment|aligner|motion platform|linear motor|FAU", text, re.I):
+                  drivers.append("CPO 정밀정렬·광결합 장비")
+              if re.search(r"order visibility|backlog|orders?", text, re.I):
+                  drivers.append("수주 가시성")
+              if re.search(r"capacity|CAPA|factory|new line|utilization", text, re.I):
+                  drivers.append("생산능력 증설")
+              if re.search(r"OSAT|qualification|validation|verification", text, re.I):
+                  drivers.append("고객 검증·OSAT 도입")
 
               subject = " ".join(x for x in [company, fiscal.group(0).upper().replace(" ", "") if fiscal else "", metric, trend] if x).strip()
               driver_text = "·".join(dict.fromkeys(drivers))
