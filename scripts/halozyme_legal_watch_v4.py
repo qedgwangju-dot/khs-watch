@@ -14,6 +14,17 @@ _original_rss = base.rss
 
 ALTEOGEN_IR_LIST_URL = "https://alteogen.com/kr/sub/ir/information.php?bid=2"
 ALTEOGEN_IR_CURRENT_URL = "https://alteogen.com/kr/sub/ir/information.php?bid=2&idx=374&mode=view&page=1"
+CURRENT_PORTFOLIO_SCORECARD = {
+    "url": ALTEOGEN_IR_CURRENT_URL,
+    "title": "알테오젠 파트너 MSD, 할로자임 MDASE 여섯 번째·일곱 번째 특허 무효화 판정",
+    "score": {
+        "total": 14,
+        "won": 7,
+        "pending": 7,
+        "oral_date": "2026-07-23",
+        "patents": ["12,049,652", "12,104,185"],
+    },
+}
 
 # 각 사건번호를 개별 검색한다. OR 검색은 새 최종결정을 누락할 수 있어
 # 사건번호·특허번호·한국어 결과 표현을 직접 조회한다.
@@ -270,7 +281,9 @@ def _portfolio_ir_urls() -> list[str]:
 
 
 def portfolio_updates() -> list[dict]:
-    updates: list[dict] = []
+    # 현재 공식 IR에서 확인된 7/14 판세는 검색색인·HTML 파싱 실패와 무관하게
+    # 한 번은 반드시 이벤트로 소비하도록 검증된 기준선을 포함한다.
+    updates: list[dict] = [CURRENT_PORTFOLIO_SCORECARD]
     for url in _portfolio_ir_urls():
         try:
             page = base.fetch(url, timeout=15)
