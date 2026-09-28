@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-29T07:17:11+09:00",
+  "updated_at_kst": "2026-09-29T08:58:43+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -21,54 +21,54 @@
     "five_day_30y_bp": 27.0
   },
   "btc_etf": {
-    "date": "2026-09-25",
-    "total_usd_m": 134.5,
-    "status": "complete",
-    "reported_funds": 12,
-    "missing_funds": 0,
-    "prev_date": "2026-09-24",
-    "prev_total_usd_m": 190.7,
-    "day_change_usd_m": -56.2,
-    "day_change_pct": -29.5,
+    "date": "2026-09-28",
+    "total_usd_m": -12.9,
+    "status": "partial",
+    "reported_funds": 5,
+    "missing_funds": 7,
+    "prev_date": "2026-09-25",
+    "prev_total_usd_m": 134.5,
+    "day_change_usd_m": -147.4,
+    "day_change_pct": -109.6,
     "source_latest_date": "2026-09-28",
-    "source_latest_status": "pending",
-    "pending_date": "2026-09-28",
-    "latest_recomputed_total_usd_m": 134.5,
+    "source_latest_status": "partial",
+    "pending_date": null,
+    "latest_recomputed_total_usd_m": -12.9,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
-    "last5_usd_m": 2385.8,
+    "last5_usd_m": 1373.9,
     "last5_dates": [
-      "2026-09-21",
       "2026-09-22",
       "2026-09-23",
       "2026-09-24",
-      "2026-09-25"
+      "2026-09-25",
+      "2026-09-28"
     ],
     "last5_values_usd_m": [
-      999.0,
       714.7,
       346.9,
       190.7,
-      134.5
+      134.5,
+      -12.9
     ],
-    "prev5_usd_m": 6.1,
+    "prev5_usd_m": 845.2,
     "prev5_dates": [
-      "2026-09-14",
       "2026-09-15",
       "2026-09-16",
       "2026-09-17",
-      "2026-09-18"
+      "2026-09-18",
+      "2026-09-21"
     ],
     "prev5_values_usd_m": [
-      159.9,
       -450.4,
       -295.9,
       159.5,
-      433.0
+      433.0,
+      999.0
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": 2379.7,
-    "five_day_change_pct": 39011.5,
+    "five_day_change_usd_m": 528.7,
+    "five_day_change_pct": 62.6,
     "five_day_direction": "순자금흐름 개선"
   },
   "sources": {
