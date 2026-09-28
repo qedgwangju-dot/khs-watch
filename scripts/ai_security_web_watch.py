@@ -77,6 +77,9 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic OR Google OR Meta) "tool use" paused resumed safety security',
     '(OpenAI OR Anthropic) "time to detection" OR "run was killed" OR "human reviewer" security agent',
     '(OpenAI OR Anthropic) unauthorized access incidents transcripts evaluations rate percentage',
+    '(NVIDIA OpenShell OR OpenShell OR NemoClaw) security vulnerability sandbox escape policy bypass credential',
+    '(NVIDIA OpenShell OR OpenShell) data exfiltration network policy bypass unauthorized access',
+    '("agent safety runtime" OR "secure agent runtime") vulnerability sandbox escape credential leak',
 ]
 
 AI_TERMS = (
@@ -84,7 +87,8 @@ AI_TERMS = (
     "claude", "anthropic", "gemini", "google ai", "copilot", "microsoft ai",
     "meta muse", "muse ai", "grok", "xai", "bedrock", "model context protocol",
     " mcp ", "llm", "language model", "agentic", "github copilot", "cursor",
-    "windsurf",
+    "windsurf", "openshell", "nemoclaw", "agent safety runtime",
+    "secure agent runtime", "nvidia agent toolkit",
 )
 
 SECURITY_TERMS = (
@@ -105,6 +109,9 @@ SECURITY_TERMS = (
     "critical cybersecurity capability", "critical cyber capability",
     "preparedness framework", "cybersecurity capability threshold",
     "critical threshold", "high threshold", "system card",
+    "openshell", "agent safety runtime", "secure agent runtime",
+    "policy bypass", "sandbox policy bypass", "network policy bypass",
+    "credential leak", "secret exposure",
     "training paused", "training resumed", "evaluation paused", "evaluation resumed",
     "inference paused", "inference resumed", "tool use paused", "tool-use paused",
     "tool use resumed", "tool-use resumed", "run was killed", "human reviewer",
@@ -135,13 +142,13 @@ TRUSTED_SOURCE_HINTS = (
     "microsoft security", "microsoft", "meta", "openai", "anthropic",
     "google", "amazon web services", "aws", "apple", "github",
     "palo alto", "unit 42", "wiz", "trail of bits", "cloudflare",
-    "snyk", "mandiant",
+    "snyk", "mandiant", "nvidia", "openshell",
 )
 
 OFFICIAL_SOURCE_HINTS = (
     "cisa", "nist", "cert", "openai", "anthropic", "meta", "google",
     "microsoft", "amazon web services", "aws", "apple", "github",
-    "project zero", "google security", "microsoft security",
+    "project zero", "google security", "microsoft security", "nvidia", "openshell",
 )
 
 DIRECT_OFFICIAL_PAGES = [
@@ -160,9 +167,15 @@ VENDOR_PATTERNS = [
     ("GitHub", ("github copilot", "github")),
     ("AI 개발도구", ("cursor", "windsurf")),
     ("MCP 생태계", ("model context protocol", " mcp ")),
+    ("NVIDIA/OpenShell", ("nvidia openshell", "openshell", "nemoclaw")),
 ]
 
 CATEGORY_PATTERNS = [
+    ("에이전트 안전 런타임 실패", (
+        "openshell", "agent safety runtime", "secure agent runtime",
+        "sandbox policy bypass", "network policy bypass", "policy bypass",
+        "credential leak", "secret exposure", "runtime escape",
+    )),
     ("모델 운영중단·재개", (
         "training paused", "training resumed", "evaluation paused", "evaluation resumed",
         "inference paused", "inference resumed", "tool use paused", "tool-use paused",
@@ -636,6 +649,8 @@ def incident_fact(item: dict) -> str | None:
         return "Hugging Face 사고 관련 에이전트 비정렬 활동"
     if "user data leak" in text or ("data leak" in text and "user" in text):
         return "사용자 데이터 유출 사례 확인"
+    if "openshell" in text and ("bypass" in text or "escape" in text or "credential" in text or "exfiltrat" in text):
+        return "OpenShell·에이전트 안전 런타임의 정책 우회 또는 격리 실패"
     if "sandbox escape" in text:
         return "가상환경·샌드박스 격리 우회"
     if "remote code execution" in text or " rce" in text:
@@ -664,6 +679,8 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "에이전트 안전 런타임 실패" in cats:
+        return "에이전트 실행환경의 샌드박스·네트워크·자격증명 정책이 실제로 우회되는지가 핵심입니다."
     if "모델 운영중단·재개" in cats:
         return "최고 성능 모델의 학습·평가·추론·도구사용 중단 또는 재개가 실제 안전통제 변화로 이어지는지가 핵심입니다."
     if "모델 사이버 능력 임계치" in cats:
