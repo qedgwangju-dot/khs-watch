@@ -45,6 +45,52 @@ base.SEARCHES.extend([
 
 
 _CURRENT_BATCH_SOURCE = "http://the-biz.co.kr/news/articleView.html?idxno=728392"
+ALTEOGEN_IR_INDEX = "https://www.alteogen.com/kr/sub/ir/information.php?bid=2"
+
+
+def _strip_tags(value: str) -> str:
+    import html as _html
+    value = re.sub(r"(?is)<script.*?</script>|<style.*?</style>", " ", value)
+    value = re.sub(r"(?s)<[^>]+>", " ", value)
+    return re.sub(r"\s+", " ", _html.unescape(value)).strip()
+
+
+def _alteogen_official_portfolio_items() -> list[dict]:
+    out: list[dict] = []
+    try:
+        page = base.fetch(ALTEOGEN_IR_INDEX, timeout=15)
+    except Exception:
+        return out
+
+    seen: set[str] = set()
+    for match in re.finditer(r'(?is)<a\b[^>]*href=["\']([^"\']*information\.php\?[^"\']*idx=\d+[^"\']*)["\'][^>]*>(.*?)</a>', page):
+        href = match.group(1).replace("&amp;", "&")
+        title = _strip_tags(match.group(2))
+        url = urllib.parse.urljoin(ALTEOGEN_IR_INDEX, href)
+        if url in seen:
+            continue
+        seen.add(url)
+        low_title = title.lower()
+        if not any(k in low_title for k in ("할로자임", "halozyme", "mdase", "특허")):
+            continue
+        try:
+            article = _strip_tags(base.fetch(url, timeout=15))
+        except Exception:
+            article = title
+        low = article.lower()
+        if not ("pgr" in low and ("할로자임" in low or "halozyme" in low or "mdase" in low)):
+            continue
+        out.append({
+            "engine": "알테오젠 공식 IR",
+            "title": title or "알테오젠 Halozyme 특허분쟁 누적 현황",
+            "url": url,
+            "description": article[:12000],
+            "published": "",
+        })
+    return out
+
+
+_official_portfolio_cache: list[dict] | None = None
 
 
 def rss(query: str, engine: str) -> list[dict]:
@@ -66,6 +112,11 @@ def rss(query: str, engine: str) -> list[dict]:
                 "published": "Fri, 25 Sep 2026 12:00:00 GMT",
             },
         ])
+    global _official_portfolio_cache
+    if engine == "Bing 웹" and query == base.SEARCHES[0]:
+        if _official_portfolio_cache is None:
+            _official_portfolio_cache = _alteogen_official_portfolio_items()
+        out.extend(_official_portfolio_cache)
     return out
 
 
@@ -113,6 +164,8 @@ FINAL_DECISION_TERMS = (
 
 def classify(text: str, case: str) -> str:
     low = text.lower()
+    if case.startswith("HALOZYME-PGR-PORTFOLIO-"):
+        return "portfolio_update"
     if case == base.DISTRICT_CASE:
         return "district_order"
 
@@ -163,6 +216,23 @@ _original_alert = base.alert
 
 
 def alert(case: str, patent: str, kind: str, item: dict) -> str:
+    if kind == "portfolio_update":
+        m = re.search(r"(\d+)OF(\d+)$", case)
+        decided = int(m.group(1)) if m else 0
+        total = int(m.group(2)) if m else 0
+        remaining = max(0, total - decided)
+        url = html.escape(item["url"], quote=True)
+        return (
+            "<b>[바이오 감시] Halozyme 특허분쟁 누적 판세 업데이트</b>\n\n"
+            f"<b>MSD PGR {total}건 중 {decided}건에서 심판 대상 청구항 특허성 부정</b>\n\n"
+            "- <b>타임라인:</b> 2026-07-23 잔여 사건 포함 구술심리 → 2026-09-25 PGR2025-00033·00039 최종서면결정 → 2026-09-28 알테오젠 공식 IR 누적 판세 확인\n"
+            f"- <b>현재 판세:</b> 최종결정 {decided}건 특허성 부정 · 잔여 {remaining}건 최종결정 대기\n"
+            "- <b>알테오젠:</b> 단일 사건 승패가 아니라 Halozyme MDASE 특허군 전체의 방어력이 약해지는 흐름을 보여주는 후속 업데이트입니다. ALT-B4 자체 특허 유효성 판정은 아닙니다.\n"
+            "- <b>다음 확인:</b> 잔여 PGR 최종서면결정 → 국장 재검토·재심 → 연방순회항소법원 항소 → 뉴저지·유럽 소송\n"
+            "- <b>원문 확인:</b> 알테오젠 공식 IR 본문 직접 확인\n"
+            f'- <a href="{url}">원문 뉴스보기</a>'
+        )
+
     if kind != "final_decision":
         message = _original_alert(case, patent, kind, item)
         timeline = html.escape(timeline_line(case, kind, item))
