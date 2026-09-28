@@ -61,13 +61,20 @@ NEWS_QUERIES = [
     # English company / paid-contract paths.
     '(NAVER Cloud OR S2W OR SandLab OR "LG CNS") cybersecurity AI contract pilot procurement',
     'AI cybersecurity foundation model government procurement pilot contract Korea',
+    '(Palo Alto Networks OR CrowdStrike OR IBM OR Microsoft OR NVIDIA) AI cybersecurity product launch ARR contract customer',
+    '("Unit 42" OR "Frontier AI Defense" OR SafeMind OR "AI Runtime Firewall") cybersecurity customer contract subscription',
+    '(Palo Alto Networks OR CrowdStrike) AI security ARR annual recurring revenue bookings guidance',
+    '(IBM OR Microsoft) AI cybersecurity autonomous SOC paid contract government procurement',
+    '(NVIDIA OR BlueField OR Nemotron) cybersecurity inference always-on 24/7 SOC security agent',
+    'AI security agent autonomous SOC continuous monitoring subscription revenue customer',
 ]
 
 OFFICIAL_SOURCE_HINTS = (
     "openai", "nipa", "과학기술정보통신부", "msit", "kisa", "한국인터넷진흥원",
     "nists", "nist", "cisa", "gov.uk", "aisi", "european commission",
     "europa.eu", "oecd", "white house", "commerce department", "ntia",
-    "naver", "lg cns", "s2w", "샌즈랩",
+    "naver", "lg cns", "s2w", "샌즈랩", "palo alto", "unit 42",
+    "crowdstrike", "ibm", "nvidia", "microsoft",
 )
 
 TRUSTED_SOURCE_HINTS = (
@@ -75,7 +82,8 @@ TRUSTED_SOURCE_HINTS = (
     "the information", "zdnet", "전자신문", "etnews", "파이낸셜뉴스",
     "매일경제", "한국경제", "머니투데이", "이데일리", "조선비즈",
     "서울경제", "디지털데일리", "디지털타임스", "the verge",
-    "techcrunch", "wired", "securityweek",
+    "techcrunch", "wired", "securityweek", "palo alto", "unit 42",
+    "crowdstrike", "ibm", "nvidia", "microsoft",
 )
 
 AI_TOPIC_TERMS = (
@@ -96,12 +104,16 @@ ACTION_TERMS = (
     "budget", "funding", "gpu", "b200", "h200", "grant", "support",
     "procurement", "tender", "contract", "award", "selected", "selection",
     "pilot", "deployment", "demonstration", "commercialization", "paid",
-    "revenue", "order", "consortium", "partner", "partnership",
+    "revenue", "arr", "annual recurring revenue", "bookings", "subscription",
+    "customer", "customers", "order", "consortium", "partner", "partnership",
+    "product launch", "launched", "always-on", "continuous", "24/7", "soc",
+    "autonomous security", "security agent", "runtime firewall", "bluefield", "nemotron",
     # Korean.
     "표준", "의무", "규제", "법안", "법률", "사고보고", "감사", "인증",
     "평가", "벤치마크", "프레임워크", "예산", "지원", "gpu", "선정",
     "중간평가", "실증", "조달", "입찰", "수주", "계약", "상용화",
-    "유료", "매출", "컨소시엄", "참여사", "협력", "협약",
+    "유료", "매출", "반복매출", "구독", "고객", "제품 출시", "출시",
+    "상시", "24시간", "보안관제", "자율형 보안", "컨소시엄", "참여사", "협력", "협약",
 )
 
 LOW_VALUE_SPEECH_TERMS = (
@@ -113,6 +125,8 @@ CONCRETE_ACTION_TERMS = (
     "adopted", "published", "issued", "signed", "enacted", "approved",
     "launched", "awarded", "selected", "contract", "procurement", "tender",
     "budget", "funding", "b200", "h200", "pilot", "deployment",
+    "launched", "product launch", "arr", "annual recurring revenue", "bookings",
+    "subscription", "customer", "paid", "revenue",
     "표준 제정", "공고", "선정", "계약", "수주", "조달", "입찰",
     "예산", "지원", "실증", "착수", "중간평가", "상용화",
 )
@@ -137,9 +151,17 @@ CATEGORY_PATTERNS = [
         "award", "selected", "selection", "실증", "중간평가", "조달",
         "입찰", "선정", "착수",
     )),
-    ("유료계약·사업화", (
-        "contract", "paid", "revenue", "order", "commercialization",
-        "수주", "계약", "유료", "매출", "상용화",
+    ("AI 보안 제품·ARR·유료계약", (
+        "product launch", "launched", "frontier ai defense", "safemind",
+        "ai runtime firewall", "contract", "paid", "revenue", "arr",
+        "annual recurring revenue", "bookings", "subscription", "customer",
+        "order", "commercialization", "제품 출시", "출시", "수주", "계약",
+        "유료", "매출", "반복매출", "구독", "고객", "상용화",
+    )),
+    ("24시간 보안추론·SOC 자동화", (
+        "always-on", "continuous", "24/7", "soc", "autonomous security",
+        "security agent", "runtime firewall", "bluefield", "nemotron",
+        "상시", "24시간", "보안관제", "자율형 보안",
     )),
     ("컨소시엄·참여사 변경", (
         "consortium", "partner", "partnership", "member", "participating",
@@ -149,6 +171,7 @@ CATEGORY_PATTERNS = [
 
 WATCH_ENTITIES = (
     "openai", "anthropic", "google", "meta", "microsoft", "nvidia",
+    "palo alto", "unit 42", "crowdstrike", "ibm",
     "naver", "네이버클라우드", "lg cns", "lg ai", "s2w", "샌즈랩",
     "과학기술정보통신부", "nipa", "kisa", "ai safety institute",
     "naaimes", "nist",
@@ -281,6 +304,10 @@ def detect_entity(text: str) -> str:
         ("NAAIMES", ("naaimes",)),
         ("AI 안전연구소 네트워크", ("ai safety institute", "안전연구소")),
         ("NIST", ("nist",)),
+        ("Palo Alto Networks", ("palo alto", "unit 42", "frontier ai defense")),
+        ("CrowdStrike", ("crowdstrike", "safemind")),
+        ("IBM", ("ibm", "autonomous security")),
+        ("NVIDIA", ("nvidia", "bluefield", "nemotron", "ai runtime firewall")),
         ("Anthropic", ("anthropic",)),
         ("Google", ("google",)),
         ("Meta", ("meta",)),
@@ -427,7 +454,9 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] in ("예산·GPU·국책사업","실증·중간평가·조달","유료계약·사업화"):
+        if rep["category"] in ("AI 보안 제품·ARR·유료계약","24시간 보안추론·SOC 자동화"):
+            lines.append("• <b>의미</b>: 제품 출시가 ARR·유료고객·반복 추론매출로 실제 연결되는지 확인")
+        elif rep["category"] in ("예산·GPU·국책사업","실증·중간평가·조달"):
             lines.append("• <b>의미</b>: 실제 자금·현장 적용·매출 연결 여부를 우선 확인")
         else:
             lines.append("• <b>의미</b>: 안전 요구가 자율 권고에서 공통 기준·의무 기준으로 이동하는지 확인")
@@ -447,7 +476,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
         ]
         if links:
             lines.append("🔗 " + " · ".join(links))
-    lines += ["", "<b>다음 확인</b>: 확정 예산·시행일·평가 통과·실증·조달·유료계약"]
+    lines += ["", "<b>다음 확인</b>: 제품 출시 · ARR/구독 · 유료고객 · 대형계약/조달 · 24시간 추론수요 · 실증/평가 통과"]
     return title, "\n".join(lines)
 
 
