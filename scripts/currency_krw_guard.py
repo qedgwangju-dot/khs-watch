@@ -51,6 +51,7 @@ SCALE = {
     "백만": 1_000_000,
     "천만": 10_000_000,
 }
+PER_UNIT_PATTERN = r"(?:kg|g|t|W|kW|MW|GW|Wh|kWh|MWh|GWh|GB|Gb|TB|TiB|주|개|대|서버|랙|module|chip|wafer|GPU|CPU|month|year)"
 _RATE_CACHE: dict[str, tuple[float | None, str]] = {}
 
 
@@ -124,7 +125,7 @@ def enforce_text(text: str) -> str:
     # Korean large-unit currency amounts.
     large_pat = re.compile(
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<unit>조|십억|억|백만|천만)"
-        r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?",
+        r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
     def repl_large(m):
@@ -141,7 +142,7 @@ def enforce_text(text: str) -> str:
     symbol_pat = re.compile(
         r"(?P<prefix>US\$|HK\$|NT\$|S\$|A\$|C\$|\$|€|£)\s*"
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*"
-        r"(?P<unit>billion|million|B|M)\b(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?",
+        r"(?P<unit>billion|million|B|M)\b(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
     def repl_symbol(m):
@@ -162,7 +163,7 @@ def enforce_text(text: str) -> str:
     iso_pat = re.compile(
         r"(?P<code>USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s*"
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*"
-        r"(?P<unit>billion|million|B|M)?\b(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?",
+        r"(?P<unit>billion|million|B|M)?\b(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
     def repl_iso(m):
@@ -185,7 +186,7 @@ def enforce_text(text: str) -> str:
     symbol_plain = re.compile(
         r"(?P<prefix>US\$|HK\$|NT\$|S\$|A\$|C\$|\$|€|£)\s*"
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)"
-        r"(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?",
+        r"(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
     def repl_symbol_plain(m):
@@ -204,7 +205,7 @@ def enforce_text(text: str) -> str:
 
     word_plain = re.compile(
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
-        r"(?P<per>/(?:kg|GB|Gb|TB|주|개|module|chip))?"
+        r"(?P<per>/" + PER_UNIT_PATTERN + r")?"
     )
     def repl_word_plain(m):
         tail = text[m.end():]
@@ -226,17 +227,17 @@ def _money_candidates(text: str):
     word = (
         r"\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만)?"
         r"(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
-        r"(?:/(?:kg|GB|Gb|TB|주|개|module|chip))?"
+        r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
     symbol = (
         r"(?:US\$|HK\$|NT\$|S\$|A\$|C\$|\$|€|£)\s*"
         r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:billion|million|B|M))?"
-        r"(?:/(?:kg|GB|Gb|TB|주|개|module|chip))?"
+        r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
     iso = (
         r"(?:USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s*"
         r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:billion|million|B|M))?"
-        r"(?:/(?:kg|GB|Gb|TB|주|개|module|chip))?"
+        r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
     for m in re.finditer(word + "|" + symbol + "|" + iso, text, re.I):
         yield m
