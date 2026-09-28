@@ -1,5 +1,18 @@
 {
-  "last_alert_at_kst": null,
-  "last_event_kind": null,
-  "last_event_id": null
+  "last_alert_at_kst": "2026-09-28T20:34:19+09:00",
+  "last_event_kind": "sts_reroute_expansion",
+  "last_event_id": "sts_reroute_expansion:a5a5b34c0694d3fd",
+  "last_market": {
+    "oil": {
+      "symbol": "BZ=F",
+      "label": "Brent",
+      "unit": "달러/배럴",
+      "price": 100.55,
+      "previous_close": 103.08,
+      "change": -2.530000000000001,
+      "change_pct": -2.454404346138922,
+      "timestamp_utc": "2026-09-28T11:24:25Z",
+      "timestamp_epoch": 1790594665.0
+    }
+  }
 }
