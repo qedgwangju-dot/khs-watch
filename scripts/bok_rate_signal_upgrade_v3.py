@@ -234,12 +234,23 @@ def main() -> int:
     boot = not bool(old)
 
     got = {}
-    for name, fn in (("inflation", base.inflation), ("household", base.household), ("housing", base.housing), ("oil", base.oil)):
-        try: got[name] = fn()
-        except Exception as exc:
-            got[name] = None
-            base.err(f"추가인상 위험감시 {name} 조회 실패: {type(exc).__name__}: {exc}")
-    current = {name: base.safe(got[name], oc.get(name)) for name in got}
+    component_fns = {
+        "inflation": base.inflation,
+        "household": base.household,
+        "housing": base.housing,
+        "oil": base.oil,
+    }
+    # 서로 독립인 현재지표 조회도 병렬화해 한 원천 지연이 전체 실행을 묶지 않게 한다.
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        future_map = {pool.submit(fn): name for name, fn in component_fns.items()}
+        for fut in as_completed(future_map):
+            name = future_map[fut]
+            try:
+                got[name] = fut.result()
+            except Exception as exc:
+                got[name] = None
+                base.err(f"추가인상 위험감시 {name} 조회 실패: {type(exc).__name__}: {exc}")
+    current = {name: base.safe(got.get(name), oc.get(name)) for name in component_fns}
 
     try: events = rhetoric(now)
     except Exception as exc:
