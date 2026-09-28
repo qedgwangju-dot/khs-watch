@@ -1,0 +1,40 @@
+name: OFR Repo Diagnostic Once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/ofr-repo-diagnostic-once.yml"
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect OFR STFM APIs
+        run: |
+          python - <<'PY'
+          import json, requests
+
+          urls = [
+            "https://data.financialresearch.gov/v1/series/dataset?dataset=fnyr",
+            "https://data.financialresearch.gov/v1/series/dataset?dataset=repo",
+          ]
+          for url in urls:
+              print("\nURL", url)
+              r = requests.get(url, timeout=30)
+              print("STATUS", r.status_code, "LEN", len(r.text))
+              r.raise_for_status()
+              p = r.json()
+              print("TOP_KEYS", list(p)[:20] if isinstance(p, dict) else type(p), "TYPE", type(p).__name__)
+              if isinstance(p, dict):
+                  for k,v in list(p.items())[:30]:
+                      print("KEY", k, "TYPE", type(v).__name__)
+                      if isinstance(v, dict):
+                          md=v.get("metadata") or {}
+                          ts=v.get("timeseries") or {}
+                          print("  metadata", json.dumps(md, ensure_ascii=False)[:800])
+                          if isinstance(ts, dict):
+                              for sk,sv in ts.items():
+                                  print("  TS", sk, "sample", json.dumps(sv[-3:] if isinstance(sv,list) else sv, ensure_ascii=False)[:800])
+                      else:
+                          print("  value", json.dumps(v, ensure_ascii=False)[:800])
+          PY
