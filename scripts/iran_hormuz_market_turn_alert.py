@@ -61,6 +61,10 @@ NEWS_QUERIES = (
     '"Gulf of Oman" STS record OR "ship-to-ship" Oman Saudi crude when:7d',
     'Kpler "Gulf of Oman" STS bottlenecks VLCC when:7d',
     '"Hormuz oil shipments" six-month high OR "record oil" Hormuz when:7d',
+    '"East-West Pipeline" 3.5 million barrels per day Saudi when:3d',
+    '"East-West Pipeline" pumping 3.5 million bpd Yanbu when:3d',
+    '"East-West Pipeline" 4 million bpd Yanbu Saudi when:3d',
+    '"Yanbu" crude loadings resume East-West Pipeline when:3d',
 )
 
 TRUSTED_SOURCE_ALIASES = (
@@ -149,6 +153,7 @@ EVENT_LABELS = {
     "hormuz_normalization": "호르무즈 해협의 실질적 통행 정상화",
     "oil_flow_recovery": "중동 원유 수출·호르무즈 물류 회복",
     "sts_reroute_expansion": "걸프오브오만 STS 우회 물류 급증·병목",
+    "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
 }
 DATA_PROVIDER_ALIASES = ("kpler", "vortexa", "jodi")
 
@@ -289,6 +294,29 @@ def classify_event(title: str) -> str | None:
     )
     if has_iran and has_us and any(phrase in low for phrase in attack_end_phrases):
         return "us_attack_end"
+
+    pipeline_recovery_phrases = (
+        "east-west pipeline",
+        "east west pipeline",
+        "petroline",
+        "yanbu pipeline",
+        "동서 송유관",
+        "east–west pipeline",
+    )
+    pipeline_rate_terms = (
+        "million barrels per day", "million bpd", "mbd", "barrels per day",
+        "pumping", "flow", "flows", "transport", "throughput", "수송", "송유",
+    )
+    pipeline_recovery_terms = (
+        "restart", "restarted", "resumes", "resumed", "recovery", "hits", "reaches",
+        "rises to", "back to", "building up", "increase", "재가동", "회복", "증가",
+    )
+    if (
+        any(term in low for term in pipeline_recovery_phrases)
+        and any(term in low for term in pipeline_rate_terms)
+        and any(term in low for term in pipeline_recovery_terms)
+    ):
+        return "east_west_pipeline_recovery"
 
     flow_recovery_phrases = (
         "ramps up gulf oil exports",
@@ -493,7 +521,13 @@ def confirm_event(items: list[NewsItem], minimum_sources: int = 2) -> tuple[str,
             any(alias in normalize_text(row.source) for alias in DATA_PROVIDER_ALIASES)
             for row in selected
         )
-        if len(selected) >= minimum_sources or has_primary_data:
+        pipeline_single_major = kind == "east_west_pipeline_recovery" and any(
+            any(alias in normalize_text(row.source) for alias in (
+                "reuters", "bloomberg", "kpler", "saudi energy ministry", "ministry of energy", "aramco"
+            ))
+            for row in selected
+        )
+        if len(selected) >= minimum_sources or has_primary_data or pipeline_single_major:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
     if not candidates:
         return None
@@ -595,7 +629,28 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 
 def event_id(kind: str, rows: list[NewsItem]) -> str:
     combined = " ".join(normalize_text(row.title) for row in rows)
-    if kind in ("oil_flow_recovery", "sts_reroute_expansion"):
+    if kind == "east_west_pipeline_recovery":
+        rates = [
+            float(value)
+            for value in re.findall(
+                r"\b([0-9]+(?:\.[0-9]+)?)\s*(?:million\s+(?:barrels\s+per\s+day|bpd)|mbd)\b",
+                combined,
+                flags=re.I,
+            )
+        ]
+        rate = max(rates) if rates else 0.0
+        if rate >= 4.0:
+            band = "4plus"
+        elif rate >= 3.5:
+            band = "3_5"
+        elif rate >= 3.0:
+            band = "3_0"
+        else:
+            band = "restart"
+        yanbu = "yanbu" if "yanbu" in combined else "no_yanbu"
+        digest = hashlib.sha256(f"{kind}|{band}|{yanbu}".encode("utf-8")).hexdigest()[:16]
+        return f"{kind}:{digest}"
+    if kind in ("oil_flow_recovery", "sts_reroute_expansion", "east_west_pipeline_recovery"):
         markers = []
         marker_terms = (
             ("saudi_export_ramp", ("saudi", "aramco", "ras tanura")),
@@ -717,6 +772,28 @@ def _extract_kpler_sts_metrics(news_rows: list[NewsItem]) -> dict[str, object] |
     return None
 
 
+def _extract_pipeline_rate(news_rows: list[NewsItem]) -> tuple[float | None, bool]:
+    rates: list[float] = []
+    yanbu = False
+    for row in news_rows:
+        title = str(row.title or "")
+        low = normalize_text(title)
+        if "yanbu" in low:
+            yanbu = True
+        for value in re.findall(
+            r"\b([0-9]+(?:\.[0-9]+)?)\s*(?:million\s+(?:barrels\s+per\s+day|bpd)|mbd)\b",
+            low,
+            flags=re.I,
+        ):
+            try:
+                rate = float(value)
+            except ValueError:
+                continue
+            if 0.5 <= rate <= 10.0:
+                rates.append(rate)
+    return (max(rates) if rates else None, yanbu)
+
+
 def build_physical_flow_alert_body(
     kind: str,
     news_rows: list[NewsItem],
@@ -730,7 +807,17 @@ def build_physical_flow_alert_body(
         "[한눈에]",
     ]
 
-    if kind == "sts_reroute_expansion" and metrics:
+    pipeline_rate, pipeline_yanbu = _extract_pipeline_rate(news_rows)
+
+    if kind == "east_west_pipeline_recovery":
+        if pipeline_rate is not None:
+            lines.append(f"East-West     {pipeline_rate:.1f} Mbd")
+            lines.append(f"vs 4Mbd      약 {pipeline_rate / 4.0 * 100:.0f}% 회복")
+            lines.append(f"vs 7Mbd      명목 용량의 약 {pipeline_rate / 7.0 * 100:.0f}%")
+        else:
+            lines.append("East-West     재가동·유량 회복 확인")
+        lines.append("Yanbu 수출     실제 선적 별도 확인 필요" if not pipeline_yanbu else "Yanbu         기사 내 직접 언급")
+    elif kind == "sts_reroute_expansion" and metrics:
         lines.append("원유 공급     회복 ↑")
         lines.append("물류 효율     병목 심화 ↓")
         lines.append(
@@ -759,7 +846,13 @@ def build_physical_flow_alert_body(
         )
 
     lines.extend(["", "[핵심 의미]"])
-    if kind == "oil_flow_recovery":
+    if kind == "east_west_pipeline_recovery":
+        lines.extend([
+            "East-West Pipeline 유량 회복은 호르무즈를 우회하는 Red Sea 공급축이 되살아나는 신호입니다.",
+            "→ 3.5Mbd가 확인되면 Reuters가 언급한 전쟁 전후 우회 운송 약 4Mbd의 약 88% 수준입니다.",
+            "→ 다만 송유관 내부 유량과 Yanbu 실제 선적은 다릅니다. 선적 재개 확인 전 수출 정상화로 단정하지 않습니다.",
+        ])
+    elif kind == "oil_flow_recovery":
         lines.extend([
             "원유는 다시 시장에 나오고 있습니다.",
             "다만 호르무즈가 전쟁 이전처럼 정상화됐다는 뜻은 아닙니다.",
@@ -773,7 +866,14 @@ def build_physical_flow_alert_body(
         ])
 
     lines.extend(["", "[병목]"])
-    if kind == "sts_reroute_expansion":
+    if kind == "east_west_pipeline_recovery":
+        lines.extend([
+            "1) 손상 펌핑스테이션 우회·복구 안정성",
+            "2) Yanbu 저장탱크 재충전",
+            "3) Yanbu 실제 탱커 선적 재개",
+            "4) Red Sea·Bab el-Mandeb 통항 위험",
+        ])
+    elif kind == "sts_reroute_expansion":
         lines.extend([
             "1) Fujairah·Sohar 육상 지원능력 한계",
             "2) STS 작업 슬롯·예인선·파일럿·검사 처리능력",
@@ -794,6 +894,8 @@ def build_physical_flow_alert_body(
         "호르무즈 실제 통과량",
         "Saudi Gulf / Red Sea 선적량",
         "GoO STS 7일 평균과 신규 최고치",
+        "East-West Pipeline 유량 3.0 → 3.5 → 4.0 Mbd",
+        "Yanbu 실제 선적 재개",
         "Fujairah·Sohar 병목",
         "VLCC 운임·가용선복",
         "Brent",
