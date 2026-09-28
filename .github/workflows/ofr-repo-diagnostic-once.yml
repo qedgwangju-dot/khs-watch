@@ -1,4 +1,4 @@
-name: Treasury CFTC Name Diagnostic Once
+name: Treasury Positioning Final Validate Once
 
 on:
   push:
@@ -6,37 +6,29 @@ on:
       - ".github/workflows/ofr-repo-diagnostic-once.yml"
 
 jobs:
-  inspect:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect latest CFTC contract names
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check requests beautifulsoup4
+      - name: Validate daily Repo and weekly CFTC watcher
         run: |
           python - <<'PY'
-          import requests, json
-          base="https://publicreporting.cftc.gov/resource/gpe5-46if.json"
-          rows=requests.get(base,params={"$order":"report_date_as_yyyy_mm_dd DESC","$limit":1000},timeout=45).json()
-          latest=max(str(x.get("report_date_as_yyyy_mm_dd",""))[:10] for x in rows if x.get("report_date_as_yyyy_mm_dd"))
-          print("LATEST",latest)
-          names=[]
-          for x in rows:
-              if str(x.get("report_date_as_yyyy_mm_dd",""))[:10]!=latest: continue
-              name=str(x.get("market_and_exchange_names",""))
-              if any(w in name.upper() for w in ("NOTE","BOND","UST","TREAS","2-YEAR","5-YEAR","10-YEAR","30-YEAR")):
-                  names.append({
-                      "name":name,
-                      "code":x.get("cftc_contract_market_code"),
-                      "long":x.get("lev_money_positions_long"),
-                      "short":x.get("lev_money_positions_short"),
-                      "oi":x.get("open_interest_all"),
-                  })
-          for x in names:
-              print("MATCH",json.dumps(x,ensure_ascii=False))
-          print("COUNT",len(names))
-          # also print first 80 names in latest date to identify naming
-          allnames=[]
-          for x in rows:
-              if str(x.get("report_date_as_yyyy_mm_dd",""))[:10]==latest:
-                  allnames.append((x.get("market_and_exchange_names"),x.get("cftc_contract_market_code")))
-          for item in allnames[:100]:
-              print("NAME",item)
+          import sys
+          sys.path.insert(0, "scripts")
+          import treasury_credit_flow_watch_refinancing as daily
+          import treasury_positioning_watch as weekly
+
+          print("DAILY_REPO", daily.get_repo_stress())
+
+          latest, prev, rows = weekly.get_cftc_positions()
+          repo = weekly.repo_snapshot()
+          print("CFTC", latest, prev)
+          for label in ("2년","5년","10년","30년"):
+              print(label, rows[label], weekly.position_note(rows[label]))
+          print("REPO", repo)
+          print("CLASS", weekly.classify(rows, repo))
           PY
