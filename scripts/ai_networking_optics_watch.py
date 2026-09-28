@@ -269,7 +269,7 @@ def same_underlying_story(a: dict, b: dict) -> bool:
             " ".join(sorted(ta & tb)),
             re.I,
         ))
-        return (shared_anchor and (jaccard >= 0.24 or containment >= 0.50)) or jaccard >= 0.42
+        return (shared_anchor and (jaccard >= 0.20 or containment >= 0.38)) or jaccard >= 0.42
 
     a_key = canonical_story_key(a.get("company", ""), a.get("title", ""))
     b_key = canonical_story_key(b.get("company", ""), b.get("title", ""))
