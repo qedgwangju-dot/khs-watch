@@ -141,18 +141,25 @@ def collect_citi_coinbase(errors):
 
 def extract_coinbase_clearing_row(text):
     text = clean(text)
-    pattern = re.compile(
-        r"Coinbase Clearing LLC\s+(Registered|Pending Registration)\s+(\d{2}/\d{2}/\d{4})\s+"
-        r"(.{0,500}?)(?=\s+[A-Z][A-Za-z0-9 .,&'()/-]+\s+(?:Registered|Pending Registration|Exempt|Dormant|Vacated)\s+\d{2}/\d{2}/\d{4}|$)",
+    head = re.search(
+        r"Coinbase Clearing LLC\s+(Registered|Pending Registration)\s+(\d{2}/\d{2}/\d{4})\s+",
+        text,
         re.I,
     )
-    m = pattern.search(text)
-    if not m:
+    if not head:
         return None
+    tail = text[head.end(): head.end() + 900]
+    next_row = re.search(
+        r"\s+[A-Z][A-Za-z0-9 .,&'()/-]{2,100}\s+"
+        r"(?:Registered|Pending Registration|Exempt|Dormant|Vacated)\s+\d{2}/\d{2}/\d{4}\b",
+        tail,
+        re.I,
+    )
+    remarks = tail[: next_row.start()] if next_row else tail
     return {
-        "status": clean(m.group(1)),
-        "date": clean(m.group(2)),
-        "remarks": clean(m.group(3)),
+        "status": clean(head.group(1)),
+        "date": clean(head.group(2)),
+        "remarks": clean(remarks),
     }
 
 
