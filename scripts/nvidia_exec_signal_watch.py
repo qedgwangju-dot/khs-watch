@@ -202,7 +202,10 @@ def _money_billion(text: str, label_patterns: tuple[str, ...]) -> float | None:
 def extract_capital_return(text: str) -> dict:
     low = text.lower()
     additional = _money_billion(text, (
-        r"(?:additional|increase(?:d)?(?:\s+by)?|authorization increase|추가(?:로)?|증액)",
+        # "increasing the total remaining amount to $235B" is a new total,
+        # not a $235B incremental authorization. Incremental parsing therefore
+        # requires "additional" or an explicit "increase by" construction.
+        r"(?:additional|increase(?:d)?\s+by|authorization increase(?:d)?\s+by|추가(?:로)?|증액)",
         r"(?:authorized|approved|승인)[^.]{0,60}(?:additional|추가)",
     ))
     remaining = _money_billion(text, (
