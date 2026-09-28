@@ -1688,10 +1688,29 @@ def _broker_material_change(old: dict, obs: dict) -> tuple[bool, list[str]]:
     return bool(reasons), reasons
 
 
+def _broker_state_candidate(old: dict | None, obs: dict) -> dict:
+    candidate = dict(old or {})
+    for field in ("asp_yoy_pct", "previous_asp_yoy_pct"):
+        if obs.get(field) is not None:
+            candidate[field] = obs.get(field)
+    if obs.get("stack_mainstream"):
+        candidate["stack_mainstream"] = obs.get("stack_mainstream")
+    if obs.get("eps_revision_pct"):
+        candidate["eps_revision_pct"] = dict(obs.get("eps_revision_pct") or {})
+    if obs.get("fx_headwind"):
+        candidate["fx_headwind"] = True
+    for field in ("source", "published_at_kst", "title", "direct_link"):
+        if obs.get(field):
+            target = "observed_at" if field == "published_at_kst" else field
+            candidate[target] = obs.get(field)
+    return candidate
+
+
 def broker_forecast_change_event(obs: dict, old: dict | None, reasons: list[str]) -> dict:
     return {
         "id": "broker|" + obs["key"],
         "broker_observation": obs,
+        "broker_state_candidate": _broker_state_candidate(old, obs),
         "title": obs.get("title") or f"{_broker_label(obs['institution'])} HBM 평균판매단가·제품혼합 전망",
         "description": "",
         "source": obs.get("source") or _broker_label(obs["institution"]),
@@ -2243,17 +2262,7 @@ def main() -> None:
     broker_alert_events: list[dict] = []
     for key, obs in latest_broker_obs.items():
         old = broker_forecasts.get(key)
-        normalized = {
-            "asp_yoy_pct": obs.get("asp_yoy_pct"),
-            "previous_asp_yoy_pct": obs.get("previous_asp_yoy_pct"),
-            "stack_mainstream": obs.get("stack_mainstream") or "",
-            "eps_revision_pct": obs.get("eps_revision_pct") or {},
-            "fx_headwind": bool(obs.get("fx_headwind")),
-            "source": obs.get("source") or "",
-            "observed_at": obs.get("published_at_kst") or "",
-            "title": obs.get("title") or "",
-            "direct_link": obs.get("direct_link") or "",
-        }
+        normalized = _broker_state_candidate(old, obs)
         if old:
             material, reasons = _broker_material_change(old, obs)
             if material:
@@ -2463,17 +2472,7 @@ def main() -> None:
             if e.get("broker_forecast_change"):
                 obs = e.get("broker_observation") or {}
                 if obs:
-                    broker_forecasts[obs["key"]] = {
-                        "asp_yoy_pct": obs.get("asp_yoy_pct"),
-                        "previous_asp_yoy_pct": obs.get("previous_asp_yoy_pct"),
-                        "stack_mainstream": obs.get("stack_mainstream") or "",
-                        "eps_revision_pct": obs.get("eps_revision_pct") or {},
-                        "fx_headwind": bool(obs.get("fx_headwind")),
-                        "source": obs.get("source") or "",
-                        "observed_at": obs.get("published_at_kst") or "",
-                        "title": obs.get("title") or "",
-                        "direct_link": obs.get("direct_link") or "",
-                    }
+                    broker_forecasts[obs["key"]] = dict(e.get("broker_state_candidate") or _broker_state_candidate(broker_forecasts.get(obs["key"]), obs))
                 continue
             if e.get("ops_change"):
                 obs = e.get("ops_observation") or {}
