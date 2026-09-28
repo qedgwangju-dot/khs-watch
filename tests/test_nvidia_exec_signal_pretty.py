@@ -29,12 +29,17 @@ class NvidiaExecPrettyTests(unittest.TestCase):
             with patch.object(p, "ALERT", alert):
                 p.main()
             out = alert.read_text(encoding="utf-8")
-        self.assertIn("자사주 매입 승인 확대", out)
+        self.assertIn("NVIDIA 자본환원", out)
         self.assertIn("$150 billion", out)
         self.assertIn("$235 billion", out)
         self.assertNotIn("전체 칩 판매량", out)
         self.assertNotIn("스코틀랜드 찰스 3세", out)
-        self.assertNotIn("Blackwell·Rubin 실제 지연", out)
+        self.assertNotIn("Blackwell·Rubin 실제 일정 지연", out)
+        self.assertNotIn("<blockquote", out)
+        self.assertLess(len(out), 1300)
+        self.assertIn("[핵심]", out)
+        self.assertIn("[해석]", out)
+        self.assertIn("[다음 확인]", out)
 
     def test_demand_marker_requires_actual_demand_event_line(self):
         raw = "• 전체 칩 수량 2배를 HBM 수요 2배로 직접 환산 금지"
