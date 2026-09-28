@@ -79,6 +79,8 @@ FLASH_QUERIES = [
     '(Iran OR 이란) (delegation OR 대표단) (New York OR 뉴욕) ("full authority" OR "full mandate" OR 전권 OR 완전한 권한) (diplomacy OR 협상 OR 외교) when:1d',
     '(Iran OR 이란) (mediator OR 중재자 OR 중재) (New York OR 뉴욕) ("end hostilities" OR 적대행위 종식 OR agreement OR 합의안) when:1d',
     '(Iran OR Tehran OR 이란 OR 테헤란) ("concrete steps" OR 구체적 조치) (resume diplomacy OR diplomacy OR 외교 재개 OR 협상 재개) when:1d',
+    'site:bloomberg.com Iran officials (midterms OR "November 3") (skeptical OR deal OR escalation) (Araghchi OR Witkoff OR Kushner) when:1d',
+    '(Iran OR 이란) (officials OR 당국자) (midterms OR "November 3" OR 중간선거 OR "11월 3일") (skeptical OR 회의적 OR escalation OR 확전) (deal OR agreement OR 합의) when:1d',
     'site:apnews.com Iran US ("direct talks" OR negotiations OR denied OR rejects OR ceasefire) when:1d',
     'site:irna.ir Iran US ("direct talks" OR negotiations OR ceasefire OR peace) when:2d',
     'site:tasnimnews.com Iran US ("direct talks" OR negotiations OR ceasefire OR peace) when:2d',
@@ -144,7 +146,7 @@ GULF_REGION_TERMS = ('gulf', 'persian gulf', 'mideast gulf', 'middle east gulf',
 SEVEN_DAY_TERMS = ('7-day average', '7 day average', 'seven-day average', '7일 평균', '7일 이동평균')
 TWENTY_MBD_TERMS = ('20 mbd', '20 mb/d', '20 million barrels a day', '20 million barrels per day', '20 million bpd', '2천만 배럴', '2000만 배럴')
 NEGATION_TERMS = ('not agreed', 'no agreement', 'has not agreed', 'did not agree', 'not a ceasefire', 'no ceasefire', 'not reopened', 'remains closed', 'remain closed', 'still closed', '합의하지 않', '합의가 아니', '휴전이 아니', '휴전 합의 없', '재개방되지 않', '폐쇄 유지')
-TRUSTED_CONFIRM_SOURCES = ('reuters', 'apnews', 'aljazeera', 'whitehouse.gov', 'state.gov', 'irna.ir', 'tasnim', 'mehrnews', 'presstv', 'fm.gov.om', 'omannews.gov.om')
+TRUSTED_CONFIRM_SOURCES = ('reuters', 'apnews', 'bloomberg', 'aljazeera', 'whitehouse.gov', 'state.gov', 'irna.ir', 'tasnim', 'mehrnews', 'presstv', 'fm.gov.om', 'omannews.gov.om')
 FALSE_POSITIVE_TITLE_TERMS = ('trade truce', 'trade ceasefire', '무역 휴전', '무역휴전')
 WAR_TITLE_ACTOR_TERMS = ('iran', 'iranian', 'tehran', '이란', '테헤란', 'ukraine', 'ukrainian', 'zelensky', '러시아', '우크라이나', '젤렌스키', 'putin', '푸틴', 'israel', 'gaza', 'hamas', '이스라엘', '가자', '하마스', 'houthi', 'houthis', 'ansar allah', 'ansarallah', 'yemen', 'saudi', 'oman', '후티', '안사르 알라', '안사르알라', '예멘', '사우디', '오만', 'hormuz', '호르무즈')
 WAR_TITLE_ACTION_TERMS = ('war', 'attack', 'strike', 'missile', 'drone', 'ceasefire', 'truce', 'peace', 'talks', 'negotiation', 'mediation', 'deal', 'reopen', 'blockade', '전쟁', '공격', '공습', '미사일', '드론', '휴전', '종전', '평화', '협상', '회담', '중재', '합의', '재개방', '봉쇄', '전후구상')
@@ -180,6 +182,14 @@ IRIB_SOURCE_TERMS = ('irib', 'iranian state tv', 'iranian state television', '�
 BLOCKADE_LIFT_TERMS = ('lift the blockade', 'lifting the blockade', 'lifting of the blockade', 'lifting of the naval blockade', 'lift its blockade', 'end the naval blockade', 'naval blockade lifted', '해상 봉쇄 해제', '봉쇄 즉각 해제', '봉쇄 해제')
 FROZEN_ASSET_TERMS = ('frozen assets', 'frozen iranian assets', 'frozen funds', 'release frozen assets', 'release of frozen iranian assets', 'release frozen funds', '동결 자산', '동결된 이란 자산', '동결자금', '동결 자금')
 ALL_FRONTS_END_TERMS = ('end the war on all fronts', 'end war on all fronts', 'end to the war on all fronts', 'war on all fronts', '모든 전선에서의 전쟁 종식', '모든 전선 종전', '전 전선 종전')
+
+MIDTERM_TERMS = ('midterm', 'midterms', 'midterm elections', 'november 3', '11월 3일', '중간선거')
+DEAL_SKEPTICAL_TERMS = ('skeptical', 'sceptical', 'doubtful', 'unlikely', 'little chance', '회의적', '가능성이 낮', '가능성에 회의', '조기 타결에 회의', '타결에 회의')
+NO_PROGRESS_TERMS = ('little progress', 'no progress', 'failed to make progress', 'without progress', '별다른 진전', '진전이 없', '진전을 이루지 못')
+POST_ELECTION_ESCALATION_TERMS = ('escalation after the midterms', 'escalation after midterms', 'escalate after the midterms', 'escalate after midterms', 'after november 3', 'post-election escalation', '선거 이후 확전', '중간선거 이후 확전', '11월 3일 이후 확전', '분쟁이 격화할 가능성')
+KUSHNER_TERMS = ('kushner', 'jared kushner', '재러드 쿠슈너', '쿠슈너')
+STAY_US_TERMS = ('remained in the united states', 'remains in the united states', 'stayed in the united states', 'remain in the us', 'remained in the us', 'stayed in the us', '미국에 머물', '미국 체류')
+FURTHER_TALKS_TERMS = ('further talks', 'additional talks', 'more talks', 'further discussions', 'additional discussions', '추가 논의', '추가 협상', '추가 회담')
 
 TRUSTED_EMERGENCY_SOURCES = ('reuters', 'apnews', 'associated press', 'afp', 'whitehouse.gov', 'state.gov', 'travel.state.gov', 'gov.il', 'irna.ir', 'tasnimnews', 'tasnim', 'presstv', 'saudipressagency', 'spa.gov.sa', 'arabnews')
 
