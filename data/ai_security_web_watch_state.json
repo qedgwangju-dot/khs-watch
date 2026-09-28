@@ -5,11 +5,21 @@
   "last_collection": {
     "direct_official_items": 15,
     "errors": [],
-    "material_items": 4,
-    "new_material_items": 0,
-    "raw_items": 122
+    "material_items": 5,
+    "new_material_items": 1,
+    "raw_items": 121
   },
   "seen": {
+    "027ea08934406a07812d619d": {
+      "category": "에이전트 비정렬·제3자 영향",
+      "first_seen_at": "2026-09-28T17:33:35.045895+00:00",
+      "published_at": "2026-09-28T16:43:18+00:00",
+      "severity": 2,
+      "source": "Ars Technica",
+      "title": "OpenAI halts frontier-model training amid string of agent misalignment incidents - Ars Technica",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQN2MtdjhSdi1aSkFVNjN6aExQcmZGT1BaNDh2VGFpSlZnbmh2Y2pDaE9lT0NiaVBJdWJycF9PS2MwUXB2UDRWZ2lheGpQa1JydjdEal9nUmE5cEc1QWdvM2F1SFBJSldZY2k0S1BvRzB0bE1yVnJpWmFoTnh3MVJsTVo0T1I5ZVhUNUM1LUFQNGpJRTAwVjFDTmZMWHBSSTNhY2hvMEFiMmZyN0s2YWs3S3g2d0Fvbzg?oc=5",
+      "vendor": "OpenAI"
+    },
     "36cdbc3c7efe9983a34b0330": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-26T13:15:55.250969+00:00",
@@ -141,5 +151,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-09-29T02:08:35+09:00"
+  "updated_at_kst": "2026-09-29T02:33:35+09:00"
 }
