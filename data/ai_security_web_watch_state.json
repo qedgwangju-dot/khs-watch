@@ -1,13 +1,13 @@
 {
   "direct_official_initialized": true,
-  "direct_official_version": 2,
+  "direct_official_version": 3,
   "initialized": true,
   "last_collection": {
-    "direct_official_items": 17,
+    "direct_official_items": 15,
     "errors": [],
-    "material_items": 6,
-    "new_material_items": 3,
-    "raw_items": 112
+    "material_items": 4,
+    "new_material_items": 0,
+    "raw_items": 109
   },
   "seen": {
     "36cdbc3c7efe9983a34b0330": {
@@ -141,5 +141,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-09-28T12:16:05+09:00"
+  "updated_at_kst": "2026-09-28T12:18:01+09:00"
 }
