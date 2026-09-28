@@ -65,6 +65,9 @@ NEWS_QUERIES = (
     '"East-West Pipeline" pumping 3.5 million bpd Yanbu when:3d',
     '"East-West Pipeline" 4 million bpd Yanbu Saudi when:3d',
     '"Yanbu" crude loadings resume East-West Pipeline when:3d',
+    '"Saudi Arabia resumes oil exports" Yanbu East-West Pipeline when:3d',
+    '"East-West pipeline starts exports" Saudi Yanbu when:3d',
+    '"overseas shipments have now resumed" Saudi East-West Pipeline when:3d',
 )
 
 TRUSTED_SOURCE_ALIASES = (
@@ -294,6 +297,27 @@ def classify_event(title: str) -> str | None:
     )
     if has_iran and has_us and any(phrase in low for phrase in attack_end_phrases):
         return "us_attack_end"
+
+    pipeline_export_resume_phrases = (
+        "resumes oil exports",
+        "resume oil exports",
+        "starts exports after repairs",
+        "starts exports",
+        "export shipments resume",
+        "shipments have now resumed",
+        "overseas shipments have now resumed",
+        "crude loadings resume",
+        "loadings resume",
+        "yanbu exports resume",
+        "yanbu oil exports resume",
+        "수출 재개",
+        "선적 재개",
+    )
+    if (
+        any(term in low for term in ("east-west pipeline", "east west pipeline", "yanbu", "petroline", "동서 송유관"))
+        and any(term in low for term in pipeline_export_resume_phrases)
+    ):
+        return "east_west_pipeline_recovery"
 
     pipeline_recovery_phrases = (
         "east-west pipeline",
@@ -630,6 +654,15 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 def event_id(kind: str, rows: list[NewsItem]) -> str:
     combined = " ".join(normalize_text(row.title) for row in rows)
     if kind == "east_west_pipeline_recovery":
+        exports_resumed = any(
+            phrase in combined
+            for phrase in (
+                "resumes oil exports", "resume oil exports", "starts exports after repairs",
+                "starts exports", "export shipments resume", "shipments have now resumed",
+                "overseas shipments have now resumed", "crude loadings resume",
+                "loadings resume", "yanbu exports resume", "수출 재개", "선적 재개",
+            )
+        )
         rates = [
             float(value)
             for value in re.findall(
@@ -639,7 +672,9 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
             )
         ]
         rate = max(rates) if rates else 0.0
-        if rate >= 4.0:
+        if exports_resumed:
+            band = "export_resume"
+        elif rate >= 4.0:
             band = "4plus"
         elif rate >= 3.5:
             band = "3_5"
@@ -794,6 +829,17 @@ def _extract_pipeline_rate(news_rows: list[NewsItem]) -> tuple[float | None, boo
     return (max(rates) if rates else None, yanbu)
 
 
+def _pipeline_exports_resumed(news_rows: list[NewsItem]) -> bool:
+    phrases = (
+        "resumes oil exports", "resume oil exports", "starts exports after repairs",
+        "starts exports", "export shipments resume", "shipments have now resumed",
+        "overseas shipments have now resumed", "crude loadings resume",
+        "loadings resume", "yanbu exports resume", "수출 재개", "선적 재개",
+    )
+    text = " ".join(normalize_text(row.title) for row in news_rows)
+    return any(phrase in text for phrase in phrases)
+
+
 def build_physical_flow_alert_body(
     kind: str,
     news_rows: list[NewsItem],
@@ -808,6 +854,7 @@ def build_physical_flow_alert_body(
     ]
 
     pipeline_rate, pipeline_yanbu = _extract_pipeline_rate(news_rows)
+    pipeline_exports_resumed = _pipeline_exports_resumed(news_rows)
 
     if kind == "east_west_pipeline_recovery":
         if pipeline_rate is not None:
@@ -816,7 +863,12 @@ def build_physical_flow_alert_body(
             lines.append(f"vs 7Mbd      명목 용량의 약 {pipeline_rate / 7.0 * 100:.0f}%")
         else:
             lines.append("East-West     재가동·유량 회복 확인")
-        lines.append("Yanbu 수출     실제 선적 별도 확인 필요" if not pipeline_yanbu else "Yanbu         기사 내 직접 언급")
+        if pipeline_exports_resumed:
+            lines.append("Yanbu 수출     재개 확인")
+        elif pipeline_yanbu:
+            lines.append("Yanbu         기사 내 직접 언급 · 선적 재개 여부 추가 확인")
+        else:
+            lines.append("Yanbu 수출     실제 선적 별도 확인 필요")
     elif kind == "sts_reroute_expansion" and metrics:
         lines.append("원유 공급     회복 ↑")
         lines.append("물류 효율     병목 심화 ↓")
@@ -850,7 +902,11 @@ def build_physical_flow_alert_body(
         lines.extend([
             "East-West Pipeline 유량 회복은 호르무즈를 우회하는 Red Sea 공급축이 되살아나는 신호입니다.",
             "→ 3.5Mbd가 확인되면 Reuters가 언급한 전쟁 전후 우회 운송 약 4Mbd의 약 88% 수준입니다.",
-            "→ 다만 송유관 내부 유량과 Yanbu 실제 선적은 다릅니다. 선적 재개 확인 전 수출 정상화로 단정하지 않습니다.",
+            (
+                "→ Yanbu 해외 선적 재개가 확인돼 송유관 회복이 실제 수출로 연결되기 시작했습니다."
+                if pipeline_exports_resumed
+                else "→ 다만 송유관 내부 유량과 Yanbu 실제 선적은 다릅니다. 선적 재개 확인 전 수출 정상화로 단정하지 않습니다."
+            ),
         ])
     elif kind == "oil_flow_recovery":
         lines.extend([
