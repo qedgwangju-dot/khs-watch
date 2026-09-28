@@ -47,26 +47,36 @@ concurrency:
 
 jobs:
   bio_watchdog:
-    if: ${{ github.event_name == 'schedule' }}
+    if: ${{ github.event_name == 'schedule' || github.event_name == 'push' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 12
+    concurrency:
+      group: bio-qlex-intismeran-watch
+      cancel-in-progress: false
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
     steps:
       - name: Checkout latest main
         uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 1
+          fetch-depth: 0
 
-      - name: Dispatch bio watcher if heartbeat is stale
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check bio heartbeat freshness
+        id: bio_freshness
         run: |
           python - <<'PY'
           import datetime as dt
           import json
           import os
           import pathlib
-          import subprocess
           from zoneinfo import ZoneInfo
 
           p = pathlib.Path("data/bio_watch_heartbeat.json")
@@ -83,22 +93,40 @@ jobs:
                       stamp = stamp.replace(tzinfo=ZoneInfo("Asia/Seoul"))
                   now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
                   age_min = (now - stamp.astimezone(ZoneInfo("Asia/Seoul"))).total_seconds() / 60
-                  stale = age_min > 25
+                  stale = age_min > 25 or status != "ok"
               except Exception:
                   stale = True
-
+          needs_run = "true" if stale else "false"
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write(f"needs_run={needs_run}\n")
           print(f"bio_watchdog status={status} age_min={age_min} stale={stale}")
-          if stale:
-              subprocess.run(
-                  [
-                      "gh", "workflow", "run", "bio-qlex-intismeran-watch.yml",
-                      "--repo", os.environ["GITHUB_REPOSITORY"],
-                      "--ref", "main",
-                  ],
-                  check=True,
-              )
-              print("bio_watchdog_dispatched=true")
           PY
+
+      - name: Run bio regression tests in fallback
+        if: steps.bio_freshness.outputs.needs_run == 'true'
+        run: PYTHONPATH=scripts python -m unittest tests/test_bio_alert_regressions.py -v
+
+      - name: Run bio watcher directly in fallback
+        if: steps.bio_freshness.outputs.needs_run == 'true'
+        run: python scripts/bio_single_runner_v3.py
+
+      - name: Commit recovered bio states
+        if: steps.bio_freshness.outputs.needs_run == 'true'
+        run: |
+          git config user.name "bio-watchdog[bot]"
+          git config user.email "bio-watchdog[bot]@users.noreply.github.com"
+          git add data/qlex_sc_conversion_watch_state.json data/qlex_wac_ir_watch_state.json data/intismeran_qlex_watch_state.json data/jemperli_altb4_watch_state.json data/enhertu_altb4_watch_state.json data/halozyme_ptab_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Recovered bio states unchanged"
+          else
+            git commit -m "Recover stale bio watch states"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then exit 0; fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
 
   monitor:
     if: ${{ github.event_name != 'schedule' || github.event.schedule != '1,6,11,16,21,26,31,36,41,46,51,56 * * * *' }}
