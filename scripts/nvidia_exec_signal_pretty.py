@@ -21,12 +21,20 @@ def main() -> None:
     raw = ALERT.read_text(encoding="utf-8").strip()
     has_demand = "2027년 NVIDIA 칩 판매량" in raw or "판매 2배" in raw or "수요 2배" in raw
     has_safety = "제품의 기능·성능·안전에 확신이 없으면" in raw or "안전하지 않으면 출시" in raw
+    has_capital = "자본환원" in raw or "자사주 매입 승인" in raw or "총 잔여 승인한도" in raw
 
     query_line = first_line(raw, "<b>조회</b>:")
     official_line = first_line(raw, "<b>공식 기준</b>:")
     scotland_line = first_line(raw, "<b>스코틀랜드 회의</b>:")
     demand_source = first_line(raw, "<b>수요·판매 전망 출처</b>:")
     safety_source = first_line(raw, "<b>안전 발언 출처</b>:")
+    capital_source = first_line(raw, "<b>자본환원 출처</b>:")
+    capital_official = first_line(raw, "<b>직전 공식 자사주 기준</b>:")
+    capital_add = first_line(raw, "• 추가 승인:")
+    capital_remaining = first_line(raw, "• 총 잔여 승인한도:")
+    capital_horizon = first_line(raw, "• 실행 계획:")
+    capital_warning = first_line(raw, "• <b>중요:</b>")
+    capital_baseline = first_line(raw, "• 직전 공식 기준(")
 
     lines: list[str] = [
         "🚨 <b>NVIDIA 경영진 신호</b>",
@@ -34,6 +42,14 @@ def main() -> None:
         "<b>[한눈에 보기]</b>",
     ]
 
+    if has_capital:
+        lines += [
+            "💰 <b>자본환원</b> NVIDIA 자사주 매입 승인 확대",
+        ]
+        for x in (capital_add, capital_remaining, capital_horizon):
+            if x:
+                lines.append(x)
+        lines.append("→ <b>승인한도 ≠ 실제 매입액</b> — 실제 집행은 이후 10-Q·10-K에서 별도 확인")
     if has_demand:
         lines += [
             "📈 <b>수량</b> 2027년 NVIDIA 전체 칩 판매량 <b>약 2배</b> 전망",
@@ -50,6 +66,13 @@ def main() -> None:
     lines += [
         "",
         "<b>[투자 연결]</b>",
+    ]
+    if has_capital:
+        lines += [
+            "• 자사주 매입 승인 확대는 <b>현금창출력과 자본배분 의지</b>를 보여주지만 승인 즉시 전액 매수되는 것은 아닙니다.",
+            "• 실제 주당가치 효과는 <b>실제 집행액·평균매입가·주식보상 희석·잉여현금흐름</b>을 함께 봅니다.",
+        ]
+    lines += [
         "• 병목: <b>HBM·서버 DRAM·파운드리·첨단패키징·전력</b>",
         "• 제품믹스: GPU 외 <b>CPU·스위치·광 네트워킹·노트북·Jetson</b> 포함",
         "• 따라서 전체 칩 수량 2배를 <b>HBM 수요 2배로 직접 환산 금지</b>",
@@ -61,6 +84,9 @@ def main() -> None:
         "• 같은 행사 맥락이지만 <b>수량 전망</b>과 <b>안전 원칙</b>은 분리해서 판단",
         "",
         "<b>[다음 알림]</b>",
+        "• 자사주 매입 <b>추가 승인·총 잔여한도·실행기한</b> 변경",
+        "• 10-Q·10-K의 <b>실제 분기 매입액·매입주식수·평균매입가</b> 신규 확정",
+        "• 배당금·배당성향 또는 <b>주주환원 정책</b> 변경",
         "• FY28 매출 성장률 <b>+70% 상향·하향</b>",
         "• GPU·CPU·네트워킹 등 <b>제품별 출하량·판매량 목표</b> 신규 제시",
         "• 전체 칩 2배 중 <b>AI GPU 비중</b> 공개",
@@ -72,6 +98,15 @@ def main() -> None:
 
     details = [
         "<b>상세 판단 기준</b>",
+    ]
+    if has_capital:
+        details += [
+            "• 자사주 매입 ‘승인’은 이사회가 사용할 수 있는 한도를 뜻하며 실제 매입 완료액과 구분합니다.",
+        ]
+        for x in (capital_warning, capital_baseline):
+            if x:
+                details.append(x)
+    details += [
         "• FY27 2분기 실적발표에서 NVIDIA는 고객 수요 전망상 다음 해 성장 잠재력이 약 2배라고 설명했습니다.",
         "• 회사의 FY28 공식 매출 성장 전망은 약 +70%였고, 그 차이는 수요 부족이 아니라 공급 제약 때문이라고 설명했습니다.",
         "• 9월 17일 Huang의 ‘칩 판매 2배’는 스코틀랜드 찰스 3세 AI 정상회의 전 취재진에게 직접 밝힌 수량 전망입니다.",
@@ -82,7 +117,7 @@ def main() -> None:
     ]
     lines += ["", "<blockquote expandable>" + "\n".join(details) + "</blockquote>"]
 
-    refs = [x for x in (query_line, official_line, scotland_line, demand_source, safety_source) if x]
+    refs = [x for x in (query_line, official_line, scotland_line, demand_source, safety_source, capital_source, capital_official) if x]
     if refs:
         lines += ["", "<b>[근거]</b>"] + refs
 
