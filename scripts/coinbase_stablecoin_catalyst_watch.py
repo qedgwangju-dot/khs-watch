@@ -149,17 +149,10 @@ def extract_coinbase_clearing_row(text):
     if not head:
         return None
     tail = text[head.end(): head.end() + 900]
-    next_row = re.search(
-        r"\s+[A-Z][A-Za-z0-9 .,&'()/-]{2,100}\s+"
-        r"(?:Registered|Pending Registration|Exempt|Dormant|Vacated)\s+\d{2}/\d{2}/\d{4}\b",
-        tail,
-        re.I,
-    )
-    remarks = tail[: next_row.start()] if next_row else tail
     return {
         "status": clean(head.group(1)),
         "date": clean(head.group(2)),
-        "remarks": clean(remarks),
+        "remarks": clean(tail),
     }
 
 
