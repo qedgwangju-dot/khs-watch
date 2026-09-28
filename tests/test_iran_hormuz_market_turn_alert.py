@@ -179,6 +179,31 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("Yanbu 수출     실제 선적 별도 확인 필요", body)
         self.assertIn("선적 재개 확인 전 수출 정상화로 단정하지 않습니다", body)
 
+    def test_pipeline_single_media_source_does_not_confirm(self):
+        now = dt.datetime(2026, 9, 28, 12, 0, tzinfo=dt.timezone.utc)
+        rows = [MODULE.NewsItem(
+            "Saudi East-West Pipeline transport hits 3.5 million barrels per day",
+            "Reuters", "a", now.isoformat(), now.timestamp(), "east_west_pipeline_recovery"
+        )]
+        self.assertIsNone(MODULE.confirm_event(rows))
+
+    def test_pipeline_two_sources_confirm(self):
+        now = dt.datetime(2026, 9, 28, 12, 0, tzinfo=dt.timezone.utc)
+        rows = [
+            MODULE.NewsItem(
+                "Saudi East-West Pipeline transport hits 3.5 million barrels per day",
+                "Reuters", "a", now.isoformat(), now.timestamp(), "east_west_pipeline_recovery"
+            ),
+            MODULE.NewsItem(
+                "Saudi East-West Pipeline flow reaches 3.5 million bpd",
+                "Bloomberg", "b", now.isoformat(), now.timestamp(), "east_west_pipeline_recovery"
+            ),
+        ]
+        result = MODULE.confirm_event(rows)
+        self.assertIsNotNone(result)
+        assert result is not None
+        self.assertEqual(result[0], "east_west_pipeline_recovery")
+
     def test_yanbu_export_resume_is_classified_without_rate(self):
         title = "Saudi Arabia resumes oil exports via East-West Pipeline from Yanbu after repairs - Bloomberg"
         self.assertEqual(MODULE.classify_event(title), "east_west_pipeline_recovery")
