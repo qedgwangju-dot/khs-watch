@@ -250,19 +250,49 @@ def parse_nebius(text: str, url: str) -> dict:
 def parse_edge_actual(text: str, url: str, title: str) -> dict:
     if not is_official(url):
         return {}
-    low = text.lower()
-    if not any(k in low for k in ("edge", "regional", "metro", "telco", "distributed")):
+    title_low = (title or "").lower()
+    if any(k in title_low for k in ("acquire", "acquisition", "merger", "to buy", "investment in")):
         return {}
-    if not any(k in low for k in ("inference", "agentic ai", "ai inference")):
-        return {}
-    actual = any(k in low for k in (
-        "signed", "agreement", "contract", "purchase order", "deployed", "deployment",
-        "operational", "in service", "available today", "commercially available",
-    ))
-    scale = bool(re.search(r"\b\d+(?:\.\d+)?\s*(?:MW|GW|megawatts?|gigawatts?)\b", text, re.I))
-    money = bool(re.search(r"(?:\$|USD)\s*\d", text, re.I))
-    if actual and (scale or money):
-        return {"kind": "edge_actual", "company": company_for(url, text), "title": title}
+
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    edge_terms = ("edge", "regional", "metro", "telco", "distributed")
+    inference_terms = ("inference", "agentic ai", "ai inference")
+    action_terms = (
+        "signed", "contract", "purchase order", "deployed", "deployment",
+        "operational", "in service", "commercially available", "service launch",
+        "launched", "production deployment",
+    )
+
+    for i, sentence in enumerate(sentences):
+        window = " ".join(sentences[i:i + 2])
+        low = window.lower()
+        if not any(k in low for k in edge_terms):
+            continue
+        if not any(k in low for k in inference_terms):
+            continue
+        if not any(k in low for k in action_terms):
+            continue
+
+        scale_match = re.search(
+            r"\b\d+(?:\.\d+)?\s*(?:MW|GW|megawatts?|gigawatts?)\b",
+            window,
+            re.I,
+        )
+        money_match = re.search(
+            r"(?:\$|USD)\s*\d[\d,.]*(?:\s*(?:million|billion|M|B))?",
+            window,
+            re.I,
+        )
+        if not (scale_match or money_match):
+            continue
+
+        return {
+            "kind": "edge_actual",
+            "company": company_for(url, text),
+            "title": title,
+            "scale": scale_match.group(0) if scale_match else "",
+            "money": money_match.group(0) if money_match else "",
+        }
     return {}
 
 def compare_neocloud(previous: dict, update: dict) -> list[dict]:
@@ -417,46 +447,61 @@ def event_line(event: dict) -> str:
     if kind in ("servicing", "negative"):
         return f"• <b>{html.escape(event['company'])}:</b> {html.escape(event['label'])}"
     if kind == "edge_actual":
-        return f"• <b>에지·지역 추론 실제 상용화:</b> {html.escape(event['company'])} — {html.escape(event['title'])}"
+        detail = " / ".join(x for x in (str(event.get("scale") or ""), str(event.get("money") or "")) if x)
+        suffix = f" ({html.escape(detail)})" if detail else ""
+        return f"• <b>에지·지역 추론 상용화:</b> {html.escape(event['company'])} — {html.escape(event['title'])}{suffix}"
     if kind == "upstream":
         return f"• <b>{html.escape(event['label'])}:</b> {html.escape(str(event.get('before')))} → {html.escape(str(event.get('after')))}"
     return "• 구조 변화 감지"
 
 def build_alert(events: list[dict], latest: dict, sources: list[str]) -> str:
     cw = (latest.get("neocloud") or {}).get("CoreWeave") or {}
+    kinds = {str(e.get("kind") or "") for e in events}
+    labels = " ".join(str(e.get("label") or "") for e in events)
+
     lines = [
-        "<b>🚨 AI 추론 구조 변화 — CPU·FCBGA·에지·네오클라우드</b>",
+        "<b>🚨 AI 추론 수익화 변화</b>",
         "",
-        "<b>핵심 변화</b>",
+        "<b>변화</b>",
         *[event_line(e) for e in events],
         "",
-        "<b>수익화 경로</b>",
-        "• AI Agent 사용 증가 → 추론 호출량 증가 → CPU 오케스트레이션·도구 호출 부하 증가 → CPU 서버/랙 증가 → 서버 CPU·네트워크용 대면적·고다층 FCBGA 증가 → 지역형 추론·에지 수요 증가 → 네오클라우드·에지 실제 계약·매출 증가.",
-        "",
-        "<b>현재 기준선</b>",
-        "• AMD·Intel 공식 기준: 기존 1 CPU : 4~8 GPU 또는 1:8 중심 구조에서 에이전트형 AI는 1:1 또는 CPU 비중이 더 높은 방향.",
-        "• 삼성전기 2Q26 패키지솔루션 매출 7,716억원; 회사는 AI 가속기·서버 CPU용 고부가 기판 공급 증가를 직접 원인으로 설명.",
-        f"• CoreWeave: 활성 전력 {float(cw.get('active_power_gw') or 0):.2f}GW / 계약 전력 {float(cw.get('contracted_power_gw') or 0):.2f}GW / MW당 연환산 매출 {float(cw.get('annualized_revenue_per_mw_usd_m') or 0):.1f}백만달러.",
-        "",
-        "<b>강한 알림 기준</b>",
-        "• CPU:GPU 실제 배치비율이 새 공식 숫자로 의미 있게 변경.",
-        "• 서버 CPU 주문·출하·가격 또는 삼성전기·IBIDEN 등 FCBGA 양산·가동률·신규 고객·생산능력이 기존 기준을 의미 있게 이탈.",
-        "• 네오클라우드는 계약 MW가 활성·전원 연결 MW로 이동하거나 MW당 매출이 ±10% 이상 변할 때.",
-        "• 에지·지역 추론은 전망·업무협약이 아니라 실제 계약·배치·MW·상용 매출이 확인될 때.",
-        "",
-        "<b>하향 반전 게이트</b>",
-        "• CPU 비중 후퇴, FCBGA 고객 승인·양산 지연, 계약전력 대비 활성전력 전환 둔화, MW당 매출 10% 이상 하락, 계약 취소·납기 지연도 동일하게 알림.",
-        "",
-        "<b>숨은 역풍·실패모드</b>",
-        "• CPU 수요가 늘어도 대면적·고다층 FCBGA 수율·휨·고온 동작 검사·신뢰성 검증이 막히면 실제 출하는 늦어질 수 있습니다.",
-        "• 네오클라우드는 계약 GW보다 전원 연결·활성 GW가 늦으면 감가상각·이자비용이 매출보다 먼저 발생할 수 있습니다.",
-        "• 조기경보: CPU:GPU 실제 배치비율, 서버 CPU 주문, FCBGA 가동률·고객 승인, 계약 GW→활성 GW 전환율, MW당 매출.",
-        "",
-        "<b>제외 조건</b>",
-        "• ‘AI 에이전트가 뜬다’, ‘에지 시장이 커진다’, 목표주가 변경, 동일 기사 재인용만으로는 전송하지 않습니다.",
+        "<b>의미</b>",
+        "• Agentic AI → CPU 비중 상승 → FCBGA·지역 인프라 → 실제 MW·매출로 이어지는지 확인하는 신호입니다.",
     ]
-    for url in dict.fromkeys(sources):
-        lines.append(f'• <a href="{html.escape(url, quote=True)}">근거 원문</a>')
+
+    current = []
+    if "cpu_ratio" in kinds or "CPU" in labels or "서버 CPU" in labels:
+        current.append("• CPU:GPU 기준선: AMD·Intel 에이전트형 AI 약 1:1 방향")
+    if "upstream" in kinds and any(k in labels for k in ("FCBGA", "ABF", "삼성전기", "IBIDEN")):
+        current.append("• 삼성전기 2Q26 패키지솔루션 7,716억원")
+    if "neocloud_metric" in kinds or "servicing" in kinds or "negative" in kinds:
+        current.append(
+            f"• CoreWeave: 활성 {float(cw.get('active_power_gw') or 0):.2f}GW / "
+            f"계약 {float(cw.get('contracted_power_gw') or 0):.2f}GW / "
+            f"MW당 연환산 매출 {float(cw.get('annualized_revenue_per_mw_usd_m') or 0):.1f}백만달러"
+        )
+    if current:
+        lines += ["", "<b>현재 숫자</b>", *current]
+
+    checks = []
+    if "cpu_ratio" in kinds or "CPU" in labels:
+        checks.append("CPU 주문·출하")
+    if "upstream" in kinds:
+        checks.append("FCBGA 가동률·고객 승인")
+    if "neocloud_metric" in kinds or "servicing" in kinds or "negative" in kinds:
+        checks.append("계약 GW→활성 GW·MW당 매출")
+    if "edge_actual" in kinds:
+        checks.append("실제 가동 MW·상용 매출")
+    if not checks:
+        checks.append("실제 주문·양산·MW·매출")
+    lines += ["", "<b>다음 확인</b>", "• " + " / ".join(dict.fromkeys(checks))]
+
+    unique_sources = list(dict.fromkeys(sources))
+    if unique_sources:
+        lines += ["", "<b>원문</b>"]
+        for url in unique_sources:
+            lines.append(f'• <a href="{html.escape(url, quote=True)}">근거 원문</a>')
+
     return "\n".join(lines).strip() + "\n"
 
 def main() -> None:
