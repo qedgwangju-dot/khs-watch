@@ -52,6 +52,72 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertTrue(MODULE.market_confirms(down_yield, down_dxy))
         self.assertFalse(MODULE.market_confirms(down_yield, up_dxy))
 
+    def test_physical_oil_flow_recovery_is_classified(self):
+        title = "Saudi Arabia ramps up Gulf oil exports after pipeline attack, data shows - Reuters"
+        self.assertEqual(MODULE.classify_event(title), "oil_flow_recovery")
+
+    def test_gulf_of_oman_sts_expansion_is_classified(self):
+        title = "Saudi export rerouting amid Gulf of Oman STS bottlenecks amplify VLCC intensity - Kpler"
+        self.assertEqual(MODULE.classify_event(title), "sts_reroute_expansion")
+
+    def test_kpler_primary_data_can_confirm_flow_event(self):
+        now = dt.datetime(2026, 9, 27, 12, 0, tzinfo=dt.timezone.utc)
+        rows = [
+            MODULE.NewsItem(
+                "Saudi export rerouting amid Gulf of Oman STS bottlenecks amplify VLCC intensity",
+                "Kpler",
+                "a",
+                now.isoformat(),
+                now.timestamp(),
+                "sts_reroute_expansion",
+            )
+        ]
+        result = MODULE.confirm_event(rows)
+        self.assertIsNotNone(result)
+        assert result is not None
+        self.assertEqual(result[0], "sts_reroute_expansion")
+
+    def test_flow_event_id_is_stable_across_reprints(self):
+        now = dt.datetime(2026, 9, 27, 12, 0, tzinfo=dt.timezone.utc)
+        rows_a = [
+            MODULE.NewsItem(
+                "Saudi Arabia ramps up Gulf oil exports after pipeline attack",
+                "Reuters",
+                "a",
+                now.isoformat(),
+                now.timestamp(),
+                "oil_flow_recovery",
+            )
+        ]
+        rows_b = [
+            MODULE.NewsItem(
+                "Aramco boosts Saudi crude exports from Ras Tanura",
+                "Bloomberg",
+                "b",
+                (now + dt.timedelta(hours=8)).isoformat(),
+                (now + dt.timedelta(hours=8)).timestamp(),
+                "oil_flow_recovery",
+            )
+        ]
+        self.assertEqual(MODULE.event_id("oil_flow_recovery", rows_a), MODULE.event_id("oil_flow_recovery", rows_b))
+
+    def test_physical_flow_body_separates_sts_from_hormuz_volume(self):
+        current = dt.datetime(2026, 9, 27, 12, 0, tzinfo=dt.timezone.utc)
+        news = [
+            MODULE.NewsItem(
+                "Gulf of Oman STS volumes surge to a record",
+                "Kpler",
+                "a",
+                current.isoformat(),
+                current.timestamp(),
+                "sts_reroute_expansion",
+            )
+        ]
+        body = MODULE.build_physical_flow_alert_body("sts_reroute_expansion", news, None, current)
+        self.assertIn("STS는 같은 배럴이 여러 번 이송될 수 있어", body)
+        self.assertIn("합산하지 않습니다", body)
+        self.assertIn("정책 발언 처리", body)
+
     def test_alert_body_contains_required_market_values(self):
         current = dt.datetime(2026, 8, 2, 12, 0, tzinfo=dt.timezone.utc)
         news = [
