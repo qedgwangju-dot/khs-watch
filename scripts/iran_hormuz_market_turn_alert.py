@@ -48,6 +48,11 @@ NEWS_QUERIES = (
     'Iran ceasefire agreement OR Iran truce agreement OR "US Iran ceasefire" when:3d',
     'US ends attacks Iran OR US halts strikes Iran OR US ceases military operations Iran when:3d',
     '"Strait of Hormuz reopens" OR "shipping resumes" Hormuz OR "traffic returns to normal" Hormuz when:3d',
+    '"Gulf oil exports" recover OR "Middle East oil exports" recover OR "Saudi crude shipments" September when:3d',
+    '"Saudi Arabia ramps up Gulf oil exports" OR "Aramco to boost Gulf exports" when:7d',
+    '"Gulf of Oman" STS record OR "ship-to-ship" Oman Saudi crude when:7d',
+    'Kpler "Gulf of Oman" STS bottlenecks VLCC when:7d',
+    '"Hormuz oil shipments" six-month high OR "record oil" Hormuz when:7d',
 )
 
 TRUSTED_SOURCE_ALIASES = (
@@ -87,6 +92,8 @@ TRUSTED_SOURCE_ALIASES = (
     "ap통신",
     "블룸버그",
     "bbc 코리아",
+    "kpler",
+    "vortexa",
 )
 
 NEGATIVE_OR_TENTATIVE_PHRASES = (
@@ -132,7 +139,10 @@ EVENT_LABELS = {
     "ceasefire": "미국·이란의 최종 휴전·합의",
     "us_attack_end": "미국의 대이란 공격 중단 공식화",
     "hormuz_normalization": "호르무즈 해협의 실질적 통행 정상화",
+    "oil_flow_recovery": "중동 원유 수출·호르무즈 물류 회복",
+    "sts_reroute_expansion": "걸프오브오만 STS 우회 물류 급증·병목",
 }
+DATA_PROVIDER_ALIASES = ("kpler", "vortexa", "jodi")
 
 
 @dataclass(frozen=True)
@@ -272,6 +282,51 @@ def classify_event(title: str) -> str | None:
     if has_iran and has_us and any(phrase in low for phrase in attack_end_phrases):
         return "us_attack_end"
 
+    flow_recovery_phrases = (
+        "ramps up gulf oil exports",
+        "boost gulf exports",
+        "oil shipments hit six-month high",
+        "oil shipments hit a six-month high",
+        "highest during the iran war",
+        "highest since the iran war",
+        "exports recover",
+        "exports recovered",
+        "export recovery",
+        "oil flows rise",
+        "oil flows through the strait",
+        "middle east exports",
+        "gulf oil exports",
+        "saudi crude shipments",
+        "사우디 원유 수출 회복",
+        "걸프 원유 수출 회복",
+        "호르무즈 원유 통과 증가",
+    )
+    if any(phrase in low for phrase in flow_recovery_phrases) and any(
+        term in low for term in ("oil", "crude", "barrel", "export", "shipment", "원유", "석유", "수출")
+    ):
+        return "oil_flow_recovery"
+
+    sts_phrases = (
+        "ship-to-ship",
+        "ship to ship",
+        "sts bottleneck",
+        "sts volumes",
+        "sts activity",
+        "sts transfers",
+        "lightering",
+        "shuttle trades",
+        "gulf of oman",
+        "sohar",
+        "오만만",
+        "선박 간 이송",
+    )
+    sts_change = (
+        "record", "surge", "surged", "rises", "rose", "capacity", "bottleneck",
+        "rerouting", "reroute", "boost", "increase", "급증", "기록", "병목", "우회",
+    )
+    if any(term in low for term in sts_phrases) and any(term in low for term in sts_change):
+        return "sts_reroute_expansion"
+
     hormuz_phrases = (
         "strait of hormuz reopens",
         "hormuz strait reopens",
@@ -366,7 +421,11 @@ def confirm_event(items: list[NewsItem], minimum_sources: int = 2) -> tuple[str,
         for row in sorted(rows, key=lambda item: item.published_epoch, reverse=True):
             source_rows.setdefault(normalize_text(row.source), row)
         selected = list(source_rows.values())
-        if len(selected) >= minimum_sources:
+        has_primary_data = kind in ("oil_flow_recovery", "sts_reroute_expansion") and any(
+            any(alias in normalize_text(row.source) for alias in DATA_PROVIDER_ALIASES)
+            for row in selected
+        )
+        if len(selected) >= minimum_sources or has_primary_data:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
     if not candidates:
         return None
@@ -467,6 +526,24 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 
 
 def event_id(kind: str, rows: list[NewsItem]) -> str:
+    combined = " ".join(normalize_text(row.title) for row in rows)
+    if kind in ("oil_flow_recovery", "sts_reroute_expansion"):
+        markers = []
+        marker_terms = (
+            ("saudi_export_ramp", ("saudi", "aramco", "ras tanura")),
+            ("hormuz_flow_high", ("hormuz", "six-month high", "record oil")),
+            ("sts_record", ("ship-to-ship", "ship to ship", "sts", "gulf of oman")),
+            ("sohar_reroute", ("sohar", "oman")),
+            ("yanbu_restart", ("yanbu", "east-west pipeline", "east west pipeline")),
+            ("vlcc_bottleneck", ("vlcc", "bottleneck", "capacity")),
+        )
+        for name, terms in marker_terms:
+            if any(term in combined for term in terms):
+                markers.append(name)
+        if not markers:
+            markers = [kind]
+        digest = hashlib.sha256(f"{kind}|{'|'.join(sorted(set(markers)))}".encode("utf-8")).hexdigest()[:16]
+        return f"{kind}:{digest}"
     day = dt.datetime.fromtimestamp(max(row.published_epoch for row in rows), tz=UTC).astimezone(KST).date().isoformat()
     sources = ",".join(sorted(normalize_text(row.source) for row in rows))
     digest = hashlib.sha256(f"{kind}|{day}|{sources}".encode("utf-8")).hexdigest()[:16]
@@ -522,6 +599,56 @@ def fmt_quote_line(quote: Quote) -> str:
         f"- {quote.label}: ${quote.price:.2f}/배럴 (전 거래일 ${quote.previous_close:.2f}, "
         f"{fmt_signed(quote.change_pct, 2, '%')}, {direction})"
     )
+
+
+def build_physical_flow_alert_body(
+    kind: str,
+    news_rows: list[NewsItem],
+    oil: Quote | None,
+    current: dt.datetime,
+) -> str:
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        f"확정 변화: {EVENT_LABELS[kind]}",
+        "근거:",
+    ]
+    for row in news_rows[:3]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        lines.append(f"- {row.source} · {published:%m-%d %H:%M KST} · {row.title}")
+
+    if kind == "oil_flow_recovery":
+        lines.extend([
+            "",
+            "정확한 의미:",
+            "- 중동 원유가 시장에 다시 나오고 있다는 신호지만, 호르무즈가 전쟁 이전처럼 정상화됐다는 뜻은 아닙니다.",
+            "- 사우디 Persian Gulf 선적, Red Sea/Yanbu 선적, 호르무즈 실제 통과량을 분리해 봅니다.",
+            "- 걸프 전체 지역 수출(all liquids)은 Fujairah·Oman 적재까지 포함할 수 있어 호르무즈 통과량과 동일하지 않습니다.",
+        ])
+    else:
+        lines.extend([
+            "",
+            "정확한 의미:",
+            "- Gulf of Oman 선박 간 이송(STS)이 원유 수출의 우회 통로로 급증한 신호입니다.",
+            "- STS는 같은 배럴이 여러 번 이송될 수 있어 STS 물량을 해협 순수 통과량과 합산하지 않습니다.",
+            "- Fujairah·Sohar 지원능력과 VLCC 회전율이 새로운 병목이 될 수 있습니다.",
+        ])
+    if oil is not None:
+        lines.extend(["", "시장 확인:", fmt_quote_line(oil)])
+    lines.extend([
+        "",
+        "투자 포인트:",
+        "- 돈 버는 능력: 원유 공급 회복은 정제 투입원가·유가 위험프리미엄 완화 요인이지만 STS·장거리 우회는 VLCC 운임과 물류비를 높일 수 있습니다.",
+        "- 수급: 실제 물량 회복과 물류비 정상화는 별개입니다. 수출량↑·운임↑가 동시에 나타날 수 있습니다.",
+        "- 시간표: 호르무즈 통과량 → Saudi Gulf/Red Sea 선적 → GoO STS → Fujairah/Sohar 병목 → VLCC 운임 순으로 확인합니다.",
+        "",
+        "정책 발언 처리:",
+        "- 대통령·정부 발언은 맥락으로만 표시하며 Kpler·Reuters·Bloomberg·CENTCOM 등 물량/통항 데이터 없이 정상화 확정 트리거로 사용하지 않습니다.",
+        "",
+        "실패 경로:",
+        "- Houthi/이란 공격 재확대, Yanbu 재차 중단, STS 지원능력 포화, 보험·VLCC 운임 급등이면 수출량 회복에도 실효 공급비용이 다시 악화될 수 있습니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
 
 
 def build_alert_body(
@@ -629,6 +756,43 @@ def run_monitor(current: dt.datetime) -> int:
             market_errors.append(f"{key}: {exc}")
 
     max_age_minutes = int(os.getenv("IRAN_HORMUZ_MARKET_MAX_AGE_MINUTES", "240"))
+
+    if kind in ("oil_flow_recovery", "sts_reroute_expansion"):
+        oil = None
+        for key in ("brent", "wti"):
+            candidate = quotes.get(key)
+            if candidate is not None and quote_is_fresh(candidate, current, max_age_minutes):
+                oil = candidate
+                break
+        body = build_physical_flow_alert_body(kind, news_rows, oil, current)
+        title = "중동 원유 흐름 회복·우회 물류 변화"
+        alert = {
+            "test_mode": False,
+            "created_at_kst": current.astimezone(KST).isoformat(timespec="seconds"),
+            "event_kind": kind,
+            "event_label": EVENT_LABELS[kind],
+            "event_id": current_event_id,
+            "news": [asdict(row) for row in news_rows],
+            "market": {"oil": asdict(oil) if oil else None},
+        }
+        pending_state = {
+            "last_alert_at_kst": current.astimezone(KST).isoformat(timespec="seconds"),
+            "last_event_kind": kind,
+            "last_event_id": current_event_id,
+            "last_market": alert["market"],
+        }
+        TITLE_PATH.write_text(title + "\n", encoding="utf-8")
+        BODY_PATH.write_text(body, encoding="utf-8")
+        ALERT_JSON_PATH.write_text(json.dumps(alert, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        PENDING_STATE_PATH.write_text(json.dumps(pending_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        write_summary([
+            "# 이란·호르무즈 시장 전환 감시",
+            current.astimezone(KST).strftime("확인 시각: %Y-%m-%d %H:%M KST"),
+            f"사건: {EVENT_LABELS[kind]}",
+            "결과: 실물 원유 흐름 별도 Telegram 조건 충족",
+        ])
+        return 0
+
     us2y = quotes.get("us2y")
     dxy = quotes.get("dxy")
     if us2y is None or dxy is None:
