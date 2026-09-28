@@ -107,17 +107,35 @@ def grade(score: int, inf: dict | None, hh: dict | None, oilx: dict | None, even
     if has_direct_next_meeting_hawk(events) and core and oil_up and financial:
         return "🔴", "다음 회의 인상 경보"
     if score >= 5:
-        return "🟠", "인상 압력 확대"
+        return "🟠", "인상 압력 높음"
     if score >= 1 or financial or (inf and inf.get("core_yoy", 0) >= 2.5):
-        return "🟡", "추가인상 살아있음"
-    return "🟢", "동결 우세"
+        return "🟡", "추가인상 가능성 유지"
+    return "🟢", "동결 조건 우세"
+
+
+def oil_alert_transition(old_oil: dict | None, new_oil: dict | None) -> str | None:
+    """유가가 실제 인상압력을 새로 강화/완화할 때만 알림 사유를 만든다.
+    - 급락 완충(-1) -> 중립(0)은 '새로운 유가 상방위험'이 아니므로 알림하지 않는다.
+    - +5%/+10% 상방구간 진입은 알림한다.
+    - 이미 상방구간에 있다가 완화되면 완화 알림을 허용한다.
+    """
+    if not old_oil or not new_oil:
+        return None
+    old_bucket = max(0, base.op(old_oil))
+    new_bucket = max(0, base.op(new_oil))
+    ch = new_oil.get("change_5d_pct")
+    if new_bucket > old_bucket:
+        return f"브렌트유 상승압력 강화: 최근 5거래일 {ch:+.1f}%"
+    if old_bucket > 0 and new_bucket < old_bucket:
+        return f"브렌트유 상승압력 완화: 최근 5거래일 {ch:+.1f}%"
+    return None
 
 
 def build_message(state: dict, reasons: list[str], new_events: list[dict]) -> str:
     c = state["components"]
     inf, hh, hs, oi = c.get("inflation"), c.get("household"), c.get("housing"), c.get("oil")
     lines = [
-        "🚨 <b>한국은행 추가인상 압력 확대 — 근원물가·주담대·중동 물가위험</b>",
+        f"🏦 <b>한국은행 추가인상 조건 업데이트 — {state['grade_emoji']} {state['grade_label']}</b>",
         "",
         f"• 현재 판정: <b>{state['grade_emoji']} {state['grade_label']}</b> / 위험점수 <b>{state['risk_score']}</b>",
         "• <b>추가 25bp 인상 경로는 살아있지만 다음 회의 즉시 인상은 아직 미확정</b>",
@@ -162,12 +180,22 @@ def build_message(state: dict, reasons: list[str], new_events: list[dict]) -> st
         lines.append("• 새 정책 의미 변화 없음")
 
     lines += ["", "<b>③ 최종 판정</b>"]
+    drivers = []
+    if inf and inf.get("core_reaccelerating") and inf.get("core_yoy", 0) >= 3.0:
+        drivers.append("근원물가")
+    if hh and hh.get("mortgage_reaccelerating") and hh.get("mortgage_trn", 0) >= 4:
+        drivers.append("주택담보대출")
+    if oi and base.op(oi) > 0:
+        drivers.append("유가 상승")
+    if state.get("rhetoric_score", 0) > 0:
+        drivers.append("한은 매파 발언")
+    driver_text = "·".join(drivers) if drivers else "현재 정책조건"
     if state["grade_emoji"] == "🔴":
-        verdict = "다음 회의를 직접 겨냥한 매파 강화까지 확인돼 인상 경보 조건 충족"
+        verdict = f"{driver_text}에 더해 다음 회의를 직접 겨냥한 매파 강화까지 확인돼 인상 경보 조건 충족"
     elif state["grade_emoji"] == "🟠":
-        verdict = "근원물가·주담대·유가와 추가 인상 기조가 겹쳐 인상 압력은 확대됐지만, 다음 회의 즉시 인상을 단정할 단계는 아님"
+        verdict = f"{driver_text} 때문에 인상 압력이 높은 상태지만, 다음 회의 즉시 인상을 단정할 단계는 아님"
     elif state["grade_emoji"] == "🟡":
-        verdict = "추가 인상 경로는 남아 있으나 복수 축 동시 악화는 아직 부족"
+        verdict = f"{driver_text}로 추가 인상 가능성은 남아 있으나 복수 축 동시 악화는 아직 부족"
     else:
         verdict = "물가·금융불균형 압력이 완화돼 동결 조건이 우세"
     lines.append(f"• <b>{verdict}</b>")
@@ -243,32 +271,93 @@ def main() -> int:
         "seen_rhetoric_hashes": seen,
     }
 
-    reasons = []
+    # 상태 계산과 텔레그램 알림 트리거를 분리한다.
+    # 점수/등급이 시장가격의 완충효과 소멸만으로 바뀌어도 상태는 갱신할 수 있지만,
+    # 실제 정책조건 악화가 없으면 텔레그램은 보내지 않는다.
+    state_reasons = []
+    alert_reasons = []
+    migration = int(old.get("version") or 0) < 4
+
     if not boot:
         if old.get("grade_emoji") != grade_emoji or old.get("risk_score") != risk_score:
-            reasons.append(f"위험등급/점수 변화: {old.get('grade_emoji','?')} {old.get('risk_score','?')} → {grade_emoji} {risk_score}")
-        if current.get("inflation") and not same(oc.get("inflation"), current["inflation"], ["period", "headline_yoy", "core_yoy"]):
-            reasons.append(f"물가 갱신: CPI {current['inflation']['headline_yoy']:.1f}% / 근원 {current['inflation']['core_yoy']:.1f}%")
-        if current.get("household") and not same(oc.get("household"), current["household"], ["period", "total_trn", "mortgage_trn", "mortgage_prev_trn"]):
-            reasons.append(f"가계대출 갱신: 전체 {current['household']['total_trn']:+.1f}조원 / 주담대 {current['household']['mortgage_trn']:+.1f}조원")
-        if current.get("housing") and not same(oc.get("housing"), current["housing"], ["period", "seoul_wow", "gangbuk_wow", "gangnam_wow", "gyeonggi_wow", "broad_diffusion"]):
-            reasons.append("주택가격 확산 판정 갱신")
-        if current.get("oil") and oc.get("oil") and base.op(current["oil"]) != base.op(oc["oil"]):
-            reasons.append(f"브렌트유 압력구간 변화: 5거래일 {current['oil']['change_5d_pct']:+.1f}%")
-        if old.get("next_mpc_date") != next_meeting.get("date") and next_meeting.get("date"):
-            reasons.append(f"다음 금통위 일정 전환: {old.get('next_mpc_date') or '확인 불가'} → {next_meeting['date']}")
-        if new_events:
-            reasons.append(f"한은 발언 정책 의미 변화 {len(new_events)}건")
+            state_reasons.append(
+                f"위험등급/점수 재계산: {old.get('grade_emoji','?')} {old.get('risk_score','?')} → "
+                f"{grade_emoji} {risk_score}"
+            )
 
-    material_change = bool(reasons or new_events)
-    if material_change:
-        msg = build_message(candidate, reasons, new_events)
+        if current.get("inflation") and not same(
+            oc.get("inflation"), current["inflation"], ["period", "headline_yoy", "core_yoy"]
+        ):
+            reason = f"물가 공식치 갱신: CPI {current['inflation']['headline_yoy']:.1f}% / 근원 {current['inflation']['core_yoy']:.1f}%"
+            state_reasons.append(reason)
+            alert_reasons.append(reason)
+
+        if current.get("household") and not same(
+            oc.get("household"), current["household"], ["period", "total_trn", "mortgage_trn", "mortgage_prev_trn"]
+        ):
+            reason = (
+                f"가계대출 공식치 갱신: 전체 {current['household']['total_trn']:+.1f}조원 / "
+                f"주담대 {current['household']['mortgage_trn']:+.1f}조원"
+            )
+            state_reasons.append(reason)
+            alert_reasons.append(reason)
+
+        if current.get("housing") and not same(
+            oc.get("housing"), current["housing"],
+            ["period", "seoul_wow", "gangbuk_wow", "gangnam_wow", "gyeonggi_wow", "broad_diffusion"]
+        ):
+            reason = "주택가격 공식 확산 판정 갱신"
+            state_reasons.append(reason)
+            alert_reasons.append(reason)
+
+        if current.get("oil") and oc.get("oil"):
+            old_oil = oc.get("oil")
+            new_oil = current.get("oil")
+            # 원시 가격/날짜 변화는 상태 기록용일 뿐 텔레그램 사유가 아니다.
+            if (
+                old_oil.get("date") != new_oil.get("date")
+                or base.op(old_oil) != base.op(new_oil)
+            ):
+                state_reasons.append(
+                    f"브렌트유 상태 갱신: {old_oil.get('change_5d_pct')}% → {new_oil.get('change_5d_pct')}%"
+                )
+            oil_reason = oil_alert_transition(old_oil, new_oil)
+            if oil_reason:
+                alert_reasons.append(oil_reason)
+
+        if old.get("next_mpc_date") != next_meeting.get("date") and next_meeting.get("date"):
+            reason = f"다음 금통위 일정 전환: {old.get('next_mpc_date') or '확인 불가'} → {next_meeting['date']}"
+            state_reasons.append(reason)
+            alert_reasons.append(reason)
+
+        if new_events:
+            reason = f"한은 발언 정책 의미 변화 {len(new_events)}건"
+            state_reasons.append(reason)
+            alert_reasons.append(reason)
+
+    # 코드 버전 변경 자체는 신규 정책 이벤트가 아니다.
+    notify = bool(alert_reasons or new_events) and not migration
+    if notify:
+        msg = build_message(candidate, alert_reasons, new_events)
         if base.ALERT.exists() and base.ALERT.stat().st_size:
-            base.ALERT.write_text(base.ALERT.read_text(encoding="utf-8").rstrip() + "\n\n──────────\n\n" + msg + "\n", encoding="utf-8")
+            base.ALERT.write_text(
+                base.ALERT.read_text(encoding="utf-8").rstrip() + "\n\n──────────\n\n" + msg + "\n",
+                encoding="utf-8",
+            )
         else:
             base.ALERT.write_text(msg + "\n", encoding="utf-8")
 
-    root["rate_signal_upgrade"] = candidate if (boot or material_change) else old
+    candidate["version"] = 4
+    candidate["notification_policy"] = {
+        "score_only_change_suppressed": True,
+        "oil_relief_to_neutral_suppressed": True,
+        "oil_alert_requires_positive_pressure_bucket": True,
+        "official_data_or_policy_event_priority": True,
+    }
+
+    # 상태는 재계산 변화가 있으면 조용히 갱신한다. 알림 여부와는 분리한다.
+    state_change = boot or migration or bool(state_reasons or new_events)
+    root["rate_signal_upgrade"] = candidate if state_change else old
     base.PENDING.write_text(json.dumps(root, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     with base.STATUS.open("a", encoding="utf-8") as f:
         hh = current.get("household") or {}
@@ -280,7 +369,9 @@ def main() -> int:
             f"- 주담대: {hh.get('mortgage_trn','확인 불가')}조원 / 재가속: {'예' if hh.get('mortgage_reaccelerating') else '아니오'}\n"
             f"- 신규 정책의미 발언: {len(new_events)}건\n"
             f"- 다음 회의 직접 매파 강화: {'예' if has_direct_next_meeting_hawk(events) else '아니오'}\n"
-            f"- 실제 상태 변경: {'예' if (boot or material_change) else '아니오'}\n"
+            f"- 실제 상태 변경: {'예' if state_change else '아니오'}\n"
+            f"- 텔레그램 알림 발생: {'예' if notify else '아니오'}\n"
+            f"- 점수만 변한 경우 알림 억제: 예\n"
         )
     return 0
 
