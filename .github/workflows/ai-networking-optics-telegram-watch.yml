@@ -39,6 +39,53 @@ jobs:
       - name: Validate watcher
         run: python -m py_compile scripts/ai_networking_optics_watch.py
 
+      - name: Regression test event deduplication
+        run: |
+          python - <<'PY'
+          import importlib.util
+          import pathlib
+
+          path = pathlib.Path("scripts/ai_networking_optics_watch.py")
+          spec = importlib.util.spec_from_file_location("watch", path)
+          watch = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(watch)
+
+          launch_titles = [
+              "Coherent launches PhotonLink integrated optics platform for AI infrastructure",
+              "Coherent unveils PhotonLink platform for next-generation data centers",
+              "Coherent Corp launches PhotonLink integrated optical platform",
+              "PhotonLink enables scalable photonic connectivity for AI data centers",
+              "How the PhotonLink launch changes the investment story for Coherent stock",
+          ]
+          items = [{
+              "company": "Coherent",
+              "title": title,
+              "category": "광 링크 통합·수직계열화",
+              "source": "test",
+              "score": 10,
+              "published": "2026-09-21T12:00:00+00:00",
+          } for title in launch_titles]
+
+          representative = items[0]
+          for item in items[1:]:
+              assert watch.same_underlying_story(representative, item), (
+                  "Mirror headline was not collapsed into the PhotonLink launch event: " + item["title"]
+              )
+
+          contract = {
+              "company": "Coherent",
+              "title": "Coherent secures new long-term PhotonLink agreement with hyperscale AI customer",
+              "category": "고객·장기계약",
+              "source": "test",
+              "score": 10,
+              "published": "2026-10-01T12:00:00+00:00",
+          }
+          assert not watch.same_underlying_story(representative, contract), (
+              "A genuinely new PhotonLink customer-contract event was incorrectly suppressed."
+          )
+          print("dedupe_regression_test=passed")
+          PY
+
       - name: Validate exact requested Telegram route without sending
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
