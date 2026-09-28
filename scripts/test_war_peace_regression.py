@@ -187,3 +187,38 @@ issues = mod._alert_quality_issues(tass_alert)
 check("quality-gate-tass-routine", any("TASS 정례" in x for x in issues))
 
 print("WAR_PEACE_QUALITY_GATE_OK")
+
+
+# 9) Bloomberg 9/28형: 이란 측의 '중간선거 전 타결 회의 + 선거 후 확전 위험'은
+# 기존 트럼프 휴전안 거절 재인용이 아니라 별도 신규 협상제약 사건으로 본다.
+iran_midterm = row(
+    "Iranian officials are skeptical of a deal before the U.S. midterms and see a higher risk of escalation after November 3",
+    source="Bloomberg",
+    description=(
+        "Officials said last week's New York talks made little progress. "
+        "Foreign Minister Abbas Araghchi remained in the United States for further talks through mediators "
+        "after meeting Jared Kushner and Steve Witkoff."
+    ),
+)
+marks = mod._marks(iran_midterm)
+check("iran-midterm-skepticism-detected", "이란중간선거전합의회의" in marks)
+check("iran-post-election-risk-detected", "이란선거후확전위험" in marks)
+check("iran-araghchi-stays-detected", "아라치미국체류추가협상" in marks)
+check("iran-midterm-yellow", mod._emergency_color(iran_midterm) == "yellow")
+check("iran-midterm-topic", mod.topic_label(iran_midterm) == "이란·미국 · 중간선거 전 협상 제약")
+midterm_score, midterm_tags = mod.score_item(iran_midterm, dt.datetime.now(mod.watch.KST))
+check("iran-midterm-high-priority", midterm_score >= 99 and "협상제약" in midterm_tags)
+
+# 10) 빨강+초록 혼재 헤더는 '초록 단독 오판'이 아니므로 품질 게이트가 막으면 안 된다.
+mixed_alert = """<b>전쟁·종전·재건 웹감시</b>
+🔴 <b>공격·확전</b>  |  🟢 <b>재건·휴전</b>
+<b>핵심 변화</b>
+🔴 [신규] <b>1. 이란·호르무즈</b>
+이란 남부 복수 폭발음
+🟢 [신규] <b>2. 이란·호르무즈</b>
+협상 재개 신호
+<b>투자 판정</b>
+"""
+check("quality-gate-mixed-header-allowed", not any("초록 헤더" in x for x in mod._alert_quality_issues(mixed_alert)))
+
+print("WAR_PEACE_MIDTERM_RISK_OK")
