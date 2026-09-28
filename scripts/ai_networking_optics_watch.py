@@ -81,12 +81,26 @@ COMPANIES = {
             "Chieftek", "Chieftek Precision", "直得",
             "GMT Global", "GMT GLOBAL", "高明鐵",
             "TOYO Automation", "TOYO", "東佑達",
-            "ficonTEC", "Suruga Seiki", "Allring Tech", "FitTech",
+            "ficonTEC", "Suruga Seiki", "Allring Tech", "FitTech", "萬潤",
         ],
-        "query": '("Chieftek" OR "Chieftek Precision" OR 直得 OR "GMT Global" OR 高明鐵 OR "TOYO Automation" OR 東佑達 OR ficonTEC OR "Suruga Seiki" OR "Allring Tech" OR FitTech) (CPO OR "co-packaged optics" OR "silicon photonics" OR SiPh OR 光耦合 OR 對位) ("optical coupling" OR alignment OR aligner OR "motion platform" OR "linear motor" OR FAU OR OSAT OR orders OR backlog OR "order visibility" OR capacity OR CAPA OR factory OR "new line" OR shipment OR utilization OR qualification OR validation OR 訂單 OR 產能 OR 擴產 OR 出貨 OR 驗證)',
+        "queries": [
+            'CPO 設備 直得 高明鐵 東佑達',
+            'CPO 設備 出貨 擴產',
+            'CPO 光耦合 對位 設備 訂單 能見度',
+            '矽光子 設備 直得 高明鐵 東佑達',
+            '高明鐵 CPO 訂單 產能',
+            '東佑達 CPO 訂單 驗證',
+            '直得 CPO 對位 線性馬達',
+            '萬潤 CPO 光耦合 設備',
+            '"Chieftek" CPO alignment equipment',
+            '"GMT Global" CPO optical coupling',
+            '"TOYO Automation" CPO optical coupling',
+            'ficonTEC CPO optical coupling alignment',
+            '"Suruga Seiki" CPO optical coupling',
+        ],
         "locales": [
-            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
             {"hl": "zh-TW", "gl": "TW", "ceid": "TW:zh-Hant"},
+            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
         ],
     },
 }
@@ -137,6 +151,8 @@ ACTION_PATTERNS = [
     r"FAU", r"OSAT", r"order visibility", r"delivery visibility", r"new line",
     r"assembly line", r"factory expansion", r"capacity", r"CAPA", r"utilization",
     r"qualification", r"validation", r"verification",
+    r"訂單", r"能見度", r"出貨", r"量產", r"擴產", r"產能", r"產能利用率",
+    r"驗證", r"認證", r"導入", r"光耦合", r"對位", r"線性馬達", r"六軸",
 ]
 
 NOISE_PATTERNS = [
@@ -371,6 +387,10 @@ def signal_score(title: str, source: str) -> int:
         score += 5
     if re.search(r"production capacity|\bCAPA\b|new lines?|assembly lines?|factory expansion|capacity doubles?|utilization", text, re.I):
         score += 4
+    if re.search(r"訂單|能見度|出貨|量產|擴產|產能|產能利用率", text):
+        score += 5
+    if re.search(r"光耦合|對位|線性馬達|六軸|驗證|認證|導入", text):
+        score += 4
     if re.search(r"mass production|volume production|customer qualification|customer certification|qualified|certified", text, re.I):
         score += 5
     if re.search(r"adopt|deploy|ramp|shipment", text, re.I):
@@ -391,6 +411,14 @@ def signal_score(title: str, source: str) -> int:
 
 
 def stage_for(title: str) -> str:
+    if re.search(r"驗證|認證|導入|\bOSAT\b|qualification|validation|verification|passes?.{0,40}certification", title, re.I):
+        return "고객 검증·양산 도입"
+    if re.search(r"訂單|能見度|order visibility|delivery visibility|backlog|orders?|bookings?", title, re.I):
+        return "수주·가시성"
+    if re.search(r"擴產|產能|產能利用率|new line|factory|capacity|CAPA|utilization", title, re.I):
+        return "설비투자"
+    if re.search(r"出貨|量產|mass production|volume production|shipment|ramp", title, re.I):
+        return "양산·출하"
     if re.search(r"\bOSAT\b|qualification|validation|verification|passes?.{0,40}certification", title, re.I):
         return "고객 검증·양산 도입"
     if re.search(r"order visibility|delivery visibility|backlog|orders?|bookings?", title, re.I):
@@ -414,13 +442,13 @@ def stage_for(title: str) -> str:
 
 def category_for(title: str, company: str) -> str:
     if company == "CPO Equipment Supply Chain":
-        if re.search(r"\bOSAT\b|qualification|validation|verification|certif", title, re.I):
+        if re.search(r"驗證|認證|導入|\bOSAT\b|qualification|validation|verification|certif", title, re.I):
             return "CPO 장비 고객검증·도입"
-        if re.search(r"production capacity|\bCAPA\b|factory|new lines?|assembly lines?|expand|acquisition|utilization|capacity doubles?", title, re.I):
+        if re.search(r"擴產|產能|產能利用率|production capacity|\bCAPA\b|factory|new lines?|assembly lines?|expand|acquisition|utilization|capacity doubles?", title, re.I):
             return "CPO 장비 증설·가동률"
-        if re.search(r"shipments?|mass production|volume production|ramp", title, re.I):
+        if re.search(r"出貨|量產|shipments?|mass production|volume production|ramp", title, re.I):
             return "CPO 장비 출하·양산"
-        if re.search(r"order visibility|delivery visibility|backlog|orders?|bookings?|ahead[- ]of[- ]time orders?", title, re.I):
+        if re.search(r"訂單|能見度|order visibility|delivery visibility|backlog|orders?|bookings?|ahead[- ]of[- ]time orders?", title, re.I):
             return "CPO 장비 수주·가시성"
         return "CPO 정밀정렬·광결합 장비"
     if company == "Coherent" and re.search(r"PhotonLink|integrated optics?|complete optical solutions?|end[- ]to[- ]end|vertical integration|one[- ]stop", title, re.I):
@@ -529,13 +557,15 @@ def main() -> None:
         try:
             feed_items = []
             locales = meta.get("locales") or [{"hl": "en-US", "gl": "US", "ceid": "US:en"}]
-            for locale in locales:
-                feed_items.extend(query_google_news(
-                    meta["query"],
-                    hl=locale.get("hl", "en-US"),
-                    gl=locale.get("gl", "US"),
-                    ceid=locale.get("ceid", "US:en"),
-                ))
+            queries = meta.get("queries") or [meta.get("query")]
+            for query in [q for q in queries if q]:
+                for locale in locales:
+                    feed_items.extend(query_google_news(
+                        query,
+                        hl=locale.get("hl", "en-US"),
+                        gl=locale.get("gl", "US"),
+                        ceid=locale.get("ceid", "US:en"),
+                    ))
         except Exception as exc:
             errors.append(f"{company}: {type(exc).__name__}: {exc}")
             continue
@@ -632,7 +662,7 @@ def main() -> None:
     pending = {
         "initialized": True,
         "dedupe_version": 2,
-        "cpo_equipment_version": 1,
+        "cpo_equipment_version": 2,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
         "seen_story_keys": updated_story_keys,
@@ -648,7 +678,7 @@ def main() -> None:
         alert_items = []
     else:
         equipment_version = int(state.get("cpo_equipment_version") or 0)
-        if equipment_version < 1:
+        if equipment_version < 2:
             new_items = [item for item in new_items if item.get("company") != "CPO Equipment Supply Chain"]
         alert_items = new_items[:8] if initialized else []
     if ALERT_PATH.exists():
