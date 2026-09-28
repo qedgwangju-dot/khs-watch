@@ -1,4 +1,4 @@
-name: Treasury Repo Positioning Validate Once
+name: Treasury CFTC Repo Diagnostic Once
 
 on:
   push:
@@ -6,31 +6,48 @@ on:
       - ".github/workflows/ofr-repo-diagnostic-once.yml"
 
 jobs:
-  validate:
+  inspect:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - run: python -m pip install --disable-pip-version-check requests beautifulsoup4
-      - name: Validate live repo and positioning data
+      - name: Inspect CFTC TFF and OFR repo series
         run: |
           python - <<'PY'
-          import sys
-          sys.path.insert(0, "scripts")
+          import json, requests
 
-          import treasury_credit_flow_watch_refinancing as daily
-          import treasury_positioning_watch as weekly
+          base="https://publicreporting.cftc.gov/resource/gpe5-46if.json"
+          params={"$order":"report_date_as_yyyy_mm_dd DESC","$limit":1000}
+          r=requests.get(base,params=params,timeout=45)
+          print("CFTC_STATUS",r.status_code,r.url)
+          r.raise_for_status()
+          rows=r.json()
+          latest=max(str(x.get("report_date_as_yyyy_mm_dd",""))[:10] for x in rows if x.get("report_date_as_yyyy_mm_dd"))
+          print("CFTC_LATEST",latest,"ROWS",len(rows))
+          treasury=[]
+          for x in rows:
+              if str(x.get("report_date_as_yyyy_mm_dd",""))[:10]!=latest:
+                  continue
+              name=str(x.get("market_and_exchange_names",""))
+              if "TREASURY" in name.upper():
+                  treasury.append(x)
+          print("TREASURY_ROWS",len(treasury))
+          fields=[
+              "market_and_exchange_names","cftc_contract_market_code","report_date_as_yyyy_mm_dd",
+              "open_interest_all","lev_money_positions_long","lev_money_positions_short",
+              "change_in_lev_money_long","change_in_lev_money_short",
+          ]
+          for x in treasury:
+              print("CFTC_ROW",json.dumps({k:x.get(k) for k in fields},ensure_ascii=False))
 
-          print("DAILY_REPO", daily.get_repo_stress())
-          latest, prev, rows = weekly.common_weekly_positions()
-          repo = weekly.repo_stress()
-          srepo = weekly.sponsored_repo()
-          print("CFTC_DATES", latest, prev)
-          for k, v in rows.items():
-              print("POSITION", k, v)
-          print("REPO", repo)
-          print("SPONSORED", srepo)
-          print("CLASS", weekly.classify(rows, repo, srepo))
+          p=requests.get("https://data.financialresearch.gov/v1/series/dataset?dataset=repo",timeout=45).json()
+          ts=p.get("timeseries") or {}
+          print("REPO_SERIES_COUNT",len(ts))
+          for k,v in ts.items():
+              ku=k.upper()
+              if ("DVP" in ku and ("TV_" in ku or "AR_" in ku)) or "TRI_TV_T" in ku or "TRIV1_TV_T" in ku:
+                  md=(v or {}).get("metadata") or {}
+                  desc=md.get("description") or {}
+                  name=desc.get("name") if isinstance(desc,dict) else ""
+                  data=(v or {}).get("timeseries") or {}
+                  ag=data.get("aggregation") if isinstance(data,dict) else None
+                  print("REPO_SERIES",k,"NAME",name,"LAST",json.dumps(ag[-4:] if isinstance(ag,list) else ag,ensure_ascii=False))
           PY
