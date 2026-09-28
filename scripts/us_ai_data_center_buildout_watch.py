@@ -20,6 +20,7 @@ TOP_N=15
 POWER_DELTA=50.0
 PROGRESS_DELTA=5.0
 DATE_DELTA=60
+FORMAT_VERSION=2
 
 TRACKED_NAMES=(
 "Microsoft Fairwater Wisconsin",
@@ -214,6 +215,12 @@ def stage(status,current,planned,progress):
 def risky(status):
     low=(status or "").lower()
     return any(k in low for k in ("delay","delayed","denied","rejected","blocked","halt","paused","financing uncertain","funding uncertain"))
+def capacity_bucket(current,planned,progress):
+    if progress>=99.5 and current>0:
+        return "가동 용량"
+    if current>0:
+        return "부분 가동·현재 가용 용량"
+    return "건설 중 계획 용량"
 def updated_label():
     try:
         txt=" ".join(BeautifulSoup(fetch(DOWNLOADS,25).text,"html.parser").stripped_strings)
@@ -253,12 +260,14 @@ def snapshot(dc_text,tl_text):
         company_issues=[]
         for company in PROJECT_COMPANIES.get(name,()):
             company_issues.extend(issue_map.get(company,[])[:2])
+        stg=stage(cur.get("status",""),current,planned,progress)
         out.append({
             "name":name,"display":ALIASES.get(name,name),
             "owner":short(m["owner"]),"users":short(m["users"]),"investors":short(m["investors"]),
             "current_mw":round(current,1),"planned_mw":round(planned,1),"progress":round(progress,1),
             "completion_date":finish.isoformat(),"completion":qlabel(finish,progress),
-            "stage":stage(cur.get("status",""),current,planned,progress),"risk":risky(cur.get("status","")),
+            "stage":stg,"risk":risky(cur.get("status","")),
+            "mw_quality":capacity_bucket(current,planned,progress),
             "energy_site":energy["site"],"energy_future":energy["future"],"energy_quality":energy["quality"],
             "company_issues":company_issues,
         })
@@ -282,6 +291,7 @@ def changes(old,new):
         od=pdate(o.get("completion_date","")); nd=pdate(p["completion_date"])
         if od and nd and abs((nd-od).days)>=DATE_DELTA:out.append(f"{p['display']} 완료시점 {o.get('completion','')}→{p['completion']} ({'지연' if nd>od else '앞당김'})")
         if p["stage"]!=o.get("stage") and p["progress"]<99.5:out.append(f"{p['display']} 공정 {o.get('stage','')}→{p['stage']}")
+        if p.get("mw_quality")!=o.get("mw_quality"):out.append(f"{p['display']} MW 품질 {o.get('mw_quality','기존 미분류')}→{p.get('mw_quality')}")
         if (p["owner"],p["users"],p["investors"])!=(o.get("owner"),o.get("users"),o.get("investors")):out.append(f"{p['display']} 소유·사용·투자자 정보 변경")
         if (p.get("energy_site"),p.get("energy_future"),p.get("energy_quality"))!=(o.get("energy_site"),o.get("energy_future"),o.get("energy_quality")):out.append(f"{p['display']} 전력원 정보 변경")
         old_issue_fps=[x.get("fingerprint") for x in o.get("company_issues",[])]
@@ -295,22 +305,23 @@ def h(v):return html.escape(str(v),quote=True)
 
 def render(ps,chg,upd):
     planned=sum(x["planned_mw"] for x in ps); current=sum(x["current_mw"] for x in ps); pct=current/planned*100 if planned else 0
-    lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",f"출처: Epoch AI · {h(upd)}","용량 = 계획 IT전력 / 진행률 = 현재 IT전력 ÷ 계획 IT전력","","<b>🔄 이번 핵심 변화</b>"]
+    lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",f"출처: Epoch AI · {h(upd)}","용량 = 계획 IT전력 / 진행률 = 현재 가용 IT전력 ÷ 계획 IT전력","","<b>🔄 이번 핵심 변화</b>"]
     lines += [f"• {h(x)}" for x in chg[:6]]
     if len(chg)>6:lines.append(f"• 그 외 {len(chg)-6}건은 상태에 반영")
-    lines += ["",f"• 핵심 {len(ps)}개 계획 IT전력 합계 <b>{planned/1000:.1f}GW</b>",f"• 현재 IT전력 합계 <b>{current/1000:.1f}GW</b> · 가중 진행률 <b>{pct:.1f}%</b>",""]
+    lines += ["",f"• 핵심 {len(ps)}개 계획 IT전력 합계 <b>{planned/1000:.1f}GW</b>",f"• 현재 가용 IT전력 합계 <b>{current/1000:.1f}GW</b> · 실가용 전환율 <b>{pct:.1f}%</b>",f"• GW 품질 │ 계획 {planned/1000:.1f}GW 전체를 가동으로 보지 않고 현재 가용 {current/1000:.1f}GW를 별도 관리",""]
     for i,p in enumerate(ps,1):
         inv=p["investors"] if p["investors"]!="미기재" else "Epoch 투자자 미기재"
         lines += [f"<b>{badge(i)} {h(p['display'])}{' ⚠️' if p['risk'] else ''}</b>",
                   f"{h(p['owner'])} → {h(p['users'])} | {h(inv)}",
                   f"<b>{p['planned_mw']:,.0f}MW</b> | {h(p['completion'])} | <b>{p['progress']:.0f}%</b> ({p['current_mw']:,.0f}/{p['planned_mw']:,.0f}MW) | {h(p['stage'])}",
+                  f"🧭 MW 품질 │ <b>{h(p.get('mw_quality','미분류'))}</b> · 계획 {p['planned_mw']:,.0f}MW → 현재 가용 {p['current_mw']:,.0f}MW · 접속계약·공식 전원 인가 문서는 별도 검증",
                   f"⚡ 전력원 │ [{h(p['energy_quality'])}] {h(p['energy_site'])} | 장기전원: {h(p['energy_future'])}"]
         for issue in p.get("company_issues",[])[:2]:
             lines.append(
                 f"🚨 기업 이슈 │ [{h(issue.get('relationship','기업 연관'))}] "
                 f"{h(issue.get('label','규제·운영'))} · {h(issue.get('summary',''))}"
             )
-    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch의 현재 IT전력 ÷ 계획 최종 IT전력으로 직접 계산","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 기업별 벌금·허가위반·환경·소송·주민반대 이슈는 직접 위반과 파트너·고객 연계를 구분해 해당 기업 줄에 표시"]
+    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch의 현재 가용 IT전력 ÷ 계획 최종 IT전력으로 직접 계산","• Epoch Current power는 현재 GPU 서버·네트워크·스토리지에 이용 가능한 IT전력 추정치이며 계획 MW와 분리","• Epoch 추적대상은 원칙적으로 착공한 프로젝트지만 접속계약·공식 전원 인가·상업가동 문서를 대신하지 않음","• 발표·계획 MW → 착공 → 현재 가용 IT전력 순으로 품질을 높여 관리하고 미확인 접속계약·전원 인가는 임의 승격하지 않음","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, MW 품질 단계 변경, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 기업별 벌금·허가위반·환경·소송·주민반대 이슈는 직접 위반과 파트너·고객 연계를 구분해 해당 기업 줄에 표시"]
     return "\n".join(lines)+"\n"
 
 def main():
@@ -325,11 +336,11 @@ def main():
     except Exception as e:
         if not old.get("projects"):raise
         ps=old["projects"]; digest=old.get("snapshot_hash",""); src_hash=old.get("source_hash",""); errs=[f"Epoch source: {type(e).__name__}"]
-    upd=updated_label(); chg=changes(old,ps); baseline=not old.get("initialized"); alert=baseline or bool(chg)
-    pending={"initialized":True,"version":1,"dataset_updated":upd,"source_hash":src_hash,"snapshot_hash":digest,"projects":ps,"last_changes":chg[:20],"source_errors":errs,"updated_at_utc":dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")}
+    upd=updated_label(); chg=changes(old,ps); baseline=not old.get("initialized"); format_upgrade=int(old.get("version",0) or 0)<FORMAT_VERSION; alert=baseline or format_upgrade or bool(chg)
+    pending={"initialized":True,"version":FORMAT_VERSION,"dataset_updated":upd,"source_hash":src_hash,"snapshot_hash":digest,"projects":ps,"last_changes":chg[:20],"source_errors":errs,"updated_at_utc":dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")}
     PENDING.write_text(json.dumps(pending,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     if alert:ALERT.write_text(render(ps,chg,upd),encoding="utf-8")
-    STATUS.write_text("# 미국 주요 AI 데이터센터 건설 현황 감시\n\n"+f"- Epoch 업데이트: **{upd}**\n- 상위 프로젝트: **{len(ps)}개**\n- 의미 변화: **{len(chg)}건**\n- 알림: **{'예' if alert else '아니오'}**\n- 원천 오류: **{', '.join(errs) if errs else '없음'}**\n",encoding="utf-8")
+    STATUS.write_text("# 미국 주요 AI 데이터센터 건설 현황 감시\n\n"+f"- Epoch 업데이트: **{upd}**\n- 상위 프로젝트: **{len(ps)}개**\n- 의미 변화: **{len(chg)}건**\n- 알림: **{'예' if alert else '아니오'}**\n- MW 품질 분리 형식: **v{FORMAT_VERSION}**\n- 원천 오류: **{', '.join(errs) if errs else '없음'}**\n",encoding="utf-8")
     print(f"epoch_ai_buildout top={len(ps)} changes={len(chg)} baseline={baseline} alert={alert} errors={len(errs)}")
     return 0
 if __name__=="__main__":raise SystemExit(main())
