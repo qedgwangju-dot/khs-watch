@@ -73,6 +73,10 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic OR Google OR Meta) system card cybersecurity "High" "Critical"',
     '(OpenAI OR Anthropic) "tens of thousands" security incidents agent sandbox',
     '(OpenAI OR Anthropic) model behavior guardrail sandbox monitoring unusual problematic',
+    '(OpenAI OR Anthropic OR Google OR Meta) "training paused" OR "training resumed" OR "inference paused" OR "evaluation paused"',
+    '(OpenAI OR Anthropic OR Google OR Meta) "tool use" paused resumed safety security',
+    '(OpenAI OR Anthropic) "time to detection" OR "run was killed" OR "human reviewer" security agent',
+    '(OpenAI OR Anthropic) unauthorized access incidents transcripts evaluations rate percentage',
 ]
 
 AI_TERMS = (
@@ -101,6 +105,10 @@ SECURITY_TERMS = (
     "critical cybersecurity capability", "critical cyber capability",
     "preparedness framework", "cybersecurity capability threshold",
     "critical threshold", "high threshold", "system card",
+    "training paused", "training resumed", "evaluation paused", "evaluation resumed",
+    "inference paused", "inference resumed", "tool use paused", "tool-use paused",
+    "tool use resumed", "tool-use resumed", "run was killed", "human reviewer",
+    "time to detection", "response time", "restart training", "resume training",
 )
 
 HARD_SECURITY_TERMS = (
@@ -112,6 +120,7 @@ HARD_SECURITY_TERMS = (
     "bypassed security controls", "unintended internet access",
     "unauthorized communication", "critical cybersecurity capability",
     "critical cyber capability", "critical threshold",
+    "training paused", "inference paused", "evaluation paused", "tool-use paused",
 )
 
 TRUSTED_SOURCE_HINTS = (
@@ -155,6 +164,12 @@ VENDOR_PATTERNS = [
 ]
 
 CATEGORY_PATTERNS = [
+    ("모델 운영중단·재개", (
+        "training paused", "training resumed", "evaluation paused", "evaluation resumed",
+        "inference paused", "inference resumed", "tool use paused", "tool-use paused",
+        "tool use resumed", "tool-use resumed", "restart training", "resume training",
+        "run was killed",
+    )),
     ("모델 사이버 능력 임계치", (
         "critical cybersecurity capability", "critical cyber capability",
         "cybersecurity capability threshold", "preparedness framework",
@@ -308,6 +323,8 @@ def parse_direct_official_pages() -> list[dict]:
             url = urllib.parse.urljoin(index_url, html.unescape(href))
             title = urllib.parse.unquote(url.rstrip("/").split("/")[-1]).replace("-", " ")
             title = re.sub(r"\\s+", " ", title).strip()
+            if title and not title.lower().startswith(source.lower()):
+                title = f"{source}: {title}"
             if not title:
                 continue
             out.append({
@@ -588,6 +605,18 @@ def source_label(source: str) -> str:
 
 def incident_fact(item: dict) -> str | None:
     text = f" {item.get('title','')} {item.get('description','')} ".lower()
+    if ("training" in text or "evaluation" in text or "inference" in text) and ("paused" in text or "suspended" in text):
+        return "최고 성능 모델의 학습·평가·추론 또는 도구사용 중단"
+    if ("training" in text or "evaluation" in text or "inference" in text) and ("resumed" in text or "restart" in text):
+        return "중단됐던 모델 학습·평가·추론 또는 도구사용 재개"
+    if "481 million" in text or "481m" in text:
+        return "Anthropic 조사 범위 약 4억8,100만 기록"
+    if ("four incidents" in text or "4 incidents" in text) and ("unauthorized" in text or "third-party" in text):
+        return "실제 제3자 시스템 비인가 접근 4건 확인"
+    if "15 minutes" in text and ("2.5 hours" in text or "two and a half hours" in text):
+        return "탐지 약 15분 · 실행 종료 약 2시간30분"
+    if "1.5%" in text and "sandbox" in text:
+        return "적대적 평가에서 샌드박스 탈출 시도율 1.5%"
     if "53" in text and "image" in text:
         return "ChatGPT 사용자 이미지 53건 외부 업로드"
     if ("1m" in text or "million" in text) and ("link" in text or "url" in text):
@@ -626,6 +655,8 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "모델 운영중단·재개" in cats:
+        return "최고 성능 모델의 학습·평가·추론·도구사용 중단 또는 재개가 실제 안전통제 변화로 이어지는지가 핵심입니다."
     if "모델 사이버 능력 임계치" in cats:
         return "사고 여부와 별개로 모델 자체 공격 역량이 새로운 위험 임계치에 진입했는지가 핵심입니다."
     if "데이터·개인정보" in cats:
@@ -693,7 +724,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str, str]:
 
     lines += [
         "",
-        "<b>다음 확인</b>: 실제 악용 · 영향 범위 · 추가 피해 · 패치/완화책",
+        "<b>다음 확인</b>: 실제 사고/모의평가 구분 · 성공률/분모 · 탐지→확인→강제종료 시간 · 중단/재개 · 패치/완화책",
     ]
     return title, "\n".join(lines)
 
