@@ -60,6 +60,7 @@
     "nvidia_2027_chip_sales_double",
     "nvidia_capital_return_150_0_na_na_na",
     "nvidia_capital_return_235_0_235_0_2028_na",
+    "nvidia_capital_return_authorization_235_0_fy_2028_0",
     "nvidia_capital_return_correction_20260928",
     "nvidia_capital_return_na_235_0_2028_na",
     "nvidia_capital_return_na_na_na_na",
@@ -76,17 +77,29 @@
   "capital_return_track_version": 1,
   "capital_return_correction_version": 1,
   "capital_return_state": {
-    "remaining_authorization_usd_b": 235.0,
+    "remaining_authorization_usd_b": 235,
     "actual_q2_repurchase_usd_b": 19.7,
     "actual_h1_repurchase_usd_b": 39.8,
     "as_of": "2026-07-26",
-    "source_url": "https://www.marketscreener.com/news/nvidia-increases-share-repurchase-authorization-by-150-billion-to-235-billion-through-fiscal-2028-ce785adcdc8cf625",
-    "additional_authorization_usd_b": 150.0,
+    "source_url": "https://www.reuters.com/business/nvidia-adds-150-billion-existing-share-repurchase-plan-2026-09-28/",
+    "additional_authorization_usd_b": 150,
     "execution_through_fy": 2028,
-    "observed_at_kst": "2026-09-28T20:37:43+09:00",
-    "source": "marketscreener.com"
+    "observed_at_kst": "2026-09-28T20:15:02+09:00",
+    "source": "Reuters",
+    "source_rank": 95
   },
   "schedule_audit_version": 1,
   "last_run_event": "push",
-  "last_push_check_kst": "2026-09-29T08:42:37+09:00"
+  "last_push_check_kst": "2026-09-29T08:42:37+09:00",
+  "last_successful_delivery_kst": "2026-09-29T00:42:23+09:00",
+  "telegram_message_id": 161,
+  "bot_username": "khs88798879887988798879_bot",
+  "delivery_receipt": {
+    "status": "confirmed",
+    "bot_username": "khs88798879887988798879_bot",
+    "message_id": 161,
+    "confirmed_at_kst": "2026-09-29T00:42:23+09:00"
+  },
+  "last_schedule_check_kst": "2026-09-29T07:11:42+09:00",
+  "capital_return_dedupe_version": 1
 }

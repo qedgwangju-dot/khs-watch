@@ -34,6 +34,25 @@ class NvidiaExecCapitalReturnTests(unittest.TestCase):
         b = w.fact_key("capital_return", self.sample_text() + " NVIDIA confidence statement.")
         self.assertEqual(a, b)
 
+    def test_partial_republisher_same_total_and_horizon_has_same_fact_key(self):
+        full = self.sample_text()
+        partial = (
+            "NVIDIA increased its share repurchase authorization. "
+            "The total remaining amount authorized is $235 billion through fiscal year 2028."
+        )
+        self.assertEqual(w.fact_key("capital_return", full), w.fact_key("capital_return", partial))
+
+    def test_partial_republisher_does_not_change_known_capital_state(self):
+        current = {
+            "additional_authorization_usd_b": 150.0,
+            "remaining_authorization_usd_b": 235.0,
+            "execution_through_fy": 2028,
+        }
+        cap = w.extract_capital_return(
+            "NVIDIA total remaining share repurchase authorization is $235 billion through fiscal year 2028."
+        )
+        self.assertFalse(w.capital_state_changes(current, cap))
+
     def test_different_authorization_gets_different_fact_key(self):
         a = w.fact_key("capital_return", self.sample_text())
         b = w.fact_key(

@@ -30,6 +30,7 @@ FRESH_HOURS = 36
 FORMAT_VERSION = 3
 CAPITAL_RETURN_TRACK_VERSION = 1
 CAPITAL_RETURN_CORRECTION_VERSION = 1
+CAPITAL_RETURN_DEDUPE_VERSION = 1
 SCHEDULE_AUDIT_VERSION = 1
 
 OFFICIAL_Q2_TRANSCRIPT = (
@@ -236,18 +237,30 @@ def extract_capital_return(text: str) -> dict:
     }
 
 
+def _key_number(value) -> str:
+    if value is None:
+        return "na"
+    return str(float(value)).replace(".", "_")
+
+
 def fact_key(kind: str, text: str) -> str:
     low = text.lower()
     if kind == "capital_return":
         cap = extract_capital_return(text)
-        parts = [
-            cap.get("additional_authorization_usd_b"),
-            cap.get("remaining_authorization_usd_b"),
-            cap.get("execution_through_fy"),
-            cap.get("actual_repurchase_usd_b"),
-        ]
-        sig = "_".join("na" if x is None else str(x).replace(".", "_") for x in parts)
-        return "nvidia_capital_return_" + sig
+        actual = cap.get("actual_repurchase_usd_b")
+        remaining = cap.get("remaining_authorization_usd_b")
+        additional = cap.get("additional_authorization_usd_b")
+        fy = cap.get("execution_through_fy")
+        # Authorization republishers often omit the incremental amount while
+        # repeating the same total remaining authorization. Normalize on the
+        # resulting total + horizon so partial recaps cannot re-alert the same fact.
+        if actual is not None:
+            return "nvidia_capital_return_execution_" + _key_number(actual)
+        if remaining is not None:
+            return "nvidia_capital_return_authorization_" + _key_number(remaining) + "_fy_" + _key_number(fy)
+        if additional is not None:
+            return "nvidia_capital_return_additional_" + _key_number(additional) + "_fy_" + _key_number(fy)
+        return "nvidia_capital_return_unspecified"
     if kind == "demand":
         if any(k in low for k in ("double", "doubling", "twice", "두 배")) and "2027" in low:
             return "nvidia_2027_chip_sales_double"
@@ -420,6 +433,25 @@ def link(url: str, label: str = "원문") -> str:
     return f'<a href="{html.escape(url, quote=True)}">{html.escape(label)}</a>'
 
 
+def capital_state_changes(current: dict, cap: dict) -> bool:
+    """Only alert a capital-return item when it changes a known economic state."""
+    fields = (
+        "additional_authorization_usd_b",
+        "remaining_authorization_usd_b",
+        "execution_through_fy",
+        "actual_repurchase_usd_b",
+    )
+    observed = False
+    for key in fields:
+        value = cap.get(key)
+        if value is None:
+            continue
+        observed = True
+        if current.get(key) != value:
+            return True
+    return False if observed else False
+
+
 def choose_new(events: list[dict], seen_ids: set[str], seen_fact_keys: set[str], now: datetime) -> list[dict]:
     cutoff = now - timedelta(hours=FRESH_HOURS)
     candidates: list[dict] = []
@@ -553,8 +585,31 @@ def main() -> None:
         capital_state = dict(CAPITAL_RETURN_BASELINE)
         state["capital_return_track_version"] = CAPITAL_RETURN_TRACK_VERSION
 
+    # Migrate already-known capital-return state into the normalized dedupe key.
+    if int(state.get("capital_return_dedupe_version") or 0) < CAPITAL_RETURN_DEDUPE_VERSION:
+        remaining = capital_state.get("remaining_authorization_usd_b")
+        fy = capital_state.get("execution_through_fy")
+        if remaining is not None:
+            seen_fact_keys.add(
+                "nvidia_capital_return_authorization_" + _key_number(remaining) + "_fy_" + _key_number(fy)
+            )
+        state["capital_return_dedupe_version"] = CAPITAL_RETURN_DEDUPE_VERSION
+
     events = read_events()
     new_events = choose_new(events, seen_ids, seen_fact_keys, now)
+
+    # Suppress partial/republished capital-return stories that do not change
+    # the already-known authorization or execution state.
+    suppressed_fact_keys = set()
+    material_events = []
+    for e in new_events:
+        if e.get("kind") == "capital_return":
+            cap = extract_capital_return(clean(f"{e.get('title','')} {e.get('description','')}"))
+            if not capital_state_changes(capital_state, cap):
+                suppressed_fact_keys.add(e.get("fact_key") or "")
+                continue
+        material_events.append(e)
+    new_events = material_events
 
     # One-time repair for the 2026-09-28 buyback miss: an earlier v3 code run
     # detected the new capital-return facts but the old pretty-printer stripped
@@ -629,6 +684,7 @@ def main() -> None:
 
     seen_ids.update(e["id"] for e in events)
     seen_fact_keys.update(e["fact_key"] for e in new_events)
+    seen_fact_keys.update(x for x in suppressed_fact_keys if x)
     for e in new_events:
         if e.get("kind") != "capital_return":
             continue
@@ -636,9 +692,13 @@ def main() -> None:
         for key in ("additional_authorization_usd_b", "remaining_authorization_usd_b", "execution_through_fy", "actual_repurchase_usd_b"):
             if cap.get(key) is not None:
                 capital_state[key] = cap[key]
-        capital_state["observed_at_kst"] = e.get("published_at_kst") or now.isoformat(timespec="seconds")
-        capital_state["source"] = e.get("source") or ""
-        capital_state["source_url"] = e.get("direct_link") or ""
+        event_rank = int(e.get("rank") or 0)
+        old_rank = int(capital_state.get("source_rank") or source_rank(capital_state.get("source") or "", ""))
+        if event_rank >= old_rank:
+            capital_state["observed_at_kst"] = e.get("published_at_kst") or now.isoformat(timespec="seconds")
+            capital_state["source"] = e.get("source") or ""
+            capital_state["source_url"] = e.get("direct_link") or ""
+            capital_state["source_rank"] = event_rank
     state = {
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "seen_ids": sorted(seen_ids)[-1000:],
@@ -648,6 +708,7 @@ def main() -> None:
         "alert_generated": bool(new_events),
         "format_version": FORMAT_VERSION,
         "capital_return_track_version": CAPITAL_RETURN_TRACK_VERSION,
+        "capital_return_dedupe_version": CAPITAL_RETURN_DEDUPE_VERSION,
         "capital_return_correction_version": CAPITAL_RETURN_CORRECTION_VERSION if any(
             e.get("fact_key") == "nvidia_capital_return_correction_20260928" for e in new_events
         ) else int(state.get("capital_return_correction_version") or 0),
