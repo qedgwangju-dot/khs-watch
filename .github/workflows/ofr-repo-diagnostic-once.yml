@@ -1,4 +1,4 @@
-name: Treasury CFTC Repo Diagnostic Once
+name: Treasury CFTC Name Diagnostic Once
 
 on:
   push:
@@ -9,45 +9,34 @@ jobs:
   inspect:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect CFTC TFF and OFR repo series
+      - name: Inspect latest CFTC contract names
         run: |
           python - <<'PY'
-          import json, requests
-
+          import requests, json
           base="https://publicreporting.cftc.gov/resource/gpe5-46if.json"
-          params={"$order":"report_date_as_yyyy_mm_dd DESC","$limit":1000}
-          r=requests.get(base,params=params,timeout=45)
-          print("CFTC_STATUS",r.status_code,r.url)
-          r.raise_for_status()
-          rows=r.json()
+          rows=requests.get(base,params={"$order":"report_date_as_yyyy_mm_dd DESC","$limit":1000},timeout=45).json()
           latest=max(str(x.get("report_date_as_yyyy_mm_dd",""))[:10] for x in rows if x.get("report_date_as_yyyy_mm_dd"))
-          print("CFTC_LATEST",latest,"ROWS",len(rows))
-          treasury=[]
+          print("LATEST",latest)
+          names=[]
           for x in rows:
-              if str(x.get("report_date_as_yyyy_mm_dd",""))[:10]!=latest:
-                  continue
+              if str(x.get("report_date_as_yyyy_mm_dd",""))[:10]!=latest: continue
               name=str(x.get("market_and_exchange_names",""))
-              if "TREASURY" in name.upper():
-                  treasury.append(x)
-          print("TREASURY_ROWS",len(treasury))
-          fields=[
-              "market_and_exchange_names","cftc_contract_market_code","report_date_as_yyyy_mm_dd",
-              "open_interest_all","lev_money_positions_long","lev_money_positions_short",
-              "change_in_lev_money_long","change_in_lev_money_short",
-          ]
-          for x in treasury:
-              print("CFTC_ROW",json.dumps({k:x.get(k) for k in fields},ensure_ascii=False))
-
-          p=requests.get("https://data.financialresearch.gov/v1/series/dataset?dataset=repo",timeout=45).json()
-          ts=p.get("timeseries") or {}
-          print("REPO_SERIES_COUNT",len(ts))
-          for k,v in ts.items():
-              ku=k.upper()
-              if ("DVP" in ku and ("TV_" in ku or "AR_" in ku)) or "TRI_TV_T" in ku or "TRIV1_TV_T" in ku:
-                  md=(v or {}).get("metadata") or {}
-                  desc=md.get("description") or {}
-                  name=desc.get("name") if isinstance(desc,dict) else ""
-                  data=(v or {}).get("timeseries") or {}
-                  ag=data.get("aggregation") if isinstance(data,dict) else None
-                  print("REPO_SERIES",k,"NAME",name,"LAST",json.dumps(ag[-4:] if isinstance(ag,list) else ag,ensure_ascii=False))
+              if any(w in name.upper() for w in ("NOTE","BOND","UST","TREAS","2-YEAR","5-YEAR","10-YEAR","30-YEAR")):
+                  names.append({
+                      "name":name,
+                      "code":x.get("cftc_contract_market_code"),
+                      "long":x.get("lev_money_positions_long"),
+                      "short":x.get("lev_money_positions_short"),
+                      "oi":x.get("open_interest_all"),
+                  })
+          for x in names:
+              print("MATCH",json.dumps(x,ensure_ascii=False))
+          print("COUNT",len(names))
+          # also print first 80 names in latest date to identify naming
+          allnames=[]
+          for x in rows:
+              if str(x.get("report_date_as_yyyy_mm_dd",""))[:10]==latest:
+                  allnames.append((x.get("market_and_exchange_names"),x.get("cftc_contract_market_code")))
+          for item in allnames[:100]:
+              print("NAME",item)
           PY
