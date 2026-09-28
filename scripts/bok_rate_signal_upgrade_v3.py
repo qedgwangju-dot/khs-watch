@@ -131,9 +131,9 @@ def oil_alert_transition(old_oil: dict | None, new_oil: dict | None) -> str | No
     new_bucket = max(0, base.op(new_oil))
     ch = new_oil.get("change_5d_pct")
     if new_bucket > old_bucket:
-        return f"브렌트유 상승압력 강화: 최근 5거래일 {ch:+.1f}%"
+        return f"브렌트 선물 상승압력 강화: 최근 5거래일 {ch:+.1f}%"
     if old_bucket > 0 and new_bucket < old_bucket:
-        return f"브렌트유 상승압력 완화: 최근 5거래일 {ch:+.1f}%"
+        return f"브렌트 선물 상승압력 완화: 최근 5거래일 {ch:+.1f}%"
     return None
 
 
@@ -163,7 +163,7 @@ def build_message(state: dict, reasons: list[str], new_events: list[dict]) -> st
         lines.append(f"• 전 금융권 가계대출 <b>{hh['total_trn']:+.1f}조원</b> — 총량은 둔화")
         lines.append(f"• 주택담보대출 <b>{hh['mortgage_trn']:+.1f}조원</b> / 직전 <b>{hh['mortgage_prev_trn']:+.1f}조원</b> — <b>재가속</b>")
     if oi:
-        lines.append(f"• 브렌트유 <b>${oi['brent_usd']:.2f}</b> / 최근 5거래일 <b>{oi['change_5d_pct']:+.1f}%</b>")
+        lines.append(f"• 브렌트 선물(시장참고) <b>${oi['brent_usd']:.2f}</b> / 최근 5거래일 <b>{oi['change_5d_pct']:+.1f}%</b>")
     if hs:
         lines.append("• 주택가격 확산: <b>" + ("확산 조건 충족" if hs.get("broad_diffusion") else "광범위 확산 조건 미충족") + "</b>")
     else:
@@ -336,7 +336,7 @@ def main() -> int:
                 or base.op(old_oil) != base.op(new_oil)
             ):
                 state_reasons.append(
-                    f"브렌트유 상태 갱신: {old_oil.get('change_5d_pct')}% → {new_oil.get('change_5d_pct')}%"
+                    f"브렌트 선물 상태 갱신: {old_oil.get('change_5d_pct')}% → {new_oil.get('change_5d_pct')}%"
                 )
             oil_reason = oil_alert_transition(old_oil, new_oil)
             if oil_reason:
