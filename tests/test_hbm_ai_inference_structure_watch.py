@@ -44,6 +44,11 @@ class InferenceStructureWatchTests(unittest.TestCase):
         self.assertEqual(parsed["metrics"].get("contracted_power_guidance_gw"), 4.0)
         self.assertNotIn("contracted_power_gw", parsed["metrics"])
 
+    def test_contractual_termination_right_is_not_downside_event(self):
+        text = "Microsoft has the right to terminate a GPU Service if delivery dates are missed."
+        parsed = m.parse_nebius(text, "https://nebius.com/newsroom/example")
+        self.assertEqual(parsed, {})
+
     def test_cpu_ratio_parser_prefers_agentic_one_to_one(self):
         text = "Agentic AI changes the CPU and GPU equation from 1 CPU to 8 GPU to 1:1 or better."
         parsed = m.parse_cpu_ratio(text, "https://www.intel.com/example")
