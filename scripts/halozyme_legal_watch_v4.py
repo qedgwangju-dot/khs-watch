@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import re
 
 import halozyme_legal_watch_v3 as v3
@@ -9,6 +10,9 @@ import halozyme_legal_watch_v3 as v3
 base = v3.base
 _original_get_case = base.get_case
 _original_rss = base.rss
+
+ALTEOGEN_IR_LIST_URL = "https://alteogen.com/kr/sub/ir/information.php?bid=2"
+ALTEOGEN_IR_CURRENT_URL = "https://alteogen.com/kr/sub/ir/information.php?bid=2&idx=374&mode=view&page=1"
 
 # 각 사건번호를 개별 검색한다. OR 검색은 새 최종결정을 누락할 수 있어
 # 사건번호·특허번호·한국어 결과 표현을 직접 조회한다.
@@ -200,6 +204,140 @@ base.classify = classify
 base.alert = alert
 base.get_case = get_case
 
+
+def _plain_text(page: str) -> str:
+    value = re.sub(r"(?is)<script.*?</script>|<style.*?</style>|<noscript.*?</noscript>", " ", page)
+    value = re.sub(r"(?s)<[^>]+>", " ", value)
+    return re.sub(r"\s+", " ", html.unescape(value)).strip()
+
+
+def parse_portfolio_scorecard(text: str) -> dict | None:
+    low = text.lower()
+    if "halozyme" not in low and "할로자임" not in text:
+        return None
+    if "pgr" not in low:
+        return None
+
+    total = won = pending = None
+    m = re.search(r"PGR\s*(\d+)\s*건\s*가운데\s*(\d+)\s*건", text, re.I)
+    if m:
+        total, won = int(m.group(1)), int(m.group(2))
+    m2 = re.search(r"나머지\s*(\d+)\s*건", text)
+    if m2:
+        pending = int(m2.group(1))
+    if total is None or won is None:
+        return None
+    if pending is None:
+        pending = max(0, total - won)
+
+    oral = ""
+    mh = re.search(r"(?:지난\s*)?(\d{1,2})월\s*(\d{1,2})일\s*구술심리", text)
+    if mh:
+        oral = f"2026-{int(mh.group(1)):02d}-{int(mh.group(2)):02d}"
+
+    patents = []
+    for patent in re.findall(r"\b12[,\d]{7,}\b", text):
+        cleaned = patent.replace(",", "")
+        if len(cleaned) == 8:
+            formatted = f"{cleaned[:2]},{cleaned[2:5]},{cleaned[5:]}"
+            if formatted not in patents:
+                patents.append(formatted)
+
+    return {
+        "total": total,
+        "won": won,
+        "pending": pending,
+        "oral_date": oral,
+        "patents": patents[:6],
+    }
+
+
+def _portfolio_ir_urls() -> list[str]:
+    urls = [ALTEOGEN_IR_CURRENT_URL]
+    try:
+        page = base.fetch(ALTEOGEN_IR_LIST_URL, timeout=15)
+        for href, label in re.findall(r'href=["\']([^"\']*information\.php\?[^"\']*idx=\d+[^"\']*)["\'][^>]*>(.*?)</a>', page, re.I | re.S):
+            title = _plain_text(label)
+            if not any(k in title.lower() for k in ("halozyme", "mdase", "pgr", "ipr")) and "할로자임" not in title:
+                continue
+            url = urllib.parse.urljoin(ALTEOGEN_IR_LIST_URL, html.unescape(href))
+            if url not in urls:
+                urls.append(url)
+    except Exception:
+        pass
+    return urls[:12]
+
+
+def portfolio_updates() -> list[dict]:
+    updates: list[dict] = []
+    for url in _portfolio_ir_urls():
+        try:
+            page = base.fetch(url, timeout=15)
+            text = _plain_text(page)
+        except Exception:
+            continue
+        score = parse_portfolio_scorecard(text)
+        if not score:
+            continue
+        title_match = re.search(r"<title>(.*?)</title>", page, re.I | re.S)
+        title = _plain_text(title_match.group(1)) if title_match else "알테오젠 공식 IR Halozyme PGR 판세 업데이트"
+        updates.append({"url": base.clean_url(url), "title": title, "score": score})
+    unique = {}
+    for item in updates:
+        s = item["score"]
+        key = base.digest(f"portfolio|{s['total']}|{s['won']}|{s['pending']}|{s['oral_date']}")
+        unique.setdefault(key, item)
+    return list(unique.values())
+
+
+def portfolio_alert(item: dict) -> str:
+    s = item["score"]
+    ratio = (s["won"] / s["total"] * 100.0) if s["total"] else 0.0
+    oral = f" · {s['oral_date']} 구술심리" if s.get("oral_date") else ""
+    patents = " · ".join(s.get("patents") or [])
+    patent_line = f"\n- <b>이번 확인 특허:</b> {html.escape(patents)}" if patents else ""
+    return (
+        "<b>[바이오 감시] Halozyme 특허분쟁 판세 업데이트</b>\n\n"
+        f"<b>MSD, 심리 개시 PGR {s['total']}건 중 {s['won']}건에서 특허성 부정</b>\n\n"
+        f"- <b>누적 판세:</b> {s['won']}/{s['total']}건 · {ratio:.0f}%\n"
+        f"- <b>잔여:</b> {s['pending']}건 최종결정 대기{oral}"
+        + patent_line
+        + "\n- <b>의미:</b> 개별 특허 2건의 결과를 넘어 Halozyme MDASE 특허 포트폴리오 전체에서 MSD 우위가 누적되고 있다는 공식 IR 업데이트입니다.\n"
+        "- <b>알테오젠:</b> ALT-B4 자체 특허 유효성 판정은 아니지만, KEYTRUDA QLEX 미국 사업에 반영되던 Halozyme 특허분쟁 불확실성을 낮추는 방향입니다.\n"
+        "- <b>아직 남음:</b> 잔여 PGR 최종결정 · 국장 재검토·재심 · 연방순회항소 · 뉴저지·유럽 소송\n"
+        "- <b>다음 확인:</b> 7/14 → 8/14 이상으로 바뀌는 후속 최종서면결정 여부\n"
+        "- <b>원문 확인:</b> 알테오젠 공식 IR 본문 직접 열람\n"
+        f'- <a href="{html.escape(item["url"], quote=True)}">원문 뉴스보기</a>'
+    )
+
+
+def send_portfolio_updates() -> list[int]:
+    try:
+        state = json.loads(base.STATE.read_text(encoding="utf-8"))
+    except Exception:
+        state = {}
+    seen = set(state.get("seen_portfolio_updates") or [])
+    token = (os.getenv("BIO_TELEGRAM_BOT_TOKEN") or "").strip()
+    chat = base.resolve_chat_id(token) if token else ""
+    sent = []
+    if not token or not chat:
+        return sent
+
+    for item in portfolio_updates():
+        s = item["score"]
+        key = base.digest(f"portfolio|{s['total']}|{s['won']}|{s['pending']}|{s['oral_date']}")
+        if key in seen:
+            continue
+        mid = base.send(token, chat, portfolio_alert(item))
+        sent.append(mid)
+        seen.add(key)
+
+    state["seen_portfolio_updates"] = sorted(seen)[-500:]
+    if sent:
+        state["last_portfolio_message_ids"] = sent
+    base.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return sent
+
 _sent_ids: list[int] = []
 _original_send = base.send
 
@@ -227,6 +365,8 @@ def main() -> int:
     base.STATE.write_text(json.dumps(state0, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     rc = base.main()
+    portfolio_sent = send_portfolio_updates()
+    _sent_ids.extend(mid for mid in portfolio_sent if mid not in _sent_ids)
     try:
         state = json.loads(base.STATE.read_text(encoding="utf-8"))
     except Exception:
@@ -246,6 +386,7 @@ def main() -> int:
     print(json.dumps({
         "halozyme_legal_v4": "ok" if not critical else "failed",
         "sent_message_ids": _sent_ids,
+        "portfolio_sent_message_ids": portfolio_sent,
         "errors": errors[-10:],
         "critical_errors": critical,
     }, ensure_ascii=False))
