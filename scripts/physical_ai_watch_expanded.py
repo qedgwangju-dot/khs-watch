@@ -158,7 +158,16 @@ AGILITY_CONCEPT = re.compile(r'explor|consider|concept|render|animation|illustra
 AGILITY_PROTOTYPE = re.compile(r'physical\s*prototype|working\s*prototype|prototype.{0,30}(?:shown|unveiled|demonstrated)|실물\s*시제품|시제품.{0,30}(?:공개|시연)', re.I)
 AGILITY_PRODUCT = re.compile(r'(?:product\s*name|named|specification|specs?|제품명|사양).{0,50}(?:wheeled|wheel|바퀴|휠)|(?:wheeled|wheel|바퀴|휠).{0,50}(?:제품명|사양|specification|specs?)', re.I)
 AGILITY_LAUNCH = re.compile(r'(?:wheeled|wheel|바퀴|휠).{0,80}(?:launched|released|available|orderable|출시|판매\s*개시|주문\s*가능)', re.I)
-AGILITY_CUSTOMER = re.compile(r'(?:wheeled|wheel|바퀴|휠).{0,120}(?:customer|contract|order|deployment|고객|계약|수주|배치)', re.I)
+AGILITY_CUSTOMER = re.compile(
+    r'(?:wheeled|wheel|바퀴|휠).{0,140}(?:first\s+customer|customer\s+(?:selected|named|deployment)|contract\s+(?:signed|awarded)|order\s+(?:received|booked)|deployed|deployment\s+(?:started|began)|'
+    r'첫\s*고객|고객\s*(?:선정|확정)|계약\s*(?:체결|수주)|수주\s*(?:확보|완료)|배치\s*(?:시작|개시))',
+    re.I,
+)
+AGILITY_NEGATIVE = re.compile(
+    r'no\s+(?:product|prototype|launch\s+date|price|customer)|not\s+(?:a\s+)?(?:product|prototype)|'
+    r'has\s+not\s+announced|not\s+announced|미확정|제품\s*아님|시제품\s*아님|출시일\s*없|고객\s*없|발표하지\s*않',
+    re.I,
+)
 AGILITY_MASS = re.compile(r'(?:wheeled|wheel|바퀴|휠).{0,120}(?:mass\s*production|series\s*production|양산|production\s*start|생산\s*개시)', re.I)
 
 
@@ -219,6 +228,8 @@ def _rfm_stage(text: str, source: str = '') -> str:
 def _agility_stage(text: str) -> str:
     if not (AGILITY_ID.search(text) and AGILITY_WHEEL.search(text)):
         return ''
+    if AGILITY_NEGATIVE.search(text) and AGILITY_CONCEPT.search(text):
+        return 'concept'
     if AGILITY_MASS.search(text):
         return 'mass_production'
     if AGILITY_CUSTOMER.search(text):
