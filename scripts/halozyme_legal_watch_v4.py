@@ -4,6 +4,7 @@ import html
 import json
 import os
 import re
+import urllib.parse
 
 import halozyme_legal_watch_v3 as v3
 
