@@ -101,7 +101,8 @@ XPENG_SUPPLIER_20260922_BASELINE = re.compile(
     re.I,
 )
 XPENG_ACTUAL_SOP = re.compile(
-    r'(?:开始|正式|启动).{0,12}(?:量产|批量生产)|(?:量产|mass\s*production).{0,30}(?:开始|正式|启动|started|began|commenced)|'
+    r'正式量产|量产(?:正式)?(?:开始|启动)|进入量产|批量生产(?:正式)?(?:开始|启动)|'
+    r'mass[-\s]*production\s*(?:started|began|commenced)|(?:started|began|commenced)\s+mass[-\s]*production|'
     r'SOP.{0,20}(?:started|began|개시|시작)|양산.{0,20}(?:개시|시작|돌입)',
     re.I,
 )
