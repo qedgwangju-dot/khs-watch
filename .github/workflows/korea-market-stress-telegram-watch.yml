@@ -1,4 +1,5 @@
 name: Korea Market Stress and Global Wave Telegram Watch
+# KOSPI production recovery trigger: REST polling architecture
 
 on:
   push:
