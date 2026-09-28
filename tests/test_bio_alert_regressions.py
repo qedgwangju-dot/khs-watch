@@ -98,6 +98,21 @@ class BioAlertRegressionTests(unittest.TestCase):
             "2025-03-28 PGR 청구 → 2025-10-01 심판 개시 → 2026-09-25 최종서면결정",
         )
 
+    def test_halozyme_portfolio_scorecard_is_separate_event(self):
+        sample = (
+            "파트너사 MSD가 할로자임(Halozyme)의 MDASE 관련 특허에 제기한 PGR 2건에서 "
+            "PTAB이 심판 대상 청구항 모두에 대해 특허성이 없다고 최종 판단했습니다. "
+            "이로써 MSD가 제기해 심리가 개시된 PGR 14건 가운데 7건에서 심판 대상 청구항의 특허성이 부정됐습니다. "
+            "아직 최종 결정이 나오지 않은 나머지 7건도 이번 2건과 함께 지난 7월 23일 구술심리에서 다뤄졌습니다. "
+            "특허 번호 12,049,652 / 12,104,185"
+        )
+        score = halo.parse_portfolio_scorecard(sample)
+        self.assertIsNotNone(score)
+        self.assertEqual(score["total"], 14)
+        self.assertEqual(score["won"], 7)
+        self.assertEqual(score["pending"], 7)
+        self.assertEqual(score["oral_date"], "2026-07-23")
+
     def test_halozyme_final_unpatentable_alert_renders_timeline(self):
         item = {
             "published": "Fri, 25 Sep 2026 12:00:00 GMT",
