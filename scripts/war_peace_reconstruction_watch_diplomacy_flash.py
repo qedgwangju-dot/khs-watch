@@ -918,6 +918,12 @@ def score_item(row, now):
         tags += ['호르무즈', '실물물동량', '원유공급회복']
     if '협상후퇴' in marks:
         tags += ['이란전쟁', '협상후퇴', '확전위험']
+    if '이란중간선거전합의회의' in marks:
+        tags += ['이란전쟁', '협상제약', '중간선거', '조기타결회의']
+    if '이란선거후확전위험' in marks:
+        tags += ['이란전쟁', '선거후확전위험', '협상제약']
+    if '아라치미국체류추가협상' in marks:
+        tags += ['이란전쟁', '추가협상', '중재채널유지']
     if '이란외무장관중국방문' in marks:
         tags += ['이란·중국', '중동외교']
     if '중국계위성영상제공보도' in marks:
@@ -939,6 +945,8 @@ def score_item(row, now):
             score = 99
         else:
             score = 100 if 'Reuters직접확인' in iran_diplomacy_marks else 99
+    elif any(m in marks for m in ('이란중간선거전합의회의', '이란선거후확전위험')):
+        score = 100
     elif any(m in marks for m in ('종전합의', '정식휴전합의', '호르무즈실물정상화', '협상후퇴')):
         score = 100
     elif any(m in marks for m in ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')):
@@ -1012,6 +1020,16 @@ def _canonical_event_key(row):
     if has_iran and has_hormuz and seven_day and reopen and not rejected:
         return 'iran-hormuz|7day-reopening-proposal'
 
+    iran_midterm_assessment = (
+        has_iran
+        and _has(text, MIDTERM_TERMS)
+        and (_has(text, DEAL_SKEPTICAL_TERMS) or _has(text, NO_PROGRESS_TERMS))
+        and (_has(text, POST_ELECTION_ESCALATION_TERMS) or _has(text, ('escalation', 'escalate', '확전', '격화')))
+    )
+    if iran_midterm_assessment:
+        iso = dt.datetime.now(watch.KST).isocalendar()
+        return f'iran-us|pre-midterm-deal-skepticism-post-election-escalation|{iso.year}-W{iso.week:02d}'
+
     # 후티 공격 여파로 리야드 학교가 원격수업/등교중단으로 전환된 같은 사건은
     # 매체·도메인 표기가 달라도 한 번만 알린다.
     houthi_title = any(x in title for x in ('houthi', 'houthis', 'ansar allah', 'ansarallah', '후티', '안사르알라'))
@@ -1066,7 +1084,7 @@ def item_id(row):
         key = 'middle-east-emergency|' + day + '|' + '|'.join(sorted(emergency_marks))
     else:
         flow_marks = [m for m in marks if m in ('호르무즈기록물량회복','오만만STS기록급증','사우디원유수출회복','걸프7일평균2천만배럴')]
-        stage_marks = [m for m in marks if m in ('IRIB아라치위트코프뉴욕회동보도','직접회동독립확인대기','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의','해상봉쇄해제조건','동결자산지급조건','전전선종전조건','이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영','RTRS중계속보','Reuters직접확인','미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')]
+        stage_marks = [m for m in marks if m in ('IRIB아라치위트코프뉴욕회동보도','직접회동독립확인대기','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의','해상봉쇄해제조건','동결자산지급조건','전전선종전조건','이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영','RTRS중계속보','Reuters직접확인','미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴', '이란중간선거전합의회의', '이란선거후확전위험', '아라치미국체류추가협상')]
         if flow_marks:
             try:
                 pub = watch.parse_pub(row.get('published', ''))
@@ -1101,6 +1119,8 @@ def topic_label(row):
     if hmarks:
         return '예멘·사우디·오만 · Ansar Allah 휴전중재'
     marks = _marks(row)
+    if any(m in marks for m in ('이란중간선거전합의회의','이란선거후확전위험')):
+        return '이란·미국 · 중간선거 전 협상 제약'
     if any(m in marks for m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의')):
         return '이란 전쟁 · 아라치–Witkoff 뉴욕 회동'
     if any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
@@ -1133,6 +1153,13 @@ def _verdict(items):
         return _prev_verdict(items)
 
     lines = ['<b>투자 판정</b>']
+
+    if '이란중간선거전합의회의' in marks or '이란선거후확전위험' in marks:
+        lines.append('- <b>핵심:</b> 🟡 협상 채널은 유지되지만 이란 당국자들이 11월 3일 전 타결 가능성을 낮게 보고 선거 이후 확전 위험을 더 크게 보는 단계')
+        lines.append('- <b>현재 단계:</b> 협상 제약·시간표 악화 — 실제 공격 재개나 협상 결렬이 확정된 것은 아님')
+        if '아라치미국체류추가협상' in marks:
+            lines.append('- <b>완화요인:</b> 아라치 외무장관이 미국에 머물며 중재국을 통한 추가 논의를 이어가고 있어 외교 채널은 열려 있음')
+        lines.append('- <b>다음:</b> 추가 중재회담 개최 → 수정안 교환 → 11월 3일 전 임시합의 여부 → 선거 이후 실제 군사행동 변화')
 
     if emergency_marks:
         confirmed = [m for m in emergency_marks if m not in ('이란Code100미확인보도', '네타냐후조기귀국미확인보도')]
@@ -1259,6 +1286,9 @@ _prev_emergency_color = guard._enhanced_body_color
 def _emergency_color(row):
     if _emergency_marks(row) or _active_attack_signal(row):
         return 'red'
+    marks = _marks(row)
+    if any(m in marks for m in ('이란중간선거전합의회의','이란선거후확전위험')):
+        return 'yellow'
     return _prev_emergency_color(row)
 
 guard._enhanced_body_color = _emergency_color
@@ -1277,7 +1307,7 @@ def _alert_quality_issues(text):
             issues.append(f'노후 기사 재등장:{m.group(1)}분')
 
     # 초록 헤더인데 실제 공격·피격 제목이 포함되는 방향성 모순 금지.
-    if '🟢 <b>재건·휴전</b>' in head:
+    if '🟢 <b>재건·휴전</b>' in head and '🔴 <b>공격·확전</b>' not in head:
         cleaned = head
         for stop in ('공격 중단', '공습 중단', '공격을 중단', '휴전', '정전'):
             cleaned = cleaned.replace(stop, '')
