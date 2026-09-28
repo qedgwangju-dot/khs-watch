@@ -43,8 +43,11 @@ BING_LIPPER = 'LSEG Lipper U.S. equity funds money market Reuters'
 JPM_ALL_TOPICS = "https://www.jpmorganchase.com/institute/all-topics"
 JPM_HOUSEHOLD = "https://www.jpmorganchase.com/institute/all-topics/household-financial-health/drawing-on-investment-wealth-full-report"
 FED_Z1 = "https://www.federalreserve.gov/releases/z1/default.htm"
+FED_Z1_EQUITY_TABLE = "https://www.federalreserve.gov/Releases/Z1/current/html/S1M_e_b.htm"
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
 FRED_SP500 = "https://fred.stlouisfed.org/series/SP500"
+YAHOO_SP500_API = "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5y&interval=1d&includePrePost=false&events=div%2Csplits"
+YAHOO_SP500 = "https://finance.yahoo.com/quote/%5EGSPC/"
 FRED_SERIES = {
     "household_equities": "BOGZ1LM153064475Q",
     "household_financial_assets": "TFAABSHNO",
@@ -342,42 +345,103 @@ def parse_jpm_household():
 
 
 def parse_fed_household_balance_sheet():
-    eq = latest_fred(FRED_SERIES["household_equities"])
-    fa = latest_fred(FRED_SERIES["household_financial_assets"])
-    ta = latest_fred(FRED_SERIES["household_total_assets"])
-    nw = latest_fred(FRED_SERIES["household_net_worth"])
-    dates = {eq["date"], fa["date"], ta["date"], nw["date"]}
-    if len(dates) != 1:
-        raise RuntimeError(
-            "Federal Reserve household series latest quarters differ: "
-            + ", ".join(sorted(d.isoformat() for d in dates))
-        )
-    period_date = eq["date"]
+    # Use the Board of Governors' current Z.1 table directly. This avoids depending on
+    # FRED availability while keeping the household balance-sheet signal on the official source.
+    r = get(FED_Z1_EQUITY_TABLE, timeout=45)
+    tables = pd.read_html(StringIO(r.text))
+    target = None
+    for raw in tables:
+        t = normalize_columns(raw)
+        cols = [str(x) for x in t.columns]
+        joined = " ".join(cols) + " " + " ".join(map(str, t.astype(str).values.flatten()[:100]))
+        if "LM153064475" in joined and "FL152000005" in joined:
+            target = t
+            break
+    if target is None:
+        raise RuntimeError("Federal Reserve Z.1 S1M.e.b table not found")
+
+    series_col = next((c for c in target.columns if str(c).strip().lower() in ("series", "series code")), None)
+    if series_col is None:
+        # Header variants occasionally change; series identifiers are still a dedicated column.
+        series_col = next((c for c in target.columns if target[c].astype(str).str.match(r"[A-Z]{2}\d{9,}").any()), None)
+    if series_col is None:
+        raise RuntimeError(f"Federal Reserve Z.1 series column not found: {list(target.columns)}")
+
+    period_cols = []
+    for col in target.columns:
+        m = re.fullmatch(r"(20\d{2}):Q([1-4])", str(col).strip())
+        if m:
+            period_cols.append((int(m.group(1)), int(m.group(2)), col))
+    if not period_cols:
+        raise RuntimeError(f"Federal Reserve Z.1 quarterly columns not found: {list(target.columns)}")
+    year, qtr, latest_col = max(period_cols)
+    period = f"{year}:Q{qtr}"
+
+    def series_value(code):
+        row = target[target[series_col].astype(str).str.strip() == code]
+        if row.empty:
+            raise RuntimeError(f"Federal Reserve Z.1 series missing: {code}")
+        v = parse_num(row.iloc[0][latest_col])
+        if v is None:
+            raise RuntimeError(f"Federal Reserve Z.1 value missing: {code} {period}")
+        return v
+
+    # Table units are billions of dollars; percentage memo items are already percentages.
     metrics = {
-        "equities_trillion": round(eq["value"] / 1_000_000.0, 6),
-        "financial_assets_trillion": round(fa["value"] / 1_000_000.0, 6),
-        "total_assets_trillion": round(ta["value"] / 1_000_000.0, 6),
-        "net_worth_trillion": round(nw["value"] / 1_000_000.0, 6),
-        "equities_share_total_assets_pct": round(eq["value"] / ta["value"] * 100.0, 2),
-        "equities_share_financial_assets_pct": round(eq["value"] / fa["value"] * 100.0, 2),
+        "equities_trillion": round(series_value("LM153064475") / 1000.0, 4),
+        "financial_assets_trillion": round(series_value("FL154090005") / 1000.0, 4),
+        "total_assets_trillion": round(series_value("FL152000005") / 1000.0, 4),
+        "net_worth_trillion": round(series_value("FL152090005") / 1000.0, 4),
+        "equities_share_total_assets_pct": round(series_value("FL153064476"), 1),
+        "equities_share_financial_assets_pct": round(series_value("FL153064486"), 1),
     }
     payload = {
         "source": "Federal Reserve Z.1",
         "kind": "household_balance_sheet",
-        "period": quarter_label(period_date),
+        "period": period,
         "published": None,
-        "url": FED_Z1,
+        "url": FED_Z1_EQUITY_TABLE,
         "metrics": metrics,
     }
     payload["fingerprint"] = semantic_fingerprint(payload)
     return payload
 
 
+def _sp500_from_yahoo():
+    j = get(YAHOO_SP500_API, timeout=25).json()
+    result = ((j.get("chart") or {}).get("result") or [])
+    if not result:
+        raise RuntimeError("Yahoo S&P 500 chart result empty")
+    r = result[0]
+    timestamps = r.get("timestamp") or []
+    quotes = (((r.get("indicators") or {}).get("quote") or [{}])[0].get("close") or [])
+    rows = []
+    for ts, close in zip(timestamps, quotes):
+        if close is None:
+            continue
+        d = datetime.fromtimestamp(int(ts), tz=timezone.utc)
+        rows.append((pd.Timestamp(d.date()), float(close)))
+    if not rows:
+        raise RuntimeError("Yahoo S&P 500 close rows empty")
+    t = pd.DataFrame(rows, columns=["date", "value"]).drop_duplicates("date").sort_values("date")
+    return t, "Yahoo Finance", YAHOO_SP500
+
+
 def fetch_sp500_context():
-    t = fred_series_rows("SP500")
+    errors = []
+    try:
+        # FRED remains the preferred public series, but do not let an outage disable the risk gate.
+        t = fred_series_rows("SP500")
+        source, source_url = "FRED", FRED_SP500
+    except Exception as e:
+        errors.append(f"FRED={type(e).__name__}:{e}")
+        try:
+            t, source, source_url = _sp500_from_yahoo()
+        except Exception as e2:
+            errors.append(f"Yahoo={type(e2).__name__}:{e2}")
+            raise RuntimeError("S&P 500 sources unavailable | " + " | ".join(errors))
+
     latest = t.iloc[-1]
-    # FRED provides a 10-year daily history. Five years is enough to anchor a cyclical peak
-    # without allowing a stale peak from a prior regime to dominate the alert.
     cutoff = latest["date"] - pd.Timedelta(days=365 * 5)
     recent = t[t["date"] >= cutoff].copy()
     peak_i = recent["value"].idxmax()
@@ -392,7 +456,8 @@ def fetch_sp500_context():
         "peak_value": peak_value,
         "drawdown_pct": round(drawdown_pct, 2),
         "band": "stress" if drawdown_pct <= -15.0 else "normal",
-        "url": FRED_SP500,
+        "source": source,
+        "url": source_url,
     }
 
 
@@ -1153,7 +1218,7 @@ if should_alert:
         "• FINRA 마진부채는 월간 레버리지 확인용으로 주간 펀드 흐름과 기간을 섞지 않음",
         "• JPMorganChase Institute 가계 인출은 저빈도 구조지표로 사용하며 새 공식 수치가 있을 때만 변화로 처리",
         "• Federal Reserve Z.1 가계 자산은 분기 구조지표로 사용하며 새 분기 값이 있을 때만 변화로 처리",
-        "• S&P 500은 FRED 종가 기준 5년 내 고점 대비 낙폭을 계산하고 15% 선 진입·이탈 때만 별도 경보",
+        "• S&P 500은 FRED를 우선 조회하고 장애 시 Yahoo Finance 종가로 대체해 5년 내 고점 대비 낙폭을 계산, 15% 선 진입·이탈 때만 별도 경보",
         "• S&P 500 15% 이상 하락 중 JPMorgan 순인출자 비중까지 상승할 때만 과거 패턴 이탈 경보로 격상",
         "• MMF 유출액이 그대로 주식으로 이동했다고 단정하지 않음",
         "• 같은 기준기간·같은 수치면 원천 URL이나 문구가 바뀌어도 중복 알림하지 않음",
