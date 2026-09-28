@@ -184,8 +184,10 @@ jobs:
           req = urllib.request.Request(f"{base}/dispatches", data=body, headers={**headers, "Content-Type": "application/json"}, method="POST")
           with urllib.request.urlopen(req, timeout=20) as r:
               print(f"kospi_realtime_watchdog=dispatched status={r.status}")
+          # dispatch 성공 직후 같은 회차의 fallback이 중복 경보를 보내지 않게 한다.
+          # 다음 시장감시 회차에서 production이 실제로 죽었으면 다시 감지된다.
           with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
-              f.write("KOSPI_REALTIME_WATCH_ACTIVE=0\n")
+              f.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
           PY
 
       - name: Run market stress and FX sector rotation watchers
