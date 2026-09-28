@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import os
 import pathlib
 import re
 import urllib.parse
@@ -29,6 +30,7 @@ FRESH_HOURS = 36
 FORMAT_VERSION = 3
 CAPITAL_RETURN_TRACK_VERSION = 1
 CAPITAL_RETURN_CORRECTION_VERSION = 1
+SCHEDULE_AUDIT_VERSION = 1
 
 OFFICIAL_Q2_TRANSCRIPT = (
     "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-"
@@ -371,6 +373,49 @@ def write_state(state: dict) -> None:
     STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def preserve_runtime_audit(new_state: dict, previous: dict, now: datetime, event_name: str | None = None) -> dict:
+    """Preserve confirmed delivery receipts and make scheduler health auditable.
+
+    Quiet monitoring runs must never erase the last acknowledged Telegram delivery.
+    """
+    out = dict(new_state)
+    for key in (
+        "last_successful_delivery_kst",
+        "telegram_message_id",
+        "bot_username",
+        "delivery_receipt",
+    ):
+        if previous.get(key) is not None:
+            out[key] = previous[key]
+
+    event_name = (event_name if event_name is not None else os.getenv("GITHUB_EVENT_NAME", "")).strip()
+    out["schedule_audit_version"] = SCHEDULE_AUDIT_VERSION
+    out["last_run_event"] = event_name or previous.get("last_run_event") or "unknown"
+
+    prior_schedule = previous.get("last_schedule_check_kst") or ""
+    if event_name == "schedule":
+        out["last_schedule_check_kst"] = now.isoformat(timespec="seconds")
+        gap = None
+        if prior_schedule:
+            try:
+                old = datetime.fromisoformat(prior_schedule)
+                if old.tzinfo is not None:
+                    gap = max(0.0, (now - old).total_seconds() / 60.0)
+            except Exception:
+                gap = None
+        out["schedule_gap_minutes"] = round(gap, 1) if gap is not None else None
+    elif prior_schedule:
+        out["last_schedule_check_kst"] = prior_schedule
+        if previous.get("schedule_gap_minutes") is not None:
+            out["schedule_gap_minutes"] = previous.get("schedule_gap_minutes")
+
+    if event_name == "push":
+        out["last_push_check_kst"] = now.isoformat(timespec="seconds")
+    elif previous.get("last_push_check_kst"):
+        out["last_push_check_kst"] = previous.get("last_push_check_kst")
+    return out
+
+
 def link(url: str, label: str = "원문") -> str:
     return f'<a href="{html.escape(url, quote=True)}">{html.escape(label)}</a>'
 
@@ -499,7 +544,8 @@ def build_alert(events: list[dict], now: datetime) -> str:
 
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
-    state = load_state()
+    previous_state = load_state()
+    state = dict(previous_state)
     seen_ids = set(state.get("seen_ids") or [])
     seen_fact_keys = set(state.get("seen_fact_keys") or [])
     capital_state = dict(state.get("capital_return_state") or {})
@@ -607,6 +653,7 @@ def main() -> None:
         ) else int(state.get("capital_return_correction_version") or 0),
         "capital_return_state": capital_state,
     }
+    state = preserve_runtime_audit(state, previous_state, now)
     write_state(state)
 
     STATUS.write_text(
@@ -614,7 +661,12 @@ def main() -> None:
         f"- checked_at_kst: {now.isoformat(timespec='seconds')}\n"
         f"- events: {len(events)}\n"
         f"- new_events: {len(new_events)}\n"
-        f"- alert_generated: {str(bool(new_events)).lower()}\n",
+        f"- alert_generated: {str(bool(new_events)).lower()}\n"
+        f"- run_event: {state.get('last_run_event','unknown')}\n"
+        f"- last_schedule_check_kst: {state.get('last_schedule_check_kst','none')}\n"
+        f"- schedule_gap_minutes: {state.get('schedule_gap_minutes','none')}\n"
+        f"- last_successful_delivery_kst: {state.get('last_successful_delivery_kst','none')}\n"
+        f"- telegram_message_id: {state.get('telegram_message_id','none')}\n",
         encoding="utf-8",
     )
 

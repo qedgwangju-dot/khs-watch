@@ -42,6 +42,31 @@ class NvidiaExecCapitalReturnTests(unittest.TestCase):
         )
         self.assertNotEqual(a, b)
 
+    def test_preserve_confirmed_delivery_across_quiet_run(self):
+        previous = {
+            "last_successful_delivery_kst": "2026-09-28T20:27:56+09:00",
+            "telegram_message_id": 159,
+            "bot_username": "khs88798879887988798879_bot",
+            "delivery_receipt": {"status": "confirmed", "message_id": 159},
+        }
+        now = w.datetime(2026, 9, 29, 8, 41, tzinfo=w.ZoneInfo("Asia/Seoul"))
+        out = w.preserve_runtime_audit({"updated_at_kst": now.isoformat()}, previous, now, event_name="push")
+        self.assertEqual(out["telegram_message_id"], 159)
+        self.assertEqual(out["last_successful_delivery_kst"], "2026-09-28T20:27:56+09:00")
+        self.assertEqual(out["delivery_receipt"]["status"], "confirmed")
+
+    def test_schedule_run_records_gap_without_erasing_delivery(self):
+        previous = {
+            "last_schedule_check_kst": "2026-09-29T08:26:00+09:00",
+            "last_successful_delivery_kst": "2026-09-28T20:27:56+09:00",
+            "telegram_message_id": 159,
+        }
+        now = w.datetime(2026, 9, 29, 8, 41, tzinfo=w.ZoneInfo("Asia/Seoul"))
+        out = w.preserve_runtime_audit({}, previous, now, event_name="schedule")
+        self.assertEqual(out["last_schedule_check_kst"], "2026-09-29T08:41:00+09:00")
+        self.assertEqual(out["schedule_gap_minutes"], 15.0)
+        self.assertEqual(out["telegram_message_id"], 159)
+
     def test_alert_explicitly_separates_authorization_and_execution(self):
         e = {
             "id": "x",

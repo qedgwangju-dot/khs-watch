@@ -11,15 +11,19 @@ on:
       - "tests/test_nvidia_exec_signal_watch.py"
       - "tests/test_nvidia_exec_signal_pretty.py"
   schedule:
-    - cron: "31 * * * *"
+    # Four off-peak checks per hour. GitHub documents that scheduled jobs can
+    # be delayed/dropped under load, so one missed slot has another chance 15m later.
+    - cron: "11,26,41,56 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: nvidia-exec-signal-telegram-watch
-  cancel-in-progress: true
+  # A code push must never cancel a scheduled monitoring run.
+  # Scheduled runs serialize; push runs may supersede older push-only validation runs.
+  group: nvidia-exec-signal-telegram-watch-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 jobs:
   monitor:
