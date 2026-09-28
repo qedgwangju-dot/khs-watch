@@ -1,0 +1,43 @@
+{
+  "as_of": "2026-09-28",
+  "cpu_ratio": {
+    "AMD": {
+      "cpu_per_gpu": 1,
+      "source": "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
+    },
+    "Intel": {
+      "cpu_per_gpu": 1,
+      "source": "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon.html"
+    },
+    "Dell": {
+      "cpu_per_gpu": 1,
+      "source": "https://www.amd.com/en/corporate/events/advancing-ai/sessions-catalog/dell-technologies--balancing-cpu-and-gpu-for-the-agentic-ai-era.html"
+    }
+  },
+  "neocloud": {
+    "CoreWeave": {
+      "active_power_gw": 1.5,
+      "contracted_power_gw": 4.2,
+      "annualized_revenue_per_mw_usd_m": 40
+    },
+    "Nebius": {
+      "contracted_power_gw": 3.5,
+      "contracted_power_guidance_gw": 4,
+      "microsoft_servicing": true
+    }
+  },
+  "upstream_snapshot": {},
+  "seen_urls": [
+    "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html",
+    "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon.html",
+    "https://www.amd.com/en/corporate/events/advancing-ai/sessions-catalog/dell-technologies--balancing-cpu-and-gpu-for-the-agentic-ai-era.html",
+    "https://www.sem.samsung.com/global/newsroom/news/view.do?id=10462",
+    "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Second-Quarter-2026-Results/default.aspx",
+    "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Continues-to-Contract-New-Compute-Capacity-at-Higher-Prices/default.aspx",
+    "https://nebius.com/newsroom/nebius-reports-first-quarter-2026-financial-results",
+    "https://nebius.com/newsroom/nebius-raises-775-million-in-first-secured-debt-financing-to-accelerate-global-buildout"
+  ],
+  "last_checked_at_kst": "2026-09-28T12:10:00+09:00",
+  "candidate_count": 0,
+  "event_count": 0
+}

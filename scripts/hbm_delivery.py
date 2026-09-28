@@ -32,6 +32,7 @@ ROUTES = {
     'solidigm': ('data/solidigm_ipo_watch_state.json', 'out/solidigm_ipo_alert.html', ''),
     'tsmc_package': ('data/tsmc_advanced_packaging_watch_state.json', 'out/tsmc_advanced_packaging_alert.html', ''),
     'tsmc_cross': ('data/tsmc_hbm_cross_watch_state.json', 'out/tsmc_hbm_cross_alert.html', ''),
+    'inference_structure': ('data/ai_inference_structure_watch_state.json', 'out/ai_inference_structure_alert.html', 'out/ai_inference_structure_pending_state.json'),
 }
 EXPECTED = 'khs88798879887988798879_bot'
 
@@ -338,6 +339,7 @@ def run_collectors():
     errors, results = [], {}
     for name, commands in (
         ('rubin', [['scripts/rubin_hbm_watch.py'], ['scripts/rubin_hbm_pretty.py'], ['scripts/rubin_hbm_leverage.py'], ['scripts/ai_component_leadtime_watch.py'], ['scripts/agentic_cpu_watch.py'], ['scripts/samsung_electromechanics_cpu_watch.py'], ['scripts/abf_cpu_monetization_watch.py']]),
+        ('inference_structure', [['scripts/ai_inference_structure_watch.py']]),
         ('skhynix', [['scripts/skhynix_us_memory_watch.py']]),
         ('samsung', [['scripts/hbm_memory_axes.py']]),
         ('solidigm', [['scripts/solidigm_ipo_watch.py']]),
