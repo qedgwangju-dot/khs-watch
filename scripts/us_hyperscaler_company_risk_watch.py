@@ -22,9 +22,10 @@ PENDING = OUT / "us_hyperscaler_company_risk_pending_state.json"
 ALERT = OUT / "us_hyperscaler_company_risk_alert.txt"
 STATUS = OUT / "us_hyperscaler_company_risk_status.md"
 
-FORMAT_VERSION = 3
+FORMAT_VERSION = 4
 LOOKBACK_DAYS = 10
 MAX_ALERT_AGE_DAYS = 7
+SIGNAL_WINDOW_DAYS = 30
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 NJDEP_DATAONE = "https://dep.nj.gov/newsrel/26_0044/"
 NEBIUS_MICROSOFT = "https://nebius.com/newsroom/nebius-announces-multi-billion-dollar-agreement-with-microsoft-for-ai-infrastructure"
@@ -92,7 +93,9 @@ RISK_TERMS = (
     "permit violation", "air pollution", "emission", "environmental", "stop work", "stop-work",
     "shutdown", "cease operations", "lawsuit", "investigation", "regulator", "enforcement",
     "generator", "gas turbine", "fire", "explosion", "safety", "water", "moratorium",
-    "zoning", "community opposition", "ratepayer", "curtailment", "noise",
+    "zoning", "community opposition", "local opposition", "ratepayer", "curtailment", "noise",
+    "delay", "delayed", "denied", "rejected", "force majeure", "injunction", "appeal",
+    "interconnection", "grid connection", "power shortage", "pipeline", "permit denied",
 )
 
 REPUTABLE = (
@@ -425,6 +428,80 @@ def classify_event(event: dict) -> tuple[str, str]:
         relation = "해당 기업 직접 언급 · 직접 책임 여부는 원문 기준"
     return cat, relation
 
+def risk_driver(event: dict) -> str:
+    blob = " ".join(event.get("titles", []) + [event.get("title", "")]).lower()
+    if any(k in blob for k in (
+        "interconnection", "grid connection", "power shortage", "generator", "gas turbine",
+        "pipeline", "force majeure", "permit denied", "denied", "rejected",
+    )):
+        return "전력·인허가"
+    if any(k in blob for k in ("fire", "explosion", "safety")):
+        return "안전"
+    if any(k in blob for k in ("zoning", "community opposition", "local opposition", "moratorium")):
+        return "지역사회·입지"
+    if any(k in blob for k in ("water", "air pollution", "emission", "noise", "environmental")):
+        return "환경"
+    if any(k in blob for k in ("lawsuit", "investigation", "injunction", "appeal")):
+        return "법적·소송"
+    if any(k in blob for k in ("fine", "fined", "penalty", "violation", "enforcement", "unpermitted")):
+        return "규제·허가"
+    return "기타"
+
+
+def signal_assessment(events: list[dict]) -> dict:
+    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=SIGNAL_WINDOW_DAYS)
+    active = []
+    for event in events:
+        try:
+            published = dt.datetime.fromisoformat(event.get("published", ""))
+            if published.tzinfo is None:
+                published = published.replace(tzinfo=dt.timezone.utc)
+        except Exception:
+            continue
+        if published >= cutoff:
+            active.append(event)
+
+    by_driver: dict[str, dict[str, set[str]]] = defaultdict(
+        lambda: {"events": set(), "companies": set()}
+    )
+    for event in active:
+        driver = risk_driver(event)
+        by_driver[driver]["events"].add(event.get("event_key", ""))
+        by_driver[driver]["companies"].update(event.get("companies", []))
+
+    if not by_driver:
+        return {
+            "label": "개별 노이즈",
+            "driver": "없음",
+            "driver_event_count": 0,
+            "driver_company_count": 0,
+            "active_event_count": 0,
+            "window_days": SIGNAL_WINDOW_DAYS,
+        }
+
+    driver, bucket = max(
+        by_driver.items(),
+        key=lambda kv: (len(kv[1]["events"]), len(kv[1]["companies"]), kv[0]),
+    )
+    event_count = len(bucket["events"])
+    company_count = len(bucket["companies"])
+    if event_count >= 3 and company_count >= 3:
+        label = "산업 위험 신호"
+    elif event_count >= 2 and company_count >= 2:
+        label = "확산 주의"
+    else:
+        label = "개별 노이즈"
+
+    return {
+        "label": label,
+        "driver": driver,
+        "driver_event_count": event_count,
+        "driver_company_count": company_count,
+        "active_event_count": len({x.get("event_key", "") for x in active}),
+        "window_days": SIGNAL_WINDOW_DAYS,
+    }
+
+
 def extract_facts(event: dict, fx: float | None) -> list[str]:
     blob = " ".join(event["titles"])
     facts = []
@@ -444,10 +521,20 @@ def extract_facts(event: dict, fx: float | None) -> list[str]:
         facts.append(f"규모 {m.group(1)}{m.group(2).upper()}")
     return facts[:3]
 
-def render(events: list[dict], fx: float | None, fx_source: str) -> str:
+def render(events: list[dict], fx: float | None, fx_source: str, signal: dict) -> str:
+    signal_label = signal.get("label", "개별 노이즈")
+    driver = signal.get("driver", "기타")
+    driver_events = int(signal.get("driver_event_count", 0) or 0)
+    driver_companies = int(signal.get("driver_company_count", 0) or 0)
     lines = [
         "<b>🚨 하이퍼스케일러 기업별 규제·환경·안전 변화</b>",
         "직접 위반 당사자와 연결된 하이퍼스케일러를 분리해서 표시합니다.",
+        "",
+        f"<b>📡 산업 확산 판정: {html.escape(signal_label)}</b>",
+        f"• 최근 {SIGNAL_WINDOW_DAYS}일 핵심 원인축: {html.escape(driver)} · 독립 사건 {driver_events}건 · 연관 기업 {driver_companies}개",
+        "• 동일 사건이 파트너·고객 여러 기업에 연결돼도 독립 사건 1건으로만 계산",
+        "• 2개 이상 독립 사건·2개 이상 기업이면 확산 주의, 3개 이상이면 산업 위험 신호",
+        "• 이 판정은 규제·전력·허가 위험의 확산 폭이며 AI 데이터센터 수요 사이클 전체 판정은 아님",
         "",
     ]
     for event in events[:8]:
@@ -489,7 +576,11 @@ def main() -> int:
     raw: dict[str, list[dict]] = defaultdict(list)
     errors = []
     for company, queries in SEARCHES.items():
-        for q in queries:
+        primary = TRACKED[company][0]
+        dynamic_queries = list(queries) + [
+            f'"{primary}" data center permit delay interconnection local opposition force majeure'
+        ]
+        for q in dynamic_queries:
             try:
                 raw[company].extend(google_news(q))
             except Exception as exc:
@@ -505,6 +596,7 @@ def main() -> int:
     for seed in authoritative_seed_events():
         by_key[seed["event_key"]] = seed
     events = sorted(by_key.values(), key=lambda x: x["published"], reverse=True)
+    signal = signal_assessment(events)
 
     seen = set(old.get("seen_events", []))
     baseline = not old.get("initialized")
@@ -532,6 +624,7 @@ def main() -> int:
         "format_version": FORMAT_VERSION,
         "seen_events": all_seen,
         "active_issues_by_company": dict(active_issues_by_company),
+        "signal_assessment": signal,
         "last_fx_krw_per_usd": fx,
         "fx_source": fx_source,
         "last_event_count": len(events),
@@ -541,13 +634,14 @@ def main() -> int:
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if new_events:
-        ALERT.write_text(render(new_events, fx, fx_source), encoding="utf-8")
+        ALERT.write_text(render(new_events, fx, fx_source, signal), encoding="utf-8")
 
     STATUS.write_text(
         "# 하이퍼스케일러 기업별 규제·환경·안전 감시\n\n"
         f"- 검증 사건: **{len(events)}건**\n"
         f"- 신규 사건: **{len(new_events)}건**\n"
         f"- 알림: **{'예' if new_events else '아니오'}**\n"
+        f"- 산업 확산 판정: **{signal.get('label','개별 노이즈')}** · {signal.get('driver','기타')} · 독립 사건 {signal.get('driver_event_count',0)}건\n"
         f"- 검색 오류: **{len(errors)}건**\n",
         encoding="utf-8",
     )
