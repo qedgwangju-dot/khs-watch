@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-29T07:11:42+09:00",
+  "updated_at_kst": "2026-09-29T08:42:37+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "162bef5431cfeab3494ce984",
@@ -16,6 +16,7 @@
     "4bb738d74581c8500fc671a3",
     "4d4b9724dfba2d02df1b92de",
     "4fb24036500af3278d9f40ae",
+    "575476c5a8a05f601998f886",
     "5c7222fdb4442d0a88f0255d",
     "5dd036ae2178b4c91407196d",
     "5f91627d0a5a84acbe78eadc",
@@ -28,6 +29,7 @@
     "8e1b230f2e5666de028dd59b",
     "947e492973448e6162bb5b62",
     "98032be43cad6c68195f92ad",
+    "980f0f8ede8976586f30ee8d",
     "a1dfba928af535c6107b2581",
     "a3f6a2bd029d3433142902a5",
     "a507b5f43c1b380e7af94d39",
@@ -45,6 +47,7 @@
     "c6f4558760e996043ded3907",
     "da83d9d8bf5835129b77f454",
     "de6207a88eb6d90993872a3a",
+    "e04fa2c4f80c4f4e8bd0613f",
     "e1d45c6060e8cbbf06477e7c",
     "e72f15563dc1e85d7864948b",
     "e796d30d2d09d2b81383c228",
@@ -82,5 +85,8 @@
     "execution_through_fy": 2028,
     "observed_at_kst": "2026-09-28T20:37:43+09:00",
     "source": "marketscreener.com"
-  }
+  },
+  "schedule_audit_version": 1,
+  "last_run_event": "push",
+  "last_push_check_kst": "2026-09-29T08:42:37+09:00"
 }
