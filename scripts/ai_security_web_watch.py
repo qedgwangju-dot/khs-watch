@@ -147,7 +147,6 @@ OFFICIAL_SOURCE_HINTS = (
 DIRECT_OFFICIAL_PAGES = [
     ("OpenAI Alignment", "https://alignment.openai.com/", r'href=["\\\']([^"\\\']*/misalignment-reports/[^"\\\']+)["\\\']'),
     ("Anthropic Research", "https://www.anthropic.com/research", r'href=["\\\']([^"\\\']*/research/[^"\\\']+)["\\\']'),
-    ("Anthropic Threat Intelligence", "https://www.anthropic.com/threat-intelligence", r'href=["\\\']([^"\\\']*/threat-intelligence[^"\\\']*)["\\\']'),
 ]
 
 VENDOR_PATTERNS = [
@@ -321,6 +320,8 @@ def parse_direct_official_pages() -> list[dict]:
         raw = fetch_bytes(index_url).decode("utf-8", "ignore")
         for href in sorted(set(re.findall(pattern, raw, flags=re.I))):
             url = urllib.parse.urljoin(index_url, html.unescape(href))
+            if url.rstrip("/") == index_url.rstrip("/"):
+                continue
             title = urllib.parse.unquote(url.rstrip("/").split("/")[-1]).replace("-", " ")
             title = re.sub(r"\\s+", " ", title).strip()
             if title and not title.lower().startswith(source.lower()):
@@ -802,7 +803,7 @@ def main() -> int:
 
     # Silent baseline on the first successful collection to prevent retroactive spam.
     baseline = not bool(state.get("initialized"))
-    direct_source_version = 2
+    direct_source_version = 3
     direct_baseline = state.get("direct_official_version") != direct_source_version
     if baseline:
         new_items = []
