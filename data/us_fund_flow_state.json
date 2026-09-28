@@ -13,7 +13,7 @@
       "url": "https://www.ici.org/research/stats/mmf",
       "metrics": {
         "assets_trillion": 7.94,
-        "weekly_change_bn": 15.0
+        "weekly_change_bn": 15
       },
       "fingerprint": "0fc80ab5f6b9feb7fa734023f812e89da42e92c6a92f09b303d4e07bff7a4685"
     },
@@ -47,7 +47,43 @@
       },
       "domestic_4w": null,
       "fingerprint": "728a130ea6b788d212c6badaee534cc42327547377e1ba57ff9d2edbdfde4a7a"
+    },
+    "JPMorganChase Institute|household_withdrawals": {
+      "source": "JPMorganChase Institute",
+      "kind": "household_withdrawals",
+      "period": "February-April 2026",
+      "published": "September 17, 2026",
+      "url": "https://www.jpmorganchase.com/institute/all-topics/household-financial-health/drawing-on-investment-wealth-full-report",
+      "metrics": {
+        "withdrawers_all_pct": 8.2,
+        "withdrawers_top10_pct": 20.3,
+        "withdrawers_below_median_pct": 4.1,
+        "spending_funded_pct": 6.8
+      }
+    },
+    "Federal Reserve Z.1|household_balance_sheet": {
+      "source": "Federal Reserve Z.1",
+      "kind": "household_balance_sheet",
+      "period": "2026:Q2",
+      "published": "September 11, 2026",
+      "url": "https://www.federalreserve.gov/releases/z1/default.htm",
+      "metrics": {
+        "equities_trillion": 74.027116,
+        "financial_assets_trillion": 153.487265,
+        "total_assets_trillion": 217.751104,
+        "net_worth_trillion": 195.870496,
+        "equities_share_total_assets_pct": 34,
+        "equities_share_financial_assets_pct": 48.23
+      }
     }
   },
-  "updated_at_kst": "2026-09-26T14:50:20.319097+09:00"
+  "updated_at_kst": "2026-09-26T14:50:20.319097+09:00",
+  "derived": {
+    "sp500_drawdown_band": "normal",
+    "sp500_last_date": "2026-09-24",
+    "sp500_last_value": 7704.13,
+    "sp500_peak_date": "2026-08-13",
+    "sp500_peak_value": 7798.99,
+    "sp500_drawdown_pct": -1.22
+  }
 }
