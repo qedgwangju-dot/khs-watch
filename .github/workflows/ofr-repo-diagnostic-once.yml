@@ -1,4 +1,4 @@
-name: OFR Repo Diagnostic Once
+name: Treasury Repo Positioning Validate Once
 
 on:
   push:
@@ -6,31 +6,31 @@ on:
       - ".github/workflows/ofr-repo-diagnostic-once.yml"
 
 jobs:
-  inspect:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect OFR STFM APIs
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check requests beautifulsoup4
+      - name: Validate live repo and positioning data
         run: |
           python - <<'PY'
-          import json, requests
+          import sys
+          sys.path.insert(0, "scripts")
 
-          for dataset in ("fnyr","repo"):
-              url=f"https://data.financialresearch.gov/v1/series/dataset?dataset={dataset}"
-              p=requests.get(url,timeout=45).json()
-              ts=p.get("timeseries") or {}
-              print("\nDATASET",dataset,"COUNT",len(ts))
-              for k,v in list(ts.items())[:100]:
-                  md=(v or {}).get("metadata") or {}
-                  data=(v or {}).get("timeseries") or {}
-                  name=md.get("description") or md.get("title") or md.get("long_name") or md.get("name") or ""
-                  unit=md.get("unit") or md.get("units") or ""
-                  if dataset=="fnyr" or any(x in (k+" "+str(name)).upper() for x in ("DVP","TRI","TREAS","REPO")):
-                      print("SERIES",k,"NAME",name,"UNIT",unit)
-                      print(" META",json.dumps(md,ensure_ascii=False)[:500])
-                      if isinstance(data,dict):
-                          for sk,sv in data.items():
-                              if isinstance(sv,list):
-                                  print(" DATA",sk,json.dumps(sv[-4:],ensure_ascii=False)[:600])
-                              else:
-                                  print(" DATA",sk,json.dumps(sv,ensure_ascii=False)[:600])
+          import treasury_credit_flow_watch_refinancing as daily
+          import treasury_positioning_watch as weekly
+
+          print("DAILY_REPO", daily.get_repo_stress())
+          latest, prev, rows = weekly.common_weekly_positions()
+          repo = weekly.repo_stress()
+          srepo = weekly.sponsored_repo()
+          print("CFTC_DATES", latest, prev)
+          for k, v in rows.items():
+              print("POSITION", k, v)
+          print("REPO", repo)
+          print("SPONSORED", srepo)
+          print("CLASS", weekly.classify(rows, repo, srepo))
           PY
