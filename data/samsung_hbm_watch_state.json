@@ -1,6 +1,7 @@
 {
   "seen_ids": [
     "017d7560e3afc81111bbcb5c",
+    "025c4356215891a26d4aef51",
     "02a9ff8b7b18764c64a8220e",
     "034038a3bbe2593dcdf3aaf5",
     "039aaba71a879d3b281d4a04",
@@ -8,6 +9,7 @@
     "05692592093313cc05c062c2",
     "05c27d7b30704f2bd464f146",
     "0833d662f2bc1ef69385334d",
+    "097686cc00e258065851cfd6",
     "0c211ff74f2e1bbd30a72030",
     "0c9de789f40a57b1f7452b32",
     "0d896933febce35e813e7374",
@@ -38,6 +40,7 @@
     "29917bada40fc676323de211",
     "299eb2b621f19497d40d20f0",
     "2dbf4f120eeb4f3951edff11",
+    "2f71812ca289bb6e2bcecad2",
     "2f80599673dc3c01cce0a649",
     "2fb51a55d242ab70fcb81c9d",
     "2fd519f3311b7a35a23b3df7",
@@ -82,8 +85,10 @@
     "526c2759fcea00d96c03da97",
     "56b2de8304378c3a06fa5b4c",
     "57e9d50e1c1cf25ad372b735",
+    "5864372fad757bc7ab8e13c5",
     "5a3a72fe34f95c5f38edf6f5",
     "5ae138f32b9b40ecf0aca2e5",
+    "5b99f7580ce7c8aa0b69f069",
     "5cdb4edd07a7b43ea88cbae8",
     "5d10c70a6f648f2a02de1e05",
     "5e304c914d7ab868e24a3585",
@@ -161,6 +166,7 @@
     "ab946d84cf8d9b45b14ee055",
     "ad36859415c56577b6d4b98e",
     "ad71f3481f090f2a3b57592d",
+    "add9e454c272d9456ad168a1",
     "aecd0190a7a845249b865cbb",
     "b10990b377e8014499d64e5a",
     "b4489259f60f13a654447938",
@@ -211,6 +217,7 @@
     "e9f073456697904e5407e230",
     "e9f48a3fa721edd7d0113ea4",
     "eab351c9c3731d6a278c1974",
+    "ebc5982704780e4e72a7903e",
     "ec3cf377a6d8256cacdecb01",
     "ed1c60b97398767e08f42c38",
     "ee7cfb5b8d2e973d5f37af8e",
@@ -227,6 +234,7 @@
     "f6c31071f5914a547fcb3fa1",
     "f6ea3f1fc68e1e473bcd91cb",
     "f7ba633e0f7a24fe0314b575",
+    "f966a742f5fbf539648b21af",
     "f9ae286ced0970280f1bfa92",
     "fa4bed1aefbdb2c1db2385c0",
     "fabfb78c79fac517e54dc7b3",
@@ -236,7 +244,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-29T02:52:12+09:00",
+  "updated_at_kst": "2026-09-29T08:32:09+09:00",
   "last_event_count": 88,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -258,7 +266,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-29T02:52:12+09:00",
+  "last_successful_official_at_kst": "2026-09-29T08:32:09+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -1391,7 +1399,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-29T02:52:12+09:00",
+      "last_checked_at_kst": "2026-09-29T08:32:09+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -1445,7 +1453,7 @@
     "payload_hash": "e2a020bc18aab1d529d2638444e5f84b36bd8cda3a364328e6d8ae9a09ac834d"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-29T02:55:18+09:00",
+    "checked_at_kst": "2026-09-29T08:35:04+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
