@@ -25,6 +25,7 @@ PACKAGE_ALERT = ROOT / "out" / "tsmc_advanced_packaging_alert.html"
 HBM_ALERT = ROOT / "out" / "tsmc_hbm_cross_alert.html"
 PACKAGE_STATUS = ROOT / "out" / "tsmc_advanced_packaging_status.json"
 HBM_STATUS = ROOT / "out" / "tsmc_hbm_cross_status.json"
+FOUNDRY_STATE = ROOT / "data" / "tsmc_leading_node_watch_state.json"
 
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
 WATCH_VERSION = 1
@@ -524,6 +525,48 @@ def material_changes(old, new):
     return reasons
 
 
+def _foundry_snapshot():
+    try:
+        import tsmc_leading_node_watch as foundry
+        return foundry.hbm_snapshot()
+    except Exception:
+        return {}
+
+
+def _foundry_hbm_cross_reasons(old, new):
+    reasons = []
+    ai = set(new.get("ai_hbm_customers") or [])
+    if not ai:
+        return reasons
+    old_wpm, new_wpm = old.get("n2_2026ye_wpm"), new.get("n2_2026ye_wpm")
+    if old_wpm and new_wpm:
+        delta = float(new_wpm) - float(old_wpm)
+        pct = delta / float(old_wpm) * 100
+        if abs(delta) >= 10000 or abs(pct) >= 10:
+            reasons.append(f"AI 고객 연계 N2 월 생산능력 {int(old_wpm):,}→{int(new_wpm):,}장 ({pct:+.1f}%)")
+    elif new_wpm:
+        reasons.append(f"AI 고객 연계 N2 월 생산능력 {int(new_wpm):,}장 신규 확인")
+
+    old_min, old_max = old.get("reservation_min_pct"), old.get("reservation_max_pct")
+    new_min, new_max = new.get("reservation_min_pct"), new.get("reservation_max_pct")
+    if old_min is not None and new_min is not None:
+        if abs(float(new_min)-float(old_min)) >= 10 or abs(float(new_max)-float(old_max)) >= 10:
+            reasons.append(f"NVIDIA·AMD 포함 추가 예약률 {old_min:g}~{old_max:g}%→{new_min:g}~{new_max:g}%")
+    elif new_min is not None:
+        reasons.append(f"NVIDIA·AMD 포함 추가 예약률 {new_min:g}~{new_max:g}% 신규 확인")
+
+    added = sorted(ai - set(old.get("ai_hbm_customers") or []))
+    if added and float(new_min or 0) >= 10:
+        reasons.append("HBM 연계 AI 고객 추가: " + "·".join(added))
+    if old.get("n2_fabs_2026") is not None and new.get("n2_fabs_2026") is not None and old.get("n2_fabs_2026") != new.get("n2_fabs_2026"):
+        reasons.append(f"N2 가동 팹 {old.get('n2_fabs_2026')}→{new.get('n2_fabs_2026')}개")
+    return reasons
+
+
+def _bottleneck_ko(status):
+    return {"tight": "부족·병목", "easing": "완화", "cleared": "해소"}.get(status or "", "미확인")
+
+
 def hbm_cross_reasons(old, new):
     reasons = []
     for field, label in (("cowos_capacity_wpm", "CoWoS 월 생산능력"), ("soic_capacity_wpm", "SoIC 월 생산능력")):
@@ -603,15 +646,24 @@ def package_alert_text(new, reasons, checked):
     return koreanize_alert_text("\n".join(lines) + "\n")
 
 
-def hbm_alert_text(new, reasons, checked):
+def hbm_alert_text(new, reasons, checked, foundry_snapshot=None):
+    foundry_snapshot = foundry_snapshot or {}
     lines = [
-        "🚨 <b>HBM 교차 알림 | TSMC 첨단패키징 병목 변화</b>",
+        "🚨 <b>HBM 교차 알림 | TSMC 앞단·후단·메모리 병목 변화</b>",
         "━━━━━━━━━━━━━━━━",
         "• HBM 알림 사유: <b>" + html.escape(" · ".join(reasons)) + "</b>",
-        "• 전파 경로: CoWoS·SoIC 실제 처리능력/병목 → GPU·ASIC 패키지 출하 → HBM 탑재·출하 가능량",
-        "• 알림 기준: 실제 생산능력 숫자 변화, 장비 반입·양산 진입, 테스터·기판·HBM·CoWoS 병목 변화만 교차 알림합니다.",
-        "• 제외: 부지 검토·공장 의향·같은 기사 재배포만으로는 HBM 알림을 울리지 않습니다.",
+        "• 전파 경로: NVIDIA·AMD N2 웨이퍼 → GPU·ASIC 출하 → CoWoS·SoIC → HBM 비트수요",
+        "• 알림 기준: AI 고객 연계 N2/N3 생산능력·예약 물량 변화 또는 CoWoS·SoIC·테스터·기판·HBM 병목 변화만 교차 알림합니다.",
+        "• 제외: Apple 단독 N2 주문·부지 검토·공장 의향·같은 기사 재배포만으로는 HBM 알림을 울리지 않습니다.",
     ]
+    if foundry_snapshot:
+        if foundry_snapshot.get("n2_2026ye_wpm"):
+            lines.append(f"• 앞단: N2 2026년말 <b>{int(foundry_snapshot['n2_2026ye_wpm']):,}장/월</b>")
+        if foundry_snapshot.get("ai_hbm_customers"):
+            lines.append("• HBM 연계 AI 고객: " + html.escape(" · ".join(foundry_snapshot.get("ai_hbm_customers") or [])))
+    b = new.get("bottlenecks") or {}
+    lines.append("• 후단: CoWoS " + _bottleneck_ko((b.get("cowos") or {}).get("status")) + " · 기판 " + _bottleneck_ko((b.get("substrate") or {}).get("status")))
+    lines.append("• 메모리: HBM " + _bottleneck_ko((b.get("hbm") or {}).get("status")))
     if new.get("cowos_capacity_wpm"):
         lines.append(f"• CoWoS 월 생산능력: {int(new['cowos_capacity_wpm']):,}장")
     if new.get("soic_capacity_wpm"):
@@ -649,8 +701,12 @@ def run(mode):
         if candidate != before:
             last_event = event
 
-    reasons = material_changes(current, candidate) if mode == "package" else hbm_cross_reasons(current, candidate)
+    foundry_snapshot = _foundry_snapshot() if mode == "hbm" else {}
+    foundry_reasons = _foundry_hbm_cross_reasons(state.get("foundry_snapshot") or {}, foundry_snapshot) if mode == "hbm" else []
+    reasons = material_changes(current, candidate) if mode == "package" else (hbm_cross_reasons(current, candidate) + foundry_reasons)
     state["watch_version"] = WATCH_VERSION
+    if mode == "hbm":
+        state["foundry_snapshot"] = foundry_snapshot
     state["last_checked_at_kst"] = checked.isoformat(timespec="seconds")
     state["current_state"] = candidate
     if last_event:
@@ -659,7 +715,7 @@ def run(mode):
 
     alert_path.parent.mkdir(exist_ok=True)
     if reasons:
-        text = package_alert_text(candidate, reasons, checked) if mode == "package" else hbm_alert_text(candidate, reasons, checked)
+        text = package_alert_text(candidate, reasons, checked) if mode == "package" else hbm_alert_text(candidate, reasons, checked, foundry_snapshot)
         alert_path.write_text(text, encoding="utf-8")
         state["last_alert_reasons"] = reasons
         state["last_alert_at_kst"] = checked.isoformat(timespec="seconds")

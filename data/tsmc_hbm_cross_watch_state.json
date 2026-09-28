@@ -64,5 +64,26 @@
   "delivery_check": {
     "checked_at_kst": "2026-09-28T12:35:13+09:00",
     "status": "no_message_due"
-  }
+  },
+  "foundry_snapshot": {
+    "n2_2026ye_wpm": 120000,
+    "n3_2026q4_wpm": 180000,
+    "reservation_min_pct": 10,
+    "reservation_max_pct": 20,
+    "reservation_customers": [
+      "AMD",
+      "Apple",
+      "MediaTek",
+      "NVIDIA",
+      "Qualcomm"
+    ],
+    "ai_hbm_customers": [
+      "AMD",
+      "NVIDIA"
+    ],
+    "n2_fabs_2026": 5,
+    "source_url": "https://money.udn.com/money/story/5612/9780512",
+    "source_name": "경제일보"
+  },
+  "foundry_baseline_note": "TSMC N2 2026년말 12만장/월·NVIDIA/AMD 포함 추가예약 10~20%를 현재값으로 잠금. 이후 N2/N3 생산능력 1만장 또는 10% 이상, AI 고객 예약 10%p 이상 등 실제 변화만 HBM 교차 알림."
 }

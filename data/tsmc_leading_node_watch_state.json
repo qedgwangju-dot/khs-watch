@@ -1,0 +1,98 @@
+{
+  "watch_version": 1,
+  "baseline_seeded_at_kst": "2026-09-28T11:53:00+09:00",
+  "baseline_note": "2026-09-28 경제일보 공급망 보도의 N2 2026년말 12만장/월·고객 추가예약 10~20%와 기존 공식/상위근거 N2 램프 사실을 현재 기준선으로 잠금. 같은 기사 재배포는 역송출하지 않음.",
+  "current_state": {
+    "capacity_targets": {
+      "N2|2026YE": {
+        "value": 120000,
+        "min": null,
+        "max": null,
+        "evidence_state": "supply_chain_report",
+        "source_url": "https://money.udn.com/money/story/5612/9780512",
+        "source_name": "經濟日報"
+      },
+      "N3|2026Q4": {
+        "value": 180000,
+        "min": null,
+        "max": null,
+        "evidence_state": "supply_chain_report",
+        "source_url": "https://money.udn.com/money/story/5612/9780512",
+        "source_name": "經濟日報"
+      },
+      "N3|2027": {
+        "value": null,
+        "min": 200000,
+        "max": 210000,
+        "evidence_state": "supply_chain_report",
+        "source_url": "https://money.udn.com/money/story/5612/9780512",
+        "source_name": "經濟日報"
+      }
+    },
+    "customer_reservation": {
+      "min_pct": 10,
+      "max_pct": 20,
+      "customers": [
+        "AMD",
+        "Apple",
+        "MediaTek",
+        "NVIDIA",
+        "Qualcomm"
+      ],
+      "ai_hbm_customers": [
+        "AMD",
+        "NVIDIA"
+      ],
+      "evidence_state": "supply_chain_report",
+      "source_url": "https://money.udn.com/money/story/5612/9780512",
+      "source_name": "經濟日報"
+    },
+    "n2_fabs_2026": 5,
+    "n2_first_year_vs_n3_pct": 45,
+    "n2_cagr_2026_2028_pct": 70,
+    "scalar_evidence_state": "top_tier_report",
+    "scalar_source_url": "https://focustaiwan.tw/sci-tech/202604280010",
+    "process_timeline": {
+      "N2": {
+        "milestone": "양산",
+        "period": "2025Q4",
+        "evidence_state": "official",
+        "source_url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html"
+      },
+      "N2P": {
+        "milestone": "양산",
+        "period": "2026H2",
+        "evidence_state": "official",
+        "source_url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html"
+      },
+      "A16": {
+        "milestone": "양산",
+        "period": "2026H2",
+        "evidence_state": "official",
+        "source_url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html"
+      },
+      "A14": {
+        "milestone": "양산",
+        "period": "2028",
+        "evidence_state": "official",
+        "source_url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html"
+      }
+    },
+    "n2_gross_margin_dilution": {
+      "min_pp": 2,
+      "max_pp": 3,
+      "evidence_state": "official",
+      "source_url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf"
+    },
+    "last_evidence_state": "supply_chain_report",
+    "last_source_url": "https://money.udn.com/money/story/5612/9780512",
+    "last_source_name": "經濟日報",
+    "last_source_published_at_kst": "2026-09-28T02:06:00+09:00"
+  },
+  "baseline_sources": [
+    "https://money.udn.com/money/story/5612/9780512",
+    "https://focustaiwan.tw/sci-tech/202604280010",
+    "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
+    "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf"
+  ]
+}

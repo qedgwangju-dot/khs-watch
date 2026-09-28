@@ -94,6 +94,26 @@ class TSMCAdvancedPackagingTests(unittest.TestCase):
         self.assertTrue(any("자이 과학단지 확대 단계" in x for x in reasons))
         self.assertFalse(any(w.HAN_RE.search(x) for x in reasons))
 
+    def test_foundry_ai_capacity_change_cross_triggers_hbm(self):
+        old = {"n2_2026ye_wpm": 100000, "reservation_min_pct": 10, "reservation_max_pct": 20, "ai_hbm_customers": ["NVIDIA", "AMD"], "n2_fabs_2026": 5}
+        new = {"n2_2026ye_wpm": 120000, "reservation_min_pct": 10, "reservation_max_pct": 20, "ai_hbm_customers": ["NVIDIA", "AMD"], "n2_fabs_2026": 5}
+        reasons = w._foundry_hbm_cross_reasons(old, new)
+        self.assertTrue(any("100,000→120,000" in x for x in reasons))
+
+    def test_apple_only_foundry_change_does_not_cross_trigger_hbm(self):
+        old = {"n2_2026ye_wpm": 100000, "reservation_min_pct": 10, "reservation_max_pct": 20, "ai_hbm_customers": []}
+        new = {"n2_2026ye_wpm": 120000, "reservation_min_pct": 20, "reservation_max_pct": 30, "ai_hbm_customers": []}
+        self.assertEqual(w._foundry_hbm_cross_reasons(old, new), [])
+
+    def test_cross_alert_shows_front_back_memory_bottleneck_map(self):
+        package = {"bottlenecks": {"cowos": {"status": "easing"}, "substrate": {"status": "tight"}, "hbm": {"status": "easing"}}}
+        foundry = {"n2_2026ye_wpm": 120000, "ai_hbm_customers": ["AMD", "NVIDIA"]}
+        out = w.hbm_alert_text(package, ["AI 고객 연계 N2 월 생산능력 변화"], w.now_kst(), foundry)
+        self.assertIn("앞단", out)
+        self.assertIn("후단", out)
+        self.assertIn("메모리", out)
+        self.assertIn("NVIDIA", out)
+
 
 if __name__ == "__main__":
     unittest.main()
