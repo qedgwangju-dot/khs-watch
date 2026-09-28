@@ -6,6 +6,9 @@ on:
       - ".github/workflows/nvidia-exec-signal-telegram.yml"
       - "scripts/nvidia_exec_signal_watch.py"
       - "scripts/nvidia_exec_signal_pretty.py"
+      - "scripts/currency_krw_guard.py"
+      - "scripts/fx_api.py"
+      - "tests/test_nvidia_exec_signal_watch.py"
   schedule:
     - cron: "31 * * * *"
   workflow_dispatch:
@@ -58,9 +61,10 @@ jobs:
           print(f"telegram_route_valid=true bot=@{username} chat_id_present=true")
           PY
 
-      - name: Check NVIDIA executive demand and safety signals
+      - name: Check NVIDIA executive demand safety and capital-return signals
         run: |
-          python -m py_compile scripts/nvidia_exec_signal_watch.py
+          python -m py_compile scripts/nvidia_exec_signal_watch.py scripts/currency_krw_guard.py scripts/fx_api.py
+          python -m unittest discover -s tests -p 'test_nvidia_exec_signal_watch.py' -v
           python scripts/nvidia_exec_signal_watch.py
 
       - name: Format NVIDIA executive alert for readability
@@ -69,6 +73,10 @@ jobs:
           if [ -f out/nvidia_exec_signal_alert.html ]; then
             python scripts/nvidia_exec_signal_pretty.py
           fi
+
+      - name: Enforce KRW immediately after every foreign-currency amount
+        if: hashFiles('out/nvidia_exec_signal_alert.html') != ''
+        run: python scripts/currency_krw_guard.py out/nvidia_exec_signal_alert.html
 
       - name: Publish watcher summary
         if: always()
@@ -105,7 +113,38 @@ jobs:
               result = json.loads(r.read().decode("utf-8"))
           if not result.get("ok"):
               raise RuntimeError(f"Telegram rejected NVIDIA executive signal: {result}")
-          print(f"nvidia_exec_signal_delivery_confirmed=true bot=@{username} message_id={result.get('result',{}).get('message_id')}")
+          message_id = (result.get("result") or {}).get("message_id")
+          if type(message_id) is not int or message_id <= 0:
+              raise RuntimeError("Telegram acknowledgement lacks a valid message_id")
+          import datetime as dt
+          from zoneinfo import ZoneInfo
+          receipt = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_id": message_id,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/nvidia_exec_signal_telegram_confirmed.json").write_text(
+              json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"nvidia_exec_signal_delivery_confirmed=true bot=@{username} message_id={message_id}")
+          PY
+
+      - name: Persist confirmed NVIDIA delivery receipt
+        if: success() && hashFiles('out/nvidia_exec_signal_telegram_confirmed.json') != '' && hashFiles('data/nvidia_exec_signal_state.json') != ''
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          state_path = pathlib.Path("data/nvidia_exec_signal_state.json")
+          receipt_path = pathlib.Path("out/nvidia_exec_signal_telegram_confirmed.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+          state["last_successful_delivery_kst"] = receipt["confirmed_at_kst"]
+          state["telegram_message_id"] = receipt["message_id"]
+          state["bot_username"] = receipt["bot_username"]
+          state["delivery_receipt"] = receipt
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
 
       - name: Commit watcher state
@@ -130,5 +169,6 @@ jobs:
           path: |
             out/nvidia_exec_signal_status.md
             out/nvidia_exec_signal_alert.html
+            out/nvidia_exec_signal_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
