@@ -13,6 +13,11 @@ on:
         options:
           - "false"
           - "true"
+  push:
+    paths:
+      - ".github/workflows/iran-hormuz-market-turn-alert.yml"
+      - "scripts/iran_hormuz_market_turn_alert.py"
+      - "tests/test_iran_hormuz_market_turn_alert.py"
   pull_request:
     paths:
       - ".github/workflows/iran-hormuz-market-turn-alert.yml"
