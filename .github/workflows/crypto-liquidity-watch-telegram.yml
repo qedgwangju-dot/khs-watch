@@ -11,6 +11,9 @@ on:
       - "scripts/samsung_wallet_stablecoin_watch.py"
       - "scripts/verify_samsung_wallet_stablecoin_state.py"
       - "scripts/coin_alert_korean_terms.py"
+      - "scripts/coinbase_stablecoin_catalyst_watch.py"
+      - "tests/test_coinbase_stablecoin_catalyst_watch.py"
+      - "data/coinbase_stablecoin_catalyst_state.json"
       - "data/crypto_liquidity_watch_state.json"
       - "data/samsung_wallet_stablecoin_watch_state.json"
   schedule:
@@ -55,6 +58,8 @@ jobs:
           python -m py_compile scripts/verify_samsung_wallet_stablecoin_state.py
           python scripts/verify_samsung_wallet_stablecoin_state.py
           python -m py_compile scripts/coin_alert_korean_terms.py
+          python -m py_compile scripts/coinbase_stablecoin_catalyst_watch.py
+          python -m unittest tests/test_coinbase_stablecoin_catalyst_watch.py -v
 
       - name: Validate exact Telegram bot route without sending
         env:
@@ -94,6 +99,10 @@ jobs:
       - name: Check Samsung Wallet stablecoin adoption
         if: always()
         run: python scripts/samsung_wallet_stablecoin_watch.py
+
+      - name: Check Coinbase stablecoin business and CFTC clearing catalysts
+        if: always()
+        run: python scripts/coinbase_stablecoin_catalyst_watch.py
 
       - name: Verify KRW conversion source
         env:
@@ -138,11 +147,12 @@ jobs:
         run: python scripts/crypto_alert_format.py
 
       - name: Translate visible English identifiers to Korean
-        if: hashFiles('out/crypto_liquidity_watch_telegram.txt') != '' || hashFiles('out/samsung_wallet_stablecoin_telegram.txt') != ''
+        if: hashFiles('out/crypto_liquidity_watch_telegram.txt') != '' || hashFiles('out/samsung_wallet_stablecoin_telegram.txt') != '' || hashFiles('out/coinbase_stablecoin_catalyst_telegram.txt') != ''
         run: |
           python scripts/coin_alert_korean_terms.py \
             out/crypto_liquidity_watch_telegram.txt \
-            out/samsung_wallet_stablecoin_telegram.txt
+            out/samsung_wallet_stablecoin_telegram.txt \
+            out/coinbase_stablecoin_catalyst_telegram.txt
 
       - name: Publish watcher summary
         if: always()
@@ -163,6 +173,15 @@ jobs:
           if [ -f out/samsung_wallet_stablecoin_telegram.txt ]; then
             printf '\n---\n\nSamsung Wallet stablecoin Telegram preview:\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/samsung_wallet_stablecoin_telegram.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          if [ -f out/coinbase_stablecoin_catalyst_status.md ]; then
+            printf '\n---\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/coinbase_stablecoin_catalyst_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/coinbase_stablecoin_catalyst_telegram.txt ]; then
+            printf '\n---\n\nCoinbase stablecoin catalyst Telegram preview:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/coinbase_stablecoin_catalyst_telegram.txt >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Send meaningful change to exact Telegram bot
@@ -312,6 +331,90 @@ jobs:
           print(f"samsung_wallet_stablecoin_delivery_confirmed=true bot=@{username} message_id={message_id}")
           PY
 
+      - name: Send Coinbase stablecoin business catalyst as separate Telegram alert
+        if: hashFiles('out/coinbase_stablecoin_catalyst_telegram.txt') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.CRYPTO_LIQUIDITY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or os.getenv("TELEGRAM_CHAT_ID_FALLBACK") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram token/chat id is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/coinbase_stablecoin_catalyst_telegram.txt").read_text(encoding="utf-8").strip()
+          if not text:
+              raise RuntimeError("Coinbase catalyst alert is empty")
+
+          def split_message(value, limit=3900):
+              chunks, current = [], ""
+              for paragraph in value.split("\n\n"):
+                  candidate = paragraph if not current else current + "\n\n" + paragraph
+                  if len(candidate) <= limit:
+                      current = candidate
+                      continue
+                  if current:
+                      chunks.append(current)
+                      current = ""
+                  while len(paragraph) > limit:
+                      cut = paragraph.rfind("\n", 0, limit)
+                      if cut < 1:
+                          cut = limit
+                      chunks.append(paragraph[:cut])
+                      paragraph = paragraph[cut:].lstrip()
+                  current = paragraph
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          ids = []
+          for chunk in split_message(text):
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected Coinbase catalyst alert: {result}")
+              ids.append((result.get("result") or {}).get("message_id"))
+
+          confirmed = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_ids": ids,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/coinbase_stablecoin_catalyst_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"coinbase_catalyst_delivery_confirmed=true bot=@{username} message_ids={ids}")
+          PY
+
       - name: Persist baseline or confirmed state
         if: always()
         run: |
@@ -329,6 +432,13 @@ jobs:
           else
             echo "Samsung Wallet Telegram delivery was not confirmed; Samsung watcher state intentionally not advanced."
           fi
+          if [ ! -f out/coinbase_stablecoin_catalyst_telegram.txt ] || [ -f out/coinbase_stablecoin_catalyst_telegram_confirmed.json ]; then
+            if [ -f out/coinbase_stablecoin_catalyst_pending_state.json ]; then
+              cp out/coinbase_stablecoin_catalyst_pending_state.json data/coinbase_stablecoin_catalyst_state.json
+            fi
+          else
+            echo "Coinbase catalyst Telegram delivery was not confirmed; catalyst state intentionally not advanced."
+          fi
 
       - name: Commit watcher state
         if: always()
@@ -341,6 +451,9 @@ jobs:
           git add data/crypto_liquidity_watch_state.json
           if [ -f data/samsung_wallet_stablecoin_watch_state.json ]; then
             git add data/samsung_wallet_stablecoin_watch_state.json
+          fi
+          if [ -f data/coinbase_stablecoin_catalyst_state.json ]; then
+            git add data/coinbase_stablecoin_catalyst_state.json
           fi
           if git diff --cached --quiet; then
             echo "Crypto liquidity state unchanged"
@@ -370,5 +483,9 @@ jobs:
             out/samsung_wallet_stablecoin_telegram.txt
             out/samsung_wallet_stablecoin_watch_pending_state.json
             out/samsung_wallet_stablecoin_telegram_confirmed.json
+            out/coinbase_stablecoin_catalyst_status.md
+            out/coinbase_stablecoin_catalyst_telegram.txt
+            out/coinbase_stablecoin_catalyst_pending_state.json
+            out/coinbase_stablecoin_catalyst_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
