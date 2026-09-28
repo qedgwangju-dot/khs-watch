@@ -16,7 +16,6 @@ from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 
-import ebest
 import requests
 
 KST = ZoneInfo("Asia/Seoul")
@@ -230,6 +229,91 @@ def get_weekly_puts(token: str, current: float | None, limit: int = 5) -> list[d
     return out[:limit]
 
 
+
+def get_front_future(token: str) -> str:
+    d = ls_post(token, "/futureoption/market-data", "t9943",
+                {"t9943InBlock": {"gubun": "1"}})
+    rows = d.get("t9943OutBlock") or []
+    if isinstance(rows, dict):
+        rows = [rows]
+    for row in rows:
+        code = str((row or {}).get("shcode") or "").strip()
+        if code:
+            return code
+    raise RuntimeError("No KOSPI200 front future code from t9943")
+
+
+def fetch_index_quote(token: str) -> dict[str, Any]:
+    d = ls_post(token, "/indtp/market-data", "t1511",
+                {"t1511InBlock": {"upcode": "001"}})
+    row = d.get("t1511OutBlock") or {}
+    price = fnum(row.get("pricejisu"))
+    if price is None or price <= 0:
+        raise RuntimeError(f"t1511 KOSPI price missing: {row}")
+    return {
+        "price": price,
+        "high": fnum(row.get("highjisu")),
+        "low": fnum(row.get("lowjisu")),
+        "open": fnum(row.get("openjisu")),
+        "high_time": str(row.get("hightime") or ""),
+        "low_time": str(row.get("lowtime") or ""),
+        "raw": row,
+    }
+
+
+def fetch_derivative_quote(token: str, code: str) -> dict[str, Any]:
+    d = ls_post(token, "/futureoption/market-data", "t2111",
+                {"t2111InBlock": {"focode": code}})
+    row = d.get("t2111OutBlock") or {}
+    price = fnum(row.get("price"))
+    if price is None:
+        raise RuntimeError(f"t2111 price missing for {code}: {row}")
+    return {
+        "price": price,
+        "kpi200": fnum(row.get("kospijisu")),
+        "basis": fnum(row.get("basis")),
+        "market_basis": fnum(row.get("sbasis")),
+        "time": str(row.get("chetime") or row.get("time") or ""),
+        "raw": row,
+    }
+
+
+def backfill_index_bars(token: str, max_rows: int = 500) -> list[tuple[float, float]]:
+    # 재기동 시 당일 KOSPI 1분봉을 복구해 오전/직전 급락 시작점을 잃지 않는다.
+    body = {"t8409InBlock": {
+        "shcode": "001", "ncnt": 1, "qrycnt": max_rows, "nday": "1",
+        "sdate": " ", "stime": "", "edate": "99999999", "etime": "",
+        "cts_date": " ", "cts_time": "", "comp_yn": "N"
+    }}
+    d = ls_post(token, "/indtp/chart", "t8409", body)
+    rows = d.get("t8409OutBlock1") or []
+    if isinstance(rows, dict):
+        rows = [rows]
+    out: list[tuple[float, float]] = []
+    today = dt.datetime.now(KST).date()
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        ds = "".join(ch for ch in str(row.get("date") or "") if ch.isdigit())
+        ts = "".join(ch for ch in str(row.get("time") or "") if ch.isdigit())
+        close = fnum(row.get("close"))
+        if len(ds) != 8 or len(ts) < 4 or close is None or close <= 0:
+            continue
+        try:
+            day = dt.datetime.strptime(ds, "%Y%m%d").date()
+            if day != today:
+                continue
+            ts = (ts + "000000")[:6]
+            when = dt.datetime(day.year, day.month, day.day,
+                               int(ts[:2]), int(ts[2:4]), int(ts[4:6]), tzinfo=KST)
+            out.append((when.timestamp(), close))
+        except Exception:
+            continue
+    out.sort(key=lambda x: x[0])
+    return out
+
+
+
 def _actor_delta(start: dict[str, Any] | None, end: dict[str, Any] | None) -> dict[str, float | None]:
     out: dict[str, float | None] = {}
     for actor in ("외국인", "기관", "개인"):
@@ -259,19 +343,20 @@ def fmt_raw(v: float | None) -> str:
 
 
 class Watch:
-    def __init__(self, api: ebest.OpenApi, token: str, puts: list[dict[str, Any]], test: bool):
-        self.api = api; self.token = token; self.put_defs = puts; self.test = test
+    def __init__(self, token: str, puts: list[dict[str, Any]], front_future: str, test: bool):
+        self.token = token; self.put_defs = puts; self.test = test
         self.idx: deque[tuple[float, float]] = deque(maxlen=30000)
         self.fut: deque[tuple[float, float]] = deque(maxlen=30000)
         self.puts: dict[str, deque[tuple[float, float]]] = defaultdict(lambda: deque(maxlen=30000))
         self.flows: deque[dict[str, Any]] = deque(maxlen=2500)
-        self.front_future = ""; self.episode: dict[str, Any] | None = None
+        self.front_future = front_future; self.episode: dict[str, Any] | None = None
         self.last_flow_poll = 0.0; self.flow_task: asyncio.Task | None = None
         self.msg_ids: list[int] = []; self.raw: dict[str, Any] = {}
         self.monitor_started_ts = time.time()
         self.last_idx_tick_ts: float | None = None
         self.last_fut_tick_ts: float | None = None
         self.last_flow_success_ts: float | None = None
+        self.last_option_poll = 0.0
 
     @staticmethod
     def _nearest(buf: deque[tuple[float, float]], ts: float) -> tuple[float, float] | None:
@@ -562,77 +647,92 @@ class Watch:
             self.msg_ids.append(await asyncio.to_thread(telegram_send, self.build_end(ep, now_t, cur)))
             self.episode = None
 
-    def on_realtime(self, api_obj: ebest.OpenApi, trcode: str, key: str, data: dict[str, Any]) -> None:
-        t = time.time(); self.raw.setdefault(trcode, {"key": key, "fields": sorted(data.keys())})
-        if trcode == "IJ_":
-            j = fnum(data.get("jisu"))
-            if j is not None and j > 0:
-                self.idx.append((t, j))
-                self.last_idx_tick_ts = t
-                cutoff = t - PRICE_LOOKBACK_SEC
-                while self.idx and self.idx[0][0] < cutoff:
-                    self.idx.popleft()
-        elif trcode == "FC0":
-            p = fnum(data.get("price"))
-            if p is not None and p > 0:
-                self.fut.append((t, p))
-                self.last_fut_tick_ts = t
-        elif trcode == "OC0":
-            p = fnum(data.get("price"))
-            if p is not None and p >= 0:
-                self.puts[str(key)].append((t, p))
+    def seed_backfill(self) -> None:
+        try:
+            rows = backfill_index_bars(self.token)
+            cutoff = time.time() - PRICE_LOOKBACK_SEC
+            for ts, price in rows:
+                if ts >= cutoff:
+                    self.idx.append((ts, price))
+            self.raw["backfill_rows"] = len(rows)
+        except Exception as exc:
+            self.raw["backfill_error"] = f"{type(exc).__name__}: {exc}"
 
-    async def register(self) -> None:
-        rsp = await self.api.request("t9943", {"t9943InBlock": {"gubun": "1"}})
-        if not rsp:
-            raise RuntimeError(f"t9943 failed: {self.api.last_message}")
-        rows = rsp.body.get("t9943OutBlock") or []
-        if not rows:
-            raise RuntimeError("No KOSPI200 future master")
-        self.front_future = str(rows[0].get("shcode") or "").strip()
-        regs = [("IJ_", "001"), ("FC0", self.front_future)] + [("OC0", x["code"]) for x in self.put_defs]
-        failed = []
-        for tr, key in regs:
-            if not await self.api.add_realtime(tr, key):
-                failed.append((tr, key, str(self.api.last_message)))
-        if failed:
-            raise RuntimeError(f"Realtime registration failed: {failed}")
+    def poll_market_once(self) -> None:
+        now_ts = time.time()
+        idx = fetch_index_quote(self.token)
+        fut = fetch_derivative_quote(self.token, self.front_future)
 
-    async def close(self) -> None:
-        for tr, key in [("IJ_", "001"), ("FC0", self.front_future)] + [("OC0", x["code"]) for x in self.put_defs]:
-            if not key: continue
-            try: await self.api.remove_realtime(tr, key)
-            except Exception: pass
+        self.idx.append((now_ts, float(idx["price"])))
+        self.fut.append((now_ts, float(fut["price"])))
+        self.last_idx_tick_ts = now_ts
+        self.last_fut_tick_ts = now_ts
+        cutoff = now_ts - PRICE_LOOKBACK_SEC
+        while self.idx and self.idx[0][0] < cutoff:
+            self.idx.popleft()
+        while self.fut and self.fut[0][0] < cutoff:
+            self.fut.popleft()
+
+        snap = {
+            "ts": now_ts,
+            "KOSPI": {k: idx.get(k) for k in ("price","high","low","open","high_time","low_time")},
+            "선물": {k: fut.get(k) for k in ("price","kpi200","basis","market_basis","time")},
+        }
+        self.raw["last_price_snapshot"] = snap
+
+        # 옵션은 5초마다 REST t2111로 갱신한다. 선물 포함 최대 6회/5초라 t2111 10회/초 제한 이내.
+        if now_ts - self.last_option_poll >= 5:
+            self.last_option_poll = now_ts
+            option_raw = {}
+            for opt in self.put_defs:
+                try:
+                    q = fetch_derivative_quote(self.token, opt["code"])
+                    p = fnum(q.get("price"))
+                    if p is not None and p >= 0:
+                        self.puts[opt["code"]].append((now_ts, p))
+                        option_raw[opt["code"]] = p
+                except Exception as exc:
+                    option_raw[opt["code"]] = f"ERROR:{type(exc).__name__}"
+                time.sleep(0.12)
+            self.raw["last_option_prices"] = option_raw
 
     async def run(self, until: dt.time, test_seconds: int | None = None) -> None:
-        self.api.on_realtime.connect(self.on_realtime)
-        await self.register()
+        self.seed_backfill()
         started = time.time()
-        try:
-            while True:
-                now = dt.datetime.now(KST)
-                if test_seconds is not None and time.time() - started >= test_seconds: break
-                if test_seconds is None and now.time() >= until: break
+        last_poll_error: str | None = None
+        while True:
+            now = dt.datetime.now(KST)
+            if test_seconds is not None and time.time() - started >= test_seconds:
+                break
+            if test_seconds is None and now.time() >= until:
+                break
 
-                # production 장중 생존검사: 프로세스만 살아 있고 데이터가 멈춘 상태를 허용하지 않는다.
-                if test_seconds is None and dt.time(9, 2) <= now.time() < until and time.time() - started >= 180:
-                    now_ts = time.time()
-                    if self.last_idx_tick_ts is None or now_ts - self.last_idx_tick_ts > 75:
-                        raise RuntimeError("KOSPI realtime feed stale >75s")
-                    if self.last_fut_tick_ts is None or now_ts - self.last_fut_tick_ts > 90:
-                        raise RuntimeError("KOSPI200 futures feed stale >90s")
-                    if self.last_flow_success_ts is None or now_ts - self.last_flow_success_ts > 120:
-                        raise RuntimeError("LS spot/futures/program flow snapshot stale >120s")
+            try:
+                await asyncio.to_thread(self.poll_market_once)
+                last_poll_error = None
+            except Exception as exc:
+                last_poll_error = f"{type(exc).__name__}: {exc}"
+                self.raw["last_price_poll_error"] = last_poll_error
 
-                await self.evaluate()
-                await asyncio.sleep(1)
-        finally:
-            if self.flow_task:
-                try: await asyncio.wait_for(self.flow_task, timeout=8)
-                except Exception: pass
-            try: self.api.on_realtime.disconnect(self.on_realtime)
-            except Exception: pass
-            await self.close()
+            await self.evaluate()
+
+            # production 장중 생존검사: REST 가격과 수급 모두 최근 데이터여야 한다.
+            if test_seconds is None and dt.time(9, 2) <= now.time() < until and time.time() - started >= 60:
+                now_ts = time.time()
+                if self.last_idx_tick_ts is None or now_ts - self.last_idx_tick_ts > 15:
+                    raise RuntimeError(f"KOSPI REST price stale >15s; last_error={last_poll_error}")
+                if self.last_fut_tick_ts is None or now_ts - self.last_fut_tick_ts > 20:
+                    raise RuntimeError(f"KOSPI200 futures REST price stale >20s; last_error={last_poll_error}")
+                if self.last_flow_success_ts is None or now_ts - self.last_flow_success_ts > 120:
+                    raise RuntimeError("LS spot/futures/program flow snapshot stale >120s")
+
+            await asyncio.sleep(0.6)
+
+        if self.flow_task:
+            try:
+                await asyncio.wait_for(self.flow_task, timeout=8)
+            except Exception:
+                pass
 
 
 def write_status(w: Watch, started: dt.datetime, status: str) -> None:
@@ -655,21 +755,25 @@ def synthetic_test() -> int:
     for i in range(1, 9): prices.append((base+(62+i)*60, 7044.5 + i*5.0))
     class Dummy: pass
     d = Dummy(); d.idx = deque(prices, maxlen=30000)
-    d._nearest = Watch._nearest; d._ret = Watch._ret.__get__(d, Dummy); d._recent_peak = Watch._recent_peak.__get__(d, Dummy)
+    d._nearest = Watch._nearest; d._ret = Watch._ret.__get__(d, Dummy); d._recent_peak = Watch._recent_peak.__get__(d, Dummy); d._window_peak = Watch._window_peak.__get__(d, Dummy)
     hit, info = Watch._trigger(d)
     print(json.dumps({"hit": hit, "start": fmt_clock(info.get("peak_ts")), "drop": info.get("drop"), "duration_min": (info.get("duration") or 0)/60}, ensure_ascii=False))
     return 0 if hit else 1
 
 
 async def amain(test: bool, seconds: int, until: dt.time) -> int:
-    key=(os.getenv("LS_OPENAPI_APP_KEY") or "").strip(); secret=(os.getenv("LS_OPENAPI_APP_SECRET") or "").strip()
-    if not key or not secret: raise RuntimeError("LS secrets missing")
+    key=(os.getenv("LS_OPENAPI_APP_KEY") or "").strip()
+    secret=(os.getenv("LS_OPENAPI_APP_SECRET") or "").strip()
+    if not key or not secret:
+        raise RuntimeError("LS secrets missing")
+
     token = await asyncio.to_thread(get_token)
-    current = await asyncio.to_thread(fetch_kpi200)
-    puts = await asyncio.to_thread(get_weekly_puts, token, current)
-    api = ebest.OpenApi()
-    if not await api.login(key, secret): raise RuntimeError(f"LS login failed: {api.last_message}")
-    w = Watch(api, token, puts, test)
+    front = await asyncio.to_thread(get_front_future, token)
+    fq = await asyncio.to_thread(fetch_derivative_quote, token, front)
+    current200 = fnum(fq.get("kpi200"))
+    puts = await asyncio.to_thread(get_weekly_puts, token, current200)
+
+    w = Watch(token, puts, front, test)
     started = dt.datetime.now(KST)
     try:
         await w.run(until, seconds if test else None)
@@ -678,10 +782,6 @@ async def amain(test: bool, seconds: int, until: dt.time) -> int:
     except Exception as exc:
         write_status(w, started, f"오류: {type(exc).__name__}: {exc}")
         raise
-    finally:
-        try: await api.close()
-        except Exception: pass
-
 
 def parse_hhmm(s: str) -> dt.time:
     h, m = map(int, s.split(":")); return dt.time(h, m)
