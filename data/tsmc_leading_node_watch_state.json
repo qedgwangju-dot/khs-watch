@@ -9,16 +9,16 @@
         "min": null,
         "max": null,
         "evidence_state": "supply_chain_report",
-        "source_url": "https://udn.com/news/story/7240/9780512?from=udn_ch2_menu_v2_main_cate",
-        "source_name": "UDN"
+        "source_url": "https://money.udn.com/money/story/5612/9780512",
+        "source_name": "經濟日報"
       },
       "N3|2026Q4": {
         "value": 180000,
         "min": null,
         "max": null,
         "evidence_state": "supply_chain_report",
-        "source_url": "https://udn.com/news/story/7240/9780512?from=udn_ch2_menu_v2_main_cate",
-        "source_name": "UDN"
+        "source_url": "https://money.udn.com/money/story/5612/9780512",
+        "source_name": "經濟日報"
       },
       "N3|2027": {
         "value": null,
@@ -44,8 +44,8 @@
         "NVIDIA"
       ],
       "evidence_state": "supply_chain_report",
-      "source_url": "https://udn.com/news/story/7240/9780512?from=udn_ch2_menu_v2_main_cate",
-      "source_name": "UDN"
+      "source_url": "https://money.udn.com/money/story/5612/9780512",
+      "source_name": "經濟日報"
     },
     "n2_fabs_2026": 5,
     "n2_first_year_vs_n3_pct": 45,
@@ -85,9 +85,9 @@
       "source_url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf"
     },
     "last_evidence_state": "supply_chain_report",
-    "last_source_url": "https://udn.com/news/story/7240/9780512?from=udn_ch2_menu_v2_main_cate",
-    "last_source_name": "UDN",
-    "last_source_published_at_kst": "2026-09-28T03:06:23+09:00"
+    "last_source_url": "https://money.udn.com/money/story/5612/9780512",
+    "last_source_name": "經濟日報",
+    "last_source_published_at_kst": "2026-09-28T07:00:00+09:00"
   },
   "baseline_sources": [
     "https://money.udn.com/money/story/5612/9780512",
@@ -95,11 +95,11 @@
     "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
     "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf"
   ],
-  "last_checked_at_kst": "2026-09-28T18:07:10+09:00",
-  "last_evidence_url": "https://udn.com/news/story/7240/9780512?from=udn_ch2_menu_v2_main_cate",
-  "last_evidence_published_at_kst": "2026-09-28T03:06:23+09:00",
+  "last_checked_at_kst": "2026-09-29T02:58:26+09:00",
+  "last_evidence_url": "https://money.udn.com/money/story/5612/9780512",
+  "last_evidence_published_at_kst": "2026-09-28T07:00:00+09:00",
   "delivery_check": {
-    "checked_at_kst": "2026-09-28T18:09:37+09:00",
+    "checked_at_kst": "2026-09-29T03:00:29+09:00",
     "status": "no_message_due"
   }
 }
