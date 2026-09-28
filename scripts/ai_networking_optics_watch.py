@@ -189,7 +189,7 @@ def story_tokens(title: str) -> set[str]:
 def canonical_story_key(company: str, title: str) -> str | None:
     text = html.unescape(title or "").lower()
     if company == "Coherent" and "photonlink" in text:
-        if re.search(r"customer engagements?|long[- ]term agreements?|anchor customers?|design win", text, re.I):
+        if re.search(r"customer engagements?|long[- ]term(?:\s+\w+){0,6}\s+agreements?|anchor customers?|design win|secures?.{0,60}agreements?", text, re.I):
             return "coherent|photonlink|customer-contract"
         if re.search(r"content opportunity|content per|100\s*tbps|15,?000", text, re.I):
             return "coherent|photonlink|content-value"
@@ -321,7 +321,7 @@ def signal_score(title: str, source: str) -> int:
 
 
 def stage_for(title: str) -> str:
-    if re.search(r"long[- ]term agreement|anchor customer", title, re.I):
+    if re.search(r"long[- ]term(?:\s+\w+){0,6}\s+agreement|anchor customer|secures?.{0,60}agreement", title, re.I):
         return "장기계약·고객 확정"
     if re.search(r"customer engagements?|design win|qualified|certified|adopt|deploy", title, re.I):
         return "고객 검증·채택"
@@ -341,7 +341,7 @@ def stage_for(title: str) -> str:
 def category_for(title: str, company: str) -> str:
     if company == "Coherent" and re.search(r"PhotonLink|integrated optics?|complete optical solutions?|end[- ]to[- ]end|vertical integration|one[- ]stop", title, re.I):
         return "광 링크 통합·수직계열화"
-    if re.search(r"customer engagements?|long[- ]term agreements?|anchor customers?", title, re.I):
+    if re.search(r"customer engagements?|long[- ]term(?:\s+\w+){0,6}\s+agreements?|anchor customers?|secures?.{0,60}agreements?", title, re.I):
         return "고객·장기계약"
     if re.search(r"content opportunity|content per|100\s*Tbps", title, re.I):
         return "광학 콘텐츠 가치"
