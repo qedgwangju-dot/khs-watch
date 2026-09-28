@@ -506,12 +506,15 @@ def main() -> None:
     events = read_events()
     new_events = choose_new(events, seen_ids, seen_fact_keys, now)
 
-    # Format/context correction: when the alert interpretation changes materially,
-    # resend the best still-fresh demand/safety facts once even if the fact itself was already seen.
-    if not new_events and int(state.get("format_version") or 0) < FORMAT_VERSION:
+    # Preserve the prior v2 context-correction behavior only for pre-v2 states.
+    # The v3 migration adds capital-return coverage; it must not resend old demand/safety facts.
+    old_format = int(state.get("format_version") or 0)
+    if not new_events and old_format < 2:
         cutoff = now - timedelta(hours=FRESH_HOURS)
         best_by_kind: dict[str, dict] = {}
         for e in events:
+            if e.get("kind") not in ("demand", "safety"):
+                continue
             try:
                 dt = datetime.fromisoformat(e.get("published_at_kst") or "")
             except Exception:
@@ -524,6 +527,21 @@ def main() -> None:
             ):
                 best_by_kind[e["kind"]] = e
         new_events = sorted(best_by_kind.values(), key=lambda x: x.get("published_at_kst") or "")
+    elif not new_events and old_format < FORMAT_VERSION:
+        cutoff = now - timedelta(hours=FRESH_HOURS)
+        capital_candidates = []
+        for e in events:
+            if e.get("kind") != "capital_return":
+                continue
+            try:
+                dt = datetime.fromisoformat(e.get("published_at_kst") or "")
+            except Exception:
+                continue
+            if cutoff <= dt <= now + timedelta(minutes=10):
+                capital_candidates.append(e)
+        if capital_candidates:
+            best = max(capital_candidates, key=lambda e: (e.get("rank", 0), e.get("published_at_kst", "")))
+            new_events = [best]
 
     # For the first run, intentionally allow fresh current signals to be sent once.
     if new_events:
