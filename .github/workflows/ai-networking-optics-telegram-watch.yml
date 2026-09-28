@@ -179,6 +179,36 @@ jobs:
               "COHR", "ALAB", "GLW", "005930.KS",
           ]
 
+          DISPLAY_KO = {
+              "NVIDIA": "엔비디아",
+              "Broadcom": "브로드컴",
+              "Arista Networks": "아리스타 네트웍스",
+              "Marvell": "마벨",
+              "Lumentum": "루멘텀",
+              "Coherent": "코히런트",
+              "Astera Labs": "아스테라 랩스",
+              "Corning": "코닝",
+              "Samsung Electronics": "삼성전자",
+              "Samsung Foundry": "삼성전자 파운드리",
+              "Chieftek Precision": "즈더",
+              "Chieftek": "즈더",
+              "GMT Global": "가오밍톄",
+              "GMT GLOBAL": "가오밍톄",
+              "TOYO Automation": "둥유다",
+              "TOYO": "둥유다",
+              "ficonTEC": "피콘텍",
+              "Suruga Seiki": "스루가세이키",
+              "Allring Tech": "올링테크",
+              "FitTech": "핏테크",
+              "PhotonLink": "포톤링크",
+          }
+
+          def localize_names(value: str) -> str:
+              # Longest names first so e.g. Chieftek Precision is replaced before Chieftek.
+              for raw, ko in sorted(DISPLAY_KO.items(), key=lambda kv: len(kv[0]), reverse=True):
+                  value = re.sub(re.escape(raw), ko, value, flags=re.I)
+              return value
+
           FX_SYMBOLS = {
               "USD": "KRW=X",
               "EUR": "EURKRW=X",
@@ -205,6 +235,8 @@ jobs:
                   value = re.sub(rf"\s+-\s+{re.escape(publisher)}\s*$", "", value, flags=re.I)
               # Google News titles also append publishers not in the preferred list.
               value = re.sub(r"\s+-\s+[A-Za-z0-9][A-Za-z0-9 .&'/-]{1,60}\.com\s*$", "", value, flags=re.I)
+              # Remove short trailing publisher labels in English/Chinese/Korean.
+              value = re.sub(r"\s+-\s+[^-]{2,50}$", "", value)
               return value.strip()
 
           def fetch_fx(currency: str):
@@ -427,14 +459,17 @@ jobs:
               if translated:
                   for marker, term in replacements.items():
                       translated = translated.replace(marker, term)
+                  translated = localize_names(translated)
                   translated = naturalize_dollar_tokens(translated)
                   translated = re.sub(r"\s+", " ", translated).strip()
 
-              if not translated or not re.search(r"[가-힣]", translated):
-                  translated = fallback_korean_title(original)
-                  print(f"translation_fallback=local reason={type(last_error).__name__ if last_error else 'no_korean_result'}")
+              if not translated or not re.search(r"[가-힣]", translated) or re.search(r"[\u3400-\u4DBF\u4E00-\u9FFF]", translated):
+                  translated = localize_names(fallback_korean_title(original))
+                  print(f"translation_fallback=local reason={type(last_error).__name__ if last_error else 'non_korean_or_han_residue'}")
               if not re.search(r"[가-힣]", translated):
-                  raise RuntimeError(f"Korean translation fallback failed; refusing to send English title: {original}")
+                  raise RuntimeError(f"Korean translation fallback failed; refusing to send non-Korean title: {original}")
+              if re.search(r"[\u3400-\u4DBF\u4E00-\u9FFF]", translated):
+                  raise RuntimeError(f"Chinese/Hanja remained after translation; refusing to send: {translated}")
               return translated
 
           output = []
@@ -460,8 +495,15 @@ jobs:
               output.append(line)
 
           rendered = "\n".join(output).strip() + "\n"
+
+          # User-facing prose must not contain untranslated Chinese/Hanja.
+          # Product/standard identifiers such as CPO, NPO, SiPh, InP and tickers may remain.
+          visible = re.sub(r"https?://\S+", "", html.unescape(rendered))
+          if re.search(r"[\u3400-\u4DBF\u4E00-\u9FFF]", visible):
+              raise RuntimeError("Chinese/Hanja remained in Telegram alert; refusing to send.")
+
           path.write_text(rendered, encoding="utf-8")
-          print("telegram_alert_korean_translation=true source_timestamp_removed=true krw_conversion=true")
+          print("telegram_alert_korean_translation=true chinese_hanja_guard=true source_timestamp_removed=true krw_conversion=true")
           PY
 
       - name: Publish watcher summary
