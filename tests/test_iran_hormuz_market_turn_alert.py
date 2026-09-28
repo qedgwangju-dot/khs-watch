@@ -179,6 +179,36 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("Yanbu 수출     실제 선적 별도 확인 필요", body)
         self.assertIn("선적 재개 확인 전 수출 정상화로 단정하지 않습니다", body)
 
+    def test_yanbu_export_resume_is_classified_without_rate(self):
+        title = "Saudi Arabia resumes oil exports via East-West Pipeline from Yanbu after repairs - Bloomberg"
+        self.assertEqual(MODULE.classify_event(title), "east_west_pipeline_recovery")
+
+    def test_pipeline_export_resume_is_new_stage(self):
+        now = dt.datetime(2026, 9, 28, 12, 0, tzinfo=dt.timezone.utc)
+        rate_only = [MODULE.NewsItem(
+            "Saudi East-West Pipeline transport hits 3.5 million barrels per day",
+            "Reuters", "a", now.isoformat(), now.timestamp(), "east_west_pipeline_recovery"
+        )]
+        export_resume = [MODULE.NewsItem(
+            "Saudi Arabia resumes oil exports via East-West Pipeline from Yanbu after repairs",
+            "Bloomberg", "b", (now + dt.timedelta(hours=1)).isoformat(),
+            (now + dt.timedelta(hours=1)).timestamp(), "east_west_pipeline_recovery"
+        )]
+        self.assertNotEqual(
+            MODULE.event_id("east_west_pipeline_recovery", rate_only),
+            MODULE.event_id("east_west_pipeline_recovery", export_resume),
+        )
+
+    def test_pipeline_body_marks_yanbu_exports_resumed(self):
+        current = dt.datetime(2026, 9, 28, 12, 0, tzinfo=dt.timezone.utc)
+        news = [MODULE.NewsItem(
+            "Saudi Arabia resumes oil exports via East-West Pipeline from Yanbu after repairs",
+            "Bloomberg", "a", current.isoformat(), current.timestamp(), "east_west_pipeline_recovery"
+        )]
+        body = MODULE.build_physical_flow_alert_body("east_west_pipeline_recovery", news, None, current)
+        self.assertIn("Yanbu 수출     재개 확인", body)
+        self.assertIn("실제 수출로 연결되기 시작했습니다", body)
+
     def test_alert_body_contains_required_market_values(self):
         current = dt.datetime(2026, 8, 2, 12, 0, tzinfo=dt.timezone.utc)
         news = [
