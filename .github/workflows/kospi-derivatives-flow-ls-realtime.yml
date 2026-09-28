@@ -42,7 +42,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests ebest
+        run: python -m pip install --disable-pip-version-check --quiet requests
 
       - name: Verify Telegram route
         run: |
