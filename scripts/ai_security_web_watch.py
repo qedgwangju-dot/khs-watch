@@ -520,6 +520,14 @@ def previously_similar(item: dict, seen: dict, now: dt.datetime) -> bool:
     return False
 
 
+def clean_snippet(text: str, limit: int = 320) -> str:
+    value = strip_html(text)
+    value = re.sub(r"\\s+", " ", value).strip()
+    if len(value) > limit:
+        return value[: limit - 1].rstrip() + "…"
+    return value
+
+
 def event_token_set(text: str) -> set[str]:
     words = re.findall(r"[a-z0-9][a-z0-9+._-]{2,}", text.lower())
     normalized = set()
