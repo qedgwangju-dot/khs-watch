@@ -268,7 +268,7 @@ def _strip_existing_colors(text):
         # 기존 상단 범례를 제거한 뒤 본문 판정으로 다시 만든다.
         if "<b>공격·확전</b>" in line or "<b>재건·휴전</b>" in line:
             continue
-        line = re.sub(r"^\s*[🔴🟢]\s+", "", line)
+        line = re.sub(r"^\s*[🔴🟢🟡]\s+", "", line)
         lines.append(line)
     return "\n".join(lines)
 
@@ -279,7 +279,9 @@ def _prefix_by_number(text, items):
         color = _body_color(row)
         if not color:
             continue
-        marker = "🔴" if color == "red" else "🟢"
+        marker = {"red": "🔴", "green": "🟢", "yellow": "🟡"}.get(color)
+        if not marker:
+            continue
         patterns = (
             re.compile(rf'<b>{idx}\.\s'),
             re.compile(rf'^\[[^\]]+\]\s*(?:<b>)?{idx}\.\s'),
@@ -301,6 +303,8 @@ def _reapply_colors(text, items):
         badges.append("🔴 <b>공격·확전</b>")
     if "green" in colors:
         badges.append("🟢 <b>재건·휴전</b>")
+    if "yellow" in colors:
+        badges.append("🟡 <b>협상 제약·불확실성</b>")
     if badges:
         lines = text.splitlines()
         if lines:
