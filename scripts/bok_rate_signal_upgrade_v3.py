@@ -6,6 +6,7 @@ import hashlib
 import html
 import json
 import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import bok_rate_signal_upgrade as base
 
@@ -48,11 +49,16 @@ def rhetoric(now: dt.datetime) -> list[dict]:
     )
     rows = []
     cutoff = now - dt.timedelta(days=5)
-    for q in queries:
-        try:
-            rows += base.news(q, 30)
-        except Exception as exc:
-            base.err(f"한은 발언 뉴스 조회 일부 실패: {type(exc).__name__}: {exc}")
+
+    # 뉴스 검색은 서로 독립이므로 병렬 조회한다. 한 검색원의 지연이 전체 실행을
+    # 5배로 늘리지 않도록 하되, 실패한 검색은 기존처럼 부분 오류로만 남긴다.
+    with ThreadPoolExecutor(max_workers=min(5, len(queries))) as pool:
+        future_map = {pool.submit(base.news, q, 30): q for q in queries}
+        for fut in as_completed(future_map):
+            try:
+                rows += fut.result()
+            except Exception as exc:
+                base.err(f"한은 발언 뉴스 조회 일부 실패: {type(exc).__name__}: {exc}")
 
     # 같은 인사·같은 날짜의 복제기사는 하나로 합치고, 뒤에 새 정책 의미가 추가될 때만 해시가 바뀐다.
     merged: dict[tuple[str, str], dict] = {}
@@ -362,7 +368,7 @@ def main() -> int:
     with base.STATUS.open("a", encoding="utf-8") as f:
         hh = current.get("household") or {}
         f.write(
-            f"\n## 추가인상 위험등급 v3\n\n"
+            f"\n## 추가인상 위험등급 v4\n\n"
             f"- 위험등급: {grade_emoji} {grade_label}\n"
             f"- 위험점수: {risk_score} (통계적 확률 아님)\n"
             f"- 다음 금통위: {candidate.get('next_mpc_date') or '확인 불가'}\n"
