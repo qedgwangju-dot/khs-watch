@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-28T20:27:34+09:00",
+  "updated_at_kst": "2026-09-28T20:30:47+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "174b747c5a23191d5a286b2f",
@@ -19,6 +19,7 @@
     "947e492973448e6162bb5b62",
     "98032be43cad6c68195f92ad",
     "a1dfba928af535c6107b2581",
+    "a3f6a2bd029d3433142902a5",
     "a507b5f43c1b380e7af94d39",
     "a5b13ab42606c302733f8bf1",
     "a63193935e22731489cce976",
@@ -53,8 +54,8 @@
     "nvidia_demand_b9dff9a4c6"
   ],
   "last_event_count": 15,
-  "last_new_event_count": 1,
-  "alert_generated": true,
+  "last_new_event_count": 0,
+  "alert_generated": false,
   "format_version": 3,
   "capital_return_track_version": 1,
   "capital_return_correction_version": 1,
@@ -68,14 +69,5 @@
     "execution_through_fy": 2028,
     "observed_at_kst": "2026-09-28T20:15:02+09:00",
     "source": "Reuters"
-  },
-  "last_successful_delivery_kst": "2026-09-28T20:27:56+09:00",
-  "telegram_message_id": 159,
-  "bot_username": "khs88798879887988798879_bot",
-  "delivery_receipt": {
-    "status": "confirmed",
-    "bot_username": "khs88798879887988798879_bot",
-    "message_id": 159,
-    "confirmed_at_kst": "2026-09-28T20:27:56+09:00"
   }
 }
