@@ -83,7 +83,11 @@ COMPANIES = {
             "TOYO Automation", "TOYO", "東佑達",
             "ficonTEC", "Suruga Seiki", "Allring Tech", "FitTech",
         ],
-        "query": '("Chieftek" OR "Chieftek Precision" OR 直得 OR "GMT Global" OR 高明鐵 OR "TOYO Automation" OR 東佑達 OR ficonTEC OR "Suruga Seiki" OR "Allring Tech" OR FitTech) (CPO OR "co-packaged optics" OR "silicon photonics" OR SiPh OR 光耦合 OR 對位) ("optical coupling" OR alignment OR aligner OR "motion platform" OR "linear motor" OR FAU OR OSAT OR orders OR backlog OR "order visibility" OR capacity OR CAPA OR factory OR "new line" OR shipment OR utilization OR qualification OR validation)',
+        "query": '("Chieftek" OR "Chieftek Precision" OR 直得 OR "GMT Global" OR 高明鐵 OR "TOYO Automation" OR 東佑達 OR ficonTEC OR "Suruga Seiki" OR "Allring Tech" OR FitTech) (CPO OR "co-packaged optics" OR "silicon photonics" OR SiPh OR 光耦合 OR 對位) ("optical coupling" OR alignment OR aligner OR "motion platform" OR "linear motor" OR FAU OR OSAT OR orders OR backlog OR "order visibility" OR capacity OR CAPA OR factory OR "new line" OR shipment OR utilization OR qualification OR validation OR 訂單 OR 產能 OR 擴產 OR 出貨 OR 驗證)',
+        "locales": [
+            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+            {"hl": "zh-TW", "gl": "TW", "ceid": "TW:zh-Hant"},
+        ],
     },
 }
 
@@ -299,12 +303,17 @@ def prefer_story_item(candidate: dict, current: dict) -> bool:
     return (candidate.get("published") or "") > (current.get("published") or "")
 
 
-def query_google_news(query: str) -> list[dict]:
+def query_google_news(
+    query: str,
+    hl: str = "en-US",
+    gl: str = "US",
+    ceid: str = "US:en",
+) -> list[dict]:
     params = urllib.parse.urlencode({
         "q": query,
-        "hl": "en-US",
-        "gl": "US",
-        "ceid": "US:en",
+        "hl": hl,
+        "gl": gl,
+        "ceid": ceid,
     })
     url = f"https://news.google.com/rss/search?{params}"
     root = ET.fromstring(fetch(url))
@@ -518,7 +527,15 @@ def main() -> None:
     cutoff = NOW - dt.timedelta(days=7)
     for company, meta in COMPANIES.items():
         try:
-            feed_items = query_google_news(meta["query"])
+            feed_items = []
+            locales = meta.get("locales") or [{"hl": "en-US", "gl": "US", "ceid": "US:en"}]
+            for locale in locales:
+                feed_items.extend(query_google_news(
+                    meta["query"],
+                    hl=locale.get("hl", "en-US"),
+                    gl=locale.get("gl", "US"),
+                    ceid=locale.get("ceid", "US:en"),
+                ))
         except Exception as exc:
             errors.append(f"{company}: {type(exc).__name__}: {exc}")
             continue
