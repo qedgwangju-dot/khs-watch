@@ -215,7 +215,7 @@ def parse_coreweave(text: str, url: str) -> dict:
     m = re.search(r"(?:pricing|annualized revenue)[^.]{0,160}?\$\s*(\d+(?:\.\d+)?)\s*million\s+per\s+megawatt", text, re.I)
     if m:
         metrics["annualized_revenue_per_mw_usd_m"] = float(m.group(1))
-    negative = bool(re.search(r"\b(cancel(?:led|lation)?|terminate[sd]?|delay(?:ed)?|postpone[sd]?|power shortfall)\b", text, re.I))
+    negative = bool(re.search(r"\b(cancelled|canceled|contract cancellation|has terminated|terminated the|termination announced|delayed by|delay of|postponed|power shortfall)\b", text, re.I))
     return {"kind": "neocloud", "company": "CoreWeave", "metrics": metrics, "negative": negative} if metrics or negative else {}
 
 def parse_nebius(text: str, url: str) -> dict:
@@ -242,7 +242,7 @@ def parse_nebius(text: str, url: str) -> dict:
                 metrics["active_power_gw"] = _to_gw(float(m.group(1)), m.group(2))
     servicing = bool(re.search(r"\b(servicing phase|servicing stage|delivered the latest planned capacity tranche|capacity commitments.*delivered)\b", text, re.I))
     microsoft = "microsoft" in text.lower()
-    negative = bool(re.search(r"\b(cancel(?:led|lation)?|terminate[sd]?|miss(?:ed)? delivery|delay(?:ed)?|postpone[sd]?)\b", text, re.I))
+    negative = bool(re.search(r"\b(cancelled|canceled|contract cancellation|has terminated|terminated the|missed delivery|delayed by|delay of|postponed)\b", text, re.I))
     if servicing and microsoft:
         metrics["microsoft_servicing"] = True
     return {"kind": "neocloud", "company": "Nebius", "metrics": metrics, "negative": negative} if metrics or negative else {}
