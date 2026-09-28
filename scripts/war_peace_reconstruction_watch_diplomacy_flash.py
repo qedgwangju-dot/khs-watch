@@ -562,6 +562,16 @@ def _iran_war_stage_marks(row):
     if denial and (_has(text, IRAN_OFFICIAL_TERMS) or any(x in src for x in ('irna.ir', 'tasnim', 'mehrnews', 'presstv'))):
         marks.append('협상후퇴')
     iran_official_context = _has(text, IRAN_OFFICIAL_TERMS) or any(x in src for x in ('irna.ir', 'tasnim', 'mehrnews', 'presstv'))
+    midterm_context = _has(text, MIDTERM_TERMS)
+    deal_skeptical = _has(text, DEAL_SKEPTICAL_TERMS) or _has(text, NO_PROGRESS_TERMS)
+    post_election_escalation = _has(text, POST_ELECTION_ESCALATION_TERMS)
+    araghchi_stays = _has(text, IRAN_FM_TERMS) and _has(text, STAY_US_TERMS) and (_has(text, FURTHER_TALKS_TERMS) or _has(text, MEDIATOR_TERMS))
+    if iran_official_context and midterm_context and deal_skeptical:
+        marks.append('이란중간선거전합의회의')
+    if iran_official_context and midterm_context and post_election_escalation:
+        marks.append('이란선거후확전위험')
+    if araghchi_stays:
+        marks.append('아라치미국체류추가협상')
     if not denial and us_context and iran_official_context and _has(text, DIRECT_CONTACT_TERMS) and _has(text, CONFIRM_TERMS) and _trusted(row):
         marks.append('이란직접협상확인')
     ceasefire_context = us_context and _has(text, CEASEFIRE_TERMS) and _has(text, AGREED_TERMS)
@@ -621,6 +631,12 @@ def _marks(row):
 
 
 def _korean_title(marks):
+    if '이란중간선거전합의회의' in marks and '이란선거후확전위험' in marks:
+        return '이란 당국자들, 11월 3일 전 합의에 회의적 — 선거 이후 확전 가능성 내부 평가'
+    if '이란중간선거전합의회의' in marks:
+        return '이란 당국자들, 미국 중간선거 전 합의 가능성에 회의적 — 협상 제약 신호'
+    if '아라치미국체류추가협상' in marks:
+        return '아라치 이란 외무장관, 미국 체류 연장 — 중재국 통한 추가 협상 계속'
     if '아라치위트코프뉴욕회동확인' in marks:
         return '아라치–위트코프 뉴욕 직접 회동 확인 — 호르무즈 재개방 조건 협의 단계'
     if 'IRIB아라치위트코프뉴욕회동보도' in marks:
@@ -678,6 +694,12 @@ def _korean_title(marks):
 
 def _signals(marks):
     out = []
+    if '이란중간선거전합의회의' in marks:
+        out.append('🟡 이란 당국자들이 11월 3일 미국 중간선거 전에 적대행위 종료·호르무즈 재개방 합의가 성사될 가능성에 내부적으로 회의적이라는 보도 — 협상 채널 유지와 별개로 조기 타결 기대를 낮추는 신호')
+    if '이란선거후확전위험' in marks:
+        out.append('🟡 이란 측은 미국 중간선거 이후 분쟁이 격화할 가능성을 더 높게 보는 것으로 전해짐 — 실제 공격 재개가 아니라 당국자들의 위험 시나리오 평가 단계')
+    if '아라치미국체류추가협상' in marks:
+        out.append('🟡 아라치 외무장관은 미국에 더 머물며 중재국을 통한 추가 논의를 이어갈 예정이라는 보도 — 협상 결렬 확정과는 구분')
     if '아라치위트코프뉴욕회동확인' in marks:
         out.append('🟢 아라치 이란 외무장관–Steve Witkoff 미국 특사의 뉴욕 직접 회동이 독립 확인됨 — 대표단 전권·중재 가능성에서 실제 대면협상 단계로 상승')
     if 'IRIB아라치위트코프뉴욕회동보도' in marks:
