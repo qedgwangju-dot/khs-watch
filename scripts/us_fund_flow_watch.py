@@ -43,7 +43,7 @@ BING_LIPPER = 'LSEG Lipper U.S. equity funds money market Reuters'
 JPM_ALL_TOPICS = "https://www.jpmorganchase.com/institute/all-topics"
 JPM_HOUSEHOLD = "https://www.jpmorganchase.com/institute/all-topics/household-financial-health/drawing-on-investment-wealth-full-report"
 FED_Z1 = "https://www.federalreserve.gov/releases/z1/default.htm"
-FED_Z1_EQUITY_TABLE = "https://www.federalreserve.gov/Releases/Z1/current/html/S1M_e_b.htm"
+FED_Z1_EQUITY_TABLE = "https://www.federalreserve.gov/releases/z1/dataviz/z1/balance_sheet/table/"
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
 FRED_SP500 = "https://fred.stlouisfed.org/series/SP500"
 YAHOO_SP500_API = "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5y&interval=1d&includePrePost=false&events=div%2Csplits"
@@ -345,67 +345,102 @@ def parse_jpm_household():
 
 
 def parse_fed_household_balance_sheet():
-    # Use the Board of Governors' current Z.1 table directly. This avoids depending on
-    # FRED availability while keeping the household balance-sheet signal on the official source.
+    # Use the Board of Governors' official household-balance-sheet visualization table.
+    # It is a stable current-release endpoint and exposes the exact quarterly levels needed
+    # without depending on FRED availability.
     r = get(FED_Z1_EQUITY_TABLE, timeout=45)
     tables = pd.read_html(StringIO(r.text))
     target = None
     for raw in tables:
         t = normalize_columns(raw)
         cols = [str(x) for x in t.columns]
-        joined = " ".join(cols) + " " + " ".join(map(str, t.astype(str).values.flatten()[:100]))
-        if "LM153064475" in joined and "FL152000005" in joined:
+        joined = " ".join(cols)
+        if (
+            re.search(r"Quarter", joined, re.I)
+            and re.search(r"Total assets", joined, re.I)
+            and re.search(r"Total liabilities", joined, re.I)
+            and re.search(r"Financial assets: Directly held stock", joined, re.I)
+            and re.search(r"Financial assets: Indirectly held stock", joined, re.I)
+        ):
             target = t
             break
     if target is None:
-        raise RuntimeError("Federal Reserve Z.1 S1M.e.b table not found")
+        raise RuntimeError("Federal Reserve household balance-sheet visualization table not found")
 
-    series_col = next((c for c in target.columns if str(c).strip().lower() in ("series", "series code")), None)
-    if series_col is None:
-        # Header variants occasionally change; series identifiers are still a dedicated column.
-        series_col = next((c for c in target.columns if target[c].astype(str).str.match(r"[A-Z]{2}\d{9,}").any()), None)
-    if series_col is None:
-        raise RuntimeError(f"Federal Reserve Z.1 series column not found: {list(target.columns)}")
+    def col_match(pattern, reject=None):
+        for col in target.columns:
+            s = str(col)
+            if re.search(pattern, s, re.I) and (not reject or not re.search(reject, s, re.I)):
+                return col
+        return None
 
-    period_cols = []
-    for col in target.columns:
-        m = re.fullmatch(r"(20\d{2}):Q([1-4])", str(col).strip())
-        if m:
-            period_cols.append((int(m.group(1)), int(m.group(2)), col))
-    if not period_cols:
-        raise RuntimeError(f"Federal Reserve Z.1 quarterly columns not found: {list(target.columns)}")
-    year, qtr, latest_col = max(period_cols)
-    period = f"{year}:Q{qtr}"
+    q_col = col_match(r"\bQuarter\b")
+    assets_col = col_match(r"^Total assets\b", r"/\s*DPI|percent|%")
+    liabilities_col = col_match(r"^Total liabilities\b", r"/\s*DPI|percent|%")
+    fin_col = col_match(r"^Financial assets\b", r":|/\s*DPI|percent|%")
+    direct_stock_col = col_match(r"Financial assets:\s*Directly held stock\b", r"/\s*DPI|percent|%")
+    indirect_stock_col = col_match(r"Financial assets:\s*Indirectly held stock\b", r"/\s*DPI|percent|%")
 
-    def series_value(code):
-        row = target[target[series_col].astype(str).str.strip() == code]
-        if row.empty:
-            raise RuntimeError(f"Federal Reserve Z.1 series missing: {code}")
-        v = parse_num(row.iloc[0][latest_col])
-        if v is None:
-            raise RuntimeError(f"Federal Reserve Z.1 value missing: {code} {period}")
-        return v
+    needed = {
+        "quarter": q_col,
+        "assets": assets_col,
+        "liabilities": liabilities_col,
+        "financial_assets": fin_col,
+        "direct_stock": direct_stock_col,
+        "indirect_stock": indirect_stock_col,
+    }
+    missing = [k for k, v in needed.items() if v is None]
+    if missing:
+        raise RuntimeError(
+            "Federal Reserve balance-sheet columns missing: "
+            + ", ".join(missing)
+            + " | "
+            + " || ".join(map(str, target.columns))
+        )
 
-    # Table units are billions of dollars; percentage memo items are already percentages.
+    rows = []
+    for _, row in target.iterrows():
+        period = clean_text(row[q_col])
+        if not re.fullmatch(r"20\d{2}:Q[1-4]", period):
+            continue
+        vals = {
+            "period": period,
+            "assets": parse_num(row[assets_col]),
+            "liabilities": parse_num(row[liabilities_col]),
+            "financial_assets": parse_num(row[fin_col]),
+            "direct_stock": parse_num(row[direct_stock_col]),
+            "indirect_stock": parse_num(row[indirect_stock_col]),
+        }
+        if all(vals[k] is not None for k in ("assets","liabilities","financial_assets","direct_stock","indirect_stock")):
+            rows.append(vals)
+    if not rows:
+        raise RuntimeError("Federal Reserve household balance-sheet quarterly rows not found")
+
+    def qkey(p):
+        m = re.fullmatch(r"(20\d{2}):Q([1-4])", p)
+        return (int(m.group(1)), int(m.group(2)))
+    latest = max(rows, key=lambda x: qkey(x["period"]))
+
+    equities_bn = latest["direct_stock"] + latest["indirect_stock"]
+    net_worth_bn = latest["assets"] - latest["liabilities"]
     metrics = {
-        "equities_trillion": round(series_value("LM153064475") / 1000.0, 4),
-        "financial_assets_trillion": round(series_value("FL154090005") / 1000.0, 4),
-        "total_assets_trillion": round(series_value("FL152000005") / 1000.0, 4),
-        "net_worth_trillion": round(series_value("FL152090005") / 1000.0, 4),
-        "equities_share_total_assets_pct": round(series_value("FL153064476"), 1),
-        "equities_share_financial_assets_pct": round(series_value("FL153064486"), 1),
+        "equities_trillion": round(equities_bn / 1000.0, 4),
+        "financial_assets_trillion": round(latest["financial_assets"] / 1000.0, 4),
+        "total_assets_trillion": round(latest["assets"] / 1000.0, 4),
+        "net_worth_trillion": round(net_worth_bn / 1000.0, 4),
+        "equities_share_total_assets_pct": round(equities_bn / latest["assets"] * 100.0, 1),
+        "equities_share_financial_assets_pct": round(equities_bn / latest["financial_assets"] * 100.0, 1),
     }
     payload = {
         "source": "Federal Reserve Z.1",
         "kind": "household_balance_sheet",
-        "period": period,
+        "period": latest["period"],
         "published": None,
         "url": FED_Z1_EQUITY_TABLE,
         "metrics": metrics,
     }
     payload["fingerprint"] = semantic_fingerprint(payload)
     return payload
-
 
 def _sp500_from_yahoo():
     j = get(YAHOO_SP500_API, timeout=25).json()
