@@ -75,6 +75,16 @@ COMPANIES = {
         "aliases": ["Samsung Electronics", "Samsung Foundry"],
         "query": '"Samsung Foundry" ("silicon photonics" OR SiPh OR PIC OR "optical module" OR "optical engine" OR CPO OR NPO OR "photonics foundry" OR "design win" OR "mass production")',
     },
+    "CPO Equipment Supply Chain": {
+        "ticker": "장비 공급망",
+        "aliases": [
+            "Chieftek", "Chieftek Precision", "直得",
+            "GMT Global", "GMT GLOBAL", "高明鐵",
+            "TOYO Automation", "TOYO", "東佑達",
+            "ficonTEC", "Suruga Seiki", "Allring Tech", "FitTech",
+        ],
+        "query": '("Chieftek" OR "Chieftek Precision" OR 直得 OR "GMT Global" OR 高明鐵 OR "TOYO Automation" OR 東佑達 OR ficonTEC OR "Suruga Seiki" OR "Allring Tech" OR FitTech) (CPO OR "co-packaged optics" OR "silicon photonics" OR SiPh OR 光耦合 OR 對位) ("optical coupling" OR alignment OR aligner OR "motion platform" OR "linear motor" OR FAU OR OSAT OR orders OR backlog OR "order visibility" OR capacity OR CAPA OR factory OR "new line" OR shipment OR utilization OR qualification OR validation)',
+    },
 }
 
 TRUSTED_SOURCES = {
@@ -82,6 +92,8 @@ TRUSTED_SOURCES = {
     "DigiTimes", "DIGITIMES", "Investing.com", "Barron's", "MarketWatch",
     "NVIDIA Blog", "NVIDIA Newsroom", "Broadcom", "Arista Networks", "Marvell",
     "Lumentum", "Coherent", "Astera Labs", "Corning",
+    "TrendForce", "MoneyDJ", "Economic Daily News", "UDN", "經濟日報",
+    "GMT GLOBAL INC.", "TOYO Automation", "Chieftek Precision",
 }
 
 HIGH_SIGNAL_PATTERNS = [
@@ -101,6 +113,12 @@ HIGH_SIGNAL_PATTERNS = [
     r"content opportunity", r"content per", r"100\s*Tbps", r"specialty fibers?",
     r"polarization[- ]maintaining", r"mode[- ]matching", r"multicore fibers?",
     r"\bInP\b", r"\bSiPh\b", r"photonics foundry", r"design win",
+    r"optical coupling", r"active alignment", r"alignment modules?", r"aligners?",
+    r"motion platforms?", r"linear motors?", r"6[- ]axis", r"nanometer", r"50\s*nm",
+    r"\bFAU\b", r"\bOSAT\b", r"order visibility", r"delivery visibility",
+    r"production capacity", r"\bCAPA\b", r"new lines?", r"assembly lines?",
+    r"factory expansion", r"capacity doubles?", r"utilization", r"qualification",
+    r"validation", r"verification", r"ahead[- ]of[- ]time orders?",
 ]
 
 ACTION_PATTERNS = [
@@ -111,6 +129,10 @@ ACTION_PATTERNS = [
     r"engagement", r"agreement", r"anchor customer", r"content opportunity",
     r"integrated optics", r"vertical integration", r"one[- ]stop", r"chip[- ]to[- ]chip",
     r"specialty fiber", r"silicon photonics", r"photonics foundry", r"design win",
+    r"optical coupling", r"alignment", r"aligner", r"motion platform", r"linear motor",
+    r"FAU", r"OSAT", r"order visibility", r"delivery visibility", r"new line",
+    r"assembly line", r"factory expansion", r"capacity", r"CAPA", r"utilization",
+    r"qualification", r"validation", r"verification",
 ]
 
 NOISE_PATTERNS = [
@@ -128,6 +150,9 @@ SOURCE_PRIORITY = {
     "Reuters": 95, "Bloomberg": 94, "Financial Times": 93,
     "The Wall Street Journal": 93, "CNBC": 88, "DigiTimes": 85, "DIGITIMES": 85,
     "GlobeNewswire": 84, "PR Newswire": 82,
+    "TrendForce": 92, "GMT GLOBAL INC.": 100, "TOYO Automation": 100,
+    "Chieftek Precision": 100, "Economic Daily News": 82, "UDN": 82,
+    "經濟日報": 82, "MoneyDJ": 78,
     "HPCwire": 70, "Compound Semiconductor": 70, "Investing.com": 65,
 }
 
@@ -218,6 +243,34 @@ def source_priority(source: str) -> int:
 def same_underlying_story(a: dict, b: dict) -> bool:
     if a.get("company") != b.get("company"):
         return False
+
+    if a.get("company") == "CPO Equipment Supply Chain":
+        # Sector articles are often rewritten with different supplier names/headlines.
+        # Treat near-same-date stories with the same commercial stage as one event,
+        # while keeping orders, capacity, qualification and shipment as separate events.
+        if a.get("category") != b.get("category"):
+            return False
+        try:
+            ap = dt.datetime.fromisoformat(a.get("published") or "")
+            bp = dt.datetime.fromisoformat(b.get("published") or "")
+            if abs((ap - bp).total_seconds()) > 72 * 3600:
+                return False
+        except Exception:
+            pass
+        ta = story_tokens(a.get("title", ""))
+        tb = story_tokens(b.get("title", ""))
+        overlap = len(ta & tb)
+        union = len(ta | tb)
+        smaller = min(len(ta), len(tb)) if ta and tb else 0
+        jaccard = overlap / union if union else 0.0
+        containment = overlap / smaller if smaller else 0.0
+        shared_anchor = bool(re.search(
+            r"chieftek|gmt|toyo|suruga|ficontec|allring|fittech|2027|q2|1\.6t|800g",
+            " ".join(sorted(ta & tb)),
+            re.I,
+        ))
+        return (shared_anchor and (jaccard >= 0.24 or containment >= 0.50)) or jaccard >= 0.42
+
     a_key = canonical_story_key(a.get("company", ""), a.get("title", ""))
     b_key = canonical_story_key(b.get("company", ""), b.get("title", ""))
     if a_key and b_key:
@@ -301,6 +354,14 @@ def signal_score(title: str, source: str) -> int:
         score += 4
     if re.search(r"\bInP\b|\bSiPh\b|photonics foundry|design win", text, re.I):
         score += 4
+    if re.search(r"optical coupling|active alignment|alignment modules?|aligners?|motion platforms?|linear motors?|6[- ]axis|nanometer|50\s*nm|\bFAU\b", text, re.I):
+        score += 5
+    if re.search(r"\bOSAT\b|qualification|validation|verification", text, re.I):
+        score += 4
+    if re.search(r"order visibility|delivery visibility|backlog|ahead[- ]of[- ]time orders?", text, re.I):
+        score += 5
+    if re.search(r"production capacity|\bCAPA\b|new lines?|assembly lines?|factory expansion|capacity doubles?|utilization", text, re.I):
+        score += 4
     if re.search(r"mass production|volume production|customer qualification|customer certification|qualified|certified", text, re.I):
         score += 5
     if re.search(r"adopt|deploy|ramp|shipment", text, re.I):
@@ -321,6 +382,10 @@ def signal_score(title: str, source: str) -> int:
 
 
 def stage_for(title: str) -> str:
+    if re.search(r"\bOSAT\b|qualification|validation|verification|passes?.{0,40}certification", title, re.I):
+        return "고객 검증·양산 도입"
+    if re.search(r"order visibility|delivery visibility|backlog|orders?|bookings?", title, re.I):
+        return "수주·가시성"
     if re.search(r"long[- ]term(?:\s+\w+){0,6}\s+agreement|anchor customer|secures?.{0,60}agreement", title, re.I):
         return "장기계약·고객 확정"
     if re.search(r"customer engagements?|design win|qualified|certified|adopt|deploy", title, re.I):
@@ -339,6 +404,16 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == "CPO Equipment Supply Chain":
+        if re.search(r"\bOSAT\b|qualification|validation|verification|certif", title, re.I):
+            return "CPO 장비 고객검증·도입"
+        if re.search(r"production capacity|\bCAPA\b|factory|new lines?|assembly lines?|expand|acquisition|utilization|capacity doubles?", title, re.I):
+            return "CPO 장비 증설·가동률"
+        if re.search(r"shipments?|mass production|volume production|ramp", title, re.I):
+            return "CPO 장비 출하·양산"
+        if re.search(r"order visibility|delivery visibility|backlog|orders?|bookings?|ahead[- ]of[- ]time orders?", title, re.I):
+            return "CPO 장비 수주·가시성"
+        return "CPO 정밀정렬·광결합 장비"
     if company == "Coherent" and re.search(r"PhotonLink|integrated optics?|complete optical solutions?|end[- ]to[- ]end|vertical integration|one[- ]stop", title, re.I):
         return "광 링크 통합·수직계열화"
     if re.search(r"customer engagements?|long[- ]term(?:\s+\w+){0,6}\s+agreements?|anchor customers?|secures?.{0,60}agreements?", title, re.I):
@@ -387,6 +462,11 @@ def meaning_for(category: str) -> str:
         "칩 간 광연결": "광 연결이 랙·패키지 경계를 넘어 칩 간 연결로 들어가면 2029~2030년 이후 메모리·가속기 패키징 구조까지 바꿀 수 있는 장기 재평가 신호입니다.",
         "특수광섬유": "범용 광섬유가 아니라 편광유지·모드매칭·멀티코어 같은 고부가 특수광섬유의 증설·양산이 확인되면 CPO·NPO 내부 콘텐츠 확대와 직접 연결됩니다.",
         "SiPh 파운드리": "대형 광모듈사의 실리콘포토닉스 설계가 외부 파운드리 양산으로 연결되면 삼성전자 등 파운드리의 신규 AI 매출 경로가 열리는 신호입니다.",
+        "CPO 장비 수주·가시성": "CPO·SiPh 양산 전에 정밀 정렬·광 결합 장비 주문이 먼저 차는 선행신호입니다. 주문 가시성이 늘면 고객이 실제 양산 설비투자 예산을 집행하고 있다는 뜻에 가깝습니다.",
+        "CPO 장비 증설·가동률": "장비업체가 신규 라인·공장·조립능력을 늘리는 것은 수주가 단기 샘플을 넘어 반복 양산 수요로 전환될 가능성을 보여주는 설비투자 신호입니다.",
+        "CPO 장비 출하·양산": "정밀 모션·광 결합 장비가 실제 출하·양산으로 넘어가면 CPO 기술 발표가 제조현장 CAPEX와 매출로 연결됐다는 직접 증거입니다.",
+        "CPO 장비 고객검증·도입": "글로벌 광통신 고객이나 OSAT 인증·검증 통과는 장비가 시험평가를 넘어 실제 생산라인에 채택될 가능성을 높이는 핵심 관문입니다.",
+        "CPO 정밀정렬·광결합 장비": "CPO 제조의 나노미터급 정렬·광 결합·FAU 공정 장비 수요가 늘면 광학 부품뿐 아니라 생산장비까지 AI 인프라 설비투자 수혜가 확산되는 신호입니다.",
     }
     return mapping[category]
 
@@ -408,6 +488,11 @@ def risk_for(category: str) -> str:
         "칩 간 광연결": "패키지 내 광연결은 수율·열·정렬 정밀도·신뢰성 검증이 어려워 2029~2030년 일정이 지연될 수 있습니다.",
         "특수광섬유": "특수광섬유 증설이 실제 CPO·NPO 채택보다 빠르면 가동률과 가격이 먼저 압박받을 수 있습니다.",
         "SiPh 파운드리": "고객 실명이 공개되지 않거나 시험생산 물량에 그치면 대형 양산 수주로 보기 어렵고 기존 선발 파운드리와의 경쟁도 남습니다.",
+        "CPO 장비 수주·가시성": "6~12개월 선발주나 중복 발주가 실제 최종 CPO 수요보다 앞서면 수주잔고가 향후 취소·납기 연기로 바뀔 수 있습니다.",
+        "CPO 장비 증설·가동률": "증설 속도가 실제 CPO 양산보다 빠르면 신규 공장 가동률과 고정비 부담이 먼저 악화될 수 있습니다.",
+        "CPO 장비 출하·양산": "장비 출하 후 고객 검수·설치·수율 확보가 늦어지면 매출 인식과 후속 주문이 지연될 수 있습니다.",
+        "CPO 장비 고객검증·도입": "OSAT·광모듈 고객의 검증을 통과해도 양산 라인 적용이나 반복 발주까지 이어지지 않으면 매출 규모는 제한될 수 있습니다.",
+        "CPO 정밀정렬·광결합 장비": "정렬 정밀도·검사시간·수율이 목표에 못 미치거나 CPO 채택 일정이 늦어지면 장비 투자가 뒤로 밀릴 수 있습니다.",
     }
     return mapping[category]
 
@@ -487,6 +572,7 @@ def main() -> None:
     initialized = bool(state.get("initialized"))
     dedupe_version = int(state.get("dedupe_version") or 0)
     seen_story_keys = set(state.get("seen_story_keys") or [])
+    seen_story_records = list(state.get("seen_story_records") or [])
 
     for item in deduped:
         item["story_key"] = canonical_story_key(item["company"], item["title"])
@@ -495,7 +581,21 @@ def main() -> None:
         if item["key"] in seen:
             return True
         story_key = item.get("story_key")
-        return bool(story_key and story_key in seen_story_keys)
+        if story_key and story_key in seen_story_keys:
+            return True
+        for previous in seen_story_records:
+            if previous.get("company") != item.get("company"):
+                continue
+            try:
+                prev_dt = dt.datetime.fromisoformat(previous.get("published") or "")
+                item_dt = dt.datetime.fromisoformat(item.get("published") or "")
+                if abs((item_dt - prev_dt).total_seconds()) > 7 * 24 * 3600:
+                    continue
+            except Exception:
+                pass
+            if same_underlying_story(item, previous):
+                return True
+        return False
 
     new_items = [item for item in deduped if not already_seen(item)]
 
@@ -503,12 +603,23 @@ def main() -> None:
     updated_story_keys = list(dict.fromkeys(
         [item["story_key"] for item in deduped if item.get("story_key")] + list(seen_story_keys)
     ))[:500]
+    new_story_records = [{
+        "company": item.get("company"),
+        "category": item.get("category"),
+        "title": item.get("title"),
+        "source": item.get("source"),
+        "published": item.get("published"),
+    } for item in deduped]
+    merged_story_records = (new_story_records + seen_story_records)[:500]
+
     pending = {
         "initialized": True,
         "dedupe_version": 2,
+        "cpo_equipment_version": 1,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
         "seen_story_keys": updated_story_keys,
+        "seen_story_records": merged_story_records,
         "relevant_item_count": len(deduped),
         "source_errors": errors,
     }
@@ -519,6 +630,9 @@ def main() -> None:
     if dedupe_version < 2:
         alert_items = []
     else:
+        equipment_version = int(state.get("cpo_equipment_version") or 0)
+        if equipment_version < 1:
+            new_items = [item for item in new_items if item.get("company") != "CPO Equipment Supply Chain"]
         alert_items = new_items[:8] if initialized else []
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
@@ -551,7 +665,7 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / NVIDIA CPO 실제 배치 / Coherent PhotonLink 고객·장기계약·양산·콘텐츠 가치 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·백로그 / Corning 광통신·유리기판 신규 AI 매출 경로",
+            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / NVIDIA CPO 실제 배치 / Coherent PhotonLink 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027Q2 가시성·CAPA 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·백로그 / Corning 광통신·유리기판 신규 AI 매출 경로",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
