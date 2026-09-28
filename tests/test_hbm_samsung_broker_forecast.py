@@ -68,6 +68,21 @@ class SamsungHBMBrokerForecastTests(unittest.TestCase):
         self.assertTrue(material)
         self.assertTrue(any("12단→8단" in x for x in reasons))
 
+    def test_eps_revision_alone_does_not_trigger_hbm_alert(self):
+        old = {"asp_yoy_pct": 64.0, "stack_mainstream": "12hi", "eps_revision_pct": {"2027": -4.6}}
+        obs = {"asp_yoy_pct": 64.0, "stack_mainstream": "12hi", "eps_revision_pct": {"2027": -8.0}}
+        material, reasons = w._broker_material_change(old, obs)
+        self.assertFalse(material)
+        self.assertEqual(reasons, [])
+
+    def test_partial_stack_update_preserves_known_asp(self):
+        old = {"asp_yoy_pct": 64.0, "stack_mainstream": "12hi", "source": "old"}
+        obs = {"stack_mainstream": "8hi", "source": "new", "published_at_kst": "2026-10-01T09:00:00+09:00"}
+        candidate = w._broker_state_candidate(old, obs)
+        self.assertEqual(candidate["asp_yoy_pct"], 64.0)
+        self.assertEqual(candidate["stack_mainstream"], "8hi")
+        self.assertEqual(candidate["source"], "new")
+
     def test_summary_separates_hbm_business_from_eps_and_fx(self):
         obs = {
             "key": "jpmorgan|samsung|2027",
