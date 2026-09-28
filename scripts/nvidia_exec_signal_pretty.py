@@ -19,9 +19,9 @@ def main() -> None:
         return
 
     raw = ALERT.read_text(encoding="utf-8").strip()
-    has_demand = "2027년 NVIDIA 칩 판매량" in raw or "판매 2배" in raw or "수요 2배" in raw
-    has_safety = "제품의 기능·성능·안전에 확신이 없으면" in raw or "안전하지 않으면 출시" in raw
-    has_capital = "자본환원" in raw or "자사주 매입 승인" in raw or "총 잔여 승인한도" in raw
+    has_demand = "2027년에 올해보다 약 2배 많은 칩을 판매할 것으로 예상" in raw
+    has_safety = "같은 스코틀랜드 회의 현장에서 Huang은 AI 안전" in raw
+    has_capital = "• <b>자본환원</b>: NVIDIA 이사회가 자사주 매입 승인 규모를 대폭 확대했습니다." in raw
 
     query_line = first_line(raw, "<b>조회</b>:")
     official_line = first_line(raw, "<b>공식 기준</b>:")
@@ -63,61 +63,76 @@ def main() -> None:
             "→ 원칙적 발언이며 <b>Blackwell·Rubin 실제 지연 신호는 아직 아님</b>",
         ]
 
-    lines += [
-        "",
-        "<b>[투자 연결]</b>",
-    ]
+    lines += ["", "<b>[투자 연결]</b>"]
     if has_capital:
         lines += [
             "• 자사주 매입 승인 확대는 <b>현금창출력과 자본배분 의지</b>를 보여주지만 승인 즉시 전액 매수되는 것은 아닙니다.",
             "• 실제 주당가치 효과는 <b>실제 집행액·평균매입가·주식보상 희석·잉여현금흐름</b>을 함께 봅니다.",
         ]
-    lines += [
-        "• 병목: <b>HBM·서버 DRAM·파운드리·첨단패키징·전력</b>",
-        "• 제품믹스: GPU 외 <b>CPU·스위치·광 네트워킹·노트북·Jetson</b> 포함",
-        "• 따라서 전체 칩 수량 2배를 <b>HBM 수요 2배로 직접 환산 금지</b>",
-        "• 병목 완화 → 현재 못 받는 주문이 <b>추가 매출</b>로 전환될 여지",
-        "",
-        "<b>[출처·맥락]</b>",
-        "• 판매 2배: <b>9월 17일 스코틀랜드 찰스 3세 AI 정상회의 전 취재진 발언</b>",
-        "• 안전: Reuters가 같은 회의 현장에서 <b>‘준비되지 않았으면 보류’</b> 발언 확인",
-        "• 같은 행사 맥락이지만 <b>수량 전망</b>과 <b>안전 원칙</b>은 분리해서 판단",
-        "",
-        "<b>[다음 알림]</b>",
-        "• 자사주 매입 <b>추가 승인·총 잔여한도·실행기한</b> 변경",
-        "• 10-Q·10-K의 <b>실제 분기 매입액·매입주식수·평균매입가</b> 신규 확정",
-        "• 배당금·배당성향 또는 <b>주주환원 정책</b> 변경",
-        "• FY28 매출 성장률 <b>+70% 상향·하향</b>",
-        "• GPU·CPU·네트워킹 등 <b>제품별 출하량·판매량 목표</b> 신규 제시",
-        "• 전체 칩 2배 중 <b>AI GPU 비중</b> 공개",
-        "• 수요 2배 대비 <b>실제 공급 가능 비율</b> 변화",
-        "• HBM·DRAM·CoWoS·파운드리·전력 <b>병목 순위 구체화</b>",
-        "• Blackwell·Rubin이 <b>안전·신뢰성 때문에 실제 연기·출시 보류</b>",
-        "• AI 규제·안전 기준이 <b>제품 출시·데이터센터 도입 일정</b>에 직접 영향",
-    ]
-
-    details = [
-        "<b>상세 판단 기준</b>",
-    ]
-    if has_capital:
-        details += [
-            "• 자사주 매입 ‘승인’은 이사회가 사용할 수 있는 한도를 뜻하며 실제 매입 완료액과 구분합니다.",
+    if has_demand:
+        lines += [
+            "• 병목: <b>HBM·서버 DRAM·파운드리·첨단패키징·전력</b>",
+            "• 제품믹스: GPU 외 <b>CPU·스위치·광 네트워킹·노트북·Jetson</b> 포함",
+            "• 따라서 전체 칩 수량 2배를 <b>HBM 수요 2배로 직접 환산 금지</b>",
+            "• 병목 완화 → 현재 못 받는 주문이 <b>추가 매출</b>로 전환될 여지",
         ]
+    if has_safety:
+        lines.append("• 안전 원칙 발언만으로 Blackwell·Rubin 일정 지연으로 판정하지 않습니다.")
+
+    if has_demand or has_safety:
+        lines += ["", "<b>[출처·맥락]</b>"]
+        if has_demand:
+            lines.append("• 판매 2배: <b>9월 17일 스코틀랜드 찰스 3세 AI 정상회의 전 취재진 발언</b>")
+        if has_safety:
+            lines.append("• 안전: Reuters가 같은 회의 현장에서 <b>‘준비되지 않았으면 보류’</b> 발언 확인")
+        if has_demand and has_safety:
+            lines.append("• 같은 행사 맥락이지만 <b>수량 전망</b>과 <b>안전 원칙</b>은 분리해서 판단")
+
+    lines += ["", "<b>[다음 알림]</b>"]
+    if has_capital:
+        lines += [
+            "• 자사주 매입 <b>추가 승인·총 잔여한도·실행기한</b> 변경",
+            "• 10-Q·10-K의 <b>실제 분기 매입액·매입주식수·평균매입가</b> 신규 확정",
+            "• 배당금·배당성향 또는 <b>주주환원 정책</b> 변경",
+        ]
+    if has_demand:
+        lines += [
+            "• FY28 매출 성장률 <b>+70% 상향·하향</b>",
+            "• GPU·CPU·네트워킹 등 <b>제품별 출하량·판매량 목표</b> 신규 제시",
+            "• 전체 칩 2배 중 <b>AI GPU 비중</b> 공개",
+            "• 수요 2배 대비 <b>실제 공급 가능 비율</b> 변화",
+            "• HBM·DRAM·CoWoS·파운드리·전력 <b>병목 순위 구체화</b>",
+        ]
+    if has_safety:
+        lines += [
+            "• Blackwell·Rubin이 <b>안전·신뢰성 때문에 실제 연기·출시 보류</b>",
+            "• AI 규제·안전 기준이 <b>제품 출시·데이터센터 도입 일정</b>에 직접 영향",
+        ]
+
+    details = ["<b>상세 판단 기준</b>"]
+    if has_capital:
+        details.append("• 자사주 매입 ‘승인’은 이사회가 사용할 수 있는 한도를 뜻하며 실제 매입 완료액과 구분합니다.")
         for x in (capital_warning, capital_baseline):
             if x:
                 details.append(x)
-    details += [
-        "• FY27 2분기 실적발표에서 NVIDIA는 고객 수요 전망상 다음 해 성장 잠재력이 약 2배라고 설명했습니다.",
-        "• 회사의 FY28 공식 매출 성장 전망은 약 +70%였고, 그 차이는 수요 부족이 아니라 공급 제약 때문이라고 설명했습니다.",
-        "• 9월 17일 Huang의 ‘칩 판매 2배’는 스코틀랜드 찰스 3세 AI 정상회의 전 취재진에게 직접 밝힌 수량 전망입니다.",
-        "• 다만 NVIDIA가 총 칩 판매대수를 공개하지 않고, GPU 외 CPU·스위치·광 네트워킹·노트북·Jetson 등을 함께 판매하므로 AI GPU 2배와 동일하지 않습니다.",
-        "• FY27 2분기 공식 실적발표에서는 고객 수요가 다음 해 약 2배 성장 가능성을 보였지만 공급 제약 때문에 FY28 매출은 약 +70% 성장으로 전망했습니다.",
-        "• 따라서 HBM·서버 DRAM·파운드리·첨단패키징·전력 공급능력이 실제 매출 전환 속도를 결정합니다.",
-        "• Reuters도 같은 스코틀랜드 회의에서 Huang이 준비되지 않은 제품은 보류해야 한다고 말했다고 확인했지만, 이는 Blackwell·Rubin 실제 일정 연기를 뜻하지는 않습니다.",
-    ]
+    if has_demand:
+        details += [
+            "• FY27 2분기 실적발표에서 NVIDIA는 고객 수요 전망상 다음 해 성장 잠재력이 약 2배라고 설명했습니다.",
+            "• 회사의 FY28 공식 매출 성장 전망은 약 +70%였고, 그 차이는 수요 부족이 아니라 공급 제약 때문이라고 설명했습니다.",
+            "• 9월 17일 Huang의 ‘칩 판매 2배’는 스코틀랜드 찰스 3세 AI 정상회의 전 취재진에게 직접 밝힌 수량 전망입니다.",
+            "• 다만 NVIDIA가 총 칩 판매대수를 공개하지 않고, GPU 외 CPU·스위치·광 네트워킹·노트북·Jetson 등을 함께 판매하므로 AI GPU 2배와 동일하지 않습니다.",
+        ]
+    if has_safety:
+        details.append("• Reuters가 확인한 안전 발언은 원칙적 기준이며 Blackwell·Rubin 실제 일정 연기를 뜻하지는 않습니다.")
     lines += ["", "<blockquote expandable>" + "\n".join(details) + "</blockquote>"]
 
-    refs = [x for x in (query_line, official_line, scotland_line, demand_source, safety_source, capital_source, capital_official) if x]
+    refs = [query_line] if query_line else []
+    if has_demand:
+        refs += [x for x in (official_line, demand_source) if x]
+    if has_safety:
+        refs += [x for x in (scotland_line, safety_source) if x]
+    if has_capital:
+        refs += [x for x in (capital_source, capital_official) if x]
     if refs:
         lines += ["", "<b>[근거]</b>"] + refs
 
