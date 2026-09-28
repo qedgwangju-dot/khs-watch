@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-29T00:41:57+09:00",
+  "updated_at_kst": "2026-09-29T07:11:42+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "162bef5431cfeab3494ce984",
@@ -7,6 +7,8 @@
     "1c84301bf79c8d36b83c0259",
     "2565087891ae0a867ab40fc6",
     "2b583eab3f05e2f82f49d843",
+    "30aac63462e98cc963362aff",
+    "323e5acbb87189a4e30a467c",
     "35627855ca9c7644ad34c1be",
     "3ceef4c6a8567b8a8f4393b0",
     "45f22cb57e39aeef36fe8235",
@@ -15,9 +17,11 @@
     "4d4b9724dfba2d02df1b92de",
     "4fb24036500af3278d9f40ae",
     "5c7222fdb4442d0a88f0255d",
+    "5dd036ae2178b4c91407196d",
     "5f91627d0a5a84acbe78eadc",
     "65dc4d9b974222b1ba28cec9",
     "6f98d5b5fcf47de75752d227",
+    "7042b2195912a0d93ffb2dd6",
     "71d292e82ed6fb986be67dc6",
     "71e84e2c63800afc842478ec",
     "745929b9c686b8782567ab8a",
@@ -62,9 +66,9 @@
     "nvidia_demand_b0db6b8218",
     "nvidia_demand_b9dff9a4c6"
   ],
-  "last_event_count": 19,
-  "last_new_event_count": 1,
-  "alert_generated": true,
+  "last_event_count": 20,
+  "last_new_event_count": 0,
+  "alert_generated": false,
   "format_version": 3,
   "capital_return_track_version": 1,
   "capital_return_correction_version": 1,
@@ -78,14 +82,5 @@
     "execution_through_fy": 2028,
     "observed_at_kst": "2026-09-28T20:37:43+09:00",
     "source": "marketscreener.com"
-  },
-  "last_successful_delivery_kst": "2026-09-29T00:42:23+09:00",
-  "telegram_message_id": 161,
-  "bot_username": "khs88798879887988798879_bot",
-  "delivery_receipt": {
-    "status": "confirmed",
-    "bot_username": "khs88798879887988798879_bot",
-    "message_id": 161,
-    "confirmed_at_kst": "2026-09-29T00:42:23+09:00"
   }
 }
