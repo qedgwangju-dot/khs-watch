@@ -109,6 +109,10 @@ TRUSTED_SOURCE_ALIASES = (
     "bbc 코리아",
     "kpler",
     "vortexa",
+    "saudi ministry of energy",
+    "ministry of energy saudi arabia",
+    "saudi aramco",
+    "aramco",
 )
 
 NEGATIVE_OR_TENTATIVE_PHRASES = (
@@ -545,13 +549,19 @@ def confirm_event(items: list[NewsItem], minimum_sources: int = 2) -> tuple[str,
             any(alias in normalize_text(row.source) for alias in DATA_PROVIDER_ALIASES)
             for row in selected
         )
-        pipeline_single_major = kind == "east_west_pipeline_recovery" and any(
+        pipeline_official = kind == "east_west_pipeline_recovery" and any(
             any(alias in normalize_text(row.source) for alias in (
-                "reuters", "bloomberg", "kpler", "saudi energy ministry", "ministry of energy", "aramco"
+                "saudi ministry of energy", "ministry of energy saudi arabia",
+                "saudi aramco", "aramco"
             ))
             for row in selected
         )
-        if len(selected) >= minimum_sources or has_primary_data or pipeline_single_major:
+        pipeline_cross_checked = len(selected) >= minimum_sources
+        if (
+            len(selected) >= minimum_sources
+            or has_primary_data
+            or (pipeline_official and pipeline_cross_checked)
+        ):
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
     if not candidates:
         return None
