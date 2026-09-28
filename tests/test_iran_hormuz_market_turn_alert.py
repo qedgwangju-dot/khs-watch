@@ -118,6 +118,32 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("합산하지 않습니다", body)
         self.assertIn("정책 발언 처리", body)
 
+    def test_physical_flow_alert_is_glanceable(self):
+        current = dt.datetime(2026, 9, 28, 11, 34, tzinfo=dt.timezone.utc)
+        news = [
+            MODULE.NewsItem(
+                "Kpler Gulf of Oman STS record 7.2 Mbd as of 2026-09-26; since-war average 3.7 Mbd; 2025 average 0.16 Mbd; Saudi 3 Mbd requires 36-40 additional VLCCs",
+                "Kpler",
+                "https://example.com/kpler",
+                current.isoformat(),
+                current.timestamp(),
+                "sts_reroute_expansion",
+            )
+        ]
+        oil = MODULE.Quote("BZ=F", "Brent", "달러/배럴", 100.55, 103.08, -2.53, -2.45, "", current.timestamp())
+        body = MODULE.build_physical_flow_alert_body("sts_reroute_expansion", news, oil, current)
+        self.assertIn("[한눈에]", body)
+        self.assertIn("원유 공급     회복 ↑", body)
+        self.assertIn("물류 효율     병목 심화 ↓", body)
+        self.assertIn("GoO STS       7.2 Mbd", body)
+        self.assertIn("전쟁 후 평균의 1.9배", body)
+        self.assertIn("2025 평균의 45배", body)
+        self.assertIn("VLCC 수요     Saudi +3 Mbd 처리 시 +36~40척", body)
+        self.assertIn("[핵심 의미]", body)
+        self.assertIn("[병목]", body)
+        self.assertIn("[다음 체크]", body)
+        self.assertNotIn("Kpler Gulf of Oman STS record 7.2 Mbd as of", body)
+
     def test_alert_body_contains_required_market_values(self):
         current = dt.datetime(2026, 8, 2, 12, 0, tzinfo=dt.timezone.utc)
         news = [
