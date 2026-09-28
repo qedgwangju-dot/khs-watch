@@ -106,8 +106,8 @@
   "errors": [],
   "initialized": true,
   "market_stress": {
-    "jgb10": 3.073,
-    "jgb10_days_ge_3": 1,
+    "jgb10": 3.071,
+    "jgb10_days_ge_3": 2,
     "joint_market_stress": false,
     "weak_auction_10y": false,
     "weak_auction_30y": false
@@ -177,5 +177,5 @@
     "plan_revision": false,
     "weak_private_absorption": false
   },
-  "updated_at_kst": "2026-09-28T08:46:13+09:00"
+  "updated_at_kst": "2026-09-28T10:33:08+09:00"
 }
