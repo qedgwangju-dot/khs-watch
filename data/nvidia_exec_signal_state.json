@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-28T20:25:49+09:00",
+  "updated_at_kst": "2026-09-28T20:27:34+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "174b747c5a23191d5a286b2f",
@@ -44,6 +44,7 @@
     "nvidia_2027_chip_sales_double",
     "nvidia_capital_return_150_0_na_na_na",
     "nvidia_capital_return_235_0_235_0_2028_na",
+    "nvidia_capital_return_correction_20260928",
     "nvidia_capital_return_na_na_na_na",
     "nvidia_demand_1a1f7b602f",
     "nvidia_demand_690a5da5ab",
@@ -52,10 +53,11 @@
     "nvidia_demand_b9dff9a4c6"
   ],
   "last_event_count": 15,
-  "last_new_event_count": 0,
-  "alert_generated": false,
+  "last_new_event_count": 1,
+  "alert_generated": true,
   "format_version": 3,
   "capital_return_track_version": 1,
+  "capital_return_correction_version": 1,
   "capital_return_state": {
     "remaining_authorization_usd_b": 235.0,
     "actual_q2_repurchase_usd_b": 19.7,
@@ -66,5 +68,14 @@
     "execution_through_fy": 2028,
     "observed_at_kst": "2026-09-28T20:15:02+09:00",
     "source": "Reuters"
+  },
+  "last_successful_delivery_kst": "2026-09-28T20:27:56+09:00",
+  "telegram_message_id": 159,
+  "bot_username": "khs88798879887988798879_bot",
+  "delivery_receipt": {
+    "status": "confirmed",
+    "bot_username": "khs88798879887988798879_bot",
+    "message_id": 159,
+    "confirmed_at_kst": "2026-09-28T20:27:56+09:00"
   }
 }
