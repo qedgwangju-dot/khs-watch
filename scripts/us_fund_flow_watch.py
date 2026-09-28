@@ -113,13 +113,26 @@ def clean_text(x):
     return re.sub(r"\s+", " ", BeautifulSoup(str(x), "html.parser").get_text(" ", strip=True)).strip()
 
 
+def _canonicalize_semantic(v):
+    # Numeric JSON spelling must not create false changes: 34 and 34.0 are the same metric.
+    if isinstance(v, bool) or v is None:
+        return v
+    if isinstance(v, dict):
+        return {str(k): _canonicalize_semantic(val) for k, val in v.items()}
+    if isinstance(v, (list, tuple)):
+        return [_canonicalize_semantic(val) for val in v]
+    if isinstance(v, (int, float)):
+        return float(v)
+    return v
+
+
 def semantic_core(x):
     """Only economically meaningful fields participate in duplicate detection."""
     return {
         "source": x.get("source"),
         "kind": x.get("kind"),
         "period": x.get("period"),
-        "metrics": x.get("metrics") or {},
+        "metrics": _canonicalize_semantic(x.get("metrics") or {}),
     }
 
 
@@ -1148,7 +1161,7 @@ if sp500:
     status_lines.append(
         f"- S&P500 context: {sp500['last_date']} {sp500['last_value']:.2f} | "
         f"peak {sp500['peak_date']} {sp500['peak_value']:.2f} | "
-        f"drawdown {sp500['drawdown_pct']:.2f}% | band={sp500['band']}"
+        f"drawdown {sp500['drawdown_pct']:.2f}% | band={sp500['band']} | source={sp500.get('source','unknown')}"
     )
     status_lines.append(f"- S&P500 band transition: {old_band or 'none'} -> {current_band or 'none'} | changed={str(drawdown_transition).lower()}")
 if jpm_updated:
