@@ -303,4 +303,97 @@ assert g == "ess_battery", (g, s, c)
 assert c == "ESS 배터리 · 미국 설치 전망 변경", c
 assert s >= 11, s
 
+# 13) XPENG IRON: the Sep-8 production-line commissioning and future schedule
+# are baselines. Supplier nomination, actual SOP and real deliveries are new stages.
+xpeng_line_baseline = make(
+    "XPENG IRON walks off new production line with 80%+ core-process automation",
+    "XPENG officially commissioned its IRON humanoid production line on September 8, 2026 and targets mass production by year-end and deliveries in 2027.",
+    "XPENG",
+)
+g, s, c, k = classify(xpeng_line_baseline)
+assert g == "xpeng", (g, s, c)
+assert s < 11, ("XPENG line-commissioned baseline must stay silent", s, c)
+
+xpeng_supplier = make(
+    "小鹏机器人完成供应链审厂及核心零部件定点",
+    "小鹏 IRON 已完成供应链审厂及核心零部件定点，执行器、灵巧手、传感器、AI芯片核心供应商进入量产准备。",
+    "第一财经",
+)
+g, s, c, k = classify(xpeng_supplier)
+assert g == "xpeng", (g, s, c)
+assert c.endswith("IRON 핵심부품 공급사 선정"), c
+assert s >= 11, s
+
+xpeng_sop = make(
+    "XPENG IRON mass production started in December 2026",
+    "XPENG officially started mass production of IRON humanoid robots at its dedicated production line.",
+    "XPENG",
+)
+g, s, c, k = classify(xpeng_sop)
+assert g == "xpeng", (g, s, c)
+assert c.endswith("IRON 실제 양산 개시"), c
+assert s >= 11, s
+assert k != classify(xpeng_supplier)[3], ("supplier nomination and SOP must remain separate events", k)
+
+# 14) RFM: generic industry explainers and the existing NC AI-POSCO DX MOU stay
+# silent. New quantitative cross-embodiment results and multi-robot field use alert.
+rfm_explainer = make(
+    "로봇은 달라도 두뇌는 하나로…범용 로봇 지능 뜬다",
+    "Open X-Embodiment는 22종 로봇 데이터를 모았고 Physical Intelligence π0와 NVIDIA Isaac GR00T가 범용 RFM 경쟁을 이끈다.",
+    "한국경제",
+)
+g, s, c, k = classify(rfm_explainer)
+assert g == "rfm_general_intelligence", (g, s, c)
+assert s < 11, ("generic RFM explainer must stay silent", s, c)
+
+rfm_mou = make(
+    "포스코DX-NC AI, 산업용 로봇 파운데이션 모델 공동개발",
+    "POSCO DX와 NC AI가 MOU를 체결해 산업현장용 RFM과 VLA를 공동개발한다.",
+    "POSCO DX",
+)
+g, s, c, k = classify(rfm_mou)
+assert g == "rfm_general_intelligence", (g, s, c)
+assert s < 11, ("existing NC AI-POSCO DX MOU baseline must stay silent", s, c)
+
+rfm_benchmark = make(
+    "New RFM improves cross-embodiment robot success rate by 42%",
+    "Google DeepMind released a robot foundation model benchmark across multiple different robot embodiments, improving success rate by 42% on held-out robots.",
+    "Google DeepMind",
+)
+g, s, c, k = classify(rfm_benchmark)
+assert g == "rfm_general_intelligence", (g, s, c)
+assert c.endswith("크로스 임바디먼트 정량 검증"), c
+assert s >= 11, s
+
+rfm_field = make(
+    "NC AI-POSCO DX RFM enters industrial-site pilot",
+    "NC AI and POSCO DX deployed one RFM across a humanoid, quadruped and robot arm at an industrial site pilot, reporting task success rate of 88%.",
+    "POSCO DX",
+)
+g, s, c, k = classify(rfm_field)
+assert g == "rfm_general_intelligence", (g, s, c)
+assert c.endswith("RFM 다종 로봇 현장 실증"), c
+assert s >= 11, s
+
+# 15) Agility: the wheeled rendering/exploration is a concept baseline, not a
+# product alert. A real physical prototype/product/customer milestone is new.
+agility_concept = make(
+    "Agility Robotics exploring wheeled robots after Digit 5 video",
+    "Jonathan Hurst said the company is exploring robot designs and form factors including wheels. The wheeled robot shown was a concept rendering and no product, launch date, price or customer was announced.",
+    "The Robot Report",
+)
+g, s, c, k = classify(agility_concept)
+assert g == "agility_platform", (g, s, c)
+assert s < 11, ("Agility wheeled concept must stay silent", s, c)
+
+agility_proto = make(
+    "Agility Robotics unveils working wheeled humanoid prototype",
+    "Agility Robotics demonstrated a physical working prototype of its wheeled humanoid platform for warehouse operations.",
+    "Agility Robotics",
+)
+g, s, c, k = classify(agility_proto)
+assert g == "agility_platform", (g, s, c)
+assert c.endswith("바퀴형 플랫폼 실물 시제품"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
