@@ -1,16 +1,35 @@
 {
   "initialized": true,
   "last_collection": {
-    "errors": [],
-    "material_items": 1,
+    "errors": [
+      "Google News 실패: OpenAI AI safety standard recursive self-improvement in / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"AI Safety Institute\" standard evaluation incident repo / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: NAAIMES AI measurement evaluation standard safety insti / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: NIST frontier AI safety standard evaluation cybersecuri / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: EU AI frontier model safety standard incident reporting / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"사이버보안 특화 AI\" 네이버클라우드 과기정통부 NIPA / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"특화 인공지능 파운데이션 모델\" 사이버 보안 B200 / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"AI 보안모델\" 조달 실증 수주 계약 / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: 네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증 / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"AI 안전연구소\" 한국 국제 표준 평가 / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (NAVER Cloud OR S2W OR SandLab OR \"LG CNS\") cybersecuri / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: AI cybersecurity foundation model government procuremen / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (Palo Alto Networks OR CrowdStrike OR IBM OR Microsoft  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (\"Unit 42\" OR \"Frontier AI Defense\" OR SafeMind OR \"AI  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (Palo Alto Networks OR CrowdStrike) AI security ARR ann / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (IBM OR Microsoft) AI cybersecurity autonomous SOC paid / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (NVIDIA OR BlueField OR Nemotron) cybersecurity inferen / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: AI security agent autonomous SOC continuous monitoring  / HTTPError: HTTP Error 503: Service Unavailable"
+    ],
+    "material_items": 0,
     "new_articles": 0,
     "new_events": 0,
-    "raw_items": 19
+    "raw_items": 0
   },
   "official_pages": {
     "NIPA 사이버보안 특화 AI 사업": {
       "digest": "974310585cd70cfd44fbb0d62de03f63e33904fbead1bc6500cb8801563c5942",
-      "updated_at": "2026-09-28T10:07:20.009576+00:00",
+      "updated_at": "2026-09-28T10:12:45.185049+00:00",
       "url": "https://nipa.kr/home/bsnsAll/00/detail?bsnsDtlsIemNo=909"
     }
   },
@@ -25,5 +44,5 @@
       "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1ucThaWjVXT1Z3a0lHbEI3ZHl5SURjZTJKYU13ZWFJSE1keGJNQjBOS2FDNkxEZmlQWks1Y3ViNlVaQ3U0U0o3aU96RnB6Nms2LU1SdXdrQTkzN0V2bnZ6ZWFuXzFLWWhHenRMOEtPMmpRUmFTb1HSAXtBVV95cUxOdVFxeURxWUF1QUc4UTVxMlRyVWhIeVk1QjVGeHBxcF81YV9lWlBWUXpkTS1EV2hFdFFCV1FheHo2VmFuNG5maUtSd1ZBZUZvV3lkVGJjQUo0azhORlRZNG1RVHBzTFluTFJ6Z2x0ZW54SjJEX2hNazZ4eUU?oc=5"
     }
   },
-  "updated_at_kst": "2026-09-28T19:07:20+09:00"
+  "updated_at_kst": "2026-09-28T19:12:45+09:00"
 }
