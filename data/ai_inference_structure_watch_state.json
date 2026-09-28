@@ -26,18 +26,38 @@
       "microsoft_servicing": true
     }
   },
-  "upstream_snapshot": {},
+  "upstream_snapshot": {
+    "agentic_ratio": "1:1",
+    "server_cpu_tam_2030_usd_bn": 210.6,
+    "samsung_q3_revenue_forecast_krw_100m": 38200,
+    "samsung_q3_operating_profit_forecast_krw_100m": 6571,
+    "samsung_cpu_abf_share_floor_pct": 45,
+    "samsung_server_cpu_fcbga_mass_production": true,
+    "samsung_q3_actual_revenue_krw_100m": null,
+    "samsung_q3_actual_operating_profit_krw_100m": null,
+    "samsung_venice_large_scale_deployment_confirmed": null,
+    "ibiden_sap_capacity_multiple": 2,
+    "ibiden_capex_jpy_bn": 500,
+    "ibiden_asic_share_pct": 10,
+    "ibiden_pricing_stance": "현 판매가격 유지 + 원재료비 고객 전가",
+    "ibiden_abf_price_increase": false,
+    "ibiden_nvidia_cpu_substrate_confirmed": false
+  },
   "seen_urls": [
-    "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html",
-    "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon.html",
-    "https://www.amd.com/en/corporate/events/advancing-ai/sessions-catalog/dell-technologies--balancing-cpu-and-gpu-for-the-agentic-ai-era.html",
-    "https://www.sem.samsung.com/global/newsroom/news/view.do?id=10462",
-    "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Second-Quarter-2026-Results/default.aspx",
     "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Continues-to-Contract-New-Compute-Capacity-at-Higher-Prices/default.aspx",
+    "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Second-Quarter-2026-Results/default.aspx",
+    "https://nebius.com/newsroom/nebius-raises-775-million-in-first-secured-debt-financing-to-accelerate-global-buildout",
     "https://nebius.com/newsroom/nebius-reports-first-quarter-2026-financial-results",
-    "https://nebius.com/newsroom/nebius-raises-775-million-in-first-secured-debt-financing-to-accelerate-global-buildout"
+    "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html",
+    "https://www.amd.com/en/corporate/events/advancing-ai/sessions-catalog/dell-technologies--balancing-cpu-and-gpu-for-the-agentic-ai-era.html",
+    "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon.html",
+    "https://www.sem.samsung.com/global/newsroom/news/view.do?id=10462"
   ],
-  "last_checked_at_kst": "2026-09-28T12:10:00+09:00",
+  "last_checked_at_kst": "2026-09-28T12:42:24+09:00",
   "candidate_count": 0,
-  "event_count": 0
+  "event_count": 0,
+  "delivery_check": {
+    "checked_at_kst": "2026-09-28T12:43:58+09:00",
+    "status": "no_message_due"
+  }
 }
