@@ -44,11 +44,19 @@ YAHOO_BASES = (
     "https://query2.finance.yahoo.com/v8/finance/chart",
 )
 
+KPLER_STS_URL = (
+    "https://www.kpler.com/blog/"
+    "saudi-export-rerouting-amid-gulf-of-oman-sts-bottlenecks-amplify-vlcc-intensity-of-meg-flows"
+)
+
 NEWS_QUERIES = (
     'Iran ceasefire agreement OR Iran truce agreement OR "US Iran ceasefire" when:3d',
     'US ends attacks Iran OR US halts strikes Iran OR US ceases military operations Iran when:3d',
     '"Strait of Hormuz reopens" OR "shipping resumes" Hormuz OR "traffic returns to normal" Hormuz when:3d',
-    '"Gulf oil exports" recover OR "Middle East oil exports" recover OR "Saudi crude shipments" September when:3d',
+    '"Gulf oil exports" recover OR "Middle East oil exports" rebound OR "Saudi crude shipments" September when:3d',
+    '"Middle East oil exports" "highest level since" Iran war Kpler when:3d',
+    '"12.8 million barrels per day" Middle East exports Kpler when:3d',
+    '"Hormuz" "7.4 million bpd" Kpler September when:3d',
     '"Saudi Arabia ramps up Gulf oil exports" OR "Aramco to boost Gulf exports" when:7d',
     '"Gulf of Oman" STS record OR "ship-to-ship" Oman Saudi crude when:7d',
     'Kpler "Gulf of Oman" STS bottlenecks VLCC when:7d',
@@ -393,6 +401,60 @@ def google_news_url(query: str) -> str:
     return f"https://news.google.com/rss/search?{params}"
 
 
+def _visible_text(raw_html: str) -> str:
+    text = re.sub(r"(?is)<script\b.*?</script>|<style\b.*?</style>", " ", raw_html)
+    text = re.sub(r"(?s)<[^>]+>", " ", text)
+    return re.sub(r"\s+", " ", html.unescape(text)).strip()
+
+
+def parse_kpler_sts_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
+    text = _visible_text(raw_html)
+    record = re.search(
+        r"September\s+(\d{1,2})\s+to\s+date\s+currently\s+tracking\s+at\s+a\s+record\s+([0-9.]+)\s*Mbd",
+        text,
+        flags=re.I,
+    )
+    since_war = re.search(
+        r"average\s+of\s+([0-9.]+)\s*Mbd\s+since\s+the\s+US-Iran\s+war",
+        text,
+        flags=re.I,
+    )
+    baseline = re.search(
+        r"from\s+just\s+([0-9.]+)\s*Mbd\s+in\s+2025",
+        text,
+        flags=re.I,
+    )
+    vlcc = re.search(
+        r"3\s*Mbd\s+of\s+Saudi\s+crude.*?between\s+(\d+)\s+and\s+(\d+)\s+additional\s+VLCCs",
+        text,
+        flags=re.I,
+    )
+    if not record or not since_war or not baseline:
+        raise RuntimeError("Kpler STS snapshot metrics not found")
+    day = int(record.group(1))
+    record_mbd = float(record.group(2))
+    since_war_mbd = float(since_war.group(1))
+    baseline_mbd = float(baseline.group(1))
+    year = current.astimezone(KST).year
+    source_date = dt.date(year, 9, day)
+    if source_date > current.astimezone(KST).date() + dt.timedelta(days=1):
+        raise RuntimeError(f"Kpler STS source date in future: {source_date}")
+    vlcc_text = f"; Saudi 3 Mbd requires {vlcc.group(1)}-{vlcc.group(2)} additional VLCCs" if vlcc else ""
+    title = (
+        f"Kpler Gulf of Oman STS record {record_mbd:.1f} Mbd as of {source_date.isoformat()}; "
+        f"since-war average {since_war_mbd:.1f} Mbd; 2025 average {baseline_mbd:.2f} Mbd"
+        f"{vlcc_text}"
+    )
+    return NewsItem(
+        title=title,
+        source="Kpler",
+        link=KPLER_STS_URL,
+        published_utc=current.isoformat().replace("+00:00", "Z"),
+        published_epoch=current.timestamp(),
+        event_kind="sts_reroute_expansion",
+    )
+
+
 def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
     max_age_hours = int(os.getenv("IRAN_HORMUZ_MAX_NEWS_AGE_HOURS", "72"))
     items: list[NewsItem] = []
@@ -402,6 +464,12 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
             items.extend(parse_rss(fetch_bytes(google_news_url(query)), current, max_age_hours))
         except Exception as exc:
             errors.append(str(exc))
+
+    try:
+        kpler_html = fetch_bytes(KPLER_STS_URL).decode("utf-8", errors="replace")
+        items.append(parse_kpler_sts_snapshot(kpler_html, current))
+    except Exception as exc:
+        errors.append(f"Kpler STS direct: {type(exc).__name__}: {exc}")
 
     unique: dict[tuple[str, str, str], NewsItem] = {}
     for item in items:
@@ -545,6 +613,16 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
         for name, terms in marker_terms:
             if any(marker_match(term) for term in terms):
                 markers.append(name)
+        volumes = [
+            float(value)
+            for value in re.findall(r"\b([0-9]+(?:\.[0-9]+)?)\s*mbd\b", combined, flags=re.I)
+        ]
+        if volumes:
+            max_volume = max(volumes)
+            if kind == "sts_reroute_expansion":
+                markers.append(f"sts_mbd_{int(max_volume)}")
+            else:
+                markers.append(f"flow_mbd_{int(max_volume)}")
         if not markers:
             markers = [kind]
         digest = hashlib.sha256(f"{kind}|{'|'.join(sorted(set(markers)))}".encode("utf-8")).hexdigest()[:16]
