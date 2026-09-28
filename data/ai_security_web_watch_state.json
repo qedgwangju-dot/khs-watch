@@ -6,8 +6,8 @@
     "direct_official_items": 17,
     "errors": [],
     "material_items": 6,
-    "new_material_items": 0,
-    "raw_items": 92
+    "new_material_items": 3,
+    "raw_items": 112
   },
   "seen": {
     "36cdbc3c7efe9983a34b0330": {
@@ -50,6 +50,16 @@
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZUEtbWlTaWtWX0dYU2dvc0dCT3c4TW8wQS1nOWFVUWp4NU1nNFVxZXMybmhIWTlLVWlUalRVVk5JUVNrdVRfQVVRTlVtNWtwTndFTWlpOEZ1WW9OZi1peUNJNFZMRHdVWXQ1VkhNNkxkS1dVNjFNWGtPenNtYjJyVkdnZzF1ZXNzUWsxbjlPbm5EcDNTVkdaYkN6ckdlTkRrTmJqWUFQOXUtVTJTWGVTYnZlUzM?oc=5",
       "vendor": "OpenAI"
     },
+    "592133392c0a5eb7c8faacd8": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-28T03:16:05.893924+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic Research",
+      "title": "Anthropic Research: alignment assessment cybersecurity incidents",
+      "url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
+      "vendor": "Anthropic"
+    },
     "5aaae4b02ac4b5fa78e35f01": {
       "category": "데이터·개인정보",
       "first_seen_at": "2026-09-26T13:15:55.250969+00:00",
@@ -59,6 +69,16 @@
       "title": "EXCLUSIVE: OpenAI works to understand full scope of agent activity as user data leak emerges - Reuters",
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZUEtbWlTaWtWX0dYU2dvc0dCT3c4TW8wQS1nOWFVUWp4NU1nNFVxZXMybmhIWTlLVWlUalRVVk5JUVNrdVRfQVVRTlVtNWtwTndFTWlpOEZ1WW9OZi1peUNJNFZMRHdVWXQ1VkhNNkxkS1dVNjFNWGtPenNtYjJyVkdnZzF1ZXNzUWsxbjlPbm5EcDNTVkdaYkN6ckdlTkRrTmJqWUFQOXUtVTJTWGVTYnZlUzM?oc=5",
       "vendor": "OpenAI"
+    },
+    "5cc65ef398cb9c997c404989": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-28T03:16:05.893924+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic Threat Intelligence",
+      "title": "Anthropic Threat Intelligence: threat intelligence report september 2026",
+      "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "vendor": "Anthropic"
     },
     "8f93e17c409b9cb7748da9eb": {
       "category": "취약점·패치",
@@ -90,6 +110,16 @@
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNd0dTclpUU0M5bk5NTkk3MlVJeF9vZXZiQVRTLW03V3pxRjZ1WHlxaDBRVUUxbUN5eVRhQlpoTnZQZUdodndHVU9ldHQyazVwamc3OUZqaUktVmxvZmd3d3Y3RHg4Y0lzakJ1bWZtSG5fbFlMbmE4WnBVei1WdS1mem1CYWJ1MFJ1ZEJZRkJwUHJQdEU?oc=5",
       "vendor": "OpenAI"
     },
+    "cb5c35cc9ab3813a4c9cd7c4": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-28T03:16:05.893924+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic Threat Intelligence",
+      "title": "Anthropic Threat Intelligence: threat intelligence",
+      "url": "https://www.anthropic.com/threat-intelligence",
+      "vendor": "Anthropic"
+    },
     "cfaea85e3eaacdbcb71e8fc1": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-26T07:42:53.888012+00:00",
@@ -111,5 +141,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-09-28T12:11:50+09:00"
+  "updated_at_kst": "2026-09-28T12:16:05+09:00"
 }
