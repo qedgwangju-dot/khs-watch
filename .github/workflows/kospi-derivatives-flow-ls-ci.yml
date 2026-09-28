@@ -42,7 +42,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests ebest
+        run: python -m pip install --disable-pip-version-check --quiet requests
 
       - name: Compile
         run: |
@@ -53,20 +53,24 @@ jobs:
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_flow_attribution_strict.py
 
-      - name: Verify LS realtime and flow snapshot
+      - name: Verify LS REST prices and flow snapshot
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json
           python scripts/kospi_shock_episode_watch.py --test --test-seconds 15
           python - <<'PY'
           import json
           d=json.load(open("out/kospi_shock_episode_raw.json", encoding="utf-8"))
+          price=d.get("last_price_snapshot") or {}
+          assert (price.get("KOSPI") or {}).get("price") is not None, price
+          assert (price.get("선물") or {}).get("price") is not None, price
+          assert d.get("backfill_rows") is not None, d
           snap=d.get("last_flow_snapshot") or {}
           assert snap.get("현물") is not None, snap
           assert snap.get("선물") is not None, snap
           assert snap.get("프로그램") is not None, snap
           pgm=snap["프로그램"]
           assert all(k in pgm for k in ("전체","차익","비차익","베이시스")), pgm
-          print("ls_flow_snapshot_valid=true", pgm)
+          print("ls_rest_runtime_valid=true", price, "backfill_rows=", d.get("backfill_rows"), "program=", pgm)
           PY
 
       - name: Upload test artifacts
