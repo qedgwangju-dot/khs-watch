@@ -28,6 +28,7 @@ UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot
 FRESH_HOURS = 36
 FORMAT_VERSION = 3
 CAPITAL_RETURN_TRACK_VERSION = 1
+CAPITAL_RETURN_CORRECTION_VERSION = 1
 
 OFFICIAL_Q2_TRANSCRIPT = (
     "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-"
@@ -506,6 +507,34 @@ def main() -> None:
     events = read_events()
     new_events = choose_new(events, seen_ids, seen_fact_keys, now)
 
+    # One-time repair for the 2026-09-28 buyback miss: an earlier v3 code run
+    # detected the new capital-return facts but the old pretty-printer stripped
+    # them from the Telegram body before delivery. Re-emit the already-verified
+    # Reuters-backed state once, then permanently mark the correction complete.
+    if (
+        not new_events
+        and int(state.get("capital_return_correction_version") or 0) < CAPITAL_RETURN_CORRECTION_VERSION
+        and float(capital_state.get("additional_authorization_usd_b") or 0) == 150.0
+        and float(capital_state.get("remaining_authorization_usd_b") or 0) == 235.0
+        and capital_state.get("source_url")
+    ):
+        correction_text = (
+            "NVIDIA announced that its board authorized an additional $150 billion under the existing "
+            "share repurchase program, increasing the total remaining amount authorized to $235 billion. "
+            "The company expects to execute the total remaining program through fiscal year 2028."
+        )
+        new_events = [{
+            "id": "capital_return_correction_20260928",
+            "kind": "capital_return",
+            "fact_key": "nvidia_capital_return_correction_20260928",
+            "title": "NVIDIA 자사주 매입 승인 확대",
+            "description": correction_text,
+            "source": capital_state.get("source") or "Reuters",
+            "published_at_kst": capital_state.get("observed_at_kst") or now.isoformat(timespec="seconds"),
+            "direct_link": capital_state.get("source_url") or "",
+            "rank": 99,
+        }]
+
     # Preserve the prior v2 context-correction behavior only for pre-v2 states.
     # The v3 migration adds capital-return coverage; it must not resend old demand/safety facts.
     old_format = int(state.get("format_version") or 0)
@@ -570,6 +599,9 @@ def main() -> None:
         "alert_generated": bool(new_events),
         "format_version": FORMAT_VERSION,
         "capital_return_track_version": CAPITAL_RETURN_TRACK_VERSION,
+        "capital_return_correction_version": CAPITAL_RETURN_CORRECTION_VERSION if any(
+            e.get("fact_key") == "nvidia_capital_return_correction_20260928" for e in new_events
+        ) else int(state.get("capital_return_correction_version") or 0),
         "capital_return_state": capital_state,
     }
     write_state(state)
