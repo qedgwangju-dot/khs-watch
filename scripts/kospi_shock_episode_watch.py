@@ -680,21 +680,9 @@ class Watch:
         }
         self.raw["last_price_snapshot"] = snap
 
-        # 옵션은 5초마다 REST t2111로 갱신한다. 선물 포함 최대 6회/5초라 t2111 10회/초 제한 이내.
-        if now_ts - self.last_option_poll >= 5:
-            self.last_option_poll = now_ts
-            option_raw = {}
-            for opt in self.put_defs:
-                try:
-                    q = fetch_derivative_quote(self.token, opt["code"])
-                    p = fnum(q.get("price"))
-                    if p is not None and p >= 0:
-                        self.puts[opt["code"]].append((now_ts, p))
-                        option_raw[opt["code"]] = p
-                except Exception as exc:
-                    option_raw[opt["code"]] = f"ERROR:{type(exc).__name__}"
-                time.sleep(0.12)
-            self.raw["last_option_prices"] = option_raw
+        # 옵션은 핵심 가격/수급 감시와 분리한다.
+        # 느린 옵션 조회가 KOSPI·선물 폴링을 지연시키지 않도록 주 루프에서는 조회하지 않는다.
+
 
     async def run(self, until: dt.time, test_seconds: int | None = None) -> None:
         self.seed_backfill()
