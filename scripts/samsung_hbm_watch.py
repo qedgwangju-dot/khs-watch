@@ -33,7 +33,9 @@ MONTHLY_DAY = 15
 COMPARE_VERSION = 4
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
+BROKER_FORECAST_TRACK_VERSION = 1
 SHARE_REVISION_THRESHOLD_PP = 3.0
+BROKER_ASP_REVISION_THRESHOLD_PP = 5.0
 SHARE_ACTUAL_DEVIATION_THRESHOLD_PP = 5.0
 SHARE_PARITY_GAP_PP = 5.0
 OPS_TRACK_VERSION = 1
@@ -74,6 +76,20 @@ SHARE_FORECAST_BASELINES = {
 # Counterpoint official 2Q26 actual HBM revenue-share baseline.
 SHARE_ACTUAL_BASELINES = {
     "counterpoint|sales|2026Q2": {"skhynix": 50.0, "samsung": 33.0, "micron": 18.0, "source": "Counterpoint 2026-09-03"},
+}
+
+# User-provided J.P. Morgan 2026-09-18 Samsung Electronics 3Q preview.
+# Seed current facts so the integration itself does not backfill/re-alert the report.
+BROKER_FORECAST_BASELINES = {
+    "jpmorgan|samsung|2027": {
+        "asp_yoy_pct": 64.0,
+        "previous_asp_yoy_pct": 48.0,
+        "stack_mainstream": "12hi",
+        "eps_revision_pct": {"2026": -4.0, "2027": -4.6},
+        "fx_headwind": True,
+        "source": "사용자 제공 J.P. Morgan 2026-09-18 리포트",
+        "observed_at": "baseline",
+    },
 }
 
 # Structured operating baselines. These are seeded only to prevent a repeat
@@ -144,6 +160,10 @@ QUERIES = [
     '"MAPC" HBM4 Malaysia prototype validation',
     '"J.P. Morgan" HBM market share Samsung SK hynix Micron',
     '"JP Morgan" HBM share 2027 Samsung SK hynix',
+    '"J.P. Morgan" Samsung HBM ASP 2027 12Hi',
+    '"JP Morgan" Samsung HBM average selling price 2027 mix 12-Hi',
+    '"삼성전자" HBM 평균판매단가 J.P. Morgan 12단 2027',
+    '"Samsung Electronics" HBM blended ASP FY27 12Hi JPMorgan',
     '"UBS" HBM market share Samsung SK hynix Micron',
     '"Morgan Stanley" HBM market share Samsung SK hynix Micron',
     '"Citi" HBM market share Samsung SK hynix Micron',
@@ -1461,6 +1481,277 @@ def share_event_summary(e: dict) -> list[str]:
 
 
 
+def _broker_company(text: str) -> str:
+    low = (text or "").lower()
+    if "samsung" in low or "삼성전자" in text or "삼성" in text:
+        return "samsung"
+    if "sk hynix" in low or "sk하이닉스" in text or "하이닉스" in text:
+        return "skhynix"
+    if "micron" in low or "마이크론" in text:
+        return "micron"
+    return ""
+
+
+def _broker_page_text(e: dict, base_text: str) -> str:
+    low = base_text.lower()
+    if "hbm" not in low or not _share_institution(base_text):
+        return base_text
+    if not any(k in low for k in (
+        "asp", "average selling price", "평균판매단가", "평균 판매단가",
+        "8-hi", "8hi", "12-hi", "12hi", "16-hi", "16hi", "8단", "12단", "16단",
+    )):
+        return base_text
+    url = e.get("direct_link") or ""
+    if not url:
+        return base_text
+    try:
+        raw = fetch(url, timeout=12).decode("utf-8", errors="ignore")
+        page = clean(raw)
+        if page:
+            return (base_text + " " + page[:28000]).strip()
+    except Exception:
+        pass
+    return base_text
+
+
+def _broker_period(text: str) -> str:
+    patterns = [
+        r"FY\s*'?([0-9]{2})(?:E|F)?\b",
+        r"\b(20[0-9]{2})(?:E|F)\b",
+        r"\b(20[0-9]{2})\b",
+    ]
+    for pat in patterns:
+        for m in re.finditer(pat, text, re.I):
+            raw = m.group(1)
+            year = int(raw) + 2000 if len(raw) == 2 else int(raw)
+            window = text[max(0, m.start()-160):min(len(text), m.end()+160)].lower()
+            if "asp" in window or "average selling price" in window or "평균판매단가" in window or "평균 판매단가" in window:
+                return str(year)
+    return ""
+
+
+def _extract_hbm_asp_forecast(text: str) -> tuple[float | None, float | None]:
+    previous = None
+    current = None
+
+    previous_patterns = [
+        r"(?:previous|prior|기존)[^%]{0,80}?(?:estimate|forecast|예상|전망)[^%]{0,40}?\(?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%",
+        r"(?:from|기존)\s*\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^.]{0,80}?(?:to|→|에서)",
+    ]
+    for pat in previous_patterns:
+        m = re.search(pat, text, re.I)
+        if m:
+            previous = float(m.group(1))
+            break
+
+    current_patterns = [
+        r"(?:now\s+forecast|now\s+expect|현재\s*(?:전망|예상))[^%]{0,80}?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^.]{0,90}?(?:blended\s+)?(?:hbm\s+)?asp",
+        r"(?:now\s+forecast|now\s+expect|현재\s*(?:전망|예상))[^%]{0,80}?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^.]{0,90}?(?:평균판매단가|평균 판매단가)",
+        r"(?:hbm\s+)?(?:blended\s+)?asp[^%]{0,100}?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%\s*(?:y/y|yoy|year[- ]over[- ]year|전년)",
+        r"(?:hbm\s+)?(?:혼합\s+)?(?:평균판매단가|평균 판매단가)[^%]{0,100}?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%",
+        r"\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:blended\s+)?(?:hbm\s+)?asp",
+    ]
+    for pat in current_patterns:
+        m = re.search(pat, text, re.I)
+        if m:
+            current = float(m.group(1))
+            break
+    return current, previous
+
+
+def _extract_stack_mainstream(text: str) -> str:
+    patterns = [
+        r"\b(8|12|16)\s*[- ]?hi\b[^.]{0,120}?(?:mainstream|lead(?:ing)?\s+(?:shipments|mix)|dominant|majority)",
+        r"(?:mainstream|dominant|주류|주력)[^.]{0,100}?\b(8|12|16)\s*[- ]?hi\b",
+        r"\b(8|12|16)\s*단\b[^.]{0,120}?(?:주류|주력|비중\s*확대)",
+        r"(?:주류|주력)[^.]{0,100}?\b(8|12|16)\s*단\b",
+    ]
+    for pat in patterns:
+        m = re.search(pat, text, re.I)
+        if m:
+            return m.group(1) + "hi"
+    return ""
+
+
+def _extract_eps_revision_context(text: str) -> dict[str, float]:
+    out: dict[str, float] = {}
+    low = text.lower()
+    if "eps" not in low:
+        return out
+    for year in ("2026", "2027", "2028"):
+        yy = year[2:]
+        patterns = [
+            rf"(?:FY\s*'?{yy}|{year})(?:E|F)?[^.%]{{0,100}}?(?:adj\.?\s*)?EPS[^.%]{{0,80}}?([+-]?\d+(?:\.\d+)?)\s*%",
+            rf"(?:adj\.?\s*)?EPS[^.%]{{0,100}}?(?:FY\s*'?{yy}|{year})(?:E|F)?[^.%]{{0,80}}?([+-]?\d+(?:\.\d+)?)\s*%",
+        ]
+        for pat in patterns:
+            m = re.search(pat, text, re.I)
+            if m:
+                value = float(m.group(1))
+                # A table delta column is typically a signed revision. Preserve
+                # the sign; do not reinterpret it as EPS growth.
+                if -50 <= value <= 50:
+                    out[year] = value
+                    break
+    return out
+
+
+def extract_broker_hbm_forecasts(e: dict) -> list[dict]:
+    base = clean(f"{e.get('title','')} {e.get('description','')} {e.get('source','')}")
+    low = base.lower()
+    if "hbm" not in low:
+        return []
+    institution = _share_institution(base)
+    company = _broker_company(base)
+    if not institution or not company:
+        return []
+    if not any(k in low for k in (
+        "asp", "average selling price", "평균판매단가", "평균 판매단가",
+        "8-hi", "8hi", "12-hi", "12hi", "16-hi", "16hi", "8단", "12단", "16단",
+    )):
+        return []
+
+    text = _broker_page_text(e, base)
+    current_asp, previous_asp = _extract_hbm_asp_forecast(text)
+    stack = _extract_stack_mainstream(text)
+    if current_asp is None and not stack:
+        return []
+
+    period = _broker_period(text)
+    if not period:
+        return []
+
+    eps_revision = _extract_eps_revision_context(text)
+    low_text = text.lower()
+    fx_headwind = any(k in low_text for k in (
+        "fx headwind", "currency headwind", "strong krw", "krw strength",
+        "환율 부담", "환율 역풍", "원화 강세",
+    ))
+    return [{
+        "key": f"{institution}|{company}|{period}",
+        "institution": institution,
+        "company": company,
+        "period": period,
+        "asp_yoy_pct": current_asp,
+        "previous_asp_yoy_pct": previous_asp,
+        "stack_mainstream": stack,
+        "eps_revision_pct": eps_revision,
+        "fx_headwind": fx_headwind,
+        "source": e.get("source") or "",
+        "published_at_kst": e.get("published_at_kst") or "",
+        "direct_link": e.get("direct_link") or "",
+        "title": e.get("title") or "",
+        "event_id": e.get("id") or "",
+    }]
+
+
+def _broker_label(institution: str) -> str:
+    return {
+        "jpmorgan": "J.P. Morgan",
+        "ubs": "UBS",
+        "morgan_stanley": "Morgan Stanley",
+        "citi": "Citi",
+        "bofa": "BofA",
+        "goldman_sachs": "Goldman Sachs",
+    }.get(institution, institution)
+
+
+def _company_label(company: str) -> str:
+    return {"samsung": "삼성전자", "skhynix": "SK하이닉스", "micron": "Micron"}.get(company, company)
+
+
+def _stack_ko(stack: str) -> str:
+    m = re.fullmatch(r"(8|12|16)hi", stack or "", re.I)
+    return (m.group(1) + "단") if m else (stack or "미확인")
+
+
+def _broker_material_change(old: dict, obs: dict) -> tuple[bool, list[str]]:
+    reasons: list[str] = []
+    old_asp = old.get("asp_yoy_pct")
+    new_asp = obs.get("asp_yoy_pct")
+    if old_asp is not None and new_asp is not None:
+        delta = float(new_asp) - float(old_asp)
+        if abs(delta) >= BROKER_ASP_REVISION_THRESHOLD_PP:
+            reasons.append(f"HBM 혼합 평균판매단가 전망 {float(old_asp):+.1f}%→{float(new_asp):+.1f}% YoY ({delta:+.1f}%p)")
+        if (float(old_asp) < 0 <= float(new_asp)) or (float(old_asp) > 0 >= float(new_asp)):
+            reasons.append("HBM 평균판매단가 방향 반전")
+    elif old_asp is None and new_asp is not None:
+        reasons.append(f"HBM 혼합 평균판매단가 전망 {float(new_asp):+.1f}% YoY 신규 확인")
+
+    old_stack = old.get("stack_mainstream") or ""
+    new_stack = obs.get("stack_mainstream") or ""
+    if new_stack and old_stack != new_stack:
+        reasons.append(f"주력 적층 {_stack_ko(old_stack)}→{_stack_ko(new_stack)}")
+    return bool(reasons), reasons
+
+
+def broker_forecast_change_event(obs: dict, old: dict | None, reasons: list[str]) -> dict:
+    return {
+        "id": "broker|" + obs["key"],
+        "broker_observation": obs,
+        "title": obs.get("title") or f"{_broker_label(obs['institution'])} HBM 평균판매단가·제품혼합 전망",
+        "description": "",
+        "source": obs.get("source") or _broker_label(obs["institution"]),
+        "published_at_kst": obs.get("published_at_kst") or "",
+        "direct_link": obs.get("direct_link") or "",
+        "rank": 97,
+        "broker_forecast_change": {
+            "institution": _broker_label(obs["institution"]),
+            "company": _company_label(obs["company"]),
+            "period": obs["period"],
+            "asp_yoy_pct": obs.get("asp_yoy_pct"),
+            "previous_state_asp_yoy_pct": old.get("asp_yoy_pct") if old else None,
+            "report_previous_asp_yoy_pct": obs.get("previous_asp_yoy_pct"),
+            "stack_mainstream": obs.get("stack_mainstream") or "",
+            "old_stack_mainstream": (old or {}).get("stack_mainstream") or "",
+            "eps_revision_pct": obs.get("eps_revision_pct") or {},
+            "fx_headwind": bool(obs.get("fx_headwind")),
+            "reasons": reasons,
+        },
+    }
+
+
+def broker_forecast_event_summary(e: dict) -> list[str]:
+    ch = e["broker_forecast_change"]
+    lines = [
+        "<b>HBM 평균판매단가·제품혼합 전망 변화</b>",
+        f"• 기관: <b>{html.escape(ch['institution'])}</b> · 기업: <b>{html.escape(ch['company'])}</b> · 대상: <b>{html.escape(ch['period'])}</b>",
+    ]
+    current = ch.get("asp_yoy_pct")
+    previous = ch.get("previous_state_asp_yoy_pct")
+    if current is not None:
+        lines.append(f"• HBM 본업: 혼합 평균판매단가 <b>{float(current):+.1f}% YoY</b>")
+    if previous is not None and current is not None:
+        delta = float(current) - float(previous)
+        level = ((1.0 + float(current)/100.0) / (1.0 + float(previous)/100.0) - 1.0) * 100.0
+        lines.append(f"• 직전 전망: {float(previous):+.1f}% YoY → <b>{delta:+.1f}%p</b> 상향/하향 · 기존 가격 레벨 대비 <b>{level:+.1f}%</b>")
+    elif ch.get("report_previous_asp_yoy_pct") is not None and current is not None:
+        previous_report = float(ch["report_previous_asp_yoy_pct"])
+        delta = float(current) - previous_report
+        level = ((1.0 + float(current)/100.0) / (1.0 + previous_report/100.0) - 1.0) * 100.0
+        lines.append(f"• 리포트 내부 직전치: {previous_report:+.1f}% YoY → <b>{delta:+.1f}%p</b> · 기존 가격 레벨 대비 <b>{level:+.1f}%</b>")
+    if ch.get("stack_mainstream"):
+        old_stack = _stack_ko(ch.get("old_stack_mainstream") or "")
+        new_stack = _stack_ko(ch["stack_mainstream"])
+        if ch.get("old_stack_mainstream"):
+            lines.append(f"• 제품 혼합: 주력 적층 <b>{old_stack}→{new_stack}</b>")
+        else:
+            lines.append(f"• 제품 혼합: 주력 적층 <b>{new_stack}</b>")
+    eps = ch.get("eps_revision_pct") or {}
+    if eps:
+        parts = [f"{year}E {float(value):+.1f}%" for year, value in sorted(eps.items())]
+        lines.append("• 전체 EPS 수정: " + html.escape(" · ".join(parts)) + " — HBM 평균판매단가 개선과 별도 축")
+    if ch.get("fx_headwind"):
+        lines.append("• 환율 분리: <b>원화 강세·환율 부담은 전체 EPS 역풍</b>이며, HBM 물량·가격·제품혼합 개선과 별도로 추적합니다.")
+    if ch.get("reasons"):
+        lines.append("• 이번 변화: " + html.escape(" · ".join(ch["reasons"])))
+    lines += [
+        f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}",
+        f"• 근거 제목(한국어): {html.escape(korean_evidence_title(e, 'HBM 평균판매단가·제품혼합 전망 변화'))} · {href(e.get('direct_link') or '', '원문')}",
+    ]
+    return lines
+
+
 def _ops_page_text(e: dict, base_text: str) -> str:
     low = base_text.lower()
     if not any(k in low for k in ("yield", "수율", "unit price", "export price", "수출단가", "평균 수출단가")):
@@ -1641,6 +1932,8 @@ def operating_event_summary(e: dict) -> list[str]:
 
 
 def event_summary(e: dict) -> list[str]:
+    if e.get("broker_forecast_change"):
+        return broker_forecast_event_summary(e)
     if e.get("ops_change"):
         return operating_event_summary(e)
     if e.get("share_change"):
@@ -1829,6 +2122,7 @@ def main() -> None:
 
     share_forecasts = dict(state.get("hbm_share_forecasts") or {})
     share_actuals = dict(state.get("hbm_share_actuals") or {})
+    broker_forecasts = dict(state.get("hbm_broker_forecasts") or {})
     ops_metrics = dict(state.get("hbm_ops_metrics") or {})
     export_unit_prices = dict(state.get("hbm_export_unit_prices") or {})
 
@@ -1843,6 +2137,11 @@ def main() -> None:
                 "observed_at": "baseline",
             })
         state["ops_track_version"] = OPS_TRACK_VERSION
+
+    if int(state.get("broker_forecast_track_version") or 0) < BROKER_FORECAST_TRACK_VERSION:
+        for key, values in BROKER_FORECAST_BASELINES.items():
+            broker_forecasts.setdefault(key, dict(values))
+        state["broker_forecast_track_version"] = BROKER_FORECAST_TRACK_VERSION
 
     if int(state.get("share_track_version") or 0) < SHARE_TRACK_VERSION:
         for key, values in SHARE_FORECAST_BASELINES.items():
@@ -1919,6 +2218,49 @@ def main() -> None:
             share_alert_events.append(share_change_event(obs, None, reasons))
         else:
             share_forecasts[key] = normalized
+
+    # Structured broker forecasts: HBM blended ASP and stack-mix assumptions.
+    structured_broker_event_ids = set()
+    latest_broker_obs: dict[str, dict] = {}
+    for e in events:
+        try:
+            dt = datetime.fromisoformat(e.get("published_at_kst") or "")
+        except Exception:
+            continue
+        if not (cutoff <= dt <= now + timedelta(minutes=10)):
+            continue
+        observations = extract_broker_hbm_forecasts(e)
+        if observations:
+            structured_broker_event_ids.add(e.get("id") or "")
+        for obs in observations:
+            old = latest_broker_obs.get(obs["key"])
+            if old is None or obs.get("published_at_kst", "") > old.get("published_at_kst", ""):
+                latest_broker_obs[obs["key"]] = obs
+
+    broker_alert_events: list[dict] = []
+    for key, obs in latest_broker_obs.items():
+        old = broker_forecasts.get(key)
+        normalized = {
+            "asp_yoy_pct": obs.get("asp_yoy_pct"),
+            "previous_asp_yoy_pct": obs.get("previous_asp_yoy_pct"),
+            "stack_mainstream": obs.get("stack_mainstream") or "",
+            "eps_revision_pct": obs.get("eps_revision_pct") or {},
+            "fx_headwind": bool(obs.get("fx_headwind")),
+            "source": obs.get("source") or "",
+            "observed_at": obs.get("published_at_kst") or "",
+            "title": obs.get("title") or "",
+            "direct_link": obs.get("direct_link") or "",
+        }
+        if old:
+            material, reasons = _broker_material_change(old, obs)
+            if material:
+                broker_alert_events.append(broker_forecast_change_event(obs, old, reasons))
+            else:
+                broker_forecasts[key] = normalized
+            continue
+        broker_alert_events.append(
+            broker_forecast_change_event(obs, None, ["신규 증권사 HBM 평균판매단가·제품혼합 전망"])
+        )
 
     # Structured operating metrics: yield and HBM-related export unit price.
     structured_ops_event_ids = set()
@@ -2022,7 +2364,7 @@ def main() -> None:
     if int(state.get("event_state_version") or 0) < EVENT_STATE_VERSION:
         migrated: dict[str, dict] = {}
         for e in events:
-            if e.get("id") in structured_share_event_ids or e.get("id") in structured_ops_event_ids:
+            if e.get("id") in structured_share_event_ids or e.get("id") in structured_broker_event_ids or e.get("id") in structured_ops_event_ids:
                 continue
             if e.get("id") not in seen:
                 continue
@@ -2046,7 +2388,7 @@ def main() -> None:
     latest_by_topic: dict[str, dict] = {}
     fresh_new = []
     for e in events:
-        if e.get("id") in structured_share_event_ids or e.get("id") in structured_ops_event_ids:
+        if e.get("id") in structured_share_event_ids or e.get("id") in structured_broker_event_ids or e.get("id") in structured_ops_event_ids:
             continue
         try:
             dt = datetime.fromisoformat(e.get("published_at_kst") or "")
@@ -2073,7 +2415,7 @@ def main() -> None:
             fresh_new.append(e)
 
     send_events = sorted(
-        fresh_new + share_alert_events + ops_alert_events,
+        fresh_new + share_alert_events + broker_alert_events + ops_alert_events,
         key=lambda x: x.get("published_at_kst") or "",
     )[:4]
 
@@ -2115,6 +2457,21 @@ def main() -> None:
     elif send_events:
         ALERT.write_text(build_event_alert(send_events, now), encoding="utf-8")
         for e in send_events:
+            if e.get("broker_forecast_change"):
+                obs = e.get("broker_observation") or {}
+                if obs:
+                    broker_forecasts[obs["key"]] = {
+                        "asp_yoy_pct": obs.get("asp_yoy_pct"),
+                        "previous_asp_yoy_pct": obs.get("previous_asp_yoy_pct"),
+                        "stack_mainstream": obs.get("stack_mainstream") or "",
+                        "eps_revision_pct": obs.get("eps_revision_pct") or {},
+                        "fx_headwind": bool(obs.get("fx_headwind")),
+                        "source": obs.get("source") or "",
+                        "observed_at": obs.get("published_at_kst") or "",
+                        "title": obs.get("title") or "",
+                        "direct_link": obs.get("direct_link") or "",
+                    }
+                continue
             if e.get("ops_change"):
                 obs = e.get("ops_observation") or {}
                 if obs:
@@ -2164,6 +2521,7 @@ def main() -> None:
         "event_state_version": EVENT_STATE_VERSION,
         "topic_states": topic_states,
         "share_track_version": SHARE_TRACK_VERSION,
+        "broker_forecast_track_version": BROKER_FORECAST_TRACK_VERSION,
         "ops_track_version": OPS_TRACK_VERSION,
         "hbm_ops_metrics": ops_metrics,
         "hbm_export_unit_prices": export_unit_prices,
@@ -2171,6 +2529,9 @@ def main() -> None:
         "last_ops_alert_count": len([e for e in send_events if e.get("ops_change")]),
         "hbm_share_forecasts": share_forecasts,
         "hbm_share_actuals": share_actuals,
+        "hbm_broker_forecasts": broker_forecasts,
+        "last_broker_forecast_observation_count": len(latest_broker_obs),
+        "last_broker_forecast_alert_count": len([e for e in send_events if e.get("broker_forecast_change")]),
         "last_share_observation_count": len(latest_share_obs),
         "last_share_alert_count": len([e for e in send_events if e.get("share_change")]),
         "last_event_count": len(events),
@@ -2200,6 +2561,7 @@ def main() -> None:
         f"- event_state_version: {EVENT_STATE_VERSION}\n"
         f"- topic_state_count: {len(topic_states)}\n"
         f"- share_track_version: {SHARE_TRACK_VERSION}\n"
+        f"- broker_forecast_track_version: {BROKER_FORECAST_TRACK_VERSION}\n"
         f"- ops_track_version: {OPS_TRACK_VERSION}\n"
         f"- ops_metric_state_count: {len(ops_metrics)}\n"
         f"- export_unit_price_months: {len(export_unit_prices)}\n"
@@ -2207,6 +2569,9 @@ def main() -> None:
         f"- ops_alerts: {len([e for e in send_events if e.get('ops_change')])}\n"
         f"- share_forecast_state_count: {len(share_forecasts)}\n"
         f"- share_actual_state_count: {len(share_actuals)}\n"
+        f"- broker_forecast_state_count: {len(broker_forecasts)}\n"
+        f"- broker_forecast_observations: {len(latest_broker_obs)}\n"
+        f"- broker_forecast_alerts: {len([e for e in send_events if e.get('broker_forecast_change')])}\n"
         f"- share_observations: {len(latest_share_obs)}\n"
         f"- share_alerts: {len([e for e in send_events if e.get('share_change')])}\n"
         f"- fresh_new: {len(fresh_new)}\n"
