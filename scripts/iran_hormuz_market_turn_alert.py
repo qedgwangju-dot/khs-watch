@@ -537,8 +537,13 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
             ("yanbu_restart", ("yanbu", "east-west pipeline", "east west pipeline")),
             ("vlcc_bottleneck", ("vlcc", "bottleneck", "capacity")),
         )
+        def marker_match(term: str) -> bool:
+            if term.isalnum() and len(term) <= 4:
+                return re.search(rf"\b{re.escape(term)}\b", combined) is not None
+            return term in combined
+
         for name, terms in marker_terms:
-            if any(term in combined for term in terms):
+            if any(marker_match(term) for term in terms):
                 markers.append(name)
         if not markers:
             markers = [kind]
