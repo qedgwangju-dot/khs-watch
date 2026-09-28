@@ -2,12 +2,13 @@
   "date": "2026-09-28",
   "samples": [
     {
-      "ts": 1790556974.8915665,
-      "price": 6977.83
+      "ts": 1790570207.7116249,
+      "price": 6937.76
     }
   ],
   "session_high": 7065.9,
-  "sent_session_high": false,
+  "sent_session_high": true,
   "sent_fast": false,
-  "last_alert_ts": null
+  "last_alert_ts": "2026-09-28T13:36:46+09:00",
+  "last_message_id": 79
 }
