@@ -80,7 +80,7 @@ print(f"local_pivot_regression=true start={fmt_clock(hit3['peak_ts'])} window={h
 # GitHub job cannot be mistaken for a healthy market-data stream.
 import inspect
 src = inspect.getsource(Watch.run)
-assert "KOSPI realtime feed stale >75s" in src
-assert "KOSPI200 futures feed stale >90s" in src
+assert "KOSPI REST price stale >15s" in src
+assert "KOSPI200 futures REST price stale >20s" in src
 assert "flow snapshot stale >120s" in src
 print("feed_health_regression=true")
