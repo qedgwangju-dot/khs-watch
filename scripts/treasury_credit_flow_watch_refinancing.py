@@ -157,6 +157,77 @@ def _yield_value(text, tenor):
     return float(m.group(1)) if m else None
 
 
+def _ofr_points(mnemonic, days=45):
+    start = (dt.date.today() - dt.timedelta(days=days)).isoformat()
+    r = requests.get(
+        "https://data.financialresearch.gov/v1/series/full",
+        params={"mnemonic": mnemonic, "start_date": start},
+        headers=app.base.HEADERS,
+        timeout=(8, 30),
+    )
+    r.raise_for_status()
+    payload = r.json()
+
+    found = []
+    def walk(obj):
+        if isinstance(obj, list):
+            if obj and all(
+                isinstance(x, list) and len(x) >= 2 and
+                isinstance(x[0], str) and re.fullmatch(r"20\d{2}-\d{2}-\d{2}", x[0][:10])
+                for x in obj
+            ):
+                for x in obj:
+                    try:
+                        found.append((x[0][:10], float(x[1])))
+                    except Exception:
+                        pass
+            else:
+                for x in obj:
+                    walk(x)
+        elif isinstance(obj, dict):
+            for v in obj.values():
+                walk(v)
+    walk(payload)
+
+    if not found:
+        raise RuntimeError(f"OFR series empty: {mnemonic}")
+    dedup = {}
+    for d, v in found:
+        dedup[d] = v
+    return sorted(dedup.items())
+
+
+def get_repo_stress():
+    sofr = dict(_ofr_points("FNYR-SOFR-A"))
+    tgcr = dict(_ofr_points("FNYR-TGCR-A"))
+    common = sorted(set(sofr) & set(tgcr))
+    if not common:
+        raise RuntimeError("SOFR/TGCR common date missing")
+
+    d = common[-1]
+    prev_dates = [x for x in common if x < d]
+    prev = prev_dates[-1] if prev_dates else None
+    s = sofr[d]
+    t = tgcr[d]
+    spread_bp = (s - t) * 100.0
+    move_bp = (s - sofr[prev]) * 100.0 if prev else 0.0
+
+    # Internal monitoring bands. This is a compact funding-stress signal, not an official OFR label.
+    if spread_bp >= 10 or move_bp >= 10:
+        state = "스트레스"
+    elif spread_bp >= 5 or move_bp >= 5:
+        state = "주의"
+    else:
+        state = "안정"
+
+    sign1 = "+" if spread_bp >= 0 else ""
+    sign2 = "+" if move_bp >= 0 else ""
+    return (
+        f"Repo: {state} | SOFR {s:.2f}% / TGCR {t:.2f}% | "
+        f"스프레드 {sign1}{spread_bp:.0f}bp | SOFR 전일 {sign2}{move_bp:.0f}bp | {d}"
+    )
+
+
 def _inflow(s):
     return "순유입" in s
 
@@ -204,6 +275,11 @@ def _compact_report(raw_text):
 
     y10, y30 = _yield_value(raw_text, "10년"), _yield_value(raw_text, "30년")
     tech_head, tech_reason = stress._market_stress(y10, y30)
+
+    try:
+        repo_line = get_repo_stress()
+    except Exception:
+        repo_line = "Repo: 확인 대기 | OFR/NY Fed 공식값 조회 실패"
 
     gr = readable.get_growth_cost_snapshot()
     if gr.get("ok"):
@@ -253,6 +329,7 @@ def _compact_report(raw_text):
         "",
         f"시장 기술압력: {tech_head}",
         f"→ {tech_reason}",
+        f"{repo_line}",
         f"{gr_line}",
         f"{refi_line}",
         "",
@@ -265,10 +342,10 @@ def _compact_report(raw_text):
         "",
         "[오늘의 결론]",
         conclusion,
-        "다음 경보: 10년물 5% 돌파·HYG OAS 재확대·R>G 전환 여부",
+        "다음 경보: 10년물 5% 돌파·Repo 스트레스·HYG OAS 재확대·R>G 전환 여부",
         "",
         f"기준: ETF·미 재무부 {treasury_date} | MSPD {refi_date}",
-        "출처: iShares · U.S. Treasury · Treasury FiscalData · BEA",
+        "출처: iShares · U.S. Treasury · Treasury FiscalData · OFR/NY Fed · BEA",
     ]
     return "\n".join(lines)
 
@@ -278,7 +355,7 @@ def _format_html(chunk):
     bold_prefixes = (
         "전체 방향:", "국채 자금:", "회사채 자금:", "신용 위험:",
         "금리:", "커브:", "오늘의 주도축:", "시장 기술압력:",
-        "G-R:", "차환:", "다음 경보:",
+        "Repo:", "G-R:", "차환:", "다음 경보:",
     )
     for line in chunk.splitlines():
         escaped = html.escape(line, quote=False)
