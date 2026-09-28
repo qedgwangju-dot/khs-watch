@@ -51,11 +51,11 @@
     "as_of_date": "2026-08-27"
   },
   "rate_signal_upgrade": {
-    "version": 3,
-    "updated_at_kst": "2026-09-28T09:41:30+09:00",
+    "version": 4,
+    "updated_at_kst": "2026-09-28T09:48:47+09:00",
     "risk_score": 5,
     "grade_emoji": "🟠",
-    "grade_label": "인상 압력 확대",
+    "grade_label": "인상 압력 높음",
     "next_mpc_date": "2026-10-22",
     "next_mpc_source": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?menuNo=200755&mtgSe=A",
     "components": {
@@ -84,8 +84,8 @@
       "housing": null,
       "oil": {
         "date": "2026-09-28",
-        "brent_usd": 98.45,
-        "change_5d_pct": -1.88,
+        "brent_usd": 98.29,
+        "change_5d_pct": -2.04,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
@@ -96,6 +96,12 @@
     "seen_rhetoric_hashes": [
       "5be88233156f29ad1bc2ecc1a91836e3822516286e2c5ed7f0d36c0f802c6568",
       "cfc9ecc85da2f4cf06e52a4322dc9c7e5764e4f4b5d5a6c343b20b7ddf0d2528"
-    ]
+    ],
+    "notification_policy": {
+      "score_only_change_suppressed": true,
+      "oil_relief_to_neutral_suppressed": true,
+      "oil_alert_requires_positive_pressure_bucket": true,
+      "official_data_or_policy_event_priority": true
+    }
   }
 }
