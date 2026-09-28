@@ -24,30 +24,34 @@
     {
       "ts": "2026-09-28T20:16:48+09:00",
       "value": 1361.4
+    },
+    {
+      "ts": "2026-09-28T23:35:04+09:00",
+      "value": 1359.6
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-09-28T20:16:48+09:00",
+    "checked_at": "2026-09-28T23:35:04+09:00",
     "market_phase": "장마감 후",
     "fx": {
-      "value": 1361.4,
-      "prev_close": null,
+      "value": 1359.6,
+      "prev_close": 1366.0,
       "naver_prev_close": 1359.0,
       "date": "2026-09-28",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
-      "prev_close_source": null,
-      "basis_error": "ConnectTimeout: HTTPSConnectionPool(host='ksureapi.einfomax.co.kr', port=443): Max retries exceeded with url: /v2/datafeed/ksure/fxlist?page=11 (Caused by ConnectTimeoutError(<HTTPSConnection(host='ksureapi.einfomax.co.kr', port=443) at 0x7f512d0696a0>, 'Connection to ksureapi.einfomax.co.kr timed out. (connect timeout=25)'))",
+      "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20260924153239128",
+      "basis_error": null,
       "basis_reused": false
     },
     "session_low": 1357.7,
-    "rebound_krw": 3.7000000000000455,
-    "rebound_pct": 0.27251970243795665,
-    "daily_krw": null,
-    "daily_pct": null,
+    "rebound_krw": 1.8999999999998636,
+    "rebound_pct": 0.13994254990055133,
+    "daily_krw": -6.400000000000091,
+    "daily_pct": -0.4685212298682351,
     "kospi_pct": -2.7,
     "ship": {
       "avg": 0.04749999999999997,
