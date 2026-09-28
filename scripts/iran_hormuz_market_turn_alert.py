@@ -814,7 +814,7 @@ def build_physical_flow_alert_body(
             lines.append(f"원문: {row.link}")
 
     lines.extend(["", "[주의]"])
-    lines.append("STS 물량은 같은 배럴이 여러 번 이송될 수 있어 호르무즈 통과량·중동 전체 수출량과 합산하지 않습니다.")
+    lines.append("STS는 같은 배럴이 여러 번 이송될 수 있어 호르무즈 통과량·중동 전체 수출량과 합산하지 않습니다.")
     lines.append("대통령·정부 발언은 참고만 하고, 실물 물량·통항 데이터 없이 '정상화'로 판정하지 않습니다.")
 
     return "\n".join(lines).strip() + "\n"
