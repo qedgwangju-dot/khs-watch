@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-29T08:42:37+09:00",
+  "updated_at_kst": "2026-09-29T08:45:33+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "162bef5431cfeab3494ce984",
@@ -75,6 +75,7 @@
   "alert_generated": false,
   "format_version": 3,
   "capital_return_track_version": 1,
+  "capital_return_dedupe_version": 1,
   "capital_return_correction_version": 1,
   "capital_return_state": {
     "remaining_authorization_usd_b": 235,
@@ -88,9 +89,6 @@
     "source": "Reuters",
     "source_rank": 95
   },
-  "schedule_audit_version": 1,
-  "last_run_event": "push",
-  "last_push_check_kst": "2026-09-29T08:42:37+09:00",
   "last_successful_delivery_kst": "2026-09-29T00:42:23+09:00",
   "telegram_message_id": 161,
   "bot_username": "khs88798879887988798879_bot",
@@ -100,6 +98,8 @@
     "message_id": 161,
     "confirmed_at_kst": "2026-09-29T00:42:23+09:00"
   },
+  "schedule_audit_version": 1,
+  "last_run_event": "push",
   "last_schedule_check_kst": "2026-09-29T07:11:42+09:00",
-  "capital_return_dedupe_version": 1
+  "last_push_check_kst": "2026-09-29T08:45:33+09:00"
 }
