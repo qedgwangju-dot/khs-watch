@@ -73,6 +73,11 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         new = dict(old, mainstream_layers=12)
         self.assertTrue(any("8단→12단" in x for x in w._hbm_market_pricing_changes(old, new)))
 
+    def test_hbm_market_break_even_summary_uses_8hi_premium(self):
+        text = w._hbm_market_break_even_summary(w.HBM_MARKET_PRICE_BASELINE)
+        self.assertIn("스택당 비트 -33.3%", text)
+        self.assertIn("+25.0~36.4%", text)
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
