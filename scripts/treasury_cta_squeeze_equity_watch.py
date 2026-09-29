@@ -118,11 +118,25 @@ def _nq_cftc_weekly() -> dict:
 
 
 def _nq_price() -> dict:
-    """Delayed/distributed NQ price lane. Never use Yahoo OI in this watcher."""
+    """Use official CME NQ price first; Yahoo is display-only fallback."""
+    try:
+        row = watcher.cme_front("NQ")
+        if row and row.get("last") is not None and row.get("pct_change") is not None:
+            return {
+                "price": float(row["last"]),
+                "previous_close": None,
+                "pct_change": float(row["pct_change"]),
+                "source": "CME official NQ quote",
+                "official": True,
+                "month": row.get("month") or "",
+            }
+    except Exception:
+        pass
+
     data = watcher.fetch_json(YAHOO_NQ_URL)
     result = (((data or {}).get("chart") or {}).get("result") or [None])[0]
     if not result:
-        raise RuntimeError("Yahoo NQ chart result missing")
+        raise RuntimeError("NQ official CME unavailable and Yahoo fallback missing")
     meta = result.get("meta") or {}
     quote = (((result.get("indicators") or {}).get("quote") or [{}])[0])
     closes = [float(x) for x in (quote.get("close") or []) if x is not None]
@@ -139,7 +153,8 @@ def _nq_price() -> dict:
         "price": price,
         "previous_close": prev,
         "pct_change": pct,
-        "source": "Yahoo distributed/delayed NQ=F",
+        "source": "Yahoo distributed/delayed NQ=F fallback",
+        "official": False,
     }
 
 
@@ -182,21 +197,32 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     )
 
     pctile = hist.get("short_extreme_percentile_3y")
-    if isinstance(pctile, (int, float)):
-        # When official three-year history is available, it outranks a simple
-        # one-week short/OI threshold. This prevents a large absolute short from
-        # being mislabeled as historically extreme.
-        nq_extreme = float(pctile) >= 90.0
-    else:
-        nq_extreme = (
-            (nq.get("leveraged_net") or 0) < 0
-            and float(nq.get("short_share_oi_pct") or 0) >= 25.0
-        )
+    nq_history_ready = (
+        isinstance(pctile, (int, float))
+        and int(hist.get("sample_n") or 0) >= 150
+    )
+    # Never infer a historical extreme from one week's absolute short/OI.
+    nq_extreme = nq_history_ready and float(pctile) >= 90.0
+
+    try:
+        report_iso = datetime.strptime(str(nq.get("report_date") or ""), "%B %d, %Y").date().isoformat()
+    except Exception:
+        report_iso = None
+    nq_history_fresh = bool(report_iso and hist.get("end_date") == report_iso)
 
     nq_price_up = (price.get("pct_change") is not None and float(price["pct_change"]) > 0.20)
+    nq_price_official = bool(price.get("official"))
     nq_oi_down = (nq.get("open_interest_wow") is not None and int(nq["open_interest_wow"]) < 0)
     nq_short_cover = (nq.get("leveraged_net_wow") is not None and int(nq["leveraged_net_wow"]) > 0)
-    nq_confirmed = nq_price_up and nq_oi_down and nq_short_cover
+    # "Confirmed" is fail-closed: official CME price + fresh same-week CFTC history required.
+    nq_confirmed = (
+        nq_price_official
+        and nq_history_ready
+        and nq_history_fresh
+        and nq_price_up
+        and nq_oi_down
+        and nq_short_cover
+    )
 
     treasury_evidence = bool(watcher.squeeze_evidence(snapshot, previous))
     repo_ok, repo_worse = audited._repo_not_worse(snapshot, previous)
@@ -228,7 +254,10 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         "treasury_short_present": treasury_short_present,
         "treasury_confirmed": treasury_confirmed,
         "nq_extreme": nq_extreme,
+        "nq_history_ready": nq_history_ready,
+        "nq_history_fresh": nq_history_fresh,
         "nq_price_up": nq_price_up,
+        "nq_price_official": nq_price_official,
         "nq_oi_down": nq_oi_down,
         "nq_short_cover": nq_short_cover,
         "nq_confirmed": nq_confirmed,
@@ -284,7 +313,7 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
         f"• NQ 순숏 명목금액: {_nq_notional_krw(nq, price, fx)}"
         " (NQ 지수×$20×순계약수×환율, 실제 증거금·손익 아님)\n"
         "• 확정은 ZN 가격↑·동일범위 OI↓와 NQ 가격↑·CFTC 주간 OI↓·NQ 순숏 축소가 함께 붙을 때만 합니다.\n"
-        "※ CFTC 주간 OI와 Yahoo 지연가격은 시점이 달라 ‘동시 장중 신호’로 과장하지 않습니다.\n"
+        "※ CFTC OI·포지션은 주간 후행자료입니다. CME 공식 NQ 가격과도 같은 시점 자료가 아니므로 ‘동시 장중 신호’로 과장하지 않습니다.\n"
     )
 
 
