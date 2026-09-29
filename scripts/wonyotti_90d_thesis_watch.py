@@ -993,7 +993,7 @@ def main() -> None:
     errors.extend(part)
 
     # Farside can update a partially reported day intraday. A partial print must be
-    # identical on two consecutive 30-minute checks before it can trigger an alert.
+    # identical on two consecutive successful checks before it can trigger an alert.
     old_crypto = old.get("crypto") or {}
     for flow_key in ("btc_etf", "eth_etf"):
         current = crypto.get(flow_key) or {}
@@ -1046,22 +1046,33 @@ def main() -> None:
         signals = build_signals(old, new_state, news_items)
 
         old_health_streaks = old.get("health_error_streaks") or {}
+        labels = {
+            "crypto_prices": "암호화폐 현물가격",
+            "crypto_derivatives": "암호화폐 선물 펀딩·미결제약정",
+            "btc_etf": "BTC 현물 ETF 자금흐름",
+            "eth_etf": "ETH 현물 ETF 자금흐름",
+            "rates": "미국 10년 명목·실질금리",
+            "nvidia_10q": "NVIDIA 공식 10-Q",
+        }
         for key, streak in health_streaks.items():
-            if streak == 2 and int(old_health_streaks.get(key) or 0) < 2:
-                labels = {
-                    "crypto_prices": "암호화폐 현물가격",
-                    "crypto_derivatives": "암호화폐 선물 펀딩·미결제약정",
-                    "btc_etf": "BTC 현물 ETF 자금흐름",
-                    "eth_etf": "ETH 현물 ETF 자금흐름",
-                    "rates": "미국 10년 명목·실질금리",
-                    "nvidia_10q": "NVIDIA 공식 10-Q",
-                }
+            old_streak = int(old_health_streaks.get(key) or 0)
+            if streak == 2 and old_streak < 2:
                 signals.append((
                     "감시원천 이상",
                     f"{labels.get(key, key)} 원천이 2회 연속 조회 실패",
                     "해당 축은 복구 전까지 투자판정 알림을 보류",
                     "데이터 공백을 시장 변화로 오인하지 않도록 기술 경보만 송출",
                     "다음 15분 실행 또는 독립 감시자 재호출에서 원천 복구 여부",
+                    None,
+                ))
+            elif streak == 0 and old_streak >= 2:
+                recovery_detail = "복수 원천 교차검증 정상" if key == "crypto_prices" else "원천 조회 정상"
+                signals.append((
+                    "감시원천 복구",
+                    f"{labels.get(key, key)} 원천이 복구됨",
+                    recovery_detail,
+                    "기술 장애가 해소되어 해당 축의 투자판정 재개",
+                    "다음 실행에서도 연속 정상 여부 확인",
                     None,
                 ))
 
