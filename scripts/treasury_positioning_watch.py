@@ -10,6 +10,8 @@ from zoneinfo import ZoneInfo
 
 import requests
 
+from global_rates_watch import fetch_ust_curve
+
 KST = ZoneInfo("Asia/Seoul")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE = ROOT / "data" / "treasury_positioning_state.json"
@@ -196,6 +198,39 @@ def repo_snapshot():
     }
 
 
+def jpm_30y_signal(y30):
+    if y30 >= 6.00:
+        return "6.00% 이상 → 장기금리 극단 스트레스"
+    if y30 >= 5.78:
+        return "5.78% 이상 → JPM Equal Swings 약세 목표 구간"
+    if y30 >= 5.59:
+        return "5.59% 상향 돌파 → 채권 약세 추세 재확인"
+    if y30 > 5.25:
+        return "5.59% 아래·5.25% 위 → 반전 미확인"
+    if y30 > 5.15:
+        return "5.25% 하향 돌파 → 숏커버·CTA 매수전환 후보"
+    return "5.15% 이하 → 채권 반전 신호 강화"
+
+
+def technical_positioning(rows, repo, y30):
+    reductions = sum(1 for x in rows.values() if x["net"] < 0 and x["net_change"] > 0)
+    expansions = sum(1 for x in rows.values() if x["net"] < 0 and x["net_change"] < 0)
+
+    if y30 >= 6.00:
+        return "극단 장기금리 스트레스", "30년물 6%대 → 채권·고밸류 성장주 할인율 부담 극대화"
+    if y30 >= 5.78:
+        return "장기채 약세 2차 목표 구간", f"30년물 {y30:.2f}% + 순숏 확대 {expansions}개 → JPM 5.78% 목표구간 진입"
+    if y30 >= 5.59 and expansions >= 2:
+        return "기술 약세 + 숏 확대", f"30년물 {y30:.2f}%가 5.59% 위 + 순숏 확대 {expansions}개 → 금리상승 추세 우세"
+    if y30 <= 5.15 and reductions >= 2 and repo["state"] == "안정":
+        return "채권 반전 신호 강화", f"30년물 {y30:.2f}% ≤ 5.15% + 숏 축소 {reductions}개 + Repo 안정 → CTA·재량 숏커버 동시 가능성"
+    if y30 <= 5.25 and reductions >= 2 and repo["state"] == "안정":
+        return "숏커버·CTA 전환 후보", f"30년물 {y30:.2f}% ≤ 5.25% + 숏 축소 {reductions}개 + Repo 안정 → 채권 반등 확인 단계"
+    if reductions >= 2 and repo["state"] in ("주의", "스트레스"):
+        return "강제 디레버리징 경계", f"숏 축소 {reductions}개지만 Repo {repo['state']} → 질서 있는 커버보다 자금조달 압박 가능성 점검"
+    return "기술·포지셔닝 혼조", f"30년물 {y30:.2f}% / 숏 확대 {expansions}개·축소 {reductions}개 / Repo {repo['state']}"
+
+
 def position_note(row):
     cur, ch = row["net"], row["net_change"]
     if cur < 0:
@@ -243,6 +278,8 @@ def classify(rows, repo):
 def fmt_html(text):
     bold_prefixes = (
         "전체 판정:",
+        "기술·포지셔닝:",
+        "JPM 30년 기술선:",
         "2년:",
         "5년:",
         "10년:",
@@ -288,6 +325,11 @@ def main():
     latest, prev, rows = get_cftc_positions()
     repo = repo_snapshot()
     head, reason = classify(rows, repo)
+    curve = fetch_ust_curve()
+    y30 = curve["ust30"].value
+    y30_date = curve["ust30"].date
+    jpm_signal = jpm_30y_signal(y30)
+    tech_head, tech_reason = technical_positioning(rows, repo, y30)
 
     state = load_state()
     force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
@@ -301,6 +343,9 @@ def main():
         "",
         f"전체 판정: {head}",
         f"→ {reason}",
+        f"기술·포지셔닝: {tech_head}",
+        f"→ {tech_reason}",
+        f"JPM 30년 기술선: 현재 {y30:.2f}% ({y30_date}) | {jpm_signal} | 상단 5.59→5.78→6.00 / 하단 5.25→5.15",
         "",
         "[CFTC Leveraged Funds]",
     ]
@@ -323,8 +368,8 @@ def main():
         "→ 숏↓ + Repo 스트레스 = 강제 디레버리징 경계",
         "→ 숏↑ + Repo 거래량↑ = 레버리지 확대 가능성 보조 신호",
         "",
-        "다음 확인: 다음 CFTC TFF 공개 + SOFR/TGCR + OFR DVP Repo",
-        "출처: CFTC TFF Futures Only · OFR/NY Fed Repo",
+        "다음 확인: 다음 CFTC TFF 공개 + SOFR/TGCR + OFR DVP Repo + 30년 5.59/5.78/6.00·5.25/5.15",
+        "출처: CFTC TFF Futures Only · OFR/NY Fed Repo · U.S. Treasury · JPM 기술기준(사용자 제공 2026-09-29 자료)",
     ]
     text = "\n".join(lines)
 
