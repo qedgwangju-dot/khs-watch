@@ -20,7 +20,7 @@ on:
 
 concurrency:
   group: korea-energy-mix-watch
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
