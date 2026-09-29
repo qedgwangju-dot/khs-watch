@@ -41,6 +41,7 @@ CBOE = "https://www.cboe.com/us/options/market_statistics/market/"
 SOX = "https://indexes.nasdaq.com/Index/History/SOX"
 SOX_OVERVIEW = "https://beta.indexes.nasdaq.com/Index/Overview/SOX"
 SOX_OVERVIEW_FALLBACK = "https://indexes.nasdaq.com/Index/Overview/SOX"
+SOX_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d"
 SOX_AUX = "https://indexes.nasdaq.com/Index/Weighting/SOX"
 
 
@@ -429,110 +430,99 @@ def parse_cboe():
 
 
 def parse_sox():
-    """Parse the official Nasdaq SOX close and fail closed on inconsistent fields."""
-    errors = []
-    parsed = None
-    source_url = None
+    """Cross-check Nasdaq's official SOX level with Yahoo daily closes.
+
+    Nasdaq's index pages sometimes render stale Previous Close / Net Change fields
+    while the headline level/date is current. We therefore use Nasdaq only for the
+    official session date and close level, and require Yahoo's daily chart to match
+    that same session/level before calculating the 1D move. Any mismatch fails closed.
+    """
+    nasdaq = None
+    nasdaq_errors = []
 
     for url in (SOX_OVERVIEW, SOX_OVERVIEW_FALLBACK):
         try:
-            raw = get(url).text
-            txt = BeautifulSoup(raw, "html.parser").get_text(" ", strip=True)
+            txt = BeautifulSoup(get(url).text, "html.parser").get_text(" ", strip=True)
             cur = re.search(
-                r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+"
-                r"([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)\s+([+-]?\d+(?:\.\d+)?)%",
+                r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)",
                 txt,
                 re.I,
             )
-            prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", txt, re.I)
-            if not cur or not prev_m:
-                raise RuntimeError("Overview headline/previous close missing")
-
+            if not cur:
+                raise RuntimeError("Nasdaq SOX headline date/level missing")
             period = cur.group(1)
             latest = float(cur.group(2).replace(",", ""))
-            net_change = float(cur.group(3).replace(",", ""))
-            pct = float(cur.group(4))
-            previous_close = float(prev_m.group(1).replace(",", ""))
-
-            calc_net = latest - previous_close
-            calc_pct = (latest / previous_close - 1.0) * 100.0 if previous_close else None
-            if calc_pct is None or abs(calc_pct - pct) > 0.08:
-                raise RuntimeError(
-                    f"SOX pct mismatch: page={pct}, calc={calc_pct:.2f}"
-                )
-            if abs(pct) > 25:
-                raise RuntimeError(f"SOX daily pct sanity failed: {pct}")
-
-            # Nasdaq's SOX page can publish a stale Net Change field while Last,
-            # Previous Close and Net Change(%) are internally consistent. In that
-            # exact case, derive the net change arithmetically and record that fact
-            # instead of silently accepting the inconsistent field.
-            net_change_source = "Nasdaq official Overview"
-            if abs(calc_net - net_change) > 1.0:
-                net_change = calc_net
-                net_change_source = "Nasdaq Last minus Previous Close derived; displayed Net Change stale"
-
-            parsed = (period, latest, net_change, pct, previous_close, net_change_source)
-            source_url = url
+            nasdaq = {"period": period, "latest": latest, "url": url}
             break
         except Exception as exc:
-            errors.append(f"{url}: {type(exc).__name__}: {exc}")
+            nasdaq_errors.append(f"{url}: {type(exc).__name__}: {exc}")
 
-    if parsed is None:
-        raise RuntimeError("SOX official Overview validation failed: " + " | ".join(errors))
+    if nasdaq is None:
+        raise RuntimeError("SOX Nasdaq official level unavailable: " + " | ".join(nasdaq_errors))
 
-    period, latest, displayed_net_change, displayed_pct, previous_close, net_change_source = parsed
+    # Yahoo daily chart is used only as an independent historical-close cross-check.
+    try:
+        payload = get(SOX_YAHOO).json()
+        result = (((payload or {}).get("chart") or {}).get("result") or [None])[0]
+        if not result:
+            raise RuntimeError("Yahoo SOX chart result missing")
+        timestamps = result.get("timestamp") or []
+        quote = (((result.get("indicators") or {}).get("quote") or [{}])[0])
+        closes = quote.get("close") or []
+        rows = []
+        for ts, close in zip(timestamps, closes):
+            if close is None:
+                continue
+            day = datetime.fromtimestamp(int(ts), timezone.utc).astimezone(
+                timezone(timedelta(hours=-4))
+            ).strftime("%m/%d/%Y")
+            rows.append((day, float(close)))
+        if len(rows) < 2:
+            raise RuntimeError("Yahoo SOX daily closes insufficient")
+        yahoo_date, yahoo_latest = rows[-1]
+        _, yahoo_prev = rows[-2]
+    except Exception as exc:
+        raise RuntimeError(f"SOX Yahoo cross-check unavailable: {type(exc).__name__}: {exc}")
+
+    if yahoo_date != nasdaq["period"]:
+        raise RuntimeError(
+            f"SOX source date mismatch: Nasdaq={nasdaq['period']}, Yahoo={yahoo_date}"
+        )
+    if abs(yahoo_latest - nasdaq["latest"]) > 2.0:
+        raise RuntimeError(
+            f"SOX source close mismatch: Nasdaq={nasdaq['latest']:.2f}, Yahoo={yahoo_latest:.2f}"
+        )
+
+    latest = nasdaq["latest"]
+    previous_close = yahoo_prev
+    net_change = latest - previous_close
+    pct = (latest / previous_close - 1.0) * 100.0 if previous_close else None
+    if pct is None or abs(pct) > 25:
+        raise RuntimeError(f"SOX cross-checked pct sanity failed: {pct}")
+
     metrics = {
         "value": latest,
         "previous_close": previous_close,
-        "previous_close_source": "Nasdaq official Overview",
-        "net_change": displayed_net_change,
-        "net_change_source": net_change_source,
-        "pct": displayed_pct,
-        "d1_pct": displayed_pct,
-        "official_overview_url": source_url,
+        "previous_close_source": "Yahoo daily close cross-check",
+        "net_change": net_change,
+        "net_change_source": "Nasdaq official close minus Yahoo prior daily close",
+        "pct": pct,
+        "d1_pct": pct,
+        "official_overview_url": nasdaq["url"],
+        "crosscheck_url": SOX_YAHOO,
+        "crosscheck_same_date": True,
+        "crosscheck_close_diff": latest - yahoo_latest,
     }
 
-    # Optional 3D/5D context only. It never overrides the official Nasdaq 1D close.
-    try:
-        inv = get("https://www.investing.com/indices/phlx-semiconductor-historical-data").text
-        tables = pd.read_html(StringIO(inv))
-        hist = None
-        for t in tables:
-            flat = " ".join(map(str, t.astype(str).values.flatten()))
-            if "Date" in flat and ("Price" in flat or "Change %" in flat):
-                hist = t
-                break
-        if hist is not None:
-            hist.columns = [str(x[-1] if isinstance(x, tuple) else x).strip() for x in hist.columns]
-            date_col = next((x for x in hist.columns if x.lower() == "date"), None)
-            pcol = next((x for x in hist.columns if x.lower() in ("price", "last", "close")), None)
-            if date_col and pcol:
-                rows = []
-                for _, row in hist.head(10).iterrows():
-                    ds = str(row.get(date_col, "")).strip()
-                    val = parse_num(row.get(pcol))
-                    if ds and val is not None:
-                        rows.append((ds, val))
-                if rows:
-                    def _norm_date(s):
-                        for fmt in ("%b %d, %Y", "%m/%d/%Y", "%d/%m/%Y", "%Y-%m-%d"):
-                            try:
-                                return datetime.strptime(s, fmt).strftime("%m/%d/%Y")
-                            except Exception:
-                                pass
-                        return s
-                    if _norm_date(rows[0][0]) == period and abs(rows[0][1] - latest) <= 1.0:
-                        vals = [v for _, v in rows]
-                        if len(vals) >= 4:
-                            metrics["d3_pct"] = (vals[0] / vals[3] - 1) * 100
-                        if len(vals) >= 6:
-                            metrics["d5_pct"] = (vals[0] / vals[5] - 1) * 100
-    except Exception:
-        pass
+    # The same verified Yahoo daily series supplies 3D/5D context.
+    vals = [x[1] for x in rows]
+    if len(vals) >= 4:
+        metrics["d3_pct"] = (vals[-1] / vals[-4] - 1.0) * 100.0
+    if len(vals) >= 6:
+        metrics["d5_pct"] = (vals[-1] / vals[-6] - 1.0) * 100.0
 
-    core = {"source": "Nasdaq SOX", "kind": "sox", "period": period, "metrics": metrics}
-    return {**core, "url": source_url, "fingerprint": fp(core)}
+    core = {"source": "Nasdaq SOX", "kind": "sox", "period": nasdaq["period"], "metrics": metrics}
+    return {**core, "url": nasdaq["url"], "fingerprint": fp(core)}
 
 
 def explain(cftc, cboe, sox):
@@ -775,7 +765,7 @@ if quality_gate_ok and (updates or force):
             "<b>SOX 확인</b>",
             f"• 전일 {sox['metrics']['previous_close']:,.2f} → {sox['metrics']['value']:,.2f} "
             f"({sox['metrics']['d1_pct']:+.2f}%)",
-            "• Nasdaq History의 공식 종가·등락률을 사용하고, 3D·5D는 별도 과거 시계열로 보조 확인",
+            "• Nasdaq 공식 종가를 Yahoo 일별 종가와 같은 날짜·같은 수준으로 교차검증한 뒤 1D·3D·5D를 계산",
             "",
         ]
 
