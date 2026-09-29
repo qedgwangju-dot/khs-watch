@@ -72,6 +72,11 @@ NEWS_QUERIES = [
     '(NVIDIA OpenShell OR NemoClaw) Microsoft SAP Canonical Red Hat integration partner customer',
     '(OpenShell OR "Open Agent Safety Platform") AI Enterprise pricing license support cloud service',
     '(OpenShell OR "agent safety runtime") telemetry active sandboxes enterprise adoption',
+    'NVIDIA Sentry standalone SKU pricing license subscription BlueField-4',
+    '"BlueField-4" Sentry attach rate shipments units revenue contribution',
+    '(OpenShell OR Sentry) default integration bundled "AI Enterprise" Microsoft SAP Red Hat Canonical',
+    '"BlueField-4" Sentry Arm Intel x86 server deployment non-NVIDIA',
+    '"hardware isolation" AI agents procurement insurance regulation DPU BlueField',
 ]
 
 OFFICIAL_SOURCE_HINTS = (
@@ -112,7 +117,10 @@ ACTION_TERMS = (
     "pilot", "deployment", "demonstration", "commercialization", "paid",
     "revenue", "arr", "annual recurring revenue", "bookings", "subscription",
     "customer", "customers", "order", "consortium", "partner", "partnership",
-    "license", "licensing", "pricing", "paid support", "enterprise support",
+    "license", "licensing", "pricing", "sku", "standalone", "bundle", "bundled",
+    "paid support", "enterprise support", "attach rate", "shipment", "shipments",
+    "unit", "units", "revenue contribution", "default integration", "default-on",
+    "hardware isolation", "mandatory isolation", "insurance", "certification",
     "active sandbox", "active sandboxes", "telemetry", "deployment", "deployments",
     "product launch", "launched", "always-on", "continuous", "24/7", "soc",
     "autonomous security", "security agent", "runtime firewall", "bluefield", "nemotron",
@@ -121,6 +129,8 @@ ACTION_TERMS = (
     "평가", "벤치마크", "프레임워크", "예산", "지원", "gpu", "선정",
     "중간평가", "실증", "조달", "입찰", "수주", "계약", "상용화",
     "유료", "매출", "반복매출", "구독", "고객", "라이선스", "가격",
+    "단독 상품", "별도 판매", "번들", "기본 탑재", "장착률", "출하량",
+    "수량", "매출 기여", "하드웨어 격리", "의무화", "보험", "인증",
     "유료 지원", "기업 지원", "배포", "활성 샌드박스", "텔레메트리",
     "제품 출시", "출시", "상시", "24시간", "보안관제", "자율형 보안", "컨소시엄", "참여사", "협력", "협약",
 )
@@ -142,6 +152,27 @@ CONCRETE_ACTION_TERMS = (
 )
 
 CATEGORY_PATTERNS = [
+    ("Sentry SKU·가격·라이선스", (
+        "sentry", "sku", "standalone", "pricing", "license", "licensing",
+        "subscription", "bundle", "bundled", "ai enterprise",
+        "단독 상품", "별도 판매", "가격", "라이선스", "구독", "번들",
+    )),
+    ("BlueField 증분 장착·DPU 수익화", (
+        "bluefield-4", "bluefield", "dpu", "attach rate", "shipment", "shipments",
+        "unit", "units", "revenue contribution", "non-nvidia", "x86", "arm",
+        "장착률", "출하량", "수량", "매출 기여",
+    )),
+    ("OpenShell 기본내장·지원 확대", (
+        "openshell", "default integration", "default-on", "bundled",
+        "supported agents", "full coverage", "partial coverage", "no coverage",
+        "microsoft", "sap", "red hat", "canonical",
+        "기본 내장", "기본 탑재", "지원 확대", "지원 에이전트",
+    )),
+    ("하드웨어 격리 의무·조달", (
+        "hardware isolation", "mandatory isolation", "procurement requirement",
+        "insurance", "certification", "regulated industry", "public sector",
+        "하드웨어 격리", "의무화", "조달 요건", "보험", "인증",
+    )),
     ("에이전트 안전 런타임·신뢰 플랫폼", (
         "open agent safety platform", "openshell", "nemoclaw", "agent safety runtime",
         "secure agent runtime", "sentry", "ai enterprise", "paid support",
@@ -196,6 +227,9 @@ WATCH_ENTITIES = (
 
 KNOWN_OFFICIAL_PAGES = {
     "NIPA 사이버보안 특화 AI 사업": "https://nipa.kr/home/bsnsAll/00/detail?bsnsDtlsIemNo=909",
+    "NVIDIA Open Agent Safety Platform": "https://nvidianews.nvidia.com/news/open-agent-safety-platform",
+    "NVIDIA OpenShell 지원 에이전트": "https://docs.nvidia.com/openshell/about/supported-agents",
+    "NVIDIA OpenShell 지원정책": "https://docs.nvidia.com/openshell/latest/about/support-matrix",
 }
 
 
@@ -270,7 +304,7 @@ def official_page_snapshots() -> dict[str, dict]:
         text = strip_html(raw)
         # Limit noise from volatile layout but retain policy numbers/terms.
         material = " ".join(re.findall(
-            r".{0,70}(?:B200|H200|256장|32노드|2026|2027|10개월|사업예산|추진일정|중간평가|GPU).{0,120}",
+            r".{0,70}(?:B200|H200|256장|32노드|2026|2027|10개월|사업예산|추진일정|중간평가|GPU|OpenShell|Sentry|BlueField-4|BlueField|pricing|price|license|subscription|AI Enterprise|partner|customer|supported agents|Full coverage|Partial coverage|No coverage|production use|security release|Codex|Claude Code|OpenCode).{0,140}",
             text,
             flags=re.I,
         ))
@@ -476,7 +510,15 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "에이전트 안전 런타임·신뢰 플랫폼":
+        if rep["category"] == "Sentry SKU·가격·라이선스":
+            lines.append("• <b>의미</b>: Sentry가 BlueField 부가 기능에 머무는지, 별도 SKU·라이선스·구독매출로 독립 수익화되는지 확인")
+        elif rep["category"] == "BlueField 증분 장착·DPU 수익화":
+            lines.append("• <b>의미</b>: Rubin 기본탑재 물량과 별개로 비-NVIDIA 서버까지 BlueField 장착이 늘어 실제 증분 DPU 매출이 생기는지 확인")
+        elif rep["category"] == "OpenShell 기본내장·지원 확대":
+            lines.append("• <b>의미</b>: OpenShell이 선택 설치를 넘어 주요 에이전트·기업 플랫폼의 기본 런타임으로 굳어지는지 확인")
+        elif rep["category"] == "하드웨어 격리 의무·조달":
+            lines.append("• <b>의미</b>: 금융·공공·의료 조달·보험·인증에서 하드웨어 격리가 사실상 필수요건이 되는지 확인")
+        elif rep["category"] == "에이전트 안전 런타임·신뢰 플랫폼":
             lines.append("• <b>의미</b>: OpenShell·Open Agent Safety Platform이 기업 표준 런타임으로 채택되고 유료 지원·GPU/AI Enterprise 매출로 연결되는지 확인")
         elif rep["category"] in ("AI 보안 제품·ARR·유료계약","24시간 보안추론·SOC 자동화"):
             lines.append("• <b>의미</b>: 제품 출시가 ARR·유료고객·반복 추론매출로 실제 연결되는지 확인")
@@ -500,7 +542,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
         ]
         if links:
             lines.append("🔗 " + " · ".join(links))
-    lines += ["", "<b>다음 확인</b>: OpenShell 파트너/지원범위 · 가격/라이선스 · 활성 배포 · 유료지원/계약 · GPU/AI Enterprise 매출 연결 · ARR/조달"]
+    lines += ["", "<b>다음 확인</b>: Sentry 단독 SKU/가격 · BlueField 증분 장착률/출하량 · OpenShell 기본내장/지원범위 · 하드웨어 격리 조달요건 · GPU/AI Enterprise 매출 연결"]
     return title, "\n".join(lines)
 
 
@@ -559,7 +601,7 @@ def main() -> int:
                     "query":"official page change",
                     "title":f"{name} 공식 사업페이지 변경 감지",
                     "description":snap.get("material",""),
-                    "source":"NIPA",
+                    "source":"NVIDIA" if name.startswith("NVIDIA") else "NIPA",
                     "url":snap["url"],
                     "published_at":now.isoformat(),
                 }))
