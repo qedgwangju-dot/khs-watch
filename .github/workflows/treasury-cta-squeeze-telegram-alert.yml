@@ -12,10 +12,14 @@ on:
   schedule:
     # Regular market-hours monitoring: 21:00~08:45 KST, every 15 minutes.
     - cron: "*/15 12-23 * * 1-5"
-    # Important-event precheck: 20:40 KST on weekdays. Python sends only on a FOMC eve.
+    # Important-event precheck: 20:40 KST, with a 20:47 backup. State dedupe allows one send.
     - cron: "40 11 * * 1-5"
-    # Mandatory Monday weekly report: 07:00 KST Monday = 22:00 UTC Sunday.
-    - cron: "0 22 * * 0"
+    - cron: "47 11 * * 1-5"
+    # Monday 07:00 KST report. Avoid the exact top-of-hour GitHub load hotspot:
+    # 06:59 probe sends only if delayed past 07:00; 07:03 and 07:13 are backups.
+    - cron: "59 21 * * 0"
+    - cron: "3 22 * * 0"
+    - cron: "13 22 * * 0"
   workflow_dispatch:
 
 permissions:
