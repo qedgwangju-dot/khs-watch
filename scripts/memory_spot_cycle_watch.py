@@ -39,11 +39,24 @@ ALERT_PATH = OUT_DIR / "memory_spot_cycle_watch_telegram.txt"
 STATUS_PATH = OUT_DIR / "memory_spot_cycle_watch_status.md"
 KST = ZoneInfo("Asia/Seoul")
 TREND_RESEARCH_URL = "https://www.trendforce.com/research/memory-storage"
+HBM_MARKET_PRICE_TRACK_VERSION = 1
+HBM_MARKET_PRICE_BASELINE = {
+    "period": "2027",
+    "blended_asp_yoy_pct": 121.0,
+    "eight_hi_premium_min_pct": 10.0,
+    "eight_hi_premium_max_pct": 20.0,
+    "mainstream_layers": 8,
+    "source": "한국경제TV·TrendForce 인용",
+    "source_url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202609290194&t=NN",
+    "research_reference_url": "https://www.trendforce.com/research/download/RP260922FJ3",
+    "as_of": "2026-09-29",
+}
 TREND_PINNED_REPORT_URLS = [
     # Seed the latest quarterly forecast explicitly; it is removed naturally by the
     # rolling cutoff once stale, but guarantees paid-research summaries are not missed
     # when TrendForce listing HTML/search indexing changes.
     "https://www.trendforce.com/research/download/RP260924PL",
+    "https://www.trendforce.com/research/download/RP260922FJ3",
 ]
 TREND_SEARCH_QUERIES = [
     'site:trendforce.com/research/download "Memory Price Forecast" DRAM NAND',
@@ -59,6 +72,8 @@ QUERIES = [
     ("ko", 'TrendForce 4Q26 메모리 가격 전망 Enterprise SSD QLC KV 캐시 23 28 NAND 15 20'),
     ("ko", '서버 DRAM 고정가격 계약가격 ASP 삼성전자 SK하이닉스'),
     ("ko", '2028 HBM 공급확약 브로드컴 엔비디아 구글 AMD'),
+    ("ko", 'TrendForce 2027 HBM 평균판매가격 121% 8단 12단 10 20'),
+    ("ko", 'HBM 2027 Blended ASP 121 8단 Gb당 10 20 트렌드포스'),
     # DRAM physical capacity / wafer-start / new-fab cycle: do not miss supply expansion.
     ("ko", 'DRAM 생산능력 웨이퍼 투입량 월 생산량 증설 삼성전자 P4 SK하이닉스 M15X 마이크론'),
     ("ko", '어플라이드 머티어리얼즈 Citi TMT DRAM 생산능력 웨이퍼 160만 200만 40만'),
@@ -69,6 +84,7 @@ QUERIES = [
     ("en", 'server DRAM contract price TrendForce Samsung SK hynix Micron'),
     ("en", '2028 HBM supply commitment Broadcom NVIDIA Google AMD'),
     ("en", 'HBM trade ratio Micron HBM4E DRAM capacity'),
+    ("en", 'TrendForce 2027 HBM blended ASP 121% 8-Hi 12-Hi premium 10 20'),
     ("en", 'Applied Materials Citi TMT DRAM wafer starts capacity 1.6 million 2 million 400000'),
     ("en", 'DRAM wafer starts greenfield fab capacity expansion Samsung P4 SK hynix M15X Micron'),
     ("en", 'DRAM capacity 300000 400000 wafer starts per month Applied Materials'),
@@ -632,12 +648,113 @@ def _price_change_details(raw_title: str, detail_blob: str) -> list[str]:
     return details
 
 
+def _extract_hbm_market_pricing(item: dict) -> dict | None:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    if "hbm" not in low or "2027" not in text:
+        return None
+    if not ("trendforce" in low or "트렌드포스" in text):
+        return None
+
+    blended = None
+    for pat in (
+        r"(?:Blended\s+ASP|평균판매가격|평균판매단가|혼합\s*ASP)[^%]{0,120}?전년\s*대비\s*(?:\+|상승\s*)?([0-9]{2,3}(?:\.[0-9]+)?)\s*%",
+        r"(?:Blended\s+ASP|평균판매가격|평균판매단가|혼합\s*ASP)[^%]{0,120}?([0-9]{2,3}(?:\.[0-9]+)?)\s*%[^.]{0,40}?(?:YoY|전년)",
+        r"2027[^.]{0,160}?(?:HBM)[^.]{0,160}?(?:Blended\s+ASP|평균판매가격|평균판매단가)[^%]{0,80}?([0-9]{2,3}(?:\.[0-9]+)?)\s*%",
+    ):
+        m = re.search(pat, text, re.I)
+        if m:
+            blended = float(m.group(1))
+            break
+
+    premium_min = premium_max = None
+    for pat in (
+        r"8\s*(?:단|[- ]?Hi)[^.]{0,120}?12\s*(?:단|[- ]?Hi)[^.]{0,120}?([0-9]{1,2}(?:\.[0-9]+)?)\s*(?:~|∼|[-–—]|to)\s*([0-9]{1,2}(?:\.[0-9]+)?)\s*%[^.]{0,50}?(?:높|premium|비싸)",
+        r"8\s*(?:단|[- ]?Hi)[^.]{0,120}?(?:Gb당|per[- ]?Gb)[^.]{0,100}?([0-9]{1,2}(?:\.[0-9]+)?)\s*(?:~|∼|[-–—]|to)\s*([0-9]{1,2}(?:\.[0-9]+)?)\s*%",
+    ):
+        m = re.search(pat, text, re.I)
+        if m:
+            premium_min, premium_max = float(m.group(1)), float(m.group(2))
+            break
+
+    mainstream = None
+    if re.search(r"8\s*(?:단|[- ]?Hi)[^.]{0,120}?(?:주류|우선\s*적용|lead(?:s|ing)?\s+shipments|mainstream)", text, re.I):
+        mainstream = 8
+    elif re.search(r"12\s*(?:단|[- ]?Hi)[^.]{0,120}?(?:주류|우선\s*적용|lead(?:s|ing)?\s+shipments|mainstream)", text, re.I):
+        mainstream = 12
+
+    if blended is None and premium_min is None and mainstream is None:
+        return None
+    return {
+        "period": "2027",
+        "blended_asp_yoy_pct": blended,
+        "eight_hi_premium_min_pct": premium_min,
+        "eight_hi_premium_max_pct": premium_max,
+        "mainstream_layers": mainstream,
+        "source": item.get("source") or "",
+        "source_url": item.get("link") or "",
+        "as_of": (item.get("published_kst") or "")[:10],
+    }
+
+
+def _merge_hbm_market_pricing(old: dict, obs: dict) -> dict:
+    merged = dict(old or {})
+    for key, value in obs.items():
+        if value not in (None, ""):
+            merged[key] = value
+    return merged
+
+
+def _hbm_market_pricing_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    a, b = old.get("blended_asp_yoy_pct"), new.get("blended_asp_yoy_pct")
+    if a is not None and b is not None and abs(float(b) - float(a)) >= 10:
+        changes.append(f"2027 HBM Blended ASP {float(a):+.0f}%→{float(b):+.0f}% YoY ({float(b)-float(a):+.0f}%p)")
+    elif a is None and b is not None:
+        changes.append(f"2027 HBM Blended ASP {float(b):+.0f}% YoY 신규 확인")
+
+    for key, label in (
+        ("eight_hi_premium_min_pct", "8단 Gb당 프리미엄 하단"),
+        ("eight_hi_premium_max_pct", "8단 Gb당 프리미엄 상단"),
+    ):
+        av, bv = old.get(key), new.get(key)
+        if av is not None and bv is not None and abs(float(bv) - float(av)) >= 5:
+            changes.append(f"{label} {float(av):.0f}%→{float(bv):.0f}%")
+        elif av is None and bv is not None:
+            changes.append(f"{label} {float(bv):.0f}% 신규 확인")
+
+    av, bv = old.get("mainstream_layers"), new.get("mainstream_layers")
+    if av is not None and bv is not None and int(av) != int(bv):
+        changes.append(f"2027 HBM 주류 적층 {int(av)}단→{int(bv)}단")
+    elif av is None and bv is not None:
+        changes.append(f"2027 HBM 주류 적층 {int(bv)}단 신규 확인")
+    return changes
+
+
 def write_outputs(items: list[dict], errors: list[str]) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     state = load_state()
     seen: dict = state.get("seen", {})
     now = dt.datetime.now(KST)
     initialized = bool(state.get("initialized"))
+    market_state = dict(state.get("hbm_market_pricing") or {})
+    if int(state.get("hbm_market_pricing_track_version") or 0) < HBM_MARKET_PRICE_TRACK_VERSION:
+        if not market_state:
+            market_state = dict(HBM_MARKET_PRICE_BASELINE)
+        state["hbm_market_pricing_track_version"] = HBM_MARKET_PRICE_TRACK_VERSION
+
+    market_changes: list[str] = []
+    market_source_url = ""
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_hbm_market_pricing(item)
+        if not obs:
+            continue
+        merged = _merge_hbm_market_pricing(market_state, obs)
+        changes = _hbm_market_pricing_changes(market_state, merged)
+        if changes:
+            market_changes.extend(changes)
+            market_state = merged
+            market_source_url = obs.get("source_url") or market_source_url
 
     seen_titles = {
         _normalize_title(str(meta.get("title") or ""))
@@ -675,6 +792,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "last_scan_count": len(items),
         "last_new_count": len(new_items),
+        "hbm_market_pricing_track_version": HBM_MARKET_PRICE_TRACK_VERSION,
+        "hbm_market_pricing": market_state,
     }
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -685,6 +804,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- 유효 후보: {len(items)}건",
         f"- 신규 후보: {len(new_items)}건",
         f"- Telegram 대상 신규: {len(report_items)}건",
+        f"- HBM 시장 가격 숫자 변화: {len(market_changes)}건",
         f"- 원천 오류: {len(errors)}건",
     ]
     if errors:
@@ -693,13 +813,19 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not report_items:
+    if not report_items and not market_changes:
         return
 
     lines = [
         "<b>[메모리 수급 변화 감지]</b>",
         f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 신규 {len(report_items)}건",
     ]
+    if market_changes:
+        lines.append("• <b>HBM 시장 가격 상태 변화</b>")
+        for change in market_changes:
+            lines.append("  " + html.escape(change))
+        if market_source_url:
+            lines.append('  <a href="' + html.escape(market_source_url, quote=True) + '">원문</a>')
     for item in report_items:
         label = classify(item["title"])
         raw_title = compact_title(item["title"], item.get("source", ""))
