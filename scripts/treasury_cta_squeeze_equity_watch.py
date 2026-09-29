@@ -45,6 +45,7 @@ NYFED_URL = "https://markets.newyorkfed.org/api/rates/secured/sofr/last/1.json"
 FED_FOMC_URL = "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
 CTA_SECONDARY_URL = "https://a.foresightnews.pro/article/detail/99813"
 CME_NQ_URL = "https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.html"
+CME_EQUITIES_URL = "https://www.cmegroup.com/markets/equities.html"
 YAHOO_NQ_URL = "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=5d&interval=1d"
 US_POSITIONING_STATE = watcher.DATA / "us_positioning_state.json"
 _CROSS_CACHE = None
@@ -119,6 +120,7 @@ def _nq_cftc_weekly() -> dict:
 
 def _nq_price() -> dict:
     """Use official CME NQ price first; Yahoo is display-only fallback."""
+    official_errors = []
     try:
         row = watcher.cme_front("NQ")
         if row and row.get("last") is not None and row.get("pct_change") is not None:
@@ -126,12 +128,41 @@ def _nq_price() -> dict:
                 "price": float(row["last"]),
                 "previous_close": None,
                 "pct_change": float(row["pct_change"]),
-                "source": "CME official NQ quote",
+                "source": "CME official NQ quote API",
                 "official": True,
                 "month": row.get("month") or "",
             }
-    except Exception:
-        pass
+        official_errors.append("CME quote API returned no usable NQ row")
+    except Exception as exc:
+        official_errors.append(f"CME quote API: {type(exc).__name__}: {exc}")
+
+    # The public CME equity-index page contains a server-rendered active NQ quote.
+    # This provides an official fallback when the internal quote endpoint blocks
+    # cloud runners.
+    try:
+        text = watcher.strip_tags(watcher.fetch(CME_EQUITIES_URL))
+        m = re.search(
+            r"E-mini\s+Nasdaq-100\s+Futures\s+"
+            r"([0-9,]+(?:\.[0-9]+)?)\s+"
+            r"([0-9,]+)\s+"
+            r"([+-]?[0-9,]+(?:\.[0-9]+)?)\s*"
+            r"\(([+-]?[0-9.]+)%\)",
+            text,
+            re.I,
+        )
+        if not m:
+            raise RuntimeError("CME equities page active NQ quote not found")
+        return {
+            "price": float(m.group(1).replace(",", "")),
+            "previous_close": None,
+            "pct_change": float(m.group(4)),
+            "change": float(m.group(3).replace(",", "")),
+            "volume": int(m.group(2).replace(",", "")),
+            "source": "CME official equity-index page",
+            "official": True,
+        }
+    except Exception as exc:
+        official_errors.append(f"CME equity page: {type(exc).__name__}: {exc}")
 
     data = watcher.fetch_json(YAHOO_NQ_URL)
     result = (((data or {}).get("chart") or {}).get("result") or [None])[0]
@@ -155,6 +186,7 @@ def _nq_price() -> dict:
         "pct_change": pct,
         "source": "Yahoo distributed/delayed NQ=F fallback",
         "official": False,
+        "official_errors": official_errors,
     }
 
 
@@ -229,15 +261,19 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     y = snapshot.get("yield10") or {}
     treasury_confirmed = treasury_evidence and repo_ok and float(y.get("z20") or 0) <= -1.0
 
+    prev_cross = (previous.get("nasdaq_cross_asset") or {}) if isinstance(previous, dict) else {}
+    treasury_fuel = treasury_short_present or bool(prev_cross.get("treasury_short_present"))
+    nq_fuel = nq_extreme or bool(prev_cross.get("nq_extreme"))
+
     treasury_price_up = audited._price_up_count(snapshot) >= 1
     prepared = bool(
-        treasury_short_present
-        and nq_extreme
+        treasury_fuel
+        and nq_fuel
         and repo_ok
         and (treasury_price_up or nq_price_up)
     )
 
-    if treasury_confirmed and nq_confirmed:
+    if treasury_confirmed and nq_confirmed and treasury_fuel and nq_fuel:
         stage = 2
         label = "🔥 채권→Nasdaq 이중 숏 스퀴즈 확인"
     elif prepared:
@@ -252,8 +288,10 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         "stage": stage,
         "label": label,
         "treasury_short_present": treasury_short_present,
+        "treasury_fuel": treasury_fuel,
         "treasury_confirmed": treasury_confirmed,
         "nq_extreme": nq_extreme,
+        "nq_fuel": nq_fuel,
         "nq_history_ready": nq_history_ready,
         "nq_history_fresh": nq_history_fresh,
         "nq_price_up": nq_price_up,
