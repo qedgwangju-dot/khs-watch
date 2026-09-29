@@ -41,7 +41,7 @@ RSS_SOURCES = (
             "https://news.google.com/rss/search?q=%28%22%EC%A0%9C12%EC%B0%A8+%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22+OR+"
             "%2212%EC%B0%A8+%EC%A0%84%EA%B8%B0%EB%B3%B8%22+OR+"
             "%22%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22+OR+"
-            "%22%EC%A0%84%EB%A8%B9%EB%B3%B8%22%29+when%3A7d"
+            "%22%EC%A0%84%EA%B8%B0%EB%B3%B8%22%29+when%3A7d"
             "&hl=ko&gl=KR&ceid=KR%3Ako"
         ),
     },
