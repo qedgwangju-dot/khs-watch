@@ -715,15 +715,20 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
     # - weekly report only from the dedicated Sunday 22:00 UTC cron (= Monday 07:00 KST)
     # - FOMC eve report only from the dedicated weekday 11:40 UTC cron (= 20:40 KST)
     # A code push or ordinary 15-minute market poll can never consume these slots.
+    now_kst = datetime.now(KST)
+    weekly_crons = {"59 21 * * 0", "3 22 * * 0", "13 22 * * 0"}
+    fomc_crons = {"40 11 * * 1-5", "47 11 * * 1-5"}
+
     monday_due = (
         trigger_event == "schedule"
-        and trigger_schedule == "0 22 * * 0"
+        and trigger_schedule in weekly_crons
         and d.weekday() == 0
+        and now_kst.time() >= time(7, 0)
         and current_state.get("last_weekly_report_key") != week_key
     )
     fomc_due = (
         trigger_event == "schedule"
-        and trigger_schedule == "40 11 * * 1-5"
+        and trigger_schedule in fomc_crons
         and date_key in FOMC_END_DATES
         and current_state.get("last_fomc_eve_report") != date_key
     )
