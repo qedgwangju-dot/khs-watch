@@ -40,7 +40,7 @@ STATUS_PATH = OUT_DIR / "memory_spot_cycle_watch_status.md"
 KST = ZoneInfo("Asia/Seoul")
 TREND_RESEARCH_URL = "https://www.trendforce.com/research/memory-storage"
 HBM_MARKET_PRICE_TRACK_VERSION = 2
-HBM_MARKET_ALERT_FORMAT_VERSION = 1
+HBM_MARKET_ALERT_FORMAT_VERSION = 2
 HBM_MARKET_PRICE_BASELINE = {
     "period": "2027",
     "blended_asp_yoy_pct": 121.0,
@@ -850,7 +850,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             market_source_url = market_state.get("source_url") or obs.get("source_url") or market_source_url
 
     if market_format_due and not market_changes:
-        market_changes = ["2027 HBM 시장 가격 기준선 정밀화"]
+        market_changes = ["TrendForce 2027 HBM Blended ASP·8단 프리미엄 기준선 확정"]
         market_source_url = market_state.get("source_url") or ""
 
     seen_titles = {
@@ -927,10 +927,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     if not report_items and not market_changes:
         return
 
-    lines = [
-        "<b>[메모리 수급 변화 감지]</b>",
-        f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 신규 {len(report_items)}건",
-    ]
+    lines = ["<b>[메모리 수급 변화 감지]</b>"]
+    if market_changes:
+        suffix = f" · 기타 신규 {len(report_items)}건" if report_items else ""
+        lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · HBM 가격 변화 {len(market_changes)}건{suffix}")
+    else:
+        lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 신규 {len(report_items)}건")
     if market_changes:
         lines.append("• <b>HBM 시장 가격 상태 변화</b>")
         for change in market_changes:

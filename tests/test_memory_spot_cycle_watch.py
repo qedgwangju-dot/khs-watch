@@ -86,6 +86,12 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         premium = dict(old, eight_hi_premium_min_pct=15.0)
         self.assertTrue(any("프리미엄 하단" in x for x in w._hbm_market_pricing_changes(old, premium)))
 
+    def test_hbm_market_alert_format_version_is_precise_v2(self):
+        self.assertEqual(w.HBM_MARKET_ALERT_FORMAT_VERSION, 2)
+        self.assertEqual(w.HBM_MARKET_PRICE_BASELINE["blended_asp_yoy_pct"], 121.0)
+        self.assertEqual(w.HBM_MARKET_PRICE_BASELINE["eight_hi_premium_min_pct"], 10.0)
+        self.assertEqual(w.HBM_MARKET_PRICE_BASELINE["eight_hi_premium_max_pct"], 20.0)
+
     def test_hbm_market_pricing_stack_regime_change_alerts(self):
         old = dict(w.HBM_MARKET_PRICE_BASELINE)
         new = dict(old, mainstream_layers=12)
