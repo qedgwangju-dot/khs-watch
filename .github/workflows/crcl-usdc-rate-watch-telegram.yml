@@ -52,6 +52,52 @@ jobs:
           python -m py_compile scripts/crcl_directional_summary.py
           python -m py_compile scripts/crypto_alert_krw.py
           python -m py_compile scripts/coin_alert_korean_terms.py
+          python - <<'PY'
+          import copy
+          import json
+          from scripts import crcl_directional_summary as fmt
+
+          state = json.load(open("data/crcl_usdc_rate_watch_state.json", encoding="utf-8"))
+          sample = """<b>CRCL 금리·USDC 펀더멘털 변화</b>
+          <code>조회 2026-09-29T06:58:13+09:00</code>
+
+          <b>핵심 변화</b>
+          • 미 국채 금리 변화: 3M +4.0bp / 10Y +7.0bp
+          • CRCL 새 종가: -3.60%
+
+          <b>돈 버는 능력 — 실제 핵심</b>
+          • <b>USDC 유통량</b> 75.2십억달러
+
+          <b>원문</b>
+          • Circle USDC: <a href="https://www.circle.com/usdc">원문</a>
+          • Circle Reserve Fund(BlackRock): <a href="https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund">원문</a>
+          • SOFR(New York Fed): <a href="https://www.newyorkfed.org/markets/reference-rates/sofr">원문</a>
+          • 미 국채 금리: <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView">원문</a>
+          • Circle 2Q26 10-Q(SEC): <a href="https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm">원문</a>
+          """
+          rendered = fmt.build_compact_alert(state, sample)
+          assert "<b>CRCL · USDC 변화</b>" in rendered
+          assert "<b>이번 변화</b>" in rendered
+          assert "<b>핵심 숫자</b>" in rendered
+          assert "SOFR 방향 읽는 법" not in rendered
+          assert "TBX → CRCL 쉽게 해석" not in rendered
+          assert "<b>고정 기준</b>" not in rendered
+          assert len(rendered) < 1800, len(rendered)
+
+          lag = copy.deepcopy(state)
+          lag["treasury"]["date"] = "2026-09-25"
+          lag["treasury"]["ten_year"] = 5.17
+          lag["treasury"]["prev_ten_year"] = 5.18
+          lag["treasury"]["daily_10y_bp"] = -1.0
+          lag["crcl"]["date"] = "2026-09-28"
+          lag["tbx"]["date"] = "2026-09-28"
+          lag["tbx"]["daily_pct"] = 0.74
+          label, explanation, score = fmt.discount_view(lag)
+          assert score == -1, (label, explanation, score)
+          assert "TBX" in explanation and "금리 상승" in explanation, explanation
+          print("compact_crcl_alert_layout_valid=true")
+          print(rendered)
+          PY
 
       - name: Validate exact Telegram bot route without sending
         env:
