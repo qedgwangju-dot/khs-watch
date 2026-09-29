@@ -227,9 +227,9 @@ WATCH_ENTITIES = (
 
 KNOWN_OFFICIAL_PAGES = {
     "NIPA 사이버보안 특화 AI 사업": "https://nipa.kr/home/bsnsAll/00/detail?bsnsDtlsIemNo=909",
-    "NVIDIA Open Agent Safety Platform": "https://nvidianews.nvidia.com/news/open-agent-safety-platform",
     "NVIDIA OpenShell 지원 에이전트": "https://docs.nvidia.com/openshell/about/supported-agents",
-    "NVIDIA OpenShell 지원정책": "https://docs.nvidia.com/openshell/latest/about/support-matrix",
+    "NVIDIA OpenShell 지원정책": "https://docs.nvidia.com/openshell/reference/support-matrix",
+    "NVIDIA OpenShell 릴리스 노트": "https://docs.nvidia.com/openshell/latest/about/release-notes.html",
 }
 
 
