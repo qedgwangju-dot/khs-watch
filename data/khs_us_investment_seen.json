@@ -321,7 +321,8 @@
     "stateevt_17ede0d64ecc3bdf220a": "2026-09-23T10:10:59.097546+00:00",
     "stateevt_77db53ef2d28912ab5ee": "2026-09-23T10:10:59.097546+00:00",
     "stateevt_a28472edccc822fdca47": "2026-09-23T10:10:59.097546+00:00",
-    "stateevt_74b63417d6ff2ee889b6": "2026-09-24T05:19:40.631100+00:00"
+    "stateevt_74b63417d6ff2ee889b6": "2026-09-24T05:19:40.631100+00:00",
+    "stateevt_9ebce96fac8948a3e834": "2026-09-29T23:10:01.687655+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -334,7 +335,8 @@
     "eventstate_energy_package_17ede0d64ecc3bdf220a": "2026-09-23T10:10:59.097546+00:00",
     "eventstate_nuclear_build_77db53ef2d28912ab5ee": "2026-09-23T10:10:59.097546+00:00",
     "eventstate_texas_ai_power_a28472edccc822fdca47": "2026-09-23T10:10:59.097546+00:00",
-    "eventstate_legacy_funding_media_74b63417d6ff2ee889b6": "2026-09-24T05:19:40.631100+00:00"
+    "eventstate_legacy_funding_media_74b63417d6ff2ee889b6": "2026-09-24T05:19:40.631100+00:00",
+    "eventstate_alaska_lng_9ebce96fac8948a3e834": "2026-09-29T23:10:01.687655+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -629,6 +631,50 @@
           "title": "[속보] 산업부, 국회에 \"최종 발표는 트럼프가…美요청시 45일내 송금\" - 연합뉴스 한민족센터",
           "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1BQWNiZGdGMHpyV2tEelY3UGVubGhjN1FCSE1mVVFjcHBLajBUZ2hhTmxjX0RrQVlSN280MG8yQ2xFY2lhWnUzQlBSb0QtSWFDazkzTVl2bWtVb3hDVUMxTTJOVFhrTzN1YWRCNk5EZndTODBh?oc=5",
           "published": "2026-09-22T03:09:15+00:00"
+        }
+      ]
+    },
+    "alaska_lng": {
+      "facts": [
+        "alaska_project_usd:540억"
+      ],
+      "slots": {
+        "alaska_lng|alaska_project_usd": "alaska_project_usd:540억"
+      },
+      "initialized_at": "2026-09-29T23:10:16.076895+00:00",
+      "updated_at": "2026-09-29T23:10:16.076895+00:00",
+      "last_title": "\"트럼프, 30일 알래스카 LNG사업에 韓540억불 투자 발표 예상\"(종합) - 연합뉴스 한민족센터",
+      "last_source": "연합뉴스 한민족센터",
+      "evidence": [
+        {
+          "source": "연합뉴스 한민족센터",
+          "title": "\"트럼프, 30일 알래스카 LNG사업에 韓540억불 투자 발표 예상\"(종합) - 연합뉴스 한민족센터",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE43dHlfOUJMejhyS2F5OW9EOWxnSDNFLXJ4T2NLQ0hMRVBaN1h4bWlMNVNGQ2tzQ3NUUGl5WkotUWpoQmFOQmpqa05hb0hKaEt5eFVtaHdSTWdXbVpzcFpsUl85X3Z5QWVIa1gtcXdZaF9vMTNj?oc=5",
+          "published": "2026-09-29T22:28:02+00:00"
+        },
+        {
+          "source": "연합뉴스TV",
+          "title": "\"트럼프, 이르면 30일 알래스카 LNG 사업 韓540억불 투자 발표\" - 연합뉴스TV",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9VNlU2eTlRSU1hbF9aTDgyejFKcC1PMHlZN0RZeU4xSFZISnRrSml2TllLa1BTQnJGM2ZhTXRmLTQwZDJMQUt6WEoxNGdocUlISlNIV0RGWjJjdlBIZG1kQXFzZ3RJeU0?oc=5",
+          "published": "2026-09-29T21:36:00+00:00"
+        },
+        {
+          "source": "연합뉴스",
+          "title": "\"트럼프, 30일 알래스카 LNG사업에 韓540억불 투자 발표 예상\"(종합) - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE03VEZicjU5RWhkcjhSaWE1cHJ1LWR4aExralZNcTRwZm03ZGRXZmNWcFE5LWFqSTVsZlQ4TTZUWXkwT0piN1g2aWxhdUlWUUlTTXN5VlhWU0c4TzTSAWBBVV95cUxNVE11ZEdwd3NIWlpqbVRHQ3BuVEdwRlotSklaaHdJSkVlN1Z0UkUtWWlZZzFSTXpmMEZSb0FVMHlCeGRrczJtbnlIYUJKWUZEZktRRXFZMEJhNlRKMHJyVlo?oc=5",
+          "published": "2026-09-29T22:28:02+00:00"
+        },
+        {
+          "source": "머니투데이",
+          "title": "[속보]\"트럼프, 알래스카 LNG 사업에 韓 540억불 투자 발표 가능성\" - 머니투데이 - 머니투데이",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE54MW0ybVdjaU5zSEp1YzBJOEV1OHVNa3RscUhtQ21RdmtWNzB0TzRKeWltVnBjakstTWJjR0RpaHY2QUJVaE92M0FFRDR1OWh6blJ4ckw2ZHVoVXp1bkU1T0xQUlNaUkJ30gFuQVVfeXFMUEJ6b1IyY3lZQ0xLSFBNVHZpaDJ5NXZWenJYQzhRZUhCdTRmUHpnNmtJOC1tdThtYkctZUJ1Nzc1WFZHR2JSNXZpdGJOMG9vRXFfU0dEX3Q1MjZ6TlhTVzJzclg0LS0zRkpPUVUxUnc?oc=5",
+          "published": "2026-09-29T21:19:57+00:00"
+        },
+        {
+          "source": "한국경제",
+          "title": "[속보] \"트럼프, 알래스카 LNG 사업에 韓540억불 투자 발표 가능성\" - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBQWFdNdWNnNzBYQlNYT21RRVp3b3FQOVNqdmVHc09iTXF6Tlp5Vi1PZUJtV0lpMW9tYmJFV1BqcVVKTXlIQjBUREtISE5YZTQ5Qi1FenZ1WnozUQ?oc=5",
+          "published": "2026-09-29T21:17:12+00:00"
         }
       ]
     }
