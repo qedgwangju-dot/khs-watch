@@ -51,7 +51,7 @@ SCALE = {
     "백만": 1_000_000,
     "천만": 10_000_000,
 }
-PER_UNIT_PATTERN = r"(?:kg|g|t|W|kW|MW|GW|Wh|kWh|MWh|GWh|GB|Gb|TB|TiB|주|개|대|서버|랙|module|chip|wafer|GPU|CPU|month|year)"
+PER_UNIT_PATTERN = r"(?:MWh|GWh|kWh|GPU|CPU|module|wafer|month|year|TiB|TB|GB|Gb|kW|MW|GW|Wh|kg|chip|서버|랙|주|개|대|g|t|W)"
 _RATE_CACHE: dict[str, tuple[float | None, str]] = {}
 
 
