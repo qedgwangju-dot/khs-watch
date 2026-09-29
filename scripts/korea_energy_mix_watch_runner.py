@@ -123,6 +123,25 @@ def semantic_event_level(row: dict[str, Any]) -> int:
     if key == "12th-plan|nuclear-opinion":
         return 0
 
+    # 전력망 혁신대책은 '발표'와 '실제 시행'을 다른 상태 단계로 관리한다.
+    # 같은 정책 제목이 다시 나와도 재알림하지 않되, 실제 해제·회수·적용이 시작되면 단계 상승으로 알린다.
+    if key.startswith("12th-plan|grid-innovation|"):
+        actual_markers = (
+            "시행 시작", "시행됐다", "시행되었다", "적용 시작", "적용됐다",
+            "해제 완료", "지정 해제됐다", "지정을 해제했다",
+            "회수 완료", "접속권을 회수했다", "접속권 회수 실적",
+            "공급 개시", "운영 개시", "상업운전",
+        )
+        actual = any(marker in title for marker in actual_markers)
+        official = bool(row.get("official"))
+        if actual and official:
+            return 4
+        if actual:
+            return 3
+        if official:
+            return 2
+        return 1
+
     # 2030 재생에너지 100GW 목표는 5월 공식 계획에서 이미 확정된 기준선이다.
     # 목표 재인용만으로는 재알림하지 않고, 실행 제도·수치가 실제 바뀐 경우만 통과시킨다.
     if "100gw" in title and "재생" in title and key.startswith("12th-plan|renewable-capacity|"):
