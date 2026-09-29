@@ -1,10 +1,11 @@
 {
   "initialized": true,
-  "last_checked_kst": "2026-09-29T09:01:23+09:00",
+  "last_checked_kst": "2026-09-29T09:03:02+09:00",
   "seen_event_keys": [
+    "3acb402324f8efa8dfe28d17b67eebcd41ec7249fbd9f70032bd15ae594b7c74",
     "effecf99f97f37f6e1857db5a616ad21d92d4ae2d1e1eef54d4456fd1915a320"
   ],
-  "event_count": 1,
+  "event_count": 2,
   "source_errors": [
     "Coinbase-Citi official direct: HTTP Error 403: Forbidden",
     "Coinbase-Citi mirror: HTTP Error 403: Forbidden",
