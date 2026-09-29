@@ -33,7 +33,7 @@ FLOW_INTERVAL_SEC = 10
 NEW_LOW_CONFIRM_SEC = 240
 MAX_EPISODE_SEC = 3 * 60 * 60
 MAX_FLOW_ALIGNMENT_SEC = 30
-MAX_PROGRAM_SNAPSHOT_SKEW_SEC = 5.0
+MAX_PROGRAM_SNAPSHOT_SKEW_SEC = 8.0
 
 
 def fnum(v: Any) -> float | None:
@@ -518,7 +518,22 @@ class Watch:
         ]
         pgm_spans = [x for x in pgm_spans if x is not None]
         max_pgm_span = max(pgm_spans) if pgm_spans else None
-        program_quality = bool(max_pgm_span is not None and max_pgm_span <= MAX_PROGRAM_SNAPSHOT_SKEW_SEC)
+        pgm_identity_checks = []
+        for snap in (a, b):
+            p = snap.get("프로그램") or {}
+            gap = fnum(p.get("전체대비차이"))
+            total = fnum(p.get("전체"))
+            if gap is None or total is None:
+                continue
+            tol = max(5.0, abs(total) * 0.0005)
+            pgm_identity_checks.append((abs(gap), tol))
+        max_identity_gap = max((x[0] for x in pgm_identity_checks), default=None)
+        identity_quality = bool(pgm_identity_checks and all(gap <= tol for gap, tol in pgm_identity_checks))
+        program_quality = bool(
+            max_pgm_span is not None
+            and max_pgm_span <= MAX_PROGRAM_SNAPSHOT_SKEW_SEC
+            and identity_quality
+        )
 
         # '두 시장 모두 음수'와 '두 시장을 주도'를 구분한다.
         # 현물/선물의 최다 매도자가 같을 때만 단일 주체 주도로 올린다.
@@ -560,7 +575,9 @@ class Watch:
                 "cross_sellers": cross_sellers,
                 "verdict": verdict, "confidence": confidence, "program_kind": pgm_kind,
                 "start_alignment_sec": start_gap, "end_alignment_sec": end_gap,
-                "program_sample_span_sec": max_pgm_span, "program_quality": program_quality}
+                "program_sample_span_sec": max_pgm_span,
+                "program_identity_gap_max": max_identity_gap,
+                "program_quality": program_quality}
 
     def option_move(self, start_ts: float, end_ts: float) -> tuple[str, float] | None:
         best = None
@@ -596,7 +613,8 @@ class Watch:
                       f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
                       f"• 프로그램 전체 <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 누적값 변화)</i>",
                       f"• 프로그램 방향: <b>{html.escape(str(att.get('program_kind')))}</b>",
-                      f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 종료 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>", "",
+                      f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 종료 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
+                      f"• 프로그램 합계 검산: 전체-(차익+비차익) 표본 오차 최대 <b>{fmt_raw(att.get('program_identity_gap_max'))}</b>", "",
                       "<b>판정</b>", f"• <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 주체 판정 보류 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
@@ -630,6 +648,7 @@ class Watch:
                       f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
                       f"• 프로그램: 전체 <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 누적값 변화)</i>",
                       f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 저점 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
+                      f"• 프로그램 합계 검산: 전체-(차익+비차익) 표본 오차 최대 <b>{fmt_raw(att.get('program_identity_gap_max'))}</b>",
                       f"• 최종 판정: <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 가격 구간만 확정 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
