@@ -15,7 +15,7 @@ from scripts.korea_energy_mix_watch import (
     render,
     topic_match,
 )
-from scripts.korea_energy_mix_watch_runner import interpret_article_body, semantic_event_key, semantic_event_level
+from scripts.korea_energy_mix_watch_runner import headline_match, interpret_article_body, semantic_event_key, semantic_event_level
 
 
 def test_topic_match_all_power_plan_mentions():
@@ -234,3 +234,68 @@ def test_lng_capacity_market_not_misclassified_as_nuclear_event():
         "plan_stage": "전기본 관련",
     }
     assert semantic_event_key(row).startswith("12th-plan|lng-capacity-market|")
+
+
+def test_grid_innovation_policy_is_distinct_from_old_100gw_target():
+    row = {
+        "title": "2030년까지 재생에너지 100GW 달성…정부, 전력망 혁신대책 발표",
+        "publisher": "연합뉴스TV",
+        "official": False,
+        "published": "Tue, 29 Sep 2026 04:00:00 GMT",
+        "plan_stage": "발표·공개",
+    }
+    assert headline_match(row["title"]) is True
+    assert semantic_event_key(row) == "12th-plan|grid-innovation|policy-announcement"
+    assert semantic_event_level(row) == 1
+
+
+def test_plain_renewable_100gw_target_rehash_is_suppressed():
+    row = {
+        "title": "정부, 2030년 재생에너지 100GW 목표 재확인",
+        "publisher": "연합뉴스",
+        "official": False,
+        "published": "Tue, 29 Sep 2026 04:00:00 GMT",
+        "plan_stage": "발표·공개",
+    }
+    assert semantic_event_key(row).startswith("12th-plan|renewable-capacity|")
+    assert semantic_event_level(row) == 0
+
+
+def test_grid_execution_subevents_have_stable_keys():
+    release = {
+        "title": "10월 1일부터 호남권 계통관리변전소 지정 해제",
+        "publisher": "연합뉴스",
+        "official": False,
+        "published": "Tue, 29 Sep 2026 04:00:00 GMT",
+        "plan_stage": "발표·공개",
+    }
+    rights = {
+        "title": "호남 장기 지연 재생에너지 접속권 10GW 이상 회수",
+        "publisher": "연합뉴스",
+        "official": False,
+        "published": "Tue, 29 Sep 2026 04:00:00 GMT",
+        "plan_stage": "발표·공개",
+    }
+    assert headline_match(release["title"]) is True
+    assert headline_match(rights["title"]) is True
+    assert semantic_event_key(release) == "12th-plan|grid-innovation|management-substation-release"
+    assert semantic_event_key(rights) == "12th-plan|grid-innovation|access-right-recovery"
+
+
+def test_grid_innovation_body_interpretation_separates_target_from_execution():
+    article_body = """
+    정부는 2030년까지 재생에너지 100GW 이상 보급을 위해 전력망 혁신대책을 발표했다.
+    다음달 1일부터 호남권 계통관리변전소 지정을 해제한다.
+    환경영향평가가 완료되지 않은 장기 지연사업의 접속권을 회수해 호남에서만 2030년까지 10GW 이상의 접속권을 회수한다.
+    ESS를 활용한 비증설 대안을 추진하고 전국 수용량을 최대 171GW로 확대한다.
+    """
+    result = interpret_article_body(
+        {"title": "2030년까지 재생에너지 100GW 달성…정부, 전력망 혁신대책 발표", "category": "전력망·계통 수용력"},
+        article_body,
+        "",
+    )
+    assert "100GW 목표 자체가 새로 생긴 것이 아니라" in result
+    assert "10월 1일부터 호남권 계통관리변전소 지정 해제" in result
+    assert "10GW 이상" in result
+    assert "최대 171GW" in result
+    assert "비증설 대안" in result
