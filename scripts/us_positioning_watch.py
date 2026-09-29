@@ -456,13 +456,10 @@ def parse_sox():
     displayed_net_change = float(cur.group(3).replace(",", ""))
     displayed_pct = float(cur.group(4))
 
-    # Hard validation: a material net change can never coexist with an effectively
-    # flat percent. If this happens, do not publish; treat the source render as stale.
-    if abs(displayed_net_change) > 1.0 and abs(displayed_pct) < 0.01:
-        raise RuntimeError(
-            f"SOX official render inconsistent: net_change={displayed_net_change}, pct={displayed_pct}"
-        )
-
+    # A material net change with a displayed 0.00% is a stale Nasdaq render.
+    # Do not publish it directly; continue into the existing same-date/close
+    # independent historical-table cross-check below.
+    #
     # Nasdaq's rendered History DOM can occasionally inherit the stale 0.00% Overview
     # state even though the completed-session move is nonzero. When that happens,
     # cross-check a public historical table and only accept it if the same date and
@@ -882,29 +879,27 @@ else:
     else:
         print("us_positioning_alert_ready=false unchanged=true")
 
-        # Persist NQ/3Y enrichment silently when the core CFTC fingerprint is unchanged.
-        # This lets the CTA watcher consume the upgraded weekly positioning state
-        # without manufacturing a user-facing "new change" alert.
-        current_cftc = next((x for x in results if x.get("kind") == "cot"), None)
-        prior_cftc = (state.get("values", {}) or {}).get("CFTC|cot")
-        enrichment_changed = bool(
-            current_cftc
-            and (
-                not prior_cftc
-                or prior_cftc.get("nq_mini") != current_cftc.get("nq_mini")
-                or prior_cftc.get("history_3y") != current_cftc.get("history_3y")
-            )
-        )
-        if enrichment_changed:
-            ns = state
-            ns.setdefault("seen", {})
-            ns.setdefault("values", {})
-            key = "CFTC|cot"
-            ns["seen"][key] = current_cftc["fingerprint"]
-            ns["values"][key] = current_cftc
-            ns["updated_at_kst"] = datetime.now(timezone(timedelta(hours=9))).isoformat()
-            PENDING.write_text(
-                json.dumps(ns, ensure_ascii=False, indent=2) + "\n",
-                encoding="utf-8",
-            )
-            print("us_positioning_enrichment_state_ready=true")
+# Persist the official CFTC NQ/3Y enrichment even when another lane (for example
+# SOX rendering) fails the composite Telegram quality gate. Do not advance the
+# CFTC 'seen' fingerprint here: if the full quality gate later recovers, the
+# missed CFTC change must still be eligible for a user-facing alert.
+current_cftc = next((x for x in results if x.get("kind") == "cot"), None)
+prior_cftc = (state.get("values", {}) or {}).get("CFTC|cot")
+enrichment_changed = bool(
+    current_cftc
+    and (
+        not prior_cftc
+        or prior_cftc.get("nq_mini") != current_cftc.get("nq_mini")
+        or prior_cftc.get("history_3y") != current_cftc.get("history_3y")
+    )
+)
+if enrichment_changed and not PENDING.exists():
+    ns = json.loads(json.dumps(state))
+    ns.setdefault("values", {})
+    ns["values"]["CFTC|cot"] = current_cftc
+    ns["updated_at_kst"] = datetime.now(timezone(timedelta(hours=9))).isoformat()
+    PENDING.write_text(
+        json.dumps(ns, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    print("us_positioning_enrichment_state_ready=true")
